@@ -212,6 +212,8 @@ class ResourceManager final
         Image *getSubImage(Image *const parent, const int x, const int y,
                            const int width, const int height);
 
+        Resource *getAtlas(const std::string &name, const StringVect &files);
+
         /**
          * Creates a sprite definition based on a given path and the supplied
          * variant.

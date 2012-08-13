@@ -26,6 +26,8 @@
 #include "localconsts.h"
 #include "main.h"
 
+#include "utils/stringvector.h"
+
 #include "resources/imagehelper.h"
 
 #include <SDL.h>
@@ -67,7 +69,7 @@ class OpenGLImageHelper final : public ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Resource *load(SDL_RWops *const rw, Dye const &dye);
+        Image *load(SDL_RWops *const rw, Dye const &dye);
 
         /**
          * Loads an image from an SDL surface.
@@ -106,6 +108,9 @@ class OpenGLImageHelper final : public ImageHelper
          * @return true if OpenGL, false if SDL.
          */
         int useOpenGL();
+
+        static int getTextureSize()
+        { return mTextureSize; }
 
     protected:
         /**

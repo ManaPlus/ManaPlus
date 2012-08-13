@@ -24,7 +24,9 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "graphicsmanager.h"
 #include "logger.h"
+#include "main.h"
 #include "map.h"
 #include "maplayer.h"
 #include "tileset.h"
@@ -252,6 +254,7 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
 
     // Take the filename off the path
     const std::string pathDir = path.substr(0, path.rfind("/") + 1);
+    const std::string fileName = path.substr(path.rfind("/") + 1);
 
     const int w = XML::getProperty(node, "width", 0);
     const int h = XML::getProperty(node, "height", 0);
@@ -271,6 +274,15 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
     }
 
     Map *const map = new Map(w, h, tilew, tileh);
+
+#ifdef USE_OPENGL
+    if (graphicsManager.getUseAtlases())
+    {
+        const MapDB::MapInfo *const info = MapDB::getMapAtlas(fileName);
+        map->setAtlas(ResourceManager::getInstance()->getAtlas(
+            info->atlas, *info->files));
+    }
+#endif
 
     for_each_xml_child_node(childNode, node)
     {

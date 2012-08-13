@@ -54,10 +54,10 @@ class ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Resource *load(SDL_RWops *const rw);
+        Image *load(SDL_RWops *const rw);
 
 #ifdef __GNUC__
-        virtual Resource *load(SDL_RWops *rw, Dye const &dye) = 0;
+        virtual Image *load(SDL_RWops *rw, Dye const &dye) = 0;
 
         virtual Image *load(SDL_Surface *) = 0;
 
@@ -66,7 +66,7 @@ class ImageHelper
 
         virtual int useOpenGL() = 0;
 #else
-        virtual Resource *load(SDL_RWops *rw, Dye const &dye)
+        virtual Image *load(SDL_RWops *rw, Dye const &dye)
         { return nullptr; }
 
         virtual Image *load(SDL_Surface *)
@@ -92,4 +92,5 @@ class ImageHelper
 };
 
 extern ImageHelper *imageHelper;
+extern ImageHelper *sdlImageHelper;
 #endif

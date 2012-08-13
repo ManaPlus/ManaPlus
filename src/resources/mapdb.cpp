@@ -149,3 +149,16 @@ std::string MapDB::getMapName(const std::string &name)
         return it->second;
     return name;
 }
+
+MapDB::MapInfo *MapDB::getMapAtlas(const std::string &name)
+{
+    MapInfoIter it = mInfos.find(name);
+    if (it == mInfos.end())
+        return nullptr;
+    MapInfo *const info = &(*it).second;
+    AtlasIter it2 = mAtlases.find(info->atlas);
+    if (it2 == mAtlases.end())
+        return nullptr;
+    info->files = &((*it2).second);
+    return info;
+}

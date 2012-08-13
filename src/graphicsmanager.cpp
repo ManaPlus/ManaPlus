@@ -55,7 +55,8 @@ GraphicsManager::GraphicsManager() :
     mMajor(0),
     mPlatformMinor(0),
     mPlatformMajor(0),
-    mMaxVertices(500)
+    mMaxVertices(500),
+    mUseAtlases(false)
 {
 }
 
@@ -174,21 +175,27 @@ void GraphicsManager::initGraphics(bool noOpenGL)
     {
         case 0:
             imageHelper = new SDLImageHelper;
+            sdlImageHelper = imageHelper;
             mainGraphics = new Graphics;
             break;
         case 1:
         default:
             imageHelper = new OpenGLImageHelper;
+            sdlImageHelper = new SDLImageHelper;
             mainGraphics = new NormalOpenGLGraphics;
             break;
         case 2:
             imageHelper = new OpenGLImageHelper;
+            sdlImageHelper = new SDLImageHelper;
             mainGraphics = new SafeOpenGLGraphics;
             break;
     };
+    mUseAtlases = imageHelper->useOpenGL()
+        && config.getBoolValue("useAtlases");
 #else
     // Create the graphics context
     imageHelper = new SDLImageHelper;
+    sdlImageHelper = imageHelper;
     mainGraphics = new Graphics;
 #endif
 }

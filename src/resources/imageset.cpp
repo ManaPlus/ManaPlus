@@ -55,6 +55,16 @@ ImageSet::ImageSet(Image *const img, const int width, const int height,
 ImageSet::~ImageSet()
 {
     delete_all(mImages);
+/*
+    for (std::vector<Image*>::iterator it = mImages.begin(),
+         it_end = mImages.end(); it != it_end; ++ it)
+    {
+        Image *image = *it;
+        if (image)
+            image->decRef();
+    }
+    mImages.clear();
+*/
 }
 
 Image* ImageSet::get(const size_type i) const

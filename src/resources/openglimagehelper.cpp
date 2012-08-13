@@ -24,18 +24,18 @@
 
 #ifdef USE_OPENGL
 
-#include "resources/dye.h"
-#include "resources/resourcemanager.h"
-
+#include "client.h"
+#include "game.h"
+#include "graphicsmanager.h"
+#include "logger.h"
 #include "normalopenglgraphics.h"
 #include "safeopenglgraphics.h"
 
-#include "client.h"
-#include "logger.h"
+#include "resources/dye.h"
+#include "resources/image.h"
+#include "resources/resourcemanager.h"
 
 #include "utils/stringutils.h"
-
-#include "resources/image.h"
 
 #include <SDL_image.h>
 #include <SDL_rotozoom.h>
@@ -48,7 +48,7 @@ int OpenGLImageHelper::mTextureSize = 0;
 bool OpenGLImageHelper::mBlur = true;
 int OpenGLImageHelper::mUseOpenGL = 0;
 
-Resource *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
+Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
     SDL_Surface *const tmpImage = IMG_Load_RW(rw, 1);
 
@@ -300,5 +300,4 @@ int OpenGLImageHelper::useOpenGL()
 {
     return mUseOpenGL;
 }
-
 #endif

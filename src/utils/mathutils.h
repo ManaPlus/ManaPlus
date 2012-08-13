@@ -119,4 +119,12 @@ inline int roundDouble(const double v)
     return (v > 0.0) ? (v + 0.5) : (v - 0.5); 
 }
 
+inline int powerOfTwo(int input)
+{
+    int value = 1;
+    while (value < input)
+        value <<= 1;
+    return value;
+}
+
 #endif // UTILS_MATHUTILS_H

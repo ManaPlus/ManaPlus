@@ -38,7 +38,7 @@
 
 bool SDLImageHelper::mEnableAlphaCache = false;
 
-Resource *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
+Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
     SDL_Surface *const tmpImage = IMG_Load_RW(rw, 1);
 

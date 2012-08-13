@@ -59,6 +59,7 @@ class Image : public Resource
     friend class OpenGLImageHelper;
     friend class SDLImageHelper;
 #ifdef USE_OPENGL
+    friend class AtlasManager;
     friend class NormalOpenGLGraphics;
     friend class SafeOpenGLGraphics;
 #endif

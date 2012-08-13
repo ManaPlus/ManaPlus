@@ -78,6 +78,9 @@ class GraphicsManager final
         int getMaxVertices() const
         { return mMaxVertices; }
 
+        bool getUseAtlases() const
+        { return mUseAtlases; }
+
     private:
         std::set<std::string> mExtensions;
 
@@ -94,6 +97,8 @@ class GraphicsManager final
         int mPlatformMajor;
 
         int mMaxVertices;
+
+        bool mUseAtlases;
 };
 
 extern GraphicsManager graphicsManager;

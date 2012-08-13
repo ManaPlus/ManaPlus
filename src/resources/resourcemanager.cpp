@@ -27,11 +27,13 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "resources/atlasmanager.h"
 #include "resources/dye.h"
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/imageset.h"
 #include "resources/music.h"
+#include "resources/openglimagehelper.h"
 #include "resources/soundeffect.h"
 #include "resources/spritedef.h"
 
@@ -650,6 +652,32 @@ Image *ResourceManager::getSubImage(Image *const parent,
     ss << parent->getIdPath() << ",[" << x << "," << y << ","
         << width << "x" << height << "]";
     return static_cast<Image*>(get(ss.str(), SubImageLoader::load, &rl));
+}
+
+struct AtlasLoader
+{
+    const std::string name;
+    const StringVect *files;
+
+    static Resource *load(const void *const v)
+    {
+        if (!v)
+            return nullptr;
+
+        const AtlasLoader *const rl = static_cast<const AtlasLoader *const>(v);
+        AtlasResource *const resource = AtlasManager::loadTextureAtlas(
+            rl->name, *rl->files);
+        AtlasManager::injectToResources(resource);
+        return resource;
+    }
+};
+
+Resource *ResourceManager::getAtlas(const std::string &name,
+                                    const StringVect &files)
+{
+    AtlasLoader rl = { name, &files };
+
+    return get("atlas_" + name, AtlasLoader::load, &rl);
 }
 
 struct SpriteDefLoader

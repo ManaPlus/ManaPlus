@@ -262,6 +262,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableDelayedAnimations", true);
     AddDEF("enableCompoundSpriteDelay", true);
     AddDEF("npcfontSize", 13);
+    AddDEF("useAtlases", true);
     return configData;
 }
 

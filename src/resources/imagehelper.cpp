@@ -37,10 +37,11 @@
 #include "debug.h"
 
 ImageHelper *imageHelper = nullptr;
+ImageHelper *sdlImageHelper = nullptr;
 
 bool ImageHelper::mEnableAlpha = true;
 
-Resource *ImageHelper::load(SDL_RWops *const rw)
+Image *ImageHelper::load(SDL_RWops *const rw)
 {
     SDL_Surface *const tmpImage = IMG_Load_RW(rw, 1);
 

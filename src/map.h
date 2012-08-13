@@ -35,6 +35,7 @@ class Animation;
 class AmbientLayer;
 class MapLayer;
 class Particle;
+class Resource;
 class SimpleAnimation;
 class Tileset;
 class SpecialLayer;
@@ -395,6 +396,9 @@ class Map final : public Properties, public ConfigListener
         std::map<int, TileAnimation*> &getTileAnimations()
         { return mTileAnimations; }
 
+        void setAtlas(Resource *atlas)
+        { mAtlas = atlas; }
+
     protected:
         friend class Actor;
         friend class Minimap;
@@ -503,6 +507,7 @@ class Map final : public Properties, public ConfigListener
         bool mRedrawMap;
         bool mBeingOpacity;
         bool mCustom;
+        Resource *mAtlas;
 };
 
 #endif

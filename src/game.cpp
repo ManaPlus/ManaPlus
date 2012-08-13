@@ -426,6 +426,7 @@ Game::Game():
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
 
+
     DepricatedEvent::trigger(CHANNEL_GAME,
         DepricatedEvent(EVENT_CONSTRUCTED));
 }

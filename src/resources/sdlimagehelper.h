@@ -52,7 +52,7 @@ class SDLImageHelper final : public ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Resource *load(SDL_RWops *const rw, Dye const &dye);
+        Image *load(SDL_RWops *const rw, Dye const &dye);
 
         /**
          * Loads an image from an SDL surface.

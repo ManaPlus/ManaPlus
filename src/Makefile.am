@@ -407,6 +407,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/ambientlayer.h \
 	      resources/animation.cpp \
 	      resources/animation.h \
+	      resources/atlasmanager.cpp \
+	      resources/atlasmanager.h \
 	      resources/beinginfo.cpp \
 	      resources/beinginfo.h \
 	      resources/chardb.cpp \

@@ -159,7 +159,8 @@ Map::Map(const int width, const int height,
     mDrawScrollY(-1),
     mRedrawMap(true),
     mBeingOpacity(false),
-    mCustom(false)
+    mCustom(false),
+    mAtlas(nullptr)
 {
     const int size = mWidth * mHeight;
     for (int i = 0; i < NB_BLOCKTYPES; i++)
@@ -200,6 +201,11 @@ Map::~Map()
     delete mObjects;
     mObjects = nullptr;
     delete_all(mMapPortals);
+    if (mAtlas)
+    {
+        mAtlas->decRef();
+        mAtlas = nullptr;
+    }
 }
 
 void Map::optionChanged(const std::string &value)

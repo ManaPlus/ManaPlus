@@ -531,15 +531,10 @@ void Client::gameInit()
     SDLImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache"));
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
 #endif
-
     graphicsManager.initGraphics(mOptions.noOpenGL);
-
     runCounters = config.getBoolValue("packetcounters");
-
     applyVSync();
-
     graphicsManager.setVideoMode();
-
     applyGrabMode();
     applyGamma();
 
@@ -730,6 +725,9 @@ void Client::gameClear()
     delete mainGraphics;
     mainGraphics = nullptr;
 
+    if (imageHelper != sdlImageHelper)
+        delete sdlImageHelper;
+    sdlImageHelper = nullptr;
     delete imageHelper;
     imageHelper = nullptr;
 
