@@ -80,17 +80,14 @@ bool GraphicsManager::detectGraphics()
     logger->log("enable opengl mode");
     SDL_SetVideoMode(100, 100, 0, SDL_ANYFORMAT | SDL_OPENGL);
 
+    setGLVersion();
+    initOpenGLFunctions();
+    updateExtensions();
     std::string vendor = getGLString(GL_VENDOR);
     std::string renderer = getGLString(GL_RENDERER);
-    std::string version = getGLString(GL_VERSION);
     logger->log("gl vendor: %s", vendor.c_str());
     logger->log("gl renderer: %s", renderer.c_str());
-    logger->log("gl version: %s", version.c_str());
-    sscanf(version.c_str(), "%5d.%5d", &mMajor, &mMinor);
-
-    char const *glExtensions = reinterpret_cast<char const *>(
-        glGetString(GL_EXTENSIONS));
-    updateExtensions(glExtensions);
+    logger->log("gl version: %s", mVersionString.c_str());
 
     int mode = 1;
 
@@ -145,7 +142,7 @@ bool GraphicsManager::detectGraphics()
         mode = 0;
     }
 
-    if (mode > 0 && findI(version, "Mesa") != std::string::npos)
+    if (mode > 0 && findI(mVersionString, "Mesa") != std::string::npos)
     {
         // Mesa detected
         config.setValue("compresstextures", true);
@@ -214,10 +211,32 @@ Graphics *GraphicsManager::createGraphics()
 #endif
 }
 
-void GraphicsManager::updateExtensions(const char *extensions)
+void GraphicsManager::updateExtensions()
 {
     mExtensions.clear();
-    splitToStringSet(mExtensions, extensions, ' ');
+    logger->log1("opengl extensions: ");
+    if (checkGLVersion(3, 0))
+    {   // get extensions in new way
+        std::string extList;
+        int num = 0;
+        glGetIntegerv(GL_NUM_EXTENSIONS, &num);
+        for (int f = 0; f < num; f ++)
+        {
+            std::string str = reinterpret_cast<const char*>(
+                mglGetStringi(GL_EXTENSIONS, f));
+            mExtensions.insert(str);
+            extList += str + " ";
+        }
+        logger->log1(extList.c_str());
+    }
+    else
+    {   // get extensions in old way
+        char const *extensions = reinterpret_cast<char const *>(
+            glGetString(GL_EXTENSIONS));
+        logger->log1(extensions);
+
+        splitToStringSet(mExtensions, extensions, ' ');
+    }
 }
 
 bool GraphicsManager::supportExtension(const std::string &ext)
@@ -316,7 +335,8 @@ std::string GraphicsManager::getGLString(int num) const
 
 void GraphicsManager::setGLVersion()
 {
-    sscanf(getGLString(GL_VERSION).c_str(), "%5d.%5d", &mMajor, &mMinor);
+    mVersionString = getGLString(GL_VERSION);
+    sscanf(mVersionString.c_str(), "%5d.%5d", &mMajor, &mMinor);
 }
 
 void GraphicsManager::setVideoMode()
@@ -474,4 +494,7 @@ void GraphicsManager::initOpenGLFunctions()
     {   // no frame buffer support
         config.setValue("usefbo", false);
     }
+
+    if (checkGLVersion(3, 0))
+        assignFunction(glGetStringi, "glGetStringi");
 }

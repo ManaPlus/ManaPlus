@@ -166,14 +166,9 @@ bool Graphics::setOpenGLMode()
     logger->log("Using OpenGL %s double buffering.",
                 (gotDoubleBuffer ? "with" : "without"));
 
-    char const *glExtensions = reinterpret_cast<char const *>(
-        glGetString(GL_EXTENSIONS));
-
-    logger->log1("opengl extensions: ");
-    logger->log1(glExtensions);
-
-    graphicsManager.updateExtensions(glExtensions);
     graphicsManager.setGLVersion();
+    graphicsManager.initOpenGLFunctions();
+    graphicsManager.updateExtensions();
 
     graphicsManager.updateTextureFormat();
     updateMemoryInfo();

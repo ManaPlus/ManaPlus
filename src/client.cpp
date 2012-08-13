@@ -535,7 +535,6 @@ void Client::gameInit()
     applyVSync();
 
     graphicsManager.setVideoMode();
-    graphicsManager.initOpenGLFunctions();
 
     applyGrabMode();
     applyGamma();

@@ -33,3 +33,4 @@ defName(glFramebufferTexture2D);
 defName(glFramebufferRenderbuffer);
 defName(glDeleteFramebuffers);
 defName(glDeleteRenderbuffers);
+defName(glGetStringi);

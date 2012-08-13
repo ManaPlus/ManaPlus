@@ -41,8 +41,6 @@ class GraphicsManager
 
         bool detectGraphics();
 
-        void updateExtensions(const char *extensions);
-
         bool supportExtension(const std::string &ext);
 
         void updateTextureFormat();
@@ -63,10 +61,14 @@ class GraphicsManager
 
         void initOpenGLFunctions();
 
+        void updateExtensions();
+
         Graphics *createGraphics();
 
     private:
         std::set<std::string> mExtensions;
+
+        std::string mVersionString;
 
         int mMinor;
 
