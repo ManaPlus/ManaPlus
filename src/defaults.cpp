@@ -157,6 +157,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "helpFont", "fonts/dejavusansmono.ttf");
     AddDEF(configData, "secureFont", "fonts/dejavusansmono.ttf");
     AddDEF(configData, "japanFont", "fonts/mplus-1p-regular.ttf");
+    AddDEF(configData, "npcFont", "fonts/dejavusans.ttf");
     AddDEF(configData, "showBackground", true);
     AddDEF(configData, "enableTradeTab", true);
     AddDEF(configData, "logToChat", false);
