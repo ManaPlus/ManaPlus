@@ -306,6 +306,7 @@ class ActorSpriteManager: public ConfigListener
         bool mTargetOnlyReachable;
         bool mCyclePlayers;
         bool mCycleMonsters;
+        bool mCycleNPC;
         bool mExtMouseTargeting;
 
 #define defVarsP(mob) \

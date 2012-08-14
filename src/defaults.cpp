@@ -163,6 +163,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "logToChat", false);
     AddDEF(configData, "cyclePlayers", true);
     AddDEF(configData, "cycleMonsters", true);
+    AddDEF(configData, "cycleNPC", true);
     AddDEF(configData, "floorItemsHighlight", true);
     AddDEF(configData, "enableBotCheker", true);
     AddDEF(configData, "removeColors", true);

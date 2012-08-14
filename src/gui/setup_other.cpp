@@ -155,6 +155,9 @@ Setup_Other::Setup_Other()
 
     new SetupItemLabel(_("NPC"), "", this);
 
+    new SetupItemCheckBox(_("Cycle npc targets"), "",
+        "cycleNPC", this, "cycleNPCEvent");
+
     new SetupItemCheckBox(_("Log NPC dialogue"), "", "logNpcInGui",
         this, "logNpcInGuiEvent");
 

@@ -191,6 +191,7 @@ ActorSpriteManager::ActorSpriteManager() :
     mTargetOnlyReachable(config.getBoolValue("targetOnlyReachable")),
     mCyclePlayers(config.getBoolValue("cyclePlayers")),
     mCycleMonsters(config.getBoolValue("cycleMonsters")),
+    mCycleNPC(config.getBoolValue("cycleNPC")),
     mExtMouseTargeting(config.getBoolValue("extMouseTargeting"))
 {
     config.addListener("targetDeadPlayers", this);
@@ -861,10 +862,11 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
     maxDist = maxDist * maxDist;
 
     bool cycleSelect = (mCyclePlayers && type == Being::PLAYER)
-        || (mCycleMonsters && type == Being::MONSTER);
+        || (mCycleMonsters && type == Being::MONSTER)
+        || (mCycleNPC && type == Being::NPC);
 
     bool filtered = config.getBoolValue("enableAttackFilter")
-        && type != Being::PLAYER;
+        && type == Being::MONSTER;
 
     bool ignoreDefault = false;
     if (filtered)
@@ -962,7 +964,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
         {
             Being *target = sortedBeings.at(0);
 
-            if (specialDistance && target->getType() == Being::MONSTER
+            if (specialDistance && target->getType() == type
                 && target->getDistance() <= 2)
             {
                 return nullptr;
@@ -1027,7 +1029,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
             int d = being->getDistance();
 //            logger->log("dist: %d", dist);
 //            logger->log("name: %s, %d, %d", being->getName().c_str(), (int)valid, d);
-            if (being->getType() != Being::MONSTER
+            if (being->getType() != type
                 || !mTargetOnlyReachable)
             {   // if distance not calculated, use old distance
                 d = (being->getTileX() - x) * (being->getTileX() - x)
@@ -1038,7 +1040,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
                 continue;
 
             if (specialDistance && being->getDistance() <= 2
-                && being->getType() == Being::MONSTER)
+                && being->getType() == type)
             {
                 continue;
             }
@@ -1467,6 +1469,8 @@ void ActorSpriteManager::optionChanged(const std::string &name)
         mCyclePlayers = config.getBoolValue("cyclePlayers");
     else if (name == "cycleMonsters")
         mCycleMonsters = config.getBoolValue("cycleMonsters");
+    else if (name == "cycleNPC")
+        mCycleNPC = config.getBoolValue("cycleNPC");
     else if (name == "extMouseTargeting")
         mExtMouseTargeting = config.getBoolValue("extMouseTargeting");
 }
