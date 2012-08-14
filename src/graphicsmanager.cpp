@@ -20,16 +20,12 @@
 
 #include "graphicsmanager.h"
 
-#define GL_GLEXT_PROTOTYPES 1
 #ifndef WIN32
+#define GL_GLEXT_PROTOTYPES 1
 #include "GL/glx.h"
 // hack to hide warnings
 #undef GL_GLEXT_VERSION
 #undef GL_GLEXT_PROTOTYPES
-//#else
-//#include "GL/glext.h"
-//#undef GL_GLEXT_VERSION
-//#undef WIN32_LEAN_AND_MEAN
 #endif
 
 #include "configuration.h"
@@ -56,7 +52,9 @@ GraphicsManager graphicsManager;
 
 GraphicsManager::GraphicsManager() :
     mMinor(0),
-    mMajor(0)
+    mMajor(0),
+    mPlatformMinor(0),
+    mPlatformMajor(0)
 {
 }
 
@@ -253,7 +251,7 @@ void GraphicsManager::updatePlanformExtensions()
             return;
 
         HDC hdc = GetDC(info.window);
-        if (hdc > 0)
+        if (hdc)
         {
             const char *extensions = mwglGetExtensionsString (hdc);
             if (extensions)
@@ -480,12 +478,16 @@ void GraphicsManager::createFBO(int width, int height, FBOInfo *fbo)
     // create a texture object
     glGenTextures(1, &fbo->textureId);
     glBindTexture(OpenGLImageHelper::mTextureType, fbo->textureId);
-    glTexParameterf(OpenGLImageHelper::mTextureType, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameterf(OpenGLImageHelper::mTextureType, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameterf(OpenGLImageHelper::mTextureType, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameterf(OpenGLImageHelper::mTextureType, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexImage2D(OpenGLImageHelper::mTextureType, 0, GL_RGBA8, width, height, 0,
-        GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+    glTexParameterf(OpenGLImageHelper::mTextureType,
+        GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameterf(OpenGLImageHelper::mTextureType,
+        GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameterf(OpenGLImageHelper::mTextureType,
+        GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameterf(OpenGLImageHelper::mTextureType,
+        GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexImage2D(OpenGLImageHelper::mTextureType, 0, GL_RGBA8, width, height,
+        0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
     glBindTexture(OpenGLImageHelper::mTextureType, 0);
 
     // create a renderbuffer object to store depth info
@@ -539,12 +541,14 @@ void GraphicsManager::deleteFBO(FBOInfo *fbo)
 }
 
 #ifdef WIN32
-#define getFunction(name) wglGetProcAddress(name);
+#define getFunction(name) wglGetProcAddress(name)
 #else
-#define getFunction(name) glXGetProcAddress((const GLubyte*)(name))
+#define getFunction(name) glXGetProcAddress(\
+    reinterpret_cast<const GLubyte*>(name))
 #endif
 
-#define assignFunction(func, name) m##func = (func##_t)getFunction(name)
+#define assignFunction(func, name) m##func \
+    = reinterpret_cast<func##_t>(getFunction(name))
 
 void GraphicsManager::initOpenGLFunctions()
 {

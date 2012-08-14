@@ -25,6 +25,8 @@
 
 #include "resources/imageset.h"
 
+#include <map>
+
 /**
  * A tileset, which is basically just an image set but it stores a firstgid.
  */

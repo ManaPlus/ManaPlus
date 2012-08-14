@@ -159,6 +159,9 @@ EditServerDialog::EditServerDialog(ServerDialog *parent, ServerInfo server,
         default:
         case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
+#ifndef EATHENA_SUPPORT
+        case ServerInfo::EATHENA:
+#endif
             mTypeField->setSelected(0);
             break;
         case ServerInfo::EVOL:
