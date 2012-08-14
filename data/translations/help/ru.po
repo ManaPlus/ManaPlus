@@ -1,13 +1,14 @@
 # en#
 # Translators:
+# Alexandr Uspensky <AlexandrUSP@yandex.com>, 2012.
 # Andrei Karas <akaras@inbox.ru>, 2012.
 #   <BoBaH4spam@ukr.net>, 2012.
 # Dan Sagunov <danilka.pro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-08-01 15:18+0000\n"
-"Last-Translator: Dan Sagunov <danilka.pro@gmail.com>\n"
+"PO-Revision-Date: 2012-08-11 16:17+0000\n"
+"Last-Translator: Alexandr Uspensky <AlexandrUSP@yandex.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -189,16 +190,16 @@ msgid ""
 msgstr "Вы можете двигаться к Вратам автоматически.\nОткройте окно Общество (F11) и выберите Навигационную панель,\nзатем клик на требуемые Врата."
 
 msgid "##2LeftAlt + 7##P              \"Emote Shortcut 7\""
-msgstr ""
+msgstr "##2LeftAlt + 7##P              \"Эмоция 7\""
 
 msgid "##2LeftShift##P                \"Stop Attack\""
-msgstr ""
+msgstr "##2LeftShift##P \"Остановить атаку\""
 
 msgid "/setdrop N - set drop counter to requested value."
 msgstr "/setdrop N - задать счетчику дропов нужное значение."
 
 msgid "##2LeftAlt + 8##P              \"Emote Shortcut 8\""
-msgstr ""
+msgstr "##2LeftAlt + 8##P              \"Эмоция 8\""
 
 msgid "##2RightWinKey##P              \"Ignore input 2\""
 msgstr ""
@@ -210,7 +211,7 @@ msgid "Visit IRC channel:"
 msgstr "Посетить IRC канал"
 
 msgid "##2LeftAlt + Equals(=)##P      \"Emote Shortcut 12\""
-msgstr ""
+msgstr "##2LeftAlt + Equals(=)##P      \"Эмоция 12\""
 
 msgid "/createparty NAME - create party with selected name."
 msgstr "/createparty "
@@ -253,7 +254,7 @@ msgid "/unignore NICK - Remove nick from ignore list."
 msgstr "/unignore ИГРОК - убрать игрока из списка игнорирования."
 
 msgid "##2LeftAlt + 6##P              \"Emote Shortcut 6\""
-msgstr ""
+msgstr "##2LeftAlt + 6##P              \"Эмоция 6\""
 
 msgid "IGNORING COMMUNICATION"
 msgstr "ИГНОРИРОВАНИЕ"
@@ -268,7 +269,7 @@ msgid "##2LEFT##P                     \"Move Left\""
 msgstr "##2LEFT##P                     \"Двигаться влево\""
 
 msgid "##2LeftAlt + 9##P              \"Emote Shortcut 9\""
-msgstr ""
+msgstr "##2LeftAlt + 9##P              \"Эмоция 9\""
 
 msgid "About"
 msgstr "Об игре"
@@ -291,7 +292,7 @@ msgid ""
 msgstr "Вы можете использовать голосовой чат Mumble для связи с другими игроками.\nЗапустите Mumble перед запуском клиента и включите Mumble в настройках игры."
 
 msgid "##2RightAlt##P                 \"Copy Outfit\""
-msgstr ""
+msgstr "##2RightAlt##P                 \"Копировать костюм\""
 
 msgid "##20##P                        \"Item Shortcut 10\""
 msgstr ""
@@ -305,7 +306,7 @@ msgid "/who - print online players number to chat."
 msgstr "/who - вывести количество пользователей онлайн в чат."
 
 msgid "##2r##P                        \"Enable/Disable Trading\""
-msgstr ""
+msgstr "##2r##P                        \"Разрешить/запретить торговлю\""
 
 msgid "/uptime - show client uptime."
 msgstr "/uptime - показать время работы клиента."
@@ -320,7 +321,7 @@ msgid "/imitation NICK - start imitation mode."
 msgstr "/imitation ИГРОК - начать режим имитации."
 
 msgid "##2LeftAlt + EmoteKey##P       \"Smilie\""
-msgstr ""
+msgstr "##2LeftAlt + EmoteKey##P \"Смайл\""
 
 msgid "##22##P                        \"Item Shortcut 2\""
 msgstr ""
@@ -344,13 +345,13 @@ msgid "Server news"
 msgstr "Новости сервера"
 
 msgid "##2LeftAlt + 4##P              \"Emote Shortcut 4\""
-msgstr ""
+msgstr "##2LeftAlt + 4##P              \"Эмоция 4\""
 
 msgid "Website: http://manaplus.evolonline.org/"
 msgstr "Сайт: http://manaplus.evolonline.org/"
 
 msgid "##2F3##P                       \"Inventory Window\""
-msgstr ""
+msgstr "##2F3##P                       \"Окно инвентаря\""
 
 msgid "ABOUT MANAPLUS"
 msgstr "Об игре MANAPLUS"
@@ -405,7 +406,7 @@ msgid "/addignoreattack NAME - add monster to ignore attack list."
 msgstr "/addignoreattack МОНСТР - добавить монстра в список игнорирования при атаке."
 
 msgid "##2KeyPad[+]##P                \"Toggle camera mode\""
-msgstr ""
+msgstr "##2KeyPad[+]##P                \"Переключить режим камеры\""
 
 msgid "##2Home##P                     \"Item Shortcut 15\""
 msgstr ""
@@ -432,7 +433,7 @@ msgid "##2Tab##P                      \"Chat Auto Complete\""
 msgstr ""
 
 msgid "##2LeftAlt + 5##P              \"Emote Shortcut 5\""
-msgstr ""
+msgstr "##2LeftAlt + 5##P              \"Эмоция 5\""
 
 msgid ""
 " - ##2save player list##P: Should your acquaintance list be saved when you\n"
@@ -459,7 +460,7 @@ msgid "##POther skills can be obtain by doing quests and missions in game."
 msgstr ""
 
 msgid "##2RightControl##P             \"Wear Outfit\""
-msgstr ""
+msgstr "##2RightControl##P             \"Надеть костюм\""
 
 msgid ""
 "You can buy or sell items from players shops.\n"
@@ -467,25 +468,25 @@ msgid ""
 msgstr "Вы можете покупать и продавать предметы\nв пользовательский маназинах.\nНажмите правой кнопкой на пользователе\nи выберите \"Купить\" или \"Продать\""
 
 msgid "/erase NICK - add nick to erased list."
-msgstr ""
+msgstr "/erase ИГРОК - добавить игрока в список стертых."
 
 msgid "/pricesave - save shop price to disc."
-msgstr ""
+msgstr "/pricesave - сохранить цены магазина."
 
 msgid "COMMUNICATION:"
 msgstr "ОБЩЕНИЕ"
 
 msgid "##2SpaceBar##P                 \"Select OK\""
-msgstr ""
+msgstr "##2SpaceBar##P                 \"Select OK\""
 
 msgid "##2Emote:##P enables the ability to express emotions."
-msgstr ""
+msgstr "##2Emote:##P даёт возможность выражать эмоции."
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend ИГРОК, /befriend ИГРОК - добавить игрока в список друзей."
 
 msgid "##2i##P                        \"Switch Quick Drop Counter\""
-msgstr ""
+msgstr "##2i##P                        \"Switch Quick Drop Counter\""
 
 msgid ""
 "##2ManaPlus##P is extended client based on old code from ##2Mana##P client.\n"
@@ -500,13 +501,13 @@ msgid ""
 msgstr ""
 
 msgid "##2LeftAlt + 2##P              \"Emote Shortcut 2\""
-msgstr ""
+msgstr "##2LeftAlt + 2##P              \"Эмоция 2\""
 
 msgid "##2F7##P                       \"Chat Window\""
-msgstr ""
+msgstr "##2F7##P                       \"Окно чата\""
 
 msgid "##2LeftAlt + 1##P              \"Emote Shortcut 1\""
-msgstr ""
+msgstr "##2LeftAlt + 1##P              \"Эмоция 1\""
 
 msgid "##2F11##P                      \"Social Window\""
 msgstr "##2F11##P                      \"Окно Общество\""
@@ -630,7 +631,7 @@ msgid "Powered By"
 msgstr "Сделано при помощи"
 
 msgid "/disconnect - quick disconnect from server."
-msgstr ""
+msgstr "/disconnect - быстро отключиться от сервера."
 
 msgid "/disregard NICK - add nick to disregarded list."
 msgstr ""
@@ -645,7 +646,7 @@ msgid "Commands"
 msgstr "Команды"
 
 msgid "/undress NICK - remove all clothes from nick. Local effect only."
-msgstr ""
+msgstr "/undress NICK - снять всю одежду с NICK. Только местное действие."
 
 msgid ""
 " Otherwise see the @@team|Development Team@@ section to have a list of\n"
@@ -763,13 +764,13 @@ msgid "##2LeftAlt + Backspace##P      \"Emote Shortcut 13\""
 msgstr ""
 
 msgid "##2p##P                        \"Screenshot\""
-msgstr ""
+msgstr "##2p##P \"Скриншот\""
 
 msgid "##2x##P                        \"Target & Attack\""
 msgstr "##2x##P                        \"Выбрать цель и атаковать\""
 
 msgid "##2b##P                        \"Use magic attack\""
-msgstr ""
+msgstr "##2b##P \"Использовать магическую атаку\""
 
 msgid "##2KeyPad[4]##P                \"Change Imitation mode\""
 msgstr ""
