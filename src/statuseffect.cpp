@@ -37,7 +37,7 @@
 
 #define STATUS_EFFECTS_FILE "status-effects.xml"
 
-void unloadMap(std::map<int, StatusEffect *> &map);
+static void unloadMap(std::map<int, StatusEffect *> &map);
 
 bool StatusEffect::mLoaded = false;
 
@@ -189,7 +189,7 @@ void StatusEffect::load()
     mLoaded = true;
 }
 
-void unloadMap(std::map<int, StatusEffect *> &map)
+static void unloadMap(std::map<int, StatusEffect *> &map)
 {
     for (std::map<int, StatusEffect *>::iterator it = map.begin();
          it != map.end(); ++it)

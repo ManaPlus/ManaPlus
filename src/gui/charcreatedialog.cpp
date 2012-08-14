@@ -58,12 +58,12 @@
 
 #include "debug.h"
 
-const static Being::Action actions[] =
+static const Being::Action actions[] =
 {
     Being::STAND, Being::SIT, Being::MOVE, Being::ATTACK, Being::DEAD
 };
 
-const static uint8_t directions[] =
+static const uint8_t directions[] =
 {
     Being::DOWN, Being::RIGHT, Being::UP, Being::LEFT
 };

@@ -125,7 +125,7 @@ class Palette
          */
         static void advanceGradients();
 
-        gcn::Color static produceHPColor(int hp, int maxHp, int alpha = 255);
+        static gcn::Color produceHPColor(int hp, int maxHp, int alpha = 255);
 
     protected:
         /** Colors used for the rainbow gradient */

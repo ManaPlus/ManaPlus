@@ -379,6 +379,7 @@ void Being::setDestination(int dstX, int dstY)
         return;
     }
 
+#ifdef MANASERV_SUPPORT
     // Don't handle flawed destinations from server...
     if (dstX == 0 || dstY == 0)
         return;
@@ -413,6 +414,7 @@ void Being::setDestination(int dstX, int dstY)
     mDest.y = static_cast<float>(dest.y);
 
     setPath(thisPath);
+#endif
 }
 
 void Being::clearPath()

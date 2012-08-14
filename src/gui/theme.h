@@ -254,7 +254,7 @@ class Theme : public Palette, public ConfigListener
                                                       int alpha = 255)
         { return mInstance->getColor(type, alpha); }
 
-        const static gcn::Color &getThemeColor(char c, bool &valid)
+        static const gcn::Color &getThemeColor(char c, bool &valid)
         { return mInstance->getColor(c, valid); }
 
         static gcn::Color getProgressColor(int type, float progress);

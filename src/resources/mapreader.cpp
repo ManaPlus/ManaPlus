@@ -43,11 +43,11 @@
 
 #include "debug.h"
 
-int inflateMemory(unsigned char *in, unsigned int inLength,
-                  unsigned char *&out, unsigned int &outLength);
+static int inflateMemory(unsigned char *in, unsigned int inLength,
+                         unsigned char *&out, unsigned int &outLength);
 
-int inflateMemory(unsigned char *in, unsigned int inLength,
-                  unsigned char *&out);
+static int inflateMemory(unsigned char *in, unsigned int inLength,
+                         unsigned char *&out);
 
 static std::string resolveRelativePath(std::string base, std::string relative)
 {

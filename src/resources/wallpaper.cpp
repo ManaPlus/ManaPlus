@@ -44,7 +44,7 @@ struct WallpaperData
     int height;
 };
 
-bool wallpaperCompare(WallpaperData a, WallpaperData b);
+static bool wallpaperCompare(WallpaperData a, WallpaperData b);
 
 static std::vector<WallpaperData> wallpaperData;
 static bool haveBackup; // Is the backup (no size given) version available?
@@ -78,7 +78,7 @@ static void initDefaultWallpaperPaths()
         wallpaperFile = "login_wallpaper.png";
 }
 
-bool wallpaperCompare(WallpaperData a, WallpaperData b)
+static bool wallpaperCompare(WallpaperData a, WallpaperData b)
 {
     int aa = a.width * a.height;
     int ab = b.width * b.height;

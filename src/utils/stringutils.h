@@ -62,6 +62,8 @@ std::string &toUpper(std::string &str);
  */
 unsigned int atox(const std::string &str);
 
+template<typename T> std::string toString(const T &arg);
+
 /**
  * Converts the given value to a string using std::stringstream.
  *

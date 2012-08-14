@@ -407,7 +407,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     return false;
 }
 
-bool runxsel(std::string& text, const char *p1, const char *p2 = nullptr);
+static bool runxsel(std::string& text, const char *p1, const char *p2 = nullptr);
 
 bool sendBuffer(std::string& text)
 {
@@ -416,7 +416,7 @@ bool sendBuffer(std::string& text)
     return true;
 }
 
-bool runxsel(std::string& text, const char *p1, const char *p2)
+static bool runxsel(std::string& text, const char *p1, const char *p2)
 {
     pid_t pid;
     int fd[2];

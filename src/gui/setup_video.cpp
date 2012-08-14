@@ -109,9 +109,9 @@ class ModeListModel : public gcn::ListModel
         StringVect mVideoModes;
 };
 
-bool modeSorter(std::string mode1, std::string mode2);
+static bool modeSorter(std::string mode1, std::string mode2);
 
-bool modeSorter(std::string mode1, std::string mode2)
+static bool modeSorter(std::string mode1, std::string mode2)
 {
     const int width1 = atoi(mode1.substr(0, mode1.find("x")).c_str());
     const int height1 = atoi(mode1.substr(mode1.find("x") + 1).c_str());

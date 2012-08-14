@@ -34,7 +34,7 @@
  *
  * \ingroup Interface
  */
-class ConnectionDialog : public Window, gcn::ActionListener
+class ConnectionDialog : public Window, private gcn::ActionListener
 {
     public:
         /**

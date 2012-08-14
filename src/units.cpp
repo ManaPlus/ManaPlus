@@ -55,9 +55,9 @@ enum UnitType
     UNIT_END
 };
 
-std::string formatUnit(int value, int type);
+static std::string formatUnit(int value, int type);
 
-std::string splitNumber(std::string str, const std::string &separator);
+static std::string splitNumber(std::string str, const std::string &separator);
 
 struct UnitDescription units[UNIT_END];
 
@@ -173,7 +173,7 @@ void Units::loadUnits()
     }
 }
 
-std::string formatUnit(int value, int type)
+static std::string formatUnit(int value, int type)
 {
     struct UnitDescription ud = units[type];
     struct UnitLevel ul;
@@ -262,7 +262,7 @@ std::string Units::formatWeight(int value)
     return formatUnit(value, UNIT_WEIGHT);
 }
 
-std::string splitNumber(std::string str, const std::string &separator)
+static std::string splitNumber(std::string str, const std::string &separator)
 {
     std::string lastPart;
     size_t point = str.find(".");

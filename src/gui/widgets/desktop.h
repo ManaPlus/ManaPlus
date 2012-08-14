@@ -46,7 +46,7 @@ namespace gcn
  *
  * \ingroup GUI
  */
-class Desktop : public Container, gcn::WidgetListener
+class Desktop : public Container, private gcn::WidgetListener
 {
     public:
         Desktop();

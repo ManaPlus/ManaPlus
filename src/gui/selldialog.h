@@ -47,7 +47,9 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class SellDialog : public Window, gcn::ActionListener, gcn::SelectionListener
+class SellDialog : public Window,
+                   private gcn::ActionListener,
+                   private gcn::SelectionListener
 {
     public:
         /**
