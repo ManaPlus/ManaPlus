@@ -48,6 +48,8 @@
 
 #include "test/testmain.h"
 
+#include <SDL_syswm.h>
+
 #include "debug.h"
 
 GraphicsManager graphicsManager;
@@ -83,6 +85,7 @@ bool GraphicsManager::detectGraphics()
     setGLVersion();
     initOpenGLFunctions();
     updateExtensions();
+    updatePlanformExtensions();
     std::string vendor = getGLString(GL_VENDOR);
     std::string renderer = getGLString(GL_RENDERER);
     logger->log("gl vendor: %s", vendor.c_str());
@@ -239,6 +242,83 @@ void GraphicsManager::updateExtensions()
     }
 }
 
+void GraphicsManager::updatePlanformExtensions()
+{
+    SDL_SysWMinfo info;
+    SDL_VERSION(&info.version);
+    if (SDL_GetWMInfo(&info))
+    {
+#ifdef WIN32
+        if (!mwglGetExtensionsString)
+            return;
+
+        HDC hdc = GetDC(info.window);
+        if (hdc > 0)
+        {
+            const char *extensions = mwglGetExtensionsString (hdc);
+            if (extensions)
+            {
+                logger->log("wGL extensions:");
+                logger->log1(extensions);
+                splitToStringSet(mPlatformExtensions, extensions, ' ');
+            }
+        }
+#elif defined USE_X11
+        Display *display = info.info.x11.display;
+        if (display)
+        {
+            Screen *screen = XDefaultScreenOfDisplay(display);
+            if (!screen)
+                return;
+
+            int screenNum = XScreenNumberOfScreen(screen);
+            const char *extensions = glXQueryExtensionsString(
+                display, screenNum);
+            if (extensions)
+            {
+                logger->log("glx extensions:");
+                logger->log1(extensions);
+                splitToStringSet(mPlatformExtensions, extensions, ' ');
+            }
+            glXQueryVersion(display, &mPlatformMajor, &mPlatformMinor);
+            if (checkPlatformVersion(1, 1))
+            {
+                const char *vendor1 = glXQueryServerString(
+                    display, screenNum, GLX_VENDOR);
+                if (vendor1)
+                    logger->log("glx server vendor: %s", vendor1);
+                const char *version1 = glXQueryServerString(
+                    display, screenNum, GLX_VERSION);
+                if (version1)
+                    logger->log("glx server version: %s", version1);
+                const char *extensions1 = glXQueryServerString(
+                    display, screenNum, GLX_EXTENSIONS);
+                if (extensions1)
+                {
+                    logger->log("glx server extensions:");
+                    logger->log1(extensions1);
+                }
+
+                const char *vendor2 = glXGetClientString(display, GLX_VENDOR);
+                if (vendor2)
+                    logger->log("glx client vendor: %s", vendor2);
+                const char *version2 = glXGetClientString(
+                    display, GLX_VERSION);
+                if (version2)
+                    logger->log("glx client version: %s", version2);
+                const char *extensions2 = glXGetClientString(
+                    display, GLX_EXTENSIONS);
+                if (extensions2)
+                {
+                    logger->log("glx client extensions:");
+                    logger->log1(extensions2);
+                }
+            }
+        }
+#endif
+    }
+}
+
 bool GraphicsManager::supportExtension(const std::string &ext)
 {
     return mExtensions.find(ext) != mExtensions.end();
@@ -385,6 +465,12 @@ bool GraphicsManager::checkGLVersion(int major, int minor) const
     return mMajor > major || (mMajor == major && mMinor >= minor);
 }
 
+bool GraphicsManager::checkPlatformVersion(int major, int minor) const
+{
+    return mPlatformMajor > major || (mPlatformMajor == major
+        && mPlatformMinor >= minor);
+}
+
 void GraphicsManager::createFBO(int width, int height, FBOInfo *fbo)
 {
 #ifdef USE_OPENGL
@@ -497,4 +583,8 @@ void GraphicsManager::initOpenGLFunctions()
 
     if (checkGLVersion(3, 0))
         assignFunction(glGetStringi, "glGetStringi");
+
+#ifdef WIN32
+    assignFunction(wglGetExtensionsString, "wglGetExtensionsStringARB");
+#endif
 }

@@ -169,6 +169,7 @@ bool Graphics::setOpenGLMode()
     graphicsManager.setGLVersion();
     graphicsManager.initOpenGLFunctions();
     graphicsManager.updateExtensions();
+    graphicsManager.updatePlanformExtensions();
 
     graphicsManager.updateTextureFormat();
     updateMemoryInfo();

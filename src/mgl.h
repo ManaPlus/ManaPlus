@@ -24,6 +24,7 @@
 #define GL_GLEXT_PROTOTYPES 1
 
 #include <SDL_opengl.h>
+#include <SDL_syswm.h>
 #include <GL/glext.h>
 
 #define GL_NUM_EXTENSIONS                 0x821D
@@ -60,5 +61,11 @@ defNameE(glFramebufferRenderbuffer);
 defNameE(glDeleteFramebuffers);
 defNameE(glDeleteRenderbuffers);
 defNameE(glGetStringi);
+
+#ifdef WIN32
+typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);
+
+defNameE(wglGetExtensionsString);
+#endif
 
 #endif

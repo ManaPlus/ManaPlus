@@ -55,6 +55,8 @@ class GraphicsManager
 
         bool checkGLVersion(int major, int minor) const;
 
+        bool checkPlatformVersion(int major, int minor) const;
+
         void createFBO(int width, int height, FBOInfo *fbo);
 
         void deleteFBO(FBOInfo *fbo);
@@ -63,16 +65,24 @@ class GraphicsManager
 
         void updateExtensions();
 
+        void updatePlanformExtensions();
+
         Graphics *createGraphics();
 
     private:
         std::set<std::string> mExtensions;
+
+        std::set<std::string> mPlatformExtensions;
 
         std::string mVersionString;
 
         int mMinor;
 
         int mMajor;
+
+        int mPlatformMinor;
+
+        int mPlatformMajor;
 };
 
 extern GraphicsManager graphicsManager;

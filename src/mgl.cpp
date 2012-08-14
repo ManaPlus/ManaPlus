@@ -34,3 +34,7 @@ defName(glFramebufferRenderbuffer);
 defName(glDeleteFramebuffers);
 defName(glDeleteRenderbuffers);
 defName(glGetStringi);
+
+#ifdef WIN32
+defName(wglGetExtensionsString);
+#endif
