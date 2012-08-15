@@ -196,7 +196,7 @@ void Setup_Input::apply()
         new OkDialog(_("Key Conflict(s) Detected."),
             strprintf(_("Conflict \"%s\" and \"%s\" keys. "
             "Resolve them, or gameplay may result in strange behaviour."),
-            str1.c_str(), str2.c_str()), DIALOG_ERROR);
+            gettext(str1.c_str()), gettext(str2.c_str())), DIALOG_ERROR);
     }
     keyboard.setEnabled(true);
     inputManager.store();
