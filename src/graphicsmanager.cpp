@@ -214,6 +214,7 @@ Graphics *GraphicsManager::createGraphics()
 
 void GraphicsManager::updateExtensions()
 {
+#ifdef USE_OPENGL
     mExtensions.clear();
     logger->log1("opengl extensions: ");
     if (checkGLVersion(3, 0))
@@ -238,10 +239,12 @@ void GraphicsManager::updateExtensions()
 
         splitToStringSet(mExtensions, extensions, ' ');
     }
+#endif
 }
 
 void GraphicsManager::updatePlanformExtensions()
 {
+#ifdef USE_OPENGL
     SDL_SysWMinfo info;
     SDL_VERSION(&info.version);
     if (SDL_GetWMInfo(&info))
@@ -315,6 +318,7 @@ void GraphicsManager::updatePlanformExtensions()
         }
 #endif
     }
+#endif
 }
 
 bool GraphicsManager::supportExtension(const std::string &ext)
@@ -552,6 +556,7 @@ void GraphicsManager::deleteFBO(FBOInfo *fbo)
 
 void GraphicsManager::initOpenGLFunctions()
 {
+#ifdef USE_OPENGL
     if (!checkGLVersion(1, 1))
         return;
 
@@ -590,5 +595,6 @@ void GraphicsManager::initOpenGLFunctions()
 
 #ifdef WIN32
     assignFunction(wglGetExtensionsString, "wglGetExtensionsStringARB");
+#endif
 #endif
 }

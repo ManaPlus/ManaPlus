@@ -30,6 +30,7 @@
 #include <guichan/actionlistener.hpp>
 
 #include <map>
+#include <vector>
 
 class Button;
 class BrowserBox;

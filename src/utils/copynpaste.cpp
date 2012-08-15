@@ -33,8 +33,9 @@
 #  include "config.h"
 #endif
 
+#include "utils/copynpaste.h"
+
 #include <SDL_syswm.h>
-#include "copynpaste.h"
 
 #include "debug.h"
 
