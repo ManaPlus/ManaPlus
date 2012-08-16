@@ -20,8 +20,8 @@
  */
 
 #include "actorsprite.h"
-#include "actorspritelistener.h"
 
+#include "actorspritelistener.h"
 #include "client.h"
 #include "configuration.h"
 #include "effectmanager.h"

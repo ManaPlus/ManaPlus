@@ -19,6 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "utils/mkdir.h"
+
 #include <climits>
 #include <cstring>
 #include <cerrno>
@@ -34,8 +36,6 @@
 #include <cstdio>
 #include <cstdlib>
 #endif
-
-#include "utils/mkdir.h"
 
 #include "debug.h"
 

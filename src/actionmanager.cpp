@@ -78,8 +78,6 @@ extern QuitDialog *quitDialog;
 namespace ActionManager
 {
 
-void showHideWindow(Window *window);
-
 impHandler0(moveUp)
 {
     if (NpcDialog *dialog = NpcDialog::getActive())
@@ -683,7 +681,7 @@ impHandler0(helpWindowShow)
     return false;
 }
 
-void showHideWindow(Window *window)
+static void showHideWindow(Window *window)
 {
     if (window)
     {
@@ -1007,9 +1005,7 @@ impHandler0(targetAttack)
     return false;
 }
 
-bool setTarget(ActorSprite::Type type);
-
-bool setTarget(ActorSprite::Type type)
+static bool setTarget(ActorSprite::Type type)
 {
     if (actorSpriteManager && player_node)
     {

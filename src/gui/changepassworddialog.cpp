@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "changepassworddialog.h"
+#include "gui/changepassworddialog.h"
 
 #include "client.h"
 #include "logger.h"

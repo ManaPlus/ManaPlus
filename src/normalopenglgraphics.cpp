@@ -24,10 +24,11 @@
 
 #ifdef USE_OPENGL
 
+#include "normalopenglgraphics.h"
+
+#include "configuration.h"
 #include "graphicsmanager.h"
 #include "graphicsvertexes.h"
-#include "normalopenglgraphics.h"
-#include "configuration.h"
 #include "logger.h"
 
 #include "resources/image.h"

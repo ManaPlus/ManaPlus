@@ -21,6 +21,7 @@
  */
 
 #include "rotationalparticle.h"
+
 #include "graphics.h"
 #include "simpleanimation.h"
 

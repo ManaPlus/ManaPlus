@@ -21,6 +21,7 @@
  */
 
 #include "inventory.h"
+
 #include "item.h"
 #include "logger.h"
 

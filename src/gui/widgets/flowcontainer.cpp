@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "flowcontainer.h"
+#include "gui/widgets/flowcontainer.h"
 
 #include "debug.h"
 

@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "passwordfield.h"
+#include "gui/widgets/passwordfield.h"
 
 #include "debug.h"
 

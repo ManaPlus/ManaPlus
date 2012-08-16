@@ -20,19 +20,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <sstream>
-#include <string>
+#include "gui/widgets/itemlinkhandler.h"
 
 #include "item.h"
 
 #include "gui/itempopup.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/itemlinkhandler.h"
-
 #include "utils/process.h"
 
 #include "resources/itemdb.h"
+
+#include <sstream>
+#include <string>
 
 #include "debug.h"
 

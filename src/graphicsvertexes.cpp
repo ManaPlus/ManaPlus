@@ -20,8 +20,6 @@
 
 #include "graphicsvertexes.h"
 
-#include "main.h"
-
 #include "utils/dtor.h"
 
 #include "debug.h"

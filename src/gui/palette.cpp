@@ -21,7 +21,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "palette.h"
+#include "gui/palette.h"
 
 #include "configuration.h"
 #include "client.h"

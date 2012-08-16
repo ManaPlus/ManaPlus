@@ -22,8 +22,6 @@
 
 #include "playerrelations.h"
 
-#include <algorithm>
-
 #include "actorspritemanager.h"
 #include "being.h"
 #include "configuration.h"
@@ -32,6 +30,8 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
+
+#include <algorithm>
 
 #include "debug.h"
 

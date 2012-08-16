@@ -31,8 +31,6 @@
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
 
-//#include "net/net.h"
-
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 

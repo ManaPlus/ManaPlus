@@ -20,11 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "particleemitter.h"
+
 #include "animationparticle.h"
 #include "imageparticle.h"
 #include "logger.h"
 #include "particle.h"
-#include "particleemitter.h"
 #include "rotationalparticle.h"
 
 #include "resources/dye.h"

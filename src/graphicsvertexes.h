@@ -41,9 +41,6 @@
 #include <list>
 #include <vector>
 
-//include <guichan/sdl/sdlgraphics.hpp>
-
-
 struct DoubleRect
 {
     SDL_Rect src;

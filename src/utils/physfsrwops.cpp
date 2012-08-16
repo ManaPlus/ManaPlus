@@ -22,8 +22,9 @@
  *  Copyright (C) 2012  The ManaPlus Developers
  */
 
-#include <stdio.h>  /* used for SEEK_SET, SEEK_CUR, SEEK_END ... */
 #include "utils/physfsrwops.h"
+
+#include <stdio.h>  /* used for SEEK_SET, SEEK_CUR, SEEK_END ... */
 
 #include "localconsts.h"
 

@@ -20,8 +20,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "client.h"
 #include "main.h"
+
+#include "client.h"
 
 #include "auctionmanager.h"
 #include "chatlogger.h"

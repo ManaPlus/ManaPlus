@@ -56,7 +56,7 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "sdlinput.h"
+#include "gui/sdlinput.h"
 
 #include "keyinput.h"
 

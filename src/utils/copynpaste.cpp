@@ -408,7 +408,8 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     return false;
 }
 
-static bool runxsel(std::string& text, const char *p1, const char *p2 = nullptr);
+static bool runxsel(std::string& text, const char *p1,
+                    const char *p2 = nullptr);
 
 bool sendBuffer(std::string& text)
 {

@@ -20,10 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "spellshortcut.h"
+
 #include "configuration.h"
 #include "inventory.h"
 #include "item.h"
-#include "spellshortcut.h"
 #include "localplayer.h"
 
 #include "gui/widgets/chattab.h"

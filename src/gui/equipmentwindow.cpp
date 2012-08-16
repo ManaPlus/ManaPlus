@@ -22,8 +22,6 @@
 
 #include "gui/equipmentwindow.h"
 
-#include "gui/widgets/button.h"
-
 #include "being.h"
 #include "equipment.h"
 #include "graphics.h"
@@ -36,6 +34,7 @@
 #include "gui/setup.h"
 #include "gui/viewport.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/playerbox.h"
 
 #include "net/inventoryhandler.h"

@@ -22,9 +22,6 @@
 
 #include "gui/killstats.h"
 
-#include <math.h>
-#include <guichan/widgets/label.hpp>
-
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
@@ -38,6 +35,9 @@
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+
+#include <math.h>
+#include <guichan/widgets/label.hpp>
 
 #include "debug.h"
 

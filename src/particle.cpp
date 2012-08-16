@@ -20,8 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <algorithm>
-#include <cmath>
+#include "particle.h"
 
 #include "animationparticle.h"
 #include "configuration.h"
@@ -29,7 +28,6 @@
 #include "imageparticle.h"
 #include "logger.h"
 #include "map.h"
-#include "particle.h"
 #include "particleemitter.h"
 #include "rotationalparticle.h"
 #include "textparticle.h"
