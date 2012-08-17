@@ -964,7 +964,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
         {
             Being *target = sortedBeings.at(0);
 
-            if (specialDistance && target->getType() == type
+            if (specialDistance && target->getType() == Being::MONSTER
                 && target->getDistance() <= 2)
             {
                 return nullptr;
