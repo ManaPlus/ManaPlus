@@ -636,7 +636,7 @@ void ServerDialog::loadServers(bool addNew)
         MutexLocker tempLock(&mMutex);
         // Add the server to the local list if it's not already present
         bool found = false;
-        for (unsigned int i = 0; i < mServers.size(); i++)
+        for (unsigned int i = 0, sz = mServers.size(); i < sz; i++)
         {
             if (mServers[i] == server)
             {
@@ -713,8 +713,8 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
 
     int savedServerCount = 0;
 
-    for (unsigned i = 0;
-         i < mServers.size() && savedServerCount < MAX_SERVERLIST; ++i)
+    for (unsigned i = 0, sz = mServers.size();
+         i < sz && savedServerCount < MAX_SERVERLIST; ++ i)
     {
         const ServerInfo &server = mServers.at(i);
 

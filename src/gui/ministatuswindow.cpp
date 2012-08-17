@@ -212,7 +212,7 @@ void MiniStatusWindow::drawIcons(Graphics *graphics)
 {
     // Draw icons
     int icon_x = mStatusBar->getX() + mStatusBar->getWidth() + 4;
-    for (unsigned int i = 0; i < mIcons.size(); i++)
+    for (size_t i = 0, sz = mIcons.size(); i < sz; i ++)
     {
         if (mIcons[i])
         {
@@ -268,7 +268,7 @@ void MiniStatusWindow::logic()
 {
     Popup::logic();
 
-    for (unsigned int i = 0; i < mIcons.size(); i++)
+    for (size_t i = 0, sz = mIcons.size(); i < sz; i++)
     {
         if (mIcons[i])
             mIcons[i]->update(tick_time * 10);

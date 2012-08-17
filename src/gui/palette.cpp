@@ -98,7 +98,7 @@ void Palette::advanceGradient()
         int advance = get_elapsed_time(mRainbowTime) / 5;
         double startColVal, destColVal;
 
-        for (size_t i = 0; i < mGradVector.size(); i++)
+        for (size_t i = 0, sz = mGradVector.size(); i < sz; i++)
         {
             if (!mGradVector[i])
                 continue;

@@ -131,17 +131,18 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         graphics->setColor(getForegroundColor());
         g->drawText(key, emoteX + 2, emoteY + 2, gcn::Graphics::LEFT);
     }
+    unsigned sz = mEmoteImg.size();
     for (unsigned i = 0; i < mMaxItems; i++)
     {
-        if (i < mEmoteImg.size() && mEmoteImg[i] && mEmoteImg[i]->sprite)
+        if (i < sz && mEmoteImg[i] && mEmoteImg[i]->sprite)
         {
             mEmoteImg[i]->sprite->draw(g, (i % mGridWidth) * mBoxWidth + 2,
                 (i / mGridWidth) * mBoxHeight + 10);
         }
     }
 
-    if (mEmoteMoved && mEmoteMoved < static_cast<unsigned>(
-        mEmoteImg.size()) + 1 && mEmoteMoved > 0)
+    if (mEmoteMoved && mEmoteMoved < static_cast<unsigned>(sz) + 1
+        && mEmoteMoved > 0)
     {
         // Draw the emote image being dragged by the cursor.
         const EmoteSprite* sprite = mEmoteImg[mEmoteMoved - 1];

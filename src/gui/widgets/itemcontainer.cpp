@@ -551,7 +551,7 @@ void ItemContainer::updateMatrix()
         mShowMatrix[idx] = -1;
     }
 
-    for (unsigned idx = 0; idx < sortedItems.size(); idx ++)
+    for (size_t idx = 0, sz = sortedItems.size(); idx < sz; idx ++)
         delete sortedItems[idx];
 }
 

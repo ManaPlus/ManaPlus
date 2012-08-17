@@ -191,9 +191,10 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
             {
                 ++ mCaretRow;
 
-                if (mCaretRow >= static_cast<int>(mTextRows.size()))
+                const int sz = static_cast<int>(mTextRows.size());
+                if (mCaretRow >= sz)
                 {
-                    mCaretRow = static_cast<int>(mTextRows.size()) - 1;
+                    mCaretRow = sz - 1;
                     if (mCaretRow < 0)
                         mCaretRow = 0;
 

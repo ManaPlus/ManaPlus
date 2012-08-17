@@ -200,7 +200,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
     sort(neutral.begin(), neutral.end(), nameCompare);
     sort(disregard.begin(), disregard.end(), nameCompare);
     bool addedFromSection(false);
-    for (int i = 0; i < static_cast<int>(friends.size()); i++)
+    for (size_t i = 0, sz = friends.size(); i < sz; i++)
     {
         mBrowserBox->addRow(friends.at(i)->getText());
         addedFromSection = true;
@@ -210,7 +210,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
         mBrowserBox->addRow("---");
         addedFromSection = false;
     }
-    for (int i = 0; i < static_cast<int>(enemy.size()); i++)
+    for (size_t i = 0, sz = enemy.size(); i < sz; i++)
     {
         mBrowserBox->addRow(enemy.at(i)->getText());
         addedFromSection = true;
@@ -220,7 +220,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
         mBrowserBox->addRow("---");
         addedFromSection = false;
     }
-    for (int i = 0; i < static_cast<int>(neutral.size()); i++)
+    for (size_t i = 0, sz = neutral.size(); i < sz; i++)
     {
         mBrowserBox->addRow(neutral.at(i)->getText());
         addedFromSection = true;
@@ -230,7 +230,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
         mBrowserBox->addRow("---");
 //        addedFromSection = false;
     }
-    for (int i = 0; i < static_cast<int>(disregard.size()); i++)
+    for (size_t i = 0, sz = disregard.size(); i < sz; i++)
         mBrowserBox->addRow(disregard.at(i)->getText());
 
     if (mScrollArea->getVerticalMaxScroll() <

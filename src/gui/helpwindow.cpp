@@ -121,7 +121,7 @@ void HelpWindow::loadFile(const std::string &file)
     TranslationManager::translateFile(helpPath + file + ".txt",
         translator, lines);
 
-    for (unsigned int i = 0; i < lines.size(); ++i)
+    for (size_t i = 0, sz = lines.size(); i < sz; ++i)
         mBrowserBox->addRow(lines[i]);
 }
 

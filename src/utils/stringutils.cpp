@@ -535,7 +535,7 @@ std::string stringToHexPath(const std::string &str)
         return "";
 
     std::string hex = strprintf("%%%2x/", static_cast<int>(str[0]));
-    for (unsigned f = 1; f < str.size(); f ++)
+    for (unsigned f = 1, sz = str.size(); f < sz; f ++)
         hex += strprintf("%%%2x", static_cast<int>(str[f]));
     return hex;
 }

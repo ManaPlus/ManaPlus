@@ -811,11 +811,12 @@ Path Map::findPixelPath(int startPixelX, int startPixelY, int endPixelX,
     float endOffsetX = static_cast<float>(endPixelX % 32);
     float endOffsetY = static_cast<float>(endPixelY % 32);
 
+    int sz = myPath.size();
     // Find the distance, and divide it by the number of steps
     int changeX = static_cast<int>((endOffsetX - startOffsetX)
-                  / static_cast<float>(myPath.size()));
+                  / static_cast<float>(sz));
     int changeY = static_cast<int>((endOffsetY - startOffsetY)
-                  / static_cast<float>(myPath.size()));
+                  / static_cast<float>(sz));
 
     // Convert the map path to pixels over tiles
     // And add interpolation between the starting and ending offsets

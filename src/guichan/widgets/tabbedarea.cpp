@@ -88,7 +88,7 @@ namespace gcn
         delete mWidgetContainer;
         mWidgetContainer = nullptr;
 
-        for (unsigned int i = 0; i < mTabsToDelete.size(); i++)
+        for (size_t i = 0, sz = mTabsToDelete.size(); i < sz; i++)
         {
             delete mTabsToDelete[i];
             mTabsToDelete[i] = nullptr;
@@ -160,7 +160,7 @@ namespace gcn
 
     int TabbedArea::getSelectedTabIndex() const
     {
-        for (unsigned int i = 0; i < mTabs.size(); i++)
+        for (unsigned int i = 0, sz = mTabs.size(); i < sz; i++)
         {
             if (mTabs[i].first == mSelectedTab)
                 return i;
@@ -241,7 +241,7 @@ namespace gcn
     {
         int maxTabHeight = 0;
 
-        for (unsigned int i = 0; i < mTabs.size(); i++)
+        for (size_t i = 0, sz = mTabs.size(); i < sz; i++)
         {
             if (mTabs[i].first->getHeight() > maxTabHeight)
                 maxTabHeight = mTabs[i].first->getHeight();
@@ -258,14 +258,15 @@ namespace gcn
     {
         int maxTabHeight = 0;
         unsigned int i;
-        for (i = 0; i < mTabs.size(); i++)
+        const unsigned int sz = mTabs.size();
+        for (i = 0; i < sz; i++)
         {
             if (mTabs[i].first->getHeight() > maxTabHeight)
                 maxTabHeight = mTabs[i].first->getHeight();
         }
 
         int x = 0;
-        for (i = 0; i < mTabs.size(); i++)
+        for (i = 0; i < sz; i++)
         {
             Tab* tab = mTabs[i].first;
             tab->setPosition(x, maxTabHeight - tab->getHeight());

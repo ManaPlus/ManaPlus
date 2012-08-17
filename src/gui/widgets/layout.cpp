@@ -338,6 +338,8 @@ void LayoutArray::reflow(int nx, int ny, int nw, int nh)
     std::vector<int> widths  = getSizes(0, nw);
     std::vector<int> heights = getSizes(1, nh);
 
+    const int szW = static_cast<int>(widths.size());
+    const int szH = static_cast<int>(heights.size());
     int y = ny;
     for (int gridY = 0; gridY < gridH; ++gridY)
     {
@@ -348,10 +350,8 @@ void LayoutArray::reflow(int nx, int ny, int nw, int nh)
             if (cell && cell->mType != LayoutCell::NONE)
             {
                 int dx = x, dy = y, dw = 0, dh = 0;
-                align(dx, dw, 0, *cell, &widths[gridX],
-                    static_cast<int>(widths.size() - gridX));
-                align(dy, dh, 1, *cell, &heights[gridY],
-                    static_cast<int>(heights.size() - gridY));
+                align(dx, dw, 0, *cell, &widths[gridX], szW - gridX);
+                align(dy, dh, 1, *cell, &heights[gridY], szH - gridY);
                 cell->reflow(dx, dy, dw, dh);
             }
             x += widths[gridX] + mSpacing;

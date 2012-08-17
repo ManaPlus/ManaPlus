@@ -211,7 +211,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     // Check if a button of a character was pressed
     const gcn::Widget *sourceParent = event.getSource()->getParent();
     int selected = -1;
-    for (int i = 0; i < static_cast<int>(mCharacterEntries.size()); ++i)
+    for (size_t i = 0, sz = mCharacterEntries.size(); i < sz; ++i)
     {
         if (mCharacterEntries[i] == sourceParent)
         {
@@ -515,7 +515,7 @@ void CharSelectDialog::setLocked(bool locked)
     if (mChangeEmailButton)
         mChangeEmailButton->setEnabled(!locked);
 
-    for (int i = 0; i < static_cast<int>(mCharacterEntries.size()); ++i)
+    for (size_t i = 0, sz = mCharacterEntries.size(); i < sz; ++i)
     {
         if (mCharacterEntries[i])
             mCharacterEntries[i]->setActive(!mLocked);
@@ -528,7 +528,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
     if (mLocked)
         return false;
 
-    for (int i = 0; i < static_cast<int>(mCharacterEntries.size()); ++i)
+    for (size_t i = 0, sz = mCharacterEntries.size(); i < sz; ++i)
     {
         if (mCharacterEntries[i])
         {

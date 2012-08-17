@@ -152,7 +152,7 @@ public:
         mPlayers = player_names;
 
         // set up widgets
-        for (unsigned int r = 0; r < player_names->size(); ++r)
+        for (unsigned int r = 0, sz = player_names->size(); r < sz; ++r)
         {
             std::string name = (*player_names)[r];
             gcn::Widget *widget = new Label(name);
@@ -316,9 +316,9 @@ void Setup_Relations::reset()
     // current selection. We could use an index into the table of config
     // options in player_relations instead of strategies to sidestep this.
     int selection = 0;
-    for (unsigned int i = 0;
-                      i < player_relations.getPlayerIgnoreStrategies()->size();
-                      ++i)
+    for (size_t i = 0, sz = player_relations.getPlayerIgnoreStrategies()
+         ->size(); i < sz; ++ i)
+    {
         if ((*player_relations.getPlayerIgnoreStrategies())[i] ==
             player_relations.getPlayerIgnoreStrategy())
         {
@@ -326,7 +326,7 @@ void Setup_Relations::reset()
             selection = i;
             break;
         }
-
+    }
     mIgnoreActionChoicesBox->setSelected(selection);
 }
 

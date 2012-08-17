@@ -149,12 +149,11 @@ void OutfitWindow::load(bool oldConfig)
         while (ss >> buf)
             tokens.push_back(atoi(buf.c_str()));
 
-        for (int i = 0; i < static_cast<int>(tokens.size())
-                && i < OUTFIT_ITEM_COUNT; i++)
+        for (size_t i = 0, sz = tokens.size();
+             i < sz && i < OUTFIT_ITEM_COUNT; i++)
         {
             mItems[o][i] = tokens[i];
         }
-
 
         outfit = cfg->getValue("OutfitColor" + toString(o), "1");
         std::stringstream ss2(outfit);
@@ -165,8 +164,8 @@ void OutfitWindow::load(bool oldConfig)
         while (ss2 >> buf)
             tokens2.push_back(static_cast<unsigned char>(atoi(buf.c_str())));
 
-        for (int i = 0; i < static_cast<int>(tokens2.size())
-                && i < OUTFIT_ITEM_COUNT; i++)
+        for (size_t i = 0, sz = tokens2.size();
+             i < sz && i < OUTFIT_ITEM_COUNT; i++)
         {
             mItemColors[o][i] = tokens2[i];
         }
@@ -497,19 +496,20 @@ void OutfitWindow::unequipNotInOutfit(int outfit)
 
     for (unsigned i = 0; i < inventory->getSize(); i++)
     {
-        if (inventory->getItem(i) && inventory->getItem(i)->isEquipped())
+        Item *item = inventory->getItem(i);
+        if (item && item->isEquipped())
         {
             bool found = false;
             for (unsigned f = 0; f < OUTFIT_ITEM_COUNT; f++)
             {
-                if (inventory->getItem(i)->getId() == mItems[outfit][f])
+                if (item->getId() == mItems[outfit][f])
                 {
                     found = true;
                     break;
                 }
             }
             if (!found)
-                Net::getInventoryHandler()->unequipItem(inventory->getItem(i));
+                Net::getInventoryHandler()->unequipItem(item);
         }
     }
 }
@@ -603,7 +603,7 @@ void OutfitWindow::copyFromEquiped(int dst)
 
     int outfitCell = 0;
 
-    for (unsigned i = 0; i < inventory->getSize(); i++)
+    for (unsigned i = 0, sz = inventory->getSize(); i < sz; i++)
     {
         const Item *item = inventory->getItem(i);
         if (item && item->isEquipped())

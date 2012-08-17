@@ -163,7 +163,7 @@ int StaticTableModel::getWidth() const
 {
     int width = 0;
 
-    for (unsigned int i = 0; i < mWidths.size(); i++)
+    for (size_t i = 0, sz = mWidths.size(); i < sz; i++)
         width += mWidths[i];
 
     return width;

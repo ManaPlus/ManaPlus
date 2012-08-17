@@ -342,7 +342,7 @@ void TabbedArea::updateTabsWidth()
 void TabbedArea::updateVisibleTabsWidth()
 {
     mVisibleTabsWidth = 0;
-    for (unsigned int i = mTabScrollIndex; i < mTabs.size(); ++i)
+    for (size_t i = mTabScrollIndex, sz = mTabs.size(); i < sz; ++i)
     {
         if (mTabs[i].first)
             mVisibleTabsWidth += mTabs[i].first->getWidth();
@@ -352,14 +352,15 @@ void TabbedArea::updateVisibleTabsWidth()
 void TabbedArea::adjustTabPositions()
 {
     int maxTabHeight = 0;
-    for (unsigned i = 0; i < mTabs.size(); ++i)
+    size_t sz = mTabs.size();
+    for (size_t i = 0; i < sz; ++i)
     {
         if (mTabs[i].first && mTabs[i].first->getHeight() > maxTabHeight)
             maxTabHeight = mTabs[i].first->getHeight();
     }
 
     int x = mArrowButton[0]->isVisible() ? mArrowButton[0]->getWidth() : 0;
-    for (unsigned i = mTabScrollIndex; i < mTabs.size(); ++i)
+    for (size_t i = mTabScrollIndex; i < sz; ++i)
     {
         gcn::Tab* tab = mTabs[i].first;
         if (!tab)

@@ -241,7 +241,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 
         case 6: // Ctrl+f
         {
-            unsigned sz = static_cast<unsigned>(mText.size());
+            const unsigned sz = static_cast<unsigned>(mText.size());
             while (mCaretPosition < sz)
             {
                 ++mCaretPosition;
@@ -356,7 +356,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
         case Input::KEY_GUI_RIGHT:
         {
             consumed = true;
-            unsigned sz = static_cast<unsigned>(mText.size());
+            const unsigned sz = static_cast<unsigned>(mText.size());
             while (mCaretPosition < sz)
             {
                 ++mCaretPosition;

@@ -527,7 +527,8 @@ void UpdaterWindow::loadUpdates()
     }
 
     std::string fixPath = mUpdatesDir + "/fix";
-    for (mUpdateIndex = 0; mUpdateIndex < mUpdateFiles.size(); mUpdateIndex++)
+    const unsigned sz = mUpdateFiles.size();
+    for (mUpdateIndex = 0; mUpdateIndex < sz; mUpdateIndex++)
     {
         UpdaterWindow::addUpdateFile(resman, mUpdatesDir, fixPath,
             mUpdateFiles[mUpdateIndex].name, false);
@@ -551,8 +552,8 @@ void UpdaterWindow::loadLocalUpdates(std::string dir)
     }
 
     std::string fixPath = dir + "/fix";
-    for (unsigned int updateIndex = 0;
-         updateIndex < updateFiles.size(); updateIndex++)
+    for (unsigned int updateIndex = 0, sz = updateFiles.size();
+         updateIndex < sz; updateIndex ++)
     {
         UpdaterWindow::addUpdateFile(resman, dir, fixPath, 
             updateFiles[updateIndex].name, false);
@@ -567,8 +568,8 @@ void UpdaterWindow::loadManaPlusUpdates(std::string dir,
     std::vector<updateFile> updateFiles
         = loadXMLFile(fixPath + "/" + xmlUpdateFile);
 
-    for (unsigned int updateIndex = 0;
-         updateIndex < updateFiles.size(); updateIndex ++)
+    for (unsigned int updateIndex = 0, sz = updateFiles.size();
+         updateIndex < sz; updateIndex ++)
     {
         std::string name = updateFiles[updateIndex].name;
         if (strStartWith(name, "manaplus_"))

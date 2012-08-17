@@ -200,11 +200,16 @@ void ChatLogger::loadLast(std::string name, std::list<std::string> &list,
         return;
 
     char line[710];
+    unsigned sz = list.size();
     while (logFile.getline(line, 700))
     {
         list.push_back(line);
-        if (list.size() > n)
+        sz ++;
+        if (sz > n)
+        {
             list.pop_front();
+            sz --;
+        }
     }
 
     if (logFile.is_open())

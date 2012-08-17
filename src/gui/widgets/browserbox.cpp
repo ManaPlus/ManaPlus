@@ -120,6 +120,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
 
         // Check for links in format "@@link|Caption@@"
         idx1 = tmp.find("@@");
+        const int sz = static_cast<int>(mTextRows.size());
         while (idx1 != std::string::npos)
         {
             size_t idx2 = tmp.find("|", idx1);
@@ -129,7 +130,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
                 break;
             bLink.link = tmp.substr(idx1 + 2, idx2 - (idx1 + 2));
             bLink.caption = tmp.substr(idx2 + 1, idx3 - (idx2 + 1));
-            bLink.y1 = static_cast<int>(mTextRows.size()) * font->getHeight();
+            bLink.y1 = sz * font->getHeight();
             bLink.y2 = bLink.y1 + font->getHeight();
 
             newRow += tmp.substr(0, idx1);
@@ -224,19 +225,19 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
              i != i_end; ++ i)
         {
             std::string tempRow = *i;
-            for (unsigned int j = 0; j < tempRow.size(); j++)
+            for (unsigned int j = 0, sz = tempRow.size(); j < sz; j++)
             {
                 std::string character = tempRow.substr(j, 1);
                 x += font->getWidth(character);
                 nextChar = j + 1;
 
                 // Wraping between words (at blank spaces)
-                if (nextChar < tempRow.size() && tempRow.at(nextChar) == ' ')
+                if (nextChar < sz && tempRow.at(nextChar) == ' ')
                 {
                     int nextSpacePos = static_cast<int>(
                         tempRow.find(" ", (nextChar + 1)));
                     if (nextSpacePos <= 0)
-                        nextSpacePos = static_cast<int>(tempRow.size()) - 1;
+                        nextSpacePos = static_cast<int>(sz) - 1;
 
                     unsigned nextWordWidth = font->getWidth(
                         tempRow.substr(nextChar,

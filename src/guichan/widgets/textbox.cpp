@@ -130,7 +130,7 @@ namespace gcn
         graphics->setColor(getForegroundColor());
         graphics->setFont(getFont());
 
-        for (size_t i = 0; i < mTextRows.size(); i++)
+        for (size_t i = 0, sz = mTextRows.size(); i < sz; i++)
         {
             // Move the text one pixel so we can have a caret before a letter.
             graphics->drawText(mTextRows[i], 1,
@@ -170,7 +170,7 @@ namespace gcn
     void TextBox::adjustSize()
     {
         int width = 0;
-        for (size_t i = 0; i < mTextRows.size(); ++i)
+        for (size_t i = 0, sz = mTextRows.size(); i < sz; ++i)
         {
             int w = getFont()->getWidth(mTextRows[i]);
             if (width < w)
@@ -183,7 +183,8 @@ namespace gcn
 
     void TextBox::setCaretPosition(unsigned int position)
     {
-        for (int row = 0; row < static_cast<int>(mTextRows.size()); row ++)
+        for (int row = 0, sz = static_cast<int>(mTextRows.size());
+             row < sz; row ++)
         {
             if (position <= mTextRows[row].size())
             {
@@ -280,7 +281,8 @@ namespace gcn
         int i;
         std::string text;
 
-        for (i = 0; i < static_cast<int>(mTextRows.size()) - 1; ++ i)
+        const int sz = static_cast<int>(mTextRows.size());
+        for (i = 0; i < sz - 1; ++ i)
             text = text + mTextRows[i] + "\n";
 
         text = text + mTextRows[i];

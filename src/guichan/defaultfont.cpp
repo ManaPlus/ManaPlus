@@ -78,7 +78,7 @@ namespace gcn
     void DefaultFont::drawString(Graphics* graphics, const std::string& text,
                                  int x, int y)
     {
-        for (unsigned int i = 0; i< text.size(); ++i)
+        for (size_t i = 0, sz = text.size(); i < sz; ++i)
         {
             drawGlyph(graphics, text.at(i), x, y);
             x += getWidth(text);
