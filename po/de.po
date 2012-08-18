@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-08-15 02:22+0300\n"
+"POT-Creation-Date: 2012-08-18 14:08+0300\n"
 "PO-Revision-Date: 2012-08-14 23:25+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/"
@@ -28,11 +28,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: src/actionmanager.cpp:835
+#: src/actionmanager.cpp:833
 msgid "Ignoring incoming trade requests"
 msgstr "Ignoriere eingehende Handelsanfragen"
 
-#: src/actionmanager.cpp:844
+#: src/actionmanager.cpp:842
 msgid "Accepting incoming trade requests"
 msgstr "Akzeptiere eingehende Handelsanfragen"
 
@@ -62,47 +62,47 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:990 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:109
+#: src/client.cpp:991 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:109
 msgid "Setup"
 msgstr "Einstellungen"
 
-#: src/client.cpp:997 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:998 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr "Leistung"
 
-#: src/client.cpp:1002 src/gui/setup_video.cpp:244
+#: src/client.cpp:1003 src/gui/setup_video.cpp:244
 msgid "Video"
 msgstr "Video"
 
-#: src/client.cpp:1007
+#: src/client.cpp:1008
 msgid "Themes"
 msgstr "Themen"
 
-#: src/client.cpp:1093
+#: src/client.cpp:1094
 msgid "Connecting to server"
 msgstr "Verbinde zum Server"
 
-#: src/client.cpp:1131
+#: src/client.cpp:1132
 msgid "Logging in"
 msgstr "Anmelden"
 
-#: src/client.cpp:1165
+#: src/client.cpp:1166
 msgid "Entering game world"
 msgstr "Betrete die Spielwelt"
 
-#: src/client.cpp:1271
+#: src/client.cpp:1272
 msgid "Requesting characters"
 msgstr "Spielfiguren werden abgefragt"
 
-#: src/client.cpp:1306
+#: src/client.cpp:1307
 msgid "Connecting to the game server"
 msgstr "Verbinde zum Charakterserver"
 
-#: src/client.cpp:1316
+#: src/client.cpp:1317
 msgid "Changing game servers"
 msgstr "Charakterserver wechseln"
 
-#: src/client.cpp:1359 src/client.cpp:1367 src/client.cpp:1502
+#: src/client.cpp:1360 src/client.cpp:1368 src/client.cpp:1503
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:290 src/gui/charselectdialog.cpp:271
 #: src/gui/editserverdialog.cpp:203 src/gui/registerdialog.cpp:239
@@ -111,50 +111,50 @@ msgstr "Charakterserver wechseln"
 msgid "Error"
 msgstr "Fehler"
 
-#: src/client.cpp:1377
+#: src/client.cpp:1378
 msgid "Requesting registration details"
 msgstr "Anfrage der Registrierungsdetails"
 
-#: src/client.cpp:1403
+#: src/client.cpp:1404
 msgid "Password Change"
 msgstr "Passwort ändern"
 
-#: src/client.cpp:1404
+#: src/client.cpp:1405
 msgid "Password changed successfully!"
 msgstr "Passwort erfolgreich geändert!"
 
-#: src/client.cpp:1423
+#: src/client.cpp:1424
 msgid "Email Change"
 msgstr "E-Mail ändern"
 
-#: src/client.cpp:1424
+#: src/client.cpp:1425
 msgid "Email changed successfully!"
 msgstr "E-Mail erfolgreich geändert!"
 
-#: src/client.cpp:1444
+#: src/client.cpp:1445
 msgid "Unregister Successful"
 msgstr "Erfolgreich abgemeldet."
 
-#: src/client.cpp:1445
+#: src/client.cpp:1446
 msgid "Farewell, come back any time..."
 msgstr "Leb wohl und komm jeder Zeit wieder..."
 
-#: src/client.cpp:1669 src/client.cpp:1680 src/client.cpp:1713
-#: src/client.cpp:1728 src/client.cpp:2175 src/client.cpp:2182
+#: src/client.cpp:1670 src/client.cpp:1681 src/client.cpp:1714
+#: src/client.cpp:1729 src/client.cpp:2176 src/client.cpp:2183
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s existiert nicht und kann nicht erstellt werden! Beende."
 
-#: src/client.cpp:1871
+#: src/client.cpp:1872
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Ungültiger Updateserver: %s"
 
-#: src/client.cpp:1905 src/client.cpp:1911
+#: src/client.cpp:1906 src/client.cpp:1912
 msgid "Error creating updates directory!"
 msgstr "Fehler beim Erstellen des Verzeichnisses für Updates!"
 
-#: src/client.cpp:1932
+#: src/client.cpp:1933
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -998,12 +998,12 @@ msgstr "Verbinde..."
 msgid "Please at least type both the address and the port of the server."
 msgstr "Bitte die Adresse und den Port eines Servers eingeben."
 
-#: src/gui/equipmentwindow.cpp:65 src/gui/inventorywindow.cpp:181
+#: src/gui/equipmentwindow.cpp:64 src/gui/inventorywindow.cpp:181
 #: src/gui/windowmenu.cpp:83
 msgid "Equipment"
 msgstr "Ausrüstung"
 
-#: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:165
+#: src/gui/equipmentwindow.cpp:99 src/gui/inventorywindow.cpp:165
 #: src/gui/inventorywindow.cpp:592 src/gui/popupmenu.cpp:1659
 #: src/gui/popupmenu.cpp:1760 src/gui/popupmenu.cpp:1816
 msgid "Unequip"
@@ -1034,7 +1034,7 @@ msgid "by type"
 msgstr "nach Art"
 
 #: src/gui/inventorywindow.cpp:116 src/gui/windowmenu.cpp:85
-#: src/inventory.cpp:252
+#: src/inventory.cpp:253
 msgid "Inventory"
 msgstr "Inventar"
 
@@ -3987,21 +3987,21 @@ msgstr "Verbinde..."
 msgid "Play"
 msgstr "Los!"
 
-#: src/gui/updaterwindow.cpp:634
+#: src/gui/updaterwindow.cpp:635
 msgid "##1  The update process is incomplete."
 msgstr "##1 Update wurde nicht erfolgreich abgeschlossen."
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updaterwindow.cpp:636
+#: src/gui/updaterwindow.cpp:637
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Es wird dringend empfohlen,"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updaterwindow.cpp:638
+#: src/gui/updaterwindow.cpp:639
 msgid "##1  you try again later."
 msgstr "##1 Du versuchst es später erneut."
 
-#: src/gui/updaterwindow.cpp:814
+#: src/gui/updaterwindow.cpp:815
 msgid "Completed"
 msgstr "Fertig"
 
@@ -4472,11 +4472,11 @@ msgstr "JB%d"
 msgid "u key"
 msgstr "U-Taste"
 
-#: src/inventory.cpp:254
+#: src/inventory.cpp:255
 msgid "Storage"
 msgstr "Lager"
 
-#: src/inventory.cpp:256
+#: src/inventory.cpp:257
 msgid "Cart"
 msgstr "Einkaufswagen"
 
@@ -4823,101 +4823,101 @@ msgstr "Imitation abgebrochen"
 msgid "You see "
 msgstr "Du siehst "
 
-#: src/main.cpp:55
+#: src/main.cpp:54
 msgid "manaplus [options] [manaplus-file]"
 msgstr "manaplus [options] [manaplus-file]"
 
-#: src/main.cpp:56
+#: src/main.cpp:55
 msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
 msgstr "[manaplus-Datei] : Die manaplus-Datei ist eine XML-Datei (.manaplus)"
 
-#: src/main.cpp:58
+#: src/main.cpp:57
 msgid "                  used to set custom parameters"
 msgstr "genutzt um eigene Einstellungen zu setzen."
 
-#: src/main.cpp:59
+#: src/main.cpp:58
 msgid "                  to the manaplus client."
 msgstr "zum manaplus Client."
 
-#: src/main.cpp:61
+#: src/main.cpp:60
 msgid "Options:"
 msgstr "Optionen:"
 
-#: src/main.cpp:62
+#: src/main.cpp:61
 msgid "  -l --log-file       : Log file to use"
 msgstr "-l --log-file : Log Datei benutzen"
 
-#: src/main.cpp:63
+#: src/main.cpp:62
 msgid "  -L --chat-log-dir   : Chat log dir to use"
 msgstr "  -L --chat-log-dir   : Verzeichnis für die Chat Log"
 
-#: src/main.cpp:64
+#: src/main.cpp:63
 msgid "  -v --version        : Display the version"
 msgstr "  -v --version : Die Version des Spieles anzeigen"
 
-#: src/main.cpp:65
+#: src/main.cpp:64
 msgid "  -h --help           : Display this help"
 msgstr "  - --help : Zeigt diesen Hilfstext an"
 
-#: src/main.cpp:66
+#: src/main.cpp:65
 msgid "  -C --config-dir     : Configuration directory to use"
 msgstr "  -C --config-dir     : zu benutzendes Einstellungsverueichniss"
 
-#: src/main.cpp:67
+#: src/main.cpp:66
 msgid "  -U --username       : Login with this username"
 msgstr "  -U --username : Mit angegebenem Benutzernamen anmelden"
 
-#: src/main.cpp:68
+#: src/main.cpp:67
 msgid "  -P --password       : Login with this password"
 msgstr "  -P --password : Angegebenes Passwort benutzen"
 
-#: src/main.cpp:69
+#: src/main.cpp:68
 msgid "  -c --character      : Login with this character"
 msgstr "  -c --charakter : Mit angegebenem Spieler anmelden"
 
-#: src/main.cpp:70
+#: src/main.cpp:69
 msgid "  -s --server         : Login server name or IP"
 msgstr "  -s --server : Name oder IP-Adresse des Loginservers"
 
-#: src/main.cpp:71
+#: src/main.cpp:70
 msgid "  -p --port           : Login server port"
 msgstr "  -p --port : Port des Loginservers"
 
-#: src/main.cpp:72
+#: src/main.cpp:71
 msgid "     --update-host    : Use this update host"
 msgstr "     --update-host    : Benutzt diesen Aktualisierungs Host"
 
-#: src/main.cpp:73
+#: src/main.cpp:72
 msgid "  -D --default        : Choose default character server and character"
 msgstr "  -D --default : Wähle zuletzt benutzten Server und Spieler aus"
 
-#: src/main.cpp:75
+#: src/main.cpp:74
 msgid "  -u --skip-update    : Skip the update downloads"
 msgstr "  -u --skip-update : Überspringe das Herunterladen von Updates"
 
-#: src/main.cpp:76
+#: src/main.cpp:75
 msgid "  -d --data           : Directory to load game data from"
 msgstr "  -d --data : Datenverzeichnis, aus dem das Spiel geladen werden soll"
 
-#: src/main.cpp:78
+#: src/main.cpp:77
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
 msgstr ""
 "-L --localdata-dir : Verzeichnis, das als Heimatverzeichnis benutzt werden "
 "soll"
 
-#: src/main.cpp:80
+#: src/main.cpp:79
 msgid "     --screenshot-dir : Directory to store screenshots"
 msgstr "     --screenshot-dir : Verzeichnis um Bildschirmfotos zu speichern"
 
-#: src/main.cpp:81
+#: src/main.cpp:80
 msgid "     --safemode       : Start game in safe mode"
 msgstr "--safemode : Starte das Spiel im sicheren Modus"
 
-#: src/main.cpp:82
+#: src/main.cpp:81
 msgid "  -T --tests          : Start testing drivers and auto configuring"
 msgstr "-T --Tests: Beginne Treibertest und Autokonfiguration"
 
-#: src/main.cpp:85
+#: src/main.cpp:84
 msgid "     --no-opengl      : Disable OpenGL for this session"
 msgstr "--no-opengl : Deaktiviere OpenGL für diese Sitzung"
 

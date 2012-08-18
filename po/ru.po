@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-08-15 02:22+0300\n"
+"POT-Creation-Date: 2012-08-18 14:08+0300\n"
 "PO-Revision-Date: 2012-08-14 23:27+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
@@ -23,11 +23,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: src/actionmanager.cpp:835
+#: src/actionmanager.cpp:833
 msgid "Ignoring incoming trade requests"
 msgstr "Игнорировать предложения о торговле"
 
-#: src/actionmanager.cpp:844
+#: src/actionmanager.cpp:842
 msgid "Accepting incoming trade requests"
 msgstr "Принимать предложения о торговле"
 
@@ -57,47 +57,47 @@ msgstr "О"
 msgid "I"
 msgstr "Б"
 
-#: src/client.cpp:990 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:109
+#: src/client.cpp:991 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:109
 msgid "Setup"
 msgstr "Настройка"
 
-#: src/client.cpp:997 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:998 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr "Производительность"
 
-#: src/client.cpp:1002 src/gui/setup_video.cpp:244
+#: src/client.cpp:1003 src/gui/setup_video.cpp:244
 msgid "Video"
 msgstr "Видео"
 
-#: src/client.cpp:1007
+#: src/client.cpp:1008
 msgid "Themes"
 msgstr "Темы"
 
-#: src/client.cpp:1093
+#: src/client.cpp:1094
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
-#: src/client.cpp:1131
+#: src/client.cpp:1132
 msgid "Logging in"
 msgstr "Авторизация"
 
-#: src/client.cpp:1165
+#: src/client.cpp:1166
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
-#: src/client.cpp:1271
+#: src/client.cpp:1272
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
-#: src/client.cpp:1306
+#: src/client.cpp:1307
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
-#: src/client.cpp:1316
+#: src/client.cpp:1317
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
-#: src/client.cpp:1359 src/client.cpp:1367 src/client.cpp:1502
+#: src/client.cpp:1360 src/client.cpp:1368 src/client.cpp:1503
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:290 src/gui/charselectdialog.cpp:271
 #: src/gui/editserverdialog.cpp:203 src/gui/registerdialog.cpp:239
@@ -106,50 +106,50 @@ msgstr "Смена игрового сервера"
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/client.cpp:1377
+#: src/client.cpp:1378
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
-#: src/client.cpp:1403
+#: src/client.cpp:1404
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
-#: src/client.cpp:1404
+#: src/client.cpp:1405
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
-#: src/client.cpp:1423
+#: src/client.cpp:1424
 msgid "Email Change"
 msgstr "Сменить Email"
 
-#: src/client.cpp:1424
+#: src/client.cpp:1425
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
-#: src/client.cpp:1444
+#: src/client.cpp:1445
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
-#: src/client.cpp:1445
+#: src/client.cpp:1446
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
-#: src/client.cpp:1669 src/client.cpp:1680 src/client.cpp:1713
-#: src/client.cpp:1728 src/client.cpp:2175 src/client.cpp:2182
+#: src/client.cpp:1670 src/client.cpp:1681 src/client.cpp:1714
+#: src/client.cpp:1729 src/client.cpp:2176 src/client.cpp:2183
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
 
-#: src/client.cpp:1871
+#: src/client.cpp:1872
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Некорректный сервер обновлений: %s"
 
-#: src/client.cpp:1905 src/client.cpp:1911
+#: src/client.cpp:1906 src/client.cpp:1912
 msgid "Error creating updates directory!"
 msgstr "Ошибка создания директории для обновлений!"
 
-#: src/client.cpp:1932
+#: src/client.cpp:1933
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
@@ -998,12 +998,12 @@ msgstr "Соединиться"
 msgid "Please at least type both the address and the port of the server."
 msgstr "Пожалуйста введите хотябы адрес и порт сервера"
 
-#: src/gui/equipmentwindow.cpp:65 src/gui/inventorywindow.cpp:181
+#: src/gui/equipmentwindow.cpp:64 src/gui/inventorywindow.cpp:181
 #: src/gui/windowmenu.cpp:83
 msgid "Equipment"
 msgstr "Снаряжение"
 
-#: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:165
+#: src/gui/equipmentwindow.cpp:99 src/gui/inventorywindow.cpp:165
 #: src/gui/inventorywindow.cpp:592 src/gui/popupmenu.cpp:1659
 #: src/gui/popupmenu.cpp:1760 src/gui/popupmenu.cpp:1816
 msgid "Unequip"
@@ -1034,7 +1034,7 @@ msgid "by type"
 msgstr "по типу"
 
 #: src/gui/inventorywindow.cpp:116 src/gui/windowmenu.cpp:85
-#: src/inventory.cpp:252
+#: src/inventory.cpp:253
 msgid "Inventory"
 msgstr "Инвентарь"
 
@@ -3987,21 +3987,21 @@ msgstr "Соединение..."
 msgid "Play"
 msgstr "Играть"
 
-#: src/gui/updaterwindow.cpp:634
+#: src/gui/updaterwindow.cpp:635
 msgid "##1  The update process is incomplete."
 msgstr "##1  Процесс обновления не завершен!"
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updaterwindow.cpp:636
+#: src/gui/updaterwindow.cpp:637
 msgid "##1  It is strongly recommended that"
 msgstr "##1  Настоятельно рекомендуется"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updaterwindow.cpp:638
+#: src/gui/updaterwindow.cpp:639
 msgid "##1  you try again later."
 msgstr "##1  попытаться еще раз немного погодя."
 
-#: src/gui/updaterwindow.cpp:814
+#: src/gui/updaterwindow.cpp:815
 msgid "Completed"
 msgstr "Завершено"
 
@@ -4469,11 +4469,11 @@ msgstr "ДЖ%d"
 msgid "u key"
 msgstr "неиз."
 
-#: src/inventory.cpp:254
+#: src/inventory.cpp:255
 msgid "Storage"
 msgstr "Хранилище"
 
-#: src/inventory.cpp:256
+#: src/inventory.cpp:257
 msgid "Cart"
 msgstr "Телега"
 
@@ -4821,101 +4821,101 @@ msgstr "Имитация отменена"
 msgid "You see "
 msgstr "Вы видите "
 
-#: src/main.cpp:55
+#: src/main.cpp:54
 msgid "manaplus [options] [manaplus-file]"
 msgstr "manaplus [параметры] [файл-manaplus]"
 
-#: src/main.cpp:56
+#: src/main.cpp:55
 msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
 msgstr "[файл-manaplus] : Файл manaplus это xml файл (.manaplus)"
 
-#: src/main.cpp:58
+#: src/main.cpp:57
 msgid "                  used to set custom parameters"
 msgstr "                  используется для указания дополнительных параметров"
 
-#: src/main.cpp:59
+#: src/main.cpp:58
 msgid "                  to the manaplus client."
 msgstr "                  в клиенте."
 
-#: src/main.cpp:61
+#: src/main.cpp:60
 msgid "Options:"
 msgstr "Опции:"
 
-#: src/main.cpp:62
+#: src/main.cpp:61
 msgid "  -l --log-file       : Log file to use"
 msgstr "  -l --log-file       : Использовать указанный файл как лог"
 
-#: src/main.cpp:63
+#: src/main.cpp:62
 msgid "  -L --chat-log-dir   : Chat log dir to use"
 msgstr "  -L --chat-log-dir   : Использовать указанный каталог для лога"
 
-#: src/main.cpp:64
+#: src/main.cpp:63
 msgid "  -v --version        : Display the version"
 msgstr "  -v --version        : Показать версию"
 
-#: src/main.cpp:65
+#: src/main.cpp:64
 msgid "  -h --help           : Display this help"
 msgstr "  -h --help           : Показать эту справку"
 
-#: src/main.cpp:66
+#: src/main.cpp:65
 msgid "  -C --config-dir     : Configuration directory to use"
 msgstr "  -C --config-dir     : Использовать указанный каталог конфигурации"
 
-#: src/main.cpp:67
+#: src/main.cpp:66
 msgid "  -U --username       : Login with this username"
 msgstr "  -U --username       : Войти с указанным логином"
 
-#: src/main.cpp:68
+#: src/main.cpp:67
 msgid "  -P --password       : Login with this password"
 msgstr "  -P --password       : Войти с указанным паролем"
 
-#: src/main.cpp:69
+#: src/main.cpp:68
 msgid "  -c --character      : Login with this character"
 msgstr "  -c --character      : Использовать указанный персонаж"
 
-#: src/main.cpp:70
+#: src/main.cpp:69
 msgid "  -s --server         : Login server name or IP"
 msgstr "  -s --server         : Имя или IP сервера авторизации"
 
-#: src/main.cpp:71
+#: src/main.cpp:70
 msgid "  -p --port           : Login server port"
 msgstr "  -p --port           : Порт сервера авторизации"
 
-#: src/main.cpp:72
+#: src/main.cpp:71
 msgid "     --update-host    : Use this update host"
 msgstr "     --update-host    : Использовать этот узел обновлений"
 
-#: src/main.cpp:73
+#: src/main.cpp:72
 msgid "  -D --default        : Choose default character server and character"
 msgstr ""
 "  -D --default        : Выбрать персонаж и сервер персонажей по умолчанию"
 
-#: src/main.cpp:75
+#: src/main.cpp:74
 msgid "  -u --skip-update    : Skip the update downloads"
 msgstr "  -u --skip-update    : Пропустить обновление"
 
-#: src/main.cpp:76
+#: src/main.cpp:75
 msgid "  -d --data           : Directory to load game data from"
 msgstr "  -d --data           : Загрузить игровые данные из этого каталога"
 
-#: src/main.cpp:78
+#: src/main.cpp:77
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
 msgstr "  -L --localdata-dir  : Каталог для локальных данных"
 
-#: src/main.cpp:80
+#: src/main.cpp:79
 msgid "     --screenshot-dir : Directory to store screenshots"
 msgstr "     --screenshot-dir : Сохранять скриншоты в указанном каталоге"
 
-#: src/main.cpp:81
+#: src/main.cpp:80
 msgid "     --safemode       : Start game in safe mode"
 msgstr "     --safemode       : Запуск игры в безопасном режиме"
 
-#: src/main.cpp:82
+#: src/main.cpp:81
 msgid "  -T --tests          : Start testing drivers and auto configuring"
 msgstr ""
 "  -T --tests          : Запускает проверку драйверов и автоконфигурацию"
 
-#: src/main.cpp:85
+#: src/main.cpp:84
 msgid "     --no-opengl      : Disable OpenGL for this session"
 msgstr "     --no-opengl      : Не использовать OpenGL для этой сессии"
 
