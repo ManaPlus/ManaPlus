@@ -102,7 +102,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
          i < mListModel->getNumberOfElements();
          ++i, y += mRowHeight)
     {
-/*
+        bool needDraw(false);
         gcn::Color temp;
         gcn::Color* backgroundColor = &mBackgroundColor;
         mBackgroundColor.a = alpha;
@@ -124,15 +124,20 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
                 temp.a = alpha;
                 backgroundColor = &temp;
             }
+            needDraw = true;
         }
         else if (i == mSelected)
         {
             backgroundColor = &mHighlightColor;
+            needDraw = true;
         }
 
-//        graphics->setColor(*backgroundColor);
-//        graphics->fillRectangle(gcn::Rectangle(0, y, getWidth(), mRowHeight));
-*/
+        if (needDraw)
+        {
+            graphics->setColor(*backgroundColor);
+            graphics->fillRectangle(gcn::Rectangle(0, y, getWidth(), mRowHeight));
+        }
+
         if (mShopItems)
         {
             Image *icon = mShopItems->at(i)->getImage();
@@ -142,6 +147,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
                 graphics->drawImage(icon, 1, y);
             }
         }
+        graphics->setColor(getForegroundColor());
         graphics->drawText(mListModel->getElementAt(i), ITEM_ICON_SIZE + 5,
             y + (ITEM_ICON_SIZE - getFont()->getHeight()) / 2);
     }
