@@ -1,3 +1,19 @@
+2012-08-19 New release 1.2.8.19
+fix: enable italian translation.
+fix: remember checkbox in login dialog.
+fix: background in buy/sell dialogs.
+fix: possible crash.
+add: extend theming.
+add: extend outfits to 4x4 cells and add equip button.
+add: connect button to edit server dialog.
+add: units separator.
+by default space is separator.
+add: sounds for new/complete quests.
+add: hightlight gms in online list with color and letters (GM).
+add: enable best video mode autodetection under linux.
+add: enable FBO under windows.
+add: npc cycle select.
+
 2012-08-05 New release 1.2.8.5
 fix: colors in speech buuble.
 fix: emote shortcuts default size.
