@@ -393,9 +393,19 @@ void Client::gameInit()
     SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
     SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
 
-    SDL_WM_SetCaption(strprintf("%s %s",
-        branding.getStringValue("appName").c_str(),
-        SMALL_VERSION).c_str(), nullptr);
+    if (mOptions.test.empty())
+    {
+        SDL_WM_SetCaption(strprintf("%s %s",
+            branding.getStringValue("appName").c_str(),
+            SMALL_VERSION).c_str(), nullptr);
+    }
+    else
+    {
+        SDL_WM_SetCaption(strprintf(
+            "Please wait - VIDEO MODE TEST - %s %s - Please wait",
+            branding.getStringValue("appName").c_str(),
+            SMALL_VERSION).c_str(), nullptr);
+    }
 
     ResourceManager *resman = ResourceManager::getInstance();
 
