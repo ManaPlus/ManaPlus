@@ -218,7 +218,7 @@ MessageIn Network::getNextMessage()
 
     SDL_mutexP(mMutex);
     int msgId = readWord(0);
-    int len;
+    int len = -1;
     if (msgId == SMSG_SERVER_VERSION_RESPONSE)
     {
         len = 10;
@@ -229,8 +229,11 @@ MessageIn Network::getNextMessage()
     }
     else
     {
-        if (msgId >= 0 && msgId < sizeof(packet_lengths) / sizeof (short))
+        if (msgId >= 0 && msgId < static_cast<signed>(
+            sizeof(packet_lengths) / sizeof (short)))
+        {
             len = packet_lengths[msgId];
+        }
     }
 
     if (len == -1)

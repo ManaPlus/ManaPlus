@@ -179,8 +179,11 @@ bool Network::messageReady()
         }
         else
         {
-            if (msgId >= 0 && msgId < sizeof(packet_lengths) / sizeof (short))
+            if (msgId >= 0 && msgId < static_cast<signed>(
+                sizeof(packet_lengths) / sizeof (short)))
+            {
                 len = packet_lengths[msgId];
+            }
         }
 
         if (len == -1 && mInSize > 4)
