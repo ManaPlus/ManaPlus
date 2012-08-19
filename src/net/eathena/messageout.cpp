@@ -45,6 +45,7 @@ MessageOut::MessageOut(short id):
     Net::MessageOut(id)
 {
     mNetwork = EAthena::Network::instance();
+    mNetwork->fixSendBuffer();
     mData = mNetwork->mOutBuffer + mNetwork->mOutSize;
 
     writeInt16(id);

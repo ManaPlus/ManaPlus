@@ -503,4 +503,15 @@ uint16_t Network::readWord(int pos)
 #endif
 }
 
+void Network::fixSendBuffer()
+{
+    if (mOutSize > BUFFER_LIMIT)
+    {
+        if (mState != CONNECTED)
+            mOutSize = 0;
+        else
+            flush();
+    }
+}
+
 } // namespace TmwAthena

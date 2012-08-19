@@ -87,6 +87,8 @@ class Network
 
         void flush();
 
+        void fixSendBuffer();
+
         // ERROR replaced by NET_ERROR because already defined in Windows
         enum
         {
