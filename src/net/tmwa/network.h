@@ -23,6 +23,8 @@
 #ifndef NET_TA_NETWORK_H
 #define NET_TA_NETWORK_H
 
+#include "net/ea/network.h"
+
 #include "net/serverinfo.h"
 
 #include "net/tmwa/messagehandler.h"
@@ -45,19 +47,12 @@
 namespace TmwAthena
 {
 
-class Network
+class Network : public Ea::Network
 {
     public:
         Network();
 
         ~Network();
-
-        bool connect(ServerInfo server);
-
-        void disconnect();
-
-        ServerInfo getServer() const
-        { return mServer; }
 
         void registerHandler(MessageHandler *handler);
 
@@ -65,68 +60,16 @@ class Network
 
         void clearHandlers();
 
-        int getState() const
-        { return mState; }
-
-        const std::string &getError() const
-        { return mError; }
-
-        bool isConnected() const
-        { return mState == CONNECTED; }
-
-        int getInSize() const
-        { return mInSize; }
-
-        void skip(int len);
-
         bool messageReady();
 
         MessageIn getNextMessage();
 
         void dispatchMessages();
 
-        void flush();
-
-        void fixSendBuffer();
-
-        // ERROR replaced by NET_ERROR because already defined in Windows
-        enum
-        {
-            IDLE = 0,
-            CONNECTED,
-            CONNECTING,
-            DATA,
-            NET_ERROR
-        };
-
     protected:
-        friend int networkThread(void *data);
         friend class MessageOut;
 
         static Network *instance();
-
-        void setError(const std::string &error);
-
-        uint16_t readWord(int pos);
-
-        bool realConnect();
-
-        void receive();
-
-        TCPsocket mSocket;
-
-        ServerInfo mServer;
-
-        char *mInBuffer, *mOutBuffer;
-        unsigned int mInSize, mOutSize;
-
-        unsigned int mToSkip;
-
-        int mState;
-        std::string mError;
-
-        SDL_Thread *mWorkerThread;
-        SDL_mutex *mMutex;
 
         typedef std::map<uint16_t, MessageHandler*> MessageHandlers;
         typedef MessageHandlers::iterator MessageHandlerIterator;

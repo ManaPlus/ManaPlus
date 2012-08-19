@@ -681,6 +681,8 @@ manaplus_SOURCES += \
 	      net/ea/itemhandler.h \
 	      net/ea/loginhandler.cpp \
 	      net/ea/loginhandler.h \
+	      net/ea/network.cpp \
+	      net/ea/network.h \
 	      net/ea/npchandler.cpp \
 	      net/ea/npchandler.h \
 	      net/ea/partyhandler.cpp \
