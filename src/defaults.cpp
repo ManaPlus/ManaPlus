@@ -290,6 +290,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF("particleFont", "fonts/dejavusans.ttf");
     AddDEF("helpFont", "fonts/dejavusansmono.ttf");
     AddDEF("secureFont", "fonts/dejavusansmono.ttf");
+    AddDEF("npcFont", "fonts/dejavusans.ttf");
     AddDEF("japanFont", "fonts/mplus-1p-regular.ttf");
 
     AddDEF("guiPath", "graphics/gui/");
