@@ -23,6 +23,7 @@
 #ifndef UPDATERWINDOW_H
 #define UPDATERWINDOW_H
 
+#include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
 #include "net/download.h"
@@ -61,7 +62,9 @@ struct updateFile
  *
  * \ingroup GUI
  */
-class UpdaterWindow : public Window, public gcn::ActionListener,
+class UpdaterWindow : public Window,
+                      public gcn::ActionListener,
+                      public LinkHandler,
                       public gcn::KeyListener
 {
  public:
@@ -111,6 +114,8 @@ class UpdaterWindow : public Window, public gcn::ActionListener,
     void keyPressed(gcn::KeyEvent &keyEvent);
 
     void logic();
+
+    void handleLink(const std::string &link, gcn::MouseEvent *event A_UNUSED);
 
     static void loadLocalUpdates(std::string dir);
 

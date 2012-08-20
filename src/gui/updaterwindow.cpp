@@ -46,6 +46,7 @@
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
+#include "utils/process.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
@@ -174,6 +175,7 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
 
     mProgressBar->setSmoothProgress(false);
     mBrowserBox->setOpaque(false);
+    mBrowserBox->setLinkHandler(this);
     mPlayButton->setEnabled(false);
 
     ContainerPlacer placer;
@@ -374,7 +376,12 @@ void UpdaterWindow::loadPatch()
         if (version > CHECK_VERSION)
         {
             mBrowserBox->addRow("", true);
-            mBrowserBox->addRow("  ##1http://manaplus.evolonline.org/", true);
+#ifdef WIN32
+            mBrowserBox->addRow("  ##1[@@http://download.evolonline.org/"
+                "manaplus/download/manaplus-win32.exe|download here@@]", true);
+#endif
+            mBrowserBox->addRow("  ##1@@http://manaplus.evolonline.org/|"
+                "http://manaplus.evolonline.org/@@", true);
             mBrowserBox->addRow("##1You can download it from", true);
             mBrowserBox->addRow("##1ManaPlus updated.", true);
         }
@@ -832,4 +839,11 @@ bool UpdaterWindow::validateFile(std::string filePath, unsigned long hash)
     unsigned long adler = Net::Download::fadler32(file);
     fclose(file);
     return adler == hash;
+}
+
+void UpdaterWindow::handleLink(const std::string &link,
+                               gcn::MouseEvent *event A_UNUSED)
+{
+    if (strStartWith(link, "http://"))
+        openBrowser(link);
 }
