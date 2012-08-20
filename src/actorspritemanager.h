@@ -282,7 +282,7 @@ class ActorSpriteManager: public ConfigListener
 
         int getIndexByName(std::string name, std::map<std::string, int> &map);
 
-        bool checkForPickup(FloorItem *item);
+        bool checkForPickup(const FloorItem *item);
 
     protected:
         bool validateBeing(Being *aroundBeing, Being* being,

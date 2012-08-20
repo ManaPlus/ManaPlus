@@ -128,14 +128,14 @@ class UserPalette : public Palette, public gcn::ListModel
          * @param g green component
          * @param b blue component
          */
-        void setColor(int type, int r, int g, int b);
+        void setColor(const int type, const int r, const int g, const int b);
 
         /**
          * Sets the gradient type for the specified color.
          *
          * @param grad gradient type to set
          */
-        void setGradient(int type, Palette::GradientType grad);
+        void setGradient(const int type, const Palette::GradientType grad);
 
         /**
          * Sets the gradient delay for the specified color.
@@ -198,7 +198,7 @@ class UserPalette : public Palette, public gcn::ListModel
          * Commit the colors. Commit the non-static color values, if
          * commitNonStatic is true. Only needed in the constructor.
          */
-        void commit(bool commitNonStatic);
+        void commit(const bool commitNonStatic);
 
         /**
          * Prefixes the given string with "Color", lowercases all letters but
@@ -219,8 +219,9 @@ class UserPalette : public Palette, public gcn::ListModel
          * @param rgb default color if not found in config
          * @param text identifier of color
          */
-        void addColor(unsigned type, unsigned rgb, GradientType grad,
-                      const std::string &text, int delay = GRADIENT_DELAY);
+        void addColor(const unsigned type, const unsigned rgb,
+                      GradientType grad, const std::string &text,
+                      int delay = GRADIENT_DELAY);
 };
 
 extern UserPalette *userPalette;

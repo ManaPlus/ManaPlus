@@ -1662,7 +1662,7 @@ void ActorSpriteManager::storeAttackList()
     serverConfig.setValue("ignorePickupItems", packList(mIgnorePickupItems));
 }
 
-bool ActorSpriteManager::checkForPickup(FloorItem *item)
+bool ActorSpriteManager::checkForPickup(const FloorItem *item)
 {
     if (mPickupItemsSet.find("") != mPickupItemsSet.end())
     {

@@ -50,7 +50,7 @@ class ChangeEmailDialog : public Window, public gcn::ActionListener
          *
          * @see Window::Window
          */
-        ChangeEmailDialog(LoginData *data);
+        ChangeEmailDialog(LoginData *const data);
 
         /**
          * Destructor.

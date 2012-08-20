@@ -48,7 +48,7 @@ class PlayerHandler
 
         virtual void increaseSkill(unsigned short skillId) = 0;
 
-        virtual void pickUp(FloorItem *floorItem) = 0;
+        virtual void pickUp(const FloorItem *floorItem) = 0;
 
         virtual void setDirection(char direction) = 0;
 

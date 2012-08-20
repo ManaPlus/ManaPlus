@@ -65,13 +65,13 @@ class TradeWindow : public Window,
         /**
          * Displays expected money in the trade window.
          */
-        void setMoney(int quantity);
+        void setMoney(const int quantity);
 
         /**
          * Add an item to the trade window.
          */
-        void addItem(int id, bool own, int quantity,
-                     int refine, unsigned char color);
+        void addItem(const int id, const bool own, const int quantity,
+                     const int refine, const unsigned char color);
 
         /**
          * Reset both item containers
@@ -81,13 +81,15 @@ class TradeWindow : public Window,
         /**
          * Add an item to the trade window.
          */
-        void addItem2(int id, bool own, int quantity, int refine,
-                      unsigned char color, bool equipment);
+        void addItem2(const int id, const bool own, const int quantity,
+                      const int refine, const unsigned char color,
+                      const bool equipment);
 
         /**
          * Change quantity of an item.
          */
-        void changeQuantity(int index, bool own, int quantity);
+        void changeQuantity(const int index, const bool own,
+                            const int quantity);
 
         /**
          * Increase quantity of an item.
@@ -97,12 +99,13 @@ class TradeWindow : public Window,
         /**
          * Player received ok message from server
          */
-        void receivedOk(bool own);
+        void receivedOk(const bool own);
 
         /**
          * Send trade packet.
          */
-        void tradeItem(Item *item, int quantity, bool check = false);
+        void tradeItem(Item *const item, const int quantity,
+                       const bool check = false);
 
         /**
          * Updates the labels and makes sure only one item is selected in
@@ -129,18 +132,19 @@ class TradeWindow : public Window,
         /**
          * Add item what will be added to trade.
          */
-        void addAutoItem(std::string nick, Item* item, int amount);
+        void addAutoItem(const std::string nick, Item *const item,
+                         const int amount);
 
-        void addAutoMoney(std::string nick, int money);
+        void addAutoMoney(const std::string nick, const int money);
 
         void initTrade(std::string nick);
 
         std::string getAutoTradeNick() const
         { return mAutoAddToNick; }
 
-        bool checkItem(Item *item);
+        bool checkItem(const Item *const item) const;
 
-        bool isInpupFocused();
+        bool isInpupFocused() const;
 
     private:
         enum Status
@@ -154,7 +158,7 @@ class TradeWindow : public Window,
         /**
          * Sets the current status of the trade.
          */
-        void setStatus(Status s);
+        void setStatus(const Status s);
 
         typedef const std::auto_ptr<Inventory> InventoryPtr;
         InventoryPtr mMyInventory;

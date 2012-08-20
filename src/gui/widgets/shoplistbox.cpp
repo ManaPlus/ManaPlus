@@ -135,7 +135,8 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         if (needDraw)
         {
             graphics->setColor(*backgroundColor);
-            graphics->fillRectangle(gcn::Rectangle(0, y, getWidth(), mRowHeight));
+            graphics->fillRectangle(gcn::Rectangle(
+                0, y, getWidth(), mRowHeight));
         }
 
         if (mShopItems)

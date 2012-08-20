@@ -37,26 +37,27 @@
 #include "net/net.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <string>
 #include <sstream>
 
 #include "debug.h"
 
-ChangeEmailDialog::ChangeEmailDialog(LoginData *data):
+ChangeEmailDialog::ChangeEmailDialog(LoginData *const data):
     Window(_("Change Email Address"), true, nullptr, "changeemail.xml"),
+    ActionListener(),
+    mFirstEmailField(new TextField),
+    mSecondEmailField(new TextField),
+    mChangeEmailButton(new Button(_("Change Email Address"),
+        "change_email", this)),
+    mCancelButton(new Button(_("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
-    gcn::Label *accountLabel = new Label(strprintf(_("Account: %s"),
-                                         mLoginData->username.c_str()));
-    gcn::Label *newEmailLabel = new Label(_("Type new email address twice:"));
-    mFirstEmailField = new TextField;
-    mSecondEmailField = new TextField;
-    mChangeEmailButton = new Button(_("Change Email Address"),
-                                    "change_email", this);
-    mCancelButton = new Button(_("Cancel"), "cancel", this);
+    gcn::Label *const accountLabel = new Label(strprintf(_("Account: %s"),
+        mLoginData->username.c_str()));
+    gcn::Label *const newEmailLabel = new Label(
+        _("Type new email address twice:"));
 
     const int width = 200;
     const int height = 130;
@@ -123,8 +124,10 @@ void ChangeEmailDialog::action(const gcn::ActionEvent &event)
         std::stringstream errorMsg;
         int error = 0;
 
-        unsigned int min = Net::getLoginHandler()->getMinPasswordLength();
-        unsigned int max = Net::getLoginHandler()->getMaxPasswordLength();
+        const unsigned int min = Net::getLoginHandler()
+            ->getMinPasswordLength();
+        const unsigned int max = Net::getLoginHandler()
+            ->getMaxPasswordLength();
 
         if (newFirstEmail.length() < min)
         {
@@ -154,10 +157,9 @@ void ChangeEmailDialog::action(const gcn::ActionEvent &event)
             else if (error == 2)
                 mWrongDataNoticeListener->setTarget(this->mSecondEmailField);
 
-            OkDialog *dlg = new OkDialog(_("Error"),
+            OkDialog *const dlg = new OkDialog(_("Error"),
                 errorMsg.str(), DIALOG_ERROR);
-            if (dlg)
-                dlg->addActionListener(mWrongDataNoticeListener);
+            dlg->addActionListener(mWrongDataNoticeListener);
         }
         else
         {

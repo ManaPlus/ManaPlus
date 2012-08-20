@@ -40,23 +40,21 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "localplayer.h"
-#include "main.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 
-#define COLUMNS_NR 5 // name plus listbox
-#define NAME_COLUMN 0
-#define TIME_COLUMN 1
+const int COLUMNS_NR = 5; // name plus listbox
+const int NAME_COLUMN  = 0;
+const int TIME_COLUMN  = 1;
 
-#define ROW_HEIGHT 12
+const int ROW_HEIGHT  = 12;
 // The following column widths really shouldn't be hardcoded but should 
 // scale with the size of the widget... excep
 // that, right now, the widget doesn't exactly scale either.
-#define NAME_COLUMN_WIDTH 185
-#define TIME_COLUMN_WIDTH 70
+const int NAME_COLUMN_WIDTH  = 185;
+const int TIME_COLUMN_WIDTH  = 70;
 
 #define WIDGET_AT(row, column) (((row) * COLUMNS_NR) + column)
 
@@ -64,6 +62,7 @@ class UsersTableModel : public TableModel
 {
 public:
     UsersTableModel() :
+        TableModel(),
         mPlayers(0)
     {
         playersUpdated();
@@ -89,7 +88,7 @@ public:
         return ROW_HEIGHT;
     }
 
-    virtual int getColumnWidth(int index) const
+    virtual int getColumnWidth(const int index) const
     {
         if (index == NAME_COLUMN)
             return NAME_COLUMN_WIDTH;
@@ -97,7 +96,7 @@ public:
             return TIME_COLUMN_WIDTH;
     }
 
-    virtual void playersUpdated()
+    void playersUpdated()
     {
         signalBeforeUpdate();
 
@@ -110,7 +109,7 @@ public:
             for (ActorSprites::const_iterator i = beings.begin(),
                  i_end = beings.end(); i != i_end; ++i)
             {
-                Being *being = dynamic_cast<Being*>(*i);
+                Being *const being = dynamic_cast<Being*>(*i);
 
                 if (being && being->getType() == Being::PLAYER
                     && being != player_node && being->getName() != "")
@@ -120,14 +119,14 @@ public:
             }
         }
 
-        unsigned int curTime = cur_time;
+        const unsigned int curTime = cur_time;
         // set up widgets
         for (unsigned int r = 0; r < mPlayers.size(); ++r)
         {
             if (!mPlayers.at(r))
                 continue;
 
-            const Being *player = mPlayers.at(r);
+            const Being *const player = mPlayers.at(r);
             std::string name = player->getName();
             gcn::Widget *widget = new Label(name);
 
@@ -177,16 +176,16 @@ public:
 
             if (curTime - player->getTestTime() > 2 * 60)
             {
-                int attack = curTime - (player->getAttackTime()
+                const int attack = curTime - (player->getAttackTime()
                     ? player->getAttackTime()
                     : player->getTestTime());
-                int talk = curTime - (player->getTalkTime()
+                const int talk = curTime - (player->getTalkTime()
                     ? player->getTalkTime()
                     : player->getTestTime()) - attack;
-                int move = curTime - (player->getMoveTime()
+                const int move = curTime - (player->getMoveTime()
                     ? player->getMoveTime()
                     : player->getTestTime()) - attack;
-                int other = curTime - (player->getOtherTime()
+                const int other = curTime - (player->getOtherTime()
                     ? player->getMoveTime()
                     : player->getOtherTime()) - attack;
 
@@ -241,12 +240,12 @@ public:
     }
 
 
-    virtual gcn::Widget *getElementAt(int row, int column) const
+    virtual gcn::Widget *getElementAt(const int row, const int column) const
     {
         return mWidgets[WIDGET_AT(row, column)];
     }
 
-    virtual void freeWidgets()
+    void freeWidgets()
     {
         for (std::vector<gcn::Widget *>::const_iterator it = mWidgets.begin();
              it != mWidgets.end(); ++it)
@@ -265,24 +264,29 @@ protected:
 
 BotCheckerWindow::BotCheckerWindow():
     Window(_("Bot Checker"), false, nullptr, "botchecker.xml"),
+    ActionListener(),
+    mTableModel(new UsersTableModel()),
+    mTable(new GuiTable(mTableModel)),
+    playersScrollArea(new ScrollArea(mTable, true,
+        "bochecker_background.xml")),
+    mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
+    mPlayerTitleTable(new GuiTable(mPlayerTableTitleModel)),
+    mIncButton(new Button(_("Reset"), "reset", this)),
+    mLastUpdateTime(0),
+    mNeedUpdate(false),
     mEnabled(false)
 {
-    int w = 500;
-    int h = 250;
+    const int w = 500;
+    const int h = 250;
 
     setSaveVisible(true);
-    mLastUpdateTime = 0;
-    mNeedUpdate = false;
 
-    mTableModel = new UsersTableModel();
-    mTable = new GuiTable(mTableModel);
     mTable->setOpaque(false);
     mTable->setLinewiseSelection(true);
     mTable->setWrappingEnabled(true);
     mTable->setActionEventId("skill");
     mTable->addActionListener(this);
 
-    mPlayerTableTitleModel = new StaticTableModel(1, COLUMNS_NR);
     mPlayerTableTitleModel->fixColumnWidth(NAME_COLUMN, NAME_COLUMN_WIDTH);
 
     for (int f = 0; f < 4; f++)
@@ -291,7 +295,6 @@ BotCheckerWindow::BotCheckerWindow():
                                                TIME_COLUMN_WIDTH);
     }
 
-    mPlayerTitleTable = new GuiTable(mPlayerTableTitleModel);
     mPlayerTitleTable->setHeight(1);
 
     mPlayerTableTitleModel->set(0, 0, new Label(_("Name")));
@@ -307,10 +310,7 @@ BotCheckerWindow::BotCheckerWindow():
     setStickyButtonLock(true);
     setDefaultSize(w, h, ImageRect::CENTER);
 
-    playersScrollArea = new ScrollArea(mTable,
-        true, "bochecker_background.xml");
 
-    mIncButton = new Button(_("Reset"), "reset", this);
     playersScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mPlayerTitleTable->setPosition(getPadding(), getPadding());
@@ -348,7 +348,7 @@ void BotCheckerWindow::slowLogic()
 {
     if (mEnabled && mTableModel)
     {
-        unsigned int nowTime = cur_time;
+        const unsigned int nowTime = cur_time;
         if (nowTime - mLastUpdateTime > 5 && mNeedUpdate)
         {
             mTableModel->playersUpdated();
@@ -392,7 +392,7 @@ void BotCheckerWindow::reset()
         for (ActorSprites::const_iterator i = beings.begin(),
              i_end = beings.end(); i != i_end; ++i)
         {
-            Being *being = dynamic_cast<Being*>(*i);
+            Being *const being = dynamic_cast<Being*>(*i);
 
             if (being && being->getType() == Being::PLAYER
                 && being != player_node && being->getName() != "")

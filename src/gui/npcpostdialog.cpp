@@ -40,14 +40,16 @@ NpcPostDialog::DialogList NpcPostDialog::instances;
 
 NpcPostDialog::NpcPostDialog(int npcId):
     Window(_("NPC"), false, nullptr, "npcpost.xml"),
-    mNpcId(npcId)
+    ActionListener(),
+    mNpcId(npcId),
+    mText(new TextBox),
+    mSender(new TextField)
 {
     setContentSize(400, 180);
 
     // create text field for receiver
     gcn::Label *senderText = new Label(_("To:"));
     senderText->setPosition(5, 5);
-    mSender = new TextField;
     mSender->setPosition(senderText->getWidth() + 5, 5);
     mSender->setWidth(65);
 
@@ -60,7 +62,6 @@ NpcPostDialog::NpcPostDialog(int npcId):
         - (cancelButton->getWidth() + 2), sendButton->getY());
 
     // create textfield for letter
-    mText = new TextBox;
     mText->setHeight(400 - (mSender->getHeight() + sendButton->getHeight()));
     mText->setEditable(true);
 

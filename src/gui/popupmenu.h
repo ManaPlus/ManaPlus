@@ -99,59 +99,65 @@ class PopupMenu : public Popup, public LinkHandler
         /**
          * Shows the being related popup menu at the specified mouse coords.
          */
-        void showPopup(int x, int y, Being *being);
+        void showPopup(const int x, const int y, const Being *const being);
 
         /**
          * Shows the beings related popup menu at the specified mouse coords.
          */
-        void showPopup(int x, int y, std::vector<ActorSprite*> &beings);
+        void showPopup(const int x, const int y,
+                       std::vector<ActorSprite*> &beings);
 
-        void showPlayerPopup(int x, int y, std::string nick);
+        void showPlayerPopup(const int x, const int y, std::string nick);
 
         /**
          * Shows the floor item related popup menu at the specified
          * mouse coords.
          */
-        void showPopup(int x, int y, FloorItem *floorItem);
+        void showPopup(const int x, const int y,
+                       const FloorItem *const floorItem);
 
         /**
          * Shows the related popup menu when right click on the inventory
          * at the specified mouse coordinates.
          */
-        void showPopup(Window *parent, int x, int y, Item *item,
-                       bool isInventory);
+        void showPopup(Window *const parent, const int x, const int y,
+                       Item *const item, const bool isInventory);
 
-        void showPopup(int x, int y, Button *button);
+        void showPopup(const int x, const int y, Button *const button);
 
-        void showPopup(int x, int y, ProgressBar *bar);
+        void showPopup(const int x, const int y, const ProgressBar *const bar);
 
-        void showPopup(int x, int y, MapItem *mapItem);
+        void showPopup(const int x, const int y, MapItem *const mapItem);
 
-        void showItemPopup(int x, int y, Item *item);
+        void showItemPopup(const int x, const int y, Item *const item);
 
-        void showItemPopup(int x, int y, int itemId, unsigned char color);
+        void showItemPopup(const int x, const int y, const int itemId,
+                           const unsigned char color);
 
-        void showDropPopup(int x, int y, Item *item);
+        void showDropPopup(const int x, const int y, Item *const item);
 
-        void showOutfitsPopup(int x, int y);
+        void showOutfitsPopup(const int x, const int y);
 
-        void showSpellPopup(int x, int y, TextCommand *cmd);
+        void showSpellPopup(const int x, const int y, TextCommand *const cmd);
 
         void showAttackMonsterPopup(int x, int y, std::string name, int type);
 
         void showPickupItemPopup(int x, int y, std::string name);
 
-        void showUndressPopup(int x, int y, Being *being, Item *item);
+        void showUndressPopup(const int x, const int y,
+                              const Being *const being,
+                              Item *const item);
 
-        void showMapPopup(int x, int y, int x2, int y2);
+        void showMapPopup(const int x, const int y,
+                          const int x2, const int y2);
 
         /**
          * Shows the related popup menu when right click on the chat
          * at the specified mouse coordinates.
          */
-        void showChatPopup(int x, int y, ChatTab *tab);
+        void showChatPopup(const int x, const int y, ChatTab *const tab);
 
-        void showChangePos(int x, int y);
+        void showChangePos(const int x, const int y);
 
         /**
          * Handles link action.
@@ -164,7 +170,7 @@ class PopupMenu : public Popup, public LinkHandler
 
         void addFollow();
 
-        void addBuySell(const Being *being);
+        void addBuySell(const Being *const being);
 
         void addParty(const std::string &partyName);
 

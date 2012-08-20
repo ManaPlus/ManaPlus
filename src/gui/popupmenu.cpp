@@ -22,19 +22,14 @@
 
 #include "gui/popupmenu.h"
 
-#include "actorsprite.h"
 #include "actorspritemanager.h"
-#include "being.h"
 #include "dropshortcut.h"
 #include "guild.h"
 #include "guildmanager.h"
-#include "flooritem.h"
 #include "graphics.h"
 #include "item.h"
 #include "itemshortcut.h"
 #include "localplayer.h"
-#include "logger.h"
-#include "map.h"
 #include "maplayer.h"
 #include "party.h"
 #include "playerinfo.h"
@@ -58,7 +53,6 @@
 #include "gui/windowmenu.h"
 
 #include "gui/widgets/browserbox.h"
-#include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/whispertab.h"
@@ -67,18 +61,14 @@
 #include "net/beinghandler.h"
 #include "net/buysellhandler.h"
 #include "net/guildhandler.h"
-#include "net/inventoryhandler.h"
-#include "net/net.h"
 #include "net/npchandler.h"
 #include "net/partyhandler.h"
 #include "gui/shortcutwindow.h"
 #include "net/tradehandler.h"
 
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -95,10 +85,11 @@ PopupMenu::PopupMenu():
     mMapItem(nullptr),
     mTab(nullptr),
     mSpell(nullptr),
+    mWindow(nullptr),
     mDialog(nullptr),
     mButton(nullptr),
     mNick(""),
-    mType(Being::UNKNOWN),
+    mType(static_cast<int>(Being::UNKNOWN)),
     mX(0),
     mY(0)
 {
@@ -110,19 +101,19 @@ PopupMenu::PopupMenu():
     mRenameListener.setDialog(nullptr);
     mPlayerListener.setNick("");
     mPlayerListener.setDialog(nullptr);
-    mPlayerListener.setType(Being::UNKNOWN);
+    mPlayerListener.setType(static_cast<int>(Being::UNKNOWN));
 
     add(mBrowserBox);
 }
 
-void PopupMenu::showPopup(int x, int y, Being *being)
+void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 {
     if (!being || !player_node || !actorSpriteManager)
         return;
 
     mBeingId = being->getId();
     mNick = being->getName();
-    mType = being->getType();
+    mType = static_cast<int>(being->getType());
     mBrowserBox->clearRows();
     mX = x;
     mY = y;
@@ -151,8 +142,8 @@ void PopupMenu::showPopup(int x, int y, Being *being)
 
                 addParty(being->getPartyName());
 
-                Guild *guild1 = being->getGuild();
-                Guild *guild2 = player_node->getGuild();
+                const Guild *const guild1 = being->getGuild();
+                const Guild *const guild2 = player_node->getGuild();
                 if (guild2)
                 {
                     if (guild1)
@@ -262,7 +253,8 @@ void PopupMenu::showPopup(int x, int y, Being *being)
     showPopup(x, y);
 }
 
-void PopupMenu::showPopup(int x, int y, std::vector<ActorSprite*> &beings)
+void PopupMenu::showPopup(const int x, const int y,
+                          std::vector<ActorSprite*> &beings)
 {
     mX = x;
     mY = y;
@@ -271,8 +263,8 @@ void PopupMenu::showPopup(int x, int y, std::vector<ActorSprite*> &beings)
     for (std::vector<ActorSprite*>::const_iterator it = beings.begin(),
          it_end = beings.end(); it != it_end; ++it)
     {
-        Being *being = dynamic_cast<Being*>(*it);
-        ActorSprite *actor = *it;
+        const Being *const being = dynamic_cast<Being*>(*it);
+        const ActorSprite *const actor = *it;
         if (being && !being->getName().empty())
         {
             mBrowserBox->addRow(strprintf("@@player_%u|%s >@@",
@@ -281,7 +273,8 @@ void PopupMenu::showPopup(int x, int y, std::vector<ActorSprite*> &beings)
         }
         else if (actor->getType() == ActorSprite::FLOOR_ITEM)
         {
-            FloorItem *floorItem = static_cast<FloorItem*>(actor);
+            const FloorItem *const floorItem
+                = static_cast<const FloorItem*>(actor);
             mBrowserBox->addRow(strprintf("@@flooritem_%u|%s >@@",
                 static_cast<unsigned>(actor->getId()),
                 floorItem->getName().c_str()));
@@ -292,14 +285,14 @@ void PopupMenu::showPopup(int x, int y, std::vector<ActorSprite*> &beings)
     showPopup(x, y);
 }
 
-void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
+void PopupMenu::showPlayerPopup(const int x, const int y, std::string nick)
 {
     if (nick.empty() || !player_node)
         return;
 
     mNick = nick;
     mBeingId = 0;
-    mType = Being::PLAYER;
+    mType = static_cast<int>(Being::PLAYER);
     mX = x;
     mY = y;
     mBrowserBox->clearRows();
@@ -319,22 +312,23 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
 
     if (player_node->isInParty())
     {
-        Party *party = player_node->getParty();
+        const Party *const party = player_node->getParty();
         if (party)
         {
-            PartyMember *member = party->getMember(mNick);
+            const PartyMember *const member = party->getMember(mNick);
             if (member)
             {
                 mBrowserBox->addRow("kick party", _("Kick from party"));
                 mBrowserBox->addRow("##3---");
-                PartyMember *o = party->getMember(player_node->getName());
+                const PartyMember *const o = party->getMember(
+                    player_node->getName());
                 if (o && member->getMap() == o->getMap())
                     mBrowserBox->addRow("move", _("Move"));
             }
         }
     }
 
-    Guild *guild2 = player_node->getGuild();
+    const Guild *const guild2 = player_node->getGuild();
     if (guild2)
     {
         if (guild2->getMember(mNick))
@@ -368,7 +362,8 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     showPopup(x, y);
 }
 
-void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
+void PopupMenu::showPopup(const int x, const int y,
+                          const FloorItem *const floorItem)
 {
     if (!floorItem)
         return;
@@ -376,7 +371,7 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
     mFloorItemId = floorItem->getId();
     mX = x;
     mY = y;
-    mType = Being::FLOOR_ITEM;
+    mType = static_cast<int>(Being::FLOOR_ITEM);
     mBrowserBox->clearRows();
     std::string name = floorItem->getName();
     mNick = name;
@@ -406,7 +401,7 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
     showPopup(x, y);
 }
 
-void PopupMenu::showPopup(int x, int y, MapItem *mapItem)
+void PopupMenu::showPopup(const int x, const int y, MapItem *const mapItem)
 {
     if (!mapItem)
         return;
@@ -432,7 +427,8 @@ void PopupMenu::showPopup(int x, int y, MapItem *mapItem)
     showPopup(x, y);
 }
 
-void PopupMenu::showMapPopup(int x, int y, int x2, int y2)
+void PopupMenu::showMapPopup(const int x, const int y,
+                             const int x2, const int y2)
 {
     mX = x2;
     mY = y2;
@@ -451,7 +447,7 @@ void PopupMenu::showMapPopup(int x, int y, int x2, int y2)
     showPopup(x, y);
 }
 
-void PopupMenu::showOutfitsPopup(int x, int y)
+void PopupMenu::showOutfitsPopup(const int x, const int y)
 {
     mX = x;
     mY = y;
@@ -467,7 +463,8 @@ void PopupMenu::showOutfitsPopup(int x, int y)
     showPopup(x, y);
 }
 
-void PopupMenu::showSpellPopup(int x, int y, TextCommand *cmd)
+void PopupMenu::showSpellPopup(const int x, const int y,
+                               TextCommand *const cmd)
 {
     if (!cmd)
         return;
@@ -487,7 +484,7 @@ void PopupMenu::showSpellPopup(int x, int y, TextCommand *cmd)
     showPopup(x, y);
 }
 
-void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
+void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 {
     if (!tab || !actorSpriteManager || !player_node)
         return;
@@ -498,7 +495,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
 
     mBrowserBox->clearRows();
 
-    if (tab->getType() == ChatTab::TAB_WHISPER)
+    if (tab->getType() == static_cast<int>(ChatTab::TAB_WHISPER))
         mBrowserBox->addRow("chat close", _("Close"));
 
     mBrowserBox->addRow("chat clear", _("Clear"));
@@ -518,7 +515,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         mBrowserBox->addRow("disable away", _("Disable away"));
     mBrowserBox->addRow("##3---");
 
-    if (tab->getType() == ChatTab::TAB_PARTY)
+    if (tab->getType() == static_cast<int>(ChatTab::TAB_PARTY))
     {
         mBrowserBox->addRow("leave party", _("Leave"));
         mBrowserBox->addRow("##3---");
@@ -526,19 +523,19 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
     mBrowserBox->addRow("chat clipboard", _("Copy to clipboard"));
     mBrowserBox->addRow("##3---");
 
-    if (tab->getType() == ChatTab::TAB_WHISPER)
+    if (tab->getType() == static_cast<int>(ChatTab::TAB_WHISPER))
     {
-        WhisperTab *wTab = static_cast<WhisperTab*>(tab);
+        const WhisperTab *const wTab = static_cast<WhisperTab*>(tab);
         std::string name = wTab->getNick();
 
-        Being* being  = actorSpriteManager->findBeingByName(
+        const Being* const being  = actorSpriteManager->findBeingByName(
             name, Being::PLAYER);
 
         if (being)
         {
             mBeingId = being->getId();
             mNick = being->getName();
-            mType = being->getType();
+            mType = static_cast<int>(being->getType());
 
             mBrowserBox->addRow("trade", _("Trade"));
             mBrowserBox->addRow("attack", _("Attack"));
@@ -573,8 +570,8 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                     mBrowserBox->addRow("##3---");
                 }
             }
-            Guild *guild1 = being->getGuild();
-            Guild *guild2 = player_node->getGuild();
+            const Guild *const guild1 = being->getGuild();
+            const Guild *const guild2 = player_node->getGuild();
             if (guild2)
             {
                 if (guild1)
@@ -607,17 +604,17 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         else
         {
             mNick = name;
-            mType = Being::PLAYER;
+            mType = static_cast<int>(Being::PLAYER);
             addPlayerRelation(name);
             mBrowserBox->addRow("##3---");
             addFollow();
 
             if (player_node->isInParty())
             {
-                Party *party = player_node->getParty();
+                const Party *const party = player_node->getParty();
                 if (party)
                 {
-                    PartyMember *m = party->getMember(mNick);
+                    const PartyMember *const m = party->getMember(mNick);
                     if (m)
                         mBrowserBox->addRow("move", _("Move"));
                 }
@@ -632,7 +629,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
     showPopup(x, y);
 }
 
-void PopupMenu::showChangePos(int x, int y)
+void PopupMenu::showChangePos(const int x, const int y)
 {
     mBrowserBox->clearRows();
     mBrowserBox->addRow(_("Change guild position"));
@@ -642,7 +639,7 @@ void PopupMenu::showChangePos(int x, int y)
 
     mX = x;
     mY = y;
-    const Guild *guild = player_node->getGuild();
+    const Guild *const guild = player_node->getGuild();
     if (guild)
     {
         PositionsMap map = guild->getPositions();
@@ -663,7 +660,7 @@ void PopupMenu::showChangePos(int x, int y)
         mItem = nullptr;
         mMapItem = nullptr;
         mNick = "";
-        mType = Being::UNKNOWN;
+        mType = static_cast<int>(Being::UNKNOWN);
         mX = 0;
         mY = 0;
         setVisible(false);
@@ -799,7 +796,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (player_node)
         {
-            const Guild *guild = player_node->getGuild();
+            const Guild *const guild = player_node->getGuild();
             if (guild)
             {
                 if (guild->getServerGuild())
@@ -811,7 +808,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "nuke" && being)
     {
-        actorSpriteManager->addBlock(being->getId());
+        actorSpriteManager->addBlock(static_cast<uint32_t>(being->getId()));
         actorSpriteManager->destroy(being);
     }
     // Follow Player action
@@ -830,7 +827,8 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (player_node && actorSpriteManager)
         {
-            FloorItem *item = actorSpriteManager->findItem(mFloorItemId);
+            FloorItem *const item = actorSpriteManager->findItem(
+                mFloorItemId);
             if (item)
                 player_node->pickUp(item);
         }
@@ -843,10 +841,10 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (mItemId < SPELL_MIN_ID)
         {
-            Inventory *inv = PlayerInfo::getInventory();
+            const Inventory *const inv = PlayerInfo::getInventory();
             if (inv)
             {
-                Item *item = inv->findItem(mItemId, mItemColor);
+                const Item *const item = inv->findItem(mItemId, mItemColor);
                 if (item)
                 {
                     if (item->isEquipment())
@@ -890,7 +888,8 @@ void PopupMenu::handleLink(const std::string &link,
             }
             else if (mFloorItemId && actorSpriteManager)
             {
-                FloorItem *item = actorSpriteManager->findItem(mFloorItemId);
+                const FloorItem *const item = actorSpriteManager->findItem(
+                    mFloorItemId);
 
                 if (item)
                 {
@@ -927,11 +926,12 @@ void PopupMenu::handleLink(const std::string &link,
             }
             else if (player_node->isInParty())
             {
-                Party *party = player_node->getParty();
+                const Party *const party = player_node->getParty();
                 if (party)
                 {
-                    PartyMember *m = party->getMember(mNick);
-                    PartyMember *o = party->getMember(player_node->getName());
+                    const PartyMember *const m = party->getMember(mNick);
+                    const PartyMember *const o = party->getMember(
+                        player_node->getName());
                     if (m && o && m->getMap() == o->getMap())
                         player_node->navigateTo(m->getX(), m->getY());
                 }
@@ -1070,7 +1070,8 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (player_node && player_node->getParty())
         {
-            PartyMember *member = player_node->getParty()->getMember(mNick);
+            const PartyMember *const member = player_node->
+                getParty()->getMember(mNick);
             if (member)
                 Net::getPartyHandler()->kick(mNick);
         }
@@ -1120,16 +1121,18 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (viewport)
         {
-            Map *map = viewport->getCurrentMap();
+            const Map *const map = viewport->getCurrentMap();
             if (map)
             {
-                SpecialLayer *specialLayer = map->getSpecialLayer();
+                SpecialLayer *const specialLayer = map->getSpecialLayer();
                 if (specialLayer)
                 {
-                    bool isHome = (mMapItem->getType() == MapItem::HOME);
-                    const int x = mMapItem->getX();
-                    const int y = mMapItem->getY();
-                    specialLayer->setTile(x, y, MapItem::EMPTY);
+                    const bool isHome = (mMapItem->getType()
+                        == static_cast<int>(MapItem::HOME));
+                    const int x = static_cast<const int>(mMapItem->getX());
+                    const int y = static_cast<const int>(mMapItem->getY());
+                    specialLayer->setTile(x, y,
+                        static_cast<int>(MapItem::EMPTY));
                     if (socialWindow)
                         socialWindow->removePortal(x, y);
                     if (isHome && player_node)
@@ -1169,7 +1172,8 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "addcomment" && !mNick.empty())
     {
         // TRANSLATORS: number of chars in string should be near original
-        TextDialog *dialog = new TextDialog(_("Player comment            "),
+        TextDialog *const dialog = new TextDialog(
+            _("Player comment            "),
         // TRANSLATORS: number of chars in string should be near original
             _("Comment:                      "));
         mPlayerListener.setDialog(dialog);
@@ -1192,7 +1196,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (player_node)
         {
-            const Guild *guild = player_node->getGuild();
+            const Guild *const guild = player_node->getGuild();
             if (guild)
             {
                 if (guild->getServerGuild())
@@ -1310,7 +1314,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (actorSpriteManager)
         {
-            int idx = actorSpriteManager->getAttackMobIndex(mNick);
+            const int idx = actorSpriteManager->getAttackMobIndex(mNick);
             if (idx > 0)
             {
                 std::list<std::string> mobs
@@ -1340,7 +1344,8 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (actorSpriteManager)
         {
-            int idx = actorSpriteManager->getPriorityAttackMobIndex(mNick);
+            const int idx = actorSpriteManager->
+                getPriorityAttackMobIndex(mNick);
             if (idx > 0)
             {
                 std::list<std::string> mobs
@@ -1370,8 +1375,8 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (actorSpriteManager)
         {
-            int idx = actorSpriteManager->getAttackMobIndex(mNick);
-            int size = actorSpriteManager->getAttackMobsSize();
+            const int idx = actorSpriteManager->getAttackMobIndex(mNick);
+            const int size = actorSpriteManager->getAttackMobsSize();
             if (idx + 1 < size)
             {
                 std::list<std::string> mobs
@@ -1404,8 +1409,9 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (player_node)
         {
-            int idx = actorSpriteManager->getPriorityAttackMobIndex(mNick);
-            int size = actorSpriteManager->getPriorityAttackMobsSize();
+            const int idx = actorSpriteManager
+                ->getPriorityAttackMobIndex(mNick);
+            const int size = actorSpriteManager->getPriorityAttackMobsSize();
             if (idx + 1 < size)
             {
                 std::list<std::string> mobs
@@ -1528,8 +1534,8 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (player_node)
         {
-            int num = atoi(link.substr(10).c_str());
-            const Guild *guild = player_node->getGuild();
+            const int num = atoi(link.substr(10).c_str());
+            const Guild *const guild = player_node->getGuild();
             if (guild)
             {
                 Net::getGuildHandler()->changeMemberPostion(
@@ -1554,10 +1560,10 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (actorSpriteManager)
         {
-            int id = atoi(link.substr(10).c_str());
+            const int id = atoi(link.substr(10).c_str());
             if (id)
             {
-                FloorItem *item = actorSpriteManager->findItem(id);
+                const FloorItem *const item = actorSpriteManager->findItem(id);
                 if (item)
                 {
                     mFloorItemId = item->getId();
@@ -1602,13 +1608,13 @@ void PopupMenu::handleLink(const std::string &link,
     mItemColor = 1;
     mMapItem = nullptr;
     mNick = "";
-    mType = Being::UNKNOWN;
+    mType = static_cast<int>(Being::UNKNOWN);
     mX = 0;
     mY = 0;
 }
 
-void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
-                          bool isInventory)
+void PopupMenu::showPopup(Window *const parent, const int x, const int y,
+                          Item *const item, const bool isInventory)
 {
     if (!item)
         return;
@@ -1622,7 +1628,7 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
     mNick = "";
     mBrowserBox->clearRows();
 
-    int cnt = item->getQuantity();
+    const int cnt = item->getQuantity();
 
     if (isInventory)
     {
@@ -1706,13 +1712,14 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
     showPopup(x, y);
 }
 
-void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
+void PopupMenu::showItemPopup(const int x, const int y, const int itemId,
+                              const unsigned char color)
 {
-    Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return;
 
-    Item *item = inv->findItem(itemId, color);
+    Item *const item = inv->findItem(itemId, color);
     if (item)
     {
         showItemPopup(x, y, item);
@@ -1734,7 +1741,7 @@ void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
     }
 }
 
-void PopupMenu::showItemPopup(int x, int y, Item *item)
+void PopupMenu::showItemPopup(const int x, const int y, Item *const item)
 {
     mItem = item;
     mX = x;
@@ -1797,7 +1804,7 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
     showPopup(x, y);
 }
 
-void PopupMenu::showDropPopup(int x, int y, Item *item)
+void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
 {
     mItem = item;
     mX = x;
@@ -1853,7 +1860,7 @@ void PopupMenu::showDropPopup(int x, int y, Item *item)
     showPopup(x, y);
 }
 
-void PopupMenu::showPopup(int x, int y, Button *button)
+void PopupMenu::showPopup(const int x, const int y, Button *const button)
 {
     if (!button || !windowMenu)
         return;
@@ -1867,7 +1874,7 @@ void PopupMenu::showPopup(int x, int y, Button *button)
     for (std::vector <gcn::Button*>::const_iterator it = names.begin(),
          it_end = names.end(); it != it_end; ++ it)
     {
-        Button *btn = dynamic_cast<Button*>(*it);
+        const Button *const btn = dynamic_cast<Button*>(*it);
         if (!btn || btn->getActionEventId() == "SET")
             continue;
 
@@ -1890,7 +1897,7 @@ void PopupMenu::showPopup(int x, int y, Button *button)
     showPopup(x, y);
 }
 
-void PopupMenu::showPopup(int x, int y, ProgressBar *b)
+void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
 {
     if (!b || !miniStatusWindow)
         return;
@@ -1904,7 +1911,7 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
     for (std::vector <ProgressBar*>::const_iterator it = bars.begin(),
          it_end = bars.end(); it != it_end; ++it)
     {
-        ProgressBar *bar = *it;
+        ProgressBar *const bar = *it;
         if (!bar || bar->getActionEventId() == "status bar")
             continue;
 
@@ -1931,14 +1938,14 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
     showPopup(x, y);
 }
 
-void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
-                                       int type)
+void PopupMenu::showAttackMonsterPopup(const int x, const int y,
+                                       std::string name, const int type)
 {
     if (!player_node || !actorSpriteManager)
         return;
 
     mNick = name;
-    mType = Being::MONSTER;
+    mType = static_cast<int>(Being::MONSTER);
     mX = x;
     mY = y;
 
@@ -1952,8 +1959,8 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
     {
         case MapItem::ATTACK:
         {
-            int idx = actorSpriteManager->getAttackMobIndex(name);
-            int size = actorSpriteManager->getAttackMobsSize();
+            const int idx = actorSpriteManager->getAttackMobIndex(name);
+            const int size = actorSpriteManager->getAttackMobsSize();
             if (idx > 0)
                 mBrowserBox->addRow("attack moveup", _("Move up"));
             if (idx + 1 < size)
@@ -1962,8 +1969,9 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
         }
         case MapItem::PRIORITY:
         {
-            int idx = actorSpriteManager->getPriorityAttackMobIndex(name);
-            int size = actorSpriteManager->getPriorityAttackMobsSize();
+            const int idx = actorSpriteManager->
+                getPriorityAttackMobIndex(name);
+            const int size = actorSpriteManager->getPriorityAttackMobsSize();
             if (idx > 0)
                 mBrowserBox->addRow("priority moveup", _("Move up"));
             if (idx + 1 < size)
@@ -1983,13 +1991,13 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
     showPopup(x, y);
 }
 
-void PopupMenu::showPickupItemPopup(int x, int y, std::string name)
+void PopupMenu::showPickupItemPopup(const int x, const int y, std::string name)
 {
     if (!player_node || !actorSpriteManager)
         return;
 
     mNick = name;
-    mType = Being::FLOOR_ITEM;
+    mType = static_cast<int>(Being::FLOOR_ITEM);
     mX = x;
     mY = y;
 
@@ -2007,7 +2015,8 @@ void PopupMenu::showPickupItemPopup(int x, int y, std::string name)
     showPopup(x, y);
 }
 
-void PopupMenu::showUndressPopup(int x, int y, Being *being, Item *item)
+void PopupMenu::showUndressPopup(const int x, const int y,
+                                 const Being *const being, Item *const item)
 {
     if (!being || !item)
         return;
@@ -2107,7 +2116,7 @@ void PopupMenu::addFollow()
     mBrowserBox->addRow("imitation", _("Imitation"));
 }
 
-void PopupMenu::addBuySell(const Being *being)
+void PopupMenu::addBuySell(const Being *const being)
 {
     if (player_relations.getDefault() & PlayerRelation::TRADE)
     {
@@ -2177,6 +2186,7 @@ void PopupMenu::addPickupFilter(const std::string &name)
 }
 
 RenameListener::RenameListener() :
+    ActionListener(),
     mMapItem(nullptr),
     mDialog(nullptr)
 {
@@ -2186,11 +2196,11 @@ void RenameListener::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "ok" && mMapItem && viewport && mDialog)
     {
-        Map *map = viewport->getMap();
+        Map *const map = viewport->getMap();
         if (!map)
             return;
 
-        SpecialLayer *sl = map->getSpecialLayer();
+        SpecialLayer *const sl = map->getSpecialLayer();
         MapItem *item = nullptr;
         if (sl)
         {
@@ -2214,9 +2224,10 @@ void RenameListener::action(const gcn::ActionEvent &event)
 }
 
 PlayerListener::PlayerListener() :
+    ActionListener(),
     mNick(""),
     mDialog(nullptr),
-    mType(Being::UNKNOWN)
+    mType(static_cast<int>(Being::UNKNOWN))
 {
 }
 
@@ -2225,7 +2236,7 @@ void PlayerListener::action(const gcn::ActionEvent &event)
     if (event.getId() == "ok" && !mNick.empty() && mDialog)
     {
         std::string comment = mDialog->getText();
-        Being* being  = actorSpriteManager->findBeingByName(
+        Being *const being  = actorSpriteManager->findBeingByName(
             mNick, static_cast<ActorSprite::Type>(mType));
         if (being)
             being->setComment(comment);

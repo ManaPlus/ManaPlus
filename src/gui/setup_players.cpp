@@ -36,13 +36,13 @@
 
 #include "configuration.h"
 #include "localplayer.h"
-#include "logger.h"
 
 #include "utils/gettext.h"
 
 #include "debug.h"
 
-Setup_Players::Setup_Players()
+Setup_Players::Setup_Players() :
+    SetupTabScroll()
 {
     setName(_("Players"));
 

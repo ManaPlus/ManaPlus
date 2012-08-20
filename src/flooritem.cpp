@@ -82,7 +82,7 @@ const ItemInfo &FloorItem::getInfo() const
     return ItemDB::get(mItemId);
 }
 
-std::string FloorItem::getName()
+std::string FloorItem::getName() const
 {
     const ItemInfo &info = ItemDB::get(mItemId);
     if (serverVersion > 0)

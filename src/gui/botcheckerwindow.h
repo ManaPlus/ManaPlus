@@ -76,9 +76,9 @@ class BotCheckerWindow : public Window, public gcn::ActionListener,
         void optionChanged(const std::string &name);
 
     private:
+        UsersTableModel *mTableModel;
         GuiTable *mTable;
         ScrollArea *playersScrollArea;
-        UsersTableModel *mTableModel;
         StaticTableModel *mPlayerTableTitleModel;
         GuiTable *mPlayerTitleTable;
         gcn::Button *mIncButton;

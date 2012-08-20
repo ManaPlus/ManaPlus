@@ -37,9 +37,6 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabstrip.h"
 
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
-
 #include <guichan/listmodel.hpp>
 
 #include <SDL_keyboard.h>

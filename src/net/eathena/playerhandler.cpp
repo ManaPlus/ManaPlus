@@ -156,7 +156,7 @@ void PlayerHandler::increaseSkill(unsigned short skillId)
     outMsg.writeInt16(skillId);
 }
 
-void PlayerHandler::pickUp(FloorItem *floorItem)
+void PlayerHandler::pickUp(const FloorItem *floorItem)
 {
     if (!floorItem)
         return;

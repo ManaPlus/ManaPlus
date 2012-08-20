@@ -37,7 +37,6 @@
 #include "gui/setup.h"
 #include "gui/theme.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
@@ -45,12 +44,9 @@
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/layout.h"
 
-#include "net/inventoryhandler.h"
-#include "net/net.h"
 #include "net/tradehandler.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <guichan/font.hpp>
 
@@ -65,8 +61,17 @@
 
 TradeWindow::TradeWindow():
     Window(_("Trade: You"), false, nullptr, "trade.xml"),
+    ActionListener(),
+    SelectionListener(),
     mMyInventory(new Inventory(Inventory::TRADE)),
     mPartnerInventory(new Inventory(Inventory::TRADE)),
+    mMyItemContainer(new ItemContainer(mMyInventory.get())),
+    mPartnerItemContainer(new ItemContainer(mPartnerInventory.get())),
+    mMoneyLabel(new Label(strprintf(_("You get %s"), ""))),
+    mAddButton(new Button(_("Add"), "add", this)),
+    mOkButton(new Button("", "", this)), // Will be filled in later
+    mMoneyChangeButton(new Button(_("Change"), "money", this)),
+    mMoneyField(new TextField),
     mStatus(PROPOSING),
     mAutoAddItem(nullptr),
     mAutoAddToNick(""),
@@ -87,10 +92,7 @@ TradeWindow::TradeWindow():
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
-    mAddButton = new Button(_("Add"), "add", this);
-    mOkButton = new Button("", "", this); // Will be filled in later
-
-    gcn::Font *fnt = mOkButton->getFont();
+    const gcn::Font *const fnt = mOkButton->getFont();
     int width = std::max(fnt->getWidth(CAPTION_PROPOSE),
         fnt->getWidth(CAPTION_CONFIRMED));
     width = std::max(width, fnt->getWidth(CAPTION_ACCEPT));
@@ -98,33 +100,28 @@ TradeWindow::TradeWindow():
 
     mOkButton->setWidth(8 + width);
 
-    mMyItemContainer = new ItemContainer(mMyInventory.get());
     mMyItemContainer->addSelectionListener(this);
 
-    ScrollArea *myScroll = new ScrollArea(mMyItemContainer,
+    ScrollArea *const myScroll = new ScrollArea(mMyItemContainer,
         true, "trade_background.xml");
     myScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-    mPartnerItemContainer = new ItemContainer(mPartnerInventory.get());
     mPartnerItemContainer->addSelectionListener(this);
 
-    ScrollArea *partnerScroll = new ScrollArea(mPartnerItemContainer,
+    ScrollArea *const partnerScroll = new ScrollArea(mPartnerItemContainer,
         true, "trade_background.xml");
     partnerScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-    mMoneyLabel = new Label(strprintf(_("You get %s"), ""));
-    gcn::Label *mMoneyLabel2 = new Label(_("You give:"));
+    gcn::Label *const moneyLabel2 = new Label(_("You give:"));
 
-    mMoneyField = new TextField;
     mMoneyField->setWidth(40);
-    mMoneyChangeButton = new Button(_("Change"), "money", this);
 
     place(1, 0, mMoneyLabel);
     place(0, 1, myScroll).setPadding(3);
     place(1, 1, partnerScroll).setPadding(3);
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
-    placer(0, 0, mMoneyLabel2);
+    placer(0, 0, moneyLabel2);
     placer(1, 0, mMoneyField, 2);
     placer(3, 0, mMoneyChangeButton).setHAlign(LayoutCell::LEFT);
     placer = getPlacer(0, 2);
@@ -146,7 +143,7 @@ TradeWindow::~TradeWindow()
 {
 }
 
-void TradeWindow::setMoney(int amount)
+void TradeWindow::setMoney(const int amount)
 {
     if (amount < 0 || amount < mGotMaxMoney)
     {
@@ -158,12 +155,13 @@ void TradeWindow::setMoney(int amount)
         else
         {
             mMoneyLabel->setForegroundColor(Theme::getThemeColor(
-                Theme::WARNING));
+                static_cast<int>(Theme::WARNING)));
         }
     }
     else
     {
-        mMoneyLabel->setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+        mMoneyLabel->setForegroundColor(Theme::getThemeColor(
+            static_cast<int>(Theme::TEXT)));
         mGotMaxMoney = amount;
     }
 
@@ -173,8 +171,8 @@ void TradeWindow::setMoney(int amount)
     mMoneyLabel->adjustSize();
 }
 
-void TradeWindow::addItem(int id, bool own, int quantity,
-                          int refine, unsigned char color)
+void TradeWindow::addItem(const int id, const bool own, const int quantity,
+                          const int refine, const unsigned char color)
 {
     if (own)
         mMyInventory->addItem(id, quantity, refine, color);
@@ -182,8 +180,9 @@ void TradeWindow::addItem(int id, bool own, int quantity,
         mPartnerInventory->addItem(id, quantity, refine, color);
 }
 
-void TradeWindow::addItem2(int id, bool own, int quantity,
-                           int refine, unsigned char color, bool equipment)
+void TradeWindow::addItem2(const int id, const bool own, const int quantity,
+                           const int refine, const unsigned char color,
+                           const bool equipment)
 {
     if (own)
         mMyInventory->addItem(id, quantity, refine, color, equipment);
@@ -191,7 +190,8 @@ void TradeWindow::addItem2(int id, bool own, int quantity,
         mPartnerInventory->addItem(id, quantity, refine, color, equipment);
 }
 
-void TradeWindow::changeQuantity(int index, bool own, int quantity)
+void TradeWindow::changeQuantity(const int index, const bool own,
+                                 const int quantity)
 {
     if (own)
     {
@@ -205,7 +205,8 @@ void TradeWindow::changeQuantity(int index, bool own, int quantity)
     }
 }
 
-void TradeWindow::increaseQuantity(int index, bool own, int quantity)
+void TradeWindow::increaseQuantity(const int index, const bool own,
+                                   const int quantity)
 {
     if (own)
     {
@@ -236,7 +237,7 @@ void TradeWindow::reset()
     setStatus(PREPARING);
 }
 
-void TradeWindow::receivedOk(bool own)
+void TradeWindow::receivedOk(const bool own)
 {
     if (own)
         mOkMe = true;
@@ -251,7 +252,8 @@ void TradeWindow::receivedOk(bool own)
     }
 }
 
-void TradeWindow::tradeItem(Item *item, int quantity, bool check)
+void TradeWindow::tradeItem(Item *const item, const int quantity,
+                            const bool check)
 {
     if (check && !checkItem(item))
         return;
@@ -278,7 +280,7 @@ void TradeWindow::valueChanged(const gcn::SelectionEvent &event)
     }
 }
 
-void TradeWindow::setStatus(Status s)
+void TradeWindow::setStatus(const Status s)
 {
     if (s == mStatus)
         return;
@@ -314,7 +316,7 @@ void TradeWindow::action(const gcn::ActionEvent &event)
     if (!inventoryWindow)
         return;
 
-    Item *item = inventoryWindow->getSelectedItem();
+    Item *const item = inventoryWindow->getSelectedItem();
 
     if (event.getId() == "add")
     {
@@ -371,7 +373,7 @@ void TradeWindow::action(const gcn::ActionEvent &event)
             return;
 
         int v = atoi(mMoneyField->getText().c_str());
-        int curMoney = PlayerInfo::getAttribute(PlayerInfo::MONEY);
+        const int curMoney = PlayerInfo::getAttribute(PlayerInfo::MONEY);
         if (v > curMoney)
         {
             if (localChatTab)
@@ -400,17 +402,19 @@ void TradeWindow::clear()
     mAutoAddAmount = 0;
     mGotMoney = 0;
     mGotMaxMoney = 0;
-    mMoneyLabel->setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    mMoneyLabel->setForegroundColor(Theme::getThemeColor(
+        static_cast<int>(Theme::TEXT)));
 }
 
-void TradeWindow::addAutoItem(std::string nick, Item* item, int amount)
+void TradeWindow::addAutoItem(const std::string nick, Item* const item,
+                              const int amount)
 {
     mAutoAddToNick = nick;
     mAutoAddItem = item;
     mAutoAddAmount = amount;
 }
 
-void TradeWindow::addAutoMoney(std::string nick, int money)
+void TradeWindow::addAutoMoney(const std::string nick, const int money)
 {
     mAutoAddToNick = nick;
     mAutoMoney = money;
@@ -425,10 +429,10 @@ void TradeWindow::initTrade(std::string nick)
     {
         if (mAutoAddItem && mAutoAddItem->getQuantity())
         {
-            Inventory *inv = PlayerInfo::getInventory();
+            const Inventory *const inv = PlayerInfo::getInventory();
             if (inv)
             {
-                Item *item = inv->findItem(mAutoAddItem->getId(),
+                Item *const item = inv->findItem(mAutoAddItem->getId(),
                     mAutoAddItem->getColor());
                 if (item)
                     tradeItem(item, mAutoAddItem->getQuantity());
@@ -445,9 +449,9 @@ void TradeWindow::initTrade(std::string nick)
         setCaptionFont(gui->getSecureFont());
 }
 
-bool TradeWindow::checkItem(Item *item)
+bool TradeWindow::checkItem(const Item *const item) const
 {
-    Item *tItem = mMyInventory->findItem(
+    const Item *const tItem = mMyInventory->findItem(
         item->getId(), item->getColor());
 
     if (tItem && (tItem->getQuantity() > 1
@@ -463,7 +467,7 @@ bool TradeWindow::checkItem(Item *item)
     return true;
 }
 
-bool TradeWindow::isInpupFocused()
+bool TradeWindow::isInpupFocused() const
 {
     return (mMoneyField && mMoneyField->isFocused());
 }

@@ -682,7 +682,7 @@ void ResourceManager::deleteInstance()
     if (instance)
     {
         logger->log("clean orphans start");
-        while(instance->cleanOrphans(true));
+        while (instance->cleanOrphans(true));
         logger->log("clean orphans end");
         ResourceIterator iter = instance->mResources.begin();
 

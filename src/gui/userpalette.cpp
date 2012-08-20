@@ -25,12 +25,10 @@
 
 #include "configuration.h"
 #include "client.h"
-#include "logger.h"
 
 #include "gui/gui.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <math.h>
 
@@ -192,7 +190,8 @@ UserPalette::~UserPalette()
     }
 }
 
-void UserPalette::setColor(int type, int r, int g, int b)
+void UserPalette::setColor(const int type, const int r,
+                           const int g, const int b)
 {
     gcn::Color &color = mColors[type].color;
     color.r = r;
@@ -200,11 +199,9 @@ void UserPalette::setColor(int type, int r, int g, int b)
     color.b = b;
 }
 
-void UserPalette::setGradient(int type, GradientType grad)
+void UserPalette::setGradient(const int type, const GradientType grad)
 {
-    ColorElem *elem = &mColors[type];
-    if (!elem)
-        return;
+    ColorElem *const elem = &mColors[type];
 
     if (elem->grad != STATIC && grad == STATIC)
     {
@@ -234,7 +231,7 @@ std::string UserPalette::getElementAt(int i)
     return mColors[i].text;
 }
 
-void UserPalette::commit(bool commitNonStatic)
+void UserPalette::commit(const bool commitNonStatic)
 {
     for (Colors::iterator i = mColors.begin(), iEnd = mColors.end();
          i != iEnd; ++i)
@@ -279,8 +276,9 @@ int UserPalette::getColorTypeAt(int i)
     return mColors[i].type;
 }
 
-void UserPalette::addColor(unsigned type, unsigned rgb,
-                           Palette::GradientType grad, const std::string &text,
+void UserPalette::addColor(const unsigned type, const unsigned rgb,
+                           Palette::GradientType grad,
+                           const std::string &text,
                            int delay)
 {
     const unsigned maxType = sizeof(ColorTypeNames)
