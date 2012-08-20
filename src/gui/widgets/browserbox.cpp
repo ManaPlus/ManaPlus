@@ -145,7 +145,10 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
             bLink.x1 = font->getWidth(tmp2) - 1;
             bLink.x2 = bLink.x1 + font->getWidth(bLink.caption) + 1;
 
-            mLinks.push_back(bLink);
+            if (atTop)
+                mLinks.insert(mLinks.begin(), bLink);
+            else
+                mLinks.push_back(bLink);
             linksCount ++;
 
             newRow += "##<" + bLink.caption;
