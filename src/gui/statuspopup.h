@@ -24,6 +24,8 @@
 #ifndef StatusPopup_H
 #define StatusPopup_H
 
+#include "keydata.h"
+
 #include "gui/widgets/popup.h"
 
 #include "resources/iteminfo.h"
@@ -67,7 +69,8 @@ class StatusPopup : public Popup
 
         void setLabelText(gcn::Label *label, const char *text, int key);
 
-        void setLabelText2(gcn::Label *label, std::string text, int key);
+        void setLabelText2(gcn::Label *label, std::string text,
+                           Input::KeyAction key);
 
         gcn::Label *mMoveType;
         gcn::Label *mCrazyMoveType;

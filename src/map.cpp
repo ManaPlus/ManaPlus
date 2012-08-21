@@ -811,7 +811,7 @@ Path Map::findPixelPath(int startPixelX, int startPixelY, int endPixelX,
     float endOffsetX = static_cast<float>(endPixelX % 32);
     float endOffsetY = static_cast<float>(endPixelY % 32);
 
-    int sz = myPath.size();
+    int sz = static_cast<int>(myPath.size());
     // Find the distance, and divide it by the number of steps
     int changeX = static_cast<int>((endOffsetX - startOffsetX)
                   / static_cast<float>(sz));
@@ -1359,7 +1359,8 @@ void Map::indexTilesets()
         return;
     }
 
-    const int size = static_cast<int>(s->getFirstGid()) + s->size();
+    const int size = static_cast<int>(s->getFirstGid())
+        + static_cast<int>(s->size());
     mIndexedTilesetsSize = size;
     mIndexedTilesets = new Tileset*[size];
     std::fill_n(mIndexedTilesets, size, static_cast<Tileset*>(nullptr));

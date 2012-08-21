@@ -229,7 +229,8 @@ void TradeWindow::reset()
     setMoney(0);
     mMoneyField->setEnabled(true);
     mMoneyField->setText("");
-    mMoneyLabel->setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    mMoneyLabel->setForegroundColor(Theme::getThemeColor(
+        static_cast<int>(Theme::TEXT)));
     mAddButton->setEnabled(true);
     mMoneyChangeButton->setEnabled(true);
     mGotMoney = 0;

@@ -24,6 +24,8 @@
 #ifndef GUI_SETUP_INPUT_H
 #define GUI_SETUP_INPUT_H
 
+#include "keydata.h"
+
 #include "gui/widgets/setuptab.h"
 
 #include <guichan/actionlistener.hpp>
@@ -58,12 +60,12 @@ class Setup_Input : public SetupTab
         /**
          * Get an update on the assigned key.
          */
-        void refreshAssignedKey(int index);
+        void refreshAssignedKey(const int index);
 
         /**
          * The callback function when a new key has been pressed.
          */
-        void newKeyCallback(int index);
+        void newKeyCallback(const int index);
 
         /**
          * Shorthand method to update all the keys.
@@ -75,15 +77,16 @@ class Setup_Input : public SetupTab
          */
         void keyUnresolved();
 
-        int keyToSetupData(int index);
+        int keyToSetupData(const int index) const;
 
-        std::string keyToString(int index);
+        std::string keyToString(const int index) const;
 
     private:
         void fixTranslations();
 
-        void fixTranslation(SetupActionData *actionDatas, int actionStart,
-                            int actionEnd, std::string text);
+        void fixTranslation(SetupActionData *const actionDatas,
+                            const int actionStart, const int actionEnd,
+                            const std::string &text) const;
 
         class KeyListModel *mKeyListModel;
         gcn::ListBox *mKeyList;

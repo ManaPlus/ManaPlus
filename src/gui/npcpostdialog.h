@@ -36,7 +36,7 @@ public:
     /**
      * Constructor
      */
-    NpcPostDialog(int npcId);
+    NpcPostDialog(const int npcId);
 
     ~NpcPostDialog();
 

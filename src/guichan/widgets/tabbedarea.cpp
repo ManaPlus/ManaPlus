@@ -160,7 +160,8 @@ namespace gcn
 
     int TabbedArea::getSelectedTabIndex() const
     {
-        for (unsigned int i = 0, sz = mTabs.size(); i < sz; i++)
+        for (unsigned int i = 0, sz = static_cast<unsigned int>(mTabs.size());
+             i < sz; i++)
         {
             if (mTabs[i].first == mSelectedTab)
                 return i;
@@ -258,7 +259,7 @@ namespace gcn
     {
         int maxTabHeight = 0;
         unsigned int i;
-        const unsigned int sz = mTabs.size();
+        const unsigned int sz = static_cast<unsigned int>(mTabs.size());
         for (i = 0; i < sz; i++)
         {
             if (mTabs[i].first->getHeight() > maxTabHeight)

@@ -263,15 +263,15 @@ void UpdaterWindow::action(const gcn::ActionEvent &event)
 
 void UpdaterWindow::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (actionId == Input::KEY_GUI_CANCEL)
+    if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
         action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
         Client::setState(STATE_LOGIN);
     }
-    else if (actionId == Input::KEY_GUI_SELECT
-             || actionId == Input::KEY_GUI_SELECT2)
+    else if (actionId == static_cast<int>(Input::KEY_GUI_SELECT)
+             || actionId == static_cast<int>(Input::KEY_GUI_SELECT2))
     {
         if (mDownloadStatus == UPDATE_COMPLETE ||
             mDownloadStatus == UPDATE_ERROR)
@@ -534,7 +534,7 @@ void UpdaterWindow::loadUpdates()
     }
 
     std::string fixPath = mUpdatesDir + "/fix";
-    const unsigned sz = mUpdateFiles.size();
+    const unsigned sz = static_cast<unsigned>(mUpdateFiles.size());
     for (mUpdateIndex = 0; mUpdateIndex < sz; mUpdateIndex++)
     {
         UpdaterWindow::addUpdateFile(resman, mUpdatesDir, fixPath,
@@ -559,8 +559,8 @@ void UpdaterWindow::loadLocalUpdates(std::string dir)
     }
 
     std::string fixPath = dir + "/fix";
-    for (unsigned int updateIndex = 0, sz = updateFiles.size();
-         updateIndex < sz; updateIndex ++)
+    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+         updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
         UpdaterWindow::addUpdateFile(resman, dir, fixPath, 
             updateFiles[updateIndex].name, false);
@@ -575,8 +575,8 @@ void UpdaterWindow::loadManaPlusUpdates(std::string dir,
     std::vector<updateFile> updateFiles
         = loadXMLFile(fixPath + "/" + xmlUpdateFile);
 
-    for (unsigned int updateIndex = 0, sz = updateFiles.size();
-         updateIndex < sz; updateIndex ++)
+    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+         updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
         std::string name = updateFiles[updateIndex].name;
         if (strStartWith(name, "manaplus_"))

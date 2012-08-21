@@ -21,6 +21,8 @@
 #ifndef KEYEVENT_H
 #define KEYEVENT_H
 
+#include "keydata.h"
+
 #include <guichan/key.hpp>
 #include <guichan/keyevent.hpp>
 #include <guichan/widget.hpp>

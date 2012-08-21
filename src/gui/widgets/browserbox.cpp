@@ -228,7 +228,8 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
              i != i_end; ++ i)
         {
             std::string tempRow = *i;
-            for (unsigned int j = 0, sz = tempRow.size(); j < sz; j++)
+            for (unsigned int j = 0, sz = static_cast<unsigned int>(
+                 tempRow.size()); j < sz; j++)
             {
                 std::string character = tempRow.substr(j, 1);
                 x += font->getWidth(character);

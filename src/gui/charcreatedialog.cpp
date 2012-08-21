@@ -434,7 +434,8 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     int w = 480;
     int h = 350;
 
-    for (unsigned i = 0, sz = labels.size(); i < sz; i++)
+    for (unsigned i = 0, sz = static_cast<unsigned>(labels.size());
+         i < sz; i++)
     {
         mAttributeLabel[i] = new Label(labels[i]);
         mAttributeLabel[i]->setWidth(70);

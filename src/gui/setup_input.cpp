@@ -54,7 +54,6 @@ class KeyListModel : public gcn::ListModel
 {
     public:
         KeyListModel() :
-            gcn::ListModel(),
             mDataNum(0),
             mSize(0)
         {
@@ -75,13 +74,13 @@ class KeyListModel : public gcn::ListModel
         /**
          * Sets element from container.
          */
-        void setElementAt(int i, const std::string &caption)
+        void setElementAt(const int i, const std::string &caption)
         { setupActionData[selectedData][i].text = caption; }
 
-        void setSize(int size)
+        void setSize(const int size)
         { mSize = size; }
 
-        void setDataNum(int num)
+        void setDataNum(const int num)
         { mDataNum = num; }
 
     private:
@@ -89,17 +88,22 @@ class KeyListModel : public gcn::ListModel
         int mSize;
 };
 
-Setup_Input::Setup_Input():
+Setup_Input::Setup_Input() :
+    SetupTab(),
     mKeyListModel(new KeyListModel),
     mKeyList(new ListBox(mKeyListModel)),
+    mAssignKeyButton(new Button(_("Assign"), "assign", this)),
+    mUnassignKeyButton(new Button(_("Unassign"), "unassign", this)),
+    mDefaultButton(new Button(_("Default"), "default", this)),
+    mResetKeysButton(new Button(_("Reset all keys"), "resetkeys", this)),
+    mTabs(new TabStrip(config.getIntValue("fontSize") + 10)),
     mKeySetting(false),
-    mActionDataSize(nullptr)
+    mActionDataSize(new int [9])
 {
     inputManager.setSetupInput(this);
     setName(_("Input"));
 
     selectedData = 0;
-    mActionDataSize = new int [9];
 
     for (int f = 0; f < setupGroups; f ++)
     {
@@ -115,25 +119,20 @@ Setup_Input::Setup_Input():
 
     mKeyList->addActionListener(this);
 
-    ScrollArea *scrollArea = new ScrollArea(mKeyList,
+    ScrollArea *const scrollArea = new ScrollArea(mKeyList,
         true, "setup_input_background.xml");
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-    mAssignKeyButton = new Button(_("Assign"), "assign", this);
     mAssignKeyButton->addActionListener(this);
     mAssignKeyButton->setEnabled(false);
 
-    mUnassignKeyButton = new Button(_("Unassign"), "unassign", this);
     mUnassignKeyButton->addActionListener(this);
     mUnassignKeyButton->setEnabled(false);
 
-    mResetKeysButton = new Button(_("Reset all keys"), "resetkeys", this);
     mResetKeysButton->addActionListener(this);
 
-    mDefaultButton = new Button(_("Default"), "default", this);
     mDefaultButton->addActionListener(this);
 
-    mTabs = new TabStrip(config.getIntValue("fontSize") + 10);
     mTabs->addActionListener(this);
     mTabs->setActionEventId("tabs_");
     int k = 0;
@@ -217,11 +216,11 @@ void Setup_Input::action(const gcn::ActionEvent &event)
     {
         if (!mKeySetting)
         {
-            int i(mKeyList->getSelected());
+            const int i(mKeyList->getSelected());
             if (i >= 0 && i < mActionDataSize[selectedData])
             {
                 if (setupActionData[selectedData][i].actionId
-                    == Input::KEY_NO_VALUE)
+                    == static_cast<int>(Input::KEY_NO_VALUE))
                 {
                     mAssignKeyButton->setEnabled(false);
                     mUnassignKeyButton->setEnabled(false);
@@ -239,11 +238,11 @@ void Setup_Input::action(const gcn::ActionEvent &event)
         mKeySetting = true;
         mAssignKeyButton->setEnabled(false);
         keyboard.setEnabled(false);
-        int i(mKeyList->getSelected());
+        const int i(mKeyList->getSelected());
         if (i >= 0 && i < mActionDataSize[selectedData])
         {
             const SetupActionData &key = setupActionData[selectedData][i];
-            int ik = key.actionId;
+            const int ik = key.actionId;
             inputManager.setNewKeyIndex(ik);
             mKeyListModel->setElementAt(i, std::string(
                 gettext(key.name.c_str())) + ": ?");
@@ -251,15 +250,15 @@ void Setup_Input::action(const gcn::ActionEvent &event)
     }
     else if (id == "unassign")
     {
-        int i(mKeyList->getSelected());
+        const int i(mKeyList->getSelected());
         if (i >= 0 && i < mActionDataSize[selectedData])
         {
             const SetupActionData &key = setupActionData[selectedData][i];
-            int ik = key.actionId;
+            const int ik = key.actionId;
             inputManager.setNewKeyIndex(ik);
             refreshAssignedKey(mKeyList->getSelected());
             inputManager.unassignKey();
-            inputManager.setNewKeyIndex(Input::KEY_NO_VALUE);
+            inputManager.setNewKeyIndex(static_cast<int>(Input::KEY_NO_VALUE));
         }
         mAssignKeyButton->setEnabled(true);
     }
@@ -271,11 +270,11 @@ void Setup_Input::action(const gcn::ActionEvent &event)
     }
     else if (id == "default")
     {
-        int i(mKeyList->getSelected());
+        const int i(mKeyList->getSelected());
         if (i >= 0 && i < mActionDataSize[selectedData])
         {
             const SetupActionData &key = setupActionData[selectedData][i];
-            int ik = key.actionId;
+            const int ik = key.actionId;
             inputManager.makeDefault(ik);
             refreshKeys();
         }
@@ -300,10 +299,10 @@ void Setup_Input::action(const gcn::ActionEvent &event)
     }
 }
 
-void Setup_Input::refreshAssignedKey(int index)
+void Setup_Input::refreshAssignedKey(const int index)
 {
     const SetupActionData &key = setupActionData[selectedData][index];
-    if (key.actionId == Input::KEY_NO_VALUE)
+    if (key.actionId == static_cast<int>(Input::KEY_NO_VALUE))
     {
         const std::string str = " \342\200\225\342\200\225\342\200\225"
             "\342\200\225\342\200\225 ";
@@ -318,16 +317,16 @@ void Setup_Input::refreshAssignedKey(int index)
     }
 }
 
-void Setup_Input::newKeyCallback(int index)
+void Setup_Input::newKeyCallback(const int index)
 {
     mKeySetting = false;
-    int i = keyToSetupData(index);
+    const int i = keyToSetupData(index);
     if (i >= 0)
         refreshAssignedKey(i);
     mAssignKeyButton->setEnabled(true);
 }
 
-int Setup_Input::keyToSetupData(int index)
+int Setup_Input::keyToSetupData(const int index) const
 {
     for (int i = 0; i < mActionDataSize[selectedData]; i++)
     {
@@ -338,7 +337,7 @@ int Setup_Input::keyToSetupData(int index)
     return -1;
 }
 
-std::string Setup_Input::keyToString(int index)
+std::string Setup_Input::keyToString(const int index) const
 {
     for (int f = 0; f < setupGroups; f ++)
     {
@@ -363,12 +362,13 @@ void Setup_Input::keyUnresolved()
     if (mKeySetting)
     {
         newKeyCallback(inputManager.getNewKeyIndex());
-        inputManager.setNewKeyIndex(Input::KEY_NO_VALUE);
+        inputManager.setNewKeyIndex(static_cast<int>(Input::KEY_NO_VALUE));
     }
 }
 
-void Setup_Input::fixTranslation(SetupActionData *actionDatas, int actionStart,
-                                 int actionEnd, std::string text)
+void Setup_Input::fixTranslation(SetupActionData *const actionDatas,
+                                 const int actionStart, const int actionEnd,
+                                 const std::string &text) const
 {
     int k = 0;
 
@@ -388,15 +388,17 @@ void Setup_Input::fixTranslation(SetupActionData *actionDatas, int actionStart,
 
 void Setup_Input::fixTranslations()
 {
-    fixTranslation(setupActionData1, Input::KEY_SHORTCUT_1,
-        Input::KEY_SHORTCUT_20, "Item Shortcut %d");
+    fixTranslation(setupActionData1, static_cast<int>(Input::KEY_SHORTCUT_1),
+        static_cast<int>(Input::KEY_SHORTCUT_20), "Item Shortcut %d");
 
-    fixTranslation(setupActionData3, Input::KEY_EMOTE_1,
-        Input::KEY_EMOTE_48, "Emote Shortcut %d");
+    fixTranslation(setupActionData3, static_cast<int>(Input::KEY_EMOTE_1),
+        static_cast<int>(Input::KEY_EMOTE_48), "Emote Shortcut %d");
 
-    fixTranslation(setupActionData4, Input::KEY_OUTFIT_1,
-        Input::KEY_OUTFIT_48, "Outfit Shortcut %d");
+    fixTranslation(setupActionData4, static_cast<int>(Input::KEY_OUTFIT_1),
+        static_cast<int>(Input::KEY_OUTFIT_48), "Outfit Shortcut %d");
 
-    fixTranslation(setupActionData7, Input::KEY_MOVE_TO_POINT_1,
-        Input::KEY_MOVE_TO_POINT_48, "Move to point Shortcut %d");
+    fixTranslation(setupActionData7, static_cast<int>(
+        Input::KEY_MOVE_TO_POINT_1),
+        static_cast<int>(Input::KEY_MOVE_TO_POINT_48),
+        "Move to point Shortcut %d");
 }

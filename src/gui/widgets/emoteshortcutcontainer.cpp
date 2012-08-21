@@ -131,7 +131,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         graphics->setColor(getForegroundColor());
         g->drawText(key, emoteX + 2, emoteY + 2, gcn::Graphics::LEFT);
     }
-    unsigned sz = mEmoteImg.size();
+    unsigned sz = static_cast<unsigned>(mEmoteImg.size());
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         if (i < sz && mEmoteImg[i] && mEmoteImg[i]->sprite)

@@ -211,7 +211,8 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     // Check if a button of a character was pressed
     const gcn::Widget *sourceParent = event.getSource()->getParent();
     int selected = -1;
-    for (size_t i = 0, sz = mCharacterEntries.size(); i < sz; ++i)
+    for (unsigned int i = 0, sz = static_cast<unsigned int>(
+         mCharacterEntries.size()); i < sz; ++i)
     {
         if (mCharacterEntries[i] == sourceParent)
         {
@@ -540,7 +541,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
                     if (mCharacterEntries[i])
                         mCharacterEntries[i]->requestFocus();
                     if (selAction == Choose)
-                        attemptCharacterSelect(i);
+                        attemptCharacterSelect(static_cast<int>(i));
                     return true;
                 }
             }

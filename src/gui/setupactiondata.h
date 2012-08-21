@@ -1533,7 +1533,7 @@ static SetupActionData setupActionData8[] =
     }
 };
 
-static SetupActionData *setupActionData[] =
+static SetupActionData *const setupActionData[] =
 {
     setupActionData0,
     setupActionData7,
@@ -1546,7 +1546,7 @@ static SetupActionData *setupActionData[] =
     setupActionData8
 };
 
-static const char *pages[] =
+static const char *const pages[] =
 {
     N_("Basic"),
     N_("Move"),

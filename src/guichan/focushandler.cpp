@@ -74,7 +74,8 @@ namespace gcn
             return;
 
         int toBeFocusedIndex = -1;
-        for (unsigned int i = 0, sz = mWidgets.size(); i < sz; ++i)
+        for (unsigned int i = 0, sz = static_cast<unsigned int>(
+             mWidgets.size()); i < sz; ++i)
         {
             if (mWidgets[i] == widget)
             {

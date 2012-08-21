@@ -518,7 +518,8 @@ std::string OutfitWindow::keyName(int number)
 {
     if (number < 0 || number >= SHORTCUT_EMOTES)
         return "";
-    return inputManager.getKeyStringLong(Input::KEY_EMOTE_1 + number);
+    return inputManager.getKeyStringLong(static_cast<int>(
+        Input::KEY_EMOTE_1) + number);
 }
 
 void OutfitWindow::next()

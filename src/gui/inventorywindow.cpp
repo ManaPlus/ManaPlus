@@ -363,7 +363,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
         }
         else
         {
-            if (inputManager.isActionActive(Input::KEY_MOD))
+            if (inputManager.isActionActive(static_cast<int>(Input::KEY_MOD)))
             {
                 Net::getInventoryHandler()->dropItem(
                     item, item->getQuantity());
@@ -414,10 +414,10 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
         gui->resetClickCount();
 
     const bool mod = (isStorageActive() && inputManager.isActionActive(
-        Input::KEY_MOD));
+        static_cast<int>(Input::KEY_MOD)));
 
     const bool mod2 = (tradeWindow && tradeWindow->isVisible()
-        && inputManager.isActionActive(Input::KEY_MOD));
+        && inputManager.isActionActive(static_cast<int>(Input::KEY_MOD)));
 
     if (!mod && !mod2 && event.getButton() == gcn::MouseEvent::RIGHT)
     {
@@ -534,14 +534,20 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
 
 void InventoryWindow::keyPressed(gcn::KeyEvent &event)
 {
-    if (static_cast<KeyEvent*>(&event)->getActionId() == Input::KEY_GUI_MOD)
+    if (static_cast<KeyEvent*>(&event)->getActionId()
+        == static_cast<int>(Input::KEY_GUI_MOD))
+    {
         mSplit = true;
+    }
 }
 
 void InventoryWindow::keyReleased(gcn::KeyEvent &event)
 {
-    if (static_cast<KeyEvent*>(&event)->getActionId() == Input::KEY_GUI_MOD)
+    if (static_cast<KeyEvent*>(&event)->getActionId()
+        == static_cast<int>(Input::KEY_GUI_MOD))
+    {
         mSplit = false;
+    }
 }
 
 void InventoryWindow::valueChanged(const gcn::SelectionEvent &event A_UNUSED)

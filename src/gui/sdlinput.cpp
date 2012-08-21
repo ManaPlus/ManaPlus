@@ -58,6 +58,7 @@
 
 #include "gui/sdlinput.h"
 
+#include "keydata.h"
 #include "keyinput.h"
 
 #include "inputmanager.h"

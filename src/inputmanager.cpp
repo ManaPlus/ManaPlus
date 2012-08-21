@@ -694,5 +694,5 @@ int InputManager::getActionByKey(const SDL_Event &event)
         if (idx >= 0 && checkKey(&keyData[idx]))
             return idx;
     }
-    return -1;
+    return Input::KEY_NO_VALUE;
 }

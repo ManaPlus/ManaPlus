@@ -21,6 +21,8 @@
 #ifndef KEYINPUT_H
 #define KEYINPUT_H
 
+#include "keydata.h"
+
 #include <guichan/keyinput.hpp>
 
 #include <string>

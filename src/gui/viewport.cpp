@@ -499,18 +499,20 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                     }
                 }
                 else if (player_node->withinAttackRange(mHoverBeing) ||
-                         inputManager.isActionActive(Input::KEY_ATTACK))
+                         inputManager.isActionActive(static_cast<int>(
+                         Input::KEY_ATTACK)))
                 {
                     validateSpeed();
                     if (player_node != mHoverBeing)
                     {
                         player_node->attack(mHoverBeing,
                             !inputManager.isActionActive(
-                            Input::KEY_STOP_ATTACK));
+                            static_cast<int>(Input::KEY_STOP_ATTACK)));
                         return;
                     }
                 }
-                else if (!inputManager.isActionActive(Input::KEY_ATTACK))
+                else if (!inputManager.isActionActive(static_cast<int>(
+                         Input::KEY_ATTACK)))
                 {
                     validateSpeed();
                     if (player_node != mHoverBeing)
@@ -528,7 +530,8 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
             player_node->pickUp(mHoverItem);
         }
         // Just walk around
-        else if (!inputManager.isActionActive(Input::KEY_ATTACK))
+        else if (!inputManager.isActionActive(static_cast<int>(
+                 Input::KEY_ATTACK)))
         {
             validateSpeed();
             player_node->stopAttack();
@@ -929,8 +932,9 @@ void Viewport::returnCamera()
 
 void Viewport::validateSpeed()
 {
-    if (!inputManager.isActionActive(Input::KEY_TARGET_ATTACK)
-        && !inputManager.isActionActive(Input::KEY_ATTACK))
+    if (!inputManager.isActionActive(static_cast<int>(
+        Input::KEY_TARGET_ATTACK)) && !inputManager.isActionActive(
+        static_cast<int>(Input::KEY_ATTACK)))
     {
         if (Game::instance())
             Game::instance()->setValidSpeed();

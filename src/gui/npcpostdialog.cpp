@@ -38,7 +38,7 @@
 
 NpcPostDialog::DialogList NpcPostDialog::instances;
 
-NpcPostDialog::NpcPostDialog(int npcId):
+NpcPostDialog::NpcPostDialog(const int npcId):
     Window(_("NPC"), false, nullptr, "npcpost.xml"),
     ActionListener(),
     mNpcId(npcId),
@@ -48,16 +48,16 @@ NpcPostDialog::NpcPostDialog(int npcId):
     setContentSize(400, 180);
 
     // create text field for receiver
-    gcn::Label *senderText = new Label(_("To:"));
+    gcn::Label *const senderText = new Label(_("To:"));
     senderText->setPosition(5, 5);
     mSender->setPosition(senderText->getWidth() + 5, 5);
     mSender->setWidth(65);
 
     // create button for sending
-    Button *sendButton = new Button(_("Send"), "send", this);
+    Button *const sendButton = new Button(_("Send"), "send", this);
     sendButton->setPosition(400 - sendButton->getWidth(),
                             170 - sendButton->getHeight());
-    Button *cancelButton = new Button(_("Cancel"), "cancel", this);
+    Button *const cancelButton = new Button(_("Cancel"), "cancel", this);
     cancelButton->setPosition(sendButton->getX()
         - (cancelButton->getWidth() + 2), sendButton->getY());
 
@@ -66,7 +66,7 @@ NpcPostDialog::NpcPostDialog(int npcId):
     mText->setEditable(true);
 
     // create scroll box for letter text
-    ScrollArea *scrollArea = new ScrollArea(mText);
+    ScrollArea *const scrollArea = new ScrollArea(mText);
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     scrollArea->setDimension(gcn::Rectangle(
                 5, mSender->getHeight() + 5,

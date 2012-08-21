@@ -141,15 +141,16 @@ void WorldSelectDialog::action(const gcn::ActionEvent &event)
 
 void WorldSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int actionId = static_cast<KeyEvent*>(
+        &keyEvent)->getActionId();
 
-    if (actionId == Input::KEY_GUI_CANCEL)
+    if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
         action(gcn::ActionEvent(nullptr,
             mChangeLoginButton->getActionEventId()));
     }
-    else if (actionId == Input::KEY_GUI_SELECT
-             || actionId == Input::KEY_GUI_SELECT2)
+    else if (actionId == static_cast<int>(Input::KEY_GUI_SELECT)
+             || actionId == static_cast<int>(Input::KEY_GUI_SELECT2))
     {
         action(gcn::ActionEvent(nullptr, mChooseWorld->getActionEventId()));
     }

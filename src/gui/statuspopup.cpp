@@ -192,10 +192,11 @@ void StatusPopup::setLabelText(gcn::Label *label, const char *text, int key)
         inputManager.getKeyValueString(key).c_str()));
 }
 
-void StatusPopup::setLabelText2(gcn::Label *label, std::string text, int key)
+void StatusPopup::setLabelText2(gcn::Label *label, std::string text,
+                                Input::KeyAction key)
 {
     label->setCaption(strprintf("%s  %s", text.c_str(),
-        inputManager.getKeyValueString(key).c_str()));
+        inputManager.getKeyValueString(static_cast<int>(key)).c_str()));
     label->adjustSize();
 }
 

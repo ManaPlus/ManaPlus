@@ -366,8 +366,8 @@ bool Gui::handleKeyInput2()
             // If the key event hasn't been consumed and
             // tabbing is enable check for tab press and
             // change focus.
-            if (!keyEventConsumed && mTabbing
-                && keyInput.getActionId() == Input::KEY_GUI_TAB
+            if (!keyEventConsumed && mTabbing && keyInput.getActionId()
+                == static_cast<int>(Input::KEY_GUI_TAB)
                 && keyInput.getType() == gcn::KeyInput::PRESSED)
             {
                 if (keyInput.isShiftPressed())

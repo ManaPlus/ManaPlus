@@ -152,7 +152,8 @@ public:
         mPlayers = player_names;
 
         // set up widgets
-        for (unsigned int r = 0, sz = player_names->size(); r < sz; ++r)
+        for (unsigned int r = 0, sz = static_cast<unsigned int>(
+             player_names->size()); r < sz; ++r)
         {
             std::string name = (*player_names)[r];
             gcn::Widget *widget = new Label(name);
@@ -323,7 +324,7 @@ void Setup_Relations::reset()
             player_relations.getPlayerIgnoreStrategy())
         {
 
-            selection = i;
+            selection = static_cast<int>(i);
             break;
         }
     }

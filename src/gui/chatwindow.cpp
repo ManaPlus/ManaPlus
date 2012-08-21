@@ -753,8 +753,8 @@ void ChatWindow::mouseReleased(gcn::MouseEvent &event A_UNUSED)
 void ChatWindow::keyPressed(gcn::KeyEvent &event)
 {
     const int key = event.getKey().getValue();
-    int actionId = static_cast<KeyEvent*>(&event)->getActionId();
-    if (actionId == Input::KEY_GUI_DOWN)
+    const int actionId = static_cast<KeyEvent*>(&event)->getActionId();
+    if (actionId == static_cast<int>(Input::KEY_GUI_DOWN))
     {
         if (mCurHist != mHistory.end())
         {
@@ -778,7 +778,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
             mChatInput->setText("");
         }
     }
-    else if (actionId == Input::KEY_GUI_UP &&
+    else if (actionId == static_cast<int>(Input::KEY_GUI_UP) &&
              mCurHist != mHistory.begin() && !mHistory.empty())
     {
         // Move backward through the history
@@ -787,7 +787,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         mChatInput->setCaretPosition(static_cast<unsigned>(
                 mChatInput->getText().length()));
     }
-    else if (actionId == Input::KEY_GUI_INSERT &&
+    else if (actionId == static_cast<int>(Input::KEY_GUI_INSERT) &&
              mChatInput->getText() != "")
     {
         // Add the current message to the history and clear the text
@@ -796,18 +796,18 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         mCurHist = mHistory.end();
         mChatInput->setText("");
     }
-    else if (actionId == Input::KEY_GUI_TAB &&
+    else if (actionId == static_cast<int>(Input::KEY_GUI_TAB) &&
              mChatInput->getText() != "")
     {
         autoComplete();
         return;
     }
-    else if (actionId == Input::KEY_GUI_CANCEL &&
+    else if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL) &&
              mChatInput->isVisible())
     {
         mChatInput->processVisible(false);
     }
-    else if (actionId == Input::KEY_CHAT_PREV_HISTORY &&
+    else if (actionId == static_cast<int>(Input::KEY_CHAT_PREV_HISTORY) &&
              mChatInput->isVisible())
     {
         ChatTab *tab = getFocused();
@@ -839,7 +839,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
                 mChatInput->getText().length()));
         }
     }
-    else if (actionId == Input::KEY_CHAT_NEXT_HISTORY &&
+    else if (actionId == static_cast<int>(Input::KEY_CHAT_NEXT_HISTORY) &&
              mChatInput->isVisible())
     {
         ChatTab *tab = getFocused();
