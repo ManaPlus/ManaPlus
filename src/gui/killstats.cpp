@@ -26,15 +26,13 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/chattab.h"
-#include "gui/chatwindow.h"
 
 #include "actorspritemanager.h"
-#include "depricatedevent.h"
+#include "game.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <math.h>
 #include <guichan/widgets/label.hpp>

@@ -29,13 +29,10 @@
 
 #include "gui/widgets/label.h"
 
-#include "textcommand.h"
-
 #include "graphics.h"
 #include "units.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <guichan/font.hpp>
 

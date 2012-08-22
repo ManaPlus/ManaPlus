@@ -24,9 +24,6 @@
 
 #include "configuration.h"
 #include "client.h"
-#include "logger.h"
-
-#include "net/messagein.h"
 
 #include "net/tmwa/protocol.h"
 #include "net/tmwa/npchandler.h"

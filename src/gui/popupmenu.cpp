@@ -24,6 +24,7 @@
 
 #include "actorspritemanager.h"
 #include "dropshortcut.h"
+#include "game.h"
 #include "guild.h"
 #include "guildmanager.h"
 #include "graphics.h"
@@ -71,6 +72,8 @@
 #include "utils/gettext.h"
 
 #include "debug.h"
+
+extern int serverVersion;
 
 std::string tradePartnerName("");
 

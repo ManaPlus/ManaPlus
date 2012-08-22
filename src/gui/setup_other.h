@@ -24,7 +24,6 @@
 #define GUI_Setup_Other_H
 
 #include "gui/widgets/setupitem.h"
-#include "gui/widgets/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>
 

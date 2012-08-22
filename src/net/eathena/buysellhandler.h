@@ -27,10 +27,6 @@
 
 #include "net/ea/buysellhandler.h"
 
-#include "being.h"
-
-#include "net/net.h"
-
 #include "net/eathena/messagehandler.h"
 
 namespace EAthena

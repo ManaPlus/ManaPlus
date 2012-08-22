@@ -30,7 +30,6 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/passwordfield.h"
-#include "gui/widgets/textfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 
@@ -39,7 +38,6 @@
 #include "net/net.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <string>
 #include <sstream>

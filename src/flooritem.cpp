@@ -25,13 +25,11 @@
 #include "client.h"
 #include "graphics.h"
 #include "item.h"
-#include "map.h"
 #include "configuration.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
 
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 
 #include "debug.h"

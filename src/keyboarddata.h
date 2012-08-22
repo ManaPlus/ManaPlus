@@ -24,12 +24,9 @@
 #define KEYBOARDDATA_H
 
 #include "actionmanager.h"
-#include "inputmanager.h"
-#include "keydata.h"
 #include "localconsts.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <string>
 

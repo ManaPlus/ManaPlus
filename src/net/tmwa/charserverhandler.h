@@ -27,8 +27,6 @@
 
 #include "net/ea/charserverhandler.h"
 
-#include "net/serverinfo.h"
-
 #include "net/tmwa/messagehandler.h"
 
 #include "net/ea/token.h"

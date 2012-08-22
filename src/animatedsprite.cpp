@@ -31,8 +31,6 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
-#include "utils/xml.h"
-
 #include "debug.h"
 
 bool AnimatedSprite::mEnableCache = false;

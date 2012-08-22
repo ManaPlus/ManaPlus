@@ -22,9 +22,11 @@
 
 #include "game.h"
 
+#include "actorspritemanager.h"
 #include "auctionmanager.h"
 #include "animatedsprite.h"
 #include "channelmanager.h"
+#include "client.h"
 #include "commandhandler.h"
 #include "effectmanager.h"
 #include "emoteshortcut.h"
@@ -34,7 +36,6 @@
 #include "joystick.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "particle.h"
 #include "playerinfo.h"
 #include "sound.h"
@@ -69,7 +70,6 @@
 #include "gui/whoisonline.h"
 
 #include "gui/widgets/battletab.h"
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/dropshortcutcontainer.h"
 #include "gui/widgets/emoteshortcutcontainer.h"
 #include "gui/widgets/itemshortcutcontainer.h"
@@ -77,7 +77,6 @@
 #include "gui/widgets/tradetab.h"
 
 #include "net/gamehandler.h"
-#include "net/net.h"
 #include "net/packetcounters.h"
 #include "net/playerhandler.h"
 
@@ -86,11 +85,8 @@
 #include "resources/mapreader.h"
 #include "resources/resourcemanager.h"
 
-#include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
-
-//#include "utils/translation/translationmanager.h"
 
 #include <guichan/exception.hpp>
 #include <guichan/focushandler.hpp>

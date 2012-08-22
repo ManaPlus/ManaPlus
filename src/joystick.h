@@ -24,9 +24,8 @@
 #define JOYSTICK_H
 
 #include "inputevent.h"
-#include "keydata.h"
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 #include <string>
 #include <vector>

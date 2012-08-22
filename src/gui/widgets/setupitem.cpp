@@ -29,7 +29,6 @@
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/horizontcontainer.h"
@@ -38,8 +37,6 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/slider.h"
 #include "gui/widgets/sliderlist.h"
-#include "gui/widgets/tabbedarea.h"
-#include "gui/widgets/textfield.h"
 #include "gui/widgets/vertcontainer.h"
 
 #include "utils/dtor.h"

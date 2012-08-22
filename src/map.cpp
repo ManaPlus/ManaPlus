@@ -23,14 +23,14 @@
 #include "map.h"
 
 #include "actorspritemanager.h"
+#include "client.h"
 #include "configuration.h"
 
-#include "logger.h"
+#include "localplayer.h"
 #include "maplayer.h"
 #include "particle.h"
 #include "simpleanimation.h"
 #include "tileset.h"
-#include "localplayer.h"
 
 #include "resources/ambientlayer.h"
 #include "resources/image.h"
@@ -44,6 +44,7 @@
 
 #include <limits.h>
 #include <physfs.h>
+#include <queue>
 
 #include <sys/stat.h>
 

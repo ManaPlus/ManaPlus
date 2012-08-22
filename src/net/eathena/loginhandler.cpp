@@ -23,10 +23,8 @@
 #include "net/eathena/loginhandler.h"
 
 #include "client.h"
-#include "logger.h"
 #include "configuration.h"
-
-#include "net/messagein.h"
+#include "logger.h"
 
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"

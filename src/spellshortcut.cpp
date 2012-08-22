@@ -32,8 +32,6 @@
 #include "net/inventoryhandler.h"
 #include "net/net.h"
 
-#include "utils/stringutils.h"
-
 #include "debug.h"
 
 SpellShortcut *spellShortcut;

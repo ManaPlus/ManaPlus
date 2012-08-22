@@ -25,8 +25,6 @@
 #include "logger.h"
 #include "main.h"
 
-#include "utils/stringutils.h"
-
 #include <curl/curl.h>
 
 #include <SDL.h>

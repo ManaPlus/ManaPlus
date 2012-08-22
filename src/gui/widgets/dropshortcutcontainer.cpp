@@ -28,20 +28,14 @@
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
-#include "configuration.h"
+#include "client.h"
 #include "dropshortcut.h"
-#include "graphics.h"
-#include "inventory.h"
-#include "item.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 
 #include "resources/image.h"
-#include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
-
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

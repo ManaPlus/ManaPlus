@@ -23,13 +23,8 @@
 #include "net/eathena/gamehandler.h"
 
 #include "client.h"
-#include "depricatedevent.h"
 #include "game.h"
 #include "localplayer.h"
-#include "logger.h"
-
-#include "net/messagein.h"
-#include "net/messageout.h"
 
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/network.h"

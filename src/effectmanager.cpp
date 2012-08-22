@@ -27,8 +27,6 @@
 #include "particle.h"
 #include "sound.h"
 
-#include "utils/xml.h"
-
 #include "debug.h"
 
 EffectManager::EffectManager()

@@ -25,8 +25,6 @@
 #include "client.h"
 #include "logger.h"
 
-#include "utils/xml.h"
-
 #include "debug.h"
 
 namespace

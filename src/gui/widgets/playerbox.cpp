@@ -26,7 +26,6 @@
 #include "being.h"
 #include "client.h"
 #include "configuration.h"
-#include "graphics.h"
 
 #include "gui/theme.h"
 

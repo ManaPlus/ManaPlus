@@ -37,7 +37,6 @@
 #include "gui/widgets/textbox.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "resources/image.h"
 #include "resources/resourcemanager.h"

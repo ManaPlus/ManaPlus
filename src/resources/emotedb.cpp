@@ -25,7 +25,6 @@
 #include "client.h"
 #include "logger.h"
 
-#include "utils/xml.h"
 #include "configuration.h"
 
 #include "debug.h"

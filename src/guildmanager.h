@@ -21,7 +21,6 @@
 #ifndef GUILDMANAGER_H
 #define GUILDMANAGER_H
 
-#include "utils/dtor.h"
 #include "utils/stringvector.h"
 
 #include <map>

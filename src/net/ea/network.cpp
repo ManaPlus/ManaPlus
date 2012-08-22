@@ -26,12 +26,10 @@
 #include "logger.h"
 
 #include "net/messagehandler.h"
-#include "net/messagein.h"
 
 #include "net/eathena/protocol.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <assert.h>
 #include <sstream>

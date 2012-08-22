@@ -25,7 +25,6 @@
 #include "animationparticle.h"
 #include "configuration.h"
 #include "resources/dye.h"
-#include "imageparticle.h"
 #include "logger.h"
 #include "map.h"
 #include "particleemitter.h"
@@ -38,7 +37,6 @@
 
 #include "utils/dtor.h"
 #include "utils/mathutils.h"
-#include "utils/xml.h"
 
 #include <guichan/color.hpp>
 

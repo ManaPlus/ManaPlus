@@ -40,9 +40,7 @@
 #include "gui/setup_video.h"
 #include "gui/setup_visual.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/tabbedarea.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"

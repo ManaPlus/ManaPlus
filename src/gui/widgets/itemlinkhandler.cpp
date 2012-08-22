@@ -29,8 +29,6 @@
 
 #include "utils/process.h"
 
-#include "resources/itemdb.h"
-
 #include <sstream>
 #include <string>
 

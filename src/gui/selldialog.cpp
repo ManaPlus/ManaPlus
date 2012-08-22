@@ -28,7 +28,6 @@
 #include "gui/setup.h"
 #include "gui/tradewindow.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
@@ -43,7 +42,6 @@
 #include "resources/iteminfo.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

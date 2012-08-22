@@ -23,6 +23,7 @@
 #include "gui/quitdialog.h"
 
 #include "client.h"
+#include "game.h"
 #include "keydata.h"
 #include "keyevent.h"
 

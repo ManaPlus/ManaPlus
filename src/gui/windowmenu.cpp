@@ -35,9 +35,6 @@
 #include "gui/textpopup.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/window.h"
-#include "gui/widgets/windowcontainer.h"
-
 #include "net/net.h"
 #include "net/playerhandler.h"
 

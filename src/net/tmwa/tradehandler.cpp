@@ -23,10 +23,7 @@
 #include "net/tmwa/tradehandler.h"
 
 #include "item.h"
-#include "logger.h"
 #include "playerinfo.h"
-
-#include "net/messagein.h"
 
 #include "net/tmwa/protocol.h"
 

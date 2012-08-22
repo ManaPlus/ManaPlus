@@ -22,10 +22,6 @@
 
 #include "net/tmwa/inventoryhandler.h"
 
-#include "logger.h"
-
-#include "net/messagein.h"
-
 #include "net/tmwa/protocol.h"
 
 #include "net/ea/eaprotocol.h"

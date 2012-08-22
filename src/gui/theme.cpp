@@ -26,7 +26,6 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "logger.h"
 
 #include "resources/dye.h"
 #include "resources/image.h"
@@ -34,8 +33,6 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/dtor.h"
-#include "utils/stringutils.h"
-#include "utils/xml.h"
 
 #include <physfs.h>
 

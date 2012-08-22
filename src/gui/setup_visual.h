@@ -23,7 +23,6 @@
 #define GUI_SETUP_VISUAL_H
 
 #include "gui/widgets/setupitem.h"
-#include "gui/widgets/setuptabscroll.h"
 
 class Setup_Visual : public SetupTabScroll
 {

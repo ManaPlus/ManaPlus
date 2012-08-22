@@ -27,7 +27,6 @@
 #include "configuration.h"
 #include "keydata.h"
 #include "keyevent.h"
-#include "logger.h"
 #include "main.h"
 
 #include "gui/editserverdialog.h"
@@ -50,8 +49,6 @@
 
 #include "utils/gettext.h"
 #include "utils/langs.h"
-#include "utils/stringutils.h"
-#include "utils/xml.h"
 
 #include <guichan/font.hpp>
 

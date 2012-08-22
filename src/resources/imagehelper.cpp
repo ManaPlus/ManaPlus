@@ -29,8 +29,6 @@
 #include "logger.h"
 #include "main.h"
 
-#include "utils/stringutils.h"
-
 #include "resources/image.h"
 
 #include <SDL_image.h>

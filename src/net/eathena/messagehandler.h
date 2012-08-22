@@ -24,7 +24,6 @@
 #define NET_EATHENA_MESSAGEHANDLER_H
 
 #include "net/messagehandler.h"
-#include "net/messagein.h"
 
 #include "net/eathena/messageout.h"
 

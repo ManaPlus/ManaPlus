@@ -31,22 +31,16 @@
 #include "gui/textcommandeditor.h"
 #include "gui/theme.h"
 
-#include "configuration.h"
-#include "graphics.h"
-#include "inventory.h"
+#include "client.h"
 #include "spellshortcut.h"
 #include "itemshortcut.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "spellmanager.h"
-#include "logger.h"
 
 #include "resources/image.h"
-#include "textcommand.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

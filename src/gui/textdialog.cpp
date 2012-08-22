@@ -27,7 +27,6 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/passwordfield.h"
-#include "gui/widgets/textfield.h"
 
 #include "utils/gettext.h"
 

@@ -22,6 +22,7 @@
 
 #include "gui/widgets/itemshortcutcontainer.h"
 
+#include "client.h"
 #include "configuration.h"
 #include "graphics.h"
 #include "inventory.h"
@@ -32,21 +33,15 @@
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "playerinfo.h"
-#include "spellmanager.h"
-#include "textcommand.h"
 
 #include "gui/inventorywindow.h"
 #include "gui/itempopup.h"
-#include "gui/palette.h"
 #include "gui/skilldialog.h"
 #include "gui/spellpopup.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "resources/image.h"
-#include "resources/iteminfo.h"
-
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

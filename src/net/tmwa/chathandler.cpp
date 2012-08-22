@@ -23,21 +23,16 @@
 #include "net/tmwa/chathandler.h"
 
 #include "actorspritemanager.h"
-#include "being.h"
 #include "configuration.h"
 #include "depricatedevent.h"
 #include "game.h"
 #include "localplayer.h"
 #include "playerrelations.h"
-#include "logger.h"
 
 #include "gui/chatwindow.h"
 #include "gui/shopwindow.h"
 
 #include "gui/widgets/chattab.h"
-
-#include "net/messagein.h"
-#include "net/messageout.h"
 
 #include "net/tmwa/protocol.h"
 

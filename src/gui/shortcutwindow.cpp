@@ -31,8 +31,6 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shortcutcontainer.h"
-#include "gui/widgets/tab.h"
-#include "gui/widgets/tabbedarea.h"
 
 #include "debug.h"
 

@@ -22,9 +22,9 @@
 
 #include "actorspritemanager.h"
 
+#include "client.h"
 #include "configuration.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "main.h"
 #include "playerinfo.h"
 #include "playerrelations.h"
@@ -39,12 +39,9 @@
 #include "utils/checkutils.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "net/net.h"
 #include "net/playerhandler.h"
-
-#include "resources/beinginfo.h"
 
 #include <algorithm>
 #include <list>

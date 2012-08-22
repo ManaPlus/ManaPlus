@@ -32,13 +32,10 @@
 #include "gui/widgets/window.h"
 #include "gui/widgets/windowcontainer.h"
 
-#include "configlistener.h"
 #include "configuration.h"
-#include "graphics.h"
 #include "keydata.h"
 #include "keyevent.h"
 #include "keyinput.h"
-#include "logger.h"
 
 #include "resources/image.h"
 #include "resources/imageset.h"

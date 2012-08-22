@@ -26,13 +26,10 @@
 #include "client.h"
 #include "configuration.h"
 #include "effectmanager.h"
-#include "flooritem.h"
 #include "graphics.h"
 #include "guild.h"
 #include "item.h"
 #include "keyboardconfig.h"
-#include "logger.h"
-#include "map.h"
 #include "maplayer.h"
 #include "party.h"
 #include "particle.h"
@@ -53,7 +50,6 @@
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/theme.h"
-#include "gui/userpalette.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/chattab.h"
@@ -68,13 +64,11 @@
 #include "net/specialhandler.h"
 #include "net/tradehandler.h"
 
-#include "resources/animation.h"
 #include "resources/imageset.h"
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "mumblemanager.h"
 

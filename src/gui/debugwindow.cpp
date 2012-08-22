@@ -26,7 +26,6 @@
 #include "game.h"
 #include "localplayer.h"
 #include "main.h"
-#include "map.h"
 #include "particle.h"
 
 #include "gui/setup.h"
@@ -38,15 +37,12 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/tab.h"
-#include "gui/widgets/tabbedarea.h"
 
 #include "resources/imagehelper.h"
 
 #include "net/packetcounters.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

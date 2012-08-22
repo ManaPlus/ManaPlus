@@ -36,7 +36,6 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/passwordfield.h"
-#include "gui/widgets/textfield.h"
 
 #include "net/logindata.h"
 #include "net/loginhandler.h"
@@ -44,7 +43,6 @@
 
 #include "utils/gettext.h"
 #include "utils/paths.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

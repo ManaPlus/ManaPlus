@@ -24,7 +24,6 @@
 
 #include "itemshortcut.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "playerinfo.h"
 #include "configuration.h"
 
@@ -34,16 +33,12 @@
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/button.h"
-#include "gui/widgets/container.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tab.h"
-#include "gui/widgets/tabbedarea.h"
-#include "gui/widgets/windowcontainer.h"
 
 #include "net/net.h"
 #include "net/playerhandler.h"
@@ -54,8 +49,6 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
-#include "utils/xml.h"
 
 #include <guichan/font.hpp>
 

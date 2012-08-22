@@ -33,8 +33,6 @@
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
 
-#include "utils/stringutils.h"
-
 #include <guichan/exception.hpp>
 
 #include "debug.h"

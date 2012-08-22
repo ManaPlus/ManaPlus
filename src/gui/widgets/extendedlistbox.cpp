@@ -23,15 +23,12 @@
 #include "client.h"
 #include "configuration.h"
 #include "keyevent.h"
-#include "keydata.h"
 
 #include "gui/palette.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
 
 #include "gui/widgets/extendedlistmodel.h"
-
-#include "resources/image.h"
 
 #include <guichan/focushandler.hpp>
 #include <guichan/font.hpp>

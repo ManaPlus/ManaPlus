@@ -26,7 +26,6 @@
 #include "gui/setup.h"
 #include "gui/theme.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/container.h"
 #include "gui/widgets/icon.h"
 #include "gui/widgets/label.h"
@@ -35,7 +34,6 @@
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tab.h"
-#include "gui/widgets/tabbedarea.h"
 #include "gui/widgets/flowcontainer.h"
 #include "gui/widgets/windowcontainer.h"
 
@@ -46,7 +44,6 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 #include "utils/xml.h"
 
 #include <string>

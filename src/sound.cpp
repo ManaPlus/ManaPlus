@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "localplayer.h"
-#include "logger.h"
 
 #include "resources/music.h"
 #include "resources/resourcemanager.h"

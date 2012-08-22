@@ -32,9 +32,6 @@
 
 #include "client.h"
 #include "logger.h"
-#include "main.h"
-
-#include "utils/stringutils.h"
 
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"

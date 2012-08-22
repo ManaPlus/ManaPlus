@@ -37,8 +37,6 @@
 #include "units.h"
 #include "keyboardconfig.h"
 
-#include "utils/stringutils.h"
-
 #include <guichan/font.hpp>
 #include <guichan/widgets/label.hpp>
 

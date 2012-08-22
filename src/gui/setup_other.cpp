@@ -24,7 +24,6 @@
 
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/setupitem.h"
 
 #include "configuration.h"
 #include "logger.h"

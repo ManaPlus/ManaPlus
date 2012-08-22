@@ -27,7 +27,6 @@
 #include "resources/beinginfo.h"
 
 #include "utils/dtor.h"
-#include "utils/xml.h"
 #include "configuration.h"
 
 #include "debug.h"

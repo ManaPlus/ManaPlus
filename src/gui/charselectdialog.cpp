@@ -23,12 +23,9 @@
 #include "gui/charselectdialog.h"
 
 #include "client.h"
-#include "game.h"
-#include "localplayer.h"
 #include "units.h"
 #include "keydata.h"
 #include "keyevent.h"
-#include "logger.h"
 
 #include "gui/changeemaildialog.h"
 #include "gui/changepassworddialog.h"
@@ -36,7 +33,6 @@
 #include "gui/confirmdialog.h"
 #include "gui/logindialog.h"
 #include "gui/okdialog.h"
-#include "gui/sdlinput.h"
 #include "gui/textdialog.h"
 #include "gui/unregisterdialog.h"
 
@@ -48,7 +44,6 @@
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/textfield.h"
 
-#include "net/charhandler.h"
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/messageout.h"
@@ -57,7 +52,6 @@
 #include "resources/colordb.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <guichan/focushandler.hpp>
 #include <guichan/font.hpp>

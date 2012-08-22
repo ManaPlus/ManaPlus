@@ -24,15 +24,14 @@
 
 #include "actorspritemanager.h"
 #include "chatlogger.h"
+#include "client.h"
 #include "commandhandler.h"
 #include "configuration.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "sound.h"
 
 #include "gui/helpwindow.h"
 
-#include "gui/widgets/browserbox.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/tradetab.h"
@@ -44,7 +43,6 @@
 #include "resources/itemdb.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <guichan/widgets/tabbedarea.hpp>
 

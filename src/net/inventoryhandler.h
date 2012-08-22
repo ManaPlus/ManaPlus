@@ -23,7 +23,6 @@
 #ifndef INVENTORYHANDLER_H
 #define INVENTORYHANDLER_H
 
-#include "inventory.h"
 #include "item.h"
 
 #include <iosfwd>

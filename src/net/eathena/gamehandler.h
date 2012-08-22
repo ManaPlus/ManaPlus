@@ -25,7 +25,6 @@
 
 #include "net/gamehandler.h"
 #include "net/net.h"
-#include "net/serverinfo.h"
 
 #include "net/eathena/messagehandler.h"
 

@@ -23,13 +23,8 @@
 #include "net/tmwa/gamehandler.h"
 
 #include "client.h"
-#include "depricatedevent.h"
 #include "game.h"
 #include "localplayer.h"
-#include "logger.h"
-
-#include "net/messagein.h"
-#include "net/messageout.h"
 
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/network.h"

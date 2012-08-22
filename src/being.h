@@ -23,12 +23,7 @@
 #ifndef BEING_H
 #define BEING_H
 
-#include "actorsprite.h"
-#include "configlistener.h"
 #include "equipment.h"
-#include "map.h"
-#include "position.h"
-#include "vector.h"
 
 #include "resources/beinginfo.h"
 

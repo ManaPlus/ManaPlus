@@ -27,8 +27,6 @@
 #include "graphics.h"
 #include "logger.h"
 
-#include "utils/stringutils.h"
-
 #include "gui/gui.h"
 #include "gui/palette.h"
 #include "gui/sdlfont.h"
@@ -37,7 +35,6 @@
 #include "gui/widgets/linkhandler.h"
 
 #include "resources/image.h"
-#include "resources/resource.h"
 #include "resources/resourcemanager.h"
 
 #include <guichan/graphics.hpp>

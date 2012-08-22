@@ -30,7 +30,6 @@
 
 #include "gui/widgets/chattab.h"
 
-#include "net/messagein.h"
 #include "net/messageout.h"
 
 #include "utils/gettext.h"

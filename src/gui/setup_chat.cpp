@@ -36,7 +36,6 @@
 
 #include "configuration.h"
 #include "localplayer.h"
-#include "logger.h"
 
 #include "utils/gettext.h"
 

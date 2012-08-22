@@ -28,9 +28,6 @@
 #endif
 
 #include "client.h"
-#include "main.h"
-
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

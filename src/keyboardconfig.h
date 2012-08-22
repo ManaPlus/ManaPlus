@@ -27,7 +27,6 @@
 #include <SDL_keyboard.h>
 
 #include "inputevent.h"
-#include "keydata.h"
 
 #include <map>
 #include <string>

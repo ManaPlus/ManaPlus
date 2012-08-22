@@ -23,7 +23,6 @@
 
 #include "client.h"
 #include "depricatedevent.h"
-#include "equipment.h"
 #include "inventory.h"
 #include "listener.h"
 #include "logger.h"
@@ -32,10 +31,8 @@
 #include "gui/npcdialog.h"
 #include "gui/npcpostdialog.h"
 
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 
-#include "net/net.h"
 #include "net/playerhandler.h"
 
 #include "debug.h"

@@ -23,7 +23,7 @@
 #ifndef TEXTCOMMAND_H
 #define TEXTCOMMAND_H
 
-#include "resources/itemdb.h"
+#include <string>
 
 #define MAGIC_START_ID 340
 

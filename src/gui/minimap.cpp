@@ -23,15 +23,11 @@
 #include "gui/minimap.h"
 
 #include "actorspritemanager.h"
-#include "being.h"
+#include "client.h"
 #include "configuration.h"
-#include "graphics.h"
 #include "localplayer.h"
-#include "logger.h"
-#include "map.h"
 #include "party.h"
 
-#include "gui/userpalette.h"
 #include "gui/setup.h"
 #include "gui/viewport.h"
 

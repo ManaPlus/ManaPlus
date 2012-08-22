@@ -23,8 +23,8 @@
 #include "net/ea/loginhandler.h"
 
 #include "client.h"
-#include "logger.h"
 #include "configuration.h"
+#include "logger.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"

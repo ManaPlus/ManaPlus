@@ -23,7 +23,6 @@
 
 #include "gui/widgets/popup.h"
 
-#include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
 #include "logger.h"
@@ -31,7 +30,6 @@
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/windowcontainer.h"
 #include "gui/widgets/window.h"
 
 #include "resources/image.h"

@@ -24,13 +24,10 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "logger.h"
 
 #include "gui/charcreatedialog.h"
 
 #include "net/logindata.h"
-#include "net/messagein.h"
-#include "net/net.h"
 
 #include "net/tmwa/gamehandler.h"
 #include "net/tmwa/loginhandler.h"

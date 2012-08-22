@@ -26,7 +26,6 @@
 #include "logger.h"
 
 #include "utils/paths.h"
-#include "utils/stringutils.h"
 
 #include <stdlib.h>
 

@@ -26,11 +26,11 @@
 #include "actorspritemanager.h"
 #include "channelmanager.h"
 #include "channel.h"
+#include "client.h"
 #include "configuration.h"
 #include "game.h"
 #include "guildmanager.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "main.h"
 #include "party.h"
 
@@ -44,7 +44,6 @@
 #include "gui/sdlfont.h"
 
 #include "gui/widgets/channeltab.h"
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/whispertab.h"
 
 #include "net/adminhandler.h"
@@ -70,7 +69,6 @@
 
 #include "utils/gettext.h"
 #include "utils/process.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

@@ -23,8 +23,6 @@
 #include "gui/equipmentwindow.h"
 
 #include "being.h"
-#include "equipment.h"
-#include "graphics.h"
 #include "inventory.h"
 #include "item.h"
 #include "localplayer.h"
@@ -34,20 +32,16 @@
 #include "gui/setup.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/playerbox.h"
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"
 
-#include "resources/image.h"
 #include "resources/imageset.h"
-#include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <guichan/font.hpp>
 

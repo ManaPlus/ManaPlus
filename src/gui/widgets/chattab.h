@@ -28,8 +28,6 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/tab.h"
 
-#include "utils/stringvector.h"
-
 #include "localconsts.h"
 
 class ScrollArea;

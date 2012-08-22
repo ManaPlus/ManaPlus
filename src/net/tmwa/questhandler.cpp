@@ -24,9 +24,6 @@
 
 #include "gui/questswindow.h"
 
-#include "net/messagein.h"
-#include "net/net.h"
-
 #include "net/tmwa/protocol.h"
 
 #include "net/ea/eaprotocol.h"

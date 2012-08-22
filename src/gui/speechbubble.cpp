@@ -23,11 +23,8 @@
 
 #include "gui/speechbubble.h"
 
-#include "graphics.h"
-
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/label.h"
 #include "gui/widgets/textbox.h"

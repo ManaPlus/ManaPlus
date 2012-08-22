@@ -34,7 +34,6 @@
 
 #include "gui/widgets/layout.h"
 #include "gui/widgets/resizegrip.h"
-#include "gui/widgets/windowcontainer.h"
 
 #include "resources/image.h"
 

@@ -23,8 +23,8 @@
 #ifndef VIEWPORT_H
 #define VIEWPORT_H
 
-#include "actorspritemanager.h"
 #include "configlistener.h"
+#include "maplayer.h"
 #include "position.h"
 
 #include "gui/widgets/windowcontainer.h"

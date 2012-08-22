@@ -26,7 +26,6 @@
 #include "actor.h"
 #include "configlistener.h"
 #include "position.h"
-#include "properties.h"
 
 #include <string>
 #include <vector>

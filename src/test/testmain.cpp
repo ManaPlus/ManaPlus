@@ -23,11 +23,8 @@
 #include "utils/gettext.h"
 
 #include "client.h"
-#include "localconsts.h"
 
-#include "utils/gettext.h"
 #include "utils/mkdir.h"
-#include "utils/stringutils.h"
 #include "utils/paths.h"
 #include "utils/process.h"
 

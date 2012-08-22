@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_GUILDLISTBOX_H
-#define GUI_GUILDLISTBOX_H
+#ifndef GUI_AVATARLISTBOX_H
+#define GUI_AVATARLISTBOX_H
 
 #include "avatar.h"
 

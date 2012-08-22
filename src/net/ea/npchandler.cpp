@@ -24,9 +24,6 @@
 
 #include "gui/npcdialog.h"
 
-#include "net/messagein.h"
-#include "net/net.h"
-
 #include "debug.h"
 
 namespace Ea

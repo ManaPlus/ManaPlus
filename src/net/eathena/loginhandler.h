@@ -29,8 +29,6 @@
 
 #include "net/eathena/messagehandler.h"
 
-#include "net/ea/token.h"
-
 #include <string>
 
 class LoginData;

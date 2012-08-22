@@ -23,14 +23,10 @@
 #include "net/ea/gamehandler.h"
 
 #include "client.h"
-#include "depricatedevent.h"
 #include "game.h"
 #include "localplayer.h"
-#include "logger.h"
 
 #include "gui/okdialog.h"
-
-#include "net/messagein.h"
 
 #include "utils/gettext.h"
 

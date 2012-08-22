@@ -26,10 +26,7 @@
 #include "inputmanager.h"
 #include "logger.h"
 
-#include "gui/sdlinput.h"
-
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <SDL_events.h>
 

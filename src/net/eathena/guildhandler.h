@@ -26,8 +26,6 @@
 
 #include "net/ea/guildhandler.h"
 
-#include "net/ea/gui/guildtab.h"
-
 #include "net/eathena/messagehandler.h"
 
 namespace EAthena

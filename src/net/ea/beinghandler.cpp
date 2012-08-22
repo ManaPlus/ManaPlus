@@ -25,15 +25,14 @@
 #include "net/ea/eaprotocol.h"
 
 #include "actorspritemanager.h"
-#include "being.h"
 #include "client.h"
 #include "effectmanager.h"
+#include "game.h"
 #include "guild.h"
 #include "guildmanager.h"
 #include "inputmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "party.h"
 #include "playerrelations.h"
 #include "configuration.h"
@@ -44,10 +43,8 @@
 #include "gui/killstats.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "net/playerhandler.h"
-#include "net/net.h"
 
 #include "resources/colordb.h"
 #include "resources/itemdb.h"

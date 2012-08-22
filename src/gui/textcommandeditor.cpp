@@ -37,7 +37,6 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/radiobutton.h"
 #include "gui/widgets/guitable.h"
-#include "gui/widgets/textfield.h"
 
 #include "configuration.h"
 #include "item.h"
@@ -47,9 +46,7 @@
 #include "spellmanager.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 
 #include "debug.h"

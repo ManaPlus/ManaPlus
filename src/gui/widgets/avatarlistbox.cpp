@@ -30,15 +30,12 @@
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"
-#include "gui/palette.h"
 #include "gui/sdlfont.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
-
-#include "utils/stringutils.h"
 
 #include <guichan/font.hpp>
 

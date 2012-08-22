@@ -26,7 +26,6 @@
 #include "net/charhandler.h"
 #include "net/messagein.h"
 #include "net/net.h"
-#include "net/serverinfo.h"
 
 class LoginData;
 

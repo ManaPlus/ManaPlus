@@ -27,9 +27,9 @@
 
 #include "configlistener.h"
 
-#include "gui/widgets/window.h"
-
 #include "utils/stringvector.h"
+
+#include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>

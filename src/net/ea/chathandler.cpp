@@ -23,12 +23,10 @@
 #include "net/ea/chathandler.h"
 
 #include "actorspritemanager.h"
-#include "being.h"
 #include "configuration.h"
 #include "guildmanager.h"
 #include "localplayer.h"
 #include "playerrelations.h"
-#include "logger.h"
 
 #include "gui/chatwindow.h"
 #include "gui/shopwindow.h"
@@ -36,7 +34,6 @@
 #include "gui/widgets/chattab.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <string>
 

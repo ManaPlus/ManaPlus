@@ -25,7 +25,6 @@
 
 #include "net/messagein.h"
 
-#include "being.h"
 #include "shopitem.h"
 
 namespace Net

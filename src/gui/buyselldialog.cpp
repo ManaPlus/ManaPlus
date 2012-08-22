@@ -24,8 +24,6 @@
 
 #include "gui/setup.h"
 
-#include "gui/widgets/button.h"
-
 #include "net/buysellhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"

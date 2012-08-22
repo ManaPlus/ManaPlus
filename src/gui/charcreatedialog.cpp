@@ -22,15 +22,11 @@
 
 #include "gui/charcreatedialog.h"
 
-#include "client.h"
-#include "game.h"
 #include "keydata.h"
 #include "keyevent.h"
-#include "localplayer.h"
 #include "main.h"
 #include "units.h"
 
-#include "gui/charselectdialog.h"
 #include "gui/confirmdialog.h"
 #include "gui/okdialog.h"
 
@@ -42,7 +38,6 @@
 #include "gui/widgets/slider.h"
 #include "gui/widgets/textfield.h"
 
-#include "net/charhandler.h"
 #include "net/messageout.h"
 #include "net/net.h"
 
@@ -52,11 +47,12 @@
 #include "resources/iteminfo.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <guichan/font.hpp>
 
 #include "debug.h"
+
+extern int serverVersion;
 
 static const Being::Action actions[] =
 {

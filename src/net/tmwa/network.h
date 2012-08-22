@@ -25,11 +25,8 @@
 
 #include "net/ea/network.h"
 
-#include "net/serverinfo.h"
-
 #include "net/tmwa/messagehandler.h"
 #include "net/tmwa/messagein.h"
-#include "net/tmwa/messageout.h"
 
 #include <SDL_net.h>
 #include <SDL_thread.h>

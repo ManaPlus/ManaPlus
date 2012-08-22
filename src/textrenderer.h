@@ -23,8 +23,6 @@
 #ifndef TEXT_RENDERER_H
 #define TEXT_RENDERER_H
 
-#include "graphics.h"
-
 #include "gui/theme.h"
 
 /**

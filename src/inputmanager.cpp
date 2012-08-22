@@ -20,6 +20,7 @@
 
 #include "inputmanager.h"
 
+#include "client.h"
 #include "configuration.h"
 #include "game.h"
 #include "joystick.h"
@@ -32,6 +33,7 @@
 #include "gui/inventorywindow.h"
 #include "gui/npcdialog.h"
 #include "gui/npcpostdialog.h"
+#include "gui/sdlinput.h"
 #include "gui/setup.h"
 #include "gui/setup_input.h"
 #include "gui/textdialog.h"

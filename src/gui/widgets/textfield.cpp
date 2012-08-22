@@ -26,7 +26,6 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "keyevent.h"
-#include "keydata.h"
 #include "logger.h"
 
 #include "gui/palette.h"
@@ -37,7 +36,6 @@
 
 #include "utils/copynpaste.h"
 #include "utils/dtor.h"
-#include "utils/stringutils.h"
 
 #include <guichan/font.hpp>
 

@@ -23,8 +23,9 @@
 #ifndef GUI_SETUP_AUDIO_H
 #define GUI_SETUP_AUDIO_H
 
+#include "map.h"
+
 #include "gui/widgets/setupitem.h"
-#include "gui/widgets/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>
 

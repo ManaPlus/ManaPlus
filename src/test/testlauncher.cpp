@@ -24,15 +24,12 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsmanager.h"
-#include "localconsts.h"
-#include "logger.h"
 #include "sound.h"
 
 #include "gui/theme.h"
 
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
-#include "utils/stringutils.h"
 
 #include "resources/image.h"
 #include "resources/wallpaper.h"

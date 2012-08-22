@@ -27,8 +27,6 @@
 #include "logger.h"
 #include "net.h"
 
-#include "utils/stringutils.h"
-
 #include "debug.h"
 
 #define MAKEWORD(low, high) \

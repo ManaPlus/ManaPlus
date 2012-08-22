@@ -31,24 +31,19 @@
 #include "guild.h"
 #include "item.h"
 #include "localplayer.h"
-#include "logger.h"
-#include "map.h"
 #include "particle.h"
 #include "party.h"
 #include "playerrelations.h"
 #include "simpleanimation.h"
 #include "sound.h"
-#include "sprite.h"
 #include "text.h"
 
 #include "gui/equipmentwindow.h"
 #include "gui/gui.h"
 #include "gui/socialwindow.h"
 #include "gui/speechbubble.h"
-#include "gui/theme.h"
 #include "gui/sdlfont.h"
 #include "gui/skilldialog.h"
-#include "gui/userpalette.h"
 
 #include "net/charhandler.h"
 #include "net/gamehandler.h"
@@ -57,11 +52,8 @@
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
 
-#include "resources/beinginfo.h"
 #include "resources/colordb.h"
 #include "resources/emotedb.h"
-#include "resources/image.h"
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 #include "resources/monsterdb.h"
 #include "resources/npcdb.h"
@@ -69,10 +61,7 @@
 
 #include "gui/widgets/chattab.h"
 
-#include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
-#include "utils/xml.h"
 
 #include <cmath>
 

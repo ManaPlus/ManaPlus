@@ -24,7 +24,6 @@
 
 #include "chatwindow.h"
 #include "configuration.h"
-#include "depricatedevent.h"
 #include "equipment.h"
 #include "inventory.h"
 #include "item.h"
@@ -37,13 +36,11 @@
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/vertcontainer.h"
-#include "gui/widgets/windowcontainer.h"
 
 #include "net/net.h"
 #include "net/playerhandler.h"
@@ -51,7 +48,6 @@
 
 #include "utils/gettext.h"
 #include "utils/mathutils.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

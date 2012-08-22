@@ -25,7 +25,6 @@
 #include "chatlogger.h"
 #include "commandhandler.h"
 #include "localplayer.h"
-#include "logger.h"
 
 #include "gui/theme.h"
 
@@ -36,7 +35,6 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

@@ -24,10 +24,10 @@
 #include "inputevent.h"
 #include "keydata.h"
 
-#include "gui/sdlinput.h"
-
 #include <string>
 #include <map>
+
+#include <SDL/SDL.h>
 
 #define KeyFunctionSize 3
 

@@ -22,8 +22,6 @@
 
 #include "net/eathena/itemhandler.h"
 
-#include "net/messagein.h"
-
 #include "net/eathena/protocol.h"
 
 #include "debug.h"

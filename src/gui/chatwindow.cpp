@@ -26,14 +26,13 @@
 #include "client.h"
 #include "commandhandler.h"
 #include "configuration.h"
+#include "game.h"
 #include "guild.h"
 #include "inputmanager.h"
-#include "keydata.h"
 #include "keyevent.h"
 #include "localplayer.h"
 #include "party.h"
 #include "playerinfo.h"
-#include "playerrelations.h"
 #include "spellshortcut.h"
 #include "sound.h"
 
@@ -45,12 +44,10 @@
 #include "gui/viewport.h"
 
 #include "gui/widgets/battletab.h"
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/tabbedarea.h"
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/tradetab.h"
 #include "gui/widgets/whispertab.h"
@@ -60,9 +57,7 @@
 #include "net/net.h"
 
 #include "utils/copynpaste.h"
-#include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "resources/resourcemanager.h"
 

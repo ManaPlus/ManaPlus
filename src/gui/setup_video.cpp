@@ -22,6 +22,7 @@
 
 #include "gui/setup_video.h"
 
+#include "client.h"
 #include "configuration.h"
 #include "game.h"
 #include "graphics.h"
@@ -29,8 +30,6 @@
 #include "graphicsmanager.h"
 
 #include "localplayer.h"
-#include "logger.h"
-#include "main.h"
 
 #include "gui/gui.h"
 #include "gui/okdialog.h"
@@ -50,7 +49,6 @@
 #include "resources/image.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <guichan/key.hpp>
 #include <guichan/listmodel.hpp>

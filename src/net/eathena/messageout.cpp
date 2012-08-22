@@ -28,8 +28,6 @@
 
 #include "logger.h"
 
-#include "utils/stringutils.h"
-
 #include <SDL.h>
 #include <SDL_endian.h>
 

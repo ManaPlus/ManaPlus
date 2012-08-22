@@ -32,7 +32,6 @@
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
-#include "utils/stringutils.h"
 
 #include <guichan/sdl/sdlpixel.hpp>
 

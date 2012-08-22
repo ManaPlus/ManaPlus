@@ -26,7 +26,6 @@
 
 #include "graphicsvertexes.h"
 
-#include "logger.h"
 #include "localplayer.h"
 
 #include "resources/image.h"

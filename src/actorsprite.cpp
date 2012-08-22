@@ -27,7 +27,6 @@
 #include "effectmanager.h"
 #include "imagesprite.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "simpleanimation.h"
 #include "sound.h"
 #include "statuseffect.h"
@@ -36,7 +35,6 @@
 
 #include "net/net.h"
 
-#include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 

@@ -24,8 +24,6 @@
 #include "configuration.h"
 #include "localplayer.h"
 
-#include "utils/stringutils.h"
-
 #include "resources/emotedb.h"
 
 #include "debug.h"

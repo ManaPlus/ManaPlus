@@ -33,7 +33,6 @@
 #include "gui/tradewindow.h"
 
 #include "net/inventoryhandler.h"
-#include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
 

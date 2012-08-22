@@ -27,10 +27,6 @@
 #include "gui/npcdialog.h"
 #include "gui/viewport.h"
 
-#include "net/messagein.h"
-#include "net/net.h"
-#include "net/npchandler.h"
-
 #include "net/eathena/protocol.h"
 
 #include "net/ea/eaprotocol.h"

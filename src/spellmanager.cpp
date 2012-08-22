@@ -22,9 +22,7 @@
 
 #include "spellmanager.h"
 
-#include "being.h"
 #include "configuration.h"
-#include "logger.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 
@@ -34,7 +32,6 @@
 #include "net/playerhandler.h"
 
 #include "utils/dtor.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

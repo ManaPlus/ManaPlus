@@ -25,11 +25,8 @@
 
 #include "net/ea/network.h"
 
-#include "net/serverinfo.h"
-
 #include "net/eathena/messagehandler.h"
 #include "net/eathena/messagein.h"
-#include "net/eathena/messageout.h"
 
 #include <SDL_net.h>
 #include <SDL_thread.h>

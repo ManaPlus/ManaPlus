@@ -23,12 +23,9 @@
 #include "net/ea/charserverhandler.h"
 
 #include "client.h"
-#include "logger.h"
 
 #include "gui/charcreatedialog.h"
 #include "gui/okdialog.h"
-
-#include "net/net.h"
 
 #include "net/ea/loginhandler.h"
 #include "net/ea/eaprotocol.h"

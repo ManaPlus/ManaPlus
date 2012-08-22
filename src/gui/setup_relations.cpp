@@ -25,7 +25,6 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "localplayer.h"
-#include "logger.h"
 
 #include "gui/editdialog.h"
 #include "gui/okdialog.h"
@@ -37,7 +36,6 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/guitable.h"
-#include "gui/widgets/textfield.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"

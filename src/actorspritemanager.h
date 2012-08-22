@@ -23,12 +23,8 @@
 #ifndef ACTORSPRITEMANAGER_H
 #define ACTORSPRITEMANAGER_H
 
-#include "actorsprite.h"
 #include "being.h"
-#include "configlistener.h"
 #include "flooritem.h"
-
-#include "utils/stringvector.h"
 
 class LocalPlayer;
 class Map;

@@ -29,8 +29,6 @@
 
 #include "net/ea/partyhandler.h"
 
-#include "party.h"
-
 namespace EAthena
 {
 

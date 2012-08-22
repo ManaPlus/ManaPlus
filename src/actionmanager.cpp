@@ -20,6 +20,7 @@
 
 #include "actionmanager.h"
 
+#include "actorspritemanager.h"
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
@@ -28,7 +29,6 @@
 #include "itemshortcut.h"
 #include "inputmanager.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "playerinfo.h"
 #include "playerrelations.h"
 #include "sound.h"
@@ -58,9 +58,7 @@
 #include "gui/whoisonline.h"
 
 #include "gui/widgets/chattab.h"
-#include "gui/widgets/window.h"
 
-#include "net/net.h"
 #include "net/playerhandler.h"
 
 #include "utils/gettext.h"

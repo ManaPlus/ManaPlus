@@ -22,6 +22,7 @@
 #include "gui/widgets/emoteshortcutcontainer.h"
 
 #include "animatedsprite.h"
+#include "client.h"
 #include "configuration.h"
 #include "emoteshortcut.h"
 #include "graphics.h"
@@ -31,14 +32,11 @@
 #include "itemshortcut.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "logger.h"
 
-#include "gui/palette.h"
 #include "gui/textpopup.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
-#include "resources/emotedb.h"
 #include "resources/image.h"
 
 #include "utils/dtor.h"

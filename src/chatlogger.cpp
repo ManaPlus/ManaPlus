@@ -39,7 +39,6 @@
 #include "logger.h"
 #include "configuration.h"
 #include "utils/mkdir.h"
-#include "utils/stringutils.h"
 
 #include <physfs.h>
 

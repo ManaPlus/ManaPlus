@@ -30,7 +30,6 @@
 
 #include "utils/gettext.h"
 #include "utils/mathutils.h"
-#include "utils/stringutils.h"
 
 #include <math.h>
 

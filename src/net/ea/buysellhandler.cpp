@@ -23,13 +23,12 @@
 #include "net/ea/buysellhandler.h"
 
 #include "actorspritemanager.h"
+#include "client.h"
 #include "configuration.h"
 #include "depricatedevent.h"
 #include "inventory.h"
-#include "item.h"
 #include "localplayer.h"
 #include "playerinfo.h"
-#include "shopitem.h"
 
 #include "gui/buydialog.h"
 #include "gui/buyselldialog.h"
@@ -39,8 +38,6 @@
 #include "gui/widgets/chattab.h"
 
 #include "net/chathandler.h"
-#include "net/messagein.h"
-#include "net/net.h"
 
 #include "utils/gettext.h"
 

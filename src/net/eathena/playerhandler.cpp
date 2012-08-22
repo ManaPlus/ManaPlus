@@ -24,9 +24,6 @@
 
 #include "configuration.h"
 #include "client.h"
-#include "logger.h"
-
-#include "net/messagein.h"
 
 #include "net/eathena/protocol.h"
 #include "net/eathena/npchandler.h"

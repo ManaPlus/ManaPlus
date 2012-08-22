@@ -36,8 +36,6 @@
 #include "resources/resourcemanager.h"
 #include "resources/wallpaper.h"
 
-#include "utils/stringutils.h"
-
 #include "debug.h"
 
 Desktop::Desktop() :

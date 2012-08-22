@@ -21,8 +21,7 @@
 #ifndef TEST_TESTLAUNCHER_H
 #define TEST_TESTLAUNCHER_H
 
-#include "logger.h"
-
+#include <fstream>
 #include <string>
 #include <sys/time.h>
 

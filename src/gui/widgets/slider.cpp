@@ -26,7 +26,6 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "keyevent.h"
-#include "keydata.h"
 
 #include "gui/theme.h"
 

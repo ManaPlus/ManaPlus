@@ -23,7 +23,6 @@
 #include "playerrelations.h"
 
 #include "actorspritemanager.h"
-#include "being.h"
 #include "configuration.h"
 #include "graphics.h"
 #include "localplayer.h"

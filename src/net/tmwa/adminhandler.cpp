@@ -22,22 +22,16 @@
 
 #include "net/tmwa/adminhandler.h"
 
-#include "net/ea/adminhandler.h"
-
 #include "actorspritemanager.h"
-#include "being.h"
 #include "depricatedevent.h"
 #include "game.h"
-#include "logger.h"
 #include "playerrelations.h"
 
 #include "net/chathandler.h"
-#include "net/net.h"
 
 #include "net/tmwa/protocol.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <string>
 

@@ -28,7 +28,6 @@
 #include "gui/setup.h"
 #include "gui/tradewindow.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/label.h"
@@ -41,6 +40,7 @@
 
 #include "actorspritemanager.h"
 #include "auctionmanager.h"
+#include "client.h"
 #include "configuration.h"
 #include "confirmdialog.h"
 #include "inventory.h"
@@ -61,7 +61,6 @@
 #include "resources/iteminfo.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <sstream>
 

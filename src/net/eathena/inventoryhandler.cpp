@@ -22,10 +22,6 @@
 
 #include "net/eathena/inventoryhandler.h"
 
-#include "logger.h"
-
-#include "net/messagein.h"
-
 #include "net/eathena/protocol.h"
 
 #include "net/ea/eaprotocol.h"

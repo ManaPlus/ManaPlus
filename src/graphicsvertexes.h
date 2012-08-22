@@ -24,7 +24,6 @@
 
 #include "main.h"
 
-#include "graphics.h"
 #include "localconsts.h"
 
 #ifdef USE_OPENGL

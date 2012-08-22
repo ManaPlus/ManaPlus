@@ -33,11 +33,9 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/namesmodel.h"
-#include "gui/widgets/textfield.h"
 
 #include "configuration.h"
 #include "localplayer.h"
-#include "logger.h"
 
 #include "utils/gettext.h"
 

@@ -27,8 +27,6 @@
 
 #include "gui/widgets/chattab.h"
 
-#include "utils/xml.h"
-
 #include "configuration.h"
 
 #include <map>

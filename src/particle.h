@@ -25,7 +25,6 @@
 
 #include "actor.h"
 #include "localconsts.h"
-#include "vector.h"
 
 #include <list>
 #include <string>

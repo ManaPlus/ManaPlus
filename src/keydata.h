@@ -23,7 +23,7 @@
 #ifndef KEYDATA_H
 #define KEYDATA_H
 
-#include "actionmanager.h"
+#include "inputevent.h"
 
 #include <string>
 

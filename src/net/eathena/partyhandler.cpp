@@ -23,9 +23,6 @@
 
 #include "actorspritemanager.h"
 #include "localplayer.h"
-#include "logger.h"
-
-#include "net/messagein.h"
 
 #include "net/eathena/protocol.h"
 

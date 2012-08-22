@@ -25,7 +25,6 @@
 #include "client.h"
 #include "configuration.h"
 #include "keyevent.h"
-#include "keydata.h"
 
 #include "gui/sdlinput.h"
 #include "gui/theme.h"

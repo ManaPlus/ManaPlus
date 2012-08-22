@@ -27,10 +27,6 @@
 #include "gui/npcdialog.h"
 #include "gui/viewport.h"
 
-#include "net/messagein.h"
-#include "net/net.h"
-#include "net/npchandler.h"
-
 #include "net/tmwa/protocol.h"
 
 #include "net/ea/eaprotocol.h"
@@ -40,6 +36,7 @@
 #include "debug.h"
 
 extern Net::NpcHandler *npcHandler;
+extern int serverVersion;
 
 namespace TmwAthena
 {

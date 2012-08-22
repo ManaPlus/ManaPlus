@@ -23,13 +23,8 @@
 
 #include "actorspritemanager.h"
 #include "localplayer.h"
-#include "logger.h"
 
 #include "gui/socialwindow.h"
-
-#include "net/messagein.h"
-
-#include "net/ea/gui/partytab.h"
 
 #include "utils/gettext.h"
 

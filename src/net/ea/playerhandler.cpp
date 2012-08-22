@@ -22,10 +22,9 @@
 
 #include "net/ea/playerhandler.h"
 
+#include "game.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "party.h"
-#include "playerinfo.h"
 #include "units.h"
 
 #include "gui/ministatuswindow.h"
@@ -34,7 +33,6 @@
 #include "gui/statuswindow.h"
 #include "gui/viewport.h"
 
-#include "net/messagein.h"
 #include "net/npchandler.h"
 
 #include "net/ea/eaprotocol.h"

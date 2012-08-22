@@ -25,13 +25,12 @@
 #include "configuration.h"
 #include "emoteshortcut.h"
 #include "equipment.h"
-#include "graphics.h"
+#include "game.h"
 #include "inputmanager.h"
 #include "inventory.h"
 #include "item.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "playerinfo.h"
 
 #include "gui/chatwindow.h"
@@ -45,14 +44,10 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 
-#include "net/inventoryhandler.h"
-#include "net/net.h"
-
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <vector>
 

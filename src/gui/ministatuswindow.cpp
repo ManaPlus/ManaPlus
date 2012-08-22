@@ -23,7 +23,6 @@
 #include "gui/ministatuswindow.h"
 
 #include "animatedsprite.h"
-#include "configuration.h"
 #include "graphics.h"
 #include "localplayer.h"
 #include "playerinfo.h"
@@ -46,7 +45,6 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

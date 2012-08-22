@@ -32,7 +32,6 @@
 #include "gui/viewport.h"
 
 #include "gui/widgets/browserbox.h"
-#include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/itemlinkhandler.h"
@@ -41,7 +40,6 @@
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textbox.h"
-#include "gui/widgets/textfield.h"
 
 #include "resources/resourcemanager.h"
 
@@ -49,7 +47,6 @@
 #include "net/npchandler.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <guichan/font.hpp>
 

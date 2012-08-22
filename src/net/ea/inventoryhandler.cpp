@@ -22,19 +22,17 @@
 
 #include "net/ea/inventoryhandler.h"
 
-#include "inventory.h"
 #include "localplayer.h"
-#include "logger.h"
 
 #include "gui/ministatuswindow.h"
-
-#include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
 
 #include "utils/gettext.h"
 
 #include "debug.h"
+
+extern int serverVersion;
 
 const Equipment::Slot EQUIP_POINTS[Equipment::EQUIP_VECTOREND] =
 {

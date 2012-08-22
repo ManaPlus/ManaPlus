@@ -27,7 +27,6 @@
 #include "textrenderer.h"
 
 #include "gui/gui.h"
-#include "gui/palette.h"
 #include "gui/sdlfont.h"
 
 #include <typeinfo>

@@ -26,7 +26,6 @@
 #include "client.h"
 #include "configuration.h"
 #include "logger.h"
-#include "main.h"
 
 #include "resources/dye.h"
 #include "resources/image.h"

@@ -35,14 +35,12 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/passwordfield.h"
 #include "gui/widgets/radiobutton.h"
-#include "gui/widgets/textfield.h"
 
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

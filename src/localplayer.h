@@ -25,8 +25,6 @@
 
 #include "actorspritelistener.h"
 #include "being.h"
-#include "client.h"
-#include "game.h"
 #include "listener.h"
 #include "localconsts.h"
 

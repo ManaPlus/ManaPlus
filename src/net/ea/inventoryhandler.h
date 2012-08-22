@@ -26,14 +26,11 @@
 #include "equipment.h"
 #include "inventory.h"
 #include "localconsts.h"
-#include "logger.h"
 #include "playerinfo.h"
 
 #include "gui/inventorywindow.h"
 
-#include "net/inventoryhandler.h"
 #include "net/messagein.h"
-#include "net/net.h"
 
 #include <vector>
 #include <queue>

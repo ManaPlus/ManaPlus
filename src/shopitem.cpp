@@ -25,8 +25,6 @@
 #include "client.h"
 #include "units.h"
 
-#include "utils/stringutils.h"
-
 #include "resources/iteminfo.h"
 
 #include "debug.h"

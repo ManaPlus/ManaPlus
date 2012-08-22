@@ -36,10 +36,8 @@
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
-#include "net/worldinfo.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

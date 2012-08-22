@@ -22,6 +22,7 @@
 
 #include "dropshortcut.h"
 
+#include "client.h"
 #include "configuration.h"
 #include "inventory.h"
 #include "item.h"
@@ -32,8 +33,6 @@
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"
-
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

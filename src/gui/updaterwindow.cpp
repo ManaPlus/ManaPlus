@@ -26,8 +26,6 @@
 #include "configuration.h"
 #include "keydata.h"
 #include "keyevent.h"
-#include "logger.h"
-#include "main.h"
 
 #include "gui/sdlinput.h"
 
@@ -38,7 +36,6 @@
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "net/download.h"
 #include "net/logindata.h"
 
 #include "resources/resourcemanager.h"
@@ -47,8 +44,6 @@
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/process.h"
-#include "utils/stringutils.h"
-#include "utils/xml.h"
 
 #include <iostream>
 #include <fstream>

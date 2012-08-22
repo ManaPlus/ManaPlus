@@ -30,8 +30,6 @@
 
 #include "gui/palette.h"
 
-#include "utils/stringvector.h"
-
 #include <map>
 
 #include "localconsts.h"

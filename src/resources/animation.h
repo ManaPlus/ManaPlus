@@ -23,8 +23,6 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
 
-#include "utils/xml.h"
-
 #include <vector>
 #include <string>
 

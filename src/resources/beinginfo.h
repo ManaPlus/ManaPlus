@@ -25,8 +25,6 @@
 
 #include "actorsprite.h"
 
-#include "resources/spritedef.h"
-
 #include <list>
 #include <map>
 

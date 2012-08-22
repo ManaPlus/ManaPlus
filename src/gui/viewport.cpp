@@ -22,16 +22,15 @@
 
 #include "gui/viewport.h"
 
-#include "actorsprite.h"
 #include "actorspritemanager.h"
 #include "client.h"
 #include "configuration.h"
+#include "game.h"
 #include "graphics.h"
 #include "itemshortcut.h"
 #include "inputmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "map.h"
 #include "maplayer.h"
 #include "playerinfo.h"
 #include "textmanager.h"
@@ -51,8 +50,6 @@
 #include "net/net.h"
 
 #include "resources/resourcemanager.h"
-
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

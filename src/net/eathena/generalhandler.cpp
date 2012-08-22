@@ -33,13 +33,8 @@
 #include "gui/socialwindow.h"
 #include "gui/statuswindow.h"
 
-#include "net/messagein.h"
-#include "net/messageout.h"
-#include "net/serverinfo.h"
-
 #include "net/ea/guildhandler.h"
 
-#include "net/ea/gui/guildtab.h"
 #include "net/ea/gui/partytab.h"
 
 #include "net/eathena/adminhandler.h"
@@ -62,8 +57,6 @@
 
 #include "net/eathena/gui/guildtab.h"
 #include "net/eathena/gui/partytab.h"
-
-#include "resources/itemdb.h"
 
 #include "utils/gettext.h"
 

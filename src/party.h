@@ -22,8 +22,6 @@
 #ifndef PARTY_H
 #define PARTY_H
 
-#include "avatar.h"
-
 #include "gui/widgets/avatarlistbox.h"
 
 #include "utils/dtor.h"

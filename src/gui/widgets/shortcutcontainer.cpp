@@ -26,8 +26,6 @@
 
 #include "resources/image.h"
 
-#include "utils/stringutils.h"
-
 #include "debug.h"
 
 float ShortcutContainer::mAlpha = 1.0;

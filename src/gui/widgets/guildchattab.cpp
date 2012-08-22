@@ -34,9 +34,7 @@
 #include "resources/iteminfo.h"
 #include "resources/itemdb.h"
 
-#include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

@@ -23,13 +23,13 @@
 #include "gui/buydialog.h"
 
 #include "keyboardconfig.h"
+#include "logger.h"
 #include "shopitem.h"
 #include "units.h"
 
 #include "gui/setup.h"
 #include "gui/tradewindow.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
@@ -38,9 +38,6 @@
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
 
-#include "shopitem.h"
-#include "units.h"
-
 #include "net/buysellhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
@@ -48,7 +45,6 @@
 #include "resources/iteminfo.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

@@ -27,8 +27,6 @@
 #include "inputmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "logger.h"
-#include "map.h"
 #include "maplayer.h"
 #include "party.h"
 #include "playerrelations.h"
@@ -41,26 +39,19 @@
 #include "gui/textdialog.h"
 #include "gui/theme.h"
 
-#include "gui/widgets/avatarlistbox.h"
 #include "gui/widgets/browserbox.h"
-#include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/container.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
-#include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/tab.h"
-#include "gui/widgets/tabbedarea.h"
 
 #include "net/net.h"
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
 
-#include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

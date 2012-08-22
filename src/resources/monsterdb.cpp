@@ -30,7 +30,6 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/xml.h"
 
 #include "configuration.h"
 

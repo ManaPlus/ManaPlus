@@ -26,7 +26,6 @@
 #include "being.h"
 
 #include "resources/colordb.h"
-#include "resources/spritedef.h"
 
 #include <map>
 #include <set>

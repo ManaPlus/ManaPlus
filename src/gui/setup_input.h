@@ -24,8 +24,6 @@
 #ifndef GUI_SETUP_INPUT_H
 #define GUI_SETUP_INPUT_H
 
-#include "keydata.h"
-
 #include "gui/widgets/setuptab.h"
 
 #include <guichan/actionlistener.hpp>

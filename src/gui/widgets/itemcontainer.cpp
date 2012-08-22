@@ -27,7 +27,6 @@
 #include "item.h"
 #include "itemshortcut.h"
 #include "dropshortcut.h"
-#include "logger.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"
@@ -44,9 +43,6 @@
 #include "net/inventoryhandler.h"
 
 #include "resources/image.h"
-#include "resources/iteminfo.h"
-
-#include "utils/stringutils.h"
 
 #include <guichan/mouseinput.hpp>
 #include <guichan/selectionlistener.hpp>

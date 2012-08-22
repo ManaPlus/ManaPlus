@@ -23,10 +23,7 @@
 #include "gui/inventorywindow.h"
 
 #include "configuration.h"
-#include "inventory.h"
-#include "item.h"
 #include "inputmanager.h"
-#include "keydata.h"
 #include "keyevent.h"
 #include "playerinfo.h"
 #include "units.h"
@@ -36,14 +33,11 @@
 #include "gui/itemamountwindow.h"
 #include "gui/outfitwindow.h"
 #include "gui/setup.h"
-#include "gui/sdlinput.h"
 #include "gui/shopwindow.h"
 #include "gui/theme.h"
 #include "gui/tradewindow.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/button.h"
-#include "gui/widgets/container.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
@@ -53,14 +47,10 @@
 #include "gui/widgets/tabstrip.h"
 #include "gui/widgets/textfield.h"
 
-#include "net/inventoryhandler.h"
-#include "net/net.h"
-
 #include "resources/iteminfo.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <guichan/font.hpp>
 #include <guichan/mouseinput.hpp>

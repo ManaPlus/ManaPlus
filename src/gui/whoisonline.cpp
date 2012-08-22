@@ -46,11 +46,8 @@
 #include "net/net.h"
 #include "net/playerhandler.h"
 
-#include "gui/chatwindow.h"
-
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 // Curl should be included after Guichan to avoid Windows redefinitions
 #include <curl/curl.h>

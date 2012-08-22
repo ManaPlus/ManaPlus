@@ -23,7 +23,6 @@
 
 #include "actorspritemanager.h"
 #include "localplayer.h"
-#include "logger.h"
 #include "playerinfo.h"
 
 #include "net/eathena/messagein.h"

@@ -24,9 +24,10 @@
 #define GAME_H
 
 #include <string>
-#include "gui/sdlinput.h"
 
 #include "localconsts.h"
+
+#include <SDL/SDL.h>
 
 #define MAX_LASTKEYS 10
 

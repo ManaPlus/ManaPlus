@@ -22,6 +22,7 @@
 
 #include "gui/itemamountwindow.h"
 
+#include "inventory.h"
 #include "item.h"
 #include "keyboardconfig.h"
 
@@ -39,8 +40,6 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/slider.h"
-
-#include "resources/itemdb.h"
 
 #include "utils/gettext.h"
 
