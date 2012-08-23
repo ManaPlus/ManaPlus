@@ -32,8 +32,6 @@
 
 #include "gui/widgets/window.h"
 
-#include "resources/image.h"
-
 #include <guichan/exception.hpp>
 
 #include "debug.h"

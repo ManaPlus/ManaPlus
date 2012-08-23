@@ -31,7 +31,6 @@
 #include "inputmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "maplayer.h"
 #include "playerinfo.h"
 #include "textmanager.h"
 

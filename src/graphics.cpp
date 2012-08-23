@@ -29,7 +29,6 @@
 #include "graphicsvertexes.h"
 #include "logger.h"
 
-#include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 

@@ -33,8 +33,6 @@
 
 #include "gui/widgets/tabbedarea.h"
 
-#include "resources/image.h"
-
 #include "utils/dtor.h"
 
 #include <guichan/widgets/label.hpp>

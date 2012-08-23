@@ -31,8 +31,6 @@
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
 
-#include "resources/image.h"
-
 #include "utils/dtor.h"
 
 #include <guichan/font.hpp>

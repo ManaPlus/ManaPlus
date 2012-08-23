@@ -33,7 +33,6 @@
 #include "gui/palette.h"
 #include "gui/theme.h"
 
-#include "resources/image.h"
 #include "resources/imageset.h"
 
 #include "utils/dtor.h"

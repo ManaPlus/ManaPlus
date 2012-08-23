@@ -30,11 +30,14 @@
 //#define NO_SDL_GLEXT
 #define GL_GLEXT_PROTOTYPES 1
 
-#include <SDL_opengl.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
 
 #include "safeopenglgraphics.h"
 #include "normalopenglgraphics.h"
 #endif
+
+#include "resources/image.h"
 
 #include <string>
 #include <list>

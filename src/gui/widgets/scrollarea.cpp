@@ -30,8 +30,6 @@
 
 #include "gui/theme.h"
 
-#include "resources/image.h"
-
 #include "utils/dtor.h"
 
 #include "debug.h"
