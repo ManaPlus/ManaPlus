@@ -48,7 +48,7 @@ ImageSet *ActorSprite::targetCursorImages[2][NUM_TC];
 SimpleAnimation *ActorSprite::targetCursor[2][NUM_TC];
 bool ActorSprite::loaded = false;
 
-ActorSprite::ActorSprite(int id):
+ActorSprite::ActorSprite(const int id):
     mId(id),
     mStunMode(0),
     mStatusParticleEffects(&mStunParticleEffects, false),
@@ -118,7 +118,7 @@ void ActorSprite::logic()
         for (std::set<int>::const_iterator it = mStatusEffects.begin(),
              it_end = mStatusEffects.end(); it != it_end; ++it)
         {
-            const StatusEffect *effect
+            const StatusEffect *const effect
                 = StatusEffect::getStatusEffect(*it, true);
             if (effect && effect->particleEffectIsPersistent())
                 updateStatusEffect(*it, true);
@@ -133,7 +133,7 @@ void ActorSprite::actorLogic()
 {
 }
 
-void ActorSprite::setMap(Map* map)
+void ActorSprite::setMap(Map *const map)
 {
     Actor::setMap(map);
 
@@ -142,12 +142,12 @@ void ActorSprite::setMap(Map* map)
     mMustResetParticles = true; // Reset status particles on next redraw
 }
 
-void ActorSprite::controlParticle(Particle *particle)
+void ActorSprite::controlParticle(Particle *const particle)
 {
     mChildParticleEffects.addLocally(particle);
 }
 
-void ActorSprite::setTargetType(TargetCursorType type)
+void ActorSprite::setTargetType(const TargetCursorType type)
 {
     if (type == TCT_NONE)
         untarget();
@@ -165,12 +165,13 @@ static EffectDescription *default_effect = nullptr;
 static std::map<int, EffectDescription *> effects;
 static bool effects_initialized = false;
 
-static EffectDescription *getEffectDescription(XmlNodePtr node, int *id)
+static EffectDescription *getEffectDescription(XmlNodePtr const node,
+                                               int *const id)
 {
     if (!id)
         return nullptr;
 
-    EffectDescription *ed = new EffectDescription;
+    EffectDescription *const ed = new EffectDescription;
 
     *id = atoi(XML::getProperty(node, "id", "-1").c_str());
     ed->mSFXEffect = XML::getProperty(node, "audio", "");
@@ -179,12 +180,12 @@ static EffectDescription *getEffectDescription(XmlNodePtr node, int *id)
     return ed;
 }
 
-static EffectDescription *getEffectDescription(int effectId)
+static EffectDescription *getEffectDescription(const int effectId)
 {
     if (!effects_initialized)
     {
         XML::Document doc(EFFECTS_FILE);
-        XmlNodePtr root = doc.rootNode();
+        const XmlNodePtr root = doc.rootNode();
 
         if (!root || !xmlNameEqual(root, "being-effects"))
         {
@@ -198,13 +199,13 @@ static EffectDescription *getEffectDescription(int effectId)
 
             if (xmlNameEqual(node, "effect"))
             {
-                EffectDescription *EffectDescription =
+                EffectDescription *const effectDescription =
                     getEffectDescription(node, &id);
-                effects[id] = EffectDescription;
+                effects[id] = effectDescription;
             }
             else if (xmlNameEqual(node, "default"))
             {
-                EffectDescription *effectDescription =
+                EffectDescription *const effectDescription =
                     getEffectDescription(node, &id);
 
                 delete default_effect;
@@ -216,12 +217,12 @@ static EffectDescription *getEffectDescription(int effectId)
         effects_initialized = true;
     } // done initializing
 
-    EffectDescription *ed = effects[effectId];
+    EffectDescription *const ed = effects[effectId];
 
     return ed ? ed : default_effect;
 }
 
-void ActorSprite::setStatusEffect(int index, bool active)
+void ActorSprite::setStatusEffect(const int index, const bool active)
 {
     const bool wasActive = mStatusEffects.find(index) != mStatusEffects.end();
 
@@ -235,18 +236,21 @@ void ActorSprite::setStatusEffect(int index, bool active)
     }
 }
 
-void ActorSprite::setStatusEffectBlock(int offset, uint16_t newEffects)
+void ActorSprite::setStatusEffectBlock(const int offset,
+                                       const uint16_t newEffects)
 {
     for (unsigned i = 0; i < STATUS_EFFECTS; i++)
     {
-        int index = StatusEffect::blockEffectIndexToEffectIndex(offset + i);
+        const int index = StatusEffect::blockEffectIndexToEffectIndex(
+            offset + i);
 
         if (index != -1)
             setStatusEffect(index, (newEffects & (1 << i)) > 0);
     }
 }
 
-void ActorSprite::internalTriggerEffect(int effectId, bool sfx, bool gfx)
+void ActorSprite::internalTriggerEffect(const int effectId, const bool sfx,
+                                        const bool gfx)
 {
     if (reportTrue(!particleEngine))
         return;
@@ -257,7 +261,7 @@ void ActorSprite::internalTriggerEffect(int effectId, bool sfx, bool gfx)
             getId() == player_node->getId() ? "self" : "other");
     }
 
-    EffectDescription *ed = getEffectDescription(effectId);
+    const EffectDescription *const ed = getEffectDescription(effectId);
 
     if (reportTrue(!ed))
     {
@@ -277,18 +281,19 @@ void ActorSprite::internalTriggerEffect(int effectId, bool sfx, bool gfx)
         sound.playSfx(ed->mSFXEffect);
 }
 
-void ActorSprite::updateStunMode(int oldMode, int newMode)
+void ActorSprite::updateStunMode(const int oldMode, const int newMode)
 {
     handleStatusEffect(StatusEffect::getStatusEffect(oldMode, false), -1);
     handleStatusEffect(StatusEffect::getStatusEffect(newMode, true), -1);
 }
 
-void ActorSprite::updateStatusEffect(int index, bool newStatus)
+void ActorSprite::updateStatusEffect(const int index, const bool newStatus)
 {
     handleStatusEffect(StatusEffect::getStatusEffect(index, newStatus), index);
 }
 
-void ActorSprite::handleStatusEffect(StatusEffect *effect, int effectId)
+void ActorSprite::handleStatusEffect(StatusEffect *const effect,
+                                     const int effectId)
 {
     if (!effect)
         return;
@@ -299,7 +304,7 @@ void ActorSprite::handleStatusEffect(StatusEffect *effect, int effectId)
     //if (action != ACTION_INVALID)
     //    setAction(action);
 
-    Particle *particle = effect->getParticle();
+    Particle *const particle = effect->getParticle();
 
     if (effectId >= 0)
     {
@@ -314,7 +319,8 @@ void ActorSprite::handleStatusEffect(StatusEffect *effect, int effectId)
 }
 
 void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
-                                     bool forceDisplay, int imageType,
+                                     const bool forceDisplay,
+                                     const int imageType,
                                      std::string color)
 {
     clear();
@@ -328,7 +334,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
         std::string file = paths.getStringValue("sprites")
             + combineDye2((*it)->sprite, color);
 
-        int variant = (*it)->variant;
+        const int variant = (*it)->variant;
         addSprite(AnimatedSprite::delayedLoad(file, variant));
     }
 
@@ -343,7 +349,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
         }
         else
         {
-            ResourceManager *resman = ResourceManager::getInstance();
+            ResourceManager *const resman = ResourceManager::getInstance();
             std::string imagePath;
             switch (imageType)
             {
@@ -379,7 +385,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
              itr_end = display.particles.end();
              itr != itr_end; ++itr)
         {
-            Particle *p = particleEngine->addEffect(*itr, 0, 0);
+            Particle *const p = particleEngine->addEffect(*itr, 0, 0);
             controlParticle(p);
         }
     }
@@ -406,17 +412,18 @@ void ActorSprite::unload()
     loaded = false;
 }
 
-void ActorSprite::addActorSpriteListener(ActorSpriteListener *listener)
+void ActorSprite::addActorSpriteListener(ActorSpriteListener *const listener)
 {
     mActorSpriteListeners.push_front(listener);
 }
 
-void ActorSprite::removeActorSpriteListener(ActorSpriteListener *listener)
+void ActorSprite::removeActorSpriteListener(ActorSpriteListener *const
+                                            listener)
 {
     mActorSpriteListeners.remove(listener);
 }
 
-static const char *cursorType(int type)
+static const char *cursorType(const int type)
 {
     switch (type)
     {
@@ -428,7 +435,7 @@ static const char *cursorType(int type)
     }
 }
 
-static const char *cursorSize(int size)
+static const char *cursorSize(const int size)
 {
     switch (size)
     {
@@ -444,9 +451,9 @@ static const char *cursorSize(int size)
 
 void ActorSprite::initTargetCursor()
 {
-    static std::string targetCursorFile = "target-cursor-%s-%s.png";
-    static int targetWidths[NUM_TC] = {44, 62, 82};
-    static int targetHeights[NUM_TC] = {35, 44, 60};
+    static const std::string targetCursorFile = "target-cursor-%s-%s.png";
+    static const int targetWidths[NUM_TC] = {44, 62, 82};
+    static const int targetHeights[NUM_TC] = {35, 44, 60};
 
     // Load target cursors
     for (int size = TC_SMALL; size < NUM_TC; size++)
@@ -481,12 +488,13 @@ void ActorSprite::cleanupTargetCursors()
 }
 
 void ActorSprite::loadTargetCursor(const std::string &filename,
-                                   int width, int height, int type, int size)
+                                   const int width, const int height,
+                                   const int type, const int size)
 {
     if (reportTrue(size < TC_SMALL || size >= NUM_TC))
         return;
 
-    ImageSet *currentImageSet = Theme::getImageSetFromTheme(
+    ImageSet *const currentImageSet = Theme::getImageSetFromTheme(
         filename, width, height);
 
     if (!currentImageSet)
@@ -495,7 +503,7 @@ void ActorSprite::loadTargetCursor(const std::string &filename,
         return;
     }
 
-    Animation *anim = new Animation;
+    Animation *const anim = new Animation;
 
     for (size_t i = 0; i < currentImageSet->size(); ++i)
     {
@@ -505,7 +513,7 @@ void ActorSprite::loadTargetCursor(const std::string &filename,
             100);
     }
 
-    SimpleAnimation *currentCursor = new SimpleAnimation(anim);
+    SimpleAnimation *const currentCursor = new SimpleAnimation(anim);
 
     if (targetCursor[type][size])
     {

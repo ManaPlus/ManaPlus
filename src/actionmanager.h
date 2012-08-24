@@ -24,7 +24,7 @@
 #include <string>
 #include <map>
 
-#define decHandler(name) bool name(InputEvent &event)
+#define decHandler(name) bool name(const InputEvent &event)
 
 struct InputEvent;
 class Window;

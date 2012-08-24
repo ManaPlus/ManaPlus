@@ -39,7 +39,7 @@ Actor::~Actor()
     setMap(nullptr);
 }
 
-void Actor::setMap(Map *map)
+void Actor::setMap(Map *const map)
 {
     // Remove Actor from potential previous map
     if (mMap)

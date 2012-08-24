@@ -2977,7 +2977,7 @@ void LocalPlayer::crazyMoveA()
         mCrazyMoveState = 0;
 }
 
-bool LocalPlayer::isReachable(int x, int y, int maxCost)
+bool LocalPlayer::isReachable(int x, int y, int maxCost) const
 {
     if (!mMap)
         return false;
@@ -2998,7 +2998,7 @@ bool LocalPlayer::isReachable(int x, int y, int maxCost)
     return !debugPath.empty();
 }
 
-bool LocalPlayer::isReachable(Being *being, int maxCost)
+bool LocalPlayer::isReachable(Being *being, int maxCost) const
 {
     if (!being || !mMap)
         return false;

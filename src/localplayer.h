@@ -315,9 +315,9 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
 //        int getSkillLv(int id);
 
-        bool isReachable(int x, int y, int maxCost = 0);
+        bool isReachable(int x, int y, int maxCost = 0) const;
 
-        bool isReachable(Being *being, int maxCost = 0);
+        bool isReachable(Being *being, int maxCost = 0) const;
 
         void setHome();
 

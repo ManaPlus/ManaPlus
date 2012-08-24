@@ -66,14 +66,14 @@ public:
         NUM_TCT
     };
 
-    ActorSprite(int id);
+    ActorSprite(const int id);
 
     ~ActorSprite();
 
     int getId() const
     { return mId; }
 
-    void setId(int id)
+    void setId(const int id)
     { mId = id; }
 
     /**
@@ -90,7 +90,7 @@ public:
 
     static void actorLogic();
 
-    void setMap(Map* map);
+    void setMap(Map *const map);
 
     /**
      * Gets the way the object blocks pathfinding for other objects
@@ -101,7 +101,7 @@ public:
     /**
      * Take control of a particle.
      */
-    void controlParticle(Particle *particle);
+    void controlParticle(Particle *const particle);
 
     /**
      * Returns the required size of a target cursor for this being.
@@ -118,7 +118,7 @@ public:
     /**
      * Sets the target animation for this actor.
      */
-    void setTargetType(TargetCursorType type);
+    void setTargetType(const TargetCursorType type);
 
     /**
      * Untargets the actor.
@@ -132,21 +132,21 @@ public:
      *
      * \param effectId ID of the effect to trigger
      */
-    virtual void triggerEffect(int effectId)
+    virtual void triggerEffect(const int effectId)
     { internalTriggerEffect(effectId, false, true); }
 
     /**
      * Sets the actor's stun mode. If zero, the being is `normal', otherwise it
      * is `stunned' in some fashion.
      */
-    void setStunMode(uint16_t stunMode)
+    void setStunMode(const uint16_t stunMode)
     {
         if (mStunMode != stunMode)
             updateStunMode(mStunMode, stunMode);
         mStunMode = stunMode;
     }
 
-    void setStatusEffect(int index, bool active);
+    void setStatusEffect(const int index, const bool active);
 
     /**
      * A status effect block is a 16 bit mask of status effects. We assign each
@@ -154,9 +154,9 @@ public:
      *
      * These are NOT the same as the status effect indices.
      */
-    void setStatusEffectBlock(int offset, uint16_t flags);
+    void setStatusEffectBlock(const int offset, const uint16_t flags);
 
-    virtual void setAlpha(float alpha)
+    virtual void setAlpha(const float alpha)
     { CompoundSprite::setAlpha(alpha); }
 
     virtual float getAlpha() const
@@ -175,12 +175,12 @@ public:
     /**
      * Add an ActorSprite listener.
      */
-    void addActorSpriteListener(ActorSpriteListener *listener);
+    void addActorSpriteListener(ActorSpriteListener *const listener);
 
     /**
      * Remove an ActorSprite listener.
      */
-    void removeActorSpriteListener(ActorSpriteListener *listener);
+    void removeActorSpriteListener(ActorSpriteListener *const listener);
 
 protected:
     /**
@@ -190,19 +190,20 @@ protected:
      * \param sfx Whether to trigger sound effects
      * \param gfx Whether to trigger graphical effects
      */
-    void internalTriggerEffect(int effectId, bool sfx, bool gfx);
+    void internalTriggerEffect(const int effectId, const bool sfx,
+                               const bool gfx);
 
     /**
      * Notify self that the stun mode has been updated. Invoked by
      * setStunMode if something changed.
      */
-    virtual void updateStunMode(int oldMode, int newMode);
+    virtual void updateStunMode(const int oldMode, const int newMode);
 
     /**
      * Notify self that a status effect has flipped.
      * The new flag is passed.
      */
-    virtual void updateStatusEffect(int index, bool newStatus);
+    virtual void updateStatusEffect(const int index, const bool newStatus);
 
     /**
      * Handle an update to a status or stun effect
@@ -210,10 +211,12 @@ protected:
      * \param The StatusEffect to effect
      * \param effectId -1 for stun, otherwise the effect index
      */
-    virtual void handleStatusEffect(StatusEffect *effect, int effectId);
+    virtual void handleStatusEffect(StatusEffect *const effect,
+                                    const int effectId);
 
     void setupSpriteDisplay(const SpriteDisplay &display,
-                            bool forceDisplay = true, int imageType = 0,
+                            const bool forceDisplay = true,
+                            const int imageType = 0,
                             std::string color = "");
 
     int mId;
@@ -238,7 +241,8 @@ private:
      * Helper function for loading target cursors
      */
     static void loadTargetCursor(const std::string &filename,
-                                 int width, int height, int type, int size);
+                                 const int width, const int height,
+                                 const int type, const int size);
 
     /** Images of the target cursor. */
     static ImageSet *targetCursorImages[NUM_TCT][NUM_TC];

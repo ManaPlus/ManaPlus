@@ -120,7 +120,7 @@ public:
      */
     virtual void setAlpha(float alpha) = 0;
 
-    void setMap(Map *map);
+    void setMap(Map *const map);
 
     Map* getMap() const
     { return mMap; }

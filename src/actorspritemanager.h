@@ -43,71 +43,75 @@ class ActorSpriteManager: public ConfigListener
         /**
          * Sets the map on which ActorSprites are created.
          */
-        void setMap(Map *map);
+        void setMap(Map *const map);
 
         /**
          * Sets the current player.
          */
-        void setPlayer(LocalPlayer *player);
+        void setPlayer(LocalPlayer *const player);
 
         /**
          * Create a Being and add it to the list of ActorSprites.
          */
-        Being *createBeing(int id, ActorSprite::Type type, uint16_t subtype);
+        Being *createBeing(const int id, const ActorSprite::Type type,
+                           const uint16_t subtype);
 
         /**
          * Create a FloorItem and add it to the list of ActorSprites.
          */
-        FloorItem *createItem(int id, int itemId, int x, int y,
-                              int amount, unsigned char color,
-                              int subX, int subY);
+        FloorItem *createItem(const int id, const int itemId,
+                              const int x, const int y,
+                              const int amount, const unsigned char color,
+                              const int subX, const int subY);
 
         /**
          * Destroys the given ActorSprite at the end of
          * ActorSpriteManager::logic.
          */
-        void destroy(ActorSprite *actor);
+        void destroy(ActorSprite *const actor);
 
-        void erase(ActorSprite *actor);
+        void erase(ActorSprite *const actor);
 
-        void undelete(ActorSprite *actor);
+        void undelete(const ActorSprite *const actor);
 
         /**
          * Returns a specific Being, by id;
          */
-        Being *findBeing(int id) const;
+        Being *findBeing(const int id) const;
 
         /**
          * Returns a being at specific coordinates.
          */
-        Being *findBeing(int x, int y,
-                         ActorSprite::Type type = ActorSprite::UNKNOWN) const;
+        Being *findBeing(const int x, const int y, const ActorSprite::Type
+                         type = ActorSprite::UNKNOWN) const;
 
         /**
          * Returns a being at the specific pixel.
          */
-        Being *findBeingByPixel(int x, int y, bool allPlayers = false) const;
+        Being *findBeingByPixel(const int x, const int y,
+                                const bool allPlayers = false) const;
 
         /**
          * Returns a beings at the specific pixel.
          */
-        void findBeingsByPixel(std::vector<ActorSprite*> &beings, int x, int y,
-                               bool allPlayers) const;
+        void findBeingsByPixel(std::vector<ActorSprite*> &beings,
+                               const int x, const int y,
+                               const bool allPlayers) const;
 
         /**
          * Returns a portal at the specific tile.
          */
-        Being *findPortalByTile(int x, int y) const;
+        Being *findPortalByTile(const int x, const int y) const;
 
         /**
          * Returns a specific FloorItem, by id.
          */
-        FloorItem *findItem(int id) const;
+        FloorItem *findItem(const int id) const;
 
         /**
          * Returns a FloorItem at specific coordinates.
          */
-        FloorItem *findItem(int x, int y) const;
+        FloorItem *findItem(const int x, const int y) const;
 
         /**
          * Returns a being nearest to specific coordinates.
@@ -118,9 +122,11 @@ class ActorSpriteManager: public ConfigListener
          *                    larger, no being is returned.
          * @param type        The type of being to look for.
          */
-        Being *findNearestLivingBeing(int x, int y, int maxTileDist,
-                                      ActorSprite::Type type = Being::UNKNOWN,
-                                      Being *excluded = nullptr) const;
+        Being *findNearestLivingBeing(const int x, const int y,
+                                      int maxTileDist,
+                                      const ActorSprite::Type
+                                      type = Being::UNKNOWN,
+                                      Being *const excluded = nullptr) const;
 
         /**
          * Returns a being nearest to another being.
@@ -130,21 +136,24 @@ class ActorSpriteManager: public ConfigListener
          *                    larger, no being is returned.
          * @param type        The type of being to look for.
          */
-        Being *findNearestLivingBeing(Being *aroundBeing, int maxTileDist,
-                                      ActorSprite::Type type = Being::UNKNOWN
+        Being *findNearestLivingBeing(Being *const aroundBeing,
+                                      const int maxTileDist,
+                                      const ActorSprite::Type
+                                      type = Being::UNKNOWN
                                       ) const;
 
         /**
          * Finds a being by name and (optionally) by type.
          */
         Being *findBeingByName(const std::string &name,
-                               ActorSprite::Type type = Being::UNKNOWN) const;
+                               const ActorSprite::Type
+                               type = Being::UNKNOWN) const;
 
        /**
         * Finds a nearest being by name and (optionally) by type.
         */
         Being *findNearestByName(const std::string &name,
-                                 Being::Type type = Being::UNKNOWN) const;
+                                 const Being::Type type = Being::UNKNOWN) const;
 
        /**
         * Heal all players in distance.
@@ -155,11 +164,11 @@ class ActorSpriteManager: public ConfigListener
 //        void HealAllTargets(Being *aroundBeing, int maxdist,
 //                                            Being::Type type) const;
 
-        void healTarget();
+        void healTarget() const;
 
-        void heal(Being* target);
+        void heal(const Being *const target) const;
 
-        void itenplz();
+        void itenplz() const;
 
         /**
          * Returns the whole list of beings.
@@ -172,7 +181,7 @@ class ActorSpriteManager: public ConfigListener
          *
          * \param actor the ActorSprite to search for
          */
-        bool hasActorSprite(ActorSprite *actor) const;
+        bool hasActorSprite(const ActorSprite *const actor) const;
 
         /**
          * Performs ActorSprite logic and deletes ActorSprite scheduled to be
@@ -187,11 +196,11 @@ class ActorSpriteManager: public ConfigListener
 
         std::vector<uint32_t> blockedBeings;
 
-        void addBlock(uint32_t id);
+        void addBlock(const uint32_t id);
 
-        void deleteBlock(uint32_t id);
+        void deleteBlock(const uint32_t id);
 
-        bool isBlocked(uint32_t id);
+        bool isBlocked(const uint32_t id) const;
 
         void printAllToChat() const;
 
@@ -201,22 +210,22 @@ class ActorSpriteManager: public ConfigListener
                                std::string header) const;
 
         void getPlayerNames(StringVect &names,
-                            bool npcNames);
+                            const bool npcNames) const;
 
-        void getMobNames(StringVect &names);
+        void getMobNames(StringVect &names) const;
 
-        void updatePlayerNames();
+        void updatePlayerNames() const;
 
-        void updatePlayerColors();
+        void updatePlayerColors() const;
 
-        void updatePlayerGuild();
+        void updatePlayerGuild() const;
 
         void parseLevels(std::string levels);
 
-        bool pickUpAll(int x1, int y1, int x2, int y2,
-                       bool serverBuggy = false);
+        bool pickUpAll(const int x1, const int y1, const int x2, const int y2,
+                       const bool serverBuggy = false);
 
-        bool pickUpNearest(int x, int y, int maxdist);
+        bool pickUpNearest(const int x, const int y, int maxdist);
 
         void optionChanged(const std::string &name);
 
@@ -276,14 +285,17 @@ class ActorSpriteManager: public ConfigListener
 
         int getPickupItemIndex(std::string name);
 
-        int getIndexByName(std::string name, std::map<std::string, int> &map);
+        int getIndexByName(std::string name, std::map<std::string,
+                           int> &map) const;
 
-        bool checkForPickup(const FloorItem *item);
+        bool checkForPickup(const FloorItem *const item) const;
 
     protected:
-        bool validateBeing(Being *aroundBeing, Being* being,
-                           Being::Type type, Being* excluded = nullptr,
-                           int maxCost = 20) const;
+        bool validateBeing(const Being *const aroundBeing,
+                           Being *const being,
+                           const Being::Type type,
+                           const Being *const excluded = nullptr,
+                           const int maxCost = 20) const;
 
         Being *findNearestLivingBeing(Being *aroundBeing, int maxdist,
                                       Being::Type type, int x, int y,

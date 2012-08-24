@@ -67,8 +67,8 @@
 
 #include "debug.h"
 
-#define impHandler(name) bool name(InputEvent &event)
-#define impHandler0(name) bool name(InputEvent &event A_UNUSED)
+#define impHandler(name) bool name(const InputEvent &event)
+#define impHandler0(name) bool name(const InputEvent &event A_UNUSED)
 
 extern ShortcutWindow *spellShortcutWindow;
 extern QuitDialog *quitDialog;
@@ -78,7 +78,7 @@ namespace ActionManager
 
 impHandler0(moveUp)
 {
-    if (NpcDialog *dialog = NpcDialog::getActive())
+    if (NpcDialog *const dialog = NpcDialog::getActive())
     {
         dialog->refocus();
         return false;
@@ -90,7 +90,7 @@ impHandler0(moveUp)
 
 impHandler0(moveDown)
 {
-    if (NpcDialog *dialog = NpcDialog::getActive())
+    if (NpcDialog *const dialog = NpcDialog::getActive())
     {
         dialog->refocus();
         return false;
@@ -130,7 +130,7 @@ impHandler0(moveRight)
 
 impHandler(emote)
 {
-    int emotion = 1 + event.action - Input::KEY_EMOTE_1;
+    const int emotion = 1 + event.action - Input::KEY_EMOTE_1;
     if (emotion > 0)
     {
         if (emoteShortcut)
@@ -145,7 +145,7 @@ impHandler(emote)
 
 impHandler(moveToPoint)
 {
-    int num = event.action - Input::KEY_MOVE_TO_POINT_1;
+    const int num = event.action - Input::KEY_MOVE_TO_POINT_1;
     if (socialWindow && num >= 0)
     {
         socialWindow->selectPortal(num);
@@ -159,7 +159,7 @@ impHandler(outfit)
 {
     if (inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
     {
-        int num = event.action - Input::KEY_OUTFIT_1;
+        const int num = event.action - Input::KEY_OUTFIT_1;
         if (outfitWindow && num >= 0)
         {
             outfitWindow->wearOutfit(num);
@@ -170,7 +170,7 @@ impHandler(outfit)
     }
     else if (inputManager.isActionActive(Input::KEY_COPY_OUTFIT))
     {
-        int num = event.action - Input::KEY_OUTFIT_1;
+        const int num = event.action - Input::KEY_OUTFIT_1;
         if (outfitWindow && num >= 0)
         {
             outfitWindow->copyOutfit(num);
@@ -212,7 +212,7 @@ impHandler0(ok)
         setupWindow->action(gcn::ActionEvent(nullptr, "cancel"));
         return true;
     }
-    else if (NpcDialog *dialog = NpcDialog::getActive())
+    else if (NpcDialog *const dialog = NpcDialog::getActive())
     {
         dialog->action(gcn::ActionEvent(nullptr, "ok"));
         return true;
@@ -224,7 +224,7 @@ impHandler(shortcut)
 {
     if (itemShortcutWindow)
     {
-        int num = itemShortcutWindow->getTabIndex();
+        const int num = itemShortcutWindow->getTabIndex();
         if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
         {
             itemShortcut[num]->useItem(event.action
@@ -679,7 +679,7 @@ impHandler0(helpWindowShow)
     return false;
 }
 
-static void showHideWindow(Window *window)
+static void showHideWindow(Window *const window)
 {
     if (window)
     {
@@ -815,7 +815,7 @@ impHandler0(changeMapMode)
         miniStatusWindow->updateStatus();
     if (Game::instance())
     {
-        if (Map *map = Game::instance()->getCurrentMap())
+        if (Map *const map = Game::instance()->getCurrentMap())
             map->redrawMap();
     }
     return true;
@@ -930,7 +930,7 @@ impHandler0(talk)
 {
     if (player_node)
     {
-        Being *target = player_node->getTarget();
+        Being *const target = player_node->getTarget();
         if (target)
         {
             if (target->canTalk())
@@ -983,7 +983,7 @@ impHandler0(targetAttack)
 
     if (player_node && actorSpriteManager)
     {
-        bool newTarget = !inputManager.isActionActive(
+        const bool newTarget = !inputManager.isActionActive(
             Input::KEY_STOP_ATTACK);
         // A set target has highest priority
         if (!player_node->getTarget())
@@ -1003,11 +1003,11 @@ impHandler0(targetAttack)
     return false;
 }
 
-static bool setTarget(ActorSprite::Type type)
+static bool setTarget(const ActorSprite::Type type)
 {
     if (actorSpriteManager && player_node)
     {
-        Being *target = actorSpriteManager->findNearestLivingBeing(
+        Being *const target = actorSpriteManager->findNearestLivingBeing(
             player_node, 20, type);
 
         if (target && target != player_node->getTarget())
