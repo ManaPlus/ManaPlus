@@ -68,6 +68,7 @@ class PlayerConfSerialiser :
     public ConfigurationListManager<std::pair<std::string, PlayerRelation *>,
         std::map<std::string, PlayerRelation *> *>
 {
+public:
     virtual ConfigurationObject *writeConfigItem(
         std::pair<std::string, PlayerRelation *> value,
         ConfigurationObject *cobj)

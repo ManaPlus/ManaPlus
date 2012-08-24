@@ -50,7 +50,8 @@
 extern Window *statusWindow;
 
 Setup::Setup():
-    Window(_("Setup"), false, nullptr, "setup.xml")
+    Window(_("Setup"), false, nullptr, "setup.xml"),
+    mResetWindows(nullptr)
 {
     setCloseButton(true);
     setResizable(true);

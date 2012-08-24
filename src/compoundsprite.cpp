@@ -175,7 +175,7 @@ int CompoundSprite::getWidth() const
     for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
          it != it_end; ++ it)
     {
-        if ((base = (*it)))
+        if (base = *it)
             break;
     }
 
@@ -192,7 +192,7 @@ int CompoundSprite::getHeight() const
     for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
          it != it_end; ++ it)
     {
-        if ((base = (*it)))
+        if (base = *it)
             break;
     }
 

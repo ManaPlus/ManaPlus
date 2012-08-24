@@ -77,11 +77,11 @@ class WindowMenu : public Container,
 
         void saveButtons();
 
-        void drawChildren(gcn::Graphics* graphics);
-
         void optionChanged(const std::string &name);
 
     private:
+        void drawChildren(gcn::Graphics* graphics);
+
         inline void addButton(const char* text, std::string description,
                               int &x, int &h, int key, bool visible = true);
 

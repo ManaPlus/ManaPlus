@@ -46,11 +46,10 @@ class WhisperTab : public ChatTab
 
         void saveToLogFile(std::string &msg);
 
-        void getAutoCompleteList(StringVect &names) const;
-
     protected:
         friend class ChatWindow;
 
+        void getAutoCompleteList(StringVect &names) const;
         /**
          * Constructor.
          *

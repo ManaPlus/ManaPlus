@@ -56,7 +56,7 @@ void AuctionManager::init()
             val = 0;
         serverConfig.setValue("enableAuctionBot", val);
     }
-    mEnableAuctionBot = val;
+    mEnableAuctionBot = (val != 0);
     if (mEnableAuctionBot)
         auctionManager = new AuctionManager();
 }

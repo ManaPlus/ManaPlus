@@ -335,7 +335,7 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
                 if (!noBeing)
                 {
                     FloorItem *floor = static_cast<FloorItem*>(*it);
-                    if (!noBeing && (floor->getPixelX() - 32 <= x) &&
+                    if ((floor->getPixelX() - 32 <= x) &&
                         (floor->getPixelX() + 32 > x) &&
                         (floor->getPixelY() - 64 <= y) &&
                         (floor->getPixelY() + 16 > y))
@@ -1243,7 +1243,7 @@ void ActorSpriteManager::deleteBlock(uint32_t id)
     {
         if (*iter == id)
         {
-            iter = blockedBeings.erase(iter);
+            blockedBeings.erase(iter);
             break;
         }
     }

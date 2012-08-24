@@ -72,10 +72,11 @@ class ItemShortcutContainer : public ShortcutContainer
 
         void widgetHidden(const gcn::Event &event);
 
-    private:
         void mouseExited(gcn::MouseEvent &event);
+
         void mouseMoved(gcn::MouseEvent &event);
 
+    private:
         bool mItemClicked;
         Item *mItemMoved;
         unsigned mNumber;

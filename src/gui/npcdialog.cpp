@@ -695,7 +695,7 @@ void NpcDialog::showAvatar(int avatarId)
         delete mAvatarBeing;
         mAvatarBeing = new Being(0, ActorSprite::NPC, avatarId, nullptr);
         mPlayerBox->setPlayer(mAvatarBeing);
-        if (mAvatarBeing && !mAvatarBeing->empty())
+        if (!mAvatarBeing->empty())
         {
             mAvatarBeing->logic();
             Sprite *sprite = mAvatarBeing->getSprite(0);

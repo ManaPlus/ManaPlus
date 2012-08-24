@@ -90,5 +90,4 @@ void ChannelManager::removeChannel(Channel *channel)
 {
     mChannels.remove(channel);
     delete channel;
-    channel = nullptr;
 }

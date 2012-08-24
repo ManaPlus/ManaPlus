@@ -317,7 +317,7 @@ void Client::gameInit()
 
     storeSafeParameters();
 
-#if ENABLE_NLS
+#ifdef ENABLE_NLS
     std::string lang = config.getValue("lang", "");
 #ifdef WIN32
     if (lang.empty())
@@ -812,7 +812,6 @@ int Client::testsExec()
         TestLauncher launcher(mOptions.test);
         return launcher.exec();
     }
-    return 0;
 }
 
 int Client::gameExec()

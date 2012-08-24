@@ -278,7 +278,7 @@ void Minimap::draw(gcn::Graphics *graphics)
         {
             type = UserPalette::GUILD;
         }
-        else if (being)
+        else
         {
             switch (being->getType())
             {

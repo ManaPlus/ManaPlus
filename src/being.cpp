@@ -1818,9 +1818,9 @@ bool Being::updateFromCache()
         if (entry->isAdvanced())
         {
             int flags = entry->getFlags();
-            mShop = (flags & FLAG_SHOP);
-            mAway = (flags & FLAG_AWAY);
-            mInactive = (flags & FLAG_INACTIVE);
+            mShop = ((flags & FLAG_SHOP) != 0);
+            mAway = ((flags & FLAG_AWAY) != 0);
+            mInactive = ((flags & FLAG_INACTIVE) != 0);
             if (mShop || mAway || mInactive)
                 updateName();
         }
@@ -2027,7 +2027,7 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
     {
         // show hp bar here
         int maxHP = mMaxHP;
-        if (!maxHP && mInfo)
+        if (!maxHP)
             maxHP = mInfo->getMaxHP();
 
         drawHpBar(graphics, maxHP, mHP, mDamageTaken,
@@ -2517,9 +2517,9 @@ void Being::saveComment(const std::string &name,
 
 void Being::setState(uint8_t state)
 {
-    bool shop = (state & FLAG_SHOP);
-    bool away = (state & FLAG_AWAY);
-    bool inactive = (state & FLAG_INACTIVE);
+    bool shop = ((state & FLAG_SHOP) != 0);
+    bool away = ((state & FLAG_AWAY) != 0);
+    bool inactive = ((state & FLAG_INACTIVE) != 0);
     bool needUpdate = (shop != mShop || away != mAway
         || inactive != mInactive);
 

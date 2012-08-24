@@ -81,6 +81,20 @@ class SortFriendsFunctor
 
 class SocialTab : public Tab
 {
+public:
+    virtual void invite() = 0;
+
+    virtual void leave() = 0;
+
+    virtual void updateList() = 0;
+
+    virtual void updateAvatar(std::string name) = 0;
+
+    virtual void resetDamage(std::string name) = 0;
+
+    virtual void selectIndex(unsigned num A_UNUSED)
+    { }
+
 protected:
     friend class SocialWindow;
 
@@ -108,19 +122,6 @@ protected:
             mConfirmDialog = nullptr;
         }
     }
-
-    virtual void invite() = 0;
-
-    virtual void leave() = 0;
-
-    virtual void updateList() = 0;
-
-    virtual void updateAvatar(std::string name) = 0;
-
-    virtual void resetDamage(std::string name) = 0;
-
-    virtual void selectIndex(unsigned num A_UNUSED)
-    { }
 
     TextDialog *mInviteDialog;
     ConfirmDialog *mConfirmDialog;

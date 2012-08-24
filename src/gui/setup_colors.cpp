@@ -292,6 +292,7 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
         case UserPalette::ATTACK_RANGE:
         case UserPalette::MONSTER_ATTACK_RANGE:
             mTextPreview->setShadow(false);
+            break;
         default:
             break;
     }

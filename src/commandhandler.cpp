@@ -786,8 +786,7 @@ void CommandHandler::handleFollow(const std::string &args, ChatTab *tab)
         if (tab->getType() == ChatTab::TAB_WHISPER)
         {
             WhisperTab *wTab = static_cast<WhisperTab*>(tab);
-            if (wTab)
-                player_node->setFollow(wTab->getNick());
+            player_node->setFollow(wTab->getNick());
         }
     }
 }
@@ -804,8 +803,7 @@ void CommandHandler::handleImitation(const std::string &args, ChatTab *tab)
     else if (tab && tab->getType() == ChatTab::TAB_WHISPER)
     {
         WhisperTab *wTab = static_cast<WhisperTab*>(tab);
-        if (wTab)
-            player_node->setImitate(wTab->getNick());
+        player_node->setImitate(wTab->getNick());
     }
     else
     {

@@ -108,9 +108,9 @@ class ChangeDisplay : public AttrDisplay, gcn::ActionListener
 
         void setPointsNeeded(int needed);
 
-    private:
         void action(const gcn::ActionEvent &event);
 
+    private:
         int mNeeded;
 
         Label *mPoints;

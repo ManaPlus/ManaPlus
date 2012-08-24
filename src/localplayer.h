@@ -351,8 +351,6 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void navigateClean();
 
-        void updateCoords();
-
         void imitateEmote(Being* being, unsigned char emote);
 
         void imitateAction(Being *being, Being::Action action);
@@ -512,6 +510,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         std::string getGameModifiersString();
 
     protected:
+        void updateCoords();
+
         /** Whether or not the name settings have changed */
         bool mUpdateName;
 

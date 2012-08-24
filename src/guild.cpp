@@ -95,7 +95,7 @@ GuildMember *Guild::addMember(int accountId, int charId,
                               const std::string &name)
 {
     GuildMember *m;
-    if ((m = getMember(accountId, charId)))
+    if (m = getMember(accountId, charId))
         return m;
 
     m = new GuildMember(this, accountId, charId, name);
@@ -108,7 +108,7 @@ GuildMember *Guild::addMember(int accountId, int charId,
 GuildMember *Guild::addMember(const std::string &name)
 {
     GuildMember *m;
-    if ((m = getMember(name)))
+    if (m = getMember(name))
         return m;
 
     m = new GuildMember(this, name);
