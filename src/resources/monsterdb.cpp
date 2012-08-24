@@ -35,7 +35,7 @@
 
 #include "debug.h"
 
-#define OLD_TMWATHENA_OFFSET 1002
+static const unsigned int OLD_TMWATHENA_OFFSET = 1002;
 
 namespace
 {

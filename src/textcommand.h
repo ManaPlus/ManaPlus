@@ -25,7 +25,7 @@
 
 #include <string>
 
-#define MAGIC_START_ID 340
+const unsigned int MAGIC_START_ID = 340;
 
 class Image;
 

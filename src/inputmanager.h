@@ -29,7 +29,7 @@
 
 #include <SDL/SDL.h>
 
-#define KeyFunctionSize 3
+const unsigned int KeyFunctionSize = 3;
 
 // hack to avoid conflicts with windows headers.
 #ifdef INPUT_KEYBOARD

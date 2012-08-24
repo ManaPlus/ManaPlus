@@ -34,12 +34,12 @@
 #include <map>
 #include <set>
 
-#define FIRST_IGNORE_EMOTE 14
-#define STATUS_EFFECTS 32
+static const unsigned int FIRST_IGNORE_EMOTE = 14;
+static const unsigned int STATUS_EFFECTS = 32;
 
-#define SPEECH_TIME 500
-#define SPEECH_MIN_TIME 200
-#define SPEECH_MAX_TIME 800
+static const unsigned int SPEECH_TIME = 500;
+static const unsigned int SPEECH_MIN_TIME = 200;
+static const unsigned int SPEECH_MAX_TIME = 800;
 
 static const int DEFAULT_BEING_WIDTH = 32;
 static const int DEFAULT_BEING_HEIGHT = 32;

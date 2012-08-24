@@ -45,7 +45,7 @@
 
 #include "debug.h"
 
-#define SIN45 0.707106781f
+static const float SIN45 = 0.707106781f;
 
 class Graphics;
 class Image;

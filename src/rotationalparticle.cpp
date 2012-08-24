@@ -27,7 +27,7 @@
 
 #include "debug.h"
 
-#define PI 3.14159265
+static const double PI = 3.14159265;
 
 RotationalParticle::RotationalParticle(Map *map, Animation *animation):
     ImageParticle(map, nullptr),

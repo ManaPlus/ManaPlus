@@ -33,7 +33,7 @@
 
 #include "debug.h"
 
-#define STATUS_EFFECTS_FILE "status-effects.xml"
+static const char *STATUS_EFFECTS_FILE = "status-effects.xml";
 
 static void unloadMap(std::map<int, StatusEffect *> &map);
 
@@ -132,8 +132,7 @@ void StatusEffect::load()
 
     if (!rootNode || !xmlNameEqual(rootNode, "status-effects"))
     {
-        logger->log1("Error loading status effects file: "
-                    STATUS_EFFECTS_FILE);
+        logger->log1("Error loading status effects file");
         return;
     }
 

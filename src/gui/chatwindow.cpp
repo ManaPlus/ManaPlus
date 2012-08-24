@@ -150,8 +150,7 @@ public:
     }
 };
 
-#define ACTION_COLOR_PICKER "color picker"
-
+static const char *ACTION_COLOR_PICKER = "color picker";
 
 ChatWindow::ChatWindow():
     Window(_("Chat"), false, nullptr, "chat.xml"),

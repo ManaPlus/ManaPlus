@@ -71,7 +71,7 @@ void ItemShortcut::load(bool oldConfig)
         name = "shortcut";
         color = "shortcutColor";
     }
-    for (int i = 0; i < SHORTCUT_ITEMS; i++)
+    for (unsigned int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         int itemId = cfg->getValue(name + toString(i), -1);
         unsigned char itemColor = static_cast<unsigned char>(
@@ -99,7 +99,7 @@ void ItemShortcut::save()
 
     logger->log("save %s", name.c_str());
 
-    for (int i = 0; i < SHORTCUT_ITEMS; i++)
+    for (unsigned int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         const int itemId = mItems[i] ? mItems[i] : -1;
         const int itemColor = mItemColors[i] ? mItemColors[i] : 1;

@@ -48,7 +48,7 @@
 
 #include "debug.h"
 
-#define MAX_WORD_SIZE 50
+static const unsigned int MAX_WORD_SIZE = 50;
 
 ChatTab::ChatTab(const std::string &name) :
     Tab(),

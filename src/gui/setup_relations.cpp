@@ -40,16 +40,16 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
-#define COLUMNS_NR 2 // name plus listbox
-#define NAME_COLUMN 0
-#define RELATION_CHOICE_COLUMN 1
+static const int COLUMNS_NR = 2; // name plus listbox
+static const int NAME_COLUMN = 0;
+static const unsigned int RELATION_CHOICE_COLUMN = 1;
 
-#define ROW_HEIGHT 12
+static const unsigned int ROW_HEIGHT = 12;
 // The following column widths really shouldn't be hardcoded
 // but should scale with the size of the widget... except
 // that, right now, the widget doesn't exactly scale either.
-#define NAME_COLUMN_WIDTH 230
-#define RELATION_CHOICE_COLUMN_WIDTH 80
+static const unsigned int NAME_COLUMN_WIDTH = 230;
+static const unsigned int RELATION_CHOICE_COLUMN_WIDTH = 80;
 
 #define WIDGET_AT(row, column) (((row) * COLUMNS_NR) + column)
 
@@ -227,9 +227,9 @@ public:
     }
 };
 
-#define ACTION_DELETE "delete"
-#define ACTION_TABLE "table"
-#define ACTION_STRATEGY "strategy"
+static const std::string ACTION_DELETE = "delete";
+static const std::string ACTION_TABLE = "table";
+static const std::string ACTION_STRATEGY = "strategy";
 
 Setup_Relations::Setup_Relations():
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),

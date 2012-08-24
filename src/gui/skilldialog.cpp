@@ -273,7 +273,8 @@ void SkillDialog::action(const gcn::ActionEvent &event)
                 mUseButton->setEnabled(info->range > 0);
 
                 int num = itemShortcutWindow->getTabIndex();
-                if (num >= 0 && num < SHORTCUT_TABS && itemShortcut[num])
+                if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
+                    && itemShortcut[num])
                 {
                     itemShortcut[num]->setItemSelected(
                         info->id + SKILL_MIN_ID);

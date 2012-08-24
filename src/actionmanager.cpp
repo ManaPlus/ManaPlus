@@ -225,7 +225,7 @@ impHandler(shortcut)
     if (itemShortcutWindow)
     {
         int num = itemShortcutWindow->getTabIndex();
-        if (num >= 0 && num < SHORTCUT_TABS)
+        if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
         {
             itemShortcut[num]->useItem(event.action
                 - Input::KEY_SHORTCUT_1);

@@ -53,7 +53,7 @@
 #elif defined WIN32
 #include "winver.h"
 #else
-#define PACKAGE_VERSION SMALL_VERSION
+#define PACKAGE_VERSION SMALL_VERSION;
 #endif
 
 #if defined __APPLE__

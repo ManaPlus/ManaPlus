@@ -215,7 +215,7 @@ static void createGuiWindows()
     itemShortcutWindow = new ShortcutWindow(
         "ItemShortcut", "items.xml", 83, 460);
 
-    for (int f = 0; f < SHORTCUT_TABS; f ++)
+    for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
     {
         itemShortcutWindow->addTab(toString(f + 1),
             new ItemShortcutContainer(f));
@@ -238,7 +238,7 @@ static void createGuiWindows()
 
     spellShortcutWindow = new ShortcutWindow("SpellShortcut", "spells.xml",
                                              265, 328);
-    for (int f = 0; f < SPELL_SHORTCUT_TABS; f ++)
+    for (unsigned f = 0; f < SPELL_SHORTCUT_TABS; f ++)
     {
         spellShortcutWindow->addTab(toString(f + 1),
             new SpellShortcutContainer(f));

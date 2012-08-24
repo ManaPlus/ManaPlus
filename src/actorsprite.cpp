@@ -42,7 +42,7 @@
 
 #include "debug.h"
 
-#define EFFECTS_FILE "effects.xml"
+static const char *const EFFECTS_FILE = "effects.xml";
 
 ImageSet *ActorSprite::targetCursorImages[2][NUM_TC];
 SimpleAnimation *ActorSprite::targetCursor[2][NUM_TC];
@@ -188,8 +188,7 @@ static EffectDescription *getEffectDescription(int effectId)
 
         if (!root || !xmlNameEqual(root, "being-effects"))
         {
-            logger->log1("Error loading being effects file: "
-                    EFFECTS_FILE);
+            logger->log1("Error loading being effects file");
             return nullptr;
         }
 
@@ -238,7 +237,7 @@ void ActorSprite::setStatusEffect(int index, bool active)
 
 void ActorSprite::setStatusEffectBlock(int offset, uint16_t newEffects)
 {
-    for (int i = 0; i < STATUS_EFFECTS; i++)
+    for (unsigned i = 0; i < STATUS_EFFECTS; i++)
     {
         int index = StatusEffect::blockEffectIndexToEffectIndex(offset + i);
 

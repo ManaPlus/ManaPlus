@@ -549,7 +549,7 @@ void Client::gameInit()
 //    Theme::prepareThemePath();
 
     // Initialize the item and emote shortcuts.
-    for (int f = 0; f < SHORTCUT_TABS; f ++)
+    for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
         itemShortcut[f] = new ItemShortcut(f);
 
     emoteShortcut = new EmoteShortcut;
@@ -705,7 +705,7 @@ void Client::gameClear()
     PlayerInfo::deinit();
 
     // Before config.write() since it writes the shortcuts to the config
-    for (int f = 0; f < SHORTCUT_TABS; f ++)
+    for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
     {
         delete itemShortcut[f];
         itemShortcut[f] = nullptr;
@@ -1753,7 +1753,7 @@ void Client::initServerConfig(std::string serverName)
     player_relations.init();
 
     // Initialize the item and emote shortcuts.
-    for (int f = 0; f < SHORTCUT_TABS; f ++)
+    for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
     {
         delete itemShortcut[f];
         itemShortcut[f] = new ItemShortcut(f);

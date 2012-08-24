@@ -34,8 +34,8 @@
 #define A_PURE
 #endif
 
-#define OUTFITS_COUNT 100
-#define OUTFIT_ITEM_COUNT 16
+const unsigned int OUTFITS_COUNT = 100;
+const unsigned int OUTFIT_ITEM_COUNT = 16;
 
 class Button;
 class CheckBox;

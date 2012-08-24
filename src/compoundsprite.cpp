@@ -41,8 +41,8 @@
 
 #include "debug.h"
 
-#define BUFFER_WIDTH 100
-#define BUFFER_HEIGHT 100
+static const int BUFFER_WIDTH = 100;
+static const int BUFFER_HEIGHT = 100;
 
 static const unsigned cache_max_size = 10;
 static const unsigned cache_clean_part = 3;
@@ -175,12 +175,12 @@ int CompoundSprite::getWidth() const
     for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
          it != it_end; ++ it)
     {
-        if (base = *it)
-            break;
+        if ((base = *it))
+        {
+            if (base)
+                return base->getWidth();
+        }
     }
-
-    if (base)
-        return base->getWidth();
 
     return 0;
 }
@@ -192,12 +192,12 @@ int CompoundSprite::getHeight() const
     for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
          it != it_end; ++ it)
     {
-        if (base = *it)
-            break;
+        if ((base = *it))
+        {
+            if (base)
+                return base->getHeight();
+        }
     }
-
-    if (base)
-        return base->getHeight();
 
     return 0;
 }

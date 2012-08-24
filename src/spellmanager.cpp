@@ -90,7 +90,7 @@ void SpellManager::fillSpells()
     addSpell(new TextCommand(11, "hi", "hi", "", NOTARGET, ""));
     addSpell(new TextCommand(12, "hea", "heal", "", NOTARGET, ""));
     addSpell(new TextCommand(13, "@sp", "@spawn maggot 10", "", NOTARGET, ""));
-    for (int f = 12; f < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; f++)
+    for (unsigned f = 12; f < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; f++)
         addSpell(new TextCommand(f));
 }
 
@@ -254,7 +254,7 @@ void SpellManager::load(bool oldConfig)
     unsigned int mana;
     unsigned int commandType;
 
-    for (int i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
+    for (unsigned i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
     {
         std::string flags =
             cfg->getValue("commandShortcutFlags" + toString(i), "");
@@ -291,7 +291,7 @@ void SpellManager::load(bool oldConfig)
 
 void SpellManager::save()
 {
-    for (int i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
+    for (unsigned i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
     {
         TextCommand *spell = mSpellsVector[i];
         if (spell)

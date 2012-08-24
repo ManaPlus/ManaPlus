@@ -334,7 +334,7 @@ int SDLFont::getHeight() const
 
 void SDLFont::doClean()
 {
-    for (int f = 0; f < CACHES_NUMBER; f ++)
+    for (unsigned int f = 0; f < CACHES_NUMBER; f ++)
     {
         std::list<SDLTextChunk> *cache = &mCache[f];
         const size_t size = cache->size();

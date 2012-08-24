@@ -364,7 +364,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
             mSelectionStatus = SEL_SELECTING;
 
             int num = itemShortcutWindow->getTabIndex();
-            if (num >= 0 && num < SHORTCUT_TABS)
+            if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
             {
                 if (itemShortcut[num])
                     itemShortcut[num]->setItemSelected(item);

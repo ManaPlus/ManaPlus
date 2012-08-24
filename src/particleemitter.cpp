@@ -35,8 +35,8 @@
 
 #include "debug.h"
 
-#define SIN45 0.707106781f
-#define DEG_RAD_FACTOR 0.017453293f
+static const float SIN45 = 0.707106781f;
+static const float DEG_RAD_FACTOR = 0.017453293f;
 
 ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                                  Map *map, int rotation,

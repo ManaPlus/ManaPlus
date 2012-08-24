@@ -72,9 +72,9 @@ InputManager::InputManager() :
 
 void InputManager::init()
 {
-    for (int i = 0; i < Input::KEY_TOTAL; i++)
+    for (unsigned int i = 0; i < Input::KEY_TOTAL; i++)
     {
-        for (int f = 0; f < KeyFunctionSize; f ++)
+        for (unsigned int f = 0; f < KeyFunctionSize; f ++)
         {
             mKey[i].values[f].type = INPUT_UNKNOWN;
             mKey[i].values[f].value = -1;
@@ -108,7 +108,7 @@ void InputManager::retrieve()
 
             StringVect keys;
             splitToStringVector(keys, keyStr, ',');
-            int i2 = 0;
+            unsigned int i2 = 0;
             for (StringVectCIter it = keys.begin(), it_end = keys.end();
                  it != it_end && i2 < KeyFunctionSize; ++ it)
             {

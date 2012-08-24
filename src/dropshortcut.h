@@ -23,7 +23,7 @@
 #ifndef DROPSHORTCUT_H
 #define DROPSHORTCUT_H
 
-#define DROP_SHORTCUT_ITEMS 16
+static const int DROP_SHORTCUT_ITEMS = 16;
 
 class Item;
 

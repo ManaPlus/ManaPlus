@@ -85,7 +85,7 @@ typedef unsigned int uint32_t;
 
 #include "debug.h"
 
-#define SHA256_BLOCK_SIZE  (512 / 8)
+static const unsigned int SHA256_BLOCK_SIZE = (512 / 8);
 
 /** An sha 256 context, used by original m_opersha256 */
 class SHA256Context
@@ -97,7 +97,7 @@ class SHA256Context
         uint32_t h[8];
 };
 
-#define SHA256_DIGEST_SIZE (256 / 8)
+static const unsigned int SHA256_DIGEST_SIZE = (256 / 8);
 
 #define SHFR(x, n)    (x >> n)
 #define ROTR(x, n)   ((x >> n) | (x << ((sizeof(x) << 3) - n)))

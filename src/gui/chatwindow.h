@@ -56,7 +56,7 @@ namespace gcn
     class DropDown;
 }
 
-#define DEFAULT_CHAT_WINDOW_SCROLL 7 // 1 means `1/8th of the window size'.
+const int DEFAULT_CHAT_WINDOW_SCROLL = 7;
 
 enum Own
 {

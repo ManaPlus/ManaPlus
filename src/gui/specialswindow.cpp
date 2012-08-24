@@ -50,8 +50,8 @@
 
 #include "debug.h"
 
-#define SPECIALS_WIDTH 200
-#define SPECIALS_HEIGHT 32
+static const unsigned int SPECIALS_WIDTH = 200;
+static const unsigned int SPECIALS_HEIGHT = 32;
 
 class SpecialEntry : public Container
 {

@@ -22,7 +22,7 @@
 #ifndef EMOTESHORTCUT_H
 #define EMOTESHORTCUT_H
 
-#define SHORTCUT_EMOTES 48
+static const int SHORTCUT_EMOTES = 48;
 
 /**
  * The class which keeps track of the emote shortcuts.

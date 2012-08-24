@@ -233,7 +233,8 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
             if (spell && !spell->isEmpty())
             {
                 int num = itemShortcutWindow->getTabIndex();
-                if (num >= 0 && num < SHORTCUT_TABS && itemShortcut[num])
+                if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
+                    && itemShortcut[num])
                 {
                     itemShortcut[num]->setItemSelected(
                         spell->getId() + SPELL_MIN_ID);
@@ -244,8 +245,11 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
         else
         {
             int num = itemShortcutWindow->getTabIndex();
-            if (num >= 0 && num < SHORTCUT_TABS && itemShortcut[num])
+            if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
+                && itemShortcut[num])
+            {
                 itemShortcut[num]->setItemSelected(-1);
+            }
             spellShortcut->setItemSelected(-1);
         }
     }

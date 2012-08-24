@@ -31,7 +31,7 @@
 #include <map>
 #include <vector>
 
-#define SKILL_MIN_ID 200000
+const int SKILL_MIN_ID = 200000;
 
 class Button;
 class Label;

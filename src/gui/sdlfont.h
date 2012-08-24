@@ -35,7 +35,7 @@
 #include <list>
 #include <string>
 
-#define CACHES_NUMBER 256
+const unsigned int CACHES_NUMBER = 256;
 
 class SDLTextChunk;
 

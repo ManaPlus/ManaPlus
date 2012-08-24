@@ -67,7 +67,7 @@
 
 #include "debug.h"
 
-#define CACHE_SIZE 50
+const unsigned int CACHE_SIZE = 50;
 
 class BeingCacheEntry
 {
@@ -451,8 +451,8 @@ void Being::setSpeech(const std::string &text, int time)
     if (!time && mSpeech.size() < 200)
         time = static_cast<int>(SPEECH_TIME - 300 + (3 * mSpeech.size()));
 
-    if (time < SPEECH_MIN_TIME)
-        time = SPEECH_MIN_TIME;
+    if (time < static_cast<int>(SPEECH_MIN_TIME))
+        time = static_cast<int>(SPEECH_MIN_TIME);
 
     // Check for links
     size_t start = mSpeech.find('[');
@@ -486,7 +486,10 @@ void Being::setSpeech(const std::string &text, int time)
     }
 
     if (!mSpeech.empty())
-        mSpeechTime = time <= SPEECH_MAX_TIME ? time : SPEECH_MAX_TIME;
+    {
+        mSpeechTime = time <= static_cast<int>(SPEECH_MAX_TIME)
+            ? time : static_cast<int>(SPEECH_MAX_TIME);
+    }
 
     const int speech = mSpeechType;
     if (speech == TEXT_OVERHEAD && userPalette)

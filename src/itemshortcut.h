@@ -23,9 +23,8 @@
 #ifndef ITEMSHORTCUT_H
 #define ITEMSHORTCUT_H
 
-#define SHORTCUT_ITEMS 20
-
-#define SHORTCUT_TABS 3
+const unsigned int SHORTCUT_ITEMS = 20;
+const unsigned int SHORTCUT_TABS = 3;
 
 class Item;
 

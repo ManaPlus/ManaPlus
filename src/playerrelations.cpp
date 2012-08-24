@@ -34,14 +34,14 @@
 
 #include "debug.h"
 
-#define PLAYER_IGNORE_STRATEGY_NOP "nop"
-#define PLAYER_IGNORE_STRATEGY_EMOTE0 "emote0"
-#define DEFAULT_IGNORE_STRATEGY PLAYER_IGNORE_STRATEGY_EMOTE0
+static const char *PLAYER_IGNORE_STRATEGY_NOP = "nop";
+static const char *PLAYER_IGNORE_STRATEGY_EMOTE0 = "emote0";
+static const char *DEFAULT_IGNORE_STRATEGY = PLAYER_IGNORE_STRATEGY_EMOTE0;
 
-#define NAME "name" // constant for xml serialisation
-#define RELATION "relation" // constant for xml serialisation
+static const char *NAME = "name"; // constant for xml serialisation
+static const char *RELATION = "relation"; // constant for xml serialisation
 
-#define IGNORE_EMOTE_TIME 100
+static const unsigned int IGNORE_EMOTE_TIME = 100;
 
 typedef std::map<std::string, PlayerRelation *> PlayerRelations;
 typedef PlayerRelations::const_iterator PlayerRelationsCIter;
