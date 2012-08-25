@@ -154,6 +154,10 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
         return;
 
     std::string chatMsg = msg.readString(chatMsgLength);
+    // ignoring future whisper messages
+    if (chatMsg.find("\302\202G") == 0 || chatMsg.find("\302\202A") == 0)
+        return;
+    // remove first unicode space if this is may be whisper command.
     if (chatMsg.find("\302\202!") == 0)
         chatMsg = chatMsg.substr(2);
 
