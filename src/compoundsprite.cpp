@@ -170,7 +170,7 @@ void CompoundSprite::drawSpritesSDL(Graphics* graphics,
 
 int CompoundSprite::getWidth() const
 {
-    Sprite *base = nullptr;
+    const Sprite *base = nullptr;
 
     for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
          it != it_end; ++ it)
@@ -187,7 +187,7 @@ int CompoundSprite::getWidth() const
 
 int CompoundSprite::getHeight() const
 {
-    Sprite *base = nullptr;
+    const Sprite *base = nullptr;
 
     for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
          it != it_end; ++ it)
@@ -254,13 +254,13 @@ unsigned int CompoundSprite::getFrameCount() const
     return 0;
 }
 
-void CompoundSprite::addSprite(Sprite *sprite)
+void CompoundSprite::addSprite(Sprite *const sprite)
 {
     mSprites.push_back(sprite);
     mNeedsRedraw = true;
 }
 
-void CompoundSprite::setSprite(int layer, Sprite* sprite)
+void CompoundSprite::setSprite(const int layer, Sprite *const sprite)
 {
     // Skip if it won't change anything
     if (mSprites.at(layer) == sprite)
@@ -272,7 +272,7 @@ void CompoundSprite::setSprite(int layer, Sprite* sprite)
     mNeedsRedraw = true;
 }
 
-void CompoundSprite::removeSprite(int layer)
+void CompoundSprite::removeSprite(const int layer)
 {
     // Skip if it won't change anything
     if (!mSprites.at(layer))
@@ -316,7 +316,7 @@ unsigned int CompoundSprite::getCurrentFrame(unsigned int layer)
     if (layer >= mSprites.size())
         return 0;
 
-    Sprite *s = getSprite(layer);
+    const Sprite *const s = getSprite(layer);
     if (s)
         return s->getCurrentFrame();
 
@@ -331,7 +331,7 @@ unsigned int CompoundSprite::getFrameCount(unsigned int layer)
     if (layer >= mSprites.size())
         return 0;
 
-    Sprite *s = getSprite(layer);
+    const Sprite *const s = getSprite(layer);
     if (s)
         return s->getFrameCount();
 
@@ -342,18 +342,18 @@ void CompoundSprite::redraw() const
 {
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    int rmask = 0xff000000;
-    int gmask = 0x00ff0000;
-    int bmask = 0x0000ff00;
-    int amask = 0x000000ff;
+    const int rmask = 0xff000000;
+    const int gmask = 0x00ff0000;
+    const int bmask = 0x0000ff00;
+    const int amask = 0x000000ff;
 #else
-    int rmask = 0x000000ff;
-    int gmask = 0x0000ff00;
-    int bmask = 0x00ff0000;
-    int amask = 0xff000000;
+    const int rmask = 0x000000ff;
+    const int gmask = 0x0000ff00;
+    const int bmask = 0x00ff0000;
+    const int amask = 0xff000000;
 #endif
 
-    SDL_Surface *surface = SDL_CreateRGBSurface(SDL_HWSURFACE,
+    SDL_Surface *const surface = SDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
 
     if (!surface)
@@ -367,10 +367,10 @@ void CompoundSprite::redraw() const
     int tileX = 32 / 2;
     int tileY = 32;
 
-    Game *game = Game::instance();
+    const Game *const game = Game::instance();
     if (game)
     {
-        Map *map = game->getCurrentMap();
+        const Map *const map = game->getCurrentMap();
         if (map)
         {
             tileX = map->getTileWidth() / 2;
@@ -378,8 +378,8 @@ void CompoundSprite::redraw() const
         }
     }
 
-    int posX = BUFFER_WIDTH / 2 - tileX;
-    int posY = BUFFER_HEIGHT - tileY;
+    const int posX = BUFFER_WIDTH / 2 - tileX;
+    const int posY = BUFFER_HEIGHT - tileY;
 
     mOffsetX = tileX - BUFFER_WIDTH / 2;
     mOffsetY = tileY - BUFFER_HEIGHT;
@@ -389,7 +389,7 @@ void CompoundSprite::redraw() const
     delete graphics;
     graphics = nullptr;
 
-    SDL_Surface *surfaceA = SDL_CreateRGBSurface(SDL_HWSURFACE,
+    SDL_Surface *const surfaceA = SDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
 
     SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
@@ -497,20 +497,20 @@ bool CompoundSprite::updateFromCache() const
     for (ImagesCache::iterator it = imagesCache.begin(),
          it_end = imagesCache.end(); it != it_end; ++ it)
     {
-        CompoundItem *ic = *it;
+        CompoundItem *const ic = *it;
         if (ic && ic->data.size() == size())
         {
             bool fail(false);
             VectorPointers::const_iterator it2 = ic->data.begin();
-            VectorPointers::const_iterator it2_end = ic->data.end();
+            const VectorPointers::const_iterator it2_end = ic->data.end();
 
             for (SpriteConstIterator it1 = mSprites.begin(),
                  it1_end = mSprites.end();
                  it1 != it1_end && it2 != it2_end;
                  ++ it1, ++ it2)
             {
-                void *ptr1 = nullptr;
-                void *ptr2 = nullptr;
+                const void *ptr1 = nullptr;
+                const void *ptr2 = nullptr;
                 if (*it1)
                     ptr1 = (*it1)->getHash();
                 if (*it2)

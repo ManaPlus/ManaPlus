@@ -37,7 +37,7 @@ class Channel
          * @param name         the name of the channel.
          * @param announcement a welcome message.
          */
-        Channel(short id,
+        Channel(const short id,
                 const std::string &name,
                 const std::string &announcement = std::string());
 
@@ -78,7 +78,7 @@ class Channel
 
     protected:
         friend class ChannelTab;
-        void setTab(ChannelTab *tab)
+        void setTab(ChannelTab *const tab)
         { mTab = tab; }
 
     private:

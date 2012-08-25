@@ -360,7 +360,7 @@ void *AnimatedSprite::getHash()
     return this;
 }
 
-bool AnimatedSprite::updateNumber(unsigned num)
+bool AnimatedSprite::updateNumber(const unsigned num)
 {
     // TODO need store num in delayed object if it exist for future usage
     if (!mSprite)

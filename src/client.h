@@ -74,9 +74,9 @@ extern LoginData loginData;
 /**
  * Returns elapsed time. (Warning: supposes the delay is always < 100 seconds)
  */
-int get_elapsed_time(int startTime);
+int get_elapsed_time(const int startTime);
 
-int get_elapsed_time1(int startTime);
+int get_elapsed_time1(const int startTime);
 
 /**
  * All client states.
@@ -213,9 +213,9 @@ public:
 
     int gameExec();
 
-    int testsExec();
+    int testsExec() const;
 
-    static void setState(State state)
+    static void setState(const State state)
     { instance()->mState = state; }
 
     static State getState()
@@ -245,19 +245,19 @@ public:
     static bool getIsMinimized()
     { return instance()->mIsMinimized; }
 
-    static void setIsMinimized(bool n)
+    static void setIsMinimized(const bool n)
     { instance()->mIsMinimized = n; }
 
     static bool getInputFocused()
     { return instance()->mInputFocused; }
 
-    static void setInputFocused(bool n)
+    static void setInputFocused(const bool n)
     { instance()->mInputFocused = n; }
 
     static bool getMouseFocused()
     { return instance()->mMouseFocused; }
 
-    static void setMouseFocused(bool n)
+    static void setMouseFocused(const bool n)
     { instance()->mMouseFocused = n; }
 
     static std::string getUpdatesDir()
@@ -266,7 +266,8 @@ public:
     static std::string getServerName()
     { return instance()->mServerName; }
 
-    static void resize(int width, int height, bool always = false)
+    static void resize(const int width, const int height,
+                       const bool always = false)
     { instance()->resizeVideo(width, height, always); }
 
     static void setGuiAlpha(float n);
@@ -275,7 +276,7 @@ public:
 
     static void closeDialogs();
 
-    static void setFramerate(int fpsLimit);
+    static void setFramerate(const int fpsLimit);
 
     static int getFramerate();
 
@@ -283,29 +284,29 @@ public:
 
     static void applyGrabMode();
 
-    void applyGamma();
+    static void applyGamma();
 
-    void applyVSync();
+    static void applyVSync();
 
-    void applyKeyRepeat();
+    static void applyKeyRepeat();
 
     void optionChanged(const std::string &name);
 
     void action(const gcn::ActionEvent &event);
 
-    void initTradeFilter();
+    void initTradeFilter() const;
 
     void initUsersDir();
 
     void initPacketLimiter();
 
-    void writePacketLimits(std::string packetLimitsName);
+    void writePacketLimits(std::string packetLimitsName) const;
 
-    void resizeVideo(int width, int height, bool always);
+    void resizeVideo(int width, int height, const bool always);
 
-    static bool limitPackets(int type);
+    static bool limitPackets(const int type);
 
-    static bool checkPackets(int type);
+    static bool checkPackets(const int type);
 
     PacketLimit mPacketLimits[PACKET_SIZE + 1];
 
@@ -314,7 +315,7 @@ private:
 
     void initHomeDir();
 
-    void initConfiguration();
+    void initConfiguration() const;
 
     void initLocalDataDir();
 
@@ -328,13 +329,14 @@ private:
 
     void initServerConfig(std::string serverName);
 
-    bool copyFile(std::string &configPath, std::string &oldConfigPath);
+    bool copyFile(const std::string &configPath,
+                  const std::string &oldConfigPath) const;
 
     bool createConfig(std::string &configPath);
 
-    void accountLogin(LoginData *data);
+    void accountLogin(LoginData *const data) const;
 
-    void storeSafeParameters();
+    void storeSafeParameters() const;
 
     void gameClear();
 

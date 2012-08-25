@@ -26,7 +26,7 @@
 
 #include "debug.h"
 
-Channel::Channel(short id,
+Channel::Channel(const short id,
                  const std::string &name, 
                  const std::string &announcement) :
     mId(id),

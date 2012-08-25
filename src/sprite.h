@@ -113,7 +113,7 @@ class Sprite
         virtual void *getHash2()
         { return this; }
 
-        virtual bool updateNumber(unsigned num) = 0;
+        virtual bool updateNumber(const unsigned num) = 0;
 
     protected:
         float mAlpha;                  /**< The alpha opacity used to draw */

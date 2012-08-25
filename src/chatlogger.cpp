@@ -80,7 +80,7 @@ void ChatLogger::setLogDir(const std::string &logDir)
     if (mLogFile.is_open())
         mLogFile.close();
 
-    DIR *dir = opendir(mLogDir.c_str());
+    DIR *const dir = opendir(mLogDir.c_str());
     if (!dir)
         mkdir_r(mLogDir.c_str());
     else
@@ -172,7 +172,7 @@ void ChatLogger::setServerName(const std::string &serverName)
     secureName(mServerName);
     if (mLogDir != "")
     {
-        DIR *dir = opendir((mLogDir + PHYSFS_getDirSeparator()
+        DIR *const dir = opendir((mLogDir + PHYSFS_getDirSeparator()
             + mServerName).c_str());
         if (!dir)
         {
@@ -187,7 +187,7 @@ void ChatLogger::setServerName(const std::string &serverName)
 }
 
 void ChatLogger::loadLast(std::string name, std::list<std::string> &list,
-                          unsigned n)
+                          const unsigned n) const
 {
     std::ifstream logFile;
     std::string fileName = strprintf("%s/%s.log", getDir().c_str(),

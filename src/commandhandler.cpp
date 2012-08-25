@@ -244,13 +244,13 @@ char CommandHandler::parseBoolean(const std::string &value)
 }
 
 void CommandHandler::handleAnnounce(const std::string &args,
-                                    ChatTab *tab A_UNUSED)
+                                    ChatTab *const tab A_UNUSED)
 {
     Net::getAdminHandler()->announce(args);
 }
 
 void CommandHandler::handleHelp(const std::string &args A_UNUSED,
-                                ChatTab *tab A_UNUSED)
+                                ChatTab *const tab A_UNUSED)
 {
     if (!helpWindow)
         return;
@@ -281,7 +281,7 @@ void CommandHandler::handleHelp(const std::string &args A_UNUSED,
 }
 
 void CommandHandler::handleWhere(const std::string &args A_UNUSED,
-                                 ChatTab *tab)
+                                 ChatTab *const tab)
 {
     std::ostringstream where;
     where << Game::instance()->getCurrentMapName() << ", coordinates: "
@@ -292,12 +292,12 @@ void CommandHandler::handleWhere(const std::string &args A_UNUSED,
 }
 
 void CommandHandler::handleWho(const std::string &args A_UNUSED,
-                               ChatTab *tab A_UNUSED)
+                               ChatTab *const tab A_UNUSED)
 {
     Net::getChatHandler()->who();
 }
 
-void CommandHandler::handleMsg(const std::string &args, ChatTab *tab)
+void CommandHandler::handleMsg(const std::string &args, ChatTab *const tab)
 {
     std::string recvnick("");
     std::string msg("");
@@ -347,7 +347,7 @@ void CommandHandler::handleMsg(const std::string &args, ChatTab *tab)
         tab->chatLog(_("Cannot send empty whispers!"), BY_SERVER);
 }
 
-void CommandHandler::handleQuery(const std::string &args, ChatTab *tab)
+void CommandHandler::handleQuery(const std::string &args, ChatTab *const tab)
 {
     if (chatWindow)
     {
@@ -364,13 +364,13 @@ void CommandHandler::handleQuery(const std::string &args, ChatTab *tab)
 }
 
 void CommandHandler::handleClear(const std::string &args A_UNUSED,
-                                 ChatTab *tab A_UNUSED)
+                                 ChatTab *const tab A_UNUSED)
 {
     if (chatWindow)
         chatWindow->clearTab();
 }
 
-void CommandHandler::handleJoin(const std::string &args, ChatTab *tab)
+void CommandHandler::handleJoin(const std::string &args, ChatTab *const tab)
 {
     if (!tab)
         return;
@@ -383,12 +383,12 @@ void CommandHandler::handleJoin(const std::string &args, ChatTab *tab)
 }
 
 void CommandHandler::handleListChannels(const std::string &args A_UNUSED,
-                                        ChatTab *tab A_UNUSED)
+                                        ChatTab *const tab A_UNUSED)
 {
     Net::getChatHandler()->channelList();
 }
 
-void CommandHandler::handleCreateParty(const std::string &args, ChatTab *tab)
+void CommandHandler::handleCreateParty(const std::string &args, ChatTab *const tab)
 {
     if (!tab)
         return;
@@ -399,7 +399,7 @@ void CommandHandler::handleCreateParty(const std::string &args, ChatTab *tab)
         Net::getPartyHandler()->create(args);
 }
 
-void CommandHandler::handleCreateGuild(const std::string &args, ChatTab *tab)
+void CommandHandler::handleCreateGuild(const std::string &args, ChatTab *const tab)
 {
     if (!tab)
         return;
@@ -410,7 +410,7 @@ void CommandHandler::handleCreateGuild(const std::string &args, ChatTab *tab)
         Net::getGuildHandler()->create(args);
 }
 
-void CommandHandler::handleParty(const std::string &args, ChatTab *tab)
+void CommandHandler::handleParty(const std::string &args, ChatTab *const tab)
 {
     if (!tab)
         return;
@@ -421,12 +421,12 @@ void CommandHandler::handleParty(const std::string &args, ChatTab *tab)
         tab->chatLog(_("Please specify a name."), BY_SERVER);
 }
 
-void CommandHandler::handleMe(const std::string &args, ChatTab *tab)
+void CommandHandler::handleMe(const std::string &args, ChatTab *const tab)
 {
     outString(tab, strprintf("*%s*", args.c_str()), args);
 }
 
-void CommandHandler::outString(ChatTab *tab, const std::string &str,
+void CommandHandler::outString(ChatTab *const tab, const std::string &str,
                                const std::string &def)
 {
     if (!tab)
@@ -462,7 +462,7 @@ void CommandHandler::outString(ChatTab *tab, const std::string &str,
     }
 }
 
-void CommandHandler::handleToggle(const std::string &args, ChatTab *tab)
+void CommandHandler::handleToggle(const std::string &args, ChatTab *const tab)
 {
     if (args.empty())
     {
@@ -474,9 +474,7 @@ void CommandHandler::handleToggle(const std::string &args, ChatTab *tab)
         return;
     }
 
-    char opt = parseBoolean(args);
-
-    switch (opt)
+    switch (parseBoolean(args))
     {
         case 1:
             if (tab)
@@ -500,37 +498,37 @@ void CommandHandler::handleToggle(const std::string &args, ChatTab *tab)
 }
 
 void CommandHandler::handlePresent(const std::string &args A_UNUSED,
-                                   ChatTab *tab A_UNUSED)
+                                   ChatTab *const tab A_UNUSED)
 {
     if (chatWindow)
         chatWindow->doPresent();
 }
 
 void CommandHandler::handleIgnore(const std::string &args,
-                                  ChatTab *tab A_UNUSED)
+                                  ChatTab *const tab A_UNUSED)
 {
     changeRelation(args, PlayerRelation::IGNORED, "ignored", tab);
 }
 
-void CommandHandler::handleFriend(const std::string &args, ChatTab *tab)
+void CommandHandler::handleFriend(const std::string &args, ChatTab *const tab)
 {
     changeRelation(args, PlayerRelation::FRIEND, _("friend"), tab);
 }
 
-void CommandHandler::handleDisregard(const std::string &args, ChatTab *tab)
+void CommandHandler::handleDisregard(const std::string &args, ChatTab *const tab)
 {
     changeRelation(args, PlayerRelation::DISREGARDED, _("disregarded"), tab);
 }
 
-void CommandHandler::handleNeutral(const std::string &args, ChatTab *tab)
+void CommandHandler::handleNeutral(const std::string &args, ChatTab *const tab)
 {
     changeRelation(args, PlayerRelation::NEUTRAL, _("neutral"), tab);
 }
 
 void CommandHandler::changeRelation(const std::string &args,
-                                    PlayerRelation::Relation relation,
+                                    const PlayerRelation::Relation relation,
                                     const std::string &relationText,
-                                    ChatTab *tab)
+                                    ChatTab *const tab)
 {
     if (args.empty())
     {
@@ -571,7 +569,7 @@ void CommandHandler::changeRelation(const std::string &args,
     }
 }
 
-void CommandHandler::handleUnignore(const std::string &args, ChatTab *tab)
+void CommandHandler::handleUnignore(const std::string &args, ChatTab *const tab)
 {
     if (args.empty())
     {
@@ -601,17 +599,17 @@ void CommandHandler::handleUnignore(const std::string &args, ChatTab *tab)
     }
 }
 
-void CommandHandler::handleBlackList(const std::string &args, ChatTab *tab)
+void CommandHandler::handleBlackList(const std::string &args, ChatTab *const tab)
 {
     changeRelation(args, PlayerRelation::BLACKLISTED, _("blacklisted"), tab);
 }
 
-void CommandHandler::handleEnemy(const std::string &args, ChatTab *tab)
+void CommandHandler::handleEnemy(const std::string &args, ChatTab *const tab)
 {
     changeRelation(args, PlayerRelation::ENEMY2, _("enemy"), tab);
 }
 
-void CommandHandler::handleErase(const std::string &args, ChatTab *tab)
+void CommandHandler::handleErase(const std::string &args, ChatTab *const tab)
 {
     if (args.empty())
     {
@@ -641,29 +639,29 @@ void CommandHandler::handleErase(const std::string &args, ChatTab *tab)
 }
 
 void CommandHandler::handleQuit(const std::string &args A_UNUSED,
-                                ChatTab *tab A_UNUSED)
+                                ChatTab *const tab A_UNUSED)
 {
 //    quit();
 }
 
 void CommandHandler::handleShowAll(const std::string &args A_UNUSED,
-                                   ChatTab *tab A_UNUSED)
+                                   ChatTab *const tab A_UNUSED)
 {
     if (actorSpriteManager)
         actorSpriteManager->printAllToChat();
 }
 
-void CommandHandler::handleMove(const std::string &args, ChatTab *tab A_UNUSED)
+void CommandHandler::handleMove(const std::string &args, ChatTab *const tab A_UNUSED)
 {
     int x = 0;
     int y = 0;
 
-    if (player_node && parse2Int(args, &x, &y))
+    if (player_node && parse2Int(args, x, y))
         player_node->moveTo(x, y);
 }
 
 void CommandHandler::handleNavigate(const std::string &args,
-                                    ChatTab *tab A_UNUSED)
+                                    ChatTab *const tab A_UNUSED)
 {
     if (!player_node)
         return;
@@ -671,13 +669,13 @@ void CommandHandler::handleNavigate(const std::string &args,
     int x = 0;
     int y = 0;
 
-    if (parse2Int(args, &x, &y))
+    if (parse2Int(args, x, y))
         player_node->navigateTo(x, y);
     else
         player_node->navigateClean();
 }
 
-bool CommandHandler::parse2Int(const std::string &args, int *x, int *y)
+bool CommandHandler::parse2Int(const std::string &args, int &x, int &y)
 {
     if (!x || !y)
         return false;
@@ -688,8 +686,8 @@ bool CommandHandler::parse2Int(const std::string &args, int *x, int *y)
     {
         if (pos + 1 < args.length())
         {
-            *x = atoi(args.substr(0, pos).c_str());
-            *y = atoi(args.substr(pos + 1, args.length()).c_str());
+            x = atoi(args.substr(0, pos).c_str());
+            y = atoi(args.substr(pos + 1, args.length()).c_str());
             isValid = true;
         }
     }
@@ -697,18 +695,18 @@ bool CommandHandler::parse2Int(const std::string &args, int *x, int *y)
 }
 
 void CommandHandler::handleTarget(const std::string &args,
-                                  ChatTab *tab A_UNUSED)
+                                  ChatTab *const tab A_UNUSED)
 {
     if (!actorSpriteManager || !player_node)
         return;
 
-    Being* target = actorSpriteManager->findNearestByName(args);
+    Being *const target = actorSpriteManager->findNearestByName(args);
     if (target)
         player_node->setTarget(target);
 }
 
 void CommandHandler::handleCloseAll(const std::string &args A_UNUSED,
-                                    ChatTab *tab A_UNUSED)
+                                    ChatTab *const tab A_UNUSED)
 {
     if (chatWindow)
     {
@@ -718,7 +716,7 @@ void CommandHandler::handleCloseAll(const std::string &args A_UNUSED,
 }
 
 void CommandHandler::handleIgnoreAll(const std::string &args A_UNUSED,
-                                     ChatTab *tab A_UNUSED)
+                                     ChatTab *const tab A_UNUSED)
 {
     if (chatWindow)
     {
@@ -728,7 +726,7 @@ void CommandHandler::handleIgnoreAll(const std::string &args A_UNUSED,
 }
 
 void CommandHandler::handleOutfit(const std::string &args,
-                                  ChatTab *tab A_UNUSED)
+                                  ChatTab *const tab A_UNUSED)
 {
     if (outfitWindow)
     {
@@ -750,20 +748,20 @@ void CommandHandler::handleOutfit(const std::string &args,
 }
 
 void CommandHandler::handleEmote(const std::string &args,
-                                 ChatTab *tab A_UNUSED)
+                                 ChatTab *const tab A_UNUSED)
 {
     if (player_node)
         player_node->emote(static_cast<uint8_t>(atoi(args.c_str())));
 }
 
-void CommandHandler::handleAway(const std::string &args, ChatTab *tab A_UNUSED)
+void CommandHandler::handleAway(const std::string &args, ChatTab *const tab A_UNUSED)
 {
     if (player_node)
         player_node->setAway(args);
 }
 
 void CommandHandler::handlePseudoAway(const std::string &args,
-                                      ChatTab *tab A_UNUSED)
+                                      ChatTab *const tab A_UNUSED)
 {
     if (player_node)
     {
@@ -772,7 +770,7 @@ void CommandHandler::handlePseudoAway(const std::string &args,
     }
 }
 
-void CommandHandler::handleFollow(const std::string &args, ChatTab *tab)
+void CommandHandler::handleFollow(const std::string &args, ChatTab *const tab)
 {
     if (!player_node)
         return;
@@ -781,44 +779,33 @@ void CommandHandler::handleFollow(const std::string &args, ChatTab *tab)
     {
         player_node->setFollow(args);
     }
-    else if (tab)
+    else if (tab && tab->getType() == ChatTab::TAB_WHISPER)
     {
-        if (tab->getType() == ChatTab::TAB_WHISPER)
-        {
-            WhisperTab *wTab = static_cast<WhisperTab*>(tab);
-            player_node->setFollow(wTab->getNick());
-        }
+        player_node->setFollow(static_cast<WhisperTab*>(tab)->getNick());
     }
 }
 
-void CommandHandler::handleImitation(const std::string &args, ChatTab *tab)
+void CommandHandler::handleImitation(const std::string &args, ChatTab *const tab)
 {
     if (!player_node)
         return;
 
     if (!args.empty())
-    {
         player_node->setImitate(args);
-    }
     else if (tab && tab->getType() == ChatTab::TAB_WHISPER)
-    {
-        WhisperTab *wTab = static_cast<WhisperTab*>(tab);
-        player_node->setImitate(wTab->getNick());
-    }
+        player_node->setImitate(static_cast<WhisperTab*>(tab)->getNick());
     else
-    {
         player_node->setImitate("");
-    }
 }
 
-void CommandHandler::handleHeal(const std::string &args, ChatTab *tab A_UNUSED)
+void CommandHandler::handleHeal(const std::string &args, ChatTab *const tab A_UNUSED)
 {
     if (!actorSpriteManager)
         return;
 
     if (!args.empty())
     {
-        Being *being = actorSpriteManager->findBeingByName(
+        Being *const being = actorSpriteManager->findBeingByName(
             args, Being::PLAYER);
         if (being)
             actorSpriteManager->heal(being);
@@ -829,39 +816,39 @@ void CommandHandler::handleHeal(const std::string &args, ChatTab *tab A_UNUSED)
     }
 }
 
-void CommandHandler::handleHack(const std::string &args, ChatTab *tab A_UNUSED)
+void CommandHandler::handleHack(const std::string &args, ChatTab *const tab A_UNUSED)
 {
     Net::getChatHandler()->sendRaw(args);
 }
 
-void CommandHandler::handleMail(const std::string &args, ChatTab *tab A_UNUSED)
+void CommandHandler::handleMail(const std::string &args, ChatTab *const tab A_UNUSED)
 {
     if (auctionManager && auctionManager->getEnableAuctionBot())
         auctionManager->sendMail(args);
 }
 
 void CommandHandler::handlePriceLoad(const std::string &args A_UNUSED,
-                                     ChatTab *tab A_UNUSED)
+                                     ChatTab *const tab A_UNUSED)
 {
     if (shopWindow)
         shopWindow->loadList();
 }
 
 void CommandHandler::handlePriceSave(const std::string &args A_UNUSED,
-                                     ChatTab *tab A_UNUSED)
+                                     ChatTab *const tab A_UNUSED)
 {
     if (shopWindow)
         shopWindow->saveList();
 }
 
 void CommandHandler::handleDisconnect(const std::string &args A_UNUSED,
-                                      ChatTab *tab A_UNUSED)
+                                      ChatTab *const tab A_UNUSED)
 {
     Net::getGameHandler()->disconnect2();
 }
 
 void CommandHandler::handleUndress(const std::string &args,
-                                   ChatTab *tab A_UNUSED)
+                                   ChatTab *const tab A_UNUSED)
 {
     if (!actorSpriteManager)
         return;
@@ -872,24 +859,25 @@ void CommandHandler::handleUndress(const std::string &args,
 }
 
 void CommandHandler::handleAttack(const std::string &args,
-                                  ChatTab *tab A_UNUSED)
+                                  ChatTab *const tab A_UNUSED)
 {
     if (!player_node || !actorSpriteManager)
         return;
 
-    Being* target = actorSpriteManager->findNearestByName(args);
+    Being *const target = actorSpriteManager->findNearestByName(args);
     if (target)
         player_node->setTarget(target);
     player_node->attack2(player_node->getTarget(), true);
 }
 
 void CommandHandler::handleTrade(const std::string &args,
-                                 ChatTab *tab A_UNUSED)
+                                 ChatTab *const tab A_UNUSED)
 {
     if (!actorSpriteManager)
         return;
 
-    Being *being = actorSpriteManager->findBeingByName(args, Being::PLAYER);
+    Being *const being = actorSpriteManager->findBeingByName(
+        args, Being::PLAYER);
     if (being)
     {
         Net::getTradeHandler()->request(being);
@@ -900,7 +888,7 @@ void CommandHandler::handleTrade(const std::string &args,
 }
 
 void CommandHandler::handleDirs(const std::string &args A_UNUSED,
-                                ChatTab *tab A_UNUSED)
+                                ChatTab *const tab A_UNUSED)
 {
     if (!player_node || !debugChatTab)
         return;
@@ -916,7 +904,7 @@ void CommandHandler::handleDirs(const std::string &args A_UNUSED,
 }
 
 void CommandHandler::handleInfo(const std::string &args A_UNUSED,
-                                ChatTab *tab)
+                                ChatTab *const tab)
 {
     switch (tab->getType())
     {
@@ -924,7 +912,7 @@ void CommandHandler::handleInfo(const std::string &args A_UNUSED,
         {
             if (!player_node)
                 return;
-            const Guild *guild = player_node->getGuild();
+            const Guild *const guild = player_node->getGuild();
             if (guild)
                 Net::getGuildHandler()->info(guild->getId());
             break;
@@ -935,14 +923,14 @@ void CommandHandler::handleInfo(const std::string &args A_UNUSED,
 }
 
 void CommandHandler::handleWait(const std::string &args,
-                                ChatTab *tab A_UNUSED)
+                                ChatTab *const tab A_UNUSED)
 {
     if (player_node)
         player_node->waitFor(args);
 }
 
 void CommandHandler::handleUptime(const std::string &args A_UNUSED,
-                                  ChatTab *tab A_UNUSED)
+                                  ChatTab *const tab A_UNUSED)
 {
     if (!debugChatTab)
         return;
@@ -1000,7 +988,7 @@ void CommandHandler::handleUptime(const std::string &args A_UNUSED,
 }
 
 void CommandHandler::handleAddPriorityAttack(const std::string &args,
-                                             ChatTab *tab A_UNUSED)
+                                             ChatTab *const tab A_UNUSED)
 {
     if (!actorSpriteManager
         || actorSpriteManager->isInPriorityAttackList(args))
@@ -1016,7 +1004,7 @@ void CommandHandler::handleAddPriorityAttack(const std::string &args,
 }
 
 void CommandHandler::handleAddAttack(const std::string &args,
-                                     ChatTab *tab A_UNUSED)
+                                     ChatTab *const tab A_UNUSED)
 {
     if (!actorSpriteManager || actorSpriteManager->isInAttackList(args))
         return;
@@ -1029,7 +1017,7 @@ void CommandHandler::handleAddAttack(const std::string &args,
 }
 
 void CommandHandler::handleRemoveAttack(const std::string &args,
-                                        ChatTab *tab A_UNUSED)
+                                        ChatTab *const tab A_UNUSED)
 {
     if (!actorSpriteManager || args.empty()
         || !actorSpriteManager->isInAttackList(args))
@@ -1044,7 +1032,7 @@ void CommandHandler::handleRemoveAttack(const std::string &args,
 }
 
 void CommandHandler::handleAddIgnoreAttack(const std::string &args,
-                                           ChatTab *tab A_UNUSED)
+                                           ChatTab *const tab A_UNUSED)
 {
     if (!actorSpriteManager || actorSpriteManager->isInIgnoreAttackList(args))
         return;
@@ -1057,7 +1045,7 @@ void CommandHandler::handleAddIgnoreAttack(const std::string &args,
 }
 
 void CommandHandler::handleCacheInfo(const std::string &args A_UNUSED,
-                                     ChatTab *tab A_UNUSED)
+                                     ChatTab *const tab A_UNUSED)
 {
     if (!chatWindow || !debugChatTab)
         return;
@@ -1094,19 +1082,19 @@ void CommandHandler::handleCacheInfo(const std::string &args A_UNUSED,
 }
 
 void CommandHandler::handleServerIgnoreAll(const std::string &args A_UNUSED,
-                                           ChatTab *tab A_UNUSED)
+                                           ChatTab *const tab A_UNUSED)
 {
     Net::getChatHandler()->ignoreAll();
 }
 
 void CommandHandler::handleServerUnIgnoreAll(const std::string &args A_UNUSED,
-                                             ChatTab *tab A_UNUSED)
+                                             ChatTab *const tab A_UNUSED)
 {
     Net::getChatHandler()->unIgnoreAll();
 }
 
 void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
-                                        ChatTab *tab)
+                                        ChatTab *const tab)
 {
     std::string str;
     str = strprintf ("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,
@@ -1149,13 +1137,13 @@ void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
 }
 
 void CommandHandler::handleDumpTests(const std::string &args A_UNUSED,
-                                     ChatTab *tab)
+                                     ChatTab *const tab)
 {
     std::string str = config.getStringValue("testInfo");
     outStringNormal(tab, str, str);
 }
 
-void CommandHandler::outStringNormal(ChatTab *tab, const std::string &str,
+void CommandHandler::outStringNormal(ChatTab *const tab, const std::string &str,
                                      const std::string &def)
 {
     if (!player_node)
@@ -1202,21 +1190,21 @@ void CommandHandler::outStringNormal(ChatTab *tab, const std::string &str,
 }
 
 void CommandHandler::handleSetDrop(const std::string &args,
-                                   ChatTab *tab A_UNUSED)
+                                   ChatTab *const tab A_UNUSED)
 {
     if (player_node)
         player_node->setQuickDropCounter(atoi(args.c_str()));
 }
 
 void CommandHandler::handleError(const std::string &args A_UNUSED,
-                                 ChatTab *tab A_UNUSED)
+                                 ChatTab *const tab A_UNUSED)
 {
     int *ptr = nullptr;
     logger->log("test %d", *ptr);
 }
 
 void CommandHandler::handleUrl(const std::string &args,
-                               ChatTab *tab)
+                               ChatTab *const tab)
 {
     if (tab)
     {
@@ -1229,7 +1217,7 @@ void CommandHandler::handleUrl(const std::string &args,
 }
 
 void CommandHandler::handleOpen(const std::string &args,
-                                ChatTab *tab A_UNUSED)
+                                ChatTab *const tab A_UNUSED)
 {
     std::string url = args;
     if (!strStartWith(url, "http"))
@@ -1274,7 +1262,7 @@ void showRes(std::string str, ResourceManager::Resources *res)
 }
 
 void CommandHandler::handleDump(const std::string &args,
-                                ChatTab *tab A_UNUSED)
+                                ChatTab *const tab A_UNUSED)
 {
     if (!debugChatTab)
         return;
@@ -1300,13 +1288,13 @@ void CommandHandler::handleDump(const std::string &args,
 
 #elif defined ENABLE_MEM_DEBUG
 void CommandHandler::handleDump(const std::string &args A_UNUSED,
-                                ChatTab *tab A_UNUSED)
+                                ChatTab *const tab A_UNUSED)
 {
     check_leaks();
 }
 #else
 void CommandHandler::handleDump(const std::string &args A_UNUSED,
-                                ChatTab *tab A_UNUSED)
+                                ChatTab *const tab A_UNUSED)
 {
 }
 #endif
@@ -1389,7 +1377,7 @@ void CommandHandler::replaceVars(std::string &str)
 }
 
 void CommandHandler::handleDumpOGL(const std::string &args A_UNUSED,
-                                   ChatTab *tab A_UNUSED)
+                                   ChatTab *const tab A_UNUSED)
 {
 #if defined USE_OPENGL
     NormalOpenGLGraphics::dumpSettings();

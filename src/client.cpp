@@ -202,7 +202,7 @@ static uint32_t nextSecond(uint32_t interval, void *param A_UNUSED)
  * @return the elapsed time in milliseconds
  * between two tick values.
  */
-int get_elapsed_time(int startTime)
+int get_elapsed_time(const int startTime)
 {
     if (startTime <= tick_time)
     {
@@ -215,7 +215,7 @@ int get_elapsed_time(int startTime)
     }
 }
 
-int get_elapsed_time1(int startTime)
+int get_elapsed_time1(const int startTime)
 {
     if (startTime <= tick_time)
         return tick_time - startTime;
@@ -399,7 +399,7 @@ void Client::gameInit()
             SMALL_VERSION).c_str(), nullptr);
     }
 
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     if (!resman->setWriteDir(mLocalDataDir))
     {
@@ -442,11 +442,11 @@ void Client::gameInit()
 
         // Strip blah.mana from the path
 #ifdef WIN32
-        int loc1 = path.find_last_of('/');
-        int loc2 = path.find_last_of('\\');
-        int loc = static_cast<int>(std::max(loc1, loc2));
+        const int loc1 = path.find_last_of('/');
+        const int loc2 = path.find_last_of('\\');
+        const int loc = static_cast<int>(std::max(loc1, loc2));
 #else
-        int loc = static_cast<int>(path.find_last_of('/'));
+        const int loc = static_cast<int>(path.find_last_of('/'));
 #endif
         if (loc > 0)
             resman->addToSearchPath(path.substr(0, loc + 1) + "data", false);
@@ -800,7 +800,7 @@ void Client::gameClear()
     mInstance = nullptr;
 }
 
-int Client::testsExec()
+int Client::testsExec() const
 {
     if (mOptions.test.empty())
     {
@@ -981,7 +981,8 @@ int Client::gameExec()
             if (!gui)
                 break;
 
-            gcn::Container *top = static_cast<gcn::Container*>(gui->getTop());
+            gcn::Container *const top = static_cast<gcn::Container*>(
+                gui->getTop());
 
             if (!top)
                 break;
@@ -1031,7 +1032,7 @@ int Client::gameExec()
                 delete mGame;
                 mGame = nullptr;
                 Game::clearInstance();
-                ResourceManager *resman = ResourceManager::getInstance();
+                ResourceManager *const resman = ResourceManager::getInstance();
                 if (resman)
                     resman->cleanOrphans();
                 Party::clearParties();
@@ -1199,7 +1200,8 @@ int Client::gameExec()
                 {
                     logger->log1("State: LOAD DATA");
 
-                    ResourceManager *resman = ResourceManager::getInstance();
+                    ResourceManager *const resman
+                        = ResourceManager::getInstance();
 
                     // If another data path has been set,
                     // we don't load any other files...
@@ -1769,7 +1771,7 @@ void Client::initServerConfig(std::string serverName)
 /**
  * Initialize configuration.
  */
-void Client::initConfiguration()
+void Client::initConfiguration() const
 {
 #ifdef DEBUG_CONFIG
     config.setIsMain(true);
@@ -1882,7 +1884,7 @@ void Client::initUpdatesDir()
         mUpdatesDir = updates.str();
     }
 
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     // Verify that the updates directory exists. Create if necessary.
     if (!resman->isDirectory("/" + mUpdatesDir))
@@ -1960,7 +1962,7 @@ void Client::initScreenshotDir()
     }
 }
 
-void Client::accountLogin(LoginData *data)
+void Client::accountLogin(LoginData *const data) const
 {
     if (!data)
         return;
@@ -1985,7 +1987,8 @@ void Client::accountLogin(LoginData *data)
     serverConfig.setValue("remember", data->remember);
 }
 
-bool Client::copyFile(std::string &configPath, std::string &oldConfigPath)
+bool Client::copyFile(const std::string &configPath,
+                      const std::string &oldConfigPath) const
 {
     FILE *configFile = nullptr;
 
@@ -2024,7 +2027,7 @@ bool Client::createConfig(std::string &configPath)
     return copyFile(configPath, oldHomeDir);
 }
 
-void Client::storeSafeParameters()
+void Client::storeSafeParameters() const
 {
     bool tmpHwaccel;
     int tmpOpengl;
@@ -2136,7 +2139,7 @@ void Client::storeSafeParameters()
     }
 }
 
-void Client::initTradeFilter()
+void Client::initTradeFilter() const
 {
     std::string tradeListName =
         Client::getServerConfigDirectory() + "/tradefilter.txt";
@@ -2289,7 +2292,7 @@ void Client::initPacketLimiter()
                 return;
             }
 
-            int ver = atoi(line);
+            const int ver = atoi(line);
 
             for (int f = 0; f < PACKET_SIZE; f ++)
             {
@@ -2306,7 +2309,7 @@ void Client::initPacketLimiter()
     }
 }
 
-void Client::writePacketLimits(std::string packetLimitsName)
+void Client::writePacketLimits(std::string packetLimitsName) const
 {
     std::ofstream outPacketFile;
     outPacketFile.open(packetLimitsName.c_str(), std::ios::out);
@@ -2325,7 +2328,7 @@ void Client::writePacketLimits(std::string packetLimitsName)
     outPacketFile.close();
 }
 
-bool Client::checkPackets(int type)
+bool Client::checkPackets(const int type)
 {
     if (type > PACKET_SIZE)
         return false;
@@ -2339,10 +2342,10 @@ bool Client::checkPackets(int type)
     if (!timeLimit)
         return true;
 
-    int time = tick_time;
-    int lastTime = limit.lastTime;
-    int cnt = limit.cnt;
-    int cntLimit = limit.cntLimit;
+    const int time = tick_time;
+    const int lastTime = limit.lastTime;
+    const int cnt = limit.cnt;
+    const int cntLimit = limit.cntLimit;
 
     if (lastTime > tick_time)
     {
@@ -2368,7 +2371,7 @@ bool Client::checkPackets(int type)
     return true;
 }
 
-bool Client::limitPackets(int type)
+bool Client::limitPackets(const int type)
 {
     if (type > PACKET_SIZE)
         return false;
@@ -2381,10 +2384,10 @@ bool Client::limitPackets(int type)
     if (!timeLimit)
         return true;
 
-    int time = tick_time;
-    int lastTime = instance()->mPacketLimits[type].lastTime;
-    int cnt = instance()->mPacketLimits[type].cnt;
-    int cntLimit = instance()->mPacketLimits[type].cntLimit;
+    const int time = tick_time;
+    const int lastTime = instance()->mPacketLimits[type].lastTime;
+    const int cnt = instance()->mPacketLimits[type].cnt;
+    const int cntLimit = instance()->mPacketLimits[type].cntLimit;
 
     if (lastTime > tick_time)
     {
@@ -2435,7 +2438,7 @@ float Client::getGuiAlpha()
     return instance()->mGuiAlpha;
 }
 
-void Client::setFramerate(int fpsLimit)
+void Client::setFramerate(const int fpsLimit)
 {
     if (!fpsLimit || !instance()->mLimitFps)
         return;
@@ -2471,7 +2474,7 @@ bool Client::isTmw()
     return false;
 }
 
-void Client::resizeVideo(int width, int height, bool always)
+void Client::resizeVideo(int width, int height, const bool always)
 {
     // Keep a minimum size. This isn't adhered to by the actual window, but
     // it keeps some window positions from getting messed up.
@@ -2534,13 +2537,13 @@ void Client::applyGrabMode()
 
 void Client::applyGamma()
 {
-    float val = config.getFloatValue("gamma");
+    const float val = config.getFloatValue("gamma");
     SDL_SetGamma(val, val, val);
 }
 
 void Client::applyVSync()
 {
-    int val = config.getIntValue("vsync");
+    const int val = config.getIntValue("vsync");
     if (val > 0 && val < 2)
         SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, val);
 }

@@ -34,11 +34,11 @@ public:
     ChannelManager();
     ~ChannelManager();
 
-    Channel *findById(int id) const;
+    Channel *findById(const int id) const;
     Channel *findByName(const std::string &name) const;
 
-    void addChannel(Channel *channel);
-    void removeChannel(Channel *channel);
+    void addChannel(Channel *const channel);
+    void removeChannel(Channel *const channel);
 
 private:
     std::list<Channel*> mChannels;

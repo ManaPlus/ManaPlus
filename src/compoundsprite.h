@@ -88,14 +88,14 @@ public:
     bool empty() const
     { return mSprites.empty(); }
 
-    void addSprite(Sprite *sprite);
+    void addSprite(Sprite *const sprite);
 
-    void setSprite(int layer, Sprite *sprite);
+    void setSprite(const int layer, Sprite *const sprite);
 
     Sprite *getSprite(int layer) const
     { return mSprites.at(layer); }
 
-    void removeSprite(int layer);
+    void removeSprite(const int layer);
 
     void clear();
 
@@ -119,7 +119,7 @@ public:
 
     virtual void setAlpha(float alpha);
 
-    bool updateNumber(unsigned num);
+    bool updateNumber(const unsigned num);
 
     static void setEnableDelay(bool b)
     { mEnableDelay = b; }

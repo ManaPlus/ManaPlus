@@ -88,7 +88,7 @@ class AnimatedSprite : public Sprite
 
         virtual void *getHash();
 
-        bool updateNumber(unsigned num);
+        bool updateNumber(const unsigned num);
 
         void clearDelayLoad();
 

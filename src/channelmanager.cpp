@@ -38,15 +38,15 @@ ChannelManager::~ChannelManager()
     mChannels.clear();
 }
 
-Channel *ChannelManager::findById(int id) const
+Channel *ChannelManager::findById(const int id) const
 {
     Channel *channel = nullptr;
     for (std::list<Channel*>::const_iterator itr = mChannels.begin(),
-                                             end = mChannels.end();
+         end = mChannels.end();
          itr != end;
          ++itr)
     {
-        Channel *c = (*itr);
+        Channel *const c = (*itr);
         if (!c)
             continue;
         if (c->getId() == id)
@@ -64,11 +64,11 @@ Channel *ChannelManager::findByName(const std::string &name) const
     if (!name.empty())
     {
         for (std::list<Channel*>::const_iterator itr = mChannels.begin(),
-                                                 end = mChannels.end();
+             end = mChannels.end();
              itr != end;
              ++itr)
         {
-            Channel *c = (*itr);
+            Channel *const c = (*itr);
             if (!c)
                 continue;
             if (c->getName() == name)
@@ -81,12 +81,12 @@ Channel *ChannelManager::findByName(const std::string &name) const
     return channel;
 }
 
-void ChannelManager::addChannel(Channel *channel)
+void ChannelManager::addChannel(Channel *const channel)
 {
     mChannels.push_back(channel);
 }
 
-void ChannelManager::removeChannel(Channel *channel)
+void ChannelManager::removeChannel(Channel *const channel)
 {
     mChannels.remove(channel);
     delete channel;

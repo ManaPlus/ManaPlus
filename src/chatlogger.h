@@ -47,7 +47,7 @@ class ChatLogger
         void log(std::string name, std::string str);
 
         void loadLast(std::string name, std::list<std::string> &list,
-                      unsigned n);
+                      const unsigned n) const;
 
         std::string getDir() const;
 
