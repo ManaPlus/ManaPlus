@@ -34,8 +34,10 @@
 
 #include "debug.h"
 
-FloorItem::FloorItem(int id, int itemId, int x, int y, Map *map, int amount,
-                     unsigned char color, int subX, int subY):
+FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
+                     Map *const map, const int amount,
+                     const unsigned char color,
+                     int subX, int subY):
     ActorSprite(id),
     mItemId(itemId),
     mX(x),
@@ -52,7 +54,7 @@ FloorItem::FloorItem(int id, int itemId, int x, int y, Map *map, int amount,
     const ItemInfo &info = ItemDB::get(itemId);
     if (map)
     {
-        int max = info.getMaxFloorOffset();
+        const int max = info.getMaxFloorOffset();
         if (subX > max)
             subX = max;
         else if (subX < -max)
@@ -100,7 +102,7 @@ bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
 
     if (mHighlight)
     {
-        int curTime = cur_time;
+        const int curTime = cur_time;
         font = gui->getFont();
         if (mDropTime < curTime)
         {

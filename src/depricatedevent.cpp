@@ -39,7 +39,7 @@ DepricatedEvent::~DepricatedEvent()
     }
 }
 
-void DepricatedEvent::setInt(const std::string &key, int value)
+void DepricatedEvent::setInt(const std::string &key, const int value)
                              throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
@@ -51,7 +51,7 @@ void DepricatedEvent::setInt(const std::string &key, int value)
 int DepricatedEvent::getInt(const std::string &key) const
                             throw (BadDepricatedEvent)
 {
-    VariableMap::const_iterator it = mData.find(key);
+    const VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())
         throw BAD_KEY;
 
@@ -74,7 +74,7 @@ void DepricatedEvent::setString(const std::string &key,
 const std::string &DepricatedEvent::getString(const std::string &key)
                                     const throw (BadDepricatedEvent)
 {
-    VariableMap::const_iterator it = mData.find(key);
+    const VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())
         throw BAD_KEY;
 
@@ -85,7 +85,7 @@ const std::string &DepricatedEvent::getString(const std::string &key)
 }
 
 
-void DepricatedEvent::setFloat(const std::string &key, double value)
+void DepricatedEvent::setFloat(const std::string &key, const double value)
                                throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
@@ -97,7 +97,7 @@ void DepricatedEvent::setFloat(const std::string &key, double value)
 double DepricatedEvent::getFloat(const std::string &key) const
                                  throw (BadDepricatedEvent)
 {
-    VariableMap::const_iterator it = mData.find(key);
+    const VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())
         throw BAD_KEY;
 
@@ -107,9 +107,10 @@ double DepricatedEvent::getFloat(const std::string &key) const
     return static_cast<FloatData *>(it->second)->getData();
 }
 
-void DepricatedEvent::trigger(Channels channel, const DepricatedEvent &event)
+void DepricatedEvent::trigger(const Channels channel,
+                              const DepricatedEvent &event)
 {
-    ListenMap::const_iterator it = mBindings.find(channel);
+    const ListenMap::const_iterator it = mBindings.find(channel);
 
     // Make sure something is listening
     if (it == mBindings.end())
@@ -117,7 +118,7 @@ void DepricatedEvent::trigger(Channels channel, const DepricatedEvent &event)
 
     // Loop though all listeners
     ListenerSet::const_iterator lit = it->second.begin();
-    ListenerSet::const_iterator lit_end = it->second.end();
+    const ListenerSet::const_iterator lit_end = it->second.end();
     while (lit != lit_end)
     {
         if (*lit)
@@ -126,7 +127,7 @@ void DepricatedEvent::trigger(Channels channel, const DepricatedEvent &event)
     }
 }
 
-void DepricatedEvent::remove(Listener *listener)
+void DepricatedEvent::remove(Listener *const listener)
 {
     ListenMap::iterator it = mBindings.begin();
     while (it != mBindings.end())
@@ -136,12 +137,12 @@ void DepricatedEvent::remove(Listener *listener)
     }
 }
 
-void DepricatedEvent::bind(Listener *listener, Channels channel)
+void DepricatedEvent::bind(Listener *const listener, const Channels channel)
 {
     mBindings[channel].insert(listener);
 }
 
-void DepricatedEvent::unbind(Listener *listener, Channels channel)
+void DepricatedEvent::unbind(Listener *const listener, const Channels channel)
 {
     mBindings[channel].erase(listener);
 }

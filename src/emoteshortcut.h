@@ -50,7 +50,7 @@ class EmoteShortcut
          *
          * @param index Index of the shortcut Emote.
          */
-        unsigned char getEmote(int index) const
+        unsigned char getEmote(const int index) const
         { return mEmotes[index]; }
 
         /**
@@ -70,7 +70,7 @@ class EmoteShortcut
          *
          * @param index Index of the emotes.
          */
-        void setEmote(int index)
+        void setEmote(const int index)
         { mEmotes[index] = mEmoteSelected; }
 
         /**
@@ -79,7 +79,7 @@ class EmoteShortcut
          * @param index Index of the emote.
          * @param emoteId ID of the emote.
          */
-        void setEmotes(int index, unsigned char emoteId)
+        void setEmotes(const int index, const unsigned char emoteId)
         { mEmotes[index] = emoteId; }
 
         /**
@@ -87,7 +87,7 @@ class EmoteShortcut
          *
          * @param emoteId The ID of the emote that is to be assigned.
          */
-        void setEmoteSelected(unsigned char emoteId)
+        void setEmoteSelected(const unsigned char emoteId)
         { mEmoteSelected = emoteId; }
 
         /**
@@ -99,7 +99,7 @@ class EmoteShortcut
         /**
          * Remove a Emote from the shortcut.
          */
-        void removeEmote(int index)
+        void removeEmote(const int index)
         { if (index >= 0 && index < SHORTCUT_EMOTES) mEmotes[index] = 0; }
 
         /**
@@ -107,13 +107,13 @@ class EmoteShortcut
          *
          * @param index Index of the emote shortcut.
          */
-        void useEmote(int index);
+        void useEmote(const int index) const;
 
     private:
         /**
          * Save the configuration information.
          */
-        void save();
+        void save() const;
 
         unsigned char mEmotes[SHORTCUT_EMOTES];  /**< The emote stored. */
         unsigned char mEmoteSelected;            /**< The emote held

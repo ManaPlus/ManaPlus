@@ -46,13 +46,13 @@ class EffectManager
          * Triggers a effect with the id, at
          * the specified being.
          */
-        bool trigger(int id, Being* being);
+        bool trigger(const int id, Being *const being);
 
         /**
          * Triggers a effect with the id, at
          * the specified x and y coordinate.
          */
-        bool trigger(int id, int x, int y);
+        bool trigger(const int id, const int x, const int y);
 
    private:
         std::vector<EffectDescription> mEffects;

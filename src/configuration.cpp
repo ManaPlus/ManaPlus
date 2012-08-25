@@ -217,7 +217,7 @@ void Configuration::setValue(const std::string &key, const std::string &value)
     ConfigurationObject::setValue(key, value);
 
     // Notify listeners
-    ListenerMapIterator list = mListenerMap.find(key);
+    const ListenerMapIterator list = mListenerMap.find(key);
     if (list != mListenerMap.end())
     {
         Listeners listeners = list->second;
@@ -238,29 +238,29 @@ std::string ConfigurationObject::getValue(const std::string &key,
                                           const std::string &deflt) const
 {
     GETLOG();
-    Options::const_iterator iter = mOptions.find(key);
+    const Options::const_iterator iter = mOptions.find(key);
     return ((iter != mOptions.end()) ? iter->second : deflt);
 }
 
-int ConfigurationObject::getValue(const std::string &key, int deflt) const
+int ConfigurationObject::getValue(const std::string &key, const int deflt) const
 {
     GETLOG();
-    Options::const_iterator iter = mOptions.find(key);
+    const Options::const_iterator iter = mOptions.find(key);
     return (iter != mOptions.end()) ? atoi(iter->second.c_str()) : deflt;
 }
 
-int ConfigurationObject::getValueInt(const std::string &key, int deflt) const
+int ConfigurationObject::getValueInt(const std::string &key, const int deflt) const
 {
     GETLOG();
-    Options::const_iterator iter = mOptions.find(key);
+    const Options::const_iterator iter = mOptions.find(key);
     return (iter != mOptions.end()) ? atoi(iter->second.c_str()) : deflt;
 }
 
 bool ConfigurationObject::getValueBool(const std::string &key,
-                                       bool deflt) const
+                                       const bool deflt) const
 {
     GETLOG();
-    Options::const_iterator iter = mOptions.find(key);
+    const Options::const_iterator iter = mOptions.find(key);
     if (iter != mOptions.end())
         return atoi(iter->second.c_str()) != 0 ? true : false;
     else
@@ -268,19 +268,19 @@ bool ConfigurationObject::getValueBool(const std::string &key,
 }
 
 unsigned ConfigurationObject::getValue(const std::string &key,
-                                       unsigned deflt) const
+                                       const unsigned deflt) const
 {
     GETLOG();
-    Options::const_iterator iter = mOptions.find(key);
+    const Options::const_iterator iter = mOptions.find(key);
     return (iter != mOptions.end()) ? static_cast<unsigned>(
             atol(iter->second.c_str())) : deflt;
 }
 
 double ConfigurationObject::getValue(const std::string &key,
-                                     double deflt) const
+                                     const double deflt) const
 {
     GETLOG();
-    Options::const_iterator iter = mOptions.find(key);
+    const Options::const_iterator iter = mOptions.find(key);
     return (iter != mOptions.end()) ? atof(iter->second.c_str()) : deflt;
 }
 
@@ -344,7 +344,7 @@ Configuration::~Configuration()
     cleanDefaults();
 }
 
-void Configuration::setDefaultValues(DefaultsData *defaultsData)
+void Configuration::setDefaultValues(DefaultsData *const defaultsData)
 {
     cleanDefaults();
     mDefaultsData = defaultsData;
@@ -354,16 +354,17 @@ int Configuration::getIntValue(const std::string &key) const
 {
     GETLOG();
     int defaultValue = 0;
-    Options::const_iterator iter = mOptions.find(key);
+    const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
         if (mDefaultsData)
         {
-            DefaultsData::const_iterator itdef = mDefaultsData->find(key);
+            const DefaultsData::const_iterator itdef
+                = mDefaultsData->find(key);
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
-                VariableData::DataType type = static_cast<
+                const VariableData::DataType type = static_cast<const
                     VariableData::DataType>(itdef->second->getType());
                 if (type == VariableData::DATA_INT)
                 {
@@ -413,7 +414,7 @@ int Configuration::resetIntValue(const std::string &key)
     int defaultValue = 0;
     if (mDefaultsData)
     {
-        DefaultsData::const_iterator itdef = mDefaultsData->find(key);
+        const DefaultsData::const_iterator itdef = mDefaultsData->find(key);
 
         if (itdef != mDefaultsData->end() && itdef->second
             && itdef->second->getType() == VariableData::DATA_INT)
@@ -435,16 +436,17 @@ std::string Configuration::getStringValue(const std::string &key) const
 {
     GETLOG();
     std::string defaultValue("");
-    Options::const_iterator iter = mOptions.find(key);
+    const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
         if (mDefaultsData)
         {
-            DefaultsData::const_iterator itdef = mDefaultsData->find(key);
+            const DefaultsData::const_iterator
+                itdef = mDefaultsData->find(key);
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
-                VariableData::DataType type = static_cast<
+                const VariableData::DataType type = static_cast<const
                     VariableData::DataType>(itdef->second->getType());
                 if (type == VariableData::DATA_STRING)
                 {
@@ -488,16 +490,17 @@ float Configuration::getFloatValue(const std::string &key) const
 {
     GETLOG();
     float defaultValue = 0.0f;
-    Options::const_iterator iter = mOptions.find(key);
+    const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
         if (mDefaultsData)
         {
-            DefaultsData::const_iterator itdef = mDefaultsData->find(key);
+            const DefaultsData::const_iterator itdef
+                = mDefaultsData->find(key);
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
-                VariableData::DataType type = static_cast<
+                const VariableData::DataType type = static_cast<
                     VariableData::DataType>(itdef->second->getType());
                 if (type == VariableData::DATA_FLOAT)
                 {
@@ -546,16 +549,17 @@ bool Configuration::getBoolValue(const std::string &key) const
 {
     GETLOG();
     bool defaultValue = false;
-    Options::const_iterator iter = mOptions.find(key);
+    const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
         if (mDefaultsData)
         {
-            DefaultsData::const_iterator itdef = mDefaultsData->find(key);
+            const DefaultsData::const_iterator itdef
+                = mDefaultsData->find(key);
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
-                VariableData::DataType type = static_cast<
+                const VariableData::DataType type = static_cast<
                     VariableData::DataType>(itdef->second->getType());
                 if (type == VariableData::DATA_BOOL)
                 {
@@ -620,7 +624,7 @@ bool Configuration::resetBoolValue(const std::string &key)
     bool defaultValue = false;
     if (mDefaultsData)
     {
-        DefaultsData::const_iterator itdef = mDefaultsData->find(key);
+        const DefaultsData::const_iterator itdef = mDefaultsData->find(key);
 
         if (itdef != mDefaultsData->end() && itdef->second
             && itdef->second->getType() == VariableData::DATA_BOOL)
@@ -640,7 +644,7 @@ bool Configuration::resetBoolValue(const std::string &key)
 }
 
 
-void ConfigurationObject::initFromXML(XmlNodePtr parent_node)
+void ConfigurationObject::initFromXML(const XmlNodePtr parent_node)
 {
     clear();
 
@@ -657,7 +661,7 @@ void ConfigurationObject::initFromXML(XmlNodePtr parent_node)
                 if (xmlNameEqual(subnode, name.c_str())
                     && subnode->type == XML_ELEMENT_NODE)
                 {
-                    ConfigurationObject *cobj = new ConfigurationObject;
+                    ConfigurationObject *const cobj = new ConfigurationObject;
 
                     cobj->initFromXML(subnode); // recurse
 
@@ -679,7 +683,7 @@ void ConfigurationObject::initFromXML(XmlNodePtr parent_node)
     }
 }
 
-void Configuration::init(const std::string &filename, bool useResManager)
+void Configuration::init(const std::string &filename, const bool useResManager)
 {
     mDefaultsData = nullptr;
     XML::Document doc(filename, useResManager);
@@ -703,7 +707,7 @@ void Configuration::init(const std::string &filename, bool useResManager)
         return;
     }
 
-    XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "configuration"))
     {
@@ -714,7 +718,7 @@ void Configuration::init(const std::string &filename, bool useResManager)
     initFromXML(rootNode);
 }
 
-void ConfigurationObject::writeToXML(XmlTextWriterPtr writer)
+void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
 {
     for (Options::const_iterator i = mOptions.begin(), i_end = mOptions.end();
          i != i_end; ++i)
@@ -739,7 +743,7 @@ void ConfigurationObject::writeToXML(XmlTextWriterPtr writer)
          it = mContainerOptions.begin(), it_end = mContainerOptions.end();
          it != it_end; ++ it)
     {
-        const char *name = it->first.c_str();
+        const char *const name = it->first.c_str();
 
         xmlTextWriterStartElement(writer, BAD_CAST "list");
         xmlTextWriterWriteAttribute(writer, BAD_CAST "name", BAD_CAST name);
@@ -773,7 +777,8 @@ void Configuration::write()
         fclose(testFile);
     }
 
-    XmlTextWriterPtr writer = xmlNewTextWriterFilename(mConfigPath.c_str(), 0);
+    const XmlTextWriterPtr writer = xmlNewTextWriterFilename(
+        mConfigPath.c_str(), 0);
 
     if (!writer)
     {
@@ -795,18 +800,18 @@ void Configuration::write()
 }
 
 void Configuration::addListener(const std::string &key,
-                                ConfigListener *listener)
+                                ConfigListener *const listener)
 {
     mListenerMap[key].push_front(listener);
 }
 
 void Configuration::removeListener(const std::string &key,
-                                   ConfigListener *listener)
+                                   ConfigListener *const listener)
 {
     mListenerMap[key].remove(listener);
 }
 
-void Configuration::removeListeners(ConfigListener *listener)
+void Configuration::removeListeners(ConfigListener *const listener)
 {
     for (ListenerMapIterator it = mListenerMap.begin(),
          it_end = mListenerMap.end(); it != it_end; ++ it)

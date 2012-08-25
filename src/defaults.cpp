@@ -31,17 +31,17 @@
 
 #include "debug.h"
 
-VariableData* createData(int defData)
+VariableData* createData(const int defData)
 {
     return new IntData(defData);
 }
 
-VariableData* createData(double defData)
+VariableData* createData(const double defData)
 {
     return new FloatData(defData);
 }
 
-VariableData* createData(float defData)
+VariableData* createData(const float defData)
 {
     return new FloatData(defData);
 }
@@ -56,7 +56,7 @@ VariableData* createData(const char* defData)
     return new StringData(defData);
 }
 
-VariableData* createData(bool defData)
+VariableData* createData(const bool defData)
 {
     return new BoolData(defData);
 }
@@ -67,7 +67,7 @@ VariableData* createData(bool defData)
 
 DefaultsData* getConfigDefaults()
 {
-    DefaultsData* configData = new DefaultsData;
+    DefaultsData *const configData = new DefaultsData;
     // Init main config defaults
     AddDEF("OverlayDetail", 2);
     AddDEF("speechBubbleAlpha", 1.0f);
@@ -267,7 +267,7 @@ DefaultsData* getConfigDefaults()
 
 DefaultsData* getBrandingDefaults()
 {
-    DefaultsData* configData = new DefaultsData;
+    DefaultsData *const configData = new DefaultsData;
     // Init config defaults
     AddDEF("wallpapersPath", "");
     AddDEF("wallpapersFile", "");
@@ -306,7 +306,7 @@ DefaultsData* getBrandingDefaults()
 
 DefaultsData* getPathsDefaults()
 {
-    DefaultsData* configData = new DefaultsData;
+    DefaultsData *const configData = new DefaultsData;
     // Init paths.xml defaults
     AddDEF("itemIcons", "graphics/items/");
     AddDEF("unknownItemFile", "unknown-item.png");

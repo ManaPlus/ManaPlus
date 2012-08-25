@@ -52,9 +52,9 @@ DropShortcut::~DropShortcut()
 //    save();
 }
 
-void DropShortcut::load(bool oldConfig)
+void DropShortcut::load(const bool oldConfig)
 {
-    Configuration *cfg;
+    const Configuration *cfg;
     if (oldConfig)
         cfg = &config;
     else
@@ -62,8 +62,8 @@ void DropShortcut::load(bool oldConfig)
 
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
     {
-        int itemId = cfg->getValue("drop" + toString(i), -1);
-        unsigned char itemColor = static_cast<unsigned char>(
+        const int itemId = cfg->getValue("drop" + toString(i), -1);
+        const unsigned char itemColor = static_cast<unsigned char>(
             cfg->getValue("dropColor" + toString(i), -1));
 
         if (itemId != -1)
@@ -74,7 +74,7 @@ void DropShortcut::load(bool oldConfig)
     }
 }
 
-void DropShortcut::save()
+void DropShortcut::save() const
 {
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
     {
@@ -93,7 +93,7 @@ void DropShortcut::save()
     }
 }
 
-void DropShortcut::dropFirst()
+void DropShortcut::dropFirst() const
 {
     if (!player_node)
         return;
@@ -106,7 +106,8 @@ void DropShortcut::dropFirst()
 
     if (itemId > 0)
     {
-        Item *item = PlayerInfo::getInventory()->findItem(itemId, itemColor);
+        const Item *const item = PlayerInfo::getInventory()
+            ->findItem(itemId, itemColor);
         if (item && item->getQuantity())
         {
             if (player_node->isServerBuggy())
@@ -123,7 +124,7 @@ void DropShortcut::dropFirst()
     }
 }
 
-void DropShortcut::dropItems(int cnt)
+void DropShortcut::dropItems(const int cnt)
 {
     if (!player_node)
         return;
@@ -150,9 +151,9 @@ void DropShortcut::dropItems(int cnt)
     }
 }
 
-bool DropShortcut::dropItem(int cnt)
+bool DropShortcut::dropItem(const int cnt)
 {
-    const Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return false;
 
@@ -166,7 +167,7 @@ bool DropShortcut::dropItem(int cnt)
     }
     if (itemId > 0)
     {
-        Item *item = inv->findItem(itemId, itemColor);
+        const Item *const item = inv->findItem(itemId, itemColor);
         if (item && item->getQuantity() > 0)
         {
             Net::getInventoryHandler()->dropItem(item, cnt);
@@ -186,7 +187,7 @@ bool DropShortcut::dropItem(int cnt)
         }
         if (itemId > 0)
         {
-            Item *item = inv->findItem(itemId, itemColor);
+            const Item *const item = inv->findItem(itemId, itemColor);
             if (item && item->getQuantity() > 0)
             {
                 Net::getInventoryHandler()->dropItem(item, cnt);
@@ -199,7 +200,7 @@ bool DropShortcut::dropItem(int cnt)
     return false;
 }
 
-void DropShortcut::setItemSelected(Item *item)
+void DropShortcut::setItemSelected(const Item *const item)
 {
     if (item)
     {
@@ -213,7 +214,7 @@ void DropShortcut::setItemSelected(Item *item)
     }
 }
 
-void DropShortcut::setItem(int index)
+void DropShortcut::setItem(const int index)
 {
     if (index < 0 || index >= DROP_SHORTCUT_ITEMS)
         return;

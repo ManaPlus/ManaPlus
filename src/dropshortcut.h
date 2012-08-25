@@ -46,22 +46,22 @@ class DropShortcut
         /**
          * Load the configuration information.
          */
-        void load(bool oldConfig = false);
+        void load(const bool oldConfig = false);
 
         /**
          * Save the configuration information.
          */
-        void save();
+        void save() const;
 
         /**
          * Returns the shortcut item ID specified by the index.
          *
          * @param index Index of the shortcut item.
          */
-        int getItem(int index) const
+        int getItem(const int index) const
         { return mItems[index]; }
 
-        unsigned char getItemColor(int index) const
+        unsigned char getItemColor(const int index) const
         { return mItemColors[index]; }
 
         /**
@@ -81,7 +81,7 @@ class DropShortcut
          *
          * @param index Index of the items.
          */
-        void setItem(int index);
+        void setItem(const int index);
 
         /**
          * Adds an item to the items store specified by the index.
@@ -89,7 +89,8 @@ class DropShortcut
          * @param index Index of the item.
          * @param itemId ID of the item.
          */
-        void setItems(int index, int itemId, unsigned char color)
+        void setItems(const int index, const int itemId,
+                      const unsigned char color)
         { mItems[index] = itemId; mItemColors[index] = color; save(); }
 
         /**
@@ -97,10 +98,10 @@ class DropShortcut
          *
          * @param itemId The ID of the item that is to be assigned.
          */
-        void setItemSelected(int itemId)
+        void setItemSelected(const int itemId)
         { mItemSelected = itemId; }
 
-        void setItemSelected(Item *item);
+        void setItemSelected(const Item *const item);
 
         /**
          * A flag to check if the item is selected.
@@ -111,7 +112,7 @@ class DropShortcut
         /**
          * Remove a item from the shortcut.
          */
-        void removeItem(int index)
+        void removeItem(const int index)
         { mItems[index] = -1; save(); }
 
         /**
@@ -134,12 +135,12 @@ class DropShortcut
         /**
          * Drop first item.
          */
-        void dropFirst();
+        void dropFirst() const;
 
         /**
          * Drop all items in cicle.
          */
-        void dropItems(int cnt = 1);
+        void dropItems(const int cnt = 1);
 
         void clear();
 
@@ -148,7 +149,7 @@ class DropShortcut
         /**
          * Drop item in cicle.
          */
-        bool dropItem(int cnt = 1);
+        bool dropItem(const int cnt = 1);
 
         int mItems[DROP_SHORTCUT_ITEMS];
         unsigned char mItemColors[DROP_SHORTCUT_ITEMS];

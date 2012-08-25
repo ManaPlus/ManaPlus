@@ -76,7 +76,7 @@ class Equipment
         /**
          * Get equipment at the given slot.
          */
-        Item *getEquipment(int index) const
+        Item *getEquipment(const int index) const
         { return mBackend ? mBackend->getEquipment(index) : nullptr; }
 
         /**
@@ -90,7 +90,7 @@ class Equipment
          */
         void setEquipment(int index, int id, int quantity = 0);
 
-        void setBackend(Backend *backend)
+        void setBackend(Backend *const backend)
         { mBackend = backend; }
 
         Backend *getBackend() const

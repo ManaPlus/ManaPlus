@@ -46,8 +46,9 @@ class FloorItem : public ActorSprite
          * @param subX   the x pixel relative position
          * @param subY   the y pixel relative position
          */
-        FloorItem(int id, int itemId, int x, int y, Map *map, int amount,
-                  unsigned char color, int subX, int subY);
+        FloorItem(const int id, const int itemId, const int x, const int y,
+                  Map *const map, const int amount, const unsigned char color,
+                  int subX, int subY);
 
         Type getType() const
         { return FLOOR_ITEM; }
@@ -86,7 +87,7 @@ class FloorItem : public ActorSprite
         bool getShowMsg() const
         { return mShowMsg; }
 
-        void setShowMsg(bool n)
+        void setShowMsg(const bool n)
         { mShowMsg = n; }
 
         void disableHightlight()

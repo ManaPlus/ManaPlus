@@ -121,7 +121,8 @@ class DepricatedEvent
         // String passed can be retivered with getName()
         // and is to used to identify what type of event
         // this is.
-        DepricatedEvent(DepricatedEvents name) : mDepricatedEventName(name)
+        DepricatedEvent(const DepricatedEvents name) :
+            mDepricatedEventName(name)
         { }
 
         ~DepricatedEvent();
@@ -151,14 +152,14 @@ class DepricatedEvent
         const throw (BadDepricatedEvent);
 
         // Sends event to all listener on the channel
-        static void trigger(Channels channel, const DepricatedEvent &event);
+        static void trigger(const Channels channel, const DepricatedEvent &event);
 
         // Removes a listener from all channels
-        static void remove(Listener *listener);
+        static void remove(Listener *const listener);
 
         // Adds or removes a listener to a channel.
-        static void bind(Listener *listener, Channels channel);
-        static void unbind(Listener *listener, Channels channel);
+        static void bind(Listener *const listener, const Channels channel);
+        static void unbind(Listener *const listener, const Channels channel);
 
     private:
         DepricatedEvents mDepricatedEventName;

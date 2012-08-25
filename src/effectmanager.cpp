@@ -32,7 +32,7 @@
 EffectManager::EffectManager()
 {
     XML::Document doc("effects.xml");
-    XmlNodePtr root = doc.rootNode();
+    const XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "being-effects"))
     {
@@ -61,7 +61,7 @@ EffectManager::~EffectManager()
 {
 }
 
-bool EffectManager::trigger(int id, Being* being)
+bool EffectManager::trigger(const int id, Being *const being)
 {
     if (!being || !particleEngine)
         return false;
@@ -75,7 +75,8 @@ bool EffectManager::trigger(int id, Being* being)
             rValue = true;
             if (!(*i).GFX.empty())
             {
-                Particle *selfFX = particleEngine->addEffect((*i).GFX, 0, 0);
+                Particle *const selfFX = particleEngine->addEffect(
+                    (*i).GFX, 0, 0);
                 being->controlParticle(selfFX);
             }
             if (!(*i).SFX.empty())
@@ -86,7 +87,7 @@ bool EffectManager::trigger(int id, Being* being)
     return rValue;
 }
 
-bool EffectManager::trigger(int id, int x, int y)
+bool EffectManager::trigger(const int id, const int x, const int y)
 {
     if (!particleEngine)
         return false;

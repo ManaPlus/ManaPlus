@@ -384,7 +384,7 @@ Game::Game():
     viewport = new Viewport;
     viewport->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
 
-    gcn::Container *top = static_cast<gcn::Container*>(gui->getTop());
+    gcn::Container *const top = static_cast<gcn::Container*>(gui->getTop());
     top->add(viewport);
     viewport->requestMoveToBottom();
 
@@ -488,7 +488,7 @@ bool Game::createScreenshot()
     return saveScreenshot(screenshot);
 }
 
-bool Game::saveScreenshot(SDL_Surface *screenshot)
+bool Game::saveScreenshot(SDL_Surface *const screenshot)
 {
     static unsigned int screenshotCount = 0;
     // Search for an unused screenshot name
@@ -606,7 +606,7 @@ void Game::slowLogic()
 
         if (viewport && !errorMessage.empty())
         {
-            Map *map = viewport->getCurrentMap();
+            Map *const map = viewport->getCurrentMap();
             if (map)
             {
                 logger->log("state: %d", Client::getState());
@@ -838,7 +838,7 @@ void Game::handleMove()
     }
 }
 
-void Game::handleActive(SDL_Event &event)
+void Game::handleActive(const SDL_Event &event)
 {
 //    logger->log("SDL_ACTIVEEVENT");
 //    logger->log("state: %d", (int)event.active.state);
@@ -979,12 +979,12 @@ void Game::changeMap(const std::string &mapPath)
     std::string realFullMap = paths.getValue("maps", "maps/")
                               + MapDB::getMapName(mMapName) + ".tmx";
 
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     if (!resman->exists(realFullMap))
         realFullMap += ".gz";
 
     // Attempt to load the new map
-    Map *newMap = MapReader::readMap(fullMap, realFullMap);
+    Map *const newMap = MapReader::readMap(fullMap, realFullMap);
 
     if (!newMap)
     {
@@ -1044,7 +1044,7 @@ void Game::changeMap(const std::string &mapPath)
     DepricatedEvent::trigger(CHANNEL_GAME, event);
 }
 
-void Game::updateHistory(SDL_Event &event)
+void Game::updateHistory(const SDL_Event &event)
 {
     if (!player_node || !player_node->getAttackType())
         return;
@@ -1053,8 +1053,8 @@ void Game::updateHistory(SDL_Event &event)
     {
         bool old = false;
 
-        int key = keyboard.getKeyIndex(event);
-        int time = cur_time;
+        const int key = keyboard.getKeyIndex(event);
+        const int time = cur_time;
         int idx = -1;
         for (int f = 0; f < MAX_LASTKEYS; f ++)
         {
@@ -1144,7 +1144,7 @@ void Game::closeDialogs()
     }
 }
 
-void Game::videoResized(int width, int height)
+void Game::videoResized(const int width, const int height) const
 {
     if (viewport)
         viewport->setSize(width, height);

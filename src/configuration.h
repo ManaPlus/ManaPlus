@@ -104,15 +104,15 @@ class ConfigurationObject
         std::string getValue(const std::string &key,
                              const std::string &deflt) const;
 
-        int getValue(const std::string &key, int deflt) const;
+        int getValue(const std::string &key, const int deflt) const;
 
-        int getValueInt(const std::string &key, int deflt) const;
+        int getValueInt(const std::string &key, const int deflt) const;
 
-        bool getValueBool(const std::string &key, bool deflt) const;
+        bool getValueBool(const std::string &key, const bool deflt) const;
 
-        unsigned getValue(const std::string &key, unsigned deflt) const;
+        unsigned getValue(const std::string &key, const unsigned deflt) const;
 
-        double getValue(const std::string &key, double deflt) const;
+        double getValue(const std::string &key, const double deflt) const;
 
         /**
          * Re-sets all data in the configuration
@@ -201,8 +201,8 @@ class ConfigurationObject
 #endif
 
     protected:
-        virtual void initFromXML(XmlNodePtr node);
-        virtual void writeToXML(XmlTextWriterPtr writer);
+        virtual void initFromXML(const XmlNodePtr parent_node);
+        virtual void writeToXML(const XmlTextWriterPtr writer);
 
         void deleteList(const std::string &name);
 
@@ -236,14 +236,15 @@ class Configuration : public ConfigurationObject
          * @param filename path to config file
          * @param useResManager Make use of the resource manager.
          */
-        void init(const std::string &filename, bool useResManager = false);
+        void init(const std::string &filename,
+                  const bool useResManager = false);
 
         /**
          * Set the default values for each keys.
          *
          * @param defaultsData data used as defaults.
          */
-        void setDefaultValues(DefaultsData *defaultsData);
+        void setDefaultValues(DefaultsData *const defaultsData);
 
         /**
          * Writes the current settings back to the config file.
@@ -253,45 +254,47 @@ class Configuration : public ConfigurationObject
         /**
          * Adds a listener to the listen list of the specified config option.
          */
-        void addListener(const std::string &key, ConfigListener *listener);
+        void addListener(const std::string &key,
+                         ConfigListener *const listener);
 
         /**
          * Removes a listener from the listen list of the specified config
          * option.
          */
-        void removeListener(const std::string &key, ConfigListener *listener);
+        void removeListener(const std::string &key,
+                            ConfigListener *const listener);
 
-        void removeListeners(ConfigListener *listener);
+        void removeListeners(ConfigListener *const listener);
 
         void setValue(const std::string &key, const std::string &value);
 
         void setSilent(const std::string &key, const std::string &value);
 
-        inline void setValue(const std::string &key, const char *value)
+        inline void setValue(const std::string &key, const char *const value)
         { if (value) setValue(key, std::string(value)); }
 
-        inline void setSilent(const std::string &key, const char *value)
+        inline void setSilent(const std::string &key, const char *const value)
         { if (value) setSilent(key, std::string(value)); }
 
-        inline void setValue(const std::string &key, float value)
+        inline void setValue(const std::string &key, const float value)
         { setValue(key, toString(value)); }
 
-        inline void setValue(const std::string &key, double value)
+        inline void setValue(const std::string &key, const double value)
         { setValue(key, toString(value)); }
 
-        inline void setValue(const std::string &key, int value)
+        inline void setValue(const std::string &key, const int value)
         { setValue(key, toString(value)); }
 
-        inline void setValueInt(const std::string &key, int value)
+        inline void setValueInt(const std::string &key, const int value)
         { setValue(key, toString(value)); }
 
-        inline void setValue(const std::string &key, unsigned value)
+        inline void setValue(const std::string &key, const unsigned value)
         { setValue(key, toString(value)); }
 
-        inline void setValue(const std::string &key, bool value)
+        inline void setValue(const std::string &key, const bool value)
         { setValue(key, value ? "1" : "0"); }
 
-        inline void setSilent(const std::string &key, bool value)
+        inline void setSilent(const std::string &key, const bool value)
         { setSilent(key, value ? "1" : "0"); }
 
         int resetIntValue(const std::string &key);

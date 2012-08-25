@@ -83,7 +83,7 @@ class Game
 
         void handleMove();
 
-        void handleActive(SDL_Event &event);
+        void handleActive(const SDL_Event &event);
 
         void changeMap(const std::string &mapName);
 
@@ -107,17 +107,17 @@ class Game
 
         static void closeDialogs();
 
-        void videoResized(int width, int height);
+        void videoResized(const int width, const int height) const;
 
-        bool getValidSpeed()
+        bool getValidSpeed() const
         { return mValidSpeed; }
 
         static bool createScreenshot();
 
-        static bool saveScreenshot(SDL_Surface *screenshot);
+        static bool saveScreenshot(SDL_Surface *const screenshot);
 
     private:
-        void updateHistory(SDL_Event &event);
+        void updateHistory(const SDL_Event &event);
 
         void checkKeys();
 

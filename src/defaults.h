@@ -28,12 +28,12 @@
 
 typedef std::map<std::string, VariableData*> DefaultsData;
 
-VariableData* createData(int defData);
-VariableData* createData(double defData);
-VariableData* createData(float defData);
+VariableData* createData(const int defData);
+VariableData* createData(const double defData);
+VariableData* createData(const float defData);
 VariableData* createData(const std::string &defData);
 VariableData* createData(const char* defData);
-VariableData* createData(bool defData);
+VariableData* createData(const bool defData);
 DefaultsData* getConfigDefaults();
 DefaultsData* getBrandingDefaults();
 DefaultsData* getPathsDefaults();
