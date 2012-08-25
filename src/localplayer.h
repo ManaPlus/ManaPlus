@@ -84,7 +84,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void slowLogic();
 
-        virtual void setAction(Action action, int attackType = 0);
+        virtual void setAction(const Action action, const int attackType = 0);
 
         /**
          * Compute the next pathnode location when walking using keyboard.
@@ -160,7 +160,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         /**
          * Sets a new destination for this being to walk to.
          */
-        virtual void setDestination(int x, int y);
+        virtual void setDestination(const int x, const int y);
 
         /**
          * Sets a new direction to keep walking in.

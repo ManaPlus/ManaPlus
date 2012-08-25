@@ -75,37 +75,37 @@ public:
     /**
      * Set the avatar's online status.
      */
-    void setOnline(bool online)
+    void setOnline(const bool online)
     { mOnline = online; }
 
     int getHp() const
     { return mHp; }
 
-    void setHp(int hp)
+    void setHp(const int hp)
     { mHp = hp; }
 
     int getMaxHp() const
     { return mMaxHp; }
 
-    void setMaxHp(int maxHp)
+    void setMaxHp(const int maxHp)
     { mMaxHp = maxHp; }
 
     int getDamageHp() const
     { return mDamageHp; }
 
-    void setDamageHp(int damageHp)
+    void setDamageHp(const int damageHp)
     { mDamageHp = damageHp; }
 
     bool getDisplayBold() const
     { return mDisplayBold; }
 
-    void setDisplayBold(bool displayBold)
+    void setDisplayBold(const bool displayBold)
     { mDisplayBold = displayBold; }
 
     int getLevel() const
     { return mLevel; }
 
-    void setLevel(int level)
+    void setLevel(const int level)
     { mLevel = level; }
 
     std::string getMap() const
@@ -117,49 +117,49 @@ public:
     int getX() const
     { return mX; }
 
-    void setX(int x)
+    void setX(const int x)
     { mX = x; }
 
     int getY() const
     { return mY; }
 
-    void setY(int y)
+    void setY(const int y)
     { mY = y; }
 
     int getType() const
     { return mType; }
 
-    void setType(int n)
+    void setType(const int n)
     { mType = n; }
 
     int getExp() const
     { return mExp; }
 
-    void setExp(int n)
+    void setExp(const int n)
     { mExp = n; }
 
     int getID() const
     { return mId; }
 
-    void setID(int id)
+    void setID(const int id)
     { mId = id; }
 
     int getCharId() const
     { return mCharId; }
 
-    void setCharId(int id)
+    void setCharId(const int id)
     { mCharId = id; }
 
     int getGender() const
     { return mGender; }
 
-    void setGender(int g)
+    void setGender(const int g)
     { mGender = g; }
 
     int getRace() const
     { return mRace; }
 
-    void setRace(int r)
+    void setRace(const int r)
     { mRace = r; }
 
     const std::string &getIp() const

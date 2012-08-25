@@ -72,7 +72,7 @@ const unsigned int CACHE_SIZE = 50;
 class BeingCacheEntry
 {
     public:
-        BeingCacheEntry(int id):
+        BeingCacheEntry(const int id):
             mId(id),
             mName(""),
             mPartyName(""),
@@ -118,13 +118,13 @@ class BeingCacheEntry
         const std::string &getGuildName() const
         { return mGuildName; }
 
-        void setLevel(int n)
+        void setLevel(const int n)
         { mLevel = n; }
 
         int getLevel() const
         { return mLevel; }
 
-        void setTime(int n)
+        void setTime(const int n)
         { mTime = n; }
 
         int getTime() const
@@ -133,7 +133,7 @@ class BeingCacheEntry
         unsigned getPvpRank() const
         { return mPvpRank; }
 
-        void setPvpRank(int r)
+        void setPvpRank(const int r)
         { mPvpRank = r; }
 
         std::string getIp() const
@@ -145,13 +145,13 @@ class BeingCacheEntry
         bool isAdvanced() const
         { return mIsAdvanced; }
 
-        void setAdvanced(bool a)
+        void setAdvanced(const bool a)
         { mIsAdvanced = a; }
 
         int getFlags() const
         { return mFlags; }
 
-        void setFlags(int flags)
+        void setFlags(const int flags)
         { mFlags = flags; }
 
     protected:
@@ -190,7 +190,8 @@ std::list<BeingCacheEntry*> beingInfoCache;
 
 
 // TODO: mWalkTime used by eAthena only
-Being::Being(int id, Type type, uint16_t subtype, Map *map):
+Being::Being(const int id, const Type type, const uint16_t subtype,
+             Map *const map) :
     ActorSprite(id),
     mInfo(BeingInfo::unknown),
     mActionTime(0),
@@ -288,7 +289,7 @@ Being::~Being()
     mText = nullptr;
 }
 
-void Being::setSubtype(uint16_t subtype)
+void Being::setSubtype(const uint16_t subtype)
 {
     if (!mInfo)
         return;
@@ -354,7 +355,7 @@ void Being::setPosition(const Vector &pos)
     }
 }
 
-void Being::setDestination(int dstX, int dstY)
+void Being::setDestination(const int dstX, const int dstY)
 {
     // We can't calculate anything without a map anyway.
     if (!mMap)
@@ -440,7 +441,7 @@ void Being::setSpeech(const std::string &text, int time)
     // Trim whitespace
     trim(mSpeech);
 
-    unsigned int lineLim = mConfLineLim;
+    const unsigned int lineLim = mConfLineLim;
     if (lineLim > 0 && mSpeech.length() > lineLim)
         mSpeech = mSpeech.substr(0, lineLim);
 
@@ -504,7 +505,8 @@ void Being::setSpeech(const std::string &text, int time)
     }
 }
 
-void Being::takeDamage(Being *attacker, int amount, AttackType type, int id)
+void Being::takeDamage(Being *const attacker, const int amount,
+                       const AttackType type, const int id)
 {
     if (!userPalette || !attacker)
         return;
@@ -638,7 +640,8 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type, int id)
             int hitEffectId = 0;
             if (type != SKILL)
             {
-                const ItemInfo *attackerWeapon = attacker->getEquippedWeapon();
+                const ItemInfo *const attackerWeapon
+                    = attacker->getEquippedWeapon();
                 if (attacker->mType == PLAYER && attackerWeapon)
                 {
                     if (type != CRITICAL)
@@ -664,8 +667,8 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type, int id)
     }
 }
 
-void Being::handleAttack(Being *victim, int damage,
-                         AttackType type A_UNUSED)
+void Being::handleAttack(Being *const victim, const int damage,
+                         const AttackType type A_UNUSED)
 {
     if (!victim || !mInfo)
         return;
@@ -688,7 +691,8 @@ void Being::handleAttack(Being *victim, int damage,
 
     if (this != player_node)
     {
-        uint8_t dir = calcDirection(victim->getTileX(), victim->getTileY());
+        const uint8_t dir = calcDirection(victim->getTileX(),
+            victim->getTileY());
         if (dir)
             setDirection(dir);
     }
@@ -699,7 +703,8 @@ void Being::handleAttack(Being *victim, int damage,
                   SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
 }
 
-void Being::handleSkill(Being *victim, int damage, int skillId)
+void Being::handleSkill(Being *const victim, const int damage,
+                        const int skillId)
 {
     if (!victim || !mInfo || !skillDialog)
         return;
@@ -707,7 +712,7 @@ void Being::handleSkill(Being *victim, int damage, int skillId)
     if (this != player_node)
         setAction(Being::ATTACK, 1);
 
-    SkillInfo *skill = skillDialog->getSkill(skillId);
+    const SkillInfo *const skill = skillDialog->getSkill(skillId);
     if (skill)
         fireMissile(victim, skill->particle);
 
@@ -721,7 +726,8 @@ void Being::handleSkill(Being *victim, int damage, int skillId)
 
     if (this != player_node)
     {
-        uint8_t dir = calcDirection(victim->getTileX(), victim->getTileY());
+        const uint8_t dir = calcDirection(victim->getTileX(),
+            victim->getTileY());
         if (dir)
             setDirection(dir);
     }
@@ -758,7 +764,7 @@ void Being::setName(const std::string &name)
     }
 }
 
-void Being::setShowName(bool doShowName)
+void Being::setShowName(const bool doShowName)
 {
     if (mShowName == doShowName)
         return;
@@ -785,7 +791,7 @@ void Being::setGuildPos(const std::string &pos A_UNUSED)
 {
 }
 
-void Being::addGuild(Guild *guild)
+void Being::addGuild(Guild *const guild)
 {
     if (!guild)
         return;
@@ -796,7 +802,7 @@ void Being::addGuild(Guild *guild)
         socialWindow->addTab(guild);
 }
 
-void Being::removeGuild(int id)
+void Being::removeGuild(const int id)
 {
     if (this == player_node && socialWindow)
         socialWindow->removeTab(mGuilds[id]);
@@ -811,7 +817,7 @@ Guild *Being::getGuild(const std::string &guildName) const
     for (std::map<int, Guild*>::const_iterator itr = mGuilds.begin(),
          itr_end = mGuilds.end(); itr != itr_end; ++itr)
     {
-        Guild *guild = itr->second;
+        Guild *const guild = itr->second;
         if (guild && guild->getName() == guildName)
             return guild;
     }
@@ -819,9 +825,9 @@ Guild *Being::getGuild(const std::string &guildName) const
     return nullptr;
 }
 
-Guild *Being::getGuild(int id) const
+Guild *Being::getGuild(const int id) const
 {
-    std::map<int, Guild*>::const_iterator itr = mGuilds.find(id);
+    const std::map<int, Guild*>::const_iterator itr = mGuilds.find(id);
     if (itr != mGuilds.end())
         return itr->second;
 
@@ -830,7 +836,7 @@ Guild *Being::getGuild(int id) const
 
 Guild *Being::getGuild() const
 {
-    std::map<int, Guild*>::const_iterator itr = mGuilds.begin();
+    const std::map<int, Guild*>::const_iterator itr = mGuilds.begin();
     if (itr != mGuilds.end())
         return itr->second;
 
@@ -842,7 +848,7 @@ void Being::clearGuilds()
     for (std::map<int, Guild*>::const_iterator itr = mGuilds.begin(),
          itr_end = mGuilds.end(); itr != itr_end; ++itr)
     {
-        Guild *guild = itr->second;
+        Guild *const guild = itr->second;
 
         if (guild)
         {
@@ -856,12 +862,12 @@ void Being::clearGuilds()
     mGuilds.clear();
 }
 
-void Being::setParty(Party *party)
+void Being::setParty(Party *const party)
 {
     if (party == mParty)
         return;
 
-    Party *old = mParty;
+    Party *const old = mParty;
     mParty = party;
 
     if (old)
@@ -887,7 +893,7 @@ void Being::updateGuild()
     if (!player_node)
         return;
 
-    Guild *guild = player_node->getGuild();
+    Guild *const guild = player_node->getGuild();
     if (!guild)
     {
         clearGuilds();
@@ -903,9 +909,9 @@ void Being::updateGuild()
     updateColors();
 }
 
-void Being::setGuild(Guild *guild)
+void Being::setGuild(Guild *const guild)
 {
-    Guild *old = getGuild();
+    Guild *const old = getGuild();
     if (guild == old)
         return;
 
@@ -927,17 +933,18 @@ void Being::setGuild(Guild *guild)
     }
 }
 
-void Being::fireMissile(Being *victim, const std::string &particle)
+void Being::fireMissile(Being *const victim, const std::string &particle) const
 {
     if (!victim || particle.empty() || !particleEngine)
         return;
 
-    Particle *target = particleEngine->createChild();
+    Particle *const target = particleEngine->createChild();
 
     if (!target)
         return;
 
-    Particle *missile = target->addEffect(particle, getPixelX(), getPixelY());
+    Particle *const missile = target->addEffect(
+        particle, getPixelX(), getPixelY());
 
     if (missile)
     {
@@ -966,7 +973,7 @@ std::string Being::getSitAction() const
     }
 }
 
-void Being::setAction(Action action, int attackType A_UNUSED)
+void Being::setAction(const Action action, const int attackType A_UNUSED)
 {
     std::string currentAction = SpriteAction::INVALID;
 
@@ -1077,7 +1084,7 @@ void Being::setAction(Action action, int attackType A_UNUSED)
         mActionTime = tick_time;
 }
 
-void Being::setDirection(uint8_t direction)
+void Being::setDirection(const uint8_t direction)
 {
     if (mDirection == direction)
         return;
@@ -1138,7 +1145,7 @@ uint8_t Being::calcDirection() const
     return dir;
 }
 
-uint8_t Being::calcDirection(int dstX, int dstY) const
+uint8_t Being::calcDirection(const int dstX, const int dstY) const
 {
     uint8_t dir = 0;
     if (dstX > mX)
@@ -1160,10 +1167,10 @@ void Being::nextTile()
         return;
     }
 
-    Position pos = mPath.front();
+    const Position pos = mPath.front();
     mPath.pop_front();
 
-    uint8_t dir = calcDirection(pos.x, pos.y);
+    const uint8_t dir = calcDirection(pos.x, pos.y);
     if (dir)
         setDirection(dir);
 
@@ -1347,9 +1354,9 @@ void Being::logic()
                         case RIGHT: rotation = 270; break;
                         default: break;
                     }
-                    Particle *p = particleEngine->addEffect(particleEffect,
-                        0, 0, rotation);
-                        controlParticle(p);
+                    Particle *const p = particleEngine->addEffect(
+                        particleEffect, 0, 0, rotation);
+                    controlParticle(p);
                 }
 
                 if (this == player_node && curFrame >= frameCount)
@@ -1387,7 +1394,8 @@ void Being::logic()
     }
 }
 
-void Being::drawEmotion(Graphics *graphics, int offsetX, int offsetY)
+void Being::drawEmotion(Graphics *const graphics, const int offsetX,
+                        const int offsetY)
 {
     if (!mEmotion)
         return;
@@ -1405,7 +1413,7 @@ void Being::drawEmotion(Graphics *graphics, int offsetX, int offsetY)
     }
 }
 
-void Being::drawSpeech(int offsetX, int offsetY)
+void Being::drawSpeech(const int offsetX, const int offsetY)
 {
     if (!mSpeechBubble || mSpeech.empty())
         return;
@@ -1456,7 +1464,7 @@ void Being::drawSpeech(int offsetX, int offsetY)
 }
 
 /** TODO: eAthena only */
-int Being::getOffset(char pos, char neg) const
+int Being::getOffset(const char pos, const char neg) const
 {
     // Check whether we're walking in the requested direction
     if (mAction != MOVE ||  !(mDirection & (pos | neg)))
@@ -1515,7 +1523,7 @@ void Being::optionChanged(const std::string &value)
         setShowName(config.getBoolValue("visiblenames"));
 }
 
-void Being::flashName(int time)
+void Being::flashName(const int time)
 {
     if (mDispName)
         mDispName->flash(time);
@@ -1684,8 +1692,9 @@ void Being::updateColors()
     }
 }
 
-void Being::setSprite(unsigned int slot, int id, std::string color,
-                      unsigned char colorId, bool isWeapon, bool isTempSprite)
+void Being::setSprite(const unsigned int slot, const int id,
+                      std::string color, const unsigned char colorId,
+                      const bool isWeapon, const bool isTempSprite)
 {
     if (slot >= Net::getCharHandler()->maxSprite())
         return;
@@ -1748,12 +1757,12 @@ void Being::setSprite(unsigned int slot, int id, std::string color,
     }
 }
 
-void Being::setSpriteID(unsigned int slot, int id)
+void Being::setSpriteID(const unsigned int slot, const int id)
 {
     setSprite(slot, id, mSpriteColors[slot]);
 }
 
-void Being::setSpriteColor(unsigned int slot, const std::string &color)
+void Being::setSpriteColor(const unsigned int slot, const std::string &color)
 {
     setSprite(slot, mSpriteIDs[slot], color);
 }
@@ -1805,7 +1814,7 @@ void Being::reReadConfig()
 
 bool Being::updateFromCache()
 {
-    BeingCacheEntry *entry = Being::getCacheEntry(getId());
+    const BeingCacheEntry *const entry = Being::getCacheEntry(getId());
 
     if (entry && entry->getTime() + 120 >= cur_time)
     {
@@ -1820,7 +1829,7 @@ bool Being::updateFromCache()
         mAdvanced = entry->isAdvanced();
         if (entry->isAdvanced())
         {
-            int flags = entry->getFlags();
+            const int flags = entry->getFlags();
             mShop = ((flags & FLAG_SHOP) != 0);
             mAway = ((flags & FLAG_AWAY) != 0);
             mInactive = ((flags & FLAG_INACTIVE) != 0);
@@ -1841,7 +1850,7 @@ bool Being::updateFromCache()
     return false;
 }
 
-void Being::addToCache()
+void Being::addToCache() const
 {
     if (player_node == this)
         return;
@@ -1886,7 +1895,7 @@ void Being::addToCache()
     }
 }
 
-BeingCacheEntry* Being::getCacheEntry(int id)
+BeingCacheEntry* Being::getCacheEntry(const int id)
 {
     for (std::list<BeingCacheEntry*>::iterator i = beingInfoCache.begin();
          i != beingInfoCache.end(); ++ i)
@@ -1909,7 +1918,7 @@ BeingCacheEntry* Being::getCacheEntry(int id)
 }
 
 
-void Being::setGender(Gender gender)
+void Being::setGender(const Gender gender)
 {
     if (gender != mGender)
     {
@@ -1926,7 +1935,7 @@ void Being::setGender(Gender gender)
     }
 }
 
-void Being::setGM(bool gm)
+void Being::setGM(const bool gm)
 {
     mIsGM = gm;
 
@@ -1959,7 +1968,7 @@ void Being::drawSprites(Graphics* graphics, int posX, int posY) const
         if (rSprite == 1)
             continue;
 
-        Sprite *sprite = getSprite(mSpriteRemap[f]);
+        Sprite *const sprite = getSprite(mSpriteRemap[f]);
         if (sprite)
         {
             sprite->setAlpha(mAlpha);
@@ -1977,7 +1986,7 @@ void Being::drawSpritesSDL(Graphics* graphics, int posX, int posY) const
         if (rSprite == 1)
             continue;
 
-        Sprite *sprite = getSprite(mSpriteRemap[f]);
+        const Sprite *const sprite = getSprite(mSpriteRemap[f]);
         if (sprite)
             sprite->draw(graphics, posX, posY);
     }
@@ -1999,7 +2008,7 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
 
         if (mDrawHotKeys && !mName.empty())
         {
-            gcn::Font *font = gui->getFont();
+            gcn::Font *const font = gui->getFont();
             if (font)
             {
                 graphics->setColor(userPalette->getColor(UserPalette::BEING));
@@ -2047,9 +2056,10 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
     return res;
 }
 
-void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
-                      int color1, int color2, int x, int y,
-                      int width, int height) const
+void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,
+                      const int damage, const int color1, const int color2,
+                      const int x, const int y, const int width,
+                      const int height) const
 {
     if (maxHP <= 0)
         return;
@@ -2076,7 +2086,7 @@ void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
     if (p <= 0 || p > width)
         return;
 
-    int dx = static_cast<int>(static_cast<float>(width) / p);
+    const int dx = static_cast<const int>(static_cast<float>(width) / p);
 
     if (serverVersion < 1)
     {   // old servers
@@ -2123,7 +2133,7 @@ void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
         x + dx, y, width - dx, height));
 }
 
-void Being::setHP(int hp)
+void Being::setHP(const int hp)
 {
     mHP = hp;
     if (mMaxHP < mHP)
@@ -2132,7 +2142,7 @@ void Being::setHP(int hp)
         updatePercentHP();
 }
 
-void Being::setMaxHP(int hp)
+void Being::setMaxHP(const int hp)
 {
     mMaxHP = hp;
     if (mMaxHP < mHP)
@@ -2154,7 +2164,7 @@ void Being::recalcSpritesOrder()
         return;
 
 //    logger->log("recalcSpritesOrder");
-    unsigned sz = static_cast<unsigned>(size());
+    const unsigned sz = static_cast<unsigned>(size());
     if (sz < 1)
         return;
 
@@ -2180,7 +2190,7 @@ void Being::recalcSpritesOrder()
         if (mSpriteIDs.size() <= slot)
             continue;
 
-        int id = mSpriteIDs[slot];
+        const int id = mSpriteIDs[slot];
         if (!id)
             continue;
 
@@ -2188,15 +2198,15 @@ void Being::recalcSpritesOrder()
 
         if (info.isRemoveSprites())
         {
-            SpriteToItemMap *spriteToItems = info.getSpriteToItemReplaceMap(
-                mSpriteDirection);
+            SpriteToItemMap *const spriteToItems
+                = info.getSpriteToItemReplaceMap(mSpriteDirection);
 
             if (spriteToItems)
             {
                 for (SpriteToItemMapCIter itr = spriteToItems->begin(),
                      itr_end = spriteToItems->end(); itr != itr_end; ++ itr)
                 {
-                    int remSprite = itr->first;
+                    const int remSprite = itr->first;
                     const std::map<int, int> &itemReplacer = itr->second;
                     if (remSprite >= 0)
                     {   // slot known
@@ -2254,7 +2264,7 @@ void Being::recalcSpritesOrder()
 
         if (info.mDrawBefore[dir] > 0)
         {
-            int id2 = mSpriteIDs[info.mDrawBefore[dir]];
+            const int id2 = mSpriteIDs[info.mDrawBefore[dir]];
             if (itemSlotRemap.find(id2) != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (before)");
@@ -2276,7 +2286,7 @@ void Being::recalcSpritesOrder()
         }
         else if (info.mDrawAfter[dir] > 0)
         {
-            int id2 = mSpriteIDs[info.mDrawAfter[dir]];
+            const int id2 = mSpriteIDs[info.mDrawAfter[dir]];
             if (itemSlotRemap.find(id2) != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (after)");
@@ -2310,8 +2320,8 @@ void Being::recalcSpritesOrder()
 
         for (unsigned slot0 = 0; slot0 < sz; slot0 ++)
         {
-            int slot = searchSlotValue(slotRemap, slot0);
-            int val = slotRemap.at(slot);
+            const int slot = searchSlotValue(slotRemap, slot0);
+            const int val = slotRemap.at(slot);
             int id = 0;
 
             if (static_cast<int>(mSpriteIDs.size()) > val)
@@ -2321,7 +2331,7 @@ void Being::recalcSpritesOrder()
             int idx1 = -1;
 //            logger->log("item %d, id=%d", slot, id);
             int reorder = 0;
-            std::map<int, int>::const_iterator
+            const std::map<int, int>::const_iterator
                 orderIt = itemSlotRemap.find(id);
             if (orderIt != itemSlotRemap.end())
                 reorder = orderIt->second;
@@ -2378,7 +2388,7 @@ void Being::recalcSpritesOrder()
         mSpriteRemap[slot] = slotRemap[slot];
         if (oldHide[slot] != 0 && oldHide[slot] != 1 && mSpriteHide[slot] == 0)
         {
-            int id = mSpriteIDs[slot];
+            const int id = mSpriteIDs[slot];
             if (!id)
                 continue;
 
@@ -2388,7 +2398,7 @@ void Being::recalcSpritesOrder()
     }
 }
 
-int Being::searchSlotValue(std::vector<int> &slotRemap, int val)
+int Being::searchSlotValue(std::vector<int> &slotRemap, const int val) const
 {
     for (unsigned slot = 0; slot < size(); slot ++)
     {
@@ -2399,11 +2409,12 @@ int Being::searchSlotValue(std::vector<int> &slotRemap, int val)
 }
 
 void Being::searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
-                               std::vector<int> &slotRemap, int val)
+                               std::vector<int> &slotRemap,
+                               const int val) const
 {
 //    logger->log("searching %d", val);
     it = slotRemap.begin();
-    std::vector<int>::iterator it_end = slotRemap.end();
+    const std::vector<int>::iterator it_end = slotRemap.end();
     idx = 0;
     while (it != it_end)
     {
@@ -2421,7 +2432,7 @@ void Being::searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
     return;
 }
 
-void Being::updateHit(int amount)
+void Being::updateHit(const int amount)
 {
     if (amount > 0)
     {
@@ -2434,13 +2445,13 @@ void Being::updateHit(int amount)
 
 Equipment *Being::getEquipment()
 {
-    Equipment *eq = new Equipment();
-    Equipment::Backend *bk = new BeingEquipBackend(this);
+    Equipment *const eq = new Equipment();
+    Equipment::Backend *const bk = new BeingEquipBackend(this);
     eq->setBackend(bk);
     return eq;
 }
 
-void Being::undressItemById(int id)
+void Being::undressItemById(const int id)
 {
     size_t sz = mSpriteIDs.size();
 
@@ -2469,7 +2480,7 @@ void Being::updateComment()
     mComment = loadComment(mName, mType);
 }
 
-std::string Being::loadComment(const std::string &name, int type)
+std::string Being::loadComment(const std::string &name, const int type)
 {
     std::string str;
     switch (type)
@@ -2488,7 +2499,7 @@ std::string Being::loadComment(const std::string &name, int type)
     logger->log("load from: %s", str.c_str());
     StringVect lines;
 
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     if (resman->existsLocal(str))
     {
         lines = resman->loadTextFileLocal(str);
@@ -2499,7 +2510,7 @@ std::string Being::loadComment(const std::string &name, int type)
 }
 
 void Being::saveComment(const std::string &name,
-                        const std::string &comment, int type)
+                        const std::string &comment, const int type)
 {
     std::string dir;
     switch (type)
@@ -2514,16 +2525,16 @@ void Being::saveComment(const std::string &name,
             return;
     }
     dir += stringToHexPath(name);
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }
 
-void Being::setState(uint8_t state)
+void Being::setState(const uint8_t state)
 {
-    bool shop = ((state & FLAG_SHOP) != 0);
-    bool away = ((state & FLAG_AWAY) != 0);
-    bool inactive = ((state & FLAG_INACTIVE) != 0);
-    bool needUpdate = (shop != mShop || away != mAway
+    const bool shop = ((state & FLAG_SHOP) != 0);
+    const bool away = ((state & FLAG_AWAY) != 0);
+    const bool inactive = ((state & FLAG_INACTIVE) != 0);
+    const bool needUpdate = (shop != mShop || away != mAway
         || inactive != mInactive);
 
     mShop = shop;
@@ -2537,7 +2548,7 @@ void Being::setState(uint8_t state)
     }
 }
 
-void Being::setEmote(uint8_t emotion, int emote_time)
+void Being::setEmote(const uint8_t emotion, const int emote_time)
 {
     if ((emotion & FLAG_SPECIAL) == FLAG_SPECIAL)
     {
@@ -2557,7 +2568,7 @@ void Being::updatePercentHP()
         return;
     if (mHP)
     {
-        unsigned num = mHP * 100 / mMaxHP;
+        const unsigned num = mHP * 100 / mMaxHP;
         if (num != mNumber)
         {
             mNumber = num;
@@ -2567,7 +2578,7 @@ void Being::updatePercentHP()
     }
 }
 
-uint8_t Being::genderToInt(Gender sex)
+uint8_t Being::genderToInt(const Gender sex)
 {
     switch (sex)
     {
@@ -2582,7 +2593,7 @@ uint8_t Being::genderToInt(Gender sex)
     }
 }
 
-Gender Being::intToGender(uint8_t sex)
+Gender Being::intToGender(const uint8_t sex)
 {
     switch (sex)
     {
@@ -2596,7 +2607,7 @@ Gender Being::intToGender(uint8_t sex)
     }
 }
 
-int Being::getSpriteID(int slot)
+int Being::getSpriteID(const int slot) const
 {
     if (slot < 0 || static_cast<unsigned>(slot) >= mSpriteIDs.size())
         return -1;
@@ -2604,7 +2615,7 @@ int Being::getSpriteID(int slot)
     return mSpriteIDs[slot];
 }
 
-BeingEquipBackend::BeingEquipBackend(Being *being):
+BeingEquipBackend::BeingEquipBackend(Being *const being):
     mBeing(being)
 {
     memset(mEquipment, 0, sizeof(mEquipment));
@@ -2614,8 +2625,9 @@ BeingEquipBackend::BeingEquipBackend(Being *being):
 
         for (unsigned f = 0; f < sz; f ++)
         {
-            int idx = Net::getInventoryHandler()->convertFromServerSlot(f);
-            int id = being->mSpriteIDs[f];
+            const int idx = Net::getInventoryHandler()->
+                convertFromServerSlot(f);
+            const int id = being->mSpriteIDs[f];
             if (id > 0 && idx >= 0 && idx < EQUIPMENT_SIZE)
             {
                 mEquipment[idx] = new Item(id, 1, 0,
@@ -2639,12 +2651,12 @@ void BeingEquipBackend::clear()
     }
 }
 
-void BeingEquipBackend::setEquipment(int index, Item *item)
+void BeingEquipBackend::setEquipment(const int index, Item *const item)
 {
     mEquipment[index] = item;
 }
 
-Item *BeingEquipBackend::getEquipment(int index) const
+Item *BeingEquipBackend::getEquipment(const int index) const
 {
     if (index < 0 || index >= EQUIPMENT_SIZE)
         return nullptr;

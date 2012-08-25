@@ -364,7 +364,7 @@ void LocalPlayer::slowLogic()
     }
 }
 
-void LocalPlayer::setAction(Action action, int attackType)
+void LocalPlayer::setAction(const Action action, const int attackType)
 {
     if (action == DEAD)
     {
@@ -1021,7 +1021,7 @@ void LocalPlayer::setTarget(Being *target)
         target->setShowName(true);
 }
 
-void LocalPlayer::setDestination(int x, int y)
+void LocalPlayer::setDestination(const int x, const int y)
 {
     mActivityTime = cur_time;
 

@@ -74,15 +74,15 @@ enum Gender
 class BeingEquipBackend : public Equipment::Backend
 {
     public:
-        BeingEquipBackend(Being *being);
+        BeingEquipBackend(Being *const being);
 
         virtual ~BeingEquipBackend();
 
-        Item *getEquipment(int index) const;
+        Item *getEquipment(const int index) const;
 
         void clear();
 
-        void setEquipment(int index, Item *item);
+        void setEquipment(const int index, Item *const item);
 
     private:
         Item *mEquipment[EQUIPMENT_SIZE];
@@ -165,7 +165,8 @@ class Being : public ActorSprite, public ConfigListener
          * @param subtype partly determines the type of the being
          * @param map     the map the being is on
          */
-        Being(int id, Type type, uint16_t subtype, Map *map);
+        Being(const int id, const Type type, const uint16_t subtype,
+              Map *const map);
 
         virtual ~Being();
 
@@ -187,7 +188,7 @@ class Being : public ActorSprite, public ConfigListener
          * Set the current action time.
          * @see Ea::BeingHandler that set it to tick time.
          */
-        void setActionTime(int actionTime)
+        void setActionTime(const int actionTime)
         { mActionTime = actionTime; }
 
         /**
@@ -213,7 +214,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Creates a path for the being from current position to ex and ey
          */
-        void setDestination(int ex, int ey);
+        void setDestination(const int dstX, const int dstY);
 
         /**
          * Returns the destination for this being.
@@ -236,7 +237,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Sets the tile x and y coord
          */
-        void setTileCoords(int x, int y)
+        void setTileCoords(const int x, const int y)
         { mX = x; mY = y; }
 
         /**
@@ -256,8 +257,8 @@ class Being : public ActorSprite, public ConfigListener
          * @param type the attack type
          * @param id skill id
          */
-        void takeDamage(Being *attacker, int damage,
-                        AttackType type, int id = 0);
+        void takeDamage(Being *const attacker, const int damage,
+                        const AttackType type, const int id = 0);
 
         /**
          * Handles an attack of another being by this being.
@@ -266,9 +267,11 @@ class Being : public ActorSprite, public ConfigListener
          * @param damage the amount of damage dealt (0 means miss)
          * @param type the attack type
          */
-        virtual void handleAttack(Being *victim, int damage, AttackType type);
+        virtual void handleAttack(Being *const victim, const int damage,
+                                  const AttackType type);
 
-        virtual void handleSkill(Being *victim, int damage, int skillId);
+        virtual void handleSkill(Being *const victim, const int damage,
+                                 const int skillId);
 
         const ItemInfo *getEquippedWeapon() const
         { return mEquippedWeapon; }
@@ -289,7 +292,7 @@ class Being : public ActorSprite, public ConfigListener
         bool getShowName() const
         { return mShowName; }
 
-        void setShowName(bool doShowName);
+        void setShowName(const bool doShowName);
 
         /**
          * Sets the name of the party the being is in. Shown in BeingPopup.
@@ -314,12 +317,12 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Adds a guild to the being.
          */
-        void addGuild(Guild *guild);
+        void addGuild(Guild *const guild);
 
         /**
          * Removers a guild from the being.
          */
-        void removeGuild(int id);
+        void removeGuild(const int id);
 
         /**
          * Returns a pointer to the specified guild that the being is in.
@@ -329,7 +332,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns a pointer to the specified guild that the being is in.
          */
-        Guild *getGuild(int id) const;
+        Guild *getGuild(const int id) const;
 
         /**
          * Returns a pointer to the specified guild that the being is in.
@@ -356,29 +359,31 @@ class Being : public ActorSprite, public ConfigListener
         bool isInParty() const
         { return mParty; }
 
-        void setParty(Party *party);
+        void setParty(Party *const party);
 
-        void setGuild(Guild *guild);
+        void setGuild(Guild *const guild);
 
         void updateGuild();
 
         Party *getParty() const
         { return mParty; }
 
-        int getSpritesCount()
+        int getSpritesCount() const
         { return static_cast<int>(size()); }
 
         /**
          * Sets visible equipments for this being.
          */
-        void setSprite(unsigned int slot, int id,
+        void setSprite(const unsigned int slot, const int id,
                        std::string color = "",
-                       unsigned char colorId = 1, bool isWeapon = false,
-                       bool isTempSprite = false);
+                       const unsigned char colorId = 1,
+                       const bool isWeapon = false,
+                       const bool isTempSprite = false);
 
-        void setSpriteID(unsigned int slot, int id);
+        void setSpriteID(const unsigned int slot, const int id);
 
-        void setSpriteColor(unsigned int slot, const std::string &color = "");
+        void setSpriteColor(const unsigned int slot,
+                            const std::string &color = "");
 
         /**
          * Get the number of hairstyles implemented
@@ -400,12 +405,13 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Draws the speech text above the being.
          */
-        void drawSpeech(int offsetX, int offsetY);
+        void drawSpeech(const int offsetX, const int offsetY);
 
         /**
          * Draws the emotion picture above the being.
          */
-        void drawEmotion(Graphics *graphics, int offsetX, int offsetY);
+        void drawEmotion(Graphics *const graphics, const int offsetX,
+                         const int offsetY);
 
         uint16_t getSubType() const
         { return mSubType; }
@@ -413,7 +419,7 @@ class Being : public ActorSprite, public ConfigListener
          /**
           * Set Being's subtype (mostly for view for monsters and NPCs)
           */
-        void setSubtype(uint16_t subtype);
+        void setSubtype(const uint16_t subtype);
 
         const BeingInfo *getInfo() const
         { return mInfo; }
@@ -459,7 +465,7 @@ class Being : public ActorSprite, public ConfigListener
          * in pixels per second for eAthena,
          * in tiles per second for Manaserv.
          */
-        void setWalkSpeed(Vector speed)
+        void setWalkSpeed(const Vector speed)
         { mWalkSpeed = speed; }
 
         /**
@@ -474,7 +480,7 @@ class Being : public ActorSprite, public ConfigListener
          * Sets the attack speed.
          * @todo In what unit?
          */
-        void setAttackSpeed(int speed)
+        void setAttackSpeed(const int speed)
         { mAttackSpeed = speed; }
 
         /**
@@ -487,7 +493,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Sets the current action.
          */
-        virtual void setAction(Action action, int attackType = 0);
+        virtual void setAction(const Action action, const int attackType = 0);
 
         /**
          * Get the being's action currently performed.
@@ -510,9 +516,9 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Sets the current direction.
          */
-        virtual void setDirection(uint8_t direction);
+        virtual void setDirection(const uint8_t direction);
 
-        virtual void setDirectionDelayed(uint8_t direction)
+        virtual void setDirectionDelayed(const uint8_t direction)
         { mDirectionDelayed = direction; }
 
         uint8_t getDirectionDelayed() const
@@ -531,7 +537,8 @@ class Being : public ActorSprite, public ConfigListener
          *
          * @see setPosition(const Vector &pos)
          */
-        inline void setPosition(float x, float y, float z = 0.0f)
+        inline void setPosition(const float x, const float y,
+                                const float z = 0.0f)
         { setPosition(Vector(x, y, z)); }
 
         /**
@@ -555,7 +562,8 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Shoots a missile particle from this being, to target being
          */
-        void fireMissile(Being *target, const std::string &particle);
+        void fireMissile(Being *const target,
+                         const std::string &particle) const;
 
         /**
          * Returns the path this being is following. An empty path is returned
@@ -567,16 +575,16 @@ class Being : public ActorSprite, public ConfigListener
         int getDistance() const
         { return mDistance; }
 
-        void setDistance(int n)
+        void setDistance(const int n)
         { mDistance = n; }
 
         /**
          * Set the Emoticon type and time displayed above
          * the being.
          */
-        void setEmote(uint8_t emotion, int emote_time);
+        void setEmote(const uint8_t emotion, const int emote_time);
 
-        void setState(uint8_t state);
+        void setState(const uint8_t state);
 
         /**
          * Get the current Emoticon type displayed above
@@ -590,31 +598,32 @@ class Being : public ActorSprite, public ConfigListener
         virtual void drawSpritesSDL(Graphics* graphics,
                                     int posX, int posY) const;
 
-        void drawHpBar(Graphics *graphics, int x, int y,
-                       int maxHP, int hp, int damage, int color1, int color2,
-                       int width, int height) const;
+        void drawHpBar(Graphics *const graphics, const int x, const int y,
+                       const int maxHP, const int hp, const int damage,
+                       const int color1, const int color2, const int width,
+                       const int height) const;
 
         static void load();
 
         virtual void optionChanged(const std::string &value);
 
-        void flashName(int time);
+        void flashName(const int time);
 
         int getDamageTaken() const
         { return mDamageTaken; }
 
-        void setDamageTaken(int damage)
+        void setDamageTaken(const int damage)
         { mDamageTaken = damage; }
 
         void updateName();
 
-        void setLevel(int n)
+        void setLevel(const int n)
         { mLevel = n; }
 
         virtual int getLevel() const
         { return mLevel; }
 
-        void setIsReachable(int n)
+        void setIsReachable(const int n)
         { mIsReachable = n; }
 
         int isReachable() const
@@ -622,16 +631,16 @@ class Being : public ActorSprite, public ConfigListener
 
         static void reReadConfig();
 
-        static BeingCacheEntry* getCacheEntry(int id);
+        static BeingCacheEntry* getCacheEntry(const int id);
 
-        void addToCache();
+        void addToCache() const;
 
         bool updateFromCache();
 
         /**
          * Sets the gender of this being.
          */
-        virtual void setGender(Gender gender);
+        virtual void setGender(const Gender gender);
 
         Gender getGender() const
         { return mGender; }
@@ -650,9 +659,9 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Triggers whether or not to show the name as a GM name.
          */
-        void setGM(bool gm);
+        void setGM(const bool gm);
 
-        bool canTalk()
+        bool canTalk() const
         { return mType == NPC; }
 
         void talkTo();
@@ -695,7 +704,7 @@ class Being : public ActorSprite, public ConfigListener
 
         virtual void updateColors();
 
-        void setEnemy(bool n)
+        void setEnemy(const bool n)
         { mEnemy = n; }
 
         const std::string &getIp() const
@@ -707,21 +716,21 @@ class Being : public ActorSprite, public ConfigListener
         unsigned int getPvpRank() const
         { return mPvpRank; }
 
-        void setPvpRank(unsigned int rank)
+        void setPvpRank(const unsigned int rank)
         { mPvpRank = rank; }
 
-        void setHP(int n);
+        void setHP(const int n);
 
-        void setMaxHP(int hp);
+        void setMaxHP(const int hp);
 
         int getHP() const
         { return mHP; }
 
-        uint8_t calcDirection(int dstX, int dstY) const;
+        uint8_t calcDirection(const int dstX, const int dstY) const;
 
         uint8_t calcDirection() const;
 
-        void setAttackDelay(int n)
+        void setAttackDelay(const int n)
         { mAttackDelay = n; }
 
         int getAttackDelay() const
@@ -730,31 +739,31 @@ class Being : public ActorSprite, public ConfigListener
         int getMinHit() const
         { return mMinHit; }
 
-        void setMinHit(int n)
+        void setMinHit(const int n)
         { mMinHit = n; }
 
         int getMaxHit() const
         { return mMaxHit; }
 
-        void setMaxHit(int n)
+        void setMaxHit(const int n)
         { mMaxHit = n; }
 
         int getCriticalHit() const
         { return mCriticalHit; }
 
-        void setCriticalHit(int n)
+        void setCriticalHit(const int n)
         { mCriticalHit = n; }
 
-        void updateHit(int amount);
+        void updateHit(const int amount);
 
         Equipment *getEquipment();
 
-        void undressItemById(int id);
+        void undressItemById(const int id);
 
         int getGoodStatus() const
         { return mGoodStatus; }
 
-        void setGoodStatus(int n)
+        void setGoodStatus(const int n)
         { mGoodStatus = n; }
 
         std::string getGenderSign() const;
@@ -771,27 +780,28 @@ class Being : public ActorSprite, public ConfigListener
 
         static void clearCache();
 
-        static std::string loadComment(const std::string &name, int type);
+        static std::string loadComment(const std::string &name,
+                                       const int type);
 
         static void saveComment(const std::string &name,
-                                const std::string &comment, int type);
+                                const std::string &comment, const int type);
 
         bool isAdvanced() const
         { return mAdvanced; }
 
-        void setAdvanced(bool n)
+        void setAdvanced(const bool n)
         { mAdvanced = n; addToCache(); }
 
         bool isShopEnabled() const
         { return mShop; }
 
-        void enableShop(bool b)
+        void enableShop(const bool b)
         { mShop = b; }
 
         /**
          * Sets the attack range.
          */
-        void setAttackRange(int range)
+        void setAttackRange(const int range)
         { mAttackRange = range; }
 
         void attack(Being *target = nullptr, bool keep = false,
@@ -805,12 +815,12 @@ class Being : public ActorSprite, public ConfigListener
         void setRaceName(std::string name)
         { mRaceName = name; }
 
-        std::string getRaceName()
+        std::string getRaceName() const
         { return mRaceName; }
 
-        int getSpriteID(int slot);
+        int getSpriteID(const int slot) const;
 
-        static uint8_t genderToInt(Gender sex);
+        static uint8_t genderToInt(const Gender sex);
 
         static Gender intToGender(uint8_t sex);
 
@@ -892,12 +902,13 @@ class Being : public ActorSprite, public ConfigListener
          * If walking in direction 'neg' the value is negated.
          * TODO: Used by eAthena only?
          */
-        int getOffset(char pos, char neg) const;
+        int getOffset(const char pos, const char neg) const;
 
-        int searchSlotValue(std::vector<int> &slotRemap, int val);
+        int searchSlotValue(std::vector<int> &slotRemap, const int val) const;
 
         void searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
-                                std::vector<int> &slotRemap, int val);
+                                std::vector<int> &slotRemap,
+                                const int val) const;
 
         const Type mType;
 
