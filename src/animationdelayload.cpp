@@ -27,7 +27,8 @@
 #include "debug.h"
 
 AnimationDelayLoad::AnimationDelayLoad(const std::string &fileName,
-                                       int variant, AnimatedSprite *sprite) :
+                                       const int variant,
+                                       AnimatedSprite *const sprite) :
     mFileName(fileName),
     mVariant(variant),
     mSprite(sprite),
@@ -53,8 +54,8 @@ void AnimationDelayLoad::load()
 {
     if (mSprite)
     {
-        ResourceManager *resman = ResourceManager::getInstance();
-        SpriteDef *s = resman->getSprite(mFileName, mVariant);
+        ResourceManager *const resman = ResourceManager::getInstance();
+        SpriteDef *const s = resman->getSprite(mFileName, mVariant);
         if (!s)
             return;
         mSprite->setSprite(s);

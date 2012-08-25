@@ -29,7 +29,7 @@ class AnimationDelayLoad
 {
     public:
         AnimationDelayLoad(const std::string &fileName,
-                           int variant, AnimatedSprite *sprite);
+                           const int variant, AnimatedSprite *const sprite);
 
         ~AnimationDelayLoad();
 

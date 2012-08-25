@@ -27,13 +27,15 @@
 
 #include "debug.h"
 
-AnimationParticle::AnimationParticle(Map *map, Animation *animation):
+AnimationParticle::AnimationParticle(Map *const map,
+                                     Animation *const animation) :
     ImageParticle(map, nullptr),
     mAnimation(new SimpleAnimation(animation))
 {
 }
 
-AnimationParticle::AnimationParticle(Map *map, XmlNodePtr animationNode,
+AnimationParticle::AnimationParticle(Map *const map,
+                                     XmlNodePtr const animationNode,
                                      const std::string& dyePalettes):
     ImageParticle(map, nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))

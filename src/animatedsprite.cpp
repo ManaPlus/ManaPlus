@@ -35,7 +35,7 @@
 
 bool AnimatedSprite::mEnableCache = false;
 
-AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
+AnimatedSprite::AnimatedSprite(SpriteDef *const sprite):
     mDirection(DIRECTION_DOWN),
     mLastTime(0),
     mFrameIndex(0),
@@ -60,29 +60,29 @@ AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
 
 AnimatedSprite *AnimatedSprite::load(const std::string &filename, int variant)
 {
-    ResourceManager *resman = ResourceManager::getInstance();
-    SpriteDef *s = resman->getSprite(filename, variant);
+    ResourceManager *const resman = ResourceManager::getInstance();
+    SpriteDef *const s = resman->getSprite(filename, variant);
     if (!s)
         return nullptr;
-    AnimatedSprite *as = new AnimatedSprite(s);
+    AnimatedSprite *const as = new AnimatedSprite(s);
     s->decRef();
     return as;
 }
 
 AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &filename,
-                                            int variant)
+                                            const int variant)
 {
     if (!mEnableCache)
         return load(filename, variant);
-    ResourceManager *resman = ResourceManager::getInstance();
-    Resource *res = resman->getFromCache(filename, variant);
+    ResourceManager *const resman = ResourceManager::getInstance();
+    Resource *const res = resman->getFromCache(filename, variant);
     if (res)
     {
         res->decRef();
         return load(filename, variant);
     }
 
-    AnimatedSprite *as = new AnimatedSprite(nullptr);
+    AnimatedSprite *const as = new AnimatedSprite(nullptr);
     as->setDelayLoad(filename, variant);
     return as;
 }
@@ -105,7 +105,7 @@ AnimatedSprite::~AnimatedSprite()
 
 bool AnimatedSprite::reset()
 {
-    bool ret = mFrameIndex !=0 || mFrameTime != 0 || mLastTime != 0;
+    const bool ret = mFrameIndex !=0 || mFrameTime != 0 || mLastTime != 0;
 
     mFrameIndex = 0;
     mFrameTime = 0;
@@ -128,12 +128,12 @@ bool AnimatedSprite::play(std::string spriteAction)
         return true;
     }
 
-    Action *action = mSprite->getAction(spriteAction, mNumber);
+    Action *const action = mSprite->getAction(spriteAction, mNumber);
     if (!action)
         return false;
 
     mAction = action;
-    Animation *animation = mAction->getAnimation(mDirection);
+    Animation *const animation = mAction->getAnimation(mDirection);
 
     if (animation && animation != mAnimation && animation->getLength() > 0)
     {
@@ -156,11 +156,11 @@ bool AnimatedSprite::update(int time)
     if (time <= mLastTime || !mAnimation)
         return false;
 
-    unsigned int dt = time - mLastTime;
+    const unsigned int dt = time - mLastTime;
     mLastTime = time;
 
-    Animation *animation = mAnimation;
-    Frame *frame = mFrame;
+    const Animation *const animation = mAnimation;
+    const Frame *const frame = mFrame;
 
     if (!updateCurrentAnimation(dt))
     {
@@ -206,7 +206,7 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
             {
                 for (size_t i = 0; i < mAnimation->getLength(); i ++)
                 {
-                    Frame *frame = &mAnimation->mFrames[i];
+                    const Frame *const frame = &mAnimation->mFrames[i];
                     if (frame->type == Frame::LABEL
                         && mFrame->nextAction == frame->nextAction)
                     {
@@ -286,7 +286,7 @@ bool AnimatedSprite::setSpriteDirection(SpriteDirection direction)
         if (!mAction)
             return false;
 
-        Animation *animation = mAction->getAnimation(mDirection);
+        Animation *const animation = mAction->getAnimation(mDirection);
 
         if (animation && animation != mAnimation && animation->getLength() > 0)
         {
@@ -381,7 +381,7 @@ bool AnimatedSprite::updateNumber(unsigned num)
 }
 
 void AnimatedSprite::setDelayLoad(const std::string &filename,
-                                  int variant)
+                                  const int variant)
 {
     if (mDelayLoad)
     {

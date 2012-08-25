@@ -61,19 +61,20 @@ void AuctionManager::init()
         auctionManager = new AuctionManager();
 }
 
-void AuctionManager::send(std::string msg)
+void AuctionManager::send(const std::string &msg)
 {
     if (Net::getChatHandler())
         Net::getChatHandler()->privateMessage("AuctionBot", msg);
 }
 
-bool AuctionManager::processAuctionMessage(std::string msg)
+/*
+bool AuctionManager::processAuctionMessage(const std::string &msg)
 {
     if (msg.size() > 4 && msg[0] == '#' && msg[1] == '#')
         msg = msg.substr(3);
-
     return false;
 }
+*/
 
 void AuctionManager::clear()
 {
@@ -83,7 +84,7 @@ void AuctionManager::reload()
 {
 }
 
-void AuctionManager::sendMail(std::string mail)
+void AuctionManager::sendMail(const std::string &mail)
 {
     if (Net::getChatHandler())
         Net::getChatHandler()->privateMessage("AuctionBot", "!mail " + mail);

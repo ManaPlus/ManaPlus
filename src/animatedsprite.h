@@ -42,7 +42,7 @@ class AnimatedSprite : public Sprite
          * Constructor.
          * @param sprite the sprite to animate
          */
-        AnimatedSprite(SpriteDef *sprite);
+        AnimatedSprite(SpriteDef *const sprite);
 
         /**
          * An helper function, which will request the sprite to animate
@@ -55,7 +55,7 @@ class AnimatedSprite : public Sprite
                                     int variant = 0);
 
         static AnimatedSprite *delayedLoad(const std::string &filename,
-                                           int variant = 0);
+                                           const int variant = 0);
 
         virtual ~AnimatedSprite();
 
@@ -92,16 +92,16 @@ class AnimatedSprite : public Sprite
 
         void clearDelayLoad();
 
-        void setSprite(SpriteDef *sprite)
+        void setSprite(SpriteDef *const sprite)
         { mSprite = sprite; }
 
-        static void setEnableCache(bool b)
+        static void setEnableCache(const bool b)
         { mEnableCache = b; }
 
     private:
         bool updateCurrentAnimation(unsigned int dt);
 
-        void setDelayLoad(const std::string &filename, int variant);
+        void setDelayLoad(const std::string &filename, const int variant);
 
         SpriteDirection mDirection;    /**< The sprite direction. */
         int mLastTime;                 /**< The last time update was called. */

@@ -36,9 +36,9 @@ class AuctionManager
 
         static void init();
 
-        void send(std::string msg);
+        static void send(const std::string &msg);
 
-        bool processAuctionMessage(std::string msg);
+//        static bool processAuctionMessage(const std::string &msg);
 
         static bool getEnableAuctionBot()
         { return mEnableAuctionBot; }
@@ -47,7 +47,7 @@ class AuctionManager
 
         void reload();
 
-        void sendMail(std::string mail);
+        static void sendMail(const std::string &mail);
 
     private:
         static bool mEnableAuctionBot;
