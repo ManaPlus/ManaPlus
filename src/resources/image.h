@@ -128,7 +128,7 @@ class Image : public Resource
          *
          * @return A new Image* object.
          */
-        Image* SDLgetScaledImage(int width, int height);
+        Image* SDLgetScaledImage(const int width, const int height) const;
 
         /**
          * Get the alpha Channel of a SDL surface.

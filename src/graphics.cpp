@@ -88,13 +88,14 @@ Graphics::~Graphics()
     _endDraw();
 }
 
-void Graphics::setSync(bool sync)
+void Graphics::setSync(const bool sync)
 {
     mSync = sync;
 }
 
-void Graphics::setMainFlags(int w, int h, int bpp, bool fs,
-                            bool hwaccel, bool resize, bool noFrame)
+void Graphics::setMainFlags(const int w, const int h, const int bpp,
+                            const bool fs, const bool hwaccel,
+                            const bool resize, const bool noFrame)
 {
     logger->log("graphics backend: %s", getName().c_str());
     logger->log("Setting video mode %dx%d %s",
@@ -109,7 +110,7 @@ void Graphics::setMainFlags(int w, int h, int bpp, bool fs,
     mNoFrame = noFrame;
 }
 
-int Graphics::getOpenGLFlags()
+int Graphics::getOpenGLFlags() const
 {
 #ifdef USE_OPENGL
     int displayFlags = SDL_ANYFORMAT | SDL_OPENGL;
@@ -200,7 +201,7 @@ bool Graphics::setOpenGLMode()
 #endif
 }
 
-int Graphics::getSoftwareFlags()
+int Graphics::getSoftwareFlags() const
 {
     int displayFlags = SDL_ANYFORMAT;
 
@@ -236,7 +237,7 @@ void Graphics::updateMemoryInfo()
 #endif
 }
 
-int Graphics::getMemoryUsage()
+int Graphics::getMemoryUsage() const
 {
 #ifdef USE_OPENGL
     if (!mStartFreeMem)
@@ -253,8 +254,9 @@ int Graphics::getMemoryUsage()
     return 0;
 }
 
-bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
-                            bool hwaccel, bool resize, bool noFrame)
+bool Graphics::setVideoMode(const int w, const int h, const int bpp,
+                            const bool fs, const bool hwaccel,
+                            const bool resize, const bool noFrame)
 {
     setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
 
@@ -282,7 +284,7 @@ bool Graphics::videoInfo()
 
     imageHelper->dumpSurfaceFormat(mTarget);
 
-    const SDL_VideoInfo *vi = SDL_GetVideoInfo();
+    const SDL_VideoInfo *const vi = SDL_GetVideoInfo();
     if (!vi)
         return false;
 
@@ -308,7 +310,7 @@ bool Graphics::videoInfo()
     return true;
 }
 
-bool Graphics::setFullscreen(bool fs)
+bool Graphics::setFullscreen(const bool fs)
 {
     if (mFullscreen == fs)
         return true;
@@ -317,7 +319,7 @@ bool Graphics::setFullscreen(bool fs)
         mEnableResize, mNoFrame);
 }
 
-bool Graphics::resizeScreen(int width, int height)
+bool Graphics::resizeScreen(const int width, const int height)
 {
     if (mWidth == width && mHeight == height)
         return true;
@@ -327,7 +329,7 @@ bool Graphics::resizeScreen(int width, int height)
 
     _endDraw();
 
-    bool success = setVideoMode(width, height, mBpp,
+    const bool success = setVideoMode(width, height, mBpp,
         mFullscreen, mHWAccel, mEnableResize, mNoFrame);
 
     // If it didn't work, try to restore the previous size. If that didn't
@@ -369,11 +371,12 @@ bool Graphics::drawImage(const Image *image, int x, int y)
     }
 }
 
-bool Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
+bool Graphics::drawRescaledImage(Image *const image, int srcX, int srcY,
                                  int dstX, int dstY,
-                                 int width, int height,
-                                 int desiredWidth, int desiredHeight,
-                                 bool useColor A_UNUSED)
+                                 const int width, const int height,
+                                 const int desiredWidth,
+                                 const int desiredHeight,
+                                 const bool useColor A_UNUSED)
 {
     // Check that preconditions for blitting are met.
     if (!mTarget || !image)
@@ -413,8 +416,9 @@ bool Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
     return returnValue;
 }
 
-bool Graphics::drawImage2(const Image *image, int srcX, int srcY,
-                          int dstX, int dstY, int width, int height, bool)
+bool Graphics::drawImage2(const Image *const image, int srcX, int srcY,
+                          int dstX, int dstY, const int width,
+                          const int height, const bool useColor A_UNUSED)
 {
     // Check that preconditions for blitting are met.
     if (!mTarget || !image || !image->mSDLSurface)
@@ -447,7 +451,9 @@ bool Graphics::drawImage2(const Image *image, int srcX, int srcY,
     }
 }
 
-void Graphics::drawImagePattern(const Image *image, int x, int y, int w, int h)
+void Graphics::drawImagePattern(const Image *const image,
+                                const int x, const int y,
+                                const int w, const int h)
 {
     // Check that preconditions for blitting are met.
     if (!mTarget || !image)
@@ -463,15 +469,15 @@ void Graphics::drawImagePattern(const Image *image, int x, int y, int w, int h)
 
     for (int py = 0; py < h; py += ih)     // Y position on pattern plane
     {
-        int dh = (py + ih >= h) ? h - py : ih;
-        int srcY = image->mBounds.y;
-        int dstY = y + py + mClipStack.top().yOffset;
+        const int dh = (py + ih >= h) ? h - py : ih;
+        const int srcY = image->mBounds.y;
+        const int dstY = y + py + mClipStack.top().yOffset;
 
         for (int px = 0; px < w; px += iw) // X position on pattern plane
         {
-            int dw = (px + iw >= w) ? w - px : iw;
-            int srcX = image->mBounds.x;
-            int dstX = x + px + mClipStack.top().xOffset;
+            const int dw = (px + iw >= w) ? w - px : iw;
+            const int srcX = image->mBounds.x;
+            const int dstX = x + px + mClipStack.top().xOffset;
 
             SDL_Rect dstRect;
             SDL_Rect srcRect;
@@ -487,9 +493,11 @@ void Graphics::drawImagePattern(const Image *image, int x, int y, int w, int h)
     }
 }
 
-void Graphics::drawRescaledImagePattern(Image *image, int x, int y,
-                                        int w, int h, int scaledWidth,
-                                        int scaledHeight)
+void Graphics::drawRescaledImagePattern(const Image *const image,
+                                        const int x, const int y,
+                                        const int w, const int h,
+                                        const int scaledWidth,
+                                        const int scaledHeight)
 {
     // Check that preconditions for blitting are met.
     if (!mTarget || !image)
@@ -512,15 +520,15 @@ void Graphics::drawRescaledImagePattern(Image *image, int x, int y,
 
     for (int py = 0; py < h; py += ih)     // Y position on pattern plane
     {
-        int dh = (py + ih >= h) ? h - py : ih;
-        int srcY = tmpImage->mBounds.y;
-        int dstY = y + py + mClipStack.top().yOffset;
+        const int dh = (py + ih >= h) ? h - py : ih;
+        const int srcY = tmpImage->mBounds.y;
+        const int dstY = y + py + mClipStack.top().yOffset;
 
         for (int px = 0; px < w; px += iw) // X position on pattern plane
         {
-            int dw = (px + iw >= w) ? w - px : iw;
-            int srcX = tmpImage->mBounds.x;
-            int dstX = x + px + mClipStack.top().xOffset;
+            const int dw = (px + iw >= w) ? w - px : iw;
+            const int srcX = tmpImage->mBounds.x;
+            const int dstX = x + px + mClipStack.top().xOffset;
 
             SDL_Rect dstRect;
             SDL_Rect srcRect;
@@ -539,12 +547,17 @@ void Graphics::drawRescaledImagePattern(Image *image, int x, int y,
     delete tmpImage;
 }
 
-void Graphics::drawImageRect(int x, int y, int w, int h,
-                             Image *topLeft, Image *topRight,
-                             Image *bottomLeft, Image *bottomRight,
-                             Image *top, Image *right,
-                             Image *bottom, Image *left,
-                             Image *center)
+void Graphics::drawImageRect(const int x, const int y,
+                             const int w, const int h,
+                             const Image *const topLeft,
+                             const Image *const topRight,
+                             const Image *const bottomLeft,
+                             const Image *const bottomRight,
+                             const Image *const top,
+                             const Image *const right,
+                             const Image *const bottom,
+                             const Image *const left,
+                             const Image *const center)
 {
     const bool drawMain = center && topLeft && topRight
         && bottomLeft && bottomRight;
@@ -599,7 +612,8 @@ void Graphics::drawImageRect(int x, int y, int w, int h,
             imgRect.grid[4]);
 }
 
-void Graphics::drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect)
+void Graphics::drawImageRect2(GraphicsVertexes *const vert,
+                              const ImageRect &imgRect)
 {
     if (!vert)
         return;
@@ -644,11 +658,12 @@ void Graphics::drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect)
     }
 }
 
-void Graphics::drawImagePattern2(GraphicsVertexes *vert, const Image *img)
+void Graphics::drawImagePattern2(GraphicsVertexes *const vert,
+                                 const Image *const img)
 {
     // here not checking input parameters
 
-    std::vector<DoubleRect*> *arr = vert->getRectsSDL();
+    std::vector<DoubleRect*> *const arr = vert->getRectsSDL();
 
     for (std::vector<DoubleRect*>::const_iterator it = arr->begin(),
          it_end = arr->end(); it != it_end; ++it)
@@ -658,13 +673,18 @@ void Graphics::drawImagePattern2(GraphicsVertexes *vert, const Image *img)
     }
 }
 
-bool Graphics::calcImageRect(GraphicsVertexes* vert,
-                             int x, int y, int w, int h,
-                             Image *topLeft, Image *topRight,
-                             Image *bottomLeft, Image *bottomRight,
-                             Image *top, Image *right,
-                             Image *bottom, Image *left,
-                             Image *center)
+bool Graphics::calcImageRect(GraphicsVertexes *const vert,
+                             const int x, const int y,
+                             const int w, const int h,
+                             const Image *const topLeft,
+                             const Image *const topRight,
+                             const Image *const bottomLeft,
+                             const Image *const bottomRight,
+                             const Image *const top,
+                             const Image *const right,
+                             const Image *const bottom,
+                             const Image *const left,
+                             const Image *const center)
 {
     if (!vert)
         return false;
@@ -716,8 +736,10 @@ bool Graphics::calcImageRect(GraphicsVertexes* vert,
     return 0;
 }
 
-void Graphics::calcImagePattern(GraphicsVertexes* vert,
-                                Image *image, int x, int y, int w, int h)
+void Graphics::calcImagePattern(GraphicsVertexes* const vert,
+                                const Image *const image,
+                                const int x, const int y,
+                                const int w, const int h)
 {
     // Check that preconditions for blitting are met.
     if (!vert || !mTarget || !image || !image->mSDLSurface || !vert->sdl)
@@ -738,15 +760,15 @@ void Graphics::calcImagePattern(GraphicsVertexes* vert,
 
     for (int py = 0; py < h; py += ih)     // Y position on pattern plane
     {
-        int dh = (py + ih >= h) ? h - py : ih;
-        int srcY = image->mBounds.y;
-        int dstY = y + py + mClipStack.top().yOffset;
+        const int dh = (py + ih >= h) ? h - py : ih;
+        const int srcY = image->mBounds.y;
+        const int dstY = y + py + mClipStack.top().yOffset;
 
         for (int px = 0; px < w; px += iw) // X position on pattern plane
         {
-            int dw = (px + iw >= w) ? w - px : iw;
-            int srcX = image->mBounds.x;
-            int dstX = x + px + mClipStack.top().xOffset;
+            const int dw = (px + iw >= w) ? w - px : iw;
+            const int srcX = image->mBounds.x;
+            const int dstX = x + px + mClipStack.top().xOffset;
 
             SDL_Rect dstRect;
             SDL_Rect srcRect;
@@ -767,13 +789,13 @@ void Graphics::calcImagePattern(GraphicsVertexes* vert,
     vert->incPtr(1);
 }
 
-void Graphics::calcTile(ImageVertexes *vert, int x, int y)
+void Graphics::calcTile(ImageVertexes *const vert, int x, int y)
 {
     // Check that preconditions for blitting are met.
     if (!vert || !vert->image || !vert->image->mSDLSurface)
         return;
 
-    const Image *image = vert->image;
+    const Image *const image = vert->image;
 
     x += mClipStack.top().xOffset;
     y += mClipStack.top().yOffset;
@@ -797,13 +819,13 @@ void Graphics::calcTile(ImageVertexes *vert, int x, int y)
     }
 }
 
-void Graphics::drawTile(ImageVertexes *vert)
+void Graphics::drawTile(const ImageVertexes *const vert)
 {
     // vert and img must be != 0
-    Image *img = vert->image;
-    DoubleRects *rects = &vert->sdl;
+    const Image *const img = vert->image;
+    const DoubleRects *const rects = &vert->sdl;
     DoubleRects::const_iterator it = rects->begin();
-    DoubleRects::const_iterator it_end = rects->end();
+    const DoubleRects::const_iterator it_end = rects->end();
     while (it != it_end)
     {
         SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
@@ -827,18 +849,18 @@ void Graphics::updateScreen()
 SDL_Surface *Graphics::getScreenshot()
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    int rmask = 0xff000000;
-    int gmask = 0x00ff0000;
-    int bmask = 0x0000ff00;
+    const int rmask = 0xff000000;
+    const int gmask = 0x00ff0000;
+    const int bmask = 0x0000ff00;
 #else
-    int rmask = 0x000000ff;
-    int gmask = 0x0000ff00;
-    int bmask = 0x00ff0000;
+    const int rmask = 0x000000ff;
+    const int gmask = 0x0000ff00;
+    const int bmask = 0x00ff0000;
 #endif
-    int amask = 0x00000000;
+    const int amask = 0x00000000;
 
-    SDL_Surface *screenshot = SDL_CreateRGBSurface(SDL_SWSURFACE, mTarget->w,
-            mTarget->h, 24, rmask, gmask, bmask, amask);
+    SDL_Surface *const screenshot = SDL_CreateRGBSurface(SDL_SWSURFACE,
+        mTarget->w, mTarget->h, 24, rmask, gmask, bmask, amask);
 
     if (screenshot)
         SDL_BlitSurface(mTarget, nullptr, screenshot, nullptr);
@@ -846,7 +868,8 @@ SDL_Surface *Graphics::getScreenshot()
     return screenshot;
 }
 
-bool Graphics::drawNet(int x1, int y1, int x2, int y2, int width, int height)
+bool Graphics::drawNet(const int x1, const int y1, const int x2, const int y2,
+                       const int width, const int height)
 {
     for (int y = y1; y < y2; y += height)
         drawLine(x1, y, x2, y);
@@ -857,8 +880,8 @@ bool Graphics::drawNet(int x1, int y1, int x2, int y2, int width, int height)
     return true;
 }
 
-bool Graphics::calcWindow(GraphicsVertexes* vert,
-                          int x, int y, int w, int h,
+bool Graphics::calcWindow(GraphicsVertexes *const vert,
+                          const int x, const int y, const int w, const int h,
                           const ImageRect &imgRect)
 {
     return calcImageRect(vert, x, y, w, h,
@@ -867,8 +890,10 @@ bool Graphics::calcWindow(GraphicsVertexes* vert,
         imgRect.grid[4]);
 }
 
-int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
-                                SDL_Surface *dst, SDL_Rect *dstrect)
+int Graphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
+                                SDL_Rect *const srcrect,
+                                SDL_Surface *const dst,
+                                SDL_Rect *dstrect) const
 {
     SDL_Rect fulldst;
     int srcx, srcy, w, h;
@@ -927,7 +952,7 @@ int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
 
     /* clip the destination rectangle against the clip rectangle */
     {
-        SDL_Rect *clip = &dst->clip_rect;
+        const SDL_Rect *const clip = &dst->clip_rect;
         int dx, dy;
 
         dx = clip->x - dstrect->x;
@@ -985,18 +1010,18 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 
     if (mAlpha)
     {
-        int x1 = area.x > top.x ? area.x : top.x;
-        int y1 = area.y > top.y ? area.y : top.y;
-        int x2 = area.x + area.width < top.x + top.width ?
+        const int x1 = area.x > top.x ? area.x : top.x;
+        const int y1 = area.y > top.y ? area.y : top.y;
+        const int x2 = area.x + area.width < top.x + top.width ?
             area.x + area.width : top.x + top.width;
-        int y2 = area.y + area.height < top.y + top.height ?
+        const int y2 = area.y + area.height < top.y + top.height ?
             area.y + area.height : top.y + top.height;
         int x, y;
 
         SDL_LockSurface(mTarget);
 
         const int bpp = mTarget->format->BytesPerPixel;
-        uint32_t pixel = SDL_MapRGB(mTarget->format,
+        const uint32_t pixel = SDL_MapRGB(mTarget->format,
             static_cast<uint8_t>(mColor.r), static_cast<uint8_t>(mColor.g),
             static_cast<uint8_t>(mColor.b));
 
@@ -1005,7 +1030,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
             case 1:
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *p = static_cast<uint8_t *>(mTarget->pixels)
+                    uint8_t *const p = static_cast<uint8_t *>(mTarget->pixels)
                         + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                         *(p + x) = static_cast<uint8_t>(pixel);
@@ -1014,11 +1039,11 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
             case 2:
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *p0 = static_cast<uint8_t *>(mTarget->pixels)
+                    uint8_t *const p0 = static_cast<uint8_t *>(mTarget->pixels)
                         + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                     {
-                        uint8_t *p = p0 + x * 2;
+                        uint8_t *const p = p0 + x * 2;
                         *reinterpret_cast<uint16_t *>(p) = gcn::SDLAlpha16(
                             static_cast<uint16_t>(pixel),
                             *reinterpret_cast<uint16_t *>(p),
@@ -1035,11 +1060,11 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *p0 = static_cast<uint8_t *>(mTarget->pixels)
+                    uint8_t *const p0 = static_cast<uint8_t *>(mTarget->pixels)
                         + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                     {
-                        uint8_t *p = p0 + x * 3;
+                        uint8_t *const p = p0 + x * 3;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
                         p[2] = static_cast<uint8_t>((p[2] * ca + cb) >> 8);
                         p[1] = static_cast<uint8_t>((p[1] * ca + cg) >> 8);
@@ -1111,12 +1136,12 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    uint32_t *p0 = reinterpret_cast<uint32_t*>(
+                    uint32_t *const p0 = reinterpret_cast<uint32_t*>(
                         static_cast<uint8_t*>(mTarget->pixels)
                         + y * mTarget->pitch);
                     for (x = x1; x < x2; x++)
                     {
-                        uint32_t *p = p0 + x;
+                        uint32_t *const p = p0 + x;
                         const uint32_t dst = *p;
                         *p = cB[dst & 0xff] | cG[(dst & 0xff00) >> 8]
                             | cR[(dst & 0xff0000) >> 16];
@@ -1139,7 +1164,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
         rect.w = static_cast<uint16_t>(area.width);
         rect.h = static_cast<uint16_t>(area.height);
 
-        uint32_t color = SDL_MapRGBA(mTarget->format,
+        const uint32_t color = SDL_MapRGBA(mTarget->format,
             static_cast<int8_t>(mColor.r),
             static_cast<int8_t>(mColor.g),
             static_cast<int8_t>(mColor.b),

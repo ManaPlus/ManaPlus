@@ -43,51 +43,60 @@ class SafeOpenGLGraphics : public Graphics
 
         ~SafeOpenGLGraphics();
 
-        bool setVideoMode(int w, int h, int bpp, bool fs,
-                          bool hwaccel, bool resize, bool noFrame);
+        bool setVideoMode(const int w, const int h, const int bpp,
+                          const bool fs, const bool hwaccel,
+                          const bool resize, const bool noFrame);
 
         /**
          * Draws a resclaled version of the image
          */
-        bool drawRescaledImage(Image *image, int srcX, int srcY,
+        bool drawRescaledImage(Image *const image, int srcX, int srcY,
                                int dstX, int dstY,
-                               int width, int height,
-                               int desiredWidth, int desiredHeight,
-                               bool useColor);
+                               const int width, const int height,
+                               const int desiredWidth, const int desiredHeight,
+                               const bool useColor);
 
         /**
          * Used to get the smooth rescale option over the standard function.
          */
-        bool drawRescaledImage(Image *image, int srcX, int srcY,
+        bool drawRescaledImage(Image *const image, int srcX, int srcY,
                                int dstX, int dstY,
-                               int width, int height,
-                               int desiredWidth, int desiredHeight,
-                               bool useColor, bool smooth);
+                               const int width, const int height,
+                               const int desiredWidth, const int desiredHeight,
+                               const bool useColor, bool smooth);
 
-        void drawImagePattern(const Image *image,
-                              int x, int y,
-                              int w, int h);
+        void drawImagePattern(const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h);
 
         /**
          * Draw a pattern based on a rescaled version of the given image...
          */
-        void drawRescaledImagePattern(Image *image,
-                                      int x, int y, int w, int h,
-                                      int scaledWidth, int scaledHeight);
+        void drawRescaledImagePattern(const Image *const image,
+                                      const int x, const int y,
+                                      const int w, const int h,
+                                      const int scaledWidth,
+                                      const int scaledHeight);
 
-        bool calcImageRect(GraphicsVertexes* vert,
-                           int x, int y, int w, int h,
-                           Image *topLeft, Image *topRight,
-                           Image *bottomLeft, Image *bottomRight,
-                           Image *top, Image *right,
-                           Image *bottom, Image *left,
-                           Image *center);
+        bool calcImageRect(GraphicsVertexes *const vert,
+                           const int x, const int y,
+                           const int w, const int h,
+                           const Image *const topLeft,
+                           const Image *const topRight,
+                           const Image *const bottomLeft,
+                           const Image *const bottomRight,
+                           const Image *const top,
+                           const Image *const right,
+                           const Image *const bottom,
+                           const Image *const left,
+                           const Image *const center);
 
-        void drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect);
+        void drawImageRect2(GraphicsVertexes *const vert,
+                            const ImageRect &imgRect);
 
-        void calcTile(ImageVertexes *vert, int x, int y);
+        void calcTile(ImageVertexes *const vert, int x, int y);
 
-        void drawTile(ImageVertexes *vert);
+        void drawTile(const ImageVertexes *const vert);
 
         void updateScreen();
 
@@ -123,11 +132,11 @@ class SafeOpenGLGraphics : public Graphics
         static GLuint mLastImage;
 
     protected:
-        bool drawImage2(const Image *image,
+        bool drawImage2(const Image *const image,
                         int srcX, int srcY,
                         int dstX, int dstY,
-                        int width, int height,
-                        bool useColor);
+                        const int width, const int height,
+                        const bool useColor);
 
         void setTexturingAndBlending(bool enable);
 

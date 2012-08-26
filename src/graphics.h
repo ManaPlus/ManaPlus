@@ -97,7 +97,7 @@ class Graphics : public gcn::SDLGraphics
          * Sets whether vertical refresh syncing is enabled. Takes effect after
          * the next call to setVideoMode(). Only implemented on MacOS for now.
          */
-        void setSync(bool sync);
+        void setSync(const bool sync);
 
         bool getSync() const
         { return mSync; }
@@ -105,18 +105,19 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Try to create a window with the given settings.
          */
-        virtual bool setVideoMode(int w, int h, int bpp, bool fs,
-                                  bool hwaccel, bool resize, bool noFrame);
+        virtual bool setVideoMode(const int w, const int h, const int bpp,
+                                  const bool fs, const bool hwaccel,
+                                  const bool resize, const bool noFrame);
 
         /**
          * Set fullscreen mode.
          */
-        bool setFullscreen(bool fs);
+        bool setFullscreen(const bool fs);
 
         /**
          * Resize the window to the specified size.
          */
-        bool resizeScreen(int width, int height);
+        bool resizeScreen(const int width, const int height);
 
         /**
          * Blits an image onto the screen.
@@ -129,10 +130,10 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Draws a resclaled version of the image
          */
-        bool drawRescaledImage(Image *image, int srcX, int srcY,
+        bool drawRescaledImage(Image *const image, int srcX, int srcY,
                                int dstX, int dstY,
-                               int width, int height,
-                               int desiredWidth, int desiredHeight)
+                               const int width, const int height,
+                               const int desiredWidth, const int desiredHeight)
         {
             return drawRescaledImage(image, srcX, srcY,
                                      dstX, dstY,
@@ -144,35 +145,41 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Draws a resclaled version of the image
          */
-        virtual bool drawRescaledImage(Image *image, int srcX, int srcY,
-                                       int dstX, int dstY,
-                                       int width, int height,
-                                       int desiredWidth, int desiredHeight,
-                                       bool useColor = false);
+        virtual bool drawRescaledImage(Image *const image, int srcX,
+                                       int srcY, int dstX, int dstY,
+                                       const int width, const int height,
+                                       const int desiredWidth,
+                                       const int desiredHeight,
+                                       const bool useColor = false);
 
 
-        virtual void drawImagePattern(const Image *image,
-                                      int x, int y,
-                                      int w, int h);
+        virtual void drawImagePattern(const Image *const image,
+                                      const int x, const int y,
+                                      const int w, const int h);
 
         /**
          * Draw a pattern based on a rescaled version of the given image...
          */
-        virtual void drawRescaledImagePattern(Image *image,
-                                              int x, int y, int w, int h,
-                                              int scaledWidth,
-                                              int scaledHeight);
+        virtual void drawRescaledImagePattern(const Image *const image,
+                                              const int x, const int y,
+                                              const int w, const int h,
+                                              const int scaledWidth,
+                                              const int scaledHeight);
 
         /**
          * Draws a rectangle using images. 4 corner images, 4 side images and 1
          * image for the inside.
          */
-        void drawImageRect(int x, int y, int w, int h,
-                           Image *topLeft, Image *topRight,
-                           Image *bottomLeft, Image *bottomRight,
-                           Image *top, Image *right,
-                           Image *bottom, Image *left,
-                           Image *center);
+        void drawImageRect(const int x, const int y, const int w, const int h,
+                           const Image *const topLeft,
+                           const Image *const topRight,
+                           const Image *const bottomLeft,
+                           const Image *const bottomRight,
+                           const Image *const top,
+                           const Image *const right,
+                           const Image *const bottom,
+                           const Image *const left,
+                           const Image *const center);
 
         /**
          * Draws a rectangle using images. 4 corner images, 4 side images and 1
@@ -181,30 +188,36 @@ class Graphics : public gcn::SDLGraphics
         void drawImageRect(int x, int y, int w, int h,
                            const ImageRect &imgRect);
 
-        virtual bool calcImageRect(GraphicsVertexes* vert,
-                                   int x, int y, int w, int h,
-                                   Image *topLeft, Image *topRight,
-                                   Image *bottomLeft, Image *bottomRight,
-                                   Image *top, Image *right,
-                                   Image *bottom, Image *left,
-                                   Image *center);
+        virtual bool calcImageRect(GraphicsVertexes *const vert,
+                                   const int x, const int y,
+                                   const int w, const int h,
+                                   const Image *const topLeft,
+                                   const Image *const topRight,
+                                   const Image *const bottomLeft,
+                                   const Image *const bottomRight,
+                                   const Image *const top,
+                                   const Image *const right,
+                                   const Image *const bottom,
+                                   const Image *const left,
+                                   const Image *const center);
 
-        virtual void calcImagePattern(GraphicsVertexes* vert, Image *image,
-                                      int x, int y,
-                                      int w, int h);
+        virtual void calcImagePattern(GraphicsVertexes *const vert,
+                                      const Image *const image,
+                                      const int x, const int y,
+                                      const int w, const int h);
 
-        virtual void calcTile(ImageVertexes *vert, int x, int y);
+        virtual void calcTile(ImageVertexes *const vert, int x, int y);
 
-        virtual void drawTile(ImageVertexes *vert);
+        virtual void drawTile(const ImageVertexes *const vert);
 
-        virtual void drawImageRect2(GraphicsVertexes* vert,
+        virtual void drawImageRect2(GraphicsVertexes *const vert,
                                     const ImageRect &imgRect);
 
-        virtual void drawImagePattern2(GraphicsVertexes *vert,
-                                       const Image *img);
+        virtual void drawImagePattern2(GraphicsVertexes *const vert,
+                                       const Image *const img);
 
-        bool calcWindow(GraphicsVertexes* vert,
-                        int x, int y, int w, int h,
+        bool calcWindow(GraphicsVertexes *const vert,
+                        const int x, const int y, const int w, const int h,
                         const ImageRect &imgRect);
 
         /**
@@ -215,7 +228,7 @@ class Graphics : public gcn::SDLGraphics
                                   const ImageRect &imgRect)
         { drawImageRect(area.x, area.y, area.width, area.height, imgRect); }
 
-        void setBlitMode(BlitMode mode)
+        void setBlitMode(const BlitMode mode)
         { mBlitMode = mode; }
 
         BlitMode getBlitMode() const
@@ -247,10 +260,11 @@ class Graphics : public gcn::SDLGraphics
         virtual void prepareScreenshot()
         { }
 
-        int getMemoryUsage();
+        int getMemoryUsage() const;
 
-        virtual bool drawNet(int x1, int y1, int x2, int y2,
-                             int width, int height);
+        virtual bool drawNet(const int x1, const int y1,
+                             const int x2, const int y2,
+                             const int width, const int height);
 
         gcn::Font *getFont() const
         { return mFont; }
@@ -258,13 +272,13 @@ class Graphics : public gcn::SDLGraphics
         gcn::ClipRectangle &getTopClip()
         { return mClipStack.top(); }
 
-        void setRedraw(bool n)
+        void setRedraw(const bool n)
         { mRedraw = n; }
 
         bool getRedraw() const
         { return mRedraw; }
 
-        void setSecure(bool n)
+        void setSecure(const bool n)
         { mSecure = n; }
 
         bool getSecure() const
@@ -282,13 +296,13 @@ class Graphics : public gcn::SDLGraphics
         bool getDoubleBuffer() const
         { return mDoubleBuffer; }
 
-        int getOpenGL()
+        int getOpenGL() const
         { return mOpenGL; }
 
-        void setNoFrame(bool n)
+        void setNoFrame(const bool n)
         { mNoFrame = n; }
 
-        const std::string &getName()
+        const std::string &getName() const
         { return mName; }
 
         int mWidth;
@@ -301,19 +315,19 @@ class Graphics : public gcn::SDLGraphics
          * @return <code>true</code> if the image was blitted properly
          *         <code>false</code> otherwise.
          */
-        virtual bool drawImage2(const Image *image,
+        virtual bool drawImage2(const Image *const image,
                                 int srcX, int srcY,
                                 int dstX, int dstY,
-                                int width, int height,
-                                bool useColor);
+                                const int width, const int height,
+                                const bool useColor);
 
 
         void setMainFlags(int w, int h, int bpp, bool fs,
                           bool hwaccel, bool resize, bool noFrame);
 
-        int getOpenGLFlags();
+        int getOpenGLFlags() const;
 
-        int getSoftwareFlags();
+        int getSoftwareFlags() const;
 
         bool setOpenGLMode();
 
@@ -321,8 +335,10 @@ class Graphics : public gcn::SDLGraphics
 
         bool videoInfo();
 
-        int SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
-                              SDL_Surface *dst, SDL_Rect *dstrect);
+        int SDL_FakeUpperBlit(const SDL_Surface *const src,
+                              SDL_Rect *const srcrect,
+                              SDL_Surface *const dst,
+                              SDL_Rect *dstrect) const;
 
         int mBpp;
         bool mFullscreen;

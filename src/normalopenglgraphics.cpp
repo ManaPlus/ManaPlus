@@ -73,9 +73,10 @@ NormalOpenGLGraphics::~NormalOpenGLGraphics()
     delete [] mIntVertArray;
 }
 
-bool NormalOpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
-                                        bool hwaccel, bool resize,
-                                        bool noFrame)
+bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
+                                        const int bpp, const bool fs,
+                                        const bool hwaccel, const bool resize,
+                                        const bool noFrame)
 {
     setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
 
@@ -143,7 +144,7 @@ static inline void drawQuad(const Image *image,
     }
 }
 
-static inline void drawRescaledQuad(Image *image,
+static inline void drawRescaledQuad(const Image *const image,
                                     int srcX, int srcY, int dstX, int dstY,
                                     int width, int height,
                                     int desiredWidth, int desiredHeight)
@@ -206,9 +207,11 @@ static inline void drawRescaledQuad(Image *image,
 }
 
 
-bool NormalOpenGLGraphics::drawImage2(const Image *image, int srcX, int srcY,
+bool NormalOpenGLGraphics::drawImage2(const Image *const image,
+                                      int srcX, int srcY,
                                       int dstX, int dstY,
-                                      int width, int height, bool useColor)
+                                      const int width, const int height,
+                                      const bool useColor)
 {
     if (!image)
         return false;
@@ -239,12 +242,12 @@ bool NormalOpenGLGraphics::drawImage2(const Image *image, int srcX, int srcY,
     return true;
 }
 
-bool NormalOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
-                                             int dstX, int dstY,
-                                             int width, int height,
-                                             int desiredWidth,
-                                             int desiredHeight,
-                                             bool useColor)
+bool NormalOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
+                                             int srcY, int dstX, int dstY,
+                                             const int width, const int height,
+                                             const int desiredWidth,
+                                             const int desiredHeight,
+                                             const bool useColor)
 {
     return drawRescaledImage(image, srcX, srcY,
                              dstX, dstY,
@@ -253,12 +256,13 @@ bool NormalOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
                              useColor, true);
 }
 
-bool NormalOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
-                                             int dstX, int dstY,
-                                             int width, int height,
-                                             int desiredWidth,
-                                             int desiredHeight,
-                                             bool useColor, bool smooth)
+bool NormalOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
+                                             int srcY, int dstX, int dstY,
+                                             const int width, const int height,
+                                             const int desiredWidth,
+                                             const int desiredHeight,
+                                             const bool useColor,
+                                             bool smooth)
 {
     if (!image)
         return false;
@@ -317,8 +321,9 @@ bool NormalOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
     return true;
 }
 
-void NormalOpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
-                                            int w, int h)
+void NormalOpenGLGraphics::drawImagePattern(const Image *const image,
+                                            const int x, const int y,
+                                            const int w, const int h)
 {
     if (!image)
         return;
@@ -452,11 +457,11 @@ void NormalOpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
                static_cast<GLubyte>(mColor.a));
 }
 
-void NormalOpenGLGraphics::drawRescaledImagePattern(Image *image,
-                                                    int x, int y,
-                                                    int w, int h,
-                                                    int scaledWidth,
-                                                    int scaledHeight)
+void NormalOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
+                                                    const int x, const int y,
+                                                    const int w, const int h,
+                                                    const int scaledWidth,
+                                                    const int scaledHeight)
 {
     if (!image)
         return;
@@ -608,8 +613,8 @@ void NormalOpenGLGraphics::drawRescaledImagePattern(Image *image,
                static_cast<GLubyte>(mColor.a));
 }
 
-void NormalOpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert,
-                                             const Image *image)
+void NormalOpenGLGraphics::drawImagePattern2(GraphicsVertexes *const vert,
+                                             const Image *const image)
 {
     if (!image)
         return;
@@ -669,9 +674,10 @@ void NormalOpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert,
 
 }
 
-void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes* vert,
-                                            Image *image,
-                                            int x, int y, int w, int h)
+void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
+                                            const Image *const image,
+                                            const int x, const int y,
+                                            const int w, const int h)
 {
     if (!image)
     {
@@ -809,7 +815,8 @@ void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes* vert,
     vert->incPtr(1);
 }
 
-void NormalOpenGLGraphics::calcTile(ImageVertexes *vert, int dstX, int dstY)
+void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
+                                    int dstX, int dstY)
 {
     if (!vert)
         return;
@@ -926,7 +933,7 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *vert, int dstX, int dstY)
     ogl->ptr = vp;
 }
 
-void NormalOpenGLGraphics::drawTile(ImageVertexes *vert)
+void NormalOpenGLGraphics::drawTile(const ImageVertexes *const vert)
 {
     if (!vert)
         return;
@@ -1216,8 +1223,9 @@ void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
-bool NormalOpenGLGraphics::drawNet(int x1, int y1, int x2, int y2,
-                                   int width, int height)
+bool NormalOpenGLGraphics::drawNet(const int x1, const int y1,
+                                   const int x2, const int y2,
+                                   const int width, const int height)
 {
     unsigned int vp = 0;
     const unsigned int vLimit = vertexBufSize * 4;
