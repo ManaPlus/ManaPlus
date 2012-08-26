@@ -1026,7 +1026,8 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *const aroundBeing,
 
 //            Being *being = (*i);
 
-            const bool valid = validateBeing(aroundBeing, being, type, excluded, 50);
+            const bool valid = validateBeing(aroundBeing, being,
+                                             type, excluded, 50);
             int d = being->getDistance();
 //            logger->log("dist: %d", dist);
 //            logger->log("name: %s, %d, %d", being->getName().c_str(), (int)valid, d);

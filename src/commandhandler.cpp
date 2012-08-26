@@ -388,7 +388,8 @@ void CommandHandler::handleListChannels(const std::string &args A_UNUSED,
     Net::getChatHandler()->channelList();
 }
 
-void CommandHandler::handleCreateParty(const std::string &args, ChatTab *const tab)
+void CommandHandler::handleCreateParty(const std::string &args,
+                                       ChatTab *const tab)
 {
     if (!tab)
         return;
@@ -399,7 +400,8 @@ void CommandHandler::handleCreateParty(const std::string &args, ChatTab *const t
         Net::getPartyHandler()->create(args);
 }
 
-void CommandHandler::handleCreateGuild(const std::string &args, ChatTab *const tab)
+void CommandHandler::handleCreateGuild(const std::string &args,
+                                       ChatTab *const tab)
 {
     if (!tab)
         return;
@@ -515,7 +517,8 @@ void CommandHandler::handleFriend(const std::string &args, ChatTab *const tab)
     changeRelation(args, PlayerRelation::FRIEND, _("friend"), tab);
 }
 
-void CommandHandler::handleDisregard(const std::string &args, ChatTab *const tab)
+void CommandHandler::handleDisregard(const std::string &args,
+                                     ChatTab *const tab)
 {
     changeRelation(args, PlayerRelation::DISREGARDED, _("disregarded"), tab);
 }
@@ -569,7 +572,8 @@ void CommandHandler::changeRelation(const std::string &args,
     }
 }
 
-void CommandHandler::handleUnignore(const std::string &args, ChatTab *const tab)
+void CommandHandler::handleUnignore(const std::string &args,
+                                    ChatTab *const tab)
 {
     if (args.empty())
     {
@@ -599,7 +603,8 @@ void CommandHandler::handleUnignore(const std::string &args, ChatTab *const tab)
     }
 }
 
-void CommandHandler::handleBlackList(const std::string &args, ChatTab *const tab)
+void CommandHandler::handleBlackList(const std::string &args,
+                                     ChatTab *const tab)
 {
     changeRelation(args, PlayerRelation::BLACKLISTED, _("blacklisted"), tab);
 }
@@ -651,7 +656,8 @@ void CommandHandler::handleShowAll(const std::string &args A_UNUSED,
         actorSpriteManager->printAllToChat();
 }
 
-void CommandHandler::handleMove(const std::string &args, ChatTab *const tab A_UNUSED)
+void CommandHandler::handleMove(const std::string &args,
+                                ChatTab *const tab A_UNUSED)
 {
     int x = 0;
     int y = 0;
@@ -754,7 +760,8 @@ void CommandHandler::handleEmote(const std::string &args,
         player_node->emote(static_cast<uint8_t>(atoi(args.c_str())));
 }
 
-void CommandHandler::handleAway(const std::string &args, ChatTab *const tab A_UNUSED)
+void CommandHandler::handleAway(const std::string &args,
+                                ChatTab *const tab A_UNUSED)
 {
     if (player_node)
         player_node->setAway(args);
@@ -785,7 +792,8 @@ void CommandHandler::handleFollow(const std::string &args, ChatTab *const tab)
     }
 }
 
-void CommandHandler::handleImitation(const std::string &args, ChatTab *const tab)
+void CommandHandler::handleImitation(const std::string &args,
+                                     ChatTab *const tab)
 {
     if (!player_node)
         return;
@@ -798,7 +806,8 @@ void CommandHandler::handleImitation(const std::string &args, ChatTab *const tab
         player_node->setImitate("");
 }
 
-void CommandHandler::handleHeal(const std::string &args, ChatTab *const tab A_UNUSED)
+void CommandHandler::handleHeal(const std::string &args,
+                                ChatTab *const tab A_UNUSED)
 {
     if (!actorSpriteManager)
         return;
@@ -816,12 +825,14 @@ void CommandHandler::handleHeal(const std::string &args, ChatTab *const tab A_UN
     }
 }
 
-void CommandHandler::handleHack(const std::string &args, ChatTab *const tab A_UNUSED)
+void CommandHandler::handleHack(const std::string &args,
+                                ChatTab *const tab A_UNUSED)
 {
     Net::getChatHandler()->sendRaw(args);
 }
 
-void CommandHandler::handleMail(const std::string &args, ChatTab *const tab A_UNUSED)
+void CommandHandler::handleMail(const std::string &args,
+                                ChatTab *const tab A_UNUSED)
 {
     if (auctionManager && auctionManager->getEnableAuctionBot())
         auctionManager->sendMail(args);
@@ -1143,7 +1154,8 @@ void CommandHandler::handleDumpTests(const std::string &args A_UNUSED,
     outStringNormal(tab, str, str);
 }
 
-void CommandHandler::outStringNormal(ChatTab *const tab, const std::string &str,
+void CommandHandler::outStringNormal(ChatTab *const tab,
+                                     const std::string &str,
                                      const std::string &def)
 {
     if (!player_node)

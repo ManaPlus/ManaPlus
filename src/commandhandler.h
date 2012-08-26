@@ -221,7 +221,8 @@ class CommandHandler
         /**
          * Handle closeall command.
          */
-        static void handleCloseAll(const std::string &args, ChatTab *const tab);
+        static void handleCloseAll(const std::string &args,
+                                   ChatTab *const tab);
 
         /**
          * Handle ignoreall command.

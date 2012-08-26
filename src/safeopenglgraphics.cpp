@@ -104,7 +104,8 @@ static inline void drawQuad(const Image *image,
     }
 }
 
-static inline void drawRescaledQuad(const Image *const image, int srcX, int srcY,
+static inline void drawRescaledQuad(const Image *const image,
+                                    int srcX, int srcY,
                                     int dstX, int dstY, int width, int height,
                                     int desiredWidth, int desiredHeight)
 {

@@ -153,7 +153,8 @@ class ActorSpriteManager: public ConfigListener
         * Finds a nearest being by name and (optionally) by type.
         */
         Being *findNearestByName(const std::string &name,
-                                 const Being::Type type = Being::UNKNOWN) const;
+                                 const Being::Type type = Being::UNKNOWN
+                                ) const;
 
        /**
         * Heal all players in distance.

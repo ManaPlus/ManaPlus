@@ -152,7 +152,8 @@ class DepricatedEvent
         const throw (BadDepricatedEvent);
 
         // Sends event to all listener on the channel
-        static void trigger(const Channels channel, const DepricatedEvent &event);
+        static void trigger(const Channels channel,
+                            const DepricatedEvent &event);
 
         // Removes a listener from all channels
         static void remove(Listener *const listener);

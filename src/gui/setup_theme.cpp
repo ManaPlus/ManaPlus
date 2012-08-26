@@ -392,7 +392,8 @@ void Setup_Theme::apply()
         config.setValue("secureFont", "fonts/" + getFileName(mSecureFont));
         config.setValue("japanFont", "fonts/" + getFileName(mJapanFont));
         config.setValue("fontSize", mFontSizeDropDown->getSelected() + 9);
-        config.setValue("npcfontSize", mNpcFontSizeDropDown->getSelected() + 9);
+        config.setValue("npcfontSize",
+            mNpcFontSizeDropDown->getSelected() + 9);
         gui->updateFonts();
     }
 }

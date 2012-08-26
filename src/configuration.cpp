@@ -242,14 +242,16 @@ std::string ConfigurationObject::getValue(const std::string &key,
     return ((iter != mOptions.end()) ? iter->second : deflt);
 }
 
-int ConfigurationObject::getValue(const std::string &key, const int deflt) const
+int ConfigurationObject::getValue(const std::string &key,
+                                  const int deflt) const
 {
     GETLOG();
     const Options::const_iterator iter = mOptions.find(key);
     return (iter != mOptions.end()) ? atoi(iter->second.c_str()) : deflt;
 }
 
-int ConfigurationObject::getValueInt(const std::string &key, const int deflt) const
+int ConfigurationObject::getValueInt(const std::string &key,
+                                     const int deflt) const
 {
     GETLOG();
     const Options::const_iterator iter = mOptions.find(key);
