@@ -66,7 +66,7 @@ class CharSelectDialog : public Window,
         /**
          * Constructor.
          */
-        CharSelectDialog(LoginData *data);
+        CharSelectDialog(LoginData *const data);
 
         ~CharSelectDialog();
 
@@ -89,23 +89,24 @@ class CharSelectDialog : public Window,
          *               character).
          */
         bool selectByName(const std::string &name,
-                          SelectAction action = Focus);
+                          const SelectAction action = Focus);
 
-        void askPasswordForDeletion(int index);
+        void askPasswordForDeletion(const int index);
 
     private:
-        void attemptCharacterDelete(int index);
-        void attemptCharacterSelect(int index);
+        void attemptCharacterDelete(const int index);
+
+        void attemptCharacterSelect(const int index);
 
         void setCharacters(const Net::Characters &characters);
 
         void lock();
         void unlock();
-        void setLocked(bool locked);
+        void setLocked(const bool locked);
 
         bool getFocusedContainer(int &container, int &idx);
 
-        void setFocusedContainer(int i, int button);
+        void setFocusedContainer(const int i, const int button);
 
         bool mLocked;
 

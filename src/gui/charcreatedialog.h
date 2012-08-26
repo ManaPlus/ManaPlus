@@ -54,7 +54,7 @@ class CharCreateDialog : public Window,
         /**
          * Constructor.
          */
-        CharCreateDialog(CharSelectDialog *parent, int slot);
+        CharCreateDialog(CharSelectDialog *const parent, const int slot);
 
         /**
          * Destructor.
@@ -69,10 +69,11 @@ class CharCreateDialog : public Window,
         void unlock();
 
         void setAttributes(const StringVect &labels,
-                           int available,
-                           int min, int max);
+                           const int available,
+                           const int min, const int max);
 
-        void setFixedGender(bool fixed, Gender gender = GENDER_FEMALE);
+        void setFixedGender(const bool fixed,
+                            const Gender gender = GENDER_FEMALE);
 
         void logic();
 

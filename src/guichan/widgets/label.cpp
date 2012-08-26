@@ -91,7 +91,7 @@ namespace gcn
     void Label::draw(Graphics* graphics)
     {
         int textX;
-        int textY = getHeight() / 2 - getFont()->getHeight() / 2;
+        const int textY = getHeight() / 2 - getFont()->getHeight() / 2;
 
         switch (getAlignment())
         {

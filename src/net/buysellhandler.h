@@ -42,11 +42,13 @@ class BuySellHandler
 
         virtual void requestBuyList(std::string nick) = 0;
 
-        virtual void sendBuyRequest(std::string nick, ShopItem* item,
-                                    int amount) = 0;
+        virtual void sendBuyRequest(const std::string &nick,
+                                    const ShopItem *const item,
+                                    const int amount) = 0;
 
-        virtual void sendSellRequest(std::string nick, ShopItem* item,
-                                     int amount) = 0;
+        virtual void sendSellRequest(const std::string &nick,
+                                     const ShopItem *const item,
+                                     const int amount) = 0;
 };
 
 } // namespace Net

@@ -162,8 +162,8 @@ namespace gcn
     void Gui::handleMouseInput()
     {
         while (!mInput->isMouseQueueEmpty())
-         {
-             MouseInput mouseInput = mInput->dequeueMouseInput();
+        {
+             const MouseInput mouseInput = mInput->dequeueMouseInput();
 
              // Save the current mouse state. It will be needed if modal focus
              // changes or modal mouse input focus changes.
@@ -209,7 +209,7 @@ namespace gcn
             // "widget with mouse" queue.
             while (!mWidgetWithMouseQueue.empty())
             {
-                Widget* widget = mWidgetWithMouseQueue.front();
+                Widget *const widget = mWidgetWithMouseQueue.front();
 
                 if (Widget::widgetExists(widget))
                 {
@@ -239,7 +239,7 @@ namespace gcn
                  iter != mWidgetWithMouseQueue.end();
                  ++ iter)
             {
-                Widget* widget = *iter;
+                Widget *const widget = *iter;
 
                 // If a widget in the "widget with mouse queue" doesn't
                 // exists anymore it should be removed from the queue.
@@ -343,7 +343,7 @@ namespace gcn
                 mWidgetWithMouseQueue.push_front(widget);
             }
 
-            Widget* swap = widget;
+            Widget *const swap = widget;
             widget = parent;
             parent = swap->getParent();
         }
@@ -358,7 +358,7 @@ namespace gcn
         }
         else
         {
-            Widget* sourceWidget = getMouseEventSource(
+            Widget *const sourceWidget = getMouseEventSource(
                 mouseInput.getX(), mouseInput.getY());
 
             distributeMouseEvent(sourceWidget,
@@ -499,7 +499,7 @@ namespace gcn
 
         while (child)
         {
-            Widget* swap = child;
+            Widget *const swap = child;
             int parentX, parentY;
             parent->getAbsolutePosition(parentX, parentY);
             child = parent->getWidgetAt(x - parentX, y - parentY);
@@ -511,7 +511,7 @@ namespace gcn
 
     Widget* Gui::getMouseEventSource(int x, int y)
     {
-        Widget* widget = getWidgetAt(x, y);
+        Widget *const widget = getWidgetAt(x, y);
 
         //+++ possible nullpointer
         if (mFocusHandler->getModalMouseInputFocused()
@@ -637,7 +637,7 @@ namespace gcn
                     break;
             }
 
-            Widget* swap = widget;
+            Widget *const swap = widget;
             widget = parent;
             parent = swap->getParent();
 
@@ -710,7 +710,7 @@ namespace gcn
                 }
             }
 
-            Widget* swap = widget;
+            const Widget *const swap = widget;
             widget = parent;
             parent = swap->getParent();
 
@@ -793,7 +793,7 @@ namespace gcn
          // Distribute an event to all widgets in the "widget with mouse" queue.
         while (!mWidgetWithMouseQueue.empty())
         {
-            Widget* widget = mWidgetWithMouseQueue.front();
+            Widget *const widget = mWidgetWithMouseQueue.front();
 
             if (Widget::widgetExists(widget))
             {
@@ -855,7 +855,7 @@ namespace gcn
                 mWidgetWithMouseQueue.push_front(widget);
             }
 
-            Widget* swap = widget;
+            const Widget *const swap = widget;
             widget = parent;
             parent = swap->getParent();
         }

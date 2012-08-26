@@ -32,7 +32,7 @@ VariableData* createData(const int defData);
 VariableData* createData(const double defData);
 VariableData* createData(const float defData);
 VariableData* createData(const std::string &defData);
-VariableData* createData(const char* defData);
+VariableData* createData(const char *const defData);
 VariableData* createData(const bool defData);
 DefaultsData* getConfigDefaults();
 DefaultsData* getBrandingDefaults();

@@ -64,7 +64,8 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~Font(){ }
+        virtual ~Font()
+        { }
 
         /**
          * Gets the width of a string. The width of a string is not necesserily
@@ -91,7 +92,8 @@ namespace gcn
          *
          * @return A string index in a string providing an x coordinate.
          */
-        virtual int getStringIndexAt(const std::string& text, int x) const;
+        virtual int getStringIndexAt(const std::string& text,
+                                     const int x) const;
 
         /**
          * Draws a string.

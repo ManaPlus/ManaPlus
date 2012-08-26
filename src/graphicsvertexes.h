@@ -151,18 +151,18 @@ class GraphicsVertexes
         NormalOpenGLGraphicsVertexes ogl[5];
 #endif
 
-        void init(int x, int y, int w, int h);
+        void init(const int x, const int y, const int w, const int h);
 
-        void pushSDL(SDL_Rect r1, SDL_Rect r2);
+        void pushSDL(const SDL_Rect r1, const SDL_Rect r2);
 
         void clearSDL();
 
         std::vector<DoubleRect*> *getRectsSDL();
 
-        void incPtr(int num = 1)
+        void incPtr(const int num = 1)
         { mPtr += num; }
 
-        void setPtr(int num)
+        void setPtr(const int num)
         { mPtr = num; }
 
 #ifdef USE_OPENGL
@@ -170,16 +170,16 @@ class GraphicsVertexes
         { return &ogl[mPtr]; }
 #endif
 
-        int getX()
+        int getX() const
         { return mX; }
 
-        int getY()
+        int getY() const
         { return mY; }
 
-        int getW()
+        int getW() const
         { return mW; }
 
-        int getH()
+        int getH() const
         { return mH; }
 
         int mX, mY, mW, mH;

@@ -209,7 +209,7 @@ namespace gcn
         else
             w = getHeight();
 
-        double pos = v / (static_cast<double>(w) - getMarkerLength());
+        const double pos = v / (static_cast<double>(w) - getMarkerLength());
         return (1.0 - pos) * getScaleStart() + pos * getScaleEnd();
     }
 
@@ -221,7 +221,7 @@ namespace gcn
         else
             v = getHeight();
 
-        int w = static_cast<int>((v - getMarkerLength())
+        const int w = static_cast<int>((v - getMarkerLength())
                 * (value  - getScaleStart())
                 / (getScaleEnd() - getScaleStart()));
 

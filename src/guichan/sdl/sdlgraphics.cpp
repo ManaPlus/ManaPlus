@@ -94,7 +94,7 @@ namespace gcn
     bool SDLGraphics::pushClipArea(Rectangle area)
     {
         SDL_Rect rect;
-        bool result = Graphics::pushClipArea(area);
+        const bool result = Graphics::pushClipArea(area);
 
         const ClipRectangle& carea = mClipStack.top();
         rect.x = static_cast<int16_t>(carea.x);
@@ -205,14 +205,14 @@ namespace gcn
             x2 = top.x + top.width -1;
         }
 
-        int bpp = mTarget->format->BytesPerPixel;
+        const int bpp = mTarget->format->BytesPerPixel;
 
         SDL_LockSurface(mTarget);
 
         uint8_t *p = static_cast<uint8_t*>(mTarget->pixels)
             + y * mTarget->pitch + x1 * bpp;
 
-        uint32_t pixel = SDL_MapRGB(mTarget->format,
+        const uint32_t pixel = SDL_MapRGB(mTarget->format,
                                     static_cast<uint8_t>(mColor.r),
                                     static_cast<uint8_t>(mColor.g),
                                     static_cast<uint8_t>(mColor.b));
@@ -319,14 +319,14 @@ namespace gcn
             y2 = top.y + top.height - 1;
         }
 
-        int bpp = mTarget->format->BytesPerPixel;
+        const int bpp = mTarget->format->BytesPerPixel;
 
         SDL_LockSurface(mTarget);
 
         uint8_t *p = static_cast<uint8_t*>(mTarget->pixels)
             + y1 * mTarget->pitch + x * bpp;
 
-        uint32_t pixel = SDL_MapRGB(mTarget->format,
+        const uint32_t pixel = SDL_MapRGB(mTarget->format,
             static_cast<uint8_t>(mColor.r),
             static_cast<uint8_t>(mColor.g),
             static_cast<uint8_t>(mColor.b));
@@ -399,10 +399,10 @@ namespace gcn
 
     void SDLGraphics::drawRectangle(const Rectangle& rectangle)
     {
-        int x1 = rectangle.x;
-        int x2 = rectangle.x + rectangle.width - 1;
-        int y1 = rectangle.y;
-        int y2 = rectangle.y + rectangle.height - 1;
+        const int x1 = rectangle.x;
+        const int x2 = rectangle.x + rectangle.width - 1;
+        const int y1 = rectangle.y;
+        const int y2 = rectangle.y + rectangle.height - 1;
 
         drawHLine(x1, y1, x2);
         drawHLine(x1, y2, x2);
@@ -439,8 +439,8 @@ namespace gcn
 
         // Draw a line with Bresenham
 
-        int dx = ABS(x2 - x1);
-        int dy = ABS(y2 - y1);
+        const int dx = ABS(x2 - x1);
+        const int dy = ABS(y2 - y1);
 
         if (dx > dy)
         {

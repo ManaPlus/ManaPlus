@@ -64,7 +64,8 @@ static const uint8_t directions[] =
     Being::DOWN, Being::RIGHT, Being::UP, Being::LEFT
 };
 
-CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
+CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
+                                   const int slot) :
     Window(_("New Character"), true, parent, "charcreate.xml"),
     mCharSelectDialog(parent),
     mRace(0),
@@ -152,8 +153,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mAttributesLeft = new Label(
             strprintf(_("Please distribute %d points"), 99));
 
-    int w = 480;
-    int h = 350;
+    const int w = 480;
+    const int h = 350;
     setContentSize(w, h);
     mPlayerBox->setDimension(gcn::Rectangle(350, 40, 110, 90));
     mActionButton->setPosition(375, 140);
@@ -163,10 +164,10 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mNameField->setDimension(
             gcn::Rectangle(60, 10, 300, mNameField->getHeight()));
 
-    int leftX = 120;
-    int rightX = 300;
-    int labelX = 5;
-    int nameX = 145;
+    const int leftX = 120;
+    const int rightX = 300;
+    const int labelX = 5;
+    const int nameX = 145;
     mPrevHairColorButton->setPosition(leftX, 40);
     mNextHairColorButton->setPosition(rightX, 40);
     mHairColorLabel->setPosition(labelX, 45);
@@ -270,11 +271,13 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
                     mAttributeSlider[i]->getValue()));
             }
 
-            int characterSlot = mSlot;
 #ifdef MANASERV_SUPPORT
+            int characterSlot = mSlot;
             // On Manaserv, the slots start at 1, so we offset them.
             if (Net::getNetworkType() == ServerInfo::MANASERV)
                 ++characterSlot;
+#else
+            const int characterSlot = mSlot;
 #endif
 
             Net::getCharHandler()->newCharacter(getName(), characterSlot,
@@ -367,7 +370,7 @@ void CharCreateDialog::updateSliders()
     }
 
     // Update distributed points
-    int pointsLeft = mMaxPoints - getDistributedPoints();
+    const int pointsLeft = mMaxPoints - getDistributedPoints();
     if (pointsLeft == 0)
     {
         mAttributesLeft->setCaption(_("Character stats OK"));
@@ -406,7 +409,8 @@ int CharCreateDialog::getDistributedPoints() const
 }
 
 void CharCreateDialog::setAttributes(const StringVect &labels,
-                                     int available, int min, int max)
+                                     const int available,
+                                     const int min, const int max)
 {
     mMaxPoints = available;
 
@@ -427,8 +431,8 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     mAttributeSlider.resize(labels.size());
     mAttributeValue.resize(labels.size());
 
-    int w = 480;
-    int h = 350;
+    const int w = 480;
+    const int h = 350;
 
     for (unsigned i = 0, sz = static_cast<unsigned>(labels.size());
          i < sz; i++)
@@ -462,7 +466,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
             h - 5 - mCancelButton->getHeight());
 }
 
-void CharCreateDialog::setFixedGender(bool fixed, Gender gender)
+void CharCreateDialog::setFixedGender(const bool fixed, const Gender gender)
 {
     if (gender == GENDER_FEMALE)
     {
@@ -564,7 +568,7 @@ void CharCreateDialog::updatePlayer()
 
 void CharCreateDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     switch (actionId)
     {
         case Input::KEY_GUI_CANCEL:

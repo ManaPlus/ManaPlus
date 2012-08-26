@@ -172,7 +172,7 @@ namespace gcn
         int width = 0;
         for (size_t i = 0, sz = mTextRows.size(); i < sz; ++i)
         {
-            int w = getFont()->getWidth(mTextRows[i]);
+            const int w = getFont()->getWidth(mTextRows[i]);
             if (width < w)
                 width = w;
         }

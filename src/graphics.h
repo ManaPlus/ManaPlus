@@ -337,7 +337,7 @@ class Graphics : public gcn::SDLGraphics
 
         int SDL_FakeUpperBlit(const SDL_Surface *const src,
                               SDL_Rect *const srcrect,
-                              SDL_Surface *const dst,
+                              const SDL_Surface *const dst,
                               SDL_Rect *dstrect) const;
 
         int mBpp;

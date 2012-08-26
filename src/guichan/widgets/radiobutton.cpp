@@ -177,7 +177,7 @@ namespace gcn
 
     void RadioButton::adjustSize()
     {
-        int height = getFont()->getHeight();
+        const int height = getFont()->getHeight();
 
         setHeight(height);
         setWidth(getFont()->getWidth(getCaption()) + height + height / 2);

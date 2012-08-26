@@ -74,7 +74,7 @@ BeingPopup::~BeingPopup()
 {
 }
 
-void BeingPopup::show(int x, int y, Being *b)
+void BeingPopup::show(const int x, const int y, Being *const b)
 {
     if (!b)
     {

@@ -78,13 +78,15 @@ CommandHandler::CommandHandler()
 {
 }
 
-void CommandHandler::handleCommands(const std::string &command, ChatTab *tab)
+void CommandHandler::handleCommands(const std::string &command,
+                                    ChatTab *const tab)
 {
     // here need add splitting commands
     handleCommand(command, tab);
 }
 
-void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
+void CommandHandler::handleCommand(const std::string &command,
+                                   ChatTab *const tab)
 {
     size_t pos = command.find(' ');
     std::string type(command, 0, pos);
@@ -448,7 +450,7 @@ void CommandHandler::outString(ChatTab *const tab, const std::string &str,
         {
             if (!player_node)
                 return;
-            const Guild *guild = player_node->getGuild();
+            const Guild *const guild = player_node->getGuild();
             if (guild)
             {
                 if (guild->getServerGuild())
@@ -814,7 +816,7 @@ void CommandHandler::handleHeal(const std::string &args,
 
     if (!args.empty())
     {
-        Being *const being = actorSpriteManager->findBeingByName(
+        const Being *const being = actorSpriteManager->findBeingByName(
             args, Being::PLAYER);
         if (being)
             actorSpriteManager->heal(being);
@@ -864,7 +866,7 @@ void CommandHandler::handleUndress(const std::string &args,
     if (!actorSpriteManager)
         return;
 
-    Being* target = actorSpriteManager->findNearestByName(args);
+    Being *const target = actorSpriteManager->findNearestByName(args);
     if (target)
         Net::getBeingHandler()->undress(target);
 }

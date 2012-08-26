@@ -195,7 +195,7 @@ namespace gcn
 
     void ScrollArea::setVerticalScrollAmount(int vScroll)
     {
-        int max = getVerticalMaxScroll();
+        const int max = getVerticalMaxScroll();
 
         mVScroll = vScroll;
 
@@ -213,7 +213,7 @@ namespace gcn
 
     void ScrollArea::setHorizontalScrollAmount(int hScroll)
     {
-        int max = getHorizontalMaxScroll();
+        const int max = getHorizontalMaxScroll();
 
         mHScroll = hScroll;
 
@@ -241,7 +241,7 @@ namespace gcn
         if (!getContent())
             return 0;
 
-        int value = getContent()->getWidth() - getChildrenArea().width +
+        const int value = getContent()->getWidth() - getChildrenArea().width +
             2 * getContent()->getFrameSize();
 
         if (value < 0)
@@ -283,8 +283,8 @@ namespace gcn
 
     void ScrollArea::mousePressed(MouseEvent& mouseEvent)
     {
-        int x = mouseEvent.getX();
-        int y = mouseEvent.getY();
+        const int x = mouseEvent.getX();
+        const int y = mouseEvent.getY();
 
         if (getUpButtonDimension().isPointInRect(x, y))
         {
@@ -368,11 +368,11 @@ namespace gcn
     {
         if (mIsVerticalMarkerDragged)
         {
-            Rectangle barDim = getVerticalBarDimension();
+            const Rectangle barDim = getVerticalBarDimension();
 
-            int pos = mouseEvent.getY() - barDim.y
+            const int pos = mouseEvent.getY() - barDim.y
                  - mVerticalMarkerDragOffset;
-            int length = getVerticalMarkerDimension().height;
+            const int length = getVerticalMarkerDimension().height;
 
             if ((barDim.height - length) > 0)
             {
@@ -387,11 +387,11 @@ namespace gcn
 
         if (mIsHorizontalMarkerDragged)
         {
-            Rectangle barDim = getHorizontalBarDimension();
+            const Rectangle barDim = getHorizontalBarDimension();
 
-            int pos = mouseEvent.getX() - barDim.x 
+            const int pos = mouseEvent.getX() - barDim.x 
                 - mHorizontalMarkerDragOffset;
-            int length = getHorizontalMarkerDimension().width;
+            const int length = getHorizontalMarkerDimension().width;
 
             if ((barDim.width - length) > 0)
             {
@@ -464,12 +464,11 @@ namespace gcn
 
     void ScrollArea::checkPolicies()
     {
-        int w = getWidth();
-        int h = getHeight();
+        const int w = getWidth();
+        const int h = getHeight();
 
         mHBarVisible = false;
         mVBarVisible = false;
-
 
         if (!getContent())
         {
@@ -616,7 +615,7 @@ namespace gcn
 
     Rectangle ScrollArea::getChildrenArea()
     {
-        Rectangle area = Rectangle(0, 0,
+        const Rectangle area = Rectangle(0, 0,
             mVBarVisible ? (getWidth() - mScrollbarWidth) : getWidth(),
             mHBarVisible ? (getHeight() - mScrollbarWidth) : getHeight()); 
 

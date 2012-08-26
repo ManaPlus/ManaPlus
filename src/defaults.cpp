@@ -51,7 +51,7 @@ VariableData* createData(const std::string &defData)
     return new StringData(defData);
 }
 
-VariableData* createData(const char* defData)
+VariableData* createData(const char *const defData)
 {
     return new StringData(defData);
 }

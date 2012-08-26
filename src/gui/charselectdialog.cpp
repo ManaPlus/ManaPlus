@@ -94,21 +94,21 @@ class CharDeleteConfirm : public ConfirmDialog
 class CharacterDisplay : public Container
 {
     public:
-        CharacterDisplay(CharSelectDialog *charSelectDialog);
+        CharacterDisplay(CharSelectDialog *const charSelectDialog);
 
-        void setCharacter(Net::Character *character);
+        void setCharacter(Net::Character *const character);
 
         Net::Character *getCharacter() const
         { return mCharacter; }
 
         void requestFocus();
 
-        void setActive(bool active);
+        void setActive(const bool active);
 
-        bool isSelectFocused()
+        bool isSelectFocused() const
         { return mButton->isFocused(); }
 
-        bool isDeleteFocused()
+        bool isDeleteFocused() const
         { return mDelete->isFocused(); }
 
         void focusSelect()
@@ -130,7 +130,7 @@ class CharacterDisplay : public Container
         Button *mDelete;
 };
 
-CharSelectDialog::CharSelectDialog(LoginData *data):
+CharSelectDialog::CharSelectDialog(LoginData *const data):
     Window(_("Account and Character Management"), false, nullptr, "char.xml"),
     mLocked(false),
     mUnregisterButton(nullptr),
@@ -149,7 +149,8 @@ CharSelectDialog::CharSelectDialog(LoginData *data):
     mChangePasswordButton = new Button(_("Change Password"), "change_password",
                                        this);
 
-    int optionalActions = Net::getLoginHandler()->supportedOptionalActions();
+    const int optionalActions = Net::getLoginHandler()
+        ->supportedOptionalActions();
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
@@ -203,7 +204,7 @@ CharSelectDialog::~CharSelectDialog()
 void CharSelectDialog::action(const gcn::ActionEvent &event)
 {
     // Check if a button of a character was pressed
-    const gcn::Widget *sourceParent = event.getSource()->getParent();
+    const gcn::Widget *const sourceParent = event.getSource()->getParent();
     int selected = -1;
     for (unsigned int i = 0, sz = static_cast<unsigned int>(
          mCharacterEntries.size()); i < sz; ++i)
@@ -227,8 +228,8 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
                  !mCharacterEntries[selected]->getCharacter())
         {
             // Start new character dialog
-            CharCreateDialog *charCreateDialog =
-                    new CharCreateDialog(this, selected);
+            CharCreateDialog *const charCreateDialog =
+                new CharCreateDialog(this, selected);
             mCharHandler->setCharCreateDialog(charCreateDialog);
         }
         else if (eventId == "delete"
@@ -271,7 +272,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
 
 void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     switch (actionId)
     {
         case Input::KEY_GUI_CANCEL:
@@ -400,11 +401,11 @@ bool CharSelectDialog::getFocusedContainer(int &container, int &idx)
     return false;
 }
 
-void CharSelectDialog::setFocusedContainer(int i, int button)
+void CharSelectDialog::setFocusedContainer(const int i, const int button)
 {
     if (i >= 0 && i < static_cast<int>(mLoginData->characterSlots))
     {
-        CharacterDisplay *container = mCharacterEntries[i];
+        CharacterDisplay *const container = mCharacterEntries[i];
         if (button)
             container->focusDelete();
         else
@@ -415,7 +416,7 @@ void CharSelectDialog::setFocusedContainer(int i, int button)
 /**
  * Communicate character deletion to the server.
  */
-void CharSelectDialog::attemptCharacterDelete(int index)
+void CharSelectDialog::attemptCharacterDelete(const int index)
 {
     if (mLocked)
         return;
@@ -424,7 +425,7 @@ void CharSelectDialog::attemptCharacterDelete(int index)
     lock();
 }
 
-void CharSelectDialog::askPasswordForDeletion(int index)
+void CharSelectDialog::askPasswordForDeletion(const int index)
 {
     mDeleteIndex = index;
     mDeleteDialog = new TextDialog(
@@ -437,7 +438,7 @@ void CharSelectDialog::askPasswordForDeletion(int index)
 /**
  * Communicate character selection to the server.
  */
-void CharSelectDialog::attemptCharacterSelect(int index)
+void CharSelectDialog::attemptCharacterSelect(const int index)
 {
     if (mLocked || !mCharacterEntries[index])
         return;
@@ -467,13 +468,15 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
         if (!*i)
             continue;
 
-        Net::Character *character = *i;
+        Net::Character *const character = *i;
 
         // Slots Number start at 1 for Manaserv, so we offset them by one.
-        int characterSlot = character->slot;
 #ifdef MANASERV_SUPPORT
+        int characterSlot = character->slot;
         if (Net::getNetworkType() == ServerInfo::MANASERV && characterSlot > 0)
             --characterSlot;
+#else
+        const int characterSlot = character->slot;
 #endif
 
         if (characterSlot >= static_cast<int>(mCharacterEntries.size()))
@@ -497,7 +500,7 @@ void CharSelectDialog::unlock()
     setLocked(false);
 }
 
-void CharSelectDialog::setLocked(bool locked)
+void CharSelectDialog::setLocked(const bool locked)
 {
     mLocked = locked;
 
@@ -518,7 +521,7 @@ void CharSelectDialog::setLocked(bool locked)
 }
 
 bool CharSelectDialog::selectByName(const std::string &name,
-                                    SelectAction selAction)
+                                    const SelectAction selAction)
 {
     if (mLocked)
         return false;
@@ -527,7 +530,8 @@ bool CharSelectDialog::selectByName(const std::string &name,
     {
         if (mCharacterEntries[i])
         {
-            Net::Character *character = mCharacterEntries[i]->getCharacter();
+            const Net::Character *const character
+                = mCharacterEntries[i]->getCharacter();
             if (character)
             {
                 if (character->dummy && character->dummy->getName() == name)
@@ -546,7 +550,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
 }
 
 
-CharacterDisplay::CharacterDisplay(CharSelectDialog *charSelectDialog):
+CharacterDisplay::CharacterDisplay(CharSelectDialog *const charSelectDialog) :
     mCharacter(nullptr),
     mPlayerBox(new PlayerBox(nullptr)),
     mName(new Label("wwwwwwwwwwwwwwwwwwwwwwww")),
@@ -584,7 +588,7 @@ CharacterDisplay::CharacterDisplay(CharSelectDialog *charSelectDialog):
     setHeight(200);
 }
 
-void CharacterDisplay::setCharacter(Net::Character *character)
+void CharacterDisplay::setCharacter(Net::Character *const character)
 {
     if (mCharacter == character)
         return;
@@ -599,7 +603,7 @@ void CharacterDisplay::requestFocus()
     mButton->requestFocus();
 }
 
-void CharacterDisplay::setActive(bool active)
+void CharacterDisplay::setActive(const bool active)
 {
     mButton->setEnabled(active);
     mDelete->setEnabled(active);
@@ -609,7 +613,7 @@ void CharacterDisplay::update()
 {
     if (mCharacter)
     {
-        const LocalPlayer *character = mCharacter->dummy;
+        const LocalPlayer *const character = mCharacter->dummy;
         mButton->setCaption(_("Choose"));
         mButton->setActionEventId("use");
         mName->setCaption(strprintf("%s", character->getName().c_str()));

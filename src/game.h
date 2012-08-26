@@ -102,7 +102,7 @@ class Game
 
         void resetAdjustLevel();
 
-        void setAdjustLevel(int n)
+        void setAdjustLevel(const int n)
         { mAdjustLevel = n; }
 
         static void closeDialogs();

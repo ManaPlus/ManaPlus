@@ -50,7 +50,7 @@
 
 BuyDialog::DialogList BuyDialog::instances;
 
-BuyDialog::BuyDialog(int npcId):
+BuyDialog::BuyDialog(const int npcId):
     Window(_("Buy"), false, nullptr, "buy.xml"),
     mNpcId(npcId), mMoney(0), mAmountItems(0), mMaxItems(0), mNick("")
 {
@@ -154,7 +154,7 @@ BuyDialog::~BuyDialog()
     instances.remove(this);
 }
 
-void BuyDialog::setMoney(int amount)
+void BuyDialog::setMoney(const int amount)
 {
     mMoney = amount;
     mShopItemList->setPlayersMoney(amount);
@@ -174,7 +174,8 @@ void BuyDialog::reset()
     setMoney(0);
 }
 
-void BuyDialog::addItem(int id, unsigned char color, int amount, int price)
+void BuyDialog::addItem(const int id, const unsigned char color,
+                        const int amount, const int price)
 {
     mShopItems->addItem(id, color, amount, price);
     mShopItemList->adjustSize();
@@ -188,7 +189,7 @@ void BuyDialog::action(const gcn::ActionEvent &event)
         return;
     }
 
-    int selectedItem = mShopItemList->getSelected();
+    const int selectedItem = mShopItemList->getSelected();
 
     // The following actions require a valid selection
     if (selectedItem < 0 ||
@@ -238,7 +239,7 @@ void BuyDialog::action(const gcn::ActionEvent &event)
     {
         if (mNpcId != -1)
         {
-            ShopItem *item = mShopItems->at(selectedItem);
+            const ShopItem *const item = mShopItems->at(selectedItem);
             Net::getNpcHandler()->buyItem(mNpcId, item->getId(),
                 item->getColor(), mAmountItems);
 
@@ -254,7 +255,7 @@ void BuyDialog::action(const gcn::ActionEvent &event)
         }
         else if (tradeWindow)
         {
-            ShopItem *item = mShopItems->at(selectedItem);
+            const ShopItem *const item = mShopItems->at(selectedItem);
             if (item)
             {
                 Net::getBuySellHandler()->sendBuyRequest(mNick,
@@ -289,10 +290,10 @@ void BuyDialog::updateButtonsAndLabels()
 
     if (selectedItem > -1)
     {
-        ShopItem * item = mShopItems->at(selectedItem);
+        const ShopItem *const item = mShopItems->at(selectedItem);
         if (item)
         {
-            int itemPrice = item->getPrice();
+            const int itemPrice = item->getPrice();
 
             // Calculate how many the player can afford
             if (itemPrice)

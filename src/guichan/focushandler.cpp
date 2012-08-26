@@ -87,7 +87,7 @@ namespace gcn
         if (toBeFocusedIndex < 0)
             throw GCN_EXCEPTION("Trying to focus a none existing widget.");
 
-        Widget *oldFocused = mFocusedWidget;
+        Widget *const oldFocused = mFocusedWidget;
 
         if (oldFocused != widget)
         {
@@ -164,7 +164,7 @@ namespace gcn
             if (mWidgets[i] == mFocusedWidget)
                 focusedWidget = i;
         }
-        int focused = focusedWidget;
+        const int focused = focusedWidget;
 
         // i is a counter that ensures that the following loop
         // won't get stuck in an infinite loop
@@ -220,7 +220,7 @@ namespace gcn
             if (mWidgets[i] == mFocusedWidget)
                 focusedWidget = i;
         }
-        int focused = focusedWidget;
+        const int focused = focusedWidget;
 
         // i is a counter that ensures that the following loop
         // won't get stuck in an infinite loop
@@ -319,7 +319,7 @@ namespace gcn
     {
         if (mFocusedWidget)
         {
-            Widget* focused = mFocusedWidget;
+            Widget *const focused = mFocusedWidget;
             mFocusedWidget = nullptr;
 
             Event focusEvent(focused);
@@ -349,7 +349,7 @@ namespace gcn
             if (mWidgets[i] == mFocusedWidget)
                 focusedWidget = i;
         }
-        int focused = focusedWidget;
+        const int focused = focusedWidget;
         bool done = false;
 
         // i is a counter that ensures that the following loop
@@ -373,7 +373,7 @@ namespace gcn
             if (focusedWidget == focused)
                 return;
 
-            const Widget *widget = mWidgets.at(focusedWidget);
+            const Widget *const widget = mWidgets.at(focusedWidget);
             if (widget->isFocusable() && widget->isTabInEnabled() &&
                 (!mModalFocusedWidget || widget->isModalFocused()))
             {
@@ -418,7 +418,7 @@ namespace gcn
             if (mWidgets[i] == mFocusedWidget)
                 focusedWidget = i;
         }
-        int focused = focusedWidget;
+        const int focused = focusedWidget;
         bool done = false;
 
         // i is a counter that ensures that the following loop
@@ -442,7 +442,7 @@ namespace gcn
             if (focusedWidget == focused)
                 return;
 
-            const Widget *widget = mWidgets.at(focusedWidget);
+            const Widget *const widget = mWidgets.at(focusedWidget);
             if (widget->isFocusable() && widget->isTabInEnabled() &&
                 (!mModalFocusedWidget || widget->isModalFocused()))
             {
@@ -467,7 +467,7 @@ namespace gcn
 
     void FocusHandler::distributeFocusLostEvent(const Event& focusEvent)
     {
-        Widget* sourceWidget = focusEvent.getSource();
+        Widget *const sourceWidget = focusEvent.getSource();
 
         std::list<FocusListener*> focusListeners
             = sourceWidget->_getFocusListeners();
@@ -484,7 +484,7 @@ namespace gcn
 
     void FocusHandler::distributeFocusGainedEvent(const Event& focusEvent)
     {
-        Widget* sourceWidget = focusEvent.getSource();
+        Widget *const sourceWidget = focusEvent.getSource();
 
         std::list<FocusListener*> focusListeners
             = sourceWidget->_getFocusListeners();

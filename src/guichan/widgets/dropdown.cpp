@@ -230,10 +230,10 @@ namespace gcn
         if (!mListBox)
             throw GCN_EXCEPTION("List box has been deleted.");
 
-        int listBoxHeight = mListBox->getHeight();
+        const int listBoxHeight = mListBox->getHeight();
 
         // We add 2 for the border
-        int h2 = getFont()->getHeight() + 2;
+        const int h2 = getFont()->getHeight() + 2;
 
         setHeight(h2);
 
@@ -242,7 +242,7 @@ namespace gcn
 
         if (mDroppedDown && getParent())
         {
-            int h = getParent()->getChildrenArea().height - getY();
+            const int h = getParent()->getChildrenArea().height - getY();
 
             if (listBoxHeight > h - h2 - 2)
             {

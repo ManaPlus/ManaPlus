@@ -110,14 +110,13 @@ namespace gcn
 
     void Widget::drawFrame(Graphics* graphics)
     {
-        Color faceColor = getBaseColor();
-        Color highlightColor, shadowColor;
-        int alpha = getBaseColor().a;
-        int width = getWidth() + getFrameSize() * 2 - 1;
-        int height = getHeight() + getFrameSize() * 2 - 1;
-        highlightColor = faceColor + 0x303030;
+        const Color faceColor = getBaseColor();
+        Color highlightColor = faceColor + 0x303030;
+        Color shadowColor = faceColor - 0x303030;
+        const int alpha = getBaseColor().a;
+        const int width = getWidth() + getFrameSize() * 2 - 1;
+        const int height = getHeight() + getFrameSize() * 2 - 1;
         highlightColor.a = alpha;
-        shadowColor = faceColor - 0x303030;
         shadowColor.a = alpha;
 
         for (unsigned int i = 0; i < getFrameSize(); ++i)
@@ -204,7 +203,7 @@ namespace gcn
 
     void Widget::setDimension(const Rectangle& dimension)
     { 
-        Rectangle oldDimension = mDimension;
+        const Rectangle oldDimension = mDimension;
         mDimension = dimension;
 
         if (mDimension.width != oldDimension.width

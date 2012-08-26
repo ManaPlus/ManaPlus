@@ -46,7 +46,7 @@ class BuySellDialog : public Window, public gcn::ActionListener
          *
          * @see Window::Window
          */
-        BuySellDialog(int npcId);
+        BuySellDialog(const int npcId);
 
         BuySellDialog(std::string nick);
 

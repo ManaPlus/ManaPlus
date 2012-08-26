@@ -55,10 +55,10 @@ class CommandHandler
          * Parse and handle the given command.
          */
         static void handleCommand(const std::string &command,
-                                  ChatTab *tab = localChatTab);
+                                  ChatTab *const tab = localChatTab);
 
         static void handleCommands(const std::string &command,
-                                   ChatTab *tab = localChatTab);
+                                   ChatTab *const tab = localChatTab);
 
         static void replaceVars(std::string &str);
 

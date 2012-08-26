@@ -189,7 +189,7 @@ GraphicsVertexes::~GraphicsVertexes()
 {
 }
 
-void GraphicsVertexes::init(int x, int y, int w, int h)
+void GraphicsVertexes::init(const int x, const int y, const int w, const int h)
 {
     mPtr = 0;
     mX = x;
@@ -213,9 +213,9 @@ void GraphicsVertexes::setLoadAsOpenGL(int useOpenGL)
 }
 #endif
 
-void GraphicsVertexes::pushSDL(SDL_Rect r1, SDL_Rect r2)
+void GraphicsVertexes::pushSDL(const SDL_Rect r1, const SDL_Rect r2)
 {
-    DoubleRect *r = new DoubleRect();
+    DoubleRect *const r = new DoubleRect();
     r->src = r1;
     r->dst = r2;
     sdl[mPtr].mList.push_back(r);

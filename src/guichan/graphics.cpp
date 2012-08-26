@@ -118,7 +118,7 @@ namespace gcn
                 carea.height = 0;
         }
 
-        bool result = carea.isIntersecting(top);
+        const bool result = carea.isIntersecting(top);
 
         mClipStack.push(carea);
 

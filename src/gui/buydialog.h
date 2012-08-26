@@ -55,7 +55,7 @@ class BuyDialog : public Window, public gcn::ActionListener,
          *
          * @see Window::Window
          */
-        BuyDialog(int npcId);
+        BuyDialog(const int npcId);
 
         /**
          * Constructor.
@@ -77,12 +77,13 @@ class BuyDialog : public Window, public gcn::ActionListener,
         /**
          * Sets the amount of available money.
          */
-        void setMoney(int amount);
+        void setMoney(const int amount);
 
         /**
          * Adds an item to the shop inventory.
          */
-        void addItem(int id, unsigned char color, int amount, int price);
+        void addItem(const int id, const unsigned char color,
+                     const int amount, const int price);
 
         /**
          * Called when receiving actions from the widgets.

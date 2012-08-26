@@ -220,7 +220,7 @@ namespace gcn
         int x = 0;
         for (i = 0; i < sz; i++)
         {
-            Tab* tab = mTabs[i].first;
+            Tab *const tab = mTabs[i].first;
             tab->setPosition(x, maxTabHeight - tab->getHeight());
             x += tab->getWidth();
         }
@@ -256,7 +256,7 @@ namespace gcn
 
     void TabbedArea::death(const Event& event)
     {
-        Tab* tab = dynamic_cast<Tab*>(event.getSource());
+        Tab *const tab = dynamic_cast<Tab*>(event.getSource());
 
         if (tab)
             removeTab(tab);
@@ -266,8 +266,8 @@ namespace gcn
 
     void TabbedArea::action(const ActionEvent& actionEvent)
     {
-        Widget* source = actionEvent.getSource();
-        Tab* tab = dynamic_cast<Tab*>(source);
+        Widget *const source = actionEvent.getSource();
+        Tab *const tab = dynamic_cast<Tab*>(source);
 
         if (!tab)
         {

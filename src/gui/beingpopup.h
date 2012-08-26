@@ -46,7 +46,7 @@ class BeingPopup : public Popup
         /**
          * Sets the info to be displayed given a particular player.
          */
-        void show(int x, int y, Being *b);
+        void show(const int x, const int y, Being *const b);
 
         // TODO: Add a version for monsters, NPCs, etc?
 

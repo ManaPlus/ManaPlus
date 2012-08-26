@@ -34,7 +34,7 @@
 
 BuySellDialog::DialogList BuySellDialog::instances;
 
-BuySellDialog::BuySellDialog(int npcId):
+BuySellDialog::BuySellDialog(const int npcId):
     Window(_("Shop"), false, nullptr, "buysell.xml"),
     mNpcId(npcId),
     mNick(""),
@@ -63,11 +63,12 @@ void BuySellDialog::init()
         N_("Buy"), N_("Sell"), N_("Cancel"), nullptr
     };
     const int buttonPadding = getOption("buttonpadding", 10);
-    int x = buttonPadding, y = buttonPadding;
+    int x = buttonPadding;
+    const int y = buttonPadding;
 
     for (const char **curBtn = buttonNames; *curBtn; curBtn++)
     {
-        Button *btn = new Button(gettext(*curBtn), *curBtn, this);
+        Button *const btn = new Button(gettext(*curBtn), *curBtn, this);
         if (!mBuyButton)
             mBuyButton = btn; // For focus request
         btn->setPosition(x, y);

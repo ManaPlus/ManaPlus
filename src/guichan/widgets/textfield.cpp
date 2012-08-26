@@ -132,7 +132,8 @@ namespace gcn
     {
         if (isFocused())
         {
-            int caretX = getFont()->getWidth(mText.substr(0, mCaretPosition));
+            const int caretX = getFont()->getWidth(
+                mText.substr(0, mCaretPosition));
 
             if (caretX - mXScroll >= getWidth() - 4)
             {

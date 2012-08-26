@@ -86,7 +86,7 @@ namespace gcn
          * @param source The source widget of the event.
          * @param id An identifier of the event.
          */
-        ActionEvent(Widget* source, const std::string& id);
+        ActionEvent(Widget *const source, const std::string &id);
 
         /**
          * Destructor.

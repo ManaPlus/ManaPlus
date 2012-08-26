@@ -54,7 +54,7 @@
 
 namespace gcn
 {
-    int Font::getStringIndexAt(const std::string& text, int x) const
+    int Font::getStringIndexAt(const std::string& text, const int x) const
     {
         for (unsigned int i = 0, sz = static_cast<unsigned int>(text.size());
              i < sz; ++i)

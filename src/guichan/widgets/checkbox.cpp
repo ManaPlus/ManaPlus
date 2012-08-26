@@ -118,7 +118,7 @@ namespace gcn
 
     void CheckBox::adjustSize()
     {
-        int height = getFont()->getHeight();
+        const int height = getFont()->getHeight();
 
         setHeight(height);
         setWidth(getFont()->getWidth(mCaption) + height + height / 2);

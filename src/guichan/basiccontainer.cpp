@@ -171,7 +171,7 @@ namespace gcn
 
     Widget *BasicContainer::getWidgetAt(int x, int y)
     {
-        Rectangle r = getChildrenArea();
+        const Rectangle r = getChildrenArea();
 
         if (!r.isPointInRect(x, y))
             return nullptr;
@@ -298,7 +298,7 @@ namespace gcn
 
     void BasicContainer::showWidgetPart(Widget* widget, Rectangle area)
     {
-        Rectangle widgetArea = getChildrenArea();
+        const Rectangle widgetArea = getChildrenArea();
 
         area.x += widget->getX();
         area.y += widget->getY();
@@ -344,12 +344,12 @@ namespace gcn
             if ((*iter)->getId() == id)
                 return (*iter);
 
-            BasicContainer *basicContainer
-                = dynamic_cast<BasicContainer*>(*iter);
+            BasicContainer *const basicContainer
+                = dynamic_cast<BasicContainer *const>(*iter);
 
             if (basicContainer)
             {
-                Widget *widget = basicContainer->findWidgetById(id);
+                Widget *const widget = basicContainer->findWidgetById(id);
 
                 if (widget)
                     return widget;

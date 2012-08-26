@@ -43,11 +43,13 @@ class BuySellHandler : public Net::BuySellHandler
 
         virtual void requestBuyList(std::string nick);
 
-        virtual void sendBuyRequest(std::string nick, ShopItem* item,
-                                    int amount);
+        virtual void sendBuyRequest(const std::string &nick,
+                                    const ShopItem *const item,
+                                    const int amount);
 
-        virtual void sendSellRequest(std::string nick, ShopItem* item,
-                                     int amount);
+        virtual void sendSellRequest(const std::string &nick,
+                                     const ShopItem *const item,
+                                     const int amount);
 
         virtual void processNpcBuySellChoice(Net::MessageIn &msg);
 

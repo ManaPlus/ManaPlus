@@ -44,13 +44,13 @@
 
 #include "debug.h"
 
-ChangePasswordDialog::ChangePasswordDialog(LoginData *data):
+ChangePasswordDialog::ChangePasswordDialog(LoginData *const data):
     Window(_("Change Password"), true, nullptr, "changepassword.xml"),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
-    gcn::Label *accountLabel = new Label(
-            strprintf(_("Account: %s"), mLoginData->username.c_str()));
+    gcn::Label *const accountLabel = new Label(
+        strprintf(_("Account: %s"), mLoginData->username.c_str()));
     mOldPassField = new PasswordField;
     mFirstPassField = new PasswordField;
     mSecondPassField = new PasswordField;
@@ -102,8 +102,10 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
         std::stringstream errorMsg;
         int error = 0;
 
-        unsigned int min = Net::getLoginHandler()->getMinPasswordLength();
-        unsigned int max = Net::getLoginHandler()->getMaxPasswordLength();
+        const unsigned int min = Net::getLoginHandler()
+            ->getMinPasswordLength();
+        const unsigned int max = Net::getLoginHandler()
+            ->getMaxPasswordLength();
 
         // Check old Password
         if (oldPassword.empty())
@@ -142,7 +144,7 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
             else if (error == 3)
                 mWrongDataNoticeListener->setTarget(this->mSecondPassField);
 
-            OkDialog *dlg = new OkDialog(_("Error"),
+            OkDialog *const dlg = new OkDialog(_("Error"),
                 errorMsg.str(), DIALOG_ERROR);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
