@@ -65,7 +65,7 @@ DidYouKnowWindow::DidYouKnowWindow():
     mBrowserBox->setOpaque(false);
     mScrollArea = new ScrollArea(mBrowserBox,
         true, "didyouknow_background.xml");
-    Button *okButton = new Button(_("Close"), "close", this);
+    Button *const okButton = new Button(_("Close"), "close", this);
     mButtonPrev = new Button(_("< Previous"), "prev", this);
     mButtonNext = new Button(_("Next >"), "next", this);
     mOpenAgainCheckBox = new CheckBox(_("Auto open this window"),
@@ -93,7 +93,7 @@ void DidYouKnowWindow::action(const gcn::ActionEvent &event)
     if (event.getId() == "close")
         setVisible(false);
 
-    unsigned num = config.getIntValue("currentTip");
+    const unsigned num = config.getIntValue("currentTip");
 
     if (event.getId() == "prev")
         loadData(num - 1);
@@ -124,7 +124,7 @@ void DidYouKnowWindow::loadData(int num)
     mScrollArea->setVerticalScrollAmount(0);
 }
 
-void DidYouKnowWindow::loadFile(int num)
+void DidYouKnowWindow::loadFile(const int num)
 {
     const std::string file = strprintf("tips/%d", num);
     std::string helpPath = branding.getStringValue("helpPath");

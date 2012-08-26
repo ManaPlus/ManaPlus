@@ -48,8 +48,8 @@ class EditDialog : public Window, public gcn::ActionListener
          * @see Window::Window
          */
         EditDialog(const std::string &title, const std::string &msg,
-                   std::string eventOk = ACTION_EDIT_OK, int width = 300,
-                   Window *parent = nullptr, bool modal = true);
+                   std::string eventOk = ACTION_EDIT_OK, const int width = 300,
+                   Window *const parent = nullptr, const bool modal = true);
 
         /**
          * Called when receiving actions from the widgets.

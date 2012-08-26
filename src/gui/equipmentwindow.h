@@ -51,7 +51,7 @@ namespace gcn
 
 struct EquipmentBox
 {
-    EquipmentBox(int x0, int y0, Image *img) :
+    EquipmentBox(const int x0, const int y0, Image *const img) :
         x(x0), y(y0), image(img)
     { }
 
@@ -71,8 +71,8 @@ class EquipmentWindow : public Window, public gcn::ActionListener
         /**
          * Constructor.
          */
-        EquipmentWindow(Equipment *equipment, Being *being,
-                        bool mCloseOnHide = false);
+        EquipmentWindow(Equipment *const equipment, Being *const being,
+                        const bool foring = false);
 
         /**
          * Destructor.
@@ -91,34 +91,36 @@ class EquipmentWindow : public Window, public gcn::ActionListener
         Item* getEquipment(int i) const
         { return mEquipment ? mEquipment->getEquipment(i) : nullptr; }
 
-        void setBeing(Being *being);
+        void setBeing(Being *const being);
 
-        void updateBeing(Being *being);
+        void updateBeing(Being *const being);
 
-        void resetBeing(Being *being);
+        void resetBeing(const Being *const being);
 
     private:
         void mouseExited(gcn::MouseEvent &event);
 
         void mouseMoved(gcn::MouseEvent &event);
 
-        Item *getItem(int x, int y) const;
+        Item *getItem(const int x, const int y) const;
 
-        void setSelected(int index);
+        void setSelected(const int index);
 
         void fillBoxes();
 
         void fillDefault();
 
-        void addBox(int idx, int x, int y, int imageIndex);
+        void addBox(const int idx, const int x, const int y,
+                    const int imageIndex);
 
-        void loadWindow(XmlNodePtr windowNode);
+        void loadWindow(const XmlNodePtr windowNode);
 
-        void loadPlayerBox(XmlNodePtr playerBoxNode);
+        void loadPlayerBox(const XmlNodePtr playerBoxNode);
 
-        void loadSlot(XmlNodePtr slotNode, ImageSet *imageset);
+        void loadSlot(const XmlNodePtr slotNode,
+                      const ImageSet *const imageset);
 
-        int parseSlotName(std::string name);
+        int parseSlotName(std::string name) const;
 
         Equipment *mEquipment;
 

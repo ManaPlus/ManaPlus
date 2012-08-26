@@ -45,7 +45,7 @@ class ConnectionDialog : public Window, private gcn::ActionListener
          *
          * @see Window::Window
          */
-        ConnectionDialog(const std::string &text, State cancelState);
+        ConnectionDialog(const std::string &text, const State cancelState);
 
         /**
          * Called when the user presses Cancel. Restores the global state to

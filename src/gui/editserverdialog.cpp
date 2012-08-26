@@ -60,8 +60,9 @@ std::string TypeListModel::getElementAt(int elementIndex)
         return "Unknown";
 }
 
-EditServerDialog::EditServerDialog(ServerDialog *parent, ServerInfo server,
-                                   int index) :
+EditServerDialog::EditServerDialog(ServerDialog *const parent,
+                                   ServerInfo server,
+                                   const int index) :
     Window(_("Edit Server"), true, parent),
     mServerDialog(parent),
     mServer(server),
@@ -69,11 +70,11 @@ EditServerDialog::EditServerDialog(ServerDialog *parent, ServerInfo server,
 {
     setWindowName("EditServerDialog");
 
-    Label *nameLabel = new Label(_("Name:"));
-    Label *serverAdressLabel = new Label(_("Address:"));
-    Label *portLabel = new Label(_("Port:"));
-    Label *typeLabel = new Label(_("Server type:"));
-    Label *descriptionLabel = new Label(_("Description:"));
+    Label *const nameLabel = new Label(_("Name:"));
+    Label *const serverAdressLabel = new Label(_("Address:"));
+    Label *const portLabel = new Label(_("Port:"));
+    Label *const typeLabel = new Label(_("Server type:"));
+    Label *const descriptionLabel = new Label(_("Description:"));
     mServerAddressField = new TextField(std::string());
     mPortField = new TextField(std::string());
     mPortField->setNumeric(true);
@@ -200,7 +201,7 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
         if (mServerAddressField->getText().empty()
             || mPortField->getText().empty())
         {
-            OkDialog *dlg = new OkDialog(_("Error"),
+            OkDialog *const dlg = new OkDialog(_("Error"),
                 _("Please at least type both the address and the port "
                   "of the server."), DIALOG_ERROR);
             dlg->addActionListener(this);

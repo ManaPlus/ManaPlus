@@ -200,7 +200,7 @@ class BrowserBox : public gcn::Widget,
         void setEnableImages(bool n)
         { mEnableImages = n; }
 
-        std::string getTextAtPos(const int x, const int y);
+        std::string getTextAtPos(const int x, const int y) const;
 
     private:
         int calcHeight();

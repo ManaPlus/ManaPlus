@@ -134,7 +134,7 @@ class ChatTab : public Tab
 
         virtual void saveToLogFile(std::string &msg);
 
-        std::list<std::string> &getRows()
+        std::list<std::string> &getRows() const
         { return mTextOutput->getRows(); }
 
         bool hasRows() const

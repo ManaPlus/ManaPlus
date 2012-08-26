@@ -65,7 +65,7 @@ class DidYouKnowWindow : public Window, public LinkHandler,
         void setVisible(bool visible);
 
     private:
-        void loadFile(int num);
+        void loadFile(const int num);
 
         BrowserBox *mBrowserBox;
         gcn::ScrollArea *mScrollArea;

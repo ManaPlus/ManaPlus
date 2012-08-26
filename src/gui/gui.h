@@ -50,7 +50,7 @@ class Gui : public gcn::Gui
         /**
          * Constructor.
          */
-        Gui(Graphics *screen);
+        Gui(Graphics *const screen);
 
         /**
          * Destructor.
@@ -74,7 +74,7 @@ class Gui : public gcn::Gui
         /**
          * Called when the application window has been resized.
          */
-        void videoResized();
+        void videoResized() const;
 
         gcn::FocusHandler *getFocusHandler() const
         { return mFocusHandler; }
@@ -113,12 +113,12 @@ class Gui : public gcn::Gui
         /**
          * Sets whether a custom cursor should be rendered.
          */
-        void setUseCustomCursor(bool customCursor);
+        void setUseCustomCursor(const bool customCursor);
 
         /**
          * Sets which cursor should be used.
          */
-        void setCursorType(int index)
+        void setCursorType(const int index)
         { mCursorType = index; }
 
         void updateFonts();

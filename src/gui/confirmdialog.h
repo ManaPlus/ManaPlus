@@ -45,8 +45,8 @@ class ConfirmDialog : public Window, public gcn::ActionListener
          * @see Window::Window
          */
         ConfirmDialog(const std::string &title, const std::string &msg,
-                      bool ignore = false, bool modal = false,
-                      Window *parent = nullptr);
+                      const bool ignore = false, const bool modal = false,
+                      Window *const parent = nullptr);
 
         /**
          * Called when receiving actions from the widgets.

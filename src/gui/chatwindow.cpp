@@ -76,7 +76,7 @@
 class ChatInput : public TextField, public gcn::FocusListener
 {
     public:
-        ChatInput(ChatWindow *window, TabbedArea *tabs):
+        ChatInput(ChatWindow *const window, TabbedArea *const tabs):
             TextField("", false),
             mWindow(window),
             mChatTabs(tabs)
@@ -96,7 +96,7 @@ class ChatInput : public TextField, public gcn::FocusListener
                 chatWindow->updateVisibility();
         }
 
-        void processVisible(bool n)
+        void processVisible(const bool n)
         {
             if (!mWindow || isVisible() == n)
                 return;
@@ -332,12 +332,12 @@ void ChatWindow::loadGMCommands()
     if (mGMLoaded)
         return;
 
-    const char *fileName = "gmcommands.txt";
-    ResourceManager *resman = ResourceManager::getInstance();
+    const char *const fileName = "gmcommands.txt";
+    const ResourceManager *const resman = ResourceManager::getInstance();
     StringVect list;
     resman->loadTextFile(fileName, list);
     StringVectCIter it = list.begin();
-    StringVectCIter it_end = list.end();
+    const StringVectCIter it_end = list.end();
 
     while (it != it_end)
     {
@@ -365,17 +365,17 @@ void ChatWindow::adjustTabSize()
     mChatInput->setWidth(area.width - 2 * mChatInput->getFrameSize());
 
     mChatTabs->setWidth(area.width - 2 * mChatTabs->getFrameSize());
-    int height = area.height - 2 * mChatTabs->getFrameSize() -
+    const int height = area.height - 2 * mChatTabs->getFrameSize() -
         (mChatInput->getHeight() + mChatInput->getFrameSize() * 2);
     if (mChatInput->isVisible() || !config.getBoolValue("hideChatInput"))
         mChatTabs->setHeight(height);
     else
         mChatTabs->setHeight(height + mChatInput->getHeight());
 
-    ChatTab *tab = getFocused();
+    const ChatTab *const tab = getFocused();
     if (tab)
     {
-        gcn::Widget *content = tab->mScrollArea;
+        gcn::Widget *const content = tab->mScrollArea;
         if (content)
         {
             content->setSize(mChatTabs->getWidth()
@@ -416,7 +416,7 @@ ChatTab *ChatWindow::getFocused() const
     return static_cast<ChatTab*>(mChatTabs->getSelectedTab());
 }
 
-void ChatWindow::clearTab(ChatTab *tab)
+void ChatWindow::clearTab(ChatTab *const tab) const
 {
     if (tab)
         tab->clearText();
@@ -455,16 +455,16 @@ void ChatWindow::nextTab()
     mChatTabs->setSelectedTabByPos(tab);
 }
 
-void ChatWindow::closeTab()
+void ChatWindow::closeTab() const
 {
     if (!mChatTabs)
         return;
 
-    int idx = mChatTabs->getSelectedTabIndex();
-    Tab *tab = mChatTabs->getTabByIndex(idx);
+    const int idx = mChatTabs->getSelectedTabIndex();
+    Tab *const tab = mChatTabs->getTabByIndex(idx);
     if (!tab)
         return;
-    WhisperTab *whisper = dynamic_cast<WhisperTab*>(tab);
+    WhisperTab *const whisper = dynamic_cast<WhisperTab* const>(tab);
     if (!whisper)
         return;
 
@@ -559,12 +559,12 @@ bool ChatWindow::isInputFocused() const
     return mChatInput->isFocused();
 }
 
-void ChatWindow::removeTab(ChatTab *tab)
+void ChatWindow::removeTab(ChatTab *const tab)
 {
     mChatTabs->removeTab(tab);
 }
 
-void ChatWindow::addTab(ChatTab *tab)
+void ChatWindow::addTab(ChatTab *const tab)
 {
     if (!tab)
         return;
@@ -607,7 +607,8 @@ void ChatWindow::ignoreAllWhispers()
          iter != mWhispers.end();
          ++ iter)
     {
-        WhisperTab *tab = dynamic_cast<WhisperTab*>(iter->second);
+        const WhisperTab *const tab = dynamic_cast<const WhisperTab* const>(
+            iter->second);
         if (tab && player_relations.getRelation(tab->getNick())
             != PlayerRelation::IGNORED)
         {
@@ -620,7 +621,7 @@ void ChatWindow::ignoreAllWhispers()
     }
 }
 
-void ChatWindow::chatInput(const std::string &message)
+void ChatWindow::chatInput(const std::string &message) const
 {
     ChatTab *tab = nullptr;
     std::string msg = message;
@@ -650,7 +651,7 @@ void ChatWindow::localChatInput(const std::string &msg)
         chatInput(msg);
 }
 
-void ChatWindow::doPresent()
+void ChatWindow::doPresent() const
 {
     if (!actorSpriteManager)
         return;
@@ -678,12 +679,12 @@ void ChatWindow::doPresent()
         getFocused()->chatLog(log, BY_SERVER);
 }
 
-void ChatWindow::scroll(int amount)
+void ChatWindow::scroll(const int amount) const
 {
     if (!isVisible())
         return;
 
-    ChatTab *tab = getFocused();
+    ChatTab *const tab = getFocused();
     if (tab)
         tab->scroll(amount);
 }
@@ -694,10 +695,10 @@ void ChatWindow::mousePressed(gcn::MouseEvent &event)
     {
         if (viewport)
         {
-            gcn::Tab *tab = mChatTabs->getSelectedTab();
+            gcn::Tab *const tab = mChatTabs->getSelectedTab();
             if (tab)
             {
-                ChatTab *cTab = dynamic_cast<ChatTab*>(tab);
+                ChatTab *const cTab = dynamic_cast<ChatTab*>(tab);
                 if (cTab)
                     viewport->showChatPopup(cTab);
             }
@@ -711,7 +712,7 @@ void ChatWindow::mousePressed(gcn::MouseEvent &event)
 
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-        ChatTab *tab = getFocused();
+        const ChatTab *const tab = getFocused();
         if (tab)
             mMoved = !isResizeAllowed(event);
     }
@@ -753,7 +754,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         if (mCurHist != mHistory.end())
         {
             // Move forward through the history
-            HistoryIterator prevHist = mCurHist++;
+            const HistoryIterator prevHist = mCurHist++;
 
             if (mCurHist != mHistory.end())
             {
@@ -804,7 +805,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
     else if (actionId == static_cast<int>(Input::KEY_CHAT_PREV_HISTORY) &&
              mChatInput->isVisible())
     {
-        ChatTab *tab = getFocused();
+        const ChatTab *const tab = getFocused();
         if (tab && tab->hasRows())
         {
             if (!mChatHistoryIndex)
@@ -836,7 +837,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
     else if (actionId == static_cast<int>(Input::KEY_CHAT_NEXT_HISTORY) &&
              mChatInput->isVisible())
     {
-        ChatTab *tab = getFocused();
+        ChatTab *const tab = getFocused();
         if (tab && tab->hasRows())
         {
             const size_t tabSize = tab->getRows().size();
@@ -934,8 +935,8 @@ void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
                     if (event.getInt("oldValue") > event.getInt("newValue"))
                         break;
 
-                    int change = event.getInt("newValue")
-                                 - event.getInt("oldValue");
+                    const int change = event.getInt("newValue")
+                        - event.getInt("oldValue");
 
                     if (change != 0)
                         battleChatLog("+" + toString(change) + " xp");
@@ -954,10 +955,10 @@ void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
             if (!config.getBoolValue("showJobExp"))
                 return;
 
-            int id = event.getInt("id");
+            const int id = event.getInt("id");
             if (id == Net::getPlayerHandler()->getJobLocation())
             {
-                std::pair<int, int> exp
+                const std::pair<int, int> exp
                     = PlayerInfo::getStatExperience(
                     static_cast<PlayerInfo::Attribute>(id));
                 if (event.getInt("oldValue1") > exp.first
@@ -966,7 +967,7 @@ void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
                     return;
                 }
 
-                int change = exp.first - event.getInt("oldValue1");
+                const int change = exp.first - event.getInt("oldValue1");
                 if (change != 0)
                     battleChatLog("+" + toString(change) + " job");
             }
@@ -974,9 +975,9 @@ void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
     }
 }
 
-void ChatWindow::addInputText(const std::string &text, bool space)
+void ChatWindow::addInputText(const std::string &text, const bool space)
 {
-    int caretPos = mChatInput->getCaretPosition();
+    const int caretPos = mChatInput->getCaretPosition();
     const std::string inputText = mChatInput->getText();
 
     std::ostringstream ss;
@@ -1011,7 +1012,7 @@ void ChatWindow::setVisible(bool visible)
 }
 
 void ChatWindow::addWhisper(const std::string &nick,
-                            const std::string &mes, Own own)
+                            const std::string &mes, const Own own)
 {
     if (mes.empty() || !player_node)
         return;
@@ -1026,7 +1027,7 @@ void ChatWindow::addWhisper(const std::string &nick,
         return;
 
     ChatTab *tab = nullptr;
-    TabMap::const_iterator i = mWhispers.find(tempNick);
+    const TabMap::const_iterator i = mWhispers.find(tempNick);
 
     if (i != mWhispers.end())
     {
@@ -1099,7 +1100,8 @@ void ChatWindow::addWhisper(const std::string &nick,
     }
 }
 
-ChatTab *ChatWindow::addWhisperTab(const std::string &nick, bool switchTo)
+ChatTab *ChatWindow::addWhisperTab(const std::string &nick,
+                                   const bool switchTo)
 {
     if (!player_node)
         return nullptr;
@@ -1110,7 +1112,7 @@ ChatTab *ChatWindow::addWhisperTab(const std::string &nick, bool switchTo)
     toLower(playerName);
     toLower(tempNick);
 
-    TabMap::const_iterator i = mWhispers.find(tempNick);
+    const TabMap::const_iterator i = mWhispers.find(tempNick);
     ChatTab *ret;
 
     if (tempNick.compare(playerName) == 0)
@@ -1147,7 +1149,7 @@ ChatTab *ChatWindow::getWhisperTab(const std::string &nick) const
     toLower(playerName);
     toLower(tempNick);
 
-    TabMap::const_iterator i = mWhispers.find(tempNick);
+    const TabMap::const_iterator i = mWhispers.find(tempNick);
     ChatTab *ret = nullptr;
 
     if (tempNick.compare(playerName) == 0)
@@ -1169,7 +1171,7 @@ std::string ChatWindow::addColors(std::string &msg)
     }
 
     std::string newMsg("");
-    int cMap[] = {1, 4, 5, 2, 3, 6, 7, 9, 0, 8};
+    const int cMap[] = {1, 4, 5, 2, 3, 6, 7, 9, 0, 8};
 
     // rainbow
     switch (mChatColor)
@@ -1211,7 +1213,7 @@ std::string ChatWindow::addColors(std::string &msg)
 
 void ChatWindow::autoComplete()
 {
-    int caretPos = mChatInput->getCaretPosition();
+    const int caretPos = mChatInput->getCaretPosition();
     int startName = 0;
     const std::string inputText = mChatInput->getText();
     bool needSecure(false);
@@ -1231,7 +1233,8 @@ void ChatWindow::autoComplete()
     if (caretPos - 1 + 1 == startName)
         return;
 
-    ChatTab *cTab = static_cast<ChatTab*>(mChatTabs->getSelectedTab());
+    const ChatTab *const cTab = static_cast<ChatTab*>(
+        mChatTabs->getSelectedTab());
     StringVect nameList;
 
     if (cTab)
@@ -1271,8 +1274,8 @@ void ChatWindow::autoComplete()
         mChatInput->setText(inputText.substr(0, startName) + newName
             + inputText.substr(caretPos, inputText.length() - caretPos));
 
-        int len = caretPos - static_cast<int>(name.length())
-                + static_cast<int>(newName.length());
+        const int len = caretPos - static_cast<int>(name.length())
+            + static_cast<int>(newName.length());
 
         if (startName > 0)
             mChatInput->setCaretPosition(len + 1);
@@ -1285,7 +1288,7 @@ std::string ChatWindow::autoComplete(StringVect &names,
                                      std::string partName) const
 {
     StringVectCIter i = names.begin();
-    StringVectCIter i_end = names.end();
+    const StringVectCIter i_end = names.end();
     toLower(partName);
     std::string newName("");
 
@@ -1315,13 +1318,14 @@ std::string ChatWindow::autoComplete(StringVect &names,
     return newName;
 }
 
-std::string ChatWindow::autoComplete(std::string partName, History *words)
+std::string ChatWindow::autoComplete(std::string partName,
+                                     History *const words) const
 {
     if (!words)
         return "";
 
     Commands::const_iterator i = words->begin();
-    Commands::const_iterator i_end = words->end();
+    const Commands::const_iterator i_end = words->end();
     StringVect nameList;
 
     while (i != i_end)
@@ -1350,7 +1354,7 @@ void ChatWindow::moveTabRight(ChatTab *tab)
 std::string ChatWindow::autoCompleteHistory(std::string partName)
 {
     History::const_iterator i = mHistory.begin();
-    History::const_iterator i_end = mHistory.end();
+    const History::const_iterator i_end = mHistory.end();
     StringVect nameList;
 
     while (i != i_end)
@@ -1370,7 +1374,8 @@ std::string ChatWindow::autoCompleteHistory(std::string partName)
 }
 
 void ChatWindow::resortChatLog(std::string line, Own own,
-                               bool ignoreRecord, bool tryRemoveColors)
+                               const bool ignoreRecord,
+                               const bool tryRemoveColors)
 {
     if (own == -1)
         own = BY_SERVER;
@@ -1417,7 +1422,8 @@ void ChatWindow::resortChatLog(std::string line, Own own,
 }
 
 void ChatWindow::battleChatLog(std::string line, Own own,
-                               bool ignoreRecord, bool tryRemoveColors)
+                               const bool ignoreRecord,
+                               const bool tryRemoveColors) const
 {
     if (own == -1)
         own = BY_SERVER;
@@ -1467,7 +1473,7 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
         if (!iter->second)
             return;
 
-        WhisperTab *tab = static_cast<WhisperTab*>(iter->second);
+        WhisperTab *const tab = static_cast<WhisperTab*>(iter->second);
 
         if (!tab)
             continue;
@@ -1481,7 +1487,7 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
             const std::string nick = tab->getNick();
             if (actorSpriteManager)
             {
-                const Being *being = actorSpriteManager->findBeingByName(
+                const Being *const being = actorSpriteManager->findBeingByName(
                     nick, ActorSprite::PLAYER);
                 if (being)
                 {
@@ -1491,7 +1497,7 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
             }
             if (party)
             {
-                const PartyMember *pm = party->getMember(nick);
+                const PartyMember *const pm = party->getMember(nick);
                 if (pm && pm->getOnline())
                 {
                     tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER));
@@ -1500,7 +1506,7 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
             }
             if (guild)
             {
-                const GuildMember *gm = guild->getMember(nick);
+                const GuildMember *const gm = guild->getMember(nick);
                 if (gm && gm->getOnline())
                 {
                     tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER));
@@ -1522,10 +1528,10 @@ void ChatWindow::loadState()
 
         if (nick.empty())
             break;
-        int flags = serverConfig.getValue(
+        const int flags = serverConfig.getValue(
             "chatWhisperFlags" + toString(num), 1);
 
-        ChatTab *tab = addWhisperTab(nick);
+        ChatTab *const tab = addWhisperTab(nick);
         if (tab)
         {
             tab->setAllowHighlight(flags & 1);
@@ -1545,7 +1551,7 @@ void ChatWindow::saveState()
         if (!iter->second)
             return;
 
-        WhisperTab *tab = static_cast<WhisperTab*>(iter->second);
+        const WhisperTab *const tab = static_cast<WhisperTab*>(iter->second);
 
         if (!tab)
             continue;
@@ -1569,7 +1575,7 @@ void ChatWindow::saveState()
     }
 }
 
-std::string ChatWindow::doReplace(const std::string &msg)
+std::string ChatWindow::doReplace(const std::string &msg) const
 {
     std::string str = msg;
     replaceSpecialChars(str);
@@ -1619,7 +1625,7 @@ void ChatWindow::displayAwayLog()
         return;
 
     std::list<std::string>::iterator i = mAwayLog.begin();
-    std::list<std::string>::iterator i_end = mAwayLog.end();
+    const std::list<std::string>::iterator i_end = mAwayLog.end();
 
     while (i != i_end)
     {
@@ -1640,18 +1646,18 @@ void ChatWindow::parseHighlights()
     mHighlights.push_back(player_node->getName());
 }
 
-bool ChatWindow::findHighlight(std::string &str)
+bool ChatWindow::findHighlight(const std::string &str)
 {
     return findI(str, mHighlights) != std::string::npos;
 }
 
-void ChatWindow::copyToClipboard(int x, int y)
+void ChatWindow::copyToClipboard(const int x, const int y) const
 {
-    ChatTab *tab = getFocused();
+    const ChatTab *const tab = getFocused();
     if (!tab)
         return;
 
-    BrowserBox *text = tab->mTextOutput;
+    const BrowserBox *const text = tab->mTextOutput;
     if (!text)
         return;
 

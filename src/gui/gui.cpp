@@ -58,7 +58,7 @@ SDLFont *boldFont = nullptr;
 class GuiConfigListener : public ConfigListener
 {
     public:
-        GuiConfigListener(Gui *g):
+        GuiConfigListener(Gui *const g):
             mGui(g)
         {}
 
@@ -66,7 +66,7 @@ class GuiConfigListener : public ConfigListener
         {
             if (name == "customcursor" && mGui)
             {
-                bool bCustomCursor = config.getBoolValue("customcursor");
+                const bool bCustomCursor = config.getBoolValue("customcursor");
                 mGui->setUseCustomCursor(bCustomCursor);
             }
         }
@@ -74,7 +74,7 @@ class GuiConfigListener : public ConfigListener
         Gui *mGui;
 };
 
-Gui::Gui(Graphics *graphics):
+Gui::Gui(Graphics *const graphics):
     mCustomCursor(false),
     mMouseCursors(nullptr),
     mMouseCursorAlpha(1.0f),
@@ -94,7 +94,7 @@ Gui::Gui(Graphics *graphics):
     mFocusHandler = new FocusHandler;
 
     // Initialize top GUI widget
-    WindowContainer *guiTop = new WindowContainer;
+    WindowContainer *const guiTop = new WindowContainer;
     guiTop->setFocusable(true);
     guiTop->setSize(graphics->mWidth, graphics->mHeight);
     guiTop->setOpaque(false);
@@ -256,7 +256,7 @@ Gui::~Gui()
 
 void Gui::logic()
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     resman->clearScheduled();
 
     if (!mTop)
@@ -383,12 +383,12 @@ void Gui::draw()
     getTop()->draw(mGraphics);
 
     int mouseX, mouseY;
-    uint8_t button = SDL_GetMouseState(&mouseX, &mouseY);
+    const uint8_t button = SDL_GetMouseState(&mouseX, &mouseY);
 
     if ((SDL_GetAppState() & SDL_APPMOUSEFOCUS || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0f)
     {
-        Image *mouseCursor = mMouseCursors->get(mCursorType);
+        Image *const mouseCursor = mMouseCursors->get(mCursorType);
         if (mouseCursor)
         {
             mouseCursor->setAlpha(mMouseCursorAlpha);
@@ -403,21 +403,21 @@ void Gui::draw()
     mGraphics->popClipArea();
 }
 
-void Gui::videoResized()
+void Gui::videoResized() const
 {
-    WindowContainer *top = static_cast<WindowContainer*>(getTop());
+    WindowContainer *const top = static_cast<WindowContainer* const>(getTop());
 
     if (top)
     {
-        int oldWidth = top->getWidth();
-        int oldHeight = top->getHeight();
+        const int oldWidth = top->getWidth();
+        const int oldHeight = top->getHeight();
 
         top->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
         top->adjustAfterResize(oldWidth, oldHeight);
     }
 }
 
-void Gui::setUseCustomCursor(bool customCursor)
+void Gui::setUseCustomCursor(const bool customCursor)
 {
     if (customCursor != mCustomCursor)
     {
@@ -577,7 +577,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
                 break;
         }
 
-        gcn::Widget* swap = widget;
+        const gcn::Widget *const swap = widget;
         widget = parent;
         parent = swap->getParent();
 

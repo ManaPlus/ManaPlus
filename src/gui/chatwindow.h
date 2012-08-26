@@ -114,7 +114,7 @@ class ChatWindow : public Window,
         /**
          * Clear the given tab.
          */
-        void clearTab(ChatTab *tab);
+        void clearTab(ChatTab *const tab) const;
 
         /**
          * Clear the current tab.
@@ -134,7 +134,7 @@ class ChatWindow : public Window,
         /**
          * Close current chat tab
          */
-        void closeTab();
+        void closeTab() const;
 
         /**
          * Switch to the default tab
@@ -164,7 +164,7 @@ class ChatWindow : public Window,
          *
          * @param msg  The message text which is to be sent.
          */
-        void chatInput(const std::string &msg);
+        void chatInput(const std::string &msg) const;
 
         /**
          * Passes the text to the local chat tab as input
@@ -180,7 +180,7 @@ class ChatWindow : public Window,
         void setInputText(const std::string &text);
 
         /** Add the given text to the chat input. */
-        void addInputText(const std::string &text, bool space = true);
+        void addInputText(const std::string &text, const bool space = true);
 
         /** Called to add item to chat */
         void addItemText(const std::string &item);
@@ -207,7 +207,7 @@ class ChatWindow : public Window,
          * up, positive numbers scroll down.  The absolute amount indicates the
          * amount of 1/8ths of chat window real estate that should be scrolled.
          */
-        void scroll(int amount);
+        void scroll(const int amount) const;
 
         /**
          * Sets the file being recorded to
@@ -219,15 +219,16 @@ class ChatWindow : public Window,
         bool getReturnTogglesChat() const
         { return mReturnToggles; }
 
-        void setReturnTogglesChat(bool toggles)
+        void setReturnTogglesChat(const bool toggles)
         { mReturnToggles = toggles; }
 
-        void doPresent();
+        void doPresent() const;
 
         void addWhisper(const std::string &nick, const std::string &mes,
-                        Own own = BY_OTHER);
+                        const Own own = BY_OTHER);
 
-        ChatTab *addWhisperTab(const std::string &nick, bool switchTo = false);
+        ChatTab *addWhisperTab(const std::string &nick,
+                               const bool switchTo = false);
 
         ChatTab *getWhisperTab(const std::string &nick) const;
 
@@ -236,12 +237,12 @@ class ChatWindow : public Window,
         void ignoreAllWhispers();
 
         void resortChatLog(std::string line, Own own = BY_UNKNOWN,
-                           bool ignoreRecord = false,
-                           bool tryRemoveColors = true);
+                           const bool ignoreRecord = false,
+                           const bool tryRemoveColors = true);
 
         void battleChatLog(std::string line, Own own = BY_UNKNOWN,
-                           bool ignoreRecord = false,
-                           bool tryRemoveColors = true);
+                           const bool ignoreRecord = false,
+                           const bool tryRemoveColors = true) const;
 
         void updateOnline(std::set<std::string> &onlinePlayers);
 
@@ -253,7 +254,7 @@ class ChatWindow : public Window,
 
         void loadGMCommands();
 
-        std::string doReplace(const std::string &msg);
+        std::string doReplace(const std::string &msg) const;
 
         void adjustTabSize();
 
@@ -266,9 +267,9 @@ class ChatWindow : public Window,
 
         void parseHighlights();
 
-        bool findHighlight(std::string &str);
+        bool findHighlight(const std::string &str);
 
-        void copyToClipboard(int x, int y);
+        void copyToClipboard(const int x, const int y) const;
 
         void optionChanged(const std::string &name);
 
@@ -292,10 +293,10 @@ class ChatWindow : public Window,
         typedef std::list<std::string> History;
 
         /** Remove the given tab from the window */
-        void removeTab(ChatTab *tab);
+        void removeTab(ChatTab *const tab);
 
         /** Add the tab to the window */
-        void addTab(ChatTab *tab);
+        void addTab(ChatTab *const tab);
 
         void removeWhisper(const std::string &nick);
 
@@ -305,7 +306,8 @@ class ChatWindow : public Window,
 
         std::string autoCompleteHistory(std::string partName);
 
-        std::string autoComplete(std::string partName, History *words);
+        std::string autoComplete(std::string partName,
+                                 History *const words) const;
 
         std::string autoComplete(StringVect &names,
                                  std::string partName) const;

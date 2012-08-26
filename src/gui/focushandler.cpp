@@ -88,7 +88,7 @@ void FocusHandler::checkForWindow()
 
         while (widget)
         {
-            Window *window = dynamic_cast<Window*>(widget);
+            Window *const window = dynamic_cast<Window*>(widget);
 
             if (window)
             {

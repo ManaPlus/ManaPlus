@@ -33,8 +33,8 @@
 #include "debug.h"
 
 EditDialog::EditDialog(const std::string &title, const std::string &msg,
-                       std::string eventOk, int width,
-                       Window *parent, bool modal):
+                       std::string eventOk, const int width,
+                       Window *const parent, const bool modal):
     Window(title, modal, parent, "edit.xml")
 {
     mTextField = new TextField;
@@ -42,7 +42,7 @@ EditDialog::EditDialog(const std::string &title, const std::string &msg,
 
     mEventOk = eventOk;
 
-    gcn::Button *okButton = new Button(_("OK"), mEventOk, this);
+    gcn::Button *const okButton = new Button(_("OK"), mEventOk, this);
 
     const int numRows = 1;
     const int fontHeight = getFont()->getHeight();

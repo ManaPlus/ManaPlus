@@ -42,7 +42,7 @@ class DebugTab : public Container
 
         void logic() = 0;
 
-        void resize(int x, int y)
+        void resize(const int x, const int y)
         { setDimension(gcn::Rectangle(0, 0, x, y)); }
 
     private:

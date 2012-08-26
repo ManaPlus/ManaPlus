@@ -658,7 +658,7 @@ void BrowserBox::updateHeight()
     }
 }
 
-std::string BrowserBox::getTextAtPos(const int x, const int y)
+std::string BrowserBox::getTextAtPos(const int x, const int y) const
 {
     int textX = 0;
     int textY = 0;

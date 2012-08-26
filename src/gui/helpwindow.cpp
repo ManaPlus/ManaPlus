@@ -61,7 +61,7 @@ HelpWindow::HelpWindow():
     mBrowserBox = new BrowserBox;
     mBrowserBox->setOpaque(false);
     mScrollArea = new ScrollArea(mBrowserBox, true, "help_background.xml");
-    Button *okButton = new Button(_("Close"), "close", this);
+    Button *const okButton = new Button(_("Close"), "close", this);
 
     mBrowserBox->setLinkHandler(this);
     mBrowserBox->setFont(gui->getHelpFont());
@@ -166,7 +166,7 @@ void HelpWindow::search(const std::string &text0)
             for (HelpNamesCIter it = names.begin(), it_end = names.end();
                  it != it_end; ++ it)
             {
-                const char *str = (*it).c_str();
+                const char *const str = (*it).c_str();
                 mBrowserBox->addRow(strprintf(" -> @@%s|%s@@", str,
                     translator->getChar(str)));
             }

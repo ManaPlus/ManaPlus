@@ -36,7 +36,8 @@
 #include "debug.h"
 
 ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
-                             bool ignore, bool modal, Window *parent):
+                             const bool ignore, const bool modal,
+                             Window *const parent):
     Window(title, modal, parent, "confirm.xml")
 {
     mTextBox = new TextBox;
@@ -44,8 +45,8 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
     mTextBox->setOpaque(false);
     mTextBox->setTextWrapped(msg, 260);
 
-    gcn::Button *yesButton = new Button(_("Yes"), "yes", this);
-    gcn::Button *noButton = new Button(_("No"), "no", this);
+    gcn::Button *const yesButton = new Button(_("Yes"), "yes", this);
+    gcn::Button *const noButton = new Button(_("No"), "no", this);
     gcn::Button *ignoreButton = nullptr;
 
     if (ignore)

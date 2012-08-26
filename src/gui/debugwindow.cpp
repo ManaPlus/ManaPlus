@@ -117,10 +117,10 @@ void DebugWindow::draw(gcn::Graphics *g)
 
     if (player_node)
     {
-        Being *target = player_node->getTarget();
+        const Being *const target = player_node->getTarget();
         if (target)
         {
-            Graphics *g2 = static_cast<Graphics*>(g);
+            Graphics *const g2 = static_cast<Graphics*>(g);
             target->draw(g2, -target->getPixelX() + 16 + getWidth() / 2,
                          -target->getPixelY() + 32 + getHeight() / 2);
         }
@@ -206,13 +206,13 @@ void MapDebugTab::logic()
         mXYLabel->setCaption(strprintf("%s (?, ?)", _("Player Position:")));
     }
 
-    const Map *map = Game::instance()->getCurrentMap();
+    const Map *const map = Game::instance()->getCurrentMap();
     if (map && viewport)
     {
           // Get the current mouse position
-        int mouseTileX = (viewport->getMouseX() + viewport->getCameraX())
+        const int mouseTileX = (viewport->getMouseX() + viewport->getCameraX())
                          / map->getTileWidth();
-        int mouseTileY = (viewport->getMouseY() + viewport->getCameraY())
+        const int mouseTileY = (viewport->getMouseY() + viewport->getCameraY())
                          / map->getTileHeight();
         mTileMouseLabel->setCaption(strprintf("%s (%d, %d)",
             _("Cursor:"), mouseTileX, mouseTileY));
@@ -297,7 +297,7 @@ void TargetDebugTab::logic()
 {
     if (player_node && player_node->getTarget())
     {
-        Being *target = player_node->getTarget();
+        const Being *const target = player_node->getTarget();
 
         mTargetLabel->setCaption(strprintf("%s %s (%d, %d)", _("Target:"),
             target->getName().c_str(), target->getTileX(),

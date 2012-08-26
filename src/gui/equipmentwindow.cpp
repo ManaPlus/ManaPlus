@@ -53,8 +53,9 @@ static const int BOX_X_PAD = (BOX_WIDTH - 32) / 2;
 static const int BOX_Y_PAD = (BOX_HEIGHT - 32) / 2;
 static const int BOX_COUNT = 13;
 
-EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
-                                 bool foring):
+EquipmentWindow::EquipmentWindow(Equipment *const equipment,
+                                 Being *const being,
+                                 const bool foring):
     Window(_("Equipment"), false, nullptr, "equipment.xml"),
     mEquipment(equipment),
     mSelected(-1),
@@ -130,7 +131,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
     // Draw window graphics
     Window::draw(graphics);
 
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics*>(graphics);
 
     Window::drawChildren(graphics);
 
@@ -140,7 +141,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
     for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
          it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
     {
-        EquipmentBox *box = *it;
+        const EquipmentBox *const box = *it;
         if (!box)
             continue;
         if (i == mSelected)
@@ -161,11 +162,11 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
         if (!mEquipment)
             continue;
 
-        Item *item = mEquipment->getEquipment(i);
+        const Item *const item = mEquipment->getEquipment(i);
         if (item)
         {
             // Draw Item.
-            Image *image = item->getImage();
+            Image *const image = item->getImage();
             if (image)
             {
                 image->setAlpha(1.0f); // Ensure the image is drawn
@@ -195,13 +196,13 @@ void EquipmentWindow::action(const gcn::ActionEvent &event)
 
     if (event.getId() == "unequip" && mSelected > -1)
     {
-        Item *item = mEquipment->getEquipment(mSelected);
+        const Item *const item = mEquipment->getEquipment(mSelected);
         Net::getInventoryHandler()->unequipItem(item);
         setSelected(-1);
     }
 }
 
-Item *EquipmentWindow::getItem(int x, int y) const
+Item *EquipmentWindow::getItem(const int x, const int y) const
 {
     if (!mEquipment)
         return nullptr;
@@ -211,7 +212,7 @@ Item *EquipmentWindow::getItem(int x, int y) const
     for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
          it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
     {
-        EquipmentBox *box = *it;
+        const EquipmentBox *const box = *it;
         if (!box)
             continue;
         const gcn::Rectangle tRect(box->x, box->y,
@@ -243,10 +244,10 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
         for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
              it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
         {
-            EquipmentBox *box = *it;
+            const EquipmentBox *const box = *it;
             if (!box)
                 continue;
-            Item *item = mEquipment->getEquipment(i);
+            const Item *const item = mEquipment->getEquipment(i);
             const gcn::Rectangle tRect(box->x, box->y,
                 BOX_WIDTH, BOX_HEIGHT);
 
@@ -256,7 +257,7 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
     }
     else if (mouseEvent.getButton() == gcn::MouseEvent::RIGHT)
     {
-        if (Item *item = getItem(x, y))
+        if (Item *const item = getItem(x, y))
         {
             if (mItemPopup)
                 mItemPopup->setVisible(false);
@@ -286,7 +287,7 @@ void EquipmentWindow::mouseMoved(gcn::MouseEvent &event)
     const int x = event.getX();
     const int y = event.getY();
 
-    Item *item = getItem(x, y);
+    const Item *const item = getItem(x, y);
 
     if (item)
     {
@@ -309,14 +310,14 @@ void EquipmentWindow::mouseExited(gcn::MouseEvent &event A_UNUSED)
         mItemPopup->setVisible(false);
 }
 
-void EquipmentWindow::setSelected(int index)
+void EquipmentWindow::setSelected(const int index)
 {
     mSelected = index;
     if (mUnequip)
         mUnequip->setEnabled(mSelected != -1);
 }
 
-void EquipmentWindow::setBeing(Being *being)
+void EquipmentWindow::setBeing(Being *const being)
 {
     mPlayerBox->setPlayer(being);
     mBeing = being;
@@ -331,13 +332,13 @@ void EquipmentWindow::setBeing(Being *being)
     mEquipment = being->getEquipment();
 }
 
-void EquipmentWindow::updateBeing(Being *being)
+void EquipmentWindow::updateBeing(Being *const being)
 {
     if (being == mBeing)
         setBeing(being);
 }
 
-void EquipmentWindow::resetBeing(Being *being)
+void EquipmentWindow::resetBeing(const Being *const being)
 {
     if (being == mBeing)
         setBeing(nullptr);
@@ -346,7 +347,7 @@ void EquipmentWindow::resetBeing(Being *being)
 void EquipmentWindow::fillBoxes()
 {
     XML::Document *doc = new XML::Document("equipmentwindow.xml");
-    XmlNodePtr root = doc->rootNode();
+    const XmlNodePtr root = doc->rootNode();
     if (!root)
     {
         delete doc;
@@ -372,13 +373,13 @@ void EquipmentWindow::fillBoxes()
     delete doc;
 }
 
-void EquipmentWindow::loadWindow(XmlNodePtr windowNode)
+void EquipmentWindow::loadWindow(const XmlNodePtr windowNode)
 {
     setDefaultSize(XML::getProperty(windowNode, "width", 180),
         XML::getProperty(windowNode, "height", 345), ImageRect::CENTER);
 }
 
-void EquipmentWindow::loadPlayerBox(XmlNodePtr playerBoxNode)
+void EquipmentWindow::loadPlayerBox(const XmlNodePtr playerBoxNode)
 {
     mPlayerBox->setDimension(gcn::Rectangle(
         XML::getProperty(playerBoxNode, "x", 50),
@@ -387,9 +388,10 @@ void EquipmentWindow::loadPlayerBox(XmlNodePtr playerBoxNode)
         XML::getProperty(playerBoxNode, "height", 168)));
 }
 
-void EquipmentWindow::loadSlot(XmlNodePtr slotNode, ImageSet *imageset)
+void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
+                               const ImageSet *const imageset)
 {
-    int slot = parseSlotName(XML::getProperty(slotNode, "name", ""));
+    const int slot = parseSlotName(XML::getProperty(slotNode, "name", ""));
     if (slot < 0)
         return;
 
@@ -406,7 +408,7 @@ void EquipmentWindow::loadSlot(XmlNodePtr slotNode, ImageSet *imageset)
 
     if (mBoxes[slot])
     {
-        EquipmentBox *box = mBoxes[slot];
+        EquipmentBox *const box = mBoxes[slot];
         box->x = x;
         box->y = y;
         box->image = image;
@@ -417,7 +419,7 @@ void EquipmentWindow::loadSlot(XmlNodePtr slotNode, ImageSet *imageset)
     }
 }
 
-int EquipmentWindow::parseSlotName(std::string name)
+int EquipmentWindow::parseSlotName(std::string name) const
 {
     int id = -1;
     if (name == "shoes" || name == "boot" || name == "boots")
@@ -500,7 +502,8 @@ void EquipmentWindow::fillDefault()
     addBox(12, 129, 123, 5); // ring
 }
 
-void EquipmentWindow::addBox(int idx, int x, int y, int imageIndex)
+void EquipmentWindow::addBox(const int idx, const int x, const int y,
+                             const int imageIndex)
 {
     Image *image = nullptr;
 

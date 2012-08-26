@@ -81,7 +81,8 @@ class EditServerDialog : public Window,
                          public gcn::KeyListener
 {
     public:
-        EditServerDialog(ServerDialog *parent, ServerInfo server, int index);
+        EditServerDialog(ServerDialog *const parent, ServerInfo server,
+                         const int index);
 
         ~EditServerDialog();
 
