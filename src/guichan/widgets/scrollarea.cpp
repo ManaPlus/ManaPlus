@@ -407,374 +407,44 @@ namespace gcn
         mouseEvent.consume();
     }
 
-    void ScrollArea::draw(Graphics *graphics)
+    void ScrollArea::draw(Graphics *graphics A_UNUSED)
     {
-        drawBackground(graphics);
-
-        if (mVBarVisible)
-        {
-            drawUpButton(graphics);
-            drawDownButton(graphics);
-            drawVBar(graphics);
-            drawVMarker(graphics);
-        }
-
-        if (mHBarVisible)
-        {
-            drawLeftButton(graphics);
-            drawRightButton(graphics);
-            drawHBar(graphics);
-            drawHMarker(graphics);
-        }
-
-        if (mHBarVisible && mVBarVisible)
-        {
-            graphics->setColor(getBaseColor());
-            graphics->fillRectangle(Rectangle(getWidth() - mScrollbarWidth,
-                getHeight() - mScrollbarWidth,
-                mScrollbarWidth, mScrollbarWidth));
-        }
-
-        drawChildren(graphics);
     }
 
-    void ScrollArea::drawHBar(Graphics* graphics)
+    void ScrollArea::drawHBar(Graphics* graphics A_UNUSED)
     {
-        Rectangle dim = getHorizontalBarDimension();
-
-        graphics->pushClipArea(dim);
-
-        int alpha = getBaseColor().a;
-        Color trackColor = getBaseColor() - 0x101010;
-        trackColor.a = alpha;
-        Color shadowColor = getBaseColor() - 0x303030;
-        shadowColor.a = alpha;
-
-        graphics->setColor(trackColor);
-        graphics->fillRectangle(Rectangle(0, 0, dim.width, dim.height));
-
-        graphics->setColor(shadowColor);
-        graphics->drawLine(0, 0, dim.width, 0);
-
-        graphics->popClipArea();
     }
 
-    void ScrollArea::drawVBar(Graphics* graphics)
+    void ScrollArea::drawVBar(Graphics* graphics A_UNUSED)
     {
-        Rectangle dim = getVerticalBarDimension();
-
-        graphics->pushClipArea(dim);
-
-        int alpha = getBaseColor().a;
-        Color trackColor = getBaseColor() - 0x101010;
-        trackColor.a = alpha;
-        Color shadowColor = getBaseColor() - 0x303030;
-        shadowColor.a = alpha;
-
-        graphics->setColor(trackColor);
-        graphics->fillRectangle(Rectangle(0, 0, dim.width, dim.height));
-
-        graphics->setColor(shadowColor);
-        graphics->drawLine(0, 0, 0, dim.height);
-
-        graphics->popClipArea();
     }
 
-    void ScrollArea::drawBackground(Graphics *graphics)
+    void ScrollArea::drawBackground(Graphics *graphics A_UNUSED)
     {
-        if (isOpaque())
-        {
-            graphics->setColor(getBackgroundColor());
-            graphics->fillRectangle(getChildrenArea());
-        }
     }
 
-    void ScrollArea::drawUpButton(Graphics* graphics)
+    void ScrollArea::drawUpButton(Graphics* graphics A_UNUSED)
     {
-        Rectangle dim = getUpButtonDimension();
-        graphics->pushClipArea(dim);
-
-        Color highlightColor;
-        Color shadowColor;
-        Color faceColor;
-        int offset;
-        int alpha = getBaseColor().a;
-
-        if (mUpButtonPressed)
-        {
-            faceColor = getBaseColor() - 0x303030;
-            faceColor.a = alpha;
-            highlightColor = faceColor - 0x303030;
-            highlightColor.a = alpha;
-            shadowColor = getBaseColor();
-            shadowColor.a = alpha;
-
-            offset = 1;
-        }
-        else
-        {
-            faceColor = getBaseColor();
-            faceColor.a = alpha;
-            highlightColor = faceColor + 0x303030;
-            highlightColor.a = alpha;
-            shadowColor = faceColor - 0x303030;
-            shadowColor.a = alpha;
-
-            offset = 0;
-        }
-
-        graphics->setColor(faceColor);
-        graphics->fillRectangle(Rectangle(0, 0, dim.width, dim.height));
-
-        graphics->setColor(highlightColor);
-        graphics->drawLine(0, 0, dim.width - 1, 0);
-        graphics->drawLine(0, 1, 0, dim.height - 1);
-
-        graphics->setColor(shadowColor);
-        graphics->drawLine(dim.width - 1, 0, dim.width - 1, dim.height - 1);
-        graphics->drawLine(1, dim.height - 1, dim.width - 1, dim.height - 1);
-
-        graphics->setColor(getForegroundColor());
-
-        const int w = dim.height / 2;
-        const int h = w / 2 + 2;
-        for (int i = 0; i < w / 2; ++i)
-        {
-            graphics->drawLine(w - i + offset, i + h + offset,
-                w + i + offset, i + h + offset);
-        }
-
-        graphics->popClipArea();
     }
 
-    void ScrollArea::drawDownButton(Graphics* graphics)
+    void ScrollArea::drawDownButton(Graphics* graphics A_UNUSED)
     {
-        Rectangle dim = getDownButtonDimension();
-        graphics->pushClipArea(dim);
-
-        Color highlightColor;
-        Color shadowColor;
-        Color faceColor;
-        int offset;
-        int alpha = getBaseColor().a;
-
-        if (mDownButtonPressed)
-        {
-            faceColor = getBaseColor() - 0x303030;
-            faceColor.a = alpha;
-            highlightColor = faceColor - 0x303030;
-            highlightColor.a = alpha;
-            shadowColor = getBaseColor();
-            shadowColor.a = alpha;
-
-            offset = 1;
-        }
-        else
-        {
-            faceColor = getBaseColor();
-            faceColor.a = alpha;
-            highlightColor = faceColor + 0x303030;
-            highlightColor.a = alpha;
-            shadowColor = faceColor - 0x303030;
-            shadowColor.a = alpha;
-
-            offset = 0;
-        }
-
-        graphics->setColor(faceColor);
-        graphics->fillRectangle(Rectangle(0, 0, dim.width, dim.height));
-
-        graphics->setColor(highlightColor);
-        graphics->drawLine(0, 0, dim.width - 1, 0);
-        graphics->drawLine(0, 1, 0, dim.height - 1);
-
-        graphics->setColor(shadowColor);
-        graphics->drawLine(dim.width - 1, 0, dim.width - 1, dim.height - 1);
-        graphics->drawLine(1, dim.height - 1, dim.width - 1, dim.height - 1);
-
-        graphics->setColor(getForegroundColor());
-
-        const int w = dim.height / 2;
-        const int h = w + 1;
-        for (int i = 0; i < w / 2; ++i)
-        {
-            graphics->drawLine(w - i + offset, -i + h + offset,
-                w + i + offset, -i + h + offset);
-        }
-
-        graphics->popClipArea();
     }
 
-    void ScrollArea::drawLeftButton(Graphics* graphics)
+    void ScrollArea::drawLeftButton(Graphics* graphics A_UNUSED)
     {
-        Rectangle dim = getLeftButtonDimension();
-        graphics->pushClipArea(dim);
-
-        Color highlightColor;
-        Color shadowColor;
-        Color faceColor;
-        int offset;
-        int alpha = getBaseColor().a;
-
-        if (mLeftButtonPressed)
-        {
-            faceColor = getBaseColor() - 0x303030;
-            faceColor.a = alpha;
-            highlightColor = faceColor - 0x303030;
-            highlightColor.a = alpha;
-            shadowColor = getBaseColor();
-            shadowColor.a = alpha;
-
-            offset = 1;
-        }
-        else
-        {
-            faceColor = getBaseColor();
-            faceColor.a = alpha;
-            highlightColor = faceColor + 0x303030;
-            highlightColor.a = alpha;
-            shadowColor = faceColor - 0x303030;
-            shadowColor.a = alpha;
-
-            offset = 0;
-        }
-
-        graphics->setColor(faceColor);
-        graphics->fillRectangle(Rectangle(0, 0, dim.width, dim.height));
-
-        graphics->setColor(highlightColor);
-        graphics->drawLine(0, 0, dim.width - 1, 0);
-        graphics->drawLine(0, 1, 0, dim.height - 1);
-
-        graphics->setColor(shadowColor);
-        graphics->drawLine(dim.width - 1, 0, dim.width - 1, dim.height - 1);
-        graphics->drawLine(1, dim.height - 1, dim.width - 1, dim.height - 1);
-
-        graphics->setColor(getForegroundColor());
-
-        const int w = dim.width / 2;
-        const int h = w - 2;
-        for (int i = 0; i < w / 2; ++i)
-        {
-            graphics->drawLine(i + h + offset, w - i + offset,
-                i + h + offset, w + i + offset);
-        }
-
-        graphics->popClipArea();
     }
 
-    void ScrollArea::drawRightButton(Graphics* graphics)
+    void ScrollArea::drawRightButton(Graphics* graphics A_UNUSED)
     {
-        Rectangle dim = getRightButtonDimension();
-        graphics->pushClipArea(dim);
-
-        Color highlightColor;
-        Color shadowColor;
-        Color faceColor;
-        int offset;
-        int alpha = getBaseColor().a;
-
-        if (mRightButtonPressed)
-        {
-            faceColor = getBaseColor() - 0x303030;
-            faceColor.a = alpha;
-            highlightColor = faceColor - 0x303030;
-            highlightColor.a = alpha;
-            shadowColor = getBaseColor();
-            shadowColor.a = alpha;
-
-            offset = 1;
-        }
-        else
-        {
-            faceColor = getBaseColor();
-            faceColor.a = alpha;
-            highlightColor = faceColor + 0x303030;
-            highlightColor.a = alpha;
-            shadowColor = faceColor - 0x303030;
-            shadowColor.a = alpha;
-
-            offset = 0;
-        }
-
-        graphics->setColor(faceColor);
-        graphics->fillRectangle(Rectangle(0, 0, dim.width, dim.height));
-
-        graphics->setColor(highlightColor);
-        graphics->drawLine(0, 0, dim.width - 1, 0);
-        graphics->drawLine(0, 1, 0, dim.height - 1);
-
-        graphics->setColor(shadowColor);
-        graphics->drawLine(dim.width - 1, 0, dim.width - 1, dim.height - 1);
-        graphics->drawLine(1, dim.height - 1, dim.width - 1, dim.height - 1);
-
-        graphics->setColor(getForegroundColor());
-
-        const int w = dim.width / 2;
-        const int h = w + 1;
-        for (int i = 0; i < w / 2; ++i)
-        {
-            graphics->drawLine(-i + h + offset, w - i + offset,
-                -i + h + offset, w + i + offset);
-        }
-
-        graphics->popClipArea();
     }
 
-    void ScrollArea::drawVMarker(Graphics* graphics)
+    void ScrollArea::drawVMarker(Graphics* graphics A_UNUSED)
     {
-        Rectangle dim = getVerticalMarkerDimension();
-        graphics->pushClipArea(dim);
-
-        int alpha = getBaseColor().a;
-        Color faceColor = getBaseColor();
-        faceColor.a = alpha;
-        Color highlightColor = faceColor + 0x303030;
-        highlightColor.a = alpha;
-        Color shadowColor = faceColor - 0x303030;
-        shadowColor.a = alpha;
-
-        graphics->setColor(faceColor);
-        graphics->fillRectangle(Rectangle(1, 1,
-            dim.width - 1, dim.height - 1));
-
-        graphics->setColor(highlightColor);
-        graphics->drawLine(0, 0, dim.width - 1, 0);
-        graphics->drawLine(0, 1, 0, dim.height - 1);
-
-        graphics->setColor(shadowColor);
-        graphics->drawLine(1, dim.height - 1, dim.width - 1, dim.height - 1);
-        graphics->drawLine(dim.width - 1, 0, dim.width - 1, dim.height - 1);
-
-        graphics->popClipArea();
     }
 
-    void ScrollArea::drawHMarker(Graphics* graphics)
+    void ScrollArea::drawHMarker(Graphics* graphics A_UNUSED)
     {
-        Rectangle dim = getHorizontalMarkerDimension();
-        graphics->pushClipArea(dim);
-
-        int alpha = getBaseColor().a;
-        Color faceColor = getBaseColor();
-        faceColor.a = alpha;
-        Color highlightColor = faceColor + 0x303030;
-        highlightColor.a = alpha;
-        Color shadowColor = faceColor - 0x303030;
-        shadowColor.a = alpha;
-
-        graphics->setColor(faceColor);
-        graphics->fillRectangle(Rectangle(1, 1,
-            dim.width - 1, dim.height - 1));
-
-        graphics->setColor(highlightColor);
-        graphics->drawLine(0, 0, dim.width - 1, 0);
-        graphics->drawLine(0, 1, 0, dim.height - 1);
-
-        graphics->setColor(shadowColor);
-        graphics->drawLine(1, dim.height - 1, dim.width - 1, dim.height - 1);
-        graphics->drawLine(dim.width - 1, 0, dim.width - 1, dim.height - 1);
-
-        graphics->popClipArea();
     }
 
     void ScrollArea::logic()

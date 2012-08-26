@@ -185,57 +185,8 @@ namespace gcn
         return mOpaque;
     }
 
-    void TabbedArea::draw(Graphics *graphics)
+    void TabbedArea::draw(Graphics *graphics A_UNUSED)
     {
-        const Color &faceColor = getBaseColor();
-        const int alpha = getBaseColor().a;
-        Color highlightColor = faceColor + 0x303030;
-        highlightColor.a = alpha;
-        Color shadowColor = faceColor - 0x303030;
-        shadowColor.a = alpha;
-
-        // Draw a border.
-        graphics->setColor(highlightColor);
-        graphics->drawLine(0,
-                           mTabContainer->getHeight(),
-                           0,
-                           getHeight() - 2);
-        graphics->setColor(shadowColor);
-        graphics->drawLine(getWidth() - 1,
-                           mTabContainer->getHeight() + 1,
-                           getWidth() - 1,
-                           getHeight() - 1);
-        graphics->drawLine(1,
-                           getHeight() - 1,
-                           getWidth() - 1,
-                           getHeight() - 1);
-
-        if (isOpaque())
-        {
-            graphics->setColor(getBaseColor());
-            graphics->fillRectangle(Rectangle(1, 1,
-                                              getWidth() - 2,
-                                              getHeight() - 2));
-        }
-
-        // Draw a line underneath the tabs.
-        graphics->setColor(highlightColor);
-        graphics->drawLine(1, mTabContainer->getHeight(),
-            getWidth() - 1, mTabContainer->getHeight());
-
-        // If a tab is selected, remove the line right underneath
-        // the selected tab.
-        if (mSelectedTab)
-        {
-            graphics->setColor(getBaseColor());
-            graphics->drawLine(mSelectedTab->getX() + 1,
-                mTabContainer->getHeight(),
-                mSelectedTab->getX() + mSelectedTab->getWidth() - 2,
-                mTabContainer->getHeight());
-
-        }
-
-        drawChildren(graphics);
     }
 
     void TabbedArea::adjustSize()

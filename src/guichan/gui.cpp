@@ -132,35 +132,6 @@ namespace gcn
 
     void Gui::draw()
     {
-        if (!mTop)
-            throw GCN_EXCEPTION("No top widget set");
-        if (!mGraphics)
-            throw GCN_EXCEPTION("No graphics set");
-
-        if (!mTop->isVisible())
-            return;
-
-        mGraphics->_beginDraw();
-
-        // If top has a frame,
-        // draw it before drawing top
-        if (mTop->getFrameSize() > 0)
-        {
-            Rectangle rec = mTop->getDimension();
-            rec.x -= mTop->getFrameSize();
-            rec.y -= mTop->getFrameSize();
-            rec.width += 2 * mTop->getFrameSize();
-            rec.height += 2 * mTop->getFrameSize();
-            mGraphics->pushClipArea(rec);
-            mTop->drawFrame(mGraphics);
-            mGraphics->popClipArea();
-        }
-
-        mGraphics->pushClipArea(mTop->getDimension());
-        mTop->draw(mGraphics);
-        mGraphics->popClipArea();
-
-        mGraphics->_endDraw();
     }
 
     void Gui::focusNone()
