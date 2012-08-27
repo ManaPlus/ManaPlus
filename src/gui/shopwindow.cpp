@@ -242,12 +242,12 @@ void ShopWindow::action(const gcn::ActionEvent &event)
     if (mSelectedItem < 1)
         return;
 
-    Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return;
 
     //+++ need support for colors
-    Item *item = inv->findItem(mSelectedItem, 0);
+    Item *const item = inv->findItem(mSelectedItem, 0);
     if (item)
     {
         if (event.getId() == "add buy")
@@ -269,7 +269,7 @@ void ShopWindow::startTrade()
     if (!actorSpriteManager || !tradeWindow)
         return;
 
-    Being *being = actorSpriteManager->findBeingByName(
+    Being *const being = actorSpriteManager->findBeingByName(
         mTradeNick, Being::PLAYER);
     tradeWindow->clear();
     if (mTradeMoney)
@@ -308,11 +308,12 @@ void ShopWindow::setVisible(bool visible)
     Window::setVisible(visible);
 }
 
-void ShopWindow::addBuyItem(Item *item, int amount, int price)
+void ShopWindow::addBuyItem(const Item *const item, const int amount,
+                            const int price)
 {
     if (!mBuyShopItems || !item)
         return;
-    bool emp = isShopEmpty();
+    const bool emp = isShopEmpty();
     mBuyShopItems->addItemNoDup(item->getId(),
         item->getColor(), amount, price);
     if (emp && player_node)
@@ -321,11 +322,12 @@ void ShopWindow::addBuyItem(Item *item, int amount, int price)
     updateButtonsAndLabels();
 }
 
-void ShopWindow::addSellItem(Item *item, int amount, int price)
+void ShopWindow::addSellItem(const Item *const item, const int amount,
+                             const int price)
 {
     if (!mBuyShopItems || !item)
         return;
-    bool emp = isShopEmpty();
+    const bool emp = isShopEmpty();
     mSellShopItems->addItemNoDup(item->getId(),
         item->getColor(), amount, price);
     if (emp && player_node)
@@ -412,7 +414,7 @@ void ShopWindow::saveList()
     for (std::vector<ShopItem*>::const_iterator it = items.begin(),
          it_end = items.end(); it != it_end; ++it)
     {
-        ShopItem *item = *(it);
+        ShopItem *const item = *(it);
         if (item)
             mapItems[item->getId()] = item;
     }
@@ -423,8 +425,8 @@ void ShopWindow::saveList()
     {
         if (!(*it))
             continue;
-        ShopItem *sellItem = *(it);
-        ShopItem *buyItem = mapItems[sellItem->getId()];
+        const ShopItem *const sellItem = *(it);
+        const ShopItem *const buyItem = mapItems[sellItem->getId()];
 
         shopFile << sellItem->getId();
         if (buyItem)
@@ -445,7 +447,7 @@ void ShopWindow::saveList()
     for (std::map<int, ShopItem*>::const_iterator mapIt = mapItems.begin(),
          mapIt_end = mapItems.end(); mapIt != mapIt_end; ++mapIt)
     {
-        ShopItem *buyItem = (*mapIt).second;
+        const ShopItem *const buyItem = (*mapIt).second;
         if (buyItem)
         {
             shopFile << buyItem->getId();
@@ -458,7 +460,7 @@ void ShopWindow::saveList()
     shopFile.close();
 }
 
-void ShopWindow::announce(ShopItems *list, int mode)
+void ShopWindow::announce(ShopItems *const list, const int mode)
 {
     if (!list)
         return;
@@ -486,7 +488,7 @@ void ShopWindow::announce(ShopItems *list, int mode)
     for (std::vector<ShopItem*>::const_iterator it = items.begin(),
          it_end = items.end(); it != it_end; ++it)
     {
-        ShopItem *item = *(it);
+        const ShopItem *const item = *(it);
         if (item->getQuantity() > 1)
         {
             if (mAnnounceLinks->isSelected())
@@ -522,7 +524,7 @@ void ShopWindow::announce(ShopItems *list, int mode)
     Net::getChatHandler()->talk(data);
 }
 
-void ShopWindow::giveList(const std::string &nick, int mode)
+void ShopWindow::giveList(const std::string &nick, const int mode)
 {
     if (!checkFloodCounter(mLastRequestTimeList))
         return;
@@ -543,7 +545,7 @@ void ShopWindow::giveList(const std::string &nick, int mode)
     if (!list)
         return;
 
-    Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return;
 
@@ -552,14 +554,14 @@ void ShopWindow::giveList(const std::string &nick, int mode)
     for (std::vector<ShopItem*>::const_iterator it = items.begin(),
          it_end = items.end(); it != it_end; ++it)
     {
-        ShopItem *item = *(it);
+        const ShopItem *const item = *(it);
         if (!item)
             continue;
 
         if (mode == SELL)
         {
             //+++ need support for colors
-            Item *item2 = inv->findItem(item->getId(), 0);
+            const Item *const item2 = inv->findItem(item->getId(), 0);
             if (item2)
             {
                 int amount = item->getQuantity();
@@ -598,7 +600,7 @@ void ShopWindow::giveList(const std::string &nick, int mode)
 }
 
 void ShopWindow::sendMessage(const std::string &nick,
-                             std::string data, bool random)
+                             std::string data, const bool random)
 {
     if (!chatWindow)
         return;
@@ -618,7 +620,7 @@ void ShopWindow::sendMessage(const std::string &nick,
 //here was true
 }
 
-void ShopWindow::showList(const std::string &nick, std::string data)
+void ShopWindow::showList(const std::string &nick, std::string data) const
 {
     BuyDialog *buyDialog = nullptr;
     SellDialog *sellDialog = nullptr;
@@ -637,7 +639,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         return;
     }
 
-    Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return;
 
@@ -651,8 +653,8 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         if (f + 9 > data.length())
             break;
 
-        int id = decodeStr(data.substr(f, 2));
-        int price = decodeStr(data.substr(f + 2, 4));
+        const int id = decodeStr(data.substr(f, 2));
+        const int price = decodeStr(data.substr(f + 2, 4));
         int amount = decodeStr(data.substr(f + 6, 3));
         //+++ need impliment colors?
         if (buyDialog && amount > 0)
@@ -660,7 +662,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         if (sellDialog)
         {
             //+++ need support for colors
-            Item *item = inv->findItem(id, 0);
+            const Item *const item = inv->findItem(id, 0);
             if (item)
             {
                 if (item->getQuantity() < amount)
@@ -674,7 +676,8 @@ void ShopWindow::showList(const std::string &nick, std::string data)
     }
 }
 
-void ShopWindow::processRequest(std::string nick, std::string data, int mode)
+void ShopWindow::processRequest(std::string nick, std::string data,
+                                const int mode)
 {
     if (!player_node || !mTradeNick.empty() || PlayerInfo::isTrading()
         || !actorSpriteManager
@@ -683,7 +686,7 @@ void ShopWindow::processRequest(std::string nick, std::string data, int mode)
         return;
     }
 
-    Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return;
 
@@ -733,7 +736,7 @@ void ShopWindow::processRequest(std::string nick, std::string data, int mode)
     if (mode == BUY)
     {
         //+++ need support for colors
-        Item *item2 = inv->findItem(mTradeItem->getId(), 0);
+        const Item *const item2 = inv->findItem(mTradeItem->getId(), 0);
         if (!item2 || item2->getQuantity() < amount
             || !findShopItem(mTradeItem, SELL))
         {
@@ -763,8 +766,8 @@ void ShopWindow::processRequest(std::string nick, std::string data, int mode)
     }
     else
     {
-        ConfirmDialog *confirmDlg = new ConfirmDialog(_("Request for Trade"),
-            strprintf(_("%s wants to %s %s do you "
+        ConfirmDialog *const confirmDlg = new ConfirmDialog
+            (_("Request for Trade"), strprintf(_("%s wants to %s %s do you "
             "accept?"), nick.c_str(), msg.c_str(),
             mTradeItem->getInfo().getName().c_str()), true);
         confirmDlg->addActionListener(this);
@@ -781,7 +784,7 @@ void ShopWindow::updateTimes()
     }
 }
 
-bool ShopWindow::checkFloodCounter(int &counterTime)
+bool ShopWindow::checkFloodCounter(int &counterTime) const
 {
     if (!counterTime || counterTime > cur_time)
         counterTime = cur_time;
@@ -792,7 +795,7 @@ bool ShopWindow::checkFloodCounter(int &counterTime)
     return true;
 }
 
-bool ShopWindow::findShopItem(ShopItem *shopItem, int mode)
+bool ShopWindow::findShopItem(const ShopItem *const shopItem, const int mode)
 {
     if (!shopItem)
         return false;
@@ -814,7 +817,7 @@ bool ShopWindow::findShopItem(ShopItem *shopItem, int mode)
     for (std::vector<ShopItem*>::const_iterator it = items.begin(),
          it_end = items.end(); it != it_end; ++ it)
     {
-        ShopItem *item = *(it);
+        const ShopItem *const item = *(it);
         if (!item)
             continue;
 
@@ -828,19 +831,19 @@ bool ShopWindow::findShopItem(ShopItem *shopItem, int mode)
     return false;
 }
 
-int ShopWindow::sumAmount(Item *shopItem)
+int ShopWindow::sumAmount(const Item *const shopItem)
 {
     if (!player_node || !shopItem)
         return 0;
 
-    Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return 0;
     int sum = 0;
 
     for (unsigned f = 0; f < inv->getSize(); f ++)
     {
-        Item *item = inv->getItem(f);
+        const Item *const item = inv->getItem(f);
         if (item && item->getId() == shopItem->getId())
             sum += item->getQuantity();
     }

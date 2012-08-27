@@ -80,7 +80,7 @@ class Setup_Input : public SetupTab
         std::string keyToString(const int index) const;
 
     private:
-        void fixTranslations();
+        void fixTranslations() const;
 
         void fixTranslation(SetupActionData *const actionDatas,
                             const int actionStart, const int actionEnd,

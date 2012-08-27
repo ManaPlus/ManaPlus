@@ -49,7 +49,7 @@ WrongDataNoticeListener::WrongDataNoticeListener():
 {
 }
 
-void WrongDataNoticeListener::setTarget(gcn::TextField *textField)
+void WrongDataNoticeListener::setTarget(gcn::TextField *const textField)
 {
     mTarget = textField;
 }
@@ -60,7 +60,7 @@ void WrongDataNoticeListener::action(const gcn::ActionEvent &event)
         mTarget->requestFocus();
 }
 
-RegisterDialog::RegisterDialog(LoginData *data):
+RegisterDialog::RegisterDialog(LoginData *const data):
     Window(_("Register"), false, nullptr, "register.xml"),
     mEmailField(nullptr),
     mMaleButton(nullptr),
@@ -71,9 +71,9 @@ RegisterDialog::RegisterDialog(LoginData *data):
 {
     int optionalActions = Net::getLoginHandler()->supportedOptionalActions();
 
-    gcn::Label *userLabel = new Label(_("Name:"));
-    gcn::Label *passwordLabel = new Label(_("Password:"));
-    gcn::Label *confirmLabel = new Label(_("Confirm:"));
+    gcn::Label *const userLabel = new Label(_("Name:"));
+    gcn::Label *const passwordLabel = new Label(_("Password:"));
+    gcn::Label *const confirmLabel = new Label(_("Confirm:"));
     mUserField = new TextField(mLoginData->username);
     mPasswordField = new PasswordField(mLoginData->password);
     mConfirmField = new PasswordField;
@@ -114,7 +114,7 @@ RegisterDialog::RegisterDialog(LoginData *data):
 
     if (optionalActions & Net::LoginHandler::SetEmailOnRegister)
     {
-        gcn::Label *emailLabel = new Label(_("Email:"));
+        gcn::Label *const emailLabel = new Label(_("Email:"));
         mEmailField = new TextField;
         placer(0, row, emailLabel);
         placer(1, row, mEmailField, 3).setPadding(2);
@@ -173,10 +173,14 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         std::string errorMsg;
         int error = 0;
 
-        unsigned int minUser = Net::getLoginHandler()->getMinUserNameLength();
-        unsigned int maxUser = Net::getLoginHandler()->getMaxUserNameLength();
-        unsigned int minPass = Net::getLoginHandler()->getMinPasswordLength();
-        unsigned int maxPass = Net::getLoginHandler()->getMaxPasswordLength();
+        const unsigned int minUser = Net::getLoginHandler()
+            ->getMinUserNameLength();
+        const unsigned int maxUser = Net::getLoginHandler()
+            ->getMaxUserNameLength();
+        const unsigned int minPass = Net::getLoginHandler()
+            ->getMinPasswordLength();
+        const unsigned int maxPass = Net::getLoginHandler()
+            ->getMaxPasswordLength();
 
         if (user.length() < minUser)
         {
@@ -234,7 +238,8 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
                 mWrongDataNoticeListener->setTarget(this->mPasswordField);
             }
 
-            OkDialog *dlg = new OkDialog(_("Error"), errorMsg, DIALOG_ERROR);
+            OkDialog *const dlg = new OkDialog(
+                _("Error"), errorMsg, DIALOG_ERROR);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

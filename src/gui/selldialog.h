@@ -57,7 +57,7 @@ class SellDialog : public Window,
          *
          * @see Window::Window
          */
-        SellDialog(int npcId);
+        SellDialog(const int npcId);
 
         /**
          * Constructor.
@@ -79,7 +79,7 @@ class SellDialog : public Window,
         /**
          * Adds an item to the inventory.
          */
-        void addItem(const Item *item, int price);
+        void addItem(const Item *const item, const int price);
 
         /**
          * Called when receiving actions from the widgets.
@@ -96,14 +96,15 @@ class SellDialog : public Window,
         /**
          * Gives Player's Money amount
          */
-        void setMoney(int amount);
+        void setMoney(const int amount);
 
         /**
          * Sets the visibility of this window.
          */
         void setVisible(bool visible);
 
-        void addItem(int id, unsigned char color, int amount, int price);
+        void addItem(const int id, const unsigned char color,
+                     const int amount, const int price);
 
         /**
          * Returns true if any instances exist.

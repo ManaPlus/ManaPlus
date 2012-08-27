@@ -132,7 +132,8 @@ static bool modeSorter(std::string mode1, std::string mode2)
 ModeListModel::ModeListModel()
 {
     /* Get available fullscreen/hardware modes */
-    SDL_Rect **modes = SDL_ListModes(nullptr, SDL_FULLSCREEN | SDL_HWSURFACE);
+    SDL_Rect **const modes = SDL_ListModes(nullptr,
+        SDL_FULLSCREEN | SDL_HWSURFACE);
 
     /* Check which modes are available */
     if (modes == static_cast<SDL_Rect **>(nullptr))
@@ -169,7 +170,7 @@ ModeListModel::ModeListModel()
 void ModeListModel::addCustomMode(std::string mode)
 {
     StringVectCIter it = mVideoModes.begin();
-    StringVectCIter it_end = mVideoModes.end();
+    const StringVectCIter it_end = mVideoModes.end();
     while (it != it_end)
     {
         if (*it == mode)
@@ -241,7 +242,7 @@ Setup_Video::Setup_Video():
 {
     setName(_("Video"));
 
-    ScrollArea *scrollArea = new ScrollArea(mModeList,
+    ScrollArea *const scrollArea = new ScrollArea(mModeList,
         true, "setup_video_background.xml");
     scrollArea->setWidth(150);
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
@@ -548,7 +549,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     }
     else if (id == "detect")
     {
-        int val = graphicsManager.startDetection();
+        const int val = graphicsManager.startDetection();
         if (val >= 0 && val <= 2)
             mOpenGLDropDown->setSelected(val);
     }

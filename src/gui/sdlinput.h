@@ -173,7 +173,7 @@ protected:
      * @param button an SDL mouse button.
      * @return a Guichan mouse button.
      */
-    int convertMouseButton(int button);
+    static int convertMouseButton(const int button);
 
     /**
      * Converts an SDL event key to a key value.
@@ -182,7 +182,7 @@ protected:
      * @return a key value.
      * @see Key
      */
-    int convertKeyCharacter(SDL_Event event);
+    static int convertKeyCharacter(SDL_Event event);
 
     std::queue<KeyInput> mKeyInputQueue;
     std::queue<gcn::MouseInput> mMouseInputQueue;

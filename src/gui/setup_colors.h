@@ -88,7 +88,8 @@ class Setup_Colors : public SetupTab,
         TextField *mBlueText;
         int mBlueValue;
 
-        void setEntry(gcn::Slider *s, TextField *t, int value);
+        static void setEntry(gcn::Slider *const s, TextField *const t,
+                             const int value);
         void updateColor();
         void updateGradType();
 };

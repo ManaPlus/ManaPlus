@@ -220,7 +220,7 @@ void SDLInput::pushInput(const SDL_Event &event)
     } // end switch
 }
 
-int SDLInput::convertMouseButton(int button)
+int SDLInput::convertMouseButton(const int button)
 {
     switch (button)
     {
@@ -236,9 +236,9 @@ int SDLInput::convertMouseButton(int button)
     }
 }
 
-int SDLInput::convertKeyCharacter(SDL_Event event)
+int SDLInput::convertKeyCharacter(const SDL_Event event)
 {
-    SDL_keysym keysym = event.key.keysym;
+    const SDL_keysym keysym = event.key.keysym;
 
     int value = keysym.unicode;
 

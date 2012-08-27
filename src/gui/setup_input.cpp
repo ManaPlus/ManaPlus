@@ -386,7 +386,7 @@ void Setup_Input::fixTranslation(SetupActionData *const actionDatas,
     }
 }
 
-void Setup_Input::fixTranslations()
+void Setup_Input::fixTranslations() const
 {
     fixTranslation(setupActionData1, static_cast<int>(Input::KEY_SHORTCUT_1),
         static_cast<int>(Input::KEY_SHORTCUT_20), "Item Shortcut %d");

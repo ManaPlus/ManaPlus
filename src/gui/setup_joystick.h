@@ -50,7 +50,7 @@ class Setup_Joystick : public SetupTab
 
         void action(const gcn::ActionEvent &event);
 
-        void setTempEnabled(bool sel);
+        void setTempEnabled(const bool sel);
 
     private:
         gcn::Label *mCalibrateLabel;

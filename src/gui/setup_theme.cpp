@@ -322,7 +322,7 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == ACTION_LANG)
     {
-        int id = mLangDropDown->getSelected();
+        const int id = mLangDropDown->getSelected();
         if (id < 0 || id >= langs_count)
             mLang = "";
         else

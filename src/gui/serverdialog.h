@@ -55,7 +55,8 @@ class ServersListModel : public gcn::ListModel
     public:
         typedef std::pair<int, std::string> VersionString;
 
-        ServersListModel(ServerInfos *servers, ServerDialog *parent);
+        ServersListModel(ServerInfos *const servers,
+                         ServerDialog *const parent);
 
         /**
          * Used to get number of line in the list
@@ -70,10 +71,10 @@ class ServersListModel : public gcn::ListModel
         /**
          * Used to get the corresponding Server struct
          */
-        const ServerInfo &getServer(int elementIndex) const
+        const ServerInfo &getServer(const int elementIndex) const
         { return mServers->at(elementIndex); }
 
-        void setVersionString(int index, const std::string &version);
+        void setVersionString(const int index, const std::string &version);
 
     private:
         typedef std::vector<VersionString> VersionStrings;
@@ -100,7 +101,7 @@ class ServerDialog : public Window,
          *
          * @see Window::Window
          */
-        ServerDialog(ServerInfo *serverInfo, const std::string &dir);
+        ServerDialog(ServerInfo *const serverInfo, const std::string &dir);
 
         /**
          * Destructor
@@ -123,7 +124,7 @@ class ServerDialog : public Window,
 
         void logic();
 
-        void updateServer(ServerInfo server, int index);
+        void updateServer(ServerInfo server, const int index);
 
         void connectToSelectedServer();
 
@@ -141,14 +142,14 @@ class ServerDialog : public Window,
          */
         void downloadServerList();
 
-        void loadServers(bool addNew = true);
+        void loadServers(const bool addNew = true);
 
         void loadCustomServers();
 
         void saveCustomServers(const ServerInfo &currentServer = ServerInfo(),
-                               int index = -1);
+                               const int index = -1);
 
-        bool needUpdateServers();
+        bool needUpdateServers() const;
 
         static int downloadUpdate(void *ptr, DownloadStatus status,
                                   size_t total, size_t remaining);

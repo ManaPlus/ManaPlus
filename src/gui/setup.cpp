@@ -58,7 +58,7 @@ Setup::Setup():
     setStickyButtonLock(true);
 
     int width = 620;
-    int height = 450;
+    const int height = 450;
 
     if (config.getIntValue("screenwidth") >= 730)
         width += 100;
@@ -76,9 +76,9 @@ Setup::Setup():
     };
     int x = width;
     const int buttonPadding = getOption("buttonPadding", 5);
-    for (const char **curBtn = buttonNames; *curBtn; ++ curBtn)
+    for (const char ** curBtn = buttonNames; *curBtn; ++ curBtn)
     {
-        Button *btn = new Button(gettext(*curBtn), *curBtn, this);
+        Button *const btn = new Button(gettext(*curBtn), *curBtn, this);
         x -= btn->getWidth() + buttonPadding;
         btn->setPosition(x, height - btn->getHeight() - buttonPadding);
         add(btn);
@@ -109,13 +109,13 @@ Setup::Setup():
          i_end = mTabs.end();
          i != i_end; ++i)
     {
-        SetupTab *tab = *i;
+        SetupTab *const tab = *i;
         mPanel->addTab(tab->getName(), tab);
     }
 
     add(mPanel);
 
-    Label *version = new Label(FULL_VERSION);
+    Label *const version = new Label(FULL_VERSION);
 //    version->setPosition(9, height - version->getHeight() - 9);
     if (mResetWindows)
     {
@@ -175,7 +175,7 @@ void Setup::action(const gcn::ActionEvent &event)
     }
 }
 
-void Setup::setInGame(bool inGame)
+void Setup::setInGame(const bool inGame)
 {
     mResetWindows->setEnabled(inGame);
 }
@@ -190,7 +190,7 @@ void Setup::externalUpdate()
     }
 }
 
-void Setup::registerWindowForReset(Window *window)
+void Setup::registerWindowForReset(Window *const window)
 {
     mWindowsToReset.push_back(window);
 }

@@ -47,7 +47,7 @@
 
 SellDialog::DialogList SellDialog::instances;
 
-SellDialog::SellDialog(int npcId):
+SellDialog::SellDialog(const int npcId):
     Window(_("Sell"), false, nullptr, "sell.xml"),
     mNpcId(npcId), mMaxItems(0), mAmountItems(0), mNick("")
 {
@@ -148,7 +148,7 @@ void SellDialog::reset()
     updateButtonsAndLabels();
 }
 
-void SellDialog::addItem(const Item *item, int price)
+void SellDialog::addItem(const Item *const item, const int price)
 {
     if (!item)
         return;
@@ -159,7 +159,8 @@ void SellDialog::addItem(const Item *item, int price)
     mShopItemList->adjustSize();
 }
 
-void SellDialog::addItem(int id, unsigned char color, int amount, int price)
+void SellDialog::addItem(const int id, const unsigned char color,
+                         const int amount, const int price)
 {
     mShopItems->addItem(id, color, amount, price);
     mShopItemList->adjustSize();
@@ -174,7 +175,7 @@ void SellDialog::action(const gcn::ActionEvent &event)
         return;
     }
 
-    int selectedItem = mShopItemList->getSelected();
+    const int selectedItem = mShopItemList->getSelected();
 
     // The following actions require a valid item selection
     if (selectedItem == -1 ||
@@ -212,7 +213,7 @@ void SellDialog::action(const gcn::ActionEvent &event)
         if (mNpcId != -1)
         {
             // Attempt sell
-            ShopItem *item = mShopItems->at(selectedItem);
+            ShopItem *const item = mShopItems->at(selectedItem);
             int sellCount, itemIndex;
             mPlayerMoney +=
                 mAmountItems * mShopItems->at(selectedItem)->getPrice();
@@ -258,7 +259,7 @@ void SellDialog::action(const gcn::ActionEvent &event)
         }
         else
         {
-            ShopItem *item = mShopItems->at(selectedItem);
+            ShopItem *const item = mShopItems->at(selectedItem);
 
             Net::getBuySellHandler()->sendSellRequest(mNick,
                     item, mAmountItems);
@@ -279,7 +280,7 @@ void SellDialog::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
     mSlider->gcn::Slider::setScale(1, mMaxItems);
 }
 
-void SellDialog::setMoney(int amount)
+void SellDialog::setMoney(const int amount)
 {
     mPlayerMoney = amount;
     mShopItemList->setPlayersMoney(amount);
@@ -287,7 +288,7 @@ void SellDialog::setMoney(int amount)
 
 void SellDialog::updateButtonsAndLabels()
 {
-    int selectedItem = mShopItemList->getSelected();
+    const int selectedItem = mShopItemList->getSelected();
     int income = 0;
     ShopItem *item = nullptr;
 

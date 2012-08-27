@@ -49,7 +49,7 @@ class WrongDataNoticeListener : public gcn::ActionListener
 {
     public:
         WrongDataNoticeListener();
-        void setTarget(gcn::TextField *textField);
+        void setTarget(gcn::TextField *const textField);
         void action(const gcn::ActionEvent &event);
     private:
         gcn::TextField *mTarget;
@@ -70,7 +70,7 @@ class RegisterDialog : public Window, public gcn::ActionListener,
          *
          * @see Window::Window
          */
-        RegisterDialog(LoginData *loginData);
+        RegisterDialog(LoginData *const loginData);
 
         /**
          * Destructor

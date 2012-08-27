@@ -64,7 +64,7 @@ class SDLTextChunk
             return (chunk.text == text && chunk.color == color);
         }
 
-        void generate(TTF_Font *font, float alpha)
+        void generate(TTF_Font *const font, const float alpha)
         {
             SDL_Color sdlCol;
             sdlCol.b = static_cast<uint8_t>(color.b);
@@ -74,7 +74,7 @@ class SDLTextChunk
             getSafeUtf8String(text, strBuf);
 
 //            SDL_Surface *surface = TTF_RenderUTF8_Solid(
-            SDL_Surface *surface = TTF_RenderUTF8_Blended(
+            SDL_Surface *const surface = TTF_RenderUTF8_Blended(
                     font, strBuf, sdlCol);
 
             if (!surface)
@@ -96,11 +96,11 @@ typedef std::list<SDLTextChunk>::iterator CacheIterator;
 
 static int fontCounter;
 
-SDLFont::SDLFont(std::string filename, int size, int style) :
+SDLFont::SDLFont(std::string filename, const int size, const int style) :
     mCreateCounter(0),
     mDeleteCounter(0)
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     if (fontCounter == 0 && TTF_Init() == -1)
     {
@@ -149,9 +149,9 @@ SDLFont::~SDLFont()
     }
 }
 
-void SDLFont::loadFont(std::string filename, int size, int style)
+void SDLFont::loadFont(std::string filename, const int size, const int style)
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     if (fontCounter == 0 && TTF_Init() == -1)
     {
@@ -161,7 +161,8 @@ void SDLFont::loadFont(std::string filename, int size, int style)
     }
 
     fixDirSeparators(filename);
-    TTF_Font *font = TTF_OpenFont(resman->getPath(filename).c_str(), size);
+    TTF_Font *const font = TTF_OpenFont(
+        resman->getPath(filename).c_str(), size);
 
     if (!font)
     {
@@ -187,14 +188,14 @@ void SDLFont::clear()
     }
 }
 
-void SDLFont::drawString(gcn::Graphics *graphics,
+void SDLFont::drawString(gcn::Graphics *const graphics,
                          const std::string &text,
-                         int x, int y)
+                         const int x, const int y)
 {
     if (text.empty())
         return;
 
-    Graphics *g = dynamic_cast<Graphics *>(graphics);
+    Graphics *const g = dynamic_cast<Graphics *const>(graphics);
 
     gcn::Color col = g->getColor();
     const float alpha = static_cast<float>(col.a) / 255.0f;
@@ -206,8 +207,8 @@ void SDLFont::drawString(gcn::Graphics *graphics,
 
     SDLTextChunk chunk(text, col);
 
-    unsigned char chr = text[0];
-    std::list<SDLTextChunk> *cache = &mCache[chr];
+    const unsigned char chr = text[0];
+    std::list<SDLTextChunk> *const cache = &mCache[chr];
 
     bool found = false;
 
@@ -255,7 +256,7 @@ void SDLFont::drawString(gcn::Graphics *graphics,
     }
     else if (cache->front().img)
     {
-        Image *image = cache->front().img;
+        Image *const image = cache->front().img;
         image->setAlpha(alpha);
         g->drawImage(image, x, y);
     }
@@ -275,7 +276,7 @@ void SDLFont::slowLogic()
     }
 }
 
-void SDLFont::createSDLTextChunk(SDLTextChunk *chunk)
+void SDLFont::createSDLTextChunk(SDLTextChunk *const chunk)
 {
     if (!chunk || chunk->text.empty())
         return;
@@ -292,8 +293,8 @@ int SDLFont::getWidth(const std::string &text) const
     if (text.empty())
         return 0;
 
-    unsigned char chr = text[0];
-    std::list<SDLTextChunk> *cache = &mCache[chr];
+    const unsigned char chr = text[0];
+    std::list<SDLTextChunk> *const cache = &mCache[chr];
 
 #ifdef DEBUG_FONT
     int cnt = 0;
@@ -336,7 +337,7 @@ void SDLFont::doClean()
 {
     for (unsigned int f = 0; f < CACHES_NUMBER; f ++)
     {
-        std::list<SDLTextChunk> *cache = &mCache[f];
+        std::list<SDLTextChunk> *const cache = &mCache[f];
         const size_t size = cache->size();
 #ifdef DEBUG_FONT_COUNTERS
         logger->log("ptr: %d, size: %d", f, size);

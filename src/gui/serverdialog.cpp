@@ -60,7 +60,7 @@
 
 static const int MAX_SERVERLIST = 15;
 
-static std::string serverTypeToString(ServerInfo::Type type)
+static std::string serverTypeToString(const ServerInfo::Type type)
 {
     switch (type)
     {
@@ -87,7 +87,7 @@ static std::string serverTypeToString(ServerInfo::Type type)
     }
 }
 
-static unsigned short defaultPortForServerType(ServerInfo::Type type)
+static unsigned short defaultPortForServerType(const ServerInfo::Type type)
 {
     switch (type)
     {
@@ -112,7 +112,8 @@ static unsigned short defaultPortForServerType(ServerInfo::Type type)
     }
 }
 
-ServersListModel::ServersListModel(ServerInfos *servers, ServerDialog *parent):
+ServersListModel::ServersListModel(ServerInfos *const servers,
+                                   ServerDialog *const parent) :
         mServers(servers),
         mVersionStrings(servers->size(), VersionString(0, "")),
         mParent(parent)
@@ -136,7 +137,8 @@ std::string ServersListModel::getElementAt(int elementIndex)
     return myServer;
 }
 
-void ServersListModel::setVersionString(int index, const std::string &version)
+void ServersListModel::setVersionString(const int index,
+                                        const std::string &version)
 {
     if (index >= static_cast<int>(mVersionStrings.size()))
         return;
@@ -147,15 +149,15 @@ void ServersListModel::setVersionString(int index, const std::string &version)
     }
     else
     {
-        int width = gui->getFont()->getWidth(version);
-        mVersionStrings[index] = VersionString(width, version);
+        mVersionStrings[index] = VersionString(
+            gui->getFont()->getWidth(version), version);
     }
 }
 
 class ServersListBox : public ListBox
 {
 public:
-    ServersListBox(ServersListModel *model) :
+    ServersListBox(ServersListModel *const model) :
         ListBox(model),
         mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
         mTextColor(Theme::getThemeColor(Theme::TEXT)),
@@ -169,7 +171,8 @@ public:
         if (!mListModel)
             return;
 
-        ServersListModel *model = static_cast<ServersListModel*>(mListModel);
+        ServersListModel *const model = static_cast<ServersListModel *const>(
+            mListModel);
 
         updateAlpha();
 
@@ -237,7 +240,8 @@ private:
 };
 
 
-ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
+ServerDialog::ServerDialog(ServerInfo *const serverInfo,
+                           const std::string &dir) :
     Window(_("Choose Your Server"), false, nullptr, "server.xml"),
     mDir(dir),
 //    mDownloadStatus(DOWNLOADING_PREPARING),
@@ -264,11 +268,11 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     mServersList = new ServersListBox(mServersListModel);
     mServersList->addMouseListener(this);
 
-    ScrollArea *usedScroll = new ScrollArea(mServersList,
+    ScrollArea *const usedScroll = new ScrollArea(mServersList,
         getOptionBool("showbackground"), "server_background.xml");
     usedScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-    int n = 0;
+    const int n = 0;
 
     mDescription = new Label(std::string());
 
@@ -341,7 +345,7 @@ void ServerDialog::connectToSelectedServer()
     if (Client::getState() == STATE_CONNECT_SERVER)
         return;
 
-    int index = mServersList->getSelected();
+    const int index = mServersList->getSelected();
     if (index < 0)
         return;
 
@@ -399,13 +403,13 @@ void ServerDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "editEntry")
     {
-        int index = mServersList->getSelected();
+        const int index = mServersList->getSelected();
         if (index >= 0)
             new EditServerDialog(this, mServers.at(index), index);
     }
     else if (eventId == "remove")
     {
-        int index = mServersList->getSelected();
+        const int index = mServersList->getSelected();
         if (index >= 0)
         {
             mServersList->setSelected(0);
@@ -437,7 +441,7 @@ void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Input::KEY_GUI_DELETE:
         {
-            int index = mServersList->getSelected();
+            const int index = mServersList->getSelected();
             if (index >= 0)
             {
                 mServersList->setSelected(0);
@@ -449,7 +453,7 @@ void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Input::KEY_GUI_BACKSPACE:
         {
-            int index = mServersList->getSelected();
+            const int index = mServersList->getSelected();
             if (index >= 0)
                 new EditServerDialog(this, mServers.at(index), index);
             return;
@@ -546,11 +550,11 @@ void ServerDialog::downloadServerList()
     config.setValue("serverslistupdate", getDateString());
 }
 
-void ServerDialog::loadServers(bool addNew)
+void ServerDialog::loadServers(const bool addNew)
 {
     XML::Document doc(mDir + "/" + branding.getStringValue(
         "onlineServerFile"), false);
-    XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "serverlist"))
     {
@@ -558,7 +562,7 @@ void ServerDialog::loadServers(bool addNew)
         return;
     }
 
-    int ver = XML::getProperty(rootNode, "version", 0);
+    const int ver = XML::getProperty(rootNode, "version", 0);
     if (ver != 1)
     {
         logger->log("Error: unsupported online server list version: %d",
@@ -593,7 +597,7 @@ void ServerDialog::loadServers(bool addNew)
         std::string version = XML::getProperty(serverNode, "minimumVersion",
                                                std::string());
 
-        bool meetsMinimumVersion = (compareStrI(version, PACKAGE_VERSION)
+        const bool meetsMinimumVersion = (compareStrI(version, PACKAGE_VERSION)
                                    <= 0);
 
         // For display in the list
@@ -685,7 +689,7 @@ void ServerDialog::loadCustomServers()
 }
 
 void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
-                                     int index)
+                                     const int index)
 {
     // Make sure the current server is mentioned first
     if (currentServer.isValid())
@@ -746,7 +750,7 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
     if (!ptr || status == DOWNLOAD_STATUS_CANCELLED)
         return -1;
 
-    ServerDialog *sd = reinterpret_cast<ServerDialog*>(ptr);
+    ServerDialog *const sd = reinterpret_cast<ServerDialog*>(ptr);
     bool finished = false;
 
     if (!sd->mDownload)
@@ -798,12 +802,12 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
     return 0;
 }
 
-void ServerDialog::updateServer(ServerInfo server, int index)
+void ServerDialog::updateServer(ServerInfo server, const int index)
 {
     saveCustomServers(server, index);
 }
 
-bool ServerDialog::needUpdateServers()
+bool ServerDialog::needUpdateServers() const
 {
     if (mServers.empty() || config.getStringValue("serverslistupdate")
         != getDateString())

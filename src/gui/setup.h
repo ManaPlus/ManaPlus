@@ -60,11 +60,11 @@ class Setup : public Window, public gcn::ActionListener
         /**
          * Enables the reset button when in game.
          */
-        void setInGame(bool inGame);
+        void setInGame(const bool inGame);
 
         void externalUpdate();
 
-        void registerWindowForReset(Window *window);
+        void registerWindowForReset(Window *const window);
 
         void clearWindowsForReset()
         { mWindowsToReset.clear(); }

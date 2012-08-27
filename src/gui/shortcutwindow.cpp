@@ -41,7 +41,7 @@ int ShortcutWindow::mBoxesWidth = 0;
 class ShortcutTab : public Tab
 {
     public:
-        ShortcutTab(std::string name, ShortcutContainer* content)
+        ShortcutTab(std::string name, ShortcutContainer *const content)
         {
             setCaption(name);
             mContent = content;
@@ -51,7 +51,7 @@ class ShortcutTab : public Tab
 };
 
 ShortcutWindow::ShortcutWindow(const std::string &title,
-                               ShortcutContainer *content,
+                               ShortcutContainer *const content,
                                std::string skinFile,
                                int width, int height) :
     Window("Window", false, nullptr, skinFile)
@@ -101,7 +101,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
 }
 
 ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
-                               int width, int height) :
+                               const int width, const int height) :
     Window("Window", false, nullptr, skinFile)
 {
     setWindowName(title);
@@ -148,16 +148,16 @@ ShortcutWindow::~ShortcutWindow()
     mItems = nullptr;
 }
 
-void ShortcutWindow::addTab(std::string name, ShortcutContainer *content)
+void ShortcutWindow::addTab(std::string name, ShortcutContainer *const content)
 {
-    ScrollArea *scroll = new ScrollArea(content, false);
+    ScrollArea *const scroll = new ScrollArea(content, false);
     scroll->setPosition(SCROLL_PADDING, SCROLL_PADDING);
     scroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-    Tab *tab = new ShortcutTab(name, content);
+    Tab *const tab = new ShortcutTab(name, content);
     mTabs->addTab(tab, scroll);
 }
 
-int ShortcutWindow::getTabIndex()
+int ShortcutWindow::getTabIndex() const
 {
     if (!mTabs)
         return 0;
@@ -170,11 +170,11 @@ void ShortcutWindow::widgetHidden(const gcn::Event &event)
         mItems->widgetHidden(event);
     if (mTabs)
     {
-        ScrollArea *scroll = static_cast<ScrollArea*>(
+        ScrollArea *const scroll = static_cast<ScrollArea *const>(
             mTabs->getCurrentWidget());
         if (scroll)
         {
-            ShortcutContainer *content = static_cast<ShortcutContainer*>(
+            ShortcutContainer *const content = static_cast<ShortcutContainer*>(
                 scroll->getContent());
 
             if (content)

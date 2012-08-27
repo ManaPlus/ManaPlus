@@ -40,21 +40,22 @@ class ShortcutWindow : public Window
         /**
          * Constructor.
          */
-        ShortcutWindow(const std::string &title, ShortcutContainer *content,
+        ShortcutWindow(const std::string &title,
+                       ShortcutContainer *const content,
                        std::string skinFile = "",
                        int width = 0, int height = 0);
 
         ShortcutWindow(const std::string &title, std::string skinFile = "",
-                       int width = 0, int height = 0);
+                       const int width = 0, const int height = 0);
 
         /**
          * Destructor.
          */
         ~ShortcutWindow();
 
-        void addTab(std::string name, ShortcutContainer *content);
+        void addTab(std::string name, ShortcutContainer *const content);
 
-        int getTabIndex();
+        int getTabIndex() const;
 
         void widgetHidden(const gcn::Event &event);
 

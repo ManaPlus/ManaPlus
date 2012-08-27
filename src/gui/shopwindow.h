@@ -97,20 +97,22 @@ class ShopWindow : public Window, public gcn::ActionListener,
         static bool isActive()
         { return !instances.empty(); }
 
-        void setItemSelected(int id)
+        void setItemSelected(const int id)
         { mSelectedItem = id; updateButtonsAndLabels(); }
 
-        void addBuyItem(Item *item, int amount, int price);
+        void addBuyItem(const Item *const item, const int amount,
+                        const int price);
 
-        void addSellItem(Item *item, int amount, int price);
+        void addSellItem(const Item *const item, const int amount,
+                         const int price);
 
         void loadList();
 
         void saveList();
 
-        void announce(ShopItems *list, int mode);
+        void announce(ShopItems *const list, const int mode);
 
-        void giveList(const std::string &nick, int mode);
+        void giveList(const std::string &nick, const int mode);
 
         void setAcceptPlayer(std::string name)
         { mAcceptPlayer = name; }
@@ -119,19 +121,20 @@ class ShopWindow : public Window, public gcn::ActionListener,
         { return mAcceptPlayer; }
 
         void sendMessage(const std::string &nick, std::string data,
-                         bool random = false);
+                         const bool random = false);
 
-        void showList(const std::string &nick, std::string data);
+        void showList(const std::string &nick, std::string data) const;
 
-        void processRequest(std::string nick, std::string data, int mode);
+        void processRequest(std::string nick, std::string data,
+                            const int mode);
 
-        bool findShopItem(ShopItem *shopItem, int mode);
+        bool findShopItem(const ShopItem *const shopItem, const int mode);
 
-        int sumAmount(Item *shopItem);
+        static int sumAmount(const Item *const shopItem);
 
         void updateTimes();
 
-        bool checkFloodCounter(int &counterTime);
+        bool checkFloodCounter(int &counterTime) const;
 
         bool isShopEmpty();
 

@@ -53,16 +53,17 @@ class SDLFont : public gcn::Font
          * @param filename  Font filename.
          * @param size      Font size.
          */
-        SDLFont(std::string filename, int size, int style = 0);
+        SDLFont(std::string filename, const int size, const int style = 0);
 
         /**
          * Destructor.
          */
         ~SDLFont();
 
-        void loadFont(std::string filename, int size, int style = 0);
+        void loadFont(std::string filename, const int size,
+                      const int style = 0);
 
-        void createSDLTextChunk(SDLTextChunk *chunk);
+        void createSDLTextChunk(SDLTextChunk *const chunk);
 
         virtual int getWidth(const std::string &text) const;
 
@@ -74,9 +75,9 @@ class SDLFont : public gcn::Font
         /**
          * @see Font::drawString
          */
-        void drawString(gcn::Graphics *graphics,
+        void drawString(gcn::Graphics *const graphics,
                         const std::string &text,
-                        int x, int y);
+                        const int x, const int y);
 
         void clear();
 

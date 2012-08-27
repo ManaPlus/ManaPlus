@@ -66,7 +66,7 @@ public:
     int getNumberOfElements()
     { return static_cast<int>(mVisibleSkills.size()); }
 
-    SkillInfo *getSkillAt(int i) const
+    SkillInfo *getSkillAt(const int i) const
     { return mVisibleSkills.at(i); }
 
     std::string getElementAt(int i)
@@ -79,7 +79,7 @@ public:
 
     void updateVisibilities();
 
-    void addSkill(SkillInfo *info)
+    void addSkill(SkillInfo *const info)
     { mSkills.push_back(info); }
 
 private:
@@ -90,7 +90,7 @@ private:
 class SkillListBox : public ListBox
 {
 public:
-    SkillListBox(SkillModel *model):
+    SkillListBox(SkillModel *const model):
         ListBox(model),
         mModel(model),
         mPopup(new TextPopup()),
@@ -107,7 +107,7 @@ public:
         mPopup = nullptr;
     }
 
-    SkillInfo *getSelectedInfo()
+    SkillInfo *getSelectedInfo() const
     {
         const int selected = getSelected();
         if (!mListModel || selected < 0
@@ -124,11 +124,11 @@ public:
         if (!mListModel)
             return;
 
-        SkillModel* model = static_cast<SkillModel*>(mListModel);
+        SkillModel *const model = static_cast<SkillModel*>(mListModel);
 
         updateAlpha();
 
-        Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
+        Graphics *const graphics = static_cast<Graphics *const>(gcnGraphics);
 
         mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
         graphics->setColor(mHighlightColor);
@@ -147,7 +147,7 @@ public:
              i < model->getNumberOfElements();
              ++i, y += getRowHeight())
         {
-            SkillInfo *e = model->getSkillAt(i);
+            SkillInfo *const e = model->getSkillAt(i);
 
             if (e)
                 e->draw(graphics, y, getWidth());
@@ -163,10 +163,10 @@ public:
         if (!viewport)
             return;
 
-        int y = event.getY() / getRowHeight();
+        const int y = event.getY() / getRowHeight();
         if (!mModel || y >= mModel->getNumberOfElements())
             return;
-        SkillInfo *skill = mModel->getSkillAt(y);
+        const SkillInfo *const skill = mModel->getSkillAt(y);
         if (!skill)
             return;
 
@@ -189,7 +189,7 @@ private:
 class SkillTab : public Tab
 {
 public:
-    SkillTab(const std::string &name, SkillListBox *listBox):
+    SkillTab(const std::string &name, SkillListBox *const listBox) :
             mListBox(listBox)
     {
         setCaption(name);
@@ -201,7 +201,7 @@ public:
         mListBox = nullptr;
     }
 
-    SkillInfo *getSelectedInfo()
+    SkillInfo *getSelectedInfo() const
     {
         if (mListBox)
             return mListBox->getSelectedInfo();
@@ -256,23 +256,25 @@ void SkillDialog::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "inc")
     {
-        SkillTab *tab = static_cast<SkillTab*>(mTabs->getSelectedTab());
+        const SkillTab *const tab = static_cast<const SkillTab *const>(
+            mTabs->getSelectedTab());
         if (tab)
         {
-            if (SkillInfo *info = tab->getSelectedInfo())
+            if (const SkillInfo *const info = tab->getSelectedInfo())
                 Net::getPlayerHandler()->increaseSkill(info->id);
         }
     }
     else if (event.getId() == "sel")
     {
-        SkillTab *tab = static_cast<SkillTab*>(mTabs->getSelectedTab());
+        const SkillTab *const tab = static_cast<const SkillTab *const>(
+            mTabs->getSelectedTab());
         if (tab)
         {
-            if (SkillInfo *info = tab->getSelectedInfo())
+            if (const SkillInfo *const info = tab->getSelectedInfo())
             {
                 mUseButton->setEnabled(info->range > 0);
 
-                int num = itemShortcutWindow->getTabIndex();
+                const int num = itemShortcutWindow->getTabIndex();
                 if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
                     && itemShortcut[num])
                 {
@@ -288,13 +290,14 @@ void SkillDialog::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == "use")
     {
-        SkillTab *tab = static_cast<SkillTab*>(mTabs->getSelectedTab());
+        const SkillTab *const tab = static_cast<const SkillTab *const>(
+            mTabs->getSelectedTab());
         if (tab)
         {
-            const SkillInfo *info = tab->getSelectedInfo();
+            const SkillInfo *const info = tab->getSelectedInfo();
             if (info && player_node && player_node->getTarget())
             {
-                const Being *being = player_node->getTarget();
+                const Being *const being = player_node->getTarget();
                 if (being)
                 {
                     Net::getSpecialHandler()->useBeing(info->level,
@@ -309,13 +312,13 @@ void SkillDialog::action(const gcn::ActionEvent &event)
     }
 }
 
-std::string SkillDialog::update(int id)
+std::string SkillDialog::update(const int id)
 {
-    SkillMap::const_iterator i = mSkills.find(id);
+    const SkillMap::const_iterator i = mSkills.find(id);
 
     if (i != mSkills.end())
     {
-        SkillInfo *info = i->second;
+        SkillInfo *const info = i->second;
         if (info)
         {
             info->update();
@@ -351,7 +354,7 @@ void SkillDialog::loadSkills(const std::string &file)
         return;
 
     XML::Document doc(file);
-    XmlNodePtr root = doc.rootNode();
+    const XmlNodePtr root = doc.rootNode();
 
     int setCount = 0;
     std::string setName;
@@ -365,11 +368,11 @@ void SkillDialog::loadSkills(const std::string &file)
 
         if (Net::getNetworkType() != ServerInfo::MANASERV)
         {
-            SkillModel *model = new SkillModel();
+            SkillModel *const model = new SkillModel();
             if (!mDefaultModel)
                 mDefaultModel = model;
 
-            SkillInfo *skill = new SkillInfo;
+            SkillInfo *const skill = new SkillInfo;
             skill->id = 1;
             skill->name = _("basic");
             skill->dispName = _("Skill: basic, Id: 1");
@@ -410,7 +413,7 @@ void SkillDialog::loadSkills(const std::string &file)
             setName = XML::getProperty(set, "name",
                 strprintf(_("Skill Set %d"), setCount));
 
-            SkillModel *model = new SkillModel();
+            SkillModel *const model = new SkillModel();
             if (!mDefaultModel)
                 mDefaultModel = model;
 
@@ -418,12 +421,13 @@ void SkillDialog::loadSkills(const std::string &file)
             {
                 if (xmlNameEqual(node, "skill"))
                 {
-                    int id = atoi(XML::getProperty(node, "id", "-1").c_str());
+                    const int id = atoi(XML::getProperty(
+                        node, "id", "-1").c_str());
                     std::string name = XML::langProperty(node, "name",
                         strprintf(_("Skill %d"), id));
                     std::string icon = XML::getProperty(node, "icon", "");
 
-                    SkillInfo *skill = new SkillInfo;
+                    SkillInfo *const skill = new SkillInfo;
                     skill->id = static_cast<short unsigned>(id);
                     skill->name = name;
                     skill->dispName = strprintf(_("Skill: %s, Id: %d"),
@@ -464,13 +468,14 @@ void SkillDialog::loadSkills(const std::string &file)
     update();
 }
 
-bool SkillDialog::updateSkill(int id, int range, bool modifiable)
+bool SkillDialog::updateSkill(const int id, const int range,
+                              const bool modifiable)
 {
-    SkillMap::const_iterator it = mSkills.find(id);
+    const SkillMap::const_iterator it = mSkills.find(id);
 
     if (it != mSkills.end())
     {
-        SkillInfo *info = it->second;
+        SkillInfo *const info = it->second;
         if (info)
         {
             info->modifiable = modifiable;
@@ -482,11 +487,12 @@ bool SkillDialog::updateSkill(int id, int range, bool modifiable)
     return false;
 }
 
-void SkillDialog::addSkill(int id, int level, int range, bool modifiable)
+void SkillDialog::addSkill(const int id, const int level, const int range,
+                           const bool modifiable)
 {
     if (mDefaultModel)
     {
-        SkillInfo *skill = new SkillInfo;
+        SkillInfo *const skill = new SkillInfo;
         skill->id = static_cast<short unsigned>(id);
         skill->name = "Unknown skill Id: " + toString(id);
         skill->dispName = "Unknown skill Id: " + toString(id);
@@ -538,7 +544,7 @@ SkillInfo::~SkillInfo()
 
 void SkillInfo::setIcon(const std::string &iconPath)
 {
-    ResourceManager *res = ResourceManager::getInstance();
+    ResourceManager *const res = ResourceManager::getInstance();
     if (!iconPath.empty())
     {
         icon = res->getImage(iconPath);
@@ -553,12 +559,12 @@ void SkillInfo::setIcon(const std::string &iconPath)
 
 void SkillInfo::update()
 {
-    int baseLevel = PlayerInfo::getStatBase(
+    const int baseLevel = PlayerInfo::getStatBase(
         static_cast<PlayerInfo::Attribute>(id));
-    int effLevel = PlayerInfo::getStatEffective(
+    const int effLevel = PlayerInfo::getStatEffective(
         static_cast<PlayerInfo::Attribute>(id));
 
-    std::pair<int, int> exp = PlayerInfo::getStatExperience(
+    const std::pair<int, int> exp = PlayerInfo::getStatExperience(
         static_cast<PlayerInfo::Attribute>(id));
 
     if (!modifiable && baseLevel == 0 && effLevel == 0 && exp.second == 0)
@@ -573,7 +579,7 @@ void SkillInfo::update()
         return;
     }
 
-    bool updateVisibility = !visible;
+    const bool updateVisibility = !visible;
     visible = true;
 
     if (effLevel != baseLevel)
@@ -609,7 +615,7 @@ void SkillInfo::update()
         model->updateVisibilities();
 }
 
-void SkillInfo::draw(Graphics *graphics, int y, int width)
+void SkillInfo::draw(Graphics *const graphics, const int y, const int width)
 {
     graphics->drawImage(icon, 1, y);
     graphics->drawText(name, 34, y);
@@ -643,12 +649,12 @@ void SkillDialog::widgetResized(const gcn::Event &event)
         mTabs->fixSize();
 }
 
-void SkillDialog::useItem(int itemId)
+void SkillDialog::useItem(const int itemId)
 {
-    const SkillInfo *info = mSkills[itemId - SKILL_MIN_ID];
+    const SkillInfo *const info = mSkills[itemId - SKILL_MIN_ID];
     if (info && player_node && player_node->getTarget())
     {
-        const Being *being = player_node->getTarget();
+        const Being *const being = player_node->getTarget();
         if (being)
         {
             Net::getSpecialHandler()->useBeing(info->level,
@@ -659,10 +665,11 @@ void SkillDialog::useItem(int itemId)
 
 void SkillDialog::updateTabSelection()
 {
-    SkillTab *tab = static_cast<SkillTab*>(mTabs->getSelectedTab());
+    const SkillTab *const tab = static_cast<SkillTab*>(
+        mTabs->getSelectedTab());
     if (tab)
     {
-        if (SkillInfo *info = tab->getSelectedInfo())
+        if (const SkillInfo *const info = tab->getSelectedInfo())
             mUseButton->setEnabled(info->range > 0);
         else
             mUseButton->setEnabled(false);

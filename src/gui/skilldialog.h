@@ -71,7 +71,7 @@ struct SkillInfo
 
     void update();
 
-    void draw(Graphics *graphics, int y, int width);
+    void draw(Graphics *const graphics, const int y, const int width);
 };
 
 typedef std::vector<SkillInfo*> SkillList;
@@ -96,7 +96,7 @@ class SkillDialog : public Window, public gcn::ActionListener
         /**
          * Update the given skill's display
          */
-        std::string update(int id);
+        std::string update(const int id);
 
         /**
          * Update other parts of the display
@@ -105,9 +105,10 @@ class SkillDialog : public Window, public gcn::ActionListener
 
         void loadSkills(const std::string &file);
 
-        bool updateSkill(int id, int range, bool modifiable);
+        bool updateSkill(const int id, const int range, const bool modifiable);
 
-        void addSkill(int id, int level, int range, bool modifiable);
+        void addSkill(const int id, const int level, const int range,
+                      const bool modifiable);
 
         SkillInfo* getSkill(int id);
 
@@ -116,7 +117,7 @@ class SkillDialog : public Window, public gcn::ActionListener
 
         void widgetResized(const gcn::Event &event);
 
-        void useItem(int itemId);
+        void useItem(const int itemId);
 
         void updateTabSelection();
 

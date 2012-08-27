@@ -141,7 +141,7 @@ public:
         signalBeforeUpdate();
 
         freeWidgets();
-        StringVect *player_names = player_relations.getPlayers();
+        StringVect *const player_names = player_relations.getPlayers();
 
         if (!player_names)
             return;
@@ -154,10 +154,10 @@ public:
              player_names->size()); r < sz; ++r)
         {
             std::string name = (*player_names)[r];
-            gcn::Widget *widget = new Label(name);
+            gcn::Widget *const widget = new Label(name);
             mWidgets.push_back(widget);
 
-            gcn::DropDown *choicebox = new DropDown(mListModel);
+            gcn::DropDown *const choicebox = new DropDown(mListModel);
             choicebox->setSelected(player_relations.getRelation(name));
             mWidgets.push_back(choicebox);
         }
@@ -165,10 +165,10 @@ public:
         signalAfterUpdate();
     }
 
-    virtual void updateModelInRow(int row)
+    virtual void updateModelInRow(const int row)
     {
-        gcn::DropDown *choicebox = static_cast<gcn::DropDown *>(
-                                   getElementAt(row, RELATION_CHOICE_COLUMN));
+        const gcn::DropDown *const choicebox = static_cast<gcn::DropDown *>(
+            getElementAt(row, RELATION_CHOICE_COLUMN));
         player_relations.setRelation(getPlayerAt(row),
                                    static_cast<PlayerRelation::Relation>(
                                    choicebox->getSelected()));
@@ -189,7 +189,7 @@ public:
         mWidgets.clear();
     }
 
-    std::string getPlayerAt(int index) const
+    std::string getPlayerAt(const int index) const
     {
         if (index < 0 || index >= static_cast<signed>(mPlayers->size()))
             return "";
@@ -265,7 +265,7 @@ Setup_Relations::Setup_Relations():
     mPlayerTable->setLinewiseSelection(true);
     mPlayerTable->addActionListener(this);
 
-    gcn::Label *ignore_action_label = new Label(_("When ignoring:"));
+    gcn::Label *const ignore_action_label = new Label(_("When ignoring:"));
 
     mIgnoreActionChoicesBox->setActionEventId(ACTION_STRATEGY);
     mIgnoreActionChoicesBox->addActionListener(this);
@@ -333,9 +333,8 @@ void Setup_Relations::apply()
 {
     player_relations.store();
 
-    unsigned int old_default_relations = player_relations.getDefault() &
-                                         ~(PlayerRelation::TRADE |
-                                           PlayerRelation::WHISPER);
+    const unsigned int old_default_relations = player_relations.getDefault() &
+        ~(PlayerRelation::TRADE | PlayerRelation::WHISPER);
     player_relations.setDefault(old_default_relations
                                 | (mDefaultTrading->isSelected() ?
                                        PlayerRelation::TRADE : 0)
@@ -363,7 +362,7 @@ void Setup_Relations::action(const gcn::ActionEvent &event)
         // embarrassing.)
         player_relations.removeListener(this);
 
-        int row = mPlayerTable->getSelectedRow();
+        const int row = mPlayerTable->getSelectedRow();
         if (row >= 0)
             mPlayerTableModel->updateModelInRow(row);
 
@@ -372,7 +371,7 @@ void Setup_Relations::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == ACTION_DELETE)
     {
-        int player_index = mPlayerTable->getSelectedRow();
+        const int player_index = mPlayerTable->getSelectedRow();
 
         if (player_index < 0)
             return;
@@ -383,9 +382,9 @@ void Setup_Relations::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == ACTION_STRATEGY)
     {
-        PlayerIgnoreStrategy *s =
+        PlayerIgnoreStrategy *const s =
             (*player_relations.getPlayerIgnoreStrategies())[
-                mIgnoreActionChoicesBox->getSelected()];
+            mIgnoreActionChoicesBox->getSelected()];
 
         player_relations.setPlayerIgnoreStrategy(s);
     }
@@ -404,7 +403,7 @@ void Setup_Relations::updatedPlayer(const std::string &name A_UNUSED)
 
 void Setup_Relations::updateAll()
 {
-    PlayerTableModel *model = new PlayerTableModel();
+    PlayerTableModel *const model = new PlayerTableModel();
     mPlayerTable->setModel(model);
     delete mPlayerTableModel;
     mPlayerTableModel = model;

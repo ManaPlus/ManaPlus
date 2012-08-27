@@ -145,7 +145,7 @@ void Setup_Audio::apply()
         sound.init();
         if (viewport && config.getBoolValue("playMusic"))
         {
-            Map *map = viewport->getMap();
+            const Map *const map = viewport->getMap();
             if (map)
                 sound.playMusic(map->getMusicFile());
         }

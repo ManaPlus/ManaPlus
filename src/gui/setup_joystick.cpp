@@ -127,7 +127,7 @@ void Setup_Joystick::action(const gcn::ActionEvent &event)
     }
 }
 
-void Setup_Joystick::setTempEnabled(bool sel)
+void Setup_Joystick::setTempEnabled(const bool sel)
 {
     Joystick::setEnabled(sel);
     mCalibrateButton->setEnabled(sel);
