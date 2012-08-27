@@ -64,7 +64,7 @@ class NpcDialog : public Window, public gcn::ActionListener,
          *
          * @see Window::Window
          */
-        NpcDialog(int npcId);
+        NpcDialog(const int npcId);
 
         ~NpcDialog();
 
@@ -86,7 +86,7 @@ class NpcDialog : public Window, public gcn::ActionListener,
          *
          * @param string The text to add.
          */
-        void addText(const std::string &string, bool save = true);
+        void addText(const std::string &string, const bool save = true);
 
         /**
          * When called, the widget will show a "Next" button.
@@ -155,10 +155,10 @@ class NpcDialog : public Window, public gcn::ActionListener,
         /**
          * Requests a interger from the user.
          */
-        void integerRequest(int defaultValue = 0, int min = 0,
-                            int max = 2147483647);
+        void integerRequest(const int defaultValue = 0, const int min = 0,
+                            const int max = 2147483647);
 
-        void move(int amount);
+        void move(const int amount);
 
         void setVisible(bool visible);
 
@@ -192,11 +192,11 @@ class NpcDialog : public Window, public gcn::ActionListener,
 
         void refocus();
 
-        void showAvatar(int avatarId);
+        void showAvatar(const int avatarId);
 
-        void setAvatarDirection(uint8_t direction);
+        void setAvatarDirection(const uint8_t direction);
 
-        void setAvatarAction(int actionId);
+        void setAvatarAction(const int actionId);
 
         void logic();
 

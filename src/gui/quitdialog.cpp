@@ -46,7 +46,7 @@
 
 #include "debug.h"
 
-QuitDialog::QuitDialog(QuitDialog** pointerToMe):
+QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     Window(_("Quit"), true, nullptr, "quit.xml"),
     mLogoutQuit(new RadioButton(_("Quit"), "quitdialog")),
     mForceQuit(new RadioButton(_("Quit"), "quitdialog")),
@@ -113,7 +113,8 @@ QuitDialog::~QuitDialog()
     mSwitchCharacter = nullptr;
 }
 
-void QuitDialog::placeOption(ContainerPlacer &placer, gcn::RadioButton *option)
+void QuitDialog::placeOption(ContainerPlacer &placer,
+                             gcn::RadioButton *const option)
 {
     placer(0, static_cast<int>(mOptions.size()), option, 3);
     mOptions.push_back(option);
@@ -125,7 +126,7 @@ void QuitDialog::action(const gcn::ActionEvent &event)
     {
         if (viewport)
         {
-            Map *map = viewport->getCurrentMap();
+            Map *const map = viewport->getCurrentMap();
             if (map)
                 map->saveExtraLayer();
         }
@@ -159,7 +160,7 @@ void QuitDialog::action(const gcn::ActionEvent &event)
 
 void QuitDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     int dir = 0;
 
     switch (actionId)

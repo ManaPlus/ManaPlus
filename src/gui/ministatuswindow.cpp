@@ -69,8 +69,8 @@ MiniStatusWindow::MiniStatusWindow():
         mMpBar = nullptr;
     }
 
-    int job = Net::getPlayerHandler()->getJobLocation()
-              && serverConfig.getValueBool("showJob", false);
+    const int job = Net::getPlayerHandler()->getJobLocation()
+        && serverConfig.getValueBool("showJob", false);
 
     mXpBar = createBar(0, 100, 20, Theme::PROG_EXP,
                        "xp bar", _("experience bar"));
@@ -111,7 +111,7 @@ MiniStatusWindow::MiniStatusWindow():
     mTextPopup = new TextPopup();
 
     addMouseListener(this);
-    Inventory *inv = PlayerInfo::getInventory();
+    Inventory *const inv = PlayerInfo::getInventory();
     if (inv)
         inv->addInventoyListener(this);
 
@@ -129,7 +129,7 @@ MiniStatusWindow::~MiniStatusWindow()
     delete_all(mIcons);
     mIcons.clear();
 
-    Inventory *inv = PlayerInfo::getInventory();
+    Inventory *const inv = PlayerInfo::getInventory();
     if (inv)
         inv->removeInventoyListener(this);
 
@@ -144,11 +144,12 @@ MiniStatusWindow::~MiniStatusWindow()
     }
 }
 
-ProgressBar *MiniStatusWindow::createBar(float progress, int width, int height,
-                                         int color, std::string name,
+ProgressBar *MiniStatusWindow::createBar(const float progress,
+                                         const int width, const int height,
+                                         const int color, std::string name,
                                          std::string description)
 {
-    ProgressBar *bar = new ProgressBar(progress, width, height, color);
+    ProgressBar *const bar = new ProgressBar(progress, width, height, color);
     bar->setActionEventId(name);
     bar->setId(description);
     mBars.push_back(bar);
@@ -159,7 +160,7 @@ ProgressBar *MiniStatusWindow::createBar(float progress, int width, int height,
 void MiniStatusWindow::updateBars()
 {
     int x = 0;
-    ProgressBar* lastBar = nullptr;
+    const ProgressBar *lastBar = nullptr;
     for (std::vector <ProgressBar*>::const_iterator it = mBars.begin(),
          it_end = mBars.end(); it != it_end; ++it)
     {
@@ -168,7 +169,7 @@ void MiniStatusWindow::updateBars()
     for (std::vector <ProgressBar*>::const_iterator it = mBars.begin(),
          it_end = mBars.end(); it != it_end; ++it)
     {
-        ProgressBar *bar = *it;
+        ProgressBar *const bar = *it;
         if (!bar)
             continue;
         if (bar->isVisible())
@@ -187,7 +188,7 @@ void MiniStatusWindow::updateBars()
     }
 }
 
-void MiniStatusWindow::setIcon(int index, AnimatedSprite *sprite)
+void MiniStatusWindow::setIcon(const int index, AnimatedSprite *const sprite)
 {
     if (index >= static_cast<int>(mIcons.size()))
         mIcons.resize(index + 1, nullptr);
@@ -197,7 +198,7 @@ void MiniStatusWindow::setIcon(int index, AnimatedSprite *sprite)
     mIcons[index] = sprite;
 }
 
-void MiniStatusWindow::eraseIcon(int index)
+void MiniStatusWindow::eraseIcon(const int index)
 {
     if (index < static_cast<int>(mIcons.size()))
     {
@@ -206,7 +207,7 @@ void MiniStatusWindow::eraseIcon(int index)
     }
 }
 
-void MiniStatusWindow::drawIcons(Graphics *graphics)
+void MiniStatusWindow::drawIcons(Graphics *const graphics)
 {
     // Draw icons
     int icon_x = mStatusBar->getX() + mStatusBar->getWidth() + 4;
@@ -225,7 +226,7 @@ void MiniStatusWindow::processEvent(Channels channel A_UNUSED,
 {
     if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
-        int id = event.getInt("id");
+        const int id = event.getInt("id");
         if (id == PlayerInfo::HP || id == PlayerInfo::MAX_HP)
         {
             StatusWindow::updateHPBar(mHpBar);
@@ -339,7 +340,7 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     }
     else if (event.getSource() == mJobBar)
     {
-        std::pair<int, int> exp =  PlayerInfo::getStatExperience(
+        const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
             Net::getPlayerHandler()->getJobLocation());
 
         if (exp.first > exp.second)
@@ -367,7 +368,7 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     }
     else if (event.getSource() == mInvSlotsBar)
     {
-        Inventory *inv = PlayerInfo::getInventory();
+        const Inventory *const inv = PlayerInfo::getInventory();
         if (inv)
         {
             const int usedSlots = inv->getNumberOfSlotsUsed();
@@ -399,7 +400,7 @@ void MiniStatusWindow::mousePressed(gcn::MouseEvent &event)
 
     if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
-        ProgressBar *bar = dynamic_cast<ProgressBar*>(event.getSource());
+        ProgressBar *const bar = dynamic_cast<ProgressBar*>(event.getSource());
         if (!bar)
             return;
         if (viewport)
@@ -418,9 +419,9 @@ void MiniStatusWindow::mouseExited(gcn::MouseEvent &event)
     mStatusPopup->hide();
 }
 
-void MiniStatusWindow::showBar(std::string name, bool visible)
+void MiniStatusWindow::showBar(const std::string &name, const bool visible)
 {
-    ProgressBar *bar = mBarNames[name];
+    ProgressBar *const bar = mBarNames[name];
     if (!bar)
         return;
     bar->setVisible(visible);
@@ -448,7 +449,7 @@ void MiniStatusWindow::loadBars()
         std::string str = config.getValue("ministatus" + toString(f), "");
         if (str == "" || str == "status bar")
             continue;
-        ProgressBar *bar = mBarNames[str];
+        ProgressBar *const bar = mBarNames[str];
         if (!bar)
             continue;
         bar->setVisible(false);
@@ -461,7 +462,7 @@ void MiniStatusWindow::saveBars()
     for (std::vector <ProgressBar*>::const_iterator it = mBars.begin(),
          it_end = mBars.end(); it != it_end; ++it)
     {
-        ProgressBar *bar = *it;
+        const ProgressBar *const bar = *it;
         if (!bar->isVisible())
         {
             config.setValue("ministatus" + toString(i),
@@ -475,7 +476,7 @@ void MiniStatusWindow::saveBars()
     config.setValue("ministatussaved", true);
 }
 
-void MiniStatusWindow::slotsChanged(Inventory* inventory)
+void MiniStatusWindow::slotsChanged(Inventory *const inventory)
 {
     if (!inventory)
         return;

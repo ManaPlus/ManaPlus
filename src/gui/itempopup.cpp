@@ -98,7 +98,7 @@ ItemPopup::~ItemPopup()
     }
 }
 
-void ItemPopup::setItem(const Item *item, bool showImage)
+void ItemPopup::setItem(const Item *const item, const bool showImage)
 {
     if (!item)
         return;
@@ -120,14 +120,14 @@ void ItemPopup::setItem(const Item *item, bool showImage)
                 ii.getName().c_str(), item->getRefine(), ii.getId()));
         }
         mItemName->adjustSize();
-        unsigned minWidth = mItemName->getWidth() + 8;
+        const unsigned minWidth = mItemName->getWidth() + 8;
         if (static_cast<unsigned>(getWidth()) < minWidth)
             setWidth(minWidth);
     }
 }
 
-void ItemPopup::setItem(const ItemInfo &item, unsigned char color,
-                        bool showImage, int id)
+void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
+                        const bool showImage, int id)
 {
     if (!mIcon || (item.getName() == mLastName && color == mLastColor))
         return;
@@ -137,26 +137,25 @@ void ItemPopup::setItem(const ItemInfo &item, unsigned char color,
 
     int space = 0;
 
-    Image *oldImage = mIcon->getImage();
+    Image *const oldImage = mIcon->getImage();
     if (oldImage)
         oldImage->decRef();
 
     if (showImage)
     {
-        ResourceManager *resman = ResourceManager::getInstance();
-        logger->log("img: " + combineDye2(
-            paths.getStringValue("itemIcons")
-            + item.getDisplay().image, item.getDyeColorsString(color)));
-        Image *image = resman->getImage(combineDye2(
+        ResourceManager *const resman = ResourceManager::getInstance();
+//        logger->log("img: " + combineDye2(
+//            paths.getStringValue("itemIcons")
+//            + item.getDisplay().image, item.getDyeColorsString(color)));
+        Image *const image = resman->getImage(combineDye2(
             paths.getStringValue("itemIcons")
             + item.getDisplay().image, item.getDyeColorsString(color)));
 
         mIcon->setImage(image);
         if (image)
         {
-            int x = getPadding();
-            int y = getPadding();
-            mIcon->setPosition(x, y);
+            const int pad = getPadding();
+            mIcon->setPosition(pad, pad);
             space = mIcon->getWidth();
         }
     }
@@ -233,7 +232,7 @@ void ItemPopup::setItem(const ItemInfo &item, unsigned char color,
         (numRowsDesc + getPadding()) * height);
 }
 
-gcn::Color ItemPopup::getColor(ItemType type)
+gcn::Color ItemPopup::getColor(const ItemType type)
 {
     switch (type)
     {

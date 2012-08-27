@@ -65,7 +65,7 @@ class Palette
          *
          * @return the requested color or Palette::BLACK
          */
-        const gcn::Color &getColor(char c, bool &valid);
+        const gcn::Color &getColor(const char c, bool &valid);
 
         /**
          * Gets the color associated with the type. Sets the alpha channel
@@ -141,7 +141,7 @@ class Palette
         /**
          * Constructor
          */
-        Palette(int size);
+        Palette(const int size);
 
         /**
          * Destructor

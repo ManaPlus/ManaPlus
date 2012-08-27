@@ -39,7 +39,7 @@ class GuildManager
 
         void chat(std::string msg);
 
-        void send(std::string msg);
+        void send(std::string msg) const;
 
         bool processGuildMessage(std::string msg);
 
@@ -60,15 +60,15 @@ class GuildManager
 
         void notice(std::string msg);
 
-        void createTab(Guild *guild);
+        void createTab(Guild *const guild);
 
-        Guild *createGuild();
+        Guild *createGuild() const;
 
-        void clear();
+        void clear() const;
 
         void reload();
 
-        void inviteResponse(bool response);
+        void inviteResponse(const bool response);
 
         bool afterRemove();
 

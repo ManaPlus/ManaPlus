@@ -54,6 +54,7 @@ class KillStats : public Window, private gcn::ActionListener, public Listener
          * Stuff.
          */
         void action(const gcn::ActionEvent &event);
+
         void gainXp(int Xp);
 
         /**
@@ -76,11 +77,9 @@ class KillStats : public Window, private gcn::ActionListener, public Listener
          */
         void updateJackoLabel();
 
-        void jackoDead(int id);
+        void jackoDead(const int id);
 
         void jackoAlive(int id);
-
-        void addLog(std::string str);
 
         void processEvent(Channels channel A_UNUSED,
                           const DepricatedEvent &event);

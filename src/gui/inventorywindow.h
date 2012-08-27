@@ -66,7 +66,7 @@ class InventoryWindow : public Window,
         /**
          * Constructor.
          */
-        InventoryWindow(Inventory *inventory);
+        InventoryWindow(Inventory *const inventory);
 
         /**
          * Destructor.
@@ -116,7 +116,7 @@ class InventoryWindow : public Window,
         /**
          * Sets whether the split button should be shown.
          */
-        void setSplitAllowed(bool allowed);
+        void setSplitAllowed(const bool allowed);
 
         /**
          * Closes the Storage Window, as well as telling the server that the
@@ -124,7 +124,7 @@ class InventoryWindow : public Window,
          */
         void close();
 
-        void slotsChanged(Inventory* inventory);
+        void slotsChanged(Inventory *const inventory);
 
         bool isMainInventory() const
         { return mInventory->isMainInventory(); }
@@ -139,7 +139,7 @@ class InventoryWindow : public Window,
 
         void processEvent(Channels channel, const DepricatedEvent &event);
 
-        void updateButtons(Item *item = nullptr);
+        void updateButtons(const Item *item = nullptr);
 
         bool isInputFocused() const;
 

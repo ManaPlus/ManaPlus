@@ -45,7 +45,7 @@ public:
     int getPos() const
     { return mPos; }
 
-    void setPos(int pos)
+    void setPos(const int pos)
     { mPos = pos; }
 
     std::string getAdditionString() const;
@@ -53,9 +53,10 @@ public:
 protected:
     friend class Guild;
 
-    GuildMember(Guild *guild, int id, int accountId, const std::string &name);
+    GuildMember(Guild *const guild, const int id, const int accountId,
+                const std::string &name);
 
-    GuildMember(Guild *guild, const std::string &name);
+    GuildMember(Guild *const guild, const std::string &name);
 
     Guild *mGuild;
     int mPos;
@@ -75,7 +76,8 @@ public:
     /**
      * Adds member to the list.
      */
-    GuildMember *addMember(int accountId, int charId, const std::string &name);
+    GuildMember *addMember(const int accountId, const int charId,
+                           const std::string &name);
 
     /**
      * Adds member to the list.
@@ -87,14 +89,14 @@ public:
      *
      * @return the member with the given ID, or NULL if they don't exist.
      */
-    GuildMember *getMember(int id) const;
+    GuildMember *getMember(const int id) const;
 
     /**
      * Find a member by account ID and char ID.
      *
      * @return the member with the given ID, or NULL if they don't exist.
      */
-    GuildMember *getMember(int accountId, int charId) const;
+    GuildMember *getMember(const int accountId, const int charId) const;
 
     /**
      * Find a member by name.
@@ -120,12 +122,12 @@ public:
     /**
      * Removes a member from the guild.
      */
-    void removeMember(GuildMember *member);
+    void removeMember(const GuildMember *const member);
 
     /**
      * Removes a member from the guild.
      */
-    void removeMember(int id);
+    void removeMember(const int id);
 
     /**
      * Removes a member from the guild.
@@ -144,7 +146,7 @@ public:
     int getNumberOfElements()
     { return static_cast<int>(mMembers.size()); }
 
-    Avatar *getAvatarAt(int i);
+    Avatar *getAvatarAt(const int i);
 
     /**
      * Get whether user can invite users to this guild.
@@ -153,28 +155,28 @@ public:
     bool getInviteRights() const
     { return mCanInviteUsers; }
 
-    void setRights(short rights);
+    void setRights(const short rights);
 
-    bool isMember(GuildMember *member) const;
+    bool isMember(const GuildMember *const member) const;
 
-    bool isMember(int id) const;
+    bool isMember(const int id) const;
 
     bool isMember(const std::string &name) const;
 
     void getNames(StringVect &names) const;
 
-    void addPos(int id, std::string name);
+    void addPos(const int id, std::string name);
 
     void sort();
 
     std::string getPos(int id) const;
 
-    static Guild *getGuild(short id);
+    static Guild *getGuild(const short id);
 
     const PositionsMap &getPositions() const
     { return mPositions; }
 
-    void setEmblemId(int id)
+    void setEmblemId(const int id)
     { mEmblemId = id; }
 
     int getEmblemId() const
@@ -182,7 +184,7 @@ public:
 
     static void clearGuilds();
 
-    void setServerGuild(bool b)
+    void setServerGuild(const bool b)
     { mServerGuild = b; }
 
     bool getServerGuild() const
@@ -195,7 +197,7 @@ private:
     /**
      * Constructor with guild id passed to it.
      */
-    Guild(short id);
+    Guild(const short id);
 
     typedef std::vector<GuildMember*> MemberList;
     MemberList mMembers;

@@ -84,7 +84,7 @@ Minimap::~Minimap()
     }
 }
 
-void Minimap::setMap(Map *map)
+void Minimap::setMap(const Map *const map)
 {
     std::string caption("");
     std::string minimapName;
@@ -111,7 +111,7 @@ void Minimap::setMap(Map *map)
     {
         if (config.getBoolValue("showExtMinimaps"))
         {
-            SDL_Surface* surface = SDL_CreateRGBSurface(SDL_SWSURFACE,
+            SDL_Surface *const surface = SDL_CreateRGBSurface(SDL_SWSURFACE,
                 map->getWidth(), map->getHeight(), 32,
                 0x00ff0000, 0x0000ff00, 0x000000ff, 0x00000000);
             if (!surface)
@@ -148,7 +148,7 @@ void Minimap::setMap(Map *map)
         {
             std::string tempname = paths.getStringValue("minimaps")
                 + "graphics/minimaps/" + map->getFilename() + ".png";
-            ResourceManager *resman = ResourceManager::getInstance();
+            ResourceManager *const resman = ResourceManager::getInstance();
 
             minimapName = map->getProperty("minimap");
 
@@ -208,7 +208,7 @@ void Minimap::draw(gcn::Graphics *graphics)
     if (!userPalette || !player_node || !viewport)
         return;
 
-    Graphics *graph = static_cast<Graphics*>(graphics);
+    Graphics *const graph = static_cast<Graphics*>(graphics);
 
     const gcn::Rectangle a = getChildrenArea();
 
@@ -256,7 +256,7 @@ void Minimap::draw(gcn::Graphics *graphics)
         if (!(*it) || (*it)->getType() == ActorSprite::FLOOR_ITEM)
             continue;
 
-        const Being *being = static_cast<Being*>(*it);
+        const Being *const being = static_cast<const Being *const>(*it);
         if (!being)
             continue;
 
@@ -318,11 +318,12 @@ void Minimap::draw(gcn::Graphics *graphics)
 
     if (player_node->isInParty())
     {
-        Party *party = player_node->getParty();
+        Party *const party = player_node->getParty();
         if (party)
         {
-            PartyMember *m = party->getMember(player_node->getName());
-            Party::MemberList *members = party->getMembers();
+            const PartyMember *const m = party->getMember(
+                player_node->getName());
+            Party::MemberList *const members = party->getMembers();
             if (m && members)
             {
                 const std::string curMap = m->getMap();
@@ -331,7 +332,7 @@ void Minimap::draw(gcn::Graphics *graphics)
                     it_end = members->end();
                 while (it != it_end)
                 {
-                    PartyMember *member = *it;
+                    const PartyMember *const member = *it;
                     if (member && member->getMap() == curMap
                         && member->getOnline() && member != m)
                     {

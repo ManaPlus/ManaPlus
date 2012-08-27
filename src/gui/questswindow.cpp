@@ -47,7 +47,7 @@
 
 struct QuestItemText
 {
-    QuestItemText(std::string text0, int type0) :
+    QuestItemText(std::string text0, const int type0) :
         text(text0), type(type0)
     {
     }
@@ -168,7 +168,7 @@ QuestsWindow::~QuestsWindow()
 void QuestsWindow::loadXml()
 {
     XML::Document doc("quests.xml");
-    XmlNodePtr root = doc.rootNode();
+    const XmlNodePtr root = doc.rootNode();
     if (!root)
         return;
 
@@ -176,7 +176,7 @@ void QuestsWindow::loadXml()
     {
         if (xmlNameEqual(varNode, "var"))
         {
-            int id = XML::getProperty(varNode, "id", 0);
+            const int id = XML::getProperty(varNode, "id", 0);
             if (id < 0)
                 continue;
             for_each_xml_child_node(questNode, varNode)
@@ -188,7 +188,7 @@ void QuestsWindow::loadXml()
     }
 }
 
-void QuestsWindow::loadQuest(int var, XmlNodePtr node)
+void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
 {
     QuestItem *quest = new QuestItem();
     quest->name = XML::langProperty(node, "name", _("unknown"));
@@ -213,7 +213,7 @@ void QuestsWindow::loadQuest(int var, XmlNodePtr node)
     {
         if (!xmlTypeEqual(dataNode, XML_ELEMENT_NODE))
             continue;
-        const char *data = reinterpret_cast<const char*>(
+        const char *const data = reinterpret_cast<const char*>(
             xmlNodeGetContent(dataNode));
         if (!data)
             continue;
@@ -232,7 +232,7 @@ void QuestsWindow::action(const gcn::ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "select")
     {
-        int id = mQuestsListBox->getSelected();
+        const int id = mQuestsListBox->getSelected();
         if (id < 0)
             return;
         showQuest(mQuestLinks[id]);
@@ -243,12 +243,12 @@ void QuestsWindow::action(const gcn::ActionEvent &event)
     }
 }
 
-void QuestsWindow::updateQuest(int var, int val)
+void QuestsWindow::updateQuest(const int var, const int val)
 {
     mVars[var] = val;
 }
 
-void QuestsWindow::rebuild(bool playSound)
+void QuestsWindow::rebuild(const bool playSound)
 {
     mQuestsModel->clear();
     mQuestLinks.clear();
@@ -262,15 +262,15 @@ void QuestsWindow::rebuild(bool playSound)
     for (std::map<int, int>::const_iterator it = mVars.begin(),
          it_end = mVars.end(); it != it_end; ++ it)
     {
-        int var = (*it).first;
-        int val = (*it).second;
+        const int var = (*it).first;
+        const int val = (*it).second;
         const std::vector<QuestItem*> &quests = mQuests[var];
         for (std::vector<QuestItem*>::const_iterator it2 = quests.begin(),
              it2_end = quests.end(); it2 != it2_end; ++ it2)
         {
             if (!*it2)
                 continue;
-            QuestItem *quest = *it2;
+            QuestItem *const quest = *it2;
             // complete quest
             if (quest->complete.find(val) != quest->complete.end())
                 complete.push_back(quest);
@@ -285,7 +285,7 @@ void QuestsWindow::rebuild(bool playSound)
     for (std::vector<QuestItem*>::const_iterator it = complete.begin(),
         it_end = complete.end(); it != it_end; ++ it, k ++)
     {
-        QuestItem *quest = *it;
+        QuestItem *const quest = *it;
         if (quest->completeFlag == 0)
         {
             updatedQuest = k;
@@ -308,7 +308,7 @@ void QuestsWindow::rebuild(bool playSound)
     for (std::vector<QuestItem*>::const_iterator it = incomplete.begin(),
         it_end = incomplete.end(); it != it_end; ++ it, k ++)
     {
-        QuestItem *quest = *it;
+        QuestItem *const quest = *it;
         if (quest->completeFlag == -1)
         {
             updatedQuest = k;
@@ -353,7 +353,7 @@ void QuestsWindow::rebuild(bool playSound)
     }
 }
 
-void QuestsWindow::showQuest(QuestItem *quest)
+void QuestsWindow::showQuest(const QuestItem *const quest)
 {
     if (!quest)
         return;

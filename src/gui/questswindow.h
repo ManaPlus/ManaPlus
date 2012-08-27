@@ -58,16 +58,16 @@ class QuestsWindow : public Window, public gcn::ActionListener
          */
         void action(const gcn::ActionEvent &event);
 
-        void updateQuest(int var, int val);
+        void updateQuest(const int var, const int val);
 
-        void rebuild(bool playSound);
+        void rebuild(const bool playSound);
 
-        void showQuest(QuestItem *quest);
+        void showQuest(const QuestItem *const quest);
 
     private:
         void loadXml();
 
-        void loadQuest(int var, XmlNodePtr node);
+        void loadQuest(const int var, const XmlNodePtr node);
 
         QuestsModel *mQuestsModel;
         ExtendedListBox *mQuestsListBox;

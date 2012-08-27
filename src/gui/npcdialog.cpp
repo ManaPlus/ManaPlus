@@ -59,7 +59,7 @@
 
 NpcDialog::DialogList NpcDialog::instances;
 
-NpcDialog::NpcDialog(int npcId) :
+NpcDialog::NpcDialog(const int npcId) :
     Window(_("NPC"), false, nullptr, "npc.xml"),
     mNpcId(npcId),
     mLogInteraction(config.getBoolValue("logNpcInGui")),
@@ -140,7 +140,7 @@ NpcDialog::NpcDialog(int npcId) :
     mPlusButton = new Button(_("+"), "inc", this);
     mMinusButton = new Button(_("-"), "dec", this);
 
-    gcn::Font *fnt = mButton->getFont();
+    const gcn::Font *const fnt = mButton->getFont();
     int width = std::max(fnt->getWidth(CAPTION_WAITING),
         fnt->getWidth(CAPTION_NEXT));
     width = std::max(width, fnt->getWidth(CAPTION_CLOSE));
@@ -226,7 +226,7 @@ void NpcDialog::setText(const std::string &text)
 }
 */
 
-void NpcDialog::addText(const std::string &text, bool save)
+void NpcDialog::addText(const std::string &text, const bool save)
 {
     if (save || mLogInteraction)
     {
@@ -279,7 +279,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
             if (mInputState == NPC_INPUT_LIST)
             {
                 unsigned char choice = 0;
-                int selectedIndex = mItemList->getSelected();
+                const int selectedIndex = mItemList->getSelected();
 
                 if (selectedIndex >= static_cast<int>(mItems.size())
                     || selectedIndex < 0
@@ -395,7 +395,7 @@ void NpcDialog::addChoice(const std::string &choice)
 void NpcDialog::parseListItems(const std::string &itemString)
 {
     std::istringstream iss(itemString);
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     std::string tmp;
     while (getline(iss, tmp, ':'))
@@ -409,7 +409,8 @@ void NpcDialog::parseListItems(const std::string &itemString)
         else
         {
             mItems.push_back(tmp.substr(pos + 1));
-            Image *img = resman->getImage(paths.getStringValue("guiIcons")
+            Image *const img = resman->getImage(
+                paths.getStringValue("guiIcons")
                 + tmp.substr(0, pos) + ".png");
             mImages.push_back(img);
         }
@@ -464,7 +465,8 @@ bool NpcDialog::isAnyInputFocused()
     return false;
 }
 
-void NpcDialog::integerRequest(int defaultValue, int min, int max)
+void NpcDialog::integerRequest(const int defaultValue, const int min,
+                               const int max)
 {
     mActionState = NPC_ACTION_INPUT;
     mInputState = NPC_INPUT_INTEGER;
@@ -474,7 +476,7 @@ void NpcDialog::integerRequest(int defaultValue, int min, int max)
     buildLayout();
 }
 
-void NpcDialog::move(int amount)
+void NpcDialog::move(const int amount)
 {
     if (mActionState != NPC_ACTION_INPUT)
         return;
@@ -687,9 +689,9 @@ void NpcDialog::restoreCamera()
     mCameraMode = -1;
 }
 
-void NpcDialog::showAvatar(int avatarId)
+void NpcDialog::showAvatar(const int avatarId)
 {
-    bool needShow = (avatarId != 0);
+    const bool needShow = (avatarId != 0);
     if (needShow)
     {
         delete mAvatarBeing;
@@ -698,13 +700,11 @@ void NpcDialog::showAvatar(int avatarId)
         if (!mAvatarBeing->empty())
         {
             mAvatarBeing->logic();
-            Sprite *sprite = mAvatarBeing->getSprite(0);
+            const Sprite *const sprite = mAvatarBeing->getSprite(0);
             if (sprite)
             {
-                int width = sprite->getWidth() + 2 * getPadding();
-                mPlayerBox->setWidth(width);
-                int height = sprite->getHeight() + 2 * getPadding();
-                mPlayerBox->setHeight(height);
+                mPlayerBox->setWidth(sprite->getWidth() + 2 * getPadding());
+                mPlayerBox->setHeight(sprite->getHeight() + 2 * getPadding());
             }
         }
     }
@@ -725,16 +725,16 @@ void NpcDialog::showAvatar(int avatarId)
     }
 }
 
-void NpcDialog::setAvatarDirection(uint8_t direction)
+void NpcDialog::setAvatarDirection(const uint8_t direction)
 {
-    Being *being = mPlayerBox->getBeing();
+    Being *const being = mPlayerBox->getBeing();
     if (being)
         being->setDirection(direction);
 }
 
-void NpcDialog::setAvatarAction(int actionId)
+void NpcDialog::setAvatarAction(const int actionId)
 {
-    Being *being = mPlayerBox->getBeing();
+    Being *const being = mPlayerBox->getBeing();
     if (being)
         being->setAction(static_cast<Being::Action>(actionId));
 }
@@ -747,7 +747,7 @@ void NpcDialog::logic()
         mAvatarBeing->logic();
         if (mPlayerBox->getWidth() < static_cast<signed>(3 * getPadding()))
         {
-            Sprite *sprite = mAvatarBeing->getSprite(0);
+            const Sprite *const sprite = mAvatarBeing->getSprite(0);
             if (sprite)
             {
                 mPlayerBox->setWidth(sprite->getWidth() + 2 * getPadding());

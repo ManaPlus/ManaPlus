@@ -97,7 +97,8 @@ private:
     StringVect mStrings;
 };
 
-void ItemAmountWindow::finish(Item *item, int amount, int price, Usage usage)
+void ItemAmountWindow::finish(Item *const item, const int amount,
+                              const int price, const Usage usage)
 {
     switch (usage)
     {
@@ -132,8 +133,8 @@ void ItemAmountWindow::finish(Item *item, int amount, int price, Usage usage)
     }
 }
 
-ItemAmountWindow::ItemAmountWindow(Usage usage, Window *parent, Item *item,
-                                   int maxRange):
+ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
+                                   Item *const item, const int maxRange) :
     Window("", true, parent, "amount.xml"),
     mItemPriceTextField(nullptr),
     mGPLabel(nullptr),
@@ -196,15 +197,15 @@ ItemAmountWindow::ItemAmountWindow(Usage usage, Window *parent, Item *item,
     }
 
     //Item icon
-    Image *image = item->getImage();
+    Image *const image = item->getImage();
     mItemIcon = new Icon(image);
 
     // Buttons
-    Button *minusAmountButton = new Button(_("-"), "dec", this);
-    Button *plusAmountButton = new Button(_("+"), "inc", this);
-    Button *okButton = new Button(_("OK"), "ok", this);
-    Button *cancelButton = new Button(_("Cancel"), "cancel", this);
-    Button *addAllButton = new Button(_("All"), "all", this);
+    Button *const minusAmountButton = new Button(_("-"), "dec", this);
+    Button *const plusAmountButton = new Button(_("+"), "inc", this);
+    Button *const okButton = new Button(_("OK"), "ok", this);
+    Button *const cancelButton = new Button(_("Cancel"), "cancel", this);
+    Button *const addAllButton = new Button(_("All"), "all", this);
 
     minusAmountButton->adjustSize();
     minusAmountButton->setWidth(plusAmountButton->getWidth());
@@ -228,8 +229,8 @@ ItemAmountWindow::ItemAmountWindow(Usage usage, Window *parent, Item *item,
 
     if (mUsage == ShopBuyAdd || mUsage == ShopSellAdd)
     {
-        Button *minusPriceButton = new Button(_("-"), "decPrice", this);
-        Button *plusPriceButton = new Button(_("+"), "incPrice", this);
+        Button *const minusPriceButton = new Button(_("-"), "decPrice", this);
+        Button *const plusPriceButton = new Button(_("+"), "incPrice", this);
         minusPriceButton->adjustSize();
         minusPriceButton->setWidth(plusPriceButton->getWidth());
 
@@ -347,7 +348,7 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
 
         std::string str = mItemsModal->getElementAt(
                 mItemDropDown->getSelected());
-        int id = ItemDB::get(str).getId();
+        const int id = ItemDB::get(str).getId();
 
         mItem = new Item(id, 10000);
 
@@ -356,8 +357,7 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
         else if (!mMax)
             mMax = mItem->getQuantity();
 
-        Image *image = mItem->getImage();
-        mItemIcon->setImage(image);
+        mItemIcon->setImage(mItem->getImage());
     }
 
     int amount = mItemAmountTextField->getValue();
@@ -416,8 +416,8 @@ void ItemAmountWindow::keyReleased(gcn::KeyEvent &keyEvent A_UNUSED)
     mItemAmountSlide->setValue(mItemAmountTextField->getValue());
 }
 
-void ItemAmountWindow::showWindow(Usage usage, Window *parent, Item *item,
-                                  int maxRange)
+void ItemAmountWindow::showWindow(const Usage usage, Window *const parent,
+                                  Item *const item, int maxRange)
 {
     if (!item)
         return;

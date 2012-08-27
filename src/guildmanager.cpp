@@ -94,7 +94,7 @@ void GuildManager::reload()
 
     if (socialWindow)
     {
-        Guild *guild = Guild::getGuild(1);
+        Guild *const guild = Guild::getGuild(1);
         if (guild && socialWindow)
             socialWindow->removeTab(guild);
     }
@@ -102,7 +102,7 @@ void GuildManager::reload()
     mTab = nullptr;
 }
 
-void GuildManager::send(std::string msg)
+void GuildManager::send(std::string msg) const
 {
     Net::getChatHandler()->privateMessage("guild", msg);
 }
@@ -118,7 +118,7 @@ void GuildManager::chat(std::string msg)
 
 void GuildManager::getNames(StringVect &names)
 {
-    Guild *guild = createGuild();
+    const Guild *const guild = createGuild();
     if (guild)
         guild->getNames(names);
 }
@@ -148,22 +148,22 @@ void GuildManager::requestGuildInfo()
 
 void GuildManager::updateList()
 {
-    Guild *guild = Guild::getGuild(1);
+    Guild *const guild = Guild::getGuild(1);
     if (guild)
     {
         guild->setServerGuild(false);
         StringVectCIter it = mTempList.begin();
-        StringVectCIter it_end = mTempList.end();
+        const StringVectCIter it_end = mTempList.end();
         int i = 0;
         while (it != it_end)
         {
             std::string name = *it;
             if (name.size() > 1)
             {
-                int status = atoi(name.substr(name.size() - 1).c_str());
+                const int status = atoi(name.substr(name.size() - 1).c_str());
 
                 name = name.substr(0, name.size() - 1);
-                GuildMember *m = guild->addMember(i, 0, name);
+                GuildMember *const m = guild->addMember(i, 0, name);
                 if (m)
                 {
                     m->setOnline(status & 1);
@@ -195,7 +195,7 @@ void GuildManager::updateList()
     mGotInfo = true;
 }
 
-void GuildManager::createTab(Guild *guild)
+void GuildManager::createTab(Guild *const guild)
 {
     if (!mTab)
     {
@@ -206,9 +206,9 @@ void GuildManager::createTab(Guild *guild)
     }
 }
 
-Guild *GuildManager::createGuild()
+Guild *GuildManager::createGuild() const
 {
-    Guild *guild = Guild::getGuild(1);
+    Guild *const guild = Guild::getGuild(1);
     if (!guild)
         return nullptr;
 
@@ -218,7 +218,7 @@ Guild *GuildManager::createGuild()
 
 bool GuildManager::processGuildMessage(std::string msg)
 {
-    bool res = process(msg);
+    const bool res = process(msg);
 
     if (!mRequest)
         requestGuildInfo();
@@ -231,11 +231,11 @@ bool GuildManager::process(std::string msg)
     if (msg.size() > 4 && msg[0] == '#' && msg[1] == '#')
         msg = msg.substr(3);
 
-    bool haveNick = (msg.find(": ") != std::string::npos);
+    const bool haveNick = (msg.find(": ") != std::string::npos);
 
     if (!haveNick && findCutLast(msg, " is now Offline."))
     {
-        Guild *guild = createGuild();
+        Guild *const guild = createGuild();
         if (!guild)
             return false;
         if (msg.size() < 4)
@@ -243,7 +243,7 @@ bool GuildManager::process(std::string msg)
         if (msg[0] == '#' && msg[1] == '#')
             msg = msg.substr(3);
 
-        GuildMember *m = guild->addMember(msg);
+        GuildMember *const m = guild->addMember(msg);
         if (m)
             m->setOnline(false);
         guild->sort();
@@ -252,14 +252,14 @@ bool GuildManager::process(std::string msg)
     }
     else if (!haveNick && findCutLast(msg, " is now Online."))
     {
-        Guild *guild = createGuild();
+        Guild *const guild = createGuild();
         if (!guild)
             return false;
         if (msg.size() < 4)
             return false;
         if (msg[0] == '#' && msg[1] == '#')
             msg = msg.substr(3);
-        GuildMember *m = guild->addMember(msg);
+        GuildMember *const m = guild->addMember(msg);
         if (m)
             m->setOnline(true);
         guild->sort();
@@ -268,7 +268,7 @@ bool GuildManager::process(std::string msg)
     }
     else if (findCutFirst(msg, "Welcome to the "))
     {
-        Guild *guild = createGuild();
+        Guild *const guild = createGuild();
         if (!guild)
             return false;
 //        logger->log("welcome message: %s", msg.c_str());
@@ -286,7 +286,7 @@ bool GuildManager::process(std::string msg)
     }
     else if (findCutFirst(msg, "Player name: "))
     {
-        Guild *guild = createGuild();
+        Guild *const guild = createGuild();
         if (!guild)
             return false;
         size_t pos = msg.find("Access Level: ");
@@ -301,7 +301,7 @@ bool GuildManager::process(std::string msg)
         if (pos == std::string::npos)
             return false;
 
-        int level = atoi(msg.substr(0, pos).c_str());
+        const int level = atoi(msg.substr(0, pos).c_str());
         if (level >= 10)
             mHavePower = true;
         else
@@ -360,7 +360,7 @@ bool GuildManager::process(std::string msg)
     else if (!haveNick && (findCutLast(msg, " has been removed "
              "from the Guild.") || findCutLast(msg, " has left the Guild.")))
     {
-        Guild *guild = createGuild();
+        Guild *const guild = createGuild();
         if (!guild)
             return false;
         if (msg.size() < 4)
@@ -370,7 +370,7 @@ bool GuildManager::process(std::string msg)
 
         if (actorSpriteManager)
         {
-            Being *b = actorSpriteManager->findBeingByName(
+            Being *const b = actorSpriteManager->findBeingByName(
                 msg, Being::PLAYER);
 
             if (b)
@@ -391,7 +391,7 @@ bool GuildManager::process(std::string msg)
     }
     else
     {
-        Guild *guild = createGuild();
+        Guild *const guild = createGuild();
         if (!guild)
             return false;
         if (!mTab)
@@ -451,17 +451,17 @@ void GuildManager::notice(std::string msg)
         send("!setmotd " + msg);
 }
 
-void GuildManager::clear()
+void GuildManager::clear() const
 {
     if (socialWindow)
     {
-        Guild *guild = Guild::getGuild(1);
+        Guild *const guild = Guild::getGuild(1);
         if (guild)
             socialWindow->removeTab(guild);
     }
 }
 
-void GuildManager::inviteResponse(bool response)
+void GuildManager::inviteResponse(const bool response)
 {
     if (response)
         send("yes");
@@ -471,7 +471,7 @@ void GuildManager::inviteResponse(bool response)
 
 bool GuildManager::afterRemove()
 {
-    Guild *guild = createGuild();
+    Guild *const guild = createGuild();
     if (!guild)
         return false;
     guild->removeFromMembers();

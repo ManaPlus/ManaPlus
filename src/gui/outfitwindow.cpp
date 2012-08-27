@@ -122,9 +122,9 @@ OutfitWindow::~OutfitWindow()
     save();
 }
 
-void OutfitWindow::load(bool oldConfig)
+void OutfitWindow::load(const bool oldConfig)
 {
-    Configuration *cfg;
+    const Configuration *cfg;
     if (oldConfig)
         cfg = &config;
     else
@@ -185,7 +185,7 @@ void OutfitWindow::save()
         bool good = false;
         for (unsigned i = 0; i < OUTFIT_ITEM_COUNT; i++)
         {
-            int res = mItems[o][i] ? mItems[o][i] : -1;
+            const int res = mItems[o][i] ? mItems[o][i] : -1;
             if (res != -1)
                 good = true;
             outfitStr += toString(res);
@@ -252,11 +252,12 @@ void OutfitWindow::action(const gcn::ActionEvent &event)
     }
 }
 
-void OutfitWindow::wearOutfit(int outfit, bool unwearEmpty, bool select)
+void OutfitWindow::wearOutfit(const int outfit, const bool unwearEmpty,
+                              const bool select)
 {
     bool isEmpty = true;
 
-    Item *item;
+    const Item *item;
     if (outfit < 0 || outfit > static_cast<int>(OUTFITS_COUNT))
         return;
 
@@ -286,12 +287,12 @@ void OutfitWindow::wearOutfit(int outfit, bool unwearEmpty, bool select)
     }
 }
 
-void OutfitWindow::copyOutfit(int outfit)
+void OutfitWindow::copyOutfit(const int outfit)
 {
     copyOutfit(outfit, mCurrentOutfit);
 }
 
-void OutfitWindow::copyOutfit(int src, int dst)
+void OutfitWindow::copyOutfit(const int src, const int dst)
 {
     if (src < 0 || src > static_cast<int>(OUTFITS_COUNT)
         || dst < 0 || dst > static_cast<int>(OUTFITS_COUNT))
@@ -306,7 +307,7 @@ void OutfitWindow::copyOutfit(int src, int dst)
 void OutfitWindow::draw(gcn::Graphics *graphics)
 {
     Window::draw(graphics);
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics*>(graphics);
 
     for (unsigned int i = 0; i < OUTFIT_ITEM_COUNT; i++)
     {
@@ -322,15 +323,15 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
             continue;
 
         bool foundItem = false;
-        Inventory *inv = PlayerInfo::getInventory();
+        const Inventory *const inv = PlayerInfo::getInventory();
         if (inv)
         {
-            Item *item = inv->findItem(mItems[mCurrentOutfit][i],
+            const Item *const item = inv->findItem(mItems[mCurrentOutfit][i],
                 mItemColors[mCurrentOutfit][i]);
             if (item)
             {
                 // Draw item icon.
-                Image* image = item->getImage();
+                const Image *const image = item->getImage();
                 if (image)
                 {
                     g->drawImage(image, itemX, itemY);
@@ -340,7 +341,7 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
         }
         if (!foundItem)
         {
-            Image *image = Item::getImage(mItems[mCurrentOutfit][i],
+            Image *const image = Item::getImage(mItems[mCurrentOutfit][i],
                 mItemColors[mCurrentOutfit][i]);
             if (image)
             {
@@ -352,7 +353,7 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
     if (mItemMoved)
     {
         // Draw the item image being dragged by the cursor.
-        Image* image = mItemMoved->getImage();
+        const Image *const image = mItemMoved->getImage();
         if (image)
         {
             const int tPosX = mCursorPosX - (image->mBounds.w / 2);
@@ -385,10 +386,10 @@ void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
             }
             mMoved = false;
             event.consume();
-            Inventory *inv = PlayerInfo::getInventory();
+            const Inventory *const inv = PlayerInfo::getInventory();
             if (inv)
             {
-                Item *item = inv->findItem(itemId, itemColor);
+                Item *const item = inv->findItem(itemId, itemColor);
                 if (item)
                     mItemMoved = item;
                 else
@@ -468,7 +469,7 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
     Window::mouseReleased(event);
 }
 
-int OutfitWindow::getIndexFromGrid(int pointX, int pointY) const
+int OutfitWindow::getIndexFromGrid(const int pointX, const int pointY) const
 {
     const gcn::Rectangle tRect = gcn::Rectangle(
         10, 25, mGridWidth * mBoxWidth, mGridHeight * mBoxHeight);
@@ -481,17 +482,17 @@ int OutfitWindow::getIndexFromGrid(int pointX, int pointY) const
     return index;
 }
 
-void OutfitWindow::unequipNotInOutfit(int outfit)
+void OutfitWindow::unequipNotInOutfit(const int outfit) const
 {
     // here we think that outfit is correct index
 
-    Inventory *inventory = PlayerInfo::getInventory();
+    const Inventory *const inventory = PlayerInfo::getInventory();
     if (!inventory)
         return;
 
     for (unsigned i = 0; i < inventory->getSize(); i++)
     {
-        Item *item = inventory->getItem(i);
+        const Item *const item = inventory->getItem(i);
         if (item && item->isEquipped())
         {
             bool found = false;
@@ -509,7 +510,7 @@ void OutfitWindow::unequipNotInOutfit(int outfit)
     }
 }
 
-std::string OutfitWindow::keyName(int number)
+std::string OutfitWindow::keyName(const int number) const
 {
     if (number < 0 || number >= SHORTCUT_EMOTES)
         return "";
@@ -544,7 +545,7 @@ void OutfitWindow::showCurrentOutfit()
     mAwayOutfitCheck->setSelected(mAwayOutfit == mCurrentOutfit);
 }
 
-void OutfitWindow::wearNextOutfit(bool all)
+void OutfitWindow::wearNextOutfit(const bool all)
 {
     next();
     if (!all && mCurrentOutfit < static_cast<int>(OUTFITS_COUNT))
@@ -565,7 +566,7 @@ void OutfitWindow::wearNextOutfit(bool all)
     wearOutfit(mCurrentOutfit);
 }
 
-void OutfitWindow::wearPreviousOutfit(bool all)
+void OutfitWindow::wearPreviousOutfit(const bool all)
 {
     previous();
     if (!all && mCurrentOutfit < static_cast<int>(OUTFITS_COUNT))
@@ -591,9 +592,9 @@ void OutfitWindow::copyFromEquiped()
     copyFromEquiped(mCurrentOutfit);
 }
 
-void OutfitWindow::copyFromEquiped(int dst)
+void OutfitWindow::copyFromEquiped(const int dst)
 {
-    Inventory *inventory = PlayerInfo::getInventory();
+    const Inventory *const inventory = PlayerInfo::getInventory();
     if (!inventory)
         return;
 
@@ -601,7 +602,7 @@ void OutfitWindow::copyFromEquiped(int dst)
 
     for (unsigned i = 0, sz = inventory->getSize(); i < sz; i++)
     {
-        const Item *item = inventory->getItem(i);
+        const Item *const item = inventory->getItem(i);
         if (item && item->isEquipped())
         {
             mItems[dst][outfitCell] = item->getId();

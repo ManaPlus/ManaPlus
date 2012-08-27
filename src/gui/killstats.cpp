@@ -58,7 +58,7 @@ KillStats::KillStats():
     setDefaultSize(250, 250, 350, 300);
 
     listen(CHANNEL_ATTRIBUTES);
-    int xp(PlayerInfo::getAttribute(PlayerInfo::EXP));
+    const int xp(PlayerInfo::getAttribute(PlayerInfo::EXP));
     int xpNextLevel(PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED));
 
     mResetButton = new Button(_("Reset stats"), "reset", this);
@@ -184,7 +184,7 @@ void KillStats::gainXp(int xp)
     if (!mKillCounter)
         mKillCounter = 1;
 
-    float AvgExp = static_cast<float>(mExpCounter / mKillCounter);
+    const float AvgExp = static_cast<float>(mExpCounter / mKillCounter);
     int xpNextLevel(PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED));
 
     if (mKillTimer == 0)
@@ -246,12 +246,12 @@ void KillStats::gainXp(int xp)
 
 void KillStats::recalcStats()
 {
-    int curTime = cur_time;
+    const int curTime = cur_time;
 
     // Need Update Exp Counter
     if (curTime - m1minExpTime > 60)
     {
-        int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
+        const int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
         if (m1minExpTime != 0)
             m1minSpeed = newExp - m1minExpNum;
         else
@@ -262,7 +262,7 @@ void KillStats::recalcStats()
 
     if (curTime - m5minExpTime > 60*5)
     {
-        int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
+        const int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
         if (m5minExpTime != 0)
             m5minSpeed = newExp - m5minExpNum;
         else
@@ -273,7 +273,7 @@ void KillStats::recalcStats()
 
     if (curTime - m15minExpTime > 60*15)
     {
-        int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
+        const int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
         if (m15minExpTime != 0)
             m15minSpeed = newExp - m15minExpNum;
         else
@@ -376,7 +376,7 @@ void KillStats::updateJackoLabel()
     }
 }
 
-void KillStats::jackoDead(int id)
+void KillStats::jackoDead(const int id)
 {
     if (id == mJackoId && mIsJackoAlive)
     {
@@ -385,12 +385,6 @@ void KillStats::jackoDead(int id)
         mIsJackoSpawnTimeUnknown = false;
         updateJackoLabel();
     }
-}
-
-void KillStats::addLog(std::string str)
-{
-    if (debugChatTab)
-        debugChatTab->chatLog(str, BY_SERVER);
 }
 
 void KillStats::jackoAlive(int id)
@@ -411,7 +405,7 @@ void KillStats::validateJacko()
     if (!actorSpriteManager || !player_node)
         return;
 
-    Map *currentMap = Game::instance()->getCurrentMap();
+    const Map *const currentMap = Game::instance()->getCurrentMap();
     if (currentMap)
     {
         if (currentMap->getProperty("_realfilename") == "018-1"
@@ -422,7 +416,8 @@ void KillStats::validateJacko()
                 && player_node->getTileY() >= 21
                 && player_node->getTileY() <= 46)
             {
-                Being *dstBeing = actorSpriteManager->findBeingByName(
+                const Being *const dstBeing
+                    = actorSpriteManager->findBeingByName(
                     "Jack O", Being::MONSTER);
                 if (mIsJackoAlive && !dstBeing)
                 {
@@ -443,7 +438,7 @@ void KillStats::processEvent(Channels channel A_UNUSED,
 {
     if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
-        int id = event.getInt("id");
+        const int id = event.getInt("id");
         if (id == PlayerInfo::EXP || id == PlayerInfo::EXP_NEEDED)
         {
             gainXp(event.getInt("newValue") - event.getInt("oldValue"));

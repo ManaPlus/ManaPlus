@@ -80,7 +80,7 @@ public:
 class UpdateListModel : public gcn::ListModel
 {
     public:
-        UpdateListModel(LoginData *data) :
+        UpdateListModel(LoginData *const data) :
             gcn::ListModel(),
             mLoginData(data)
         {
@@ -107,18 +107,18 @@ class UpdateListModel : public gcn::ListModel
         LoginData *mLoginData;
 };
 
-LoginDialog::LoginDialog(LoginData *data, std::string serverName,
-                         std::string *updateHost):
+LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
+                         std::string *const updateHost):
     Window(_("Login"), false, nullptr, "login.xml"),
     mLoginData(data),
     mUpdateHost(updateHost),
     mServerName(serverName)
 {
-    gcn::Label *serverLabel1 = new Label(_("Server:"));
-    gcn::Label *serverLabel2 = new Label(serverName);
+    gcn::Label *const serverLabel1 = new Label(_("Server:"));
+    gcn::Label *const serverLabel2 = new Label(serverName);
     serverLabel2->adjustSize();
-    gcn::Label *userLabel = new Label(_("Name:"));
-    gcn::Label *passLabel = new Label(_("Password:"));
+    gcn::Label *const userLabel = new Label(_("Name:"));
+    gcn::Label *const passLabel = new Label(_("Password:"));
     if (mLoginData && mLoginData->updateHosts.size() > 1)
     {
         mUpdateHostLabel = new Label(strprintf(_("Update host: %s"),

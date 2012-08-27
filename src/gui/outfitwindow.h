@@ -65,9 +65,9 @@ class OutfitWindow : public Window, private gcn::ActionListener
 
         void mouseReleased(gcn::MouseEvent &event);
 
-        void load(bool oldConfig = false);
+        void load(const bool oldConfig = false);
 
-        void setItemSelected(int itemId)
+        void setItemSelected(const int itemId)
         { mItemSelected = itemId; }
 
         void setItemSelected(Item *item);
@@ -75,26 +75,26 @@ class OutfitWindow : public Window, private gcn::ActionListener
         bool isItemSelected() const
         { return mItemSelected > 0; }
 
-        void wearOutfit(int outfit, bool unwearEmpty = true,
-                        bool select = false);
+        void wearOutfit(const int outfit, const bool unwearEmpty = true,
+                        const bool select = false);
 
-        void copyOutfit(int outfit);
+        void copyOutfit(const int outfit);
 
-        void copyOutfit(int src, int dst);
+        void copyOutfit(const int src, const int dst);
 
         void copyFromEquiped();
 
-        void copyFromEquiped(int dst);
+        void copyFromEquiped(const int dst);
 
-        void unequipNotInOutfit(int outfit);
+        void unequipNotInOutfit(const int outfit) const;
 
         void next();
 
         void previous();
 
-        void wearNextOutfit(bool all = false);
+        void wearNextOutfit(const bool all = false);
 
-        void wearPreviousOutfit(bool all = false);
+        void wearPreviousOutfit(const bool all = false);
 
         void wearAwayOutfit();
 
@@ -102,7 +102,7 @@ class OutfitWindow : public Window, private gcn::ActionListener
 
         void showCurrentOutfit();
 
-        std::string keyName(int number) A_PURE;
+        std::string keyName(const int number) const;
 
         void clearCurrentOutfit();
 
@@ -115,7 +115,7 @@ class OutfitWindow : public Window, private gcn::ActionListener
         CheckBox *mAwayOutfitCheck;
         Label *mKeyLabel;
 
-        int getIndexFromGrid(int pointX, int pointY) const;
+        int getIndexFromGrid(const int pointX, const int pointY) const;
 
         int mBoxWidth;
         int mBoxHeight;

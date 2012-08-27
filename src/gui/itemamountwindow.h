@@ -86,16 +86,17 @@ class ItemAmountWindow : public Window,
         /**
          * Creates the dialog, or bypass it if there aren't enough items.
          */
-        static void showWindow(Usage usage, Window *parent, Item *item,
-                               int maxRange = 0);
+        static void showWindow(const Usage usage, Window *const parent,
+                               Item *const item, int maxRange = 0);
 
         ~ItemAmountWindow();
 
     private:
-        static void finish(Item *item, int amount, int price, Usage usage);
+        static void finish(Item *const item, const int amount,
+                           const int price, const Usage usage);
 
-        ItemAmountWindow(Usage usage, Window *parent, Item *item,
-                         int maxRange = 0);
+        ItemAmountWindow(const Usage usage, Window *const parent,
+                         Item *const item, const int maxRange = 0);
 
         IntTextField *mItemAmountTextField;   /**< Item amount caption. */
         IntTextField *mItemPriceTextField;   /**< Item price caption. */

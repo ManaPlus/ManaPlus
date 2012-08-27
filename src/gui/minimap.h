@@ -46,7 +46,7 @@ class Minimap : public Window
         /**
          * Sets the map image that should be displayed.
          */
-        void setMap(Map *map);
+        void setMap(const Map *const map);
 
         /**
          * Toggles the displaying of the minimap.

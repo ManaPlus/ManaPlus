@@ -52,7 +52,7 @@ const gcn::Color Palette::RAINBOW_COLORS[7] =
 /** Number of Elemets of RAINBOW_COLORS */
 const int Palette::RAINBOW_COLOR_COUNT = 7;
 
-Palette::Palette(int size) :
+Palette::Palette(const int size) :
     mRainbowTime(tick_time),
     mColors(Colors(size))
 {
@@ -64,9 +64,9 @@ Palette::~Palette()
     mInstances.erase(this);
 }
 
-const gcn::Color& Palette::getColor(char c, bool &valid)
+const gcn::Color& Palette::getColor(const char c, bool &valid)
 {
-    CharColors::const_iterator it = mCharColors.find(c);
+    const CharColors::const_iterator it = mCharColors.find(c);
     if (it != mCharColors.end())
     {
         valid = true;
@@ -94,7 +94,7 @@ void Palette::advanceGradient()
         // For slower systems, advance can be greater than one (advance > 1
         // skips advance-1 steps). Should make gradient look the same
         // independent of the framerate.
-        int advance = get_elapsed_time(mRainbowTime) / 5;
+        const int advance = get_elapsed_time(mRainbowTime) / 5;
         double startColVal, destColVal;
 
         for (size_t i = 0, sz = mGradVector.size(); i < sz; i++)
@@ -121,7 +121,7 @@ void Palette::advanceGradient()
             else
                 colIndex = mGradVector[i]->gradientIndex;
 
-            ColorElem *elem = mGradVector[i];
+            ColorElem *const elem = mGradVector[i];
             gcn::Color &color = elem->color;
 
             if (elem->grad == PULSE)

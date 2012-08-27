@@ -36,8 +36,8 @@
 #include "debug.h"
 
 OkDialog::OkDialog(const std::string &title, const std::string &msg,
-                   int soundEvent, bool modal, bool showCenter,
-                   Window *parent):
+                   const int soundEvent, const bool modal,
+                   const bool showCenter, Window *const parent):
     Window(title, modal, parent, "ok.xml")
 {
     mTextBox = new TextBox;
@@ -45,7 +45,7 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
     mTextBox->setOpaque(false);
     mTextBox->setTextWrapped(msg, 260);
 
-    gcn::Button *okButton = new Button(_("OK"), "ok", this);
+    gcn::Button *const okButton = new Button(_("OK"), "ok", this);
 
     const int numRows = mTextBox->getNumberOfRows();
     const int fontHeight = getFont()->getHeight();

@@ -53,11 +53,11 @@ class MiniStatusWindow : public Popup,
         /**
          * Sets one of the icons.
          */
-        void setIcon(int index, AnimatedSprite *sprite);
+        void setIcon(const int index, AnimatedSprite *const sprite);
 
-        void eraseIcon(int index);
+        void eraseIcon(const int index);
 
-        void drawIcons(Graphics *graphics);
+        void drawIcons(Graphics *const graphics);
 
         void processEvent(Channels channel, const DepricatedEvent &event);
 
@@ -73,13 +73,13 @@ class MiniStatusWindow : public Popup,
 
         void mouseExited(gcn::MouseEvent &event);
 
-        void showBar(std::string name, bool visible);
+        void showBar(const std::string &name, const bool visible);
 
         void updateBars();
 
         void updateArrows();
 
-        void slotsChanged(Inventory* inventory);
+        void slotsChanged(Inventory *const inventory);
 
         std::vector <ProgressBar*> &getBars()
         { return mBars; }
@@ -87,9 +87,9 @@ class MiniStatusWindow : public Popup,
     private:
         bool isInBar(ProgressBar *bar, int x, int y) const;
 
-        ProgressBar *createBar(float progress, int width, int height,
-                               int color, std::string name,
-                               std::string description);
+        ProgressBar *createBar(const float progress, const int width,
+                               const int height, const int color,
+                               std::string name, std::string description);
 
         void loadBars();
 

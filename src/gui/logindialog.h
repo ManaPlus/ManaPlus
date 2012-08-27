@@ -59,8 +59,8 @@ class LoginDialog : public Window, public gcn::ActionListener,
          *
          * @see Window::Window
          */
-        LoginDialog(LoginData *data, std::string serverName,
-                    std::string *updateHost);
+        LoginDialog(LoginData *const data, std::string serverName,
+                    std::string *const updateHost);
 
         ~LoginDialog();
 

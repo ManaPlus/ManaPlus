@@ -50,7 +50,7 @@ class QuitDialog : public Window, public gcn::ActionListener,
          *
          * @pointerToMe  will be set to NULL when the QuitDialog is destroyed
          */
-        QuitDialog(QuitDialog **pointerToMe);
+        QuitDialog(QuitDialog **const pointerToMe);
 
         /**
          * Destructor
@@ -65,7 +65,8 @@ class QuitDialog : public Window, public gcn::ActionListener,
         void keyPressed(gcn::KeyEvent &keyEvent);
 
     private:
-        void placeOption(ContainerPlacer &placer, gcn::RadioButton *option);
+        void placeOption(ContainerPlacer &placer,
+                         gcn::RadioButton *const option);
         std::vector<gcn::RadioButton*> mOptions;
 
         gcn::RadioButton *mLogoutQuit;

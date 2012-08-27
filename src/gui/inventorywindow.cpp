@@ -89,7 +89,7 @@ public:
 
 InventoryWindow::WindowList InventoryWindow::instances;
 
-InventoryWindow::InventoryWindow(Inventory *inventory):
+InventoryWindow::InventoryWindow(Inventory *const inventory):
     Window("Inventory", false, nullptr, "inventory.xml"),
     mInventory(inventory),
     mDropButton(nullptr),
@@ -125,14 +125,14 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mItems = new ItemContainer(mInventory);
     mItems->addSelectionListener(this);
 
-    gcn::ScrollArea *invenScroll = new ScrollArea(
+    gcn::ScrollArea *const invenScroll = new ScrollArea(
         mItems, getOptionBool("showbackground"), "inventory_background.xml");
     invenScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mSlotsLabel = new Label(_("Slots:"));
     mSlotsBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS);
 
-    int size = config.getIntValue("fontSize");
+    const int size = config.getIntValue("fontSize");
     mFilter = new TabStrip("filter_" + getWindowName(), size + 8);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
@@ -286,7 +286,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
         if (!inventoryWindow || !inventoryWindow->isVisible())
             return;
 
-        Item *item = inventoryWindow->getSelectedItem();
+        Item *const item = inventoryWindow->getSelectedItem();
 
         if (!item)
             return;
@@ -310,7 +310,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
         return;
     }
 
-    Item *item = mItems->getSelectedItem();
+    Item *const item = mItems->getSelectedItem();
 
     if (!item)
         return;
@@ -411,7 +411,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
 
     if (!mod && !mod2 && event.getButton() == gcn::MouseEvent::RIGHT)
     {
-        Item *item = mItems->getSelectedItem();
+        Item *const item = mItems->getSelectedItem();
 
         if (!item)
             return;
@@ -432,7 +432,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
     if (event.getButton() == gcn::MouseEvent::LEFT
         || event.getButton() == gcn::MouseEvent::RIGHT)
     {
-        Item *item = mItems->getSelectedItem();
+        Item *const item = mItems->getSelectedItem();
 
         if (!item)
             return;
@@ -545,7 +545,7 @@ void InventoryWindow::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
     if (!mInventory || !mInventory->isMainInventory())
         return;
 
-    Item *item = mItems->getSelectedItem();
+    Item *const item = mItems->getSelectedItem();
 
     if (mSplit && item && Net::getInventoryHandler()->
         canSplit(mItems->getSelectedItem()))
@@ -556,12 +556,12 @@ void InventoryWindow::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
     updateButtons(item);
 }
 
-void InventoryWindow::updateButtons(Item *item)
+void InventoryWindow::updateButtons(const Item *item)
 {
     if (!mInventory || !mInventory->isMainInventory())
         return;
 
-    Item *selectedItem = mItems->getSelectedItem();
+    Item *const selectedItem = mItems->getSelectedItem();
     if (item && selectedItem != item)
         return;
 
@@ -605,7 +605,7 @@ void InventoryWindow::updateButtons(Item *item)
     }
 }
 
-void InventoryWindow::setSplitAllowed(bool allowed)
+void InventoryWindow::setSplitAllowed(const bool allowed)
 {
     mSplitButton->setVisible(allowed);
 }
@@ -628,7 +628,7 @@ void InventoryWindow::processEvent(Channels channel A_UNUSED,
 {
     if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
-        int id = event.getInt("id");
+        const int id = event.getInt("id");
         if (id == PlayerInfo::TOTAL_WEIGHT || id == PlayerInfo::MAX_WEIGHT)
             updateWeight();
     }
@@ -639,8 +639,8 @@ void InventoryWindow::updateWeight()
     if (!isMainInventory())
         return;
 
-    int total = PlayerInfo::getAttribute(PlayerInfo::TOTAL_WEIGHT);
-    int max = PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT);
+    const int total = PlayerInfo::getAttribute(PlayerInfo::TOTAL_WEIGHT);
+    const int max = PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT);
 
     if (max <= 0)
         return;
@@ -652,7 +652,7 @@ void InventoryWindow::updateWeight()
                         Units::formatWeight(max).c_str()));
 }
 
-void InventoryWindow::slotsChanged(Inventory* inventory)
+void InventoryWindow::slotsChanged(Inventory *const inventory)
 {
     if (inventory == mInventory)
     {
@@ -682,14 +682,15 @@ void InventoryWindow::updateDropButton()
     }
     else
     {
-        Item *item = nullptr;
         if (mItems)
-            item = mItems->getSelectedItem();
+        {
+            const Item *const item = mItems->getSelectedItem();
 
-        if (item && item->getQuantity() > 1)
-            mDropButton->setCaption(_("Drop..."));
-        else
-            mDropButton->setCaption(_("Drop"));
+            if (item && item->getQuantity() > 1)
+                mDropButton->setCaption(_("Drop..."));
+            else
+                mDropButton->setCaption(_("Drop"));
+        }
     }
 }
 
