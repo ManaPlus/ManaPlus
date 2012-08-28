@@ -6,6 +6,7 @@
 	<color id="PROGRESS_BAR" color="#ffffff" />
 	<color id="BUTTON" color="#000000" />
 	<color id="BUTTON_DISABLED" color="#333333" />
+	<color id="CHECKBOX" color="#000000" />
 	<color id="TAB" color="#000000" />
 	<color id="PARTY_CHAT_TAB" color="#f48055" />
 	<color id="PARTY_SOCIAL_TAB" color="#f48055" />

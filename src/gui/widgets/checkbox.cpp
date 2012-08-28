@@ -96,7 +96,7 @@ CheckBox::CheckBox(const std::string &caption, bool selected,
     if (listener)
         addActionListener(listener);
 
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    setForegroundColor(Theme::getThemeColor(Theme::CHECKBOX));
 }
 
 CheckBox::~CheckBox()

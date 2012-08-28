@@ -170,6 +170,7 @@ class Theme : public Palette, public ConfigListener
             PROGRESS_BAR,
             BUTTON,
             BUTTON_DISABLED,
+            CHECKBOX,
             TAB,
             PARTY_CHAT_TAB,
             PARTY_SOCIAL_TAB,
