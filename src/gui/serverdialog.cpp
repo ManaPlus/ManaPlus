@@ -160,7 +160,7 @@ public:
     ServersListBox(ServersListModel *const model) :
         ListBox(model),
         mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
-        mTextColor(Theme::getThemeColor(Theme::TEXT)),
+        mTextColor(Theme::getThemeColor(Theme::LISTBOX)),
         mNotSupportedColor(Theme::getThemeColor(
             Theme::SERVER_VERSION_NOT_SUPPORTED))
     {

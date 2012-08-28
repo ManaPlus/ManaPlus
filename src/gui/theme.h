@@ -173,6 +173,7 @@ class Theme : public Palette, public ConfigListener
             CHECKBOX,
             DROPDOWN,
             LABEL,
+            LISTBOX,
             TAB,
             PARTY_CHAT_TAB,
             PARTY_SOCIAL_TAB,
