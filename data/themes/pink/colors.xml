@@ -7,6 +7,7 @@
 	<color id="BUTTON" color="#FF00FF" />
 	<color id="BUTTON_DISABLED" color="#FF00FF" />
 	<color id="CHECKBOX" color="#FF00FF" />
+	<color id="DROPDOWN" color="#FF00FF" />
 	<color id="TAB" color="#FF32FF" />
 	<color id="PARTY_CHAT_TAB" color="#f48055" />
 	<color id="PARTY_SOCIAL_TAB" color="#f48055" />

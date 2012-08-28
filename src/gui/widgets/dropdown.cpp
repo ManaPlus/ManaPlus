@@ -106,7 +106,8 @@ DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
 
     instances++;
 
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    mListBox->setForegroundColor(Theme::getThemeColor(Theme::DROPDOWN));
+    setForegroundColor(Theme::getThemeColor(Theme::DROPDOWN));
 
     if (!eventId.empty())
         setActionEventId(eventId);
