@@ -77,7 +77,7 @@ BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     mColors[PURPLE] = Theme::getThemeColor(Theme::PURPLE);
     mColors[GRAY] = Theme::getThemeColor(Theme::GRAY);
     mColors[BROWN] = Theme::getThemeColor(Theme::BROWN);
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    setForegroundColor(Theme::getThemeColor(Theme::BROWSERBOX));
 }
 
 BrowserBox::~BrowserBox()

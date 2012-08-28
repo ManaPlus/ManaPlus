@@ -1,4 +1,5 @@
 <colors>
+	<color id="BROWSERBOX" color="#7a7972" />
 	<color id="TEXT" color="#7a7972" />
 	<color id="SHADOW" color="#000000" />
 	<color id="OUTLINE" color="#000000" />

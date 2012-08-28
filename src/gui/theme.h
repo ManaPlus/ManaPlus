@@ -163,7 +163,8 @@ class Theme : public Palette, public ConfigListener
                                           int w, int h);
         enum ThemePalette
         {
-            TEXT = 0,
+            BROWSERBOX = 0,
+            TEXT,
             SHADOW,
             OUTLINE,
             BORDER,

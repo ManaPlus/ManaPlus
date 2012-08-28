@@ -103,7 +103,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
 
     mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
     mBorderColor = Theme::getThemeColor(Theme::BORDER);
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    setForegroundColor(Theme::getThemeColor(Theme::LABEL));
 }
 
 EquipmentWindow::~EquipmentWindow()

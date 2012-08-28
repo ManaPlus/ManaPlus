@@ -655,6 +655,7 @@ static int readColorType(const std::string &type)
 {
     static std::string colors[] =
     {
+        "BROWSERBOX",
         "TEXT",
         "SHADOW",
         "OUTLINE",

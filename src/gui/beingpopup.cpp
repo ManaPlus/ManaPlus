@@ -110,7 +110,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
     else
     {
-        mBeingName->setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+        mBeingName->setForegroundColor(Theme::getThemeColor(Theme::LABEL));
     }
 
     mBeingName->adjustSize();
