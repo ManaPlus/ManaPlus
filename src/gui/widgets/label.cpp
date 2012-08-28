@@ -27,13 +27,13 @@
 
 Label::Label()
 {
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    setForegroundColor(Theme::getThemeColor(Theme::LABEL));
 }
 
 Label::Label(const std::string &caption) :
     gcn::Label(caption)
 {
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    setForegroundColor(Theme::getThemeColor(Theme::LABEL));
 }
 
 void Label::draw(gcn::Graphics *graphics)
