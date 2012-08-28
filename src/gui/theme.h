@@ -178,6 +178,7 @@ class Theme : public Palette, public ConfigListener
             TAB,
             TEXTBOX,
             TEXTFIELD,
+            WINDOW,
             PARTY_CHAT_TAB,
             PARTY_SOCIAL_TAB,
             GUILD_CHAT_TAB,

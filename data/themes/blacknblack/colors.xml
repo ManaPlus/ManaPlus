@@ -14,6 +14,7 @@
 	<color id="TAB" color="#13f00d" />
 	<color id="TEXTBOX" color="#ffffff" />
 	<color id="TEXTFIELD" color="#ffffff" />
+	<color id="WINDOW" color="#ffffff" />
 	<color id="PARTY_CHAT_TAB" color="#ff00d8" />
 	<color id="PARTY_SOCIAL_TAB" color="#ff00d8" />
 	<color id="GUILD_CHAT_TAB" color="#ff00d8" />

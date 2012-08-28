@@ -670,6 +670,7 @@ static int readColorType(const std::string &type)
         "TAB",
         "TEXTBOX",
         "TEXTFIELD",
+        "WINDOW",
         "PARTY_CHAT_TAB",
         "PARTY_SOCIAL_TAB",
         "GUILD_CHAT_TAB",

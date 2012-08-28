@@ -124,7 +124,7 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
 
     addWidgetListener(this);
     mCaptionFont = getFont();
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    setForegroundColor(Theme::getThemeColor(Theme::WINDOW));
 }
 
 Window::~Window()
