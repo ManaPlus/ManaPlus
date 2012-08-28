@@ -55,7 +55,7 @@ ShopListBox::ShopListBox(gcn::ListModel *listModel):
     mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND)),
     mWarningColor(Theme::getThemeColor(Theme::SHOP_WARNING))
 {
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    setForegroundColor(Theme::getThemeColor(Theme::LISTBOX));
 }
 
 ShopListBox::ShopListBox(gcn::ListModel *listModel, ShopItems *shopListModel):
@@ -69,7 +69,7 @@ ShopListBox::ShopListBox(gcn::ListModel *listModel, ShopItems *shopListModel):
     mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND)),
     mWarningColor(Theme::getThemeColor(Theme::SHOP_WARNING))
 {
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    setForegroundColor(Theme::getThemeColor(Theme::LISTBOX));
 }
 
 void ShopListBox::init()

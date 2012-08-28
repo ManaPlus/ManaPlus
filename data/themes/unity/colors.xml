@@ -11,6 +11,7 @@
 	<color id="LISTBOX" color="#FE9750" />
 	<color id="RADIOBUTTON" color="#FE9750" />
 	<color id="TAB" color="#F0F0F0" />
+	<color id="TEXTBOX" color="#FE9750" />
 	<color id="PARTY_CHAT_TAB" color="#E0E0E0" />
 	<color id="PARTY_SOCIAL_TAB" color="#E0E0E0" />
 	<color id="GUILD_CHAT_TAB" color="#E0E0E0" />

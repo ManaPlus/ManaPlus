@@ -34,7 +34,7 @@
 #include "debug.h"
 
 TextBox::TextBox() :
-    mTextColor(&Theme::getThemeColor(Theme::TEXT))
+    mTextColor(&Theme::getThemeColor(Theme::TEXTBOX))
 {
     setOpaque(false);
     setFrameSize(0);
