@@ -10,6 +10,7 @@
 	<color id="DROPDOWN" color="#000000" />
 	<color id="LABEL" color="#000000" />
 	<color id="LISTBOX" color="#000000" />
+	<color id="RADIOBUTTON" color="#000000" />
 	<color id="TAB" color="#000000" />
 	<color id="PARTY_CHAT_TAB" color="#c04000" />
 	<color id="PARTY_SOCIAL_TAB" color="#c04000" />

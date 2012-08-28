@@ -48,7 +48,7 @@ RadioButton::RadioButton(const std::string &caption, const std::string &group,
     gcn::RadioButton(caption, group, marked),
     mHasMouse(false)
 {
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    setForegroundColor(Theme::getThemeColor(Theme::RADIOBUTTON));
     if (instances == 0)
     {
         if (Theme::instance())

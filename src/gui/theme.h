@@ -174,6 +174,7 @@ class Theme : public Palette, public ConfigListener
             DROPDOWN,
             LABEL,
             LISTBOX,
+            RADIOBUTTON,
             TAB,
             PARTY_CHAT_TAB,
             PARTY_SOCIAL_TAB,
