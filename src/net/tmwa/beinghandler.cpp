@@ -600,7 +600,11 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
                 break;
 
             case 1:
-                dstBeing->setAction(Being::DEAD);
+                if (dstBeing->getCurrentAction() != Being::DEAD)
+                {
+                    dstBeing->setAction(Being::DEAD);
+                    dstBeing->recalcSpritesOrder();
+                }
                 break;
 
             case 2:

@@ -366,6 +366,43 @@ void ItemDB::load()
             }
         }
 
+/*
+        logger->log("start dump item: %d", id);
+        if (itemInfo->isRemoveSprites())
+        {
+            for (int f = 0; f < 10; f ++)
+            {
+                logger->log("dir: %d", f);
+                SpriteToItemMap *const spriteToItems
+                    = itemInfo->getSpriteToItemReplaceMap(f);
+                if (!spriteToItems)
+                {
+                    logger->log("null");
+                    continue;
+                }
+                for (SpriteToItemMapCIter itr = spriteToItems->begin(),
+                     itr_end = spriteToItems->end(); itr != itr_end; ++ itr)
+                {
+                    const int remSprite = itr->first;
+                    const std::map<int, int> &itemReplacer = itr->second;
+                    logger->log("sprite: %d", remSprite);
+
+                    for (std::map<int, int>::const_iterator
+                         repIt = itemReplacer.begin(),
+                         repIt_end = itemReplacer.end();
+                         repIt != repIt_end; ++ repIt)
+                    {
+                        logger->log("from %d to %d", repIt->first,
+                            repIt->second);
+                    }
+                }
+            }
+        }
+
+        logger->log("--------------------------------");
+        logger->log("end dump item");
+*/
+
         itemInfo->setDisplay(display);
 
         mItemInfos[id] = itemInfo;
@@ -601,6 +638,11 @@ int parseDirectionName(std::string name)
     {
         id = -3;
     }
+    // hack for died action.
+    else if (name == "died")
+    {
+        id = 9;
+    }
 
     return id;
 }
@@ -675,7 +717,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
     {
         case -1:
         {
-            for (int f = 0; f < 9; f ++)
+            for (int f = 0; f < 10; f ++)
             {
                 std::map<int, int> *mapList
                     = itemInfo->addReplaceSprite(

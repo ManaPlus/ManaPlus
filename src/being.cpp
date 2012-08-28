@@ -2176,6 +2176,9 @@ void Being::recalcSpritesOrder()
     int dir = mSpriteDirection;
     if (dir < 0 || dir >= 9)
         dir = 0;
+    // hack for allow different logic in dead player
+    if (mAction == DEAD)
+        dir = 9;
 
     for (unsigned slot = 0; slot < sz; slot ++)
     {
@@ -2199,7 +2202,7 @@ void Being::recalcSpritesOrder()
         if (info.isRemoveSprites())
         {
             SpriteToItemMap *const spriteToItems
-                = info.getSpriteToItemReplaceMap(mSpriteDirection);
+                = info.getSpriteToItemReplaceMap(dir);
 
             if (spriteToItems)
             {

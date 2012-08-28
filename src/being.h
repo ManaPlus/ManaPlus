@@ -820,6 +820,8 @@ class Being : public ActorSprite, public ConfigListener
 
         int getSpriteID(const int slot) const;
 
+        void recalcSpritesOrder();
+
         static uint8_t genderToInt(const Gender sex);
 
         static Gender intToGender(uint8_t sex);
@@ -834,8 +836,6 @@ class Being : public ActorSprite, public ConfigListener
          * Updates name's location.
          */
         virtual void updateCoords();
-
-        void recalcSpritesOrder();
 
         void showName();
 

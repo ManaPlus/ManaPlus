@@ -84,7 +84,7 @@ ItemInfo::ItemInfo() :
     mHitEffectId(0),
     mCriticalHitEffectId(0)
 {
-    for (int f = 0; f < 9; f ++)
+    for (int f = 0; f < 10; f ++)
     {
         mSpriteToItemReplaceMap[f] = nullptr;
         mDrawBefore[f] = -1;
@@ -97,7 +97,7 @@ ItemInfo::~ItemInfo()
 {
     delete_all(mSpriteToItemReplaceList);
     mSpriteToItemReplaceList.clear();
-    for (int f = 0; f < 9; f ++)
+    for (int f = 0; f < 10; f ++)
         mSpriteToItemReplaceMap[f] = nullptr;
 }
 
@@ -153,7 +153,7 @@ const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
 
 std::map<int, int> *ItemInfo::addReplaceSprite(int sprite, int direction)
 {
-    if (direction < 0 || direction >= 9)
+    if (direction < 0 || direction >= 10)
         return nullptr;
 
     SpriteToItemMap *spMap = mSpriteToItemReplaceMap[direction];
@@ -239,7 +239,7 @@ const std::string ItemInfo::replaceColors(std::string str,
 
 SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(int direction) const
 {
-    if (direction < 0 || direction >= 9)
+    if (direction < 0 || direction >= 10)
         return nullptr;
 
     SpriteToItemMap *spMap = mSpriteToItemReplaceMap[direction];
@@ -258,7 +258,7 @@ void ItemInfo::setSpriteOrder(int *ptr, int direction, int n, int def)
 {
     if (direction == -1)
     {
-        for (int f = 0; f < 9; f ++)
+        for (int f = 0; f < 10; f ++)
         {
             if (ptr[f] == def)
                 ptr[f] = n;
@@ -302,21 +302,21 @@ void ItemInfo::setDrawPriority(int direction, int n)
 
 int ItemInfo::getDrawBefore(int direction) const
 {
-    if (direction < 0 || direction >= 9)
+    if (direction < 0 || direction >= 10)
         return -1;
     return mDrawBefore[direction];
 }
 
 int ItemInfo::getDrawAfter(int direction) const
 {
-    if (direction < 0 || direction >= 9)
+    if (direction < 0 || direction >= 10)
         return -1;
     return mDrawAfter[direction];
 }
 
 int ItemInfo::getDrawPriority(int direction) const
 {
-    if (direction < 0 || direction >= 9)
+    if (direction < 0 || direction >= 10)
         return 0;
     return mDrawPriority[direction];
 }

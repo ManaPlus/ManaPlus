@@ -443,7 +443,11 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
         deathNotice = new OkDialog(_("Message"),
             randomDeathMessage(), DIALOG_OK, false);
         deathNotice->addActionListener(&deathListener);
-        player_node->setAction(Being::DEAD);
+        if (player_node->getCurrentAction() != Being::DEAD)
+        {
+            player_node->setAction(Being::DEAD);
+            player_node->recalcSpritesOrder();
+        }
     }
 }
 

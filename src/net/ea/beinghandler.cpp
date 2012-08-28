@@ -401,7 +401,11 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg)
 
     if (msg.readInt8() == 1)
     {
-        dstBeing->setAction(Being::DEAD);
+        if (dstBeing->getCurrentAction() != Being::DEAD)
+        {
+            dstBeing->setAction(Being::DEAD);
+            dstBeing->recalcSpritesOrder();
+        }
         if (dstBeing->getName() == "Jack O" && killStats)
             killStats->jackoDead(id);
     }

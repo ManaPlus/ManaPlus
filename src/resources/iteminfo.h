@@ -261,9 +261,9 @@ class ItemInfo
         const std::string replaceColors(std::string str,
                                         unsigned char color) const;
 
-        int mDrawBefore[9];
-        int mDrawAfter[9];
-        int mDrawPriority[9];
+        int mDrawBefore[10];
+        int mDrawAfter[10];
+        int mDrawPriority[10];
 
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
@@ -277,7 +277,7 @@ class ItemInfo
         int mId;                    /**< Item ID */
         bool mIsRemoveSprites;
         // sprite, <itemfrom, itemto> [direction]
-        SpriteToItemMap *mSpriteToItemReplaceMap[9];
+        SpriteToItemMap *mSpriteToItemReplaceMap[10];
 
         std::vector<SpriteToItemMap*> mSpriteToItemReplaceList;
 
