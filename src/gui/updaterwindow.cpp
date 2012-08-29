@@ -67,7 +67,7 @@ std::vector<updateFile> loadXMLFile(const std::string &fileName)
 {
     std::vector<updateFile> files;
     XML::Document doc(fileName, false);
-    XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "updates"))
     {
@@ -134,8 +134,8 @@ std::vector<updateFile> loadTxtFile(const std::string &fileName)
 
 UpdaterWindow::UpdaterWindow(const std::string &updateHost,
                              const std::string &updatesDir,
-                             bool applyUpdates,
-                             int updateType):
+                             const bool applyUpdates,
+                             const int updateType):
     Window(_("Updating..."), false, nullptr, "update.xml"),
     mDownloadStatus(UPDATE_NEWS),
     mUpdateHost(updateHost),
@@ -213,7 +213,7 @@ UpdaterWindow::~UpdaterWindow()
     free(mMemoryBuffer);
 }
 
-void UpdaterWindow::setProgress(float p)
+void UpdaterWindow::setProgress(const float p)
 {
     // Do delayed progress bar update, since Guichan isn't thread-safe
     MutexLocker lock(&mDownloadMutex);
@@ -296,7 +296,7 @@ void UpdaterWindow::loadNews()
     mMemoryBuffer[mDownloadedBytes] = '\0';
     mBrowserBox->clearRows();
     // Tokenize and add each line separately
-    char *line = strtok(mMemoryBuffer, "\n");
+    const char *line = strtok(mMemoryBuffer, "\n");
 
     std::string newsName = mUpdatesDir + "/local/help/news.txt";
     mkdir_r((mUpdatesDir + "/local/help/").c_str());
@@ -310,7 +310,7 @@ void UpdaterWindow::loadNews()
         {
             firstLine = false;
             std::string str = line;
-            size_t i = str.find("##9 Latest client version: ##6");
+            const size_t i = str.find("##9 Latest client version: ##6");
             if (!i)
             {
                 line = strtok(nullptr, "\n");
@@ -397,7 +397,7 @@ void UpdaterWindow::loadPatch()
 int UpdaterWindow::updateProgress(void *ptr, DownloadStatus status,
                                   size_t dt, size_t dn)
 {
-    UpdaterWindow *uw = reinterpret_cast<UpdaterWindow *>(ptr);
+    UpdaterWindow *const uw = reinterpret_cast<UpdaterWindow *>(ptr);
     if (!uw)
         return -1;
 
@@ -453,8 +453,8 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus status,
 size_t UpdaterWindow::memoryWrite(void *ptr, size_t size,
                                   size_t nmemb, void *stream)
 {
-    UpdaterWindow *uw = reinterpret_cast<UpdaterWindow *>(stream);
-    size_t totalMem = size * nmemb;
+    UpdaterWindow *const uw = reinterpret_cast<UpdaterWindow *>(stream);
+    const size_t totalMem = size * nmemb;
     uw->mMemoryBuffer = static_cast<char*>(realloc(uw->mMemoryBuffer,
                                            uw->mDownloadedBytes + totalMem));
     if (uw->mMemoryBuffer)
@@ -514,7 +514,7 @@ void UpdaterWindow::download()
 
 void UpdaterWindow::loadUpdates()
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     if (mUpdateFiles.empty())
     {   // updates not downloaded
@@ -538,9 +538,9 @@ void UpdaterWindow::loadUpdates()
     loadManaPlusUpdates(mUpdatesDir, resman);
 }
 
-void UpdaterWindow::loadLocalUpdates(std::string dir)
+void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     std::vector<updateFile> updateFiles
         = loadXMLFile(dir + "/" + xmlUpdateFile);
@@ -563,8 +563,8 @@ void UpdaterWindow::loadLocalUpdates(std::string dir)
     loadManaPlusUpdates(dir, resman);
 }
 
-void UpdaterWindow::loadManaPlusUpdates(std::string dir,
-                                        ResourceManager *resman)
+void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
+                                        ResourceManager *const resman)
 {
     std::string fixPath = dir + "/fix";
     std::vector<updateFile> updateFiles
@@ -584,9 +584,11 @@ void UpdaterWindow::loadManaPlusUpdates(std::string dir,
     }
 }
 
-void UpdaterWindow::addUpdateFile(ResourceManager *resman, std::string path,
-                                  std::string fixPath, std::string file,
-                                  bool append)
+void UpdaterWindow::addUpdateFile(ResourceManager *const resman,
+                                  const std::string &path,
+                                  const std::string &fixPath,
+                                  const std::string &file,
+                                  const bool append)
 {
     if (!append)
         resman->addToSearchPath(path + "/" + file, append);
@@ -825,13 +827,14 @@ void UpdaterWindow::logic()
     }
 }
 
-bool UpdaterWindow::validateFile(std::string filePath, unsigned long hash)
+bool UpdaterWindow::validateFile(const std::string &filePath,
+                                 const unsigned long hash)
 {
     FILE *file = fopen(filePath.c_str(), "rb");
     if (!file)
         return false;
 
-    unsigned long adler = Net::Download::fadler32(file);
+    const unsigned long adler = Net::Download::fadler32(file);
     fclose(file);
     return adler == hash;
 }

@@ -161,7 +161,7 @@ public:
 };
 
 
-TextCommandEditor::TextCommandEditor(TextCommand *command) :
+TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     Window(_("Command Editor"), false, nullptr, "commandeditor.xml"),
     mIsMagicCommand(command->getCommandType() == TEXT_COMMAND_MAGIC),
     mCommand(command),
@@ -193,8 +193,8 @@ TextCommandEditor::TextCommandEditor(TextCommand *command) :
     mDeleteButton(new Button(_("Delete"), "delete", this)),
     mEnabledKeyboard(keyboard.isEnabled())
 {
-    int w = 350;
-    int h = 370;
+    const int w = 350;
+    const int h = 370;
 
     keyboard.setEnabled(false);
 
@@ -341,7 +341,7 @@ void TextCommandEditor::reset()
 {
 }
 
-void TextCommandEditor::showControls(bool show)
+void TextCommandEditor::showControls(const bool show)
 {
     mManaField->setVisible(show);
     mManaLabel->setVisible(show);

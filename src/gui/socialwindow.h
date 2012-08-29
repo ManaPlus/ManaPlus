@@ -56,13 +56,13 @@ public:
 
     ~SocialWindow();
 
-    bool addTab(Guild *guild);
+    bool addTab(Guild *const guild);
 
-    bool removeTab(Guild *guild);
+    bool removeTab(Guild *const guild);
 
-    bool addTab(Party *party);
+    bool addTab(Party *const party);
 
-    bool removeTab(Party *party);
+    bool removeTab(Party *const party);
 
     /**
      * Handle events.
@@ -91,11 +91,11 @@ public:
 
     void updatePortalNames();
 
-    int getPortalIndex(int x, int y);
+    int getPortalIndex(const int x, const int y);
 
-    void addPortal(int x, int y);
+    void addPortal(const int x, const int y);
 
-    void removePortal(int x, int y);
+    void removePortal(const int x, const int y);
 
     void nextTab();
 
@@ -104,16 +104,16 @@ public:
     Map* getMap() const
     { return mMap; }
 
-    void setMap(Map *map)
+    void setMap(Map *const map)
     { mMap = map; mProcessedPortals = false; }
 
     bool getProcessedPortals() const
     { return mProcessedPortals; }
 
-    void setProcessedPortals(bool n)
+    void setProcessedPortals(const bool n)
     { mProcessedPortals = n; }
 
-    void selectPortal(unsigned num);
+    void selectPortal(const unsigned num);
 
     void updateAttackFilter();
 

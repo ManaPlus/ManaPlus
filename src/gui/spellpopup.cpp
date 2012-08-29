@@ -55,7 +55,7 @@ SpellPopup::~SpellPopup()
 {
 }
 
-void SpellPopup::setItem(TextCommand *spell)
+void SpellPopup::setItem(const TextCommand *const spell)
 {
     if (spell)
     {
@@ -93,7 +93,7 @@ void SpellPopup::setItem(TextCommand *spell)
     }
 }
 
-void SpellPopup::view(int x, int y)
+void SpellPopup::view(const int x, const int y)
 {
     const int distance = 20;
 

@@ -68,7 +68,7 @@ class AttrDisplay : public Container
         virtual Type getType() const
         { return UNKNOWN; }
 
-        std::string getValue()
+        std::string getValue() const
         {
             if (!mValue)
                 return "-";
@@ -77,7 +77,7 @@ class AttrDisplay : public Container
         }
 
     protected:
-        AttrDisplay(int id, const std::string &name);
+        AttrDisplay(const int id, const std::string &name);
 
         const int mId;
         const std::string mName;
@@ -90,7 +90,7 @@ class AttrDisplay : public Container
 class DerDisplay : public AttrDisplay
 {
     public:
-        DerDisplay(int id, const std::string &name);
+        DerDisplay(const int id, const std::string &name);
 
         virtual Type getType() const
         { return DERIVED; }
@@ -99,7 +99,7 @@ class DerDisplay : public AttrDisplay
 class ChangeDisplay : public AttrDisplay, gcn::ActionListener
 {
     public:
-        ChangeDisplay(int id, const std::string &name);
+        ChangeDisplay(const int id, const std::string &name);
 
         std::string update();
 
@@ -163,9 +163,9 @@ StatusWindow::StatusWindow():
             / static_cast<float>(max):
             static_cast<float>(0), 80, 15, Theme::PROG_EXP);
 
-    bool magicBar = Net::getGameHandler()->canUseMagicBar();
+    const bool magicBar = Net::getGameHandler()->canUseMagicBar();
 
-    int job = Net::getPlayerHandler()->getJobLocation()
+    const int job = Net::getPlayerHandler()->getJobLocation()
               && serverConfig.getValueBool("showJob", false);
 
     if (magicBar)
@@ -349,7 +349,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
     }
     else if (event.getName() == EVENT_UPDATESTAT)
     {
-        int id = event.getInt("id");
+        const int id = event.getInt("id");
         if (id == Net::getPlayerHandler()->getJobLocation())
         {
             if (mJobLvlLabel)
@@ -357,8 +357,8 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
                 int lvl = PlayerInfo::getStatBase(
                     static_cast<PlayerInfo::Attribute>(id));
 
-                int oldExp = event.getInt("oldValue1");
-                std::pair<int, int> exp = PlayerInfo::getStatExperience(
+                const int oldExp = event.getInt("oldValue1");
+                const std::pair<int, int> exp = PlayerInfo::getStatExperience(
                     static_cast<PlayerInfo::Attribute>(id));
 
                 if (!lvl)
@@ -401,7 +401,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
         else
         {
             updateMPBar(mMpBar, true);
-            Attrs::const_iterator it = mAttrs.find(id);
+            const Attrs::const_iterator it = mAttrs.find(id);
             if (it != mAttrs.end() && it->second)
             {
                 if (it->second)
@@ -411,20 +411,20 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
     }
 }
 
-void StatusWindow::setPointsNeeded(int id, int needed)
+void StatusWindow::setPointsNeeded(const int id, const int needed)
 {
-    Attrs::const_iterator it = mAttrs.find(id);
+    const Attrs::const_iterator it = mAttrs.find(id);
 
     if (it != mAttrs.end())
     {
-        AttrDisplay *disp = it->second;
+        AttrDisplay *const disp = it->second;
         if (disp && disp->getType() == AttrDisplay::CHANGEABLE)
             static_cast<ChangeDisplay*>(disp)->setPointsNeeded(needed);
     }
 }
 
-void StatusWindow::addAttribute(int id, const std::string &name,
-                                bool modifiable,
+void StatusWindow::addAttribute(const int id, const std::string &name,
+                                const bool modifiable,
                                 const std::string &description A_UNUSED)
 {
     AttrDisplay *disp;
@@ -454,7 +454,7 @@ void StatusWindow::clearAttributes()
     mAttrs.clear();
 }
 
-void StatusWindow::updateHPBar(ProgressBar *bar, bool showMax)
+void StatusWindow::updateHPBar(ProgressBar *const bar, const bool showMax)
 {
     if (!bar)
         return;
@@ -479,7 +479,7 @@ void StatusWindow::updateHPBar(ProgressBar *bar, bool showMax)
     bar->setProgress(prog);
 }
 
-void StatusWindow::updateMPBar(ProgressBar *bar, bool showMax)
+void StatusWindow::updateMPBar(ProgressBar *const bar, const bool showMax)
 {
     if (!bar)
         return;
@@ -519,8 +519,8 @@ void StatusWindow::updateMPBar(ProgressBar *bar, bool showMax)
     bar->setProgress(prog);
 }
 
-void StatusWindow::updateProgressBar(ProgressBar *bar, int value, int max,
-                                     bool percent)
+void StatusWindow::updateProgressBar(ProgressBar *const bar, const int value,
+                                     const int max, const bool percent)
 {
     if (!bar)
         return;
@@ -533,8 +533,8 @@ void StatusWindow::updateProgressBar(ProgressBar *bar, int value, int max,
     }
     else
     {
-        float progress = static_cast<float>(value)
-                         / static_cast<float>(max);
+        const float progress = static_cast<float>(value)
+            / static_cast<float>(max);
 
         if (percent)
         {
@@ -550,7 +550,7 @@ void StatusWindow::updateProgressBar(ProgressBar *bar, int value, int max,
     }
 }
 
-void StatusWindow::updateXPBar(ProgressBar *bar, bool percent)
+void StatusWindow::updateXPBar(ProgressBar *const bar, const bool percent)
 {
     if (!bar)
         return;
@@ -559,24 +559,25 @@ void StatusWindow::updateXPBar(ProgressBar *bar, bool percent)
         PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED), percent);
 }
 
-void StatusWindow::updateJobBar(ProgressBar *bar, bool percent)
+void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
 {
     if (!bar)
         return;
 
-    std::pair<int, int> exp =  PlayerInfo::getStatExperience(
+    const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
         Net::getPlayerHandler()->getJobLocation());
     updateProgressBar(bar, exp.first, exp.second, percent);
 }
 
-void StatusWindow::updateProgressBar(ProgressBar *bar, int id, bool percent)
+void StatusWindow::updateProgressBar(ProgressBar *const bar, const int id,
+                                     const bool percent) const
 {
-    std::pair<int, int> exp =  PlayerInfo::getStatExperience(
+    const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
         static_cast<PlayerInfo::Attribute>(id));
     updateProgressBar(bar, exp.first, exp.second, percent);
 }
 
-void StatusWindow::updateWeightBar(ProgressBar *bar)
+void StatusWindow::updateWeightBar(ProgressBar *const bar)
 {
     if (!bar)
         return;
@@ -588,7 +589,7 @@ void StatusWindow::updateWeightBar(ProgressBar *bar)
     }
     else
     {
-        float progress = static_cast<float>(PlayerInfo::getAttribute(
+        const float progress = static_cast<float>(PlayerInfo::getAttribute(
             PlayerInfo::TOTAL_WEIGHT)) / static_cast<float>(
             PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT));
 
@@ -601,16 +602,16 @@ void StatusWindow::updateWeightBar(ProgressBar *bar)
     }
 }
 
-void StatusWindow::updateMoneyBar(ProgressBar *bar)
+void StatusWindow::updateMoneyBar(ProgressBar *const bar)
 {
     if (!bar)
         return;
 
-    int money = PlayerInfo::getAttribute(PlayerInfo::MONEY);
+    const int money = PlayerInfo::getAttribute(PlayerInfo::MONEY);
     bar->setText(Units::formatCurrency(money).c_str());
     if (money > 0)
     {
-        float progress = static_cast<float>(money)
+        const float progress = static_cast<float>(money)
             / static_cast<float>(1000000000);
         bar->setProgress(progress);
     }
@@ -620,12 +621,12 @@ void StatusWindow::updateMoneyBar(ProgressBar *bar)
     }
 }
 
-void StatusWindow::updateArrowsBar(ProgressBar *bar)
+void StatusWindow::updateArrowsBar(ProgressBar *const bar)
 {
     if (!bar || !equipmentWindow)
         return;
 
-    Item *item = equipmentWindow->getEquipment(
+    const Item *const item = equipmentWindow->getEquipment(
         Equipment::EQUIP_PROJECTILE_SLOT);
 
     if (item && item->getQuantity() > 0)
@@ -634,12 +635,12 @@ void StatusWindow::updateArrowsBar(ProgressBar *bar)
         bar->setText("0");
 }
 
-void StatusWindow::updateInvSlotsBar(ProgressBar *bar)
+void StatusWindow::updateInvSlotsBar(ProgressBar *const bar)
 {
     if (!bar)
         return;
 
-    Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return;
 
@@ -655,10 +656,10 @@ void StatusWindow::updateInvSlotsBar(ProgressBar *bar)
     bar->setText(strprintf("%d", usedSlots));
 }
 
-std::string StatusWindow::translateLetter(const char* letters)
+std::string StatusWindow::translateLetter(const char *const letters)
 {
     char buf[2];
-    char *str = gettext(letters);
+    char *const str = gettext(letters);
     if (strlen(str) != 3)
         return letters;
 
@@ -675,7 +676,8 @@ std::string StatusWindow::translateLetter2(std::string letters)
     return std::string(gettext(letters.substr(1, 1).c_str()));
 }
 
-void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
+void StatusWindow::updateStatusBar(ProgressBar *const bar,
+                                   const bool percent A_UNUSED)
 {
     if (!player_node || !viewport)
         return;
@@ -722,11 +724,12 @@ void StatusWindow::action(const gcn::ActionEvent &event)
     if (event.getId() == "copy")
     {
         Attrs::const_iterator it = mAttrs.begin();
-        Attrs::const_iterator it_end = mAttrs.end();
+        const Attrs::const_iterator it_end = mAttrs.end();
         std::string str;
         while (it != it_end)
         {
-            ChangeDisplay *attr = dynamic_cast<ChangeDisplay*>((*it).second);
+            ChangeDisplay *const attr = dynamic_cast<ChangeDisplay*>(
+                (*it).second);
             if (attr)
                 str += attr->getValue() + " ";
             ++ it;
@@ -735,7 +738,7 @@ void StatusWindow::action(const gcn::ActionEvent &event)
     }
 }
 
-AttrDisplay::AttrDisplay(int id, const std::string &name):
+AttrDisplay::AttrDisplay(const int id, const std::string &name):
         mId(id),
         mName(name)
 {
@@ -757,9 +760,9 @@ AttrDisplay::~AttrDisplay()
 
 std::string AttrDisplay::update()
 {
-    int base = PlayerInfo::getStatBase(
+    const int base = PlayerInfo::getStatBase(
         static_cast<PlayerInfo::Attribute>(mId));
-    int bonus = PlayerInfo::getStatMod(
+    const int bonus = PlayerInfo::getStatMod(
         static_cast<PlayerInfo::Attribute>(mId));
     std::string value = toString(base + bonus);
     if (bonus)
@@ -768,7 +771,7 @@ std::string AttrDisplay::update()
     return mName;
 }
 
-DerDisplay::DerDisplay(int id, const std::string &name):
+DerDisplay::DerDisplay(const int id, const std::string &name):
         AttrDisplay(id, name)
 {
     // Do the layout
@@ -781,7 +784,7 @@ DerDisplay::DerDisplay(int id, const std::string &name):
     update();
 }
 
-ChangeDisplay::ChangeDisplay(int id, const std::string &name):
+ChangeDisplay::ChangeDisplay(const int id, const std::string &name):
         AttrDisplay(id, name), mNeeded(1)
 {
     mPoints = new Label(_("Max"));
@@ -826,7 +829,7 @@ std::string ChangeDisplay::update()
     return AttrDisplay::update();
 }
 
-void ChangeDisplay::setPointsNeeded(int needed)
+void ChangeDisplay::setPointsNeeded(const int needed)
 {
     mNeeded = needed;
 
@@ -838,15 +841,15 @@ void ChangeDisplay::action(const gcn::ActionEvent &event)
     if (Net::getPlayerHandler()->canCorrectAttributes() &&
         event.getSource() == mDec)
     {
-        int newcorpoints = PlayerInfo::getAttribute(
+        const int newcorpoints = PlayerInfo::getAttribute(
             PlayerInfo::CORR_POINTS) - 1;
         PlayerInfo::setAttribute(PlayerInfo::CORR_POINTS, newcorpoints);
 
-        int newpoints = PlayerInfo::getAttribute(
+        const int newpoints = PlayerInfo::getAttribute(
             PlayerInfo::CHAR_POINTS) + 1;
         PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, newpoints);
 
-        int newbase = PlayerInfo::getStatBase(
+        const int newbase = PlayerInfo::getStatBase(
             static_cast<PlayerInfo::Attribute>(mId)) - 1;
         PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
             mId), newbase);
@@ -863,11 +866,11 @@ void ChangeDisplay::action(const gcn::ActionEvent &event)
                 cnt = 10;
         }
 
-        int newpoints = PlayerInfo::getAttribute(
+        const int newpoints = PlayerInfo::getAttribute(
             PlayerInfo::CHAR_POINTS) - cnt;
         PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, newpoints);
 
-        int newbase = PlayerInfo::getStatBase(
+        const int newbase = PlayerInfo::getStatBase(
             static_cast<PlayerInfo::Attribute>(mId)) + cnt;
         PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
             mId), newbase);

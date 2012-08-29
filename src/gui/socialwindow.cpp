@@ -58,7 +58,7 @@
 class SortFriendsFunctor
 {
     public:
-        bool operator() (Avatar* m1,  Avatar* m2)
+        bool operator() (const Avatar *const m1, const Avatar *const m2) const
         {
             if (!m1 || !m2)
                 return false;
@@ -92,7 +92,7 @@ public:
 
     virtual void resetDamage(std::string name) = 0;
 
-    virtual void selectIndex(unsigned num A_UNUSED)
+    virtual void selectIndex(const unsigned num A_UNUSED)
     { }
 
 protected:
@@ -132,7 +132,7 @@ protected:
 class SocialGuildTab : public SocialTab, public gcn::ActionListener
 {
 public:
-    SocialGuildTab(Guild *guild, bool showBackground):
+    SocialGuildTab(Guild *const guild, const bool showBackground):
             mGuild(guild)
     {
         setCaption(_("Guild"));
@@ -231,7 +231,7 @@ private:
 class SocialGuildTab2 : public SocialTab, public gcn::ActionListener
 {
 public:
-    SocialGuildTab2(Guild *guild, bool showBackground):
+    SocialGuildTab2(Guild *const guild, const bool showBackground):
               mGuild(guild)
     {
         setCaption(_("Guild"));
@@ -286,7 +286,7 @@ private:
 class SocialPartyTab : public SocialTab, public gcn::ActionListener
 {
 public:
-    SocialPartyTab(Party *party, bool showBackground):
+    SocialPartyTab(Party *const party, const bool showBackground):
             mParty(party)
     {
         setCaption(_("Party"));
@@ -415,7 +415,7 @@ public:
 class SocialPlayersTab : public SocialTab
 {
 public:
-    SocialPlayersTab(std::string name, bool showBackground) :
+    SocialPlayersTab(std::string name, const bool showBackground) :
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
@@ -449,19 +449,19 @@ public:
         if (!actorSpriteManager)
             return;
 
-        Avatar *avatar = findAvatarbyName(name);
+        Avatar *const avatar = findAvatarbyName(name);
         if (!avatar)
             return;
         if (Party::getParty(1))
         {
-            PartyMember *pm = Party::getParty(1)->getMember(name);
+            const PartyMember *const pm = Party::getParty(1)->getMember(name);
             if (pm && pm->getMaxHp() > 0)
             {
                 avatar->setMaxHp(pm->getMaxHp());
                 avatar->setHp(pm->getHp());
             }
         }
-        Being* being = actorSpriteManager->findBeingByName(
+        const Being *const being = actorSpriteManager->findBeingByName(
             name, Being::PLAYER);
         if (being)
         {
@@ -477,11 +477,11 @@ public:
         if (!actorSpriteManager)
             return;
 
-        Avatar *avatar = findAvatarbyName(name);
+        Avatar *const avatar = findAvatarbyName(name);
         if (!avatar)
             return;
         avatar->setDamageHp(0);
-        Being* being = actorSpriteManager->findBeingByName(
+        Being *const being = actorSpriteManager->findBeingByName(
             name, Being::PLAYER);
 
         if (being)
@@ -490,13 +490,13 @@ public:
 
     Avatar* findAvatarbyName(std::string name)
     {
-        std::vector<Avatar*> *avatars = mBeings->getMembers();
+        std::vector<Avatar*> *const avatars = mBeings->getMembers();
         if (!avatars)
             return nullptr;
 
         Avatar *ava = nullptr;
         std::vector<Avatar*>::const_iterator i = avatars->begin();
-        std::vector<Avatar*>::const_iterator i_end = avatars->end();
+        const std::vector<Avatar*>::const_iterator i_end = avatars->end();
         while (i != i_end)
         {
             ava = (*i);
@@ -512,7 +512,7 @@ public:
 
     void getPlayersAvatars()
     {
-        std::vector<Avatar*> *avatars = mBeings->getMembers();
+        std::vector<Avatar*> *const avatars = mBeings->getMembers();
         if (!avatars)
             return;
 
@@ -525,12 +525,12 @@ public:
             while (ai != avatars->end())
             {
                 bool finded = false;
-                Avatar *ava = (*ai);
+                const Avatar *const ava = (*ai);
                 if (!ava)
                     break;
 
                 StringVectCIter i = names.begin();
-                StringVectCIter i_end = names.end();
+                const StringVectCIter i_end = names.end();
                 while (i != i_end)
                 {
                     if (ava->getName() == (*i) && (*i) != "")
@@ -553,7 +553,7 @@ public:
             }
 
             StringVectCIter i = names.begin();
-            StringVectCIter i_end = names.end();
+            const StringVectCIter i_end = names.end();
 
             while (i != i_end)
             {
@@ -618,18 +618,18 @@ public:
         if (!socialWindow || !player_node)
             return;
 
-        Map* map = socialWindow->getMap();
+        Map *const map = socialWindow->getMap();
         if (!map || map->empty())
             return;
 
         if (socialWindow->getProcessedPortals())
             return;
 
-        std::vector<Avatar*> *avatars = mBeings->getMembers();
+        std::vector<Avatar*> *const avatars = mBeings->getMembers();
         std::vector<MapItem*> portals = map->getPortals();
 
         std::vector<MapItem*>::const_iterator i = portals.begin();
-        SpecialLayer *specialLayer = map->getSpecialLayer();
+        const SpecialLayer *const specialLayer = map->getSpecialLayer();
 
         std::vector<Avatar*>::iterator ia = avatars->begin();
 
@@ -648,13 +648,13 @@ public:
             if (!portal)
                 continue;
 
-            int x = portal->getX();
-            int y = portal->getY();
+            const int x = portal->getX();
+            const int y = portal->getY();
 
             std::string name = strprintf("%s [%d %d]",
                 portal->getComment().c_str(), x, y);
 
-            Avatar *ava = new Avatar(name);
+            Avatar *const ava = new Avatar(name);
             if (player_node)
                 ava->setOnline(player_node->isReachable(x, y, 0));
             else
@@ -667,7 +667,8 @@ public:
 
             if (config.getBoolValue("drawHotKeys") && idx < 80 && outfitWindow)
             {
-                Being *being = actorSpriteManager->findPortalByTile(x, y);
+                Being *const being = actorSpriteManager
+                    ->findPortalByTile(x, y);
                 if (being)
                 {
                     being->setName(keyboard.getKeyShortString(
@@ -693,16 +694,16 @@ public:
     }
 
 
-    virtual void selectIndex(unsigned num)
+    virtual void selectIndex(const unsigned num)
     {
         if (!player_node)
             return;
 
-        std::vector<Avatar*> *avatars = mBeings->getMembers();
+        std::vector<Avatar*> *const avatars = mBeings->getMembers();
         if (!avatars || avatars->size() <= num)
             return;
 
-        Avatar *ava = avatars->at(num);
+        const Avatar *const ava = avatars->at(num);
         if (ava && player_node)
             player_node->navigateTo(ava->getX(), ava->getY());
     }
@@ -712,24 +713,24 @@ public:
         if (!socialWindow)
             return;
 
-        std::vector<Avatar*> *avatars = mBeings->getMembers();
+        std::vector<Avatar*> *const avatars = mBeings->getMembers();
         if (!avatars)
             return;
 
-        Map *map = socialWindow->getMap();
+        const Map *const map = socialWindow->getMap();
         if (!map)
             return;
 
         Avatar *ava = nullptr;
         std::vector<Avatar*>::const_iterator i = avatars->begin();
-        std::vector<Avatar*>::const_iterator i_end = avatars->end();
+        const std::vector<Avatar*>::const_iterator i_end = avatars->end();
         while (i != i_end)
         {
             ava = (*i);
             if (!ava)
                 break;
 
-            MapItem *item = map->findPortalXY(ava->getX(), ava->getY());
+            const MapItem *const item = map->findPortalXY(ava->getX(), ava->getY());
             if (item)
             {
                 std::string name = strprintf("%s [%d %d]",
@@ -742,22 +743,22 @@ public:
         }
     }
 
-    int getPortalIndex(int x, int y)
+    int getPortalIndex(const int x, const int y)
     {
         if (!socialWindow)
             return -1;
 
-        std::vector<Avatar*> *avatars = mBeings->getMembers();
+        std::vector<Avatar*> *const avatars = mBeings->getMembers();
         if (!avatars)
             return -1;
 
-        Map *map = socialWindow->getMap();
+        const Map *const map = socialWindow->getMap();
         if (!map)
             return 01;
 
-        Avatar *ava = nullptr;
+        const Avatar *ava = nullptr;
         std::vector<Avatar*>::const_iterator i = avatars->begin();
-        std::vector<Avatar*>::const_iterator i_end = avatars->end();
+        const std::vector<Avatar*>::const_iterator i_end = avatars->end();
         unsigned num = 0;
         while (i != i_end)
         {
@@ -775,28 +776,28 @@ public:
         return -1;
     }
 
-    void addPortal(int x, int y)
+    void addPortal(const int x, const int y)
     {
         if (!socialWindow || !player_node)
             return;
 
-        Map* map = socialWindow->getMap();
+        const Map *const map = socialWindow->getMap();
         if (!map)
             return;
 
-        std::vector<Avatar*> *avatars = mBeings->getMembers();
+        std::vector<Avatar*> *const avatars = mBeings->getMembers();
 
         if (!avatars)
             return;
 
-        MapItem *portal = map->findPortalXY(x, y);
+        const MapItem *const portal = map->findPortalXY(x, y);
         if (!portal)
             return;
 
         std::string name = strprintf("%s [%d %d]",
             portal->getComment().c_str(), x, y);
 
-        Avatar *ava = new Avatar(name);
+        Avatar *const ava = new Avatar(name);
         if (player_node)
             ava->setOnline(player_node->isReachable(x, y, 0));
         else
@@ -808,22 +809,22 @@ public:
         avatars->push_back(ava);
     }
 
-    void removePortal(int x, int y)
+    void removePortal(const int x, const int y)
     {
         if (!socialWindow || !player_node)
             return;
 
-        Map* map = socialWindow->getMap();
+        const Map *const map = socialWindow->getMap();
         if (!map)
             return;
 
-        std::vector<Avatar*> *avatars = mBeings->getMembers();
+        std::vector<Avatar*> *const avatars = mBeings->getMembers();
 
         if (!avatars)
             return;
 
         std::vector<Avatar*>::iterator i = avatars->begin();
-        std::vector<Avatar*>::iterator i_end = avatars->end();
+        const std::vector<Avatar*>::iterator i_end = avatars->end();
 
         while (i != i_end)
         {
@@ -898,7 +899,7 @@ protected:
 #define updateAtkListStart() \
     if (!socialWindow || !player_node || !actorSpriteManager)\
         return;\
-    std::vector<Avatar*> *avatars = mBeings->getMembers();\
+    std::vector<Avatar*> *const avatars = mBeings->getMembers();\
     std::vector<Avatar*>::iterator ia = avatars->begin();\
     while (ia != avatars->end())\
     {\
@@ -1024,7 +1025,7 @@ private:
 class SocialFriendsTab : public SocialTab
 {
 public:
-    SocialFriendsTab(std::string name, bool showBackground) :
+    SocialFriendsTab(std::string name, const bool showBackground) :
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
@@ -1288,7 +1289,7 @@ SocialWindow::~SocialWindow()
     mFriends = nullptr;
 }
 
-bool SocialWindow::addTab(Guild *guild)
+bool SocialWindow::addTab(Guild *const guild)
 {
     if (mGuilds.find(guild) != mGuilds.end())
         return false;
@@ -1307,9 +1308,9 @@ bool SocialWindow::addTab(Guild *guild)
     return true;
 }
 
-bool SocialWindow::removeTab(Guild *guild)
+bool SocialWindow::removeTab(Guild *const guild)
 {
-    GuildMap::iterator it = mGuilds.find(guild);
+    const GuildMap::iterator it = mGuilds.find(guild);
     if (it == mGuilds.end())
         return false;
 
@@ -1322,12 +1323,12 @@ bool SocialWindow::removeTab(Guild *guild)
     return true;
 }
 
-bool SocialWindow::addTab(Party *party)
+bool SocialWindow::addTab(Party *const party)
 {
     if (mParties.find(party) != mParties.end())
         return false;
 
-    SocialPartyTab *tab = new SocialPartyTab(party,
+    SocialPartyTab *const tab = new SocialPartyTab(party,
         getOptionBool("showbackground"));
     mParties[party] = tab;
 
@@ -1338,9 +1339,9 @@ bool SocialWindow::addTab(Party *party)
     return true;
 }
 
-bool SocialWindow::removeTab(Party *party)
+bool SocialWindow::removeTab(Party *const party)
 {
-    PartyMap::iterator it = mParties.find(party);
+    const PartyMap::iterator it = mParties.find(party);
     if (it == mParties.end())
         return false;
 
@@ -1601,7 +1602,7 @@ void SocialWindow::updateActiveList()
 
 void SocialWindow::slowLogic()
 {
-    unsigned int nowTime = cur_time;
+    const unsigned int nowTime = cur_time;
     if (mNeedUpdate && nowTime - mLastUpdateTime > 1)
     {
         mPlayers->updateList();
@@ -1632,7 +1633,7 @@ void SocialWindow::updateButtons()
     if (!mTabs)
         return;
 
-    bool hasTabs = mTabs->getNumberOfTabs() > 0;
+    const bool hasTabs = mTabs->getNumberOfTabs() > 0;
     mInviteButton->setEnabled(hasTabs);
     mLeaveButton->setEnabled(hasTabs);
 }
@@ -1649,13 +1650,13 @@ void SocialWindow::updatePortalNames()
         static_cast<SocialNavigationTab*>(mNavigation)->updateNames();
 }
 
-void SocialWindow::selectPortal(unsigned num)
+void SocialWindow::selectPortal(const unsigned num)
 {
     if (mNavigation)
         mNavigation->selectIndex(num);
 }
 
-int SocialWindow::getPortalIndex(int x, int y)
+int SocialWindow::getPortalIndex(const int x, const int y)
 {
     if (mNavigation)
     {
@@ -1668,13 +1669,13 @@ int SocialWindow::getPortalIndex(int x, int y)
     }
 }
 
-void SocialWindow::addPortal(int x, int y)
+void SocialWindow::addPortal(const int x, const int y)
 {
     if (mNavigation)
         static_cast<SocialNavigationTab*>(mNavigation)->addPortal(x, y);
 }
 
-void SocialWindow::removePortal(int x, int y)
+void SocialWindow::removePortal(const int x, const int y)
 {
     if (mNavigation)
         static_cast<SocialNavigationTab*>(mNavigation)->removePortal(x, y);

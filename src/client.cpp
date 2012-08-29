@@ -2428,7 +2428,7 @@ const std::string Client::getNpcsDirectory()
     return instance()->mNpcsDir;
 }
 
-void Client::setGuiAlpha(float n)
+void Client::setGuiAlpha(const float n)
 {
     instance()->mGuiAlpha = n;
 }

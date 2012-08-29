@@ -387,7 +387,7 @@ void KillStats::jackoDead(const int id)
     }
 }
 
-void KillStats::jackoAlive(int id)
+void KillStats::jackoAlive(const int id)
 {
     if (!mIsJackoAlive)
     {

@@ -165,7 +165,7 @@ void StatusPopup::update()
         + mDisableGameModifiers->getHeight() + 2 * getPadding());
 }
 
-void StatusPopup::view(int x, int y)
+void StatusPopup::view(const int x, const int y)
 {
     const int distance = 20;
 
@@ -184,14 +184,16 @@ void StatusPopup::view(int x, int y)
     requestMoveToTop();
 }
 
-void StatusPopup::setLabelText(gcn::Label *label, const char *text, int key)
+void StatusPopup::setLabelText(gcn::Label *const label, const char *const text,
+                               int const key) const
 {
     label->setCaption(strprintf("%s  %s", text,
         inputManager.getKeyValueString(key).c_str()));
 }
 
-void StatusPopup::setLabelText2(gcn::Label *label, std::string text,
-                                Input::KeyAction key)
+void StatusPopup::setLabelText2(gcn::Label *const label,
+                                const std::string &text,
+                                const Input::KeyAction key) const
 {
     label->setCaption(strprintf("%s  %s", text.c_str(),
         inputManager.getKeyValueString(static_cast<int>(key)).c_str()));

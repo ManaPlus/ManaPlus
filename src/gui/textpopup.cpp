@@ -61,7 +61,7 @@ TextPopup::~TextPopup()
 {
 }
 
-void TextPopup::show(int x, int y, const std::string &str1,
+void TextPopup::show(const int x, const int y, const std::string &str1,
                      const std::string &str2, const std::string &str3)
 {
     mText1->setCaption(str1);

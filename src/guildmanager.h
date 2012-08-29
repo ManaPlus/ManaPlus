@@ -43,7 +43,7 @@ class GuildManager
 
         bool processGuildMessage(std::string msg);
 
-        void getNames(StringVect &names);
+        void getNames(StringVect &names) const;
 
         void requestGuildInfo();
 
@@ -52,13 +52,13 @@ class GuildManager
         static bool getEnableGuildBot()
         { return mEnableGuildBot; }
 
-        void kick(std::string msg);
+        void kick(std::string msg) const;
 
-        void invite(std::string msg);
+        void invite(std::string msg) const;
 
-        void leave();
+        void leave() const;
 
-        void notice(std::string msg);
+        void notice(std::string msg) const;
 
         void createTab(Guild *const guild);
 
@@ -68,7 +68,7 @@ class GuildManager
 
         void reload();
 
-        void inviteResponse(const bool response);
+        void inviteResponse(const bool response) const;
 
         bool afterRemove();
 

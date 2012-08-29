@@ -56,12 +56,12 @@ class SpellPopup : public Popup
         /**
          * Sets the info to be displayed given a particular item.
          */
-        void setItem(TextCommand *spell);
+        void setItem(const TextCommand *const spell);
 
         /**
          * Sets the location to display the item popup.
          */
-        void view(int x, int y);
+        void view(const int x, const int y);
 
         void mouseMoved(gcn::MouseEvent &mouseEvent);
 

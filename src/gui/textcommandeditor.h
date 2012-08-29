@@ -48,7 +48,7 @@ class TextCommandEditor : public Window, public gcn::ActionListener
         /**
          * Constructor.
          */
-        TextCommandEditor(TextCommand *command);
+        TextCommandEditor(TextCommand *const command);
 
         /**
          * Destructor.
@@ -66,7 +66,7 @@ class TextCommandEditor : public Window, public gcn::ActionListener
         void scheduleDelete();
 
     private:
-        void showControls(bool show);
+        void showControls(const bool show);
 
         void save();
 

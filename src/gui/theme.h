@@ -42,10 +42,10 @@ class ProgressBar;
 class Skin
 {
     public:
-        Skin(ImageRect skin, ImageRect images, const std::string &filePath,
-             const std::string &name = "", int padding = 3,
-             int titlePadding = 4,
-             std::map<std::string, int> *options = nullptr);
+        Skin(const ImageRect skin, const ImageRect images,
+             const std::string &filePath, const std::string &name = "",
+             const int padding = 3, const int titlePadding = 4,
+             std::map<std::string, int> *const options = nullptr);
 
         ~Skin();
 
@@ -78,7 +78,7 @@ class Skin
         /**
          * Returns the image used by a sticky button for this skin.
          */
-        Image *getStickyImage(bool state) const
+        Image *getStickyImage(const bool state) const
         { return state ? mStickyImageDown : mStickyImageUp; }
 
         /**
@@ -156,11 +156,11 @@ class Theme : public Palette, public ConfigListener
         static Image *getImageFromTheme(const std::string &path);
 
         static ImageSet *getImageSetFromTheme(const std::string &path,
-                                              int w, int h);
+                                              const int w, const int h);
 
         ImageSet *getImageSetFromThemeXml(const std::string &name,
                                           const std::string &name2,
-                                          int w, int h);
+                                          const int w, const int h) const;
         enum ThemePalette
         {
             BROWSERBOX = 0,
@@ -257,26 +257,28 @@ class Theme : public Palette, public ConfigListener
          *
          * @return the requested color
          */
-        inline static const gcn::Color &getThemeColor(int type,
-                                                      int alpha = 255)
+        inline static const gcn::Color &getThemeColor(const int type,
+                                                      const int alpha = 255)
         { return mInstance->getColor(type, alpha); }
 
-        static const gcn::Color &getThemeColor(char c, bool &valid)
+        static const gcn::Color &getThemeColor(const char c, bool &valid)
         { return mInstance->getColor(c, valid); }
 
-        static gcn::Color getProgressColor(int type, float progress);
+        static gcn::Color getProgressColor(const int type,
+                                           const float progress);
 
         /**
          * Loads a skin.
          */
         Skin *load(const std::string &filename, const std::string &filename2,
-                   bool full = true, const std::string
+                   const bool full = true, const std::string
                    &defaultPath = getThemePath());
 
-        Skin *loadSkinRect(ImageRect &image, std::string name,
-                           std::string name2, int start = 0, int end = 8);
+        Skin *loadSkinRect(ImageRect &image, const std::string &name,
+                           const std::string &name2, const int start = 0,
+                           const int end = 8);
 
-        void unload(Skin *skin);
+        void unload(Skin *const skin);
 
         /**
          * Updates the alpha values of all of the skins.
@@ -286,21 +288,23 @@ class Theme : public Palette, public ConfigListener
         /**
          * Get the minimum opacity allowed to skins.
          */
-        float getMinimumOpacity()
+        float getMinimumOpacity() const
         { return mMinimumOpacity; }
 
         /**
          * Set the minimum opacity allowed to skins.
          * Set a negative value to free the minimum allowed.
          */
-        void setMinimumOpacity(float minimumOpacity);
+        void setMinimumOpacity(const float minimumOpacity);
 
         void optionChanged(const std::string &);
 
-        void loadRect(ImageRect &image, std::string name, std::string name2,
-                      int start = 0, int end = 8);
+        void loadRect(ImageRect &image, const std::string &name,
+                      const std::string &name2, const int start = 0,
+                      const int end = 8);
 
-        void unloadRect(ImageRect &rect, int start = 0, int end = 8);
+        void unloadRect(const ImageRect &rect, const int start = 0,
+                        const int end = 8) const;
 
         static Image *getImageFromThemeXml(const std::string &name,
                                            const std::string &name2);
@@ -309,7 +313,7 @@ class Theme : public Palette, public ConfigListener
         Theme();
         ~Theme();
 
-        Skin *readSkin(const std::string &filename0, bool full);
+        Skin *readSkin(const std::string &filename0, const bool full);
 
         // Map containing all window skins
         typedef std::map<std::string, Skin*> Skins;

@@ -59,31 +59,36 @@ class StatusWindow : public Window,
 
         void processEvent(Channels channel, const DepricatedEvent &event);
 
-        void setPointsNeeded(int id, int needed);
+        void setPointsNeeded(const int id, const int needed);
 
-        void addAttribute(int id, const std::string &name, bool modifiable,
+        void addAttribute(const int id, const std::string &name,
+                          const bool modifiable,
                           const std::string &description);
 
-        static void updateHPBar(ProgressBar *bar, bool showMax = false);
+        static void updateHPBar(ProgressBar *const bar,
+                                const bool showMax = false);
         static void updateMPBar(ProgressBar *bar, bool showMax = false);
-        static void updateJobBar(ProgressBar *bar, bool percent = true);
-        static void updateXPBar(ProgressBar *bar, bool percent = true);
-        static void updateWeightBar(ProgressBar *bar);
-        static void updateInvSlotsBar(ProgressBar *bar);
-        static void updateMoneyBar(ProgressBar *bar);
-        static void updateArrowsBar(ProgressBar *bar);
-        static void updateStatusBar(ProgressBar *bar, bool percent = true);
-        static void updateProgressBar(ProgressBar *bar, int value, int max,
-                                      bool percent);
-        void updateProgressBar(ProgressBar *bar, int id,
-                               bool percent = true);
+        static void updateJobBar(ProgressBar *const bar,
+                                 const bool percent = true);
+        static void updateXPBar(ProgressBar *const bar,
+                                const bool percent = true);
+        static void updateWeightBar(ProgressBar *const bar);
+        static void updateInvSlotsBar(ProgressBar *const bar);
+        static void updateMoneyBar(ProgressBar *const bar);
+        static void updateArrowsBar(ProgressBar *const bar);
+        static void updateStatusBar(ProgressBar *const bar,
+                                    const bool percent = true);
+        static void updateProgressBar(ProgressBar *const bar, const int value,
+                                      const int max, const bool percent);
+        void updateProgressBar(ProgressBar *const bar, const int id,
+                               const bool percent = true) const;
 
         void action(const gcn::ActionEvent &event);
 
         void clearAttributes();
 
     private:
-        static std::string translateLetter(const char* letters);
+        static std::string translateLetter(const char *const letters);
 
         static std::string translateLetter2(std::string letters);
 

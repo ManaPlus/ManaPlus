@@ -346,7 +346,7 @@ class Map : public Properties, public ConfigListener
 
         void optionChanged(const std::string &value);
 
-        MapItem *findPortalXY(int x, int y);
+        MapItem *findPortalXY(int x, int y) const;
 
         int getActorsCount() const
         { return static_cast<int>(mActors.size()); }

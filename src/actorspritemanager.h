@@ -126,7 +126,8 @@ class ActorSpriteManager: public ConfigListener
                                       int maxTileDist,
                                       const ActorSprite::Type
                                       type = Being::UNKNOWN,
-                                      Being *const excluded = nullptr) const;
+                                      const Being *const
+                                      excluded = nullptr) const;
 
         /**
          * Returns a being nearest to another being.
@@ -136,7 +137,7 @@ class ActorSpriteManager: public ConfigListener
          *                    larger, no being is returned.
          * @param type        The type of being to look for.
          */
-        Being *findNearestLivingBeing(Being *const aroundBeing,
+        Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxTileDist,
                                       const ActorSprite::Type
                                       type = Being::UNKNOWN
@@ -298,9 +299,12 @@ class ActorSpriteManager: public ConfigListener
                            const Being *const excluded = nullptr,
                            const int maxCost = 20) const;
 
-        Being *findNearestLivingBeing(Being *aroundBeing, int maxdist,
-                                      Being::Type type, int x, int y,
-                                      Being *excluded = nullptr) const;
+        Being *findNearestLivingBeing(const Being *const aroundBeing,
+                                      const int maxdist,
+                                      const Being::Type type,
+                                      const int x, const int y,
+                                      const Being *const
+                                      excluded = nullptr) const;
 
         void loadAttackList();
         void storeAttackList();

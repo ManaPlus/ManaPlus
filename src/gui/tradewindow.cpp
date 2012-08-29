@@ -172,7 +172,7 @@ void TradeWindow::setMoney(const int amount)
 }
 
 void TradeWindow::addItem(const int id, const bool own, const int quantity,
-                          const int refine, const unsigned char color)
+                          const int refine, const unsigned char color) const
 {
     if (own)
         mMyInventory->addItem(id, quantity, refine, color);
@@ -182,7 +182,7 @@ void TradeWindow::addItem(const int id, const bool own, const int quantity,
 
 void TradeWindow::addItem2(const int id, const bool own, const int quantity,
                            const int refine, const unsigned char color,
-                           const bool equipment)
+                           const bool equipment) const
 {
     if (own)
         mMyInventory->addItem(id, quantity, refine, color, equipment);
@@ -191,7 +191,7 @@ void TradeWindow::addItem2(const int id, const bool own, const int quantity,
 }
 
 void TradeWindow::changeQuantity(const int index, const bool own,
-                                 const int quantity)
+                                 const int quantity) const
 {
     if (own)
     {
@@ -206,7 +206,7 @@ void TradeWindow::changeQuantity(const int index, const bool own,
 }
 
 void TradeWindow::increaseQuantity(const int index, const bool own,
-                                   const int quantity)
+                                   const int quantity) const
 {
     if (own)
     {
@@ -254,7 +254,7 @@ void TradeWindow::receivedOk(const bool own)
 }
 
 void TradeWindow::tradeItem(Item *const item, const int quantity,
-                            const bool check)
+                            const bool check) const
 {
     if (check && !checkItem(item))
         return;

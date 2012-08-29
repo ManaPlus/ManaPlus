@@ -49,7 +49,7 @@ public:
      * @see Window::Window
      */
     TextDialog(const std::string &title, const std::string &msg,
-               Window *parent = nullptr, bool isPassword = false);
+               Window *const parent = nullptr, const bool isPassword = false);
 
     ~TextDialog();
 

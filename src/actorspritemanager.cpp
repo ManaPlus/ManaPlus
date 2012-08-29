@@ -816,14 +816,16 @@ void ActorSpriteManager::clear()
 Being *ActorSpriteManager::findNearestLivingBeing(const int x, const int y,
                                                   const int maxTileDist,
                                                   const ActorSprite::Type type,
-                                                  Being *const excluded) const
+                                                  const Being *const
+                                                  excluded) const
 {
     const int maxDist = maxTileDist * 32;
 
     return findNearestLivingBeing(nullptr, maxDist, type, x, y, excluded);
 }
 
-Being *ActorSpriteManager::findNearestLivingBeing(Being *const aroundBeing,
+Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
+                                                  aroundBeing,
                                                   const int maxDist,
                                                   const Being::Type type) const
 {
@@ -834,11 +836,12 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *const aroundBeing,
         aroundBeing->getTileX(), aroundBeing->getTileY(), aroundBeing);
 }
 
-Being *ActorSpriteManager::findNearestLivingBeing(Being *const aroundBeing,
-                                                  int maxDist,
+Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
+                                                  aroundBeing, int maxDist,
                                                   const Being::Type type,
                                                   const int x, const int y,
-                                                  Being *const excluded) const
+                                                  const Being *const
+                                                  excluded) const
 {
     if (!aroundBeing || !player_node)
         return nullptr;

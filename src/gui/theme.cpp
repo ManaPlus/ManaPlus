@@ -50,7 +50,7 @@ Theme *Theme::mInstance = nullptr;
 // Set the theme path...
 static void initDefaultThemePath()
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     defaultThemePath = branding.getStringValue("guiThemePath");
 
     logger->log("defaultThemePath: " + defaultThemePath);
@@ -60,9 +60,10 @@ static void initDefaultThemePath()
         defaultThemePath = "themes/";
 }
 
-Skin::Skin(ImageRect skin, ImageRect images, const std::string &filePath,
-           const std::string &name, int padding, int titlePadding,
-           std::map<std::string, int> *options):
+Skin::Skin(const ImageRect skin, const ImageRect images,
+           const std::string &filePath, const std::string &name,
+           const int padding, const int titlePadding,
+           std::map<std::string, int> *const options):
     instances(1),
     mFilePath(filePath),
     mName(name),
@@ -210,13 +211,13 @@ void Theme::deleteInstance()
     mInstance = nullptr;
 }
 
-gcn::Color Theme::getProgressColor(int type, float progress)
+gcn::Color Theme::getProgressColor(const int type, const float progress)
 {
     int color[3] = {0, 0, 0};
 
     if (mInstance)
     {
-        DyePalette *dye = mInstance->mProgressColors[type];
+        const DyePalette *const dye = mInstance->mProgressColors[type];
 
         if (dye)
             dye->getColor(progress, color);
@@ -228,11 +229,11 @@ gcn::Color Theme::getProgressColor(int type, float progress)
 }
 
 Skin *Theme::load(const std::string &filename, const std::string &filename2,
-                  bool full, const std::string &defaultPath)
+                  const bool full, const std::string &defaultPath)
 {
     // Check if this skin was already loaded
 
-    SkinIterator skinIterator = mSkins.find(filename);
+    const SkinIterator skinIterator = mSkins.find(filename);
     if (mSkins.end() != skinIterator)
     {
         if (skinIterator->second)
@@ -273,7 +274,7 @@ Skin *Theme::load(const std::string &filename, const std::string &filename2,
     return skin;
 }
 
-void Theme::unload(Skin *skin)
+void Theme::unload(Skin *const skin)
 {
     if (!skin)
         return;
@@ -282,7 +283,7 @@ void Theme::unload(Skin *skin)
     if (!skin->instances)
     {
         SkinIterator it = mSkins.begin();
-        SkinIterator it_end = mSkins.end();
+        const SkinIterator it_end = mSkins.end();
         while (it != it_end)
         {
             if (it->second == skin)
@@ -296,7 +297,7 @@ void Theme::unload(Skin *skin)
     }
 }
 
-void Theme::setMinimumOpacity(float minimumOpacity)
+void Theme::setMinimumOpacity(const float minimumOpacity)
 {
     if (minimumOpacity > 1.0f)
         return;
@@ -385,7 +386,7 @@ struct SkinHelper
     Image *image;
     ResourceManager *resman;
 
-    bool loadList(SkinParameter *params, size_t size)
+    bool loadList(const SkinParameter *const params, const size_t size)
     {
         for (unsigned f = 0; f < size; f ++)
         {
@@ -402,7 +403,7 @@ struct SkinHelper
     }
 };
 
-Skin *Theme::readSkin(const std::string &filename, bool full)
+Skin *Theme::readSkin(const std::string &filename, const bool full)
 {
     if (filename.empty())
         return nullptr;
@@ -410,7 +411,7 @@ Skin *Theme::readSkin(const std::string &filename, bool full)
 //    logger->log("Loading skin '%s'.", filename.c_str());
 
     XML::Document doc(resolveThemePath(filename));
-    XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "skinset"))
         return nullptr;
@@ -423,14 +424,15 @@ Skin *Theme::readSkin(const std::string &filename, bool full)
         return nullptr;
     }
 
-    Image *dBorders = Theme::getImageFromTheme(skinSetImage);
+    Image *const dBorders = Theme::getImageFromTheme(skinSetImage);
     ImageRect border;
     ImageRect images;
     memset(&border, 0, sizeof(ImageRect));
     memset(&images, 0, sizeof(ImageRect));
     int padding = 3;
     int titlePadding = 4;
-    std::map<std::string, int> *mOptions = new std::map<std::string, int>();
+    std::map<std::string, int> *const mOptions
+        = new std::map<std::string, int>();
 
     // iterate <widget>'s
     for_each_xml_child_node(widgetNode, rootNode)
@@ -499,7 +501,7 @@ Skin *Theme::readSkin(const std::string &filename, bool full)
     if (dBorders)
         dBorders->decRef();
 
-    Skin *skin = new Skin(border, images, filename, "", padding, 
+    Skin *const skin = new Skin(border, images, filename, "", padding, 
         titlePadding, mOptions);
     skin->updateAlpha(mMinimumOpacity);
     return skin;
@@ -613,7 +615,7 @@ void Theme::prepareThemePath()
 std::string Theme::resolveThemePath(const std::string &path)
 {
     // Need to strip off any dye info for the existence tests
-    int pos = static_cast<int>(path.find('|'));
+    const int pos = static_cast<int>(path.find('|'));
     std::string file;
     if (pos > 0)
         file = path.substr(0, pos);
@@ -640,20 +642,20 @@ std::string Theme::resolveThemePath(const std::string &path)
 
 Image *Theme::getImageFromTheme(const std::string &path)
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     return resman->getImage(resolveThemePath(path));
 }
 
 ImageSet *Theme::getImageSetFromTheme(const std::string &path,
-                                      int w, int h)
+                                      const int w, const int h)
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     return resman->getImageSet(resolveThemePath(path), w, h);
 }
 
 static int readColorType(const std::string &type)
 {
-    static std::string colors[] =
+    static const std::string colors[] =
     {
         "BROWSERBOX",
         "TEXT",
@@ -740,7 +742,7 @@ static int readColorType(const std::string &type)
 
 static gcn::Color readColor(const std::string &description)
 {
-    int size = static_cast<int>(description.length());
+    const int size = static_cast<const int>(description.length());
     if (size < 7 || description[0] != '#')
     {
         logger->log("Error, invalid theme color palette: %s",
@@ -751,7 +753,7 @@ static gcn::Color readColor(const std::string &description)
     int v = 0;
     for (int i = 1; i < 7; ++i)
     {
-        char c = description[i];
+        const char c = description[i];
         int n;
 
         if ('0' <= c && c <= '9')
@@ -781,7 +783,7 @@ static gcn::Color readColor(const std::string &description)
 
 static Palette::GradientType readColorGradient(const std::string &grad)
 {
-    static std::string grads[] =
+    static const std::string grads[] =
     {
         "STATIC",
         "PULSE",
@@ -803,7 +805,7 @@ static Palette::GradientType readColorGradient(const std::string &grad)
 
 static int readProgressType(const std::string &type)
 {
-    static std::string colors[] =
+    static const std::string colors[] =
     {
         "DEFAULT",
         "HP",
@@ -838,7 +840,7 @@ void Theme::loadColors(std::string file)
         file += "/colors.xml";
 
     XML::Document doc(resolveThemePath(file));
-    XmlNodePtr root = doc.rootNode();
+    const XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "colors"))
     {
@@ -882,10 +884,11 @@ void Theme::loadColors(std::string file)
     }
 }
 
-void Theme::loadRect(ImageRect &image, std::string name, std::string name2,
-                     int start, int end)
+void Theme::loadRect(ImageRect &image, const std::string &name,
+                     const std::string &name2,
+                     const int start, const int end)
 {
-    Skin *skin = load(name, name2, false);
+    Skin *const skin = load(name, name2, false);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();
@@ -901,10 +904,11 @@ void Theme::loadRect(ImageRect &image, std::string name, std::string name2,
     }
 }
 
-Skin *Theme::loadSkinRect(ImageRect &image, std::string name,
-                          std::string name2, int start, int end)
+Skin *Theme::loadSkinRect(ImageRect &image, const std::string &name,
+                          const std::string &name2, const int start,
+                          const int end)
 {
-    Skin *skin = load(name, name2);
+    Skin *const skin = load(name, name2);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();
@@ -920,7 +924,8 @@ Skin *Theme::loadSkinRect(ImageRect &image, std::string name,
     return skin;
 }
 
-void Theme::unloadRect(ImageRect &rect, int start, int end)
+void Theme::unloadRect(const ImageRect &rect, const int start,
+                       const int end) const
 {
     for (int f = start; f <= end; f ++)
     {
@@ -932,14 +937,14 @@ void Theme::unloadRect(ImageRect &rect, int start, int end)
 Image *Theme::getImageFromThemeXml(const std::string &name,
                                    const std::string &name2)
 {
-    Theme *theme = Theme::instance();
-    Skin *skin = theme->load(name, name2, false);
+    Theme *const theme = Theme::instance();
+    Skin *const skin = theme->load(name, name2, false);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();
         if (rect.grid[0])
         {
-            Image *image = rect.grid[0];
+            Image *const image = rect.grid[0];
             image->incRef();
             theme->unload(skin);
             return image;
@@ -951,19 +956,19 @@ Image *Theme::getImageFromThemeXml(const std::string &name,
 
 ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
                                          const std::string &name2,
-                                         int w, int h)
+                                         const int w, const int h) const
 {
-    Theme *theme = Theme::instance();
-    Skin *skin = theme->load(name, name2, false);
+    Theme *const theme = Theme::instance();
+    Skin *const skin = theme->load(name, name2, false);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();
         if (rect.grid[0])
         {
-            Image *image = rect.grid[0];
+            Image *const image = rect.grid[0];
 
-            ResourceManager *resman = ResourceManager::getInstance();
-            ImageSet *imageSet = resman->getSubImageSet(image, w, h);
+            ResourceManager *const resman = ResourceManager::getInstance();
+            ImageSet *const imageSet = resman->getSubImageSet(image, w, h);
 
 //            image->incRef();
             theme->unload(skin);

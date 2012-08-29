@@ -1259,7 +1259,7 @@ void Map::updatePortalTile(const std::string &name, int type,
     }
 }
 
-MapItem *Map::findPortalXY(int x, int y)
+MapItem *Map::findPortalXY(int x, int y) const
 {
     for (std::vector<MapItem*>::const_iterator it = mMapPortals.begin(),
          it_end = mMapPortals.end(); it != it_end; ++it)

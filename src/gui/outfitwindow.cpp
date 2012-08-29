@@ -624,7 +624,7 @@ void OutfitWindow::unwearAwayOutfit()
     wearOutfit(OUTFITS_COUNT);
 }
 
-void OutfitWindow::setItemSelected(Item *item)
+void OutfitWindow::setItemSelected(const Item *const item)
 {
     if (item)
     {

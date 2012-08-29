@@ -1063,11 +1063,11 @@ void CommandHandler::handleCacheInfo(const std::string &args A_UNUSED,
     if (!chatWindow || !debugChatTab)
         return;
 
-    SDLFont *font = dynamic_cast<SDLFont *>(chatWindow->getFont());
+    SDLFont *const font = dynamic_cast<SDLFont *const>(chatWindow->getFont());
     if (!font)
         return;
 
-    std::list<SDLTextChunk> *cache = font->getCache();
+    const std::list<SDLTextChunk> *const cache = font->getCache();
     if (!cache)
         return;
 
@@ -1180,7 +1180,7 @@ void CommandHandler::outStringNormal(ChatTab *const tab,
         {
             if (!player_node)
                 return;
-            const Guild *guild = player_node->getGuild();
+            const Guild *const guild = player_node->getGuild();
             if (guild)
             {
                 if (guild->getServerGuild())
@@ -1192,7 +1192,8 @@ void CommandHandler::outStringNormal(ChatTab *const tab,
         }
         case ChatTab::TAB_WHISPER:
         {
-            WhisperTab *whisper = static_cast<WhisperTab*>(tab);
+            const WhisperTab *const whisper
+                = static_cast<WhisperTab *const>(tab);
             tab->chatLog(player_node->getName(), str);
             Net::getChatHandler()->privateMessage(whisper->getNick(), str);
             break;
@@ -1320,7 +1321,7 @@ void CommandHandler::replaceVars(std::string &str)
 
     if (str.find("<PLAYER>") != std::string::npos)
     {
-        Being *target = player_node->getTarget();
+        const Being *target = player_node->getTarget();
         if (!target || target->getType() != ActorSprite::PLAYER)
         {
             target = actorSpriteManager->findNearestLivingBeing(
@@ -1333,7 +1334,7 @@ void CommandHandler::replaceVars(std::string &str)
     }
     if (str.find("<MONSTER>") != std::string::npos)
     {
-        Being *target = player_node->getTarget();
+        const Being *target = player_node->getTarget();
         if (!target || target->getType() != ActorSprite::MONSTER)
         {
             target = actorSpriteManager->findNearestLivingBeing(
@@ -1366,7 +1367,7 @@ void CommandHandler::replaceVars(std::string &str)
     {
         StringVect names;
         std::string newStr = "";
-        Party *party = nullptr;
+        const Party *party = nullptr;
         if (player_node->isInParty() && (party = player_node->getParty()))
         {
             party->getNames(names);

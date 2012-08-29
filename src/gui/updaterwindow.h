@@ -79,7 +79,7 @@ class UpdaterWindow : public Window,
      */
     UpdaterWindow(const std::string &updateHost,
                   const std::string &updatesDir,
-                  bool applyUpdates, int updateType);
+                  const bool applyUpdates, const int updateType);
 
     /**
      * Destructor
@@ -89,7 +89,7 @@ class UpdaterWindow : public Window,
     /**
      * Set's progress bar status
      */
-    void setProgress(float p);
+    void setProgress(const float p);
 
     /**
      * Set's label above progress
@@ -117,13 +117,16 @@ class UpdaterWindow : public Window,
 
     void handleLink(const std::string &link, gcn::MouseEvent *event A_UNUSED);
 
-    static void loadLocalUpdates(std::string dir);
+    static void loadLocalUpdates(const std::string &dir);
 
-    static void addUpdateFile(ResourceManager *resman, std::string path,
-                              std::string fixPath, std::string file,
-                              bool append);
+    static void addUpdateFile(ResourceManager *const resman,
+                              const std::string &path,
+                              const std::string &fixPath,
+                              const std::string &file,
+                              const bool append);
 
-    static void loadManaPlusUpdates(std::string dir, ResourceManager *resman);
+    static void loadManaPlusUpdates(const std::string &dir,
+                                    ResourceManager *const resman);
 
     int updateState;
 
@@ -148,7 +151,8 @@ private:
     static size_t memoryWrite(void *ptr, size_t size, size_t nmemb,
                               void *stream);
 
-    bool validateFile(std::string filePath, unsigned long hash);
+    static bool validateFile(const std::string &filePath,
+                             const unsigned long hash);
 
     enum UpdateDownloadStatus
     {

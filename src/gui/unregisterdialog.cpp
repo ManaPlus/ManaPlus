@@ -44,14 +44,14 @@
 
 #include "debug.h"
 
-UnRegisterDialog::UnRegisterDialog(LoginData *data):
+UnRegisterDialog::UnRegisterDialog(LoginData *const data):
     Window(_("Unregister"), true, nullptr, "unregister.xml"),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
-    gcn::Label *userLabel = new Label(strprintf(_("Name: %s"), mLoginData->
-                                                username.c_str()));
-    gcn::Label *passwordLabel = new Label(_("Password:"));
+    gcn::Label *const userLabel = new Label(strprintf(_("Name: %s"),
+        mLoginData->username.c_str()));
+    gcn::Label *const passwordLabel = new Label(_("Password:"));
     mPasswordField = new PasswordField(mLoginData->password);
     mUnRegisterButton = new Button(_("Unregister"), "unregister", this);
     mCancelButton = new Button(_("Cancel"), "cancel", this);
@@ -109,8 +109,10 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
         std::stringstream errorMsg;
         bool error = false;
 
-        unsigned int min = Net::getLoginHandler()->getMinPasswordLength();
-        unsigned int max = Net::getLoginHandler()->getMaxPasswordLength();
+        const unsigned int min = Net::getLoginHandler()
+            ->getMinPasswordLength();
+        const unsigned int max = Net::getLoginHandler()
+            ->getMaxPasswordLength();
 
         // Check password
         if (password.length() < min)
@@ -132,7 +134,7 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
         {
             mWrongDataNoticeListener->setTarget(this->mPasswordField);
 
-            OkDialog *dlg = new OkDialog(_("Error"),
+            OkDialog *const dlg = new OkDialog(_("Error"),
                 errorMsg.str(), DIALOG_ERROR);
             dlg->addActionListener(mWrongDataNoticeListener);
         }

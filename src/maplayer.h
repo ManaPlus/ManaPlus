@@ -257,13 +257,13 @@ class MapItem
         int getY() const
         { return mY; }
 
-        std::string &getComment()
+        const std::string &getComment() const
         { return mComment; }
 
         void setComment(std::string comment)
         { mComment = comment; }
 
-        std::string &getName()
+        const std::string &getName() const
         { return mName; }
 
         void setName(std::string name)

@@ -116,7 +116,7 @@ void GuildManager::chat(std::string msg)
     mTab->chatLog(player_node->getName(), msg);
 }
 
-void GuildManager::getNames(StringVect &names)
+void GuildManager::getNames(StringVect &names) const
 {
     const Guild *const guild = createGuild();
     if (guild)
@@ -428,22 +428,22 @@ bool GuildManager::process(std::string msg)
     return false;
 }
 
-void GuildManager::kick(std::string msg)
+void GuildManager::kick(std::string msg) const
 {
     send("!remove " + msg);
 }
 
-void GuildManager::invite(std::string msg)
+void GuildManager::invite(std::string msg) const
 {
     send("!invite " + msg);
 }
 
-void GuildManager::leave()
+void GuildManager::leave() const
 {
     send("!leave");
 }
 
-void GuildManager::notice(std::string msg)
+void GuildManager::notice(std::string msg) const
 {
     if (msg.empty())
         send("!removemotd");
@@ -461,7 +461,7 @@ void GuildManager::clear() const
     }
 }
 
-void GuildManager::inviteResponse(const bool response)
+void GuildManager::inviteResponse(const bool response) const
 {
     if (response)
         send("yes");

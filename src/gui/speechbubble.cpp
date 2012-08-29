@@ -52,14 +52,15 @@ SpeechBubble::SpeechBubble():
     add(mSpeechBox);
 }
 
-void SpeechBubble::setCaption(const std::string &name, const gcn::Color *color)
+void SpeechBubble::setCaption(const std::string &name,
+                              const gcn::Color *const color)
 {
     mCaption->setCaption(name);
     mCaption->adjustSize();
     mCaption->setForegroundColor(*color);
 }
 
-void SpeechBubble::setText(const std::string &text, bool showName)
+void SpeechBubble::setText(const std::string &text, const bool showName)
 {
     if (text == mText && (mCaption->getWidth() <= mSpeechBox->getMinWidth()))
         return;

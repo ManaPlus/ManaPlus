@@ -58,7 +58,7 @@ class StatusPopup : public Popup
         /**
          * Sets the location to display the item popup.
          */
-        void view(int x, int y);
+        void view(const int x, const int y);
 
 //        void mouseMoved(gcn::MouseEvent &mouseEvent);
 
@@ -67,10 +67,11 @@ class StatusPopup : public Popup
     private:
         void updateLabels();
 
-        void setLabelText(gcn::Label *label, const char *text, int key);
+        void setLabelText(gcn::Label *const label, const char *const text,
+                          const int key) const;
 
-        void setLabelText2(gcn::Label *label, std::string text,
-                           Input::KeyAction key);
+        void setLabelText2(gcn::Label *const label, const std::string &text,
+                           const Input::KeyAction key) const;
 
         gcn::Label *mMoveType;
         gcn::Label *mCrazyMoveType;

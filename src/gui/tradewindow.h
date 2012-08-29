@@ -71,7 +71,7 @@ class TradeWindow : public Window,
          * Add an item to the trade window.
          */
         void addItem(const int id, const bool own, const int quantity,
-                     const int refine, const unsigned char color);
+                     const int refine, const unsigned char color) const;
 
         /**
          * Reset both item containers
@@ -83,18 +83,18 @@ class TradeWindow : public Window,
          */
         void addItem2(const int id, const bool own, const int quantity,
                       const int refine, const unsigned char color,
-                      const bool equipment);
+                      const bool equipment) const;
 
         /**
          * Change quantity of an item.
          */
         void changeQuantity(const int index, const bool own,
-                            const int quantity);
+                            const int quantity) const;
 
         /**
          * Increase quantity of an item.
          */
-        void increaseQuantity(int index, bool own, int quantity);
+        void increaseQuantity(int index, bool own, int quantity) const;
 
         /**
          * Player received ok message from server
@@ -105,7 +105,7 @@ class TradeWindow : public Window,
          * Send trade packet.
          */
         void tradeItem(Item *const item, const int quantity,
-                       const bool check = false);
+                       const bool check = false) const;
 
         /**
          * Updates the labels and makes sure only one item is selected in

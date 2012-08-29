@@ -561,7 +561,7 @@ void InventoryWindow::updateButtons(const Item *item)
     if (!mInventory || !mInventory->isMainInventory())
         return;
 
-    Item *const selectedItem = mItems->getSelectedItem();
+    const Item *const selectedItem = mItems->getSelectedItem();
     if (item && selectedItem != item)
         return;
 

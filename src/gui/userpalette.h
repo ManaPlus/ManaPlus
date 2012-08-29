@@ -96,7 +96,7 @@ class UserPalette : public Palette, public gcn::ListModel
          *
          * @return the requested committed color
          */
-        inline const gcn::Color &getCommittedColor(int type)
+        inline const gcn::Color &getCommittedColor(const int type) const
         {
             return mColors[type].committedColor;
         }
@@ -108,7 +108,7 @@ class UserPalette : public Palette, public gcn::ListModel
          *
          * @return the requested test color
          */
-        inline const gcn::Color &getTestColor(int type) const
+        inline const gcn::Color &getTestColor(const int type) const
         { return mColors[type].testColor; }
 
         /**
@@ -117,7 +117,7 @@ class UserPalette : public Palette, public gcn::ListModel
          * @param type the color type requested
          * @param color the color that should be tested
          */
-        inline void setTestColor(int type, gcn::Color color)
+        inline void setTestColor(const int type, const gcn::Color color)
         { mColors[type].testColor = color; }
 
         /**
@@ -142,7 +142,7 @@ class UserPalette : public Palette, public gcn::ListModel
          *
          * @param grad gradient type to set
          */
-        void setGradientDelay(int type, int delay)
+        void setGradientDelay(const int type, const int delay)
         { mColors[type].delay = delay; }
 
         /**

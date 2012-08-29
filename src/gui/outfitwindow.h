@@ -70,7 +70,7 @@ class OutfitWindow : public Window, private gcn::ActionListener
         void setItemSelected(const int itemId)
         { mItemSelected = itemId; }
 
-        void setItemSelected(Item *item);
+        void setItemSelected(const Item *const item);
 
         bool isItemSelected() const
         { return mItemSelected > 0; }

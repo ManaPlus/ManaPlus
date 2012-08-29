@@ -79,7 +79,7 @@ class KillStats : public Window, private gcn::ActionListener, public Listener
 
         void jackoDead(const int id);
 
-        void jackoAlive(int id);
+        void jackoAlive(const int id);
 
         void processEvent(Channels channel A_UNUSED,
                           const DepricatedEvent &event);

@@ -270,7 +270,7 @@ public:
                        const bool always = false)
     { instance()->resizeVideo(width, height, always); }
 
-    static void setGuiAlpha(float n);
+    static void setGuiAlpha(const float n);
 
     static float getGuiAlpha();
 
