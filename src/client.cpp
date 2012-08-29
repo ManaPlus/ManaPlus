@@ -1884,6 +1884,11 @@ void Client::initUpdatesDir()
         mUpdatesDir = updates.str();
     }
 
+#ifdef WIN32
+    if (mUpdatesDir.find(":") != std::string::npos)
+        replaceAll(mUpdatesDir, ":", "_");
+#endif
+
     ResourceManager *const resman = ResourceManager::getInstance();
 
     // Verify that the updates directory exists. Create if necessary.
