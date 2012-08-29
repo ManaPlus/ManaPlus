@@ -29,7 +29,7 @@ class ExtendedListBox : public ListBox
         /**
          * Constructor.
          */
-        ExtendedListBox(gcn::ListModel *listModel);
+        ExtendedListBox(gcn::ListModel *const listModel);
 
         ~ExtendedListBox();
 

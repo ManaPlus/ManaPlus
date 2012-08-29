@@ -77,7 +77,7 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         /**
          * Sets the map displayed by the viewport.
          */
-        void setMap(Map *map);
+        void setMap(Map *const map);
 
         /**
          * Draws the viewport.
@@ -122,43 +122,44 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
          * Shows a popup for an item.
          * TODO Find some way to get rid of Item here
          */
-        void showPopup(Window *parent, int x, int y, Item *item,
-                       bool isInventory = true);
+        void showPopup(Window *parent, const int x, const int y,
+                       Item *const item, const bool isInventory = true);
 
         /**
          * Shows a popup for an item.
          * TODO Find some way to get rid of Item here
          */
-        void showPopup(Window *parent, Item *item, bool isInventory = true);
+        void showPopup(Window *const parent, Item *const item,
+                       const bool isInventory = true);
 
-        void showPopup(int x, int y, Button *button);
+        void showPopup(const int x, const int y, Button *const button);
 
-        void showPopup(int x, int y, ProgressBar *bar);
+        void showPopup(const int x, const int y, const ProgressBar *const bar);
 
-        void showPopup(MapItem *item);
+        void showPopup(MapItem *const item);
 
-        void showItemPopup(Item *item);
+        void showItemPopup(Item *const item);
 
-        void showItemPopup(int itemId, unsigned char color = 1);
+        void showItemPopup(const int itemId, const unsigned char color = 1);
 
-        void showDropPopup(Item *item);
+        void showDropPopup(Item *const item);
 
         /**
          * Shows a popup for being.
          */
-        void showPopup(int x, int y, Being *being);
+        void showPopup(const int x, const int y, const Being *const being);
 
-        void showPopup(Being *being);
+        void showPopup(const Being *const being);
 
         void showPlayerPopup(std::string nick);
 
-        void showOutfitsPopup(int x, int y);
+        void showOutfitsPopup(const int x, const int y);
 
         void showOutfitsPopup();
 
-        void showSpellPopup(TextCommand *cmd);
+        void showSpellPopup(TextCommand *const cmd);
 
-        void showAttackMonsterPopup(std::string name, int type);
+        void showAttackMonsterPopup(const std::string &name, const int type);
 
         void showPickupItemPopup(std::string name);
 
@@ -166,16 +167,17 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
          * Shows the related popup menu when right click on the chat
          * at the specified mouse coordinates.
          */
-        void showChatPopup(int x, int y, ChatTab *tab);
+        void showChatPopup(const int x, const int y, ChatTab *const tab);
 
         /**
          * Shows the related popup menu when right click on the chat
          */
-        void showChatPopup(ChatTab *tab);
+        void showChatPopup(ChatTab *const tab);
 
-        void showUndressPopup(int x, int y, Being *being, Item *item);
+        void showUndressPopup(const int x, const int y,
+                              const Being *const being, Item *const item);
 
-        void showMapPopup(int x, int y);
+        void showMapPopup(const int x, const int y);
 
         /**
          * Closes the popup menu. Needed for when the player dies or switching
@@ -215,7 +217,7 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         /**
          * Changes viewpoint by relative pixel coordinates.
          */
-        void scrollBy(int x, int y)
+        void scrollBy(const int x, const int y)
         { mPixelViewX += x; mPixelViewY += y; }
 
         /**
@@ -227,7 +229,7 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         int getDebugPath() const
         { return mShowDebugPath; }
 
-        void setDebugPath(int n)
+        void setDebugPath(const int n)
         { mShowDebugPath = n; }
 
         int getCameraMode() const
@@ -246,7 +248,7 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         Map *getMap() const
         { return mMap; }
 
-        void moveCamera(int dx, int dy);
+        void moveCamera(const int dx, const int dy);
 
         int getCameraRelativeX() const
         { return mCameraRelativeX; }
@@ -254,19 +256,20 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         int getCameraRelativeY() const
         { return mCameraRelativeY; }
 
-        void setCameraRelativeX(int n)
+        void setCameraRelativeX(const int n)
         { mCameraRelativeX = n; }
 
-        void setCameraRelativeY(int n)
+        void setCameraRelativeY(const int n)
         { mCameraRelativeY = n; }
 
-        bool isPopupMenuVisible();
+        bool isPopupMenuVisible() const;
 
-        void moveCameraToActor(int actorId, int x = 0, int y = 0);
+        void moveCameraToActor(const int actorId, const int x = 0,
+                               const int y = 0);
 
-        void moveCameraToPosition(int x, int y);
+        void moveCameraToPosition(const int x, const int y);
 
-        void moveCameraRelative(int x, int y);
+        void moveCameraRelative(const int x, const int y);
 
         void returnCamera();
 
@@ -274,22 +277,22 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         friend class ActorSpriteManager;
 
         /// Clears any matching hovers
-        void clearHover(ActorSprite *actor);
+        void clearHover(const ActorSprite *const actor);
 
-        void validateSpeed();
+        void validateSpeed() const;
 
     private:
         /**
          * Finds a path from the player to the mouse, and draws it. This is for
          * debug purposes.
          */
-        void _drawDebugPath(Graphics *graphics);
+        void _drawDebugPath(Graphics *const graphics);
 
         /**
          * Draws the given path.
          */
-        void _drawPath(Graphics *graphics, const Path &path,
-                       gcn::Color color = gcn::Color(255, 0, 0));
+        void _drawPath(Graphics *const graphics, const Path &path,
+                       const gcn::Color color = gcn::Color(255, 0, 0)) const;
 
         /**
          * Make the player go to the mouse position.

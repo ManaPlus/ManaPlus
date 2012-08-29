@@ -106,7 +106,7 @@ Viewport::~Viewport()
     mTextPopup = nullptr;
 }
 
-void Viewport::setMap(Map *map)
+void Viewport::setMap(Map *const map)
 {
     if (mMap && map)
         map->setDebugFlags(mMap->getDebugFlags());
@@ -127,15 +127,15 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         return;
     }
 
-    Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
+    Graphics *const graphics = static_cast<Graphics* const>(gcnGraphics);
 
     // Avoid freaking out when tick_time overflows
     if (tick_time < lastTick)
         lastTick = tick_time;
 
     // Calculate viewpoint
-    int midTileX = (graphics->mWidth + mScrollCenterOffsetX) / 2;
-    int midTileY = (graphics->mHeight + mScrollCenterOffsetY) / 2;
+    const int midTileX = (graphics->mWidth + mScrollCenterOffsetX) / 2;
+    const int midTileY = (graphics->mHeight + mScrollCenterOffsetY) / 2;
 
     const Vector &playerPos = player_node->getPosition();
     const int player_x = static_cast<int>(playerPos.x)
@@ -255,7 +255,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
     {
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
             continue;
-        Being *b = static_cast<Being*>(*it);
+        Being *const b = static_cast<Being*>(*it);
 
         b->drawSpeech(mPixelViewX, mPixelViewY);
         b->drawEmotion(graphics, mPixelViewX, mPixelViewY);
@@ -279,12 +279,12 @@ void Viewport::logic()
 
 void Viewport::_followMouse()
 {
-    uint8_t button = SDL_GetMouseState(&mMouseX, &mMouseY);
+    const uint8_t button = SDL_GetMouseState(&mMouseX, &mMouseY);
     // If the left button is dragged
     if (mPlayerFollowMouse && (button & SDL_BUTTON(1)))
     {
         // We create a mouse event and send it to mouseDragged.
-        uint8_t *keys = SDL_GetKeyState(nullptr);
+        const uint8_t *const keys = SDL_GetKeyState(nullptr);
         gcn::MouseEvent mouseEvent(nullptr,
                       (keys[SDLK_LSHIFT] || keys[SDLK_RSHIFT]),
                       false,
@@ -300,7 +300,7 @@ void Viewport::_followMouse()
     }
 }
 
-void Viewport::_drawDebugPath(Graphics *graphics)
+void Viewport::_drawDebugPath(Graphics *const graphics)
 {
     if (!player_node || !userPalette || !actorSpriteManager)
         return;
@@ -336,7 +336,7 @@ void Viewport::_drawDebugPath(Graphics *graphics)
     for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
          it != it_end; ++ it)
     {
-        Being *being = dynamic_cast<Being*>(*it);
+        const Being *const being = dynamic_cast<Being*>(*it);
         if (being && being != player_node)
         {
             Path beingPath = being->getPath();
@@ -347,8 +347,8 @@ void Viewport::_drawDebugPath(Graphics *graphics)
     }
 }
 
-void Viewport::_drawPath(Graphics *graphics, const Path &path,
-                         gcn::Color color)
+void Viewport::_drawPath(Graphics *const graphics, const Path &path,
+                         const gcn::Color color) const
 {
     graphics->setColor(color);
 
@@ -359,8 +359,8 @@ void Viewport::_drawPath(Graphics *graphics, const Path &path,
         for (Path::const_iterator i = path.begin(), i_end = path.end();
              i != i_end; ++i)
         {
-            int squareX = i->x * 32 - mPixelViewX + 12;
-            int squareY = i->y * 32 - mPixelViewY + 12;
+            const int squareX = i->x * 32 - mPixelViewX + 12;
+            const int squareY = i->y * 32 - mPixelViewY + 12;
 
             graphics->fillRectangle(gcn::Rectangle(squareX, squareY, 8, 8));
             if (mMap)
@@ -545,7 +545,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         // Find the being nearest to the clicked position
         if (actorSpriteManager)
         {
-            Being *target = actorSpriteManager->findNearestLivingBeing(
+            Being *const target = actorSpriteManager->findNearestLivingBeing(
                 pixelX, pixelY, 20, ActorSprite::MONSTER);
 
             if (target)
@@ -579,9 +579,9 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
             if (mLocalWalkTime != player_node->getActionTime())
             {
                 mLocalWalkTime = cur_time;
-                int destX = (event.getX() + mPixelViewX)
+                const int destX = (event.getX() + mPixelViewX)
                     / static_cast<float>(mMap->getTileWidth());
-                int destY = (event.getY() + mPixelViewY)
+                const int destY = (event.getY() + mPixelViewY)
                     / static_cast<float>(mMap->getTileHeight());
                 player_node->unSetPickUpTarget();
                 if (!player_node->navigateTo(destX, destY))
@@ -615,38 +615,39 @@ void Viewport::mouseReleased(gcn::MouseEvent &event A_UNUSED)
     mLocalWalkTime = -1;
 }
 
-void Viewport::showPopup(Window *parent, int x, int y, Item *item,
-                         bool isInventory)
+void Viewport::showPopup(Window *const parent, const int x, const int y,
+                         Item *const item, const bool isInventory)
 {
     mPopupMenu->showPopup(parent, x, y, item, isInventory);
 }
 
-void Viewport::showPopup(MapItem *item)
+void Viewport::showPopup(MapItem *const item)
 {
     mPopupMenu->showPopup(getMouseX(), getMouseY(), item);
 }
 
-void Viewport::showPopup(Window *parent, Item *item, bool isInventory)
+void Viewport::showPopup(Window *const parent, Item *const item,
+                         const bool isInventory)
 {
     mPopupMenu->showPopup(parent, getMouseX(), getMouseY(), item, isInventory);
 }
 
-void Viewport::showItemPopup(Item *item)
+void Viewport::showItemPopup(Item *const item)
 {
     mPopupMenu->showItemPopup(getMouseX(), getMouseY(), item);
 }
 
-void Viewport::showItemPopup(int itemId, unsigned char color)
+void Viewport::showItemPopup(const int itemId, const unsigned char color)
 {
     mPopupMenu->showItemPopup(getMouseX(), getMouseY(), itemId, color);
 }
 
-void Viewport::showDropPopup(Item *item)
+void Viewport::showDropPopup(Item *const item)
 {
     mPopupMenu->showDropPopup(getMouseX(), getMouseY(), item);
 }
 
-void Viewport::showOutfitsPopup(int x, int y)
+void Viewport::showOutfitsPopup(const int x, const int y)
 {
     mPopupMenu->showOutfitsPopup(x, y);
 }
@@ -656,27 +657,27 @@ void Viewport::showOutfitsPopup()
     mPopupMenu->showOutfitsPopup(getMouseX(), getMouseY());
 }
 
-void Viewport::showSpellPopup(TextCommand *cmd)
+void Viewport::showSpellPopup(TextCommand *const cmd)
 {
     mPopupMenu->showSpellPopup(getMouseX(), getMouseY(), cmd);
 }
 
-void Viewport::showChatPopup(int x, int y, ChatTab *tab)
+void Viewport::showChatPopup(const int x, const int y, ChatTab *const tab)
 {
     mPopupMenu->showChatPopup(x, y, tab);
 }
 
-void Viewport::showChatPopup(ChatTab *tab)
+void Viewport::showChatPopup(ChatTab *const tab)
 {
     mPopupMenu->showChatPopup(getMouseX(), getMouseY(), tab);
 }
 
-void Viewport::showPopup(int x, int y, Being *being)
+void Viewport::showPopup(const int x, const int y, const Being *const being)
 {
     mPopupMenu->showPopup(x, y, being);
 }
 
-void Viewport::showPopup(Being *being)
+void Viewport::showPopup(const Being *const being)
 {
     mPopupMenu->showPopup(getMouseX(), getMouseY(), being);
 }
@@ -686,17 +687,17 @@ void Viewport::showPlayerPopup(std::string nick)
     mPopupMenu->showPlayerPopup(getMouseX(), getMouseY(), nick);
 }
 
-void Viewport::showPopup(int x, int y, Button *button)
+void Viewport::showPopup(const int x, const int y, Button *const button)
 {
     mPopupMenu->showPopup(x, y, button);
 }
 
-void Viewport::showPopup(int x, int y, ProgressBar *bar)
+void Viewport::showPopup(const int x, const int y, const ProgressBar *const bar)
 {
     mPopupMenu->showPopup(x, y, bar);
 }
 
-void Viewport::showAttackMonsterPopup(std::string name, int type)
+void Viewport::showAttackMonsterPopup(const std::string &name, const int type)
 {
     mPopupMenu->showAttackMonsterPopup(getMouseX(), getMouseY(),
         name, type);
@@ -707,12 +708,13 @@ void Viewport::showPickupItemPopup(std::string name)
     mPopupMenu->showPickupItemPopup(getMouseX(), getMouseY(), name);
 }
 
-void Viewport::showUndressPopup(int x, int y, Being *being, Item *item)
+void Viewport::showUndressPopup(const int x, const int y,
+                                const Being *const being, Item *const item)
 {
     mPopupMenu->showUndressPopup(x, y, being, item);
 }
 
-void Viewport::showMapPopup(int x, int y)
+void Viewport::showMapPopup(const int x, const int y)
 {
     mPopupMenu->showMapPopup(getMouseX(), getMouseY(), x, y);
 }
@@ -764,12 +766,12 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
 
     if (!mHoverBeing && !mHoverItem)
     {
-        SpecialLayer *specialLayer = mMap->getSpecialLayer();
+        const SpecialLayer *const specialLayer = mMap->getSpecialLayer();
         if (specialLayer)
         {
-            int mouseTileX = (getMouseX() + getCameraX())
+            const int mouseTileX = (getMouseX() + getCameraX())
                 / mMap->getTileWidth();
-            int mouseTileY = (getMouseY() + getCameraY())
+            const int mouseTileY = (getMouseY() + getCameraY())
                 / mMap->getTileHeight();
 
             mHoverSign = specialLayer->getTile(mouseTileX, mouseTileY);
@@ -858,7 +860,7 @@ void Viewport::hideBeingPopup()
         mTextPopup->setVisible(false);
 }
 
-void Viewport::clearHover(ActorSprite *actor)
+void Viewport::clearHover(const ActorSprite *const actor)
 {
     if (mHoverBeing == actor)
         mHoverBeing = nullptr;
@@ -874,45 +876,45 @@ void Viewport::cleanHoverItems()
     mHoverSign = nullptr;
 }
 
-void Viewport::moveCamera(int dx, int dy)
+void Viewport::moveCamera(const int dx, const int dy)
 {
     mCameraRelativeX += dx;
     mCameraRelativeY += dy;
 }
 
-bool Viewport::isPopupMenuVisible()
+bool Viewport::isPopupMenuVisible() const
 {
     return mPopupMenu ? mPopupMenu->isVisible() : false;
 }
 
-void Viewport::moveCameraToActor(int actorId, int x, int y)
+void Viewport::moveCameraToActor(const int actorId, const int x, const int y)
 {
     if (!player_node || !actorSpriteManager)
         return;
 
-    Actor *actor = actorSpriteManager->findBeing(actorId);
+    const Actor *const actor = actorSpriteManager->findBeing(actorId);
     if (!actor)
         return;
-    Vector actorPos = actor->getPosition();
-    Vector playerPos = player_node->getPosition();
+    const Vector actorPos = actor->getPosition();
+    const Vector playerPos = player_node->getPosition();
     mCameraMode = 1;
     mCameraRelativeX = actorPos.x - playerPos.x + x;
     mCameraRelativeY = actorPos.y - playerPos.y + y;
 }
 
-void Viewport::moveCameraToPosition(int x, int y)
+void Viewport::moveCameraToPosition(const int x, const int y)
 {
     if (!player_node)
         return;
 
-    Vector playerPos = player_node->getPosition();
+    const Vector playerPos = player_node->getPosition();
     mCameraMode = 1;
 
     mCameraRelativeX = x - playerPos.x;
     mCameraRelativeY = y - playerPos.y;
 }
 
-void Viewport::moveCameraRelative(int x, int y)
+void Viewport::moveCameraRelative(const int x, const int y)
 {
     mCameraMode = 1;
     mCameraRelativeX += x;
@@ -926,7 +928,7 @@ void Viewport::returnCamera()
     mCameraRelativeY = 0;
 }
 
-void Viewport::validateSpeed()
+void Viewport::validateSpeed() const
 {
     if (!inputManager.isActionActive(static_cast<int>(
         Input::KEY_TARGET_ATTACK)) && !inputManager.isActionActive(

@@ -38,7 +38,7 @@
 
 #include "debug.h"
 
-ExtendedListBox::ExtendedListBox(gcn::ListModel *listModel):
+ExtendedListBox::ExtendedListBox(gcn::ListModel *const listModel):
     ListBox(listModel),
     mRowHeight(13)
 {
@@ -53,8 +53,9 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     if (!mListModel)
         return;
 
-    ExtendedListModel *model = static_cast<ExtendedListModel*>(mListModel);
-    Graphics *g = static_cast<Graphics*>(graphics);
+    ExtendedListModel *const model = static_cast<ExtendedListModel* const>(
+        mListModel);
+    Graphics *const g = static_cast<Graphics *const>(graphics);
 
     updateAlpha();
     graphics->setFont(getFont());
@@ -78,7 +79,7 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     for (int i = 0, y = 0; i < mListModel->getNumberOfElements();
          ++i, y += height)
     {
-        const Image *image = model->getImageAt(i);
+        const Image *const image = model->getImageAt(i);
         if (!image)
         {
             graphics->drawText(mListModel->getElementAt(i), 1, y + textPos);

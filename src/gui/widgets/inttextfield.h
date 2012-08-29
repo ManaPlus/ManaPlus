@@ -34,18 +34,18 @@ class IntTextField : public TextField
         /**
          * Constructor, sets default value.
          */
-        IntTextField(int def = 0, int min = 0, int max = 0,
-                     bool enabled = true, int width = 0);
+        IntTextField(const int def = 0, const int min = 0, const int max = 0,
+                     const bool enabled = true, const int width = 0);
 
         /**
          * Sets the minimum and maximum values of the text box.
          */
-        void setRange(int minimum, int maximum);
+        void setRange(const int minimum, const int maximum);
 
         /**
          * Returns the value in the text box.
          */
-        int getValue();
+        int getValue() const;
 
         /**
          * Reset the field to the default value.
@@ -55,12 +55,12 @@ class IntTextField : public TextField
         /**
          * Set the value of the text box to the specified value.
          */
-        void setValue(int value);
+        void setValue(const int value);
 
         /**
          * Set the default value of the text box to the specified value.
          */
-        void setDefaultValue(int value);
+        void setDefaultValue(const int value);
 
         /**
          * Responds to key presses.

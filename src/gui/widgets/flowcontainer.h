@@ -38,7 +38,7 @@ class FlowContainer : public Container,
         /**
          * Constructor. Initializes the shortcut container.
          */
-        FlowContainer(int boxWidth, int boxHeight);
+        FlowContainer(const int boxWidth, const int boxHeight);
 
         /**
          * Destructor.

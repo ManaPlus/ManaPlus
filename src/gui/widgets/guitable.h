@@ -53,8 +53,8 @@ class GuiTable : public gcn::Widget,
     friend class GuiTableActionListener;
 
 public:
-    GuiTable(TableModel * initial_model = nullptr,
-             bool opacity = true);
+    GuiTable(TableModel *const initial_model = nullptr,
+             const bool opacity = true);
 
     virtual ~GuiTable();
 
@@ -71,7 +71,7 @@ public:
      * the widget have been triggered. To be notified after such an update, add
      * an action listener to the table instead.
      */
-    void setModel(TableModel *m);
+    void setModel(TableModel *const m);
 
     void setSelected(int row, int column);
 

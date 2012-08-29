@@ -82,7 +82,7 @@ Button::Button() :
 }
 
 Button::Button(const std::string &caption, const std::string &actionEventId,
-               gcn::ActionListener *listener) :
+               gcn::ActionListener *const listener) :
     gcn::Button(caption),
     mDescription(""),
     mClickCount(0),
@@ -108,9 +108,9 @@ Button::Button(const std::string &caption, const std::string &actionEventId,
 }
 
 Button::Button(const std::string &caption, const std::string &imageName,
-               int imageWidth, int imageHeight,
+               const int imageWidth, const int imageHeight,
                const std::string &actionEventId,
-               gcn::ActionListener *listener) :
+               gcn::ActionListener *const listener) :
     gcn::Button(caption),
     mDescription(""),
     mClickCount(0),
@@ -136,9 +136,10 @@ Button::Button(const std::string &caption, const std::string &imageName,
         addActionListener(listener);
 }
 
-Button::Button(const std::string &imageName, int imageWidth, int imageHeight,
+Button::Button(const std::string &imageName,
+               const int imageWidth, const int imageHeight,
                const std::string &actionEventId,
-               gcn::ActionListener *listener) :
+               gcn::ActionListener *const listener) :
     gcn::Button(""),
     mDescription(""),
     mClickCount(0),
@@ -195,7 +196,7 @@ Button::~Button()
 
     if (mInstances == 0 && Theme::instance())
     {
-        Theme *theme = Theme::instance();
+        Theme *const theme = Theme::instance();
         for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             theme->unloadRect(button[mode]);
     }
@@ -230,7 +231,7 @@ void Button::loadImage(const std::string &imageName)
     mImages[0] = nullptr;
     for (int f = 0; f < BUTTON_COUNT; f ++)
     {
-        Image *img = mImageSet->get(f);
+        Image *const img = mImageSet->get(f);
         if (img)
             mImages[f] = img;
         else
@@ -240,7 +241,7 @@ void Button::loadImage(const std::string &imageName)
 
 void Button::updateAlpha()
 {
-    float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     if (mAlpha != alpha)
@@ -275,7 +276,7 @@ void Button::draw(gcn::Graphics *graphics)
 
     updateAlpha();
 
-    Graphics *g2 = static_cast<Graphics*>(graphics);
+    Graphics *const g2 = static_cast<Graphics *const>(graphics);
 
     bool recalc = false;
     if (mRedraw)
@@ -321,7 +322,7 @@ void Button::draw(gcn::Graphics *graphics)
         graphics->setColor(mEnabledColor);
 
     int textX = 0;
-    int textY = getHeight() / 2 - getFont()->getHeight() / 2;
+    const int textY = getHeight() / 2 - getFont()->getHeight() / 2;
     int imageX = 0;
     int imageY = 0;
     if (mImages)
@@ -346,7 +347,8 @@ void Button::draw(gcn::Graphics *graphics)
         case gcn::Graphics::CENTER:
             if (mImages)
             {
-                int width = getFont()->getWidth(mCaption) + mImageWidth + 2;
+                const int width = getFont()->getWidth(mCaption)
+                    + mImageWidth + 2;
                 imageX = getWidth() / 2 - width / 2;
                 textX = imageX + mImageWidth + 2;
             }
@@ -434,7 +436,7 @@ void Button::setCaption(const std::string& caption)
 
 void Button::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     if (action == Input::KEY_GUI_SELECT)
     {
@@ -445,7 +447,7 @@ void Button::keyPressed(gcn::KeyEvent& keyEvent)
 
 void Button::keyReleased(gcn::KeyEvent& keyEvent)
 {
-    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     if (action == Input::KEY_GUI_SELECT && mKeyPressed)
     {
@@ -458,7 +460,7 @@ void Button::keyReleased(gcn::KeyEvent& keyEvent)
 }
 
 
-bool Button::isPressed2()
+bool Button::isPressed2() const
 {
     return (mPressed || isPressed());
 }

@@ -45,7 +45,7 @@
 
 #include "debug.h"
 
-BrowserBox::BrowserBox(unsigned int mode, bool opaque):
+BrowserBox::BrowserBox(const unsigned int mode, const bool opaque) :
     gcn::Widget(),
     mLinkHandler(nullptr),
     mMode(mode),
@@ -94,17 +94,17 @@ void BrowserBox::setOpaque(bool opaque)
     mOpaque = opaque;
 }
 
-void BrowserBox::setHighlightMode(unsigned int highMode)
+void BrowserBox::setHighlightMode(const unsigned int highMode)
 {
     mHighMode = highMode;
 }
 
-void BrowserBox::addRow(const std::string &row, bool atTop)
+void BrowserBox::addRow(const std::string &row, const bool atTop)
 {
     std::string tmp = row;
     std::string newRow;
     size_t idx1;
-    gcn::Font *font = getFont();
+    const gcn::Font *const font = getFont();
     int linksCount = 0;
 
     if (getWidth() < 0)
@@ -208,7 +208,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
         }
 
         // Adjust the BrowserBox size
-        int w = font->getWidth(plain);
+        const int w = font->getWidth(plain);
         if (w > getWidth())
             setWidth(w);
     }
@@ -217,8 +217,8 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
     {
         unsigned int y = 0;
         unsigned int nextChar;
-        const char *hyphen = "~";
-        int hyphenWidth = font->getWidth(hyphen);
+        const char *const hyphen = "~";
+        const int hyphenWidth = font->getWidth(hyphen);
         unsigned x = 0;
 
         for (TextRowCIter i = mTextRows.begin(), i_end = mTextRows.end();
@@ -240,7 +240,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
                     if (nextSpacePos <= 0)
                         nextSpacePos = static_cast<int>(sz) - 1;
 
-                    unsigned nextWordWidth = font->getWidth(
+                    const unsigned nextWordWidth = font->getWidth(
                         tempRow.substr(nextChar,
                         (nextSpacePos - nextChar)));
 
@@ -273,7 +273,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
     updateHeight();
 }
 
-void BrowserBox::addRow(const std::string &cmd, char *text)
+void BrowserBox::addRow(const std::string &cmd, const char *const text)
 {
     addRow(strprintf("@@%s|%s@@", cmd.c_str(), text));
 }
@@ -301,10 +301,11 @@ void BrowserBox::clearRows()
 
 struct MouseOverLink
 {
-    MouseOverLink(int x, int y) : mX(x), mY(y)
+    MouseOverLink(const int x, const int y) :
+        mX(x), mY(y)
     { }
 
-    bool operator() (BROWSER_LINK &link) const
+    bool operator() (const BROWSER_LINK &link) const
     {
         return (mX >= link.x1 && mX < link.x2 &&
                 mY >= link.y1 && mY < link.y2);
@@ -317,7 +318,7 @@ void BrowserBox::mousePressed(gcn::MouseEvent &event)
     if (!mLinkHandler)
         return;
 
-    LinkIterator i = find_if(mLinks.begin(), mLinks.end(),
+    const LinkIterator i = find_if(mLinks.begin(), mLinks.end(),
         MouseOverLink(event.getX(), event.getY()));
 
     if (i != mLinks.end())
@@ -326,7 +327,7 @@ void BrowserBox::mousePressed(gcn::MouseEvent &event)
 
 void BrowserBox::mouseMoved(gcn::MouseEvent &event)
 {
-    LinkIterator i = find_if(mLinks.begin(), mLinks.end(),
+    const LinkIterator i = find_if(mLinks.begin(), mLinks.end(),
         MouseOverLink(event.getX(), event.getY()));
 
     mSelectedLink = (i != mLinks.end())
@@ -335,10 +336,10 @@ void BrowserBox::mouseMoved(gcn::MouseEvent &event)
 
 void BrowserBox::draw(gcn::Graphics *graphics)
 {
-    gcn::ClipRectangle cr = graphics->getCurrentClipArea();
-    Graphics *graphics2 = static_cast<Graphics*>(graphics);
+    const gcn::ClipRectangle cr = graphics->getCurrentClipArea();
+    Graphics *const graphics2 = static_cast<Graphics *const>(graphics);
     mYStart = cr.y - cr.yOffset;
-    int yEnd = mYStart + cr.height;
+    const int yEnd = mYStart + cr.height;
     if (mYStart < 0)
         mYStart = 0;
 
@@ -376,7 +377,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
         }
     }
 
-    gcn::Font *font = getFont();
+    gcn::Font *const font = getFont();
 
     for (LinePartCIter i = mLineParts.begin(), i_end = mLineParts.end();
          i != i_end; ++i)
@@ -415,16 +416,16 @@ int BrowserBox::calcHeight()
     if (getWidth() < 0)
         return 1;
 
-    gcn::Font *font = getFont();
+    const gcn::Font *const font = getFont();
 
-    int fontHeight = font->getHeight();
-    int fontWidthMinus = font->getWidth("-");
-    char const *hyphen = "~";
-    int hyphenWidth = font->getWidth(hyphen);
+    const int fontHeight = font->getHeight();
+    const int fontWidthMinus = font->getWidth("-");
+    char const *const hyphen = "~";
+    const int hyphenWidth = font->getWidth(hyphen);
 
     gcn::Color selColor = getForegroundColor();
     const gcn::Color textColor = getForegroundColor();
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     mLineParts.clear();
 
@@ -453,7 +454,7 @@ int BrowserBox::calcHeight()
             std::string str = row.substr(3);
             if (str.size() > 2 && str.substr(str.size() - 1) == "~")
                 str = str.substr(0, str.size() - 1);
-            Image *img = resman->getImage(str);
+            Image *const img = resman->getImage(str);
             if (img)
             {
                 img->incRef();

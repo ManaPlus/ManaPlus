@@ -49,8 +49,9 @@ namespace gcn
 class OnlinePlayer
 {
     public:
-        OnlinePlayer(std::string nick, unsigned char status,
-                     char level, unsigned char gender, char version) :
+        OnlinePlayer(const std::string &nick, const unsigned char status,
+                     const char level, const unsigned char gender,
+                     const char version) :
             mNick(nick),
             mText(""),
             mStatus(status),
@@ -67,7 +68,7 @@ class OnlinePlayer
         unsigned char getStaus() const
         { return mStatus; }
 
-        void setIsGM(bool b)
+        void setIsGM(const bool b)
         { mIsGM = b; }
 
         char getVersion() const
@@ -81,7 +82,7 @@ class OnlinePlayer
 
         void setText(std::string str);
 
-        void setLevel(char level)
+        void setLevel(const char level)
         { mLevel = level; }
 
     private:
@@ -138,13 +139,13 @@ public:
 
     void widgetResized(const gcn::Event &event);
 
-    const std::set<OnlinePlayer*> &getOnlinePlayers()
+    const std::set<OnlinePlayer*> &getOnlinePlayers() const
     { return mOnlinePlayers; }
 
-    const std::set<std::string> &getOnlineNicks()
+    const std::set<std::string> &getOnlineNicks() const
     { return mOnlineNicks; }
 
-    void setAllowUpdate(bool n)
+    void setAllowUpdate(const bool n)
     { mAllowUpdate = n; }
 
     void optionChanged(const std::string &name);

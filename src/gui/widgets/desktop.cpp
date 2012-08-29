@@ -86,7 +86,7 @@ void Desktop::widgetResized(const gcn::Event &event A_UNUSED)
 
 void Desktop::draw(gcn::Graphics *graphics)
 {
-    Graphics *g = static_cast<Graphics *>(graphics);
+    Graphics *const g = static_cast<Graphics *const>(graphics);
 
     if (!mWallpaper || (getWidth() > mWallpaper->getWidth() ||
         getHeight() > mWallpaper->getHeight()))
@@ -126,7 +126,7 @@ void Desktop::setBestFittingWallpaper()
     const std::string wallpaperName =
         Wallpaper::getWallpaper(getWidth(), getHeight());
 
-    Image *nWallPaper = Theme::getImageFromTheme(wallpaperName);
+    Image *const nWallPaper = Theme::getImageFromTheme(wallpaperName);
 
     if (nWallPaper)
     {
@@ -138,8 +138,8 @@ void Desktop::setBestFittingWallpaper()
             || nWallPaper->getHeight() != getHeight()))
         {
             // We rescale to obtain a fullscreen wallpaper...
-            Image *newRsclWlPpr = ResourceManager::getInstance()->getRescaled(
-                nWallPaper, getWidth(), getHeight());
+            Image *const newRsclWlPpr = ResourceManager::getInstance()
+                ->getRescaled(nWallPaper, getWidth(), getHeight());
 
             // We replace the resource in the resource manager
             nWallPaper->decRef();

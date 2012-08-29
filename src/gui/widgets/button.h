@@ -52,24 +52,25 @@ class Button : public gcn::Button, public gcn::WidgetListener
          * adds the given action listener.
          */
         Button(const std::string &caption, const std::string &actionEventId,
-               gcn::ActionListener *listener);
+               gcn::ActionListener *const listener);
 
         /**
          * Constructor, sets the caption of the button to the given string and
          * adds the given action listener.
          */
         Button(const std::string &caption, const std::string &imageName,
-               int imageWidth, int imageHeight,
+               const int imageWidth, const int imageHeight,
                const std::string &actionEventId,
-               gcn::ActionListener *listener);
+               gcn::ActionListener *const listener);
 
         /**
          * Constructor, sets the caption of the button to the given string and
          * adds the given action listener.
          */
-        Button(const std::string &imageName, int imageWidth, int imageHeight,
+        Button(const std::string &imageName,
+               const int imageWidth, const int imageHeight,
                const std::string &actionEventId,
-               gcn::ActionListener *listener);
+               gcn::ActionListener *const listener);
 
         /**
          * Destructor.
@@ -123,7 +124,7 @@ class Button : public gcn::Button, public gcn::WidgetListener
 
         void keyReleased(gcn::KeyEvent &keyEvent);
 
-        bool isPressed2();
+        bool isPressed2() const;
 
     private:
         void init();

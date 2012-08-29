@@ -46,7 +46,7 @@ class Container : public gcn::Container
 
         ~Container();
 
-        bool safeRemove(gcn::Widget* widget);
+        bool safeRemove(gcn::Widget *const widget);
 };
 
 #endif

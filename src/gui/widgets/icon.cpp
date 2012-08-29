@@ -36,14 +36,14 @@ Icon::Icon(const std::string &file)
         setSize(mImage->mBounds.w, mImage->mBounds.h);
 }
 
-Icon::Icon(Image *image)
+Icon::Icon(Image *const image)
     : mImage(image)
 {
     if (mImage)
         setSize(mImage->mBounds.w, mImage->mBounds.h);
 }
 
-void Icon::setImage(Image *image)
+void Icon::setImage(Image *const image)
 {
     mImage = image;
     if (mImage)
@@ -54,7 +54,7 @@ void Icon::draw(gcn::Graphics *g)
 {
     if (mImage)
     {
-        Graphics *graphics = static_cast<Graphics*>(g);
+        Graphics *const graphics = static_cast<Graphics*>(g);
         const int x = (getWidth() - mImage->mBounds.w) / 2;
         const int y = (getHeight() - mImage->mBounds.h) / 2;
         graphics->drawImage(mImage, x, y);

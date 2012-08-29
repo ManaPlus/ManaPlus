@@ -43,7 +43,7 @@ class Icon : public gcn::Widget
         /**
          * Constructor, uses an existing Image.
          */
-        Icon(Image *image);
+        Icon(Image *const image);
 
         /** 
          * Gets the current Image.
@@ -54,7 +54,7 @@ class Icon : public gcn::Widget
         /**
          * Sets the image to display.
          */
-        void setImage(Image *image);
+        void setImage(Image *const image);
 
         /**
          * Draws the Icon.

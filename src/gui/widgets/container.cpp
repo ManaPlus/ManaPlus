@@ -35,7 +35,7 @@ Container::~Container()
         delete mWidgets.front();
 }
 
-bool Container::safeRemove(gcn::Widget* widget)
+bool Container::safeRemove(gcn::Widget *const widget)
 {
     for (WidgetListConstIterator iter = mWidgets.begin();
          iter != mWidgets.end(); ++iter)

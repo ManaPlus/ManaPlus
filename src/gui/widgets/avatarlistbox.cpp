@@ -93,12 +93,13 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
     if (!mListModel || !player_node)
         return;
 
-    AvatarListModel *model = static_cast<AvatarListModel*>(mListModel);
+    AvatarListModel *const model = static_cast<AvatarListModel *const>(
+        mListModel);
 //    Guild *guild = dynamic_cast<Guild*>(model);
 
     updateAlpha();
 
-    Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
+    Graphics *const graphics = static_cast<Graphics *const>(gcnGraphics);
 
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
     graphics->setColor(mHighlightColor);
@@ -106,7 +107,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
     const int fontHeight = getFont()->getHeight();
 
-    Widget *parent = mParent;
+    const Widget *const parent = mParent;
 
     const std::string name = player_node->getName();
 
@@ -116,14 +117,14 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
          i < model->getNumberOfElements();
          ++i, y += fontHeight)
     {
-        Avatar *a = model->getAvatarAt(i);
+        const Avatar *const a = model->getAvatarAt(i);
         if (!a)
             continue;
 
         if (a->getType() != MapItem::SEPARATOR)
         {
             // Draw online status
-            Image *icon = a->getOnline() ? onlineIcon : offlineIcon;
+            const Image *const icon = a->getOnline() ? onlineIcon : offlineIcon;
             if (icon)
                 graphics->drawImage(icon, 2, y + 1);
         }
@@ -304,17 +305,18 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
         return;
     }
 
-    int y = event.getY() / getFont()->getHeight();
+    const int y = event.getY() / getFont()->getHeight();
     if (!mListModel || y > mListModel->getNumberOfElements())
         return;
 
     setSelected(y);
     distributeActionEvent();
-    int selected = getSelected();
-    AvatarListModel *model = static_cast<AvatarListModel*>(mListModel);
+    const int selected = getSelected();
+    AvatarListModel *const model = static_cast<AvatarListModel *const>(
+        mListModel);
     if (!model)
         return;
-    Avatar *ava = model->getAvatarAt(selected);
+    const Avatar *ava = model->getAvatarAt(selected);
     if (!ava)
         return;
 
@@ -322,8 +324,8 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
     {
         if (ava->getType() == AVATAR_PLAYER)
         {
-            Being* being = actorSpriteManager->findBeingByName(ava->getName(),
-                        Being::PLAYER);
+            const Being *const being = actorSpriteManager->findBeingByName(
+                ava->getName(), Being::PLAYER);
             if (being)
                 actorSpriteManager->heal(being);
         }
@@ -338,10 +340,10 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
         {
             case AVATAR_PLAYER:
             {
-                Avatar *avatar = model->getAvatarAt(selected);
+                const Avatar *const avatar = model->getAvatarAt(selected);
                 if (avatar)
                 {
-                    Being* being = actorSpriteManager->findBeingByName(
+                    Being *const being = actorSpriteManager->findBeingByName(
                         avatar->getName(), Being::PLAYER);
                     if (being)
                         viewport->showPopup(being);
@@ -378,11 +380,11 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             }
             default:
             {
-                Map *map = viewport->getMap();
+                const Map *const map = viewport->getMap();
                 ava = model->getAvatarAt(selected);
                 if (map && ava)
                 {
-                    MapItem *mapItem = map->findPortalXY(
+                    MapItem *const mapItem = map->findPortalXY(
                         ava->getX(), ava->getY());
                     viewport->showPopup(mapItem);
                 }
@@ -394,7 +396,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
     {
         if (ava->getType() == AVATAR_PLAYER && chatWindow)
         {
-            ChatTab *tab = chatWindow->addWhisperTab(
+            const ChatTab *const tab = chatWindow->addWhisperTab(
                 model->getAvatarAt(selected)->getName(), true);
             if (chatWindow && tab)
                 chatWindow->saveState();

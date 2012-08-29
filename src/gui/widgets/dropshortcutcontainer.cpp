@@ -93,7 +93,7 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
             mBackgroundImg->setAlpha(mAlpha);
     }
 
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics*>(graphics);
 
     graphics->setFont(getFont());
 
@@ -106,7 +106,7 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
         }
     }
 
-    Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return;
 
@@ -118,13 +118,13 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
         if (dropShortcut->getItem(i) < 0)
             continue;
 
-        Item *item = inv->findItem(dropShortcut->getItem(i),
+        const Item *const item = inv->findItem(dropShortcut->getItem(i),
             dropShortcut->getItemColor(i));
 
         if (item)
         {
             // Draw item icon.
-            Image* image = item->getImage();
+            Image *const image = item->getImage();
 
             if (image)
             {
@@ -149,7 +149,7 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
     if (mItemMoved)
     {
         // Draw the item image being dragged by the cursor.
-        Image* image = mItemMoved->getImage();
+        const Image *const image = mItemMoved->getImage();
         if (image)
         {
             const int tPosX = mCursorPosX - (image->mBounds.w / 2);
@@ -183,11 +183,11 @@ void DropShortcutContainer::mouseDragged(gcn::MouseEvent &event)
             if (itemId < 0)
                 return;
 
-            Inventory *inv = PlayerInfo::getInventory();
+            const Inventory *const inv = PlayerInfo::getInventory();
             if (!inv)
                 return;
 
-            Item *item = inv->findItem(itemId, itemColor);
+            Item *const item = inv->findItem(itemId, itemColor);
 
             if (item)
             {
@@ -229,11 +229,11 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
     }
     else if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
-        Inventory *inv = PlayerInfo::getInventory();
+        const Inventory *const inv = PlayerInfo::getInventory();
         if (!inv)
             return;
 
-        Item *item = inv->findItem(dropShortcut->getItem(index),
+        Item *const item = inv->findItem(dropShortcut->getItem(index),
             dropShortcut->getItemColor(index));
 
         if (viewport)
@@ -286,11 +286,11 @@ void DropShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     if (itemId < 0)
         return;
 
-    Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return;
 
-    Item *item = inv->findItem(itemId, itemColor);
+    const Item *const item = inv->findItem(itemId, itemColor);
 
     if (item && viewport)
     {

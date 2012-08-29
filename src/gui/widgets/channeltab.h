@@ -48,7 +48,7 @@ class ChannelTab : public ChatTab
         /**
          * Constructor.
          */
-        ChannelTab(Channel *channel);
+        ChannelTab(Channel *const channel);
 
         /**
          * Destructor.

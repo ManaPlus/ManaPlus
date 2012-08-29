@@ -46,8 +46,9 @@ Image *CheckBox::checkBoxDisabledChecked;
 Image *CheckBox::checkBoxNormalHi;
 Image *CheckBox::checkBoxCheckedHi;
 
-CheckBox::CheckBox(const std::string &caption, bool selected,
-                   gcn::ActionListener* listener, std::string eventId):
+CheckBox::CheckBox(const std::string &caption, const bool selected,
+                   gcn::ActionListener *const listener,
+                   const std::string &eventId) :
     gcn::CheckBox(caption, selected),
     mHasMouse(false)
 {
@@ -152,7 +153,7 @@ void CheckBox::draw(gcn::Graphics* graphics)
 
 void CheckBox::updateAlpha()
 {
-    float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     if (mAlpha != alpha)
@@ -173,9 +174,9 @@ void CheckBox::updateAlpha()
     }
 }
 
-void CheckBox::drawBox(gcn::Graphics* graphics)
+void CheckBox::drawBox(gcn::Graphics *const graphics)
 {
-    Image *box;
+    const Image *box;
 
     if (isEnabled())
     {
@@ -220,7 +221,7 @@ void CheckBox::mouseExited(gcn::MouseEvent& event A_UNUSED)
 
 void CheckBox::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     if (action == Input::KEY_GUI_SELECT)
     {

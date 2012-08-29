@@ -60,7 +60,8 @@ class ItemContainer : public gcn::Widget,
          * @param gridRows    Amount of rows in grid.
          * @param offset      Index offset
          */
-        ItemContainer(Inventory *inventory, bool forceQuantity = false);
+        ItemContainer(Inventory *const inventory,
+                      const bool forceQuantity = false);
 
         /**
          * Destructor.
@@ -117,9 +118,9 @@ class ItemContainer : public gcn::Widget,
         void removeSelectionListener(gcn::SelectionListener *listener)
         { mSelectionListeners.remove(listener); }
 
-        void setFilter (int tag);
+        void setFilter(const int tag);
 
-        void setSortType (int sortType);
+        void setSortType(const int sortType);
 
         void setName(std::string str)
         { mName = str; }
@@ -157,12 +158,12 @@ class ItemContainer : public gcn::Widget,
          *
          * @param direction The move direction of the highlighter.
          */
-        void moveHighlight(Direction direction);
+        void moveHighlight(const Direction direction);
 
         /**
          * Sets the currently selected item.
          */
-        void setSelectedIndex(int index);
+        void setSelectedIndex(const int index);
 
         /**
          * Determine and set the height of the container.
@@ -181,7 +182,7 @@ class ItemContainer : public gcn::Widget,
          * @param y The Y coordinate position.
          * @return The slot index on success, -1 on failure.
          */
-        int getSlotIndex(int x, int y) const;
+        int getSlotIndex(const int x, const int y) const;
 
 
         Inventory *mInventory;

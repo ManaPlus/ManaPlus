@@ -31,8 +31,8 @@
 
 #include "debug.h"
 
-IntTextField::IntTextField(int def, int min, int max,
-                           bool enabled, int width):
+IntTextField::IntTextField(const int def, const int min, const int max,
+                           const bool enabled, const int width) :
     TextField(toString(def)),
     mDefault(def),
     mValue(def)
@@ -47,7 +47,7 @@ IntTextField::IntTextField(int def, int min, int max,
 
 void IntTextField::keyPressed(gcn::KeyEvent &event)
 {
-    int action = static_cast<KeyEvent*>(&event)->getActionId();
+    const int action = static_cast<KeyEvent*>(&event)->getActionId();
 
     if (action == Input::KEY_GUI_DELETE || action == Input::KEY_GUI_BACKSPACE)
     {
@@ -71,7 +71,7 @@ void IntTextField::keyPressed(gcn::KeyEvent &event)
         distributeActionEvent();
 }
 
-void IntTextField::setRange(int min, int max)
+void IntTextField::setRange(const int min, const int max)
 {
     mMin = min;
     mMax = max;
@@ -87,12 +87,12 @@ void IntTextField::setRange(int min, int max)
         mDefault = mMax;
 }
 
-int IntTextField::getValue()
+int IntTextField::getValue() const
 {
     return getText().empty() ? mMin : mValue;
 }
 
-void IntTextField::setValue(int i)
+void IntTextField::setValue(const int i)
 {
     if (i < mMin)
         mValue = mMin;
@@ -106,7 +106,7 @@ void IntTextField::setValue(int i)
     setCaretPosition(static_cast<unsigned>(valStr.length()) + 1);
 }
 
-void IntTextField::setDefaultValue(int value)
+void IntTextField::setDefaultValue(const int value)
 {
     if (value < mMin)
         mDefault = mMin;

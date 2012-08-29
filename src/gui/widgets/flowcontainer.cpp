@@ -23,7 +23,7 @@
 
 #include "debug.h"
 
-FlowContainer::FlowContainer(int boxWidth, int boxHeight):
+FlowContainer::FlowContainer(const int boxWidth, const int boxHeight) :
     mBoxWidth(boxWidth), mBoxHeight(boxHeight),
     mGridWidth(1), mGridHeight(1)
 {
@@ -42,7 +42,7 @@ void FlowContainer::widgetResized(const gcn::Event &event A_UNUSED)
         return;
     }
 
-    int itemCount = static_cast<int>(mWidgets.size());
+    const int itemCount = static_cast<int>(mWidgets.size());
 
     if (!mBoxWidth)
         mGridWidth = getWidth();
@@ -70,7 +70,7 @@ void FlowContainer::widgetResized(const gcn::Event &event A_UNUSED)
     for (WidgetList::const_iterator it = mWidgets.begin();
          it != mWidgets.end(); ++it)
     {
-        int x = i % mGridWidth * mBoxWidth;
+        const int x = i % mGridWidth * mBoxWidth;
         (*it)->setPosition(x, height);
 
         i++;

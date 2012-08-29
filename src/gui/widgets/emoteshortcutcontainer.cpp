@@ -63,7 +63,7 @@ EmoteShortcutContainer::EmoteShortcutContainer():
     // Setup emote sprites
     for (int i = 0; i <= EmoteDB::getLast(); i++)
     {
-        const EmoteSprite* sprite = EmoteDB::getSprite(i, true);
+        const EmoteSprite *const sprite = EmoteDB::getSprite(i, true);
         if (sprite && sprite->sprite)
             mEmoteImg.push_back(sprite);
     }
@@ -104,7 +104,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
     if (Client::getGuiAlpha() != mAlpha && mBackgroundImg)
         mBackgroundImg->setAlpha(mAlpha);
 
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics *const>(graphics);
 
     graphics->setFont(getFont());
 
@@ -129,7 +129,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         graphics->setColor(getForegroundColor());
         g->drawText(key, emoteX + 2, emoteY + 2, gcn::Graphics::LEFT);
     }
-    unsigned sz = static_cast<unsigned>(mEmoteImg.size());
+    const unsigned sz = static_cast<unsigned>(mEmoteImg.size());
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         if (i < sz && mEmoteImg[i] && mEmoteImg[i]->sprite)
@@ -143,10 +143,10 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         && mEmoteMoved > 0)
     {
         // Draw the emote image being dragged by the cursor.
-        const EmoteSprite* sprite = mEmoteImg[mEmoteMoved - 1];
+        const EmoteSprite *const sprite = mEmoteImg[mEmoteMoved - 1];
         if (sprite && sprite->sprite)
         {
-            const AnimatedSprite *spr = sprite->sprite;
+            const AnimatedSprite *const spr = sprite->sprite;
             const int tPosX = mCursorPosX - (spr->getWidth() / 2);
             const int tPosY = mCursorPosY - (spr->getHeight() / 2);
 

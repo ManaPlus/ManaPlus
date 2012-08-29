@@ -46,13 +46,15 @@ struct BROWSER_LINK
 class LinePart
 {
     public:
-        LinePart(int x, int y, gcn::Color color, std::string text, bool bold) :
+        LinePart(const int x, const int y, const gcn::Color color,
+                 const std::string &text, const bool bold) :
             mX(x), mY(y), mColor(color), mText(text), mType(0),
             mImage(nullptr), mBold(bold)
         {
         }
 
-        LinePart(int x, int y, gcn::Color color, Image *image) :
+        LinePart(const int x, const int y, const gcn::Color color,
+                 Image *const image) :
             mX(x), mY(y), mColor(color), mText(""), mType(1),
             mImage(image), mBold(false)
         {
@@ -79,7 +81,8 @@ class BrowserBox : public gcn::Widget,
         /**
          * Constructor.
          */
-        BrowserBox(unsigned int mode = AUTO_SIZE, bool opaque = true);
+        BrowserBox(const unsigned int mode = AUTO_SIZE,
+                   const bool opaque = true);
 
         /**
          * Destructor.
@@ -99,7 +102,7 @@ class BrowserBox : public gcn::Widget,
         /**
          * Sets the Highlight mode for links.
          */
-        void setHighlightMode(unsigned int highMode);
+        void setHighlightMode(const unsigned int highMode);
 
         /**
          * Sets the maximum numbers of rows in the browser box. 0 = no limit.
@@ -116,12 +119,12 @@ class BrowserBox : public gcn::Widget,
         /**
          * Adds a text row to the browser.
          */
-        void addRow(const std::string &row, bool atTop = false);
+        void addRow(const std::string &row, const bool atTop = false);
 
         /**
          * Adds a menu line to the browser.
          */
-        void addRow(const std::string &cmd, char *text);
+        void addRow(const std::string &cmd, const char *const text);
 
         void addImage(const std::string &path);
 

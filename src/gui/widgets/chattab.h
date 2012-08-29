@@ -67,7 +67,8 @@ class ChatTab : public Tab
          * @param removeColors try remove color if configured
          */
         void chatLog(std::string line, Own own = BY_SERVER,
-                     bool ignoreRecord = false, bool tryRemoveColors = true);
+                     const bool ignoreRecord = false,
+                     const bool tryRemoveColors = true);
 
         /**
          * Adds the text to the message list
@@ -92,7 +93,7 @@ class ChatTab : public Tab
          * up, positive numbers scroll down.  The absolute amount indicates the
          * amount of 1/8ths of chat window real estate that should be scrolled.
          */
-        void scroll(int amount);
+        void scroll(const int amount);
 
         /**
          * Clears the text from the tab
@@ -145,19 +146,19 @@ class ChatTab : public Tab
         bool getAllowHighlight() const
         { return mAllowHightlight; }
 
-        void setAllowHighlight(bool n)
+        void setAllowHighlight(const bool n)
         { mAllowHightlight = n; }
 
         bool getRemoveNames() const
         { return mRemoveNames; }
 
-        void setRemoveNames(bool n)
+        void setRemoveNames(const bool n)
         { mRemoveNames = n; }
 
         bool getNoAway() const
         { return mNoAway; }
 
-        void setNoAway(bool n)
+        void setNoAway(const bool n)
         { mNoAway = n; }
 
         void addNewRow(std::string &line);

@@ -31,7 +31,7 @@
 
 #include "debug.h"
 
-ChannelTab::ChannelTab(Channel *channel) :
+ChannelTab::ChannelTab(Channel *const channel) :
     ChatTab(channel->getName()),
     mChannel(channel)
 {

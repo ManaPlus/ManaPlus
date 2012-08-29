@@ -86,7 +86,7 @@ ChatTab::~ChatTab()
 }
 
 void ChatTab::chatLog(std::string line, Own own,
-                      bool ignoreRecord, bool tryRemoveColors)
+                      const bool ignoreRecord, const bool tryRemoveColors)
 {
     // Trim whitespace
     trim(line);
@@ -102,7 +102,7 @@ void ChatTab::chatLog(std::string line, Own own,
             return;
     }
 
-    unsigned lineLim = config.getIntValue("chatMaxCharLimit");
+    const unsigned lineLim = config.getIntValue("chatMaxCharLimit");
     if (lineLim > 0 && line.length() > lineLim)
         line = line.substr(0, lineLim);
 
@@ -220,7 +220,7 @@ void ChatTab::chatLog(std::string line, Own own,
 
     if (config.getBoolValue("useLocalTime"))
     {
-        struct tm *timeInfo;
+        const struct tm *timeInfo;
         timeInfo = localtime(&t);
         if (timeInfo)
         {
@@ -326,7 +326,7 @@ void ChatTab::chatLog(std::string line, Own own,
 
 void ChatTab::chatLog(const std::string &nick, std::string msg)
 {
-    Own byWho = (nick == player_node->getName() ? BY_PLAYER : BY_OTHER);
+    const Own byWho = (nick == player_node->getName() ? BY_PLAYER : BY_OTHER);
     if (byWho == BY_OTHER && config.getBoolValue("removeColors"))
         msg = removeColors(msg);
     chatLog(nick + " : " + msg, byWho, false, false);
@@ -395,9 +395,9 @@ void ChatTab::chatInput(const std::string &message)
     }
 }
 
-void ChatTab::scroll(int amount)
+void ChatTab::scroll(const int amount)
 {
-    int range = mScrollArea->getHeight() / 8 * amount;
+    const int range = mScrollArea->getHeight() / 8 * amount;
     gcn::Rectangle scr;
     scr.y = mScrollArea->getVerticalScrollAmount() + range;
     scr.height = abs(range);

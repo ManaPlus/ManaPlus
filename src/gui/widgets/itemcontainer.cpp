@@ -58,7 +58,7 @@ static const int BOX_HEIGHT = 43;
 class ItemIdPair
 {
     public:
-        ItemIdPair(int id, Item* item) :
+        ItemIdPair(const int id, Item *const item) :
             mId(id), mItem(item)
         {
         }
@@ -70,7 +70,8 @@ class ItemIdPair
 class SortItemAlphaFunctor
 {
     public:
-        bool operator() (ItemIdPair* pair1, ItemIdPair* pair2)
+        bool operator() (const ItemIdPair *const pair1,
+                         const ItemIdPair *const pair2) const
         {
             if (!pair1 || !pair2)
                 return false;
@@ -83,7 +84,8 @@ class SortItemAlphaFunctor
 class SortItemIdFunctor
 {
     public:
-        bool operator() (ItemIdPair* pair1, ItemIdPair* pair2)
+        bool operator() (const ItemIdPair *const pair1,
+                         const ItemIdPair *const pair2) const
         {
             if (!pair1 || !pair2)
                 return false;
@@ -95,7 +97,8 @@ class SortItemIdFunctor
 class SortItemWeightFunctor
 {
     public:
-        bool operator() (ItemIdPair* pair1, ItemIdPair* pair2)
+        bool operator() (const ItemIdPair *const pair1,
+                         const ItemIdPair *const pair2) const
         {
             if (!pair1 || !pair2)
                 return false;
@@ -114,7 +117,8 @@ class SortItemWeightFunctor
 class SortItemAmountFunctor
 {
     public:
-        bool operator() (ItemIdPair* pair1, ItemIdPair* pair2)
+        bool operator() (const ItemIdPair *const pair1,
+                         const ItemIdPair *const pair2) const
         {
             if (!pair1 || !pair2)
                 return false;
@@ -133,7 +137,8 @@ class SortItemAmountFunctor
 class SortItemTypeFunctor
 {
     public:
-        bool operator() (ItemIdPair* pair1, ItemIdPair* pair2)
+        bool operator() (const ItemIdPair *const pair1,
+                         const ItemIdPair *const pair2) const
         {
             if (!pair1 || !pair2)
                 return false;
@@ -149,7 +154,8 @@ class SortItemTypeFunctor
         }
 } itemTypeSorter;
 
-ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
+ItemContainer::ItemContainer(Inventory *const inventory,
+                             const bool forceQuantity) :
     mInventory(inventory),
     mGridColumns(1),
     mGridRows(1),
@@ -208,7 +214,7 @@ void ItemContainer::draw(gcn::Graphics *graphics)
     if (!mInventory || !mShowMatrix)
         return;
 
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics *const>(graphics);
 
     g->setFont(getFont());
 
@@ -218,16 +224,17 @@ void ItemContainer::draw(gcn::Graphics *graphics)
         {
             int itemX = i * BOX_WIDTH;
             int itemY = j * BOX_HEIGHT;
-            int itemIndex = j * mGridColumns + i;
+            const int itemIndex = j * mGridColumns + i;
             if (mShowMatrix[itemIndex] < 0)
                 continue;
 
-            Item *item = mInventory->getItem(mShowMatrix[itemIndex]);
+            const Item *const item = mInventory->getItem(
+                mShowMatrix[itemIndex]);
 
             if (!item || item->getId() == 0)
                 continue;
 
-            Image *image = item->getImage();
+            Image *const image = item->getImage();
             if (image)
             {
                 if (mShowMatrix[itemIndex] == mSelectedIndex)
@@ -289,7 +296,7 @@ void ItemContainer::selectNone()
 //        skillDialog->setItemSelected(-1);
 }
 
-void ItemContainer::setSelectedIndex(int newIndex)
+void ItemContainer::setSelectedIndex(const int newIndex)
 {
     if (mSelectedIndex != newIndex)
     {
@@ -348,7 +355,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
         if (index == Inventory::NO_SLOT_INDEX)
             return;
 
-        Item *item = mInventory->getItem(index);
+        Item *const item = mInventory->getItem(index);
 
         // put item name into chat window
         if (item && mDescItems && chatWindow)
@@ -363,7 +370,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
             setSelectedIndex(index);
             mSelectionStatus = SEL_SELECTING;
 
-            int num = itemShortcutWindow->getTabIndex();
+            const int num = itemShortcutWindow->getTabIndex();
             if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
             {
                 if (itemShortcut[num])
@@ -415,7 +422,7 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
             return;
     };
 
-    int index = getSlotIndex(event.getX(), event.getY());
+    const int index = getSlotIndex(event.getX(), event.getY());
     if (index == Inventory::NO_SLOT_INDEX)
         return;
     if (index == mSelectedIndex || mSelectedIndex == -1)
@@ -431,7 +438,8 @@ void ItemContainer::mouseMoved(gcn::MouseEvent &event)
     if (!mInventory)
         return;
 
-    Item *item = mInventory->getItem(getSlotIndex(event.getX(), event.getY()));
+    const Item *const item = mInventory->getItem(
+        getSlotIndex(event.getX(), event.getY()));
 
     if (item && viewport)
     {
@@ -487,7 +495,7 @@ void ItemContainer::updateMatrix()
 
     for (unsigned idx = 0; idx < mInventory->getSize(); idx ++)
     {
-        Item *item = mInventory->getItem(idx);
+        Item *const item = mInventory->getItem(idx);
 
         if (!item || item->getId() == 0 || !item->isHaveTag(mTag))
             continue;
@@ -551,14 +559,14 @@ void ItemContainer::updateMatrix()
         delete sortedItems[idx];
 }
 
-int ItemContainer::getSlotIndex(int x, int y) const
+int ItemContainer::getSlotIndex(const int x, const int y) const
 {
     if (!mShowMatrix)
         return Inventory::NO_SLOT_INDEX;
 
     if (x < getWidth() && y < getHeight())
     {
-        int idx = (y / BOX_HEIGHT) * mGridColumns + (x / BOX_WIDTH);
+        const int idx = (y / BOX_HEIGHT) * mGridColumns + (x / BOX_WIDTH);
         if (idx < mGridRows * mGridColumns && mShowMatrix[idx] >= 0)
             return mShowMatrix[idx];
     }
@@ -599,7 +607,7 @@ void ItemContainer::keyAction()
     }
 }
 
-void ItemContainer::moveHighlight(Direction direction)
+void ItemContainer::moveHighlight(const Direction direction)
 {
     if (mHighlightedIndex == -1)
     {
@@ -645,13 +653,13 @@ void ItemContainer::moveHighlight(Direction direction)
     }
 }
 
-void ItemContainer::setFilter (int tag)
+void ItemContainer::setFilter(const int tag)
 {
     mTag = tag;
     updateMatrix();
 }
 
-void ItemContainer::setSortType (int sortType)
+void ItemContainer::setSortType(const int sortType)
 {
     mSortType = sortType;
     updateMatrix();

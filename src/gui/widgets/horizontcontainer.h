@@ -34,7 +34,7 @@
 class HorizontContainer : public Container, public gcn::WidgetListener
 {
     public:
-        HorizontContainer(int height, int spacing);
+        HorizontContainer(const int height, const int spacing);
 
         virtual void add(gcn::Widget *widget);
 

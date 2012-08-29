@@ -54,8 +54,9 @@ static std::string const dropdownFiles[2] =
     "dropdown_pressed.xml"
 };
 
-DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
-                   std::string eventId):
+DropDown::DropDown(gcn::ListModel *const listModel,
+                   gcn::ActionListener *const listener,
+                   const std::string &eventId):
     gcn::DropDown::DropDown(listModel,
         new ScrollArea, new ListBox(listModel)),
     mShadowColor(Theme::getThemeColor(Theme::DROPDOWN_SHADOW)),
@@ -69,7 +70,7 @@ DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
         // Load the background skin
         for (int i = 0; i < 2; i ++)
         {
-            Skin *skin = Theme::instance()->load(
+            Skin *const skin = Theme::instance()->load(
                 dropdownFiles[i], "dropdown.xml");
             if (skin)
             {
@@ -217,7 +218,7 @@ void DropDown::drawFrame(gcn::Graphics *graphics)
 
 void DropDown::drawButton(gcn::Graphics *graphics)
 {
-    int height = mDroppedDown ? mFoldedUpHeight : getHeight();
+    const int height = mDroppedDown ? mFoldedUpHeight : getHeight();
 
     if (buttons[mDroppedDown][mPushed])
     {
@@ -233,7 +234,7 @@ void DropDown::keyPressed(gcn::KeyEvent& keyEvent)
     if (keyEvent.isConsumed())
         return;
 
-    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     switch (actionId)
     {
@@ -305,7 +306,7 @@ void DropDown::mouseWheelMovedDown(gcn::MouseEvent& mouseEvent)
 
 void DropDown::setSelectedString(std::string str)
 {
-    gcn::ListModel *listModel = mListBox->getListModel();
+    gcn::ListModel *const listModel = mListBox->getListModel();
     if (!listModel)
         return;
 
@@ -321,7 +322,7 @@ void DropDown::setSelectedString(std::string str)
 
 std::string DropDown::getSelectedString() const
 {
-    gcn::ListModel *listModel = mListBox->getListModel();
+    gcn::ListModel *const listModel = mListBox->getListModel();
     if (!listModel)
         return "";
 

@@ -41,8 +41,8 @@ class CheckBox : public gcn::CheckBox
          * Constructor.
          */
         CheckBox(const std::string &caption, bool selected = false,
-                 gcn::ActionListener* listener = nullptr,
-                 std::string eventId = "");
+                 gcn::ActionListener *const listener = nullptr,
+                 const std::string &eventId = "");
 
         /**
          * Destructor.
@@ -52,7 +52,7 @@ class CheckBox : public gcn::CheckBox
         /**
          * Draws the caption, then calls drawBox to draw the check box.
          */
-        void draw(gcn::Graphics* graphics);
+        void draw(gcn::Graphics *const graphics);
 
         /**
          * Update the alpha value to the checkbox components.
