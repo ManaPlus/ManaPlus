@@ -220,8 +220,8 @@ bool NormalOpenGLGraphics::drawImage2(const Image *const image,
     srcY += image->mBounds.y;
 
     if (!useColor)
-        glColor4ub(255, 255, 255, image->mAlpha * 255);
-//        glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+        glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+//        glColor4ub(255, 255, 255, image->mAlpha * 255);
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);

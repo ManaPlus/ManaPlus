@@ -191,7 +191,7 @@ namespace gcn
                      throw GCN_EXCEPTION("Unknown mouse input type.");
                      break;
              }
-         }
+        }
     }
 
     void Gui::handleKeyInput()
