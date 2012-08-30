@@ -30,7 +30,7 @@
 
 std::map<std::string, int> ImageParticle::imageParticleCountByName;
 
-ImageParticle::ImageParticle(Map *map, Image *image):
+ImageParticle::ImageParticle(Map *const map, Image *const image):
     Particle(map),
     mImage(image)
 {
@@ -70,8 +70,9 @@ bool ImageParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
     if (!isAlive() || !mImage)
         return false;
 
-    int screenX = static_cast<int>(mPos.x) + offsetX - mImage->mBounds.w / 2;
-    int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
+    const int screenX = static_cast<int>(mPos.x)
+        + offsetX - mImage->mBounds.w / 2;
+    const int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
         + offsetY - mImage->mBounds.h / 2;
 
     // Check if on screen

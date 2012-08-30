@@ -24,7 +24,8 @@
 
 #include "debug.h"
 
-WidgetGroup::WidgetGroup(std::string group, int height, int spacing) :
+WidgetGroup::WidgetGroup(const std::string &group, const int height,
+                         const int spacing) :
     mSpacing(spacing),
     mCount(0),
     mGroup(group),
@@ -44,7 +45,7 @@ void WidgetGroup::addButton(std::string text, std::string tag)
     if (text.empty() || tag.empty())
         return;
 
-    Widget *widget = createWidget(text);
+    Widget *const widget = createWidget(text);
     if (widget)
     {
         widget->setActionEventId(mActionEventId + tag);
@@ -62,7 +63,7 @@ void WidgetGroup::action(const gcn::ActionEvent &event)
     }
 }
 
-void WidgetGroup::add(gcn::Widget *widget, int spacing)
+void WidgetGroup::add(gcn::Widget *const widget, const int spacing)
 {
     if (!widget)
         return;

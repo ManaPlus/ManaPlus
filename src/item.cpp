@@ -33,8 +33,9 @@
 
 extern int serverVersion;
 
-Item::Item(int id, int quantity, int refine, unsigned char color,
-           bool equipment, bool equipped):
+Item::Item(const int id, const int quantity, const int refine,
+           const unsigned char color, const bool equipment,
+           const bool equipped):
     mImage(nullptr),
     mDrawImage(nullptr),
     mQuantity(quantity),
@@ -61,7 +62,7 @@ Item::~Item()
     }
 }
 
-void Item::setId(int id, unsigned char color)
+void Item::setId(const int id, const unsigned char color)
 {
     mId = id;
     mColor = color;
@@ -76,7 +77,7 @@ void Item::setId(int id, unsigned char color)
     if (mDrawImage)
         mDrawImage->decRef();
 
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     const ItemInfo &info = getInfo();
     mTags = info.getTags();
 
@@ -99,16 +100,16 @@ void Item::setId(int id, unsigned char color)
     }
 }
 
-bool Item::isHaveTag(int tagId)
+bool Item::isHaveTag(const int tagId)
 {
     if (mTags.find(tagId) == mTags.end())
         return false;
     return mTags[tagId] > 0;
 }
 
-Image *Item::getImage(int id, unsigned char color)
+Image *Item::getImage(const int id, const unsigned char color)
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     const ItemInfo &info = ItemDB::get(id);
     SpriteDisplay display = info.getDisplay();
     std::string imagePath = paths.getStringValue("itemIcons") + display.image;

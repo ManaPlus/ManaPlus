@@ -39,13 +39,13 @@
 
 struct SlotUsed : public std::unary_function<Item*, bool>
 {
-    bool operator()(const Item *item) const
+    bool operator()(const Item *const item) const
     {
         return item && item->getId() >= 0 && item->getQuantity() > 0;
     }
 };
 
-Inventory::Inventory(int type, int size):
+Inventory::Inventory(const int type, const int size) :
     mType(type),
     mSize(size == -1 ? static_cast<unsigned>(
           Net::getInventoryHandler()->getSize(type))
@@ -65,7 +65,7 @@ Inventory::~Inventory()
     mItems = nullptr;
 }
 
-Item *Inventory::getItem(int index) const
+Item *Inventory::getItem(const int index) const
 {
     if (index < 0 || index >= static_cast<int>(mSize) || !mItems[index]
         || mItems[index]->getQuantity() <= 0)
@@ -76,7 +76,7 @@ Item *Inventory::getItem(int index) const
     return mItems[index];
 }
 
-Item *Inventory::findItem(int itemId, unsigned char color) const
+Item *Inventory::findItem(const int itemId, const unsigned char color) const
 {
     for (unsigned i = 0; i < mSize; i++)
     {
@@ -93,14 +93,15 @@ Item *Inventory::findItem(int itemId, unsigned char color) const
     return nullptr;
 }
 
-void Inventory::addItem(int id, int quantity, int refine,
-                        unsigned char color, bool equipment)
+void Inventory::addItem(const int id, const int quantity, const int refine,
+                        const unsigned char color, const bool equipment)
 {
     setItem(getFreeSlot(), id, quantity, refine, color, equipment);
 }
 
-void Inventory::setItem(int index, int id, int quantity,
-                        int refine, unsigned char color, bool equipment)
+void Inventory::setItem(const int index, const int id, const int quantity,
+                        const int refine, const unsigned char color,
+                        const bool equipment)
 {
     if (index < 0 || index >= static_cast<int>(mSize))
     {
@@ -110,7 +111,7 @@ void Inventory::setItem(int index, int id, int quantity,
 
     if (!mItems[index] && id > 0)
     {
-        Item *item = new Item(id, quantity, refine, color, equipment);
+        Item *const item = new Item(id, quantity, refine, color, equipment);
         item->setInvIndex(index);
         mItems[index] = item;
         mUsed++;
@@ -135,7 +136,7 @@ void Inventory::clear()
         removeItemAt(i);
 }
 
-void Inventory::removeItem(int id)
+void Inventory::removeItem(const int id)
 {
     for (unsigned i = 0; i < mSize; i++)
     {
@@ -144,7 +145,7 @@ void Inventory::removeItem(int id)
     }
 }
 
-void Inventory::removeItemAt(int index)
+void Inventory::removeItemAt(const int index)
 {
     delete mItems[index];
     mItems[index] = nullptr;
@@ -155,7 +156,7 @@ void Inventory::removeItemAt(int index)
         distributeSlotsChangedEvent();
 }
 
-bool Inventory::contains(Item *item) const
+bool Inventory::contains(const Item *const item) const
 {
     if (!item)
         return false;
@@ -171,7 +172,7 @@ bool Inventory::contains(Item *item) const
 
 int Inventory::getFreeSlot() const
 {
-    Item **i = std::find_if(mItems, mItems + mSize,
+    Item **const i = std::find_if(mItems, mItems + mSize,
         std::not1(SlotUsed()));
     return (i == mItems + static_cast<int>(mSize)) ? -1
         : static_cast<int>(i - mItems);
@@ -188,12 +189,12 @@ int Inventory::getLastUsedSlot() const
     return -1;
 }
 
-void Inventory::addInventoyListener(InventoryListener* listener)
+void Inventory::addInventoyListener(InventoryListener* const listener)
 {
     mInventoryListeners.push_back(listener);
 }
 
-void Inventory::removeInventoyListener(InventoryListener* listener)
+void Inventory::removeInventoyListener(InventoryListener* const listener)
 {
     mInventoryListeners.remove(listener);
 }
@@ -208,7 +209,7 @@ void Inventory::distributeSlotsChangedEvent()
 }
 
 Item *Inventory::findItemBySprite(std::string spritePath,
-                                  Gender gender, int race)
+                                  const Gender gender, const int race) const
 {
     spritePath = removeSpriteIndex(spritePath);
 //    logger->log1("Inventory::FindItemBySprite sprite: " + spritePath);
@@ -244,7 +245,7 @@ Item *Inventory::findItemBySprite(std::string spritePath,
     return nullptr;
 }
 
-std::string Inventory::getName()
+std::string Inventory::getName() const
 {
     switch (mType)
     {

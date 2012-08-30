@@ -44,7 +44,7 @@ const int ITEM_ICON_SIZE = 32;
 
 float ShopListBox::mAlpha = 1.0;
 
-ShopListBox::ShopListBox(gcn::ListModel *listModel):
+ShopListBox::ShopListBox(gcn::ListModel *const listModel) :
     ListBox(listModel),
     mPlayerMoney(0),
     mShopItems(nullptr),
@@ -58,7 +58,8 @@ ShopListBox::ShopListBox(gcn::ListModel *listModel):
     setForegroundColor(Theme::getThemeColor(Theme::LISTBOX));
 }
 
-ShopListBox::ShopListBox(gcn::ListModel *listModel, ShopItems *shopListModel):
+ShopListBox::ShopListBox(gcn::ListModel *const listModel,
+                         ShopItems *const shopListModel) :
     ListBox(listModel),
     mPlayerMoney(0),
     mShopItems(shopListModel),
@@ -76,7 +77,7 @@ void ShopListBox::init()
 {
 }
 
-void ShopListBox::setPlayersMoney(int money)
+void ShopListBox::setPlayersMoney(const int money)
 {
     mPlayerMoney = money;
 }
@@ -89,7 +90,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
     if (Client::getGuiAlpha() != mAlpha)
         mAlpha = Client::getGuiAlpha();
 
-    int alpha = static_cast<int>(mAlpha * 255.0f);
+    const int alpha = static_cast<int>(mAlpha * 255.0f);
     mHighlightColor.a = alpha;
 
     Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
@@ -141,7 +142,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
 
         if (mShopItems)
         {
-            Image *icon = mShopItems->at(i)->getImage();
+            Image *const icon = mShopItems->at(i)->getImage();
             if (icon)
             {
                 icon->setAlpha(1.0f);
@@ -160,7 +161,7 @@ void ShopListBox::adjustSize()
         setHeight(mRowHeight * mListModel->getNumberOfElements());
 }
 
-void ShopListBox::setPriceCheck(bool check)
+void ShopListBox::setPriceCheck(const bool check)
 {
     mPriceCheck = check;
 }
@@ -176,7 +177,7 @@ void ShopListBox::mouseMoved(gcn::MouseEvent &event)
         return;
     }
 
-    int index = event.getY() / mRowHeight;
+    const int index = event.getY() / mRowHeight;
 
     if (index < 0 || index >= mShopItems->getNumberOfElements())
     {
@@ -184,7 +185,7 @@ void ShopListBox::mouseMoved(gcn::MouseEvent &event)
     }
     else
     {
-        Item *item = mShopItems->at(index);
+        const Item *const item = mShopItems->at(index);
         if (item)
         {
             mItemPopup->setItem(item);

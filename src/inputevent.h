@@ -39,7 +39,7 @@ typedef KeyTimeMap::iterator KeyTimeMapIter;
 
 struct InputEvent
 {
-    InputEvent(int action0, int mask0);
+    InputEvent(const int action0, const int mask0);
 
     int action;
 

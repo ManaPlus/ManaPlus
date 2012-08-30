@@ -37,8 +37,8 @@ class SliderList : public Container,
                    public gcn::MouseListener
 {
     public:
-        SliderList(gcn::ListModel *listModel = nullptr,
-                   gcn::ActionListener* listener = nullptr,
+        SliderList(gcn::ListModel *const listModel = nullptr,
+                   gcn::ActionListener *const listener = nullptr,
                    std::string eventId = "");
 
         ~SliderList();

@@ -47,9 +47,9 @@ int TextField::instances = 0;
 float TextField::mAlpha = 1.0;
 ImageRect TextField::skin;
 
-TextField::TextField(const std::string &text, bool loseFocusOnTab,
-                     gcn::ActionListener* listener, std::string eventId,
-                     bool sendAlwaysEvents):
+TextField::TextField(const std::string &text, const bool loseFocusOnTab,
+                     gcn::ActionListener *const listener, std::string eventId,
+                     const bool sendAlwaysEvents):
     gcn::TextField(text),
     mSendAlwaysEvents(sendAlwaysEvents),
     mNumeric(false),
@@ -86,7 +86,7 @@ TextField::~TextField()
 
 void TextField::updateAlpha()
 {
-    float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     if (alpha != mAlpha)
@@ -128,13 +128,13 @@ void TextField::drawFrame(gcn::Graphics *graphics)
     static_cast<Graphics*>(graphics)->drawImageRect(0, 0, w, h, skin);
 }
 
-void TextField::setNumeric(bool numeric)
+void TextField::setNumeric(const bool numeric)
 {
     mNumeric = numeric;
     if (!numeric)
         return;
 
-    const char *text = mText.c_str();
+    const char *const text = mText.c_str();
     for (const char *textPtr = text; *textPtr; ++textPtr)
     {
         if (*textPtr < '0' || *textPtr > '9')
@@ -150,7 +150,7 @@ int TextField::getValue() const
     if (!mNumeric)
         return 0;
 
-    int value = atoi(mText.c_str());
+    const int value = atoi(mText.c_str());
     if (value < mMinimum)
         return mMinimum;
 
@@ -162,7 +162,7 @@ int TextField::getValue() const
 
 void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    int val = keyEvent.getKey().getValue();
+    const int val = keyEvent.getKey().getValue();
 
     if (val >= 32)
     {
@@ -335,7 +335,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
         return;
     }
 
-    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     switch (action)
     {
@@ -435,7 +435,7 @@ void TextField::handlePaste()
     }
 }
 
-void TextField::handleCopy()
+void TextField::handleCopy() const
 {
     std::string text = getText();
     sendBuffer(text);

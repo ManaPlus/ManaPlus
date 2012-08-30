@@ -41,9 +41,11 @@ class TextField : public gcn::TextField
         /**
          * Constructor, initializes the text field with the given string.
          */
-        TextField(const std::string &text = "", bool loseFocusOnTab = true,
-                  gcn::ActionListener* listener = nullptr,
-                  std::string eventId = "", bool sendAlwaysEvents = false);
+        TextField(const std::string &text = "",
+                  const bool loseFocusOnTab = true,
+                  gcn::ActionListener *const listener = nullptr,
+                  std::string eventId = "",
+                  const bool sendAlwaysEvents = false);
 
         ~TextField();
 
@@ -65,7 +67,7 @@ class TextField : public gcn::TextField
         /**
          * Determine whether the field should be numeric or not
          */
-        void setNumeric(bool numeric);
+        void setNumeric(const bool numeric);
 
         /**
          * Set the range on the field if it is numeric
@@ -107,7 +109,7 @@ class TextField : public gcn::TextField
     private:
         void handlePaste();
 
-        void handleCopy();
+        void handleCopy() const;
 
         static int instances;
         static float mAlpha;

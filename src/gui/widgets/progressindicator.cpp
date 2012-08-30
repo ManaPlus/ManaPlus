@@ -36,10 +36,10 @@
 
 ProgressIndicator::ProgressIndicator()
 {
-    ImageSet *images = Theme::getImageSetFromTheme("progress-indicator.png",
-                                                   32, 32);
+    ImageSet *const images = Theme::getImageSetFromTheme(
+        "progress-indicator.png", 32, 32);
 
-    Animation *anim = new Animation;
+    Animation *const anim = new Animation;
     if (images)
     {
         for (ImageSet::size_type i = 0, sz = images->size(); i < sz; ++i)

@@ -45,8 +45,8 @@ class ProgressBar : public gcn::Widget, public gcn::WidgetListener
          * Constructor, initializes the progress with the given value.
          */
         ProgressBar(float progress = 0.0f,
-                    int width = 40, int height = 7,
-                    int color = -1);
+                    const int width = 40, const int height = 7,
+                    const int color = -1);
 
         ~ProgressBar();
 
@@ -68,7 +68,7 @@ class ProgressBar : public gcn::Widget, public gcn::WidgetListener
         /**
          * Sets the current progress.
          */
-        void setProgress(float progress);
+        void setProgress(const float progress);
 
         /**
          * Returns the current progress.
@@ -80,7 +80,7 @@ class ProgressBar : public gcn::Widget, public gcn::WidgetListener
          * Change the ProgressPalette for this ProgressBar to follow or -1 to
          * disable this and manage color manually.
          */
-        void setProgressPalette(int progressPalette);
+        void setProgressPalette(const int progressPalette);
 
         /**
          * Change the color of the progress bar.
@@ -121,15 +121,15 @@ class ProgressBar : public gcn::Widget, public gcn::WidgetListener
          * Renders a progressbar with the given properties.
          */
         static void render(Graphics *graphics, const gcn::Rectangle &area,
-                           const gcn::Color &color, float progress,
+                           const gcn::Color &color, const float progress,
                            const std::string &text,
-                           GraphicsVertexes *vert, bool *redraw);
+                           GraphicsVertexes *const vert, bool *const redraw);
 
         /**
          * Renders a progressbar with the given properties.
          */
         static void render(Graphics *graphics, const gcn::Rectangle &area,
-                           const gcn::Color &color, float progress,
+                           const gcn::Color &color, const float progress,
                            const std::string &text = "");
 
         void widgetResized(const gcn::Event &event);

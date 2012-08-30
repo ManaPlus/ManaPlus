@@ -58,8 +58,8 @@ class Window : public gcn::Window, private gcn::WidgetListener
          *                a window will never go below its parent window.
          * @param skin    The location where the window's skin XML can be found.
          */
-        Window(const std::string &caption = "Window", bool modal = false,
-               Window *parent = nullptr, std::string skin = "");
+        Window(const std::string &caption = "Window", const bool modal = false,
+               Window *const parent = nullptr, std::string skin = "");
 
         /**
          * Destructor. Deletes all the added widgets.
@@ -84,23 +84,23 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
          * Sets the location relative to the given widget.
          */
-        void setLocationRelativeTo(gcn::Widget *widget);
+        void setLocationRelativeTo(const gcn::Widget *const widget);
 
         /**
          * Sets the location relative to the given widget (only horisontally)
          */
-        void setLocationHorisontallyRelativeTo(gcn::Widget *widget);
+        void setLocationHorisontallyRelativeTo(const gcn::Widget *const widget);
 
         /**
          * Sets the location relative to the given enumerated position.
          */
-        void setLocationRelativeTo(ImageRect::ImagePosition position,
+        void setLocationRelativeTo(const ImageRect::ImagePosition position,
                                    int offsetX = 0, int offsetY = 0);
 
         /**
          * Sets whether or not the window can be resized.
          */
-        void setResizable(bool resize);
+        void setResizable(const bool resize);
 
         void redraw();
 
@@ -119,7 +119,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
          * Sets whether or not the window has a close button.
          */
-        void setCloseButton(bool flag);
+        void setCloseButton(const bool flag);
 
         /**
          * Returns whether the window can be resized.
@@ -145,7 +145,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
          * Sets the maximum width of the window.
          */
-        void setMaxWidth(int width);
+        void setMaxWidth(const int width);
 
         int getMaxWidth() const
         { return mMaxWinWidth; }
@@ -153,7 +153,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
          * Sets the minimum height of the window.
          */
-        void setMaxHeight(int height);
+        void setMaxHeight(const int height);
 
         int getMaxHeight() const
         { return mMaxWinHeight; }
@@ -167,14 +167,14 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
          * Sets whether or not the window has a sticky button.
          */
-        void setStickyButton(bool flag);
+        void setStickyButton(const bool flag);
 
         /**
           * Sets whether the window is sticky. A sticky window will not have
           * its visibility set to false on a general setVisible(false) call.
           * Use this to set the default before you call loadWindowState().
           */
-        void setSticky(bool sticky);
+        void setSticky(const bool sticky);
 
         /**
          * Returns whether the window is sticky.
@@ -185,7 +185,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
           * Sets whether the window sticky mean window locked or not.
           */
-        void setStickyButtonLock(bool sticky);
+        void setStickyButtonLock(const bool sticky);
 
         /**
          * Returns whether the window sticky locking window.
@@ -318,8 +318,8 @@ class Window : public gcn::Window, private gcn::WidgetListener
          * on a relative enumerated position, rather than a coordinate position.
          */
         void setDefaultSize(int defaultWidth, int defaultHeight,
-                            ImageRect::ImagePosition position,
-                            int offsetx = 0, int offsetY = 0);
+                            const ImageRect::ImagePosition position,
+                            const int offsetx = 0, const int offsetY = 0);
 
         /**
          * Reset the win pos and size to default. Don't forget to set defaults
@@ -331,8 +331,8 @@ class Window : public gcn::Window, private gcn::WidgetListener
          * Adjusts the window position after the application window has been
          * resized.
          */
-        void adjustPositionAfterResize(int oldScreenWidth,
-                                       int oldScreenHeight);
+        void adjustPositionAfterResize(const int oldScreenWidth,
+                                       const int oldScreenHeight);
 
         /**
          * Gets the layout handler for this window.
@@ -358,12 +358,13 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
          * Adds a widget to the window and sets it at given cell.
          */
-        LayoutCell &place(int x, int y, gcn::Widget *, int w = 1, int h = 1);
+        LayoutCell &place(const int x, const int y, gcn::Widget *const wg,
+                          const int w = 1, const int h = 1);
 
         /**
          * Returns a proxy for adding widgets in an inner table of the layout.
          */
-        ContainerPlacer getPlacer(int x, int y);
+        ContainerPlacer getPlacer(const int x, const int y);
 
         /**
          * Positions the window in the center of it's parent.
@@ -392,21 +393,21 @@ class Window : public gcn::Window, private gcn::WidgetListener
          */
         int getGuiAlpha();
 
-        gcn::Rectangle getWindowArea();
+        gcn::Rectangle getWindowArea() const;
 
-        bool isResizeAllowed(gcn::MouseEvent &event);
+        bool isResizeAllowed(const gcn::MouseEvent &event);
 
         void setCaptionFont(gcn::Font *font)
         { mCaptionFont = font; }
 
     protected:
-        bool canMove();
+        bool canMove() const;
 
-        int getOption(std::string name, int def = 0);
+        int getOption(const std::string &name, const int def = 0) const;
 
         bool getOptionBool(std::string name);
 
-        int getTitlePadding();
+        int getTitlePadding() const;
 
         Skin *mSkin;                  /**< Skin in use by this window */
 
@@ -433,7 +434,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
          *
          * @see ResizeHandles
          */
-        int getResizeHandles(gcn::MouseEvent &event);
+        int getResizeHandles(const gcn::MouseEvent &event);
 
         ResizeGrip *mGrip;            /**< Resize grip */
         Window *mParent;              /**< The parent window */

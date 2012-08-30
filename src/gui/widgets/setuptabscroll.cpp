@@ -45,7 +45,7 @@ SetupTabScroll::~SetupTabScroll()
     mContainer = nullptr;
 
     std::set<SetupItem*>::iterator it = mAllItems.begin();
-    std::set<SetupItem*>::iterator it_end = mAllItems.end();
+    const std::set<SetupItem*>::iterator it_end = mAllItems.end();
     while (it != it_end)
     {
         delete *it;
@@ -54,12 +54,12 @@ SetupTabScroll::~SetupTabScroll()
     mAllItems.clear();
 }
 
-void SetupTabScroll::addControl(SetupItem *widget)
+void SetupTabScroll::addControl(SetupItem *const widget)
 {
     const std::string actionId = widget->getActionEventId();
     if (!actionId.empty())
     {
-        std::map<std::string, SetupItem*>::iterator iter
+        const std::map<std::string, SetupItem*>::iterator iter
             = mItems.find(actionId);
         if (iter != mItems.end())
         {
@@ -71,9 +71,9 @@ void SetupTabScroll::addControl(SetupItem *widget)
     mAllItems.insert(widget);
 }
 
-void SetupTabScroll::addControl(SetupItem *widget, std::string event)
+void SetupTabScroll::addControl(SetupItem *const widget, std::string event)
 {
-    std::map<std::string, SetupItem*>::iterator iter
+    const std::map<std::string, SetupItem*>::iterator iter
         = mItems.find(event);
     if (iter != mItems.end())
     {
@@ -109,7 +109,7 @@ void SetupTabScroll::externalUpdated()
     for (std::map<std::string, SetupItem*>::const_iterator
          iter = mItems.begin(); iter != mItems.end(); ++ iter)
     {
-        SetupItem *widget = (*iter).second;
+        const SetupItem *const widget = (*iter).second;
         if (widget && !widget->isMainConfig())
             (*iter).second->externalUpdated((*iter).first);
     }

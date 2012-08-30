@@ -71,7 +71,7 @@ class WindowMenu : public Container,
         std::vector <gcn::Button*> &getButtons()
         { return mButtons; }
 
-        void showButton(std::string name, bool visible);
+        void showButton(const std::string &name, const bool visible);
 
         void loadButtons();
 
@@ -82,8 +82,10 @@ class WindowMenu : public Container,
     private:
         void drawChildren(gcn::Graphics* graphics);
 
-        inline void addButton(const char* text, std::string description,
-                              int &x, int &h, int key, bool visible = true);
+        inline void addButton(const char *const text,
+                              const std::string &description,
+                              int &x, int &h, const int key,
+                              const bool visible = true);
 
         void updateButtons();
 

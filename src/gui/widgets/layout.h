@@ -50,14 +50,14 @@ class ContainerPlacer
         /**
          * Returns a placer for the same container but to an inner cell.
          */
-        ContainerPlacer at(int x, int y);
+        ContainerPlacer at(const int x, const int y);
 
         /**
          * Adds the given widget to the container and places it in the layout.
          * @see LayoutArray::place
          */
-        LayoutCell &operator()
-            (int x, int y, gcn::Widget *, int w = 1, int h = 1);
+        LayoutCell &operator()(const int x, const int y, gcn::Widget *const wg,
+            const int w = 1, const int h = 1);
 
     private:
         gcn::Container *mContainer;
@@ -80,7 +80,8 @@ class LayoutArray
         /**
          * Returns a reference on the cell at given position.
          */
-        LayoutCell &at(int x, int y, int w = 1, int h = 1);
+        LayoutCell &at(const int x, const int y,
+                       const int w = 1, const int h = 1);
 
         /**
          * Places a widget in a given cell.
@@ -89,34 +90,35 @@ class LayoutArray
          * @note When @a w is 1, the width of column @a x is reset to zero if
          *       it was AUTO_DEF. Similarly for @a h.
          */
-        LayoutCell &place(gcn::Widget *, int x, int y, int w = 1, int h = 1);
+        LayoutCell &place(gcn::Widget *const widget, const int x, const int y,
+                          const int w = 1, const int h = 1);
 
         /**
          * Sets the minimum width of a column.
          */
-        void setColWidth(int n, int w);
+        void setColWidth(const int n, const int w);
 
         /**
          * Sets the minimum height of a row.
          */
-        void setRowHeight(int n, int h);
+        void setRowHeight(const int n, const int h);
 
         /**
          * Sets the widths of two columns to the maximum of their widths.
          */
-        void matchColWidth(int n1, int n2);
+        void matchColWidth(const int n1, const int n2);
 
         /**
          * Spawns a cell over several columns/rows.
          */
-        void extend(int x, int y, int w, int h);
+        void extend(const int x, const int y, const int w, const int h);
 
         /**
          * Computes and sets the positions of all the widgets.
          * @param nW width of the array, used to resize the AUTO_ columns.
          * @param nH height of the array, used to resize the AUTO_ rows.
          */
-        void reflow(int nX, int nY, int nW, int nH);
+        void reflow(const int nX, const int nY, const int nW, const int nH);
 
     private:
 
@@ -127,24 +129,24 @@ class LayoutArray
         /**
          * Gets the position and size of a widget along a given axis
          */
-        void align(int &pos, int &size, int dim, LayoutCell const &cell,
-                   int *sizes, int sizeCount) const;
+        void align(int &pos, int &size, const int dim, LayoutCell const &cell,
+                   const int *const sizes, int sizeCount) const;
 
         /**
          * Ensures the private vectors are large enough.
          */
-        void resizeGrid(int w, int h);
+        void resizeGrid(int w, const int h);
 
         /**
          * Gets the column/row sizes along a given axis.
          * @param upp target size for the array. Ignored if AUTO_DEF.
          */
-        std::vector<int> getSizes(int dim, int upp) const;
+        std::vector<int> getSizes(const int dim, int upp) const;
 
         /**
          * Gets the total size along a given axis.
          */
-        int getSize(int dim) const;
+        int getSize(const int dim) const;
 
         std::vector<int> mSizes[2];
         std::vector< std::vector < LayoutCell * > > mCells;

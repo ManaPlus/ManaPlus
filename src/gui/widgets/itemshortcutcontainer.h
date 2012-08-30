@@ -43,7 +43,7 @@ class ItemShortcutContainer : public ShortcutContainer
         /**
          * Constructor. Initializes the graphic.
          */
-        ItemShortcutContainer(unsigned number);
+        ItemShortcutContainer(const unsigned number);
 
         /**
          * Destructor.

@@ -40,7 +40,7 @@
 
 float ListBox::mAlpha = 1.0;
 
-ListBox::ListBox(gcn::ListModel *listModel):
+ListBox::ListBox(gcn::ListModel *const listModel):
     gcn::ListBox(listModel),
     mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
     mDistributeMousePressed(true)
@@ -54,7 +54,7 @@ ListBox::~ListBox()
 
 void ListBox::updateAlpha()
 {
-    float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     if (mAlpha != alpha)
@@ -92,7 +92,7 @@ void ListBox::draw(gcn::Graphics *graphics)
 
 void ListBox::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     if (action == Input::KEY_GUI_SELECT)
     {
@@ -156,9 +156,8 @@ void ListBox::mouseDragged(gcn::MouseEvent &event)
         return;
 
     // Make list selection update on drag, but guard against negative y
-    int y = std::max(0, event.getY());
     if (getRowHeight())
-        setSelected(y / getRowHeight());
+        setSelected(std::max(0, event.getY()) / getRowHeight());
 }
 
 void ListBox::refocus()

@@ -53,7 +53,7 @@ extern QuitDialog *quitDialog;
 class KeyFunctor
 {
     public:
-        bool operator() (int key1, int key2)
+        bool operator() (const int key1, const int key2) const
         {
             return keys[key1].priority >= keys[key2].priority;
         }
@@ -88,7 +88,7 @@ void InputManager::init()
     update();
 }
 
-void InputManager::update()
+void InputManager::update() const
 {
     keyboard.update();
     if (joystick)
@@ -132,7 +132,7 @@ void InputManager::retrieve()
                     }
                     keyStr2 = keyStr2.substr(1);
                 }
-                int key = atoi(keyStr2.c_str());
+                const int key = atoi(keyStr2.c_str());
                 if (key >= -255 && key < SDLK_LAST)
                 {
                     kf.values[i2] = KeyItem(type, key);
@@ -143,7 +143,7 @@ void InputManager::retrieve()
     }
 }
 
-void InputManager::store()
+void InputManager::store() const
 {
     for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
@@ -207,7 +207,7 @@ void InputManager::resetKeys()
     }
 }
 
-void InputManager::makeDefault(int i)
+void InputManager::makeDefault(const int i)
 {
     if (i >= 0 && i < Input::KEY_TOTAL)
     {
@@ -226,7 +226,7 @@ void InputManager::makeDefault(int i)
     }
 }
 
-bool InputManager::hasConflicts(int &key1, int &key2)
+bool InputManager::hasConflicts(int &key1, int &key2) const
 {
     size_t i;
     size_t j;
@@ -277,7 +277,7 @@ void InputManager::callbackNewKey()
     mSetupInput->newKeyCallback(mNewKeyIndex);
 }
 
-bool InputManager::isActionActive(int index) const
+bool InputManager::isActionActive(const int index) const
 {
     if (keyboard.isActionActive(index))
         return true;
@@ -293,7 +293,7 @@ KeyFunction &InputManager::getKey(int index)
     return mKey[index];
 }
 
-std::string InputManager::getKeyStringLong(int index) const
+std::string InputManager::getKeyStringLong(const int index) const
 {
     std::string keyStr;
 
@@ -327,7 +327,7 @@ std::string InputManager::getKeyStringLong(int index) const
     return keyStr;
 }
 
-std::string InputManager::getKeyValueString(int index) const
+std::string InputManager::getKeyValueString(const int index) const
 {
     std::string keyStr;
 
@@ -366,7 +366,8 @@ std::string InputManager::getKeyValueString(int index) const
     return keyStr;
 }
 
-void InputManager::addActionKey(int action, int type, int val)
+void InputManager::addActionKey(const int action, const int type,
+                                const int val)
 {
     if (action < 0 || action >= Input::KEY_TOTAL)
         return;
@@ -396,7 +397,7 @@ void InputManager::addActionKey(int action, int type, int val)
     key.values[idx] = KeyItem(type, val);
 }
 
-void InputManager::setNewKey(const SDL_Event &event, int type)
+void InputManager::setNewKey(const SDL_Event &event, const int type)
 {
     int val = -1;
     if (type == INPUT_KEYBOARD)
@@ -422,7 +423,7 @@ void InputManager::unassignKey()
     update();
 }
 
-bool InputManager::handleAssignKey(const SDL_Event &event, int type)
+bool InputManager::handleAssignKey(const SDL_Event &event, const int type)
 {
     if (setupWindow && setupWindow->isVisible() &&
         getNewKeyIndex() > Input::KEY_NO_VALUE)
@@ -459,7 +460,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
                 }
                 catch (const gcn::Exception &e)
                 {
-                    const char* err = e.getMessage().c_str();
+                    const char *const err = e.getMessage().c_str();
                     logger->log("Warning: guichan input exception: %s", err);
                 }
                 return true;
@@ -497,7 +498,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
     }
     catch (const gcn::Exception &e)
     {
-        const char *err = e.getMessage().c_str();
+        const char *const err = e.getMessage().c_str();
         logger->log("Warning: guichan input exception: %s", err);
     }
     if (gui)
@@ -528,7 +529,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
     return false;
 }
 
-void InputManager::handleRepeat()
+void InputManager::handleRepeat() const
 {
     const int time = tick_time;
     keyboard.handleRepeat(time);
@@ -561,7 +562,7 @@ void InputManager::updateConditionMask()
     if (gui && !gui->getFocusHandler()->getModalFocused())
         mMask += COND_NOMODAL;
 
-    NpcDialog *dialog = NpcDialog::getActive();
+    const NpcDialog *const dialog = NpcDialog::getActive();
     if (!dialog || !dialog->isTextInputFocused())
         mMask += COND_NONPCINPUT;
 
@@ -578,7 +579,7 @@ void InputManager::updateConditionMask()
         mMask += COND_NOFOLLOW;
 }
 
-bool InputManager::checkKey(const KeyData *key)
+bool InputManager::checkKey(const KeyData *const key) const
 {
 //    logger->log("mask=%d, condition=%d", mMask, key->condition);
     if (!key || (key->condition & mMask) != key->condition)
@@ -588,7 +589,7 @@ bool InputManager::checkKey(const KeyData *key)
         || isActionActive(key->modKeyIndex));
 }
 
-bool InputManager::invokeKey(const KeyData *key, int keyNum)
+bool InputManager::invokeKey(const KeyData *const key, const int keyNum)
 {
     if (checkKey(key))
     {
@@ -602,14 +603,14 @@ bool InputManager::invokeKey(const KeyData *key, int keyNum)
 void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
                                       KeyToIdMap &idMap,
                                       KeyTimeMap &keyTimeMap,
-                                      int type)
+                                      const int type) const
 {
     actionMap.clear();
     keyTimeMap.clear();
 
     for (size_t i = 0; i < Input::KEY_TOTAL; i ++)
     {
-        KeyFunction &key = mKey[i];
+        const KeyFunction &key = mKey[i];
         if (keyData[i].action)
         {
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
@@ -643,13 +644,13 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
     for (KeyToActionMapIter it = actionMap.begin(), it_end = actionMap.end();
          it != it_end; ++ it)
     {
-        KeysVector *keys = &it->second;
+        KeysVector *const keys = &it->second;
         if (keys && keys->size() > 1)
             sort(keys->begin(), keys->end(), keySorter);
     }
 }
 
-bool InputManager::triggerAction(const KeysVector *ptrs)
+bool InputManager::triggerAction(const KeysVector *const ptrs)
 {
     if (!ptrs)
         return false;
@@ -669,7 +670,8 @@ bool InputManager::triggerAction(const KeysVector *ptrs)
     return false;
 }
 
-int InputManager::getKeyIndex(int value, int grp, int type) const
+int InputManager::getKeyIndex(const int value, const int grp,
+                              const int type) const
 {
     for (size_t i = 0; i < Input::KEY_TOTAL; i++)
     {
@@ -692,7 +694,7 @@ int InputManager::getActionByKey(const SDL_Event &event)
     // for now support only keyboard events
     if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
     {
-        int idx = keyboard.getActionId(event);
+        const int idx = keyboard.getActionId(event);
         if (idx >= 0 && checkKey(&keyData[idx]))
             return idx;
     }

@@ -26,14 +26,15 @@
 
 #include "debug.h"
 
-RadioGroup::RadioGroup(std::string group, int height, int spacing) :
+RadioGroup::RadioGroup(const std::string &group, const int height,
+                       const int spacing) :
     WidgetGroup(group, height, spacing)
 {
 }
 
-gcn::Widget *RadioGroup::createWidget(std::string text)
+gcn::Widget *RadioGroup::createWidget(const std::string &text)
 {
-    RadioButton *widget = new RadioButton(text, mGroup, mCount == 0);
+    RadioButton *const widget = new RadioButton(text, mGroup, mCount == 0);
     widget->adjustSize();
     return widget;
 }

@@ -44,7 +44,7 @@
 
 #include "debug.h"
 
-SpellShortcutContainer::SpellShortcutContainer(unsigned number):
+SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
     ShortcutContainer(),
     mSpellClicked(false),
     mSpellMoved(nullptr),
@@ -99,11 +99,11 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
             mBackgroundImg->setAlpha(mAlpha);
     }
 
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics *const>(graphics);
 
     graphics->setFont(getFont());
 
-    int selectedId = spellShortcut->getSelectedItem();
+    const int selectedId = spellShortcut->getSelectedItem();
     g->setColor(getForegroundColor());
 
     if (mBackgroundImg)
@@ -120,7 +120,7 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
         const int itemX = (i % mGridWidth) * mBoxWidth;
         const int itemY = (i / mGridWidth) * mBoxHeight;
 
-        int itemId = spellShortcut->getItem(
+        const int itemId = spellShortcut->getItem(
             (mNumber * SPELL_SHORTCUT_ITEMS) + i);
         if (selectedId >= 0 && itemId == selectedId)
         {
@@ -131,12 +131,12 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
         if (!spellManager)
             continue;
 
-        TextCommand *spell = spellManager->getSpell(itemId);
+        const TextCommand *const spell = spellManager->getSpell(itemId);
         if (spell)
         {
             if (!spell->isEmpty())
             {
-                Image* image = spell->getImage();
+                Image *const image = spell->getImage();
 
                 if (image)
                 {
@@ -229,10 +229,10 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
 
         if (selectedId != itemId)
         {
-            TextCommand *spell = spellManager->getSpell(itemId);
+            const TextCommand *const spell = spellManager->getSpell(itemId);
             if (spell && !spell->isEmpty())
             {
-                int num = itemShortcutWindow->getTabIndex();
+                const int num = itemShortcutWindow->getTabIndex();
                 if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
                     && itemShortcut[num])
                 {
@@ -244,7 +244,7 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
         }
         else
         {
-            int num = itemShortcutWindow->getTabIndex();
+            const int num = itemShortcutWindow->getTabIndex();
             if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
                 && itemShortcut[num])
             {
@@ -279,7 +279,7 @@ void SpellShortcutContainer::mouseMoved(gcn::MouseEvent &event)
         (mNumber * SPELL_SHORTCUT_ITEMS) + index);
 
     mSpellPopup->setVisible(false);
-    TextCommand *spell = spellManager->getSpell(itemId);
+    TextCommand *const spell = spellManager->getSpell(itemId);
     if (spell && !spell->isEmpty())
     {
         mSpellPopup->setItem(spell);

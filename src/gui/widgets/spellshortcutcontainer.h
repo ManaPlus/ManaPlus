@@ -42,7 +42,7 @@ class SpellShortcutContainer : public ShortcutContainer
         /**
          * Constructor. Initializes the graphic.
          */
-        SpellShortcutContainer(unsigned number);
+        SpellShortcutContainer(const unsigned number);
 
         /**
          * Destructor.

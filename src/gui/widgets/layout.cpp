@@ -28,13 +28,13 @@
 
 #include "debug.h"
 
-ContainerPlacer ContainerPlacer::at(int x, int y)
+ContainerPlacer ContainerPlacer::at(const int x, const int y)
 {
     return ContainerPlacer(mContainer, &mCell->at(x, y));
 }
 
 LayoutCell &ContainerPlacer::operator()
-    (int x, int y, gcn::Widget *wg, int w, int h)
+    (const int x, const int y, gcn::Widget *const wg, const int w, const int h)
 {
     mContainer->add(wg);
     return mCell->place(wg, x, y, w, h);
@@ -94,7 +94,7 @@ void LayoutCell::computeSizes()
         std::vector <LayoutCell *>::const_iterator j = i->begin();
         while (j != i->end())
         {
-            LayoutCell *cell = *j;
+            LayoutCell *const cell = *j;
             if (cell && cell->mType == ARRAY)
                 cell->computeSizes();
 
@@ -127,7 +127,8 @@ LayoutArray::~LayoutArray()
     }
 }
 
-LayoutCell &LayoutArray::at(int x, int y, int w, int h)
+LayoutCell &LayoutArray::at(const int x, const int y,
+                            const int w, const int h)
 {
     resizeGrid(x + w, y + h);
     LayoutCell *&cell = mCells[y][x];
@@ -136,10 +137,10 @@ LayoutCell &LayoutArray::at(int x, int y, int w, int h)
     return *cell;
 }
 
-void LayoutArray::resizeGrid(int w, int h)
+void LayoutArray::resizeGrid(int w, const int h)
 {
-    bool extW = w && w > static_cast<int>(mSizes[0].size()),
-         extH = h && h > static_cast<int>(mSizes[1].size());
+    const bool extW = w && w > static_cast<int>(mSizes[0].size());
+    const bool extH = h && h > static_cast<int>(mSizes[1].size());
 
     if (!extW && !extH)
         return;
@@ -164,35 +165,36 @@ void LayoutArray::resizeGrid(int w, int h)
     }
 }
 
-void LayoutArray::setColWidth(int n, int w)
+void LayoutArray::setColWidth(const int n, const int w)
 {
     resizeGrid(n + 1, 0);
     mSizes[0][n] = w;
 }
 
-void LayoutArray::setRowHeight(int n, int h)
+void LayoutArray::setRowHeight(const int n, const int h)
 {
     resizeGrid(0, n + 1);
     mSizes[1][n] = h;
 }
 
-void LayoutArray::matchColWidth(int n1, int n2)
+void LayoutArray::matchColWidth(const int n1, const int n2)
 {
     resizeGrid(std::max(n1, n2) + 1, 0);
-    std::vector<int> widths = getSizes(0, Layout::AUTO_DEF);
+    const std::vector<int> widths = getSizes(0, Layout::AUTO_DEF);
     int s = std::max(widths[n1], widths[n2]);
     mSizes[0][n1] = s;
     mSizes[0][n2] = s;
 }
 
-void LayoutArray::extend(int x, int y, int w, int h)
+void LayoutArray::extend(const int x, const int y, const int w, const int h)
 {
     LayoutCell &cell = at(x, y, w, h);
     cell.mExtent[0] = w;
     cell.mExtent[1] = h;
 }
 
-LayoutCell &LayoutArray::place(gcn::Widget *widget, int x, int y, int w, int h)
+LayoutCell &LayoutArray::place(gcn::Widget *const widget, const int x,
+                               const int y, const int w, const int h)
 {
     LayoutCell &cell = at(x, y, w, h);
     assert(cell.mType == LayoutCell::NONE);
@@ -222,8 +224,9 @@ LayoutCell &LayoutArray::place(gcn::Widget *widget, int x, int y, int w, int h)
     return cell;
 }
 
-void LayoutArray::align(int &pos, int &size, int dim, LayoutCell const &cell,
-                        int *sizes, int sizeCount) const
+void LayoutArray::align(int &pos, int &size, const int dim,
+                        LayoutCell const &cell, const int *const sizes,
+                        int sizeCount) const
 {
     int size_max = sizes[0];
     int cnt = cell.mExtent[dim];
@@ -253,10 +256,10 @@ void LayoutArray::align(int &pos, int &size, int dim, LayoutCell const &cell,
     }
 }
 
-std::vector<int> LayoutArray::getSizes(int dim, int upp) const
+std::vector<int> LayoutArray::getSizes(const int dim, int upp) const
 {
-    int gridW = static_cast<int>(mSizes[0].size()),
-        gridH = static_cast<int>(mSizes[1].size());
+    const int gridW = static_cast<int>(mSizes[0].size());
+    const int gridH = static_cast<int>(mSizes[1].size());
     std::vector<int> sizes = mSizes[dim];
 
     // Compute minimum sizes.
@@ -270,8 +273,8 @@ std::vector<int> LayoutArray::getSizes(int dim, int upp) const
 
             if (cell->mExtent[dim] == 1)
             {
-                int n = (dim == 0 ? gridX : gridY);
-                int s = cell->mSize[dim] + cell->mVPadding * 2;
+                const int n = (dim == 0 ? gridX : gridY);
+                const int s = cell->mSize[dim] + cell->mVPadding * 2;
                 if (s > sizes[n])
                     sizes[n] = s;
             }
@@ -282,7 +285,7 @@ std::vector<int> LayoutArray::getSizes(int dim, int upp) const
         return sizes;
 
     // Compute the FILL sizes.
-    int nb = static_cast<int>(sizes.size());
+    const int nb = static_cast<int>(sizes.size());
     int nbFill = 0;
     for (int i = 0; i < nb; ++i)
     {
@@ -307,7 +310,7 @@ std::vector<int> LayoutArray::getSizes(int dim, int upp) const
         if (mSizes[dim][i] > Layout::AUTO_DEF)
             continue;
 
-        int s = upp / nbFill;
+        const int s = upp / nbFill;
         sizes[i] += s;
         upp -= s;
         --nbFill;
@@ -316,11 +319,11 @@ std::vector<int> LayoutArray::getSizes(int dim, int upp) const
     return sizes;
 }
 
-int LayoutArray::getSize(int dim) const
+int LayoutArray::getSize(const int dim) const
 {
     std::vector<int> sizes = getSizes(dim, Layout::AUTO_DEF);
     int size = 0;
-    int nb = static_cast<int>(sizes.size());
+    const int nb = static_cast<int>(sizes.size());
     for (int i = 0; i < nb; ++i)
     {
         if (sizes[i] > Layout::AUTO_DEF)
@@ -330,10 +333,11 @@ int LayoutArray::getSize(int dim) const
     return size - mSpacing;
 }
 
-void LayoutArray::reflow(int nx, int ny, int nw, int nh)
+void LayoutArray::reflow(const int nx, const int ny,
+                         const int nw, const int nh)
 {
-    int gridW = static_cast<int>(mSizes[0].size()),
-        gridH = static_cast<int>(mSizes[1].size());
+    const int gridW = static_cast<int>(mSizes[0].size());
+    const int gridH = static_cast<int>(mSizes[1].size());
 
     std::vector<int> widths  = getSizes(0, nw);
     std::vector<int> heights = getSizes(1, nh);
@@ -346,7 +350,7 @@ void LayoutArray::reflow(int nx, int ny, int nw, int nh)
         int x = nx;
         for (int gridX = 0; gridX < gridW; ++gridX)
         {
-            LayoutCell *cell = mCells[gridY][gridX];
+            LayoutCell *const cell = mCells[gridY][gridX];
             if (cell && cell->mType != LayoutCell::NONE)
             {
                 int dx = x, dy = y, dw = 0, dh = 0;

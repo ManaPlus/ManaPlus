@@ -38,9 +38,9 @@ class Item
         /**
          * Constructor.
          */
-        Item(int id = -1, int quantity = 0, int refine = 0,
-             unsigned char color = 1, bool equipment = false,
-             bool equipped = false);
+        Item(const int id = -1, const int quantity = 0, const int refine = 0,
+             const unsigned char color = 1, const bool equipment = false,
+             const bool equipped = false);
 
         /**
          * Destructor.
@@ -50,7 +50,7 @@ class Item
         /**
          * Sets the item id, identifying the item type.
          */
-        void setId(int id, unsigned char color);
+        void setId(const int id, const unsigned char color);
 
         /**
          * Returns the item id.
@@ -73,13 +73,13 @@ class Item
         /**
          * Sets the number of items.
          */
-        void setQuantity(int quantity)
+        void setQuantity(const int quantity)
         { mQuantity = quantity; }
 
         /**
          * Increases the number of items by the given amount.
          */
-        void increaseQuantity(int amount)
+        void increaseQuantity(const int amount)
         { mQuantity += amount; }
 
         /**
@@ -91,7 +91,7 @@ class Item
         /**
          * Sets whether this item is considered equipment.
          */
-        void setEquipment(bool equipment)
+        void setEquipment(const bool equipment)
         { mEquipment = equipment; }
 
         /**
@@ -103,7 +103,7 @@ class Item
         /**
          * Sets whether this item is equipped.
          */
-        void setEquipped(bool equipped)
+        void setEquipped(const bool equipped)
         { mEquipped = equipped; }
 
         /**
@@ -115,7 +115,7 @@ class Item
         /**
          * Sets this item refine level.
          */
-        void setRefine(int refine)
+        void setRefine(const int refine)
         { mRefine = refine; }
 
         /**
@@ -127,7 +127,7 @@ class Item
         /**
          * Sets whether this item is in equipment.
          */
-        void setInEquipment(bool inEquipment)
+        void setInEquipment(const bool inEquipment)
         { mInEquipment = inEquipment; }
 
         /**
@@ -139,7 +139,7 @@ class Item
         /**
          * Sets the inventory index of this item.
          */
-        void setInvIndex(int index)
+        void setInvIndex(const int index)
         { mInvIndex = index; }
 
         /**
@@ -156,9 +156,9 @@ class Item
 
         std::string getName();
 
-        static Image *getImage(int id, unsigned char color);
+        static Image *getImage(const int id, const unsigned char color);
 
-        bool isHaveTag(int tagId);
+        bool isHaveTag(const int tagId);
 
         unsigned char getColor() const
         { return mColor; }

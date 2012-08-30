@@ -83,9 +83,9 @@ public:
      */
     virtual gcn::Widget *getElementAt(int row, int column) const = 0;
 
-    virtual void installListener(TableModelListener *listener);
+    virtual void installListener(TableModelListener *const listener);
 
-    virtual void removeListener(TableModelListener *listener);
+    virtual void removeListener(TableModelListener *const listener);
 
 protected:
     /**
@@ -106,7 +106,8 @@ private:
 class StaticTableModel : public TableModel
 {
 public:
-    StaticTableModel(int width, int height);
+    StaticTableModel(const int width, const int height);
+
     virtual ~StaticTableModel();
 
     /**
@@ -114,7 +115,8 @@ public:
      * The model is resized to accomodate the widget's width and height,
      * unless column width / row height have been fixed.
      */
-    virtual void set(int row, int column, gcn::Widget *widget);
+    virtual void set(const int row, const int column,
+                     gcn::Widget *const widget);
 
     /**
      * Fixes the column width for a given column; this overrides dynamic width
@@ -122,14 +124,14 @@ public:
      *
      * Semantics are undefined for width 0.
      */
-    virtual void fixColumnWidth(int column, int width);
+    virtual void fixColumnWidth(const int column, const int width);
 
     /**
      * Fixes the row height; this overrides dynamic height inference.
      *
      * Semantics are undefined for width 0.
      */
-    virtual void fixRowHeight(int height);
+    virtual void fixRowHeight(const int height);
 
     /**
      * Resizes the table model

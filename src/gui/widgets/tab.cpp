@@ -78,7 +78,7 @@ Tab::~Tab()
     mInstances--;
     if (mInstances == 0 && Theme::instance())
     {
-        Theme *theme = Theme::instance();
+        Theme *const theme = Theme::instance();
         for (int mode = 0; mode < TAB_COUNT; mode ++)
             theme->unloadRect(tabImg[mode]);
     }
@@ -112,7 +112,7 @@ void Tab::init()
 
 void Tab::updateAlpha()
 {
-    float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     // TODO We don't need to do this for every tab on every draw
@@ -184,12 +184,12 @@ void Tab::draw(gcn::Graphics *graphics)
     drawChildren(graphics);
 }
 
-void Tab::setTabColor(const gcn::Color *color)
+void Tab::setTabColor(const gcn::Color *const color)
 {
     mTabColor = color;
 }
 
-void Tab::setFlash(int flash)
+void Tab::setFlash(const int flash)
 {
     mFlash = flash;
 }
@@ -204,7 +204,7 @@ void Tab::widgetMoved(const gcn::Event &event A_UNUSED)
     mRedraw = true;
 }
 
-void Tab::setLabelFont(gcn::Font *font)
+void Tab::setLabelFont(gcn::Font *const font)
 {
     if (!mLabel)
         return;

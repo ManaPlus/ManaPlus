@@ -39,8 +39,8 @@ static const int buttonWidth = 27;
 static const int buttonSpace = 30;
 static const int sliderHeight = 30;
 
-SliderList::SliderList(gcn::ListModel *listModel,
-                       gcn::ActionListener* listener,
+SliderList::SliderList(gcn::ListModel *const listModel,
+                       gcn::ActionListener *const listener,
                        std::string eventId) :
     mLabel(new Label),
     mListModel(listModel),
@@ -204,11 +204,11 @@ int SliderList::getMaxLabelWidth()
         return 1;
 
     int maxWidth = 0;
-    SDLFont *font = gui->getFont();
+    const SDLFont *const font = gui->getFont();
 
     for (int f = 0; f < mListModel->getNumberOfElements(); f ++)
     {
-        int w = font->getWidth(mListModel->getElementAt(f));
+        const int w = font->getWidth(mListModel->getElementAt(f));
         if (w > maxWidth)
             maxWidth = w;
     }

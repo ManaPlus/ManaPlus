@@ -39,12 +39,12 @@ class Slider : public gcn::Slider
         /**
          * Constructor with scale start equal to 0.
          */
-        Slider(double scaleEnd = 1.0);
+        Slider(const double scaleEnd = 1.0);
 
         /**
          * Constructor.
          */
-        Slider(double scaleStart, double scaleEnd);
+        Slider(const double scaleStart, const double scaleEnd);
 
         /**
          * Destructor.
@@ -64,7 +64,7 @@ class Slider : public gcn::Slider
         /**
          * Draws the marker.
          */
-        void drawMarker(gcn::Graphics *graphics);
+        void drawMarker(gcn::Graphics *const graphics);
 
         /**
          * Called when the mouse enteres the widget area.

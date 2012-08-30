@@ -38,19 +38,19 @@ void WindowContainer::logic()
     gcn::Container::logic();
 }
 
-void WindowContainer::scheduleDelete(gcn::Widget *widget)
+void WindowContainer::scheduleDelete(gcn::Widget *const widget)
 {
     if (widget)
         mDeathList.push_back(widget);
 }
 
-void WindowContainer::adjustAfterResize(int oldScreenWidth,
-                                        int oldScreenHeight)
+void WindowContainer::adjustAfterResize(const int oldScreenWidth,
+                                        const int oldScreenHeight)
 {
     for (WidgetListIterator i = mWidgets.begin(), i_end = mWidgets.end();
          i != i_end; ++i)
     {
-        if (Window *window = dynamic_cast<Window*>(*i))
+        if (Window *const window = dynamic_cast<Window*>(*i))
             window->adjustPositionAfterResize(oldScreenWidth, oldScreenHeight);
     }
 }

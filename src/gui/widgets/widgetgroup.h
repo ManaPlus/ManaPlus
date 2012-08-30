@@ -31,7 +31,8 @@ class WidgetGroup : public Container,
                     public gcn::ActionListener
 {
     public:
-        WidgetGroup(std::string group, int height, int spacing);
+        WidgetGroup(const std::string &group, const int height,
+                    const int spacing);
 
         virtual void addButton(std::string tag);
 
@@ -39,7 +40,7 @@ class WidgetGroup : public Container,
 
         void action(const gcn::ActionEvent &event);
 
-        virtual void add(gcn::Widget *widget, int spacing);
+        virtual void add(gcn::Widget *const widget, const int spacing);
 
         virtual void clear();
 

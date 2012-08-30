@@ -41,7 +41,7 @@ TextBox::TextBox() :
     mMinWidth = getWidth();
 }
 
-void TextBox::setTextWrapped(const std::string &text, int minDimension)
+void TextBox::setTextWrapped(const std::string &text, const int minDimension)
 {
     // Make sure parent scroll area sets width of this widget
     if (getParent())
@@ -91,7 +91,7 @@ void TextBox::setTextWrapped(const std::string &text, int minDimension)
             std::string word =
                 line.substr(lastSpacePos, spacePos - lastSpacePos);
 
-            int width = getFont()->getWidth(word);
+            const int width = getFont()->getWidth(word);
 
             if (xpos == 0 && width > mMinWidth)
             {
@@ -158,8 +158,8 @@ void TextBox::setTextWrapped(const std::string &text, int minDimension)
 
 void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
-    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const gcn::Key key = keyEvent.getKey();
+    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     switch (action)
     {
@@ -282,11 +282,11 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
 
         case Input::KEY_GUI_PAGE_UP:
         {
-            gcn::Widget* par = getParent();
+            gcn::Widget *const par = getParent();
 
             if (par)
             {
-                int rowsPerPage = par->getChildrenArea().height
+                const int rowsPerPage = par->getChildrenArea().height
                     / getFont()->getHeight();
                 mCaretRow -= rowsPerPage;
 
@@ -298,11 +298,11 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
 
         case Input::KEY_GUI_PAGE_DOWN:
         {
-            gcn::Widget* par = getParent();
+            gcn::Widget *const par = getParent();
 
             if (par)
             {
-                int rowsPerPage = par->getChildrenArea().height
+                const int rowsPerPage = par->getChildrenArea().height
                     / getFont()->getHeight();
                 mCaretRow += rowsPerPage;
 

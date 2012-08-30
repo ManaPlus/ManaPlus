@@ -64,9 +64,9 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
          */
         Tab *getTab(const std::string &name) const;
 
-        Tab *getTabByIndex(int index) const;
+        Tab *getTabByIndex(const int index) const;
 
-        gcn::Widget *getWidgetByIndex(int index) const;
+        gcn::Widget *getWidgetByIndex(const int index) const;
 
         /**
          * Returns the widget with the tab that has specified caption
@@ -93,7 +93,7 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
          * @param caption The Caption to display
          * @param widget The widget to show when tab is selected
          */
-        void addTab(const std::string &caption, gcn::Widget *widget);
+        void addTab(const std::string &caption, gcn::Widget *const widget);
 
         /**
          * Overload the remove tab function as it's broken in guichan 0.8.
@@ -131,7 +131,7 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
 
         void mousePressed(gcn::MouseEvent &mouseEvent);
 
-        void enableScrollButtons(bool enable);
+        void enableScrollButtons(const bool enable);
 
         void setRightMargin(int n)
         { mRightMargin = n; }

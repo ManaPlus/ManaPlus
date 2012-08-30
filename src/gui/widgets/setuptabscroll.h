@@ -39,9 +39,9 @@ class SetupTabScroll : public SetupTab
 
         ~SetupTabScroll();
 
-        void addControl(SetupItem *widget);
+        void addControl(SetupItem *const widget);
 
-        void addControl(SetupItem *widget, std::string event);
+        void addControl(SetupItem *const widget, std::string event);
 
         VertContainer *getContainer() const
         { return mContainer; }

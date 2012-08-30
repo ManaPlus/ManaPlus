@@ -43,14 +43,14 @@ static std::string const data[2] =
     "slider_highlighted.xml"
 };
 
-Slider::Slider(double scaleEnd):
+Slider::Slider(const double scaleEnd) :
     gcn::Slider(scaleEnd),
     mHasMouse(false)
 {
     init();
 }
 
-Slider::Slider(double scaleStart, double scaleEnd):
+Slider::Slider(const double scaleStart, const double scaleEnd) :
     gcn::Slider(scaleStart, scaleEnd),
     mHasMouse(false)
 {
@@ -62,7 +62,7 @@ Slider::~Slider()
     mInstances--;
     if (mInstances == 0 && Theme::instance())
     {
-        Theme *theme = Theme::instance();
+        Theme *const theme = Theme::instance();
         for (int mode = 0; mode < 2; mode ++)
             theme->unloadRect(buttons[mode]);
     }
@@ -94,8 +94,8 @@ void Slider::init()
 
 void Slider::updateAlpha()
 {
-    float alpha = std::max(Client::getGuiAlpha(),
-                           Theme::instance()->getMinimumOpacity());
+    const float alpha = std::max(Client::getGuiAlpha(),
+        Theme::instance()->getMinimumOpacity());
 
     if (alpha != mAlpha)
     {
@@ -120,9 +120,9 @@ void Slider::draw(gcn::Graphics *graphics)
     }
 
     int w = getWidth();
-    int h = getHeight();
+    const int h = getHeight();
     int x = 0;
-    int y = mHasMouse ? (h - buttons[1].grid[HSTART]->getHeight()) / 2 :
+    const int y = mHasMouse ? (h - buttons[1].grid[HSTART]->getHeight()) / 2 :
         (h - buttons[0].grid[HSTART]->getHeight()) / 2;
 
     updateAlpha();
@@ -138,7 +138,7 @@ void Slider::draw(gcn::Graphics *graphics)
 
         if (buttons[0].grid[HMID])
         {
-            const Image *hMid = buttons[0].grid[HMID];
+            const Image *const hMid = buttons[0].grid[HMID];
             static_cast<Graphics*>(graphics)->
                 drawImagePattern(hMid, x, y, w, hMid->getHeight());
         }
@@ -160,7 +160,7 @@ void Slider::draw(gcn::Graphics *graphics)
 
         if (buttons[1].grid[HMID])
         {
-            const Image *hMid = buttons[1].grid[HMID];
+            const Image *const hMid = buttons[1].grid[HMID];
             static_cast<Graphics*>(graphics)->drawImagePattern(
                 hMid, x, y, w,
                 hMid->getHeight());
@@ -177,9 +177,9 @@ void Slider::draw(gcn::Graphics *graphics)
     drawMarker(graphics);
 }
 
-void Slider::drawMarker(gcn::Graphics *graphics)
+void Slider::drawMarker(gcn::Graphics *const graphics)
 {
-    const Image *img = (mHasMouse ? buttons[1].grid[HGRIP]
+    const Image *const img = (mHasMouse ? buttons[1].grid[HGRIP]
         : buttons[0].grid[HGRIP]);
     if (!img)
         return;
@@ -200,7 +200,7 @@ void Slider::mouseExited(gcn::MouseEvent& event A_UNUSED)
 
 void Slider::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     if (getOrientation() == HORIZONTAL)
     {

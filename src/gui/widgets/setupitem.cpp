@@ -48,8 +48,8 @@
 #include "debug.h"
 
 SetupItem::SetupItem(std::string text, std::string description,
-                     std::string keyName, SetupTabScroll *parent,
-                     std::string eventName, bool mainConfig) :
+                     std::string keyName, SetupTabScroll *const parent,
+                     std::string eventName, const bool mainConfig) :
     mText(text),
     mDescription(description),
     mKeyName(keyName),
@@ -65,8 +65,9 @@ SetupItem::SetupItem(std::string text, std::string description,
 }
 
 SetupItem::SetupItem(std::string text, std::string description,
-                     std::string keyName, SetupTabScroll *parent,
-                     std::string eventName, std::string def, bool mainConfig) :
+                     std::string keyName, SetupTabScroll *const parent,
+                     std::string eventName, std::string def,
+                     const bool mainConfig) :
     mText(text),
     mDescription(description),
     mKeyName(keyName),
@@ -86,7 +87,7 @@ SetupItem::~SetupItem()
 
 }
 
-Configuration *SetupItem::getConfig()
+Configuration *SetupItem::getConfig() const
 {
     if (mMainConfig)
         return &config;
@@ -96,7 +97,7 @@ Configuration *SetupItem::getConfig()
 
 void SetupItem::load()
 {
-    Configuration *cfg = getConfig();
+    const Configuration *const cfg = getConfig();
     if (mUseDefault)
     {
         mValue = cfg->getValue(mKeyName, mDefault);
@@ -126,7 +127,7 @@ void SetupItem::load()
 
 void SetupItem::save()
 {
-    Configuration *cfg = getConfig();
+    Configuration *const cfg = getConfig();
     cfg->setValue(mKeyName, mValue);
 }
 
@@ -169,7 +170,7 @@ void SetupItem::externalUpdated(std::string eventName A_UNUSED)
     toWidget();
 }
 
-void SetupItem::fixFirstItemSize(gcn::Widget *widget)
+void SetupItem::fixFirstItemSize(gcn::Widget *const widget)
 {
     if (widget->getWidth() < mParent->getPreferredFirstItemSize())
         widget->setWidth(mParent->getPreferredFirstItemSize());
@@ -177,8 +178,9 @@ void SetupItem::fixFirstItemSize(gcn::Widget *widget)
 
 SetupItemCheckBox::SetupItemCheckBox(std::string text, std::string description,
                                      std::string keyName,
-                                     SetupTabScroll *parent,
-                                     std::string eventName, bool mainConfig) :
+                                     SetupTabScroll *const parent,
+                                     std::string eventName,
+                                     const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig)
 {
     createControls();
@@ -186,9 +188,9 @@ SetupItemCheckBox::SetupItemCheckBox(std::string text, std::string description,
 
 SetupItemCheckBox::SetupItemCheckBox(std::string text, std::string description,
                                      std::string keyName,
-                                     SetupTabScroll *parent,
+                                     SetupTabScroll *const parent,
                                      std::string eventName, std::string def,
-                                     bool mainConfig) :
+                                     const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig)
 {
     createControls();
@@ -233,9 +235,9 @@ void SetupItemCheckBox::toWidget()
 SetupItemTextField::SetupItemTextField(std::string text,
                                        std::string description,
                                        std::string keyName,
-                                       SetupTabScroll *parent,
+                                       SetupTabScroll *const parent,
                                        std::string eventName,
-                                       bool mainConfig) :
+                                       const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -250,9 +252,9 @@ SetupItemTextField::SetupItemTextField(std::string text,
 SetupItemTextField::SetupItemTextField(std::string text,
                                        std::string description,
                                        std::string keyName,
-                                       SetupTabScroll *parent,
+                                       SetupTabScroll *const parent,
                                        std::string eventName, std::string def,
-                                       bool mainConfig) :
+                                       const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -347,10 +349,10 @@ void SetupItemTextField::apply(std::string eventName)
 SetupItemIntTextField::SetupItemIntTextField(std::string text,
                                              std::string description,
                                              std::string keyName,
-                                             SetupTabScroll *parent,
+                                             SetupTabScroll *const parent,
                                              std::string eventName,
-                                             int min, int max,
-                                             bool mainConfig) :
+                                             const int min, const int max,
+                                             const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -367,11 +369,11 @@ SetupItemIntTextField::SetupItemIntTextField(std::string text,
 SetupItemIntTextField::SetupItemIntTextField(std::string text,
                                              std::string description,
                                              std::string keyName,
-                                             SetupTabScroll *parent,
+                                             SetupTabScroll *const parent,
                                              std::string eventName,
-                                             int min, int max,
+                                             const int min, const int max,
                                              std::string def,
-                                             bool mainConfig) :
+                                             const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -470,7 +472,8 @@ void SetupItemIntTextField::apply(std::string eventName)
 
 
 SetupItemLabel::SetupItemLabel(std::string text, std::string description,
-                               SetupTabScroll *parent, bool separator) :
+                               SetupTabScroll *const parent,
+                               const bool separator) :
     SetupItem(text, description, "", parent, "", "", true),
     mLabel(nullptr),
     mIsSeparator(separator)
@@ -525,10 +528,10 @@ void SetupItemLabel::apply(std::string eventName A_UNUSED)
 SetupItemDropDown::SetupItemDropDown(std::string text,
                                      std::string description,
                                      std::string keyName,
-                                     SetupTabScroll *parent,
+                                     SetupTabScroll *const parent,
                                      std::string eventName,
-                                     gcn::ListModel *model,
-                                     bool mainConfig) :
+                                     gcn::ListModel *const model,
+                                     const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -542,11 +545,11 @@ SetupItemDropDown::SetupItemDropDown(std::string text,
 SetupItemDropDown::SetupItemDropDown(std::string text,
                                      std::string description,
                                      std::string keyName,
-                                     SetupTabScroll *parent,
+                                     SetupTabScroll *const parent,
                                      std::string eventName,
-                                     gcn::ListModel *model,
+                                     gcn::ListModel *const model,
                                      std::string def,
-                                     bool mainConfig) :
+                                     const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -606,9 +609,12 @@ void SetupItemDropDown::toWidget()
 
 
 SetupItemSlider::SetupItemSlider(std::string text, std::string description,
-                                 std::string keyName, SetupTabScroll *parent,
-                                 std::string eventName, double min, double max,
-                                 int width, bool onTheFly, bool mainConfig) :
+                                 std::string keyName,
+                                 SetupTabScroll *const parent,
+                                 std::string eventName,
+                                 const double min, const double max,
+                                 const int width, const bool onTheFly,
+                                 const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -624,9 +630,11 @@ SetupItemSlider::SetupItemSlider(std::string text, std::string description,
 
 SetupItemSlider::SetupItemSlider(std::string text, std::string description,
                                  std::string keyName, SetupTabScroll *parent,
-                                 std::string eventName, double min, double max,
-                                 std::string def, int width, bool onTheFly,
-                                 bool mainConfig) :
+                                 std::string eventName,
+                                 const double min, const double max,
+                                 std::string def, const int width,
+                                 const bool onTheFly,
+                                 const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -707,10 +715,14 @@ void SetupItemSlider::apply(std::string eventName)
 
 
 SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
-                                   std::string keyName, SetupTabScroll *parent,
-                                   std::string eventName, int min, int max,
-                                   SetupItemNames *values, bool onTheFly,
-                                   bool mainConfig, bool doNotAlign) :
+                                   std::string keyName,
+                                   SetupTabScroll *const parent,
+                                   std::string eventName,
+                                   const int min, const int max,
+                                   SetupItemNames *const values,
+                                   const bool onTheFly,
+                                   const bool mainConfig,
+                                   const bool doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -729,11 +741,14 @@ SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
 }
 
 SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
-                                   std::string keyName, SetupTabScroll *parent,
-                                   std::string eventName, int min, int max,
-                                   SetupItemNames *values, std::string def,
-                                   bool onTheFly, bool mainConfig,
-                                   bool doNotAlign) :
+                                   std::string keyName,
+                                   SetupTabScroll *const parent,
+                                   std::string eventName,
+                                   const int min, const int max,
+                                   SetupItemNames *const values,
+                                   std::string def,
+                                   const bool onTheFly, const bool mainConfig,
+                                   const bool doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -764,7 +779,7 @@ void SetupItemSlider2::createControls()
     load();
     mHorizont = new HorizontContainer(32, 2);
 
-    int width = getMaxWidth();
+    const int width = getMaxWidth();
 
     mLabel = new Label(mText);
     mLabel2 = new Label("");
@@ -798,12 +813,12 @@ int SetupItemSlider2::getMaxWidth()
 
     int maxWidth = 0;
     SetupItemNamesConstIter it = mValues->begin();
-    SetupItemNamesConstIter it_end = mValues->end();
-    gcn::Font *font = gui->getFont();
+    const SetupItemNamesConstIter it_end = mValues->end();
+    const gcn::Font *const font = gui->getFont();
 
     while (it != it_end)
     {
-        int w = font->getWidth(*it);
+        const int w = font->getWidth(*it);
         if (w > maxWidth)
             maxWidth = w;
 
@@ -863,7 +878,7 @@ void SetupItemSlider2::apply(std::string eventName)
     save();
 }
 
-void SetupItemSlider2::setInvertValue(int v)
+void SetupItemSlider2::setInvertValue(const int v)
 {
     mInvert = true;
     mInvertValue = v;
@@ -874,11 +889,11 @@ void SetupItemSlider2::setInvertValue(int v)
 SetupItemSliderList::SetupItemSliderList(std::string text,
                                          std::string description,
                                          std::string keyName,
-                                         SetupTabScroll *parent,
+                                         SetupTabScroll *const parent,
                                          std::string eventName,
-                                         gcn::ListModel *model,
-                                         int width, bool onTheFly,
-                                         bool mainConfig) :
+                                         gcn::ListModel *const model,
+                                         const int width, const bool onTheFly,
+                                         const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -894,11 +909,12 @@ SetupItemSliderList::SetupItemSliderList(std::string text,
 SetupItemSliderList::SetupItemSliderList(std::string text,
                                          std::string description,
                                          std::string keyName,
-                                         SetupTabScroll *parent,
+                                         SetupTabScroll *const parent,
                                          std::string eventName,
-                                         gcn::ListModel *model,
-                                         std::string def, int width,
-                                         bool onTheFly, bool mainConfig) :
+                                         gcn::ListModel *const model,
+                                         std::string def, const int width,
+                                         const bool onTheFly,
+                                         const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -975,9 +991,12 @@ void SetupItemSliderList::apply(std::string eventName)
 }
 
 SetupItemSound::SetupItemSound(std::string text, std::string description,
-                               std::string keyName, SetupTabScroll *parent,
-                               std::string eventName, gcn::ListModel *model,
-                               int width, bool onTheFly, bool mainConfig) :
+                               std::string keyName,
+                               SetupTabScroll *const parent,
+                               std::string eventName,
+                               gcn::ListModel *const model,
+                               const int width, const bool onTheFly,
+                               const bool mainConfig) :
     SetupItemSliderList(text, description, keyName, parent, eventName,
                         model, width, onTheFly, mainConfig),
     mButton(nullptr)

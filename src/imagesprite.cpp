@@ -25,7 +25,7 @@
 
 #include "debug.h"
 
-ImageSprite::ImageSprite(Image *image):
+ImageSprite::ImageSprite(Image *const image):
         mImage(image)
 {
     if (mImage)

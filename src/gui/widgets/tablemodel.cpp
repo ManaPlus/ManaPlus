@@ -28,13 +28,13 @@
 
 #include "debug.h"
 
-void TableModel::installListener(TableModelListener *listener)
+void TableModel::installListener(TableModelListener *const listener)
 {
     if (listener)
         listeners.insert(listener);
 }
 
-void TableModel::removeListener(TableModelListener *listener)
+void TableModel::removeListener(TableModelListener *const listener)
 {
     if (listener)
         listeners.erase(listener);
@@ -63,7 +63,7 @@ void TableModel::signalAfterUpdate()
 #define WIDGET_AT(row, column) (((row) * mColumns) + (column))
 #define DYN_SIZE(h) ((h) >= 0)
 
-StaticTableModel::StaticTableModel(int row, int column) :
+StaticTableModel::StaticTableModel(const int row, const int column) :
     mRows(row),
     mColumns(column),
     mHeight(1)
@@ -85,7 +85,8 @@ void StaticTableModel::resize()
     mTableModel.resize(mRows * mColumns, nullptr);
 }
 
-void StaticTableModel::set(int row, int column, gcn::Widget *widget)
+void StaticTableModel::set(const int row, const int column,
+                           gcn::Widget *const widget)
 {
     if (!widget || row >= mRows || row < 0
         || column >= mColumns || column < 0)
@@ -120,7 +121,7 @@ gcn::Widget *StaticTableModel::getElementAt(int row, int column) const
     return mTableModel[WIDGET_AT(row, column)];
 }
 
-void StaticTableModel::fixColumnWidth(int column, int width)
+void StaticTableModel::fixColumnWidth(const int column, const int width)
 {
     if (width < 0 || column < 0 || column >= mColumns)
         return;
@@ -128,7 +129,7 @@ void StaticTableModel::fixColumnWidth(int column, int width)
     mWidths[column] = -width; // Negate to tag as fixed
 }
 
-void StaticTableModel::fixRowHeight(int height)
+void StaticTableModel::fixRowHeight(const int height)
 {
     if (height < 0)
         return;

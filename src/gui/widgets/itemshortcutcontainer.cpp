@@ -45,7 +45,7 @@
 
 #include "debug.h"
 
-ItemShortcutContainer::ItemShortcutContainer(unsigned number):
+ItemShortcutContainer::ItemShortcutContainer(const unsigned number) :
     ShortcutContainer(),
     mItemClicked(false),
     mItemMoved(nullptr),
@@ -104,7 +104,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
             mBackgroundImg->setAlpha(mAlpha);
     }
 
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics*>(graphics);
 
     graphics->setFont(getFont());
 
@@ -117,7 +117,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         }
     }
 
-    Inventory *inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return;
 
@@ -142,12 +142,12 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         // this is item
         if (itemId < SPELL_MIN_ID)
         {
-            Item *item = inv->findItem(itemId, itemColor);
+            const Item *const item = inv->findItem(itemId, itemColor);
 
             if (item)
             {
                 // Draw item icon.
-                Image* image = item->getImage();
+                Image *const image = item->getImage();
 
                 if (image)
                 {
@@ -170,12 +170,13 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         }
         else if (itemId < SKILL_MIN_ID && spellManager)
         {   // this is magic shortcut
-            TextCommand *spell = spellManager->getSpellByItem(itemId);
+            const TextCommand *const spell = spellManager
+                ->getSpellByItem(itemId);
             if (spell)
             {
                 if (!spell->isEmpty())
                 {
-                    Image* image = spell->getImage();
+                    Image *const image = spell->getImage();
 
                     if (image)
                     {
@@ -190,10 +191,11 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         }
         else if (skillDialog)
         {
-            SkillInfo *skill = skillDialog->getSkill(itemId - SKILL_MIN_ID);
+            const SkillInfo *const skill = skillDialog->getSkill(
+                itemId - SKILL_MIN_ID);
             if (skill)
             {
-                Image* image = skill->icon;
+                Image *const image = skill->icon;
 
                 if (image)
                 {
@@ -210,7 +212,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
     if (mItemMoved)
     {
         // Draw the item image being dragged by the cursor.
-        Image* image = mItemMoved->getImage();
+        const Image *const image = mItemMoved->getImage();
         if (image)
         {
             const int tPosX = mCursorPosX - (image->mBounds.w / 2);
@@ -250,7 +252,7 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
                 if (!PlayerInfo::getInventory())
                     return;
 
-                Item *item = PlayerInfo::getInventory()->findItem(
+                Item *const item = PlayerInfo::getInventory()->findItem(
                     itemId, itemColor);
 
                 if (item)
@@ -261,7 +263,8 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
             }
             else if (itemId < SKILL_MIN_ID && spellManager)
             {
-                TextCommand *spell = spellManager->getSpellByItem(itemId);
+                const TextCommand *const spell = spellManager->getSpellByItem(
+                    itemId);
                 if (spell)
                     itemShortcut[mNumber]->removeItem(index);
             }
@@ -372,7 +375,8 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
         if (!PlayerInfo::getInventory())
             return;
 
-        Item *item = PlayerInfo::getInventory()->findItem(itemId, itemColor);
+        const Item *const item = PlayerInfo::getInventory()->findItem(
+            itemId, itemColor);
 
         if (item && viewport)
         {
@@ -387,7 +391,7 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     else if (itemId < SKILL_MIN_ID && spellManager)
     {
         mItemPopup->setVisible(false);
-        TextCommand *spell = spellManager->getSpellByItem(itemId);
+        TextCommand *const spell = spellManager->getSpellByItem(itemId);
         if (spell && viewport)
         {
             mSpellPopup->setItem(spell);

@@ -53,10 +53,12 @@ enum KeyTypes
 
 struct KeyItem
 {
-    KeyItem() : type(-1), value(-1)
+    KeyItem() :
+        type(-1), value(-1)
     { }
 
-    KeyItem(int type0, int value0) : type(type0), value(value0)
+    KeyItem(const int type0, const int value0) :
+        type(type0), value(value0)
     { }
 
     int type;
@@ -96,44 +98,44 @@ class InputManager
 
         bool handleEvent(const SDL_Event &event);
 
-        bool checkKey(const KeyData *key);
+        bool checkKey(const KeyData *const key) const;
 
         void retrieve();
 
-        void store();
+        void store() const;
 
         void resetKeys();
 
-        void makeDefault(int i);
+        void makeDefault(const int i);
 
-        bool hasConflicts(int &key1, int &key2);
+        bool hasConflicts(int &key1, int &key2) const;
 
         void callbackNewKey();
 
         KeyFunction &getKey(int index);
 
-        std::string getKeyValueString(int index) const;
+        std::string getKeyValueString(const int index) const;
 
-        std::string getKeyStringLong(int index) const;
+        std::string getKeyStringLong(const int index) const;
 
-        void addActionKey(int action, int type, int val);
+        void addActionKey(const int action, const int type, const int val);
 
-        void setNewKey(const SDL_Event &event, int type);
+        void setNewKey(const SDL_Event &event, const int type);
 
         void unassignKey();
 
-        bool isActionActive(int index) const;
+        bool isActionActive(const int index) const;
 
         /**
          * Set the index of the new key to be assigned.
          */
-        void setNewKeyIndex(int value)
+        void setNewKeyIndex(const int value)
         { mNewKeyIndex = value; }
 
         /**
          * Set a reference to the key setup window.
          */
-        void setSetupInput(Setup_Input *setupInput)
+        void setSetupInput(Setup_Input *const setupInput)
         { mSetupInput = setupInput; }
 
         /**
@@ -144,19 +146,19 @@ class InputManager
 
         void updateKeyActionMap(KeyToActionMap &actionMap,
                                 KeyToIdMap &idMap, KeyTimeMap &keyTimeMap,
-                                int type);
+                                const int type) const;
 
-        bool invokeKey(const KeyData *key, int keyNum);
+        bool invokeKey(const KeyData *const key, const int keyNum);
 
-        bool handleAssignKey(const SDL_Event &event, int type);
+        bool handleAssignKey(const SDL_Event &event, const int type);
 
-        void handleRepeat();
+        void handleRepeat() const;
 
-        bool triggerAction(const KeysVector *ptrs);
+        bool triggerAction(const KeysVector *const ptrs);
 
-        int getKeyIndex(int value, int grp, int type) const;
+        int getKeyIndex(const int value, const int grp, const int type) const;
 
-        void update();
+        void update() const;
 
         void updateConditionMask();
 

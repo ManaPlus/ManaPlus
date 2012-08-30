@@ -61,7 +61,7 @@ TabbedArea::~TabbedArea()
     mArrowButton[1] = nullptr;
 }
 
-void TabbedArea::enableScrollButtons(bool enable)
+void TabbedArea::enableScrollButtons(const bool enable)
 {
     if (mEnableScrollButtons && !enable)
     {
@@ -86,7 +86,8 @@ int TabbedArea::getNumberOfTabs() const
 
 Tab *TabbedArea::getTab(const std::string &name) const
 {
-    TabContainer::const_iterator itr = mTabs.begin(), itr_end = mTabs.end();
+    TabContainer::const_iterator itr = mTabs.begin();
+    const TabContainer::const_iterator itr_end = mTabs.end();
     while (itr != itr_end)
     {
         if ((*itr).first->getCaption() == name)
@@ -107,7 +108,8 @@ void TabbedArea::draw(gcn::Graphics *graphics)
 
 gcn::Widget *TabbedArea::getWidget(const std::string &name) const
 {
-    TabContainer::const_iterator itr = mTabs.begin(), itr_end = mTabs.end();
+    TabContainer::const_iterator itr = mTabs.begin();
+    const TabContainer::const_iterator itr_end = mTabs.end();
     while (itr != itr_end)
     {
         if ((*itr).first->getCaption() == name)
@@ -121,7 +123,7 @@ gcn::Widget *TabbedArea::getWidget(const std::string &name) const
 
 gcn::Widget *TabbedArea::getCurrentWidget()
 {
-    gcn::Tab *tab = getSelectedTab();
+    const gcn::Tab *const tab = getSelectedTab();
 
     if (tab)
         return getWidget(tab->getCaption());
@@ -136,17 +138,18 @@ void TabbedArea::addTab(gcn::Tab* tab, gcn::Widget* widget)
 
     gcn::TabbedArea::addTab(tab, widget);
 
-    int width = getWidth() - 2 * getFrameSize();
-    int height = getHeight() - 2 * getFrameSize() - mTabContainer->getHeight();
+    const int width = getWidth() - 2 * getFrameSize();
+    const int height = getHeight() - 2 * getFrameSize()
+        - mTabContainer->getHeight();
     widget->setSize(width, height);
 
     updateTabsWidth();
     updateArrowEnableState();
 }
 
-void TabbedArea::addTab(const std::string &caption, gcn::Widget *widget)
+void TabbedArea::addTab(const std::string &caption, gcn::Widget *const widget)
 {
-    Tab *tab = new Tab;
+    Tab *const tab = new Tab;
     tab->setCaption(caption);
     mTabsToDelete.push_back(tab);
 
@@ -159,7 +162,7 @@ void TabbedArea::removeTab(gcn::Tab *tab)
 
     if (tab == mSelectedTab)
     {
-        int index = getSelectedTabIndex();
+        const int index = getSelectedTabIndex();
 
         if (index == static_cast<int>(mTabs.size()) - 1 && mTabs.size() == 1)
             tabIndexToBeSelected = -1;
@@ -221,9 +224,9 @@ void TabbedArea::mousePressed(gcn::MouseEvent &mouseEvent)
 
     if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
     {
-        gcn::Widget *widget = mTabContainer->getWidgetAt(mouseEvent.getX(),
-                                                         mouseEvent.getY());
-        gcn::Tab *tab = dynamic_cast<gcn::Tab*>(widget);
+        gcn::Widget *const widget = mTabContainer->getWidgetAt(
+            mouseEvent.getX(), mouseEvent.getY());
+        gcn::Tab *const tab = dynamic_cast<gcn::Tab *const>(widget);
 
         if (tab)
         {
@@ -237,7 +240,7 @@ void TabbedArea::setSelectedTab(gcn::Tab *tab)
 {
     gcn::TabbedArea::setSelectedTab(tab);
 
-    Tab *newTab = dynamic_cast<Tab*>(tab);
+    Tab *const newTab = dynamic_cast<Tab *const>(tab);
 
     if (newTab)
         newTab->setCurrent();
@@ -265,20 +268,20 @@ void TabbedArea::setSelectedTabByPos(int tab)
 
 void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
 {
-    int width = getWidth() - 2 * getFrameSize()
-                - 2 * mWidgetContainer->getFrameSize();
-    int height = getHeight() - 2 * getFrameSize() - mWidgetContainer->getY()
-                 - 2 * mWidgetContainer->getFrameSize();
+    const int width = getWidth() - 2 * getFrameSize()
+        - 2 * mWidgetContainer->getFrameSize();
+    const int height = getHeight() - 2 * getFrameSize()
+        - mWidgetContainer->getY() - 2 * mWidgetContainer->getFrameSize();
     mWidgetContainer->setSize(width, height);
 
-    gcn::Widget *w = getCurrentWidget();
+    gcn::Widget *const w = getCurrentWidget();
     if (w)
     {
         int newScroll = 0;
         ScrollArea* scr = nullptr;
         if (mFollowDownScroll && height != 0)
         {
-            gcn::Rectangle rect = w->getDimension();
+            const gcn::Rectangle rect = w->getDimension();
             if (rect.height != 0 && rect.height > height + 2)
             {
                 scr = dynamic_cast<ScrollArea*>(w);
@@ -362,7 +365,7 @@ void TabbedArea::adjustTabPositions()
     int x = mArrowButton[0]->isVisible() ? mArrowButton[0]->getWidth() : 0;
     for (size_t i = mTabScrollIndex; i < sz; ++i)
     {
-        gcn::Tab* tab = mTabs[i].first;
+        gcn::Tab *const tab = mTabs[i].first;
         if (!tab)
             continue;
         tab->setPosition(x, maxTabHeight - tab->getHeight());
@@ -375,7 +378,7 @@ void TabbedArea::adjustTabPositions()
         x = 0;
         for (unsigned i = 0; i < mTabScrollIndex; ++i)
         {
-            gcn::Tab* tab = mTabs[i].first;
+            gcn::Tab *const tab = mTabs[i].first;
             if (tab)
             {
                 x -= tab->getWidth();
@@ -387,8 +390,8 @@ void TabbedArea::adjustTabPositions()
 
 void TabbedArea::action(const gcn::ActionEvent& actionEvent)
 {
-    Widget* source = actionEvent.getSource();
-    Tab* tab = dynamic_cast<Tab*>(source);
+    Widget *const source = actionEvent.getSource();
+    Tab *const tab = dynamic_cast<Tab *const>(source);
 
     if (tab)
     {
@@ -451,14 +454,14 @@ void TabbedArea::updateArrowEnableState()
     }
 }
 
-Tab *TabbedArea::getTabByIndex(int index) const
+Tab *TabbedArea::getTabByIndex(const int index) const
 {
     if (index < 0 || index >= static_cast<int>(mTabs.size()))
         return nullptr;
     return static_cast<Tab*>(mTabs[index].first);
 }
 
-gcn::Widget *TabbedArea::getWidgetByIndex(int index) const
+gcn::Widget *TabbedArea::getWidgetByIndex(const int index) const
 {
     if (index < 0 || index >= static_cast<int>(mTabs.size()))
         return nullptr;
@@ -487,7 +490,7 @@ void TabbedArea::keyPressed(gcn::KeyEvent& keyEvent)
     if (mBlockSwitching || keyEvent.isConsumed() || !isFocused())
         return;
 
-    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     if (actionId == Input::KEY_GUI_LEFT)
     {

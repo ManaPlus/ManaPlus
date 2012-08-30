@@ -47,7 +47,7 @@ static std::string const buttonFiles[2] =
     "scrollbuttons_pressed.xml"
 };
 
-ScrollArea::ScrollArea(bool opaque, const std::string &skin):
+ScrollArea::ScrollArea(const bool opaque, const std::string &skin) :
     gcn::ScrollArea(),
     mX(0),
     mY(0),
@@ -66,8 +66,8 @@ ScrollArea::ScrollArea(bool opaque, const std::string &skin):
     init(skin);
 }
 
-ScrollArea::ScrollArea(gcn::Widget *widget, bool opaque,
-                       const std::string &skin):
+ScrollArea::ScrollArea(gcn::Widget *const widget, const bool opaque,
+                       const std::string &skin) :
     gcn::ScrollArea(widget),
     mX(0),
     mY(0),
@@ -91,7 +91,7 @@ ScrollArea::~ScrollArea()
     delete getContent();
 
     instances--;
-    Theme *theme = Theme::instance();
+    Theme *const theme = Theme::instance();
     if (theme)
     {
         theme->unloadRect(background);
@@ -144,7 +144,7 @@ void ScrollArea::init(std::string skinName)
 
         for (int i = 0; i < 2; i ++)
         {
-            Skin *skin = Theme::instance()->load(
+            Skin *const skin = Theme::instance()->load(
                 buttonFiles[i], "scrollbuttons.xml");
             if (skin)
             {
@@ -176,7 +176,7 @@ void ScrollArea::logic()
         return;
 
     gcn::ScrollArea::logic();
-    gcn::Widget *content = getContent();
+    gcn::Widget *const content = getContent();
 
     // When no scrollbar in a certain direction, adapt content size to match
     // the content dimension exactly.
@@ -218,8 +218,8 @@ void ScrollArea::logic()
 
 void ScrollArea::updateAlpha()
 {
-    float alpha = std::max(Client::getGuiAlpha(),
-                           Theme::instance()->getMinimumOpacity());
+    const float alpha = std::max(Client::getGuiAlpha(),
+        Theme::instance()->getMinimumOpacity());
 
     if (alpha != mAlpha)
     {
@@ -329,7 +329,8 @@ void ScrollArea::setOpaque(bool opaque)
     setFrameSize(mOpaque ? 2 : 0);
 }
 
-void ScrollArea::drawButton(gcn::Graphics *graphics, BUTTON_DIR dir)
+void ScrollArea::drawButton(gcn::Graphics *const graphics,
+                            const BUTTON_DIR dir)
 {
     int state = 0;
     gcn::Rectangle dim;
@@ -366,27 +367,27 @@ void ScrollArea::drawButton(gcn::Graphics *graphics, BUTTON_DIR dir)
     }
 }
 
-void ScrollArea::drawUpButton(gcn::Graphics *graphics)
+void ScrollArea::drawUpButton(gcn::Graphics *const graphics)
 {
     drawButton(graphics, UP);
 }
 
-void ScrollArea::drawDownButton(gcn::Graphics *graphics)
+void ScrollArea::drawDownButton(gcn::Graphics *const graphics)
 {
     drawButton(graphics, DOWN);
 }
 
-void ScrollArea::drawLeftButton(gcn::Graphics *graphics)
+void ScrollArea::drawLeftButton(gcn::Graphics *const graphics)
 {
     drawButton(graphics, LEFT);
 }
 
-void ScrollArea::drawRightButton(gcn::Graphics *graphics)
+void ScrollArea::drawRightButton(gcn::Graphics *const graphics)
 {
     drawButton(graphics, RIGHT);
 }
 
-void ScrollArea::drawVBar(gcn::Graphics *graphics)
+void ScrollArea::drawVBar(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle dim = getVerticalBarDimension();
     graphics->setColor(mGray);
@@ -394,7 +395,7 @@ void ScrollArea::drawVBar(gcn::Graphics *graphics)
     graphics->setColor(mBackground);
 }
 
-void ScrollArea::drawHBar(gcn::Graphics *graphics)
+void ScrollArea::drawHBar(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle dim = getHorizontalBarDimension();
     graphics->setColor(mGray);
@@ -402,9 +403,9 @@ void ScrollArea::drawHBar(gcn::Graphics *graphics)
     graphics->setColor(mBackground);
 }
 
-void ScrollArea::drawVMarker(gcn::Graphics *graphics)
+void ScrollArea::drawVMarker(gcn::Graphics *const graphics)
 {
-    gcn::Rectangle dim = getVerticalMarkerDimension();
+    const gcn::Rectangle dim = getVerticalMarkerDimension();
 
     if ((mHasMouse) && (mX > (getWidth() - getScrollbarWidth())))
     {
@@ -418,9 +419,9 @@ void ScrollArea::drawVMarker(gcn::Graphics *graphics)
     }
 }
 
-void ScrollArea::drawHMarker(gcn::Graphics *graphics)
+void ScrollArea::drawHMarker(gcn::Graphics *const graphics)
 {
-    gcn::Rectangle dim = getHorizontalMarkerDimension();
+    const gcn::Rectangle dim = getHorizontalMarkerDimension();
 
     if ((mHasMouse) && (mY > (getHeight() - getScrollbarWidth())))
     {

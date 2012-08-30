@@ -42,8 +42,8 @@ int ProgressBar::mInstances = 0;
 float ProgressBar::mAlpha = 1.0;
 
 ProgressBar::ProgressBar(float progress,
-                         int width, int height,
-                         int color):
+                         const int width, const int height,
+                         const int color):
     gcn::Widget(),
     mSmoothProgress(true),
     mProgressPalette(color),
@@ -119,7 +119,7 @@ void ProgressBar::logic()
 
 void ProgressBar::updateAlpha()
 {
-    float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     if (mAlpha != alpha)
@@ -148,7 +148,7 @@ void ProgressBar::draw(gcn::Graphics *graphics)
            mProgress, mText, mVertexes, &mRedraw);
 }
 
-void ProgressBar::setProgress(float progress)
+void ProgressBar::setProgress(const float progress)
 {
     const float p = std::min(1.0f, std::max(0.0f, progress));
     mProgressToGo = p;
@@ -160,9 +160,9 @@ void ProgressBar::setProgress(float progress)
         mColorToGo = Theme::getProgressColor(mProgressPalette, progress);
 }
 
-void ProgressBar::setProgressPalette(int progressPalette)
+void ProgressBar::setProgressPalette(const int progressPalette)
 {
-    int oldPalette = mProgressPalette;
+    const int oldPalette = mProgressPalette;
     mProgressPalette = progressPalette;
 
     if (mProgressPalette != oldPalette && mProgressPalette >= 0)
@@ -178,12 +178,12 @@ void ProgressBar::setColor(const gcn::Color &color)
 }
 
 void ProgressBar::render(Graphics *graphics, const gcn::Rectangle &area,
-                         const gcn::Color &color, float progress,
-                         const std::string &text, GraphicsVertexes *vert,
-                         bool *redraw)
+                         const gcn::Color &color, const float progress,
+                         const std::string &text, GraphicsVertexes *const vert,
+                         bool *const redraw)
 {
-    gcn::Font *oldFont = graphics->getFont();
-    gcn::Color oldColor = graphics->getColor();
+    gcn::Font *const oldFont = graphics->getFont();
+    const gcn::Color oldColor = graphics->getColor();
 
     if (*redraw || graphics->getRedraw())
     {
@@ -220,11 +220,11 @@ void ProgressBar::render(Graphics *graphics, const gcn::Rectangle &area,
 }
 
 void ProgressBar::render(Graphics *graphics, const gcn::Rectangle &area,
-                         const gcn::Color &color, float progress,
+                         const gcn::Color &color, const float progress,
                          const std::string &text)
 {
-    gcn::Font *oldFont = graphics->getFont();
-    gcn::Color oldColor = graphics->getColor();
+    gcn::Font *const oldFont = graphics->getFont();
+    const gcn::Color oldColor = graphics->getColor();
 
     graphics->drawImageRect(area, mBorder);
 

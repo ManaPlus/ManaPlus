@@ -23,8 +23,8 @@
 
 #include "debug.h"
 
-VertContainer::VertContainer(int verticalItemSize, bool resizable,
-                             int leftSpacing):
+VertContainer::VertContainer(const int verticalItemSize, const bool resizable,
+                             const int leftSpacing):
     mVerticalItemSize(verticalItemSize),
     mCount(0),
     mNextY(0),
@@ -35,12 +35,13 @@ VertContainer::VertContainer(int verticalItemSize, bool resizable,
     addWidgetListener(this);
 }
 
-void VertContainer::add1(gcn::Widget *widget, int spacing)
+void VertContainer::add1(gcn::Widget *const widget, const int spacing)
 {
     add2(widget, mResizable, spacing);
 }
 
-void VertContainer::add2(gcn::Widget *widget, bool resizable, int spacing)
+void VertContainer::add2(gcn::Widget *const widget, const bool resizable,
+                         const int spacing)
 {
     if (!widget)
         return;

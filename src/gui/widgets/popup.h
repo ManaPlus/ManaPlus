@@ -68,7 +68,7 @@ class Popup : public Container, public gcn::MouseListener,
         /**
          * Sets the window container to be used by new popups.
          */
-        static void setWindowContainer(WindowContainer *windowContainer);
+        static void setWindowContainer(WindowContainer *const windowContainer);
 
         /**
          * Draws the popup.
@@ -83,14 +83,14 @@ class Popup : public Container, public gcn::MouseListener,
         /**
          * Sets the location relative to the given widget.
          */
-        void setLocationRelativeTo(gcn::Widget *widget);
+        void setLocationRelativeTo(gcn::Widget *const widget);
 
         void mouseMoved(gcn::MouseEvent &event);
 
         /**
          * Sets the minimum width of the popup.
          */
-        void setMinWidth(int width);
+        void setMinWidth(const int width);
 
         int getMinWidth() const
         { return mMinWidth; }
@@ -98,7 +98,7 @@ class Popup : public Container, public gcn::MouseListener,
         /**
          * Sets the minimum height of the popup.
          */
-        void setMinHeight(int height);
+        void setMinHeight(const int height);
 
         int getMinHeight() const
         { return mMinHeight; }
@@ -106,7 +106,7 @@ class Popup : public Container, public gcn::MouseListener,
         /**
          * Sets the maximum width of the popup.
          */
-        void setMaxWidth(int width);
+        void setMaxWidth(const int width);
 
         int getMaxWidth() const
         { return mMaxWidth; }
@@ -114,7 +114,7 @@ class Popup : public Container, public gcn::MouseListener,
         /**
          * Sets the minimum height of the popup.
          */
-        void setMaxHeight(int height);
+        void setMaxHeight(const int height);
 
         int getMaxHeight() const
         { return mMaxHeight; }
@@ -157,7 +157,7 @@ class Popup : public Container, public gcn::MouseListener,
          * the popup. Prevents the popup from extending off-screen, if
          * possible.
          */
-        void position(int x, int y);
+        void position(const int x, const int y);
 
         void hide();
 

@@ -36,13 +36,13 @@
 class VertContainer : public Container, public gcn::WidgetListener
 {
     public:
-        VertContainer(int verticalItemSize, bool resizable = true,
-                      int leftSpacing = 0);
+        VertContainer(const int verticalItemSize, const bool resizable = true,
+                      const int leftSpacing = 0);
 
-        virtual void add2(gcn::Widget *widget, bool resizable,
-                          int spacing = -1);
+        virtual void add2(gcn::Widget *const widget, const bool resizable,
+                          const int spacing = -1);
 
-        virtual void add1(gcn::Widget *widget, int spacing = -1);
+        virtual void add1(gcn::Widget *const widget, const int spacing = -1);
 
         virtual void clear();
 

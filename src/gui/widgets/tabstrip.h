@@ -29,9 +29,10 @@
 class TabStrip : public WidgetGroup
 {
     public:
-        TabStrip(std::string group, int height, int spacing = 0);
+        TabStrip(const std::string &group, const int height,
+                 const int spacing = 0);
 
-        TabStrip(int height, int spacing = 0);
+        TabStrip(const int height, const int spacing = 0);
 
         gcn::Widget *createWidget(std::string name);
 

@@ -91,14 +91,14 @@ Popup::~Popup()
     }
 }
 
-void Popup::setWindowContainer(WindowContainer *wc)
+void Popup::setWindowContainer(WindowContainer *const wc)
 {
     windowContainer = wc;
 }
 
 void Popup::draw(gcn::Graphics *graphics)
 {
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (mRedraw)
     {
@@ -138,7 +138,7 @@ void Popup::setContentSize(int width, int height)
     mRedraw = true;
 }
 
-void Popup::setLocationRelativeTo(gcn::Widget *widget)
+void Popup::setLocationRelativeTo(gcn::Widget *const widget)
 {
     if (!widget)
         return;
@@ -154,7 +154,7 @@ void Popup::setLocationRelativeTo(gcn::Widget *widget)
     mRedraw = true;
 }
 
-void Popup::setMinWidth(int width)
+void Popup::setMinWidth(const int width)
 {
     if (mSkin)
     {
@@ -167,7 +167,7 @@ void Popup::setMinWidth(int width)
     }
 }
 
-void Popup::setMinHeight(int height)
+void Popup::setMinHeight(const int height)
 {
     if (mSkin)
     {
@@ -180,12 +180,12 @@ void Popup::setMinHeight(int height)
     }
 }
 
-void Popup::setMaxWidth(int width)
+void Popup::setMaxWidth(const int width)
 {
     mMaxWidth = width;
 }
 
-void Popup::setMaxHeight(int height)
+void Popup::setMaxHeight(const int height)
 {
     mMaxHeight = height;
 }
@@ -195,7 +195,7 @@ void Popup::scheduleDelete()
     windowContainer->scheduleDelete(this);
 }
 
-void Popup::position(int x, int y)
+void Popup::position(const int x, const int y)
 {
     const int distance = 20;
 

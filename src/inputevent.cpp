@@ -22,7 +22,7 @@
 
 #include "debug.h"
 
-InputEvent::InputEvent(int action0, int mask0) :
+InputEvent::InputEvent(const int action0, const int mask0) :
     action(action0),
     mask(mask0)
 {

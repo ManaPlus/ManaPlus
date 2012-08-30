@@ -45,8 +45,8 @@
 int Window::instances = 0;
 int Window::mouseResize = 0;
 
-Window::Window(const std::string &caption, bool modal, Window *parent,
-               std::string skin):
+Window::Window(const std::string &caption, const bool modal,
+               Window *const parent, std::string skin):
     gcn::Window(caption),
     mGrip(nullptr),
     mParent(parent),
@@ -165,7 +165,7 @@ void Window::draw(gcn::Graphics *graphics)
     if (!mSkin)
         return;
 
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics*>(graphics);
     bool update = false;
 
     if (mRedraw)
@@ -190,7 +190,7 @@ void Window::draw(gcn::Graphics *graphics)
     // Draw Close Button
     if (mCloseButton && mSkin->getCloseImage())
     {
-        Image *button = mSkin->getCloseImage();
+        const Image *const button = mSkin->getCloseImage();
         const int x = getWidth() - button->getWidth() - getPadding();
         g->drawImage(button, x, getPadding());
     }
@@ -198,7 +198,7 @@ void Window::draw(gcn::Graphics *graphics)
     // Draw Sticky Button
     if (mStickyButton)
     {
-        Image *button = mSkin->getStickyImage(mSticky);
+        const Image *const button = mSkin->getStickyImage(mSticky);
         if (button)
         {
             int x = getWidth() - button->getWidth() - getPadding();
@@ -238,7 +238,7 @@ void Window::setContentSize(int width, int height)
     setSize(width, height);
 }
 
-void Window::setLocationRelativeTo(gcn::Widget *widget)
+void Window::setLocationRelativeTo(const gcn::Widget *const widget)
 {
     if (!widget)
         return;
@@ -253,7 +253,7 @@ void Window::setLocationRelativeTo(gcn::Widget *widget)
                 getY() + (wy + (widget->getHeight() - getHeight()) / 2 - y));
 }
 
-void Window::setLocationHorisontallyRelativeTo(gcn::Widget *widget)
+void Window::setLocationHorisontallyRelativeTo(const gcn::Widget *const widget)
 {
     if (!widget)
         return;
@@ -267,7 +267,7 @@ void Window::setLocationHorisontallyRelativeTo(gcn::Widget *widget)
     setPosition(getX() + (wx + (widget->getWidth() - getWidth()) / 2 - x), 0);
 }
 
-void Window::setLocationRelativeTo(ImageRect::ImagePosition position,
+void Window::setLocationRelativeTo(const ImageRect::ImagePosition position,
                                    int offsetX, int offsetY)
 {
     if (position == ImageRect::UPPER_LEFT)
@@ -339,17 +339,17 @@ void Window::setMinHeight(int height)
     }
 }
 
-void Window::setMaxWidth(int width)
+void Window::setMaxWidth(const int width)
 {
     mMaxWinWidth = width;
 }
 
-void Window::setMaxHeight(int height)
+void Window::setMaxHeight(const int height)
 {
     mMaxWinHeight = height;
 }
 
-void Window::setResizable(bool r)
+void Window::setResizable(const bool r)
 {
     if (static_cast<bool>(mGrip) == r)
         return;
@@ -415,7 +415,7 @@ void Window::widgetHidden(const gcn::Event &event A_UNUSED)
     }
 }
 
-void Window::setCloseButton(bool flag)
+void Window::setCloseButton(const bool flag)
 {
     mCloseButton = flag;
 }
@@ -425,17 +425,17 @@ bool Window::isResizable() const
     return mGrip;
 }
 
-void Window::setStickyButton(bool flag)
+void Window::setStickyButton(const bool flag)
 {
     mStickyButton = flag;
 }
 
-void Window::setSticky(bool sticky)
+void Window::setSticky(const bool sticky)
 {
     mSticky = sticky;
 }
 
-void Window::setStickyButtonLock(bool lock)
+void Window::setStickyButtonLock(const bool lock)
 {
     mStickyButtonLock = lock;
     mStickyButton = lock;
@@ -480,7 +480,7 @@ void Window::mousePressed(gcn::MouseEvent &event)
         // Handle close button
         if (mCloseButton && mSkin)
         {
-            Image *img = mSkin->getCloseImage();
+            const Image *const img = mSkin->getCloseImage();
             if (img)
             {
                 gcn::Rectangle closeButtonRect(
@@ -501,13 +501,13 @@ void Window::mousePressed(gcn::MouseEvent &event)
         // Handle sticky button
         if (mStickyButton && mSkin)
         {
-            Image *button = mSkin->getStickyImage(mSticky);
+            const Image *const button = mSkin->getStickyImage(mSticky);
             if (button)
             {
                 int rx = getWidth() - button->getWidth() - getPadding();
                 if (mCloseButton)
                 {
-                    Image *img = mSkin->getCloseImage();
+                    const Image *const img = mSkin->getCloseImage();
                     if (img)
                         rx -= img->getWidth();
                 }
@@ -561,7 +561,7 @@ void Window::mouseMoved(gcn::MouseEvent &event)
     if (!gui)
         return;
 
-    int resizeHandles = getResizeHandles(event);
+    const int resizeHandles = getResizeHandles(event);
 
     // Changes the custom mouse cursor based on it's current position.
     switch (resizeHandles)
@@ -590,7 +590,7 @@ void Window::mouseMoved(gcn::MouseEvent &event)
         viewport->hideBeingPopup();
 }
 
-bool Window::canMove()
+bool Window::canMove() const
 {
     return !mStickyButtonLock || !mSticky;
 }
@@ -627,7 +627,8 @@ void Window::mouseDragged(gcn::MouseEvent &event)
 
         if (mouseResize & (TOP | BOTTOM))
         {
-            int newHeight = newDim.height + ((mouseResize & TOP) ? -dy : dy);
+            const int newHeight = newDim.height
+                + ((mouseResize & TOP) ? -dy : dy);
             newDim.height = std::min(mMaxWinHeight,
                                      std::max(mMinWinHeight, newHeight));
 
@@ -637,7 +638,8 @@ void Window::mouseDragged(gcn::MouseEvent &event)
 
         if (mouseResize & (LEFT | RIGHT))
         {
-            int newWidth = newDim.width + ((mouseResize & LEFT) ? -dx : dx);
+            const int newWidth = newDim.width
+                + ((mouseResize & LEFT) ? -dx : dx);
             newDim.width = std::min(mMaxWinWidth,
                                     std::max(mMinWinWidth, newWidth));
 
@@ -811,8 +813,8 @@ void Window::setDefaultSize()
 }
 
 void Window::setDefaultSize(int defaultWidth, int defaultHeight,
-                            ImageRect::ImagePosition position,
-                            int offsetX, int offsetY)
+                            const ImageRect::ImagePosition position,
+                            const int offsetX, const int offsetY)
 {
     int x = 0, y = 0;
 
@@ -869,7 +871,8 @@ void Window::resetToDefaultSize()
     saveWindowState();
 }
 
-void Window::adjustPositionAfterResize(int oldScreenWidth, int oldScreenHeight)
+void Window::adjustPositionAfterResize(const int oldScreenWidth,
+                                       const int oldScreenHeight)
 {
     gcn::Rectangle dimension = getDimension();
 
@@ -885,7 +888,7 @@ void Window::adjustPositionAfterResize(int oldScreenWidth, int oldScreenHeight)
     ensureOnScreen();
 }
 
-int Window::getResizeHandles(gcn::MouseEvent &event)
+int Window::getResizeHandles(const gcn::MouseEvent &event)
 {
     if ((mStickyButtonLock && mSticky) || event.getX() < 0 || event.getY() < 0)
         return 0;
@@ -917,7 +920,7 @@ int Window::getResizeHandles(gcn::MouseEvent &event)
     return resizeHandles;
 }
 
-bool Window::isResizeAllowed(gcn::MouseEvent &event)
+bool Window::isResizeAllowed(const gcn::MouseEvent &event)
 {
     const int y = event.getY();
 
@@ -938,7 +941,7 @@ bool Window::isResizeAllowed(gcn::MouseEvent &event)
 
 int Window::getGuiAlpha()
 {
-    float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
     return static_cast<int>(alpha * 255.0f);
 }
@@ -966,13 +969,14 @@ void Window::clearLayout()
     }
 }
 
-LayoutCell &Window::place(int x, int y, gcn::Widget *wg, int w, int h)
+LayoutCell &Window::place(const int x, const int y, gcn::Widget *const wg,
+                          const int w, const int h)
 {
     add(wg);
     return getLayout().place(wg, x, y, w, h);
 }
 
-ContainerPlacer Window::getPlacer(int x, int y)
+ContainerPlacer Window::getPlacer(const int x, const int y)
 {
     return ContainerPlacer(this, &getLayout().at(x, y));
 }
@@ -1032,7 +1036,7 @@ void Window::ensureOnScreen()
     setDimension(dimension);
 }
 
-gcn::Rectangle Window::getWindowArea()
+gcn::Rectangle Window::getWindowArea() const
 {
     return gcn::Rectangle(getPadding(),
                           getPadding(),
@@ -1040,11 +1044,11 @@ gcn::Rectangle Window::getWindowArea()
                           getHeight() - getPadding() * 2);
 }
 
-int Window::getOption(std::string name, int def)
+int Window::getOption(const std::string &name, const int def) const
 {
     if (mSkin)
     {
-        int val = mSkin->getOption(name);
+        const int val = mSkin->getOption(name);
         if (val)
             return val;
         return def;
@@ -1059,7 +1063,7 @@ bool Window::getOptionBool(std::string name)
     return 0;
 }
 
-int Window::getTitlePadding()
+int Window::getTitlePadding() const
 {
     if (mSkin)
         mSkin->getTitlePadding();

@@ -69,9 +69,11 @@ void TextPreview::draw(gcn::Graphics* graphics)
 
     if (mTextBGColor && typeid(*mFont) == typeid(SDLFont))
     {
-        SDLFont *font = static_cast<SDLFont*>(mFont);
-        int x = font->getWidth(mText) + 1 + 2 * ((mOutline || mShadow) ? 1 :0);
-        int y = font->getHeight() + 1 + 2 * ((mOutline || mShadow) ? 1 : 0);
+        const SDLFont *const font = static_cast<SDLFont*>(mFont);
+        const int x = font->getWidth(mText) + 1
+            + 2 * ((mOutline || mShadow) ? 1 :0);
+        const int y = font->getHeight() + 1
+            + 2 * ((mOutline || mShadow) ? 1 : 0);
         graphics->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),
                                       static_cast<int>(mTextBGColor->g),
                                       static_cast<int>(mTextBGColor->b),

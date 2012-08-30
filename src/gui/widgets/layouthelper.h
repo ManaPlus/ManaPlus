@@ -38,7 +38,7 @@ class LayoutHelper : public gcn::WidgetListener
         /**
          * Constructor.
          */
-        LayoutHelper(gcn::Container *container);
+        LayoutHelper(gcn::Container *const container);
 
         /**
          * Destructor.
@@ -65,12 +65,13 @@ class LayoutHelper : public gcn::WidgetListener
         /**
          * Adds a widget to the container and sets it at given cell.
          */
-        LayoutCell &place(int x, int y, gcn::Widget *, int w = 1, int h = 1);
+        LayoutCell &place(const int x, const int y, gcn::Widget *const wg,
+                          const int w = 1, const int h = 1);
 
         /**
          * Returns a proxy for adding widgets in an inner table of the layout.
          */
-        ContainerPlacer getPlacer(int x, int y);
+        ContainerPlacer getPlacer(const int x, const int y);
 
         /**
          * Called whenever the managed container changes size.

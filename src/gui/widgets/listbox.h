@@ -40,7 +40,7 @@ class ListBox : public gcn::ListBox
         /**
          * Constructor.
          */
-        ListBox(gcn::ListModel *listModel);
+        ListBox(gcn::ListModel *const listModel);
 
         ~ListBox();
 

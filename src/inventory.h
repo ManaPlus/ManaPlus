@@ -64,7 +64,7 @@ class Inventory
          *
          * @param size the number of items that fit in the inventory
          */
-        Inventory(int type, int size = -1);
+        Inventory(const int type, const int size = -1);
 
         /**
          * Destructor.
@@ -80,7 +80,7 @@ class Inventory
         /**
          * Returns the item at the specified index.
          */
-        Item *getItem(int index) const;
+        Item *getItem(const int index) const;
 
         /**
          * Searches for the specified item by it's id.
@@ -89,34 +89,35 @@ class Inventory
          * @param color The color of the item to be searched.
          * @return Item found on success, NULL on failure.
          */
-        Item *findItem(int itemId, unsigned char color) const;
+        Item *findItem(const int itemId, const unsigned char color) const;
 
         /**
          * Adds a new item in a free slot.
          */
-        void addItem(int id, int quantity, int refine, unsigned char color,
-                     bool equipment = false);
+        void addItem(const int id, const int quantity, const int refine,
+                     const unsigned char color, bool equipment = false);
 
         /**
          * Sets the item at the given position.
          */
-        void setItem(int index, int id, int quantity, int refine,
-                     unsigned char color, bool equipment = false);
+        void setItem(const int index, const int id, const int quantity,
+                     const int refine, const unsigned char color,
+                     const bool equipment = false);
 
         /**
          * Remove a item from the inventory.
          */
-        void removeItem(int id);
+        void removeItem(const int id);
 
         /**
          * Remove the item at the specified index from the inventory.
          */
-        void removeItemAt(int index);
+        void removeItemAt(const int index);
 
         /**
          * Checks if the given item is in the inventory.
          */
-        bool contains(Item *item) const;
+        bool contains(const Item *const item) const;
 
         /**
          * Returns id of next free slot or -1 if all occupied.
@@ -139,9 +140,9 @@ class Inventory
          */
         int getLastUsedSlot() const;
 
-        void addInventoyListener(InventoryListener* listener);
+        void addInventoyListener(InventoryListener *const listener);
 
-        void removeInventoyListener(InventoryListener* listener);
+        void removeInventoyListener(InventoryListener *const listener);
 
         int getType() const
         { return mType; }
@@ -150,9 +151,9 @@ class Inventory
         { return mType == INVENTORY; }
 
         Item *findItemBySprite(std::string spritePath,
-                               Gender gender, int race);
+                               const Gender gender, const int race) const;
 
-        std::string getName();
+        std::string getName() const;
 
     protected:
         typedef std::list<InventoryListener*> InventoryListenerList;

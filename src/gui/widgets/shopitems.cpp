@@ -28,7 +28,7 @@
 
 #include "debug.h"
 
-ShopItems::ShopItems(bool mergeDuplicates) :
+ShopItems::ShopItems(const bool mergeDuplicates) :
     mMergeDuplicates(mergeDuplicates)
 {
 }
@@ -43,7 +43,7 @@ int ShopItems::getNumberOfElements()
     return static_cast<int>(mShopItems.size());
 }
 
-bool ShopItems::empty()
+bool ShopItems::empty() const
 {
     return mShopItems.empty();
 }
@@ -59,21 +59,23 @@ std::string ShopItems::getElementAt(int i)
     return mShopItems.at(i)->getDisplayName();
 }
 
-void ShopItems::addItem(int id, unsigned char color, int amount, int price)
+void ShopItems::addItem(const int id, const unsigned char color,
+                        const int amount, const int price)
 {
     mShopItems.push_back(new ShopItem(-1, id, color, amount, price));
 }
 
-void ShopItems::addItemNoDup(int id, unsigned char color,
-                             int amount, int price)
+void ShopItems::addItemNoDup(const int id, const unsigned char color,
+                             const int amount, const int price)
 {
-    ShopItem *item = findItem(id, color);
+    const ShopItem *const item = findItem(id, color);
     if (!item)
         mShopItems.push_back(new ShopItem(-1, id, color, amount, price));
 }
 
-void ShopItems::addItem2(int inventoryIndex, int id, unsigned char color,
-                         int quantity, int price)
+void ShopItems::addItem2(const int inventoryIndex, const int id,
+                         const unsigned char color,
+                         const int quantity, const int price)
 {
     ShopItem *item = nullptr;
     if (mMergeDuplicates)
@@ -98,7 +100,7 @@ ShopItem *ShopItems::at(unsigned int i) const
     return mShopItems.at(i);
 }
 
-void ShopItems::erase(unsigned int i)
+void ShopItems::erase(const unsigned int i)
 {
     if (i >= mShopItems.size())
         return;
@@ -106,7 +108,7 @@ void ShopItems::erase(unsigned int i)
     mShopItems.erase(mShopItems.begin() + i);
 }
 
-void ShopItems::del(unsigned int i)
+void ShopItems::del(const unsigned int i)
 {
     if (i >= mShopItems.size())
         return;
@@ -122,12 +124,12 @@ void ShopItems::clear()
     mShopItems.clear();
 }
 
-ShopItem *ShopItems::findItem(int id, unsigned char color) const
+ShopItem *ShopItems::findItem(const int id, const unsigned char color) const
 {
     ShopItem *item;
 
     std::vector<ShopItem*>::const_iterator it = mShopItems.begin();
-    std::vector<ShopItem*>::const_iterator e = mShopItems.end();
+    const std::vector<ShopItem*>::const_iterator e = mShopItems.end();
     while (it != e)
     {
         item = *(it);

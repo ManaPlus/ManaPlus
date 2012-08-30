@@ -64,7 +64,7 @@ class WorldListModel : public gcn::ListModel
 
         std::string getElementAt(int i)
         {
-            const WorldInfo *si = mWorlds[i];
+            const WorldInfo *const si = mWorlds[i];
             if (si)
                 return si->name + " (" + toString(si->online_users) + ")";
             else
@@ -81,7 +81,7 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     mChangeLoginButton(new Button(_("Change Login"), "login", this)),
     mChooseWorld(new Button(_("Choose World"), "world", this))
 {
-    ScrollArea *worldsScroll = new ScrollArea(mWorldList,
+    ScrollArea *const worldsScroll = new ScrollArea(mWorldList,
         getOptionBool("showbackground"), "world_background.xml");
 
     worldsScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);

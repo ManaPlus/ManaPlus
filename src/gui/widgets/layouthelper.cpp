@@ -24,7 +24,7 @@
 
 #include "debug.h"
 
-LayoutHelper::LayoutHelper(gcn::Container *container):
+LayoutHelper::LayoutHelper(gcn::Container *const container) :
     mContainer(container)
 {
     mContainer->addWidgetListener(this);
@@ -40,13 +40,14 @@ const Layout &LayoutHelper::getLayout() const
     return mLayout;
 }
 
-LayoutCell &LayoutHelper::place(int x, int y, gcn::Widget *wg, int w, int h)
+LayoutCell &LayoutHelper::place(const int x, const int y, gcn::Widget *const wg,
+                                const int w, const int h)
 {
     mContainer->add(wg);
     return mLayout.place(wg, x, y, w, h);
 }
 
-ContainerPlacer LayoutHelper::getPlacer(int x, int y)
+ContainerPlacer LayoutHelper::getPlacer(const int x, const int y)
 {
     return ContainerPlacer(mContainer, &mLayout.at(x, y));
 }

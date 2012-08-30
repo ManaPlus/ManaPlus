@@ -35,7 +35,7 @@
 
 #include "debug.h"
 
-PlayerBox::PlayerBox(Being *being, std::string skin):
+PlayerBox::PlayerBox(Being *const being, const std::string &skin) :
     mBeing(being),
     mAlpha(1.0),
     mSkin(nullptr),

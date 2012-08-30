@@ -54,12 +54,12 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
         /**
          * Set the normal color fo the tab's text.
          */
-        void setTabColor(const gcn::Color *color);
+        void setTabColor(const gcn::Color *const color);
 
         /**
          * Set tab flashing state
          */
-        void setFlash(int flash);
+        void setFlash(const int flash);
 
         int getFlash() const
         { return mFlash; }
@@ -68,7 +68,7 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
 
         void widgetMoved(const gcn::Event &event);
 
-        void setLabelFont(gcn::Font *font);
+        void setLabelFont(gcn::Font *const font);
 
         gcn::Label *getLabel() const
         { return mLabel; }

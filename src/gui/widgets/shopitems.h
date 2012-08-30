@@ -48,14 +48,15 @@ class ShopItems : public gcn::ListModel
          * @param mergeDuplicates lets the Shop look for duplicate entries and
          *                        merges them to one item.
          */
-        ShopItems(bool mergeDuplicates = false);
+        ShopItems(const bool mergeDuplicates = false);
 
         ~ShopItems();
 
         /**
          * Adds an item to the list.
          */
-        void addItem(int id, unsigned char color, int amount, int price);
+        void addItem(const int id, const unsigned char color,
+                     const int amount, const int price);
 
         /**
          * Adds an item to the list (used by sell dialog). Looks for
@@ -66,17 +67,19 @@ class ShopItems : public gcn::ListModel
          * @param quantity number of available copies of the item
          * @param price price of the item
          */
-        void addItem2(int inventoryIndex, int id, unsigned char color,
-                      int amount, int price);
+        void addItem2(const int inventoryIndex, const int id,
+                      const unsigned char color,
+                      const int amount, const int price);
 
-        void addItemNoDup(int id, unsigned char color, int amount, int price);
+        void addItemNoDup(const int id, const unsigned char color,
+                          const int amount, const int price);
 
         /**
          * Returns the number of items in the shop.
          */
         int getNumberOfElements();
 
-        bool empty();
+        bool empty() const;
 
         /**
          * Returns the name of item number i in the shop.
@@ -95,14 +98,14 @@ class ShopItems : public gcn::ListModel
          *
          * @param i index to remove
          */
-        void erase(unsigned int i);
+        void erase(const unsigned int i);
 
         /**
          * Removes an element from the shop and destroy it.
          *
          * @param i index to remove
          */
-        void del(unsigned int i);
+        void del(const unsigned int i);
 
         /**
          * Clears the list of items in the shop.
@@ -119,7 +122,7 @@ class ShopItems : public gcn::ListModel
          * 
          * @return the item found or 0
          */
-        ShopItem *findItem(int id, unsigned char color) const;
+        ShopItem *findItem(const int id, const unsigned char color) const;
 
         /** The list of items in the shop. */
         std::vector<ShopItem*> mShopItems;

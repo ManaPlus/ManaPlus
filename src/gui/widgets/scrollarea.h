@@ -46,14 +46,14 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
          * Constructor that takes no content. Needed for use with the DropDown
          * class.
          */
-        ScrollArea(bool opaque = true, const std::string &skin = "");
+        ScrollArea(const bool opaque = true, const std::string &skin = "");
 
         /**
          * Constructor.
          *
          * @param content the initial content to show in the scroll area
          */
-        ScrollArea(gcn::Widget *content, bool opaque = true,
+        ScrollArea(gcn::Widget *const widget, const bool opaque = true,
                    const std::string &skin = "");
 
         /**
@@ -131,15 +131,15 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
          */
         void init(std::string skinName);
 
-        void drawButton(gcn::Graphics *graphics, BUTTON_DIR dir);
-        void drawUpButton(gcn::Graphics *graphics);
-        void drawDownButton(gcn::Graphics *graphics);
-        void drawLeftButton(gcn::Graphics *graphics);
-        void drawRightButton(gcn::Graphics *graphics);
-        void drawVBar(gcn::Graphics *graphics);
-        void drawHBar(gcn::Graphics *graphics);
-        void drawVMarker(gcn::Graphics *graphics);
-        void drawHMarker(gcn::Graphics *graphics);
+        void drawButton(gcn::Graphics *const graphics, const BUTTON_DIR dir);
+        void drawUpButton(gcn::Graphics *const graphics);
+        void drawDownButton(gcn::Graphics *const graphics);
+        void drawLeftButton(gcn::Graphics *const graphics);
+        void drawRightButton(gcn::Graphics *const graphics);
+        void drawVBar(gcn::Graphics *const graphics);
+        void drawHBar(gcn::Graphics *const graphics);
+        void drawVMarker(gcn::Graphics *const graphics);
+        void drawHMarker(gcn::Graphics *const graphics);
 
         static int instances;
         static float mAlpha;

@@ -95,7 +95,7 @@ class ShortcutContainer : public gcn::Widget,
          * @param pointY Y coordinate of the point.
          * @return index on success, -1 on failure.
          */
-        int getIndexFromGrid(int pointX, int pointY) const;
+        int getIndexFromGrid(const int pointX, const int pointY) const;
 
         Image *mBackgroundImg;
         static float mAlpha;

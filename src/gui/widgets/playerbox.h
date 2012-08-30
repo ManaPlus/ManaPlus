@@ -45,7 +45,7 @@ class PlayerBox : public gcn::ScrollArea
          * Constructor. Takes the initial player character that this box should
          * display, which defaults to <code>NULL</code>.
          */
-        PlayerBox(Being *being, std::string skin = "");
+        PlayerBox(Being *const being, const std::string &skin = "");
 
         PlayerBox(std::string skin = "");
 

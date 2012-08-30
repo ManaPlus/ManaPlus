@@ -46,13 +46,14 @@ class WindowContainer : public Container
          * Schedule a widget for deletion. It will be deleted at the start of
          * the next logic update.
          */
-        void scheduleDelete(gcn::Widget *widget);
+        void scheduleDelete(gcn::Widget *const widget);
 
         /**
          * Ensures that all visible windows are on the screen after the screen
          * has been resized.
          */
-        void adjustAfterResize(int oldScreenWidth, int oldScreenHeight);
+        void adjustAfterResize(const int oldScreenWidth,
+                               const int oldScreenHeight);
 
     private:
         /**

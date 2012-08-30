@@ -28,9 +28,10 @@
 class RadioGroup : public WidgetGroup
 {
     public:
-        RadioGroup(std::string group, int height, int spacing);
+        RadioGroup(const std::string &group, const int height,
+                   const int spacing);
 
-        gcn::Widget *createWidget(std::string name);
+        gcn::Widget *createWidget(const std::string &name);
 };
 
 #endif

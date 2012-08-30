@@ -31,7 +31,7 @@ class Graphics;
 class ImageSprite : public Sprite
 {
 public:
-    ImageSprite(Image *image);
+    ImageSprite(Image *const image);
 
     ~ImageSprite();
 
@@ -58,7 +58,7 @@ public:
     virtual bool setSpriteDirection(SpriteDirection direction A_UNUSED)
     { return false; }
 
-    int getNumberOfLayers()
+    int getNumberOfLayers() const
     { return 1; }
 
     unsigned int getCurrentFrame() const

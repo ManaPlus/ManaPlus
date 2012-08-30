@@ -41,12 +41,13 @@ class ShopListBox : public ListBox
         /**
          * Constructor.
          */
-        ShopListBox(gcn::ListModel *listModel);
+        ShopListBox(gcn::ListModel *const listModel);
 
         /**
          * Constructor with shopitems
          */
-        ShopListBox(gcn::ListModel *listModel, ShopItems *shopListModel);
+        ShopListBox(gcn::ListModel *const listModel,
+                    ShopItems *const shopListModel);
 
         /**
          * Draws the list box.
@@ -62,7 +63,7 @@ class ShopListBox : public ListBox
         /**
          * gives information about the current player's money
          */
-        void setPlayersMoney(int money);
+        void setPlayersMoney(const int money);
 
         /**
          * Adjust List draw size
@@ -73,7 +74,7 @@ class ShopListBox : public ListBox
          * Set on/off the disabling of too expensive items.
          * (Good for selling mode.)
          */
-        void setPriceCheck(bool check);
+        void setPriceCheck(const bool check);
 
         void mouseMoved(gcn::MouseEvent &event);
 

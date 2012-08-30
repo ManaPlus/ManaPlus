@@ -44,7 +44,7 @@ Image *RadioButton::radioNormalHi;
 Image *RadioButton::radioCheckedHi;
 
 RadioButton::RadioButton(const std::string &caption, const std::string &group,
-                         bool marked):
+                         const bool marked):
     gcn::RadioButton(caption, group, marked),
     mHasMouse(false)
 {
@@ -119,7 +119,7 @@ void RadioButton::drawBox(gcn::Graphics* graphics)
             radioCheckedHi->setAlpha(mAlpha);
     }
 
-    Image *box = nullptr;
+    const Image *box = nullptr;
 
     if (isEnabled())
     {
@@ -168,7 +168,7 @@ void RadioButton::mouseExited(gcn::MouseEvent& event A_UNUSED)
 
 void RadioButton::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     if (action == Input::KEY_GUI_SELECT)
     {
