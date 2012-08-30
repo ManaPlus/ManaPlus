@@ -55,6 +55,8 @@ NormalOpenGLGraphics::NormalOpenGLGraphics():
     mIntVertArray(new GLint[vertexBufSize * 4 + 30]),
     mAlpha(false),
     mTexture(false),
+    mIsByteColor(false),
+    mFloatColor(1.0f),
 #ifdef DEBUG_BIND_TEXTURE
     mColorAlpha(false),
     mOldTextureId(0)
@@ -220,8 +222,7 @@ bool NormalOpenGLGraphics::drawImage2(const Image *const image,
     srcY += image->mBounds.y;
 
     if (!useColor)
-        glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
-//        glColor4ub(255, 255, 255, image->mAlpha * 255);
+        setColorAlpha(image->mAlpha);
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
@@ -231,14 +232,6 @@ bool NormalOpenGLGraphics::drawImage2(const Image *const image,
     setTexturingAndBlending(true);
 
     drawQuad(image, srcX, srcY, dstX, dstY, width, height);
-
-    if (!useColor)
-    {
-        glColor4ub(static_cast<GLubyte>(mColor.r),
-                   static_cast<GLubyte>(mColor.g),
-                   static_cast<GLubyte>(mColor.b),
-                   static_cast<GLubyte>(mColor.a));
-    }
 
     return true;
 }
@@ -284,7 +277,7 @@ bool NormalOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
     srcY += image->mBounds.y;
 
     if (!useColor)
-        glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+        setColorAlpha(image->mAlpha);
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
@@ -299,7 +292,7 @@ bool NormalOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
 
     if (smooth) // A basic smooth effect...
     {
-        glColor4f(1.0f, 1.0f, 1.0f, 0.2f);
+        setColorAlpha(0.2f);
         drawRescaledQuad(image, srcX, srcY, dstX - 1, dstY - 1, width, height,
                          desiredWidth + 1, desiredHeight + 1);
         drawRescaledQuad(image, srcX, srcY, dstX + 1, dstY + 1, width, height,
@@ -309,14 +302,6 @@ bool NormalOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
                          desiredWidth - 1, desiredHeight);
         drawRescaledQuad(image, srcX, srcY, dstX, dstY + 1, width, height,
                          desiredWidth, desiredHeight - 1);
-    }
-
-    if (!useColor)
-    {
-        glColor4ub(static_cast<GLubyte>(mColor.r),
-                   static_cast<GLubyte>(mColor.g),
-                   static_cast<GLubyte>(mColor.b),
-                   static_cast<GLubyte>(mColor.a));
     }
 
     return true;
@@ -341,7 +326,7 @@ void NormalOpenGLGraphics::drawImagePattern(const Image *const image,
     const float tw = static_cast<float>(image->getTextureWidth());
     const float th = static_cast<float>(image->getTextureHeight());
 
-    glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+    setColorAlpha(image->mAlpha);
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
@@ -451,11 +436,6 @@ void NormalOpenGLGraphics::drawImagePattern(const Image *const image,
         if (vp > 0)
             drawQuadArrayii(vp);
     }
-
-    glColor4ub(static_cast<GLubyte>(mColor.r),
-               static_cast<GLubyte>(mColor.g),
-               static_cast<GLubyte>(mColor.b),
-               static_cast<GLubyte>(mColor.a));
 }
 
 void NormalOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
@@ -478,7 +458,7 @@ void NormalOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     if (iw == 0 || ih == 0)
         return;
 
-    glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+    setColorAlpha(image->mAlpha);
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
@@ -607,11 +587,6 @@ void NormalOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
         if (vp > 0)
             drawQuadArrayii(vp);
     }
-
-    glColor4ub(static_cast<GLubyte>(mColor.r),
-               static_cast<GLubyte>(mColor.g),
-               static_cast<GLubyte>(mColor.b),
-               static_cast<GLubyte>(mColor.a));
 }
 
 void NormalOpenGLGraphics::drawImagePattern2(GraphicsVertexes *const vert,
@@ -622,7 +597,7 @@ void NormalOpenGLGraphics::drawImagePattern2(GraphicsVertexes *const vert,
 
     NormalOpenGLGraphicsVertexes *ogl = vert->getOGL();
 
-    glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+    setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
@@ -667,12 +642,6 @@ void NormalOpenGLGraphics::drawImagePattern2(GraphicsVertexes *const vert,
             drawQuadArrayii(*iv, *it, *ivp);
         }
     }
-
-    glColor4ub(static_cast<GLubyte>(mColor.r),
-               static_cast<GLubyte>(mColor.g),
-               static_cast<GLubyte>(mColor.b),
-               static_cast<GLubyte>(mColor.a));
-
 }
 
 void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
@@ -942,7 +911,7 @@ void NormalOpenGLGraphics::drawTile(const ImageVertexes *const vert)
 
     NormalOpenGLGraphicsVertexes *ogl = vert->ogl;
 
-    glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+    setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
@@ -953,11 +922,6 @@ void NormalOpenGLGraphics::drawTile(const ImageVertexes *const vert)
         drawQuadArrayfi(ogl->mIntVertArray, ogl->mFloatTexArray, ogl->ptr);
     else
         drawQuadArrayii(ogl->mIntVertArray, ogl->mIntTexArray, ogl->ptr);
-
-    glColor4ub(static_cast<GLubyte>(mColor.r),
-               static_cast<GLubyte>(mColor.g),
-               static_cast<GLubyte>(mColor.b),
-               static_cast<GLubyte>(mColor.a));
 }
 
 void NormalOpenGLGraphics::updateScreen()
@@ -1113,17 +1077,13 @@ void NormalOpenGLGraphics::popClipArea()
 void NormalOpenGLGraphics::setColor(const gcn::Color& color)
 {
     mColor = color;
-    glColor4ub(static_cast<GLubyte>(color.r),
-               static_cast<GLubyte>(color.g),
-               static_cast<GLubyte>(color.b),
-               static_cast<GLubyte>(color.a));
-
     mColorAlpha = (color.a != 255);
 }
 
 void NormalOpenGLGraphics::drawPoint(int x, int y)
 {
     setTexturingAndBlending(false);
+    restoreColor();
 
     glBegin(GL_POINTS);
     glVertex2i(x, y);
@@ -1134,6 +1094,7 @@ void NormalOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
     setTexturingAndBlending(false);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    restoreColor();
 
     mFloatTexArray[0] = static_cast<float>(x1) + 0.5f;
     mFloatTexArray[1] = static_cast<float>(y1) + 0.5f;
@@ -1209,6 +1170,7 @@ void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
 
     setTexturingAndBlending(false);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    restoreColor();
 
     GLfloat vert[] =
     {
@@ -1233,6 +1195,7 @@ bool NormalOpenGLGraphics::drawNet(const int x1, const int y1,
 
     setTexturingAndBlending(false);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    restoreColor();
 
     const float xf1 = static_cast<float>(x1);
     const float xf2 = static_cast<float>(x2);
@@ -1354,6 +1317,29 @@ void NormalOpenGLGraphics::dumpSettings()
                 test[0], test[1], test[2], test[3]);
         }
     }
+}
+
+void NormalOpenGLGraphics::setColorAlpha(const float alpha)
+{
+    if (!mIsByteColor && mFloatColor == alpha)
+        return;
+
+    glColor4f(1.0f, 1.0f, 1.0f, alpha);
+    mIsByteColor = false;
+    mFloatColor = alpha;
+}
+
+void NormalOpenGLGraphics::restoreColor()
+{
+    if (mIsByteColor && mByteColor == mColor)
+        return;
+
+    glColor4ub(static_cast<GLubyte>(mColor.r),
+               static_cast<GLubyte>(mColor.g),
+               static_cast<GLubyte>(mColor.b),
+               static_cast<GLubyte>(mColor.a));
+    mIsByteColor = true;
+    mByteColor = mColor;
 }
 
 #ifdef DEBUG_BIND_TEXTURE

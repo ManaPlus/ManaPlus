@@ -141,7 +141,15 @@ class SafeOpenGLGraphics : public Graphics
         void setTexturingAndBlending(bool enable);
 
     private:
-        bool mAlpha, mTexture;
+        void inline setColorAlpha(float alpha);
+
+        void inline restoreColor();
+
+        bool mAlpha;
+        bool mTexture;
+        bool mIsByteColor;
+        gcn::Color mByteColor;
+        float mFloatColor;
         bool mColorAlpha;
         FBOInfo mFbo;
 };

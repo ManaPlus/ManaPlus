@@ -47,6 +47,8 @@ GLuint SafeOpenGLGraphics::mLastImage = 0;
 SafeOpenGLGraphics::SafeOpenGLGraphics():
     mAlpha(false),
     mTexture(false),
+    mIsByteColor(false),
+    mFloatColor(1.0f),
     mColorAlpha(false)
 {
     mOpenGL = 2;
@@ -157,7 +159,7 @@ bool SafeOpenGLGraphics::drawImage2(const Image *const image,
     srcY += image->mBounds.y;
 
     if (!useColor)
-        glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+        setColorAlpha(image->mAlpha);
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
@@ -167,14 +169,6 @@ bool SafeOpenGLGraphics::drawImage2(const Image *const image,
     glBegin(GL_QUADS);
     drawQuad(image, srcX, srcY, dstX, dstY, width, height);
     glEnd();
-
-    if (!useColor)
-    {
-        glColor4ub(static_cast<GLubyte>(mColor.r),
-                   static_cast<GLubyte>(mColor.g),
-                   static_cast<GLubyte>(mColor.b),
-                   static_cast<GLubyte>(mColor.a));
-    }
 
     return true;
 }
@@ -220,7 +214,7 @@ bool SafeOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
     srcY += image->mBounds.y;
 
     if (!useColor)
-        glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+        setColorAlpha(image->mAlpha);
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
@@ -233,7 +227,7 @@ bool SafeOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
 
     if (smooth) // A basic smooth effect...
     {
-        glColor4f(1.0f, 1.0f, 1.0f, 0.2f);
+        setColorAlpha(0.2f);
         drawRescaledQuad(image, srcX, srcY, dstX - 1, dstY - 1, width, height,
                         desiredWidth + 1, desiredHeight + 1);
         drawRescaledQuad(image, srcX, srcY, dstX + 1, dstY + 1, width, height,
@@ -246,14 +240,6 @@ bool SafeOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
     }
 
     glEnd();
-
-    if (!useColor)
-    {
-        glColor4ub(static_cast<GLubyte>(mColor.r),
-                   static_cast<GLubyte>(mColor.g),
-                   static_cast<GLubyte>(mColor.b),
-                   static_cast<GLubyte>(mColor.a));
-    }
 
     return true;
 }
@@ -275,7 +261,7 @@ void SafeOpenGLGraphics::drawImagePattern(const Image *const image,
     if (iw == 0 || ih == 0)
         return;
 
-    glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+    setColorAlpha(image->mAlpha);
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
@@ -298,11 +284,6 @@ void SafeOpenGLGraphics::drawImagePattern(const Image *const image,
     }
 
     glEnd();
-
-    glColor4ub(static_cast<GLubyte>(mColor.r),
-               static_cast<GLubyte>(mColor.g),
-               static_cast<GLubyte>(mColor.b),
-               static_cast<GLubyte>(mColor.a));
 }
 
 void SafeOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
@@ -322,7 +303,7 @@ void SafeOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     if (iw == 0 || ih == 0)
         return;
 
-    glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+    setColorAlpha(image->mAlpha);
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
@@ -352,9 +333,6 @@ void SafeOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     }
 
     glEnd();
-
-    glColor4ub(static_cast<GLubyte>(mColor.r), static_cast<GLubyte>(mColor.g),
-        static_cast<GLubyte>(mColor.b), static_cast<GLubyte>(mColor.a));
 }
 
 bool SafeOpenGLGraphics::calcImageRect(GraphicsVertexes *const vert,
@@ -533,17 +511,13 @@ void SafeOpenGLGraphics::popClipArea()
 void SafeOpenGLGraphics::setColor(const gcn::Color& color)
 {
     mColor = color;
-    glColor4ub(static_cast<GLubyte>(color.r),
-               static_cast<GLubyte>(color.g),
-               static_cast<GLubyte>(color.b),
-               static_cast<GLubyte>(color.a));
-
     mColorAlpha = (color.a != 255);
 }
 
 void SafeOpenGLGraphics::drawPoint(int x, int y)
 {
     setTexturingAndBlending(false);
+    restoreColor();
 
     glBegin(GL_POINTS);
     glVertex2i(x, y);
@@ -553,6 +527,7 @@ void SafeOpenGLGraphics::drawPoint(int x, int y)
 void SafeOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
     setTexturingAndBlending(false);
+    restoreColor();
 
     glBegin(GL_LINES);
     glVertex2f(static_cast<float>(x1) + 0.5f, static_cast<float>(y1) + 0.5f);
@@ -622,6 +597,7 @@ void SafeOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect, bool filled)
     const float offset = filled ? 0 : 0.5f;
 
     setTexturingAndBlending(false);
+    restoreColor();
 
     glBegin(filled ? GL_QUADS : GL_LINE_LOOP);
     glVertex2f(static_cast<float>(rect.x) + offset,
@@ -642,6 +618,29 @@ void SafeOpenGLGraphics::bindTexture(GLenum target, GLuint texture)
         mLastImage = texture;
         glBindTexture(target, texture);
     }
+}
+
+void SafeOpenGLGraphics::setColorAlpha(const float alpha)
+{
+    if (!mIsByteColor && mFloatColor == alpha)
+        return;
+
+    glColor4f(1.0f, 1.0f, 1.0f, alpha);
+    mIsByteColor = false;
+    mFloatColor = alpha;
+}
+
+void SafeOpenGLGraphics::restoreColor()
+{
+    if (mIsByteColor && mByteColor == mColor)
+        return;
+
+    glColor4ub(static_cast<GLubyte>(mColor.r),
+               static_cast<GLubyte>(mColor.g),
+               static_cast<GLubyte>(mColor.b),
+               static_cast<GLubyte>(mColor.a));
+    mIsByteColor = true;
+    mByteColor = mColor;
 }
 
 #endif // USE_OPENGL

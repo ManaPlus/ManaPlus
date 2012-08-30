@@ -166,10 +166,20 @@ class NormalOpenGLGraphics : public Graphics
         void debugBindTexture(const Image *image);
 
     private:
+        void inline setColorAlpha(float alpha);
+
+        void inline restoreColor();
+
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;
-        bool mAlpha, mTexture;
+        bool mAlpha;
+        bool mTexture;
+
+        bool mIsByteColor;
+        gcn::Color mByteColor;
+        float mFloatColor;
+
         bool mColorAlpha;
         FBOInfo mFbo;
 #ifdef DEBUG_BIND_TEXTURE
