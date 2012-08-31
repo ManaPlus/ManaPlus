@@ -55,12 +55,12 @@ class KeyboardConfig
         /**
          * Get the key function index by providing the keys value.
          */
-        int getKeyIndex(const SDL_Event &event, int grp = 1) const;
+        int getKeyIndex(const SDL_Event &event, const int grp = 1) const;
 
         /**
          * Set the enable flag, which will stop the user from doing actions.
          */
-        void setEnabled(bool flag)
+        void setEnabled(const bool flag)
         { mEnabled = flag; }
 
         /**
@@ -76,11 +76,11 @@ class KeyboardConfig
 
         KeysVector *getActionVector(const SDL_Event &event);
 
-        KeysVector *getActionVectorByKey(int i);
+        KeysVector *getActionVectorByKey(const int i);
 
-        std::string getKeyName(int key);
+        std::string getKeyName(const int key) const;
 
-        bool isActionActive(int index) const;
+        bool isActionActive(const int index) const;
 
         void update();
 
@@ -90,9 +90,9 @@ class KeyboardConfig
 
         int getActionId(const SDL_Event &event);
 
-        void handleRepeat(int time);
+        void handleRepeat(const int time);
 
-        void resetRepeat(int key);
+        void resetRepeat(const int key);
 
     private:
         bool mEnabled;                 /**< Flag to respond to key input */

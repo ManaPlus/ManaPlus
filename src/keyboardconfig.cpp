@@ -64,7 +64,7 @@ int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event) const
     return 0;
 }
 
-int KeyboardConfig::getKeyIndex(const SDL_Event &event, int grp) const
+int KeyboardConfig::getKeyIndex(const SDL_Event &event, const int grp) const
 {
     const int keyValue = getKeyValueFromEvent(event);
     return inputManager.getKeyIndex(keyValue, grp, INPUT_KEYBOARD);
@@ -75,7 +75,7 @@ void KeyboardConfig::refreshActiveKeys()
     mActiveKeys = SDL_GetKeyState(nullptr);
 }
 
-std::string KeyboardConfig::getKeyName(int key)
+std::string KeyboardConfig::getKeyName(const int key) const
 {
     if (key == Input::KEY_NO_VALUE)
         return "";
@@ -113,7 +113,7 @@ KeysVector *KeyboardConfig::getActionVector(const SDL_Event &event)
     return nullptr;
 }
 
-KeysVector *KeyboardConfig::getActionVectorByKey(int i)
+KeysVector *KeyboardConfig::getActionVectorByKey(const int i)
 {
 //    logger->log("key triggerAction: %d", i);
     if (i != 0 && i < SDLK_LAST && mKeyToAction.find(i) != mKeyToAction.end())
@@ -130,7 +130,7 @@ int KeyboardConfig::getActionId(const SDL_Event &event)
     return -1;
 }
 
-bool KeyboardConfig::isActionActive(int index) const
+bool KeyboardConfig::isActionActive(const int index) const
 {
     if (!mActiveKeys)
         return false;
@@ -178,7 +178,7 @@ void KeyboardConfig::handleDeActicateKey(const SDL_Event &event)
     resetRepeat(key);
 }
 
-void KeyboardConfig::handleRepeat(int time)
+void KeyboardConfig::handleRepeat(const int time)
 {
     for (KeyTimeMapIter it = mKeyTimeMap.begin(), it_end = mKeyTimeMap.end();
          it != it_end; ++ it)
@@ -204,9 +204,9 @@ void KeyboardConfig::handleRepeat(int time)
     }
 }
 
-void KeyboardConfig::resetRepeat(int key)
+void KeyboardConfig::resetRepeat(const int key)
 {
-    KeyTimeMapIter it = mKeyTimeMap.find(key);
+    const KeyTimeMapIter it = mKeyTimeMap.find(key);
     if (it != mKeyTimeMap.end())
         (*it).second = tick_time;
 }

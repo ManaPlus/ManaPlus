@@ -37,7 +37,7 @@ class ItemShortcut
         /**
          * Constructor.
          */
-        ItemShortcut(int number);
+        ItemShortcut(const int number);
 
         /**
          * Destructor.
@@ -47,22 +47,22 @@ class ItemShortcut
         /**
          * Load the configuration information.
          */
-        void load(bool oldConfig = 0);
+        void load(const bool oldConfig = false);
 
         /**
          * Save the configuration information.
          */
-        void save();
+        void save() const;
 
         /**
          * Returns the shortcut item ID specified by the index.
          *
          * @param index Index of the shortcut item.
          */
-        int getItem(int index) const
+        int getItem(const int index) const
         { return mItems[index]; }
 
-        unsigned char getItemColor(int index) const
+        unsigned char getItemColor(const int index) const
         { return mItemColors[index]; }
 
         /**
@@ -82,7 +82,7 @@ class ItemShortcut
          *
          * @param index Index of the items.
          */
-        void setItem(int index);
+        void setItem(const int index);
 
         /**
          * Adds an item to the items store specified by the index.
@@ -90,7 +90,8 @@ class ItemShortcut
          * @param index Index of the item.
          * @param itemId ID of the item.
          */
-        void setItems(int index, int itemId, unsigned char color)
+        void setItems(const int index, const int itemId,
+                      const unsigned char color)
         { mItems[index] = itemId; mItemColors[index] = color; save(); }
 
         /**
@@ -98,10 +99,10 @@ class ItemShortcut
          *
          * @param itemId The ID of the item that is to be assigned.
          */
-        void setItemSelected(int itemId)
+        void setItemSelected(const int itemId)
         { mItemSelected = itemId; }
 
-        void setItemSelected(Item *item);
+        void setItemSelected(const Item *const item);
 
         /**
          * Returns selected shortcut item ID.
@@ -118,7 +119,7 @@ class ItemShortcut
         /**
          * Remove a item from the shortcut.
          */
-        void removeItem(int index)
+        void removeItem(const int index)
         { mItems[index] = -1;  save(); }
 
         /**
@@ -126,17 +127,17 @@ class ItemShortcut
          *
          * @param index Index of the item shortcut.
          */
-        void useItem(int index);
+        void useItem(const int index) const;
 
         /**
          * Equip a item from the shortcut.
          */
-        void equipItem(int index);
+        void equipItem(const int index) const;
 
         /**
          * UnEquip a item from the shortcut.
          */
-        void unequipItem(int index);
+        void unequipItem(const int index) const;
 
     private:
 

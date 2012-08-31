@@ -73,7 +73,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         /**
          * Constructor.
          */
-        LocalPlayer(int id = 65535, int subtype = 0);
+        LocalPlayer(const int id = 65535, const int subtype = 0);
 
         /**
          * Destructor.
@@ -90,7 +90,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          * Compute the next pathnode location when walking using keyboard.
          * used by nextTile().
          */
-        Position getNextWalkPosition(unsigned char dir);
+        Position getNextWalkPosition(unsigned char dir) const;
 
         /**
          * Adds a new tile to the path when walking.
@@ -106,17 +106,17 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         /**
          * Check the player has permission to invite users to specific guild
          */
-        bool checkInviteRights(const std::string &guildName);
+        bool checkInviteRights(const std::string &guildName) const;
 
         /**
          * Invite a player to join guild
          */
-        void inviteToGuild(Being *being);
+        void inviteToGuild(Being *const being);
 
 //        void clearInventory();
 //        void setInvItem(int index, int id, int amount);
 
-        bool pickUp(FloorItem *item);
+        bool pickUp(FloorItem *const item);
 
         /**
          * Called when an ActorSprite has been destroyed.
@@ -127,22 +127,22 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         /**
          * Gets the attack range.
          */
-        int getAttackRange();
+        int getAttackRange() const;
 
         int getAttackRange2();
 
-        void attack(Being *target = nullptr, bool keep = false,
-                    bool dontChangeEquipment = false);
+        void attack(Being *const target = nullptr, const bool keep = false,
+                    const bool dontChangeEquipment = false);
 
-        void attack2(Being *target = nullptr, bool keep = false,
-                     bool dontChangeEquipment = false);
+        void attack2(Being *const target = nullptr, const bool keep = false,
+                     const bool dontChangeEquipment = false);
 
-        void setGMLevel(int level);
+        void setGMLevel(const int level);
 
         int getGMLevel() const
         { return mGMLevel; }
 
-        void stopAttack(bool keepAttack = false);
+        void stopAttack(const bool keepAttack = false);
 
         void untarget();
 
@@ -155,7 +155,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         /**
          * Sets the target being of the player.
          */
-        void setTarget(Being *target);
+        void setTarget(Being *const target);
 
         /**
          * Sets a new destination for this being to walk to.
@@ -165,7 +165,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         /**
          * Sets a new direction to keep walking in.
          */
-        void setWalkingDir(unsigned char dir);
+        void setWalkingDir(const unsigned char dir);
 
         /**
          * Gets the walking direction
@@ -176,29 +176,32 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         /**
          * Sets going to being to attack
          */
-        void setGotoTarget(Being *target);
+        void setGotoTarget(Being *const target);
 
         /**
          * Returns whether the target is in range to attack
          */
-        bool withinAttackRange(Being *target, bool fixDistance = false,
-                               int addRange = 0);
+        bool withinAttackRange(const Being *const target,
+                               const bool fixDistance = false,
+                               const int addRange = 0);
 
         /**
          * Stops the player dead in his tracks
          */
-        void stopWalking(bool sendToServer = true);
+        void stopWalking(const bool sendToServer = true);
 
-        bool toggleSit();
+        bool toggleSit() const;
+
         bool updateSit();
-        bool emote(uint8_t emotion);
+
+        bool emote(const uint8_t emotion) const;
 
         /**
          * Shows item pickup notifications.
          */
-        void pickedUp(const ItemInfo &itemInfo, int amount,
-                      unsigned char color, int floorItemId,
-                      unsigned char fail);
+        void pickedUp(const ItemInfo &itemInfo, const int amount,
+                      const unsigned char color, const int floorItemId,
+                      const unsigned char fail);
 
         int getLevel() const;
 
@@ -220,7 +223,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         int getInvertDirection() const
         { return mInvertDirection; }
 
-        void setInvertDirection(int n)
+        void setInvertDirection(const int n)
         { mInvertDirection = n; }
 
         void invertDirection();
@@ -256,14 +259,14 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         int getQuickDropCounter() const
         { return mQuickDropCounter; }
 
-        void setQuickDropCounter(int n);
+        void setQuickDropCounter(const int n);
 
         void changeQuickDropCounter();
 
         int getMoveState() const
         { return mMoveState; }
 
-        void setMoveState(int n)
+        void setMoveState(const int n)
         { mMoveState = n; }
 
         void switchMagicAttack();
@@ -295,7 +298,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void specialMove(unsigned char direction);
 
-        void moveByDirection(unsigned char dir);
+        void moveByDirection(const unsigned char dir);
 
         bool pickUpItems(int pickUpType = 0);
 
@@ -303,21 +306,23 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void crazyMove();
 
-        void moveTo(int x, int y);
+        void moveTo(const int x, const int y);
 
-        void move(int dX, int dY);
+        void move(const int dX, const int dY);
 
         void moveToTarget(int dist = -1);
 
         void moveToHome();
 
-        void debugMsg(std::string str);
+        void debugMsg(std::string str) const;
 
 //        int getSkillLv(int id);
 
-        bool isReachable(int x, int y, int maxCost = 0) const;
+        bool isReachable(const int x, const int y,
+                         const int maxCost = 0) const;
 
-        bool isReachable(Being *being, int maxCost = 0) const;
+        bool isReachable(Being *const being,
+                         const int maxCost = 0);
 
         void setHome();
 
@@ -337,50 +342,53 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         bool getPseudoAway() const
         { return mPseudoAwayMode; }
 
-        void setHalfAway(bool n)
+        void setHalfAway(const bool n)
         { mInactive = n; }
 
         bool getHalfAway() const
         { return mInactive; }
 
-        void afkRespond(ChatTab *tab, const std::string &nick);
+        void afkRespond(ChatTab *const tab, const std::string &nick);
 
-        bool navigateTo(int x, int y);
+        bool navigateTo(const int x, const int y);
 
-        void navigateTo(Being *being);
+        void navigateTo(const Being *const being);
 
         void navigateClean();
 
-        void imitateEmote(Being* being, unsigned char emote);
+        void imitateEmote(const Being *const being, const unsigned char emote);
 
-        void imitateAction(Being *being, Being::Action action);
+        void imitateAction(const Being *const being,
+                           const Being::Action action);
 
-        void imitateDirection(Being *being, unsigned char dir);
+        void imitateDirection(const Being *const being,
+                              const unsigned char dir);
 
-        void imitateOutfit(Being *player, int sprite = -1);
+        void imitateOutfit(Being *const player, const int sprite = -1) const;
 
-        void followMoveTo(Being *being, int x, int y);
+        void followMoveTo(const Being *const being, const int x, const int y);
 
-        void followMoveTo(Being *being, int x1, int y1, int x2, int y2);
+        void followMoveTo(const Being *const being, const int x1, const int y1,
+                          const int x2, const int y2);
 
         bool allowAction();
 
-        bool allowMove();
+        bool allowMove() const;
 
-        void setRealPos(int x, int y);
+        void setRealPos(const int x, const int y);
 
         bool isServerBuggy() const
         { return mIsServerBuggy; }
 
-        void fixPos(int maxDist = 1);
+        void fixPos(const int maxDist = 1);
 
         /**
          * Sets the map the being is on
          */
-        void setMap(Map *map);
+        void setMap(Map *const map);
 
         void addMessageToQueue(const std::string &message,
-                               int color = UserPalette::EXP_INFO);
+                               const int color = UserPalette::EXP_INFO);
 
         /**
          * Called when a option (set with config.addListener()) is changed
@@ -402,7 +410,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         /**
          * setting the next destination of the following, in case of warp
          */
-        void setNextDest(int x, int y);
+        void setNextDest(const int x, const int y);
 
 
         int getNextDestX() const
@@ -440,7 +448,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          * Tells the engine whether to check
          * if the Player Name is to be displayed.
          */
-        void setCheckNameSetting(bool checked)
+        void setCheckNameSetting(const bool checked)
         { mUpdateName = checked; }
 
         /**
@@ -454,16 +462,16 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void updateNavigateList();
 
-        int getPathLength(Being* being);
+        int getPathLength(const Being *const being);
 
-        void targetMoved();
+        void targetMoved() const;
 
         void setLastHitFrom(std::string n)
         { mLastHitFrom = n; }
 
         void waitFor(std::string nick);
 
-        void checkNewName(Being *being);
+        void checkNewName(Being *const being);
 
         void resetYellowBar();
 
@@ -475,9 +483,9 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void stopAdvert();
 
-        bool checAttackPermissions(Being *target);
+        bool checAttackPermissions(const Being *const target) const;
 
-        void updateStatus();
+        void updateStatus() const;
 
         std::string getInvertDirectionString();
 
@@ -515,20 +523,24 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         /** Whether or not the name settings have changed */
         bool mUpdateName;
 
-        virtual void handleStatusEffect(StatusEffect *effect, int effectId);
+        virtual void handleStatusEffect(StatusEffect *const effect,
+                                        const int effectId);
 
-        void startWalking(unsigned char dir);
+        void startWalking(const unsigned char dir);
 
-        void changeEquipmentBeforeAttack(Being* target);
+        void changeEquipmentBeforeAttack(const Being *const target) const;
 
-        void tryMagic(std::string spell, int baseMagic,
-                      int schoolMagic, int mana);
+        void tryMagic(const std::string &spell, const int baseMagic,
+                      const int schoolMagic, const int mana) const;
 
-        const char *getVarItem(const char **arr, unsigned index, unsigned sz);
+        const char *getVarItem(const char **const arr, const unsigned index,
+                               const unsigned sz) const;
 
-        void changeMode(unsigned *var, unsigned limit, const char *conf,
-                        std::string (LocalPlayer::*func)(), unsigned def = 0,
-                        bool save = true);
+        void changeMode(unsigned *const var, const unsigned limit,
+                        const char *const conf,
+                        std::string (LocalPlayer::*const func)(),
+                        const unsigned def = 0,
+                        const bool save = true);
 
         void crazyMove1();
         void crazyMove2();

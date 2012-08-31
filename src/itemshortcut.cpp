@@ -38,7 +38,7 @@
 
 ItemShortcut *itemShortcut[SHORTCUT_TABS];
 
-ItemShortcut::ItemShortcut(int number):
+ItemShortcut::ItemShortcut(const int number):
     mItemSelected(-1),
     mItemColorSelected(1),
     mNumber(number)
@@ -51,11 +51,11 @@ ItemShortcut::~ItemShortcut()
     logger->log1("ItemShortcut::~ItemShortcut");
 }
 
-void ItemShortcut::load(bool oldConfig)
+void ItemShortcut::load(const bool oldConfig)
 {
     std::string name;
     std::string color;
-    Configuration *cfg;
+    const Configuration *cfg;
     if (oldConfig)
         cfg = &config;
     else
@@ -73,8 +73,8 @@ void ItemShortcut::load(bool oldConfig)
     }
     for (unsigned int i = 0; i < SHORTCUT_ITEMS; i++)
     {
-        int itemId = cfg->getValue(name + toString(i), -1);
-        unsigned char itemColor = static_cast<unsigned char>(
+        const int itemId = cfg->getValue(name + toString(i), -1);
+        const unsigned char itemColor = static_cast<unsigned char>(
             cfg->getValue(color + toString(i), 1));
 
         mItems[i] = itemId;
@@ -82,7 +82,7 @@ void ItemShortcut::load(bool oldConfig)
     }
 }
 
-void ItemShortcut::save()
+void ItemShortcut::save() const
 {
     std::string name;
     std::string color;
@@ -116,18 +116,18 @@ void ItemShortcut::save()
     }
 }
 
-void ItemShortcut::useItem(int index)
+void ItemShortcut::useItem(const int index) const
 {
     if (!PlayerInfo::getInventory())
         return;
 
-    int itemId = mItems[index];
-    unsigned char itemColor = mItemColors[index];
+    const int itemId = mItems[index];
+    const unsigned char itemColor = mItemColors[index];
     if (itemId >= 0)
     {
         if (itemId < SPELL_MIN_ID)
         {
-            Item *item = PlayerInfo::getInventory()->findItem(
+            const Item *const item = PlayerInfo::getInventory()->findItem(
                 itemId, itemColor);
             if (item && item->getQuantity())
             {
@@ -155,14 +155,14 @@ void ItemShortcut::useItem(int index)
     }
 }
 
-void ItemShortcut::equipItem(int index)
+void ItemShortcut::equipItem(const int index) const
 {
     if (!PlayerInfo::getInventory())
         return;
 
     if (mItems[index])
     {
-        Item *item = PlayerInfo::getInventory()->findItem(
+        const Item *const item = PlayerInfo::getInventory()->findItem(
             mItems[index], mItemColors[index]);
         if (item && item->getQuantity())
         {
@@ -174,14 +174,14 @@ void ItemShortcut::equipItem(int index)
         }
     }
 }
-void ItemShortcut::unequipItem(int index)
+void ItemShortcut::unequipItem(const int index) const
 {
     if (!PlayerInfo::getInventory())
         return;
 
     if (mItems[index])
     {
-        Item *item = PlayerInfo::getInventory()->findItem(
+        const Item *const item = PlayerInfo::getInventory()->findItem(
             mItems[index], mItemColors[index]);
         if (item && item->getQuantity())
         {
@@ -194,7 +194,7 @@ void ItemShortcut::unequipItem(int index)
     }
 }
 
-void ItemShortcut::setItemSelected(Item *item)
+void ItemShortcut::setItemSelected(const Item *const item)
 {
     if (item)
     {
@@ -210,7 +210,7 @@ void ItemShortcut::setItemSelected(Item *item)
     }
 }
 
-void ItemShortcut::setItem(int index)
+void ItemShortcut::setItem(const int index)
 {
     mItems[index] = mItemSelected;
     mItemColors[index] = mItemColorSelected;

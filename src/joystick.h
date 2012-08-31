@@ -78,9 +78,9 @@ class Joystick
         bool isEnabled() const
         { return mEnabled; }
 
-        void setNumber(int n);
+        void setNumber(const int n);
 
-        static void setEnabled(bool enabled)
+        static void setEnabled(const bool enabled)
         { mEnabled = enabled; }
 
         static void getNames(std::vector <std::string> &names);
@@ -97,7 +97,7 @@ class Joystick
         bool isCalibrating() const
         { return mCalibrating; }
 
-        bool buttonPressed(unsigned char no) const;
+        bool buttonPressed(const unsigned char no) const;
 
         bool isUp() const
         { return mEnabled && (mDirection & UP); }
@@ -114,24 +114,24 @@ class Joystick
         int getNumber() const
         { return mNumber; }
 
-        void setUseInactive(bool b)
+        void setUseInactive(const bool b)
         { mUseInactive = b; }
 
         void update();
 
         KeysVector *getActionVector(const SDL_Event &event);
 
-        KeysVector *getActionVectorByKey(int i);
+        KeysVector *getActionVectorByKey(const int i);
 
         int getButtonFromEvent(const SDL_Event &event) const;
 
-        bool isActionActive(int index) const;
+        bool isActionActive(const int index) const;
 
         bool validate() const;
 
-        void handleRepeat(int time);
+        void handleRepeat(const int time);
 
-        void resetRepeat(int key);
+        void resetRepeat(const int key);
 
     protected:
         unsigned char mDirection;

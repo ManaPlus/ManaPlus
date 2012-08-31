@@ -34,10 +34,10 @@ class KeyInput : public gcn::KeyInput
 
         ~KeyInput();
 
-        void setActionId(int n)
+        void setActionId(const int n)
         { mActionId = n; }
 
-        int getActionId()
+        int getActionId() const
         { return mActionId; }
 
     protected:

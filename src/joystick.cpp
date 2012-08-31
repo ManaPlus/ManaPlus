@@ -124,7 +124,7 @@ void Joystick::close()
     }
 }
 
-void Joystick::setNumber(int n)
+void Joystick::setNumber(const int n)
 {
     if (mJoystick)
     {
@@ -180,7 +180,7 @@ void Joystick::logic()
         if (!mDirection && mHaveHats)
         {
             // reading only hat 0
-            uint8_t hat = SDL_JoystickGetHat(mJoystick, 0);
+            const uint8_t hat = SDL_JoystickGetHat(mJoystick, 0);
             if (hat & SDL_HAT_RIGHT)
                 mDirection |= RIGHT;
             else if (hat & SDL_HAT_LEFT)
@@ -248,7 +248,7 @@ void Joystick::finishCalibration()
     config.setValue("downTolerance" + toString(mNumber), mDownTolerance);
 }
 
-bool Joystick::buttonPressed(unsigned char no) const
+bool Joystick::buttonPressed(const unsigned char no) const
 {
     return (mEnabled && no < MAX_BUTTONS) ? mActiveButtons[no] : false;
 }
@@ -278,7 +278,7 @@ KeysVector *Joystick::getActionVector(const SDL_Event &event)
     return nullptr;
 }
 
-KeysVector *Joystick::getActionVectorByKey(int i)
+KeysVector *Joystick::getActionVectorByKey(const int i)
 {
     if (i < 0 || i >= mButtonsNumber)
         return nullptr;
@@ -295,7 +295,7 @@ int Joystick::getButtonFromEvent(const SDL_Event &event) const
     return event.jbutton.button;
 }
 
-bool Joystick::isActionActive(int index) const
+bool Joystick::isActionActive(const int index) const
 {
     if (!validate())
         return false;
@@ -323,7 +323,7 @@ bool Joystick::validate() const
     return (mUseInactive || Client::getInputFocused());
 }
 
-void Joystick::handleRepeat(int time)
+void Joystick::handleRepeat(const int time)
 {
     for (KeyTimeMapIter it = mKeyTimeMap.begin(), it_end = mKeyTimeMap.end();
          it != it_end; ++ it)
@@ -344,9 +344,9 @@ void Joystick::handleRepeat(int time)
     }
 }
 
-void Joystick::resetRepeat(int key)
+void Joystick::resetRepeat(const int key)
 {
-    KeyTimeMapIter it = mKeyTimeMap.find(key);
+    const KeyTimeMapIter it = mKeyTimeMap.find(key);
     if (it != mKeyTimeMap.end())
         (*it).second = tick_time;
 }

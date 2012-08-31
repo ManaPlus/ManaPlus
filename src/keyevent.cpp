@@ -22,14 +22,14 @@
 
 #include "debug.h"
 
-KeyEvent::KeyEvent(gcn::Widget* source,
-                   bool shiftPressed,
-                   bool controlPressed,
-                   bool altPressed,
-                   bool metaPressed,
-                   unsigned int type,
-                   bool numericPad,
-                   int actionId,
+KeyEvent::KeyEvent(gcn::Widget *const source,
+                   const bool shiftPressed,
+                   const bool controlPressed,
+                   const bool altPressed,
+                   const bool metaPressed,
+                   const unsigned int type,
+                   const bool numericPad,
+                   const int actionId,
                    const gcn::Key& key) :
     gcn::KeyEvent(source, shiftPressed, controlPressed, altPressed,
                   metaPressed, type, numericPad, key),
