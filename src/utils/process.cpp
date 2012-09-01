@@ -172,7 +172,7 @@ int execFileWait(std::string pathName, std::string name,
             sleep (waitTime);
 //            printf ("time out\n");
             execl("/bin/true", "/bin/true", static_cast<char *>(nullptr));
-            exit(-1);
+            _exit(-1);
         }
 
         // monitoring process
@@ -191,7 +191,7 @@ int execFileWait(std::string pathName, std::string name,
         }
         wait(nullptr);
         execl("/bin/true", "/bin/true", static_cast<char *>(nullptr));
-        exit(ret);
+        _exit(ret);
     }
 
     // monitoring parent
