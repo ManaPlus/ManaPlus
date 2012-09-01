@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-09-01 01:09+0300\n"
+"POT-Creation-Date: 2012-09-01 15:03+0300\n"
 "PO-Revision-Date: 2012-08-14 23:26+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/"
@@ -481,7 +481,7 @@ msgstr "Verkopen"
 #: src/gui/popupmenu.cpp:1992 src/gui/popupmenu.cpp:2016
 #: src/gui/popupmenu.cpp:2039 src/gui/quitdialog.cpp:56
 #: src/gui/registerdialog.cpp:81 src/gui/setupactiondata.h:1500
-#: src/gui/setup.cpp:72 src/gui/socialwindow.cpp:1136
+#: src/gui/setup.cpp:72 src/gui/socialwindow.cpp:1137
 #: src/gui/textcommandeditor.cpp:191 src/gui/textdialog.cpp:50
 #: src/gui/unregisterdialog.cpp:57 src/gui/updaterwindow.cpp:168
 msgid "Cancel"
@@ -587,7 +587,7 @@ msgid "Race:"
 msgstr "Ras:"
 
 #: src/gui/charcreatedialog.cpp:130 src/gui/charselectdialog.cpp:629
-#: src/gui/socialwindow.cpp:1198
+#: src/gui/socialwindow.cpp:1199
 msgid "Create"
 msgstr "Aanmaken"
 
@@ -1520,7 +1520,7 @@ msgstr "away aanzetten"
 msgid "Disable away"
 msgstr "away afzetten"
 
-#: src/gui/popupmenu.cpp:523 src/gui/socialwindow.cpp:1200
+#: src/gui/popupmenu.cpp:523 src/gui/socialwindow.cpp:1201
 msgid "Leave"
 msgstr "Verlaat"
 
@@ -1634,7 +1634,7 @@ msgstr "Kopieer naar chat"
 
 #: src/gui/popupmenu.cpp:1958 src/gui/popupmenu.cpp:2010
 #: src/gui/setup_theme.cpp:60 src/gui/setup_theme.cpp:124
-#: src/gui/socialwindow.cpp:881
+#: src/gui/socialwindow.cpp:882
 msgid "(default)"
 msgstr "(standaard)"
 
@@ -3633,148 +3633,148 @@ msgid "Nav"
 msgstr "Nav"
 
 #. TRANSLATORS: Attack filter tab name in social window. Should be small
-#: src/gui/socialwindow.cpp:929
+#: src/gui/socialwindow.cpp:930
 msgid "Atk"
 msgstr "Aanv"
 
-#: src/gui/socialwindow.cpp:953
+#: src/gui/socialwindow.cpp:954
 msgid "Priority mobs"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:954
+#: src/gui/socialwindow.cpp:955
 msgid "Attack mobs"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:955
+#: src/gui/socialwindow.cpp:956
 msgid "Ignore mobs"
 msgstr ""
 
 #. TRANSLATORS: Pickup filter tab name in social window. Should be small
-#: src/gui/socialwindow.cpp:984
+#: src/gui/socialwindow.cpp:985
 msgid "Pik"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1008
+#: src/gui/socialwindow.cpp:1009
 msgid "Pickup items"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1009
+#: src/gui/socialwindow.cpp:1010
 msgid "Ignore items"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1133
+#: src/gui/socialwindow.cpp:1134
 msgid "Create Guild"
 msgstr "Guild aanmaken"
 
-#: src/gui/socialwindow.cpp:1134 src/gui/socialwindow.cpp:1586
+#: src/gui/socialwindow.cpp:1135 src/gui/socialwindow.cpp:1587
 msgid "Create Party"
 msgstr "Groep aanmaken"
 
-#: src/gui/socialwindow.cpp:1176 src/gui/windowmenu.cpp:99
+#: src/gui/socialwindow.cpp:1177 src/gui/windowmenu.cpp:99
 msgid "Social"
 msgstr "Sociaal"
 
-#: src/gui/socialwindow.cpp:1199
+#: src/gui/socialwindow.cpp:1200
 msgid "Invite"
 msgstr "Nodig uit"
 
 #. TRANSLATORS: here P is title for visible players tab in social window
-#: src/gui/socialwindow.cpp:1215
+#: src/gui/socialwindow.cpp:1216
 msgid "P"
 msgstr ""
 
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/socialwindow.cpp:1220
+#: src/gui/socialwindow.cpp:1221
 msgid "F"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1369
+#: src/gui/socialwindow.cpp:1370
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "Uitnodiging voor groep %s aanvaard."
 
-#: src/gui/socialwindow.cpp:1379
+#: src/gui/socialwindow.cpp:1380
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "Uitnodiging voor groep %s geweigerd."
 
-#: src/gui/socialwindow.cpp:1396
+#: src/gui/socialwindow.cpp:1397
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "Uitnodiging voor guild %s aanvaard."
 
-#: src/gui/socialwindow.cpp:1409
+#: src/gui/socialwindow.cpp:1410
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "Uitnodiging voor guild %s geweigerd."
 
-#: src/gui/socialwindow.cpp:1456
+#: src/gui/socialwindow.cpp:1457
 #, c-format
 msgid "Creating guild called %s."
 msgstr "Maken van guild %s."
 
-#: src/gui/socialwindow.cpp:1479
+#: src/gui/socialwindow.cpp:1480
 #, c-format
 msgid "Creating party called %s."
 msgstr "Maken van groep %s."
 
-#: src/gui/socialwindow.cpp:1493
+#: src/gui/socialwindow.cpp:1494
 msgid "Guild Name"
 msgstr "Guild Naam"
 
-#: src/gui/socialwindow.cpp:1494
+#: src/gui/socialwindow.cpp:1495
 msgid "Choose your guild's name."
 msgstr "Kies uw guild naam"
 
-#: src/gui/socialwindow.cpp:1508
+#: src/gui/socialwindow.cpp:1509
 msgid "Received guild request, but one already exists."
 msgstr "Uitnodiging tot guild ontvangen, maar er is er al één."
 
-#: src/gui/socialwindow.cpp:1514
+#: src/gui/socialwindow.cpp:1515
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%s heeft je uitgenodigd om guid %s te vervoegen."
 
-#: src/gui/socialwindow.cpp:1520
+#: src/gui/socialwindow.cpp:1521
 msgid "Accept Guild Invite"
 msgstr "Guild Uitnodiging Aanvaarden"
 
-#: src/gui/socialwindow.cpp:1535
+#: src/gui/socialwindow.cpp:1536
 msgid "Received party request, but one already exists."
 msgstr "Uitnodiging tot groep ontvangen, maar er is er al één."
 
-#: src/gui/socialwindow.cpp:1546
+#: src/gui/socialwindow.cpp:1547
 msgid "You have been invited you to join a party."
 msgstr "U bent uitgenodigd om je bij een groep te voegen."
 
-#: src/gui/socialwindow.cpp:1550
+#: src/gui/socialwindow.cpp:1551
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "U bent uitgenodigd om je bij groep %s te voegen."
 
-#: src/gui/socialwindow.cpp:1558
+#: src/gui/socialwindow.cpp:1559
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s heeft je uitgenodigd om je bij hun groep te voegen."
 
-#: src/gui/socialwindow.cpp:1563
+#: src/gui/socialwindow.cpp:1564
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s heeft je uitgenodigd om je bij groep %s te voegen."
 
-#: src/gui/socialwindow.cpp:1572
+#: src/gui/socialwindow.cpp:1573
 msgid "Accept Party Invite"
 msgstr "Groepsuitnodiging aanvaarden"
 
-#: src/gui/socialwindow.cpp:1587
+#: src/gui/socialwindow.cpp:1588
 msgid "Cannot create party. You are already in a party"
 msgstr "Kan groep niet aanmaken. Je bent al in een groep."
 
-#: src/gui/socialwindow.cpp:1592
+#: src/gui/socialwindow.cpp:1593
 msgid "Party Name"
 msgstr "Groep Naam"
 
-#: src/gui/socialwindow.cpp:1593
+#: src/gui/socialwindow.cpp:1594
 msgid "Choose your party's name."
 msgstr "Kies uw groepsnaam."
 
