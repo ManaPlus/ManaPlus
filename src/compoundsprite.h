@@ -74,7 +74,7 @@ public:
 
     virtual const Image *getImage() const;
 
-    virtual bool setSpriteDirection(SpriteDirection direction);
+    virtual bool setSpriteDirection(const SpriteDirection direction);
 
     int getNumberOfLayers() const;
 

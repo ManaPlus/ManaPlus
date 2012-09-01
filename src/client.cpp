@@ -568,7 +568,7 @@ void Client::gameInit()
         sound.setSfxVolume(config.getIntValue("sfxVolume"));
         sound.setMusicVolume(config.getIntValue("musicVolume"));
     }
-    catch (const char *err)
+    catch (const char *const err)
     {
         mState = STATE_ERROR;
         errorMessage = err;
@@ -2013,25 +2013,6 @@ bool Client::copyFile(const std::string &configPath,
     return false;
 }
 
-bool Client::createConfig(std::string &configPath)
-{
-    std::string oldHomeDir;
-#ifdef __APPLE__
-    // Use Application Directory instead of .mana
-    oldHomeDir = std::string(PHYSFS_getUserDir()) +
-        "/Library/Application Support/" +
-        branding.getValue("appName", "ManaPlus");
-#else
-    oldHomeDir = std::string(PHYSFS_getUserDir()) +
-        "/." + branding.getValue("appShort", "mana");
-#endif
-
-    oldHomeDir += "/config.xml";
-
-    logger->log("Restore config from: " + configPath);
-    return copyFile(configPath, oldHomeDir);
-}
-
 void Client::storeSafeParameters() const
 {
     bool tmpHwaccel;
@@ -2342,7 +2323,7 @@ bool Client::checkPackets(const int type)
         return true;
 
     PacketLimit &limit = instance()->mPacketLimits[type];
-    int timeLimit = limit.timeLimit;
+    const int timeLimit = limit.timeLimit;
 
     if (!timeLimit)
         return true;
@@ -2384,7 +2365,7 @@ bool Client::limitPackets(const int type)
     if (!serverConfig.getValueBool("enableBuggyServers", true))
         return true;
 
-    int timeLimit = instance()->mPacketLimits[type].timeLimit;
+    const int timeLimit = instance()->mPacketLimits[type].timeLimit;
 
     if (!timeLimit)
         return true;

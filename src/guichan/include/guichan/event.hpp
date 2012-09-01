@@ -67,7 +67,7 @@ namespace gcn
          *
          * @param source The source widget of the event.
          */
-        Event(Widget* source);
+        Event(Widget *const source);
 
         /**
          * Destructor.

@@ -69,7 +69,7 @@ static const int SLOTS_PER_ROW = 5;
 class CharDeleteConfirm : public ConfirmDialog
 {
     public:
-        CharDeleteConfirm(CharSelectDialog *m, int index):
+        CharDeleteConfirm(CharSelectDialog *const m, const int index) :
             ConfirmDialog(_("Confirm Character Delete"),
                           _("Are you sure you want to delete this character?"),
                           false, false, m),

@@ -70,7 +70,7 @@ namespace gcn
          * @param surface the surface from which to load.
          * @param autoFree true if the surface should automatically be deleted.
          */
-        SDLImage(SDL_Surface* surface, bool autoFree);
+        SDLImage(SDL_Surface *const surface, const bool autoFree);
 
         /**
          * Destructor.

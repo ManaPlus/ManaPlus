@@ -81,13 +81,13 @@ struct MetaTile
 class TileAnimation
 {
     public:
-        TileAnimation(Animation *ani);
+        TileAnimation(Animation *const ani);
 
         ~TileAnimation();
 
-        bool update(int ticks = 1);
+        bool update(const int ticks = 1);
 
-        void addAffectedTile(MapLayer *layer, int index)
+        void addAffectedTile(MapLayer *const layer, const int index)
         { mAffected.push_back(std::make_pair(layer, index)); }
 
     private:
@@ -152,7 +152,8 @@ class Map : public Properties, public ConfigListener
         /**
          * Constructor, taking map and tile size as parameters.
          */
-        Map(int width, int height, int tileWidth, int tileHeight);
+        Map(const int width, const int height,
+            const int tileWidth, const int tileHeight);
 
         /**
          * Destructor.
@@ -168,7 +169,7 @@ class Map : public Properties, public ConfigListener
         /**
          * Updates animations. Called as needed.
          */
-        void update(int ticks = 1);
+        void update(const int ticks = 1);
 
         /**
          * Draws the map to the given graphics output. This method draws all
@@ -183,48 +184,49 @@ class Map : public Properties, public ConfigListener
         /**
          * Visualizes collision layer for debugging
          */
-        void drawCollision(Graphics *graphics, int scrollX, int scrollY,
-                           int debugFlags);
+        void drawCollision(Graphics *const graphics,
+                           const int scrollX, const int scrollY,
+                           const int debugFlags) const;
 
         /**
          * Adds a layer to this map. The map takes ownership of the layer.
          */
-        void addLayer(MapLayer *layer);
+        void addLayer(MapLayer *const layer);
 
         /**
          * Adds a tileset to this map. The map takes ownership of the tileset.
          */
-        void addTileset(Tileset *tileset);
+        void addTileset(Tileset *const tileset);
 
         /**
          * Finds the tile set that a tile with the given global id is part of.
          */
-        Tileset *getTilesetWithGid(int gid) const;
+        Tileset *getTilesetWithGid(const int gid) const;
 
         /**
          * Get tile reference.
          */
-        MetaTile *getMetaTile(int x, int y) const;
+        MetaTile *getMetaTile(const int x, const int y) const;
 
         /**
          * Marks a tile as occupied.
          */
-        void blockTile(int x, int y, BlockType type);
+        void blockTile(const int x, const int y, const BlockType type);
 
         /**
          * Gets walkability for a tile with a blocking bitmask. When called
          * without walkmask, only blocks against colliding tiles.
          */
-        bool getWalk(int x, int y,
-                     unsigned char walkmask = BLOCKMASK_WALL | BLOCKMASK_AIR
-                     | BLOCKMASK_WATER) const;
+        bool getWalk(const int x, const int y,
+                     const unsigned char walkmask = BLOCKMASK_WALL
+                     | BLOCKMASK_AIR | BLOCKMASK_WATER) const;
 
-        void setWalk(int x, int y, bool walkable);
+        void setWalk(const int x, const int y, const bool walkable);
 
         /**
          * Tells whether a tile is occupied by a being.
          */
-        bool occupied(int x, int y) const;
+        bool occupied(const int x, const int y) const;
 
         /**
          * Returns the width of this map in tiles.
@@ -263,45 +265,48 @@ class Map : public Properties, public ConfigListener
          * Check the current position against surrounding blocking tiles, and
          * correct the position offset within tile when needed.
          */
-        Position checkNodeOffsets(int radius, unsigned char walkMask,
+        Position checkNodeOffsets(int radius, const unsigned char walkMask,
                                   const Position &position) const;
 
-        Position checkNodeOffsets(int radius, unsigned char walkMask,
-                                  int x, int y) const
+        Position checkNodeOffsets(const int radius,
+                                  const unsigned char walkMask,
+                                  const int x, const int y) const
         { return checkNodeOffsets(radius, walkMask, Position(x, y)); }
 
         /**
          * Find a pixel path from one location to the next.
          */
-        Path findPixelPath(int startPixelX, int startPixelY,
-                           int destPixelX, int destPixelY,
-                           int radius, unsigned char walkmask,
-                           int maxCost = 20);
+        Path findPixelPath(const int startPixelX, const int startPixelY,
+                           const int destPixelX, const int destPixelY,
+                           const int radius, const unsigned char walkmask,
+                           const int maxCost = 20);
 
         /**
          * Find a path from one location to the next.
          */
-        Path findPath(int startX, int startY, int destX, int destY,
-                      unsigned char walkmask, int maxCost = 20);
+        Path findPath(const int startX, const int startY,
+                      const int destX, const int destY,
+                      const unsigned char walkmask, const int maxCost = 20);
 
         /**
          * Adds a particle effect
          */
         void addParticleEffect(const std::string &effectFile,
-                               int x, int y, int w = 0, int h = 0);
+                               const int x, const int y,
+                               const int w = 0, const int h = 0);
 
         /**
          * Initializes all added particle effects
          */
-        void initializeParticleEffects(Particle* particleEngine);
+        void initializeParticleEffects(Particle *const particleEngine);
 
         /**
          * Adds a tile animation to the map
          */
-        void addAnimation(int gid, TileAnimation *animation)
+        void addAnimation(const int gid, TileAnimation *const animation)
         { mTileAnimations[gid] = animation; }
 
-        void setDebugFlags(int n)
+        void setDebugFlags(const int n)
         { mDebugFlags = n; }
 
         int getDebugFlags() const
@@ -309,7 +314,7 @@ class Map : public Properties, public ConfigListener
 
         void addExtraLayer();
 
-        void saveExtraLayer();
+        void saveExtraLayer() const;
 
         SpecialLayer *getTempLayer() const
         { return mTempLayer; }
@@ -317,7 +322,7 @@ class Map : public Properties, public ConfigListener
         SpecialLayer *getSpecialLayer() const
         { return mSpecialLayer; }
 
-        void setHasWarps(bool n)
+        void setHasWarps(const bool n)
         { mHasWarps = n; }
 
         bool getHasWarps() const
@@ -325,16 +330,18 @@ class Map : public Properties, public ConfigListener
 
         std::string getUserMapDirectory() const;
 
-        void addPortal(const std::string &name, int type,
-                       int x, int y, int dx, int dy);
+        void addPortal(const std::string &name, const int type,
+                       const int x, const int y, const int dx, const int dy);
 
-        void addRange(const std::string &name, int type,
-                      int x, int y, int dx, int dy);
+        void addRange(const std::string &name, const int type,
+                      const int x, const int y, const int dx, const int dy);
 
-        void addPortalTile(const std::string &name, int type, int x, int y);
+        void addPortalTile(const std::string &name, const int type,
+                           const int x, const int y);
 
-        void updatePortalTile(const std::string &name, int type,
-                              int x, int y, bool addNew = true);
+        void updatePortalTile(const std::string &name, const int type,
+                              const int x, const int y,
+                              const bool addNew = true);
 
         std::vector<MapItem*> &getPortals()
         { return mMapPortals; }
@@ -342,33 +349,34 @@ class Map : public Properties, public ConfigListener
         /**
          * Gets the tile animation for a specific gid
          */
-        TileAnimation *getAnimationForGid(int gid) const;
+        TileAnimation *getAnimationForGid(const int gid) const;
 
         void optionChanged(const std::string &value);
 
-        MapItem *findPortalXY(int x, int y) const;
+        MapItem *findPortalXY(const int x, const int y) const;
 
         int getActorsCount() const
         { return static_cast<int>(mActors.size()); }
 
-        void setPvpMode(int mode);
+        void setPvpMode(const int mode);
 
         ObjectsLayer* getObjectsLayer() const
         { return mObjects; }
 
-        std::string getObjectData(unsigned x, unsigned y, int type);
+        std::string getObjectData(const unsigned x, const unsigned y,
+                                  const int type);
 
         void indexTilesets();
 
         void clearIndexedTilesets();
 
-        void setActorsFix(int x, int y)
+        void setActorsFix(const int x, const int y)
         { mActorFixX = x; mActorFixY = y; }
 
         int getVersion() const
         { return mVersion; }
 
-        void setVersion(int n)
+        void setVersion(const int n)
         { mVersion = n; }
 
         void reduce();
@@ -378,10 +386,10 @@ class Map : public Properties, public ConfigListener
         bool empty() const
         { return mLayers.empty(); }
 
-        void setCustom(bool b)
+        void setCustom(const bool b)
         { mCustom = b; }
 
-        bool isCustom()
+        bool isCustom() const
         { return mCustom; }
 
     protected:
@@ -409,18 +417,18 @@ class Map : public Properties, public ConfigListener
         /**
          * Updates scrolling of ambient layers. Has to be called each game tick.
          */
-        void updateAmbientLayers(float scrollX, float scrollY);
+        void updateAmbientLayers(const float scrollX, const float scrollY);
 
         /**
          * Draws the foreground or background layers to the given graphics output.
          */
-        void drawAmbientLayers(Graphics *graphics, LayerType type,
-                               int detail);
+        void drawAmbientLayers(Graphics *const graphics, const LayerType type,
+                               const int detail);
 
         /**
          * Tells whether the given coordinates fall within the map boundaries.
          */
-        bool contains(int x, int y) const;
+        bool contains(const int x, const int y) const;
 
         /**
          * Blockmasks for different entities

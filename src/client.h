@@ -332,8 +332,6 @@ private:
     bool copyFile(const std::string &configPath,
                   const std::string &oldConfigPath) const;
 
-    bool createConfig(std::string &configPath);
-
     void accountLogin(LoginData *const data) const;
 
     void storeSafeParameters() const;

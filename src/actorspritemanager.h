@@ -222,7 +222,7 @@ class ActorSpriteManager: public ConfigListener
 
         void updatePlayerGuild() const;
 
-        void parseLevels(std::string levels);
+        void parseLevels(std::string levels) const;
 
         bool pickUpAll(const int x1, const int y1, const int x2, const int y2,
                        const bool serverBuggy = false);

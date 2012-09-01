@@ -196,7 +196,7 @@ Button::~Button()
 
     if (mInstances == 0 && Theme::instance())
     {
-        Theme *const theme = Theme::instance();
+        const Theme *const theme = Theme::instance();
         for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             theme->unloadRect(button[mode]);
     }

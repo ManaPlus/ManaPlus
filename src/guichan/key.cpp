@@ -52,7 +52,7 @@
 
 namespace gcn
 {
-    Key::Key(int value) :
+    Key::Key(const int value) :
         mValue(value)
     {
     }

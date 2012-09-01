@@ -84,11 +84,11 @@ namespace gcn
          * @param timeStamp The timestamp of the mouse input. Used to
          *                  check for double clicks.
          */
-        MouseInput(unsigned int button,
-                   unsigned int type,
-                   int x,
-                   int y,
-                   int timeStamp);
+        MouseInput(const unsigned int button,
+                   const unsigned int type,
+                   const int x,
+                   const int y,
+                   const int timeStamp);
 
         /**
          * Sets the type of the mouse input.

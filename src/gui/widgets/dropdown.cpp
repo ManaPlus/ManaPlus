@@ -139,7 +139,7 @@ DropDown::~DropDown()
 
 void DropDown::updateAlpha()
 {
-    float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     if (mAlpha != alpha)

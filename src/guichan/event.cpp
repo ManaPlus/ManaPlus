@@ -52,8 +52,8 @@
 
 namespace gcn
 {
-    Event::Event(Widget* source)
-            :mSource(source)
+    Event::Event(Widget *const source) :
+        mSource(source)
     {
 
     }

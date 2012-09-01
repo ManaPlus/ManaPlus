@@ -138,7 +138,7 @@ void Popup::setContentSize(int width, int height)
     mRedraw = true;
 }
 
-void Popup::setLocationRelativeTo(gcn::Widget *const widget)
+void Popup::setLocationRelativeTo(const gcn::Widget *const widget)
 {
     if (!widget)
         return;

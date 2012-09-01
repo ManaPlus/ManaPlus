@@ -90,9 +90,10 @@ static void printVersion()
     std::cout << strprintf("ManaPlus client %s", FULL_VERSION) << std::endl;
 }
 
-static void parseOptions(int argc, char *argv[], Client::Options &options)
+static void parseOptions(const int argc, char *const argv[],
+                         Client::Options &options)
 {
-    const char *optstring = "hvud:U:P:Dc:p:l:L:C:s:t:T";
+    const char *const optstring = "hvud:U:P:Dc:p:l:L:C:s:t:T";
 
     const struct option long_options[] =
     {
@@ -122,7 +123,8 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
 
     while (optind < argc)
     {
-        int result = getopt_long(argc, argv, optstring, long_options, nullptr);
+        const int result = getopt_long(argc, argv,
+            optstring, long_options, nullptr);
 
         if (result == -1)
             break;

@@ -130,7 +130,7 @@ class LayoutArray
          * Gets the position and size of a widget along a given axis
          */
         void align(int &pos, int &size, const int dim, LayoutCell const &cell,
-                   const int *const sizes, int sizeCount) const;
+                   const int *const sizes, const int sizeCount) const;
 
         /**
          * Ensures the private vectors are large enough.

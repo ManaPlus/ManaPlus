@@ -136,7 +136,7 @@ class ShopWindow : public Window, public gcn::ActionListener,
 
         bool checkFloodCounter(int &counterTime) const;
 
-        bool isShopEmpty();
+        bool isShopEmpty() const;
 
     private:
         void startTrade();

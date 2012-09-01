@@ -581,7 +581,7 @@ private:
 class SocialNavigationTab : public SocialTab
 {
 public:
-    SocialNavigationTab(bool showBackground) :
+    SocialNavigationTab(const bool showBackground) :
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
@@ -916,7 +916,7 @@ protected:
 class SocialAttackTab : public SocialTab
 {
 public:
-    SocialAttackTab(bool showBackground) :
+    SocialAttackTab(const bool showBackground) :
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
@@ -971,7 +971,7 @@ private:
 class SocialPickupTab : public SocialTab
 {
 public:
-    SocialPickupTab(bool showBackground) :
+    SocialPickupTab(const bool showBackground) :
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
@@ -1068,7 +1068,7 @@ public:
         if (!actorSpriteManager)
             return;
 
-        std::vector<Avatar*> *avatars = mBeings->getMembers();
+        std::vector<Avatar*> *const avatars = mBeings->getMembers();
         if (!avatars)
             return;
 

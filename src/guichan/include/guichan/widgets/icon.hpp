@@ -74,7 +74,7 @@ namespace gcn
          *
          * @param image The image to display.
          */
-        Icon(const Image* image);
+        Icon(const Image *const image);
 
         /**
          * Descructor.

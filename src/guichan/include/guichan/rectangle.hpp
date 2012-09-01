@@ -75,7 +75,7 @@ namespace gcn
          * @param height The height of the rectangle.
          * @since 0.1.0
          */
-        Rectangle(int x, int y, int width, int height);
+        Rectangle(const int x, const int y, const int width, const int height);
 
         /**
          * Sets the dimension of a rectangle.

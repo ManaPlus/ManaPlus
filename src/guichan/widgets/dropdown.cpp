@@ -57,9 +57,9 @@
 
 namespace gcn
 {
-    DropDown::DropDown(ListModel *listModel,
-                       ScrollArea *scrollArea,
-                       ListBox *listBox)
+    DropDown::DropDown(ListModel *const listModel,
+                       ScrollArea *const scrollArea,
+                       ListBox *const listBox)
     {
         setWidth(100);
         setFocusable(true);

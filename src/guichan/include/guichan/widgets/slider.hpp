@@ -81,7 +81,7 @@ namespace gcn
          *
          * @param scaleEnd The end value of the slider scale.
          */
-        Slider(double scaleEnd = 1.0);
+        Slider(const double scaleEnd = 1.0);
 
         /**
          * Constructor.
@@ -89,7 +89,7 @@ namespace gcn
          * @param scaleStart The start value of the slider scale.
          * @param scaleEnd The end value of the slider scale.
          */
-        Slider(double scaleStart, double scaleEnd);
+        Slider(const double scaleStart, const double scaleEnd);
 
         /**
          * Destructor.

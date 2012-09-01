@@ -279,7 +279,7 @@ void SpellShortcutContainer::mouseMoved(gcn::MouseEvent &event)
         (mNumber * SPELL_SHORTCUT_ITEMS) + index);
 
     mSpellPopup->setVisible(false);
-    TextCommand *const spell = spellManager->getSpell(itemId);
+    const TextCommand *const spell = spellManager->getSpell(itemId);
     if (spell && !spell->isEmpty())
     {
         mSpellPopup->setItem(spell);

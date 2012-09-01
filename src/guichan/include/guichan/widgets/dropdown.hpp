@@ -95,9 +95,9 @@ namespace gcn
          * @param listBox the listBox to use.
          * @see ListModel, ScrollArea, ListBox.
          */
-        DropDown(ListModel *listModel = nullptr,
-                 ScrollArea *scrollArea = nullptr,
-                 ListBox *listBox = nullptr);
+        DropDown(ListModel *const listModel = nullptr,
+                 ScrollArea *const scrollArea = nullptr,
+                 ListBox *const listBox = nullptr);
 
         /**
          * Destructor.

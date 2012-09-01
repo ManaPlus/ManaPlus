@@ -90,7 +90,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          * Compute the next pathnode location when walking using keyboard.
          * used by nextTile().
          */
-        Position getNextWalkPosition(unsigned char dir) const;
+        Position getNextWalkPosition(const unsigned char dir) const;
 
         /**
          * Adds a new tile to the path when walking.
@@ -129,7 +129,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          */
         int getAttackRange() const;
 
-        int getAttackRange2();
+        int getAttackRange2() const;
 
         void attack(Being *const target = nullptr, const bool keep = false,
                     const bool dontChangeEquipment = false);
@@ -183,7 +183,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          */
         bool withinAttackRange(const Being *const target,
                                const bool fixDistance = false,
-                               const int addRange = 0);
+                               const int addRange = 0) const;
 
         /**
          * Stops the player dead in his tracks
@@ -294,9 +294,9 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void switchGameModifiers();
 
-        void magicAttack();
+        void magicAttack() const;
 
-        void specialMove(unsigned char direction);
+        void specialMove(const unsigned char direction);
 
         void moveByDirection(const unsigned char dir);
 
@@ -356,7 +356,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void navigateClean();
 
-        void imitateEmote(const Being *const being, const unsigned char emote);
+        void imitateEmote(const Being *const being,
+                          const unsigned char emote) const;
 
         void imitateAction(const Being *const being,
                            const Being::Action action);
@@ -503,7 +504,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         std::string getPickUpTypeString();
 
-        std::string getDebugPathString();
+        std::string getDebugPathString() const;
 
         std::string getMagicAttackString();
 
@@ -513,7 +514,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         std::string getAwayModeString();
 
-        std::string getCameraModeString();
+        std::string getCameraModeString() const;
 
         std::string getGameModifiersString();
 

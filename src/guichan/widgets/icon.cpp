@@ -71,7 +71,7 @@ namespace gcn
                 mImage->getHeight());
     }
 
-    Icon::Icon(const Image* image) :
+    Icon::Icon(const Image *const image) :
         mImage(image),
         mInternalImage(false)
     {

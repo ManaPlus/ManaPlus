@@ -668,7 +668,8 @@ class Being : public ActorSprite, public ConfigListener
 
         bool draw(Graphics *graphics, int offsetX, int offsetY) const;
 
-        bool drawSpriteAt(Graphics *graphics, int x, int y) const;
+        bool drawSpriteAt(Graphics *const graphics,
+                          const int x, const int y) const;
 
         void setMoveTime()
         { mMoveTime = cur_time; }

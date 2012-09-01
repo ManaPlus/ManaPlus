@@ -108,7 +108,7 @@ void Logger::dlog(std::string str)
         debugChatTab->chatLog(str, BY_LOGGER);
 }
 
-void Logger::log1(const char *buf)
+void Logger::log1(const char *const buf)
 {
     // Get the current system time
     timeval tv;
@@ -140,7 +140,7 @@ void Logger::log1(const char *buf)
         debugChatTab->chatLog(buf, BY_LOGGER);
 }
 
-void Logger::log(const char *log_text, ...)
+void Logger::log(const char *const log_text, ...)
 {
     unsigned size = 1024;
     char* buf = nullptr;
@@ -207,7 +207,7 @@ void Logger::safeError(const std::string &error_text)
 //                  (ConstStr255Param) msg, nullptr, nullptr);
 #elif defined(__linux__) || defined(__linux)
     std::cerr << "Error: " << error_text << std::endl;
-    std::string msg = "xmessage \"" + error_text + "\"";
+    const std::string msg = "xmessage \"" + error_text + "\"";
     if (system(msg.c_str()) == -1)
         std::cerr << "Error: " << error_text << std::endl;
 #else
@@ -234,7 +234,7 @@ void Logger::error(const std::string &error_text)
 //                  (ConstStr255Param) msg, nullptr, nullptr);
 #elif defined(__linux__) || defined(_linux)
     std::cerr << "Error: " << error_text << std::endl;
-    std::string msg = "xmessage \"Error happend. "
+    const std::string msg = "xmessage \"Error happend. "
         "Please see log file for more information.\"";
     if (system(msg.c_str()) == -1)
         std::cerr << "Error: " << error_text << std::endl;

@@ -1992,7 +1992,8 @@ void Being::drawSpritesSDL(Graphics* graphics, int posX, int posY) const
     }
 }
 
-bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
+bool Being::drawSpriteAt(Graphics *const graphics,
+                         const int x, const int y) const
 {
     bool res = true;
 

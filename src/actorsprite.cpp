@@ -101,7 +101,8 @@ bool ActorSprite::draw(Graphics *graphics, int offsetX, int offsetY) const
     return drawSpriteAt(graphics, px, py);
 }
 
-bool ActorSprite::drawSpriteAt(Graphics *graphics, int x, int y) const
+bool ActorSprite::drawSpriteAt(Graphics *const graphics,
+                               const int x, const int y) const
 {
     return CompoundSprite::draw(graphics, x, y);
 }

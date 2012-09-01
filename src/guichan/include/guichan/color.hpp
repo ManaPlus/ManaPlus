@@ -75,7 +75,7 @@ namespace gcn
          *
          * @param color The color to initialise the object with.
          */
-        Color(int color);
+        Color(const int color);
 
         /**
          * Constructor. The default alpha value is 255.
@@ -86,7 +86,7 @@ namespace gcn
          * @param a Alpha, used for transparency. A value of 0 means
          *          totaly transparent, 255 is totaly opaque.
          */
-        Color(int r, int g, int b, int a = 255);
+        Color(const int r, const int g, const int b, const int a = 255);
 
         /**
          * Adds the RGB values of two colors together. The values will be
@@ -121,7 +121,7 @@ namespace gcn
          *         the add and subtract operations, be multiplied as
          *         well.
          */
-        Color operator*(float value) const;
+        Color operator*(const float value) const;
 
         /**
          * Compares two colors.

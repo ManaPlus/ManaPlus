@@ -80,7 +80,7 @@ namespace gcn
         addMouseListener(this);
     }
 
-    ScrollArea::ScrollArea(Widget *content) :
+    ScrollArea::ScrollArea(Widget *const content) :
         mVScroll(0),
         mHScroll(0),
         mScrollbarWidth(12),

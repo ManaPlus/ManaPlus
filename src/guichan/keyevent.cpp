@@ -52,22 +52,22 @@
 
 namespace gcn
 {
-    KeyEvent::KeyEvent(Widget* source,
-                       bool shiftPressed,
-                       bool controlPressed,
-                       bool altPressed,
-                       bool metaPressed,
-                       unsigned int type,
-                       bool numericPad,
-                       const Key& key)
-            :InputEvent(source,
-                        shiftPressed,
-                        controlPressed,
-                        altPressed,
-                        metaPressed),
-             mType(type),
-             mIsNumericPad(numericPad),
-             mKey(key)
+    KeyEvent::KeyEvent(Widget *const source,
+                       const bool shiftPressed,
+                       const bool controlPressed,
+                       const bool altPressed,
+                       const bool metaPressed,
+                       const unsigned int type,
+                       const bool numericPad,
+                       const Key& key) :
+        InputEvent(source,
+                   shiftPressed,
+                   controlPressed,
+                   altPressed,
+                   metaPressed),
+        mType(type),
+        mIsNumericPad(numericPad),
+        mKey(key)
     {
 
     }

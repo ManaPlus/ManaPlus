@@ -207,7 +207,7 @@ const Image *CompoundSprite::getImage() const
     return mImage;
 }
 
-bool CompoundSprite::setSpriteDirection(SpriteDirection direction)
+bool CompoundSprite::setSpriteDirection(const SpriteDirection direction)
 {
     bool ret = false;
 

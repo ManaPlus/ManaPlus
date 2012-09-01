@@ -226,7 +226,7 @@ LayoutCell &LayoutArray::place(gcn::Widget *const widget, const int x,
 
 void LayoutArray::align(int &pos, int &size, const int dim,
                         LayoutCell const &cell, const int *const sizes,
-                        int sizeCount) const
+                        const int sizeCount) const
 {
     int size_max = sizes[0];
     int cnt = cell.mExtent[dim];

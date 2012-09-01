@@ -83,7 +83,7 @@ class Popup : public Container, public gcn::MouseListener,
         /**
          * Sets the location relative to the given widget.
          */
-        void setLocationRelativeTo(gcn::Widget *const widget);
+        void setLocationRelativeTo(const gcn::Widget *const widget);
 
         void mouseMoved(gcn::MouseEvent &event);
 

@@ -503,7 +503,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
     }
     if (gui)
     {
-        bool res = gui->handleInput();
+        const bool res = gui->handleInput();
         if (res && event.type == SDL_KEYDOWN)
             return true;
     }
@@ -689,7 +689,7 @@ int InputManager::getKeyIndex(const int value, const int grp,
     return Input::KEY_NO_VALUE;
 }
 
-int InputManager::getActionByKey(const SDL_Event &event)
+int InputManager::getActionByKey(const SDL_Event &event) const
 {
     // for now support only keyboard events
     if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)

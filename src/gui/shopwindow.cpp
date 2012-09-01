@@ -850,7 +850,7 @@ int ShopWindow::sumAmount(const Item *const shopItem)
     return sum;
 }
 
-bool ShopWindow::isShopEmpty()
+bool ShopWindow::isShopEmpty() const
 {
     if (!mBuyShopItems || !mSellShopItems)
         return true;

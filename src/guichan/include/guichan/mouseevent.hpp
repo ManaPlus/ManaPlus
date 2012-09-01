@@ -78,16 +78,16 @@ namespace gcn
          * @param clickCount The number of clicks generated with the same button.
          *                   It's set to zero if another button is used.
          */
-        MouseEvent(Widget* source,
-                   bool shiftPressed,
-                   bool controlPressed,
-                   bool altPressed,
-                   bool metaPressed,
-                   unsigned int type,
-                   unsigned int button,
-                   int x,
-                   int y,
-                   int clickCount);
+        MouseEvent(Widget *const source,
+                   const bool shiftPressed,
+                   const bool controlPressed,
+                   const bool altPressed,
+                   const bool metaPressed,
+                   const unsigned int type,
+                   const unsigned int button,
+                   const int x,
+                   const int y,
+                   const int clickCount);
 
         /**
          * Gets the button of the mouse event.

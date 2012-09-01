@@ -60,8 +60,9 @@ namespace gcn
     {
     }
 
-    Rectangle::Rectangle(int x_, int y_, int width_, int height_)
-      : x(x_),
+    Rectangle::Rectangle(const int x_, const int y_,
+                         const int width_, const int height_) :
+        x(x_),
         y(y_),
         width(width_),
         height(height_)

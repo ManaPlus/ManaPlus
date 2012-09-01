@@ -84,7 +84,8 @@ public:
 
     virtual bool draw(Graphics *graphics, int offsetX, int offsetY) const;
 
-    virtual bool drawSpriteAt(Graphics *graphics, int x, int y) const;
+    virtual bool drawSpriteAt(Graphics *const graphics,
+                              const int x, const int y) const;
 
     virtual void logic();
 

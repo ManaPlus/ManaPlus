@@ -56,7 +56,7 @@
 
 namespace gcn
 {
-    Slider::Slider(double scaleEnd) :
+    Slider::Slider(const double scaleEnd) :
         mDragged(false),
         mScaleStart(0),
         mScaleEnd(scaleEnd)
@@ -72,7 +72,7 @@ namespace gcn
         addKeyListener(this);
     }
 
-    Slider::Slider(double scaleStart, double scaleEnd) :
+    Slider::Slider(const double scaleStart, const double scaleEnd) :
         mDragged(false),
         mScaleStart(scaleStart),
         mScaleEnd(scaleEnd)

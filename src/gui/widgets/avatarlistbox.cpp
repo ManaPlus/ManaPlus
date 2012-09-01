@@ -45,7 +45,7 @@ int AvatarListBox::instances = 0;
 Image *AvatarListBox::onlineIcon = nullptr;
 Image *AvatarListBox::offlineIcon = nullptr;
 
-AvatarListBox::AvatarListBox(AvatarListModel *model):
+AvatarListBox::AvatarListBox(AvatarListModel *const model) :
     ListBox(model),
     mShowGender(config.getBoolValue("showgender")),
     mShowLevel(config.getBoolValue("showlevel")),
@@ -344,8 +344,8 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
                 const Avatar *const avatar = model->getAvatarAt(selected);
                 if (avatar)
                 {
-                    Being *const being = actorSpriteManager->findBeingByName(
-                        avatar->getName(), Being::PLAYER);
+                    const Being *const being = actorSpriteManager
+                        ->findBeingByName(avatar->getName(), Being::PLAYER);
                     if (being)
                         viewport->showPopup(being);
                     else

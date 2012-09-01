@@ -58,19 +58,19 @@ class Logger
         /**
          * Sets whether the log should be written to standard output.
          */
-        void setLogToStandardOut(bool value)
+        void setLogToStandardOut(const bool value)
         { mLogToStandardOut = value; }
 
         /**
          * Enables logging to chat window
          */
-        void setChatWindow(ChatWindow *window)
+        void setChatWindow(ChatWindow *const window)
         { mChatWindow = window; }
 
         /**
          * Enters a message in the log. The message will be timestamped.
          */
-        void log(const char *log_text, ...)
+        void log(const char *const log_text, ...)
 #ifdef __GNUC__
             __attribute__((__format__(gnu_printf, 2, 3)))
 #endif
@@ -79,7 +79,7 @@ class Logger
         /**
          * Enters a message in the log. The message will be timestamped.
          */
-        void log1(const char *log_text);
+        void log1(const char *const log_text);
 
         /**
          * Enters a message in the log. The message will be timestamped.
@@ -91,7 +91,7 @@ class Logger
          */
         void dlog(std::string str);
 
-        void setDebugLog(bool n)
+        void setDebugLog(const bool n)
         { mDebugLog = n; }
 
         /**

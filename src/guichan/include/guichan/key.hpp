@@ -68,7 +68,7 @@ namespace gcn
          *
          * @param value The ascii or enum value for the key.
          */
-        Key(int value = 0);
+        Key(const int value = 0);
 
         /**
          * Checks if a key is a character.

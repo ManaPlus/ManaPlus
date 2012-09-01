@@ -390,7 +390,7 @@ void LocalPlayer::setGMLevel(const int level)
 }
 
 
-Position LocalPlayer::getNextWalkPosition(unsigned char dir) const
+Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
 {
     // Compute where the next tile will be set.
     int dx = 0, dy = 0;
@@ -1503,7 +1503,7 @@ int LocalPlayer::getAttackRange() const
 
 bool LocalPlayer::withinAttackRange(const Being *const target,
                                     const bool fixDistance,
-                                    const int addRange)
+                                    const int addRange) const
 {
     if (!target)
         return false;
@@ -2112,7 +2112,7 @@ static const char *debugPathStrings[] =
     N_("(b) black & white map view")
 };
 
-std::string LocalPlayer::getDebugPathString()
+std::string LocalPlayer::getDebugPathString() const
 {
     return gettext(getVarItem(&debugPathStrings[0],
         viewport->getDebugPath(), debugPathSize));
@@ -2245,7 +2245,7 @@ static const char *cameraModeStrings[] =
     N_("(?) away")
 };
 
-std::string LocalPlayer::getCameraModeString()
+std::string LocalPlayer::getCameraModeString() const
 {
     return gettext(getVarItem(&cameraModeStrings[0],
         viewport->getCameraMode(), cameraModeSize));
@@ -3171,7 +3171,7 @@ void LocalPlayer::moveByDirection(const unsigned char dir)
     move(dx, dy);
 }
 
-void LocalPlayer::specialMove(unsigned char direction)
+void LocalPlayer::specialMove(const unsigned char direction)
 {
     if (direction && (mNavigateX || mNavigateY))
         navigateClean();
@@ -3216,7 +3216,7 @@ void LocalPlayer::debugMsg(std::string str) const
         debugChatTab->chatLog(str);
 }
 
-void LocalPlayer::magicAttack()
+void LocalPlayer::magicAttack() const
 {
     if (!chatWindow || !isAlive()
         || !Net::getPlayerHandler()->canUseMagic())
@@ -3744,7 +3744,7 @@ int LocalPlayer::getPathLength(const Being *const being)
     }
 }
 
-int LocalPlayer::getAttackRange2()
+int LocalPlayer::getAttackRange2() const
 {
     int range = getAttackRange();
     if (range == 1)
@@ -3823,7 +3823,7 @@ void LocalPlayer::cancelFollow()
 }
 
 void LocalPlayer::imitateEmote(const Being *const being,
-                               const unsigned char action)
+                               const unsigned char action) const
 {
     if (!being)
         return;
@@ -3900,7 +3900,7 @@ void LocalPlayer::imitateOutfit(Being *const player, const int sprite) const
         if (equipmentSprite)
         {
 //            logger->log("have equipmentSprite");
-            Inventory *const inv = PlayerInfo::getInventory();
+            const Inventory *const inv = PlayerInfo::getInventory();
             if (!inv)
                 return;
 

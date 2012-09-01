@@ -58,7 +58,7 @@ struct Location
     /**
      * Constructor.
      */
-    Location(int px, int py, MetaTile *ptile):
+    Location(const int px, const int py, MetaTile *const ptile):
         x(px), y(py), tile(ptile)
     {}
 
@@ -77,7 +77,7 @@ struct Location
 class ActorFunctuator
 {
     public:
-        bool operator()(const Actor *a, const Actor *b) const
+        bool operator()(const Actor *const a, const Actor *const b) const
         {
             if (!a || !b)
                 return false;
@@ -85,7 +85,7 @@ class ActorFunctuator
         }
 } actorCompare;
 
-TileAnimation::TileAnimation(Animation *ani):
+TileAnimation::TileAnimation(Animation *const ani):
     mAnimation(new SimpleAnimation(ani)),
     mLastImage(nullptr)
 {
@@ -97,7 +97,7 @@ TileAnimation::~TileAnimation()
     mAnimation = nullptr;
 }
 
-bool TileAnimation::update(int ticks)
+bool TileAnimation::update(const int ticks)
 {
     if (!mAnimation)
         return false;
@@ -107,7 +107,7 @@ bool TileAnimation::update(int ticks)
         return false;
 
     // exchange images
-    Image *img = mAnimation->getCurrentImage();
+    Image *const img = mAnimation->getCurrentImage();
     if (img != mLastImage)
     {
         for (TilePairVectorCIter i = mAffected.begin(),
@@ -121,7 +121,8 @@ bool TileAnimation::update(int ticks)
     return true;
 }
 
-Map::Map(int width, int height, int tileWidth, int tileHeight):
+Map::Map(const int width, const int height,
+         const int tileWidth, const int tileHeight) :
     mWidth(width), mHeight(height),
     mTileWidth(tileWidth), mTileHeight(tileHeight),
     mMaxTileHeight(height),
@@ -226,7 +227,7 @@ void Map::optionChanged(const std::string &value)
 
 void Map::initializeAmbientLayers()
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     // search for "foreground*" or "overlay*" (old term) in map properties
     for (int i = 0; /* terminated by a break */; i++)
@@ -239,7 +240,7 @@ void Map::initializeAmbientLayers()
         else
             break; // the FOR loop
 
-        Image *img = resman->getImage(getProperty(name + "image"));
+        Image *const img = resman->getImage(getProperty(name + "image"));
         const float speedX = getFloatProperty(name + "scrollX");
         const float speedY = getFloatProperty(name + "scrollY");
         const float parallax = getFloatProperty(name + "parallax");
@@ -263,7 +264,7 @@ void Map::initializeAmbientLayers()
     {
         const std::string name = "background" + toString(i);
 
-        Image *img = resman->getImage(getProperty(name + "image"));
+        Image *const img = resman->getImage(getProperty(name + "image"));
         const float speedX = getFloatProperty(name + "scrollX");
         const float speedY = getFloatProperty(name + "scrollY");
         const float parallax = getFloatProperty(name + "parallax");
@@ -280,7 +281,7 @@ void Map::initializeAmbientLayers()
     }
 }
 
-void Map::addLayer(MapLayer *layer)
+void Map::addLayer(MapLayer *const layer)
 {
     if (layer)
     {
@@ -290,7 +291,7 @@ void Map::addLayer(MapLayer *layer)
     }
 }
 
-void Map::addTileset(Tileset *tileset)
+void Map::addTileset(Tileset *const tileset)
 {
     if (!tileset)
         return;
@@ -301,7 +302,7 @@ void Map::addTileset(Tileset *tileset)
         mMaxTileHeight = tileset->getHeight();
 }
 
-void Map::update(int ticks)
+void Map::update(const int ticks)
 {
     // Update animated tiles
     for (TileAnimationMapCIter iAni = mTileAnimations.begin(),
@@ -439,10 +440,10 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
         // Draws beings with a lower opacity to make them visible
         // even when covered by a wall or some other elements...
         ActorsCIter ai = mActors.begin();
-        ActorsCIter ai_end = mActors.end();
+        const ActorsCIter ai_end = mActors.end();
         while (ai != ai_end)
         {
-            if (Actor *actor = *ai)
+            if (Actor *const actor = *ai)
             {
                 if (!mOpenGL && (actor->getTileX() < startX
                     || actor->getTileX() > endX || actor->getTileY() < startY
@@ -489,10 +490,11 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
         }\
     }\
 
-void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
-                        int debugFlags)
+void Map::drawCollision(Graphics *const graphics,
+                        const int scrollX, const int scrollY,
+                        const int debugFlags) const
 {
-    int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1;
+    const int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1;
     int startX = scrollX / mTileWidth;
     int startY = scrollY / mTileHeight;
     int endX = (graphics->mWidth + scrollX + mTileWidth - 1) / mTileWidth;
@@ -522,7 +524,7 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
         for (int x = startX; x < endX; x++, tilePtr++)
         {
             int width = 0;
-            int x0 = x;
+            const int x0 = x;
 
             fillCollision(BLOCKMASK_WALL, COLLISION_HIGHLIGHT);
             fillCollision(BLOCKMASK_AIR, AIR_COLLISION_HIGHLIGHT);
@@ -532,7 +534,7 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
     }
 }
 
-void Map::updateAmbientLayers(float scrollX, float scrollY)
+void Map::updateAmbientLayers(const float scrollX, const float scrollY)
 {
     static int lastTick = tick_time; // static = only initialized at first call
 
@@ -544,9 +546,9 @@ void Map::updateAmbientLayers(float scrollX, float scrollY)
     }
 
     // Update Overlays
-    float dx = scrollX - mLastAScrollX;
-    float dy = scrollY - mLastAScrollY;
-    int timePassed = get_elapsed_time(lastTick);
+    const float dx = scrollX - mLastAScrollX;
+    const float dy = scrollY - mLastAScrollY;
+    const int timePassed = get_elapsed_time(lastTick);
 
     for (AmbientLayerVectorCIter i = mBackgrounds.begin(),
          i_end = mBackgrounds.end(); i != i_end; ++i)
@@ -565,8 +567,8 @@ void Map::updateAmbientLayers(float scrollX, float scrollY)
     lastTick = tick_time;
 }
 
-void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
-                            int detail)
+void Map::drawAmbientLayers(Graphics *const graphics, const LayerType type,
+                            const int detail)
 {
     // Detail 0 = no ambient effects except background image
     if (detail <= 0 && type != BACKGROUND_LAYERS)
@@ -599,7 +601,7 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
     }
 }
 
-Tileset *Map::getTilesetWithGid(int gid) const
+Tileset *Map::getTilesetWithGid(const int gid) const
 {
     if (gid >= 0 && gid < mIndexedTilesetsSize)
         return mIndexedTilesets[gid];
@@ -607,7 +609,7 @@ Tileset *Map::getTilesetWithGid(int gid) const
         return nullptr;
 }
 
-void Map::blockTile(int x, int y, BlockType type)
+void Map::blockTile(const int x, const int y, const BlockType type)
 {
     if (type == BLOCKTYPE_NONE || !contains(x, y))
         return;
@@ -649,7 +651,7 @@ void Map::blockTile(int x, int y, BlockType type)
     }
 }
 
-bool Map::getWalk(int x, int y, unsigned char walkmask) const
+bool Map::getWalk(const int x, const int y, const unsigned char walkmask) const
 {
     // You can't walk outside of the map
     if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)
@@ -659,18 +661,18 @@ bool Map::getWalk(int x, int y, unsigned char walkmask) const
     return !(mMetaTiles[x + y * mWidth].blockmask & walkmask);
 }
 
-void Map::setWalk(int x, int y, bool walkable A_UNUSED)
+void Map::setWalk(const int x, const int y, const bool walkable A_UNUSED)
 {
     blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
 }
 
-bool Map::occupied(int x, int y) const
+bool Map::occupied(const int x, const int y) const
 {
     const ActorSprites &actors = actorSpriteManager->getAll();
     for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
          it != it_end; ++it)
     {
-        const ActorSprite *actor = *it;
+        const ActorSprite *const actor = *it;
 
 //+++        if (actor->getTileX() == x && actor->getTileY() == y
 //            && being->getSubType() != 45)
@@ -684,17 +686,17 @@ bool Map::occupied(int x, int y) const
     return false;
 }
 
-bool Map::contains(int x, int y) const
+bool Map::contains(const int x, const int y) const
 {
     return x >= 0 && y >= 0 && x < mWidth && y < mHeight;
 }
 
-MetaTile *Map::getMetaTile(int x, int y) const
+MetaTile *Map::getMetaTile(const int x, const int y) const
 {
     return &mMetaTiles[x + y * mWidth];
 }
 
-Actors::iterator Map::addActor(Actor *actor)
+Actors::iterator Map::addActor(Actor *const actor)
 {
     mActors.push_front(actor);
 //    mSpritesUpdated = true;
@@ -729,7 +731,7 @@ const std::string Map::getFilename() const
     return fileName.substr(lastSlash, lastDot - lastSlash);
 }
 
-Position Map::checkNodeOffsets(int radius, unsigned char walkMask,
+Position Map::checkNodeOffsets(int radius, const unsigned char walkMask,
                                const Position &position) const
 {
     // Pre-computing character's position in tiles
@@ -793,9 +795,10 @@ Position Map::checkNodeOffsets(int radius, unsigned char walkMask,
     return Position(tx * 32 + fx, ty * 32 + fy);
 }
 
-Path Map::findPixelPath(int startPixelX, int startPixelY, int endPixelX,
-                        int endPixelY,
-                        int radius, unsigned char walkMask, int maxCost)
+Path Map::findPixelPath(const int startPixelX, const int startPixelY,
+                        const int endPixelX, const int endPixelY,
+                        const int radius, const unsigned char walkMask,
+                        const int maxCost)
 {
     Path myPath = findPath(startPixelX / 32, startPixelY / 32,
                            endPixelX / 32, endPixelY / 32, walkMask, maxCost);
@@ -805,24 +808,24 @@ Path Map::findPixelPath(int startPixelX, int startPixelY, int endPixelX,
         return myPath;
 
     // Find the starting offset
-    float startOffsetX = static_cast<float>(startPixelX % 32);
-    float startOffsetY = static_cast<float>(startPixelY % 32);
+    const float startOffsetX = static_cast<float>(startPixelX % 32);
+    const float startOffsetY = static_cast<float>(startPixelY % 32);
 
     // Find the ending offset
-    float endOffsetX = static_cast<float>(endPixelX % 32);
-    float endOffsetY = static_cast<float>(endPixelY % 32);
+    const float endOffsetX = static_cast<float>(endPixelX % 32);
+    const float endOffsetY = static_cast<float>(endPixelY % 32);
 
-    int sz = static_cast<int>(myPath.size());
+    const int sz = static_cast<int>(myPath.size());
     // Find the distance, and divide it by the number of steps
-    int changeX = static_cast<int>((endOffsetX - startOffsetX)
-                  / static_cast<float>(sz));
-    int changeY = static_cast<int>((endOffsetY - startOffsetY)
-                  / static_cast<float>(sz));
+    const int changeX = static_cast<int>((endOffsetX - startOffsetX)
+        / static_cast<float>(sz));
+    const int changeY = static_cast<int>((endOffsetY - startOffsetY)
+        / static_cast<float>(sz));
 
     // Convert the map path to pixels over tiles
     // And add interpolation between the starting and ending offsets
     Path::iterator it = myPath.begin();
-    Path::iterator it_end = myPath.end();
+    const Path::iterator it_end = myPath.end();
     int i = 0;
     while (it != it_end)
     {
@@ -838,7 +841,7 @@ Path Map::findPixelPath(int startPixelX, int startPixelY, int endPixelX,
     // Remove the last path node, as it's more clever to go to the destination.
     // It also permit to avoid zigzag at the end of the path,
     // especially with mouse.
-    Position destination = checkNodeOffsets(radius, walkMask,
+    const Position destination = checkNodeOffsets(radius, walkMask,
                                             endPixelX, endPixelY);
     myPath.pop_back();
     myPath.push_back(destination);
@@ -846,8 +849,9 @@ Path Map::findPixelPath(int startPixelX, int startPixelY, int endPixelX,
     return myPath;
 }
 
-Path Map::findPath(int startX, int startY, int destX, int destY,
-                   unsigned char walkmask, int maxCost)
+Path Map::findPath(const int startX, const int startY,
+                   const int destX, const int destY,
+                   const unsigned char walkmask, const int maxCost)
 {
     // The basic walking cost of a tile.
     static int const basicCost = 100;
@@ -863,7 +867,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
         return path;
 
     // Reset starting tile's G cost to 0
-    MetaTile *startTile = &mMetaTiles[startX + startY * mWidth];
+    MetaTile *const startTile = &mMetaTiles[startX + startY * mWidth];
     if (!startTile)
         return path;
 
@@ -881,7 +885,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
     while (!openList.empty() && !foundPath)
     {
         // Take the location with the lowest F cost from the open list.
-        Location curr = openList.top();
+        const Location curr = openList.top();
         openList.pop();
 
         // If the tile is already on the closed list, this means it has already
@@ -911,7 +915,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
                 if ((dx == 0 && dy == 0) || !contains(x, y))
                     continue;
 
-                MetaTile *newTile = &mMetaTiles[x + yWidth];
+                MetaTile *const newTile = &mMetaTiles[x + yWidth];
 
                 // Skip if the tile is on the closed list or is not walkable
                 // unless its the destination tile
@@ -928,9 +932,10 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
                 // corner.
                 if (dx != 0 && dy != 0)
                 {
-                    MetaTile *t1 = &mMetaTiles[curr.x +
+                    const MetaTile *const t1 = &mMetaTiles[curr.x +
                         (curr.y + dy) * mWidth];
-                    MetaTile *t2 = &mMetaTiles[curr.x + dx + curWidth];
+                    const MetaTile *const t2 = &mMetaTiles[curr.x +
+                        dx + curWidth];
 
                     //+++ here need check block must depend on player abilities.
                     if (((t1->blockmask | t2->blockmask) & BLOCKMASK_WALL))
@@ -975,7 +980,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
                        work reliably if the heuristic cost is higher than the
                        real cost. In particular, using Manhattan distance is
                        forbidden here. */
-                    int dx1 = std::abs(x - destX);
+                    const int dx1 = std::abs(x - destX);
                     newTile->Hcost = std::abs(dx1 - dy1) * basicCost +
                         std::min(dx1, dy1) * (basicCost * 362 / 256);
 
@@ -1050,7 +1055,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
             path.push_front(Position(pathX, pathY));
 
             // Find out the next parent
-            MetaTile *tile = &mMetaTiles[pathX + pathY * mWidth];
+            const MetaTile *const tile = &mMetaTiles[pathX + pathY * mWidth];
             pathX = tile->parentX;
             pathY = tile->parentY;
         }
@@ -1060,7 +1065,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
 }
 
 void Map::addParticleEffect(const std::string &effectFile,
-                            int x, int y, int w, int h)
+                            const int x, const int y, const int w, const int h)
 {
     ParticleEffectData newEffect;
     newEffect.file = effectFile;
@@ -1071,7 +1076,7 @@ void Map::addParticleEffect(const std::string &effectFile,
     particleEffects.push_back(newEffect);
 }
 
-void Map::initializeParticleEffects(Particle *engine)
+void Map::initializeParticleEffects(Particle *const engine)
 {
     if (!engine)
         return;
@@ -1130,7 +1135,7 @@ void Map::addExtraLayer()
                 while (ss >> buf)
                     comment += " " + buf;
 
-                int type = atoi(type1.c_str());
+                const int type = atoi(type1.c_str());
 
                 if (comment.empty())
                 {
@@ -1161,7 +1166,7 @@ void Map::addExtraLayer()
     }
 }
 
-void Map::saveExtraLayer()
+void Map::saveExtraLayer() const
 {
     if (!mSpecialLayer)
     {
@@ -1186,14 +1191,14 @@ void Map::saveExtraLayer()
         return;
     }
 
-    int width = mSpecialLayer->mWidth;
-    int height = mSpecialLayer->mHeight;
+    const int width = mSpecialLayer->mWidth;
+    const int height = mSpecialLayer->mHeight;
 
     for (int x = 0; x < width; x ++)
     {
         for (int y = 0; y < height; y ++)
         {
-            MapItem *item = mSpecialLayer->getTile(x, y);
+            const MapItem *const item = mSpecialLayer->getTile(x, y);
             if (item && item->mType != MapItem::EMPTY
                 && item->mType != MapItem::HOME)
             {
@@ -1212,8 +1217,8 @@ std::string Map::getUserMapDirectory() const
         + getProperty("_realfilename");
 }
 
-void Map::addRange(const std::string &name, int type,
-                   int x, int y, int dx, int dy)
+void Map::addRange(const std::string &name, const int type,
+                   const int x, const int y, const int dx, const int dy)
 {
     if (!mObjects)
         return;
@@ -1221,13 +1226,14 @@ void Map::addRange(const std::string &name, int type,
     mObjects->addObject(name, type, x / 32, y / 32, dx / 32, dy / 32);
 }
 
-void Map::addPortal(const std::string &name, int type,
-                    int x, int y, int dx, int dy)
+void Map::addPortal(const std::string &name, const int type,
+                    const int x, const int y, const int dx, const int dy)
 {
     addPortalTile(name, type, (x / 32) + (dx / 64), (y / 32) + (dy / 64));
 }
 
-void Map::addPortalTile(const std::string &name, int type, int x, int y)
+void Map::addPortalTile(const std::string &name, const int type,
+                        const int x, const int y)
 {
     MapItem *item = new MapItem(type, name, x, y);
     if (mSpecialLayer)
@@ -1237,8 +1243,8 @@ void Map::addPortalTile(const std::string &name, int type, int x, int y)
     mMapPortals.push_back(item);
 }
 
-void Map::updatePortalTile(const std::string &name, int type,
-                           int x, int y, bool addNew)
+void Map::updatePortalTile(const std::string &name, const int type,
+                           const int x, const int y, const bool addNew)
 {
     MapItem *item = findPortalXY(x, y);
     if (item)
@@ -1259,7 +1265,7 @@ void Map::updatePortalTile(const std::string &name, int type,
     }
 }
 
-MapItem *Map::findPortalXY(int x, int y) const
+MapItem *Map::findPortalXY(const int x, const int y) const
 {
     for (std::vector<MapItem*>::const_iterator it = mMapPortals.begin(),
          it_end = mMapPortals.end(); it != it_end; ++it)
@@ -1267,14 +1273,14 @@ MapItem *Map::findPortalXY(int x, int y) const
         if (!*it)
             continue;
 
-        MapItem *item = *it;
+        MapItem *const item = *it;
         if (item->mX == x && item->mY == y)
             return item;
     }
     return nullptr;
 }
 
-TileAnimation *Map::getAnimationForGid(int gid) const
+TileAnimation *Map::getAnimationForGid(const int gid) const
 {
     if (mTileAnimations.empty())
         return nullptr;
@@ -1283,9 +1289,9 @@ TileAnimation *Map::getAnimationForGid(int gid) const
     return (i == mTileAnimations.end()) ? nullptr : i->second;
 }
 
-void Map::setPvpMode(int mode)
+void Map::setPvpMode(const int mode)
 {
-    int oldMode = mPvp;
+    const int oldMode = mPvp;
 
     if (!mode)
         mPvp = 0;
@@ -1315,21 +1321,23 @@ void Map::setPvpMode(int mode)
     }
 }
 
-std::string Map::getObjectData(unsigned x, unsigned y, int type)
+std::string Map::getObjectData(const unsigned x, const unsigned y,
+                               const int type)
 {
     if (!mObjects)
         return "";
 
-    MapObjectList *list = mObjects->getAt(x, y);
+    MapObjectList *const list = mObjects->getAt(x, y);
     if (!list)
         return "";
 
     std::vector<MapObject>::const_iterator it = list->objects.begin();
-    std::vector<MapObject>::const_iterator it_end = list->objects.end();
+    const std::vector<MapObject>::const_iterator it_end = list->objects.end();
     while (it != it_end)
     {
         if ((*it).type == type)
             return (*it).data;
+        ++ it;
     }
 
     return "";
@@ -1414,11 +1422,11 @@ void Map::reduce()
                  layeri_end = mLayers.end();
                  layeri != layeri_end; ++ layeri)
             {
-                MapLayer *layer = *layeri;
+                const MapLayer *const layer = *layeri;
                 if (x >= layer->mWidth || y >= layer->mHeight)
                     continue;
 
-                Image *img = layer->mTiles[x + y * layer->mWidth];
+                Image *const img = layer->mTiles[x + y * layer->mWidth];
                 if (img)
                 {
                     if (img->hasAlphaChannel() && img->isAlphaCalculated())
@@ -1442,14 +1450,15 @@ void Map::reduce()
                     }
                     else if (img->hasAlphaChannel())
                     {
-                        uint8_t *arr = img->SDLgetAlphaChannel();
+                        const uint8_t *const arr = img->SDLgetAlphaChannel();
                         if (!arr)
                             continue;
 
                         bool bad(false);
                         bool stop(false);
                         int width;
-                        SubImage *subImg = dynamic_cast<SubImage*>(img);
+                        const SubImage *const subImg
+                            = dynamic_cast<SubImage*>(img);
                         if (subImg)
                             width = subImg->mInternalBounds.w;
                         else
@@ -1461,7 +1470,7 @@ void Map::reduce()
                             for (int d = img->mBounds.y;
                                  d < img->mBounds.y + img->mBounds.h; d ++)
                             {
-                                uint8_t chan = arr[f + d * width];
+                                const uint8_t chan = arr[f + d * width];
                                 if (chan != 255)
                                 {
                                     bad = true;
@@ -1491,14 +1500,14 @@ void Map::reduce()
             Layers::reverse_iterator ri = mLayers.rbegin();
             while (ri != mLayers.rend())
             {
-                MapLayer *layer = *ri;
+                const MapLayer *const layer = *ri;
                 if (x >= layer->mWidth || y >= layer->mHeight)
                 {
                     ++ ri;
                     continue;
                 }
 
-                Image *img = layer->mTiles[x + y * layer->mWidth];
+                const Image *img = layer->mTiles[x + y * layer->mWidth];
                 if (img && !img->isAlphaVisible())
                 {   // removing all down tiles
                     ++ ri;

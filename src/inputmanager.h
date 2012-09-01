@@ -162,7 +162,7 @@ class InputManager
 
         void updateConditionMask();
 
-        int getActionByKey(const SDL_Event &event);
+        int getActionByKey(const SDL_Event &event) const;
 
     protected:
         Setup_Input *mSetupInput;      /**< Reference to setup window */

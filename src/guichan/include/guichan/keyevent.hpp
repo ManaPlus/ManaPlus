@@ -81,13 +81,13 @@ namespace gcn
          *                     false otherwise.
          * @param key The key of the event.
          */
-        KeyEvent(Widget* source,
-                 bool shiftPressed,
-                 bool controlPressed,
-                 bool altPressed,
-                 bool metaPressed,
-                 unsigned int type,
-                 bool numericPad,
+        KeyEvent(Widget *const source,
+                 const bool shiftPressed,
+                 const bool controlPressed,
+                 const bool altPressed,
+                 const bool metaPressed,
+                 const unsigned int type,
+                 const bool numericPad,
                  const Key& key);
 
         /**

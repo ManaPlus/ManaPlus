@@ -52,28 +52,27 @@
 
 namespace gcn
 {
-    MouseEvent::MouseEvent(Widget* source,
-                           bool shiftPressed,
-                           bool controlPressed,
-                           bool altPressed,
-                           bool metaPressed,
-                           unsigned int type,
-                           unsigned int button,
-                           int x,
-                           int y,
-                           int clickCount)
-            :InputEvent(source,
-                        shiftPressed,
-                        controlPressed,
-                        altPressed,
-                        metaPressed),
-             mType(type),
-             mButton(button),
-             mX(x),
-             mY(y),
-             mClickCount(clickCount)
+    MouseEvent::MouseEvent(Widget *const source,
+                           const bool shiftPressed,
+                           const bool controlPressed,
+                           const bool altPressed,
+                           const bool metaPressed,
+                           const unsigned int type,
+                           const unsigned int button,
+                           const int x,
+                           const int y,
+                           const int clickCount) :
+        InputEvent(source,
+                   shiftPressed,
+                   controlPressed,
+                   altPressed,
+                   metaPressed),
+        mType(type),
+        mButton(button),
+        mX(x),
+        mY(y),
+        mClickCount(clickCount)
     {
-
     }
 
     unsigned int MouseEvent::getButton() const

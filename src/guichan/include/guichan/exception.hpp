@@ -115,7 +115,7 @@ namespace gcn
         Exception(const std::string& message,
                   const std::string& function,
                   const std::string& filename,
-                  unsigned int line);
+                  const unsigned int line);
 
         /**
          * Gets the function name where the exception occured.

@@ -73,7 +73,7 @@ class AnimatedSprite : public Sprite
 
         const Image* getImage() const;
 
-        bool setSpriteDirection(SpriteDirection direction);
+        bool setSpriteDirection(const SpriteDirection direction);
 
         int getNumberOfLayers() const
         { return 1; }

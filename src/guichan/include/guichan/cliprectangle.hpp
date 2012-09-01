@@ -79,12 +79,12 @@ namespace gcn
          *                 calculating the actual screen coordinate from
          *                 the relative screen coordinate.
          */
-        ClipRectangle(int x0,
-                      int y0,
-                      int width0,
-                      int height0,
-                      int xOffset0,
-                      int yOffset0);
+        ClipRectangle(const int x0,
+                      const int y0,
+                      const int width0,
+                      const int height0,
+                      const int xOffset0,
+                      const int yOffset0);
 
         /**
          * Copy constructor. Copies x, y, width and height 

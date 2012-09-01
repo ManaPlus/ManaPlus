@@ -91,7 +91,7 @@ ScrollArea::~ScrollArea()
     delete getContent();
 
     instances--;
-    Theme *const theme = Theme::instance();
+    const Theme *const theme = Theme::instance();
     if (theme)
     {
         theme->unloadRect(background);

@@ -62,7 +62,7 @@ Slider::~Slider()
     mInstances--;
     if (mInstances == 0 && Theme::instance())
     {
-        Theme *const theme = Theme::instance();
+        const Theme *const theme = Theme::instance();
         for (int mode = 0; mode < 2; mode ++)
             theme->unloadRect(buttons[mode]);
     }

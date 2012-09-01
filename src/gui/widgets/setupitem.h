@@ -72,7 +72,7 @@ class SetupItem : public gcn::ActionListener
 
         void load();
 
-        void save();
+        void save() const;
 
         virtual void fromWidget() = 0;
 
@@ -288,7 +288,7 @@ class SetupItemSlider : public SetupItem
                         const bool mainConfig = true);
 
         SetupItemSlider(std::string text, std::string description,
-                        std::string keyName, SetupTabScroll *parent,
+                        std::string keyName, SetupTabScroll *const parent,
                         std::string eventName,
                         const double min, const double max,
                         std::string def, const int width = 150,

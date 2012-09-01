@@ -46,7 +46,7 @@ public:
 class AvatarListBox : public ListBox, public ConfigListener
 {
 public:
-    AvatarListBox(AvatarListModel *model);
+    AvatarListBox(AvatarListModel *const model);
 
     ~AvatarListBox();
 

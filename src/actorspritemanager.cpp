@@ -763,7 +763,7 @@ void ActorSpriteManager::logic()
 
         if ((*it) && (*it)->getType() == Being::PLAYER)
         {
-            Being *const being = static_cast<Being*>(*it);
+            const Being *const being = static_cast<Being*>(*it);
             being->addToCache();
             if (beingEquipmentWindow)
                 beingEquipmentWindow->resetBeing(being);
@@ -1438,7 +1438,7 @@ void ActorSpriteManager::updatePlayerGuild() const
     }
 }
 
-void ActorSpriteManager::parseLevels(std::string levels)
+void ActorSpriteManager::parseLevels(std::string levels) const
 {
     levels += ", ";
     size_t f = 0;

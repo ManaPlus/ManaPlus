@@ -391,7 +391,7 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     else if (itemId < SKILL_MIN_ID && spellManager)
     {
         mItemPopup->setVisible(false);
-        TextCommand *const spell = spellManager->getSpellByItem(itemId);
+        const TextCommand *const spell = spellManager->getSpellByItem(itemId);
         if (spell && viewport)
         {
             mSpellPopup->setItem(spell);

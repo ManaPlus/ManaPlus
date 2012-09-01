@@ -55,7 +55,7 @@ public:
     const Image* getImage() const
     { return mImage; }
 
-    virtual bool setSpriteDirection(SpriteDirection direction A_UNUSED)
+    virtual bool setSpriteDirection(const SpriteDirection direction A_UNUSED)
     { return false; }
 
     int getNumberOfLayers() const

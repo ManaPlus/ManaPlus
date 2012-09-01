@@ -277,7 +277,7 @@ bool AnimatedSprite::draw(Graphics *graphics, int posX, int posY) const
                                posY + mFrame->offsetY);
 }
 
-bool AnimatedSprite::setSpriteDirection(SpriteDirection direction)
+bool AnimatedSprite::setSpriteDirection(const SpriteDirection direction)
 {
     if (mDirection != direction)
     {
