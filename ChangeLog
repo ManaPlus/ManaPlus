@@ -1,3 +1,14 @@
+2013-09-02 New release 1.2.9.2
+fix: show special message in window header while doing video test.
+fix: possible fix non standart update ports on windows.
+add: show clickable update links in news window.
+add: reenable add special chars in chat by char codes.
+Example: test&33;
+add: extend replace/reorder sprites.
+add: extend theme colors.
+add: improve OpenGL draw speed.
+add: improve perfomance.
+
 2012-08-19 New release 1.2.8.19
 fix: enable italian translation.
 fix: remember checkbox in login dialog.
