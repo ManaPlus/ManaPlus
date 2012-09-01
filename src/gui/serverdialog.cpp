@@ -597,7 +597,7 @@ void ServerDialog::loadServers(const bool addNew)
         std::string version = XML::getProperty(serverNode, "minimumVersion",
                                                std::string());
 
-        const bool meetsMinimumVersion = (compareStrI(version, PACKAGE_VERSION)
+        const bool meetsMinimumVersion = (compareStrI(version, SMALL_VERSION)
                                    <= 0);
 
         // For display in the list

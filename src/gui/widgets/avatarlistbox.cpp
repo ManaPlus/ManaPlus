@@ -124,7 +124,8 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
         if (a->getType() != MapItem::SEPARATOR)
         {
             // Draw online status
-            const Image *const icon = a->getOnline() ? onlineIcon : offlineIcon;
+            const Image *const icon = a->getOnline()
+                ? onlineIcon : offlineIcon;
             if (icon)
                 graphics->drawImage(icon, 2, y + 1);
         }

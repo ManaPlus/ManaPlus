@@ -89,7 +89,8 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
          * Sets the location relative to the given widget (only horisontally)
          */
-        void setLocationHorisontallyRelativeTo(const gcn::Widget *const widget);
+        void setLocationHorisontallyRelativeTo(const gcn::Widget
+                                               *const widget);
 
         /**
          * Sets the location relative to the given enumerated position.

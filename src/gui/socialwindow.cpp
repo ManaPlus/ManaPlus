@@ -730,7 +730,8 @@ public:
             if (!ava)
                 break;
 
-            const MapItem *const item = map->findPortalXY(ava->getX(), ava->getY());
+            const MapItem *const item = map->findPortalXY(
+                ava->getX(), ava->getY());
             if (item)
             {
                 std::string name = strprintf("%s [%d %d]",

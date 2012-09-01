@@ -38,7 +38,7 @@ TabStrip::TabStrip(const int height, const int spacing) :
 {
 }
 
-gcn::Widget *TabStrip::createWidget(std::string text)
+gcn::Widget *TabStrip::createWidget(const std::string &text)
 {
     Button *const widget = new Button();
     widget->setStick(true);

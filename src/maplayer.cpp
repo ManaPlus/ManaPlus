@@ -23,8 +23,10 @@
 #include "maplayer.h"
 
 #include "configuration.h"
-
 #include "graphicsvertexes.h"
+#ifndef USE_OPENGL
+#include "graphics.h"
+#endif
 
 #include "localplayer.h"
 

@@ -692,7 +692,8 @@ void Viewport::showPopup(const int x, const int y, Button *const button)
     mPopupMenu->showPopup(x, y, button);
 }
 
-void Viewport::showPopup(const int x, const int y, const ProgressBar *const bar)
+void Viewport::showPopup(const int x, const int y,
+                         const ProgressBar *const bar)
 {
     mPopupMenu->showPopup(x, y, bar);
 }
