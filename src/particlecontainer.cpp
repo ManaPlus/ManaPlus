@@ -25,8 +25,8 @@
 
 #include "debug.h"
 
-ParticleContainer::ParticleContainer(ParticleContainer *parent,
-                                     bool delParent):
+ParticleContainer::ParticleContainer(ParticleContainer *const parent,
+                                     const bool delParent):
     mDelParent(delParent),
     mNext(parent)
 {}
@@ -48,7 +48,7 @@ void ParticleContainer::clear()
         mNext->clear();
 }
 
-void ParticleContainer::moveTo(float x, float y)
+void ParticleContainer::moveTo(const float x, const float y)
 {
     if (mNext)
         mNext->moveTo(x, y);
@@ -56,14 +56,15 @@ void ParticleContainer::moveTo(float x, float y)
 
 // -- particle list ----------------------------------------
 
-ParticleList::ParticleList(ParticleContainer *parent, bool delParent):
+ParticleList::ParticleList(ParticleContainer *const parent,
+                           const bool delParent) :
     ParticleContainer(parent, delParent)
 {}
 
 ParticleList::~ParticleList()
 {}
 
-void ParticleList::addLocally(Particle *particle)
+void ParticleList::addLocally(Particle *const particle)
 {
     if (particle)
     {
@@ -73,7 +74,7 @@ void ParticleList::addLocally(Particle *particle)
     }
 }
 
-void ParticleList::removeLocally(Particle *particle)
+void ParticleList::removeLocally(const Particle *const particle)
 {
     for (std::list<Particle *>::iterator it = mElements.begin();
          it != mElements.end(); )
@@ -101,7 +102,7 @@ void ParticleList::clearLocally()
     mElements.clear();
 }
 
-void ParticleList::moveTo(float x, float y)
+void ParticleList::moveTo(const float x, const float y)
 {
     ParticleContainer::moveTo(x, y);
 
@@ -123,14 +124,15 @@ void ParticleList::moveTo(float x, float y)
 
 // -- particle vector ----------------------------------------
 
-ParticleVector::ParticleVector(ParticleContainer *parent, bool delParent):
+ParticleVector::ParticleVector(ParticleContainer *const parent,
+                               const bool delParent) :
     ParticleContainer(parent, delParent)
 {}
 
 ParticleVector::~ParticleVector()
 {}
 
-void ParticleVector::setLocally(int index, Particle *particle)
+void ParticleVector::setLocally(const int index, Particle *const particle)
 {
     if (index < 0)
         return;
@@ -145,7 +147,7 @@ void ParticleVector::setLocally(int index, Particle *particle)
     mIndexedElements[index] = particle;
 }
 
-void ParticleVector::delLocally(int index)
+void ParticleVector::delLocally(const int index)
 {
     if (index < 0)
         return;
@@ -153,7 +155,7 @@ void ParticleVector::delLocally(int index)
     if (mIndexedElements.size() <= static_cast<unsigned>(index))
         return;
 
-    Particle *p = mIndexedElements[index];
+    Particle *const p = mIndexedElements[index];
     if (p)
     {
         mIndexedElements[index] = nullptr;
@@ -167,7 +169,7 @@ void ParticleVector::clearLocally()
         delLocally(i);
 }
 
-void ParticleVector::moveTo(float x, float y)
+void ParticleVector::moveTo(const float x, const float y)
 {
     ParticleContainer::moveTo(x, y);
 

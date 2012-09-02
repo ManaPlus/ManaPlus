@@ -60,7 +60,7 @@ struct PlayerRelation
         ENEMY2      = 6
     };
 
-    PlayerRelation(Relation relation);
+    PlayerRelation(const Relation relation);
 
     Relation mRelation; // bitmask for all of the above
 };
@@ -81,7 +81,7 @@ class PlayerIgnoreStrategy
         /**
          * Handle the ignoring of the indicated action by the indicated player.
          */
-        virtual void ignore(Being *being, unsigned int flags) = 0;
+        virtual void ignore(Being *const being, const unsigned int flags) = 0;
 };
 
 class PlayerRelationsListener
@@ -116,7 +116,7 @@ class PlayerRelationsManager
         /**
          * Load configuration from our config file, or substitute defaults.
          */
-        void load(bool oldConfig = false);
+        void load(const bool oldConfig = false);
 
         /**
          * Save configuration to our config file.
@@ -128,22 +128,22 @@ class PlayerRelationsManager
          * the specified flags.
          */
         unsigned int checkPermissionSilently(const std::string &player_name,
-                                             unsigned int flags);
+                                             const unsigned int flags);
 
         /**
          * Tests whether the player in question is being ignored for any of the
          * actions in the specified flags. If so, trigger appropriate side effects
          * if requested by the player.
          */
-        bool hasPermission(Being *being, unsigned int flags);
+        bool hasPermission(const Being *const being, const unsigned int flags);
 
-        bool hasPermission(const std::string &being, unsigned int flags);
+        bool hasPermission(const std::string &being, const unsigned int flags);
 
         /**
          * Updates the relationship with this player.
          */
         void setRelation(const std::string &name,
-                         PlayerRelation::Relation relation);
+                         const PlayerRelation::Relation relation);
 
         /**
          * Updates the relationship with this player.
@@ -163,7 +163,7 @@ class PlayerRelationsManager
         /**
          * Sets the default permissions.
          */
-        void setDefault(unsigned int permissions);
+        void setDefault(const unsigned int permissions);
 
         /**
          * Retrieves all known player ignore strategies.
@@ -184,7 +184,7 @@ class PlayerRelationsManager
         /**
          * Sets the strategy to call when ignoring players.
          */
-        void setPlayerIgnoreStrategy(PlayerIgnoreStrategy *strategy)
+        void setPlayerIgnoreStrategy(PlayerIgnoreStrategy *const strategy)
         { mIgnoreStrategy = strategy; }
 
         /**
@@ -202,7 +202,7 @@ class PlayerRelationsManager
          */
         StringVect *getPlayers();
 
-        StringVect *getPlayersByRelation(PlayerRelation::Relation rel);
+        StringVect *getPlayersByRelation(const PlayerRelation::Relation rel);
 
         /**
          * Removes all recorded player info.
@@ -217,7 +217,7 @@ class PlayerRelationsManager
 
         void ignoreTrade(std::string name);
 
-        bool isGoodName(Being *being);
+        bool isGoodName(Being *const being);
 
         bool isGoodName(std::string name);
 
@@ -226,13 +226,13 @@ class PlayerRelationsManager
          *
          * @param value Whether to persist ignores
          */
-        void setPersistIgnores(bool value)
+        void setPersistIgnores(const bool value)
         { mPersistIgnores = value; }
 
-        void addListener(PlayerRelationsListener *listener)
+        void addListener(PlayerRelationsListener *const listener)
         { mListeners.push_back(listener); }
 
-        void removeListener(PlayerRelationsListener *listener)
+        void removeListener(PlayerRelationsListener *const listener)
         { mListeners.remove(listener); }
 
         bool checkBadRelation(std::string name);

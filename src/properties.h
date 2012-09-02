@@ -50,7 +50,7 @@ class Properties
         const std::string getProperty(const std::string &name,
                                       const std::string &def = "") const
         {
-            PropertyMap::const_iterator i = mProperties.find(name);
+            const PropertyMap::const_iterator i = mProperties.find(name);
             return (i != mProperties.end()) ? i->second : def;
         }
 
@@ -62,9 +62,10 @@ class Properties
          * @return the value of the given property or the given default when it
          *         doesn't exist.
          */
-        float getFloatProperty(const std::string &name, float def = 0.0f) const
+        float getFloatProperty(const std::string &name,
+                               const float def = 0.0f) const
         {
-            PropertyMap::const_iterator i = mProperties.find(name);
+            const PropertyMap::const_iterator i = mProperties.find(name);
             float ret = def;
             if (i != mProperties.end())
             {
@@ -83,9 +84,10 @@ class Properties
          * @return the value of the given property or the given default when it
          *         doesn't exist.
          */
-        bool getBoolProperty(const std::string &name, bool def = false) const
+        bool getBoolProperty(const std::string &name,
+                             const bool def = false) const
         {
-            PropertyMap::const_iterator i = mProperties.find(name);
+            const PropertyMap::const_iterator i = mProperties.find(name);
             bool ret = def;
             if (i != mProperties.end())
             {

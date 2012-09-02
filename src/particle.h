@@ -78,7 +78,7 @@ class Particle : public Actor
          *
          * @param map the map this particle will add itself to, may be nullptr
          */
-        Particle(Map *map);
+        Particle(Map *const map);
 
         /**
          * Destructor.
@@ -130,28 +130,31 @@ class Particle : public Actor
          * particleEffectFile.
          */
         Particle *addEffect(const std::string &particleEffectFile,
-                            int pixelX, int pixelY, int rotation = 0);
+                            const int pixelX, const int pixelY,
+                            const int rotation = 0);
 
         /**
          * Creates a standalone text particle.
          */
-        Particle *addTextSplashEffect(const std::string &text, int x, int y,
-                                      const gcn::Color *color, gcn::Font *font,
-                                      bool outline = false);
+        Particle *addTextSplashEffect(const std::string &text,
+                                      const int x, const int y,
+                                      const gcn::Color *const color,
+                                      gcn::Font *const font,
+                                      const bool outline = false);
 
         /**
          * Creates a standalone text particle.
          */
         Particle *addTextRiseFadeOutEffect(const std::string &text,
-                                           int x, int y,
-                                           const gcn::Color *color,
-                                           gcn::Font *font,
-                                           bool outline = false);
+                                           const int x, const int y,
+                                           const gcn::Color *const color,
+                                           gcn::Font *const font,
+                                           const bool outline = false);
 
         /**
          * Adds an emitter to the particle.
          */
-        void addEmitter (ParticleEmitter* emitter)
+        void addEmitter (ParticleEmitter *const emitter)
         { mChildEmitters.push_back(emitter); }
 
         /**
@@ -163,7 +166,7 @@ class Particle : public Actor
         /**
          * Sets the position in 2 dimensional space in pixels relative to map.
          */
-        void moveTo(float x, float y);
+        void moveTo(const float x, const float y);
 
         /**
          * Changes the particle position relative
@@ -173,52 +176,52 @@ class Particle : public Actor
         /**
          * Sets the time in game ticks until the particle is destroyed.
          */
-        void setLifetime(int lifetime)
+        void setLifetime(const int lifetime)
         { mLifetimeLeft = lifetime; mLifetimePast = 0; }
 
         /**
          * Sets the age of the pixel in game ticks where the particle has
          * faded in completely.
          */
-        void setFadeOut(int fadeOut)
+        void setFadeOut(const int fadeOut)
         { mFadeOut = fadeOut; }
 
         /**
          * Sets the remaining particle lifetime where the particle starts to
          * fade out.
          */
-        void setFadeIn(int fadeIn)
+        void setFadeIn(const int fadeIn)
         { mFadeIn = fadeIn; }
 
         /**
          * Sets the current velocity in 3 dimensional space.
          */
-        void setVelocity(float x, float y, float z)
+        void setVelocity(const float x, const float y, const float z)
         { mVelocity.x = x; mVelocity.y = y; mVelocity.z = z; }
 
         /**
          * Sets the downward acceleration.
          */
-        void setGravity(float gravity)
+        void setGravity(const float gravity)
         { mGravity = gravity; }
 
         /**
          * Sets the ammount of random vector changes
          */
-        void setRandomness(int r)
+        void setRandomness(const int r)
         { mRandomness = r; }
 
         /**
          * Sets the ammount of velocity particles retain after
          * hitting the ground.
          */
-        void setBounce(float bouncieness)
+        void setBounce(const float bouncieness)
         { mBounce = bouncieness; }
 
         /**
          * Sets the flag if the particle is supposed to be moved by its parent
          */
-        void setFollow(bool follow)
+        void setFollow(const bool follow)
         { mFollow = follow; }
 
         /**
@@ -231,7 +234,8 @@ class Particle : public Actor
          * Makes the particle move toward another particle with a
          * given acceleration and momentum
          */
-        void setDestination(Particle *target, float accel, float moment)
+        void setDestination(Particle *const target,
+                            const float accel, const float moment)
         { mTarget = target; mAcceleration = accel; mMomentum = moment; }
 
         /**
@@ -239,16 +243,16 @@ class Particle : public Actor
          * particle before it is destroyed. Does only make sense after a target
          * particle has been set using setDestination.
          */
-        void setDieDistance(float dist)
+        void setDieDistance(const float dist)
         { mInvDieDistance = 1.0f / dist; }
 
         /**
          * Changes the size of the emitters so that the effect fills a
          * rectangle of this size
          */
-        void adjustEmitterSize(int w, int h);
+        void adjustEmitterSize(const int w, const int h);
 
-        void setAllowSizeAdjust(bool adjust)
+        void setAllowSizeAdjust(const bool adjust)
         { mAllowSizeAdjust = adjust; }
 
         bool isAlive() const
@@ -280,11 +284,11 @@ class Particle : public Actor
         virtual float getAlpha() const
         { return 1.0f; }
 
-        virtual void setAlpha(float alpha A_UNUSED)
+        virtual void setAlpha(const float alpha A_UNUSED)
         { }
 
         virtual void setDeathEffect(const std::string &effectFile,
-                                    char conditions)
+                                    const char conditions)
         { mDeathEffect = effectFile; mDeathEffectConditions = conditions; }
 
     protected:

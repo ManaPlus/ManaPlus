@@ -37,7 +37,7 @@ class Image;
 class AvatarListModel : public gcn::ListModel
 {
 public:
-    virtual Avatar *getAvatarAt(int i) = 0;
+    virtual Avatar *getAvatarAt(const int i) = 0;
 
     std::string getElementAt(int i)
     { return getAvatarAt(i)->getName(); }

@@ -57,7 +57,7 @@ int Particle::emitterSkip = 1;
 bool Particle::enabled = true;
 const float Particle::PARTICLE_SKY = 800.0f;
 
-Particle::Particle(Map *map):
+Particle::Particle(Map *const map) :
     mAlpha(1.0f),
     mLifetimeLeft(-1),
     mLifetimePast(0),
@@ -113,7 +113,7 @@ bool Particle::update()
     if (mLifetimeLeft == 0 && mAlive == ALIVE)
         mAlive = DEAD_TIMEOUT;
 
-    Vector oldPos = mPos;
+    const Vector oldPos = mPos;
 
     if (mAlive == ALIVE)
     {
@@ -152,7 +152,7 @@ bool Particle::update()
             {
                 if (mInvDieDistance > 0.0f && invHypotenuse > mInvDieDistance)
                     mAlive = DEAD_IMPACT;
-                float accFactor = invHypotenuse * mAcceleration;
+                const float accFactor = invHypotenuse * mAcceleration;
                 mVelocity -= dist * accFactor;
             }
         }
@@ -220,7 +220,7 @@ bool Particle::update()
     {
         if ((mAlive & mDeathEffectConditions) > 0x00  && !mDeathEffect.empty())
         {
-            Particle* deathEffect = particleEngine->addEffect(
+            Particle *const deathEffect = particleEngine->addEffect(
                 mDeathEffect, 0, 0);
             if (deathEffect)
                 deathEffect->moveBy(mPos);
@@ -228,7 +228,7 @@ bool Particle::update()
         mAlive = DEAD_LONG_AGO;
     }
 
-    Vector change = mPos - oldPos;
+    const Vector change = mPos - oldPos;
 
     // Update child particles
 
@@ -267,20 +267,21 @@ void Particle::moveBy(const Vector &change)
     }
 }
 
-void Particle::moveTo(float x, float y)
+void Particle::moveTo(const float x, const float y)
 {
     moveTo(Vector(x, y, mPos.z));
 }
 
 Particle *Particle::createChild()
 {
-    Particle *newParticle = new Particle(mMap);
+    Particle *const newParticle = new Particle(mMap);
     mChildParticles.push_back(newParticle);
     return newParticle;
 }
 
 Particle *Particle::addEffect(const std::string &particleEffectFile,
-                              int pixelX, int pixelY, int rotation)
+                              const int pixelX, const int pixelY,
+                              const int rotation)
 {
     Particle *newParticle = nullptr;
 
@@ -290,7 +291,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         dyePalettes = particleEffectFile.substr(pos + 1);
 
     XML::Document doc(particleEffectFile.substr(0, pos));
-    XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "effect"))
     {
@@ -298,7 +299,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         return nullptr;
     }
 
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     // Parse particles
     for_each_xml_child_node(effectChildNode, rootNode)
@@ -328,7 +329,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
                 node->xmlChildrenNode->content);
             if (!imageSrc.empty() && !dyePalettes.empty())
                 Dye::instantiate(imageSrc, dyePalettes);
-            Image *img = resman->getImage(imageSrc);
+            Image *const img = resman->getImage(imageSrc);
 
             newParticle = new ImageParticle(mMap, img);
         }
@@ -339,20 +340,20 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         }
 
         // Read and set the basic properties of the particle
-        float offsetX = static_cast<float>(XML::getFloatProperty(
+        const float offsetX = static_cast<float>(XML::getFloatProperty(
             effectChildNode, "position-x", 0));
-        float offsetY = static_cast<float>(XML::getFloatProperty(
+        const float offsetY = static_cast<float>(XML::getFloatProperty(
             effectChildNode, "position-y", 0));
-        float offsetZ = static_cast<float>(XML::getFloatProperty(
+        const float offsetZ = static_cast<float>(XML::getFloatProperty(
             effectChildNode, "position-z", 0));
         Vector position (mPos.x + static_cast<float>(pixelX) + offsetX,
                          mPos.y + static_cast<float>(pixelY) + offsetY,
                          mPos.z + offsetZ);
         newParticle->moveTo(position);
 
-        int lifetime = XML::getProperty(effectChildNode, "lifetime", -1);
+        const int lifetime = XML::getProperty(effectChildNode, "lifetime", -1);
         newParticle->setLifetime(lifetime);
-        bool resizeable = "false" != XML::getProperty(effectChildNode,
+        const bool resizeable = "false" != XML::getProperty(effectChildNode,
             "size-adjustable", "false");
 
         newParticle->setAllowSizeAdjust(resizeable);
@@ -409,11 +410,14 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
     return newParticle;
 }
 
-Particle *Particle::addTextSplashEffect(const std::string &text, int x, int y,
-                                        const gcn::Color *color,
-                                        gcn::Font *font, bool outline)
+Particle *Particle::addTextSplashEffect(const std::string &text,
+                                        const int x, const int y,
+                                        const gcn::Color *const color,
+                                        gcn::Font *const font,
+                                        const bool outline)
 {
-    Particle *newParticle = new TextParticle(mMap, text, color, font, outline);
+    Particle *const newParticle = new TextParticle(
+        mMap, text, color, font, outline);
     newParticle->moveTo(static_cast<float>(x), static_cast<float>(y));
     newParticle->setVelocity(
         static_cast<float>((rand() % 100) - 50) / 200.0f,    // X
@@ -431,11 +435,13 @@ Particle *Particle::addTextSplashEffect(const std::string &text, int x, int y,
 }
 
 Particle *Particle::addTextRiseFadeOutEffect(const std::string &text,
-                                             int x, int y,
-                                             const gcn::Color *color,
-                                             gcn::Font *font, bool outline)
+                                             const int x, const int y,
+                                             const gcn::Color *const color,
+                                             gcn::Font *const font,
+                                             const bool outline)
 {
-    Particle *newParticle = new TextParticle(mMap, text, color, font, outline);
+    Particle *const newParticle = new TextParticle(
+        mMap, text, color, font, outline);
     newParticle->moveTo(static_cast<float>(x), static_cast<float>(y));
     newParticle->setVelocity(0.0f, 0.0f, 0.5f);
     newParticle->setGravity(0.0015f);
@@ -448,7 +454,7 @@ Particle *Particle::addTextRiseFadeOutEffect(const std::string &text,
     return newParticle;
 }
 
-void Particle::adjustEmitterSize(int w, int h)
+void Particle::adjustEmitterSize(const int w, const int h)
 {
     if (mAllowSizeAdjust)
     {

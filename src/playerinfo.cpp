@@ -58,7 +58,7 @@ int mLevelProgress = 0;
 
 // --- Triggers ---------------------------------------------------------------
 
-void triggerAttr(int id, int old)
+void triggerAttr(const int id, const int old)
 {
     DepricatedEvent event(EVENT_UPDATEATTRIBUTE);
     event.setInt("id", id);
@@ -67,9 +67,10 @@ void triggerAttr(int id, int old)
     DepricatedEvent::trigger(CHANNEL_ATTRIBUTES, event);
 }
 
-void triggerStat(int id, const std::string &changed, int old1, int old2)
+void triggerStat(const int id, const std::string &changed,
+                 const int old1, const int old2)
 {
-    StatMap::const_iterator it = mData.mStats.find(id);
+    const StatMap::const_iterator it = mData.mStats.find(id);
     if (it == mData.mStats.end())
         return;
 
@@ -88,18 +89,18 @@ void triggerStat(int id, const std::string &changed, int old1, int old2)
 
 // --- Attributes -------------------------------------------------------------
 
-int getAttribute(Attribute id)
+int getAttribute(const Attribute id)
 {
-    IntMap::const_iterator it = mData.mAttributes.find(id);
+    const IntMap::const_iterator it = mData.mAttributes.find(id);
     if (it != mData.mAttributes.end())
         return it->second;
     else
         return 0;
 }
 
-void setAttribute(Attribute id, int value, bool notify)
+void setAttribute(const Attribute id, const int value, const bool notify)
 {
-    int old = mData.mAttributes[id];
+    const int old = mData.mAttributes[id];
     mData.mAttributes[id] = value;
     if (notify)
         triggerAttr(id, old);
@@ -107,52 +108,52 @@ void setAttribute(Attribute id, int value, bool notify)
 
 // --- Stats ------------------------------------------------------------------
 
-int getStatBase(Attribute id)
+int getStatBase(const Attribute id)
 {
-    StatMap::const_iterator it = mData.mStats.find(id);
+    const StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
         return it->second.base;
     else
         return 0;
 }
 
-void setStatBase(Attribute id, int value, bool notify)
+void setStatBase(const Attribute id, const int value, const bool notify)
 {
-    int old = mData.mStats[id].base;
+    const int old = mData.mStats[id].base;
     mData.mStats[id].base = value;
     if (notify)
         triggerStat(id, "base", old);
 }
 
-int getStatMod(Attribute id)
+int getStatMod(const Attribute id)
 {
-    StatMap::const_iterator it = mData.mStats.find(id);
+    const StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
         return it->second.mod;
     else
         return 0;
 }
 
-void setStatMod(Attribute id, int value, bool notify)
+void setStatMod(const Attribute id, const int value, const bool notify)
 {
-    int old = mData.mStats[id].mod;
+    const int old = mData.mStats[id].mod;
     mData.mStats[id].mod = value;
     if (notify)
         triggerStat(id, "mod", old);
 }
 
-int getStatEffective(Attribute id)
+int getStatEffective(const Attribute id)
 {
-    StatMap::const_iterator it = mData.mStats.find(id);
+    const StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
         return it->second.base + it->second.mod;
     else
         return 0;
 }
 
-std::pair<int, int> getStatExperience(Attribute id)
+std::pair<int, int> getStatExperience(const Attribute id)
 {
-    StatMap::const_iterator it = mData.mStats.find(id);
+    const StatMap::const_iterator it = mData.mStats.find(id);
     int a, b;
     if (it != mData.mStats.end())
     {
@@ -167,12 +168,13 @@ std::pair<int, int> getStatExperience(Attribute id)
     return std::pair<int, int>(a, b);
 }
 
-void setStatExperience(Attribute id, int have, int need, bool notify)
+void setStatExperience(const Attribute id, const int have,
+                       const int need, const bool notify)
 {
     Stat &stat = mData.mStats[id];
 
-    int oldExp = stat.exp;
-    int oldExpNeed = stat.expNeed;
+    const int oldExp = stat.exp;
+    const int oldExpNeed = stat.expNeed;
     stat.exp = have;
     stat.expNeed = need;
     if (notify)
@@ -194,10 +196,11 @@ void clearInventory()
         mInventory->clear();
 }
 
-void setInventoryItem(int index, int id, int amount, int refine)
+void setInventoryItem(const int index, const int id,
+                      const int amount, const int refine)
 {
     bool equipment = false;
-    int itemType = ItemDB::get(id).getType();
+    const int itemType = ItemDB::get(id).getType();
     if (itemType != ITEM_UNUSABLE && itemType != ITEM_USABLE)
         equipment = true;
     if (mInventory)
@@ -209,7 +212,7 @@ Equipment *getEquipment()
     return mEquipment;
 }
 
-Item *getEquipment(unsigned int slot)
+Item *getEquipment(const unsigned int slot)
 {
     if (mEquipment)
         return mEquipment->getEquipment(slot);
@@ -217,7 +220,7 @@ Item *getEquipment(unsigned int slot)
         return nullptr;
 }
 
-void setEquipmentBackend(Equipment::Backend *backend)
+void setEquipmentBackend(Equipment::Backend *const backend)
 {
     if (mEquipment)
         mEquipment->setBackend(backend);
@@ -225,7 +228,8 @@ void setEquipmentBackend(Equipment::Backend *backend)
 
 // --- Specials ---------------------------------------------------------------
 
-void setSpecialStatus(int id, int current, int max, int recharge)
+void setSpecialStatus(const int id, const int current,
+                      const int max, const int recharge)
 {
     logger->log("SpecialUpdate Skill #%d -- (%d/%d) -> %d", id, current, max,
                 recharge);
@@ -246,7 +250,7 @@ void setBackend(const PlayerInfoBackend &backend)
     mData = backend;
 }
 
-void setCharId(int charId)
+void setCharId(const int charId)
 {
     mCharId = charId;
 }
@@ -278,9 +282,9 @@ bool isTrading()
     return mTrading;
 }
 
-void setTrading(bool trading)
+void setTrading(const bool trading)
 {
-    bool notify = mTrading != trading;
+    const bool notify = mTrading != trading;
     mTrading = trading;
 
     if (notify)
@@ -293,7 +297,7 @@ void setTrading(bool trading)
 
 void updateAttrs()
 {
-    int attr = Net::getPlayerHandler()->getAttackLocation();
+    const int attr = Net::getPlayerHandler()->getAttackLocation();
     if (attr != -1 && getStatBase(ATTACK_DELAY))
     {
         setStatBase(static_cast<PlayerInfo::Attribute>(ATTACK_SPEED),
@@ -329,7 +333,7 @@ public:
         {
             if (event.getName() == EVENT_STATECHANGE)
             {
-                int newState = event.getInt("newState");
+                const int newState = event.getInt("newState");
 
                 if (newState == STATE_GAME)
                 {

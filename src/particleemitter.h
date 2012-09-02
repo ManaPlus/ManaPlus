@@ -43,8 +43,8 @@ class Particle;
 class ParticleEmitter
 {
     public:
-        ParticleEmitter(XmlNodePtr emitterNode,  Particle *target, Map *map,
-                        int rotation = 0,
+        ParticleEmitter(const XmlNodePtr emitterNode, Particle *const target,
+                        Map *const map, const int rotation = 0,
                         const std::string& dyePalettes = std::string());
 
         /**
@@ -66,19 +66,19 @@ class ParticleEmitter
          * Spawns new particles
          * @return: a list of created particles
          */
-        std::list<Particle *> createParticles(int tick);
+        std::list<Particle *> createParticles(const int tick);
 
         /**
          * Sets the target of the particles that are created
          */
-        void setTarget(Particle *target)
+        void setTarget(Particle *const target)
         { mParticleTarget = target; };
 
         /**
          * Changes the size of the emitter so that the effect fills a
          * rectangle of this size
          */
-        void adjustSize(int w, int h);
+        void adjustSize(const int w, const int h);
 
     private:
         template <typename T> ParticleEmitterProp<T>

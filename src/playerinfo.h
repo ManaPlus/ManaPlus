@@ -103,40 +103,43 @@ namespace PlayerInfo
     /**
      * Returns the value of the given attribute.
      */
-    int getAttribute(Attribute id);
+    int getAttribute(const Attribute id);
 
     /**
      * Changes the value of the given attribute.
      */
-    void setAttribute(Attribute id, int value, bool notify = true);
+    void setAttribute(const Attribute id, const int value,
+                      const bool notify = true);
 
 // --- Stats ------------------------------------------------------------------
 
     /**
      * Returns the base value of the given stat.
      */
-    int getStatBase(Attribute id);
+    int getStatBase(const Attribute id);
 
     /**
      * Changes the base value of the given stat.
      */
-    void setStatBase(Attribute id, int value, bool notify = true);
+    void setStatBase(const Attribute id, const int value,
+                     const bool notify = true);
 
     /**
      * Returns the modifier for the given stat.
      */
-    int getStatMod(Attribute id);
+    int getStatMod(const Attribute id);
 
     /**
      * Changes the modifier for the given stat.
      */
-    void setStatMod(Attribute id, int value, bool notify = true);
+    void setStatMod(const Attribute id, const int value,
+                    const bool notify = true);
 
     /**
      * Returns the current effective value of the given stat. Effective is base
      * + mod
      */
-    int getStatEffective(Attribute id);
+    int getStatEffective(const Attribute id);
 
     /**
      * Changes the level of the given stat.
@@ -146,13 +149,13 @@ namespace PlayerInfo
     /**
      * Returns the experience of the given stat.
      */
-    std::pair<int, int> getStatExperience(Attribute id);
+    std::pair<int, int> getStatExperience(const Attribute id);
 
     /**
      * Changes the experience of the given stat.
      */
-    void setStatExperience(Attribute id, int have,
-                           int need, bool notify = true);
+    void setStatExperience(const Attribute id, const int have,
+                           const int need, const bool notify = true);
 
 // --- Inventory / Equipment --------------------------------------------------
 
@@ -169,7 +172,8 @@ namespace PlayerInfo
     /**
      * Changes the inventory item at the given slot.
      */
-    void setInventoryItem(int index, int id, int amount, int refine);
+    void setInventoryItem(const int index, const int id,
+                          const int amount, const int refine);
 
     /**
      * Returns the player's equipment.
@@ -179,14 +183,15 @@ namespace PlayerInfo
     /**
      * Returns the player's equipment at the given slot.
      */
-    Item *getEquipment(unsigned int slot);
+    Item *getEquipment(const unsigned int slot);
 
 // --- Specials ---------------------------------------------------------------
 
     /**
      * Changes the status of the given special.
      */
-    void setSpecialStatus(int id, int current, int max, int recharge);
+    void setSpecialStatus(const int id, const int current,
+                          const int max, const int recharge);
 
     /**
      * Returns the status of the given special.
@@ -200,7 +205,7 @@ namespace PlayerInfo
      */
     void setBackend(const PlayerInfoBackend &backend);
 
-    void setCharId(int charId);
+    void setCharId(const int charId);
 
     int getCharId();
 
@@ -218,7 +223,7 @@ namespace PlayerInfo
     /**
      * Sets whether the player is currently involved in trade or not.
      */
-    void setTrading(bool trading);
+    void setTrading(const bool trading);
 
     void updateAttrs();
 
@@ -233,14 +238,14 @@ namespace PlayerInfo
 
     void triggerAttr(int id);
 
-    void triggerAttr(int id, int old);
+    void triggerAttr(const int id, const int old);
 
     void triggerStat(int id);
 
-    void triggerStat(int id, const std::string &changed,
-                     int old1, int old2 = 0);
+    void triggerStat(const int id, const std::string &changed,
+                     const int old1, const int old2 = 0);
 
-    void setEquipmentBackend(Equipment::Backend *backend);
+    void setEquipmentBackend(Equipment::Backend *const backend);
 
 } // namespace PlayerInfo
 

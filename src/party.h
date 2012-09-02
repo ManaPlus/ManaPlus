@@ -41,13 +41,13 @@ public:
     bool getLeader() const
     { return mLeader; }
 
-    void setLeader(bool leader)
+    void setLeader(const bool leader)
     { mLeader = leader; setDisplayBold(leader); }
 
 protected:
     friend class Party;
 
-    PartyMember(Party *party, int id, const std::string &name);
+    PartyMember(Party *const party, const int id, const std::string &name);
 
     Party *mParty;
     bool mLeader;
@@ -66,14 +66,14 @@ public:
     /**
      * Adds member to the list.
      */
-    PartyMember *addMember(int id, const std::string &name);
+    PartyMember *addMember(const int id, const std::string &name);
 
     /**
      * Find a member by ID.
      *
      * @return the member with the given ID, or NULL if they don't exist.
      */
-    PartyMember *getMember(int id) const;
+    PartyMember *getMember(const int id) const;
 
     /**
      * Find a member by name.
@@ -99,12 +99,12 @@ public:
     /**
      * Removes a member from the party.
      */
-    void removeMember(PartyMember *member);
+    void removeMember(const PartyMember *const member);
 
     /**
      * Removes a member from the party.
      */
-    void removeMember(int id);
+    void removeMember(const int id);
 
     /**
      * Removes a member from the party.
@@ -123,7 +123,7 @@ public:
     int getNumberOfElements()
     { return static_cast<int>(mMembers.size()); }
 
-    Avatar *getAvatarAt(int i);
+    Avatar *getAvatarAt(const int i);
 
     /**
      * Get whether user can invite users to this party.
@@ -132,11 +132,11 @@ public:
     bool getInviteRights() const
     { return mCanInviteUsers; }
 
-    void setRights(short rights);
+    void setRights(const short rights);
 
-    bool isMember(PartyMember *member) const;
+    bool isMember(const PartyMember *const member) const;
 
-    bool isMember(int id) const;
+    bool isMember(const int id) const;
 
     bool isMember(const std::string &name) const;
 
@@ -151,7 +151,7 @@ public:
     MemberList *getMembers()
     { return &mMembers; }
 
-    static Party *getParty(short id);
+    static Party *getParty(const short id);
 
     static void clearParties();
 
@@ -162,7 +162,7 @@ private:
     /**
      * Constructor with party id passed to it.
      */
-    Party(short id);
+    Party(const short id);
 
     virtual ~Party();
 

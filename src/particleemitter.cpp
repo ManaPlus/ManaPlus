@@ -38,8 +38,9 @@
 static const float SIN45 = 0.707106781f;
 static const float DEG_RAD_FACTOR = 0.017453293f;
 
-ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
-                                 Map *map, int rotation,
+ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
+                                 Particle *const target,
+                                 Map *const map, const int rotation,
                                  const std::string& dyePalettes) :
     mParticleTarget(target),
     mMap(map),
@@ -102,7 +103,8 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                     if (!dyePalettes.empty())
                         Dye::instantiate(image, dyePalettes);
 
-                    ResourceManager *resman = ResourceManager::getInstance();
+                    ResourceManager *const resman
+                        = ResourceManager::getInstance();
                     mParticleImage = resman->getImage(image);
                 }
             }
@@ -203,8 +205,8 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
         }
         else if (xmlNameEqual(propertyNode, "rotation"))
         {
-            ImageSet *imageset = ResourceManager::getInstance()->getImageSet(
-                XML::getProperty(propertyNode, "imageset", ""),
+            ImageSet *const imageset = ResourceManager::getInstance()
+                ->getImageSet(XML::getProperty(propertyNode, "imageset", ""),
                 XML::getProperty(propertyNode, "width", 0),
                 XML::getProperty(propertyNode, "height", 0)
             );
@@ -219,18 +221,19 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
             // Get animation frames
             for_each_xml_child_node(frameNode, propertyNode)
             {
-                int delay = XML::getIntProperty(
+                const int delay = XML::getIntProperty(
                     frameNode, "delay", 0, 0, 100000);
                 int offsetX = XML::getProperty(frameNode, "offsetX", 0);
                 int offsetY = XML::getProperty(frameNode, "offsetY", 0);
-                int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
+                const int rand = XML::getIntProperty(
+                    frameNode, "rand", 100, 0, 100);
 
                 offsetY -= imageset->getHeight() - 32;
                 offsetX -= imageset->getWidth() / 2 - 16;
 
                 if (xmlNameEqual(frameNode, "frame"))
                 {
-                    int index = XML::getProperty(frameNode, "index", -1);
+                    const int index = XML::getProperty(frameNode, "index", -1);
 
                     if (index < 0)
                     {
@@ -238,7 +241,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                         continue;
                     }
 
-                    Image *img = imageset->get(index);
+                    Image *const img = imageset->get(index);
 
                     if (!img)
                     {
@@ -252,7 +255,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                 else if (xmlNameEqual(frameNode, "sequence"))
                 {
                     int start = XML::getProperty(frameNode, "start", -1);
-                    int end = XML::getProperty(frameNode, "end", -1);
+                    const int end = XML::getProperty(frameNode, "end", -1);
 
                     if (start < 0 || end < 0)
                     {
@@ -262,7 +265,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
 
                     while (end >= start)
                     {
-                        Image *img = imageset->get(start);
+                        Image *const img = imageset->get(start);
 
                         if (!img)
                         {
@@ -283,8 +286,8 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
         }
         else if (xmlNameEqual(propertyNode, "animation"))
         {
-            ImageSet *imageset = ResourceManager::getInstance()->getImageSet(
-                XML::getProperty(propertyNode, "imageset", ""),
+            ImageSet *const imageset = ResourceManager::getInstance()
+                ->getImageSet(XML::getProperty(propertyNode, "imageset", ""),
                 XML::getProperty(propertyNode, "width", 0),
                 XML::getProperty(propertyNode, "height", 0)
             );
@@ -299,17 +302,18 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
             // Get animation frames
             for_each_xml_child_node(frameNode, propertyNode)
             {
-                int delay = XML::getIntProperty(
+                const int delay = XML::getIntProperty(
                     frameNode, "delay", 0, 0, 100000);
-                int offsetX = XML::getProperty(frameNode, "offsetX", 0);
-                int offsetY = XML::getProperty(frameNode, "offsetY", 0);
-                int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
-                offsetY -= imageset->getHeight() - 32;
-                offsetX -= imageset->getWidth() / 2 - 16;
+                int offsetX = XML::getProperty(frameNode, "offsetX", 0)
+                     - (imageset->getWidth() / 2 - 16);
+                int offsetY = XML::getProperty(frameNode, "offsetY", 0)
+                    - (imageset->getHeight() - 32);
+                const int rand = XML::getIntProperty(
+                    frameNode, "rand", 100, 0, 100);
 
                 if (xmlNameEqual(frameNode, "frame"))
                 {
-                    int index = XML::getProperty(frameNode, "index", -1);
+                    const int index = XML::getProperty(frameNode, "index", -1);
 
                     if (index < 0)
                     {
@@ -317,7 +321,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                         continue;
                     }
 
-                    Image *img = imageset->get(index);
+                    Image *const img = imageset->get(index);
 
                     if (!img)
                     {
@@ -331,7 +335,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                 else if (xmlNameEqual(frameNode, "sequence"))
                 {
                     int start = XML::getProperty(frameNode, "start", -1);
-                    int end = XML::getProperty(frameNode, "end", -1);
+                    const int end = XML::getProperty(frameNode, "end", -1);
 
                     if (start < 0 || end < 0)
                     {
@@ -341,7 +345,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
 
                     while (end >= start)
                     {
-                        Image *img = imageset->get(start);
+                        Image *const img = imageset->get(start);
 
                         if (!img)
                         {
@@ -495,7 +499,7 @@ ParticleEmitter::readParticleEmitterProp(XmlNodePtr propertyNode, T def)
 }
 
 
-std::list<Particle *> ParticleEmitter::createParticles(int tick)
+std::list<Particle *> ParticleEmitter::createParticles(const int tick)
 {
     std::list<Particle *> newParticles;
 
@@ -529,12 +533,12 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
         }
         else if (!mParticleRotation.mFrames.empty())
         {
-            Animation *newAnimation = new Animation(mParticleRotation);
+            Animation *const newAnimation = new Animation(mParticleRotation);
             newParticle = new RotationalParticle(mMap, newAnimation);
         }
         else if (!mParticleAnimation.mFrames.empty())
         {
-            Animation *newAnimation = new Animation(mParticleAnimation);
+            Animation *const newAnimation = new Animation(mParticleAnimation);
             newParticle = new AnimationParticle(mMap, newAnimation);
         }
         else
@@ -547,9 +551,9 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
                         mParticlePosZ.value(tick));
         newParticle->moveTo(position);
 
-        float angleH = mParticleAngleHorizontal.value(tick);
-        float angleV = mParticleAngleVertical.value(tick);
-        float power = mParticlePower.value(tick);
+        const float angleH = mParticleAngleHorizontal.value(tick);
+        const float angleV = mParticleAngleVertical.value(tick);
+        const float power = mParticlePower.value(tick);
         newParticle->setVelocity(
             static_cast<float>(cos(angleH) * cos(angleV)) * power,
             static_cast<float>(sin(angleH) * cos(angleV)) * power,
@@ -588,17 +592,17 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
     return newParticles;
 }
 
-void ParticleEmitter::adjustSize(int w, int h)
+void ParticleEmitter::adjustSize(const int w, const int h)
 {
     if (w == 0 || h == 0)
         return; // new dimensions are illegal
 
     // calculate the old rectangle
-    int oldWidth = static_cast<int>(mParticlePosX.maxVal
-                                    - mParticlePosX.minVal);
-    int oldHeight = static_cast<int>(mParticlePosX.maxVal
-                                     - mParticlePosY.minVal);
-    int oldArea = oldWidth * oldHeight;
+    const int oldWidth = static_cast<int>(
+        mParticlePosX.maxVal - mParticlePosX.minVal);
+    const int oldHeight = static_cast<int>(
+        mParticlePosX.maxVal - mParticlePosY.minVal);
+    const int oldArea = oldWidth * oldHeight;
     if (oldArea == 0)
     {
         //when the effect has no dimension it is
@@ -609,9 +613,9 @@ void ParticleEmitter::adjustSize(int w, int h)
     // set the new dimensions
     mParticlePosX.set(0, static_cast<float>(w));
     mParticlePosY.set(0, static_cast<float>(h));
-    int newArea = w * h;
+    const int newArea = w * h;
     // adjust the output so that the particle density stays the same
-    float outputFactor = static_cast<float>(newArea)
+    const float outputFactor = static_cast<float>(newArea)
         / static_cast<float>(oldArea);
     mOutput.minVal = static_cast<int>(static_cast<float>(
         mOutput.minVal) * outputFactor);

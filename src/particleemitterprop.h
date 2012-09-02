@@ -45,13 +45,13 @@ template <typename T> struct ParticleEmitterProp
     {
     }
 
-    void set(T min, T max)
+    void set(const T min, const T max)
     {
         minVal = min;
         maxVal = max;
     }
 
-    void set(T val)
+    void set(const T val)
     {
         set(val, val);
     }
@@ -66,7 +66,7 @@ template <typename T> struct ParticleEmitterProp
         changePhase = phase;
     }
 
-    T value(int tick)
+    T value(int tick) const
     {
         tick += changePhase;
         T val = static_cast<T>(minVal + (maxVal - minVal)
