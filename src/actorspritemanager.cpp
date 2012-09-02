@@ -196,6 +196,7 @@ ActorSpriteManager::ActorSpriteManager() :
     config.addListener("targetOnlyReachable", this);
     config.addListener("cyclePlayers", this);
     config.addListener("cycleMonsters", this);
+    config.addListener("cycleNPC", this);
     config.addListener("extMouseTargeting", this);
 
     loadAttackList();
@@ -1034,8 +1035,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
             int d = being->getDistance();
 //            logger->log("dist: %d", dist);
 //            logger->log("name: %s, %d, %d", being->getName().c_str(), (int)valid, d);
-            if (being->getType() != type
-                || !mTargetOnlyReachable)
+            if (being->getType() != Being::MONSTER || !mTargetOnlyReachable)
             {   // if distance not calculated, use old distance
                 d = (being->getTileX() - x) * (being->getTileX() - x)
                     + (being->getTileY() - y) * (being->getTileY() - y);
