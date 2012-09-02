@@ -45,7 +45,7 @@ void ColorDB::load()
     if (serverVersion >= 1)
         loadColorLists();
 
-    ColorListsIterator it = mColorLists.find("hair");
+    const ColorListsIterator it = mColorLists.find("hair");
     if (it != mColorLists.end())
         mHairColorsSize = static_cast<int>((*it).second.size());
     else
@@ -55,7 +55,7 @@ void ColorDB::load()
 void ColorDB::loadHair()
 {
     std::map <int, ItemColor> colors;
-    ColorListsIterator it = mColorLists.find("hair");
+    const ColorListsIterator it = mColorLists.find("hair");
 
     if (it != mColorLists.end())
         colors = it->second;
@@ -90,7 +90,7 @@ void ColorDB::loadHair()
     {
         if (xmlNameEqual(node, "color"))
         {
-            int id = XML::getProperty(node, "id", 0);
+            const int id = XML::getProperty(node, "id", 0);
 
             if (colors.find(id) != colors.end())
                 logger->log("ColorDB: Redefinition of dye ID %d", id);
@@ -109,7 +109,7 @@ void ColorDB::loadHair()
 void ColorDB::loadColorLists()
 {
     XML::Document *doc = new XML::Document("itemcolors.xml");
-    XmlNodePtr root = doc->rootNode();
+    const XmlNodePtr root = doc->rootNode();
     if (!root)
     {
         delete doc;
@@ -125,7 +125,7 @@ void ColorDB::loadColorLists()
                 continue;
 
             std::map <int, ItemColor> colors;
-            ColorListsIterator it = mColorLists.find(name);
+            const ColorListsIterator it = mColorLists.find(name);
 
             if (it != mColorLists.end())
                 colors = it->second;
@@ -155,19 +155,19 @@ void ColorDB::unload()
     mLoaded = false;
 }
 
-std::string &ColorDB::getHairColorName(int id)
+std::string &ColorDB::getHairColorName(const int id)
 {
     if (!mLoaded)
         load();
 
-    ColorListsIterator it = mColorLists.find("hair");
+    const ColorListsIterator it = mColorLists.find("hair");
     if (it == mColorLists.end())
     {
         logger->log1("ColorDB: Error, hair colors list empty");
         return mFail;
     }
 
-    ColorIterator i = (*it).second.find(id);
+    const ColorIterator i = (*it).second.find(id);
 
     if (i == (*it).second.end())
     {
@@ -187,7 +187,7 @@ int ColorDB::getHairSize()
 
 std::map <int, ColorDB::ItemColor> *ColorDB::getColorsList(std::string name)
 {
-    ColorListsIterator it = mColorLists.find(name);
+    const ColorListsIterator it = mColorLists.find(name);
 
     if (it != mColorLists.end())
         return &it->second;

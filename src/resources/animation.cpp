@@ -33,8 +33,9 @@ Animation::Animation():
 {
 }
 
-void Animation::addFrame(Image *image, int delay, int offsetX, int offsetY,
-                         int rand)
+void Animation::addFrame(Image *const image, const int delay,
+                         const int offsetX, const int offsetY,
+                         const int rand)
 {
     Frame frame
         = { image, delay, offsetX, offsetY, rand, Frame::ANIMATION, "" };
@@ -42,7 +43,7 @@ void Animation::addFrame(Image *image, int delay, int offsetX, int offsetY,
     mDuration += delay;
 }
 
-void Animation::addTerminator(int rand)
+void Animation::addTerminator(const int rand)
 {
     addFrame(nullptr, 0, 0, 0, rand);
 }
@@ -52,31 +53,31 @@ bool Animation::isTerminator(const Frame &candidate)
     return (!candidate.image && candidate.type == Frame::ANIMATION);
 }
 
-void Animation::addJump(std::string name, int rand)
+void Animation::addJump(const std::string &name, const int rand)
 {
     Frame frame = { nullptr, 0, 0, 0, rand, Frame::JUMP, name };
     mFrames.push_back(frame);
 }
 
-void Animation::addLabel(std::string name)
+void Animation::addLabel(const std::string &name)
 {
     Frame frame = { nullptr, 0, 0, 0, 100, Frame::LABEL, name };
     mFrames.push_back(frame);
 }
 
-void Animation::addGoto(std::string name, int rand)
+void Animation::addGoto(const std::string &name, const int rand)
 {
     Frame frame = { nullptr, 0, 0, 0, rand, Frame::GOTO, name };
     mFrames.push_back(frame);
 }
 
-void Animation::addPause(int delay, int rand)
+void Animation::addPause(const int delay, const int rand)
 {
     Frame frame = { nullptr, delay, 0, 0, rand, Frame::PAUSE, "" };
     mFrames.push_back(frame);
 }
 
-void Animation::setLastFrameDelay(int delay)
+void Animation::setLastFrameDelay(const int delay)
 {
     for (FramesRevIter it = mFrames.rbegin(), it_end = mFrames.rend();
          it != it_end; ++ it)

@@ -86,7 +86,7 @@ void BeingInfo::setTargetCursorSize(const std::string &size)
     }
 }
 
-void BeingInfo::addSound(SoundEvent event, const std::string &filename)
+void BeingInfo::addSound(const SoundEvent event, const std::string &filename)
 {
     if (mSounds.find(event) == mSounds.end())
         mSounds[event] = new StringVect;
@@ -95,23 +95,23 @@ void BeingInfo::addSound(SoundEvent event, const std::string &filename)
         mSounds[event]->push_back("sfx/" + filename);
 }
 
-const std::string &BeingInfo::getSound(SoundEvent event) const
+const std::string &BeingInfo::getSound(const SoundEvent event) const
 {
     static std::string emptySound("");
 
-    SoundEvents::const_iterator i = mSounds.find(event);
+    const SoundEvents::const_iterator i = mSounds.find(event);
     return (i == mSounds.end() || !i->second) ? emptySound :
             i->second->at(rand() % i->second->size());
 }
 
-const Attack *BeingInfo::getAttack(int type) const
+const Attack *BeingInfo::getAttack(const int type) const
 {
 
-    Attacks::const_iterator i = mAttacks.find(type);
+    const Attacks::const_iterator i = mAttacks.find(type);
     return (i == mAttacks.end()) ? empty : (*i).second;
 }
 
-void BeingInfo::addAttack(int id, std::string action,
+void BeingInfo::addAttack(const int id, std::string action,
                           const std::string &particleEffect,
                           const std::string &missileParticle)
 {

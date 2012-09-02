@@ -54,7 +54,7 @@ class ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Resource *load(SDL_RWops *rw);
+        Resource *load(SDL_RWops *const rw);
 
 #ifdef __GNUC__
         virtual Resource *load(SDL_RWops *rw, Dye const &dye) = 0;
@@ -72,19 +72,19 @@ class ImageHelper
         virtual Image *load(SDL_Surface *)
         { return nullptr; }
 
-        virtual Image *createTextSurface(SDL_Surface *tmpImage,
-                                         float alpha)
+        virtual Image *createTextSurface(SDL_Surface *const tmpImage,
+                                         const float alpha)
         { return nullptr; }
 
         virtual int useOpenGL()
         { return 0; }
 #endif
 
-        SDL_Surface *convertTo32Bit(SDL_Surface* tmpImage);
+        static SDL_Surface *convertTo32Bit(SDL_Surface *const tmpImage);
 
-        void dumpSurfaceFormat(SDL_Surface *image);
+        void dumpSurfaceFormat(const SDL_Surface *const image) const;
 
-        static void setEnableAlpha(bool n)
+        static void setEnableAlpha(const bool n)
         { mEnableAlpha = n; }
 
     protected:

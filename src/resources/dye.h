@@ -44,13 +44,13 @@ class DyePalette
          * The string is either a file name or a sequence of hexadecimal RGB
          * values separated by ',' and starting with '#'.
          */
-        DyePalette(const std::string &pallete, int8_t blockSize);
+        DyePalette(const std::string &pallete, const int8_t blockSize);
 
         /**
          * Gets a pixel color depending on its intensity. First color is
          * implicitly black (0, 0, 0).
          */
-        void getColor(int intensity, int color[3]) const;
+        void getColor(const int intensity, int color[3]) const;
 
         /**
          * Gets a pixel color depending on its intensity.
@@ -60,24 +60,24 @@ class DyePalette
         /**
          * replace colors for SDL for S dye.
          */
-        void replaceSColor(uint8_t *color) const;
+        void replaceSColor(uint8_t *const color) const;
 
         /**
          * replace colors for SDL for S dye.
          */
-        void replaceAColor(uint8_t *color) const;
+        void replaceAColor(uint8_t *const color) const;
 
         /**
          * replace colors for OpenGL for S dye.
          */
-        void replaceSOGLColor(uint8_t *color) const;
+        void replaceSOGLColor(uint8_t *const color) const;
 
         /**
          * replace colors for OpenGL for A dye.
          */
-        void replaceAOGLColor(uint8_t *color) const;
+        void replaceAOGLColor(uint8_t *const color) const;
 
-        int hexDecode(char c);
+        static int hexDecode(const char c);
 
     private:
         struct Color

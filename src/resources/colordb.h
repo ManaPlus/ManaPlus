@@ -39,7 +39,8 @@ namespace ColorDB
                 color("")
             { }
 
-            ItemColor(int id0, std::string name0, std::string color0)
+            ItemColor(const int id0, const std::string &name0,
+                      const std::string &color0)
             {
                 this->id = id0;
                 this->name = name0;
@@ -68,7 +69,7 @@ namespace ColorDB
      */
     void unload();
 
-    std::string &getHairColorName(int id);
+    std::string &getHairColorName(const int id);
 
     int getHairSize();
 

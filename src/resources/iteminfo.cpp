@@ -101,7 +101,8 @@ ItemInfo::~ItemInfo()
         mSpriteToItemReplaceMap[f] = nullptr;
 }
 
-const std::string &ItemInfo::getSprite(Gender gender, int race) const
+const std::string &ItemInfo::getSprite(const Gender gender,
+                                       const int race) const
 {
     if (mView)
     {
@@ -134,12 +135,13 @@ void ItemInfo::setAttackAction(std::string attackAction)
         mAttackAction = attackAction;
 }
 
-void ItemInfo::addSound(EquipmentSoundEvent event, const std::string &filename)
+void ItemInfo::addSound(const EquipmentSoundEvent event,
+                        const std::string &filename)
 {
     mSounds[event].push_back(paths.getStringValue("sfx") + filename);
 }
 
-const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
+const std::string &ItemInfo::getSound(const EquipmentSoundEvent event) const
 {
     static const std::string empty;
     std::map<EquipmentSoundEvent, StringVect>::const_iterator i;
@@ -151,7 +153,8 @@ const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
     return (!i->second.empty()) ? i->second[rand() % i->second.size()] : empty;
 }
 
-std::map<int, int> *ItemInfo::addReplaceSprite(int sprite, int direction)
+std::map<int, int> *ItemInfo::addReplaceSprite(const int sprite,
+                                               const int direction)
 {
     if (direction < 0 || direction >= 10)
         return nullptr;
@@ -189,12 +192,12 @@ void ItemInfo::setColorsList(std::string name)
     }
 }
 
-std::string ItemInfo::getDyeColorsString(int color) const
+std::string ItemInfo::getDyeColorsString(const int color) const
 {
     if (!mColors || mColorList.empty())
         return "";
 
-    std::map <int, ColorDB::ItemColor>::const_iterator
+    const std::map <int, ColorDB::ItemColor>::const_iterator
         it = mColors->find(color);
     if (it == mColors->end())
         return "";
@@ -202,23 +205,23 @@ std::string ItemInfo::getDyeColorsString(int color) const
     return it->second.color;
 }
 
-const std::string ItemInfo::getDescription(unsigned char color) const
+const std::string ItemInfo::getDescription(const unsigned char color) const
 {
     return replaceColors(mDescription, color);
 }
 
-const std::string ItemInfo::getName(unsigned char color) const
+const std::string ItemInfo::getName(const unsigned char color) const
 {
     return replaceColors(mName, color);
 }
 
 const std::string ItemInfo::replaceColors(std::string str,
-                                          unsigned char color) const
+                                          const unsigned char color) const
 {
     std::string name;
     if (mColors && !mColorList.empty())
     {
-        std::map <int, ColorDB::ItemColor>::const_iterator
+        const std::map <int, ColorDB::ItemColor>::const_iterator
             it = mColors->find(color);
         if (it == mColors->end())
             name = "unknown";
@@ -237,12 +240,12 @@ const std::string ItemInfo::replaceColors(std::string str,
     return replaceAll(str, "%Color%", name);
 }
 
-SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(int direction) const
+SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(const int direction) const
 {
     if (direction < 0 || direction >= 10)
         return nullptr;
 
-    SpriteToItemMap *spMap = mSpriteToItemReplaceMap[direction];
+    SpriteToItemMap *const spMap = mSpriteToItemReplaceMap[direction];
     if (spMap)
         return spMap;
     if (direction == DIRECTION_UPLEFT || direction == DIRECTION_UPRIGHT)
@@ -254,7 +257,8 @@ SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(int direction) const
     return nullptr;
 }
 
-void ItemInfo::setSpriteOrder(int *ptr, int direction, int n, int def)
+void ItemInfo::setSpriteOrder(int *const ptr, const int direction,
+                              const int n, const int def) const
 {
     if (direction == -1)
     {
@@ -285,36 +289,36 @@ void ItemInfo::setSpriteOrder(int *ptr, int direction, int n, int def)
     ptr[direction] = n;
 }
 
-void ItemInfo::setDrawBefore(int direction, int n)
+void ItemInfo::setDrawBefore(const int direction, const int n)
 {
     setSpriteOrder(&mDrawBefore[0], direction, n);
 }
 
-void ItemInfo::setDrawAfter(int direction, int n)
+void ItemInfo::setDrawAfter(const int direction, const int n)
 {
     setSpriteOrder(&mDrawAfter[0], direction, n);
 }
 
-void ItemInfo::setDrawPriority(int direction, int n)
+void ItemInfo::setDrawPriority(const int direction, const int n)
 {
     setSpriteOrder(&mDrawPriority[0], direction, n, 0);
 }
 
-int ItemInfo::getDrawBefore(int direction) const
+int ItemInfo::getDrawBefore(const int direction) const
 {
     if (direction < 0 || direction >= 10)
         return -1;
     return mDrawBefore[direction];
 }
 
-int ItemInfo::getDrawAfter(int direction) const
+int ItemInfo::getDrawAfter(const int direction) const
 {
     if (direction < 0 || direction >= 10)
         return -1;
     return mDrawAfter[direction];
 }
 
-int ItemInfo::getDrawPriority(int direction) const
+int ItemInfo::getDrawPriority(const int direction) const
 {
     if (direction < 0 || direction >= 10)
         return 0;
@@ -322,7 +326,7 @@ int ItemInfo::getDrawPriority(int direction) const
 }
 
 void ItemInfo::setSprite(const std::string &animationFile,
-                         Gender gender, int race)
+                         const Gender gender, const int race)
 {
     mAnimationFiles[static_cast<int>(gender) + race * 4] = animationFile;
 }

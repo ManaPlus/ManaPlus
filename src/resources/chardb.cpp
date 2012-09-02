@@ -45,7 +45,7 @@ void CharDB::load()
         unload();
 
     XML::Document *doc = new XML::Document("charcreation.xml");
-    XmlNodePtr root = doc->rootNode();
+    const XmlNodePtr root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "chars"))
     {
@@ -72,7 +72,7 @@ void CharDB::load()
         }
         else if (xmlNameEqual(node, "item"))
         {
-            int id = XML::getProperty(node, "id", 0);
+            const int id = XML::getProperty(node, "id", 0);
             if (id > 0)
                 mDefaultItems.push_back(id);
         }
@@ -83,7 +83,8 @@ void CharDB::load()
     mLoaded = true;
 }
 
-void CharDB::loadMinMax(XmlNodePtr node, unsigned *min, unsigned *max)
+void CharDB::loadMinMax(const XmlNodePtr node,
+                        unsigned *const min, unsigned *const max)
 {
     *min = XML::getProperty(node, "min", 1);
     *max = XML::getProperty(node, "max", 10);

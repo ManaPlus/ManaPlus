@@ -38,17 +38,17 @@ class Action
 
         ~Action();
 
-        void setAnimation(int direction, Animation *animation);
+        void setAnimation(const int direction, Animation *const animation);
 
         Animation *getAnimation(int direction) const;
 
         unsigned getNumber() const
         { return mNumber; }
 
-        void setNumber(unsigned n)
+        void setNumber(const unsigned n)
         { mNumber = n; }
 
-        void setLastFrameDelay(int delay);
+        void setLastFrameDelay(const int delay);
 
     protected:
         typedef std::map<int, Animation*> Animations;

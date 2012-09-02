@@ -40,7 +40,7 @@ namespace MapDB
      */
     void unload();
 
-    std::string getMapName(std::string name);
+    std::string getMapName(const std::string &name);
 
     // Maps DB
     typedef std::map<std::string, std::string> Maps;

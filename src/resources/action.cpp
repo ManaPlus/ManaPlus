@@ -65,17 +65,17 @@ Animation *Action::getAnimation(int direction) const
     return (i == mAnimations.end()) ? nullptr : i->second;
 }
 
-void Action::setAnimation(int direction, Animation *animation)
+void Action::setAnimation(const int direction, Animation *const animation)
 {
     mAnimations[direction] = animation;
 }
 
-void Action::setLastFrameDelay(int delay)
+void Action::setLastFrameDelay(const int delay)
 {
     for (AnimationIter it = mAnimations.begin(),
          it_end = mAnimations.end(); it != it_end; ++ it)
     {
-        Animation *animation = (*it).second;
+        Animation *const animation = (*it).second;
         if (!animation)
             continue;
         animation->setLastFrameDelay(delay);

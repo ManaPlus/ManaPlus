@@ -35,7 +35,8 @@
 
 #include "debug.h"
 
-bool ImageWriter::writePNG(SDL_Surface *surface, const std::string &filename)
+bool ImageWriter::writePNG(SDL_Surface *const surface,
+                           const std::string &filename)
 {
     if (!surface)
         return false;

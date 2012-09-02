@@ -30,8 +30,8 @@
 
 #include "debug.h"
 
-ImageSet::ImageSet(Image *img, int width, int height,
-                   int margin, int spacing) :
+ImageSet::ImageSet(Image *const img, const int width, const int height,
+                   const int margin, const int spacing) :
     mWidth(width),
     mHeight(height),
     mOffsetX(0),
@@ -56,7 +56,7 @@ ImageSet::~ImageSet()
     delete_all(mImages);
 }
 
-Image* ImageSet::get(size_type i) const
+Image* ImageSet::get(const size_type i) const
 {
     if (i >= mImages.size())
     {

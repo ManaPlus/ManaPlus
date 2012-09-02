@@ -29,8 +29,9 @@
 
 #include "debug.h"
 
-AmbientLayer::AmbientLayer(Image *img, float parallax,
-                           float speedX, float speedY, bool keepRatio):
+AmbientLayer::AmbientLayer(Image *const img, const float parallax,
+                           const float speedX, const float speedY,
+                           const bool keepRatio) :
     mImage(img), mParallax(parallax),
     mPosX(0), mPosY(0),
     mSpeedX(speedX), mSpeedY(speedY),
@@ -47,7 +48,7 @@ AmbientLayer::AmbientLayer(Image *img, float parallax,
     {
         // Rescale the overlay to keep the ratio as if we were on
         // the default resolution...
-        Image *rescaledOverlay = ResourceManager::getInstance()->
+        Image *const rescaledOverlay = ResourceManager::getInstance()->
             getRescaled(mImage, static_cast<int>(mImage->mBounds.w)
             / defaultScreenWidth * mainGraphics->mWidth,
             static_cast<int>(mImage->mBounds.h)
@@ -73,7 +74,7 @@ AmbientLayer::~AmbientLayer()
     }
 }
 
-void AmbientLayer::update(int timePassed, float dx, float dy)
+void AmbientLayer::update(const int timePassed, const float dx, const float dy)
 {
     if (!mImage)
         return;
@@ -86,8 +87,8 @@ void AmbientLayer::update(int timePassed, float dx, float dy)
     mPosX += dx * mParallax;
     mPosY += dy * mParallax;
 
-    int imgW = mImage->mBounds.w;
-    int imgH = mImage->mBounds.h;
+    const int imgW = mImage->mBounds.w;
+    const int imgH = mImage->mBounds.h;
 
     // Wrap values
     while (mPosX > imgW)
@@ -101,7 +102,7 @@ void AmbientLayer::update(int timePassed, float dx, float dy)
         mPosY += static_cast<float>(imgH);
 }
 
-void AmbientLayer::draw(Graphics *graphics, int x, int y)
+void AmbientLayer::draw(Graphics *const graphics, const int x, const int y) const
 {
     if (!mImage)
         return;

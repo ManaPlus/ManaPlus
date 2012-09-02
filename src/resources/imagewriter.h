@@ -27,6 +27,6 @@ struct SDL_Surface;
 class ImageWriter
 {
     public:
-        static bool writePNG(SDL_Surface *surface,
+        static bool writePNG(SDL_Surface *const surface,
                              const std::string &filename);
 };

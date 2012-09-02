@@ -74,7 +74,8 @@ class OpenGLImageHelper : public ImageHelper
          */
         Image *load(SDL_Surface *);
 
-        Image *createTextSurface(SDL_Surface *tmpImage, float alpha);
+        Image *createTextSurface(SDL_Surface *const tmpImage,
+                                 const float alpha);
 
         // OpenGL only public functions
 

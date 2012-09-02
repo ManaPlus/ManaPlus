@@ -109,7 +109,7 @@ class ItemInfo
 
         ~ItemInfo();
 
-        void setId(int id)
+        void setId(const int id)
         { mId = id; }
 
         int getId() const
@@ -121,7 +121,7 @@ class ItemInfo
         const std::string &getName() const
         { return mName; }
 
-        const std::string getName(unsigned char color) const;
+        const std::string getName(const unsigned char color) const;
 
         void setParticleEffect(const std::string &particleEffect)
         { mParticle = particleEffect; }
@@ -141,7 +141,7 @@ class ItemInfo
         const std::string &getDescription() const
         { return mDescription; }
 
-        const std::string getDescription(unsigned char color) const;
+        const std::string getDescription(const unsigned char color) const;
 
         void setEffect(const std::string &effect)
         { mEffect = effect; }
@@ -149,13 +149,13 @@ class ItemInfo
         const std::string &getEffect() const
         { return mEffect; }
 
-        void setType(ItemType type)
+        void setType(const ItemType type)
         { mType = type; }
 
         ItemType getType() const
         { return mType; }
 
-        void setWeight(int weight)
+        void setWeight(const int weight)
         { mWeight = weight; }
 
         int getWeight() const
@@ -164,13 +164,14 @@ class ItemInfo
         int getView() const
         { return mView; }
 
-        void setView(int view)
+        void setView(const int view)
         { mView = view; }
 
         void setSprite(const std::string &animationFile,
-                       Gender gender, int race);
+                       const Gender gender, const int race);
 
-        const std::string &getSprite(Gender gender, int race) const;
+        const std::string &getSprite(const Gender gender,
+                                     const int race) const;
 
         void setAttackAction(std::string attackAction);
 
@@ -181,13 +182,13 @@ class ItemInfo
         const std::string &getMissileParticleFile() const
         { return mMissileParticleFile; }
 
-        void setHitEffectId(int s)
+        void setHitEffectId(const int s)
         { mHitEffectId = s; }
 
         int getHitEffectId() const
         { return mHitEffectId; }
 
-        void setCriticalHitEffectId(int s)
+        void setCriticalHitEffectId(const int s)
         { mCriticalHitEffectId = s; }
 
         int getCriticalHitEffectId() const
@@ -199,31 +200,33 @@ class ItemInfo
         int getAttackRange() const
         { return mAttackRange; }
 
-        void setAttackRange(int r)
+        void setAttackRange(const int r)
         { mAttackRange = r; }
 
-        void addSound(EquipmentSoundEvent event, const std::string &filename);
+        void addSound(const EquipmentSoundEvent event,
+                      const std::string &filename);
 
-        const std::string &getSound(EquipmentSoundEvent event) const;
+        const std::string &getSound(const EquipmentSoundEvent event) const;
 
-        int getDrawBefore(int direction) const;
+        int getDrawBefore(const int direction) const;
 
-        void setDrawBefore(int direction, int n);
+        void setDrawBefore(const int direction, const int n);
 
-        int getDrawAfter(int direction) const;
+        int getDrawAfter(const int direction) const;
 
-        void setDrawAfter(int direction, int n);
+        void setDrawAfter(const int direction, int n);
 
-        int getDrawPriority(int direction) const;
+        int getDrawPriority(const int direction) const;
 
-        void setDrawPriority(int direction, int n);
+        void setDrawPriority(const int direction, const int n);
 
-        void setSpriteOrder(int *ptr, int direction, int n, int def = -1);
+        void setSpriteOrder(int *const ptr, const int direction,
+                            const int n, const int def = -1) const;
 
         std::map<int, int> getTags() const
         { return mTags; }
 
-        void addTag(int tag)
+        void addTag(const int tag)
         { mTags[tag] = 1; }
 
         void setRemoveSprites()
@@ -232,7 +235,7 @@ class ItemInfo
         bool isRemoveSprites() const
         { return mIsRemoveSprites; }
 
-        void setMaxFloorOffset(int i)
+        void setMaxFloorOffset(const int i)
         { maxFloorOffset = i; }
 
         int getMaxFloorOffset() const
@@ -245,13 +248,14 @@ class ItemInfo
 
         int getReplaceToSpriteId(int id) const;
 
-        std::map<int, int> *addReplaceSprite(int sprite, int direction);
+        std::map<int, int> *addReplaceSprite(const int sprite,
+                                             const int direction);
 
-        SpriteToItemMap *getSpriteToItemReplaceMap(int directions) const;
+        SpriteToItemMap *getSpriteToItemReplaceMap(const int directions) const;
 
 //        std::string getDyeString(int color) const;
 
-        std::string getDyeColorsString(int color) const;
+        std::string getDyeColorsString(const int color) const;
 
         void setColorsList(std::string name);
 
@@ -259,7 +263,7 @@ class ItemInfo
         { return !mColorList.empty(); }
 
         const std::string replaceColors(std::string str,
-                                        unsigned char color) const;
+                                        const unsigned char color) const;
 
         int mDrawBefore[10];
         int mDrawAfter[10];

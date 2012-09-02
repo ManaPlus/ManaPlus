@@ -43,7 +43,8 @@
 
 #include "debug.h"
 
-Image::Image(SDL_Surface *image, bool hasAlphaChannel0, uint8_t *alphaChannel):
+Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
+             uint8_t *const alphaChannel) :
     mAlpha(1.0f),
     mHasAlphaChannel(hasAlphaChannel0),
     mSDLSurface(image),
@@ -79,8 +80,8 @@ Image::Image(SDL_Surface *image, bool hasAlphaChannel0, uint8_t *alphaChannel):
 }
 
 #ifdef USE_OPENGL
-Image::Image(GLuint glimage, int width, int height,
-             int texWidth, int texHeight):
+Image::Image(const GLuint glimage, const int width, const int height,
+             const int texWidth, const int texHeight) :
     mAlpha(1.0f),
     mHasAlphaChannel(true),
     mSDLSurface(nullptr),
@@ -117,7 +118,7 @@ Image::~Image()
 
 void Image::SDLCleanCache()
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     for (std::map<float, SDL_Surface*>::iterator
          i = mAlphaCache.begin(), i_end = mAlphaCache.end();
@@ -158,7 +159,7 @@ void Image::unload()
 #endif
 }
 
-bool Image::hasAlphaChannel()
+bool Image::hasAlphaChannel() const
 {
     if (mLoaded)
         return mHasAlphaChannel;
@@ -171,9 +172,10 @@ bool Image::hasAlphaChannel()
     return false;
 }
 
-SDL_Surface *Image::getByAlpha(float alpha)
+SDL_Surface *Image::getByAlpha(const float alpha)
 {
-    std::map<float, SDL_Surface*>::const_iterator it = mAlphaCache.find(alpha);
+    const std::map<float, SDL_Surface*>::const_iterator
+        it = mAlphaCache.find(alpha);
     if (it != mAlphaCache.end())
         return (*it).second;
     return nullptr;
@@ -262,10 +264,10 @@ void Image::setAlpha(float alpha)
             for (int i = i1; i <= i2; i++)
             {
                 // Only change the pixel if it was visible at load time...
-                uint8_t sourceAlpha = mAlphaChannel[i];
+                const uint8_t sourceAlpha = mAlphaChannel[i];
                 if (sourceAlpha > 0)
                 {
-                    uint8_t a = static_cast<uint8_t>(
+                    const uint8_t a = static_cast<uint8_t>(
                         static_cast<float>(sourceAlpha) * mAlpha);
 
                     uint32_t c = (static_cast<uint32_t*>(
@@ -317,7 +319,8 @@ Image* Image::SDLgetScaledImage(const int width, const int height) const
     return scaledImage;
 }
 
-Image *Image::getSubImage(int x, int y, int width, int height)
+Image *Image::getSubImage(const int x, const int y,
+                          const int width, const int height)
 {
     // Create a new clipped sub-image
 #ifdef USE_OPENGL

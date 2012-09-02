@@ -45,7 +45,7 @@ void EmoteDB::load()
 
     mLastEmote = 0;
 
-    EmoteSprite *unknownSprite = new EmoteSprite;
+    EmoteSprite *const unknownSprite = new EmoteSprite;
     unknownSprite->sprite = AnimatedSprite::load(
         paths.getStringValue("spriteErrorFile"));
     unknownSprite->name = "unknown";
@@ -68,7 +68,7 @@ void EmoteDB::load()
         if (!xmlNameEqual(emoteNode, "emote"))
             continue;
 
-        int id = XML::getProperty(emoteNode, "id", -1);
+        const int id = XML::getProperty(emoteNode, "id", -1);
         // skip hight images
         if (id > 19 || (Client::isTmw() && id > 13))
             continue;
@@ -80,7 +80,7 @@ void EmoteDB::load()
             continue;
         }
 
-        EmoteInfo *currentInfo = new EmoteInfo;
+        EmoteInfo *const currentInfo = new EmoteInfo;
 
         for_each_xml_child_node(spriteNode, emoteNode)
         {
@@ -89,7 +89,7 @@ void EmoteDB::load()
 
             if (xmlNameEqual(spriteNode, "sprite"))
             {
-                EmoteSprite *currentSprite = new EmoteSprite;
+                EmoteSprite *const currentSprite = new EmoteSprite;
                 std::string file = paths.getStringValue("sprites")
                     + (std::string) reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);
@@ -127,16 +127,16 @@ void EmoteDB::load()
         if (!xmlNameEqual(emoteNode, "emote"))
             continue;
 
-        int id = XML::getProperty(emoteNode, "id", -1);
+        const int id = XML::getProperty(emoteNode, "id", -1);
         if (id == -1)
         {
             logger->log1("Emote Database: Emote with missing ID in "
                          "manaplus_emotes.xml!");
             continue;
         }
-        int altId = XML::getProperty(emoteNode, "altid", -1);
+        const int altId = XML::getProperty(emoteNode, "altid", -1);
 
-        EmoteInfo *currentInfo = new EmoteInfo;
+        EmoteInfo *const currentInfo = new EmoteInfo;
 
         for_each_xml_child_node(spriteNode, emoteNode)
         {
@@ -145,7 +145,7 @@ void EmoteDB::load()
 
             if (xmlNameEqual(spriteNode, "sprite"))
             {
-                EmoteSprite *currentSprite = new EmoteSprite;
+                EmoteSprite *const currentSprite = new EmoteSprite;
                 std::string file = paths.getStringValue("sprites")
                     + (std::string) reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);
@@ -204,9 +204,9 @@ void EmoteDB::unload()
     mLoaded = false;
 }
 
-const EmoteInfo *EmoteDB::get(int id, bool allowNull)
+const EmoteInfo *EmoteDB::get(const int id, const bool allowNull)
 {
-    EmoteInfos::const_iterator i = mEmoteInfos.find(id);
+    const EmoteInfos::const_iterator i = mEmoteInfos.find(id);
 
     if (i == mEmoteInfos.end())
     {
@@ -221,26 +221,26 @@ const EmoteInfo *EmoteDB::get(int id, bool allowNull)
     }
 }
 
-const AnimatedSprite *EmoteDB::getAnimation(int id, bool allowNull)
+const AnimatedSprite *EmoteDB::getAnimation(const int id, const bool allowNull)
 {
-    const EmoteInfo *info = get(id, allowNull);
+    const EmoteInfo *const info = get(id, allowNull);
     if (!info)
         return nullptr;
 
     return info->sprites.front()->sprite;
 }
 
-const AnimatedSprite *EmoteDB::getAnimation2(int id, bool allowNull)
+const AnimatedSprite *EmoteDB::getAnimation2(int id, const bool allowNull)
 {
-    EmoteToEmote::const_iterator it = mEmotesAlt.find(id);
+    const EmoteToEmote::const_iterator it = mEmotesAlt.find(id);
     if (it != mEmotesAlt.end())
         id = (*it).second;
     return getAnimation(id, allowNull);
 }
 
-const EmoteSprite *EmoteDB::getSprite(int id, bool allowNull)
+const EmoteSprite *EmoteDB::getSprite(const int id, const bool allowNull)
 {
-    const EmoteInfo *info = get(id, allowNull);
+    const EmoteInfo *const info = get(id, allowNull);
     if (!info)
         return nullptr;
 

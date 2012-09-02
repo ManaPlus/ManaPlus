@@ -40,9 +40,9 @@ ImageHelper *imageHelper = nullptr;
 
 bool ImageHelper::mEnableAlpha = true;
 
-Resource *ImageHelper::load(SDL_RWops *rw)
+Resource *ImageHelper::load(SDL_RWops *const rw)
 {
-    SDL_Surface *tmpImage = IMG_Load_RW(rw, 1);
+    SDL_Surface *const tmpImage = IMG_Load_RW(rw, 1);
 
     if (!tmpImage)
     {
@@ -50,13 +50,13 @@ Resource *ImageHelper::load(SDL_RWops *rw)
         return nullptr;
     }
 
-    Image *image = load(tmpImage);
+    Image *const image = load(tmpImage);
 
     SDL_FreeSurface(tmpImage);
     return image;
 }
 
-SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface* tmpImage)
+SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface *const tmpImage)
 {
     if (!tmpImage)
         return nullptr;
@@ -96,7 +96,7 @@ SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface* tmpImage)
     return SDL_ConvertSurface(tmpImage, &RGBAFormat, SDL_SWSURFACE);
 }
 
-void ImageHelper::dumpSurfaceFormat(SDL_Surface *image)
+void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image) const
 {
     if (image->format)
     {

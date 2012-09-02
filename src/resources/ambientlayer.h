@@ -38,14 +38,15 @@ class AmbientLayer
          * @param keepRatio  rescale the image to keep
          * the same ratio than in 800x600 resolution mode.
          */
-        AmbientLayer(Image *img, float parallax,
-                     float speedX, float speedY, bool keepRatio = false);
+        AmbientLayer(Image *const img, const float parallax,
+                     const float speedX, const float speedY,
+                     const bool keepRatio = false);
 
         ~AmbientLayer();
 
-        void update(int timePassed, float dx, float dy);
+        void update(const int timePassed, const float dx, const float dy);
 
-        void draw(Graphics *graphics, int x, int y);
+        void draw(Graphics *const graphics, const int x, const int y) const;
 
     private:
         Image *mImage;

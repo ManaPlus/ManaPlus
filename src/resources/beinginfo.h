@@ -89,23 +89,24 @@ class BeingInfo
 
         void setTargetCursorSize(const std::string &size);
 
-        void setTargetCursorSize(ActorSprite::TargetCursorSize targetSize)
+        void setTargetCursorSize(const ActorSprite::TargetCursorSize
+                                 targetSize)
         { mTargetCursorSize = targetSize; }
 
         ActorSprite::TargetCursorSize getTargetCursorSize() const
         { return mTargetCursorSize; }
 
-        void addSound(SoundEvent event, const std::string &filename);
+        void addSound(const SoundEvent event, const std::string &filename);
 
-        const std::string &getSound(SoundEvent event) const;
+        const std::string &getSound(const SoundEvent event) const;
 
-        void addAttack(int id, std::string action,
+        void addAttack(const int id, std::string action,
                        const std::string &particleEffect,
                        const std::string &missileParticle);
 
-        const Attack *getAttack(int type) const;
+        const Attack *getAttack(const int type) const;
 
-        void setWalkMask(unsigned char mask)
+        void setWalkMask(const unsigned char mask)
         { mWalkMask = mask; }
 
         /**
@@ -114,25 +115,25 @@ class BeingInfo
         unsigned char getWalkMask() const
         { return mWalkMask; }
 
-        void setBlockType(Map::BlockType blockType)
+        void setBlockType(const Map::BlockType blockType)
         { mBlockType = blockType; }
 
         Map::BlockType getBlockType() const
         { return mBlockType; }
 
-        void setTargetOffsetX(int n)
+        void setTargetOffsetX(const int n)
         { mTargetOffsetX = n; }
 
         int getTargetOffsetX() const
         { return mTargetOffsetX; }
 
-        void setTargetOffsetY(int n)
+        void setTargetOffsetY(const int n)
         { mTargetOffsetY = n; }
 
         int getTargetOffsetY() const
         { return mTargetOffsetY; }
 
-        void setMaxHP(int n)
+        void setMaxHP(const int n)
         { mMaxHP = n; }
 
         int getMaxHP() const
@@ -141,10 +142,10 @@ class BeingInfo
         bool isStaticMaxHP() const
         { return mStaticMaxHP; }
 
-        void setStaticMaxHP(bool n)
+        void setStaticMaxHP(const bool n)
         { mStaticMaxHP = n; }
 
-        void setTargetSelection(bool n)
+        void setTargetSelection(const bool n)
         { mTargetSelection = n; }
 
         bool isTargetSelection() const

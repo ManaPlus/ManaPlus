@@ -53,13 +53,14 @@ namespace EmoteDB
 
     void unload();
 
-    const EmoteInfo *get(int id, bool allowNull = false);
+    const EmoteInfo *get(const int id, const bool allowNull = false);
 
-    const AnimatedSprite *getAnimation(int id, bool allowNull = false);
+    const AnimatedSprite *getAnimation(const int id,
+                                       const bool allowNull = false);
 
-    const AnimatedSprite *getAnimation2(int id, bool allowNull = false);
+    const AnimatedSprite *getAnimation2(int id, const bool allowNull = false);
 
-    const EmoteSprite *getSprite(int id, bool allowNull = false);
+    const EmoteSprite *getSprite(const int id, const bool allowNull = false);
 
     const int &getLast();
 

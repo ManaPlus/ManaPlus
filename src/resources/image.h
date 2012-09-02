@@ -96,7 +96,7 @@ class Image : public Resource
          * Tells if the image has got an alpha channel
          * @return true if it's true, false otherwise.
          */
-        bool hasAlphaChannel();
+        bool hasAlphaChannel() const;
 
         /**
          * Sets the alpha value of this image.
@@ -115,7 +115,8 @@ class Image : public Resource
          * @return <code>NULL</code> if creation failed and a valid
          *         object otherwise.
          */
-        virtual Image *getSubImage(int x, int y, int width, int height);
+        virtual Image *getSubImage(const int x, const int y,
+                                   const int width, const int height);
 
 
         // SDL only public functions
@@ -156,13 +157,13 @@ class Image : public Resource
         bool isAlphaVisible() const
         { return mIsAlphaVisible; }
 
-        void setAlphaVisible(bool b)
+        void setAlphaVisible(const bool b)
         { mIsAlphaVisible = b; }
 
         bool isAlphaCalculated() const
         { return mIsAlphaCalculated; }
 
-        void setAlphaCalculated(bool b)
+        void setAlphaCalculated(const bool b)
         { mIsAlphaCalculated = b; }
 
         SDL_Rect mBounds;
@@ -182,10 +183,10 @@ class Image : public Resource
         // -----------------------
 
         /** SDL Constructor */
-        Image(SDL_Surface *image, bool hasAlphaChannel = false,
-              uint8_t *alphaChannel = nullptr);
+        Image(SDL_Surface *const image, const bool hasAlphaChannel = false,
+              uint8_t *const alphaChannel = nullptr);
 
-        SDL_Surface *getByAlpha(float alpha);
+        SDL_Surface *getByAlpha(const float alpha);
 
         SDL_Surface *mSDLSurface;
 
@@ -205,8 +206,8 @@ class Image : public Resource
         /**
          * OpenGL Constructor.
          */
-        Image(GLuint glimage, int width, int height,
-              int texWidth, int texHeight);
+        Image(const GLuint glimage, const int width, const int height,
+              const int texWidth, const int texHeight);
 
         GLuint mGLImage;
         int mTexWidth, mTexHeight;

@@ -128,7 +128,8 @@ Image *OpenGLImageHelper::load(SDL_Surface *tmpImage)
     return glLoad(tmpImage);
 }
 
-Image *OpenGLImageHelper::createTextSurface(SDL_Surface *tmpImage, float alpha)
+Image *OpenGLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
+                                            const float alpha)
 {
     if (!tmpImage)
         return nullptr;

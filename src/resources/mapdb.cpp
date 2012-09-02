@@ -41,7 +41,7 @@ void MapDB::load()
     XML::Document *doc = new XML::Document(
         paths.getStringValue("maps") + "remap.xml");
 
-    XmlNodePtr root = doc->rootNode();
+    const XmlNodePtr root = doc->rootNode();
     if (!root)
     {
         delete doc;
@@ -78,9 +78,9 @@ void MapDB::unload()
     mLoaded = false;
 }
 
-std::string MapDB::getMapName(std::string name)
+std::string MapDB::getMapName(const std::string &name)
 {
-    MapIterator it = mMaps.find(name);
+    const MapIterator it = mMaps.find(name);
 
     if (it != mMaps.end())
         return it->second;

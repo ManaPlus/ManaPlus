@@ -47,9 +47,9 @@ namespace ItemDB
 
     const StringVect &getTags();
 
-    bool exists(int id);
+    bool exists(const int id);
 
-    const ItemInfo &get(int id);
+    const ItemInfo &get(const int id);
     const ItemInfo &get(const std::string &name);
 
     // Items database

@@ -38,7 +38,8 @@ class ImageSet : public Resource
         /**
          * Cuts the passed image in a grid of sub images.
          */
-        ImageSet(Image *img, int w, int h, int margin = 0, int spacing = 0);
+        ImageSet(Image *const img, const int w, const int h,
+                 const int margin = 0, const int spacing = 0);
 
         /**
          * Destructor.
@@ -58,7 +59,8 @@ class ImageSet : public Resource
         { return mHeight; }
 
         typedef std::vector<Image*>::size_type size_type;
-        Image* get(size_type i) const;
+
+        Image* get(const size_type i) const;
 
         size_type size() const
         { return mImages.size(); }
@@ -66,13 +68,13 @@ class ImageSet : public Resource
         int getOffsetX() const
         { return mOffsetX; }
 
-        void setOffsetX(int n)
+        void setOffsetX(const int n)
         { mOffsetX = n; }
 
         int getOffsetY() const
         { return mOffsetY; }
 
-        void setOffsetY(int n)
+        void setOffsetY(const int n)
         { mOffsetY = n; }
 
     private:

@@ -45,12 +45,14 @@ namespace
 }
 
 // Forward declarations
-static void loadSpriteRef(ItemInfo *itemInfo, XmlNodePtr node);
-static void loadSoundRef(ItemInfo *itemInfo, XmlNodePtr node);
-static void loadFloorSprite(SpriteDisplay *display, XmlNodePtr node);
-static void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode);
-static void loadOrderSprite(ItemInfo *itemInfo, XmlNodePtr node,
-                            bool drawAfter);
+static void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node);
+static void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node);
+static void loadFloorSprite(SpriteDisplay *const display,
+                            const XmlNodePtr node);
+static void loadReplaceSprite(ItemInfo *const itemInfo,
+                              const XmlNodePtr replaceNode);
+static void loadOrderSprite(ItemInfo *const itemInfo, const XmlNodePtr node,
+                            const bool drawAfter);
 static int parseSpriteName(std::string name);
 static int parseDirectionName(std::string name);
 
@@ -171,7 +173,7 @@ void ItemDB::load()
     mUnknown->addTag(mTags["All"]);
 
     XML::Document doc("items.xml");
-    XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "items"))
     {
@@ -185,7 +187,7 @@ void ItemDB::load()
         if (!xmlNameEqual(node, "item"))
             continue;
 
-        int id = XML::getProperty(node, "id", 0);
+        const int id = XML::getProperty(node, "id", 0);
 
         if (id == 0)
         {
@@ -198,8 +200,8 @@ void ItemDB::load()
         }
 
         std::string typeStr = XML::getProperty(node, "type", "other");
-        int weight = XML::getProperty(node, "weight", 0);
-        int view = XML::getProperty(node, "view", 0);
+        const int weight = XML::getProperty(node, "weight", 0);
+        const int view = XML::getProperty(node, "view", 0);
 
         std::string name = XML::langProperty(node, "name", "");
         std::string image = XML::getProperty(node, "image", "");
@@ -208,7 +210,7 @@ void ItemDB::load()
         std::string attackAction = XML::getProperty(node, "attack-action", "");
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
-        int maxFloorOffset = XML::getIntProperty(
+        const int maxFloorOffset = XML::getIntProperty(
             node, "maxFloorOffset", 32, 0, 32);
         std::string colors;
         if (serverVersion >= 1)
@@ -233,14 +235,14 @@ void ItemDB::load()
         tags[1] = XML::getProperty(node, "tag2", "");
         tags[2] = XML::getProperty(node, "tag3", "");
 
-        int drawPriority = XML::getProperty(node, "drawPriority", 0);
+        const int drawPriority = XML::getProperty(node, "drawPriority", 0);
 
-        int attackRange = XML::getProperty(node, "attack-range", 0);
+        const int attackRange = XML::getProperty(node, "attack-range", 0);
         std::string missileParticle = XML::getProperty(
             node, "missile-particle", "");
-        int hitEffectId = XML::getProperty(node, "hit-effect-id",
+        const int hitEffectId = XML::getProperty(node, "hit-effect-id",
             paths.getIntValue("hitEffectId"));
-        int criticalEffectId = XML::getProperty(node, "critical-hit-effect-id",
+        const int criticalEffectId = XML::getProperty(node, "critical-hit-effect-id",
             paths.getIntValue("criticalHitEffectId"));
 
         SpriteDisplay display;
@@ -250,7 +252,7 @@ void ItemDB::load()
         else
             display.floor = image;
 
-        ItemInfo *itemInfo = new ItemInfo;
+        ItemInfo *const itemInfo = new ItemInfo;
         itemInfo->setId(id);
         itemInfo->setName(name.empty() ? _("unnamed") : name);
         itemInfo->setDescription(description);
@@ -311,7 +313,7 @@ void ItemDB::load()
         std::string effect;
         for (size_t i = 0; i < sizeof(fields) / sizeof(fields[0]); ++ i)
         {
-            int value = XML::getProperty(node, fields[i][0], 0);
+            const int value = XML::getProperty(node, fields[i][0], 0);
             if (!value)
                 continue;
             if (!effect.empty())
@@ -321,7 +323,7 @@ void ItemDB::load()
         for (std::vector<Stat>::const_iterator it = extraStats.begin(),
              it_end = extraStats.end(); it != it_end; ++it)
         {
-            int value = XML::getProperty(node, it->tag.c_str(), 0);
+            const int value = XML::getProperty(node, it->tag.c_str(), 0);
             if (!value)
                 continue;
             if (!effect.empty())
@@ -410,7 +412,8 @@ void ItemDB::load()
         {
             temp = normalize(name);
 
-            NamedItemInfos::const_iterator itr = mNamedItemInfos.find(temp);
+            const NamedItemInfos::const_iterator
+                itr = mNamedItemInfos.find(temp);
             if (itr == mNamedItemInfos.end())
             {
                 mNamedItemInfos[temp] = itemInfo;
@@ -478,22 +481,22 @@ void ItemDB::unload()
     mLoaded = false;
 }
 
-bool ItemDB::exists(int id)
+bool ItemDB::exists(const int id)
 {
     if (!mLoaded)
         return false;
 
-    ItemInfos::const_iterator i = mItemInfos.find(id);
+    const ItemInfos::const_iterator i = mItemInfos.find(id);
 
     return i != mItemInfos.end();
 }
 
-const ItemInfo &ItemDB::get(int id)
+const ItemInfo &ItemDB::get(const int id)
 {
     if (!mLoaded)
         load();
 
-    ItemInfos::const_iterator i = mItemInfos.find(id);
+    const ItemInfos::const_iterator i = mItemInfos.find(id);
 
     if (i == mItemInfos.end())
     {
@@ -509,7 +512,8 @@ const ItemInfo &ItemDB::get(const std::string &name)
     if (!mLoaded)
         load();
 
-    NamedItemInfos::const_iterator i = mNamedItemInfos.find(normalize(name));
+    const NamedItemInfos::const_iterator i = mNamedItemInfos.find(
+        normalize(name));
 
     if (i == mNamedItemInfos.end())
     {
@@ -647,7 +651,7 @@ int parseDirectionName(std::string name)
     return id;
 }
 
-void loadSpriteRef(ItemInfo *itemInfo, XmlNodePtr node)
+void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 {
     const std::string gender = XML::getProperty(node, "gender", "unisex");
     const std::string filename = reinterpret_cast<const char*>(
@@ -662,7 +666,7 @@ void loadSpriteRef(ItemInfo *itemInfo, XmlNodePtr node)
         itemInfo->setSprite(filename, GENDER_OTHER, race);
 }
 
-void loadSoundRef(ItemInfo *itemInfo, XmlNodePtr node)
+void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 {
     std::string event = XML::getProperty(node, "event", "");
     std::string filename = reinterpret_cast<const char*>(
@@ -683,13 +687,13 @@ void loadSoundRef(ItemInfo *itemInfo, XmlNodePtr node)
     }
 }
 
-void loadFloorSprite(SpriteDisplay *display, XmlNodePtr floorNode)
+void loadFloorSprite(SpriteDisplay *const display, const XmlNodePtr floorNode)
 {
     for_each_xml_child_node(spriteNode, floorNode)
     {
         if (xmlNameEqual(spriteNode, "sprite"))
         {
-            SpriteReference *currentSprite = new SpriteReference;
+            SpriteReference *const currentSprite = new SpriteReference;
             currentSprite->sprite = reinterpret_cast<const char*>(
                 spriteNode->xmlChildrenNode->content);
             currentSprite->variant
@@ -705,10 +709,10 @@ void loadFloorSprite(SpriteDisplay *display, XmlNodePtr floorNode)
     }
 }
 
-void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
+void loadReplaceSprite(ItemInfo *const itemInfo, const XmlNodePtr replaceNode)
 {
     std::string removeSprite = XML::getProperty(replaceNode, "sprite", "");
-    int direction = parseDirectionName(XML::getProperty(
+    const int direction = parseDirectionName(XML::getProperty(
         replaceNode, "direction", "all"));
 
     itemInfo->setRemoveSprites();
@@ -719,7 +723,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
         {
             for (int f = 0; f < 10; f ++)
             {
-                std::map<int, int> *mapList
+                std::map<int, int> *const mapList
                     = itemInfo->addReplaceSprite(
                     parseSpriteName(removeSprite), f);
                 if (!mapList)
@@ -728,8 +732,8 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
                 {
                     if (xmlNameEqual(itemNode, "item"))
                     {
-                        int from = XML::getProperty(itemNode, "from", 0);
-                        int to = XML::getProperty(itemNode, "to", 1);
+                        const int from = XML::getProperty(itemNode, "from", 0);
+                        const int to = XML::getProperty(itemNode, "to", 1);
 
                         (*mapList)[from] = to;
                     }
@@ -750,8 +754,8 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
             {
                 if (xmlNameEqual(itemNode, "item"))
                 {
-                    int from = XML::getProperty(itemNode, "from", 0);
-                    int to = XML::getProperty(itemNode, "to", 1);
+                    const int from = XML::getProperty(itemNode, "from", 0);
+                    const int to = XML::getProperty(itemNode, "to", 1);
                     std::map<int, int> *mapList = itemInfo->addReplaceSprite(
                         parseSpriteName(removeSprite), DIRECTION_DOWN);
                     if (mapList)
@@ -783,8 +787,8 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
             {
                 if (xmlNameEqual(itemNode, "item"))
                 {
-                    int from = XML::getProperty(itemNode, "from", 0);
-                    int to = XML::getProperty(itemNode, "to", 1);
+                    const int from = XML::getProperty(itemNode, "from", 0);
+                    const int to = XML::getProperty(itemNode, "to", 1);
                     std::map<int, int> *mapList = itemInfo->addReplaceSprite(
                         parseSpriteName(removeSprite), DIRECTION_UP);
                     if (mapList)
@@ -805,7 +809,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
         }
         default:
         {
-            std::map<int, int> *mapList = itemInfo->addReplaceSprite(
+            std::map<int, int> *const mapList = itemInfo->addReplaceSprite(
                 parseSpriteName(removeSprite), direction);
             if (!mapList)
                 return;
@@ -813,8 +817,8 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
             {
                 if (xmlNameEqual(itemNode, "item"))
                 {
-                    int from = XML::getProperty(itemNode, "from", 0);
-                    int to = XML::getProperty(itemNode, "to", 1);
+                    const int from = XML::getProperty(itemNode, "from", 0);
+                    const int to = XML::getProperty(itemNode, "to", 1);
                     (*mapList)[from] = to;
                 }
             }
@@ -823,12 +827,13 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
     }
 }
 
-void loadOrderSprite(ItemInfo *itemInfo, XmlNodePtr node, bool drawAfter)
+void loadOrderSprite(ItemInfo *const itemInfo, const XmlNodePtr node,
+                     const bool drawAfter)
 {
-    int sprite = parseSpriteName(XML::getProperty(node, "name", ""));
-    int priority = XML::getProperty(node, "priority", 0);
+    const int sprite = parseSpriteName(XML::getProperty(node, "name", ""));
+    const int priority = XML::getProperty(node, "priority", 0);
 
-    int direction = parseDirectionName(XML::getProperty(
+    const int direction = parseDirectionName(XML::getProperty(
         node, "direction", "all"));
     if (drawAfter)
         itemInfo->setDrawAfter(direction, sprite);

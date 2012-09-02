@@ -66,14 +66,15 @@ class Animation
         /**
          * Appends a new animation at the end of the sequence.
          */
-        void addFrame(Image *image, int delay, int offsetX, int offsetY,
-                      int rand);
+        void addFrame(Image *const image, const int delay,
+                      const int offsetX, const int offsetY,
+                      const int rand);
 
         /**
          * Appends an animation terminator that states that the animation
          * should not loop.
          */
-        void addTerminator(int rand);
+        void addTerminator(const int rand);
 
         /**
          * Returns the length of this animation in frames.
@@ -81,15 +82,15 @@ class Animation
         size_t getLength() const
         { return mFrames.size(); }
 
-        void addJump(std::string name, int rand);
+        void addJump(const std::string &name, const int rand);
 
-        void addLabel(std::string name);
+        void addLabel(const std::string &name);
 
-        void addGoto(std::string name, int rand);
+        void addGoto(const std::string &name, const int rand);
 
-        void addPause(int delay, int rand);
+        void addPause(const int delay, const int rand);
 
-        void setLastFrameDelay(int delay);
+        void setLastFrameDelay(const int delay);
 
         /**
          * Determines whether the given animation frame is a terminator.
