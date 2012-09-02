@@ -72,7 +72,7 @@ class ResourceManager
          * @param path The path of the directory to be added.
          * @return <code>true</code> on success, <code>false</code> otherwise.
          */
-        bool setWriteDir(const std::string &path);
+        bool setWriteDir(const std::string &path) const;
 
         /**
          * Adds a directory or archive to the search path. If append is true
@@ -81,21 +81,21 @@ class ResourceManager
          *
          * @return <code>true</code> on success, <code>false</code> otherwise.
          */
-        bool addToSearchPath(const std::string &path, bool append);
+        bool addToSearchPath(const std::string &path, const bool append) const;
 
         /**
          * Remove a directory or archive from the search path.
          *
          * @return <code>true</code> on success, <code>false</code> otherwise.
          */
-        bool removeFromSearchPath(const std::string &path);
+        bool removeFromSearchPath(const std::string &path) const;
 
         /**
         * Searches for zip files and adds them to the search path.
         */
         void searchAndAddArchives(const std::string &path,
                                   const std::string &ext,
-                                  bool append);
+                                  const bool append);
 
         /**
         * Searches for zip files and remove them from the search path.
@@ -106,23 +106,23 @@ class ResourceManager
         /**
          * Creates a directory in the write path
          */
-        bool mkdir(const std::string &path);
+        bool mkdir(const std::string &path) const;
 
         /**
          * Checks whether the given file or directory exists in the search path
          * (PhysFS)
          */
-        bool exists(const std::string &path);
+        bool exists(const std::string &path) const;
 
         /**
          * Checks whether the given file or directory exists
          */
-        bool existsLocal(const std::string &path);
+        bool existsLocal(const std::string &path) const;
 
         /**
          * Checks whether the given path is a directory.
          */
-        bool isDirectory(const std::string &path);
+        bool isDirectory(const std::string &path) const;
 
         /**
          * Returns the real path to a file. Note that this method will always
@@ -131,7 +131,7 @@ class ResourceManager
          * @param file The file to get the real path to.
          * @return The real path.
          */
-        std::string getPath(const std::string &file);
+        std::string getPath(const std::string &file) const;
 
         /**
          * Creates a resource and adds it to the resource map.
@@ -142,11 +142,11 @@ class ResourceManager
          * @return A valid resource or <code>NULL</code> if the resource could
          *         not be generated.
          */
-        Resource *get(const std::string &idPath, generator fun, void *data);
+        Resource *get(const std::string &idPath, const generator fun, void *const data);
 
         Resource *getFromCache(const std::string &idPath);
 
-        Resource *getFromCache(const std::string &filename, int variant);
+        Resource *getFromCache(const std::string &filename, const int variant);
 
         /**
          * Loads a resource from a file and adds it to the resource map.
@@ -156,7 +156,7 @@ class ResourceManager
          * @return A valid resource or <code>NULL</code> if the resource could
          *         not be loaded.
          */
-        Resource *load(const std::string &path, loader fun);
+        Resource *load(const std::string &path, const loader fun);
 
         /**
          * Adds a preformatted resource to the resource map.
@@ -165,7 +165,7 @@ class ResourceManager
          * @param Resource  The Resource to add.
          * @return true if successfull, false otherwise.
          */
-        bool addResource(const std::string &idPath, Resource* resource);
+        bool addResource(const std::string &idPath, Resource *const resource);
 
         /**
         * Copies a file from one place to another (useful for extracting
@@ -176,7 +176,7 @@ class ResourceManager
         * @return true on success, false on failure. An error message should be
         *         in the log file.
         */
-        bool copyFile(const std::string &src, const std::string &dst);
+        bool copyFile(const std::string &src, const std::string &dst) const;
 
         /**
          * Convenience wrapper around ResourceManager::get for loading
@@ -200,22 +200,25 @@ class ResourceManager
          * Creates a image set based on the image referenced by the given
          * path and the supplied sprite sizes
          */
-        ImageSet *getImageSet(const std::string &imagePath, int w, int h);
+        ImageSet *getImageSet(const std::string &imagePath,
+                              const int w, const int h);
 
-        ImageSet *getSubImageSet(Image *parent, int width, int height);
+        ImageSet *getSubImageSet(Image *const parent,
+                                 const int width, const int height);
 
-        Image *getSubImage(Image *parent, int x, int y, int width, int height);
+        Image *getSubImage(Image *const parent, const int x, const int y,
+                           const int width, const int height);
 
         /**
          * Creates a sprite definition based on a given path and the supplied
          * variant.
          */
-        SpriteDef *getSprite(const std::string &path, int variant = 0);
+        SpriteDef *getSprite(const std::string &path, const int variant = 0);
 
         /**
          * Releases a resource, placing it in the set of orphaned resources.
          */
-        void release(Resource *);
+        void release(Resource *const res);
 
         /**
          * Allocates data into a buffer pointer for raw data loading. The
@@ -241,15 +244,16 @@ class ResourceManager
         static StringVect loadTextFileLocal(const std::string &fileName);
 
         void saveTextFile(std::string path, std::string name,
-                          std::string text);
+                          std::string text) const;
 
-        Image *getRescaled(Image *image, int width, int height);
+        Image *getRescaled(Image *const image,
+                           const int width, const int height);
 
         /**
          * Loads the given filename as an SDL surface. The returned surface is
          * expected to be freed by the caller using SDL_FreeSurface.
          */
-        SDL_Surface *loadSDLSurface(const std::string &filename);
+        SDL_Surface *loadSDLSurface(const std::string &filename) const;
 
         void scheduleDelete(SDL_Surface* surface);
 
@@ -280,20 +284,21 @@ class ResourceManager
         { return &mOrphanedResources; }
 #endif
 
-        bool cleanOrphans(bool always = false);
+        bool cleanOrphans(const bool always = false);
 
-        static void addDelayedAnimation(AnimationDelayLoad *animation)
+        static void addDelayedAnimation(AnimationDelayLoad *const animation)
         { mDelayedAnimations.push_back(animation); }
 
         static void delayedLoad();
 
-        static void removeDelayLoad(AnimationDelayLoad *delayedLoad);
+        static void removeDelayLoad(const AnimationDelayLoad
+                                    *const delayedLoad);
 
     private:
         /**
          * Deletes the resource after logging a cleanup message.
          */
-        static void cleanUp(Resource *resource);
+        static void cleanUp(Resource *const resource);
 
         static ResourceManager *instance;
         std::set<SDL_Surface*> deletedSurfaces;

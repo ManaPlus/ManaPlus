@@ -34,7 +34,7 @@ namespace NPCDB
 
     void unload();
 
-    BeingInfo *get(int id);
+    BeingInfo *get(const int id);
 }
 
 #endif

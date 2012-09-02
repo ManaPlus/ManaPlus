@@ -61,10 +61,12 @@ void MonsterDB::load()
     }
 
 #ifdef MANASERV_SUPPORT
-    int offset = XML::getProperty(rootNode, "offset", Net::getNetworkType() !=
-        ServerInfo::MANASERV ? OLD_TMWATHENA_OFFSET : 0);
+    const int offset = XML::getProperty(rootNode, "offset",
+        Net::getNetworkType() != ServerInfo::MANASERV
+        ? OLD_TMWATHENA_OFFSET : 0);
 #else
-    int offset = XML::getProperty(rootNode, "offset", OLD_TMWATHENA_OFFSET);
+    const int offset = XML::getProperty(rootNode,
+        "offset", OLD_TMWATHENA_OFFSET);
 #endif
 
     //iterate <monster>s
@@ -73,7 +75,7 @@ void MonsterDB::load()
         if (!xmlNameEqual(monsterNode, "monster"))
             continue;
 
-        BeingInfo *currentInfo = new BeingInfo;
+        BeingInfo *const currentInfo = new BeingInfo;
 
         currentInfo->setWalkMask(Map::BLOCKMASK_WALL
             | Map::BLOCKMASK_CHARACTER | Map::BLOCKMASK_MONSTER);
@@ -121,7 +123,7 @@ void MonsterDB::load()
 
             if (xmlNameEqual(spriteNode, "sprite"))
             {
-                SpriteReference *currentSprite = new SpriteReference;
+                SpriteReference *const currentSprite = new SpriteReference;
                 currentSprite->sprite = reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);
 
@@ -213,7 +215,7 @@ void MonsterDB::unload()
 }
 
 
-BeingInfo *MonsterDB::get(int id)
+BeingInfo *MonsterDB::get(const int id)
 {
     BeingInfoIterator i = mMonsterInfos.find(id);
 

@@ -67,12 +67,12 @@ class OpenGLImageHelper : public ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Resource *load(SDL_RWops *rw, Dye const &dye);
+        Resource *load(SDL_RWops *const rw, Dye const &dye);
 
         /**
          * Loads an image from an SDL surface.
          */
-        Image *load(SDL_Surface *);
+        Image *load(SDL_Surface *const tmpImage);
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
                                  const float alpha);
@@ -91,10 +91,10 @@ class OpenGLImageHelper : public ImageHelper
         static int getInternalTextureType()
         { return mInternalTextureType; }
 
-        static void setInternalTextureType(int n)
+        static void setInternalTextureType(const int n)
         { mInternalTextureType = n; }
 
-        static void setBlur(bool n)
+        static void setBlur(const bool n)
         { mBlur = n; }
 
         static int mTextureType;
@@ -111,7 +111,7 @@ class OpenGLImageHelper : public ImageHelper
         /**
          * Returns the first power of two equal or bigger than the input.
          */
-        int powerOfTwo(int input);
+        int powerOfTwo(int input) const;
 
         Image *glLoad(SDL_Surface *tmpImage);
 

@@ -101,7 +101,7 @@ ResourceManager::~ResourceManager()
         if (dynamic_cast<SpriteDef*>(iter->second))
         {
             cleanUp(iter->second);
-            ResourceIterator toErase = iter;
+            const ResourceIterator toErase = iter;
             ++iter;
             mResources.erase(toErase);
         }
@@ -125,7 +125,7 @@ ResourceManager::~ResourceManager()
         if (dynamic_cast<ImageSet*>(iter->second))
         {
             cleanUp(iter->second);
-            ResourceIterator toErase = iter;
+            const ResourceIterator toErase = iter;
             ++iter;
             mResources.erase(toErase);
         }
@@ -149,7 +149,7 @@ ResourceManager::~ResourceManager()
         if (iter->second)
         {
             cleanUp(iter->second);
-            ResourceIterator toErase = iter;
+            const ResourceIterator toErase = iter;
             ++iter;
             mResources.erase(toErase);
         }
@@ -161,7 +161,7 @@ ResourceManager::~ResourceManager()
     clearScheduled();
 }
 
-void ResourceManager::cleanUp(Resource *res)
+void ResourceManager::cleanUp(Resource *const res)
 {
     if (!res)
         return;
@@ -181,12 +181,13 @@ void ResourceManager::cleanUp(Resource *res)
 #endif
 }
 
-bool ResourceManager::cleanOrphans(bool always)
+bool ResourceManager::cleanOrphans(const bool always)
 {
     timeval tv;
     gettimeofday(&tv, nullptr);
     // Delete orphaned resources after 30 seconds.
-    time_t oldest = tv.tv_sec, threshold = oldest - 30;
+    time_t oldest = tv.tv_sec;
+    const time_t threshold = oldest - 30;
 
     if (mOrphanedResources.empty() || (!always && mOldestOrphan >= threshold))
         return false;
@@ -202,7 +203,7 @@ bool ResourceManager::cleanOrphans(bool always)
             ++iter;
             continue;
         }
-        time_t t = res->mTimeStamp;
+        const time_t t = res->mTimeStamp;
         if (!always && t >= threshold)
         {
             if (t < oldest)
@@ -212,7 +213,7 @@ bool ResourceManager::cleanOrphans(bool always)
         else
         {
             logger->log("ResourceManager::release(%s)", res->mIdPath.c_str());
-            ResourceIterator toErase = iter;
+            const ResourceIterator toErase = iter;
             ++iter;
             mOrphanedResources.erase(toErase);
             delete res; // delete only after removal from list,
@@ -225,12 +226,13 @@ bool ResourceManager::cleanOrphans(bool always)
     return status;
 }
 
-bool ResourceManager::setWriteDir(const std::string &path)
+bool ResourceManager::setWriteDir(const std::string &path) const
 {
     return static_cast<bool>(PHYSFS_setWriteDir(path.c_str()));
 }
 
-bool ResourceManager::addToSearchPath(const std::string &path, bool append)
+bool ResourceManager::addToSearchPath(const std::string &path,
+                                      const bool append) const
 {
     logger->log("Adding to PhysicsFS: %s (%s)", path.c_str(),
                 append ? "append" : "prepend");
@@ -242,7 +244,7 @@ bool ResourceManager::addToSearchPath(const std::string &path, bool append)
     return true;
 }
 
-bool ResourceManager::removeFromSearchPath(const std::string &path)
+bool ResourceManager::removeFromSearchPath(const std::string &path) const
 {
     logger->log("Removing from PhysicsFS: %s", path.c_str());
     if (!PHYSFS_removeFromSearchPath(path.c_str()))
@@ -255,9 +257,9 @@ bool ResourceManager::removeFromSearchPath(const std::string &path)
 
 void ResourceManager::searchAndAddArchives(const std::string &path,
                                            const std::string &ext,
-                                           bool append)
+                                           const bool append)
 {
-    const char *dirSep = PHYSFS_getDirSeparator();
+    const char *const dirSep = PHYSFS_getDirSeparator();
     char **list = PHYSFS_enumerateFiles(path.c_str());
 
     for (char **i = list; *i; i++)
@@ -282,7 +284,7 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
 void ResourceManager::searchAndRemoveArchives(const std::string &path,
                                               const std::string &ext)
 {
-    const char *dirSep = PHYSFS_getDirSeparator();
+    const char *const dirSep = PHYSFS_getDirSeparator();
     char **list = PHYSFS_enumerateFiles(path.c_str());
 
     for (char **i = list; *i; i++)
@@ -304,17 +306,17 @@ void ResourceManager::searchAndRemoveArchives(const std::string &path,
     PHYSFS_freeList(list);
 }
 
-bool ResourceManager::mkdir(const std::string &path)
+bool ResourceManager::mkdir(const std::string &path) const
 {
     return static_cast<bool>(PHYSFS_mkdir(path.c_str()));
 }
 
-bool ResourceManager::exists(const std::string &path)
+bool ResourceManager::exists(const std::string &path) const
 {
     return PHYSFS_exists(path.c_str());
 }
 
-bool ResourceManager::existsLocal(const std::string &path)
+bool ResourceManager::existsLocal(const std::string &path) const
 {
     bool flg(false);
     std::fstream file;
@@ -325,15 +327,15 @@ bool ResourceManager::existsLocal(const std::string &path)
     return flg;
 }
 
-bool ResourceManager::isDirectory(const std::string &path)
+bool ResourceManager::isDirectory(const std::string &path) const
 {
     return PHYSFS_isDirectory(path.c_str());
 }
 
-std::string ResourceManager::getPath(const std::string &file)
+std::string ResourceManager::getPath(const std::string &file) const
 {
     // get the real path to the file
-    const char* tmp = PHYSFS_getRealDir(file.c_str());
+    const char *const tmp = PHYSFS_getRealDir(file.c_str());
     std::string path;
 
     // if the file is not in the search path, then its nullptr
@@ -351,7 +353,7 @@ std::string ResourceManager::getPath(const std::string &file)
 }
 
 bool ResourceManager::addResource(const std::string &idPath,
-                                  Resource* resource)
+                                  Resource *const resource)
 {
     if (resource)
     {
@@ -364,7 +366,7 @@ bool ResourceManager::addResource(const std::string &idPath,
 }
 
 Resource *ResourceManager::getFromCache(const std::string &filename,
-                                        int variant)
+                                        const int variant)
 {
     std::stringstream ss;
     ss << filename << "[" << variant << "]";
@@ -385,7 +387,7 @@ Resource *ResourceManager::getFromCache(const std::string &idPath)
     resIter = mOrphanedResources.find(idPath);
     if (resIter != mOrphanedResources.end())
     {
-        Resource *res = resIter->second;
+        Resource *const res = resIter->second;
         mResources.insert(*resIter);
         mOrphanedResources.erase(resIter);
         if (res)
@@ -395,8 +397,8 @@ Resource *ResourceManager::getFromCache(const std::string &idPath)
     return nullptr;
 }
 
-Resource *ResourceManager::get(const std::string &idPath, generator fun,
-                               void *data)
+Resource *ResourceManager::get(const std::string &idPath, const generator fun,
+                               void *const data)
 {
 #ifndef DISABLE_RESOURCE_CACHING
     Resource *resource = getFromCache(idPath);
@@ -435,20 +437,21 @@ struct ResourceLoader
     std::string path;
     ResourceManager::loader fun;
 
-    static Resource *load(void *v)
+    static Resource *load(void *const v)
     {
         if (!v)
             return nullptr;
-        ResourceLoader *rl = static_cast< ResourceLoader * >(v);
-        SDL_RWops *rw = PHYSFSRWOPS_openRead(rl->path.c_str());
+        const ResourceLoader *const
+            rl = static_cast<const ResourceLoader *const>(v);
+        SDL_RWops *const rw = PHYSFSRWOPS_openRead(rl->path.c_str());
         if (!rw)
             return nullptr;
-        Resource *res = rl->fun(rw);
+        Resource *const res = rl->fun(rw);
         return res;
     }
 };
 
-Resource *ResourceManager::load(const std::string &path, loader fun)
+Resource *ResourceManager::load(const std::string &path, const loader fun)
 {
     ResourceLoader rl = { this, path, fun };
     return get(path, ResourceLoader::load, &rl);
@@ -468,12 +471,13 @@ struct DyedImageLoader
 {
     ResourceManager *manager;
     std::string path;
-    static Resource *load(void *v)
+    static Resource *load(void *const v)
     {
         if (!v)
             return nullptr;
 
-        DyedImageLoader *rl = static_cast< DyedImageLoader * >(v);
+        const DyedImageLoader *const rl
+            = static_cast<const DyedImageLoader *const>(v);
         if (!rl->manager)
             return nullptr;
 
@@ -485,14 +489,14 @@ struct DyedImageLoader
             d = new Dye(path.substr(p + 1));
             path = path.substr(0, p);
         }
-        SDL_RWops *rw = PHYSFSRWOPS_openRead(path.c_str());
+        SDL_RWops *const rw = PHYSFSRWOPS_openRead(path.c_str());
         if (!rw)
         {
             delete d;
             return nullptr;
         }
-        Resource *res = d ? imageHelper->load(rw, *d)
-                          : imageHelper->load(rw);
+        Resource *const res = d ? imageHelper->load(rw, *d)
+            : imageHelper->load(rw);
         delete d;
         return res;
     }
@@ -524,26 +528,27 @@ struct ImageSetLoader
     ResourceManager *manager;
     std::string path;
     int w, h;
-    static Resource *load(void *v)
+    static Resource *load(void *const v)
     {
         if (!v)
             return nullptr;
 
-        ImageSetLoader *rl = static_cast< ImageSetLoader * >(v);
+        const ImageSetLoader *const
+            rl = static_cast<const ImageSetLoader *const>(v);
         if (!rl->manager)
             return nullptr;
 
-        Image *img = rl->manager->getImage(rl->path);
+        Image *const img = rl->manager->getImage(rl->path);
         if (!img)
             return nullptr;
-        ImageSet *res = new ImageSet(img, rl->w, rl->h);
+        ImageSet *const res = new ImageSet(img, rl->w, rl->h);
         img->decRef();
         return res;
     }
 };
 
 ImageSet *ResourceManager::getImageSet(const std::string &imagePath,
-                                       int w, int h)
+                                       const int w, const int h)
 {
     ImageSetLoader rl = { this, imagePath, w, h };
     std::stringstream ss;
@@ -562,18 +567,20 @@ struct SubImageSetLoader
         if (!v)
             return nullptr;
 
-        SubImageSetLoader *rl = static_cast< SubImageSetLoader * >(v);
+        const SubImageSetLoader *const
+            rl = static_cast<const SubImageSetLoader *const>(v);
         if (!rl->manager)
             return nullptr;
 
         if (!rl->parent)
             return nullptr;
-        ImageSet *res = new ImageSet(rl->parent, rl->width, rl->height);
+        ImageSet *const res = new ImageSet(rl->parent, rl->width, rl->height);
         return res;
     }
 };
 
-ImageSet *ResourceManager::getSubImageSet(Image *parent, int width, int height)
+ImageSet *ResourceManager::getSubImageSet(Image *const parent,
+                                          const int width, const int height)
 {
     if (!parent)
         return nullptr;
@@ -590,23 +597,25 @@ struct SubImageLoader
     Image *parent;
     int x, y;
     int width, height;
-    static Resource *load(void *v)
+    static Resource *load(void *const v)
     {
         if (!v)
             return nullptr;
 
-        SubImageLoader *rl = static_cast< SubImageLoader * >(v);
+        const SubImageLoader *const
+            rl = static_cast<const SubImageLoader *const>(v);
         if (!rl->manager || !rl->parent)
             return nullptr;
 
-        Image *res = rl->parent->getSubImage(rl->x, rl->y,
+        Image *const res = rl->parent->getSubImage(rl->x, rl->y,
             rl->width, rl->height);
         return res;
     }
 };
 
-Image *ResourceManager::getSubImage(Image *parent, int x, int y,
-                                    int width, int height)
+Image *ResourceManager::getSubImage(Image *const parent,
+                                    const int x, const int y,
+                                    const int width, const int height)
 {
     if (!parent)
         return nullptr;
@@ -623,17 +632,19 @@ struct SpriteDefLoader
 {
     std::string path;
     int variant;
-    static Resource *load(void *v)
+    static Resource *load(void *const v)
     {
         if (!v)
             return nullptr;
 
-        SpriteDefLoader *rl = static_cast< SpriteDefLoader * >(v);
+        const SpriteDefLoader *const
+            rl = static_cast<const SpriteDefLoader *const>(v);
         return SpriteDef::load(rl->path, rl->variant);
     }
 };
 
-SpriteDef *ResourceManager::getSprite(const std::string &path, int variant)
+SpriteDef *ResourceManager::getSprite(const std::string &path,
+                                      const int variant)
 {
     SpriteDefLoader rl = { path, variant };
     std::stringstream ss;
@@ -641,20 +652,20 @@ SpriteDef *ResourceManager::getSprite(const std::string &path, int variant)
     return static_cast<SpriteDef*>(get(ss.str(), SpriteDefLoader::load, &rl));
 }
 
-void ResourceManager::release(Resource *res)
+void ResourceManager::release(Resource *const res)
 {
 #ifndef DISABLE_RESOURCE_CACHING
     if (!res || mDestruction)
         return;
 
-    ResourceIterator resIter = mResources.find(res->mIdPath);
+    const ResourceIterator resIter = mResources.find(res->mIdPath);
 
     // The resource has to exist
     assert(resIter != mResources.end() && resIter->second == res);
 
     timeval tv;
     gettimeofday(&tv, nullptr);
-    time_t timestamp = tv.tv_sec;
+    const time_t timestamp = tv.tv_sec;
 
     res->mTimeStamp = timestamp;
     if (mOrphanedResources.empty())
@@ -687,7 +698,7 @@ void ResourceManager::deleteInstance()
 
         while (iter != instance->mResources.end())
         {
-            Resource *res = iter->second;
+            const Resource *const res = iter->second;
             if (res)
             {
                 if (res->getRefCount())
@@ -707,7 +718,7 @@ void ResourceManager::deleteInstance()
 void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
 {
     // Attempt to open the specified file using PhysicsFS
-    PHYSFS_file *file = PHYSFS_openRead(fileName.c_str());
+    PHYSFS_file *const file = PHYSFS_openRead(fileName.c_str());
 
     // If the handler is an invalid pointer indicate failure
     if (!file)
@@ -725,7 +736,7 @@ void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
     fileSize = static_cast<int>(PHYSFS_fileLength(file));
 
     // Allocate memory and load the file
-    void *buffer = calloc(fileSize, 1);
+    void *const buffer = calloc(fileSize, 1);
     PHYSFS_read(file, buffer, 1, fileSize);
 
     // Close the file and let the user deallocate the memory
@@ -734,15 +745,16 @@ void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
     return buffer;
 }
 
-bool ResourceManager::copyFile(const std::string &src, const std::string &dst)
+bool ResourceManager::copyFile(const std::string &src,
+                               const std::string &dst) const
 {
-    PHYSFS_file *srcFile = PHYSFS_openRead(src.c_str());
+    PHYSFS_file *const srcFile = PHYSFS_openRead(src.c_str());
     if (!srcFile)
     {
         logger->log("Read error: %s", PHYSFS_getLastError());
         return false;
     }
-    PHYSFS_file *dstFile = PHYSFS_openWrite(dst.c_str());
+    PHYSFS_file *const dstFile = PHYSFS_openWrite(dst.c_str());
     if (!dstFile)
     {
         logger->log("Write error: %s", PHYSFS_getLastError());
@@ -750,7 +762,7 @@ bool ResourceManager::copyFile(const std::string &src, const std::string &dst)
         return false;
     }
 
-    int fileSize = static_cast<int>(PHYSFS_fileLength(srcFile));
+    const int fileSize = static_cast<const int>(PHYSFS_fileLength(srcFile));
     void *buf = malloc(fileSize);
     PHYSFS_read(srcFile, buf, 1, fileSize);
     PHYSFS_write(dstFile, buf, 1, fileSize);
@@ -806,7 +818,7 @@ StringVect ResourceManager::loadTextFileLocal(
 }
 
 void ResourceManager::saveTextFile(std::string path, std::string name,
-                                   std::string text)
+                                   std::string text) const
 {
     if (!mkdir_r(path.c_str()))
     {
@@ -820,10 +832,10 @@ void ResourceManager::saveTextFile(std::string path, std::string name,
     }
 }
 
-SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename)
+SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename) const
 {
     SDL_Surface *surface = nullptr;
-    if (SDL_RWops *rw = PHYSFSRWOPS_openRead(filename.c_str()))
+    if (SDL_RWops *const rw = PHYSFSRWOPS_openRead(filename.c_str()))
         surface = IMG_Load_RW(rw, 1);
     return surface;
 }
@@ -849,21 +861,23 @@ struct RescaledLoader
     Image *image;
     int width;
     int height;
-    static Resource *load(void *v)
+    static Resource *load(void *const v)
     {
         if (!v)
             return nullptr;
-        RescaledLoader *rl = static_cast< RescaledLoader * >(v);
+        const RescaledLoader *const rl = static_cast< RescaledLoader * >(v);
         if (!rl->manager || !rl->image)
             return nullptr;
-        Image *rescaled = rl->image->SDLgetScaledImage(rl->width, rl->height);
+        Image *const rescaled = rl->image->SDLgetScaledImage(
+            rl->width, rl->height);
         if (!rescaled)
             return nullptr;
         return rescaled;
     }
 };
 
-Image *ResourceManager::getRescaled(Image *image, int width, int height)
+Image *ResourceManager::getRescaled(Image *const image,
+                                    const int width, const int height)
 {
     if (!image)
         return nullptr;
@@ -871,7 +885,8 @@ Image *ResourceManager::getRescaled(Image *image, int width, int height)
     std::string idPath = image->getIdPath() + strprintf(
         "_rescaled%dx%d", width, height);
     RescaledLoader rl = { this, image, width, height };
-    Image *img = static_cast<Image*>(get(idPath, RescaledLoader::load, &rl));
+    Image *const img = static_cast<Image *const>(
+        get(idPath, RescaledLoader::load, &rl));
     return img;
 }
 
@@ -901,7 +916,8 @@ void ResourceManager::delayedLoad()
     }
 }
 
-void ResourceManager::removeDelayLoad(AnimationDelayLoad *delayedLoad)
+void ResourceManager::removeDelayLoad(const AnimationDelayLoad
+                                      *const delayedLoad)
 {
     for (DelayedAnimIter it = mDelayedAnimations.begin(),
         it_end = mDelayedAnimations.end(); it != it_end; ++ it)

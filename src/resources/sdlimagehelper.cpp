@@ -38,9 +38,9 @@
 
 bool SDLImageHelper::mEnableAlphaCache = false;
 
-Resource *SDLImageHelper::load(SDL_RWops *rw, Dye const &dye)
+Resource *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
-    SDL_Surface *tmpImage = IMG_Load_RW(rw, 1);
+    SDL_Surface *const tmpImage = IMG_Load_RW(rw, 1);
 
     if (!tmpImage)
     {
@@ -64,19 +64,19 @@ Resource *SDLImageHelper::load(SDL_RWops *rw, Dye const &dye)
     SDL_FreeSurface(tmpImage);
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
-    int type = dye.getType();
+    const int type = dye.getType();
 
     switch (type)
     {
         case 1:
         {
-            DyePalette *pal = dye.getSPalete();
+            const DyePalette *const pal = dye.getSPalete();
             if (pal)
             {
                 for (uint32_t *p_end = pixels + surf->w * surf->h;
                       pixels != p_end; ++pixels)
                 {
-                    uint8_t *p = reinterpret_cast<uint8_t *>(pixels);
+                    uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
                     const int alpha = *p & 255;
                     if (!alpha)
                         continue;
@@ -87,7 +87,7 @@ Resource *SDLImageHelper::load(SDL_RWops *rw, Dye const &dye)
         }
         case 2:
         {
-            DyePalette *pal = dye.getAPalete();
+            const DyePalette *const pal = dye.getAPalete();
             if (pal)
             {
                 for (uint32_t *p_end = pixels + surf->w * surf->h;
@@ -119,17 +119,18 @@ Resource *SDLImageHelper::load(SDL_RWops *rw, Dye const &dye)
         }
     }
 
-    Image *image = load(surf);
+    Image *const image = load(surf);
     SDL_FreeSurface(surf);
     return image;
 }
 
-Image *SDLImageHelper::load(SDL_Surface *tmpImage)
+Image *SDLImageHelper::load(SDL_Surface *const tmpImage)
 {
     return _SDLload(tmpImage);
 }
 
-Image *SDLImageHelper::createTextSurface(SDL_Surface *tmpImage, float alpha)
+Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
+                                         const float alpha)
 {
     if (!tmpImage)
         return nullptr;
@@ -137,7 +138,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *tmpImage, float alpha)
     Image *img;
 
     bool hasAlpha = false;
-    bool converted = false;
+    const bool converted = false;
 
     const int sz = tmpImage->w * tmpImage->h;
 
@@ -151,11 +152,12 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *tmpImage, float alpha)
         {
             uint32_t c = (static_cast<uint32_t*>(tmpImage->pixels))[i];
 
-            unsigned v = (c & fmt->Amask) >> fmt->Ashift;
-            uint8_t a = static_cast<uint8_t>((v << fmt->Aloss)
+            const unsigned v = (c & fmt->Amask) >> fmt->Ashift;
+            const uint8_t a = static_cast<const uint8_t>((v << fmt->Aloss)
                 + (v >> (8 - (fmt->Aloss << 1))));
 
-            uint8_t a2 = static_cast<uint8_t>(static_cast<float>(a) * alpha);
+            const uint8_t a2 = static_cast<uint8_t>(
+                static_cast<float>(a) * alpha);
 
             c &= ~fmt->Amask;
             c |= ((a2 >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
@@ -200,7 +202,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *tmpImage, float alpha)
     return img;
 }
 
-SDL_Surface* SDLImageHelper::SDLDuplicateSurface(SDL_Surface* tmpImage)
+SDL_Surface* SDLImageHelper::SDLDuplicateSurface(SDL_Surface *const tmpImage)
 {
     if (!tmpImage || !tmpImage->format)
         return nullptr;
@@ -238,9 +240,9 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
         {
             for (int i = 0; i < sz; ++ i)
             {
-                unsigned v = ((static_cast<uint32_t*>(tmpImage->pixels))[i]
-                    & fmt->Amask) >> fmt->Ashift;
-                uint8_t a = static_cast<uint8_t>((v << fmt->Aloss)
+                const unsigned v = ((static_cast<uint32_t*>(
+                    tmpImage->pixels))[i] & fmt->Amask) >> fmt->Ashift;
+                const uint8_t a = static_cast<const uint8_t>((v << fmt->Aloss)
                     + (v >> (8 - (fmt->Aloss << 1))));
 
                 if (a != 255)

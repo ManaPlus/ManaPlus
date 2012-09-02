@@ -42,10 +42,10 @@
 
 #include "debug.h"
 
-static int inflateMemory(unsigned char *in, unsigned int inLength,
+static int inflateMemory(unsigned char *const in, const unsigned int inLength,
                          unsigned char *&out, unsigned int &outLength);
 
-static int inflateMemory(unsigned char *in, unsigned int inLength,
+static int inflateMemory(unsigned char *const in, const unsigned int inLength,
                          unsigned char *&out);
 
 static std::string resolveRelativePath(std::string base, std::string relative)
@@ -78,7 +78,7 @@ static std::string resolveRelativePath(std::string base, std::string relative)
  * Inflates either zlib or gzip deflated memory. The inflated memory is
  * expected to be freed by the caller.
  */
-int inflateMemory(unsigned char *in, unsigned int inLength,
+int inflateMemory(unsigned char *const in, const unsigned int inLength,
                   unsigned char *&out, unsigned int &outLength)
 {
     int bufferSize = 256 * 1024;
@@ -147,11 +147,11 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
     return ret == Z_STREAM_END ? Z_OK : Z_DATA_ERROR;
 }
 
-int inflateMemory(unsigned char *in, unsigned int inLength,
+int inflateMemory(unsigned char *const in, const unsigned int inLength,
                   unsigned char *&out)
 {
     unsigned int outLength = 0;
-    int ret = inflateMemory(in, inLength, out, outLength);
+    const int ret = inflateMemory(in, inLength, out, outLength);
 
     if (ret != Z_OK || !out)
     {
@@ -185,7 +185,7 @@ Map *MapReader::readMap(const std::string &filename,
 {
     logger->log("Attempting to read map %s", realFilename.c_str());
     // Load the file through resource manager
-    ResourceManager *resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
     int fileSize;
     void *buffer = resman->loadFile(realFilename, fileSize);
     Map *map = nullptr;
@@ -258,7 +258,7 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
     const int tilew = XML::getProperty(node, "tilewidth", -1);
     const int tileh = XML::getProperty(node, "tileheight", -1);
 
-    bool showWarps = config.getBoolValue("warpParticle");
+    const bool showWarps = config.getBoolValue("warpParticle");
     const std::string warpPath = paths.getStringValue("particles")
         + paths.getStringValue("portalEffectFile");
 
@@ -270,13 +270,13 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
         return nullptr;
     }
 
-    Map *map = new Map(w, h, tilew, tileh);
+    Map *const map = new Map(w, h, tilew, tileh);
 
     for_each_xml_child_node(childNode, node)
     {
         if (xmlNameEqual(childNode, "tileset"))
         {
-            Tileset *tileset = readTileset(childNode, pathDir, map);
+            Tileset *const tileset = readTileset(childNode, pathDir, map);
             if (tileset)
                 map->addTileset(tileset);
         }
@@ -377,7 +377,7 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
     return map;
 }
 
-void MapReader::readProperties(XmlNodePtr node, Properties *props)
+void MapReader::readProperties(const XmlNodePtr node, Properties *const props)
 {
     if (!node || !props)
         return;
@@ -396,7 +396,8 @@ void MapReader::readProperties(XmlNodePtr node, Properties *props)
     }
 }
 
-inline static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
+inline static void setTile(Map *const map, MapLayer *const layer,
+                           const int x, const int y, const int gid)
 {
     const Tileset * const set = map->getTilesetWithGid(gid);
     if (layer)
@@ -443,7 +444,7 @@ inline static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
     }
 }
 
-void MapReader::readLayer(XmlNodePtr node, Map *map)
+void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 {
     // Layers are not necessarily the same size as the map
     const int w = XML::getProperty(node, "width", map->getWidth());
@@ -514,10 +515,10 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
             if (!dataChild)
                 continue;
 
-            int len = static_cast<int>(strlen(
+            const int len = static_cast<int>(strlen(
                 reinterpret_cast<const char*>(dataChild->content)) + 1);
             unsigned char *charData = new unsigned char[len + 1];
-            xmlChar *xmlChars = xmlNodeGetContent(dataChild);
+            xmlChar *const xmlChars = xmlNodeGetContent(dataChild);
             const char *charStart = reinterpret_cast<const char*>(xmlChars);
             if (!charStart)
             {
@@ -553,7 +554,7 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
                 {
                     // Inflate the gzipped layer data
                     unsigned char *inflated;
-                    unsigned int inflatedSize =
+                    const unsigned int inflatedSize =
                         inflateMemory(binData, binLen, inflated);
 
                     free(binData);
@@ -576,7 +577,7 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
 
                     setTile(map, layer, x, y, gid);
 
-                    TileAnimation* ani = map->getAnimationForGid(gid);
+                    TileAnimation *const ani = map->getAnimationForGid(gid);
                     if (ani)
                         ani->addAffectedTile(layer, x + y * w);
 
@@ -599,8 +600,8 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
             if (!dataChild)
                 continue;
 
-            xmlChar *xmlChars = xmlNodeGetContent(dataChild);
-            const char *data = reinterpret_cast<const char*>(xmlChars);
+            xmlChar *const xmlChars = xmlNodeGetContent(dataChild);
+            const char *const data = reinterpret_cast<const char*>(xmlChars);
             if (!data)
                 return;
 
@@ -666,14 +667,14 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
 }
 
 Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
-                                Map *map)
+                                Map *const map)
 {
     if (!map)
         return nullptr;
 
-    int firstGid = XML::getProperty(node, "firstgid", 0);
-    int margin = XML::getProperty(node, "margin", 0);
-    int spacing = XML::getProperty(node, "spacing", 0);
+    const int firstGid = XML::getProperty(node, "firstgid", 0);
+    const int margin = XML::getProperty(node, "margin", 0);
+    const int spacing = XML::getProperty(node, "spacing", 0);
     XML::Document* doc = nullptr;
     Tileset *set = nullptr;
     std::string pathDir(path);
@@ -707,8 +708,8 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
             {
                 std::string sourceStr = resolveRelativePath(pathDir, source);
 
-                ResourceManager *resman = ResourceManager::getInstance();
-                Image* tilebmp = resman->getImage(sourceStr);
+                ResourceManager *const resman = ResourceManager::getInstance();
+                Image *const tilebmp = resman->getImage(sourceStr);
 
                 if (tilebmp)
                 {
@@ -743,7 +744,8 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                 if (!xmlNameEqual(tileNode, "properties"))
                     continue;
 
-                int tileGID = firstGid + XML::getProperty(childNode, "id", 0);
+                const int tileGID = firstGid + XML::getProperty(
+                    childNode, "id", 0);
 
                 // read tile properties to a map for simpler handling
                 std::map<std::string, int> tileProperties;
@@ -753,7 +755,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                         continue;
                     std::string name = XML::getProperty(
                         propertyNode, "name", "");
-                    int value = XML::getProperty(propertyNode, "value", 0);
+                    const int value = XML::getProperty(propertyNode, "value", 0);
                     if (!name.empty())
                     {
                         tileProperties[name] = value;
@@ -812,7 +814,7 @@ Map *MapReader::createEmptyMap(const std::string &filename,
                                const std::string &realFilename)
 {
     logger->log("Creating empty map");
-    Map *map = new Map(300, 300, 32, 32);
+    Map *const map = new Map(300, 300, 32, 32);
     map->setProperty("_filename", realFilename);
     map->setProperty("_realfilename", filename);
     map->setCustom(true);

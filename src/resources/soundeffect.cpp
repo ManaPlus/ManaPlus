@@ -31,12 +31,12 @@ SoundEffect::~SoundEffect()
     Mix_FreeChunk(mChunk);
 }
 
-Resource *SoundEffect::load(SDL_RWops *rw)
+Resource *SoundEffect::load(SDL_RWops *const rw)
 {
     if (!rw)
         return nullptr;
     // Load the music data and free the RWops structure
-    Mix_Chunk *tmpSoundEffect = Mix_LoadWAV_RW(rw, 1);
+    Mix_Chunk *const tmpSoundEffect = Mix_LoadWAV_RW(rw, 1);
 
     if (tmpSoundEffect)
     {
@@ -49,7 +49,7 @@ Resource *SoundEffect::load(SDL_RWops *rw)
     }
 }
 
-bool SoundEffect::play(int loops, int volume, int channel)
+bool SoundEffect::play(const int loops, const int volume, const int channel)
 {
     Mix_VolumeChunk(mChunk, volume);
 

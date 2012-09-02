@@ -55,7 +55,7 @@ void SpecialDB::load()
     logger->log("Initializing special database...");
 
     XML::Document doc("specials.xml");
-    XmlNodePtr root = doc.rootNode();
+    const XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "specials"))
     {
@@ -75,8 +75,8 @@ void SpecialDB::load()
             {
                 if (xmlNameEqual(special, "special"))
                 {
-                    SpecialInfo *info = new SpecialInfo();
-                    int id = XML::getProperty(special, "id", 0);
+                    SpecialInfo *const info = new SpecialInfo();
+                    const int id = XML::getProperty(special, "id", 0);
                     info->id = id;
                     info->set = setName;
                     info->name = XML::getProperty(special, "name", "");
@@ -121,9 +121,9 @@ void SpecialDB::unload()
 }
 
 
-SpecialInfo *SpecialDB::get(int id)
+SpecialInfo *SpecialDB::get(const int id)
 {
-    SpecialInfos::const_iterator i = mSpecialInfos.find(id);
+    const SpecialInfos::const_iterator i = mSpecialInfos.find(id);
 
     if (i == mSpecialInfos.end())
         return nullptr;

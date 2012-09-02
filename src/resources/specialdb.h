@@ -63,7 +63,7 @@ namespace SpecialDB
     /** gets the special info for ID. Will return 0 when it is
      *  a server-specific special.
      */
-    SpecialInfo *get(int id);
+    SpecialInfo *get(const int id);
 
     SpecialInfo::TargetMode targetModeFromString(const std::string& str);
 }

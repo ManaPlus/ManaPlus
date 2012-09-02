@@ -46,7 +46,7 @@ class SoundEffect : public Resource
          * @return <code>NULL</code> if the an error occurred, a valid pointer
          *         otherwise.
          */
-        static Resource *load(SDL_RWops *rw);
+        static Resource *load(SDL_RWops *const rw);
 
         /**
          * Plays the sample.
@@ -58,13 +58,14 @@ class SoundEffect : public Resource
          * @return <code>true</code> if the playback started properly
          *         <code>false</code> otherwise.
          */
-        virtual bool play(int loops, int volume, int channel = -1);
+        virtual bool play(const int loops, const int volume,
+                          const int channel = -1);
 
     protected:
         /**
          * Constructor.
          */
-        SoundEffect(Mix_Chunk *soundEffect) :
+        SoundEffect(Mix_Chunk *const soundEffect) :
             mChunk(soundEffect)
         { }
 

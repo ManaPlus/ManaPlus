@@ -48,9 +48,9 @@ int OpenGLImageHelper::mTextureSize = 0;
 bool OpenGLImageHelper::mBlur = true;
 int OpenGLImageHelper::mUseOpenGL = 0;
 
-Resource *OpenGLImageHelper::load(SDL_RWops *rw, Dye const &dye)
+Resource *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
-    SDL_Surface *tmpImage = IMG_Load_RW(rw, 1);
+    SDL_Surface *const tmpImage = IMG_Load_RW(rw, 1);
 
     if (!tmpImage)
     {
@@ -58,17 +58,17 @@ Resource *OpenGLImageHelper::load(SDL_RWops *rw, Dye const &dye)
         return nullptr;
     }
 
-    SDL_Surface *surf = convertTo32Bit(tmpImage);
+    SDL_Surface *const surf = convertTo32Bit(tmpImage);
     SDL_FreeSurface(tmpImage);
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
-    int type = dye.getType();
+    const int type = dye.getType();
 
     switch (type)
     {
         case 1:
         {
-            DyePalette *pal = dye.getSPalete();
+            DyePalette *const pal = dye.getSPalete();
 
             if (pal)
             {
@@ -86,7 +86,7 @@ Resource *OpenGLImageHelper::load(SDL_RWops *rw, Dye const &dye)
         }
         case 2:
         {
-            DyePalette *pal = dye.getAPalete();
+            DyePalette *const pal = dye.getAPalete();
             if (pal)
             {
                 for (uint32_t *p_end = pixels + surf->w * surf->h;
@@ -118,12 +118,12 @@ Resource *OpenGLImageHelper::load(SDL_RWops *rw, Dye const &dye)
         }
     }
 
-    Image *image = load(surf);
+    Image *const image = load(surf);
     SDL_FreeSurface(surf);
     return image;
 }
 
-Image *OpenGLImageHelper::load(SDL_Surface *tmpImage)
+Image *OpenGLImageHelper::load(SDL_Surface *const tmpImage)
 {
     return glLoad(tmpImage);
 }
@@ -134,13 +134,13 @@ Image *OpenGLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     if (!tmpImage)
         return nullptr;
 
-    Image *img = glLoad(tmpImage);
+    Image *const img = glLoad(tmpImage);
     if (img)
         img->setAlpha(alpha);
     return img;
 }
 
-int OpenGLImageHelper::powerOfTwo(int input)
+int OpenGLImageHelper::powerOfTwo(int input) const
 {
     int value;
     if (mTextureType == GL_TEXTURE_2D)

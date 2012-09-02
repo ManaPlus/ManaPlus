@@ -52,16 +52,17 @@ class SDLImageHelper : public ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Resource *load(SDL_RWops *rw, Dye const &dye);
+        Resource *load(SDL_RWops *const rw, Dye const &dye);
 
         /**
          * Loads an image from an SDL surface.
          */
-        Image *load(SDL_Surface *);
+        Image *load(SDL_Surface *const tmpImage);
 
-        Image *createTextSurface(SDL_Surface *tmpImage, float alpha);
+        Image *createTextSurface(SDL_Surface *const tmpImage,
+                                 const float alpha);
 
-        static void SDLSetEnableAlphaCache(bool n)
+        static void SDLSetEnableAlphaCache(const bool n)
         { mEnableAlphaCache = n; }
 
         static bool SDLGetEnableAlphaCache()
@@ -73,7 +74,7 @@ class SDLImageHelper : public ImageHelper
          */
         int useOpenGL();
 
-        static SDL_Surface* SDLDuplicateSurface(SDL_Surface* tmpImage);
+        static SDL_Surface* SDLDuplicateSurface(SDL_Surface *const tmpImage);
 
     protected:
         /** SDL_Surface to SDL_Surface Image loader */

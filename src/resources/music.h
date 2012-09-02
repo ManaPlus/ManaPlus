@@ -46,7 +46,7 @@ class Music : public Resource
          * @return <code>NULL</code> if the an error occurred, a valid pointer
          *         otherwise.
          */
-        static Resource *load(SDL_RWops *rw);
+        static Resource *load(SDL_RWops *const rw);
 
         /**
          * Plays the music.
@@ -58,13 +58,13 @@ class Music : public Resource
          * @return <code>true</code> if the playback started properly
          *         <code>false</code> otherwise.
          */
-        bool play(int loops = -1, int fadeIn = 0);
+        bool play(const int loops = -1, const int fadeIn = 0);
 
     protected:
         /**
          * Constructor.
          */
-        Music(Mix_Music *music);
+        Music(Mix_Music *const music);
 
         Mix_Music *mMusic;
 };

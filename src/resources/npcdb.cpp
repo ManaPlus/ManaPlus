@@ -47,7 +47,7 @@ void NPCDB::load()
     logger->log1("Initializing NPC database...");
 
     XML::Document doc("npcs.xml");
-    XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "npcs"))
     {
@@ -62,14 +62,14 @@ void NPCDB::load()
         if (!xmlNameEqual(npcNode, "npc"))
             continue;
 
-        int id = XML::getProperty(npcNode, "id", 0);
+        const int id = XML::getProperty(npcNode, "id", 0);
         if (id == 0)
         {
             logger->log1("NPC Database: NPC with missing ID in npcs.xml!");
             continue;
         }
 
-        BeingInfo *currentInfo = new BeingInfo;
+        BeingInfo *const currentInfo = new BeingInfo;
 
         if (serverVersion > 0)
         {
@@ -93,7 +93,7 @@ void NPCDB::load()
 
             if (xmlNameEqual(spriteNode, "sprite"))
             {
-                SpriteReference *currentSprite = new SpriteReference;
+                SpriteReference *const currentSprite = new SpriteReference;
                 currentSprite->sprite = reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);
                 currentSprite->variant =
@@ -124,9 +124,9 @@ void NPCDB::unload()
     mLoaded = false;
 }
 
-BeingInfo *NPCDB::get(int id)
+BeingInfo *NPCDB::get(const int id)
 {
-    BeingInfoIterator i = mNPCInfos.find(id);
+    const BeingInfoIterator i = mNPCInfos.find(id);
 
     if (i == mNPCInfos.end())
     {

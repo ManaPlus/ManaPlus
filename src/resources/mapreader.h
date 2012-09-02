@@ -60,18 +60,19 @@ class MapReader
          * @param props The Properties instance to which the properties will
          *              be assigned.
          */
-        static void readProperties(XmlNodePtr node, Properties* props);
+        static void readProperties(const XmlNodePtr node,
+                                   Properties *const props);
 
         /**
          * Reads a map layer and adds it to the given map.
          */
-        static void readLayer(XmlNodePtr node, Map *map);
+        static void readLayer(const XmlNodePtr node, Map *const map);
 
         /**
          * Reads a tile set.
          */
         static Tileset *readTileset(XmlNodePtr node, const std::string &path,
-                                    Map *map);
+                                    Map *const map);
 };
 
 #endif

@@ -26,7 +26,7 @@
 
 #include "debug.h"
 
-Music::Music(Mix_Music *music) :
+Music::Music(Mix_Music *const music) :
     mMusic(music)
 {
 }
@@ -36,9 +36,9 @@ Music::~Music()
     Mix_FreeMusic(mMusic);
 }
 
-Resource *Music::load(SDL_RWops *rw)
+Resource *Music::load(SDL_RWops *const rw)
 {
-    if (Mix_Music *music = Mix_LoadMUS_RW(rw))
+    if (Mix_Music *const music = Mix_LoadMUS_RW(rw))
     {
         return new Music(music);
     }
@@ -49,7 +49,7 @@ Resource *Music::load(SDL_RWops *rw)
     }
 }
 
-bool Music::play(int loops, int fadeIn)
+bool Music::play(const int loops, const int fadeIn)
 {
     if (fadeIn > 0)
         return Mix_FadeInMusic(mMusic, loops, fadeIn);
