@@ -138,7 +138,7 @@ void Network::dispatchMessages()
     {
         MessageIn msg = getNextMessage();
 
-        MessageHandlerIterator iter = mMessageHandlers.find(msg.getId());
+        const MessageHandlerIterator iter = mMessageHandlers.find(msg.getId());
 
         if (msg.getLength() == 0)
             logger->safeError("Zero length packet received. Exiting.");
@@ -164,7 +164,7 @@ bool Network::messageReady()
     SDL_mutexP(mMutex);
     if (mInSize >= 2)
     {
-        int msgId = readWord(0);
+        const int msgId = readWord(0);
         if (msgId == SMSG_SERVER_VERSION_RESPONSE)
         {
             len = 10;
@@ -186,7 +186,7 @@ bool Network::messageReady()
             len = readWord(2);
     }
 
-    bool ret = (mInSize >= static_cast<unsigned int>(len));
+    const bool ret = (mInSize >= static_cast<unsigned int>(len));
     SDL_mutexV(mMutex);
 
     return ret;
@@ -201,7 +201,7 @@ MessageIn Network::getNextMessage()
     }
 
     SDL_mutexP(mMutex);
-    int msgId = readWord(0);
+    const int msgId = readWord(0);
     int len;
     if (msgId == SMSG_SERVER_VERSION_RESPONSE)
         len = 10;

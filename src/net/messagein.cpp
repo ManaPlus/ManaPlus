@@ -62,8 +62,8 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y)
 {
     if (mPos + 3 <= mLength)
     {
-        unsigned char const *p
-            = reinterpret_cast< unsigned char const * >(mData + mPos);
+        unsigned char const *const p
+            = reinterpret_cast<unsigned char const *const>(mData + mPos);
         x = static_cast<short unsigned>(p[0] | ((p[1] & 0x07) << 8));
         y = static_cast<short unsigned>((p[1] >> 3) | ((p[2] & 0x3F) << 5));
     }
@@ -111,7 +111,7 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction)
     uint8_t serverDir = 0;
     if (mPos + 3 <= mLength)
     {
-        const char *data = mData + mPos;
+        const char *const data = mData + mPos;
         int16_t temp;
 
         temp = MAKEWORD(data[1] & 0x00c0, data[0] & 0x00ff);
@@ -134,7 +134,7 @@ void MessageIn::readCoordinatePair(uint16_t &srcX, uint16_t &srcY,
 {
     if (mPos + 5 <= mLength)
     {
-        const char *data = mData + mPos;
+        const char *const data = mData + mPos;
         int16_t temp;
 
         temp = MAKEWORD(data[3], data[2] & 0x000f);
@@ -178,8 +178,8 @@ std::string MessageIn::readString(int length)
     }
 
     // Read the string
-    char const *stringBeg = mData + mPos;
-    char const *stringEnd
+    char const *const stringBeg = mData + mPos;
+    char const *const stringEnd
         = static_cast<char const *>(memchr(stringBeg, '\0', length));
 
     std::string str(stringBeg, stringEnd ? stringEnd - stringBeg : length);
@@ -203,9 +203,9 @@ std::string MessageIn::readRawString(int length)
     }
 
     // Read the string
-    char const *stringBeg = mData + mPos;
-    char const *stringEnd
-        = static_cast<char const *>(memchr(stringBeg, '\0', length));
+    char const *const stringBeg = mData + mPos;
+    char const *const stringEnd
+        = static_cast<char const *const>(memchr(stringBeg, '\0', length));
     std::string str(stringBeg, stringEnd ? stringEnd - stringBeg : length);
 
     mPos += length;
@@ -214,10 +214,10 @@ std::string MessageIn::readRawString(int length)
 
     if (stringEnd)
     {
-        long len2 = length - (stringEnd - stringBeg) - 1;
-        char const *stringBeg2 = stringEnd + 1;
-        char const *stringEnd2
-            = static_cast<char const *>(memchr(stringBeg2, '\0', len2));
+        const long len2 = length - (stringEnd - stringBeg) - 1;
+        char const *const stringBeg2 = stringEnd + 1;
+        char const *const stringEnd2
+            = static_cast<char const *const>(memchr(stringBeg2, '\0', len2));
         std::string hiddenPart = std::string(stringBeg2,
             stringEnd2 ? stringEnd2 - stringBeg2 : len2);
         if (hiddenPart.length() > 0)
@@ -245,7 +245,7 @@ unsigned char *MessageIn::readBytes(int length)
         return nullptr;
     }
 
-    unsigned char *buf = new unsigned char[length + 2];
+    unsigned char *const buf = new unsigned char[length + 2];
 
     memcpy (buf, mData + mPos, length);
     buf[length] = 0;

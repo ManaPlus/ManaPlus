@@ -79,7 +79,7 @@ namespace
             if (viewport)
                 viewport->closePopupMenu();
 
-            Net::NpcHandler *handler = Net::getNpcHandler();
+            Net::NpcHandler *const handler = Net::getNpcHandler();
             if (handler)
                 handler->clearDialogs();
             if (player_node)
@@ -205,10 +205,10 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
     if (player_node)
         player_node->stopAttack();
 
-    Game *game = Game::instance();
+    Game *const game = Game::instance();
 
     const std::string &currentMapName = game->getCurrentMapName();
-    bool sameMap = (currentMapName == mapPath);
+    const bool sameMap = (currentMapName == mapPath);
 
     // Switch the actual map, deleting the previous one if necessary
     mapPath = mapPath.substr(0, mapPath.rfind("."));
@@ -219,7 +219,7 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
 
     if (player_node)
     {
-        Map *map = game->getCurrentMap();
+        const Map *const map = game->getCurrentMap();
         if (map)
         {
             if (x >= map->getWidth())
@@ -262,8 +262,8 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
 {
-    int type = msg.readInt16();
-    int value = msg.readInt32();
+    const int type = msg.readInt16();
+    const int value = msg.readInt32();
     if (!player_node)
         return;
 
@@ -280,7 +280,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             PlayerInfo::setAttribute(PlayerInfo::HP, value);
             if (player_node->isInParty() && Party::getParty(1))
             {
-                PartyMember *m = Party::getParty(1)
+                PartyMember *const m = Party::getParty(1)
                     ->getMember(player_node->getId());
                 if (m)
                 {
@@ -294,7 +294,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
 
             if (player_node->isInParty() && Party::getParty(1))
             {
-                PartyMember *m = Party::getParty(1)->getMember(
+                PartyMember *const m = Party::getParty(1)->getMember(
                     player_node->getId());
                 if (m)
                 {
@@ -453,7 +453,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
 {
-    int type = msg.readInt16();
+    const int type = msg.readInt16();
     switch (type)
     {
         case 0x0001:
@@ -467,8 +467,8 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
             break;
         case 0x0014:
         {
-            int oldMoney = PlayerInfo::getAttribute(PlayerInfo::MONEY);
-            int newMoney = msg.readInt32();
+            const int oldMoney = PlayerInfo::getAttribute(PlayerInfo::MONEY);
+            const int newMoney = msg.readInt32();
             if (newMoney > oldMoney)
             {
                 SERVER_NOTICE(strprintf(_("You picked up %s."),
@@ -500,9 +500,9 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
 {
-    int type = msg.readInt32();
-    int base = msg.readInt32();
-    int bonus = msg.readInt32();
+    const int type = msg.readInt32();
+    const int base = msg.readInt32();
+    const int bonus = msg.readInt32();
 
     PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
         type), base, false);
@@ -514,13 +514,13 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
 {
-    int type = msg.readInt16();
-    int ok = msg.readInt8();
-    int value = msg.readInt8();
+    const int type = msg.readInt16();
+    const int ok = msg.readInt8();
+    const int value = msg.readInt8();
 
     if (ok != 1)
     {
-        int oldValue = PlayerInfo::getStatBase(
+        const int oldValue = PlayerInfo::getStatBase(
             static_cast<PlayerInfo::Attribute>(type));
         int points = PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS);
         points += oldValue - value;
@@ -616,7 +616,7 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
 {
-    int type = msg.readInt16();
+    const int type = msg.readInt16();
     if (statusWindow)
     {
         switch (type)
@@ -649,7 +649,7 @@ void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg)
 {
-    int type = msg.readInt16();
+    const int type = msg.readInt16();
 
     switch (type)
     {

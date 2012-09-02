@@ -128,7 +128,7 @@ void NpcHandler::closeDialog(int npcId)
     MessageOut outMsg(CMSG_NPC_CLOSE);
     outMsg.writeInt32(npcId);
 
-    NpcDialogs::iterator it = mNpcDialogs.find(npcId);
+    const NpcDialogs::iterator it = mNpcDialogs.find(npcId);
     if (it != mNpcDialogs.end())
     {
         if ((*it).second.dialog)
@@ -200,7 +200,7 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
 
     const int npcId = msg.readInt32();
 
-    NpcDialogs::const_iterator diag = mNpcDialogs.find(npcId);
+    const NpcDialogs::const_iterator diag = mNpcDialogs.find(npcId);
     mDialog = nullptr;
 
     if (diag == mNpcDialogs.end())

@@ -68,8 +68,8 @@ void QuestHandler::handleMessage(Net::MessageIn &msg)
 
 void QuestHandler::processSetQuestVar(Net::MessageIn &msg A_UNUSED)
 {
-    int var = msg.readInt16();    // variable
-    int val = msg.readInt32();    // value
+    const int var = msg.readInt16();    // variable
+    const int val = msg.readInt32();    // value
     if (questsWindow)
     {
         questsWindow->updateQuest(var, val);
@@ -79,11 +79,11 @@ void QuestHandler::processSetQuestVar(Net::MessageIn &msg A_UNUSED)
 
 void QuestHandler::processPlayerQuests(Net::MessageIn &msg A_UNUSED)
 {
-    int count = (msg.readInt16() - 4) / 6;
+    const int count = (msg.readInt16() - 4) / 6;
     for (int f = 0; f < count; f ++)
     {
-        int var = msg.readInt16();    // variable
-        int val = msg.readInt32();    // value
+        const int var = msg.readInt16();    // variable
+        const int val = msg.readInt32();    // value
         if (questsWindow)
             questsWindow->updateQuest(var, val);
     }

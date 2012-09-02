@@ -122,7 +122,8 @@ void PartyHandler::invite(const std::string &name)
     if (!actorSpriteManager)
         return;
 
-    Being* being = actorSpriteManager->findBeingByName(name, Being::PLAYER);
+    const Being *const being = actorSpriteManager->findBeingByName(
+        name, Being::PLAYER);
     if (being)
     {
         MessageOut outMsg(CMSG_PARTY_INVITE);
@@ -161,7 +162,7 @@ void PartyHandler::kick(const std::string &name)
     if (!Ea::taParty)
         return;
 
-    PartyMember *m = Ea::taParty->getMember(name);
+    const PartyMember *const m = Ea::taParty->getMember(name);
     if (!m)
     {
         if (Ea::partyTab)

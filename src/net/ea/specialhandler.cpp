@@ -84,14 +84,14 @@ void SpecialHandler::processPlayerSkills(Net::MessageIn &msg)
 
     for (int k = 0; k < skillCount; k++)
     {
-        int skillId = msg.readInt16();
+        const int skillId = msg.readInt16();
         msg.readInt16();  // target type
         msg.skip(2);  // skill pool flags
-        int level = msg.readInt16();
+        const int level = msg.readInt16();
         msg.readInt16(); // sp
-        int range = msg.readInt16();
+        const int range = msg.readInt16();
         msg.skip(24); // 0 unused
-        int up = msg.readInt8();
+        const int up = msg.readInt8();
 
         PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
             skillId), level);
@@ -108,8 +108,8 @@ void SpecialHandler::processPlayerSkillUp(Net::MessageIn &msg)
     const int skillId = msg.readInt16();
     const int level = msg.readInt16();
     msg.readInt16(); // sp
-    int range = msg.readInt16();
-    int up = msg.readInt8();
+    const int range = msg.readInt16();
+    const int up = msg.readInt8();
 
     PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
         skillId), level);
@@ -127,8 +127,8 @@ void SpecialHandler::processSkillFailed(Net::MessageIn &msg)
     const int skillId   = msg.readInt16();
     const short bskill  = msg.readInt16();
     msg.readInt16(); // btype
-    char success = msg.readInt8();
-    char reason  = msg.readInt8();
+    const char success = msg.readInt8();
+    const char reason  = msg.readInt8();
     if (success != static_cast<int>(SKILL_FAILED)
         && bskill == static_cast<int>(BSKILL_EMOTE))
     {

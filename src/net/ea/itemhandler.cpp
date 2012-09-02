@@ -35,14 +35,14 @@ ItemHandler::ItemHandler()
 
 void ItemHandler::processItemVisible(Net::MessageIn &msg)
 {
-    int id = msg.readInt32();
-    int itemId = msg.readInt16();
-    unsigned char identify = msg.readInt8();  // identify flag
-    int x = msg.readInt16();
-    int y = msg.readInt16();
-    int amount = msg.readInt16();
-    int subX = msg.readInt8();
-    int subY = msg.readInt8();
+    const int id = msg.readInt32();
+    const int itemId = msg.readInt16();
+    const unsigned char identify = msg.readInt8();  // identify flag
+    const int x = msg.readInt16();
+    const int y = msg.readInt16();
+    const int amount = msg.readInt16();
+    const int subX = msg.readInt8();
+    const int subY = msg.readInt8();
 
     if (actorSpriteManager)
     {
@@ -53,14 +53,14 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg)
 
 void ItemHandler::processItemDropped(Net::MessageIn &msg)
 {
-    int id = msg.readInt32();
-    int itemId = msg.readInt16();
-    unsigned char identify = msg.readInt8();  // identify flag
-    int x = msg.readInt16();
-    int y = msg.readInt16();
-    int subX = msg.readInt8();
-    int subY = msg.readInt8();
-    int amount = msg.readInt16();
+    const int id = msg.readInt32();
+    const int itemId = msg.readInt16();
+    const unsigned char identify = msg.readInt8();  // identify flag
+    const int x = msg.readInt16();
+    const int y = msg.readInt16();
+    const int subX = msg.readInt8();
+    const int subY = msg.readInt8();
+    const int amount = msg.readInt16();
 
     if (actorSpriteManager)
     {
@@ -73,8 +73,11 @@ void ItemHandler::processItemRemove(Net::MessageIn &msg)
 {
     if (actorSpriteManager)
     {
-        if (FloorItem *item = actorSpriteManager->findItem(msg.readInt32()))
+        if (FloorItem *const item = actorSpriteManager
+            ->findItem(msg.readInt32()))
+        {
             actorSpriteManager->destroy(item);
+        }
     }
 }
 

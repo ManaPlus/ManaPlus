@@ -78,7 +78,7 @@ void LoginHandler::chooseServer(unsigned int server)
     if (server >= mWorlds.size() || !mWorlds[server])
         return;
 
-    ServerInfo *charServer = getCharServer();
+    ServerInfo *const charServer = getCharServer();
     if (charServer)
     {
         if (config.getBoolValue("usePersistentIP"))
@@ -130,7 +130,7 @@ void LoginHandler::clearWorlds()
 void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg)
 {
     // 0: acc not found, 1: success, 2: password mismatch, 3: pass too short
-    int errMsg = msg.readInt8();
+    const int errMsg = msg.readInt8();
     // Successful pass change
     if (errMsg == 1)
     {
@@ -184,7 +184,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
 
     clearWorlds();
 
-    int worldCount = (msg.getLength() - 47) / 32;
+    const int worldCount = (msg.getLength() - 47) / 32;
 
     mToken.session_ID1 = msg.readInt32();
     mToken.account_ID = msg.readInt32();
@@ -199,7 +199,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
 
     for (int i = 0; i < worldCount; i++)
     {
-        WorldInfo *world = new WorldInfo;
+        WorldInfo *const world = new WorldInfo;
 
         world->address = msg.readInt32();
         world->port = msg.readInt16();
@@ -220,7 +220,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
 
 void LoginHandler::processLoginError(Net::MessageIn &msg)
 {
-    int code = msg.readInt8();
+    const int code = msg.readInt8();
     logger->log("Login::error code: %i", code);
 
     switch (code)

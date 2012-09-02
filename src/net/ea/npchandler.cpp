@@ -54,7 +54,7 @@ void NpcHandler::endShopping(int beingId A_UNUSED)
 void NpcHandler::clearDialogs()
 {
     NpcDialogs::iterator it = mNpcDialogs.begin();
-    NpcDialogs::iterator it_end = mNpcDialogs.end();
+    const NpcDialogs::iterator it_end = mNpcDialogs.end();
     while (it != it_end)
     {
         delete (*it).second.dialog;

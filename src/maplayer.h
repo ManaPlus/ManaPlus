@@ -53,7 +53,7 @@ class MapRowVertexes
 class MapObject
 {
     public:
-        MapObject(int type0, std::string data0) :
+        MapObject(const int type0, const std::string &data0) :
             type(type0), data(data0)
         {
         }
@@ -82,7 +82,8 @@ class MapLayer: public ConfigListener
          * fringe layer. The fringe layer is the layer that draws the actors.
          * There can be only one fringe layer per map.
          */
-        MapLayer(int x, int y, int width, int height, bool isFringeLayer);
+        MapLayer(const int x, const int y, const int width, const int height,
+                 const bool isFringeLayer);
 
         /**
          * Destructor.
@@ -92,12 +93,12 @@ class MapLayer: public ConfigListener
         /**
          * Set tile image, with x and y in layer coordinates.
          */
-        void setTile(int x, int y, Image *img);
+        void setTile(const int x, const int y, Image *const img);
 
         /**
          * Set tile image with x + y * width already known.
          */
-        void setTile(int index, Image *img)
+        void setTile(const int index, Image *const img)
         { mTiles[index] = img; }
 
         /**
@@ -108,42 +109,41 @@ class MapLayer: public ConfigListener
          * The given actors are only drawn when this layer is the fringe
          * layer.
          */
-        void draw(Graphics *graphics,
-                  int startX, int startY,
-                  int endX, int endY,
-                  int scrollX, int scrollY,
-                  int mDebugFlags) const;
+        void draw(Graphics *const graphics,
+                  int startX, int startY, int endX, int endY,
+                  const int scrollX, const int scrollY,
+                  const int mDebugFlags) const;
 
-        void drawOGL(Graphics *graphics);
+        void drawOGL(Graphics *const graphics);
 
-        void drawSDL(Graphics *graphics);
+        void drawSDL(Graphics *const graphics);
 
-        void updateOGL(Graphics *graphics,
+        void updateOGL(Graphics *const graphics,
                        int startX, int startY,
                        int endX, int endY,
-                       int scrollX, int scrollY,
-                       int mDebugFlags);
+                       const int scrollX, const int scrollY,
+                       const int mDebugFlags);
 
-        void updateSDL(Graphics *graphics,
+        void updateSDL(Graphics *const graphics,
                        int startX, int startY,
                        int endX, int endY,
-                       int scrollX, int scrollY,
-                       int mDebugFlags);
+                       const int scrollX, const int scrollY,
+                       const int mDebugFlags);
 
-        void drawFringe(Graphics *graphics,
+        void drawFringe(Graphics *const graphics,
                         int startX, int startY,
                         int endX, int endY,
-                        int scrollX, int scrollY,
-                        const Actors *actors,
-                        int mDebugFlags, int yFix) const;
+                        const int scrollX, const int scrollY,
+                        const Actors *const actors,
+                        const int mDebugFlags, const int yFix) const;
 
         bool isFringeLayer() const
         { return mIsFringeLayer; }
 
-        void setSpecialLayer(SpecialLayer *val)
+        void setSpecialLayer(SpecialLayer *const val)
         { mSpecialLayer = val; }
 
-        void setTempLayer(SpecialLayer *val)
+        void setTempLayer(SpecialLayer *const val)
         { mTempLayer = val; }
 
         int getWidth() const
@@ -158,7 +158,8 @@ class MapLayer: public ConfigListener
 
         void optionChanged(const std::string &value);
 
-        int getTileDrawWidth(Image *img, int endX, int &width) const;
+        int getTileDrawWidth(const Image *img,
+                             const int endX, int &width) const;
 
 //        void initTileInfo();
 
@@ -182,25 +183,27 @@ class SpecialLayer
         friend class Map;
         friend class MapLayer;
 
-        SpecialLayer(int width, int height, bool drawSprites = false);
+        SpecialLayer(const int width, const int height,
+                     const bool drawSprites = false);
 
         ~SpecialLayer();
 
-        void draw(Graphics *graphics, int startX, int startY,
-                  int endX, int endY, int scrollX, int scrollY);
+        void draw(Graphics *const graphics, int startX, int startY,
+                  int endX, int endY,
+                  const int scrollX, const int scrollY);
 
-        MapItem* getTile(int x, int y) const;
+        MapItem* getTile(const int x, const int y) const;
 
-        void setTile(int x, int y, MapItem* item);
+        void setTile(const int x, const int y, MapItem *const item);
 
-        void setTile(int x, int y, int type);
+        void setTile(const int x, const int y, const int type);
 
         void addRoad(Path road);
 
         void clean();
 
-        void itemDraw(Graphics *graphics, int x, int y,
-                      int scrollX, int scrollY);
+        void itemDraw(Graphics *const graphics, const int x, const int y,
+                      const int scrollX, const int scrollY) const;
 
     private:
         int mWidth, mHeight;
@@ -236,20 +239,20 @@ class MapItem
 
         MapItem();
 
-        MapItem(int type);
+        MapItem(const int type);
 
-        MapItem(int type, std::string comment);
+        MapItem(const int type, std::string comment);
 
-        MapItem(int type, std::string comment, int x, int y);
+        MapItem(const int type, std::string comment, const int x, const int y);
 
         ~MapItem();
 
         int getType() const
         { return mType; }
 
-        void setType(int type);
+        void setType(const int type);
 
-        void setPos(int x, int y);
+        void setPos(const int x, const int y);
 
         int getX() const
         { return mX; }
@@ -269,7 +272,8 @@ class MapItem
         void setName(std::string name)
         { mName = name; }
 
-        void draw(Graphics *graphics, int x, int y, int dx, int dy);
+        void draw(Graphics *const graphics, const int x, const int y,
+                  const int dx, const int dy) const;
 
     private:
         int mType;
@@ -283,13 +287,15 @@ class MapItem
 class ObjectsLayer
 {
     public:
-        ObjectsLayer(unsigned width, unsigned height);
+        ObjectsLayer(const unsigned width, const unsigned height);
+
         ~ObjectsLayer();
 
-        void addObject(std::string name, int type, unsigned x, unsigned y,
+        void addObject(std::string name, const int type,
+                       const unsigned x, const unsigned y,
                        unsigned dx, unsigned dy);
 
-        MapObjectList *getAt(unsigned x, unsigned y);
+        MapObjectList *getAt(const unsigned x, const unsigned y) const;
     private:
         MapObjectList **mTiles;
         unsigned mWidth;

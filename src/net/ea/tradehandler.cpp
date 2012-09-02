@@ -177,11 +177,11 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
 
 void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
 {
-    int amount = msg.readInt32();
-    int type = msg.readInt16();
-    int identify = msg.readInt8();  // identified flag
+    const int amount = msg.readInt32();
+    const int type = msg.readInt16();
+    const int identify = msg.readInt8();  // identified flag
     msg.readInt8();  // attribute
-    int refine = msg.readInt8();  // refine
+    const int refine = msg.readInt8();  // refine
     msg.skip(8);     // card (4 shorts)
 
     // TODO: handle also identified, etc
@@ -213,9 +213,9 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
             tradeWindow->receivedOk(true);
         return;
     }
-    int quantity = msg.readInt16();
+    const int quantity = msg.readInt16();
 
-    int res = msg.readInt8();
+    const int res = msg.readInt8();
     switch (res)
     {
         case 0:

@@ -104,6 +104,7 @@ class Network
 
         SDL_Thread *mWorkerThread;
         SDL_mutex *mMutex;
+        int mSleep;
 };
 
 } // namespace Ea

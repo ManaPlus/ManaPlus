@@ -160,7 +160,7 @@ bool PartyTab::handleCommand(const std::string &type, const std::string &args)
             }
         }
 
-        char opt = CommandHandler::parseBoolean(args);
+        const char opt = CommandHandler::parseBoolean(args);
 
         switch (opt)
         {
@@ -199,7 +199,7 @@ bool PartyTab::handleCommand(const std::string &type, const std::string &args)
             }
         }
 
-        char opt = CommandHandler::parseBoolean(args);
+        const char opt = CommandHandler::parseBoolean(args);
 
         switch (opt)
         {
@@ -228,7 +228,7 @@ void PartyTab::getAutoCompleteList(StringVect &names) const
     if (!player_node)
         return;
 
-    Party *p = player_node->getParty();
+    const Party *const p = player_node->getParty();
 
     if (p)
         p->getNames(names);

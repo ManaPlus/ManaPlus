@@ -113,7 +113,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
         mSentWhispers.pop();
     }
 
-    int type = msg.readInt8();
+    const int type = msg.readInt8();
     switch (type)
     {
         case 0x00:
@@ -147,7 +147,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
 
 void ChatHandler::processWhisper(Net::MessageIn &msg)
 {
-    int chatMsgLength = msg.readInt16() - 28;
+    const int chatMsgLength = msg.readInt16() - 28;
     std::string nick = msg.readString(24);
 
     if (chatMsgLength <= 0)
@@ -171,8 +171,8 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
 
         if (player_relations.hasPermission(nick, PlayerRelation::WHISPER))
         {
-            bool tradeBot = config.getBoolValue("tradebot");
-            bool showMsg = !config.getBoolValue("hideShopMessages");
+            const bool tradeBot = config.getBoolValue("tradebot");
+            const bool showMsg = !config.getBoolValue("hideShopMessages");
             if (player_relations.hasPermission(nick, PlayerRelation::TRADE))
             {
                 if (shopWindow)
@@ -255,8 +255,8 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     if (!actorSpriteManager)
         return;
 
-    int chatMsgLength = msg.readInt16() - 8;
-    Being *being = actorSpriteManager->findBeing(msg.readInt32());
+    const int chatMsgLength = msg.readInt16() - 8;
+    Being *const being = actorSpriteManager->findBeing(msg.readInt32());
 
     if (!being || chatMsgLength <= 0)
         return;
@@ -301,7 +301,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
 
 void ChatHandler::processChat(Net::MessageIn &msg, bool normalChat)
 {
-    int chatMsgLength = msg.readInt16() - 4;
+    const int chatMsgLength = msg.readInt16() - 4;
 
     if (chatMsgLength <= 0)
         return;
@@ -338,10 +338,10 @@ void ChatHandler::processChat(Net::MessageIn &msg, bool normalChat)
 void ChatHandler::processMVP(Net::MessageIn &msg)
 {
     // Display MVP player
-    int id = msg.readInt32(); // id
+    const int id = msg.readInt32(); // id
     if (localChatTab && actorSpriteManager && config.getBoolValue("showMVP"))
     {
-        Being *being = actorSpriteManager->findBeing(id);
+        const Being *const being = actorSpriteManager->findBeing(id);
         if (!being)
         {
             localChatTab->chatLog(_("MVP player."), BY_SERVER);
@@ -356,8 +356,8 @@ void ChatHandler::processMVP(Net::MessageIn &msg)
 
 void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg)
 {
-    int action = msg.readInt8();
-    int fail = msg.readInt8();
+    const int action = msg.readInt8();
+    const int fail = msg.readInt8();
     if (!localChatTab)
         return;
 

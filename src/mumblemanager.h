@@ -41,16 +41,16 @@ class MumbleManager
 
         void setPlayer(const std::string &userName);
 
-        void setAction(int action);
+        void setAction(const int action);
 
-        void setPos(int tileX, int tileY, int direction);
+        void setPos(const int tileX, const int tileY, const int direction);
 
         void setMap(const std::string &mapName);
 
         void setServer(const std::string &serverName);
 
     private:
-        uint16_t getMapId(std::string mapName);
+        uint16_t getMapId(std::string mapName) const;
 
         void setMapBase(uint16_t mapid);
 

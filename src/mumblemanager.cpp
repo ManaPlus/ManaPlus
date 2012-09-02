@@ -54,7 +54,7 @@ MumbleManager::~MumbleManager()
     }
 }
 
-uint16_t MumbleManager::getMapId(std::string mapName)
+uint16_t MumbleManager::getMapId(std::string mapName) const
 {
     uint16_t res = 0;
     if (mapName.size() != 5 || mapName[3] != '-')
@@ -111,7 +111,7 @@ void MumbleManager::init()
     char memName[256];
     snprintf(memName, 256, "/MumbleLink.%u", getuid());
 
-    int shmfd = shm_open(memName, O_RDWR, S_IRUSR | S_IWUSR);
+    const int shmfd = shm_open(memName, O_RDWR, S_IRUSR | S_IWUSR);
 
     if (shmfd < 0)
     {
@@ -177,7 +177,7 @@ void MumbleManager::setPlayer(const std::string &userName)
     memcpy(mLinkedMem, &mLinkedMemCache, sizeof(mLinkedMemCache));
 }
 
-void MumbleManager::setAction(int action)
+void MumbleManager::setAction(const int action)
 {
     if (!mLinkedMem)
         return;
@@ -205,7 +205,8 @@ void MumbleManager::setAction(int action)
     memcpy(mLinkedMem, &mLinkedMemCache, sizeof(mLinkedMemCache));
 }
 
-void MumbleManager::setPos(int tileX, int tileY, int direction)
+void MumbleManager::setPos(const int tileX, const int tileY,
+                           const int direction)
 {
     if (!mLinkedMem)
         return;

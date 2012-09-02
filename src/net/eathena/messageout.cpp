@@ -91,7 +91,7 @@ void MessageOut::writeCoordinates(unsigned short x, unsigned short y,
                                   unsigned char direction)
 {
     DEBUGLOG(strprintf("writeCoordinates: %u,%u %u", x, y, direction));
-    char *data = mData + mPos;
+    char *const data = mData + mPos;
     mNetwork->mOutSize += 3;
     mPos += 3;
 

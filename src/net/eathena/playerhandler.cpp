@@ -160,7 +160,7 @@ void PlayerHandler::pickUp(const FloorItem *floorItem)
 
     MessageOut outMsg(CMSG_ITEM_PICKUP);
     outMsg.writeInt32(floorItem->getId());
-    EAthena::InventoryHandler *handler =
+    EAthena::InventoryHandler *const handler =
         static_cast<EAthena::InventoryHandler*>(Net::getInventoryHandler());
     if (handler)
         handler->pushPickup(floorItem->getId());

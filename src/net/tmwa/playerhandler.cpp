@@ -154,7 +154,7 @@ void PlayerHandler::pickUp(const FloorItem *floorItem)
 
     MessageOut outMsg(CMSG_ITEM_PICKUP);
     outMsg.writeInt32(floorItem->getId());
-    TmwAthena::InventoryHandler *handler =
+    TmwAthena::InventoryHandler *const handler =
         static_cast<TmwAthena::InventoryHandler*>(Net::getInventoryHandler());
     if (handler)
         handler->pushPickup(floorItem->getId());
@@ -216,7 +216,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
     if (!whoIsOnline)
         return;
 
-    int size = msg.readInt16() - 4;
+    const int size = msg.readInt16() - 4;
     std::vector<OnlinePlayer*> arr;
 
     if (!size)

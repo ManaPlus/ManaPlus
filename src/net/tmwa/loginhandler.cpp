@@ -157,13 +157,13 @@ void LoginHandler::requestUpdateHosts()
 
 void LoginHandler::processServerVersion(Net::MessageIn &msg)
 {
-    char b1 = msg.readInt8(); // -1
-    char b2 = msg.readInt8(); // E
-    char b3 = msg.readInt8(); // V
-    char b4 = msg.readInt8(); // L
+    const char b1 = msg.readInt8(); // -1
+    const char b2 = msg.readInt8(); // E
+    const char b3 = msg.readInt8(); // V
+    const char b4 = msg.readInt8(); // L
     if (b1 == -1 && b2 == 'E' && b3 == 'V' && b4 == 'L')
     {
-        unsigned int options = msg.readInt8();
+        const unsigned int options = msg.readInt8();
         mRegistrationEnabled = options;
         msg.skip(2);    // 0 unused
         serverVersion = msg.readInt8();
@@ -172,7 +172,7 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     }
     else
     {
-        unsigned int options = msg.readInt32();
+        const unsigned int options = msg.readInt32();
         mRegistrationEnabled = options;
         serverVersion = 0;
     }

@@ -105,16 +105,16 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
     int sz = 11;
     if (serverVersion > 0)
         sz += 1;
-    int n_items = (msg.getLength() - 4) / sz;
+    const int n_items = (msg.getLength() - 4) / sz;
     mBuyDialog = new BuyDialog(mNpcId);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
 
     for (int k = 0; k < n_items; k++)
     {
-        int value = msg.readInt32();
+        const int value = msg.readInt32();
         msg.readInt32();  // DCvalue
         msg.readInt8();  // type
-        int itemId = msg.readInt16();
+        const int itemId = msg.readInt16();
         unsigned char color = 1;
         if (serverVersion > 0)
             color = msg.readInt8();

@@ -105,7 +105,8 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
         {
 //            msg.skip(4); // CharID, must be the same as player_node->charID
             PlayerInfo::setCharId(msg.readInt32());
-            GameHandler *gh = static_cast<GameHandler*>(Net::getGameHandler());
+            GameHandler *const gh = static_cast<GameHandler*>(
+                Net::getGameHandler());
             gh->setMap(msg.readString(16));
             if (config.getBoolValue("usePersistentIP"))
             {
@@ -136,12 +137,13 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHANGE_MAP_SERVER:
         {
-            GameHandler *gh = static_cast<GameHandler*>(Net::getGameHandler());
+            GameHandler *const gh = static_cast<GameHandler*>(
+                Net::getGameHandler());
             if (!gh || !mNetwork)
                 return;
             gh->setMap(msg.readString(16));
-            int x = msg.readInt16();
-            int y = msg.readInt16();
+            const int x = msg.readInt16();
+            const int y = msg.readInt16();
             mapServer.hostname = ipToString(msg.readInt32());
             mapServer.port = msg.readInt16();
 
@@ -170,7 +172,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const Token &token =
         static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
 
-    LocalPlayer *tempPlayer = new LocalPlayer(msg.readInt32(), 0);
+    LocalPlayer *const tempPlayer = new LocalPlayer(msg.readInt32(), 0);
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
@@ -179,14 +181,14 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     Stat &jobStat = data.mStats[JOB];
     jobStat.exp = msg.readInt32();
 
-    int temp = msg.readInt32();
+    const int temp = msg.readInt32();
     jobStat.base = temp;
     jobStat.mod = temp;
 
-    int shoes = msg.readInt16();
-    int gloves = msg.readInt16();
-    int cape = msg.readInt16();
-    int misc1 = msg.readInt16();
+    const int shoes = msg.readInt16();
+    const int gloves = msg.readInt16();
+    const int cape = msg.readInt16();
+    const int misc1 = msg.readInt16();
 
     msg.readInt32();                       // option
     msg.readInt32();                       // karma
@@ -200,23 +202,23 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     msg.readInt16();                       // speed
     tempPlayer->setSubtype(msg.readInt16()); // class (used for race)
-    int hairStyle = msg.readInt16();
-    uint16_t weapon = msg.readInt16();  // server not used it. may be need use?
+    const int hairStyle = msg.readInt16();
+    const uint16_t weapon = msg.readInt16();  // unused on server. need use?
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
     data.mAttributes[PlayerInfo::LEVEL] = msg.readInt16();
 
     msg.readInt16();                       // skill point
-    int bottomClothes = msg.readInt16();
-    int shield = msg.readInt16();
+    const int bottomClothes = msg.readInt16();
+    const int shield = msg.readInt16();
 
-    int hat = msg.readInt16(); // head option top
-    int topClothes = msg.readInt16();
+    const int hat = msg.readInt16(); // head option top
+    const int topClothes = msg.readInt16();
 
     tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(msg.readInt16()));
 
-    int misc2 = msg.readInt16();
+    const int misc2 = msg.readInt16();
     tempPlayer->setName(msg.readString(24));
 
     character->dummy = tempPlayer;
@@ -343,11 +345,11 @@ void CharServerHandler::connect()
 void CharServerHandler::processCharLogin(Net::MessageIn &msg)
 {
     msg.skip(2);  // Length word
-    int slots = msg.readInt16();
+    const int slots = msg.readInt16();
     if (slots > 0 && slots < 30)
         loginData.characterSlots = static_cast<short unsigned int>(slots);
 
-    bool version = msg.readInt8() == 1 && serverVersion > 0;
+    const bool version = msg.readInt8() == 1 && serverVersion > 0;
     msg.skip(17); // 0 Unused
 
     delete_all(mCharacters);
@@ -362,7 +364,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
 
     for (int i = 0; i < count; ++i)
     {
-        Net::Character *character = new Net::Character;
+        Net::Character *const character = new Net::Character;
         readPlayerData(msg, character, version);
         mCharacters.push_back(character);
         if (character && character->dummy)

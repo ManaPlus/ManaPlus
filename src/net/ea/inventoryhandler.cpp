@@ -185,7 +185,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
     }
 
     msg.readInt16();  // length
-    int number = (msg.getLength() - 4) / 18;
+    const int number = (msg.getLength() - 4) / 18;
 
     for (int loop = 0; loop < number; loop++)
     {
@@ -214,7 +214,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
         if (playerInvintory)
         {
             // Trick because arrows are not considered equipment
-            bool isEquipment = arrow & 0x8000;
+            const bool isEquipment = arrow & 0x8000;
 
             if (inventory)
             {
@@ -237,7 +237,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
     unsigned char identified;
 
     msg.readInt16();  // length
-    int number = (msg.getLength() - 4) / 20;
+    const int number = (msg.getLength() - 4) / 20;
 
     for (int loop = 0; loop < number; loop++)
     {
@@ -300,7 +300,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
 
-    unsigned char err = msg.readInt8();
+    const unsigned char err = msg.readInt8();
     if (mSentPickups.empty())
     {
         floorId = 0;
@@ -326,7 +326,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 
         if (inventory)
         {
-            Item *item = inventory->getItem(index);
+            const Item *const item = inventory->getItem(index);
 
             if (item && item->getId() == itemId)
                 amount += item->getQuantity();
@@ -351,7 +351,7 @@ void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
     amount = msg.readInt16();
     if (inventory)
     {
-        if (Item *item = inventory->getItem(index))
+        if (Item *const item = inventory->getItem(index))
         {
             item->increaseQuantity(-amount);
             if (item->getQuantity() == 0)
@@ -377,7 +377,7 @@ void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
 
     if (inventory)
     {
-        if (Item *item = inventory->getItem(index))
+        if (Item *const item = inventory->getItem(index))
         {
             if (amount)
                 item->setQuantity(amount);
@@ -405,7 +405,7 @@ void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
     {
         if (inventory)
         {
-            if (Item *item = inventory->getItem(index))
+            if (Item *const item = inventory->getItem(index))
             {
                 if (amount)
                     item->setQuantity(amount);
@@ -424,7 +424,7 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
       * packets that update storage contents.
       */
     msg.readInt16(); // Used count
-    int size = msg.readInt16(); // Max size
+    const int size = msg.readInt16(); // Max size
 
     if (!mStorage)
         mStorage = new Inventory(Inventory::STORAGE, size);
@@ -456,7 +456,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     for (int i = 0; i < 4; i++)
         msg.readInt16(); // card i
 
-    if (Item *item = mStorage->getItem(index))
+    if (Item *const item = mStorage->getItem(index))
     {
         item->setId(itemId, identified);
         item->increaseQuantity(amount);
@@ -483,7 +483,7 @@ void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
     amount = msg.readInt16();
     if (mStorage)
     {
-        if (Item *item = mStorage->getItem(index))
+        if (Item *const item = mStorage->getItem(index))
         {
             item->increaseQuantity(-amount);
             if (item->getQuantity() == 0)
@@ -528,7 +528,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
     {
         index = msg.readInt16() - INVENTORY_OFFSET;
         itemId = msg.readInt16();
-        int itemType = msg.readInt8();  // type
+        const int itemType = msg.readInt8();  // type
         identified = msg.readInt8();  // identify flag
 
         msg.readInt16(); // equip type
@@ -561,9 +561,9 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 {
-    int index = msg.readInt16() - INVENTORY_OFFSET;
-    int equipType = msg.readInt16();
-    int flag = msg.readInt8();
+    const int index = msg.readInt16() - INVENTORY_OFFSET;
+    const int equipType = msg.readInt16();
+    const int flag = msg.readInt8();
 
     if (!flag)
         SERVER_NOTICE(_("Unable to equip."))
@@ -574,8 +574,8 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 {
     msg.readInt16(); // inder val - INVENTORY_OFFSET;
-    int equipType = msg.readInt16();
-    int flag = msg.readInt8();
+    const int equipType = msg.readInt16();
+    const int flag = msg.readInt8();
 
     if (flag)
         mEquips.setEquipment(getSlot(equipType), -1);
@@ -585,7 +585,7 @@ void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
 {
-    int range = msg.readInt16();
+    const int range = msg.readInt16();
     if (player_node)
         player_node->setAttackRange(range);
     PlayerInfo::setStatBase(PlayerInfo::ATTACK_RANGE, range);

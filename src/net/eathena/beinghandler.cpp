@@ -267,7 +267,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
     if (!(dstBeing = actorSpriteManager->findBeing(msg.readInt32())))
         return;
 
-    int type = msg.readInt8();
+    const int type = msg.readInt8();
     int id = 0;
     int id2 = 0;
     std::string color;
@@ -391,8 +391,8 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
 
     Being *dstBeing;
 
-    int len = msg.readInt16();
-    int beingId = msg.readInt32();
+    const int len = msg.readInt16();
+    const int beingId = msg.readInt32();
     std::string str = msg.readString(len - 8);
     if ((dstBeing = actorSpriteManager->findBeing(beingId)))
     {
@@ -411,10 +411,10 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
 
             if (player_node)
             {
-                Party *party = player_node->getParty();
+                const Party *const party = player_node->getParty();
                 if (party && party->isMember(dstBeing->getId()))
                 {
-                    PartyMember *member = party->getMember(
+                    PartyMember *const member = party->getMember(
                         dstBeing->getId());
 
                     if (member)
@@ -440,14 +440,14 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     int hairStyle, hairColor;
 
     // An update about a player, potentially including movement.
-    int id = msg.readInt32();
-    short speed = msg.readInt16();
-    uint16_t stunMode = msg.readInt16(); // opt1; Aethyra use this as cape
-    uint32_t statusEffects = msg.readInt16(); // opt2;
-                                              // Aethyra use this as misc1
+    const int id = msg.readInt32();
+    const short speed = msg.readInt16();
+    const uint16_t stunMode = msg.readInt16(); // opt1
+    uint32_t statusEffects = msg.readInt16(); // opt2
+
     statusEffects |= (static_cast<uint32_t>(msg.readInt16()))
         << 16; // status.options; Aethyra uses this as misc2
-    short job = msg.readInt16();
+    const short job = msg.readInt16();
 
     dstBeing = actorSpriteManager->findBeing(id);
 
@@ -469,7 +469,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
             dstBeing->setDirection(dir);
     }
 
-    if (Party *party = player_node->getParty())
+    if (Party *const party = player_node->getParty())
     {
         if (party->isMember(id))
             dstBeing->setParty(party);
@@ -545,7 +545,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
 
         if (srcX != dstX || srcY != dstY)
         {
-            int d = dstBeing->calcDirection(dstX, dstY);
+            const int d = dstBeing->calcDirection(dstX, dstY);
 
             if (d && dstBeing->getDirection() != d)
                 dstBeing->setDirectionDelayed(static_cast<uint8_t>(d));
@@ -577,7 +577,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
 
     if (msgType == 1 || msgType == 2)
     {
-        int type = msg.readInt8();
+        const int type = msg.readInt8();
         switch (type)
         {
             case 0:
@@ -822,7 +822,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
         if (job == 45 && socialWindow && outfitWindow)
         {
-            int num = socialWindow->getPortalIndex(x, y);
+            const int num = socialWindow->getPortalIndex(x, y);
             if (num >= 0)
             {
                 dstBeing->setName(keyboard.getKeyShortString(

@@ -101,18 +101,18 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
 void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 {
     msg.readInt16();  // length
-    int sz = 11;
-    int n_items = (msg.getLength() - 4) / sz;
+    const int sz = 11;
+    const int n_items = (msg.getLength() - 4) / sz;
     mBuyDialog = new BuyDialog(mNpcId);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
 
     for (int k = 0; k < n_items; k++)
     {
-        int value = msg.readInt32();
+        const int value = msg.readInt32();
         msg.readInt32();  // DCvalue
         msg.readInt8();  // type
-        int itemId = msg.readInt16();
-        unsigned char color = 1;
+        const int itemId = msg.readInt16();
+        const unsigned char color = 1;
         mBuyDialog->addItem(itemId, color, 0, value);
     }
 }

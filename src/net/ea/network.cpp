@@ -44,7 +44,7 @@ const unsigned int BUFFER_LIMIT = 930000;
 
 int networkThread(void *data)
 {
-    Network *network = static_cast<Network*>(data);
+    Network *const network = static_cast<Network *const>(data);
 
     if (!network || !network->realConnect())
         return -1;
@@ -62,11 +62,12 @@ Network::Network() :
     mOutSize(0),
     mToSkip(0),
     mState(IDLE),
-    mWorkerThread(nullptr)
+    mWorkerThread(nullptr),
+    mMutex(SDL_CreateMutex()),
+    mSleep(config.getIntValue("networksleep"))
 {
     SDLNet_Init();
 
-    mMutex = SDL_CreateMutex();
 }
 
 Network::~Network()
@@ -135,9 +136,8 @@ void Network::disconnect()
         // need call SDLNet_TCP_DelSocket?
         SDLNet_TCP_Close(mSocket);
         mSocket = nullptr;
-        int sleep = config.getIntValue("networksleep");
-        if (sleep > 0)
-            SDL_Delay(sleep);
+        if (mSleep > 0)
+            SDL_Delay(mSleep);
     }
 }
 
@@ -237,7 +237,8 @@ void Network::receive()
     {
         // TODO Try to get this to block all the time while still being able
         // to escape the loop
-        int numReady = SDLNet_CheckSockets(set, (static_cast<uint32_t>(500)));
+        const int numReady = SDLNet_CheckSockets(
+            set, (static_cast<uint32_t>(500)));
         int ret;
         switch (numReady)
         {

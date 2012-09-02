@@ -103,11 +103,11 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
     if (Ea::taParty)
         Ea::taParty->clearMembers();
 
-    int length = msg.readInt16();
+    const int length = msg.readInt16();
     if (Ea::taParty)
         Ea::taParty->setName(msg.readString(24));
 
-    int count = (length - 28) / 46;
+    const int count = (length - 28) / 46;
     if (player_node && Ea::taParty)
     {
         player_node->setParty(Ea::taParty);
@@ -116,11 +116,11 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
 
     for (int i = 0; i < count; i++)
     {
-        int id = msg.readInt32();
+        const int id = msg.readInt32();
         std::string nick = msg.readString(24);
         std::string map = msg.readString(16);
-        bool leader = msg.readInt8() == 0;
-        bool online = msg.readInt8() == 0;
+        const bool leader = msg.readInt8() == 0;
+        const bool online = msg.readInt8() == 0;
 
         if (Ea::taParty)
         {
@@ -195,10 +195,10 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg)
 
 void PartyHandler::processPartyInvited(Net::MessageIn &msg)
 {
-    int id = msg.readInt32();
+    const int id = msg.readInt32();
     std::string partyName = msg.readString(24);
     std::string nick("");
-    Being *being;
+    const Being *being;
 
     if (actorSpriteManager)
     {
@@ -225,8 +225,8 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     }
 
     // These seem to indicate the sharing mode for exp and items
-    short exp = msg.readInt16();
-    short item = msg.readInt16();
+    const short exp = msg.readInt16();
+    const short item = msg.readInt16();
 
     if (!Ea::partyTab)
         return;
@@ -310,7 +310,7 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
 
 void PartyHandler::processPartyMove(Net::MessageIn &msg)
 {
-    int id = msg.readInt32();    // id
+    const int id = msg.readInt32();    // id
     PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
@@ -338,7 +338,7 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg)
 
 void PartyHandler::processPartyLeave(Net::MessageIn &msg)
 {
-    int id = msg.readInt32();
+    const int id = msg.readInt32();
     std::string nick = msg.readString(24);
     msg.readInt8();     // fail
     if (!player_node)
@@ -369,7 +369,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
         }
         if (actorSpriteManager)
         {
-            Being *b = actorSpriteManager->findBeing(id);
+            Being *const b = actorSpriteManager->findBeing(id);
             if (b && b->getType() == Being::PLAYER)
             {
                 b->setParty(nullptr);
@@ -383,9 +383,9 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
 
 void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
 {
-    int id = msg.readInt32();
-    int hp = msg.readInt16();
-    int maxhp = msg.readInt16();
+    const int id = msg.readInt32();
+    const int hp = msg.readInt16();
+    const int maxhp = msg.readInt16();
     PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
@@ -399,14 +399,14 @@ void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
     // lets make sure they get the party hilight.
     if (actorSpriteManager && Ea::taParty)
     {
-        if (Being *b = actorSpriteManager->findBeing(id))
+        if (Being *const b = actorSpriteManager->findBeing(id))
             b->setParty(Ea::taParty);
     }
 }  
 
 void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg)
 {
-    int id = msg.readInt32(); // id
+    const int id = msg.readInt32(); // id
     PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
@@ -424,16 +424,16 @@ void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg)
 
 void PartyHandler::processPartyMessage(Net::MessageIn &msg)
 {
-    int msgLength = msg.readInt16() - 8;
+    const int msgLength = msg.readInt16() - 8;
     if (msgLength <= 0)
         return;
 
-    int id = msg.readInt32();
+    const int id = msg.readInt32();
     std::string chatMsg = msg.readString(msgLength);
 
     if (Ea::taParty && Ea::partyTab)
     {
-        PartyMember *member = Ea::taParty->getMember(id);
+        const PartyMember *const member = Ea::taParty->getMember(id);
         if (member)
         {
             Ea::partyTab->chatLog(member->getName(), chatMsg);

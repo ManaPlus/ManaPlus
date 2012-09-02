@@ -177,7 +177,7 @@ void ChatHandler::processRaw(MessageOut &outMsg, std::string &line)
     size_t pos = line.find(":");
     if (pos == std::string::npos)
     {
-        int i = atoi(line.c_str());
+        const int i = atoi(line.c_str());
         if (line.length() <= 3)
             outMsg.writeInt8(static_cast<char>(i));
         else if (line.length() <= 5)
@@ -221,16 +221,16 @@ void ChatHandler::processRaw(MessageOut &outMsg, std::string &line)
                 pos = line.find(",");
                 if (pos != std::string::npos)
                 {
-                    unsigned short x = static_cast<unsigned short>(
+                    const unsigned short x = static_cast<const unsigned short>(
                         atoi(data.substr(0, pos).c_str()));
                     data = data.substr(pos + 1);
                     pos = line.find(",");
                     if (pos == std::string::npos)
                         break;
 
-                    unsigned short y = static_cast<unsigned short>(
+                    const unsigned short y = static_cast<const unsigned short>(
                         atoi(data.substr(0, pos).c_str()));
-                    int dir = atoi(data.substr(pos + 1).c_str());
+                    const int dir = atoi(data.substr(pos + 1).c_str());
                     outMsg.writeCoordinates(x, y,
                         static_cast<unsigned char>(dir));
                 }

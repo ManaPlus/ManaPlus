@@ -124,7 +124,7 @@ void CharServerHandler::processCharLoginError(Net::MessageIn &msg)
 
 void CharServerHandler::processCharCreate(Net::MessageIn &msg, bool withColors)
 {
-    Net::Character *character = new Net::Character;
+    Net::Character *const character = new Net::Character;
     readPlayerData(msg, character, withColors);
     mCharacters.push_back(character);
 

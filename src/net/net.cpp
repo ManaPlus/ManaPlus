@@ -204,7 +204,7 @@ void connectToServer(const ServerInfo &server)
 
 void unload()
 {
-    GeneralHandler *handler = getGeneralHandler();
+    GeneralHandler *const handler = getGeneralHandler();
     if (handler)
         handler->unload();
 }

@@ -139,19 +139,19 @@ void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)
 void BuySellHandler::processNpcSell(Net::MessageIn &msg, int offset)
 {
     msg.readInt16();  // length
-    int n_items = (msg.getLength() - 4) / 10;
+    const int n_items = (msg.getLength() - 4) / 10;
     if (n_items > 0)
     {
-        SellDialog *dialog = new SellDialog(mNpcId);
+        SellDialog *const dialog = new SellDialog(mNpcId);
         dialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
 
         for (int k = 0; k < n_items; k++)
         {
-            int index = msg.readInt16() - offset;
-            int value = msg.readInt32();
-            msg.readInt32();  // OCvalue
+            const int index = msg.readInt16() - offset;
+            const int value = msg.readInt32();
+            msg.readInt32();  // value
 
-            Item *item = PlayerInfo::getInventory()->getItem(index);
+            const Item *const item = PlayerInfo::getInventory()->getItem(index);
 
             if (item && !(item->isEquipped()))
                 dialog->addItem(item, value);

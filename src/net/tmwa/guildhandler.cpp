@@ -202,7 +202,8 @@ void GuildHandler::invite(int guildId A_UNUSED,
     if (!actorSpriteManager)
         return;
 
-    Being* being = actorSpriteManager->findBeingByName(name, Being::PLAYER);
+    const Being *const being = actorSpriteManager->findBeingByName(
+        name, Being::PLAYER);
     if (being)
     {
         MessageOut msg(CMSG_GUILD_INVITE);

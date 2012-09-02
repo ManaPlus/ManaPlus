@@ -39,7 +39,8 @@
 
 #include "debug.h"
 
-MapLayer::MapLayer(int x, int y, int width, int height, bool fringeLayer):
+MapLayer::MapLayer(const int x, const int y, const int width, const int height,
+                   const bool fringeLayer):
     mX(x), mY(y),
     mWidth(width), mHeight(height),
     mIsFringeLayer(fringeLayer),
@@ -68,14 +69,15 @@ void MapLayer::optionChanged(const std::string &value)
     }
 }
 
-void MapLayer::setTile(int x, int y, Image *img)
+void MapLayer::setTile(const int x, const int y, Image *const img)
 {
     mTiles[x + y * mWidth] = img;
 }
 
-void MapLayer::draw(Graphics *graphics, int startX, int startY,
-                    int endX, int endY, int scrollX, int scrollY,
-                    int debugFlags) const
+void MapLayer::draw(Graphics *const graphics,
+                    int startX, int startY, int endX, int endY,
+                    const int scrollX, const int scrollY,
+                    const int debugFlags) const
 {
     if (!player_node)
         return;
@@ -113,7 +115,7 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
             const int x32 = x * 32;
 
             int c = 0;
-            Image *img = *tilePtr;
+            Image *const img = *tilePtr;
             if (img)
             {
                 const int px = x32 + dx;
@@ -141,9 +143,10 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
     }
 }
 
-void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
-                         int endX, int endY, int scrollX, int scrollY,
-                         int debugFlags)
+void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
+                         int endX, int endY,
+                         const int scrollX, const int scrollY,
+                         const int debugFlags)
 {
     delete_all(mTempRows);
     mTempRows.clear();
@@ -169,10 +172,10 @@ void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
 
     for (int y = startY; y < endY; y++)
     {
-        MapRowVertexes *row = new MapRowVertexes();
+        MapRowVertexes *const row = new MapRowVertexes();
         mTempRows.push_back(row);
 
-        Image *lastImage = nullptr;
+        const Image *lastImage = nullptr;
         ImageVertexes *imgVert = nullptr;
 
         const int yWidth = y * mWidth;
@@ -181,7 +184,7 @@ void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
 
         for (int x = startX; x < endX; x++, tilePtr++)
         {
-            Image *img = *tilePtr;
+            Image *const img = *tilePtr;
             if (img)
             {
                 const int px = x * 32 + dx;
@@ -202,15 +205,15 @@ void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
     }
 }
 
-void MapLayer::drawSDL(Graphics *graphics)
+void MapLayer::drawSDL(Graphics *const graphics)
 {
     MapRows::const_iterator rit = mTempRows.begin();
-    MapRows::const_iterator rit_end = mTempRows.end();
+    const MapRows::const_iterator rit_end = mTempRows.end();
     while (rit != rit_end)
     {
-        MepRowImages *images = &(*rit)->images;
+        MepRowImages *const images = &(*rit)->images;
         MepRowImages::const_iterator iit = images->begin();
-        MepRowImages::const_iterator iit_end = images->end();
+        const MepRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
         {
             graphics->drawTile(*iit);
@@ -220,9 +223,10 @@ void MapLayer::drawSDL(Graphics *graphics)
     }
 }
 
-void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
-                         int endX, int endY, int scrollX, int scrollY,
-                         int debugFlags)
+void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
+                         int endX, int endY,
+                         const int scrollX, const int scrollY,
+                         const int debugFlags)
 {
     delete_all(mTempRows);
     mTempRows.clear();
@@ -248,7 +252,7 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
 
     for (int y = startY; y < endY; y++)
     {
-        MapRowVertexes *row = new MapRowVertexes();
+        MapRowVertexes *const row = new MapRowVertexes();
         mTempRows.push_back(row);
 
         Image *lastImage = nullptr;
@@ -261,7 +265,7 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
         Image **tilePtr = mTiles + startX + yWidth;
         for (int x = startX; x < endX; x++, tilePtr++)
         {
-            Image *img = *tilePtr;
+            Image *const img = *tilePtr;
             if (img)
             {
                 const int px = x * 32 + dx;
@@ -293,15 +297,15 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
     }
 }
 
-void MapLayer::drawOGL(Graphics *graphics)
+void MapLayer::drawOGL(Graphics *const graphics)
 {
     MapRows::const_iterator rit = mTempRows.begin();
-    MapRows::const_iterator rit_end = mTempRows.end();
+    const MapRows::const_iterator rit_end = mTempRows.end();
     while (rit != rit_end)
     {
-        MepRowImages *images = &(*rit)->images;
+        MepRowImages *const images = &(*rit)->images;
         MepRowImages::const_iterator iit = images->begin();
-        MepRowImages::const_iterator iit_end = images->end();
+        const MepRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
         {
             graphics->drawTile(*iit);
@@ -311,9 +315,11 @@ void MapLayer::drawOGL(Graphics *graphics)
     }
 }
 
-void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
-                          int endX, int endY, int scrollX, int scrollY,
-                          const Actors *actors, int debugFlags, int yFix) const
+void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
+                          int endX, int endY,
+                          const int scrollX, const int scrollY,
+                          const Actors *const actors,
+                          const int debugFlags, const int yFix) const
 {
     if (!player_node || !mSpecialLayer || !mTempLayer)
         return;
@@ -333,13 +339,13 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
         endY = mHeight;
 
     ActorsCIter ai = actors->begin();
-    ActorsCIter ai_end = actors->end();
+    const ActorsCIter ai_end = actors->end();
 
     const int dx = (mX * 32) - scrollX;
     const int dy = (mY * 32) - scrollY + 32;
 
-    int specialWidth = mSpecialLayer->mWidth;
-    int specialHeight = mSpecialLayer->mHeight;
+    const int specialWidth = mSpecialLayer->mWidth;
+    const int specialHeight = mSpecialLayer->mHeight;
 
     for (int y = startY; y < endY; y++)
     {
@@ -360,7 +366,7 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
         {
             if (y < specialHeight)
             {
-                int ptr = y * specialWidth;
+                const int ptr = y * specialWidth;
                 const int py1 = y32 - scrollY;
                 int endX1 = endX;
                 if (endX1 > specialWidth)
@@ -394,7 +400,7 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
 
                 const int px1 = x32 - scrollX;
                 int c = 0;
-                Image *img = *tilePtr;
+                Image *const img = *tilePtr;
                 if (img)
                 {
                     const int px = x32 + dx;
@@ -427,12 +433,12 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
                     if (c1 < 0)
                         c1 = 0;
 
-                    int ptr = y * specialWidth + x;
+                    const int ptr = y * specialWidth + x;
 
                     for (int x1 = 0; x1 < c1 + 1; x1 ++)
                     {
-                        MapItem *item1 = mSpecialLayer->mTiles[ptr + x1];
-                        MapItem *item2 = mTempLayer->mTiles[ptr + x1];
+                        MapItem *const item1 = mSpecialLayer->mTiles[ptr + x1];
+                        MapItem *const item2 = mTempLayer->mTiles[ptr + x1];
                         if (item1 || item2)
                         {
                             const int px2 = px1 + (x1 * 32);
@@ -495,9 +501,10 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
     }
 }
 
-int MapLayer::getTileDrawWidth(Image *img, int endX, int &width) const
+int MapLayer::getTileDrawWidth(const Image *img,
+                               const int endX, int &width) const
 {
-    Image *img1 = img;
+    const Image *const img1 = img;
     int c = 0;
     if (!img1)
     {
@@ -517,7 +524,8 @@ int MapLayer::getTileDrawWidth(Image *img, int endX, int &width) const
     return c;
 }
 
-SpecialLayer::SpecialLayer(int width, int height, bool drawSprites):
+SpecialLayer::SpecialLayer(const int width, const int height,
+                           const bool drawSprites) :
     mWidth(width), mHeight(height),
     mDrawSprites(drawSprites)
 {
@@ -536,7 +544,7 @@ SpecialLayer::~SpecialLayer()
     delete [] mTiles;
 }
 
-MapItem* SpecialLayer::getTile(int x, int y) const
+MapItem* SpecialLayer::getTile(const int x, const int y) const
 {
     if (x < 0 || x >= mWidth ||
         y < 0 || y >= mHeight)
@@ -546,7 +554,7 @@ MapItem* SpecialLayer::getTile(int x, int y) const
     return mTiles[x + y * mWidth];
 }
 
-void SpecialLayer::setTile(int x, int y, MapItem *item)
+void SpecialLayer::setTile(const int x, const int y, MapItem *const item)
 {
     if (x < 0 || x >= mWidth ||
         y < 0 || y >= mHeight)
@@ -554,14 +562,14 @@ void SpecialLayer::setTile(int x, int y, MapItem *item)
         return;
     }
 
-    int idx = x + y * mWidth;
+    const int idx = x + y * mWidth;
     delete mTiles[idx];
     if (item)
         item->setPos(x, y);
     mTiles[idx] = item;
 }
 
-void SpecialLayer::setTile(int x, int y, int type)
+void SpecialLayer::setTile(const int x, const int y, const int type)
 {
     if (x < 0 || x >= mWidth ||
         y < 0 || y >= mHeight)
@@ -569,7 +577,7 @@ void SpecialLayer::setTile(int x, int y, int type)
         return;
     }
 
-    int idx = x + y * mWidth;
+    const int idx = x + y * mWidth;
     if (mTiles[idx])
         mTiles[idx]->setType(type);
     else
@@ -582,7 +590,7 @@ void SpecialLayer::addRoad(Path road)
     for (Path::const_iterator i = road.begin(), i_end = road.end();
          i != i_end; ++i)
     {
-        Position pos = (*i);
+        const Position &pos = (*i);
         MapItem *item = getTile(pos.x, pos.y);
         if (!item)
         {
@@ -603,14 +611,15 @@ void SpecialLayer::clean()
 
     for (int f = 0; f < mWidth * mHeight; f ++)
     {
-        MapItem *item = mTiles[f];
+        MapItem *const item = mTiles[f];
         if (item)
             item->setType(MapItem::EMPTY);
     }
 }
 
-void SpecialLayer::draw(Graphics *graphics, int startX, int startY,
-                        int endX, int endY, int scrollX, int scrollY)
+void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
+                        int endX, int endY,
+                        const int scrollX, const int scrollY)
 {
     if (startX < 0)
         startX = 0;
@@ -628,10 +637,10 @@ void SpecialLayer::draw(Graphics *graphics, int startX, int startY,
     }
 }
 
-void SpecialLayer::itemDraw(Graphics *graphics, int x, int y,
-                            int scrollX, int scrollY)
+void SpecialLayer::itemDraw(Graphics *const graphics, const int x, const int y,
+                            const int scrollX, const int scrollY) const
 {
-    MapItem *item = getTile(x, y);
+    MapItem *const item = getTile(x, y);
     if (item)
     {
         const int px = x * 32 - scrollX;
@@ -647,19 +656,20 @@ MapItem::MapItem():
     setType(EMPTY);
 }
 
-MapItem::MapItem(int type):
+MapItem::MapItem(const int type):
     mImage(nullptr), mComment(""), mName(""), mX(-1), mY(-1)
 {
     setType(type);
 }
 
-MapItem::MapItem(int type, std::string comment):
+MapItem::MapItem(const int type, std::string comment):
     mImage(nullptr), mComment(comment), mName(""), mX(-1), mY(-1)
 {
     setType(type);
 }
 
-MapItem::MapItem(int type, std::string comment, int x, int y):
+MapItem::MapItem(const int type, std::string comment,
+                 const int x, const int y):
     mImage(nullptr), mComment(comment), mName(""), mX(x), mY(y)
 {
     setType(type);
@@ -674,7 +684,7 @@ MapItem::~MapItem()
     }
 }
 
-void MapItem::setType(int type)
+void MapItem::setType(const int type)
 {
     std::string name("");
     mType = type;
@@ -701,7 +711,7 @@ void MapItem::setType(int type)
 
     if (name != "")
     {
-        ResourceManager *resman = ResourceManager::getInstance();
+        ResourceManager *const resman = ResourceManager::getInstance();
         mImage = resman->getImage(name);
     }
     else
@@ -710,13 +720,14 @@ void MapItem::setType(int type)
     }
 }
 
-void MapItem::setPos(int x, int y)
+void MapItem::setPos(const int x, const int y)
 {
     mX = x;
     mY = y;
 }
 
-void MapItem::draw(Graphics *graphics, int x, int y, int dx, int dy)
+void MapItem::draw(Graphics *const graphics, const int x, const int y,
+                   const int dx, const int dy) const
 {
     if (mImage)
         graphics->drawImage(mImage, x, y);
@@ -749,7 +760,7 @@ void MapItem::draw(Graphics *graphics, int x, int y, int dx, int dy)
     }
     if (!mName.empty() && mType != PORTAL && mType != EMPTY)
     {
-        gcn::Font *font = gui->getFont();
+        gcn::Font *const font = gui->getFont();
         if (font)
         {
             graphics->setColor(userPalette->getColor(UserPalette::BEING));
@@ -758,7 +769,7 @@ void MapItem::draw(Graphics *graphics, int x, int y, int dx, int dy)
     }
 }
 
-ObjectsLayer::ObjectsLayer(unsigned width, unsigned height) :
+ObjectsLayer::ObjectsLayer(const unsigned width, const unsigned height) :
     mWidth(width), mHeight(height)
 {
     const unsigned size = width * height;
@@ -776,8 +787,8 @@ ObjectsLayer::~ObjectsLayer()
     mTiles = nullptr;
 }
 
-void ObjectsLayer::addObject(std::string name, int type,
-                             unsigned x, unsigned y,
+void ObjectsLayer::addObject(std::string name, const int type,
+                             const unsigned x, const unsigned y,
                              unsigned dx, unsigned dy)
 {
     if (!mTiles)
@@ -790,8 +801,8 @@ void ObjectsLayer::addObject(std::string name, int type,
 
     for (unsigned y1 = y; y1 < y + dy; y1 ++)
     {
-        unsigned idx1 = x + y1 * mWidth;
-        unsigned idx2 = idx1 + dx;
+        const unsigned idx1 = x + y1 * mWidth;
+        const unsigned idx2 = idx1 + dx;
 
         for (unsigned i = idx1; i < idx2; i ++)
         {
@@ -802,7 +813,7 @@ void ObjectsLayer::addObject(std::string name, int type,
     }
 }
 
-MapObjectList *ObjectsLayer::getAt(unsigned x, unsigned y)
+MapObjectList *ObjectsLayer::getAt(const unsigned x, const unsigned y) const
 {
     if (x >= mWidth || y >= mHeight)
         return nullptr;
