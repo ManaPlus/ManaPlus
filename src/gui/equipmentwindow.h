@@ -135,6 +135,7 @@ class EquipmentWindow : public Window, public gcn::ActionListener
         std::vector<EquipmentBox*> mBoxes;
         gcn::Color mHighlightColor;
         gcn::Color mBorderColor;
+        gcn::Color mLabelsColor;
 };
 
 extern EquipmentWindow *equipmentWindow;

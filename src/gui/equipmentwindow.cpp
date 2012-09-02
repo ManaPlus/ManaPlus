@@ -103,7 +103,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
 
     mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
     mBorderColor = Theme::getThemeColor(Theme::BORDER);
-    setForegroundColor(Theme::getThemeColor(Theme::LABEL));
+    mLabelsColor = Theme::getThemeColor(Theme::LABEL);
 }
 
 EquipmentWindow::~EquipmentWindow()
@@ -174,7 +174,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
                 g->drawImage(image, box->x + 2, box->y + 2);
                 if (i == EQUIP_PROJECTILE_SLOT)
                 {
-                    g->setColor(getForegroundColor());
+                    g->setColor(mLabelsColor);
                     graphics->drawText(toString(item->getQuantity()),
                         box->x + (BOX_WIDTH / 2), box->y - fontHeight,
                         gcn::Graphics::CENTER);
