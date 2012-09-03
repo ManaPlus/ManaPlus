@@ -147,7 +147,7 @@ void Sound::init()
         playMusic(mCurrentMusicFile);
 }
 
-void Sound::info()
+void Sound::info() const
 {
     SDL_version compiledVersion;
     const SDL_version *linkedVersion;
@@ -195,7 +195,7 @@ void Sound::info()
     logger->log("Sound::info() Channels: %i", channels);
 }
 
-void Sound::setMusicVolume(int volume)
+void Sound::setMusicVolume(const int volume)
 {
     mMusicVolume = volume;
 
@@ -203,7 +203,7 @@ void Sound::setMusicVolume(int volume)
         Mix_VolumeMusic(mMusicVolume);
 }
 
-void Sound::setSfxVolume(int volume)
+void Sound::setSfxVolume(const int volume)
 {
     mSfxVolume = volume;
 
@@ -213,7 +213,7 @@ void Sound::setSfxVolume(int volume)
 
 static Music *loadMusic(const std::string &fileName)
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     return resman->getMusic(paths.getStringValue("music") + fileName);
 }
 
@@ -239,7 +239,7 @@ void Sound::stopMusic()
     haltMusic();
 }
 
-void Sound::fadeInMusic(const std::string &fileName, int ms)
+void Sound::fadeInMusic(const std::string &fileName, const int ms)
 {
     mCurrentMusicFile = fileName;
 
@@ -256,7 +256,7 @@ void Sound::fadeInMusic(const std::string &fileName, int ms)
     }
 }
 
-void Sound::fadeOutMusic(int ms)
+void Sound::fadeOutMusic(const int ms)
 {
     mCurrentMusicFile.clear();
 
@@ -277,7 +277,7 @@ void Sound::fadeOutMusic(int ms)
     }
 }
 
-void Sound::fadeOutAndPlayMusic(const std::string &fileName, int ms)
+void Sound::fadeOutAndPlayMusic(const std::string &fileName, const int ms)
 {
     mNextMusicFile = fileName;
     fadeOutMusic(ms);
@@ -302,7 +302,7 @@ void Sound::logic()
     }
 }
 
-void Sound::playSfx(const std::string &path, int x, int y)
+void Sound::playSfx(const std::string &path, const int x, const int y) const
 {
     if (!mInstalled || path.empty() || !mPlayBattle)
         return;
@@ -312,8 +312,8 @@ void Sound::playSfx(const std::string &path, int x, int y)
         tmpPath = path;
     else
         tmpPath = paths.getValue("sfx", "sfx/") + path;
-    ResourceManager *resman = ResourceManager::getInstance();
-    SoundEffect *sample = resman->getSoundEffect(tmpPath);
+    ResourceManager *const resman = ResourceManager::getInstance();
+    SoundEffect *const sample = resman->getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("Sound::playSfx() Playing: %s", path.c_str());
@@ -326,7 +326,7 @@ void Sound::playSfx(const std::string &path, int x, int y)
                 dx = -dx;
             if (dy < 0)
                 dy = -dy;
-            int dist = dx > dy ? dx : dy;
+            const int dist = dx > dy ? dx : dy;
             if (dist * 8 > vol)
                 return;
 
@@ -352,12 +352,12 @@ void Sound::playGuiSfx(const std::string &path)
         tmpPath = path;
     else
         tmpPath = paths.getValue("sfx", "sfx/") + path;
-    ResourceManager *resman = ResourceManager::getInstance();
-    SoundEffect *sample = resman->getSoundEffect(tmpPath);
+    ResourceManager *const resman = ResourceManager::getInstance();
+    SoundEffect *const sample = resman->getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("Sound::playGuiSfx() Playing: %s", path.c_str());
-        int ret = sample->play(0, 120, mGuiChannel);
+        const int ret = sample->play(0, 120, mGuiChannel);
         if (ret != -1)
             mGuiChannel = ret;
     }
@@ -396,7 +396,7 @@ void Sound::changeAudio()
         init();
 }
 
-void Sound::volumeOff()
+void Sound::volumeOff() const
 {
     if (mInstalled)
     {

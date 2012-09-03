@@ -44,7 +44,7 @@ struct SpriteReference
         sprite(""), variant(0)
     {}
 
-    SpriteReference(std::string sprite0, int variant0) :
+    SpriteReference(const std::string &sprite0, const int variant0) :
         sprite(sprite0), variant(variant0)
     {
     }
@@ -113,14 +113,14 @@ class SpriteDef : public Resource
         /**
          * Loads a sprite definition file.
          */
-        static SpriteDef *load(const std::string &file, int variant);
+        static SpriteDef *load(const std::string &file, const int variant);
 
         /**
          * Returns the specified action.
          */
-        Action *getAction(std::string action, unsigned num) const;
+        Action *getAction(const std::string &action, const unsigned num) const;
 
-        unsigned findNumber(unsigned num) const;
+        unsigned findNumber(const unsigned num) const;
 
         /**
          * Converts a string into a SpriteDirection enum.
@@ -129,12 +129,15 @@ class SpriteDef : public Resource
 
         makeSpriteDirection(const std::string &direction);
 
-        void addAction(unsigned hp, std::string name, Action *action);
+        void addAction(const unsigned hp, const std::string &name,
+                       Action *const action);
 
-        bool addSequence(int start, int end, int delay,
-                         int offsetX, int offsetY, int variant_offset,
-                         int repeat, int rand, ImageSet *imageSet,
-                         Animation *animation);
+        bool addSequence(const int start, const int end, const int delay,
+                         const int offsetX, const int offsetY,
+                         const int variant_offset,
+                         int repeat, const int rand,
+                         ImageSet *const imageSet,
+                         Animation *const animation) const;
 
     private:
         /**
@@ -151,30 +154,30 @@ class SpriteDef : public Resource
         /**
          * Loads a sprite element.
          */
-        void loadSprite(XmlNodePtr spriteNode, int variant,
+        void loadSprite(const XmlNodePtr spriteNode, const int variant,
                         const std::string &palettes = "");
 
         /**
          * Loads an imageset element.
          */
-        void loadImageSet(XmlNodePtr node, const std::string &palettes);
+        void loadImageSet(const XmlNodePtr node, const std::string &palettes);
 
         /**
          * Loads an action element.
          */
-        void loadAction(XmlNodePtr node, int variant_offset);
+        void loadAction(const XmlNodePtr node, const int variant_offset);
 
         /**
          * Loads an animation element.
          */
-        void loadAnimation(XmlNodePtr animationNode,
-                           Action *action, ImageSet *imageSet,
-                           int variant_offset);
+        void loadAnimation(const XmlNodePtr animationNode,
+                           Action *const action, ImageSet *const imageSet,
+                           const int variant_offset);
 
         /**
          * Include another sprite into this one.
          */
-        void includeSprite(XmlNodePtr includeNode);
+        void includeSprite(const XmlNodePtr includeNode);
 
         /**
          * Complete missing actions by copying existing ones.

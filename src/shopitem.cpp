@@ -29,8 +29,9 @@
 
 #include "debug.h"
 
-ShopItem::ShopItem(int inventoryIndex, int id, unsigned char color,
-                   int quantity, int price) :
+ShopItem::ShopItem(const int inventoryIndex, const int id,
+                   const unsigned char color,
+                   const int quantity, const int price) :
     Item(id, 0, 0, color),
     mPrice(price),
     mShowQuantity(true)
@@ -52,7 +53,7 @@ ShopItem::ShopItem(int inventoryIndex, int id, unsigned char color,
     addDuplicate(inventoryIndex, quantity);
 }
 
-ShopItem::ShopItem (int id, unsigned char color, int price) :
+ShopItem::ShopItem (const int id, const unsigned char color, const int price) :
     Item (id, 0, 0, color),
     mPrice(price),
     mShowQuantity(false)
@@ -100,9 +101,9 @@ void ShopItem::update()
     }
 }
 
-void ShopItem::addDuplicate(int inventoryIndex, int quantity)
+void ShopItem::addDuplicate(const int inventoryIndex, const int quantity)
 {
-    DuplicateItem* di = new DuplicateItem;
+    DuplicateItem *const di = new DuplicateItem;
     di->inventoryIndex = inventoryIndex;
     di->quantity = quantity;
     mDuplicates.push(di);
@@ -111,19 +112,20 @@ void ShopItem::addDuplicate(int inventoryIndex, int quantity)
 
 void ShopItem::addDuplicate()
 {
-    DuplicateItem* di = new DuplicateItem;
+    DuplicateItem *const di = new DuplicateItem;
     di->inventoryIndex = -1;
     di->quantity = 0;
     mDuplicates.push(di);
 }
 
-int ShopItem::sellCurrentDuplicate(int quantity)
+int ShopItem::sellCurrentDuplicate(const int quantity)
 {
     DuplicateItem* dupl = mDuplicates.top();
     if (!dupl)
         return 0;
 
-    int sellCount = quantity <= dupl->quantity ? quantity : dupl->quantity;
+    const int sellCount = quantity <= dupl->quantity
+        ? quantity : dupl->quantity;
     dupl->quantity -= sellCount;
     mQuantity -= sellCount;
     if (dupl->quantity == 0)

@@ -32,34 +32,35 @@ class StatusEffect
 {
 public:
     StatusEffect();
+
     ~StatusEffect();
 
     /**
      * Plays the sound effect associated with this status effect, if possible.
      */
-    void playSFX();
+    void playSFX() const;
 
     /**
      * Delivers the chat message associated with this status effect, if
      * possible.
      */
-    void deliverMessage();
+    void deliverMessage() const;
 
     /**
      * Creates the particle effect associated with this status effect, if
      * possible.
      */
-    Particle *getParticle();
+    Particle *getParticle() const;
 
     /**
      * Retrieves the status icon for this effect, if applicable
      */
-    AnimatedSprite *getIcon();
+    AnimatedSprite *getIcon() const;
 
     /**
      * Retrieves an action to perform, or SpriteAction::INVALID
      */
-    std::string getAction();
+    std::string getAction() const;
 
     /**
      * Determines whether the particle effect should be restarted when the
@@ -76,7 +77,7 @@ public:
      * \param enabling Whether to retrieve the activating effect (true) or
      *    the deactivating effect (false).
      */
-    static StatusEffect *getStatusEffect(int index, bool enabling);
+    static StatusEffect *getStatusEffect(const int index, const bool enabling);
 
     /**
      * Retrieves a stun effect.
@@ -94,7 +95,7 @@ public:
      *
      * Returns -1 on failure.
      */
-    static int blockEffectIndexToEffectIndex(int blocKIndex);
+    static int blockEffectIndexToEffectIndex(const int blocKIndex);
 
     static void load();
 

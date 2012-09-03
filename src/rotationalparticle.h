@@ -34,9 +34,9 @@ class SimpleAnimation;
 class RotationalParticle : public ImageParticle
 {
     public:
-        RotationalParticle(Map *map, Animation *animation);
+        RotationalParticle(Map *const map, Animation *const animation);
 
-        RotationalParticle(Map *map, XmlNodePtr animationNode,
+        RotationalParticle(Map *const map, const XmlNodePtr animationNode,
                            const std::string& dyePalettes = std::string());
 
         ~RotationalParticle();

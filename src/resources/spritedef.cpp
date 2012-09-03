@@ -38,7 +38,8 @@
 SpriteReference *SpriteReference::Empty = nullptr;
 extern int serverVersion;
 
-Action *SpriteDef::getAction(std::string action, unsigned num) const
+Action *SpriteDef::getAction(const std::string &action,
+                             const unsigned num) const
 {
     Actions::const_iterator i = mActions.find(num);
     if (i == mActions.end() && num != 100)
@@ -47,7 +48,7 @@ Action *SpriteDef::getAction(std::string action, unsigned num) const
     if (i == mActions.end() || !(*i).second)
         return nullptr;
 
-    ActionMap::const_iterator it = ((*i).second)->find(action);
+    const ActionMap::const_iterator it = ((*i).second)->find(action);
 
     if (it == ((*i).second)->end())
     {
@@ -58,13 +59,13 @@ Action *SpriteDef::getAction(std::string action, unsigned num) const
     return (*it).second;
 }
 
-unsigned SpriteDef::findNumber(unsigned num) const
+unsigned SpriteDef::findNumber(const unsigned num) const
 {
     unsigned min = 101;
     for (Actions::const_iterator it = mActions.begin(),
          it_end = mActions.end(); it != it_end; ++ it)
     {
-        unsigned n = (*it).first;
+        const unsigned n = (*it).first;
         if (n >= num && n < min)
             min = n;
     }
@@ -73,7 +74,7 @@ unsigned SpriteDef::findNumber(unsigned num) const
     return min;
 }
 
-SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
+SpriteDef *SpriteDef::load(const std::string &animationFile, const int variant)
 {
     size_t pos = animationFile.find('|');
     std::string palettes;
@@ -95,7 +96,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
             return nullptr;
     }
 
-    SpriteDef *def = new SpriteDef;
+    SpriteDef *const def = new SpriteDef;
     def->mProcessedFiles.insert(animationFile);
     def->loadSprite(rootNode, variant, palettes);
     def->substituteActions();
@@ -109,11 +110,11 @@ void SpriteDef::fixDeadAction()
     for (ActionsIter it = mActions.begin(), it_end = mActions.end();
          it != it_end; ++ it)
     {
-        ActionMap *d = (*it).second;
+        ActionMap *const d = (*it).second;
         if (!d)
             continue;
-        ActionMap::iterator i = d->find(SpriteAction::DEAD);
-        ActionMap::iterator i2 = d->find(SpriteAction::STAND);
+        const ActionMap::iterator i = d->find(SpriteAction::DEAD);
+        const ActionMap::iterator i2 = d->find(SpriteAction::STAND);
         // search dead action and check what it not same with stand action
         if (i != d->end() && i->second && i->second != i2->second)
             (i->second)->setLastFrameDelay(0);
@@ -125,12 +126,12 @@ void SpriteDef::substituteAction(std::string complete, std::string with)
     for (ActionsConstIter it = mActions.begin(), it_end = mActions.end();
          it != it_end; ++ it)
     {
-        ActionMap *d = (*it).second;
+        ActionMap *const d = (*it).second;
         if (!d)
             continue;
         if (d->find(complete) == d->end())
         {
-            ActionMap::iterator i = d->find(with);
+            const ActionMap::iterator i = d->find(with);
             if (i != d->end())
                 (*d)[complete] = i->second;
         }
@@ -152,7 +153,7 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::SPAWN, SpriteAction::STAND);
 }
 
-void SpriteDef::loadSprite(XmlNodePtr spriteNode, int variant,
+void SpriteDef::loadSprite(const XmlNodePtr spriteNode, const int variant,
                            const std::string &palettes)
 {
     // Get the variant
@@ -176,7 +177,8 @@ void SpriteDef::loadSprite(XmlNodePtr spriteNode, int variant,
     }
 }
 
-void SpriteDef::loadImageSet(XmlNodePtr node, const std::string &palettes)
+void SpriteDef::loadImageSet(const XmlNodePtr node,
+                             const std::string &palettes)
 {
     const std::string name = XML::getProperty(node, "name", "");
 
@@ -190,8 +192,8 @@ void SpriteDef::loadImageSet(XmlNodePtr node, const std::string &palettes)
     std::string imageSrc = XML::getProperty(node, "src", "");
     Dye::instantiate(imageSrc, palettes);
 
-    ResourceManager *resman = ResourceManager::getInstance();
-    ImageSet *imageSet = resman->getImageSet(imageSrc, width, height);
+    ResourceManager *const resman = ResourceManager::getInstance();
+    ImageSet *const imageSet = resman->getImageSet(imageSrc, width, height);
 
     if (!imageSet)
     {
@@ -204,20 +206,20 @@ void SpriteDef::loadImageSet(XmlNodePtr node, const std::string &palettes)
     mImageSets[name] = imageSet;
 }
 
-void SpriteDef::loadAction(XmlNodePtr node, int variant_offset)
+void SpriteDef::loadAction(const XmlNodePtr node, const int variant_offset)
 {
     const std::string actionName = XML::getProperty(node, "name", "");
     const std::string imageSetName = XML::getProperty(node, "imageset", "");
     const unsigned hp = XML::getProperty(node, "hp", 100);
 
-    ImageSetIterator si = mImageSets.find(imageSetName);
+    const ImageSetIterator si = mImageSets.find(imageSetName);
     if (si == mImageSets.end())
     {
         logger->log("Warning: imageset \"%s\" not defined in %s",
             imageSetName.c_str(), getIdPath().c_str());
         return;
     }
-    ImageSet *imageSet = si->second;
+    ImageSet *const imageSet = si->second;
 
     if (actionName == SpriteAction::INVALID)
     {
@@ -225,7 +227,7 @@ void SpriteDef::loadAction(XmlNodePtr node, int variant_offset)
             actionName.c_str(), getIdPath().c_str());
         return;
     }
-    Action *action = new Action;
+    Action *const action = new Action;
     action->setNumber(hp);
     addAction(hp, actionName, action);
 
@@ -234,7 +236,7 @@ void SpriteDef::loadAction(XmlNodePtr node, int variant_offset)
         addAction(hp, "attack", action);
 
     // When first action set it as default direction
-    Actions::const_iterator i = mActions.find(hp);
+    const Actions::const_iterator i = mActions.find(hp);
     if ((*i).second->size() == 1)
         addAction(hp, SpriteAction::DEFAULT, action);
 
@@ -246,9 +248,9 @@ void SpriteDef::loadAction(XmlNodePtr node, int variant_offset)
     }
 }
 
-void SpriteDef::loadAnimation(XmlNodePtr animationNode,
-                              Action *action, ImageSet *imageSet,
-                              int variant_offset)
+void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
+                              Action *const action, ImageSet *const imageSet,
+                              const int variant_offset)
 {
     if (!action || !imageSet)
         return;
@@ -264,7 +266,7 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
         return;
     }
 
-    Animation *animation = new Animation;
+    Animation *const animation = new Animation;
     action->setAnimation(directionType, animation);
 
     // Get animation frames
@@ -276,7 +278,7 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
             imageSet->getOffsetX();
         int offsetY = XML::getProperty(frameNode, "offsetY", 0) +
             imageSet->getOffsetY();
-        int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
+        const int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
 
         offsetY -= imageSet->getHeight() - 32;
         offsetX -= imageSet->getWidth() / 2 - 16;
@@ -291,7 +293,7 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
                 continue;
             }
 
-            Image *img = imageSet->get(index + variant_offset);
+            Image *const img = imageSet->get(index + variant_offset);
 
             if (!img)
             {
@@ -306,7 +308,8 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
             const int start = XML::getProperty(frameNode, "start", -1);
             const int end = XML::getProperty(frameNode, "end", -1);
             const std::string value = XML::getProperty(frameNode, "value", "");
-            int repeat = XML::getIntProperty(frameNode, "repeat", 1, 0, 100);
+            const int repeat = XML::getIntProperty(
+                frameNode, "repeat", 1, 0, 100);
 
             if (repeat < 1)
             {
@@ -338,14 +341,14 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
                     }
                     else if (idx != std::string::npos)
                     {
-                        int v1 = atoi(str.substr(0, idx).c_str());
-                        int v2 = atoi(str.substr(idx + 1).c_str());
+                        const int v1 = atoi(str.substr(0, idx).c_str());
+                        const int v2 = atoi(str.substr(idx + 1).c_str());
                         addSequence(v1, v2, delay, offsetX, offsetY,
                             variant_offset, repeat, rand, imageSet, animation);
                     }
                     else
                     {
-                        Image *img = imageSet->get(atoi(
+                        Image *const img = imageSet->get(atoi(
                             str.c_str()) + variant_offset);
                         if (img)
                         {
@@ -384,7 +387,7 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
     } // for frameNode
 }
 
-void SpriteDef::includeSprite(XmlNodePtr includeNode)
+void SpriteDef::includeSprite(const XmlNodePtr includeNode)
 {
     std::string filename = XML::getProperty(includeNode, "file", "");
 
@@ -401,7 +404,7 @@ void SpriteDef::includeSprite(XmlNodePtr includeNode)
     mProcessedFiles.insert(filename);
 
     XML::Document doc(filename);
-    XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
@@ -470,19 +473,22 @@ SpriteDirection SpriteDef::makeSpriteDirection(const std::string &direction)
         return DIRECTION_INVALID;
 }
 
-void SpriteDef::addAction(unsigned hp, std::string name, Action *action)
+void SpriteDef::addAction(const unsigned hp, const std::string &name,
+                          Action *const action)
 {
-    Actions::const_iterator i = mActions.find(hp);
+    const Actions::const_iterator i = mActions.find(hp);
     if (i == mActions.end())
         mActions[hp] = new ActionMap();
 
     (*mActions[hp])[name] = action;
 }
 
-bool SpriteDef::addSequence(int start, int end, int delay,
-                            int offsetX, int offsetY, int variant_offset,
-                            int repeat, int rand, ImageSet *imageSet,
-                            Animation *animation)
+bool SpriteDef::addSequence(const int start, const int end, const int delay,
+                            const int offsetX, const int offsetY,
+                            const int variant_offset,
+                            int repeat, const int rand,
+                            ImageSet *const imageSet,
+                            Animation *const animation) const
 {
     if (start < 0 || end < 0)
     {
@@ -497,7 +503,7 @@ bool SpriteDef::addSequence(int start, int end, int delay,
             int pos = start;
             while (end >= pos)
             {
-                Image *img = imageSet->get(pos + variant_offset);
+                Image *const img = imageSet->get(pos + variant_offset);
 
                 if (!img)
                 {
@@ -521,7 +527,7 @@ bool SpriteDef::addSequence(int start, int end, int delay,
             int pos = start;
             while (end <= pos)
             {
-                Image *img = imageSet->get(pos + variant_offset);
+                Image *const img = imageSet->get(pos + variant_offset);
 
                 if (!img)
                 {

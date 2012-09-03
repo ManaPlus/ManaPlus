@@ -40,21 +40,21 @@ class SpellManager
 
         ~SpellManager();
 
-        TextCommand *getSpell(int spellId);
+        TextCommand *getSpell(const int spellId);
 
-        TextCommand* getSpellByItem(int itemId);
+        TextCommand* getSpellByItem(const int itemId);
 
-        bool addSpell(TextCommand *spell);
+        bool addSpell(TextCommand *const spell);
 
-        TextCommand *createNewSpell();
+        TextCommand *createNewSpell() const;
 
-        std::vector<TextCommand*> getAll();
+        std::vector<TextCommand*> getAll() const;
 
-        void useItem(int itemId);
+        void useItem(const int itemId);
 
-        void invoke(int spellId);
+        void invoke(const int spellId);
 
-        void load(bool oldConfig = false);
+        void load(const bool oldConfig = false);
 
         void save();
 
@@ -63,11 +63,13 @@ class SpellManager
     private:
         void fillSpells();
 
-        void invokeSpell(TextCommand* spell, Being* target) const;
+        void invokeSpell(const TextCommand *const spell,
+                         Being *const target) const;
 
-        void invokeSpell(TextCommand* spell) const;
+        void invokeSpell(const TextCommand *const spell) const;
 
-        std::string parseCommand(std::string command, Being* target) const;
+        std::string parseCommand(std::string command,
+                                 const Being *const target) const;
 
         std::map<unsigned int, TextCommand*> mSpells;
         std::vector<TextCommand*> mSpellsVector;

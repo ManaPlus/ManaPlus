@@ -29,13 +29,15 @@
 
 static const double PI = 3.14159265;
 
-RotationalParticle::RotationalParticle(Map *map, Animation *animation):
+RotationalParticle::RotationalParticle(Map *const map,
+                                       Animation *const animation) :
     ImageParticle(map, nullptr),
     mAnimation(new SimpleAnimation(animation))
 {
 }
 
-RotationalParticle::RotationalParticle(Map *map, XmlNodePtr animationNode,
+RotationalParticle::RotationalParticle(Map *const map,
+                                       const XmlNodePtr animationNode,
                                        const std::string& dyePalettes):
     ImageParticle(map, nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))
@@ -56,7 +58,7 @@ bool RotationalParticle::update()
 
     // TODO: cache velocities to avoid spamming atan2()
 
-    int size = mAnimation->getLength();
+    const int size = mAnimation->getLength();
     if (!size)
         return false;
 
@@ -64,7 +66,7 @@ bool RotationalParticle::update()
     if (rad < 0)
         rad = static_cast<float>(PI) + static_cast<float>(PI) + rad;
 
-    float range = static_cast<float>(PI / size);
+    const float range = static_cast<const float>(PI / size);
 
     // Determines which frame the particle should play
     if (rad < range || rad > ((static_cast<float>(PI)*2) - range))

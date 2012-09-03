@@ -42,12 +42,12 @@ class SimpleAnimation
          * Creates a simple animation with an already created \a animation.
          * Takes ownership over the given animation.
          */
-        SimpleAnimation(Animation *animation);
+        SimpleAnimation(Animation *const animation);
 
         /**
          * Creates a simple animation that creates its animation from XML Data.
          */
-        SimpleAnimation(XmlNodePtr animationNode,
+        SimpleAnimation(const XmlNodePtr animationNode,
                         const std::string& dyePalettes = std::string());
 
         ~SimpleAnimation();
@@ -56,9 +56,10 @@ class SimpleAnimation
 
         int getLength() const;
 
-        bool update(int timePassed);
+        bool update(const int timePassed);
 
-        bool draw(Graphics *graphics, int posX, int posY) const;
+        bool draw(Graphics *const graphics,
+                  const int posX, const int posY) const;
 
         /**
          * Resets the animation.
@@ -68,7 +69,8 @@ class SimpleAnimation
         Image *getCurrentImage() const;
 
     private:
-        void initializeAnimation(XmlNodePtr animationNode, const std::string&
+        void initializeAnimation(const XmlNodePtr animationNode,
+                                 const std::string&
                                  dyePalettes = std::string());
 
         /** The hosted animation. */

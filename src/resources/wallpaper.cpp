@@ -44,7 +44,7 @@ struct WallpaperData
     int height;
 };
 
-static bool wallpaperCompare(WallpaperData a, WallpaperData b);
+static bool wallpaperCompare(const WallpaperData &a, const WallpaperData &b);
 
 static std::vector<WallpaperData> wallpaperData;
 static bool haveBackup; // Is the backup (no size given) version available?
@@ -55,7 +55,7 @@ static std::string wallpaperFile;
 // Search for the wallpaper path values sequentially..
 static void initDefaultWallpaperPaths()
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     // Init the path
     wallpaperPath = branding.getStringValue("wallpapersPath");
@@ -78,10 +78,10 @@ static void initDefaultWallpaperPaths()
         wallpaperFile = "login_wallpaper.png";
 }
 
-static bool wallpaperCompare(WallpaperData a, WallpaperData b)
+static bool wallpaperCompare(const WallpaperData &a, const WallpaperData &b)
 {
-    int aa = a.width * a.height;
-    int ab = b.width * b.height;
+    const int aa = a.width * a.height;
+    const int ab = b.width * b.height;
 
     return (aa > ab || (aa == ab && a.width > b.width));
 }
@@ -135,7 +135,7 @@ void Wallpaper::loadWallpapers()
     std::sort(wallpaperData.begin(), wallpaperData.end(), wallpaperCompare);
 }
 
-std::string Wallpaper::getWallpaper(int width, int height)
+std::string Wallpaper::getWallpaper(const int width, const int height)
 {
     WallpaperData wp;
 

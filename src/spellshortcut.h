@@ -55,7 +55,7 @@ class SpellShortcut
          *
          * @param itemId The ID of the item that is to be assigned.
          */
-        void setItemSelected(int itemId)
+        void setItemSelected(const int itemId)
         { mItemSelected = itemId; }
 
         /**
@@ -75,7 +75,7 @@ class SpellShortcut
          *
          * @param index Index of the shortcut item.
          */
-        int getItem(int index) const
+        int getItem(const int index) const
         { return mItems[index]; }
 
     private:

@@ -35,7 +35,7 @@
 
 #include "debug.h"
 
-SimpleAnimation::SimpleAnimation(Animation *animation):
+SimpleAnimation::SimpleAnimation(Animation *const animation) :
     mAnimation(animation),
     mAnimationTime(0),
     mAnimationPhase(0),
@@ -44,7 +44,7 @@ SimpleAnimation::SimpleAnimation(Animation *animation):
 {
 }
 
-SimpleAnimation::SimpleAnimation(XmlNodePtr animationNode,
+SimpleAnimation::SimpleAnimation(const XmlNodePtr animationNode,
                                  const std::string& dyePalettes):
     mAnimation(new Animation),
     mAnimationTime(0),
@@ -64,7 +64,8 @@ SimpleAnimation::~SimpleAnimation()
     mAnimation = nullptr;
 }
 
-bool SimpleAnimation::draw(Graphics *graphics, int posX, int posY) const
+bool SimpleAnimation::draw(Graphics *const graphics,
+                           const int posX, const int posY) const
 {
     if (!mCurrentFrame || !mCurrentFrame->image)
         return false;
@@ -93,7 +94,7 @@ void SimpleAnimation::setFrame(int frame)
     mCurrentFrame = &mAnimation->mFrames[mAnimationPhase];
 }
 
-bool SimpleAnimation::update(int timePassed)
+bool SimpleAnimation::update(const int timePassed)
 {
     if (!mCurrentFrame || !mAnimation)
         return false;
@@ -138,7 +139,7 @@ Image *SimpleAnimation::getCurrentImage() const
         return nullptr;
 }
 
-void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
+void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
                                           const std::string& dyePalettes)
 {
     mInitialized = false;
@@ -153,7 +154,7 @@ void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
     if (!imagePath.empty() && !dyePalettes.empty())
         Dye::instantiate(imagePath, dyePalettes);
 
-    ImageSet *imageset = ResourceManager::getInstance()->getImageSet(
+    ImageSet *const imageset = ResourceManager::getInstance()->getImageSet(
         XML::getProperty(animationNode, "imageset", ""),
         XML::getProperty(animationNode, "width", 0),
         XML::getProperty(animationNode, "height", 0)
@@ -166,16 +167,17 @@ void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
     for (XmlNodePtr frameNode = animationNode->xmlChildrenNode;
          frameNode; frameNode = frameNode->next)
     {
-        int delay = XML::getIntProperty(frameNode, "delay", 0, 0, 100000);
+        const int delay = XML::getIntProperty(
+            frameNode, "delay", 0, 0, 100000);
         int offsetX = XML::getProperty(frameNode, "offsetX", 0);
         int offsetY = XML::getProperty(frameNode, "offsetY", 0);
-        int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
+        const int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
         offsetY -= imageset->getHeight() - 32;
         offsetX -= imageset->getWidth() / 2 - 16;
 
         if (xmlNameEqual(frameNode, "frame"))
         {
-            int index = XML::getProperty(frameNode, "index", -1);
+            const int index = XML::getProperty(frameNode, "index", -1);
 
             if (index < 0)
             {
@@ -183,7 +185,7 @@ void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
                 continue;
             }
 
-            Image *img = imageset->get(index);
+            Image *const img = imageset->get(index);
 
             if (!img)
             {
@@ -197,7 +199,7 @@ void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
         else if (xmlNameEqual(frameNode, "sequence"))
         {
             int start = XML::getProperty(frameNode, "start", -1);
-            int end = XML::getProperty(frameNode, "end", -1);
+            const int end = XML::getProperty(frameNode, "end", -1);
 
             if (start < 0 || end < 0)
             {
@@ -207,7 +209,7 @@ void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
 
             while (end >= start)
             {
-                Image *img = imageset->get(start);
+                Image *const img = imageset->get(start);
 
                 if (!img)
                 {

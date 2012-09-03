@@ -80,14 +80,14 @@ class Sound : public ConfigListener
          * @param fileName The name of the music file.
          * @param ms       Duration of fade-in effect (ms)
          */
-        void fadeInMusic(const std::string &fileName, int ms = 1000);
+        void fadeInMusic(const std::string &fileName, const int ms = 1000);
 
         /**
          * Fades out currently running background music track.
          *
          * @param ms   Duration of fade-out effect (ms)
          */
-        void fadeOutMusic(int ms = 1000);
+        void fadeOutMusic(const int ms = 1000);
 
         /**
          * Fades out a background music and play a new one.
@@ -95,21 +95,23 @@ class Sound : public ConfigListener
          * @param fileName The name of the music file.
          * @param ms       Duration of fade-out effect (ms)
          */
-        void fadeOutAndPlayMusic(const std::string &fileName, int ms = 1000);
+        void fadeOutAndPlayMusic(const std::string &fileName,
+                                 const int ms = 1000);
 
         int getMaxVolume() const
         { return MIX_MAX_VOLUME; }
 
-        void setMusicVolume(int volume);
+        void setMusicVolume(const int volume);
 
-        void setSfxVolume(int volume);
+        void setSfxVolume(const int volume);
 
         /**
          * Plays an item.
          *
          * @param path The resource path to the sound file.
          */
-        void playSfx(const std::string &path, int x = 0, int y = 0);
+        void playSfx(const std::string &path, const int x = 0,
+                     const int y = 0) const;
 
         /**
          * Plays an item for gui.
@@ -122,7 +124,7 @@ class Sound : public ConfigListener
 
         void changeAudio();
 
-        void volumeOff();
+        void volumeOff() const;
 
         void volumeRestore();
 
@@ -138,7 +140,7 @@ class Sound : public ConfigListener
 
     private:
         /** Logs various info about sound device. */
-        void info();
+        void info() const;
 
         /** Halts and frees currently playing music. */
         void haltMusic();

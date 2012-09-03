@@ -31,8 +31,9 @@
 
 #include "debug.h"
 
-SubImage::SubImage(Image *parent, SDL_Surface *image,
-                   int x, int y, int width, int height):
+SubImage::SubImage(Image *const parent, SDL_Surface *const image,
+                   const int x, const int y,
+                   const int width, const int height) :
     Image(image),
     mParent(parent)
 {
@@ -77,9 +78,9 @@ SubImage::SubImage(Image *parent, SDL_Surface *image,
 }
 
 #ifdef USE_OPENGL
-SubImage::SubImage(Image *parent, GLuint image,
-                   int x, int y, int width, int height,
-                   int texWidth, int texHeight):
+SubImage::SubImage(Image *const parent, const GLuint image,
+                   const int x, const int y, const int width, const int height,
+                   const int texWidth, const int texHeight):
     Image(image, width, height, texWidth, texHeight),
     mParent(parent)
 {
@@ -128,7 +129,8 @@ SubImage::~SubImage()
     }
 }
 
-Image *SubImage::getSubImage(int x, int y, int w, int h)
+Image *SubImage::getSubImage(const int x, const int y,
+                             const int w, const int h)
 {
     if (mParent)
         return mParent->getSubImage(mBounds.x + x, mBounds.y + y, w, h);

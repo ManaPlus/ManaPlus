@@ -47,7 +47,7 @@ SpellManager::~SpellManager()
     mSpellsVector.clear();
 }
 
-TextCommand* SpellManager::getSpell(int spellId)
+TextCommand* SpellManager::getSpell(const int spellId)
 {
     if (spellId < 0 || static_cast<unsigned int>(spellId) >= mSpells.size())
         return nullptr;
@@ -55,7 +55,7 @@ TextCommand* SpellManager::getSpell(int spellId)
     return mSpells[spellId];
 }
 
-TextCommand* SpellManager::getSpellByItem(int itemId)
+TextCommand* SpellManager::getSpellByItem(const int itemId)
 {
     return getSpell(itemId - SPELL_MIN_ID);
 }
@@ -94,12 +94,12 @@ void SpellManager::fillSpells()
         addSpell(new TextCommand(f));
 }
 
-bool SpellManager::addSpell(TextCommand *spell)
+bool SpellManager::addSpell(TextCommand *const spell)
 {
     if (!spell)
         return false;
 
-    std::map<unsigned int, TextCommand*>::const_iterator
+    const std::map<unsigned int, TextCommand*>::const_iterator
         i = mSpells.find(spell->getId());
     if (i == mSpells.end())
     {
@@ -110,23 +110,23 @@ bool SpellManager::addSpell(TextCommand *spell)
     return false;
 }
 
-std::vector<TextCommand*> SpellManager::getAll()
+std::vector<TextCommand*> SpellManager::getAll() const
 {
     //logger->log(("mSpellsVector = " + toString(mSpellsVector.size())).c_str());
     return mSpellsVector;
 }
 
-void SpellManager::useItem(int itemId)
+void SpellManager::useItem(const int itemId)
 {
     invoke(itemId - SPELL_MIN_ID);
 }
 
-void SpellManager::invoke(int spellId)
+void SpellManager::invoke(const int spellId)
 {
     if (!player_node)
         return;
 
-    TextCommand* spell = getSpell(spellId);
+    const TextCommand *const spell = getSpell(spellId);
     if (!spell)
         return;
 
@@ -142,7 +142,7 @@ void SpellManager::invoke(int spellId)
         >= static_cast<signed>(spell->getSchoolLvl())
         && PlayerInfo::getAttribute(PlayerInfo::MP) >= spell->getMana()))
     {
-        Being* target = player_node->getTarget();
+        Being *const target = player_node->getTarget();
         if (spell->getTargetType() == NOTARGET)
         {
             invokeSpell(spell);
@@ -161,14 +161,15 @@ void SpellManager::invoke(int spellId)
     }
 }
 
-void SpellManager::invokeSpell(TextCommand* spell) const
+void SpellManager::invokeSpell(const TextCommand *const spell) const
 {
     if (!chatWindow || !spell)
         return;
     chatWindow->localChatInput(parseCommand(spell->getCommand(), nullptr));
 }
 
-void SpellManager::invokeSpell(TextCommand* spell, Being* target) const
+void SpellManager::invokeSpell(const TextCommand *const spell,
+                               Being *const target) const
 {
     if (!chatWindow || !spell || !target)
         return;
@@ -176,7 +177,7 @@ void SpellManager::invokeSpell(TextCommand* spell, Being* target) const
 }
 
 std::string SpellManager::parseCommand(std::string command,
-                                       Being *target) const
+                                       const Being *const target) const
 {
     if (!player_node)
         return command;
@@ -223,14 +224,14 @@ std::string SpellManager::parseCommand(std::string command,
     return command;
 }
 
-TextCommand *SpellManager::createNewSpell()
+TextCommand *SpellManager::createNewSpell() const
 {
     return new TextCommand(static_cast<unsigned>(mSpellsVector.size()));
 }
 
-void SpellManager::load(bool oldConfig)
+void SpellManager::load(const bool oldConfig)
 {
-    Configuration *cfg;
+    const Configuration *cfg;
     if (oldConfig)
         cfg = &config;
     else
@@ -293,7 +294,7 @@ void SpellManager::save()
 {
     for (unsigned i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
     {
-        TextCommand *spell = mSpellsVector[i];
+        const TextCommand *const spell = mSpellsVector[i];
         if (spell)
         {
             if (spell->getCommand() != "")
@@ -353,13 +354,14 @@ void SpellManager::save()
 std::string SpellManager::autoComplete(std::string partName)
 {
     std::vector<TextCommand*>::const_iterator i = mSpellsVector.begin();
-    std::vector<TextCommand*>::const_iterator i_end = mSpellsVector.end();
+    const std::vector<TextCommand*>::const_iterator
+        i_end = mSpellsVector.end();
     std::string newName = "";
-    TextCommand *newCommand = nullptr;
+    const TextCommand *newCommand = nullptr;
 
     while (i != i_end)
     {
-        TextCommand *cmd = *i;
+        TextCommand *const cmd = *i;
         std::string line = cmd->getCommand();
 
         if (line != "")

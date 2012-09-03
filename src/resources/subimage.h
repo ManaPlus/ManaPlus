@@ -51,11 +51,12 @@ class SubImage : public Image
         /**
          * Constructor.
          */
-        SubImage(Image *parent, SDL_Surface *image,
-                 int x, int y, int width, int height);
+        SubImage(Image *const parent, SDL_Surface *const image,
+                 const int x, const int y, const int width, const int height);
 #ifdef USE_OPENGL
-        SubImage(Image *parent, GLuint image, int x, int y,
-                 int width, int height, int texWidth, int textHeight);
+        SubImage(Image *const parent, const GLuint image,
+                 const int x, const int y, const int width, const int height,
+                 const int texWidth, const int textHeight);
 #endif
 
         /**

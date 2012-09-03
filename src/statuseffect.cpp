@@ -48,19 +48,19 @@ StatusEffect::~StatusEffect()
 {
 }
 
-void StatusEffect::playSFX()
+void StatusEffect::playSFX() const
 {
     if (!mSFXEffect.empty())
         sound.playSfx(mSFXEffect);
 }
 
-void StatusEffect::deliverMessage()
+void StatusEffect::deliverMessage() const
 {
     if (!mMessage.empty() && localChatTab)
         localChatTab->chatLog(mMessage, BY_SERVER);
 }
 
-Particle *StatusEffect::getParticle()
+Particle *StatusEffect::getParticle() const
 {
     if (!particleEngine || mParticleEffect.empty())
         return nullptr;
@@ -68,7 +68,7 @@ Particle *StatusEffect::getParticle()
         return particleEngine->addEffect(mParticleEffect, 0, 0);
 }
 
-AnimatedSprite *StatusEffect::getIcon()
+AnimatedSprite *StatusEffect::getIcon() const
 {
     if (mIcon.empty())
     {
@@ -76,7 +76,7 @@ AnimatedSprite *StatusEffect::getIcon()
     }
     else
     {
-        AnimatedSprite *sprite = AnimatedSprite::load(
+        AnimatedSprite *const sprite = AnimatedSprite::load(
             paths.getStringValue("sprites") + mIcon);
         if (false && sprite)
         {
@@ -87,7 +87,7 @@ AnimatedSprite *StatusEffect::getIcon()
     }
 }
 
-std::string StatusEffect::getAction()
+std::string StatusEffect::getAction() const
 {
     if (mAction.empty())
         return SpriteAction::INVALID;
@@ -105,19 +105,20 @@ static status_effect_map statusEffects;
 static status_effect_map stunEffects;
 static std::map<int, int> blockEffectIndexMap;
 
-int StatusEffect::blockEffectIndexToEffectIndex(int blockIndex)
+int StatusEffect::blockEffectIndexToEffectIndex(const int blockIndex)
 {
     if (blockEffectIndexMap.find(blockIndex) == blockEffectIndexMap.end())
         return -1;
     return blockEffectIndexMap[blockIndex];
 }
 
-StatusEffect *StatusEffect::getStatusEffect(int index, bool enabling)
+StatusEffect *StatusEffect::getStatusEffect(const int index,
+                                            const bool enabling)
 {
     return statusEffects[enabling][index];
 }
 
-StatusEffect *StatusEffect::getStunEffect(int index, bool enabling)
+StatusEffect *StatusEffect::getStunEffect(const int index, const bool enabling)
 {
     return stunEffects[enabling][index];
 }
@@ -128,7 +129,7 @@ void StatusEffect::load()
         unload();
 
     XML::Document doc(STATUS_EFFECTS_FILE);
-    XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "status-effects"))
     {
@@ -140,12 +141,12 @@ void StatusEffect::load()
     {
         status_effect_map *the_map = nullptr;
 
-        int index = atoi(XML::getProperty(node, "id", "-1").c_str());
+        const int index = atoi(XML::getProperty(node, "id", "-1").c_str());
 
         if (xmlNameEqual(node, "status-effect"))
         {
             the_map = &statusEffects;
-            int block_index = atoi(XML::getProperty(
+            const int block_index = atoi(XML::getProperty(
                 node, "block-id", "-1").c_str());
 
             if (index >= 0 && block_index >= 0)
@@ -159,8 +160,8 @@ void StatusEffect::load()
 
         if (the_map)
         {
-            StatusEffect *startEffect = new StatusEffect;
-            StatusEffect *endEffect = new StatusEffect;
+            StatusEffect *const startEffect = new StatusEffect;
+            StatusEffect *const endEffect = new StatusEffect;
 
             startEffect->mMessage = XML::getProperty(
                 node, "start-message", "");
