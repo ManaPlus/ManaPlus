@@ -821,6 +821,17 @@ class Being : public ActorSprite, public ConfigListener
 
         int getSpriteID(const int slot) const;
 
+        void setHairStyle(const unsigned int slot, const int id);
+
+        void setHairColor(const unsigned int slot,
+                          const unsigned char color);
+
+        void setHairColor(const unsigned char color)
+        { mHairColor = color; }
+
+        unsigned char getHairColor() const
+        { return mHairColor; }
+
         void recalcSpritesOrder();
 
         static uint8_t genderToInt(const Gender sex);
@@ -911,6 +922,8 @@ class Being : public ActorSprite, public ConfigListener
                                 std::vector<int> &slotRemap,
                                 const int val) const;
 
+        void dumpSprites();
+
         const Type mType;
 
         /** Speech Bubble components */
@@ -971,6 +984,7 @@ class Being : public ActorSprite, public ConfigListener
         bool mAway;
         bool mInactive;
         unsigned mNumber;
+        unsigned char mHairColor;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

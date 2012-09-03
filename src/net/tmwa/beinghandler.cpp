@@ -299,7 +299,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
             dstBeing->setSubtype(static_cast<uint16_t>(id));
             break;
         case 1:     // eAthena LOOK_HAIR
-            dstBeing->setSpriteID(SPRITE_HAIR, id *-1);
+            dstBeing->setHairStyle(SPRITE_HAIR, id * -1);
             break;
         case 2:     // Weapon ID in id, Shield ID in id2
             dstBeing->setSprite(SPRITE_WEAPON, id, "", 1, true);
@@ -323,8 +323,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
             player_node->imitateOutfit(dstBeing, SPRITE_TOPCLOTHES);
             break;
         case 6:     // eAthena LOOK_HAIR_COLOR
-            dstBeing->setSpriteColor(SPRITE_HAIR, ItemDB::get(
-                dstBeing->getSpriteID(SPRITE_HAIR)).getDyeColorsString(id));
+            dstBeing->setHairColor(SPRITE_HAIR, id);
             break;
         case 7:     // Clothes color
             // ignoring it
@@ -541,6 +540,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     //dstBeing->setSprite(SPRITE_MISC2, misc2);
     dstBeing->setSprite(SPRITE_HAIR, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+    dstBeing->setHairColor(hairColor);
 
     player_node->imitateOutfit(dstBeing);
 

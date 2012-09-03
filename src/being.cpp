@@ -241,7 +241,8 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mShop(false),
     mAway(false),
     mInactive(false),
-    mNumber(100)
+    mNumber(100),
+    mHairColor(0)
 {
 
     for (int f = 0; f < 20; f ++)
@@ -1767,6 +1768,37 @@ void Being::setSpriteColor(const unsigned int slot, const std::string &color)
     setSprite(slot, mSpriteIDs[slot], color);
 }
 
+void Being::setHairStyle(const unsigned int slot, const int id)
+{
+//    dumpSprites();
+    setSprite(slot, id, ItemDB::get(id).getDyeColorsString(mHairColor));
+//    dumpSprites();
+}
+
+void Being::setHairColor(const unsigned int slot, const unsigned char color)
+{
+    mHairColor = color;
+    setSprite(slot, mSpriteIDs[slot], ItemDB::get(
+        getSpriteID(slot)).getDyeColorsString(color));
+}
+
+void Being::dumpSprites()
+{
+    std::vector<int>::const_iterator it1 = mSpriteIDs.begin();
+    const std::vector<int>::const_iterator it1_end = mSpriteIDs.end();
+    StringVectCIter it2 = mSpriteColors.begin();
+    const StringVectCIter it2_end = mSpriteColors.end();
+    std::vector<int>::const_iterator it3 = mSpriteColorsIds.begin();
+    const std::vector<int>::const_iterator it3_end = mSpriteColorsIds.end();
+
+    logger->log("sprites");
+    for (; it1 != it1_end && it2 != it2_end && it3 != it3_end;
+         ++ it1, ++ it2, ++ it3)
+    {
+        logger->log("%d,%s,%d", *it1, (*it2).c_str(), *it3);
+    }
+}
+
 void Being::load()
 {
     // Hairstyles are encoded as negative numbers. Count how far negative
@@ -2181,6 +2213,8 @@ void Being::recalcSpritesOrder()
     if (mAction == DEAD)
         dir = 9;
 
+    const unsigned int hairSlot = Net::getCharHandler()->hairSprite();
+
     for (unsigned slot = 0; slot < sz; slot ++)
     {
         oldHide[slot] = mSpriteHide[slot];
@@ -2233,9 +2267,19 @@ void Being::recalcSpritesOrder()
                                 mSpriteHide[remSprite] = repIt->second;
                                 if (repIt->second != 1)
                                 {
-                                    setSprite(remSprite, repIt->second,
-                                        mSpriteColors[remSprite],
-                                        1, false, true);
+                                    if (remSprite != hairSlot)
+                                    {
+                                        setSprite(remSprite, repIt->second,
+                                            mSpriteColors[remSprite],
+                                            1, false, true);
+                                    }
+                                    else
+                                    {
+                                        setSprite(remSprite, repIt->second,
+                                            ItemDB::get(repIt->second)
+                                            .getDyeColorsString(mHairColor),
+                                            1, false, true);
+                                    }
                                 }
                             }
                         }
@@ -2254,9 +2298,20 @@ void Being::recalcSpritesOrder()
                                     mSpriteHide[slot2] = repIt->second;
                                     if (repIt->second != 1)
                                     {
-                                        setSprite(slot2, repIt->second,
-                                            mSpriteColors[slot2],
-                                            1, false, true);
+                                        if (slot2 != hairSlot)
+                                        {
+                                            setSprite(slot2, repIt->second,
+                                                mSpriteColors[slot2],
+                                                1, false, true);
+                                        }
+                                        else
+                                        {
+                                            setSprite(slot2, repIt->second,
+                                                ItemDB::get(repIt->second)
+                                                .getDyeColorsString(
+                                                mHairColor),
+                                                1, false, true);
+                                        }
                                     }
                                 }
                             }

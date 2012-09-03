@@ -215,8 +215,10 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const int hat = msg.readInt16(); // head option top
     const int topClothes = msg.readInt16();
 
+    const int hairColor = msg.readInt16();
     tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
-        ItemDB::get(-hairStyle).getDyeColorsString(msg.readInt16()));
+        ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+    tempPlayer->setHairColor(hairColor);
 
     const int misc2 = msg.readInt16();
     tempPlayer->setName(msg.readString(24));

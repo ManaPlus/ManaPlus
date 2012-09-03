@@ -265,6 +265,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, EA_SPRITE_HAIR, hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        dstBeing->setHairColor(hairColor);
         setSprite(dstBeing, EA_SPRITE_BOTTOMCLOTHES, headBottom);
         setSprite(dstBeing, EA_SPRITE_TOPCLOTHES, headMid);
         setSprite(dstBeing, EA_SPRITE_HAT, headTop);
