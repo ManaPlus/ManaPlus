@@ -585,7 +585,7 @@ ImageSet *ResourceManager::getSubImageSet(Image *const parent,
     if (!parent)
         return nullptr;
 
-    SubImageSetLoader rl = { this, parent, width, height };
+    const SubImageSetLoader rl = { this, parent, width, height };
     std::stringstream ss;
     ss << parent->getIdPath() << ", set[" << width << "x" << height << "]";
     return static_cast<ImageSet*>(get(ss.str(), SubImageSetLoader::load, &rl));
@@ -620,7 +620,7 @@ Image *ResourceManager::getSubImage(Image *const parent,
     if (!parent)
         return nullptr;
 
-    SubImageLoader rl = { this, parent, x, y, width, height};
+    const SubImageLoader rl = { this, parent, x, y, width, height};
 
     std::stringstream ss;
     ss << parent->getIdPath() << ",[" << x << "," << y << ","
@@ -885,7 +885,7 @@ Image *ResourceManager::getRescaled(Image *const image,
 
     std::string idPath = image->getIdPath() + strprintf(
         "_rescaled%dx%d", width, height);
-    RescaledLoader rl = { this, image, width, height };
+    const RescaledLoader rl = { this, image, width, height };
     Image *const img = static_cast<Image *const>(
         get(idPath, RescaledLoader::load, &rl));
     return img;

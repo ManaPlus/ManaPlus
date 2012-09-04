@@ -236,7 +236,7 @@ int SDLInput::convertMouseButton(const int button)
     }
 }
 
-int SDLInput::convertKeyCharacter(const SDL_Event event)
+int SDLInput::convertKeyCharacter(const SDL_Event &event)
 {
     const SDL_keysym keysym = event.key.keysym;
 

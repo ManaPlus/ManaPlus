@@ -348,7 +348,7 @@ void Viewport::_drawDebugPath(Graphics *const graphics)
 }
 
 void Viewport::_drawPath(Graphics *const graphics, const Path &path,
-                         const gcn::Color color) const
+                         const gcn::Color &color) const
 {
     graphics->setColor(color);
 

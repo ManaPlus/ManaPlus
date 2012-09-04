@@ -117,7 +117,7 @@ class UserPalette : public Palette, public gcn::ListModel
          * @param type the color type requested
          * @param color the color that should be tested
          */
-        inline void setTestColor(const int type, const gcn::Color color)
+        inline void setTestColor(const int type, const gcn::Color &color)
         { mColors[type].testColor = color; }
 
         /**

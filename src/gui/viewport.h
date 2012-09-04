@@ -292,7 +292,7 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
          * Draws the given path.
          */
         void _drawPath(Graphics *const graphics, const Path &path,
-                       const gcn::Color color = gcn::Color(255, 0, 0)) const;
+                       const gcn::Color &color = gcn::Color(255, 0, 0)) const;
 
         /**
          * Make the player go to the mouse position.

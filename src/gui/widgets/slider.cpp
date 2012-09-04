@@ -177,7 +177,7 @@ void Slider::draw(gcn::Graphics *graphics)
     drawMarker(graphics);
 }
 
-void Slider::drawMarker(gcn::Graphics *const graphics)
+void Slider::drawMarker(gcn::Graphics *const graphics) const
 {
     const Image *const img = (mHasMouse ? buttons[1].grid[HGRIP]
         : buttons[0].grid[HGRIP]);

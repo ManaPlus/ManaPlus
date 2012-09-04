@@ -64,7 +64,7 @@ class Slider : public gcn::Slider
         /**
          * Draws the marker.
          */
-        void drawMarker(gcn::Graphics *const graphics);
+        void drawMarker(gcn::Graphics *const graphics) const;
 
         /**
          * Called when the mouse enteres the widget area.

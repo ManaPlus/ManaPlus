@@ -38,7 +38,7 @@ class ExtendedNamesModel : public ExtendedListModel
 
         virtual std::string getElementAt(int i);
 
-        virtual Image *getImageAt(int i);
+        virtual const Image *getImageAt(int i);
 
         StringVect &getNames()
         { return mNames; }

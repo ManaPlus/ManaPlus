@@ -42,7 +42,7 @@ class ProgressBar;
 class Skin
 {
     public:
-        Skin(const ImageRect skin, const ImageRect images,
+        Skin(const ImageRect &skin, const ImageRect &images,
              const std::string &filePath, const std::string &name = "",
              const int padding = 3, const int titlePadding = 4,
              std::map<std::string, int> *const options = nullptr);

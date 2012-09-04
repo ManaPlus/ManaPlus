@@ -182,7 +182,7 @@ protected:
      * @return a key value.
      * @see Key
      */
-    static int convertKeyCharacter(SDL_Event event);
+    static int convertKeyCharacter(const SDL_Event &event);
 
     std::queue<KeyInput> mKeyInputQueue;
     std::queue<gcn::MouseInput> mMouseInputQueue;

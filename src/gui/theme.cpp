@@ -60,7 +60,7 @@ static void initDefaultThemePath()
         defaultThemePath = "themes/";
 }
 
-Skin::Skin(const ImageRect skin, const ImageRect images,
+Skin::Skin(const ImageRect &skin, const ImageRect &images,
            const std::string &filePath, const std::string &name,
            const int padding, const int titlePadding,
            std::map<std::string, int> *const options):
