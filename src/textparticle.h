@@ -31,9 +31,9 @@ class TextParticle : public Particle
         /**
          * Constructor.
          */
-        TextParticle(Map *map, const std::string &text,
-                     const gcn::Color* color,
-                     gcn::Font *font, bool outline = false);
+        TextParticle(Map *const map, const std::string &text,
+                     const gcn::Color *const color,
+                     gcn::Font *const font, const bool outline = false);
 
         /**
          * Draws the particle image.

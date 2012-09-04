@@ -50,7 +50,7 @@ namespace XML
              * Constructor that attempts to load the given file through the
              * resource manager. Logs errors.
              */
-            Document(const std::string &filename, bool useResman = true);
+            Document(const std::string &filename, const bool useResman = true);
 
             /**
              * Constructor that attempts to load an XML document from memory.
@@ -59,7 +59,7 @@ namespace XML
              * @param data the string to parse as XML
              * @param size the length of the string in bytes
              */
-            Document(const char *data, int size);
+            Document(const char *const data, const int size);
 
             /**
              * Destructor. Frees the loaded XML file.
@@ -79,40 +79,43 @@ namespace XML
     /**
      * Gets an floating point property from an XmlNodePtr.
      */
-    double getFloatProperty(XmlNodePtr node, const char *name, double def);
+    double getFloatProperty(const XmlNodePtr node, const char *const name,
+                            double def);
 
     /**
      * Gets an integer property from an XmlNodePtr.
      */
-    int getProperty(XmlNodePtr node, const char *name, int def);
+    int getProperty(const XmlNodePtr node, const char *const name, int def);
 
     /**
      * Gets an integer property from an XmlNodePtr.
      */
-    int getIntProperty(XmlNodePtr node, const char* name, int def,
-                       int min, int max);
+    int getIntProperty(const XmlNodePtr node, const char *const name, int def,
+                       const int min, const int max);
 
     /**
      * Gets a string property from an XmlNodePtr.
      */
-    std::string getProperty(XmlNodePtr node, const char *name,
+    std::string getProperty(const XmlNodePtr node, const char *const name,
                             const std::string &def);
 
     /**
      * Gets a translated string property from an XmlNodePtr.
      */
-    std::string langProperty(XmlNodePtr node, const char *name,
+    std::string langProperty(const XmlNodePtr node, const char *const name,
                              const std::string &def);
 
     /**
      * Gets a boolean property from an XmlNodePtr.
      */
-    bool getBoolProperty(XmlNodePtr node, const char *name, bool def);
+    bool getBoolProperty(const XmlNodePtr node, const char *const name,
+                         const bool def);
 
     /**
      * Finds the first child node with the given name
      */
-    XmlNodePtr findFirstChildByName(XmlNodePtr parent, const char *name);
+    XmlNodePtr findFirstChildByName(const XmlNodePtr parent,
+                                    const char *const name);
 
     void initXML();
 

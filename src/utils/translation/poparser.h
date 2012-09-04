@@ -33,9 +33,9 @@ class PoParser
     public:
         PoParser();
 
-        PoDict *load(std::string lang,
-                     std::string fileName = "",
-                     PoDict *dict = nullptr);
+        PoDict *load(const std::string &lang,
+                     const std::string &fileName = "",
+                     PoDict *const dict = nullptr);
 
         bool checkLang(std::string lang) const;
 
@@ -57,9 +57,9 @@ class PoParser
 
         std::string getFileName(std::string lang) const;
 
-        PoDict *getDict();
+        PoDict *getDict() const;
 
-        void convertStr(std::string &str);
+        void convertStr(std::string &str) const;
 
         // current lang
         std::string mLang;

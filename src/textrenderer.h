@@ -35,15 +35,15 @@ class TextRenderer
     /**
      * Renders a specified text.
      */
-    static inline void renderText(gcn::Graphics *graphics,
+    static inline void renderText(gcn::Graphics *const graphics,
                                   const std::string &text,
-                                  int x, int y,
-                                  gcn::Graphics::Alignment align,
+                                  const int x, const int y,
+                                  const gcn::Graphics::Alignment align,
                                   const gcn::Color &color,
-                                  gcn::Font *font,
-                                  bool outline = false,
-                                  bool shadow = false,
-                                  int alpha = 255)
+                                  gcn::Font *const font,
+                                  const bool outline = false,
+                                  const bool shadow = false,
+                                  const int alpha = 255)
     {
         graphics->setFont(font);
 

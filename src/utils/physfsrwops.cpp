@@ -32,7 +32,8 @@
 
 static int physfsrwops_seek(SDL_RWops *rw, int offset, int whence)
 {
-    PHYSFS_file *handle = static_cast<PHYSFS_file *>(rw->hidden.unknown.data1);
+    PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
+        rw->hidden.unknown.data1);
     int pos = 0;
 
     if (whence == SEEK_SET)
@@ -41,7 +42,7 @@ static int physfsrwops_seek(SDL_RWops *rw, int offset, int whence)
     } /* if */
     else if (whence == SEEK_CUR)
     {
-        PHYSFS_sint64 current = PHYSFS_tell(handle);
+        const PHYSFS_sint64 current = PHYSFS_tell(handle);
         if (current == -1)
         {
             SDL_SetError("Can't find position in file: %s",
@@ -63,7 +64,7 @@ static int physfsrwops_seek(SDL_RWops *rw, int offset, int whence)
     } /* else if */
     else if (whence == SEEK_END)
     {
-        PHYSFS_sint64 len = PHYSFS_fileLength(handle);
+        const PHYSFS_sint64 len = PHYSFS_fileLength(handle);
         if (len == -1)
         {
             SDL_SetError("Can't find end of file: %s", PHYSFS_getLastError());
@@ -102,8 +103,9 @@ static int physfsrwops_seek(SDL_RWops *rw, int offset, int whence)
 
 static int physfsrwops_read(SDL_RWops *rw, void *ptr, int size, int maxnum)
 {
-    PHYSFS_file *handle = static_cast<PHYSFS_file*>(rw->hidden.unknown.data1);
-    PHYSFS_sint64 rc = PHYSFS_read(handle, ptr, size, maxnum);
+    PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
+        rw->hidden.unknown.data1);
+    const PHYSFS_sint64 rc = PHYSFS_read(handle, ptr, size, maxnum);
     if (rc != maxnum)
     {
         if (!PHYSFS_eof(handle)) /* not EOF? Must be an error. */
@@ -115,8 +117,9 @@ static int physfsrwops_read(SDL_RWops *rw, void *ptr, int size, int maxnum)
 
 static int physfsrwops_write(SDL_RWops *rw, const void *ptr, int size, int num)
 {
-    PHYSFS_file *handle = static_cast<PHYSFS_file*>(rw->hidden.unknown.data1);
-    PHYSFS_sint64 rc = PHYSFS_write(handle, ptr, size, num);
+    PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
+        rw->hidden.unknown.data1);
+    const PHYSFS_sint64 rc = PHYSFS_write(handle, ptr, size, num);
     if (rc != num)
         SDL_SetError("PhysicsFS error: %s", PHYSFS_getLastError());
 

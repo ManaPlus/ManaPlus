@@ -26,14 +26,16 @@
 
 #include "debug.h"
 
-bool reportFalseReal(bool val, const char* file, unsigned line)
+bool reportFalseReal(const bool val, const char *const file,
+                     const unsigned line)
 {
     if (!val)
         logger->log("Debug: false value at %s:%u", file, line);
     return val;
 }
 
-bool reportTrueReal(bool val, const char* file, unsigned line)
+bool reportTrueReal(const bool val, const char *const file,
+                    const unsigned line)
 {
     if (val)
         logger->log("Debug: true value at %s:%u", file, line);

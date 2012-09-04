@@ -33,11 +33,12 @@
 
 #include "debug.h"
 
-TextCommand::TextCommand(unsigned int id, std::string symbol,
-                         std::string command,  std::string comment,
-                         SpellTarget type, std::string icon,
-                         unsigned int basicLvl, MagicSchool school,
-                         unsigned int schoolLvl, int mana) :
+TextCommand::TextCommand(const unsigned int id, const std::string &symbol,
+                         const std::string &command,
+                         const std::string &comment,
+                         const SpellTarget type, const std::string &icon,
+                         const unsigned int basicLvl, const MagicSchool school,
+                         const unsigned int schoolLvl, const int mana) :
     mCommand(command),
     mComment(comment),
     mSymbol(symbol),
@@ -55,9 +56,10 @@ TextCommand::TextCommand(unsigned int id, std::string symbol,
 }
 
 
-TextCommand::TextCommand(unsigned int id, std::string symbol,
-                         std::string command, std::string comment,
-                         SpellTarget type, std::string icon) :
+TextCommand::TextCommand(const unsigned int id, const std::string &symbol,
+                         const std::string &command,
+                         const std::string &comment,
+                         const SpellTarget type, const std::string &icon) :
     mCommand(command),
     mComment(comment),
     mSymbol(symbol),
@@ -74,7 +76,7 @@ TextCommand::TextCommand(unsigned int id, std::string symbol,
     loadImage();
 }
 
-TextCommand::TextCommand(unsigned int id) :
+TextCommand::TextCommand(const unsigned int id) :
     mCommand(""),
     mComment(""),
     mSymbol(""),
@@ -112,7 +114,7 @@ void TextCommand::loadImage()
     if (getIcon().empty())
         return;
 
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     SpriteDisplay display = ItemDB::get(getIcon()).getDisplay();
     mImage = resman->getImage(paths.getStringValue("itemIcons")
         + display.image);

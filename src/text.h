@@ -39,17 +39,17 @@ class Text
         /**
          * Constructor creates a text object to display on the screen.
          */
-        Text(const std::string &text, int x, int y,
-             gcn::Graphics::Alignment alignment,
-             const gcn::Color *color, bool isSpeech = false,
-             gcn::Font *font = nullptr);
+        Text(const std::string &text, const int x, const int y,
+             const gcn::Graphics::Alignment alignment,
+             const gcn::Color *const color, const bool isSpeech = false,
+             gcn::Font *const font = nullptr);
 
         /**
          * Destructor. The text is removed from the screen.
          */
         virtual ~Text();
 
-        void setColor(const gcn::Color *color);
+        void setColor(const gcn::Color *const color);
 
         int getWidth() const
         { return mWidth; }
@@ -60,12 +60,13 @@ class Text
         /**
          * Allows the originator of the text to specify the ideal coordinates.
          */
-        void adviseXY(int x, int y);
+        void adviseXY(const int x, const int y);
 
         /**
          * Draws the text.
          */
-        virtual void draw(gcn::Graphics *graphics, int xOff, int yOff);
+        virtual void draw(gcn::Graphics *const graphics,
+                          const int xOff, const int yOff);
 
     private:
         int mX;                /**< Actual x-value of left of text written. */
@@ -86,10 +87,10 @@ class Text
 class FlashText : public Text
 {
     public:
-        FlashText(const std::string &text, int x, int y,
-                  gcn::Graphics::Alignment alignment,
-                  const gcn::Color* color,
-                  gcn::Font *font = nullptr);
+        FlashText(const std::string &text, const int x, const int y,
+                  const gcn::Graphics::Alignment alignment,
+                  const gcn::Color *const color,
+                  gcn::Font *const font = nullptr);
 
         /**
          * Remove the text from the screen
@@ -100,13 +101,14 @@ class FlashText : public Text
         /**
          * Flash the text for so many refreshes.
          */
-        void flash(int time)
+        void flash(const int time)
         { mTime = time; }
 
         /**
          * Draws the text.
          */
-        virtual void draw(gcn::Graphics *graphics, int xOff, int yOff);
+        virtual void draw(gcn::Graphics *const graphics,
+                          const int xOff, const int yOff);
 
     private:
         int mTime;             /**< Time left for flashing */

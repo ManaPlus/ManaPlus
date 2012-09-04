@@ -46,7 +46,7 @@ class Vector
         /**
          * Constructor.
          */
-        Vector(float x0, float y0, float z0 = 0.0f):
+        Vector(const float x0, const float y0, const float z0 = 0.0f) :
             x(x0),
             y(y0),
             z(z0)
@@ -73,7 +73,7 @@ class Vector
         /**
          * Scale vector operator.
          */
-        Vector operator*(float c) const
+        Vector operator*(const float c) const
         {
             return Vector(x * c,
                           y * c,
@@ -83,7 +83,7 @@ class Vector
         /**
          * In-place scale vector operator.
          */
-        Vector &operator*=(float c)
+        Vector &operator*=(const float c)
         {
             x *= c;
             y *= c;
@@ -94,7 +94,7 @@ class Vector
         /**
          * Scale vector operator.
          */
-        Vector operator/(float c) const
+        Vector operator/(const float c) const
         {
             return Vector(x / c,
                           y / c,
@@ -104,7 +104,7 @@ class Vector
         /**
          * In-place scale vector operator.
          */
-        Vector &operator/=(float c)
+        Vector &operator/=(const float c)
         {
             x /= c;
             y /= c;

@@ -84,7 +84,7 @@ inline void Mutex::unlock()
 }
 
 
-inline MutexLocker::MutexLocker(Mutex *mutex):
+inline MutexLocker::MutexLocker(Mutex *const mutex) :
     mMutex(mutex)
 {
     mMutex->lock();

@@ -66,7 +66,7 @@ void TestMain::initConfig()
     mConfig.setValue("screenheight", 600);
 }
 
-int TestMain::exec(bool testAudio)
+int TestMain::exec(const bool testAudio)
 {
     initConfig();
     int softwareTest = invokeSoftwareRenderTest("1");
@@ -197,8 +197,8 @@ int TestMain::exec(bool testAudio)
     return 0;
 }
 
-void TestMain::writeConfig(int openGLMode, int rescale,
-                           int sound, std::string info)
+void TestMain::writeConfig(const int openGLMode, const int rescale,
+                           const int sound, const std::string &info)
 {
     mConfig.init(Client::getConfigDirectory() + "/config.xml");
 
@@ -222,14 +222,14 @@ void TestMain::writeConfig(int openGLMode, int rescale,
     mConfig.write();
 }
 
-int TestMain::readValue2(int ver)
+int TestMain::readValue2(const int ver)
 {
-    int def = readValue(ver, 0);
+    const int def = readValue(ver, 0);
     log->log("value for %d = %d", ver, def);
     return def;
 }
 
-int TestMain::readValue(int ver, int def)
+int TestMain::readValue(const int ver, int def)
 {
     std::string tmp;
     int var;
@@ -257,14 +257,14 @@ int TestMain::invokeTest(std::string test)
     mConfig.setValue("opengl", 0);
 
     mConfig.write();
-    int ret = execFileWait(fileName, fileName, "-t", test);
+    const int ret = execFileWait(fileName, fileName, "-t", test);
     return ret;
 }
 
 int TestMain::invokeTest4()
 {
     mConfig.setValue("sound", true);
-    int ret = invokeTest("4");
+    const int ret = invokeTest("4");
 
     log->log("4: %d", ret);
     return ret;
@@ -274,7 +274,7 @@ int TestMain::invokeSoftwareRenderTest(std::string test)
 {
     mConfig.setValue("opengl", 0);
     mConfig.write();
-    int ret = execFileWait(fileName, fileName, "-t", test, 30);
+    const int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;
 }

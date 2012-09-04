@@ -44,12 +44,12 @@ static char base64_table[] =
 };
 static char base64_pad = '=';
 
-unsigned char *php3_base64_encode(const unsigned char *string,
-                                  int length, int *ret_length)
+unsigned char *php3_base64_encode(const unsigned char *const string,
+                                  int length, int *const ret_length)
 {
     const unsigned char *current = string;
     int i = 0;
-    unsigned char *result = static_cast<unsigned char *>(calloc(
+    unsigned char *const result = static_cast<unsigned char *>(calloc(
         ((length + 3 - length % 3) * 4 / 3 + 1) * sizeof(char), 1));
 
     while (length > 2)
@@ -92,12 +92,12 @@ unsigned char *php3_base64_encode(const unsigned char *string,
 }
 
 /* as above, but backwards. :) */
-unsigned char *php3_base64_decode(const unsigned char *string,
-                                  int length, int *ret_length)
+unsigned char *php3_base64_decode(const unsigned char *const string,
+                                  const int length, int *const ret_length)
 {
     const unsigned char *current = string;
     int ch, i = 0, j = 0, k;
-    char *chp;
+    const char *chp;
 
     unsigned char *result = static_cast<unsigned char *>(
         calloc(length + 1, 1));

@@ -86,12 +86,12 @@ template<typename T> std::string toString(const T &arg)
  * @param address the address to convert to a string
  * @return the string representation of the address
  */
-const char *ipToString(int address);
+const char *ipToString(const int address);
 
 /**
  * A safe version of sprintf that returns a std::string of the result.
  */
-std::string strprintf(char const *, ...)
+std::string strprintf(char const *const format, ...)
 #ifdef __GNUC__
     /* This attribute is nice: it even works through gettext invokation. For
        example, gcc will complain that strprintf(_("%s"), 42) is ill-formed. */
@@ -134,13 +134,13 @@ int compareStrI(const std::string &a, const std::string &b);
 /**
  * Tells wether the character is a word separator.
  */
-bool isWordSeparator(char chr);
+bool isWordSeparator(const char chr);
 
 size_t findI(std::string str, std::string subStr);
 
 size_t findI(std::string text, StringVect &list);
 
-const std::string encodeStr(unsigned int value, unsigned int size = 0);
+const std::string encodeStr(unsigned int value, const unsigned int size = 0);
 
 unsigned int decodeStr(const std::string &str);
 
@@ -150,7 +150,7 @@ std::string removeSpriteIndex(std::string str);
 
 const char* getSafeUtf8String(std::string text);
 
-void getSafeUtf8String(std::string text, char *buf);
+void getSafeUtf8String(std::string text, char *const buf);
 
 std::string getFileName(std::string path);
 
@@ -174,18 +174,18 @@ void replaceSpecialChars(std::string &text);
  */
 std::string normalize(const std::string &name);
 
-std::set<int> splitToIntSet(const std::string &text, char separator);
+std::set<int> splitToIntSet(const std::string &text, const char separator);
 
-std::list<int> splitToIntList(const std::string &text, char separator);
+std::list<int> splitToIntList(const std::string &text, const char separator);
 
 std::list<std::string> splitToStringList(const std::string &text,
-                                         char separator);
+                                         const char separator);
 
 void splitToStringVector(StringVect &tokens,
-                         const std::string &text, char separator);
+                         const std::string &text, const char separator);
 
 void splitToStringSet(std::set<std::string> &tokens,
-                      const std::string &text, char separator);
+                      const std::string &text, const char separator);
 
 std::string combineDye(std::string file, std::string dye);
 
@@ -197,11 +197,11 @@ std::list<std::string> unpackList(const std::string &str);
 
 std::string stringToHexPath(const std::string &str);
 
-void deleteCharLeft(std::string &str, unsigned *pos);
+void deleteCharLeft(std::string &str, unsigned *const pos);
 
-bool findLast(std::string &str1, std::string str2);
+bool findLast(const std::string &str1, const std::string &str2);
 
-bool findFirst(std::string &str1, std::string str2);
+bool findFirst(const std::string &str1, const std::string &str2);
 
 bool findCutLast(std::string &str1, std::string str2);
 

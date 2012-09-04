@@ -35,7 +35,7 @@ class PoDict
 
         const std::string getStr(const std::string &str);
 
-        const char *getChar(const char *str);
+        const char *getChar(const char *const str);
 
     protected:
         friend class PoParser;

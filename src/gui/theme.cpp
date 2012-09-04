@@ -328,7 +328,7 @@ struct SkinParameter
     std::string name;
 };
 
-static SkinParameter skinParam[] =
+static const SkinParameter skinParam[] =
 {
     {0, "top-left-corner"},
     {0, "standart"},
@@ -367,7 +367,7 @@ static SkinParameter skinParam[] =
     {8, "bottom-right-corner"},
 };
 
-static SkinParameter imageParam[] =
+static const SkinParameter imageParam[] =
 {
     {0, "closeImage"},
     {1, "stickyImageUp"},

@@ -40,7 +40,7 @@
 #include "debug.h"
 
 #if defined WIN32
-int mkdir_r(const char *pathname)
+int mkdir_r(const char *const pathname)
 {
     char tmp[PATH_MAX];
     char tmp2[PATH_MAX];
@@ -111,7 +111,7 @@ int mkdir_r(const char *pathname)
 }
 #else
 /// Create a directory, making leading components first if necessary
-int mkdir_r(const char *pathname)
+int mkdir_r(const char *const pathname)
 {
     size_t len = static_cast<int>(strlen(pathname));
     char *tmp = new char[len + 2];

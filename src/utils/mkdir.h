@@ -22,6 +22,6 @@
 #ifndef M_MKDIR_H
 #define M_MKDIR_H
 
-int mkdir_r(const char *pathname);
+int mkdir_r(const char *const pathname);
 
 #endif

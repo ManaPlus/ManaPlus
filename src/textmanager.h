@@ -42,17 +42,17 @@ class TextManager
         /**
          * Add text to the manager
          */
-        void addText(Text *text);
+        void addText(Text *const text);
 
         /**
          * Move the text around the screen
          */
-        void moveText(Text *text, int x, int y);
+        void moveText(Text *const text, const int x, const int y);
 
         /**
          * Remove the text from the manager
          */
-        void removeText(const Text *text);
+        void removeText(const Text *const text);
 
         /**
          * Destroy the manager
@@ -62,14 +62,15 @@ class TextManager
         /**
          * Draw the text
          */
-        void draw(gcn::Graphics *graphics, int xOff, int yOff);
+        void draw(gcn::Graphics *const graphics,
+                  const int xOff, const int yOff);
 
     private:
         /**
          * Position the text so as to avoid conflict
          */
-        void place(const Text *textObj, const Text *omit,
-                   int &x, int &y, int h);
+        void place(const Text *const textObj, const Text *const omit,
+                   const int &x, int &y, const int h);
 
         typedef std::list<Text *> TextList; /**< The container type */
         TextList mTextList; /**< The container */

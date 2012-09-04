@@ -75,12 +75,13 @@ int TestLauncher::exec()
     return -1;
 }
 
-int TestLauncher::testBackend()
+int TestLauncher::testBackend() const
 {
-    Image *img = Theme::getImageFromTheme("graphics/sprites/arrow_up.gif");
+    const Image *const img = Theme::getImageFromTheme(
+        "graphics/sprites/arrow_up.gif");
     if (!img)
         return 1;
-    int cnt = 100;
+    const int cnt = 100;
 
     for (int f = 0; f < cnt; f ++)
     {
@@ -92,7 +93,7 @@ int TestLauncher::testBackend()
     return 0;
 }
 
-int TestLauncher::testSound()
+int TestLauncher::testSound() const
 {
     sound.playGuiSfx("system/newmessage.ogg");
     sleep(1);
@@ -103,11 +104,11 @@ int TestLauncher::testSound()
     return 0;
 }
 
-int TestLauncher::testRescale()
+int TestLauncher::testRescale() const
 {
     Wallpaper::loadWallpapers();
     const std::string wallpaperName = Wallpaper::getWallpaper(800, 600);
-    volatile Image *img = Theme::getImageFromTheme(wallpaperName);
+    const volatile Image *const img = Theme::getImageFromTheme(wallpaperName);
     if (!img)
         return 1;
 
@@ -132,7 +133,7 @@ int TestLauncher::testFps()
     img[4] = Theme::getImageFromTheme("graphics/images/login_wallpaper.png");
     int idx = 0;
 
-    int cnt = 20;
+    const int cnt = 20;
 
     gettimeofday(&start, nullptr);
     for (int k = 0; k < cnt; k ++)
@@ -155,7 +156,7 @@ int TestLauncher::testFps()
     }
 
     gettimeofday(&end, nullptr);
-    int tFps = calcFps(&start, &end, cnt);
+    const int tFps = calcFps(&start, &end, cnt);
     file << mTest << std::endl;
     file << tFps << std::endl;
 
@@ -179,10 +180,10 @@ int TestLauncher::testInternal()
     img[2] = Theme::getImageFromTheme("graphics/sprites/arrow_left.gif");
     img[3] = Theme::getImageFromTheme("graphics/sprites/arrow_right.gif");
     int idx = 0;
-    int mem =  mainGraphics->getMemoryUsage();
+    const int mem =  mainGraphics->getMemoryUsage();
 
 //    int cnt = 5;
-    int cnt = 5000;
+    const int cnt = 5000;
 
     gettimeofday(&start, nullptr);
     for (int k = 0; k < cnt; k ++)
@@ -204,7 +205,7 @@ int TestLauncher::testInternal()
     }
 
     gettimeofday(&end, nullptr);
-    int tFps = calcFps(&start, &end, cnt);
+    const int tFps = calcFps(&start, &end, cnt);
     file << mTest << std::endl;
     file << tFps << std::endl;
     file << mem << std::endl;
@@ -221,7 +222,8 @@ int TestLauncher::testVideoDetection()
     return 0;
 }
 
-int TestLauncher::calcFps(timeval *start, timeval *end, int calls)
+int TestLauncher::calcFps(const timeval *const start, const timeval *const end,
+                          const int calls) const
 {
     long mtime;
     long seconds;

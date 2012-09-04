@@ -41,14 +41,15 @@ static void xmlNullLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
 
 namespace XML
 {
-    Document::Document(const std::string &filename, bool useResman):
+    Document::Document(const std::string &filename, const bool useResman) :
         mDoc(nullptr)
     {
         int size;
         char *data = nullptr;
         if (useResman)
         {
-            ResourceManager *resman = ResourceManager::getInstance();
+            const ResourceManager *const resman
+                = ResourceManager::getInstance();
             data = static_cast<char*>(resman->loadFile(
                 filename.c_str(), size));
         }
@@ -89,7 +90,7 @@ namespace XML
         }
     }
 
-    Document::Document(const char *data, int size)
+    Document::Document(const char *const data, const int size)
     {
         if (data)
             mDoc = xmlParseMemory(data, size);
@@ -108,11 +109,11 @@ namespace XML
         return mDoc ? xmlDocGetRootElement(mDoc) : nullptr;
     }
 
-    int getProperty(XmlNodePtr node, const char* name, int def)
+    int getProperty(const XmlNodePtr node, const char *const name, int def)
     {
         int &ret = def;
 
-        xmlChar *prop = xmlGetProp(node, BAD_CAST name);
+        xmlChar *const prop = xmlGetProp(node, BAD_CAST name);
         if (prop)
         {
             ret = atoi(reinterpret_cast<char*>(prop));
@@ -122,12 +123,12 @@ namespace XML
         return ret;
     }
 
-    int getIntProperty(XmlNodePtr node, const char* name, int def,
-                       int min, int max)
+    int getIntProperty(const XmlNodePtr node, const char *const name, int def,
+                       const int min, const int max)
     {
         int &ret = def;
 
-        xmlChar *prop = xmlGetProp(node, BAD_CAST name);
+        xmlChar *const prop = xmlGetProp(node, BAD_CAST name);
         if (prop)
         {
             ret = atoi(reinterpret_cast<char*>(prop));
@@ -140,11 +141,12 @@ namespace XML
         return ret;
     }
 
-    double getFloatProperty(XmlNodePtr node, const char* name, double def)
+    double getFloatProperty(const XmlNodePtr node, const char *const name,
+                            double def)
     {
         double &ret = def;
 
-        xmlChar *prop = xmlGetProp(node, BAD_CAST name);
+        xmlChar *const prop = xmlGetProp(node, BAD_CAST name);
         if (prop)
         {
             ret = atof(reinterpret_cast<char*>(prop));
@@ -154,10 +156,10 @@ namespace XML
         return ret;
     }
 
-    std::string getProperty(XmlNodePtr node, const char *name,
+    std::string getProperty(const XmlNodePtr node, const char *const name,
                             const std::string &def)
     {
-        xmlChar *prop = xmlGetProp(node, BAD_CAST name);
+        xmlChar *const prop = xmlGetProp(node, BAD_CAST name);
         if (prop)
         {
             std::string val = reinterpret_cast<char*>(prop);
@@ -168,7 +170,7 @@ namespace XML
         return def;
     }
 
-    std::string langProperty(XmlNodePtr node, const char *name,
+    std::string langProperty(const XmlNodePtr node, const char *const name,
                              const std::string &def)
     {
         std::string str = getProperty(node, name, def);
@@ -178,9 +180,10 @@ namespace XML
         return translator->getStr(str);
     }
 
-    bool getBoolProperty(XmlNodePtr node, const char* name, bool def)
+    bool getBoolProperty(const XmlNodePtr node, const char *const name,
+                         const bool def)
     {
-        xmlChar *prop = xmlGetProp(node, BAD_CAST name);
+        const xmlChar *const prop = xmlGetProp(node, BAD_CAST name);
 
         if (xmlStrEqual(prop, BAD_CAST "true" ))
             return true;
@@ -189,7 +192,8 @@ namespace XML
         return def;
     }
 
-    XmlNodePtr findFirstChildByName(XmlNodePtr parent, const char *name)
+    XmlNodePtr findFirstChildByName(const XmlNodePtr parent,
+                                    const char *const name)
     {
         for_each_xml_child_node(child, parent)
         {

@@ -40,7 +40,7 @@ PoParser::PoParser() :
 
 void PoParser::openFile(std::string name)
 {
-    ResourceManager *resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
     int size;
     char *buf = static_cast<char*>(resman->loadFile(getFileName(name), size));
 
@@ -48,7 +48,8 @@ void PoParser::openFile(std::string name)
     free(buf);
 }
 
-PoDict *PoParser::load(std::string lang, std::string fileName, PoDict *dict)
+PoDict *PoParser::load(const std::string &lang, const std::string &fileName,
+                       PoDict *const dict)
 {
     logger->log("loading lang: %s, file: %s", lang.c_str(), fileName.c_str());
 
@@ -214,7 +215,7 @@ PoDict *PoParser::getEmptyDict()
 bool PoParser::checkLang(std::string lang) const
 {
     // check is po file exists
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
     return resman->exists(getFileName(lang));
 }
 
@@ -225,12 +226,12 @@ std::string PoParser::getFileName(std::string lang) const
     return strprintf("translations/%s.po", lang.c_str());
 }
 
-PoDict *PoParser::getDict()
+PoDict *PoParser::getDict() const
 {
     return new PoDict(mLang);
 }
 
-void PoParser::convertStr(std::string &str)
+void PoParser::convertStr(std::string &str) const
 {
     if (str.empty())
         return;

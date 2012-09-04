@@ -73,7 +73,7 @@ unsigned int atox(const std::string &str)
     return value;
 }
 
-const char *ipToString(int address)
+const char *ipToString(const int address)
 {
     static char asciiIP[18];
 
@@ -86,7 +86,7 @@ const char *ipToString(int address)
     return asciiIP;
 }
 
-std::string strprintf(char const *format, ...)
+std::string strprintf(char const *const format, ...)
 {
     char buf[257];
     va_list(args);
@@ -139,13 +139,13 @@ std::string removeColors(std::string msg)
 int compareStrI(const std::string &a, const std::string &b)
 {
     std::string::const_iterator itA = a.begin();
-    std::string::const_iterator endA = a.end();
+    const std::string::const_iterator endA = a.end();
     std::string::const_iterator itB = b.begin();
-    std::string::const_iterator endB = b.end();
+    const std::string::const_iterator endB = b.end();
 
     for (; itA < endA, itB < endB; ++itA, ++itB)
     {
-        int comp = tolower(*itA) - tolower(*itB);
+        const int comp = tolower(*itA) - tolower(*itB);
         if (comp)
             return comp;
     }
@@ -160,7 +160,7 @@ int compareStrI(const std::string &a, const std::string &b)
 }
 
 
-bool isWordSeparator(char chr)
+bool isWordSeparator(const char chr)
 {
     return (chr == ' ' || chr == ',' || chr == '.' || chr == '"');
 }
@@ -168,7 +168,7 @@ bool isWordSeparator(char chr)
 const std::string findSameSubstring(const std::string &str1,
                                     const std::string &str2)
 {
-    int minLength = str1.length() > str2.length()
+    const int minLength = str1.length() > str2.length()
         ? static_cast<int>(str2.length()) : static_cast<int>(str1.length());
     for (int f = 0; f < minLength; f ++)
     {
@@ -222,7 +222,7 @@ size_t findI(std::string text, StringVect &list)
 int base = 94;
 int start = 33;
 
-const std::string encodeStr(unsigned int value, unsigned int size)
+const std::string encodeStr(unsigned int value, const unsigned int size)
 {
     std::string buf;
 
@@ -269,7 +269,7 @@ std::string extractNameFromSprite(std::string str)
         if (pos2 == std::string::npos)
             pos2 = static_cast<size_t>(-1);
 
-        int size = static_cast<int>(pos1) - static_cast<int>(pos2) - 1;
+        const int size = static_cast<int>(pos1) - static_cast<int>(pos2) - 1;
         if (size > 0)
             str = str.substr(pos2 + 1, size);
     }
@@ -292,7 +292,7 @@ std::string removeSpriteIndex(std::string str)
         if (pos2 == std::string::npos)
             pos2 = static_cast<size_t>(-1);
 
-        int size = static_cast<int>(pos1) - static_cast<int>(pos2) - 1;
+        const int size = static_cast<int>(pos1) - static_cast<int>(pos2) - 1;
         if (size > 0)
             str = str.substr(pos2 + 1, size);
     }
@@ -301,16 +301,16 @@ std::string removeSpriteIndex(std::string str)
 
 const char* getSafeUtf8String(std::string text)
 {
-    int size = static_cast<int>(text.size()) + UTF8_MAX_SIZE;
-    char* buf = new char[size];
+    const int size = static_cast<int>(text.size()) + UTF8_MAX_SIZE;
+    char *const buf = new char[size];
     memcpy(buf, text.c_str(), text.size());
     memset(buf + text.size(), 0, UTF8_MAX_SIZE);
     return buf;
 }
 
-void getSafeUtf8String(std::string text, char *buf)
+void getSafeUtf8String(std::string text, char *const buf)
 {
-    int size = static_cast<int>(text.size()) + UTF8_MAX_SIZE;
+    const int size = static_cast<int>(text.size()) + UTF8_MAX_SIZE;
     if (size > 65500)
         text = text.substr(0, 65500);
     memcpy(buf, text.c_str(), text.size());
@@ -412,7 +412,7 @@ std::string normalize(const std::string &name)
     return toLower(trim(normalized));
 }
 
-std::set<int> splitToIntSet(const std::string &text, char separator)
+std::set<int> splitToIntSet(const std::string &text, const char separator)
 {
     std::set<int> tokens;
     std::stringstream ss(text);
@@ -423,7 +423,7 @@ std::set<int> splitToIntSet(const std::string &text, char separator)
     return tokens;
 }
 
-std::list<int> splitToIntList(const std::string &text, char separator)
+std::list<int> splitToIntList(const std::string &text, const char separator)
 {
     std::list<int> tokens;
     std::stringstream ss(text);
@@ -436,7 +436,7 @@ std::list<int> splitToIntList(const std::string &text, char separator)
 
 
 std::list<std::string> splitToStringList(const std::string &text,
-                                         char separator)
+                                         const char separator)
 {
     std::list<std::string> tokens;
     std::stringstream ss(text);
@@ -448,7 +448,7 @@ std::list<std::string> splitToStringList(const std::string &text,
 }
 
 void splitToStringVector(StringVect &tokens, const std::string &text,
-                         char separator)
+                         const char separator)
 {
     std::stringstream ss(text);
     std::string item;
@@ -461,7 +461,7 @@ void splitToStringVector(StringVect &tokens, const std::string &text,
 }
 
 void splitToStringSet(std::set<std::string> &tokens, const std::string &text,
-                      char separator)
+                      const char separator)
 {
     std::stringstream ss(text);
     std::string item;
@@ -540,7 +540,7 @@ std::string stringToHexPath(const std::string &str)
     return hex;
 }
 
-void deleteCharLeft(std::string &str, unsigned *pos)
+void deleteCharLeft(std::string &str, unsigned *const pos)
 {
     if (!pos)
         return;
@@ -548,14 +548,14 @@ void deleteCharLeft(std::string &str, unsigned *pos)
     while (*pos > 0)
     {
         (*pos)--;
-        int v = str[*pos];
+        const int v = str[*pos];
         str.erase(*pos, 1);
         if ((v & 192) != 128)
             break;
     }
 }
 
-bool findLast(std::string &str1, std::string str2)
+bool findLast(const std::string &str1, const std::string &str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
@@ -567,7 +567,7 @@ bool findLast(std::string &str1, std::string str2)
     return false;
 }
 
-bool findFirst(std::string &str1, std::string str2)
+bool findFirst(const std::string &str1, const std::string &str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();

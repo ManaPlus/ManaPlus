@@ -103,7 +103,7 @@ void Units::loadUnits()
     }
 
     XML::Document doc("units.xml");
-    XmlNodePtr root = doc.rootNode();
+    const XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "units"))
     {
@@ -173,7 +173,7 @@ void Units::loadUnits()
     }
 }
 
-static std::string formatUnit(int value, int type)
+static std::string formatUnit(const int value, const int type)
 {
     struct UnitDescription ud = units[type];
     struct UnitLevel ul;
@@ -252,12 +252,12 @@ static std::string formatUnit(int value, int type)
     }
 }
 
-std::string Units::formatCurrency(int value)
+std::string Units::formatCurrency(const int value)
 {
     return formatUnit(value, UNIT_CURRENCY);
 }
 
-std::string Units::formatWeight(int value)
+std::string Units::formatWeight(const int value)
 {
     return formatUnit(value, UNIT_WEIGHT);
 }

@@ -47,7 +47,7 @@ const std::string PoDict::getStr(const std::string &str)
     return mPoLines[str];
 }
 
-const char *PoDict::getChar(const char *str)
+const char *PoDict::getChar(const char *const str)
 {
     if (mPoLines.find(str) == mPoLines.end())
         return str;

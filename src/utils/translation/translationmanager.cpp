@@ -57,8 +57,8 @@ void TranslationManager::close()
 }
 
 PoDict *TranslationManager::loadLang(LangVect lang,
-                                     std::string subName,
-                                     PoDict *dict)
+                                     const std::string &subName,
+                                     PoDict *const dict)
 {
     std::string name = "";
     PoParser parser;
@@ -84,14 +84,14 @@ PoDict *TranslationManager::loadLang(LangVect lang,
 }
 
 bool TranslationManager::translateFile(const std::string &fileName,
-                                       PoDict *dict,
+                                       PoDict *const dict,
                                        StringVect &lines)
 {
     if (!dict || fileName.empty())
         return false;
 
     int contentsLength;
-    ResourceManager *resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
     char *fileContents = static_cast<char*>(
         resman->loadFile(fileName, contentsLength));
 

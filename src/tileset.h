@@ -36,8 +36,8 @@ class Tileset : public ImageSet
         /**
          * Constructor.
          */
-        Tileset(Image *img, int w, int h, int firstGid,
-                int margin, int spacing):
+        Tileset(Image *const img, const int w, const int h, const int firstGid,
+                const int margin, const int spacing):
             ImageSet(img, w, h, margin, spacing),
             mFirstGid(firstGid)
         {
@@ -60,7 +60,7 @@ class Tileset : public ImageSet
          */
         std::string getProperty(std::string name)
         {
-            std::map<std::string, std::string>::const_iterator
+            const std::map<std::string, std::string>::const_iterator
                 it = mProperties.find(name);
             if (it == mProperties.end())
                 return "";

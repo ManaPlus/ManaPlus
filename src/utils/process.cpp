@@ -176,7 +176,7 @@ int execFileWait(std::string pathName, std::string name,
         }
 
         // monitoring process
-        pid_t exited_pid = wait(&status);
+        const pid_t exited_pid = wait(&status);
         int ret = -1;
         if (exited_pid == pid)
         {

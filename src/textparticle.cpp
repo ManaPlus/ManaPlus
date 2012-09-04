@@ -28,9 +28,9 @@
 
 #include "debug.h"
 
-TextParticle::TextParticle(Map *map, const std::string &text,
-                           const gcn::Color *color,
-                           gcn::Font *font, bool outline):
+TextParticle::TextParticle(Map *const map, const std::string &text,
+                           const gcn::Color *const color,
+                           gcn::Font *const font, const bool outline) :
     Particle(map),
     mText(text),
     mTextFont(font),
@@ -44,8 +44,8 @@ bool TextParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
     if (!isAlive())
         return false;
 
-    int screenX = static_cast<int>(mPos.x) + offsetX;
-    int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
+    const int screenX = static_cast<int>(mPos.x) + offsetX;
+    const int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
         + offsetY;
 
     float alpha = mAlpha * 255.0f;
@@ -62,7 +62,7 @@ bool TextParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
                 / static_cast<float>(mFadeIn);
     }
 
-    gcn::Color color = *mColor;
+    const gcn::Color color = *mColor;
 //    color.a = (int)alpha;
 
     TextRenderer::renderText(graphics, mText,

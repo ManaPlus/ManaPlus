@@ -31,8 +31,8 @@ class TranslationManager
 {
     public:
         static PoDict *loadLang(StringVect lang,
-                                std::string subName,
-                                PoDict *dict = nullptr);
+                                const std::string &subName,
+                                PoDict *const dict = nullptr);
 
         static void init();
 
@@ -41,7 +41,7 @@ class TranslationManager
         static void loadCurrentLang();
 
         static bool translateFile(const std::string &fileName,
-                                  PoDict *dict,
+                                  PoDict *const dict,
                                   StringVect &lines);
 };
 

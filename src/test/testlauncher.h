@@ -34,13 +34,14 @@ class TestLauncher
 
         int exec();
 
-        int calcFps(timeval *start, timeval *end, int calls);
+        int calcFps(const timeval *const start, const timeval *const end,
+                    const int calls) const;
 
-        int testBackend();
+        int testBackend() const;
 
-        int testSound();
+        int testSound() const;
 
-        int testRescale();
+        int testRescale() const;
 
         int testFps();
 

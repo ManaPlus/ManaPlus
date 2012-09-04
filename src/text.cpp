@@ -40,10 +40,10 @@
 int Text::mInstances = 0;
 ImageRect Text::mBubble;
 
-Text::Text(const std::string &text, int x, int y,
-           gcn::Graphics::Alignment alignment,
-           const gcn::Color* color, bool isSpeech,
-           gcn::Font *font) :
+Text::Text(const std::string &text, const int x, const int y,
+           const gcn::Graphics::Alignment alignment,
+           const gcn::Color* color, const bool isSpeech,
+           gcn::Font *const font) :
     mText(text),
     mColor(color),
     mIsSpeech(isSpeech)
@@ -116,18 +116,18 @@ Text::~Text()
     }
 }
 
-void Text::setColor(const gcn::Color *color)
+void Text::setColor(const gcn::Color *const color)
 {
     mColor = color;
 }
 
-void Text::adviseXY(int x, int y)
+void Text::adviseXY(const int x, const int y)
 {
     if (textManager)
         textManager->moveText(this, x - mXOffset, y);
 }
 
-void Text::draw(gcn::Graphics *graphics, int xOff, int yOff)
+void Text::draw(gcn::Graphics *const graphics, const int xOff, const int yOff)
 {
     if (mIsSpeech)
     {
@@ -141,15 +141,16 @@ void Text::draw(gcn::Graphics *graphics, int xOff, int yOff)
             *mColor, mFont, !mIsSpeech, true);
 }
 
-FlashText::FlashText(const std::string &text, int x, int y,
-                     gcn::Graphics::Alignment alignment,
-                     const gcn::Color *color, gcn::Font *font) :
+FlashText::FlashText(const std::string &text, const int x, const int y,
+                     const gcn::Graphics::Alignment alignment,
+                     const gcn::Color *const color, gcn::Font *const font) :
     Text(text, x, y, alignment, color, false, font),
     mTime(0)
 {
 }
 
-void FlashText::draw(gcn::Graphics *graphics, int xOff, int yOff)
+void FlashText::draw(gcn::Graphics *const graphics,
+                     const int xOff, const int yOff)
 {
     if (mTime)
     {

@@ -27,7 +27,7 @@
 #include <stdint.h>
 #include <cstring>
 
-static uint16_t crc_table[256] =
+static const uint16_t crc_table[256] =
 {
     0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,
     0x8108, 0x9129, 0xa14a, 0xb16b, 0xc18c, 0xd1ad, 0xe1ce, 0xf1ef,
@@ -90,7 +90,7 @@ inline uint16_t getCrc16(const std::string &str)
 inline float fastInvSqrt(float x)
 {
     union { int i; float x; } tmp;
-    float xhalf = 0.5f * x;
+    const float xhalf = 0.5f * x;
     tmp.x = x;
     tmp.i = 0x5f375a86 - (tmp.i >> 1);
     x = tmp.x;
@@ -98,12 +98,12 @@ inline float fastInvSqrt(float x)
     return x;
 }
 
-inline float fastSqrt(float x)
+inline float fastSqrt(const float x)
 {
     return 1.0f / fastInvSqrt(x);
 }
 
-inline float weightedAverage(float n1, float n2, float w)
+inline float weightedAverage(const float n1, const float n2, const float w)
 {
     if (w < 0.0f)
         return n1;
@@ -114,7 +114,7 @@ inline float weightedAverage(float n1, float n2, float w)
     return w * n2 + (1.0f - w) * n1;
 }
 
-inline int roundDouble(double v)
+inline int roundDouble(const double v)
 {
     return (v > 0.0) ? (v + 0.5) : (v - 0.5); 
 }

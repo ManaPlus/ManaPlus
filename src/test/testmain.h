@@ -31,9 +31,9 @@ class TestMain
     public:
         TestMain();
 
-        int exec(bool testAudio = true);
+        int exec(const bool testAudio = true);
 
-        static int readValue(int ver, int def);
+        static int readValue(const int ver, int def);
 
         Configuration &getConfig()
         { return mConfig; }
@@ -57,10 +57,10 @@ class TestMain
 
         void testsMain();
 
-        void writeConfig(int openGLMode, int rescale,
-                         int sound, std::string info);
+        void writeConfig(const int openGLMode, const int rescale,
+                         const int sound, const std::string &info);
 
-        int readValue2(int ver);
+        int readValue2(const int ver);
 
         Logger *log;
 

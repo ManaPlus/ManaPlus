@@ -61,21 +61,24 @@ class TextCommand
         /**
          * Constructor.
          */
-        TextCommand(unsigned int id, std::string symbol, std::string command,
-                    std::string comment, SpellTarget type, std::string icon,
-                    unsigned int basicLvl, MagicSchool school = SKILL_MAGIC,
-                    unsigned int schoolLvl = 0, int mana = 0);
+        TextCommand(const unsigned int id, const std::string &symbol,
+                    const std::string &command,
+                    const std::string &comment, const SpellTarget type,
+                    const std::string &icon, const unsigned int basicLvl,
+                    const MagicSchool school = SKILL_MAGIC,
+                    const unsigned int schoolLvl = 0, const int mana = 0);
 
         /**
          * Constructor.
          */
-        TextCommand(unsigned int id, std::string symbol, std::string command,
-                    std::string comment, SpellTarget type, std::string icon);
+        TextCommand(const unsigned int id, const std::string &symbol,
+                    const std::string &command, const std::string &comment,
+                    const SpellTarget type, const std::string &icon);
 
         /**
          * Constructor.
          */
-        TextCommand(unsigned int id);
+        TextCommand(const unsigned int id);
 
         /**
          * Destructor.
@@ -127,28 +130,28 @@ class TextCommand
         void setSymbol(std::string symbol)
         { mSymbol = symbol; }
 
-        void setId(unsigned int id)
+        void setId(const unsigned int id)
         { mId = id; }
 
-        void setTargetType(SpellTarget targetType)
+        void setTargetType(const SpellTarget targetType)
         { mTargetType = targetType; }
 
         void setIcon(std::string icon)
         { mIcon = icon; loadImage(); }
 
-        void setMana(unsigned int mana)
+        void setMana(const unsigned int mana)
         { mMana = mana; }
 
-        void setSchool(MagicSchool school)
+        void setSchool(const MagicSchool school)
         { mSchool = school; }
 
-        void setBaseLvl(unsigned int baseLvl)
+        void setBaseLvl(const unsigned int baseLvl)
         { mBaseLvl = baseLvl; }
 
-        void setSchoolLvl(unsigned int schoolLvl)
+        void setSchoolLvl(const unsigned int schoolLvl)
         { mSchoolLvl = schoolLvl; }
 
-        void setCommandType(TextCommandType commandType)
+        void setCommandType(const TextCommandType commandType)
         { mCommandType = commandType; }
 
         bool isEmpty() const

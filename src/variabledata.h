@@ -45,7 +45,8 @@ class VariableData
 class IntData : public VariableData
 {
     public:
-        IntData(int value) : mData(value)
+        IntData(const int value) :
+            mData(value)
         { }
 
         int getData() const
@@ -61,7 +62,8 @@ class IntData : public VariableData
 class StringData : public VariableData
 {
     public:
-        StringData(const std::string &value) : mData(value)
+        StringData(const std::string &value) :
+            mData(value)
         { }
 
         const std::string &getData() const
@@ -77,7 +79,8 @@ class StringData : public VariableData
 class FloatData : public VariableData
 {
     public:
-        FloatData(double value) : mData(value)
+        FloatData(const double value) :
+            mData(value)
         { }
 
         double getData() const
@@ -93,7 +96,8 @@ class FloatData : public VariableData
 class BoolData : public VariableData
 {
     public:
-        BoolData(bool value) : mData(value)
+        BoolData(const bool value) :
+            mData(value)
         { }
 
         bool getData() const

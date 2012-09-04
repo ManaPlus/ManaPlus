@@ -33,20 +33,20 @@ TextManager::TextManager()
 {
 }
 
-void TextManager::addText(Text *text)
+void TextManager::addText(Text *const text)
 {
     place(text, nullptr, text->mX, text->mY, text->mHeight);
     mTextList.push_back(text);
 }
 
-void TextManager::moveText(Text *text, int x, int y)
+void TextManager::moveText(Text *const text, const int x, const int y)
 {
     text->mX = x;
     text->mY = y;
     place(text, text, text->mX, text->mY, text->mHeight);
 }
 
-void TextManager::removeText(const Text *text)
+void TextManager::removeText(const Text *const text)
 {
     for (TextList::iterator ptr = mTextList.begin(),
          pEnd = mTextList.end(); ptr != pEnd; ++ptr)
@@ -63,7 +63,8 @@ TextManager::~TextManager()
 {
 }
 
-void TextManager::draw(gcn::Graphics *graphics, int xOff, int yOff)
+void TextManager::draw(gcn::Graphics *const graphics,
+                       const int xOff, const int yOff)
 {
     for (TextList::const_iterator bPtr = mTextList.begin(),
          ePtr = mTextList.end();
@@ -73,17 +74,17 @@ void TextManager::draw(gcn::Graphics *graphics, int xOff, int yOff)
     }
 }
 
-void TextManager::place(const Text *textObj, const Text *omit,
-                        int &x A_UNUSED, int &y, int h)
+void TextManager::place(const Text *const textObj, const Text *const omit,
+                        const int &x A_UNUSED, int &y, const int h)
 {
-    int xLeft = textObj->mX;
-    int xRight1 = xLeft + textObj->mWidth;
+    const int xLeft = textObj->mX;
+    const int xRight1 = xLeft + textObj->mWidth;
     const int TEST = 50; // Number of lines to test for text
     const int nBeings = 50;
     bool occupied[TEST]; // is some other text obscuring this line?
     std::memset(&occupied, 0, sizeof(occupied)); // set all to false
-    int wantedTop = (TEST - h) / 2; // Entry in occupied at top of text
-    int occupiedTop = y - wantedTop; // Line in map representing to of occupied
+    const int wantedTop = (TEST - h) / 2; // Entry in occupied at top of text
+    const int occupiedTop = y - wantedTop; // Line in map representing to of occupied
     int cnt = 0;
 
     for (TextList::const_iterator ptr = mTextList.begin(),
