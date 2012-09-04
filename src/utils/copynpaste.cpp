@@ -439,7 +439,7 @@ static bool runxsel(std::string& text, const char *p1, const char *p2)
             if (dup2(fd[0], STDIN_FILENO) != STDIN_FILENO)
             {
                 close(fd[0]);
-                exit(1);
+                _exit(1);
             }
             close(fd[0]);
         }
@@ -454,7 +454,7 @@ static bool runxsel(std::string& text, const char *p1, const char *p2)
                 static_cast<char *>(nullptr));
         }
 
-        exit(1);
+        _exit(1);
     }
 
     // parent

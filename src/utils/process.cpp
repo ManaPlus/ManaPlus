@@ -158,7 +158,7 @@ int execFileWait(std::string pathName, std::string name,
                 execl(pathName.c_str(), name.c_str(), arg1.c_str(),
                     arg2.c_str(), static_cast<char *>(nullptr));
             }
-            exit(-1);
+            _exit(-1);
         }
 
         // monitoring process
