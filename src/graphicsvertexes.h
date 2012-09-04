@@ -153,7 +153,7 @@ class GraphicsVertexes
 
         void init(const int x, const int y, const int w, const int h);
 
-        void pushSDL(const SDL_Rect r1, const SDL_Rect r2);
+        void pushSDL(const SDL_Rect &r1, const SDL_Rect &r2);
 
         void clearSDL();
 

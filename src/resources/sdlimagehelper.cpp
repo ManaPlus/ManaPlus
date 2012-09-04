@@ -210,7 +210,7 @@ SDL_Surface* SDLImageHelper::SDLDuplicateSurface(SDL_Surface *const tmpImage)
     return SDL_ConvertSurface(tmpImage, tmpImage->format, SDL_SWSURFACE);
 }
 
-Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
+Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
 {
     if (!tmpImage)
         return nullptr;

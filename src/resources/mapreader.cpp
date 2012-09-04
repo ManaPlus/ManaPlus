@@ -755,7 +755,8 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                         continue;
                     std::string name = XML::getProperty(
                         propertyNode, "name", "");
-                    const int value = XML::getProperty(propertyNode, "value", 0);
+                    const int value = XML::getProperty(
+                        propertyNode, "value", 0);
                     if (!name.empty())
                     {
                         tileProperties[name] = value;

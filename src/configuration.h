@@ -65,7 +65,7 @@ class ConfigurationListManager
          * \param obj The configuration object to read from
          * \param container The container to insert the object to
          */
-        virtual CONT readConfigItem(ConfigurationObject *obj,
+        virtual CONT readConfigItem(ConfigurationObject *const obj,
                                     CONT container) = 0;
 
         virtual ~ConfigurationListManager() {}

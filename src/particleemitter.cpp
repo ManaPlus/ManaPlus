@@ -304,9 +304,9 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             {
                 const int delay = XML::getIntProperty(
                     frameNode, "delay", 0, 0, 100000);
-                int offsetX = XML::getProperty(frameNode, "offsetX", 0)
+                const int offsetX = XML::getProperty(frameNode, "offsetX", 0)
                      - (imageset->getWidth() / 2 - 16);
-                int offsetY = XML::getProperty(frameNode, "offsetY", 0)
+                const int offsetY = XML::getProperty(frameNode, "offsetY", 0)
                     - (imageset->getHeight() - 32);
                 const int rand = XML::getIntProperty(
                     frameNode, "rand", 100, 0, 100);

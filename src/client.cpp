@@ -399,7 +399,7 @@ void Client::gameInit()
             SMALL_VERSION).c_str(), nullptr);
     }
 
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
 
     if (!resman->setWriteDir(mLocalDataDir))
     {
@@ -1200,7 +1200,7 @@ int Client::gameExec()
                 {
                     logger->log1("State: LOAD DATA");
 
-                    ResourceManager *const resman
+                    const ResourceManager *const resman
                         = ResourceManager::getInstance();
 
                     // If another data path has been set,
@@ -1889,7 +1889,7 @@ void Client::initUpdatesDir()
         replaceAll(mUpdatesDir, ":", "_");
 #endif
 
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
 
     // Verify that the updates directory exists. Create if necessary.
     if (!resman->isDirectory("/" + mUpdatesDir))

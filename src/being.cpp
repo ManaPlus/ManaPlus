@@ -2267,7 +2267,7 @@ void Being::recalcSpritesOrder()
                                 mSpriteHide[remSprite] = repIt->second;
                                 if (repIt->second != 1)
                                 {
-                                    if (remSprite != hairSlot)
+                                    if ((unsigned)remSprite != hairSlot)
                                     {
                                         setSprite(remSprite, repIt->second,
                                             mSpriteColors[remSprite],
@@ -2558,7 +2558,7 @@ std::string Being::loadComment(const std::string &name, const int type)
     logger->log("load from: %s", str.c_str());
     StringVect lines;
 
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
     if (resman->existsLocal(str))
     {
         lines = resman->loadTextFileLocal(str);
@@ -2584,7 +2584,7 @@ void Being::saveComment(const std::string &name,
             return;
     }
     dir += stringToHexPath(name);
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }
 

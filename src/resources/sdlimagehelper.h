@@ -78,7 +78,7 @@ class SDLImageHelper : public ImageHelper
 
     protected:
         /** SDL_Surface to SDL_Surface Image loader */
-        Image *_SDLload(SDL_Surface *tmpImage);
+        Image *_SDLload(SDL_Surface *tmpImage) const;
 
         static bool mEnableAlphaCache;
 };

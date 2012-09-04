@@ -364,7 +364,7 @@ class Map : public Properties, public ConfigListener
         { return mObjects; }
 
         std::string getObjectData(const unsigned x, const unsigned y,
-                                  const int type);
+                                  const int type) const;
 
         void indexTilesets();
 

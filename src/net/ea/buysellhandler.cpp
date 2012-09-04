@@ -151,7 +151,8 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg, int offset)
             const int value = msg.readInt32();
             msg.readInt32();  // value
 
-            const Item *const item = PlayerInfo::getInventory()->getItem(index);
+            const Item *const item = PlayerInfo::getInventory()
+                ->getItem(index);
 
             if (item && !(item->isEquipped()))
                 dialog->addItem(item, value);

@@ -102,7 +102,8 @@ void AmbientLayer::update(const int timePassed, const float dx, const float dy)
         mPosY += static_cast<float>(imgH);
 }
 
-void AmbientLayer::draw(Graphics *const graphics, const int x, const int y) const
+void AmbientLayer::draw(Graphics *const graphics, const int x,
+                        const int y) const
 {
     if (!mImage)
         return;

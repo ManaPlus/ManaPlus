@@ -93,7 +93,7 @@ class Equipment
         void setBackend(Backend *const backend)
         { mBackend = backend; }
 
-        Backend *getBackend() const
+        const Backend *getBackend() const
         { return mBackend; }
 
     private:

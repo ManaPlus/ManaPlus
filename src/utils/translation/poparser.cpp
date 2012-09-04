@@ -215,7 +215,7 @@ PoDict *PoParser::getEmptyDict()
 bool PoParser::checkLang(std::string lang) const
 {
     // check is po file exists
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
     return resman->exists(getFileName(lang));
 }
 

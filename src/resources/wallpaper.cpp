@@ -55,7 +55,7 @@ static std::string wallpaperFile;
 // Search for the wallpaper path values sequentially..
 static void initDefaultWallpaperPaths()
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
 
     // Init the path
     wallpaperPath = branding.getStringValue("wallpapersPath");

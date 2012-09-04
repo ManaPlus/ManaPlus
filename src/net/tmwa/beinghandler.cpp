@@ -443,9 +443,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     // An update about a player, potentially including movement.
     const int id = msg.readInt32();
     const short speed = msg.readInt16();
-    const uint16_t stunMode = msg.readInt16(); // opt1; Aethyra use this as cape
+    const uint16_t stunMode = msg.readInt16(); // opt1;
     uint32_t statusEffects = msg.readInt16(); // opt2;
-                                              // Aethyra use this as misc1
     statusEffects |= (static_cast<uint32_t>(msg.readInt16()))
         << 16; // status.options; Aethyra uses this as misc2
     const short job = msg.readInt16();

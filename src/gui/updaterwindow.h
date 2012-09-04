@@ -119,14 +119,14 @@ class UpdaterWindow : public Window,
 
     static void loadLocalUpdates(const std::string &dir);
 
-    static void addUpdateFile(ResourceManager *const resman,
+    static void addUpdateFile(const ResourceManager *const resman,
                               const std::string &path,
                               const std::string &fixPath,
                               const std::string &file,
                               const bool append);
 
     static void loadManaPlusUpdates(const std::string &dir,
-                                    ResourceManager *const resman);
+                                    const ResourceManager *const resman);
 
     int updateState;
 

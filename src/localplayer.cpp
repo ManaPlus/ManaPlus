@@ -3594,7 +3594,7 @@ void LocalPlayer::navigateClean()
 
     mNavigatePath.clear();
 
-    SpecialLayer *const tmpLayer = mMap->getTempLayer();
+    const SpecialLayer *const tmpLayer = mMap->getTempLayer();
     if (!tmpLayer)
         return;
 

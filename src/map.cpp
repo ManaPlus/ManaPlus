@@ -1081,7 +1081,6 @@ void Map::initializeParticleEffects(Particle *const engine)
     if (!engine)
         return;
 
-    Particle *p;
 
     if (config.getBoolValue("particleeffects"))
     {
@@ -1089,7 +1088,7 @@ void Map::initializeParticleEffects(Particle *const engine)
              i = particleEffects.begin();
              i != particleEffects.end(); ++i)
         {
-            p = engine->addEffect(i->file, i->x, i->y);
+            Particle *const p = engine->addEffect(i->file, i->x, i->y);
             if (p && i->w > 0 && i->h > 0)
                 p->adjustEmitterSize(i->w, i->h);
         }
@@ -1322,7 +1321,7 @@ void Map::setPvpMode(const int mode)
 }
 
 std::string Map::getObjectData(const unsigned x, const unsigned y,
-                               const int type)
+                               const int type) const
 {
     if (!mObjects)
         return "";

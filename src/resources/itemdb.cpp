@@ -242,7 +242,8 @@ void ItemDB::load()
             node, "missile-particle", "");
         const int hitEffectId = XML::getProperty(node, "hit-effect-id",
             paths.getIntValue("hitEffectId"));
-        const int criticalEffectId = XML::getProperty(node, "critical-hit-effect-id",
+        const int criticalEffectId = XML::getProperty(
+            node, "critical-hit-effect-id",
             paths.getIntValue("criticalHitEffectId"));
 
         SpriteDisplay display;

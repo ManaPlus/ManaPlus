@@ -64,7 +64,7 @@ class SpellManager
         void fillSpells();
 
         void invokeSpell(const TextCommand *const spell,
-                         Being *const target) const;
+                         const Being *const target) const;
 
         void invokeSpell(const TextCommand *const spell) const;
 

@@ -514,7 +514,7 @@ void UpdaterWindow::download()
 
 void UpdaterWindow::loadUpdates()
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
 
     if (mUpdateFiles.empty())
     {   // updates not downloaded
@@ -540,7 +540,7 @@ void UpdaterWindow::loadUpdates()
 
 void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
 
     std::vector<updateFile> updateFiles
         = loadXMLFile(dir + "/" + xmlUpdateFile);
@@ -564,7 +564,7 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 }
 
 void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
-                                        ResourceManager *const resman)
+                                        const ResourceManager *const resman)
 {
     std::string fixPath = dir + "/fix";
     std::vector<updateFile> updateFiles
@@ -584,7 +584,7 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
     }
 }
 
-void UpdaterWindow::addUpdateFile(ResourceManager *const resman,
+void UpdaterWindow::addUpdateFile(const ResourceManager *const resman,
                                   const std::string &path,
                                   const std::string &fixPath,
                                   const std::string &file,

@@ -122,7 +122,7 @@ public:
 
     void setMap(Map *const map);
 
-    Map* getMap() const
+    const Map* getMap() const
     { return mMap; }
 
 protected:

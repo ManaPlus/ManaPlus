@@ -257,7 +257,7 @@ bool ResourceManager::removeFromSearchPath(const std::string &path) const
 
 void ResourceManager::searchAndAddArchives(const std::string &path,
                                            const std::string &ext,
-                                           const bool append)
+                                           const bool append) const
 {
     const char *const dirSep = PHYSFS_getDirSeparator();
     char **list = PHYSFS_enumerateFiles(path.c_str());
@@ -282,7 +282,7 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
 }
 
 void ResourceManager::searchAndRemoveArchives(const std::string &path,
-                                              const std::string &ext)
+                                              const std::string &ext) const
 {
     const char *const dirSep = PHYSFS_getDirSeparator();
     char **list = PHYSFS_enumerateFiles(path.c_str());
@@ -398,7 +398,7 @@ Resource *ResourceManager::getFromCache(const std::string &idPath)
 }
 
 Resource *ResourceManager::get(const std::string &idPath, const generator fun,
-                               void *const data)
+                               const void *const data)
 {
 #ifndef DISABLE_RESOURCE_CACHING
     Resource *resource = getFromCache(idPath);
@@ -437,7 +437,7 @@ struct ResourceLoader
     std::string path;
     ResourceManager::loader fun;
 
-    static Resource *load(void *const v)
+    static Resource *load(const void *const v)
     {
         if (!v)
             return nullptr;
@@ -471,7 +471,7 @@ struct DyedImageLoader
 {
     ResourceManager *manager;
     std::string path;
-    static Resource *load(void *const v)
+    static Resource *load(const void *const v)
     {
         if (!v)
             return nullptr;
@@ -528,7 +528,7 @@ struct ImageSetLoader
     ResourceManager *manager;
     std::string path;
     int w, h;
-    static Resource *load(void *const v)
+    static Resource *load(const void *const v)
     {
         if (!v)
             return nullptr;
@@ -562,7 +562,7 @@ struct SubImageSetLoader
     ResourceManager *manager;
     Image *parent;
     int width, height;
-    static Resource *load(void *v)
+    static Resource *load(const void *const v)
     {
         if (!v)
             return nullptr;
@@ -597,7 +597,7 @@ struct SubImageLoader
     Image *parent;
     int x, y;
     int width, height;
-    static Resource *load(void *const v)
+    static Resource *load(const void *const v)
     {
         if (!v)
             return nullptr;
@@ -632,7 +632,7 @@ struct SpriteDefLoader
 {
     std::string path;
     int variant;
-    static Resource *load(void *const v)
+    static Resource *load(const void *const v)
     {
         if (!v)
             return nullptr;
@@ -840,7 +840,7 @@ SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename) const
     return surface;
 }
 
-void ResourceManager::scheduleDelete(SDL_Surface* surface)
+void ResourceManager::scheduleDelete(SDL_Surface *const surface)
 {
     deletedSurfaces.insert(surface);
 }
@@ -861,11 +861,12 @@ struct RescaledLoader
     Image *image;
     int width;
     int height;
-    static Resource *load(void *const v)
+    static Resource *load(const void *const v)
     {
         if (!v)
             return nullptr;
-        const RescaledLoader *const rl = static_cast< RescaledLoader * >(v);
+        const RescaledLoader *const rl
+            = static_cast<const RescaledLoader *const>(v);
         if (!rl->manager || !rl->image)
             return nullptr;
         Image *const rescaled = rl->image->SDLgetScaledImage(

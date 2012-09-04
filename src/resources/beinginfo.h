@@ -90,7 +90,7 @@ class BeingInfo
         void setTargetCursorSize(const std::string &size);
 
         void setTargetCursorSize(const ActorSprite::TargetCursorSize
-                                 targetSize)
+                                 &targetSize)
         { mTargetCursorSize = targetSize; }
 
         ActorSprite::TargetCursorSize getTargetCursorSize() const
@@ -115,7 +115,7 @@ class BeingInfo
         unsigned char getWalkMask() const
         { return mWalkMask; }
 
-        void setBlockType(const Map::BlockType blockType)
+        void setBlockType(const Map::BlockType &blockType)
         { mBlockType = blockType; }
 
         Map::BlockType getBlockType() const

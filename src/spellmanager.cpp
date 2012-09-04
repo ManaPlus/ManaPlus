@@ -142,7 +142,7 @@ void SpellManager::invoke(const int spellId)
         >= static_cast<signed>(spell->getSchoolLvl())
         && PlayerInfo::getAttribute(PlayerInfo::MP) >= spell->getMana()))
     {
-        Being *const target = player_node->getTarget();
+        const Being *const target = player_node->getTarget();
         if (spell->getTargetType() == NOTARGET)
         {
             invokeSpell(spell);
@@ -169,7 +169,7 @@ void SpellManager::invokeSpell(const TextCommand *const spell) const
 }
 
 void SpellManager::invokeSpell(const TextCommand *const spell,
-                               Being *const target) const
+                               const Being *const target) const
 {
     if (!chatWindow || !spell || !target)
         return;
@@ -361,7 +361,7 @@ std::string SpellManager::autoComplete(std::string partName)
 
     while (i != i_end)
     {
-        TextCommand *const cmd = *i;
+        const TextCommand *const cmd = *i;
         std::string line = cmd->getCommand();
 
         if (line != "")

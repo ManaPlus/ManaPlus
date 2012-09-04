@@ -56,7 +56,7 @@ class ResourceManager
     public:
 
         typedef Resource *(*loader)(SDL_RWops *);
-        typedef Resource *(*generator)(void *);
+        typedef Resource *(*generator)(const void *const);
 
         ResourceManager();
 
@@ -95,13 +95,13 @@ class ResourceManager
         */
         void searchAndAddArchives(const std::string &path,
                                   const std::string &ext,
-                                  const bool append);
+                                  const bool append) const;
 
         /**
         * Searches for zip files and remove them from the search path.
         */
         void searchAndRemoveArchives(const std::string &path,
-                                     const std::string &ext);
+                                     const std::string &ext) const;
 
         /**
          * Creates a directory in the write path
@@ -142,7 +142,8 @@ class ResourceManager
          * @return A valid resource or <code>NULL</code> if the resource could
          *         not be generated.
          */
-        Resource *get(const std::string &idPath, const generator fun, void *const data);
+        Resource *get(const std::string &idPath, const generator fun,
+                      const void *const data);
 
         Resource *getFromCache(const std::string &idPath);
 
@@ -255,7 +256,7 @@ class ResourceManager
          */
         SDL_Surface *loadSDLSurface(const std::string &filename) const;
 
-        void scheduleDelete(SDL_Surface* surface);
+        void scheduleDelete(SDL_Surface *const surface);
 
         void clearScheduled();
 

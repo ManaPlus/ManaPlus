@@ -213,7 +213,7 @@ void GraphicsVertexes::setLoadAsOpenGL(int useOpenGL)
 }
 #endif
 
-void GraphicsVertexes::pushSDL(const SDL_Rect r1, const SDL_Rect r2)
+void GraphicsVertexes::pushSDL(const SDL_Rect &r1, const SDL_Rect &r2)
 {
     DoubleRect *const r = new DoubleRect();
     r->src = r1;

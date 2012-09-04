@@ -979,10 +979,10 @@ impHandler0(attack)
 
 impHandler0(targetAttack)
 {
-    Being *target = nullptr;
-
     if (player_node && actorSpriteManager)
     {
+        Being *target = nullptr;
+
         const bool newTarget = !inputManager.isActionActive(
             Input::KEY_STOP_ATTACK);
         // A set target has highest priority

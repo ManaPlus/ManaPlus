@@ -50,7 +50,7 @@ Theme *Theme::mInstance = nullptr;
 // Set the theme path...
 static void initDefaultThemePath()
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
     defaultThemePath = branding.getStringValue("guiThemePath");
 
     logger->log("defaultThemePath: " + defaultThemePath);

@@ -73,7 +73,7 @@ class Channel
         void setAnnouncement(const std::string &channelAnnouncement)
         { mAnnouncement = channelAnnouncement; }
 
-        ChannelTab *getTab() const
+        const ChannelTab *getTab() const
         { return mTab; }
 
     protected:

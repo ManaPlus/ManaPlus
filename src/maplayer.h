@@ -190,7 +190,7 @@ class SpecialLayer
 
         void draw(Graphics *const graphics, int startX, int startY,
                   int endX, int endY,
-                  const int scrollX, const int scrollY);
+                  const int scrollX, const int scrollY) const;
 
         MapItem* getTile(const int x, const int y) const;
 
@@ -200,7 +200,7 @@ class SpecialLayer
 
         void addRoad(Path road);
 
-        void clean();
+        void clean() const;
 
         void itemDraw(Graphics *const graphics, const int x, const int y,
                       const int scrollX, const int scrollY) const;

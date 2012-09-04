@@ -115,7 +115,7 @@ void MapLayer::draw(Graphics *const graphics,
             const int x32 = x * 32;
 
             int c = 0;
-            Image *const img = *tilePtr;
+            const Image *const img = *tilePtr;
             if (img)
             {
                 const int px = x32 + dx;
@@ -378,7 +378,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                 {
                     const int px1 = x * 32 - scrollX;
 
-                    MapItem *item = mSpecialLayer->mTiles[ptr + x];
+                    const MapItem *item = mSpecialLayer->mTiles[ptr + x];
                     if (item)
                         item->draw(graphics, px1, py1, 32, 32);
 
@@ -400,7 +400,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
 
                 const int px1 = x32 - scrollX;
                 int c = 0;
-                Image *const img = *tilePtr;
+                const Image *const img = *tilePtr;
                 if (img)
                 {
                     const int px = x32 + dx;
@@ -437,8 +437,10 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
 
                     for (int x1 = 0; x1 < c1 + 1; x1 ++)
                     {
-                        MapItem *const item1 = mSpecialLayer->mTiles[ptr + x1];
-                        MapItem *const item2 = mTempLayer->mTiles[ptr + x1];
+                        const MapItem *const item1
+                            = mSpecialLayer->mTiles[ptr + x1];
+                        const MapItem *const item2
+                            = mTempLayer->mTiles[ptr + x1];
                         if (item1 || item2)
                         {
                             const int px2 = px1 + (x1 * 32);
@@ -604,7 +606,7 @@ void SpecialLayer::addRoad(Path road)
     }
 }
 
-void SpecialLayer::clean()
+void SpecialLayer::clean() const
 {
     if (!mTiles)
         return;
@@ -619,7 +621,7 @@ void SpecialLayer::clean()
 
 void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
                         int endX, int endY,
-                        const int scrollX, const int scrollY)
+                        const int scrollX, const int scrollY) const
 {
     if (startX < 0)
         startX = 0;
@@ -640,7 +642,7 @@ void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
 void SpecialLayer::itemDraw(Graphics *const graphics, const int x, const int y,
                             const int scrollX, const int scrollY) const
 {
-    MapItem *const item = getTile(x, y);
+    const MapItem *const item = getTile(x, y);
     if (item)
     {
         const int px = x * 32 - scrollX;

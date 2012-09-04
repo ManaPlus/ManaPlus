@@ -692,7 +692,7 @@ Being *ActorSpriteManager::findBeingByName(const std::string &name,
 }
 
 Being *ActorSpriteManager::findNearestByName(const std::string &name,
-                                             const Being::Type type) const
+                                             const Being::Type &type) const
 {
     if (!player_node)
         return nullptr;
@@ -847,7 +847,6 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
     if (!aroundBeing || !player_node)
         return nullptr;
 
-    Being *closestBeing = nullptr;
     std::set<std::string> attackMobs;
     std::set<std::string> priorityMobs;
     std::set<std::string> ignoreAttackMobs;
@@ -995,6 +994,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
     {
         int dist = 0;
         int index = defaultPriorityIndex;
+        Being *closestBeing = nullptr;
 
         for (ActorSprites::const_iterator i = mActors.begin(),
              i_end = mActors.end();

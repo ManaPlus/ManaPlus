@@ -299,11 +299,10 @@ Image* Image::SDLgetScaledImage(const int width, const int height) const
         return nullptr;
 
     Image* scaledImage = nullptr;
-    SDL_Surface* scaledSurface = nullptr;
 
     if (mSDLSurface)
     {
-        scaledSurface = zoomSurface(mSDLSurface,
+        SDL_Surface *const scaledSurface = zoomSurface(mSDLSurface,
                     static_cast<double>(width) / mBounds.w,
                     static_cast<double>(height) / mBounds.h,
                     1);

@@ -400,7 +400,6 @@ void ShopWindow::saveList()
     std::ofstream shopFile;
     std::string shopListName = Client::getServerConfigDirectory()
         + "/shoplist.txt";
-    std::list<int> procesList;
     std::map<int, ShopItem*> mapItems;
 
     shopFile.open(shopListName.c_str(), std::ios::binary);

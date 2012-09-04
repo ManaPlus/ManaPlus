@@ -172,7 +172,7 @@ class SpriteDef : public Resource
          */
         void loadAnimation(const XmlNodePtr animationNode,
                            Action *const action, ImageSet *const imageSet,
-                           const int variant_offset);
+                           const int variant_offset) const;
 
         /**
          * Include another sprite into this one.

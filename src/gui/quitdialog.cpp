@@ -126,7 +126,7 @@ void QuitDialog::action(const gcn::ActionEvent &event)
     {
         if (viewport)
         {
-            Map *const map = viewport->getCurrentMap();
+            const Map *const map = viewport->getCurrentMap();
             if (map)
                 map->saveExtraLayer();
         }

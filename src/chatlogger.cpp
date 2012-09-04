@@ -103,7 +103,6 @@ void ChatLogger::log(std::string str)
 
 void ChatLogger::log(std::string name, std::string str)
 {
-    std::ofstream logFile;
     std::string dateStr = getDir();
     std::string logFileName = strprintf("%s/%s.log",
         dateStr.c_str(), secureName(name).c_str());

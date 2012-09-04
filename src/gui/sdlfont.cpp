@@ -100,7 +100,7 @@ SDLFont::SDLFont(std::string filename, const int size, const int style) :
     mCreateCounter(0),
     mDeleteCounter(0)
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
 
     if (fontCounter == 0 && TTF_Init() == -1)
     {
@@ -151,7 +151,7 @@ SDLFont::~SDLFont()
 
 void SDLFont::loadFont(std::string filename, const int size, const int style)
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
 
     if (fontCounter == 0 && TTF_Init() == -1)
     {

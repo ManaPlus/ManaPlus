@@ -318,7 +318,7 @@ void Network::setError(const std::string &error)
     mState = NET_ERROR;
 }
 
-uint16_t Network::readWord(int pos)
+uint16_t Network::readWord(const int pos) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     return SDL_Swap16((*(uint16_t*)(mInBuffer + (pos))));

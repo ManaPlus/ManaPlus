@@ -202,7 +202,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt16();                       // speed
     tempPlayer->setSubtype(msg.readInt16()); // class (used for race)
     const int hairStyle = msg.readInt16();
-    const uint16_t weapon = msg.readInt16();  // server not used it. may be need use?
+    const uint16_t weapon = msg.readInt16();
+
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
     data.mAttributes[PlayerInfo::LEVEL] = msg.readInt16();
@@ -211,7 +212,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const int bottomClothes = msg.readInt16();
     const int shield = msg.readInt16();
 
-    int hat = msg.readInt16(); // head option top
+    const int hat = msg.readInt16(); // head option top
     const int topClothes = msg.readInt16();
 
     tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,

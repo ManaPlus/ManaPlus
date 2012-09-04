@@ -84,7 +84,7 @@ class Network
 
         void setError(const std::string &error);
 
-        uint16_t readWord(int pos);
+        uint16_t readWord(const int pos) const;
 
         bool realConnect();
 

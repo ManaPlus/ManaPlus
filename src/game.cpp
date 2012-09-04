@@ -606,7 +606,7 @@ void Game::slowLogic()
 
         if (viewport && !errorMessage.empty())
         {
-            Map *const map = viewport->getCurrentMap();
+            const Map *const map = viewport->getCurrentMap();
             if (map)
             {
                 logger->log("state: %d", Client::getState());
@@ -979,7 +979,7 @@ void Game::changeMap(const std::string &mapPath)
     std::string realFullMap = paths.getValue("maps", "maps/")
                               + MapDB::getMapName(mMapName) + ".tmx";
 
-    ResourceManager *const resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
     if (!resman->exists(realFullMap))
         realFullMap += ".gz";
 

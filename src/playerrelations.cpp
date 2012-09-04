@@ -84,7 +84,7 @@ public:
     }
 
     virtual std::map<std::string, PlayerRelation *> *
-    readConfigItem(ConfigurationObject *cobj,
+    readConfigItem(ConfigurationObject *const cobj,
                    std::map<std::string, PlayerRelation *> *container)
     {
         if (!cobj)
@@ -298,7 +298,7 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
 }
 
 bool PlayerRelationsManager::hasPermission(const Being *const being,
-                                           unsigned int flags)
+                                           const unsigned int flags)
 {
     if (!being)
         return false;

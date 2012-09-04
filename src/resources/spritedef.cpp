@@ -250,7 +250,7 @@ void SpriteDef::loadAction(const XmlNodePtr node, const int variant_offset)
 
 void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
                               Action *const action, ImageSet *const imageSet,
-                              const int variant_offset)
+                              const int variant_offset) const
 {
     if (!action || !imageSet)
         return;

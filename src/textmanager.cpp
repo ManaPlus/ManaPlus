@@ -84,7 +84,8 @@ void TextManager::place(const Text *const textObj, const Text *const omit,
     bool occupied[TEST]; // is some other text obscuring this line?
     std::memset(&occupied, 0, sizeof(occupied)); // set all to false
     const int wantedTop = (TEST - h) / 2; // Entry in occupied at top of text
-    const int occupiedTop = y - wantedTop; // Line in map representing to of occupied
+    const int occupiedTop = y - wantedTop; // Line in map representing
+                                           // to of occupied
     int cnt = 0;
 
     for (TextList::const_iterator ptr = mTextList.begin(),
