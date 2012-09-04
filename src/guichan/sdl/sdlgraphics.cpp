@@ -267,7 +267,7 @@ namespace gcn
                     }
                     else
                     {
-                        *(q++) = static_cast<uint8_t>(pixel);
+                        *(q++) = pixel;
                     }
                 }
                 break;
