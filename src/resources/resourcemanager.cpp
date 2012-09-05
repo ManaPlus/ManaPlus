@@ -193,7 +193,6 @@ bool ResourceManager::cleanOrphans(const bool always)
         return false;
 
     bool status(false);
-    status = false;
     ResourceIterator iter = mOrphanedResources.begin();
     while (iter != mOrphanedResources.end())
     {

@@ -278,7 +278,6 @@ void NpcDialog::action(const gcn::ActionEvent &event)
 
             if (mInputState == NPC_INPUT_LIST)
             {
-                unsigned char choice = 0;
                 const int selectedIndex = mItemList->getSelected();
 
                 if (selectedIndex >= static_cast<int>(mItems.size())
@@ -287,7 +286,8 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                 {
                     return;
                 }
-                choice = static_cast<unsigned char>(selectedIndex + 1);
+                unsigned char choice = static_cast<unsigned char>(
+                    selectedIndex + 1);
                 printText = mItems[selectedIndex];
 
                 Net::getNpcHandler()->listInput(mNpcId, choice);

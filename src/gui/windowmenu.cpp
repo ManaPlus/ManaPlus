@@ -369,7 +369,7 @@ void WindowMenu::saveButtons()
          it != it_end; ++it)
     {
         const Button *const btn = dynamic_cast<const Button *const>(*it);
-        if (!btn->isVisible())
+        if (btn && !btn->isVisible())
         {
             config.setValue("windowmenu" + toString(i),
                 btn->getActionEventId());

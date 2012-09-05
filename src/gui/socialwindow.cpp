@@ -1091,8 +1091,7 @@ public:
         for (StringVectCIter it = players->begin(), it_end = players->end();
              it != it_end; ++ it)
         {
-            Avatar *ava = nullptr;
-            ava = new Avatar(*it);
+            Avatar *ava = new Avatar(*it);
             if (actorSpriteManager->findBeingByName(*it, Being::PLAYER)
                 || players2.find(*it) != players2.end())
             {

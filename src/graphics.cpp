@@ -386,8 +386,6 @@ bool Graphics::drawRescaledImage(Image *const image, int srcX, int srcY,
 
     Image *tmpImage = image->SDLgetScaledImage(desiredWidth, desiredHeight);
 
-    bool returnValue = false;
-
     if (!tmpImage)
         return false;
     if (!tmpImage->mSDLSurface)
@@ -408,7 +406,7 @@ bool Graphics::drawRescaledImage(Image *const image, int srcX, int srcY,
     srcRect.w = static_cast<uint16_t>(width);
     srcRect.h = static_cast<uint16_t>(height);
 
-    returnValue = !(SDL_BlitSurface(tmpImage->mSDLSurface,
+    const bool returnValue = !(SDL_BlitSurface(tmpImage->mSDLSurface,
         &srcRect, mTarget, &dstRect) < 0);
 
     delete tmpImage;

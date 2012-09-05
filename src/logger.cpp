@@ -143,11 +143,10 @@ void Logger::log1(const char *const buf)
 void Logger::log(const char *const log_text, ...)
 {
     unsigned size = 1024;
-    char* buf = nullptr;
     if (strlen(log_text) * 3 > size)
         size = static_cast<unsigned>(strlen(log_text) * 3);
 
-    buf = new char[size + 1];
+    char* buf = new char[size + 1];
     va_list ap;
 
     // Use a temporary buffer to fill in the variables

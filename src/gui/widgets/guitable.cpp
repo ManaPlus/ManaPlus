@@ -145,7 +145,6 @@ void GuiTable::recomputeDimensions()
     const int rows_nr = mModel->getRows();
     const int columns_nr = mModel->getColumns();
     int width = 0;
-    int height = 0;
 
     if (mSelectedRow >= rows_nr)
         mSelectedRow = rows_nr - 1;
@@ -156,10 +155,8 @@ void GuiTable::recomputeDimensions()
     for (int i = 0; i < columns_nr; i++)
         width += getColumnWidth(i);
 
-    height = getRowHeight() * rows_nr;
-
     setWidth(width);
-    setHeight(height);
+    setHeight(getRowHeight() * rows_nr);
 }
 
 void GuiTable::setSelected(int row, int column)

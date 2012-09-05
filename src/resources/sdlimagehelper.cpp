@@ -48,7 +48,6 @@ Resource *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
         return nullptr;
     }
 
-    SDL_Surface *surf = nullptr;
     SDL_PixelFormat rgba;
     rgba.palette = nullptr;
     rgba.BitsPerPixel = 32;
@@ -60,7 +59,7 @@ Resource *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     rgba.Bmask = 0x0000FF00; rgba.Bloss = 0; rgba.Bshift = 8;
     rgba.Amask = 0x000000FF; rgba.Aloss = 0; rgba.Ashift = 0;
 
-    surf = SDL_ConvertSurface(tmpImage, &rgba, SDL_SWSURFACE);
+    SDL_Surface *surf = SDL_ConvertSurface(tmpImage, &rgba, SDL_SWSURFACE);
     SDL_FreeSurface(tmpImage);
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);

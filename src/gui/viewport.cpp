@@ -302,7 +302,7 @@ void Viewport::_followMouse()
 
 void Viewport::_drawDebugPath(Graphics *const graphics)
 {
-    if (!player_node || !userPalette || !actorSpriteManager)
+    if (!player_node || !userPalette || !actorSpriteManager || !mMap)
         return;
 
     // Get the current mouse position

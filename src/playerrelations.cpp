@@ -560,22 +560,16 @@ PlayerRelationsManager::getPlayerIgnoreStrategies()
 
 bool PlayerRelationsManager::isGoodName(std::string name)
 {
-    bool status(false);
-
     const size_t size = name.size();
 
     if (size < 3 || mRelations[name])
         return true;
 
-    status = checkName(name);
-
-    return status;
+    return checkName(name);
 }
 
 bool PlayerRelationsManager::isGoodName(Being *const being)
 {
-    bool status(false);
-
     if (!being)
         return false;
     if (being->getGoodStatus() != -1)
@@ -587,8 +581,7 @@ bool PlayerRelationsManager::isGoodName(Being *const being)
     if (size < 3 || mRelations[name])
         return true;
 
-    status = checkName(name);
-
+    bool status = checkName(name);
     being->setGoodStatus(status ? 1 : 0);
     return status;
 }

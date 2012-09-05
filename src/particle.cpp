@@ -134,9 +134,11 @@ bool Particle::update()
                         dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
                     break;
                 case 2:
-                    invHypotenuse = 0;
                     if (!dist.x)
+                    {
+                        invHypotenuse = 0;
                         break;
+                    }
 
                     invHypotenuse = 2.0f / (static_cast<float>(fabs(dist.x))
                                     + static_cast<float>(fabs(dist.y))

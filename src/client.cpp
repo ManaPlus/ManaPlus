@@ -1732,11 +1732,10 @@ void Client::initServerConfig(std::string serverName)
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mServerConfigDir.c_str()));
     }
-    FILE *configFile = nullptr;
     std::string configPath;
 
     configPath = mServerConfigDir + "/config.xml";
-    configFile = fopen(configPath.c_str(), "r");
+    FILE *configFile = fopen(configPath.c_str(), "r");
     if (!configFile)
     {
         configFile = fopen(configPath.c_str(), "wt");
@@ -1803,7 +1802,6 @@ void Client::initConfiguration() const
 
     // Checking if the configuration file exists... otherwise create it with
     // default options.
-    FILE *configFile = nullptr;
     std::string configPath;
 //    bool oldConfig = false;
 //    int emptySize = config.getSize();
@@ -1813,7 +1811,7 @@ void Client::initConfiguration() const
     else
         configPath = mConfigDir + "/test.xml";
 
-    configFile = fopen(configPath.c_str(), "r");
+    FILE *configFile = fopen(configPath.c_str(), "r");
 
     // If we can't read it, it doesn't exist !
     if (!configFile)
@@ -1995,9 +1993,7 @@ void Client::accountLogin(LoginData *const data) const
 bool Client::copyFile(const std::string &configPath,
                       const std::string &oldConfigPath) const
 {
-    FILE *configFile = nullptr;
-
-    configFile = fopen(oldConfigPath.c_str(), "r");
+    FILE *configFile = fopen(oldConfigPath.c_str(), "r");
 
     if (configFile)
     {

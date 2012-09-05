@@ -124,7 +124,6 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
 
         if (Ea::taParty)
         {
-            PartyMember *member = nullptr;
             if (oldParty)
             {
                 //member = Ea::taParty->getMember(id);
@@ -135,7 +134,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
                         nick.c_str()), BY_SERVER);
                 }
             }
-            member = Ea::taParty->addMember(id, nick);
+            PartyMember *member = Ea::taParty->addMember(id, nick);
 
             if (member)
             {

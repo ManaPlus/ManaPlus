@@ -70,9 +70,6 @@ int TestMain::exec(const bool testAudio)
 {
     initConfig();
     int softwareTest = invokeSoftwareRenderTest("1");
-    int fastOpenGLTest = -1;
-    int safeOpenGLTest = -1;
-    int videoDetectTest = -1;
     int soundTest = -1;
     int rescaleTest[3];
     int softFps = 0;
@@ -80,19 +77,18 @@ int TestMain::exec(const bool testAudio)
     int safeOpenGLFps = 0;
 
     int openGLMode = 0;
-    int maxFps = 0;
     int detectMode = 0;
     rescaleTest[0] = -1;
     rescaleTest[1] = -1;
     rescaleTest[2] = -1;
     std::string info;
 
-    videoDetectTest = invokeTest("99");
+    int videoDetectTest = invokeTest("99");
     if (!videoDetectTest)
         detectMode = readValue2(99);
 
-    fastOpenGLTest = invokeFastOpenGLRenderTest("2");
-    safeOpenGLTest = invokeSafeOpenGLRenderTest("3");
+    int fastOpenGLTest = invokeFastOpenGLRenderTest("2");
+    int safeOpenGLTest = invokeSafeOpenGLRenderTest("3");
     if (testAudio)
         soundTest = invokeTest4();
     else
@@ -177,7 +173,7 @@ int TestMain::exec(const bool testAudio)
     }
     info += ".";
 
-    maxFps = softFps;
+    int maxFps = softFps;
     if (maxFps < fastOpenGLFps)
     {
         openGLMode = 1;
