@@ -187,12 +187,14 @@ void Window::draw(gcn::Graphics *graphics)
             static_cast<gcn::Graphics::Alignment>(mCaptionAlign));
     }
 
+    int closePadding = getOption("closePadding");
+
     // Draw Close Button
     if (mCloseButton && mSkin->getCloseImage())
     {
         const Image *const button = mSkin->getCloseImage();
-        const int x = getWidth() - button->getWidth() - getPadding();
-        g->drawImage(button, x, getPadding());
+        const int x = getWidth() - button->getWidth() - closePadding;
+        g->drawImage(button, x, closePadding);
     }
 
     // Draw Sticky Button
@@ -201,11 +203,11 @@ void Window::draw(gcn::Graphics *graphics)
         const Image *const button = mSkin->getStickyImage(mSticky);
         if (button)
         {
-            int x = getWidth() - button->getWidth() - getPadding();
+            int x = getWidth() - button->getWidth() - closePadding;
             if (mCloseButton && mSkin->getCloseImage())
-                x -= mSkin->getCloseImage()->getWidth() + getPadding();
+                x -= mSkin->getCloseImage()->getWidth() + closePadding;
 
-            g->drawImage(button, x, getPadding());
+            g->drawImage(button, x, closePadding);
         }
     }
 
