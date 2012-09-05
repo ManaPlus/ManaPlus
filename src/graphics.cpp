@@ -59,6 +59,7 @@ static unsigned int *cG = nullptr;
 static unsigned int *cB = nullptr;
 
 Graphics::Graphics() :
+    SDLGraphics(),
     mWidth(0),
     mHeight(0),
     mBpp(0),

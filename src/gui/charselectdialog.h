@@ -110,6 +110,8 @@ class CharSelectDialog : public Window,
 
         bool mLocked;
 
+        LoginData *mLoginData;
+
         gcn::Label *mAccountNameLabel;
         gcn::Label *mLastLoginLabel;
 
@@ -120,8 +122,6 @@ class CharSelectDialog : public Window,
 
         /** The player boxes */
         std::vector<CharacterDisplay*> mCharacterEntries;
-
-        LoginData *mLoginData;
 
         Net::CharHandler *mCharHandler;
         TextDialog *mDeleteDialog;

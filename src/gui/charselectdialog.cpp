@@ -132,22 +132,23 @@ class CharacterDisplay : public Container
 
 CharSelectDialog::CharSelectDialog(LoginData *const data):
     Window(_("Account and Character Management"), false, nullptr, "char.xml"),
+    ActionListener(),
+    KeyListener(),
     mLocked(false),
+    mLoginData(data),
+    mAccountNameLabel(new Label(mLoginData->username)),
+    mLastLoginLabel(new Label(mLoginData->lastLogin)),
+    mSwitchLoginButton(new Button(_("Switch Login"), "switch", this)),
+    mChangePasswordButton(new Button(_("Change Password"),
+                          "change_password", this)),
     mUnregisterButton(nullptr),
     mChangeEmailButton(nullptr),
     mCharacterEntries(0),
-    mLoginData(data),
     mCharHandler(Net::getCharHandler()),
     mDeleteDialog(nullptr),
     mDeleteIndex(-1)
 {
     setCloseButton(false);
-
-    mAccountNameLabel = new Label(mLoginData->username);
-    mLastLoginLabel = new Label(mLoginData->lastLogin);
-    mSwitchLoginButton = new Button(_("Switch Login"), "switch", this);
-    mChangePasswordButton = new Button(_("Change Password"), "change_password",
-                                       this);
 
     const int optionalActions = Net::getLoginHandler()
         ->supportedOptionalActions();

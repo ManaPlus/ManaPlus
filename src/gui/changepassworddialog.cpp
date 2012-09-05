@@ -46,17 +46,18 @@
 
 ChangePasswordDialog::ChangePasswordDialog(LoginData *const data):
     Window(_("Change Password"), true, nullptr, "changepassword.xml"),
+    ActionListener(),
+    mOldPassField(new PasswordField),
+    mFirstPassField(new PasswordField),
+    mSecondPassField(new PasswordField),
+    mChangePassButton(new Button(_("Change Password"),
+        "change_password", this)),
+    mCancelButton(new Button(_("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
     gcn::Label *const accountLabel = new Label(
         strprintf(_("Account: %s"), mLoginData->username.c_str()));
-    mOldPassField = new PasswordField;
-    mFirstPassField = new PasswordField;
-    mSecondPassField = new PasswordField;
-    mChangePassButton = new Button(_("Change Password"), "change_password",
-                                   this);
-    mCancelButton = new Button(_("Cancel"), "cancel", this);
 
     place(0, 0, accountLabel, 3);
     place(0, 1, new Label(_("Password:")), 3);

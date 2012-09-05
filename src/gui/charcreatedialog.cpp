@@ -67,8 +67,37 @@ static const uint8_t directions[] =
 CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
                                    const int slot) :
     Window(_("New Character"), true, parent, "charcreate.xml"),
+    ActionListener(),
+    KeyListener(),
     mCharSelectDialog(parent),
+    mNameField(new TextField("")),
+    mNameLabel(new Label(_("Name:"))),
+    // TRANSLATORS: This is a narrow symbol used to denote 'next'.
+    // You may change this symbol if your language uses another.
+    mNextHairColorButton(new Button(_(">"), "nextcolor", this)),
+    // TRANSLATORS: This is a narrow symbol used to denote 'previous'.
+    // You may change this symbol if your language uses another.
+    mPrevHairColorButton(new Button(_("<"), "prevcolor", this)),
+    mHairColorLabel(new Label(_("Hair color:"))),
+    mHairColorNameLabel(new Label("")),
+    mNextHairStyleButton(new Button(_(">"), "nextstyle", this)),
+    mPrevHairStyleButton(new Button(_("<"), "prevstyle", this)),
+    mHairStyleLabel(new Label(_("Hair style:"))),
+    mHairStyleNameLabel(new Label("")),
+    mActionButton(new Button(_("^"), "action", this)),
+    mRotateButton(new Button(_(">"), "rotate", this)),
+    mMale(new RadioButton(_("Male"), "gender")),
+    mFemale(new RadioButton(_("Female"), "gender")),
+    mOther(new RadioButton(_("Other"), "gender")),
+    mAttributesLeft(new Label(
+        strprintf(_("Please distribute %d points"), 99))),
+    mMaxPoints(0),
+    mUsedPoints(0),
+    mCreateButton(new Button(_("Create"), "create", this)),
+    mCancelButton(new Button(_("Cancel"), "cancel", this)),
     mRace(0),
+    mPlayer(new Being(0, ActorSprite::PLAYER, mRace, nullptr)),
+    mPlayerBox(new PlayerBox(mPlayer, "charcreate_playerbox.xml")),
     mSlot(slot),
     mAction(0),
     mDirection(0)
@@ -77,7 +106,6 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     setSticky(true);
     setWindowName("NewCharacter");
 
-    mPlayer = new Being(0, ActorSprite::PLAYER, mRace, nullptr);
     mPlayer->setGender(GENDER_MALE);
     const std::vector<int> &items = CharDB::getDefaultItems();
     int i = 1;
@@ -101,23 +129,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mHairStyle = (rand() % maxHairStyle) + minHairStyle;
     mHairColor = (rand() % maxHairColor) + minHairColor;
 
-    mNameField = new TextField("");
     mNameField->setMaximum(24);
-    mNameLabel = new Label(_("Name:"));
-    // TRANSLATORS: This is a narrow symbol used to denote 'next'.
-    // You may change this symbol if your language uses another.
-    mNextHairColorButton = new Button(_(">"), "nextcolor", this);
-    // TRANSLATORS: This is a narrow symbol used to denote 'previous'.
-    // You may change this symbol if your language uses another.
-    mPrevHairColorButton = new Button(_("<"), "prevcolor", this);
-    mHairColorLabel = new Label(_("Hair color:"));
-    mHairColorNameLabel = new Label("");
-    mNextHairStyleButton = new Button(_(">"), "nextstyle", this);
-    mPrevHairStyleButton = new Button(_("<"), "prevstyle", this);
-    mHairStyleLabel = new Label(_("Hair style:"));
-    mHairStyleNameLabel = new Label("");
-    mActionButton = new Button(_("^"), "action", this);
-    mRotateButton = new Button(_(">"), "rotate", this);
 
     if (serverVersion >= 2)
     {
@@ -126,12 +138,6 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mRaceLabel = new Label(_("Race:"));
         mRaceNameLabel = new Label("");
     }
-
-    mCreateButton = new Button(_("Create"), "create", this);
-    mCancelButton = new Button(_("Cancel"), "cancel", this);
-    mMale = new RadioButton(_("Male"), "gender");
-    mFemale = new RadioButton(_("Female"), "gender");
-    mOther = new RadioButton(_("Other"), "gender");
 
     // Default to a Male character
     mMale->setSelected(true);
@@ -144,14 +150,11 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mFemale->addActionListener(this);
     mOther->addActionListener(this);
 
-    mPlayerBox = new PlayerBox(mPlayer, "charcreate_playerbox.xml");
     mPlayerBox->setWidth(74);
 
     mNameField->setActionEventId("create");
     mNameField->addActionListener(this);
 
-    mAttributesLeft = new Label(
-            strprintf(_("Please distribute %d points"), 99));
 
     const int w = 480;
     const int h = 350;

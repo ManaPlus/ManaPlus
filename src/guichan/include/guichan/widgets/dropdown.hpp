@@ -266,9 +266,23 @@ namespace gcn
         int mFoldedUpHeight;
 
         /**
+         * True if an internal scroll area is used, false if a scroll area
+         * has been passed to the drop down which the drop down should not
+         * deleted in it's destructor.
+         */
+        bool mInternalScrollArea;
+
+        /**
          * The scroll area used.
          */
         ScrollArea* mScrollArea;
+
+        /**
+         * True if an internal list box is used, false if a list box
+         * has been passed to the drop down which the drop down should not
+         * deleted in it's destructor.
+         */
+        bool mInternalListBox;
 
         /**
          * The list box used.
@@ -280,20 +294,6 @@ namespace gcn
          * internal list box.
          */
         FocusHandler mInternalFocusHandler;
-
-        /**
-         * True if an internal scroll area is used, false if a scroll area
-         * has been passed to the drop down which the drop down should not
-         * deleted in it's destructor.
-         */
-        bool mInternalScrollArea;
-
-        /**
-         * True if an internal list box is used, false if a list box
-         * has been passed to the drop down which the drop down should not
-         * deleted in it's destructor.
-         */
-        bool mInternalListBox;
 
         /**
          * True if the drop down is dragged.

@@ -59,12 +59,16 @@
 
 namespace gcn
 {
-    Button::Button()
-        : mHasMouse(false),
-          mKeyPressed(false),
-          mMousePressed(false),
-          mAlignment(Graphics::CENTER),
-          mSpacing(4)
+    Button::Button() :
+        Widget(),
+        MouseListener(),
+        KeyListener(),
+        FocusListener(),
+        mHasMouse(false),
+        mKeyPressed(false),
+        mMousePressed(false),
+        mAlignment(Graphics::CENTER),
+        mSpacing(4)
     {
         setFocusable(true);
         adjustSize();
@@ -75,13 +79,17 @@ namespace gcn
         addFocusListener(this);
     }
 
-    Button::Button(const std::string& caption)
-            : mCaption(caption),
-              mHasMouse(false),
-              mKeyPressed(false),
-              mMousePressed(false),
-              mAlignment(Graphics::CENTER),
-              mSpacing(4)
+    Button::Button(const std::string& caption) :
+        Widget(),
+        MouseListener(),
+        KeyListener(),
+        FocusListener(),
+        mCaption(caption),
+        mHasMouse(false),
+        mKeyPressed(false),
+        mMousePressed(false),
+        mAlignment(Graphics::CENTER),
+        mSpacing(4)
     {
         setFocusable(true);
         adjustSize();

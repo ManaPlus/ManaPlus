@@ -61,6 +61,9 @@
 namespace gcn
 {
     ListBox::ListBox() :
+        Widget(),
+        MouseListener(),
+        KeyListener(),
         mSelected(-1),
         mListModel(nullptr),
         mWrappingEnabled(false)
@@ -73,13 +76,16 @@ namespace gcn
     }
 
     ListBox::ListBox(ListModel *listModel) :
+        Widget(),
+        MouseListener(),
+        KeyListener(),
         mSelected(-1),
+        mListModel(listModel),
         mWrappingEnabled(false)
     {
         setWidth(100);
-        setListModel(listModel);
+        adjustSize();
         setFocusable(true);
-
         addMouseListener(this);
         addKeyListener(this);
     }

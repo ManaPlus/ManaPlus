@@ -56,6 +56,7 @@
 namespace gcn
 {
     SDLImage::SDLImage(SDL_Surface *const surface, const bool autoFree) :
+        Image(),
         mSurface(surface),
         mAutoFree(autoFree)
     {

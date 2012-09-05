@@ -57,6 +57,7 @@
 namespace gcn
 {
     Icon::Icon() :
+        Widget(),
         mImage(nullptr),
         mInternalImage(false)
     {
@@ -64,6 +65,7 @@ namespace gcn
     }
 
     Icon::Icon(const std::string& filename) :
+        Widget(),
         mImage(Image::load(filename)),
         mInternalImage(true)
     {
@@ -72,6 +74,7 @@ namespace gcn
     }
 
     Icon::Icon(const Image *const image) :
+        Widget(),
         mImage(image),
         mInternalImage(false)
     {

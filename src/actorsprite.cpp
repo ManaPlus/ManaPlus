@@ -48,7 +48,9 @@ ImageSet *ActorSprite::targetCursorImages[2][NUM_TC];
 SimpleAnimation *ActorSprite::targetCursor[2][NUM_TC];
 bool ActorSprite::loaded = false;
 
-ActorSprite::ActorSprite(const int id):
+ActorSprite::ActorSprite(const int id) :
+    Actor(),
+    CompoundSprite(),
     mId(id),
     mStunMode(0),
     mStatusParticleEffects(&mStunParticleEffects, false),

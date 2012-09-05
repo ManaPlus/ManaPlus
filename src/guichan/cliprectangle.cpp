@@ -53,6 +53,7 @@
 namespace gcn
 {
     ClipRectangle::ClipRectangle() :
+        Rectangle(),
         xOffset(0),
         yOffset(0)
     {
@@ -65,6 +66,7 @@ namespace gcn
     ClipRectangle::ClipRectangle(const int x0, const int y0,
                                  const int width0, const int height0,
                                  const int xOffset0, const int yOffset0) :
+        Rectangle(),
         xOffset(xOffset0),
         yOffset(yOffset0)
     {

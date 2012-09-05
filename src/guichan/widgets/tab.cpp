@@ -59,6 +59,8 @@
 namespace gcn
 {
     Tab::Tab() :
+        BasicContainer(),
+        MouseListener(),
         mLabel(new Label()),
         mHasMouse(false),
         mTabbedArea(nullptr)

@@ -316,6 +316,7 @@ ConfigurationObject::~ConfigurationObject()
 }
 
 Configuration::Configuration() :
+    ConfigurationObject(),
     mConfigPath(""),
     mDefaultsData(nullptr),
     mDirectory("")

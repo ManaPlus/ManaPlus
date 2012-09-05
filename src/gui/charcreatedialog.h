@@ -135,12 +135,13 @@ class CharCreateDialog : public Window,
         gcn::Button *mCreateButton;
         gcn::Button *mCancelButton;
 
+        int mRace;
+
         Being *mPlayer;
         PlayerBox *mPlayerBox;
 
         int mHairStyle;
         int mHairColor;
-        int mRace;
 
         int mSlot;
 

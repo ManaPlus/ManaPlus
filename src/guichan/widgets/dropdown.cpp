@@ -59,29 +59,26 @@ namespace gcn
 {
     DropDown::DropDown(ListModel *const listModel,
                        ScrollArea *const scrollArea,
-                       ListBox *const listBox)
+                       ListBox *const listBox) :
+        ActionListener(),
+        BasicContainer(),
+        KeyListener(),
+        MouseListener(),
+        FocusListener(),
+        SelectionListener(),
+        mDroppedDown(false),
+        mPushed(false),
+        mFoldedUpHeight(0),
+        mInternalScrollArea(!scrollArea),
+        mScrollArea(mInternalScrollArea ? new ScrollArea : scrollArea),
+        mInternalListBox(!listBox),
+        mListBox(mInternalListBox ? new ListBox() : listBox),
+        mIsDragged(false)
     {
         setWidth(100);
         setFocusable(true);
-        mDroppedDown = false;
-        mPushed = false;
-        mIsDragged = false;
 
         setInternalFocusHandler(&mInternalFocusHandler);
-
-        mInternalScrollArea = (!scrollArea);
-        mInternalListBox = (!listBox);
-
-        if (mInternalScrollArea)
-            mScrollArea = new ScrollArea();
-        else
-            mScrollArea = scrollArea;
-
-        if (mInternalListBox)
-            mListBox = new ListBox();
-        else
-            mListBox = listBox;
-
         mScrollArea->setContent(mListBox);
         add(mScrollArea);
 

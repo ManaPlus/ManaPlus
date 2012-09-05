@@ -34,8 +34,9 @@
 
 BuySellDialog::DialogList BuySellDialog::instances;
 
-BuySellDialog::BuySellDialog(const int npcId):
+BuySellDialog::BuySellDialog(const int npcId) :
     Window(_("Shop"), false, nullptr, "buysell.xml"),
+    ActionListener(),
     mNpcId(npcId),
     mNick(""),
     mBuyButton(nullptr)
@@ -43,8 +44,9 @@ BuySellDialog::BuySellDialog(const int npcId):
     init();
 }
 
-BuySellDialog::BuySellDialog(std::string nick):
+BuySellDialog::BuySellDialog(std::string nick) :
     Window(_("Shop"), false, nullptr, "buysell.xml"),
+    ActionListener(),
     mNpcId(-1),
     mNick(nick),
     mBuyButton(nullptr)
