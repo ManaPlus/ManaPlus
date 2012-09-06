@@ -6,15 +6,15 @@
 	<color id="PROGRESS_BAR" color="#ffffff" />
 	<color id="BUTTON" color="#FE9750" />
 	<color id="BUTTON_DISABLED" color="#FC6400" />
-	<color id="CHECKBOX" color="#FE9750" />
-	<color id="DROPDOWN" color="#FE9750" />
-	<color id="LABEL" color="#FE9750" />
-	<color id="LISTBOX" color="#FE9750" />
-	<color id="RADIOBUTTON" color="#FE9750" />
-	<color id="TAB" color="#F0F0F0" />
-	<color id="TEXTBOX" color="#FE9750" />
-	<color id="TEXTFIELD" color="#FE9750" />
-	<color id="WINDOW" color="#FE9750" />
+	<color id="CHECKBOX" color="#E0E0E0" />
+	<color id="DROPDOWN" color="#E0E0E0" />
+	<color id="LABEL" color="#E0E0E0" />
+	<color id="LISTBOX" color="#E0E0E0" />
+	<color id="RADIOBUTTON" color="#E0E0E0" />
+	<color id="TAB" color="#E0E0E0" />
+	<color id="TEXTBOX" color="#E0E0E0" />
+	<color id="TEXTFIELD" color="#E0E0E0" />
+	<color id="WINDOW" color="#E0E0E0" />
 	<color id="PARTY_CHAT_TAB" color="#E0E0E0" />
 	<color id="PARTY_SOCIAL_TAB" color="#E0E0E0" />
 	<color id="GUILD_CHAT_TAB" color="#E0E0E0" />
