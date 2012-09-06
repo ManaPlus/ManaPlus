@@ -408,7 +408,11 @@ class Window : public gcn::Window, private gcn::WidgetListener
 
         bool getOptionBool(std::string name);
 
-        int getTitlePadding() const;
+        void setTitlePadding(int p)
+        { mTitlePadding = p; }
+
+        int getTitlePadding() const
+        { return mTitlePadding; }
 
         Skin *mSkin;                  /**< Skin in use by this window */
 
@@ -472,6 +476,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
         int mCaptionOffsetX;
         int mCaptionOffsetY;
         int mCaptionAlign;
+        int mTitlePadding;
         bool mRedraw;
         gcn::Font *mCaptionFont;
 };

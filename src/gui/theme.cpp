@@ -431,6 +431,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     memset(&images, 0, sizeof(ImageRect));
     int padding = 3;
     int titlePadding = 4;
+    int titlebarHeight = 20;
     int closePadding = 3;
     std::map<std::string, int> *const mOptions
         = new std::map<std::string, int>();
@@ -488,6 +489,11 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
                     {
                         closePadding = XML::getProperty(partNode, "value", 3);
                     }
+                    else if (name == "titlebarHeight")
+                    {
+                        titlebarHeight = XML::getProperty(
+                            partNode, "value", 16);
+                    }
                     else
                     {
                         (*mOptions)[name] = XML::getProperty(
@@ -507,8 +513,9 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
         dBorders->decRef();
 
     (*mOptions)["closePadding"] = closePadding;
+    (*mOptions)["titlebarHeight"] = titlebarHeight;
 
-    Skin *const skin = new Skin(border, images, filename, "", padding, 
+    Skin *const skin = new Skin(border, images, filename, "", padding,
         titlePadding, mOptions);
     skin->updateAlpha(mMinimumOpacity);
     return skin;

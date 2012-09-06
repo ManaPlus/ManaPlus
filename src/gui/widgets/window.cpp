@@ -68,6 +68,7 @@ Window::Window(const std::string &caption, const bool modal,
     mCaptionOffsetX(7),
     mCaptionOffsetY(5),
     mCaptionAlign(gcn::Graphics::LEFT),
+    mTitlePadding(4),
     mRedraw(true)
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
@@ -91,6 +92,8 @@ Window::Window(const std::string &caption, const bool modal,
         if (mSkin)
         {
             setPadding(mSkin->getPadding());
+            setTitlePadding(mSkin->getTitlePadding());
+            setTitleBarHeight(getOption("titlebarHeight"));
             mCaptionOffsetX = getOption("captionoffsetx");
             if (!mCaptionOffsetX)
                 mCaptionOffsetX = 7;
@@ -1063,11 +1066,4 @@ bool Window::getOptionBool(std::string name)
     if (mSkin)
         return mSkin->getOption(name) != 0;
     return 0;
-}
-
-int Window::getTitlePadding() const
-{
-    if (mSkin)
-        mSkin->getTitlePadding();
-    return 4;
 }
