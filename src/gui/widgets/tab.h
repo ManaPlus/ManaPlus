@@ -87,6 +87,8 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
         static float mAlpha;
 
         const gcn::Color *mTabColor;
+        const gcn::Color *mTabHighlightedColor;
+        const gcn::Color *mTabSelectedColor;
         int mFlash;
         GraphicsVertexes *mVertexes;
         bool mRedraw;

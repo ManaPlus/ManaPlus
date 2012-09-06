@@ -13,6 +13,8 @@
 	<color id="LISTBOX" color="#000000" />
 	<color id="RADIOBUTTON" color="#000000" />
 	<color id="TAB" color="#000000" />
+	<color id="TAB_HIGHLIGHTED" color="#000000" />
+	<color id="TAB_SELECTED" color="#000000" />
 	<color id="TEXTBOX" color="#000000" />
 	<color id="TEXTFIELD" color="#000000" />
 	<color id="WINDOW" color="#000000" />

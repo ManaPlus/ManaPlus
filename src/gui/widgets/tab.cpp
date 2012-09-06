@@ -64,6 +64,8 @@ ImageRect Tab::tabImg[TAB_COUNT];
 Tab::Tab() :
     gcn::Tab(),
     mTabColor(&Theme::getThemeColor(Theme::TAB)),
+    mTabHighlightedColor(&Theme::getThemeColor(Theme::TAB_HIGHLIGHTED)),
+    mTabSelectedColor(&Theme::getThemeColor(Theme::TAB_SELECTED)),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
     mMode(0),
@@ -138,16 +140,21 @@ void Tab::draw(gcn::Graphics *graphics)
     // check which type of tab to draw
     if (mTabbedArea)
     {
-        mLabel->setForegroundColor(*mTabColor);
         if (mTabbedArea->isTabSelected(this))
         {
+            mLabel->setForegroundColor(*mTabSelectedColor);
             mode = TAB_SELECTED;
             // if tab is selected, it doesnt need to highlight activity
             mFlash = 0;
         }
         else if (mHasMouse)
         {
+            mLabel->setForegroundColor(*mTabHighlightedColor);
             mode = TAB_HIGHLIGHTED;
+        }
+        else
+        {
+            mLabel->setForegroundColor(*mTabColor);
         }
 
         switch (mFlash)
