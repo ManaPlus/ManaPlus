@@ -91,8 +91,33 @@ InventoryWindow::WindowList InventoryWindow::instances;
 
 InventoryWindow::InventoryWindow(Inventory *const inventory):
     Window("Inventory", false, nullptr, "inventory.xml"),
+    ActionListener(),
+    KeyListener(),
+    SelectionListener(),
+    InventoryListener(),
     mInventory(inventory),
+    mUseButton(nullptr),
     mDropButton(nullptr),
+    mSplitButton(nullptr),
+    mOutfitButton(nullptr),
+    mShopButton(nullptr),
+    mEquipmentButton(nullptr),
+    mStoreButton(nullptr),
+    mRetrieveButton(nullptr),
+    mCloseButton(nullptr),
+    mWeightLabel(nullptr),
+    mSlotsLabel(new Label(_("Slots:"))),
+    mFilterLabel(new Label(_("Filter:"))),
+    mWeightBar(nullptr),
+    mSlotsBar(new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS)),
+    mFilter(nullptr),
+    mSortModel(new SortListModel()),
+    mSortDropDown(new DropDown(mSortModel, this, "sort")),
+    mNameFilter(new TextField("", true, this, "namefilter", true)),
+    mSortDropDownCell(nullptr),
+    mNameFilterCell(nullptr),
+    mFilterCell(nullptr),
+    mSlotsBarCell(nullptr),
     mSplit(false),
     mCompactMode(false)
 {
@@ -129,20 +154,12 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
         mItems, getOptionBool("showbackground"), "inventory_background.xml");
     invenScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-    mSlotsLabel = new Label(_("Slots:"));
-    mSlotsBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS);
-
     const int size = config.getIntValue("fontSize");
     mFilter = new TabStrip("filter_" + getWindowName(), size + 8);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
 
-    mSortModel = new SortListModel();
-    mSortDropDown = new DropDown(mSortModel, this, "sort");
     mSortDropDown->setSelected(0);
-
-    mFilterLabel = new Label(_("Filter:"));
-    mNameFilter = new TextField("", true, this, "namefilter", true);
 
     StringVect tags = ItemDB::getTags();
     for (unsigned f = 0; f < tags.size(); f ++)

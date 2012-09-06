@@ -95,6 +95,10 @@ class MiniStatusWindow : public Popup,
 
         void saveBars();
 
+        std::vector <ProgressBar*> mBars;
+        std::map <std::string, ProgressBar*> mBarNames;
+        std::vector<AnimatedSprite *> mIcons;
+
         /*
          * Mini Status Bars
          */
@@ -109,10 +113,6 @@ class MiniStatusWindow : public Popup,
         ProgressBar *mStatusBar;
         TextPopup *mTextPopup;
         StatusPopup *mStatusPopup;
-        std::vector <ProgressBar*> mBars;
-        std::map <std::string, ProgressBar*> mBarNames;
-
-        std::vector<AnimatedSprite *> mIcons;
 };
 
 extern MiniStatusWindow *miniStatusWindow;

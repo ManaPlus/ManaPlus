@@ -74,7 +74,9 @@ class GuiConfigListener : public ConfigListener
         Gui *mGui;
 };
 
-Gui::Gui(Graphics *const graphics):
+Gui::Gui(Graphics *const graphics) :
+    gcn::Gui(),
+    mConfigListener(new GuiConfigListener(this)),
     mCustomCursor(false),
     mMouseCursors(nullptr),
     mMouseCursorAlpha(1.0f),
@@ -218,7 +220,6 @@ Gui::Gui(Graphics *const graphics):
 
     // Initialize mouse cursor and listen for changes to the option
     setUseCustomCursor(config.getBoolValue("customcursor"));
-    mConfigListener = new GuiConfigListener(this);
     config.addListener("customcursor", mConfigListener);
 }
 

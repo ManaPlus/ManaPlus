@@ -104,8 +104,8 @@ class EditServerDialog : public Window,
         Button *mOkButton;
         Button *mCancelButton;
 
-        DropDown *mTypeField;
         TypeListModel *mTypeListModel;
+        DropDown *mTypeField;
 
         ServerDialog *mServerDialog;
         ServerInfo mServer;

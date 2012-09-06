@@ -78,6 +78,7 @@ class ChatInput : public TextField, public gcn::FocusListener
     public:
         ChatInput(ChatWindow *const window, TabbedArea *const tabs):
             TextField("", false),
+            FocusListener(),
             mWindow(window),
             mChatTabs(tabs)
         {
@@ -154,7 +155,16 @@ static const char *ACTION_COLOR_PICKER = "color picker";
 
 ChatWindow::ChatWindow():
     Window(_("Chat"), false, nullptr, "chat.xml"),
+    ActionListener(),
+    KeyListener(),
+    mItemLinkHandler(new ItemLinkHandler),
+    mChatTabs(new TabbedArea),
+    mChatInput(new ChatInput(this, mChatTabs)),
     mTmpVisible(false),
+    mReturnToggles(config.getBoolValue("ReturnToggles")),
+    mColorListModel(new ColorListModel),
+    mColorPicker(new DropDown(mColorListModel)),
+    mChatColor(config.getIntValue("chatColor")),
     mChatHistoryIndex(0),
     mGMLoaded(false),
     mHaveMouse(false),
@@ -181,19 +191,11 @@ ChatWindow::ChatWindow():
     setMinWidth(150);
     setMinHeight(90);
 
-    mItemLinkHandler = new ItemLinkHandler;
-
-    mChatTabs = new TabbedArea;
     mChatTabs->enableScrollButtons(true);
     mChatTabs->setFollowDownScroll(true);
 
-    mChatInput = new ChatInput(this, mChatTabs);
     mChatInput->setActionEventId("chatinput");
     mChatInput->addActionListener(this);
-
-    mChatColor = config.getIntValue("chatColor");
-    mColorListModel = new ColorListModel;
-    mColorPicker = new DropDown(mColorListModel);
 
     mColorPicker->setActionEventId(ACTION_COLOR_PICKER);
     mColorPicker->addActionListener(this);
@@ -212,10 +214,7 @@ ChatWindow::ChatWindow():
     mChatInput->addKeyListener(this);
     mCurHist = mHistory.end();
 
-    mReturnToggles = config.getBoolValue("ReturnToggles");
-
     mRainbowColor = 0;
-
     mColorPicker->setVisible(config.getBoolValue("showChatColorsList"));
 
     fillCommands();

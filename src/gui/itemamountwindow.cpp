@@ -136,13 +136,21 @@ void ItemAmountWindow::finish(Item *const item, const int amount,
 ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
                                    Item *const item, const int maxRange) :
     Window("", true, parent, "amount.xml"),
+    ActionListener(),
+    KeyListener(),
+    mItemAmountTextField(new IntTextField(1)),
     mItemPriceTextField(nullptr),
     mGPLabel(nullptr),
     mItem(item),
+    mItemIcon(new Icon(item->getImage())),
     mMax(maxRange),
     mUsage(usage),
+    mItemPopup(new ItemPopup),
+    mItemAmountSlide(new Slider(1.0, mMax)),
     mItemPriceSlide(nullptr),
+    mItemDropDown(nullptr),
     mItemsModal(nullptr),
+    mEnabledKeyboard(keyboard.isEnabled()),
     mPrice(0)
 {
     if (!mItem)
@@ -156,17 +164,14 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
         mMax = mItem->getQuantity();
 
     // Save keyboard state
-    mEnabledKeyboard = keyboard.isEnabled();
     keyboard.setEnabled(false);
 
     // Integer field
-    mItemAmountTextField = new IntTextField(1);
     mItemAmountTextField->setRange(1, mMax);
     mItemAmountTextField->setWidth(35);
     mItemAmountTextField->addKeyListener(this);
 
     // Slider
-    mItemAmountSlide = new Slider(1.0, mMax);
     mItemAmountSlide->setHeight(10);
     mItemAmountSlide->setActionEventId("slide");
     mItemAmountSlide->addActionListener(this);
@@ -196,9 +201,6 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
         mItemDropDown->addActionListener(this);
     }
 
-    //Item icon
-    Image *const image = item->getImage();
-    mItemIcon = new Icon(image);
 
     // Buttons
     Button *const minusAmountButton = new Button(_("-"), "dec", this);
@@ -284,7 +286,6 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     setLocationRelativeTo(getParentWindow());
     setVisible(true);
 
-    mItemPopup = new ItemPopup;
     mItemIcon->addMouseListener(this);
 }
 

@@ -45,7 +45,10 @@
 #include "debug.h"
 
 HelpWindow::HelpWindow():
-    Window(_("Help"), false, nullptr, "help.xml")
+    Window(_("Help"), false, nullptr, "help.xml"),
+    ActionListener(),
+    mBrowserBox(new BrowserBox),
+    mScrollArea(new ScrollArea(mBrowserBox, true, "help_background.xml"))
 {
     setMinWidth(300);
     setMinHeight(250);
@@ -58,9 +61,7 @@ HelpWindow::HelpWindow():
 
     setDefaultSize(500, 400, ImageRect::CENTER);
 
-    mBrowserBox = new BrowserBox;
     mBrowserBox->setOpaque(false);
-    mScrollArea = new ScrollArea(mBrowserBox, true, "help_background.xml");
     Button *const okButton = new Button(_("Close"), "close", this);
 
     mBrowserBox->setLinkHandler(this);

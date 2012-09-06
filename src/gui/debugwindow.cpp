@@ -47,7 +47,11 @@
 #include "debug.h"
 
 DebugWindow::DebugWindow():
-    Window(_("Debug"), false, nullptr, "debug.xml")
+    Window(_("Debug"), false, nullptr, "debug.xml"),
+    mTabs(new TabbedArea),
+    mMapWidget(new MapDebugTab),
+    mTargetWidget(new TargetDebugTab),
+    mNetWidget(new NetDebugTab)
 {
     setWindowName("Debug");
     if (setupWindow)
@@ -59,11 +63,6 @@ DebugWindow::DebugWindow():
     setStickyButtonLock(true);
 
     setDefaultSize(400, 300, ImageRect::CENTER);
-
-    mTabs = new TabbedArea;
-    mMapWidget = new MapDebugTab;
-    mTargetWidget = new TargetDebugTab;
-    mNetWidget = new NetDebugTab;
 
     mTabs->addTab(std::string(_("Map")), mMapWidget);
     mTabs->addTab(std::string(_("Target")), mTargetWidget);
@@ -135,23 +134,24 @@ void DebugWindow::widgetResized(const gcn::Event &event)
 }
 
 MapDebugTab::MapDebugTab() :
-    mTexturesLabel(nullptr)
+    DebugTab(),
+    mMusicFileLabel(new Label(strprintf(_("Music:")))),
+    mMapLabel(new Label(strprintf(_("Map:")))),
+    mMinimapLabel(new Label(strprintf(_("Minimap:")))),
+    mTileMouseLabel(new Label(strprintf("%s (%d, %d)", _("Cursor:"), 0, 0))),
+    mXYLabel(new Label(strprintf("%s (?,?)", _("Player Position:")))),
+    mTexturesLabel(nullptr),
+    mUpdateTime(0),
+    mFPSLabel(new Label(strprintf(_("%d FPS"), 0))),
+    mLPSLabel(new Label(strprintf(_("%d LPS"), 0)))
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
-
-    mMusicFileLabel = new Label(strprintf(_("Music:")));
-    mMapLabel = new Label(strprintf(_("Map:")));
-    mMinimapLabel = new Label(strprintf(_("Minimap:")));
-    mTileMouseLabel = new Label(strprintf("%s (%d, %d)", _("Cursor:"), 0, 0));
-    mXYLabel = new Label(strprintf("%s (?,?)", _("Player Position:")));
 
     mParticleCountLabel = new Label(strprintf("%s %d",
         _("Particle count:"), 88888));
     mMapActorCountLabel = new Label(strprintf("%s %d",
         _("Map actors count:"), 88888));
-
-    mUpdateTime = 0;
 
 #ifdef USE_OPENGL
     switch (imageHelper->useOpenGL())
@@ -170,9 +170,6 @@ MapDebugTab::MapDebugTab() :
 #else
     mFPSText = _("%d FPS (Software)");
 #endif
-
-    mFPSLabel = new Label(strprintf(_("%d FPS"), 0));
-    mLPSLabel = new Label(strprintf(_("%d LPS"), 0));
 
     place(0, 0, mFPSLabel, 2);
     place(0, 1, mLPSLabel, 2);
@@ -261,21 +258,21 @@ void MapDebugTab::logic()
     mLPSLabel->setCaption(strprintf(_("%d LPS"), lps));
 }
 
-TargetDebugTab::TargetDebugTab()
+TargetDebugTab::TargetDebugTab() :
+    DebugTab(),
+    mTargetLabel(new Label(strprintf("%s ?", _("Target:")))),
+    mTargetIdLabel(new Label(strprintf("%s ?     ", _("Target Id:")))),
+    mTargetLevelLabel(new Label(strprintf("%s ?", _("Target level:")))),
+    mTargetRaceLabel(new Label(strprintf("%s ?", _("Target race:")))),
+    mTargetPartyLabel(new Label(strprintf("%s ?", _("Target party:")))),
+    mTargetGuildLabel(new Label(strprintf("%s ?", _("Target guild:")))),
+    mAttackDelayLabel(new Label(strprintf("%s ?", _("Attack delay:")))),
+    mMinHitLabel(new Label(strprintf("%s ?", _("Minimal hit:")))),
+    mMaxHitLabel(new Label(strprintf("%s ?", _("Maximum hit:")))),
+    mCriticalHitLabel(new Label(strprintf("%s ?", _("Critical hit:"))))
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
-
-    mTargetLabel = new Label(strprintf("%s ?", _("Target:")));
-    mTargetIdLabel = new Label(strprintf("%s ?     ", _("Target Id:")));
-    mTargetLevelLabel = new Label(strprintf("%s ?", _("Target level:")));
-    mTargetRaceLabel = new Label(strprintf("%s ?", _("Target race:")));
-    mTargetPartyLabel = new Label(strprintf("%s ?", _("Target party:")));
-    mTargetGuildLabel = new Label(strprintf("%s ?", _("Target guild:")));
-    mAttackDelayLabel = new Label(strprintf("%s ?", _("Attack delay:")));
-    mMinHitLabel = new Label(strprintf("%s ?", _("Minimal hit:")));
-    mMaxHitLabel = new Label(strprintf("%s ?", _("Maximum hit:")));
-    mCriticalHitLabel = new Label(strprintf("%s ?", _("Critical hit:")));
 
     place(0, 0, mTargetLabel, 2);
     place(0, 1, mTargetIdLabel, 2);
@@ -365,14 +362,14 @@ void TargetDebugTab::logic()
     mAttackDelayLabel->adjustSize();
 }
 
-NetDebugTab::NetDebugTab()
+NetDebugTab::NetDebugTab() :
+    DebugTab(),
+    mPingLabel(new Label("                ")),
+    mInPackets1Label(new Label("                ")),
+    mOutPackets1Label(new Label("                "))
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
-
-    mPingLabel = new Label("                ");
-    mInPackets1Label = new Label("                ");
-    mOutPackets1Label = new Label("                ");
 
     place(0, 0, mPingLabel, 2);
     place(0, 1, mInPackets1Label, 2);
@@ -382,7 +379,6 @@ NetDebugTab::NetDebugTab()
     place = h.getPlacer(0, 1);
     setDimension(gcn::Rectangle(0, 0, 600, 300));
 }
-
 
 void NetDebugTab::logic()
 {

@@ -97,11 +97,11 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
         void resetBeing(const Being *const being);
 
-    private:
         void mouseExited(gcn::MouseEvent &event);
 
         void mouseMoved(gcn::MouseEvent &event);
 
+    private:
         Item *getItem(const int x, const int y) const;
 
         void setSelected(const int index);

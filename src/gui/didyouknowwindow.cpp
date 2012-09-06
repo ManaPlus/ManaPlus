@@ -48,7 +48,11 @@ static const int minTip = 1;
 static const int maxTip = 16;
 
 DidYouKnowWindow::DidYouKnowWindow():
-    Window(_("Did You Know?"), false, nullptr, "didyouknow.xml")
+    Window(_("Did You Know?"), false, nullptr, "didyouknow.xml"),
+    ActionListener(),
+    mBrowserBox(new BrowserBox),
+    mScrollArea(new ScrollArea(mBrowserBox,
+        true, "didyouknow_background.xml"))
 {
     setMinWidth(300);
     setMinHeight(250);
@@ -61,10 +65,7 @@ DidYouKnowWindow::DidYouKnowWindow():
 
     setDefaultSize(500, 400, ImageRect::CENTER);
 
-    mBrowserBox = new BrowserBox;
     mBrowserBox->setOpaque(false);
-    mScrollArea = new ScrollArea(mBrowserBox,
-        true, "didyouknow_background.xml");
     Button *const okButton = new Button(_("Close"), "close", this);
     mButtonPrev = new Button(_("< Previous"), "prev", this);
     mButtonNext = new Button(_("Next >"), "next", this);

@@ -162,16 +162,25 @@ class InventoryWindow : public Window,
 
         std::string mWeight, mSlots;
 
-        gcn::Button *mUseButton, *mDropButton, *mSplitButton,
-                    *mOutfitButton, *mShopButton, *mEquipmentButton,
-                    *mStoreButton, *mRetrieveButton, *mCloseButton;
+        gcn::Button *mUseButton;
+        gcn::Button *mDropButton;
+        gcn::Button *mSplitButton;
+        gcn::Button *mOutfitButton;
+        gcn::Button *mShopButton;
+        gcn::Button *mEquipmentButton;
+        gcn::Button *mStoreButton;
+        gcn::Button *mRetrieveButton;
+        gcn::Button *mCloseButton;
 
-        gcn::Label *mWeightLabel, *mSlotsLabel, *mFilterLabel;
+        gcn::Label *mWeightLabel;
+        gcn::Label *mSlotsLabel;
+        gcn::Label *mFilterLabel;
 
-        ProgressBar *mWeightBar, *mSlotsBar;
+        ProgressBar *mWeightBar;
+        ProgressBar *mSlotsBar;
         TabStrip *mFilter;
-        DropDown *mSortDropDown;
         SortListModel *mSortModel;
+        DropDown *mSortDropDown;
         TextField *mNameFilter;
         LayoutCell *mSortDropDownCell;
         LayoutCell *mNameFilterCell;

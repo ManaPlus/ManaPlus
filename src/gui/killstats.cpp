@@ -41,13 +41,50 @@
 
 KillStats::KillStats():
     Window(_("Kill stats"), false, nullptr, "killstats.xml"),
-    mKillCounter(0), mExpCounter(0),
-    mKillTCounter(0), mExpTCounter(0), mKillTimer(0),
-    m1minExpTime(0), m1minExpNum(0), m1minSpeed(0),
-    m5minExpTime(0), m5minExpNum(0), m5minSpeed(0),
-    m15minExpTime(0), m15minExpNum(0), m15minSpeed(0),
-    mJackoSpawnTime(0), mValidateJackoTime(0), mJackoId(0),
-    mIsJackoAlive(false), mIsJackoMustSpawn(true),
+    ActionListener(),
+    mKillCounter(0),
+    mExpCounter(0),
+    mKillTCounter(0),
+    mExpTCounter(0),
+    mKillTimer(0),
+    mResetButton(new Button(_("Reset stats"), "reset", this)),
+    mTimerButton(new Button(_("Reset timer"), "timer", this)),
+    mLine4(new Label(strprintf(_("Kills: %s, total exp: %s"), "?", "?"))),
+    mLine5(new Label(strprintf(_("Avg Exp: %s"), "?"))),
+    mLine6(new Label(strprintf(_("No. of avg mob to next level: %s"), "?"))),
+    mLine7(new Label(strprintf(_("Kills/Min: %s, Exp/Min: %s"), "?", "?"))),
+    mExpSpeed1Label(new Label(strprintf(ngettext("Exp speed per %d min: %s",
+        "Exp speed per %d min: %s", 1), 1, "?"))),
+    mExpTime1Label(new Label(strprintf(ngettext(
+        "Time for next level per %d min: %s",
+        "Time for next level per %d min: %s", 1), 1, "?"))),
+    mExpSpeed5Label(new Label(strprintf(ngettext("Exp speed per %d min: %s",
+        "Exp speed per %d min: %s", 5), 5, "?"))),
+    mExpTime5Label(new Label(strprintf(ngettext(
+        "Time for next level per %d min: %s",
+        "Time for next level per %d min: %s", 5), 5, "?"))),
+    mExpSpeed15Label(new Label(strprintf(ngettext("Exp speed per %d min: %s",
+        "Exp speed per %d min: %s", 15), 15, "?"))),
+    mExpTime15Label(new Label(strprintf(ngettext(
+        "Time for next level per %d min: %s",
+        "Time for next level per %d min: %s", 15), 15, "?"))),
+    mLastKillExpLabel(new Label(strprintf("%s ?", _("Last kill exp:")))),
+    mTimeBeforeJackoLabel(new Label(strprintf(
+        "%s ?", _("Time before jacko spawn:")))),
+    m1minExpTime(0),
+    m1minExpNum(0),
+    m1minSpeed(0),
+    m5minExpTime(0),
+    m5minExpNum(0),
+    m5minSpeed(0),
+    m15minExpTime(0),
+    m15minExpNum(0),
+    m15minSpeed(0),
+    mJackoSpawnTime(0),
+    mValidateJackoTime(0),
+    mJackoId(0),
+    mIsJackoAlive(false),
+    mIsJackoMustSpawn(true),
     mIsJackoSpawnTimeUnknown(true)
 {
     setWindowName("Kill stats");
@@ -61,8 +98,6 @@ KillStats::KillStats():
     const int xp(PlayerInfo::getAttribute(PlayerInfo::EXP));
     int xpNextLevel(PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED));
 
-    mResetButton = new Button(_("Reset stats"), "reset", this);
-    mTimerButton = new Button(_("Reset timer"), "timer", this);
     if (!xpNextLevel)
         xpNextLevel = 1;
 
@@ -75,31 +110,6 @@ KillStats::KillStats():
 
     mLine3 = new Label(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
         xpNextLevel / 100, "?"));
-
-    mLine4 = new Label(strprintf(_("Kills: %s, total exp: %s"), "?", "?"));
-    mLine5 = new Label(strprintf(_("Avg Exp: %s"), "?"));
-    mLine6 = new Label(strprintf(_("No. of avg mob to next level: %s"), "?"));
-    mLine7 = new Label(strprintf(_("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
-
-    mExpSpeed1Label = new Label(strprintf(ngettext("Exp speed per %d min: %s",
-        "Exp speed per %d min: %s", 1), 1, "?"));
-    mExpTime1Label = new Label(strprintf(ngettext(
-        "Time for next level per %d min: %s",
-        "Time for next level per %d min: %s", 1), 1, "?"));
-    mExpSpeed5Label = new Label(strprintf(ngettext("Exp speed per %d min: %s",
-        "Exp speed per %d min: %s", 5), 5, "?"));
-    mExpTime5Label = new Label(strprintf(ngettext(
-        "Time for next level per %d min: %s",
-        "Time for next level per %d min: %s", 5), 5, "?"));
-    mExpSpeed15Label = new Label(strprintf(ngettext("Exp speed per %d min: %s",
-        "Exp speed per %d min: %s", 15), 15, "?"));
-    mExpTime15Label = new Label(strprintf(ngettext(
-        "Time for next level per %d min: %s",
-        "Time for next level per %d min: %s", 15), 15, "?"));
-
-    mLastKillExpLabel = new Label(strprintf("%s ?", _("Last kill exp:")));
-    mTimeBeforeJackoLabel = new Label(strprintf(
-        "%s ?", _("Time before jacko spawn:")));
 
     place(0, 0, mLine1, 6).setPadding(0);
     place(0, 1, mLine2, 6).setPadding(0);

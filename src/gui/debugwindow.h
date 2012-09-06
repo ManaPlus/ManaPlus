@@ -37,7 +37,8 @@ class DebugTab : public Container
     friend class DebugWindow;
 
     public:
-        DebugTab()
+        DebugTab() :
+            Container()
         { }
 
         void logic() = 0;
@@ -58,7 +59,9 @@ class MapDebugTab : public DebugTab
         void logic();
 
     private:
-        Label *mMusicFileLabel, *mMapLabel, *mMinimapLabel;
+        Label *mMusicFileLabel;
+        Label *mMapLabel;
+        Label *mMinimapLabel;
         Label *mTileMouseLabel;
         Label *mParticleCountLabel;
         Label *mMapActorCountLabel;

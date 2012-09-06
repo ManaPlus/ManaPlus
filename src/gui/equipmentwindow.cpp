@@ -57,18 +57,20 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
                                  Being *const being,
                                  const bool foring):
     Window(_("Equipment"), false, nullptr, "equipment.xml"),
+    ActionListener(),
     mEquipment(equipment),
+    mItemPopup(new ItemPopup),
+    mPlayerBox(new PlayerBox("equipment_playerbox.xml")),
+    mUnequip(new Button(_("Unequip"), "unequip", this)),
     mSelected(-1),
     mForing(foring),
-    mImageSet(nullptr)
+    mImageSet(nullptr),
+    mBeing(being)
 {
-    mBeing = being;
-    mItemPopup = new ItemPopup;
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
     // Control that shows the Player
-    mPlayerBox = new PlayerBox("equipment_playerbox.xml");
     mPlayerBox->setDimension(gcn::Rectangle(50, 80, 74, 168));
     mPlayerBox->setPlayer(being);
 
@@ -91,7 +93,6 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
 
     loadWindowState();
 
-    mUnequip = new Button(_("Unequip"), "unequip", this);
     const gcn::Rectangle &area = getChildrenArea();
     const int buttonPadding = getOption("buttonPadding", 5);
     mUnequip->setPosition(area.width  - mUnequip->getWidth() - buttonPadding,

@@ -285,6 +285,8 @@ class ChatWindow : public Window,
 
         void unHideWindow();
 
+        void widgetResized(const gcn::Event &event);
+
     protected:
         friend class ChatTab;
         friend class WhisperTab;
@@ -315,10 +317,11 @@ class ChatWindow : public Window,
         /** Used for showing item popup on clicking links **/
         ItemLinkHandler *mItemLinkHandler;
 
+        /** Tabbed area for holding each channel. */
+        TabbedArea *mChatTabs;
+
         /** Input box for typing chat messages. */
         ChatInput *mChatInput;
-
-        void widgetResized(const gcn::Event &event);
 
         void initTradeFilter();
 
@@ -328,9 +331,6 @@ class ChatWindow : public Window,
         void fillCommands();
 
         bool mTmpVisible;
-
-        /** Tabbed area for holding each channel. */
-        TabbedArea *mChatTabs;
 
         typedef std::map<const std::string, ChatTab*> TabMap;
         /** Manage whisper tabs */
@@ -350,8 +350,8 @@ class ChatWindow : public Window,
 
         StringVect mTradeFilter;
 
-        gcn::DropDown *mColorPicker;
         ColorListModel *mColorListModel;
+        gcn::DropDown *mColorPicker;
         int mChatColor;
         unsigned int mChatHistoryIndex;
         std::list<std::string> mAwayLog;

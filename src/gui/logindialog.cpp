@@ -110,7 +110,25 @@ class UpdateListModel : public gcn::ListModel
 LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
                          std::string *const updateHost):
     Window(_("Login"), false, nullptr, "login.xml"),
+    ActionListener(),
+    KeyListener(),
     mLoginData(data),
+    mUserField(new TextField(mLoginData->username)),
+    mPassField(new PasswordField(mLoginData->password)),
+    mKeepCheck(new CheckBox(_("Remember username"), mLoginData->remember)),
+    mUpdateTypeLabel(new Label(_("Update:"))),
+    mUpdateHostLabel(nullptr),
+    mUpdateTypeModel(new UpdateTypeModel()),
+    mUpdateTypeDropDown(new DropDown(mUpdateTypeModel)),
+    mServerButton(new Button(_("Change Server"), "server", this)),
+    mLoginButton(new Button(_("Login"), "login", this)),
+    mRegisterButton(new Button(_("Register"), "register", this)),
+    mCustomUpdateHost(new CheckBox(_("Custom update host"),
+        mLoginData->updateType & LoginData::Upd_Custom, this, "customhost")),
+    mUpdateHostText(new TextField(serverConfig.getValue(
+        "customUpdateHost", ""))),
+    mUpdateListModel(nullptr),
+    mUpdateHostDropDown(nullptr),
     mUpdateHost(updateHost),
     mServerName(serverName)
 {
@@ -136,35 +154,17 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
         mUpdateListModel = nullptr;
         mUpdateHostDropDown = nullptr;
     }
-
-    mCustomUpdateHost = new CheckBox(_("Custom update host"),
-        mLoginData->updateType & LoginData::Upd_Custom, this, "customhost");
-
-    mUpdateHostText = new TextField(serverConfig.getValue(
-        "customUpdateHost", ""));
-
     mUpdateHostText->adjustSize();
-
-    mUserField = new TextField(mLoginData->username);
-    mPassField = new PasswordField(mLoginData->password);
 
     if (mPassField->getText().empty() && LoginDialog::savedPassword != "")
         mPassField->setText(LoginDialog::savedPassword);
 
-    mKeepCheck = new CheckBox(_("Remember username"), mLoginData->remember);
-    mUpdateTypeLabel = new Label(_("Update:"));
-    mUpdateTypeModel = new UpdateTypeModel();
-    mUpdateTypeDropDown = new DropDown(mUpdateTypeModel);
     mUpdateTypeDropDown->setActionEventId("updatetype");
     mUpdateTypeDropDown->setSelected((mLoginData->updateType
         | LoginData::Upd_Custom) ^ LoginData::Upd_Custom);
 
     if (!mCustomUpdateHost->isSelected())
         mUpdateHostText->setVisible(false);
-
-    mRegisterButton = new Button(_("Register"), "register", this);
-    mServerButton = new Button(_("Change Server"), "server", this);
-    mLoginButton = new Button(_("Login"), "login", this);
 
     mUserField->setActionEventId("login");
     mPassField->setActionEventId("login");

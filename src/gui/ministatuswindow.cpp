@@ -50,12 +50,27 @@
 
 extern volatile int tick_time;
 
-MiniStatusWindow::MiniStatusWindow():
-    Popup("MiniStatus", "ministatus.xml")
+MiniStatusWindow::MiniStatusWindow() :
+    Popup("MiniStatus", "ministatus.xml"),
+    InventoryListener(),
+    mHpBar(createBar(0, 100, 20, Theme::PROG_HP, "hp bar", _("health bar"))),
+    mXpBar(createBar(0, 100, 20, Theme::PROG_EXP,
+           "xp bar", _("experience bar"))),
+    mWeightBar(createBar(0, 140, 20, Theme::PROG_WEIGHT,
+               "weight bar", _("weight bar"))),
+    mInvSlotsBar(createBar(0, 45, 20, Theme::PROG_INVY_SLOTS,
+                 "inventory slots bar", _("inventory slots bar"))),
+    mMoneyBar(createBar(0, 130, 20, Theme::PROG_INVY_SLOTS,
+              "money bar", _("money bar"))),
+    mArrowsBar(createBar(0, 50, 20, Theme::PROG_INVY_SLOTS,
+               "arrows bar", _("arrows bar"))),
+    mStatusBar(createBar(100, 165, 20, Theme::PROG_EXP,
+               "status bar", _("status bar"))),
+    mTextPopup(new TextPopup),
+    mStatusPopup(new StatusPopup)
 {
     listen(CHANNEL_ATTRIBUTES);
 
-    mHpBar = createBar(0, 100, 20, Theme::PROG_HP, "hp bar", _("health bar"));
     StatusWindow::updateHPBar(mHpBar);
 
     if (Net::getGameHandler()->canUseMagicBar())
@@ -72,8 +87,6 @@ MiniStatusWindow::MiniStatusWindow():
     const int job = Net::getPlayerHandler()->getJobLocation()
         && serverConfig.getValueBool("showJob", false);
 
-    mXpBar = createBar(0, 100, 20, Theme::PROG_EXP,
-                       "xp bar", _("experience bar"));
     StatusWindow::updateXPBar(mXpBar);
 
     if (job)
@@ -87,29 +100,10 @@ MiniStatusWindow::MiniStatusWindow():
         mJobBar = nullptr;
     }
 
-    mWeightBar = createBar(0, 140, 20, Theme::PROG_WEIGHT,
-                           "weight bar", _("weight bar"));
-
-    mInvSlotsBar = createBar(0, 45, 20, Theme::PROG_INVY_SLOTS,
-                             "inventory slots bar", _("inventory slots bar"));
-
-    mMoneyBar = createBar(0, 130, 20, Theme::PROG_INVY_SLOTS,
-                          "money bar", _("money bar"));
-
-    mArrowsBar = createBar(0, 50, 20, Theme::PROG_INVY_SLOTS,
-                           "arrows bar", _("arrows bar"));
-
-    mStatusBar = createBar(100, 165, 20, Theme::PROG_EXP,
-                           "status bar", _("status bar"));
-
     loadBars();
     updateBars();
 
     setVisible(config.getValueBool(getPopupName() + "Visible", true));
-
-    mStatusPopup = new StatusPopup();
-    mTextPopup = new TextPopup();
-
     addMouseListener(this);
     Inventory *const inv = PlayerInfo::getInventory();
     if (inv)

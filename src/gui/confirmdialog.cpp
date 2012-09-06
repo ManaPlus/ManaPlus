@@ -38,9 +38,10 @@
 ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
                              const bool ignore, const bool modal,
                              Window *const parent):
-    Window(title, modal, parent, "confirm.xml")
+    Window(title, modal, parent, "confirm.xml"),
+    ActionListener(),
+    mTextBox(new TextBox)
 {
-    mTextBox = new TextBox;
     mTextBox->setEditable(false);
     mTextBox->setOpaque(false);
     mTextBox->setTextWrapped(msg, 260);

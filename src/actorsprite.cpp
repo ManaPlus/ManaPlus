@@ -49,8 +49,8 @@ SimpleAnimation *ActorSprite::targetCursor[2][NUM_TC];
 bool ActorSprite::loaded = false;
 
 ActorSprite::ActorSprite(const int id) :
-    Actor(),
     CompoundSprite(),
+    Actor(),
     mId(id),
     mStunMode(0),
     mStatusParticleEffects(&mStunParticleEffects, false),

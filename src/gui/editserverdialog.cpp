@@ -64,6 +64,17 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
                                    ServerInfo server,
                                    const int index) :
     Window(_("Edit Server"), true, parent),
+    ActionListener(),
+    KeyListener(),
+    mServerAddressField(new TextField(std::string())),
+    mPortField(new TextField(std::string())),
+    mNameField(new TextField(std::string())),
+    mDescriptionField(new TextField(std::string())),
+    mConnectButton(new Button(_("Connect"), "connect", this)),
+    mOkButton(new Button(_("OK"), "addServer", this)),
+    mCancelButton(new Button(_("Cancel"), "cancel", this)),
+    mTypeListModel(new TypeListModel()),
+    mTypeField(new DropDown(mTypeListModel)),
     mServerDialog(parent),
     mServer(server),
     mIndex(index)
@@ -75,21 +86,10 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     Label *const portLabel = new Label(_("Port:"));
     Label *const typeLabel = new Label(_("Server type:"));
     Label *const descriptionLabel = new Label(_("Description:"));
-    mServerAddressField = new TextField(std::string());
-    mPortField = new TextField(std::string());
     mPortField->setNumeric(true);
     mPortField->setRange(1, 65535);
 
-    mTypeListModel = new TypeListModel();
-    mTypeField = new DropDown(mTypeListModel);
     mTypeField->setSelected(0); // TmwAthena by default for now.
-
-    mNameField = new TextField(std::string());
-    mDescriptionField = new TextField(std::string());
-
-    mConnectButton = new Button(_("Connect"), "connect", this);
-    mOkButton = new Button(_("OK"), "addServer", this);
-    mCancelButton = new Button(_("Cancel"), "cancel", this);
 
     mServerAddressField->addActionListener(this);
     mPortField->addActionListener(this);

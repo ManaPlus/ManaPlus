@@ -84,11 +84,14 @@ class LoginDialog : public Window, public gcn::ActionListener,
          */
         bool canSubmit() const;
 
+        LoginData *mLoginData;
+
         gcn::TextField *mUserField;
         gcn::TextField *mPassField;
         gcn::CheckBox *mKeepCheck;
         gcn::Label *mUpdateTypeLabel;
         gcn::Label *mUpdateHostLabel;
+        UpdateTypeModel *mUpdateTypeModel;
         DropDown *mUpdateTypeDropDown;
         gcn::Button *mServerButton;
         gcn::Button *mLoginButton;
@@ -98,9 +101,7 @@ class LoginDialog : public Window, public gcn::ActionListener,
         UpdateListModel *mUpdateListModel;
         DropDown *mUpdateHostDropDown;
 
-        LoginData *mLoginData;
         std::string *mUpdateHost;
-        UpdateTypeModel *mUpdateTypeModel;
         std::string mServerName;
 };
 
