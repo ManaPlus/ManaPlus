@@ -33,8 +33,8 @@
 	<color id="CHAT" color="#E0E0E0" />
 	<color id="GM" color="#FFFFFF" />
 	<color id="PLAYER" color="#66CCCC" />
-	<color id="WHISPER" color="#E0E0E0" />
-	<color id="WHISPER_OFFLINE" color="#A8A8A8" />
+	<color id="WHISPER_TAB" color="#E0E0E0" />
+	<color id="WHISPER_TAB_OFFLINE" color="#A8A8A8" />
 	<color id="IS" color="#70C600" />
 	<color id="SERVER" color="#9966FF" />
 	<color id="LOGGER" color="#9966FF" />

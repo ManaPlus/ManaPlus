@@ -1479,7 +1479,7 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
 
         if (onlinePlayers.find(tab->getNick()) != onlinePlayers.end())
         {
-            tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER));
+            tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB));
         }
         else
         {
@@ -1490,7 +1490,8 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
                     nick, ActorSprite::PLAYER);
                 if (being)
                 {
-                    tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER));
+                    tab->setTabColor(&Theme::getThemeColor(
+                        Theme::WHISPER_TAB));
                     continue;
                 }
             }
@@ -1499,7 +1500,8 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
                 const PartyMember *const pm = party->getMember(nick);
                 if (pm && pm->getOnline())
                 {
-                    tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER));
+                    tab->setTabColor(&Theme::getThemeColor(
+                        Theme::WHISPER_TAB));
                     continue;
                 }
             }
@@ -1508,11 +1510,13 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
                 const GuildMember *const gm = guild->getMember(nick);
                 if (gm && gm->getOnline())
                 {
-                    tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER));
+                    tab->setTabColor(&Theme::getThemeColor(
+                        Theme::WHISPER_TAB));
                     continue;
                 }
             }
-            tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER_OFFLINE));
+            tab->setTabColor(&Theme::getThemeColor(
+                Theme::WHISPER_TAB_OFFLINE));
         }
     }
 }

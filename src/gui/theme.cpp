@@ -168,8 +168,8 @@ Theme::Theme():
     mColors[CHAT].ch = 'C';
     mColors[GM].ch = 'G';
     mColors[PLAYER].ch = 'Y';
-    mColors[WHISPER].ch = 'W';
-    mColors[WHISPER_OFFLINE].ch = 'w';
+    mColors[WHISPER_TAB].ch = 'W';
+    mColors[WHISPER_TAB_OFFLINE].ch = 'w';
     mColors[IS].ch = 'I';
     mColors[PARTY_CHAT_TAB].ch = 'P';
     mColors[GUILD_CHAT_TAB].ch = 'U';
@@ -180,8 +180,8 @@ Theme::Theme():
     mCharColors['C'] = CHAT;
     mCharColors['G'] = GM;
     mCharColors['Y'] = PLAYER;
-    mCharColors['W'] = WHISPER;
-    mCharColors['w'] = WHISPER_OFFLINE;
+    mCharColors['W'] = WHISPER_TAB;
+    mCharColors['w'] = WHISPER_TAB_OFFLINE;
     mCharColors['I'] = IS;
     mCharColors['P'] = PARTY_CHAT_TAB;
     mCharColors['U'] = GUILD_CHAT_TAB;
@@ -707,8 +707,8 @@ static int readColorType(const std::string &type)
         "CHAT",
         "GM",
         "PLAYER",
-        "WHISPER",
-        "WHISPER_OFFLINE",
+        "WHISPER_TAB",
+        "WHISPER_TAB_OFFLINE",
         "IS",
         "SERVER",
         "LOGGER",

@@ -4164,7 +4164,7 @@ void LocalPlayer::checkNewName(Being *const being)
         {
             ChatTab *const tab = chatWindow->getWhisperTab(nick);
             if (tab)
-                tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER));
+                tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB));
         }
     }
 
