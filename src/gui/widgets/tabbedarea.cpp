@@ -36,6 +36,7 @@
 
 TabbedArea::TabbedArea() :
     gcn::TabbedArea(),
+    gcn::WidgetListener(),
     mTabsWidth(0),
     mVisibleTabsWidth(0),
     mTabScrollIndex(0),

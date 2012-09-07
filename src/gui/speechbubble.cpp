@@ -33,17 +33,16 @@
 
 #include "debug.h"
 
-SpeechBubble::SpeechBubble():
-        Popup("Speech", "speechbubble.xml")
+SpeechBubble::SpeechBubble() :
+    Popup("Speech", "speechbubble.xml"),
+    mCaption(new Label),
+    mSpeechBox(new TextBox)
 {
     setContentSize(140, 46);
     setMinWidth(29);
     setMinHeight(29);
 
-    mCaption = new Label;
     mCaption->setFont(boldFont);
-
-    mSpeechBox = new TextBox;
     mSpeechBox->setEditable(false);
     mSpeechBox->setOpaque(false);
     mSpeechBox->setTextColor(&Theme::getThemeColor(Theme::BUBBLE_TEXT));

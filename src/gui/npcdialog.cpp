@@ -61,9 +61,25 @@ NpcDialog::DialogList NpcDialog::instances;
 
 NpcDialog::NpcDialog(const int npcId) :
     Window(_("NPC"), false, nullptr, "npc.xml"),
+    ActionListener(),
     mNpcId(npcId),
     mLogInteraction(config.getBoolValue("logNpcInGui")),
     mDefaultInt(0),
+    mTextBox(new BrowserBox(BrowserBox::AUTO_WRAP)),
+    mScrollArea(new ScrollArea(mTextBox,
+        getOptionBool("showtextbackground"), "npc_textbackground.xml")),
+    mItemList(new ExtendedListBox(this)),
+    mListScrollArea(new ScrollArea(mItemList,
+        getOptionBool("showlistbackground"), "npc_listbackground.xml")),
+    mItemLinkHandler(new ItemLinkHandler),
+    mTextField(new TextField("")),
+    mIntField(new IntTextField),
+    mPlusButton(new Button(_("+"), "inc", this)),
+    mMinusButton(new Button(_("-"), "dec", this)),
+    mClearButton(new Button(_("Clear"), "clear", this)),
+    mButton(new Button("", "ok", this)),
+    mButton2(new Button(_("Close"), "close", this)),
+    mResetButton(new Button(_("Reset"), "reset", this)),
     mInputState(NPC_INPUT_NONE),
     mActionState(NPC_ACTION_WAIT),
     mLastNextTime(0),
@@ -89,21 +105,16 @@ NpcDialog::NpcDialog(const int npcId) :
     mPlayerBox->setWidth(70);
     mPlayerBox->setHeight(100);
 
-    mItemLinkHandler = new ItemLinkHandler;
     // Setup output text box
-    mTextBox = new BrowserBox(BrowserBox::AUTO_WRAP);
     mTextBox->setOpaque(false);
     mTextBox->setMaxRow(config.getIntValue("ChatLogLength"));
     mTextBox->setLinkHandler(mItemLinkHandler);
     mTextBox->setFont(gui->getNpcFont());
 
-    mScrollArea = new ScrollArea(mTextBox,
-        getOptionBool("showtextbackground"), "npc_textbackground.xml");
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     mScrollArea->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
 
     // Setup listbox
-    mItemList = new ExtendedListBox(this);
     mItemList->setWrappingEnabled(true);
     mItemList->setActionEventId("ok");
     mItemList->addActionListener(this);
@@ -116,29 +127,20 @@ NpcDialog::NpcDialog(const int npcId) :
 
     setContentSize(260, 175);
 
-    mListScrollArea = new ScrollArea(mItemList,
-        getOptionBool("showlistbackground"), "npc_listbackground.xml");
     mListScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mItemList->setVisible(true);
 
     // Setup string input box
-    mTextField = new TextField("");
     mTextField->setVisible(true);
 
     // Setup int input box
-    mIntField = new IntTextField;
     mIntField->setVisible(true);
 
-    mClearButton = new Button(_("Clear"), "clear", this);
 
     // Setup button
-    mButton = new Button("", "ok", this);
-    mButton2 = new Button(_("Close"), "close", this);
 
     //Setup more and less buttons (int input)
-    mPlusButton = new Button(_("+"), "inc", this);
-    mMinusButton = new Button(_("-"), "dec", this);
 
     const gcn::Font *const fnt = mButton->getFont();
     int width = std::max(fnt->getWidth(CAPTION_WAITING),
@@ -148,7 +150,6 @@ NpcDialog::NpcDialog(const int npcId) :
 
     mButton->setWidth(8 + width);
 
-    mResetButton = new Button(_("Reset"), "reset", this);
 
     // Place widgets
     buildLayout();

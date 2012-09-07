@@ -59,6 +59,11 @@ extern Window *socialWindow;
 extern Window *questsWindow;
 
 WindowMenu::WindowMenu() :
+    Container(),
+    gcn::ActionListener(),
+    gcn::SelectionListener(),
+    gcn::MouseListener(),
+    mTextPopup(new TextPopup),
     mHaveMouse(false),
     mAutoHide(1)
 {
@@ -112,7 +117,6 @@ WindowMenu::WindowMenu() :
     }
 
     loadButtons();
-    mTextPopup = new TextPopup;
 
     addMouseListener(this);
     setVisible(true);

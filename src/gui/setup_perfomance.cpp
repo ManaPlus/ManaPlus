@@ -41,7 +41,8 @@
 
 #include "debug.h"
 
-Setup_Perfomance::Setup_Perfomance()
+Setup_Perfomance::Setup_Perfomance() :
+    SetupTabScroll()
 {
     setName(_("Perfomance"));
 

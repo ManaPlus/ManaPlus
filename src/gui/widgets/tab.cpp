@@ -63,6 +63,7 @@ ImageRect Tab::tabImg[TAB_COUNT];
 
 Tab::Tab() :
     gcn::Tab(),
+    gcn::WidgetListener(),
     mTabColor(&Theme::getThemeColor(Theme::TAB)),
     mTabHighlightedColor(&Theme::getThemeColor(Theme::TAB_HIGHLIGHTED)),
     mTabSelectedColor(&Theme::getThemeColor(Theme::TAB_SELECTED)),

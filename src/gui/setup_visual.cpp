@@ -30,7 +30,13 @@
 
 #include "debug.h"
 
-Setup_Visual::Setup_Visual()
+Setup_Visual::Setup_Visual() :
+    SetupTabScroll(),
+    mSpeachList(new SetupItemNames),
+    mAmbientFxList(new SetupItemNames),
+    mParticleList(new SetupItemNames),
+    mParticleTypeList(new SetupItemNames),
+    mVSyncList(new SetupItemNames)
 {
     setName(_("Visual"));
     // Do the layout
@@ -59,7 +65,6 @@ Setup_Visual::Setup_Visual()
     new SetupItemSlider(_("Gui opacity"), "", "guialpha",
         this, "guialphaEvent", 0.1, 1.0, 150, true);
 
-    mSpeachList = new SetupItemNames();
     mSpeachList->push_back(_("No text"));
     mSpeachList->push_back(_("Text"));
     mSpeachList->push_back(_("Bubbles, no names"));
@@ -67,7 +72,6 @@ Setup_Visual::Setup_Visual()
     new SetupItemSlider2(_("Overhead text"), "", "speech", this,
         "speechEvent", 0, 3, mSpeachList);
 
-    mAmbientFxList = new SetupItemNames();
     mAmbientFxList->push_back(_("off"));
     mAmbientFxList->push_back(_("low"));
     mAmbientFxList->push_back(_("high"));
@@ -77,7 +81,6 @@ Setup_Visual::Setup_Visual()
     new SetupItemCheckBox(_("Particle effects"), "",
         "particleeffects", this, "particleeffectsEvent");
 
-    mParticleList = new SetupItemNames();
     mParticleList->push_back(_("low"));
     mParticleList->push_back(_("medium"));
     mParticleList->push_back(_("high"));
@@ -86,7 +89,6 @@ Setup_Visual::Setup_Visual()
         this, "particleEmitterSkipEvent", 0, 3,
         mParticleList, true))->setInvertValue(3);
 
-    mParticleTypeList = new SetupItemNames();
     mParticleTypeList->push_back(_("best quality"));
     mParticleTypeList->push_back(_("normal"));
     mParticleTypeList->push_back(_("best perfomance"));
@@ -98,7 +100,6 @@ Setup_Visual::Setup_Visual()
     new SetupItemSlider(_("Gamma"), "", "gamma",
         this, "gammeEvent", 1, 20, 350, true);
 
-    mVSyncList = new SetupItemNames();
     mVSyncList->push_back(_("default"));
     mVSyncList->push_back(_("off"));
     mVSyncList->push_back(_("on"));

@@ -49,40 +49,51 @@ const std::string Setup_Colors::rawmsg =
     _("This is what the color looks like");
 
 Setup_Colors::Setup_Colors() :
-    mSelected(-1)
+    SetupTab(),
+    SelectionListener(),
+    mColorBox(new ListBox(userPalette)),
+    mScroll(new ScrollArea(mColorBox, true, "setup_colors_background.xml")),
+    mPreview(new BrowserBox(BrowserBox::AUTO_WRAP)),
+    mTextPreview(new TextPreview(rawmsg)),
+    mPreviewBox(new ScrollArea(mPreview, true,
+        "setup_colors_preview_background.xml")),
+    mSelected(-1),
+    mGradTypeLabel(new Label(_("Type:"))),
+    mGradTypeSlider(new Slider(0, 3)),
+    mGradTypeText(new Label),
+    mGradDelayLabel(new Label(_("Delay:"))),
+    mGradDelaySlider(new Slider(20, 100)),
+    mGradDelayText(new TextField()),
+    mRedLabel(new Label(_("Red:"))),
+    mRedSlider(new Slider(0, 255)),
+    mRedText(new TextField),
+    mRedValue(0),
+    mGreenLabel(new Label(_("Green:"))),
+    mGreenSlider(new Slider(0, 255)),
+    mGreenText(new TextField),
+    mGreenValue(0),
+    mBlueLabel(new Label(_("Blue:"))),
+    mBlueSlider(new Slider(0, 255)),
+    mBlueText(new TextField),
+    mBlueValue(0)
 {
     setName(_("Colors"));
-
-    mColorBox = new ListBox(userPalette);
     mColorBox->addSelectionListener(this);
-
-    mScroll = new ScrollArea(mColorBox, true, "setup_colors_background.xml");
     mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-
-    mTextPreview = new TextPreview(rawmsg);
-
-    mPreview = new BrowserBox(BrowserBox::AUTO_WRAP);
     mPreview->setOpaque(false);
 
     // don't do anything with links
     mPreview->setLinkHandler(nullptr);
 
-    mPreviewBox = new ScrollArea(mPreview, true,
-        "setup_colors_preview_background.xml");
     mPreviewBox->setHeight(20);
     mPreviewBox->setScrollPolicy(gcn::ScrollArea::SHOW_NEVER,
                                  gcn::ScrollArea::SHOW_NEVER);
 
-    mGradTypeLabel = new Label(_("Type:"));
-
-    mGradTypeSlider = new Slider(0, 3);
     mGradTypeSlider->setWidth(180);
     mGradTypeSlider->setActionEventId("slider_grad");
     mGradTypeSlider->setValue(0);
     mGradTypeSlider->addActionListener(this);
     mGradTypeSlider->setEnabled(false);
-
-    mGradTypeText = new Label;
 
     std::string longText = _("Static");
 
@@ -95,60 +106,44 @@ Setup_Colors::Setup_Colors() :
 
     mGradTypeText->setCaption(longText);
 
-    mGradDelayLabel = new Label(_("Delay:"));
-
-    mGradDelayText = new TextField();
     mGradDelayText->setWidth(40);
     mGradDelayText->setRange(20, 100);
     mGradDelayText->setNumeric(true);
     mGradDelayText->setEnabled(false);
 
-    mGradDelaySlider = new Slider(20, 100);
     mGradDelaySlider->setWidth(180);
     mGradDelaySlider->setValue(mGradDelayText->getValue());
     mGradDelaySlider->setActionEventId("slider_graddelay");
     mGradDelaySlider->addActionListener(this);
     mGradDelaySlider->setEnabled(false);
 
-    mRedLabel = new Label(_("Red:"));
-
-    mRedText = new TextField;
     mRedText->setWidth(40);
     mRedText->setRange(0, 255);
     mRedText->setNumeric(true);
     mRedText->setEnabled(false);
 
-    mRedSlider = new Slider(0, 255);
     mRedSlider->setWidth(180);
     mRedSlider->setValue(mRedText->getValue());
     mRedSlider->setActionEventId("slider_red");
     mRedSlider->addActionListener(this);
     mRedSlider->setEnabled(false);
 
-    mGreenLabel = new Label(_("Green:"));
-
-    mGreenText = new TextField;
     mGreenText->setWidth(40);
     mGreenText->setRange(0, 255);
     mGreenText->setNumeric(true);
     mGreenText->setEnabled(false);
 
-    mGreenSlider = new Slider(0, 255);
     mGreenSlider->setWidth(180);
     mGreenSlider->setValue(mGreenText->getValue());
     mGreenSlider->setActionEventId("slider_green");
     mGreenSlider->addActionListener(this);
     mGreenSlider->setEnabled(false);
 
-    mBlueLabel = new Label(_("Blue:"));
-
-    mBlueText = new TextField;
     mBlueText->setWidth(40);
     mBlueText->setRange(0, 255);
     mBlueText->setNumeric(true);
     mBlueText->setEnabled(false);
 
-    mBlueSlider = new Slider(0, 255);
     mBlueSlider->setWidth(180);
     mBlueSlider->setValue(mBlueText->getValue());
     mBlueSlider->setActionEventId("slider_blue");

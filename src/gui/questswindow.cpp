@@ -75,7 +75,8 @@ struct QuestItem
 class QuestsModel : public ExtendedNamesModel
 {
     public:
-        QuestsModel()
+        QuestsModel() :
+            ExtendedNamesModel()
         {
         }
 
@@ -85,6 +86,7 @@ class QuestsModel : public ExtendedNamesModel
 
 QuestsWindow::QuestsWindow() :
     Window(_("Quests"), false, nullptr, "quests.xml"),
+    ActionListener(),
     mQuestsModel(new QuestsModel),
     mQuestsListBox(new ExtendedListBox(mQuestsModel)),
     mQuestScrollArea(new ScrollArea(mQuestsListBox,

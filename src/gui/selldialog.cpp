@@ -47,8 +47,10 @@
 
 SellDialog::DialogList SellDialog::instances;
 
-SellDialog::SellDialog(const int npcId):
+SellDialog::SellDialog(const int npcId) :
     Window(_("Sell"), false, nullptr, "sell.xml"),
+    ActionListener(),
+    SelectionListener(),
     mNpcId(npcId), mMaxItems(0), mAmountItems(0), mNick("")
 {
     init();
@@ -56,6 +58,8 @@ SellDialog::SellDialog(const int npcId):
 
 SellDialog::SellDialog(std::string nick):
     Window(_("Sell"), false, nullptr, "sell.xml"),
+    ActionListener(),
+    SelectionListener(),
     mNpcId(-1), mMaxItems(0), mAmountItems(0), mNick(nick)
 {
     init();

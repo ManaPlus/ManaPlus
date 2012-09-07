@@ -36,7 +36,10 @@
 
 #include "debug.h"
 
-Popup::Popup(const std::string &name, std::string skin):
+Popup::Popup(const std::string &name, std::string skin) :
+    Container(),
+    MouseListener(),
+    WidgetListener(),
     mPopupName(name),
     mMinWidth(100),
     mMinHeight(40),

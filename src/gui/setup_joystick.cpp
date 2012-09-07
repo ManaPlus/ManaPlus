@@ -41,7 +41,8 @@
 
 extern Joystick *joystick;
 
-Setup_Joystick::Setup_Joystick():
+Setup_Joystick::Setup_Joystick() :
+    SetupTab(),
     mCalibrateLabel(new Label(_("Press the button to start calibration"))),
     mCalibrateButton(new Button(_("Calibrate"), "calibrate", this)),
     mJoystickEnabled(new CheckBox(_("Enable joystick"))),

@@ -26,6 +26,9 @@
 
 WidgetGroup::WidgetGroup(const std::string &group, const int height,
                          const int spacing) :
+    Container(),
+    gcn::WidgetListener(),
+    gcn::ActionListener(),
     mSpacing(spacing),
     mCount(0),
     mGroup(group),

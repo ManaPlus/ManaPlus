@@ -223,8 +223,8 @@ class NpcDialog : public Window, public gcn::ActionListener,
         std::string mDefaultString;
 
         // Used for the main input area
-        gcn::ScrollArea *mScrollArea;
         BrowserBox *mTextBox;
+        gcn::ScrollArea *mScrollArea;
         //TextBox *mTextBox;
         std::string mText;
         std::string mNewText;
@@ -241,12 +241,10 @@ class NpcDialog : public Window, public gcn::ActionListener,
         IntTextField *mIntField;
         Button *mPlusButton;
         Button *mMinusButton;
-
         Button *mClearButton;
 
         // Used for the button
         Button *mButton;
-
         Button *mButton2;
 
         // Will reset the text and integer input to the provided default

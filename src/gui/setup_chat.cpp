@@ -41,7 +41,8 @@
 
 #include "debug.h"
 
-Setup_Chat::Setup_Chat()
+Setup_Chat::Setup_Chat() :
+    SetupTabScroll()
 {
     setName(_("Chat"));
 

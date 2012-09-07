@@ -45,6 +45,7 @@
 #include "debug.h"
 
 WrongDataNoticeListener::WrongDataNoticeListener():
+    ActionListener(),
     mTarget(nullptr)
 {
 }
@@ -62,23 +63,25 @@ void WrongDataNoticeListener::action(const gcn::ActionEvent &event)
 
 RegisterDialog::RegisterDialog(LoginData *const data):
     Window(_("Register"), false, nullptr, "register.xml"),
+    ActionListener(),
+    KeyListener(),
+    mLoginData(data),
+    mUserField(new TextField(mLoginData->username)),
+    mPasswordField(new PasswordField(mLoginData->password)),
+    mConfirmField(new PasswordField),
     mEmailField(nullptr),
+    mRegisterButton(new Button(_("Register"), "register", this)),
+    mCancelButton(new Button(_("Cancel"), "cancel", this)),
     mMaleButton(nullptr),
     mFemaleButton(nullptr),
     mOtherButton(nullptr),
-    mWrongDataNoticeListener(new WrongDataNoticeListener),
-    mLoginData(data)
+    mWrongDataNoticeListener(new WrongDataNoticeListener)
 {
     int optionalActions = Net::getLoginHandler()->supportedOptionalActions();
 
     gcn::Label *const userLabel = new Label(_("Name:"));
     gcn::Label *const passwordLabel = new Label(_("Password:"));
     gcn::Label *const confirmLabel = new Label(_("Confirm:"));
-    mUserField = new TextField(mLoginData->username);
-    mPasswordField = new PasswordField(mLoginData->password);
-    mConfirmField = new PasswordField;
-    mRegisterButton = new Button(_("Register"), "register", this);
-    mCancelButton = new Button(_("Cancel"), "cancel", this);
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);

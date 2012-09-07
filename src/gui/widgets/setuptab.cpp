@@ -24,7 +24,9 @@
 
 #include "debug.h"
 
-SetupTab::SetupTab()
+SetupTab::SetupTab() :
+    Container(),
+    gcn::ActionListener()
 {
     setOpaque(false);
 }

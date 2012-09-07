@@ -55,7 +55,8 @@ const char* ACTION_JAPAN_FONT = "japan font";
 class ThemesModel : public NamesModel
 {
 public:
-    ThemesModel()
+    ThemesModel() :
+        NamesModel()
     {
         mNames.push_back(gettext("(default)"));
         Theme::fillSkinsList(mNames);
@@ -68,7 +69,8 @@ public:
 class FontsModel : public NamesModel
 {
 public:
-    FontsModel()
+    FontsModel() :
+        NamesModel()
     { Theme::fillFontsList(mNames); }
 
     virtual ~FontsModel()
@@ -157,73 +159,64 @@ public:
     }
 };
 
-Setup_Theme::Setup_Theme():
+Setup_Theme::Setup_Theme() :
+    SetupTab(),
+    mThemeLabel(new Label(_("Gui theme"))),
+    mThemesModel(new ThemesModel),
+    mThemeDropDown(new DropDown(mThemesModel)),
     mTheme(config.getValue("theme", config.getValue("selectedSkin", ""))),
+    mFontsModel(new FontsModel),
+    mFontLabel(new Label(_("Main Font"))),
+    mFontDropDown(new DropDown(mFontsModel)),
     mFont(config.getStringValue("font")),
+    mLangListModel(new LangListModel),
+    mLangLabel(new Label(_("Language"))),
+    mLangDropDown(new DropDown(mLangListModel)),
     mLang(config.getStringValue("lang")),
+    mBoldFontLabel(new Label(_("Bold font"))),
+    mBoldFontDropDown(new DropDown(mFontsModel)),
     mBoldFont(config.getStringValue("boldFont")),
+    mParticleFontLabel(new Label(_("Particle font"))),
+    mParticleFontDropDown(new DropDown(mFontsModel)),
     mParticleFont(config.getStringValue("particleFont")),
+    mHelpFontLabel(new Label(_("Help font"))),
+    mHelpFontDropDown(new DropDown(mFontsModel)),
     mHelpFont(config.getStringValue("helpFont")),
+    mSecureFontLabel(new Label(_("Secure font"))),
+    mSecureFontDropDown(new DropDown(mFontsModel)),
     mSecureFont(config.getStringValue("secureFont")),
+    mJapanFontLabel(new Label(_("Japanese font"))),
+    mJapanFontDropDown(new DropDown(mFontsModel)),
     mJapanFont(config.getStringValue("japanFont")),
+    mFontSizeListModel(new FontSizeChoiceListModel),
+    mFontSizeLabel(new Label(_("Font size"))),
     mFontSize(config.getIntValue("fontSize")),
-    mNpcFontSize(config.getIntValue("npcfontSize"))
+    mFontSizeDropDown(new DropDown(mFontSizeListModel)),
+    mNpcFontSizeListModel(new FontSizeChoiceListModel),
+    mNpcFontSizeLabel(new Label(_("Npc font size"))),
+    mNpcFontSize(config.getIntValue("npcfontSize")),
+    mNpcFontSizeDropDown(new DropDown(mNpcFontSizeListModel))
 {
     setName(_("Theme"));
 
-    mThemeLabel = new Label(_("Gui theme"));
-    mLangLabel = new Label(_("Language"));
-    mFontLabel = new Label(_("Main Font"));
-    mBoldFontLabel = new Label(_("Bold font"));
-    mParticleFontLabel = new Label(_("Particle font"));
-    mHelpFontLabel = new Label(_("Help font"));
-    mSecureFontLabel = new Label(_("Secure font"));
-    mJapanFontLabel = new Label(_("Japanese font"));
-    mThemesModel  = new ThemesModel();
-    mFontsModel  = new FontsModel();
-    mLangListModel = new LangListModel();
-
-    mThemeDropDown = new DropDown(mThemesModel);
     mThemeDropDown->setActionEventId(ACTION_THEME);
     mThemeDropDown->addActionListener(this);
-
-    mFontDropDown = new DropDown(mFontsModel);
     mFontDropDown->setActionEventId(ACTION_FONT);
     mFontDropDown->addActionListener(this);
-
-    mLangDropDown = new DropDown(mLangListModel);
     mLangDropDown->setActionEventId(ACTION_LANG);
     mLangDropDown->addActionListener(this);
-
-    mBoldFontDropDown = new DropDown(mFontsModel);
     mBoldFontDropDown->setActionEventId(ACTION_BOLD_FONT);
     mBoldFontDropDown->addActionListener(this);
-
-    mParticleFontDropDown = new DropDown(mFontsModel);
     mParticleFontDropDown->setActionEventId(ACTION_PARTICLE_FONT);
     mParticleFontDropDown->addActionListener(this);
-
-    mHelpFontDropDown = new DropDown(mFontsModel);
     mHelpFontDropDown->setActionEventId(ACTION_HELP_FONT);
     mHelpFontDropDown->addActionListener(this);
-
-    mSecureFontDropDown = new DropDown(mFontsModel);
     mSecureFontDropDown->setActionEventId(ACTION_SECURE_FONT);
     mSecureFontDropDown->addActionListener(this);
-
-    mJapanFontDropDown = new DropDown(mFontsModel);
     mJapanFontDropDown->setActionEventId(ACTION_JAPAN_FONT);
     mJapanFontDropDown->addActionListener(this);
-
-    mFontSizeLabel = new Label(_("Font size"));
-    mFontSizeListModel = new FontSizeChoiceListModel;
-    mFontSizeDropDown = new DropDown(mFontSizeListModel);
     mFontSizeDropDown->setSelected(mFontSize - 9);
     mFontSizeDropDown->adjustHeight();
-
-    mNpcFontSizeLabel = new Label(_("Npc font size"));
-    mNpcFontSizeListModel = new FontSizeChoiceListModel;
-    mNpcFontSizeDropDown = new DropDown(mNpcFontSizeListModel);
     mNpcFontSizeDropDown->setSelected(mNpcFontSize - 9);
     mNpcFontSizeDropDown->adjustHeight();
 

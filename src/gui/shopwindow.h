@@ -49,7 +49,7 @@ namespace gcn
  * \ingroup Interface
  */
 class ShopWindow : public Window, public gcn::ActionListener,
-                  public gcn::SelectionListener
+                   public gcn::SelectionListener
 {
     public:
 
@@ -145,6 +145,10 @@ class ShopWindow : public Window, public gcn::ActionListener,
         static DialogList instances;
 
         gcn::Button *mCloseButton;
+
+        ShopItems *mBuyShopItems;
+        ShopItems *mSellShopItems;
+
         ShopListBox *mBuyShopItemList;
         ShopListBox *mSellShopItemList;
         gcn::ScrollArea *mBuyScrollArea;
@@ -160,9 +164,6 @@ class ShopWindow : public Window, public gcn::ActionListener,
         gcn::Button *mSellAnnounceButton;
         gcn::Button *mSellAuctionButton;
         gcn::CheckBox *mAnnounceLinks;
-
-        ShopItems *mBuyShopItems;
-        ShopItems *mSellShopItems;
 
         int mSelectedItem;
         int mAnnonceTime;

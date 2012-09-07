@@ -29,15 +29,17 @@
 
 #include "debug.h"
 
-Icon::Icon(const std::string &file)
-    : mImage(ResourceManager::getInstance()->getImage(file))
+Icon::Icon(const std::string &file) :
+    Widget(),
+    mImage(ResourceManager::getInstance()->getImage(file))
 {
     if (mImage)
         setSize(mImage->mBounds.w, mImage->mBounds.h);
 }
 
-Icon::Icon(Image *const image)
-    : mImage(image)
+Icon::Icon(Image *const image) :
+    Widget(),
+    mImage(image)
 {
     if (mImage)
         setSize(mImage->mBounds.w, mImage->mBounds.h);

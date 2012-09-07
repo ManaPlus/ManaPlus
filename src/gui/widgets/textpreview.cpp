@@ -35,7 +35,8 @@
 
 float TextPreview::mAlpha = 1.0;
 
-TextPreview::TextPreview(const std::string &text):
+TextPreview::TextPreview(const std::string &text) :
+    gcn::Widget(),
     mFont(gui->getFont()),
     mText(text),
     mTextColor(&Theme::getThemeColor(Theme::TEXT)),

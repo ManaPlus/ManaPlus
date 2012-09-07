@@ -79,9 +79,10 @@ class WindowMenu : public Container,
 
         void optionChanged(const std::string &name);
 
-    private:
+    protected:
         void drawChildren(gcn::Graphics* graphics);
 
+    private:
         inline void addButton(const char *const text,
                               const std::string &description,
                               int &x, int &h, const int key,

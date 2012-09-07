@@ -46,15 +46,16 @@
 
 UnRegisterDialog::UnRegisterDialog(LoginData *const data):
     Window(_("Unregister"), true, nullptr, "unregister.xml"),
+    ActionListener(),
+    mPasswordField(new PasswordField(mLoginData->password)),
+    mUnRegisterButton(new Button(_("Unregister"), "unregister", this)),
+    mCancelButton(new Button(_("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
     gcn::Label *const userLabel = new Label(strprintf(_("Name: %s"),
         mLoginData->username.c_str()));
     gcn::Label *const passwordLabel = new Label(_("Password:"));
-    mPasswordField = new PasswordField(mLoginData->password);
-    mUnRegisterButton = new Button(_("Unregister"), "unregister", this);
-    mCancelButton = new Button(_("Cancel"), "cancel", this);
 
     const int width = 210;
     const int height = 80;

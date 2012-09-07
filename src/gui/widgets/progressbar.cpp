@@ -45,6 +45,9 @@ ProgressBar::ProgressBar(float progress,
                          const int width, const int height,
                          const int color):
     gcn::Widget(),
+    WidgetListener(),
+    mProgress(progress),
+    mProgressToGo(progress),
     mSmoothProgress(true),
     mProgressPalette(color),
     mSmoothColorChange(true),
@@ -55,14 +58,9 @@ ProgressBar::ProgressBar(float progress,
     if (progress > 1.0f || progress < 0.0f)
         progress = 1.0f;
 
-    mProgress = progress;
-    mProgressToGo = progress;
-
     mColor = Theme::getProgressColor(color >= 0 ? color : 0, mProgress);
     mColorToGo = mColor;
-
     addWidgetListener(this);
-
     setSize(width, height);
 
     if (mInstances == 0)

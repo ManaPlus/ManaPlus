@@ -32,7 +32,10 @@
 
 #include "debug.h"
 
-Setup_Other::Setup_Other()
+Setup_Other::Setup_Other() :
+    SetupTabScroll(),
+    mProxyTypeList(new SetupItemNames()),
+    mShortcutsList(new SetupItemNames())
 {
     setName(_("Misc"));
 
@@ -182,7 +185,6 @@ Setup_Other::Setup_Other()
 
     new SetupItemLabel(_("Windows"), "", this);
 
-    mShortcutsList = new SetupItemNames();
     mShortcutsList->push_back(_("Always show"));
     mShortcutsList->push_back(_("Auto hide in small resolution"));
     mShortcutsList->push_back(_("Always auto hide"));
@@ -192,7 +194,6 @@ Setup_Other::Setup_Other()
 
     new SetupItemLabel(_("Proxy server"), "", this);
 
-    mProxyTypeList = new SetupItemNames();
     mProxyTypeList->push_back(_("System proxy"));
     mProxyTypeList->push_back(_("Direct connection"));
     mProxyTypeList->push_back("HTTP");

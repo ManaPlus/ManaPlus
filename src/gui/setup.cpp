@@ -51,7 +51,9 @@ extern Window *statusWindow;
 
 Setup::Setup():
     Window(_("Setup"), false, nullptr, "setup.xml"),
-    mResetWindows(nullptr)
+    ActionListener(),
+    mResetWindows(nullptr),
+    mPanel(new TabbedArea)
 {
     setCloseButton(true);
     setResizable(true);
@@ -88,7 +90,6 @@ Setup::Setup():
             mResetWindows = btn;
     }
 
-    mPanel = new TabbedArea;
     mPanel->setDimension(gcn::Rectangle(5, 5, width - 10, height - 40));
     mPanel->enableScrollButtons(true);
 

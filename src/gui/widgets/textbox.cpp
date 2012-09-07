@@ -34,11 +34,12 @@
 #include "debug.h"
 
 TextBox::TextBox() :
+    gcn::TextBox(),
+    mMinWidth(getWidth()),
     mTextColor(&Theme::getThemeColor(Theme::TEXTBOX))
 {
     setOpaque(false);
     setFrameSize(0);
-    mMinWidth = getWidth();
 }
 
 void TextBox::setTextWrapped(const std::string &text, const int minDimension)

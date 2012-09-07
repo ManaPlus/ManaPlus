@@ -73,6 +73,29 @@ ShopWindow::DialogList ShopWindow::instances;
 
 ShopWindow::ShopWindow():
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
+    ActionListener(),
+    SelectionListener(),
+    mCloseButton(new Button(_("Close"), "close", this)),
+    mBuyShopItems(new ShopItems),
+    mSellShopItems(new ShopItems),
+    mBuyShopItemList(new ShopListBox(mBuyShopItems, mBuyShopItems)),
+    mSellShopItemList(new ShopListBox(mSellShopItems, mSellShopItems)),
+    mBuyScrollArea(new ScrollArea(mBuyShopItemList,
+        getOptionBool("showbuybackground"), "shop_buy_background.xml")),
+    mSellScrollArea(new ScrollArea(mSellShopItemList,
+        getOptionBool("showsellbackground"), "shop_sell_background.xml")),
+    mBuyLabel(new Label(_("Buy items"))),
+    mSellLabel(new Label(_("Sell items"))),
+    mBuyAddButton(new Button(_("Add"), "add buy", this)),
+    mBuyDeleteButton(new Button(_("Delete"), "delete buy", this)),
+    mBuyAnnounceButton(new Button(_("Announce"), "announce buy", this)),
+    mBuyAuctionButton(nullptr),
+    mSellAddButton(new Button(_("Add"), "add sell", this)),
+    mSellDeleteButton(new Button(_("Delete"), "delete sell", this)),
+    mSellAnnounceButton(new Button(_("Announce"), "announce sell", this)),
+    mSellAuctionButton(nullptr),
+    mAnnounceLinks(new CheckBox(_("Show links in announce"), false,
+                   this, "link announce")),
     mSelectedItem(-1),
     mAnnonceTime(0),
     mLastRequestTimeList(0),
@@ -91,43 +114,24 @@ ShopWindow::ShopWindow():
     setMinHeight(230);
     setDefaultSize(380, 300, ImageRect::CENTER);
 
-    mBuyShopItems = new ShopItems;
-    mSellShopItems = new ShopItems;
 
     mAnnounceCounter[BUY] = 0;
     mAnnounceCounter[SELL] = 0;
 
     loadList();
 
-    mBuyShopItemList = new ShopListBox(mBuyShopItems, mBuyShopItems);
-    mSellShopItemList = new ShopListBox(mSellShopItems, mSellShopItems);
 
     mBuyShopItemList->setPriceCheck(false);
     mSellShopItemList->setPriceCheck(false);
 
-    mBuyScrollArea = new ScrollArea(mBuyShopItemList,
-        getOptionBool("showbuybackground"), "shop_buy_background.xml");
     mBuyScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-    mSellScrollArea = new ScrollArea(mSellShopItemList,
-        getOptionBool("showsellbackground"), "shop_sell_background.xml");
     mSellScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-    mCloseButton = new Button(_("Close"), "close", this);
 
     mBuyShopItemList->addSelectionListener(this);
     mSellShopItemList->addSelectionListener(this);
 
-    mBuyLabel = new Label(_("Buy items"));
-    mSellLabel = new Label(_("Sell items"));
 
-    mBuyAddButton = new Button(_("Add"), "add buy", this);
-    mBuyDeleteButton = new Button(_("Delete"), "delete buy", this);
-    mBuyAnnounceButton = new Button(_("Announce"), "announce buy", this);
-    mSellAddButton = new Button(_("Add"), "add sell", this);
-    mSellDeleteButton = new Button(_("Delete"), "delete sell", this);
-    mSellAnnounceButton = new Button(_("Announce"), "announce sell", this);
-    mAnnounceLinks = new CheckBox(_("Show links in announce"), false,
-                                  this, "link announce");
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);

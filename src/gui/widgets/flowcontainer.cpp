@@ -24,8 +24,12 @@
 #include "debug.h"
 
 FlowContainer::FlowContainer(const int boxWidth, const int boxHeight) :
-    mBoxWidth(boxWidth), mBoxHeight(boxHeight),
-    mGridWidth(1), mGridHeight(1)
+    Container(),
+    WidgetListener(),
+    mBoxWidth(boxWidth),
+    mBoxHeight(boxHeight),
+    mGridWidth(1),
+    mGridHeight(1)
 {
     addWidgetListener(this);
     if (!mBoxWidth)

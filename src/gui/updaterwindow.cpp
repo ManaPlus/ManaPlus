@@ -137,6 +137,8 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
                              const bool applyUpdates,
                              const int updateType):
     Window(_("Updating..."), false, nullptr, "update.xml"),
+    ActionListener(),
+    KeyListener(),
     mDownloadStatus(UPDATE_NEWS),
     mUpdateHost(updateHost),
     mUpdatesDir(updatesDir),
@@ -153,20 +155,20 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mUpdateIndex(0),
     mUpdateIndexOffset(0),
     mLoadUpdates(applyUpdates),
-    mUpdateType(updateType)
+    mUpdateType(updateType),
+    mLabel(new Label(_("Connecting..."))),
+    mCancelButton(new Button(_("Cancel"), "cancel", this)),
+    mPlayButton(new Button(_("Play"), "play", this)),
+    mProgressBar(new ProgressBar(0.0, 310, 20)),
+    mBrowserBox(new BrowserBox),
+    mScrollArea(new ScrollArea(mBrowserBox, true, "update_background.xml")),
+    mUpdateServerPath(mUpdateHost)
 {
     setWindowName("UpdaterWindow");
     setResizable(true);
     setDefaultSize(450, 400, ImageRect::CENTER);
     setMinWidth(320);
     setMinHeight(240);
-
-    mBrowserBox = new BrowserBox;
-    mScrollArea = new ScrollArea(mBrowserBox, true, "update_background.xml");
-    mLabel = new Label(_("Connecting..."));
-    mProgressBar = new ProgressBar(0.0, 310, 20);
-    mCancelButton = new Button(_("Cancel"), "cancel", this);
-    mPlayButton = new Button(_("Play"), "play", this);
 
     mProgressBar->setSmoothProgress(false);
     mBrowserBox->setOpaque(false);
@@ -191,7 +193,6 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     setVisible(true);
     mCancelButton->requestFocus();
 
-    mUpdateServerPath = mUpdateHost;
     removeProtocol(mUpdateServerPath);
 
     // Try to download the updates list

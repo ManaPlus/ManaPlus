@@ -54,7 +54,9 @@
 
 extern volatile int tick_time;
 
-Viewport::Viewport():
+Viewport::Viewport() :
+    WindowContainer(),
+    MouseListener(),
     mMap(nullptr),
     mMouseX(0),
     mMouseY(0),
@@ -64,9 +66,12 @@ Viewport::Viewport():
     mCameraMode(0),
     mPlayerFollowMouse(false),
     mLocalWalkTime(-1),
+    mPopupMenu(new PopupMenu),
     mHoverBeing(nullptr),
     mHoverItem(nullptr),
     mHoverSign(nullptr),
+    mBeingPopup(new BeingPopup),
+    mTextPopup(new TextPopup),
     mCameraRelativeX(0),
     mCameraRelativeY(0)
 {
@@ -86,10 +91,6 @@ Viewport::Viewport():
     config.addListener("showBeingPopup", this);
     config.addListener("selfMouseHeal", this);
     config.addListener("enableLazyScrolling", this);
-
-    mPopupMenu = new PopupMenu;
-    mBeingPopup = new BeingPopup;
-    mTextPopup = new TextPopup;
 
     setFocusable(true);
 }

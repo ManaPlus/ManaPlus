@@ -243,12 +243,23 @@ private:
 ServerDialog::ServerDialog(ServerInfo *const serverInfo,
                            const std::string &dir) :
     Window(_("Choose Your Server"), false, nullptr, "server.xml"),
+    ActionListener(),
+    KeyListener(),
+    SelectionListener(),
+    mDescription(new Label(std::string())),
+    mQuitButton(new Button(_("Quit"), "quit", this)),
+    mConnectButton(new Button(_("Connect"), "connect", this)),
+    mAddEntryButton(new Button(_("Add"), "addEntry", this)),
+    mEditEntryButton(new Button(_("Edit"), "editEntry", this)),
+    mDeleteButton(new Button(_("Delete"), "remove", this)),
+    mLoadButton(new Button(_("Load"), "load", this)),
+    mServers(ServerInfos()),
+    mServersListModel(new ServersListModel(&mServers, this)),
+    mServersList(new ServersListBox(mServersListModel)),
     mDir(dir),
-//    mDownloadStatus(DOWNLOADING_PREPARING),
     mDownloadStatus(DOWNLOADING_UNKNOWN),
     mDownload(nullptr),
     mDownloadProgress(-1.0f),
-    mServers(ServerInfos()),
     mServerInfo(serverInfo),
     mPersistentIPCheckBox(nullptr)
 {
@@ -263,29 +274,16 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
 
     loadCustomServers();
 
-    mServersListModel = new ServersListModel(&mServers, this);
-
-    mServersList = new ServersListBox(mServersListModel);
     mServersList->addMouseListener(this);
 
     ScrollArea *const usedScroll = new ScrollArea(mServersList,
         getOptionBool("showbackground"), "server_background.xml");
     usedScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-    const int n = 0;
-
-    mDescription = new Label(std::string());
-
-    mQuitButton = new Button(_("Quit"), "quit", this);
-    mLoadButton = new Button(_("Load"), "load", this);
-    mConnectButton = new Button(_("Connect"), "connect", this);
-    mAddEntryButton = new Button(_("Add"), "addEntry", this);
-    mEditEntryButton = new Button(_("Edit"), "editEntry", this);
-    mDeleteButton = new Button(_("Delete"), "remove", this);
-
     mServersList->addSelectionListener(this);
     usedScroll->setVerticalScrollAmount(0);
 
+    const int n = 0;
     place(0, 0 + n, usedScroll, 7, 5).setPadding(3);
     place(0, 5 + n, mDescription, 7);
     place(0, 6 + n, mPersistentIPCheckBox, 7);

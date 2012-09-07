@@ -41,10 +41,11 @@ int ShortcutWindow::mBoxesWidth = 0;
 class ShortcutTab : public Tab
 {
     public:
-        ShortcutTab(std::string name, ShortcutContainer *const content)
+        ShortcutTab(std::string name, ShortcutContainer *const content) :
+            Tab(),
+            mContent(content)
         {
             setCaption(name);
-            mContent = content;
         }
 
         ShortcutContainer* mContent;
@@ -54,7 +55,10 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
                                ShortcutContainer *const content,
                                std::string skinFile,
                                int width, int height) :
-    Window("Window", false, nullptr, skinFile)
+    Window("Window", false, nullptr, skinFile),
+    mItems(content),
+    mScrollArea(new ScrollArea(mItems, false)),
+    mTabs(nullptr)
 {
     setWindowName(title);
     setTitleBarHeight(getPadding() + getTitlePadding());
@@ -68,9 +72,6 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     mDragOffsetY = 0;
 
     setupWindow->registerWindowForReset(this);
-
-    mTabs = nullptr;
-    mItems = content;
 
     const int border = SCROLL_PADDING * 2 + getPadding() * 2;
     setMinWidth(mItems->getBoxWidth() + border);
@@ -87,7 +88,6 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
 
     mBoxesWidth += mItems->getBoxWidth() + border;
 
-    mScrollArea = new ScrollArea(mItems, false);
     mScrollArea->setPosition(SCROLL_PADDING, SCROLL_PADDING);
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
@@ -102,7 +102,10 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
 
 ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
                                const int width, const int height) :
-    Window("Window", false, nullptr, skinFile)
+    Window("Window", false, nullptr, skinFile),
+    mItems(nullptr),
+    mScrollArea(nullptr),
+    mTabs(new TabbedArea)
 {
     setWindowName(title);
     setTitleBarHeight(getPadding() + getTitlePadding());
@@ -115,10 +118,6 @@ ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
     mDragOffsetY = 0;
 
     setupWindow->registerWindowForReset(this);
-
-    mTabs = new TabbedArea;
-
-    mItems = nullptr;
 
     const int border = SCROLL_PADDING * 2 + getPadding() * 2;
 

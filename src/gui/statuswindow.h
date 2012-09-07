@@ -95,11 +95,17 @@ class StatusWindow : public Window,
         /**
          * Status Part
          */
-        gcn::Label *mLvlLabel, *mMoneyLabel;
-        gcn::Label *mHpLabel, *mMpLabel, *mXpLabel;
-        ProgressBar *mHpBar, *mMpBar, *mXpBar;
+        gcn::Label *mLvlLabel;
+        gcn::Label *mMoneyLabel;
+        gcn::Label *mHpLabel;
+        gcn::Label *mMpLabel;
+        gcn::Label *mXpLabel;
+        ProgressBar *mHpBar;
+        ProgressBar *mMpBar;
+        ProgressBar *mXpBar;
 
-        gcn::Label *mJobLvlLabel, *mJobLabel;
+        gcn::Label *mJobLvlLabel;
+        gcn::Label *mJobLabel;
         ProgressBar *mJobBar;
 
         VertContainer *mAttrCont;

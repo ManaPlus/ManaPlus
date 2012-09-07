@@ -62,165 +62,171 @@ class SkillEntry;
 
 class SkillModel : public gcn::ListModel
 {
-public:
-    int getNumberOfElements()
-    { return static_cast<int>(mVisibleSkills.size()); }
+    public:
+        int getNumberOfElements()
+        { return static_cast<int>(mVisibleSkills.size()); }
 
-    SkillInfo *getSkillAt(const int i) const
-    { return mVisibleSkills.at(i); }
+        SkillInfo *getSkillAt(const int i) const
+        { return mVisibleSkills.at(i); }
 
-    std::string getElementAt(int i)
-    {
-        if (getSkillAt(i))
-            return getSkillAt(i)->name;
-        else
-            return "";
-    }
+        std::string getElementAt(int i)
+        {
+            if (getSkillAt(i))
+                return getSkillAt(i)->name;
+            else
+                return "";
+        }
 
-    void updateVisibilities();
+        void updateVisibilities();
 
-    void addSkill(SkillInfo *const info)
-    { mSkills.push_back(info); }
+        void addSkill(SkillInfo *const info)
+        { mSkills.push_back(info); }
 
-private:
-    SkillList mSkills;
-    SkillList mVisibleSkills;
+    private:
+        SkillList mSkills;
+        SkillList mVisibleSkills;
 };
 
 class SkillListBox : public ListBox
 {
-public:
-    SkillListBox(SkillModel *const model):
-        ListBox(model),
-        mModel(model),
-        mPopup(new TextPopup()),
-        mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
-        mTextColor(Theme::getThemeColor(Theme::TEXT))
-    {
-    }
-
-    ~SkillListBox()
-    {
-        delete mModel;
-        mModel = nullptr;
-        delete mPopup;
-        mPopup = nullptr;
-    }
-
-    SkillInfo *getSelectedInfo() const
-    {
-        const int selected = getSelected();
-        if (!mListModel || selected < 0
-            || selected > mListModel->getNumberOfElements())
+    public:
+        SkillListBox(SkillModel *const model):
+            ListBox(model),
+            mModel(model),
+            mPopup(new TextPopup()),
+            mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
+            mTextColor(Theme::getThemeColor(Theme::TEXT))
         {
-            return nullptr;
         }
 
-        return static_cast<SkillModel*>(mListModel)->getSkillAt(selected);
-    }
-
-    void draw(gcn::Graphics *gcnGraphics)
-    {
-        if (!mListModel)
-            return;
-
-        SkillModel *const model = static_cast<SkillModel*>(mListModel);
-
-        updateAlpha();
-
-        Graphics *const graphics = static_cast<Graphics *const>(gcnGraphics);
-
-        mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
-        graphics->setColor(mHighlightColor);
-        graphics->setFont(getFont());
-
-        // Draw filled rectangle around the selected list element
-        if (mSelected >= 0)
+        ~SkillListBox()
         {
-            graphics->fillRectangle(gcn::Rectangle(0, getRowHeight()
-                * mSelected, getWidth(), getRowHeight()));
+            delete mModel;
+            mModel = nullptr;
+            delete mPopup;
+            mPopup = nullptr;
         }
 
-        // Draw the list elements
-        graphics->setColor(mTextColor);
-        for (int i = 0, y = 1;
-             i < model->getNumberOfElements();
-             ++i, y += getRowHeight())
+        SkillInfo *getSelectedInfo() const
         {
-            SkillInfo *const e = model->getSkillAt(i);
+            const int selected = getSelected();
+            if (!mListModel || selected < 0
+                || selected > mListModel->getNumberOfElements())
+            {
+                return nullptr;
+            }
 
-            if (e)
-                e->draw(graphics, y, getWidth());
+            return static_cast<SkillModel*>(mListModel)->getSkillAt(selected);
         }
-    }
 
-    unsigned int getRowHeight() const
-    { return 34; }
+        void draw(gcn::Graphics *gcnGraphics)
+        {
+            if (!mListModel)
+                return;
 
-    void mouseMoved(gcn::MouseEvent &event)
-    {
-        ListBox::mouseMoved(event);
-        if (!viewport)
-            return;
+            SkillModel *const model = static_cast<SkillModel*>(mListModel);
+            updateAlpha();
+            Graphics *const graphics = static_cast<Graphics *const>(
+                gcnGraphics);
 
-        const int y = event.getY() / getRowHeight();
-        if (!mModel || y >= mModel->getNumberOfElements())
-            return;
-        const SkillInfo *const skill = mModel->getSkillAt(y);
-        if (!skill)
-            return;
+            mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+            graphics->setColor(mHighlightColor);
+            graphics->setFont(getFont());
 
-        mPopup->show(viewport->getMouseX(), viewport->getMouseY(),
-            skill->dispName);
-    }
+            // Draw filled rectangle around the selected list element
+            if (mSelected >= 0)
+            {
+                graphics->fillRectangle(gcn::Rectangle(0, getRowHeight()
+                    * mSelected, getWidth(), getRowHeight()));
+            }
 
-    void mouseExited(gcn::MouseEvent &event A_UNUSED)
-    {
-        mPopup->hide();
-    }
+            // Draw the list elements
+            graphics->setColor(mTextColor);
+            for (int i = 0, y = 1;
+                 i < model->getNumberOfElements();
+                 ++i, y += getRowHeight())
+            {
+                SkillInfo *const e = model->getSkillAt(i);
+                if (e)
+                    e->draw(graphics, y, getWidth());
+            }
+        }
 
-private:
-    SkillModel *mModel;
-    TextPopup *mPopup;
-    gcn::Color mHighlightColor;
-    gcn::Color mTextColor;
+        unsigned int getRowHeight() const
+        { return 34; }
+
+        void mouseMoved(gcn::MouseEvent &event)
+        {
+            ListBox::mouseMoved(event);
+            if (!viewport)
+                return;
+
+            const int y = event.getY() / getRowHeight();
+            if (!mModel || y >= mModel->getNumberOfElements())
+                return;
+            const SkillInfo *const skill = mModel->getSkillAt(y);
+            if (!skill)
+                return;
+
+            mPopup->show(viewport->getMouseX(), viewport->getMouseY(),
+                skill->dispName);
+        }
+
+        void mouseExited(gcn::MouseEvent &event A_UNUSED)
+        {
+            mPopup->hide();
+        }
+
+    private:
+        SkillModel *mModel;
+        TextPopup *mPopup;
+        gcn::Color mHighlightColor;
+        gcn::Color mTextColor;
 };
 
 class SkillTab : public Tab
 {
-public:
-    SkillTab(const std::string &name, SkillListBox *const listBox) :
+    public:
+        SkillTab(const std::string &name, SkillListBox *const listBox) :
+            Tab(),
             mListBox(listBox)
-    {
-        setCaption(name);
-    }
+        {
+            setCaption(name);
+        }
 
-    ~SkillTab()
-    {
-        delete mListBox;
-        mListBox = nullptr;
-    }
+        ~SkillTab()
+        {
+            delete mListBox;
+            mListBox = nullptr;
+        }
 
-    SkillInfo *getSelectedInfo() const
-    {
-        if (mListBox)
-            return mListBox->getSelectedInfo();
-        else
-            return nullptr;
-    }
+        SkillInfo *getSelectedInfo() const
+        {
+            if (mListBox)
+                return mListBox->getSelectedInfo();
+            else
+                return nullptr;
+        }
 
-    void setCurrent()
-    {
-        if (skillDialog)
-            skillDialog->updateTabSelection();
-    }
+    protected:
+        void setCurrent()
+        {
+            if (skillDialog)
+                skillDialog->updateTabSelection();
+        }
 
-private:
-    SkillListBox *mListBox;
+    private:
+        SkillListBox *mListBox;
 };
 
-SkillDialog::SkillDialog():
-    Window(_("Skills"), false, nullptr, "skills.xml")
+SkillDialog::SkillDialog() :
+    Window(_("Skills"), false, nullptr, "skills.xml"),
+    ActionListener(),
+    mTabs(new TabbedArea()),
+    mPointsLabel(new Label("0")),
+    mUseButton(new Button(_("Use"), "use", this)),
+    mIncreaseButton(new Button(_("Up"), "inc", this)),
+    mDefaultModel(nullptr)
 {
     setWindowName("Skills");
     setCloseButton(true);
@@ -230,12 +236,7 @@ SkillDialog::SkillDialog():
     setDefaultSize(windowContainer->getWidth() - 280, 30, 275, 425);
     setupWindow->registerWindowForReset(this);
 
-    mTabs = new TabbedArea();
-    mPointsLabel = new Label("0");
-    mUseButton = new Button(_("Use"), "use", this);
     mUseButton->setEnabled(false);
-    mIncreaseButton = new Button(_("Up"), "inc", this);
-    mDefaultModel = nullptr;
 
     place(0, 0, mTabs, 5, 5);
     place(0, 5, mPointsLabel, 4);

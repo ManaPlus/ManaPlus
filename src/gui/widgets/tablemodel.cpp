@@ -64,6 +64,7 @@ void TableModel::signalAfterUpdate()
 #define DYN_SIZE(h) ((h) >= 0)
 
 StaticTableModel::StaticTableModel(const int row, const int column) :
+    TableModel(),
     mRows(row),
     mColumns(column),
     mHeight(1)

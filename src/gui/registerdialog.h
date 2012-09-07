@@ -94,11 +94,12 @@ class RegisterDialog : public Window, public gcn::ActionListener,
          */
         bool canSubmit() const;
 
+        LoginData *mLoginData;
+
         gcn::TextField *mUserField;
         gcn::TextField *mPasswordField;
         gcn::TextField *mConfirmField;
         gcn::TextField *mEmailField;
-
         gcn::Button *mRegisterButton;
         gcn::Button *mCancelButton;
         gcn::RadioButton *mMaleButton;
@@ -106,8 +107,6 @@ class RegisterDialog : public Window, public gcn::ActionListener,
         gcn::RadioButton *mOtherButton;
 
         WrongDataNoticeListener *mWrongDataNoticeListener;
-
-        LoginData *mLoginData;
 };
 
 #endif

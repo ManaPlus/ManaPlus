@@ -47,6 +47,7 @@
 
 BrowserBox::BrowserBox(const unsigned int mode, const bool opaque) :
     gcn::Widget(),
+    MouseListener(),
     mLinkHandler(nullptr),
     mMode(mode),
     mHighMode(UNDERLINE | BACKGROUND),

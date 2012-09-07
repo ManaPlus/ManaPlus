@@ -118,9 +118,28 @@ class ChangeDisplay : public AttrDisplay, gcn::ActionListener
         Button *mInc;
 };
 
-StatusWindow::StatusWindow():
+StatusWindow::StatusWindow() :
     Window(player_node ? player_node->getName() :
-        "?", false, nullptr, "status.xml")
+        "?", false, nullptr, "status.xml"),
+    ActionListener(),
+    mLvlLabel(new Label(strprintf(_("Level: %d"), 0))),
+    mMoneyLabel(new Label(strprintf(_("Money: %s"), ""))),
+    mHpLabel(new Label(_("HP:"))),
+    mMpLabel(nullptr),
+    mXpLabel(new Label(_("Exp:"))),
+    mHpBar(nullptr),
+    mMpBar(nullptr),
+    mXpBar(nullptr),
+    mJobLvlLabel(nullptr),
+    mJobLabel(nullptr),
+    mJobBar(nullptr),
+    mAttrCont(new VertContainer(32)),
+    mAttrScroll(new ScrollArea(mAttrCont, false)),
+    mDAttrCont(new VertContainer(32)),
+    mDAttrScroll(new ScrollArea(mDAttrCont, false)),
+    mCharacterPointsLabel(new Label("C")),
+    mCorrectionPointsLabel(nullptr),
+    mCopyButton(new Button(_("Copy to chat"), "copy", this))
 {
     listen(CHANNEL_ATTRIBUTES);
 
@@ -139,32 +158,22 @@ StatusWindow::StatusWindow():
             player_node->getRaceName().c_str()));
     }
 
-    // ----------------------
-    // Status Part
-    // ----------------------
-
-    mLvlLabel = new Label(strprintf(_("Level: %d"), 0));
-    mMoneyLabel = new Label(strprintf(_("Money: %s"), ""));
-
     int max = PlayerInfo::getAttribute(PlayerInfo::MAX_HP);
     if (!max)
         max = 1;
 
-    mHpLabel = new Label(_("HP:"));
     mHpBar = new ProgressBar(max ?
             static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::HP))
             / static_cast<float>(max):
             static_cast<float>(0), 80, 15, Theme::PROG_HP);
 
     max = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
-    mXpLabel = new Label(_("Exp:"));
     mXpBar = new ProgressBar(max ?
             static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::EXP))
             / static_cast<float>(max):
             static_cast<float>(0), 80, 15, Theme::PROG_EXP);
 
     const bool magicBar = Net::getGameHandler()->canUseMagicBar();
-
     const int job = Net::getPlayerHandler()->getJobLocation()
               && serverConfig.getValueBool("showJob", false);
 
@@ -222,24 +231,18 @@ StatusWindow::StatusWindow():
     // Stats Part
     // ----------------------
 
-    mAttrCont = new VertContainer(32);
-    mAttrScroll = new ScrollArea(mAttrCont, false);
     mAttrScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mAttrScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
     place(0, 3, mAttrScroll, 5, 3);
 
-    mDAttrCont = new VertContainer(32);
-    mDAttrScroll = new ScrollArea(mDAttrCont, false);
     mDAttrScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mDAttrScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
     place(6, 3, mDAttrScroll, 5, 3);
 
     getLayout().setRowHeight(3, Layout::AUTO_SET);
 
-    mCharacterPointsLabel = new Label("C");
     place(0, 6, mCharacterPointsLabel, 5);
 
-    mCopyButton = new Button(_("Copy to chat"), "copy", this);
 
     place(0, 5, mCopyButton);
 
@@ -738,18 +741,18 @@ void StatusWindow::action(const gcn::ActionEvent &event)
     }
 }
 
-AttrDisplay::AttrDisplay(const int id, const std::string &name):
-        mId(id),
-        mName(name)
+AttrDisplay::AttrDisplay(const int id, const std::string &name) :
+    Container(),
+    mId(id),
+    mName(name),
+    mLayout(new LayoutHelper(this)),
+    mLabel(new Label(name)),
+    mValue(new Label("1 "))
 {
     setSize(100, 32);
-    mLabel = new Label(name);
-    mValue = new Label("1 ");
 
     mLabel->setAlignment(Graphics::CENTER);
     mValue->setAlignment(Graphics::CENTER);
-
-    mLayout = new LayoutHelper(this);
 }
 
 AttrDisplay::~AttrDisplay()
@@ -771,11 +774,10 @@ std::string AttrDisplay::update()
     return mName;
 }
 
-DerDisplay::DerDisplay(const int id, const std::string &name):
-        AttrDisplay(id, name)
+DerDisplay::DerDisplay(const int id, const std::string &name) :
+    AttrDisplay(id, name)
 {
-    // Do the layout
-    LayoutHelper h(this);
+//    LayoutHelper h(this);
     ContainerPlacer place = mLayout->getPlacer(0, 0);
 
     place(0, 0, mLabel, 3);
@@ -784,12 +786,14 @@ DerDisplay::DerDisplay(const int id, const std::string &name):
     update();
 }
 
-ChangeDisplay::ChangeDisplay(const int id, const std::string &name):
-        AttrDisplay(id, name), mNeeded(1)
+ChangeDisplay::ChangeDisplay(const int id, const std::string &name) :
+    AttrDisplay(id, name),
+    ActionListener(),
+    mNeeded(1),
+    mPoints(new Label(_("Max"))),
+    mDec(nullptr),
+    mInc(new Button(_("+"), "inc", this))
 {
-    mPoints = new Label(_("Max"));
-    mInc = new Button(_("+"), "inc", this);
-
     // Do the layout
     ContainerPlacer place = mLayout->getPlacer(0, 0);
 
@@ -804,10 +808,6 @@ ChangeDisplay::ChangeDisplay(const int id, const std::string &name):
         mDec->setWidth(mInc->getWidth());
 
         place(3, 0, mDec);
-    }
-    else
-    {
-        mDec = nullptr;
     }
 
     update();

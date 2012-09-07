@@ -137,7 +137,8 @@ class ProgressBar : public gcn::Widget, public gcn::WidgetListener
         void widgetMoved(const gcn::Event &event);
 
     private:
-        float mProgress, mProgressToGo;
+        float mProgress;
+        float mProgressToGo;
         bool mSmoothProgress;
 
         int mProgressPalette; /** < Entry in ProgressPalette or -1 for none. */

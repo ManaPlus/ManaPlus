@@ -177,9 +177,6 @@ private:
     int mSelectedRow;
     int mSelectedColumn;
 
-    /** Number of frames to skip upwards when drawing the selected widget. */
-    int mPopFramesNr;
-
     /** If someone moves a fresh widget to the top, we must display it. */
     gcn::Widget *mTopWidget;
 

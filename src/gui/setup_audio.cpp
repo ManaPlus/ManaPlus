@@ -39,7 +39,8 @@
 class SoundsModel : public NamesModel
 {
 public:
-    SoundsModel()
+    SoundsModel() :
+        NamesModel()
     {
         mNames.push_back(gettext("(no sound)"));
         Theme::fillSoundsList(mNames);
@@ -49,7 +50,10 @@ public:
     { }
 };
 
-Setup_Audio::Setup_Audio()
+Setup_Audio::Setup_Audio() :
+    SetupTabScroll(),
+    mSoundModel(new SoundsModel()),
+    mChannelsList(new SetupItemNames())
 {
     setName(_("Audio"));
 
@@ -57,8 +61,6 @@ Setup_Audio::Setup_Audio()
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
-
-    mSoundModel = new SoundsModel();
 
     new SetupItemLabel(_("Basic settings"), "", this);
 
@@ -82,7 +84,6 @@ Setup_Audio::Setup_Audio()
     new SetupItemIntTextField(_("Audio frequency"), "",
         "audioFrequency", this, "audioFrequencyEvent", 14000, 192000);
 
-    mChannelsList = new SetupItemNames();
     mChannelsList->push_back(_("mono"));
     mChannelsList->push_back(_("stereo"));
     mChannelsList->push_back(_("surround"));

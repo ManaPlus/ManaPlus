@@ -162,8 +162,9 @@ class ServerDialog : public Window,
         Button *mDeleteButton;
         Button *mLoadButton;
 
-        ListBox *mServersList;
+        ServerInfos mServers;
         ServersListModel *mServersListModel;
+        ListBox *mServersList;
 
         const std::string &mDir;
 
@@ -186,7 +187,6 @@ class ServerDialog : public Window,
         Mutex mMutex;
         float mDownloadProgress;
 
-        ServerInfos mServers;
         ServerInfo *mServerInfo;
         CheckBox *mPersistentIPCheckBox;
 };

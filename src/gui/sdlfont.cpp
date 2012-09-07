@@ -98,7 +98,8 @@ static int fontCounter;
 
 SDLFont::SDLFont(std::string filename, const int size, const int style) :
     mCreateCounter(0),
-    mDeleteCounter(0)
+    mDeleteCounter(0),
+    mCleanTime(cur_time + CLEAN_TIME)
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
 
@@ -133,7 +134,6 @@ SDLFont::SDLFont(std::string filename, const int size, const int style) :
     }
 
     TTF_SetFontStyle(mFont, style);
-    mCleanTime = cur_time + CLEAN_TIME;
 }
 
 SDLFont::~SDLFont()

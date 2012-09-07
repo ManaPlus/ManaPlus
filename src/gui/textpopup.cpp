@@ -38,17 +38,15 @@
 #include "debug.h"
 
 TextPopup::TextPopup():
-    Popup("TextPopup", "textpopup.xml")
+    Popup("TextPopup", "textpopup.xml"),
+    mText1(new Label),
+    mText2(new Label),
+    mText3(new Label)
 {
     const int fontHeight = getFont()->getHeight();
 
-    mText1 = new Label;
     mText1->setPosition(getPadding(), getPadding());
-
-    mText2 = new Label;
     mText2->setPosition(getPadding(), fontHeight + 2 * getPadding());
-
-    mText3 = new Label;
     mText3->setPosition(getPadding(), (2 * fontHeight) + 2 * getPadding());
 
     add(mText1);

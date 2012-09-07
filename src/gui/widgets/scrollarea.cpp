@@ -49,6 +49,7 @@ static std::string const buttonFiles[2] =
 
 ScrollArea::ScrollArea(const bool opaque, const std::string &skin) :
     gcn::ScrollArea(),
+    gcn::WidgetListener(),
     mX(0),
     mY(0),
     mClickX(0),
@@ -69,6 +70,7 @@ ScrollArea::ScrollArea(const bool opaque, const std::string &skin) :
 ScrollArea::ScrollArea(gcn::Widget *const widget, const bool opaque,
                        const std::string &skin) :
     gcn::ScrollArea(widget),
+    gcn::WidgetListener(),
     mX(0),
     mY(0),
     mClickX(0),

@@ -48,14 +48,13 @@ SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
     ShortcutContainer(),
     mSpellClicked(false),
     mSpellMoved(nullptr),
+    mSpellPopup(new SpellPopup),
     mNumber(number)
 {
     mBoxWidth = mBoxWidth;
 
     addMouseListener(this);
     addWidgetListener(this);
-
-    mSpellPopup = new SpellPopup;
 
     mBackgroundImg = Theme::getImageFromThemeXml(
         "item_shortcut_background.xml", "background.xml");

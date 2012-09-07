@@ -194,7 +194,8 @@ class ItemContainer : public gcn::Widget,
         bool mForceQuantity;
         bool mSwapItems;
         bool mDescItems;
-        int mDragPosX, mDragPosY;
+        int mDragPosX;
+        int mDragPosY;
         int mTag;
         int mSortType;
         std::string mName;

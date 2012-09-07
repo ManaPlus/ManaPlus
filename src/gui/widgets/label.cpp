@@ -25,7 +25,8 @@
 
 #include "debug.h"
 
-Label::Label()
+Label::Label() :
+    gcn::Label()
 {
     setForegroundColor(Theme::getThemeColor(Theme::LABEL));
 }

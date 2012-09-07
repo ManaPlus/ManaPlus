@@ -34,7 +34,8 @@
 
 #include "debug.h"
 
-ProgressIndicator::ProgressIndicator()
+ProgressIndicator::ProgressIndicator() :
+    gcn::Widget()
 {
     ImageSet *const images = Theme::getImageSetFromTheme(
         "progress-indicator.png", 32, 32);

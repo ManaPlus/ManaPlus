@@ -34,6 +34,8 @@
 IntTextField::IntTextField(const int def, const int min, const int max,
                            const bool enabled, const int width) :
     TextField(toString(def)),
+    mMin(0),
+    mMax(0),
     mDefault(def),
     mValue(def)
 {

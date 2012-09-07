@@ -53,11 +53,11 @@ class Setup_Theme : public SetupTab
 
     private:
         gcn::Label *mThemeLabel;
+        ThemesModel *mThemesModel;
         DropDown *mThemeDropDown;
         std::string mTheme;
-        ThemesModel *mThemesModel;
-        FontsModel *mFontsModel;
 
+        FontsModel *mFontsModel;
         gcn::Label *mFontLabel;
         DropDown *mFontDropDown;
         std::string mFont;
@@ -98,7 +98,7 @@ class Setup_Theme : public SetupTab
         int mNpcFontSize;
         gcn::DropDown *mNpcFontSizeDropDown;
 
-        EditDialog *mEditDialog;
+//        EditDialog *mEditDialog;
 };
 
 #endif

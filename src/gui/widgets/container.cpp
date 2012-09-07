@@ -24,7 +24,8 @@
 
 #include "debug.h"
 
-Container::Container()
+Container::Container() :
+    gcn::Container()
 {
     setOpaque(false);
 }

@@ -38,7 +38,8 @@ Image *ResizeGrip::gripImage = nullptr;
 int ResizeGrip::mInstances = 0;
 float ResizeGrip::mAlpha = 1.0;
 
-ResizeGrip::ResizeGrip(const std::string &image)
+ResizeGrip::ResizeGrip(const std::string &image) :
+    gcn::Widget()
 {
     if (mInstances == 0)
     {

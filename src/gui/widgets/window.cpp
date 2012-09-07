@@ -46,8 +46,10 @@ int Window::instances = 0;
 int Window::mouseResize = 0;
 
 Window::Window(const std::string &caption, const bool modal,
-               Window *const parent, std::string skin):
+               Window *const parent, std::string skin) :
     gcn::Window(caption),
+    gcn::WidgetListener(),
+    mSkin(nullptr),
     mGrip(nullptr),
     mParent(parent),
     mLayout(nullptr),
@@ -64,12 +66,17 @@ Window::Window(const std::string &caption, const bool modal,
     mMinWinHeight(40),
     mMaxWinWidth(mainGraphics->mWidth),
     mMaxWinHeight(mainGraphics->mHeight),
+    mDefaultX(0),
+    mDefaultY(0),
+    mDefaultWidth(0),
+    mDefaultHeight(0),
     mVertexes(new GraphicsVertexes()),
     mCaptionOffsetX(7),
     mCaptionOffsetY(5),
     mCaptionAlign(gcn::Graphics::LEFT),
     mTitlePadding(4),
-    mRedraw(true)
+    mRedraw(true),
+    mCaptionFont(getFont())
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
 
@@ -108,10 +115,6 @@ Window::Window(const std::string &caption, const bool modal,
             }
         }
     }
-    else
-    {
-        mSkin = nullptr;
-    }
 
     // Add this window to the window container
     windowContainer->add(this);
@@ -126,7 +129,6 @@ Window::Window(const std::string &caption, const bool modal,
     setVisible(false);
 
     addWidgetListener(this);
-    mCaptionFont = getFont();
     setForegroundColor(Theme::getThemeColor(Theme::WINDOW));
 }
 

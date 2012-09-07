@@ -39,14 +39,15 @@ int TextDialog::instances = 0;
 TextDialog::TextDialog(const std::string &title, const std::string &msg,
                        Window *const parent, const bool isPassword):
     Window(title, true, parent, "textdialog.xml"),
+    ActionListener(),
     mTextField(nullptr),
-    mPasswordField(nullptr)
+    mPasswordField(nullptr),
+    mOkButton(new Button(_("OK"), "OK", this)),
+    mEnabledKeyboard(keyboard.isEnabled())
 {
-    mEnabledKeyboard = keyboard.isEnabled();
     keyboard.setEnabled(false);
 
     gcn::Label *const textLabel = new Label(msg);
-    mOkButton = new Button(_("OK"), "OK", this);
     gcn::Button *const cancelButton = new Button(_("Cancel"), "CANCEL", this);
 
     place(0, 0, textLabel, 4);

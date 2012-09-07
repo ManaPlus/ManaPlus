@@ -119,8 +119,10 @@ class OutfitWindow : public Window, private gcn::ActionListener
 
         int mBoxWidth;
         int mBoxHeight;
-        int mCursorPosX, mCursorPosY;
-        int mGridWidth, mGridHeight;
+        int mCursorPosX;
+        int mCursorPosY;
+        int mGridWidth;
+        int mGridHeight;
         bool mItemClicked;
         Item *mItemMoved;
 
@@ -135,7 +137,6 @@ class OutfitWindow : public Window, private gcn::ActionListener
         int mCurrentOutfit;
         int mAwayOutfit;
 
-        Image *mBackgroundImg;
         gcn::Color mBorderColor;
         gcn::Color mBackgroundColor;
 

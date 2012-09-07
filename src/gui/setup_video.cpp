@@ -217,7 +217,9 @@ public:
     }
 };
 
-Setup_Video::Setup_Video():
+Setup_Video::Setup_Video() :
+    SetupTab(),
+    KeyListener(),
     mFullScreenEnabled(config.getBoolValue("screen")),
     mOpenGLEnabled(config.getIntValue("opengl")),
     mCustomCursorEnabled(config.getBoolValue("customcursor")),

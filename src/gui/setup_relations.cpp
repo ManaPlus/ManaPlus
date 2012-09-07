@@ -95,6 +95,7 @@ class PlayerTableModel : public TableModel
 {
 public:
     PlayerTableModel() :
+        TableModel(),
         mPlayers(nullptr),
         mListModel(new PlayerRelationListModel)
     {
@@ -231,7 +232,9 @@ static const std::string ACTION_DELETE = "delete";
 static const std::string ACTION_TABLE = "table";
 static const std::string ACTION_STRATEGY = "strategy";
 
-Setup_Relations::Setup_Relations():
+Setup_Relations::Setup_Relations() :
+    SetupTab(),
+    PlayerRelationsListener(),
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
     mPlayerTableModel(new PlayerTableModel),
     mPlayerTable(new GuiTable(mPlayerTableModel)),

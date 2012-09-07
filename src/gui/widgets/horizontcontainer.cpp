@@ -24,6 +24,8 @@
 #include "debug.h"
 
 HorizontContainer::HorizontContainer(const int height, const int spacing) :
+    Container(),
+    WidgetListener(),
     mSpacing(spacing),
     mCount(0),
     mLastX(spacing)

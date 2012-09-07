@@ -364,7 +364,9 @@ void LayoutArray::reflow(const int nx, const int ny,
     }
 }
 
-Layout::Layout(): mComputed(false)
+Layout::Layout() :
+    LayoutCell(),
+    mComputed(false)
 {
     getArray();
     setPadding(6);

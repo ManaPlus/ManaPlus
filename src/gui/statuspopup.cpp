@@ -42,61 +42,46 @@
 
 #include "debug.h"
 
-StatusPopup::StatusPopup():
-    Popup("StatusPopup", "statuspopup.xml")
+StatusPopup::StatusPopup() :
+    Popup("StatusPopup", "statuspopup.xml"),
+    mMoveType(new Label),
+    mCrazyMoveType(new Label),
+    mMoveToTargetType(new Label),
+    mFollowMode(new Label),
+    mAttackType(new Label),
+    mAttackWeaponType(new Label),
+    mDropCounter(new Label),
+    mPickUpType(new Label),
+    mMapType(new Label),
+    mMagicAttackType(new Label),
+    mPvpAttackType(new Label),
+    mDisableGameModifiers(new Label),
+    mImitationMode(new Label),
+    mAwayMode(new Label),
+    mCameraMode(new Label)
 {
-
     const int fontHeight = getFont()->getHeight();
 
-    mMoveType = new Label;
     mMoveType->setPosition(getPadding(), getPadding());
-
-    mCrazyMoveType = new Label;
     mCrazyMoveType->setPosition(getPadding(), fontHeight + getPadding());
-
-    mMoveToTargetType = new Label;
     mMoveToTargetType->setPosition(getPadding(),
         2 * fontHeight + getPadding());
-
-    mFollowMode = new Label;
     mFollowMode->setPosition(getPadding(),  3 * fontHeight + getPadding());
-
-    mAttackWeaponType = new Label;
     mAttackWeaponType->setPosition(getPadding(),
         4 + 4 * fontHeight + getPadding());
-
-    mAttackType = new Label;
     mAttackType->setPosition(getPadding(), 4 + 5 * fontHeight + getPadding());
-
-    mMagicAttackType = new Label;
     mMagicAttackType->setPosition(getPadding(),
         4 + 6 * fontHeight + getPadding());
-
-    mPvpAttackType = new Label;
     mPvpAttackType->setPosition(getPadding(),
         4 + 7 * fontHeight + getPadding());
-
-    mDropCounter = new Label;
     mDropCounter->setPosition(getPadding(), 8 + 8 * fontHeight + getPadding());
-
-    mPickUpType = new Label;
     mPickUpType->setPosition(getPadding(), 8 + 9 * fontHeight + getPadding());
-
-    mMapType = new Label;
     mMapType->setPosition(getPadding(), 12 + 10 * fontHeight + getPadding());
-
-    mImitationMode = new Label;
     mImitationMode->setPosition(getPadding(),
         16 + 11 * fontHeight + getPadding());
-
-    mAwayMode = new Label;
     mAwayMode->setPosition(getPadding(), 16 + 12 * fontHeight + getPadding());
-
-    mCameraMode = new Label;
     mCameraMode->setPosition(getPadding(),
         16 + 13 * fontHeight + getPadding());
-
-    mDisableGameModifiers = new Label;
     mDisableGameModifiers->setPosition(getPadding(),
         20 + 14 * fontHeight + getPadding());
 

@@ -57,8 +57,21 @@ float OutfitWindow::mAlpha = 1.0;
 
 OutfitWindow::OutfitWindow():
     Window(_("Outfits"), false, nullptr, "outfits.xml"),
+    ActionListener(),
+    mPreviousButton(new Button(_("<"), "previous", this)),
+    mNextButton(new Button(_(">"), "next", this)),
+    mEquipButtom(new Button(_("Equip"), "equip", this)),
+    mCurrentLabel(new Label(strprintf(_("Outfit: %d"), 1))),
+    mUnequipCheck(new CheckBox(_("Unequip first"),
+        serverConfig.getValueBool("OutfitUnequip0", true))),
+    mAwayOutfitCheck(new CheckBox(_("Away outfit"),
+        serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1))),
+    mKeyLabel(new Label(strprintf(_("Key: %s"),
+        keyName(mCurrentOutfit).c_str()))),
     mBoxWidth(33),
     mBoxHeight(33),
+    mCursorPosX(0),
+    mCursorPosY(0),
     mGridWidth(4),
     mGridHeight(4),
     mItemClicked(false),
@@ -80,19 +93,8 @@ OutfitWindow::OutfitWindow():
     mBorderColor = Theme::getThemeColor(Theme::BORDER, 64);
     mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND, 32);
 
-    mPreviousButton = new Button(_("<"), "previous", this);
-    mNextButton = new Button(_(">"), "next", this);
-    mCurrentLabel = new Label(strprintf(_("Outfit: %d"), 1));
     mCurrentLabel->setAlignment(gcn::Graphics::CENTER);
-    mKeyLabel = new Label(strprintf(_("Key: %s"),
-        keyName(mCurrentOutfit).c_str()));
     mKeyLabel->setAlignment(gcn::Graphics::CENTER);
-    mUnequipCheck = new CheckBox(_("Unequip first"),
-        serverConfig.getValueBool("OutfitUnequip0", true));
-    mEquipButtom = new Button(_("Equip"), "equip", this);
-
-    mAwayOutfitCheck = new CheckBox(_("Away outfit"),
-        serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1));
 
     mUnequipCheck->setActionEventId("unequip");
     mUnequipCheck->addActionListener(this);

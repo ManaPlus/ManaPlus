@@ -76,6 +76,8 @@ class WorldListModel : public gcn::ListModel
 
 WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     Window(_("Select World"), false, nullptr, "world.xml"),
+    gcn::ActionListener(),
+    gcn::KeyListener(),
     mWorldListModel(new WorldListModel(worlds)),
     mWorldList(new ListBox(mWorldListModel)),
     mChangeLoginButton(new Button(_("Change Login"), "login", this)),
