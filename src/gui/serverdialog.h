@@ -154,6 +154,7 @@ class ServerDialog : public Window,
         static int downloadUpdate(void *ptr, DownloadStatus status,
                                   size_t total, size_t remaining);
 
+        Mutex mMutex;
         Label  *mDescription;
         Button *mQuitButton;
         Button *mConnectButton;
@@ -184,7 +185,6 @@ class ServerDialog : public Window,
 
         Net::Download *mDownload;
 
-        Mutex mMutex;
         float mDownloadProgress;
 
         ServerInfo *mServerInfo;

@@ -54,6 +54,10 @@ MiniStatusWindow::MiniStatusWindow() :
     Popup("MiniStatus", "ministatus.xml"),
     InventoryListener(),
     mHpBar(createBar(0, 100, 20, Theme::PROG_HP, "hp bar", _("health bar"))),
+    mMpBar(Net::getGameHandler()->canUseMagicBar()
+           ? createBar(0, 100, 20, Net::getPlayerHandler()->canUseMagic()
+           ? Theme::PROG_MP : Theme::PROG_NO_MP, "mp bar", _("mana bar"))
+           : nullptr),
     mXpBar(createBar(0, 100, 20, Theme::PROG_EXP,
            "xp bar", _("experience bar"))),
     mWeightBar(createBar(0, 140, 20, Theme::PROG_WEIGHT,
@@ -74,15 +78,7 @@ MiniStatusWindow::MiniStatusWindow() :
     StatusWindow::updateHPBar(mHpBar);
 
     if (Net::getGameHandler()->canUseMagicBar())
-    {
-        mMpBar = createBar(0, 100, 20, Net::getPlayerHandler()->canUseMagic()
-            ? Theme::PROG_MP : Theme::PROG_NO_MP, "mp bar", _("mana bar"));
         StatusWindow::updateMPBar(mMpBar);
-    }
-    else
-    {
-        mMpBar = nullptr;
-    }
 
     const int job = Net::getPlayerHandler()->getJobLocation()
         && serverConfig.getValueBool("showJob", false);
