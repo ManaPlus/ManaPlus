@@ -67,11 +67,11 @@ Tab::Tab() :
     mTabColor(&Theme::getThemeColor(Theme::TAB)),
     mTabHighlightedColor(&Theme::getThemeColor(Theme::TAB_HIGHLIGHTED)),
     mTabSelectedColor(&Theme::getThemeColor(Theme::TAB_SELECTED)),
+    mFlashColor(&Theme::getThemeColor(Theme::TAB_FLASH)),
+    mPlayerFlashColor(&Theme::getThemeColor(Theme::TAB_PLAYER_FLASH)),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
-    mMode(0),
-    mFlashColor(Theme::getThemeColor(Theme::TAB_FLASH)),
-    mPlayerFlashColor(Theme::getThemeColor(Theme::TAB_PLAYER_FLASH))
+    mMode(0)
 {
     init();
 }
@@ -161,10 +161,10 @@ void Tab::draw(gcn::Graphics *graphics)
         switch (mFlash)
         {
             case 1:
-                mLabel->setForegroundColor(mFlashColor);
+                mLabel->setForegroundColor(*mFlashColor);
                 break;
             case 2:
-                mLabel->setForegroundColor(mPlayerFlashColor);
+                mLabel->setForegroundColor(*mPlayerFlashColor);
                 break;
             default:
                 break;
@@ -190,16 +190,6 @@ void Tab::draw(gcn::Graphics *graphics)
 
     // draw label
     drawChildren(graphics);
-}
-
-void Tab::setTabColor(const gcn::Color *const color)
-{
-    mTabColor = color;
-}
-
-void Tab::setFlash(const int flash)
-{
-    mFlash = flash;
 }
 
 void Tab::widgetResized(const gcn::Event &event A_UNUSED)

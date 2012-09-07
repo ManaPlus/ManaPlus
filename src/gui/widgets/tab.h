@@ -52,14 +52,40 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
         void draw(gcn::Graphics *graphics);
 
         /**
-         * Set the normal color fo the tab's text.
+         * Set the normal color for the tab's text.
          */
-        void setTabColor(const gcn::Color *const color);
+        void setTabColor(const gcn::Color *const color)
+        { mTabColor = color; }
+
+        /**
+         * Set the highlighted color for the tab's text.
+         */
+        void setHighlightedTabColor(const gcn::Color *const color)
+        { mTabHighlightedColor = color; }
+
+        /**
+         * Set the selected color for the tab's text.
+         */
+        void setSelectedTabColor(const gcn::Color *const color)
+        { mTabSelectedColor = color; }
+
+        /**
+         * Set the flash color for the tab's text.
+         */
+        void setFlashTabColor(const gcn::Color *const color)
+        { mFlashColor = color; }
+
+        /**
+         * Set the player flash color for the tab's text.
+         */
+        void setPlayerFlashTabColor(const gcn::Color *const color)
+        { mPlayerFlashColor = color; }
 
         /**
          * Set tab flashing state
          */
-        void setFlash(const int flash);
+        void setFlash(const int flash)
+        { mFlash = flash; }
 
         int getFlash() const
         { return mFlash; }
@@ -89,12 +115,12 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
         const gcn::Color *mTabColor;
         const gcn::Color *mTabHighlightedColor;
         const gcn::Color *mTabSelectedColor;
+        const gcn::Color *mFlashColor;
+        const gcn::Color *mPlayerFlashColor;
         int mFlash;
         GraphicsVertexes *mVertexes;
         bool mRedraw;
         int mMode;
-        gcn::Color mFlashColor;
-        gcn::Color mPlayerFlashColor;
 };
 
 #endif
