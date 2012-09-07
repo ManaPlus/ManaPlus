@@ -42,10 +42,12 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
                                  Particle *const target,
                                  Map *const map, const int rotation,
                                  const std::string& dyePalettes) :
+    mParticleFollow(false),
     mParticleTarget(target),
     mMap(map),
     mOutputPauseLeft(0),
-    mParticleImage(nullptr)
+    mParticleImage(nullptr),
+    mDeathEffectConditions(0)
 {
     // Initializing default values
     mParticlePosX.set(0.0f);
@@ -57,7 +59,6 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
     mParticleGravity.set(0.0f);
     mParticleRandomness.set(0);
     mParticleBounce.set(0.0f);
-    mParticleFollow = false;
     mParticleAcceleration.set(0.0f);
     mParticleDieDistance.set(-1.0f);
     mParticleMomentum.set(1.0f);

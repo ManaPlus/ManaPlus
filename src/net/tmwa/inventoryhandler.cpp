@@ -33,7 +33,9 @@ extern Net::InventoryHandler *inventoryHandler;
 namespace TmwAthena
 {
 
-InventoryHandler::InventoryHandler()
+InventoryHandler::InventoryHandler() :
+    MessageHandler(),
+    Ea::InventoryHandler()
 {
     static const uint16_t _messages[] =
     {

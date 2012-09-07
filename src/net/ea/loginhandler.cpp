@@ -36,8 +36,9 @@ namespace Ea
 {
 
 LoginHandler::LoginHandler() :
-        mVersionResponse(false),
-        mRegistrationEnabled(true)
+    Net::LoginHandler(),
+    mVersionResponse(false),
+    mRegistrationEnabled(true)
 {
     mToken.clear();
 }

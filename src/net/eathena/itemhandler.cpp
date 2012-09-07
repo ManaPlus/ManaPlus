@@ -29,7 +29,9 @@
 namespace EAthena
 {
 
-ItemHandler::ItemHandler()
+ItemHandler::ItemHandler() :
+    MessageHandler(),
+    Ea::ItemHandler()
 {
     static const uint16_t _messages[] =
     {

@@ -45,6 +45,8 @@
 
 Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
              uint8_t *const alphaChannel) :
+    Resource(),
+    mLoaded(false),
     mAlpha(1.0f),
     mHasAlphaChannel(hasAlphaChannel0),
     mSDLSurface(image),
@@ -60,8 +62,6 @@ Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
 {
     mBounds.x = 0;
     mBounds.y = 0;
-
-    mLoaded = false;
 
     if (mSDLSurface)
     {
@@ -82,6 +82,8 @@ Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
 #ifdef USE_OPENGL
 Image::Image(const GLuint glimage, const int width, const int height,
              const int texWidth, const int texHeight) :
+    Resource(),
+    mLoaded(false),
     mAlpha(1.0f),
     mHasAlphaChannel(true),
     mSDLSurface(nullptr),
@@ -104,9 +106,8 @@ Image::Image(const GLuint glimage, const int width, const int height,
     }
     else
     {
-        logger->log(
-          "Image::Image(GLuint*, ...): Couldn't load invalid Surface!");
-        mLoaded = false;
+        logger->log("Image::Image(GLuint*, ...):"
+            " Couldn't load invalid Surface!");
     }
 }
 #endif

@@ -27,6 +27,7 @@
 #include "debug.h"
 
 Music::Music(Mix_Music *const music) :
+    Resource(),
     mMusic(music)
 {
 }

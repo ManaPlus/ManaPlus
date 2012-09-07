@@ -59,16 +59,12 @@ Joystick::Joystick(int no):
     mLeftTolerance(0),
     mRightTolerance(0),
     mCalibrating(false),
+    mNumber(no >= joystickCount ? joystickCount : no),
     mCalibrated(false),
     mButtonsNumber(MAX_BUTTONS),
     mUseInactive(false),
     mHaveHats(false)
 {
-    if (no >= joystickCount)
-        no = joystickCount;
-
-    mNumber = no;
-
     for (int i = 0; i < MAX_BUTTONS; i++)
         mActiveButtons[i] = false;
 }

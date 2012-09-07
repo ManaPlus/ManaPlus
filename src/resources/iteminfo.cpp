@@ -82,7 +82,8 @@ ItemInfo::ItemInfo() :
     mColors(nullptr),
     mColorList(""),
     mHitEffectId(0),
-    mCriticalHitEffectId(0)
+    mCriticalHitEffectId(0),
+    maxFloorOffset(32)
 {
     for (int f = 0; f < 10; f ++)
     {

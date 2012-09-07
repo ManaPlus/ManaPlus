@@ -89,9 +89,29 @@ LocalPlayer::LocalPlayer(const int id, const int subtype) :
     mUpdateName(true),
     mTargetTime(-1),
     mLastTarget(-1),
+    mGMLevel(0),
+    mInvertDirection(0),
+    mCrazyMoveType(config.getIntValue("crazyMoveType")),
+    mCrazyMoveState(0),
+    mAttackWeaponType(config.getIntValue("attackWeaponType")),
+    mQuickDropCounter(config.getIntValue("quickDropCounter")),
+    mMoveState(0),
+    mDisableCrazyMove(false),
+    mPickUpType(config.getIntValue("pickUpType")),
+    mMagicAttackType(config.getIntValue("magicAttackType")),
+    mPvpAttackType(config.getIntValue("pvpAttackType")),
+    mMoveToTargetType(config.getIntValue("moveToTargetType")),
+    mAttackType(config.getIntValue("attackType")),
+    mFollowMode(config.getIntValue("followMode")),
+    mImitationMode(config.getIntValue("imitationMode")),
+    mDisableGameModifiers(config.getBoolValue("disableGameModifiers")),
+    mLastTargetX(0),
+    mLastTargetY(0),
     mTarget(nullptr),
     mPlayerFollowed(""),
     mPlayerImitated(""),
+    mNextDestX(0),
+    mNextDestY(0),
     mPickUpTarget(nullptr),
     mGoingToTarget(false),
     mKeepAttacking(false),
@@ -102,11 +122,19 @@ LocalPlayer::LocalPlayer(const int id, const int subtype) :
     mMessageTime(0),
     mAwayListener(new AwayListener),
     mAwayDialog(nullptr),
+    mPingSendTick(0),
+    mWaitPing(false),
+    mPingTime(0),
     mAfkTime(0),
     mAwayMode(false),
     mPseudoAwayMode(false),
     mShowNavigePath(false),
-    mDrawPath(false),
+    mIsServerBuggy(serverConfig.getValueBool("enableBuggyServers", true)),
+    mSyncPlayerMove(config.getBoolValue("syncPlayerMove")),
+    mDrawPath(config.getBoolValue("drawPath")),
+    mAttackMoving(config.getBoolValue("attackMoving")),
+    mAttackNext(config.getBoolValue("attackNext")),
+    mShowJobExp(config.getBoolValue("showJobExp")),
     mActivityTime(0),
     mNavigateX(0),
     mNavigateY(0),
@@ -117,60 +145,29 @@ LocalPlayer::LocalPlayer(const int id, const int subtype) :
     mOldY(0),
     mOldTileX(0),
     mOldTileY(0),
+    mTargetDeadPlayers(config.getBoolValue("targetDeadPlayers")),
+    mServerAttack(config.getBoolValue("serverAttack")),
     mLastHitFrom(""),
     mWaitFor(""),
     mAdvertTime(0),
     mBlockAdvert(false),
+    mEnableAdvert(config.getBoolValue("enableAdvert")),
+    mTradebot(config.getBoolValue("tradebot")),
+    mTargetOnlyReachable(config.getBoolValue("targetOnlyReachable")),
     mNextStep(false)
 {
     logger->log1("LocalPlayer::LocalPlayer");
 
-    mAttackRange = 0;
-
     listen(CHANNEL_ATTRIBUTES);
+
+    mAttackRange = 0;
     mLevel = 1;
-
     mAdvanced = true;
-
     mTextColor = &Theme::getThemeColor(Theme::PLAYER);
     if (userPalette)
         mNameColor = &userPalette->getColor(UserPalette::SELF);
     else
         mNameColor = nullptr;
-
-    mLastTargetX = 0;
-    mLastTargetY = 0;
-
-    mInvertDirection = 0;
-    mCrazyMoveType = config.getIntValue("crazyMoveType");
-    mCrazyMoveState = 0;
-    mAttackWeaponType = config.getIntValue("attackWeaponType");
-    mQuickDropCounter = config.getIntValue("quickDropCounter");
-    mMoveState = 0;
-    mDisableCrazyMove = false;
-    mPickUpType = config.getIntValue("pickUpType");
-    mMagicAttackType = config.getIntValue("magicAttackType");
-    mPvpAttackType = config.getIntValue("pvpAttackType");
-    mMoveToTargetType = config.getIntValue("moveToTargetType");
-    mDisableGameModifiers = config.getBoolValue("disableGameModifiers");
-    mTargetDeadPlayers = config.getBoolValue("targetDeadPlayers");
-    mAttackType = config.getIntValue("attackType");
-    mFollowMode = config.getIntValue("followMode");
-    mImitationMode = config.getIntValue("imitationMode");
-    mIsServerBuggy = serverConfig.getValueBool("enableBuggyServers", true);
-    mSyncPlayerMove = config.getBoolValue("syncPlayerMove");
-    mDrawPath = config.getBoolValue("drawPath");
-    mServerAttack = config.getBoolValue("serverAttack");
-    mAttackMoving = config.getBoolValue("attackMoving");
-    mAttackNext = config.getBoolValue("attackNext");
-    mShowJobExp = config.getBoolValue("showJobExp");
-    mEnableAdvert = config.getBoolValue("enableAdvert");
-    mTradebot = config.getBoolValue("tradebot");
-    mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
-
-    mPingSendTick = 0;
-    mWaitPing = false;
-    mPingTime = 0;
 
     PlayerInfo::setStatBase(PlayerInfo::WALK_SPEED,
         static_cast<int>(getWalkSpeed().x));
@@ -1746,7 +1743,6 @@ void LocalPlayer::moveToTarget(int dist)
     bool gotPos(false);
     Path debugPath;
 
-    Vector targetPos(-1, -1);
     const Vector &playerPos = getPosition();
     unsigned int limit(0);
 

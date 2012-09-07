@@ -133,8 +133,8 @@ class SocialGuildTab : public SocialTab, public gcn::ActionListener
 {
 public:
     SocialGuildTab(Guild *const guild, const bool showBackground) :
-        ActionListener(),
         SocialTab(),
+        ActionListener(),
         mGuild(guild)
     {
         setCaption(_("Guild"));

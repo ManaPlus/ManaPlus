@@ -88,7 +88,8 @@ short packet_lengths[] =
 
 Network *Network::mInstance = nullptr;
 
-Network::Network()
+Network::Network() :
+    Ea::Network()
 {
     mInstance = this;
 }

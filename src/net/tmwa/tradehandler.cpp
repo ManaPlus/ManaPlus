@@ -36,7 +36,9 @@ extern Net::TradeHandler *tradeHandler;
 namespace TmwAthena
 {
 
-TradeHandler::TradeHandler()
+TradeHandler::TradeHandler() :
+    MessageHandler(),
+    Ea::TradeHandler()
 {
     static const uint16_t _messages[] =
     {

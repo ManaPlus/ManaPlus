@@ -50,7 +50,9 @@ namespace EAthena
 extern ServerInfo charServer;
 extern ServerInfo mapServer;
 
-CharServerHandler::CharServerHandler()
+CharServerHandler::CharServerHandler() :
+    MessageHandler(),
+    Ea::CharServerHandler()
 {
     static const uint16_t _messages[] =
     {

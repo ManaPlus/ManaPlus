@@ -189,6 +189,8 @@ ChatWindow::ChatWindow():
     setMinWidth(150);
     setMinHeight(90);
 
+    setTitleBarHeight(getPadding() + getTitlePadding());
+
     mChatTabs->enableScrollButtons(true);
     mChatTabs->setFollowDownScroll(true);
 

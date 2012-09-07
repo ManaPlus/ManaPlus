@@ -33,7 +33,9 @@ extern Net::SpecialHandler *specialHandler;
 namespace TmwAthena
 {
 
-SpecialHandler::SpecialHandler()
+SpecialHandler::SpecialHandler() :
+    MessageHandler(),
+    Ea::SpecialHandler()
 {
     static const uint16_t _messages[] =
     {

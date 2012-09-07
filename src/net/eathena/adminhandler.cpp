@@ -42,7 +42,8 @@ extern Net::AdminHandler *adminHandler;
 namespace EAthena
 {
 
-AdminHandler::AdminHandler()
+AdminHandler::AdminHandler() :
+    MessageHandler()
 {
     static const uint16_t _messages[] =
     {

@@ -72,7 +72,8 @@ namespace EAthena
 ServerInfo charServer;
 ServerInfo mapServer;
 
-GeneralHandler::GeneralHandler():
+GeneralHandler::GeneralHandler() :
+    MessageHandler(),
     mAdminHandler(new AdminHandler),
     mBeingHandler(new BeingHandler(config.getBoolValue("EnableSync"))),
     mBuySellHandler(new BuySellHandler),

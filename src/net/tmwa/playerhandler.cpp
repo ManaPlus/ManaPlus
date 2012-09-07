@@ -38,7 +38,9 @@ extern Net::PlayerHandler *playerHandler;
 namespace TmwAthena
 {
 
-PlayerHandler::PlayerHandler()
+PlayerHandler::PlayerHandler() :
+    MessageHandler(),
+    Ea::PlayerHandler()
 {
     static const uint16_t _messages[] =
     {

@@ -41,11 +41,15 @@
 
 MapLayer::MapLayer(const int x, const int y, const int width, const int height,
                    const bool fringeLayer):
-    mX(x), mY(y),
-    mWidth(width), mHeight(height),
+    mX(x),
+    mY(y),
+    mWidth(width),
+    mHeight(height),
     mIsFringeLayer(fringeLayer),
     mHighlightAttackRange(config.getBoolValue("highlightAttackRange")),
-    mTiles(new Image*[mWidth * mHeight])
+    mTiles(new Image*[mWidth * mHeight]),
+    mSpecialLayer(nullptr),
+    mTempLayer(nullptr)
 {
     std::fill_n(mTiles, mWidth * mHeight, static_cast<Image*>(nullptr));
 

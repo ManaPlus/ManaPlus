@@ -44,15 +44,14 @@ Text::Text(const std::string &text, const int x, const int y,
            const gcn::Graphics::Alignment alignment,
            const gcn::Color* color, const bool isSpeech,
            gcn::Font *const font) :
+    mFont(font ? font : gui->getFont()),
+    mY(y),
+    mWidth(mFont->getWidth(text)),
+    mHeight(mFont->getHeight()),
     mText(text),
     mColor(color),
     mIsSpeech(isSpeech)
 {
-    if (!font)
-        mFont = gui->getFont();
-    else
-        mFont = font;
-
     if (!textManager)
     {
         textManager = new TextManager;
@@ -74,8 +73,6 @@ Text::Text(const std::string &text, const int x, const int y,
         }
     }
     ++mInstances;
-    mHeight = mFont->getHeight();
-    mWidth = mFont->getWidth(text);
 
     switch (alignment)
     {
@@ -92,7 +89,6 @@ Text::Text(const std::string &text, const int x, const int y,
             break;
     }
     mX = x - mXOffset;
-    mY = y;
     if (textManager)
         textManager->addText(this);
 }

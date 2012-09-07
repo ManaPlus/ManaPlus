@@ -58,6 +58,7 @@ namespace EAthena
 {
 
 BeingHandler::BeingHandler(bool enableSync):
+    MessageHandler(),
     Ea::BeingHandler(enableSync)
 {
     static const uint16_t _messages[] =

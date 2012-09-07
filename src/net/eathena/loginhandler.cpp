@@ -41,7 +41,9 @@ namespace EAthena
 
 extern ServerInfo charServer;
 
-LoginHandler::LoginHandler()
+LoginHandler::LoginHandler() :
+    MessageHandler(),
+    Ea::LoginHandler()
 {
     static const uint16_t _messages[] =
     {

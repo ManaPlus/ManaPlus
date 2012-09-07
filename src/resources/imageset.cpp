@@ -32,6 +32,7 @@
 
 ImageSet::ImageSet(Image *const img, const int width, const int height,
                    const int margin, const int spacing) :
+    Resource(),
     mWidth(width),
     mHeight(height),
     mOffsetX(0),

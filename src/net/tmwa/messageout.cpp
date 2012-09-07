@@ -40,9 +40,9 @@ namespace TmwAthena
 {
 
 MessageOut::MessageOut(short id):
-    Net::MessageOut(id)
+    Net::MessageOut(id),
+    mNetwork(TmwAthena::Network::instance())
 {
-    mNetwork = TmwAthena::Network::instance();
     mNetwork->fixSendBuffer();
     mData = mNetwork->mOutBuffer + mNetwork->mOutSize;
 

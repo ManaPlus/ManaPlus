@@ -42,6 +42,8 @@ namespace TmwAthena
 {
 
 NpcHandler::NpcHandler() :
+    MessageHandler(),
+    Ea::NpcHandler(),
     mRequestLang(false)
 {
     static const uint16_t _messages[] =

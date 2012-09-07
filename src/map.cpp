@@ -123,6 +123,7 @@ bool TileAnimation::update(const int ticks)
 
 Map::Map(const int width, const int height,
          const int tileWidth, const int tileHeight) :
+    Properties(),
     mWidth(width), mHeight(height),
     mTileWidth(tileWidth), mTileHeight(tileHeight),
     mMaxTileHeight(height),

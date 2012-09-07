@@ -58,6 +58,7 @@ bool Particle::enabled = true;
 const float Particle::PARTICLE_SKY = 800.0f;
 
 Particle::Particle(Map *const map) :
+    Actor(),
     mAlpha(1.0f),
     mLifetimeLeft(-1),
     mLifetimePast(0),

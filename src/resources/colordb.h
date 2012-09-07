@@ -40,11 +40,11 @@ namespace ColorDB
             { }
 
             ItemColor(const int id0, const std::string &name0,
-                      const std::string &color0)
+                      const std::string &color0) :
+                id(id0),
+                name(name0),
+                color(color0)
             {
-                this->id = id0;
-                this->name = name0;
-                this->color = color0;
             }
 
             int id;

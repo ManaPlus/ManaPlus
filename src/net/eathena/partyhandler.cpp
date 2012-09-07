@@ -38,6 +38,7 @@ namespace EAthena
 {
 
 PartyHandler::PartyHandler() :
+    MessageHandler(),
     Ea::PartyHandler()
 {
     static const uint16_t _messages[] =

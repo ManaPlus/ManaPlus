@@ -52,7 +52,9 @@ extern Net::BuySellHandler *buySellHandler;
 namespace EAthena
 {
 
-BuySellHandler::BuySellHandler()
+BuySellHandler::BuySellHandler() :
+    MessageHandler(),
+    Ea::BuySellHandler()
 {
     static const uint16_t _messages[] =
     {

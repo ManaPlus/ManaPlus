@@ -40,9 +40,9 @@ namespace EAthena
 {
 
 MessageOut::MessageOut(short id):
-    Net::MessageOut(id)
+    Net::MessageOut(id),
+    mNetwork(EAthena::Network::instance())
 {
-    mNetwork = EAthena::Network::instance();
     mNetwork->fixSendBuffer();
     mData = mNetwork->mOutBuffer + mNetwork->mOutSize;
 

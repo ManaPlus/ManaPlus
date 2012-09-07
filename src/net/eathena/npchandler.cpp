@@ -40,7 +40,9 @@ extern Net::NpcHandler *npcHandler;
 namespace EAthena
 {
 
-NpcHandler::NpcHandler()
+NpcHandler::NpcHandler() :
+    MessageHandler(),
+    Ea::NpcHandler()
 {
     static const uint16_t _messages[] =
     {

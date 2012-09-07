@@ -42,7 +42,8 @@ extern Net::CharHandler *charHandler;
 namespace Ea
 {
 
-CharServerHandler::CharServerHandler()
+CharServerHandler::CharServerHandler() :
+    Net::CharHandler()
 {
 }
 

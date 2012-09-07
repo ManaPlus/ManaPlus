@@ -35,7 +35,9 @@ extern Net::GuildHandler *guildHandler;
 namespace EAthena
 {
 
-GuildHandler::GuildHandler()
+GuildHandler::GuildHandler() :
+    Ea::GuildHandler(),
+    MessageHandler()
 {
     static const uint16_t _messages[] =
     {

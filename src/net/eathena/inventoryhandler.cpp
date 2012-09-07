@@ -33,7 +33,9 @@ extern Net::InventoryHandler *inventoryHandler;
 namespace EAthena
 {
 
-InventoryHandler::InventoryHandler()
+InventoryHandler::InventoryHandler() :
+    MessageHandler(),
+    Ea::InventoryHandler()
 {
     static const uint16_t _messages[] =
     {

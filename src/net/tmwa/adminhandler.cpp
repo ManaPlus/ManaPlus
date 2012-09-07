@@ -42,7 +42,8 @@ extern Net::AdminHandler *adminHandler;
 namespace TmwAthena
 {
 
-AdminHandler::AdminHandler()
+AdminHandler::AdminHandler() :
+    MessageHandler()
 {
     static const uint16_t _messages[] =
     {

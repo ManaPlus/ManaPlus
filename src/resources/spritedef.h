@@ -143,7 +143,8 @@ class SpriteDef : public Resource
         /**
          * Constructor.
          */
-        SpriteDef()
+        SpriteDef() :
+            Resource()
         { }
 
         /**

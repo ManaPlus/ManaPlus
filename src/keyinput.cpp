@@ -23,6 +23,7 @@
 #include "debug.h"
 
 KeyInput::KeyInput() :
+    gcn::KeyInput(),
     mActionId(-2)
 {
 }

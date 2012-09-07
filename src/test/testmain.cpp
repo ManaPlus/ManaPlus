@@ -35,13 +35,10 @@
 std::string fileName = "";
 extern char *selfName;
 
-TestMain::TestMain()
+TestMain::TestMain() :
+    log(new Logger)
 {
     fileName = getSelfName();
-
-    log = new Logger;
-//    log->setLogFile(Client::getLocalDataDirectory()
-//        + std::string("/test.log"));
     log->setLogFile(Client::getLocalDataDirectory()
         + std::string("/manaplustest.log"));
 }

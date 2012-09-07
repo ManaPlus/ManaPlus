@@ -467,7 +467,8 @@ bool PlayerRelationsManager::checkBadRelation(std::string name)
 class PIS_nothing : public PlayerIgnoreStrategy
 {
 public:
-    PIS_nothing()
+    PIS_nothing() :
+        PlayerIgnoreStrategy()
     {
         mDescription = _("Completely ignore");
         mShortName = PLAYER_IGNORE_STRATEGY_NOP;
@@ -482,7 +483,8 @@ public:
 class PIS_dotdotdot : public PlayerIgnoreStrategy
 {
 public:
-    PIS_dotdotdot()
+    PIS_dotdotdot() :
+        PlayerIgnoreStrategy()
     {
         mDescription = _("Print '...'");
         mShortName = "dotdotdot";
@@ -502,7 +504,8 @@ public:
 class PIS_blinkname : public PlayerIgnoreStrategy
 {
 public:
-    PIS_blinkname()
+    PIS_blinkname() :
+        PlayerIgnoreStrategy()
     {
         mDescription = _("Blink name");
         mShortName = "blinkname";
@@ -523,6 +526,7 @@ class PIS_emote : public PlayerIgnoreStrategy
 public:
     PIS_emote(const uint8_t emote_nr, const std::string &description,
               const std::string &shortname) :
+        PlayerIgnoreStrategy(),
         mEmotion(emote_nr)
     {
         mDescription = description;

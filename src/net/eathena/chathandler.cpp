@@ -45,7 +45,9 @@ extern Net::ChatHandler *chatHandler;
 namespace EAthena
 {
 
-ChatHandler::ChatHandler()
+ChatHandler::ChatHandler() :
+    MessageHandler(),
+    Ea::ChatHandler()
 {
     static const uint16_t _messages[] =
     {

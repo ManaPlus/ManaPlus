@@ -39,7 +39,9 @@ namespace EAthena
 
 extern ServerInfo mapServer;
 
-GameHandler::GameHandler()
+GameHandler::GameHandler() :
+    MessageHandler(),
+    Ea::GameHandler()
 {
     static const uint16_t _messages[] =
     {

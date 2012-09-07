@@ -90,12 +90,9 @@ namespace XML
         }
     }
 
-    Document::Document(const char *const data, const int size)
+    Document::Document(const char *const data, const int size) :
+        mDoc(data ? xmlParseMemory(data, size) : nullptr)
     {
-        if (data)
-            mDoc = xmlParseMemory(data, size);
-        else
-            mDoc = nullptr;
     }
 
     Document::~Document()

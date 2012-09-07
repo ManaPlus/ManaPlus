@@ -29,7 +29,9 @@
 namespace TmwAthena
 {
 
-ItemHandler::ItemHandler()
+ItemHandler::ItemHandler() :
+    MessageHandler(),
+    Ea::ItemHandler()
 {
     static const uint16_t _messages[] =
     {

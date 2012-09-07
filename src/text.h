@@ -69,6 +69,7 @@ class Text
                           const int xOff, const int yOff);
 
     private:
+        gcn::Font *mFont;      /**< The font of the text */
         int mX;                /**< Actual x-value of left of text written. */
         int mY;                /**< Actual y-value of top of text written. */
         int mWidth;            /**< The width of the text. */
@@ -77,7 +78,6 @@ class Text
         static int mInstances; /**< Instances of text. */
         std::string mText;     /**< The text to display. */
         const gcn::Color *mColor;     /**< The color of the text. */
-        gcn::Font *mFont;      /**< The font of the text */
         bool mIsSpeech;        /**< Is this text a speech bubble? */
 
     protected:

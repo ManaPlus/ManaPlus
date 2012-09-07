@@ -49,6 +49,7 @@ SimpleAnimation::SimpleAnimation(const XmlNodePtr animationNode,
     mAnimation(new Animation),
     mAnimationTime(0),
     mAnimationPhase(0),
+    mCurrentFrame(nullptr),
     mInitialized(false)
 {
     initializeAnimation(animationNode, dyePalettes);

@@ -37,7 +37,8 @@
 namespace TmwAthena
 {
 
-QuestHandler::QuestHandler()
+QuestHandler::QuestHandler() :
+    MessageHandler()
 {
     static const uint16_t _messages[] =
     {
