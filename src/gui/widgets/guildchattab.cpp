@@ -42,6 +42,10 @@ GuildChatTab::GuildChatTab() :
     ChatTab(_("Guild"))
 {
     setTabColor(&Theme::getThemeColor(Theme::GUILD_CHAT_TAB));
+    setHighlightedTabColor(&Theme::getThemeColor(
+        Theme::GUILD_CHAT_TAB_HIGHLIGHTED));
+    setSelectedTabColor(&Theme::getThemeColor(
+        Theme::GUILD_CHAT_TAB_SELECTED));
 }
 
 GuildChatTab::~GuildChatTab()

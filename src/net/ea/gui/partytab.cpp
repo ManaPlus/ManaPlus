@@ -49,6 +49,10 @@ PartyTab::PartyTab() :
     ChatTab(_("Party"))
 {
     setTabColor(&Theme::getThemeColor(Theme::PARTY_CHAT_TAB));
+    setHighlightedTabColor(&Theme::getThemeColor(
+        Theme::PARTY_CHAT_TAB_HIGHLIGHTED));
+    setSelectedTabColor(&Theme::getThemeColor(
+        Theme::PARTY_CHAT_TAB_SELECTED));
 }
 
 PartyTab::~PartyTab()
