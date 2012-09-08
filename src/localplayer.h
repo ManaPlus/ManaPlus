@@ -84,7 +84,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void slowLogic();
 
-        virtual void setAction(const Action action, const int attackType = 0);
+        virtual void setAction(const Action &action, const int attackType = 0);
 
         /**
          * Compute the next pathnode location when walking using keyboard.
@@ -360,7 +360,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
                           const unsigned char emote) const;
 
         void imitateAction(const Being *const being,
-                           const Being::Action action);
+                           const Being::Action &action);
 
         void imitateDirection(const Being *const being,
                               const unsigned char dir);

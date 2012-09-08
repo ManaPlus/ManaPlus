@@ -355,7 +355,7 @@ void LocalPlayer::slowLogic()
     }
 }
 
-void LocalPlayer::setAction(const Action action, const int attackType)
+void LocalPlayer::setAction(const Action &action, const int attackType)
 {
     if (action == DEAD)
     {
@@ -3830,7 +3830,7 @@ void LocalPlayer::imitateEmote(const Being *const being,
 }
 
 void LocalPlayer::imitateAction(const Being *const being,
-                                const Being::Action action)
+                                const Being::Action &action)
 {
     if (!being)
         return;

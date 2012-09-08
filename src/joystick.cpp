@@ -51,7 +51,7 @@ void Joystick::init()
     }
 }
 
-Joystick::Joystick(int no):
+Joystick::Joystick(const int no):
     mDirection(0),
     mJoystick(nullptr),
     mUpTolerance(0),

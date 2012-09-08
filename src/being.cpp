@@ -974,7 +974,7 @@ std::string Being::getSitAction() const
     }
 }
 
-void Being::setAction(const Action action, const int attackType A_UNUSED)
+void Being::setAction(const Action &action, const int attackType A_UNUSED)
 {
     std::string currentAction = SpriteAction::INVALID;
 

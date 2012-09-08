@@ -731,7 +731,7 @@ void StatusWindow::action(const gcn::ActionEvent &event)
         std::string str;
         while (it != it_end)
         {
-            ChangeDisplay *const attr = dynamic_cast<ChangeDisplay*>(
+            const ChangeDisplay *const attr = dynamic_cast<ChangeDisplay*>(
                 (*it).second);
             if (attr)
                 str += attr->getValue() + " ";

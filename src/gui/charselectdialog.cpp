@@ -552,6 +552,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
 
 
 CharacterDisplay::CharacterDisplay(CharSelectDialog *const charSelectDialog) :
+    Container(),
     mCharacter(nullptr),
     mPlayerBox(new PlayerBox(nullptr)),
     mName(new Label("wwwwwwwwwwwwwwwwwwwwwwww")),

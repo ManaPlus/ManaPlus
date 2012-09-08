@@ -1193,6 +1193,7 @@ private:
 };
 
 SocialWindow::SocialWindow() :
+    ActionListener(),
     Window(_("Social"), false, nullptr, "social.xml"),
     mGuildInvited(0),
     mGuildAcceptDialog(nullptr),

@@ -67,7 +67,7 @@ class Joystick
          * Constructor, pass the number of the joystick the new object
          * should access.
          */
-        Joystick(int no);
+        Joystick(const int no);
 
         ~Joystick();
 
