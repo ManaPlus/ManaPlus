@@ -244,6 +244,10 @@ public:
         setCaption(_("Guild"));
 
         setTabColor(&Theme::getThemeColor(Theme::GUILD_SOCIAL_TAB));
+        setHighlightedTabColor(&Theme::getThemeColor(
+            Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED));
+        setSelectedTabColor(&Theme::getThemeColor(
+            Theme::GUILD_SOCIAL_TAB_SELECTED));
 
         mList = new AvatarListBox(guild);
         mScroll = new ScrollArea(mList, showBackground,
