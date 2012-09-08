@@ -685,9 +685,6 @@ void CommandHandler::handleNavigate(const std::string &args,
 
 bool CommandHandler::parse2Int(const std::string &args, int &x, int &y)
 {
-    if (!x || !y)
-        return false;
-
     bool isValid = false;
     const size_t pos = args.find(" ");
     if (pos != std::string::npos)
