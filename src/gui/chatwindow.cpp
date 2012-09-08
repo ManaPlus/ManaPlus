@@ -1025,7 +1025,7 @@ void ChatWindow::addWhisper(const std::string &nick,
     if (tempNick.compare(playerName) == 0)
         return;
 
-    ChatTab *tab = nullptr;
+    WhisperTab *tab = nullptr;
     const TabMap::const_iterator i = mWhispers.find(tempNick);
 
     if (i != mWhispers.end())
@@ -1099,8 +1099,8 @@ void ChatWindow::addWhisper(const std::string &nick,
     }
 }
 
-ChatTab *ChatWindow::addWhisperTab(const std::string &nick,
-                                   const bool switchTo)
+WhisperTab *ChatWindow::addWhisperTab(const std::string &nick,
+                                      const bool switchTo)
 {
     if (!player_node)
         return nullptr;
@@ -1112,7 +1112,7 @@ ChatTab *ChatWindow::addWhisperTab(const std::string &nick,
     toLower(tempNick);
 
     const TabMap::const_iterator i = mWhispers.find(tempNick);
-    ChatTab *ret;
+    WhisperTab *ret;
 
     if (tempNick.compare(playerName) == 0)
         return nullptr;
@@ -1137,7 +1137,7 @@ ChatTab *ChatWindow::addWhisperTab(const std::string &nick,
     return ret;
 }
 
-ChatTab *ChatWindow::getWhisperTab(const std::string &nick) const
+WhisperTab *ChatWindow::getWhisperTab(const std::string &nick) const
 {
     if (!player_node)
         return nullptr;
@@ -1149,7 +1149,7 @@ ChatTab *ChatWindow::getWhisperTab(const std::string &nick) const
     toLower(tempNick);
 
     const TabMap::const_iterator i = mWhispers.find(tempNick);
-    ChatTab *ret = nullptr;
+    WhisperTab *ret = nullptr;
 
     if (tempNick.compare(playerName) == 0)
         return nullptr;
@@ -1479,7 +1479,7 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
 
         if (onlinePlayers.find(tab->getNick()) != onlinePlayers.end())
         {
-            tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB));
+            tab->setWhisperTabColors();
         }
         else
         {
@@ -1490,8 +1490,7 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
                     nick, ActorSprite::PLAYER);
                 if (being)
                 {
-                    tab->setTabColor(&Theme::getThemeColor(
-                        Theme::WHISPER_TAB));
+                    tab->setWhisperTabColors();
                     continue;
                 }
             }
@@ -1500,8 +1499,7 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
                 const PartyMember *const pm = party->getMember(nick);
                 if (pm && pm->getOnline())
                 {
-                    tab->setTabColor(&Theme::getThemeColor(
-                        Theme::WHISPER_TAB));
+                    tab->setWhisperTabColors();
                     continue;
                 }
             }
@@ -1510,13 +1508,11 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
                 const GuildMember *const gm = guild->getMember(nick);
                 if (gm && gm->getOnline())
                 {
-                    tab->setTabColor(&Theme::getThemeColor(
-                        Theme::WHISPER_TAB));
+                    tab->setWhisperTabColors();
                     continue;
                 }
             }
-            tab->setTabColor(&Theme::getThemeColor(
-                Theme::WHISPER_TAB_OFFLINE));
+            tab->setWhisperTabOfflineColors();
         }
     }
 }

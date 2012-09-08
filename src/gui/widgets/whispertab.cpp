@@ -39,7 +39,7 @@ WhisperTab::WhisperTab(const std::string &nick) :
     ChatTab(nick),
     mNick(nick)
 {
-    setTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB));
+    setWhisperTabColors();
 }
 
 WhisperTab::~WhisperTab()
@@ -167,4 +167,21 @@ void WhisperTab::saveToLogFile(std::string &msg)
 void WhisperTab::getAutoCompleteList(StringVect &names) const
 {
     names.push_back(mNick);
+}
+
+void WhisperTab::setWhisperTabColors()
+{
+    setTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB));
+    setHighlightedTabColor(&Theme::getThemeColor(
+        Theme::WHISPER_TAB_HIGHLIGHTED));
+    setSelectedTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB_SELECTED));
+}
+
+void WhisperTab::setWhisperTabOfflineColors()
+{
+    setTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB_OFFLINE));
+    setHighlightedTabColor(&Theme::getThemeColor(
+        Theme::WHISPER_TAB_OFFLINE_HIGHLIGHTED));
+    setSelectedTabColor(&Theme::getThemeColor(
+        Theme::WHISPER_TAB_OFFLINE_SELECTED));
 }

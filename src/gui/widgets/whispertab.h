@@ -23,7 +23,7 @@
 #ifndef WHISPERTAB_H
 #define WHISPERTAB_H
 
-#include "chattab.h"
+#include "gui/widgets/chattab.h"
 
 class Channel;
 
@@ -45,6 +45,10 @@ class WhisperTab : public ChatTab
         { return ChatTab::TAB_WHISPER; }
 
         void saveToLogFile(std::string &msg);
+
+        void setWhisperTabColors();
+
+        void setWhisperTabOfflineColors();
 
     protected:
         friend class ChatWindow;

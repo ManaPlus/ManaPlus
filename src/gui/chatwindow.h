@@ -227,10 +227,10 @@ class ChatWindow : public Window,
         void addWhisper(const std::string &nick, const std::string &mes,
                         const Own own = BY_OTHER);
 
-        ChatTab *addWhisperTab(const std::string &nick,
-                               const bool switchTo = false);
+        WhisperTab *addWhisperTab(const std::string &nick,
+                                  const bool switchTo = false);
 
-        ChatTab *getWhisperTab(const std::string &nick) const;
+        WhisperTab *getWhisperTab(const std::string &nick) const;
 
         void removeAllWhispers();
 
@@ -332,7 +332,7 @@ class ChatWindow : public Window,
 
         bool mTmpVisible;
 
-        typedef std::map<const std::string, ChatTab*> TabMap;
+        typedef std::map<const std::string, WhisperTab*> TabMap;
         /** Manage whisper tabs */
         TabMap mWhispers;
 

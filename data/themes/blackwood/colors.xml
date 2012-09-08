@@ -45,6 +45,10 @@
 	<color id="PLAYER" color="#00ff00" />
 	<color id="WHISPER_TAB" color="#0000ff" />
 	<color id="WHISPER_TAB_OFFLINE" color="#0000e0" />
+	<color id="WHISPER_TAB_HIGHLIGHTED" color="#0000ff" />
+	<color id="WHISPER_TAB_OFFLINE_HIGHLIGHTED" color="#0000e0" />
+	<color id="WHISPER_TAB_SELECTED" color="#0000ff" />
+	<color id="WHISPER_TAB_OFFLINE_SELECTED" color="#0000e0" />
 	<color id="IS" color="#a08527" />
 	<color id="SERVER" color="#8415e2" />
 	<color id="LOGGER" color="#919191" />

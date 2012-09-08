@@ -52,7 +52,7 @@
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/whispertab.h"
 
 #include "net/beinghandler.h"
 #include "net/chathandler.h"
@@ -4162,9 +4162,9 @@ void LocalPlayer::checkNewName(Being *const being)
         }
         if (chatWindow)
         {
-            ChatTab *const tab = chatWindow->getWhisperTab(nick);
+            WhisperTab *const tab = chatWindow->getWhisperTab(nick);
             if (tab)
-                tab->setTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB));
+                tab->setWhisperTabColors();
         }
     }
 
