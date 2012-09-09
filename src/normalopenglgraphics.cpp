@@ -45,18 +45,19 @@
 #define GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB 0x84F8
 #endif
 
-const unsigned int vertexBufSize = 500;
-
 GLuint NormalOpenGLGraphics::mLastImage = 0;
 
+unsigned int vertexBufSize = 500;
+
 NormalOpenGLGraphics::NormalOpenGLGraphics():
-    mFloatTexArray(new GLfloat[vertexBufSize * 4 + 30]),
-    mIntTexArray(new GLint[vertexBufSize * 4 + 30]),
-    mIntVertArray(new GLint[vertexBufSize * 4 + 30]),
+    mFloatTexArray(nullptr),
+    mIntTexArray(nullptr),
+    mIntVertArray(nullptr),
     mAlpha(false),
     mTexture(false),
     mIsByteColor(false),
     mFloatColor(1.0f),
+    mMaxVertices(500),
 #ifdef DEBUG_BIND_TEXTURE
     mColorAlpha(false),
     mOldTextureId(0)
@@ -73,6 +74,21 @@ NormalOpenGLGraphics::~NormalOpenGLGraphics()
     delete [] mFloatTexArray;
     delete [] mIntTexArray;
     delete [] mIntVertArray;
+}
+
+void NormalOpenGLGraphics::initArrays()
+{
+    mMaxVertices = graphicsManager.getMaxVertices();
+    if (mMaxVertices < 500)
+        mMaxVertices = 500;
+    else if (mMaxVertices > 1024)
+        mMaxVertices = 1024;
+
+    // need alocate small size, after if limit reached reallocate to double size
+    vertexBufSize = mMaxVertices;
+    mFloatTexArray = new GLfloat[mMaxVertices * 4 + 30];
+    mIntTexArray = new GLint[mMaxVertices * 4 + 30];
+    mIntVertArray = new GLint[mMaxVertices * 4 + 30];
 }
 
 bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
@@ -336,7 +352,7 @@ void NormalOpenGLGraphics::drawImagePattern(const Image *const image,
     setTexturingAndBlending(true);
 
     unsigned int vp = 0;
-    const unsigned int vLimit = vertexBufSize * 4;
+    const unsigned int vLimit = mMaxVertices * 4;
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
@@ -468,7 +484,7 @@ void NormalOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     setTexturingAndBlending(true);
 
     unsigned int vp = 0;
-    const unsigned int vLimit = vertexBufSize * 4;
+    const unsigned int vLimit = mMaxVertices * 4;
 
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
@@ -671,7 +687,7 @@ void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
     const float th = static_cast<float>(image->getTextureHeight());
 
     unsigned int vp = 0;
-    const unsigned int vLimit = vertexBufSize * 4;
+    const unsigned int vLimit = mMaxVertices * 4;
 
     NormalOpenGLGraphicsVertexes *ogl = vert->getOGL();
     ogl->init();
@@ -804,7 +820,7 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
     const float tw = static_cast<float>(image->mTexWidth);
     const float th = static_cast<float>(image->mTexHeight);
 
-    const unsigned int vLimit = vertexBufSize * 4;
+    const unsigned int vLimit = mMaxVertices * 4;
 
     NormalOpenGLGraphicsVertexes *ogl = vert->ogl;
 
@@ -817,9 +833,9 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
         float texY1 = static_cast<float>(srcY) / th;
 
         if (!ogl->mFloatTexArray)
-            ogl->mFloatTexArray = new GLfloat[vertexBufSize * 4 + 30];
+            ogl->mFloatTexArray = new GLfloat[mMaxVertices * 4 + 30];
         if (!ogl->mIntVertArray)
-            ogl->mIntVertArray = new GLint[vertexBufSize * 4 + 30];
+            ogl->mIntVertArray = new GLint[mMaxVertices * 4 + 30];
 
         GLfloat *floatTexArray = ogl->mFloatTexArray;
         GLint *intVertArray = ogl->mIntVertArray;
@@ -862,9 +878,9 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
     else
     {
         if (!ogl->mIntTexArray)
-            ogl->mIntTexArray = new GLint[vertexBufSize * 4 + 30];
+            ogl->mIntTexArray = new GLint[mMaxVertices * 4 + 30];
         if (!ogl->mIntVertArray)
-            ogl->mIntVertArray = new GLint[vertexBufSize * 4 + 30];
+            ogl->mIntVertArray = new GLint[mMaxVertices * 4 + 30];
 
         GLint *intTexArray = ogl->mIntTexArray;
         GLint *intVertArray = ogl->mIntVertArray;
@@ -1191,7 +1207,7 @@ bool NormalOpenGLGraphics::drawNet(const int x1, const int y1,
                                    const int width, const int height)
 {
     unsigned int vp = 0;
-    const unsigned int vLimit = vertexBufSize * 4;
+    const unsigned int vLimit = mMaxVertices * 4;
 
     setTexturingAndBlending(false);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);

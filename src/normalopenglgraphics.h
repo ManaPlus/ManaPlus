@@ -130,6 +130,8 @@ class NormalOpenGLGraphics : public Graphics
 
         void drawLineArrayf(int size);
 
+        void initArrays();
+
         static void dumpSettings();
 
         /**
@@ -179,7 +181,7 @@ class NormalOpenGLGraphics : public Graphics
         bool mIsByteColor;
         gcn::Color mByteColor;
         float mFloatColor;
-
+        int mMaxVertices;
         bool mColorAlpha;
         FBOInfo mFbo;
 #ifdef DEBUG_BIND_TEXTURE
@@ -188,5 +190,7 @@ class NormalOpenGLGraphics : public Graphics
 #endif
 };
 #endif
+
+extern unsigned int vertexBufSize;
 
 #endif

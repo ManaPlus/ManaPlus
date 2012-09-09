@@ -67,7 +67,14 @@ class GraphicsManager
 
         void updatePlanformExtensions();
 
+        void initOpenGL();
+
+        void updateLimits();
+
         Graphics *createGraphics();
+
+        int getMaxVertices()
+        { return mMaxVertices; }
 
     private:
         std::set<std::string> mExtensions;
@@ -83,6 +90,8 @@ class GraphicsManager
         int mPlatformMinor;
 
         int mPlatformMajor;
+
+        int mMaxVertices;
 };
 
 extern GraphicsManager graphicsManager;

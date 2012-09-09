@@ -54,7 +54,8 @@ GraphicsManager::GraphicsManager() :
     mMinor(0),
     mMajor(0),
     mPlatformMinor(0),
-    mPlatformMajor(0)
+    mPlatformMajor(0),
+    mMaxVertices(500)
 {
 }
 
@@ -80,10 +81,8 @@ bool GraphicsManager::detectGraphics()
     logger->log("enable opengl mode");
     SDL_SetVideoMode(100, 100, 0, SDL_ANYFORMAT | SDL_OPENGL);
 
-    setGLVersion();
-    initOpenGLFunctions();
-    updateExtensions();
-    updatePlanformExtensions();
+    initOpenGL();
+
     std::string vendor = getGLString(GL_VENDOR);
     std::string renderer = getGLString(GL_RENDERER);
     logger->log("gl vendor: %s", vendor.c_str());
@@ -596,5 +595,32 @@ void GraphicsManager::initOpenGLFunctions()
 #ifdef WIN32
     assignFunction(wglGetExtensionsString, "wglGetExtensionsStringARB");
 #endif
+#endif
+}
+
+void GraphicsManager::updateLimits()
+{
+#ifdef USE_OPENGL
+    GLint value;
+    glGetIntegerv(GL_MAX_ELEMENTS_VERTICES, &value);
+    logger->log("GL_MAX_ELEMENTS_VERTICES: %d", value);
+
+    mMaxVertices = value;
+
+    glGetIntegerv(GL_MAX_ELEMENTS_INDICES, &value);
+    logger->log("GL_MAX_ELEMENTS_INDICES: %d", value);
+    if (value < mMaxVertices)
+        mMaxVertices = value;
+#endif
+}
+
+void GraphicsManager::initOpenGL()
+{
+#ifdef USE_OPENGL
+    setGLVersion();
+    initOpenGLFunctions();
+    updateExtensions();
+    updatePlanformExtensions();
+    updateLimits();
 #endif
 }

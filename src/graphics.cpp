@@ -166,11 +166,8 @@ bool Graphics::setOpenGLMode()
     logger->log("Using OpenGL %s double buffering.",
                 (gotDoubleBuffer ? "with" : "without"));
 
-    graphicsManager.setGLVersion();
-    graphicsManager.initOpenGLFunctions();
-    graphicsManager.updateExtensions();
-    graphicsManager.updatePlanformExtensions();
-
+    graphicsManager.initOpenGL();
+    initArrays();
     graphicsManager.updateTextureFormat();
     updateMemoryInfo();
 

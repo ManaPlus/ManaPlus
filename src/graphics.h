@@ -305,6 +305,9 @@ class Graphics : public gcn::SDLGraphics
         const std::string &getName() const
         { return mName; }
 
+        virtual void initArrays()
+        { }
+
         int mWidth;
         int mHeight;
 

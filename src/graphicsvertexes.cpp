@@ -26,7 +26,6 @@
 
 #ifdef USE_OPENGL
 int GraphicsVertexes::mUseOpenGL = 0;
-const unsigned int vertexBufSize = 500;
 #endif
 
 SDLGraphicsVertexes::SDLGraphicsVertexes()
