@@ -969,7 +969,7 @@ void NormalOpenGLGraphics::_beginDraw()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
     glHint(GL_LINE_SMOOTH_HINT, GL_FASTEST);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
@@ -1109,7 +1109,6 @@ void NormalOpenGLGraphics::drawPoint(int x, int y)
 void NormalOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
     setTexturingAndBlending(false);
-    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     restoreColor();
 
     mFloatTexArray[0] = static_cast<float>(x1) + 0.5f;
@@ -1118,8 +1117,6 @@ void NormalOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     mFloatTexArray[3] = static_cast<float>(y2) + 0.5f;
 
     drawLineArrayf(4);
-
-    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
 void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect)
@@ -1144,6 +1141,7 @@ void NormalOpenGLGraphics::setTexturingAndBlending(bool enable)
         if (!mTexture)
         {
             glEnable(OpenGLImageHelper::mTextureType);
+            glEnableClientState(GL_TEXTURE_COORD_ARRAY);
             mTexture = true;
         }
 
@@ -1170,6 +1168,7 @@ void NormalOpenGLGraphics::setTexturingAndBlending(bool enable)
         if (mTexture)
         {
             glDisable(OpenGLImageHelper::mTextureType);
+            glDisableClientState(GL_TEXTURE_COORD_ARRAY);
             mTexture = false;
         }
     }
@@ -1185,7 +1184,6 @@ void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
     const float height = static_cast<float>(rect.height);
 
     setTexturingAndBlending(false);
-    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     restoreColor();
 
     GLfloat vert[] =
@@ -1198,8 +1196,6 @@ void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
 
     glVertexPointer(2, GL_FLOAT, 0, &vert);
     glDrawArrays(filled ? GL_QUADS : GL_LINE_LOOP, 0, 4);
-
-    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
 bool NormalOpenGLGraphics::drawNet(const int x1, const int y1,
@@ -1210,7 +1206,6 @@ bool NormalOpenGLGraphics::drawNet(const int x1, const int y1,
     const unsigned int vLimit = mMaxVertices * 4;
 
     setTexturingAndBlending(false);
-    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     restoreColor();
 
     const float xf1 = static_cast<float>(x1);
@@ -1253,7 +1248,6 @@ bool NormalOpenGLGraphics::drawNet(const int x1, const int y1,
     if (vp > 0)
         drawLineArrayf(vp);
 
-    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
     return true;
 }
 
