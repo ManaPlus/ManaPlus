@@ -820,7 +820,7 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
     const float tw = static_cast<float>(image->mTexWidth);
     const float th = static_cast<float>(image->mTexHeight);
 
-    const unsigned int vLimit = mMaxVertices * 4;
+    const unsigned int vLimit = 512 * 4;
 
     NormalOpenGLGraphicsVertexes *ogl = vert->ogl;
 
@@ -833,9 +833,9 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
         float texY1 = static_cast<float>(srcY) / th;
 
         if (!ogl->mFloatTexArray)
-            ogl->mFloatTexArray = new GLfloat[mMaxVertices * 4 + 30];
+            ogl->mFloatTexArray = new GLfloat[vLimit];
         if (!ogl->mIntVertArray)
-            ogl->mIntVertArray = new GLint[mMaxVertices * 4 + 30];
+            ogl->mIntVertArray = new GLint[vLimit];
 
         GLfloat *floatTexArray = ogl->mFloatTexArray;
         GLint *intVertArray = ogl->mIntVertArray;
@@ -878,9 +878,9 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
     else
     {
         if (!ogl->mIntTexArray)
-            ogl->mIntTexArray = new GLint[mMaxVertices * 4 + 30];
+            ogl->mIntTexArray = new GLint[vLimit];
         if (!ogl->mIntVertArray)
-            ogl->mIntVertArray = new GLint[mMaxVertices * 4 + 30];
+            ogl->mIntVertArray = new GLint[vLimit];
 
         GLint *intTexArray = ogl->mIntTexArray;
         GLint *intVertArray = ogl->mIntVertArray;
