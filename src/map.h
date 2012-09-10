@@ -226,7 +226,7 @@ class Map : public Properties, public ConfigListener
         /**
          * Tells whether a tile is occupied by a being.
          */
-        bool occupied(const int x, const int y) const;
+//        bool occupied(const int x, const int y) const;
 
         /**
          * Returns the width of this map in tiles.

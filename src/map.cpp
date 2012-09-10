@@ -667,6 +667,7 @@ void Map::setWalk(const int x, const int y, const bool walkable A_UNUSED)
     blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
 }
 
+/*
 bool Map::occupied(const int x, const int y) const
 {
     const ActorSprites &actors = actorSpriteManager->getAll();
@@ -686,6 +687,7 @@ bool Map::occupied(const int x, const int y) const
 
     return false;
 }
+*/
 
 bool Map::contains(const int x, const int y) const
 {
