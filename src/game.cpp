@@ -442,6 +442,8 @@ Game::~Game()
 
     destroyGuiWindows();
 
+    AnimatedSprite::setEnableCache(false);
+
     del_0(actorSpriteManager)
     if (Client::getState() != STATE_CHANGE_MAP)
         del_0(player_node)
