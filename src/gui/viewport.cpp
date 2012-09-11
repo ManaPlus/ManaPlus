@@ -897,8 +897,8 @@ void Viewport::moveCameraToActor(const int actorId, const int x, const int y)
     const Actor *const actor = actorSpriteManager->findBeing(actorId);
     if (!actor)
         return;
-    const Vector actorPos = actor->getPosition();
-    const Vector playerPos = player_node->getPosition();
+    const Vector &actorPos = actor->getPosition();
+    const Vector &playerPos = player_node->getPosition();
     mCameraMode = 1;
     mCameraRelativeX = actorPos.x - playerPos.x + x;
     mCameraRelativeY = actorPos.y - playerPos.y + y;
@@ -909,7 +909,7 @@ void Viewport::moveCameraToPosition(const int x, const int y)
     if (!player_node)
         return;
 
-    const Vector playerPos = player_node->getPosition();
+    const Vector &playerPos = player_node->getPosition();
     mCameraMode = 1;
 
     mCameraRelativeX = x - playerPos.x;

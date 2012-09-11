@@ -62,7 +62,7 @@ void GameHandler::who()
 {
 }
 
-void GameHandler::setMap(const std::string map)
+void GameHandler::setMap(const std::string &map)
 {
     mMap = map.substr(0, map.rfind("."));
 }

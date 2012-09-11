@@ -22,7 +22,6 @@
 
 #include "map.h"
 
-#include "actorspritemanager.h"
 #include "client.h"
 #include "configuration.h"
 
@@ -706,7 +705,7 @@ Actors::iterator Map::addActor(Actor *const actor)
     return mActors.begin();
 }
 
-void Map::removeActor(Actors::iterator iterator)
+void Map::removeActor(const Actors::iterator iterator)
 {
     mActors.erase(iterator);
 //    mSpritesUpdated = true;

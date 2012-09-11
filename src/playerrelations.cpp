@@ -152,7 +152,6 @@ void PlayerRelationsManager::clear()
         removePlayer(*it);
     }
     delete names;
-    names = nullptr;
 }
 
 static const char *const PERSIST_IGNORE_LIST = "persistent-player-list";
@@ -585,7 +584,7 @@ bool PlayerRelationsManager::isGoodName(Being *const being)
     if (size < 3 || mRelations[name])
         return true;
 
-    bool status = checkName(name);
+    const bool status = checkName(name);
     being->setGoodStatus(status ? 1 : 0);
     return status;
 }

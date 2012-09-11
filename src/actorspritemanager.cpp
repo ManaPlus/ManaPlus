@@ -1442,10 +1442,9 @@ void ActorSpriteManager::parseLevels(std::string levels) const
 {
     levels += ", ";
     size_t f = 0;
-    size_t pos = 0;
     const std::string brkEnd = "), ";
+    size_t pos = levels.find(brkEnd, f);
 
-    pos = levels.find(brkEnd, f);
     while (pos != std::string::npos)
     {
         std::string part = levels.substr(f, pos - f);

@@ -337,10 +337,9 @@ void GraphicsManager::updateTextureFormat()
                 || supportExtension("3DFX_texture_compression_FXT1"))
             {
                 GLint num;
-                GLint *formats = nullptr;
                 glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
                 logger->log("support %d compressed formats", num);
-                formats = new GLint[num > 10 ? num : 10];
+                GLint *formats = new GLint[num > 10 ? num : 10];
                 glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
                 for (int f = 0; f < num; f ++)
                 {

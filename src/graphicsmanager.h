@@ -73,7 +73,7 @@ class GraphicsManager
 
         Graphics *createGraphics();
 
-        int getMaxVertices()
+        int getMaxVertices() const
         { return mMaxVertices; }
 
     private:

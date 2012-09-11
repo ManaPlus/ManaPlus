@@ -159,7 +159,6 @@ class ConfigurationObject
             }
 
             delete nextobj;
-            nextobj = nullptr;
         }
 
        /**

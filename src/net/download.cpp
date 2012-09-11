@@ -206,7 +206,6 @@ int Download::downloadThread(void *ptr)
 
     while (attempts < 3 && !complete && !d->mOptions.cancel)
     {
-        FILE *file = nullptr;
 
         d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_STARTING, 0, 0);
 
@@ -221,6 +220,7 @@ int Download::downloadThread(void *ptr)
 
         if (d->mCurl && !d->mOptions.cancel)
         {
+            FILE *file = nullptr;
             logger->log("Downloading: %s", d->mUrl.c_str());
 
             curl_easy_setopt(d->mCurl, CURLOPT_FOLLOWLOCATION, 1);

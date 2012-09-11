@@ -89,12 +89,9 @@ ItemPopup::~ItemPopup()
 {
     if (mIcon)
     {
-        Image *image = mIcon->getImage();
+        Image *const image = mIcon->getImage();
         if (image)
-        {
             image->decRef();
-            image = nullptr;
-        }
     }
 }
 

@@ -45,7 +45,7 @@ class GameHandler : public Net::GameHandler, public Listener
         virtual bool removeDeadBeings() const
         { return true; }
 
-        virtual void setMap(const std::string map);
+        virtual void setMap(const std::string &map);
 
         virtual bool canUseMagicBar() const
         { return true; }

@@ -142,7 +142,6 @@ bool getDataFromPasteboard(PasteboardRef inPasteboard,
                            char* flavorText /* out */,
                            const int bufSize)
 {
-    OSStatus            err = noErr;
     PasteboardSyncFlags syncFlags;
     ItemCount           itemCount;
 
@@ -151,7 +150,7 @@ bool getDataFromPasteboard(PasteboardRef inPasteboard,
     //require_action( syncFlags & kPasteboardModified, PasteboardOutOfSync,
     //               err = badPasteboardSyncErr );
 
-    err = PasteboardGetItemCount(inPasteboard, &itemCount);
+    OSStatus err = PasteboardGetItemCount(inPasteboard, &itemCount);
     require_noerr(err, CantGetPasteboardItemCount);
 
     for (UInt32 itemIndex = 1; itemIndex <= itemCount; itemIndex ++)
@@ -239,10 +238,8 @@ CantGetPasteboardItemCount:
 
 bool getClipBoard(char* text /* out */, const int bufSize)
 {
-    OSStatus err = noErr;
-
     PasteboardRef theClipboard;
-    err = PasteboardCreate(kPasteboardClipboard, &theClipboard);
+    OSStatus err = PasteboardCreate(kPasteboardClipboard, &theClipboard);
     require_noerr(err, PasteboardCreateFailed);
 
     if (!getDataFromPasteboard(theClipboard, text, bufSize))

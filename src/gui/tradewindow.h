@@ -132,10 +132,10 @@ class TradeWindow : public Window,
         /**
          * Add item what will be added to trade.
          */
-        void addAutoItem(const std::string nick, Item *const item,
+        void addAutoItem(const std::string &nick, Item *const item,
                          const int amount);
 
-        void addAutoMoney(const std::string nick, const int money);
+        void addAutoMoney(const std::string &nick, const int money);
 
         void initTrade(std::string nick);
 

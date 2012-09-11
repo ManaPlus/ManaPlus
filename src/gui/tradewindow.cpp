@@ -407,7 +407,7 @@ void TradeWindow::clear()
         static_cast<int>(Theme::LABEL)));
 }
 
-void TradeWindow::addAutoItem(const std::string nick, Item* const item,
+void TradeWindow::addAutoItem(const std::string &nick, Item* const item,
                               const int amount)
 {
     mAutoAddToNick = nick;
@@ -415,7 +415,7 @@ void TradeWindow::addAutoItem(const std::string nick, Item* const item,
     mAutoAddAmount = amount;
 }
 
-void TradeWindow::addAutoMoney(const std::string nick, const int money)
+void TradeWindow::addAutoMoney(const std::string &nick, const int money)
 {
     mAutoAddToNick = nick;
     mAutoMoney = money;
