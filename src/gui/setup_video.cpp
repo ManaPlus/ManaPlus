@@ -480,21 +480,29 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         if (!width || !height)
             return;
 
-        // TODO: Find out why the drawing area doesn't resize without a restart.
         if (width != mainGraphics->mWidth || height != mainGraphics->mHeight)
         {
 #if defined(_WIN32)
-            if (width < mainGraphics->mWidth || height < mainGraphics->mHeight)
+            if (!config.getIntValue("opengl"))
             {
-                new OkDialog(_("Screen Resolution Changed"),
-                   _("Restart your client for the change to take effect.")
-                   + std::string("\n") + _("Some windows may be moved to "
-                    "fit the lowered resolution."));
+                Client::resize(width, height);
             }
             else
             {
-                new OkDialog(_("Screen Resolution Changed"),
-                    _("Restart your client for the change to take effect."));
+                if (width < mainGraphics->mWidth
+                    || height < mainGraphics->mHeight)
+                {
+                    new OkDialog(_("Screen Resolution Changed"),
+                       _("Restart your client for the change to take effect.")
+                       + std::string("\n") + _("Some windows may be moved to "
+                        "fit the lowered resolution."));
+                }
+                else
+                {
+                    new OkDialog(_("Screen Resolution Changed"),
+                        _("Restart your client for the change"
+                        " to take effect."));
+                }
             }
 #else
             Client::resize(width, height);
