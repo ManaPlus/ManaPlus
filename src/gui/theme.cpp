@@ -679,6 +679,8 @@ static int readColorType(const std::string &type)
         "PROGRESS_BAR",
         "BUTTON",
         "BUTTON_DISABLED",
+        "BUTTON_HIGHLIGHTED",
+        "BUTTON_PRESSED",
         "CHECKBOX",
         "DROPDOWN",
         "LABEL",

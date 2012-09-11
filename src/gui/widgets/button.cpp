@@ -193,6 +193,8 @@ void Button::init()
     }
     mEnabledColor = Theme::getThemeColor(Theme::BUTTON);
     mDisabledColor = Theme::getThemeColor(Theme::BUTTON_DISABLED);
+    mHighlightedColor = Theme::getThemeColor(Theme::BUTTON_HIGHLIGHTED);
+    mPressedColor = Theme::getThemeColor(Theme::BUTTON_PRESSED);
 
     mInstances++;
 }
@@ -323,10 +325,21 @@ void Button::draw(gcn::Graphics *graphics)
 
 //    g2->drawImageRect(0, 0, getWidth(), getHeight(), button[mode]);
 
-    if (mode == BUTTON_DISABLED)
-        graphics->setColor(mDisabledColor);
-    else
-        graphics->setColor(mEnabledColor);
+    switch (mode)
+    {
+        case BUTTON_DISABLED:
+            graphics->setColor(mDisabledColor);
+            break;
+        case BUTTON_PRESSED:
+            graphics->setColor(mPressedColor);
+            break;
+        case BUTTON_HIGHLIGHTED:
+            graphics->setColor(mHighlightedColor);
+            break;
+        default:
+            graphics->setColor(mEnabledColor);
+            break;
+    }
 
     int textX = 0;
     const int textY = getHeight() / 2 - getFont()->getHeight() / 2;

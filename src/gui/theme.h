@@ -171,6 +171,8 @@ class Theme : public Palette, public ConfigListener
             PROGRESS_BAR,
             BUTTON,
             BUTTON_DISABLED,
+            BUTTON_HIGHLIGHTED,
+            BUTTON_PRESSED,
             CHECKBOX,
             DROPDOWN,
             LABEL,

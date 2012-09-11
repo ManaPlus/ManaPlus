@@ -6,6 +6,8 @@
 	<color id="BORDER" color="#00c000" />
 	<color id="PROGRESS_BAR" color="#ffffff" />
 	<color id="BUTTON" color="#ffffff" />
+	<color id="BUTTON_HIGHLIGHTED" color="#ffffff" />
+	<color id="BUTTON_PRESSED" color="#ffffff" />
 	<color id="BUTTON_DISABLED" color="#777777" />
 	<color id="CHECKBOX" color="#ffffff" />
 	<color id="DROPDOWN" color="#ffffff" />

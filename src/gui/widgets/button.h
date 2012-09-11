@@ -143,6 +143,8 @@ class Button : public gcn::Button, public gcn::WidgetListener
         int mYOffset;
         gcn::Color mEnabledColor;
         gcn::Color mDisabledColor;
+        gcn::Color mHighlightedColor;
+        gcn::Color mPressedColor;
         Image **mImages;
         ImageSet *mImageSet;
         int mImageWidth;
