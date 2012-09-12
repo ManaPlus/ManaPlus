@@ -146,6 +146,8 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
         static ImageRect background;
         static ImageRect vMarker;
         static ImageRect vMarkerHi;
+        static ImageRect vBackground;
+        static ImageRect hBackground;
         static Image *buttons[4][2];
 
         int mX, mY;

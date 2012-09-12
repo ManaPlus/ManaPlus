@@ -39,6 +39,8 @@ float ScrollArea::mAlpha = 1.0;
 ImageRect ScrollArea::background;
 ImageRect ScrollArea::vMarker;
 ImageRect ScrollArea::vMarkerHi;
+ImageRect ScrollArea::vBackground;
+ImageRect ScrollArea::hBackground;
 Image *ScrollArea::buttons[4][2];
 
 static std::string const buttonFiles[2] =
@@ -101,6 +103,8 @@ ScrollArea::~ScrollArea()
         {
             theme->unloadRect(vMarker);
             theme->unloadRect(vMarkerHi);
+            theme->unloadRect(vBackground);
+            theme->unloadRect(hBackground);
             for (int i = 0; i < 2; i ++)
             {
                 for (int f = UP; f < BUTTONS_DIR; f ++)
@@ -127,7 +131,10 @@ void ScrollArea::init(std::string skinName)
 
     if (skinName == "")
         skinName = "scroll_background.xml";
-    Theme::instance()->loadRect(background, skinName, "scroll_background.xml");
+    Theme *const theme = Theme::instance();
+    if (theme)
+        theme->loadRect(background, skinName, "scroll_background.xml");
+
     if (instances == 0)
     {
         for (int f = 0; f < 9; f ++)
@@ -135,13 +142,16 @@ void ScrollArea::init(std::string skinName)
             background.grid[f] = nullptr;
             vMarker.grid[f] = nullptr;
             vMarkerHi.grid[f] = nullptr;
+            vBackground.grid[f] = nullptr;
+            hBackground.grid[f] = nullptr;
         }
 
-        if (Theme::instance())
+        if (theme)
         {
-            Theme::instance()->loadRect(vMarker, "scroll.xml", "");
-            Theme::instance()->loadRect(vMarkerHi, "scroll_highlighted.xml",
-                "scroll.xml");
+            theme->loadRect(vMarker, "scroll.xml", "");
+            theme->loadRect(vMarkerHi, "scroll_highlighted.xml", "scroll.xml");
+            theme->loadRect(vBackground, "scroll_vbackground.xml", "");
+            theme->loadRect(hBackground, "scroll_hbackground.xml", "");
         }
 
         for (int i = 0; i < 2; i ++)
@@ -230,6 +240,10 @@ void ScrollArea::updateAlpha()
         {
             if (background.grid[a])
                 background.grid[a]->setAlpha(mAlpha);
+            if (hBackground.grid[a])
+                hBackground.grid[a]->setAlpha(mAlpha);
+            if (vBackground.grid[a])
+                vBackground.grid[a]->setAlpha(mAlpha);
             if (vMarker.grid[a])
                 vMarker.grid[a]->setAlpha(mAlpha);
             if (vMarkerHi.grid[a])
@@ -260,7 +274,6 @@ void ScrollArea::draw(gcn::Graphics *graphics)
     drawChildren(graphics);
 }
 
-//void ScrollArea::drawFrame(gcn::Graphics *graphics A_UNUSED)
 void ScrollArea::drawFrame(gcn::Graphics *graphics)
 {
     if (mOpaque)
@@ -381,17 +394,49 @@ void ScrollArea::drawRightButton(gcn::Graphics *const graphics)
 void ScrollArea::drawVBar(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle dim = getVerticalBarDimension();
-    graphics->setColor(mGray);
-    graphics->fillRectangle(dim);
-    graphics->setColor(mBackground);
+    Graphics *g = static_cast<Graphics*>(graphics);
+
+    if (vBackground.grid[4])
+    {
+        g->drawImagePattern(vBackground.grid[4],
+            dim.x, dim.y, dim.width, dim.height);
+    }
+    if (vBackground.grid[1])
+    {
+        g->drawImagePattern(vBackground.grid[1],
+            dim.x, dim.y, dim.width, vBackground.grid[1]->getHeight());
+    }
+    if (vBackground.grid[7])
+    {
+        g->drawImagePattern(vBackground.grid[7],
+            dim.x, dim.height - vBackground.grid[7]->getHeight() + dim.y,
+            dim.width, vBackground.grid[7]->getHeight());
+    }
 }
 
 void ScrollArea::drawHBar(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle dim = getHorizontalBarDimension();
-    graphics->setColor(mGray);
-    graphics->fillRectangle(dim);
-    graphics->setColor(mBackground);
+    Graphics *g = static_cast<Graphics*>(graphics);
+
+    if (hBackground.grid[4])
+    {
+        g->drawImagePattern(hBackground.grid[4],
+            dim.x, dim.y, dim.width, dim.height);
+    }
+
+    if (hBackground.grid[3])
+    {
+        g->drawImagePattern(hBackground.grid[3],
+            dim.x, dim.y, hBackground.grid[3]->getWidth(), dim.height);
+    }
+
+    if (hBackground.grid[5])
+    {
+        g->drawImagePattern(hBackground.grid[5],
+            dim.x + dim.width - hBackground.grid[5]->getWidth(), dim.y,
+            hBackground.grid[5]->getWidth(), dim.height);
+    }
 }
 
 void ScrollArea::drawVMarker(gcn::Graphics *const graphics)
