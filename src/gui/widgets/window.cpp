@@ -192,28 +192,19 @@ void Window::draw(gcn::Graphics *graphics)
             static_cast<gcn::Graphics::Alignment>(mCaptionAlign));
     }
 
-    int closePadding = getOption("closePadding");
-
     // Draw Close Button
-    if (mCloseButton && mSkin->getCloseImage())
+    if (mCloseButton)
     {
         const Image *const button = mSkin->getCloseImage();
-        const int x = getWidth() - button->getWidth() - closePadding;
-        g->drawImage(button, x, closePadding);
+        if (button)
+            g->drawImage(button, mCloseRect.x, mCloseRect.y);
     }
-
     // Draw Sticky Button
     if (mStickyButton)
     {
         const Image *const button = mSkin->getStickyImage(mSticky);
         if (button)
-        {
-            int x = getWidth() - button->getWidth() - closePadding;
-            if (mCloseButton && mSkin->getCloseImage())
-                x -= mSkin->getCloseImage()->getWidth() + closePadding;
-
-            g->drawImage(button, x, closePadding);
-        }
+            g->drawImage(button, mStickyRect.x, mStickyRect.y);
     }
 
     if (update)
@@ -391,13 +382,39 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
                            getHeight() - mGrip->getHeight() - area.y);
     }
 
-
     if (mLayout)
     {
         int w = area.width;
         int h = area.height;
         mLayout->reflow(w, h);
     }
+    const bool showClose = mCloseButton && mSkin->getCloseImage();
+    const int closePadding = getOption("closePadding");
+    if (showClose)
+    {
+        const Image *const button = mSkin->getCloseImage();
+        const int x = getWidth() - button->getWidth() - closePadding;
+        mCloseRect.x = x;
+        mCloseRect.y = closePadding;
+        mCloseRect.width = button->getWidth();
+        mCloseRect.height = button->getHeight();
+    }
+    if (mStickyButton)
+    {
+        const Image *const button = mSkin->getStickyImage(mSticky);
+        if (button)
+        {
+            int x = getWidth() - button->getWidth() - closePadding;
+            if (showClose)
+                x -= mSkin->getCloseImage()->getWidth() + closePadding;
+
+            mStickyRect.x = x;
+            mStickyRect.y = closePadding;
+            mStickyRect.width = button->getWidth();
+            mStickyRect.height = button->getHeight();
+        }
+    }
+
     mRedraw = true;
 }
 
@@ -485,49 +502,21 @@ void Window::mousePressed(gcn::MouseEvent &event)
         const int y = event.getY();
 
         // Handle close button
-        if (mCloseButton && mSkin)
+        if (mCloseButton && mSkin && mCloseRect.isPointInRect(x, y))
         {
-            const Image *const img = mSkin->getCloseImage();
-            if (img)
-            {
-                gcn::Rectangle closeButtonRect(
-                    getWidth() - img->getWidth()
-                    - getPadding(), getPadding(),
-                    img->getWidth(), img->getHeight());
-
-                if (closeButtonRect.isPointInRect(x, y))
-                {
-                    mouseResize = 0;
-                    mMoved = 0;
-                    close();
-                    return;
-                }
-            }
+            mouseResize = 0;
+            mMoved = 0;
+            close();
+            return;
         }
 
         // Handle sticky button
-        if (mStickyButton && mSkin)
+        if (mStickyButton && mSkin && mStickyRect.isPointInRect(x, y))
         {
-            const Image *const button = mSkin->getStickyImage(mSticky);
-            if (button)
-            {
-                int rx = getWidth() - button->getWidth() - getPadding();
-                if (mCloseButton)
-                {
-                    const Image *const img = mSkin->getCloseImage();
-                    if (img)
-                        rx -= img->getWidth();
-                }
-                gcn::Rectangle stickyButtonRect(rx, getPadding(),
-                    button->getWidth(), button->getHeight());
-                if (stickyButtonRect.isPointInRect(x, y))
-                {
-                    setSticky(!isSticky());
-                    mouseResize = 0;
-                    mMoved = 0;
-                    return;
-                }
-            }
+            setSticky(!isSticky());
+            mouseResize = 0;
+            mMoved = 0;
+            return;
         }
 
         // Handle window resizing
@@ -897,30 +886,34 @@ void Window::adjustPositionAfterResize(const int oldScreenWidth,
 
 int Window::getResizeHandles(const gcn::MouseEvent &event)
 {
-    if ((mStickyButtonLock && mSticky) || event.getX() < 0 || event.getY() < 0)
+    if (event.getX() < 0 || event.getY() < 0)
         return 0;
 
     int resizeHandles = 0;
-    const unsigned y = event.getY();
-
-    if (mGrip && (y > mTitleBarHeight || (y < getPadding()
-        && mTitleBarHeight > getPadding())))
+    if (!mStickyButtonLock || !mSticky)
     {
-        const unsigned x = event.getX();
+        const unsigned y = event.getY();
 
-        if (!getWindowArea().isPointInRect(x, y) && event.getSource() == this)
+        if (mGrip && (y > mTitleBarHeight || (y < getPadding()
+            && mTitleBarHeight > getPadding())))
         {
-            resizeHandles |= (x > getWidth() - resizeBorderWidth) ? RIGHT :
-                              (x < resizeBorderWidth) ? LEFT : 0;
-            resizeHandles |= (y > getHeight() - resizeBorderWidth) ? BOTTOM :
-                              (y < resizeBorderWidth) ? TOP : 0;
-        }
+            const unsigned x = event.getX();
 
-        if (event.getSource() == mGrip)
-        {
-            mDragOffsetX = x;
-            mDragOffsetY = y;
-            resizeHandles |= BOTTOM | RIGHT;
+            if (!getWindowArea().isPointInRect(x, y)
+                && event.getSource() == this)
+            {
+                resizeHandles |= (x > getWidth() - resizeBorderWidth)
+                    ? RIGHT : (x < resizeBorderWidth) ? LEFT : 0;
+                resizeHandles |= (y > getHeight() - resizeBorderWidth)
+                    ? BOTTOM : (y < resizeBorderWidth) ? TOP : 0;
+            }
+
+            if (event.getSource() == mGrip)
+            {
+                mDragOffsetX = x;
+                mDragOffsetY = y;
+                resizeHandles |= BOTTOM | RIGHT;
+            }
         }
     }
 

@@ -444,6 +444,8 @@ class Window : public gcn::Window, private gcn::WidgetListener
         ResizeGrip *mGrip;            /**< Resize grip */
         Window *mParent;              /**< The parent window */
         Layout *mLayout;              /**< Layout handler */
+        gcn::Rectangle mCloseRect;    /**< Close button rectangle */
+        gcn::Rectangle mStickyRect;   /**< Sticky button rectangle */
         std::string mWindowName;      /**< Name of the window */
         bool mShowTitle;              /**< Window has a title bar */
         bool mModal;                  /**< Window is modal */
