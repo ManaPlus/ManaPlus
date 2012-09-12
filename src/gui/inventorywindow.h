@@ -172,10 +172,6 @@ class InventoryWindow : public Window,
         gcn::Button *mRetrieveButton;
         gcn::Button *mCloseButton;
 
-        gcn::Label *mWeightLabel;
-        gcn::Label *mSlotsLabel;
-        gcn::Label *mFilterLabel;
-
         ProgressBar *mWeightBar;
         ProgressBar *mSlotsBar;
         TabStrip *mFilter;

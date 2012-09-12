@@ -105,9 +105,6 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mStoreButton(nullptr),
     mRetrieveButton(nullptr),
     mCloseButton(nullptr),
-    mWeightLabel(nullptr),
-    mSlotsLabel(new Label(_("Slots:"))),
-    mFilterLabel(new Label(_("Filter:"))),
     mWeightBar(nullptr),
     mSlotsBar(new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS)),
     mFilter(nullptr),
@@ -186,18 +183,13 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
         mOutfitButton = new Button(_("Outfits"), "outfit", this);
         mShopButton = new Button(_("Shop"), "shop", this);
         mEquipmentButton = new Button(_("Equipment"), "equipment", this);
-
-        mWeightLabel = new Label(_("Weight:"));
         mWeightBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_WEIGHT);
 
-        place(0, 0, mWeightLabel, 1).setPadding(3);
-        place(1, 0, mWeightBar, 3);
-        place(4, 0, mSlotsLabel, 1).setPadding(3);
-        mSlotsBarCell = &place(5, 0, mSlotsBar, 4);
+        place(0, 0, mWeightBar, 4);
+        mSlotsBarCell = &place(4, 0, mSlotsBar, 5);
         mSortDropDownCell = &place(9, 0, mSortDropDown, 2);
 
-        place(0, 1, mFilterLabel, 1).setPadding(3);
-        mFilterCell = &place(1, 1, mFilter, 9).setPadding(3);
+        mFilterCell = &place(0, 1, mFilter, 10).setPadding(3);
         mNameFilterCell = &place(9, 1, mNameFilter, 2);
 
         place(0, 2, invenScroll, 11).setPadding(3);
@@ -216,12 +208,10 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
         mRetrieveButton = new Button(_("Retrieve"), "retrieve", this);
         mCloseButton = new Button(_("Close"), "close", this);
 
-        place(0, 0, mSlotsLabel).setPadding(3);
-        mSlotsBarCell = &place(1, 0, mSlotsBar, 5);
+        mSlotsBarCell = &place(0, 0, mSlotsBar, 6);
         mSortDropDownCell = &place(6, 0, mSortDropDown, 1);
 
-        place(0, 1, mFilterLabel, 1).setPadding(3);
-        mFilterCell = &place(1, 1, mFilter, 6).setPadding(3);
+        mFilterCell = &place(0, 1, mFilter, 7).setPadding(3);
         mNameFilterCell = &place(6, 1, mNameFilter, 1);
 
         place(0, 2, invenScroll, 7, 4);
