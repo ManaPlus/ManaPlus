@@ -77,6 +77,8 @@ void ItemLinkHandler::handleLink(const std::string &link,
     }
     else
     {
-        openBrowser(link);
+        std::string url = link;
+        replaceAll(url, " ", "");
+        openBrowser(url);
     }
 }

@@ -1223,7 +1223,7 @@ void CommandHandler::handleUrl(const std::string &args,
         std::string url = args;
         if (!strStartWith(url, "http"))
             url = "http://" + url;
-        std::string str = strprintf("[@@%s|%s@@]", url.c_str(), args.c_str());
+        std::string str = strprintf("[@@%s |%s@@]", url.c_str(), args.c_str());
         outStringNormal(tab, str, str);
     }
 }
