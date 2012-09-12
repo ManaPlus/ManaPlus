@@ -256,18 +256,7 @@ void ScrollArea::draw(gcn::Graphics *graphics)
         drawHMarker(graphics);
     }
 
-
-    if (mHBarVisible && mVBarVisible)
-    {
-        graphics->setColor(getBaseColor());
-        graphics->fillRectangle(gcn::Rectangle(getWidth() - mScrollbarWidth,
-                    getHeight() - mScrollbarWidth,
-                    mScrollbarWidth,
-                    mScrollbarWidth));
-    }
-
     updateAlpha();
-
     drawChildren(graphics);
 }
 
