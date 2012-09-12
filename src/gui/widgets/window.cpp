@@ -75,6 +75,7 @@ Window::Window(const std::string &caption, const bool modal,
     mCaptionOffsetY(5),
     mCaptionAlign(gcn::Graphics::LEFT),
     mTitlePadding(4),
+    mResizeHandles(-1),
     mRedraw(true),
     mCaptionFont(getFont())
 {
@@ -195,7 +196,8 @@ void Window::draw(gcn::Graphics *graphics)
     // Draw Close Button
     if (mCloseButton)
     {
-        const Image *const button = mSkin->getCloseImage();
+        const Image *const button = mSkin->getCloseImage(
+            mResizeHandles == CLOSE);
         if (button)
             g->drawImage(button, mCloseRect.x, mCloseRect.y);
     }
@@ -388,11 +390,11 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
         int h = area.height;
         mLayout->reflow(w, h);
     }
-    const bool showClose = mCloseButton && mSkin->getCloseImage();
+    const bool showClose = mCloseButton && mSkin->getCloseImage(false);
     const int closePadding = getOption("closePadding");
     if (showClose)
     {
-        const Image *const button = mSkin->getCloseImage();
+        const Image *const button = mSkin->getCloseImage(false);
         const int x = getWidth() - button->getWidth() - closePadding;
         mCloseRect.x = x;
         mCloseRect.y = closePadding;
@@ -406,7 +408,7 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
         {
             int x = getWidth() - button->getWidth() - closePadding;
             if (showClose)
-                x -= mSkin->getCloseImage()->getWidth() + closePadding;
+                x -= mSkin->getCloseImage(false)->getWidth() + closePadding;
 
             mStickyRect.x = x;
             mStickyRect.y = closePadding;
@@ -520,7 +522,7 @@ void Window::mousePressed(gcn::MouseEvent &event)
         }
 
         // Handle window resizing
-        mouseResize = getResizeHandles(event);
+        mouseResize = getResizeHandles(event) & resizeMask;
         if (canMove())
             mMoved = !mouseResize;
         else
@@ -557,10 +559,10 @@ void Window::mouseMoved(gcn::MouseEvent &event)
     if (!gui)
         return;
 
-    const int resizeHandles = getResizeHandles(event);
+    mResizeHandles = getResizeHandles(event);
 
     // Changes the custom mouse cursor based on it's current position.
-    switch (resizeHandles)
+    switch (mResizeHandles & resizeMask)
     {
         case BOTTOM | RIGHT:
         case TOP | LEFT:
@@ -890,15 +892,16 @@ int Window::getResizeHandles(const gcn::MouseEvent &event)
         return 0;
 
     int resizeHandles = 0;
+    const unsigned y = event.getY();
+    const unsigned x = event.getX();
+    if (mCloseRect.isPointInRect(x, y))
+        return CLOSE;
+
     if (!mStickyButtonLock || !mSticky)
     {
-        const unsigned y = event.getY();
-
         if (mGrip && (y > mTitleBarHeight || (y < getPadding()
             && mTitleBarHeight > getPadding())))
         {
-            const unsigned x = event.getX();
-
             if (!getWindowArea().isPointInRect(x, y)
                 && event.getSource() == this)
             {

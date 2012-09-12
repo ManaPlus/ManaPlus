@@ -422,8 +422,11 @@ class Window : public gcn::Window, private gcn::WidgetListener
             TOP    = 0x01,
             RIGHT  = 0x02,
             BOTTOM = 0x04,
-            LEFT   = 0x08
+            LEFT   = 0x08,
+            CLOSE  = 0x10
         };
+
+        const int resizeMask = 8 + 4 + 2 + 1;
 
         /**
          * Ensures the window is on the screen, moving it if necessary. This is
@@ -479,6 +482,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
         int mCaptionOffsetY;
         int mCaptionAlign;
         int mTitlePadding;
+        int mResizeHandles;
         bool mRedraw;
         gcn::Font *mCaptionFont;
 };

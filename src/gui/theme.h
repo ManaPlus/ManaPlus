@@ -72,8 +72,8 @@ class Skin
         /**
          * Returns the image used by a close button for this skin.
          */
-        Image *getCloseImage() const
-        { return mCloseImage; }
+        Image *getCloseImage(const bool state) const
+        { return state ? mCloseImageHighlighted : mCloseImage; }
 
         /**
          * Returns the image used by a sticky button for this skin.
@@ -117,6 +117,7 @@ class Skin
         std::string mName;         /**< Name of the skin to use */
         ImageRect mBorder;         /**< The window border and background */
         Image *mCloseImage;        /**< Close Button Image */
+        Image *mCloseImageHighlighted; /**< Highlighted close Button Image */
         Image *mStickyImageUp;     /**< Sticky Button Image */
         Image *mStickyImageDown;   /**< Sticky Button Image */
         int mPadding;

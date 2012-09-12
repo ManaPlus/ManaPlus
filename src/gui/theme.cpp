@@ -69,12 +69,19 @@ Skin::Skin(const ImageRect &skin, const ImageRect &images,
     mName(name),
     mBorder(skin),
     mCloseImage(images.grid[0]),
-    mStickyImageUp(images.grid[1]),
-    mStickyImageDown(images.grid[2]),
+    mCloseImageHighlighted(images.grid[1]),
+    mStickyImageUp(images.grid[2]),
+    mStickyImageDown(images.grid[3]),
     mPadding(padding),
     mTitlePadding(titlePadding),
     mOptions(options)
 {
+    if (!mCloseImageHighlighted)
+    {
+        mCloseImageHighlighted = mCloseImage;
+        if (mCloseImageHighlighted)
+            mCloseImageHighlighted->incRef();
+    }
 }
 
 Skin::~Skin()
@@ -93,6 +100,12 @@ Skin::~Skin()
     {
         mCloseImage->decRef();
         mCloseImage = nullptr;
+    }
+
+    if (mCloseImageHighlighted)
+    {
+        mCloseImageHighlighted->decRef();
+        mCloseImageHighlighted = nullptr;
     }
 
     if (mStickyImageUp)
@@ -125,6 +138,8 @@ void Skin::updateAlpha(float minimumOpacityAllowed)
 
     if (mCloseImage)
         mCloseImage->setAlpha(alpha);
+    if (mCloseImageHighlighted)
+        mCloseImageHighlighted->setAlpha(alpha);
     if (mStickyImageUp)
         mStickyImageUp->setAlpha(alpha);
     if (mStickyImageDown)
@@ -370,8 +385,9 @@ static const SkinParameter skinParam[] =
 static const SkinParameter imageParam[] =
 {
     {0, "closeImage"},
-    {1, "stickyImageUp"},
-    {2, "stickyImageDown"},
+    {1, "closeImageHighlighted"},
+    {2, "stickyImageUp"},
+    {3, "stickyImageDown"},
 };
 
 struct SkinHelper
