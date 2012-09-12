@@ -24,15 +24,30 @@
 
 #include "item.h"
 
+#include "gui/confirmdialog.h"
 #include "gui/itempopup.h"
 #include "gui/viewport.h"
 
+#include "utils/gettext.h"
 #include "utils/process.h"
 
 #include <sstream>
 #include <string>
 
+#include <guichan/actionlistener.hpp>
+
 #include "debug.h"
+
+struct OpenUrlListener : public gcn::ActionListener
+{
+    void action(const gcn::ActionEvent &event)
+    {
+        if (event.getId() == "yes")
+            openBrowser(url);
+    }
+
+    std::string url;
+} listener;
 
 ItemLinkHandler::ItemLinkHandler() :
     mItemPopup(new ItemPopup)
@@ -79,6 +94,9 @@ void ItemLinkHandler::handleLink(const std::string &link,
     {
         std::string url = link;
         replaceAll(url, " ", "");
-        openBrowser(url);
+        listener.url = url;
+        ConfirmDialog *confirmDlg = new ConfirmDialog(
+            _("Open url"), url, false, true);
+        confirmDlg->addActionListener(&listener); 
     }
 }
