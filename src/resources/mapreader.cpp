@@ -583,10 +583,10 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 
                     if (hasAnimations)
                     {
-                        TileAnimationMapCIter i = tileAnimations.find(gid);
-                        if (i != tileAnimations.end())
+                        TileAnimationMapCIter it = tileAnimations.find(gid);
+                        if (it != tileAnimations.end())
                         {
-                            TileAnimation *const ani = i->second;
+                            TileAnimation *const ani = it->second;
                             if (ani)
                                 ani->addAffectedTile(layer, x + y * w);
                         }
