@@ -102,7 +102,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
     Graphics *const graphics = static_cast<Graphics *const>(gcnGraphics);
 
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
-    graphics->setColor(mHighlightColor);
+//    graphics->setColor(mHighlightColor);
     graphics->setFont(getFont());
 
     const int fontHeight = getFont()->getHeight();
@@ -175,28 +175,8 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
             if (parent)
             {
-//                int diff;
-//                if (a->getDamageHp() > 1024)
-//                    diff = 0;
-//                else
-//                    diff = 1024 - a->getDamageHp();
                 gcn::Color color = Theme::getProgressColor(Theme::PROG_HP,
                         1);
-//                        0 / 1024);
-/*
-                if (a->getDamageHp() >= 400)
-                {
-                }
-                else
-                {
-//                    int intens = 1024/(400 - a->getDamageHp());
-                    int intens = a->getDamageHp() / 1024;
-                    if (intens > 1)
-                        intens = 1;
-                    color = Theme::getProgressColor(Theme::PROG_HP,
-                        intens);
-                }
-*/
 
                 color.a = 80;
                 graphics->setColor(color);

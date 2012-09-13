@@ -226,11 +226,13 @@ void ItemContainer::draw(gcn::Graphics *graphics)
 
     for (int j = 0; j < mGridRows; j++)
     {
+        const int intY0 = j * BOX_HEIGHT;
+        int itemIndex = j * mGridColumns - 1;
         for (int i = 0; i < mGridColumns; i++)
         {
             int itemX = i * BOX_WIDTH;
-            int itemY = j * BOX_HEIGHT;
-            const int itemIndex = j * mGridColumns + i;
+            int itemY = intY0;
+            itemIndex ++;
             if (mShowMatrix[itemIndex] < 0)
                 continue;
 

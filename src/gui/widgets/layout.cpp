@@ -88,8 +88,9 @@ void LayoutCell::computeSizes()
 
     std::vector <std::vector <LayoutCell *> >::const_iterator
         i = mArray->mCells.begin();
-
-    while (i != mArray->mCells.end())
+    std::vector <std::vector <LayoutCell *> >::const_iterator
+        i_end = mArray->mCells.end();
+    while (i != i_end)
     {
         std::vector <LayoutCell *>::const_iterator j = i->begin();
         while (j != i->end())
@@ -115,10 +116,13 @@ LayoutArray::~LayoutArray()
 {
     std::vector <std::vector <LayoutCell *> >::iterator
         i = mCells.begin();
-    while (i != mCells.end())
+    std::vector <std::vector <LayoutCell *> >::iterator
+        i_end = mCells.end();
+    while (i != i_end)
     {
         std::vector< LayoutCell * >::iterator j = i->begin();
-        while (j != i->end())
+        std::vector< LayoutCell * >::iterator j_end = i->end();
+        while (j != j_end)
         {
             delete *j;
             ++j;
@@ -158,7 +162,9 @@ void LayoutArray::resizeGrid(int w, const int h)
 
     std::vector <std::vector <LayoutCell *> >::iterator
         i = mCells.begin();
-    while (i != mCells.end())
+    std::vector <std::vector <LayoutCell *> >::iterator
+        i_end = mCells.end();
+    while (i != i_end)
     {
         i->resize(w, nullptr);
         ++i;

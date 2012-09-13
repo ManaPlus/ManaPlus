@@ -92,8 +92,3 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
         }
     }
 }
-
-unsigned int ExtendedListBox::getRowHeight() const
-{
-    return mRowHeight;
-}

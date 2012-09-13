@@ -367,7 +367,8 @@ namespace gcn
          * @see setVisible
          * @since 0.1.0
          */
-        bool isVisible() const;
+        bool isVisible() const
+        { return mVisible && (!mParent || mParent->isVisible()); }
 
         /**
          * Sets the base color of the widget.

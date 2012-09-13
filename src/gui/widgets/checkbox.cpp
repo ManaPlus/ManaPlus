@@ -178,9 +178,9 @@ void CheckBox::drawBox(gcn::Graphics *const graphics)
 {
     const Image *box;
 
-    if (isEnabled())
+    if (mEnabled && isVisible())
     {
-        if (isSelected())
+        if (mSelected)
         {
             if (mHasMouse)
                 box = checkBoxCheckedHi;
@@ -197,7 +197,7 @@ void CheckBox::drawBox(gcn::Graphics *const graphics)
     }
     else
     {
-        if (isSelected())
+        if (mSelected)
             box = checkBoxDisabledChecked;
         else
             box = checkBoxDisabled;

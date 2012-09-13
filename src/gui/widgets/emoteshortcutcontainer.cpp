@@ -123,7 +123,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         const int emoteY = (i / mGridWidth) * mBoxHeight;
 
         // Draw emote keyboard shortcut.
-        std::string key = inputManager.getKeyValueString(
+        const std::string key = inputManager.getKeyValueString(
             Input::KEY_EMOTE_1 + i);
 
         graphics->setColor(getForegroundColor());

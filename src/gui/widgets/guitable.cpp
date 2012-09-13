@@ -236,15 +236,16 @@ void GuiTable::setSelectedColumn(int selected)
     }
     else
     {
-        if ((selected >= mModel->getColumns() && mWrappingEnabled) ||
+        const int columns = mModel->getColumns();
+        if ((selected >= columns && mWrappingEnabled) ||
             (selected < 0 && !mWrappingEnabled))
         {
             mSelectedColumn = 0;
         }
-        else if ((selected >= mModel->getColumns() && !mWrappingEnabled) ||
+        else if ((selected >= columns && !mWrappingEnabled) ||
                  (selected < 0 && mWrappingEnabled))
         {
-            mSelectedColumn = mModel->getColumns() - 1;
+            mSelectedColumn = columns - 1;
         }
         else
         {
@@ -345,11 +346,11 @@ void GuiTable::draw(gcn::Graphics* graphics)
 
                 widget->setDimension(bounds);
 
-                mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
-                graphics->setColor(mHighlightColor);
-
                 if (mSelectedRow > 0)
                 {
+                    mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+                    graphics->setColor(mHighlightColor);
+
                     if (mLinewiseMode && r == static_cast<unsigned>(
                         mSelectedRow) && c == 0)
                     {
@@ -477,7 +478,6 @@ void GuiTable::mouseWheelMovedUp(gcn::MouseEvent& mouseEvent)
         {
             setSelectedRow(getSelectedRow() - 1);
         }
-
         mouseEvent.consume();
     }
 }
@@ -487,7 +487,6 @@ void GuiTable::mouseWheelMovedDown(gcn::MouseEvent& mouseEvent)
     if (isFocused())
     {
         setSelectedRow(getSelectedRow() + 1);
-
         mouseEvent.consume();
     }
 }
@@ -561,14 +560,15 @@ int GuiTable::getColumnForX(int x) const
     int column;
     int delta = 0;
 
-    for (column = 0; column < mModel->getColumns(); column++)
+    const int colnum = mModel->getColumns();
+    for (column = 0; column < colnum; column ++)
     {
         delta += getColumnWidth(column);
         if (x <= delta)
             break;
     }
 
-    if (column < 0 || column >= mModel->getColumns())
+    if (column < 0 || column >= colnum)
         return -1;
     else
         return column;

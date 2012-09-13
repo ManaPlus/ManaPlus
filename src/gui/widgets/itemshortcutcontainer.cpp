@@ -94,7 +94,8 @@ ItemShortcutContainer::~ItemShortcutContainer()
 
 void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 {
-    if (!itemShortcut[mNumber])
+    const ItemShortcut *const selShortcut = itemShortcut[mNumber];
+    if (!selShortcut)
         return;
 
     mAlpha = Client::getGuiAlpha();
@@ -133,8 +134,8 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 
         g->drawText(key, itemX + 2, itemY + 2, gcn::Graphics::LEFT);
 
-        const int itemId = itemShortcut[mNumber]->getItem(i);
-        const unsigned char itemColor = itemShortcut[mNumber]->getItemColor(i);
+        const int itemId = selShortcut->getItem(i);
+        const unsigned char itemColor = selShortcut->getItemColor(i);
 
         if (itemId < 0)
             continue;
@@ -228,7 +229,8 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 
 void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
 {
-    if (!itemShortcut[mNumber])
+    ItemShortcut *const selShortcut = itemShortcut[mNumber];
+    if (!selShortcut)
         return;
 
     if (event.getButton() == gcn::MouseEvent::LEFT)
@@ -240,9 +242,8 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
             if (index == -1)
                 return;
 
-            const int itemId = itemShortcut[mNumber]->getItem(index);
-            const unsigned char itemColor = itemShortcut[mNumber]->
-                getItemColor(index);
+            const int itemId = selShortcut->getItem(index);
+            const unsigned char itemColor = selShortcut->getItemColor(index);
 
             if (itemId < 0)
                 return;
@@ -258,7 +259,7 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
                 if (item)
                 {
                     mItemMoved = item;
-                    itemShortcut[mNumber]->removeItem(index);
+                    selShortcut->removeItem(index);
                 }
             }
             else if (itemId < SKILL_MIN_ID && spellManager)
@@ -266,11 +267,11 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
                 const TextCommand *const spell = spellManager->getSpellByItem(
                     itemId);
                 if (spell)
-                    itemShortcut[mNumber]->removeItem(index);
+                    selShortcut->removeItem(index);
             }
             else
             {
-                itemShortcut[mNumber]->removeItem(index);
+                selShortcut->removeItem(index);
             }
         }
         if (mItemMoved)
@@ -283,7 +284,8 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
 
 void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
 {
-    if (!itemShortcut[mNumber])
+    ItemShortcut *const selShortcut = itemShortcut[mNumber];
+    if (!selShortcut)
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -294,40 +296,41 @@ void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
         // Stores the selected item if theirs one.
-        if (itemShortcut[mNumber]->isItemSelected() &&
-            inventoryWindow && (inventoryWindow->isVisible() ||
-            itemShortcut[mNumber]->getSelectedItem() >= SPELL_MIN_ID))
+        if (selShortcut->isItemSelected() && inventoryWindow &&
+            (inventoryWindow->isVisible() || selShortcut->getSelectedItem()
+            >= SPELL_MIN_ID))
         {
-            itemShortcut[mNumber]->setItem(index);
-            itemShortcut[mNumber]->setItemSelected(-1);
+            selShortcut->setItem(index);
+            selShortcut->setItemSelected(-1);
             if (spellShortcut)
                 spellShortcut->setItemSelected(-1);
             inventoryWindow->unselectItem();
         }
-        else if (itemShortcut[mNumber]->getItem(index))
+        else if (selShortcut->getItem(index))
         {
             mItemClicked = true;
         }
     }
     else if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
-        if (viewport && itemShortcut[mNumber])
+        if (viewport && selShortcut)
         {
-            viewport->showItemPopup(itemShortcut[mNumber]->getItem(index),
-                itemShortcut[mNumber]->getItemColor(index));
+            viewport->showItemPopup(selShortcut->getItem(index),
+                selShortcut->getItemColor(index));
         }
     }
 }
 
 void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
 {
-    if (!itemShortcut[mNumber])
+    ItemShortcut *const selShortcut = itemShortcut[mNumber];
+    if (!selShortcut)
         return;
 
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-        if (itemShortcut[mNumber]->isItemSelected())
-            itemShortcut[mNumber]->setItemSelected(-1);
+        if (selShortcut->isItemSelected())
+            selShortcut->setItemSelected(-1);
 
         const int index = getIndexFromGrid(event.getX(), event.getY());
         if (index == -1)
@@ -337,13 +340,13 @@ void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
         }
         if (mItemMoved)
         {
-            itemShortcut[mNumber]->setItems(index,
-                mItemMoved->getId(), mItemMoved->getColor());
+            selShortcut->setItems(index, mItemMoved->getId(),
+                mItemMoved->getColor());
             mItemMoved = nullptr;
         }
-        else if (itemShortcut[mNumber]->getItem(index) && mItemClicked)
+        else if (selShortcut->getItem(index) && mItemClicked)
         {
-            itemShortcut[mNumber]->useItem(index);
+            selShortcut->useItem(index);
         }
 
         if (mItemClicked)
@@ -354,7 +357,8 @@ void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
 // Show ItemTooltip
 void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
 {
-    if (!itemShortcut[mNumber])
+    const ItemShortcut *const selShortcut = itemShortcut[mNumber];
+    if (!selShortcut)
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -362,8 +366,8 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     if (index == -1)
         return;
 
-    const int itemId = itemShortcut[mNumber]->getItem(index);
-    const unsigned char itemColor = itemShortcut[mNumber]->getItemColor(index);
+    const int itemId = selShortcut->getItem(index);
+    const unsigned char itemColor = selShortcut->getItemColor(index);
 
     if (itemId < 0)
         return;

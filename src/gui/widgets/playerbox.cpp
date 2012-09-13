@@ -57,10 +57,11 @@ PlayerBox::PlayerBox(std::string skin) :
 
 PlayerBox::~PlayerBox()
 {
-    if (Theme::instance())
+    Theme *const theme = Theme::instance();
+    if (theme)
     {
-        Theme::instance()->unload(mSkin);
-        Theme::instance()->unloadRect(mBackground);
+        theme->unload(mSkin);
+        theme->unloadRect(mBackground);
     }
 
     mBeing = nullptr;

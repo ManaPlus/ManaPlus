@@ -433,19 +433,20 @@ void Button::widgetMoved(const gcn::Event &event A_UNUSED)
 
 void Button::adjustSize()
 {
+    const gcn::Font *const font = getFont();
     if (mImages)
     {
-        setWidth(getFont()->getWidth(mCaption)
+        setWidth(font->getWidth(mCaption)
             + mImageWidth + 2 + 2 * mSpacing);
-        int height = getFont()->getHeight();
+        int height = font->getHeight();
         if (height < mImageHeight)
             height = mImageHeight;
         setHeight(height + 2 * mSpacing);
     }
     else
     {
-        setWidth(getFont()->getWidth(mCaption) + 2 * mSpacing);
-        setHeight(getFont()->getHeight() + 2 * mSpacing);
+        setWidth(font->getWidth(mCaption) + 2 * mSpacing);
+        setHeight(font->getHeight() + 2 * mSpacing);
     }
 }
 

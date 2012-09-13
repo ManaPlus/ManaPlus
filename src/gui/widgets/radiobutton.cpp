@@ -121,9 +121,9 @@ void RadioButton::drawBox(gcn::Graphics* graphics)
 
     const Image *box = nullptr;
 
-    if (isEnabled())
+    if (mEnabled && isVisible())
     {
-        if (isSelected())
+        if (mSelected)
             if (mHasMouse)
                 box = radioCheckedHi;
             else
@@ -136,7 +136,7 @@ void RadioButton::drawBox(gcn::Graphics* graphics)
     }
     else
     {
-        if (isSelected())
+        if (mSelected)
             box = radioDisabledChecked;
         else
             box = radioDisabled;
@@ -152,7 +152,6 @@ void RadioButton::draw(gcn::Graphics* graphics)
 
     graphics->setFont(getFont());
     graphics->setColor(getForegroundColor());
-
     graphics->drawText(getCaption(), 16, 0);
 }
 

@@ -304,14 +304,6 @@ namespace gcn
         mVisible = visible;
     }
 
-    bool Widget::isVisible() const
-    {
-        if (!mParent)
-            return mVisible;
-        else
-            return mVisible && mParent->isVisible();
-    }
-
     void Widget::setBaseColor(const Color& color)
     {
         mBaseColor = color;

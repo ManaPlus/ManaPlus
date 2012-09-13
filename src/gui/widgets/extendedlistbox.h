@@ -38,7 +38,8 @@ class ExtendedListBox : public ListBox
          */
         void draw(gcn::Graphics *graphics);
 
-        unsigned int getRowHeight() const;
+        unsigned int getRowHeight() const
+        { return mRowHeight; }
 
         void setRowHeight(unsigned int n)
         { mRowHeight = n; }

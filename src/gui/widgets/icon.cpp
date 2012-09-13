@@ -57,8 +57,7 @@ void Icon::draw(gcn::Graphics *g)
     if (mImage)
     {
         Graphics *const graphics = static_cast<Graphics*>(g);
-        const int x = (getWidth() - mImage->mBounds.w) / 2;
-        const int y = (getHeight() - mImage->mBounds.h) / 2;
-        graphics->drawImage(mImage, x, y);
+        graphics->drawImage(mImage, (getWidth() - mImage->mBounds.w) / 2,
+            (getHeight() - mImage->mBounds.h) / 2);
     }
 }
