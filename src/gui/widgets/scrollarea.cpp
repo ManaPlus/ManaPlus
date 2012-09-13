@@ -394,7 +394,7 @@ void ScrollArea::drawRightButton(gcn::Graphics *const graphics)
 void ScrollArea::drawVBar(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle dim = getVerticalBarDimension();
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (vBackground.grid[4])
     {
@@ -417,7 +417,7 @@ void ScrollArea::drawVBar(gcn::Graphics *const graphics)
 void ScrollArea::drawHBar(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle dim = getHorizontalBarDimension();
-    Graphics *g = static_cast<Graphics*>(graphics);
+    Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (hBackground.grid[4])
     {

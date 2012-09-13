@@ -124,7 +124,7 @@ Skin::~Skin()
     mOptions = nullptr;
 }
 
-void Skin::updateAlpha(float minimumOpacityAllowed)
+void Skin::updateAlpha(const float minimumOpacityAllowed)
 {
     const float alpha = static_cast<float>(
         std::max(static_cast<double>(minimumOpacityAllowed),

@@ -396,7 +396,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
 
         gcn::Rectangle getWindowArea() const;
 
-        bool isResizeAllowed(const gcn::MouseEvent &event);
+        bool isResizeAllowed(const gcn::MouseEvent &event) const;
 
         void setCaptionFont(gcn::Font *font)
         { mCaptionFont = font; }
@@ -425,8 +425,6 @@ class Window : public gcn::Window, private gcn::WidgetListener
             LEFT   = 0x08,
             CLOSE  = 0x10
         };
-
-        const int resizeMask = 8 + 4 + 2 + 1;
 
         /**
          * Ensures the window is on the screen, moving it if necessary. This is

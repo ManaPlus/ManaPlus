@@ -95,7 +95,7 @@ void ItemLinkHandler::handleLink(const std::string &link,
         std::string url = link;
         replaceAll(url, " ", "");
         listener.url = url;
-        ConfirmDialog *confirmDlg = new ConfirmDialog(
+        ConfirmDialog *const confirmDlg = new ConfirmDialog(
             _("Open url"), url, false, true);
         confirmDlg->addActionListener(&listener); 
     }

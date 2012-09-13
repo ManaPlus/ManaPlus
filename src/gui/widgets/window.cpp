@@ -42,6 +42,8 @@
 
 #include "debug.h"
 
+const int resizeMask = 8 + 4 + 2 + 1;
+
 int Window::instances = 0;
 int Window::mouseResize = 0;
 
@@ -923,7 +925,7 @@ int Window::getResizeHandles(const gcn::MouseEvent &event)
     return resizeHandles;
 }
 
-bool Window::isResizeAllowed(const gcn::MouseEvent &event)
+bool Window::isResizeAllowed(const gcn::MouseEvent &event) const
 {
     const int y = event.getY();
 
