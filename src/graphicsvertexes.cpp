@@ -235,17 +235,10 @@ ImageVertexes::ImageVertexes() :
     image(nullptr)
 {
     sdl.reserve(30);
-#ifdef USE_OPENGL
-    ogl = new NormalOpenGLGraphicsVertexes();
-#endif
 }
 
 ImageVertexes::~ImageVertexes()
 {
     delete_all(sdl);
     sdl.clear();
-#ifdef USE_OPENGL
-    delete ogl;
-    ogl = nullptr;
-#endif
 }

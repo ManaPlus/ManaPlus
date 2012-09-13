@@ -108,12 +108,10 @@ class NormalOpenGLGraphicsVertexes
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;
-
-    private:
+        std::vector<int> mVp;
         std::vector<GLfloat*> mFloatTexPool;
         std::vector<GLint*> mIntVertPool;
         std::vector<GLint*> mIntTexPool;
-        std::vector<int> mVp;
 };
 #endif
 
@@ -130,7 +128,7 @@ class ImageVertexes
         DoubleRects sdl;
 
 #ifdef USE_OPENGL
-        NormalOpenGLGraphicsVertexes *ogl;
+        NormalOpenGLGraphicsVertexes ogl;
 #endif
 };
 
@@ -166,8 +164,8 @@ class GraphicsVertexes
         { mPtr = num; }
 
 #ifdef USE_OPENGL
-        NormalOpenGLGraphicsVertexes* getOGL()
-        { return &ogl[mPtr]; }
+        NormalOpenGLGraphicsVertexes &getOGL()
+        { return ogl[mPtr]; }
 #endif
 
         int getX() const

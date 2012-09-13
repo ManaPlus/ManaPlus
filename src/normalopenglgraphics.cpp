@@ -611,7 +611,7 @@ void NormalOpenGLGraphics::drawImagePattern2(GraphicsVertexes *const vert,
     if (!image)
         return;
 
-    NormalOpenGLGraphicsVertexes *ogl = vert->getOGL();
+    NormalOpenGLGraphicsVertexes &ogl = vert->getOGL();
 
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -620,22 +620,22 @@ void NormalOpenGLGraphics::drawImagePattern2(GraphicsVertexes *const vert,
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
-    std::vector<GLint*> *intVertPool = ogl->getIntVertPool();
+    std::vector<GLint*> &intVertPool = ogl.mIntVertPool;
     std::vector<GLint*>::const_iterator iv;
-    std::vector<GLint*>::const_iterator iv_end = intVertPool->end();
-    std::vector<int> *vp = ogl->getVp();
+    std::vector<GLint*>::const_iterator iv_end = intVertPool.end();
+    std::vector<int> &vp = ogl.mVp;
     std::vector<int>::const_iterator ivp;
-    std::vector<int>::const_iterator ivp_end = vp->end();
+    std::vector<int>::const_iterator ivp_end = vp.end();
 
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
-        std::vector<GLfloat*> *floatTexPool = ogl->getFloatTexPool();
+        std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
         std::vector<GLfloat*>::const_iterator ft;
-        std::vector<GLfloat*>::const_iterator ft_end = floatTexPool->end();
+        std::vector<GLfloat*>::const_iterator ft_end = floatTexPool.end();
 
-        for (iv = intVertPool->begin(), ft = floatTexPool->begin(),
-             ivp = vp->begin();
+        for (iv = intVertPool.begin(), ft = floatTexPool.begin(),
+             ivp = vp.begin();
              iv != iv_end, ft != ft_end,
              ivp != ivp_end;
              ++ iv, ++ ft, ++ ivp)
@@ -645,12 +645,12 @@ void NormalOpenGLGraphics::drawImagePattern2(GraphicsVertexes *const vert,
     }
     else
     {
-        std::vector<GLint*> *intTexPool = ogl->getIntTexPool();
+        std::vector<GLint*> &intTexPool = ogl.mIntTexPool;
         std::vector<GLint*>::const_iterator it;
-        std::vector<GLint*>::const_iterator it_end = intTexPool->end();
+        std::vector<GLint*>::const_iterator it_end = intTexPool.end();
 
-        for (iv = intVertPool->begin(), it = intTexPool->begin(),
-             ivp = vp->begin();
+        for (iv = intVertPool.begin(), it = intTexPool.begin(),
+             ivp = vp.begin();
              iv != iv_end, it != it_end,
              ivp != ivp_end;
              ++ iv, ++ it, ++ ivp)
@@ -689,8 +689,8 @@ void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
 
-    NormalOpenGLGraphicsVertexes *ogl = vert->getOGL();
-    ogl->init();
+    NormalOpenGLGraphicsVertexes &ogl = vert->getOGL();
+    ogl.init();
 
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
@@ -698,8 +698,8 @@ void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
         float texX1 = static_cast<float>(srcX) / tw;
         float texY1 = static_cast<float>(srcY) / th;
 
-        GLfloat *floatTexArray = ogl->switchFloatTexArray();
-        GLint *intVertArray = ogl->switchIntVertArray();
+        GLfloat *floatTexArray = ogl.switchFloatTexArray();
+        GLint *intVertArray = ogl.switchIntVertArray();
 
         for (int py = 0; py < h; py += ih)
         {
@@ -740,9 +740,9 @@ void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
                 vp += 8;
                 if (vp >= vLimit)
                 {
-                    floatTexArray = ogl->switchFloatTexArray();
-                    intVertArray = ogl->switchIntVertArray();
-                    ogl->switchVp(vp);
+                    floatTexArray = ogl.switchFloatTexArray();
+                    intVertArray = ogl.switchIntVertArray();
+                    ogl.switchVp(vp);
                     vp = 0;
                 }
             }
@@ -750,8 +750,8 @@ void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
     }
     else
     {
-        GLint *intTexArray = ogl->switchIntTexArray();
-        GLint *intVertArray = ogl->switchIntVertArray();
+        GLint *intTexArray = ogl.switchIntTexArray();
+        GLint *intVertArray = ogl.switchIntVertArray();
 
         for (int py = 0; py < h; py += ih)
         {
@@ -789,15 +789,15 @@ void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
                 vp += 8;
                 if (vp >= vLimit)
                 {
-                    intTexArray = ogl->switchIntTexArray();
-                    intVertArray = ogl->switchIntVertArray();
-                    ogl->switchVp(vp);
+                    intTexArray = ogl.switchIntTexArray();
+                    intVertArray = ogl.switchIntVertArray();
+                    ogl.switchVp(vp);
                     vp = 0;
                 }
             }
         }
     }
-    ogl->switchVp(vp);
+    ogl.switchVp(vp);
     vert->incPtr(1);
 }
 
@@ -822,9 +822,9 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
 
     const unsigned int vLimit = 512 * 4;
 
-    NormalOpenGLGraphicsVertexes *ogl = vert->ogl;
+    NormalOpenGLGraphicsVertexes &ogl = vert->ogl;
 
-    unsigned int vp = ogl->ptr;
+    unsigned int vp = ogl.ptr;
 
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
@@ -832,13 +832,13 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
         float texX1 = static_cast<float>(srcX) / tw;
         float texY1 = static_cast<float>(srcY) / th;
 
-        if (!ogl->mFloatTexArray)
-            ogl->mFloatTexArray = new GLfloat[vLimit];
-        if (!ogl->mIntVertArray)
-            ogl->mIntVertArray = new GLint[vLimit];
+        if (!ogl.mFloatTexArray)
+            ogl.mFloatTexArray = new GLfloat[vLimit];
+        if (!ogl.mIntVertArray)
+            ogl.mIntVertArray = new GLint[vLimit];
 
-        GLfloat *floatTexArray = ogl->mFloatTexArray;
-        GLint *intVertArray = ogl->mIntVertArray;
+        GLfloat *floatTexArray = ogl.mFloatTexArray;
+        GLint *intVertArray = ogl.mIntVertArray;
 
         float texX2 = static_cast<float>(srcX + w) / tw;
         float texY2 = static_cast<float>(srcY + h) / th;
@@ -871,19 +871,19 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
 
         if (vp >= vLimit)
         {
-            ogl->ptr = vp;
+            ogl.ptr = vp;
             return;
         }
     }
     else
     {
-        if (!ogl->mIntTexArray)
-            ogl->mIntTexArray = new GLint[vLimit];
-        if (!ogl->mIntVertArray)
-            ogl->mIntVertArray = new GLint[vLimit];
+        if (!ogl.mIntTexArray)
+            ogl.mIntTexArray = new GLint[vLimit];
+        if (!ogl.mIntVertArray)
+            ogl.mIntVertArray = new GLint[vLimit];
 
-        GLint *intTexArray = ogl->mIntTexArray;
-        GLint *intVertArray = ogl->mIntVertArray;
+        GLint *intTexArray = ogl.mIntTexArray;
+        GLint *intVertArray = ogl.mIntVertArray;
 
         intTexArray[vp + 0] = srcX;
         intTexArray[vp + 1] = srcY;
@@ -912,11 +912,11 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
         vp += 8;
         if (vp >= vLimit)
         {
-            ogl->ptr = vp;
+            ogl.ptr = vp;
             return;
         }
     }
-    ogl->ptr = vp;
+    ogl.ptr = vp;
 }
 
 void NormalOpenGLGraphics::drawTile(const ImageVertexes *const vert)
@@ -925,7 +925,7 @@ void NormalOpenGLGraphics::drawTile(const ImageVertexes *const vert)
         return;
     Image *image = vert->image;
 
-    NormalOpenGLGraphicsVertexes *ogl = vert->ogl;
+    const NormalOpenGLGraphicsVertexes &ogl = vert->ogl;
 
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -935,9 +935,9 @@ void NormalOpenGLGraphics::drawTile(const ImageVertexes *const vert)
     setTexturingAndBlending(true);
 
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
-        drawQuadArrayfi(ogl->mIntVertArray, ogl->mFloatTexArray, ogl->ptr);
+        drawQuadArrayfi(ogl.mIntVertArray, ogl.mFloatTexArray, ogl.ptr);
     else
-        drawQuadArrayii(ogl->mIntVertArray, ogl->mIntTexArray, ogl->ptr);
+        drawQuadArrayii(ogl.mIntVertArray, ogl.mIntTexArray, ogl.ptr);
 }
 
 void NormalOpenGLGraphics::updateScreen()
