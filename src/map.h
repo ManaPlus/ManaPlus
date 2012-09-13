@@ -392,6 +392,9 @@ class Map : public Properties, public ConfigListener
         bool isCustom() const
         { return mCustom; }
 
+        std::map<int, TileAnimation*> &getTileAnimations()
+        { return mTileAnimations; }
+
     protected:
         friend class Actor;
         friend class Minimap;

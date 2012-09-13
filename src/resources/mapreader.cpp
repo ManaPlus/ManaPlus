@@ -568,6 +568,10 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
                     }
                 }
 
+                std::map<int, TileAnimation*> &tileAnimations
+                    = map->getTileAnimations();
+
+                const bool hasAnimations = !tileAnimations.empty();
                 for (int i = 0; i < binLen - 3; i += 4)
                 {
                     const int gid = binData[i] |
@@ -577,10 +581,16 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 
                     setTile(map, layer, x, y, gid);
 
-                    TileAnimation *const ani = map->getAnimationForGid(gid);
-                    if (ani)
-                        ani->addAffectedTile(layer, x + y * w);
-
+                    if (hasAnimations)
+                    {
+                        TileAnimationMapCIter i = tileAnimations.find(gid);
+                        if (i != tileAnimations.end())
+                        {
+                            TileAnimation *const ani = i->second;
+                            if (ani)
+                                ani->addAffectedTile(layer, x + y * w);
+                        }
+                    }
                     x++;
                     if (x == w)
                     {
