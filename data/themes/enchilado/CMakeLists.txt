@@ -5,7 +5,7 @@ SET (FILES
     quests.xml
     sell.xml
     server.xml
-    shops.xml
+    shop.xml
     window.png
     window.xml
     world.xml
