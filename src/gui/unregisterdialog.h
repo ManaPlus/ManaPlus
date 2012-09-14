@@ -60,14 +60,14 @@ class UnRegisterDialog : public Window, public gcn::ActionListener
         void action(const gcn::ActionEvent &event);
 
     private:
+        LoginData *mLoginData;
+
         gcn::TextField *mPasswordField;
 
         gcn::Button *mUnRegisterButton;
         gcn::Button *mCancelButton;
 
         WrongDataNoticeListener *mWrongDataNoticeListener;
-
-        LoginData *mLoginData;
 };
 
 #endif

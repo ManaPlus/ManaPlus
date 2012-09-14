@@ -179,8 +179,8 @@ class Palette
             int delay;
             int committedDelay;
 
-            void set(int type0, gcn::Color& color0, GradientType grad0,
-                     int delay0)
+            void set(const int type0, const gcn::Color &color0,
+                     const GradientType grad0, const int delay0)
             {
                 ColorElem::type = type0;
                 ColorElem::color = color0;

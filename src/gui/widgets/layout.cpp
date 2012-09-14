@@ -88,7 +88,7 @@ void LayoutCell::computeSizes()
 
     std::vector <std::vector <LayoutCell *> >::const_iterator
         i = mArray->mCells.begin();
-    std::vector <std::vector <LayoutCell *> >::const_iterator
+    const std::vector <std::vector <LayoutCell *> >::const_iterator
         i_end = mArray->mCells.end();
     while (i != i_end)
     {
@@ -116,12 +116,12 @@ LayoutArray::~LayoutArray()
 {
     std::vector <std::vector <LayoutCell *> >::iterator
         i = mCells.begin();
-    std::vector <std::vector <LayoutCell *> >::iterator
+    const std::vector <std::vector <LayoutCell *> >::iterator
         i_end = mCells.end();
     while (i != i_end)
     {
         std::vector< LayoutCell * >::iterator j = i->begin();
-        std::vector< LayoutCell * >::iterator j_end = i->end();
+        const std::vector< LayoutCell * >::iterator j_end = i->end();
         while (j != j_end)
         {
             delete *j;
@@ -162,7 +162,7 @@ void LayoutArray::resizeGrid(int w, const int h)
 
     std::vector <std::vector <LayoutCell *> >::iterator
         i = mCells.begin();
-    std::vector <std::vector <LayoutCell *> >::iterator
+    const std::vector <std::vector <LayoutCell *> >::iterator
         i_end = mCells.end();
     while (i != i_end)
     {
@@ -187,7 +187,7 @@ void LayoutArray::matchColWidth(const int n1, const int n2)
 {
     resizeGrid(std::max(n1, n2) + 1, 0);
     const std::vector<int> widths = getSizes(0, Layout::AUTO_DEF);
-    int s = std::max(widths[n1], widths[n2]);
+    const int s = std::max(widths[n1], widths[n2]);
     mSizes[0][n1] = s;
     mSizes[0][n2] = s;
 }
@@ -273,7 +273,7 @@ std::vector<int> LayoutArray::getSizes(const int dim, int upp) const
     {
         for (int gridX = 0; gridX < gridW; ++gridX)
         {
-            LayoutCell const *cell = mCells[gridY][gridX];
+            const LayoutCell *const cell = mCells[gridY][gridX];
             if (!cell || cell->mType == LayoutCell::NONE)
                 continue;
 
