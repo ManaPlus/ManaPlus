@@ -1,4 +1,19 @@
-2013-09-02 New release 1.2.9.2
+2012-09-16 New release 1.2.9.16
+fix: non cycle player select.
+fix: color in equipment window.
+fix: fix hair color palete switching (evol).
+fix: horizontal lines draw in software mode.
+fix: navigation commands.
+fix: partial items load in player selection dialog.
+fix: on the fly resize in windows in software mode.
+fix: cmake install action.
+add: extend theming.
+add: improve OpenGL speed.
+add: show question dialog before opening urls.
+add: improved inventory look.
+add: improved speed.
+
+2012-09-02 New release 1.2.9.2
 fix: show special message in window header while doing video test.
 fix: possible fix non standart update ports on windows.
 add: show clickable update links in news window.
