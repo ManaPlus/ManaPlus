@@ -64,7 +64,7 @@ AvatarListBox::AvatarListBox(AvatarListModel *const model) :
     config.addListener("showgender", this);
     config.addListener("showlevel", this);
 
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    mForegroundColor = Theme::getThemeColor(Theme::TEXT);
 }
 
 AvatarListBox::~AvatarListBox()
@@ -112,7 +112,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
     const std::string name = player_node->getName();
 
     // Draw the list elements
-    graphics->setColor(getForegroundColor());
+    graphics->setColor(mForegroundColor);
     for (int i = 0, y = 0;
          i < model->getNumberOfElements();
          ++i, y += fontHeight)
@@ -186,7 +186,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
                 if (a->getLevel() > 1)
                 {
-                    graphics->setColor(getForegroundColor());
+                    graphics->setColor(mForegroundColor);
                     int minHp = 40 + ((a->getLevel() - 1) * 5);
                     if (minHp < 0)
                         minHp = 40;
@@ -263,7 +263,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             }
         }
 
-        graphics->setColor(getForegroundColor());
+        graphics->setColor(mForegroundColor);
 
         // Draw Name
         if (a->getType() == MapItem::SEPARATOR)

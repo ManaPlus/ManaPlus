@@ -81,7 +81,7 @@ EmoteShortcutContainer::EmoteShortcutContainer():
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    mForegroundColor = Theme::getThemeColor(Theme::TEXT);
 }
 
 EmoteShortcutContainer::~EmoteShortcutContainer()
@@ -126,7 +126,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         const std::string key = inputManager.getKeyValueString(
             Input::KEY_EMOTE_1 + i);
 
-        graphics->setColor(getForegroundColor());
+        graphics->setColor(mForegroundColor);
         g->drawText(key, emoteX + 2, emoteY + 2, gcn::Graphics::LEFT);
     }
     const unsigned sz = static_cast<unsigned>(mEmoteImg.size());

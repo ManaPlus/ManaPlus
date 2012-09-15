@@ -132,7 +132,7 @@ Window::Window(const std::string &caption, const bool modal,
     setVisible(false);
 
     addWidgetListener(this);
-    setForegroundColor(Theme::getThemeColor(Theme::WINDOW));
+    mForegroundColor = Theme::getThemeColor(Theme::WINDOW);
 }
 
 Window::~Window()
@@ -180,8 +180,8 @@ void Window::draw(gcn::Graphics *graphics)
     {
         mRedraw = false;
         update = true;
-        g->calcWindow(mVertexes, 0, 0, getWidth(),
-            getHeight(), mSkin->getBorder());
+        g->calcWindow(mVertexes, 0, 0, mDimension.width,
+            mDimension.height, mSkin->getBorder());
     }
 
     g->drawImageRect2(mVertexes, mSkin->getBorder());
@@ -189,7 +189,7 @@ void Window::draw(gcn::Graphics *graphics)
     // Draw title
     if (mShowTitle)
     {
-        g->setColor(getForegroundColor());
+        g->setColor(mForegroundColor);
         g->setFont(mCaptionFont);
         g->drawText(getCaption(), mCaptionOffsetX, mCaptionOffsetY,
             static_cast<gcn::Graphics::Alignment>(mCaptionAlign));
@@ -225,8 +225,8 @@ void Window::draw(gcn::Graphics *graphics)
 
 void Window::setContentSize(int width, int height)
 {
-    width = width + 2 * getPadding();
-    height = height + getPadding() + getTitleBarHeight();
+    width = width + 2 * mPadding;
+    height = height + mPadding + getTitleBarHeight();
 
     if (getMinWidth() > width)
         width = getMinWidth();
@@ -251,8 +251,10 @@ void Window::setLocationRelativeTo(const gcn::Widget *const widget)
     widget->getAbsolutePosition(wx, wy);
     getAbsolutePosition(x, y);
 
-    setPosition(getX() + (wx + (widget->getWidth() - getWidth()) / 2 - x),
-                getY() + (wy + (widget->getHeight() - getHeight()) / 2 - y));
+    setPosition(mDimension.x + (wx + (widget->getWidth()
+        - mDimension.width) / 2 - x),
+        mDimension.y + (wy + (widget->getHeight()
+        - mDimension.height) / 2 - y));
 }
 
 void Window::setLocationHorisontallyRelativeTo(const gcn::Widget *const widget)
@@ -266,7 +268,8 @@ void Window::setLocationHorisontallyRelativeTo(const gcn::Widget *const widget)
     widget->getAbsolutePosition(wx, wy);
     getAbsolutePosition(x, y);
 
-    setPosition(getX() + (wx + (widget->getWidth() - getWidth()) / 2 - x), 0);
+    setPosition(mDimension.x + (wx + (widget->getWidth()
+        - mDimension.width) / 2 - x), 0);
 }
 
 void Window::setLocationRelativeTo(const ImageRect::ImagePosition position,
@@ -277,39 +280,39 @@ void Window::setLocationRelativeTo(const ImageRect::ImagePosition position,
     }
     else if (position == ImageRect::UPPER_CENTER)
     {
-        offsetX += (mainGraphics->mWidth - getWidth()) / 2;
+        offsetX += (mainGraphics->mWidth - mDimension.width) / 2;
     }
     else if (position == ImageRect::UPPER_RIGHT)
     {
-        offsetX += mainGraphics->mWidth - getWidth();
+        offsetX += mainGraphics->mWidth - mDimension.width;
     }
     else if (position == ImageRect::LEFT)
     {
-        offsetY += (mainGraphics->mHeight - getHeight()) / 2;
+        offsetY += (mainGraphics->mHeight - mDimension.height) / 2;
     }
     else if (position == ImageRect::CENTER)
     {
-        offsetX += (mainGraphics->mWidth - getWidth()) / 2;
-        offsetY += (mainGraphics->mHeight - getHeight()) / 2;
+        offsetX += (mainGraphics->mWidth - mDimension.width) / 2;
+        offsetY += (mainGraphics->mHeight - mDimension.height) / 2;
     }
     else if (position == ImageRect::RIGHT)
     {
-        offsetX += mainGraphics->mWidth - getWidth();
-        offsetY += (mainGraphics->mHeight - getHeight()) / 2;
+        offsetX += mainGraphics->mWidth - mDimension.width;
+        offsetY += (mainGraphics->mHeight - mDimension.height) / 2;
     }
     else if (position == ImageRect::LOWER_LEFT)
     {
-        offsetY += mainGraphics->mHeight - getHeight();
+        offsetY += mainGraphics->mHeight - mDimension.height;
     }
     else if (position == ImageRect::LOWER_CENTER)
     {
-        offsetX += (mainGraphics->mWidth - getWidth()) / 2;
-        offsetY += mainGraphics->mHeight - getHeight();
+        offsetX += (mainGraphics->mWidth - mDimension.width) / 2;
+        offsetY += mainGraphics->mHeight - mDimension.height;
     }
     else if (position == ImageRect::LOWER_RIGHT)
     {
-        offsetX += mainGraphics->mWidth - getWidth();
-        offsetY += mainGraphics->mHeight - getHeight();
+        offsetX += mainGraphics->mWidth - mDimension.width;
+        offsetY += mainGraphics->mHeight - mDimension.height;
     }
 
     setPosition(offsetX, offsetY);
@@ -364,8 +367,10 @@ void Window::setResizable(const bool r)
             delete mGrip;
         }
         mGrip = new ResizeGrip;
-        mGrip->setX(getWidth() - mGrip->getWidth() - getChildrenArea().x);
-        mGrip->setY(getHeight() - mGrip->getHeight() - getChildrenArea().y);
+        mGrip->setX(mDimension.width - mGrip->getWidth()
+            - getChildrenArea().x);
+        mGrip->setY(mDimension.height - mGrip->getHeight()
+            - getChildrenArea().y);
         add(mGrip);
     }
     else
@@ -382,8 +387,8 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
 
     if (mGrip)
     {
-        mGrip->setPosition(getWidth() - mGrip->getWidth() - area.x,
-                           getHeight() - mGrip->getHeight() - area.y);
+        mGrip->setPosition(mDimension.width - mGrip->getWidth() - area.x,
+                           mDimension.height - mGrip->getHeight() - area.y);
     }
 
     if (mLayout)
@@ -397,7 +402,7 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
     if (showClose)
     {
         const Image *const button = mSkin->getCloseImage(false);
-        const int x = getWidth() - button->getWidth() - closePadding;
+        const int x = mDimension.width - button->getWidth() - closePadding;
         mCloseRect.x = x;
         mCloseRect.y = closePadding;
         mCloseRect.width = button->getWidth();
@@ -408,7 +413,7 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
         const Image *const button = mSkin->getStickyImage(mSticky);
         if (button)
         {
-            int x = getWidth() - button->getWidth() - closePadding;
+            int x = mDimension.width - button->getWidth() - closePadding;
             if (showClose)
                 x -= mSkin->getCloseImage(false)->getWidth() + closePadding;
 
@@ -612,11 +617,10 @@ void Window::mouseDragged(gcn::MouseEvent &event)
     // Keep guichan window inside screen when it may be moved
     if (isMovable() && mMoved)
     {
-        int newX = std::max(0, getX());
-        int newY = std::max(0, getY());
-        newX = std::min(mainGraphics->mWidth - getWidth(), newX);
-        newY = std::min(mainGraphics->mHeight - getHeight(), newY);
-        setPosition(newX, newY);
+        setPosition(std::min(mainGraphics->mWidth - mDimension.width,
+            std::max(0, mDimension.x)),
+            std::min(mainGraphics->mHeight - mDimension.height,
+            std::max(0, mDimension.y)));
     }
 
     if (mouseResize && !mMoved)
@@ -644,7 +648,7 @@ void Window::mouseDragged(gcn::MouseEvent &event)
                                     std::max(mMinWinWidth, newWidth));
 
             if (mouseResize & LEFT)
-                newDim.x -= newDim.width - getWidth();
+                newDim.x -= newDim.width - mDimension.width;
         }
 
         // Keep guichan window inside screen (supports resizing any side)
@@ -665,10 +669,10 @@ void Window::mouseDragged(gcn::MouseEvent &event)
 
         // Update mouse offset when dragging bottom or right border
         if (mouseResize & BOTTOM)
-            mDragOffsetY += newDim.height - getHeight();
+            mDragOffsetY += newDim.height - mDimension.height;
 
         if (mouseResize & RIGHT)
-            mDragOffsetX += newDim.width - getWidth();
+            mDragOffsetX += newDim.width - mDimension.width;
 
         // Set the new window and content dimensions
         setDimension(newDim);
@@ -740,13 +744,13 @@ void Window::loadWindowState()
 
     if (viewport)
     {
-        int width = getWidth();
-        int height = getHeight();
+        int width = mDimension.width;
+        int height = mDimension.height;
 
-        if (getX() + width > viewport->getWidth())
-            width = viewport->getWidth() - getX();
-        if (getY() + height > viewport->getHeight())
-            height = viewport->getHeight() - getY();
+        if (mDimension.x + width > viewport->getWidth())
+            width = viewport->getWidth() - mDimension.x;
+        if (mDimension.y + height > viewport->getHeight())
+            height = viewport->getHeight() - mDimension.y;
         if (width < 0)
             width = 0;
         if (height < 0)
@@ -760,8 +764,8 @@ void Window::saveWindowState()
     // Saving X, Y and Width and Height for resizables in the config
     if (!mWindowName.empty() && mWindowName != "window")
     {
-        config.setValue(mWindowName + "WinX", getX());
-        config.setValue(mWindowName + "WinY", getY());
+        config.setValue(mWindowName + "WinX", mDimension.x);
+        config.setValue(mWindowName + "WinY", mDimension.y);
 
         if (mSaveVisible)
             config.setValue(mWindowName + "Visible", isVisible());
@@ -771,17 +775,17 @@ void Window::saveWindowState()
 
         if (mGrip)
         {
-            if (getMinWidth() > getWidth())
+            if (getMinWidth() > mDimension.width)
                 setWidth(getMinWidth());
-            else if (getMaxWidth() < getWidth())
+            else if (getMaxWidth() < mDimension.width)
                 setWidth(getMaxWidth());
-            if (getMinHeight() > getHeight())
+            if (getMinHeight() > mDimension.height)
                 setHeight(getMinHeight());
-            else if (getMaxHeight() < getHeight())
+            else if (getMaxHeight() < mDimension.height)
                 setHeight(getMaxHeight());
 
-            config.setValue(mWindowName + "WinWidth", getWidth());
-            config.setValue(mWindowName + "WinHeight", getHeight());
+            config.setValue(mWindowName + "WinWidth", mDimension.width);
+            config.setValue(mWindowName + "WinHeight", mDimension.height);
         }
     }
 }
@@ -806,10 +810,10 @@ void Window::setDefaultSize(int defaultX, int defaultY,
 
 void Window::setDefaultSize()
 {
-    mDefaultX = getX();
-    mDefaultY = getY();
-    mDefaultWidth = getWidth();
-    mDefaultHeight = getHeight();
+    mDefaultX = mDimension.x;
+    mDefaultY = mDimension.y;
+    mDefaultWidth = mDimension.width;
+    mDefaultHeight = mDimension.height;
 }
 
 void Window::setDefaultSize(int defaultWidth, int defaultHeight,
@@ -877,12 +881,13 @@ void Window::adjustPositionAfterResize(const int oldScreenWidth,
     gcn::Rectangle dimension = getDimension();
 
     // If window was aligned to the right or bottom, keep it there
-    const int rightMargin = oldScreenWidth - (getX() + getWidth());
-    const int bottomMargin = oldScreenHeight - (getY() + getHeight());
-    if (getX() > 0 && getX() > rightMargin)
-        dimension.x = mainGraphics->mWidth - rightMargin - getWidth();
-    if (getY() > 0 && getY() > bottomMargin)
-        dimension.y = mainGraphics->mHeight - bottomMargin - getHeight();
+    const int rightMargin = oldScreenWidth - (mDimension.x + mDimension.width);
+    const int bottomMargin = oldScreenHeight
+        - (mDimension.y + mDimension.height);
+    if (mDimension.x > 0 && mDimension.x > rightMargin)
+        dimension.x = mainGraphics->mWidth - rightMargin - mDimension.width;
+    if (mDimension.y > 0 && mDimension.y > bottomMargin)
+        dimension.y = mainGraphics->mHeight - bottomMargin - mDimension.height;
 
     setDimension(dimension);
     ensureOnScreen();
@@ -901,15 +906,15 @@ int Window::getResizeHandles(const gcn::MouseEvent &event)
 
     if (!mStickyButtonLock || !mSticky)
     {
-        if (mGrip && (y > mTitleBarHeight || (y < getPadding()
-            && mTitleBarHeight > getPadding())))
+        if (mGrip && (y > mTitleBarHeight || (y < mPadding
+            && mTitleBarHeight > mPadding)))
         {
             if (!getWindowArea().isPointInRect(x, y)
                 && event.getSource() == this)
             {
-                resizeHandles |= (x > getWidth() - resizeBorderWidth)
+                resizeHandles |= (x > mDimension.width - resizeBorderWidth)
                     ? RIGHT : (x < resizeBorderWidth) ? LEFT : 0;
-                resizeHandles |= (y > getHeight() - resizeBorderWidth)
+                resizeHandles |= (y > mDimension.height - resizeBorderWidth)
                     ? BOTTOM : (y < resizeBorderWidth) ? TOP : 0;
             }
 
@@ -930,7 +935,7 @@ bool Window::isResizeAllowed(const gcn::MouseEvent &event) const
     const int y = event.getY();
 
     if (mGrip && (y > static_cast<int>(mTitleBarHeight)
-        || y < static_cast<int>(getPadding())))
+        || y < static_cast<int>(mPadding)))
     {
         const int x = event.getX();
 
@@ -1021,7 +1026,7 @@ void Window::centerHorisontally()
 void Window::ensureOnScreen()
 {
     // Skip when a window hasn't got any size initialized yet
-    if (getWidth() == 0 && getHeight() == 0)
+    if (mDimension.width == 0 && mDimension.height == 0)
         return;
 
     gcn::Rectangle dimension = getDimension();
@@ -1043,10 +1048,10 @@ void Window::ensureOnScreen()
 
 gcn::Rectangle Window::getWindowArea() const
 {
-    return gcn::Rectangle(getPadding(),
-                          getPadding(),
-                          getWidth() - getPadding() * 2,
-                          getHeight() - getPadding() * 2);
+    return gcn::Rectangle(mPadding,
+                          mPadding,
+                          mDimension.width - mPadding * 2,
+                          mDimension.height - mPadding * 2);
 }
 
 int Window::getOption(const std::string &name, const int def) const

@@ -102,7 +102,7 @@ namespace gcn
         // drawn a border).
         const Rectangle clipArea = graphics->getCurrentClipArea();
 
-        graphics->setColor(getForegroundColor());
+        graphics->setColor(mForegroundColor);
         graphics->drawLine(x, clipArea.height - 2, x, 1);
     }
 

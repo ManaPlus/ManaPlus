@@ -177,9 +177,6 @@ void ScrollArea::init(std::string skinName)
     }
 
     instances++;
-
-    mGray = Theme::getThemeColor(Theme::SCROLLBAR_GRAY, 32);
-    mBackground = Theme::getThemeColor(Theme::BACKGROUND);
 }
 
 void ScrollArea::logic()
@@ -194,38 +191,27 @@ void ScrollArea::logic()
     // the content dimension exactly.
     if (content)
     {
-        if (getHorizontalScrollPolicy() == gcn::ScrollArea::SHOW_NEVER)
+        const unsigned int frameSize = 2 * content->getFrameSize();
+        if (mHPolicy == gcn::ScrollArea::SHOW_NEVER)
         {
-            content->setWidth(getChildrenArea().width -
-                    2 * content->getFrameSize());
+            content->setWidth((mVBarVisible ? (mDimension.width
+                - mScrollbarWidth) : mDimension.width) - frameSize);
         }
-        if (getVerticalScrollPolicy() == gcn::ScrollArea::SHOW_NEVER)
+        if (mVPolicy == gcn::ScrollArea::SHOW_NEVER)
         {
-            content->setHeight(getChildrenArea().height -
-                    2 * content->getFrameSize());
+            content->setHeight((mHBarVisible ? (mDimension.height
+                - mScrollbarWidth) : mDimension.height) - frameSize);
         }
     }
 
     if (mUpButtonPressed)
-    {
-        setVerticalScrollAmount(getVerticalScrollAmount() -
-                                mUpButtonScrollAmount);
-    }
+        setVerticalScrollAmount(mVScroll - mUpButtonScrollAmount);
     else if (mDownButtonPressed)
-    {
-        setVerticalScrollAmount(getVerticalScrollAmount() +
-                                mDownButtonScrollAmount);
-    }
+        setVerticalScrollAmount(mVScroll + mDownButtonScrollAmount);
     else if (mLeftButtonPressed)
-    {
-        setHorizontalScrollAmount(getHorizontalScrollAmount() -
-                                  mLeftButtonScrollAmount);
-    }
+        setHorizontalScrollAmount(mHScroll - mLeftButtonScrollAmount);
     else if (mRightButtonPressed)
-    {
-        setHorizontalScrollAmount(getHorizontalScrollAmount() +
-                                  mRightButtonScrollAmount);
-    }
+        setHorizontalScrollAmount(mHScroll + mRightButtonScrollAmount);
 }
 
 void ScrollArea::updateAlpha()
@@ -291,7 +277,7 @@ void ScrollArea::drawFrame(gcn::Graphics *graphics)
         {
             // because we don't know where parent windows was moved,
             // need recalc vertexes
-            gcn::ClipRectangle &rect = static_cast<Graphics*>(
+            const gcn::ClipRectangle &rect = static_cast<Graphics*>(
                 graphics)->getTopClip();
             if (rect.xOffset != mXOffset || rect.yOffset != mYOffset)
             {
@@ -393,7 +379,7 @@ void ScrollArea::drawRightButton(gcn::Graphics *const graphics)
 
 void ScrollArea::drawVBar(gcn::Graphics *const graphics)
 {
-    const gcn::Rectangle dim = getVerticalBarDimension();
+    const gcn::Rectangle &dim = getVerticalBarDimension();
     Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (vBackground.grid[4])
@@ -416,7 +402,7 @@ void ScrollArea::drawVBar(gcn::Graphics *const graphics)
 
 void ScrollArea::drawHBar(gcn::Graphics *const graphics)
 {
-    const gcn::Rectangle dim = getHorizontalBarDimension();
+    const gcn::Rectangle &dim = getHorizontalBarDimension();
     Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (hBackground.grid[4])
@@ -441,9 +427,9 @@ void ScrollArea::drawHBar(gcn::Graphics *const graphics)
 
 void ScrollArea::drawVMarker(gcn::Graphics *const graphics)
 {
-    const gcn::Rectangle dim = getVerticalMarkerDimension();
+    const gcn::Rectangle &dim = getVerticalMarkerDimension();
 
-    if ((mHasMouse) && (mX > (getWidth() - getScrollbarWidth())))
+    if ((mHasMouse) && (mX > (getWidth() - mScrollbarWidth)))
     {
         static_cast<Graphics*>(graphics)->
             drawImageRect(dim.x, dim.y, dim.width, dim.height, vMarkerHi);
@@ -459,7 +445,7 @@ void ScrollArea::drawHMarker(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle dim = getHorizontalMarkerDimension();
 
-    if ((mHasMouse) && (mY > (getHeight() - getScrollbarWidth())))
+    if ((mHasMouse) && (mY > (getHeight() - mScrollbarWidth)))
     {
         static_cast<Graphics*>(graphics)->
             drawImageRect(dim.x, dim.y, dim.width, dim.height, vMarkerHi);
@@ -490,8 +476,8 @@ void ScrollArea::mouseExited(gcn::MouseEvent& event A_UNUSED)
 void ScrollArea::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
-    getContent()->setSize(getWidth() - 2 * getFrameSize(),
-                          getHeight() - 2 * getFrameSize());
+    const unsigned int frameSize = 2 * getFrameSize();
+    getContent()->setSize(getWidth() - frameSize, getHeight() - frameSize);
 }
 
 void ScrollArea::widgetMoved(const gcn::Event& event A_UNUSED)
@@ -526,21 +512,33 @@ void ScrollArea::mouseReleased(gcn::MouseEvent& event)
 
             if (dx)
             {
-                int s = getHorizontalScrollAmount() + dx;
+                int s = mHScroll + dx;
                 if (s < 0)
+                {
                     s = 0;
-                else if (s > getHorizontalMaxScroll())
-                    s = getHorizontalMaxScroll();
+                }
+                else
+                {
+                    const int maxH = getHorizontalMaxScroll();
+                    if (s > maxH)
+                        s = maxH;
+                }
 
                 setHorizontalScrollAmount(s);
             }
             if (dy)
             {
-                int s = getVerticalScrollAmount() + dy;
+                int s = mVScroll + dy;
                 if (s < 0)
+                {
                     s = 0;
-                else if (s > getVerticalMaxScroll())
-                    s = getVerticalMaxScroll();
+                }
+                else
+                {
+                    const int maxV = getVerticalMaxScroll();
+                    if (s > maxV)
+                        s = maxV;
+                }
 
                 setVerticalScrollAmount(s);
             }

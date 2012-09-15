@@ -75,7 +75,7 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     }
 
     // Draw the list elements
-    graphics->setColor(getForegroundColor());
+    graphics->setColor(mForegroundColor);
     for (int i = 0, y = 0; i < mListModel->getNumberOfElements();
          ++i, y += height)
     {

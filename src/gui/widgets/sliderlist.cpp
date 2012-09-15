@@ -188,10 +188,11 @@ void SliderList::setSelected(int idx)
         return;
 
     mSelectedIndex = idx;
-    if (mSelectedIndex >= mListModel->getNumberOfElements())
+    const int num = mListModel->getNumberOfElements();
+    if (mSelectedIndex >= num)
         mSelectedIndex = 0;
     if (mSelectedIndex < 0)
-        mSelectedIndex = mListModel->getNumberOfElements() - 1;
+        mSelectedIndex = num - 1;
     updateLabel();
 }
 
@@ -209,7 +210,8 @@ int SliderList::getMaxLabelWidth()
     int maxWidth = 0;
     const SDLFont *const font = gui->getFont();
 
-    for (int f = 0; f < mListModel->getNumberOfElements(); f ++)
+    const int num = mListModel->getNumberOfElements();
+    for (int f = 0; f < num; f ++)
     {
         const int w = font->getWidth(mListModel->getElementAt(f));
         if (w > maxWidth)

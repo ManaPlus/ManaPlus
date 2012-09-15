@@ -100,13 +100,11 @@ void Tab::init()
     if (mInstances == 0)
     {
         // Load the skin
-        if (Theme::instance())
+        Theme *const theme = Theme::instance();
+        if (theme)
         {
             for (int mode = 0; mode < TAB_COUNT; mode ++)
-            {
-                Theme::instance()->loadRect(tabImg[mode],
-                    data[mode], "tab.xml");
-            }
+                theme->loadRect(tabImg[mode], data[mode], "tab.xml");
         }
         updateAlpha();
     }

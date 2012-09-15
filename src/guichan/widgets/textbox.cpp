@@ -122,7 +122,7 @@ namespace gcn
     {
         if (mOpaque)
         {
-            graphics->setColor(getBackgroundColor());
+            graphics->setColor(mBackgroundColor);
             graphics->fillRectangle(Rectangle(0, 0, getWidth(), getHeight()));
         }
 
@@ -133,7 +133,7 @@ namespace gcn
                 mCaretRow * getFont()->getHeight());
         }
 
-        graphics->setColor(getForegroundColor());
+        graphics->setColor(mForegroundColor);
         graphics->setFont(getFont());
 
         for (size_t i = 0, sz = mTextRows.size(); i < sz; i++)
@@ -146,7 +146,7 @@ namespace gcn
 
     void TextBox::drawCaret(Graphics* graphics, int x, int y)
     {
-        graphics->setColor(getForegroundColor());
+        graphics->setColor(mForegroundColor);
         graphics->drawLine(x, getFont()->getHeight() + y, x, y);
     }
 

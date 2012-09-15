@@ -139,10 +139,9 @@ void TabbedArea::addTab(gcn::Tab* tab, gcn::Widget* widget)
 
     gcn::TabbedArea::addTab(tab, widget);
 
-    const int width = getWidth() - 2 * getFrameSize();
-    const int height = getHeight() - 2 * getFrameSize()
-        - mTabContainer->getHeight();
-    widget->setSize(width, height);
+    const int frameSize = 2 * getFrameSize();
+    widget->setSize(getWidth() - frameSize,
+        getHeight() - frameSize - mTabContainer->getHeight());
 
     updateTabsWidth();
     updateArrowEnableState();
@@ -193,8 +192,9 @@ void TabbedArea::removeTab(gcn::Tab *tab)
         }
     }
 
-    if (tabIndexToBeSelected >= static_cast<signed>(mTabs.size()))
-        tabIndexToBeSelected = static_cast<int>(mTabs.size()) - 1;
+    const int tabsSize = static_cast<int>(mTabs.size());
+    if (tabIndexToBeSelected >= tabsSize)
+        tabIndexToBeSelected = tabsSize - 1;
     if (tabIndexToBeSelected < -1)
         tabIndexToBeSelected = -1;
 
@@ -269,10 +269,11 @@ void TabbedArea::setSelectedTabByPos(int tab)
 
 void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
 {
-    const int width = getWidth() - 2 * getFrameSize()
-        - 2 * mWidgetContainer->getFrameSize();
-    const int height = getHeight() - 2 * getFrameSize()
-        - mWidgetContainer->getY() - 2 * mWidgetContainer->getFrameSize();
+    const int frameSize = 2 * getFrameSize();
+    const int widgetFrameSize = 2 * mWidgetContainer->getFrameSize();
+    const int width = getWidth() - frameSize - widgetFrameSize;
+    const int height = getHeight() - frameSize
+        - mWidgetContainer->getY() - widgetFrameSize;
     mWidgetContainer->setSize(width, height);
 
     gcn::Widget *const w = getCurrentWidget();
@@ -356,11 +357,12 @@ void TabbedArea::updateVisibleTabsWidth()
 void TabbedArea::adjustTabPositions()
 {
     int maxTabHeight = 0;
-    size_t sz = mTabs.size();
+    const size_t sz = mTabs.size();
     for (size_t i = 0; i < sz; ++i)
     {
-        if (mTabs[i].first && mTabs[i].first->getHeight() > maxTabHeight)
-            maxTabHeight = mTabs[i].first->getHeight();
+        const gcn::Tab *const tab = mTabs[i].first;
+        if (tab && tab->getHeight() > maxTabHeight)
+            maxTabHeight = tab->getHeight();
     }
 
     int x = mArrowButton[0]->isVisible() ? mArrowButton[0]->getWidth() : 0;

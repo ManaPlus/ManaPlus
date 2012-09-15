@@ -54,10 +54,7 @@ void TextPreview::draw(gcn::Graphics* graphics)
     if (Client::getGuiAlpha() != mAlpha)
         mAlpha = Client::getGuiAlpha();
 
-    int alpha = static_cast<int>(mAlpha * 255.0f);
-
-    if (!mTextAlpha)
-        alpha = 255;
+    const int alpha = mTextAlpha ? static_cast<int>(mAlpha * 255.0f) : 255;
 
     if (mOpaque)
     {
@@ -82,8 +79,7 @@ void TextPreview::draw(gcn::Graphics* graphics)
         graphics->fillRectangle(gcn::Rectangle(1, 1, x, y));
     }
 
-    TextRenderer::renderText(graphics, mText, 2, 2,  gcn::Graphics::LEFT,
-                             gcn::Color(mTextColor->r, mTextColor->g,
-                                        mTextColor->b, alpha),
-                             mFont, mOutline, mShadow);
+    TextRenderer::renderText(graphics, mText, 2, 2, gcn::Graphics::LEFT,
+        gcn::Color(mTextColor->r, mTextColor->g, mTextColor->b, alpha),
+        mFont, mOutline, mShadow);
 }

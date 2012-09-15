@@ -97,7 +97,7 @@ CheckBox::CheckBox(const std::string &caption, const bool selected,
     if (listener)
         addActionListener(listener);
 
-    setForegroundColor(Theme::getThemeColor(Theme::CHECKBOX));
+    mForegroundColor = Theme::getThemeColor(Theme::CHECKBOX);
 }
 
 CheckBox::~CheckBox()
@@ -144,7 +144,7 @@ void CheckBox::draw(gcn::Graphics* graphics)
     drawBox(graphics);
 
     graphics->setFont(getFont());
-    graphics->setColor(getForegroundColor());
+    graphics->setColor(mForegroundColor);
 
     const int h = getHeight() + getHeight() / 2;
 

@@ -45,7 +45,7 @@ ListBox::ListBox(gcn::ListModel *const listModel):
     mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
     mDistributeMousePressed(true)
 {
-    setForegroundColor(Theme::getThemeColor(Theme::LISTBOX));
+    mForegroundColor = Theme::getThemeColor(Theme::LISTBOX);
 }
 
 ListBox::~ListBox()
@@ -82,7 +82,7 @@ void ListBox::draw(gcn::Graphics *graphics)
     }
 
     // Draw the list elements
-    graphics->setColor(getForegroundColor());
+    graphics->setColor(mForegroundColor);
     for (int i = 0, y = 0; i < mListModel->getNumberOfElements();
          ++i, y += height)
     {

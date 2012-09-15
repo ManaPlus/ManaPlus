@@ -76,7 +76,7 @@ ItemShortcutContainer::ItemShortcutContainer(const unsigned number) :
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    mForegroundColor = Theme::getThemeColor(Theme::TEXT);
 }
 
 ItemShortcutContainer::~ItemShortcutContainer()
@@ -130,7 +130,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         // Draw item keyboard shortcut.
         std::string key = inputManager.getKeyValueString(
             Input::KEY_SHORTCUT_1 + i);
-        graphics->setColor(getForegroundColor());
+        graphics->setColor(mForegroundColor);
 
         g->drawText(key, itemX + 2, itemY + 2, gcn::Graphics::LEFT);
 

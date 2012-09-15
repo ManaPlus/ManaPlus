@@ -48,7 +48,7 @@ RadioButton::RadioButton(const std::string &caption, const std::string &group,
     gcn::RadioButton(caption, group, marked),
     mHasMouse(false)
 {
-    setForegroundColor(Theme::getThemeColor(Theme::RADIOBUTTON));
+    mForegroundColor = Theme::getThemeColor(Theme::RADIOBUTTON);
     if (instances == 0)
     {
         if (Theme::instance())
@@ -151,7 +151,7 @@ void RadioButton::draw(gcn::Graphics* graphics)
     drawBox(graphics);
 
     graphics->setFont(getFont());
-    graphics->setColor(getForegroundColor());
+    graphics->setColor(mForegroundColor);
     graphics->drawText(getCaption(), 16, 0);
 }
 

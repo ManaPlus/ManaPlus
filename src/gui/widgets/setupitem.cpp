@@ -174,8 +174,9 @@ void SetupItem::externalUpdated(std::string eventName A_UNUSED)
 
 void SetupItem::fixFirstItemSize(gcn::Widget *const widget)
 {
-    if (widget->getWidth() < mParent->getPreferredFirstItemSize())
-        widget->setWidth(mParent->getPreferredFirstItemSize());
+    const int maxSize = mParent->getPreferredFirstItemSize();
+    if (widget->getWidth() < maxSize)
+        widget->setWidth(maxSize);
 }
 
 SetupItemCheckBox::SetupItemCheckBox(std::string text, std::string description,

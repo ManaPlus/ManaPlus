@@ -181,7 +181,7 @@ void DropDown::draw(gcn::Graphics* graphics)
     if (mListBox->getListModel() && mListBox->getSelected() >= 0)
     {
         graphics->setFont(getFont());
-        graphics->setColor(getForegroundColor());
+        graphics->setColor(mForegroundColor);
         graphics->drawText(mListBox->getListModel()->getElementAt(
                            mListBox->getSelected()), 1, 0);
     }

@@ -77,9 +77,11 @@ class ShopItems : public gcn::ListModel
         /**
          * Returns the number of items in the shop.
          */
-        int getNumberOfElements();
+        int getNumberOfElements()
+        { return static_cast<int>(mShopItems.size()); }
 
-        bool empty() const;
+        bool empty() const
+        { return mShopItems.empty(); }
 
         /**
          * Returns the name of item number i in the shop.

@@ -55,7 +55,7 @@ ShopListBox::ShopListBox(gcn::ListModel *const listModel) :
     mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND)),
     mWarningColor(Theme::getThemeColor(Theme::SHOP_WARNING))
 {
-    setForegroundColor(Theme::getThemeColor(Theme::LISTBOX));
+    mForegroundColor = Theme::getThemeColor(Theme::LISTBOX);
 }
 
 ShopListBox::ShopListBox(gcn::ListModel *const listModel,
@@ -70,7 +70,7 @@ ShopListBox::ShopListBox(gcn::ListModel *const listModel,
     mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND)),
     mWarningColor(Theme::getThemeColor(Theme::SHOP_WARNING))
 {
-    setForegroundColor(Theme::getThemeColor(Theme::LISTBOX));
+    mForegroundColor = Theme::getThemeColor(Theme::LISTBOX);
 }
 
 void ShopListBox::init()
@@ -91,12 +91,11 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         mAlpha = Client::getGuiAlpha();
 
     const int alpha = static_cast<int>(mAlpha * 255.0f);
-    mHighlightColor.a = alpha;
 
     Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
 
     graphics->setFont(getFont());
-    graphics->setColor(getForegroundColor());
+//    graphics->setColor(mForegroundColor);
 
     // Draw the list elements
     for (int i = 0, y = 0;
@@ -106,7 +105,6 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         bool needDraw(false);
         gcn::Color temp;
         gcn::Color* backgroundColor = &mBackgroundColor;
-        mBackgroundColor.a = alpha;
 
         if (mShopItems && mShopItems->at(i) &&
             mPlayerMoney < mShopItems->at(i)->getPrice() && mPriceCheck)
@@ -129,8 +127,13 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         }
         else if (i == mSelected)
         {
+            mHighlightColor.a = alpha;
             backgroundColor = &mHighlightColor;
             needDraw = true;
+        }
+        else
+        {
+            mBackgroundColor.a = alpha;
         }
 
         if (needDraw)
@@ -149,7 +152,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
                 graphics->drawImage(icon, 1, y);
             }
         }
-        graphics->setColor(getForegroundColor());
+        graphics->setColor(mForegroundColor);
         graphics->drawText(mListModel->getElementAt(i), ITEM_ICON_SIZE + 5,
             y + (ITEM_ICON_SIZE - getFont()->getHeight()) / 2);
     }

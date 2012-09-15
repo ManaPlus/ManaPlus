@@ -60,7 +60,7 @@ TextField::TextField(const std::string &text, const bool loseFocusOnTab,
 {
     setFrameSize(2);
 
-    setForegroundColor(Theme::getThemeColor(Theme::TEXTFIELD));
+    mForegroundColor = Theme::getThemeColor(Theme::TEXTFIELD);
 
     if (instances == 0)
     {
@@ -111,7 +111,7 @@ void TextField::draw(gcn::Graphics *graphics)
                   mXScroll);
     }
 
-    graphics->setColor(getForegroundColor());
+    graphics->setColor(mForegroundColor);
     graphics->setFont(getFont());
     graphics->drawText(mText, 1 - mXScroll, 1);
 }
@@ -120,10 +120,10 @@ void TextField::drawFrame(gcn::Graphics *graphics)
 {
     //updateAlpha(); -> Not useful...
 
-    int w, h, bs;
-    bs = getFrameSize();
-    w = getWidth() + bs * 2;
-    h = getHeight() + bs * 2;
+    int w, h;
+    const int bs = 2 * getFrameSize();
+    w = getWidth() + bs;
+    h = getHeight() + bs;
 
     static_cast<Graphics*>(graphics)->drawImageRect(0, 0, w, h, skin);
 }
