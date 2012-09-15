@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-09-11 22:53+0300\n"
-"PO-Revision-Date: 2012-08-14 23:25+0000\n"
+"POT-Creation-Date: 2012-09-15 14:10+0300\n"
+"PO-Revision-Date: 2012-09-13 18:24+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/"
 "language/it/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/actionmanager.cpp:831
 msgid "Ignoring incoming trade requests"
@@ -460,7 +460,7 @@ msgid "Max"
 msgstr "Massimo"
 
 #: src/gui/buyselldialog.cpp:38 src/gui/buyselldialog.cpp:48
-#: src/gui/inventorywindow.cpp:187 src/gui/setup_other.cpp:149
+#: src/gui/inventorywindow.cpp:184 src/gui/setup_other.cpp:149
 msgid "Shop"
 msgstr "Negozio"
 
@@ -487,7 +487,7 @@ msgstr "Vendi"
 #: src/gui/registerdialog.cpp:74 src/gui/setupactiondata.h:1500
 #: src/gui/setup.cpp:74 src/gui/socialwindow.cpp:1156
 #: src/gui/textcommandeditor.cpp:192 src/gui/textdialog.cpp:51
-#: src/gui/unregisterdialog.cpp:52 src/gui/updaterwindow.cpp:160
+#: src/gui/unregisterdialog.cpp:53 src/gui/updaterwindow.cpp:160
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -645,7 +645,7 @@ msgid "Switch Login"
 msgstr "Cambia login"
 
 #: src/gui/charselectdialog.cpp:165 src/gui/unregisterdialog.cpp:48
-#: src/gui/unregisterdialog.cpp:51
+#: src/gui/unregisterdialog.cpp:52
 msgid "Unregister"
 msgstr "Cancella registrazione"
 
@@ -941,7 +941,7 @@ msgid "Did You Know?"
 msgstr ""
 
 #: src/gui/didyouknowwindow.cpp:69 src/gui/helpwindow.cpp:65
-#: src/gui/inventorywindow.cpp:217 src/gui/npcdialog.cpp:57
+#: src/gui/inventorywindow.cpp:209 src/gui/npcdialog.cpp:57
 #: src/gui/npcdialog.cpp:81 src/gui/popupmenu.cpp:502
 #: src/gui/questswindow.cpp:98 src/gui/shopwindow.cpp:78
 msgid "Close"
@@ -993,13 +993,13 @@ msgstr "Descrizione:"
 msgid "Please at least type both the address and the port of the server."
 msgstr "Per favore indicare almeno l'indirizzo e la porta del server."
 
-#: src/gui/equipmentwindow.cpp:59 src/gui/inventorywindow.cpp:188
+#: src/gui/equipmentwindow.cpp:59 src/gui/inventorywindow.cpp:185
 #: src/gui/windowmenu.cpp:85
 msgid "Equipment"
 msgstr "Equipaggiamento"
 
-#: src/gui/equipmentwindow.cpp:64 src/gui/inventorywindow.cpp:172
-#: src/gui/inventorywindow.cpp:605 src/gui/popupmenu.cpp:1668
+#: src/gui/equipmentwindow.cpp:64 src/gui/inventorywindow.cpp:169
+#: src/gui/inventorywindow.cpp:595 src/gui/popupmenu.cpp:1668
 #: src/gui/popupmenu.cpp:1770 src/gui/popupmenu.cpp:1826
 msgid "Unequip"
 msgstr "Togli"
@@ -1028,63 +1028,51 @@ msgstr ""
 msgid "by type"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:109
-msgid "Slots:"
-msgstr "Slot:"
-
-#: src/gui/inventorywindow.cpp:110
-msgid "Filter:"
-msgstr "Filtro:"
-
-#: src/gui/inventorywindow.cpp:131 src/gui/windowmenu.cpp:87
+#: src/gui/inventorywindow.cpp:128 src/gui/windowmenu.cpp:87
 #: src/inventory.cpp:254
 msgid "Inventory"
 msgstr "Inventario"
 
-#: src/gui/inventorywindow.cpp:170 src/gui/inventorywindow.cpp:607
+#: src/gui/inventorywindow.cpp:167 src/gui/inventorywindow.cpp:597
 #: src/gui/outfitwindow.cpp:63 src/gui/popupmenu.cpp:1670
 #: src/gui/popupmenu.cpp:1772 src/gui/popupmenu.cpp:1828
 msgid "Equip"
 msgstr "Equipaggia"
 
-#: src/gui/inventorywindow.cpp:171 src/gui/inventorywindow.cpp:611
+#: src/gui/inventorywindow.cpp:168 src/gui/inventorywindow.cpp:601
 #: src/gui/popupmenu.cpp:1674 src/gui/popupmenu.cpp:1739
 #: src/gui/popupmenu.cpp:1776 src/gui/popupmenu.cpp:1832
 #: src/gui/skilldialog.cpp:227
 msgid "Use"
 msgstr "Usa"
 
-#: src/gui/inventorywindow.cpp:184 src/gui/inventorywindow.cpp:707
+#: src/gui/inventorywindow.cpp:181 src/gui/inventorywindow.cpp:697
 #: src/gui/popupmenu.cpp:1679 src/gui/popupmenu.cpp:1781
 #: src/gui/popupmenu.cpp:1837
 msgid "Drop..."
 msgstr "Lascia..."
 
-#: src/gui/inventorywindow.cpp:185 src/gui/popupmenu.cpp:1688
+#: src/gui/inventorywindow.cpp:182 src/gui/popupmenu.cpp:1688
 #: src/gui/popupmenu.cpp:1790 src/gui/popupmenu.cpp:1846
 msgid "Split"
 msgstr "Dividi"
 
-#: src/gui/inventorywindow.cpp:186 src/gui/outfitwindow.cpp:59
+#: src/gui/inventorywindow.cpp:183 src/gui/outfitwindow.cpp:59
 #: src/gui/popupmenu.cpp:460 src/gui/setupactiondata.h:1556
 msgid "Outfits"
 msgstr "Attrezzatura"
 
-#: src/gui/inventorywindow.cpp:190
-msgid "Weight:"
-msgstr "Peso:"
-
-#: src/gui/inventorywindow.cpp:215 src/gui/inventorywindow.cpp:698
+#: src/gui/inventorywindow.cpp:207 src/gui/inventorywindow.cpp:688
 #: src/gui/popupmenu.cpp:1653 src/gui/popupmenu.cpp:1793
 #: src/gui/popupmenu.cpp:1849 src/gui/setup.cpp:75
 msgid "Store"
 msgstr "Magazzino"
 
-#: src/gui/inventorywindow.cpp:216 src/gui/popupmenu.cpp:1695
+#: src/gui/inventorywindow.cpp:208 src/gui/popupmenu.cpp:1695
 msgid "Retrieve"
 msgstr "Recupera"
 
-#: src/gui/inventorywindow.cpp:709 src/gui/popupmenu.cpp:1684
+#: src/gui/inventorywindow.cpp:699 src/gui/popupmenu.cpp:1684
 #: src/gui/popupmenu.cpp:1786 src/gui/popupmenu.cpp:1842
 #: src/gui/windowmenu.cpp:108
 msgid "Drop"
@@ -4298,6 +4286,10 @@ msgstr ""
 
 #: src/gui/widgets/guildchattab.cpp:115 src/net/ea/gui/guildtab.cpp:139
 msgid "/kick > Kick some one from the guild you are in"
+msgstr ""
+
+#: src/gui/widgets/itemlinkhandler.cpp:99
+msgid "Open url"
 msgstr ""
 
 #: src/gui/widgets/whispertab.cpp:105
