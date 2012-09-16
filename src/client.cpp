@@ -1859,8 +1859,7 @@ void Client::initUpdatesDir()
         mUpdateHost.resize(mUpdateHost.size() - 1);
 
     // Parse out any "http://" or "ftp://", and set the updates directory
-    size_t pos;
-    pos = mUpdateHost.find("://");
+    const size_t pos = mUpdateHost.find("://");
     if (pos != mUpdateHost.npos)
     {
         if (pos + 3 < mUpdateHost.length() && !mUpdateHost.empty())

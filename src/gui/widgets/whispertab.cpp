@@ -80,10 +80,10 @@ void WhisperTab::handleCommand(const std::string &msg)
         return;
     }
 
-    size_t pos = msg.find(' ');
-    std::string type(msg, 0, pos);
-    std::string args(msg, pos == std::string::npos
-                     ? msg.size() : pos + 1);
+    const size_t pos = msg.find(' ');
+    const std::string type(msg, 0, pos);
+    const std::string args(msg, pos == std::string::npos
+        ? msg.size() : pos + 1);
 
     if (type == "me")
     {

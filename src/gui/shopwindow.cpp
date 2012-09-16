@@ -693,7 +693,7 @@ void ShopWindow::processRequest(std::string nick, std::string data,
     if (!inv)
         return;
 
-    size_t idx = data.find(" ");
+    const size_t idx = data.find(" ");
     if (idx == std::string::npos)
         return;
 

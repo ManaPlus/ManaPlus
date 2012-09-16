@@ -727,10 +727,8 @@ const std::string Map::getName() const
 const std::string Map::getFilename() const
 {
     std::string fileName = getProperty("_filename");
-    size_t lastSlash = fileName.rfind("/") + 1;
-    size_t lastDot = fileName.rfind(".");
-
-    return fileName.substr(lastSlash, lastDot - lastSlash);
+    const size_t lastSlash = fileName.rfind("/") + 1;
+    return fileName.substr(lastSlash, fileName.rfind(".") - lastSlash);
 }
 
 Position Map::checkNodeOffsets(int radius, const unsigned char walkMask,

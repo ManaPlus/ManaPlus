@@ -282,10 +282,11 @@ Dye::Dye(const std::string &description)
     if (description.empty())
         return;
 
-    size_t next_pos = 0, length = description.length();
+    size_t next_pos = 0;
+    const size_t length = description.length();
     do
     {
-        size_t pos = next_pos;
+        const size_t pos = next_pos;
         next_pos = description.find(';', pos);
 
         if (next_pos == std::string::npos)
@@ -367,7 +368,7 @@ void Dye::instantiate(std::string &target, const std::string &palettes)
     size_t last_pos = target.length(), pal_pos = 0;
     do
     {
-        size_t pos = next_pos;
+        const size_t pos = next_pos;
         next_pos = target.find(';', pos);
 
         if (next_pos == std::string::npos)
@@ -375,7 +376,7 @@ void Dye::instantiate(std::string &target, const std::string &palettes)
 
         if (next_pos == pos + 1 && pal_pos != std::string::npos)
         {
-            size_t pal_next_pos = palettes.find(';', pal_pos);
+            const size_t pal_next_pos = palettes.find(';', pal_pos);
             s << target[pos] << ':';
             if (pal_next_pos == std::string::npos)
             {

@@ -263,7 +263,7 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
 
     for (char **i = list; *i; i++)
     {
-        size_t len = strlen(*i);
+        const size_t len = strlen(*i);
 
         if (len > ext.length() && !ext.compare((*i) + (len - ext.length())))
         {
@@ -288,7 +288,7 @@ void ResourceManager::searchAndRemoveArchives(const std::string &path,
 
     for (char **i = list; *i; i++)
     {
-        size_t len = strlen(*i);
+        const size_t len = strlen(*i);
 
         if (len > ext.length() && !ext.compare((*i) + (len - ext.length())))
         {
@@ -481,7 +481,7 @@ struct DyedImageLoader
             return nullptr;
 
         std::string path = rl->path;
-        size_t p = path.find('|');
+        const size_t p = path.find('|');
         Dye *d = nullptr;
         if (p != std::string::npos)
         {

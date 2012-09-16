@@ -186,7 +186,7 @@ const std::string findSameSubstringI(const std::string &s1,
     toLower(str1);
     toLower(str2);
 
-    size_t minLength = str1.length() > str2.length()
+    const size_t minLength = str1.length() > str2.length()
         ? str2.length() : str1.length();
     for (size_t f = 0; f < minLength; f ++)
     {
@@ -256,11 +256,11 @@ unsigned int decodeStr(const std::string &str)
 
 std::string extractNameFromSprite(std::string str)
 {
-    size_t pos1 = str.rfind(".");
+    const size_t pos1 = str.rfind(".");
     if (pos1 != std::string::npos)
     {
         size_t pos2 = str.rfind("/");
-        size_t pos3 = str.rfind("\\");
+        const size_t pos3 = str.rfind("\\");
         if (pos3 != std::string::npos)
         {
             if (pos2 == std::string::npos || pos3 > pos2)
@@ -278,12 +278,12 @@ std::string extractNameFromSprite(std::string str)
 
 std::string removeSpriteIndex(std::string str)
 {
-    size_t pos1 = str.rfind("[");
+    const size_t pos1 = str.rfind("[");
 
     if (pos1 != std::string::npos)
     {
         size_t pos2 = str.rfind("/");
-        size_t pos3 = str.rfind("\\");
+        const size_t pos3 = str.rfind("\\");
         if (pos3 != std::string::npos)
         {
             if (pos2 == std::string::npos || pos3 > pos2)
@@ -321,7 +321,7 @@ void getSafeUtf8String(std::string text, char *const buf)
 std::string getFileName(std::string path)
 {
     size_t pos1 = path.rfind("/");
-    size_t pos2 = path.rfind("\\");
+    const size_t pos2 = path.rfind("\\");
     if (pos1 == std::string::npos)
         pos1 = pos2;
     else if (pos2 != std::string::npos && pos2 > pos1)
@@ -335,7 +335,7 @@ std::string getFileName(std::string path)
 std::string getFileDir(std::string path)
 {
     size_t pos1 = path.rfind("/");
-    size_t pos2 = path.rfind("\\");
+    const size_t pos2 = path.rfind("\\");
     if (pos1 == std::string::npos)
         pos1 = pos2;
     else if (pos2 != std::string::npos && pos2 > pos1)
@@ -477,7 +477,7 @@ std::string combineDye(std::string file, std::string dye)
 {
     if (dye.empty())
         return file;
-    size_t pos = file.find_last_of("|");
+    const size_t pos = file.find_last_of("|");
     if (pos != std::string::npos)
         return file.substr(0, pos) + "|" + dye;
     return file + "|" + dye;
@@ -488,7 +488,7 @@ std::string combineDye2(std::string file, std::string dye)
     if (dye.empty())
         return file;
 
-    size_t pos = file.find_last_of("|");
+    const size_t pos = file.find_last_of("|");
     if (pos != std::string::npos)
     {
         std::string dye1 = file.substr(pos + 1);
@@ -611,7 +611,7 @@ bool findCutFirst(std::string &str1, std::string str2)
 
 std::string &removeProtocol(std::string &url)
 {
-    size_t i = url.find("://");
+    const size_t i = url.find("://");
     if (i != std::string::npos)
         url = url.substr(i + 3);
     return url;

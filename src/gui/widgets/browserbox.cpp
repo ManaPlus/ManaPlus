@@ -121,8 +121,8 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         const int sz = static_cast<int>(mTextRows.size());
         while (idx1 != std::string::npos)
         {
-            size_t idx2 = tmp.find("|", idx1);
-            size_t idx3 = tmp.find("@@", idx2);
+            const size_t idx2 = tmp.find("|", idx1);
+            const size_t idx3 = tmp.find("@@", idx2);
 
             if (idx2 == std::string::npos || idx3 == std::string::npos)
                 break;
@@ -560,7 +560,7 @@ int BrowserBox::calcHeight()
                 }
             }
 
-            size_t len = (end == std::string::npos) ? end : end - start;
+            const size_t len = (end == std::string::npos) ? end : end - start;
 
             if (start >= row.length())
                 break;

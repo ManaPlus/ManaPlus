@@ -362,11 +362,11 @@ std::string SpellManager::autoComplete(std::string partName)
     while (i != i_end)
     {
         const TextCommand *const cmd = *i;
-        std::string line = cmd->getCommand();
+        const std::string line = cmd->getCommand();
 
         if (line != "")
         {
-            size_t pos = line.find(partName, 0);
+            const size_t pos = line.find(partName, 0);
             if (pos == 0)
             {
                 if (newName != "")

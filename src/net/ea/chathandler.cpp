@@ -266,9 +266,9 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     if (being->getType() == Being::PLAYER)
         being->setTalkTime();
 
-    size_t pos = chatMsg.find(" : ", 0);
+    const size_t pos = chatMsg.find(" : ", 0);
     std::string sender_name = ((pos == std::string::npos)
-                                ? "" : chatMsg.substr(0, pos));
+        ? "" : chatMsg.substr(0, pos));
 
     if (sender_name != being->getName() && being->getType() == Being::PLAYER)
     {
@@ -307,7 +307,7 @@ void ChatHandler::processChat(Net::MessageIn &msg, bool normalChat)
         return;
 
     std::string chatMsg = msg.readRawString(chatMsgLength);
-    size_t pos = chatMsg.find(" : ", 0);
+    const size_t pos = chatMsg.find(" : ", 0);
 
     if (normalChat)
     {

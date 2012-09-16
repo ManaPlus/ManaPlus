@@ -109,7 +109,7 @@ bool TranslationManager::translateFile(const std::string &fileName,
     {
         if (pos1 == oldPos1)
             break;  // detected infinite loop
-        size_t pos2 = str.find(">>", pos1 + 2);
+        const size_t pos2 = str.find(">>", pos1 + 2);
         if (pos2 == std::string::npos)
             break;
         const std::string key = str.substr(pos1 + 2, pos2 - pos1 - 2);

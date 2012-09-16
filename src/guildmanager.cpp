@@ -272,7 +272,7 @@ bool GuildManager::process(std::string msg)
         if (!guild)
             return false;
 //        logger->log("welcome message: %s", msg.c_str());
-        size_t pos = msg.find("! (");
+        const size_t pos = msg.find("! (");
         if (pos == std::string::npos)
             return false;
         msg = msg.substr(0, pos);
@@ -400,7 +400,7 @@ bool GuildManager::process(std::string msg)
         }
         if (mTab)
         {
-            size_t pos = msg.find(": ", 0);
+            const size_t pos = msg.find(": ", 0);
             if (pos != std::string::npos)
             {
                 std::string sender_name = ((pos == std::string::npos)

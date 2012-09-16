@@ -52,13 +52,12 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
     mMinWidth = minDimension;
 
     std::stringstream wrappedStream;
-    size_t spacePos;
     size_t newlinePos;
     size_t lastNewlinePos = 0;
     int minWidth = 0;
     int xpos;
 
-    spacePos = text.rfind(" ", text.size());
+    size_t spacePos = text.rfind(" ", text.size());
 
     if (spacePos != std::string::npos)
     {

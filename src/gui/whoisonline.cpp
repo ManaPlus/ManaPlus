@@ -241,7 +241,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
 void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
 {
     mBrowserBox->clearRows();
-    size_t numOnline = list.size();
+    const size_t numOnline = list.size();
     std::vector<OnlinePlayer*> friends;
     std::vector<OnlinePlayer*> neutral;
     std::vector<OnlinePlayer*> disregard;
@@ -353,13 +353,10 @@ void WhoIsOnline::loadWebList()
         trim(lineStr);
         if (listStarted == true)
         {
-            size_t found;
-            found = lineStr.find(" users are online.");
-            if (found == std::string::npos)
+            if (lineStr.find(" users are online.") == std::string::npos)
             {
                 int level = 0;
 
-                size_t pos = 0;
                 if (lineStr.length() > 24)
                 {
                     nick = lineStr.substr(0, 24);
@@ -373,7 +370,7 @@ void WhoIsOnline::loadWebList()
                 trim(nick);
 
                 bool isGM(false);
-                pos = lineStr.find(gmText, 0);
+                size_t pos = lineStr.find(gmText, 0);
                 if (pos != std::string::npos)
                 {
                     lineStr = lineStr.substr(pos + gmText.length());
@@ -477,7 +474,7 @@ size_t WhoIsOnline::memoryWrite(void *ptr, size_t size,
         return 0;
 
     WhoIsOnline *wio = reinterpret_cast<WhoIsOnline *>(stream);
-    size_t totalMem = size * nmemb;
+    const size_t totalMem = size * nmemb;
     wio->mMemoryBuffer = static_cast<char*>(realloc(wio->mMemoryBuffer,
                                             wio->mDownloadedBytes + totalMem));
     if (wio->mMemoryBuffer)

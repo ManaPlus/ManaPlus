@@ -88,11 +88,10 @@ void CommandHandler::handleCommands(const std::string &command,
 void CommandHandler::handleCommand(const std::string &command,
                                    ChatTab *const tab)
 {
-    size_t pos = command.find(' ');
-    std::string type(command, 0, pos);
+    const size_t pos = command.find(' ');
+    const std::string type(command, 0, pos);
     std::string args(command, pos == std::string::npos
                      ? command.size() : pos + 1);
-
     args = trim(args);
 
     if (command == "closeall")
@@ -377,9 +376,9 @@ void CommandHandler::handleJoin(const std::string &args, ChatTab *const tab)
     if (!tab)
         return;
 
-    size_t pos = args.find(' ');
-    std::string name(args, 0, pos);
-    std::string password(args, pos + 1);
+    const size_t pos = args.find(' ');
+    const std::string name(args, 0, pos);
+    const std::string password(args, pos + 1);
     tab->chatLog(strprintf(_("Requesting to join channel %s."), name.c_str()));
     Net::getChatHandler()->enterChannel(name, password);
 }

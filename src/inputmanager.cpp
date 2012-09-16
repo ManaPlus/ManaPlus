@@ -228,13 +228,11 @@ void InputManager::makeDefault(const int i)
 
 bool InputManager::hasConflicts(int &key1, int &key2) const
 {
-    size_t i;
-    size_t j;
     /**
      * No need to parse the square matrix: only check one triangle
      * that's enough to detect conflicts
      */
-    for (i = 0; i < Input::KEY_TOTAL; i++)
+    for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
         if (!*keyData[i].configField)
             continue;
@@ -244,6 +242,7 @@ bool InputManager::hasConflicts(int &key1, int &key2) const
             if (mKey[i].values[i2].value == Input::KEY_NO_VALUE)
                 continue;
 
+            size_t j;
             for (j = i, j++; j < Input::KEY_TOTAL; j++)
             {
 

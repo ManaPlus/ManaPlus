@@ -76,7 +76,7 @@ unsigned SpriteDef::findNumber(const unsigned num) const
 
 SpriteDef *SpriteDef::load(const std::string &animationFile, const int variant)
 {
-    size_t pos = animationFile.find('|');
+    const size_t pos = animationFile.find('|');
     std::string palettes;
     if (pos != std::string::npos)
         palettes = animationFile.substr(pos + 1);
@@ -334,7 +334,7 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
                      it != it_end; ++ it)
                 {
                     std::string str = *it;
-                    size_t idx = str.find("-");
+                    const size_t idx = str.find("-");
                     if (str == "p")
                     {
                         animation->addPause(delay, rand);

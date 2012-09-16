@@ -136,7 +136,7 @@ void HelpWindow::loadTags()
          it != it_end; ++ it)
     {
         const std::string &str = *it;
-        size_t idx = str.find('|');
+        const size_t idx = str.find('|');
         if (idx != std::string::npos)
             mTagFileMap[str.substr(idx + 1)].insert(str.substr(0, idx));
     }

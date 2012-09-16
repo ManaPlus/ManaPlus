@@ -114,7 +114,7 @@ void ChatTab::chatLog(std::string line, Own own,
     tmp.nick = "";
     tmp.text = line;
 
-    size_t pos = line.find(" : ");
+    const size_t pos = line.find(" : ");
     if (pos != std::string::npos)
     {
         if (line.length() <= pos + 3)
@@ -345,7 +345,7 @@ void ChatTab::chatInput(const std::string &message)
     while (start + 1 < msg.size() && start != std::string::npos
            && msg[start + 1] != '@')
     {
-        size_t end = msg.find(']', start);
+        const size_t end = msg.find(']', start);
         if (start + 1 != end && end != std::string::npos)
         {
             // Catch multiple embeds and ignore them

@@ -1055,7 +1055,7 @@ void ChatWindow::addWhisper(const std::string &nick,
             {
                 std::string msg = mes;
                 std::string nick2;
-                size_t idx = mes.find(":");
+                const size_t idx = mes.find(":");
                 if (idx != std::string::npos && idx > 0)
                 {
                     nick2 = msg.substr(0, idx);
@@ -1298,7 +1298,7 @@ std::string ChatWindow::autoComplete(StringVect &names,
             std::string name = *i;
             toLower(name);
 
-            size_t pos = name.find(partName, 0);
+            const size_t pos = name.find(partName, 0);
             if (pos == 0)
             {
                 if (newName != "")
@@ -1330,8 +1330,7 @@ std::string ChatWindow::autoComplete(std::string partName,
     while (i != i_end)
     {
         std::string line = *i;
-        size_t pos = line.find(partName, 0);
-        if (pos == 0)
+        if (line.find(partName, 0) == 0)
             nameList.push_back(line);
         ++i;
     }
@@ -1388,7 +1387,7 @@ void ChatWindow::resortChatLog(std::string line, Own own,
             return;
         }
 
-        size_t idx = line.find(": \302\202");
+        const size_t idx = line.find(": \302\202");
         if (idx != std::string::npos)
         {
             line = line.erase(idx + 2, 2);
@@ -1396,13 +1395,13 @@ void ChatWindow::resortChatLog(std::string line, Own own,
             return;
         }
 
-        size_t idx1 = line.find("@@");
+        const size_t idx1 = line.find("@@");
         if (idx1 != std::string::npos)
         {
-            size_t idx2 = line.find("|", idx1);
+            const size_t idx2 = line.find("|", idx1);
             if (idx2 != std::string::npos)
             {
-                size_t idx3 = line.find("@@", idx2);
+                const size_t idx3 = line.find("@@", idx2);
                 if (idx3 != std::string::npos)
                 {
                     if (line.find("http", idx1) != idx1 + 2)

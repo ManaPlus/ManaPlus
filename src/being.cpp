@@ -2512,7 +2512,7 @@ Equipment *Being::getEquipment()
 
 void Being::undressItemById(const int id)
 {
-    size_t sz = mSpriteIDs.size();
+    const size_t sz = mSpriteIDs.size();
 
     for (size_t f = 0; f < sz; f ++)
     {
@@ -2680,7 +2680,7 @@ BeingEquipBackend::BeingEquipBackend(Being *const being):
     memset(mEquipment, 0, sizeof(mEquipment));
     if (being)
     {
-        size_t sz = being->mSpriteIDs.size();
+        const size_t sz = being->mSpriteIDs.size();
 
         for (unsigned f = 0; f < sz; f ++)
         {

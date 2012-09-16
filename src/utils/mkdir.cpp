@@ -113,7 +113,7 @@ int mkdir_r(const char *const pathname)
 /// Create a directory, making leading components first if necessary
 int mkdir_r(const char *const pathname)
 {
-    size_t len = static_cast<int>(strlen(pathname));
+    const size_t len = static_cast<int>(strlen(pathname));
     char *tmp = new char[len + 2];
     char *p;
 
