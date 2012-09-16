@@ -102,6 +102,8 @@ Window::Window(const std::string &caption, const bool modal,
         if (mSkin)
         {
             setPadding(mSkin->getPadding());
+            if (getOptionBool("titlebarBold"))
+                mCaptionFont = reinterpret_cast<gcn::Font*>(boldFont);
             setTitlePadding(mSkin->getTitlePadding());
             setTitleBarHeight(getOption("titlebarHeight"));
             mCaptionOffsetX = getOption("captionoffsetx");
