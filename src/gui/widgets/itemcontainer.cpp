@@ -541,24 +541,27 @@ void ItemContainer::updateMatrix()
             break;
     }
 
+    int jMult = j * mGridColumns;
+    const int maxSize = mGridRows * mGridColumns;
     for (std::vector<ItemIdPair*>::const_iterator iter = sortedItems.begin(),
          iter_end = sortedItems.end(); iter != iter_end; ++ iter)
     {
-        if (j >= mGridRows)
+        if (jMult >= maxSize)
             break;
 
-        mShowMatrix[j * mGridColumns + i] = (*iter)->mId;
+        mShowMatrix[jMult + i] = (*iter)->mId;
 
         i ++;
         if (i >= mGridColumns)
         {
             i = 0;
             j ++;
+            jMult += mGridColumns;
         }
     }
 
     for (int idx = j * mGridColumns + i;
-         idx < mGridRows * mGridColumns; idx ++)
+         idx < maxSize; idx ++)
     {
         mShowMatrix[idx] = -1;
     }
