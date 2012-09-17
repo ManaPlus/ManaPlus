@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "keyevent.h"
 
+#include "gui/gui.h"
 #include "gui/palette.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
@@ -144,10 +145,24 @@ void ListBox::mouseWheelMovedDown(gcn::MouseEvent &mouseEvent A_UNUSED)
 
 void ListBox::mousePressed(gcn::MouseEvent &event)
 {
+
     if (mDistributeMousePressed)
+    {
         gcn::ListBox::mousePressed(event);
+    }
     else
-        mouseDragged(event);
+    {
+        if (event.getClickCount() == 2)
+        {
+            if (gui)
+                gui->resetClickCount();
+            gcn::ListBox::mousePressed(event);
+        }
+        else
+        {
+            mouseDragged(event);
+        }
+    }
 }
 
 void ListBox::mouseDragged(gcn::MouseEvent &event)
