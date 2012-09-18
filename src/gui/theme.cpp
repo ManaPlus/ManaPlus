@@ -449,6 +449,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     int titlePadding = 4;
     int titlebarHeight = 20;
     int closePadding = 3;
+    int resizePadding = 2;
     std::map<std::string, int> *const mOptions
         = new std::map<std::string, int>();
 
@@ -510,6 +511,11 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
                         titlebarHeight = XML::getProperty(
                             partNode, "value", 16);
                     }
+                    else if (name == "resizePadding")
+                    {
+                        resizePadding = XML::getProperty(
+                            partNode, "value", 2);
+                    }
                     else
                     {
                         (*mOptions)[name] = XML::getProperty(
@@ -530,6 +536,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
 
     (*mOptions)["closePadding"] = closePadding;
     (*mOptions)["titlebarHeight"] = titlebarHeight;
+    (*mOptions)["resizePadding"] = resizePadding;
 
     Skin *const skin = new Skin(border, images, filename, "", padding,
         titlePadding, mOptions);

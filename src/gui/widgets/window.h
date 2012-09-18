@@ -442,11 +442,12 @@ class Window : public gcn::Window, private gcn::WidgetListener
          */
         int getResizeHandles(const gcn::MouseEvent &event);
 
-        ResizeGrip *mGrip;            /**< Resize grip */
+        Image *mGrip;                 /**< Resize grip */
         Window *mParent;              /**< The parent window */
         Layout *mLayout;              /**< Layout handler */
         gcn::Rectangle mCloseRect;    /**< Close button rectangle */
         gcn::Rectangle mStickyRect;   /**< Sticky button rectangle */
+        gcn::Rectangle mGripRect;     /**< Resize grip rectangle */
         std::string mWindowName;      /**< Name of the window */
         bool mShowTitle;              /**< Window has a title bar */
         bool mModal;                  /**< Window is modal */
@@ -480,6 +481,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
         int mCaptionOffsetY;
         int mCaptionAlign;
         int mTitlePadding;
+        int mGripPadding;
         int mResizeHandles;
         bool mRedraw;
         gcn::Font *mCaptionFont;

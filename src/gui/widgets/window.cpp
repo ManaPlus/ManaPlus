@@ -33,7 +33,6 @@
 #include "gui/viewport.h"
 
 #include "gui/widgets/layout.h"
-#include "gui/widgets/resizegrip.h"
 
 #include "resources/image.h"
 
@@ -77,6 +76,7 @@ Window::Window(const std::string &caption, const bool modal,
     mCaptionOffsetY(5),
     mCaptionAlign(gcn::Graphics::LEFT),
     mTitlePadding(4),
+    mGripPadding(2),
     mResizeHandles(-1),
     mRedraw(true),
     mCaptionFont(getFont())
@@ -106,6 +106,7 @@ Window::Window(const std::string &caption, const bool modal,
                 mCaptionFont = reinterpret_cast<gcn::Font*>(boldFont);
             setTitlePadding(mSkin->getTitlePadding());
             setTitleBarHeight(getOption("titlebarHeight"));
+            mGripPadding = getOption("resizePadding");
             mCaptionOffsetX = getOption("captionoffsetx");
             if (!mCaptionOffsetX)
                 mCaptionOffsetX = 7;
@@ -120,6 +121,7 @@ Window::Window(const std::string &caption, const bool modal,
             }
         }
     }
+
 
     // Add this window to the window container
     windowContainer->add(this);
@@ -162,6 +164,11 @@ Window::~Window()
         if (Theme::instance())
             Theme::instance()->unload(mSkin);
         mSkin = nullptr;
+    }
+    if (mGrip)
+    {
+        mGrip->decRef();
+        mGrip = nullptr;
     }
 }
 
@@ -212,6 +219,9 @@ void Window::draw(gcn::Graphics *graphics)
         if (button)
             g->drawImage(button, mStickyRect.x, mStickyRect.y);
     }
+
+    if (mGrip)
+        g->drawImage(mGrip, mGripRect.x, mGripRect.y);
 
     if (update)
     {
@@ -358,27 +368,19 @@ void Window::setMaxHeight(const int height)
 
 void Window::setResizable(const bool r)
 {
-    if (static_cast<bool>(mGrip) == r)
+    if ((mGrip != nullptr) == r)
         return;
 
+    if (mGrip)
+        mGrip->decRef();
     if (r)
     {
-        if (mGrip)
-        {
-            remove(mGrip);
-            delete mGrip;
-        }
-        mGrip = new ResizeGrip;
-        mGrip->setX(mDimension.width - mGrip->getWidth()
-            - getChildrenArea().x);
-        mGrip->setY(mDimension.height - mGrip->getHeight()
-            - getChildrenArea().y);
-        add(mGrip);
+        mGrip = Theme::getImageFromThemeXml("resize.xml", "");
+        mGripRect.x = mDimension.width - mGrip->getWidth() - mGripPadding;
+        mGripRect.y = mDimension.height - mGrip->getHeight() - mGripPadding;
     }
     else
     {
-        remove(mGrip);
-        delete mGrip;
         mGrip = nullptr;
     }
 }
@@ -389,8 +391,8 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
 
     if (mGrip)
     {
-        mGrip->setPosition(mDimension.width - mGrip->getWidth() - area.x,
-                           mDimension.height - mGrip->getHeight() - area.y);
+        mGripRect.x = mDimension.width - mGrip->getWidth() - mGripPadding;
+        mGripRect.y = mDimension.height - mGrip->getHeight() - mGripPadding;
     }
 
     if (mLayout)
@@ -474,7 +476,6 @@ void Window::setStickyButtonLock(const bool lock)
 {
     mStickyButtonLock = lock;
     mStickyButton = lock;
-//    mMovable = false;
 }
 
 void Window::setVisible(bool visible)
@@ -919,8 +920,7 @@ int Window::getResizeHandles(const gcn::MouseEvent &event)
                 resizeHandles |= (y > mDimension.height - resizeBorderWidth)
                     ? BOTTOM : (y < resizeBorderWidth) ? TOP : 0;
             }
-
-            if (event.getSource() == mGrip)
+            if (x >= mGripRect.x && y >= mGripRect.y)
             {
                 mDragOffsetX = x;
                 mDragOffsetY = y;
@@ -944,7 +944,7 @@ bool Window::isResizeAllowed(const gcn::MouseEvent &event) const
         if (!getWindowArea().isPointInRect(x, y) && event.getSource() == this)
             return true;
 
-        if (event.getSource() == mGrip)
+        if (x >= mGripRect.x && y >= mGripRect.y)
             return true;
     }
 
@@ -968,10 +968,6 @@ Layout &Window::getLayout()
 void Window::clearLayout()
 {
     clear();
-
-    // Restore the resize grip
-    if (mGrip)
-        add(mGrip);
 
     // Recreate layout instance when one is present
     if (mLayout)

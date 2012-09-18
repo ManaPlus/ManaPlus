@@ -178,8 +178,6 @@ SET(SRCS
     gui/widgets/radiobutton.h
     gui/widgets/radiogroup.cpp
     gui/widgets/radiogroup.h
-    gui/widgets/resizegrip.cpp
-    gui/widgets/resizegrip.h
     gui/widgets/scrollarea.cpp
     gui/widgets/scrollarea.h
     gui/widgets/setupitem.cpp
