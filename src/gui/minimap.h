@@ -27,6 +27,7 @@
 
 class Image;
 class Map;
+class TextPopup;
 
 /**
  * Minimap window. Shows a minimap image and the name of the current map.
@@ -58,7 +59,11 @@ class Minimap : public Window
          */
         void draw(gcn::Graphics *graphics);
 
+        void mouseMoved(gcn::MouseEvent &event);
+
         void mouseReleased(gcn::MouseEvent &event);
+
+        void mouseExited(gcn::MouseEvent &event);
 
         void screenToMap(int &x, int &y);
 
@@ -70,6 +75,7 @@ class Minimap : public Window
         bool mCustomMapImage;
         int mMapOriginX;
         int mMapOriginY;
+        TextPopup *mTextPopup;
 };
 
 extern Minimap *minimap;

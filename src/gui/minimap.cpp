@@ -30,6 +30,7 @@
 
 #include "gui/setup.h"
 #include "gui/viewport.h"
+#include "gui/textpopup.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
@@ -50,7 +51,8 @@ Minimap::Minimap():
     mHeightProportion(0.5),
     mCustomMapImage(false),
     mMapOriginX(0),
-    mMapOriginY(0)
+    mMapOriginY(0),
+    mTextPopup(new TextPopup)
 {
     setWindowName("Minimap");
     mShow = config.getValueBool(getWindowName() + "Show", true);
@@ -82,6 +84,8 @@ Minimap::~Minimap()
             mMapImage->decRef();
         mMapImage = nullptr;
     }
+    delete mTextPopup;
+    mTextPopup = nullptr;
 }
 
 void Minimap::setMap(const Map *const map)
@@ -164,13 +168,12 @@ void Minimap::setMap(const Map *const map)
     {
         const int offsetX = 2 * getPadding();
         const int offsetY = getTitleBarHeight() + getPadding();
-        const int titleWidth = getFont()->getWidth(getCaption()) + 15;
         const int mapWidth = mMapImage->mBounds.w < 100 ?
                              mMapImage->mBounds.w + offsetX : 100;
         const int mapHeight = mMapImage->mBounds.h < 100 ?
                               mMapImage->mBounds.h + offsetY : 100;
 
-        setMinWidth(mapWidth > titleWidth ? mapWidth : titleWidth);
+        setMinWidth(mapWidth);
         setMinHeight(mapHeight);
 
         mWidthProportion = static_cast<float>(
@@ -178,8 +181,7 @@ void Minimap::setMap(const Map *const map)
         mHeightProportion = static_cast<float>(
                 mMapImage->mBounds.h) / static_cast<float>(map->getHeight());
 
-        setMaxWidth(mMapImage->mBounds.w > titleWidth ?
-                    mMapImage->mBounds.w + offsetX : titleWidth);
+        setMaxWidth(mMapImage->mBounds.w + offsetX);
         setMaxHeight(mMapImage->mBounds.h + offsetY);
 
         setDefaultSize(getX(), getY(), getWidth(), getHeight());
@@ -417,6 +419,20 @@ void Minimap::mouseReleased(gcn::MouseEvent &event)
         screenToMap(x, y);
         viewport->showMapPopup(x, y);
     }
+}
+
+void Minimap::mouseMoved(gcn::MouseEvent &event)
+{
+    Window::mouseMoved(event);
+    const int x = event.getX();
+    const int y = event.getY();
+    mTextPopup->show(x + getX(), y + getY(), mCaption);
+}
+
+void Minimap::mouseExited(gcn::MouseEvent &event)
+{
+    Window::mouseExited(event);
+    mTextPopup->hide();
 }
 
 void Minimap::screenToMap(int &x, int &y)
