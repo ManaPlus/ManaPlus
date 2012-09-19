@@ -1636,7 +1636,7 @@ void Being::updateColors()
         }
         else
         {
-            mTextColor = &userPalette->getColor(Theme::PLAYER);
+            mTextColor = &Theme::getThemeColor(Theme::PLAYER);
 
             mErased = false;
 

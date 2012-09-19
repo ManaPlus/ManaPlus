@@ -78,6 +78,11 @@ class Palette
          */
         inline const gcn::Color &getColor(int type, int alpha = 255)
         {
+//            if (type >= (signed)mColors.size())
+//            {
+//                logger->log("request type: %d", type);
+//                logger->log("size: %ld", mColors.size());
+//            }
             gcn::Color* col = &mColors[type].color;
             col->a = alpha;
             return *col;
@@ -182,12 +187,12 @@ class Palette
             void set(const int type0, const gcn::Color &color0,
                      const GradientType grad0, const int delay0)
             {
-                ColorElem::type = type0;
-                ColorElem::color = color0;
-                ColorElem::testColor = color0;
-                ColorElem::grad = grad0;
-                ColorElem::delay = delay0;
-                ColorElem::gradientIndex = rand();
+                type = type0;
+                color = color0;
+                testColor = color0;
+                grad = grad0;
+                delay = delay0;
+                gradientIndex = rand();
             }
 
             inline int getRGB() const
