@@ -920,7 +920,7 @@ int Window::getResizeHandles(const gcn::MouseEvent &event)
                 resizeHandles |= (y > mDimension.height - resizeBorderWidth)
                     ? BOTTOM : (y < resizeBorderWidth) ? TOP : 0;
             }
-            if (x >= mGripRect.x && y >= mGripRect.y)
+            if (x >= (unsigned)mGripRect.x && y >= (unsigned)mGripRect.y)
             {
                 mDragOffsetX = x;
                 mDragOffsetY = y;
