@@ -67,14 +67,17 @@ ItemPopup::ItemPopup():
     // Item Description
     mItemDesc->setEditable(false);
     mItemDesc->setPosition(getPadding(), fontHeight);
+    mItemDesc->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
 
     // Item Effect
     mItemEffect->setEditable(false);
     mItemEffect->setPosition(getPadding(), 2 * fontHeight + 2 * getPadding());
+    mItemEffect->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
 
     // Item Weight
     mItemWeight->setEditable(false);
     mItemWeight->setPosition(getPadding(), 3 * fontHeight + 4 * getPadding());
+    mItemWeight->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
 
     add(mItemName);
     add(mItemDesc);

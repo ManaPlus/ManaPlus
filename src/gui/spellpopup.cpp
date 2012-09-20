@@ -26,6 +26,7 @@
 #include "gui/gui.h"
 #include "gui/palette.h"
 #include "gui/sdlfont.h"
+#include "gui/theme.h"
 
 #include "gui/widgets/label.h"
 
@@ -44,6 +45,8 @@ SpellPopup::SpellPopup():
     mItemComment(new Label)
 {
     mItemName->setFont(boldFont);
+    mItemName->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mItemComment->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
 
     add(mItemName);
     add(mItemComment);

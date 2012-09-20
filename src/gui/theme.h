@@ -179,6 +179,7 @@ class Theme : public Palette, public ConfigListener
             LABEL,
             LISTBOX,
             RADIOBUTTON,
+            POPUP,
             TAB,
             TAB_HIGHLIGHTED,
             TAB_SELECTED,

@@ -25,6 +25,7 @@
 
 #include "gui/gui.h"
 #include "gui/palette.h"
+#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/label.h"
@@ -84,6 +85,23 @@ StatusPopup::StatusPopup() :
         16 + 13 * fontHeight + getPadding());
     mDisableGameModifiers->setPosition(getPadding(),
         20 + 14 * fontHeight + getPadding());
+
+    mMoveType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mCrazyMoveType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mMoveToTargetType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mFollowMode->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mAttackWeaponType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mAttackType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mMagicAttackType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mPvpAttackType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mDropCounter->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mPickUpType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mMapType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mImitationMode->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mAwayMode->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mCameraMode->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mDisableGameModifiers->setForegroundColor(
+        Theme::getThemeColor(Theme::POPUP));
 
     add(mMoveType);
     add(mCrazyMoveType);

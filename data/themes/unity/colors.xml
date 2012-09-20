@@ -13,6 +13,7 @@
 	<color id="LABEL" color="#E0E0E0" />
 	<color id="LISTBOX" color="#E0E0E0" />
 	<color id="RADIOBUTTON" color="#E0E0E0" />
+	<color id="POPUP" color="#E0E0E0" />
 	<color id="TAB" color="#E0E0E0" />
     <color id="TAB_HIGHLIGHTED" color="#E0E0E0" />
     <color id="TAB_SELECTED" color="#E0E0E0" />

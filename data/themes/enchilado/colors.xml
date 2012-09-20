@@ -14,6 +14,7 @@
 	<color id="LABEL" color="#000000" />
 	<color id="LISTBOX" color="#000000" />
 	<color id="RADIOBUTTON" color="#000000" />
+	<color id="POPUP" color="#000000" />
 	<color id="TAB" color="#000000" />
     <color id="TAB_HIGHLIGHTED" color="#000000" />
     <color id="TAB_SELECTED" color="#000000" />

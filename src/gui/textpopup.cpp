@@ -46,8 +46,11 @@ TextPopup::TextPopup():
     const int fontHeight = getFont()->getHeight();
 
     mText1->setPosition(getPadding(), getPadding());
+    mText1->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
     mText2->setPosition(getPadding(), fontHeight + 2 * getPadding());
+    mText2->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
     mText3->setPosition(getPadding(), (2 * fontHeight) + 2 * getPadding());
+    mText3->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
 
     add(mText1);
     add(mText2);
