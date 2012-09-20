@@ -136,6 +136,8 @@ class EquipmentWindow : public Window, public gcn::ActionListener
         gcn::Color mHighlightColor;
         gcn::Color mBorderColor;
         gcn::Color mLabelsColor;
+        Image *mSlotBackground;
+        Image *mSlotHighlightedBackground;
 };
 
 extern EquipmentWindow *equipmentWindow;

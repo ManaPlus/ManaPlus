@@ -65,7 +65,10 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mSelected(-1),
     mForing(foring),
     mImageSet(nullptr),
-    mBeing(being)
+    mBeing(being),
+    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
+    mBorderColor(Theme::getThemeColor(Theme::BORDER)),
+    mLabelsColor(Theme::getThemeColor(Theme::LABEL))
 {
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
@@ -99,12 +102,13 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
         area.height - mUnequip->getHeight() - buttonPadding);
     mUnequip->setEnabled(false);
 
+    ImageRect rect;
+    Theme::instance()->loadRect(rect, "equipment_background.xml", "", 0, 1);
+    mSlotBackground = rect.grid[0];
+    mSlotHighlightedBackground = rect.grid[1];
     add(mPlayerBox);
     add(mUnequip);
 
-    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
-    mBorderColor = Theme::getThemeColor(Theme::BORDER);
-    mLabelsColor = Theme::getThemeColor(Theme::LABEL);
 }
 
 EquipmentWindow::~EquipmentWindow()
@@ -125,15 +129,17 @@ EquipmentWindow::~EquipmentWindow()
         mImageSet->decRef();
         mImageSet = nullptr;
     }
+    if (mSlotBackground)
+        mSlotBackground->decRef();
+    if (mSlotHighlightedBackground)
+        mSlotHighlightedBackground->decRef();
 }
 
 void EquipmentWindow::draw(gcn::Graphics *graphics)
 {
     // Draw window graphics
     Window::draw(graphics);
-
     Graphics *const g = static_cast<Graphics*>(graphics);
-
     Window::drawChildren(graphics);
 
     int i = 0;
@@ -146,23 +152,21 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
         if (!box)
             continue;
         if (i == mSelected)
-        {
-            mHighlightColor.a = getGuiAlpha();
-            // Set color to the highlight color
-            g->setColor(mHighlightColor);
-            g->fillRectangle(gcn::Rectangle(box->x, box->y,
-                BOX_WIDTH, BOX_HEIGHT));
-        }
+            g->drawImage(mSlotHighlightedBackground, box->x, box->y);
+        else
+            g->drawImage(mSlotBackground, box->x, box->y);
+    }
 
-        // Set color black
-        g->setColor(mBorderColor);
-        // Draw box border
-        g->drawRectangle(gcn::Rectangle(box->x, box->y,
-            BOX_WIDTH, BOX_HEIGHT));
+    if (!mEquipment)
+        return;
 
-        if (!mEquipment)
+    i = 0;
+    for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
+         it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
+    {
+        const EquipmentBox *const box = *it;
+        if (!box)
             continue;
-
         const Item *const item = mEquipment->getEquipment(i);
         if (item)
         {
