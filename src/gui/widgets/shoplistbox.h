@@ -52,12 +52,12 @@ class ShopListBox final : public ListBox
         /**
          * Draws the list box.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Returns the height of a row.
          */
-        unsigned int getRowHeight() const
+        unsigned int getRowHeight() const override
         { return mRowHeight; }
 
         /**
@@ -76,9 +76,9 @@ class ShopListBox final : public ListBox
          */
         void setPriceCheck(const bool check);
 
-        void mouseMoved(gcn::MouseEvent &event);
+        void mouseMoved(gcn::MouseEvent &event) override;
 
-        void mouseExited(gcn::MouseEvent& mouseEvent);
+        void mouseExited(gcn::MouseEvent& mouseEvent) override;
 
     private:
         void init();

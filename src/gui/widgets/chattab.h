@@ -169,7 +169,7 @@ class ChatTab : public Tab
         friend class ChatWindow;
         friend class WhisperWindow;
 
-        virtual void setCurrent()
+        virtual void setCurrent() override
         { setFlash(0); }
 
         virtual void handleInput(const std::string &msg);

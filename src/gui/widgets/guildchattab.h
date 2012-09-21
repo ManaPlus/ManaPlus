@@ -35,21 +35,22 @@ class GuildChatTab final : public ChatTab
 
         ~GuildChatTab();
 
-        bool handleCommand(const std::string &type, const std::string &args);
+        bool handleCommand(const std::string &type,
+                           const std::string &args) override;
 
-        void showHelp();
+        void showHelp() override;
 
-        void saveToLogFile(std::string &msg);
+        void saveToLogFile(std::string &msg) override;
 
-        int getType() const
+        int getType() const override
         { return ChatTab::TAB_GUILD; }
 
-        void playNewMessageSound();
+        void playNewMessageSound() override;
 
     protected:
-        void handleInput(const std::string &msg);
+        void handleInput(const std::string &msg) override;
 
-        void getAutoCompleteList(StringVect &names) const;
+        void getAutoCompleteList(StringVect &names) const override;
 };
 
 #endif

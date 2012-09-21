@@ -71,7 +71,7 @@ class NpcDialog final : public Window, public gcn::ActionListener,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         /**
         * Sets the text shows in the dialog.
@@ -112,17 +112,17 @@ class NpcDialog final : public Window, public gcn::ActionListener,
         /**
          * Returns the number of items in the choices list.
          */
-        int getNumberOfElements();
+        int getNumberOfElements() override;
 
         /**
          * Returns the name of item number i of the choices list.
          */
-        std::string getElementAt(int i);
+        std::string getElementAt(int i) override;
 
         /**
          * Returns the image of item number i of the choices list.
          */
-        const Image *getImageAt(int i);
+        const Image *getImageAt(int i) override;
 
         /**
          * Makes this dialog request a choice selection from the user.
@@ -162,7 +162,7 @@ class NpcDialog final : public Window, public gcn::ActionListener,
 
         void setVisible(bool visible);
 
-        void optionChanged(const std::string &name);
+        void optionChanged(const std::string &name) override;
 
         /**
          * Returns true if any instances exist.
@@ -198,7 +198,7 @@ class NpcDialog final : public Window, public gcn::ActionListener,
 
         void setAvatarAction(const int actionId);
 
-        void logic();
+        void logic() override;
 
         void clearRows();
 

@@ -234,7 +234,7 @@ class Graphics : public gcn::SDLGraphics
         BlitMode getBlitMode() const
         { return mBlitMode; }
 
-        void fillRectangle(const gcn::Rectangle& rectangle);
+        void fillRectangle(const gcn::Rectangle& rectangle) override;
 
         /**
          * Updates the screen. This is done by either copying the buffer to the

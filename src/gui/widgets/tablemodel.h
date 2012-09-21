@@ -142,11 +142,11 @@ public:
 
     virtual int getRows() const;
     virtual int getColumns() const;
-    virtual int getRowHeight() const;
+    virtual int getRowHeight() const override;
     virtual int getWidth() const;
     virtual int getHeight() const;
     virtual int getColumnWidth(int index) const;
-    virtual gcn::Widget *getElementAt(int row, int column) const;
+    virtual gcn::Widget *getElementAt(int row, int column) const override;
 
 protected:
     int mRows, mColumns;

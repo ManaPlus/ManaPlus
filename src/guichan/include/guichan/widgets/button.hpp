@@ -148,13 +148,13 @@ namespace gcn
 
         // Inherited from MouseListener
 
-        virtual void mousePressed(MouseEvent& mouseEvent);
+        virtual void mousePressed(MouseEvent& mouseEvent) override;
 
-        virtual void mouseEntered(MouseEvent& mouseEvent);
+        virtual void mouseEntered(MouseEvent& mouseEvent) override;
 
-        virtual void mouseExited(MouseEvent& mouseEvent);
+        virtual void mouseExited(MouseEvent& mouseEvent) override;
 
-        virtual void mouseDragged(MouseEvent& mouseEvent);
+        virtual void mouseDragged(MouseEvent& mouseEvent) override;
 
     protected:
         /**

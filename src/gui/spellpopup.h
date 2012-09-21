@@ -63,7 +63,7 @@ class SpellPopup final : public Popup
          */
         void view(const int x, const int y);
 
-        void mouseMoved(gcn::MouseEvent &mouseEvent);
+        void mouseMoved(gcn::MouseEvent &mouseEvent) override;
 
     private:
         gcn::Label *mItemName;

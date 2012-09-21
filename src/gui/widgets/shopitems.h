@@ -79,7 +79,7 @@ class ShopItems final : public gcn::ListModel
         /**
          * Returns the number of items in the shop.
          */
-        int getNumberOfElements()
+        int getNumberOfElements() override
         { return static_cast<int>(mShopItems.size()); }
 
         bool empty() const
@@ -90,7 +90,7 @@ class ShopItems final : public gcn::ListModel
          *
          * @param i the index to retrieve
          */
-        std::string getElementAt(int i);
+        std::string getElementAt(int i) override;
 
         /**
          * Returns the item number i in the shop.

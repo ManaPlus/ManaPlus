@@ -84,9 +84,9 @@ class AnimatedSprite final : public Sprite
 
         unsigned int getFrameCount() const;
 
-        virtual void setAlpha(float alpha);
+        virtual void setAlpha(float alpha) override;
 
-        virtual void *getHash();
+        virtual void *getHash() override;
 
         bool updateNumber(const unsigned num);
 

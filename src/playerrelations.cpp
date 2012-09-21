@@ -72,7 +72,7 @@ class PlayerConfSerialiser final :
 public:
     virtual ConfigurationObject *writeConfigItem(
         std::pair<std::string, PlayerRelation *> value,
-        ConfigurationObject *cobj)
+        ConfigurationObject *cobj) override
     {
         if (!cobj || !value.second)
             return nullptr;
@@ -85,7 +85,7 @@ public:
 
     virtual std::map<std::string, PlayerRelation *> *
     readConfigItem(ConfigurationObject *const cobj,
-                   std::map<std::string, PlayerRelation *> *container)
+                   std::map<std::string, PlayerRelation *> *container) override
     {
         if (!cobj)
             return container;
@@ -474,7 +474,7 @@ public:
     }
 
     virtual void ignore(Being *const being A_UNUSED,
-                        const unsigned int flags A_UNUSED)
+                        const unsigned int flags A_UNUSED) override
     {
     }
 };
@@ -489,7 +489,8 @@ public:
         mShortName = "dotdotdot";
     }
 
-    virtual void ignore(Being *const being, const unsigned int flags A_UNUSED)
+    virtual void ignore(Being *const being,
+                        const unsigned int flags A_UNUSED) override
     {
         if (!being)
             return;
@@ -510,7 +511,8 @@ public:
         mShortName = "blinkname";
     }
 
-    virtual void ignore(Being *const being, const unsigned int flags A_UNUSED)
+    virtual void ignore(Being *const being,
+                        const unsigned int flags A_UNUSED) override
     {
         if (!being)
             return;
@@ -532,7 +534,8 @@ public:
         mShortName = shortname;
     }
 
-    virtual void ignore(Being *const being, const unsigned int flags A_UNUSED)
+    virtual void ignore(Being *const being,
+                        const unsigned int flags A_UNUSED) override
     {
         if (!being)
             return;

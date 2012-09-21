@@ -52,7 +52,7 @@ class ImageParticle : public Particle
         /**
          * Draws the particle image
          */
-        virtual bool draw(Graphics *graphics, int offsetX, int offsetY) const;
+        virtual bool draw(Graphics *graphics, int offsetX, int offsetY) const override;
 
         static std::map<std::string, int> imageParticleCountByName;
     protected:

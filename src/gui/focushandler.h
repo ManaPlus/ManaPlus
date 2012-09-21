@@ -42,14 +42,14 @@ class FocusHandler final : public gcn::FocusHandler
          * then that widget loses modal focus and will regain it after this
          * widget releases his modal focus.
          */
-        void requestModalFocus(gcn::Widget *widget);
+        void requestModalFocus(gcn::Widget *widget) override;
 
         /**
          * Releases modal focus of a widget. When this widget had modal focus
          * and there are other widgets that had also requested modal focus,
          * then modal focus will be transfered to the last of those.
          */
-        void releaseModalFocus(gcn::Widget *widget);
+        void releaseModalFocus(gcn::Widget *widget) override;
 
         /**
          * Removes a widget from the focus handler. Also makes sure no dangling

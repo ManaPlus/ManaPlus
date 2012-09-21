@@ -97,7 +97,7 @@ class TextPreview final : public gcn::Widget
          *
          * @param graphics graphics to draw into
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Set opacity for this widget (whether or not to show the background

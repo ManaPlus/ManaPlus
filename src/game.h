@@ -37,7 +37,7 @@ extern volatile int cur_time;
 class Map;
 class WindowMenu;
 
-struct LastKey
+struct LastKey final
 {
     int key;
     int time;

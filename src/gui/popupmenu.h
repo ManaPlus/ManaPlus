@@ -50,7 +50,7 @@ class RenameListener final : public gcn::ActionListener
     public:
         RenameListener();
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         void setMapItem(MapItem* mapItem)
         { mMapItem = mapItem; }
@@ -68,7 +68,7 @@ class PlayerListener : public gcn::ActionListener
     public:
         PlayerListener();
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         void setNick(std::string name)
         { mNick = name; }
@@ -163,7 +163,7 @@ class PopupMenu final : public Popup, public LinkHandler
          * Handles link action.
          */
         void handleLink(const std::string &link,
-                        gcn::MouseEvent *event A_UNUSED);
+                        gcn::MouseEvent *event A_UNUSED) override;
 
     private:
         void addPlayerRelation(std::string name);

@@ -197,18 +197,18 @@ namespace gcn
 
         // Inherited from KeyListener
 
-        virtual void keyPressed(KeyEvent& keyEvent);
+        virtual void keyPressed(KeyEvent& keyEvent) override;
 
 
         // Inherited from MouseListener
 
-        virtual void mousePressed(MouseEvent& mouseEvent);
+        virtual void mousePressed(MouseEvent& mouseEvent) override;
 
-        virtual void mouseWheelMovedUp(MouseEvent& mouseEvent);
+        virtual void mouseWheelMovedUp(MouseEvent& mouseEvent) override;
 
-        virtual void mouseWheelMovedDown(MouseEvent& mouseEvent);
+        virtual void mouseWheelMovedDown(MouseEvent& mouseEvent) override;
 
-        virtual void mouseDragged(MouseEvent& mouseEvent);
+        virtual void mouseDragged(MouseEvent& mouseEvent) override;
 
 
     protected:

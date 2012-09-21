@@ -49,7 +49,7 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
         /**
          * Draw the tabbed area.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Set the normal color for the tab's text.
@@ -90,9 +90,9 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
         int getFlash() const
         { return mFlash; }
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
-        void widgetMoved(const gcn::Event &event);
+        void widgetMoved(const gcn::Event &event) override;
 
         void setLabelFont(gcn::Font *const font);
 
@@ -101,6 +101,7 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
 
     protected:
         friend class TabbedArea;
+
         virtual void setCurrent()
         { }
 

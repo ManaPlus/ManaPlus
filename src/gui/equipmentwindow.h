@@ -82,11 +82,11 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
         /**
          * Draws the equipment window.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        void mousePressed(gcn::MouseEvent& mouseEvent);
+        void mousePressed(gcn::MouseEvent& mouseEvent) override;
 
         Item* getEquipment(int i) const
         { return mEquipment ? mEquipment->getEquipment(i) : nullptr; }
@@ -97,9 +97,9 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
 
         void resetBeing(const Being *const being);
 
-        void mouseExited(gcn::MouseEvent &event);
+        void mouseExited(gcn::MouseEvent &event) override;
 
-        void mouseMoved(gcn::MouseEvent &event);
+        void mouseMoved(gcn::MouseEvent &event) override;
 
     private:
         Item *getItem(const int x, const int y) const;

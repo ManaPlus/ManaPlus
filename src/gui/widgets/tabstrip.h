@@ -34,9 +34,9 @@ class TabStrip final : public WidgetGroup
 
         TabStrip(const int height, const int spacing = 0);
 
-        gcn::Widget *createWidget(const std::string &name);
+        gcn::Widget *createWidget(const std::string &name) override;
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 };
 
 #endif

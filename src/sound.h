@@ -52,7 +52,7 @@ class Sound final : public ConfigListener
         Sound();
         ~Sound();
 
-        void optionChanged(const std::string &value);
+        void optionChanged(const std::string &value) override;
 
         /**
          * Installs the sound engine.

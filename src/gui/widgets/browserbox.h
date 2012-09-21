@@ -140,18 +140,16 @@ class BrowserBox final : public gcn::Widget,
         /**
          * Handles mouse actions.
          */
-        void mousePressed(gcn::MouseEvent &event);
+        void mousePressed(gcn::MouseEvent &event) override;
 
-        void mouseMoved(gcn::MouseEvent &event);
+        void mouseMoved(gcn::MouseEvent &event) override;
 
         /**
          * Draws the browser box.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         void updateHeight();
-
-//        void widgetResized(const gcn::Event &event);
 
         /**
          * BrowserBox modes.

@@ -70,9 +70,9 @@ class CharSelectDialog final : public Window,
 
         ~CharSelectDialog();
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        void keyPressed(gcn::KeyEvent &keyEvent);
+        void keyPressed(gcn::KeyEvent &keyEvent) override;
 
         enum SelectAction
         {

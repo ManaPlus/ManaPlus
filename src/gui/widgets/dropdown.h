@@ -59,25 +59,25 @@ class DropDown final : public gcn::DropDown
          */
         void updateAlpha();
 
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
-        void drawFrame(gcn::Graphics *graphics);
+        void drawFrame(gcn::Graphics *graphics) override;
 
         // Inherited from FocusListener
 
-        void focusLost(const gcn::Event& event);
+        void focusLost(const gcn::Event& event) override;
 
         // Inherited from KeyListener
 
-        void keyPressed(gcn::KeyEvent& keyEvent);
+        void keyPressed(gcn::KeyEvent& keyEvent) override;
 
         // Inherited from MouseListener
 
-        void mousePressed(gcn::MouseEvent& mouseEvent);
+        void mousePressed(gcn::MouseEvent& mouseEvent) override;
 
-        void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent);
+        void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override;
 
-        void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent);
+        void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override;
 
         void setSelectedString(std::string str);
 

@@ -55,7 +55,7 @@ class Setup final : public Window, public gcn::ActionListener
         /**
          * Event handling method.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         /**
          * Enables the reset button when in game.

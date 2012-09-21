@@ -51,9 +51,9 @@ class Setup_Colors final : public SetupTab,
         void apply();
         void cancel();
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        void valueChanged(const gcn::SelectionEvent &event);
+        void valueChanged(const gcn::SelectionEvent &event) override;
 
     private:
         static const std::string rawmsg;

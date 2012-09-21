@@ -34,11 +34,11 @@ class ExtendedNamesModel : public ExtendedListModel
 
         virtual ~ExtendedNamesModel();
 
-        virtual int getNumberOfElements();
+        virtual int getNumberOfElements() override;
 
-        virtual std::string getElementAt(int i);
+        virtual std::string getElementAt(int i) override;
 
-        virtual const Image *getImageAt(int i);
+        virtual const Image *getImageAt(int i) override;
 
         StringVect &getNames()
         { return mNames; }

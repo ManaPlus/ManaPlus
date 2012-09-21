@@ -66,9 +66,9 @@ class WorldSelectDialog final : public Window, public gcn::ActionListener,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        void keyPressed(gcn::KeyEvent &keyEvent);
+        void keyPressed(gcn::KeyEvent &keyEvent) override;
 
     private:
         WorldListModel *mWorldListModel;

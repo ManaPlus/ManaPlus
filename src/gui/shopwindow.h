@@ -73,12 +73,12 @@ class ShopWindow final : public Window, public gcn::ActionListener,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         /**
          * Updates the labels according to the selected item.
          */
-        void valueChanged(const gcn::SelectionEvent &event);
+        void valueChanged(const gcn::SelectionEvent &event) override;
 
         /**
          * Updates the state of buttons and labels.

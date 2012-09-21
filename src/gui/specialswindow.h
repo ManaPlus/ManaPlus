@@ -49,9 +49,9 @@ class SpecialsWindow final : public Window, public gcn::ActionListener
         /**
          * Called when receiving actions from widget.
          */
-        void action(const gcn::ActionEvent &actionEvent);
+        void action(const gcn::ActionEvent &actionEvent) override;
 
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
     private:
         // (re)constructs the list of specials

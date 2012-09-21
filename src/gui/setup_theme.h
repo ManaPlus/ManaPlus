@@ -49,7 +49,7 @@ class Setup_Theme final : public SetupTab
         void apply();
         void cancel();
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
     private:
         gcn::Label *mThemeLabel;

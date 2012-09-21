@@ -53,7 +53,7 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
         void apply();
         void cancel();
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         virtual void externalUpdated();
 

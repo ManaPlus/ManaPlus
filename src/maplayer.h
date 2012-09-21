@@ -156,7 +156,7 @@ class MapLayer final: public ConfigListener
 
 //        void getTileInfo(int x, int y, int &width, int &cnt) const;
 
-        void optionChanged(const std::string &value);
+        void optionChanged(const std::string &value) override;
 
         int getTileDrawWidth(const Image *img,
                              const int endX, int &width) const;

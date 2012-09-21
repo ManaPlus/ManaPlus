@@ -88,7 +88,7 @@ class SetupItem : public gcn::ActionListener
 
         virtual std::string getActionEventId();
 
-        virtual void action(const gcn::ActionEvent &event);
+        virtual void action(const gcn::ActionEvent &event) override;
 
         virtual void action();
 
@@ -145,9 +145,9 @@ class SetupItemCheckBox final : public SetupItem
 
         void createControls();
 
-        void fromWidget();
+        void fromWidget() override;
 
-        void toWidget();
+        void toWidget() override;
 
     protected:
         CheckBox *mCheckBox;
@@ -170,13 +170,13 @@ class SetupItemTextField final : public SetupItem
 
         void createControls();
 
-        void fromWidget();
+        void fromWidget() override;
 
-        void toWidget();
+        void toWidget() override;
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName);
+        void apply(std::string eventName) override;
 
     protected:
         HorizontContainer *mHorizont;
@@ -207,13 +207,13 @@ class SetupItemIntTextField final : public SetupItem
 
         void createControls();
 
-        void fromWidget();
+        void fromWidget() override;
 
-        void toWidget();
+        void toWidget() override;
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName);
+        void apply(std::string eventName) override;
 
     protected:
         HorizontContainer *mHorizont;
@@ -236,13 +236,13 @@ class SetupItemLabel final : public SetupItem
 
         void createControls();
 
-        void fromWidget();
+        void fromWidget() override;
 
-        void toWidget();
+        void toWidget() override;
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName);
+        void apply(std::string eventName) override;
 
     protected:
         Label *mLabel;
@@ -266,9 +266,9 @@ class SetupItemDropDown final : public SetupItem
 
         void createControls();
 
-        void fromWidget();
+        void fromWidget() override;
 
-        void toWidget();
+        void toWidget() override;
 
     protected:
         HorizontContainer *mHorizont;
@@ -299,11 +299,11 @@ class SetupItemSlider final : public SetupItem
 
         void createControls();
 
-        void fromWidget();
+        void fromWidget() override;
 
-        void toWidget();
+        void toWidget() override;
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         void apply(std::string eventName);
 
@@ -346,13 +346,13 @@ class SetupItemSlider2 final : public SetupItem
 
         void createControls();
 
-        void fromWidget();
+        void fromWidget() override;
 
-        void toWidget();
+        void toWidget() override;
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName);
+        void apply(std::string eventName) override;
 
         void setInvertValue(const int v);
 
@@ -394,13 +394,13 @@ class SetupItemSliderList : public SetupItem
 
         void createControls();
 
-        void fromWidget();
+        void fromWidget() override;
 
-        void toWidget();
+        void toWidget() override;
 
-        virtual void action(const gcn::ActionEvent &event);
+        virtual void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName);
+        void apply(std::string eventName) override;
 
         virtual void addMoreControls() = 0;
 
@@ -422,9 +422,9 @@ class SetupItemSound final : public SetupItemSliderList
                        const int width = 150, const bool onTheFly = false,
                        const bool mainConfig = true);
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        void addMoreControls();
+        void addMoreControls() override;
 
     protected:
         Button *mButton;

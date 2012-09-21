@@ -37,10 +37,10 @@ class ChannelTab final : public ChatTab
         Channel *getChannel() const
         { return mChannel; }
 
-        void showHelp();
+        void showHelp() override;
 
         bool handleCommand(const std::string &type,
-                           const std::string &args);
+                           const std::string &args) override;
 
     protected:
         friend class Channel;
@@ -55,7 +55,7 @@ class ChannelTab final : public ChatTab
          */
         ~ChannelTab();
 
-        void handleInput(const std::string &msg);
+        void handleInput(const std::string &msg) override;
 
     private:
         Channel *mChannel;

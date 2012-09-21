@@ -74,7 +74,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
          * Draws the window.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Sets the size of this window.
@@ -108,14 +108,14 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
          * Called whenever the widget changes size.
          */
-        virtual void widgetResized(const gcn::Event &event);
+        virtual void widgetResized(const gcn::Event &event) override;
 
-        virtual void widgetMoved(const gcn::Event& event);
+        virtual void widgetMoved(const gcn::Event& event) override;
 
         /**
          * Called whenever the widget is hidden.
          */
-        virtual void widgetHidden(const gcn::Event &event);
+        virtual void widgetHidden(const gcn::Event &event) override;
 
         /**
          * Sets whether or not the window has a close button.
@@ -247,31 +247,31 @@ class Window : public gcn::Window, private gcn::WidgetListener
         /**
          * Starts window resizing when appropriate.
          */
-        void mousePressed(gcn::MouseEvent &event);
+        void mousePressed(gcn::MouseEvent &event) override;
 
         /**
          * Implements window resizing and makes sure the window is not
          * dragged/resized outside of the screen.
          */
-        void mouseDragged(gcn::MouseEvent &event);
+        void mouseDragged(gcn::MouseEvent &event) override;
 
         /**
          * Implements custom cursor image changing context, based on mouse
          * relative position.
          */
-        void mouseMoved(gcn::MouseEvent &event);
+        void mouseMoved(gcn::MouseEvent &event) override;
 
         /**
          * When the mouse button has been let go, this ensures that the mouse
          * custom cursor is restored back to it's standard image.
          */
-        void mouseReleased(gcn::MouseEvent &event);
+        void mouseReleased(gcn::MouseEvent &event) override;
 
         /**
          * When the mouse leaves the window this ensures that the custom cursor
          * is restored back to it's standard image.
          */
-        void mouseExited(gcn::MouseEvent &event);
+        void mouseExited(gcn::MouseEvent &event) override;
 
         /**
          * Sets the name of the window. This is not the window title.

@@ -144,7 +144,7 @@ class ChatWindow final : public Window,
         /**
          * Performs action.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         /**
          * Request focus for typing chat message.
@@ -174,7 +174,7 @@ class ChatWindow final : public Window,
         void localChatInput(const std::string &msg);
 
         /** Called when key is pressed */
-        void keyPressed(gcn::KeyEvent &event);
+        void keyPressed(gcn::KeyEvent &event) override;
 
         /** Set the chat input as the given text. */
         void setInputText(const std::string &text);
@@ -191,14 +191,15 @@ class ChatWindow final : public Window,
         /**
          * Handles mouse when dragged.
          */
-        void mouseDragged(gcn::MouseEvent &event);
+        void mouseDragged(gcn::MouseEvent &event) override;
 
         /**
          * Handles mouse when pressed.
          */
-        void mousePressed(gcn::MouseEvent &event);
+        void mousePressed(gcn::MouseEvent &event) override;
 
-        void processEvent(Channels channel, const DepricatedEvent &event);
+        void processEvent(Channels channel,
+                          const DepricatedEvent &event) override;
 
         /**
          * Scrolls the chat window
@@ -271,21 +272,21 @@ class ChatWindow final : public Window,
 
         void copyToClipboard(const int x, const int y) const;
 
-        void optionChanged(const std::string &name);
+        void optionChanged(const std::string &name) override;
 
-        void mouseEntered(gcn::MouseEvent& mouseEvent);
+        void mouseEntered(gcn::MouseEvent& mouseEvent) override;
 
-        void mouseMoved(gcn::MouseEvent &event);
+        void mouseMoved(gcn::MouseEvent &event) override;
 
-        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED);
+        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override;
 
-        void draw(gcn::Graphics* graphics);
+        void draw(gcn::Graphics* graphics) override;
 
         void updateVisibility();
 
         void unHideWindow();
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
     protected:
         friend class ChatTab;

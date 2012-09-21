@@ -351,7 +351,7 @@ class Map final : public Properties, public ConfigListener
          */
         TileAnimation *getAnimationForGid(const int gid) const;
 
-        void optionChanged(const std::string &value);
+        void optionChanged(const std::string &value) override;
 
         MapItem *findPortalXY(const int x, const int y) const;
 

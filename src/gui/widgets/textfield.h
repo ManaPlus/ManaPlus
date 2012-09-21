@@ -52,7 +52,7 @@ class TextField : public gcn::TextField
         /**
          * Draws the text field.
          */
-        virtual void draw(gcn::Graphics *graphics);
+        virtual void draw(gcn::Graphics *graphics) override;
 
         /**
          * Update the alpha value to the graphic components.
@@ -62,7 +62,7 @@ class TextField : public gcn::TextField
         /**
          * Draws the background and border.
          */
-        void drawFrame(gcn::Graphics *graphics);
+        void drawFrame(gcn::Graphics *graphics) override;
 
         /**
          * Determine whether the field should be numeric or not
@@ -81,7 +81,7 @@ class TextField : public gcn::TextField
         /**
          * Processes one keypress.
          */
-        void keyPressed(gcn::KeyEvent &keyEvent);
+        void keyPressed(gcn::KeyEvent &keyEvent) override;
 
         /**
          * Set the minimum value for a range

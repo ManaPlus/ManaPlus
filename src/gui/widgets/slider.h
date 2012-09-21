@@ -59,7 +59,7 @@ class Slider final : public gcn::Slider
         /**
          * Draws the slider.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Draws the marker.
@@ -69,14 +69,14 @@ class Slider final : public gcn::Slider
         /**
          * Called when the mouse enteres the widget area.
          */
-        void mouseEntered(gcn::MouseEvent& event);
+        void mouseEntered(gcn::MouseEvent& event) override;
 
         /**
          * Called when the mouse leaves the widget area.
          */
-        void mouseExited(gcn::MouseEvent& event);
+        void mouseExited(gcn::MouseEvent& event) override;
 
-        void keyPressed(gcn::KeyEvent& keyEvent);
+        void keyPressed(gcn::KeyEvent& keyEvent) override;
 
         enum SLIDER_ENUM
         {
@@ -98,10 +98,6 @@ class Slider final : public gcn::Slider
         void init();
 
         static ImageRect buttons[2];
-        //*hStart, *hMid, *hEnd, *hGrip;
-//        static Image *vStart, *vMid, *vEnd, *vGrip;
-//        static Image *hStartHi, *hMidHi, *hEndHi, *hGripHi;
-//        static Image *vStartHi, *vMidHi, *vEndHi, *vGripHi;
         bool mHasMouse;
         static float mAlpha;
         static int mInstances;

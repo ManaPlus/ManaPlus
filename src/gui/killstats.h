@@ -55,7 +55,7 @@ class KillStats final : public Window,
         /**
          * Stuff.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         void gainXp(int Xp);
 
@@ -67,7 +67,7 @@ class KillStats final : public Window,
         /**
          * Draw this window
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Updates this dialog
@@ -84,7 +84,7 @@ class KillStats final : public Window,
         void jackoAlive(const int id);
 
         void processEvent(Channels channel A_UNUSED,
-                          const DepricatedEvent &event);
+                          const DepricatedEvent &event) override;
 
         void resetTimes();
 

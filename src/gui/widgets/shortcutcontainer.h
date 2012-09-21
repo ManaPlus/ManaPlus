@@ -55,28 +55,28 @@ class ShortcutContainer : public gcn::Widget,
         /**
          * Draws the shortcuts
          */
-        virtual void draw(gcn::Graphics *graphics) = 0;
+        virtual void draw(gcn::Graphics *graphics) override = 0;
 
         /**
          * Invoked when a widget changes its size. This is used to determine
          * the new height of the container.
          */
-        virtual void widgetResized(const gcn::Event &event);
+        virtual void widgetResized(const gcn::Event &event) override;
 
         /**
          * Handles mouse when dragged.
          */
-        virtual void mouseDragged(gcn::MouseEvent &event) = 0;
+        virtual void mouseDragged(gcn::MouseEvent &event) override = 0;
 
         /**
          * Handles mouse when pressed.
          */
-        virtual void mousePressed(gcn::MouseEvent &event) = 0;
+        virtual void mousePressed(gcn::MouseEvent &event) override = 0;
 
         /**
          * Handles mouse release.
          */
-        virtual void mouseReleased(gcn::MouseEvent &event) = 0;
+        virtual void mouseReleased(gcn::MouseEvent &event) override = 0;
 
         int getMaxItems() const
         { return mMaxItems; }

@@ -57,11 +57,11 @@ class ShortcutWindow final : public Window
 
         int getTabIndex() const;
 
-        void widgetHidden(const gcn::Event &event);
+        void widgetHidden(const gcn::Event &event) override;
 
-        void mousePressed(gcn::MouseEvent &event);
+        void mousePressed(gcn::MouseEvent &event) override;
 
-        void mouseDragged(gcn::MouseEvent &event);
+        void mouseDragged(gcn::MouseEvent &event) override;
 
     private:
         ShortcutWindow();

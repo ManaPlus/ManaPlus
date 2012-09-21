@@ -50,7 +50,7 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
         /**
          * Draw the tabbed area.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Return how many tabs have been created.
@@ -84,7 +84,7 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
          * @param tab The tab widget for the tab.
          * @param widget The widget to view when the tab is selected.
          */
-        void addTab(gcn::Tab* tab, gcn::Widget* widget);
+        void addTab(gcn::Tab* tab, gcn::Widget* widget) override;
 
         /**
          * Add a tab. Overridden since it needs to create an instance of Tab
@@ -98,25 +98,25 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
         /**
          * Overload the remove tab function as it's broken in guichan 0.8.
          */
-        void removeTab(gcn::Tab *tab);
+        void removeTab(gcn::Tab *tab) override;
 
         void removeAll();
 
         /**
          * Overload the logic function since it's broken in guichan 0.8.
          */
-        void logic();
+        void logic() override;
 
         int getContainerHeight() const
         { return mWidgetContainer->getHeight(); }
 
-        void setSelectedTab(gcn::Tab *tab);
+        void setSelectedTab(gcn::Tab *tab) override;
 
         void setSelectedTabByPos(int tab);
 
         void setSelectedTabByName(const std::string &name);
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
 /*
         void moveLeft(gcn::Tab *tab);
@@ -125,11 +125,11 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
 */
         void adjustTabPositions();
 
-        void action(const gcn::ActionEvent& actionEvent);
+        void action(const gcn::ActionEvent& actionEvent) override;
 
         // Inherited from MouseListener
 
-        void mousePressed(gcn::MouseEvent &mouseEvent);
+        void mousePressed(gcn::MouseEvent &mouseEvent) override;
 
         void enableScrollButtons(const bool enable);
 
@@ -148,7 +148,7 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
         void fixSize()
         { adjustSize(); }
 
-        void keyPressed(gcn::KeyEvent& keyEvent);
+        void keyPressed(gcn::KeyEvent& keyEvent) override;
 
         void setBlockSwitching(bool b)
         { mBlockSwitching = b; }

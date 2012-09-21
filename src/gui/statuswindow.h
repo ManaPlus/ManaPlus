@@ -57,7 +57,8 @@ class StatusWindow final : public Window,
          */
         StatusWindow();
 
-        void processEvent(Channels channel, const DepricatedEvent &event);
+        void processEvent(Channels channel,
+                          const DepricatedEvent &event) override;
 
         void setPointsNeeded(const int id, const int needed);
 
@@ -83,7 +84,7 @@ class StatusWindow final : public Window,
         void updateProgressBar(ProgressBar *const bar, const int id,
                                const bool percent = true) const;
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         void clearAttributes();
 

@@ -35,13 +35,13 @@ class TradeTab final : public ChatTab
 
         ~TradeTab();
 
-        int getType() const
+        int getType() const override
         { return ChatTab::TAB_TRADE; }
 
-        void saveToLogFile(std::string &msg);
+        void saveToLogFile(std::string &msg) override;
 
     protected:
-        void handleInput(const std::string &msg);
+        void handleInput(const std::string &msg) override;
 };
 
 extern TradeTab *tradeChatTab;

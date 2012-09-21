@@ -54,12 +54,13 @@ class DidYouKnowWindow final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         /**
          * Handles link action.
          */
-        void handleLink(const std::string &link, gcn::MouseEvent *event);
+        void handleLink(const std::string &link,
+                        gcn::MouseEvent *event) override;
 
         void loadData(int num = 0);
 

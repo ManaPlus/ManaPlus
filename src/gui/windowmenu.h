@@ -55,15 +55,13 @@ class WindowMenu final : public Container,
 
         ~WindowMenu();
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-//        void valueChanged(const gcn::SelectionEvent &event);
+        void mousePressed(gcn::MouseEvent &event) override;
 
-        void mousePressed(gcn::MouseEvent &event);
+        void mouseMoved(gcn::MouseEvent &event) override;
 
-        void mouseMoved(gcn::MouseEvent &event);
-
-        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED);
+        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override;
 
         std::map <std::string, gcn::Button*> &getButtonNames()
         { return mButtonNames; }
@@ -77,7 +75,7 @@ class WindowMenu final : public Container,
 
         void saveButtons();
 
-        void optionChanged(const std::string &name);
+        void optionChanged(const std::string &name) override;
 
     protected:
         void drawChildren(gcn::Graphics* graphics);

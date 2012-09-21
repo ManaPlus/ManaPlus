@@ -52,28 +52,28 @@ class SpellShortcutContainer final : public ShortcutContainer
         /**
          * Draws the items.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Handles mouse when dragged.
          */
-        void mouseDragged(gcn::MouseEvent &event);
+        void mouseDragged(gcn::MouseEvent &event) override;
 
         /**
          * Handles mouse when pressed.
          */
-        void mousePressed(gcn::MouseEvent &event);
+        void mousePressed(gcn::MouseEvent &event) override;
 
         /**
          * Handles mouse release.
          */
-        void mouseReleased(gcn::MouseEvent &event);
+        void mouseReleased(gcn::MouseEvent &event) override;
 
-        void widgetHidden(const gcn::Event &event);
+        void widgetHidden(const gcn::Event &event) override;
 
-        void mouseExited(gcn::MouseEvent &event);
+        void mouseExited(gcn::MouseEvent &event) override;
 
-        void mouseMoved(gcn::MouseEvent &event);
+        void mouseMoved(gcn::MouseEvent &event) override;
 
     private:
         bool mSpellClicked;

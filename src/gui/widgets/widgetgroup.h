@@ -38,13 +38,14 @@ class WidgetGroup : public Container,
 
         virtual void addButton(std::string text, std::string tag);
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        virtual void add(gcn::Widget *const widget, const int spacing);
+        virtual void add(gcn::Widget *const widget,
+                         const int spacing);
 
         virtual void clear();
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
         virtual Widget *createWidget(const std::string &name) = 0;
 

@@ -67,12 +67,12 @@ class PlayerBox final : public gcn::ScrollArea
         /**
          * Draws the scroll area.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(gcn::Graphics *graphics);
+        void drawFrame(gcn::Graphics *graphics) override;
 
         Being *getBeing()
         { return mBeing; }

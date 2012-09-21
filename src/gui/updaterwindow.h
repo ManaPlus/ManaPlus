@@ -109,13 +109,14 @@ class UpdaterWindow final : public Window,
 
     void loadPatch();
 
-    void action(const gcn::ActionEvent &event);
+    void action(const gcn::ActionEvent &event) override;
 
-    void keyPressed(gcn::KeyEvent &keyEvent);
+    void keyPressed(gcn::KeyEvent &keyEvent) override;
 
-    void logic();
+    void logic() override;
 
-    void handleLink(const std::string &link, gcn::MouseEvent *event A_UNUSED);
+    void handleLink(const std::string &link,
+                    gcn::MouseEvent *event A_UNUSED) override;
 
     static void loadLocalUpdates(const std::string &dir);
 

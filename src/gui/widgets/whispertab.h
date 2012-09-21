@@ -36,15 +36,15 @@ class WhisperTab final : public ChatTab
         const std::string &getNick() const
         { return mNick; }
 
-        void showHelp();
+        void showHelp() override;
 
         bool handleCommand(const std::string &type,
-                           const std::string &args);
+                           const std::string &args) override;
 
-        int getType() const
+        int getType() const override
         { return ChatTab::TAB_WHISPER; }
 
-        void saveToLogFile(std::string &msg);
+        void saveToLogFile(std::string &msg) override;
 
         void setWhisperTabColors();
 
@@ -53,7 +53,7 @@ class WhisperTab final : public ChatTab
     protected:
         friend class ChatWindow;
 
-        void getAutoCompleteList(StringVect &names) const;
+        void getAutoCompleteList(StringVect &names) const override;
         /**
          * Constructor.
          *
@@ -63,9 +63,9 @@ class WhisperTab final : public ChatTab
 
         ~WhisperTab();
 
-        void handleInput(const std::string &msg);
+        void handleInput(const std::string &msg) override;
 
-        void handleCommand(const std::string &msg);
+        void handleCommand(const std::string &msg) override;
 
     private:
         std::string mNick;

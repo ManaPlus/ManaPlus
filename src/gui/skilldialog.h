@@ -91,7 +91,7 @@ class SkillDialog final : public Window, public gcn::ActionListener
         /**
          * Called when receiving actions from widget.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         /**
          * Update the given skill's display
@@ -115,7 +115,7 @@ class SkillDialog final : public Window, public gcn::ActionListener
         bool hasSkills() const
         { return !mSkills.empty(); }
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
         void useItem(const int itemId);
 

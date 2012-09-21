@@ -59,19 +59,20 @@ class MiniStatusWindow final : public Popup,
 
         void drawIcons(Graphics *const graphics);
 
-        void processEvent(Channels channel, const DepricatedEvent &event);
+        void processEvent(Channels channel,
+                          const DepricatedEvent &event) override;
 
         void updateStatus();
 
-        void logic(); // Updates icons
+        void logic() override; // Updates icons
 
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
-        void mouseMoved(gcn::MouseEvent &mouseEvent);
+        void mouseMoved(gcn::MouseEvent &mouseEvent) override;
 
-        void mousePressed(gcn::MouseEvent &event);
+        void mousePressed(gcn::MouseEvent &event) override;
 
-        void mouseExited(gcn::MouseEvent &event);
+        void mouseExited(gcn::MouseEvent &event) override;
 
         void showBar(const std::string &name, const bool visible);
 

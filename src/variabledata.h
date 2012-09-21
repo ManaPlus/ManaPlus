@@ -54,7 +54,7 @@ class IntData final : public VariableData
         int getData() const
         { return mData; }
 
-        int getType() const
+        int getType() const override
         { return DATA_INT; }
 
     private:
@@ -71,7 +71,7 @@ class StringData final : public VariableData
         const std::string &getData() const
         { return mData; }
 
-        int getType() const
+        int getType() const override
         { return DATA_STRING; }
 
     private:
@@ -88,7 +88,7 @@ class FloatData final : public VariableData
         double getData() const
         { return mData; }
 
-        int getType() const
+        int getType() const override
         { return DATA_FLOAT; }
 
     private:
@@ -105,7 +105,7 @@ class BoolData final : public VariableData
         bool getData() const
         { return mData; }
 
-        int getType() const
+        int getType() const override
         { return DATA_BOOL; }
 
     private:

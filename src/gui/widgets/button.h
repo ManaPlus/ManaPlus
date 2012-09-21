@@ -80,14 +80,14 @@ class Button final : public gcn::Button, public gcn::WidgetListener
         /**
          * Draws the button.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Update the alpha value to the button components.
          */
         void updateAlpha();
 
-        virtual void mouseReleased(gcn::MouseEvent& mouseEvent);
+        virtual void mouseReleased(gcn::MouseEvent& mouseEvent) override;
 
         void setDescription(std::string text)
         { mDescription = text; }
@@ -110,9 +110,9 @@ class Button final : public gcn::Button, public gcn::WidgetListener
         void setPressed(bool b)
         { mPressed = b; }
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
-        void widgetMoved(const gcn::Event &event);
+        void widgetMoved(const gcn::Event &event) override;
 
         void loadImage(const std::string &imageName);
 
@@ -120,9 +120,9 @@ class Button final : public gcn::Button, public gcn::WidgetListener
 
         void setCaption(const std::string& caption);
 
-        void keyPressed(gcn::KeyEvent &keyEvent);
+        void keyPressed(gcn::KeyEvent &keyEvent) override;
 
-        void keyReleased(gcn::KeyEvent &keyEvent);
+        void keyReleased(gcn::KeyEvent &keyEvent) override;
 
         bool isPressed2() const;
 

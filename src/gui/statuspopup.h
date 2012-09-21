@@ -60,8 +60,6 @@ class StatusPopup final : public Popup
          */
         void view(const int x, const int y);
 
-//        void mouseMoved(gcn::MouseEvent &mouseEvent);
-
         void update();
 
     private:

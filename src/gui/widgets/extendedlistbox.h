@@ -36,9 +36,9 @@ class ExtendedListBox final : public ListBox
         /**
          * Draws the list box.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
-        unsigned int getRowHeight() const
+        unsigned int getRowHeight() const override
         { return mRowHeight; }
 
         void setRowHeight(unsigned int n)

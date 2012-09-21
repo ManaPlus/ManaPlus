@@ -120,10 +120,10 @@ public:
      * Get size of members list.
      * @return Returns the number of members in the party.
      */
-    int getNumberOfElements()
+    int getNumberOfElements() override
     { return static_cast<int>(mMembers.size()); }
 
-    Avatar *getAvatarAt(const int i);
+    Avatar *getAvatarAt(const int i) override;
 
     /**
      * Get whether user can invite users to this party.

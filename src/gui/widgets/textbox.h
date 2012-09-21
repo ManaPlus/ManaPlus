@@ -57,14 +57,14 @@ class TextBox final : public gcn::TextBox
         /**
          * Draws the text.
          */
-        inline void draw(gcn::Graphics *graphics)
+        inline void draw(gcn::Graphics *graphics) override
         {
             if (mTextColor)
                 mForegroundColor = *mTextColor;
             gcn::TextBox::draw(graphics);
         }
 
-        void keyPressed(gcn::KeyEvent& keyEvent);
+        void keyPressed(gcn::KeyEvent& keyEvent) override;
 
     private:
         int mMinWidth;

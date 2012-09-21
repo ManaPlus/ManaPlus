@@ -57,7 +57,7 @@ class UnRegisterDialog final : public Window, public gcn::ActionListener
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
     private:
         LoginData *mLoginData;

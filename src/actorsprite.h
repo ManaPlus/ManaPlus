@@ -82,7 +82,7 @@ public:
     virtual Type getType() const
     { return UNKNOWN; }
 
-    virtual bool draw(Graphics *graphics, int offsetX, int offsetY) const;
+    virtual bool draw(Graphics *graphics, int offsetX, int offsetY) const override;
 
     virtual bool drawSpriteAt(Graphics *const graphics,
                               const int x, const int y) const;
@@ -91,7 +91,7 @@ public:
 
     static void actorLogic();
 
-    void setMap(Map *const map);
+    void setMap(Map *const map) override;
 
     /**
      * Gets the way the object blocks pathfinding for other objects
@@ -157,16 +157,16 @@ public:
      */
     void setStatusEffectBlock(const int offset, const uint16_t flags);
 
-    virtual void setAlpha(const float alpha)
+    virtual void setAlpha(const float alpha) override
     { CompoundSprite::setAlpha(alpha); }
 
-    virtual float getAlpha() const
+    virtual float getAlpha() const override
     { return CompoundSprite::getAlpha(); }
 
-    virtual int getWidth() const
+    virtual int getWidth() const override
     { return CompoundSprite::getWidth(); }
 
-    virtual int getHeight() const
+    virtual int getHeight() const override
     { return CompoundSprite::getHeight(); }
 
     static void load();

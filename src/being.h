@@ -400,7 +400,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Performs being logic.
          */
-        virtual void logic();
+        virtual void logic() override;
 
         /**
          * Draws the speech text above the being.
@@ -544,13 +544,13 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns the horizontal size of the current base sprite of the being.
          */
-        virtual int getWidth() const
+        virtual int getWidth() const override
         { return std::max(CompoundSprite::getWidth(), DEFAULT_BEING_WIDTH); }
 
         /**
          * Returns the vertical size of the current base sprite of the being.
          */
-        virtual int getHeight() const
+        virtual int getHeight() const override
         { return std::max(CompoundSprite::getHeight(), DEFAULT_BEING_HEIGHT); }
 
         /**
@@ -593,10 +593,10 @@ class Being : public ActorSprite, public ConfigListener
         int getEmotion() const
         { return mEmotion; }
 
-        virtual void drawSprites(Graphics* graphics, int posX, int posY) const;
+        virtual void drawSprites(Graphics* graphics, int posX, int posY) const override;
 
         virtual void drawSpritesSDL(Graphics* graphics,
-                                    int posX, int posY) const;
+                                    int posX, int posY) const override;
 
         void drawHpBar(Graphics *const graphics, const int x, const int y,
                        const int maxHP, const int hp, const int damage,
@@ -605,7 +605,7 @@ class Being : public ActorSprite, public ConfigListener
 
         static void load();
 
-        virtual void optionChanged(const std::string &value);
+        virtual void optionChanged(const std::string &value) override;
 
         void flashName(const int time);
 

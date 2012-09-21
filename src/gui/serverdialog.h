@@ -61,12 +61,12 @@ class ServersListModel final : public gcn::ListModel
         /**
          * Used to get number of line in the list
          */
-        int getNumberOfElements();
+        int getNumberOfElements() override;
 
         /**
          * Used to get an element from the list
          */
-        std::string getElementAt(int elementIndex);
+        std::string getElementAt(int elementIndex) override;
 
         /**
          * Used to get the corresponding Server struct
@@ -111,18 +111,18 @@ class ServerDialog : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
-        void keyPressed(gcn::KeyEvent &keyEvent);
+        void keyPressed(gcn::KeyEvent &keyEvent) override;
 
         /**
          * Called when the selected value changed in the servers list box.
          */
-        void valueChanged(const gcn::SelectionEvent &event);
+        void valueChanged(const gcn::SelectionEvent &event) override;
 
-        void mouseClicked(gcn::MouseEvent &mouseEvent);
+        void mouseClicked(gcn::MouseEvent &mouseEvent) override;
 
-        void logic();
+        void logic() override;
 
         void updateServer(ServerInfo server, const int index);
 

@@ -56,7 +56,7 @@ class QuestsWindow final : public Window, public gcn::ActionListener
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         void updateQuest(const int var, const int val);
 

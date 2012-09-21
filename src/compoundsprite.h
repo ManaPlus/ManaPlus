@@ -54,33 +54,33 @@ public:
 
     ~CompoundSprite();
 
-    virtual bool reset();
+    virtual bool reset() override;
 
-    virtual bool play(std::string action);
+    virtual bool play(std::string action) override;
 
-    virtual bool update(int time);
+    virtual bool update(int time) override;
 
-    virtual bool draw(Graphics *graphics, int posX, int posY) const;
+    virtual bool draw(Graphics *graphics, int posX, int posY) const override;
 
     /**
      * Gets the width in pixels of the first sprite in the list.
      */
-    virtual int getWidth() const;
+    virtual int getWidth() const override;
 
     /**
      * Gets the height in pixels of the first sprite in the list.
      */
-    virtual int getHeight() const;
+    virtual int getHeight() const override;
 
-    virtual const Image *getImage() const;
+    virtual const Image *getImage() const override;
 
-    virtual bool setSpriteDirection(const SpriteDirection direction);
+    virtual bool setSpriteDirection(const SpriteDirection direction) override;
 
     int getNumberOfLayers() const;
 
-    unsigned int getCurrentFrame() const;
+    unsigned int getCurrentFrame() const override;
 
-    unsigned int getFrameCount() const;
+    unsigned int getFrameCount() const override;
 
     size_t size() const
     { return mSprites.size(); }
@@ -117,9 +117,9 @@ public:
      */
     virtual unsigned int getFrameCount(unsigned int layer);
 
-    virtual void setAlpha(float alpha);
+    virtual void setAlpha(float alpha) override;
 
-    bool updateNumber(const unsigned num);
+    bool updateNumber(const unsigned num) override;
 
     static void setEnableDelay(bool b)
     { mEnableDelay = b; }

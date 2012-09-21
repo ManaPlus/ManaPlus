@@ -47,7 +47,7 @@ class Label final : public gcn::Label
         /**
          * Draws the label.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 };
 
 #endif

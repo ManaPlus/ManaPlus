@@ -48,7 +48,7 @@ class NormalOpenGLGraphics final : public Graphics
 
         bool setVideoMode(const int w, const int h, const int bpp,
                           const bool fs, const bool hwaccel,
-                          const bool resize, const bool noFrame);
+                          const bool resize, const bool noFrame) override;
 
 
         /**
@@ -58,7 +58,7 @@ class NormalOpenGLGraphics final : public Graphics
                                int dstX, int dstY,
                                const int width, const int height,
                                const int desiredWidth, const int desiredHeight,
-                               const bool useColor);
+                               const bool useColor) override;
 
         /**
          * Used to get the smooth rescale option over the standard function.
@@ -71,7 +71,7 @@ class NormalOpenGLGraphics final : public Graphics
 
         void drawImagePattern(const Image *const image,
                               const int x, const int y,
-                              const int w, const int h);
+                              const int w, const int h) override;
 
         /**
          * Draw a pattern based on a rescaled version of the given image...
@@ -80,21 +80,21 @@ class NormalOpenGLGraphics final : public Graphics
                                       const int x, const int y,
                                       const int w, const int h,
                                       const int scaledWidth,
-                                      const int scaledHeight);
+                                      const int scaledHeight) override;
 
         void calcImagePattern(GraphicsVertexes *const vert,
                               const Image *const image,
                               const int x, const int y,
-                              const int w, const int h);
+                              const int w, const int h) override;
 
-        void calcTile(ImageVertexes *const vert, int x, int y);
+        void calcTile(ImageVertexes *const vert, int x, int y) override;
 
-        void drawTile(const ImageVertexes *const vert);
+        void drawTile(const ImageVertexes *const vert) override;
 
         void drawImagePattern2(GraphicsVertexes *const vert,
-                               const Image *const image);
+                               const Image *const image) override;
 
-        void updateScreen();
+        void updateScreen() override;
 
         void _beginDraw();
         void _endDraw();
@@ -130,19 +130,19 @@ class NormalOpenGLGraphics final : public Graphics
 
         void drawLineArrayf(int size);
 
-        void initArrays();
+        void initArrays() override;
 
         static void dumpSettings();
 
         /**
          * Takes a screenshot and returns it as SDL surface.
          */
-        SDL_Surface *getScreenshot();
+        SDL_Surface *getScreenshot() override;
 
-        void prepareScreenshot();
+        void prepareScreenshot() override;
 
         bool drawNet(const int x1, const int y1, const int x2, const int y2,
-                     const int width, const int height);
+                     const int width, const int height) override;
 
         int getMemoryUsage();
 
@@ -157,7 +157,7 @@ class NormalOpenGLGraphics final : public Graphics
                         int srcX, int srcY,
                         int dstX, int dstY,
                         const int width, const int height,
-                        const bool useColor);
+                        const bool useColor) override;
 
         void setTexturingAndBlending(bool enable);
 

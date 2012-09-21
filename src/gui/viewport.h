@@ -83,7 +83,7 @@ class Viewport final : public WindowContainer,
         /**
          * Draws the viewport.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Implements player to keep following mouse.
@@ -102,22 +102,22 @@ class Viewport final : public WindowContainer,
         /**
          * Handles mouse press on map.
          */
-        void mousePressed(gcn::MouseEvent &event);
+        void mousePressed(gcn::MouseEvent &event) override;
 
         /**
          * Handles mouse move on map
          */
-        void mouseDragged(gcn::MouseEvent &event);
+        void mouseDragged(gcn::MouseEvent &event) override;
 
         /**
          * Handles mouse button release on map.
          */
-        void mouseReleased(gcn::MouseEvent &event);
+        void mouseReleased(gcn::MouseEvent &event) override;
 
         /**
          * Handles mouse move on map.
          */
-        void mouseMoved(gcn::MouseEvent &event);
+        void mouseMoved(gcn::MouseEvent &event) override;
 
         /**
          * Shows a popup for an item.
@@ -189,7 +189,7 @@ class Viewport final : public WindowContainer,
         /**
          * A relevant config option changed.
          */
-        void optionChanged(const std::string &name);
+        void optionChanged(const std::string &name) override;
 
         /**
          * Returns camera x offset in pixels.

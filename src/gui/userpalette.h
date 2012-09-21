@@ -150,7 +150,7 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the number of colors known
          */
-        inline int getNumberOfElements()
+        inline int getNumberOfElements() override
         { return static_cast<int>(mColors.size()); }
 
         /**
@@ -160,7 +160,7 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the name of the color
          */
-        std::string getElementAt(int i);
+        std::string getElementAt(int i) override;
 
         /**
          * Commit the colors

@@ -35,10 +35,10 @@ class BattleTab final : public ChatTab
 
         ~BattleTab();
 
-        int getType() const
+        int getType() const override
         { return ChatTab::TAB_BATTLE; }
 
-        void saveToLogFile(std::string &msg);
+        void saveToLogFile(std::string &msg) override;
 };
 
 extern BattleTab *battleChatTab;

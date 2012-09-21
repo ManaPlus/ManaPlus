@@ -108,7 +108,7 @@ class FlashText final : public Text
          * Draws the text.
          */
         virtual void draw(gcn::Graphics *const graphics,
-                          const int xOff, const int yOff);
+                          const int xOff, const int yOff) override;
 
     private:
         int mTime;             /**< Time left for flashing */

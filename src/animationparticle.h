@@ -41,7 +41,7 @@ class AnimationParticle final : public ImageParticle
 
         ~AnimationParticle();
 
-        virtual bool update();
+        virtual bool update() override;
 
     private:
         SimpleAnimation *mAnimation; /**< Used animation for this particle */

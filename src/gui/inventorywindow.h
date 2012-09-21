@@ -76,7 +76,7 @@ class InventoryWindow final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         /**
          * Returns the selected item.
@@ -91,27 +91,27 @@ class InventoryWindow final : public Window,
         /**
          * Handles closing of the window
          */
-        void widgetHidden(const gcn::Event &event);
+        void widgetHidden(const gcn::Event &event) override;
 
         /**
          * Handles the mouse clicks.
          */
-        void mouseClicked(gcn::MouseEvent &event);
+        void mouseClicked(gcn::MouseEvent &event) override;
 
         /**
          * Handles the key presses.
          */
-        void keyPressed(gcn::KeyEvent &event);
+        void keyPressed(gcn::KeyEvent &event) override;
 
         /**
          * Handles the key releases.
          */
-        void keyReleased(gcn::KeyEvent &event);
+        void keyReleased(gcn::KeyEvent &event) override;
 
         /**
          * Updates labels to currently selected item.
          */
-        void valueChanged(const gcn::SelectionEvent &event);
+        void valueChanged(const gcn::SelectionEvent &event) override;
 
         /**
          * Sets whether the split button should be shown.
@@ -137,13 +137,14 @@ class InventoryWindow final : public Window,
 
         void updateDropButton();
 
-        void processEvent(Channels channel, const DepricatedEvent &event);
+        void processEvent(Channels channel,
+                          const DepricatedEvent &event) override;
 
         void updateButtons(const Item *item = nullptr);
 
         bool isInputFocused() const;
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
         static bool isAnyInputFocused();
 

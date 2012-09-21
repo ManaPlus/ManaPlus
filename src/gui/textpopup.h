@@ -73,7 +73,7 @@ class TextPopup final : public Popup
         void show(const int x, const int y, const std::string &str1,
                   const std::string &str2, const std::string &str3);
 
-        void mouseMoved(gcn::MouseEvent &mouseEvent);
+        void mouseMoved(gcn::MouseEvent &mouseEvent) override;
 
     private:
         gcn::Label *mText1;

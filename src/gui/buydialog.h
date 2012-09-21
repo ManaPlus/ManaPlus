@@ -88,7 +88,7 @@ class BuyDialog final : public Window, public gcn::ActionListener,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         /**
          * Returns the number of items in the shop inventory.
@@ -98,12 +98,7 @@ class BuyDialog final : public Window, public gcn::ActionListener,
         /**
          * Updates the labels according to the selected item.
          */
-        void valueChanged(const gcn::SelectionEvent &event);
-
-        /**
-         * Returns the name of item number i in the shop inventory.
-         */
-        std::string getElementAt(int i);
+        void valueChanged(const gcn::SelectionEvent &event) override;
 
         /**
          * Updates the state of buttons and labels.

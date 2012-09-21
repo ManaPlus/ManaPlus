@@ -50,10 +50,10 @@ class FloorItem final : public ActorSprite
                   Map *const map, const int amount, const unsigned char color,
                   int subX, int subY);
 
-        Type getType() const
+        Type getType() const override
         { return FLOOR_ITEM; }
 
-        bool draw(Graphics *graphics, int offsetX, int offsetY) const;
+        bool draw(Graphics *graphics, int offsetX, int offsetY) const override;
 
         /**
          * Returns the item ID.
@@ -69,10 +69,10 @@ class FloorItem final : public ActorSprite
 
         std::string getName() const;
 
-        virtual int getTileX() const
+        virtual int getTileX() const override
         { return mX; }
 
-        virtual int getTileY() const
+        virtual int getTileY() const override
         { return mY; }
 
         void incrementPickup()

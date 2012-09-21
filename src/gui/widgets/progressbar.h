@@ -53,7 +53,7 @@ class ProgressBar final : public gcn::Widget, public gcn::WidgetListener
         /**
          * Performs progress bar logic (fading colors)
          */
-        void logic();
+        void logic() override;
 
         /**
          * Update the alpha value to the graphic components.
@@ -63,7 +63,7 @@ class ProgressBar final : public gcn::Widget, public gcn::WidgetListener
         /**
          * Draws the progress bar.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Sets the current progress.
@@ -132,9 +132,9 @@ class ProgressBar final : public gcn::Widget, public gcn::WidgetListener
                            const gcn::Color &color, const float progress,
                            const std::string &text = "");
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
-        void widgetMoved(const gcn::Event &event);
+        void widgetMoved(const gcn::Event &event) override;
 
     private:
         float mProgress;

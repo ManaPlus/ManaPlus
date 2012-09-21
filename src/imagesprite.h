@@ -35,39 +35,40 @@ public:
 
     ~ImageSprite();
 
-    bool reset()
+    bool reset() override
     { return false; }
 
-    bool play(std::string action A_UNUSED)
+    bool play(std::string action A_UNUSED) override
     { return false; }
 
-    bool update(int time A_UNUSED)
+    bool update(int time A_UNUSED) override
     { return false; }
 
-    bool draw(Graphics* graphics, int posX, int posY) const;
+    bool draw(Graphics* graphics, int posX, int posY) const override;
 
-    int getWidth() const
+    int getWidth() const override
     { return mImage ? mImage->getWidth() : 0; }
 
-    int getHeight() const
+    int getHeight() const override
     { return mImage ? mImage->getHeight() : 0; }
 
     const Image* getImage() const
     { return mImage; }
 
-    virtual bool setSpriteDirection(const SpriteDirection direction A_UNUSED)
+    virtual bool setSpriteDirection(const SpriteDirection
+                                    direction A_UNUSED) override
     { return false; }
 
     int getNumberOfLayers() const
     { return 1; }
 
-    unsigned int getCurrentFrame() const
+    unsigned int getCurrentFrame() const override
     { return 0; }
 
-    unsigned int getFrameCount() const
+    unsigned int getFrameCount() const override
     { return 1; }
 
-    bool updateNumber(const unsigned num A_UNUSED)
+    bool updateNumber(const unsigned num A_UNUSED) override
     { return false; }
 
 private:

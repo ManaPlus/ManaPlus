@@ -45,7 +45,7 @@ class SafeOpenGLGraphics final : public Graphics
 
         bool setVideoMode(const int w, const int h, const int bpp,
                           const bool fs, const bool hwaccel,
-                          const bool resize, const bool noFrame);
+                          const bool resize, const bool noFrame) override;
 
         /**
          * Draws a resclaled version of the image
@@ -54,7 +54,7 @@ class SafeOpenGLGraphics final : public Graphics
                                int dstX, int dstY,
                                const int width, const int height,
                                const int desiredWidth, const int desiredHeight,
-                               const bool useColor);
+                               const bool useColor) override;
 
         /**
          * Used to get the smooth rescale option over the standard function.
@@ -67,7 +67,7 @@ class SafeOpenGLGraphics final : public Graphics
 
         void drawImagePattern(const Image *const image,
                               const int x, const int y,
-                              const int w, const int h);
+                              const int w, const int h) override;
 
         /**
          * Draw a pattern based on a rescaled version of the given image...
@@ -76,7 +76,7 @@ class SafeOpenGLGraphics final : public Graphics
                                       const int x, const int y,
                                       const int w, const int h,
                                       const int scaledWidth,
-                                      const int scaledHeight);
+                                      const int scaledHeight) override;
 
         bool calcImageRect(GraphicsVertexes *const vert,
                            const int x, const int y,
@@ -89,21 +89,22 @@ class SafeOpenGLGraphics final : public Graphics
                            const Image *const right,
                            const Image *const bottom,
                            const Image *const left,
-                           const Image *const center);
+                           const Image *const center) override;
 
         void drawImageRect2(GraphicsVertexes *const vert,
-                            const ImageRect &imgRect);
+                            const ImageRect &imgRect) override;
 
-        void calcTile(ImageVertexes *const vert, int x, int y);
+        void calcTile(ImageVertexes *const vert, int x, int y) override;
 
-        void drawTile(const ImageVertexes *const vert);
+        void drawTile(const ImageVertexes *const vert) override;
 
-        void updateScreen();
+        void updateScreen() override;
 
         void _beginDraw();
         void _endDraw();
 
         bool pushClipArea(gcn::Rectangle area);
+
         void popClipArea();
 
         void setColor(const gcn::Color &color);
@@ -116,16 +117,16 @@ class SafeOpenGLGraphics final : public Graphics
 
         void drawRectangle(const gcn::Rectangle &rect);
 
-        void fillRectangle(const gcn::Rectangle &rect);
+        void fillRectangle(const gcn::Rectangle &rect) override;
 
         void setTargetPlane(int width, int height);
 
         /**
          * Takes a screenshot and returns it as SDL surface.
          */
-        SDL_Surface *getScreenshot();
+        SDL_Surface *getScreenshot() override;
 
-        void prepareScreenshot();
+        void prepareScreenshot() override;
 
         static void bindTexture(GLenum target, GLuint texture);
 

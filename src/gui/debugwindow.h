@@ -41,7 +41,7 @@ class DebugTab : public Container
             Container()
         { }
 
-        void logic() = 0;
+        void logic() override = 0;
 
         void resize(const int x, const int y)
         { setDimension(gcn::Rectangle(0, 0, x, y)); }
@@ -56,7 +56,7 @@ class MapDebugTab final : public DebugTab
     public:
         MapDebugTab();
 
-        void logic();
+        void logic() override;
 
     private:
         Label *mMusicFileLabel;
@@ -80,7 +80,7 @@ class TargetDebugTab final : public DebugTab
     public:
         TargetDebugTab();
 
-        void logic();
+        void logic() override;
 
     private:
         Label *mTargetLabel;
@@ -102,7 +102,7 @@ class NetDebugTab final : public DebugTab
     public:
         NetDebugTab();
 
-        void logic();
+        void logic() override;
 
     private:
         Label *mPingLabel;
@@ -130,11 +130,11 @@ class DebugWindow final : public Window
          */
         void slowLogic();
 
-        void draw(gcn::Graphics *g);
+        void draw(gcn::Graphics *g) override;
 
         void setPing(int pingTime);
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
     private:
         TabbedArea *mTabs;

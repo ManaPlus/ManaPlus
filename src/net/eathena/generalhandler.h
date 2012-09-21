@@ -53,7 +53,8 @@ class GeneralHandler : public MessageHandler, public Net::GeneralHandler,
 
         void clearHandlers();
 
-        void processEvent(Channels channel, const DepricatedEvent &event);
+        void processEvent(Channels channel,
+                          const DepricatedEvent &event) override;
 
         void reloadPartially();
 

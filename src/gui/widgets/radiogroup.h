@@ -31,7 +31,7 @@ class RadioGroup final : public WidgetGroup
         RadioGroup(const std::string &group, const int height,
                    const int spacing);
 
-        gcn::Widget *createWidget(const std::string &name);
+        gcn::Widget *createWidget(const std::string &name) override;
 };
 
 #endif

@@ -46,13 +46,13 @@ class SetupTabScroll : public SetupTab
         VertContainer *getContainer() const
         { return mContainer; }
 
-        virtual void apply();
+        virtual void apply() override;
 
-        virtual void cancel();
+        virtual void cancel() override;
 
-        virtual void externalUpdated();
+        virtual void externalUpdated() override;
 
-        virtual void action(const gcn::ActionEvent &event A_UNUSED)
+        virtual void action(const gcn::ActionEvent &event A_UNUSED) override
         { }
 
         int getPreferredFirstItemSize()

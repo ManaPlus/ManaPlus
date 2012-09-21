@@ -105,18 +105,18 @@ class Particle : public Actor
         /**
          * Draws the particle image.
          */
-        virtual bool draw(Graphics *graphics, int offsetX, int offsetY) const;
+        virtual bool draw(Graphics *graphics, int offsetX, int offsetY) const override;
 
         /**
          * Necessary for sorting with the other sprites.
          */
-        virtual int getPixelY() const
+        virtual int getPixelY() const override
         { return static_cast<int>(mPos.y) - 16; }
 
         /**
          * Necessary for sorting with the other sprites for sorting only.
          */
-        virtual int getSortPixelY() const
+        virtual int getSortPixelY() const override
         { return static_cast<int>(mPos.y) - 16; }
 
         /**
@@ -284,7 +284,7 @@ class Particle : public Actor
         virtual float getAlpha() const
         { return 1.0f; }
 
-        virtual void setAlpha(const float alpha A_UNUSED)
+        virtual void setAlpha(const float alpha A_UNUSED) override
         { }
 
         virtual void setDeathEffect(const std::string &effectFile,

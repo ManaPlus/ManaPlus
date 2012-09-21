@@ -54,7 +54,7 @@ class EditDialog final : public Window, public gcn::ActionListener
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         std::string getMsg() const
         { return mTextField->getText(); }

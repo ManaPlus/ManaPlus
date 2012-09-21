@@ -65,7 +65,7 @@ class ScrollArea final : public gcn::ScrollArea, public gcn::WidgetListener
          * Logic function optionally adapts width or height of contents. This
          * depends on the scrollbar settings.
          */
-        void logic();
+        void logic() override;
 
         /**
          * Update the alpha value to the graphic components.
@@ -75,12 +75,12 @@ class ScrollArea final : public gcn::ScrollArea, public gcn::WidgetListener
         /**
          * Draws the scroll area.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(gcn::Graphics *graphics);
+        void drawFrame(gcn::Graphics *graphics) override;
 
         /**
          * Sets whether the widget should draw its background or not.
@@ -96,25 +96,25 @@ class ScrollArea final : public gcn::ScrollArea, public gcn::WidgetListener
         /**
          * Called when the mouse moves in the widget area.
          */
-        void mouseMoved(gcn::MouseEvent& event);
+        void mouseMoved(gcn::MouseEvent& event) override;
 
         /**
          * Called when the mouse enteres the widget area.
          */
-        void mouseEntered(gcn::MouseEvent& event);
+        void mouseEntered(gcn::MouseEvent& event) override;
 
         /**
          * Called when the mouse leaves the widget area.
          */
-        void mouseExited(gcn::MouseEvent& event);
+        void mouseExited(gcn::MouseEvent& event) override;
 
-        void mousePressed(gcn::MouseEvent& event);
+        void mousePressed(gcn::MouseEvent& event) override;
 
-        void mouseReleased(gcn::MouseEvent& event);
+        void mouseReleased(gcn::MouseEvent& event) override;
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
-        void widgetMoved(const gcn::Event &event);
+        void widgetMoved(const gcn::Event &event) override;
 
     protected:
         enum BUTTON_DIR
@@ -132,14 +132,14 @@ class ScrollArea final : public gcn::ScrollArea, public gcn::WidgetListener
         void init(std::string skinName);
 
         void drawButton(gcn::Graphics *const graphics, const BUTTON_DIR dir);
-        void drawUpButton(gcn::Graphics *const graphics);
-        void drawDownButton(gcn::Graphics *const graphics);
-        void drawLeftButton(gcn::Graphics *const graphics);
-        void drawRightButton(gcn::Graphics *const graphics);
-        void drawVBar(gcn::Graphics *const graphics);
-        void drawHBar(gcn::Graphics *const graphics);
-        void drawVMarker(gcn::Graphics *const graphics);
-        void drawHMarker(gcn::Graphics *const graphics);
+        void drawUpButton(gcn::Graphics *const graphics) override;
+        void drawDownButton(gcn::Graphics *const graphics) override;
+        void drawLeftButton(gcn::Graphics *const graphics) override;
+        void drawRightButton(gcn::Graphics *const graphics) override;
+        void drawVBar(gcn::Graphics *const graphics) override;
+        void drawHBar(gcn::Graphics *const graphics) override;
+        void drawVMarker(gcn::Graphics *const graphics) override;
+        void drawHMarker(gcn::Graphics *const graphics) override;
 
         static int instances;
         static float mAlpha;

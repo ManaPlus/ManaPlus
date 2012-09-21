@@ -55,7 +55,7 @@ class TextCommandEditor final : public Window, public gcn::ActionListener
          */
         ~TextCommandEditor();
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         void update();
 

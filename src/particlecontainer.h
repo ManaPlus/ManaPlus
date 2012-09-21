@@ -90,9 +90,9 @@ public:
      */
     void removeLocally(const Particle *const particle);
 
-    virtual void clearLocally();
+    virtual void clearLocally() override;
 
-    virtual void moveTo(const float x, const float y);
+    virtual void moveTo(const float x, const float y) override;
 
 protected:
     std::list<Particle *> mElements;    /**< Contained particle effects */
@@ -120,8 +120,9 @@ public:
      */
     virtual void delLocally(const int index);
 
-    virtual void clearLocally();
-    virtual void moveTo(const float x, const float y);
+    virtual void clearLocally() override;
+
+    virtual void moveTo(const float x, const float y) override;
 
 protected:
     std::vector<Particle *> mIndexedElements;

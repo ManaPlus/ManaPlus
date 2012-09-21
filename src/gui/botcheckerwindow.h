@@ -64,7 +64,7 @@ class BotCheckerWindow final : public Window,
          */
         ~BotCheckerWindow();
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         void update();
 
@@ -74,7 +74,7 @@ class BotCheckerWindow final : public Window,
 
         void reset();
 
-        void optionChanged(const std::string &name);
+        void optionChanged(const std::string &name) override;
 
     private:
         UsersTableModel *mTableModel;

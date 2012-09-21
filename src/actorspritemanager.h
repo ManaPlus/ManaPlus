@@ -229,7 +229,7 @@ class ActorSpriteManager final: public ConfigListener
 
         bool pickUpNearest(const int x, const int y, int maxdist);
 
-        void optionChanged(const std::string &name);
+        void optionChanged(const std::string &name) override;
 
         void removeAttackMob(const std::string &name);
 

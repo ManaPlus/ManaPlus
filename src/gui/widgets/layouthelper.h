@@ -76,7 +76,7 @@ class LayoutHelper final : public gcn::WidgetListener
         /**
          * Called whenever the managed container changes size.
          */
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
     private:
         Layout mLayout;              /**< Layout handler */

@@ -73,7 +73,7 @@ class Popup : public Container, public gcn::MouseListener,
         /**
          * Draws the popup.
          */
-        void draw(gcn::Graphics *graphics);
+        void draw(gcn::Graphics *graphics) override;
 
         /**
          * Sets the size of this popup.
@@ -85,7 +85,7 @@ class Popup : public Container, public gcn::MouseListener,
          */
         void setLocationRelativeTo(const gcn::Widget *const widget);
 
-        void mouseMoved(gcn::MouseEvent &event);
+        void mouseMoved(gcn::MouseEvent &event) override;
 
         /**
          * Sets the minimum width of the popup.
@@ -149,7 +149,7 @@ class Popup : public Container, public gcn::MouseListener,
 
         // Inherited from BasicContainer
 
-        virtual gcn::Rectangle getChildrenArea();
+        virtual gcn::Rectangle getChildrenArea() override;
 
         /**
          * Sets the location to display the popup. Tries to horizontally center
@@ -161,9 +161,9 @@ class Popup : public Container, public gcn::MouseListener,
 
         void hide();
 
-        void widgetResized(const gcn::Event &event);
+        void widgetResized(const gcn::Event &event) override;
 
-        void widgetMoved(const gcn::Event &event);
+        void widgetMoved(const gcn::Event &event) override;
 
     private:
         std::string mPopupName;       /**< Name of the popup */

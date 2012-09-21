@@ -65,7 +65,7 @@ class ItemPopup final : public Popup
 
         void setItem(const Item *const item, const bool showImage = false);
 
-        void mouseMoved(gcn::MouseEvent &mouseEvent);
+        void mouseMoved(gcn::MouseEvent &mouseEvent) override;
 
     private:
         gcn::Label *mItemName;

@@ -40,7 +40,7 @@ class WindowContainer : public Container
          * Do GUI logic. This functions adds automatic deletion of objects that
          * volunteered to be deleted.
          */
-        void logic();
+        void logic() override;
 
         /**
          * Schedule a widget for deletion. It will be deleted at the start of

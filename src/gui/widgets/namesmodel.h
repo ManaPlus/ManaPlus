@@ -25,6 +25,8 @@
 
 #include <guichan/listmodel.hpp>
 
+#include "localconsts.h"
+
 class NamesModel : public gcn::ListModel
 {
     public:
@@ -32,9 +34,9 @@ class NamesModel : public gcn::ListModel
 
         virtual ~NamesModel();
 
-        virtual int getNumberOfElements();
+        virtual int getNumberOfElements() override;
 
-        virtual std::string getElementAt(int i);
+        virtual std::string getElementAt(int i) override;
 
         StringVect &getNames()
         { return mNames; }

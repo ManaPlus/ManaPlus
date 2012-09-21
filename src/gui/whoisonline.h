@@ -129,15 +129,15 @@ public:
 
     void loadList(std::vector<OnlinePlayer*> &list);
 
-    void handleLink(const std::string& link, gcn::MouseEvent *event);
+    void handleLink(const std::string& link, gcn::MouseEvent *event) override;
 
-    void logic();
+    void logic() override;
 
     void slowLogic();
 
-    void action(const gcn::ActionEvent &event);
+    void action(const gcn::ActionEvent &event) override;
 
-    void widgetResized(const gcn::Event &event);
+    void widgetResized(const gcn::Event &event) override;
 
     const std::set<OnlinePlayer*> &getOnlinePlayers() const
     { return mOnlinePlayers; }
@@ -148,7 +148,7 @@ public:
     void setAllowUpdate(const bool n)
     { mAllowUpdate = n; }
 
-    void optionChanged(const std::string &name);
+    void optionChanged(const std::string &name) override;
 
     void updateList(StringVect &list);
 

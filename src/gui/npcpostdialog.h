@@ -43,7 +43,7 @@ public:
     /**
      * Called when receiving actions from the widgets.
      */
-    void action(const gcn::ActionEvent &event);
+    void action(const gcn::ActionEvent &event) override;
 
     void setVisible(bool visible);
 

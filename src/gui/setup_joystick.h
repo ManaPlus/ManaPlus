@@ -48,7 +48,7 @@ class Setup_Joystick final : public SetupTab
 
         void cancel();
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
         void setTempEnabled(const bool sel);
 
