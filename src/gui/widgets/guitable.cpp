@@ -39,7 +39,7 @@
 
 float GuiTable::mAlpha = 1.0;
 
-class GuiTableActionListener : public gcn::ActionListener
+class GuiTableActionListener final : public gcn::ActionListener
 {
 public:
     GuiTableActionListener(GuiTable *_table, gcn::Widget *_widget,

@@ -66,7 +66,7 @@ static const int SLOTS_PER_ROW = 5;
 /**
  * Listener for confirming character deletion.
  */
-class CharDeleteConfirm : public ConfirmDialog
+class CharDeleteConfirm final : public ConfirmDialog
 {
     public:
         CharDeleteConfirm(CharSelectDialog *const m, const int index) :
@@ -91,7 +91,7 @@ class CharDeleteConfirm : public ConfirmDialog
         int mIndex;
 };
 
-class CharacterDisplay : public Container
+class CharacterDisplay final : public Container
 {
     public:
         CharacterDisplay(CharSelectDialog *const charSelectDialog);

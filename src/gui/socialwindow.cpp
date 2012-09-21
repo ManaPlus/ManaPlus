@@ -55,7 +55,7 @@
 
 #include "debug.h"
 
-class SortFriendsFunctor
+class SortFriendsFunctor final
 {
     public:
         bool operator() (const Avatar *const m1, const Avatar *const m2) const
@@ -129,7 +129,7 @@ protected:
     AvatarListBox *mList;
 };
 
-class SocialGuildTab : public SocialTab, public gcn::ActionListener
+class SocialGuildTab final : public SocialTab, public gcn::ActionListener
 {
 public:
     SocialGuildTab(Guild *const guild, const bool showBackground) :
@@ -233,7 +233,7 @@ private:
     Guild *mGuild;
 };
 
-class SocialGuildTab2 : public SocialTab, public gcn::ActionListener
+class SocialGuildTab2 final : public SocialTab, public gcn::ActionListener
 {
 public:
     SocialGuildTab2(Guild *const guild, const bool showBackground) :
@@ -293,7 +293,7 @@ private:
     Guild *mGuild;
 };
 
-class SocialPartyTab : public SocialTab, public gcn::ActionListener
+class SocialPartyTab final : public SocialTab, public gcn::ActionListener
 {
 public:
     SocialPartyTab(Party *const party, const bool showBackground) :
@@ -396,7 +396,7 @@ private:
     Party *mParty;
 };
 
-class BeingsListModal : public AvatarListModel
+class BeingsListModal final : public AvatarListModel
 {
 public:
     BeingsListModal() :
@@ -428,7 +428,7 @@ public:
     std::vector<Avatar*> mMembers;
 };
 
-class SocialPlayersTab : public SocialTab
+class SocialPlayersTab final : public SocialTab
 {
 public:
     SocialPlayersTab(std::string name, const bool showBackground) :
@@ -594,7 +594,7 @@ private:
 };
 
 
-class SocialNavigationTab : public SocialTab
+class SocialNavigationTab final : public SocialTab
 {
 public:
     SocialNavigationTab(const bool showBackground) :
@@ -930,7 +930,7 @@ protected:
     std::list<std::string>::const_iterator i;\
     std::list<std::string>::const_iterator i_end;
 
-class SocialAttackTab : public SocialTab
+class SocialAttackTab final : public SocialTab
 {
 public:
     SocialAttackTab(const bool showBackground) :
@@ -986,7 +986,7 @@ private:
     BeingsListModal *mBeings;
 };
 
-class SocialPickupTab : public SocialTab
+class SocialPickupTab final : public SocialTab
 {
 public:
     SocialPickupTab(const bool showBackground) :
@@ -1042,7 +1042,7 @@ private:
 };
 
 
-class SocialFriendsTab : public SocialTab
+class SocialFriendsTab final : public SocialTab
 {
 public:
     SocialFriendsTab(std::string name, const bool showBackground) :
@@ -1136,7 +1136,7 @@ private:
 };
 
 
-class CreatePopup : public Popup, public LinkHandler
+class CreatePopup final : public Popup, public LinkHandler
 {
 public:
     CreatePopup() :

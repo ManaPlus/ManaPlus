@@ -32,7 +32,7 @@
  *
  * \ingroup GUI
  */
-class TextBox : public gcn::TextBox
+class TextBox final : public gcn::TextBox
 {
     public:
         /**

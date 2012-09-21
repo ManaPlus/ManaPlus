@@ -30,7 +30,7 @@
 class EditDialog;
 class TextField;
 
-class Setup_Other : public SetupTabScroll
+class Setup_Other final : public SetupTabScroll
 {
     public:
         Setup_Other();

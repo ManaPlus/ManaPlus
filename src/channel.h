@@ -25,9 +25,11 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 class ChannelTab;
 
-class Channel
+class Channel final
 {
     public:
         /**

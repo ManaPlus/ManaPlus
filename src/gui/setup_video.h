@@ -44,7 +44,7 @@ namespace gcn
     class Slider;
 }
 
-class Setup_Video : public SetupTab, public gcn::KeyListener
+class Setup_Video final : public SetupTab, public gcn::KeyListener
 {
     public:
         Setup_Video();

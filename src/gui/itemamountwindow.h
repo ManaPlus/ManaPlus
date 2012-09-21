@@ -46,9 +46,9 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class ItemAmountWindow : public Window,
-                         public gcn::ActionListener,
-                         public gcn::KeyListener
+class ItemAmountWindow final : public Window,
+                               public gcn::ActionListener,
+                               public gcn::KeyListener
 {
     public:
         enum Usage

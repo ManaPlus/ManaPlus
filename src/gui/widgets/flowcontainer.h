@@ -31,8 +31,8 @@
  *
  * \ingroup GUI
  */
-class FlowContainer : public Container,
-                      public gcn::WidgetListener
+class FlowContainer final : public Container,
+                            public gcn::WidgetListener
 {
     public:
         /**

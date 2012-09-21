@@ -46,7 +46,7 @@ class SetupTab;
  *
  * \ingroup GUI
  */
-class Setup : public Window, public gcn::ActionListener
+class Setup final : public Window, public gcn::ActionListener
 {
     public:
         Setup();

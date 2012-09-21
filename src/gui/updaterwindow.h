@@ -47,7 +47,7 @@ namespace gcn
     class Label;
 }
 
-struct updateFile
+struct updateFile final
 {
     public:
         std::string name;
@@ -62,10 +62,10 @@ struct updateFile
  *
  * \ingroup GUI
  */
-class UpdaterWindow : public Window,
-                      public gcn::ActionListener,
-                      public LinkHandler,
-                      public gcn::KeyListener
+class UpdaterWindow final : public Window,
+                            public gcn::ActionListener,
+                            public LinkHandler,
+                            public gcn::KeyListener
 {
  public:
     /**

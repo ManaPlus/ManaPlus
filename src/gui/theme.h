@@ -39,7 +39,7 @@ class Image;
 class ImageSet;
 class ProgressBar;
 
-class Skin
+class Skin final
 {
     public:
         Skin(const ImageRect &skin, const ImageRect &images,
@@ -125,7 +125,7 @@ class Skin
         std::map<std::string, int> *mOptions;
 };
 
-class Theme : public Palette, public ConfigListener
+class Theme final : public Palette, public ConfigListener
 {
     public:
         static Theme *instance();

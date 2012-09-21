@@ -25,7 +25,9 @@
 
 #include <string>
 
-class Units
+#include "localconsts.h"
+
+class Units final
 {
     public:
         /**

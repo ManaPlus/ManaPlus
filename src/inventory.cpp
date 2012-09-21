@@ -37,7 +37,7 @@
 
 #include "debug.h"
 
-struct SlotUsed : public std::unary_function<Item*, bool>
+struct SlotUsed final : public std::unary_function<Item*, bool>
 {
     bool operator()(const Item *const item) const
     {

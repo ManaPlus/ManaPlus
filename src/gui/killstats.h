@@ -37,7 +37,9 @@ namespace gcn
     class Label;
 }
 
-class KillStats : public Window, private gcn::ActionListener, public Listener
+class KillStats final : public Window,
+                        private gcn::ActionListener,
+                        public Listener
 {
     public:
         /**

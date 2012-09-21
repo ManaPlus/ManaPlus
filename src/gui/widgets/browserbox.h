@@ -36,14 +36,14 @@ class Image;
 class Resource;
 class LinkHandler;
 
-struct BROWSER_LINK
+struct BROWSER_LINK final
 {
     int x1, x2, y1, y2;     /**< Where link is placed */
     std::string link;
     std::string caption;
 };
 
-class LinePart
+class LinePart final
 {
     public:
         LinePart(const int x, const int y, const gcn::Color color,
@@ -74,8 +74,8 @@ class LinePart
  * A simple browser box able to handle links and forward events to the
  * parent conteiner.
  */
-class BrowserBox : public gcn::Widget,
-                   public gcn::MouseListener
+class BrowserBox final : public gcn::Widget,
+                         public gcn::MouseListener
 {
     public:
         /**

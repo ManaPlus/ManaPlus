@@ -50,6 +50,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 namespace gcn
 {
     class Widget;
@@ -76,7 +78,7 @@ namespace gcn
      * @author Olof Naessén
      * @since 0.6.0
      */
-    class GCN_CORE_DECLSPEC ActionEvent: public Event
+    class GCN_CORE_DECLSPEC ActionEvent final : public Event
     {
     public:
 

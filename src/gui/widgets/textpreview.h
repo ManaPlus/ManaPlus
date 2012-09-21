@@ -30,7 +30,7 @@
 /**
  * Preview widget for particle colors, etc.
  */
-class TextPreview : public gcn::Widget
+class TextPreview final : public gcn::Widget
 {
     public:
         TextPreview(const std::string &text);

@@ -88,7 +88,7 @@ typedef unsigned int uint32_t;
 static const unsigned int SHA256_BLOCK_SIZE = (512 / 8);
 
 /** An sha 256 context, used by original m_opersha256 */
-class SHA256Context
+class SHA256Context final
 {
     public:
         unsigned int tot_len;

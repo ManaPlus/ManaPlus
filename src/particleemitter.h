@@ -40,7 +40,7 @@ class Particle;
  * Every Particle can have one or more particle emitters that create new
  * particles when they are updated
  */
-class ParticleEmitter
+class ParticleEmitter final
 {
     public:
         ParticleEmitter(const XmlNodePtr emitterNode, Particle *const target,

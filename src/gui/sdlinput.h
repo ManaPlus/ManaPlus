@@ -127,7 +127,7 @@ namespace Key
 /**
  * SDL implementation of Input.
  */
-class SDLInput : public gcn::Input
+class SDLInput final : public gcn::Input
 {
 public:
 

@@ -35,7 +35,7 @@
 
 int selectedData = 0;
 
-struct SetupActionData
+struct SetupActionData final
 {
     std::string name;
     const int actionId;

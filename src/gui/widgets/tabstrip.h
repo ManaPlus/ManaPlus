@@ -26,7 +26,7 @@
 #include <guichan/actionevent.hpp>
 #include <guichan/widget.hpp>
 
-class TabStrip : public WidgetGroup
+class TabStrip final : public WidgetGroup
 {
     public:
         TabStrip(const std::string &group, const int height,

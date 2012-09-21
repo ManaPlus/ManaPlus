@@ -154,7 +154,7 @@ void ServersListModel::setVersionString(const int index,
     }
 }
 
-class ServersListBox : public ListBox
+class ServersListBox final : public ListBox
 {
 public:
     ServersListBox(ServersListModel *const model) :

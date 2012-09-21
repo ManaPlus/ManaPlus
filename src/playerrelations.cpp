@@ -48,7 +48,7 @@ typedef PlayerRelations::const_iterator PlayerRelationsCIter;
 typedef std::list<PlayerRelationsListener *> PlayerRelationListeners;
 typedef PlayerRelationListeners::const_iterator PlayerRelationListenersCIter;
 
-class SortPlayersFunctor
+class SortPlayersFunctor final
 {
     public:
         bool operator() (const std::string &str1,
@@ -65,7 +65,7 @@ class SortPlayersFunctor
 } playersSorter;
 
 // (De)serialisation class
-class PlayerConfSerialiser :
+class PlayerConfSerialiser final :
     public ConfigurationListManager<std::pair<std::string, PlayerRelation *>,
         std::map<std::string, PlayerRelation *> *>
 {
@@ -463,7 +463,7 @@ bool PlayerRelationsManager::checkBadRelation(std::string name)
 // ignore strategies
 
 
-class PIS_nothing : public PlayerIgnoreStrategy
+class PIS_nothing final : public PlayerIgnoreStrategy
 {
 public:
     PIS_nothing() :
@@ -479,7 +479,7 @@ public:
     }
 };
 
-class PIS_dotdotdot : public PlayerIgnoreStrategy
+class PIS_dotdotdot final : public PlayerIgnoreStrategy
 {
 public:
     PIS_dotdotdot() :
@@ -500,7 +500,7 @@ public:
 };
 
 
-class PIS_blinkname : public PlayerIgnoreStrategy
+class PIS_blinkname final : public PlayerIgnoreStrategy
 {
 public:
     PIS_blinkname() :
@@ -520,7 +520,7 @@ public:
     }
 };
 
-class PIS_emote : public PlayerIgnoreStrategy
+class PIS_emote final : public PlayerIgnoreStrategy
 {
 public:
     PIS_emote(const uint8_t emote_nr, const std::string &description,

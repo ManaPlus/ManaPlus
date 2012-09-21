@@ -55,7 +55,7 @@
 static const int BOX_WIDTH = 35;
 static const int BOX_HEIGHT = 43;
 
-class ItemIdPair
+class ItemIdPair final
 {
     public:
         ItemIdPair(const int id, Item *const item) :
@@ -67,7 +67,7 @@ class ItemIdPair
         Item* mItem;
 };
 
-class SortItemAlphaFunctor
+class SortItemAlphaFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -81,7 +81,7 @@ class SortItemAlphaFunctor
         }
 } itemAlphaSorter;
 
-class SortItemIdFunctor
+class SortItemIdFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -94,7 +94,7 @@ class SortItemIdFunctor
         }
 } itemIdSorter;
 
-class SortItemWeightFunctor
+class SortItemWeightFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -114,7 +114,7 @@ class SortItemWeightFunctor
         }
 } itemWeightSorter;
 
-class SortItemAmountFunctor
+class SortItemAmountFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -134,7 +134,7 @@ class SortItemAmountFunctor
         }
 } itemAmountSorter;
 
-class SortItemTypeFunctor
+class SortItemTypeFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,

@@ -26,6 +26,8 @@
 #include <set>
 #include <vector>
 
+#include "localconsts.h"
+
 namespace gcn
 {
     class Widget;
@@ -103,7 +105,7 @@ private:
 };
 
 
-class StaticTableModel : public TableModel
+class StaticTableModel final : public TableModel
 {
 public:
     StaticTableModel(const int width, const int height);

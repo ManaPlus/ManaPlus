@@ -38,7 +38,7 @@ static const int SCROLL_PADDING = 0;
 
 int ShortcutWindow::mBoxesWidth = 0;
 
-class ShortcutTab : public Tab
+class ShortcutTab final : public Tab
 {
     public:
         ShortcutTab(std::string name, ShortcutContainer *const content) :

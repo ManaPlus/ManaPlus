@@ -45,7 +45,7 @@ const unsigned int CLEAN_TIME = 5;
 
 char *strBuf;
 
-class SDLTextChunk
+class SDLTextChunk final
 {
     public:
         SDLTextChunk(const std::string &text0, const gcn::Color &color0) :

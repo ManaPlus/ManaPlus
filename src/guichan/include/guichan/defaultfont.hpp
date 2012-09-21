@@ -48,6 +48,8 @@
 #include "guichan/font.hpp"
 #include "guichan/platform.hpp"
 
+#include "localconsts.h"
+
 namespace gcn
 {
     /**
@@ -55,7 +57,7 @@ namespace gcn
      * in Guichan if no font has been set merely to show that no font has 
      * been set.
      */
-    class GCN_CORE_DECLSPEC DefaultFont : public Font
+    class GCN_CORE_DECLSPEC DefaultFont final : public Font
     {
     public:
 

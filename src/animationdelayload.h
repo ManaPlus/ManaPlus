@@ -23,9 +23,11 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 class AnimatedSprite;
 
-class AnimationDelayLoad
+class AnimationDelayLoad final
 {
     public:
         AnimationDelayLoad(const std::string &fileName,

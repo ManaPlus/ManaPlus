@@ -44,7 +44,7 @@ namespace gcn
 /**
  * A popup that displays information about an item.
  */
-class ItemPopup : public Popup
+class ItemPopup final : public Popup
 {
     public:
         /**

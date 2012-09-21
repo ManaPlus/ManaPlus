@@ -30,7 +30,7 @@ class Label;
 /**
  * A popup that displays information about a being.
  */
-class BeingPopup : public Popup
+class BeingPopup final : public Popup
 {
     public:
         /**

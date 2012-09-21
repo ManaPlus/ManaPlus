@@ -37,7 +37,7 @@ extern ChatTab *localChatTab;
 /**
  * A class to parse and handle user commands
  */
-class CommandHandler
+class CommandHandler final
 {
     public:
         /**

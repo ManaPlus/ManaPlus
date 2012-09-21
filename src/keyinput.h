@@ -27,7 +27,7 @@
 
 #include <string>
 
-class KeyInput : public gcn::KeyInput
+class KeyInput final : public gcn::KeyInput
 {
     public:
         KeyInput();

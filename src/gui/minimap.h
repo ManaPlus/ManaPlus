@@ -38,7 +38,7 @@ class TextPopup;
  *
  * \ingroup Interface
  */
-class Minimap : public Window
+class Minimap final : public Window
 {
     public:
         Minimap();

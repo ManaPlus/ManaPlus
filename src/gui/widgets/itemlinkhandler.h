@@ -27,7 +27,7 @@
 
 class ItemPopup;
 
-class ItemLinkHandler : public LinkHandler
+class ItemLinkHandler final : public LinkHandler
 {
     public:
         ItemLinkHandler();

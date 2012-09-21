@@ -41,9 +41,9 @@ class TextPopup;
  *
  * \ingroup Interface
  */
-class MiniStatusWindow : public Popup,
-                         public InventoryListener,
-                         public Listener
+class MiniStatusWindow final : public Popup,
+                               public InventoryListener,
+                               public Listener
 {
     public:
         MiniStatusWindow();

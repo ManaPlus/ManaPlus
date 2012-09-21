@@ -30,7 +30,7 @@
 #include <string>
 #include <vector>
 
-class Joystick
+class Joystick final
 {
     public:
         /**

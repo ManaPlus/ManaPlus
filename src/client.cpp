@@ -227,7 +227,7 @@ int get_elapsed_time1(const int startTime)
 namespace
 {
 
-class AccountListener : public gcn::ActionListener
+class AccountListener final : public gcn::ActionListener
 {
     public:
         void action(const gcn::ActionEvent &)
@@ -236,7 +236,7 @@ class AccountListener : public gcn::ActionListener
         }
 } accountListener;
 
-class LoginListener : public gcn::ActionListener
+class LoginListener final : public gcn::ActionListener
 {
     public:
         void action(const gcn::ActionEvent &)

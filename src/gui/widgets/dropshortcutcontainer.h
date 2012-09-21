@@ -36,7 +36,7 @@ class ItemPopup;
  *
  * \ingroup GUI
  */
-class DropShortcutContainer : public ShortcutContainer
+class DropShortcutContainer final : public ShortcutContainer
 {
     public:
         /**

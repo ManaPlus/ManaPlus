@@ -34,7 +34,7 @@ class Image;
  *
  * \ingroup GUI
  */
-class CheckBox : public gcn::CheckBox
+class CheckBox final : public gcn::CheckBox
 {
     public:
         /**

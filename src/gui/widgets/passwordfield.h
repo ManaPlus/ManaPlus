@@ -30,7 +30,7 @@
  *
  * \ingroup GUI
  */
-class PasswordField : public TextField
+class PasswordField final : public TextField
 {
     public:
         /**

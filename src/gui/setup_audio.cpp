@@ -36,7 +36,7 @@
 
 #include "debug.h"
 
-class SoundsModel : public NamesModel
+class SoundsModel final : public NamesModel
 {
 public:
     SoundsModel() :

@@ -45,7 +45,7 @@ namespace gcn
  * to the field which contained wrong data when the Ok button was pressed on
  * the error notice.
  */
-class WrongDataNoticeListener : public gcn::ActionListener
+class WrongDataNoticeListener final : public gcn::ActionListener
 {
     public:
         WrongDataNoticeListener();
@@ -60,8 +60,8 @@ class WrongDataNoticeListener : public gcn::ActionListener
  *
  * \ingroup Interface
  */
-class RegisterDialog : public Window, public gcn::ActionListener,
-                       public gcn::KeyListener
+class RegisterDialog final : public Window, public gcn::ActionListener,
+                             public gcn::KeyListener
 {
     public:
         /**

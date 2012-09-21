@@ -41,8 +41,9 @@ namespace gcn
 /**
  * The help dialog.
  */
-class DidYouKnowWindow : public Window, public LinkHandler,
-                   public gcn::ActionListener
+class DidYouKnowWindow final : public Window,
+                               public LinkHandler,
+                               public gcn::ActionListener
 {
     public:
         /**

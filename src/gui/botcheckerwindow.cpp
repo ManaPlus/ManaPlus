@@ -58,7 +58,7 @@ const int TIME_COLUMN_WIDTH  = 70;
 
 #define WIDGET_AT(row, column) (((row) * COLUMNS_NR) + column)
 
-class UsersTableModel : public TableModel
+class UsersTableModel final : public TableModel
 {
 public:
     UsersTableModel() :

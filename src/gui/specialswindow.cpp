@@ -53,7 +53,7 @@
 static const unsigned int SPECIALS_WIDTH = 200;
 static const unsigned int SPECIALS_HEIGHT = 32;
 
-class SpecialEntry : public Container
+class SpecialEntry final : public Container
 {
     public:
         SpecialEntry(SpecialInfo *info);

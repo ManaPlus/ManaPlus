@@ -47,9 +47,9 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class TradeWindow : public Window,
-                    private gcn::ActionListener,
-                    private gcn::SelectionListener
+class TradeWindow final : public Window,
+                          private gcn::ActionListener,
+                          private gcn::SelectionListener
 {
     public:
         /**

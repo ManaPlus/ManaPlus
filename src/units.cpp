@@ -33,7 +33,7 @@
 
 #include "debug.h"
 
-struct UnitLevel
+struct UnitLevel final
 {
     std::string symbol;
     int count;
@@ -41,7 +41,7 @@ struct UnitLevel
     std::string separator;
 };
 
-struct UnitDescription
+struct UnitDescription final
 {
     std::vector<struct UnitLevel> levels;
     double conversion;

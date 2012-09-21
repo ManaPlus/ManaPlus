@@ -38,7 +38,7 @@ class ImageRect;
  *
  * \ingroup GUI
  */
-class ProgressBar : public gcn::Widget, public gcn::WidgetListener
+class ProgressBar final : public gcn::Widget, public gcn::WidgetListener
 {
     public:
         /**

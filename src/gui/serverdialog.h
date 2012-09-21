@@ -50,7 +50,7 @@ class DropDown;
 /**
  * Server and Port List Model
  */
-class ServersListModel : public gcn::ListModel
+class ServersListModel final : public gcn::ListModel
 {
     public:
         typedef std::pair<int, std::string> VersionString;

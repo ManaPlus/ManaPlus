@@ -47,6 +47,8 @@
 
 #include "guichan/platform.hpp"
 
+#include "localconsts.h"
+
 // windows.h defines DELETE which breaks this file as we have a constant named
 // DELETE, hence we undefine DELETE if it is defined and hope people don't use
 // that windows define with Guichan.
@@ -59,7 +61,7 @@ namespace gcn
     /**
      * Represents a key or a character.
      */
-    class GCN_CORE_DECLSPEC Key
+    class GCN_CORE_DECLSPEC Key final
     {
     public:
 

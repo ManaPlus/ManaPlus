@@ -49,7 +49,7 @@ class PlayersTab;
  *
  * \ingroup Interface
  */
-class SocialWindow : public Window, private gcn::ActionListener
+class SocialWindow final : public Window, private gcn::ActionListener
 {
 public:
     SocialWindow();

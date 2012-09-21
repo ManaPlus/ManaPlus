@@ -55,7 +55,7 @@ SDLInput *guiInput = nullptr;
 // Bolded font
 SDLFont *boldFont = nullptr;
 
-class GuiConfigListener : public ConfigListener
+class GuiConfigListener final : public ConfigListener
 {
     public:
         GuiConfigListener(Gui *const g):

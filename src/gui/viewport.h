@@ -60,9 +60,9 @@ const int walkingMouseDelay = 500;
  * of it such as NPC messages, which are positioned using map pixel
  * coordinates.
  */
-class Viewport : public WindowContainer,
-                 public gcn::MouseListener,
-                 public ConfigListener
+class Viewport final : public WindowContainer,
+                       public gcn::MouseListener,
+                       public ConfigListener
 {
     public:
         /**

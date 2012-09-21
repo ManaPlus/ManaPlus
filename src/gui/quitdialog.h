@@ -41,8 +41,8 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class QuitDialog : public Window, public gcn::ActionListener,
-                   public gcn::KeyListener
+class QuitDialog final : public Window, public gcn::ActionListener,
+                         public gcn::KeyListener
 {
     public:
         /**

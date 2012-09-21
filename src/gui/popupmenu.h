@@ -45,7 +45,7 @@ class TextDialog;
 class ProgressBar;
 class Window;
 
-class RenameListener : public gcn::ActionListener
+class RenameListener final : public gcn::ActionListener
 {
     public:
         RenameListener();
@@ -88,7 +88,7 @@ class PlayerListener : public gcn::ActionListener
 /**
  * Window showing popup menu.
  */
-class PopupMenu : public Popup, public LinkHandler
+class PopupMenu final : public Popup, public LinkHandler
 {
     public:
         /**

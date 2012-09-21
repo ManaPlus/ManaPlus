@@ -28,7 +28,7 @@
 
 #include "resources/animation.h"
 
-class StatusEffect
+class StatusEffect final
 {
 public:
     StatusEffect();

@@ -28,7 +28,7 @@
 /**
  * A tab for a guild chat channel.
  */
-class GuildChatTab : public ChatTab
+class GuildChatTab final : public ChatTab
 {
     public:
         GuildChatTab();

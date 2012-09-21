@@ -23,6 +23,8 @@
 #ifndef ITEMSHORTCUT_H
 #define ITEMSHORTCUT_H
 
+#include "localconsts.h"
+
 const unsigned int SHORTCUT_ITEMS = 20;
 const unsigned int SHORTCUT_TABS = 3;
 
@@ -31,7 +33,7 @@ class Item;
 /**
  * The class which keeps track of the item shortcuts.
  */
-class ItemShortcut
+class ItemShortcut final
 {
     public:
         /**

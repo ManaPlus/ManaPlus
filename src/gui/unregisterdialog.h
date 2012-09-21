@@ -42,7 +42,7 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class UnRegisterDialog : public Window, public gcn::ActionListener
+class UnRegisterDialog final : public Window, public gcn::ActionListener
 {
     public:
         /**

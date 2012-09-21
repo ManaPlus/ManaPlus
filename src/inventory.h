@@ -44,7 +44,7 @@ class InventoryListener
         { }
 };
 
-class Inventory
+class Inventory final
 {
     public:
         static const int NO_SLOT_INDEX = -1; /**< Slot has no index. */

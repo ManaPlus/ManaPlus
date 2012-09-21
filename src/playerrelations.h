@@ -28,9 +28,11 @@
 #include <list>
 #include <map>
 
+#include "localconsts.h"
+
 class Being;
 
-struct PlayerRelation
+struct PlayerRelation final
 {
     static const unsigned int EMOTE        = (1 << 0);
     static const unsigned int SPEECH_FLOAT = (1 << 1);
@@ -102,7 +104,7 @@ class PlayerRelationsListener
  * preferences the user of the local client has wrt other players (identified
  * by std::string).
  */
-class PlayerRelationsManager
+class PlayerRelationsManager final
 {
     public:
         PlayerRelationsManager();

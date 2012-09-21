@@ -37,7 +37,7 @@ class ImageRect;
  * DropDown you must give DropDown an implemented ListModel which represents
  * your list.
  */
-class DropDown : public gcn::DropDown
+class DropDown final : public gcn::DropDown
 {
     public:
         /**

@@ -24,6 +24,8 @@
 #include <map>
 #include <vector>
 
+#include "localconsts.h"
+
 typedef std::vector<int> KeysVector;
 typedef KeysVector::iterator KeysVectorIter;
 typedef KeysVector::const_iterator KeysVectorCIter;
@@ -37,7 +39,7 @@ typedef KeyToIdMap::iterator KeyToIdMapIter;
 typedef std::map<int, int> KeyTimeMap;
 typedef KeyTimeMap::iterator KeyTimeMapIter;
 
-struct InputEvent
+struct InputEvent final
 {
     InputEvent(const int action0, const int mask0);
 

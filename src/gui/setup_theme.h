@@ -40,7 +40,7 @@ namespace gcn
     class Label;
 }
 
-class Setup_Theme : public SetupTab
+class Setup_Theme final : public SetupTab
 {
     public:
         Setup_Theme();

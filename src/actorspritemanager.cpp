@@ -51,7 +51,7 @@
 #define for_actors for (ActorSpritesConstIterator it = mActors.begin(), \
     it_end = mActors.end() ; it != it_end; ++it)
 
-class FindBeingFunctor
+class FindBeingFunctor final
 {
     public:
         bool operator() (const ActorSprite *const actor) const
@@ -77,7 +77,7 @@ class FindBeingFunctor
         ActorSprite::Type type;
 } beingFinder;
 
-class FindBeingEqualFunctor
+class FindBeingEqualFunctor final
 {
     public:
         bool operator() (const Being *const being) const
@@ -90,7 +90,7 @@ class FindBeingEqualFunctor
         Being *findBeing;
 } beingEqualFinder;
 
-class SortBeingFunctor
+class SortBeingFunctor final
 {
     public:
         bool operator() (const Being *const being1,

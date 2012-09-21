@@ -68,7 +68,7 @@ extern Graphics *mainGraphics;
  *
  * \ingroup Interface
  */
-class ModeListModel : public gcn::ListModel
+class ModeListModel final : public gcn::ListModel
 {
     public:
         /**
@@ -199,7 +199,7 @@ const char *OPENGL_NAME[3] =
     N_("Safe OpenGL"),
 };
 
-class OpenGLListModel : public gcn::ListModel
+class OpenGLListModel final : public gcn::ListModel
 {
 public:
     virtual ~OpenGLListModel()

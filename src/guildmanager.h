@@ -25,10 +25,12 @@
 
 #include <map>
 
+#include "localconsts.h"
+
 class Guild;
 class GuildChatTab;
 
-class GuildManager
+class GuildManager final
 {
     public:
         GuildManager();

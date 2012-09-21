@@ -25,7 +25,7 @@
 
 #include "particle.h"
 
-class TextParticle : public Particle
+class TextParticle final : public Particle
 {
     public:
         /**

@@ -34,7 +34,7 @@ class LayoutCell;
 /**
  * This class is a helper for adding widgets to nested tables in a window.
  */
-class ContainerPlacer
+class ContainerPlacer final
 {
     public:
         ContainerPlacer(gcn::Container *c = nullptr, LayoutCell *lc = nullptr):
@@ -67,7 +67,7 @@ class ContainerPlacer
 /**
  * This class contains a rectangular array of cells.
  */
-class LayoutArray
+class LayoutArray final
 {
     friend class LayoutCell;
 
@@ -331,7 +331,7 @@ class LayoutCell
  * pixels between rows and between columns, and a margin of 6 pixels around the
  * whole layout.
  */
-class Layout : public LayoutCell
+class Layout final : public LayoutCell
 {
     public:
         Layout();

@@ -23,7 +23,7 @@
 
 #include "gui/widgets/listbox.h"
 
-class ExtendedListBox : public ListBox
+class ExtendedListBox final : public ListBox
 {
     public:
         /**

@@ -57,7 +57,7 @@ const char *UPDATE_TYPE_TEXT[3] =
     N_("Skip"),
 };
 
-class UpdateTypeModel : public gcn::ListModel
+class UpdateTypeModel final : public gcn::ListModel
 {
 public:
     virtual ~UpdateTypeModel()
@@ -77,7 +77,7 @@ public:
     }
 };
 
-class UpdateListModel : public gcn::ListModel
+class UpdateListModel final : public gcn::ListModel
 {
     public:
         UpdateListModel(LoginData *const data) :

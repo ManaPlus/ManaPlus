@@ -30,7 +30,7 @@ class TextCommand;
 /**
  * The class which keeps track of the item shortcuts.
  */
-class SpellShortcut
+class SpellShortcut final
 {
     public:
         /**

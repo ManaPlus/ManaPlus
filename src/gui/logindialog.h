@@ -50,8 +50,8 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class LoginDialog : public Window, public gcn::ActionListener,
-                    public gcn::KeyListener
+class LoginDialog final : public Window, public gcn::ActionListener,
+                          public gcn::KeyListener
 {
     public:
         /**

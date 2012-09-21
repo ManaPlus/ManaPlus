@@ -29,6 +29,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 class Music;
 
 static const std::string SOUND_INFO = "soundinfo";
@@ -44,7 +46,7 @@ static const std::string SOUND_GUILD = "soundguild";
  *
  * \ingroup CORE
  */
-class Sound : public ConfigListener
+class Sound final : public ConfigListener
 {
     public:
         Sound();

@@ -35,7 +35,7 @@ namespace gcn
     class Label;
 }
 
-class SpeechBubble : public Popup
+class SpeechBubble final : public Popup
 {
     public:
         /**

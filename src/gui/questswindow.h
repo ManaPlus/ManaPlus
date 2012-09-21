@@ -41,7 +41,7 @@ class QuestsModel;
 
 struct QuestItem;
 
-class QuestsWindow : public Window, public gcn::ActionListener
+class QuestsWindow final : public Window, public gcn::ActionListener
 {
     public:
         /**

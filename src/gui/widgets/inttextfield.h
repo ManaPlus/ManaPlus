@@ -28,7 +28,7 @@
 /**
  * TextBox which only accepts numbers as input.
  */
-class IntTextField : public TextField
+class IntTextField final : public TextField
 {
     public:
         /**

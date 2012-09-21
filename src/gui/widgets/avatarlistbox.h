@@ -43,7 +43,7 @@ public:
     { return getAvatarAt(i)->getName(); }
 };
 
-class AvatarListBox : public ListBox, public ConfigListener
+class AvatarListBox final : public ListBox, public ConfigListener
 {
 public:
     AvatarListBox(AvatarListModel *const model);

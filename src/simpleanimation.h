@@ -25,6 +25,8 @@
 
 #include "utils/xml.h"
 
+#include "localconsts.h"
+
 class Animation;
 class Graphics;
 class Image;
@@ -35,7 +37,7 @@ struct Frame;
  * This class is a leightweight alternative to the AnimatedSprite class.
  * It hosts a looping animation without actions and directions.
  */
-class SimpleAnimation
+class SimpleAnimation final
 {
     public:
         /**

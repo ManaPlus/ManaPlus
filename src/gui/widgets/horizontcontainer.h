@@ -31,7 +31,7 @@
  *
  * This container places it's contents veritcally.
  */
-class HorizontContainer : public Container, public gcn::WidgetListener
+class HorizontContainer final : public Container, public gcn::WidgetListener
 {
     public:
         HorizontContainer(const int height, const int spacing);

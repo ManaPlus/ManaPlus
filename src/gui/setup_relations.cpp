@@ -72,7 +72,7 @@ static const char *RELATION_NAMES[PlayerRelation::RELATIONS_NR] =
     N_("Enemy")
 };
 
-class PlayerRelationListModel : public gcn::ListModel
+class PlayerRelationListModel final : public gcn::ListModel
 {
 public:
     virtual ~PlayerRelationListModel()
@@ -91,7 +91,7 @@ public:
     }
 };
 
-class PlayerTableModel : public TableModel
+class PlayerTableModel final : public TableModel
 {
 public:
     PlayerTableModel() :
@@ -206,7 +206,7 @@ protected:
 /**
  * Class for choosing one of the various `what to do when ignoring a player' options
  */
-class IgnoreChoicesListModel : public gcn::ListModel
+class IgnoreChoicesListModel final : public gcn::ListModel
 {
 public:
     virtual ~IgnoreChoicesListModel()

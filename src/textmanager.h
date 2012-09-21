@@ -24,6 +24,8 @@
 
 #include <list>
 
+#include "localconsts.h"
+
 class Text;
 
 namespace gcn
@@ -31,7 +33,7 @@ namespace gcn
     class Graphics;
 }
 
-class TextManager
+class TextManager final
 {
     public:
         /**

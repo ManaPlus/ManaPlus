@@ -52,7 +52,7 @@
 /**
  * A location on a tile map. Used for pathfinding, open list.
  */
-struct Location
+struct Location final
 {
     /**
      * Constructor.
@@ -73,7 +73,7 @@ struct Location
     MetaTile *tile;
 };
 
-class ActorFunctuator
+class ActorFunctuator final
 {
     public:
         bool operator()(const Actor *const a, const Actor *const b) const

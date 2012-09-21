@@ -35,6 +35,8 @@
 #include <list>
 #include <string>
 
+#include "localconsts.h"
+
 const unsigned int CACHES_NUMBER = 256;
 
 class SDLTextChunk;
@@ -44,7 +46,7 @@ class SDLTextChunk;
  *
  * <b>NOTE:</b> This class initializes SDL_ttf as necessary.
  */
-class SDLFont : public gcn::Font
+class SDLFont final : public gcn::Font
 {
     public:
         /**

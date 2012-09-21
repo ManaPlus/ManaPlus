@@ -30,7 +30,7 @@ class Channel;
 /**
  * A tab for whispers from a single player.
  */
-class WhisperTab : public ChatTab
+class WhisperTab final : public ChatTab
 {
     public:
         const std::string &getNick() const

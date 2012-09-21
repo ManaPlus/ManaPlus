@@ -33,7 +33,7 @@
  *
  * This container places it's contents veritcally.
  */
-class VertContainer : public Container, public gcn::WidgetListener
+class VertContainer final : public Container, public gcn::WidgetListener
 {
     public:
         VertContainer(const int verticalItemSize, const bool resizable = true,

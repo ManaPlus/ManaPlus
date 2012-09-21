@@ -84,7 +84,7 @@ class Text
         static ImageRect mBubble;   /**< Speech bubble graphic */
 };
 
-class FlashText : public Text
+class FlashText final : public Text
 {
     public:
         FlashText(const std::string &text, const int x, const int y,

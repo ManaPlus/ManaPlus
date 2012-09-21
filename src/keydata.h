@@ -29,7 +29,7 @@
 
 typedef bool (*ActionFuncPtr) (const InputEvent &event);
 
-struct KeyData
+struct KeyData final
 {
     const char *configField;
     int defaultType1;

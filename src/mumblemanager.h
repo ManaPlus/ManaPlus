@@ -13,6 +13,8 @@
 #include <string>
 #include <stdint.h>
 
+#include "localconsts.h"
+
 struct LinkedMem
 {
     uint32_t uiVersion;
@@ -30,7 +32,7 @@ struct LinkedMem
     wchar_t description[2048];
 };
 
-class MumbleManager
+class MumbleManager final
 {
     public:
         MumbleManager();

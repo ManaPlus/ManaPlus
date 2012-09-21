@@ -51,7 +51,7 @@
 
 #include "debug.h"
 
-class IconsModal : public gcn::ListModel
+class IconsModal final : public gcn::ListModel
 {
 public:
     IconsModal()
@@ -120,7 +120,7 @@ const char *MAGIC_SCHOOL_TEXT[6] =
     N_("Astral Magic")
 };
 
-class TargetTypeModel : public gcn::ListModel
+class TargetTypeModel final : public gcn::ListModel
 {
 public:
     virtual ~TargetTypeModel()
@@ -140,7 +140,7 @@ public:
     }
 };
 
-class MagicSchoolModel : public gcn::ListModel
+class MagicSchoolModel final : public gcn::ListModel
 {
 public:
     virtual ~MagicSchoolModel()

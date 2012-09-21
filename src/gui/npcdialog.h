@@ -55,8 +55,8 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class NpcDialog : public Window, public gcn::ActionListener,
-                  public ExtendedListModel, public ConfigListener
+class NpcDialog final : public Window, public gcn::ActionListener,
+                        public ExtendedListModel, public ConfigListener
 {
     public:
         /**

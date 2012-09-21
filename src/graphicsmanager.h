@@ -24,11 +24,13 @@
 #include <set>
 #include <string>
 
+#include "localconsts.h"
+
 class Graphics;
 
 struct FBOInfo;
 
-class GraphicsManager
+class GraphicsManager final
 {
     public:
         GraphicsManager();

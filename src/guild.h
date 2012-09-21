@@ -36,7 +36,7 @@ class Guild;
 
 typedef std::map<unsigned, std::string> PositionsMap;
 
-class GuildMember : public Avatar
+class GuildMember final : public Avatar
 {
 public:
     Guild *getGuild() const
@@ -62,7 +62,7 @@ protected:
     int mPos;
 };
 
-class Guild : public AvatarListModel
+class Guild final : public AvatarListModel
 {
 public:
     virtual ~Guild();

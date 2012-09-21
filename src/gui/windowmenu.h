@@ -44,11 +44,11 @@ class TextPopup;
  *
  * \ingroup Interface
  */
-class WindowMenu : public Container,
-                   public ConfigListener,
-                   public gcn::ActionListener,
-                   public gcn::SelectionListener,
-                   public gcn::MouseListener
+class WindowMenu final : public Container,
+                         public ConfigListener,
+                         public gcn::ActionListener,
+                         public gcn::SelectionListener,
+                         public gcn::MouseListener
 {
     public:
         WindowMenu();

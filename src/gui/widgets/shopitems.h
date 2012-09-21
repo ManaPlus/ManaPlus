@@ -28,6 +28,8 @@
 #include <string>
 #include <vector>
 
+#include "localconsts.h"
+
 class ShopItem;
 
 /**
@@ -39,7 +41,7 @@ class ShopItem;
  *
  * This functionality can be enabled in the constructor.
  */
-class ShopItems : public gcn::ListModel
+class ShopItems final : public gcn::ListModel
 {
     public:
         /**

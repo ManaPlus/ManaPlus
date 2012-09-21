@@ -25,7 +25,7 @@
 #include <guichan/mouseevent.hpp>
 #include <guichan/widget.hpp>
 
-class MouseEvent : public gcn::MouseEvent
+class MouseEvent final : public gcn::MouseEvent
 {
     public:
         MouseEvent(gcn::Widget* source, bool shiftPressed,

@@ -47,9 +47,9 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class StatusWindow : public Window,
-                     public gcn::ActionListener,
-                     public Listener
+class StatusWindow final : public Window,
+                           public gcn::ActionListener,
+                           public Listener
 {
     public:
         /**

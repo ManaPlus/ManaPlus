@@ -52,7 +52,7 @@ const char* ACTION_HELP_FONT = "help font";
 const char* ACTION_SECURE_FONT = "secure font";
 const char* ACTION_JAPAN_FONT = "japan font";
 
-class ThemesModel : public NamesModel
+class ThemesModel final : public NamesModel
 {
 public:
     ThemesModel() :
@@ -66,7 +66,7 @@ public:
     { }
 };
 
-class FontsModel : public NamesModel
+class FontsModel final : public NamesModel
 {
 public:
     FontsModel() :
@@ -94,7 +94,7 @@ const char *SIZE_NAME[maxFontSizes] =
     N_("Very huge (19)"),
 };
 
-class FontSizeChoiceListModel : public gcn::ListModel
+class FontSizeChoiceListModel final : public gcn::ListModel
 {
 public:
     virtual ~FontSizeChoiceListModel()
@@ -112,10 +112,9 @@ public:
     }
 };
 
-struct Language
+struct Language final
 {
     std::string name;
-
     std::string value;
 };
 
@@ -141,7 +140,7 @@ const Language LANG_NAME[langs_count] =
     {N_("Spanish (Castilian)"), "es_ES"}
 };
 
-class LangListModel : public gcn::ListModel
+class LangListModel final : public gcn::ListModel
 {
 public:
     virtual ~LangListModel()

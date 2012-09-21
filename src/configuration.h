@@ -222,7 +222,7 @@ class ConfigurationObject
  *
  * \ingroup CORE
  */
-class Configuration : public ConfigurationObject
+class Configuration final : public ConfigurationObject
 {
     public:
         Configuration();

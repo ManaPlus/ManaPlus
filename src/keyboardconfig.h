@@ -34,7 +34,7 @@
 
 union SDL_Event;
 
-class KeyboardConfig
+class KeyboardConfig final
 {
     public:
         KeyboardConfig();

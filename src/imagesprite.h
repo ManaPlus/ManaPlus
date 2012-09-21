@@ -28,7 +28,7 @@
 
 class Graphics;
 
-class ImageSprite : public Sprite
+class ImageSprite final : public Sprite
 {
 public:
     ImageSprite(Image *const image);

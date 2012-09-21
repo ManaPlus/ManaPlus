@@ -25,7 +25,7 @@
 
 #include <guichan/widget.hpp>
 
-class RadioGroup : public WidgetGroup
+class RadioGroup final : public WidgetGroup
 {
     public:
         RadioGroup(const std::string &group, const int height,

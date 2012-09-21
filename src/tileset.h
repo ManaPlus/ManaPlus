@@ -30,7 +30,7 @@
 /**
  * A tileset, which is basically just an image set but it stores a firstgid.
  */
-class Tileset : public ImageSet
+class Tileset final : public ImageSet
 {
     public:
         /**

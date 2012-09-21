@@ -26,10 +26,12 @@
 #include <iostream>
 #include <list>
 
+#include "localconsts.h"
+
 /**
  * A position along a being's path.
  */
-struct Position
+struct Position final
 {
     Position(const int x0, const int y0) :
         x(x0), y(y0)

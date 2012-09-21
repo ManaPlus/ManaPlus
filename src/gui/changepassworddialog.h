@@ -42,7 +42,7 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class ChangePasswordDialog : public Window, public gcn::ActionListener
+class ChangePasswordDialog final : public Window, public gcn::ActionListener
 {
     public:
         /**

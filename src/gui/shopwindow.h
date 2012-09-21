@@ -48,11 +48,10 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class ShopWindow : public Window, public gcn::ActionListener,
-                   public gcn::SelectionListener
+class ShopWindow final : public Window, public gcn::ActionListener,
+                         public gcn::SelectionListener
 {
     public:
-
         enum ShopMode
         {
             BUY = 0,

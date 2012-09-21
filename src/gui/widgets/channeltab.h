@@ -30,7 +30,7 @@ class Channel;
 /**
  * A tab for a chat channel.
  */
-class ChannelTab : public ChatTab
+class ChannelTab final : public ChatTab
 {
     public:
 

@@ -56,7 +56,7 @@ typedef AmbientLayerVector::const_iterator AmbientLayerVectorCIter;
  * This is information that doesn't need to be repeated for each tile in each
  * layer of the map.
  */
-struct MetaTile
+struct MetaTile final
 {
     /**
      * Constructor.
@@ -78,7 +78,7 @@ struct MetaTile
 /**
  * Animation cycle of a tile image which changes the map accordingly.
  */
-class TileAnimation
+class TileAnimation final
 {
     public:
         TileAnimation(Animation *const ani);
@@ -102,7 +102,7 @@ typedef TileAnimationMap::const_iterator TileAnimationMapCIter;
 /**
  * A tile map.
  */
-class Map : public Properties, public ConfigListener
+class Map final : public Properties, public ConfigListener
 {
     public:
         enum BlockType

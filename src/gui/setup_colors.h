@@ -41,8 +41,8 @@ namespace gcn
     class Slider;
 }
 
-class Setup_Colors : public SetupTab,
-                     public gcn::SelectionListener
+class Setup_Colors final : public SetupTab,
+                           public gcn::SelectionListener
 {
     public:
         Setup_Colors();

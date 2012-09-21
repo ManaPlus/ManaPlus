@@ -49,7 +49,7 @@ namespace gcn
     class Button;
 }
 
-struct EquipmentBox
+struct EquipmentBox final
 {
     EquipmentBox(const int x0, const int y0, Image *const img) :
         x(x0), y(y0), image(img)
@@ -65,7 +65,7 @@ struct EquipmentBox
  *
  * \ingroup Interface
  */
-class EquipmentWindow : public Window, public gcn::ActionListener
+class EquipmentWindow final : public Window, public gcn::ActionListener
 {
     public:
         /**

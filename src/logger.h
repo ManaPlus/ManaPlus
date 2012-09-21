@@ -26,6 +26,8 @@
 #include "main.h"
 #include <fstream>
 
+#include "localconsts.h"
+
 class ChatWindow;
 
 #ifdef ENABLEDEBUGLOG
@@ -37,7 +39,7 @@ class ChatWindow;
 /**
  * The Log Class : Useful to write debug or info messages
  */
-class Logger
+class Logger final
 {
     public:
         /**

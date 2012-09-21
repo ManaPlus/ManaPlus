@@ -37,7 +37,7 @@ class ImageVertexes;
 
 typedef std::vector<ImageVertexes*> MepRowImages;
 
-class MapRowVertexes
+class MapRowVertexes final
 {
     public:
         MapRowVertexes()
@@ -50,7 +50,7 @@ class MapRowVertexes
         MepRowImages images;
 };
 
-class MapObject
+class MapObject final
 {
     public:
         MapObject(const int type0, const std::string &data0) :
@@ -62,7 +62,7 @@ class MapObject
         std::string data;
 };
 
-class MapObjectList
+class MapObjectList final
 {
     public:
         std::vector<MapObject> objects;
@@ -72,7 +72,7 @@ class MapObjectList
  * A map layer. Stores a grid of tiles and their offset, and implements layer
  * rendering.
  */
-class MapLayer: public ConfigListener
+class MapLayer final: public ConfigListener
 {
     public:
         friend class Map;
@@ -177,7 +177,7 @@ class MapLayer: public ConfigListener
         MapRows mTempRows;
 };
 
-class SpecialLayer
+class SpecialLayer final
 {
     public:
         friend class Map;
@@ -211,7 +211,7 @@ class SpecialLayer
         MapItem **mTiles;
 };
 
-class MapItem
+class MapItem final
 {
     public:
         friend class Map;
@@ -284,7 +284,7 @@ class MapItem
         int mY;
 };
 
-class ObjectsLayer
+class ObjectsLayer final
 {
     public:
         ObjectsLayer(const unsigned width, const unsigned height);

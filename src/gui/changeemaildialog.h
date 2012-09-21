@@ -42,7 +42,7 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class ChangeEmailDialog : public Window, public gcn::ActionListener
+class ChangeEmailDialog final : public Window, public gcn::ActionListener
 {
     public:
         /**

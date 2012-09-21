@@ -71,7 +71,7 @@ enum Gender
 };
 
 
-class BeingEquipBackend : public Equipment::Backend
+class BeingEquipBackend final : public Equipment::Backend
 {
     public:
         BeingEquipBackend(Being *const being);

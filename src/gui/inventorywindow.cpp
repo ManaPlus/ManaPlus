@@ -69,7 +69,7 @@ const char *SORT_NAME[6] =
     N_("by type")
 };
 
-class SortListModel : public gcn::ListModel
+class SortListModel final : public gcn::ListModel
 {
 public:
     virtual ~SortListModel()

@@ -40,7 +40,7 @@ class SkillModel;
 class Tab;
 class TabbedArea;
 
-struct SkillInfo
+struct SkillInfo final
 {
     unsigned short id;
     std::string name;
@@ -81,7 +81,7 @@ typedef std::vector<SkillInfo*> SkillList;
  *
  * \ingroup Interface
  */
-class SkillDialog : public Window, public gcn::ActionListener
+class SkillDialog final : public Window, public gcn::ActionListener
 {
     public:
         SkillDialog();

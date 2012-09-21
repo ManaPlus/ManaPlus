@@ -36,7 +36,7 @@
 class TabStrip;
 struct SetupActionData;
 
-class Setup_Input : public SetupTab
+class Setup_Input final : public SetupTab
 {
     public:
         /**

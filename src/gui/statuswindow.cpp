@@ -87,7 +87,7 @@ class AttrDisplay : public Container
         Label *mValue;
 };
 
-class DerDisplay : public AttrDisplay
+class DerDisplay final : public AttrDisplay
 {
     public:
         DerDisplay(const int id, const std::string &name);
@@ -96,7 +96,7 @@ class DerDisplay : public AttrDisplay
         { return DERIVED; }
 };
 
-class ChangeDisplay : public AttrDisplay, gcn::ActionListener
+class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
 {
     public:
         ChangeDisplay(const int id, const std::string &name);

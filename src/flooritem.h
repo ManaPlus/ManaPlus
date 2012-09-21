@@ -30,7 +30,7 @@ class ItemInfo;
 /**
  * An item lying on the floor.
  */
-class FloorItem : public ActorSprite
+class FloorItem final : public ActorSprite
 {
     public:
         /**

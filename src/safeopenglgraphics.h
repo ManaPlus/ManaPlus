@@ -36,7 +36,7 @@
 #include <SDL_opengl.h>
 #include <GL/glext.h>
 
-class SafeOpenGLGraphics : public Graphics
+class SafeOpenGLGraphics final : public Graphics
 {
     public:
         SafeOpenGLGraphics();

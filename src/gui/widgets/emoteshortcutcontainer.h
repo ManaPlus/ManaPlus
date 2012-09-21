@@ -37,7 +37,7 @@ class TextPopup;
  *
  * \ingroup GUI
  */
-class EmoteShortcutContainer : public ShortcutContainer
+class EmoteShortcutContainer final : public ShortcutContainer
 {
     public:
         /**

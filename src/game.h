@@ -48,7 +48,7 @@ struct LastKey
  * The main class responsible for running the game. The game starts after you
  * have selected your character.
  */
-class Game
+class Game final
 {
     public:
         /**

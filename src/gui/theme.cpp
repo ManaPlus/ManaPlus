@@ -337,7 +337,7 @@ void Theme::optionChanged(const std::string &)
     updateAlpha();
 }
 
-struct SkinParameter
+struct SkinParameter final
 {
     int index;
     std::string name;
@@ -390,7 +390,7 @@ static const SkinParameter imageParam[] =
     {3, "stickyImageDown"},
 };
 
-struct SkinHelper
+struct SkinHelper final
 {
     std::string partType;
     int xPos;

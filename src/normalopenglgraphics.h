@@ -39,7 +39,7 @@
 
 #include <set>
 
-class NormalOpenGLGraphics : public Graphics
+class NormalOpenGLGraphics final : public Graphics
 {
     public:
         NormalOpenGLGraphics();

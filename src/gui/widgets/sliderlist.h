@@ -32,9 +32,9 @@
 class Button;
 class Label;
 
-class SliderList : public Container,
-                   public gcn::ActionListener,
-                   public gcn::MouseListener
+class SliderList final : public Container,
+                         public gcn::ActionListener,
+                         public gcn::MouseListener
 {
     public:
         SliderList(gcn::ListModel *const listModel = nullptr,

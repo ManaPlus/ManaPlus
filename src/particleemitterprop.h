@@ -23,6 +23,8 @@
 #include <cmath>
 #include <cstdlib>
 
+#include "localconsts.h"
+
 /**
  * Returns a random numeric value that is larger than or equal min and smaller
  * than max
@@ -37,7 +39,7 @@ enum ChangeFunc
     FUNC_SQUARE
 };
 
-template <typename T> struct ParticleEmitterProp
+template <typename T> struct ParticleEmitterProp final
 {
     ParticleEmitterProp():
         minVal(0), maxVal(0), changeFunc(FUNC_NONE),

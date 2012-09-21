@@ -31,7 +31,7 @@
 /**
  * Class controlling the game's color palette.
  */
-class UserPalette : public Palette, public gcn::ListModel
+class UserPalette final : public Palette, public gcn::ListModel
 {
     public:
         /** List of all colors that are configurable. */

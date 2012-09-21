@@ -153,7 +153,7 @@ struct PacketLimit
  * The core part of the client. This class initializes all subsystems, runs
  * the event loop, and shuts everything down again.
  */
-class Client : public ConfigListener, public gcn::ActionListener
+class Client final : public ConfigListener, public gcn::ActionListener
 {
 public:
     /**

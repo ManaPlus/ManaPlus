@@ -29,7 +29,7 @@
  * Class for text rendering. Used by the TextParticle, the Text and FlashText
  * objects and the Preview in the color dialog.
  */
-class TextRenderer
+class TextRenderer final
 {
     public:
     /**

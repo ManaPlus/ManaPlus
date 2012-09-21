@@ -37,7 +37,7 @@ namespace gcn
     class Label;
 }
 
-class Setup_Joystick : public SetupTab
+class Setup_Joystick final : public SetupTab
 {
     public:
         Setup_Joystick();

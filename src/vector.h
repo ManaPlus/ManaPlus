@@ -27,11 +27,13 @@
 
 #include <iostream>
 
+#include "localconsts.h"
+
 /**
  * Vector class. Represents either a 3D point in space, a velocity or a force.
  * Provides several convenient operator overloads.
  */
-class Vector
+class Vector final
 {
     public:
         /**

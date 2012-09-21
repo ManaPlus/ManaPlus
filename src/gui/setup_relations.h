@@ -43,8 +43,8 @@ namespace gcn
     class ScrollArea;
 }
 
-class Setup_Relations : public SetupTab,
-                        public PlayerRelationsListener
+class Setup_Relations final : public SetupTab,
+                              public PlayerRelationsListener
 {
 public:
     Setup_Relations();

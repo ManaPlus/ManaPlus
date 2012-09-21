@@ -63,7 +63,7 @@
 #endif
 
 
-class NameFunctuator
+class NameFunctuator final
 {
     public:
         bool operator()(const OnlinePlayer *left,

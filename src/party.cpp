@@ -27,7 +27,7 @@
 
 #include "utils/stringutils.h"
 
-class SortPartyFunctor
+class SortPartyFunctor final
 {
     public:
         bool operator() (const PartyMember *const p1,

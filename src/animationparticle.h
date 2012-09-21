@@ -31,7 +31,7 @@ class Animation;
 class Map;
 class SimpleAnimation;
 
-class AnimationParticle : public ImageParticle
+class AnimationParticle final : public ImageParticle
 {
     public:
         AnimationParticle(Map *const map, Animation *const animation);

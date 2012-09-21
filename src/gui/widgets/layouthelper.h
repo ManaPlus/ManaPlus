@@ -32,7 +32,7 @@
  * will register itself as a widget listener and relayout the widgets in the
  * container dynamically on resize.
  */
-class LayoutHelper : public gcn::WidgetListener
+class LayoutHelper final : public gcn::WidgetListener
 {
     public:
         /**

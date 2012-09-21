@@ -27,11 +27,13 @@
 
 #include <stack>
 
+#include "localconsts.h"
+
 /**
  * Represents an item in a shop inventory. It can store quantity and inventory
  * indices of duplicate entries in the shop as well.
  */
-class ShopItem : public Item
+class ShopItem final : public Item
 {
     public:
         /**

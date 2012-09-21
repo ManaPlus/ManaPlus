@@ -39,7 +39,7 @@ class TabbedArea;
 
 class SpecialEntry;
 
-class SpecialsWindow : public Window, public gcn::ActionListener
+class SpecialsWindow final : public Window, public gcn::ActionListener
 {
     public:
         SpecialsWindow();

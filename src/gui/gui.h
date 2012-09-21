@@ -44,7 +44,7 @@ class SDLInput;
  *
  * \ingroup GUI
  */
-class Gui : public gcn::Gui
+class Gui final : public gcn::Gui
 {
     public:
         /**

@@ -44,10 +44,10 @@ class GuiTableActionListener;
  *
  * \ingroup GUI
  */
-class GuiTable : public gcn::Widget,
-                 public gcn::MouseListener,
-                 public gcn::KeyListener,
-                 public TableModelListener
+class GuiTable final : public gcn::Widget,
+                       public gcn::MouseListener,
+                       public gcn::KeyListener,
+                       public TableModelListener
 {
     // so that the action listener can call distributeActionEvent
     friend class GuiTableActionListener;

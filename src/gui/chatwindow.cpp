@@ -73,7 +73,7 @@
 /**
  * The chat input hides when it loses focus. It is also invisible by default.
  */
-class ChatInput : public TextField, public gcn::FocusListener
+class ChatInput final : public TextField, public gcn::FocusListener
 {
     public:
         ChatInput(ChatWindow *const window, TabbedArea *const tabs):
@@ -131,7 +131,7 @@ const char *COLOR_NAME[14] =
 };
 
 
-class ColorListModel : public gcn::ListModel
+class ColorListModel final : public gcn::ListModel
 {
 public:
     virtual ~ColorListModel()

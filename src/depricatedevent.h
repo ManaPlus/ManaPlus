@@ -26,6 +26,8 @@
 #include <set>
 #include <string>
 
+#include "localconsts.h"
+
 enum Channels
 {
     CHANNEL_ACTORSPRITE = 0,
@@ -115,7 +117,7 @@ DepricatedEvent event(EVENT_SERVERNOTICE); \
 event.setString("message", message); \
 DepricatedEvent::trigger(CHANNEL_NOTICES, event); }
 
-class DepricatedEvent
+class DepricatedEvent final
 {
     public:
         // String passed can be retivered with getName()

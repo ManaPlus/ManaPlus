@@ -32,7 +32,7 @@ class Image;
  *
  * \ingroup GUI
  */
-class Icon : public gcn::Widget
+class Icon final : public gcn::Widget
 {
     public:
         /**

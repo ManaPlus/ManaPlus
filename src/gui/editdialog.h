@@ -39,7 +39,7 @@ class TextField;
  *
  * \ingroup GUI
  */
-class EditDialog : public Window, public gcn::ActionListener
+class EditDialog final : public Window, public gcn::ActionListener
 {
     public:
         /**

@@ -24,6 +24,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 class VariableData
 {
     public:
@@ -42,7 +44,7 @@ class VariableData
         virtual int getType() const = 0;
 };
 
-class IntData : public VariableData
+class IntData final : public VariableData
 {
     public:
         IntData(const int value) :
@@ -59,7 +61,7 @@ class IntData : public VariableData
         int mData;
 };
 
-class StringData : public VariableData
+class StringData final : public VariableData
 {
     public:
         StringData(const std::string &value) :
@@ -76,7 +78,7 @@ class StringData : public VariableData
         std::string mData;
 };
 
-class FloatData : public VariableData
+class FloatData final : public VariableData
 {
     public:
         FloatData(const double value) :
@@ -93,7 +95,7 @@ class FloatData : public VariableData
         double mData;
 };
 
-class BoolData : public VariableData
+class BoolData final : public VariableData
 {
     public:
         BoolData(const bool value) :

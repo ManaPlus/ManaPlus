@@ -33,7 +33,7 @@ const int SPELL_MIN_ID = 100000;
 const unsigned int SPELL_SHORTCUT_ITEMS = 49;
 const unsigned int SPELL_SHORTCUT_TABS = 5;
 
-class SpellManager
+class SpellManager final
 {
     public:
         SpellManager();

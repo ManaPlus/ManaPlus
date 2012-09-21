@@ -47,8 +47,8 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class WorldSelectDialog : public Window, public gcn::ActionListener,
-                          public gcn::KeyListener
+class WorldSelectDialog final : public Window, public gcn::ActionListener,
+                                public gcn::KeyListener
 {
     public:
         /**

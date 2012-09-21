@@ -43,13 +43,13 @@
 #include <list>
 #include <vector>
 
-struct DoubleRect
+struct DoubleRect final
 {
     SDL_Rect src;
     SDL_Rect dst;
 };
 
-class SDLGraphicsVertexes
+class SDLGraphicsVertexes final
 {
     public:
         SDLGraphicsVertexes();
@@ -60,11 +60,11 @@ class SDLGraphicsVertexes
 };
 
 #ifdef USE_OPENGL
-class SafeOpenGLGraphicsVertexes
+class SafeOpenGLGraphicsVertexes final
 {
 };
 
-class NormalOpenGLGraphicsVertexes
+class NormalOpenGLGraphicsVertexes final
 {
     public:
         NormalOpenGLGraphicsVertexes();
@@ -117,7 +117,7 @@ class NormalOpenGLGraphicsVertexes
 
 typedef std::vector<DoubleRect*> DoubleRects;
 
-class ImageVertexes
+class ImageVertexes final
 {
     public:
         ImageVertexes();
@@ -132,7 +132,7 @@ class ImageVertexes
 #endif
 };
 
-class GraphicsVertexes
+class GraphicsVertexes final
 {
     public:
         GraphicsVertexes();

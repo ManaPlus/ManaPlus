@@ -29,7 +29,7 @@
 
 #include <guichan/actionlistener.hpp>
 
-class Setup_Audio : public SetupTabScroll
+class Setup_Audio final : public SetupTabScroll
 {
     public:
         Setup_Audio();

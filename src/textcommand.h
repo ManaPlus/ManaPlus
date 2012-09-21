@@ -25,6 +25,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 const unsigned int MAGIC_START_ID = 340;
 
 class Image;
@@ -55,7 +57,7 @@ enum TextCommandType
 /**
  * Represents one or more instances of a certain item type.
  */
-class TextCommand
+class TextCommand final
 {
     public:
         /**

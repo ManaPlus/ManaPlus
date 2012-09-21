@@ -40,7 +40,7 @@ namespace gcn
 /**
  * A popup that displays information about an item.
  */
-class SpellPopup : public Popup
+class SpellPopup final : public Popup
 {
     public:
         /**

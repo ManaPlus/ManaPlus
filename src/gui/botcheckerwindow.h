@@ -31,7 +31,7 @@
 
 #include <vector>
 
-struct BOTCHK
+struct BOTCHK final
 {
     short id;      /**< Index into "botchecker_db" array */
     short lv, sp;
@@ -47,8 +47,9 @@ namespace gcn
     class Button;
 }
 
-class BotCheckerWindow : public Window, public gcn::ActionListener,
-                         public ConfigListener
+class BotCheckerWindow final : public Window,
+                               public gcn::ActionListener,
+                               public ConfigListener
 {
     public:
         friend class UsersTableModel;

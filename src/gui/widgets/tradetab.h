@@ -28,7 +28,7 @@
 /**
  * A tab for a party chat channel.
  */
-class TradeTab : public ChatTab
+class TradeTab final : public ChatTab
 {
     public:
         TradeTab();

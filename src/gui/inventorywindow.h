@@ -55,12 +55,12 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class InventoryWindow : public Window,
-                        public gcn::ActionListener,
-                        public gcn::KeyListener,
-                        public gcn::SelectionListener,
-                        public InventoryListener,
-                        public Listener
+class InventoryWindow final : public Window,
+                              public gcn::ActionListener,
+                              public gcn::KeyListener,
+                              public gcn::SelectionListener,
+                              public InventoryListener,
+                              public Listener
 {
     public:
         /**

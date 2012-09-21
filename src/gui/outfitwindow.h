@@ -42,7 +42,7 @@ class CheckBox;
 class Item;
 class Label;
 
-class OutfitWindow : public Window, private gcn::ActionListener
+class OutfitWindow final : public Window, private gcn::ActionListener
 {
     public:
         /**

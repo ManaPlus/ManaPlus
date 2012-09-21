@@ -33,7 +33,7 @@ typedef std::set<ActorSprite*> ActorSprites;
 typedef ActorSprites::iterator ActorSpritesIterator;
 typedef ActorSprites::const_iterator ActorSpritesConstIterator;
 
-class ActorSpriteManager: public ConfigListener
+class ActorSpriteManager final: public ConfigListener
 {
     public:
         ActorSpriteManager();

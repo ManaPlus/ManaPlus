@@ -129,7 +129,7 @@ class SetupItem : public gcn::ActionListener
         int mValueType;
 };
 
-class SetupItemCheckBox : public SetupItem
+class SetupItemCheckBox final : public SetupItem
 {
     public:
         SetupItemCheckBox(std::string text, std::string description,
@@ -153,7 +153,7 @@ class SetupItemCheckBox : public SetupItem
         CheckBox *mCheckBox;
 };
 
-class SetupItemTextField : public SetupItem
+class SetupItemTextField final : public SetupItem
 {
     public:
         SetupItemTextField(std::string text, std::string description,
@@ -186,7 +186,7 @@ class SetupItemTextField : public SetupItem
         EditDialog *mEditDialog;
 };
 
-class SetupItemIntTextField : public SetupItem
+class SetupItemIntTextField final : public SetupItem
 {
     public:
         SetupItemIntTextField(std::string text, std::string description,
@@ -225,7 +225,7 @@ class SetupItemIntTextField : public SetupItem
         EditDialog *mEditDialog;
 };
 
-class SetupItemLabel : public SetupItem
+class SetupItemLabel final : public SetupItem
 {
     public:
         SetupItemLabel(std::string text, std::string description,
@@ -249,7 +249,7 @@ class SetupItemLabel : public SetupItem
         bool mIsSeparator;
 };
 
-class SetupItemDropDown : public SetupItem
+class SetupItemDropDown final : public SetupItem
 {
     public:
         SetupItemDropDown(std::string text, std::string description,
@@ -277,7 +277,7 @@ class SetupItemDropDown : public SetupItem
         DropDown *mDropDown;
 };
 
-class SetupItemSlider : public SetupItem
+class SetupItemSlider final : public SetupItem
 {
     public:
         SetupItemSlider(std::string text, std::string description,
@@ -323,7 +323,7 @@ typedef std::vector<std::string> SetupItemNames;
 typedef SetupItemNames::iterator SetupItemNamesIter;
 typedef SetupItemNames::const_iterator SetupItemNamesConstIter;
 
-class SetupItemSlider2 : public SetupItem
+class SetupItemSlider2 final : public SetupItem
 {
     public:
         SetupItemSlider2(std::string text, std::string description,
@@ -413,7 +413,7 @@ class SetupItemSliderList : public SetupItem
         bool mOnTheFly;
 };
 
-class SetupItemSound : public SetupItemSliderList
+class SetupItemSound final : public SetupItemSliderList
 {
     public:
         SetupItemSound(std::string text, std::string description,

@@ -46,7 +46,7 @@ extern WorldInfo **server_info;
 /**
  * The list model for the server list.
  */
-class WorldListModel : public gcn::ListModel
+class WorldListModel final : public gcn::ListModel
 {
     public:
         WorldListModel(Worlds worlds):

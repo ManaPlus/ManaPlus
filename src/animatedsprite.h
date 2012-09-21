@@ -35,7 +35,7 @@ struct Frame;
 /**
  * Animates a sprite by adding playback state.
  */
-class AnimatedSprite : public Sprite
+class AnimatedSprite final : public Sprite
 {
     public:
         /**

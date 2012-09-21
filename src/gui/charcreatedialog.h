@@ -46,9 +46,9 @@ namespace gcn
  *
  * \ingroup Interface
  */
-class CharCreateDialog : public Window,
-                         public gcn::ActionListener,
-                         public gcn::KeyListener
+class CharCreateDialog final : public Window,
+                               public gcn::ActionListener,
+                               public gcn::KeyListener
 {
     public:
         /**

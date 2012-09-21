@@ -50,7 +50,7 @@ const int setupGroups = 9;
  *
  * \ingroup Interface
  */
-class KeyListModel : public gcn::ListModel
+class KeyListModel final : public gcn::ListModel
 {
     public:
         KeyListModel() :

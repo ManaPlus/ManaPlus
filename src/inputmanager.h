@@ -51,7 +51,7 @@ enum KeyTypes
     INPUT_JOYSTICK = 3
 };
 
-struct KeyItem
+struct KeyItem final
 {
     KeyItem() :
         type(-1), value(-1)
@@ -66,7 +66,7 @@ struct KeyItem
     int value;
 };
 
-struct KeyFunction
+struct KeyFunction final
 {
     KeyItem values[KeyFunctionSize];
 };
@@ -89,7 +89,7 @@ enum KeyCondition
     COND_GAME2 = 2 + 8 + 16 + 64
 };
 
-class InputManager
+class InputManager final
 {
     public:
         InputManager();

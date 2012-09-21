@@ -30,7 +30,7 @@
  *
  * \ingroup GUI
  */
-class Label : public gcn::Label
+class Label final : public gcn::Label
 {
     public:
         /**

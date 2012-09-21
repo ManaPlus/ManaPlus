@@ -30,7 +30,7 @@ class Image;
 /**
  * Guichan based RadioButton with custom look
  */
-class RadioButton : public gcn::RadioButton
+class RadioButton final : public gcn::RadioButton
 {
     public:
         /**

@@ -23,6 +23,8 @@
 #ifndef DROPSHORTCUT_H
 #define DROPSHORTCUT_H
 
+#include "localconsts.h"
+
 static const int DROP_SHORTCUT_ITEMS = 16;
 
 class Item;
@@ -30,7 +32,7 @@ class Item;
 /**
  * The class which keeps track of the item shortcuts.
  */
-class DropShortcut
+class DropShortcut final
 {
     public:
         /**

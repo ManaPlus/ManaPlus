@@ -47,7 +47,7 @@
 
 #include "debug.h"
 
-class ItemsModal : public gcn::ListModel
+class ItemsModal final : public gcn::ListModel
 {
 public:
     ItemsModal()

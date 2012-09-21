@@ -36,7 +36,7 @@ class TextCommand;
  *
  * \ingroup GUI
  */
-class SpellShortcutContainer : public ShortcutContainer
+class SpellShortcutContainer final : public ShortcutContainer
 {
     public:
         /**

@@ -45,7 +45,7 @@ typedef std::map<int, Stat> StatMap;
 /**
  * Backend for core player information.
  */
-struct PlayerInfoBackend
+struct PlayerInfoBackend final
 {
     IntMap mAttributes;
     StatMap mStats;
@@ -58,7 +58,7 @@ class Item;
 /**
  * Special information storage structure.
  */
-struct Special
+struct Special final
 {
     int currentMana;
     int neededMana;

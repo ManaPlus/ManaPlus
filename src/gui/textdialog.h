@@ -40,7 +40,7 @@ namespace gcn
  *
  * \ingroup GUI
  */
-class TextDialog : public Window, public gcn::ActionListener
+class TextDialog final : public Window, public gcn::ActionListener
 {
 public:
     /**

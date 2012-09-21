@@ -72,7 +72,7 @@ enum Own
 };
 
 /** One item in the chat log */
-struct CHATLOG
+struct CHATLOG final
 {
     std::string nick;
     std::string text;
@@ -84,11 +84,11 @@ struct CHATLOG
  *
  * \ingroup Interface
  */
-class ChatWindow : public Window,
-                   public gcn::ActionListener,
-                   public gcn::KeyListener,
-                   public Listener,
-                   public ConfigListener
+class ChatWindow final : public Window,
+                         public gcn::ActionListener,
+                         public gcn::KeyListener,
+                         public Listener,
+                         public ConfigListener
 {
     public:
         /**

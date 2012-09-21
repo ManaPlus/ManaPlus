@@ -34,7 +34,7 @@ class TabbedArea;
  *
  * \ingroup Interface
  */
-class ShortcutWindow : public Window
+class ShortcutWindow final : public Window
 {
     public:
         /**

@@ -43,7 +43,7 @@ class Map;
 class OkDialog;
 struct SkillInfo;
 
-class AwayListener : public gcn::ActionListener
+class AwayListener final : public gcn::ActionListener
 {
     public:
         void action(const gcn::ActionEvent &event);
@@ -66,8 +66,9 @@ enum
 /**
  * The local player character.
  */
-class LocalPlayer : public Being, public ActorSpriteListener,
-        public Listener
+class LocalPlayer final : public Being,
+                          public ActorSpriteListener,
+                          public Listener
 {
     public:
         /**

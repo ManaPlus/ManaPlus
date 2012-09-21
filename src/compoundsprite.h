@@ -31,7 +31,7 @@ class Image;
 
 typedef std::list <void*> VectorPointers;
 
-class CompoundItem
+class CompoundItem final
 {
     public:
         CompoundItem();

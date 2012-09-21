@@ -46,10 +46,10 @@ typedef HelpNames::const_iterator HelpNamesCIter;
 typedef std::map<std::string, HelpNames> HelpTagsMap;
 
 /**
- * The help dialog.
+ * The help window.
  */
-class HelpWindow : public Window, public LinkHandler,
-                   public gcn::ActionListener
+class HelpWindow final : public Window, public LinkHandler,
+                         public gcn::ActionListener
 {
     public:
         /**

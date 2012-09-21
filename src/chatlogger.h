@@ -26,7 +26,9 @@
 #include <fstream>
 #include <list>
 
-class ChatLogger
+#include "localconsts.h"
+
+class ChatLogger final
 {
     public:
         /**

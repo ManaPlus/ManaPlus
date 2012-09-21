@@ -158,7 +158,7 @@ void ActorSprite::setTargetType(const TargetCursorType type)
         mUsedTargetCursor = targetCursor[type][getTargetCursorSize()];
 }
 
-struct EffectDescription
+struct EffectDescription final
 {
     std::string mGFXEffect;
     std::string mSFXEffect;

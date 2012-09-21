@@ -35,7 +35,7 @@ class ItemPopup;
  *
  * \ingroup GUI
  */
-class ShopListBox : public ListBox
+class ShopListBox final : public ListBox
 {
     public:
         /**

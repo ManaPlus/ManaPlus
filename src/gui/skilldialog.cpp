@@ -60,7 +60,7 @@
 class SkillModel;
 class SkillEntry;
 
-class SkillModel : public gcn::ListModel
+class SkillModel final : public gcn::ListModel
 {
     public:
         int getNumberOfElements()
@@ -87,7 +87,7 @@ class SkillModel : public gcn::ListModel
         SkillList mVisibleSkills;
 };
 
-class SkillListBox : public ListBox
+class SkillListBox final : public ListBox
 {
     public:
         SkillListBox(SkillModel *const model):
@@ -184,7 +184,7 @@ class SkillListBox : public ListBox
         gcn::Color mTextColor;
 };
 
-class SkillTab : public Tab
+class SkillTab final : public Tab
 {
     public:
         SkillTab(const std::string &name, SkillListBox *const listBox) :

@@ -48,6 +48,8 @@
 #include "guichan/event.hpp"
 #include "guichan/platform.hpp"
 
+#include "localconsts.h"
+
 namespace gcn
 {
     class Widget;
@@ -58,7 +60,7 @@ namespace gcn
      * @author Olof Naessén
      * @since 0.8.0
      */
-    class GCN_CORE_DECLSPEC SelectionEvent: public Event
+    class GCN_CORE_DECLSPEC SelectionEvent final: public Event
     {
     public:
 

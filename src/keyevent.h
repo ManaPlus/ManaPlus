@@ -29,7 +29,7 @@
 
 #include <string>
 
-class KeyEvent : public gcn::KeyEvent
+class KeyEvent final : public gcn::KeyEvent
 {
     public:
         KeyEvent(gcn::Widget *const source,

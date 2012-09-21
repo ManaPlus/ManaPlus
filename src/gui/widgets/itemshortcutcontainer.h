@@ -37,7 +37,7 @@ class SpellPopup;
  *
  * \ingroup GUI
  */
-class ItemShortcutContainer : public ShortcutContainer
+class ItemShortcutContainer final : public ShortcutContainer
 {
     public:
         /**

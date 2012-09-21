@@ -27,12 +27,14 @@
 
 #include <list>
 
+#include "localconsts.h"
+
 /**
  * The focus handler. This focus handler does exactly the same as the Guichan
  * focus handler, but keeps a stack of modal widgets to be able to handle
  * multiple modal focus requests.
  */
-class FocusHandler : public gcn::FocusHandler
+class FocusHandler final : public gcn::FocusHandler
 {
     public:
         /**

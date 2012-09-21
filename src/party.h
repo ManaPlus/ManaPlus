@@ -32,7 +32,7 @@
 
 class Party;
 
-class PartyMember : public Avatar
+class PartyMember final : public Avatar
 {
 public:
     Party *getParty() const
@@ -53,7 +53,7 @@ protected:
     bool mLeader;
 };
 
-class Party : public AvatarListModel
+class Party final : public AvatarListModel
 {
 public:
 

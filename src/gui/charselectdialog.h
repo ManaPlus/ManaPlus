@@ -55,9 +55,9 @@ namespace Net
  *
  * \ingroup Interface
  */
-class CharSelectDialog : public Window,
-                         public gcn::ActionListener,
-                         public gcn::KeyListener
+class CharSelectDialog final : public Window,
+                               public gcn::ActionListener,
+                               public gcn::KeyListener
 {
     public:
         friend class CharDeleteConfirm;

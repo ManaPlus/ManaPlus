@@ -76,9 +76,9 @@ class TypeListModel : public gcn::ListModel
  *
  * \ingroup Interface
  */
-class EditServerDialog : public Window,
-                         public gcn::ActionListener,
-                         public gcn::KeyListener
+class EditServerDialog final : public Window,
+                               public gcn::ActionListener,
+                               public gcn::KeyListener
 {
     public:
         EditServerDialog(ServerDialog *const parent, ServerInfo server,

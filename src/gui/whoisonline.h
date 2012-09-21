@@ -46,7 +46,7 @@ namespace gcn
     class Button;
 }
 
-class OnlinePlayer
+class OnlinePlayer final
 {
     public:
         OnlinePlayer(const std::string &nick, const unsigned char status,
@@ -106,10 +106,10 @@ class OnlinePlayer
  *
  * \ingroup GUI
  */
-class WhoIsOnline : public Window,
-                    public LinkHandler,
-                    public gcn::ActionListener,
-                    public ConfigListener
+class WhoIsOnline final : public Window,
+                          public LinkHandler,
+                          public gcn::ActionListener,
+                          public ConfigListener
 {
 public:
     /**

@@ -42,7 +42,7 @@ class TextBox;
 class TextCommand;
 class TextField;
 
-class TextCommandEditor : public Window, public gcn::ActionListener
+class TextCommandEditor final : public Window, public gcn::ActionListener
 {
     public:
         /**

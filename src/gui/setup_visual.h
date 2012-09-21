@@ -24,7 +24,7 @@
 
 #include "gui/widgets/setupitem.h"
 
-class Setup_Visual : public SetupTabScroll
+class Setup_Visual final : public SetupTabScroll
 {
     public:
         Setup_Visual();

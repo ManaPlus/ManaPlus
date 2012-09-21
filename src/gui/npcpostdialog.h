@@ -30,7 +30,7 @@
 class TextBox;
 class TextField;
 
-class NpcPostDialog : public Window, public gcn::ActionListener
+class NpcPostDialog final : public Window, public gcn::ActionListener
 {
 public:
     /**

@@ -43,7 +43,7 @@ enum
  *
  * \ingroup GUI
  */
-class OkDialog : public Window, public gcn::ActionListener
+class OkDialog final : public Window, public gcn::ActionListener
 {
     public:
         /**

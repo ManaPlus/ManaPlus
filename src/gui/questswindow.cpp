@@ -45,7 +45,7 @@
 
 #include "debug.h"
 
-struct QuestItemText
+struct QuestItemText final
 {
     QuestItemText(std::string text0, const int type0) :
         text(text0), type(type0)
@@ -56,7 +56,7 @@ struct QuestItemText
     int type;
 };
 
-struct QuestItem
+struct QuestItem final
 {
     QuestItem() :
         var(0), completeFlag(-1)
@@ -72,7 +72,7 @@ struct QuestItem
     int completeFlag;
 };
 
-class QuestsModel : public ExtendedNamesModel
+class QuestsModel final : public ExtendedNamesModel
 {
     public:
         QuestsModel() :

@@ -49,7 +49,7 @@ class DebugTab : public Container
     private:
 };
 
-class MapDebugTab : public DebugTab
+class MapDebugTab final : public DebugTab
 {
     friend class DebugWindow;
 
@@ -73,7 +73,7 @@ class MapDebugTab : public DebugTab
         std::string mFPSText;
 };
 
-class TargetDebugTab : public DebugTab
+class TargetDebugTab final : public DebugTab
 {
     friend class DebugWindow;
 
@@ -95,7 +95,7 @@ class TargetDebugTab : public DebugTab
         Label *mCriticalHitLabel;
 };
 
-class NetDebugTab : public DebugTab
+class NetDebugTab final : public DebugTab
 {
     friend class DebugWindow;
 
@@ -115,7 +115,7 @@ class NetDebugTab : public DebugTab
  *
  * \ingroup Interface
  */
-class DebugWindow : public Window
+class DebugWindow final : public Window
 {
     public:
         /**

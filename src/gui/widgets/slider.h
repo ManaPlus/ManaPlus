@@ -33,7 +33,7 @@ class ImageRect;
  *
  * \ingroup GUI
  */
-class Slider : public gcn::Slider
+class Slider final : public gcn::Slider
 {
     public:
         /**

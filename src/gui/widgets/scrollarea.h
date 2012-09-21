@@ -39,7 +39,7 @@ class ImageRect;
  *
  * \ingroup GUI
  */
-class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
+class ScrollArea final : public gcn::ScrollArea, public gcn::WidgetListener
 {
     public:
         /**

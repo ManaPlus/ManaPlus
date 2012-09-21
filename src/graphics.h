@@ -52,7 +52,7 @@ static const int defaultScreenHeight = 600;
  * Sections 0, 2, 6 and 8 will remain as is. 1, 3, 4, 5 and 7 will be
  * repeated to fit the size of the widget.
  */
-class ImageRect
+class ImageRect final
 {
     public:
         enum ImagePosition

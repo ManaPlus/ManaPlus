@@ -30,7 +30,7 @@
 class IntTextField;
 class EditDialog;
 
-class Setup_Perfomance : public SetupTabScroll
+class Setup_Perfomance final : public SetupTabScroll
 {
     public:
         Setup_Perfomance();

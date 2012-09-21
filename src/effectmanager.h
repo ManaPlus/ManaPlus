@@ -27,9 +27,11 @@
 #include <string>
 #include <vector>
 
+#include "localconsts.h"
+
 class Being;
 
-class EffectManager
+class EffectManager final
 {
     public:
         struct EffectDescription

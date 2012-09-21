@@ -27,7 +27,9 @@
 #include <string>
 #include <vector>
 
-class AuctionManager
+#include "localconsts.h"
+
+class AuctionManager final
 {
     public:
         AuctionManager();

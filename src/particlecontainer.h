@@ -73,7 +73,7 @@ protected:
 /**
  * Linked list of particle effects.
  */
-class ParticleList : public ParticleContainer
+class ParticleList final : public ParticleContainer
 {
 public:
     ParticleList(ParticleContainer *const parent = nullptr,
@@ -101,7 +101,7 @@ protected:
 /**
  * Particle container with indexing facilities
  */
-class ParticleVector : public ParticleContainer
+class ParticleVector final : public ParticleContainer
 {
 public:
     ParticleVector(ParticleContainer *const parent = nullptr,

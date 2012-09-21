@@ -26,9 +26,11 @@
 #include <list>
 #include <string>
 
+#include "localconsts.h"
+
 class Channel;
 
-class ChannelManager
+class ChannelManager final
 {
 public:
     ChannelManager();

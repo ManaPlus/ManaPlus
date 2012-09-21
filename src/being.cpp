@@ -69,7 +69,7 @@
 
 const unsigned int CACHE_SIZE = 50;
 
-class BeingCacheEntry
+class BeingCacheEntry final
 {
     public:
         BeingCacheEntry(const int id):

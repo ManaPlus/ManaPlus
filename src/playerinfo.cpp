@@ -318,7 +318,7 @@ void updateAttrs()
     }
 }
 
-class PlayerInfoListener : private Listener
+class PlayerInfoListener final : private Listener
 {
 public:
     PlayerInfoListener()
