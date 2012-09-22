@@ -491,6 +491,8 @@ void Window::setVisible(bool visible, bool forceSticky)
     // Check if the window is off screen...
     if (visible)
         ensureOnScreen();
+    else
+        mResizeHandles = 0;
 
     if (isStickyButtonLock())
         gcn::Window::setVisible(visible);
