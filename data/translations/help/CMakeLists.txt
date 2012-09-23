@@ -3,6 +3,7 @@ SET(FILES
     es.po
     fr.po
     it.po
+    nl_BE.po
     pl.po
     pt_BR.po
     ru.po
