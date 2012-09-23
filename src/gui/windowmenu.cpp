@@ -239,10 +239,15 @@ void WindowMenu::addButton(const char *const text,
     add(btn);
     btn->setFocusable(false);
     if (!visible)
+    {
         btn->setVisible(false);
+    }
+    else
+    {
+        x += btn->getWidth() + 3;
+        h = btn->getHeight();
+    }
     mButtons.push_back(btn);
-    x += btn->getWidth() + 3;
-    h = btn->getHeight();
     mButtonNames[text] = btn;
 }
 
