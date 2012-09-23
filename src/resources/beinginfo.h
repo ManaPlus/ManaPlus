@@ -151,6 +151,18 @@ class BeingInfo
         bool isTargetSelection() const
         { return mTargetSelection; }
 
+        int getSortOffsetY()
+        { return mSortOffsetY; }
+
+        void setSortOffsetY(const int n)
+        { mSortOffsetY = n; }
+
+        int getDeadSortOffsetY()
+        { return mDeadSortOffsetY; }
+
+        void setDeadSortOffsetY(const int n)
+        { mDeadSortOffsetY = n; }
+
         static void clear();
 
     private:
@@ -166,6 +178,8 @@ class BeingInfo
         int mMaxHP;
         bool mStaticMaxHP;
         bool mTargetSelection;
+        int mSortOffsetY;
+        int mDeadSortOffsetY;
 };
 
 typedef std::map<int, BeingInfo*> BeingInfos;

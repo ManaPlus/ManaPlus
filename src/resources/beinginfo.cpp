@@ -43,7 +43,9 @@ BeingInfo::BeingInfo() :
     mTargetOffsetY(0),
     mMaxHP(0),
     mStaticMaxHP(false),
-    mTargetSelection(true)
+    mTargetSelection(true),
+    mSortOffsetY(0),
+    mDeadSortOffsetY(31)
 {
     SpriteDisplay display;
     display.sprites.push_back(SpriteReference::Empty);

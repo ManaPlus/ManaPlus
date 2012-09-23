@@ -85,6 +85,13 @@ void NPCDB::load()
 
         currentInfo->setTargetOffsetY(XML::getProperty(npcNode,
                                          "targetOffsetY", 0));
+
+        currentInfo->setSortOffsetY(XML::getProperty(npcNode,
+            "sortOffsetY", 0));
+
+        currentInfo->setDeadSortOffsetY(XML::getProperty(npcNode,
+            "deadSortOffsetY", 31));
+
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, npcNode)
         {

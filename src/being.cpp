@@ -307,13 +307,17 @@ void Being::setSubtype(const uint16_t subtype)
         {
             setName(mInfo->getName());
             setupSpriteDisplay(mInfo->getDisplay());
+            mYDiff = mInfo->getSortOffsetY();
         }
     }
     else if (mType == NPC)
     {
         mInfo = NPCDB::get(mSubType);
         if (mInfo)
+        {
             setupSpriteDisplay(mInfo->getDisplay(), false);
+            mYDiff = mInfo->getSortOffsetY();
+        }
     }
     else if (mType == PLAYER)
     {
@@ -1058,8 +1062,8 @@ void Being::setAction(const Action &action, const int attackType A_UNUSED)
             currentAction = SpriteAction::DEAD;
             if (mInfo)
                 sound.playSfx(mInfo->getSound(SOUND_EVENT_DIE), mX, mY);
-            if (mType == MONSTER)
-                mYDiff = 31;
+            if (mType == MONSTER || mType == NPC)
+                mYDiff = mInfo->getDeadSortOffsetY();
             break;
         case STAND:
             currentAction = SpriteAction::STAND;
