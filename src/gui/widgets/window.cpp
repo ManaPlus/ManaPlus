@@ -490,14 +490,31 @@ void Window::setVisible(bool visible, bool forceSticky)
 
     // Check if the window is off screen...
     if (visible)
+    {
         ensureOnScreen();
+    }
     else
+    {
         mResizeHandles = 0;
+    }
 
     if (isStickyButtonLock())
         gcn::Window::setVisible(visible);
     else
         gcn::Window::setVisible((!forceSticky && isSticky()) || visible);
+    if (visible)
+    {
+        if (gui)
+        {
+            gcn::MouseEvent *event = reinterpret_cast<gcn::MouseEvent*>(
+                gui->createMouseEvent(this));
+            if (event)
+            {
+                mouseMoved(*event);
+                delete event;
+            }
+        }
+    }
 }
 
 void Window::scheduleDelete()
@@ -560,13 +577,18 @@ void Window::mouseReleased(gcn::MouseEvent &event A_UNUSED)
     mMoved = false;
 }
 
+void Window::mouseEntered(gcn::MouseEvent &event)
+{
+    updateResizeHandler(event);
+}
+
 void Window::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     if (mGrip && !mouseResize && gui)
         gui->setCursorType(Gui::CURSOR_POINTER);
 }
 
-void Window::mouseMoved(gcn::MouseEvent &event)
+void Window::updateResizeHandler(gcn::MouseEvent &event)
 {
     if (!gui)
         return;
@@ -595,7 +617,11 @@ void Window::mouseMoved(gcn::MouseEvent &event)
         default:
             gui->setCursorType(Gui::CURSOR_POINTER);
     }
+}
 
+void Window::mouseMoved(gcn::MouseEvent &event)
+{
+    updateResizeHandler(event);
     if (viewport)
         viewport->hideBeingPopup();
 }

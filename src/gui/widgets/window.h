@@ -273,6 +273,10 @@ class Window : public gcn::Window, private gcn::WidgetListener
          */
         void mouseExited(gcn::MouseEvent &event) override;
 
+        void mouseEntered(gcn::MouseEvent &event) override;
+
+        void updateResizeHandler(gcn::MouseEvent &event);
+
         /**
          * Sets the name of the window. This is not the window title.
          */

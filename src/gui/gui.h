@@ -28,8 +28,10 @@
 class Graphics;
 class GuiConfigListener;
 class ImageSet;
+class MouseEvent;
 class SDLFont;
 class SDLInput;
+class Window;
 
 /**
  * \defgroup GUI Core GUI related classes (widgets)
@@ -128,6 +130,10 @@ class Gui final : public gcn::Gui
         bool handleKeyInput2();
 
         void resetClickCount();
+
+        MouseEvent *createMouseEvent(Window *widget);
+
+        void getAbsolutePosition(gcn::Widget *widget, int &x, int &y);
 
         /**
          * Cursors are in graphic order from left to right.

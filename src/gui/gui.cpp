@@ -27,6 +27,7 @@
 #include "gui/sdlfont.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
+#include "gui/viewport.h"
 
 #include "gui/widgets/mouseevent.h"
 #include "gui/widgets/window.h"
@@ -604,4 +605,35 @@ void Gui::resetClickCount()
 {
     mClickCount = 1;
     mLastMousePressTimeStamp = 0;
+}
+
+MouseEvent *Gui::createMouseEvent(Window *widget)
+{
+    if (!viewport || !widget)
+        return nullptr;
+
+    int x = 0;
+    int y = 0;
+    int mouseX = 0;
+    int mouseY = 0;
+
+    getAbsolutePosition(widget, x, y);
+    SDL_GetMouseState(&mouseX, &mouseY);
+
+    MouseEvent *mouseEvent = new MouseEvent(widget, mShiftPressed,
+        mControlPressed, mAltPressed, mMetaPressed, 0, 0,
+        mouseX - x, mouseY - y, mClickCount);
+    return mouseEvent;
+}
+
+void Gui::getAbsolutePosition(gcn::Widget *widget, int &x, int &y)
+{
+    x = 0;
+    y = 0;
+    while (widget->getParent())
+    {
+        x += widget->getX();
+        y += widget->getY();
+        widget = widget->getParent();
+    }
 }
