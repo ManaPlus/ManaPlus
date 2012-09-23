@@ -151,13 +151,13 @@ class BeingInfo
         bool isTargetSelection() const
         { return mTargetSelection; }
 
-        int getSortOffsetY()
+        int getSortOffsetY() const
         { return mSortOffsetY; }
 
         void setSortOffsetY(const int n)
         { mSortOffsetY = n; }
 
-        int getDeadSortOffsetY()
+        int getDeadSortOffsetY() const
         { return mDeadSortOffsetY; }
 
         void setDeadSortOffsetY(const int n)

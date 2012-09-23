@@ -82,7 +82,8 @@ public:
     virtual Type getType() const
     { return UNKNOWN; }
 
-    virtual bool draw(Graphics *graphics, int offsetX, int offsetY) const override;
+    virtual bool draw(Graphics *graphics,
+                      int offsetX, int offsetY) const override;
 
     virtual bool drawSpriteAt(Graphics *const graphics,
                               const int x, const int y) const;

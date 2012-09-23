@@ -30,7 +30,6 @@
 
 #include "gui/widgets/label.h"
 
-#include "graphics.h"
 #include "units.h"
 
 #include "utils/gettext.h"

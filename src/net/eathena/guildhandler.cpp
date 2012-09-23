@@ -215,7 +215,7 @@ void GuildHandler::invite(int guildId A_UNUSED,
     }
 }
 
-void GuildHandler::invite(int guildId A_UNUSED, Being *being)
+void GuildHandler::invite(int guildId A_UNUSED, const Being *const being)
 {
     if (!being)
         return;

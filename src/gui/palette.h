@@ -78,10 +78,10 @@ class Palette
          */
         inline const gcn::Color &getColor(int type, int alpha = 255)
         {
-            if (type >= (signed)mColors.size())
+            if (type >= static_cast<signed>(mColors.size()))
             {
-                logger->log("incorrect color request type: %d from %ld",
-                    type, mColors.size());
+                logger->log("incorrect color request type: %d from %u",
+                    type, static_cast<unsigned int>(mColors.size()));
                 type = 0;
             }
             gcn::Color* col = &mColors[type].color;

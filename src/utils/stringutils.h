@@ -29,6 +29,8 @@
 #include <list>
 #include <set>
 
+#include "localconsts.h"
+
 /**
  * Trims spaces off the end and the beginning of the given string.
  *

@@ -45,7 +45,7 @@ class GuildHandler
 
         virtual void invite(int guildId, const std::string &name) = 0;
 
-        virtual void invite(int guildId, Being *being) = 0;
+        virtual void invite(int guildId, const Being *const being) = 0;
 
         virtual void inviteResponse(int guildId, bool response) = 0;
 

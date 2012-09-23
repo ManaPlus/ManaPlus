@@ -67,7 +67,8 @@ WindowMenu::WindowMenu() :
     mHaveMouse(false),
     mAutoHide(1)
 {
-    int x = 0, h = 0;
+    int x = 0;
+    int h = 0;
 
     setFocusable(false);
 

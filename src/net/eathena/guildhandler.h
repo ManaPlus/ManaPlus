@@ -44,7 +44,7 @@ class GuildHandler : public Ea::GuildHandler, public MessageHandler
 
         void invite(int guildId, const std::string &name);
 
-        void invite(int guildId, Being *being);
+        void invite(int guildId, const Being *const being);
 
         void inviteResponse(int guildId, bool response);
 

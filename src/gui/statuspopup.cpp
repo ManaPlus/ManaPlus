@@ -32,7 +32,6 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/textbox.h"
 
-#include "graphics.h"
 #include "inputmanager.h"
 #include "localplayer.h"
 #include "units.h"

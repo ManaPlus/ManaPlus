@@ -146,10 +146,10 @@ public:
     virtual ~LangListModel()
     { }
 
-    virtual int getNumberOfElements()
+    virtual int getNumberOfElements() override
     { return langs_count; }
 
-    virtual std::string getElementAt(int i)
+    virtual std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return _("???");

@@ -30,14 +30,13 @@
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
-#  ifdef __clang__
-#  define gnu_printf printf
-#  endif
 #else
 #define A_UNUSED
 #define gnu_printf printf
 #endif
-
+#ifdef __clang__
+#define gnu_printf printf
+#endif
 
 //#define DEBUG_CONFIG 1
 //#define DEBUG_BIND_TEXTURE 1

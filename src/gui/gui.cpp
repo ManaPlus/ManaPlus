@@ -31,7 +31,6 @@
 
 #include "gui/widgets/mouseevent.h"
 #include "gui/widgets/window.h"
-#include "gui/widgets/windowcontainer.h"
 
 #include "configuration.h"
 #include "keydata.h"
