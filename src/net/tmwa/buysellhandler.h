@@ -32,7 +32,7 @@
 namespace TmwAthena
 {
 
-class BuySellHandler : public MessageHandler, public Ea::BuySellHandler
+class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
 {
     public:
         BuySellHandler();

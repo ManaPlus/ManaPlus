@@ -30,7 +30,7 @@
 /**
  * Defines a class for loading and storing sound effects.
  */
-class SoundEffect : public Resource
+class SoundEffect final : public Resource
 {
     public:
         /**

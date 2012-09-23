@@ -30,7 +30,7 @@
 namespace TmwAthena
 {
 
-class ItemHandler : public MessageHandler, public Ea::ItemHandler
+class ItemHandler final : public MessageHandler, public Ea::ItemHandler
 {
     public:
         ItemHandler();

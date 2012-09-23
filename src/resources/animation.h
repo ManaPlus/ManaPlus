@@ -31,7 +31,7 @@ class Image;
 /**
  * A single frame in an animation, with a delay and an offset.
  */
-struct Frame
+struct Frame final
 {
     enum FrameType
     {
@@ -54,7 +54,7 @@ struct Frame
  * An animation consists of several frames, each with their own delay and
  * offset.
  */
-class Animation
+class Animation final
 {
     friend class AnimatedSprite;
     friend class ParticleEmitter;

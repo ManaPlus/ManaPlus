@@ -36,7 +36,7 @@ namespace EAthena
  *
  * \ingroup Network
  */
-    class MessageIn : public Net::MessageIn
+class MessageIn final : public Net::MessageIn
 {
     public:
         /**

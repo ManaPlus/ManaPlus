@@ -33,7 +33,7 @@
 namespace EAthena
 {
 
-class ChatHandler : public MessageHandler, public Ea::ChatHandler
+class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 {
     public:
         ChatHandler();

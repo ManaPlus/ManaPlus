@@ -38,7 +38,7 @@ class Network;
  *
  * \ingroup Network
  */
-class MessageOut : public Net::MessageOut
+class MessageOut final : public Net::MessageOut
 {
     public:
         /**

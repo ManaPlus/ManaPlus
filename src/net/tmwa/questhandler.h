@@ -33,7 +33,7 @@
 namespace TmwAthena
 {
 
-class QuestHandler : public MessageHandler
+class QuestHandler final : public MessageHandler
 {
     public:
         QuestHandler();

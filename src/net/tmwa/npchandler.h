@@ -37,7 +37,7 @@ class NpcDialog;
 namespace TmwAthena
 {
 
-class NpcHandler : public MessageHandler, public Ea::NpcHandler
+class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 {
     public:
         NpcHandler();

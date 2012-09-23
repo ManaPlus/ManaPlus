@@ -28,7 +28,7 @@
 #include <list>
 #include <map>
 
-struct Attack
+struct Attack final
 {
     std::string action;
     std::string particleEffect;
@@ -66,7 +66,7 @@ typedef std::map<SoundEvent, StringVect*> SoundEvents;
  * @see MonsterDB
  * @see NPCDB
  */
-class BeingInfo
+class BeingInfo final
 {
     public:
         static BeingInfo *unknown;

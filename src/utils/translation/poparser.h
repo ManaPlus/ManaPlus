@@ -28,7 +28,7 @@
 #include <sstream>
 #include <string>
 
-class PoParser
+class PoParser final
 {
     public:
         PoParser();

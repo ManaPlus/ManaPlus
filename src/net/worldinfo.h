@@ -26,7 +26,7 @@
 #include <string>
 #include <vector>
 
-struct WorldInfo
+struct WorldInfo final
 {
     int address;
     std::string name;

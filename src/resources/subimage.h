@@ -45,7 +45,7 @@
 /**
  * A clipped version of a larger image.
  */
-class SubImage : public Image
+class SubImage final : public Image
 {
     public:
         /**

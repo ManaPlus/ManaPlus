@@ -49,7 +49,7 @@ typedef DelayedAnim::iterator DelayedAnimIter;
 /**
  * A class for loading and managing resources.
  */
-class ResourceManager
+class ResourceManager final
 {
     friend class Resource;
 

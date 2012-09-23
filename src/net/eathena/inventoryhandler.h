@@ -34,7 +34,8 @@
 namespace EAthena
 {
 
-class InventoryHandler : public MessageHandler, public Ea::InventoryHandler
+class InventoryHandler final : public MessageHandler,
+                               public Ea::InventoryHandler
 {
     public:
         InventoryHandler();

@@ -25,7 +25,7 @@
 #include <string>
 #include <map>
 
-struct SpecialInfo
+struct SpecialInfo final
 {
     enum TargetMode
     {

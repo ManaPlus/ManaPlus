@@ -48,7 +48,7 @@ class Image;
 /**
  * Defines a class for loading and storing images.
  */
-class OpenGLImageHelper : public ImageHelper
+class OpenGLImageHelper final : public ImageHelper
 {
     friend class CompoundSprite;
     friend class Graphics;

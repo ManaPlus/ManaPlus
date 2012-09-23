@@ -29,13 +29,13 @@
 
 class AnimatedSprite;
 
-struct EmoteSprite
+struct EmoteSprite final
 {
     const AnimatedSprite *sprite;
     std::string name;
 };
 
-struct EmoteInfo
+struct EmoteInfo final
 {
     std::list<EmoteSprite*> sprites;
     StringVect particles;

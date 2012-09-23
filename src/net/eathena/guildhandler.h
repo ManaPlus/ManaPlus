@@ -31,7 +31,7 @@
 namespace EAthena
 {
 
-class GuildHandler : public Ea::GuildHandler, public MessageHandler
+class GuildHandler final : public Ea::GuildHandler, public MessageHandler
 {
     public:
         GuildHandler();

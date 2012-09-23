@@ -35,7 +35,7 @@ class Image;
 /**
  * Defines a class for loading and storing images.
  */
-class SDLImageHelper : public ImageHelper
+class SDLImageHelper final : public ImageHelper
 {
     friend class Image;
 

@@ -27,7 +27,7 @@
 
 #include <string>
 
-class LoginData
+class LoginData final
 {
     public:
         LoginData():

@@ -33,7 +33,7 @@
 namespace TmwAthena
 {
 
-class SpecialHandler : public MessageHandler, public Ea::SpecialHandler
+class SpecialHandler final : public MessageHandler, public Ea::SpecialHandler
 {
     public:
         SpecialHandler();

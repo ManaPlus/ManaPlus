@@ -33,7 +33,7 @@
 namespace TmwAthena
 {
 
-class BeingHandler : public MessageHandler, public Ea::BeingHandler
+class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 {
     public:
         BeingHandler(bool enableSync);

@@ -31,7 +31,7 @@ class Animation;
 /**
  * An action consists of several animations, one for each direction.
  */
-class Action
+class Action final
 {
     public:
         Action();

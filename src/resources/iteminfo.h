@@ -97,7 +97,7 @@ typedef SpriteToItemMap::const_iterator SpriteToItemMapCIter;
  * Defines a class for storing item infos. This includes information used when
  * the item is equipped.
  */
-class ItemInfo
+class ItemInfo final
 {
     public:
         /**

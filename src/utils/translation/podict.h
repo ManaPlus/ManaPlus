@@ -26,7 +26,7 @@
 
 typedef std::map <std::string, std::string> PoMap;
 
-class PoDict
+class PoDict final
 {
     public:
         PoDict(std::string lang);

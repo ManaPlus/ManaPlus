@@ -35,10 +35,9 @@ const int aPaleteIndex = 8;
 /**
  * Class for performing a linear interpolation between colors.
  */
-class DyePalette
+class DyePalette final
 {
     public:
-
         /**
          * Creates a palette based on the given string.
          * The string is either a file name or a sequence of hexadecimal RGB
@@ -89,7 +88,7 @@ class DyePalette
 /**
  * Class for dispatching pixel-recoloring amongst several palettes.
  */
-class Dye
+class Dye final
 {
     public:
 

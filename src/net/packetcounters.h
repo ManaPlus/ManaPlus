@@ -23,7 +23,7 @@
 #ifndef PACKETCOUNTERS_H
 #define PACKETCOUNTERS_H
 
-class PacketCounters
+class PacketCounters final
 {
 public:
     static void incInBytes(int cnt);

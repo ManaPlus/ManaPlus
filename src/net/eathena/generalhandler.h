@@ -33,8 +33,9 @@
 namespace EAthena
 {
 
-class GeneralHandler : public MessageHandler, public Net::GeneralHandler,
-                       public Listener
+class GeneralHandler final : public MessageHandler,
+                             public Net::GeneralHandler,
+                             public Listener
 {
     public:
         GeneralHandler();

@@ -51,7 +51,7 @@ struct curl_slist;
 
 namespace Net
 {
-class Download
+class Download final
 {
     public:
         Download(void *ptr, const std::string &url,

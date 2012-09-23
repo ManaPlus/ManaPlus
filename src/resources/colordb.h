@@ -30,7 +30,7 @@
  */
 namespace ColorDB
 {
-    class ItemColor
+    class ItemColor final
     {
         public:
             ItemColor():

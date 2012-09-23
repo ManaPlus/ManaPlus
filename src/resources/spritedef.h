@@ -36,7 +36,7 @@ class Action;
 class Animation;
 class ImageSet;
 
-struct SpriteReference
+struct SpriteReference final
 {
     static SpriteReference *Empty;
 
@@ -53,7 +53,7 @@ struct SpriteReference
     int variant;
 };
 
-struct SpriteDisplay
+struct SpriteDisplay final
 {
     std::string image;
     std::string floor;
@@ -107,7 +107,7 @@ enum SpriteDirection
 /**
  * Defines a class to load an animation.
  */
-class SpriteDef : public Resource
+class SpriteDef final : public Resource
 {
     public:
         /**

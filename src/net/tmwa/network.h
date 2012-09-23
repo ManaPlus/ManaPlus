@@ -44,7 +44,7 @@
 namespace TmwAthena
 {
 
-class Network : public Ea::Network
+class Network final : public Ea::Network
 {
     public:
         Network();

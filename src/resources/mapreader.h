@@ -34,7 +34,7 @@ class Tileset;
 /**
  * Reader for XML map files (*.tmx)
  */
-class MapReader
+class MapReader final
 {
     public:
         /**

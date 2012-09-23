@@ -33,7 +33,7 @@
 namespace EAthena
 {
 
-class GameHandler : public MessageHandler, public Ea::GameHandler
+class GameHandler final : public MessageHandler, public Ea::GameHandler
 {
     public:
         GameHandler();

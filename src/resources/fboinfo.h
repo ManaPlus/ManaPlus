@@ -31,7 +31,7 @@
 #include <SDL_opengl.h>
 #include <GL/glext.h>
 
-struct FBOInfo
+struct FBOInfo final
 {
     FBOInfo() :
         fboId(0), textureId(0), rboId(0)

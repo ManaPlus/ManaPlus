@@ -24,7 +24,7 @@
 
 struct SDL_Surface;
 
-class ImageWriter
+class ImageWriter final
 {
     public:
         static bool writePNG(SDL_Surface *const surface,

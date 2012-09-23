@@ -25,7 +25,7 @@
 class Graphics;
 class Image;
 
-class AmbientLayer
+class AmbientLayer final
 {
     public:
         /**

@@ -32,7 +32,7 @@
 namespace TmwAthena
 {
 
-class PartyHandler : public MessageHandler, public Ea::PartyHandler
+class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 {
     public:
         PartyHandler();

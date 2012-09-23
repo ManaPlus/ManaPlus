@@ -28,7 +28,7 @@
 /**
  * Handles organizing and choosing of wallpapers.
  */
-class Wallpaper
+class Wallpaper final
 {
     public:
         /**

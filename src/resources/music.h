@@ -30,7 +30,7 @@
 /**
  * Defines a class for loading and storing music.
  */
-class Music : public Resource
+class Music final : public Resource
 {
     public:
         /**

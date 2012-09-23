@@ -36,7 +36,7 @@ class LoginData;
 namespace TmwAthena
 {
 
-class LoginHandler : public MessageHandler, public Ea::LoginHandler
+class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 {
     public:
         LoginHandler();

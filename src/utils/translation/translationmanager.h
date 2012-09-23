@@ -27,7 +27,7 @@
 
 class PoDict;
 
-class TranslationManager
+class TranslationManager final
 {
     public:
         static PoDict *loadLang(StringVect lang,

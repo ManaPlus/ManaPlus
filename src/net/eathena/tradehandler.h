@@ -33,7 +33,7 @@
 namespace EAthena
 {
 
-class TradeHandler : public MessageHandler, public Ea::TradeHandler
+class TradeHandler final : public MessageHandler, public Ea::TradeHandler
 {
     public:
         TradeHandler();

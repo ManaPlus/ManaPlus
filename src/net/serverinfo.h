@@ -30,7 +30,7 @@
 
 #include "localconsts.h"
 
-class ServerInfo
+class ServerInfo final
 {
 public:
     enum Type

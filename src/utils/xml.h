@@ -43,7 +43,7 @@ namespace XML
      * A helper class for parsing an XML document, which also cleans it up
      * again (RAII).
      */
-    class Document
+    class Document final
     {
         public:
             /**
