@@ -31,6 +31,14 @@ namespace
 {
     bool mLoaded = false;
     MapDB::Maps mMaps;
+    MapDB::MapInfos mInfos;
+    MapDB::Atlases mAtlases;
+}
+
+namespace MapDB
+{
+    void readMap(XmlNodePtr node);
+    void readAtlas(XmlNodePtr node);
 }
 
 void MapDB::load()
@@ -38,6 +46,12 @@ void MapDB::load()
     if (mLoaded)
         unload();
 
+    loadRemap();
+    loadInfo();
+}
+
+void MapDB::loadRemap()
+{
     XML::Document *doc = new XML::Document(
         paths.getStringValue("maps") + "remap.xml");
 
@@ -69,6 +83,55 @@ void MapDB::load()
     mLoaded = true;
 }
 
+void MapDB::readMap(XmlNodePtr node)
+{
+    const std::string map = XML::getProperty(node, "name", "");
+    if (map.empty())
+        return;
+
+    for_each_xml_child_node(childNode, node)
+    {
+        if (xmlNameEqual(childNode, "atlas"))
+        {
+            const std::string atlas = XML::getProperty(childNode, "name", "");
+            if (atlas.empty())
+                continue;
+            mInfos[map].atlas = atlas;
+        }
+    }
+}
+
+void MapDB::readAtlas(XmlNodePtr node)
+{
+    const std::string atlas = XML::getProperty(node, "name", "");
+    if (atlas.empty())
+        return;
+    for_each_xml_child_node(childNode, node)
+    {
+        if (xmlNameEqual(childNode, "file"))
+        {
+            const std::string file = XML::getProperty(childNode, "name", "");
+            if (file.empty())
+                continue;
+            mAtlases[atlas].push_back(file);
+        }
+    }
+}
+
+void MapDB::loadInfo()
+{
+    XML::Document *doc = new XML::Document("maps.xml");
+
+    const XmlNodePtr root = doc->rootNode();
+
+    for_each_xml_child_node(node, root)
+    {
+        if (xmlNameEqual(node, "map"))
+            readMap(node);
+        else if (xmlNameEqual(node, "atlas"))
+            readAtlas(node);
+    }
+}
 
 void MapDB::unload()
 {

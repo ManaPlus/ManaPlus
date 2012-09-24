@@ -22,18 +22,28 @@
 #ifndef MAPDB_H
 #define MAPDB_H
 
+#include "utils/stringvector.h"
+
 #include <map>
-#include <string>
 
 /**
  * Color information database.
  */
 namespace MapDB
 {
+    struct MapInfo
+    {
+        std::string atlas;
+    };
+
     /**
      * Loads the map remap data from <code>maps\remap.xml</code>.
      */
     void load();
+
+    void loadRemap();
+
+    void loadInfo();
 
     /**
      * Clear the remap data
@@ -45,6 +55,10 @@ namespace MapDB
     // Maps DB
     typedef std::map<std::string, std::string> Maps;
     typedef Maps::iterator MapIterator;
+    // map to infos map
+    typedef std::map<std::string, MapInfo> MapInfos;
+    // atlas to files map
+    typedef std::map<std::string, StringVect> Atlases;
 }
 
 #endif
