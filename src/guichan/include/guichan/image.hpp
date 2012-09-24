@@ -52,7 +52,6 @@
 namespace gcn
 {
     class Color;
-    class ImageLoader;
 
     /**
      * Holds an image. To be able to use this class you must first set an
@@ -81,47 +80,6 @@ namespace gcn
          * Destructor.
          */
         virtual ~Image();
-
-        /**
-         * Loads an image by using the class' image loader. All image loaders
-         * implemented in Guichan return a newly instantiated image which must
-         * be deleted in order to avoid a memory leak.
-         *
-         * NOTE: The functions getPixel and putPixel are only guaranteed to work
-         *       before an image has been converted to display format.
-         *
-         * @param filename The file to load.
-         * @param convertToDisplayFormat True if the image should be converted
-         *                               to display, false otherwise.
-         * @since 0.5.0
-         */
-        static Image* load(const std::string& filename,
-                           bool convertToDisplayFormat = true);
-
-        /**
-         * Gets the image loader used for loading images.
-         *
-         * @return The image loader used for loading images.
-         * @see setImageLoader, AllegroImageLoader, HGEImageLoader, 
-         *      OpenLayerImageLoader, OpenGLAllegroImageLoader, 
-         *      OpenGLSDLImageLoader, SDLImageLoader
-         * @since 0.1.0
-         */
-        static ImageLoader* getImageLoader();
-
-        /**
-         * Sets the ImageLoader to be used for loading images.
-         *
-         * IMPORTANT: The image loader is static and MUST be set before 
-         *            loading images!
-         *
-         * @param imageLoader The image loader to be used for loading images.
-         * @see getImageLoader, AllegroImageLoader, HGEImageLoader, 
-         *      OpenLayerImageLoader, OpenGLAllegroImageLoader, 
-         *      OpenGLSDLImageLoader, SDLImageLoader
-         * @since 0.1.0
-         */
-        static void setImageLoader(ImageLoader* imageLoader);
 
         /**
          * Frees an image.
@@ -180,12 +138,6 @@ namespace gcn
          * @since 0.5.0
          */
         virtual void convertToDisplayFormat() = 0;
-
-    protected:
-        /**
-         * Holds the image loader to be used when loading images.
-         */
-        static ImageLoader* mImageLoader;
     };
 }
 

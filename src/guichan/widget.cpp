@@ -52,7 +52,6 @@
 #include "guichan/actionlistener.hpp"
 #include "guichan/basiccontainer.hpp"
 #include "guichan/deathlistener.hpp"
-#include "guichan/defaultfont.hpp"
 #include "guichan/event.hpp"
 #include "guichan/exception.hpp"
 #include "guichan/focushandler.hpp"
@@ -68,7 +67,6 @@
 namespace gcn
 {
     Font* Widget::mGlobalFont = nullptr;
-    DefaultFont Widget::mDefaultFont;
     std::list<Widget*> Widget::mWidgets;
     std::set<Widget*> Widget::mWidgetsSet;
 
@@ -445,13 +443,7 @@ namespace gcn
     Font* Widget::getFont() const
     {
         if (!mCurrentFont)
-        {
-            if (!mGlobalFont)
-                return &mDefaultFont;
-
             return mGlobalFont;
-        }
-
         return mCurrentFont;
     }
 

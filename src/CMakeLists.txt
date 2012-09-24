@@ -649,7 +649,6 @@ SET(SRCS_GUICHAN
     guichan/include/guichan/cliprectangle.hpp
     guichan/include/guichan/color.hpp
     guichan/include/guichan/deathlistener.hpp
-    guichan/include/guichan/defaultfont.hpp
     guichan/include/guichan/event.hpp
     guichan/include/guichan/exception.hpp
     guichan/include/guichan/focushandler.hpp
@@ -658,7 +657,6 @@ SET(SRCS_GUICHAN
     guichan/include/guichan/graphics.hpp
     guichan/include/guichan/gui.hpp
     guichan/include/guichan/image.hpp
-    guichan/include/guichan/imageloader.hpp
     guichan/include/guichan/input.hpp
     guichan/include/guichan/inputevent.hpp
     guichan/include/guichan/key.hpp
@@ -682,7 +680,6 @@ SET(SRCS_GUICHAN
     guichan/include/guichan/widgets/checkbox.hpp
     guichan/include/guichan/widgets/container.hpp
     guichan/include/guichan/widgets/dropdown.hpp
-    guichan/include/guichan/widgets/icon.hpp
     guichan/include/guichan/widgets/label.hpp
     guichan/include/guichan/widgets/listbox.hpp
     guichan/include/guichan/widgets/radiobutton.hpp
@@ -697,7 +694,6 @@ SET(SRCS_GUICHAN
     guichan/basiccontainer.cpp
     guichan/cliprectangle.cpp
     guichan/color.cpp
-    guichan/defaultfont.cpp
     guichan/event.cpp
     guichan/exception.cpp
     guichan/focushandler.cpp
@@ -720,7 +716,6 @@ SET(SRCS_GUICHAN
     guichan/widgets/checkbox.cpp
     guichan/widgets/container.cpp
     guichan/widgets/dropdown.cpp
-    guichan/widgets/icon.cpp
     guichan/widgets/label.cpp
     guichan/widgets/listbox.cpp
     guichan/widgets/radiobutton.cpp

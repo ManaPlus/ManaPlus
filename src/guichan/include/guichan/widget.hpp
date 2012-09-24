@@ -59,7 +59,6 @@ namespace gcn
     class ActionListener;
     class BasicContainer;
     class DeathListener;
-    class DefaultFont;
     class FocusHandler;
     class FocusListener;
     class Font;
@@ -1186,11 +1185,6 @@ namespace gcn
          * Holds the font used by the widget.
          */
         Font* mCurrentFont;
-
-        /**
-         * Holds the default font used by the widget.
-         */
-        static DefaultFont mDefaultFont;
 
         /**
          * Holds the global font used by the widget.
