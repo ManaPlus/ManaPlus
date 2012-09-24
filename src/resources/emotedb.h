@@ -27,6 +27,8 @@
 #include <list>
 #include <map>
 
+#include "localconsts.h"
+
 class AnimatedSprite;
 
 struct EmoteSprite final

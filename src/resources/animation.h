@@ -26,6 +26,8 @@
 #include <vector>
 #include <string>
 
+#include "localconsts.h"
+
 class Image;
 
 /**

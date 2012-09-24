@@ -25,6 +25,8 @@
 #include <map>
 #include <string>
 
+#include "localconsts.h"
+
 /**
  * Color information database.
  */

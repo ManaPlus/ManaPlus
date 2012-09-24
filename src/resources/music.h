@@ -27,6 +27,8 @@
 
 #include <SDL_mixer.h>
 
+#include "localconsts.h"
+
 /**
  * Defines a class for loading and storing music.
  */

@@ -28,6 +28,8 @@
 #include <stdio.h>
 #include <string>
 
+#include "localconsts.h"
+
 enum DownloadStatus
 {
     DOWNLOAD_STATUS_CANCELLED = -3,

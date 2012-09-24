@@ -25,6 +25,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 /**
  * Handles organizing and choosing of wallpapers.
  */

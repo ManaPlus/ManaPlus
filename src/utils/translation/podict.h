@@ -24,6 +24,8 @@
 #include <string>
 #include <map>
 
+#include "localconsts.h"
+
 typedef std::map <std::string, std::string> PoMap;
 
 class PoDict final

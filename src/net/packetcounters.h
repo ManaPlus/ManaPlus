@@ -23,6 +23,8 @@
 #ifndef PACKETCOUNTERS_H
 #define PACKETCOUNTERS_H
 
+#include "localconsts.h"
+
 class PacketCounters final
 {
 public:

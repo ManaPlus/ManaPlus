@@ -22,6 +22,8 @@
 
 #include <iosfwd>
 
+#include "localconsts.h"
+
 struct SDL_Surface;
 
 class ImageWriter final

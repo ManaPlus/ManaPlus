@@ -32,6 +32,8 @@
 #include <map>
 #include <set>
 
+#include "localconsts.h"
+
 class AnimationDelayLoad;
 class Image;
 class ImageSet;

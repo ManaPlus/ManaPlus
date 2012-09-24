@@ -28,6 +28,8 @@
 
 #include <SDL_stdinc.h>
 
+#include "localconsts.h"
+
 const int dyePalateSize = 9;
 const int sPaleteIndex = 7;
 const int aPaleteIndex = 8;

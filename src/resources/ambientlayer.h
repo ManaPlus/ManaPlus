@@ -22,6 +22,8 @@
 #ifndef RESOURCES_AMBIENTOVERLAY_H
 #define RESOURCES_AMBIENTOVERLAY_H
 
+#include "localconsts.h"
+
 class Graphics;
 class Image;
 

@@ -25,8 +25,9 @@
 
 #include <map>
 
-class Animation;
+#include "localconsts.h"
 
+class Animation;
 
 /**
  * An action consists of several animations, one for each direction.
