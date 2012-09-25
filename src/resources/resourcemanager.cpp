@@ -399,6 +399,12 @@ Resource *ResourceManager::getFromCache(const std::string &filename,
     return getFromCache(ss.str());
 }
 
+bool ResourceManager::isInCache(const std::string &idPath) const
+{
+    const ResourceCIterator &resIter = mResources.find(idPath);
+    return (resIter != mResources.end() && resIter->second);
+}
+
 Resource *ResourceManager::getFromCache(const std::string &idPath)
 {
     // Check if the id exists, and return the value if it does.

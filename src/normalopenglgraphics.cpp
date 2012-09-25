@@ -1358,7 +1358,7 @@ void NormalOpenGLGraphics::debugBindTexture(const Image *image)
     const std::string texture = image->getIdPath();
     if (mOldTexture != texture)
     {
-        if (!mOldTexture.empty() && !texture.empty()
+        if ((!mOldTexture.empty() || !texture.empty())
             && mOldTextureId != image->mGLImage)
         {
             logger->log("bind: %s (%d) to %s (%d)", mOldTexture.c_str(),

@@ -279,8 +279,11 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
     if (graphicsManager.getUseAtlases())
     {
         const MapDB::MapInfo *const info = MapDB::getMapAtlas(fileName);
-        map->setAtlas(ResourceManager::getInstance()->getAtlas(
-            info->atlas, *info->files));
+        if (info)
+        {
+            map->setAtlas(ResourceManager::getInstance()->getAtlas(
+                info->atlas, *info->files));
+        }
     }
 #endif
 

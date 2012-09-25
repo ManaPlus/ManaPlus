@@ -285,6 +285,7 @@ class ResourceManager final
 
         typedef std::map<std::string, Resource*> Resources;
         typedef Resources::iterator ResourceIterator;
+        typedef Resources::const_iterator ResourceCIterator;
 
 #ifdef DEBUG_DUMP_LEAKS
         Resources* getResources()
@@ -295,6 +296,8 @@ class ResourceManager final
 #endif
 
         bool cleanOrphans(const bool always = false);
+
+        bool isInCache(const std::string &idPath) const;
 
         static void addDelayedAnimation(AnimationDelayLoad *const animation)
         { mDelayedAnimations.push_back(animation); }

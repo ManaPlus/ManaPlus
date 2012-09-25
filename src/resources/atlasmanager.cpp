@@ -92,10 +92,18 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
 void AtlasManager::loadImages(const StringVect &files,
                               std::vector<Image*> &images)
 {
+    const ResourceManager *const resman = ResourceManager::getInstance();
+
     for (StringVectCIter it = files.begin(), it_end = files.end();
           it != it_end; ++ it)
     {
         const std::string str = *it;
+        if (resman->isInCache(str))
+        {
+            logger->log("Resource %s already in cache", str.c_str());
+            continue;
+        }
+
         SDL_RWops *rw = PHYSFSRWOPS_openRead(str.c_str());
         Image *image = sdlImageHelper->load(rw);
         if (image)

@@ -121,8 +121,12 @@ void MapDB::readAtlas(XmlNodePtr node)
 void MapDB::loadInfo()
 {
     XML::Document *doc = new XML::Document("maps.xml");
-
     const XmlNodePtr root = doc->rootNode();
+    if (!root)
+    {
+        delete doc;
+        return;
+    }
 
     for_each_xml_child_node(node, root)
     {
