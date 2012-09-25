@@ -396,7 +396,7 @@ class Map final : public Properties, public ConfigListener
         std::map<int, TileAnimation*> &getTileAnimations()
         { return mTileAnimations; }
 
-        void setAtlas(Resource *atlas)
+        void setAtlas(Resource *const atlas)
         { mAtlas = atlas; }
 
     protected:

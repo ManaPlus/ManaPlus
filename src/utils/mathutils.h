@@ -119,7 +119,7 @@ inline int roundDouble(const double v)
     return (v > 0.0) ? (v + 0.5) : (v - 0.5); 
 }
 
-inline int powerOfTwo(int input)
+inline int powerOfTwo(const int input)
 {
     int value = 1;
     while (value < input)
