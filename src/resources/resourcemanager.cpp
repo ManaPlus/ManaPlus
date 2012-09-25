@@ -211,7 +211,21 @@ bool ResourceManager::cleanOrphans(const bool always)
         }
         else
         {
+#ifdef USE_OPENGL
+            const Image *const image = dynamic_cast<Image*>(res);
+            if (image && image->getGLImage())
+            {
+                logger->log("ResourceManager::release(%s, %u)",
+                    res->mIdPath.c_str(), image->getGLImage());
+            }
+            else
+            {
+                logger->log("ResourceManager::release(%s)",
+                    res->mIdPath.c_str());
+            }
+#else
             logger->log("ResourceManager::release(%s)", res->mIdPath.c_str());
+#endif
             const ResourceIterator toErase = iter;
             ++iter;
             mOrphanedResources.erase(toErase);

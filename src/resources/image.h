@@ -149,6 +149,9 @@ class Image : public Resource
 
         int getTextureHeight() const
         { return mTexHeight; }
+
+        GLuint getGLImage() const
+        { return mGLImage; }
 #endif
 
         bool isHasAlphaChannel() const
