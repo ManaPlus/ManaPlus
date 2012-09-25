@@ -108,6 +108,9 @@ Setup_Perfomance::Setup_Perfomance() :
     new SetupItemCheckBox(_("Use new texture internal format (OpenGL)"),
         "", "newtextures", this, "newtexturesEvent");
 
+    new SetupItemCheckBox(_("Enable texture atlases (OpenGL)"), "",
+        "useAtlases", this, "useAtlasesEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
