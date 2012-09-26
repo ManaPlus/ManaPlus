@@ -48,6 +48,7 @@ void MapDB::load()
 
     loadRemap();
     loadInfo();
+    mLoaded = true;
 }
 
 void MapDB::loadRemap()
@@ -79,8 +80,6 @@ void MapDB::loadRemap()
     }
 
     delete doc;
-
-    mLoaded = true;
 }
 
 void MapDB::readMap(XmlNodePtr node)
@@ -135,6 +134,7 @@ void MapDB::loadInfo()
         else if (xmlNameEqual(node, "atlas"))
             readAtlas(node);
     }
+    delete doc;
 }
 
 void MapDB::unload()
