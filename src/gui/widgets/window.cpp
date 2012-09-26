@@ -510,7 +510,13 @@ void Window::setVisible(bool visible, bool forceSticky)
                 gui->createMouseEvent(this));
             if (event)
             {
-                mouseMoved(*event);
+                const int x = event->getX();
+                const int y = event->getY();
+                if (x >= 0 && x <= mDimension.width
+                    && y >= 0 && y <= mDimension.height)
+                {
+                    mouseMoved(*event);
+                }
                 delete event;
             }
         }
