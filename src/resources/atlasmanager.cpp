@@ -58,7 +58,7 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
     // sorting images on atlases.
     simpleSort(name, atlases, images, maxSize);
 
-    int k = 0;
+//    int k = 0;
     for (std::vector<TextureAtlas*>::iterator it = atlases.begin(),
          it_end = atlases.end(); it != it_end; ++ it)
     {
@@ -73,11 +73,11 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
             continue;
 
         // debug save
-        ImageWriter::writePNG(surface, Client::getTempDirectory()
-            + "/atlas" + name + toString(k) + ".png");
-        k ++;
+//        ImageWriter::writePNG(surface, Client::getTempDirectory()
+//            + "/atlas" + name + toString(k) + ".png");
+//        k ++;
 
-        // covert SDL images to OpenGL
+        // convert SDL images to OpenGL
         convertAtlas(atlas);
 
         // free SDL atlas surface
@@ -162,8 +162,8 @@ void AtlasManager::simpleSort(const std::string &name,
             if (img->mBounds.h > tempHeight)
                 tempHeight = img->mBounds.h;
 
-            logger->log("image draw position: %d,%d (%d,%d)",
-                x, y, img->mBounds.w, img->mBounds.h);
+//            logger->log("image draw position: %d,%d (%d,%d)",
+//                x, y, img->mBounds.w, img->mBounds.h);
             item->x = x;
             item->y = y;
             atlas->items.push_back(item);
