@@ -286,6 +286,8 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
 // Show ItemTooltip
 void EquipmentWindow::mouseMoved(gcn::MouseEvent &event)
 {
+    Window::mouseMoved(event);
+
     if (!mItemPopup)
         return;
 

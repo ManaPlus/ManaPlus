@@ -298,6 +298,8 @@ ItemAmountWindow::~ItemAmountWindow()
 // Show ItemTooltip
 void ItemAmountWindow::mouseMoved(gcn::MouseEvent &event)
 {
+    Window::mouseMoved(event);
+
     if (!viewport || !mItemPopup)
         return;
 
