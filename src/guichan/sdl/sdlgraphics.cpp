@@ -51,7 +51,6 @@
 #include "guichan/exception.hpp"
 #include "guichan/font.hpp"
 #include "guichan/image.hpp"
-#include "guichan/sdl/sdlimage.hpp"
 #include "guichan/sdl/sdlpixel.hpp"
 
 #include "debug.h"

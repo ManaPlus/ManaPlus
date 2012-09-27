@@ -52,7 +52,6 @@ manaplus_SOURCES += guichan/include/guichan/actionevent.hpp \
 	      guichan/include/guichan/selectionevent.hpp \
 	      guichan/include/guichan/selectionlistener.hpp \
 	      guichan/include/guichan/sdl/sdlgraphics.hpp \
-	      guichan/include/guichan/sdl/sdlimage.hpp \
 	      guichan/include/guichan/sdl/sdlpixel.hpp \
 	      guichan/include/guichan/widget.hpp \
 	      guichan/include/guichan/widgetlistener.hpp \
@@ -92,7 +91,6 @@ manaplus_SOURCES += guichan/actionevent.cpp \
 	      guichan/selectionevent.cpp \
 	      guichan/widget.cpp \
 	      guichan/sdl/sdlgraphics.cpp \
-	      guichan/sdl/sdlimage.cpp \
 	      guichan/widgets/button.cpp \
 	      guichan/widgets/checkbox.cpp \
 	      guichan/widgets/container.cpp \
