@@ -224,6 +224,11 @@ class ResourceManager final
         void release(Resource *const res);
 
         /**
+         * Move resource to deleted resources list.
+         */
+        void moveToDeleted(Resource *const res);
+
+        /**
          * Allocates data into a buffer pointer for raw data loading. The
          * returned data is expected to be freed using <code>free()</code>.
          *
@@ -307,6 +312,7 @@ class ResourceManager final
         std::set<SDL_Surface*> deletedSurfaces;
         Resources mResources;
         Resources mOrphanedResources;
+        Resources mDeletedResources;
         time_t mOldestOrphan;
         std::string mSelectedSkin;
         std::string mSkinName;

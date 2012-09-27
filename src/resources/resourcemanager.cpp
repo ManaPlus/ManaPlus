@@ -67,6 +67,7 @@ ResourceManager::~ResourceManager()
 {
     mDestruction = true;
     mResources.insert(mOrphanedResources.begin(), mOrphanedResources.end());
+    mResources.insert(mDeletedResources.begin(), mDeletedResources.end());
 
     // Release any remaining spritedefs first because they depend on image sets
     ResourceIterator iter = mResources.begin();
@@ -671,7 +672,16 @@ void ResourceManager::release(Resource *const res)
     if (!res || mDestruction)
         return;
 
-    const ResourceIterator resIter = mResources.find(res->mIdPath);
+    ResourceIterator resIter = mDeletedResources.find(res->mIdPath);
+    if (resIter != mDeletedResources.end() && resIter->second == res)
+    {
+        // we found zero counted image in deleted list. deleting it and exit.
+        mDeletedResources.erase(resIter);
+        delete res;
+        return;
+    }
+
+    resIter = mResources.find(res->mIdPath);
 
     // The resource has to exist
     assert(resIter != mResources.end() && resIter->second == res);
@@ -689,6 +699,22 @@ void ResourceManager::release(Resource *const res)
 #else
     delete res;
 #endif
+}
+
+void ResourceManager::moveToDeleted(Resource *const res)
+{
+    ResourceIterator resIter = mResources.find(res->mIdPath);
+    if (resIter != mResources.end() && resIter->second == res)
+    {
+        mDeletedResources.insert(*resIter);
+        mResources.erase(resIter);
+    }
+    resIter = mOrphanedResources.find(res->mIdPath);
+    if (resIter != mOrphanedResources.end() && resIter->second == res)
+    {
+        mDeletedResources.insert(*resIter);
+        mOrphanedResources.erase(resIter);
+    }
 }
 
 ResourceManager *ResourceManager::getInstance()
