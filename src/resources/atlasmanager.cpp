@@ -257,22 +257,59 @@ void AtlasManager::convertAtlas(TextureAtlas *atlas)
 void AtlasManager::injectToResources(AtlasResource *resource)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
-    int k = 0;
     for (std::vector<TextureAtlas*>::iterator it = resource->atlases.begin(),
-         it_end = resource->atlases.end(); it != it_end; ++ it, k ++)
+         it_end = resource->atlases.end(); it != it_end; ++ it)
     {
         // add each atlas image to resources
         TextureAtlas *const atlas = *it;
-        resman->addResource(atlas->name, atlas->atlasImage);
         if (atlas)
         {
+            resman->addResource(atlas->name, atlas->atlasImage);
             for (std::vector<AtlasItem*>::iterator it2 = atlas->items.begin(),
                  it2_end = atlas->items.end();
                  it2 != it2_end; ++ it2)
             {
                 AtlasItem *const item = *it2;
+                if (!item)
+                    continue;
                 // add each atlas sub image to resources
                 resman->addResource(item->name, item->image);
+            }
+        }
+    }
+}
+
+void AtlasManager::moveToDeleted(AtlasResource *resource)
+{
+    ResourceManager *const resman = ResourceManager::getInstance();
+    for (std::vector<TextureAtlas*>::iterator it = resource->atlases.begin(),
+         it_end = resource->atlases.end(); it != it_end; ++ it)
+    {
+        // move each atlas image to deleted
+        TextureAtlas *const atlas = *it;
+        if (atlas)
+        {
+            Image *const image = atlas->atlasImage;
+            if (image)
+            {
+                image->decRef();
+                resman->moveToDeleted(image);
+            }
+            for (std::vector<AtlasItem*>::iterator it2 = atlas->items.begin(),
+                 it2_end = atlas->items.end();
+                 it2 != it2_end; ++ it2)
+            {
+                AtlasItem *const item = *it2;
+                if (item)
+                {
+                    Image *const image2 = item->image;
+                    if (image2)
+                    {
+                        image2->decRef();
+                        // move each atlas sub image to deleted
+                        resman->moveToDeleted(image2);
+                    }
+                }
             }
         }
     }
@@ -293,18 +330,32 @@ AtlasResource::~AtlasResource()
                 AtlasItem *const item = *it2;
                 if (item)
                 {
-                    Image *const image = item->image;
-                    if (image)
-                        image->decRef();
+//                    Image *const image = item->image;
+//                    if (image)
+//                        image->decRef();
                     delete item;
                 }
             }
-            Image *const image = atlas->atlasImage;
-            if (image)
-                image->decRef();
+//            Image *const image = atlas->atlasImage;
+//            if (image)
+//                image->decRef();
             delete atlas;
         }
     }
+}
+
+void AtlasResource::incRef()
+{
+    if (!getRefCount())
+        AtlasManager::injectToResources(this);
+    Resource::incRef();
+}
+
+void AtlasResource::decRef()
+{
+    Resource::decRef();
+    if (!getRefCount())
+        AtlasManager::moveToDeleted(this);
 }
 
 #endif

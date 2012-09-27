@@ -73,6 +73,10 @@ class AtlasResource : public Resource
     public:
         ~AtlasResource();
 
+        void incRef();
+
+        void decRef();
+
         std::vector<TextureAtlas*> atlases;
 };
 
@@ -85,6 +89,8 @@ class AtlasManager
                                                const StringVect &files);
 
         static void injectToResources(AtlasResource *resource);
+
+        static void moveToDeleted(AtlasResource *resource);
 
     private:
         static void loadImages(const StringVect &files,

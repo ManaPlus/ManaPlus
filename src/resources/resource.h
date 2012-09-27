@@ -52,7 +52,7 @@ class Resource
         /**
          * Increments the internal reference count.
          */
-        void incRef();
+        virtual void incRef();
 
         /**
          * Decrements the reference count and deletes the object
@@ -61,7 +61,7 @@ class Resource
          * @return <code>true</code> if the object was deleted
          *         <code>false</code> otherwise.
          */
-        void decRef();
+        virtual void decRef();
 
         /**
          * Return the path identifying this resource.
