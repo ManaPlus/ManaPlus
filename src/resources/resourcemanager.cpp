@@ -214,16 +214,25 @@ bool ResourceManager::cleanOrphans(const bool always)
         {
 #ifdef USE_OPENGL
             const Image *const image = dynamic_cast<Image*>(res);
-            const std::string src = image->getSource();
-            if (image && image->getGLImage())
+            if (image)
             {
-                logger->log("ResourceManager::release(%s, %u) %s",
-                    res->mIdPath.c_str(), image->getGLImage(), src.c_str());
+                const std::string src = image->getSource();
+                if (image && image->getGLImage())
+                {
+                    logger->log("ResourceManager::release(%s, %u) %s",
+                        res->mIdPath.c_str(), image->getGLImage(),
+                        src.c_str());
+                }
+                else
+                {
+                    logger->log("ResourceManager::release(%s) %s",
+                        res->mIdPath.c_str(), src.c_str());
+                }
             }
             else
             {
-                logger->log("ResourceManager::release(%s) %s",
-                    res->mIdPath.c_str(), src.c_str());
+                logger->log("ResourceManager::release(%s)",
+                    res->mIdPath.c_str());
             }
 #else
             logger->log("ResourceManager::release(%s)", res->mIdPath.c_str());
