@@ -67,7 +67,7 @@ ResourceManager::~ResourceManager()
 {
     mDestruction = true;
     mResources.insert(mOrphanedResources.begin(), mOrphanedResources.end());
-    mResources.insert(mDeletedResources.begin(), mDeletedResources.end());
+//    mResources.insert(mDeletedResources.begin(), mDeletedResources.end());
 
     // Release any remaining spritedefs first because they depend on image sets
     ResourceIterator iter = mResources.begin();
@@ -673,16 +673,16 @@ void ResourceManager::release(Resource *const res)
     if (!res || mDestruction)
         return;
 
-    ResourceIterator resIter = mDeletedResources.find(res->mIdPath);
-    if (resIter != mDeletedResources.end() && resIter->second == res)
+    std::set<Resource*>::iterator resDelIter = mDeletedResources.find(res);
+    if (resDelIter != mDeletedResources.end())
     {
         // we found zero counted image in deleted list. deleting it and exit.
-        mDeletedResources.erase(resIter);
+        mDeletedResources.erase(resDelIter);
         delete res;
         return;
     }
 
-    resIter = mResources.find(res->mIdPath);
+    ResourceIterator resIter = mResources.find(res->mIdPath);
 
     // The resource has to exist
     assert(resIter != mResources.end() && resIter->second == res);
@@ -707,13 +707,13 @@ void ResourceManager::moveToDeleted(Resource *const res)
     ResourceIterator resIter = mResources.find(res->mIdPath);
     if (resIter != mResources.end() && resIter->second == res)
     {
-        mDeletedResources.insert(*resIter);
+        mDeletedResources.insert(res);
         mResources.erase(resIter);
     }
     resIter = mOrphanedResources.find(res->mIdPath);
     if (resIter != mOrphanedResources.end() && resIter->second == res)
     {
-        mDeletedResources.insert(*resIter);
+        mDeletedResources.insert(res);
         mOrphanedResources.erase(resIter);
     }
 }

@@ -312,7 +312,7 @@ class ResourceManager final
         std::set<SDL_Surface*> deletedSurfaces;
         Resources mResources;
         Resources mOrphanedResources;
-        Resources mDeletedResources;
+        std::set<Resource*> mDeletedResources;
         time_t mOldestOrphan;
         std::string mSelectedSkin;
         std::string mSkinName;
