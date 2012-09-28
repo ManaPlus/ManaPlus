@@ -75,7 +75,7 @@ class Resource
         unsigned getRefCount() const
         { return mRefCount; }
 
-        void setSource(const std::string str)
+        void setSource(const std::string &str)
         { mSource = str; }
 
         std::string getSource() const
