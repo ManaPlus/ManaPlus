@@ -75,6 +75,12 @@ class Resource
         unsigned getRefCount() const
         { return mRefCount; }
 
+        void setSource(const std::string str)
+        { mSource = str; }
+
+        std::string getSource() const
+        { return mSource; }
+
 #ifdef DEBUG_DUMP_LEAKS
         bool getDumped() const
         { return mDumped; }
@@ -94,7 +100,7 @@ class Resource
     private:
         time_t mTimeStamp;   /**< Time at which the resource was orphaned. */
         unsigned mRefCount;  /**< Reference count. */
-        std::string mName;
+        std::string mSource;
 #ifdef DEBUG_DUMP_LEAKS
         bool mDumped;
 #endif
