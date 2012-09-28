@@ -35,9 +35,9 @@
 
 TextBox::TextBox() :
     gcn::TextBox(),
-    mMinWidth(getWidth()),
-    mTextColor(&Theme::getThemeColor(Theme::TEXTBOX))
+    mMinWidth(getWidth())
 {
+    mForegroundColor = Theme::getThemeColor(Theme::TEXTBOX);
     setOpaque(false);
     setFrameSize(0);
 }

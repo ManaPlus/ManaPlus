@@ -40,9 +40,6 @@ class TextBox final : public gcn::TextBox
          */
         TextBox();
 
-        inline void setTextColor(const gcn::Color *color)
-        { mTextColor = color; }
-
         /**
          * Sets the text after wrapping it to the current width of the widget.
          */
@@ -54,21 +51,10 @@ class TextBox final : public gcn::TextBox
         int getMinWidth() const
         { return mMinWidth; }
 
-        /**
-         * Draws the text.
-         */
-        inline void draw(gcn::Graphics *graphics) override
-        {
-            if (mTextColor)
-                mForegroundColor = *mTextColor;
-            gcn::TextBox::draw(graphics);
-        }
-
         void keyPressed(gcn::KeyEvent& keyEvent) override;
 
     private:
         int mMinWidth;
-        const gcn::Color *mTextColor;
 };
 
 #endif

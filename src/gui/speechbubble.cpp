@@ -45,7 +45,7 @@ SpeechBubble::SpeechBubble() :
     mCaption->setFont(boldFont);
     mSpeechBox->setEditable(false);
     mSpeechBox->setOpaque(false);
-    mSpeechBox->setTextColor(&Theme::getThemeColor(Theme::BUBBLE_TEXT));
+    mSpeechBox->setForegroundColor(Theme::getThemeColor(Theme::BUBBLE_TEXT));
 
     add(mCaption);
     add(mSpeechBox);
@@ -64,7 +64,7 @@ void SpeechBubble::setText(const std::string &text, const bool showName)
     if (text == mText && (mCaption->getWidth() <= mSpeechBox->getMinWidth()))
         return;
 
-    mSpeechBox->setTextColor(&Theme::getThemeColor(Theme::BUBBLE_TEXT));
+    mSpeechBox->setForegroundColor(Theme::getThemeColor(Theme::BUBBLE_TEXT));
 
     int width = mCaption->getWidth() + 2 * getPadding();
     mSpeechBox->setTextWrapped(text, 130 > width ? 130 : width);
