@@ -7,6 +7,7 @@
 # Jumpy <antoinebcn@hotmail.com>, 2011.
 # Mr Pirate <salahbubuli44@gmail.com>, 2012.
 #   <mtorres2022@gmail.com>, 2012.
+#   <narus.tmw@gmail.com>, 2012.
 # Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2011, 2012.
 # Nelson Martell <nelson6eeduardo65@gmail.com>, 2011.
 # Nelson  <nelson6eeduardo65@gmail.com>, 2011.
@@ -15,8 +16,8 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2012-09-23 21:48+0300\n"
-"PO-Revision-Date: 2012-09-13 18:24+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2012-09-27 02:16+0000\n"
+"Last-Translator: Narus <narus.tmw@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/"
 "language/es/)\n"
 "Language: es\n"
@@ -1715,7 +1716,7 @@ msgstr "Agregar a lista de recogido"
 
 #: src/gui/questswindow.cpp:88 src/gui/windowmenu.cpp:77
 msgid "Quests"
-msgstr ""
+msgstr "Misiones"
 
 #: src/gui/questswindow.cpp:196 src/gui/setup_input.cpp:351
 msgid "unknown"
@@ -1897,7 +1898,7 @@ msgstr "Seleccionar OK"
 
 #: src/gui/setupactiondata.h:163
 msgid "Return to safe video mode"
-msgstr ""
+msgstr "Volver a modo de video seguro"
 
 #: src/gui/setupactiondata.h:177
 msgid "Shortcuts modifiers keys"
@@ -2011,7 +2012,7 @@ msgstr "Ventana ¿Sabías que.."
 
 #: src/gui/setupactiondata.h:406
 msgid "Quests Window"
-msgstr ""
+msgstr "Ventana de misiones"
 
 #: src/gui/setupactiondata.h:411
 msgid "Previous Social Tab"
@@ -3194,7 +3195,7 @@ msgstr "Indonesio"
 
 #: src/gui/setup_theme.cpp:133
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 #: src/gui/setup_theme.cpp:134
 msgid "Polish"
@@ -4298,7 +4299,7 @@ msgstr "/kick > Expulsar a alguien del clan en el que estás."
 
 #: src/gui/widgets/itemlinkhandler.cpp:99
 msgid "Open url"
-msgstr ""
+msgstr "Abrir url"
 
 #: src/gui/widgets/whispertab.cpp:105
 msgid "/ignore > Ignore the other player"

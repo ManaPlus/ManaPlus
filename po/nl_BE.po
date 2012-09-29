@@ -5,13 +5,14 @@
 # Translators:
 # Jeroen De Meerleer <jeroen.de.meerleer@telenet.be>, 2011.
 # Maarten Vanraes <maarten.vanraes@gmail.com>, 2011.
+#   <prd.studio@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2012-09-23 21:48+0300\n"
-"PO-Revision-Date: 2012-09-13 18:24+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2012-09-26 12:54+0000\n"
+"Last-Translator: elvano <prd.studio@gmail.com>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/"
 "language/nl_BE/)\n"
 "Language: nl_BE\n"
@@ -307,7 +308,7 @@ msgstr ""
 
 #: src/commandhandler.cpp:1083
 msgid "Cache size:"
-msgstr ""
+msgstr "Chachegrootte:"
 
 #: src/commandhandler.cpp:1087
 msgid "Created:"
@@ -827,7 +828,7 @@ msgstr ""
 
 #: src/gui/debugwindow.cpp:152
 msgid "Particle count:"
-msgstr ""
+msgstr "Deeltjesaantal: "
 
 #: src/gui/debugwindow.cpp:154 src/gui/debugwindow.cpp:232
 #: src/gui/debugwindow.cpp:251
@@ -851,7 +852,7 @@ msgstr "%d beelden/sec (Oude openGL)"
 
 #: src/gui/debugwindow.cpp:185 src/gui/debugwindow.cpp:237
 msgid "Textures count:"
-msgstr ""
+msgstr "Textuuraantal:"
 
 #: src/gui/debugwindow.cpp:228
 #, c-format
@@ -892,17 +893,17 @@ msgstr "Aanvalsvertraging:"
 #: src/gui/debugwindow.cpp:270 src/gui/debugwindow.cpp:326
 #: src/gui/debugwindow.cpp:352
 msgid "Minimal hit:"
-msgstr ""
+msgstr "Normale slag:"
 
 #: src/gui/debugwindow.cpp:271 src/gui/debugwindow.cpp:328
 #: src/gui/debugwindow.cpp:353
 msgid "Maximum hit:"
-msgstr ""
+msgstr "Maximum slag:"
 
 #: src/gui/debugwindow.cpp:272 src/gui/debugwindow.cpp:330
 #: src/gui/debugwindow.cpp:354
 msgid "Critical hit:"
-msgstr ""
+msgstr "Critieke slag:"
 
 #: src/gui/debugwindow.cpp:308 src/gui/debugwindow.cpp:313
 #: src/gui/debugwindow.cpp:348
@@ -1384,17 +1385,17 @@ msgstr "Genees"
 #: src/gui/popupmenu.cpp:157 src/gui/popupmenu.cpp:169
 #: src/gui/popupmenu.cpp:342 src/gui/popupmenu.cpp:588
 msgid "Kick from guild"
-msgstr ""
+msgstr "Uit de gilde gooien"
 
 #: src/gui/popupmenu.cpp:162 src/gui/popupmenu.cpp:174
 #: src/gui/popupmenu.cpp:347 src/gui/popupmenu.cpp:593
 msgid "Change pos in guild"
-msgstr ""
+msgstr "De positie binnen de gilde veranderen"
 
 #: src/gui/popupmenu.cpp:182 src/gui/popupmenu.cpp:355
 #: src/gui/popupmenu.cpp:602
 msgid "Invite to guild"
-msgstr ""
+msgstr "Uitnodigen voor de gilde"
 
 #: src/gui/popupmenu.cpp:190
 msgid "Kick player"
@@ -1402,7 +1403,7 @@ msgstr "Schop speler"
 
 #: src/gui/popupmenu.cpp:192
 msgid "Nuke"
-msgstr ""
+msgstr "Nuke"
 
 #: src/gui/popupmenu.cpp:207 src/gui/popupmenu.cpp:314
 #: src/gui/popupmenu.cpp:2172
@@ -1415,23 +1416,23 @@ msgstr "Schop"
 
 #: src/gui/popupmenu.cpp:229
 msgid "Remove from attack list"
-msgstr ""
+msgstr "Van de aanvalslijst verwijderen"
 
 #: src/gui/popupmenu.cpp:234
 msgid "Add to priority attack list"
-msgstr ""
+msgstr "Aan de prioriteitsaanvalslijst toevoegen"
 
 #: src/gui/popupmenu.cpp:236
 msgid "Add to attack list"
-msgstr ""
+msgstr "Aan de aanvalslijst toevoegen"
 
 #: src/gui/popupmenu.cpp:238 src/gui/popupmenu.cpp:2187
 msgid "Add to ignore list"
-msgstr ""
+msgstr "an de negeerlijst toevoegen"
 
 #: src/gui/popupmenu.cpp:251 src/gui/popupmenu.cpp:361
 msgid "Add name to chat"
-msgstr ""
+msgstr "Naam aan het gesprek toevoegen"
 
 #: src/gui/popupmenu.cpp:265 src/gui/setup_players.cpp:47
 msgid "Players"
@@ -1440,7 +1441,7 @@ msgstr "Spelers"
 #: src/gui/popupmenu.cpp:324 src/gui/popupmenu.cpp:571
 #: src/gui/popupmenu.cpp:2162
 msgid "Kick from party"
-msgstr ""
+msgstr "Uit de groep gooien"
 
 #: src/gui/popupmenu.cpp:390 src/gui/popupmenu.cpp:397
 msgid "Pick up"
@@ -1518,7 +1519,7 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:566 src/gui/popupmenu.cpp:2160
 msgid "Invite to party"
-msgstr ""
+msgstr "uitnodigen voor de groep"
 
 #: src/gui/popupmenu.cpp:638
 msgid "Change guild position"
@@ -1668,7 +1669,7 @@ msgstr "Wis"
 #: src/gui/popupmenu.cpp:2093 src/gui/popupmenu.cpp:2098
 #: src/gui/popupmenu.cpp:2106
 msgid "Unignore"
-msgstr ""
+msgstr "Stop Negeren"
 
 #: src/gui/popupmenu.cpp:2088 src/gui/popupmenu.cpp:2108
 #: src/playerrelations.cpp:472
@@ -1821,15 +1822,15 @@ msgstr "Wijzig Bewegen tot aan Doel type"
 
 #: src/gui/setupactiondata.h:73
 msgid "Move to Home location"
-msgstr ""
+msgstr "Verplaats naar thuislokatie"
 
 #: src/gui/setupactiondata.h:78
 msgid "Set home location"
-msgstr ""
+msgstr "Zet thuislokatie"
 
 #: src/gui/setupactiondata.h:83
 msgid "Move to navigation point"
-msgstr ""
+msgstr "Verplaats naar het navigatiepunt"
 
 #: src/gui/setupactiondata.h:93
 msgid "Stop Attack"
@@ -1861,7 +1862,7 @@ msgstr "Oprapen"
 
 #: src/gui/setupactiondata.h:128
 msgid "Change Pickup Type"
-msgstr ""
+msgstr "Verander Opraap Type"
 
 #: src/gui/setupactiondata.h:133
 msgid "Sit"
@@ -1927,7 +1928,7 @@ msgstr "Statusvenster"
 
 #: src/gui/setupactiondata.h:316
 msgid "Inventory Window"
-msgstr ""
+msgstr "Voorraadvenster"
 
 #: src/gui/setupactiondata.h:321
 msgid "Equipment Window"
@@ -1971,7 +1972,7 @@ msgstr "Kleren Venster"
 
 #: src/gui/setupactiondata.h:371
 msgid "Shop Window"
-msgstr ""
+msgstr "Winkelvenster"
 
 #: src/gui/setupactiondata.h:376
 msgid "Quick drop Window"
@@ -1979,7 +1980,7 @@ msgstr "Snel neerleggingsvenster"
 
 #: src/gui/setupactiondata.h:381
 msgid "Kill Stats Window"
-msgstr ""
+msgstr "Doodstatusvenster"
 
 #: src/gui/setupactiondata.h:386
 msgid "Commands Window"
@@ -2003,11 +2004,11 @@ msgstr ""
 
 #: src/gui/setupactiondata.h:411
 msgid "Previous Social Tab"
-msgstr ""
+msgstr "Vorige Sociale Tab"
 
 #: src/gui/setupactiondata.h:416
 msgid "Next Social Tab"
-msgstr ""
+msgstr "Volgende Sociale Tab"
 
 #: src/gui/setupactiondata.h:430
 msgid "Emote modifiers keys"
@@ -2063,7 +2064,7 @@ msgstr "Kopiëer Kledij"
 
 #: src/gui/setupactiondata.h:709
 msgid "Copy equipped to Outfit"
-msgstr ""
+msgstr "Kopieer je huidige uitrusting naar 'outfit'"
 
 #: src/gui/setupactiondata.h:714
 msgid "Outfits shortcuts"
@@ -2483,7 +2484,7 @@ msgstr "Commando's"
 
 #: src/gui/setup_chat.cpp:71
 msgid "Allow magic and GM commands in all chat tabs"
-msgstr ""
+msgstr " magie en GM commandos toe in alle chat tabs"
 
 #: src/gui/setup_chat.cpp:75
 msgid "Limits"
@@ -2523,11 +2524,11 @@ msgstr ""
 
 #: src/gui/setup_chat.cpp:101
 msgid "Put all whispers in tabs"
-msgstr ""
+msgstr "Plaats alle persoonlijke berichten in tabs"
 
 #: src/gui/setup_chat.cpp:104
 msgid "Log magic messages in debug tab"
-msgstr ""
+msgstr "Hou magie berichten bij in de 'Debug' tab"
 
 #: src/gui/setup_chat.cpp:107
 msgid "Show server messages in debug tab"
@@ -2539,11 +2540,11 @@ msgstr "Zet handle tab aan"
 
 #: src/gui/setup_chat.cpp:113
 msgid "Enable battle tab"
-msgstr ""
+msgstr "Schakel de gevechtstab in"
 
 #: src/gui/setup_chat.cpp:116
 msgid "Show battle events"
-msgstr ""
+msgstr "geef de gevechtsevenementen weer"
 
 #: src/gui/setup_chat.cpp:119
 msgid "Resize chat tabs if need"
@@ -2626,7 +2627,7 @@ msgstr "Toewijzen"
 
 #: src/gui/setup_input.cpp:96
 msgid "Unassign"
-msgstr ""
+msgstr "Maak toewijzing ongedaan"
 
 #: src/gui/setup_input.cpp:97
 msgid "Default"
@@ -2681,7 +2682,7 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:40
 msgid "Misc"
-msgstr ""
+msgstr "Allerlei"
 
 #: src/gui/setup_other.cpp:46 src/gui/userpalette.cpp:124
 msgid "Monsters"
@@ -2705,15 +2706,15 @@ msgstr "Toon hp statusbalk van monsters"
 
 #: src/gui/setup_other.cpp:61
 msgid "Cycle monster targets"
-msgstr ""
+msgstr "Doorloop monsterdoelwitten"
 
 #: src/gui/setup_other.cpp:67
 msgid "Show warps particles"
-msgstr ""
+msgstr "Geef de poort-deeltjes weer"
 
 #: src/gui/setup_other.cpp:70
 msgid "Highlight map portals"
-msgstr ""
+msgstr "Markeer de kaartpoorten"
 
 #: src/gui/setup_other.cpp:73
 msgid "Highlight floor items"
@@ -2733,7 +2734,7 @@ msgstr "Teken de weg"
 
 #: src/gui/setup_other.cpp:85
 msgid "Draw hotkeys on map"
-msgstr ""
+msgstr "Teken hotkeys op de kaart"
 
 #: src/gui/setup_other.cpp:88
 msgid "Enable lazy scrolling"
@@ -2753,7 +2754,7 @@ msgstr "Bewegen"
 
 #: src/gui/setup_other.cpp:100
 msgid "Auto fix position"
-msgstr ""
+msgstr "Automatische positieverbetering"
 
 #: src/gui/setup_other.cpp:103
 msgid "Attack while moving"
@@ -2765,11 +2766,11 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:109
 msgid "Sync player move"
-msgstr ""
+msgstr "Syncroniseer spelerbeweging"
 
 #: src/gui/setup_other.cpp:112
 msgid "Crazy move A program"
-msgstr ""
+msgstr "Gestoorde beweging Een programma"
 
 #: src/gui/setup_other.cpp:116
 msgid "Player"
@@ -2785,23 +2786,23 @@ msgstr "Zet snelle statistieken aan"
 
 #: src/gui/setup_other.cpp:124
 msgid "Cycle player targets"
-msgstr ""
+msgstr "Doorloop spelerdoelwitten"
 
 #: src/gui/setup_other.cpp:127
 msgid "Show job exp messages"
-msgstr ""
+msgstr "Geef de job ervarings berichten weer"
 
 #: src/gui/setup_other.cpp:130
 msgid "Show players popups"
-msgstr ""
+msgstr "Geef de spelers popups weer"
 
 #: src/gui/setup_other.cpp:133
 msgid "Afk message"
-msgstr ""
+msgstr "'Weg van het toetsenbord'-bericht"
 
 #: src/gui/setup_other.cpp:136
 msgid "Show job"
-msgstr ""
+msgstr "Geef je beroep weer"
 
 #: src/gui/setup_other.cpp:139
 msgid "Enable attack filter"
@@ -2829,7 +2830,7 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:163
 msgid "Log NPC dialogue"
-msgstr ""
+msgstr "Houd de NPC dialogen bij"
 
 #: src/gui/setup_other.cpp:167
 msgid "Bots support"
@@ -2913,11 +2914,11 @@ msgstr "Zet debug log aan"
 
 #: src/gui/setup_other.cpp:227
 msgid "Low traffic mode"
-msgstr ""
+msgstr "Laag verkeer modus"
 
 #: src/gui/setup_other.cpp:230
 msgid "Hide shield sprite"
-msgstr ""
+msgstr "Verberg het schild"
 
 #: src/gui/setup_other.cpp:233
 msgid "Use FBO for screenshots (only for opengl)"
@@ -3209,7 +3210,7 @@ msgstr ""
 
 #: src/gui/setup_theme.cpp:163
 msgid "Gui theme"
-msgstr ""
+msgstr "GUI thema"
 
 #: src/gui/setup_theme.cpp:168
 msgid "Main Font"
@@ -3225,7 +3226,7 @@ msgstr "Vet lettertype"
 
 #: src/gui/setup_theme.cpp:178
 msgid "Particle font"
-msgstr ""
+msgstr "Deeltjes lettertype"
 
 #: src/gui/setup_theme.cpp:181
 msgid "Help font"
@@ -3405,7 +3406,7 @@ msgstr "Bellen met namen"
 
 #: src/gui/setup_visual.cpp:72
 msgid "Overhead text"
-msgstr ""
+msgstr "Bovenhoofdse tekst"
 
 #: src/gui/setup_visual.cpp:75 src/gui/setup_visual.cpp:104
 msgid "off"
@@ -3437,7 +3438,7 @@ msgstr "max"
 
 #: src/gui/setup_visual.cpp:88
 msgid "Particle detail"
-msgstr ""
+msgstr "Deeltjesdetail"
 
 #: src/gui/setup_visual.cpp:92
 msgid "best quality"
@@ -3515,7 +3516,7 @@ msgstr "Omhoog"
 #: src/gui/skilldialog.cpp:335
 #, c-format
 msgid "Skill points available: %d"
-msgstr ""
+msgstr "Vaardigheidspunten vrijgegeven: %d"
 
 #: src/gui/skilldialog.cpp:378
 msgid "basic"
@@ -3528,12 +3529,12 @@ msgstr ""
 #: src/gui/skilldialog.cpp:415
 #, c-format
 msgid "Skill Set %d"
-msgstr ""
+msgstr "Vaardigheid Set %d"
 
 #: src/gui/skilldialog.cpp:428
 #, c-format
 msgid "Skill %d"
-msgstr ""
+msgstr "Vaardigheid %d"
 
 #: src/gui/skilldialog.cpp:434
 #, c-format
@@ -3567,7 +3568,7 @@ msgstr "Guild %s verlating aangevraagd."
 
 #: src/gui/socialwindow.cpp:214
 msgid "Member Invite to Guild"
-msgstr ""
+msgstr "Lid uitnodigen bij gilde"
 
 #: src/gui/socialwindow.cpp:215
 #, c-format
@@ -3595,11 +3596,11 @@ msgstr "Gebruiker %s uitgenodigd in groep."
 #: src/gui/socialwindow.cpp:351
 #, c-format
 msgid "Party %s quit requested."
-msgstr ""
+msgstr "Groep %s stoppen verzocht."
 
 #: src/gui/socialwindow.cpp:377
 msgid "Member Invite to Party"
-msgstr ""
+msgstr "Lid uitnodigen in groep"
 
 #: src/gui/socialwindow.cpp:378
 #, c-format
@@ -3800,12 +3801,12 @@ msgstr "Job:"
 #: src/gui/statuswindow.cpp:266 src/gui/statuswindow.cpp:318
 #, c-format
 msgid "Character points: %d"
-msgstr ""
+msgstr "Personagepunten: %d"
 
 #: src/gui/statuswindow.cpp:332
 #, c-format
 msgid "Correction points: %d"
-msgstr ""
+msgstr "Correctiepunten: %d"
 
 #: src/gui/textcommandeditor.cpp:108
 msgid "No Target"
@@ -3841,11 +3842,11 @@ msgstr "Natuursmagie"
 
 #: src/gui/textcommandeditor.cpp:120
 msgid "Astral Magic"
-msgstr ""
+msgstr "Astral Magie"
 
 #: src/gui/textcommandeditor.cpp:165
 msgid "Command Editor"
-msgstr ""
+msgstr "Commando bewerker"
 
 #: src/gui/textcommandeditor.cpp:169
 msgid "magic"
@@ -4011,11 +4012,11 @@ msgstr "NPCs"
 
 #: src/gui/userpalette.cpp:125
 msgid "Monster HP bar"
-msgstr ""
+msgstr "Monster Levenspuntenbalk"
 
 #: src/gui/userpalette.cpp:127
 msgid "Monster HP bar (second color)"
-msgstr ""
+msgstr "Monster Levenspuntenbalk(tweede kleur)"
 
 #: src/gui/userpalette.cpp:128
 msgid "Party Members"
@@ -4039,23 +4040,23 @@ msgstr "Ervaring Notificatie"
 
 #: src/gui/userpalette.cpp:133
 msgid "Player HP bar"
-msgstr ""
+msgstr "Speler Levenspuntenbalk"
 
 #: src/gui/userpalette.cpp:135
 msgid "Player HP bar (second color)"
-msgstr ""
+msgstr "Speler Levenspuntenbalk"
 
 #: src/gui/userpalette.cpp:136
 msgid "Player Hits Monster"
-msgstr ""
+msgstr "Speler raakt Monster"
 
 #: src/gui/userpalette.cpp:137
 msgid "Monster Hits Player"
-msgstr ""
+msgstr "Monster raakt Speler"
 
 #: src/gui/userpalette.cpp:139
 msgid "Other Player Hits Local Player"
-msgstr ""
+msgstr "Andere speler raakt lokale speler"
 
 #: src/gui/userpalette.cpp:140
 msgid "Critical Hit"
@@ -4063,15 +4064,15 @@ msgstr "Kritieke aanval"
 
 #: src/gui/userpalette.cpp:142
 msgid "Local Player Hits Monster"
-msgstr ""
+msgstr "Lokale speler raakt andere speler"
 
 #: src/gui/userpalette.cpp:144
 msgid "Local Player Critical Hit"
-msgstr ""
+msgstr "Lokale speler Critieke slag"
 
 #: src/gui/userpalette.cpp:146
 msgid "Local Player Miss"
-msgstr ""
+msgstr "Lokale Speler mis"
 
 #: src/gui/userpalette.cpp:147
 msgid "Misses"
@@ -4079,7 +4080,7 @@ msgstr "Missers"
 
 #: src/gui/userpalette.cpp:148
 msgid "Portal Highlight"
-msgstr ""
+msgstr "Poortmarkering"
 
 #: src/gui/userpalette.cpp:150
 msgid "Default collision Highlight"
@@ -4099,7 +4100,7 @@ msgstr ""
 
 #: src/gui/userpalette.cpp:158
 msgid "Walkable Highlight"
-msgstr ""
+msgstr "Bewandelbare markering"
 
 #: src/gui/userpalette.cpp:160
 msgid "Local Player Attack Range"
@@ -4115,15 +4116,15 @@ msgstr "Aanvalsbereik van monster"
 
 #: src/gui/userpalette.cpp:166
 msgid "Home Place"
-msgstr ""
+msgstr "Thuisplaats"
 
 #: src/gui/userpalette.cpp:168
 msgid "Home Place Border"
-msgstr ""
+msgstr "Thuisplaatsgrens"
 
 #: src/gui/userpalette.cpp:170
 msgid "Road Point"
-msgstr ""
+msgstr "Wegpunt"
 
 #: src/gui/whoisonline.cpp:77 src/gui/whoisonline.cpp:618
 msgid "Who Is Online - Updating"
@@ -4147,7 +4148,7 @@ msgstr "Wie Is Online - Bijgewerkt"
 
 #: src/gui/widgets/battletab.cpp:43
 msgid "Battle"
-msgstr ""
+msgstr "Gevecht"
 
 #: src/gui/widgets/channeltab.cpp:52
 msgid "/users > Lists the users in the current channel"
@@ -4351,11 +4352,11 @@ msgstr "Bot controle"
 
 #: src/gui/windowmenu.cpp:81
 msgid "KS"
-msgstr ""
+msgstr "KS"
 
 #: src/gui/windowmenu.cpp:83
 msgid "Smilies"
-msgstr ""
+msgstr "Smilies"
 
 #: src/gui/windowmenu.cpp:85
 msgid "STA"
@@ -4367,11 +4368,11 @@ msgstr "Status"
 
 #: src/gui/windowmenu.cpp:86
 msgid "EQU"
-msgstr ""
+msgstr "UITR"
 
 #: src/gui/windowmenu.cpp:88
 msgid "INV"
-msgstr ""
+msgstr "VOOR"
 
 #: src/gui/windowmenu.cpp:93
 msgid "SKI"
