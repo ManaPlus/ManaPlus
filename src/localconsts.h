@@ -24,6 +24,13 @@
 #define final
 #define override
 #else
+#define GCC_VERSION (__GNUC__ * 10000 \
+    + __GNUC_MINOR__ * 100 \
+    + __GNUC_PATCHLEVEL__)
+#if GCC_VERSION < 40700
+#define final
+#define override
+#endif
 #undef Z_NULL
 #define Z_NULL nullptr
 #endif
