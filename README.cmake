@@ -1,3 +1,5 @@
+Warning cmake is unsupported build type.
+
 0. Contents
 ------------
  1. Basic syntax
