@@ -1260,13 +1260,19 @@ void showRes(std::string str, ResourceManager::Resources *res)
             else
                 iter->second->setDumped(true);
 
-            if (dynamic_cast<SubImage*>(iter->second))
+            SubImage *const subImage = dynamic_cast<SubImage *const>(
+                iter->second);
+            Image *const image = dynamic_cast<Image *const>(iter->second);
+            int id = 0;
+            if (subImage)
                 type = "S";
-            else if (dynamic_cast<Image*>(iter->second))
+            else if (image)
                 type = "I";
-            logger->log("Resource %s%s: %s (%d)", type.c_str(),
+            if (image)
+                id = image->getGLImage();
+            logger->log("Resource %s%s: %s (%d) id=%d", type.c_str(),
                 isNew.c_str(), iter->second->getIdPath().c_str(),
-                iter->second->getRefCount());
+                iter->second->getRefCount(), id);
         }
         ++ iter;
     }
