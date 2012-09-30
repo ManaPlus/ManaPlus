@@ -161,6 +161,7 @@ ResourceManager::~ResourceManager()
             ++iter;
         }
     }
+    clearDeleted();
     clearScheduled();
 }
 
@@ -214,31 +215,7 @@ bool ResourceManager::cleanOrphans(const bool always)
         }
         else
         {
-#ifdef USE_OPENGL
-            const Image *const image = dynamic_cast<Image*>(res);
-            if (image)
-            {
-                const std::string src = image->getSource();
-                if (image && image->getGLImage())
-                {
-                    logger->log("ResourceManager::release(%s, %u) %s",
-                        res->mIdPath.c_str(), image->getGLImage(),
-                        src.c_str());
-                }
-                else
-                {
-                    logger->log("ResourceManager::release(%s) %s",
-                        res->mIdPath.c_str(), src.c_str());
-                }
-            }
-            else
-            {
-                logger->log("ResourceManager::release(%s)",
-                    res->mIdPath.c_str());
-            }
-#else
-            logger->log("ResourceManager::release(%s)", res->mIdPath.c_str());
-#endif
+            logResource(res);
             const ResourceIterator toErase = iter;
             ++iter;
             mOrphanedResources.erase(toErase);
@@ -252,6 +229,70 @@ bool ResourceManager::cleanOrphans(const bool always)
     return status;
 }
 
+void ResourceManager::logResource(const Resource *const res)
+{
+#ifdef USE_OPENGL
+    const Image *const image = dynamic_cast<const Image *const>(res);
+    if (image)
+    {
+        std::string src = image->getSource();
+        const int count = image->getRefCount();
+        if (count)
+            src += " " + toString(count);
+        if (image && image->getGLImage())
+        {
+            logger->log("ResourceManager::release(%s, %u) %s",
+                res->mIdPath.c_str(), image->getGLImage(),
+                src.c_str());
+        }
+        else
+        {
+            logger->log("ResourceManager::release(%s) %s",
+                res->mIdPath.c_str(), src.c_str());
+        }
+    }
+    else
+    {
+        logger->log("ResourceManager::release(%s)",
+            res->mIdPath.c_str());
+    }
+#else
+    logger->log("ResourceManager::release(%s)", res->mIdPath.c_str());
+#endif
+}
+
+void ResourceManager::clearDeleted()
+{
+    bool status(true);
+    logger->log("clear deleted");
+    while (status)
+    {
+        status = false;
+        std::set<Resource*>::iterator resDelIter = mDeletedResources.begin();
+        while (resDelIter != mDeletedResources.end())
+        {
+            if (!(*resDelIter)->getRefCount())
+            {
+                status = true;
+                logResource(*resDelIter);
+                mDeletedResources.erase(resDelIter);
+                delete *resDelIter;
+                break;
+            }
+            ++ resDelIter;
+        }
+    }
+    if (!mDeletedResources.empty())
+    {
+        logger->log("leaks in deleted");
+        std::set<Resource*>::iterator resDelIter = mDeletedResources.begin();
+        while (resDelIter != mDeletedResources.end())
+        {
+            logResource(*resDelIter);
+            ++ resDelIter;
+        }
+    }
+}
 bool ResourceManager::setWriteDir(const std::string &path) const
 {
     return static_cast<bool>(PHYSFS_setWriteDir(path.c_str()));

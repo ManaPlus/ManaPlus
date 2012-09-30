@@ -225,6 +225,10 @@ class ResourceManager final
          */
         void release(Resource *const res);
 
+        void clearDeleted();
+
+        static void logResource(const Resource *const res);
+
         /**
          * Move resource to deleted resources list.
          */
