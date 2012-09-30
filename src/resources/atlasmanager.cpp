@@ -92,16 +92,21 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
 void AtlasManager::loadImages(const StringVect &files,
                               std::vector<Image*> &images)
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     for (StringVectCIter it = files.begin(), it_end = files.end();
           it != it_end; ++ it)
     {
         const std::string str = *it;
-        if (resman->isInCache(str))
+        // check is image with same name already in cache
+        // and if yes, move it to deleted set
+        Resource *const res = resman->getTempResource(str);
+        if (res)
         {
-            logger->log("Resource %s already in cache", str.c_str());
-            continue;
+            //logger->log("Resource %s already in cache", str.c_str());
+            // increase counter because in moveToDeleted it will be decreased.
+            res->incRef();
+            resman->moveToDeleted(res);
         }
 
         SDL_RWops *rw = PHYSFSRWOPS_openRead(str.c_str());
@@ -292,7 +297,7 @@ void AtlasManager::moveToDeleted(AtlasResource *resource)
             Image *const image = atlas->atlasImage;
             if (image)
             {
-                image->decRef();
+                // move each atlas image to deleted
                 resman->moveToDeleted(image);
             }
             for (std::vector<AtlasItem*>::iterator it2 = atlas->items.begin(),
@@ -305,7 +310,6 @@ void AtlasManager::moveToDeleted(AtlasResource *resource)
                     Image *const image2 = item->image;
                     if (image2)
                     {
-                        image2->decRef();
                         // move each atlas sub image to deleted
                         resman->moveToDeleted(image2);
                     }
@@ -329,16 +333,8 @@ AtlasResource::~AtlasResource()
             {
                 AtlasItem *const item = *it2;
                 if (item)
-                {
-//                    Image *const image = item->image;
-//                    if (image)
-//                        image->decRef();
                     delete item;
-                }
             }
-//            Image *const image = atlas->atlasImage;
-//            if (image)
-//                image->decRef();
             delete atlas;
         }
     }

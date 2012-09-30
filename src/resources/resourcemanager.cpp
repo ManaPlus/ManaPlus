@@ -289,6 +289,11 @@ void ResourceManager::clearDeleted()
         while (resDelIter != mDeletedResources.end())
         {
             logResource(*resDelIter);
+
+            // for debug only
+//            delete *resDelIter;
+            // for debug only
+
             ++ resDelIter;
         }
     }
@@ -444,6 +449,18 @@ bool ResourceManager::isInCache(const std::string &idPath) const
 {
     const ResourceCIterator &resIter = mResources.find(idPath);
     return (resIter != mResources.end() && resIter->second);
+}
+
+Resource *ResourceManager::getTempResource(const std::string &idPath)
+{
+    const ResourceCIterator &resIter = mResources.find(idPath);
+    if (resIter != mResources.end())
+    {
+        Resource *const res = resIter->second;
+        if (resIter->second)
+            return res;
+    }
+    return nullptr;
 }
 
 Resource *ResourceManager::getFromCache(const std::string &idPath)
@@ -714,7 +731,7 @@ struct AtlasLoader
         const AtlasLoader *const rl = static_cast<const AtlasLoader *const>(v);
         AtlasResource *const resource = AtlasManager::loadTextureAtlas(
             rl->name, *rl->files);
-        AtlasManager::injectToResources(resource);
+//        AtlasManager::injectToResources(resource);
         return resource;
     }
 };
@@ -788,17 +805,35 @@ void ResourceManager::release(Resource *const res)
 
 void ResourceManager::moveToDeleted(Resource *const res)
 {
+    if (!res)
+        return;
+
+    bool found(false);
+    const int count = res->getRefCount();
+    if (count == 1)
+        logResource(res);
+    res->decRef();
     ResourceIterator resIter = mResources.find(res->mIdPath);
     if (resIter != mResources.end() && resIter->second == res)
     {
-        mDeletedResources.insert(res);
         mResources.erase(resIter);
+        found = true;
     }
-    resIter = mOrphanedResources.find(res->mIdPath);
-    if (resIter != mOrphanedResources.end() && resIter->second == res)
+    else
     {
-        mDeletedResources.insert(res);
-        mOrphanedResources.erase(resIter);
+        resIter = mOrphanedResources.find(res->mIdPath);
+        if (resIter != mOrphanedResources.end() && resIter->second == res)
+        {
+            mOrphanedResources.erase(resIter);
+            found = true;
+        }
+    }
+    if (found)
+    {
+        if (count > 1)
+            mDeletedResources.insert(res);
+        else
+            delete res;
     }
 }
 

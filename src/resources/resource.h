@@ -96,11 +96,11 @@ class Resource
         virtual ~Resource();
 
         std::string mIdPath; /**< Path identifying this resource. */
+        std::string mSource;
 
     private:
         time_t mTimeStamp;   /**< Time at which the resource was orphaned. */
         unsigned mRefCount;  /**< Reference count. */
-        std::string mSource;
 #ifdef DEBUG_DUMP_LEAKS
         bool mDumped;
 #endif

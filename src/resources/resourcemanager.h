@@ -303,6 +303,8 @@ class ResourceManager final
 
         bool isInCache(const std::string &idPath) const;
 
+        Resource *getTempResource(const std::string &idPath);
+
         static void addDelayedAnimation(AnimationDelayLoad *const animation)
         { mDelayedAnimations.push_back(animation); }
 
