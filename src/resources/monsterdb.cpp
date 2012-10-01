@@ -124,11 +124,11 @@ void MonsterDB::load()
         //iterate <sprite>s and <sound>s
         for_each_xml_child_node(spriteNode, monsterNode)
         {
-            if (!spriteNode->xmlChildrenNode)
-                continue;
-
             if (xmlNameEqual(spriteNode, "sprite"))
             {
+                if (!spriteNode->xmlChildrenNode)
+                    continue;
+
                 SpriteReference *const currentSprite = new SpriteReference;
                 currentSprite->sprite = reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);
@@ -139,6 +139,9 @@ void MonsterDB::load()
             }
             else if (xmlNameEqual(spriteNode, "sound"))
             {
+                if (!spriteNode->xmlChildrenNode)
+                    continue;
+
                 std::string event = XML::getProperty(spriteNode, "event", "");
                 const char *filename;
                 filename = reinterpret_cast<const char*>(
@@ -199,6 +202,9 @@ void MonsterDB::load()
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
             {
+                if (!spriteNode->xmlChildrenNode)
+                    continue;
+
                 display.particles.push_back(reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content));
             }
