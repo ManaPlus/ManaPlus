@@ -69,8 +69,12 @@ Setup_Perfomance::Setup_Perfomance() :
     new SetupItemCheckBox(_("Enable compound sprite delay (Software)"), "",
         "enableCompoundSpriteDelay", this, "enableCompoundSpriteDelayEvent");
 
-    new SetupItemCheckBox(_("Enable delayed images load  (OpenGL)"), "",
+    new SetupItemCheckBox(_("Enable delayed images load (OpenGL)"), "",
         "enableDelayedAnimations", this, "enableDelayedAnimationsEvent");
+
+    new SetupItemCheckBox(_("Enable texture sampler (OpenGL)"), "",
+        "useTextureSampler", this, "useTextureSamplerEvent");
+
 
     new SetupItemLabel(_("Better quality (disable for better perfomance)"),
         "", this);

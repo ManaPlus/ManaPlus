@@ -20,12 +20,10 @@
 
 #include "graphicsmanager.h"
 
+#ifdef USE_OPENGL
 #ifndef WIN32
-#define GL_GLEXT_PROTOTYPES 1
 #include "GL/glx.h"
-// hack to hide warnings
-#undef GL_GLEXT_VERSION
-#undef GL_GLEXT_PROTOTYPES
+#endif
 #endif
 
 #include "configuration.h"
@@ -66,12 +64,20 @@ GraphicsManager::GraphicsManager() :
     mPlatformMinor(0),
     mPlatformMajor(0),
     mMaxVertices(500),
+#ifdef USE_OPENGL
+    mUseTextureSampler(true),
+    mTextureSampler(0),
+#endif
     mUseAtlases(false)
 {
 }
 
 GraphicsManager::~GraphicsManager()
 {
+#ifdef USE_OPENGL
+    if (mglGenSamplers && mTextureSampler)
+        mglDeleteSamplers(1, &mTextureSampler);
+#endif
 }
 
 int GraphicsManager::startDetection()
@@ -187,17 +193,20 @@ void GraphicsManager::initGraphics(bool noOpenGL)
             imageHelper = new SDLImageHelper;
             sdlImageHelper = imageHelper;
             mainGraphics = new Graphics;
+            mUseTextureSampler = false;
             break;
         case 1:
         default:
             imageHelper = new OpenGLImageHelper;
             sdlImageHelper = new SDLImageHelper;
             mainGraphics = new NormalOpenGLGraphics;
+            mUseTextureSampler = true;
             break;
         case 2:
             imageHelper = new OpenGLImageHelper;
             sdlImageHelper = new SDLImageHelper;
             mainGraphics = new SafeOpenGLGraphics;
+            mUseTextureSampler = false;
             break;
     };
     mUseAtlases = imageHelper->useOpenGL()
@@ -605,6 +614,14 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glDeleteSamplers, "glDeleteSamplers");
         assignFunction(glBindSampler, "glBindSampler");
         assignFunction(glSamplerParameteri, "glSamplerParameteri");
+        if (mglGenSamplers && config.getBoolValue("useTextureSampler"))
+            mUseTextureSampler &= true;
+        else
+            mUseTextureSampler = false;
+    }
+    else
+    {
+        mUseTextureSampler = false;
     }
 
 #ifdef WIN32
@@ -636,6 +653,43 @@ void GraphicsManager::initOpenGL()
     updateExtensions();
     initOpenGLFunctions();
     updatePlanformExtensions();
+    createTextureSampler();
     updateLimits();
 #endif
+}
+
+void GraphicsManager::createTextureSampler()
+{
+    OpenGLImageHelper::setUseTextureSampler(mUseTextureSampler);
+    if (mUseTextureSampler)
+    {
+        logger->log("using texture sampler");
+        getLastError();
+        mglGenSamplers(1, &mTextureSampler);
+        if (getLastError() != GL_NO_ERROR)
+        {
+            mUseTextureSampler = false;
+            logger->log("texture sampler error");
+            return;
+        }
+        OpenGLImageHelper::initTextureSampler(mTextureSampler);
+        mglBindSampler(0, mTextureSampler);
+        if (getLastError() != GL_NO_ERROR)
+        {
+            mUseTextureSampler = false;
+            logger->log("texture sampler error");
+        }
+    }
+}
+
+unsigned int GraphicsManager::getLastError()
+{
+    GLenum tmp = glGetError();
+    GLenum error = GL_NO_ERROR;
+    while (tmp != GL_NO_ERROR)
+    {
+        error = tmp;
+        tmp = glGetError();
+    }
+    return error;
 }

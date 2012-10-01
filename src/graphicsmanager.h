@@ -21,6 +21,18 @@
 #ifndef GRAPHICSMANAGER_H
 #define GRAPHICSMANAGER_H
 
+#include "main.h"
+
+#ifdef USE_OPENGL
+#ifndef WIN32
+#define GL_GLEXT_PROTOTYPES 1
+#include <SDL_opengl.h>
+// hack to hide warnings
+#undef GL_GLEXT_VERSION
+#undef GL_GLEXT_PROTOTYPES
+#endif
+#endif
+
 #include <set>
 #include <string>
 
@@ -75,11 +87,15 @@ class GraphicsManager final
 
         Graphics *createGraphics();
 
+        void createTextureSampler();
+
         int getMaxVertices() const
         { return mMaxVertices; }
 
         bool getUseAtlases() const
         { return mUseAtlases; }
+
+        unsigned int getLastError();
 
     private:
         std::set<std::string> mExtensions;
@@ -98,7 +114,13 @@ class GraphicsManager final
 
         int mMaxVertices;
 
+#ifdef USE_OPENGL
+        bool mUseTextureSampler;
+
+        GLuint mTextureSampler;
+#endif
         bool mUseAtlases;
+
 };
 
 extern GraphicsManager graphicsManager;

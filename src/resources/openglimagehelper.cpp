@@ -28,6 +28,7 @@
 #include "game.h"
 #include "graphicsmanager.h"
 #include "logger.h"
+#include "mgl.h"
 #include "normalopenglgraphics.h"
 #include "safeopenglgraphics.h"
 
@@ -47,6 +48,7 @@ int OpenGLImageHelper::mInternalTextureType = GL_RGBA8;
 int OpenGLImageHelper::mTextureSize = 0;
 bool OpenGLImageHelper::mBlur = true;
 int OpenGLImageHelper::mUseOpenGL = 0;
+bool OpenGLImageHelper::mUseTextureSampler = false;
 
 Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
@@ -222,15 +224,18 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
         SDL_LockSurface(tmpImage);
 
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-    if (mBlur)
+    if (!mUseTextureSampler)
     {
-        glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    }
-    else
-    {
-        glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        if (mBlur)
+        {
+            glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        }
+        else
+        {
+            glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        }
     }
 
     glTexImage2D(mTextureType, 0, mInternalTextureType,
@@ -299,5 +304,19 @@ void OpenGLImageHelper::setLoadAsOpenGL(int useOpenGL)
 int OpenGLImageHelper::useOpenGL()
 {
     return mUseOpenGL;
+}
+
+void OpenGLImageHelper::initTextureSampler(GLint id)
+{
+    if (mBlur)
+    {
+        mglSamplerParameteri(id, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        mglSamplerParameteri(id, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    }
+    else
+    {
+        mglSamplerParameteri(id, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        mglSamplerParameteri(id, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    }
 }
 #endif
