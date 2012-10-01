@@ -263,6 +263,27 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                 image->setAlpha(1.0f); // ensure the image if fully drawn...
                 g->drawImage(image, itemX, itemY);
             }
+        }
+    }
+
+    for (int j = 0; j < mGridRows; j++)
+    {
+        const int intY0 = j * BOX_HEIGHT;
+        int itemIndex = j * mGridColumns - 1;
+        for (int i = 0; i < mGridColumns; i++)
+        {
+            int itemX = i * BOX_WIDTH;
+            int itemY = intY0;
+            itemIndex ++;
+            if (mShowMatrix[itemIndex] < 0)
+                continue;
+
+            const Item *const item = mInventory->getItem(
+                mShowMatrix[itemIndex]);
+
+            if (!item || item->getId() == 0)
+                continue;
+
             // Draw item caption
             std::string caption;
             if (item->getQuantity() > 1 || mForceQuantity)
@@ -279,17 +300,6 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                         itemY + BOX_HEIGHT - 14, gcn::Graphics::CENTER);
         }
     }
-
-/*
-    // Draw an orange box around the selected item
-    if (isFocused() && mHighlightedIndex != -1 && mGridColumns)
-    {
-        const int itemX = (mHighlightedIndex % mGridColumns) * BOX_WIDTH;
-        const int itemY = (mHighlightedIndex / mGridColumns) * BOX_HEIGHT;
-        g->setColor(gcn::Color(255, 128, 0));
-        g->drawRectangle(gcn::Rectangle(itemX, itemY, BOX_WIDTH, BOX_HEIGHT));
-    }
-*/
 }
 
 void ItemContainer::selectNone()

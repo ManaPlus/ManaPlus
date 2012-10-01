@@ -117,6 +117,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         }
     }
 
+    graphics->setColor(mForegroundColor);
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int emoteX = (i % mGridWidth) * mBoxWidth;
@@ -126,7 +127,6 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         const std::string key = inputManager.getKeyValueString(
             Input::KEY_EMOTE_1 + i);
 
-        graphics->setColor(mForegroundColor);
         g->drawText(key, emoteX + 2, emoteY + 2, gcn::Graphics::LEFT);
     }
     const unsigned sz = static_cast<unsigned>(mEmoteImg.size());
