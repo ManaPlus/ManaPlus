@@ -34,6 +34,10 @@ defName(glFramebufferRenderbuffer);
 defName(glDeleteFramebuffers);
 defName(glDeleteRenderbuffers);
 defName(glGetStringi);
+defName(glGenSamplers);
+defName(glDeleteSamplers);
+defName(glBindSampler);
+defName(glSamplerParameteri);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);

@@ -51,6 +51,13 @@ typedef void (APIENTRY *glDeleteFramebuffers_t) (GLsizei, const GLuint *);
 typedef void (APIENTRY *glDeleteRenderbuffers_t) (GLsizei, const GLuint *);
 typedef const GLubyte *(APIENTRY *glGetStringi_t) (GLenum, GLuint);
 
+typedef void (APIENTRY *glGenSamplers_t) (GLsizei count, GLuint *samplers);
+typedef void (APIENTRY *glDeleteSamplers_t)
+    (GLsizei count, const GLuint * samplers);
+typedef void (APIENTRY *glBindSampler_t) (GLuint unit, GLuint sampler);
+typedef void (APIENTRY *glSamplerParameteri_t)
+    (GLuint sampler, GLenum pname, GLint param);
+
 defNameE(glGenRenderbuffers);
 defNameE(glBindRenderbuffer);
 defNameE(glRenderbufferStorage);
@@ -61,6 +68,10 @@ defNameE(glFramebufferRenderbuffer);
 defNameE(glDeleteFramebuffers);
 defNameE(glDeleteRenderbuffers);
 defNameE(glGetStringi);
+defNameE(glGenSamplers);
+defNameE(glDeleteSamplers);
+defNameE(glBindSampler);
+defNameE(glSamplerParameteri);
 
 #ifdef WIN32
 typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);

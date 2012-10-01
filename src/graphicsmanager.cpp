@@ -48,6 +48,16 @@
 
 #include "debug.h"
 
+#ifdef WIN32
+#define getFunction(name) wglGetProcAddress(name)
+#else
+#define getFunction(name) glXGetProcAddress(\
+    reinterpret_cast<const GLubyte*>(name))
+#endif
+
+#define assignFunction(func, name) m##func \
+    = reinterpret_cast<func##_t>(getFunction(name))
+
 GraphicsManager graphicsManager;
 
 GraphicsManager::GraphicsManager() :
@@ -221,6 +231,9 @@ Graphics *GraphicsManager::createGraphics()
 void GraphicsManager::updateExtensions()
 {
 #ifdef USE_OPENGL
+    if (checkGLVersion(3, 0))
+        assignFunction(glGetStringi, "glGetStringi");
+
     mExtensions.clear();
     logger->log1("opengl extensions: ");
     if (checkGLVersion(3, 0))
@@ -549,16 +562,6 @@ void GraphicsManager::deleteFBO(FBOInfo *fbo)
 #endif
 }
 
-#ifdef WIN32
-#define getFunction(name) wglGetProcAddress(name)
-#else
-#define getFunction(name) glXGetProcAddress(\
-    reinterpret_cast<const GLubyte*>(name))
-#endif
-
-#define assignFunction(func, name) m##func \
-    = reinterpret_cast<func##_t>(getFunction(name))
-
 void GraphicsManager::initOpenGLFunctions()
 {
 #ifdef USE_OPENGL
@@ -595,8 +598,14 @@ void GraphicsManager::initOpenGLFunctions()
         config.setValue("usefbo", false);
     }
 
-    if (checkGLVersion(3, 0))
-        assignFunction(glGetStringi, "glGetStringi");
+    // Texture sampler
+    if (checkGLVersion(1, 0) && supportExtension("GL_ARB_sampler_objects"))
+    {
+        assignFunction(glGenSamplers, "glGenSamplers");
+        assignFunction(glDeleteSamplers, "glDeleteSamplers");
+        assignFunction(glBindSampler, "glBindSampler");
+        assignFunction(glSamplerParameteri, "glSamplerParameteri");
+    }
 
 #ifdef WIN32
     assignFunction(wglGetExtensionsString, "wglGetExtensionsStringARB");
@@ -624,8 +633,8 @@ void GraphicsManager::initOpenGL()
 {
 #ifdef USE_OPENGL
     setGLVersion();
-    initOpenGLFunctions();
     updateExtensions();
+    initOpenGLFunctions();
     updatePlanformExtensions();
     updateLimits();
 #endif
