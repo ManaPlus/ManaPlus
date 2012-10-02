@@ -110,7 +110,7 @@ namespace XML
     {
         int &ret = def;
 
-        xmlChar *const prop = xmlGetProp(node, BAD_CAST name);
+        xmlChar *const prop = XmlGetProp(node, name);
         if (prop)
         {
             ret = atoi(reinterpret_cast<char*>(prop));
@@ -125,7 +125,7 @@ namespace XML
     {
         int &ret = def;
 
-        xmlChar *const prop = xmlGetProp(node, BAD_CAST name);
+        xmlChar *const prop = XmlGetProp(node, name);
         if (prop)
         {
             ret = atoi(reinterpret_cast<char*>(prop));
@@ -143,7 +143,7 @@ namespace XML
     {
         double &ret = def;
 
-        xmlChar *const prop = xmlGetProp(node, BAD_CAST name);
+        xmlChar *const prop = XmlGetProp(node, name);
         if (prop)
         {
             ret = atof(reinterpret_cast<char*>(prop));
@@ -156,7 +156,7 @@ namespace XML
     std::string getProperty(const XmlNodePtr node, const char *const name,
                             const std::string &def)
     {
-        xmlChar *const prop = xmlGetProp(node, BAD_CAST name);
+        xmlChar *const prop = XmlGetProp(node, name);
         if (prop)
         {
             std::string val = reinterpret_cast<char*>(prop);
@@ -180,11 +180,11 @@ namespace XML
     bool getBoolProperty(const XmlNodePtr node, const char *const name,
                          const bool def)
     {
-        const xmlChar *const prop = xmlGetProp(node, BAD_CAST name);
+        const xmlChar *const prop = XmlGetProp(node, name);
 
-        if (xmlStrEqual(prop, BAD_CAST "true" ))
+        if (XmlStrEqual(prop, "true"))
             return true;
-        if (xmlStrEqual(prop, BAD_CAST "false"))
+        if (XmlStrEqual(prop, "false"))
             return false;
         return def;
     }

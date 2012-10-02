@@ -338,12 +338,12 @@ static bool print_position_from_addr(const void* addr)
 #else
         const char ignore_err[] = "";
 #endif
-        char* cmd = (char*)alloca(strlen(new_progname)
-                                  + exeext_len
-                                  + sizeof addr2line_cmd - 1
-                                  + sizeof ignore_err - 1
-                                  + sizeof(void*) * 2
-                                  + 4 /* SP + "0x" + null */);
+        char* cmd = static_cast<char*>(alloca(strlen(new_progname)
+            + exeext_len
+            + sizeof addr2line_cmd - 1
+            + sizeof ignore_err - 1
+            + sizeof(void*) * 2
+            + 4 /* SP + "0x" + null */));
         strcpy(cmd, addr2line_cmd);
         strcpy(cmd + sizeof addr2line_cmd - 1, new_progname);
         size_t len = strlen(cmd);
@@ -416,7 +416,7 @@ static void print_position(const void* ptr, int line)
 {
     if (line != 0)          // Is file/line information present?
     {
-        fprintf(new_output_fp, "%s:%d", (const char*)ptr, line);
+        fprintf(new_output_fp, "%s:%d", static_cast<const char*>(ptr), line);
     }
     else if (ptr != nullptr)   // Is caller address present?
     {
@@ -468,7 +468,7 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
                   Alignment_must_be_power_of_two);
     STATIC_ASSERT(M_DEBUG_NEW_TAILCHECK >= 0, Invalid_tail_check_length);
     size_t s = size + ALIGNED_LIST_ITEM_SIZE + M_DEBUG_NEW_TAILCHECK;
-    new_ptr_list_t* ptr = (new_ptr_list_t*)malloc(s);
+    new_ptr_list_t* ptr = static_cast<new_ptr_list_t*>(malloc(s));
     if (ptr == nullptr)
     {
 #if M_DEBUG_NEW_STD_OPER_NEW
@@ -482,7 +482,7 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
         M_DEBUG_NEW_ERROR_ACTION;
 #endif
     }
-    void* pointer = (char*)ptr + ALIGNED_LIST_ITEM_SIZE;
+    void* pointer = reinterpret_cast<char*>(ptr) + ALIGNED_LIST_ITEM_SIZE;
 #if M_DEBUG_NEW_FILENAME_LEN == 0
     ptr->file = file;
 #else
@@ -493,7 +493,7 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
     }
     else
     {
-        ptr->addr = (void*)file;
+        ptr->addr = reinterpret_cast<void*>(const_cast<char*>(file));
     }
 #endif
     ptr->line = line;
@@ -518,7 +518,7 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
         fprintf(new_output_fp,
                 "new%s: allocated %p (size %u, ",
                 is_array ? "[]" : "",
-                pointer, (unsigned)size);
+                pointer, static_cast<unsigned>(size));
         if (line != 0)
             print_position(ptr->file, ptr->line);
         else
@@ -541,8 +541,8 @@ static void free_pointer(void* pointer, void* addr, bool is_array)
 {
     if (pointer == nullptr)
         return;
-    new_ptr_list_t* ptr =
-        (new_ptr_list_t*)((char*)pointer - ALIGNED_LIST_ITEM_SIZE);
+    new_ptr_list_t* ptr = reinterpret_cast<new_ptr_list_t*>(
+        static_cast<char*>(pointer) - ALIGNED_LIST_ITEM_SIZE);
     if (ptr->magic != MAGIC)
     {
         {
@@ -567,8 +567,8 @@ static void free_pointer(void* pointer, void* addr, bool is_array)
         fprintf(new_output_fp,
                 "%s: pointer %p (size %u)\n\tat ",
                 msg,
-                (char*)ptr + ALIGNED_LIST_ITEM_SIZE,
-                (unsigned)ptr->size);
+                reinterpret_cast<char*>(ptr) + ALIGNED_LIST_ITEM_SIZE,
+                static_cast<unsigned>(ptr->size));
         print_position(addr, 0);
         fprintf(new_output_fp, "\n\toriginally allocated at ");
         if (ptr->line != 0)
@@ -598,10 +598,11 @@ static void free_pointer(void* pointer, void* addr, bool is_array)
     {
         fast_mutex_autolock lock(new_output_lock);
         fprintf(new_output_fp,
-                "delete%s: freed %p (size %u, %u bytes still allocated)\n",
-                is_array ? "[]" : "",
-                (char*)ptr + ALIGNED_LIST_ITEM_SIZE,
-                (unsigned)ptr->size, (unsigned)total_mem_alloc);
+            "delete%s: freed %p (size %u, %u bytes still allocated)\n",
+            is_array ? "[]" : "",
+            reinterpret_cast<char*>(ptr) + ALIGNED_LIST_ITEM_SIZE,
+            static_cast<unsigned>(ptr->size),
+            static_cast<unsigned>(total_mem_alloc));
     }
     free(ptr);
     return;
@@ -625,7 +626,8 @@ int check_leaks()
 
     while (ptr != &new_ptr_list)
     {
-        const char* const pointer = (char*)ptr + ALIGNED_LIST_ITEM_SIZE;
+        const char* const pointer = reinterpret_cast<const char *const>(ptr)
+            + ALIGNED_LIST_ITEM_SIZE;
         if (ptr->magic != MAGIC)
         {
             fprintf(new_output_fp,
@@ -646,14 +648,14 @@ int check_leaks()
         {
             fprintf(new_output_fp,
                     "Leaked object at %p (size %u, dump %u, ",
-                    pointer, (unsigned)ptr->size, ptr->dumped);
+                    pointer, static_cast<unsigned>(ptr->size), ptr->dumped);
             if (ptr->line != 0)
                 print_position(ptr->file, ptr->line);
             else
                 print_position(ptr->addr, ptr->line);
             fprintf(new_output_fp, ")\n");
             ++ new_cnt;
-            new_size += (unsigned long)ptr->size;
+            new_size += static_cast<unsigned long>(ptr->size);
         }
         if (ptr->dumped)
             ++ dumped_cnt;
@@ -687,7 +689,8 @@ int check_mem_corruption()
          ptr != &new_ptr_list;
          ptr = ptr->next)
     {
-        const char* const pointer = (char*)ptr + ALIGNED_LIST_ITEM_SIZE;
+        const char* const pointer = reinterpret_cast<char*>(ptr)
+            + ALIGNED_LIST_ITEM_SIZE;
         if (ptr->magic == MAGIC
 #if M_DEBUG_NEW_TAILCHECK
             && check_tail(ptr)
@@ -701,9 +704,9 @@ int check_mem_corruption()
         {
 #endif
             fprintf(new_output_fp,
-                    "Heap data corrupt near %p (size %u, ",
-                    pointer,
-                    (unsigned)ptr->size);
+                "Heap data corrupt near %p (size %u, ",
+                pointer,
+                static_cast<unsigned>(ptr->size));
 #if M_DEBUG_NEW_TAILCHECK
         }
         else
@@ -730,8 +733,8 @@ void __debug_new_recorder::_M_process(void* pointer)
 {
     if (pointer == nullptr)
         return;
-    new_ptr_list_t* ptr =
-        (new_ptr_list_t*)((char*)pointer - ALIGNED_LIST_ITEM_SIZE);
+    new_ptr_list_t* ptr = reinterpret_cast<new_ptr_list_t*>(
+        static_cast<char*>(pointer) - ALIGNED_LIST_ITEM_SIZE);
     if (ptr->magic != MAGIC || ptr->line != 0)
     {
         fast_mutex_autolock lock(new_output_lock);
@@ -777,23 +780,27 @@ void* operator new [](size_t size, const char* file, int line)
 
 void* operator new (size_t size) //throw(std::bad_alloc)
 {
-    return operator new (size, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0);
+    return operator new (size, static_cast<char*>(
+        M_DEBUG_NEW_CALLER_ADDRESS), 0);
 }
 
 void* operator new [](size_t size) //throw(std::bad_alloc)
 {
-    return operator new [](size, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0);
+    return operator new [](size, static_cast<char*>(
+        M_DEBUG_NEW_CALLER_ADDRESS), 0);
 }
 
 #if !defined(__BORLANDC__) || __BORLANDC__ > 0x551
 void* operator new (size_t size, const std::nothrow_t&) throw()
 {
-    return alloc_mem(size, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0, false);
+    return alloc_mem(size, static_cast<char*>(
+        M_DEBUG_NEW_CALLER_ADDRESS), 0, false);
 }
 
 void* operator new [](size_t size, const std::nothrow_t&) throw()
 {
-    return alloc_mem(size, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0, true);
+    return alloc_mem(size, static_cast<char*>(
+        M_DEBUG_NEW_CALLER_ADDRESS), 0, true);
 }
 #endif
 
@@ -838,12 +845,14 @@ void operator delete [](void* pointer, const char* file, int line) throw()
 
 void operator delete (void* pointer, const std::nothrow_t&) throw()
 {
-    operator delete (pointer, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0);
+    operator delete (pointer, static_cast<char*>(
+        M_DEBUG_NEW_CALLER_ADDRESS), 0);
 }
 
 void operator delete [](void* pointer, const std::nothrow_t&) throw()
 {
-    operator delete [](pointer, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0);
+    operator delete [](pointer, static_cast<char*>(
+        M_DEBUG_NEW_CALLER_ADDRESS), 0);
 }
 #endif // HAVE_PLACEMENT_DELETE
 

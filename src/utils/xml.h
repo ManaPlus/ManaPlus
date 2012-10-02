@@ -32,9 +32,22 @@
 #include "localconsts.h"
 
 #define XmlNodePtr xmlNodePtr
-#define xmlNameEqual(node, str) xmlStrEqual((node)->name, BAD_CAST (str))
+#define XmlStrEqual(str1, str2) xmlStrEqual(str1, \
+    reinterpret_cast<const xmlChar*>(str2))
+#define xmlNameEqual(node, str) xmlStrEqual((node)->name, \
+    reinterpret_cast<const xmlChar*>(str))
 #define XmlTextWriterPtr xmlTextWriterPtr
 #define xmlTypeEqual(node, typ) ((node)->type == (typ))
+#define XmlHasProp(node, name) xmlHasProp(node, \
+    reinterpret_cast<const xmlChar*>(name))
+#define XmlGetProp(node, name) xmlGetProp(node, \
+    reinterpret_cast<const xmlChar*>(name))
+#define XmlTextWriterStartElement(writer, name) \
+    xmlTextWriterStartElement(writer, reinterpret_cast<const xmlChar*>(name))
+#define XmlTextWriterWriteAttribute(writer, name, content) \
+    xmlTextWriterWriteAttribute(writer, \
+    reinterpret_cast<const xmlChar*>(name), \
+    reinterpret_cast<const xmlChar*>(content))
 
 /**
  * XML helper functions.

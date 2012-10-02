@@ -2271,7 +2271,8 @@ void Being::recalcSpritesOrder()
                                 mSpriteHide[remSprite] = repIt->second;
                                 if (repIt->second != 1)
                                 {
-                                    if ((unsigned)remSprite != hairSlot)
+                                    if (static_cast<unsigned>(remSprite)
+                                        != hairSlot)
                                     {
                                         setSprite(remSprite, repIt->second,
                                             mSpriteColors[remSprite],

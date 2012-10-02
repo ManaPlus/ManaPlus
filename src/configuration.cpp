@@ -733,12 +733,9 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
                 logger->log("unused configuration option: " + i->first);
         }
 #endif
-        xmlTextWriterStartElement(writer, BAD_CAST "option");
-        xmlTextWriterWriteAttribute(writer,
-                BAD_CAST "name", BAD_CAST i->first.c_str());
-
-        xmlTextWriterWriteAttribute(writer,
-                BAD_CAST "value", BAD_CAST i->second.c_str());
+        XmlTextWriterStartElement(writer, "option");
+        XmlTextWriterWriteAttribute(writer,"name", i->first.c_str());
+        XmlTextWriterWriteAttribute(writer,"value", i->second.c_str());
         xmlTextWriterEndElement(writer);
     }
 
@@ -748,14 +745,14 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
     {
         const char *const name = it->first.c_str();
 
-        xmlTextWriterStartElement(writer, BAD_CAST "list");
-        xmlTextWriterWriteAttribute(writer, BAD_CAST "name", BAD_CAST name);
+        XmlTextWriterStartElement(writer, "list");
+        XmlTextWriterWriteAttribute(writer, "name", name);
 
         // recurse on all elements
         for (ConfigurationList::const_iterator elt_it = it->second.begin(),
              elt_it_end = it->second.end(); elt_it != elt_it_end; ++elt_it)
         {
-            xmlTextWriterStartElement(writer, BAD_CAST name);
+            XmlTextWriterStartElement(writer, name);
             if (*elt_it)
                 (*elt_it)->writeToXML(writer);
             xmlTextWriterEndElement(writer);
@@ -794,7 +791,7 @@ void Configuration::write()
     xmlTextWriterSetIndent(writer, 1);
     xmlTextWriterStartDocument(writer, nullptr, nullptr, nullptr);
 //    xmlTextWriterStartDocument(writer, nullptr, "utf8", nullptr);
-    xmlTextWriterStartElement(writer, BAD_CAST "configuration");
+    XmlTextWriterStartElement(writer, "configuration");
 
     writeToXML(writer);
 

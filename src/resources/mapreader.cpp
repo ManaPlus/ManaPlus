@@ -705,7 +705,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
     std::string pathDir(path);
     std::map<std::string, std::string> props;
 
-    if (xmlHasProp(node, BAD_CAST "source"))
+    if (XmlHasProp(node, "source"))
     {
         std::string filename = XML::getProperty(node, "source", "");
         filename = resolveRelativePath(path, filename);
