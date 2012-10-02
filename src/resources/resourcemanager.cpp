@@ -271,9 +271,10 @@ void ResourceManager::clearDeleted()
             if (!(*resDelIter)->getRefCount())
             {
                 status = true;
-                logResource(*resDelIter);
+                Resource *res = *resDelIter;
+                logResource(res);
                 mDeletedResources.erase(resDelIter);
-                delete *resDelIter;
+                delete res;
                 break;
             }
             ++ resDelIter;

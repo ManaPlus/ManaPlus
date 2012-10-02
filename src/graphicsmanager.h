@@ -24,13 +24,11 @@
 #include "main.h"
 
 #ifdef USE_OPENGL
-#ifndef WIN32
 #define GL_GLEXT_PROTOTYPES 1
 #include <SDL_opengl.h>
 // hack to hide warnings
 #undef GL_GLEXT_VERSION
 #undef GL_GLEXT_PROTOTYPES
-#endif
 #endif
 
 #include <set>
