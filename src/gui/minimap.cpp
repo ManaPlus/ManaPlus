@@ -228,11 +228,11 @@ void Minimap::draw(gcn::Graphics *graphics)
             mMapImage->mBounds.h > a.height)
         {
             const Vector &p = player_node->getPosition();
-            mMapOriginX = (a.width / 2) - (static_cast<float>(p.x
-                + viewport->getCameraRelativeX()) * mWidthProportion) / 32;
+            mMapOriginX = (a.width / 2) - (p.x + static_cast<float>(
+                viewport->getCameraRelativeX()) * mWidthProportion) / 32;
 
-            mMapOriginY = (a.height / 2) - (static_cast<float>(p.y
-                + viewport->getCameraRelativeY()) * mHeightProportion) / 32;
+            mMapOriginY = (a.height / 2) - (p.y + static_cast<float>(
+                viewport->getCameraRelativeY()) * mHeightProportion) / 32;
 
             const int minOriginX = a.width - mMapImage->mBounds.w;
             const int minOriginY = a.height - mMapImage->mBounds.h;

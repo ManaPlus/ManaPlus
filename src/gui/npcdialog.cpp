@@ -690,7 +690,7 @@ void NpcDialog::restoreCamera()
     mCameraMode = -1;
 }
 
-void NpcDialog::showAvatar(const int avatarId)
+void NpcDialog::showAvatar(const uint16_t avatarId)
 {
     const bool needShow = (avatarId != 0);
     if (needShow)

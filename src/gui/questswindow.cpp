@@ -331,9 +331,9 @@ void QuestsWindow::rebuild(const bool playSound)
     }
 
     if (updatedQuest == -1)
-        updatedQuest = mQuestLinks.size() - 1;
+        updatedQuest = static_cast<int>(mQuestLinks.size() - 1);
     else if (updatedQuest >= static_cast<int>(mQuestLinks.size()))
-        updatedQuest = mQuestLinks.size() - 1;
+        updatedQuest = static_cast<int>(mQuestLinks.size() - 1);
     if (updatedQuest >= 0)
     {
         mQuestsListBox->setSelected(updatedQuest);

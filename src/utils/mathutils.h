@@ -116,7 +116,7 @@ inline float weightedAverage(const float n1, const float n2, const float w)
 
 inline int roundDouble(const double v)
 {
-    return (v > 0.0) ? (v + 0.5) : (v - 0.5); 
+    return (v > 0.0) ? static_cast<int>(v + 0.5) : static_cast<int>(v - 0.5);
 }
 
 inline int powerOfTwo(const int input)

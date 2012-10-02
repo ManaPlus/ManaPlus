@@ -192,7 +192,7 @@ class NpcDialog final : public Window, public gcn::ActionListener,
 
         void refocus();
 
-        void showAvatar(const int avatarId);
+        void showAvatar(const uint16_t avatarId);
 
         void setAvatarDirection(const uint8_t direction);
 

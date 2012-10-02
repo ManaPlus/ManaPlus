@@ -106,9 +106,9 @@ namespace gcn
 
     Color Color::operator*(const float value) const
     {
-        Color result(static_cast<int>(r * value), 
-                     static_cast<int>(g * value), 
-                     static_cast<int>(b * value), 
+        Color result(static_cast<int>(static_cast<float>(r) * value),
+                     static_cast<int>(static_cast<float>(g) * value),
+                     static_cast<int>(static_cast<float>(b) * value),
                      a);
 
         result.r = (result.r > 255 ? 255 : (result.r < 0 ? 0 : result.r));

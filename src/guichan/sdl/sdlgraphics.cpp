@@ -596,8 +596,8 @@ namespace gcn
 
         const ClipRectangle& top = mClipStack.top();
 
-        destination.x += top.xOffset;
-        destination.y += top.yOffset;
+        destination.x += static_cast<int16_t>(top.xOffset);
+        destination.y += static_cast<int16_t>(top.yOffset);
 
         SDL_BlitSurface(surface, &source, mTarget, &destination);
     }

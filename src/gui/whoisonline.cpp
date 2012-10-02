@@ -409,8 +409,8 @@ void WhoIsOnline::loadWebList()
                 if (!mShowLevel)
                     level = 0;
 
-                OnlinePlayer *player = new OnlinePlayer(nick, 255, level,
-                    GENDER_UNSPECIFIED, -1);
+                OnlinePlayer *player = new OnlinePlayer(nick,
+                    static_cast<char>(255), level, GENDER_UNSPECIFIED, -1);
                 mOnlinePlayers.insert(player);
                 mOnlineNicks.insert(nick);
 
