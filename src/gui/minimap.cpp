@@ -399,7 +399,7 @@ void Minimap::draw(gcn::Graphics *graphics)
 
 void Minimap::mouseReleased(gcn::MouseEvent &event)
 {
-    gcn::Window::mouseReleased(event);
+    Window::mouseReleased(event);
 
     if (!player_node || !viewport)
         return;

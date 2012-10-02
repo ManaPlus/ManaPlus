@@ -1674,19 +1674,19 @@ void ChatWindow::optionChanged(const std::string &name)
 void ChatWindow::mouseMoved(gcn::MouseEvent &event)
 {
     mHaveMouse = true;
-    gcn::Window::mouseMoved(event);
+    Window::mouseMoved(event);
 }
 
 void ChatWindow::mouseEntered(gcn::MouseEvent& mouseEvent)
 {
     mHaveMouse = true;
-    gcn::Window::mouseEntered(mouseEvent);
+    Window::mouseEntered(mouseEvent);
 }
 
 void ChatWindow::mouseExited(gcn::MouseEvent& mouseEvent)
 {
     updateVisibility();
-    gcn::Window::mouseExited(mouseEvent);
+    Window::mouseExited(mouseEvent);
 }
 
 void ChatWindow::draw(gcn::Graphics* graphics)
