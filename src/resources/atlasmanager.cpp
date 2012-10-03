@@ -261,6 +261,11 @@ void AtlasManager::convertAtlas(TextureAtlas *atlas)
     // convert surface to OpemGL image
     atlas->atlasImage = imageHelper->load(atlas->surface);
     Image *const image = atlas->atlasImage;
+    if (image)
+    {
+        image->mIdPath = atlas->name;
+        image->incRef();
+    }
 
     for (std::vector<AtlasItem*>::iterator it = atlas->items.begin(),
          it_end = atlas->items.end();
@@ -272,6 +277,12 @@ void AtlasManager::convertAtlas(TextureAtlas *atlas)
         // store OpenGL image
         item->image = image->getSubImage(item->x, item->y,
             item->width, item->height);
+        Image *const image2 = item->image;
+        if (image2)
+        {
+            image2->mIdPath = item->name;
+            image2->incRef();
+        }
     }
 }
 
@@ -285,7 +296,9 @@ void AtlasManager::injectToResources(AtlasResource *resource)
         TextureAtlas *const atlas = *it;
         if (atlas)
         {
-            resman->addResource(atlas->name, atlas->atlasImage);
+            Image *const image = atlas->atlasImage;
+            if (image)
+                resman->addResource(atlas->name, image);
             for (std::vector<AtlasItem*>::iterator it2 = atlas->items.begin(),
                  it2_end = atlas->items.end();
                  it2 != it2_end; ++ it2)
@@ -349,11 +362,21 @@ AtlasResource::~AtlasResource()
             {
                 AtlasItem *const item = *it2;
                 if (item)
+                {
+                    Image *const image2 = item->image;
+                    if (image2)
+                        image2->decRef();
                     delete item;
+                }
             }
+            Image *const image = atlas->atlasImage;
+            if (image)
+                image->decRef();
             delete atlas;
         }
     }
+    ResourceManager *const resman = ResourceManager::getInstance();
+    resman->clearDeleted(false);
 }
 
 void AtlasResource::incRef()

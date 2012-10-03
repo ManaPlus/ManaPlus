@@ -225,7 +225,7 @@ class ResourceManager final
          */
         void release(Resource *const res);
 
-        void clearDeleted();
+        void clearDeleted(bool full = true);
 
         static void logResource(const Resource *const res);
 

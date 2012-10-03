@@ -258,7 +258,7 @@ void ResourceManager::logResource(const Resource *const res)
 #endif
 }
 
-void ResourceManager::clearDeleted()
+void ResourceManager::clearDeleted(bool full)
 {
     bool status(true);
     logger->log("clear deleted");
@@ -280,7 +280,7 @@ void ResourceManager::clearDeleted()
             ++ resDelIter;
         }
     }
-    if (!mDeletedResources.empty())
+    if (full && !mDeletedResources.empty())
     {
         logger->log("leaks in deleted");
         std::set<Resource*>::iterator resDelIter = mDeletedResources.begin();
@@ -783,8 +783,21 @@ void ResourceManager::release(Resource *const res)
 
     ResourceIterator resIter = mResources.find(res->mIdPath);
 
+    if (resIter == mResources.end())
+    {
+        logger->log("no resource in cache: " + res->mIdPath);
+        delete res;
+        return;
+    }
+    if (resIter->second != res)
+    {
+        logger->log("in cache other image: " + res->mIdPath);
+        delete res;
+        return;
+    }
+
     // The resource has to exist
-    assert(resIter != mResources.end() && resIter->second == res);
+//    assert(resIter != mResources.end() && resIter->second == res);
 
     timeval tv;
     gettimeofday(&tv, nullptr);
