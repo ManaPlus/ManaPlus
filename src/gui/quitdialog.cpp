@@ -105,7 +105,6 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
 
 QuitDialog::~QuitDialog()
 {
-    sound.playGuiSound(SOUND_HIDE_WINDOW);
     if (mMyPointer)
         *mMyPointer = nullptr;
     // Optional widgets, so delete them by hand.
@@ -160,6 +159,10 @@ void QuitDialog::action(const gcn::ActionEvent &event)
                 Game::closeDialogs();
             }
         }
+    }
+    else
+    {
+        sound.playGuiSound(SOUND_HIDE_WINDOW);
     }
     scheduleDelete();
 }

@@ -25,6 +25,7 @@
 #include "being.h"
 #include "configuration.h"
 #include "client.h"
+#include "sound.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
@@ -161,6 +162,7 @@ NpcDialog::NpcDialog(const int npcId) :
     setVisible(true);
     requestFocus();
     enableVisibleSound(true);
+    sound.playGuiSound(SOUND_SHOW_WINDOW);
 
     config.addListener("logNpcInGui", this);
 }
