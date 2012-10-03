@@ -492,7 +492,6 @@ Resource *ResourceManager::get(const std::string &idPath, const generator fun,
     Resource *resource = getFromCache(idPath);
     if (resource)
         return resource;
-
     resource = fun(data);
 
     if (resource)
@@ -509,7 +508,12 @@ Resource *ResourceManager::get(const std::string &idPath, const generator fun,
 #else
     Resource *resource = fun(data);
 
-    if (!resource)
+    if (resource)
+    {
+        resource->incRef();
+        resource->mIdPath = idPath;
+    }
+    else
     {
         logger->log("Error loaging image: " + idPath);
     }
@@ -768,10 +772,10 @@ SpriteDef *ResourceManager::getSprite(const std::string &path,
 
 void ResourceManager::release(Resource *const res)
 {
-#ifndef DISABLE_RESOURCE_CACHING
     if (!res || mDestruction)
         return;
 
+#ifndef DISABLE_RESOURCE_CACHING
     std::set<Resource*>::iterator resDelIter = mDeletedResources.find(res);
     if (resDelIter != mDeletedResources.end())
     {
