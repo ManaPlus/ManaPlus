@@ -2,6 +2,7 @@ systemdir = $(pkgdatadir)/data/sfx/system
 
 system_DATA =				\
 	attention.ogg \
+	book.ogg \
 	chat1.ogg \
 	chat2.ogg \
 	complete.ogg \
@@ -14,6 +15,7 @@ system_DATA =				\
 	notify.ogg \
 	offline.ogg \
 	online.ogg \
+	page.ogg \
 	reminder.ogg \
 	send.ogg \
 	start.ogg \

@@ -135,6 +135,7 @@ TradeWindow::TradeWindow():
     layout.setColWidth(1, Layout::AUTO_SET);
 
     loadWindowState();
+    enableVisibleSound(true);
 
     reset();
 }

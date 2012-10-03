@@ -26,6 +26,7 @@
 #include "game.h"
 #include "keydata.h"
 #include "keyevent.h"
+#include "sound.h"
 
 #include "gui/chatwindow.h"
 #include "gui/npcdialog.h"
@@ -96,12 +97,15 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     reflowLayout(200, 0);
     setLocationRelativeTo(getParent());
     setVisible(true);
+    sound.playGuiSound(SOUND_SHOW_WINDOW);
+//    enableVisibleSound(true);
     requestModalFocus();
     mOkButton->requestFocus();
 }
 
 QuitDialog::~QuitDialog()
 {
+    sound.playGuiSound(SOUND_HIDE_WINDOW);
     if (mMyPointer)
         *mMyPointer = nullptr;
     // Optional widgets, so delete them by hand.

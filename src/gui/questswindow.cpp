@@ -133,6 +133,7 @@ QuestsWindow::QuestsWindow() :
     layout.setRowHeight(0, Layout::AUTO_SET);
 
     loadWindowState();
+    enableVisibleSound(true);
     loadXml();
 }
 

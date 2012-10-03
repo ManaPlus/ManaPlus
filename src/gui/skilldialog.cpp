@@ -245,6 +245,7 @@ SkillDialog::SkillDialog() :
 
     setLocationRelativeTo(getParent());
     loadWindowState();
+    enableVisibleSound(true);
 }
 
 SkillDialog::~SkillDialog()

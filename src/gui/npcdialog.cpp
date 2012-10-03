@@ -160,6 +160,7 @@ NpcDialog::NpcDialog(const int npcId) :
     instances.push_back(this);
     setVisible(true);
     requestFocus();
+    enableVisibleSound(true);
 
     config.addListener("logNpcInGui", this);
 }

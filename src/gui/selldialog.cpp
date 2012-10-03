@@ -131,6 +131,7 @@ void SellDialog::init()
 
     instances.push_back(this);
     setVisible(true);
+    enableVisibleSound(true);
 }
 
 SellDialog::~SellDialog()

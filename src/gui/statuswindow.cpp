@@ -253,6 +253,7 @@ StatusWindow::StatusWindow() :
     }
 
     loadWindowState();
+    enableVisibleSound(true);
 
     // Update bars
     updateHPBar(mHpBar, true);

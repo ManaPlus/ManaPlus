@@ -334,6 +334,7 @@ BotCheckerWindow::BotCheckerWindow():
     setWidth(w);
     setHeight(h);
     loadWindowState();
+    enableVisibleSound(true);
 
     config.addListener("enableBotCheker", this);
     mEnabled = config.getBoolValue("enableBotCheker");

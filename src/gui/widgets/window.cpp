@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "graphicsvertexes.h"
 #include "logger.h"
+#include "sound.h"
 
 #include "gui/gui.h"
 #include "gui/palette.h"
@@ -79,6 +80,7 @@ Window::Window(const std::string &caption, const bool modal,
     mGripPadding(2),
     mResizeHandles(-1),
     mRedraw(true),
+    mPlayVisibleSound(false),
     mCaptionFont(getFont())
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
@@ -504,6 +506,8 @@ void Window::setVisible(bool visible, bool forceSticky)
         gcn::Window::setVisible((!forceSticky && isSticky()) || visible);
     if (visible)
     {
+        if (mPlayVisibleSound)
+            sound.playGuiSound(SOUND_SHOW_WINDOW);
         if (gui)
         {
             gcn::MouseEvent *event = reinterpret_cast<gcn::MouseEvent*>(
@@ -520,6 +524,11 @@ void Window::setVisible(bool visible, bool forceSticky)
                 delete event;
             }
         }
+    }
+    else
+    {
+        if (mPlayVisibleSound)
+            sound.playGuiSound(SOUND_HIDE_WINDOW);
     }
 }
 

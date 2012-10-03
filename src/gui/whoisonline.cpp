@@ -117,6 +117,7 @@ WhoIsOnline::WhoIsOnline():
     setLocationRelativeTo(getParent());
 
     loadWindowState();
+    enableVisibleSound(true);
 
     download();
 

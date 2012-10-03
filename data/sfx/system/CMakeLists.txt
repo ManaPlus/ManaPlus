@@ -1,5 +1,6 @@
 SET (FILES
     attention.ogg
+    book.ogg
     chat1.ogg
     chat2.ogg
     complete.ogg
@@ -12,6 +13,7 @@ SET (FILES
     newmessage.ogg
     offline.ogg
     online.ogg
+    page.ogg
     reminder.ogg
     send.ogg
     start.ogg

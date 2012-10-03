@@ -98,6 +98,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     layout.setMargin(0);
 
     loadWindowState();
+    enableVisibleSound(true);
 }
 
 ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
@@ -134,6 +135,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
     layout.setMargin(0);
 
     loadWindowState();
+    enableVisibleSound(true);
 }
 
 ShortcutWindow::~ShortcutWindow()

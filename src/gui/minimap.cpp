@@ -70,6 +70,7 @@ Minimap::Minimap():
 
     loadWindowState();
     setVisible(mShow, isSticky());
+    enableVisibleSound(true);
 }
 
 Minimap::~Minimap()

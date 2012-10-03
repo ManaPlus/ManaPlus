@@ -1277,6 +1277,7 @@ SocialWindow::SocialWindow() :
     if (player_node && player_node->getGuild())
         addTab(player_node->getGuild());
 
+    enableVisibleSound(true);
     updateButtons();
 }
 

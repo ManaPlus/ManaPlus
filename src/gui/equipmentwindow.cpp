@@ -108,7 +108,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mSlotHighlightedBackground = rect.grid[1];
     add(mPlayerBox);
     add(mUnequip);
-
+    enableVisibleSound(true);
 }
 
 EquipmentWindow::~EquipmentWindow()

@@ -114,12 +114,10 @@ ShopWindow::ShopWindow():
     setMinHeight(230);
     setDefaultSize(380, 300, ImageRect::CENTER);
 
-
     mAnnounceCounter[BUY] = 0;
     mAnnounceCounter[SELL] = 0;
 
     loadList();
-
 
     mBuyShopItemList->setPriceCheck(false);
     mSellShopItemList->setPriceCheck(false);
@@ -127,11 +125,8 @@ ShopWindow::ShopWindow():
     mBuyScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     mSellScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-
     mBuyShopItemList->addSelectionListener(this);
     mSellShopItemList->addSelectionListener(this);
-
-
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
@@ -170,6 +165,7 @@ ShopWindow::ShopWindow():
 
     instances.push_back(this);
     setVisible(false);
+    enableVisibleSound(true);
 
     updateButtonsAndLabels();
 }

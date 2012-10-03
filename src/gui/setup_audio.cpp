@@ -118,6 +118,12 @@ Setup_Audio::Setup_Audio() :
     new SetupItemSound(_("Trade request sound"), "",
         "soundtrade", this, "soundtradeEvent", mSoundModel);
 
+    new SetupItemSound(_("Show window sound"), "",
+        "soundshowwindow", this, "soundshowwindowEvent", mSoundModel);
+
+    new SetupItemSound(_("Hide window sound"), "",
+        "soundhidewindow", this, "soundhidewindowEvent", mSoundModel);
+
     new SetupItemLabel(_("Other"), "", this);
 
     new SetupItemCheckBox(_("Enable mumble voice chat"), "",

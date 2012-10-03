@@ -77,6 +77,7 @@ HelpWindow::HelpWindow():
 
     loadWindowState();
     loadTags();
+    enableVisibleSound(true);
 }
 
 void HelpWindow::action(const gcn::ActionEvent &event)

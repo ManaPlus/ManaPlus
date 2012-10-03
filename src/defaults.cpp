@@ -241,6 +241,8 @@ DefaultsData* getConfigDefaults()
     AddDEF("soundinfo", "notify");
     AddDEF("soundrequest", "attention");
     AddDEF("soundguild", "newmessage");
+    AddDEF("soundshowwindow", "page");
+    AddDEF("soundhidewindow", "book");
     AddDEF("autohideButtons", true);
     AddDEF("autohideChat", false);
     AddDEF("downloadProxy", "");

@@ -116,6 +116,7 @@ OutfitWindow::OutfitWindow():
 
     loadWindowState();
 
+    enableVisibleSound(true);
     load();
 }
 

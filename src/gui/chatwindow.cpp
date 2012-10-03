@@ -229,6 +229,7 @@ ChatWindow::ChatWindow():
 
     mAutoHide = config.getBoolValue("autohideChat");
     mShowBattleEvents = config.getBoolValue("showBattleEvents");
+    enableVisibleSound(true);
 }
 
 ChatWindow::~ChatWindow()

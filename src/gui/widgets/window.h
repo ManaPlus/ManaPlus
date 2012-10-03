@@ -405,6 +405,9 @@ class Window : public gcn::Window, private gcn::WidgetListener
         void setCaptionFont(gcn::Font *font)
         { mCaptionFont = font; }
 
+        void enableVisibleSound(bool b)
+        { mPlayVisibleSound = b; }
+
     protected:
         bool canMove() const;
 
@@ -488,6 +491,7 @@ class Window : public gcn::Window, private gcn::WidgetListener
         int mGripPadding;
         int mResizeHandles;
         bool mRedraw;
+        bool mPlayVisibleSound;
         gcn::Font *mCaptionFont;
 };
 

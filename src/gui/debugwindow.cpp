@@ -75,6 +75,7 @@ DebugWindow::DebugWindow():
     mTargetWidget->resize(getWidth(), getHeight());
     mNetWidget->resize(getWidth(), getHeight());
     loadWindowState();
+    enableVisibleSound(true);
 }
 
 DebugWindow::~DebugWindow()

@@ -132,6 +132,7 @@ Setup::Setup():
     center();
 
     setInGame(false);
+    enableVisibleSound(true);
 }
 
 Setup::~Setup()

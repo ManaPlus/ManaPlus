@@ -238,6 +238,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     }
 
     loadWindowState();
+    enableVisibleSound(true);
     slotsChanged(mInventory);
 
     widgetResized(nullptr);

@@ -145,6 +145,7 @@ void BuyDialog::init()
 
     center();
     loadWindowState();
+    enableVisibleSound(true);
 
     instances.push_back(this);
     setVisible(true);

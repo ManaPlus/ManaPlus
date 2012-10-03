@@ -84,6 +84,7 @@ void BuySellDialog::init()
     center();
     setDefaultSize();
     loadWindowState();
+    enableVisibleSound(true);
 
     instances.push_back(this);
     setVisible(true);

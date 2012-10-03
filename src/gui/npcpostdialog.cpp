@@ -82,6 +82,7 @@ NpcPostDialog::NpcPostDialog(const int npcId):
 
     instances.push_back(this);
     setVisible(true);
+    enableVisibleSound(true);
 }
 
 NpcPostDialog::~NpcPostDialog()

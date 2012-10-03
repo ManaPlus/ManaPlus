@@ -87,6 +87,7 @@ DidYouKnowWindow::DidYouKnowWindow():
     layout.setRowHeight(0, Layout::AUTO_SET);
 
     loadWindowState();
+    enableVisibleSound(true);
 }
 
 void DidYouKnowWindow::action(const gcn::ActionEvent &event)

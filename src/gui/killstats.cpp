@@ -132,7 +132,7 @@ KillStats::KillStats():
     place(5, 14, mResetButton).setPadding(0);
 
     loadWindowState();
-
+    enableVisibleSound(true);
 }
 
 KillStats::~KillStats()
