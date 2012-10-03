@@ -60,5 +60,9 @@
 ##9Max Isele (DerLoisl) <der.loisl theavoraproject org>
 ##9Nina O'Reilly (Reid) <reidyaro gmail com>
  
+##3== <<Sound effects>> ==
+##9artisticdude
+##9Cori Samuel
+##9psi-plus contributors
  
 @@otherteam|Mana contributors@@
