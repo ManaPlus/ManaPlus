@@ -23,7 +23,6 @@
 #ifdef USE_OPENGL
 
 #include "resources/atlasmanager.h"
-#include "resources/openglimagehelper.h"
 
 #include "client.h"
 #include "graphics.h"
@@ -33,9 +32,11 @@
 #include "utils/mathutils.h"
 #include "utils/physfsrwops.h"
 
+#include "resources/dye.h"
 #include "resources/fboinfo.h"
 #include "resources/imagehelper.h"
 #include "resources/imagewriter.h"
+#include "resources/openglimagehelper.h"
 #include "resources/resourcemanager.h"
 
 #include "debug.h"
@@ -109,13 +110,28 @@ void AtlasManager::loadImages(const StringVect &files,
             resman->moveToDeleted(res);
         }
 
-        SDL_RWops *rw = PHYSFSRWOPS_openRead(str.c_str());
-        Image *image = sdlImageHelper->load(rw);
-        if (image)
+        std::string path = str;
+        const size_t p = path.find('|');
+        Dye *d = nullptr;
+        if (p != std::string::npos)
         {
-            image->mIdPath = str;
-            images.push_back(image);
+            d = new Dye(path.substr(p + 1));
+            path = path.substr(0, p);
         }
+
+        SDL_RWops *rw = PHYSFSRWOPS_openRead(path.c_str());
+        if (rw)
+        {
+            Image *image = d ? sdlImageHelper->load(rw, *d)
+                : sdlImageHelper->load(rw);
+
+            if (image)
+            {
+                image->mIdPath = str;
+                images.push_back(image);
+            }
+        }
+        delete d;
     }
 }
 
