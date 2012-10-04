@@ -49,16 +49,16 @@ BeingPopup::BeingPopup() :
 {
     // Being Name
     mBeingName->setFont(boldFont);
-    mBeingName->setPosition(getPadding(), getPadding());
+    mBeingName->setPosition(0, 0);
 
-    const int fontHeight = mBeingName->getHeight() + getPadding();
+    const int fontHeight = mBeingName->getHeight();
 
     // Being's party
-    mBeingParty->setPosition(getPadding(), fontHeight);
+    mBeingParty->setPosition(0, fontHeight);
     // Being's party
-    mBeingGuild->setPosition(getPadding(), 2 * fontHeight);
-    mBeingRank->setPosition(getPadding(), 3 * fontHeight);
-    mBeingComment->setPosition(getPadding(), 4 * fontHeight);
+    mBeingGuild->setPosition(0, 2 * fontHeight);
+    mBeingRank->setPosition(0, 3 * fontHeight);
+    mBeingComment->setPosition(0, 4 * fontHeight);
 
     mBeingParty->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
     mBeingGuild->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
@@ -190,8 +190,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     if (label4)
         height += getFont()->getHeight();
 
-    setContentSize(minWidth + 10, height + 10);
-
+    const int pad = 2 * getPadding();
+    setContentSize(minWidth + pad, height + pad);
     position(x, y);
     return;
 }

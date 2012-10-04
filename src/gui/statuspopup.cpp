@@ -62,28 +62,21 @@ StatusPopup::StatusPopup() :
 {
     const int fontHeight = getFont()->getHeight();
 
-    mMoveType->setPosition(getPadding(), getPadding());
-    mCrazyMoveType->setPosition(getPadding(), fontHeight + getPadding());
-    mMoveToTargetType->setPosition(getPadding(),
-        2 * fontHeight + getPadding());
-    mFollowMode->setPosition(getPadding(),  3 * fontHeight + getPadding());
-    mAttackWeaponType->setPosition(getPadding(),
-        4 + 4 * fontHeight + getPadding());
-    mAttackType->setPosition(getPadding(), 4 + 5 * fontHeight + getPadding());
-    mMagicAttackType->setPosition(getPadding(),
-        4 + 6 * fontHeight + getPadding());
-    mPvpAttackType->setPosition(getPadding(),
-        4 + 7 * fontHeight + getPadding());
-    mDropCounter->setPosition(getPadding(), 8 + 8 * fontHeight + getPadding());
-    mPickUpType->setPosition(getPadding(), 8 + 9 * fontHeight + getPadding());
-    mMapType->setPosition(getPadding(), 12 + 10 * fontHeight + getPadding());
-    mImitationMode->setPosition(getPadding(),
-        16 + 11 * fontHeight + getPadding());
-    mAwayMode->setPosition(getPadding(), 16 + 12 * fontHeight + getPadding());
-    mCameraMode->setPosition(getPadding(),
-        16 + 13 * fontHeight + getPadding());
-    mDisableGameModifiers->setPosition(getPadding(),
-        20 + 14 * fontHeight + getPadding());
+    mMoveType->setPosition(0, 0);
+    mCrazyMoveType->setPosition(0, fontHeight);
+    mMoveToTargetType->setPosition(0, 2 * fontHeight);
+    mFollowMode->setPosition(0,  3 * fontHeight);
+    mAttackWeaponType->setPosition(0, 4 + 4 * fontHeight);
+    mAttackType->setPosition(0, 4 + 5 * fontHeight);
+    mMagicAttackType->setPosition(0, 4 + 6 * fontHeight);
+    mPvpAttackType->setPosition(0, 4 + 7 * fontHeight);
+    mDropCounter->setPosition(0, 8 + 8 * fontHeight);
+    mPickUpType->setPosition(0, 8 + 9 * fontHeight);
+    mMapType->setPosition(0, 12 + 10 * fontHeight);
+    mImitationMode->setPosition(0, 16 + 11 * fontHeight);
+    mAwayMode->setPosition(0, 16 + 12 * fontHeight);
+    mCameraMode->setPosition(0, 16 + 13 * fontHeight);
+    mDisableGameModifiers->setPosition(0, 20 + 14 * fontHeight);
 
     mMoveType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
     mCrazyMoveType->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
@@ -129,39 +122,39 @@ void StatusPopup::update()
 {
     updateLabels();
 
-    int minWidth = mMoveType->getWidth();
+    int maxWidth = mMoveType->getWidth();
 
-    if (mMoveToTargetType->getWidth() > minWidth)
-        minWidth = mMoveToTargetType->getWidth();
-    if (mFollowMode->getWidth() > minWidth)
-        minWidth = mFollowMode->getWidth();
-    if (mCrazyMoveType->getWidth() > minWidth)
-        minWidth = mCrazyMoveType->getWidth();
-    if (mAttackWeaponType->getWidth() > minWidth)
-        minWidth = mAttackWeaponType->getWidth();
-    if (mAttackType->getWidth() > minWidth)
-        minWidth = mAttackType->getWidth();
-    if (mDropCounter->getWidth() > minWidth)
-        minWidth = mDropCounter->getWidth();
-    if (mPickUpType->getWidth() > minWidth)
-        minWidth = mPickUpType->getWidth();
-    if (mMapType->getWidth() > minWidth)
-        minWidth = mMapType->getWidth();
-    if (mMagicAttackType->getWidth() > minWidth)
-        minWidth = mMagicAttackType->getWidth();
-    if (mPvpAttackType->getWidth() > minWidth)
-        minWidth = mPvpAttackType->getWidth();
-    if (mDisableGameModifiers->getWidth() > minWidth)
-        minWidth = mDisableGameModifiers->getWidth();
-    if (mAwayMode->getWidth() > minWidth)
-        minWidth = mAwayMode->getWidth();
-    if (mCameraMode->getWidth() > minWidth)
-        minWidth = mCameraMode->getWidth();
-    if (mImitationMode->getWidth() > minWidth)
-        minWidth = mImitationMode->getWidth();
+    if (mCrazyMoveType->getWidth() > maxWidth)
+        maxWidth = mCrazyMoveType->getWidth();
+    if (mMoveToTargetType->getWidth() > maxWidth)
+        maxWidth = mMoveToTargetType->getWidth();
+    if (mFollowMode->getWidth() > maxWidth)
+        maxWidth = mFollowMode->getWidth();
+    if (mAttackWeaponType->getWidth() > maxWidth)
+        maxWidth = mAttackWeaponType->getWidth();
+    if (mAttackType->getWidth() > maxWidth)
+        maxWidth = mAttackType->getWidth();
+    if (mDropCounter->getWidth() > maxWidth)
+        maxWidth = mDropCounter->getWidth();
+    if (mPickUpType->getWidth() > maxWidth)
+        maxWidth = mPickUpType->getWidth();
+    if (mMapType->getWidth() > maxWidth)
+        maxWidth = mMapType->getWidth();
+    if (mMagicAttackType->getWidth() > maxWidth)
+        maxWidth = mMagicAttackType->getWidth();
+    if (mPvpAttackType->getWidth() > maxWidth)
+        maxWidth = mPvpAttackType->getWidth();
+    if (mDisableGameModifiers->getWidth() > maxWidth)
+        maxWidth = mDisableGameModifiers->getWidth();
+    if (mImitationMode->getWidth() > maxWidth)
+        maxWidth = mImitationMode->getWidth();
+    if (mAwayMode->getWidth() > maxWidth)
+        maxWidth = mAwayMode->getWidth();
+    if (mCameraMode->getWidth() > maxWidth)
+        maxWidth = mCameraMode->getWidth();
 
-    minWidth += 16 + 2 * getPadding();
-    setWidth(minWidth);
+    maxWidth += 2 * getPadding();
+    setWidth(maxWidth);
 
     setHeight(mDisableGameModifiers->getY()
         + mDisableGameModifiers->getHeight() + 2 * getPadding());

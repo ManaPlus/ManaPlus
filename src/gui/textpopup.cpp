@@ -28,6 +28,7 @@
 #include "gui/theme.h"
 
 #include "gui/widgets/label.h"
+#include "gui/widgets/layouthelper.h"
 
 #include "units.h"
 
@@ -45,11 +46,11 @@ TextPopup::TextPopup():
 {
     const int fontHeight = getFont()->getHeight();
 
-    mText1->setPosition(getPadding(), getPadding());
+    mText1->setPosition(0, 0);
     mText1->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
-    mText2->setPosition(getPadding(), fontHeight + 2 * getPadding());
+    mText2->setPosition(0, fontHeight);
     mText2->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
-    mText3->setPosition(getPadding(), (2 * fontHeight) + 2 * getPadding());
+    mText3->setPosition(0, 2 * fontHeight);
     mText3->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
 
     add(mText1);
@@ -78,7 +79,7 @@ void TextPopup::show(const int x, const int y, const std::string &str1,
     if (mText3->getWidth() > minWidth)
         minWidth = mText3->getWidth();
 
-    minWidth += 4 * getPadding();
+    minWidth += 2 * getPadding();
     setWidth(minWidth);
 
     int cnt = 1;
@@ -87,8 +88,7 @@ void TextPopup::show(const int x, const int y, const std::string &str1,
     if (!str3.empty())
         cnt ++;
 
-    setHeight((2 * getPadding() + mText1->getFont()->getHeight()) * cnt);
-
+    setHeight(2 * getPadding() + mText1->getFont()->getHeight() * cnt);
     const int distance = 20;
 
     int posX = std::max(0, x - getWidth() / 2);

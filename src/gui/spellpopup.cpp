@@ -76,23 +76,13 @@ void SpellPopup::setItem(const TextCommand *const spell)
     if (mItemComment->getWidth() > minWidth)
         minWidth = mItemComment->getWidth();
 
-    minWidth += 8;
-    setWidth(minWidth + 2 * getPadding());
-
-    mItemName->setPosition(getPadding(), getPadding());
-    mItemComment->setPosition(getPadding(),
-        getPadding() + mItemName->getHeight());
+    mItemName->setPosition(0, 0);
+    mItemComment->setPosition(0, mItemName->getHeight());
 
     if (mItemComment->getCaption() != "")
-    {
-        setContentSize(minWidth, getPadding()
-            + 2 * getFont()->getHeight());
-    }
+        setContentSize(minWidth, 2 * getFont()->getHeight());
     else
-    {
-        setContentSize(minWidth, getPadding()
-            + getFont()->getHeight());
-    }
+        setContentSize(minWidth, getFont()->getHeight());
 }
 
 void SpellPopup::view(const int x, const int y)

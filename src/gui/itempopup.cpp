@@ -60,23 +60,23 @@ ItemPopup::ItemPopup():
 {
     // Item Name
     mItemName->setFont(boldFont);
-    mItemName->setPosition(getPadding(), getPadding());
+    mItemName->setPosition(0, 0);
 
     const int fontHeight = getFont()->getHeight();
 
     // Item Description
     mItemDesc->setEditable(false);
-    mItemDesc->setPosition(getPadding(), fontHeight);
+    mItemDesc->setPosition(0, fontHeight);
     mItemDesc->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
 
     // Item Effect
     mItemEffect->setEditable(false);
-    mItemEffect->setPosition(getPadding(), 2 * fontHeight + 2 * getPadding());
+    mItemEffect->setPosition(0, 2 * fontHeight);
     mItemEffect->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
 
     // Item Weight
     mItemWeight->setEditable(false);
-    mItemWeight->setPosition(getPadding(), 3 * fontHeight + 4 * getPadding());
+    mItemWeight->setPosition(0, 3 * fontHeight);
     mItemWeight->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
 
     add(mItemName);
@@ -144,9 +144,6 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
     if (showImage)
     {
         ResourceManager *const resman = ResourceManager::getInstance();
-//        logger->log("img: " + combineDye2(
-//            paths.getStringValue("itemIcons")
-//            + item.getDisplay().image, item.getDyeColorsString(color)));
         Image *const image = resman->getImage(combineDye2(
             paths.getStringValue("itemIcons")
             + item.getDisplay().image, item.getDyeColorsString(color)));
@@ -154,8 +151,7 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
         mIcon->setImage(image);
         if (image)
         {
-            const int pad = getPadding();
-            mIcon->setPosition(pad, pad);
+            mIcon->setPosition(0, 0);
             space = mIcon->getWidth();
         }
     }
@@ -184,7 +180,7 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
 
     mItemName->adjustSize();
     mItemName->setForegroundColor(getColor(mItemType));
-    mItemName->setPosition(getPadding() + space, getPadding());
+    mItemName->setPosition(space, 0);
 
     mItemEffect->setTextWrapped(item.getEffect(), 196);
     mItemWeight->setTextWrapped(strprintf(_("Weight: %s"),
@@ -202,9 +198,6 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
     if (mItemWeight->getMinWidth() > minWidth)
         minWidth = mItemWeight->getMinWidth();
 
-    minWidth += 8;
-    setWidth(minWidth);
-
     const int numRowsDesc = mItemDesc->getNumberOfRows();
     const int numRowsEffect = mItemEffect->getNumberOfRows();
     const int numRowsWeight = mItemWeight->getNumberOfRows();
@@ -212,24 +205,19 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
 
     if (item.getEffect().empty())
     {
-        setContentSize(minWidth, (numRowsDesc + numRowsWeight + getPadding()) *
-                       height);
-
-        mItemWeight->setPosition(getPadding(), (numRowsDesc + getPadding()) *
-                                 height);
+        setContentSize(minWidth, (numRowsDesc + 2 + numRowsWeight) * height);
+        mItemWeight->setPosition(0, (numRowsDesc + 2) * height);
     }
     else
     {
-        setContentSize(minWidth, (numRowsDesc + numRowsEffect + numRowsWeight +
-                       getPadding()) * height);
-
-        mItemWeight->setPosition(getPadding(), (numRowsDesc + numRowsEffect +
-                                 getPadding()) * height);
+        setContentSize(minWidth, (numRowsDesc + numRowsEffect + 2
+            + numRowsWeight) * height);
+        mItemWeight->setPosition(0, (numRowsDesc + numRowsEffect + 2)
+            * height);
+        mItemEffect->setPosition(0, (numRowsDesc + 2) * height);
     }
 
-    mItemDesc->setPosition(getPadding(), 2 * height);
-    mItemEffect->setPosition(getPadding(),
-        (numRowsDesc + getPadding()) * height);
+    mItemDesc->setPosition(0, 2 * height);
 }
 
 gcn::Color ItemPopup::getColor(const ItemType type)

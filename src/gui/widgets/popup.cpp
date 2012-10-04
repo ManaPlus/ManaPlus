@@ -119,8 +119,8 @@ void Popup::draw(gcn::Graphics *graphics)
 
 gcn::Rectangle Popup::getChildrenArea()
 {
-    return gcn::Rectangle(getPadding(), 0, getWidth() - getPadding() * 2,
-                          getHeight() - getPadding() * 2);
+    return gcn::Rectangle(getPadding(), getPadding(),
+        getWidth() - getPadding() * 2, getHeight() - getPadding() * 2);
 }
 
 void Popup::setContentSize(int width, int height)

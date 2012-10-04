@@ -85,6 +85,8 @@ class MiniStatusWindow final : public Popup,
         std::vector <ProgressBar*> &getBars()
         { return mBars; }
 
+        gcn::Rectangle getChildrenArea();
+
     private:
         bool isInBar(ProgressBar *bar, int x, int y) const;
 

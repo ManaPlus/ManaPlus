@@ -479,3 +479,9 @@ void MiniStatusWindow::updateArrows()
 {
     StatusWindow::updateArrowsBar(mArrowsBar);
 }
+
+gcn::Rectangle MiniStatusWindow::getChildrenArea()
+{
+    return gcn::Rectangle(getPadding(), 0, getWidth() - getPadding() * 2,
+                          getHeight() - getPadding() * 2);
+}
