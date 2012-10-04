@@ -165,13 +165,13 @@ StatusWindow::StatusWindow() :
     mHpBar = new ProgressBar(max ?
             static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::HP))
             / static_cast<float>(max):
-            static_cast<float>(0), 80, 15, Theme::PROG_HP);
+            static_cast<float>(0), 80, 0, Theme::PROG_HP);
 
     max = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
     mXpBar = new ProgressBar(max ?
             static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::EXP))
             / static_cast<float>(max):
-            static_cast<float>(0), 80, 15, Theme::PROG_EXP);
+            static_cast<float>(0), 80, 0, Theme::PROG_EXP);
 
     const bool magicBar = Net::getGameHandler()->canUseMagicBar();
     const int job = Net::getPlayerHandler()->getJobLocation()
@@ -184,7 +184,7 @@ StatusWindow::StatusWindow() :
         mMpBar = new ProgressBar(max ? static_cast<float>(
             PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
             / static_cast<float>(max) : static_cast<float>(0),
-            80, 15, Net::getPlayerHandler()->canUseMagic() ?
+            80, 0, Net::getPlayerHandler()->canUseMagic() ?
             Theme::PROG_MP : Theme::PROG_NO_MP);
     }
     else
@@ -214,7 +214,7 @@ StatusWindow::StatusWindow() :
     {
         mJobLvlLabel = new Label(strprintf(_("Job: %d"), 0));
         mJobLabel = new Label(_("Job:"));
-        mJobBar = new ProgressBar(0.0f, 80, 15, Theme::PROG_JOB);
+        mJobBar = new ProgressBar(0.0f, 80, 0, Theme::PROG_JOB);
 
         place(5, 0, mJobLvlLabel, 3);
         place(5, 2, mJobLabel).setPadding(3);

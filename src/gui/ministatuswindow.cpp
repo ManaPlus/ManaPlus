@@ -53,22 +53,22 @@ extern volatile int tick_time;
 MiniStatusWindow::MiniStatusWindow() :
     Popup("MiniStatus", "ministatus.xml"),
     InventoryListener(),
-    mHpBar(createBar(0, 100, 20, Theme::PROG_HP, "hp bar", _("health bar"))),
+    mHpBar(createBar(0, 100, 0, Theme::PROG_HP, "hp bar", _("health bar"))),
     mMpBar(Net::getGameHandler()->canUseMagicBar()
-           ? createBar(0, 100, 20, Net::getPlayerHandler()->canUseMagic()
+           ? createBar(0, 100, 0, Net::getPlayerHandler()->canUseMagic()
            ? Theme::PROG_MP : Theme::PROG_NO_MP, "mp bar", _("mana bar"))
            : nullptr),
-    mXpBar(createBar(0, 100, 20, Theme::PROG_EXP,
+    mXpBar(createBar(0, 100, 0, Theme::PROG_EXP,
            "xp bar", _("experience bar"))),
-    mWeightBar(createBar(0, 140, 20, Theme::PROG_WEIGHT,
+    mWeightBar(createBar(0, 140, 0, Theme::PROG_WEIGHT,
                "weight bar", _("weight bar"))),
-    mInvSlotsBar(createBar(0, 45, 20, Theme::PROG_INVY_SLOTS,
+    mInvSlotsBar(createBar(0, 45, 0, Theme::PROG_INVY_SLOTS,
                  "inventory slots bar", _("inventory slots bar"))),
-    mMoneyBar(createBar(0, 130, 20, Theme::PROG_INVY_SLOTS,
+    mMoneyBar(createBar(0, 130, 0, Theme::PROG_INVY_SLOTS,
               "money bar", _("money bar"))),
-    mArrowsBar(createBar(0, 50, 20, Theme::PROG_INVY_SLOTS,
+    mArrowsBar(createBar(0, 50, 0, Theme::PROG_INVY_SLOTS,
                "arrows bar", _("arrows bar"))),
-    mStatusBar(createBar(100, 165, 20, Theme::PROG_EXP,
+    mStatusBar(createBar(100, 165, 0, Theme::PROG_EXP,
                "status bar", _("status bar"))),
     mTextPopup(new TextPopup),
     mStatusPopup(new StatusPopup)
@@ -87,7 +87,7 @@ MiniStatusWindow::MiniStatusWindow() :
 
     if (job)
     {
-        mJobBar = createBar(0, 100, 20, Theme::PROG_JOB, "job bar",
+        mJobBar = createBar(0, 100, 0, Theme::PROG_JOB, "job bar",
                             _("job bar"));
         StatusWindow::updateJobBar(mJobBar);
     }

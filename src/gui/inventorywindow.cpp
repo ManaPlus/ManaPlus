@@ -106,7 +106,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mRetrieveButton(nullptr),
     mCloseButton(nullptr),
     mWeightBar(nullptr),
-    mSlotsBar(new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS)),
+    mSlotsBar(new ProgressBar(0.0f, 100, 0, Theme::PROG_INVY_SLOTS)),
     mFilter(nullptr),
     mSortModel(new SortListModel()),
     mSortDropDown(new DropDown(mSortModel, this, "sort")),
@@ -183,7 +183,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
         mOutfitButton = new Button(_("Outfits"), "outfit", this);
         mShopButton = new Button(_("Shop"), "shop", this);
         mEquipmentButton = new Button(_("Equipment"), "equipment", this);
-        mWeightBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_WEIGHT);
+        mWeightBar = new ProgressBar(0.0f, 100, 0, Theme::PROG_WEIGHT);
 
         place(0, 0, mWeightBar, 4);
         mSlotsBarCell = &place(4, 0, mSlotsBar, 5);

@@ -5,6 +5,7 @@ SET (FILES
     item_shortcut_bgr.png
     mouse.png
     popup.xml
+    progressbar.xml
     quests.xml
     sell.xml
     server.xml

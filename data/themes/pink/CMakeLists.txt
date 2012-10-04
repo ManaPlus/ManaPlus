@@ -5,6 +5,7 @@ SET (FILES
     inventory.xml
     popup.xml
     progress-indicator.png
+    progressbar.xml
     quests.xml
     sell.xml
     server.xml

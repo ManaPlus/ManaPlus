@@ -8,6 +8,7 @@ gui_DATA =				\
 	inventory.xml		\
 	npc.xml		\
 	popup.xml		\
+	progressbar.xml		\
 	quests.xml		\
 	sell.xml		\
 	server.xml		\

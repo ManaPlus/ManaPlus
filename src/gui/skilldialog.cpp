@@ -629,13 +629,6 @@ void SkillInfo::draw(Graphics *const graphics, const int y, const int width)
     }
 
     graphics->drawText(skillLevel, width - skillLevelWidth, y);
-
-    if (!skillExp.empty())
-    {
-        gcn::Rectangle rect(33, y + 15, width - 33, 17);
-
-        ProgressBar::render(graphics, rect, color, progress, skillExp);
-    }
 }
 
 SkillInfo* SkillDialog::getSkill(int id)

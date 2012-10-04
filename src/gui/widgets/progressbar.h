@@ -32,6 +32,7 @@
 class Graphics;
 class GraphicsVertexes;
 class ImageRect;
+class Skin;
 
 /**
  * A progress bar.
@@ -120,23 +121,17 @@ class ProgressBar final : public gcn::Widget, public gcn::WidgetListener
         /**
          * Renders a progressbar with the given properties.
          */
-        static void render(Graphics *graphics, const gcn::Rectangle &area,
-                           const gcn::Color &color, const float progress,
-                           const std::string &text,
-                           GraphicsVertexes *const vert, bool *const redraw);
-
-        /**
-         * Renders a progressbar with the given properties.
-         */
-        static void render(Graphics *graphics, const gcn::Rectangle &area,
-                           const gcn::Color &color, const float progress,
-                           const std::string &text = "");
+        void render(Graphics *graphics);
 
         void widgetResized(const gcn::Event &event) override;
 
         void widgetMoved(const gcn::Event &event) override;
 
+        void setPadding(unsigned int padding)
+        { mPadding = padding; }
+
     private:
+        Skin *mSkin;
         float mProgress;
         float mProgressToGo;
         bool mSmoothProgress;
@@ -149,8 +144,9 @@ class ProgressBar final : public gcn::Widget, public gcn::WidgetListener
         std::string mText;
         GraphicsVertexes *mVertexes;
         bool mRedraw;
+        unsigned int mPadding;
+        unsigned int mFillPadding;
 
-        static ImageRect mBorder;
         static int mInstances;
         static float mAlpha;
 
