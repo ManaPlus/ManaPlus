@@ -26,6 +26,7 @@ SET (FILES
     item_shortcut_background.xml
     mouse.png
     playerbox_background.xml
+    popup.xml
     progress-indicator.png
     progressbar.xml
     quests.xml

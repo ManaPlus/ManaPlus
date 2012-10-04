@@ -7,6 +7,7 @@ gui_DATA =				\
 	inventory.xml		\
 	item_shortcut_bgr.png		\
 	mouse.png			\
+	popup.xml			\
 	quests.xml			\
 	sell.xml			\
 	server.xml			\

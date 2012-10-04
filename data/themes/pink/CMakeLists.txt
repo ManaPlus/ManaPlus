@@ -3,6 +3,7 @@ SET (FILES
     buy.xml
     colors.xml
     inventory.xml
+    popup.xml
     progress-indicator.png
     quests.xml
     sell.xml

@@ -2,6 +2,7 @@ SET (FILES
     buy.xml
     colors.xml
     inventory.xml
+    popup.xml
     quests.xml
     sell.xml
     server.xml

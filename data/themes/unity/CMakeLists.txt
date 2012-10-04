@@ -1,10 +1,8 @@
 SET (FILES
-    beingpopup.xml
     buy.xml
     char.xml
     colors.xml
     inventory.xml
-    itempopup.xml
     npc.xml
     popup.xml
     quests.xml
@@ -12,7 +10,6 @@ SET (FILES
     server.xml
     shop.xml
     social.xml
-    textpopup.xml
     window.png
     window.xml
     world.xml

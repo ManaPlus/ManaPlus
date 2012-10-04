@@ -190,8 +190,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     if (label4)
         height += getFont()->getHeight();
 
-    const int pad = 2 * getPadding();
-    setContentSize(minWidth + pad, height + pad);
+    setContentSize(minWidth, height);
     position(x, y);
     return;
 }
