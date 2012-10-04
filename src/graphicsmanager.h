@@ -112,6 +112,8 @@ class GraphicsManager final
 
         int mMaxVertices;
 
+        int mMaxFboSize;
+
 #ifdef USE_OPENGL
         bool mUseTextureSampler;
 

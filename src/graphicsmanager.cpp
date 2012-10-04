@@ -46,6 +46,10 @@
 
 #include "debug.h"
 
+#ifndef GL_MAX_RENDERBUFFER_SIZE
+#define GL_MAX_RENDERBUFFER_SIZE 0x84E8
+#endif
+
 #ifdef WIN32
 #define getFunction(name) wglGetProcAddress(name)
 #else
@@ -64,6 +68,7 @@ GraphicsManager::GraphicsManager() :
     mPlatformMinor(0),
     mPlatformMajor(0),
     mMaxVertices(500),
+    mMaxFboSize(0),
 #ifdef USE_OPENGL
     mUseTextureSampler(true),
     mTextureSampler(0),
@@ -639,10 +644,16 @@ void GraphicsManager::updateLimits()
 
     mMaxVertices = value;
 
+    value = 0;
     glGetIntegerv(GL_MAX_ELEMENTS_INDICES, &value);
     logger->log("GL_MAX_ELEMENTS_INDICES: %d", value);
     if (value < mMaxVertices)
         mMaxVertices = value;
+
+    value = 0;
+    glGetIntegerv(GL_MAX_RENDERBUFFER_SIZE, &value);
+    logger->log("Max FBO size: %d", value);
+    mMaxFboSize = value;
 #endif
 }
 
