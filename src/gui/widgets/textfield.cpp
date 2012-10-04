@@ -56,10 +56,10 @@ TextField::TextField(const std::string &text, const bool loseFocusOnTab,
     mMinimum(0),
     mMaximum(0),
     mLoseFocusOnTab(loseFocusOnTab),
-    mLastEventPaste(false)
+    mLastEventPaste(false),
+    mCaretColor(&Theme::getThemeColor(Theme::CARET))
 {
     setFrameSize(2);
-
     mForegroundColor = Theme::getThemeColor(Theme::TEXTFIELD);
 
     if (instances == 0)
@@ -439,4 +439,12 @@ void TextField::handleCopy() const
 {
     std::string text = getText();
     sendBuffer(text);
+}
+
+void TextField::drawCaret(gcn::Graphics* graphics, int x)
+{
+    const gcn::Rectangle clipArea = graphics->getCurrentClipArea();
+
+    graphics->setColor(*mCaretColor);
+    graphics->drawLine(x, clipArea.height - 2, x, 1);
 }

@@ -104,6 +104,8 @@ class TextField : public gcn::TextField
         { mSendAlwaysEvents = b; }
 
     protected:
+        void drawCaret(gcn::Graphics* graphics, int x) override;
+
         bool mSendAlwaysEvents;
 
     private:
@@ -119,6 +121,7 @@ class TextField : public gcn::TextField
         unsigned mMaximum;
         bool mLoseFocusOnTab;
         int mLastEventPaste;
+        const gcn::Color *mCaretColor;
 };
 
 #endif

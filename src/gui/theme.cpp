@@ -696,6 +696,7 @@ static int readColorType(const std::string &type)
     {
         "BROWSERBOX",
         "TEXT",
+        "CARET",
         "SHADOW",
         "OUTLINE",
         "BORDER",

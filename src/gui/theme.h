@@ -166,6 +166,7 @@ class Theme final : public Palette, public ConfigListener
         {
             BROWSERBOX = 0,
             TEXT,
+            CARET,
             SHADOW,
             OUTLINE,
             BORDER,

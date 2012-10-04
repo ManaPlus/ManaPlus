@@ -96,14 +96,6 @@ namespace gcn
 
     void TextField::drawCaret(Graphics* graphics, int x)
     {
-        // Check the current clip area as a clip area with a different
-        // size than the widget might have been pushed (which is the
-        // case in the draw method when we push a clip area after we have
-        // drawn a border).
-        const Rectangle clipArea = graphics->getCurrentClipArea();
-
-        graphics->setColor(mForegroundColor);
-        graphics->drawLine(x, clipArea.height - 2, x, 1);
     }
 
     void TextField::mousePressed(MouseEvent& mouseEvent)
