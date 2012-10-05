@@ -203,8 +203,9 @@ void MonsterDB::load()
 
                 const std::string missileParticle = XML::getProperty(
                         spriteNode, "missile-particle", "");
-                currentInfo->addAttack(id, spriteAction, hitEffectId,
-                    criticalHitEffectId, effectId, missileParticle);
+
+                currentInfo->addAttack(id, spriteAction, effectId,
+                    hitEffectId, criticalHitEffectId, missileParticle);
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
             {

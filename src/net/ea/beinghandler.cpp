@@ -512,8 +512,8 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
             {
                 if (srcSpeed && srcBeing->getType() == Being::PLAYER)
                     srcBeing->setAttackDelay(srcSpeed);
-                srcBeing->handleAttack(dstBeing, param1,
-                    static_cast<Being::AttackType>(type));
+                // attackid=1, type
+                srcBeing->handleAttack(dstBeing, param1, 1);
                 if (srcBeing->getType() == Being::PLAYER)
                     srcBeing->setAttackTime();
             }
