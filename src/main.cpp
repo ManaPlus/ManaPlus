@@ -93,7 +93,7 @@ static void printVersion()
 static void parseOptions(const int argc, char *const argv[],
                          Client::Options &options)
 {
-    const char *const optstring = "hvud:U:P:Dc:p:l:L:C:s:t:T";
+    const char *const optstring = "hvud:U:P:Dc:p:l:L:C:s:t:T:a";
 
     const struct option long_options[] =
     {
@@ -110,10 +110,9 @@ static void parseOptions(const int argc, char *const argv[],
         { "skip-update",    no_argument,       nullptr, 'u' },
         { "username",       required_argument, nullptr, 'U' },
         { "no-opengl",      no_argument,       nullptr, 'O' },
-        { "chat-log-dir",   required_argument, nullptr, 'l' },
+        { "chat-log-dir",   required_argument, nullptr, 'a' },
         { "version",        no_argument,       nullptr, 'v' },
         { "log-file",       required_argument, nullptr, 'l' },
-        { "chat-log-dir",   required_argument, nullptr, 'L' },
         { "screenshot-dir", required_argument, nullptr, 'i' },
         { "safemode",       no_argument,       nullptr, 'm' },
         { "tests",          no_argument,       nullptr, 'T' },
@@ -181,7 +180,7 @@ static void parseOptions(const int argc, char *const argv[],
             case 'l':
                 options.logFileName = std::string(optarg);
                 break;
-            case 'L':
+            case 'a':
                 options.chatLogDir = std::string(optarg);
             case 'i':
                 options.screenshotDir = optarg;
