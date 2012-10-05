@@ -30,7 +30,8 @@
 #include "debug.h"
 
 BeingInfo *BeingInfo::unknown = nullptr;
-Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK, -1, std::string());
+Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK,
+    -1, -1, -1, std::string());
 
 BeingInfo::BeingInfo() :
     mName(_("unnamed")),
@@ -114,12 +115,14 @@ const Attack *BeingInfo::getAttack(const int id) const
 }
 
 void BeingInfo::addAttack(const int id, std::string action, const int effectId,
+                          const int hitEffectId, const int criticalHitEffectId,
                           const std::string &missileParticle)
 {
     if (mAttacks[id])
         delete mAttacks[id];
 
-    mAttacks[id] = new Attack(action, effectId, missileParticle);
+    mAttacks[id] = new Attack(action, effectId, hitEffectId,
+        criticalHitEffectId, missileParticle);
 }
 
 void BeingInfo::clear()

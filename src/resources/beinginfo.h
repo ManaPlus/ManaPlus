@@ -32,12 +32,17 @@ struct Attack final
 {
     std::string mAction;
     int mEffectId;
+    int mHitEffectId;
+    int mCriticalHitEffectId;
     std::string mMissileParticle;
 
     Attack(const std::string &action, const int effectId,
+           const int hitEffectId, const int criticalHitEffectId,
            const std::string &missileParticle) :
         mAction(action),
         mEffectId(effectId),
+        mHitEffectId(hitEffectId),
+        mCriticalHitEffectId(criticalHitEffectId),
         mMissileParticle(missileParticle)
     {
     }
@@ -101,6 +106,7 @@ class BeingInfo final
         const std::string &getSound(const SoundEvent event) const;
 
         void addAttack(const int id, std::string action,
+                       const int hitEffectId, const int criticalHitEffectId,
                        const int effectId,
                        const std::string &missileParticle);
 

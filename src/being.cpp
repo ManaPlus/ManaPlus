@@ -510,7 +510,7 @@ void Being::setSpeech(const std::string &text, int time)
 }
 
 void Being::takeDamage(Being *const attacker, const int amount,
-                       const AttackType type, const int id)
+                       const AttackType type, const int attackId)
 {
     if (!userPalette || !attacker)
         return;
@@ -652,6 +652,19 @@ void Being::takeDamage(Being *const attacker, const int amount,
                     else
                         hitEffectId = attackerWeapon->getCriticalHitEffectId();
                 }
+                else if (attacker && attacker->getType() == MONSTER)
+                {
+                    const BeingInfo *const info = attacker->getInfo();
+                    if (info)
+                    {
+                        const Attack *attack = info->getAttack(attackId);
+
+                        if (type != CRITICAL)
+                            hitEffectId = attack->mHitEffectId;
+                        else
+                            hitEffectId = attack->mCriticalHitEffectId;
+                    }
+                }
                 else
                 {
                     if (type != CRITICAL)
@@ -663,7 +676,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
             else
             {
                 // move skills effects to +100000 in effects list
-                hitEffectId = id + 100000;
+                hitEffectId = attackId + 100000;
             }
             effectManager->trigger(hitEffectId, this);
         }
