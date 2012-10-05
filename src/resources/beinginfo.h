@@ -169,6 +169,8 @@ class BeingInfo final
         void setDeadSortOffsetY(const int n)
         { mDeadSortOffsetY = n; }
 
+        static void init();
+
         static void clear();
 
     private:

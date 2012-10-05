@@ -657,12 +657,26 @@ void Being::takeDamage(Being *const attacker, const int amount,
                     const BeingInfo *const info = attacker->getInfo();
                     if (info)
                     {
-                        const Attack *attack = info->getAttack(attackId);
-
-                        if (type != CRITICAL)
-                            hitEffectId = attack->mHitEffectId;
+                        const Attack *atk = info->getAttack(attackId);
+                        if (atk)
+                        {
+                            if (type != CRITICAL)
+                                hitEffectId = atk->mHitEffectId;
+                            else
+                                hitEffectId = atk->mCriticalHitEffectId;
+                        }
                         else
-                            hitEffectId = attack->mCriticalHitEffectId;
+                        {
+                            if (type != CRITICAL)
+                            {
+                                hitEffectId = paths.getIntValue("hitEffectId");
+                            }
+                            else
+                            {
+                                hitEffectId = paths.getIntValue(
+                                    "criticalHitEffectId");
+                            }
+                        }
                     }
                 }
                 else
@@ -678,7 +692,8 @@ void Being::takeDamage(Being *const attacker, const int amount,
                 // move skills effects to +100000 in effects list
                 hitEffectId = attackId + 100000;
             }
-            effectManager->trigger(hitEffectId, this);
+            if (effectManager && hitEffectId >= 0)
+                effectManager->trigger(hitEffectId, this);
         }
     }
 }
@@ -1053,7 +1068,7 @@ void Being::setAction(const Action &action, const int attackId)
                         default:
                             break;
                     }
-                    if (effectManager)
+                    if (effectManager && effectId >= 0)
                         effectManager->trigger(effectId, this, rotation);
                 }
             }

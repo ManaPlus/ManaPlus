@@ -173,6 +173,7 @@ static void initEngines()
 
     particleEngine = new Particle(nullptr);
     particleEngine->setupEngine();
+    BeingInfo::init();
 
     DepricatedEvent::trigger(CHANNEL_GAME,
         DepricatedEvent(EVENT_ENGINESINITALIZED));

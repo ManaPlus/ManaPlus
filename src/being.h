@@ -258,7 +258,7 @@ class Being : public ActorSprite, public ConfigListener
          * @param id skill id
          */
         void takeDamage(Being *const attacker, const int damage,
-                        const AttackType type, const int attackId = 0);
+                        const AttackType type, const int attackId = 1);
 
         /**
          * Handles an attack of another being by this being.

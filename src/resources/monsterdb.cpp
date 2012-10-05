@@ -191,7 +191,7 @@ void MonsterDB::load()
             {
                 const int id = XML::getProperty(spriteNode, "id", 0);
                 const int effectId = XML::getProperty(
-                    spriteNode, "effect-id", -1);
+                    spriteNode, "effect-id", paths.getIntValue("effectId"));
                 int hitEffectId = XML::getProperty(spriteNode,
                     "hit-effect-id", paths.getIntValue("hitEffectId"));
                 int criticalHitEffectId = XML::getProperty(spriteNode,

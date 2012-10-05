@@ -22,6 +22,7 @@
 
 #include "resources/beinginfo.h"
 
+#include "configuration.h"
 #include "logger.h"
 
 #include "utils/dtor.h"
@@ -131,4 +132,14 @@ void BeingInfo::clear()
     unknown = nullptr;
     delete empty;
     empty = nullptr;
+}
+
+void BeingInfo::init()
+{
+    if (empty)
+    {
+        empty->mEffectId = paths.getIntValue("effectId");
+        empty->mHitEffectId = paths.getIntValue("hitEffectId");
+        empty->mCriticalHitEffectId = paths.getIntValue("criticalHitEffectId");
+    }
 }
