@@ -268,7 +268,7 @@ class Being : public ActorSprite, public ConfigListener
          * @param type the attack type
          */
         virtual void handleAttack(Being *const victim, const int damage,
-                                  const AttackType type);
+                                  const int attackId = 1);
 
         virtual void handleSkill(Being *const victim, const int damage,
                                  const int skillId);
@@ -860,7 +860,6 @@ class Being : public ActorSprite, public ConfigListener
         /** Time until the last speech sentence disappears */
         int mSpeechTime;
 
-        int mAttackType;
         int mAttackSpeed;     /**< Attack speed */
 
         Action mAction;       /**< Action the being is performing */

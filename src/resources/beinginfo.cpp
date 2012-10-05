@@ -30,7 +30,7 @@
 #include "debug.h"
 
 BeingInfo *BeingInfo::unknown = nullptr;
-Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK, "", "");
+Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK, -1, std::string());
 
 BeingInfo::BeingInfo() :
     mName(_("unnamed")),
@@ -106,21 +106,20 @@ const std::string &BeingInfo::getSound(const SoundEvent event) const
             i->second->at(rand() % i->second->size());
 }
 
-const Attack *BeingInfo::getAttack(const int type) const
+const Attack *BeingInfo::getAttack(const int id) const
 {
 
-    const Attacks::const_iterator i = mAttacks.find(type);
+    const Attacks::const_iterator i = mAttacks.find(id);
     return (i == mAttacks.end()) ? empty : (*i).second;
 }
 
-void BeingInfo::addAttack(const int id, std::string action,
-                          const std::string &particleEffect,
+void BeingInfo::addAttack(const int id, std::string action, const int effectId,
                           const std::string &missileParticle)
 {
     if (mAttacks[id])
         delete mAttacks[id];
 
-    mAttacks[id] = new Attack(action, particleEffect, missileParticle);
+    mAttacks[id] = new Attack(action, effectId, missileParticle);
 }
 
 void BeingInfo::clear()

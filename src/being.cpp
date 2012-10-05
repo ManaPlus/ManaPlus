@@ -198,7 +198,6 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mEmotion(0),
     mEmotionTime(0),
     mSpeechTime(0),
-    mAttackType(1),
     mAttackSpeed(350),
     mAction(STAND),
     mSubType(0xFFFF),
@@ -645,9 +644,8 @@ void Being::takeDamage(Being *const attacker, const int amount,
             int hitEffectId = 0;
             if (type != SKILL)
             {
-                const ItemInfo *const attackerWeapon
-                    = attacker->getEquippedWeapon();
-                if (attacker->mType == PLAYER && attackerWeapon)
+                const ItemInfo *attackerWeapon = attacker->getEquippedWeapon();
+                if (attackerWeapon && attacker->getType() == PLAYER)
                 {
                     if (type != CRITICAL)
                         hitEffectId = attackerWeapon->getHitEffectId();
@@ -673,18 +671,18 @@ void Being::takeDamage(Being *const attacker, const int amount,
 }
 
 void Being::handleAttack(Being *const victim, const int damage,
-                         const AttackType type A_UNUSED)
+                         const int attackId)
 {
     if (!victim || !mInfo)
         return;
 
     if (this != player_node)
-        setAction(Being::ATTACK, 1);
+        setAction(Being::ATTACK, attackId);
 
     if (mType == PLAYER && mEquippedWeapon)
         fireMissile(victim, mEquippedWeapon->getMissileParticleFile());
-    else if (mInfo->getAttack(mAttackType))
-        fireMissile(victim, mInfo->getAttack(mAttackType)->missileParticle);
+    else if (mInfo->getAttack(attackId))
+        fireMissile(victim, mInfo->getAttack(attackId)->mMissileParticle);
 
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() != ServerInfo::MANASERV)
@@ -978,7 +976,7 @@ std::string Being::getSitAction() const
     }
 }
 
-void Being::setAction(const Action &action, const int attackType A_UNUSED)
+void Being::setAction(const Action &action, const int attackId)
 {
     std::string currentAction = SpriteAction::INVALID;
 
@@ -1005,6 +1003,7 @@ void Being::setAction(const Action &action, const int attackType A_UNUSED)
             }
             break;
         case ATTACK:
+//            mAttackId = attackId;
             if (mEquippedWeapon)
             {
                 currentAction = mEquippedWeapon->getAttackAction();
@@ -1012,43 +1011,39 @@ void Being::setAction(const Action &action, const int attackType A_UNUSED)
             }
             else
             {
-                mAttackType = attackType;
-                if (!mInfo || !mInfo->getAttack(attackType))
+                if (!mInfo || !mInfo->getAttack(attackId))
                     break;
 
-                currentAction = mInfo->getAttack(attackType)->action;
+                currentAction = mInfo->getAttack(attackId)->mAction;
                 reset();
 
-#ifdef MANASERV_SUPPORT
-                if (Net::getNetworkType() == ServerInfo::MANASERV
-                    && mInfo->getAttack(attackType))
+                //attack particle effect
+                if (Particle::enabled)
                 {
-                    //attack particle effect
-                    std::string particleEffect = mInfo->getAttack(attackType)
-                                                 ->particleEffect;
-                    if (!particleEffect.empty() && Particle::enabled)
-                    {
-                        int rotation = 0;
-                        switch (mSpriteDirection)
-                        {
-                            case DIRECTION_DOWN: rotation = 0; break;
-                            case DIRECTION_LEFT: rotation = 90; break;
-                            case DIRECTION_UP: rotation = 180; break;
-                            case DIRECTION_RIGHT: rotation = 270; break;
-                            default: break;
-                        }
-                        if (particleEngine)
-                        {
-                            Particle *p = particleEngine->addEffect(
-                                particleEffect, 0, 0, rotation);
-                            if (p)
-                                controlParticle(p);
-                        }
-                    }
-                }
-#endif
-            }
+                    int effectId = mInfo->getAttack(attackId)->mEffectId;
 
+                    int rotation = 0;
+                    switch (mSpriteDirection)
+                    {
+                        case DIRECTION_DOWN:
+                            rotation = 0;
+                            break;
+                        case DIRECTION_LEFT:
+                            rotation = 90;
+                            break;
+                        case DIRECTION_UP:
+                            rotation = 180;
+                            break;
+                        case DIRECTION_RIGHT:
+                            rotation = 270;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (effectManager)
+                        effectManager->trigger(effectId, this, rotation);
+                }
+            }
             break;
         case HURT:
             if (mInfo)
@@ -1327,6 +1322,7 @@ void Being::logic()
                         / mAttackSpeed;
                 }
 
+/*
                 //attack particle effect
                 if (mEquippedWeapon)
                 {
@@ -1363,6 +1359,7 @@ void Being::logic()
                         particleEffect, 0, 0, rotation);
                     controlParticle(p);
                 }
+*/
 
                 if (this == player_node && curFrame >= frameCount)
                     nextTile();

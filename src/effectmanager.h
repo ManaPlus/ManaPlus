@@ -48,13 +48,14 @@ class EffectManager final
          * Triggers a effect with the id, at
          * the specified being.
          */
-        bool trigger(const int id, Being *const being);
+        bool trigger(const int id, Being *const being, const int rotation = 0);
 
         /**
          * Triggers a effect with the id, at
          * the specified x and y coordinate.
          */
-        bool trigger(const int id, const int x, const int y);
+        bool trigger(const int id, const int x, const int y,
+                     const int rotation = 0);
 
    private:
         std::vector<EffectDescription> mEffects;

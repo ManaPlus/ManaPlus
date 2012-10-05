@@ -30,15 +30,15 @@
 
 struct Attack final
 {
-    std::string action;
-    std::string particleEffect;
-    std::string missileParticle;
+    std::string mAction;
+    int mEffectId;
+    std::string mMissileParticle;
 
-    Attack(std::string action0, std::string particleEffect0,
-           std::string missileParticle0) :
-        action(action0),
-        particleEffect(particleEffect0),
-        missileParticle(missileParticle0)
+    Attack(const std::string &action, const int effectId,
+           const std::string &missileParticle) :
+        mAction(action),
+        mEffectId(effectId),
+        mMissileParticle(missileParticle)
     {
     }
 };
@@ -101,10 +101,10 @@ class BeingInfo final
         const std::string &getSound(const SoundEvent event) const;
 
         void addAttack(const int id, std::string action,
-                       const std::string &particleEffect,
+                       const int effectId,
                        const std::string &missileParticle);
 
-        const Attack *getAttack(const int type) const;
+        const Attack *getAttack(const int id) const;
 
         void setWalkMask(const unsigned char mask)
         { mWalkMask = mask; }
