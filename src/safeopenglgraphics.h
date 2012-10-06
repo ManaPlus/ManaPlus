@@ -94,7 +94,8 @@ class SafeOpenGLGraphics final : public Graphics
         void drawImageRect2(GraphicsVertexes *const vert,
                             const ImageRect &imgRect) override;
 
-        void calcTile(ImageVertexes *const vert, int x, int y) override;
+        void calcTile(ImageVertexes *const vert, const Image *const image,
+                      int x, int y) override;
 
         void drawTile(const ImageVertexes *const vert) override;
 

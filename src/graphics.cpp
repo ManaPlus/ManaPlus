@@ -785,6 +785,11 @@ void Graphics::calcImagePattern(GraphicsVertexes* const vert,
     vert->incPtr(1);
 }
 
+void Graphics::calcTile(ImageVertexes *const vert, const Image *const image,
+                        int x, int y)
+{
+}
+
 void Graphics::calcTile(ImageVertexes *const vert, int x, int y)
 {
     // Check that preconditions for blitting are met.

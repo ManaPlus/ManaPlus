@@ -46,6 +46,9 @@
 Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
              uint8_t *const alphaChannel) :
     Resource(),
+#ifdef USE_OPENGL
+    mGLImage(0),
+#endif
     mLoaded(false),
     mAlpha(1.0f),
     mHasAlphaChannel(hasAlphaChannel0),
@@ -53,12 +56,7 @@ Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
     mAlphaChannel(alphaChannel),
     mUseAlphaCache(SDLImageHelper::mEnableAlphaCache),
     mIsAlphaVisible(hasAlphaChannel0),
-#ifdef USE_OPENGL
-    mIsAlphaCalculated(false),
-    mGLImage(0)
-#else
     mIsAlphaCalculated(false)
-#endif
 {
     mBounds.x = 0;
     mBounds.y = 0;
@@ -83,6 +81,7 @@ Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
 Image::Image(const GLuint glimage, const int width, const int height,
              const int texWidth, const int texHeight) :
     Resource(),
+    mGLImage(glimage),
     mLoaded(false),
     mAlpha(1.0f),
     mHasAlphaChannel(true),
@@ -91,7 +90,6 @@ Image::Image(const GLuint glimage, const int width, const int height,
     mUseAlphaCache(false),
     mIsAlphaVisible(true),
     mIsAlphaCalculated(false),
-    mGLImage(glimage),
     mTexWidth(texWidth),
     mTexHeight(texHeight)
 {

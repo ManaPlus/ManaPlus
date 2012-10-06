@@ -232,6 +232,7 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
                          const int scrollX, const int scrollY,
                          const int debugFlags)
 {
+#ifdef USE_OPENGL
     delete_all(mTempRows);
     mTempRows.clear();
 
@@ -276,7 +277,7 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
                 const int py = py0 - img->mBounds.h;
                 if (flag || img->mBounds.h <= 32)
                 {
-                    if (lastImage != img)
+                    if (!lastImage || lastImage->mGLImage != img->mGLImage)
                     {
                         if (img->mBounds.w > 32)
                             imgSet.clear();
@@ -294,11 +295,13 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
                         }
                         lastImage = img;
                     }
-                    graphics->calcTile(imgVert, px, py);
+                    lastImage = img;
+                    graphics->calcTile(imgVert, lastImage, px, py);
                 }
             }
         }
     }
+#endif
 }
 
 void MapLayer::drawOGL(Graphics *const graphics)

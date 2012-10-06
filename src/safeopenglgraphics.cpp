@@ -356,6 +356,7 @@ bool SafeOpenGLGraphics::calcImageRect(GraphicsVertexes *const vert,
 }
 
 void SafeOpenGLGraphics::calcTile(ImageVertexes *const vert A_UNUSED,
+                                  const Image *const image A_UNUSED,
                                   int x A_UNUSED, int y A_UNUSED)
 {
 

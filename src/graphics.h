@@ -206,6 +206,9 @@ class Graphics : public gcn::SDLGraphics
                                       const int x, const int y,
                                       const int w, const int h);
 
+        virtual void calcTile(ImageVertexes *const vert,
+                              const Image *const image, int x, int y);
+
         virtual void calcTile(ImageVertexes *const vert, int x, int y);
 
         virtual void drawTile(const ImageVertexes *const vert);

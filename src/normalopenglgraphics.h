@@ -87,7 +87,8 @@ class NormalOpenGLGraphics final : public Graphics
                               const int x, const int y,
                               const int w, const int h) override;
 
-        void calcTile(ImageVertexes *const vert, int x, int y) override;
+        void calcTile(ImageVertexes *const vert, const Image *const image,
+                      int x, int y) override;
 
         void drawTile(const ImageVertexes *const vert) override;
 

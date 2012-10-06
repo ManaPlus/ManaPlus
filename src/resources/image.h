@@ -143,8 +143,6 @@ class Image : public Resource
         void SDLTerminateAlphaCache();
 
 #ifdef USE_OPENGL
-        // OpenGL only public functions
-
         int getTextureWidth() const
         { return mTexWidth; }
 
@@ -153,6 +151,8 @@ class Image : public Resource
 
         GLuint getGLImage() const
         { return mGLImage; }
+
+        GLuint mGLImage;
 #endif
 
         bool isHasAlphaChannel() const
@@ -213,7 +213,6 @@ class Image : public Resource
         Image(const GLuint glimage, const int width, const int height,
               const int texWidth, const int texHeight);
 
-        GLuint mGLImage;
         int mTexWidth, mTexHeight;
 #endif
 };

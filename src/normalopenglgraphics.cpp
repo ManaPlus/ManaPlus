@@ -802,12 +802,12 @@ void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
 }
 
 void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
+                                    const Image *const image,
                                     int dstX, int dstY)
 {
-    if (!vert)
+    if (!vert || !image)
         return;
 
-    Image *image = vert->image;
     const int srcX = image->mBounds.x;
     const int srcY = image->mBounds.y;
 
