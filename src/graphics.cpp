@@ -175,7 +175,8 @@ bool Graphics::setOpenGLMode()
     bool rectTex = graphicsManager.supportExtension(
         "GL_ARB_texture_rectangle");
     if (rectTex && OpenGLImageHelper::getInternalTextureType() == 4
-        && config.getBoolValue("rectangulartextures"))
+        && config.getBoolValue("rectangulartextures")
+        && !graphicsManager.isUseTextureSampler())
     {
         logger->log1("using GL_ARB_texture_rectangle");
         OpenGLImageHelper::mTextureType = GL_TEXTURE_RECTANGLE_ARB;

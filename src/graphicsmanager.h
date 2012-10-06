@@ -93,6 +93,10 @@ class GraphicsManager final
         bool getUseAtlases() const
         { return mUseAtlases; }
 
+#ifdef USE_OPENGL
+        bool isUseTextureSampler() const
+        { return mUseTextureSampler; }
+#endif
         unsigned int getLastError();
 
     private:
