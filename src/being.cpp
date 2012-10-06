@@ -635,67 +635,92 @@ void Being::takeDamage(Being *const attacker, const int amount,
             updateName();
         }
         else if (mType == PLAYER && socialWindow && getName() != "")
+        {
             socialWindow->updateAvatar(getName());
+        }
 
         if (effectManager)
         {
-            // Init the particle effect path based on current
-            // weapon or default.
-            int hitEffectId = 0;
-            if (type != SKILL)
+            int hitEffectId = getHitEffect(attacker, type, attackId);
+            if (hitEffectId >= 0)
+                effectManager->trigger(hitEffectId, this);
+        }
+    }
+    else
+    {
+        if (effectManager)
+        {
+            int hitEffectId = getHitEffect(attacker,
+                MISS, attackId);
+            if (hitEffectId >= 0)
+                effectManager->trigger(hitEffectId, this);
+        }
+    }
+}
+
+int Being::getHitEffect(const Being *const attacker,
+                        const AttackType type, const int attackId) const
+{
+    if (!effectManager)
+        return 0;
+
+    // Init the particle effect path based on current
+    // weapon or default.
+    int hitEffectId = 0;
+    if (type != SKILL)
+    {
+        const ItemInfo *attackerWeapon = attacker->getEquippedWeapon();
+        if (attackerWeapon && attacker->getType() == PLAYER)
+        {
+            if (type == MISS)
+                hitEffectId = attackerWeapon->getMissEffectId();
+            else if (type != CRITICAL)
+                hitEffectId = attackerWeapon->getHitEffectId();
+            else
+                hitEffectId = attackerWeapon->getCriticalHitEffectId();
+        }
+        else if (attacker && attacker->getType() == MONSTER)
+        {
+            const BeingInfo *const info = attacker->getInfo();
+            if (info)
             {
-                const ItemInfo *attackerWeapon = attacker->getEquippedWeapon();
-                if (attackerWeapon && attacker->getType() == PLAYER)
+                const Attack *atk = info->getAttack(attackId);
+                if (atk)
                 {
-                    if (type != CRITICAL)
-                        hitEffectId = attackerWeapon->getHitEffectId();
+                    if (type == MISS)
+                        hitEffectId = atk->mMissEffectId;
+                    else if (type != CRITICAL)
+                        hitEffectId = atk->mHitEffectId;
                     else
-                        hitEffectId = attackerWeapon->getCriticalHitEffectId();
-                }
-                else if (attacker && attacker->getType() == MONSTER)
-                {
-                    const BeingInfo *const info = attacker->getInfo();
-                    if (info)
-                    {
-                        const Attack *atk = info->getAttack(attackId);
-                        if (atk)
-                        {
-                            if (type != CRITICAL)
-                                hitEffectId = atk->mHitEffectId;
-                            else
-                                hitEffectId = atk->mCriticalHitEffectId;
-                        }
-                        else
-                        {
-                            if (type != CRITICAL)
-                            {
-                                hitEffectId = paths.getIntValue("hitEffectId");
-                            }
-                            else
-                            {
-                                hitEffectId = paths.getIntValue(
-                                    "criticalHitEffectId");
-                            }
-                        }
-                    }
+                        hitEffectId = atk->mCriticalHitEffectId;
                 }
                 else
                 {
-                    if (type != CRITICAL)
+                    if (type == MISS)
+                        hitEffectId = paths.getIntValue("missEffectId");
+                    else if (type != CRITICAL)
                         hitEffectId = paths.getIntValue("hitEffectId");
                     else
                         hitEffectId = paths.getIntValue("criticalHitEffectId");
                 }
             }
+        }
+        else
+        {
+            if (type == MISS)
+                hitEffectId = paths.getIntValue("missEffectId");
+            else if (type != CRITICAL)
+                hitEffectId = paths.getIntValue("hitEffectId");
             else
-            {
-                // move skills effects to +100000 in effects list
-                hitEffectId = attackId + 100000;
-            }
-            if (effectManager && hitEffectId >= 0)
-                effectManager->trigger(hitEffectId, this);
+                hitEffectId = paths.getIntValue("criticalHitEffectId");
         }
     }
+    else
+    {
+        // move skills effects to +100000 in effects list
+        hitEffectId = attackId + 100000;
+    }
+    return hitEffectId;
 }
 
 void Being::handleAttack(Being *const victim, const int damage,

@@ -323,6 +323,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("portalEffectFile", "warparea.particle.xml");
     AddDEF("effectId", -1);
     AddDEF("hitEffectId", 26);
+    AddDEF("missEffectId", -1);
     AddDEF("criticalHitEffectId", 28);
 
     AddDEF("minimaps", "graphics/minimaps/");

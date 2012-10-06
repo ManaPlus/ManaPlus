@@ -137,7 +137,8 @@ class Being : public ActorSprite, public ConfigListener
             MULTI = 0x08,
             REFLECT = 0x04,
             FLEE = 0x0b,
-            SKILL = 0xff
+            SKILL = 0xff,
+            MISS = 0xffff   // pseudo value for miss attacks
         };
 
         enum Reachable
@@ -833,6 +834,9 @@ class Being : public ActorSprite, public ConfigListener
         { return mHairColor; }
 
         void recalcSpritesOrder();
+
+        int getHitEffect(const Being *const attacker,
+                         const AttackType type, const int attackId) const;
 
         static uint8_t genderToInt(const Gender sex);
 

@@ -245,6 +245,8 @@ void ItemDB::load()
         const int criticalEffectId = XML::getProperty(
             node, "critical-hit-effect-id",
             paths.getIntValue("criticalHitEffectId"));
+        const int missEffectId = XML::getProperty(node, "miss-effect-id",
+            paths.getIntValue("missEffectId"));
 
         SpriteDisplay display;
         display.image = image;
@@ -305,6 +307,7 @@ void ItemDB::load()
         itemInfo->setMissileParticleFile(missileParticle);
         itemInfo->setHitEffectId(hitEffectId);
         itemInfo->setCriticalHitEffectId(criticalEffectId);
+        itemInfo->setMissEffectId(missEffectId);
         itemInfo->setDrawBefore(-1, parseSpriteName(drawBefore));
         itemInfo->setDrawAfter(-1, parseSpriteName(drawAfter));
         itemInfo->setDrawPriority(-1, drawPriority);

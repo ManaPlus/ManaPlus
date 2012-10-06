@@ -194,6 +194,12 @@ class ItemInfo final
         int getCriticalHitEffectId() const
         { return mCriticalHitEffectId; }
 
+        void setMissEffectId(const int s)
+        { mMissEffectId = s; }
+
+        int getMissEffectId() const
+        { return mMissEffectId; }
+
         const std::string &getAttackAction() const
         { return mAttackAction; }
 
@@ -306,6 +312,7 @@ class ItemInfo final
         std::string mColorList;
         int mHitEffectId;
         int mCriticalHitEffectId;
+        int mMissEffectId;
         int maxFloorOffset;
 };
 

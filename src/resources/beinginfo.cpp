@@ -32,7 +32,7 @@
 
 BeingInfo *BeingInfo::unknown = nullptr;
 Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK,
-    -1, -1, -1, std::string());
+    -1, -1, -1, -1, std::string());
 
 BeingInfo::BeingInfo() :
     mName(_("unnamed")),
@@ -117,13 +117,14 @@ const Attack *BeingInfo::getAttack(const int id) const
 
 void BeingInfo::addAttack(const int id, std::string action, const int effectId,
                           const int hitEffectId, const int criticalHitEffectId,
+                          const int missEffectId,
                           const std::string &missileParticle)
 {
     if (mAttacks[id])
         delete mAttacks[id];
 
     mAttacks[id] = new Attack(action, effectId, hitEffectId,
-        criticalHitEffectId, missileParticle);
+        criticalHitEffectId, missEffectId, missileParticle);
 }
 
 void BeingInfo::clear()
@@ -141,5 +142,6 @@ void BeingInfo::init()
         empty->mEffectId = paths.getIntValue("effectId");
         empty->mHitEffectId = paths.getIntValue("hitEffectId");
         empty->mCriticalHitEffectId = paths.getIntValue("criticalHitEffectId");
+        empty->mMissEffectId = paths.getIntValue("missEffectId");
     }
 }
