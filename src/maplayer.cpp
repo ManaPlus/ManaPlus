@@ -255,18 +255,16 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
     const bool flag = (debugFlags != Map::MAP_SPECIAL
         && debugFlags != Map::MAP_SPECIAL2);
 
+    MapRowVertexes *const row = new MapRowVertexes();
+    mTempRows.push_back(row);
+    Image *lastImage = nullptr;
+    ImageVertexes *imgVert = nullptr;
+    std::map<int, ImageVertexes*> imgSet;
+
     for (int y = startY; y < endY; y++)
     {
-        MapRowVertexes *const row = new MapRowVertexes();
-        mTempRows.push_back(row);
-
-        Image *lastImage = nullptr;
-        ImageVertexes *imgVert = nullptr;
-
         const int yWidth = y * mWidth;
         const int py0 = y * 32 + dy;
-        std::map<Image*, ImageVertexes*> imgSet;
-
         Image **tilePtr = mTiles + startX + yWidth;
         for (int x = startX; x < endX; x++, tilePtr++)
         {
@@ -282,20 +280,24 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
                         if (img->mBounds.w > 32)
                             imgSet.clear();
 
-                        imgSet[lastImage] = imgVert;
-                        if (imgSet.find(img) != imgSet.end())
+                        if (imgSet.find(img->mGLImage) != imgSet.end())
                         {
-                            imgVert = imgSet[img];
+                            imgVert = imgSet[img->mGLImage];
                         }
                         else
                         {
+                            if (lastImage)
+                                imgSet[lastImage->mGLImage] = imgVert;
                             imgVert = new ImageVertexes();
+                            imgVert->ogl.init();
                             imgVert->image = img;
                             row->images.push_back(imgVert);
                         }
                         lastImage = img;
                     }
                     lastImage = img;
+//                    if (imgVert->image->mGLImage != lastImage->mGLImage)
+//                        logger->log("wrong image draw");
                     graphics->calcTile(imgVert, lastImage, px, py);
                 }
             }
@@ -308,6 +310,7 @@ void MapLayer::drawOGL(Graphics *const graphics)
 {
     MapRows::const_iterator rit = mTempRows.begin();
     const MapRows::const_iterator rit_end = mTempRows.end();
+//    int k = 0;
     while (rit != rit_end)
     {
         MepRowImages *const images = &(*rit)->images;
@@ -317,9 +320,11 @@ void MapLayer::drawOGL(Graphics *const graphics)
         {
             graphics->drawTile(*iit);
             ++ iit;
+//            k ++;
         }
         ++ rit;
     }
+//    logger->log("draws: %d", k);
 }
 
 void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,

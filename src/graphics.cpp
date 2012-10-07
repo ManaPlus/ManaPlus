@@ -786,8 +786,9 @@ void Graphics::calcImagePattern(GraphicsVertexes* const vert,
     vert->incPtr(1);
 }
 
-void Graphics::calcTile(ImageVertexes *const vert, const Image *const image,
-                        int x, int y)
+void Graphics::calcTile(ImageVertexes *const vert A_UNUSED,
+                        const Image *const image A_UNUSED,
+                        int x A_UNUSED, int y A_UNUSED)
 {
 }
 
@@ -821,7 +822,7 @@ void Graphics::calcTile(ImageVertexes *const vert, int x, int y)
     }
 }
 
-void Graphics::drawTile(const ImageVertexes *const vert)
+void Graphics::drawTile(ImageVertexes *const vert)
 {
     // vert and img must be != 0
     const Image *const img = vert->image;

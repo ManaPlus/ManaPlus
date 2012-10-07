@@ -359,10 +359,9 @@ void SafeOpenGLGraphics::calcTile(ImageVertexes *const vert A_UNUSED,
                                   const Image *const image A_UNUSED,
                                   int x A_UNUSED, int y A_UNUSED)
 {
-
 }
 
-void SafeOpenGLGraphics::drawTile(const ImageVertexes *const vert A_UNUSED)
+void SafeOpenGLGraphics::drawTile(ImageVertexes *const vert A_UNUSED)
 {
 
 }

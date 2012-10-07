@@ -134,6 +134,13 @@ int NormalOpenGLGraphicsVertexes::continueVp()
     }
 }
 
+void NormalOpenGLGraphicsVertexes::updateVp(int n)
+{
+    if (!mVp.empty())
+        mVp.pop_back();
+    mVp.push_back(n);
+}
+
 GLfloat *NormalOpenGLGraphicsVertexes::continueFloatTexArray()
 {
     if (mFloatTexPool.empty())

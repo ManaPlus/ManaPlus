@@ -211,7 +211,7 @@ class Graphics : public gcn::SDLGraphics
 
         virtual void calcTile(ImageVertexes *const vert, int x, int y);
 
-        virtual void drawTile(const ImageVertexes *const vert);
+        virtual void drawTile(ImageVertexes *const vert);
 
         virtual void drawImageRect2(GraphicsVertexes *const vert,
                                     const ImageRect &imgRect);

@@ -96,6 +96,8 @@ class NormalOpenGLGraphicsVertexes final
 
         int continueVp();
 
+        void updateVp(int n);
+
         std::vector<int> *getVp()
         { return &mVp; }
 

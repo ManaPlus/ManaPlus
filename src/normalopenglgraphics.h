@@ -39,6 +39,8 @@
 
 #include <set>
 
+class NormalOpenGLGraphicsVertexes;
+
 class NormalOpenGLGraphics final : public Graphics
 {
     public:
@@ -90,7 +92,7 @@ class NormalOpenGLGraphics final : public Graphics
         void calcTile(ImageVertexes *const vert, const Image *const image,
                       int x, int y) override;
 
-        void drawTile(const ImageVertexes *const vert) override;
+        void drawTile(ImageVertexes *const vert) override;
 
         void drawImagePattern2(GraphicsVertexes *const vert,
                                const Image *const image) override;
@@ -119,17 +121,21 @@ class NormalOpenGLGraphics final : public Graphics
 
         void drawQuadArrayfi(int size);
 
-        void drawQuadArrayfi(GLint *intVertArray, GLfloat *floatTexArray,
-                             int size);
+        void drawQuadArrayfi(GLint *intVertArray,
+                             GLfloat *floatTexArray,
+                             const int size);
 
         void drawQuadArrayii(int size);
 
-        void drawQuadArrayii(GLint *intVertArray, GLint *intTexArray,
-                             int size);
+        void drawQuadArrayii(GLint *intVertArray,
+                             GLint *intTexArray,
+                             const int size);
 
         void drawLineArrayi(int size);
 
         void drawLineArrayf(int size);
+
+        void drawVertexes(NormalOpenGLGraphicsVertexes &ogl);
 
         void initArrays() override;
 
