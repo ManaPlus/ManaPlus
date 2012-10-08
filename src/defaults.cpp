@@ -265,7 +265,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableCompoundSpriteDelay", true);
     AddDEF("npcfontSize", 13);
     AddDEF("useAtlases", true);
-    AddDEF("useTextureSampler", true);
+    AddDEF("useTextureSampler", false);
     return configData;
 }
 

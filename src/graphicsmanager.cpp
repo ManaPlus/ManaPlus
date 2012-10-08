@@ -148,6 +148,7 @@ bool GraphicsManager::detectGraphics()
     {
         // hope it can work well
         logger->log("detected NVIDIA driver");
+        config.setValue("useTextureSampler", true);
         mode = 1;
     }
 
