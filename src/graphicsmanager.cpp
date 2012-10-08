@@ -168,6 +168,7 @@ bool GraphicsManager::detectGraphics()
 
     config.setValue("opengl", mode);
     config.setValue("videoconfigured", true);
+    config.write();
 
     logger->log("detection complete");
     return true;

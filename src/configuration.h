@@ -238,6 +238,8 @@ class Configuration final : public ConfigurationObject
         void init(const std::string &filename,
                   const bool useResManager = false);
 
+        void reInit();
+
         /**
          * Set the default values for each keys.
          *
@@ -334,6 +336,8 @@ class Configuration final : public ConfigurationObject
         DefaultsData *mDefaultsData;   /**< Defaults of value
                                             for a given key */
         std::string mDirectory;
+        std::string mFilename;
+        bool mUseResManager;
 };
 
 extern Configuration branding;

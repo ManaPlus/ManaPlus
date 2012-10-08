@@ -317,9 +317,10 @@ ConfigurationObject::~ConfigurationObject()
 
 Configuration::Configuration() :
     ConfigurationObject(),
-    mConfigPath(""),
+    mConfigPath(),
     mDefaultsData(nullptr),
-    mDirectory("")
+    mDirectory(),
+    mUseResManager(false)
 {
 #ifdef DEBUG_CONFIG
     mLogKeys = false;
@@ -690,6 +691,8 @@ void Configuration::init(const std::string &filename, const bool useResManager)
 {
     mDefaultsData = nullptr;
     XML::Document doc(filename, useResManager);
+    mFilename = filename;
+    mUseResManager = useResManager;
 
     if (useResManager)
     {
@@ -715,6 +718,26 @@ void Configuration::init(const std::string &filename, const bool useResManager)
     if (!rootNode || !xmlNameEqual(rootNode, "configuration"))
     {
         logger->log("Warning: No configuration file (%s)", filename.c_str());
+        return;
+    }
+
+    initFromXML(rootNode);
+}
+
+void Configuration::reInit()
+{
+    XML::Document doc(mFilename, mUseResManager);
+    if (!doc.rootNode())
+    {
+        logger->log("Couldn't open configuration file: %s", mFilename.c_str());
+        return;
+    }
+
+    const XmlNodePtr rootNode = doc.rootNode();
+
+    if (!rootNode || !xmlNameEqual(rootNode, "configuration"))
+    {
+        logger->log("Warning: No configuration file (%s)", mFilename.c_str());
         return;
     }
 
