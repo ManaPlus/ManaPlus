@@ -46,6 +46,7 @@
 
 #include "debug.h"
 
+#ifdef USE_OPENGL
 #ifndef GL_MAX_RENDERBUFFER_SIZE
 #define GL_MAX_RENDERBUFFER_SIZE 0x84E8
 #endif
@@ -59,6 +60,7 @@
 
 #define assignFunction(func, name) m##func \
     = reinterpret_cast<func##_t>(getFunction(name))
+#endif
 
 GraphicsManager graphicsManager;
 
@@ -85,20 +87,16 @@ GraphicsManager::~GraphicsManager()
 #endif
 }
 
+#ifdef USE_OPENGL
 TestMain *GraphicsManager::startDetection()
 {
-#ifdef USE_OPENGL
     TestMain *test = new TestMain();
     test->exec(false);
     return test;
-#else
-    return nullptr;
-#endif
 }
 
 int GraphicsManager::detectGraphics()
 {
-#ifdef USE_OPENGL
     logger->log("start detecting best mode...");
     logger->log("enable opengl mode");
     int textureSampler = 0;
@@ -176,14 +174,10 @@ int GraphicsManager::detectGraphics()
 
     logger->log("detection complete");
     return mode | (1024 * textureSampler) | (2048 * compressTextures);
-#else
-    return 0;
-#endif
 }
 
 void GraphicsManager::initGraphics(bool noOpenGL)
 {
-#ifdef USE_OPENGL
     int useOpenGL = 0;
     if (!noOpenGL)
         useOpenGL = config.getIntValue("opengl");
@@ -218,6 +212,8 @@ void GraphicsManager::initGraphics(bool noOpenGL)
     mUseAtlases = imageHelper->useOpenGL()
         && config.getBoolValue("useAtlases");
 #else
+void GraphicsManager::initGraphics(bool noOpenGL A_UNUSED)
+{
     // Create the graphics context
     imageHelper = new SDLImageHelper;
     sdlImageHelper = imageHelper;
@@ -243,9 +239,49 @@ Graphics *GraphicsManager::createGraphics()
 #endif
 }
 
+void GraphicsManager::setVideoMode()
+{
+    const int width = config.getIntValue("screenwidth");
+    const int height = config.getIntValue("screenheight");
+    const int bpp = 0;
+    const bool fullscreen = config.getBoolValue("screen");
+    const bool hwaccel = config.getBoolValue("hwaccel");
+    const bool enableResize = config.getBoolValue("enableresize");
+    const bool noFrame = config.getBoolValue("noframe");
+
+    // Try to set the desired video mode
+    if (!mainGraphics->setVideoMode(width, height, bpp,
+        fullscreen, hwaccel, enableResize, noFrame))
+    {
+        logger->log(strprintf("Couldn't set %dx%dx%d video mode: %s",
+            width, height, bpp, SDL_GetError()));
+
+        const int oldWidth = config.getValueInt("oldscreenwidth", -1);
+        const int oldHeight = config.getValueInt("oldscreenheight", -1);
+        const int oldFullscreen = config.getValueInt("oldscreen", -1);
+        if (oldWidth != -1 && oldHeight != -1 && oldFullscreen != -1)
+        {
+            config.deleteKey("oldscreenwidth");
+            config.deleteKey("oldscreenheight");
+            config.deleteKey("oldscreen");
+
+            config.setValueInt("screenwidth", oldWidth);
+            config.setValueInt("screenheight", oldHeight);
+            config.setValue("screen", oldFullscreen == 1);
+            if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
+                oldFullscreen, hwaccel, enableResize, noFrame))
+            {
+                logger->safeError(strprintf("Couldn't restore %dx%dx%d "
+                    "video mode: %s", oldWidth, oldHeight, bpp,
+                    SDL_GetError()));
+            }
+        }
+    }
+}
+
+#ifdef USE_OPENGL
 void GraphicsManager::updateExtensions()
 {
-#ifdef USE_OPENGL
     if (checkGLVersion(3, 0))
         assignFunction(glGetStringi, "glGetStringi");
 
@@ -273,12 +309,10 @@ void GraphicsManager::updateExtensions()
 
         splitToStringSet(mExtensions, extensions, ' ');
     }
-#endif
 }
 
 void GraphicsManager::updatePlanformExtensions()
 {
-#ifdef USE_OPENGL
     SDL_SysWMinfo info;
     SDL_VERSION(&info.version);
     if (SDL_GetWMInfo(&info))
@@ -352,7 +386,6 @@ void GraphicsManager::updatePlanformExtensions()
         }
 #endif
     }
-#endif
 }
 
 bool GraphicsManager::supportExtension(const std::string &ext)
@@ -362,7 +395,6 @@ bool GraphicsManager::supportExtension(const std::string &ext)
 
 void GraphicsManager::updateTextureFormat()
 {
-#ifdef USE_OPENGL
     if (config.getBoolValue("compresstextures"))
     {
         // using extensions if can
@@ -421,31 +453,24 @@ void GraphicsManager::updateTextureFormat()
         OpenGLImageHelper::setInternalTextureType(4);
         logger->log1("using 4 texture format");
     }
-#endif
 }
+#endif
+
+#ifdef USE_OPENGL
 
 void GraphicsManager::logString(const char *format, int num)
 {
-#ifdef USE_OPENGL
     const char *str = reinterpret_cast<const char*>(glGetString(num));
     if (!str)
         logger->log(format, "?");
     else
         logger->log(format, str);
-#endif
 }
 
 std::string GraphicsManager::getGLString(int num) const
 {
-#ifdef USE_OPENGL
     const char *str = reinterpret_cast<const char*>(glGetString(num));
-    if (str)
-        return str;
-    else
-        return "";
-#else
-    return "";
-#endif
+    return str ? str : "";
 }
 
 void GraphicsManager::setGLVersion()
@@ -463,47 +488,6 @@ void GraphicsManager::logVersion()
     logger->log("gl version: " + mGlVersionString);
 }
 
-void GraphicsManager::setVideoMode()
-{
-    const int width = config.getIntValue("screenwidth");
-    const int height = config.getIntValue("screenheight");
-    const int bpp = 0;
-    const bool fullscreen = config.getBoolValue("screen");
-    const bool hwaccel = config.getBoolValue("hwaccel");
-    const bool enableResize = config.getBoolValue("enableresize");
-    const bool noFrame = config.getBoolValue("noframe");
-
-    // Try to set the desired video mode
-    if (!mainGraphics->setVideoMode(width, height, bpp,
-        fullscreen, hwaccel, enableResize, noFrame))
-    {
-        logger->log(strprintf("Couldn't set %dx%dx%d video mode: %s",
-            width, height, bpp, SDL_GetError()));
-
-        const int oldWidth = config.getValueInt("oldscreenwidth", -1);
-        const int oldHeight = config.getValueInt("oldscreenheight", -1);
-        const int oldFullscreen = config.getValueInt("oldscreen", -1);
-        if (oldWidth != -1 && oldHeight != -1 && oldFullscreen != -1)
-        {
-            config.deleteKey("oldscreenwidth");
-            config.deleteKey("oldscreenheight");
-            config.deleteKey("oldscreen");
-
-            config.setValueInt("screenwidth", oldWidth);
-            config.setValueInt("screenheight", oldHeight);
-            config.setValue("screen", oldFullscreen == 1);
-            if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
-                oldFullscreen, hwaccel, enableResize, noFrame))
-            {
-                logger->safeError(strprintf("Couldn't restore %dx%dx%d "
-                    "video mode: %s", oldWidth, oldHeight, bpp,
-                    SDL_GetError()));
-            }
-        }
-    }
-}
-
-
 bool GraphicsManager::checkGLVersion(int major, int minor) const
 {
     return mMajor > major || (mMajor == major && mMinor >= minor);
@@ -517,7 +501,6 @@ bool GraphicsManager::checkPlatformVersion(int major, int minor) const
 
 void GraphicsManager::createFBO(int width, int height, FBOInfo *fbo)
 {
-#ifdef USE_OPENGL
     if (!fbo)
         return;
 
@@ -557,12 +540,10 @@ void GraphicsManager::createFBO(int width, int height, FBOInfo *fbo)
 
     mglBindFramebuffer(GL_FRAMEBUFFER, fbo->fboId);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-#endif
 }
 
 void GraphicsManager::deleteFBO(FBOInfo *fbo)
 {
-#ifdef USE_OPENGL
     if (!fbo)
         return;
 
@@ -583,12 +564,10 @@ void GraphicsManager::deleteFBO(FBOInfo *fbo)
         glDeleteTextures(1, &fbo->textureId);
         fbo->textureId = 0;
     }
-#endif
 }
 
 void GraphicsManager::initOpenGLFunctions()
 {
-#ifdef USE_OPENGL
     if (!checkGLVersion(1, 1))
         return;
 
@@ -642,12 +621,10 @@ void GraphicsManager::initOpenGLFunctions()
 #ifdef WIN32
     assignFunction(wglGetExtensionsString, "wglGetExtensionsStringARB");
 #endif
-#endif
 }
 
 void GraphicsManager::updateLimits()
 {
-#ifdef USE_OPENGL
     GLint value;
     glGetIntegerv(GL_MAX_ELEMENTS_VERTICES, &value);
     logger->log("GL_MAX_ELEMENTS_VERTICES: %d", value);
@@ -664,19 +641,16 @@ void GraphicsManager::updateLimits()
     glGetIntegerv(GL_MAX_RENDERBUFFER_SIZE, &value);
     logger->log("Max FBO size: %d", value);
     mMaxFboSize = value;
-#endif
 }
 
 void GraphicsManager::initOpenGL()
 {
-#ifdef USE_OPENGL
     setGLVersion();
     updateExtensions();
     initOpenGLFunctions();
     updatePlanformExtensions();
     createTextureSampler();
     updateLimits();
-#endif
 }
 
 void GraphicsManager::createTextureSampler()
@@ -738,3 +712,4 @@ void GraphicsManager::detectVideoSettings()
         delete test;
     }
 }
+#endif

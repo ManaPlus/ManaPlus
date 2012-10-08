@@ -720,6 +720,7 @@ Image *ResourceManager::getSubImage(Image *const parent,
     return static_cast<Image*>(get(ss.str(), SubImageLoader::load, &rl));
 }
 
+#ifdef USE_OPENGL
 struct AtlasLoader
 {
     const std::string name;
@@ -745,6 +746,7 @@ Resource *ResourceManager::getAtlas(const std::string &name,
 
     return get("atlas_" + name, AtlasLoader::load, &rl);
 }
+#endif
 
 struct SpriteDefLoader
 {

@@ -358,6 +358,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             graphics->mWidth, graphics->mHeight));
     }
 
+#ifdef USE_OPENGL
     int updateFlag = 0;
 
     if (mOpenGL == 1)
@@ -382,6 +383,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             updateFlag = 1;
         }
     }
+#endif
 
     if (mDebugFlags == MAP_SPECIAL3 || mDebugFlags == MAP_BLACKWHITE)
     {
@@ -412,6 +414,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             }
             else
             {
+#ifdef USE_OPENGL
                 if (mOpenGL == 1 && updateFlag != 2)
                 {
                     if (updateFlag)
@@ -423,6 +426,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
                     (*layeri)->drawOGL(graphics);
                 }
                 else
+#endif
                 {
 /*
                     if (updateFlag)

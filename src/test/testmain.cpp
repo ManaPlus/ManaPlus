@@ -18,8 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
 #include "test/testmain.h"
 
+#ifdef USE_OPENGL
 #include "utils/gettext.h"
 
 #include "client.h"
@@ -205,7 +207,7 @@ int TestMain::exec(const bool testAudio)
 
 void TestMain::writeConfig(const int openGLMode, const int rescale,
                            const int sound, const std::string &info,
-                           const int batchSize, const int detectMode)
+                           const int batchSize A_UNUSED, const int detectMode)
 {
     mConfig.init(Client::getConfigDirectory() + "/config.xml");
 
@@ -297,39 +299,28 @@ int TestMain::invokeSoftwareRenderTest(std::string test)
 
 int TestMain::invokeFastOpenGLRenderTest(std::string test)
 {
-#if defined USE_OPENGL
     mConfig.setValue("opengl", 1);
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;
-#else
-    return -1;
-#endif
 }
 
 int TestMain::invokeFastOpenBatchTest(std::string test)
 {
-#if defined USE_OPENGL
     mConfig.setValue("opengl", 1);
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
 //    log->log("%s: %d", test.c_str(), ret);
     return ret;
-#else
-    return -1;
-#endif
 }
 
 int TestMain::invokeSafeOpenGLRenderTest(std::string test)
 {
-#if defined USE_OPENGL
     mConfig.setValue("opengl", 2);
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;
-#else
-    return -1;
-#endif
 }
+#endif

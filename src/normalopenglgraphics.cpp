@@ -828,7 +828,7 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
 
     NormalOpenGLGraphicsVertexes &ogl = vert->ogl;
 
-    std::vector<int> *vps = ogl.getVp();
+//    std::vector<int> *vps = ogl.getVp();
     unsigned int vp = ogl.continueVp();
 
     // Draw a set of textured rectangles

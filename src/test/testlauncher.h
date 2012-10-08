@@ -21,6 +21,10 @@
 #ifndef TEST_TESTLAUNCHER_H
 #define TEST_TESTLAUNCHER_H
 
+#include "main.h"
+
+#ifdef USE_OPENGL
+
 #include <fstream>
 #include <string>
 #include <sys/time.h>
@@ -57,4 +61,5 @@ class TestLauncher
         std::ofstream file;
 };
 
+#endif
 #endif // TEST_TESTLAUNCHER_H

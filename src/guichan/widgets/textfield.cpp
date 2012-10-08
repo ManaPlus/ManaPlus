@@ -94,7 +94,7 @@ namespace gcn
         mText = text;
     }
 
-    void TextField::drawCaret(Graphics* graphics, int x)
+    void TextField::drawCaret(Graphics* graphics A_UNUSED, int x A_UNUSED)
     {
     }
 

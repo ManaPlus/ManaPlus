@@ -559,6 +559,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     {
         config.setValue("noframe", mNoFrameCheckBox->isSelected());
     }
+#ifdef USE_OPENGL
     else if (id == "detect")
     {
         TestMain *test = graphicsManager.startDetection();
@@ -570,6 +571,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
             delete test;
         }
     }
+#endif
 }
 
 void Setup_Video::externalUpdated()

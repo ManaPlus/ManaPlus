@@ -212,7 +212,9 @@ class ResourceManager final
         Image *getSubImage(Image *const parent, const int x, const int y,
                            const int width, const int height);
 
+#ifdef USE_OPENGL
         Resource *getAtlas(const std::string &name, const StringVect &files);
+#endif
 
         /**
          * Creates a sprite definition based on a given path and the supplied

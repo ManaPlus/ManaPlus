@@ -26,16 +26,15 @@
 #include "localconsts.h"
 #include "main.h"
 
+#ifdef USE_OPENGL
 #include "utils/stringvector.h"
 
 #include "resources/imagehelper.h"
 
 #include <SDL.h>
 
-#ifdef USE_OPENGL
 #define GL_GLEXT_PROTOTYPES 1
 #include <SDL_opengl.h>
-#endif
 
 class Dye;
 class Image;
@@ -124,4 +123,5 @@ class OpenGLImageHelper final : public ImageHelper
         static bool mUseTextureSampler;
 };
 
+#endif
 #endif

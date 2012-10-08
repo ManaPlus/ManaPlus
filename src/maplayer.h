@@ -26,6 +26,7 @@
 #include "actor.h"
 #include "configlistener.h"
 #include "position.h"
+#include "main.h"
 
 #include <string>
 #include <vector>
@@ -114,15 +115,17 @@ class MapLayer final: public ConfigListener
                   const int scrollX, const int scrollY,
                   const int mDebugFlags) const;
 
-        void drawOGL(Graphics *const graphics);
-
         void drawSDL(Graphics *const graphics);
+
+#ifdef USE_OPENGL
+        void drawOGL(Graphics *const graphics);
 
         void updateOGL(Graphics *const graphics,
                        int startX, int startY,
                        int endX, int endY,
                        const int scrollX, const int scrollY,
                        const int mDebugFlags);
+#endif
 
         void updateSDL(Graphics *const graphics,
                        int startX, int startY,

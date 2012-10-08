@@ -23,10 +23,10 @@
 #ifndef OPENGLGRAPHICS_H
 #define OPENGLGRAPHICS_H
 
+#include "main.h"
 #ifdef USE_OPENGL
 
 #include "localconsts.h"
-#include "main.h"
 #include "graphics.h"
 
 #include "resources/fboinfo.h"

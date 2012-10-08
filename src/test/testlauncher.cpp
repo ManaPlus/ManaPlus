@@ -20,6 +20,8 @@
 
 #include "test/testlauncher.h"
 
+#ifdef USE_OPENGL
+
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
@@ -248,3 +250,4 @@ int TestLauncher::calcFps(const timeval *const start, const timeval *const end,
 
     return static_cast<long>(calls) * 1000 / mtime;
 }
+#endif

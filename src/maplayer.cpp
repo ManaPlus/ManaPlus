@@ -147,6 +147,25 @@ void MapLayer::draw(Graphics *const graphics,
     }
 }
 
+void MapLayer::drawSDL(Graphics *const graphics)
+{
+    MapRows::const_iterator rit = mTempRows.begin();
+    const MapRows::const_iterator rit_end = mTempRows.end();
+    while (rit != rit_end)
+    {
+        MepRowImages *const images = &(*rit)->images;
+        MepRowImages::const_iterator iit = images->begin();
+        const MepRowImages::const_iterator iit_end = images->end();
+        while (iit != iit_end)
+        {
+            graphics->drawTile(*iit);
+            ++ iit;
+        }
+        ++ rit;
+    }
+}
+
+#ifdef USE_OPENGL
 void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
                          int endX, int endY,
                          const int scrollX, const int scrollY,
@@ -209,30 +228,11 @@ void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
     }
 }
 
-void MapLayer::drawSDL(Graphics *const graphics)
-{
-    MapRows::const_iterator rit = mTempRows.begin();
-    const MapRows::const_iterator rit_end = mTempRows.end();
-    while (rit != rit_end)
-    {
-        MepRowImages *const images = &(*rit)->images;
-        MepRowImages::const_iterator iit = images->begin();
-        const MepRowImages::const_iterator iit_end = images->end();
-        while (iit != iit_end)
-        {
-            graphics->drawTile(*iit);
-            ++ iit;
-        }
-        ++ rit;
-    }
-}
-
 void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
                          int endX, int endY,
                          const int scrollX, const int scrollY,
                          const int debugFlags)
 {
-#ifdef USE_OPENGL
     delete_all(mTempRows);
     mTempRows.clear();
 
@@ -303,7 +303,6 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
             }
         }
     }
-#endif
 }
 
 void MapLayer::drawOGL(Graphics *const graphics)
@@ -326,6 +325,7 @@ void MapLayer::drawOGL(Graphics *const graphics)
     }
 //    logger->log("draws: %d", k);
 }
+#endif
 
 void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                           int endX, int endY,

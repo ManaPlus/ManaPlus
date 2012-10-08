@@ -23,6 +23,9 @@
 
 #include "configuration.h"
 #include "logger.h"
+#include "main.h"
+
+#ifdef USE_OPENGL
 
 #include <string>
 
@@ -70,4 +73,5 @@ class TestMain
         Configuration mConfig;
 };
 
+#endif
 #endif // TEST_TESTMAIN_H

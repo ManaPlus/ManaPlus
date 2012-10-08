@@ -50,6 +50,11 @@ class GraphicsManager final
 
         void initGraphics(bool noOpenGL);
 
+        void setVideoMode();
+
+        Graphics *createGraphics();
+
+#ifdef USE_OPENGL
         TestMain *startDetection();
 
         int detectGraphics();
@@ -57,14 +62,6 @@ class GraphicsManager final
         bool supportExtension(const std::string &ext);
 
         void updateTextureFormat();
-
-        void logString(const char *format, int num);
-
-        std::string getGLString(int num) const;
-
-        void setGLVersion();
-
-        void setVideoMode();
 
         bool checkGLVersion(int major, int minor) const;
 
@@ -84,12 +81,6 @@ class GraphicsManager final
 
         void updateLimits();
 
-        void detectVideoSettings();
-
-        Graphics *createGraphics();
-
-        void createTextureSampler();
-
         int getMaxVertices() const
         { return mMaxVertices; }
 
@@ -98,11 +89,21 @@ class GraphicsManager final
 
         void logVersion();
 
-#ifdef USE_OPENGL
+        void setGLVersion();
+
+        std::string getGLString(int num) const;
+
+        void logString(const char *format, int num);
+
+        void detectVideoSettings();
+
+        void createTextureSampler();
+
         bool isUseTextureSampler() const
         { return mUseTextureSampler; }
-#endif
+
         unsigned int getLastError();
+#endif
 
     private:
         std::set<std::string> mExtensions;

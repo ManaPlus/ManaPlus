@@ -798,6 +798,7 @@ void Client::gameClear()
 
 int Client::testsExec() const
 {
+#ifdef USE_OPENGL
     if (mOptions.test.empty())
     {
         TestMain test;
@@ -808,6 +809,9 @@ int Client::testsExec() const
         TestLauncher launcher(mOptions.test);
         return launcher.exec();
     }
+#else
+    return 0;
+#endif
 }
 
 int Client::gameExec()
