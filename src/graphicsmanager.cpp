@@ -104,52 +104,47 @@ bool GraphicsManager::detectGraphics()
     SDL_SetVideoMode(100, 100, 0, SDL_ANYFORMAT | SDL_OPENGL);
 
     initOpenGL();
-
-    std::string vendor = getGLString(GL_VENDOR);
-    std::string renderer = getGLString(GL_RENDERER);
-    logger->log("gl vendor: %s", vendor.c_str());
-    logger->log("gl renderer: %s", renderer.c_str());
-    logger->log("gl version: %s", mVersionString.c_str());
+    logVersion();
 
     int mode = 1;
 
     // detecting features by known renderers or vendors
-    if (findI(renderer, "gdi generic") != std::string::npos)
+    if (findI(mGlRenderer, "gdi generic") != std::string::npos)
     {
         // windows gdi OpenGL emulation
         logger->log("detected gdi drawing");
         logger->log("disable OpenGL");
         mode = 0;
     }
-    else if (findI(renderer, "Software Rasterizer") != std::string::npos)
+    else if (findI(mGlRenderer, "Software Rasterizer") != std::string::npos)
     {
         // software OpenGL emulation
         logger->log("detected software drawing");
         logger->log("disable OpenGL");
         mode = 0;
     }
-    else if (findI(renderer, "Indirect") != std::string::npos)
+    else if (findI(mGlRenderer, "Indirect") != std::string::npos)
     {
         // indirect OpenGL drawing
         logger->log("detected indirect drawing");
         logger->log("disable OpenGL");
         mode = 0;
     }
-    else if (findI(vendor, "VMWARE") != std::string::npos)
+    else if (findI(mGlVendor, "VMWARE") != std::string::npos)
     {
         // vmware emulation
         logger->log("detected VMWARE driver");
         logger->log("disable OpenGL");
         mode = 0;
     }
-    else if (findI(renderer, "LLVM") != std::string::npos)
+    else if (findI(mGlRenderer, "LLVM") != std::string::npos)
     {
         // llvm opengl emulation
         logger->log("detected llvm driver");
         logger->log("disable OpenGL");
         mode = 0;
     }
-    else if (findI(vendor, "NVIDIA") != std::string::npos)
+    else if (findI(mGlVendor, "NVIDIA") != std::string::npos)
     {
         // hope it can work well
         logger->log("detected NVIDIA driver");
@@ -164,7 +159,7 @@ bool GraphicsManager::detectGraphics()
         mode = 0;
     }
 
-    if (mode > 0 && findI(mVersionString, "Mesa") != std::string::npos)
+    if (mode > 0 && findI(mGlVersionString, "Mesa") != std::string::npos)
     {
         // Mesa detected
         config.setValue("compresstextures", true);
@@ -449,8 +444,17 @@ std::string GraphicsManager::getGLString(int num) const
 
 void GraphicsManager::setGLVersion()
 {
-    mVersionString = getGLString(GL_VERSION);
-    sscanf(mVersionString.c_str(), "%5d.%5d", &mMajor, &mMinor);
+    mGlVersionString = getGLString(GL_VERSION);
+    sscanf(mGlVersionString.c_str(), "%5d.%5d", &mMajor, &mMinor);
+    mGlVendor = getGLString(GL_VENDOR);
+    mGlRenderer = getGLString(GL_RENDERER);
+}
+
+void GraphicsManager::logVersion()
+{
+    logger->log("gl vendor: " + mGlVendor);
+    logger->log("gl renderer: " + mGlRenderer);
+    logger->log("gl version: " + mGlVersionString);
 }
 
 void GraphicsManager::setVideoMode()

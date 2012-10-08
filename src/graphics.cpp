@@ -154,9 +154,8 @@ bool Graphics::setOpenGLMode()
     }
 #endif
 
-    graphicsManager.logString("gl vendor: %s", GL_VENDOR);
-    graphicsManager.logString("gl renderer: %s", GL_RENDERER);
-    graphicsManager.logString("gl version: %s", GL_VERSION);
+    graphicsManager.setGLVersion();
+    graphicsManager.logVersion();
 
     // Setup OpenGL
     glViewport(0, 0, mWidth, mHeight);

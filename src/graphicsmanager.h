@@ -93,6 +93,8 @@ class GraphicsManager final
         bool getUseAtlases() const
         { return mUseAtlases; }
 
+        void logVersion();
+
 #ifdef USE_OPENGL
         bool isUseTextureSampler() const
         { return mUseTextureSampler; }
@@ -104,7 +106,11 @@ class GraphicsManager final
 
         std::set<std::string> mPlatformExtensions;
 
-        std::string mVersionString;
+        std::string mGlVersionString;
+
+        std::string mGlVendor;
+
+        std::string mGlRenderer;
 
         int mMinor;
 
