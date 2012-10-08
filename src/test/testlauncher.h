@@ -49,6 +49,8 @@ class TestLauncher
 
         int testVideoDetection();
 
+        int testBatches();
+
     private:
         std::string mTest;
 

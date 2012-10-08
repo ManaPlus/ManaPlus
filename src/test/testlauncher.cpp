@@ -67,6 +67,8 @@ int TestLauncher::exec()
         return testRescale();
     else if (mTest == "8" || mTest == "9" || mTest == "10")
         return testFps();
+    else if (mTest == "11")
+        return testBatches();
     else if (mTest == "99")
         return testVideoDetection();
     else if (mTest == "100")
@@ -162,6 +164,14 @@ int TestLauncher::testFps()
 
     sleep(1);
     return 0;
+}
+
+int TestLauncher::testBatches()
+{
+    int batches = 512;
+
+    file << mTest << std::endl;
+    file << batches << std::endl;
 }
 
 int TestLauncher::testInternal()

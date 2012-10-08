@@ -53,12 +53,15 @@ class TestMain
 
         int invokeFastOpenGLRenderTest(std::string test);
 
+        int invokeFastOpenBatchTest(std::string test);
+
         int invokeSafeOpenGLRenderTest(std::string test);
 
         void testsMain();
 
         void writeConfig(const int openGLMode, const int rescale,
-                         const int sound, const std::string &info);
+                         const int sound, const std::string &info,
+                         const int batchSize);
 
         int readValue2(const int ver);
 
