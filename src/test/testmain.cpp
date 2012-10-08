@@ -195,17 +195,17 @@ int TestMain::exec(const bool testAudio)
 */
 
     // if OpenGL implimentation is not good, disable it.
-    if (!detectMode)
+    if (!(detectMode & 15))
         openGLMode = 0;
 
     writeConfig(openGLMode, rescaleTest[openGLMode],
-        soundTest, info, batchSize);
+        soundTest, info, batchSize, detectMode);
     return 0;
 }
 
 void TestMain::writeConfig(const int openGLMode, const int rescale,
                            const int sound, const std::string &info,
-                           const int batchSize)
+                           const int batchSize, const int detectMode)
 {
     mConfig.init(Client::getConfigDirectory() + "/config.xml");
 
@@ -225,6 +225,12 @@ void TestMain::writeConfig(const int openGLMode, const int rescale,
 
     // max batch size
 //    mConfig.setValue("batchsize", batchSize);
+
+    // additinal modes
+    mConfig.setValue("useTextureSampler",
+        static_cast<bool>(detectMode & 1024));
+    mConfig.setValue("compresstextures",
+        static_cast<bool>(detectMode & 2048));
 
     // stats
     mConfig.setValue("testInfo", info);

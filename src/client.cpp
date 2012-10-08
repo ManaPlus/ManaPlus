@@ -514,10 +514,7 @@ void Client::gameInit()
     if (!mOptions.safeMode && mOptions.test.empty()
         && !config.getBoolValue("videodetected"))
     {
-        config.setValue("videodetected", true);
-        int val = graphicsManager.startDetection();
-        if (val >= 0 && val <= 2)
-            config.setValue("opengl", val);
+        graphicsManager.detectVideoSettings();
     }
 #endif
 

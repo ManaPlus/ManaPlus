@@ -172,6 +172,7 @@ int TestLauncher::testBatches()
 
     file << mTest << std::endl;
     file << batches << std::endl;
+    return 0;
 }
 
 int TestLauncher::testInternal()
@@ -226,9 +227,8 @@ int TestLauncher::testInternal()
 
 int TestLauncher::testVideoDetection()
 {
-    graphicsManager.detectGraphics();
     file << mTest << std::endl;
-    file << config.getIntValue("opengl") << std::endl;
+    file << graphicsManager.detectGraphics() << std::endl;
     return 0;
 }
 

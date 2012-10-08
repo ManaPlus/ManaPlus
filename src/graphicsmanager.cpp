@@ -85,22 +85,24 @@ GraphicsManager::~GraphicsManager()
 #endif
 }
 
-int GraphicsManager::startDetection()
+TestMain *GraphicsManager::startDetection()
 {
 #ifdef USE_OPENGL
     TestMain *test = new TestMain();
     test->exec(false);
-    return test->getConfig().getValueInt("opengl", -1);
+    return test;
 #else
-    return 0;
+    return nullptr;
 #endif
 }
 
-bool GraphicsManager::detectGraphics()
+int GraphicsManager::detectGraphics()
 {
 #ifdef USE_OPENGL
     logger->log("start detecting best mode...");
     logger->log("enable opengl mode");
+    int textureSampler = 0;
+    int compressTextures = 0;
     SDL_SetVideoMode(100, 100, 0, SDL_ANYFORMAT | SDL_OPENGL);
 
     initOpenGL();
@@ -149,6 +151,7 @@ bool GraphicsManager::detectGraphics()
         // hope it can work well
         logger->log("detected NVIDIA driver");
         config.setValue("useTextureSampler", true);
+        textureSampler = 1;
         mode = 1;
     }
 
@@ -164,6 +167,7 @@ bool GraphicsManager::detectGraphics()
     {
         // Mesa detected
         config.setValue("compresstextures", true);
+        compressTextures = 1;
     }
 
     config.setValue("opengl", mode);
@@ -171,9 +175,9 @@ bool GraphicsManager::detectGraphics()
     config.write();
 
     logger->log("detection complete");
-    return true;
+    return mode | (1024 * textureSampler) | (2048 * compressTextures);
 #else
-    return false;
+    return 0;
 #endif
 }
 
@@ -710,4 +714,27 @@ unsigned int GraphicsManager::getLastError()
         tmp = glGetError();
     }
     return error;
+}
+
+void GraphicsManager::detectVideoSettings()
+{
+    config.setValue("videodetected", true);
+    TestMain *test = startDetection();
+
+    if (test)
+    {
+        const Configuration &conf = test->getConfig();
+        int val = conf.getValueInt("opengl", -1);
+        if (val >= 0 && val <= 2)
+        {
+            config.setValue("opengl", val);
+            val = conf.getValue("useTextureSampler", -1);
+            if (val != -1)
+                config.setValue("useTextureSampler", val);
+            val = conf.getValue("compresstextures", -1);
+            if (val != -1)
+                config.setValue("compresstextures", val);
+        }
+        delete test;
+    }
 }

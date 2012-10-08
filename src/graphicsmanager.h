@@ -37,6 +37,7 @@
 #include "localconsts.h"
 
 class Graphics;
+class TestMain;
 
 struct FBOInfo;
 
@@ -49,9 +50,9 @@ class GraphicsManager final
 
         void initGraphics(bool noOpenGL);
 
-        int startDetection();
+        TestMain *startDetection();
 
-        bool detectGraphics();
+        int detectGraphics();
 
         bool supportExtension(const std::string &ext);
 
@@ -82,6 +83,8 @@ class GraphicsManager final
         void initOpenGL();
 
         void updateLimits();
+
+        void detectVideoSettings();
 
         Graphics *createGraphics();
 

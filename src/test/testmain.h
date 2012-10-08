@@ -61,7 +61,7 @@ class TestMain
 
         void writeConfig(const int openGLMode, const int rescale,
                          const int sound, const std::string &info,
-                         const int batchSize);
+                         const int batchSize, const int detectMode);
 
         int readValue2(const int ver);
 

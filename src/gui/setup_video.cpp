@@ -50,6 +50,8 @@
 
 #include "utils/gettext.h"
 
+#include "test/testmain.h"
+
 #include <guichan/key.hpp>
 #include <guichan/listmodel.hpp>
 
@@ -559,9 +561,14 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     }
     else if (id == "detect")
     {
-        const int val = graphicsManager.startDetection();
-        if (val >= 0 && val <= 2)
-            mOpenGLDropDown->setSelected(val);
+        TestMain *test = graphicsManager.startDetection();
+        if (test)
+        {
+            const int val = test->getConfig().getValueInt("opengl", -1);
+            if (val >= 0 && val <= 2)
+                mOpenGLDropDown->setSelected(val);
+            delete test;
+        }
     }
 }
 
