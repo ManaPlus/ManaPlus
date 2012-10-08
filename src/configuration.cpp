@@ -757,8 +757,8 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
         }
 #endif
         XmlTextWriterStartElement(writer, "option");
-        XmlTextWriterWriteAttribute(writer,"name", i->first.c_str());
-        XmlTextWriterWriteAttribute(writer,"value", i->second.c_str());
+        XmlTextWriterWriteAttribute(writer, "name", i->first.c_str());
+        XmlTextWriterWriteAttribute(writer, "value", i->second.c_str());
         xmlTextWriterEndElement(writer);
     }
 

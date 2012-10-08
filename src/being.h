@@ -594,7 +594,8 @@ class Being : public ActorSprite, public ConfigListener
         int getEmotion() const
         { return mEmotion; }
 
-        virtual void drawSprites(Graphics* graphics, int posX, int posY) const override;
+        virtual void drawSprites(Graphics* graphics,
+                                 int posX, int posY) const override;
 
         virtual void drawSpritesSDL(Graphics* graphics,
                                     int posX, int posY) const override;

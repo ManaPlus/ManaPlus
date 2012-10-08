@@ -51,7 +51,7 @@ void MonsterDB::load()
     logger->log1("Initializing monster database...");
 
     XML::Document doc("monsters.xml");
-    XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "monsters"))
     {

@@ -100,9 +100,11 @@ class NormalOpenGLGraphics final : public Graphics
         void updateScreen() override;
 
         void _beginDraw();
+
         void _endDraw();
 
         bool pushClipArea(gcn::Rectangle area);
+
         void popClipArea();
 
         void setColor(const gcn::Color &color);
@@ -119,23 +121,23 @@ class NormalOpenGLGraphics final : public Graphics
 
         void setTargetPlane(int width, int height);
 
-        void drawQuadArrayfi(int size);
+        inline void drawQuadArrayfi(int size);
 
-        void drawQuadArrayfi(GLint *intVertArray,
-                             GLfloat *floatTexArray,
-                             const int size);
+        inline void drawQuadArrayfi(GLint *intVertArray,
+                                    GLfloat *floatTexArray,
+                                    const int size);
 
-        void drawQuadArrayii(int size);
+        inline void drawQuadArrayii(int size);
 
-        void drawQuadArrayii(GLint *intVertArray,
-                             GLint *intTexArray,
-                             const int size);
+        inline void drawQuadArrayii(GLint *intVertArray,
+                                    GLint *intTexArray,
+                                    const int size);
 
-        void drawLineArrayi(int size);
+        inline void drawLineArrayi(int size);
 
-        void drawLineArrayf(int size);
+        inline void drawLineArrayf(int size);
 
-        void drawVertexes(NormalOpenGLGraphicsVertexes &ogl);
+        inline void drawVertexes(NormalOpenGLGraphicsVertexes &ogl);
 
         void initArrays() override;
 

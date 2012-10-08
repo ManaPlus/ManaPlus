@@ -1363,7 +1363,7 @@ void Being::logic()
 
             case ATTACK:
             {
-                std::string particleEffect("");
+//                std::string particleEffect("");
 
                 if (!mActionTime)
                     break;
