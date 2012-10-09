@@ -62,6 +62,8 @@ class OnlinePlayer final
         {
         }
 
+        A_DELETE_COPY(OnlinePlayer);
+
         const std::string getNick() const
         { return mNick; }
 
@@ -116,6 +118,8 @@ public:
      * Constructor.
      */
     WhoIsOnline();
+
+    A_DELETE_COPY(WhoIsOnline);
 
     /**
      * Destructor

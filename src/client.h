@@ -199,6 +199,9 @@ public:
     };
 
     Client(const Options &options);
+
+    A_DELETE_COPY(Client);
+
     ~Client();
 
     /**

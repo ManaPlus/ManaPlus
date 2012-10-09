@@ -38,6 +38,8 @@ class PasswordField final : public TextField
          */
         PasswordField(const std::string &text = "");
 
+        A_DELETE_COPY(PasswordField);
+
         /**
          * Draws the password field.
          */

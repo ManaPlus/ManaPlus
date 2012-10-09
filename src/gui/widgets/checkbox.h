@@ -44,6 +44,8 @@ class CheckBox final : public gcn::CheckBox
                  gcn::ActionListener *const listener = nullptr,
                  const std::string &eventId = "");
 
+        A_DELETE_COPY(CheckBox);
+
         /**
          * Destructor.
          */

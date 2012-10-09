@@ -46,6 +46,8 @@ class NormalOpenGLGraphics final : public Graphics
     public:
         NormalOpenGLGraphics();
 
+        A_DELETE_COPY(NormalOpenGLGraphics);
+
         ~NormalOpenGLGraphics();
 
         bool setVideoMode(const int w, const int h, const int bpp,

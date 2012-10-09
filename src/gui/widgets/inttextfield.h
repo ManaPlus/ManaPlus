@@ -37,6 +37,8 @@ class IntTextField final : public TextField
         IntTextField(const int def = 0, const int min = 0, const int max = 0,
                      const bool enabled = true, const int width = 0);
 
+        A_DELETE_COPY(IntTextField);
+
         /**
          * Sets the minimum and maximum values of the text box.
          */

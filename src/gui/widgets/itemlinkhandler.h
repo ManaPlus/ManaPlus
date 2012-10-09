@@ -32,6 +32,8 @@ class ItemLinkHandler final : public LinkHandler
     public:
         ItemLinkHandler();
 
+        A_DELETE_COPY(ItemLinkHandler);
+
         ~ItemLinkHandler();
 
         void handleLink(const std::string &link,

@@ -39,6 +39,8 @@ class KeyboardConfig final
     public:
         KeyboardConfig();
 
+        A_DELETE_COPY(KeyboardConfig);
+
         /**
          * Initializes the keyboard config explicitly.
          */

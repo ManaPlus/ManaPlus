@@ -44,6 +44,8 @@ class SpecialsWindow final : public Window, public gcn::ActionListener
     public:
         SpecialsWindow();
 
+        A_DELETE_COPY(SpecialsWindow);
+
         ~SpecialsWindow();
 
         /**

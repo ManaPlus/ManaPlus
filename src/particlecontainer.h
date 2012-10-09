@@ -47,6 +47,8 @@ public:
     ParticleContainer(ParticleContainer *const parent = nullptr,
                       const bool delParent = true);
 
+    A_DELETE_COPY(ParticleContainer);
+
     virtual ~ParticleContainer();
 
     /**
@@ -78,6 +80,9 @@ class ParticleList final : public ParticleContainer
 public:
     ParticleList(ParticleContainer *const parent = nullptr,
                  const bool delParent = true);
+
+    A_DELETE_COPY(ParticleList);
+
     virtual ~ParticleList();
 
     /**
@@ -106,6 +111,8 @@ class ParticleVector final : public ParticleContainer
 public:
     ParticleVector(ParticleContainer *const parent = nullptr,
                    const bool delParent = true);
+
+    A_DELETE_COPY(ParticleVector);
 
     virtual ~ParticleVector();
 

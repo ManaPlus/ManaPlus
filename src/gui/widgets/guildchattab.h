@@ -33,6 +33,8 @@ class GuildChatTab final : public ChatTab
     public:
         GuildChatTab();
 
+        A_DELETE_COPY(GuildChatTab);
+
         ~GuildChatTab();
 
         bool handleCommand(const std::string &type,

@@ -138,6 +138,8 @@ public:
      */
     SDLInput();
 
+    A_DELETE_COPY(SDLInput);
+
     /**
      * Pushes an SDL event. It should be called at least once per frame to
      * update input with user input.

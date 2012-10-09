@@ -315,7 +315,7 @@ bool Gui::handleKeyInput2()
 
     while (!mInput->isKeyQueueEmpty())
     {
-        KeyInput keyInput = guiInput->dequeueKeyInput2();
+        const KeyInput keyInput = guiInput->dequeueKeyInput2();
 
         // Save modifiers state
         mShiftPressed = keyInput.isShiftPressed();

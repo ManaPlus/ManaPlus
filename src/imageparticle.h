@@ -44,6 +44,8 @@ class ImageParticle : public Particle
          */
         ImageParticle(Map *const map, Image *const image);
 
+        A_DELETE_COPY(ImageParticle);
+
         /**
          * Destructor.
          */

@@ -55,6 +55,11 @@ static const int defaultScreenHeight = 600;
 class ImageRect final
 {
     public:
+        ImageRect()
+        { }
+
+        A_DELETE_COPY(ImageRect);
+
         enum ImagePosition
         {
             UPPER_LEFT = 0,
@@ -87,6 +92,8 @@ class Graphics : public gcn::SDLGraphics
          * Constructor.
          */
         Graphics();
+
+        A_DELETE_COPY(Graphics);
 
         /**
          * Destructor.

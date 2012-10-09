@@ -46,6 +46,8 @@ class ShortcutContainer : public gcn::Widget,
          */
         ShortcutContainer();
 
+        A_DELETE_COPY(ShortcutContainer);
+
         /**
          * Destructor.
          */

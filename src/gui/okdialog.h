@@ -55,6 +55,8 @@ class OkDialog final : public Window, public gcn::ActionListener
                  const int soundEvent = DIALOG_OK, const bool modal = true,
                  const bool showCenter = true, Window *const parent = nullptr);
 
+        A_DELETE_COPY(OkDialog);
+
         /**
          * Called when receiving actions from the widgets.
          */

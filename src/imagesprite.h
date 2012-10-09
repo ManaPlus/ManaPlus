@@ -33,6 +33,8 @@ class ImageSprite final : public Sprite
 public:
     ImageSprite(Image *const image);
 
+    A_DELETE_COPY(ImageSprite);
+
     ~ImageSprite();
 
     bool reset() override

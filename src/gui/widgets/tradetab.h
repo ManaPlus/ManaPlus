@@ -33,6 +33,8 @@ class TradeTab final : public ChatTab
     public:
         TradeTab();
 
+        A_DELETE_COPY(TradeTab);
+
         ~TradeTab();
 
         int getType() const override

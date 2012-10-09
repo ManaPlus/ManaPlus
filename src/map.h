@@ -66,6 +66,8 @@ struct MetaTile final
             parentX(0), parentY(0), blockmask(0)
     {}
 
+    A_DELETE_COPY(MetaTile);
+
     // Pathfinding members
     int Fcost;               /**< Estimation of total path cost */
     int Gcost;               /**< Cost from start to this location */
@@ -85,6 +87,8 @@ class TileAnimation final
         TileAnimation(Animation *const ani);
 
         ~TileAnimation();
+
+        A_DELETE_COPY(TileAnimation);
 
         bool update(const int ticks = 1);
 
@@ -155,6 +159,8 @@ class Map final : public Properties, public ConfigListener
          */
         Map(const int width, const int height,
             const int tileWidth, const int tileHeight);
+
+        A_DELETE_COPY(Map);
 
         /**
          * Destructor.

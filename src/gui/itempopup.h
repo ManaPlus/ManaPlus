@@ -52,6 +52,8 @@ class ItemPopup final : public Popup
          */
         ItemPopup();
 
+        A_DELETE_COPY(ItemPopup);
+
         /**
          * Destructor. Cleans up the item popup on deletion.
          */

@@ -44,6 +44,8 @@ class AnimatedSprite final : public Sprite
          */
         AnimatedSprite(SpriteDef *const sprite);
 
+        A_DELETE_COPY(AnimatedSprite);
+
         /**
          * An helper function, which will request the sprite to animate
          * from the resource manager.

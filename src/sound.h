@@ -52,6 +52,9 @@ class Sound final : public ConfigListener
 {
     public:
         Sound();
+
+        A_DELETE_COPY(Sound);
+
         ~Sound();
 
         void optionChanged(const std::string &value) override;

@@ -86,6 +86,8 @@ class BeingCacheEntry final
         {
         }
 
+        A_DELETE_COPY(BeingCacheEntry);
+
         int getId() const
         { return mId; }
 

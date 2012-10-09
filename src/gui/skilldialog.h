@@ -65,6 +65,8 @@ struct SkillInfo final
 
     SkillInfo();
 
+    A_DELETE_COPY(SkillInfo);
+
     ~SkillInfo();
 
     void setIcon(const std::string &iconPath);
@@ -85,6 +87,8 @@ class SkillDialog final : public Window, public gcn::ActionListener
 {
     public:
         SkillDialog();
+
+        A_DELETE_COPY(SkillDialog);
 
         ~SkillDialog();
 

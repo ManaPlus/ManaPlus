@@ -39,6 +39,8 @@ class AnimationParticle final : public ImageParticle
         AnimationParticle(Map *const map, XmlNodePtr const animationNode,
                           const std::string& dyePalettes = std::string());
 
+        A_DELETE_COPY(AnimationParticle);
+
         ~AnimationParticle();
 
         virtual bool update() override;

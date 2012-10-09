@@ -31,6 +31,8 @@ class ExtendedListBox final : public ListBox
          */
         ExtendedListBox(gcn::ListModel *const listModel);
 
+        A_DELETE_COPY(ExtendedListBox);
+
         ~ExtendedListBox();
 
         /**

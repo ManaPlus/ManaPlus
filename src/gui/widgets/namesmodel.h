@@ -32,6 +32,8 @@ class NamesModel : public gcn::ListModel
     public:
         NamesModel();
 
+        A_DELETE_COPY(NamesModel);
+
         virtual ~NamesModel();
 
         virtual int getNumberOfElements() override;

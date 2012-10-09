@@ -47,6 +47,8 @@ class ConnectionDialog final : public Window, private gcn::ActionListener
          */
         ConnectionDialog(const std::string &text, const State cancelState);
 
+        A_DELETE_COPY(ConnectionDialog);
+
         /**
          * Called when the user presses Cancel. Restores the global state to
          * the previous one.

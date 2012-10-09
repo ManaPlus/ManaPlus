@@ -35,6 +35,8 @@ class TextPreview final : public gcn::Widget
     public:
         TextPreview(const std::string &text);
 
+        A_DELETE_COPY(TextPreview);
+
         /**
          * Sets the color the text is printed in.
          *

@@ -54,6 +54,8 @@ class SDLGraphicsVertexes final
     public:
         SDLGraphicsVertexes();
 
+        A_DELETE_COPY(SDLGraphicsVertexes);
+
         ~SDLGraphicsVertexes();
 
         std::vector<DoubleRect*> mList;
@@ -68,6 +70,8 @@ class NormalOpenGLGraphicsVertexes final
 {
     public:
         NormalOpenGLGraphicsVertexes();
+
+        A_DELETE_COPY(NormalOpenGLGraphicsVertexes);
 
         ~NormalOpenGLGraphicsVertexes();
 
@@ -124,6 +128,8 @@ class ImageVertexes final
     public:
         ImageVertexes();
 
+        A_DELETE_COPY(ImageVertexes);
+
         ~ImageVertexes();
 
         Image *image;
@@ -138,6 +144,8 @@ class GraphicsVertexes final
 {
     public:
         GraphicsVertexes();
+
+        A_DELETE_COPY(GraphicsVertexes);
 
         ~GraphicsVertexes();
 

@@ -60,6 +60,8 @@ class Popup : public Container, public gcn::MouseListener,
          */
         Popup(const std::string &name = "", std::string skin = "");
 
+        A_DELETE_COPY(Popup);
+
         /**
          * Destructor. Deletes all the added widgets.
          */

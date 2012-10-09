@@ -23,6 +23,8 @@
 #define nullptr 0
 #define final
 #define override
+#define A_DELETE
+#define A_DELETE_COPY
 #else
 #define GCC_VERSION (__GNUC__ * 10000 \
     + __GNUC_MINOR__ * 100 \
@@ -30,9 +32,14 @@
 #if GCC_VERSION < 40700
 #define final
 #define override
+//#define A_DELETE
+//#define A_DELETE_COPY
 #endif
 #undef Z_NULL
 #define Z_NULL nullptr
+#define A_DELETE(func) func = delete
+#define A_DELETE_COPY(name) name(const name &) = delete; \
+    name &operator=(const name&) = delete
 #endif
 
 #ifdef __GNUC__

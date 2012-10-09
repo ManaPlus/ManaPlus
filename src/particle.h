@@ -80,6 +80,8 @@ class Particle : public Actor
          */
         Particle(Map *const map);
 
+        A_DELETE_COPY(Particle);
+
         /**
          * Destructor.
          */

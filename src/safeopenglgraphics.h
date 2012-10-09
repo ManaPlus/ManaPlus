@@ -41,6 +41,8 @@ class SafeOpenGLGraphics final : public Graphics
     public:
         SafeOpenGLGraphics();
 
+        A_DELETE_COPY(SafeOpenGLGraphics);
+
         ~SafeOpenGLGraphics();
 
         bool setVideoMode(const int w, const int h, const int bpp,
@@ -102,6 +104,7 @@ class SafeOpenGLGraphics final : public Graphics
         void updateScreen() override;
 
         void _beginDraw();
+
         void _endDraw();
 
         bool pushClipArea(gcn::Rectangle area);

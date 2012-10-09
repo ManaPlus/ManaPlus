@@ -39,6 +39,9 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
 {
     public:
         Tab();
+
+        A_DELETE_COPY(Tab);
+
         ~Tab();
 
         /**

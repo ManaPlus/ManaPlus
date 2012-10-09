@@ -56,6 +56,8 @@ public:
     GuiTable(TableModel *const initial_model = nullptr,
              const bool opacity = true);
 
+    A_DELETE_COPY(GuiTable);
+
     virtual ~GuiTable();
 
     /**

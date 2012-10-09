@@ -54,6 +54,8 @@ class SocialWindow final : public Window, private gcn::ActionListener
 public:
     SocialWindow();
 
+    A_DELETE_COPY(SocialWindow);
+
     ~SocialWindow();
 
     bool addTab(Guild *const guild);

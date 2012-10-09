@@ -51,6 +51,8 @@ class DidYouKnowWindow final : public Window,
          */
         DidYouKnowWindow();
 
+        A_DELETE_COPY(DidYouKnowWindow);
+
         /**
          * Called when receiving actions from the widgets.
          */

@@ -43,6 +43,8 @@ class Channel final
                 const std::string &name,
                 const std::string &announcement = std::string());
 
+        A_DELETE_COPY(Channel);
+
         ~Channel();
 
         /**

@@ -70,6 +70,8 @@ class Viewport final : public WindowContainer,
          */
         Viewport();
 
+        A_DELETE_COPY(Viewport);
+
         /**
          * Destructor.
          */

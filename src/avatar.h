@@ -23,6 +23,8 @@
 #ifndef AVATAR_H
 #define AVATAR_H
 
+#include "localconsts.h"
+
 #include <string>
 
 enum AvatarType
@@ -34,6 +36,8 @@ class Avatar
 {
 public:
     Avatar(const std::string &name = "");
+
+    A_DELETE_COPY(Avatar);
 
     virtual ~Avatar()
     { }

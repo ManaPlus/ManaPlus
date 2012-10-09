@@ -42,6 +42,9 @@ class EffectManager final
         };
 
         EffectManager();
+
+        A_DELETE_COPY(EffectManager);
+
         ~EffectManager();
 
         /**

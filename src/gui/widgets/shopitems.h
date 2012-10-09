@@ -52,6 +52,8 @@ class ShopItems final : public gcn::ListModel
          */
         ShopItems(const bool mergeDuplicates = false);
 
+        A_DELETE_COPY(ShopItems);
+
         ~ShopItems();
 
         /**

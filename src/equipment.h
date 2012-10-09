@@ -38,6 +38,8 @@ class Equipment
         Equipment(): mBackend(nullptr)
         { }
 
+        A_DELETE_COPY(Equipment);
+
         /**
          * Destructor.
          */

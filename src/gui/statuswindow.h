@@ -57,6 +57,8 @@ class StatusWindow final : public Window,
          */
         StatusWindow();
 
+        A_DELETE_COPY(StatusWindow);
+
         void processEvent(Channels channel,
                           const DepricatedEvent &event) override;
 

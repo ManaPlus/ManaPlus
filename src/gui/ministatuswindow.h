@@ -48,6 +48,8 @@ class MiniStatusWindow final : public Popup,
     public:
         MiniStatusWindow();
 
+        A_DELETE_COPY(MiniStatusWindow);
+
         ~MiniStatusWindow();
 
         /**

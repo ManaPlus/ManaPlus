@@ -57,6 +57,8 @@ class SDLFont final : public gcn::Font
          */
         SDLFont(std::string filename, const int size, const int style = 0);
 
+        A_DELETE_COPY(SDLFont);
+
         /**
          * Destructor.
          */

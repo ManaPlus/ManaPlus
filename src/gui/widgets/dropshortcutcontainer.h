@@ -44,6 +44,8 @@ class DropShortcutContainer final : public ShortcutContainer
          */
         DropShortcutContainer();
 
+        A_DELETE_COPY(DropShortcutContainer);
+
         /**
          * Destructor.
          */

@@ -62,6 +62,8 @@ class LoginDialog final : public Window, public gcn::ActionListener,
         LoginDialog(LoginData *const data, std::string serverName,
                     std::string *const updateHost);
 
+        A_DELETE_COPY(LoginDialog);
+
         ~LoginDialog();
 
         /**

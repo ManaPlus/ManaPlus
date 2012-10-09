@@ -45,6 +45,8 @@ class ItemShortcutContainer final : public ShortcutContainer
          */
         ItemShortcutContainer(const unsigned number);
 
+        A_DELETE_COPY(ItemShortcutContainer);
+
         /**
          * Destructor.
          */

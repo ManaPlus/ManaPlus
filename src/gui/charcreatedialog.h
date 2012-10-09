@@ -56,6 +56,8 @@ class CharCreateDialog final : public Window,
          */
         CharCreateDialog(CharSelectDialog *const parent, const int slot);
 
+        A_DELETE_COPY(CharCreateDialog);
+
         /**
          * Destructor.
          */

@@ -61,6 +61,8 @@ class Window : public gcn::Window, private gcn::WidgetListener
         Window(const std::string &caption = "Window", const bool modal = false,
                Window *const parent = nullptr, std::string skin = "");
 
+        A_DELETE_COPY(Window);
+
         /**
          * Destructor. Deletes all the added widgets.
          */

@@ -50,6 +50,8 @@ class RenameListener final : public gcn::ActionListener
     public:
         RenameListener();
 
+        A_DELETE_COPY(RenameListener);
+
         void action(const gcn::ActionEvent &event) override;
 
         void setMapItem(MapItem* mapItem)
@@ -67,6 +69,8 @@ class PlayerListener : public gcn::ActionListener
 {
     public:
         PlayerListener();
+
+        A_DELETE_COPY(PlayerListener);
 
         void action(const gcn::ActionEvent &event) override;
 
@@ -95,6 +99,8 @@ class PopupMenu final : public Popup, public LinkHandler
          * Constructor.
          */
         PopupMenu();
+
+        A_DELETE_COPY(PopupMenu);
 
         /**
          * Shows the being related popup menu at the specified mouse coords.

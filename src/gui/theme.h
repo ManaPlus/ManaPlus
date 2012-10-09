@@ -42,10 +42,12 @@ class ProgressBar;
 class Skin final
 {
     public:
-        Skin(const ImageRect &skin, const ImageRect &images,
+        Skin(ImageRect *skin, const ImageRect *images,
              const std::string &filePath, const std::string &name = "",
              const int padding = 3, const int titlePadding = 4,
              std::map<std::string, int> *const options = nullptr);
+
+        A_DELETE_COPY(Skin);
 
         ~Skin();
 
@@ -67,7 +69,7 @@ class Skin final
          * Returns the background skin.
          */
         const ImageRect &getBorder() const
-        { return mBorder; }
+        { return *mBorder; }
 
         /**
          * Returns the image used by a close button for this skin.
@@ -115,7 +117,7 @@ class Skin final
     private:
         std::string mFilePath;     /**< File name path for the skin */
         std::string mName;         /**< Name of the skin to use */
-        ImageRect mBorder;         /**< The window border and background */
+        ImageRect *mBorder;        /**< The window border and background */
         Image *mCloseImage;        /**< Close Button Image */
         Image *mCloseImageHighlighted; /**< Highlighted close Button Image */
         Image *mStickyImageUp;     /**< Sticky Button Image */
@@ -128,6 +130,8 @@ class Skin final
 class Theme final : public Palette, public ConfigListener
 {
     public:
+        A_DELETE_COPY(Theme);
+
         static Theme *instance();
 
         static void deleteInstance();
@@ -330,6 +334,7 @@ class Theme final : public Palette, public ConfigListener
 
     private:
         Theme();
+
         ~Theme();
 
         Skin *readSkin(const std::string &filename0, const bool full);

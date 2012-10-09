@@ -81,6 +81,8 @@ class UpdaterWindow final : public Window,
                   const std::string &updatesDir,
                   const bool applyUpdates, const int updateType);
 
+    A_DELETE_COPY(UpdaterWindow);
+
     /**
      * Destructor
      */

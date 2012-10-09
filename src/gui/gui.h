@@ -54,6 +54,8 @@ class Gui final : public gcn::Gui
          */
         Gui(Graphics *const screen);
 
+        A_DELETE_COPY(Gui);
+
         /**
          * Destructor.
          */

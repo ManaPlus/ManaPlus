@@ -50,6 +50,9 @@ class Desktop final : public Container, private gcn::WidgetListener
 {
     public:
         Desktop();
+
+        A_DELETE_COPY(Desktop);
+
         ~Desktop();
 
         /**

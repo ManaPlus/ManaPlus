@@ -36,6 +36,8 @@ class ChatLogger final
          */
         ChatLogger();
 
+        A_DELETE_COPY(ChatLogger);
+
         /**
          * Destructor, closes log file.
          */

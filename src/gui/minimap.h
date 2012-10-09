@@ -42,6 +42,9 @@ class Minimap final : public Window
 {
     public:
         Minimap();
+
+        A_DELETE_COPY(Minimap);
+
         ~Minimap();
 
         /**

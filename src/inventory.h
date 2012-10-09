@@ -47,6 +47,8 @@ class InventoryListener
 class Inventory final
 {
     public:
+        A_DELETE_COPY(Inventory);
+
         static const int NO_SLOT_INDEX = -1; /**< Slot has no index. */
 
         enum

@@ -68,6 +68,8 @@ class CharSelectDialog final : public Window,
          */
         CharSelectDialog(LoginData *const data);
 
+        A_DELETE_COPY(CharSelectDialog);
+
         ~CharSelectDialog();
 
         void action(const gcn::ActionEvent &event) override;

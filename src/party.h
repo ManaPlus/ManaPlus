@@ -35,6 +35,8 @@ class Party;
 class PartyMember final : public Avatar
 {
 public:
+    A_DELETE_COPY(PartyMember);
+
     Party *getParty() const
     { return mParty; }
 
@@ -56,6 +58,7 @@ protected:
 class Party final : public AvatarListModel
 {
 public:
+    A_DELETE_COPY(Party);
 
     /**
      * Set the party's name.

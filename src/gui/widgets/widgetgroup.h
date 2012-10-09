@@ -34,6 +34,8 @@ class WidgetGroup : public Container,
         WidgetGroup(const std::string &group, const int height,
                     const int spacing);
 
+        A_DELETE_COPY(WidgetGroup);
+
         virtual void addButton(std::string tag);
 
         virtual void addButton(std::string text, std::string tag);

@@ -37,6 +37,8 @@ class EmoteShortcut final
          */
         EmoteShortcut();
 
+        A_DELETE_COPY(EmoteShortcut);
+
         /**
          * Destructor.
          */

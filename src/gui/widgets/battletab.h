@@ -33,6 +33,8 @@ class BattleTab final : public ChatTab
     public:
         BattleTab();
 
+        A_DELETE_COPY(BattleTab);
+
         ~BattleTab();
 
         int getType() const override

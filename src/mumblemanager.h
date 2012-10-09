@@ -37,6 +37,8 @@ class MumbleManager final
     public:
         MumbleManager();
 
+        A_DELETE_COPY(MumbleManager);
+
         ~MumbleManager();
 
         void init();

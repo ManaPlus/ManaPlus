@@ -34,34 +34,36 @@
  */
 class SetupTab : public Container, public gcn::ActionListener
 {
-public:
-    SetupTab();
+    public:
+        SetupTab();
 
-    const std::string &getName() const
-    { return mName; }
+        A_DELETE_COPY(SetupTab);
 
-    /**
-     * Called when the Apply button is pressed in the setup window.
-     */
-    virtual void apply() = 0;
+        const std::string &getName() const
+        { return mName; }
 
-    /**
-     * Called when the Cancel button is pressed in the setup window.
-     */
-    virtual void cancel() = 0;
+        /**
+         * Called when the Apply button is pressed in the setup window.
+         */
+        virtual void apply() = 0;
 
-    virtual void externalUpdated();
+        /**
+         * Called when the Cancel button is pressed in the setup window.
+         */
+        virtual void cancel() = 0;
 
-protected:
-    /**
-     * Sets the name displayed on the tab. Should be set in the
-     * constructor of a subclass.
-     */
-    void setName(const std::string &name)
-    { mName = name; }
+        virtual void externalUpdated();
 
-private:
-    std::string mName;
+    protected:
+        /**
+         * Sets the name displayed on the tab. Should be set in the
+         * constructor of a subclass.
+         */
+        void setName(const std::string &name)
+        { mName = name; }
+
+    private:
+        std::string mName;
 };
 
 #endif

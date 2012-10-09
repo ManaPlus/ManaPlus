@@ -34,6 +34,8 @@ class AuctionManager final
     public:
         AuctionManager();
 
+        A_DELETE_COPY(AuctionManager);
+
         ~AuctionManager();
 
         static void init();

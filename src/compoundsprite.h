@@ -36,6 +36,8 @@ class CompoundItem final
     public:
         CompoundItem();
 
+        A_DELETE_COPY(CompoundItem);
+
         ~CompoundItem();
 
 //        float alpha;
@@ -51,6 +53,8 @@ public:
     typedef std::vector<Sprite*>::const_iterator SpriteConstIterator;
 
     CompoundSprite();
+
+    A_DELETE_COPY(CompoundSprite);
 
     ~CompoundSprite();
 

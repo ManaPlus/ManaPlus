@@ -110,6 +110,8 @@ class StaticTableModel final : public TableModel
 public:
     StaticTableModel(const int width, const int height);
 
+    A_DELETE_COPY(StaticTableModel);
+
     virtual ~StaticTableModel();
 
     /**

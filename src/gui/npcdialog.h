@@ -66,6 +66,8 @@ class NpcDialog final : public Window, public gcn::ActionListener,
          */
         NpcDialog(const int npcId);
 
+        A_DELETE_COPY(NpcDialog);
+
         ~NpcDialog();
 
         /**

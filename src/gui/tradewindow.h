@@ -57,6 +57,8 @@ class TradeWindow final : public Window,
          */
         TradeWindow();
 
+        A_DELETE_COPY(TradeWindow);
+
         /**
          * Destructor.
          */

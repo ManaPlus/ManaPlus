@@ -48,9 +48,13 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
 {
     public:
         Setup_Video();
+
+        A_DELETE_COPY(Setup_Video);
+
         ~Setup_Video();
 
         void apply();
+
         void cancel();
 
         void action(const gcn::ActionEvent &event) override;

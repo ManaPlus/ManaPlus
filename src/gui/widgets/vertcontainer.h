@@ -39,6 +39,8 @@ class VertContainer final : public Container, public gcn::WidgetListener
         VertContainer(const int verticalItemSize, const bool resizable = true,
                       const int leftSpacing = 0);
 
+        A_DELETE_COPY(VertContainer);
+
         virtual void add2(gcn::Widget *const widget, const bool resizable,
                           const int spacing = -1);
 

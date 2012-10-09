@@ -50,6 +50,8 @@ class FloorItem final : public ActorSprite
                   Map *const map, const int amount, const unsigned char color,
                   int subX, int subY);
 
+        A_DELETE_COPY(FloorItem);
+
         Type getType() const override
         { return FLOOR_ITEM; }
 

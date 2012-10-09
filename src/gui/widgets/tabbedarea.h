@@ -45,6 +45,8 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
          */
         TabbedArea();
 
+        A_DELETE_COPY(TabbedArea);
+
         ~TabbedArea();
 
         /**

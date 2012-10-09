@@ -41,6 +41,13 @@ class TextManager final
          */
         TextManager();
 
+        A_DELETE_COPY(TextManager);
+
+        /**
+         * Destroy the manager
+         */
+        ~TextManager();
+
         /**
          * Add text to the manager
          */
@@ -55,11 +62,6 @@ class TextManager final
          * Remove the text from the manager
          */
         void removeText(const Text *const text);
-
-        /**
-         * Destroy the manager
-         */
-        ~TextManager();
 
         /**
          * Draw the text

@@ -33,6 +33,7 @@
 #include "utils/gettext.h"
 
 #include <algorithm>
+#include <functional>
 #include <string>
 
 #include "debug.h"

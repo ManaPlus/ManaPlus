@@ -43,6 +43,8 @@ class Tileset final : public ImageSet
         {
         }
 
+        A_DELETE_COPY(Tileset);
+
         /**
          * Returns the first gid.
          */

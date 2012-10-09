@@ -55,6 +55,8 @@ class ChatTab : public Tab
          */
         ChatTab(const std::string &name);
 
+        A_DELETE_COPY(ChatTab);
+
         ~ChatTab();
 
         /**

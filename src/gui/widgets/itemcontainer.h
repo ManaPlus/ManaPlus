@@ -63,6 +63,8 @@ class ItemContainer final : public gcn::Widget,
         ItemContainer(Inventory *const inventory,
                       const bool forceQuantity = false);
 
+        A_DELETE_COPY(ItemContainer);
+
         /**
          * Destructor.
          */

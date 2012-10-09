@@ -84,6 +84,8 @@ class UserPalette final : public Palette, public gcn::ListModel
          */
         UserPalette();
 
+        A_DELETE_COPY(UserPalette);
+
         /**
          * Destructor
          */

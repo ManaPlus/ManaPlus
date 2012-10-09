@@ -39,6 +39,8 @@ class RadioButton final : public gcn::RadioButton
         RadioButton(const std::string &caption, const std::string &group,
                     const bool marked = false);
 
+        A_DELETE_COPY(RadioButton);
+
         /**
          * Destructor.
          */

@@ -55,6 +55,8 @@ struct EquipmentBox final
         x(x0), y(y0), image(img)
     { }
 
+    A_DELETE_COPY(EquipmentBox);
+
     int x;
     int y;
     Image *image;
@@ -73,6 +75,8 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
          */
         EquipmentWindow(Equipment *const equipment, Being *const being,
                         const bool foring = false);
+
+        A_DELETE_COPY(EquipmentWindow);
 
         /**
          * Destructor.

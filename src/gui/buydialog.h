@@ -62,6 +62,8 @@ class BuyDialog final : public Window, public gcn::ActionListener,
          */
         BuyDialog(std::string nick);
 
+        A_DELETE_COPY(BuyDialog);
+
         /**
          * Destructor
          */

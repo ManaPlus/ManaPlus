@@ -46,6 +46,8 @@ class GraphicsManager final
     public:
         GraphicsManager();
 
+        A_DELETE_COPY(GraphicsManager);
+
         virtual ~GraphicsManager();
 
         void initGraphics(bool noOpenGL);

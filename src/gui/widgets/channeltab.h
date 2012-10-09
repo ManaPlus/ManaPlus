@@ -33,6 +33,7 @@ class Channel;
 class ChannelTab final : public ChatTab
 {
     public:
+        A_DELETE_COPY(ChannelTab);
 
         Channel *getChannel() const
         { return mChannel; }

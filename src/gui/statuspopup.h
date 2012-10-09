@@ -50,6 +50,8 @@ class StatusPopup final : public Popup
          */
         StatusPopup();
 
+        A_DELETE_COPY(StatusPopup);
+
         /**
          * Destructor. Cleans up the item popup on deletion.
          */

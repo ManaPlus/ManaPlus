@@ -41,6 +41,8 @@ class DebugTab : public Container
             Container()
         { }
 
+        A_DELETE_COPY(DebugTab);
+
         void logic() override = 0;
 
         void resize(const int x, const int y)
@@ -55,6 +57,8 @@ class MapDebugTab final : public DebugTab
 
     public:
         MapDebugTab();
+
+        A_DELETE_COPY(MapDebugTab);
 
         void logic() override;
 
@@ -80,6 +84,8 @@ class TargetDebugTab final : public DebugTab
     public:
         TargetDebugTab();
 
+        A_DELETE_COPY(TargetDebugTab);
+
         void logic() override;
 
     private:
@@ -102,6 +108,8 @@ class NetDebugTab final : public DebugTab
     public:
         NetDebugTab();
 
+        A_DELETE_COPY(NetDebugTab);
+
         void logic() override;
 
     private:
@@ -122,6 +130,8 @@ class DebugWindow final : public Window
          * Constructor.
          */
         DebugWindow();
+
+        A_DELETE_COPY(DebugWindow);
 
         ~DebugWindow();
 

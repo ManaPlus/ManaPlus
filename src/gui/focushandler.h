@@ -37,6 +37,11 @@
 class FocusHandler final : public gcn::FocusHandler
 {
     public:
+        FocusHandler()
+        { }
+
+        A_DELETE_COPY(FocusHandler);
+
         /**
          * Sets modal focus to a widget. When there is already a modal widget
          * then that widget loses modal focus and will regain it after this
@@ -62,6 +67,7 @@ class FocusHandler final : public gcn::FocusHandler
          * widgets is tabbed to when tabbing through focusable elements.
          */
         void tabNext();
+
         void tabPrevious();
 
     private:

@@ -77,14 +77,12 @@ bool SDLInput::isKeyQueueEmpty()
 
 KeyInput SDLInput::dequeueKeyInput2()
 {
-    KeyInput keyInput;
-
     if (mKeyInputQueue.empty())
     {
         throw GCN_EXCEPTION("The queue is empty.");
     }
 
-    keyInput = mKeyInputQueue.front();
+    KeyInput keyInput = mKeyInputQueue.front();
     mKeyInputQueue.pop();
 
     return keyInput;

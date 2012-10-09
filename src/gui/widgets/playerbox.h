@@ -49,6 +49,8 @@ class PlayerBox final : public gcn::ScrollArea
 
         PlayerBox(std::string skin = "");
 
+        A_DELETE_COPY(PlayerBox);
+
         /**
          * Destructor.
          */

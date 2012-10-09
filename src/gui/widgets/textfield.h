@@ -47,6 +47,8 @@ class TextField : public gcn::TextField
                   std::string eventId = "",
                   const bool sendAlwaysEvents = false);
 
+        A_DELETE_COPY(TextField);
+
         ~TextField();
 
         /**

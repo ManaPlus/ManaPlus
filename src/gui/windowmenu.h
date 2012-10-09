@@ -53,6 +53,8 @@ class WindowMenu final : public Container,
     public:
         WindowMenu();
 
+        A_DELETE_COPY(WindowMenu);
+
         ~WindowMenu();
 
         void action(const gcn::ActionEvent &event) override;

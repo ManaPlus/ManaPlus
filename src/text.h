@@ -44,6 +44,8 @@ class Text
              const gcn::Color *const color, const bool isSpeech = false,
              gcn::Font *const font = nullptr);
 
+        A_DELETE_COPY(Text);
+
         /**
          * Destructor. The text is removed from the screen.
          */
@@ -91,6 +93,8 @@ class FlashText final : public Text
                   const gcn::Graphics::Alignment alignment,
                   const gcn::Color *const color,
                   gcn::Font *const font = nullptr);
+
+        A_DELETE_COPY(FlashText);
 
         /**
          * Remove the text from the screen

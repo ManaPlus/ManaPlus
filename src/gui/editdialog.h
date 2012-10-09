@@ -51,6 +51,8 @@ class EditDialog final : public Window, public gcn::ActionListener
                    std::string eventOk = ACTION_EDIT_OK, const int width = 300,
                    Window *const parent = nullptr, const bool modal = true);
 
+        A_DELETE_COPY(EditDialog);
+
         /**
          * Called when receiving actions from the widgets.
          */

@@ -32,17 +32,19 @@ class SimpleAnimation;
  */
 class ProgressIndicator final : public gcn::Widget
 {
-public:
-    ProgressIndicator();
+    public:
+        ProgressIndicator();
 
-    ~ProgressIndicator();
+        A_DELETE_COPY(ProgressIndicator);
 
-    void logic() override;
+        ~ProgressIndicator();
 
-    void draw(gcn::Graphics *graphics) override;
+        void logic() override;
 
-private:
-    SimpleAnimation *mIndicator;
+        void draw(gcn::Graphics *graphics) override;
+
+    private:
+        SimpleAnimation *mIndicator;
 };
 
 #endif // PROGRESSINDICATOR_H

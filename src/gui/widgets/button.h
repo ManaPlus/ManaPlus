@@ -72,6 +72,8 @@ class Button final : public gcn::Button, public gcn::WidgetListener
                const std::string &actionEventId,
                gcn::ActionListener *const listener);
 
+        A_DELETE_COPY(Button);
+
         /**
          * Destructor.
          */

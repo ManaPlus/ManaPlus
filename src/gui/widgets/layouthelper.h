@@ -40,6 +40,8 @@ class LayoutHelper final : public gcn::WidgetListener
          */
         LayoutHelper(gcn::Container *const container);
 
+        A_DELETE_COPY(LayoutHelper);
+
         /**
          * Destructor.
          */

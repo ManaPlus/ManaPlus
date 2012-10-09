@@ -49,6 +49,8 @@ class ShopListBox final : public ListBox
         ShopListBox(gcn::ListModel *const listModel,
                     ShopItems *const shopListModel);
 
+        A_DELETE_COPY(ShopListBox);
+
         /**
          * Draws the list box.
          */

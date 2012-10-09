@@ -56,6 +56,8 @@ class Palette
             RAINBOW
         };
 
+        A_DELETE_COPY(Palette);
+
         /**
          * Returns the color associated with a character, if it exists. Returns
          * Palette::BLACK if the character is not found.

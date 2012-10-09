@@ -38,6 +38,8 @@ class SpellManager final
     public:
         SpellManager();
 
+        A_DELETE_COPY(SpellManager);
+
         ~SpellManager();
 
         TextCommand *getSpell(const int spellId);

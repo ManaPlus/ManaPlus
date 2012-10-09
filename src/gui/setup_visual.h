@@ -29,6 +29,8 @@ class Setup_Visual final : public SetupTabScroll
     public:
         Setup_Visual();
 
+        A_DELETE_COPY(Setup_Visual);
+
         ~Setup_Visual();
 
         void apply();

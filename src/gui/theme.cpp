@@ -60,7 +60,7 @@ static void initDefaultThemePath()
         defaultThemePath = "themes/";
 }
 
-Skin::Skin(const ImageRect &skin, const ImageRect &images,
+Skin::Skin(ImageRect *skin, const ImageRect *images,
            const std::string &filePath, const std::string &name,
            const int padding, const int titlePadding,
            std::map<std::string, int> *const options):
@@ -68,10 +68,10 @@ Skin::Skin(const ImageRect &skin, const ImageRect &images,
     mFilePath(filePath),
     mName(name),
     mBorder(skin),
-    mCloseImage(images.grid[0]),
-    mCloseImageHighlighted(images.grid[1]),
-    mStickyImageUp(images.grid[2]),
-    mStickyImageDown(images.grid[3]),
+    mCloseImage(images->grid[0]),
+    mCloseImageHighlighted(images->grid[1]),
+    mStickyImageUp(images->grid[2]),
+    mStickyImageDown(images->grid[3]),
     mPadding(padding),
     mTitlePadding(titlePadding),
     mOptions(options)
@@ -89,10 +89,10 @@ Skin::~Skin()
     // Clean up static resources
     for (int i = 0; i < 9; i++)
     {
-        if (mBorder.grid[i])
+        if (mBorder->grid[i])
         {
-            mBorder.grid[i]->decRef();
-            mBorder.grid[i] = nullptr;
+            mBorder->grid[i]->decRef();
+            mBorder->grid[i] = nullptr;
         }
     }
 
@@ -121,6 +121,7 @@ Skin::~Skin()
     }
 
     delete mOptions;
+    delete mBorder;
     mOptions = nullptr;
 }
 
@@ -132,8 +133,8 @@ void Skin::updateAlpha(const float minimumOpacityAllowed)
 
     for (int i = 0; i < 9; i++)
     {
-        if (mBorder.grid[i])
-            mBorder.grid[i]->setAlpha(alpha);
+        if (mBorder->grid[i])
+            mBorder->grid[i]->setAlpha(alpha);
     }
 
     if (mCloseImage)
@@ -148,26 +149,26 @@ void Skin::updateAlpha(const float minimumOpacityAllowed)
 
 int Skin::getMinWidth() const
 {
-    if (!mBorder.grid[ImageRect::UPPER_LEFT]
-        || !mBorder.grid[ImageRect::UPPER_RIGHT])
+    if (!mBorder->grid[ImageRect::UPPER_LEFT]
+        || !mBorder->grid[ImageRect::UPPER_RIGHT])
     {
         return 1;
     }
 
-    return mBorder.grid[ImageRect::UPPER_LEFT]->getWidth() +
-           mBorder.grid[ImageRect::UPPER_RIGHT]->getWidth();
+    return mBorder->grid[ImageRect::UPPER_LEFT]->getWidth() +
+           mBorder->grid[ImageRect::UPPER_RIGHT]->getWidth();
 }
 
 int Skin::getMinHeight() const
 {
-    if (!mBorder.grid[ImageRect::UPPER_LEFT]
-        || !mBorder.grid[ImageRect::LOWER_LEFT])
+    if (!mBorder->grid[ImageRect::UPPER_LEFT]
+        || !mBorder->grid[ImageRect::LOWER_LEFT])
     {
         return 1;
     }
 
-    return mBorder.grid[ImageRect::UPPER_LEFT]->getHeight() +
-           mBorder.grid[ImageRect::LOWER_LEFT]->getHeight();
+    return mBorder->grid[ImageRect::UPPER_LEFT]->getHeight() +
+           mBorder->grid[ImageRect::LOWER_LEFT]->getHeight();
 }
 
 Theme::Theme():
@@ -441,10 +442,10 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     }
 
     Image *const dBorders = Theme::getImageFromTheme(skinSetImage);
-    ImageRect border;
-    ImageRect images;
-    memset(&border, 0, sizeof(ImageRect));
-    memset(&images, 0, sizeof(ImageRect));
+    ImageRect *border = new ImageRect;
+    ImageRect *images = new ImageRect;
+    memset(border, 0, sizeof(ImageRect));
+    memset(images, 0, sizeof(ImageRect));
     int padding = 3;
     int titlePadding = 4;
     int titlebarHeight = 20;
@@ -481,11 +482,11 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
                     helper.height = XML::getProperty(partNode, "height", 1);
                     helper.image = dBorders;
 
-                    helper.rect = &border;
+                    helper.rect = border;
                     if (!helper.loadList(skinParam,
                         sizeof(skinParam) / sizeof(SkinParameter)))
                     {
-                        helper.rect = &images;
+                        helper.rect = images;
                         helper.loadList(imageParam,
                             sizeof(imageParam) / sizeof(SkinParameter));
                     }
@@ -540,6 +541,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
 
     Skin *const skin = new Skin(border, images, filename, "", padding,
         titlePadding, mOptions);
+    delete images;
     skin->updateAlpha(mMinimumOpacity);
     return skin;
 }

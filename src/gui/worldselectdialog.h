@@ -58,6 +58,8 @@ class WorldSelectDialog final : public Window, public gcn::ActionListener,
          */
         WorldSelectDialog(Worlds worlds);
 
+        A_DELETE_COPY(WorldSelectDialog);
+
         /**
          * Destructor.
          */
