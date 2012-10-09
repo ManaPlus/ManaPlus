@@ -388,18 +388,18 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
         if (event.getId() == "incPrice")
         {
             mPrice++;
-            price = static_cast<int>(pow(10, mPrice));
+            price = static_cast<int>(pow(10.0, mPrice));
         }
         else if (event.getId() == "decPrice")
         {
             mPrice--;
-            price = static_cast<int>(pow(10, mPrice));
+            price = static_cast<int>(pow(10.0, mPrice));
         }
         else if (event.getId() == "slidePrice")
         {
             price = static_cast<int>(mItemPriceSlide->getValue());
             if (price)
-                mPrice = static_cast<int>(log(price));
+                mPrice = static_cast<int>(log(static_cast<float>(price)));
             else
                 mPrice = 0;
         }
