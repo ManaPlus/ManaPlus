@@ -29,8 +29,6 @@
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
 
-#include <typeinfo>
-
 #include "debug.h"
 
 float TextPreview::mAlpha = 1.0;
@@ -65,18 +63,21 @@ void TextPreview::draw(gcn::Graphics* graphics)
         graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
     }
 
-    if (mTextBGColor && typeid(*mFont) == typeid(SDLFont))
+    if (mTextBGColor)
     {
-        const SDLFont *const font = static_cast<SDLFont*>(mFont);
-        const int x = font->getWidth(mText) + 1
-            + 2 * ((mOutline || mShadow) ? 1 :0);
-        const int y = font->getHeight() + 1
-            + 2 * ((mOutline || mShadow) ? 1 : 0);
-        graphics->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),
-                                      static_cast<int>(mTextBGColor->g),
-                                      static_cast<int>(mTextBGColor->b),
-                                      static_cast<int>(mAlpha * 255.0f)));
-        graphics->fillRectangle(gcn::Rectangle(1, 1, x, y));
+        const SDLFont *const font = dynamic_cast<SDLFont*>(mFont);
+        if (font)
+        {
+            const int x = font->getWidth(mText) + 1
+                + 2 * ((mOutline || mShadow) ? 1 :0);
+            const int y = font->getHeight() + 1
+                + 2 * ((mOutline || mShadow) ? 1 : 0);
+            graphics->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),
+                                          static_cast<int>(mTextBGColor->g),
+                                          static_cast<int>(mTextBGColor->b),
+                                          static_cast<int>(mAlpha * 255.0f)));
+            graphics->fillRectangle(gcn::Rectangle(1, 1, x, y));
+        }
     }
 
     TextRenderer::renderText(graphics, mText, 2, 2, gcn::Graphics::LEFT,
