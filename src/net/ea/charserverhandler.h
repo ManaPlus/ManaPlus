@@ -40,6 +40,8 @@ class CharServerHandler : public Net::CharHandler
     public:
         CharServerHandler();
 
+        A_DELETE_COPY(CharServerHandler);
+
         virtual void setCharSelectDialog(CharSelectDialog *window);
 
         /**

@@ -40,6 +40,8 @@ class InventoryHandler final : public MessageHandler,
     public:
         InventoryHandler();
 
+        A_DELETE_COPY(InventoryHandler);
+
         ~InventoryHandler();
 
         void handleMessage(Net::MessageIn &msg);

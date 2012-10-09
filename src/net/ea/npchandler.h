@@ -39,6 +39,8 @@ class NpcHandler : public Net::NpcHandler
     public:
         NpcHandler();
 
+        A_DELETE_COPY(NpcHandler);
+
         void sendLetter(int npcId, const std::string &recipient,
                         const std::string &text);
 

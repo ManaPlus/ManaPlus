@@ -45,6 +45,8 @@ class CharServerHandler final : public MessageHandler,
     public:
         CharServerHandler();
 
+        A_DELETE_COPY(CharServerHandler);
+
         virtual void handleMessage(Net::MessageIn &msg);
 
         void chooseCharacter(Net::Character *character);

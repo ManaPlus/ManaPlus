@@ -219,7 +219,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
             if (inventory)
             {
                 inventory->setItem(index, itemId, amount,
-                                    0, identified, isEquipment);
+                                   0, identified, isEquipment);
             }
         }
         else

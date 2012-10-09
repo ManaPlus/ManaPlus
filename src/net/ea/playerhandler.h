@@ -35,6 +35,8 @@ class PlayerHandler : public Net::PlayerHandler
     public:
         PlayerHandler();
 
+        A_DELETE_COPY(PlayerHandler);
+
         void decreaseAttribute(int attr);
 
         void ignorePlayer(const std::string &player, bool ignore);

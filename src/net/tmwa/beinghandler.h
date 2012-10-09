@@ -38,6 +38,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
     public:
         BeingHandler(bool enableSync);
 
+        A_DELETE_COPY(BeingHandler);
+
         virtual void handleMessage(Net::MessageIn &msg);
 
         virtual void requestNameById(int id);

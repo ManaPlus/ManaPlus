@@ -38,6 +38,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
     public:
         ChatHandler();
 
+        A_DELETE_COPY(ChatHandler);
+
         void handleMessage(Net::MessageIn &msg);
 
         void talk(const std::string &text);

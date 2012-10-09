@@ -48,6 +48,8 @@ class MessageOut final : public Net::MessageOut
          */
         MessageOut(short id);
 
+        A_DELETE_COPY(MessageOut);
+
         void writeInt16(int16_t value);        /**< Writes a short. */
 
         void writeInt32(int32_t value);        /**< Writes a long. */

@@ -32,6 +32,11 @@ namespace Ea
 class AdminHandler : public Net::AdminHandler
 {
     public:
+        AdminHandler()
+        { }
+
+        A_DELETE_COPY(AdminHandler);
+
         virtual ~AdminHandler()
         { }
 

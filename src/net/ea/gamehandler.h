@@ -37,6 +37,8 @@ class GameHandler : public Net::GameHandler, public Listener
     public:
         GameHandler();
 
+        A_DELETE_COPY(GameHandler);
+
         virtual void processEvent(Channels channel,
                                   const DepricatedEvent &event) override;
 

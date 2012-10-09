@@ -38,6 +38,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
     public:
         PlayerHandler();
 
+        A_DELETE_COPY(PlayerHandler);
+
         void handleMessage(Net::MessageIn &msg);
 
         void attack(int id, bool keep = false);

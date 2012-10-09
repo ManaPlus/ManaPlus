@@ -44,6 +44,8 @@ class MessageHandler : public Net::MessageHandler
     public:
         MessageHandler();
 
+        A_DELETE_COPY(MessageHandler);
+
         ~MessageHandler();
 
         void setNetwork(Network *network);

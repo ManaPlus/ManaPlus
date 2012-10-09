@@ -42,6 +42,8 @@ class Network
     public:
         Network();
 
+        A_DELETE_COPY(Network);
+
         ~Network();
 
         bool connect(ServerInfo server);

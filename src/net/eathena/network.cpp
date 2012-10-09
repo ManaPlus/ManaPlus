@@ -159,24 +159,26 @@ void Network::dispatchMessages()
 {
     while (messageReady())
     {
-        MessageIn msg = getNextMessage();
+        MessageIn *const msg = getNextMessage();
 
-        const MessageHandlerIterator iter = mMessageHandlers.find(msg.getId());
+        const MessageHandlerIterator iter = mMessageHandlers.find(
+            msg->getId());
 
-        if (msg.getLength() == 0)
+        if (msg->getLength() == 0)
             logger->safeError("Zero length packet received. Exiting.");
 
         if (iter != mMessageHandlers.end())
         {
             if (iter->second)
-                iter->second->handleMessage(msg);
+                iter->second->handleMessage(*msg);
         }
         else
         {
-            logger->log("Unhandled packet: %x", msg.getId());
+            logger->log("Unhandled packet: %x", msg->getId());
         }
 
-        skip(msg.getLength());
+        skip(msg->getLength());
+        delete msg;
     }
 }
 
@@ -205,7 +207,7 @@ bool Network::messageReady()
     return ret;
 }
 
-MessageIn Network::getNextMessage()
+MessageIn *Network::getNextMessage()
 {
     while (!messageReady())
     {
@@ -241,7 +243,7 @@ MessageIn Network::getNextMessage()
         msgId, len));
 #endif
 
-    MessageIn msg(mInBuffer, len);
+    MessageIn *msg = new MessageIn(mInBuffer, len);
     SDL_mutexV(mMutex);
 
     return msg;

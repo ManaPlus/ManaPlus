@@ -39,6 +39,8 @@ class BuySellHandler : public Net::BuySellHandler
     public:
         BuySellHandler();
 
+        A_DELETE_COPY(BuySellHandler);
+
         virtual void requestSellList(std::string nick);
 
         virtual void requestBuyList(std::string nick);

@@ -27,6 +27,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 namespace Net
 {
 
@@ -38,6 +40,8 @@ namespace Net
 class MessageIn
 {
     public:
+        A_DELETE_COPY(MessageIn);
+
         /**
          * Returns the message ID.
          */

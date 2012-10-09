@@ -38,6 +38,8 @@ class SpecialHandler final : public MessageHandler, public Ea::SpecialHandler
     public:
         SpecialHandler();
 
+        A_DELETE_COPY(SpecialHandler);
+
         void handleMessage(Net::MessageIn &msg);
 
         void useBeing(int id, int level, int beingId);

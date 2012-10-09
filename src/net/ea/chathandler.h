@@ -38,6 +38,8 @@ class ChatHandler : public Net::ChatHandler
     public:
         ChatHandler();
 
+        A_DELETE_COPY(ChatHandler);
+
         virtual void talk(const std::string &text) = 0;
 
         virtual void talkRaw(const std::string &text) = 0;

@@ -48,6 +48,8 @@ class Network final : public Ea::Network
     public:
         Network();
 
+        A_DELETE_COPY(Network);
+
         ~Network();
 
         void registerHandler(MessageHandler *handler);
@@ -58,7 +60,7 @@ class Network final : public Ea::Network
 
         bool messageReady();
 
-        MessageIn getNextMessage();
+        MessageIn *getNextMessage();
 
         void dispatchMessages();
 

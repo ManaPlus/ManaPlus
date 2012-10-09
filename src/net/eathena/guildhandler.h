@@ -36,6 +36,8 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
     public:
         GuildHandler();
 
+        A_DELETE_COPY(GuildHandler);
+
         ~GuildHandler();
 
         void handleMessage(Net::MessageIn &msg);

@@ -30,7 +30,7 @@
 class LoginData final
 {
     public:
-        LoginData():
+        LoginData() :
             username(""),
             password(""),
             newPassword(""),
@@ -44,6 +44,8 @@ class LoginData final
         {
             resetCharacterSlots();
         }
+
+        A_DELETE_COPY(LoginData);
 
         enum UpdateType
         {

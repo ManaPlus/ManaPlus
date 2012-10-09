@@ -41,6 +41,8 @@ class LoginHandler : public Net::LoginHandler
     public:
         LoginHandler();
 
+        A_DELETE_COPY(LoginHandler);
+
         ~LoginHandler();
 
         int supportedOptionalActions() const

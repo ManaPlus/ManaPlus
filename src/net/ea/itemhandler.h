@@ -34,6 +34,8 @@ class ItemHandler
     public:
         ItemHandler();
 
+        A_DELETE_COPY(ItemHandler);
+
         void processItemVisible(Net::MessageIn &msg);
 
         void processItemRemove(Net::MessageIn &msg);

@@ -26,8 +26,9 @@
 #include <SDL_types.h>
 
 #include <iosfwd>
-
 #include <string>
+
+#include "localconsts.h"
 
 namespace Net
 {
@@ -40,6 +41,8 @@ namespace Net
 class MessageOut
 {
     public:
+        A_DELETE_COPY(MessageOut);
+
         virtual void writeInt8(int8_t value);          /**< Writes a byte. */
 
         virtual void writeInt16(int16_t value) = 0;    /**< Writes a short. */
