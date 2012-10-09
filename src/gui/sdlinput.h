@@ -59,7 +59,7 @@
 #ifndef SDLINPUT_H
 #define SDLINPUT_H
 
-#include <queue>
+#include "keyinput.h"
 
 #include <SDL/SDL.h>
 
@@ -67,6 +67,8 @@
 #include <guichan/keyinput.hpp>
 #include <guichan/mouseinput.hpp>
 #include <guichan/platform.hpp>
+
+#include <queue>
 
 class KeyInput;
 
