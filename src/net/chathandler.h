@@ -24,6 +24,7 @@
 #define CHATHANDLER_H
 
 #include <iosfwd>
+#include <string>
 
 namespace Net
 {

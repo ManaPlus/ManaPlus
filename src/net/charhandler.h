@@ -27,6 +27,7 @@
 #include "playerinfo.h"
 
 #include <iosfwd>
+#include <string>
 #include <vector>
 
 class CharCreateDialog;

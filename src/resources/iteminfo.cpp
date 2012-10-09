@@ -34,37 +34,6 @@
 
 extern int serverVersion;
 
-/*
-ItemInfo::ItemInfo(ItemInfo &info)
-{
-    mMissileParticleFile = info.mMissileParticleFile;
-    mDisplay = info.mDisplay;
-    mName = info.mName;
-    mDescription = info.mDescription;
-    mEffect = info.mEffect;
-    mType = info.mType;
-    mParticle = info.mParticle;
-    mWeight = info.mWeight;
-    mView = info.mView;
-    mId = info.mId;
-    mIsRemoveSprites = info.mIsRemoveSprites;
-    mAttackAction = info.mAttackAction;
-    mAttackRange = info.mAttackRange;
-    mMissileParticle = info.mMissileParticle;
-    mColors = info.mColors;
-    mColorList = info.mColorList;
-    mHitEffectId = info.mHitEffectId;
-    mCriticalHitEffectId = info.mCriticalHitEffectId;
-    for (int f = 0; f < 9; f ++)
-    {
-        mSpriteToItemReplaceMap[f] = 0;
-        mDrawBefore[f] = info.mDrawBefore[f];
-        mDrawAfter[f] = info.mDrawAfter[f];
-        mDrawPriority[f] = info.mDrawPriority[f];
-    }
-}
-*/
-
 ItemInfo::ItemInfo() :
     mMissileParticleFile(""),
     mName(""),

@@ -27,6 +27,8 @@
 
 #include <iosfwd>
 
+#include <string>
+
 namespace Net
 {
 

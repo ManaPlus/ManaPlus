@@ -22,6 +22,8 @@
 
 #include <iosfwd>
 
+#include <string>
+
 #include "localconsts.h"
 
 struct SDL_Surface;
