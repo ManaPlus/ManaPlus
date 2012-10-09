@@ -90,6 +90,8 @@ namespace gcn
          */
         Widget();
 
+        A_DELETE_COPY(Widget);
+
         /**
          * Default destructor.
          */

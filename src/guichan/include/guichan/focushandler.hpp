@@ -77,6 +77,8 @@ namespace gcn
          */
         FocusHandler();
 
+        A_DELETE_COPY(FocusHandler);
+
         /**
          * Destructor.
          */

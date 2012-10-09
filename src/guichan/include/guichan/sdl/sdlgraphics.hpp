@@ -71,6 +71,8 @@ namespace gcn
          */
         SDLGraphics();
 
+        A_DELETE_COPY(SDLGraphics);
+
         /**
          * Sets the target SDL_Surface to draw to. The target can be any
          * SDL_Surface. This funtion also pushes a clip areas corresponding to

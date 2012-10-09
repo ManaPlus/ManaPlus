@@ -80,6 +80,8 @@ namespace gcn
          */
         TabbedArea();
 
+        A_DELETE_COPY(TabbedArea);
+
         /**
          * Destructor.
          */

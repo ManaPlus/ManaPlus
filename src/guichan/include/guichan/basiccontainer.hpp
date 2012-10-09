@@ -66,6 +66,11 @@ namespace gcn
                                              public DeathListener
     {
     public:
+        BasicContainer()
+        { }
+
+        A_DELETE_COPY(BasicContainer);
+
         /**
          * Destructor
          */

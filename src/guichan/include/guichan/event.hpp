@@ -47,6 +47,8 @@
 
 #include "guichan/platform.hpp"
 
+#include "localconsts.h"
+
 namespace gcn
 {
     class Widget;
@@ -61,13 +63,14 @@ namespace gcn
     class GCN_CORE_DECLSPEC Event
     {
     public:
-
         /**
          * Constructor.
          *
          * @param source The source widget of the event.
          */
         Event(Widget *const source);
+
+        A_DELETE_COPY(Event);
 
         /**
          * Destructor.

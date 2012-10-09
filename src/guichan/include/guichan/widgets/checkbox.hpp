@@ -83,6 +83,8 @@ namespace gcn
          */
         CheckBox(const std::string &caption, bool selected = false);
 
+        A_DELETE_COPY(CheckBox);
+
         /**
          * Destructor.
          */

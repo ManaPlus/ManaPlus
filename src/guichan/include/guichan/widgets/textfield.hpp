@@ -76,6 +76,8 @@ namespace gcn
          */
         TextField(const std::string& text);
 
+        A_DELETE_COPY(TextField);
+
         /**
          * Sets the text of the text field.
          *

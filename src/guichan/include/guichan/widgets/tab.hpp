@@ -74,6 +74,8 @@ namespace gcn
          */
         Tab();
 
+        A_DELETE_COPY(Tab);
+
         /**
          * Destructor.
          */
