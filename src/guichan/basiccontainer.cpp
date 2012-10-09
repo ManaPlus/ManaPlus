@@ -141,7 +141,7 @@ namespace gcn
 
     void BasicContainer::focusPrevious()
     {
-        WidgetListCReverseIterator it;
+        WidgetListReverseIterator it;
 
         for (it = mWidgets.rbegin(); it != mWidgets.rend(); ++ it)
         {
@@ -149,7 +149,7 @@ namespace gcn
                 break;
         }
 
-        WidgetListCReverseIterator end = it;
+        WidgetListReverseIterator end = it;
 
         ++ it;
 
@@ -179,7 +179,7 @@ namespace gcn
         x -= r.x;
         y -= r.y;
 
-        for (WidgetListCReverseIterator it = mWidgets.rbegin();
+        for (WidgetListReverseIterator it = mWidgets.rbegin();
              it != mWidgets.rend(); ++ it)
         {
             if ((*it)->isVisible() && (*it)->getDimension()
