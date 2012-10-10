@@ -123,8 +123,6 @@ class BuyDialog final : public Window, public gcn::ActionListener,
          */
         static void closeAll();
 
-        void scheduleDelete();
-
     private:
         typedef std::list<BuyDialog*> DialogList;
         static DialogList instances;
@@ -150,7 +148,6 @@ class BuyDialog final : public Window, public gcn::ActionListener,
         int mAmountItems;
         int mMaxItems;
         std::string mNick;
-        bool mEnabledKeyboard;
 };
 
 #endif

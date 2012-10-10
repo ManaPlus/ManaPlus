@@ -22,7 +22,6 @@
 
 #include "gui/buydialog.h"
 
-#include "keyboardconfig.h"
 #include "logger.h"
 #include "shopitem.h"
 #include "units.h"
@@ -78,9 +77,6 @@ void BuyDialog::init()
     setMinWidth(260);
     setMinHeight(230);
     setDefaultSize(260, 230, ImageRect::CENTER);
-
-    mEnabledKeyboard = keyboard.isEnabled();
-    keyboard.setEnabled(false);
 
     mShopItems = new ShopItems;
 
@@ -354,10 +350,4 @@ void BuyDialog::closeAll()
         if (*it)
             (*it)->close();
     }
-}
-
-void BuyDialog::scheduleDelete()
-{
-    keyboard.setEnabled(mEnabledKeyboard);
-    Window::scheduleDelete();
 }
