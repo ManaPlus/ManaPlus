@@ -194,9 +194,9 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
     setCaption(_("Who Is Online - ") + toString(numOnline));
 
     //List the online people
-    sort(friends.begin(), friends.end(), nameCompare);
-    sort(neutral.begin(), neutral.end(), nameCompare);
-    sort(disregard.begin(), disregard.end(), nameCompare);
+    std::sort(friends.begin(), friends.end(), nameCompare);
+    std::sort(neutral.begin(), neutral.end(), nameCompare);
+    std::sort(disregard.begin(), disregard.end(), nameCompare);
     bool addedFromSection(false);
     for (size_t i = 0, sz = friends.size(); i < sz; i++)
     {

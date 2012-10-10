@@ -83,7 +83,7 @@ namespace gcn
     void BasicContainer::moveToBottom(Widget* widget)
     {
         WidgetListIterator iter;
-        iter = find(mWidgets.begin(), mWidgets.end(), widget);
+        iter = std::find(mWidgets.begin(), mWidgets.end(), widget);
 
         if (iter == mWidgets.end())
             throw GCN_EXCEPTION("There is no such widget in this container.");
@@ -96,7 +96,7 @@ namespace gcn
     void BasicContainer::death(const Event& event)
     {
         WidgetListIterator iter;
-        iter = find(mWidgets.begin(), mWidgets.end(), event.getSource());
+        iter = std::find(mWidgets.begin(), mWidgets.end(), event.getSource());
 
         if (iter == mWidgets.end())
             throw GCN_EXCEPTION("There is no such widget in this container.");

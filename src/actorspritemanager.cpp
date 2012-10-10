@@ -308,7 +308,7 @@ Being *ActorSpriteManager::findBeing(const int x, const int y,
     beingFinder.y = static_cast<uint16_t>(y);
     beingFinder.type = type;
 
-    const ActorSpritesConstIterator it = find_if(
+    const ActorSpritesConstIterator it = std::find_if(
         mActors.begin(), mActors.end(), beingFinder);
 
     return (it == mActors.end()) ? nullptr : static_cast<Being*>(*it);
@@ -957,7 +957,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
             beingSorter.attackBeings = nullptr;
             beingSorter.priorityBeings = nullptr;
         }
-        sort(sortedBeings.begin(), sortedBeings.end(), beingSorter);
+        std::sort(sortedBeings.begin(), sortedBeings.end(), beingSorter);
         if (filtered)
         {
             beingSorter.attackBeings = nullptr;
@@ -978,8 +978,8 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
         }
 
         beingEqualFinder.findBeing = player_node->getTarget();
-        std::vector<Being*>::const_iterator i = find_if(sortedBeings.begin(),
-            sortedBeings.end(), beingEqualFinder);
+        std::vector<Being*>::const_iterator i = std::find_if(
+            sortedBeings.begin(), sortedBeings.end(), beingEqualFinder);
 
         if (i == sortedBeings.end() || ++i == sortedBeings.end())
         {

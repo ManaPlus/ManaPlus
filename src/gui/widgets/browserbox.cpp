@@ -319,7 +319,7 @@ void BrowserBox::mousePressed(gcn::MouseEvent &event)
     if (!mLinkHandler)
         return;
 
-    const LinkIterator i = find_if(mLinks.begin(), mLinks.end(),
+    const LinkIterator i = std::find_if(mLinks.begin(), mLinks.end(),
         MouseOverLink(event.getX(), event.getY()));
 
     if (i != mLinks.end())
@@ -328,7 +328,7 @@ void BrowserBox::mousePressed(gcn::MouseEvent &event)
 
 void BrowserBox::mouseMoved(gcn::MouseEvent &event)
 {
-    const LinkIterator i = find_if(mLinks.begin(), mLinks.end(),
+    const LinkIterator i = std::find_if(mLinks.begin(), mLinks.end(),
         MouseOverLink(event.getX(), event.getY()));
 
     mSelectedLink = (i != mLinks.end())

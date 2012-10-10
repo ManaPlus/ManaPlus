@@ -363,7 +363,7 @@ StringVect * PlayerRelationsManager::getPlayers()
             retval->push_back(it->first);
     }
 
-    sort(retval->begin(), retval->end(), playersSorter);
+    std::sort(retval->begin(), retval->end(), playersSorter);
 
     return retval;
 }
@@ -380,7 +380,7 @@ StringVect *PlayerRelationsManager::getPlayersByRelation(
             retval->push_back(it->first);
     }
 
-    sort(retval->begin(), retval->end(), playersSorter);
+    std::sort(retval->begin(), retval->end(), playersSorter);
 
     return retval;
 }

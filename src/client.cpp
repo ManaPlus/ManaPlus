@@ -118,6 +118,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <locale.h>
 
 #include "mumblemanager.h"
 

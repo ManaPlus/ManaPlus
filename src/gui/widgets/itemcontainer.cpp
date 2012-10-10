@@ -535,19 +535,21 @@ void ItemContainer::updateMatrix()
         default:
             break;
         case 1:
-            sort(sortedItems.begin(), sortedItems.end(), itemAlphaSorter);
+            std::sort(sortedItems.begin(), sortedItems.end(), itemAlphaSorter);
             break;
         case 2:
-            sort(sortedItems.begin(), sortedItems.end(), itemIdSorter);
+            std::sort(sortedItems.begin(), sortedItems.end(), itemIdSorter);
             break;
         case 3:
-            sort(sortedItems.begin(), sortedItems.end(), itemWeightSorter);
+            std::sort(sortedItems.begin(), sortedItems.end(),
+                itemWeightSorter);
             break;
         case 4:
-            sort(sortedItems.begin(), sortedItems.end(), itemAmountSorter);
+            std::sort(sortedItems.begin(), sortedItems.end(),
+                itemAmountSorter);
             break;
         case 5:
-            sort(sortedItems.begin(), sortedItems.end(), itemTypeSorter);
+            std::sort(sortedItems.begin(), sortedItems.end(), itemTypeSorter);
             break;
     }
 
