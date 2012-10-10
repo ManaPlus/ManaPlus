@@ -23,8 +23,8 @@
 #define nullptr 0
 #define final
 #define override
-#define A_DELETE
-#define A_DELETE_COPY
+#define A_DELETE(func)
+#define A_DELETE_COPY(func)
 #else
 #define GCC_VERSION (__GNUC__ * 10000 \
     + __GNUC_MINOR__ * 100 \
