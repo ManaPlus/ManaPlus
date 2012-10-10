@@ -25,9 +25,19 @@
 #include <string>
 #include <map>
 
+#include "localconsts.h"
+
 struct SpecialInfo final
 {
-    SpecialInfo()
+    SpecialInfo() :
+        id(0),
+        isActive(false),
+        TargetMode(TARGET_SELF),
+        hasLevel(false),
+        level(0),
+        hasRechargeBar(false),
+        rechargeNeeded(0),
+        rechargeCurrent(0)
     { }
 
     A_DELETE_COPY(SpecialInfo);

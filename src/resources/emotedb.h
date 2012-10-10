@@ -33,7 +33,8 @@ class AnimatedSprite;
 
 struct EmoteSprite final
 {
-    EmoteSprite()
+    EmoteSprite() :
+        sprite(nullptr)
     { }
 
     A_DELETE_COPY(EmoteSprite);

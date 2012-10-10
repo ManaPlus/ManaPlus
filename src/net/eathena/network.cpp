@@ -243,7 +243,7 @@ MessageIn *Network::getNextMessage()
         msgId, len));
 #endif
 
-    MessageIn *msg = new MessageIn(mInBuffer, len);
+    MessageIn *const msg = new MessageIn(mInBuffer, len);
     SDL_mutexV(mMutex);
 
     return msg;

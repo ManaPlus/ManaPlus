@@ -35,7 +35,8 @@
 class Music final : public Resource
 {
     public:
-        Music()
+        Music() :
+            mMusic(nullptr)
         { }
 
         A_DELETE_COPY(Music);
