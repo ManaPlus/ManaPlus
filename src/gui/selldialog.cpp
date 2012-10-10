@@ -105,8 +105,12 @@ void SellDialog::init()
     mSellButton->setEnabled(false);
     mSlider->setEnabled(false);
 
+    mShopItemList->setDistributeMousePressed(false);
     mShopItemList->setPriceCheck(false);
     mShopItemList->addSelectionListener(this);
+    mShopItemList->setActionEventId("sell");
+    mShopItemList->addActionListener(this);
+
     mSlider->setActionEventId("slider");
     mSlider->addActionListener(this);
 
@@ -174,7 +178,9 @@ void SellDialog::addItem(const int id, const unsigned char color,
 
 void SellDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "quit")
+    const std::string &eventId = event.getId();
+
+    if (eventId == "quit")
     {
         close();
         return;
@@ -183,36 +189,36 @@ void SellDialog::action(const gcn::ActionEvent &event)
     const int selectedItem = mShopItemList->getSelected();
 
     // The following actions require a valid item selection
-    if (selectedItem == -1 ||
-        selectedItem >= mShopItems->getNumberOfElements())
+    if (selectedItem == -1
+        || selectedItem >= mShopItems->getNumberOfElements())
     {
         return;
     }
 
-    if (event.getId() == "slider")
+    if (eventId == "slider")
     {
         mAmountItems = static_cast<int>(mSlider->getValue());
         updateButtonsAndLabels();
     }
-    else if (event.getId() == "inc" && mAmountItems < mMaxItems)
+    else if (eventId == "inc" && mAmountItems < mMaxItems)
     {
         mAmountItems++;
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (event.getId() == "dec" && mAmountItems > 1)
+    else if (eventId == "dec" && mAmountItems > 1)
     {
         mAmountItems--;
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (event.getId() == "max")
+    else if (eventId == "max")
     {
         mAmountItems = mMaxItems;
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (event.getId() == "sell" && mAmountItems > 0
+    else if (eventId == "sell" && mAmountItems > 0
              && mAmountItems <= mMaxItems)
     {
         if (mNpcId != -1)

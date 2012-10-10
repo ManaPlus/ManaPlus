@@ -119,6 +119,10 @@ void BuyDialog::init()
 
     mSlider->setActionEventId("slider");
     mSlider->addActionListener(this);
+
+    mShopItemList->setDistributeMousePressed(false);
+    mShopItemList->setActionEventId("buy");
+    mShopItemList->addActionListener(this);
     mShopItemList->addSelectionListener(this);
 
     ContainerPlacer placer;
@@ -184,49 +188,47 @@ void BuyDialog::addItem(const int id, const unsigned char color,
 
 void BuyDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "quit")
+    const std::string &eventId = event.getId();
+
+    if (eventId == "quit")
     {
         close();
         return;
     }
-
     const int selectedItem = mShopItemList->getSelected();
 
     // The following actions require a valid selection
-    if (selectedItem < 0 ||
-        selectedItem >= mShopItems->getNumberOfElements())
-    {
+    if (selectedItem < 0 || selectedItem >= mShopItems->getNumberOfElements())
         return;
-    }
 
-    if (event.getId() == "slider")
+    if (eventId == "slider")
     {
         mAmountItems = static_cast<int>(mSlider->getValue());
         mAmountField->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (event.getId() == "inc" && mAmountItems < mMaxItems)
+    else if (eventId == "inc" && mAmountItems < mMaxItems)
     {
         mAmountItems++;
         mSlider->setValue(mAmountItems);
         mAmountField->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (event.getId() == "dec" && mAmountItems > 1)
+    else if (eventId == "dec" && mAmountItems > 1)
     {
         mAmountItems--;
         mSlider->setValue(mAmountItems);
         mAmountField->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (event.getId() == "max")
+    else if (eventId == "max")
     {
         mAmountItems = mMaxItems;
         mSlider->setValue(mAmountItems);
         mAmountField->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (event.getId() == "amount")
+    else if (eventId == "amount")
     {
         mAmountItems = mAmountField->getValue();
         mSlider->setValue(mAmountItems);
@@ -235,8 +237,7 @@ void BuyDialog::action(const gcn::ActionEvent &event)
     // TODO: Actually we'd have a bug elsewhere if this check for the number
     // of items to be bought ever fails, Bertram removed the assertions, is
     // there a better way to ensure this fails in an _obvious_ way in C++?
-    else if (event.getId() == "buy" && mAmountItems > 0 &&
-             mAmountItems <= mMaxItems)
+    else if (eventId == "buy" && mAmountItems > 0 && mAmountItems <= mMaxItems)
     {
         if (mNpcId != -1)
         {
