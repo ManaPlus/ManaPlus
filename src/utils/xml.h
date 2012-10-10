@@ -76,6 +76,8 @@ namespace XML
              */
             Document(const char *const data, const int size);
 
+            A_DELETE_COPY(Document);
+
             /**
              * Destructor. Frees the loaded XML file.
              */

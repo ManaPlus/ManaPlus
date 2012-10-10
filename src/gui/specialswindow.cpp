@@ -58,6 +58,8 @@ class SpecialEntry final : public Container
     public:
         SpecialEntry(SpecialInfo *info);
 
+        A_DELETE_COPY(SpecialEntry);
+
         void update(int current, int needed);
 
     protected:

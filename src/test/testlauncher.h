@@ -29,10 +29,14 @@
 #include <string>
 #include <sys/time.h>
 
+#include "localconsts.h"
+
 class TestLauncher
 {
     public:
         TestLauncher(std::string test);
+
+        A_DELETE_COPY(TestLauncher);
 
         ~TestLauncher();
 

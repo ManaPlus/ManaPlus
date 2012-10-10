@@ -33,18 +33,22 @@
  */
 class Mutex
 {
-public:
-    Mutex();
-    ~Mutex();
+    public:
+        Mutex();
 
-    void lock();
-    void unlock();
+        A_DELETE_COPY(Mutex);
 
-private:
-    Mutex(const Mutex&);  // prevent copying
-    Mutex& operator=(const Mutex&);
+        ~Mutex();
 
-    SDL_mutex *mMutex;
+        void lock();
+
+        void unlock();
+
+    private:
+//        Mutex(const Mutex&);  // prevent copying
+//        Mutex& operator=(const Mutex&);
+
+        SDL_mutex *mMutex;
 };
 
 /**
@@ -52,12 +56,13 @@ private:
  */
 class MutexLocker
 {
-public:
-    MutexLocker(Mutex *mutex);
-    ~MutexLocker();
+    public:
+        MutexLocker(Mutex *mutex);
 
-private:
-    Mutex *mMutex;
+        ~MutexLocker();
+
+    private:
+        Mutex *mMutex;
 };
 
 

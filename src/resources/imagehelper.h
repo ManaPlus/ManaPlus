@@ -43,6 +43,11 @@ class ImageHelper
     friend class Image;
 
     public:
+        ImageHelper()
+        { }
+
+        A_DELETE_COPY(ImageHelper);
+
         virtual ~ImageHelper()
         { }
 

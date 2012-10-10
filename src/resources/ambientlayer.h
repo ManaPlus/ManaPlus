@@ -44,6 +44,8 @@ class AmbientLayer final
                      const float speedX, const float speedY,
                      const bool keepRatio = false);
 
+        A_DELETE_COPY(AmbientLayer);
+
         ~AmbientLayer();
 
         void update(const int timePassed, const float dx, const float dy);

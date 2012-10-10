@@ -49,6 +49,12 @@ class OpenGLImageHelper final : public ImageHelper
     friend class Image;
 
     public:
+        OpenGLImageHelper()
+        {
+        }
+
+        A_DELETE_COPY(OpenGLImageHelper);
+
         virtual ~OpenGLImageHelper()
         { }
 

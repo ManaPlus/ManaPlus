@@ -68,6 +68,8 @@ public:
         playersUpdated();
     }
 
+    A_DELETE_COPY(UsersTableModel);
+
     virtual ~UsersTableModel()
     {
         freeWidgets();

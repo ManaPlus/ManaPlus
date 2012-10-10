@@ -37,6 +37,8 @@ class Action final
     public:
         Action();
 
+        A_DELETE_COPY(Action);
+
         ~Action();
 
         void setAnimation(const int direction, Animation *const animation);

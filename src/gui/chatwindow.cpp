@@ -86,6 +86,8 @@ class ChatInput final : public TextField, public gcn::FocusListener
             addFocusListener(this);
         }
 
+        A_DELETE_COPY(ChatInput);
+
         /**
          * Called if the chat input loses focus. It will set itself to
          * invisible as result.

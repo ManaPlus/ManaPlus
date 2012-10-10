@@ -82,6 +82,8 @@ class SortFriendsFunctor final
 class SocialTab : public Tab
 {
 public:
+    A_DELETE_COPY(SocialTab);
+
     virtual void invite() = 0;
 
     virtual void leave() = 0;
@@ -152,6 +154,8 @@ public:
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
+
+    A_DELETE_COPY(SocialGuildTab);
 
     ~SocialGuildTab()
     {
@@ -257,6 +261,8 @@ public:
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
 
+    A_DELETE_COPY(SocialGuildTab2);
+
     ~SocialGuildTab2()
     {
         delete mList;
@@ -316,6 +322,8 @@ public:
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
+
+    A_DELETE_COPY(SocialPartyTab);
 
     ~SocialPartyTab()
     {
@@ -404,6 +412,8 @@ public:
     {
     }
 
+    A_DELETE_COPY(BeingsListModal);
+
     ~BeingsListModal()
     {
         delete_all(mMembers);
@@ -445,6 +455,8 @@ public:
         updateList();
         setCaption(name);
     }
+
+    A_DELETE_COPY(SocialPlayersTab);
 
     ~SocialPlayersTab()
     {
@@ -611,6 +623,8 @@ public:
         // TRANSLATORS: Navigation tab name in social window. Should be small
         setCaption(_("Nav"));
     }
+
+    A_DELETE_COPY(SocialNavigationTab);
 
     ~SocialNavigationTab()
     {
@@ -948,6 +962,8 @@ public:
         setCaption(_("Atk"));
     }
 
+    A_DELETE_COPY(SocialAttackTab);
+
     ~SocialAttackTab()
     {
         delete mList;
@@ -1004,6 +1020,8 @@ public:
         setCaption(_("Pik"));
     }
 
+    A_DELETE_COPY(SocialPickupTab);
+
     ~SocialPickupTab()
     {
         delete mList;
@@ -1059,6 +1077,8 @@ public:
         updateList();
         setCaption(name);
     }
+
+    A_DELETE_COPY(SocialFriendsTab);
 
     ~SocialFriendsTab()
     {
@@ -1160,6 +1180,8 @@ public:
         setContentSize(mBrowserBox->getWidth() + 8,
                        mBrowserBox->getHeight() + 8);
     }
+
+    A_DELETE_COPY(CreatePopup);
 
     void handleLink(const std::string &link, gcn::MouseEvent *event A_UNUSED)
     {

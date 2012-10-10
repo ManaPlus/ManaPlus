@@ -59,6 +59,8 @@ class KeyListModel final : public gcn::ListModel
         {
         }
 
+        A_DELETE_COPY(KeyListModel);
+
         /**
          * Returns the number of elements in container.
          */

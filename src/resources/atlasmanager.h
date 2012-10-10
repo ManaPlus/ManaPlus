@@ -42,6 +42,8 @@ struct AtlasItem
     {
     }
 
+    A_DELETE_COPY(AtlasItem);
+
     Image *image;
     std::string name;
     int x;
@@ -60,6 +62,8 @@ struct TextureAtlas
     {
     }
 
+    A_DELETE_COPY(TextureAtlas);
+
     std::string name;
     Image *atlasImage;
     SDL_Surface *surface;
@@ -71,6 +75,11 @@ struct TextureAtlas
 class AtlasResource : public Resource
 {
     public:
+        AtlasResource()
+        { }
+
+        A_DELETE_COPY(AtlasResource);
+
         ~AtlasResource();
 
         void incRef();
@@ -84,6 +93,8 @@ class AtlasManager
 {
     public:
         AtlasManager();
+
+        A_DELETE_COPY(AtlasManager);
 
         static AtlasResource *loadTextureAtlas(const std::string &name,
                                                const StringVect &files);

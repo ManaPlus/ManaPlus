@@ -62,6 +62,8 @@ class GuiConfigListener final : public ConfigListener
             mGui(g)
         {}
 
+        A_DELETE_COPY(GuiConfigListener);
+
         void optionChanged(const std::string &name)
         {
             if (name == "customcursor" && mGui)

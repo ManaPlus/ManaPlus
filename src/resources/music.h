@@ -35,6 +35,11 @@
 class Music final : public Resource
 {
     public:
+        Music()
+        { }
+
+        A_DELETE_COPY(Music);
+
         /**
          * Destructor.
          */

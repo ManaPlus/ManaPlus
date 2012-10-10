@@ -33,6 +33,8 @@ class PoDict final
     public:
         PoDict(std::string lang);
 
+        A_DELETE_COPY(PoDict);
+
         ~PoDict();
 
         const std::string getStr(const std::string &str);

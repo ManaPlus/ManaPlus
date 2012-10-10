@@ -28,6 +28,8 @@
 #include <ctime>
 #include <string>
 
+#include "localconsts.h"
+
 /**
  * A generic reference counted resource object.
  */
@@ -48,6 +50,8 @@ class Resource
 #endif
         {
         }
+
+        A_DELETE_COPY(Resource);
 
         /**
          * Increments the internal reference count.

@@ -59,22 +59,27 @@ const char *UPDATE_TYPE_TEXT[3] =
 
 class UpdateTypeModel final : public gcn::ListModel
 {
-public:
-    virtual ~UpdateTypeModel()
-    { }
+    public:
+        UpdateTypeModel()
+        { }
 
-    virtual int getNumberOfElements()
-    {
-        return 3;
-    }
+        A_DELETE_COPY(UpdateTypeModel);
 
-    virtual std::string getElementAt(int i)
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return _("???");
+        virtual ~UpdateTypeModel()
+        { }
 
-        return gettext(UPDATE_TYPE_TEXT[i]);
-    }
+        virtual int getNumberOfElements()
+        {
+            return 3;
+        }
+
+        virtual std::string getElementAt(int i)
+        {
+            if (i >= getNumberOfElements() || i < 0)
+                return _("???");
+
+            return gettext(UPDATE_TYPE_TEXT[i]);
+        }
 };
 
 class UpdateListModel final : public gcn::ListModel
@@ -85,6 +90,8 @@ class UpdateListModel final : public gcn::ListModel
             mLoginData(data)
         {
         }
+
+        A_DELETE_COPY(UpdateListModel);
 
         virtual ~UpdateListModel()
         { }

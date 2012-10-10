@@ -40,6 +40,11 @@ class SDLImageHelper final : public ImageHelper
     friend class Image;
 
     public:
+        SDLImageHelper()
+        { }
+
+        A_DELETE_COPY(SDLImageHelper);
+
         virtual ~SDLImageHelper()
         { }
 

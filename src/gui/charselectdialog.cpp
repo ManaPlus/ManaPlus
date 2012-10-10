@@ -78,6 +78,8 @@ class CharDeleteConfirm final : public ConfirmDialog
         {
         }
 
+        A_DELETE_COPY(CharDeleteConfirm);
+
         void action(const gcn::ActionEvent &event)
         {
             if (event.getId() == "yes" && mMaster)
@@ -95,6 +97,8 @@ class CharacterDisplay final : public Container
 {
     public:
         CharacterDisplay(CharSelectDialog *const charSelectDialog);
+
+        A_DELETE_COPY(CharacterDisplay);
 
         void setCharacter(Net::Character *const character);
 

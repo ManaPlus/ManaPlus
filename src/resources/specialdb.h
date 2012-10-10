@@ -27,6 +27,11 @@
 
 struct SpecialInfo final
 {
+    SpecialInfo()
+    { }
+
+    A_DELETE_COPY(SpecialInfo);
+
     enum TargetMode
     {
         TARGET_SELF = 0, // no target selection

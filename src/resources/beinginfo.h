@@ -48,6 +48,8 @@ struct Attack final
         mMissileParticle(missileParticle)
     {
     }
+
+    A_DELETE_COPY(Attack);
 };
 
 typedef std::map<int, Attack*> Attacks;
@@ -80,6 +82,8 @@ class BeingInfo final
         static Attack *empty;
 
         BeingInfo();
+
+        A_DELETE_COPY(BeingInfo);
 
         ~BeingInfo();
 

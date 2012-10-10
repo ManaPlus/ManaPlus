@@ -27,6 +27,8 @@
 
 #include <vector>
 
+#include "localconsts.h"
+
 class Image;
 
 /**
@@ -40,6 +42,8 @@ class ImageSet : public Resource
          */
         ImageSet(Image *const img, const int w, const int h,
                  const int margin = 0, const int spacing = 0);
+
+        A_DELETE_COPY(ImageSet);
 
         /**
          * Destructor.

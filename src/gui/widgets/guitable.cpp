@@ -45,6 +45,8 @@ public:
     GuiTableActionListener(GuiTable *_table, gcn::Widget *_widget,
                            int _row, int _column);
 
+    A_DELETE_COPY(GuiTableActionListener);
+
     virtual ~GuiTableActionListener();
 
     virtual void action(const gcn::ActionEvent& actionEvent);

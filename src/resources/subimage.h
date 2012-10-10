@@ -59,6 +59,8 @@ class SubImage final : public Image
                  const int texWidth, const int textHeight);
 #endif
 
+        A_DELETE_COPY(SubImage);
+
         /**
          * Destructor.
          */

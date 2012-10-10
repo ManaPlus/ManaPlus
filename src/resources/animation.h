@@ -43,6 +43,7 @@ struct Frame final
         LABEL,
         PAUSE
     };
+
     Image *image;
     int delay;
     int offsetX;

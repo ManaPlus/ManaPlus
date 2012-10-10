@@ -78,6 +78,8 @@ class ModeListModel final : public gcn::ListModel
          */
         ModeListModel();
 
+        A_DELETE_COPY(ModeListModel);
+
         /**
          * Destructor.
          */

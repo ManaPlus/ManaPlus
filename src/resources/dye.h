@@ -47,6 +47,8 @@ class DyePalette final
          */
         DyePalette(const std::string &pallete, const int8_t blockSize);
 
+        A_DELETE_COPY(DyePalette);
+
         /**
          * Gets a pixel color depending on its intensity. First color is
          * implicitly black (0, 0, 0).
@@ -101,6 +103,8 @@ class Dye final
          * by an uppercase letter, followed by a colon and then a palette name.
          */
         Dye(const std::string &dye);
+
+        A_DELETE_COPY(Dye);
 
         /**
          * Destroys the associated palettes.

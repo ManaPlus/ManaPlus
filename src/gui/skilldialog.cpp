@@ -99,6 +99,8 @@ class SkillListBox final : public ListBox
         {
         }
 
+        A_DELETE_COPY(SkillListBox);
+
         ~SkillListBox()
         {
             delete mModel;
@@ -193,6 +195,8 @@ class SkillTab final : public Tab
         {
             setCaption(name);
         }
+
+        A_DELETE_COPY(SkillTab);
 
         ~SkillTab()
         {
