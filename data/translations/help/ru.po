@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-09-13 19:03+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2012-10-09 14:27+0000\n"
+"Last-Translator: Dan Sagunov <danilka.pro@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -111,7 +111,7 @@ msgid ""
 msgstr ""
 
 msgid "##PMagic skills can be obtain by doing quests and missions in game."
-msgstr ""
+msgstr "##PМагические умения могут быть приобретены путем выполнения квестов и миссий в игре."
 
 msgid "Support"
 msgstr "Поддержка"
@@ -234,7 +234,7 @@ msgstr "/where - вывести текущее положение игрока �
 msgid ""
 " - ##2ignored##P:  You wish to completely ignore this player.  You will not\n"
 "   even see floating text for him or her anymore, nor emotions."
-msgstr ""
+msgstr " - ##2ignored##P:  Вы полностью игнорируете этого игрока.  Вы не будете видеть его всплывающие сообщения и эмоции."
 
 msgid "##2RightShift + key##P         \"Move to navigation point\""
 msgstr ""
@@ -448,7 +448,7 @@ msgid "##2KeyPad[2]##P                \"Enable / Disable away mode\""
 msgstr ""
 
 msgid "##2j##P                        \"Commands Window\""
-msgstr ""
+msgstr "##2j##P                        \"Окно команд\""
 
 msgid "THE PLAYER LIST"
 msgstr "СПИСОК ИГРОКОВ"
@@ -457,7 +457,7 @@ msgid "Basic skills:"
 msgstr "Основные умения:"
 
 msgid "##POther skills can be obtain by doing quests and missions in game."
-msgstr ""
+msgstr "##PДругие умения могут быть получены при выполнении миссий и квестов в игре."
 
 msgid "##2RightControl##P             \"Wear Outfit\""
 msgstr "##2RightControl##P             \"Надеть костюм\""
@@ -538,7 +538,7 @@ msgid ""
 msgstr "/msg ИГРОК текст, /whisper ИГРОК текст, /w ИГРОК текст - шептать игроку."
 
 msgid "##2F1##P                       \"Help Window\""
-msgstr ""
+msgstr "##2F1##P                       \"Окно помощи\""
 
 msgid "##2g##P                        \"Change Attack Weapon Type\""
 msgstr ""
@@ -657,7 +657,7 @@ msgid "##2Quote(')##P                 \"Set Direction Right\""
 msgstr ""
 
 msgid "##2F4##P                       \"Equipment Window\""
-msgstr ""
+msgstr "##2F4##P                       \"Окно снаряжения\""
 
 msgid "/away, /away MSG - set away mode."
 msgstr ""
@@ -690,7 +690,7 @@ msgid "##2Period(.)##P                \"Change Move to Target type\""
 msgstr ""
 
 msgid "##2F10##P                      \"Debug Window\""
-msgstr ""
+msgstr "##2F10##P                      \"Окно отладки\""
 
 msgid ""
 " - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
