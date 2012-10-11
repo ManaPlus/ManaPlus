@@ -109,13 +109,13 @@ static inline void drawQuad(const Image *image,
     {
         // Find OpenGL normalized texture coordinates.
         const float texX1 = static_cast<float>(srcX) /
-                            static_cast<float>(image->getTextureWidth());
+                            static_cast<float>(image->mTexWidth);
         const float texY1 = static_cast<float>(srcY) /
-                            static_cast<float>(image->getTextureHeight());
+                            static_cast<float>(image->mTexHeight);
         const float texX2 = static_cast<float>(srcX + width) /
-                            static_cast<float>(image->getTextureWidth());
+                            static_cast<float>(image->mTexWidth);
         const float texY2 = static_cast<float>(srcY + height) /
-                            static_cast<float>(image->getTextureHeight());
+                            static_cast<float>(image->mTexHeight);
 
         GLfloat tex[] =
         {
@@ -171,13 +171,13 @@ static inline void drawRescaledQuad(const Image *const image,
     {
         // Find OpenGL normalized texture coordinates.
         const float texX1 = static_cast<float>(srcX) /
-                            static_cast<float>(image->getTextureWidth());
+                            static_cast<float>(image->mTexWidth);
         const float texY1 = static_cast<float>(srcY) /
-                            static_cast<float>(image->getTextureHeight());
+                            static_cast<float>(image->mTexHeight);
         const float texX2 = static_cast<float>(srcX + width) /
-                            static_cast<float>(image->getTextureWidth());
+                            static_cast<float>(image->mTexWidth);
         const float texY2 = static_cast<float>(srcY + height) /
-                            static_cast<float>(image->getTextureHeight());
+                            static_cast<float>(image->mTexHeight);
 
         GLfloat tex[] =
         {
@@ -339,8 +339,8 @@ void NormalOpenGLGraphics::drawImagePattern(const Image *const image,
     if (iw == 0 || ih == 0)
         return;
 
-    const float tw = static_cast<float>(image->getTextureWidth());
-    const float th = static_cast<float>(image->getTextureHeight());
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
 
     setColorAlpha(image->mAlpha);
 
@@ -489,8 +489,8 @@ void NormalOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
-        const float tw = static_cast<float>(image->getTextureWidth());
-        const float th = static_cast<float>(image->getTextureHeight());
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
 
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
@@ -687,8 +687,8 @@ void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
         return;
     }
 
-    const float tw = static_cast<float>(image->getTextureWidth());
-    const float th = static_cast<float>(image->getTextureHeight());
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
 
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;

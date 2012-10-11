@@ -82,6 +82,8 @@ Image::Image(const GLuint glimage, const int width, const int height,
              const int texWidth, const int texHeight) :
     Resource(),
     mGLImage(glimage),
+    mTexWidth(texWidth),
+    mTexHeight(texHeight),
     mLoaded(false),
     mAlpha(1.0f),
     mHasAlphaChannel(true),
@@ -89,9 +91,7 @@ Image::Image(const GLuint glimage, const int width, const int height,
     mAlphaChannel(nullptr),
     mUseAlphaCache(false),
     mIsAlphaVisible(true),
-    mIsAlphaCalculated(false),
-    mTexWidth(texWidth),
-    mTexHeight(texHeight)
+    mIsAlphaCalculated(false)
 {
     mBounds.x = 0;
     mBounds.y = 0;

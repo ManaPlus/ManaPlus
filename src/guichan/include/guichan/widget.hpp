@@ -180,7 +180,8 @@ namespace gcn
          *         has no parent.
          * @since 0.1.0
          */
-        virtual Widget* getParent() const;
+        virtual Widget* getParent() const
+        { return mParent; }
 
         /**
          * Sets the width of the widget.
@@ -200,7 +201,8 @@ namespace gcn
          *      setDimension, getDimension
          * @since 0.1.0
          */
-        int getWidth() const;
+        int getWidth() const
+        { return mDimension.width; }
 
         /**
          * Sets the height of the widget.
@@ -220,7 +222,8 @@ namespace gcn
          *      setDimension, getDimension
          * @since 0.1.0
          */
-        int getHeight() const;
+        int getHeight() const
+        { return mDimension.height; }
 
         /**
          * Sets the size of the widget.
@@ -251,7 +254,8 @@ namespace gcn
          * @see setX, setY, getY, setPosition, setDimension, getDimension
          * @since 0.1.0
          */
-        int getX() const;
+        int getX() const
+        { return mDimension.x; }
 
         /**
          * Sets the y coordinate of the widget. The coordinate is
@@ -271,7 +275,8 @@ namespace gcn
          * @see setY, setX, getX, setPosition, setDimension, getDimension
          * @since 0.1.0
          */
-        int getY() const;
+        int getY() const
+        { return mDimension.y; }
 
         /**
          * Sets position of the widget. The position is relative

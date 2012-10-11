@@ -36,9 +36,9 @@ extern int serverVersion;
 Item::Item(const int id, const int quantity, const int refine,
            const unsigned char color, const bool equipment,
            const bool equipped):
+    mQuantity(quantity),
     mImage(nullptr),
     mDrawImage(nullptr),
-    mQuantity(quantity),
     mEquipment(equipment),
     mEquipped(equipped),
     mInEquipment(false),

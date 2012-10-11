@@ -155,6 +155,8 @@ class Image : public Resource
         { return mGLImage; }
 
         GLuint mGLImage;
+        int mTexWidth;
+        int mTexHeight;
 #endif
 
         bool isHasAlphaChannel() const
@@ -214,8 +216,6 @@ class Image : public Resource
          */
         Image(const GLuint glimage, const int width, const int height,
               const int texWidth, const int texHeight);
-
-        int mTexWidth, mTexHeight;
 #endif
 };
 

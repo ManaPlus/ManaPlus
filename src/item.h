@@ -170,18 +170,19 @@ class Item
         std::string &getDescription()
         { return mDescription; }
 
-    protected:
         int mId;              /**< Item type id. */
+        unsigned char mColor;
+        int mQuantity;        /**< Number of items. */
+
+    protected:
         Image *mImage;        /**< Item image. */
         Image *mDrawImage;    /**< Draw image. */
-        int mQuantity;        /**< Number of items. */
         bool mEquipment;      /**< Item is equipment. */
         bool mEquipped;       /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */
         int mRefine;          /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
         std::string mDescription;
-        unsigned char mColor;
         std::map <int, int> mTags;
 };
 

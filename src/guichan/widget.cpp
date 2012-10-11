@@ -133,22 +133,12 @@ namespace gcn
         mParent = parent;
     }
 
-    Widget* Widget::getParent() const
-    {
-        return mParent;
-    }
-
     void Widget::setWidth(int width)
     {
         Rectangle newDimension = mDimension;
         newDimension.width = width;
 
         setDimension(newDimension);
-    }
-
-    int Widget::getWidth() const
-    {
-        return mDimension.width;
     }
 
     void Widget::setHeight(int height)
@@ -159,22 +149,12 @@ namespace gcn
         setDimension(newDimension);
     }
 
-    int Widget::getHeight() const
-    {
-        return mDimension.height;
-    }
-
     void Widget::setX(int x)
     {
         Rectangle newDimension = mDimension;
         newDimension.x = x;
 
         setDimension(newDimension);
-    }
-
-    int Widget::getX() const
-    {
-        return mDimension.x;
     }
 
     void Widget::setY(int y)
@@ -185,17 +165,12 @@ namespace gcn
         setDimension(newDimension);
     }
 
-    int Widget::getY() const
-    {
-        return mDimension.y;
-    }
-
     void Widget::setPosition(int x, int y)
     {
         Rectangle newDimension = mDimension;
         newDimension.x = x;
         newDimension.y = y;
-        
+
         setDimension(newDimension);
     }
 

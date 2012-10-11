@@ -76,13 +76,13 @@ static inline void drawQuad(const Image *image,
     {
         // Find OpenGL normalized texture coordinates.
         float texX1 = static_cast<float>(srcX)
-            / static_cast<float>(image->getTextureWidth());
+            / static_cast<float>(image->mTexWidth);
         float texY1 = static_cast<float>(srcY)
-            / static_cast<float>(image->getTextureHeight());
+            / static_cast<float>(image->mTexHeight);
         float texX2 = static_cast<float>(srcX + width) / static_cast<float>(
-            image->getTextureWidth());
+            image->mTexWidth);
         float texY2 = static_cast<float>(srcY + height) / static_cast<float>(
-            image->getTextureHeight());
+            image->mTexHeight);
 
         glTexCoord2f(texX1, texY1);
         glVertex2i(dstX, dstY);
@@ -115,13 +115,13 @@ static inline void drawRescaledQuad(const Image *const image,
     {
         // Find OpenGL normalized texture coordinates.
         float texX1 = static_cast<float>(srcX)
-            / static_cast<float>(image->getTextureWidth());
+            / static_cast<float>(image->mTexWidth);
         float texY1 = static_cast<float>(srcY)
-            / static_cast<float>(image->getTextureHeight());
+            / static_cast<float>(image->mTexHeight);
         float texX2 = static_cast<float>(srcX + width) / static_cast<float>(
-            image->getTextureWidth());
+            image->mTexWidth);
         float texY2 = static_cast<float>(srcY + height) / static_cast<float>(
-            image->getTextureHeight());
+            image->mTexHeight);
 
         glTexCoord2f(texX1, texY1);
         glVertex2i(dstX, dstY);

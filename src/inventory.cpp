@@ -42,7 +42,7 @@ struct SlotUsed final : public std::unary_function<Item*, bool>
 {
     bool operator()(const Item *const item) const
     {
-        return item && item->getId() >= 0 && item->getQuantity() > 0;
+        return item && item->mId >= 0 && item->mQuantity > 0;
     }
 };
 
@@ -69,7 +69,7 @@ Inventory::~Inventory()
 Item *Inventory::getItem(const int index) const
 {
     if (index < 0 || index >= static_cast<int>(mSize) || !mItems[index]
-        || mItems[index]->getQuantity() <= 0)
+        || mItems[index]->mQuantity <= 0)
     {
         return nullptr;
     }
@@ -81,10 +81,10 @@ Item *Inventory::findItem(const int itemId, const unsigned char color) const
 {
     for (unsigned i = 0; i < mSize; i++)
     {
-        if (mItems[i] && mItems[i]->getId() == itemId)
+        if (mItems[i] && mItems[i]->mId == itemId)
         {
-            if (color == 0 || mItems[i]->getColor() == color
-                || (color == 1 && mItems[i]->getColor() <= 1))
+            if (color == 0 || mItems[i]->mColor == color
+                || (color == 1 && mItems[i]->mColor <= 1))
             {
                 return mItems[i];
             }
@@ -141,7 +141,7 @@ void Inventory::removeItem(const int id)
 {
     for (unsigned i = 0; i < mSize; i++)
     {
-        if (mItems[i] && mItems[i]->getId() == id)
+        if (mItems[i] && mItems[i]->mId == id)
             removeItemAt(i);
     }
 }
@@ -164,7 +164,7 @@ bool Inventory::contains(const Item *const item) const
 
     for (unsigned i = 0; i < mSize; i++)
     {
-        if (mItems[i] && mItems[i]->getId() == item->getId())
+        if (mItems[i] && mItems[i]->mId == item->mId)
             return true;
     }
 
