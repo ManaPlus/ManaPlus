@@ -17,6 +17,7 @@ SET (FILES
     dropdown_background.xml
     dropdown_pressed.xml
     emote_selection.xml
+    equipment.xml
     equipment_background.xml
     equipment_playerbox.xml
     equipmentbox.png

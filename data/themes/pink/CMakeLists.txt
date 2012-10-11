@@ -2,6 +2,7 @@ SET (FILES
     bubble.png
     buy.xml
     colors.xml
+    equipment.xml
     inventory.xml
     popup.xml
     progress-indicator.png

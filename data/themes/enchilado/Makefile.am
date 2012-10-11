@@ -4,6 +4,7 @@ guidir = $(pkgdatadir)/data/themes/enchilado
 gui_DATA =				\
 	buy.xml		\
 	colors.xml		\
+	equipment.xml		\
 	inventory.xml		\
 	popup.xml		\
 	progressbar.xml		\

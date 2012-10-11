@@ -47,10 +47,6 @@
 
 #include "debug.h"
 
-static const int BOX_WIDTH = 36;
-static const int BOX_HEIGHT = 36;
-static const int BOX_X_PAD = (BOX_WIDTH - 32) / 2;
-static const int BOX_Y_PAD = (BOX_HEIGHT - 32) / 2;
 static const int BOX_COUNT = 13;
 
 EquipmentWindow::EquipmentWindow(Equipment *const equipment,
@@ -68,10 +64,15 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mBeing(being),
     mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
     mBorderColor(Theme::getThemeColor(Theme::BORDER)),
-    mLabelsColor(Theme::getThemeColor(Theme::LABEL))
+    mLabelsColor(Theme::getThemeColor(Theme::LABEL)),
+    mItemPadding(getOption("itemPadding")),
+    mBoxSize(getOption("boxSize"))
 {
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
+
+    if (!mBoxSize)
+        mBoxSize = 36;
 
     // Control that shows the Player
     mPlayerBox->setDimension(gcn::Rectangle(50, 80, 74, 168));
@@ -176,20 +177,21 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
             {
                 image->setAlpha(1.0f); // Ensure the image is drawn
                                        // with maximum opacity
-                g->drawImage(image, box->x + 2, box->y + 2);
+                g->drawImage(image, box->x + mItemPadding,
+                    box->y + mItemPadding);
                 if (i == EQUIP_PROJECTILE_SLOT)
                 {
                     g->setColor(mLabelsColor);
                     graphics->drawText(toString(item->getQuantity()),
-                        box->x + (BOX_WIDTH / 2), box->y - fontHeight,
+                        box->x + (mBoxSize / 2), box->y - fontHeight,
                         gcn::Graphics::CENTER);
                 }
             }
         }
         else if (box->image)
         {
-            g->drawImage(box->image, box->x + BOX_X_PAD,
-                box->y + BOX_Y_PAD);
+            g->drawImage(box->image, box->x + mItemPadding,
+                box->y + mItemPadding);
         }
     }
 }
@@ -220,8 +222,7 @@ Item *EquipmentWindow::getItem(const int x, const int y) const
         const EquipmentBox *const box = *it;
         if (!box)
             continue;
-        const gcn::Rectangle tRect(box->x, box->y,
-            BOX_WIDTH, BOX_HEIGHT);
+        const gcn::Rectangle tRect(box->x, box->y, mBoxSize, mBoxSize);
 
         if (tRect.isPointInRect(x, y))
             return mEquipment->getEquipment(i);
@@ -253,8 +254,7 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
             if (!box)
                 continue;
             const Item *const item = mEquipment->getEquipment(i);
-            const gcn::Rectangle tRect(box->x, box->y,
-                BOX_WIDTH, BOX_HEIGHT);
+            const gcn::Rectangle tRect(box->x, box->y, mBoxSize, mBoxSize);
 
             if (tRect.isPointInRect(x, y) && item)
                 setSelected(i);

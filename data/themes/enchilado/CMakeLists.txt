@@ -1,6 +1,7 @@
 SET (FILES
     buy.xml
     colors.xml
+    equipment.xml
     inventory.xml
     popup.xml
     progressbar.xml
