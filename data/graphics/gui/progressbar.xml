@@ -1,6 +1,6 @@
 <skinset name="Default" image="window.png">
 	<widget type="Window" xpos="73" ypos="164">
-        <option name="padding" value="1" />
+        <option name="padding" value="2" />
         <option name="fillPadding" value="3" />
 		<!-- Top Row -->
 		<part type="top-left-corner" xpos="0" ypos="0" width="4" height="4" />
