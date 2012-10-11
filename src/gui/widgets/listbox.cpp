@@ -44,7 +44,8 @@ float ListBox::mAlpha = 1.0;
 ListBox::ListBox(gcn::ListModel *const listModel):
     gcn::ListBox(listModel),
     mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
-    mDistributeMousePressed(true)
+    mDistributeMousePressed(true),
+    mOldSelected(-1)
 {
     mForegroundColor = Theme::getThemeColor(Theme::LISTBOX);
 }
@@ -151,15 +152,25 @@ void ListBox::mousePressed(gcn::MouseEvent &event)
     }
     else
     {
-        if (event.getClickCount() == 2)
+        switch (event.getClickCount())
         {
-            if (gui)
-                gui->resetClickCount();
-            gcn::ListBox::mousePressed(event);
-        }
-        else
-        {
-            mouseDragged(event);
+            case 1:
+                mouseDragged(event);
+                mOldSelected = mSelected;
+                break;
+            case 2:
+                if (gui)
+                    gui->resetClickCount();
+                if (mOldSelected == mSelected)
+                    gcn::ListBox::mousePressed(event);
+                else
+                    mouseDragged(event);
+                mOldSelected = mSelected;
+                break;
+            default:
+                mouseDragged(event);
+                mOldSelected = mSelected;
+                break;
         }
     }
 }
