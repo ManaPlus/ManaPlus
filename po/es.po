@@ -8,16 +8,16 @@
 # Mr Pirate <salahbubuli44@gmail.com>, 2012.
 #   <mtorres2022@gmail.com>, 2012.
 #   <narus.tmw@gmail.com>, 2012.
-# Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2011, 2012.
+# Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2011-2012.
 # Nelson Martell <nelson6eeduardo65@gmail.com>, 2011.
 # Nelson  <nelson6eeduardo65@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-10-11 12:47+0300\n"
-"PO-Revision-Date: 2012-10-11 09:50+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2012-10-13 15:42+0300\n"
+"PO-Revision-Date: 2012-10-11 18:17+0000\n"
+"Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/"
 "language/es/)\n"
 "Language: es\n"
@@ -1000,12 +1000,12 @@ msgid "Please at least type both the address and the port of the server."
 msgstr ""
 "Por favor, por lo menos especifique el nombre y el puerto del servidor."
 
-#: src/gui/equipmentwindow.cpp:59 src/gui/inventorywindow.cpp:185
+#: src/gui/equipmentwindow.cpp:55 src/gui/inventorywindow.cpp:185
 #: src/gui/windowmenu.cpp:86
 msgid "Equipment"
 msgstr "Equipamiento"
 
-#: src/gui/equipmentwindow.cpp:64 src/gui/inventorywindow.cpp:169
+#: src/gui/equipmentwindow.cpp:60 src/gui/inventorywindow.cpp:169
 #: src/gui/inventorywindow.cpp:596 src/gui/popupmenu.cpp:1668
 #: src/gui/popupmenu.cpp:1770 src/gui/popupmenu.cpp:1826
 msgid "Unequip"
@@ -2464,11 +2464,11 @@ msgstr "Sonido de petición de intercambio"
 
 #: src/gui/setup_audio.cpp:121
 msgid "Show window sound"
-msgstr ""
+msgstr "Mostrar ventana de sonido"
 
 #: src/gui/setup_audio.cpp:124
 msgid "Hide window sound"
-msgstr ""
+msgstr "Ocultar ventana de sonido"
 
 #: src/gui/setup_audio.cpp:129
 msgid "Enable mumble voice chat"
@@ -2590,7 +2590,7 @@ msgstr "Mostrar mensajes MVP"
 
 #: src/gui/setup_colors.cpp:49
 msgid "This is what the color looks like"
-msgstr "Sostener el teclado y del ratón dentro de la ventana"
+msgstr "Así es como luce este color"
 
 #: src/gui/setup_colors.cpp:61
 msgid "Type:"
@@ -2730,7 +2730,9 @@ msgstr "Mostrar barra de energía del monstruo"
 
 #: src/gui/setup_other.cpp:61
 msgid "Cycle monster targets"
-msgstr "Apuntar a los monstruos en derredor, no necesariamente al más cercano"
+msgstr ""
+"Seleccionar cíclicamente los monstruos en derredor, no necesariamente al más "
+"cercano"
 
 #: src/gui/setup_other.cpp:67
 msgid "Show warps particles"
@@ -2810,7 +2812,9 @@ msgstr "Habilitar estadísticas rápidas"
 
 #: src/gui/setup_other.cpp:124
 msgid "Cycle player targets"
-msgstr "Apuntar a los jugadores en derredor, no necesariamente al más cercano"
+msgstr ""
+"Seleccionar cíclicamente los jugadores en derredor, no necesariamente al más "
+"cercano"
 
 #: src/gui/setup_other.cpp:127
 msgid "Show job exp messages"
@@ -2851,6 +2855,8 @@ msgstr "Habilitar la tienda"
 #: src/gui/setup_other.cpp:160
 msgid "Cycle npc targets"
 msgstr ""
+"Seleccionar cíclicamente los npcs en derredor, no necesariamente al más "
+"cercano"
 
 #: src/gui/setup_other.cpp:163
 msgid "Log NPC dialogue"
@@ -2982,11 +2988,11 @@ msgstr "Habilirar composición de retraso de sprite (Software)"
 
 #: src/gui/setup_perfomance.cpp:72
 msgid "Enable delayed images load (OpenGL)"
-msgstr ""
+msgstr "Habilitar carga de imágenes retardadas  (OpenGL)"
 
 #: src/gui/setup_perfomance.cpp:75
 msgid "Enable texture sampler (OpenGL)"
-msgstr ""
+msgstr "Habilitar muestreo de texturas (OpenGL)"
 
 #: src/gui/setup_perfomance.cpp:79
 msgid "Better quality (disable for better perfomance)"
@@ -3035,7 +3041,7 @@ msgstr "Usar nuevo formato de textura interna (OpenGL)"
 
 #: src/gui/setup_perfomance.cpp:115
 msgid "Enable texture atlases (OpenGL)"
-msgstr ""
+msgstr "Habilitar atlas de texturas (OpenGL)"
 
 #: src/gui/setup_players.cpp:53
 msgid "Show gender"
@@ -3316,7 +3322,7 @@ msgstr "Cursor propio"
 
 #: src/gui/setup_video.cpp:239
 msgid "Enable resize"
-msgstr "Permitir cambiar de tamaño"
+msgstr "Permitir cambio de tamaño"
 
 #: src/gui/setup_video.cpp:240
 msgid "No frame"
@@ -3408,7 +3414,7 @@ msgstr "Efectos"
 
 #: src/gui/setup_visual.cpp:59
 msgid "Grab mouse and keyboard input"
-msgstr "Sostener entrada del teclado y del ratón."
+msgstr "Sostener el enfoque del teclado y el ratón dentro de la ventana"
 
 #: src/gui/setup_visual.cpp:62
 msgid "Blurring textures (OpenGL)"
@@ -4365,7 +4371,7 @@ msgstr "Quién está conectado"
 
 #: src/gui/windowmenu.cpp:77
 msgid "QE"
-msgstr ""
+msgstr "QE"
 
 #: src/gui/windowmenu.cpp:79
 msgid "BC"

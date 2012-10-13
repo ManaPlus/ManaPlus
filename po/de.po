@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-10-11 12:47+0300\n"
+"POT-Creation-Date: 2012-10-13 15:42+0300\n"
 "PO-Revision-Date: 2012-10-11 09:50+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/"
@@ -998,12 +998,12 @@ msgstr "Beschreibung:"
 msgid "Please at least type both the address and the port of the server."
 msgstr "Bitte die Adresse und den Port eines Servers eingeben."
 
-#: src/gui/equipmentwindow.cpp:59 src/gui/inventorywindow.cpp:185
+#: src/gui/equipmentwindow.cpp:55 src/gui/inventorywindow.cpp:185
 #: src/gui/windowmenu.cpp:86
 msgid "Equipment"
 msgstr "Ausrüstung"
 
-#: src/gui/equipmentwindow.cpp:64 src/gui/inventorywindow.cpp:169
+#: src/gui/equipmentwindow.cpp:60 src/gui/inventorywindow.cpp:169
 #: src/gui/inventorywindow.cpp:596 src/gui/popupmenu.cpp:1668
 #: src/gui/popupmenu.cpp:1770 src/gui/popupmenu.cpp:1826
 msgid "Unequip"
