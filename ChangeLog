@@ -1,3 +1,19 @@
+2012-10-14 New release 1.2.10.14
+fix: monsters particle effects attacks.
+fix: chat window resize cursor.
+fix: popups sizes.
+fix: chat logs command line paramter.
+fix: shortcuts while buy dialog is open.
+add: texture atlases support.
+add: improve draw speed.
+add: some OpenGL extensions support.
+add: sound effects for open/close windows.
+add: extend theming.
+add: additinal monster attack particle effects.
+add: imporve map draw in fast OpenGL mode.
+add: set additional OpenGL settings from video detection.
+add: double click in buy/sell dialogs.
+
 2012-09-30 New release 1.2.9.30
 fix: minimap size with long map name.
 fix: possible crash.
