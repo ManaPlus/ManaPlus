@@ -68,7 +68,7 @@ class Skin final
         /**
          * Returns the background skin.
          */
-        const ImageRect &getBorder() const
+        ImageRect &getBorder() const
         { return *mBorder; }
 
         /**
@@ -104,7 +104,7 @@ class Skin final
         int getTitlePadding() const
         { return mTitlePadding; }
 
-        int getOption(std::string name)
+        int getOption(const std::string &name) const
         {
             if (mOptions->find(name) != mOptions->end())
                 return (*mOptions)[name];

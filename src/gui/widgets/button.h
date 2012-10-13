@@ -31,6 +31,7 @@ class GraphicsVertexes;
 class Image;
 class ImageSet;
 class ImageRect;
+class Skin;
 
 const std::string BUTTON_PLAY = "buttonplay.png";
 
@@ -131,8 +132,8 @@ class Button final : public gcn::Button, public gcn::WidgetListener
     private:
         void init();
 
-        static ImageRect button[4];    /**< Button state graphics */
-        static int mInstances;         /**< Number of button instances */
+        static Skin *button[4];    /**< Button state graphics */
+        static int mInstances;     /**< Number of button instances */
         static float mAlpha;
 
         std::string mDescription;

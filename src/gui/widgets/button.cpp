@@ -62,7 +62,7 @@ static std::string const data[BUTTON_COUNT] =
     "button_disabled.xml"
 };
 
-ImageRect Button::button[BUTTON_COUNT];
+Skin *Button::button[BUTTON_COUNT];
 
 Button::Button() :
     gcn::Button(),
@@ -184,7 +184,7 @@ void Button::init()
         {
             for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             {
-                Theme::instance()->loadRect(button[mode],
+                button[mode] = Theme::instance()->load(
                     data[mode], "button.xml");
             }
         }
@@ -205,9 +205,9 @@ Button::~Button()
 
     if (mInstances == 0 && Theme::instance())
     {
-        const Theme *const theme = Theme::instance();
+        Theme *const theme = Theme::instance();
         for (int mode = 0; mode < BUTTON_COUNT; mode ++)
-            theme->unloadRect(button[mode]);
+            theme->unload(button[mode]);
     }
     delete mVertexes;
     mVertexes = nullptr;
@@ -256,16 +256,19 @@ void Button::updateAlpha()
     if (mAlpha != alpha)
     {
         mAlpha = alpha;
-        for (int a = 0; a < 9; a++)
+        for (int mode = 0; mode < BUTTON_COUNT; mode ++)
         {
-            if (button[BUTTON_DISABLED].grid[a])
-                button[BUTTON_DISABLED].grid[a]->setAlpha(mAlpha);
-            if (button[BUTTON_PRESSED].grid[a])
-                button[BUTTON_PRESSED].grid[a]->setAlpha(mAlpha);
-            if (button[BUTTON_HIGHLIGHTED].grid[a])
-                button[BUTTON_HIGHLIGHTED].grid[a]->setAlpha(mAlpha);
-            if (button[BUTTON_STANDARD].grid[a])
-                button[BUTTON_STANDARD].grid[a]->setAlpha(mAlpha);
+            for (int a = 0; a < 9; a ++)
+            {
+                Skin *skin = button[mode];
+                if (skin)
+                {
+                    ImageRect &rect = skin->getBorder();
+                    Image *image = rect.grid[a];
+                    if (image)
+                        image->setAlpha(mAlpha);
+                }
+            }
         }
     }
 }
@@ -282,6 +285,10 @@ void Button::draw(gcn::Graphics *graphics)
         mode = BUTTON_HIGHLIGHTED;
     else
         mode = BUTTON_STANDARD;
+
+    const Skin *const skin = button[mode];
+    if (!skin)
+        return;
 
     updateAlpha();
 
@@ -318,12 +325,16 @@ void Button::draw(gcn::Graphics *graphics)
     {
         mRedraw = false;
         mMode = mode;
-        g2->calcWindow(mVertexes, 0, 0, getWidth(), getHeight(), button[mode]);
+        g2->calcWindow(mVertexes, 0, 0, getWidth(), getHeight(),
+            skin->getBorder());
     }
 
-    g2->drawImageRect2(mVertexes, button[mode]);
+    g2->drawImageRect2(mVertexes, skin->getBorder());
 
 //    g2->drawImageRect(0, 0, getWidth(), getHeight(), button[mode]);
+
+    const int padding = skin->getPadding();
+    const int spacing = skin->getOption("spacing");
 
     switch (mode)
     {
@@ -356,21 +367,21 @@ void Button::draw(gcn::Graphics *graphics)
         case gcn::Graphics::LEFT:
             if (mImages)
             {
-                imageX = 4;
-                textX = 4 + mImageWidth + 2;
+                imageX = padding;
+                textX = padding + mImageWidth + spacing;
             }
             else
             {
-                textX = 4;
+                textX = padding;
             }
             break;
         case gcn::Graphics::CENTER:
             if (mImages)
             {
                 const int width = getFont()->getWidth(mCaption)
-                    + mImageWidth + 2;
+                    + mImageWidth + spacing;
                 imageX = getWidth() / 2 - width / 2;
-                textX = imageX + mImageWidth + 2;
+                textX = imageX + mImageWidth + spacing;
             }
             else
             {
@@ -378,8 +389,8 @@ void Button::draw(gcn::Graphics *graphics)
             }
             break;
         case gcn::Graphics::RIGHT:
-            textX = getWidth() - 4;
-            imageX = textX - getFont()->getWidth(mCaption) - 2;
+            textX = getWidth() - padding;
+            imageX = textX - getFont()->getWidth(mCaption) - spacing;
             break;
     }
 
@@ -434,19 +445,28 @@ void Button::widgetMoved(const gcn::Event &event A_UNUSED)
 void Button::adjustSize()
 {
     const gcn::Font *const font = getFont();
+    const Skin *const skin = button[BUTTON_STANDARD];
+    if (!skin)
+        return;
+    const int padding = skin->getPadding();
+
     if (mImages)
     {
-        setWidth(font->getWidth(mCaption)
-            + mImageWidth + 2 + 2 * mSpacing);
+        const int spacing = skin->getOption("spacing");
+        const int width = font->getWidth(mCaption);
+        if (width)
+            setWidth(width + mImageWidth + spacing + 2 * padding);
+        else
+            setWidth(mImageWidth + 2 * padding);
         int height = font->getHeight();
         if (height < mImageHeight)
             height = mImageHeight;
-        setHeight(height + 2 * mSpacing);
+        setHeight(height + 2 * padding);
     }
     else
     {
-        setWidth(font->getWidth(mCaption) + 2 * mSpacing);
-        setHeight(font->getHeight() + 2 * mSpacing);
+        setWidth(font->getWidth(mCaption) + 2 * padding);
+        setHeight(font->getHeight() + 2 * padding);
     }
 }
 
