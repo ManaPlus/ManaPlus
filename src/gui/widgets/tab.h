@@ -33,7 +33,9 @@
 class GraphicsVertexes;
 class ImageRect;
 class Label;
+class Skin;
 class TabbedArea;
+class Theme;
 
 /**
  * A tab, the same as the Guichan tab in 0.8, but extended to allow
@@ -138,8 +140,8 @@ class Tab : public gcn::BasicContainer,
         /** Load images if no other instances exist yet */
         void init();
 
-        static ImageRect tabImg[4];    /**< Tab state graphics */
-        static int mInstances;         /**< Number of tab instances */
+        static Skin *tabImg[4];    /**< Tab state graphics */
+        static int mInstances;     /**< Number of tab instances */
         static float mAlpha;
 
         const gcn::Color *mTabColor;

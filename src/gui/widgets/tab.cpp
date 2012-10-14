@@ -60,7 +60,7 @@ static std::string const data[TAB_COUNT] =
     "tab_unused.xml"
 };
 
-ImageRect Tab::tabImg[TAB_COUNT];
+Skin *Tab::tabImg[TAB_COUNT];
 
 Tab::Tab() :
     gcn::BasicContainer(),
@@ -88,9 +88,9 @@ Tab::~Tab()
     mInstances--;
     if (mInstances == 0 && Theme::instance())
     {
-        const Theme *const theme = Theme::instance();
+        Theme *const theme = Theme::instance();
         for (int mode = 0; mode < TAB_COUNT; mode ++)
-            theme->unloadRect(tabImg[mode]);
+            theme->unload(tabImg[mode]);
     }
 
     delete mLabel;
@@ -119,7 +119,7 @@ void Tab::init()
         if (theme)
         {
             for (int mode = 0; mode < TAB_COUNT; mode ++)
-                theme->loadRect(tabImg[mode], data[mode], "tab.xml");
+                tabImg[mode] = theme->load(data[mode], "tab.xml");
         }
         updateAlpha();
     }
@@ -140,8 +140,14 @@ void Tab::updateAlpha()
         {
             for (int t = 0; t < TAB_COUNT; t++)
             {
-                if (tabImg[t].grid[a])
-                    tabImg[t].grid[a]->setAlpha(mAlpha);
+                Skin *skin = tabImg[t];
+                if (skin)
+                {
+                    ImageRect &rect = skin->getBorder();
+                    Image *image = rect.grid[a];
+                    if (image)
+                        image->setAlpha(mAlpha);
+                }
             }
         }
     }
@@ -184,8 +190,13 @@ void Tab::draw(gcn::Graphics *graphics)
         }
     }
 
+    const Skin *const skin = tabImg[mode];
+    if (!skin)
+        return;
+
     updateAlpha();
 
+    ImageRect &rect = skin->getBorder();
     // draw tab
     if (mRedraw || mode != mMode
         || static_cast<Graphics*>(graphics)->getRedraw())
@@ -193,10 +204,10 @@ void Tab::draw(gcn::Graphics *graphics)
         mMode = mode;
         mRedraw = false;
         static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0,
-            getWidth(), getHeight(), tabImg[mode]);
+            getWidth(), getHeight(), rect);
     }
 
-    static_cast<Graphics*>(graphics)->drawImageRect2(mVertexes, tabImg[mode]);
+    static_cast<Graphics*>(graphics)->drawImageRect2(mVertexes, rect);
 
 //    static_cast<Graphics*>(graphics)->
 //        drawImageRect(0, 0, getWidth(), getHeight(), tabImg[mode]);
@@ -228,8 +239,13 @@ void Tab::setLabelFont(gcn::Font *const font)
 
 void Tab::adjustSize()
 {
-    setSize(mLabel->getWidth() + 8,
-            mLabel->getHeight() + 8);
+    const Skin *const skin = tabImg[TAB_STANDARD];
+    if (!skin)
+        return;
+    const int padding = skin->getPadding();
+
+    setSize(mLabel->getWidth() + 2 * padding,
+            mLabel->getHeight() + 2 * padding);
 
     if (mTabbedArea)
         mTabbedArea->adjustTabPositions();
