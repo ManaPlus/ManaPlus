@@ -33,17 +33,13 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
 
+class Button;
 class CharacterDisplay;
 class Label;
 class LocalPlayer;
 class LoginData;
 class PlayerBox;
 class TextDialog;
-
-namespace gcn
-{
-    class Button;
-}
 
 namespace Net
 {
@@ -117,10 +113,10 @@ class CharSelectDialog final : public Window,
         Label *mAccountNameLabel;
         Label *mLastLoginLabel;
 
-        gcn::Button *mSwitchLoginButton;
-        gcn::Button *mChangePasswordButton;
-        gcn::Button *mUnregisterButton;
-        gcn::Button *mChangeEmailButton;
+        Button *mSwitchLoginButton;
+        Button *mChangePasswordButton;
+        Button *mUnregisterButton;
+        Button *mChangeEmailButton;
 
         /** The player boxes */
         std::vector<CharacterDisplay*> mCharacterEntries;

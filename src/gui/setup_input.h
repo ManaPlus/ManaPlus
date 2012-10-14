@@ -28,12 +28,13 @@
 
 #include <guichan/actionlistener.hpp>
 
-#include <guichan/widgets/button.hpp>
 #include <guichan/widgets/listbox.hpp>
 
 #include <string>
 
+class Button;
 class TabStrip;
+
 struct SetupActionData;
 
 class Setup_Input final : public SetupTab
@@ -91,10 +92,10 @@ class Setup_Input final : public SetupTab
         class KeyListModel *mKeyListModel;
         gcn::ListBox *mKeyList;
 
-        gcn::Button *mAssignKeyButton;
-        gcn::Button *mUnassignKeyButton;
-        gcn::Button *mDefaultButton;
-        gcn::Button *mResetKeysButton;
+        Button *mAssignKeyButton;
+        Button *mUnassignKeyButton;
+        Button *mDefaultButton;
+        Button *mResetKeysButton;
         TabStrip *mTabs;
 
         bool mKeySetting; /**< flag to check if key being set. */

@@ -30,9 +30,10 @@
 
 #include <vector>
 
+class Button;
+
 namespace gcn
 {
-    class Button;
     class RadioButton;
 }
 
@@ -75,8 +76,8 @@ class QuitDialog final : public Window, public gcn::ActionListener,
         gcn::RadioButton *mForceQuit;
         gcn::RadioButton *mSwitchAccountServer;
         gcn::RadioButton *mSwitchCharacter;
-        gcn::Button *mOkButton;
-        gcn::Button *mCancelButton;
+        Button *mOkButton;
+        Button *mCancelButton;
 
         QuitDialog **mMyPointer;
 };

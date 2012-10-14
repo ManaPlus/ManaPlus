@@ -30,6 +30,7 @@
 
 #include <memory>
 
+class Button;
 class Inventory;
 class Item;
 class ItemContainer;
@@ -38,7 +39,6 @@ class ScrollArea;
 
 namespace gcn
 {
-    class Button;
     class TextField;
 }
 
@@ -170,9 +170,9 @@ class TradeWindow final : public Window,
         ItemContainer *mPartnerItemContainer;
 
         Label *mMoneyLabel;
-        gcn::Button *mAddButton;
-        gcn::Button *mOkButton;
-        gcn::Button  *mMoneyChangeButton;
+        Button *mAddButton;
+        Button *mOkButton;
+        Button  *mMoneyChangeButton;
         gcn::TextField *mMoneyField;
 
         Status mStatus;

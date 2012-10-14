@@ -33,12 +33,12 @@
 
 #include <vector>
 
+class Button;
 class LoginData;
 class WorldListModel;
 
 namespace gcn
 {
-    class Button;
     class ListBox;
 }
 
@@ -75,8 +75,8 @@ class WorldSelectDialog final : public Window, public gcn::ActionListener,
     private:
         WorldListModel *mWorldListModel;
         gcn::ListBox *mWorldList;
-        gcn::Button *mChangeLoginButton;
-        gcn::Button *mChooseWorld;
+        Button *mChangeLoginButton;
+        Button *mChooseWorld;
 };
 
 #endif // WORLD_SELECT_DIALOG_H

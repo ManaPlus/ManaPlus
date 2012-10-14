@@ -35,6 +35,7 @@
 #include <guichan/keylistener.hpp>
 #include <guichan/selectionlistener.hpp>
 
+class Button;
 class DropDown;
 class Item;
 class ItemContainer;
@@ -46,7 +47,6 @@ class TextField;
 
 namespace gcn
 {
-    class Button;
     class Label;
 }
 
@@ -165,15 +165,15 @@ class InventoryWindow final : public Window,
 
         std::string mWeight, mSlots;
 
-        gcn::Button *mUseButton;
-        gcn::Button *mDropButton;
-        gcn::Button *mSplitButton;
-        gcn::Button *mOutfitButton;
-        gcn::Button *mShopButton;
-        gcn::Button *mEquipmentButton;
-        gcn::Button *mStoreButton;
-        gcn::Button *mRetrieveButton;
-        gcn::Button *mCloseButton;
+        Button *mUseButton;
+        Button *mDropButton;
+        Button *mSplitButton;
+        Button *mOutfitButton;
+        Button *mShopButton;
+        Button *mEquipmentButton;
+        Button *mStoreButton;
+        Button *mRetrieveButton;
+        Button *mCloseButton;
 
         ProgressBar *mWeightBar;
         ProgressBar *mSlotsBar;

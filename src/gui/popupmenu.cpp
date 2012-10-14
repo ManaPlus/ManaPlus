@@ -1873,8 +1873,8 @@ void PopupMenu::showPopup(const int x, const int y, Button *const button)
     mY = y;
 
     mBrowserBox->clearRows();
-    std::vector <gcn::Button*> names = windowMenu->getButtons();
-    for (std::vector <gcn::Button*>::const_iterator it = names.begin(),
+    std::vector <Button*> names = windowMenu->getButtons();
+    for (std::vector <Button*>::const_iterator it = names.begin(),
          it_end = names.end(); it != it_end; ++ it)
     {
         const Button *const btn = dynamic_cast<Button*>(*it);

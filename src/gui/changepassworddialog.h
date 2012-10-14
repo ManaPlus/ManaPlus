@@ -27,13 +27,13 @@
 
 #include <guichan/actionlistener.hpp>
 
+class Button;
 class LoginData;
 class OkDialog;
 class WrongDataNoticeListener;
 
 namespace gcn
 {
-    class Button;
     class TextField;
 }
 
@@ -69,8 +69,8 @@ class ChangePasswordDialog final : public Window, public gcn::ActionListener
         gcn::TextField *mFirstPassField;
         gcn::TextField *mSecondPassField;
 
-        gcn::Button *mChangePassButton;
-        gcn::Button *mCancelButton;
+        Button *mChangePassButton;
+        Button *mCancelButton;
 
         WrongDataNoticeListener *mWrongDataNoticeListener;
 

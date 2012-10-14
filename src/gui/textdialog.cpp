@@ -48,7 +48,7 @@ TextDialog::TextDialog(const std::string &title, const std::string &msg,
     keyboard.setEnabled(false);
 
     Label *const textLabel = new Label(msg);
-    gcn::Button *const cancelButton = new Button(_("Cancel"), "CANCEL", this);
+    Button *const cancelButton = new Button(_("Cancel"), "CANCEL", this);
 
     place(0, 0, textLabel, 4);
     if (isPassword)

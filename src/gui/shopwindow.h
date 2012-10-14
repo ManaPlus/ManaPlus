@@ -28,6 +28,7 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/selectionlistener.hpp>
 
+class Button;
 class CheckBox;
 class Item;
 class Label;
@@ -38,7 +39,6 @@ class ShopListBox;
 
 namespace gcn
 {
-    class Button;
     class CheckBox;
     class ScrollArea;
 }
@@ -145,7 +145,7 @@ class ShopWindow final : public Window, public gcn::ActionListener,
         typedef std::list<ShopWindow*> DialogList;
         static DialogList instances;
 
-        gcn::Button *mCloseButton;
+        Button *mCloseButton;
 
         ShopItems *mBuyShopItems;
         ShopItems *mSellShopItems;
@@ -156,14 +156,14 @@ class ShopWindow final : public Window, public gcn::ActionListener,
         gcn::ScrollArea *mSellScrollArea;
         Label *mBuyLabel;
         Label *mSellLabel;
-        gcn::Button *mBuyAddButton;
-        gcn::Button *mBuyDeleteButton;
-        gcn::Button *mBuyAnnounceButton;
-        gcn::Button *mBuyAuctionButton;
-        gcn::Button *mSellAddButton;
-        gcn::Button *mSellDeleteButton;
-        gcn::Button *mSellAnnounceButton;
-        gcn::Button *mSellAuctionButton;
+        Button *mBuyAddButton;
+        Button *mBuyDeleteButton;
+        Button *mBuyAnnounceButton;
+        Button *mBuyAuctionButton;
+        Button *mSellAddButton;
+        Button *mSellDeleteButton;
+        Button *mSellAnnounceButton;
+        Button *mSellAuctionButton;
         gcn::CheckBox *mAnnounceLinks;
 
         int mSelectedItem;

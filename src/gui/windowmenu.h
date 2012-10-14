@@ -65,10 +65,10 @@ class WindowMenu final : public Container,
 
         void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override;
 
-        std::map <std::string, gcn::Button*> &getButtonNames()
+        std::map <std::string, Button*> &getButtonNames()
         { return mButtonNames; }
 
-        std::vector <gcn::Button*> &getButtons()
+        std::vector <Button*> &getButtons()
         { return mButtons; }
 
         void showButton(const std::string &name, const bool visible);
@@ -91,8 +91,8 @@ class WindowMenu final : public Container,
         void updateButtons();
 
         TextPopup *mTextPopup;
-        std::vector <gcn::Button*> mButtons;
-        std::map <std::string, gcn::Button*> mButtonNames;
+        std::vector <Button*> mButtons;
+        std::map <std::string, Button*> mButtonNames;
         bool mHaveMouse;
         int mAutoHide;
 };

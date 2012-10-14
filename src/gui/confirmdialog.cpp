@@ -46,9 +46,9 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
     mTextBox->setOpaque(false);
     mTextBox->setTextWrapped(msg, 260);
 
-    gcn::Button *const yesButton = new Button(_("Yes"), "yes", this);
-    gcn::Button *const noButton = new Button(_("No"), "no", this);
-    gcn::Button *ignoreButton = nullptr;
+    Button *const yesButton = new Button(_("Yes"), "yes", this);
+    Button *const noButton = new Button(_("No"), "no", this);
+    Button *ignoreButton = nullptr;
 
     if (ignore)
         ignoreButton = new Button(_("Ignore"), "ignore", this);

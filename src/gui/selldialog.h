@@ -30,6 +30,7 @@
 
 #include <SDL_types.h>
 
+class Button;
 class Item;
 class Label;
 class ShopItems;
@@ -37,7 +38,6 @@ class ShopListBox;
 
 namespace gcn
 {
-    class Button;
     class ScrollArea;
     class Slider;
 }
@@ -130,11 +130,11 @@ class SellDialog final : public Window,
 
         int mNpcId;
 
-        gcn::Button *mSellButton;
-        gcn::Button *mQuitButton;
-        gcn::Button *mAddMaxButton;
-        gcn::Button *mIncreaseButton;
-        gcn::Button *mDecreaseButton;
+        Button *mSellButton;
+        Button *mQuitButton;
+        Button *mAddMaxButton;
+        Button *mIncreaseButton;
+        Button *mDecreaseButton;
         ShopListBox *mShopItemList;
         gcn::ScrollArea *mScrollArea;
         Label *mMoneyLabel;

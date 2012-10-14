@@ -42,7 +42,7 @@ EditDialog::EditDialog(const std::string &title, const std::string &msg,
     mTextField->setText(msg);
     mEventOk = eventOk;
 
-    gcn::Button *const okButton = new Button(_("OK"), mEventOk, this);
+    Button *const okButton = new Button(_("OK"), mEventOk, this);
 
     const int numRows = 1;
     const int fontHeight = getFont()->getHeight();

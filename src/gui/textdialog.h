@@ -27,13 +27,9 @@
 
 #include <guichan/actionlistener.hpp>
 
+class Button;
 class PasswordField;
 class TextField;
-
-namespace gcn
-{
-    class Button;
-}
 
 /**
 * An option dialog.
@@ -77,7 +73,7 @@ private:
 
     TextField *mTextField;
     PasswordField *mPasswordField;
-    gcn::Button *mOkButton;
+    Button *mOkButton;
     bool mEnabledKeyboard;
 };
 

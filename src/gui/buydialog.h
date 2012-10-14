@@ -28,6 +28,7 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/selectionlistener.hpp>
 
+class Button;
 class ShopItems;
 class ShopListBox;
 class IntTextField;
@@ -36,7 +37,6 @@ class ListBox;
 
 namespace gcn
 {
-    class Button;
     class ScrollArea;
     class Slider;
 }
@@ -129,11 +129,11 @@ class BuyDialog final : public Window, public gcn::ActionListener,
 
         int mNpcId;
 
-        gcn::Button *mBuyButton;
-        gcn::Button *mQuitButton;
-        gcn::Button *mAddMaxButton;
-        gcn::Button *mIncreaseButton;
-        gcn::Button *mDecreaseButton;
+        Button *mBuyButton;
+        Button *mQuitButton;
+        Button *mAddMaxButton;
+        Button *mIncreaseButton;
+        Button *mDecreaseButton;
         ShopListBox *mShopItemList;
         gcn::ScrollArea *mScrollArea;
         Label *mMoneyLabel;

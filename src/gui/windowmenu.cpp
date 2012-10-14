@@ -133,7 +133,7 @@ WindowMenu::~WindowMenu()
     delete mTextPopup;
     mTextPopup = nullptr;
     mButtonNames.clear();
-    for (std::vector <gcn::Button*>::iterator it = mButtons.begin(),
+    for (std::vector <Button*>::iterator it = mButtons.begin(),
          it_end = mButtons.end(); it != it_end; ++it)
     {
         Button *btn = dynamic_cast<Button*>(*it);
@@ -330,7 +330,7 @@ void WindowMenu::showButton(const std::string &name, const bool visible)
 void WindowMenu::updateButtons()
 {
     int x = 0, h = 0;
-    std::vector <gcn::Button*>::const_iterator it, it_end;
+    std::vector <Button*>::const_iterator it, it_end;
     for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
         safeRemove(*it);
     for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
@@ -374,7 +374,7 @@ void WindowMenu::loadButtons()
 void WindowMenu::saveButtons()
 {
     int i = 0;
-    for (std::vector <gcn::Button*>::iterator it = mButtons.begin(),
+    for (std::vector <Button*>::iterator it = mButtons.begin(),
          it_end = mButtons.end();
          it != it_end; ++it)
     {

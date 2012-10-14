@@ -30,12 +30,12 @@
 
 #include <string>
 
+class Button;
 class LoginData;
 class OkDialog;
 
 namespace gcn
 {
-    class Button;
     class RadioButton;
     class TextField;
 }
@@ -106,8 +106,8 @@ class RegisterDialog final : public Window, public gcn::ActionListener,
         gcn::TextField *mPasswordField;
         gcn::TextField *mConfirmField;
         gcn::TextField *mEmailField;
-        gcn::Button *mRegisterButton;
-        gcn::Button *mCancelButton;
+        Button *mRegisterButton;
+        Button *mCancelButton;
         gcn::RadioButton *mMaleButton;
         gcn::RadioButton *mFemaleButton;
         gcn::RadioButton *mOtherButton;

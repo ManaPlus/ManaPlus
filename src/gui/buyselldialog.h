@@ -27,10 +27,7 @@
 
 #include <guichan/actionlistener.hpp>
 
-namespace gcn
-{
-    class Button;
-}
+class Button;
 
 /**
  * A dialog to choose between buying or selling at a shop.
@@ -80,7 +77,7 @@ class BuySellDialog final : public Window, public gcn::ActionListener
 
         int mNpcId;
         std::string mNick;
-        gcn::Button *mBuyButton;
+        Button *mBuyButton;
 };
 
 #endif

@@ -79,7 +79,7 @@ class Setup final : public Window, public gcn::ActionListener
     private:
         std::list<SetupTab*> mTabs;
         std::list<Window*> mWindowsToReset;
-        gcn::Button *mResetWindows;
+        Button *mResetWindows;
         TabbedArea *mPanel;
 };
 

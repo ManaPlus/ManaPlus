@@ -32,15 +32,11 @@
 #include <map>
 
 class AttrDisplay;
+class Button;
 class Label;
 class ProgressBar;
 class ScrollArea;
 class VertContainer;
-
-namespace gcn
-{
-    class Button;
-}
 
 /**
  * The player status dialog.
@@ -118,7 +114,7 @@ class StatusWindow final : public Window,
 
         Label *mCharacterPointsLabel;
         Label *mCorrectionPointsLabel;
-        gcn::Button *mCopyButton;
+        Button *mCopyButton;
 
         typedef std::map<int, AttrDisplay*> Attrs;
         Attrs mAttrs;

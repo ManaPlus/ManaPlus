@@ -106,21 +106,21 @@ class CharCreateDialog final : public Window,
 
         TextField *mNameField;
         Label *mNameLabel;
-        gcn::Button *mNextHairColorButton;
-        gcn::Button *mPrevHairColorButton;
+        Button *mNextHairColorButton;
+        Button *mPrevHairColorButton;
         Label *mHairColorLabel;
         Label *mHairColorNameLabel;
-        gcn::Button *mNextHairStyleButton;
-        gcn::Button *mPrevHairStyleButton;
+        Button *mNextHairStyleButton;
+        Button *mPrevHairStyleButton;
         Label *mHairStyleLabel;
         Label *mHairStyleNameLabel;
-        gcn::Button *mNextRaceButton;
-        gcn::Button *mPrevRaceButton;
+        Button *mNextRaceButton;
+        Button *mPrevRaceButton;
         Label *mRaceLabel;
         Label *mRaceNameLabel;
 
-        gcn::Button *mActionButton;
-        gcn::Button *mRotateButton;
+        Button *mActionButton;
+        Button *mRotateButton;
 
         gcn::RadioButton *mMale;
         gcn::RadioButton *mFemale;
@@ -134,8 +134,8 @@ class CharCreateDialog final : public Window,
         int mMaxPoints;
         int mUsedPoints;
 
-        gcn::Button *mCreateButton;
-        gcn::Button *mCancelButton;
+        Button *mCreateButton;
+        Button *mCancelButton;
 
         int mRace;
 

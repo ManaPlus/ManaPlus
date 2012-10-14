@@ -37,14 +37,10 @@
 #include <guichan/actionlistener.hpp>
 
 class BrowserBox;
+class Button;
 class ScrollArea;
 
 struct SDL_Thread;
-
-namespace gcn
-{
-    class Button;
-}
 
 class OnlinePlayer final
 {
@@ -214,7 +210,7 @@ private:
     std::set<OnlinePlayer*> mOnlinePlayers;
     std::set<std::string> mOnlineNicks;
 
-    gcn::Button *mUpdateButton;
+    Button *mUpdateButton;
     bool mAllowUpdate;
     bool mShowLevel;
     bool mUpdateOnlineList;

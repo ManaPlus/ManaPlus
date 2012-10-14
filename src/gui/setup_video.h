@@ -30,6 +30,7 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
 
+class Button;
 class Label;
 class ModeListModel;
 class OpenGLListModel;
@@ -37,7 +38,6 @@ class TextDialog;
 
 namespace gcn
 {
-    class Button;
     class CheckBox;
     class DropDown;
     class ListBox;
@@ -91,7 +91,7 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
         gcn::Slider *mAltFpsSlider;
         Label *mAltFpsLabel;
 
-        gcn::Button *mDetectButton;
+        Button *mDetectButton;
         TextDialog *mDialog;
 };
 

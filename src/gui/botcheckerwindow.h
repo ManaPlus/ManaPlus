@@ -37,15 +37,11 @@ struct BOTCHK final
     short lv, sp;
 };
 
+class Button;
 class GuiTable;
 class ScrollArea;
 class UsersTableModel;
 class StaticTableModel;
-
-namespace gcn
-{
-    class Button;
-}
 
 class BotCheckerWindow final : public Window,
                                public gcn::ActionListener,
@@ -84,7 +80,7 @@ class BotCheckerWindow final : public Window,
         ScrollArea *playersScrollArea;
         StaticTableModel *mPlayerTableTitleModel;
         GuiTable *mPlayerTitleTable;
-        gcn::Button *mIncButton;
+        Button *mIncButton;
         int mLastUpdateTime;
         bool mNeedUpdate;
         bool mEnabled;

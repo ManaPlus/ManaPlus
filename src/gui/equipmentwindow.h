@@ -37,17 +37,13 @@
 #include <vector>
 
 class Being;
+class Button;
 class Inventory;
 class Image;
 class ImageSet;
 class Item;
 class ItemPopup;
 class PlayerBox;
-
-namespace gcn
-{
-    class Button;
-}
 
 struct EquipmentBox final
 {
@@ -130,7 +126,7 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
 
         ItemPopup *mItemPopup;
         PlayerBox *mPlayerBox;
-        gcn::Button *mUnequip;
+        Button *mUnequip;
 
         int mSelected; /**< Index of selected item. */
         bool mForing;

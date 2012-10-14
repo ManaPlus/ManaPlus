@@ -185,7 +185,7 @@ class TabbedArea final : public gcn::ActionListener,
         typedef std::vector <std::pair<Tab*, gcn::Widget*> > TabContainer;
 
         /** The tab arrows */
-        gcn::Button *mArrowButton[2];
+        Button *mArrowButton[2];
 
         /** Check whether the arrow should be clickable */
         void updateArrowEnableState();
@@ -195,8 +195,6 @@ class TabbedArea final : public gcn::ActionListener,
          * have to be drawn or not.
          */
         void updateTabsWidth();
-
-
 
         Tab* mSelectedTab;
 
@@ -209,10 +207,6 @@ class TabbedArea final : public gcn::ActionListener,
         std::vector<std::pair<Tab*, gcn::Widget*> > mTabs;
 
         bool mOpaque;
-
-
-
-
 
         /**
          * The overall width of all tab.
@@ -229,8 +223,6 @@ class TabbedArea final : public gcn::ActionListener,
          * The overall width of visible tab.
          */
         int mVisibleTabsWidth;
-
-
 
         /**
          * The tab scroll index. When scrolling with the arrows, the tabs

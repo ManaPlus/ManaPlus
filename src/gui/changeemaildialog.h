@@ -27,13 +27,13 @@
 
 #include <guichan/actionlistener.hpp>
 
+class Button;
 class LoginData;
 class OkDialog;
 class WrongDataNoticeListener;
 
 namespace gcn
 {
-    class Button;
     class TextField;
 }
 
@@ -74,8 +74,8 @@ class ChangeEmailDialog final : public Window, public gcn::ActionListener
         gcn::TextField *mFirstEmailField;
         gcn::TextField *mSecondEmailField;
 
-        gcn::Button *mChangeEmailButton;
-        gcn::Button *mCancelButton;
+        Button *mChangeEmailButton;
+        Button *mCancelButton;
 
         WrongDataNoticeListener *mWrongDataNoticeListener;
 
