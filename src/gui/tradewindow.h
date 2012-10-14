@@ -33,12 +33,12 @@
 class Inventory;
 class Item;
 class ItemContainer;
+class Label;
 class ScrollArea;
 
 namespace gcn
 {
     class Button;
-    class Label;
     class TextField;
 }
 
@@ -169,7 +169,7 @@ class TradeWindow final : public Window,
         ItemContainer *mMyItemContainer;
         ItemContainer *mPartnerItemContainer;
 
-        gcn::Label *mMoneyLabel;
+        Label *mMoneyLabel;
         gcn::Button *mAddButton;
         gcn::Button *mOkButton;
         gcn::Button  *mMoneyChangeButton;

@@ -48,7 +48,7 @@ NpcPostDialog::NpcPostDialog(const int npcId):
     setContentSize(400, 180);
 
     // create text field for receiver
-    gcn::Label *const senderText = new Label(_("To:"));
+    Label *const senderText = new Label(_("To:"));
     senderText->setPosition(5, 5);
     mSender->setPosition(senderText->getWidth() + 5, 5);
     mSender->setWidth(65);

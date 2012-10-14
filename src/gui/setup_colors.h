@@ -30,12 +30,12 @@
 #include <string>
 
 class BrowserBox;
+class Label;
 class TextField;
 class TextPreview;
 
 namespace gcn
 {
-    class Label;
     class ListBox;
     class ScrollArea;
     class Slider;
@@ -69,25 +69,25 @@ class Setup_Colors final : public SetupTab,
         gcn::ScrollArea *mPreviewBox;
         int mSelected;
 
-        gcn::Label *mGradTypeLabel;
+        Label *mGradTypeLabel;
         gcn::Slider *mGradTypeSlider;
-        gcn::Label *mGradTypeText;
+        Label *mGradTypeText;
 
-        gcn::Label *mGradDelayLabel;
+        Label *mGradDelayLabel;
         gcn::Slider *mGradDelaySlider;
         TextField *mGradDelayText;
 
-        gcn::Label *mRedLabel;
+        Label *mRedLabel;
         gcn::Slider *mRedSlider;
         TextField *mRedText;
         int mRedValue;
 
-        gcn::Label *mGreenLabel;
+        Label *mGreenLabel;
         gcn::Slider *mGreenSlider;
         TextField *mGreenText;
         int mGreenValue;
 
-        gcn::Label *mBlueLabel;
+        Label *mBlueLabel;
         gcn::Slider *mBlueSlider;
         TextField *mBlueText;
         int mBlueValue;

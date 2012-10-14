@@ -38,14 +38,10 @@
 
 class BrowserBox;
 class Button;
+class Label;
 class ProgressBar;
 class ResourceManager;
 class ScrollArea;
-
-namespace gcn
-{
-    class Label;
-}
 
 struct updateFile final
 {
@@ -231,7 +227,7 @@ private:
 
     int mUpdateType;
 
-    gcn::Label *mLabel;           /**< Progress bar caption. */
+    Label *mLabel;           /**< Progress bar caption. */
     Button *mCancelButton;        /**< Button to stop the update process. */
     Button *mPlayButton;          /**< Button to start playing. */
     ProgressBar *mProgressBar;    /**< Update progress bar. */

@@ -23,21 +23,80 @@
 
 #include "gui/theme.h"
 
+#include <guichan/font.hpp>
+
 #include "debug.h"
 
+Skin *Label::mSkin = nullptr;
+int Label::mInstances = 0;
+
 Label::Label() :
-    gcn::Label()
+    gcn::Label(),
+    mPadding(0)
 {
-    mForegroundColor = Theme::getThemeColor(Theme::LABEL);
+    init();
 }
 
 Label::Label(const std::string &caption) :
-    gcn::Label(caption)
+    gcn::Label(caption),
+    mPadding(0)
 {
-    mForegroundColor = Theme::getThemeColor(Theme::LABEL);
+    init();
 }
 
-void Label::draw(gcn::Graphics *graphics)
+Label::~Label()
 {
-    gcn::Label::draw(graphics);
+    mInstances --;
+    if (mInstances == 0 && Theme::instance())
+    {
+        Theme::instance()->unload(mSkin);
+    }
+}
+
+void Label::init()
+{
+    mForegroundColor = Theme::getThemeColor(Theme::LABEL);
+    if (mInstances == 0)
+    {
+        if (Theme::instance())
+            mSkin = Theme::instance()->load("label.xml", "");
+        mInstances ++;
+    }
+    if (mSkin)
+        mPadding = mSkin->getPadding();
+    else
+        mPadding = 0;
+}
+
+void Label::draw(gcn::Graphics* graphics)
+{
+    int textX;
+    const int textY = getHeight() / 2 - getFont()->getHeight() / 2;
+
+    switch (getAlignment())
+    {
+        case Graphics::LEFT:
+        default:
+            textX = mPadding;
+            break;
+        case Graphics::CENTER:
+            textX = getWidth() / 2;
+            break;
+        case Graphics::RIGHT:
+            if (getWidth() > mPadding)
+                textX = getWidth() - mPadding;
+            else
+                textX = 0;
+            break;
+    }
+
+    graphics->setFont(getFont());
+    graphics->setColor(mForegroundColor);
+    graphics->drawText(getCaption(), textX, textY, getAlignment());
+}
+
+void Label::adjustSize()
+{
+    setWidth(getFont()->getWidth(getCaption()) + 2 * mPadding);
+    setHeight(getFont()->getHeight() + 2 * mPadding);
 }

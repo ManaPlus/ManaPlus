@@ -32,6 +32,7 @@
 #include <map>
 
 class AttrDisplay;
+class Label;
 class ProgressBar;
 class ScrollArea;
 class VertContainer;
@@ -39,7 +40,6 @@ class VertContainer;
 namespace gcn
 {
     class Button;
-    class Label;
 }
 
 /**
@@ -98,17 +98,17 @@ class StatusWindow final : public Window,
         /**
          * Status Part
          */
-        gcn::Label *mLvlLabel;
-        gcn::Label *mMoneyLabel;
-        gcn::Label *mHpLabel;
-        gcn::Label *mMpLabel;
-        gcn::Label *mXpLabel;
+        Label *mLvlLabel;
+        Label *mMoneyLabel;
+        Label *mHpLabel;
+        Label *mMpLabel;
+        Label *mXpLabel;
         ProgressBar *mHpBar;
         ProgressBar *mMpBar;
         ProgressBar *mXpBar;
 
-        gcn::Label *mJobLvlLabel;
-        gcn::Label *mJobLabel;
+        Label *mJobLvlLabel;
+        Label *mJobLabel;
         ProgressBar *mJobBar;
 
         VertContainer *mAttrCont;
@@ -116,8 +116,8 @@ class StatusWindow final : public Window,
         VertContainer *mDAttrCont;
         ScrollArea *mDAttrScroll;
 
-        gcn::Label *mCharacterPointsLabel;
-        gcn::Label *mCorrectionPointsLabel;
+        Label *mCharacterPointsLabel;
+        Label *mCorrectionPointsLabel;
         gcn::Button *mCopyButton;
 
         typedef std::map<int, AttrDisplay*> Attrs;

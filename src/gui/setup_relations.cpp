@@ -270,7 +270,7 @@ Setup_Relations::Setup_Relations() :
     mPlayerTable->setLinewiseSelection(true);
     mPlayerTable->addActionListener(this);
 
-    gcn::Label *const ignore_action_label = new Label(_("When ignoring:"));
+    Label *const ignore_action_label = new Label(_("When ignoring:"));
 
     mIgnoreActionChoicesBox->setActionEventId(ACTION_STRATEGY);
     mIgnoreActionChoicesBox->addActionListener(this);

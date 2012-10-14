@@ -139,11 +139,11 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
     mUpdateHost(updateHost),
     mServerName(serverName)
 {
-    gcn::Label *const serverLabel1 = new Label(_("Server:"));
-    gcn::Label *const serverLabel2 = new Label(serverName);
+    Label *const serverLabel1 = new Label(_("Server:"));
+    Label *const serverLabel2 = new Label(serverName);
     serverLabel2->adjustSize();
-    gcn::Label *const userLabel = new Label(_("Name:"));
-    gcn::Label *const passLabel = new Label(_("Password:"));
+    Label *const userLabel = new Label(_("Name:"));
+    Label *const passLabel = new Label(_("Password:"));
     if (mLoginData && mLoginData->updateHosts.size() > 1)
     {
         mUpdateHostLabel = new Label(strprintf(_("Update host: %s"),

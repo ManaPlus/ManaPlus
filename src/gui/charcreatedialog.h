@@ -30,13 +30,13 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
 
+class Label;
 class LocalPlayer;
 class PlayerBox;
 class TextField;
 
 namespace gcn
 {
-    class Label;
     class RadioButton;
     class Slider;
 }
@@ -105,19 +105,19 @@ class CharCreateDialog final : public Window,
         CharSelectDialog *mCharSelectDialog;
 
         TextField *mNameField;
-        gcn::Label *mNameLabel;
+        Label *mNameLabel;
         gcn::Button *mNextHairColorButton;
         gcn::Button *mPrevHairColorButton;
-        gcn::Label *mHairColorLabel;
-        gcn::Label *mHairColorNameLabel;
+        Label *mHairColorLabel;
+        Label *mHairColorNameLabel;
         gcn::Button *mNextHairStyleButton;
         gcn::Button *mPrevHairStyleButton;
-        gcn::Label *mHairStyleLabel;
-        gcn::Label *mHairStyleNameLabel;
+        Label *mHairStyleLabel;
+        Label *mHairStyleNameLabel;
         gcn::Button *mNextRaceButton;
         gcn::Button *mPrevRaceButton;
-        gcn::Label *mRaceLabel;
-        gcn::Label *mRaceNameLabel;
+        Label *mRaceLabel;
+        Label *mRaceNameLabel;
 
         gcn::Button *mActionButton;
         gcn::Button *mRotateButton;
@@ -127,9 +127,9 @@ class CharCreateDialog final : public Window,
         gcn::RadioButton *mOther;
 
         std::vector<gcn::Slider*> mAttributeSlider;
-        std::vector<gcn::Label*> mAttributeLabel;
-        std::vector<gcn::Label*> mAttributeValue;
-        gcn::Label *mAttributesLeft;
+        std::vector<Label*> mAttributeLabel;
+        std::vector<Label*> mAttributeValue;
+        Label *mAttributesLeft;
 
         int mMaxPoints;
         int mUsedPoints;

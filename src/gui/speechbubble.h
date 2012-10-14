@@ -28,12 +28,8 @@
 
 #include "gui/widgets/popup.h"
 
+class Label;
 class TextBox;
-
-namespace gcn
-{
-    class Label;
-}
 
 class SpeechBubble final : public Popup
 {
@@ -59,7 +55,7 @@ class SpeechBubble final : public Popup
 
     private:
         std::string mText;
-        gcn::Label *mCaption;
+        Label *mCaption;
         TextBox *mSpeechBox;
 };
 

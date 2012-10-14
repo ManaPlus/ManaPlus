@@ -108,15 +108,15 @@ class KillStats final : public Window,
         Label *mLine6;
         Label *mLine7;
 
-        gcn::Label *mExpSpeed1Label;
-        gcn::Label *mExpTime1Label;
-        gcn::Label *mExpSpeed5Label;
-        gcn::Label *mExpTime5Label;
-        gcn::Label *mExpSpeed15Label;
-        gcn::Label *mExpTime15Label;
+        Label *mExpSpeed1Label;
+        Label *mExpTime1Label;
+        Label *mExpSpeed5Label;
+        Label *mExpTime5Label;
+        Label *mExpSpeed15Label;
+        Label *mExpTime15Label;
 
-        gcn::Label *mLastKillExpLabel;
-        gcn::Label *mTimeBeforeJackoLabel;
+        Label *mLastKillExpLabel;
+        Label *mTimeBeforeJackoLabel;
 
         int m1minExpTime;
         int m1minExpNum;

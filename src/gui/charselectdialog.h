@@ -34,6 +34,7 @@
 #include <guichan/keylistener.hpp>
 
 class CharacterDisplay;
+class Label;
 class LocalPlayer;
 class LoginData;
 class PlayerBox;
@@ -42,7 +43,6 @@ class TextDialog;
 namespace gcn
 {
     class Button;
-    class Label;
 }
 
 namespace Net
@@ -114,8 +114,8 @@ class CharSelectDialog final : public Window,
 
         LoginData *mLoginData;
 
-        gcn::Label *mAccountNameLabel;
-        gcn::Label *mLastLoginLabel;
+        Label *mAccountNameLabel;
+        Label *mLastLoginLabel;
 
         gcn::Button *mSwitchLoginButton;
         gcn::Button *mChangePasswordButton;

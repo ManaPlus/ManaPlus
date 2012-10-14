@@ -31,13 +31,13 @@
 #include <guichan/mouselistener.hpp>
 
 class Icon;
+class Label;
 class TextBox;
 
 namespace gcn
 {
     class Button;
     class CheckBox;
-    class Label;
     class ScrollArea;
 }
 
@@ -70,7 +70,7 @@ class ItemPopup final : public Popup
         void mouseMoved(gcn::MouseEvent &mouseEvent) override;
 
     private:
-        gcn::Label *mItemName;
+        Label *mItemName;
         TextBox *mItemDesc;
         TextBox *mItemEffect;
         TextBox *mItemWeight;

@@ -31,13 +31,13 @@ class DropDown;
 class EditDialog;
 class FontsModel;
 class FontSizeChoiceListModel;
+class Label;
 class LangListModel;
 class ThemesModel;
 
 namespace gcn
 {
     class DropDown;
-    class Label;
 }
 
 class Setup_Theme final : public SetupTab
@@ -56,49 +56,49 @@ class Setup_Theme final : public SetupTab
         void action(const gcn::ActionEvent &event) override;
 
     private:
-        gcn::Label *mThemeLabel;
+        Label *mThemeLabel;
         ThemesModel *mThemesModel;
         DropDown *mThemeDropDown;
         std::string mTheme;
 
         FontsModel *mFontsModel;
-        gcn::Label *mFontLabel;
+        Label *mFontLabel;
         DropDown *mFontDropDown;
         std::string mFont;
 
         LangListModel *mLangListModel;
 
-        gcn::Label *mLangLabel;
+        Label *mLangLabel;
         DropDown *mLangDropDown;
         std::string mLang;
 
-        gcn::Label *mBoldFontLabel;
+        Label *mBoldFontLabel;
         DropDown *mBoldFontDropDown;
         std::string mBoldFont;
 
-        gcn::Label *mParticleFontLabel;
+        Label *mParticleFontLabel;
         DropDown *mParticleFontDropDown;
         std::string mParticleFont;
 
-        gcn::Label *mHelpFontLabel;
+        Label *mHelpFontLabel;
         DropDown *mHelpFontDropDown;
         std::string mHelpFont;
 
-        gcn::Label *mSecureFontLabel;
+        Label *mSecureFontLabel;
         DropDown *mSecureFontDropDown;
         std::string mSecureFont;
 
-        gcn::Label *mJapanFontLabel;
+        Label *mJapanFontLabel;
         DropDown *mJapanFontDropDown;
         std::string mJapanFont;
 
         FontSizeChoiceListModel *mFontSizeListModel;
-        gcn::Label *mFontSizeLabel;
+        Label *mFontSizeLabel;
         int mFontSize;
         gcn::DropDown *mFontSizeDropDown;
 
         FontSizeChoiceListModel *mNpcFontSizeListModel;
-        gcn::Label *mNpcFontSizeLabel;
+        Label *mNpcFontSizeLabel;
         int mNpcFontSize;
         gcn::DropDown *mNpcFontSizeDropDown;
 

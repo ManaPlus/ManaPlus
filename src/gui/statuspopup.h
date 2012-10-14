@@ -32,6 +32,7 @@
 
 #include <guichan/mouselistener.hpp>
 
+class Label;
 class TextBox;
 
 namespace gcn
@@ -67,27 +68,27 @@ class StatusPopup final : public Popup
     private:
         void updateLabels();
 
-        void setLabelText(gcn::Label *const label, const char *const text,
+        void setLabelText(Label *const label, const char *const text,
                           const int key) const;
 
-        void setLabelText2(gcn::Label *const label, const std::string &text,
+        void setLabelText2(Label *const label, const std::string &text,
                            const Input::KeyAction key) const;
 
-        gcn::Label *mMoveType;
-        gcn::Label *mCrazyMoveType;
-        gcn::Label *mMoveToTargetType;
-        gcn::Label *mFollowMode;
-        gcn::Label *mAttackType;
-        gcn::Label *mAttackWeaponType;
-        gcn::Label *mDropCounter;
-        gcn::Label *mPickUpType;
-        gcn::Label *mMapType;
-        gcn::Label *mMagicAttackType;
-        gcn::Label *mPvpAttackType;
-        gcn::Label *mDisableGameModifiers;
-        gcn::Label *mImitationMode;
-        gcn::Label *mAwayMode;
-        gcn::Label *mCameraMode;
+        Label *mMoveType;
+        Label *mCrazyMoveType;
+        Label *mMoveToTargetType;
+        Label *mFollowMode;
+        Label *mAttackType;
+        Label *mAttackWeaponType;
+        Label *mDropCounter;
+        Label *mPickUpType;
+        Label *mMapType;
+        Label *mMagicAttackType;
+        Label *mPvpAttackType;
+        Label *mDisableGameModifiers;
+        Label *mImitationMode;
+        Label *mAwayMode;
+        Label *mCameraMode;
 };
 
 #endif // StatusPopup_H

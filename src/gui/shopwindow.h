@@ -30,6 +30,7 @@
 
 class CheckBox;
 class Item;
+class Label;
 class ListBox;
 class ShopItem;
 class ShopItems;
@@ -39,7 +40,6 @@ namespace gcn
 {
     class Button;
     class CheckBox;
-    class Label;
     class ScrollArea;
 }
 
@@ -154,8 +154,8 @@ class ShopWindow final : public Window, public gcn::ActionListener,
         ShopListBox *mSellShopItemList;
         gcn::ScrollArea *mBuyScrollArea;
         gcn::ScrollArea *mSellScrollArea;
-        gcn::Label *mBuyLabel;
-        gcn::Label *mSellLabel;
+        Label *mBuyLabel;
+        Label *mSellLabel;
         gcn::Button *mBuyAddButton;
         gcn::Button *mBuyDeleteButton;
         gcn::Button *mBuyAnnounceButton;

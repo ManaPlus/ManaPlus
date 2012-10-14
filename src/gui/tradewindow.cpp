@@ -112,7 +112,7 @@ TradeWindow::TradeWindow():
         true, "trade_background.xml");
     partnerScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-    gcn::Label *const moneyLabel2 = new Label(_("You give:"));
+    Label *const moneyLabel2 = new Label(_("You give:"));
 
     mMoneyField->setWidth(40);
 

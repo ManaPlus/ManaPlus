@@ -24,6 +24,8 @@
 
 #include <guichan/widgets/label.hpp>
 
+class Skin;
+
 /**
  * Label widget. Same as the Guichan label but modified to use the palette
  * system.
@@ -46,10 +48,23 @@ class Label final : public gcn::Label
 
         A_DELETE_COPY(Label);
 
+        ~Label();
+
+        void init();
+
         /**
          * Draws the label.
          */
         void draw(gcn::Graphics *graphics) override;
+
+        void adjustSize();
+
+        static Skin *mSkin;
+
+        static int mInstances;
+
+    private:
+        int mPadding;
 };
 
 #endif

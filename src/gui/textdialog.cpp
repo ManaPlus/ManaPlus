@@ -47,7 +47,7 @@ TextDialog::TextDialog(const std::string &title, const std::string &msg,
 {
     keyboard.setEnabled(false);
 
-    gcn::Label *const textLabel = new Label(msg);
+    Label *const textLabel = new Label(msg);
     gcn::Button *const cancelButton = new Button(_("Cancel"), "CANCEL", this);
 
     place(0, 0, textLabel, 4);

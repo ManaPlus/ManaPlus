@@ -54,9 +54,9 @@ ChangeEmailDialog::ChangeEmailDialog(LoginData *const data):
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
-    gcn::Label *const accountLabel = new Label(strprintf(_("Account: %s"),
+    Label *const accountLabel = new Label(strprintf(_("Account: %s"),
         mLoginData->username.c_str()));
-    gcn::Label *const newEmailLabel = new Label(
+    Label *const newEmailLabel = new Label(
         _("Type new email address twice:"));
 
     const int width = 200;

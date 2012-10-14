@@ -179,14 +179,14 @@ void StatusPopup::view(const int x, const int y)
     requestMoveToTop();
 }
 
-void StatusPopup::setLabelText(gcn::Label *const label, const char *const text,
+void StatusPopup::setLabelText(Label *const label, const char *const text,
                                int const key) const
 {
     label->setCaption(strprintf("%s  %s", text,
         inputManager.getKeyValueString(key).c_str()));
 }
 
-void StatusPopup::setLabelText2(gcn::Label *const label,
+void StatusPopup::setLabelText2(Label *const label,
                                 const std::string &text,
                                 const Input::KeyAction key) const
 {

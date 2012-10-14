@@ -30,6 +30,7 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
 
+class Label;
 class ModeListModel;
 class OpenGLListModel;
 class TextDialog;
@@ -39,7 +40,6 @@ namespace gcn
     class Button;
     class CheckBox;
     class DropDown;
-    class Label;
     class ListBox;
     class Slider;
 }
@@ -74,8 +74,8 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
 
         OpenGLListModel *mOpenGLListModel;
 
-        gcn::Label *scrollRadiusLabel;
-        gcn::Label *scrollLazinessLabel;
+        Label *scrollRadiusLabel;
+        Label *scrollLazinessLabel;
 
         gcn::ListBox *mModeList;
         gcn::CheckBox *mFsCheckBox;
@@ -87,9 +87,9 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
 
         gcn::CheckBox *mFpsCheckBox;
         gcn::Slider *mFpsSlider;
-        gcn::Label *mFpsLabel;
+        Label *mFpsLabel;
         gcn::Slider *mAltFpsSlider;
-        gcn::Label *mAltFpsLabel;
+        Label *mAltFpsLabel;
 
         gcn::Button *mDetectButton;
         TextDialog *mDialog;

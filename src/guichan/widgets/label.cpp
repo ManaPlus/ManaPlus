@@ -93,32 +93,9 @@ namespace gcn
 
     void Label::draw(Graphics* graphics)
     {
-        int textX;
-        const int textY = getHeight() / 2 - getFont()->getHeight() / 2;
-
-        switch (getAlignment())
-        {
-          case Graphics::LEFT:
-              textX = 0;
-              break;
-          case Graphics::CENTER:
-              textX = getWidth() / 2;
-              break;
-          case Graphics::RIGHT:
-              textX = getWidth();
-              break;
-          default:
-              throw GCN_EXCEPTION("Unknown alignment.");
-        }
-
-        graphics->setFont(getFont());
-        graphics->setColor(mForegroundColor);
-        graphics->drawText(getCaption(), textX, textY, getAlignment());
     }
 
     void Label::adjustSize()
     {
-        setWidth(getFont()->getWidth(getCaption()));
-        setHeight(getFont()->getHeight());
     }
 }

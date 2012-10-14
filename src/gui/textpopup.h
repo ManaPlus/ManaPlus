@@ -28,12 +28,8 @@
 
 #include <guichan/mouselistener.hpp>
 
+class Label;
 class TextBox;
-
-namespace gcn
-{
-    class Label;
-}
 
 /**
  * A popup that displays information about an item.
@@ -78,9 +74,9 @@ class TextPopup final : public Popup
         void mouseMoved(gcn::MouseEvent &mouseEvent) override;
 
     private:
-        gcn::Label *mText1;
-        gcn::Label *mText2;
-        gcn::Label *mText3;
+        Label *mText1;
+        Label *mText2;
+        Label *mText3;
 };
 
 #endif // TEXTPOPUP_H
