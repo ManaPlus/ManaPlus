@@ -24,6 +24,8 @@
 
 #include <guichan/widgets/label.hpp>
 
+#include "localconsts.h"
+
 class Skin;
 
 /**

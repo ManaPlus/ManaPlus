@@ -30,6 +30,7 @@
 #include <guichan/widget.hpp>
 
 #include <list>
+#include <vector>
 
 class CheckBox;
 class Configuration;

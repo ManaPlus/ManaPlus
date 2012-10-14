@@ -25,6 +25,8 @@
 
 #include <guichan/widgets/textbox.hpp>
 
+#include "localconsts.h"
+
 /**
  * A text box, meant to be used inside a scroll area. Same as the Guichan text
  * box except this one doesn't have a background or border, instead completely

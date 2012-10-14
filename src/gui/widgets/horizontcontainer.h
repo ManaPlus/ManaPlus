@@ -26,6 +26,8 @@
 
 #include <guichan/widgetlistener.hpp>
 
+#include "localconsts.h"
+
 /**
  * A widget container.
  *

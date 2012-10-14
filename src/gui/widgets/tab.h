@@ -30,6 +30,8 @@
 
 #include <guichan/widgetlistener.hpp>
 
+#include "localconsts.h"
+
 class GraphicsVertexes;
 class ImageRect;
 class Label;

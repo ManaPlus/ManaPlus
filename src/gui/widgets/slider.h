@@ -25,6 +25,8 @@
 
 #include <guichan/widgets/slider.hpp>
 
+#include "localconsts.h"
+
 class Image;
 class ImageRect;
 

@@ -26,6 +26,8 @@
 #include <guichan/widgets/scrollarea.hpp>
 #include <guichan/widgetlistener.hpp>
 
+#include "localconsts.h"
+
 class GraphicsVertexes;
 class Image;
 class ImageRect;

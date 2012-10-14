@@ -29,6 +29,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 /**
  * A container for the contents of a tab in the setup window.
  */

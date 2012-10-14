@@ -25,6 +25,8 @@
 
 #include <guichan/widgets/listbox.hpp>
 
+#include "localconsts.h"
+
 class SelectionListener;
 
 /**

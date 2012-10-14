@@ -26,6 +26,8 @@
 
 #include <guichan/widgetlistener.hpp>
 
+#include "localconsts.h"
+
 /**
  * A container that arranges its contents like words on a page.
  *

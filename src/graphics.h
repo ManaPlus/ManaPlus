@@ -25,6 +25,8 @@
 
 #include <guichan/sdl/sdlgraphics.hpp>
 
+#include "localconsts.h"
+
 class GraphicsVertexes;
 class Image;
 class ImageVertexes;

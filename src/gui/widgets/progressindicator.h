@@ -24,6 +24,8 @@
 
 #include <guichan/widget.hpp>
 
+#include "localconsts.h"
+
 class SimpleAnimation;
 
 /**

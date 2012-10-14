@@ -26,6 +26,8 @@
 
 #include <guichan/widgetlistener.hpp>
 
+#include "localconsts.h"
+
 class Image;
 class Label;
 

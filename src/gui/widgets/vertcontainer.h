@@ -28,6 +28,8 @@
 
 #include <vector>
 
+#include "localconsts.h"
+
 /**
  * A widget container.
  *

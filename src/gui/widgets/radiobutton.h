@@ -25,6 +25,8 @@
 
 #include <guichan/widgets/radiobutton.hpp>
 
+#include "localconsts.h"
+
 class Image;
 
 /**

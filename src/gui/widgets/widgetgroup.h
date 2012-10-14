@@ -26,6 +26,8 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/widgetlistener.hpp>
 
+#include "localconsts.h"
+
 class WidgetGroup : public Container,
                     public gcn::WidgetListener,
                     public gcn::ActionListener

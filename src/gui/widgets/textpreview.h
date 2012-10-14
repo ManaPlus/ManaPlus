@@ -27,6 +27,8 @@
 #include <guichan/font.hpp>
 #include <guichan/widget.hpp>
 
+#include "localconsts.h"
+
 /**
  * Preview widget for particle colors, etc.
  */

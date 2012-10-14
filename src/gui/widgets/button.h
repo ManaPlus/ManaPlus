@@ -27,6 +27,8 @@
 #include <guichan/mouseevent.hpp>
 #include <guichan/widgetlistener.hpp>
 
+#include "localconsts.h"
+
 class GraphicsVertexes;
 class Image;
 class ImageSet;

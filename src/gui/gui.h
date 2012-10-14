@@ -25,6 +25,8 @@
 
 #include <guichan/gui.hpp>
 
+#include "localconsts.h"
+
 class Graphics;
 class GuiConfigListener;
 class ImageSet;

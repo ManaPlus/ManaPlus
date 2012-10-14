@@ -25,6 +25,8 @@
 
 #include "gui/widgets/linkhandler.h"
 
+#include "localconsts.h"
+
 class ItemPopup;
 
 class ItemLinkHandler final : public LinkHandler

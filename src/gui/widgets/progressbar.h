@@ -29,6 +29,8 @@
 
 #include <guichan/widgetlistener.hpp>
 
+#include "localconsts.h"
+
 class Graphics;
 class GraphicsVertexes;
 class ImageRect;

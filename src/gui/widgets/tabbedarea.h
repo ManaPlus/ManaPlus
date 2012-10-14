@@ -30,7 +30,7 @@
 
 #include "gui/widgets/button.h"
 
-#include <string>
+#include "utils/stringvector.h"
 
 class Tab;
 
