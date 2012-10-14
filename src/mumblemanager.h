@@ -10,6 +10,10 @@
 #ifndef MUMBLEMANAGER_H
 #define MUMBLEMANAGER_H
 
+#include "main.h"
+
+#ifdef USE_MUMBLE
+
 #include <string>
 #include <stdint.h>
 
@@ -65,4 +69,5 @@ class MumbleManager final
 
 extern MumbleManager *mumbleManager;
 
+#endif
 #endif

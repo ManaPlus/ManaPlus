@@ -7,6 +7,8 @@
  *  Copyright (C) 2011-2012  The ManaPlus Developers
  */
 
+#ifdef USE_MUMBLE
+
 #include "mumblemanager.h"
 
 #include "configuration.h"
@@ -284,3 +286,5 @@ void MumbleManager::setServer(const std::string &serverName)
     mLinkedMemCache.uiTick ++;
     memcpy(mLinkedMem, &mLinkedMemCache, sizeof(mLinkedMemCache));
 }
+
+#endif

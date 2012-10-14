@@ -209,8 +209,10 @@ LocalPlayer::~LocalPlayer()
 
 void LocalPlayer::logic()
 {
+    #ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setPos(mX, mY, mDirection);
+    #endif
 
     // Actions are allowed once per second
     if (get_elapsed_time(mLastAction) >= 1000)
@@ -370,8 +372,10 @@ void LocalPlayer::setAction(const Action &action, const int attackType)
     }
 
     Being::setAction(action, attackType);
+    #ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setAction(static_cast<int>(action));
+    #endif
 }
 
 void LocalPlayer::setGMLevel(const int level)

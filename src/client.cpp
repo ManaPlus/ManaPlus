@@ -693,8 +693,10 @@ void Client::gameClear()
     if (Net::getLoginHandler())
         Net::getLoginHandler()->clearWorlds();
 
+    #ifdef USE_MUMBLE
     delete mumbleManager;
     mumbleManager = nullptr;
+    #endif
 
     PlayerInfo::deinit();
 
@@ -819,8 +821,10 @@ int Client::gameExec()
 {
     int lastTickTime = tick_time;
 
+    #ifdef USE_MUMBLE
     if (!mumbleManager)
         mumbleManager = new MumbleManager();
+    #endif
 
     SDL_Event event;
 
@@ -873,11 +877,13 @@ int Client::gameExec()
                 }
 
                 guiInput->pushInput(event);
+                #ifdef USE_MUMBLE
                 if (player_node && mumbleManager)
                 {
                     mumbleManager->setPos(player_node->getTileX(),
                         player_node->getTileY(), player_node->getDirection());
                 }
+                #endif
             }
         }
 
@@ -953,8 +959,10 @@ int Client::gameExec()
 
             Net::connectToServer(mCurrentServer);
 
+            #ifdef USE_MUMBLE
             if (mumbleManager)
                 mumbleManager->setServer(mCurrentServer.hostname);
+            #endif
 
             GuildManager::init();
             AuctionManager::init();
@@ -1329,8 +1337,10 @@ int Client::gameExec()
                             player_node->getName().c_str());
                         serverConfig.setValue("lastCharacter",
                             player_node->getName());
+                        #ifdef USE_MUMBLE
                         if (mumbleManager)
                             mumbleManager->setPlayer(player_node->getName());
+                        #endif
                     }
 
                     // Fade out logon-music here too to give the desired effect
@@ -1706,6 +1716,9 @@ void Client::initConfigDir()
             mConfigDir = mLocalDataDir;
         else
             mConfigDir += "/mana/" + branding.getValue("appShort", "mana");
+#elif defined __ANDROID__
+        mConfigDir = "/mnt/sdcard/Android/data/org.evolonline.manaplus"
+            "/config/" + branding.getValue("appShort", "mana");
 #else
         mConfigDir = std::string(PHYSFS_getUserDir()) +
             "/.config/mana/" + branding.getValue("appShort", "mana");
@@ -1773,6 +1786,7 @@ void Client::initServerConfig(std::string serverName)
  */
 void Client::initConfiguration() const
 {
+
 #ifdef DEBUG_CONFIG
     config.setIsMain(true);
 #endif
@@ -1819,6 +1833,7 @@ void Client::initConfiguration() const
     {
         // We reopen the file in write mode and we create it
         configFile = fopen(configPath.c_str(), "wt");
+
         logger->log1("Creating new config");
 //        oldConfig = false;
     }
@@ -1834,6 +1849,7 @@ void Client::initConfiguration() const
         config.setDefaultValues(getConfigDefaults());
         logger->log("configPath: " + configPath);
     }
+
 }
 
 /**

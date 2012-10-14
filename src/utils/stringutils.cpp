@@ -29,6 +29,7 @@
 #include <list>
 
 #include <sys/time.h>
+#include <ctype.h>
 
 #include "debug.h"
 

@@ -22,6 +22,8 @@
 
 #include "game.h"
 
+#include "main.h"
+
 #include "actorspritemanager.h"
 #include "auctionmanager.h"
 #include "animatedsprite.h"
@@ -140,7 +142,9 @@ WindowMenu *windowMenu = nullptr;
 ActorSpriteManager *actorSpriteManager = nullptr;
 ChannelManager *channelManager = nullptr;
 CommandHandler *commandHandler = nullptr;
+#ifdef USE_MUMBLE
 MumbleManager *mumbleManager = nullptr;
+#endif
 Particle *particleEngine = nullptr;
 EffectManager *effectManager = nullptr;
 SpellManager *spellManager = nullptr;
@@ -459,7 +463,9 @@ Game::~Game()
     del_0(spellShortcut)
     del_0(auctionManager)
     del_0(guildManager)
+    #ifdef USE_MUMBLE
     del_0(mumbleManager)
+    #endif
 
     Being::clearCache();
 
@@ -1041,8 +1047,10 @@ void Game::changeMap(const std::string &mapPath)
     mCurrentMap = newMap;
 //    mCurrentMap = 0;
 
+    #ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setMap(mapPath);
+    #endif
     DepricatedEvent event(EVENT_MAPLOADED);
     event.setString("mapPath", mapPath);
     DepricatedEvent::trigger(CHANNEL_GAME, event);

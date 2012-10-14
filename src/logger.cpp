@@ -39,6 +39,13 @@
 
 #include <sys/time.h>
 
+#ifdef __ANDROID__
+#include <android/log.h>
+#define LOG_AND(x) __android_log_print(ANDROID_LOG_INFO, "manaplus", x)
+#else
+#define LOG_AND(x)
+#endif
+
 #include "debug.h"
 
 Logger::Logger():
