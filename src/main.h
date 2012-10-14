@@ -74,6 +74,8 @@
     || defined WIN64 || defined _WIN64 || defined __WIN64__ \
     || defined __MINGW32__ || defined _MSC_VER
 #define PACKAGE_OS "Windows"
+#elif defined(__ANDROID__) || defined(ANDROID)
+#define PACKAGE_OS "Android"
 #else
 #define PACKAGE_OS "Other"
 #endif
