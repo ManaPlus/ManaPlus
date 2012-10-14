@@ -23,10 +23,10 @@
 #ifndef TABBEDAREA_H
 #define TABBEDAREA_H
 
+#include <guichan/actionlistener.hpp>
 #include <guichan/widget.hpp>
 #include <guichan/widgetlistener.hpp>
 #include <guichan/widgets/container.hpp>
-#include <guichan/widgets/tabbedarea.hpp>
 
 #include "gui/widgets/button.h"
 
@@ -37,7 +37,11 @@ class Tab;
 /**
  * A tabbed area, the same as the guichan tabbed area in 0.8, but extended
  */
-class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
+class TabbedArea final : public gcn::ActionListener,
+                         public gcn::BasicContainer,
+                         public gcn::KeyListener,
+                         public gcn::MouseListener,
+                         public gcn::WidgetListener
 {
     public:
         /**
@@ -86,21 +90,18 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
          * @param tab The tab widget for the tab.
          * @param widget The widget to view when the tab is selected.
          */
-        void addTab(gcn::Tab* tab, gcn::Widget* widget) override;
+        void addTab(Tab *tab, gcn::Widget *widget);
 
-        /**
-         * Add a tab. Overridden since it needs to create an instance of Tab
-         * instead of gcn::Tab.
-         *
-         * @param caption The Caption to display
-         * @param widget The widget to show when tab is selected
-         */
         void addTab(const std::string &caption, gcn::Widget *const widget);
+
+        bool isTabSelected(unsigned int index) const;
+
+        bool isTabSelected(Tab* tab);
 
         /**
          * Overload the remove tab function as it's broken in guichan 0.8.
          */
-        void removeTab(gcn::Tab *tab) override;
+        void removeTab(Tab *tab);
 
         void removeAll();
 
@@ -112,7 +113,22 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
         int getContainerHeight() const
         { return mWidgetContainer->getHeight(); }
 
-        void setSelectedTab(gcn::Tab *tab) override;
+        void setSelectedTab(Tab *tab);
+
+        void setSelectedTab(unsigned int index);
+
+        int getSelectedTabIndex() const;
+
+        Tab* getSelectedTab()
+        { return mSelectedTab; }
+
+        void setOpaque(bool opaque)
+        { mOpaque = opaque; }
+
+        bool isOpaque() const
+        { return mOpaque; }
+
+        void adjustSize();
 
         void setSelectedTabByPos(int tab);
 
@@ -121,9 +137,9 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
         void widgetResized(const gcn::Event &event) override;
 
 /*
-        void moveLeft(gcn::Tab *tab);
+        void moveLeft(Tab *tab);
 
-        void moveRight(gcn::Tab *tab);
+        void moveRight(Tab *tab);
 */
         void adjustTabPositions();
 
@@ -155,8 +171,18 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
         void setBlockSwitching(bool b)
         { mBlockSwitching = b; }
 
+        void setWidth(int width);
+
+        void setHeight(int height);
+
+        void setSize(int width, int height);
+
+        void setDimension(const gcn::Rectangle &dimension);
+
+        void death(const gcn::Event &event);
+
     private:
-        typedef std::vector< std::pair<gcn::Tab*, gcn::Widget*> > TabContainer;
+        typedef std::vector <std::pair<Tab*, gcn::Widget*> > TabContainer;
 
         /** The tab arrows */
         gcn::Button *mArrowButton[2];
@@ -169,6 +195,24 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
          * have to be drawn or not.
          */
         void updateTabsWidth();
+
+
+
+        Tab* mSelectedTab;
+
+        gcn::Container* mTabContainer;
+
+        gcn::Container* mWidgetContainer;
+
+        std::vector<Tab*> mTabsToDelete;
+
+        std::vector<std::pair<Tab*, gcn::Widget*> > mTabs;
+
+        bool mOpaque;
+
+
+
+
 
         /**
          * The overall width of all tab.
@@ -185,6 +229,7 @@ class TabbedArea final : public gcn::TabbedArea, public gcn::WidgetListener
          * The overall width of visible tab.
          */
         int mVisibleTabsWidth;
+
 
 
         /**

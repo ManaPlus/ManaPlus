@@ -697,7 +697,7 @@ void ChatWindow::mousePressed(gcn::MouseEvent &event)
     {
         if (viewport)
         {
-            gcn::Tab *const tab = mChatTabs->getSelectedTab();
+            Tab *const tab = mChatTabs->getSelectedTab();
             if (tab)
             {
                 ChatTab *const cTab = dynamic_cast<ChatTab*>(tab);

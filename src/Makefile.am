@@ -64,8 +64,6 @@ manaplus_SOURCES += guichan/include/guichan/actionevent.hpp \
 	      guichan/include/guichan/widgets/radiobutton.hpp \
 	      guichan/include/guichan/widgets/scrollarea.hpp \
 	      guichan/include/guichan/widgets/slider.hpp \
-	      guichan/include/guichan/widgets/tabbedarea.hpp \
-	      guichan/include/guichan/widgets/tab.hpp \
 	      guichan/include/guichan/widgets/textbox.hpp \
 	      guichan/include/guichan/widgets/textfield.hpp \
 	      guichan/include/guichan/widgets/window.hpp
@@ -100,8 +98,6 @@ manaplus_SOURCES += guichan/actionevent.cpp \
 	      guichan/widgets/radiobutton.cpp \
 	      guichan/widgets/scrollarea.cpp \
 	      guichan/widgets/slider.cpp \
-	      guichan/widgets/tabbedarea.cpp \
-	      guichan/widgets/tab.cpp \
 	      guichan/widgets/textbox.cpp \
 	      guichan/widgets/textfield.cpp \
 	      guichan/widgets/window.cpp

@@ -31,6 +31,7 @@
 #include "gui/palette.h"
 #include "gui/theme.h"
 
+#include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
 
 #include "utils/dtor.h"
@@ -62,8 +63,14 @@ static std::string const data[TAB_COUNT] =
 ImageRect Tab::tabImg[TAB_COUNT];
 
 Tab::Tab() :
-    gcn::Tab(),
+    gcn::BasicContainer(),
+    gcn::MouseListener(),
     gcn::WidgetListener(),
+
+    mLabel(new Label),
+    mHasMouse(false),
+    mTabbedArea(nullptr),
+
     mTabColor(&Theme::getThemeColor(Theme::TAB)),
     mTabHighlightedColor(&Theme::getThemeColor(Theme::TAB_HIGHLIGHTED)),
     mTabSelectedColor(&Theme::getThemeColor(Theme::TAB_SELECTED)),
@@ -85,12 +92,20 @@ Tab::~Tab()
         for (int mode = 0; mode < TAB_COUNT; mode ++)
             theme->unloadRect(tabImg[mode]);
     }
+
+    delete mLabel;
+    mLabel = nullptr;
+
     delete mVertexes;
     mVertexes = nullptr;
 }
 
 void Tab::init()
 {
+    mLabel->setPosition(4, 4);
+    add(mLabel);
+
+    addMouseListener(this);
     setFocusable(false);
     setFrameSize(0);
     mFlash = 0;
@@ -208,4 +223,46 @@ void Tab::setLabelFont(gcn::Font *const font)
     mLabel->setFont(font);
     mLabel->adjustSize();
     adjustSize();
+}
+
+
+void Tab::adjustSize()
+{
+    setSize(mLabel->getWidth() + 8,
+            mLabel->getHeight() + 8);
+
+    if (mTabbedArea)
+        mTabbedArea->adjustTabPositions();
+}
+
+void Tab::setTabbedArea(TabbedArea* tabbedArea)
+{
+    mTabbedArea = tabbedArea;
+}
+
+TabbedArea* Tab::getTabbedArea()
+{
+    return mTabbedArea;
+}
+
+void Tab::setCaption(const std::string &caption)
+{
+    mLabel->setCaption(caption);
+    mLabel->adjustSize();
+    adjustSize();
+}
+
+const std::string &Tab::getCaption() const
+{
+    return mLabel->getCaption();
+}
+
+void Tab::mouseEntered(gcn::MouseEvent& mouseEvent A_UNUSED)
+{
+    mHasMouse = true;
+}
+
+void Tab::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
+{
+    mHasMouse = false;
 }

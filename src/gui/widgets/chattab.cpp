@@ -34,6 +34,7 @@
 
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/itemlinkhandler.h"
+#include "gui/widgets/tabbedarea.h"
 #include "gui/widgets/tradetab.h"
 
 #include "net/chathandler.h"
@@ -43,8 +44,6 @@
 #include "resources/itemdb.h"
 
 #include "utils/gettext.h"
-
-#include <guichan/widgets/tabbedarea.hpp>
 
 #include "debug.h"
 

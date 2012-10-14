@@ -35,8 +35,17 @@
 #include "debug.h"
 
 TabbedArea::TabbedArea() :
-    gcn::TabbedArea(),
+    gcn::ActionListener(),
+    gcn::BasicContainer(),
+    gcn::KeyListener(),
+    gcn::MouseListener(),
     gcn::WidgetListener(),
+
+    mSelectedTab(nullptr),
+    mTabContainer(new gcn::Container()),
+    mWidgetContainer(new gcn::Container()),
+    mOpaque(false),
+
     mTabsWidth(0),
     mVisibleTabsWidth(0),
     mTabScrollIndex(0),
@@ -45,6 +54,16 @@ TabbedArea::TabbedArea() :
     mFollowDownScroll(false),
     mBlockSwitching(true)
 {
+    setFocusable(true);
+    addKeyListener(this);
+    addMouseListener(this);
+    mTabContainer->setOpaque(false);
+
+    add(mTabContainer);
+    add(mWidgetContainer);
+
+
+
     mWidgetContainer->setOpaque(false);
     addWidgetListener(this);
 
@@ -56,6 +75,20 @@ TabbedArea::TabbedArea() :
 
 TabbedArea::~TabbedArea()
 {
+    remove(mTabContainer);
+    remove(mWidgetContainer);
+
+    delete mTabContainer;
+    mTabContainer = nullptr;
+    delete mWidgetContainer;
+    mWidgetContainer = nullptr;
+
+    for (size_t i = 0, sz = mTabsToDelete.size(); i < sz; i++)
+    {
+        delete mTabsToDelete[i];
+        mTabsToDelete[i] = nullptr;
+    }
+
     delete mArrowButton[0];
     mArrowButton[0] = nullptr;
     delete mArrowButton[1];
@@ -124,7 +157,7 @@ gcn::Widget *TabbedArea::getWidget(const std::string &name) const
 
 gcn::Widget *TabbedArea::getCurrentWidget()
 {
-    const gcn::Tab *const tab = getSelectedTab();
+    const Tab *const tab = getSelectedTab();
 
     if (tab)
         return getWidget(tab->getCaption());
@@ -132,12 +165,25 @@ gcn::Widget *TabbedArea::getCurrentWidget()
         return nullptr;
 }
 
-void TabbedArea::addTab(gcn::Tab* tab, gcn::Widget* widget)
+void TabbedArea::addTab(Tab* tab, gcn::Widget* widget)
 {
     if (!tab || !widget)
         return;
 
-    gcn::TabbedArea::addTab(tab, widget);
+
+    tab->setTabbedArea(this);
+    tab->addActionListener(this);
+
+    mTabContainer->add(tab);
+    mTabs.push_back(std::pair<Tab*, gcn::Widget*>(tab, widget));
+
+    if (!mSelectedTab)
+        setSelectedTab(tab);
+
+    adjustTabPositions();
+    adjustSize();
+
+
 
     const int frameSize = 2 * getFrameSize();
     widget->setSize(getWidth() - frameSize,
@@ -156,7 +202,28 @@ void TabbedArea::addTab(const std::string &caption, gcn::Widget *const widget)
     addTab(tab, widget);
 }
 
-void TabbedArea::removeTab(gcn::Tab *tab)
+bool TabbedArea::isTabSelected(unsigned int index) const
+{
+    if (index >= mTabs.size())
+        return false;
+
+    return mSelectedTab == mTabs[index].first;
+}
+
+bool TabbedArea::isTabSelected(Tab* tab)
+{
+    return mSelectedTab == tab;
+}
+
+void TabbedArea::setSelectedTab(unsigned int index)
+{
+    if (index >= mTabs.size())
+        return;
+
+    setSelectedTab(mTabs[index].first);
+}
+
+void TabbedArea::removeTab(Tab *tab)
 {
     int tabIndexToBeSelected = -1;
 
@@ -181,7 +248,7 @@ void TabbedArea::removeTab(gcn::Tab *tab)
         }
     }
 
-    for (std::vector<gcn::Tab*>::iterator iter2 = mTabsToDelete.begin();
+    for (std::vector<Tab*>::iterator iter2 = mTabsToDelete.begin();
          iter2 != mTabsToDelete.end(); ++iter2)
     {
         if (*iter2 == tab)
@@ -227,7 +294,7 @@ void TabbedArea::mousePressed(gcn::MouseEvent &mouseEvent)
     {
         gcn::Widget *const widget = mTabContainer->getWidgetAt(
             mouseEvent.getX(), mouseEvent.getY());
-        gcn::Tab *const tab = dynamic_cast<gcn::Tab *const>(widget);
+        Tab *const tab = dynamic_cast<Tab *const>(widget);
 
         if (tab)
         {
@@ -237,9 +304,23 @@ void TabbedArea::mousePressed(gcn::MouseEvent &mouseEvent)
     }
 }
 
-void TabbedArea::setSelectedTab(gcn::Tab *tab)
+void TabbedArea::setSelectedTab(Tab *tab)
 {
-    gcn::TabbedArea::setSelectedTab(tab);
+    unsigned int i;
+    for (i = 0; i < mTabs.size(); i++)
+    {
+        if (mTabs[i].first == mSelectedTab)
+            mWidgetContainer->remove(mTabs[i].second);
+    }
+
+    for (i = 0; i < mTabs.size(); i++)
+    {
+        if (mTabs[i].first == tab)
+        {
+            mSelectedTab = tab;
+            mWidgetContainer->add(mTabs[i].second);
+        }
+    }
 
     Tab *const newTab = dynamic_cast<Tab *const>(tab);
 
@@ -247,6 +328,18 @@ void TabbedArea::setSelectedTab(gcn::Tab *tab)
         newTab->setCurrent();
 
     widgetResized(nullptr);
+}
+
+int TabbedArea::getSelectedTabIndex() const
+{
+    for (unsigned int i = 0, sz = static_cast<unsigned int>(mTabs.size());
+         i < sz; i++)
+    {
+        if (mTabs[i].first == mSelectedTab)
+            return i;
+    }
+
+    return -1;
 }
 
 void TabbedArea::setSelectedTabByName(const std::string &name)
@@ -264,7 +357,7 @@ void TabbedArea::setSelectedTabByName(const std::string &name)
 
 void TabbedArea::setSelectedTabByPos(int tab)
 {
-    gcn::TabbedArea::setSelectedTab(tab);
+    setSelectedTab(tab);
 }
 
 void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
@@ -354,13 +447,30 @@ void TabbedArea::updateVisibleTabsWidth()
     }
 }
 
+void TabbedArea::adjustSize()
+{
+    int maxTabHeight = 0;
+
+    for (size_t i = 0, sz = mTabs.size(); i < sz; i++)
+    {
+        if (mTabs[i].first->getHeight() > maxTabHeight)
+            maxTabHeight = mTabs[i].first->getHeight();
+    }
+
+    mTabContainer->setSize(getWidth() - 2, maxTabHeight);
+
+    mWidgetContainer->setPosition(1, maxTabHeight + 1);
+    mWidgetContainer->setSize(getWidth() - 2,
+        getHeight() - maxTabHeight - 2);
+}
+
 void TabbedArea::adjustTabPositions()
 {
     int maxTabHeight = 0;
     const size_t sz = mTabs.size();
     for (size_t i = 0; i < sz; ++i)
     {
-        const gcn::Tab *const tab = mTabs[i].first;
+        const Tab *const tab = mTabs[i].first;
         if (tab && tab->getHeight() > maxTabHeight)
             maxTabHeight = tab->getHeight();
     }
@@ -368,7 +478,7 @@ void TabbedArea::adjustTabPositions()
     int x = mArrowButton[0]->isVisible() ? mArrowButton[0]->getWidth() : 0;
     for (size_t i = mTabScrollIndex; i < sz; ++i)
     {
-        gcn::Tab *const tab = mTabs[i].first;
+        Tab *const tab = mTabs[i].first;
         if (!tab)
             continue;
         tab->setPosition(x, maxTabHeight - tab->getHeight());
@@ -381,7 +491,7 @@ void TabbedArea::adjustTabPositions()
         x = 0;
         for (unsigned i = 0; i < mTabScrollIndex; ++i)
         {
-            gcn::Tab *const tab = mTabs[i].first;
+            Tab *const tab = mTabs[i].first;
             if (tab)
             {
                 x -= tab->getWidth();
@@ -480,12 +590,36 @@ void TabbedArea::removeAll()
     while (getNumberOfTabs() > 0)
     {
         const int idx = getNumberOfTabs() - 1;
-        gcn::Tab *tab = mTabs[idx].first;
+        Tab *tab = mTabs[idx].first;
         Widget *widget = mTabs[idx].second;
         removeTab(tab);
         delete tab;
         delete widget;
     }
+}
+
+void TabbedArea::setWidth(int width)
+{
+    gcn::Widget::setWidth(width);
+    adjustSize();
+}
+
+void TabbedArea::setHeight(int height)
+{
+    gcn::Widget::setHeight(height);
+    adjustSize();
+}
+
+void TabbedArea::setSize(int width, int height)
+{
+    gcn::Widget::setSize(width, height);
+    adjustSize();
+}
+
+void TabbedArea::setDimension(const gcn::Rectangle &dimension)
+{
+    gcn::Widget::setDimension(dimension);
+    adjustSize();
 }
 
 void TabbedArea::keyPressed(gcn::KeyEvent& keyEvent)
@@ -519,4 +653,14 @@ void TabbedArea::keyPressed(gcn::KeyEvent& keyEvent)
 
         keyEvent.consume();
     }
+}
+
+void TabbedArea::death(const gcn::Event &event)
+{
+    Tab *const tab = dynamic_cast<Tab*>(event.getSource());
+
+    if (tab)
+        removeTab(tab);
+    else
+        gcn::BasicContainer::death(event);
 }

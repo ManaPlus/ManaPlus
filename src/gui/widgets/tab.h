@@ -23,19 +23,25 @@
 #ifndef TAB_H
 #define TAB_H
 
+#include <guichan/basiccontainer.hpp>
+#include <guichan/mouselistener.hpp>
+
 #include <guichan/widgets/label.hpp>
-#include <guichan/widgets/tab.hpp>
+
 #include <guichan/widgetlistener.hpp>
 
 class GraphicsVertexes;
 class ImageRect;
+class Label;
 class TabbedArea;
 
 /**
  * A tab, the same as the Guichan tab in 0.8, but extended to allow
  * transparency.
  */
-class Tab : public gcn::Tab, public gcn::WidgetListener
+class Tab : public gcn::BasicContainer,
+            public gcn::MouseListener,
+            public gcn::WidgetListener
 {
     public:
         Tab();
@@ -99,14 +105,34 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
 
         void setLabelFont(gcn::Font *const font);
 
-        gcn::Label *getLabel() const
+        Label *getLabel() const
         { return mLabel; }
+
+        void adjustSize();
+
+        void setTabbedArea(TabbedArea* tabbedArea);
+
+        TabbedArea* getTabbedArea();
+
+        void setCaption(const std::string& caption);
+
+        const std::string &getCaption() const;
+
+        void mouseEntered(gcn::MouseEvent &mouseEvent) override;
+
+        void mouseExited(gcn::MouseEvent &mouseEvent) override;
 
     protected:
         friend class TabbedArea;
 
         virtual void setCurrent()
         { }
+
+        Label* mLabel;
+
+        bool mHasMouse;
+
+        TabbedArea* mTabbedArea;
 
     private:
         /** Load images if no other instances exist yet */
