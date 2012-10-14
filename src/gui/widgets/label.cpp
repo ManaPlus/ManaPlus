@@ -48,9 +48,7 @@ Label::~Label()
 {
     mInstances --;
     if (mInstances == 0 && Theme::instance())
-    {
         Theme::instance()->unload(mSkin);
-    }
 }
 
 void Label::init()
@@ -60,8 +58,9 @@ void Label::init()
     {
         if (Theme::instance())
             mSkin = Theme::instance()->load("label.xml", "");
-        mInstances ++;
     }
+    mInstances ++;
+
     if (mSkin)
         mPadding = mSkin->getPadding();
     else
