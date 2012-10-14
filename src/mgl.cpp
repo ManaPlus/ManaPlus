@@ -20,6 +20,8 @@
 
 #include "mgl.h"
 
+#ifdef USE_OPENGL
+
 #include "localconsts.h"
 
 #define defName(name) name##_t m##name = nullptr
@@ -41,4 +43,6 @@ defName(glSamplerParameteri);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);
+#endif
+
 #endif

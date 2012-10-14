@@ -21,6 +21,9 @@
 #ifndef MGL_H
 #define MGL_H
 
+#include "main.h"
+#ifdef USE_OPENGL
+
 #define GL_GLEXT_PROTOTYPES 1
 
 #include <SDL_opengl.h>
@@ -78,4 +81,5 @@ typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);
 defNameE(wglGetExtensionsString);
 #endif
 
+#endif
 #endif
