@@ -22,6 +22,8 @@
 
 #include "gui/setup_audio.h"
 
+#include "main.h"
+
 #include "configuration.h"
 #include "sound.h"
 
@@ -126,8 +128,10 @@ Setup_Audio::Setup_Audio() :
 
     new SetupItemLabel(_("Other"), "", this);
 
+#ifdef USE_MUMBLE
     new SetupItemCheckBox(_("Enable mumble voice chat"), "",
         "enableMumble", this, "enableMumbleEvent");
+#endif
 
     new SetupItemCheckBox(_("Download music"), "",
         "download-music", this, "download-musicEvent");

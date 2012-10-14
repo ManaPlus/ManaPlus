@@ -161,6 +161,15 @@ else
 fi
 AM_CONDITIONAL(USE_INTERNALGUICHAN, test x$with_internalguichan = xyes)
 
+# Option to enable mumble support
+AC_ARG_WITH(internalguichan,[  --without-mumble        don't use mumble integration ] )
+if test "x$with_mumble" == "xno"; then
+    with_mumble=no
+else
+    with_mumble=yes
+fi
+AM_CONDITIONAL(USE_MUMBLE, test x$with_mumble = xyes)
+
 
 AC_CHECK_LIB(SDL_net, SDLNet_Init, ,
 AC_MSG_ERROR([ *** Unable to find SDL_net library]))
