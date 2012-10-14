@@ -57,3 +57,6 @@
 //#define DISABLE_RESOURCE_CACHING 1
 #define DUMP_LEAKED_RESOURCES 1
 //#define DEBUG_DUMP_LEAKS1 1
+
+//Android logging
+#define ANDROID_LOG 1

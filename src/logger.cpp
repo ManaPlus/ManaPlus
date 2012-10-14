@@ -39,11 +39,14 @@
 
 #include <sys/time.h>
 
-#ifdef __ANDROID__
+#if defined(__ANDROID__) && defined(ANDROID_LOG)
 #include <android/log.h>
-#define LOG_AND(x) __android_log_print(ANDROID_LOG_INFO, "manaplus", x)
+#define LOG_ANDROID(x) __android_log_print(ANDROID_LOG_INFO, "manaplus", x);
+#define DLOG_ANDROID(x) __android_log_print(ANDROID_LOG_VERBOSE, \
+    "manaplus", x);
 #else
-#define LOG_AND(x)
+#define LOG_ANDROID(x)
+#define DLOG_ANDROID(x)
 #endif
 
 #include "debug.h"
@@ -105,6 +108,8 @@ void Logger::dlog(std::string str)
         << static_cast<int>((tv.tv_usec / 10000) % 100)
         << "] ";
 
+    DLOG_ANDROID(str)
+
     if (mLogFile.is_open())
         mLogFile << timeStr.str() << str << std::endl;
 
@@ -136,6 +141,8 @@ void Logger::log1(const char *const buf)
         << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "")
         << static_cast<int>((tv.tv_usec / 10000) % 100)
         << "] ";
+
+    LOG_ANDROID(buf)
 
     if (mLogFile.is_open())
         mLogFile << timeStr.str() << buf << std::endl;
@@ -181,6 +188,8 @@ void Logger::log(const char *const log_text, ...)
         << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "")
         << static_cast<int>((tv.tv_usec / 10000) % 100)
         << "] ";
+
+    LOG_ANDROID(buf)
 
     if (mLogFile.is_open())
         mLogFile << timeStr.str() << buf << std::endl;
