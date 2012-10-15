@@ -4,6 +4,18 @@ AM_INIT_AUTOMAKE([1.9])
 AC_CONFIG_HEADERS([config.h:config.h.in])
 AC_LANG_CPLUSPLUS
 
+# Checks for android.
+# Enable mac build
+AC_ARG_ENABLE(androidbuild,
+[  --enable-androidbuild    Turn on android building],
+[case "${enableval}" in
+  yes) androidbuild_enabled=true
+ ;;
+  no)  androidbuild_enabled=false
+ ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-androidbuild) ;;
+esac],[androidbuild_enabled=false])
+
 # Checks for programs.
 AC_PROG_CXX
 AM_PROG_CC_C_O
@@ -14,8 +26,12 @@ AC_HEADER_TIME
 
 # Checks for library functions.
 AC_FUNC_ERROR_AT_LINE
-AC_FUNC_MALLOC
-AC_FUNC_REALLOC
+
+if test "x$androidbuild_enabled" == "xfalse"; then
+    AC_FUNC_MALLOC
+    AC_FUNC_REALLOC
+fi
+
 AC_FUNC_SELECT_ARGTYPES
 AC_FUNC_VPRINTF
 AC_CHECK_FUNCS([atexit floor getcwd gethostbyname memset mkdir select socket])
