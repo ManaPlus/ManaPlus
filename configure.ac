@@ -30,8 +30,14 @@ AC_PATH_PROG(PKG_CONFIG, pkg-config)
 AC_PATH_PROG(CURL_CONFIG, curl-config)
 
 # Checks for libraries
-AC_CHECK_LIB([pthread], [pthread_create], ,
-AC_MSG_ERROR([ *** Unable to find pthread library]))
+AC_ARG_WITH(pthread,[  --without-pthread        don't check for pthread ] )
+if test "x$with_pthread" == "xno"; then
+    without_pthread=yes
+else
+    AC_CHECK_LIB([pthread], [pthread_create], ,
+    AC_MSG_ERROR([ *** Unable to find pthread library]))
+    withoud_pthread=no
+fi
 
 
 if test -n "$SDL_CONFIG"; then
