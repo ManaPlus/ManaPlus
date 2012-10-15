@@ -1673,6 +1673,8 @@ void Client::initLocalDataDir()
         if (mLocalDataDir.empty())
             mLocalDataDir = std::string(PHYSFS_getUserDir());
         mLocalDataDir += "/Mana";
+#elif defined __ANDROID__
+	mLocalDataDir = "local";
 #else
         mLocalDataDir = std::string(PHYSFS_getUserDir()) +
             ".local/share/mana";
@@ -1717,8 +1719,7 @@ void Client::initConfigDir()
         else
             mConfigDir += "/mana/" + branding.getValue("appShort", "mana");
 #elif defined __ANDROID__
-        mConfigDir = "/mnt/sdcard/Android/data/org.evolonline.manaplus"
-            "/config/" + branding.getValue("appShort", "mana");
+        mConfigDir = "config";
 #else
         mConfigDir = std::string(PHYSFS_getUserDir()) +
             "/.config/mana/" + branding.getValue("appShort", "mana");
