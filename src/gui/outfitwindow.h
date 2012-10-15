@@ -50,7 +50,7 @@ class OutfitWindow final : public Window, private gcn::ActionListener
          */
         OutfitWindow();
 
-        A_DELETE_COPY(OutfitWindow);
+        A_DELETE_COPY(OutfitWindow)
 
         /**
          * Destructor.

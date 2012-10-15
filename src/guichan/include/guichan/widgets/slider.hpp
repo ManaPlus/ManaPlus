@@ -91,7 +91,7 @@ namespace gcn
          */
         Slider(const double scaleStart, const double scaleEnd);
 
-        A_DELETE_COPY(Slider);
+        A_DELETE_COPY(Slider)
 
         /**
          * Destructor.

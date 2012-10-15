@@ -78,7 +78,7 @@ public:
         }
     }
 
-    A_DELETE_COPY(ItemsModal);
+    A_DELETE_COPY(ItemsModal)
 
     virtual ~ItemsModal()
     { }

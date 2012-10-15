@@ -36,7 +36,7 @@ class TestLauncher
     public:
         TestLauncher(std::string test);
 
-        A_DELETE_COPY(TestLauncher);
+        A_DELETE_COPY(TestLauncher)
 
         ~TestLauncher();
 

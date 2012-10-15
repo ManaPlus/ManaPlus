@@ -47,7 +47,7 @@ class Logger final
          */
         Logger();
 
-        A_DELETE_COPY(Logger);
+        A_DELETE_COPY(Logger)
 
         /**
          * Destructor, closes log file.

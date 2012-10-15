@@ -33,7 +33,7 @@ class BattleTab final : public ChatTab
     public:
         BattleTab();
 
-        A_DELETE_COPY(BattleTab);
+        A_DELETE_COPY(BattleTab)
 
         ~BattleTab();
 

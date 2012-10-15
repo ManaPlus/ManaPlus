@@ -42,7 +42,7 @@ class FlowContainer final : public Container,
          */
         FlowContainer(const int boxWidth, const int boxHeight);
 
-        A_DELETE_COPY(FlowContainer);
+        A_DELETE_COPY(FlowContainer)
 
         /**
          * Destructor.

@@ -110,7 +110,7 @@ namespace gcn
          */
         Graphics();
 
-        A_DELETE_COPY(Graphics);
+        A_DELETE_COPY(Graphics)
 
         /**
          * Destructor.

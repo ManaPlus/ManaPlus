@@ -103,7 +103,7 @@ namespace gcn
          */
         Gui();
 
-        A_DELETE_COPY(Gui);
+        A_DELETE_COPY(Gui)
 
         /**
          * Destructor.

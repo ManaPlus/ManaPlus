@@ -59,7 +59,7 @@ class Download final
         Download(void *ptr, const std::string &url,
                  DownloadUpdate updateFunction, bool ignoreError = false);
 
-        A_DELETE_COPY(Download);
+        A_DELETE_COPY(Download)
 
         ~Download();
 

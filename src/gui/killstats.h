@@ -47,7 +47,7 @@ class KillStats final : public Window,
          */
         KillStats();
 
-        A_DELETE_COPY(KillStats);
+        A_DELETE_COPY(KillStats)
 
         /**
          * Destructor.

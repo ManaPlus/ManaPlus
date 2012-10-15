@@ -40,7 +40,7 @@ struct SpecialInfo final
         rechargeCurrent(0)
     { }
 
-    A_DELETE_COPY(SpecialInfo);
+    A_DELETE_COPY(SpecialInfo)
 
     enum TargetMode
     {

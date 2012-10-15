@@ -76,7 +76,7 @@ class LocalPlayer final : public Being,
          */
         LocalPlayer(const int id = 65535, const int subtype = 0);
 
-        A_DELETE_COPY(LocalPlayer);
+        A_DELETE_COPY(LocalPlayer)
 
         /**
          * Destructor.

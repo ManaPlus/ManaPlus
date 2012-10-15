@@ -52,7 +52,7 @@ class SimpleAnimation final
         SimpleAnimation(const XmlNodePtr animationNode,
                         const std::string& dyePalettes = std::string());
 
-        A_DELETE_COPY(SimpleAnimation);
+        A_DELETE_COPY(SimpleAnimation)
 
         ~SimpleAnimation();
 

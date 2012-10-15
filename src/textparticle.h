@@ -35,7 +35,7 @@ class TextParticle final : public Particle
                      const gcn::Color *const color,
                      gcn::Font *const font, const bool outline = false);
 
-        A_DELETE_COPY(TextParticle);
+        A_DELETE_COPY(TextParticle)
 
         /**
          * Draws the particle image.

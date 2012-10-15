@@ -35,7 +35,7 @@ class Setup_Players final : public SetupTabScroll
     public:
         Setup_Players();
 
-        A_DELETE_COPY(Setup_Players);
+        A_DELETE_COPY(Setup_Players)
 
         void apply();
 };

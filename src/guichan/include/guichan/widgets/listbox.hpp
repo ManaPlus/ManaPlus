@@ -86,7 +86,7 @@ namespace gcn
          */
         ListBox(ListModel *listModel);
 
-        A_DELETE_COPY(ListBox);
+        A_DELETE_COPY(ListBox)
 
         /**
          * Destructor.

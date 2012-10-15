@@ -45,7 +45,7 @@ class EmoteShortcutContainer final : public ShortcutContainer
          */
         EmoteShortcutContainer();
 
-        A_DELETE_COPY(EmoteShortcutContainer);
+        A_DELETE_COPY(EmoteShortcutContainer)
 
         /**
          * Destructor.

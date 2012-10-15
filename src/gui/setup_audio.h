@@ -34,7 +34,7 @@ class Setup_Audio final : public SetupTabScroll
     public:
         Setup_Audio();
 
-        A_DELETE_COPY(Setup_Audio);
+        A_DELETE_COPY(Setup_Audio)
 
         ~Setup_Audio();
 

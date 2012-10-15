@@ -53,7 +53,7 @@ class WindowMenu final : public Container,
     public:
         WindowMenu();
 
-        A_DELETE_COPY(WindowMenu);
+        A_DELETE_COPY(WindowMenu)
 
         ~WindowMenu();
 

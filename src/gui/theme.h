@@ -47,7 +47,7 @@ class Skin final
              const int padding = 3, const int titlePadding = 4,
              std::map<std::string, int> *const options = nullptr);
 
-        A_DELETE_COPY(Skin);
+        A_DELETE_COPY(Skin)
 
         ~Skin();
 
@@ -130,7 +130,7 @@ class Skin final
 class Theme final : public Palette, public ConfigListener
 {
     public:
-        A_DELETE_COPY(Theme);
+        A_DELETE_COPY(Theme)
 
         static Theme *instance();
 

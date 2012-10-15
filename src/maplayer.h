@@ -46,7 +46,7 @@ class MapRowVertexes final
             images.reserve(30);
         }
 
-        A_DELETE_COPY(MapRowVertexes);
+        A_DELETE_COPY(MapRowVertexes)
 
         ~MapRowVertexes();
 
@@ -71,7 +71,7 @@ class MapObjectList final
         MapObjectList()
         { }
 
-        A_DELETE_COPY(MapObjectList);
+        A_DELETE_COPY(MapObjectList)
 
         std::vector<MapObject> objects;
 };
@@ -93,7 +93,7 @@ class MapLayer final: public ConfigListener
         MapLayer(const int x, const int y, const int width, const int height,
                  const bool isFringeLayer);
 
-        A_DELETE_COPY(MapLayer);
+        A_DELETE_COPY(MapLayer)
 
         /**
          * Destructor.
@@ -198,7 +198,7 @@ class SpecialLayer final
         SpecialLayer(const int width, const int height,
                      const bool drawSprites = false);
 
-        A_DELETE_COPY(SpecialLayer);
+        A_DELETE_COPY(SpecialLayer)
 
         ~SpecialLayer();
 
@@ -259,7 +259,7 @@ class MapItem final
 
         MapItem(const int type, std::string comment, const int x, const int y);
 
-        A_DELETE_COPY(MapItem);
+        A_DELETE_COPY(MapItem)
 
         ~MapItem();
 
@@ -305,7 +305,7 @@ class ObjectsLayer final
     public:
         ObjectsLayer(const unsigned width, const unsigned height);
 
-        A_DELETE_COPY(ObjectsLayer);
+        A_DELETE_COPY(ObjectsLayer)
 
         ~ObjectsLayer();
 

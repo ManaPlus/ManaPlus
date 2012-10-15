@@ -46,7 +46,7 @@ class ImageHelper
         ImageHelper()
         { }
 
-        A_DELETE_COPY(ImageHelper);
+        A_DELETE_COPY(ImageHelper)
 
         virtual ~ImageHelper()
         { }

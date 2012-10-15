@@ -99,7 +99,7 @@ namespace gcn
                  ScrollArea *const scrollArea = nullptr,
                  ListBox *const listBox = nullptr);
 
-        A_DELETE_COPY(DropDown);
+        A_DELETE_COPY(DropDown)
 
         /**
          * Destructor.

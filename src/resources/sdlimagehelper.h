@@ -43,7 +43,7 @@ class SDLImageHelper final : public ImageHelper
         SDLImageHelper()
         { }
 
-        A_DELETE_COPY(SDLImageHelper);
+        A_DELETE_COPY(SDLImageHelper)
 
         virtual ~SDLImageHelper()
         { }

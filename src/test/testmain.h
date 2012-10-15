@@ -34,7 +34,7 @@ class TestMain
     public:
         TestMain();
 
-        A_DELETE_COPY(TestMain);
+        A_DELETE_COPY(TestMain)
 
         int exec(const bool testAudio = true);
 

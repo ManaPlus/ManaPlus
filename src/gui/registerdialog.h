@@ -50,7 +50,7 @@ class WrongDataNoticeListener final : public gcn::ActionListener
     public:
         WrongDataNoticeListener();
 
-        A_DELETE_COPY(WrongDataNoticeListener);
+        A_DELETE_COPY(WrongDataNoticeListener)
 
         void setTarget(gcn::TextField *const textField);
 
@@ -76,7 +76,7 @@ class RegisterDialog final : public Window, public gcn::ActionListener,
          */
         RegisterDialog(LoginData *const loginData);
 
-        A_DELETE_COPY(RegisterDialog);
+        A_DELETE_COPY(RegisterDialog)
 
         /**
          * Destructor

@@ -46,7 +46,7 @@ class EquipBackend : public Equipment::Backend
             memset(mEquipment, -1, sizeof(mEquipment));
         }
 
-        A_DELETE_COPY(EquipBackend);
+        A_DELETE_COPY(EquipBackend)
 
         Item *getEquipment(int index) const
         {
@@ -142,7 +142,7 @@ class InventoryHandler : public Net::InventoryHandler
 
         InventoryHandler();
 
-        A_DELETE_COPY(InventoryHandler);
+        A_DELETE_COPY(InventoryHandler)
 
         ~InventoryHandler();
 

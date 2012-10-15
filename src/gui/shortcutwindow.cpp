@@ -48,7 +48,7 @@ class ShortcutTab final : public Tab
             setCaption(name);
         }
 
-        A_DELETE_COPY(ShortcutTab);
+        A_DELETE_COPY(ShortcutTab)
 
         ShortcutContainer* mContent;
 };

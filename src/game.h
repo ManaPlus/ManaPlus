@@ -57,7 +57,7 @@ class Game final
          */
         Game();
 
-        A_DELETE_COPY(Game);
+        A_DELETE_COPY(Game)
 
         /**
          * Destructor, cleans up the game.

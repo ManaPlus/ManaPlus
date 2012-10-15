@@ -64,7 +64,7 @@ class CharSelectDialog final : public Window,
          */
         CharSelectDialog(LoginData *const data);
 
-        A_DELETE_COPY(CharSelectDialog);
+        A_DELETE_COPY(CharSelectDialog)
 
         ~CharSelectDialog();
 

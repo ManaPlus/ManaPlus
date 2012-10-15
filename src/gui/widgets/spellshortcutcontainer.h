@@ -44,7 +44,7 @@ class SpellShortcutContainer final : public ShortcutContainer
          */
         SpellShortcutContainer(const unsigned number);
 
-        A_DELETE_COPY(SpellShortcutContainer);
+        A_DELETE_COPY(SpellShortcutContainer)
 
         /**
          * Destructor.

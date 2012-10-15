@@ -40,7 +40,7 @@ class GeneralHandler final : public MessageHandler,
     public:
         GeneralHandler();
 
-        A_DELETE_COPY(GeneralHandler);
+        A_DELETE_COPY(GeneralHandler)
 
         ~GeneralHandler();
 

@@ -76,7 +76,7 @@ class BeingEquipBackend final : public Equipment::Backend
     public:
         BeingEquipBackend(Being *const being);
 
-        A_DELETE_COPY(BeingEquipBackend);
+        A_DELETE_COPY(BeingEquipBackend)
 
         virtual ~BeingEquipBackend();
 
@@ -171,7 +171,7 @@ class Being : public ActorSprite, public ConfigListener
         Being(const int id, const Type type, const uint16_t subtype,
               Map *const map);
 
-        A_DELETE_COPY(Being);
+        A_DELETE_COPY(Being)
 
         virtual ~Being();
 

@@ -58,7 +58,7 @@ class ServersListModel final : public gcn::ListModel
         ServersListModel(ServerInfos *const servers,
                          ServerDialog *const parent);
 
-        A_DELETE_COPY(ServersListModel);
+        A_DELETE_COPY(ServersListModel)
 
         /**
          * Used to get number of line in the list
@@ -105,7 +105,7 @@ class ServerDialog : public Window,
          */
         ServerDialog(ServerInfo *const serverInfo, const std::string &dir);
 
-        A_DELETE_COPY(ServerDialog);
+        A_DELETE_COPY(ServerDialog)
 
         /**
          * Destructor

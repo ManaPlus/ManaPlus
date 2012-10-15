@@ -39,7 +39,7 @@ class SetupTab : public Container, public gcn::ActionListener
     public:
         SetupTab();
 
-        A_DELETE_COPY(SetupTab);
+        A_DELETE_COPY(SetupTab)
 
         const std::string &getName() const
         { return mName; }

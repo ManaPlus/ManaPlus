@@ -30,7 +30,7 @@
 class Units final
 {
     public:
-        A_DELETE_COPY(Units);
+        A_DELETE_COPY(Units)
 
         /**
         * Loads and parses the units.xml file (if found).

@@ -39,7 +39,7 @@ class Actor
 public:
     Actor();
 
-    A_DELETE_COPY(Actor);
+    A_DELETE_COPY(Actor)
 
     virtual ~Actor();
 

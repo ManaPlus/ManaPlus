@@ -69,7 +69,7 @@ namespace gcn
         BasicContainer()
         { }
 
-        A_DELETE_COPY(BasicContainer);
+        A_DELETE_COPY(BasicContainer)
 
         /**
          * Destructor

@@ -38,7 +38,7 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
     public:
         GameHandler();
 
-        A_DELETE_COPY(GameHandler);
+        A_DELETE_COPY(GameHandler)
 
         void handleMessage(Net::MessageIn &msg);
 

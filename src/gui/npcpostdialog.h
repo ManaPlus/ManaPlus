@@ -38,7 +38,7 @@ public:
      */
     NpcPostDialog(const int npcId);
 
-    A_DELETE_COPY(NpcPostDialog);
+    A_DELETE_COPY(NpcPostDialog)
 
     ~NpcPostDialog();
 

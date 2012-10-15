@@ -38,7 +38,7 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
     public:
         AdminHandler();
 
-        A_DELETE_COPY(AdminHandler);
+        A_DELETE_COPY(AdminHandler)
 
         void handleMessage(Net::MessageIn &msg);
 

@@ -35,7 +35,7 @@ class Setup_Chat final : public SetupTabScroll
     public:
         Setup_Chat();
 
-        A_DELETE_COPY(Setup_Chat);
+        A_DELETE_COPY(Setup_Chat)
 
         void apply();
 };

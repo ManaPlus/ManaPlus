@@ -38,7 +38,7 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
     public:
         TradeHandler();
 
-        A_DELETE_COPY(TradeHandler);
+        A_DELETE_COPY(TradeHandler)
 
         void handleMessage(Net::MessageIn &msg);
 

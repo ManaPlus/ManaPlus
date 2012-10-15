@@ -45,7 +45,7 @@ class CommandHandler final
          */
         CommandHandler();
 
-        A_DELETE_COPY(CommandHandler);
+        A_DELETE_COPY(CommandHandler)
 
         /**
          * Destructor

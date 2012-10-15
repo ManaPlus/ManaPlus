@@ -35,7 +35,7 @@ class Setup_Perfomance final : public SetupTabScroll
     public:
         Setup_Perfomance();
 
-        A_DELETE_COPY(Setup_Perfomance);
+        A_DELETE_COPY(Setup_Perfomance)
 
         void apply();
 };

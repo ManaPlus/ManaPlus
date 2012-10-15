@@ -47,7 +47,7 @@ public:
     TextDialog(const std::string &title, const std::string &msg,
                Window *const parent = nullptr, const bool isPassword = false);
 
-    A_DELETE_COPY(TextDialog);
+    A_DELETE_COPY(TextDialog)
 
     ~TextDialog();
 

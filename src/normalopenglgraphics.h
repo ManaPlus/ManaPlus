@@ -46,7 +46,7 @@ class NormalOpenGLGraphics final : public Graphics
     public:
         NormalOpenGLGraphics();
 
-        A_DELETE_COPY(NormalOpenGLGraphics);
+        A_DELETE_COPY(NormalOpenGLGraphics)
 
         ~NormalOpenGLGraphics();
 

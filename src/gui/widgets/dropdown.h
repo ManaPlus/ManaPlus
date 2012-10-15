@@ -52,7 +52,7 @@ class DropDown final : public gcn::DropDown
                  gcn::ActionListener *const listener = nullptr,
                  const std::string &eventId = "");
 
-        A_DELETE_COPY(DropDown);
+        A_DELETE_COPY(DropDown)
 
         ~DropDown();
 

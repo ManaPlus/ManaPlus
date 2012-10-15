@@ -41,7 +41,7 @@ class ItemShortcut final
          */
         ItemShortcut(const int number);
 
-        A_DELETE_COPY(ItemShortcut);
+        A_DELETE_COPY(ItemShortcut)
 
         /**
          * Destructor.

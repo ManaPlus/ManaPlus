@@ -51,7 +51,7 @@ class Resource
         {
         }
 
-        A_DELETE_COPY(Resource);
+        A_DELETE_COPY(Resource)
 
         /**
          * Increments the internal reference count.

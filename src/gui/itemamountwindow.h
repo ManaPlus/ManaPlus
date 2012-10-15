@@ -62,7 +62,7 @@ class ItemAmountWindow final : public Window,
             ShopSellAdd
         };
 
-        A_DELETE_COPY(ItemAmountWindow);
+        A_DELETE_COPY(ItemAmountWindow)
 
         /**
          * Called when receiving actions from widget.

@@ -47,7 +47,7 @@ class Setup_Colors final : public SetupTab,
     public:
         Setup_Colors();
 
-        A_DELETE_COPY(Setup_Colors);
+        A_DELETE_COPY(Setup_Colors)
 
         ~Setup_Colors();
 

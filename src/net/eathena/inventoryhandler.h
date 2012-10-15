@@ -40,7 +40,7 @@ class InventoryHandler final : public MessageHandler,
     public:
         InventoryHandler();
 
-        A_DELETE_COPY(InventoryHandler);
+        A_DELETE_COPY(InventoryHandler)
 
         ~InventoryHandler();
 

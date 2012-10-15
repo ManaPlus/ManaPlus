@@ -49,7 +49,7 @@ class Setup_Relations final : public SetupTab,
 public:
     Setup_Relations();
 
-    A_DELETE_COPY(Setup_Relations);
+    A_DELETE_COPY(Setup_Relations)
 
     virtual ~Setup_Relations();
 

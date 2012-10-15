@@ -82,7 +82,7 @@ class TextCommand final
          */
         TextCommand(const unsigned int id);
 
-        A_DELETE_COPY(TextCommand);
+        A_DELETE_COPY(TextCommand)
 
         /**
          * Destructor.

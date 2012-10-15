@@ -51,7 +51,7 @@ class ProgressBar final : public gcn::Widget, public gcn::WidgetListener
                     const int width = 40, const int height = 7,
                     const int color = -1);
 
-        A_DELETE_COPY(ProgressBar);
+        A_DELETE_COPY(ProgressBar)
 
         ~ProgressBar();
 

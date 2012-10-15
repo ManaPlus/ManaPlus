@@ -39,7 +39,7 @@ class RotationalParticle final : public ImageParticle
         RotationalParticle(Map *const map, const XmlNodePtr animationNode,
                            const std::string& dyePalettes = std::string());
 
-        A_DELETE_COPY(RotationalParticle);
+        A_DELETE_COPY(RotationalParticle)
 
         ~RotationalParticle();
 

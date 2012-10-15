@@ -34,7 +34,7 @@ class BeingHandler : public Net::BeingHandler
     public:
         BeingHandler(bool enableSync);
 
-        A_DELETE_COPY(BeingHandler);
+        A_DELETE_COPY(BeingHandler)
 
     protected:
         virtual void requestNameById(int id) = 0;

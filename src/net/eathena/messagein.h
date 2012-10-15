@@ -46,7 +46,7 @@ class MessageIn final : public Net::MessageIn
          */
         MessageIn(const char *data, unsigned int length);
 
-        A_DELETE_COPY(MessageIn);
+        A_DELETE_COPY(MessageIn)
 
         int16_t readInt16();            /**< Reads a short. */
         int readInt32();            /**< Reads a long. */

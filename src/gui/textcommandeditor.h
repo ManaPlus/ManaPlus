@@ -50,7 +50,7 @@ class TextCommandEditor final : public Window, public gcn::ActionListener
          */
         TextCommandEditor(TextCommand *const command);
 
-        A_DELETE_COPY(TextCommandEditor);
+        A_DELETE_COPY(TextCommandEditor)
 
         /**
          * Destructor.

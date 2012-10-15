@@ -85,7 +85,7 @@ namespace gcn
          */
         Button(const std::string& caption);
 
-        A_DELETE_COPY(Button);
+        A_DELETE_COPY(Button)
 
         /**
          * Sets the caption of the button. It's advisable to call

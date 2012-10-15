@@ -58,7 +58,7 @@ class ScrollArea final : public gcn::ScrollArea, public gcn::WidgetListener
         ScrollArea(gcn::Widget *const widget, const bool opaque = true,
                    const std::string &skin = "");
 
-        A_DELETE_COPY(ScrollArea);
+        A_DELETE_COPY(ScrollArea)
 
         /**
          * Destructor. Also deletes the content.

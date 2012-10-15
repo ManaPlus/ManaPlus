@@ -35,7 +35,7 @@ class GuildHandler : public Net::GuildHandler
     public:
         GuildHandler();
 
-        A_DELETE_COPY(GuildHandler);
+        A_DELETE_COPY(GuildHandler)
 
         ~GuildHandler();
 

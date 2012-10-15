@@ -49,7 +49,7 @@ struct Attack final
     {
     }
 
-    A_DELETE_COPY(Attack);
+    A_DELETE_COPY(Attack)
 };
 
 typedef std::map<int, Attack*> Attacks;
@@ -83,7 +83,7 @@ class BeingInfo final
 
         BeingInfo();
 
-        A_DELETE_COPY(BeingInfo);
+        A_DELETE_COPY(BeingInfo)
 
         ~BeingInfo();
 

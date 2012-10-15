@@ -36,7 +36,7 @@ class CompoundItem final
     public:
         CompoundItem();
 
-        A_DELETE_COPY(CompoundItem);
+        A_DELETE_COPY(CompoundItem)
 
         ~CompoundItem();
 
@@ -54,7 +54,7 @@ public:
 
     CompoundSprite();
 
-    A_DELETE_COPY(CompoundSprite);
+    A_DELETE_COPY(CompoundSprite)
 
     ~CompoundSprite();
 

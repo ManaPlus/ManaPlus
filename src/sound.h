@@ -53,7 +53,7 @@ class Sound final : public ConfigListener
     public:
         Sound();
 
-        A_DELETE_COPY(Sound);
+        A_DELETE_COPY(Sound)
 
         ~Sound();
 

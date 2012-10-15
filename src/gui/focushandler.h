@@ -40,7 +40,7 @@ class FocusHandler final : public gcn::FocusHandler
         FocusHandler()
         { }
 
-        A_DELETE_COPY(FocusHandler);
+        A_DELETE_COPY(FocusHandler)
 
         /**
          * Sets modal focus to a widget. When there is already a modal widget

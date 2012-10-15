@@ -70,7 +70,7 @@ namespace gcn
          */
         Event(Widget *const source);
 
-        A_DELETE_COPY(Event);
+        A_DELETE_COPY(Event)
 
         /**
          * Destructor.

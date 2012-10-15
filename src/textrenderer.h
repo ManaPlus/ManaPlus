@@ -32,7 +32,7 @@
 class TextRenderer final
 {
     public:
-        A_DELETE_COPY(TextRenderer);
+        A_DELETE_COPY(TextRenderer)
 
     /**
      * Renders a specified text.

@@ -38,7 +38,7 @@ class BeingPopup final : public Popup
          */
         BeingPopup();
 
-        A_DELETE_COPY(BeingPopup);
+        A_DELETE_COPY(BeingPopup)
 
         /**
          * Destructor. Cleans up the being popup on deletion.

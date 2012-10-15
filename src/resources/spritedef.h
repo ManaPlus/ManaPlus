@@ -49,7 +49,7 @@ struct SpriteReference final
     {
     }
 
-    A_DELETE_COPY(SpriteReference);
+    A_DELETE_COPY(SpriteReference)
 
     std::string sprite;
     int variant;
@@ -112,7 +112,7 @@ enum SpriteDirection
 class SpriteDef final : public Resource
 {
     public:
-        A_DELETE_COPY(SpriteDef);
+        A_DELETE_COPY(SpriteDef)
 
         /**
          * Loads a sprite definition file.

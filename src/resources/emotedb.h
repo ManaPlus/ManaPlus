@@ -37,7 +37,7 @@ struct EmoteSprite final
         sprite(nullptr)
     { }
 
-    A_DELETE_COPY(EmoteSprite);
+    A_DELETE_COPY(EmoteSprite)
 
     const AnimatedSprite *sprite;
     std::string name;
@@ -48,7 +48,7 @@ struct EmoteInfo final
     EmoteInfo()
     { }
 
-    A_DELETE_COPY(EmoteInfo);
+    A_DELETE_COPY(EmoteInfo)
 
     std::list<EmoteSprite*> sprites;
     StringVect particles;

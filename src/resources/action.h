@@ -37,7 +37,7 @@ class Action final
     public:
         Action();
 
-        A_DELETE_COPY(Action);
+        A_DELETE_COPY(Action)
 
         ~Action();
 

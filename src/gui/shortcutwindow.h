@@ -48,7 +48,7 @@ class ShortcutWindow final : public Window
         ShortcutWindow(const std::string &title, std::string skinFile = "",
                        const int width = 0, const int height = 0);
 
-        A_DELETE_COPY(ShortcutWindow);
+        A_DELETE_COPY(ShortcutWindow)
 
         /**
          * Destructor.

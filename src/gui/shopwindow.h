@@ -65,7 +65,7 @@ class ShopWindow final : public Window, public gcn::ActionListener,
          */
         ShopWindow();
 
-        A_DELETE_COPY(ShopWindow);
+        A_DELETE_COPY(ShopWindow)
 
         /**
          * Destructor

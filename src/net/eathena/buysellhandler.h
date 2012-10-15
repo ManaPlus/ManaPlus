@@ -37,7 +37,7 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
     public:
         BuySellHandler();
 
-        A_DELETE_COPY(BuySellHandler);
+        A_DELETE_COPY(BuySellHandler)
 
         virtual void handleMessage(Net::MessageIn &msg);
 

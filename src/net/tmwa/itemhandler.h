@@ -35,7 +35,7 @@ class ItemHandler final : public MessageHandler, public Ea::ItemHandler
     public:
         ItemHandler();
 
-        A_DELETE_COPY(ItemHandler);
+        A_DELETE_COPY(ItemHandler)
 
         virtual void handleMessage(Net::MessageIn &msg);
 };

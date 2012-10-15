@@ -84,7 +84,7 @@ class EditServerDialog final : public Window,
         EditServerDialog(ServerDialog *const parent, ServerInfo server,
                          const int index);
 
-        A_DELETE_COPY(EditServerDialog);
+        A_DELETE_COPY(EditServerDialog)
 
         ~EditServerDialog();
 

@@ -64,7 +64,7 @@ class SellDialog final : public Window,
          */
         SellDialog(std::string nick);
 
-        A_DELETE_COPY(SellDialog);
+        A_DELETE_COPY(SellDialog)
 
         /**
          * Destructor

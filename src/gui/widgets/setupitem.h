@@ -69,7 +69,7 @@ class SetupItem : public gcn::ActionListener
                   std::string eventName, std::string def,
                   const bool mainConfig);
 
-        A_DELETE_COPY(SetupItem);
+        A_DELETE_COPY(SetupItem)
 
         ~SetupItem();
 
@@ -144,7 +144,7 @@ class SetupItemCheckBox final : public SetupItem
                           std::string eventName, std::string def,
                           const bool mainConfig = true);
 
-        A_DELETE_COPY(SetupItemCheckBox);
+        A_DELETE_COPY(SetupItemCheckBox)
 
         ~SetupItemCheckBox();
 
@@ -171,7 +171,7 @@ class SetupItemTextField final : public SetupItem
                            std::string eventName, std::string def,
                            const bool mainConfig = true);
 
-        A_DELETE_COPY(SetupItemTextField);
+        A_DELETE_COPY(SetupItemTextField)
 
         ~SetupItemTextField();
 
@@ -210,7 +210,7 @@ class SetupItemIntTextField final : public SetupItem
                               const int min, const int max,
                               std::string def, const bool mainConfig = true);
 
-        A_DELETE_COPY(SetupItemIntTextField);
+        A_DELETE_COPY(SetupItemIntTextField)
 
         ~SetupItemIntTextField();
 
@@ -241,7 +241,7 @@ class SetupItemLabel final : public SetupItem
                        SetupTabScroll *const parent,
                        const bool separator = true);
 
-        A_DELETE_COPY(SetupItemLabel);
+        A_DELETE_COPY(SetupItemLabel)
 
         ~SetupItemLabel();
 
@@ -273,7 +273,7 @@ class SetupItemDropDown final : public SetupItem
                           std::string eventName, gcn::ListModel *const model,
                           std::string def, const bool mainConfig = true);
 
-        A_DELETE_COPY(SetupItemDropDown);
+        A_DELETE_COPY(SetupItemDropDown)
 
         ~SetupItemDropDown();
 
@@ -308,7 +308,7 @@ class SetupItemSlider final : public SetupItem
                         const bool onTheFly = false,
                         const bool mainConfig = true);
 
-        A_DELETE_COPY(SetupItemSlider);
+        A_DELETE_COPY(SetupItemSlider)
 
         ~SetupItemSlider();
 
@@ -357,7 +357,7 @@ class SetupItemSlider2 final : public SetupItem
                          const bool mainConfig = true,
                          const bool doNotAlign = false);
 
-        A_DELETE_COPY(SetupItemSlider2);
+        A_DELETE_COPY(SetupItemSlider2)
 
         ~SetupItemSlider2();
 
@@ -407,7 +407,7 @@ class SetupItemSliderList : public SetupItem
                             const bool onTheFly = false,
                             const bool mainConfig = true);
 
-        A_DELETE_COPY(SetupItemSliderList);
+        A_DELETE_COPY(SetupItemSliderList)
 
         ~SetupItemSliderList();
 
@@ -441,7 +441,7 @@ class SetupItemSound final : public SetupItemSliderList
                        const int width = 150, const bool onTheFly = false,
                        const bool mainConfig = true);
 
-        A_DELETE_COPY(SetupItemSound);
+        A_DELETE_COPY(SetupItemSound)
 
         void action(const gcn::ActionEvent &event) override;
 

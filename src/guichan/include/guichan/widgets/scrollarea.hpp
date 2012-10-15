@@ -105,7 +105,7 @@ namespace gcn
                    ScrollPolicy hPolicy, 
                    ScrollPolicy vPolicy);
 
-        A_DELETE_COPY(ScrollArea);
+        A_DELETE_COPY(ScrollArea)
 
         /**
          * Destructor.

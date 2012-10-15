@@ -38,7 +38,7 @@ class PartyHandler : public Net::PartyHandler
     public:
         PartyHandler();
 
-        A_DELETE_COPY(PartyHandler);
+        A_DELETE_COPY(PartyHandler)
 
         ~PartyHandler();
 

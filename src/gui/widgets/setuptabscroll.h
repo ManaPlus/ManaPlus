@@ -37,7 +37,7 @@ class SetupTabScroll : public SetupTab
     public:
         SetupTabScroll();
 
-        A_DELETE_COPY(SetupTabScroll);
+        A_DELETE_COPY(SetupTabScroll)
 
         ~SetupTabScroll();
 

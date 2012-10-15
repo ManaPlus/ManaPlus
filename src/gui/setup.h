@@ -51,7 +51,7 @@ class Setup final : public Window, public gcn::ActionListener
     public:
         Setup();
 
-        A_DELETE_COPY(Setup);
+        A_DELETE_COPY(Setup)
 
         ~Setup();
 

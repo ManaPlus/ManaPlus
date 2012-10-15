@@ -34,7 +34,7 @@ class TabStrip final : public WidgetGroup
 
         TabStrip(const int height, const int spacing = 0);
 
-        A_DELETE_COPY(TabStrip);
+        A_DELETE_COPY(TabStrip)
 
         gcn::Widget *createWidget(const std::string &name) override;
 

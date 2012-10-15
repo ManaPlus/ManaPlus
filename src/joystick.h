@@ -69,7 +69,7 @@ class Joystick final
          */
         Joystick(const int no);
 
-        A_DELETE_COPY(Joystick);
+        A_DELETE_COPY(Joystick)
 
         ~Joystick();
 

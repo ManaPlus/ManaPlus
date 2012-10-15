@@ -53,7 +53,7 @@ class OpenGLImageHelper final : public ImageHelper
         {
         }
 
-        A_DELETE_COPY(OpenGLImageHelper);
+        A_DELETE_COPY(OpenGLImageHelper)
 
         virtual ~OpenGLImageHelper()
         { }

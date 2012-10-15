@@ -94,7 +94,7 @@ class InputManager final
     public:
         InputManager();
 
-        A_DELETE_COPY(InputManager);
+        A_DELETE_COPY(InputManager)
 
         void init();
 

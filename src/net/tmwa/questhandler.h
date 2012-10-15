@@ -38,7 +38,7 @@ class QuestHandler final : public MessageHandler
     public:
         QuestHandler();
 
-        A_DELETE_COPY(QuestHandler);
+        A_DELETE_COPY(QuestHandler)
 
         void handleMessage(Net::MessageIn &msg);
 

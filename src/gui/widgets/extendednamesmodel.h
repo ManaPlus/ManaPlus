@@ -32,7 +32,7 @@ class ExtendedNamesModel : public ExtendedListModel
     public:
         ExtendedNamesModel();
 
-        A_DELETE_COPY(ExtendedNamesModel);
+        A_DELETE_COPY(ExtendedNamesModel)
 
         virtual ~ExtendedNamesModel();
 

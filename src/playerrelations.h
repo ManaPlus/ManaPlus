@@ -64,7 +64,7 @@ struct PlayerRelation final
 
     PlayerRelation(const Relation relation);
 
-    A_DELETE_COPY(PlayerRelation);
+    A_DELETE_COPY(PlayerRelation)
 
     Relation mRelation; // bitmask for all of the above
 };
@@ -111,7 +111,7 @@ class PlayerRelationsManager final
     public:
         PlayerRelationsManager();
 
-        A_DELETE_COPY(PlayerRelationsManager);
+        A_DELETE_COPY(PlayerRelationsManager)
 
         ~PlayerRelationsManager();
 

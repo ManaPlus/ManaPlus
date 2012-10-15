@@ -38,7 +38,7 @@ class SpellShortcut final
          */
         SpellShortcut();
 
-        A_DELETE_COPY(SpellShortcut);
+        A_DELETE_COPY(SpellShortcut)
 
         /**
          * Destructor.

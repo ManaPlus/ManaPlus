@@ -83,7 +83,7 @@ public:
         }
     }
 
-    A_DELETE_COPY(IconsModal);
+    A_DELETE_COPY(IconsModal)
 
     virtual ~IconsModal()
     { }

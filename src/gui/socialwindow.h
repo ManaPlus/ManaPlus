@@ -54,7 +54,7 @@ class SocialWindow final : public Window, private gcn::ActionListener
 public:
     SocialWindow();
 
-    A_DELETE_COPY(SocialWindow);
+    A_DELETE_COPY(SocialWindow)
 
     ~SocialWindow();
 

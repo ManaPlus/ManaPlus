@@ -49,7 +49,7 @@ class TabbedArea final : public gcn::ActionListener,
          */
         TabbedArea();
 
-        A_DELETE_COPY(TabbedArea);
+        A_DELETE_COPY(TabbedArea)
 
         ~TabbedArea();
 

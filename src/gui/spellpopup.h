@@ -44,7 +44,7 @@ class SpellPopup final : public Popup
          */
         SpellPopup();
 
-        A_DELETE_COPY(SpellPopup);
+        A_DELETE_COPY(SpellPopup)
 
         /**
          * Destructor. Cleans up the item popup on deletion.

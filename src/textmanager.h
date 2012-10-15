@@ -41,7 +41,7 @@ class TextManager final
          */
         TextManager();
 
-        A_DELETE_COPY(TextManager);
+        A_DELETE_COPY(TextManager)
 
         /**
          * Destroy the manager

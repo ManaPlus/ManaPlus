@@ -57,7 +57,7 @@ class HelpWindow final : public Window, public LinkHandler,
          */
         HelpWindow();
 
-        A_DELETE_COPY(HelpWindow);
+        A_DELETE_COPY(HelpWindow)
 
         /**
          * Called when receiving actions from the widgets.

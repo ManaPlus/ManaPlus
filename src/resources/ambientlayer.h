@@ -44,7 +44,7 @@ class AmbientLayer final
                      const float speedX, const float speedY,
                      const bool keepRatio = false);
 
-        A_DELETE_COPY(AmbientLayer);
+        A_DELETE_COPY(AmbientLayer)
 
         ~AmbientLayer();
 

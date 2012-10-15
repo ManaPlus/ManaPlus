@@ -33,7 +33,7 @@ class StatusEffect final
 public:
     StatusEffect();
 
-    A_DELETE_COPY(StatusEffect);
+    A_DELETE_COPY(StatusEffect)
 
     ~StatusEffect();
 

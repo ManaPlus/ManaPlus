@@ -46,7 +46,7 @@ class GraphicsManager final
     public:
         GraphicsManager();
 
-        A_DELETE_COPY(GraphicsManager);
+        A_DELETE_COPY(GraphicsManager)
 
         virtual ~GraphicsManager();
 

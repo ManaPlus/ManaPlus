@@ -96,7 +96,7 @@ class ChatWindow final : public Window,
          */
         ChatWindow();
 
-        A_DELETE_COPY(ChatWindow);
+        A_DELETE_COPY(ChatWindow)
 
         /**
          * Destructor: used to write back values to the config file

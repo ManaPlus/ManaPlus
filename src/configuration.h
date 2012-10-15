@@ -227,7 +227,7 @@ class Configuration final : public ConfigurationObject
     public:
         Configuration();
 
-        A_DELETE_COPY(Configuration);
+        A_DELETE_COPY(Configuration)
 
         ~Configuration();
 

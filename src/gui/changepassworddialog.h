@@ -52,7 +52,7 @@ class ChangePasswordDialog final : public Window, public gcn::ActionListener
          */
         ChangePasswordDialog(LoginData *const data);
 
-        A_DELETE_COPY(ChangePasswordDialog);
+        A_DELETE_COPY(ChangePasswordDialog)
 
         /**
          * Destructor

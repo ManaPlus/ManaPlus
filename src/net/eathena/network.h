@@ -48,7 +48,7 @@ class Network final : public Ea::Network
     public:
         Network();
 
-        A_DELETE_COPY(Network);
+        A_DELETE_COPY(Network)
 
         ~Network();
 

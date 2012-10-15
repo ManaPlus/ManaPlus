@@ -36,7 +36,7 @@ class Mutex
     public:
         Mutex();
 
-        A_DELETE_COPY(Mutex);
+        A_DELETE_COPY(Mutex)
 
         ~Mutex();
 

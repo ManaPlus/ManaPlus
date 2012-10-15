@@ -63,7 +63,7 @@ class UpdateTypeModel final : public gcn::ListModel
         UpdateTypeModel()
         { }
 
-        A_DELETE_COPY(UpdateTypeModel);
+        A_DELETE_COPY(UpdateTypeModel)
 
         virtual ~UpdateTypeModel()
         { }
@@ -91,7 +91,7 @@ class UpdateListModel final : public gcn::ListModel
         {
         }
 
-        A_DELETE_COPY(UpdateListModel);
+        A_DELETE_COPY(UpdateListModel)
 
         virtual ~UpdateListModel()
         { }

@@ -35,7 +35,7 @@
 class SoundEffect final : public Resource
 {
     public:
-        A_DELETE_COPY(SoundEffect);
+        A_DELETE_COPY(SoundEffect)
 
         /**
          * Destructor.

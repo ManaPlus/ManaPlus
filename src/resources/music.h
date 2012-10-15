@@ -39,7 +39,7 @@ class Music final : public Resource
             mMusic(nullptr)
         { }
 
-        A_DELETE_COPY(Music);
+        A_DELETE_COPY(Music)
 
         /**
          * Destructor.

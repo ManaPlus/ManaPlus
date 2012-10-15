@@ -50,7 +50,7 @@ class Tab : public gcn::BasicContainer,
     public:
         Tab();
 
-        A_DELETE_COPY(Tab);
+        A_DELETE_COPY(Tab)
 
         ~Tab();
 

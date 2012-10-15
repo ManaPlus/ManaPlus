@@ -35,7 +35,7 @@ class GuildManager final
     public:
         GuildManager();
 
-        A_DELETE_COPY(GuildManager);
+        A_DELETE_COPY(GuildManager)
 
         ~GuildManager();
 

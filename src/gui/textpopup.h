@@ -42,7 +42,7 @@ class TextPopup final : public Popup
          */
         TextPopup();
 
-        A_DELETE_COPY(TextPopup);
+        A_DELETE_COPY(TextPopup)
 
         /**
          * Destructor. Cleans up the item popup on deletion.

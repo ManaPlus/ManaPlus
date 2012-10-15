@@ -40,7 +40,7 @@ class DropShortcut final
          */
         DropShortcut();
 
-        A_DELETE_COPY(DropShortcut);
+        A_DELETE_COPY(DropShortcut)
 
         /**
          * Destructor.

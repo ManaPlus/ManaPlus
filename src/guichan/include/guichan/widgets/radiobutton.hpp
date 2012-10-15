@@ -89,7 +89,7 @@ namespace gcn
                     const std::string &group,
                     bool selected = false);
 
-        A_DELETE_COPY(RadioButton);
+        A_DELETE_COPY(RadioButton)
 
         /**
          * Destructor.

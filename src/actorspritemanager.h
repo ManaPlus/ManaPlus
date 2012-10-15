@@ -38,7 +38,7 @@ class ActorSpriteManager final: public ConfigListener
     public:
         ActorSpriteManager();
 
-        A_DELETE_COPY(ActorSpriteManager);
+        A_DELETE_COPY(ActorSpriteManager)
 
         ~ActorSpriteManager();
 

@@ -62,7 +62,7 @@ class ResourceManager final
 
         ResourceManager();
 
-        A_DELETE_COPY(ResourceManager);
+        A_DELETE_COPY(ResourceManager)
 
         /**
          * Destructor. Cleans up remaining resources, warning about resources

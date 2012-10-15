@@ -53,7 +53,7 @@ class QuitDialog final : public Window, public gcn::ActionListener,
          */
         QuitDialog(QuitDialog **const pointerToMe);
 
-        A_DELETE_COPY(QuitDialog);
+        A_DELETE_COPY(QuitDialog)
 
         /**
          * Destructor

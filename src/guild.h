@@ -39,7 +39,7 @@ typedef std::map<unsigned, std::string> PositionsMap;
 class GuildMember final : public Avatar
 {
 public:
-    A_DELETE_COPY(GuildMember);
+    A_DELETE_COPY(GuildMember)
 
     Guild *getGuild() const
     { return mGuild; }
@@ -67,7 +67,7 @@ protected:
 class Guild final : public AvatarListModel
 {
 public:
-    A_DELETE_COPY(Guild);
+    A_DELETE_COPY(Guild)
 
     virtual ~Guild();
 

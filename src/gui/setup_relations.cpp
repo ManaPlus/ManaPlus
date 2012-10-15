@@ -102,7 +102,7 @@ public:
         playerRelationsUpdated();
     }
 
-    A_DELETE_COPY(PlayerTableModel);
+    A_DELETE_COPY(PlayerTableModel)
 
     virtual ~PlayerTableModel()
     {

@@ -47,7 +47,7 @@ class BuySellDialog final : public Window, public gcn::ActionListener
 
         BuySellDialog(std::string nick);
 
-        A_DELETE_COPY(BuySellDialog);
+        A_DELETE_COPY(BuySellDialog)
 
         virtual ~BuySellDialog();
 

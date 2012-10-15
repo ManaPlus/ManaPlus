@@ -33,7 +33,7 @@ class PoParser final
     public:
         PoParser();
 
-        A_DELETE_COPY(PoParser);
+        A_DELETE_COPY(PoParser)
 
         PoDict *load(const std::string &lang,
                      const std::string &fileName = "",

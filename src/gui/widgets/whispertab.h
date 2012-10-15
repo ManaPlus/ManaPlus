@@ -33,7 +33,7 @@ class Channel;
 class WhisperTab final : public ChatTab
 {
     public:
-        A_DELETE_COPY(WhisperTab);
+        A_DELETE_COPY(WhisperTab)
 
         const std::string &getNick() const
         { return mNick; }

@@ -33,7 +33,7 @@ class PoDict final
     public:
         PoDict(std::string lang);
 
-        A_DELETE_COPY(PoDict);
+        A_DELETE_COPY(PoDict)
 
         ~PoDict();
 

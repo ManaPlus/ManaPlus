@@ -80,7 +80,7 @@ class QuestsModel final : public ExtendedNamesModel
         {
         }
 
-        A_DELETE_COPY(QuestsModel);
+        A_DELETE_COPY(QuestsModel)
 
         virtual ~QuestsModel()
         { }

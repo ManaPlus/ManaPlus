@@ -37,7 +37,7 @@ class ProgressIndicator final : public gcn::Widget
     public:
         ProgressIndicator();
 
-        A_DELETE_COPY(ProgressIndicator);
+        A_DELETE_COPY(ProgressIndicator)
 
         ~ProgressIndicator();
 

@@ -34,7 +34,7 @@ class ChannelManager final
 {
 public:
     ChannelManager();
-    A_DELETE_COPY(ChannelManager);
+    A_DELETE_COPY(ChannelManager)
     ~ChannelManager();
 
     Channel *findById(const int id) const;

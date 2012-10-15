@@ -68,7 +68,7 @@ public:
 
     ActorSprite(const int id);
 
-    A_DELETE_COPY(ActorSprite);
+    A_DELETE_COPY(ActorSprite)
 
     ~ActorSprite();
 

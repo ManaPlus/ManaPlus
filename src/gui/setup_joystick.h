@@ -42,7 +42,7 @@ class Setup_Joystick final : public SetupTab
     public:
         Setup_Joystick();
 
-        A_DELETE_COPY(Setup_Joystick);
+        A_DELETE_COPY(Setup_Joystick)
 
         ~Setup_Joystick();
 

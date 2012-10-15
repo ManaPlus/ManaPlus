@@ -61,7 +61,7 @@ class AttrDisplay : public Container
             UNKNOWN
         };
 
-        A_DELETE_COPY(AttrDisplay);
+        A_DELETE_COPY(AttrDisplay)
 
         ~AttrDisplay();
 
@@ -94,7 +94,7 @@ class DerDisplay final : public AttrDisplay
     public:
         DerDisplay(const int id, const std::string &name);
 
-        A_DELETE_COPY(DerDisplay);
+        A_DELETE_COPY(DerDisplay)
 
         virtual Type getType() const
         { return DERIVED; }
@@ -105,7 +105,7 @@ class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
     public:
         ChangeDisplay(const int id, const std::string &name);
 
-        A_DELETE_COPY(ChangeDisplay);
+        A_DELETE_COPY(ChangeDisplay)
 
         std::string update();
 

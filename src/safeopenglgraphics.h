@@ -41,7 +41,7 @@ class SafeOpenGLGraphics final : public Graphics
     public:
         SafeOpenGLGraphics();
 
-        A_DELETE_COPY(SafeOpenGLGraphics);
+        A_DELETE_COPY(SafeOpenGLGraphics)
 
         ~SafeOpenGLGraphics();
 

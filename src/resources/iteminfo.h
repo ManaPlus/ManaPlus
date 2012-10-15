@@ -105,7 +105,7 @@ class ItemInfo final
          */
         ItemInfo();
 
-        A_DELETE_COPY(ItemInfo);
+        A_DELETE_COPY(ItemInfo)
 
         ~ItemInfo();
 

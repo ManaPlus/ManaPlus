@@ -65,7 +65,7 @@ class Image : public Resource
 #endif
 
     public:
-        A_DELETE_COPY(Image);
+        A_DELETE_COPY(Image)
 
         /**
          * Destructor.

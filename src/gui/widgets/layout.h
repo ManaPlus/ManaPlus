@@ -336,7 +336,7 @@ class Layout final : public LayoutCell
     public:
         Layout();
 
-        A_DELETE_COPY(Layout);
+        A_DELETE_COPY(Layout)
 
         /**
          * Sets the margin around the layout.

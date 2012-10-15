@@ -68,7 +68,7 @@ public:
         playersUpdated();
     }
 
-    A_DELETE_COPY(UsersTableModel);
+    A_DELETE_COPY(UsersTableModel)
 
     virtual ~UsersTableModel()
     {

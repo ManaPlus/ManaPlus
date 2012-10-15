@@ -36,7 +36,7 @@ class PartyTab : public Ea::PartyTab
     public:
         PartyTab();
 
-        A_DELETE_COPY(PartyTab);
+        A_DELETE_COPY(PartyTab)
 
         ~PartyTab();
 };

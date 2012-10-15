@@ -42,7 +42,7 @@ class KeyEvent final : public gcn::KeyEvent
                  const int actionId,
                  const gcn::Key& key);
 
-        A_DELETE_COPY(KeyEvent);
+        A_DELETE_COPY(KeyEvent)
 
         virtual ~KeyEvent();
 

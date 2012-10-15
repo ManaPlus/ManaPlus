@@ -45,7 +45,7 @@ class Setup_Input final : public SetupTab
          */
         Setup_Input();
 
-        A_DELETE_COPY(Setup_Input);
+        A_DELETE_COPY(Setup_Input)
 
         /**
          * Destructor

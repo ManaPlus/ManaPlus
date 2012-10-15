@@ -51,7 +51,7 @@ class QuestsWindow final : public Window, public gcn::ActionListener
          */
         QuestsWindow();
 
-        A_DELETE_COPY(QuestsWindow);
+        A_DELETE_COPY(QuestsWindow)
 
         ~QuestsWindow();
 

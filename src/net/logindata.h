@@ -45,7 +45,7 @@ class LoginData final
             resetCharacterSlots();
         }
 
-        A_DELETE_COPY(LoginData);
+        A_DELETE_COPY(LoginData)
 
         enum UpdateType
         {

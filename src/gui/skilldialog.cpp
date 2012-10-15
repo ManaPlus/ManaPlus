@@ -99,7 +99,7 @@ class SkillListBox final : public ListBox
         {
         }
 
-        A_DELETE_COPY(SkillListBox);
+        A_DELETE_COPY(SkillListBox)
 
         ~SkillListBox()
         {
@@ -196,7 +196,7 @@ class SkillTab final : public Tab
             setCaption(name);
         }
 
-        A_DELETE_COPY(SkillTab);
+        A_DELETE_COPY(SkillTab)
 
         ~SkillTab()
         {

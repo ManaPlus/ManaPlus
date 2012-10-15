@@ -39,7 +39,7 @@ class GeneralHandler final : public MessageHandler, public Net::GeneralHandler,
     public:
         GeneralHandler();
 
-        A_DELETE_COPY(GeneralHandler);
+        A_DELETE_COPY(GeneralHandler)
 
         ~GeneralHandler();
 

@@ -55,7 +55,7 @@ class BotCheckerWindow final : public Window,
          */
         BotCheckerWindow();
 
-        A_DELETE_COPY(BotCheckerWindow);
+        A_DELETE_COPY(BotCheckerWindow)
 
         /**
          * Destructor.

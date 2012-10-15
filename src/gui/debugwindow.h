@@ -41,7 +41,7 @@ class DebugTab : public Container
             Container()
         { }
 
-        A_DELETE_COPY(DebugTab);
+        A_DELETE_COPY(DebugTab)
 
         void logic() override = 0;
 
@@ -58,7 +58,7 @@ class MapDebugTab final : public DebugTab
     public:
         MapDebugTab();
 
-        A_DELETE_COPY(MapDebugTab);
+        A_DELETE_COPY(MapDebugTab)
 
         void logic() override;
 
@@ -84,7 +84,7 @@ class TargetDebugTab final : public DebugTab
     public:
         TargetDebugTab();
 
-        A_DELETE_COPY(TargetDebugTab);
+        A_DELETE_COPY(TargetDebugTab)
 
         void logic() override;
 
@@ -108,7 +108,7 @@ class NetDebugTab final : public DebugTab
     public:
         NetDebugTab();
 
-        A_DELETE_COPY(NetDebugTab);
+        A_DELETE_COPY(NetDebugTab)
 
         void logic() override;
 
@@ -131,7 +131,7 @@ class DebugWindow final : public Window
          */
         DebugWindow();
 
-        A_DELETE_COPY(DebugWindow);
+        A_DELETE_COPY(DebugWindow)
 
         ~DebugWindow();
 

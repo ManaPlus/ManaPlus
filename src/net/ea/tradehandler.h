@@ -35,7 +35,7 @@ class TradeHandler : public Net::TradeHandler
     public:
         TradeHandler();
 
-        A_DELETE_COPY(TradeHandler);
+        A_DELETE_COPY(TradeHandler)
 
         void removeItem(int slotNum, int amount);
 

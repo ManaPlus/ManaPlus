@@ -60,7 +60,7 @@ class ImageRect final
         ImageRect()
         { }
 
-        A_DELETE_COPY(ImageRect);
+        A_DELETE_COPY(ImageRect)
 
         enum ImagePosition
         {
@@ -95,7 +95,7 @@ class Graphics : public gcn::SDLGraphics
          */
         Graphics();
 
-        A_DELETE_COPY(Graphics);
+        A_DELETE_COPY(Graphics)
 
         /**
          * Destructor.

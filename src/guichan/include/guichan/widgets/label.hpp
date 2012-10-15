@@ -72,7 +72,7 @@ namespace gcn
          */
         Label(const std::string& caption);
 
-        A_DELETE_COPY(Label);
+        A_DELETE_COPY(Label)
 
         /**
          * Gets the caption of the label.

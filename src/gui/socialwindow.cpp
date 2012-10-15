@@ -82,7 +82,7 @@ class SortFriendsFunctor final
 class SocialTab : public Tab
 {
 public:
-    A_DELETE_COPY(SocialTab);
+    A_DELETE_COPY(SocialTab)
 
     virtual void invite() = 0;
 
@@ -155,7 +155,7 @@ public:
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
 
-    A_DELETE_COPY(SocialGuildTab);
+    A_DELETE_COPY(SocialGuildTab)
 
     ~SocialGuildTab()
     {
@@ -261,7 +261,7 @@ public:
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
 
-    A_DELETE_COPY(SocialGuildTab2);
+    A_DELETE_COPY(SocialGuildTab2)
 
     ~SocialGuildTab2()
     {
@@ -323,7 +323,7 @@ public:
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
 
-    A_DELETE_COPY(SocialPartyTab);
+    A_DELETE_COPY(SocialPartyTab)
 
     ~SocialPartyTab()
     {
@@ -412,7 +412,7 @@ public:
     {
     }
 
-    A_DELETE_COPY(BeingsListModal);
+    A_DELETE_COPY(BeingsListModal)
 
     ~BeingsListModal()
     {
@@ -456,7 +456,7 @@ public:
         setCaption(name);
     }
 
-    A_DELETE_COPY(SocialPlayersTab);
+    A_DELETE_COPY(SocialPlayersTab)
 
     ~SocialPlayersTab()
     {
@@ -624,7 +624,7 @@ public:
         setCaption(_("Nav"));
     }
 
-    A_DELETE_COPY(SocialNavigationTab);
+    A_DELETE_COPY(SocialNavigationTab)
 
     ~SocialNavigationTab()
     {
@@ -962,7 +962,7 @@ public:
         setCaption(_("Atk"));
     }
 
-    A_DELETE_COPY(SocialAttackTab);
+    A_DELETE_COPY(SocialAttackTab)
 
     ~SocialAttackTab()
     {
@@ -1020,7 +1020,7 @@ public:
         setCaption(_("Pik"));
     }
 
-    A_DELETE_COPY(SocialPickupTab);
+    A_DELETE_COPY(SocialPickupTab)
 
     ~SocialPickupTab()
     {
@@ -1078,7 +1078,7 @@ public:
         setCaption(name);
     }
 
-    A_DELETE_COPY(SocialFriendsTab);
+    A_DELETE_COPY(SocialFriendsTab)
 
     ~SocialFriendsTab()
     {
@@ -1181,7 +1181,7 @@ public:
                        mBrowserBox->getHeight() + 8);
     }
 
-    A_DELETE_COPY(CreatePopup);
+    A_DELETE_COPY(CreatePopup)
 
     void handleLink(const std::string &link, gcn::MouseEvent *event A_UNUSED)
     {

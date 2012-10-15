@@ -42,7 +42,7 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
     public:
         NpcHandler();
 
-        A_DELETE_COPY(NpcHandler);
+        A_DELETE_COPY(NpcHandler)
 
         void handleMessage(Net::MessageIn &msg);
 

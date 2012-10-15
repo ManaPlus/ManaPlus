@@ -57,7 +57,7 @@ class ShopItem final : public Item
          */
         ShopItem(const int id, const unsigned char color, const int price);
 
-        A_DELETE_COPY(ShopItem);
+        A_DELETE_COPY(ShopItem)
 
         /**
          * Destructor.

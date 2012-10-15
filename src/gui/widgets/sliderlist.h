@@ -41,7 +41,7 @@ class SliderList final : public Container,
                    gcn::ActionListener *const listener = nullptr,
                    std::string eventId = "");
 
-        A_DELETE_COPY(SliderList);
+        A_DELETE_COPY(SliderList)
 
         ~SliderList();
 

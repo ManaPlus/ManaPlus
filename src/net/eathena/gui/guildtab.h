@@ -36,7 +36,7 @@ class GuildTab : public Ea::GuildTab
     public:
         GuildTab();
 
-        A_DELETE_COPY(GuildTab);
+        A_DELETE_COPY(GuildTab)
 
         ~GuildTab();
 };

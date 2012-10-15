@@ -54,7 +54,7 @@ class SDLGraphicsVertexes final
     public:
         SDLGraphicsVertexes();
 
-        A_DELETE_COPY(SDLGraphicsVertexes);
+        A_DELETE_COPY(SDLGraphicsVertexes)
 
         ~SDLGraphicsVertexes();
 
@@ -71,7 +71,7 @@ class NormalOpenGLGraphicsVertexes final
     public:
         NormalOpenGLGraphicsVertexes();
 
-        A_DELETE_COPY(NormalOpenGLGraphicsVertexes);
+        A_DELETE_COPY(NormalOpenGLGraphicsVertexes)
 
         ~NormalOpenGLGraphicsVertexes();
 
@@ -128,7 +128,7 @@ class ImageVertexes final
     public:
         ImageVertexes();
 
-        A_DELETE_COPY(ImageVertexes);
+        A_DELETE_COPY(ImageVertexes)
 
         ~ImageVertexes();
 
@@ -145,7 +145,7 @@ class GraphicsVertexes final
     public:
         GraphicsVertexes();
 
-        A_DELETE_COPY(GraphicsVertexes);
+        A_DELETE_COPY(GraphicsVertexes)
 
         ~GraphicsVertexes();
 

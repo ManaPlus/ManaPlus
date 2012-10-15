@@ -48,7 +48,7 @@ class Label final : public gcn::Label
          */
         Label(const std::string &caption);
 
-        A_DELETE_COPY(Label);
+        A_DELETE_COPY(Label)
 
         ~Label();
 

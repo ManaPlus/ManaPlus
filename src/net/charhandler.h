@@ -47,7 +47,7 @@ struct Character
     {
     }
 
-    A_DELETE_COPY(Character);
+    A_DELETE_COPY(Character)
 
     ~Character()
     {
@@ -65,7 +65,7 @@ typedef std::list<Character*> Characters;
 class CharHandler
 {
     public:
-        A_DELETE_COPY(CharHandler);
+        A_DELETE_COPY(CharHandler)
 
         virtual ~CharHandler()
         { }

@@ -39,7 +39,7 @@
 #define Z_NULL nullptr
 #define A_DELETE(func) func = delete
 #define A_DELETE_COPY(name) name(const name &) = delete; \
-    name &operator=(const name&) = delete
+    name &operator=(const name&) = delete;
 #endif
 
 #ifdef __GNUC__

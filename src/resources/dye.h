@@ -47,7 +47,7 @@ class DyePalette final
          */
         DyePalette(const std::string &pallete, const int8_t blockSize);
 
-        A_DELETE_COPY(DyePalette);
+        A_DELETE_COPY(DyePalette)
 
         /**
          * Gets a pixel color depending on its intensity. First color is
@@ -104,7 +104,7 @@ class Dye final
          */
         Dye(const std::string &dye);
 
-        A_DELETE_COPY(Dye);
+        A_DELETE_COPY(Dye)
 
         /**
          * Destroys the associated palettes.

@@ -35,7 +35,7 @@ class Setup_Other final : public SetupTabScroll
     public:
         Setup_Other();
 
-        A_DELETE_COPY(Setup_Other);
+        A_DELETE_COPY(Setup_Other)
 
         ~Setup_Other();
 

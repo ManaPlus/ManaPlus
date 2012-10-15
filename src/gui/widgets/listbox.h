@@ -44,7 +44,7 @@ class ListBox : public gcn::ListBox
          */
         ListBox(gcn::ListModel *const listModel);
 
-        A_DELETE_COPY(ListBox);
+        A_DELETE_COPY(ListBox)
 
         ~ListBox();
 

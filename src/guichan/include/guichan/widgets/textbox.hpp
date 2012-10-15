@@ -77,7 +77,7 @@ namespace gcn
          */
         TextBox(const std::string& text);
 
-        A_DELETE_COPY(TextBox);
+        A_DELETE_COPY(TextBox)
 
         /**
          * Sets the text of the text box.

@@ -34,7 +34,7 @@ class ItemLinkHandler final : public LinkHandler
     public:
         ItemLinkHandler();
 
-        A_DELETE_COPY(ItemLinkHandler);
+        A_DELETE_COPY(ItemLinkHandler)
 
         ~ItemLinkHandler();
 

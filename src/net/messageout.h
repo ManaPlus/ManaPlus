@@ -41,7 +41,7 @@ namespace Net
 class MessageOut
 {
     public:
-        A_DELETE_COPY(MessageOut);
+        A_DELETE_COPY(MessageOut)
 
         virtual void writeInt8(int8_t value);          /**< Writes a byte. */
 

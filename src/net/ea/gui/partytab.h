@@ -36,7 +36,7 @@ class PartyTab : public ChatTab
     public:
         PartyTab();
 
-        A_DELETE_COPY(PartyTab);
+        A_DELETE_COPY(PartyTab)
 
         ~PartyTab();
 

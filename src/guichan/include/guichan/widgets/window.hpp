@@ -73,7 +73,7 @@ namespace gcn
          */
         Window(const std::string& caption);
 
-        A_DELETE_COPY(Window);
+        A_DELETE_COPY(Window)
 
         /**
          * Destructor.

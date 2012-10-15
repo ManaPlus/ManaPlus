@@ -35,7 +35,7 @@ class AdminHandler : public Net::AdminHandler
         AdminHandler()
         { }
 
-        A_DELETE_COPY(AdminHandler);
+        A_DELETE_COPY(AdminHandler)
 
         virtual ~AdminHandler()
         { }

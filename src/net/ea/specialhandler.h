@@ -35,7 +35,7 @@ class SpecialHandler : public Net::SpecialHandler
     public:
         SpecialHandler();
 
-        A_DELETE_COPY(SpecialHandler);
+        A_DELETE_COPY(SpecialHandler)
 
         void handleMessage(Net::MessageIn &msg);
 

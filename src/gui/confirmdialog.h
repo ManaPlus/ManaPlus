@@ -48,7 +48,7 @@ class ConfirmDialog : public Window, public gcn::ActionListener
                       const bool ignore = false, const bool modal = false,
                       Window *const parent = nullptr);
 
-        A_DELETE_COPY(ConfirmDialog);
+        A_DELETE_COPY(ConfirmDialog)
 
         /**
          * Called when receiving actions from the widgets.
