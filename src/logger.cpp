@@ -108,7 +108,7 @@ void Logger::dlog(std::string str)
         << static_cast<int>((tv.tv_usec / 10000) % 100)
         << "] ";
 
-    DLOG_ANDROID(str)
+    DLOG_ANDROID(str.c_str())
 
     if (mLogFile.is_open())
         mLogFile << timeStr.str() << str << std::endl;
