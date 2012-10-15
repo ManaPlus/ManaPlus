@@ -50,8 +50,10 @@ AC_ARG_WITH(pthread,[  --without-pthread        don't check for pthread ] )
 if test "x$with_pthread" == "xno"; then
     without_pthread=yes
 else
-    AC_CHECK_LIB([pthread], [pthread_create], ,
-    AC_MSG_ERROR([ *** Unable to find pthread library]))
+    if test "x$androidbuild_enabled" == "xfalse"; then
+        AC_CHECK_LIB([pthread], [pthread_create], ,
+        AC_MSG_ERROR([ *** Unable to find pthread library]))
+    fi
     withoud_pthread=no
 fi
 
@@ -188,7 +190,11 @@ AC_ARG_WITH(internalguichan,[  --without-mumble        don't use mumble integrat
 if test "x$with_mumble" == "xno"; then
     with_mumble=no
 else
-    with_mumble=yes
+    if test "x$androidbuild_enabled" == "xfalse"; then
+        with_mumble=yes
+    else
+        with_mumble=no
+    fi
 fi
 AM_CONDITIONAL(USE_MUMBLE, test x$with_mumble = xyes)
 
@@ -201,8 +207,10 @@ if test "x$with_librt" == "xno"; then
     without_librt=yes
 else
     if test "x$applebuild_enabled" == "xfalse"; then
-        AC_CHECK_LIB(rt, shm_open, ,
-        AC_MSG_ERROR([ *** Unable to find librt library]))
+        if test "x$androidbuild_enabled" == "xfalse"; then
+            AC_CHECK_LIB(rt, shm_open, ,
+            AC_MSG_ERROR([ *** Unable to find librt library]))
+        fi
     fi
     without_librt=no
 fi
