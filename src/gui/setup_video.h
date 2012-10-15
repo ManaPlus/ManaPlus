@@ -32,6 +32,7 @@
 
 class Button;
 class Label;
+class ListBox;
 class ModeListModel;
 class OpenGLListModel;
 class TextDialog;
@@ -40,7 +41,6 @@ namespace gcn
 {
     class CheckBox;
     class DropDown;
-    class ListBox;
     class Slider;
 }
 
@@ -77,7 +77,7 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
         Label *scrollRadiusLabel;
         Label *scrollLazinessLabel;
 
-        gcn::ListBox *mModeList;
+        ListBox *mModeList;
         gcn::CheckBox *mFsCheckBox;
         gcn::DropDown *mOpenGLDropDown;
         gcn::CheckBox *mCustomCursorCheckBox;

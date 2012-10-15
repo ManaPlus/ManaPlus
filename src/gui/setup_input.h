@@ -28,11 +28,10 @@
 
 #include <guichan/actionlistener.hpp>
 
-#include <guichan/widgets/listbox.hpp>
-
 #include <string>
 
 class Button;
+class ListBox;
 class TabStrip;
 
 struct SetupActionData;
@@ -90,7 +89,7 @@ class Setup_Input final : public SetupTab
                             const std::string &text) const;
 
         class KeyListModel *mKeyListModel;
-        gcn::ListBox *mKeyList;
+        ListBox *mKeyList;
 
         Button *mAssignKeyButton;
         Button *mUnassignKeyButton;

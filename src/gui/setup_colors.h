@@ -31,12 +31,12 @@
 
 class BrowserBox;
 class Label;
+class ListBox;
 class TextField;
 class TextPreview;
 
 namespace gcn
 {
-    class ListBox;
     class ScrollArea;
     class Slider;
 }
@@ -62,7 +62,7 @@ class Setup_Colors final : public SetupTab,
     private:
         static const std::string rawmsg;
 
-        gcn::ListBox *mColorBox;
+        ListBox *mColorBox;
         gcn::ScrollArea *mScroll;
         BrowserBox *mPreview;
         TextPreview *mTextPreview;

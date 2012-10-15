@@ -48,6 +48,7 @@ ListBox::ListBox(gcn::ListModel *const listModel):
     mOldSelected(-1)
 {
     mForegroundColor = Theme::getThemeColor(Theme::LISTBOX);
+    adjustSize();
 }
 
 ListBox::~ListBox()
@@ -192,4 +193,15 @@ void ListBox::refocus()
 
     if (isFocusable())
         mFocusHandler->requestFocus(this);
+}
+
+void ListBox::adjustSize()
+{
+    if (mListModel)
+        setHeight(getRowHeight() * mListModel->getNumberOfElements());
+}
+
+void ListBox::logic()
+{
+    adjustSize();
 }

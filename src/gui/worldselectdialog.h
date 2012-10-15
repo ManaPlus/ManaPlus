@@ -34,13 +34,9 @@
 #include <vector>
 
 class Button;
+class ListBox;
 class LoginData;
 class WorldListModel;
-
-namespace gcn
-{
-    class ListBox;
-}
 
 /**
  * The server select dialog.
@@ -74,7 +70,7 @@ class WorldSelectDialog final : public Window, public gcn::ActionListener,
 
     private:
         WorldListModel *mWorldListModel;
-        gcn::ListBox *mWorldList;
+        ListBox *mWorldList;
         Button *mChangeLoginButton;
         Button *mChooseWorld;
 };

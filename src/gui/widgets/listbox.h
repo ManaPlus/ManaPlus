@@ -77,6 +77,10 @@ class ListBox : public gcn::ListBox
         void setDistributeMousePressed(bool b)
         { mDistributeMousePressed = b; }
 
+        void adjustSize();
+
+        void logic() override;
+
     protected:
         gcn::Color mHighlightColor;
         bool mDistributeMousePressed;

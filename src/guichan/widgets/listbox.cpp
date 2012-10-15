@@ -96,7 +96,6 @@ namespace gcn
 
     void ListBox::logic()
     {
-        adjustSize();
     }
 
     int ListBox::getSelected() const
@@ -186,8 +185,6 @@ namespace gcn
 
     void ListBox::adjustSize()
     {
-        if (mListModel)
-            setHeight(getRowHeight() * mListModel->getNumberOfElements());
     }
 
     bool ListBox::isWrappingEnabled() const
