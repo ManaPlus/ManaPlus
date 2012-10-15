@@ -145,7 +145,7 @@ class ParticleEmitter final
          * Death effect of the particles
          */
         std::string mDeathEffect;
-        char mDeathEffectConditions;
+        signed char mDeathEffectConditions;
 
         /** List of emitters the spawned particles are equipped with */
         std::list<ParticleEmitter> mParticleChildEmitters;

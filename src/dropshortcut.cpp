@@ -63,7 +63,7 @@ void DropShortcut::load(const bool oldConfig)
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
     {
         const int itemId = cfg->getValue("drop" + toString(i), -1);
-        const unsigned char itemColor = static_cast<unsigned char>(
+        const unsigned char itemColor = static_cast<const unsigned char>(
             cfg->getValue("dropColor" + toString(i), -1));
 
         if (itemId != -1)

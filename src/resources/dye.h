@@ -80,7 +80,7 @@ class DyePalette final
          */
         void replaceAOGLColor(uint8_t *const color) const;
 
-        static int hexDecode(const char c);
+        static int hexDecode(const signed char c);
 
     private:
         struct Color

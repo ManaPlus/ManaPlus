@@ -74,7 +74,7 @@ void ItemShortcut::load(const bool oldConfig)
     for (unsigned int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         const int itemId = cfg->getValue(name + toString(i), -1);
-        const unsigned char itemColor = static_cast<unsigned char>(
+        const unsigned char itemColor = static_cast<const unsigned char>(
             cfg->getValue(color + toString(i), 1));
 
         mItems[i] = itemId;

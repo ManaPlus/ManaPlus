@@ -1521,7 +1521,7 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
 }
 
 /** TODO: eAthena only */
-int Being::getOffset(const char pos, const char neg) const
+int Being::getOffset(const signed char pos, const signed char neg) const
 {
     // Check whether we're walking in the requested direction
     if (mAction != MOVE ||  !(mDirection & (pos | neg)))

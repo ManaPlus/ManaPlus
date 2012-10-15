@@ -379,27 +379,27 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
                 char deathEffectConditions = 0x00;
                 if (XML::getBoolProperty(emitterNode, "on-floor", true))
                 {
-                    deathEffectConditions += static_cast<char>(
+                    deathEffectConditions += static_cast<signed char>(
                         Particle::DEAD_FLOOR);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-sky", true))
                 {
-                    deathEffectConditions += static_cast<char>(
+                    deathEffectConditions += static_cast<signed char>(
                         Particle::DEAD_SKY);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-other", false))
                 {
-                    deathEffectConditions += static_cast<char>(
+                    deathEffectConditions += static_cast<signed char>(
                         Particle::DEAD_OTHER);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-impact", true))
                 {
-                    deathEffectConditions += static_cast<char>(
+                    deathEffectConditions += static_cast<signed char>(
                         Particle::DEAD_IMPACT);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-timeout", true))
                 {
-                    deathEffectConditions += static_cast<char>(
+                    deathEffectConditions += static_cast<signed char>(
                         Particle::DEAD_TIMEOUT);
                 }
                 newParticle->setDeathEffect(

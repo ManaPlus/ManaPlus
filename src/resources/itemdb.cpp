@@ -56,7 +56,7 @@ static void loadOrderSprite(ItemInfo *const itemInfo, const XmlNodePtr node,
 static int parseSpriteName(std::string name);
 static int parseDirectionName(std::string name);
 
-static char const *const fields[][2] =
+static const char *const fields[][2] =
 {
     { "attack",    N_("Attack %+d")    },
     { "defense",   N_("Defense %+d")   },

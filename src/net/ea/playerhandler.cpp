@@ -91,7 +91,7 @@ namespace
 
 static const char *randomDeathMessage()
 {
-    static char const *const deadMsg[] =
+    static const char *const deadMsg[] =
     {
         N_("You are dead."),
         N_("We regret to inform you that your character was killed in "

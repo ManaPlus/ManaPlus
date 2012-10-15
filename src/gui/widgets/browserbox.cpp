@@ -421,7 +421,7 @@ int BrowserBox::calcHeight()
 
     const int fontHeight = font->getHeight();
     const int fontWidthMinus = font->getWidth("-");
-    char const *const hyphen = "~";
+    const char *const hyphen = "~";
     const int hyphenWidth = font->getWidth(hyphen);
 
     gcn::Color selColor = mForegroundColor;
@@ -495,7 +495,7 @@ int BrowserBox::calcHeight()
                 // Check for color change in format "##x", x = [L,P,0..9]
                 if (row.find("##", start) == start && row.size() > start + 2)
                 {
-                    const char c = row.at(start + 2);
+                    const signed char c = row.at(start + 2);
 
                     bool valid;
                     const gcn::Color col = Theme::getThemeColor(c, valid);

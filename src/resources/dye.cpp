@@ -72,7 +72,7 @@ DyePalette::DyePalette(const std::string &description, const int8_t blockSize)
     logger->log("Error, invalid embedded palette: %s", description.c_str());
 }
 
-int DyePalette::hexDecode(const char c)
+int DyePalette::hexDecode(const signed char c)
 {
     if ('0' <= c && c <= '9')
         return c - '0';

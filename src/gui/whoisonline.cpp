@@ -411,7 +411,8 @@ void WhoIsOnline::loadWebList()
                     level = 0;
 
                 OnlinePlayer *player = new OnlinePlayer(nick,
-                    static_cast<char>(255), level, GENDER_UNSPECIFIED, -1);
+                    static_cast<signed char>(255), level,
+                    GENDER_UNSPECIFIED, -1);
                 mOnlinePlayers.insert(player);
                 mOnlineNicks.insert(nick);
 
@@ -477,7 +478,7 @@ size_t WhoIsOnline::memoryWrite(void *ptr, size_t size,
     WhoIsOnline *wio = reinterpret_cast<WhoIsOnline *>(stream);
     const size_t totalMem = size * nmemb;
     wio->mMemoryBuffer = static_cast<char*>(realloc(wio->mMemoryBuffer,
-                                            wio->mDownloadedBytes + totalMem));
+        wio->mDownloadedBytes + totalMem));
     if (wio->mMemoryBuffer)
     {
         memcpy(&(wio->mMemoryBuffer[wio->mDownloadedBytes]), ptr, totalMem);

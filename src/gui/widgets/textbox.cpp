@@ -327,7 +327,7 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
             if (key.isCharacter() && mEditable)
             {
                 mTextRows[mCaretRow].insert(mCaretColumn,
-                    std::string(1, static_cast<char>(key.getValue())));
+                    std::string(1, static_cast<signed char>(key.getValue())));
                 ++ mCaretColumn;
             }
             break;

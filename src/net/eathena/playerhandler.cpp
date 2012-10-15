@@ -168,7 +168,7 @@ void PlayerHandler::pickUp(const FloorItem *floorItem)
         handler->pushPickup(floorItem->getId());
 }
 
-void PlayerHandler::setDirection(char direction)
+void PlayerHandler::setDirection(unsigned char direction)
 {
     MessageOut outMsg(CMSG_PLAYER_CHANGE_DIR);
     outMsg.writeInt16(0);
@@ -185,7 +185,7 @@ void PlayerHandler::setDestination(int x, int y, int direction)
 
 void PlayerHandler::changeAction(Being::Action action)
 {
-    char type;
+    unsigned char type;
     switch (action)
     {
         case Being::SIT:

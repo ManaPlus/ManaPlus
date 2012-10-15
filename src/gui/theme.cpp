@@ -810,7 +810,7 @@ static gcn::Color readColor(const std::string &description)
     int v = 0;
     for (int i = 1; i < 7; ++i)
     {
-        const char c = description[i];
+        signed const char c = description[i];
         int n;
 
         if ('0' <= c && c <= '9')

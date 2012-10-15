@@ -127,8 +127,8 @@ void SpecialHandler::processSkillFailed(Net::MessageIn &msg)
     const int skillId   = msg.readInt16();
     const short bskill  = msg.readInt16();
     msg.readInt16(); // btype
-    const char success = msg.readInt8();
-    const char reason  = msg.readInt8();
+    const signed char success = msg.readInt8();
+    const signed char reason  = msg.readInt8();
     if (success != static_cast<int>(SKILL_FAILED)
         && bskill == static_cast<int>(BSKILL_EMOTE))
     {

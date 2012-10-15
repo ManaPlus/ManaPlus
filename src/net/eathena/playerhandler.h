@@ -50,7 +50,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void increaseSkill(unsigned short skillId);
 
         void pickUp(const FloorItem *floorItem);
-        void setDirection(char direction);
+        void setDirection(unsigned char direction);
         void setDestination(int x, int y, int direction = -1);
         void changeAction(Being::Action action);
         void updateStatus(uint8_t status);

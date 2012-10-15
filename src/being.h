@@ -922,7 +922,7 @@ class Being : public ActorSprite, public ConfigListener
          * If walking in direction 'neg' the value is negated.
          * TODO: Used by eAthena only?
          */
-        int getOffset(const char pos, const char neg) const;
+        int getOffset(const signed char pos, const signed char neg) const;
 
         int searchSlotValue(std::vector<int> &slotRemap, const int val) const;
 
