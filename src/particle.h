@@ -291,7 +291,7 @@ class Particle : public Actor
         { }
 
         virtual void setDeathEffect(const std::string &effectFile,
-                                    const char conditions)
+                                    const signed char conditions)
         { mDeathEffect = effectFile; mDeathEffectConditions = conditions; }
 
     protected:
@@ -318,8 +318,8 @@ class Particle : public Actor
                                          the object props in the map file? */
         std::string mDeathEffect;   /**< Particle effect file to be spawned
                                          when the particle dies */
-        char mDeathEffectConditions; /**< Bitfield of death conditions which
-                                          trigger spawning of the death
+        signed char mDeathEffectConditions; /**< Bitfield of death conditions
+                                          which trigger spawning of the death
                                           particle */
 
         // dynamic particle

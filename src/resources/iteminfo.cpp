@@ -206,7 +206,7 @@ const std::string ItemInfo::replaceColors(std::string str,
 
     str = replaceAll(str, "%color%", name);
     if (!name.empty())
-        name[0] = static_cast<char>(toupper(name[0]));
+        name[0] = static_cast<signed char>(toupper(name[0]));
 
     return replaceAll(str, "%Color%", name);
 }

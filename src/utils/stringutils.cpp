@@ -87,7 +87,7 @@ const char *ipToString(const int address)
     return asciiIP;
 }
 
-std::string strprintf(char const *const format, ...)
+std::string strprintf(const char *const format, ...)
 {
     char buf[257];
     va_list(args);
@@ -161,7 +161,7 @@ int compareStrI(const std::string &a, const std::string &b)
 }
 
 
-bool isWordSeparator(const char chr)
+bool isWordSeparator(const signed char chr)
 {
     return (chr == ' ' || chr == ',' || chr == '.' || chr == '"');
 }
@@ -229,13 +229,13 @@ const std::string encodeStr(unsigned int value, const unsigned int size)
 
     do
     {
-        buf += static_cast<char>(value % base + start);
+        buf += static_cast<signed char>(value % base + start);
         value /= base;
     }
     while (value);
 
     while (buf.length() < size)
-        buf += static_cast<char>(start);
+        buf += static_cast<signed char>(start);
     return buf;
 }
 
@@ -393,7 +393,7 @@ void replaceSpecialChars(std::string &text)
         if (idx + 1 < f && text[f] == ';')
         {
             std::string str = " ";
-            str[0] = static_cast<char>(atoi(text.substr(
+            str[0] = static_cast<signed char>(atoi(text.substr(
                 idx, f - idx).c_str()));
             text = text.substr(0, pos1) + str + text.substr(f + 1);
             pos1 += 1;
@@ -413,7 +413,8 @@ std::string normalize(const std::string &name)
     return toLower(trim(normalized));
 }
 
-std::set<int> splitToIntSet(const std::string &text, const char separator)
+std::set<int> splitToIntSet(const std::string &text,
+                            const char separator)
 {
     std::set<int> tokens;
     std::stringstream ss(text);
@@ -424,7 +425,8 @@ std::set<int> splitToIntSet(const std::string &text, const char separator)
     return tokens;
 }
 
-std::list<int> splitToIntList(const std::string &text, const char separator)
+std::list<int> splitToIntList(const std::string &text,
+                              const char separator)
 {
     std::list<int> tokens;
     std::stringstream ss(text);

@@ -93,7 +93,7 @@ const char *ipToString(const int address);
 /**
  * A safe version of sprintf that returns a std::string of the result.
  */
-std::string strprintf(char const *const format, ...)
+std::string strprintf(const char *const format, ...)
 #ifdef __GNUC__
     /* This attribute is nice: it even works through gettext invokation. For
        example, gcc will complain that strprintf(_("%s"), 42) is ill-formed. */
@@ -136,7 +136,7 @@ int compareStrI(const std::string &a, const std::string &b);
 /**
  * Tells wether the character is a word separator.
  */
-bool isWordSeparator(const char chr);
+bool isWordSeparator(const signed char chr);
 
 size_t findI(std::string str, std::string subStr);
 
@@ -176,9 +176,11 @@ void replaceSpecialChars(std::string &text);
  */
 std::string normalize(const std::string &name);
 
-std::set<int> splitToIntSet(const std::string &text, const char separator);
+std::set<int> splitToIntSet(const std::string &text,
+                            const char separator);
 
-std::list<int> splitToIntList(const std::string &text, const char separator);
+std::list<int> splitToIntList(const std::string &text,
+                              const char separator);
 
 std::list<std::string> splitToStringList(const std::string &text,
                                          const char separator);

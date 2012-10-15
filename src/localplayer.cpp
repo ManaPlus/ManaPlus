@@ -2054,7 +2054,7 @@ std::string LocalPlayer::getQuickDropCounterString()
 {
     if (mQuickDropCounter > 9)
     {
-        return strprintf("(%c) drop counter %u", static_cast<char>(
+        return strprintf("(%c) drop counter %u", static_cast<signed char>(
             'a' + mQuickDropCounter - 10), mQuickDropCounter);
     }
     else
@@ -2758,7 +2758,7 @@ void LocalPlayer::crazyMoveA()
             int dx = 0;
             int dy = 0;
 
-            char param = mMoveProgram[mCrazyMoveState++];
+            signed char param = mMoveProgram[mCrazyMoveState++];
             if (param == '?')
             {
                 const char cmd[] = {'l', 'r', 'u', 'd'};
@@ -2813,7 +2813,7 @@ void LocalPlayer::crazyMoveA()
 
         if (mCrazyMoveState < mMoveProgram.length())
         {
-            char param = mMoveProgram[mCrazyMoveState++];
+            signed char param = mMoveProgram[mCrazyMoveState++];
             if (param == '?')
             {
                 const char cmd[] = {'l', 'r', 'u', 'd'};
@@ -2952,7 +2952,7 @@ void LocalPlayer::crazyMoveA()
     else if (mMoveProgram[mCrazyMoveState] == 'e')
     {
         mCrazyMoveState ++;
-        const char emo = mMoveProgram[mCrazyMoveState];
+        const signed char emo = mMoveProgram[mCrazyMoveState];
         if (emo == '?')
         {
             srand(tick_time);

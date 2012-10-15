@@ -51,7 +51,7 @@ Inventory *mInventory = nullptr;
 Equipment *mEquipment = nullptr;
 
 std::map<int, Special> mSpecials;
-char mSpecialRechargeUpdateNeeded = 0;
+signed char mSpecialRechargeUpdateNeeded = 0;
 
 bool mTrading = false;
 int mLevelProgress = 0;

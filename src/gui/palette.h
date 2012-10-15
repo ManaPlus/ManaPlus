@@ -67,7 +67,7 @@ class Palette
          *
          * @return the requested color or Palette::BLACK
          */
-        const gcn::Color &getColor(const char c, bool &valid);
+        const gcn::Color &getColor(const signed char c, bool &valid);
 
         /**
          * Gets the color associated with the type. Sets the alpha channel
@@ -180,7 +180,7 @@ class Palette
             gcn::Color testColor;
             gcn::Color committedColor;
             std::string text;
-            char ch;
+            signed char ch;
             GradientType grad;
             GradientType committedGrad;
             int gradientIndex;

@@ -96,8 +96,10 @@ class Network
 
         ServerInfo mServer;
 
-        char *mInBuffer, *mOutBuffer;
-        unsigned int mInSize, mOutSize;
+        char *mInBuffer;
+        char *mOutBuffer;
+        unsigned int mInSize;
+        unsigned int mOutSize;
 
         unsigned int mToSkip;
 

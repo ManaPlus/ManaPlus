@@ -93,7 +93,7 @@ std::string UserPalette::getConfigName(const std::string &typeName)
         }
         else
         {
-           res[pos] = static_cast<char>(tolower(typeName[i]));
+           res[pos] = static_cast<signed char>(tolower(typeName[i]));
         }
         pos ++;
     }

@@ -162,7 +162,7 @@ void PlayerHandler::pickUp(const FloorItem *floorItem)
         handler->pushPickup(floorItem->getId());
 }
 
-void PlayerHandler::setDirection(char direction)
+void PlayerHandler::setDirection(unsigned char direction)
 {
     MessageOut outMsg(CMSG_PLAYER_CHANGE_DIR);
     outMsg.writeInt16(0);

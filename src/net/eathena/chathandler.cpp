@@ -181,7 +181,7 @@ void ChatHandler::processRaw(MessageOut &outMsg, std::string &line)
     {
         const int i = atoi(line.c_str());
         if (line.length() <= 3)
-            outMsg.writeInt8(static_cast<char>(i));
+            outMsg.writeInt8(static_cast<unsigned char>(i));
         else if (line.length() <= 5)
             outMsg.writeInt16(static_cast<short>(i));
         else
@@ -210,7 +210,7 @@ void ChatHandler::processRaw(MessageOut &outMsg, std::string &line)
         switch (header[0])
         {
             case '1':
-                outMsg.writeInt8(static_cast<char>(i));
+                outMsg.writeInt8(static_cast<unsigned char>(i));
                 break;
             case '2':
                 outMsg.writeInt16(static_cast<short>(i));

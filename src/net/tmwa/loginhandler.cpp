@@ -159,11 +159,11 @@ void LoginHandler::requestUpdateHosts()
 
 void LoginHandler::processServerVersion(Net::MessageIn &msg)
 {
-    const char b1 = msg.readInt8(); // -1
-    const char b2 = msg.readInt8(); // E
-    const char b3 = msg.readInt8(); // V
-    const char b4 = msg.readInt8(); // L
-    if (b1 == -1 && b2 == 'E' && b3 == 'V' && b4 == 'L')
+    const uint8_t b1 = msg.readInt8(); // -1
+    const uint8_t b2 = msg.readInt8(); // E
+    const uint8_t b3 = msg.readInt8(); // V
+    const uint8_t b4 = msg.readInt8(); // L
+    if (b1 == 255 && b2 == 'E' && b3 == 'V' && b4 == 'L')
     {
         const unsigned int options = msg.readInt8();
         mRegistrationEnabled = options;

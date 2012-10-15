@@ -196,7 +196,8 @@ bool getDataFromPasteboard(PasteboardRef inPasteboard,
                 for (short dataIndex = 0; dataIndex <= flavorDataSize;
                      dataIndex ++)
                 {
-                    char byte = *(CFDataGetBytePtr(flavorData) + dataIndex);
+                    signed char byte = *(CFDataGetBytePtr(
+                        flavorData) + dataIndex);
                     flavorText[dataIndex] = byte;
                 }
 
