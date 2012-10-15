@@ -64,6 +64,8 @@
 #define PACKAGE_OS "NetBSD"
 #elif defined __OpenBSD__
 #define PACKAGE_OS "OpenBSD"
+#elif defined(__ANDROID__) || defined(ANDROID)
+#define PACKAGE_OS "Android"
 #elif defined __linux__ || defined __linux
 #define PACKAGE_OS "Linux"
 #elif defined __GNU__
@@ -74,8 +76,6 @@
     || defined WIN64 || defined _WIN64 || defined __WIN64__ \
     || defined __MINGW32__ || defined _MSC_VER
 #define PACKAGE_OS "Windows"
-#elif defined(__ANDROID__) || defined(ANDROID)
-#define PACKAGE_OS "Android"
 #else
 #define PACKAGE_OS "Other"
 #endif
