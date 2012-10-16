@@ -29,6 +29,7 @@ gui_DATA =				\
 	item_selection.xml	\
 	item_shortcut_background.xml	\
 	label.xml			\
+	listbox.xml			\
 	mouse.png			\
 	playerbox_background.xml	\
 	popup.xml			\

@@ -28,6 +28,7 @@
 #include "localconsts.h"
 
 class SelectionListener;
+class Skin;
 
 /**
  * A list box, meant to be used inside a scroll area. Same as the Guichan list
@@ -70,6 +71,8 @@ class ListBox : public gcn::ListBox
 
         void mousePressed(gcn::MouseEvent &event) override;
 
+        void mousePressed1(gcn::MouseEvent &event);
+
         void mouseDragged(gcn::MouseEvent &event) override;
 
         void refocus();
@@ -85,7 +88,10 @@ class ListBox : public gcn::ListBox
         gcn::Color mHighlightColor;
         bool mDistributeMousePressed;
         int mOldSelected;
+        int mPadding;
         static float mAlpha;
+        static Skin *mSkin;
+        static int mInstances;
 };
 
 #endif

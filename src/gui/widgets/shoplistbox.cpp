@@ -95,7 +95,6 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
     Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
 
     graphics->setFont(getFont());
-//    graphics->setColor(mForegroundColor);
 
     // Draw the list elements
     for (int i = 0, y = 0;
@@ -139,8 +138,8 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         if (needDraw)
         {
             graphics->setColor(*backgroundColor);
-            graphics->fillRectangle(gcn::Rectangle(
-                0, y, getWidth(), mRowHeight));
+            graphics->fillRectangle(gcn::Rectangle(mPadding, y + mPadding,
+                getWidth() - 2 * mPadding, mRowHeight));
         }
 
         if (mShopItems)
@@ -149,12 +148,13 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
             if (icon)
             {
                 icon->setAlpha(1.0f);
-                graphics->drawImage(icon, 1, y);
+                graphics->drawImage(icon, mPadding, y + mPadding);
             }
         }
         graphics->setColor(mForegroundColor);
-        graphics->drawText(mListModel->getElementAt(i), ITEM_ICON_SIZE + 5,
-            y + (ITEM_ICON_SIZE - getFont()->getHeight()) / 2);
+        graphics->drawText(mListModel->getElementAt(i),
+            ITEM_ICON_SIZE + mPadding,
+            y + (ITEM_ICON_SIZE - getFont()->getHeight()) / 2 + mPadding);
     }
 }
 

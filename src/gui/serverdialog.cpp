@@ -186,8 +186,9 @@ public:
         // Draw filled rectangle around the selected list element
         if (mSelected >= 0)
         {
-            graphics->fillRectangle(gcn::Rectangle(0,
-                height * mSelected, getWidth(), height));
+            graphics->fillRectangle(gcn::Rectangle(mPadding,
+                height * mSelected + mPadding, getWidth() - 2 * mPadding,
+                height));
         }
 
         // Draw the list elements
@@ -199,32 +200,32 @@ public:
             graphics->setColor(mTextColor);
 
             int top;
-            int x = 2;
+            int x = mPadding;
 
             if (!info.name.empty())
             {
                 graphics->setFont(boldFont);
                 x += boldFont->getWidth(info.name) + 15;
-                graphics->drawText(info.name, 2, y);
-                top = y + boldFont->getHeight() + 2;
+                graphics->drawText(info.name, mPadding, y + mPadding);
+                top = y + boldFont->getHeight() + mPadding;
             }
             else
             {
-                top = y + height / 4 + 2;
+                top = y + height / 4 + mPadding;
             }
 
             graphics->setFont(getFont());
 
             if (!info.description.empty())
-                graphics->drawText(info.description, x, y);
-            graphics->drawText(model->getElementAt(i), 2, top);
+                graphics->drawText(info.description, x, y + mPadding);
+            graphics->drawText(model->getElementAt(i), mPadding, top);
 
             if (info.version.first > 0)
             {
                 graphics->setColor(mNotSupportedColor);
 
                 graphics->drawText(info.version.second,
-                                   getWidth() - info.version.first - 2, top);
+                    getWidth() - info.version.first - mPadding, top);
             }
         }
     }

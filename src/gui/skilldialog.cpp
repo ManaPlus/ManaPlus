@@ -138,8 +138,9 @@ class SkillListBox final : public ListBox
             // Draw filled rectangle around the selected list element
             if (mSelected >= 0)
             {
-                graphics->fillRectangle(gcn::Rectangle(0, getRowHeight()
-                    * mSelected, getWidth(), getRowHeight()));
+                graphics->fillRectangle(gcn::Rectangle(mPadding, getRowHeight()
+                    * mSelected + mPadding, getWidth() - 2 * mPadding,
+                    getRowHeight()));
             }
 
             // Draw the list elements
@@ -150,7 +151,7 @@ class SkillListBox final : public ListBox
             {
                 SkillInfo *const e = model->getSkillAt(i);
                 if (e)
-                    e->draw(graphics, y, getWidth());
+                    e->draw(graphics, y + mPadding, getWidth() + mPadding);
             }
         }
 
@@ -166,7 +167,7 @@ class SkillListBox final : public ListBox
             const int y = event.getY() / getRowHeight();
             if (!mModel || y >= mModel->getNumberOfElements())
                 return;
-            const SkillInfo *const skill = mModel->getSkillAt(y);
+            const SkillInfo *const skill = mModel->getSkillAt(y + mPadding);
             if (!skill)
                 return;
 

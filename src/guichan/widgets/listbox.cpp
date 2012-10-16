@@ -138,11 +138,6 @@ namespace gcn
 
     void ListBox::mousePressed(MouseEvent& mouseEvent)
     {
-        if (mouseEvent.getButton() == MouseEvent::LEFT)
-        {
-            setSelected(mouseEvent.getY() / getRowHeight());
-            distributeActionEvent();
-        }
     }
 
     void ListBox::mouseWheelMovedUp(MouseEvent& mouseEvent)

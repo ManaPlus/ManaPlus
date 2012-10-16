@@ -61,7 +61,7 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     graphics->setFont(getFont());
 
     const int height = getRowHeight();
-    int textPos = (height - getFont()->getHeight()) / 2;
+    int textPos = (height - getFont()->getHeight()) / 2 + mPadding;
     if (textPos < 0)
         textPos = 0;
 
@@ -70,8 +70,9 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     {
         mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
         graphics->setColor(mHighlightColor);
-        graphics->fillRectangle(gcn::Rectangle(0, height * mSelected,
-            getWidth(), height));
+        graphics->fillRectangle(gcn::Rectangle(mPadding,
+            height * mSelected + mPadding,
+            getWidth() - 2 * mPadding, height));
     }
 
     // Draw the list elements
@@ -82,13 +83,14 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
         const Image *const image = model->getImageAt(i);
         if (!image)
         {
-            graphics->drawText(mListModel->getElementAt(i), 1, y + textPos);
+            graphics->drawText(mListModel->getElementAt(i), mPadding, y + textPos);
         }
         else
         {
-            g->drawImage(image, 1, y + (height - image->getHeight()) / 2);
+            g->drawImage(image, mPadding, y + (height - image->getHeight())
+                / 2 + mPadding);
             graphics->drawText(mListModel->getElementAt(i),
-                image->getWidth() + 2, y + textPos);
+                image->getWidth() + mPadding, y + textPos);
         }
     }
 }

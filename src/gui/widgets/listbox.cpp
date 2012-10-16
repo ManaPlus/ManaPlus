@@ -40,6 +40,8 @@
 #include "debug.h"
 
 float ListBox::mAlpha = 1.0;
+Skin *ListBox::mSkin = nullptr;
+int ListBox::mInstances = 0;
 
 ListBox::ListBox(gcn::ListModel *const listModel):
     gcn::ListBox(listModel),
@@ -48,11 +50,27 @@ ListBox::ListBox(gcn::ListModel *const listModel):
     mOldSelected(-1)
 {
     mForegroundColor = Theme::getThemeColor(Theme::LISTBOX);
+
+    if (mInstances == 0)
+    {
+        if (Theme::instance())
+            mSkin = Theme::instance()->load("listbox.xml", "");
+    }
+    mInstances ++;
+
+    if (mSkin)
+        mPadding = mSkin->getPadding();
+    else
+        mPadding = 0;
+
     adjustSize();
 }
 
 ListBox::~ListBox()
 {
+    mInstances --;
+    if (mInstances == 0 && Theme::instance())
+        Theme::instance()->unload(mSkin);
 }
 
 void ListBox::updateAlpha()
@@ -80,8 +98,8 @@ void ListBox::draw(gcn::Graphics *graphics)
     // Draw filled rectangle around the selected list element
     if (mSelected >= 0)
     {
-        graphics->fillRectangle(gcn::Rectangle(0, height * mSelected,
-                                               getWidth(), height));
+        graphics->fillRectangle(gcn::Rectangle(mPadding, height * mSelected,
+            getWidth() - 2 * mPadding, height));
     }
 
     // Draw the list elements
@@ -89,7 +107,8 @@ void ListBox::draw(gcn::Graphics *graphics)
     for (int i = 0, y = 0; i < mListModel->getNumberOfElements();
          ++i, y += height)
     {
-        graphics->drawText(mListModel->getElementAt(i), 1, y);
+        graphics->drawText(mListModel->getElementAt(i),
+            mPadding, y + mPadding);
     }
 }
 
@@ -149,7 +168,7 @@ void ListBox::mousePressed(gcn::MouseEvent &event)
 {
     if (mDistributeMousePressed)
     {
-        gcn::ListBox::mousePressed(event);
+        mousePressed1(event);
     }
     else
     {
@@ -163,7 +182,7 @@ void ListBox::mousePressed(gcn::MouseEvent &event)
                 if (gui)
                     gui->resetClickCount();
                 if (mOldSelected == mSelected)
-                    gcn::ListBox::mousePressed(event);
+                    mousePressed1(event);
                 else
                     mouseDragged(event);
                 mOldSelected = mSelected;
@@ -176,6 +195,16 @@ void ListBox::mousePressed(gcn::MouseEvent &event)
     }
 }
 
+void ListBox::mousePressed1(gcn::MouseEvent &mouseEvent)
+{
+    if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
+    {
+        setSelected(std::max(0, mouseEvent.getY() - mPadding)
+            / getRowHeight());
+        distributeActionEvent();
+    }
+}
+
 void ListBox::mouseDragged(gcn::MouseEvent &event)
 {
     if (event.getButton() != gcn::MouseEvent::LEFT || getRowHeight() == 0)
@@ -183,7 +212,7 @@ void ListBox::mouseDragged(gcn::MouseEvent &event)
 
     // Make list selection update on drag, but guard against negative y
     if (getRowHeight())
-        setSelected(std::max(0, event.getY()) / getRowHeight());
+        setSelected(std::max(0, event.getY() - mPadding) / getRowHeight());
 }
 
 void ListBox::refocus()
@@ -198,7 +227,10 @@ void ListBox::refocus()
 void ListBox::adjustSize()
 {
     if (mListModel)
-        setHeight(getRowHeight() * mListModel->getNumberOfElements());
+    {
+        setHeight(getRowHeight() * mListModel->getNumberOfElements()
+            + 2 * mPadding);
+    }
 }
 
 void ListBox::logic()

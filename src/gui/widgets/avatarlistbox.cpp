@@ -127,7 +127,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             const Image *const icon = a->getOnline()
                 ? onlineIcon : offlineIcon;
             if (icon)
-                graphics->drawImage(icon, 2, y + 1);
+                graphics->drawImage(icon, mPadding, y + mPadding);
         }
 
         if (a->getDisplayBold())
@@ -155,9 +155,9 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
                 color.a = 80;
                 graphics->setColor(color);
 
-                graphics->fillRectangle(gcn::Rectangle(0, y,
-                    parent->getWidth() * a->getHp() / a->getMaxHp(),
-                    fontHeight));
+                graphics->fillRectangle(gcn::Rectangle(mPadding, y + mPadding,
+                    parent->getWidth() * a->getHp() / a->getMaxHp()
+                    - 2 * mPadding, fontHeight));
             }
         }
         else if (a->getDamageHp() != 0 && a->getName() != name)
@@ -180,9 +180,9 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
                 color.a = 80;
                 graphics->setColor(color);
-                graphics->fillRectangle(gcn::Rectangle(0, y,
-                    parent->getWidth() * a->getDamageHp() / 1024,
-                    fontHeight));
+                graphics->fillRectangle(gcn::Rectangle(mPadding, y + mPadding,
+                    parent->getWidth() * a->getDamageHp() / 1024
+                    - 2 * mPadding, fontHeight));
 
                 if (a->getLevel() > 1)
                 {
@@ -191,7 +191,8 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
                     if (minHp < 0)
                         minHp = 40;
 
-                    graphics->drawLine(parent->getWidth()*minHp / 1024, y,
+                    graphics->drawLine(parent->getWidth()*minHp / 1024
+                        + mPadding, y + mPadding,
                         parent->getWidth() * minHp / 1024, y + fontHeight);
                 }
             }
@@ -267,9 +268,9 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
         // Draw Name
         if (a->getType() == MapItem::SEPARATOR)
-            graphics->drawText(text, 2, y);
+            graphics->drawText(text, mPadding, y + mPadding);
         else
-            graphics->drawText(text, 15, y);
+            graphics->drawText(text, 15 + mPadding, y + mPadding);
 
         if (a->getDisplayBold())
             graphics->setFont(getFont());
@@ -286,7 +287,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
         return;
     }
 
-    const int y = event.getY() / getFont()->getHeight();
+    const int y = (event.getY() - mPadding) / getFont()->getHeight();
     if (!mListModel || y > mListModel->getNumberOfElements())
         return;
 
