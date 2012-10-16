@@ -34,12 +34,13 @@
 
 #include "debug.h"
 
-static const char *PLAYER_IGNORE_STRATEGY_NOP = "nop";
-static const char *PLAYER_IGNORE_STRATEGY_EMOTE0 = "emote0";
-static const char *DEFAULT_IGNORE_STRATEGY = PLAYER_IGNORE_STRATEGY_EMOTE0;
+static const char *const PLAYER_IGNORE_STRATEGY_NOP = "nop";
+static const char *const PLAYER_IGNORE_STRATEGY_EMOTE0 = "emote0";
+static const char *const DEFAULT_IGNORE_STRATEGY
+    = PLAYER_IGNORE_STRATEGY_EMOTE0;
 
-static const char *NAME = "name"; // constant for xml serialisation
-static const char *RELATION = "relation"; // constant for xml serialisation
+static const char *const NAME = "name";
+static const char *const RELATION = "relation";
 
 static const unsigned int IGNORE_EMOTE_TIME = 100;
 

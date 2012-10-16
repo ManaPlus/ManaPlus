@@ -47,7 +47,8 @@ ListBox::ListBox(gcn::ListModel *const listModel):
     gcn::ListBox(listModel),
     mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
     mDistributeMousePressed(true),
-    mOldSelected(-1)
+    mOldSelected(-1),
+    mPadding(0)
 {
     mForegroundColor = Theme::getThemeColor(Theme::LISTBOX);
 
@@ -60,8 +61,6 @@ ListBox::ListBox(gcn::ListModel *const listModel):
 
     if (mSkin)
         mPadding = mSkin->getPadding();
-    else
-        mPadding = 0;
 
     adjustSize();
 }

@@ -52,7 +52,11 @@ DidYouKnowWindow::DidYouKnowWindow():
     ActionListener(),
     mBrowserBox(new BrowserBox),
     mScrollArea(new ScrollArea(mBrowserBox,
-        true, "didyouknow_background.xml"))
+        true, "didyouknow_background.xml")),
+    mButtonPrev(new Button(_("< Previous"), "prev", this)),
+    mButtonNext(new Button(_("Next >"), "next", this)),
+    mOpenAgainCheckBox(new CheckBox(_("Auto open this window"),
+        config.getBoolValue("showDidYouKnow"), this, "openagain"))
 {
     setMinWidth(300);
     setMinHeight(250);
@@ -62,15 +66,10 @@ DidYouKnowWindow::DidYouKnowWindow():
     setStickyButtonLock(true);
 
     setupWindow->registerWindowForReset(this);
-
     setDefaultSize(500, 400, ImageRect::CENTER);
 
     mBrowserBox->setOpaque(false);
     Button *const okButton = new Button(_("Close"), "close", this);
-    mButtonPrev = new Button(_("< Previous"), "prev", this);
-    mButtonNext = new Button(_("Next >"), "next", this);
-    mOpenAgainCheckBox = new CheckBox(_("Auto open this window"),
-        config.getBoolValue("showDidYouKnow"), this, "openagain");
 
     mBrowserBox->setLinkHandler(this);
     mBrowserBox->setFont(gui->getHelpFont());

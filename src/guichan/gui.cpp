@@ -343,7 +343,7 @@ namespace gcn
                 mWidgetWithMouseQueue.push_front(widget);
             }
 
-            Widget *const swap = widget;
+            const Widget *const swap = widget;
             widget = parent;
             parent = swap->getParent();
         }
@@ -637,7 +637,7 @@ namespace gcn
                     break;
             }
 
-            Widget *const swap = widget;
+            const Widget *const swap = widget;
             widget = parent;
             parent = swap->getParent();
 

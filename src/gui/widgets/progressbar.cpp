@@ -56,8 +56,8 @@ ProgressBar::ProgressBar(float progress,
     mFillPadding(3)
 {
     // The progress value is directly set at load time:
-    if (progress > 1.0f || progress < 0.0f)
-        progress = 1.0f;
+    if (mProgress > 1.0f || mProgress < 0.0f)
+        mProgress = 1.0f;
 
     mColor = Theme::getProgressColor(color >= 0 ? color : 0, mProgress);
     mColorToGo = mColor;

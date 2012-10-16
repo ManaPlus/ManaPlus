@@ -29,6 +29,15 @@
 
 struct SpecialInfo final
 {
+    enum TargetMode
+    {
+        TARGET_SELF = 0, // no target selection
+        TARGET_FRIEND,   // target friendly being
+        TARGET_ENEMY,    // target hostile being
+        TARGET_BEING,    // target any being
+        TARGET_POINT     // target map location
+    };
+
     SpecialInfo() :
         id(0),
         isActive(false),
@@ -42,14 +51,6 @@ struct SpecialInfo final
 
     A_DELETE_COPY(SpecialInfo)
 
-    enum TargetMode
-    {
-        TARGET_SELF = 0, // no target selection
-        TARGET_FRIEND,   // target friendly being
-        TARGET_ENEMY,    // target hostile being
-        TARGET_BEING,    // target any being
-        TARGET_POINT     // target map location
-    };
     int id;
     std::string set; // tab on which the special is shown
     std::string name; // displayed name of special

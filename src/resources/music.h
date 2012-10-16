@@ -36,6 +36,7 @@ class Music final : public Resource
 {
     public:
         Music() :
+            Resource(),
             mMusic(nullptr)
         { }
 

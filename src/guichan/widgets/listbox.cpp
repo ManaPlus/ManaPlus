@@ -132,11 +132,11 @@ namespace gcn
         distributeValueChangedEvent();
     }
 
-    void ListBox::keyPressed(KeyEvent& keyEvent A_UNUSED)
+    void ListBox::keyPressed(KeyEvent &keyEvent A_UNUSED)
     {
     }
 
-    void ListBox::mousePressed(MouseEvent& mouseEvent)
+    void ListBox::mousePressed(MouseEvent &mouseEvent A_UNUSED)
     {
     }
 

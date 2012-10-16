@@ -90,7 +90,7 @@ namespace gcn
         if (x_ < 0)
         {
             width_ += x_;
-            x_ = 0;
+//            x_ = 0;
         }
         else if (x_ + width_ > rectangle.width)
         {

@@ -35,7 +35,8 @@
 #include "debug.h"
 
 ProgressIndicator::ProgressIndicator() :
-    gcn::Widget()
+    gcn::Widget(),
+    mIndicator(nullptr)
 {
     ImageSet *const images = Theme::getImageSetFromTheme(
         "progress-indicator.png", 32, 32);
@@ -49,10 +50,6 @@ ProgressIndicator::ProgressIndicator() :
         mIndicator = new SimpleAnimation(anim);
 
         images->decRef();
-    }
-    else
-    {
-        mIndicator = nullptr;
     }
 
     setSize(32, 32);

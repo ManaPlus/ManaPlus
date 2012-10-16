@@ -293,7 +293,6 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
                             imgVert->image = img;
                             row->images.push_back(imgVert);
                         }
-                        lastImage = img;
                     }
                     lastImage = img;
 //                    if (imgVert->image->mGLImage != lastImage->mGLImage)

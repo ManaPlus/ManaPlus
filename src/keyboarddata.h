@@ -32,7 +32,7 @@
 #include <string>
 
 // keyData must be in same order as enum keyAction.
-static KeyData const keyData[Input::KEY_TOTAL] = {
+static const KeyData keyData[Input::KEY_TOTAL] = {
     {"keyMoveUp",
         INPUT_KEYBOARD, SDLK_UP,
         INPUT_UNKNOWN, Input::KEY_NO_VALUE,

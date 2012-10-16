@@ -58,6 +58,13 @@ Viewport::Viewport() :
     WindowContainer(),
     MouseListener(),
     mMap(nullptr),
+    mScrollRadius(config.getIntValue("ScrollRadius")),
+    mScrollLaziness(config.getIntValue("ScrollLaziness")),
+    mShowBeingPopup(config.getBoolValue("showBeingPopup")),
+    mSelfMouseHeal(config.getBoolValue("selfMouseHeal")),
+    mEnableLazyScrolling(config.getBoolValue("enableLazyScrolling")),
+    mScrollCenterOffsetX(config.getIntValue("ScrollCenterOffsetX")),
+    mScrollCenterOffsetY(config.getIntValue("ScrollCenterOffsetY")),
     mMouseX(0),
     mMouseY(0),
     mPixelViewX(0),
@@ -77,14 +84,6 @@ Viewport::Viewport() :
 {
     setOpaque(false);
     addMouseListener(this);
-
-    mScrollLaziness = config.getIntValue("ScrollLaziness");
-    mScrollRadius = config.getIntValue("ScrollRadius");
-    mScrollCenterOffsetX = config.getIntValue("ScrollCenterOffsetX");
-    mScrollCenterOffsetY = config.getIntValue("ScrollCenterOffsetY");
-    mShowBeingPopup = config.getBoolValue("showBeingPopup");
-    mSelfMouseHeal = config.getBoolValue("selfMouseHeal");
-    mEnableLazyScrolling = config.getBoolValue("enableLazyScrolling");
 
     config.addListener("ScrollLaziness", this);
     config.addListener("ScrollRadius", this);

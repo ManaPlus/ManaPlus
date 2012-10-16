@@ -870,8 +870,8 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
         vp += 8;
         if (vp >= vLimit)
         {
-            floatTexArray = ogl.switchFloatTexArray();
-            intVertArray = ogl.switchIntVertArray();
+            ogl.switchFloatTexArray();
+            ogl.switchIntVertArray();
             ogl.switchVp(vp);
             vp = 0;
         }
@@ -908,8 +908,8 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
         vp += 8;
         if (vp >= vLimit)
         {
-            intTexArray = ogl.switchIntTexArray();
-            intVertArray = ogl.switchIntVertArray();
+            ogl.switchIntTexArray();
+            ogl.switchIntVertArray();
             ogl.switchVp(vp);
             vp = 0;
         }

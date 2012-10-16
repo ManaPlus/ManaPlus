@@ -101,11 +101,13 @@ protected:
     friend class SocialWindow;
 
     SocialTab():
-            mInviteDialog(nullptr),
-            mConfirmDialog(nullptr),
-            mScroll(nullptr),
-            mList(nullptr)
-    {}
+        Tab(),
+        mInviteDialog(nullptr),
+        mConfirmDialog(nullptr),
+        mScroll(nullptr),
+        mList(nullptr)
+    {
+    }
 
     virtual ~SocialTab()
     {

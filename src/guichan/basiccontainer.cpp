@@ -149,7 +149,7 @@ namespace gcn
                 break;
         }
 
-        WidgetListReverseIterator end = it;
+        const WidgetListReverseIterator end = it;
 
         ++ it;
 

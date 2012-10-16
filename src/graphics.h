@@ -139,8 +139,9 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Draws a resclaled version of the image
          */
-        bool drawRescaledImage(Image *const image, int srcX, int srcY,
-                               int dstX, int dstY,
+        bool drawRescaledImage(Image *const image,
+                               const int srcX, const int srcY,
+                               const int dstX, const int dstY,
                                const int width, const int height,
                                const int desiredWidth, const int desiredHeight)
         {

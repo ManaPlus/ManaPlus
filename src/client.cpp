@@ -1674,7 +1674,7 @@ void Client::initLocalDataDir()
             mLocalDataDir = std::string(PHYSFS_getUserDir());
         mLocalDataDir += "/Mana";
 #elif defined __ANDROID__
-	mLocalDataDir = "local";
+        mLocalDataDir = "local";
 #else
         mLocalDataDir = std::string(PHYSFS_getUserDir()) +
             ".local/share/mana";

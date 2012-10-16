@@ -1362,7 +1362,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
         if (!Client::limitPackets(PACKET_ATTACK))
             return;
 
-        if (!dontChangeEquipment && target)
+        if (!dontChangeEquipment)
             changeEquipmentBeforeAttack(target);
 
         Net::getPlayerHandler()->attack(target->getId(), mServerAttack);
@@ -4251,7 +4251,7 @@ bool LocalPlayer::checAttackPermissions(const Being *const target) const
 }
 
 
-const char *LocalPlayer::getVarItem(const char **const arr,
+const char *LocalPlayer::getVarItem(const char *const *const arr,
                                     const unsigned index,
                                     const unsigned sz) const
 {

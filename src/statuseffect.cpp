@@ -33,7 +33,7 @@
 
 #include "debug.h"
 
-static const char *STATUS_EFFECTS_FILE = "status-effects.xml";
+static const char *const STATUS_EFFECTS_FILE = "status-effects.xml";
 
 static void unloadMap(std::map<int, StatusEffect *> &map);
 

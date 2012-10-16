@@ -77,7 +77,8 @@ RegisterDialog::RegisterDialog(LoginData *const data):
     mOtherButton(nullptr),
     mWrongDataNoticeListener(new WrongDataNoticeListener)
 {
-    int optionalActions = Net::getLoginHandler()->supportedOptionalActions();
+    const int optionalActions = Net::getLoginHandler()->
+        supportedOptionalActions();
 
     Label *const userLabel = new Label(_("Name:"));
     Label *const passwordLabel = new Label(_("Password:"));

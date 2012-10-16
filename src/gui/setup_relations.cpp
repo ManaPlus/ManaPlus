@@ -55,13 +55,13 @@ static const unsigned int RELATION_CHOICE_COLUMN_WIDTH = 80;
 
 #include "debug.h"
 
-static const char *table_titles[COLUMNS_NR] =
+static const char *const table_titles[COLUMNS_NR] =
 {
     N_("Name"),
     N_("Relation")
 };
 
-static const char *RELATION_NAMES[PlayerRelation::RELATIONS_NR] =
+static const char *const RELATION_NAMES[PlayerRelation::RELATIONS_NR] =
 {
     N_("Neutral"),
     N_("Friend"),

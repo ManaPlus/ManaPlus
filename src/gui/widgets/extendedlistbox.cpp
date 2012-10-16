@@ -83,7 +83,8 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
         const Image *const image = model->getImageAt(i);
         if (!image)
         {
-            graphics->drawText(mListModel->getElementAt(i), mPadding, y + textPos);
+            graphics->drawText(mListModel->getElementAt(i),
+                mPadding, y + textPos);
         }
         else
         {

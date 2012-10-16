@@ -140,6 +140,10 @@ MapDebugTab::MapDebugTab() :
     mMapLabel(new Label(strprintf(_("Map:")))),
     mMinimapLabel(new Label(strprintf(_("Minimap:")))),
     mTileMouseLabel(new Label(strprintf("%s (%d, %d)", _("Cursor:"), 0, 0))),
+    mParticleCountLabel(new Label(strprintf("%s %d",
+        _("Particle count:"), 88888))),
+    mMapActorCountLabel(new Label(strprintf("%s %d",
+        _("Map actors count:"), 88888))),
     mXYLabel(new Label(strprintf("%s (?,?)", _("Player Position:")))),
     mTexturesLabel(nullptr),
     mUpdateTime(0),
@@ -148,11 +152,6 @@ MapDebugTab::MapDebugTab() :
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
-
-    mParticleCountLabel = new Label(strprintf("%s %d",
-        _("Particle count:"), 88888));
-    mMapActorCountLabel = new Label(strprintf("%s %d",
-        _("Map actors count:"), 88888));
 
 #ifdef USE_OPENGL
     switch (imageHelper->useOpenGL())

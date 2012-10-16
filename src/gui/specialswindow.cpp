@@ -105,10 +105,10 @@ void SpecialsWindow::action(const gcn::ActionEvent &event)
         if (!event.getSource())
             return;
 
-        SpecialEntry *disp = dynamic_cast<SpecialEntry*>(
+        const SpecialEntry *const disp = dynamic_cast<SpecialEntry*>(
             event.getSource()->getParent());
 
-        if (disp)
+        if (disp && disp->mInfo)
         {
             /*Being *target = player_node->getTarget();
 
@@ -171,12 +171,12 @@ void SpecialsWindow::rebuild(const std::map<int, Special> &specialData)
     {
         logger->log("Updating special GUI for %d", i->first);
 
-        SpecialInfo* info = SpecialDB::get(i->first);
+        SpecialInfo *const info = SpecialDB::get(i->first);
         if (info)
         {
             info->rechargeCurrent = i->second.currentMana;
             info->rechargeNeeded = i->second.neededMana;
-            SpecialEntry* entry = new SpecialEntry(info);
+            SpecialEntry *const entry = new SpecialEntry(info);
             entry->setPosition(0, vPos);
             vPos += entry->getHeight();
             add(entry);
@@ -190,7 +190,7 @@ void SpecialsWindow::rebuild(const std::map<int, Special> &specialData)
 }
 
 
-SpecialEntry::SpecialEntry(SpecialInfo *info) :
+SpecialEntry::SpecialEntry(SpecialInfo *const info) :
     mInfo(info),
     mIcon(nullptr),
     mLevelLabel(nullptr),
@@ -251,8 +251,7 @@ void SpecialEntry::update(int current, int needed)
 {
     if (mRechargeBar && needed)
     {
-        float progress = static_cast<float>(current)
-            / static_cast<float>(needed);
-        mRechargeBar->setProgress(progress);
+        mRechargeBar->setProgress(static_cast<float>(current)
+            / static_cast<float>(needed));
     }
 }

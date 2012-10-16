@@ -91,7 +91,7 @@ namespace gcn
         return mAlignment;
     }
 
-    void Label::draw(Graphics* graphics)
+    void Label::draw(Graphics* graphics A_UNUSED)
     {
     }
 
