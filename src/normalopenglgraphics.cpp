@@ -40,11 +40,6 @@
 
 #include "debug.h"
 
-#ifndef GL_TEXTURE_RECTANGLE_ARB
-#define GL_TEXTURE_RECTANGLE_ARB 0x84F5
-#define GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB 0x84F8
-#endif
-
 GLuint NormalOpenGLGraphics::mLastImage = 0;
 
 unsigned int vertexBufSize = 500;
@@ -949,8 +944,13 @@ void NormalOpenGLGraphics::_beginDraw()
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
+#ifdef ANDROID
+    glOrthof(0.0, static_cast<float>(mTarget->w),
+        static_cast<float>(mTarget->h), 0.0, -1.0, 1.0);
+#else
     glOrtho(0.0, static_cast<double>(mTarget->w),
         static_cast<double>(mTarget->h), 0.0, -1.0, 1.0);
+#endif
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -963,13 +963,14 @@ void NormalOpenGLGraphics::_beginDraw()
     glEnableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
+#ifndef ANDROID
     glHint(GL_LINE_SMOOTH_HINT, GL_FASTEST);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
     glHint(GL_POINT_SMOOTH_HINT, GL_FASTEST);
     glHint(GL_POLYGON_SMOOTH_HINT, GL_FASTEST);
-
 #ifndef __MINGW32__
     glHint(GL_TEXTURE_COMPRESSION_HINT, GL_FASTEST);
+#endif
 #endif
 
 //    glScalef(0.5f, 0.5f, 0.5f);
@@ -1093,9 +1094,13 @@ void NormalOpenGLGraphics::drawPoint(int x, int y)
     setTexturingAndBlending(false);
     restoreColor();
 
+#ifdef ANDROID
+    // TODO need fix
+#else
     glBegin(GL_POINTS);
     glVertex2i(x, y);
     glEnd();
+#endif
 }
 
 void NormalOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)

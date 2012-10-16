@@ -24,16 +24,31 @@
 #include "main.h"
 #ifdef USE_OPENGL
 
+#ifdef ANDROID
+#include <GLES/gl.h>
+#include <GLES/glext.h>
+#define APIENTRY GL_APIENTRY
+#else
 #define GL_GLEXT_PROTOTYPES 1
-
 #include <SDL_opengl.h>
 #include <GL/glext.h>
+#endif
 
 #define GL_NUM_EXTENSIONS                 0x821D
 #define GL_DEPTH_ATTACHMENT               0x8D00
 #define GL_COLOR_ATTACHMENT0              0x8CE0
 #define GL_FRAMEBUFFER                    0x8D40
 #define GL_RENDERBUFFER                   0x8D41
+
+#ifndef GL_COMPRESSED_RGBA_ARB
+#define GL_COMPRESSED_RGBA_ARB            0x84EE
+#define GL_COMPRESSED_RGBA_S3TC_DXT5_EXT  0x83F3
+#define GL_COMPRESSED_RGBA_FXT1_3DFX      0x86B1
+#endif
+#ifndef GL_MAX_ELEMENTS_VERTICES
+#define GL_MAX_ELEMENTS_VERTICES          0x80E8
+#define GL_MAX_ELEMENTS_INDICES           0x80E9
+#endif
 
 #define defNameE(name) extern name##_t m##name
 

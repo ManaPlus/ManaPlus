@@ -30,14 +30,13 @@
 
 #ifdef USE_OPENGL
 
-/* The definition of OpenGL extensions by SDL is giving problems with recent
- * gl.h headers, since they also include these definitions. As we're not using
- * extensions anyway it's safe to just disable the SDL version.
- */
-//#define NO_SDL_GLEXT
+#ifdef ANDROID
+#include <GLES/gl.h>
+#else
 #define GL_GLEXT_PROTOTYPES 1
-
 #include <SDL_opengl.h>
+#endif
+
 #endif
 
 #include "resources/image.h"

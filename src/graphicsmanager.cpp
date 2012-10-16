@@ -21,9 +21,17 @@
 #include "graphicsmanager.h"
 
 #ifdef USE_OPENGL
+
 #ifndef WIN32
+#ifdef ANDROID
+#include <GLES2/gl2.h>
+#include <GLES/glext.h>
+#include <EGL/egl.h>
+#else
 #include "GL/glx.h"
 #endif
+#endif
+
 #endif
 
 #include "configuration.h"
@@ -53,6 +61,8 @@
 
 #ifdef WIN32
 #define getFunction(name) wglGetProcAddress(name)
+#elif ANDROID
+#define getFunction(name) eglGetProcAddress(name)
 #else
 #define getFunction(name) glXGetProcAddress(\
     reinterpret_cast<const GLubyte*>(name))

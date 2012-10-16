@@ -37,11 +37,6 @@
 
 #include "debug.h"
 
-#ifndef GL_TEXTURE_RECTANGLE_ARB
-#define GL_TEXTURE_RECTANGLE_ARB 0x84F5
-#define GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB 0x84F8
-#endif
-
 GLuint SafeOpenGLGraphics::mLastImage = 0;
 
 SafeOpenGLGraphics::SafeOpenGLGraphics():

@@ -30,11 +30,14 @@
 
 #include "resources/fboinfo.h"
 
-//#define NO_SDL_GLEXT
+#ifdef ANDROID
+#include <GLES/gl.h>
+#include <GLES/glext.h>
+#else
 #define GL_GLEXT_PROTOTYPES 1
-
 #include <SDL_opengl.h>
 #include <GL/glext.h>
+#endif
 
 class SafeOpenGLGraphics final : public Graphics
 {

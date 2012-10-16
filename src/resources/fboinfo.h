@@ -28,8 +28,13 @@
 
 #include "resources/fboinfo.h"
 
+#ifdef ANDROID
+#include <GLES/gl.h>
+#include <GLES/glext.h>
+#else
 #include <SDL_opengl.h>
 #include <GL/glext.h>
+#endif
 
 struct FBOInfo final
 {

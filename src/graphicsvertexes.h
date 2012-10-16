@@ -27,11 +27,15 @@
 #include "localconsts.h"
 
 #ifdef USE_OPENGL
-//#define NO_SDL_GLEXT
+
+#ifdef ANDROID
+#include <GLES/gl.h>
+#else
 #define GL_GLEXT_PROTOTYPES 1
+#include <SDL/SDL_opengl.h>
+#endif
 
 #include <SDL/SDL.h>
-#include <SDL/SDL_opengl.h>
 
 #include "safeopenglgraphics.h"
 #include "normalopenglgraphics.h"

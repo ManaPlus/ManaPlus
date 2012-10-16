@@ -27,14 +27,25 @@
 #include "main.h"
 
 #ifdef USE_OPENGL
+
+#ifndef GL_TEXTURE_RECTANGLE_ARB
+#define GL_TEXTURE_RECTANGLE_ARB 0x84F5
+#define GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB 0x84F8
+#endif
+
 #include "utils/stringvector.h"
 
 #include "resources/imagehelper.h"
 
 #include <SDL.h>
 
+#ifdef ANDROID
+#include <GLES/gl.h>
+#define GL_RGBA8 GL_RGBA8_OES
+#else
 #define GL_GLEXT_PROTOTYPES 1
 #include <SDL_opengl.h>
+#endif
 
 class Dye;
 class Image;

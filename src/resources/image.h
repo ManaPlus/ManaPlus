@@ -37,9 +37,13 @@
  * extensions anyway it's safe to just disable the SDL version.
  */
 //#define NO_SDL_GLEXT
-#define GL_GLEXT_PROTOTYPES 1
 
+#ifdef ANDROID
+#include <GLES/gl.h>
+#else
+#define GL_GLEXT_PROTOTYPES 1
 #include <SDL_opengl.h>
+#endif
 #endif
 
 #include <map>
