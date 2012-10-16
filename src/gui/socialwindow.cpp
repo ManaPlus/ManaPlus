@@ -1346,9 +1346,9 @@ bool SocialWindow::addTab(Guild *const guild)
 
     SocialTab *tab = nullptr;
     if (guild->getServerGuild())
-        tab = new SocialGuildTab(guild, getOptionBool("showbackground"));
+        tab = new SocialGuildTab(guild, getOptionBool("showtabbackground"));
     else
-        tab = new SocialGuildTab2(guild, getOptionBool("showbackground"));
+        tab = new SocialGuildTab2(guild, getOptionBool("showtabbackground"));
 
     mGuilds[guild] = tab;
     mTabs->addTab(tab, tab->mScroll);
@@ -1379,7 +1379,7 @@ bool SocialWindow::addTab(Party *const party)
         return false;
 
     SocialPartyTab *const tab = new SocialPartyTab(party,
-        getOptionBool("showbackground"));
+        getOptionBool("showtabbackground"));
     mParties[party] = tab;
 
     mTabs->addTab(tab, tab->mScroll);
