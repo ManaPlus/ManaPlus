@@ -51,8 +51,6 @@ SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
     mSpellPopup(new SpellPopup),
     mNumber(number)
 {
-    mBoxWidth = mBoxWidth;
-
     addMouseListener(this);
     addWidgetListener(this);
 

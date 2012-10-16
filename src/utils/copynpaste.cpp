@@ -473,7 +473,7 @@ bool retrieveBuffer(std::string&, size_t&)
     return false;
 }
 
-bool sendBuffer(std::string& text)
+bool sendBuffer(std::string& text A_UNUSED)
 {
     return false;
 }

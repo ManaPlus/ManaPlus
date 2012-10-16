@@ -228,7 +228,7 @@ void CommandHandler::handleCommand(const std::string &command,
         tab->chatLog(_("Unknown command."));
 }
 
-char CommandHandler::parseBoolean(const std::string &value)
+signed char CommandHandler::parseBoolean(const std::string &value)
 {
     std::string opt = value.substr(0, 1);
 

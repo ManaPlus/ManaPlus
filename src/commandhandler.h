@@ -64,7 +64,7 @@ class CommandHandler final
 
         static void replaceVars(std::string &str);
 
-        static char parseBoolean(const std::string &value);
+        static signed char parseBoolean(const std::string &value);
 
     protected:
         friend class ChatTab;
