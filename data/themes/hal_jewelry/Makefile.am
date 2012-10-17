@@ -46,7 +46,7 @@ gui_DATA =				\
 	slider.xml		\
 	slider_highlighted.xml		\
 	social.xml		\
-	spell.xml		\
+	spells.xml		\
 	status.xml		\
 	tab.xml		\
 	tab_highlighted.xml		\
