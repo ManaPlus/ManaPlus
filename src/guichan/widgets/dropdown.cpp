@@ -221,42 +221,6 @@ namespace gcn
 
     void DropDown::adjustHeight()
     {
-        if (!mScrollArea)
-            throw GCN_EXCEPTION("Scroll area has been deleted.");
-
-        if (!mListBox)
-            throw GCN_EXCEPTION("List box has been deleted.");
-
-        const int listBoxHeight = mListBox->getHeight();
-
-        // We add 2 for the border
-        const int h2 = getFont()->getHeight() + 2;
-
-        setHeight(h2);
-
-        // The addition/subtraction of 2 compensates for the seperation lines
-        // seperating the selected element view and the scroll area.
-
-        if (mDroppedDown && getParent())
-        {
-            const int h = getParent()->getChildrenArea().height - getY();
-
-            if (listBoxHeight > h - h2 - 2)
-            {
-                mScrollArea->setHeight(h - h2 - 2);
-                setHeight(h);
-            }
-            else
-            {
-                setHeight(listBoxHeight + h2 + 2);
-                mScrollArea->setHeight(listBoxHeight);
-            }
-        }
-
-        mScrollArea->setWidth(getWidth());
-        // Resize the ListBox to exactly fit the ScrollArea.
-        mListBox->setWidth(mScrollArea->getChildrenArea().width);
-        mScrollArea->setPosition(0, 0);
     }
 
     void DropDown::dropDown()

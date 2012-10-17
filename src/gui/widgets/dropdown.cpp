@@ -39,6 +39,8 @@
 
 #include "utils/dtor.h"
 
+#include <guichan/font.hpp>
+
 #include <algorithm>
 
 #include "debug.h"
@@ -47,6 +49,7 @@ int DropDown::instances = 0;
 Image *DropDown::buttons[2][2];
 ImageRect DropDown::skinRect;
 float DropDown::mAlpha = 1.0;
+Skin *DropDown::mSkin = nullptr;
 
 static std::string const dropdownFiles[2] =
 {
@@ -60,9 +63,11 @@ DropDown::DropDown(gcn::ListModel *const listModel,
     gcn::DropDown::DropDown(listModel,
         new ScrollArea, new ListBox(listModel)),
     mShadowColor(Theme::getThemeColor(Theme::DROPDOWN_SHADOW)),
-    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT))
+    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
+    mPadding(1),
+    mImagePadding(2)
 {
-    setFrameSize(2);
+    mFrameSize = 2;
 
     // Initialize graphics
     if (instances == 0)
@@ -70,10 +75,12 @@ DropDown::DropDown(gcn::ListModel *const listModel,
         // Load the background skin
         for (int i = 0; i < 2; i ++)
         {
-            Skin *const skin = Theme::instance()->load(
+            Skin *skin = Theme::instance()->load(
                 dropdownFiles[i], "dropdown.xml");
             if (skin)
             {
+                if (!i)
+                    mSkin = skin;
                 const ImageRect &rect = skin->getBorder();
                 for (int f = 0; f < 2; f ++)
                 {
@@ -88,13 +95,14 @@ DropDown::DropDown(gcn::ListModel *const listModel,
                         buttons[f][i] = nullptr;
                     }
                 }
+                if (i)
+                    Theme::instance()->unload(skin);
             }
             else
             {
                 for (int f = 0; f < 2; f ++)
                     buttons[f][i] = nullptr;
             }
-            Theme::instance()->unload(skin);
         }
 
         // get the border skin
@@ -115,6 +123,17 @@ DropDown::DropDown(gcn::ListModel *const listModel,
 
     if (listener)
         addActionListener(listener);
+
+    if (mListBox)
+        mListBox->adjustSize();
+
+    if (mSkin)
+    {
+        mFrameSize = mSkin->getOption("frameSize");
+        mPadding = mSkin->getPadding();
+        mImagePadding = mSkin->getOption("imagePadding");
+    }
+    adjustHeight();
 }
 
 DropDown::~DropDown()
@@ -130,8 +149,12 @@ DropDown::~DropDown()
                     buttons[f][i]->decRef();
             }
         }
-        if (Theme::instance())
-            Theme::instance()->unloadRect(skinRect);
+        Theme *const theme = Theme::instance();
+        if (theme)
+        {
+            theme->unload(mSkin);
+            theme->unloadRect(skinRect);
+        }
     }
     delete mScrollArea;
     mScrollArea = nullptr;
@@ -175,6 +198,7 @@ void DropDown::draw(gcn::Graphics* graphics)
     updateAlpha();
 
     const int alpha = static_cast<int>(mAlpha * 255.0f);
+    const int pad = 2 * mPadding;
     mHighlightColor.a = alpha;
     mShadowColor.a = alpha;
 
@@ -183,13 +207,14 @@ void DropDown::draw(gcn::Graphics* graphics)
         graphics->setFont(getFont());
         graphics->setColor(mForegroundColor);
         graphics->drawText(mListBox->getListModel()->getElementAt(
-                           mListBox->getSelected()), 1, 0);
+            mListBox->getSelected()), mPadding, mPadding);
     }
 
     if (isFocused())
     {
         graphics->setColor(mHighlightColor);
-        graphics->drawRectangle(gcn::Rectangle(0, 0, getWidth() - h, h));
+        graphics->drawRectangle(gcn::Rectangle(mPadding, mPadding,
+            getWidth() - h - pad, h - pad));
     }
 
     drawButton(graphics);
@@ -197,7 +222,6 @@ void DropDown::draw(gcn::Graphics* graphics)
     if (mDroppedDown)
     {
         drawChildren(graphics);
-
         // Draw two lines separating the ListBox with selected
         // element view.
         graphics->setColor(mHighlightColor);
@@ -220,11 +244,12 @@ void DropDown::drawButton(gcn::Graphics *graphics)
 {
     const int height = mDroppedDown ? mFoldedUpHeight : getHeight();
 
-    if (buttons[mDroppedDown][mPushed])
+    Image *image = buttons[mDroppedDown][mPushed];
+    if (image)
     {
-        static_cast<Graphics*>(graphics)->
-            drawImage(buttons[mDroppedDown][mPushed],
-            getWidth() - height + 2, 1);
+        static_cast<Graphics*>(graphics)->drawImage(image,
+            getWidth() - image->getWidth() - mImagePadding,
+            (height - image->getHeight()) / 2);
     }
 }
 
@@ -327,4 +352,52 @@ std::string DropDown::getSelectedString() const
         return "";
 
     return listModel->getElementAt(getSelected());
+}
+
+void DropDown::adjustHeight()
+{
+    if (!mScrollArea || !mListBox)
+        return;
+
+    const int listBoxHeight = mListBox->getHeight();
+    const int h2 = getFont()->getHeight() + 2 * mPadding;
+    int newHeight = h2;
+
+    if (mDroppedDown && getParent())
+    {
+        const int h = getParent()->getChildrenArea().height - getY();
+        const int h0 = h - h2;
+        if (listBoxHeight > h0)
+        {
+            mScrollArea->setHeight(h0);
+            newHeight = h;
+        }
+        else
+        {
+            newHeight = listBoxHeight + h2;
+            mScrollArea->setHeight(listBoxHeight);
+        }
+    }
+
+    setHeight(newHeight);
+
+    mScrollArea->setWidth(getWidth());
+    mListBox->setWidth(mScrollArea->getChildrenArea().width);
+    mScrollArea->setPosition(0, 0);
+}
+
+void DropDown::dropDown()
+{
+    const bool dropped = mDroppedDown;
+    gcn::DropDown::dropDown();
+    if (!dropped)
+        adjustHeight();
+}
+
+void DropDown::foldUp()
+{
+    const bool dropped = mDroppedDown;
+    gcn::DropDown::foldUp();
+    if (dropped)
+        adjustHeight();
 }

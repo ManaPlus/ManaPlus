@@ -32,6 +32,7 @@
 
 class Button;
 class CheckBox;
+class DropDown;
 class Label;
 class ListBox;
 class ModeListModel;
@@ -40,7 +41,6 @@ class TextDialog;
 
 namespace gcn
 {
-    class DropDown;
     class Slider;
 }
 
@@ -79,7 +79,7 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
 
         ListBox *mModeList;
         CheckBox *mFsCheckBox;
-        gcn::DropDown *mOpenGLDropDown;
+        DropDown *mOpenGLDropDown;
         CheckBox *mCustomCursorCheckBox;
 
         CheckBox *mEnableResizeCheckBox;

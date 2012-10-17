@@ -160,7 +160,7 @@ public:
             gcn::Widget *const widget = new Label(name);
             mWidgets.push_back(widget);
 
-            gcn::DropDown *const choicebox = new DropDown(mListModel);
+            DropDown *const choicebox = new DropDown(mListModel);
             choicebox->setSelected(player_relations.getRelation(name));
             mWidgets.push_back(choicebox);
         }
@@ -170,7 +170,7 @@ public:
 
     virtual void updateModelInRow(const int row)
     {
-        const gcn::DropDown *const choicebox = static_cast<gcn::DropDown *>(
+        const DropDown *const choicebox = static_cast<DropDown *>(
             getElementAt(row, RELATION_CHOICE_COLUMN));
         player_relations.setRelation(getPlayerAt(row),
                                    static_cast<PlayerRelation::Relation>(

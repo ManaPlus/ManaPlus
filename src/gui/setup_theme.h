@@ -95,12 +95,12 @@ class Setup_Theme final : public SetupTab
         FontSizeChoiceListModel *mFontSizeListModel;
         Label *mFontSizeLabel;
         int mFontSize;
-        gcn::DropDown *mFontSizeDropDown;
+        DropDown *mFontSizeDropDown;
 
         FontSizeChoiceListModel *mNpcFontSizeListModel;
         Label *mNpcFontSizeLabel;
         int mNpcFontSize;
-        gcn::DropDown *mNpcFontSizeDropDown;
+        DropDown *mNpcFontSizeDropDown;
 
 //        EditDialog *mEditDialog;
 };

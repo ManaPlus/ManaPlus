@@ -28,6 +28,7 @@
 #include <guichan/keylistener.hpp>
 #include <guichan/actionlistener.hpp>
 
+class DropDown;
 class Icon;
 class IntTextField;
 class Item;
@@ -37,7 +38,6 @@ class Label;
 
 namespace gcn
 {
-    class DropDown;
     class Slider;
 }
 
@@ -118,7 +118,7 @@ class ItemAmountWindow final : public Window,
 
         gcn::Slider *mItemPriceSlide;
 
-        gcn::DropDown *mItemDropDown;
+        DropDown *mItemDropDown;
 
         ItemsModal *mItemsModal;
 

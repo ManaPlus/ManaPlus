@@ -29,6 +29,7 @@
 
 class Image;
 class ImageRect;
+class Skin;
 
 /**
  * A drop down box from which you can select different values.
@@ -85,6 +86,12 @@ class DropDown final : public gcn::DropDown
 
         std::string getSelectedString() const;
 
+        void adjustHeight();
+
+        void dropDown() override;
+
+        void foldUp() override;
+
     protected:
         /**
          * Draws the button with the little down arrow.
@@ -95,12 +102,15 @@ class DropDown final : public gcn::DropDown
 
         gcn::Color mShadowColor;
         gcn::Color mHighlightColor;
+        int mPadding;
+        int mImagePadding;
 
         // Add own Images.
         static int instances;
         static Image *buttons[2][2];
         static ImageRect skinRect;
         static float mAlpha;
+        static Skin *mSkin;
 };
 
 #endif // end DROPDOWN_H

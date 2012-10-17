@@ -31,6 +31,7 @@
 
 class Button;
 class CheckBox;
+class DropDown;
 class EditDialog;
 class GuiTable;
 class PlayerTableModel;
@@ -38,7 +39,6 @@ class StaticTableModel;
 
 namespace gcn
 {
-    class DropDown;
     class ListModel;
     class ScrollArea;
 }
@@ -80,7 +80,7 @@ private:
     Button *mDeleteButton;
 
     gcn::ListModel *mIgnoreActionChoicesModel;
-    gcn::DropDown *mIgnoreActionChoicesBox;
+    DropDown *mIgnoreActionChoicesBox;
 };
 
 #endif

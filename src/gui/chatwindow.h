@@ -45,16 +45,12 @@ class ChatTab;
 class Channel;
 class ChatInput;
 class ColorListModel;
+class DropDown;
 class ScrollArea;
 class TabbedArea;
 class ItemLinkHandler;
 class Tab;
 class WhisperTab;
-
-namespace gcn
-{
-    class DropDown;
-}
 
 const int DEFAULT_CHAT_WINDOW_SCROLL = 7;
 
@@ -354,7 +350,7 @@ class ChatWindow final : public Window,
         StringVect mTradeFilter;
 
         ColorListModel *mColorListModel;
-        gcn::DropDown *mColorPicker;
+        DropDown *mColorPicker;
         int mChatColor;
         unsigned int mChatHistoryIndex;
         std::list<std::string> mAwayLog;
