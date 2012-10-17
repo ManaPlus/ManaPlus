@@ -31,11 +31,7 @@
 #include <vector>
 
 class Button;
-
-namespace gcn
-{
-    class RadioButton;
-}
+class RadioButton;
 
 /**
  * The quit dialog.
@@ -69,13 +65,13 @@ class QuitDialog final : public Window, public gcn::ActionListener,
 
     private:
         void placeOption(ContainerPlacer &placer,
-                         gcn::RadioButton *const option);
-        std::vector<gcn::RadioButton*> mOptions;
+                         RadioButton *const option);
+        std::vector<RadioButton*> mOptions;
 
-        gcn::RadioButton *mLogoutQuit;
-        gcn::RadioButton *mForceQuit;
-        gcn::RadioButton *mSwitchAccountServer;
-        gcn::RadioButton *mSwitchCharacter;
+        RadioButton *mLogoutQuit;
+        RadioButton *mForceQuit;
+        RadioButton *mSwitchAccountServer;
+        RadioButton *mSwitchCharacter;
         Button *mOkButton;
         Button *mCancelButton;
 

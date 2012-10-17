@@ -128,7 +128,7 @@ void CheckBox::drawBox(gcn::Graphics *const graphics)
     if (!mSkin)
         return;
 
-    ImageRect &rect = mSkin->getBorder();
+    const ImageRect &rect = mSkin->getBorder();
     int index = 0;
 
     if (mEnabled && isVisible())

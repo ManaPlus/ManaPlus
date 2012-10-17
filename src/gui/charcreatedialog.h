@@ -33,11 +33,11 @@
 class Label;
 class LocalPlayer;
 class PlayerBox;
+class RadioButton;
 class TextField;
 
 namespace gcn
 {
-    class RadioButton;
     class Slider;
 }
 
@@ -122,9 +122,9 @@ class CharCreateDialog final : public Window,
         Button *mActionButton;
         Button *mRotateButton;
 
-        gcn::RadioButton *mMale;
-        gcn::RadioButton *mFemale;
-        gcn::RadioButton *mOther;
+        RadioButton *mMale;
+        RadioButton *mFemale;
+        RadioButton *mOther;
 
         std::vector<gcn::Slider*> mAttributeSlider;
         std::vector<Label*> mAttributeLabel;

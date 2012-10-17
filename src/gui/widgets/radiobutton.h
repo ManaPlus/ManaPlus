@@ -28,6 +28,7 @@
 #include "localconsts.h"
 
 class Image;
+class Skin;
 
 /**
  * Guichan based RadioButton with custom look
@@ -71,16 +72,19 @@ class RadioButton final : public gcn::RadioButton
 
         void keyPressed(gcn::KeyEvent& keyEvent) override;
 
+        void updateAlpha();
+
+        void adjustSize();
+
     private:
         static int instances;
+        static Skin *mSkin;
         static float mAlpha;
         bool mHasMouse;
-        static Image *radioNormal;
-        static Image *radioChecked;
-        static Image *radioDisabled;
-        static Image *radioDisabledChecked;
-        static Image *radioNormalHi;
-        static Image *radioCheckedHi;
+        int mPadding;
+        int mImagePadding;
+        int mImageSize;
+        int mSpacing;
 };
 
 #endif // RADIOBUTTON_H

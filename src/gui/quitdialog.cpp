@@ -119,7 +119,7 @@ QuitDialog::~QuitDialog()
 }
 
 void QuitDialog::placeOption(ContainerPlacer &placer,
-                             gcn::RadioButton *const option)
+                             RadioButton *const option)
 {
     placer(0, static_cast<int>(mOptions.size()), option, 3);
     mOptions.push_back(option);
@@ -194,8 +194,8 @@ void QuitDialog::keyPressed(gcn::KeyEvent &keyEvent)
 
     if (dir != 0)
     {
-        std::vector<gcn::RadioButton*>::const_iterator it = mOptions.begin();
-        std::vector<gcn::RadioButton*>::const_iterator it_end = mOptions.end();
+        std::vector<RadioButton*>::const_iterator it = mOptions.begin();
+        std::vector<RadioButton*>::const_iterator it_end = mOptions.end();
 
         for (; it < it_end; ++it)
         {

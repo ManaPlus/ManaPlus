@@ -32,51 +32,44 @@
 
 #include "resources/image.h"
 
+#include <guichan/font.hpp>
+
 #include "debug.h"
 
 int RadioButton::instances = 0;
+Skin *RadioButton::mSkin = nullptr;
 float RadioButton::mAlpha = 1.0;
-Image *RadioButton::radioNormal;
-Image *RadioButton::radioChecked;
-Image *RadioButton::radioDisabled;
-Image *RadioButton::radioDisabledChecked;
-Image *RadioButton::radioNormalHi;
-Image *RadioButton::radioCheckedHi;
 
 RadioButton::RadioButton(const std::string &caption, const std::string &group,
                          const bool marked):
     gcn::RadioButton(caption, group, marked),
-    mHasMouse(false)
+    mHasMouse(false),
+    mPadding(0),
+    mImagePadding(0),
+    mImageSize(9),
+    mSpacing(2)
 {
     mForegroundColor = Theme::getThemeColor(Theme::RADIOBUTTON);
     if (instances == 0)
     {
         if (Theme::instance())
         {
-            ImageRect rect;
-            Theme::instance()->loadRect(rect, "radio.xml", "", 0, 3);
-            radioChecked = rect.grid[0];
-            radioDisabledChecked = rect.grid[0];
-            radioCheckedHi = rect.grid[1];
-            radioNormal = rect.grid[2];
-            radioDisabled = rect.grid[2];
-            radioNormalHi = rect.grid[3];
+            mSkin = Theme::instance()->load("radio.xml", "");
+            updateAlpha();
         }
-        if (radioNormal)
-            radioNormal->setAlpha(mAlpha);
-        if (radioChecked)
-            radioChecked->setAlpha(mAlpha);
-//        if (radioDisabled)
-//            radioDisabled->setAlpha(mAlpha);
-//        if (radioDisabledChecked)
-//            radioDisabledChecked->setAlpha(mAlpha);
-        if (radioNormalHi)
-            radioNormalHi->setAlpha(mAlpha);
-        if (radioCheckedHi)
-            radioCheckedHi->setAlpha(mAlpha);
     }
 
     instances++;
+
+    if (mSkin)
+    {
+        mPadding = mSkin->getPadding();
+        mImagePadding = mSkin->getOption("imagePadding");
+        mImageSize = mSkin->getOption("imageSize");
+        mSpacing = mSkin->getOption("spacing");
+    }
+
+    adjustSize();
 }
 
 RadioButton::~RadioButton()
@@ -85,65 +78,74 @@ RadioButton::~RadioButton()
 
     if (instances == 0)
     {
-        if (radioNormal)
-            radioNormal->decRef();
-        if (radioChecked)
-            radioChecked->decRef();
-//        if (radioDisabled)
-//            radioDisabled->decRef();
-//        if (radioDisabledChecked)
-//            radioDisabledChecked->decRef();
-        if (radioNormalHi)
-            radioNormalHi->decRef();
-        if (radioCheckedHi)
-            radioCheckedHi->decRef();
+        if (Theme::instance())
+            Theme::instance()->unload(mSkin);
+    }
+}
+
+void RadioButton::updateAlpha()
+{
+    const float alpha = std::max(Client::getGuiAlpha(),
+        Theme::instance()->getMinimumOpacity());
+
+    if (mAlpha != alpha)
+    {
+        mAlpha = alpha;
+        if (mSkin)
+        {
+            ImageRect &rect = mSkin->getBorder();
+            for (int a = 0; a < 4; a ++)
+            {
+                Image *const image = rect.grid[a];
+                if (image)
+                    image->setAlpha(mAlpha);
+            }
+        }
     }
 }
 
 void RadioButton::drawBox(gcn::Graphics* graphics)
 {
-    if (Client::getGuiAlpha() != mAlpha)
-    {
-        mAlpha = Client::getGuiAlpha();
-        if (radioNormal)
-            radioNormal->setAlpha(mAlpha);
-        if (radioChecked)
-            radioChecked->setAlpha(mAlpha);
-//        if (radioDisabled)
-//            radioDisabled->setAlpha(mAlpha);
-//        if (radioDisabledChecked)
-//            radioDisabledChecked->setAlpha(mAlpha);
-        if (radioNormalHi)
-            radioNormalHi->setAlpha(mAlpha);
-        if (radioCheckedHi)
-            radioCheckedHi->setAlpha(mAlpha);
-    }
+    if (!mSkin)
+        return;
 
-    const Image *box = nullptr;
+    const ImageRect &rect = mSkin->getBorder();
+    int index = 0;
 
     if (mEnabled && isVisible())
     {
         if (mSelected)
+        {
             if (mHasMouse)
-                box = radioCheckedHi;
+                index = 1;
             else
-                box = radioChecked;
+                index = 0;
+        }
         else
+        {
             if (mHasMouse)
-                box = radioNormalHi;
+                index = 3;
             else
-                box = radioNormal;
+                index = 2;
+        }
     }
     else
     {
         if (mSelected)
-            box = radioDisabledChecked;
+            index = 0;
         else
-            box = radioDisabled;
+            index = 2;
     }
 
+    const Image *const box = rect.grid[index];
+
+    updateAlpha();
+
     if (box)
-        static_cast<Graphics*>(graphics)->drawImage(box, 3, 3);
+    {
+        static_cast<Graphics*>(graphics)->drawImage(
+            box, mImagePadding, (getHeight() - mImageSize) / 2);
+    }
 }
 
 void RadioButton::draw(gcn::Graphics* graphics)
@@ -152,7 +154,9 @@ void RadioButton::draw(gcn::Graphics* graphics)
 
     graphics->setFont(getFont());
     graphics->setColor(mForegroundColor);
-    graphics->drawText(getCaption(), 16, 0);
+
+    graphics->drawText(getCaption(), mPadding + mImageSize + mSpacing,
+        mPadding);
 }
 
 void RadioButton::mouseEntered(gcn::MouseEvent& event A_UNUSED)
@@ -175,4 +179,11 @@ void RadioButton::keyPressed(gcn::KeyEvent& keyEvent)
         distributeActionEvent();
         keyEvent.consume();
     }
+}
+
+void RadioButton::adjustSize()
+{
+    setHeight(getFont()->getHeight() + 2 * mPadding);
+    setWidth(mImagePadding + mImageSize + mSpacing
+        + getFont()->getWidth(mCaption) + mPadding);
 }

@@ -33,10 +33,10 @@
 class Button;
 class LoginData;
 class OkDialog;
+class RadioButton;
 
 namespace gcn
 {
-    class RadioButton;
     class TextField;
 }
 
@@ -108,9 +108,9 @@ class RegisterDialog final : public Window, public gcn::ActionListener,
         gcn::TextField *mEmailField;
         Button *mRegisterButton;
         Button *mCancelButton;
-        gcn::RadioButton *mMaleButton;
-        gcn::RadioButton *mFemaleButton;
-        gcn::RadioButton *mOtherButton;
+        RadioButton *mMaleButton;
+        RadioButton *mFemaleButton;
+        RadioButton *mOtherButton;
 
         WrongDataNoticeListener *mWrongDataNoticeListener;
 };
