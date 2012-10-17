@@ -1,0 +1,30 @@
+<skinset name="Default" image="window.png">
+	<widget type="Window" xpos="260" ypos="0">
+
+		<option name="showbackground" value="1" />
+		<option name="captionoffsetx" value="20" /> 
+		<option name="captionoffsety" value="7" />
+		<option name="titlebarBold" value="1" />
+		<option name="titlebarHeight" value="35" />
+		<option name="padding" value="10" />
+
+		<!-- Top Row -->
+		<part type="top-left-corner" width="32" height="32" />
+		<part type="top-edge" xpos="33" ypos="0" width="64" height="32" />
+		<part type="top-right-corner" xpos="98" ypos="0" width="32" height="32" />
+
+		<!-- Middle Row -->
+		<part type="left-edge" xpos="0" ypos="33" width="32" height="32" />
+		<part type="bg-quad" xpos="33" ypos="33" width="64" height="32" />
+		<part type="right-edge" xpos="98" ypos="33" width="32" height="32" />
+
+		<!-- Bottom Row -->
+		<part type="bottom-left-corner" xpos="0" ypos="66" width="32" height="32" />
+		<part type="bottom-edge" xpos="33" ypos="66" width="64" height="32" />
+		<part type="bottom-right-corner" xpos="98" ypos="66" width="32" height="32" />
+
+		<part type="closeImage" xpos="-163" ypos="0" width="22" height="22" />
+		<part type="closeImageHighlighted" xpos="-138" ypos="0" width="22" height="22" />
+
+	</widget>
+</skinset>

@@ -1,0 +1,13 @@
+<skinset name="Default" image="window.png">
+	<widget type="Window" xpos="105" ypos="186">
+
+		<!-- Top Row -->
+		<part type="top-edge" xpos="0" ypos="0" width="10" height="11" />
+
+		<!-- Middle Row -->
+		<part type="bg-quad" xpos="16" ypos="0" width="10" height="11" />
+
+		<!-- Bottom Row -->
+		<part type="bottom-edge" xpos="32" ypos="0" width="10" height="11" />
+	</widget>
+</skinset>
