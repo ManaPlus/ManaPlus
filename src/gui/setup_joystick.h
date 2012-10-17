@@ -28,14 +28,10 @@
 #include <guichan/actionlistener.hpp>
 
 class Button;
+class CheckBox;
 class DropDown;
 class Label;
 class NamesModel;
-
-namespace gcn
-{
-    class CheckBox;
-}
 
 class Setup_Joystick final : public SetupTab
 {
@@ -58,10 +54,10 @@ class Setup_Joystick final : public SetupTab
         Label *mCalibrateLabel;
         Button *mCalibrateButton;
         bool mOriginalJoystickEnabled;
-        gcn::CheckBox *mJoystickEnabled;
+        CheckBox *mJoystickEnabled;
         NamesModel *mNamesModel;
         DropDown *mNamesDropDown;
-        gcn::CheckBox *mUseInactiveCheckBox;
+        CheckBox *mUseInactiveCheckBox;
 };
 
 #endif

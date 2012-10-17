@@ -1,5 +1,10 @@
 <skinset name="Default" image="window.png">
 	<widget type="Window" xpos="190" ypos="0">
+        <option name="padding" value="0" />
+        <option name="imagePadding" value="0" />
+        <option name="imageSize" value="9" />
+        <option name="spacing" value="2" />
+
 		<part type="normal" xpos="0" ypos="0" width="9" height="9" />
 		<part type="checked" xpos="9" ypos="0" width="9" height="9" />
 		<part type="disabled" xpos="18" ypos="0" width="9" height="9" />

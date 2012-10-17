@@ -28,6 +28,7 @@
 #include "localconsts.h"
 
 class Image;
+class Skin;
 
 /**
  * Check box widget. Same as the Guichan check box but with custom look.
@@ -78,16 +79,18 @@ class CheckBox final : public gcn::CheckBox
 
         void keyPressed(gcn::KeyEvent& keyEvent) override;
 
+        void adjustSize();
+
     private:
-        static int instances;
-        static float mAlpha;
         bool mHasMouse;
-        static Image *checkBoxNormal;
-        static Image *checkBoxChecked;
-        static Image *checkBoxDisabled;
-        static Image *checkBoxDisabledChecked;
-        static Image *checkBoxNormalHi;
-        static Image *checkBoxCheckedHi;
+        int mPadding;
+        int mImagePadding;
+        int mImageSize;
+        int mSpacing;
+
+        static int instances;
+        static Skin *mSkin;
+        static float mAlpha;
 };
 
 #endif

@@ -33,6 +33,7 @@
 #include <vector>
 
 class Button;
+class CheckBox;
 class DropDown;
 class Label;
 class LoginData;
@@ -41,7 +42,6 @@ class UpdateTypeModel;
 
 namespace gcn
 {
-    class CheckBox;
     class TextField;
 }
 
@@ -90,7 +90,7 @@ class LoginDialog final : public Window, public gcn::ActionListener,
 
         gcn::TextField *mUserField;
         gcn::TextField *mPassField;
-        gcn::CheckBox *mKeepCheck;
+        CheckBox *mKeepCheck;
         Label *mUpdateTypeLabel;
         Label *mUpdateHostLabel;
         UpdateTypeModel *mUpdateTypeModel;
@@ -98,7 +98,7 @@ class LoginDialog final : public Window, public gcn::ActionListener,
         Button *mServerButton;
         Button *mLoginButton;
         Button *mRegisterButton;
-        gcn::CheckBox *mCustomUpdateHost;
+        CheckBox *mCustomUpdateHost;
         gcn::TextField *mUpdateHostText;
         UpdateListModel *mUpdateListModel;
         DropDown *mUpdateHostDropDown;

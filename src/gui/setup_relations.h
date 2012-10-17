@@ -30,6 +30,7 @@
 #include <guichan/actionlistener.hpp>
 
 class Button;
+class CheckBox;
 class EditDialog;
 class GuiTable;
 class PlayerTableModel;
@@ -37,7 +38,6 @@ class StaticTableModel;
 
 namespace gcn
 {
-    class CheckBox;
     class DropDown;
     class ListModel;
     class ScrollArea;
@@ -74,8 +74,8 @@ private:
     GuiTable *mPlayerTitleTable;
     gcn::ScrollArea *mPlayerScrollArea;
 
-    gcn::CheckBox *mDefaultTrading;
-    gcn::CheckBox *mDefaultWhisper;
+    CheckBox *mDefaultTrading;
+    CheckBox *mDefaultWhisper;
 
     Button *mDeleteButton;
 

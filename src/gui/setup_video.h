@@ -31,6 +31,7 @@
 #include <guichan/keylistener.hpp>
 
 class Button;
+class CheckBox;
 class Label;
 class ListBox;
 class ModeListModel;
@@ -39,7 +40,6 @@ class TextDialog;
 
 namespace gcn
 {
-    class CheckBox;
     class DropDown;
     class Slider;
 }
@@ -78,14 +78,14 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
         Label *scrollLazinessLabel;
 
         ListBox *mModeList;
-        gcn::CheckBox *mFsCheckBox;
+        CheckBox *mFsCheckBox;
         gcn::DropDown *mOpenGLDropDown;
-        gcn::CheckBox *mCustomCursorCheckBox;
+        CheckBox *mCustomCursorCheckBox;
 
-        gcn::CheckBox *mEnableResizeCheckBox;
-        gcn::CheckBox *mNoFrameCheckBox;
+        CheckBox *mEnableResizeCheckBox;
+        CheckBox *mNoFrameCheckBox;
 
-        gcn::CheckBox *mFpsCheckBox;
+        CheckBox *mFpsCheckBox;
         gcn::Slider *mFpsSlider;
         Label *mFpsLabel;
         gcn::Slider *mAltFpsSlider;

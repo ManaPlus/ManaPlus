@@ -164,7 +164,7 @@ class ShopWindow final : public Window, public gcn::ActionListener,
         Button *mSellDeleteButton;
         Button *mSellAnnounceButton;
         Button *mSellAuctionButton;
-        gcn::CheckBox *mAnnounceLinks;
+        CheckBox *mAnnounceLinks;
 
         int mSelectedItem;
         int mAnnonceTime;

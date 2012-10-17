@@ -34,58 +34,30 @@
 #include "resources/image.h"
 
 #include <guichan/actionlistener.hpp>
+#include <guichan/font.hpp>
 
 #include "debug.h"
 
 int CheckBox::instances = 0;
+Skin *CheckBox::mSkin = nullptr;
 float CheckBox::mAlpha = 1.0;
-Image *CheckBox::checkBoxNormal;
-Image *CheckBox::checkBoxChecked;
-Image *CheckBox::checkBoxDisabled;
-Image *CheckBox::checkBoxDisabledChecked;
-Image *CheckBox::checkBoxNormalHi;
-Image *CheckBox::checkBoxCheckedHi;
 
 CheckBox::CheckBox(const std::string &caption, const bool selected,
                    gcn::ActionListener *const listener,
                    const std::string &eventId) :
     gcn::CheckBox(caption, selected),
-    mHasMouse(false)
+    mHasMouse(false),
+    mPadding(0),
+    mImagePadding(0),
+    mImageSize(9),
+    mSpacing(2)
 {
     if (instances == 0)
     {
         if (Theme::instance())
         {
-            ImageRect rect;
-            Theme::instance()->loadRect(rect, "checkbox.xml", "", 0, 5);
-            checkBoxNormal = rect.grid[0];
-            checkBoxChecked = rect.grid[1];
-            checkBoxDisabled = rect.grid[2];
-            checkBoxDisabledChecked = rect.grid[3];
-            checkBoxNormalHi = rect.grid[4];
-            checkBoxCheckedHi = rect.grid[5];
-
-            if (checkBoxNormal)
-                checkBoxNormal->setAlpha(mAlpha);
-            if (checkBoxChecked)
-                checkBoxChecked->setAlpha(mAlpha);
-            if (checkBoxDisabled)
-                checkBoxDisabled->setAlpha(mAlpha);
-            if (checkBoxDisabledChecked)
-                checkBoxDisabledChecked->setAlpha(mAlpha);
-            if (checkBoxNormalHi)
-                checkBoxNormalHi->setAlpha(mAlpha);
-            if (checkBoxCheckedHi)
-                checkBoxCheckedHi->setAlpha(mAlpha);
-        }
-        else
-        {
-            checkBoxNormal = nullptr;
-            checkBoxChecked = nullptr;
-            checkBoxDisabled = nullptr;
-            checkBoxDisabledChecked = nullptr;
-            checkBoxNormalHi = nullptr;
-            checkBoxCheckedHi = nullptr;
+            mSkin = Theme::instance()->load("checkbox.xml", "");
+            updateAlpha();
         }
     }
 
@@ -98,6 +70,14 @@ CheckBox::CheckBox(const std::string &caption, const bool selected,
         addActionListener(listener);
 
     mForegroundColor = Theme::getThemeColor(Theme::CHECKBOX);
+    if (mSkin)
+    {
+        mPadding = mSkin->getPadding();
+        mImagePadding = mSkin->getOption("imagePadding");
+        mImageSize = mSkin->getOption("imageSize");
+        mSpacing = mSkin->getOption("spacing");
+    }
+    adjustSize();
 }
 
 CheckBox::~CheckBox()
@@ -106,36 +86,8 @@ CheckBox::~CheckBox()
 
     if (instances == 0)
     {
-        if (checkBoxNormal)
-        {
-            checkBoxNormal->decRef();
-            checkBoxNormal = nullptr;
-        }
-        if (checkBoxChecked)
-        {
-            checkBoxChecked->decRef();
-            checkBoxChecked = nullptr;
-        }
-        if (checkBoxDisabled)
-        {
-            checkBoxDisabled->decRef();
-            checkBoxDisabled = nullptr;
-        }
-        if (checkBoxDisabledChecked)
-        {
-            checkBoxDisabledChecked->decRef();
-            checkBoxDisabledChecked = nullptr;
-        }
-        if (checkBoxNormalHi)
-        {
-            checkBoxNormalHi->decRef();
-            checkBoxNormalHi = nullptr;
-        }
-        if (checkBoxCheckedHi)
-        {
-            checkBoxCheckedHi->decRef();
-            checkBoxCheckedHi = nullptr;
-        }
+        if (Theme::instance())
+            Theme::instance()->unload(mSkin);
     }
 }
 
@@ -146,9 +98,8 @@ void CheckBox::draw(gcn::Graphics* graphics)
     graphics->setFont(getFont());
     graphics->setColor(mForegroundColor);
 
-    const int h = getHeight() + getHeight() / 2;
-
-    graphics->drawText(getCaption(), h - 2, 0);
+    graphics->drawText(getCaption(), mPadding + mImageSize + mSpacing,
+        mPadding);
 }
 
 void CheckBox::updateAlpha()
@@ -159,54 +110,60 @@ void CheckBox::updateAlpha()
     if (mAlpha != alpha)
     {
         mAlpha = alpha;
-        if (checkBoxNormal)
-            checkBoxNormal->setAlpha(mAlpha);
-        if (checkBoxChecked)
-            checkBoxChecked->setAlpha(mAlpha);
-        if (checkBoxDisabled)
-            checkBoxDisabled->setAlpha(mAlpha);
-        if (checkBoxDisabledChecked)
-            checkBoxDisabledChecked->setAlpha(mAlpha);
-        if (checkBoxNormal)
-            checkBoxNormal->setAlpha(mAlpha);
-        if (checkBoxCheckedHi)
-            checkBoxCheckedHi->setAlpha(mAlpha);
+        if (mSkin)
+        {
+            ImageRect &rect = mSkin->getBorder();
+            for (int a = 0; a < 6; a ++)
+            {
+                Image *const image = rect.grid[a];
+                if (image)
+                    image->setAlpha(mAlpha);
+            }
+        }
     }
 }
 
 void CheckBox::drawBox(gcn::Graphics *const graphics)
 {
-    const Image *box;
+    if (!mSkin)
+        return;
+
+    ImageRect &rect = mSkin->getBorder();
+    int index = 0;
 
     if (mEnabled && isVisible())
     {
         if (mSelected)
         {
             if (mHasMouse)
-                box = checkBoxCheckedHi;
+                index = 5;
             else
-                box = checkBoxChecked;
+                index = 1;
         }
         else
         {
             if (mHasMouse)
-                box = checkBoxNormalHi;
+                index = 4;
             else
-                box = checkBoxNormal;
+                index = 0;
         }
     }
     else
     {
         if (mSelected)
-            box = checkBoxDisabledChecked;
+            index = 3;
         else
-            box = checkBoxDisabled;
+            index = 2;
     }
+    const Image *const box = rect.grid[index];
 
     updateAlpha();
 
     if (box)
-        static_cast<Graphics*>(graphics)->drawImage(box, 2, 2);
+    {
+        static_cast<Graphics*>(graphics)->drawImage(
+            box, mImagePadding, (getHeight() - mImageSize) / 2);
+    }
 }
 
 void CheckBox::mouseEntered(gcn::MouseEvent& event A_UNUSED)
@@ -228,4 +185,11 @@ void CheckBox::keyPressed(gcn::KeyEvent& keyEvent)
         toggleSelected();
         keyEvent.consume();
     }
+}
+
+void CheckBox::adjustSize()
+{
+    setHeight(getFont()->getHeight() + 2 * mPadding);
+    setWidth(mImagePadding + mImageSize + mSpacing
+        + getFont()->getWidth(mCaption) + mPadding);
 }
