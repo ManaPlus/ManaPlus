@@ -25,6 +25,7 @@ gui_DATA =				\
 	inventory.xml		\
 	itempopup.xml		\
 	items.xml		\
+	LICENSE.txt		\
 	map.xml		\
 	mouse.png		\
 	npc.xml		\
@@ -52,6 +53,7 @@ gui_DATA =				\
 	tab_selected.xml		\
 	tab_unused.xml		\
 	textfield_background.xml		\
+	VERSION.txt		\
 	window.png		\
 	window.xml
 
