@@ -61,7 +61,7 @@
 
 #ifdef WIN32
 #define getFunction(name) wglGetProcAddress(name)
-#elif ANDROID
+#elif defined ANDROID
 #define getFunction(name) eglGetProcAddress(name)
 #else
 #define getFunction(name) glXGetProcAddress(\
