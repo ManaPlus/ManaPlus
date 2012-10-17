@@ -1,5 +1,5 @@
 
-guidir = $(pkgdatadir)/data/themes/hal_jewelry
+guidir = $(pkgdatadir)/data/themes/jewelry
 
 gui_DATA =				\
 	button.xml		\

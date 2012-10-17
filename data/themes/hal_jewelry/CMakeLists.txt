@@ -55,4 +55,4 @@ SET (FILES
     window.xml
     )
 
-INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/themes/hal_jewelry)
+INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/themes/jewelry)
