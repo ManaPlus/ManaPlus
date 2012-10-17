@@ -53,7 +53,7 @@ gui_DATA =				\
 	tab_unused.xml		\
 	textfield_background.xml		\
 	window.png		\
-	window.xml		\
+	window.xml
 
 EXTRA_DIST =				\
 	$(gui_DATA) \
