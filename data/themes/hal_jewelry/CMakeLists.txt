@@ -22,6 +22,7 @@ SET (FILES
     inventory.xml
     itempopup.xml
     items.xml
+    LICENSE.txt
     map.xml
     mouse.png
     npc.xml
@@ -49,6 +50,7 @@ SET (FILES
     tab_selected.xml
     tab_unused.xml
     textfield_background.xml
+    VERSION.txt
     window.png
     window.xml
     )
