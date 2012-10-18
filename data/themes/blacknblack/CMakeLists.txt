@@ -1,6 +1,7 @@
 SET (FILES
     bubble.png
     colors.xml
+    info.xml
     mouse.png
     window.png
     )

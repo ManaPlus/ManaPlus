@@ -51,6 +51,7 @@ const char* ACTION_PARTICLE_FONT = "particle font";
 const char* ACTION_HELP_FONT = "help font";
 const char* ACTION_SECURE_FONT = "secure font";
 const char* ACTION_JAPAN_FONT = "japan font";
+const char* ACTION_INFO = "info";
 
 class ThemesModel final : public NamesModel
 {
@@ -194,7 +195,9 @@ Setup_Theme::Setup_Theme() :
     mNpcFontSizeListModel(new FontSizeChoiceListModel),
     mNpcFontSizeLabel(new Label(_("Npc font size"))),
     mNpcFontSize(config.getIntValue("npcfontSize")),
-    mNpcFontSizeDropDown(new DropDown(mNpcFontSizeListModel))
+    mNpcFontSizeDropDown(new DropDown(mNpcFontSizeListModel)),
+    // TRANSLATORS: button name with information about selected theme
+    mInfoButton(new Button(_("i"), ACTION_INFO, this))
 {
     setName(_("Theme"));
 
@@ -249,6 +252,8 @@ Setup_Theme::Setup_Theme() :
     mJapanFontDropDown->setSelectedString(getFileName(
         config.getStringValue("japanFont")));
 
+    updateInfo();
+
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -275,8 +280,7 @@ Setup_Theme::Setup_Theme() :
     place(6, 8, mSecureFontDropDown, 10);
     place(6, 9, mJapanFontDropDown, 10);
 
-    place.getCell().matchColWidth(0, 0);
-    place = h.getPlacer(0, 1);
+    place(17, 0, mInfoButton, 1);
 
     setDimension(gcn::Rectangle(0, 0, 365, 500));
 }
@@ -299,6 +303,22 @@ Setup_Theme::~Setup_Theme()
     mLangListModel = nullptr;
 }
 
+void Setup_Theme::updateInfo()
+{
+    ThemeInfo *info = Theme::loadInfo(mTheme);
+    if (info)
+    {
+        mThemeInfo = "Name: " + info->name
+            + "\nCopyright:\n" + info->copyright;
+    }
+    else
+    {
+        mThemeInfo = "";
+    }
+    replaceAll(mThemeInfo, "\\n", "\n");
+    delete info;
+}
+
 void Setup_Theme::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == ACTION_THEME)
@@ -307,6 +327,7 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
             mTheme = "";
         else
             mTheme = mThemeDropDown->getSelectedString();
+        updateInfo();
     }
     else if (event.getId() == ACTION_FONT)
     {
@@ -339,6 +360,11 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
     else if (event.getId() == ACTION_JAPAN_FONT)
     {
         mJapanFont = mJapanFontDropDown->getSelectedString();
+    }
+    else if (event.getId() == ACTION_INFO)
+    {
+        new OkDialog(_("Theme info"), mThemeInfo, DIALOG_OK,
+            false, true, nullptr, 600);
     }
 }
 

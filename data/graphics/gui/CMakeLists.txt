@@ -22,6 +22,7 @@ SET (FILES
     equipment_playerbox.xml
     equipmentbox.png
     incomplete_icon.xml
+    info.xml
     inventory.xml
     item_selection.xml
     item_shortcut_background.xml

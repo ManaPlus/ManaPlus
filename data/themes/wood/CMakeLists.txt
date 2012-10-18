@@ -2,6 +2,7 @@ SET (FILES
     buy.xml
     colors.xml
     equipment.xml
+    info.xml
     inventory.xml
     item_shortcut_bgr.png
     mouse.png

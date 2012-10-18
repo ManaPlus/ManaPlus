@@ -27,6 +27,7 @@
 
 #include <guichan/actionlistener.hpp>
 
+class Button;
 class DropDown;
 class EditDialog;
 class FontsModel;
@@ -34,11 +35,6 @@ class FontSizeChoiceListModel;
 class Label;
 class LangListModel;
 class ThemesModel;
-
-namespace gcn
-{
-    class DropDown;
-}
 
 class Setup_Theme final : public SetupTab
 {
@@ -54,6 +50,8 @@ class Setup_Theme final : public SetupTab
         void cancel();
 
         void action(const gcn::ActionEvent &event) override;
+
+        void updateInfo();
 
     private:
         Label *mThemeLabel;
@@ -102,6 +100,8 @@ class Setup_Theme final : public SetupTab
         int mNpcFontSize;
         DropDown *mNpcFontSizeDropDown;
 
+        Button *mInfoButton;
+        std::string mThemeInfo;
 //        EditDialog *mEditDialog;
 };
 

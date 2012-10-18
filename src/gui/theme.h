@@ -39,6 +39,12 @@ class Image;
 class ImageSet;
 class ProgressBar;
 
+struct ThemeInfo final
+{
+    std::string name;
+    std::string copyright;
+};
+
 class Skin final
 {
     public:
@@ -332,6 +338,8 @@ class Theme final : public Palette, public ConfigListener
 
         static Image *getImageFromThemeXml(const std::string &name,
                                            const std::string &name2);
+
+        static ThemeInfo *loadInfo(const std::string &themeName);
 
     private:
         Theme();

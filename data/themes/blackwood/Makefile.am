@@ -3,6 +3,7 @@ guidir = $(pkgdatadir)/data/themes/blackwood
 
 gui_DATA =				\
 	colors.xml			\
+	info.xml			\
 	mouse.png			\
 	progress-indicator.png		\
 	speechbubble.xml		\

@@ -6,6 +6,7 @@ gui_DATA =				\
 	char.xml			\
 	colors.xml		\
 	equipment.xml		\
+	info.xml		\
 	inventory.xml		\
 	npc.xml		\
 	popup.xml		\

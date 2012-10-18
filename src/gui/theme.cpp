@@ -1031,3 +1031,35 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
     }
     return nullptr;
 }
+
+ThemeInfo *Theme::loadInfo(const std::string &themeName)
+{
+    std::string path;
+    if (themeName.empty())
+        path = "graphics/gui/info.xml";
+    else
+        path = defaultThemePath + themeName + "/info.xml";
+    logger->log("loading: " + path);
+    XML::Document doc(path);
+    const XmlNodePtr rootNode = doc.rootNode();
+
+    if (!rootNode || !xmlNameEqual(rootNode, "info"))
+        return nullptr;
+
+    ThemeInfo *info = new ThemeInfo();
+
+    for_each_xml_child_node(infoNode, rootNode)
+    {
+        if (xmlNameEqual(infoNode, "name"))
+        {
+            info->name = reinterpret_cast<const char*>(
+                xmlNodeGetContent(infoNode));
+        }
+        else if (xmlNameEqual(infoNode, "copyright"))
+        {
+            info->copyright = reinterpret_cast<const char*>(
+            xmlNodeGetContent(infoNode));
+        }
+    }
+    return info;
+}

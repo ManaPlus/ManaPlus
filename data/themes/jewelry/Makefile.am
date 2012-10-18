@@ -22,6 +22,7 @@ gui_DATA =				\
 	equipment_background.xml		\
 	equipmentbox.png		\
 	incomplete_icon.xml		\
+	info.xml		\
 	inventory.xml		\
 	itempopup.xml		\
 	items.xml		\

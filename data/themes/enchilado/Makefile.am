@@ -5,6 +5,7 @@ gui_DATA =				\
 	buy.xml		\
 	colors.xml		\
 	equipment.xml		\
+	info.xml		\
 	inventory.xml		\
 	popup.xml		\
 	progressbar.xml		\
