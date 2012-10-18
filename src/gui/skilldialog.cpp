@@ -67,7 +67,11 @@ class SkillModel final : public gcn::ListModel
         { return static_cast<int>(mVisibleSkills.size()); }
 
         SkillInfo *getSkillAt(const int i) const
-        { return mVisibleSkills.at(i); }
+        {
+            if (i < 0 || i >= static_cast<int>(mVisibleSkills.size()))
+                return nullptr;
+            return mVisibleSkills.at(i);
+        }
 
         std::string getElementAt(int i)
         {
