@@ -209,6 +209,8 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
     else
         setContentSize(300, 200);
 
+    reflowLayout(300);
+
     center();
     setVisible(true);
 
