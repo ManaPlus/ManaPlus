@@ -16,6 +16,9 @@
 ##3Czech
 ##9Petr Varkoček (pitriss)
  
+##3Dutch
+##9Elvano Miok (Elvano)
+ 
 ##3Dutch (Belgium)
 ##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>
  
@@ -30,6 +33,7 @@
  
 ##3German
 ##9Marco (LinuxCobra/Cobraxas)
+##9matheus23
  
 ##3Japanese
 ##9Candy
@@ -56,9 +60,19 @@
  
 ##3== <<Art or images contributors>> ==
 ##9Aline Ferraz de Souza (Freya) <freya.df gmail com>
+<<Themes:>> pink, unity
+ 
 ##9Felix Jely (Lien)
+<<Themes:>> blackwood
+ 
+##9Francesco Miglietta (Hal9OOO)
+<<Themes:>> jewelry
+ 
 ##9Max Isele (DerLoisl) <der.loisl theavoraproject org>
+alien emote
+ 
 ##9Nina O'Reilly (Reid) <reidyaro gmail com>
+emotes, icons
  
 ##3== <<Sound effects>> ==
 ##9artisticdude
