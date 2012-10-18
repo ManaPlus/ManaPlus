@@ -287,6 +287,8 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     setWidth(w);
     setHeight(h);
 
+    reflowLayout(w);
+
     center();
 
     enableVisibleSound(true);
