@@ -48,6 +48,8 @@ class ExtendedListBox final : public ListBox
 
     protected:
         unsigned int mRowHeight;
+        int mImagePadding;
+        int mSpacing;
 };
 
 #endif

@@ -1,5 +1,7 @@
 <skinset name="Default" image="window.png">
     <widget type="Window">
         <option name="padding" value="1" />
+        <option name="imagePadding" value="1" />
+        <option name="spacing" value="2" />
     </widget>
 </skinset>

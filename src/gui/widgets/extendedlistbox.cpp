@@ -40,7 +40,9 @@
 
 ExtendedListBox::ExtendedListBox(gcn::ListModel *const listModel):
     ListBox(listModel),
-    mRowHeight(13)
+    mRowHeight(13),
+    mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
+    mSpacing(mSkin ? mSkin->getOption("spacing") : 0)
 {
 }
 
@@ -88,10 +90,10 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
         }
         else
         {
-            g->drawImage(image, mPadding, y + (height - image->getHeight())
-                / 2 + mPadding);
+            g->drawImage(image, mImagePadding, y + (height
+                - image->getHeight()) / 2 + mPadding);
             graphics->drawText(mListModel->getElementAt(i),
-                image->getWidth() + mPadding, y + textPos);
+                image->getWidth() + mImagePadding + mSpacing, y + textPos);
         }
     }
 }
