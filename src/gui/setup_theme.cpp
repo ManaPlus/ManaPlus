@@ -163,7 +163,7 @@ Setup_Theme::Setup_Theme() :
     mThemeLabel(new Label(_("Gui theme"))),
     mThemesModel(new ThemesModel),
     mThemeDropDown(new DropDown(mThemesModel)),
-    mTheme(config.getValue("theme", config.getValue("selectedSkin", ""))),
+    mTheme(config.getStringValue("theme")),
     mFontsModel(new FontsModel),
     mFontLabel(new Label(_("Main Font"))),
     mFontDropDown(new DropDown(mFontsModel)),
@@ -344,7 +344,7 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
 
 void Setup_Theme::cancel()
 {
-    mTheme = config.getValue("theme", config.getValue("selectedSkin", ""));
+    mTheme = config.getStringValue("theme");
     mLang = config.getStringValue("lang");
     mFont = getFileName(config.getStringValue("font"));
     mBoldFont = getFileName(config.getStringValue("boldFont"));
@@ -356,8 +356,7 @@ void Setup_Theme::cancel()
 
 void Setup_Theme::apply()
 {
-    if (config.getValue("theme",
-        config.getValue("selectedSkin", "")) != mTheme)
+    if (config.getStringValue("theme") != mTheme)
     {
         new OkDialog(_("Theme Changed"), _("Restart your client for "
             "the change to take effect."));

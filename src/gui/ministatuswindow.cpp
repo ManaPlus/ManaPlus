@@ -421,7 +421,7 @@ void MiniStatusWindow::showBar(const std::string &name, const bool visible)
 
 void MiniStatusWindow::loadBars()
 {
-    if (!config.getValue("ministatussaved", 0))
+    if (!config.getIntValue("ministatussaved"))
     {
         if (mWeightBar)
             mWeightBar->setVisible(false);

@@ -320,7 +320,7 @@ void Client::gameInit()
     storeSafeParameters();
 
 #ifdef ENABLE_NLS
-    std::string lang = config.getValue("lang", "");
+    std::string lang = config.getStringValue("lang");
 #ifdef WIN32
     if (lang.empty())
         lang = std::string(_nl_locale_name_default());

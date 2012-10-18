@@ -632,15 +632,11 @@ void Theme::prepareThemePath()
     mThemeName = "";
 
     // Try theme from settings
-    if (tryThemePath(config.getValue("selectedSkin", "")))
-        return;
-
-    // Try theme from settings
-    if (tryThemePath(config.getValue("theme", "")))
+    if (tryThemePath(config.getStringValue("theme")))
         return;
 
     // Try theme from branding
-    if (tryThemePath(branding.getValue("theme", "")))
+    if (tryThemePath(branding.getStringValue("theme")))
         return;
 
     if (mThemePath.empty())

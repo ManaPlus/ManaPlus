@@ -266,6 +266,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("npcfontSize", 13);
     AddDEF("useAtlases", true);
     AddDEF("useTextureSampler", false);
+    AddDEF("ministatussaved", 0);
     return configData;
 }
 
