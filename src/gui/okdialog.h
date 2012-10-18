@@ -53,7 +53,8 @@ class OkDialog final : public Window, public gcn::ActionListener
          */
         OkDialog(const std::string &title, const std::string &msg,
                  const int soundEvent = DIALOG_OK, const bool modal = true,
-                 const bool showCenter = true, Window *const parent = nullptr);
+                 const bool showCenter = true, Window *const parent = nullptr,
+                 const int minWidth = 260);
 
         A_DELETE_COPY(OkDialog)
 

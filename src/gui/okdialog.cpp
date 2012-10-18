@@ -37,14 +37,15 @@
 
 OkDialog::OkDialog(const std::string &title, const std::string &msg,
                    const int soundEvent, const bool modal,
-                   const bool showCenter, Window *const parent):
+                   const bool showCenter, Window *const parent,
+                   const int minWidth) :
     Window(title, modal, parent, "ok.xml"),
     ActionListener(),
     mTextBox(new TextBox)
 {
     mTextBox->setEditable(false);
     mTextBox->setOpaque(false);
-    mTextBox->setTextWrapped(msg, 260);
+    mTextBox->setTextWrapped(msg, minWidth);
 
     Button *const okButton = new Button(_("OK"), "ok", this);
 
@@ -58,8 +59,8 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
     if (width < okButton->getWidth())
         width = okButton->getWidth();
 
-    setContentSize(mTextBox->getMinWidth() + fontHeight, height +
-                   fontHeight + okButton->getHeight());
+    width = mTextBox->getWidth() + fontHeight;
+    setContentSize(width, height + fontHeight + okButton->getHeight());
     mTextBox->setPosition(getPadding(), getPadding());
 
     // 8 is the padding that GUIChan adds to button widgets
