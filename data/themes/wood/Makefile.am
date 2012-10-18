@@ -9,6 +9,7 @@ gui_DATA =				\
 	inventory.xml		\
 	item_shortcut_bgr.png		\
 	mouse.png			\
+	ok.xml			\
 	popup.xml			\
 	progressbar.xml			\
 	quests.xml			\

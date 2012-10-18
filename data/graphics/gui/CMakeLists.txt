@@ -29,6 +29,7 @@ SET (FILES
     label.xml
     listbox.xml
     mouse.png
+    ok.xml
     playerbox_background.xml
     popup.xml
     progress-indicator.png

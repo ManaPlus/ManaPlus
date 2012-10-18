@@ -30,6 +30,7 @@ gui_DATA =				\
 	map.xml		\
 	mouse.png		\
 	npc.xml		\
+	ok.xml		\
 	playerbox_background.xml		\
 	popup.xml		\
 	progressbar.xml		\

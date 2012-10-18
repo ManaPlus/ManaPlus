@@ -8,6 +8,7 @@ gui_DATA =				\
 	equipment.xml		\
 	info.xml		\
 	inventory.xml		\
+	ok.xml		\
 	popup.xml		\
 	progress-indicator.png		\
 	progressbar.xml		\

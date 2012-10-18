@@ -59,14 +59,13 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
     if (width < okButton->getWidth())
         width = okButton->getWidth();
 
-    width = mTextBox->getWidth() + fontHeight;
-    setContentSize(width, height + fontHeight + okButton->getHeight());
-    mTextBox->setPosition(getPadding(), getPadding());
+    width = mTextBox->getWidth();
+    setContentSize(width, mTextBox->getHeight() + okButton->getHeight()
+        + getOption("buttonPadding", 8));
+    mTextBox->setPosition(0, 0);
 
-    // 8 is the padding that GUIChan adds to button widgets
-    // (top and bottom combined)
     okButton->setPosition((width - okButton->getWidth()) / 2,
-        height + getOption("buttonPadding", 8));
+        mTextBox->getHeight() + getOption("buttonPadding", 8));
 
     add(mTextBox);
     add(okButton);

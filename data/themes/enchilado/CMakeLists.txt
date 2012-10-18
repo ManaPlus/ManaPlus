@@ -4,6 +4,7 @@ SET (FILES
     equipment.xml
     info.xml
     inventory.xml
+    ok.xml
     popup.xml
     progressbar.xml
     quests.xml
