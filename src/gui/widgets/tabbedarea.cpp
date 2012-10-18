@@ -362,12 +362,13 @@ void TabbedArea::setSelectedTabByPos(int tab)
 
 void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
 {
+    adjustSize();
+
     const int frameSize = 2 * getFrameSize();
     const int widgetFrameSize = 2 * mWidgetContainer->getFrameSize();
     const int width = getWidth() - frameSize - widgetFrameSize;
     const int height = getHeight() - frameSize
         - mWidgetContainer->getY() - widgetFrameSize;
-    mWidgetContainer->setSize(width, height);
 
     gcn::Widget *const w = getCurrentWidget();
     if (w)
@@ -390,7 +391,8 @@ void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
                 }
             }
         }
-        w->setSize(width, height);
+        w->setSize(mWidgetContainer->getWidth(),
+            mWidgetContainer->getHeight());
         if (scr && newScroll)
             scr->setVerticalScrollAmount(newScroll);
     }
@@ -459,9 +461,8 @@ void TabbedArea::adjustSize()
 
     mTabContainer->setSize(getWidth() - 2, maxTabHeight);
 
-    mWidgetContainer->setPosition(1, maxTabHeight + 1);
-    mWidgetContainer->setSize(getWidth() - 2,
-        getHeight() - maxTabHeight - 2);
+    mWidgetContainer->setPosition(0, maxTabHeight);
+    mWidgetContainer->setSize(getWidth(), getHeight() - maxTabHeight);
 }
 
 void TabbedArea::adjustTabPositions()
