@@ -289,6 +289,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 
     center();
 
+    enableVisibleSound(true);
     setVisible(true);
 }
 
