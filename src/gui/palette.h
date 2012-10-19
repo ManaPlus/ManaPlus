@@ -82,7 +82,7 @@ class Palette
          */
         inline const gcn::Color &getColor(int type, int alpha = 255)
         {
-            if (type >= static_cast<signed>(mColors.size()))
+            if (type >= static_cast<signed>(mColors.size()) || type < 0)
             {
                 logger->log("incorrect color request type: %d from %u",
                     type, static_cast<unsigned int>(mColors.size()));
