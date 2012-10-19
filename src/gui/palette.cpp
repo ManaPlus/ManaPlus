@@ -64,7 +64,7 @@ Palette::~Palette()
     mInstances.erase(this);
 }
 
-const gcn::Color& Palette::getColor(const signed char c, bool &valid)
+const gcn::Color& Palette::getCharColor(const signed char c, bool &valid)
 {
     const CharColors::const_iterator it = mCharColors.find(c);
     if (it != mCharColors.end())
