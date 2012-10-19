@@ -38,7 +38,7 @@ class TextPreview final : public gcn::Widget,
                           public Widget2
 {
     public:
-        TextPreview(const std::string &text);
+        TextPreview(const Widget2 *const widget, const std::string &text);
 
         A_DELETE_COPY(TextPreview)
 
