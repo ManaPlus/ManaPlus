@@ -98,11 +98,11 @@ RegisterDialog::RegisterDialog(LoginData *const data):
 
     if (optionalActions & Net::LoginHandler::SetGenderOnRegister)
     {
-        mMaleButton = new RadioButton(_("Male"), "sex", true);
-        mFemaleButton = new RadioButton(_("Female"), "sex", false);
+        mMaleButton = new RadioButton(this, _("Male"), "sex", true);
+        mFemaleButton = new RadioButton(this, _("Female"), "sex", false);
         if (serverVersion >= 5)
         {
-            mOtherButton = new RadioButton(_("Other"), "sex", false);
+            mOtherButton = new RadioButton(this, _("Other"), "sex", false);
             placer(0, row, mMaleButton);
             placer(1, row, mFemaleButton);
             placer(2, row, mOtherButton);

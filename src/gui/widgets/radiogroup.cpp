@@ -35,7 +35,8 @@ RadioGroup::RadioGroup(const Widget2 *const widget,
 
 gcn::Widget *RadioGroup::createWidget(const std::string &text)
 {
-    RadioButton *const widget = new RadioButton(text, mGroup, mCount == 0);
+    RadioButton *const widget = new RadioButton(
+        this, text, mGroup, mCount == 0);
     widget->adjustSize();
     return widget;
 }

@@ -34,6 +34,7 @@
 
 ProgressIndicator::ProgressIndicator() :
     gcn::Widget(),
+    Widget2(),
     mIndicator(nullptr)
 {
     ImageSet *const images = Theme::getImageSetFromTheme(
