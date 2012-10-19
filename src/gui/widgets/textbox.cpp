@@ -38,7 +38,7 @@ TextBox::TextBox() :
     Widget2(),
     mMinWidth(getWidth())
 {
-    mForegroundColor = Theme::getThemeColor(Theme::TEXTBOX);
+    mForegroundColor = getThemeColor(Theme::TEXTBOX);
     setOpaque(false);
     setFrameSize(0);
 }

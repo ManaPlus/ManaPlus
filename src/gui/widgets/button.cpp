@@ -66,6 +66,7 @@ Skin *Button::button[BUTTON_COUNT];
 
 Button::Button() :
     gcn::Button(),
+    Widget2(),
     gcn::WidgetListener(),
     mDescription(""), mClickCount(0),
     mTag(0),
@@ -88,6 +89,7 @@ Button::Button() :
 Button::Button(const std::string &caption, const std::string &actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(caption),
+    Widget2(),
     gcn::WidgetListener(),
     mDescription(""),
     mClickCount(0),
@@ -117,6 +119,7 @@ Button::Button(const std::string &caption, const std::string &imageName,
                const std::string &actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(caption),
+    Widget2(),
     gcn::WidgetListener(),
     mDescription(""),
     mClickCount(0),
@@ -192,10 +195,10 @@ void Button::init()
 
         updateAlpha();
     }
-    mEnabledColor = Theme::getThemeColor(Theme::BUTTON);
-    mDisabledColor = Theme::getThemeColor(Theme::BUTTON_DISABLED);
-    mHighlightedColor = Theme::getThemeColor(Theme::BUTTON_HIGHLIGHTED);
-    mPressedColor = Theme::getThemeColor(Theme::BUTTON_PRESSED);
+    mEnabledColor = getThemeColor(Theme::BUTTON);
+    mDisabledColor = getThemeColor(Theme::BUTTON_DISABLED);
+    mHighlightedColor = getThemeColor(Theme::BUTTON_HIGHLIGHTED);
+    mPressedColor = getThemeColor(Theme::BUTTON_PRESSED);
 
     mInstances++;
 }

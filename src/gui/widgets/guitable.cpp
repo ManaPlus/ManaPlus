@@ -105,8 +105,8 @@ GuiTable::GuiTable(TableModel *const initial_model, const bool opacity) :
     mSelectedColumn(0),
     mTopWidget(nullptr)
 {
-    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND);
-    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
+    mBackgroundColor = getThemeColor(Theme::BACKGROUND);
+    mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     setModel(initial_model);
     setFocusable(true);
 

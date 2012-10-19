@@ -64,17 +64,17 @@ ItemPopup::ItemPopup():
     // Item Description
     mItemDesc->setEditable(false);
     mItemDesc->setPosition(0, fontHeight);
-    mItemDesc->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mItemDesc->setForegroundColor(getThemeColor(Theme::POPUP));
 
     // Item Effect
     mItemEffect->setEditable(false);
     mItemEffect->setPosition(0, 2 * fontHeight);
-    mItemEffect->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mItemEffect->setForegroundColor(getThemeColor(Theme::POPUP));
 
     // Item Weight
     mItemWeight->setEditable(false);
     mItemWeight->setPosition(0, 3 * fontHeight);
-    mItemWeight->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mItemWeight->setForegroundColor(getThemeColor(Theme::POPUP));
 
     add(mItemName);
     add(mItemDesc);
@@ -217,42 +217,42 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
     mItemDesc->setPosition(0, 2 * height);
 }
 
-gcn::Color ItemPopup::getColor(const ItemType type)
+gcn::Color ItemPopup::getColor(const ItemType type) const
 {
     switch (type)
     {
         case ITEM_UNUSABLE:
-            return Theme::getThemeColor(Theme::GENERIC);
+            return getThemeColor(Theme::GENERIC);
         case ITEM_USABLE:
-            return Theme::getThemeColor(Theme::USABLE);
+            return getThemeColor(Theme::USABLE);
         case ITEM_EQUIPMENT_ONE_HAND_WEAPON:
-            return Theme::getThemeColor(Theme::ONEHAND);
+            return getThemeColor(Theme::ONEHAND);
         case ITEM_EQUIPMENT_TWO_HANDS_WEAPON:
-            return Theme::getThemeColor(Theme::TWOHAND);
+            return getThemeColor(Theme::TWOHAND);
         case ITEM_EQUIPMENT_TORSO:
-            return Theme::getThemeColor(Theme::TORSO);
+            return getThemeColor(Theme::TORSO);
         case ITEM_EQUIPMENT_ARMS:
-            return Theme::getThemeColor(Theme::ARMS);
+            return getThemeColor(Theme::ARMS);
         case ITEM_EQUIPMENT_HEAD:
-            return Theme::getThemeColor(Theme::HEAD);
+            return getThemeColor(Theme::HEAD);
         case ITEM_EQUIPMENT_LEGS:
-            return Theme::getThemeColor(Theme::LEGS);
+            return getThemeColor(Theme::LEGS);
         case ITEM_EQUIPMENT_SHIELD:
-            return Theme::getThemeColor(Theme::SHIELD);
+            return getThemeColor(Theme::SHIELD);
         case ITEM_EQUIPMENT_RING:
-            return Theme::getThemeColor(Theme::RING);
+            return getThemeColor(Theme::RING);
         case ITEM_EQUIPMENT_NECKLACE:
-            return Theme::getThemeColor(Theme::NECKLACE);
+            return getThemeColor(Theme::NECKLACE);
         case ITEM_EQUIPMENT_FEET:
-            return Theme::getThemeColor(Theme::FEET);
+            return getThemeColor(Theme::FEET);
         case ITEM_EQUIPMENT_AMMO:
-            return Theme::getThemeColor(Theme::AMMO);
+            return getThemeColor(Theme::AMMO);
         case ITEM_EQUIPMENT_CHARM:
-            return Theme::getThemeColor(Theme::CHARM);
+            return getThemeColor(Theme::CHARM);
         case ITEM_SPRITE_RACE:
         case ITEM_SPRITE_HAIR:
         default:
-            return Theme::getThemeColor(Theme::UNKNOWN_ITEM);
+            return getThemeColor(Theme::UNKNOWN_ITEM);
     }
 }
 

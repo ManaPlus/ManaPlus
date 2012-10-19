@@ -46,12 +46,12 @@ int ListBox::mInstances = 0;
 ListBox::ListBox(gcn::ListModel *const listModel):
     gcn::ListBox(listModel),
     Widget2(),
-    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
+    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mDistributeMousePressed(true),
     mOldSelected(-1),
     mPadding(0)
 {
-    mForegroundColor = Theme::getThemeColor(Theme::LISTBOX);
+    mForegroundColor = getThemeColor(Theme::LISTBOX);
 
     if (mInstances == 0)
     {

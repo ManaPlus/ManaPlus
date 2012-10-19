@@ -58,10 +58,10 @@ TextField::TextField(const std::string &text, const bool loseFocusOnTab,
     mMaximum(0),
     mLoseFocusOnTab(loseFocusOnTab),
     mLastEventPaste(false),
-    mCaretColor(&Theme::getThemeColor(Theme::CARET))
+    mCaretColor(&getThemeColor(Theme::CARET))
 {
     setFrameSize(2);
-    mForegroundColor = Theme::getThemeColor(Theme::TEXTFIELD);
+    mForegroundColor = getThemeColor(Theme::TEXTFIELD);
 
     if (instances == 0)
     {

@@ -171,17 +171,17 @@ void WhisperTab::getAutoCompleteList(StringVect &names) const
 
 void WhisperTab::setWhisperTabColors()
 {
-    setTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB));
-    setHighlightedTabColor(&Theme::getThemeColor(
+    setTabColor(&getThemeColor(Theme::WHISPER_TAB));
+    setHighlightedTabColor(&getThemeColor(
         Theme::WHISPER_TAB_HIGHLIGHTED));
-    setSelectedTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB_SELECTED));
+    setSelectedTabColor(&getThemeColor(Theme::WHISPER_TAB_SELECTED));
 }
 
 void WhisperTab::setWhisperTabOfflineColors()
 {
-    setTabColor(&Theme::getThemeColor(Theme::WHISPER_TAB_OFFLINE));
-    setHighlightedTabColor(&Theme::getThemeColor(
+    setTabColor(&getThemeColor(Theme::WHISPER_TAB_OFFLINE));
+    setHighlightedTabColor(&getThemeColor(
         Theme::WHISPER_TAB_OFFLINE_HIGHLIGHTED));
-    setSelectedTabColor(&Theme::getThemeColor(
+    setSelectedTabColor(&getThemeColor(
         Theme::WHISPER_TAB_OFFLINE_SELECTED));
 }

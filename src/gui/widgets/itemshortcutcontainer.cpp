@@ -52,8 +52,8 @@ ItemShortcutContainer::ItemShortcutContainer(const unsigned number) :
     mNumber(number),
     mItemPopup(new ItemPopup),
     mSpellPopup(new SpellPopup),
-    mEquipedColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED)),
-    mUnEquipedColor(Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED))
+    mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
+    mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED))
 {
     addMouseListener(this);
     addWidgetListener(this);
@@ -76,7 +76,7 @@ ItemShortcutContainer::ItemShortcutContainer(const unsigned number) :
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
-    mForegroundColor = Theme::getThemeColor(Theme::TEXT);
+    mForegroundColor = getThemeColor(Theme::TEXT);
 }
 
 ItemShortcutContainer::~ItemShortcutContainer()

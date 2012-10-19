@@ -49,7 +49,7 @@ RadioButton::RadioButton(const std::string &caption, const std::string &group,
     mImageSize(9),
     mSpacing(2)
 {
-    mForegroundColor = Theme::getThemeColor(Theme::RADIOBUTTON);
+    mForegroundColor = getThemeColor(Theme::RADIOBUTTON);
     if (instances == 0)
     {
         if (Theme::instance())

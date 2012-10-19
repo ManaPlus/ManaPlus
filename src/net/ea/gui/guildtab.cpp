@@ -48,11 +48,9 @@ extern Guild *taGuild;
 GuildTab::GuildTab() :
     ChatTab(_("Guild"))
 {
-    setTabColor(&Theme::getThemeColor(Theme::GUILD_CHAT_TAB));
-    setHighlightedTabColor(&Theme::getThemeColor(
-        Theme::GUILD_CHAT_TAB_HIGHLIGHTED));
-    setSelectedTabColor(&Theme::getThemeColor(
-        Theme::GUILD_CHAT_TAB_SELECTED));
+    setTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB));
+    setHighlightedTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB_HIGHLIGHTED));
+    setSelectedTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB_SELECTED));
 }
 
 GuildTab::~GuildTab()

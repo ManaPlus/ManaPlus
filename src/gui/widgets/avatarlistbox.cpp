@@ -49,7 +49,7 @@ AvatarListBox::AvatarListBox(AvatarListModel *const model) :
     ListBox(model),
     mShowGender(config.getBoolValue("showgender")),
     mShowLevel(config.getBoolValue("showlevel")),
-    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT))
+    mHighlightColor(getThemeColor(Theme::HIGHLIGHT))
 {
     instances++;
 
@@ -64,7 +64,7 @@ AvatarListBox::AvatarListBox(AvatarListModel *const model) :
     config.addListener("showgender", this);
     config.addListener("showlevel", this);
 
-    mForegroundColor = Theme::getThemeColor(Theme::TEXT);
+    mForegroundColor = getThemeColor(Theme::TEXT);
 }
 
 AvatarListBox::~AvatarListBox()

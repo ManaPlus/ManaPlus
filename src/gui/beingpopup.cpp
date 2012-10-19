@@ -60,10 +60,10 @@ BeingPopup::BeingPopup() :
     mBeingRank->setPosition(0, 3 * fontHeight);
     mBeingComment->setPosition(0, 4 * fontHeight);
 
-    mBeingParty->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
-    mBeingGuild->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
-    mBeingRank->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
-    mBeingComment->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+    mBeingParty->setForegroundColor(getThemeColor(Theme::POPUP));
+    mBeingGuild->setForegroundColor(getThemeColor(Theme::POPUP));
+    mBeingRank->setForegroundColor(getThemeColor(Theme::POPUP));
+    mBeingComment->setForegroundColor(getThemeColor(Theme::POPUP));
 
     add(mBeingName);
     add(mBeingParty);
@@ -107,12 +107,12 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
     if (b->isAdvanced())
     {
-        mBeingName->setForegroundColor(Theme::getThemeColor(
+        mBeingName->setForegroundColor(getThemeColor(
             Theme::PLAYER_ADVANCED));
     }
     else
     {
-        mBeingName->setForegroundColor(Theme::getThemeColor(Theme::POPUP));
+        mBeingName->setForegroundColor(getThemeColor(Theme::POPUP));
     }
 
     mBeingName->adjustSize();

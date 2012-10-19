@@ -98,8 +98,8 @@ class SkillListBox final : public ListBox
             ListBox(model),
             mModel(model),
             mPopup(new TextPopup()),
-            mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
-            mTextColor(Theme::getThemeColor(Theme::TEXT))
+            mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
+            mTextColor(getThemeColor(Theme::TEXT))
         {
         }
 

@@ -143,10 +143,10 @@ public:
     {
         setCaption(_("Guild"));
 
-        setTabColor(&Theme::getThemeColor(Theme::GUILD_SOCIAL_TAB));
-        setHighlightedTabColor(&Theme::getThemeColor(
+        setTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB));
+        setHighlightedTabColor(&getThemeColor(
             Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED));
-        setSelectedTabColor(&Theme::getThemeColor(
+        setSelectedTabColor(&getThemeColor(
             Theme::GUILD_SOCIAL_TAB_SELECTED));
 
         mList = new AvatarListBox(guild);
@@ -249,10 +249,10 @@ public:
     {
         setCaption(_("Guild"));
 
-        setTabColor(&Theme::getThemeColor(Theme::GUILD_SOCIAL_TAB));
-        setHighlightedTabColor(&Theme::getThemeColor(
+        setTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB));
+        setHighlightedTabColor(&getThemeColor(
             Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED));
-        setSelectedTabColor(&Theme::getThemeColor(
+        setSelectedTabColor(&getThemeColor(
             Theme::GUILD_SOCIAL_TAB_SELECTED));
 
         mList = new AvatarListBox(guild);
@@ -311,10 +311,10 @@ public:
     {
         setCaption(_("Party"));
 
-        setTabColor(&Theme::getThemeColor(Theme::PARTY_SOCIAL_TAB));
-        setHighlightedTabColor(&Theme::getThemeColor(
+        setTabColor(&getThemeColor(Theme::PARTY_SOCIAL_TAB));
+        setHighlightedTabColor(&getThemeColor(
             Theme::PARTY_SOCIAL_TAB_HIGHLIGHTED));
-        setSelectedTabColor(&Theme::getThemeColor(
+        setSelectedTabColor(&getThemeColor(
             Theme::PARTY_SOCIAL_TAB_SELECTED));
 
         mList = new AvatarListBox(party);

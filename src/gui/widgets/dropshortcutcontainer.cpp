@@ -44,8 +44,8 @@ DropShortcutContainer::DropShortcutContainer():
     mItemClicked(false),
     mItemMoved(nullptr),
     mItemPopup(new ItemPopup),
-    mEquipedColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED)),
-    mUnEquipedColor(Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED))
+    mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
+    mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED))
 {
     addMouseListener(this);
     addWidgetListener(this);

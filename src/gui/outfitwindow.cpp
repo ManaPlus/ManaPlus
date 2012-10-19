@@ -90,8 +90,8 @@ OutfitWindow::OutfitWindow():
     setMinWidth(145);
     setMinHeight(283);
 
-    mBorderColor = Theme::getThemeColor(Theme::BORDER, 64);
-    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND, 32);
+    mBorderColor = getThemeColor(Theme::BORDER, 64);
+    mBackgroundColor = getThemeColor(Theme::BACKGROUND, 32);
 
     mCurrentLabel->setAlignment(gcn::Graphics::CENTER);
     mKeyLabel->setAlignment(gcn::Graphics::CENTER);

@@ -176,8 +176,8 @@ ItemContainer::ItemContainer(Inventory *const inventory,
     mItemPopup(new ItemPopup),
     mShowMatrix(nullptr),
     mClicks(1),
-    mEquipedColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED)),
-    mUnEquipedColor(Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED))
+    mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
+    mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED))
 {
     setFocusable(true);
     addKeyListener(this);

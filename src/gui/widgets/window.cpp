@@ -139,7 +139,7 @@ Window::Window(const std::string &caption, const bool modal,
     setVisible(false);
 
     addWidgetListener(this);
-    mForegroundColor = Theme::getThemeColor(Theme::WINDOW);
+    mForegroundColor = getThemeColor(Theme::WINDOW);
 }
 
 Window::~Window()

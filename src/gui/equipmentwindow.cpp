@@ -62,9 +62,9 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mForing(foring),
     mImageSet(nullptr),
     mBeing(being),
-    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
-    mBorderColor(Theme::getThemeColor(Theme::BORDER)),
-    mLabelsColor(Theme::getThemeColor(Theme::LABEL)),
+    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
+    mBorderColor(getThemeColor(Theme::BORDER)),
+    mLabelsColor(getThemeColor(Theme::LABEL)),
     mItemPadding(getOption("itemPadding")),
     mBoxSize(getOption("boxSize"))
 {

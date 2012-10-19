@@ -42,8 +42,8 @@ Desktop::Desktop() :
     Container(),
     gcn::WidgetListener(),
     mWallpaper(nullptr),
-    mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND, 128)),
-    mBackgroundGrayColor(Theme::getThemeColor(Theme::BACKGROUND_GRAY))
+    mBackgroundColor(getThemeColor(Theme::BACKGROUND, 128)),
+    mBackgroundGrayColor(getThemeColor(Theme::BACKGROUND_GRAY))
 {
     addWidgetListener(this);
 
@@ -61,8 +61,7 @@ Desktop::Desktop() :
             appName.c_str()));
     }
 
-    mVersionLabel->setBackgroundColor(
-        Theme::getThemeColor(Theme::BACKGROUND, 128));
+    mVersionLabel->setBackgroundColor(getThemeColor(Theme::BACKGROUND, 128));
     add(mVersionLabel, 25, 2);
 }
 

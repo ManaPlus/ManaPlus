@@ -48,11 +48,9 @@ namespace Ea
 PartyTab::PartyTab() :
     ChatTab(_("Party"))
 {
-    setTabColor(&Theme::getThemeColor(Theme::PARTY_CHAT_TAB));
-    setHighlightedTabColor(&Theme::getThemeColor(
-        Theme::PARTY_CHAT_TAB_HIGHLIGHTED));
-    setSelectedTabColor(&Theme::getThemeColor(
-        Theme::PARTY_CHAT_TAB_SELECTED));
+    setTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB));
+    setHighlightedTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB_HIGHLIGHTED));
+    setSelectedTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB_SELECTED));
 }
 
 PartyTab::~PartyTab()

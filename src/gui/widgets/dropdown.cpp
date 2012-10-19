@@ -62,8 +62,8 @@ DropDown::DropDown(gcn::ListModel *const listModel,
                    const std::string &eventId):
     gcn::DropDown::DropDown(listModel,
         new ScrollArea, new ListBox(listModel)),
-    mShadowColor(Theme::getThemeColor(Theme::DROPDOWN_SHADOW)),
-    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
+    mShadowColor(getThemeColor(Theme::DROPDOWN_SHADOW)),
+    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mPadding(1),
     mImagePadding(2)
 {
@@ -115,8 +115,8 @@ DropDown::DropDown(gcn::ListModel *const listModel,
 
     instances++;
 
-    mListBox->setForegroundColor(Theme::getThemeColor(Theme::DROPDOWN));
-    setForegroundColor(Theme::getThemeColor(Theme::DROPDOWN));
+    mListBox->setForegroundColor(getThemeColor(Theme::DROPDOWN));
+    setForegroundColor(getThemeColor(Theme::DROPDOWN));
 
     if (!eventId.empty())
         setActionEventId(eventId);

@@ -63,23 +63,23 @@ BrowserBox::BrowserBox(const unsigned int mode, const bool opaque) :
     mAlwaysUpdate(true),
     mProcessVersion(false),
     mEnableImages(false),
-    mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND)),
-    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
-    mHyperLinkColor(Theme::getThemeColor(Theme::HYPERLINK))
+    mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
+    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
+    mHyperLinkColor(getThemeColor(Theme::HYPERLINK))
 {
     setFocusable(true);
     addMouseListener(this);
 
-    mColors[RED] = Theme::getThemeColor(Theme::RED);
-    mColors[GREEN] = Theme::getThemeColor(Theme::GREEN);
-    mColors[BLUE] = Theme::getThemeColor(Theme::BLUE);
-    mColors[ORANGE] = Theme::getThemeColor(Theme::ORANGE);
-    mColors[YELLOW] = Theme::getThemeColor(Theme::YELLOW);
-    mColors[PINK] = Theme::getThemeColor(Theme::PINK);
-    mColors[PURPLE] = Theme::getThemeColor(Theme::PURPLE);
-    mColors[GRAY] = Theme::getThemeColor(Theme::GRAY);
-    mColors[BROWN] = Theme::getThemeColor(Theme::BROWN);
-    mForegroundColor = Theme::getThemeColor(Theme::BROWSERBOX);
+    mColors[RED] = getThemeColor(Theme::RED);
+    mColors[GREEN] = getThemeColor(Theme::GREEN);
+    mColors[BLUE] = getThemeColor(Theme::BLUE);
+    mColors[ORANGE] = getThemeColor(Theme::ORANGE);
+    mColors[YELLOW] = getThemeColor(Theme::YELLOW);
+    mColors[PINK] = getThemeColor(Theme::PINK);
+    mColors[PURPLE] = getThemeColor(Theme::PURPLE);
+    mColors[GRAY] = getThemeColor(Theme::GRAY);
+    mColors[BROWN] = getThemeColor(Theme::BROWN);
+    mForegroundColor = getThemeColor(Theme::BROWSERBOX);
 }
 
 BrowserBox::~BrowserBox()

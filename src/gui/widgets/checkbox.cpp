@@ -70,7 +70,7 @@ CheckBox::CheckBox(const std::string &caption, const bool selected,
     if (listener)
         addActionListener(listener);
 
-    mForegroundColor = Theme::getThemeColor(Theme::CHECKBOX);
+    mForegroundColor = getThemeColor(Theme::CHECKBOX);
     if (mSkin)
     {
         mPadding = mSkin->getPadding();

@@ -72,7 +72,7 @@ SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
-    mForegroundColor = Theme::getThemeColor(Theme::TEXT);
+    mForegroundColor = getThemeColor(Theme::TEXT);
 }
 
 SpellShortcutContainer::~SpellShortcutContainer()

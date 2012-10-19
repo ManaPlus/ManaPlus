@@ -155,13 +155,13 @@ void TradeWindow::setMoney(const int amount)
         }
         else
         {
-            mMoneyLabel->setForegroundColor(Theme::getThemeColor(
+            mMoneyLabel->setForegroundColor(getThemeColor(
                 static_cast<int>(Theme::WARNING)));
         }
     }
     else
     {
-        mMoneyLabel->setForegroundColor(Theme::getThemeColor(
+        mMoneyLabel->setForegroundColor(getThemeColor(
             static_cast<int>(Theme::LABEL)));
         mGotMaxMoney = amount;
     }
@@ -230,7 +230,7 @@ void TradeWindow::reset()
     setMoney(0);
     mMoneyField->setEnabled(true);
     mMoneyField->setText("");
-    mMoneyLabel->setForegroundColor(Theme::getThemeColor(
+    mMoneyLabel->setForegroundColor(getThemeColor(
         static_cast<int>(Theme::LABEL)));
     mAddButton->setEnabled(true);
     mMoneyChangeButton->setEnabled(true);
@@ -404,7 +404,7 @@ void TradeWindow::clear()
     mAutoAddAmount = 0;
     mGotMoney = 0;
     mGotMaxMoney = 0;
-    mMoneyLabel->setForegroundColor(Theme::getThemeColor(
+    mMoneyLabel->setForegroundColor(getThemeColor(
         static_cast<int>(Theme::LABEL)));
 }
 

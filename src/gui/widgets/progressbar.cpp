@@ -217,7 +217,7 @@ void ProgressBar::render(Graphics *graphics)
 
         TextRenderer::renderText(graphics, mText, textX, textY,
                                  gcn::Graphics::CENTER,
-                                 Theme::getThemeColor(Theme::PROGRESS_BAR),
+                                 getThemeColor(Theme::PROGRESS_BAR),
                                  gui->getFont(), true, false);
     }
 

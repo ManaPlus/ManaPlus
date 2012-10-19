@@ -53,7 +53,7 @@ Label::~Label()
 
 void Label::init()
 {
-    mForegroundColor = Theme::getThemeColor(Theme::LABEL);
+    mForegroundColor = getThemeColor(Theme::LABEL);
     if (mInstances == 0)
     {
         if (Theme::instance())

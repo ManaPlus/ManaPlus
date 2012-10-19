@@ -81,7 +81,7 @@ EmoteShortcutContainer::EmoteShortcutContainer():
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
-    mForegroundColor = Theme::getThemeColor(Theme::TEXT);
+    mForegroundColor = getThemeColor(Theme::TEXT);
 }
 
 EmoteShortcutContainer::~EmoteShortcutContainer()
