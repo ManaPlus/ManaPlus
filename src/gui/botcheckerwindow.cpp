@@ -58,11 +58,13 @@ const int TIME_COLUMN_WIDTH  = 70;
 
 #define WIDGET_AT(row, column) (((row) * COLUMNS_NR) + column)
 
-class UsersTableModel final : public TableModel
+class UsersTableModel final : public TableModel,
+                              public Widget2
 {
 public:
-    UsersTableModel() :
+    UsersTableModel(const Widget2 *const widget) :
         TableModel(),
+        Widget2(widget),
         mPlayers(0)
     {
         playersUpdated();
@@ -130,42 +132,42 @@ public:
 
             const Being *const player = mPlayers.at(r);
             std::string name = player->getName();
-            gcn::Widget *widget = new Label(name);
+            gcn::Widget *widget = new Label(this, name);
 
             mWidgets.push_back(widget);
 
             if (player->getAttackTime() != 0)
             {
-                widget = new Label(toString(curTime
+                widget = new Label(this, toString(curTime
                     - player->getAttackTime()));
             }
             else
             {
-                widget = new Label(toString(curTime
+                widget = new Label(this, toString(curTime
                     - player->getTestTime()) + "?");
             }
             mWidgets.push_back(widget);
 
             if (player->getTalkTime() != 0)
             {
-                widget = new Label(toString(curTime
+                widget = new Label(this, toString(curTime
                     - player->getTalkTime()));
             }
             else
             {
-                widget = new Label(toString(curTime
+                widget = new Label(this, toString(curTime
                     - player->getTestTime()) + "?");
             }
             mWidgets.push_back(widget);
 
             if (player->getMoveTime() != 0)
             {
-                widget = new Label(toString(curTime
+                widget = new Label(this, toString(curTime
                     - player->getMoveTime()));
             }
             else
             {
-                widget = new Label(toString(curTime
+                widget = new Label(this, toString(curTime
                     - player->getTestTime()) + "?");
             }
             mWidgets.push_back(widget);
@@ -229,7 +231,7 @@ public:
                 str = "ok";
             }
 
-            widget = new Label(str);
+            widget = new Label(this, str);
             mWidgets.push_back(widget);
 
         }
@@ -267,7 +269,7 @@ protected:
 BotCheckerWindow::BotCheckerWindow():
     Window(_("Bot Checker"), false, nullptr, "botchecker.xml"),
     gcn::ActionListener(),
-    mTableModel(new UsersTableModel()),
+    mTableModel(new UsersTableModel(this)),
     mTable(new GuiTable(this, mTableModel)),
     playersScrollArea(new ScrollArea(mTable, true,
         "bochecker_background.xml")),
@@ -299,11 +301,11 @@ BotCheckerWindow::BotCheckerWindow():
 
     mPlayerTitleTable->setHeight(1);
 
-    mPlayerTableTitleModel->set(0, 0, new Label(_("Name")));
-    mPlayerTableTitleModel->set(0, 1, new Label(_("Attack")));
-    mPlayerTableTitleModel->set(0, 2, new Label(_("Talk")));
-    mPlayerTableTitleModel->set(0, 3, new Label(_("Move")));
-    mPlayerTableTitleModel->set(0, 4, new Label(_("Result")));
+    mPlayerTableTitleModel->set(0, 0, new Label(this, _("Name")));
+    mPlayerTableTitleModel->set(0, 1, new Label(this, _("Attack")));
+    mPlayerTableTitleModel->set(0, 2, new Label(this, _("Talk")));
+    mPlayerTableTitleModel->set(0, 3, new Label(this, _("Move")));
+    mPlayerTableTitleModel->set(0, 4, new Label(this, _("Result")));
 
     mPlayerTitleTable->setLinewiseSelection(true);
 

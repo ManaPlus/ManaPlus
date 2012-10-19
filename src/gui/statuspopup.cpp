@@ -43,21 +43,21 @@
 
 StatusPopup::StatusPopup() :
     Popup("StatusPopup", "statuspopup.xml"),
-    mMoveType(new Label),
-    mCrazyMoveType(new Label),
-    mMoveToTargetType(new Label),
-    mFollowMode(new Label),
-    mAttackType(new Label),
-    mAttackWeaponType(new Label),
-    mDropCounter(new Label),
-    mPickUpType(new Label),
-    mMapType(new Label),
-    mMagicAttackType(new Label),
-    mPvpAttackType(new Label),
-    mDisableGameModifiers(new Label),
-    mImitationMode(new Label),
-    mAwayMode(new Label),
-    mCameraMode(new Label)
+    mMoveType(new Label(this)),
+    mCrazyMoveType(new Label(this)),
+    mMoveToTargetType(new Label(this)),
+    mFollowMode(new Label(this)),
+    mAttackType(new Label(this)),
+    mAttackWeaponType(new Label(this)),
+    mDropCounter(new Label(this)),
+    mPickUpType(new Label(this)),
+    mMapType(new Label(this)),
+    mMagicAttackType(new Label(this)),
+    mPvpAttackType(new Label(this)),
+    mDisableGameModifiers(new Label(this)),
+    mImitationMode(new Label(this)),
+    mAwayMode(new Label(this)),
+    mCameraMode(new Label(this))
 {
     const int fontHeight = getFont()->getHeight();
 

@@ -136,19 +136,19 @@ void DebugWindow::widgetResized(const gcn::Event &event)
 
 MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     DebugTab(widget),
-    mMusicFileLabel(new Label(strprintf(_("Music:")))),
-    mMapLabel(new Label(strprintf(_("Map:")))),
-    mMinimapLabel(new Label(strprintf(_("Minimap:")))),
-    mTileMouseLabel(new Label(strprintf("%s (%d, %d)", _("Cursor:"), 0, 0))),
-    mParticleCountLabel(new Label(strprintf("%s %d",
+    mMusicFileLabel(new Label(this, strprintf(_("Music:")))),
+    mMapLabel(new Label(this, strprintf(_("Map:")))),
+    mMinimapLabel(new Label(this, strprintf(_("Minimap:")))),
+    mTileMouseLabel(new Label(this, strprintf("%s (%d, %d)", _("Cursor:"), 0, 0))),
+    mParticleCountLabel(new Label(this, strprintf("%s %d",
         _("Particle count:"), 88888))),
-    mMapActorCountLabel(new Label(strprintf("%s %d",
+    mMapActorCountLabel(new Label(this, strprintf("%s %d",
         _("Map actors count:"), 88888))),
-    mXYLabel(new Label(strprintf("%s (?,?)", _("Player Position:")))),
+    mXYLabel(new Label(this, strprintf("%s (?,?)", _("Player Position:")))),
     mTexturesLabel(nullptr),
     mUpdateTime(0),
-    mFPSLabel(new Label(strprintf(_("%d FPS"), 0))),
-    mLPSLabel(new Label(strprintf(_("%d LPS"), 0)))
+    mFPSLabel(new Label(this, strprintf(_("%d FPS"), 0))),
+    mLPSLabel(new Label(this, strprintf(_("%d LPS"), 0)))
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -182,7 +182,7 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     place(0, 8, mMapActorCountLabel, 2);
 #ifdef USE_OPENGL
 #ifdef DEBUG_OPENGL_LEAKS
-    mTexturesLabel = new Label(strprintf("%s %s", _("Textures count:"), "?"));
+    mTexturesLabel = new Label(this, strprintf("%s %s", _("Textures count:"), "?"));
     place(0, 9, mTexturesLabel, 2);
 #endif
 #endif
@@ -260,16 +260,16 @@ void MapDebugTab::logic()
 
 TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
     DebugTab(widget),
-    mTargetLabel(new Label(strprintf("%s ?", _("Target:")))),
-    mTargetIdLabel(new Label(strprintf("%s ?     ", _("Target Id:")))),
-    mTargetLevelLabel(new Label(strprintf("%s ?", _("Target level:")))),
-    mTargetRaceLabel(new Label(strprintf("%s ?", _("Target race:")))),
-    mTargetPartyLabel(new Label(strprintf("%s ?", _("Target party:")))),
-    mTargetGuildLabel(new Label(strprintf("%s ?", _("Target guild:")))),
-    mAttackDelayLabel(new Label(strprintf("%s ?", _("Attack delay:")))),
-    mMinHitLabel(new Label(strprintf("%s ?", _("Minimal hit:")))),
-    mMaxHitLabel(new Label(strprintf("%s ?", _("Maximum hit:")))),
-    mCriticalHitLabel(new Label(strprintf("%s ?", _("Critical hit:"))))
+    mTargetLabel(new Label(this, strprintf("%s ?", _("Target:")))),
+    mTargetIdLabel(new Label(this, strprintf("%s ?     ", _("Target Id:")))),
+    mTargetLevelLabel(new Label(this, strprintf("%s ?", _("Target level:")))),
+    mTargetRaceLabel(new Label(this, strprintf("%s ?", _("Target race:")))),
+    mTargetPartyLabel(new Label(this, strprintf("%s ?", _("Target party:")))),
+    mTargetGuildLabel(new Label(this, strprintf("%s ?", _("Target guild:")))),
+    mAttackDelayLabel(new Label(this, strprintf("%s ?", _("Attack delay:")))),
+    mMinHitLabel(new Label(this, strprintf("%s ?", _("Minimal hit:")))),
+    mMaxHitLabel(new Label(this, strprintf("%s ?", _("Maximum hit:")))),
+    mCriticalHitLabel(new Label(this, strprintf("%s ?", _("Critical hit:"))))
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -364,9 +364,9 @@ void TargetDebugTab::logic()
 
 NetDebugTab::NetDebugTab(const Widget2 *const widget) :
     DebugTab(widget),
-    mPingLabel(new Label("                ")),
-    mInPackets1Label(new Label("                ")),
-    mOutPackets1Label(new Label("                "))
+    mPingLabel(new Label(this, "                ")),
+    mInPackets1Label(new Label(this, "                ")),
+    mOutPackets1Label(new Label(this, "                "))
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);

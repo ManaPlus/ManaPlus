@@ -41,11 +41,11 @@
 
 BeingPopup::BeingPopup() :
     Popup("BeingPopup", "beingpopup.xml"),
-    mBeingName(new Label("A")),
-    mBeingParty(new Label("A")),
-    mBeingGuild(new Label("A")),
-    mBeingRank(new Label("A")),
-    mBeingComment(new Label("A"))
+    mBeingName(new Label(this, "A")),
+    mBeingParty(new Label(this, "A")),
+    mBeingGuild(new Label(this, "A")),
+    mBeingRank(new Label(this, "A")),
+    mBeingComment(new Label(this, "A"))
 {
     // Being Name
     mBeingName->setFont(boldFont);

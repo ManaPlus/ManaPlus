@@ -43,7 +43,8 @@ extern Joystick *joystick;
 
 Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     SetupTab(widget),
-    mCalibrateLabel(new Label(_("Press the button to start calibration"))),
+    mCalibrateLabel(new Label(this,
+        _("Press the button to start calibration"))),
     mCalibrateButton(new Button(this, _("Calibrate"), "calibrate", this)),
     mJoystickEnabled(new CheckBox(this, _("Enable joystick"))),
     mNamesModel(new NamesModel()),

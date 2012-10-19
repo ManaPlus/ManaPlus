@@ -71,25 +71,25 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     gcn::KeyListener(),
     mCharSelectDialog(parent),
     mNameField(new TextField(this, "")),
-    mNameLabel(new Label(_("Name:"))),
+    mNameLabel(new Label(this, _("Name:"))),
     // TRANSLATORS: This is a narrow symbol used to denote 'next'.
     // You may change this symbol if your language uses another.
     mNextHairColorButton(new Button(this, _(">"), "nextcolor", this)),
     // TRANSLATORS: This is a narrow symbol used to denote 'previous'.
     // You may change this symbol if your language uses another.
     mPrevHairColorButton(new Button(this, _("<"), "prevcolor", this)),
-    mHairColorLabel(new Label(_("Hair color:"))),
-    mHairColorNameLabel(new Label("")),
+    mHairColorLabel(new Label(this, _("Hair color:"))),
+    mHairColorNameLabel(new Label(this, "")),
     mNextHairStyleButton(new Button(this, _(">"), "nextstyle", this)),
     mPrevHairStyleButton(new Button(this, _("<"), "prevstyle", this)),
-    mHairStyleLabel(new Label(_("Hair style:"))),
-    mHairStyleNameLabel(new Label("")),
+    mHairStyleLabel(new Label(this, _("Hair style:"))),
+    mHairStyleNameLabel(new Label(this, "")),
     mActionButton(new Button(this, _("^"), "action", this)),
     mRotateButton(new Button(this, _(">"), "rotate", this)),
     mMale(new RadioButton(_("Male"), "gender")),
     mFemale(new RadioButton(_("Female"), "gender")),
     mOther(new RadioButton(_("Other"), "gender")),
-    mAttributesLeft(new Label(
+    mAttributesLeft(new Label(this, 
         strprintf(_("Please distribute %d points"), 99))),
     mMaxPoints(0),
     mUsedPoints(0),
@@ -136,8 +136,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     {
         mNextRaceButton = new Button(this, _(">"), "nextrace", this);
         mPrevRaceButton = new Button(this, _("<"), "prevrace", this);
-        mRaceLabel = new Label(_("Race:"));
-        mRaceNameLabel = new Label("");
+        mRaceLabel = new Label(this, _("Race:"));
+        mRaceNameLabel = new Label(this, "");
     }
 
     // Default to a Male character
@@ -441,7 +441,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     for (unsigned i = 0, sz = static_cast<unsigned>(labels.size());
          i < sz; i++)
     {
-        mAttributeLabel[i] = new Label(labels[i]);
+        mAttributeLabel[i] = new Label(this, labels[i]);
         mAttributeLabel[i]->setWidth(70);
         mAttributeLabel[i]->setPosition(5, 145 + i * 24);
         mAttributeLabel[i]->adjustSize();
@@ -454,7 +454,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
         mAttributeSlider[i]->addActionListener(this);
         add(mAttributeSlider[i]);
 
-        mAttributeValue[i] = new Label(toString(min));
+        mAttributeValue[i] = new Label(this, toString(min));
         mAttributeValue[i]->setPosition(295, 145 + i * 24);
         add(mAttributeValue[i]);
     }

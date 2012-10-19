@@ -192,7 +192,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
         mItemPriceSlide->setActionEventId("slidePrice");
         mItemPriceSlide->addActionListener(this);
 
-        mGPLabel = new Label(" GP");
+        mGPLabel = new Label(this, " GP");
     }
 
     if (mUsage == ShopBuyAdd)

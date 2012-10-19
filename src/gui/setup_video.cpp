@@ -238,9 +238,9 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mNoFrameCheckBox(new CheckBox(this,_("No frame"), mNoFrame)),
     mFpsCheckBox(new CheckBox(this,_("FPS limit:"))),
     mFpsSlider(new Slider(2, 160)),
-    mFpsLabel(new Label),
+    mFpsLabel(new Label(this)),
     mAltFpsSlider(new Slider(2, 160)),
-    mAltFpsLabel(new Label(_("Alt FPS limit: "))),
+    mAltFpsLabel(new Label(this, _("Alt FPS limit: "))),
     mDetectButton(new Button(this, _("Detect best mode"), "detect", this)),
     mDialog(nullptr)
 {

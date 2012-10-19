@@ -131,11 +131,11 @@ StatusWindow::StatusWindow() :
     Window(player_node ? player_node->getName() :
         "?", false, nullptr, "status.xml"),
     gcn::ActionListener(),
-    mLvlLabel(new Label(strprintf(_("Level: %d"), 0))),
-    mMoneyLabel(new Label(strprintf(_("Money: %s"), ""))),
-    mHpLabel(new Label(_("HP:"))),
+    mLvlLabel(new Label(this, strprintf(_("Level: %d"), 0))),
+    mMoneyLabel(new Label(this, strprintf(_("Money: %s"), ""))),
+    mHpLabel(new Label(this, _("HP:"))),
     mMpLabel(nullptr),
-    mXpLabel(new Label(_("Exp:"))),
+    mXpLabel(new Label(this, _("Exp:"))),
     mHpBar(nullptr),
     mMpBar(nullptr),
     mXpBar(nullptr),
@@ -146,7 +146,7 @@ StatusWindow::StatusWindow() :
     mAttrScroll(new ScrollArea(mAttrCont, false)),
     mDAttrCont(new VertContainer(this, 32)),
     mDAttrScroll(new ScrollArea(mDAttrCont, false)),
-    mCharacterPointsLabel(new Label("C")),
+    mCharacterPointsLabel(new Label(this, "C")),
     mCorrectionPointsLabel(nullptr),
     mCopyButton(new Button(this, _("Copy to chat"), "copy", this))
 {
@@ -189,7 +189,7 @@ StatusWindow::StatusWindow() :
     if (magicBar)
     {
         max = PlayerInfo::getAttribute(PlayerInfo::MAX_MP);
-        mMpLabel = new Label(_("MP:"));
+        mMpLabel = new Label(this, _("MP:"));
         mMpBar = new ProgressBar(max ? static_cast<float>(
             PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
             / static_cast<float>(max) : static_cast<float>(0),
@@ -221,8 +221,8 @@ StatusWindow::StatusWindow() :
 
     if (job)
     {
-        mJobLvlLabel = new Label(strprintf(_("Job: %d"), 0));
-        mJobLabel = new Label(_("Job:"));
+        mJobLvlLabel = new Label(this, strprintf(_("Job: %d"), 0));
+        mJobLabel = new Label(this, _("Job:"));
         mJobBar = new ProgressBar(0.0f, 80, 0, Theme::PROG_JOB);
 
         place(5, 0, mJobLvlLabel, 3);
@@ -257,7 +257,7 @@ StatusWindow::StatusWindow() :
 
     if (Net::getPlayerHandler()->canCorrectAttributes())
     {
-        mCorrectionPointsLabel = new Label("C");
+        mCorrectionPointsLabel = new Label(this, "C");
         place(0, 7, mCorrectionPointsLabel, 5);
     }
 
@@ -757,8 +757,8 @@ AttrDisplay::AttrDisplay(const Widget2 *const widget,
     mId(id),
     mName(name),
     mLayout(new LayoutHelper(this)),
-    mLabel(new Label(name)),
-    mValue(new Label("1 "))
+    mLabel(new Label(this, name)),
+    mValue(new Label(this, "1 "))
 {
     setSize(100, 32);
 
@@ -803,7 +803,7 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
     AttrDisplay(widget, id, name),
     gcn::ActionListener(),
     mNeeded(1),
-    mPoints(new Label(_("Max"))),
+    mPoints(new Label(this, _("Max"))),
     mDec(nullptr),
     mInc(new Button(this, _("+"), "inc", this))
 {

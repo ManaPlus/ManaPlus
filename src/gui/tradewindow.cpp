@@ -67,7 +67,7 @@ TradeWindow::TradeWindow():
     mPartnerInventory(new Inventory(Inventory::TRADE)),
     mMyItemContainer(new ItemContainer(this, mMyInventory.get())),
     mPartnerItemContainer(new ItemContainer(this, mPartnerInventory.get())),
-    mMoneyLabel(new Label(strprintf(_("You get %s"), ""))),
+    mMoneyLabel(new Label(this, strprintf(_("You get %s"), ""))),
     mAddButton(new Button(this, _("Add"), "add", this)),
     mOkButton(new Button(this, "", "", this)), // Will be filled in later
     mMoneyChangeButton(new Button(this, _("Change"), "money", this)),
@@ -112,7 +112,7 @@ TradeWindow::TradeWindow():
         true, "trade_background.xml");
     partnerScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
-    Label *const moneyLabel2 = new Label(_("You give:"));
+    Label *const moneyLabel2 = new Label(this, _("You give:"));
 
     mMoneyField->setWidth(40);
 

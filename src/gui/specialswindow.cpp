@@ -210,16 +210,16 @@ SpecialEntry::SpecialEntry(SpecialInfo *const info) :
     add(mIcon);
 
     if (info)
-        mNameLabel = new Label(info->name);
+        mNameLabel = new Label(this, info->name);
     else
-        mNameLabel = new Label("");
+        mNameLabel = new Label(this, "");
 
     mNameLabel->setPosition(35, 0);
     add(mNameLabel);
 
     if (info && info->hasLevel)
     {
-        mLevelLabel = new Label(toString(info->level));
+        mLevelLabel = new Label(this, toString(info->level));
         mLevelLabel->setPosition(getWidth() - mLevelLabel->getWidth(), 0);
         add(mLevelLabel);
     }

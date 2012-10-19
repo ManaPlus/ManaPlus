@@ -80,9 +80,9 @@ RegisterDialog::RegisterDialog(LoginData *const data):
     const int optionalActions = Net::getLoginHandler()->
         supportedOptionalActions();
 
-    Label *const userLabel = new Label(_("Name:"));
-    Label *const passwordLabel = new Label(_("Password:"));
-    Label *const confirmLabel = new Label(_("Confirm:"));
+    Label *const userLabel = new Label(this, _("Name:"));
+    Label *const passwordLabel = new Label(this, _("Password:"));
+    Label *const confirmLabel = new Label(this, _("Confirm:"));
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
@@ -118,7 +118,7 @@ RegisterDialog::RegisterDialog(LoginData *const data):
 
     if (optionalActions & Net::LoginHandler::SetEmailOnRegister)
     {
-        Label *const emailLabel = new Label(_("Email:"));
+        Label *const emailLabel = new Label(this, _("Email:"));
         mEmailField = new TextField(this);
         placer(0, row, emailLabel);
         placer(1, row, mEmailField, 3).setPadding(2);

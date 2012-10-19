@@ -40,9 +40,9 @@
 
 TextPopup::TextPopup():
     Popup("TextPopup", "textpopup.xml"),
-    mText1(new Label),
-    mText2(new Label),
-    mText3(new Label)
+    mText1(new Label(this)),
+    mText2(new Label(this)),
+    mText3(new Label(this))
 {
     const int fontHeight = getFont()->getHeight();
 

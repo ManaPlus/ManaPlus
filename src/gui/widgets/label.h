@@ -42,13 +42,13 @@ class Label final : public gcn::Label, public Widget2
         /**
          * Constructor.
          */
-        Label();
+        Label(const Widget2 *const widget);
 
         /**
          * Constructor. This version of the constructor sets the label with an
          * inintialization string.
          */
-        Label(const std::string &caption);
+        Label(const Widget2 *const widget, const std::string &caption);
 
         A_DELETE_COPY(Label)
 

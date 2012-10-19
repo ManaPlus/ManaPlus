@@ -48,27 +48,27 @@ KillStats::KillStats():
     mKillTimer(0),
     mResetButton(new Button(this, _("Reset stats"), "reset", this)),
     mTimerButton(new Button(this, _("Reset timer"), "timer", this)),
-    mLine4(new Label(strprintf(_("Kills: %s, total exp: %s"), "?", "?"))),
-    mLine5(new Label(strprintf(_("Avg Exp: %s"), "?"))),
-    mLine6(new Label(strprintf(_("No. of avg mob to next level: %s"), "?"))),
-    mLine7(new Label(strprintf(_("Kills/Min: %s, Exp/Min: %s"), "?", "?"))),
-    mExpSpeed1Label(new Label(strprintf(ngettext("Exp speed per %d min: %s",
+    mLine4(new Label(this, strprintf(_("Kills: %s, total exp: %s"), "?", "?"))),
+    mLine5(new Label(this, strprintf(_("Avg Exp: %s"), "?"))),
+    mLine6(new Label(this, strprintf(_("No. of avg mob to next level: %s"), "?"))),
+    mLine7(new Label(this, strprintf(_("Kills/Min: %s, Exp/Min: %s"), "?", "?"))),
+    mExpSpeed1Label(new Label(this, strprintf(ngettext("Exp speed per %d min: %s",
         "Exp speed per %d min: %s", 1), 1, "?"))),
-    mExpTime1Label(new Label(strprintf(ngettext(
+    mExpTime1Label(new Label(this, strprintf(ngettext(
         "Time for next level per %d min: %s",
         "Time for next level per %d min: %s", 1), 1, "?"))),
-    mExpSpeed5Label(new Label(strprintf(ngettext("Exp speed per %d min: %s",
+    mExpSpeed5Label(new Label(this, strprintf(ngettext("Exp speed per %d min: %s",
         "Exp speed per %d min: %s", 5), 5, "?"))),
-    mExpTime5Label(new Label(strprintf(ngettext(
+    mExpTime5Label(new Label(this, strprintf(ngettext(
         "Time for next level per %d min: %s",
         "Time for next level per %d min: %s", 5), 5, "?"))),
-    mExpSpeed15Label(new Label(strprintf(ngettext("Exp speed per %d min: %s",
+    mExpSpeed15Label(new Label(this, strprintf(ngettext("Exp speed per %d min: %s",
         "Exp speed per %d min: %s", 15), 15, "?"))),
-    mExpTime15Label(new Label(strprintf(ngettext(
+    mExpTime15Label(new Label(this, strprintf(ngettext(
         "Time for next level per %d min: %s",
         "Time for next level per %d min: %s", 15), 15, "?"))),
-    mLastKillExpLabel(new Label(strprintf("%s ?", _("Last kill exp:")))),
-    mTimeBeforeJackoLabel(new Label(strprintf(
+    mLastKillExpLabel(new Label(this, strprintf("%s ?", _("Last kill exp:")))),
+    mTimeBeforeJackoLabel(new Label(this, strprintf(
         "%s ?", _("Time before jacko spawn:")))),
     m1minExpTime(0),
     m1minExpNum(0),
@@ -100,14 +100,14 @@ KillStats::KillStats():
     if (!xpNextLevel)
         xpNextLevel = 1;
 
-    mLine1 = new Label(strprintf(_("Level: %d at %f%%"),
+    mLine1 = new Label(this, strprintf(_("Level: %d at %f%%"),
         player_node->getLevel(), static_cast<double>(xp)
         / static_cast<double>(xpNextLevel) * 100.0));
 
-    mLine2 = new Label(strprintf(_("Exp: %d/%d Left: %d"),
+    mLine2 = new Label(this, strprintf(_("Exp: %d/%d Left: %d"),
         xp, xpNextLevel, xpNextLevel - xp));
 
-    mLine3 = new Label(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
+    mLine3 = new Label(this, strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
         xpNextLevel / 100, "?"));
 
     place(0, 0, mLine1, 6).setPadding(0);

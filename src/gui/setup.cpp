@@ -116,7 +116,7 @@ Setup::Setup():
 
     add(mPanel);
 
-    Label *const version = new Label(FULL_VERSION);
+    Label *const version = new Label(this, FULL_VERSION);
 //    version->setPosition(9, height - version->getHeight() - 9);
     if (mResetWindows)
     {

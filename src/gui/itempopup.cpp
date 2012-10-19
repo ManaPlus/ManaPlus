@@ -47,7 +47,7 @@
 
 ItemPopup::ItemPopup() :
     Popup("ItemPopup", "itempopup.xml"),
-    mItemName(new Label),
+    mItemName(new Label(this)),
     mItemDesc(new TextBox),
     mItemEffect(new TextBox),
     mItemWeight(new TextBox),

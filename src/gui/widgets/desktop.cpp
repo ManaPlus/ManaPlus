@@ -53,11 +53,11 @@ Desktop::Desktop(const Widget2 *const widget) :
 
     if (appName.empty())
     {
-        mVersionLabel = new Label(FULL_VERSION);
+        mVersionLabel = new Label(this, FULL_VERSION);
     }
     else
     {
-        mVersionLabel = new Label(strprintf("%s (%s)", FULL_VERSION,
+        mVersionLabel = new Label(this, strprintf("%s (%s)", FULL_VERSION,
             appName.c_str()));
     }
 

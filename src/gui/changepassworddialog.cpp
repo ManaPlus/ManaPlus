@@ -56,13 +56,13 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData *const data):
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
-    Label *const accountLabel = new Label(
+    Label *const accountLabel = new Label(this, 
         strprintf(_("Account: %s"), mLoginData->username.c_str()));
 
     place(0, 0, accountLabel, 3);
-    place(0, 1, new Label(_("Password:")), 3);
+    place(0, 1, new Label(this, _("Password:")), 3);
     place(0, 2, mOldPassField, 3).setPadding(1);
-    place(0, 3, new Label(_("Type new password twice:")), 3);
+    place(0, 3, new Label(this, _("Type new password twice:")), 3);
     place(0, 4, mFirstPassField, 3).setPadding(1);
     place(0, 5, mSecondPassField, 3).setPadding(1);
     place(1, 6, mCancelButton);

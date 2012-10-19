@@ -285,7 +285,7 @@ void SetupItemTextField::createControls()
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
 
-    mLabel = new Label(mText);
+    mLabel = new Label(this, mText);
     mTextField = new TextField(this, mValue, true, mParent, mEventName);
     mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
@@ -406,7 +406,7 @@ void SetupItemIntTextField::createControls()
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
 
-    mLabel = new Label(mText);
+    mLabel = new Label(this, mText);
     mTextField = new IntTextField(this, atoi(mValue.c_str()),
         mMin, mMax, true, 30);
     mTextField->setActionEventId(mEventName);
@@ -500,11 +500,11 @@ void SetupItemLabel::createControls()
     {
         const std::string str = " \342\200\225\342\200\225\342\200\225"
             "\342\200\225\342\200\225 ";
-        mLabel = new Label(str + mText + str);
+        mLabel = new Label(this, str + mText + str);
     }
     else
     {
-        mLabel = new Label(mText);
+        mLabel = new Label(this, mText);
     }
 
     mWidget = mLabel;
@@ -580,7 +580,7 @@ void SetupItemDropDown::createControls()
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
 
-    mLabel = new Label(mText);
+    mLabel = new Label(this, mText);
     mDropDown = new DropDown(this, mModel);
     mDropDown->setActionEventId(mEventName);
     mDropDown->addActionListener(mParent);
@@ -668,7 +668,7 @@ void SetupItemSlider::createControls()
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
 
-    mLabel = new Label(mText);
+    mLabel = new Label(this, mText);
     mSlider = new Slider(mMin, mMax);
     mSlider->setActionEventId(mEventName);
     mSlider->addActionListener(mParent);
@@ -788,8 +788,8 @@ void SetupItemSlider2::createControls()
 
     const int width = getMaxWidth();
 
-    mLabel = new Label(mText);
-    mLabel2 = new Label("");
+    mLabel = new Label(this, mText);
+    mLabel2 = new Label(this, "");
     mLabel2->setWidth(width);
     mSlider = new Slider(mMin, mMax);
     mSlider->setActionEventId(mEventName);
@@ -947,7 +947,7 @@ void SetupItemSliderList::createControls()
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
 
-    mLabel = new Label(mText);
+    mLabel = new Label(this, mText);
     mSlider = new SliderList(this, mModel, mParent, mEventName);
     mSlider->setSelectedString(mValue);
     mSlider->adjustSize();

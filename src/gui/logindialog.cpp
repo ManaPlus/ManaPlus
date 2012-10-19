@@ -124,7 +124,7 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
     mPassField(new PasswordField(this, mLoginData->password)),
     mKeepCheck(new CheckBox(this, _("Remember username"),
         mLoginData->remember)),
-    mUpdateTypeLabel(new Label(_("Update:"))),
+    mUpdateTypeLabel(new Label(this, _("Update:"))),
     mUpdateHostLabel(nullptr),
     mUpdateTypeModel(new UpdateTypeModel()),
     mUpdateTypeDropDown(new DropDown(this, mUpdateTypeModel)),
@@ -140,14 +140,14 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
     mUpdateHost(updateHost),
     mServerName(serverName)
 {
-    Label *const serverLabel1 = new Label(_("Server:"));
-    Label *const serverLabel2 = new Label(serverName);
+    Label *const serverLabel1 = new Label(this, _("Server:"));
+    Label *const serverLabel2 = new Label(this, serverName);
     serverLabel2->adjustSize();
-    Label *const userLabel = new Label(_("Name:"));
-    Label *const passLabel = new Label(_("Password:"));
+    Label *const userLabel = new Label(this, _("Name:"));
+    Label *const passLabel = new Label(this, _("Password:"));
     if (mLoginData && mLoginData->updateHosts.size() > 1)
     {
-        mUpdateHostLabel = new Label(strprintf(_("Update host: %s"),
+        mUpdateHostLabel = new Label(this, strprintf(_("Update host: %s"),
             mLoginData->updateHost.c_str()));
         mUpdateListModel = new UpdateListModel(mLoginData);
         mUpdateHostDropDown = new DropDown(this, mUpdateListModel,

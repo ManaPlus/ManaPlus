@@ -81,11 +81,11 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
 {
     setWindowName("EditServerDialog");
 
-    Label *const nameLabel = new Label(_("Name:"));
-    Label *const serverAdressLabel = new Label(_("Address:"));
-    Label *const portLabel = new Label(_("Port:"));
-    Label *const typeLabel = new Label(_("Server type:"));
-    Label *const descriptionLabel = new Label(_("Description:"));
+    Label *const nameLabel = new Label(this, _("Name:"));
+    Label *const serverAdressLabel = new Label(this, _("Address:"));
+    Label *const portLabel = new Label(this, _("Port:"));
+    Label *const typeLabel = new Label(this, _("Server type:"));
+    Label *const descriptionLabel = new Label(this, _("Description:"));
     mPortField->setNumeric(true);
     mPortField->setRange(1, 65535);
 

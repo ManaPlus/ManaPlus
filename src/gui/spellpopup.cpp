@@ -40,8 +40,8 @@
 
 SpellPopup::SpellPopup():
     Popup("SpellPopup", "spellpopup.xml"),
-    mItemName(new Label),
-    mItemComment(new Label)
+    mItemName(new Label(this)),
+    mItemComment(new Label(this))
 {
     mItemName->setFont(boldFont);
     mItemName->setForegroundColor(getThemeColor(Theme::POPUP));

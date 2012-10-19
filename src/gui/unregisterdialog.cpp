@@ -53,9 +53,9 @@ UnRegisterDialog::UnRegisterDialog(LoginData *const data):
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener)
 {
-    Label *const userLabel = new Label(strprintf(_("Name: %s"),
+    Label *const userLabel = new Label(this, strprintf(_("Name: %s"),
         mLoginData->username.c_str()));
-    Label *const passwordLabel = new Label(_("Password:"));
+    Label *const passwordLabel = new Label(this, _("Password:"));
 
     const int width = 210;
     const int height = 80;

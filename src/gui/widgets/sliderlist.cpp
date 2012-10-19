@@ -46,7 +46,7 @@ SliderList::SliderList(const Widget2 *const widget,
     Container(widget),
     gcn::ActionListener(),
     gcn::MouseListener(),
-    mLabel(new Label),
+    mLabel(new Label(this)),
     mListModel(listModel),
     mOldWidth(0),
     mSelectedIndex(0)

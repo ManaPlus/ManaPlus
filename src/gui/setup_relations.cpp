@@ -158,7 +158,7 @@ public:
              player_names->size()); r < sz; ++r)
         {
             std::string name = (*player_names)[r];
-            gcn::Widget *const widget = new Label(name);
+            gcn::Widget *const widget = new Label(this, name);
             mWidgets.push_back(widget);
 
             DropDown *const choicebox = new DropDown(this, mListModel);
@@ -262,7 +262,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mIgnoreActionChoicesBox = new DropDown(widget, mIgnoreActionChoicesModel);
 
     for (int i = 0; i < COLUMNS_NR; i++)
-        mPlayerTableTitleModel->set(0, i, new Label(gettext(table_titles[i])));
+        mPlayerTableTitleModel->set(0, i, new Label(this, gettext(table_titles[i])));
 
     mPlayerTitleTable->setLinewiseSelection(true);
 
@@ -271,7 +271,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mPlayerTable->setLinewiseSelection(true);
     mPlayerTable->addActionListener(this);
 
-    Label *const ignore_action_label = new Label(_("When ignoring:"));
+    Label *const ignore_action_label = new Label(this, _("When ignoring:"));
 
     mIgnoreActionChoicesBox->setActionEventId(ACTION_STRATEGY);
     mIgnoreActionChoicesBox->addActionListener(this);
