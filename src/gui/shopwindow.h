@@ -33,15 +33,10 @@ class CheckBox;
 class Item;
 class Label;
 class ListBox;
+class ScrollArea;
 class ShopItem;
 class ShopItems;
 class ShopListBox;
-
-namespace gcn
-{
-    class CheckBox;
-    class ScrollArea;
-}
 
 /**
  * The buy dialog.
@@ -152,8 +147,8 @@ class ShopWindow final : public Window, public gcn::ActionListener,
 
         ShopListBox *mBuyShopItemList;
         ShopListBox *mSellShopItemList;
-        gcn::ScrollArea *mBuyScrollArea;
-        gcn::ScrollArea *mSellScrollArea;
+        ScrollArea *mBuyScrollArea;
+        ScrollArea *mSellScrollArea;
         Label *mBuyLabel;
         Label *mSellLabel;
         Button *mBuyAddButton;

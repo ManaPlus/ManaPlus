@@ -59,9 +59,9 @@ namespace gcn
 {
 
     CheckBox::CheckBox() :
-        Widget(),
-        MouseListener(),
-        KeyListener(),
+        gcn::Widget(),
+        gcn::MouseListener(),
+        gcn::KeyListener(),
         mSelected(false)
     {
         setFocusable(true);
@@ -70,9 +70,9 @@ namespace gcn
     }
 
     CheckBox::CheckBox(const std::string &caption, bool selected) :
-        Widget(),
-        MouseListener(),
-        KeyListener(),
+        gcn::Widget(),
+        gcn::MouseListener(),
+        gcn::KeyListener(),
         mSelected(selected)
     {
         setCaption(caption);

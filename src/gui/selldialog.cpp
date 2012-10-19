@@ -49,8 +49,8 @@ SellDialog::DialogList SellDialog::instances;
 
 SellDialog::SellDialog(const int npcId) :
     Window(_("Sell"), false, nullptr, "sell.xml"),
-    ActionListener(),
-    SelectionListener(),
+    gcn::ActionListener(),
+    gcn::SelectionListener(),
     mNpcId(npcId), mMaxItems(0), mAmountItems(0), mNick("")
 {
     init();
@@ -58,8 +58,8 @@ SellDialog::SellDialog(const int npcId) :
 
 SellDialog::SellDialog(std::string nick):
     Window(_("Sell"), false, nullptr, "sell.xml"),
-    ActionListener(),
-    SelectionListener(),
+    gcn::ActionListener(),
+    gcn::SelectionListener(),
     mNpcId(-1), mMaxItems(0), mAmountItems(0), mNick(nick)
 {
     init();
@@ -288,7 +288,7 @@ void SellDialog::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
     mSlider->setValue(0);
 
     updateButtonsAndLabels();
-    mSlider->gcn::Slider::setScale(1, mMaxItems);
+    mSlider->setScale(1, mMaxItems);
 }
 
 void SellDialog::setMoney(const int amount)

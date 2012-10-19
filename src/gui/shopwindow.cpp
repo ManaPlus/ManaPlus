@@ -73,8 +73,8 @@ ShopWindow::DialogList ShopWindow::instances;
 
 ShopWindow::ShopWindow():
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
-    ActionListener(),
-    SelectionListener(),
+    gcn::ActionListener(),
+    gcn::SelectionListener(),
     mCloseButton(new Button(_("Close"), "close", this)),
     mBuyShopItems(new ShopItems),
     mSellShopItems(new ShopItems),

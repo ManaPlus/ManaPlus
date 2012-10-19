@@ -136,8 +136,8 @@ class CharacterDisplay final : public Container
 
 CharSelectDialog::CharSelectDialog(LoginData *const data):
     Window(_("Account and Character Management"), false, nullptr, "char.xml"),
-    ActionListener(),
-    KeyListener(),
+    gcn::ActionListener(),
+    gcn::KeyListener(),
     mLocked(false),
     mLoginData(data),
     mAccountNameLabel(new Label(mLoginData->username)),

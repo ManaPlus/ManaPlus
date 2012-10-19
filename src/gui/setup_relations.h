@@ -35,12 +35,12 @@ class DropDown;
 class EditDialog;
 class GuiTable;
 class PlayerTableModel;
+class ScrollArea;
 class StaticTableModel;
 
 namespace gcn
 {
     class ListModel;
-    class ScrollArea;
 }
 
 class Setup_Relations final : public SetupTab,
@@ -72,7 +72,7 @@ private:
     PlayerTableModel *mPlayerTableModel;
     GuiTable *mPlayerTable;
     GuiTable *mPlayerTitleTable;
-    gcn::ScrollArea *mPlayerScrollArea;
+    ScrollArea *mPlayerScrollArea;
 
     CheckBox *mDefaultTrading;
     CheckBox *mDefaultWhisper;

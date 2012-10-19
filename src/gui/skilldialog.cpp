@@ -230,7 +230,7 @@ class SkillTab final : public Tab
 
 SkillDialog::SkillDialog() :
     Window(_("Skills"), false, nullptr, "skills.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mTabs(new TabbedArea()),
     mPointsLabel(new Label("0")),
     mUseButton(new Button(_("Use"), "use", this)),

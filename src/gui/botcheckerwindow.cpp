@@ -266,7 +266,7 @@ protected:
 
 BotCheckerWindow::BotCheckerWindow():
     Window(_("Bot Checker"), false, nullptr, "botchecker.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mTableModel(new UsersTableModel()),
     mTable(new GuiTable(mTableModel)),
     playersScrollArea(new ScrollArea(mTable, true,
@@ -313,7 +313,7 @@ BotCheckerWindow::BotCheckerWindow():
     setDefaultSize(w, h, ImageRect::CENTER);
 
 
-    playersScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    playersScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mPlayerTitleTable->setPosition(getPadding(), getPadding());
     mPlayerTitleTable->setWidth(w - 10);

@@ -51,8 +51,8 @@ BuyDialog::DialogList BuyDialog::instances;
 
 BuyDialog::BuyDialog(const int npcId) :
     Window(_("Buy"), false, nullptr, "buy.xml"),
-    ActionListener(),
-    SelectionListener(),
+    gcn::ActionListener(),
+    gcn::SelectionListener(),
     mNpcId(npcId), mMoney(0), mAmountItems(0), mMaxItems(0), mNick("")
 {
     init();
@@ -60,8 +60,8 @@ BuyDialog::BuyDialog(const int npcId) :
 
 BuyDialog::BuyDialog(std::string nick) :
     Window(_("Buy"), false, nullptr, "buy.xml"),
-    ActionListener(),
-    SelectionListener(),
+    gcn::ActionListener(),
+    gcn::SelectionListener(),
     mNpcId(-1), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(nick)
 {
     init();
@@ -253,7 +253,7 @@ void BuyDialog::action(const gcn::ActionEvent &event)
             // Reset selection
             mAmountItems = 1;
             mSlider->setValue(1);
-            mSlider->gcn::Slider::setScale(1, mMaxItems);
+            mSlider->setScale(1, mMaxItems);
         }
         else if (tradeWindow)
         {
@@ -280,7 +280,7 @@ void BuyDialog::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
     mSlider->setValue(1);
 
     updateButtonsAndLabels();
-    mSlider->gcn::Slider::setScale(1, mMaxItems);
+    mSlider->setScale(1, mMaxItems);
     mAmountField->setRange(1, mMaxItems);
     mAmountField->setValue(1);
 }

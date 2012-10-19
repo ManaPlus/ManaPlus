@@ -117,8 +117,8 @@ class UpdateListModel final : public gcn::ListModel
 LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
                          std::string *const updateHost):
     Window(_("Login"), false, nullptr, "login.xml"),
-    ActionListener(),
-    KeyListener(),
+    gcn::ActionListener(),
+    gcn::KeyListener(),
     mLoginData(data),
     mUserField(new TextField(mLoginData->username)),
     mPassField(new PasswordField(mLoginData->password)),

@@ -34,12 +34,8 @@ class Label;
 class LocalPlayer;
 class PlayerBox;
 class RadioButton;
+class Slider;
 class TextField;
-
-namespace gcn
-{
-    class Slider;
-}
 
 /**
  * Character creation dialog.
@@ -126,7 +122,7 @@ class CharCreateDialog final : public Window,
         RadioButton *mFemale;
         RadioButton *mOther;
 
-        std::vector<gcn::Slider*> mAttributeSlider;
+        std::vector<Slider*> mAttributeSlider;
         std::vector<Label*> mAttributeLabel;
         std::vector<Label*> mAttributeValue;
         Label *mAttributesLeft;

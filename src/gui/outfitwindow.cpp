@@ -57,7 +57,7 @@ float OutfitWindow::mAlpha = 1.0;
 
 OutfitWindow::OutfitWindow():
     Window(_("Outfits"), false, nullptr, "outfits.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mPreviousButton(new Button(_("<"), "previous", this)),
     mNextButton(new Button(_(">"), "next", this)),
     mEquipButtom(new Button(_("Equip"), "equip", this)),

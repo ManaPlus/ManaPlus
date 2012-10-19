@@ -44,7 +44,6 @@
 #include "utils/langs.h"
 
 #include <guichan/exception.hpp>
-#include <guichan/image.hpp>
 
 #include "debug.h"
 

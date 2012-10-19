@@ -40,7 +40,7 @@ NpcPostDialog::DialogList NpcPostDialog::instances;
 
 NpcPostDialog::NpcPostDialog(const int npcId):
     Window(_("NPC"), false, nullptr, "npcpost.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mNpcId(npcId),
     mText(new TextBox),
     mSender(new TextField)

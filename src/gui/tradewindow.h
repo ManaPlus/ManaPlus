@@ -36,11 +36,7 @@ class Item;
 class ItemContainer;
 class Label;
 class ScrollArea;
-
-namespace gcn
-{
-    class TextField;
-}
+class TextField;
 
 /**
  * Trade dialog.
@@ -173,7 +169,7 @@ class TradeWindow final : public Window,
         Button *mAddButton;
         Button *mOkButton;
         Button  *mMoneyChangeButton;
-        gcn::TextField *mMoneyField;
+        TextField *mMoneyField;
 
         Status mStatus;
         bool mOkOther, mOkMe;

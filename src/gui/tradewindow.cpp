@@ -61,8 +61,8 @@
 
 TradeWindow::TradeWindow():
     Window(_("Trade: You"), false, nullptr, "trade.xml"),
-    ActionListener(),
-    SelectionListener(),
+    gcn::ActionListener(),
+    gcn::SelectionListener(),
     mMyInventory(new Inventory(Inventory::TRADE)),
     mPartnerInventory(new Inventory(Inventory::TRADE)),
     mMyItemContainer(new ItemContainer(mMyInventory.get())),
@@ -104,13 +104,13 @@ TradeWindow::TradeWindow():
 
     ScrollArea *const myScroll = new ScrollArea(mMyItemContainer,
         true, "trade_background.xml");
-    myScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    myScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mPartnerItemContainer->addSelectionListener(this);
 
     ScrollArea *const partnerScroll = new ScrollArea(mPartnerItemContainer,
         true, "trade_background.xml");
-    partnerScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    partnerScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     Label *const moneyLabel2 = new Label(_("You give:"));
 

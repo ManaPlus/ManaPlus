@@ -58,9 +58,9 @@
 namespace gcn
 {
     TextField::TextField() :
-        Widget(),
-        MouseListener(),
-        KeyListener(),
+        gcn::Widget(),
+        gcn::MouseListener(),
+        gcn::KeyListener(),
         mCaretPosition(0),
         mXScroll(0)
     {
@@ -71,9 +71,9 @@ namespace gcn
     }
 
     TextField::TextField(const std::string& text) :
-        Widget(),
-        MouseListener(),
-        KeyListener(),
+        gcn::Widget(),
+        gcn::MouseListener(),
+        gcn::KeyListener(),
         mText(text),
         mCaretPosition(0),
         mXScroll(0)

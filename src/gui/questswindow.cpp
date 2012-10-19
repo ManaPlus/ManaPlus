@@ -88,7 +88,7 @@ class QuestsModel final : public ExtendedNamesModel
 
 QuestsWindow::QuestsWindow() :
     Window(_("Quests"), false, nullptr, "quests.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mQuestsModel(new QuestsModel),
     mQuestsListBox(new ExtendedListBox(mQuestsModel)),
     mQuestScrollArea(new ScrollArea(mQuestsListBox,

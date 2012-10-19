@@ -25,7 +25,7 @@
 
 HorizontContainer::HorizontContainer(const int height, const int spacing) :
     Container(),
-    WidgetListener(),
+    gcn::WidgetListener(),
     mSpacing(spacing),
     mCount(0),
     mLastX(spacing)

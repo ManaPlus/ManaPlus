@@ -2189,7 +2189,7 @@ void PopupMenu::addPickupFilter(const std::string &name)
 }
 
 RenameListener::RenameListener() :
-    ActionListener(),
+    gcn::ActionListener(),
     mMapItem(nullptr),
     mDialog(nullptr)
 {

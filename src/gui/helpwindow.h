@@ -35,11 +35,7 @@
 
 class BrowserBox;
 class LinkHandler;
-
-namespace gcn
-{
-    class ScrollArea;
-}
+class ScrollArea;
 
 typedef std::set<std::string> HelpNames;
 typedef HelpNames::const_iterator HelpNamesCIter;
@@ -86,7 +82,7 @@ class HelpWindow final : public Window, public LinkHandler,
         void loadFile(const std::string &file);
 
         BrowserBox *mBrowserBox;
-        gcn::ScrollArea *mScrollArea;
+        ScrollArea *mScrollArea;
         HelpTagsMap mTagFileMap;
 };
 

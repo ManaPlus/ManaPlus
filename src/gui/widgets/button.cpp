@@ -66,7 +66,7 @@ Skin *Button::button[BUTTON_COUNT];
 
 Button::Button() :
     gcn::Button(),
-    WidgetListener(),
+    gcn::WidgetListener(),
     mDescription(""), mClickCount(0),
     mTag(0),
     mVertexes(new GraphicsVertexes()),
@@ -88,7 +88,7 @@ Button::Button() :
 Button::Button(const std::string &caption, const std::string &actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(caption),
-    WidgetListener(),
+    gcn::WidgetListener(),
     mDescription(""),
     mClickCount(0),
     mTag(0),
@@ -117,7 +117,7 @@ Button::Button(const std::string &caption, const std::string &imageName,
                const std::string &actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(caption),
-    WidgetListener(),
+    gcn::WidgetListener(),
     mDescription(""),
     mClickCount(0),
     mTag(0),
@@ -147,7 +147,7 @@ Button::Button(const std::string &imageName,
                const std::string &actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(""),
-    WidgetListener(),
+    gcn::WidgetListener(),
     mDescription(""),
     mClickCount(0),
     mTag(0),

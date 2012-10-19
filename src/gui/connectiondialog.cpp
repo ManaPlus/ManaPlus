@@ -36,7 +36,7 @@
 ConnectionDialog::ConnectionDialog(const std::string &text,
                                    const State cancelState):
     Window(""),
-    ActionListener(),
+    gcn::ActionListener(),
     mCancelState(cancelState)
 {
     setTitleBarHeight(0);

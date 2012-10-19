@@ -59,9 +59,9 @@
 namespace gcn
 {
     TextBox::TextBox() :
-        Widget(),
-        MouseListener(),
-        KeyListener(),
+        gcn::Widget(),
+        gcn::MouseListener(),
+        gcn::KeyListener(),
         mCaretColumn(0),
         mCaretRow(0),
         mEditable(true),
@@ -76,9 +76,9 @@ namespace gcn
     }
 
     TextBox::TextBox(const std::string& text) :
-        Widget(),
-        MouseListener(),
-        KeyListener(),
+        gcn::Widget(),
+        gcn::MouseListener(),
+        gcn::KeyListener(),
         mCaretColumn(0),
         mCaretRow(0),
         mEditable(true),

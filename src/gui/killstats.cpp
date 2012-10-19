@@ -35,13 +35,12 @@
 #include "utils/gettext.h"
 
 #include <math.h>
-#include <guichan/widgets/label.hpp>
 
 #include "debug.h"
 
 KillStats::KillStats():
     Window(_("Kill stats"), false, nullptr, "killstats.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mKillCounter(0),
     mExpCounter(0),
     mKillTCounter(0),

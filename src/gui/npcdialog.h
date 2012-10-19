@@ -36,19 +36,15 @@
 #include <list>
 
 class Being;
+class Button;
 class BrowserBox;
+class ExtendedListBox;
 class ItemLinkHandler;
 class IntTextField;
-class ExtendedListBox;
 class PlayerBox;
+class ScrollArea;
 class TextBox;
 class TextField;
-class Button;
-
-namespace gcn
-{
-    class ScrollArea;
-}
 
 /**
  * The npc dialog.
@@ -226,14 +222,14 @@ class NpcDialog final : public Window, public gcn::ActionListener,
 
         // Used for the main input area
         BrowserBox *mTextBox;
-        gcn::ScrollArea *mScrollArea;
+        ScrollArea *mScrollArea;
         //TextBox *mTextBox;
         std::string mText;
         std::string mNewText;
 
         // Used for choice input
         ExtendedListBox *mItemList;
-        gcn::ScrollArea *mListScrollArea;
+        ScrollArea *mListScrollArea;
         StringVect mItems;
         std::vector<Image *> mImages;
         ItemLinkHandler *mItemLinkHandler;

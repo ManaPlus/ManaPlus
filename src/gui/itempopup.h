@@ -30,16 +30,12 @@
 
 #include <guichan/mouselistener.hpp>
 
+class Button;
+class CheckBox;
 class Icon;
 class Label;
+class ScrollArea;
 class TextBox;
-
-namespace gcn
-{
-    class Button;
-    class CheckBox;
-    class ScrollArea;
-}
 
 /**
  * A popup that displays information about an item.

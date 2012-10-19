@@ -30,12 +30,8 @@
 class Button;
 class LoginData;
 class OkDialog;
+class TextField;
 class WrongDataNoticeListener;
-
-namespace gcn
-{
-    class TextField;
-}
 
 /**
  * The Unregister dialog.
@@ -64,7 +60,7 @@ class UnRegisterDialog final : public Window, public gcn::ActionListener
     private:
         LoginData *mLoginData;
 
-        gcn::TextField *mPasswordField;
+        TextField *mPasswordField;
 
         Button *mUnRegisterButton;
         Button *mCancelButton;

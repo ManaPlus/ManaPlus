@@ -35,11 +35,7 @@ class Item;
 class ItemsModal;
 class ItemPopup;
 class Label;
-
-namespace gcn
-{
-    class Slider;
-}
+class Slider;
 
 /**
  * Window used for selecting the amount of items to drop, trade or split.
@@ -114,9 +110,9 @@ class ItemAmountWindow final : public Window,
         /**
          * Item Amount buttons.
          */
-        gcn::Slider *mItemAmountSlide;
+        Slider *mItemAmountSlide;
 
-        gcn::Slider *mItemPriceSlide;
+        Slider *mItemPriceSlide;
 
         DropDown *mItemDropDown;
 

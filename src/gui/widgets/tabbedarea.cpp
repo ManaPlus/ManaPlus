@@ -40,12 +40,10 @@ TabbedArea::TabbedArea() :
     gcn::KeyListener(),
     gcn::MouseListener(),
     gcn::WidgetListener(),
-
     mSelectedTab(nullptr),
     mTabContainer(new gcn::Container()),
     mWidgetContainer(new gcn::Container()),
     mOpaque(false),
-
     mTabsWidth(0),
     mVisibleTabsWidth(0),
     mTabScrollIndex(0),
@@ -509,7 +507,7 @@ void TabbedArea::adjustTabPositions()
 
 void TabbedArea::action(const gcn::ActionEvent& actionEvent)
 {
-    Widget *const source = actionEvent.getSource();
+    gcn::Widget *const source = actionEvent.getSource();
     Tab *const tab = dynamic_cast<Tab *const>(source);
 
     if (tab)
@@ -597,7 +595,7 @@ void TabbedArea::removeAll()
     {
         const int idx = getNumberOfTabs() - 1;
         Tab *tab = mTabs[idx].first;
-        Widget *widget = mTabs[idx].second;
+        gcn::Widget *widget = mTabs[idx].second;
         removeTab(tab);
         delete tab;
         delete widget;

@@ -49,8 +49,8 @@
 
 QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     Window(_("Quit"), true, nullptr, "quit.xml"),
-    ActionListener(),
-    KeyListener(),
+    gcn::ActionListener(),
+    gcn::KeyListener(),
     mLogoutQuit(new RadioButton(_("Quit"), "quitdialog")),
     mForceQuit(new RadioButton(_("Quit"), "quitdialog")),
     mSwitchAccountServer(new RadioButton(_("Switch server"), "quitdialog")),

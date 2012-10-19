@@ -46,7 +46,7 @@
 
 HelpWindow::HelpWindow():
     Window(_("Help"), false, nullptr, "help.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mBrowserBox(new BrowserBox),
     mScrollArea(new ScrollArea(mBrowserBox, true, "help_background.xml"))
 {

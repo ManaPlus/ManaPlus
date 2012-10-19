@@ -36,8 +36,6 @@
 
 #include "utils/dtor.h"
 
-#include <guichan/widgets/label.hpp>
-
 #include "debug.h"
 
 int Tab::mInstances = 0;
@@ -66,11 +64,9 @@ Tab::Tab() :
     gcn::BasicContainer(),
     gcn::MouseListener(),
     gcn::WidgetListener(),
-
     mLabel(new Label),
     mHasMouse(false),
     mTabbedArea(nullptr),
-
     mTabColor(&Theme::getThemeColor(Theme::TAB)),
     mTabHighlightedColor(&Theme::getThemeColor(Theme::TAB_HIGHLIGHTED)),
     mTabSelectedColor(&Theme::getThemeColor(Theme::TAB_SELECTED)),

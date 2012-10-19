@@ -49,9 +49,6 @@
 
 #include "debug.h"
 
-// TODO: Add support for adding items to the item shortcut window (global
-// itemShortcut).
-
 static const int BOX_WIDTH = 35;
 static const int BOX_HEIGHT = 43;
 
@@ -156,10 +153,10 @@ class SortItemTypeFunctor final
 
 ItemContainer::ItemContainer(Inventory *const inventory,
                              const bool forceQuantity) :
-    Widget(),
-    KeyListener(),
-    MouseListener(),
-    WidgetListener(),
+    gcn::Widget(),
+    gcn::KeyListener(),
+    gcn::MouseListener(),
+    gcn::WidgetListener(),
     mInventory(inventory),
     mGridColumns(1),
     mGridRows(1),

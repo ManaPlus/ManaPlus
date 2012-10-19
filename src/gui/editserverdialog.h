@@ -37,7 +37,6 @@ class TypeListModel;
 #include <guichan/keylistener.hpp>
 #include <guichan/listmodel.hpp>
 
-
 /**
  * Server Type List Model
  */

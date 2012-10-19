@@ -22,7 +22,7 @@
 #ifndef FLOWCONTAINER_H
 #define FLOWCONTAINER_H
 
-#include "container.h"
+#include "gui/widgets/container.h"
 
 #include <guichan/widgetlistener.hpp>
 

@@ -60,10 +60,10 @@
 namespace gcn
 {
     Button::Button() :
-        Widget(),
-        MouseListener(),
-        KeyListener(),
-        FocusListener(),
+        gcn::Widget(),
+        gcn::MouseListener(),
+        gcn::KeyListener(),
+        gcn::FocusListener(),
         mHasMouse(false),
         mKeyPressed(false),
         mMousePressed(false),
@@ -80,10 +80,10 @@ namespace gcn
     }
 
     Button::Button(const std::string& caption) :
-        Widget(),
-        MouseListener(),
-        KeyListener(),
-        FocusListener(),
+        gcn::Widget(),
+        gcn::MouseListener(),
+        gcn::KeyListener(),
+        gcn::FocusListener(),
         mCaption(caption),
         mHasMouse(false),
         mKeyPressed(false),

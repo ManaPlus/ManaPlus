@@ -46,7 +46,7 @@
 
 ChangePasswordDialog::ChangePasswordDialog(LoginData *const data):
     Window(_("Change Password"), true, nullptr, "changepassword.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mOldPassField(new PasswordField),
     mFirstPassField(new PasswordField),
     mSecondPassField(new PasswordField),

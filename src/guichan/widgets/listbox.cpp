@@ -61,9 +61,9 @@
 namespace gcn
 {
     ListBox::ListBox() :
-        Widget(),
-        MouseListener(),
-        KeyListener(),
+        gcn::Widget(),
+        gcn::MouseListener(),
+        gcn::KeyListener(),
         mSelected(-1),
         mListModel(nullptr),
         mWrappingEnabled(false)
@@ -76,9 +76,9 @@ namespace gcn
     }
 
     ListBox::ListBox(ListModel *listModel) :
-        Widget(),
-        MouseListener(),
-        KeyListener(),
+        gcn::Widget(),
+        gcn::MouseListener(),
+        gcn::KeyListener(),
         mSelected(-1),
         mListModel(listModel),
         mWrappingEnabled(false)
@@ -191,7 +191,7 @@ namespace gcn
     {
         mWrappingEnabled = wrappingEnabled;
     }
-        
+
     void ListBox::addSelectionListener(SelectionListener* selectionListener)
     {
         mSelectionListeners.push_back(selectionListener);

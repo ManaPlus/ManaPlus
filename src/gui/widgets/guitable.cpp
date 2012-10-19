@@ -62,7 +62,7 @@ protected:
 GuiTableActionListener::GuiTableActionListener(GuiTable *table,
                                                gcn::Widget *widget, int row,
                                                int column) :
-    ActionListener(),
+    gcn::ActionListener(),
     mTable(table),
     mRow(row),
     mColumn(column),

@@ -38,7 +38,6 @@
 #include "keyboardconfig.h"
 
 #include <guichan/font.hpp>
-#include <guichan/widgets/label.hpp>
 
 #include "debug.h"
 

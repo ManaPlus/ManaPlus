@@ -37,12 +37,8 @@ class Label;
 class ListBox;
 class ModeListModel;
 class OpenGLListModel;
+class Slider;
 class TextDialog;
-
-namespace gcn
-{
-    class Slider;
-}
 
 class Setup_Video final : public SetupTab, public gcn::KeyListener
 {
@@ -86,9 +82,9 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
         CheckBox *mNoFrameCheckBox;
 
         CheckBox *mFpsCheckBox;
-        gcn::Slider *mFpsSlider;
+        Slider *mFpsSlider;
         Label *mFpsLabel;
-        gcn::Slider *mAltFpsSlider;
+        Slider *mAltFpsSlider;
         Label *mAltFpsLabel;
 
         Button *mDetectButton;

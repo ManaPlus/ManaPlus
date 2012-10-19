@@ -32,11 +32,7 @@ class Button;
 class BrowserBox;
 class CheckBox;
 class LinkHandler;
-
-namespace gcn
-{
-    class ScrollArea;
-}
+class ScrollArea;
 
 /**
  * The help dialog.
@@ -72,7 +68,7 @@ class DidYouKnowWindow final : public Window,
         void loadFile(const int num);
 
         BrowserBox *mBrowserBox;
-        gcn::ScrollArea *mScrollArea;
+        ScrollArea *mScrollArea;
         Button *mButtonPrev;
         Button *mButtonNext;
         CheckBox *mOpenAgainCheckBox;

@@ -25,9 +25,6 @@
 
 #include <guichan/basiccontainer.hpp>
 #include <guichan/mouselistener.hpp>
-
-#include <guichan/widgets/label.hpp>
-
 #include <guichan/widgetlistener.hpp>
 
 #include "localconsts.h"

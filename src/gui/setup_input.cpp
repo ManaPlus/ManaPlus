@@ -123,7 +123,7 @@ Setup_Input::Setup_Input() :
 
     ScrollArea *const scrollArea = new ScrollArea(mKeyList,
         true, "setup_input_background.xml");
-    scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    scrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mAssignKeyButton->addActionListener(this);
     mAssignKeyButton->setEnabled(false);

@@ -30,7 +30,7 @@
 #include "debug.h"
 
 Icon::Icon(const std::string &file) :
-    Widget(),
+    gcn::Widget(),
     mImage(ResourceManager::getInstance()->getImage(file))
 {
     if (mImage)
@@ -38,7 +38,7 @@ Icon::Icon(const std::string &file) :
 }
 
 Icon::Icon(Image *const image) :
-    Widget(),
+    gcn::Widget(),
     mImage(image)
 {
     if (mImage)

@@ -40,7 +40,7 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
                    const bool showCenter, Window *const parent,
                    const int minWidth) :
     Window(title, modal, parent, "ok.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mTextBox(new TextBox)
 {
     mTextBox->setEditable(false);

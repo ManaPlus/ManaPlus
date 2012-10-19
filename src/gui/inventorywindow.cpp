@@ -91,9 +91,9 @@ InventoryWindow::WindowList InventoryWindow::instances;
 
 InventoryWindow::InventoryWindow(Inventory *const inventory):
     Window("Inventory", false, nullptr, "inventory.xml"),
-    ActionListener(),
-    KeyListener(),
-    SelectionListener(),
+    gcn::ActionListener(),
+    gcn::KeyListener(),
+    gcn::SelectionListener(),
     InventoryListener(),
     mInventory(inventory),
     mUseButton(nullptr),

@@ -30,12 +30,8 @@
 class Button;
 class LoginData;
 class OkDialog;
+class TextField;
 class WrongDataNoticeListener;
-
-namespace gcn
-{
-    class TextField;
-}
 
 /**
  * The Change password dialog.
@@ -65,9 +61,9 @@ class ChangePasswordDialog final : public Window, public gcn::ActionListener
         void action(const gcn::ActionEvent &event) override;
 
     private:
-        gcn::TextField *mOldPassField;
-        gcn::TextField *mFirstPassField;
-        gcn::TextField *mSecondPassField;
+        TextField *mOldPassField;
+        TextField *mFirstPassField;
+        TextField *mSecondPassField;
 
         Button *mChangePassButton;
         Button *mCancelButton;

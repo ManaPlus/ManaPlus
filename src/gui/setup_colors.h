@@ -32,14 +32,10 @@
 class BrowserBox;
 class Label;
 class ListBox;
+class ScrollArea;
+class Slider;
 class TextField;
 class TextPreview;
-
-namespace gcn
-{
-    class ScrollArea;
-    class Slider;
-}
 
 class Setup_Colors final : public SetupTab,
                            public gcn::SelectionListener
@@ -63,36 +59,36 @@ class Setup_Colors final : public SetupTab,
         static const std::string rawmsg;
 
         ListBox *mColorBox;
-        gcn::ScrollArea *mScroll;
+        ScrollArea *mScroll;
         BrowserBox *mPreview;
         TextPreview *mTextPreview;
-        gcn::ScrollArea *mPreviewBox;
+        ScrollArea *mPreviewBox;
         int mSelected;
 
         Label *mGradTypeLabel;
-        gcn::Slider *mGradTypeSlider;
+        Slider *mGradTypeSlider;
         Label *mGradTypeText;
 
         Label *mGradDelayLabel;
-        gcn::Slider *mGradDelaySlider;
+        Slider *mGradDelaySlider;
         TextField *mGradDelayText;
 
         Label *mRedLabel;
-        gcn::Slider *mRedSlider;
+        Slider *mRedSlider;
         TextField *mRedText;
         int mRedValue;
 
         Label *mGreenLabel;
-        gcn::Slider *mGreenSlider;
+        Slider *mGreenSlider;
         TextField *mGreenText;
         int mGreenValue;
 
         Label *mBlueLabel;
-        gcn::Slider *mBlueSlider;
+        Slider *mBlueSlider;
         TextField *mBlueText;
         int mBlueValue;
 
-        static void setEntry(gcn::Slider *const s, TextField *const t,
+        static void setEntry(Slider *const s, TextField *const t,
                              const int value);
         void updateColor();
         void updateGradType();

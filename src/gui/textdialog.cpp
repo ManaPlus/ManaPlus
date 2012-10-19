@@ -39,7 +39,7 @@ int TextDialog::instances = 0;
 TextDialog::TextDialog(const std::string &title, const std::string &msg,
                        Window *const parent, const bool isPassword):
     Window(title, true, parent, "textdialog.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mTextField(nullptr),
     mPasswordField(nullptr),
     mOkButton(new Button(_("OK"), "OK", this)),

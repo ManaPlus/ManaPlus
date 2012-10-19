@@ -244,9 +244,9 @@ private:
 ServerDialog::ServerDialog(ServerInfo *const serverInfo,
                            const std::string &dir) :
     Window(_("Choose Your Server"), false, nullptr, "server.xml"),
-    ActionListener(),
-    KeyListener(),
-    SelectionListener(),
+    gcn::ActionListener(),
+    gcn::KeyListener(),
+    gcn::SelectionListener(),
     mDescription(new Label(std::string())),
     mQuitButton(new Button(_("Quit"), "quit", this)),
     mConnectButton(new Button(_("Connect"), "connect", this)),

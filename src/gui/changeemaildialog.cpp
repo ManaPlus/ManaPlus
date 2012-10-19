@@ -45,7 +45,7 @@
 
 ChangeEmailDialog::ChangeEmailDialog(LoginData *const data):
     Window(_("Change Email Address"), true, nullptr, "changeemail.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mFirstEmailField(new TextField),
     mSecondEmailField(new TextField),
     mChangeEmailButton(new Button(_("Change Email Address"),

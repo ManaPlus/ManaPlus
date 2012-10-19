@@ -55,8 +55,6 @@
 #include <guichan/key.hpp>
 #include <guichan/listmodel.hpp>
 
-#include <guichan/widgets/button.hpp>
-
 #include <SDL.h>
 
 #include <algorithm>
@@ -223,7 +221,7 @@ public:
 
 Setup_Video::Setup_Video() :
     SetupTab(),
-    KeyListener(),
+    gcn::KeyListener(),
     mFullScreenEnabled(config.getBoolValue("screen")),
     mOpenGLEnabled(config.getIntValue("opengl")),
     mCustomCursorEnabled(config.getBoolValue("customcursor")),

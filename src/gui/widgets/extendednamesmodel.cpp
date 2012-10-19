@@ -24,7 +24,6 @@
 
 #include "utils/gettext.h"
 
-#include <guichan/exception.hpp>
 #include <guichan/font.hpp>
 
 #include "debug.h"

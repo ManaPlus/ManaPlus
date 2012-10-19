@@ -56,8 +56,8 @@
 namespace gcn
 {
     ScrollArea::ScrollArea() :
-        BasicContainer(),
-        MouseListener(),
+        gcn::BasicContainer(),
+        gcn::MouseListener(),
         mVScroll(0),
         mHScroll(0),
         mScrollbarWidth(12),
@@ -83,8 +83,8 @@ namespace gcn
     }
 
     ScrollArea::ScrollArea(Widget *const content) :
-        BasicContainer(),
-        MouseListener(),
+        gcn::BasicContainer(),
+        gcn::MouseListener(),
         mVScroll(0),
         mHScroll(0),
         mScrollbarWidth(12),
@@ -113,8 +113,8 @@ namespace gcn
     ScrollArea::ScrollArea(Widget *content,
                            ScrollPolicy hPolicy,
                            ScrollPolicy vPolicy) :
-        BasicContainer(),
-        MouseListener(),
+        gcn::BasicContainer(),
+        gcn::MouseListener(),
         mVScroll(0),
         mHScroll(0),
         mScrollbarWidth(12),

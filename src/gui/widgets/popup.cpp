@@ -38,8 +38,8 @@
 
 Popup::Popup(const std::string &name, std::string skin) :
     Container(),
-    MouseListener(),
-    WidgetListener(),
+    gcn::MouseListener(),
+    gcn::WidgetListener(),
     mPopupName(name),
     mMinWidth(100),
     mMinHeight(40),

@@ -30,8 +30,6 @@
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
-#include <guichan/widgets/label.hpp>
-
 #include "debug.h"
 
 ProgressIndicator::ProgressIndicator() :

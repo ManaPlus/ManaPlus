@@ -49,7 +49,7 @@ static const int maxTip = 16;
 
 DidYouKnowWindow::DidYouKnowWindow():
     Window(_("Did You Know?"), false, nullptr, "didyouknow.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mBrowserBox(new BrowserBox),
     mScrollArea(new ScrollArea(mBrowserBox,
         true, "didyouknow_background.xml")),

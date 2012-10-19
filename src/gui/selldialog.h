@@ -33,14 +33,10 @@
 class Button;
 class Item;
 class Label;
+class ScrollArea;
 class ShopItems;
 class ShopListBox;
-
-namespace gcn
-{
-    class ScrollArea;
-    class Slider;
-}
+class Slider;
 
 /**
  * The sell dialog.
@@ -136,10 +132,10 @@ class SellDialog final : public Window,
         Button *mIncreaseButton;
         Button *mDecreaseButton;
         ShopListBox *mShopItemList;
-        gcn::ScrollArea *mScrollArea;
+        ScrollArea *mScrollArea;
         Label *mMoneyLabel;
         Label *mQuantityLabel;
-        gcn::Slider *mSlider;
+        Slider *mSlider;
 
         ShopItems *mShopItems;
         int mPlayerMoney;

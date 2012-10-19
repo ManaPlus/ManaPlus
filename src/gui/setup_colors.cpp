@@ -50,7 +50,7 @@ const std::string Setup_Colors::rawmsg =
 
 Setup_Colors::Setup_Colors() :
     SetupTab(),
-    SelectionListener(),
+    gcn::SelectionListener(),
     mColorBox(new ListBox(userPalette)),
     mScroll(new ScrollArea(mColorBox, true, "setup_colors_background.xml")),
     mPreview(new BrowserBox(BrowserBox::AUTO_WRAP)),
@@ -340,7 +340,7 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
     mGradTypeSlider->setEnabled(true);
 }
 
-void Setup_Colors::setEntry(gcn::Slider *const s, TextField *const t,
+void Setup_Colors::setEntry(Slider *const s, TextField *const t,
                             const int value)
 {
     if (s)

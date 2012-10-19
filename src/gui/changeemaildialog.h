@@ -30,12 +30,8 @@
 class Button;
 class LoginData;
 class OkDialog;
+class TextField;
 class WrongDataNoticeListener;
-
-namespace gcn
-{
-    class TextField;
-}
 
 /**
  * The Change email dialog.
@@ -71,8 +67,8 @@ class ChangeEmailDialog final : public Window, public gcn::ActionListener
         static void setEmail(std::string *email);
 
     private:
-        gcn::TextField *mFirstEmailField;
-        gcn::TextField *mSecondEmailField;
+        TextField *mFirstEmailField;
+        TextField *mSecondEmailField;
 
         Button *mChangeEmailButton;
         Button *mCancelButton;

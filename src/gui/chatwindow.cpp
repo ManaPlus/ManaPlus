@@ -78,7 +78,7 @@ class ChatInput final : public TextField, public gcn::FocusListener
     public:
         ChatInput(ChatWindow *const window, TabbedArea *const tabs):
             TextField("", false),
-            FocusListener(),
+            gcn::FocusListener(),
             mWindow(window),
             mChatTabs(tabs)
         {
@@ -157,8 +157,8 @@ static const char *const ACTION_COLOR_PICKER = "color picker";
 
 ChatWindow::ChatWindow():
     Window(_("Chat"), false, nullptr, "chat.xml"),
-    ActionListener(),
-    KeyListener(),
+    gcn::ActionListener(),
+    gcn::KeyListener(),
     mItemLinkHandler(new ItemLinkHandler),
     mChatTabs(new TabbedArea),
     mChatInput(new ChatInput(this, mChatTabs)),

@@ -40,7 +40,7 @@
 
 Desktop::Desktop() :
     Container(),
-    WidgetListener(),
+    gcn::WidgetListener(),
     mWallpaper(nullptr),
     mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND, 128)),
     mBackgroundGrayColor(Theme::getThemeColor(Theme::BACKGROUND_GRAY))

@@ -127,7 +127,7 @@ class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
 StatusWindow::StatusWindow() :
     Window(player_node ? player_node->getName() :
         "?", false, nullptr, "status.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mLvlLabel(new Label(strprintf(_("Level: %d"), 0))),
     mMoneyLabel(new Label(strprintf(_("Money: %s"), ""))),
     mHpLabel(new Label(_("HP:"))),
@@ -795,7 +795,7 @@ DerDisplay::DerDisplay(const int id, const std::string &name) :
 
 ChangeDisplay::ChangeDisplay(const int id, const std::string &name) :
     AttrDisplay(id, name),
-    ActionListener(),
+    gcn::ActionListener(),
     mNeeded(1),
     mPoints(new Label(_("Max"))),
     mDec(nullptr),

@@ -252,7 +252,7 @@ class LoginListener final : public gcn::ActionListener
 Client *Client::mInstance = nullptr;
 
 Client::Client(const Options &options) :
-    ActionListener(),
+    gcn::ActionListener(),
     mOptions(options),
     mServerConfigDir(""),
     mUsersDir(""),

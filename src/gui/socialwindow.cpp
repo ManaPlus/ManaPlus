@@ -138,7 +138,7 @@ class SocialGuildTab final : public SocialTab, public gcn::ActionListener
 public:
     SocialGuildTab(Guild *const guild, const bool showBackground) :
         SocialTab(),
-        ActionListener(),
+        gcn::ActionListener(),
         mGuild(guild)
     {
         setCaption(_("Guild"));
@@ -244,7 +244,7 @@ class SocialGuildTab2 final : public SocialTab, public gcn::ActionListener
 public:
     SocialGuildTab2(Guild *const guild, const bool showBackground) :
         SocialTab(),
-        ActionListener(),
+        gcn::ActionListener(),
         mGuild(guild)
     {
         setCaption(_("Guild"));
@@ -306,7 +306,7 @@ class SocialPartyTab final : public SocialTab, public gcn::ActionListener
 public:
     SocialPartyTab(Party *const party, const bool showBackground) :
         SocialTab(),
-        ActionListener(),
+        gcn::ActionListener(),
         mParty(party)
     {
         setCaption(_("Party"));
@@ -1218,7 +1218,7 @@ private:
 
 SocialWindow::SocialWindow() :
     Window(_("Social"), false, nullptr, "social.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mGuildInvited(0),
     mGuildAcceptDialog(nullptr),
     mGuildCreateDialog(nullptr),

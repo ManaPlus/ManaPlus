@@ -51,7 +51,7 @@ extern Window *statusWindow;
 
 Setup::Setup():
     Window(_("Setup"), false, nullptr, "setup.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mResetWindows(nullptr),
     mPanel(new TabbedArea)
 {

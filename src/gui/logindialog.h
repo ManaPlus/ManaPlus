@@ -37,13 +37,9 @@ class CheckBox;
 class DropDown;
 class Label;
 class LoginData;
+class TextField;
 class UpdateListModel;
 class UpdateTypeModel;
-
-namespace gcn
-{
-    class TextField;
-}
 
 /**
  * The login dialog.
@@ -88,8 +84,8 @@ class LoginDialog final : public Window, public gcn::ActionListener,
 
         LoginData *mLoginData;
 
-        gcn::TextField *mUserField;
-        gcn::TextField *mPassField;
+        TextField *mUserField;
+        TextField *mPassField;
         CheckBox *mKeepCheck;
         Label *mUpdateTypeLabel;
         Label *mUpdateHostLabel;
@@ -99,7 +95,7 @@ class LoginDialog final : public Window, public gcn::ActionListener,
         Button *mLoginButton;
         Button *mRegisterButton;
         CheckBox *mCustomUpdateHost;
-        gcn::TextField *mUpdateHostText;
+        TextField *mUpdateHostText;
         UpdateListModel *mUpdateListModel;
         DropDown *mUpdateHostDropDown;
 

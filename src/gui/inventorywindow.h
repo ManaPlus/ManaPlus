@@ -39,16 +39,12 @@ class Button;
 class DropDown;
 class Item;
 class ItemContainer;
-class TabStrip;
+class Label;
 class LayoutCell;
 class ProgressBar;
 class SortListModel;
+class TabStrip;
 class TextField;
-
-namespace gcn
-{
-    class Label;
-}
 
 /**
  * Inventory dialog.

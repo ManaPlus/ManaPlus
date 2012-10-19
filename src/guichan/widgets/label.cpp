@@ -57,13 +57,13 @@
 namespace gcn
 {
     Label::Label() :
-        Widget(),
+        gcn::Widget(),
         mAlignment(Graphics::LEFT)
     {
     }
 
     Label::Label(const std::string& caption) :
-        Widget(),
+        gcn::Widget(),
         mCaption(caption),
         mAlignment(Graphics::LEFT)
     {

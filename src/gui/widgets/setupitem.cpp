@@ -50,7 +50,7 @@
 SetupItem::SetupItem(std::string text, std::string description,
                      std::string keyName, SetupTabScroll *const parent,
                      std::string eventName, const bool mainConfig) :
-    ActionListener(),
+    gcn::ActionListener(),
     mText(text),
     mDescription(description),
     mKeyName(keyName),
@@ -69,7 +69,7 @@ SetupItem::SetupItem(std::string text, std::string description,
                      std::string keyName, SetupTabScroll *const parent,
                      std::string eventName, std::string def,
                      const bool mainConfig) :
-    ActionListener(),
+    gcn::ActionListener(),
     mText(text),
     mDescription(description),
     mKeyName(keyName),

@@ -34,11 +34,7 @@ class Button;
 class LoginData;
 class OkDialog;
 class RadioButton;
-
-namespace gcn
-{
-    class TextField;
-}
+class TextField;
 
 /**
  * Listener used while dealing with wrong data. It is used to direct the focus
@@ -52,11 +48,11 @@ class WrongDataNoticeListener final : public gcn::ActionListener
 
         A_DELETE_COPY(WrongDataNoticeListener)
 
-        void setTarget(gcn::TextField *const textField);
+        void setTarget(TextField *const textField);
 
         void action(const gcn::ActionEvent &event) override;
     private:
-        gcn::TextField *mTarget;
+        TextField *mTarget;
 };
 
 /**
@@ -102,10 +98,10 @@ class RegisterDialog final : public Window, public gcn::ActionListener,
 
         LoginData *mLoginData;
 
-        gcn::TextField *mUserField;
-        gcn::TextField *mPasswordField;
-        gcn::TextField *mConfirmField;
-        gcn::TextField *mEmailField;
+        TextField *mUserField;
+        TextField *mPasswordField;
+        TextField *mConfirmField;
+        TextField *mEmailField;
         Button *mRegisterButton;
         Button *mCancelButton;
         RadioButton *mMaleButton;

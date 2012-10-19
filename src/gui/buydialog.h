@@ -34,12 +34,8 @@ class ShopListBox;
 class IntTextField;
 class Label;
 class ListBox;
-
-namespace gcn
-{
-    class ScrollArea;
-    class Slider;
-}
+class ScrollArea;
+class Slider;
 
 /**
  * The buy dialog.
@@ -135,10 +131,10 @@ class BuyDialog final : public Window, public gcn::ActionListener,
         Button *mIncreaseButton;
         Button *mDecreaseButton;
         ShopListBox *mShopItemList;
-        gcn::ScrollArea *mScrollArea;
+        ScrollArea *mScrollArea;
         Label *mMoneyLabel;
         Label *mQuantityLabel;
-        gcn::Slider *mSlider;
+        Slider *mSlider;
         Label *mAmountLabel;
         IntTextField *mAmountField;
 

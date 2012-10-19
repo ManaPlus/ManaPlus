@@ -53,7 +53,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
                                  Being *const being,
                                  const bool foring):
     Window(_("Equipment"), false, nullptr, "equipment.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mEquipment(equipment),
     mItemPopup(new ItemPopup),
     mPlayerBox(new PlayerBox("equipment_playerbox.xml")),

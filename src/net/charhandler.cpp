@@ -25,7 +25,8 @@
 
 #include "debug.h"
 
-using namespace Net;
+namespace Net
+{
 
 void CharHandler::updateCharSelectDialog()
 {
@@ -37,4 +38,6 @@ void CharHandler::unlockCharSelectDialog()
 {
     if (mCharSelectDialog)
         mCharSelectDialog->unlock();
+}
+
 }

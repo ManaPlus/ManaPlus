@@ -45,12 +45,12 @@
 #include "debug.h"
 
 WrongDataNoticeListener::WrongDataNoticeListener():
-    ActionListener(),
+    gcn::ActionListener(),
     mTarget(nullptr)
 {
 }
 
-void WrongDataNoticeListener::setTarget(gcn::TextField *const textField)
+void WrongDataNoticeListener::setTarget(TextField *const textField)
 {
     mTarget = textField;
 }
@@ -63,8 +63,8 @@ void WrongDataNoticeListener::action(const gcn::ActionEvent &event)
 
 RegisterDialog::RegisterDialog(LoginData *const data):
     Window(_("Register"), false, nullptr, "register.xml"),
-    ActionListener(),
-    KeyListener(),
+    gcn::ActionListener(),
+    gcn::KeyListener(),
     mLoginData(data),
     mUserField(new TextField(mLoginData->username)),
     mPasswordField(new PasswordField(mLoginData->password)),

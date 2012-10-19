@@ -165,7 +165,7 @@ public:
 
 TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     Window(_("Command Editor"), false, nullptr, "commandeditor.xml"),
-    ActionListener(),
+    gcn::ActionListener(),
     mIsMagicCommand(command->getCommandType() == TEXT_COMMAND_MAGIC),
     mCommand(command),
     mIsMagic(new RadioButton(_("magic"), "magic", mIsMagicCommand)),
