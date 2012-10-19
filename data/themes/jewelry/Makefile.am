@@ -27,6 +27,7 @@ gui_DATA =				\
 	itempopup.xml		\
 	items.xml		\
 	LICENSE.txt		\
+	listbox.xml		\
 	map.xml		\
 	mouse.png		\
 	npc.xml		\
