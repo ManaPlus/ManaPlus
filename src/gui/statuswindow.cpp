@@ -171,13 +171,13 @@ StatusWindow::StatusWindow() :
     if (!max)
         max = 1;
 
-    mHpBar = new ProgressBar(max ?
+    mHpBar = new ProgressBar(this, max ?
             static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::HP))
             / static_cast<float>(max):
             static_cast<float>(0), 80, 0, Theme::PROG_HP);
 
     max = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
-    mXpBar = new ProgressBar(max ?
+    mXpBar = new ProgressBar(this, max ?
             static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::EXP))
             / static_cast<float>(max):
             static_cast<float>(0), 80, 0, Theme::PROG_EXP);
@@ -190,7 +190,7 @@ StatusWindow::StatusWindow() :
     {
         max = PlayerInfo::getAttribute(PlayerInfo::MAX_MP);
         mMpLabel = new Label(this, _("MP:"));
-        mMpBar = new ProgressBar(max ? static_cast<float>(
+        mMpBar = new ProgressBar(this, max ? static_cast<float>(
             PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
             / static_cast<float>(max) : static_cast<float>(0),
             80, 0, Net::getPlayerHandler()->canUseMagic() ?
@@ -223,7 +223,7 @@ StatusWindow::StatusWindow() :
     {
         mJobLvlLabel = new Label(this, strprintf(_("Job: %d"), 0));
         mJobLabel = new Label(this, _("Job:"));
-        mJobBar = new ProgressBar(0.0f, 80, 0, Theme::PROG_JOB);
+        mJobBar = new ProgressBar(this, 0.0f, 80, 0, Theme::PROG_JOB);
 
         place(5, 0, mJobLvlLabel, 3);
         place(5, 2, mJobLabel).setPadding(3);

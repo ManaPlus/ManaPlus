@@ -40,11 +40,11 @@
 int ProgressBar::mInstances = 0;
 float ProgressBar::mAlpha = 1.0;
 
-ProgressBar::ProgressBar(float progress,
+ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
                          const int width, const int height,
                          const int color):
     gcn::Widget(),
-    Widget2(),
+    Widget2(widget),
     gcn::WidgetListener(),
     mProgress(progress),
     mProgressToGo(progress),

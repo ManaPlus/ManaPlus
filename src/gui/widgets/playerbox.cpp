@@ -36,8 +36,8 @@
 #include "debug.h"
 
 PlayerBox::PlayerBox(Being *const being, const std::string &skin) :
-    ScrollArea(),
     Widget2(),
+    ScrollArea(),
     mBeing(being),
     mAlpha(1.0),
     mSkin(nullptr),

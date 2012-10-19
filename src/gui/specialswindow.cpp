@@ -239,7 +239,7 @@ SpecialEntry::SpecialEntry(SpecialInfo *const info) :
             progress = static_cast<float>(info->rechargeCurrent)
                 / static_cast<float>(info->rechargeNeeded);
         }
-        mRechargeBar = new ProgressBar(progress, 100, 0, Theme::PROG_MP);
+        mRechargeBar = new ProgressBar(this, progress, 100, 0, Theme::PROG_MP);
         mRechargeBar->setSmoothProgress(false);
         mRechargeBar->setPosition(0, 13);
         add(mRechargeBar);

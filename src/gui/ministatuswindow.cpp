@@ -139,7 +139,8 @@ ProgressBar *MiniStatusWindow::createBar(const float progress,
                                          const int color, std::string name,
                                          std::string description)
 {
-    ProgressBar *const bar = new ProgressBar(progress, width, height, color);
+    ProgressBar *const bar = new ProgressBar(this,
+        progress, width, height, color);
     bar->setActionEventId(name);
     bar->setId(description);
     mBars.push_back(bar);

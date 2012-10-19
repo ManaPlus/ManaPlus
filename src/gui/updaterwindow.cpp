@@ -159,7 +159,7 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mLabel(new Label(this, _("Connecting..."))),
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mPlayButton(new Button(this, _("Play"), "play", this)),
-    mProgressBar(new ProgressBar(0.0, 310, 0)),
+    mProgressBar(new ProgressBar(this, 0.0, 310, 0)),
     mBrowserBox(new BrowserBox(this)),
     mScrollArea(new ScrollArea(mBrowserBox, true, "update_background.xml")),
     mUpdateServerPath(mUpdateHost)
