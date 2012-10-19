@@ -42,11 +42,12 @@ int CheckBox::instances = 0;
 Skin *CheckBox::mSkin = nullptr;
 float CheckBox::mAlpha = 1.0;
 
-CheckBox::CheckBox(const std::string &caption, const bool selected,
+CheckBox::CheckBox(const Widget2 *const widget,
+                   const std::string &caption, const bool selected,
                    gcn::ActionListener *const listener,
                    const std::string &eventId) :
     gcn::CheckBox(caption, selected),
-    Widget2(),
+    Widget2(widget),
     mHasMouse(false),
     mPadding(0),
     mImagePadding(0),

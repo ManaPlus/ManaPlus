@@ -45,10 +45,10 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     SetupTab(widget),
     mCalibrateLabel(new Label(_("Press the button to start calibration"))),
     mCalibrateButton(new Button(this, _("Calibrate"), "calibrate", this)),
-    mJoystickEnabled(new CheckBox(_("Enable joystick"))),
+    mJoystickEnabled(new CheckBox(this, _("Enable joystick"))),
     mNamesModel(new NamesModel()),
     mNamesDropDown(new DropDown(this, mNamesModel)),
-    mUseInactiveCheckBox(new CheckBox(_("Use joystick if client "
+    mUseInactiveCheckBox(new CheckBox(this, _("Use joystick if client "
         "window inactive"), config.getBoolValue("useInactiveJoystick")))
 {
     setName(_("Joystick"));

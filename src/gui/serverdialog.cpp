@@ -269,9 +269,10 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
 
     setWindowName("ServerDialog");
 
-    mPersistentIPCheckBox = new CheckBox(_("Use same ip for game sub servers"),
-                                       config.getBoolValue("usePersistentIP"),
-                                       this, "persitent ip");
+    mPersistentIPCheckBox = new CheckBox(this,
+        _("Use same ip for game sub servers"),
+        config.getBoolValue("usePersistentIP"),
+        this, "persitent ip");
 
     loadCustomServers();
 

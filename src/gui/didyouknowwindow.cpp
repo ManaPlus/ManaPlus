@@ -55,7 +55,7 @@ DidYouKnowWindow::DidYouKnowWindow():
         true, "didyouknow_background.xml")),
     mButtonPrev(new Button(this, _("< Previous"), "prev", this)),
     mButtonNext(new Button(this, _("Next >"), "next", this)),
-    mOpenAgainCheckBox(new CheckBox(_("Auto open this window"),
+    mOpenAgainCheckBox(new CheckBox(this, _("Auto open this window"),
         config.getBoolValue("showDidYouKnow"), this, "openagain"))
 {
     setMinWidth(300);

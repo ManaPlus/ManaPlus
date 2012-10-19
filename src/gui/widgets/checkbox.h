@@ -44,7 +44,8 @@ class CheckBox final : public gcn::CheckBox,
         /**
          * Constructor.
          */
-        CheckBox(const std::string &caption, bool selected = false,
+        CheckBox(const Widget2 *const widget,
+                 const std::string &caption, bool selected = false,
                  gcn::ActionListener *const listener = nullptr,
                  const std::string &eventId = "");
 

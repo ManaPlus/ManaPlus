@@ -209,7 +209,7 @@ SetupItemCheckBox::~SetupItemCheckBox()
 void SetupItemCheckBox::createControls()
 {
     load();
-    mCheckBox = new CheckBox(mText, mValue != "0", mParent, mEventName);
+    mCheckBox = new CheckBox(this, mText, mValue != "0", mParent, mEventName);
     mWidget = mCheckBox;
     mParent->getContainer()->add1(mWidget);
     mParent->addControl(this);

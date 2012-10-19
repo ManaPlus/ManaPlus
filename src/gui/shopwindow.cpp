@@ -94,7 +94,7 @@ ShopWindow::ShopWindow():
     mSellDeleteButton(new Button(this, _("Delete"), "delete sell", this)),
     mSellAnnounceButton(new Button(this, _("Announce"), "announce sell", this)),
     mSellAuctionButton(nullptr),
-    mAnnounceLinks(new CheckBox(_("Show links in announce"), false,
+    mAnnounceLinks(new CheckBox(this, _("Show links in announce"), false,
                    this, "link announce")),
     mSelectedItem(-1),
     mAnnonceTime(0),

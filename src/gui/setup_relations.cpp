@@ -243,9 +243,9 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mPlayerTable(new GuiTable(mPlayerTableModel)),
     mPlayerTitleTable(new GuiTable(mPlayerTableTitleModel)),
     mPlayerScrollArea(new ScrollArea(mPlayerTable)),
-    mDefaultTrading(new CheckBox(_("Allow trading"),
+    mDefaultTrading(new CheckBox(this, _("Allow trading"),
                 player_relations.getDefault() & PlayerRelation::TRADE)),
-    mDefaultWhisper(new CheckBox(_("Allow whispers"),
+    mDefaultWhisper(new CheckBox(this, _("Allow whispers"),
                 player_relations.getDefault() & PlayerRelation::WHISPER)),
     mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE, this))
 {
