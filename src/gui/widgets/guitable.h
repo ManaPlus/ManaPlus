@@ -55,7 +55,8 @@ class GuiTable final : public gcn::Widget,
     friend class GuiTableActionListener;
 
 public:
-    GuiTable(TableModel *const initial_model = nullptr,
+    GuiTable(const Widget2 *const widget,
+             TableModel *const initial_model = nullptr,
              const bool opacity = true);
 
     A_DELETE_COPY(GuiTable)

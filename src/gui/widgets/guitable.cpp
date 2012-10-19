@@ -92,9 +92,10 @@ void GuiTableActionListener::action(const gcn::ActionEvent
 }
 
 
-GuiTable::GuiTable(TableModel *const initial_model, const bool opacity) :
+GuiTable::GuiTable(const Widget2 *const widget,
+                   TableModel *const initial_model, const bool opacity) :
     gcn::Widget(),
-    Widget2(),
+    Widget2(widget),
     gcn::MouseListener(),
     gcn::KeyListener(),
     mLinewiseMode(false),

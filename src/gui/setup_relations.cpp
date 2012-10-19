@@ -241,7 +241,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
     mPlayerTableModel(new PlayerTableModel(this)),
     mPlayerTable(new GuiTable(mPlayerTableModel)),
-    mPlayerTitleTable(new GuiTable(mPlayerTableTitleModel)),
+    mPlayerTitleTable(new GuiTable(this, mPlayerTableTitleModel)),
     mPlayerScrollArea(new ScrollArea(mPlayerTable)),
     mDefaultTrading(new CheckBox(this, _("Allow trading"),
                 player_relations.getDefault() & PlayerRelation::TRADE)),
