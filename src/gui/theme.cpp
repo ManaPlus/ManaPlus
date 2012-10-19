@@ -47,6 +47,8 @@ std::string Theme::mThemePath;
 std::string Theme::mThemeName;
 Theme *Theme::mInstance = nullptr;
 
+static const int THEME_PALETTES = 5;
+
 // Set the theme path...
 static void initDefaultThemePath()
 {
@@ -172,7 +174,7 @@ int Skin::getMinHeight() const
 }
 
 Theme::Theme():
-    Palette(THEME_COLORS_END),
+    Palette(THEME_COLORS_END * THEME_PALETTES),
     mMinimumOpacity(-1.0f),
     mProgressColors(ProgressColors(THEME_PROG_END))
 {
@@ -908,31 +910,43 @@ void Theme::loadColors(std::string file)
     gcn::Color color;
     GradientType grad;
 
-    for_each_xml_child_node(node, root)
+    for_each_xml_child_node(paletteNode, root)
     {
-        if (xmlNameEqual(node, "color"))
+        if (xmlNameEqual(paletteNode, "progressbar"))
         {
-            type = readColorType(XML::getProperty(node, "id", ""));
+            type = readProgressType(XML::getProperty(paletteNode, "id", ""));
             if (type < 0) // invalid or no type given
                 continue;
 
-            temp = XML::getProperty(node, "color", "");
-            if (temp.empty()) // no color set, so move on
-                continue;
-
-            color = readColor(temp);
-            grad = readColorGradient(XML::getProperty(node, "effect", ""));
-
-            mColors[type].set(type, color, grad, 10);
+            mProgressColors[type] = new DyePalette(XML::getProperty(
+                paletteNode, "color", ""), 6);
         }
-        else if (xmlNameEqual(node, "progressbar"))
+        else if (!xmlNameEqual(paletteNode, "palette"))
         {
-            type = readProgressType(XML::getProperty(node, "id", ""));
-            if (type < 0) // invalid or no type given
-                continue;
+            continue;
+        }
 
-            mProgressColors[type] = new DyePalette(XML::getProperty(node,
-                                                   "color", ""), 6);
+        int paletteId = XML::getProperty(paletteNode, "id", 1);
+        if (paletteId < 1 || paletteId > THEME_PALETTES)
+            continue;
+
+        for_each_xml_child_node(node, paletteNode)
+        {
+            if (xmlNameEqual(node, "color"))
+            {
+                type = readColorType(XML::getProperty(node, "id", ""));
+                if (type < 0) // invalid or no type given
+                    continue;
+
+                temp = XML::getProperty(node, "color", "");
+                if (temp.empty()) // no color set, so move on
+                    continue;
+
+                color = readColor(temp);
+                grad = readColorGradient(XML::getProperty(node, "effect", ""));
+
+                mColors[type * paletteId].set(type, color, grad, 10);
+            }
         }
     }
 }
