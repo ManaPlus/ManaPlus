@@ -45,9 +45,10 @@
 
 #include "debug.h"
 
-BrowserBox::BrowserBox(const unsigned int mode, const bool opaque) :
+BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
+                       const bool opaque) :
     gcn::Widget(),
-    Widget2(),
+    Widget2(widget),
     gcn::MouseListener(),
     mLinkHandler(nullptr),
     mMode(mode),

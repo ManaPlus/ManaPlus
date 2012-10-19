@@ -94,7 +94,7 @@ QuestsWindow::QuestsWindow() :
     mQuestScrollArea(new ScrollArea(mQuestsListBox,
         getOptionBool("showlistbackground"), "quests_list_background.xml")),
     mItemLinkHandler(new ItemLinkHandler),
-    mText(new BrowserBox(BrowserBox::AUTO_WRAP)),
+    mText(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
     mTextScrollArea(new ScrollArea(mText,
         getOptionBool("showtextbackground"), "quests_text_background.xml")),
     mCloseButton(new Button(_("Close"), "close", this)),

@@ -47,7 +47,7 @@
 HelpWindow::HelpWindow():
     Window(_("Help"), false, nullptr, "help.xml"),
     gcn::ActionListener(),
-    mBrowserBox(new BrowserBox),
+    mBrowserBox(new BrowserBox(this)),
     mScrollArea(new ScrollArea(mBrowserBox, true, "help_background.xml"))
 {
     setMinWidth(300);

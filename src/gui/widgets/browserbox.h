@@ -84,7 +84,8 @@ class BrowserBox final : public gcn::Widget,
         /**
          * Constructor.
          */
-        BrowserBox(const unsigned int mode = AUTO_SIZE,
+        BrowserBox(const Widget2 *const widget,
+                   const unsigned int mode = AUTO_SIZE,
                    const bool opaque = true);
 
         A_DELETE_COPY(BrowserBox)

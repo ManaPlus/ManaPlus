@@ -51,7 +51,7 @@ static const unsigned int MAX_WORD_SIZE = 50;
 
 ChatTab::ChatTab(const Widget2 *const widget, const std::string &name) :
     Tab(widget),
-    mTextOutput(new BrowserBox(BrowserBox::AUTO_WRAP)),
+    mTextOutput(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
     mScrollArea(new ScrollArea(mTextOutput, false)),
     mAllowHightlight(true),
     mRemoveNames(false),

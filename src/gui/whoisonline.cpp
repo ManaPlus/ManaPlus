@@ -102,7 +102,7 @@ WhoIsOnline::WhoIsOnline():
     mUpdateButton->setEnabled(false);
     mUpdateButton->setDimension(gcn::Rectangle(5, 5, w - 10, 20 + 5));
 
-    mBrowserBox = new BrowserBox;
+    mBrowserBox = new BrowserBox(this);
     mScrollArea = new ScrollArea(mBrowserBox, false);
     mBrowserBox->setOpaque(false);
     mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);

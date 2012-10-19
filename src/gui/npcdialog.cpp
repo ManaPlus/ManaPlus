@@ -66,7 +66,7 @@ NpcDialog::NpcDialog(const int npcId) :
     mNpcId(npcId),
     mLogInteraction(config.getBoolValue("logNpcInGui")),
     mDefaultInt(0),
-    mTextBox(new BrowserBox(BrowserBox::AUTO_WRAP)),
+    mTextBox(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
     mScrollArea(new ScrollArea(mTextBox,
         getOptionBool("showtextbackground"), "npc_textbackground.xml")),
     mItemList(new ExtendedListBox(this, this)),
