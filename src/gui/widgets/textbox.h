@@ -43,7 +43,7 @@ class TextBox final : public gcn::TextBox,
         /**
          * Constructor.
          */
-        TextBox();
+        TextBox(const Widget2 *const widget);
 
         A_DELETE_COPY(TextBox)
 

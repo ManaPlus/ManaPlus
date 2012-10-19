@@ -41,7 +41,7 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
                    const int minWidth) :
     Window(title, modal, parent, "ok.xml"),
     gcn::ActionListener(),
-    mTextBox(new TextBox)
+    mTextBox(new TextBox(this))
 {
     mTextBox->setEditable(false);
     mTextBox->setOpaque(false);

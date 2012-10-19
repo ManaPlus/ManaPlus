@@ -40,7 +40,7 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
                              Window *const parent):
     Window(title, modal, parent, "confirm.xml"),
     gcn::ActionListener(),
-    mTextBox(new TextBox)
+    mTextBox(new TextBox(this))
 {
     mTextBox->setEditable(false);
     mTextBox->setOpaque(false);

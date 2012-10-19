@@ -33,9 +33,9 @@
 
 #include "debug.h"
 
-TextBox::TextBox() :
+TextBox::TextBox(const Widget2 *const widget) :
     gcn::TextBox(),
-    Widget2(),
+    Widget2(widget),
     mMinWidth(getWidth())
 {
     mForegroundColor = getThemeColor(Theme::TEXTBOX);

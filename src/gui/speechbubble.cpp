@@ -36,7 +36,7 @@
 SpeechBubble::SpeechBubble() :
     Popup("Speech", "speechbubble.xml"),
     mCaption(new Label(this)),
-    mSpeechBox(new TextBox)
+    mSpeechBox(new TextBox(this))
 {
     setContentSize(140, 46);
     setMinWidth(29);

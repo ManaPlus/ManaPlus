@@ -48,9 +48,9 @@
 ItemPopup::ItemPopup() :
     Popup("ItemPopup", "itempopup.xml"),
     mItemName(new Label(this)),
-    mItemDesc(new TextBox),
-    mItemEffect(new TextBox),
-    mItemWeight(new TextBox),
+    mItemDesc(new TextBox(this)),
+    mItemEffect(new TextBox(this)),
+    mItemWeight(new TextBox(this)),
     mIcon(new Icon(this, nullptr)),
     mLastName(""),
     mLastColor(1)

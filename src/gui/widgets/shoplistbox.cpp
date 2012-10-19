@@ -45,7 +45,7 @@ const int ITEM_ICON_SIZE = 32;
 float ShopListBox::mAlpha = 1.0;
 
 ShopListBox::ShopListBox(const Widget2 *const widget,
-    gcn::ListModel *const listModel) :
+                         gcn::ListModel *const listModel) :
     ListBox(widget, listModel),
     mPlayerMoney(0),
     mShopItems(nullptr),
