@@ -65,7 +65,8 @@ class ItemContainer final : public gcn::Widget,
          * @param gridRows    Amount of rows in grid.
          * @param offset      Index offset
          */
-        ItemContainer(Inventory *const inventory,
+        ItemContainer(const Widget2 *const widget,
+                      Inventory *const inventory,
                       const bool forceQuantity = false);
 
         A_DELETE_COPY(ItemContainer)

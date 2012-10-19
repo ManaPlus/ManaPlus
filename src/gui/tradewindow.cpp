@@ -65,8 +65,8 @@ TradeWindow::TradeWindow():
     gcn::SelectionListener(),
     mMyInventory(new Inventory(Inventory::TRADE)),
     mPartnerInventory(new Inventory(Inventory::TRADE)),
-    mMyItemContainer(new ItemContainer(mMyInventory.get())),
-    mPartnerItemContainer(new ItemContainer(mPartnerInventory.get())),
+    mMyItemContainer(new ItemContainer(this, mMyInventory.get())),
+    mPartnerItemContainer(new ItemContainer(this, mPartnerInventory.get())),
     mMoneyLabel(new Label(strprintf(_("You get %s"), ""))),
     mAddButton(new Button(this, _("Add"), "add", this)),
     mOkButton(new Button(this, "", "", this)), // Will be filled in later

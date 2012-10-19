@@ -144,7 +144,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     setMinHeight(179);
     addKeyListener(this);
 
-    mItems = new ItemContainer(mInventory);
+    mItems = new ItemContainer(this, mInventory);
     mItems->addSelectionListener(this);
 
     gcn::ScrollArea *const invenScroll = new ScrollArea(
