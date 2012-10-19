@@ -45,6 +45,7 @@ int ListBox::mInstances = 0;
 
 ListBox::ListBox(gcn::ListModel *const listModel):
     gcn::ListBox(listModel),
+    Widget2(),
     mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
     mDistributeMousePressed(true),
     mOldSelected(-1),

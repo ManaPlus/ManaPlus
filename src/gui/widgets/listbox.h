@@ -23,6 +23,8 @@
 #ifndef LISTBOX_H
 #define LISTBOX_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/listbox.hpp>
 
 #include "localconsts.h"
@@ -37,7 +39,8 @@ class Skin;
  *
  * \ingroup GUI
  */
-class ListBox : public gcn::ListBox
+class ListBox : public gcn::ListBox,
+                public Widget2
 {
     public:
         /**

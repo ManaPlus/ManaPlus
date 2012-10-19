@@ -62,6 +62,7 @@ Skin *Tab::tabImg[TAB_COUNT];
 
 Tab::Tab() :
     gcn::BasicContainer(),
+    Widget2(),
     gcn::MouseListener(),
     gcn::WidgetListener(),
     mLabel(new Label),

@@ -23,6 +23,8 @@
 #ifndef TAB_H
 #define TAB_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/basiccontainer.hpp>
 #include <guichan/mouselistener.hpp>
 #include <guichan/widgetlistener.hpp>
@@ -37,10 +39,10 @@ class TabbedArea;
 class Theme;
 
 /**
- * A tab, the same as the Guichan tab in 0.8, but extended to allow
- * transparency.
+ * A tab, the same as the Guichan tab in 0.8, but extended
  */
 class Tab : public gcn::BasicContainer,
+            public Widget2,
             public gcn::MouseListener,
             public gcn::WidgetListener
 {

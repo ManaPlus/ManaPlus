@@ -23,6 +23,8 @@
 #ifndef ICON_H
 #define ICON_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widget.hpp>
 
 #include "localconsts.h"
@@ -34,7 +36,8 @@ class Image;
  *
  * \ingroup GUI
  */
-class Icon final : public gcn::Widget
+class Icon final : public gcn::Widget,
+                   public Widget2
 {
     public:
         /**

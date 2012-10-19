@@ -32,6 +32,7 @@ float ShortcutContainer::mAlpha = 1.0;
 
 ShortcutContainer::ShortcutContainer() :
     gcn::Widget(),
+    Widget2(),
     gcn::WidgetListener(),
     gcn::MouseListener(),
     mBackgroundImg(nullptr),

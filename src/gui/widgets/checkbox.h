@@ -23,6 +23,8 @@
 #ifndef CHECKBOX_H
 #define CHECKBOX_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/checkbox.hpp>
 
 #include "localconsts.h"
@@ -35,7 +37,8 @@ class Skin;
  *
  * \ingroup GUI
  */
-class CheckBox final : public gcn::CheckBox
+class CheckBox final : public gcn::CheckBox,
+                       public Widget2
 {
     public:
         /**

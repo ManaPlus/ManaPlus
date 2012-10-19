@@ -23,6 +23,8 @@
 #ifndef GUI_CONTAINER_H
 #define GUI_CONTAINER_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widget.hpp>
 #include <guichan/widgets/container.hpp>
 
@@ -39,7 +41,8 @@ typedef std::list<gcn::Widget *>::const_iterator WidgetListConstIterator;
  *
  * This container is also non-opaque by default.
  */
-class Container : public gcn::Container
+class Container : public gcn::Container,
+                  public Widget2
 {
     public:
         Container();

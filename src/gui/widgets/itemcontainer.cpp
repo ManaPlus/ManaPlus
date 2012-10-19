@@ -154,6 +154,7 @@ class SortItemTypeFunctor final
 ItemContainer::ItemContainer(Inventory *const inventory,
                              const bool forceQuantity) :
     gcn::Widget(),
+    Widget2(),
     gcn::KeyListener(),
     gcn::MouseListener(),
     gcn::WidgetListener(),

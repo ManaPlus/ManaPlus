@@ -50,6 +50,7 @@ int Window::mouseResize = 0;
 Window::Window(const std::string &caption, const bool modal,
                Window *const parent, std::string skin) :
     gcn::Window(caption),
+    Widget2(),
     gcn::WidgetListener(),
     mSkin(nullptr),
     mGrip(nullptr),

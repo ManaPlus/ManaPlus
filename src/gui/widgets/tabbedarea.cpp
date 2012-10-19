@@ -35,6 +35,7 @@
 #include "debug.h"
 
 TabbedArea::TabbedArea() :
+    Widget2(),
     gcn::ActionListener(),
     gcn::BasicContainer(),
     gcn::KeyListener(),

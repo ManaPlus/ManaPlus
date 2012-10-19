@@ -23,6 +23,8 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/button.hpp>
 #include <guichan/mouseevent.hpp>
 #include <guichan/widgetlistener.hpp>
@@ -42,7 +44,9 @@ const std::string BUTTON_PLAY = "buttonplay.png";
  *
  * \ingroup GUI
  */
-class Button final : public gcn::Button, public gcn::WidgetListener
+class Button final : public gcn::Button,
+                     public Widget2,
+                     public gcn::WidgetListener
 {
     public:
         /**

@@ -23,11 +23,12 @@
 #ifndef SHORTCUTCONTAINER_H
 #define SHORTCUTCONTAINER_H
 
+#include "gui/widgets/tab.h"
+#include "gui/widgets/widget2.h"
+
 #include <guichan/mouselistener.hpp>
 #include <guichan/widget.hpp>
 #include <guichan/widgetlistener.hpp>
-
-#include "gui/widgets/tab.h"
 
 class Image;
 
@@ -37,6 +38,7 @@ class Image;
  * \ingroup GUI
  */
 class ShortcutContainer : public gcn::Widget,
+                          public Widget2,
                           public gcn::WidgetListener,
                           public gcn::MouseListener
 {

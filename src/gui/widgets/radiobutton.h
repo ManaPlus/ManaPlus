@@ -23,6 +23,8 @@
 #ifndef RADIOBUTTON_H
 #define RADIOBUTTON_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/radiobutton.hpp>
 
 #include "localconsts.h"
@@ -33,7 +35,8 @@ class Skin;
 /**
  * Guichan based RadioButton with custom look
  */
-class RadioButton final : public gcn::RadioButton
+class RadioButton final : public gcn::RadioButton,
+                          public Widget2
 {
     public:
         /**

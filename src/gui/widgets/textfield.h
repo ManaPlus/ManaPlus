@@ -23,6 +23,8 @@
 #ifndef TEXTFIELD_H
 #define TEXTFIELD_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/textfield.hpp>
 
 #include "localconsts.h"
@@ -35,7 +37,8 @@ class TextField;
  *
  * \ingroup GUI
  */
-class TextField : public gcn::TextField
+class TextField : public gcn::TextField,
+                  public Widget2
 {
     public:
         /**

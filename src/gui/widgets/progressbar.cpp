@@ -44,6 +44,7 @@ ProgressBar::ProgressBar(float progress,
                          const int width, const int height,
                          const int color):
     gcn::Widget(),
+    Widget2(),
     gcn::WidgetListener(),
     mProgress(progress),
     mProgressToGo(progress),

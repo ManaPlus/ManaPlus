@@ -26,6 +26,8 @@
 #include "graphics.h"
 #include "localconsts.h"
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgetlistener.hpp>
 
 #include <guichan/widgets/window.hpp>
@@ -44,7 +46,9 @@ class WindowContainer;
  *
  * \ingroup GUI
  */
-class Window : public gcn::Window, private gcn::WidgetListener
+class Window : public gcn::Window,
+               public Widget2,
+               private gcn::WidgetListener
 {
     public:
         /**

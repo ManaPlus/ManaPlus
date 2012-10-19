@@ -23,6 +23,8 @@
 #ifndef SLIDER_H
 #define SLIDER_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/slider.hpp>
 
 #include "localconsts.h"
@@ -35,7 +37,8 @@ class ImageRect;
  *
  * \ingroup GUI
  */
-class Slider final : public gcn::Slider
+class Slider final : public gcn::Slider,
+                     public Widget2
 {
     public:
         /**

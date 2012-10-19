@@ -23,6 +23,8 @@
 #ifndef ITEMCONTAINER_H
 #define ITEMCONTAINER_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/keylistener.hpp>
 #include <guichan/mouselistener.hpp>
 #include <guichan/widget.hpp>
@@ -49,6 +51,7 @@ namespace gcn
  * \ingroup GUI
  */
 class ItemContainer final : public gcn::Widget,
+                            public Widget2,
                             public gcn::KeyListener,
                             public gcn::MouseListener,
                             public gcn::WidgetListener

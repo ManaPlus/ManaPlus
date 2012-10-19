@@ -23,11 +23,12 @@
 #ifndef PROGRESSBAR_H
 #define PROGRESSBAR_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widget.hpp>
+#include <guichan/widgetlistener.hpp>
 
 #include <string>
-
-#include <guichan/widgetlistener.hpp>
 
 #include "localconsts.h"
 
@@ -41,7 +42,9 @@ class Skin;
  *
  * \ingroup GUI
  */
-class ProgressBar final : public gcn::Widget, public gcn::WidgetListener
+class ProgressBar final : public gcn::Widget,
+                          public Widget2,
+                          public gcn::WidgetListener
 {
     public:
         /**

@@ -147,6 +147,7 @@ Button::Button(const std::string &imageName,
                const std::string &actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(""),
+    Widget2(),
     gcn::WidgetListener(),
     mDescription(""),
     mClickCount(0),

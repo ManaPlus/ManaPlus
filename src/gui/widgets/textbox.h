@@ -23,6 +23,8 @@
 #ifndef TEXTBOX_H
 #define TEXTBOX_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/textbox.hpp>
 
 #include "localconsts.h"
@@ -34,7 +36,8 @@
  *
  * \ingroup GUI
  */
-class TextBox final : public gcn::TextBox
+class TextBox final : public gcn::TextBox,
+                      public Widget2
 {
     public:
         /**

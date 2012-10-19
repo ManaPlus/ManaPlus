@@ -23,6 +23,8 @@
 #ifndef TABBEDAREA_H
 #define TABBEDAREA_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/actionlistener.hpp>
 #include <guichan/widget.hpp>
 #include <guichan/widgetlistener.hpp>
@@ -37,7 +39,8 @@ class Tab;
 /**
  * A tabbed area, the same as the guichan tabbed area in 0.8, but extended
  */
-class TabbedArea final : public gcn::ActionListener,
+class TabbedArea final : public Widget2,
+                         public gcn::ActionListener,
                          public gcn::BasicContainer,
                          public gcn::KeyListener,
                          public gcn::MouseListener,

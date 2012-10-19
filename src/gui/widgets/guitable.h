@@ -26,6 +26,7 @@
 #include "localconsts.h"
 
 #include "gui/widgets/tablemodel.h"
+#include "gui/widgets/widget2.h"
 
 #include <guichan/keylistener.hpp>
 #include <guichan/mouselistener.hpp>
@@ -45,6 +46,7 @@ class GuiTableActionListener;
  * \ingroup GUI
  */
 class GuiTable final : public gcn::Widget,
+                       public Widget2,
                        public gcn::MouseListener,
                        public gcn::KeyListener,
                        public TableModelListener

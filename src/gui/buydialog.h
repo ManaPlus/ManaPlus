@@ -42,7 +42,8 @@ class Slider;
  *
  * \ingroup Interface
  */
-class BuyDialog final : public Window, public gcn::ActionListener,
+class BuyDialog final : public Window,
+                        public gcn::ActionListener,
                         public gcn::SelectionListener
 {
     public:

@@ -51,6 +51,7 @@ TextField::TextField(const std::string &text, const bool loseFocusOnTab,
                      gcn::ActionListener *const listener, std::string eventId,
                      const bool sendAlwaysEvents):
     gcn::TextField(text),
+    Widget2(),
     mSendAlwaysEvents(sendAlwaysEvents),
     mNumeric(false),
     mMinimum(0),

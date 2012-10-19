@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,33 +18,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/container.h"
+#include "gui/widgets/widget2.h"
 
 #include "debug.h"
 
-Container::Container() :
-    gcn::Container(),
-    Widget2()
+Widget2::Widget2()
 {
-    setOpaque(false);
 }
 
-Container::~Container()
+Widget2::~Widget2()
 {
-    while (!mWidgets.empty())
-        delete mWidgets.front();
-}
-
-bool Container::safeRemove(gcn::Widget *const widget)
-{
-    for (WidgetListConstIterator iter = mWidgets.begin();
-         iter != mWidgets.end(); ++iter)
-    {
-        if (*iter == widget)
-        {
-            remove(widget);
-            return true;
-        }
-    }
-    return false;
 }

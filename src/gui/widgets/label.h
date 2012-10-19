@@ -22,6 +22,8 @@
 #ifndef LABEL_H
 #define LABEL_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/label.hpp>
 
 #include "localconsts.h"
@@ -34,7 +36,7 @@ class Skin;
  *
  * \ingroup GUI
  */
-class Label final : public gcn::Label
+class Label final : public gcn::Label, public Widget2
 {
     public:
         /**

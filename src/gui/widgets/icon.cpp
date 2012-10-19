@@ -31,6 +31,7 @@
 
 Icon::Icon(const std::string &file) :
     gcn::Widget(),
+    Widget2(),
     mImage(ResourceManager::getInstance()->getImage(file))
 {
     if (mImage)

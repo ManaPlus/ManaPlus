@@ -23,6 +23,8 @@
 #ifndef TEXTPREVIEW_H
 #define TEXTPREVIEW_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/color.hpp>
 #include <guichan/font.hpp>
 #include <guichan/widget.hpp>
@@ -32,7 +34,8 @@
 /**
  * Preview widget for particle colors, etc.
  */
-class TextPreview final : public gcn::Widget
+class TextPreview final : public gcn::Widget,
+                          public Widget2
 {
     public:
         TextPreview(const std::string &text);

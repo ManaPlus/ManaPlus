@@ -46,6 +46,7 @@ CheckBox::CheckBox(const std::string &caption, const bool selected,
                    gcn::ActionListener *const listener,
                    const std::string &eventId) :
     gcn::CheckBox(caption, selected),
+    Widget2(),
     mHasMouse(false),
     mPadding(0),
     mImagePadding(0),

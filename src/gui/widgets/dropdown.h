@@ -23,6 +23,8 @@
 #ifndef DROPDOWN_H
 #define DROPDOWN_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/dropdown.hpp>
 
 #include "localconsts.h"
@@ -38,7 +40,8 @@ class Skin;
  * DropDown you must give DropDown an implemented ListModel which represents
  * your list.
  */
-class DropDown final : public gcn::DropDown
+class DropDown final : public gcn::DropDown,
+                       public Widget2
 {
     public:
         /**

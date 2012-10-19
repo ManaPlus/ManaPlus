@@ -220,6 +220,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/vertcontainer.h \
 	      gui/widgets/whispertab.cpp \
 	      gui/widgets/whispertab.h \
+	      gui/widgets/widget2.cpp \
+	      gui/widgets/widget2.h \
 	      gui/widgets/widgetgroup.cpp \
 	      gui/widgets/widgetgroup.h \
 	      gui/widgets/window.cpp \

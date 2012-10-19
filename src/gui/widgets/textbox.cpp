@@ -35,6 +35,7 @@
 
 TextBox::TextBox() :
     gcn::TextBox(),
+    Widget2(),
     mMinWidth(getWidth())
 {
     mForegroundColor = Theme::getThemeColor(Theme::TEXTBOX);

@@ -23,6 +23,8 @@
 #ifndef PLAYERBOX_H
 #define PLAYERBOX_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/scrollarea.hpp>
 
 #include "graphics.h"
@@ -38,7 +40,8 @@ class Skin;
  *
  * \ingroup GUI
  */
-class PlayerBox final : public gcn::ScrollArea
+class PlayerBox final : public gcn::ScrollArea,
+                        public Widget2
 {
     public:
         /**

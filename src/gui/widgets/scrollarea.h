@@ -23,6 +23,8 @@
 #ifndef SCROLLAREA_H
 #define SCROLLAREA_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/widgets/scrollarea.hpp>
 #include <guichan/widgetlistener.hpp>
 
@@ -41,7 +43,9 @@ class ImageRect;
  *
  * \ingroup GUI
  */
-class ScrollArea final : public gcn::ScrollArea, public gcn::WidgetListener
+class ScrollArea final : public gcn::ScrollArea,
+                         public Widget2,
+                         public gcn::WidgetListener
 {
     public:
         /**

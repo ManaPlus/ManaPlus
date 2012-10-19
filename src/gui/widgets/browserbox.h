@@ -24,6 +24,8 @@
 #ifndef BROWSERBOX_H
 #define BROWSERBOX_H
 
+#include "gui/widgets/widget2.h"
+
 #include <guichan/mouselistener.hpp>
 #include <guichan/widget.hpp>
 
@@ -75,6 +77,7 @@ class LinePart final
  * parent conteiner.
  */
 class BrowserBox final : public gcn::Widget,
+                         public Widget2,
                          public gcn::MouseListener
 {
     public:

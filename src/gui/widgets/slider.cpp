@@ -45,6 +45,7 @@ static std::string const data[2] =
 
 Slider::Slider(const double scaleEnd) :
     gcn::Slider(scaleEnd),
+    Widget2(),
     mHasMouse(false)
 {
     init();
@@ -52,6 +53,7 @@ Slider::Slider(const double scaleEnd) :
 
 Slider::Slider(const double scaleStart, const double scaleEnd) :
     gcn::Slider(scaleStart, scaleEnd),
+    Widget2(),
     mHasMouse(false)
 {
     init();
