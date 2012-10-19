@@ -62,8 +62,6 @@ TabbedArea::TabbedArea() :
     add(mTabContainer);
     add(mWidgetContainer);
 
-
-
     mWidgetContainer->setOpaque(false);
     addWidgetListener(this);
 
@@ -170,7 +168,6 @@ void TabbedArea::addTab(Tab* tab, gcn::Widget* widget)
     if (!tab || !widget)
         return;
 
-
     tab->setTabbedArea(this);
     tab->addActionListener(this);
 
@@ -182,8 +179,6 @@ void TabbedArea::addTab(Tab* tab, gcn::Widget* widget)
 
     adjustTabPositions();
     adjustSize();
-
-
 
     const int frameSize = 2 * getFrameSize();
     widget->setSize(getWidth() - frameSize,
@@ -374,25 +369,25 @@ void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
     if (w)
     {
         int newScroll = 0;
-        ScrollArea* scr = nullptr;
-        if (mFollowDownScroll && height != 0)
+        ScrollArea* scr = dynamic_cast<ScrollArea*>(w);
+        if (scr)
         {
-            const gcn::Rectangle rect = w->getDimension();
-            if (rect.height != 0 && rect.height > height + 2)
+            if (mFollowDownScroll && height != 0)
             {
-                scr = dynamic_cast<ScrollArea*>(w);
-                if (scr && scr->getVerticalScrollAmount()
-                    >= scr->getVerticalMaxScroll() - 2
-                    && scr->getVerticalScrollAmount()
-                    <= scr->getVerticalMaxScroll() + 2)
+                const gcn::Rectangle rect = w->getDimension();
+                if (rect.height != 0 && rect.height > height + 2)
                 {
-                    newScroll = scr->getVerticalScrollAmount()
-                        + rect.height - height;
+                    if (scr && scr->getVerticalScrollAmount()
+                        >= scr->getVerticalMaxScroll() - 2
+                        && scr->getVerticalScrollAmount()
+                        <= scr->getVerticalMaxScroll() + 2)
+                    {
+                        newScroll = scr->getVerticalScrollAmount()
+                            + rect.height - height;
+                    }
                 }
             }
         }
-        w->setSize(mWidgetContainer->getWidth(),
-            mWidgetContainer->getHeight());
         if (scr && newScroll)
             scr->setVerticalScrollAmount(newScroll);
     }
@@ -463,6 +458,16 @@ void TabbedArea::adjustSize()
 
     mWidgetContainer->setPosition(0, maxTabHeight);
     mWidgetContainer->setSize(getWidth(), getHeight() - maxTabHeight);
+    gcn::Widget *const w = getCurrentWidget();
+    if (w)
+    {
+        const int wFrameSize = w->getFrameSize();
+        const int frame2 = 2 * wFrameSize;
+
+        w->setPosition(wFrameSize, wFrameSize);
+        w->setSize(mWidgetContainer->getWidth() - frame2,
+            mWidgetContainer->getHeight() - frame2);
+    }
 }
 
 void TabbedArea::adjustTabPositions()
