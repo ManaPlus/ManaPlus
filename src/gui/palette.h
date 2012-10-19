@@ -69,6 +69,8 @@ class Palette
          */
         const gcn::Color &getCharColor(const signed char c, bool &valid);
 
+        int getIdByChar(const signed char c, bool &valid);
+
         /**
          * Gets the color associated with the type. Sets the alpha channel
          * before returning.

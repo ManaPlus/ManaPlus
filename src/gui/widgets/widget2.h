@@ -21,12 +21,43 @@
 #ifndef GUI_WIDGET2_H
 #define GUI_WIDGET2_H
 
+#include "gui/theme.h"
+
 class Widget2
 {
     public:
-        Widget2();
+        Widget2()
+        {
+        }
 
-        ~Widget2();
+        ~Widget2()
+        {
+        }
+
+        inline const gcn::Color &getThemeColor(const int type,
+                                               const int alpha = 255)
+        {
+            return Theme::getThemeColor(type * mPalette, alpha);
+        }
+
+        inline const gcn::Color &getThemeCharColor(const signed char c,
+                                                   bool &valid)
+        {
+            const int colorId = Theme::getIdByChar(c, valid);
+            if (valid)
+                return Theme::getThemeColor(colorId * mPalette);
+            else
+                return Palette::BLACK;
+        }
+
+        void setPalette(int p)
+        {
+            if (p >= 1 && p <= THEME_PALETTES)
+                mPalette = p;
+        }
+
+    private:
+        int mPalette;
 };
 
 #endif

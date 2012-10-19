@@ -499,7 +499,7 @@ int BrowserBox::calcHeight()
                     const signed char c = row.at(start + 2);
 
                     bool valid;
-                    const gcn::Color col = Theme::getThemeColor(c, valid);
+                    const gcn::Color col = Theme::getThemeCharColor(c, valid);
 
                     if (c == '>')
                     {

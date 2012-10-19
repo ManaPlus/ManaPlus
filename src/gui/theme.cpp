@@ -47,8 +47,6 @@ std::string Theme::mThemePath;
 std::string Theme::mThemeName;
 Theme *Theme::mInstance = nullptr;
 
-static const int THEME_PALETTES = 5;
-
 // Set the theme path...
 static void initDefaultThemePath()
 {

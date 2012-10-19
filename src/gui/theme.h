@@ -39,6 +39,8 @@ class Image;
 class ImageSet;
 class ProgressBar;
 
+const int THEME_PALETTES = 5;
+
 struct ThemeInfo final
 {
     std::string name;
@@ -293,6 +295,9 @@ class Theme final : public Palette, public ConfigListener
         static const gcn::Color &getThemeCharColor(const signed char c,
                                                bool &valid)
         { return mInstance->getCharColor(c, valid); }
+
+        static int getIdByChar(const signed char c, bool &valid)
+        { return mInstance->getIdByChar(c, valid); }
 
         static gcn::Color getProgressColor(const int type,
                                            const float progress);
