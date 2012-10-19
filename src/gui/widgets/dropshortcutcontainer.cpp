@@ -81,6 +81,13 @@ DropShortcutContainer::~DropShortcutContainer()
     mItemPopup = nullptr;
 }
 
+void DropShortcutContainer::setWidget2(const Widget2 *const widget)
+{
+    Widget2::setWidget2(widget);
+    mEquipedColor = getThemeColor(Theme::ITEM_EQUIPPED);
+    mUnEquipedColor = getThemeColor(Theme::ITEM_NOT_EQUIPPED);
+}
+
 void DropShortcutContainer::draw(gcn::Graphics *graphics)
 {
     if (!dropShortcut)

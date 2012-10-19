@@ -92,6 +92,14 @@ ItemShortcutContainer::~ItemShortcutContainer()
     mSpellPopup = nullptr;
 }
 
+void ItemShortcutContainer::setWidget2(const Widget2 *const widget)
+{
+    Widget2::setWidget2(widget);
+    mEquipedColor = getThemeColor(Theme::ITEM_EQUIPPED);
+    mUnEquipedColor = getThemeColor(Theme::ITEM_NOT_EQUIPPED);
+    mForegroundColor = getThemeColor(Theme::TEXT);
+}
+
 void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 {
     const ItemShortcut *const selShortcut = itemShortcut[mNumber];

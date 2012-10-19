@@ -84,6 +84,12 @@ SpellShortcutContainer::~SpellShortcutContainer()
     mSpellPopup = nullptr;
 }
 
+void SpellShortcutContainer::setWidget2(const Widget2 *const widget)
+{
+    Widget2::setWidget2(widget);
+    mForegroundColor = getThemeColor(Theme::TEXT);
+}
+
 void SpellShortcutContainer::draw(gcn::Graphics *graphics)
 {
     if (!spellShortcut)

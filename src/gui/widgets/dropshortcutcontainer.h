@@ -77,6 +77,8 @@ class DropShortcutContainer final : public ShortcutContainer
 
         void mouseMoved(gcn::MouseEvent &event) override;
 
+        void setWidget2(const Widget2 *const widget);
+
     private:
         bool mItemClicked;
         Item *mItemMoved;

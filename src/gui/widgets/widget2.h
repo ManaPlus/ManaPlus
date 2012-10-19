@@ -36,7 +36,7 @@ class Widget2
         {
         }
 
-        ~Widget2()
+        virtual ~Widget2()
         {
         }
 
@@ -56,7 +56,7 @@ class Widget2
                 return Palette::BLACK;
         }
 
-        void setWidget2(const Widget2 *const widget)
+        virtual void setWidget2(const Widget2 *const widget)
         {
             mPalette = widget ? widget->mPalette : 1;
         }

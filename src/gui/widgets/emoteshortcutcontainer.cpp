@@ -95,6 +95,12 @@ EmoteShortcutContainer::~EmoteShortcutContainer()
     }
 }
 
+void EmoteShortcutContainer::setWidget2(const Widget2 *const widget)
+{
+    Widget2::setWidget2(widget);
+    mForegroundColor = getThemeColor(Theme::TEXT);
+}
+
 void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
 {
     if (!emoteShortcut)

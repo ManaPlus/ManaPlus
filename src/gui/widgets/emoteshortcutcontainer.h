@@ -78,6 +78,8 @@ class EmoteShortcutContainer final : public ShortcutContainer
 
         void widgetHidden(const gcn::Event &event) override;
 
+        void setWidget2(const Widget2 *const widget);
+
     private:
         std::vector<const EmoteSprite*> mEmoteImg;
 
