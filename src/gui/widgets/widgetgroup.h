@@ -33,7 +33,8 @@ class WidgetGroup : public Container,
                     public gcn::ActionListener
 {
     public:
-        WidgetGroup(const std::string &group, const int height,
+        WidgetGroup(const Widget2 *const widget,
+                    const std::string &group, const int height,
                     const int spacing);
 
         A_DELETE_COPY(WidgetGroup)

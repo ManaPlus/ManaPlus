@@ -57,11 +57,12 @@ static std::string const dropdownFiles[2] =
     "dropdown_pressed.xml"
 };
 
-DropDown::DropDown(gcn::ListModel *const listModel,
+DropDown::DropDown(const Widget2 *const widget,
+                   gcn::ListModel *const listModel,
                    gcn::ActionListener *const listener,
                    const std::string &eventId):
     gcn::DropDown::DropDown(listModel,
-        new ScrollArea, new ListBox(listModel)),
+        new ScrollArea, new ListBox(widget, listModel)),
     mShadowColor(getThemeColor(Theme::DROPDOWN_SHADOW)),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mPadding(1),

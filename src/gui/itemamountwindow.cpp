@@ -198,7 +198,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     if (mUsage == ShopBuyAdd)
     {
         mItemsModal = new ItemsModal;
-        mItemDropDown = new DropDown(mItemsModal);
+        mItemDropDown = new DropDown(this, mItemsModal);
         mItemDropDown->setActionEventId("itemType");
         mItemDropDown->addActionListener(this);
     }

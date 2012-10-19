@@ -31,6 +31,11 @@ class Widget2
         {
         }
 
+        Widget2(const Widget2 *const widget) :
+            mPalette(widget ? widget->mPalette : 1)
+        {
+        }
+
         ~Widget2()
         {
         }

@@ -29,7 +29,8 @@ class ExtendedListBox final : public ListBox
         /**
          * Constructor.
          */
-        ExtendedListBox(gcn::ListModel *const listModel);
+        ExtendedListBox(const Widget2 *const widget,
+                        gcn::ListModel *const listModel);
 
         A_DELETE_COPY(ExtendedListBox)
 

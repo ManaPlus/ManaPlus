@@ -37,7 +37,7 @@
 class SetupTab : public Container, public gcn::ActionListener
 {
     public:
-        SetupTab();
+        SetupTab(const Widget2 *const widget);
 
         A_DELETE_COPY(SetupTab)
 

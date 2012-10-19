@@ -43,9 +43,10 @@ float ListBox::mAlpha = 1.0;
 Skin *ListBox::mSkin = nullptr;
 int ListBox::mInstances = 0;
 
-ListBox::ListBox(gcn::ListModel *const listModel):
+ListBox::ListBox(const Widget2 *const widget,
+                 gcn::ListModel *const listModel) :
     gcn::ListBox(listModel),
-    Widget2(),
+    Widget2(widget),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mDistributeMousePressed(true),
     mOldSelected(-1),

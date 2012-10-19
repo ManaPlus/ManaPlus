@@ -55,7 +55,7 @@
 extern volatile int tick_time;
 
 Viewport::Viewport() :
-    WindowContainer(),
+    WindowContainer(nullptr),
     gcn::MouseListener(),
     mMap(nullptr),
     mScrollRadius(config.getIntValue("ScrollRadius")),

@@ -53,7 +53,7 @@ class ChatTab : public Tab
         /**
          * Constructor.
          */
-        ChatTab(const std::string &name);
+        ChatTab(const Widget2 *const widget, const std::string &name);
 
         A_DELETE_COPY(ChatTab)
 

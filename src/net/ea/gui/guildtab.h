@@ -34,7 +34,7 @@ namespace Ea
 class GuildTab : public ChatTab
 {
     public:
-        GuildTab();
+        GuildTab(const Widget2 *const widget);
 
         A_DELETE_COPY(GuildTab)
 

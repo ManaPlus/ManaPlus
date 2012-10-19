@@ -37,8 +37,8 @@ class DebugTab : public Container
     friend class DebugWindow;
 
     public:
-        DebugTab() :
-            Container()
+        DebugTab(const Widget2 *const widget) :
+            Container(widget)
         { }
 
         A_DELETE_COPY(DebugTab)
@@ -56,7 +56,7 @@ class MapDebugTab final : public DebugTab
     friend class DebugWindow;
 
     public:
-        MapDebugTab();
+        MapDebugTab(const Widget2 *const widget);
 
         A_DELETE_COPY(MapDebugTab)
 
@@ -82,7 +82,7 @@ class TargetDebugTab final : public DebugTab
     friend class DebugWindow;
 
     public:
-        TargetDebugTab();
+        TargetDebugTab(const Widget2 *const widget);
 
         A_DELETE_COPY(TargetDebugTab)
 
@@ -106,7 +106,7 @@ class NetDebugTab final : public DebugTab
     friend class DebugWindow;
 
     public:
-        NetDebugTab();
+        NetDebugTab(const Widget2 *const widget);
 
         A_DELETE_COPY(NetDebugTab)
 

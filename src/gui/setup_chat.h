@@ -33,7 +33,7 @@ class EditDialog;
 class Setup_Chat final : public SetupTabScroll
 {
     public:
-        Setup_Chat();
+        Setup_Chat(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Chat)
 

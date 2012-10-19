@@ -34,7 +34,7 @@ namespace EAthena
 class GuildTab : public Ea::GuildTab
 {
     public:
-        GuildTab();
+        GuildTab(const Widget2 *const widget);
 
         A_DELETE_COPY(GuildTab)
 

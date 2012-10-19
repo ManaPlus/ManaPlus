@@ -41,8 +41,8 @@
 
 namespace TmwAthena
 {
-GuildTab::GuildTab() :
-    Ea::GuildTab()
+GuildTab::GuildTab(const Widget2 *const widget) :
+    Ea::GuildTab(widget)
 {
 }
 

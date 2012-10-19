@@ -39,7 +39,7 @@ class ThemesModel;
 class Setup_Theme final : public SetupTab
 {
     public:
-        Setup_Theme();
+        Setup_Theme(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Theme)
 

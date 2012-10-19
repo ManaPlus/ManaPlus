@@ -109,7 +109,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mSlotsBar(new ProgressBar(0.0f, 100, 0, Theme::PROG_INVY_SLOTS)),
     mFilter(nullptr),
     mSortModel(new SortListModel()),
-    mSortDropDown(new DropDown(mSortModel, this, "sort")),
+    mSortDropDown(new DropDown(this, mSortModel, this, "sort")),
     mNameFilter(new TextField("", true, this, "namefilter", true)),
     mSortDropDownCell(nullptr),
     mNameFilterCell(nullptr),
@@ -152,7 +152,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     invenScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     const int size = config.getIntValue("fontSize");
-    mFilter = new TabStrip("filter_" + getWindowName(), size + 8);
+    mFilter = new TabStrip(this, "filter_" + getWindowName(), size + 8);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
 

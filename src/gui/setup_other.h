@@ -33,7 +33,7 @@ class TextField;
 class Setup_Other final : public SetupTabScroll
 {
     public:
-        Setup_Other();
+        Setup_Other(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Other)
 

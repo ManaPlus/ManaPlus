@@ -49,7 +49,8 @@ namespace gcn
     class ListModel;
 }
 
-class SetupItem : public gcn::ActionListener
+class SetupItem : public gcn::ActionListener,
+                  public Widget2
 {
     public:
         enum

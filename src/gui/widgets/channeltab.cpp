@@ -31,8 +31,8 @@
 
 #include "debug.h"
 
-ChannelTab::ChannelTab(Channel *const channel) :
-    ChatTab(channel->getName()),
+ChannelTab::ChannelTab(const Widget2 *const widget, Channel *const channel) :
+    ChatTab(widget, channel->getName()),
     mChannel(channel)
 {
     channel->setTab(this);

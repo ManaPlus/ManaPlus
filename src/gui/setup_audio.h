@@ -32,7 +32,7 @@
 class Setup_Audio final : public SetupTabScroll
 {
     public:
-        Setup_Audio();
+        Setup_Audio(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Audio)
 

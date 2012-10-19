@@ -46,7 +46,7 @@ class ListBox : public gcn::ListBox,
         /**
          * Constructor.
          */
-        ListBox(gcn::ListModel *const listModel);
+        ListBox(const Widget2 *const widget, gcn::ListModel *const listModel);
 
         A_DELETE_COPY(ListBox)
 

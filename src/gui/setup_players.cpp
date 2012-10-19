@@ -41,8 +41,8 @@
 
 #include "debug.h"
 
-Setup_Players::Setup_Players() :
-    SetupTabScroll()
+Setup_Players::Setup_Players(const Widget2 *const widget) :
+    SetupTabScroll(widget)
 {
     setName(_("Players"));
 

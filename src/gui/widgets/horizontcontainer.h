@@ -36,7 +36,8 @@
 class HorizontContainer final : public Container, public gcn::WidgetListener
 {
     public:
-        HorizontContainer(const int height, const int spacing);
+        HorizontContainer(const Widget2 *const widget,
+                          const int height, const int spacing);
 
         A_DELETE_COPY(HorizontContainer)
 

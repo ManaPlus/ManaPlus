@@ -38,8 +38,9 @@
 
 #include "debug.h"
 
-ExtendedListBox::ExtendedListBox(gcn::ListModel *const listModel):
-    ListBox(listModel),
+ExtendedListBox::ExtendedListBox(const Widget2 *const widget,
+                                 gcn::ListModel *const listModel) :
+    ListBox(widget, listModel),
     mRowHeight(13),
     mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
     mSpacing(mSkin ? mSkin->getOption("spacing") : 0)

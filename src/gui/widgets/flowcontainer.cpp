@@ -23,8 +23,9 @@
 
 #include "debug.h"
 
-FlowContainer::FlowContainer(const int boxWidth, const int boxHeight) :
-    Container(),
+FlowContainer::FlowContainer(const Widget2 *const widget,
+                             const int boxWidth, const int boxHeight) :
+    Container(widget),
     gcn::WidgetListener(),
     mBoxWidth(boxWidth),
     mBoxHeight(boxHeight),

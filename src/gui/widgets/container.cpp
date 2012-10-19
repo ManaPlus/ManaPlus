@@ -24,9 +24,9 @@
 
 #include "debug.h"
 
-Container::Container() :
+Container::Container(const Widget2 *const widget) :
     gcn::Container(),
-    Widget2()
+    Widget2(widget)
 {
     setOpaque(false);
 }

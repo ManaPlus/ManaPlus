@@ -30,8 +30,8 @@
 
 #include "debug.h"
 
-Setup_Visual::Setup_Visual() :
-    SetupTabScroll(),
+Setup_Visual::Setup_Visual(const Widget2 *const widget) :
+    SetupTabScroll(widget),
     mSpeachList(new SetupItemNames),
     mAmbientFxList(new SetupItemNames),
     mParticleList(new SetupItemNames),

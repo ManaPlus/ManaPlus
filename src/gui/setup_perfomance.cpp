@@ -41,8 +41,8 @@
 
 #include "debug.h"
 
-Setup_Perfomance::Setup_Perfomance() :
-    SetupTabScroll()
+Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
+    SetupTabScroll(widget)
 {
     setName(_("Perfomance"));
 

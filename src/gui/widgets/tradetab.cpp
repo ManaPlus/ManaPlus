@@ -38,8 +38,8 @@
 
 #include "debug.h"
 
-TradeTab::TradeTab() :
-    ChatTab(_("Trade"))
+TradeTab::TradeTab(const Widget2 *const widget) :
+    ChatTab(widget, _("Trade"))
 {
 }
 

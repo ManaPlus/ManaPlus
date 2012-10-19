@@ -47,7 +47,7 @@ class Setup_Relations final : public SetupTab,
                               public PlayerRelationsListener
 {
 public:
-    Setup_Relations();
+    Setup_Relations(const Widget2 *const widget);
 
     A_DELETE_COPY(Setup_Relations)
 

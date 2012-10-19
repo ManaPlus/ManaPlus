@@ -90,15 +90,15 @@ class KeyListModel final : public gcn::ListModel
         int mSize;
 };
 
-Setup_Input::Setup_Input() :
-    SetupTab(),
+Setup_Input::Setup_Input(const Widget2 *const widget) :
+    SetupTab(widget),
     mKeyListModel(new KeyListModel),
-    mKeyList(new ListBox(mKeyListModel)),
+    mKeyList(new ListBox(this, mKeyListModel)),
     mAssignKeyButton(new Button(_("Assign"), "assign", this)),
     mUnassignKeyButton(new Button(_("Unassign"), "unassign", this)),
     mDefaultButton(new Button(_("Default"), "default", this)),
     mResetKeysButton(new Button(_("Reset all keys"), "resetkeys", this)),
-    mTabs(new TabStrip(config.getIntValue("fontSize") + 10)),
+    mTabs(new TabStrip(this, config.getIntValue("fontSize") + 10)),
     mKeySetting(false),
     mActionDataSize(new int [9])
 {

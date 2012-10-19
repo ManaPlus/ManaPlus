@@ -53,7 +53,7 @@ Setup::Setup():
     Window(_("Setup"), false, nullptr, "setup.xml"),
     gcn::ActionListener(),
     mResetWindows(nullptr),
-    mPanel(new TabbedArea)
+    mPanel(new TabbedArea(this))
 {
     setCloseButton(true);
     setResizable(true);
@@ -93,18 +93,18 @@ Setup::Setup():
     mPanel->setDimension(gcn::Rectangle(5, 5, width - 10, height - 40));
     mPanel->enableScrollButtons(true);
 
-    mTabs.push_back(new Setup_Video);
-    mTabs.push_back(new Setup_Visual);
-    mTabs.push_back(new Setup_Audio);
-    mTabs.push_back(new Setup_Perfomance);
-    mTabs.push_back(new Setup_Joystick);
-    mTabs.push_back(new Setup_Input);
-    mTabs.push_back(new Setup_Colors);
-    mTabs.push_back(new Setup_Chat);
-    mTabs.push_back(new Setup_Players);
-    mTabs.push_back(new Setup_Relations);
-    mTabs.push_back(new Setup_Theme);
-    mTabs.push_back(new Setup_Other);
+    mTabs.push_back(new Setup_Video(this));
+    mTabs.push_back(new Setup_Visual(this));
+    mTabs.push_back(new Setup_Audio(this));
+    mTabs.push_back(new Setup_Perfomance(this));
+    mTabs.push_back(new Setup_Joystick(this));
+    mTabs.push_back(new Setup_Input(this));
+    mTabs.push_back(new Setup_Colors(this));
+    mTabs.push_back(new Setup_Chat(this));
+    mTabs.push_back(new Setup_Players(this));
+    mTabs.push_back(new Setup_Relations(this));
+    mTabs.push_back(new Setup_Theme(this));
+    mTabs.push_back(new Setup_Other(this));
 
     for (std::list<SetupTab*>::const_iterator i = mTabs.begin(),
          i_end = mTabs.end();

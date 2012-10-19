@@ -45,7 +45,7 @@
 
 #include "debug.h"
 
-ItemPopup::ItemPopup():
+ItemPopup::ItemPopup() :
     Popup("ItemPopup", "itempopup.xml"),
     mItemName(new Label),
     mItemDesc(new TextBox),

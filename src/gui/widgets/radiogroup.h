@@ -28,7 +28,8 @@
 class RadioGroup final : public WidgetGroup
 {
     public:
-        RadioGroup(const std::string &group, const int height,
+        RadioGroup(const Widget2 *const widget,
+                   const std::string &group, const int height,
                    const int spacing);
 
         A_DELETE_COPY(RadioGroup)

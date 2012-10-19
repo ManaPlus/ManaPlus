@@ -33,7 +33,7 @@ class EditDialog;
 class Setup_Players final : public SetupTabScroll
 {
     public:
-        Setup_Players();
+        Setup_Players(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Players)
 

@@ -49,7 +49,7 @@ class ChannelTab final : public ChatTab
         /**
          * Constructor.
          */
-        ChannelTab(Channel *const channel);
+        ChannelTab(const Widget2 *const widget, Channel *const channel);
 
         /**
          * Destructor.

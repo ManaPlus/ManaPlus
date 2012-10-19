@@ -27,7 +27,7 @@
 class Setup_Visual final : public SetupTabScroll
 {
     public:
-        Setup_Visual();
+        Setup_Visual(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Visual)
 

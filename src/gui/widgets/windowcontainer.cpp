@@ -30,6 +30,11 @@
 
 WindowContainer *windowContainer = nullptr;
 
+WindowContainer::WindowContainer(const Widget2 *const widget) :
+    Container(widget)
+{
+}
+
 void WindowContainer::logic()
 {
     delete_all(mDeathList);

@@ -26,13 +26,14 @@
 
 #include "debug.h"
 
-Channel::Channel(const short id,
+Channel::Channel(const Widget2 *const widget,
+                 const short id,
                  const std::string &name, 
                  const std::string &announcement) :
     mId(id),
     mName(name),
     mAnnouncement(announcement),
-    mTab(new ChannelTab(this))
+    mTab(new ChannelTab(widget, this))
 {
 }
 

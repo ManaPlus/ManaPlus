@@ -23,9 +23,10 @@
 
 #include "debug.h"
 
-VertContainer::VertContainer(const int verticalItemSize, const bool resizable,
+VertContainer::VertContainer(const Widget2 *const widget,
+                             const int verticalItemSize, const bool resizable,
                              const int leftSpacing) :
-    Container(),
+    Container(widget),
     gcn::WidgetListener(),
     mVerticalItemSize(verticalItemSize),
     mCount(0),

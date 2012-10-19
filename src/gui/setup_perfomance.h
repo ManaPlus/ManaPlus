@@ -33,7 +33,7 @@ class EditDialog;
 class Setup_Perfomance final : public SetupTabScroll
 {
     public:
-        Setup_Perfomance();
+        Setup_Perfomance(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Perfomance)
 

@@ -39,8 +39,8 @@
 
 #include "debug.h"
 
-BattleTab::BattleTab() :
-    ChatTab(_("Battle"))
+BattleTab::BattleTab(const Widget2 *const widget) :
+    ChatTab(widget, _("Battle"))
 {
     loadFromLogFile("#Battle");
 }

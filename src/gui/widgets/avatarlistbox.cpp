@@ -45,8 +45,9 @@ int AvatarListBox::instances = 0;
 Image *AvatarListBox::onlineIcon = nullptr;
 Image *AvatarListBox::offlineIcon = nullptr;
 
-AvatarListBox::AvatarListBox(AvatarListModel *const model) :
-    ListBox(model),
+AvatarListBox::AvatarListBox(const Widget2 *const widget,
+                             AvatarListModel *const model) :
+    ListBox(widget, model),
     mShowGender(config.getBoolValue("showgender")),
     mShowLevel(config.getBoolValue("showlevel")),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT))

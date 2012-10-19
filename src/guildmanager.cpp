@@ -199,7 +199,7 @@ void GuildManager::createTab(Guild *const guild)
 {
     if (!mTab)
     {
-        mTab = new GuildChatTab();
+        mTab = new GuildChatTab(chatWindow);
         mTab->loadFromLogFile("#Guild");
         if (player_node)
             player_node->addGuild(guild);

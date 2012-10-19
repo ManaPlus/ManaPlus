@@ -60,9 +60,9 @@ static std::string const data[TAB_COUNT] =
 
 Skin *Tab::tabImg[TAB_COUNT];
 
-Tab::Tab() :
+Tab::Tab(const Widget2 *const widget) :
     gcn::BasicContainer(),
-    Widget2(),
+    Widget2(widget),
     gcn::MouseListener(),
     gcn::WidgetListener(),
     mLabel(new Label),

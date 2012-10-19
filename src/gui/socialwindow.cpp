@@ -100,8 +100,8 @@ public:
 protected:
     friend class SocialWindow;
 
-    SocialTab():
-        Tab(),
+    SocialTab(const Widget2 *const widget):
+        Tab(widget),
         mInviteDialog(nullptr),
         mConfirmDialog(nullptr),
         mScroll(nullptr),
@@ -136,8 +136,9 @@ protected:
 class SocialGuildTab final : public SocialTab, public gcn::ActionListener
 {
 public:
-    SocialGuildTab(Guild *const guild, const bool showBackground) :
-        SocialTab(),
+    SocialGuildTab(const Widget2 *const widget,
+                   Guild *const guild, const bool showBackground) :
+        SocialTab(widget),
         gcn::ActionListener(),
         mGuild(guild)
     {
@@ -149,7 +150,7 @@ public:
         setSelectedTabColor(&getThemeColor(
             Theme::GUILD_SOCIAL_TAB_SELECTED));
 
-        mList = new AvatarListBox(guild);
+        mList = new AvatarListBox(this, guild);
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -242,8 +243,9 @@ private:
 class SocialGuildTab2 final : public SocialTab, public gcn::ActionListener
 {
 public:
-    SocialGuildTab2(Guild *const guild, const bool showBackground) :
-        SocialTab(),
+    SocialGuildTab2(const Widget2 *const widget,
+                    Guild *const guild, const bool showBackground) :
+        SocialTab(widget),
         gcn::ActionListener(),
         mGuild(guild)
     {
@@ -255,7 +257,7 @@ public:
         setSelectedTabColor(&getThemeColor(
             Theme::GUILD_SOCIAL_TAB_SELECTED));
 
-        mList = new AvatarListBox(guild);
+        mList = new AvatarListBox(this, guild);
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -304,8 +306,9 @@ private:
 class SocialPartyTab final : public SocialTab, public gcn::ActionListener
 {
 public:
-    SocialPartyTab(Party *const party, const bool showBackground) :
-        SocialTab(),
+    SocialPartyTab(const Widget2 *const widget,
+                   Party *const party, const bool showBackground) :
+        SocialTab(widget),
         gcn::ActionListener(),
         mParty(party)
     {
@@ -317,7 +320,7 @@ public:
         setSelectedTabColor(&getThemeColor(
             Theme::PARTY_SOCIAL_TAB_SELECTED));
 
-        mList = new AvatarListBox(party);
+        mList = new AvatarListBox(this, party);
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -443,11 +446,12 @@ public:
 class SocialPlayersTab final : public SocialTab
 {
 public:
-    SocialPlayersTab(std::string name, const bool showBackground) :
-        SocialTab(),
+    SocialPlayersTab(const Widget2 *const widget,
+                     std::string name, const bool showBackground) :
+        SocialTab(widget),
         mBeings(new BeingsListModal())
     {
-        mList = new AvatarListBox(mBeings);
+        mList = new AvatarListBox(this, mBeings);
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -611,11 +615,12 @@ private:
 class SocialNavigationTab final : public SocialTab
 {
 public:
-    SocialNavigationTab(const bool showBackground) :
-        SocialTab(),
+    SocialNavigationTab(const Widget2 *const widget,
+                        const bool showBackground) :
+        SocialTab(widget),
         mBeings(new BeingsListModal())
     {
-        mList = new AvatarListBox(mBeings);
+        mList = new AvatarListBox(this, mBeings);
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -949,11 +954,12 @@ protected:
 class SocialAttackTab final : public SocialTab
 {
 public:
-    SocialAttackTab(const bool showBackground) :
-        SocialTab(),
+    SocialAttackTab(const Widget2 *const widget,
+                    const bool showBackground) :
+        SocialTab(widget),
         mBeings(new BeingsListModal())
     {
-        mList = new AvatarListBox(mBeings);
+        mList = new AvatarListBox(this, mBeings);
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -1007,11 +1013,12 @@ private:
 class SocialPickupTab final : public SocialTab
 {
 public:
-    SocialPickupTab(const bool showBackground) :
-        SocialTab(),
+    SocialPickupTab(const Widget2 *const widget,
+                    const bool showBackground) :
+        SocialTab(widget),
         mBeings(new BeingsListModal())
     {
-        mList = new AvatarListBox(mBeings);
+        mList = new AvatarListBox(this, mBeings);
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -1065,11 +1072,12 @@ private:
 class SocialFriendsTab final : public SocialTab
 {
 public:
-    SocialFriendsTab(std::string name, const bool showBackground) :
-        SocialTab(),
+    SocialFriendsTab(const Widget2 *const widget,
+                     std::string name, const bool showBackground) :
+        SocialTab(widget),
         mBeings(new BeingsListModal())
     {
-        mList = new AvatarListBox(mBeings);
+        mList = new AvatarListBox(this, mBeings);
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -1227,17 +1235,18 @@ SocialWindow::SocialWindow() :
     mAttackFilter(nullptr),
     mPickupFilter(nullptr),
     // TRANSLATORS: here P is title for visible players tab in social window
-    mPlayers(new SocialPlayersTab(_("P"),
+    mPlayers(new SocialPlayersTab(this, _("P"),
         getOptionBool("showtabbackground"))),
-    mNavigation(new SocialNavigationTab(getOptionBool("showtabbackground"))),
+    mNavigation(new SocialNavigationTab(this,
+        getOptionBool("showtabbackground"))),
     // TRANSLATORS: here F is title for friends tab in social window
-    mFriends(new SocialFriendsTab(_("F"),
+    mFriends(new SocialFriendsTab(this, _("F"),
         getOptionBool("showtabbackground"))),
     mCreatePopup(new CreatePopup),
     mCreateButton(new Button(_("Create"), "create", this)),
     mInviteButton(new Button(_("Invite"), "invite", this)),
     mLeaveButton(new Button(_("Leave"), "leave", this)),
-    mTabs(new TabbedArea),
+    mTabs(new TabbedArea(this)),
     mMap(nullptr),
     mLastUpdateTime(0),
     mNeedUpdate(false),
@@ -1275,7 +1284,7 @@ SocialWindow::SocialWindow() :
 
     if (config.getBoolValue("enableAttackFilter"))
     {
-        mAttackFilter = new SocialAttackTab(
+        mAttackFilter = new SocialAttackTab(this,
             getOptionBool("showtabbackground"));
         mTabs->addTab(mAttackFilter, mAttackFilter->mScroll);
     }
@@ -1286,7 +1295,7 @@ SocialWindow::SocialWindow() :
 
     if (config.getBoolValue("enablePickupFilter"))
     {
-        mPickupFilter = new SocialPickupTab(
+        mPickupFilter = new SocialPickupTab(this,
             getOptionBool("showtabbackground"));
         mTabs->addTab(mPickupFilter, mPickupFilter->mScroll);
     }
@@ -1346,9 +1355,15 @@ bool SocialWindow::addTab(Guild *const guild)
 
     SocialTab *tab = nullptr;
     if (guild->getServerGuild())
-        tab = new SocialGuildTab(guild, getOptionBool("showtabbackground"));
+    {
+        tab = new SocialGuildTab(this, guild,
+            getOptionBool("showtabbackground"));
+    }
     else
-        tab = new SocialGuildTab2(guild, getOptionBool("showtabbackground"));
+    {
+        tab = new SocialGuildTab2(this, guild,
+            getOptionBool("showtabbackground"));
+    }
 
     mGuilds[guild] = tab;
     mTabs->addTab(tab, tab->mScroll);
@@ -1378,7 +1393,7 @@ bool SocialWindow::addTab(Party *const party)
     if (mParties.find(party) != mParties.end())
         return false;
 
-    SocialPartyTab *const tab = new SocialPartyTab(party,
+    SocialPartyTab *const tab = new SocialPartyTab(this, party,
         getOptionBool("showtabbackground"));
     mParties[party] = tab;
 

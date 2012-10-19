@@ -39,10 +39,11 @@ static const int buttonWidth = 27;
 static const int buttonSpace = 30;
 static const int sliderHeight = 30;
 
-SliderList::SliderList(gcn::ListModel *const listModel,
+SliderList::SliderList(const Widget2 *const widget,
+                       gcn::ListModel *const listModel,
                        gcn::ActionListener *const listener,
                        std::string eventId) :
-    Container(),
+    Container(widget),
     gcn::ActionListener(),
     gcn::MouseListener(),
     mLabel(new Label),

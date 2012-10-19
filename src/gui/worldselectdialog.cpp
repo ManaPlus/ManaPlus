@@ -81,7 +81,7 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     gcn::ActionListener(),
     gcn::KeyListener(),
     mWorldListModel(new WorldListModel(worlds)),
-    mWorldList(new ListBox(mWorldListModel)),
+    mWorldList(new ListBox(this, mWorldListModel)),
     mChangeLoginButton(new Button(_("Change Login"), "login", this)),
     mChooseWorld(new Button(_("Choose World"), "world", this))
 {

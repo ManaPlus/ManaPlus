@@ -27,9 +27,9 @@
 
 #include "debug.h"
 
-SetupTabScroll::SetupTabScroll() :
-    SetupTab(),
-    mContainer(new VertContainer(25, false, 8)),
+SetupTabScroll::SetupTabScroll(const Widget2 *const widget) :
+    SetupTab(widget),
+    mContainer(new VertContainer(this, 25, false, 8)),
     mScroll(new ScrollArea(mContainer, false)),
     mPreferredFirstItemSize(200)
 {

@@ -44,8 +44,9 @@ const int ITEM_ICON_SIZE = 32;
 
 float ShopListBox::mAlpha = 1.0;
 
-ShopListBox::ShopListBox(gcn::ListModel *const listModel) :
-    ListBox(listModel),
+ShopListBox::ShopListBox(const Widget2 *const widget,
+    gcn::ListModel *const listModel) :
+    ListBox(widget, listModel),
     mPlayerMoney(0),
     mShopItems(nullptr),
     mItemPopup(new ItemPopup),
@@ -58,9 +59,10 @@ ShopListBox::ShopListBox(gcn::ListModel *const listModel) :
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 }
 
-ShopListBox::ShopListBox(gcn::ListModel *const listModel,
+ShopListBox::ShopListBox(const Widget2 *const widget,
+                         gcn::ListModel *const listModel,
                          ShopItems *const shopListModel) :
-    ListBox(listModel),
+    ListBox(widget, listModel),
     mPlayerMoney(0),
     mShopItems(shopListModel),
     mItemPopup(new ItemPopup),

@@ -41,8 +41,9 @@ int ShortcutWindow::mBoxesWidth = 0;
 class ShortcutTab final : public Tab
 {
     public:
-        ShortcutTab(std::string name, ShortcutContainer *const content) :
-            Tab(),
+        ShortcutTab(const Widget2 *const widget,
+                    std::string name, ShortcutContainer *const content) :
+            Tab(widget),
             mContent(content)
         {
             setCaption(name);
@@ -108,7 +109,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
     Window("Window", false, nullptr, skinFile),
     mItems(nullptr),
     mScrollArea(nullptr),
-    mTabs(new TabbedArea)
+    mTabs(new TabbedArea(this))
 {
     setWindowName(title);
     setTitleBarHeight(getPadding() + getTitlePadding());
@@ -155,7 +156,7 @@ void ShortcutWindow::addTab(std::string name, ShortcutContainer *const content)
     ScrollArea *const scroll = new ScrollArea(content, false);
     scroll->setPosition(SCROLL_PADDING, SCROLL_PADDING);
     scroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-    Tab *const tab = new ShortcutTab(name, content);
+    Tab *const tab = new ShortcutTab(this, name, content);
     mTabs->addTab(tab, scroll);
 }
 

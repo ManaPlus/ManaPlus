@@ -160,12 +160,12 @@ ChatWindow::ChatWindow():
     gcn::ActionListener(),
     gcn::KeyListener(),
     mItemLinkHandler(new ItemLinkHandler),
-    mChatTabs(new TabbedArea),
+    mChatTabs(new TabbedArea(this)),
     mChatInput(new ChatInput(this, mChatTabs)),
     mTmpVisible(false),
     mReturnToggles(config.getBoolValue("ReturnToggles")),
     mColorListModel(new ColorListModel),
-    mColorPicker(new DropDown(mColorListModel)),
+    mColorPicker(new DropDown(this, mColorListModel)),
     mChatColor(config.getIntValue("chatColor")),
     mChatHistoryIndex(0),
     mGMLoaded(false),
@@ -1126,7 +1126,7 @@ WhisperTab *ChatWindow::addWhisperTab(const std::string &nick,
     }
     else
     {
-        ret = new WhisperTab(nick);
+        ret = new WhisperTab(this, nick);
         if (gui && !player_relations.isGoodName(nick))
             ret->setLabelFont(gui->getSecureFont());
         mWhispers[tempNick] = ret;

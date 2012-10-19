@@ -43,7 +43,7 @@ class TextDialog;
 class Setup_Video final : public SetupTab, public gcn::KeyListener
 {
     public:
-        Setup_Video();
+        Setup_Video(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Video)
 

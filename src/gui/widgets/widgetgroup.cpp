@@ -24,9 +24,10 @@
 
 #include "debug.h"
 
-WidgetGroup::WidgetGroup(const std::string &group, const int height,
+WidgetGroup::WidgetGroup(const Widget2 *const widget,
+                         const std::string &group, const int height,
                          const int spacing) :
-    Container(),
+    Container(widget),
     gcn::WidgetListener(),
     gcn::ActionListener(),
     mSpacing(spacing),

@@ -94,8 +94,8 @@ class SkillModel final : public gcn::ListModel
 class SkillListBox final : public ListBox
 {
     public:
-        SkillListBox(SkillModel *const model):
-            ListBox(model),
+        SkillListBox(const Widget2 *const widget, SkillModel *const model) :
+            ListBox(widget, model),
             mModel(model),
             mPopup(new TextPopup()),
             mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
@@ -194,8 +194,9 @@ class SkillListBox final : public ListBox
 class SkillTab final : public Tab
 {
     public:
-        SkillTab(const std::string &name, SkillListBox *const listBox) :
-            Tab(),
+        SkillTab(const Widget2 *const widget,
+                 const std::string &name, SkillListBox *const listBox) :
+            Tab(widget),
             mListBox(listBox)
         {
             setCaption(name);
@@ -231,7 +232,7 @@ class SkillTab final : public Tab
 SkillDialog::SkillDialog() :
     Window(_("Skills"), false, nullptr, "skills.xml"),
     gcn::ActionListener(),
-    mTabs(new TabbedArea()),
+    mTabs(new TabbedArea(this)),
     mPointsLabel(new Label("0")),
     mUseButton(new Button(_("Use"), "use", this)),
     mIncreaseButton(new Button(_("Up"), "inc", this)),
@@ -399,14 +400,14 @@ void SkillDialog::loadSkills(const std::string &file)
 
             model->updateVisibilities();
 
-            listbox = new SkillListBox(model);
+            listbox = new SkillListBox(this, model);
             listbox->setActionEventId("sel");
             listbox->addActionListener(this);
             scroll = new ScrollArea(listbox, false);
             scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
             scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
-            tab = new SkillTab("Skills", listbox);
+            tab = new SkillTab(this, "Skills", listbox);
             mDeleteTabs.push_back(tab);
 
             mTabs->addTab(tab, scroll);
@@ -463,14 +464,14 @@ void SkillDialog::loadSkills(const std::string &file)
             model->updateVisibilities();
 
             // possible leak listbox, scroll
-            listbox = new SkillListBox(model);
+            listbox = new SkillListBox(this, model);
             listbox->setActionEventId("sel");
             listbox->addActionListener(this);
             scroll = new ScrollArea(listbox, false);
             scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
             scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
-            tab = new SkillTab(setName, listbox);
+            tab = new SkillTab(this, setName, listbox);
             mDeleteTabs.push_back(tab);
 
             mTabs->addTab(tab, scroll);

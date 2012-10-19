@@ -58,8 +58,8 @@ extern Window *botCheckerWindow;
 extern Window *socialWindow;
 extern Window *questsWindow;
 
-WindowMenu::WindowMenu() :
-    Container(),
+WindowMenu::WindowMenu(const Widget2 *const widget) :
+    Container(widget),
     gcn::ActionListener(),
     gcn::SelectionListener(),
     gcn::MouseListener(),

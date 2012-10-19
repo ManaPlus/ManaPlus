@@ -219,7 +219,7 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
         if (!chatWindow)
             return;
 
-        Ea::partyTab = new PartyTab();
+        Ea::partyTab = new PartyTab(chatWindow);
         Ea::partyTab->loadFromLogFile("#Party");
     }
 

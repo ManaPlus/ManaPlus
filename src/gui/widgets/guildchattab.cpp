@@ -38,8 +38,8 @@
 
 #include "debug.h"
 
-GuildChatTab::GuildChatTab() :
-    ChatTab(_("Guild"))
+GuildChatTab::GuildChatTab(const Widget2 *const widget) :
+    ChatTab(widget, _("Guild"))
 {
     setTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB));
     setHighlightedTabColor(&getThemeColor(

@@ -26,9 +26,10 @@
 
 #include "debug.h"
 
-RadioGroup::RadioGroup(const std::string &group, const int height,
+RadioGroup::RadioGroup(const Widget2 *const widget,
+                       const std::string &group, const int height,
                        const int spacing) :
-    WidgetGroup(group, height, spacing)
+    WidgetGroup(widget, group, height, spacing)
 {
 }
 

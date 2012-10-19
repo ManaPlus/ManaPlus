@@ -996,7 +996,7 @@ int Client::gameExec()
             if (!top)
                 break;
 
-            mDesktop = new Desktop;
+            mDesktop = new Desktop(nullptr);
             top->add(mDesktop);
             int x = top->getWidth();
             mSetupButton = new Button(_("Setup"), "Setup", this);

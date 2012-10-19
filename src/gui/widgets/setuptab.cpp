@@ -24,8 +24,8 @@
 
 #include "debug.h"
 
-SetupTab::SetupTab() :
-    Container(),
+SetupTab::SetupTab(const Widget2 *const widget) :
+    Container(widget),
     gcn::ActionListener()
 {
     setOpaque(false);

@@ -97,7 +97,7 @@ Gui::Gui(Graphics *const graphics) :
     mFocusHandler = new FocusHandler;
 
     // Initialize top GUI widget
-    WindowContainer *const guiTop = new WindowContainer;
+    WindowContainer *const guiTop = new WindowContainer(nullptr);
     guiTop->setFocusable(true);
     guiTop->setSize(graphics->mWidth, graphics->mHeight);
     guiTop->setOpaque(false);

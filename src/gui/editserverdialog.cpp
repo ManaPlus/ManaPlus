@@ -74,7 +74,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mOkButton(new Button(_("OK"), "addServer", this)),
     mCancelButton(new Button(_("Cancel"), "cancel", this)),
     mTypeListModel(new TypeListModel()),
-    mTypeField(new DropDown(mTypeListModel)),
+    mTypeField(new DropDown(this, mTypeListModel)),
     mServerDialog(parent),
     mServer(server),
     mIndex(index)

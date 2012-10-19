@@ -41,12 +41,14 @@ class ShopListBox final : public ListBox
         /**
          * Constructor.
          */
-        ShopListBox(gcn::ListModel *const listModel);
+        ShopListBox(const Widget2 *const widget,
+                    gcn::ListModel *const listModel);
 
         /**
          * Constructor with shopitems
          */
-        ShopListBox(gcn::ListModel *const listModel,
+        ShopListBox(const Widget2 *const widget,
+                    gcn::ListModel *const listModel,
                     ShopItems *const shopListModel);
 
         A_DELETE_COPY(ShopListBox)

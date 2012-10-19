@@ -36,7 +36,7 @@ class NamesModel;
 class Setup_Joystick final : public SetupTab
 {
     public:
-        Setup_Joystick();
+        Setup_Joystick(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Joystick)
 

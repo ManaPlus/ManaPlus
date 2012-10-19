@@ -90,7 +90,7 @@ QuestsWindow::QuestsWindow() :
     Window(_("Quests"), false, nullptr, "quests.xml"),
     gcn::ActionListener(),
     mQuestsModel(new QuestsModel),
-    mQuestsListBox(new ExtendedListBox(mQuestsModel)),
+    mQuestsListBox(new ExtendedListBox(this, mQuestsModel)),
     mQuestScrollArea(new ScrollArea(mQuestsListBox,
         getOptionBool("showlistbackground"), "quests_list_background.xml")),
     mItemLinkHandler(new ItemLinkHandler),

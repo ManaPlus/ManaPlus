@@ -157,8 +157,9 @@ void ServersListModel::setVersionString(const int index,
 class ServersListBox final : public ListBox
 {
 public:
-    ServersListBox(ServersListModel *const model) :
-        ListBox(model),
+    ServersListBox(const Widget2 *const widget,
+                   ServersListModel *const model) :
+        ListBox(widget, model),
         mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
         mTextColor(getThemeColor(Theme::LISTBOX)),
         mNotSupportedColor(getThemeColor(Theme::SERVER_VERSION_NOT_SUPPORTED))
@@ -255,7 +256,7 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mLoadButton(new Button(_("Load"), "load", this)),
     mServers(ServerInfos()),
     mServersListModel(new ServersListModel(&mServers, this)),
-    mServersList(new ServersListBox(mServersListModel)),
+    mServersList(new ServersListBox(this, mServersListModel)),
     mDir(dir),
     mDownloadStatus(DOWNLOADING_UNKNOWN),
     mDownload(nullptr),

@@ -36,6 +36,8 @@
 class WindowContainer : public Container
 {
     public:
+        WindowContainer(const Widget2 *const widget);
+
         /**
          * Do GUI logic. This functions adds automatic deletion of objects that
          * volunteered to be deleted.

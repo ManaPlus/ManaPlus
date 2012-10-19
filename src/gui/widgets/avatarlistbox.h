@@ -46,7 +46,7 @@ public:
 class AvatarListBox final : public ListBox, public ConfigListener
 {
 public:
-    AvatarListBox(AvatarListModel *const model);
+    AvatarListBox(const Widget2 *const widget, AvatarListModel *const model);
 
     A_DELETE_COPY(AvatarListBox)
 

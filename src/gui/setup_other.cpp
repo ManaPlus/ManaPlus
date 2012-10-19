@@ -32,8 +32,8 @@
 
 #include "debug.h"
 
-Setup_Other::Setup_Other() :
-    SetupTabScroll(),
+Setup_Other::Setup_Other(const Widget2 *const widget) :
+    SetupTabScroll(widget),
     mProxyTypeList(new SetupItemNames()),
     mShortcutsList(new SetupItemNames())
 {

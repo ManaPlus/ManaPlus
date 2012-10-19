@@ -44,8 +44,8 @@
 namespace EAthena
 {
 
-PartyTab::PartyTab() :
-    Ea::PartyTab()
+PartyTab::PartyTab(const Widget2 *const widget) :
+    Ea::PartyTab(widget)
 {
 }
 

@@ -219,8 +219,8 @@ public:
     }
 };
 
-Setup_Video::Setup_Video() :
-    SetupTab(),
+Setup_Video::Setup_Video(const Widget2 *const widget) :
+    SetupTab(widget),
     gcn::KeyListener(),
     mFullScreenEnabled(config.getBoolValue("screen")),
     mOpenGLEnabled(config.getIntValue("opengl")),
@@ -230,7 +230,7 @@ Setup_Video::Setup_Video() :
     mEnableResize(config.getBoolValue("enableresize")),
     mNoFrame(config.getBoolValue("noframe")),
     mModeListModel(new ModeListModel),
-    mModeList(new ListBox(mModeListModel)),
+    mModeList(new ListBox(widget, mModeListModel)),
     mFsCheckBox(new CheckBox(_("Full screen"), mFullScreenEnabled)),
     mCustomCursorCheckBox(new CheckBox(_("Custom cursor"),
                           mCustomCursorEnabled)),
@@ -252,7 +252,7 @@ Setup_Video::Setup_Video() :
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mOpenGLListModel = new OpenGLListModel;
-    mOpenGLDropDown = new DropDown(mOpenGLListModel),
+    mOpenGLDropDown = new DropDown(widget, mOpenGLListModel),
     mOpenGLDropDown->setSelected(mOpenGLEnabled);
 
     mModeList->setEnabled(true);

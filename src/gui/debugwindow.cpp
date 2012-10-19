@@ -48,10 +48,10 @@
 
 DebugWindow::DebugWindow():
     Window(_("Debug"), false, nullptr, "debug.xml"),
-    mTabs(new TabbedArea),
-    mMapWidget(new MapDebugTab),
-    mTargetWidget(new TargetDebugTab),
-    mNetWidget(new NetDebugTab)
+    mTabs(new TabbedArea(this)),
+    mMapWidget(new MapDebugTab(this)),
+    mTargetWidget(new TargetDebugTab(this)),
+    mNetWidget(new NetDebugTab(this))
 {
     setWindowName("Debug");
     if (setupWindow)
@@ -134,8 +134,8 @@ void DebugWindow::widgetResized(const gcn::Event &event)
     mTabs->setDimension(gcn::Rectangle(0, 0, getWidth(), getHeight()));
 }
 
-MapDebugTab::MapDebugTab() :
-    DebugTab(),
+MapDebugTab::MapDebugTab(const Widget2 *const widget) :
+    DebugTab(widget),
     mMusicFileLabel(new Label(strprintf(_("Music:")))),
     mMapLabel(new Label(strprintf(_("Map:")))),
     mMinimapLabel(new Label(strprintf(_("Minimap:")))),
@@ -258,8 +258,8 @@ void MapDebugTab::logic()
     mLPSLabel->setCaption(strprintf(_("%d LPS"), lps));
 }
 
-TargetDebugTab::TargetDebugTab() :
-    DebugTab(),
+TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
+    DebugTab(widget),
     mTargetLabel(new Label(strprintf("%s ?", _("Target:")))),
     mTargetIdLabel(new Label(strprintf("%s ?     ", _("Target Id:")))),
     mTargetLevelLabel(new Label(strprintf("%s ?", _("Target level:")))),
@@ -362,8 +362,8 @@ void TargetDebugTab::logic()
     mAttackDelayLabel->adjustSize();
 }
 
-NetDebugTab::NetDebugTab() :
-    DebugTab(),
+NetDebugTab::NetDebugTab(const Widget2 *const widget) :
+    DebugTab(widget),
     mPingLabel(new Label("                ")),
     mInPackets1Label(new Label("                ")),
     mOutPackets1Label(new Label("                "))

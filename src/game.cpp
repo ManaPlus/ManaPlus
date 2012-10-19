@@ -256,16 +256,16 @@ static void createGuiWindows()
     if (serverVersion >= 6)
         questsWindow = new QuestsWindow;
 
-    localChatTab = new ChatTab(_("General"));
+    localChatTab = new ChatTab(chatWindow, _("General"));
     localChatTab->setAllowHighlight(false);
     localChatTab->loadFromLogFile("#General");
 
-    debugChatTab = new ChatTab(_("Debug"));
+    debugChatTab = new ChatTab(chatWindow, _("Debug"));
     debugChatTab->setAllowHighlight(false);
 
     if (config.getBoolValue("enableTradeTab"))
     {
-        tradeChatTab = new TradeTab;
+        tradeChatTab = new TradeTab(chatWindow);
         tradeChatTab->setAllowHighlight(false);
     }
     else
@@ -275,7 +275,7 @@ static void createGuiWindows()
 
     if (config.getBoolValue("enableBattleTab"))
     {
-        battleChatTab = new BattleTab;
+        battleChatTab = new BattleTab(chatWindow);
         battleChatTab->setAllowHighlight(false);
     }
     else
@@ -401,7 +401,7 @@ Game::Game():
 
     createGuiWindows();
 
-    windowMenu = new WindowMenu;
+    windowMenu = new WindowMenu(nullptr);
 //    mWindowMenu = windowMenu;
 
     if (windowContainer)

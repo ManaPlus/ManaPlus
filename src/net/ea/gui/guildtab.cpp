@@ -45,8 +45,8 @@ namespace Ea
 {
 extern Guild *taGuild;
 
-GuildTab::GuildTab() :
-    ChatTab(_("Guild"))
+GuildTab::GuildTab(const Widget2 *const widget) :
+    ChatTab(widget, _("Guild"))
 {
     setTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB));
     setHighlightedTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB_HIGHLIGHTED));

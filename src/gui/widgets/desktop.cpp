@@ -38,8 +38,8 @@
 
 #include "debug.h"
 
-Desktop::Desktop() :
-    Container(),
+Desktop::Desktop(const Widget2 *const widget) :
+    Container(widget),
     gcn::WidgetListener(),
     mWallpaper(nullptr),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND, 128)),

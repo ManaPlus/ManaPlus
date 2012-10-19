@@ -126,7 +126,7 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
     mUpdateTypeLabel(new Label(_("Update:"))),
     mUpdateHostLabel(nullptr),
     mUpdateTypeModel(new UpdateTypeModel()),
-    mUpdateTypeDropDown(new DropDown(mUpdateTypeModel)),
+    mUpdateTypeDropDown(new DropDown(this, mUpdateTypeModel)),
     mServerButton(new Button(_("Change Server"), "server", this)),
     mLoginButton(new Button(_("Login"), "login", this)),
     mRegisterButton(new Button(_("Register"), "register", this)),
@@ -149,7 +149,7 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
         mUpdateHostLabel = new Label(strprintf(_("Update host: %s"),
             mLoginData->updateHost.c_str()));
         mUpdateListModel = new UpdateListModel(mLoginData);
-        mUpdateHostDropDown = new DropDown(mUpdateListModel,
+        mUpdateHostDropDown = new DropDown(this, mUpdateListModel,
             this, "updateselect");
         const std::string str = serverConfig.getValue("updateHost2", "");
         if (!str.empty())

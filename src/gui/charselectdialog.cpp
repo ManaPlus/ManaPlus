@@ -96,7 +96,8 @@ class CharDeleteConfirm final : public ConfirmDialog
 class CharacterDisplay final : public Container
 {
     public:
-        CharacterDisplay(CharSelectDialog *const charSelectDialog);
+        CharacterDisplay(const Widget2 *const widget,
+                         CharSelectDialog *const charSelectDialog);
 
         A_DELETE_COPY(CharacterDisplay)
 
@@ -184,7 +185,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
 
     for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
     {
-        mCharacterEntries.push_back(new CharacterDisplay(this));
+        mCharacterEntries.push_back(new CharacterDisplay(this, this));
         placer(i % SLOTS_PER_ROW, static_cast<int>(i) / SLOTS_PER_ROW,
             mCharacterEntries[i]);
     }
@@ -555,8 +556,9 @@ bool CharSelectDialog::selectByName(const std::string &name,
 }
 
 
-CharacterDisplay::CharacterDisplay(CharSelectDialog *const charSelectDialog) :
-    Container(),
+CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
+                                   CharSelectDialog *const charSelectDialog) :
+    Container(widget),
     mCharacter(nullptr),
     mPlayerBox(new PlayerBox(nullptr)),
     mName(new Label("wwwwwwwwwwwwwwwwwwwwwwww")),

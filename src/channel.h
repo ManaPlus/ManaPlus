@@ -23,6 +23,8 @@
 #ifndef CHANNEL_H
 #define CHANNEL_H
 
+#include "gui/widgets/widget2.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -39,7 +41,8 @@ class Channel final
          * @param name         the name of the channel.
          * @param announcement a welcome message.
          */
-        Channel(const short id,
+        Channel(const Widget2 *const widget,
+                const short id,
                 const std::string &name,
                 const std::string &announcement = std::string());
 

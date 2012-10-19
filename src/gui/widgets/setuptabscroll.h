@@ -35,7 +35,7 @@ class VertContainer;
 class SetupTabScroll : public SetupTab
 {
     public:
-        SetupTabScroll();
+        SetupTabScroll(const Widget2 *const widget);
 
         A_DELETE_COPY(SetupTabScroll)
 

@@ -47,7 +47,7 @@ class Label;
 class Desktop final : public Container, private gcn::WidgetListener
 {
     public:
-        Desktop();
+        Desktop(const Widget2 *const widget);
 
         A_DELETE_COPY(Desktop)
 

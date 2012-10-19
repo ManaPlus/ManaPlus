@@ -34,8 +34,8 @@
 
 #include "debug.h"
 
-TabbedArea::TabbedArea() :
-    Widget2(),
+TabbedArea::TabbedArea(const Widget2 *const widget) :
+    Widget2(widget),
     gcn::ActionListener(),
     gcn::BasicContainer(),
     gcn::KeyListener(),
@@ -189,7 +189,7 @@ void TabbedArea::addTab(Tab* tab, gcn::Widget* widget)
 
 void TabbedArea::addTab(const std::string &caption, gcn::Widget *const widget)
 {
-    Tab *const tab = new Tab;
+    Tab *const tab = new Tab(this);
     tab->setCaption(caption);
     mTabsToDelete.push_back(tab);
 

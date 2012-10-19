@@ -51,6 +51,7 @@ SetupItem::SetupItem(std::string text, std::string description,
                      std::string keyName, SetupTabScroll *const parent,
                      std::string eventName, const bool mainConfig) :
     gcn::ActionListener(),
+    Widget2(),
     mText(text),
     mDescription(description),
     mKeyName(keyName),
@@ -70,6 +71,7 @@ SetupItem::SetupItem(std::string text, std::string description,
                      std::string eventName, std::string def,
                      const bool mainConfig) :
     gcn::ActionListener(),
+    Widget2(),
     mText(text),
     mDescription(description),
     mKeyName(keyName),
@@ -281,7 +283,7 @@ SetupItemTextField::~SetupItemTextField()
 void SetupItemTextField::createControls()
 {
     load();
-    mHorizont = new HorizontContainer(32, 2);
+    mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(mText);
     mTextField = new TextField(mValue, true, mParent, mEventName);
@@ -402,7 +404,7 @@ SetupItemIntTextField::~SetupItemIntTextField()
 void SetupItemIntTextField::createControls()
 {
     load();
-    mHorizont = new HorizontContainer(32, 2);
+    mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(mText);
     mTextField = new IntTextField(atoi(mValue.c_str()), mMin, mMax, true, 30);
@@ -575,10 +577,10 @@ SetupItemDropDown::~SetupItemDropDown()
 void SetupItemDropDown::createControls()
 {
     load();
-    mHorizont = new HorizontContainer(32, 2);
+    mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(mText);
-    mDropDown = new DropDown(mModel);
+    mDropDown = new DropDown(this, mModel);
     mDropDown->setActionEventId(mEventName);
     mDropDown->addActionListener(mParent);
 
@@ -663,7 +665,7 @@ SetupItemSlider::~SetupItemSlider()
 void SetupItemSlider::createControls()
 {
     load();
-    mHorizont = new HorizontContainer(32, 2);
+    mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(mText);
     mSlider = new Slider(mMin, mMax);
@@ -781,7 +783,7 @@ SetupItemSlider2::~SetupItemSlider2()
 void SetupItemSlider2::createControls()
 {
     load();
-    mHorizont = new HorizontContainer(32, 2);
+    mHorizont = new HorizontContainer(this, 32, 2);
 
     const int width = getMaxWidth();
 
@@ -942,10 +944,10 @@ SetupItemSliderList::~SetupItemSliderList()
 void SetupItemSliderList::createControls()
 {
     load();
-    mHorizont = new HorizontContainer(32, 2);
+    mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(mText);
-    mSlider = new SliderList(mModel, mParent, mEventName);
+    mSlider = new SliderList(this, mModel, mParent, mEventName);
     mSlider->setSelectedString(mValue);
     mSlider->adjustSize();
 

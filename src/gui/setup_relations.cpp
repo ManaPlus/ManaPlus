@@ -91,10 +91,11 @@ public:
     }
 };
 
-class PlayerTableModel final : public TableModel
+class PlayerTableModel final : public Widget2, public TableModel
 {
 public:
-    PlayerTableModel() :
+    PlayerTableModel(const Widget2 *const widget) :
+        Widget2(widget),
         TableModel(),
         mPlayers(nullptr),
         mListModel(new PlayerRelationListModel)
@@ -160,7 +161,7 @@ public:
             gcn::Widget *const widget = new Label(name);
             mWidgets.push_back(widget);
 
-            DropDown *const choicebox = new DropDown(mListModel);
+            DropDown *const choicebox = new DropDown(this, mListModel);
             choicebox->setSelected(player_relations.getRelation(name));
             mWidgets.push_back(choicebox);
         }
@@ -234,11 +235,11 @@ static const std::string ACTION_DELETE = "delete";
 static const std::string ACTION_TABLE = "table";
 static const std::string ACTION_STRATEGY = "strategy";
 
-Setup_Relations::Setup_Relations() :
-    SetupTab(),
+Setup_Relations::Setup_Relations(const Widget2 *const widget) :
+    SetupTab(widget),
     PlayerRelationsListener(),
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
-    mPlayerTableModel(new PlayerTableModel),
+    mPlayerTableModel(new PlayerTableModel(this)),
     mPlayerTable(new GuiTable(mPlayerTableModel)),
     mPlayerTitleTable(new GuiTable(mPlayerTableTitleModel)),
     mPlayerScrollArea(new ScrollArea(mPlayerTable)),
@@ -258,7 +259,7 @@ Setup_Relations::Setup_Relations() :
     mPlayerTitleTable->setBackgroundColor(gcn::Color(0xbf, 0xbf, 0xbf));
 
     mIgnoreActionChoicesModel = new IgnoreChoicesListModel;
-    mIgnoreActionChoicesBox = new DropDown(mIgnoreActionChoicesModel);
+    mIgnoreActionChoicesBox = new DropDown(widget, mIgnoreActionChoicesModel);
 
     for (int i = 0; i < COLUMNS_NR; i++)
         mPlayerTableTitleModel->set(0, i, new Label(gettext(table_titles[i])));
@@ -408,7 +409,7 @@ void Setup_Relations::updatedPlayer(const std::string &name A_UNUSED)
 
 void Setup_Relations::updateAll()
 {
-    PlayerTableModel *const model = new PlayerTableModel();
+    PlayerTableModel *const model = new PlayerTableModel(this);
     mPlayerTable->setModel(model);
     delete mPlayerTableModel;
     mPlayerTableModel = model;

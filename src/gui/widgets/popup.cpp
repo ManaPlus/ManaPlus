@@ -36,8 +36,9 @@
 
 #include "debug.h"
 
-Popup::Popup(const std::string &name, std::string skin) :
-    Container(),
+Popup::Popup(const std::string &name,
+             std::string skin) :
+    Container(nullptr),
     gcn::MouseListener(),
     gcn::WidgetListener(),
     mPopupName(name),
@@ -65,7 +66,10 @@ Popup::Popup(const std::string &name, std::string skin) :
     {
         mSkin = Theme::instance()->load(skin, "popup.xml");
         if (mSkin)
+        {
             setPadding(mSkin->getPadding());
+            // init Widget2 fields
+        }
     }
     else
     {

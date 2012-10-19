@@ -47,7 +47,7 @@ class Tab : public gcn::BasicContainer,
             public gcn::WidgetListener
 {
     public:
-        Tab();
+        Tab(const Widget2 *const widget);
 
         A_DELETE_COPY(Tab)
 
