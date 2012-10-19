@@ -241,7 +241,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mFpsLabel(new Label),
     mAltFpsSlider(new Slider(2, 160)),
     mAltFpsLabel(new Label(_("Alt FPS limit: "))),
-    mDetectButton(new Button(_("Detect best mode"), "detect", this)),
+    mDetectButton(new Button(this, _("Detect best mode"), "detect", this)),
     mDialog(nullptr)
 {
     setName(_("Video"));

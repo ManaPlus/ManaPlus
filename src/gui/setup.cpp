@@ -80,7 +80,7 @@ Setup::Setup():
     const int buttonPadding = getOption("buttonPadding", 5);
     for (const char ** curBtn = buttonNames; *curBtn; ++ curBtn)
     {
-        Button *const btn = new Button(gettext(*curBtn), *curBtn, this);
+        Button *const btn = new Button(this, gettext(*curBtn), *curBtn, this);
         x -= btn->getWidth() + buttonPadding;
         btn->setPosition(x, height - btn->getHeight() - buttonPadding);
         add(btn);

@@ -64,9 +64,9 @@ static std::string const data[BUTTON_COUNT] =
 
 Skin *Button::button[BUTTON_COUNT];
 
-Button::Button() :
+Button::Button(const Widget2 *const widget) :
     gcn::Button(),
-    Widget2(),
+    Widget2(widget),
     gcn::WidgetListener(),
     mDescription(""), mClickCount(0),
     mTag(0),
@@ -86,10 +86,11 @@ Button::Button() :
     adjustSize();
 }
 
-Button::Button(const std::string &caption, const std::string &actionEventId,
+Button::Button(const Widget2 *const widget,
+               const std::string &caption, const std::string &actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(caption),
-    Widget2(),
+    Widget2(widget),
     gcn::WidgetListener(),
     mDescription(""),
     mClickCount(0),
@@ -114,12 +115,13 @@ Button::Button(const std::string &caption, const std::string &actionEventId,
         addActionListener(listener);
 }
 
-Button::Button(const std::string &caption, const std::string &imageName,
+Button::Button(const Widget2 *const widget,
+               const std::string &caption, const std::string &imageName,
                const int imageWidth, const int imageHeight,
                const std::string &actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(caption),
-    Widget2(),
+    Widget2(widget),
     gcn::WidgetListener(),
     mDescription(""),
     mClickCount(0),
@@ -145,12 +147,12 @@ Button::Button(const std::string &caption, const std::string &imageName,
         addActionListener(listener);
 }
 
-Button::Button(const std::string &imageName,
+Button::Button(const Widget2 *const widget, const std::string &imageName,
                const int imageWidth, const int imageHeight,
                const std::string &actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(""),
-    Widget2(),
+    Widget2(widget),
     gcn::WidgetListener(),
     mDescription(""),
     mClickCount(0),

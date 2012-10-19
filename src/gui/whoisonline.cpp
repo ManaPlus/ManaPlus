@@ -98,7 +98,7 @@ WhoIsOnline::WhoIsOnline():
     setStickyButtonLock(true);
     setSaveVisible(true);
 
-    mUpdateButton = new Button(_("Update"), "update", this);
+    mUpdateButton = new Button(this, _("Update"), "update", this);
     mUpdateButton->setEnabled(false);
     mUpdateButton->setDimension(gcn::Rectangle(5, 5, w - 10, 20 + 5));
 

@@ -97,7 +97,7 @@ QuestsWindow::QuestsWindow() :
     mText(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
     mTextScrollArea(new ScrollArea(mText,
         getOptionBool("showtextbackground"), "quests_text_background.xml")),
-    mCloseButton(new Button(_("Close"), "close", this)),
+    mCloseButton(new Button(this, _("Close"), "close", this)),
     mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
     mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", ""))
 {

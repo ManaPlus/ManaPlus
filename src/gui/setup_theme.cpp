@@ -197,7 +197,7 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     mNpcFontSize(config.getIntValue("npcfontSize")),
     mNpcFontSizeDropDown(new DropDown(this, mNpcFontSizeListModel)),
     // TRANSLATORS: button name with information about selected theme
-    mInfoButton(new Button(_("i"), ACTION_INFO, this))
+    mInfoButton(new Button(this, _("i"), ACTION_INFO, this))
 {
     setName(_("Theme"));
 

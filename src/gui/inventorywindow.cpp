@@ -177,12 +177,12 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
             longestUseString = unequip;
         }
 
-        mUseButton = new Button(longestUseString, "use", this);
-        mDropButton = new Button(_("Drop..."), "drop", this);
-        mSplitButton = new Button(_("Split"), "split", this);
-        mOutfitButton = new Button(_("Outfits"), "outfit", this);
-        mShopButton = new Button(_("Shop"), "shop", this);
-        mEquipmentButton = new Button(_("Equipment"), "equipment", this);
+        mUseButton = new Button(this, longestUseString, "use", this);
+        mDropButton = new Button(this, _("Drop..."), "drop", this);
+        mSplitButton = new Button(this, _("Split"), "split", this);
+        mOutfitButton = new Button(this, _("Outfits"), "outfit", this);
+        mShopButton = new Button(this, _("Shop"), "shop", this);
+        mEquipmentButton = new Button(this, _("Equipment"), "equipment", this);
         mWeightBar = new ProgressBar(0.0f, 100, 0, Theme::PROG_WEIGHT);
 
         place(0, 0, mWeightBar, 4);
@@ -204,9 +204,9 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     }
     else
     {
-        mStoreButton = new Button(_("Store"), "store", this);
-        mRetrieveButton = new Button(_("Retrieve"), "retrieve", this);
-        mCloseButton = new Button(_("Close"), "close", this);
+        mStoreButton = new Button(this, _("Store"), "store", this);
+        mRetrieveButton = new Button(this, _("Retrieve"), "retrieve", this);
+        mCloseButton = new Button(this, _("Close"), "close", this);
 
         mSlotsBarCell = &place(0, 0, mSlotsBar, 6);
         mSortDropDownCell = &place(6, 0, mSortDropDown, 1);

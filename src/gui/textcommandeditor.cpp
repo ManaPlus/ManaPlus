@@ -191,9 +191,9 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     mSchoolDropDown(new DropDown(this, mMagicSchoolModel)),
     mSchoolLvlLabel(new Label(_("School level:"))),
     mSchoolLvlField(new IntTextField(0)),
-    mCancelButton(new Button(_("Cancel"), "cancel", this)),
-    mSaveButton(new Button(_("Save"), "save", this)),
-    mDeleteButton(new Button(_("Delete"), "delete", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    mSaveButton(new Button(this, _("Save"), "save", this)),
+    mDeleteButton(new Button(this, _("Delete"), "delete", this)),
     mEnabledKeyboard(keyboard.isEnabled())
 {
     const int w = 350;

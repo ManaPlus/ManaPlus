@@ -45,7 +45,8 @@ ConnectionDialog::ConnectionDialog(const std::string &text,
 
     ProgressIndicator *const progressIndicator = new ProgressIndicator;
     Label *const label = new Label(text);
-    Button *const cancelButton = new Button(_("Cancel"), "cancelButton", this);
+    Button *const cancelButton = new Button(
+        this, _("Cancel"), "cancelButton", this);
 
     place(0, 0, progressIndicator);
     place(0, 1, label);

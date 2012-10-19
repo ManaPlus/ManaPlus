@@ -58,9 +58,9 @@ float OutfitWindow::mAlpha = 1.0;
 OutfitWindow::OutfitWindow():
     Window(_("Outfits"), false, nullptr, "outfits.xml"),
     gcn::ActionListener(),
-    mPreviousButton(new Button(_("<"), "previous", this)),
-    mNextButton(new Button(_(">"), "next", this)),
-    mEquipButtom(new Button(_("Equip"), "equip", this)),
+    mPreviousButton(new Button(this, _("<"), "previous", this)),
+    mNextButton(new Button(this, _(">"), "next", this)),
+    mEquipButtom(new Button(this, _("Equip"), "equip", this)),
     mCurrentLabel(new Label(strprintf(_("Outfit: %d"), 1))),
     mUnequipCheck(new CheckBox(_("Unequip first"),
         serverConfig.getValueBool("OutfitUnequip0", true))),

@@ -54,10 +54,10 @@ NpcPostDialog::NpcPostDialog(const int npcId):
     mSender->setWidth(65);
 
     // create button for sending
-    Button *const sendButton = new Button(_("Send"), "send", this);
+    Button *const sendButton = new Button(this, _("Send"), "send", this);
     sendButton->setPosition(400 - sendButton->getWidth(),
                             170 - sendButton->getHeight());
-    Button *const cancelButton = new Button(_("Cancel"), "cancel", this);
+    Button *const cancelButton = new Button(this, _("Cancel"), "cancel", this);
     cancelButton->setPosition(sendButton->getX()
         - (cancelButton->getWidth() + 2), sendButton->getY());
 

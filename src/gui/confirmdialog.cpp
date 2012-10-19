@@ -46,12 +46,12 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
     mTextBox->setOpaque(false);
     mTextBox->setTextWrapped(msg, 260);
 
-    Button *const yesButton = new Button(_("Yes"), "yes", this);
-    Button *const noButton = new Button(_("No"), "no", this);
+    Button *const yesButton = new Button(this, _("Yes"), "yes", this);
+    Button *const noButton = new Button(this, _("No"), "no", this);
     Button *ignoreButton = nullptr;
 
     if (ignore)
-        ignoreButton = new Button(_("Ignore"), "ignore", this);
+        ignoreButton = new Button(this, _("Ignore"), "ignore", this);
 
     const int numRows = mTextBox->getNumberOfRows();
     int inWidth = yesButton->getWidth() + noButton->getWidth() + 

@@ -233,7 +233,7 @@ void WindowMenu::addButton(const char *const text,
                            const std::string &description,
                            int &x, int &h, const int key, const bool visible)
 {
-    Button *const btn = new Button(gettext(text), text, this);
+    Button *const btn = new Button(this, gettext(text), text, this);
     btn->setPosition(x, 0);
     btn->setDescription(description);
     btn->setTag(key);

@@ -101,13 +101,13 @@ void BuyDialog::init()
 
     // TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
     // You may change this symbol if your language uses another.
-    mIncreaseButton = new Button(_("+"), "inc", this);
+    mIncreaseButton = new Button(this, _("+"), "inc", this);
     // TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
     // You may change this symbol if your language uses another.
-    mDecreaseButton = new Button(_("-"), "dec", this);
-    mBuyButton = new Button(_("Buy"), "buy", this);
-    mQuitButton = new Button(_("Quit"), "quit", this);
-    mAddMaxButton = new Button(_("Max"), "max", this);
+    mDecreaseButton = new Button(this, _("-"), "dec", this);
+    mBuyButton = new Button(this, _("Buy"), "buy", this);
+    mQuitButton = new Button(this, _("Quit"), "quit", this);
+    mAddMaxButton = new Button(this, _("Max"), "max", this);
 
     mDecreaseButton->adjustSize();
     mDecreaseButton->setWidth(mIncreaseButton->getWidth());

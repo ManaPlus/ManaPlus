@@ -74,18 +74,18 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mNameLabel(new Label(_("Name:"))),
     // TRANSLATORS: This is a narrow symbol used to denote 'next'.
     // You may change this symbol if your language uses another.
-    mNextHairColorButton(new Button(_(">"), "nextcolor", this)),
+    mNextHairColorButton(new Button(this, _(">"), "nextcolor", this)),
     // TRANSLATORS: This is a narrow symbol used to denote 'previous'.
     // You may change this symbol if your language uses another.
-    mPrevHairColorButton(new Button(_("<"), "prevcolor", this)),
+    mPrevHairColorButton(new Button(this, _("<"), "prevcolor", this)),
     mHairColorLabel(new Label(_("Hair color:"))),
     mHairColorNameLabel(new Label("")),
-    mNextHairStyleButton(new Button(_(">"), "nextstyle", this)),
-    mPrevHairStyleButton(new Button(_("<"), "prevstyle", this)),
+    mNextHairStyleButton(new Button(this, _(">"), "nextstyle", this)),
+    mPrevHairStyleButton(new Button(this, _("<"), "prevstyle", this)),
     mHairStyleLabel(new Label(_("Hair style:"))),
     mHairStyleNameLabel(new Label("")),
-    mActionButton(new Button(_("^"), "action", this)),
-    mRotateButton(new Button(_(">"), "rotate", this)),
+    mActionButton(new Button(this, _("^"), "action", this)),
+    mRotateButton(new Button(this, _(">"), "rotate", this)),
     mMale(new RadioButton(_("Male"), "gender")),
     mFemale(new RadioButton(_("Female"), "gender")),
     mOther(new RadioButton(_("Other"), "gender")),
@@ -93,8 +93,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         strprintf(_("Please distribute %d points"), 99))),
     mMaxPoints(0),
     mUsedPoints(0),
-    mCreateButton(new Button(_("Create"), "create", this)),
-    mCancelButton(new Button(_("Cancel"), "cancel", this)),
+    mCreateButton(new Button(this, _("Create"), "create", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mRace(0),
     mPlayer(new Being(0, ActorSprite::PLAYER, static_cast<uint16_t>(mRace),
             nullptr)),
@@ -134,8 +134,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     if (serverVersion >= 2)
     {
-        mNextRaceButton = new Button(_(">"), "nextrace", this);
-        mPrevRaceButton = new Button(_("<"), "prevrace", this);
+        mNextRaceButton = new Button(this, _(">"), "nextrace", this);
+        mPrevRaceButton = new Button(this, _("<"), "prevrace", this);
         mRaceLabel = new Label(_("Race:"));
         mRaceNameLabel = new Label("");
     }

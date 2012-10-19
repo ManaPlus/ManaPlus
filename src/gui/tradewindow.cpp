@@ -68,9 +68,9 @@ TradeWindow::TradeWindow():
     mMyItemContainer(new ItemContainer(mMyInventory.get())),
     mPartnerItemContainer(new ItemContainer(mPartnerInventory.get())),
     mMoneyLabel(new Label(strprintf(_("You get %s"), ""))),
-    mAddButton(new Button(_("Add"), "add", this)),
-    mOkButton(new Button("", "", this)), // Will be filled in later
-    mMoneyChangeButton(new Button(_("Change"), "money", this)),
+    mAddButton(new Button(this, _("Add"), "add", this)),
+    mOkButton(new Button(this, "", "", this)), // Will be filled in later
+    mMoneyChangeButton(new Button(this, _("Change"), "money", this)),
     mMoneyField(new TextField),
     mStatus(PROPOSING),
     mAutoAddItem(nullptr),

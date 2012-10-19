@@ -999,24 +999,24 @@ int Client::gameExec()
             mDesktop = new Desktop(nullptr);
             top->add(mDesktop);
             int x = top->getWidth();
-            mSetupButton = new Button(_("Setup"), "Setup", this);
+            mSetupButton = new Button(mDesktop, _("Setup"), "Setup", this);
             x -= mSetupButton->getWidth() + 3;
             mSetupButton->setPosition(x, 3);
             top->add(mSetupButton);
 
 #ifndef WIN32
-            mPerfomanceButton = new Button(
+            mPerfomanceButton = new Button(mDesktop,
                 _("Perfomance"), "Perfomance", this);
             x -= mPerfomanceButton->getWidth() + 6;
             mPerfomanceButton->setPosition(x, 3);
             top->add(mPerfomanceButton);
 
-            mVideoButton = new Button(_("Video"), "Video", this);
+            mVideoButton = new Button(mDesktop,_("Video"), "Video", this);
             x -= mVideoButton->getWidth() + 6;
             mVideoButton->setPosition(x, 3);
             top->add(mVideoButton);
 
-            mThemesButton = new Button(_("Themes"), "Themes", this);
+            mThemesButton = new Button(mDesktop,_("Themes"), "Themes", this);
             x -= mThemesButton->getWidth() + 6;
             mThemesButton->setPosition(x, 3);
             top->add(mThemesButton);

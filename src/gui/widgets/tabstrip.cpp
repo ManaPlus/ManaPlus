@@ -42,7 +42,7 @@ TabStrip::TabStrip(const Widget2 *const widget,
 
 gcn::Widget *TabStrip::createWidget(const std::string &text)
 {
-    Button *const widget = new Button();
+    Button *const widget = new Button(this);
     widget->setStick(true);
     widget->setCaption(text);
     widget->adjustSize();

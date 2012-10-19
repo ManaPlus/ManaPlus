@@ -247,7 +247,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
                 player_relations.getDefault() & PlayerRelation::TRADE)),
     mDefaultWhisper(new CheckBox(_("Allow whispers"),
                 player_relations.getDefault() & PlayerRelation::WHISPER)),
-    mDeleteButton(new Button(_("Delete"), ACTION_DELETE, this))
+    mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE, this))
 {
     setName(_("Relations"));
 

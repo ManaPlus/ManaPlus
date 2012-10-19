@@ -49,8 +49,8 @@ UnRegisterDialog::UnRegisterDialog(LoginData *const data):
     gcn::ActionListener(),
     mLoginData(data),
     mPasswordField(new PasswordField(mLoginData->password)),
-    mUnRegisterButton(new Button(_("Unregister"), "unregister", this)),
-    mCancelButton(new Button(_("Cancel"), "cancel", this)),
+    mUnRegisterButton(new Button(this, _("Unregister"), "unregister", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener)
 {
     Label *const userLabel = new Label(strprintf(_("Name: %s"),

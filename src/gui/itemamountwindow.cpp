@@ -205,11 +205,11 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
 
 
     // Buttons
-    Button *const minusAmountButton = new Button(_("-"), "dec", this);
-    Button *const plusAmountButton = new Button(_("+"), "inc", this);
-    Button *const okButton = new Button(_("OK"), "ok", this);
-    Button *const cancelButton = new Button(_("Cancel"), "cancel", this);
-    Button *const addAllButton = new Button(_("All"), "all", this);
+    Button *const minusAmountButton = new Button(this, _("-"), "dec", this);
+    Button *const plusAmountButton = new Button(this, _("+"), "inc", this);
+    Button *const okButton = new Button(this, _("OK"), "ok", this);
+    Button *const cancelButton = new Button(this, _("Cancel"), "cancel", this);
+    Button *const addAllButton = new Button(this, _("All"), "all", this);
 
     minusAmountButton->adjustSize();
     minusAmountButton->setWidth(plusAmountButton->getWidth());
@@ -233,8 +233,10 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
 
     if (mUsage == ShopBuyAdd || mUsage == ShopSellAdd)
     {
-        Button *const minusPriceButton = new Button(_("-"), "decPrice", this);
-        Button *const plusPriceButton = new Button(_("+"), "incPrice", this);
+        Button *const minusPriceButton = new Button(
+            this, _("-"), "decPrice", this);
+        Button *const plusPriceButton = new Button(
+            this, _("+"), "incPrice", this);
         minusPriceButton->adjustSize();
         minusPriceButton->setWidth(plusPriceButton->getWidth());
 

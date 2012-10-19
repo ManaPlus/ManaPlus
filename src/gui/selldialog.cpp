@@ -91,11 +91,11 @@ void SellDialog::init()
     mMoneyLabel = new Label(strprintf(_("Price: %s / Total: %s"),
                                       "", ""));
 
-    mIncreaseButton = new Button(_("+"), "inc", this);
-    mDecreaseButton = new Button(_("-"), "dec", this);
-    mSellButton = new Button(_("Sell"), "sell", this);
-    mQuitButton = new Button(_("Quit"), "quit", this);
-    mAddMaxButton = new Button(_("Max"), "max", this);
+    mIncreaseButton = new Button(this, _("+"), "inc", this);
+    mDecreaseButton = new Button(this, _("-"), "dec", this);
+    mSellButton = new Button(this, _("Sell"), "sell", this);
+    mQuitButton = new Button(this, _("Quit"), "quit", this);
+    mAddMaxButton = new Button(this, _("Max"), "max", this);
 
     mDecreaseButton->adjustSize();
     mDecreaseButton->setWidth(mIncreaseButton->getWidth());

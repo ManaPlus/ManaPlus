@@ -148,7 +148,7 @@ StatusWindow::StatusWindow() :
     mDAttrScroll(new ScrollArea(mDAttrCont, false)),
     mCharacterPointsLabel(new Label("C")),
     mCorrectionPointsLabel(nullptr),
-    mCopyButton(new Button(_("Copy to chat"), "copy", this))
+    mCopyButton(new Button(this, _("Copy to chat"), "copy", this))
 {
     listen(CHANNEL_ATTRIBUTES);
 
@@ -805,7 +805,7 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
     mNeeded(1),
     mPoints(new Label(_("Max"))),
     mDec(nullptr),
-    mInc(new Button(_("+"), "inc", this))
+    mInc(new Button(this, _("+"), "inc", this))
 {
     // Do the layout
     ContainerPlacer place = mLayout->getPlacer(0, 0);
@@ -817,7 +817,7 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
 
     if (Net::getPlayerHandler()->canCorrectAttributes())
     {
-        mDec = new Button(_("-"), "dec", this);
+        mDec = new Button(this, _("-"), "dec", this);
         mDec->setWidth(mInc->getWidth());
 
         place(3, 0, mDec);

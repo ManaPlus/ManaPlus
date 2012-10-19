@@ -56,8 +56,8 @@ SliderList::SliderList(const Widget2 *const widget,
 
     setHeight(sliderHeight);
 
-    mButtons[0] = new Button("<", mPrevEventId, this);
-    mButtons[1] = new Button(">", mNextEventId, this);
+    mButtons[0] = new Button(this, "<", mPrevEventId, this);
+    mButtons[1] = new Button(this, ">", mNextEventId, this);
     add(mButtons[0]);
     add(mLabel);
     add(mButtons[1]);

@@ -50,9 +50,9 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData *const data):
     mOldPassField(new PasswordField),
     mFirstPassField(new PasswordField),
     mSecondPassField(new PasswordField),
-    mChangePassButton(new Button(_("Change Password"),
+    mChangePassButton(new Button(this, _("Change Password"),
         "change_password", this)),
-    mCancelButton(new Button(_("Cancel"), "cancel", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {

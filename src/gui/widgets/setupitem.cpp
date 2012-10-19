@@ -287,7 +287,7 @@ void SetupItemTextField::createControls()
 
     mLabel = new Label(mText);
     mTextField = new TextField(mValue, true, mParent, mEventName);
-    mButton = new Button(_("Edit"), mEventName + "_EDIT", mParent);
+    mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
     mTextField->setWidth(200);
     fixFirstItemSize(mLabel);
@@ -411,7 +411,7 @@ void SetupItemIntTextField::createControls()
     mTextField->setActionEventId(mEventName);
     mTextField->addActionListener(mParent);
 
-    mButton = new Button(_("Edit"), mEventName + "_EDIT", mParent);
+    mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
     mTextField->setWidth(50);
     fixFirstItemSize(mLabel);
@@ -1012,7 +1012,8 @@ SetupItemSound::SetupItemSound(std::string text, std::string description,
 
 void SetupItemSound::addMoreControls()
 {
-    mButton = new Button(BUTTON_PLAY, 16, 16, mEventName + "_PLAY", this);
+    mButton = new Button(this, BUTTON_PLAY, 16, 16,
+        mEventName + "_PLAY", this);
     mHorizont->add(mButton);
 }
 

@@ -62,7 +62,7 @@ HelpWindow::HelpWindow():
     setDefaultSize(500, 400, ImageRect::CENTER);
 
     mBrowserBox->setOpaque(false);
-    Button *const okButton = new Button(_("Close"), "close", this);
+    Button *const okButton = new Button(this, _("Close"), "close", this);
 
     mBrowserBox->setLinkHandler(this);
     mBrowserBox->setFont(gui->getHelpFont());

@@ -47,7 +47,7 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
     mTextBox->setOpaque(false);
     mTextBox->setTextWrapped(msg, minWidth);
 
-    Button *const okButton = new Button(_("OK"), "ok", this);
+    Button *const okButton = new Button(this, _("OK"), "ok", this);
 
     const int numRows = mTextBox->getNumberOfRows();
     const int fontHeight = getFont()->getHeight();

@@ -48,9 +48,9 @@ ChangeEmailDialog::ChangeEmailDialog(LoginData *const data):
     gcn::ActionListener(),
     mFirstEmailField(new TextField),
     mSecondEmailField(new TextField),
-    mChangeEmailButton(new Button(_("Change Email Address"),
+    mChangeEmailButton(new Button(this, _("Change Email Address"),
         "change_email", this)),
-    mCancelButton(new Button(_("Cancel"), "cancel", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {

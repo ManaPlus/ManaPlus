@@ -75,7 +75,7 @@ ShopWindow::ShopWindow():
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
-    mCloseButton(new Button(_("Close"), "close", this)),
+    mCloseButton(new Button(this, _("Close"), "close", this)),
     mBuyShopItems(new ShopItems),
     mSellShopItems(new ShopItems),
     mBuyShopItemList(new ShopListBox(this, mBuyShopItems, mBuyShopItems)),
@@ -86,13 +86,13 @@ ShopWindow::ShopWindow():
         getOptionBool("showsellbackground"), "shop_sell_background.xml")),
     mBuyLabel(new Label(_("Buy items"))),
     mSellLabel(new Label(_("Sell items"))),
-    mBuyAddButton(new Button(_("Add"), "add buy", this)),
-    mBuyDeleteButton(new Button(_("Delete"), "delete buy", this)),
-    mBuyAnnounceButton(new Button(_("Announce"), "announce buy", this)),
+    mBuyAddButton(new Button(this, _("Add"), "add buy", this)),
+    mBuyDeleteButton(new Button(this, _("Delete"), "delete buy", this)),
+    mBuyAnnounceButton(new Button(this, _("Announce"), "announce buy", this)),
     mBuyAuctionButton(nullptr),
-    mSellAddButton(new Button(_("Add"), "add sell", this)),
-    mSellDeleteButton(new Button(_("Delete"), "delete sell", this)),
-    mSellAnnounceButton(new Button(_("Announce"), "announce sell", this)),
+    mSellAddButton(new Button(this, _("Add"), "add sell", this)),
+    mSellDeleteButton(new Button(this, _("Delete"), "delete sell", this)),
+    mSellAnnounceButton(new Button(this, _("Announce"), "announce sell", this)),
     mSellAuctionButton(nullptr),
     mAnnounceLinks(new CheckBox(_("Show links in announce"), false,
                    this, "link announce")),
@@ -146,8 +146,10 @@ ShopWindow::ShopWindow():
 
     if (auctionManager && auctionManager->getEnableAuctionBot())
     {
-        mBuyAuctionButton = new Button(_("Auction"), "auction buy", this);
-        mSellAuctionButton = new Button(_("Auction"), "auction sell", this);
+        mBuyAuctionButton = new Button(this,
+            _("Auction"), "auction buy", this);
+        mSellAuctionButton = new Button(this,
+            _("Auction"), "auction sell", this);
         placer(4, 6, mBuyAuctionButton);
         placer(12, 6, mSellAuctionButton);
     }

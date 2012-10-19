@@ -273,7 +273,7 @@ BotCheckerWindow::BotCheckerWindow():
         "bochecker_background.xml")),
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
     mPlayerTitleTable(new GuiTable(mPlayerTableTitleModel)),
-    mIncButton(new Button(_("Reset"), "reset", this)),
+    mIncButton(new Button(this, _("Reset"), "reset", this)),
     mLastUpdateTime(0),
     mNeedUpdate(false),
     mEnabled(false)

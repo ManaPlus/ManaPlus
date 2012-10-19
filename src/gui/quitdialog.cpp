@@ -55,8 +55,8 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     mForceQuit(new RadioButton(_("Quit"), "quitdialog")),
     mSwitchAccountServer(new RadioButton(_("Switch server"), "quitdialog")),
     mSwitchCharacter(new RadioButton(_("Switch character"), "quitdialog")),
-    mOkButton(new Button(_("OK"), "ok", this)),
-    mCancelButton(new Button(_("Cancel"), "cancel", this)),
+    mOkButton(new Button(this, _("OK"), "ok", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mMyPointer(pointerToMe)
 {
     addKeyListener(this);

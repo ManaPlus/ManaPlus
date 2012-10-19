@@ -143,8 +143,8 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     mLoginData(data),
     mAccountNameLabel(new Label(mLoginData->username)),
     mLastLoginLabel(new Label(mLoginData->lastLogin)),
-    mSwitchLoginButton(new Button(_("Switch Login"), "switch", this)),
-    mChangePasswordButton(new Button(_("Change Password"),
+    mSwitchLoginButton(new Button(this, _("Switch Login"), "switch", this)),
+    mChangePasswordButton(new Button(this, _("Change Password"),
                           "change_password", this)),
     mUnregisterButton(nullptr),
     mChangeEmailButton(nullptr),
@@ -167,7 +167,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
 
     if (optionalActions & Net::LoginHandler::Unregister)
     {
-        mUnregisterButton = new Button(_("Unregister"),
+        mUnregisterButton = new Button(this, _("Unregister"),
                                        "unregister", this);
         placer(3, 1, mUnregisterButton);
     }
@@ -176,7 +176,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
 
     if (optionalActions & Net::LoginHandler::ChangeEmail)
     {
-        mChangeEmailButton = new Button(_("Change Email"),
+        mChangeEmailButton = new Button(this, _("Change Email"),
                                         "change_email", this);
         placer(3, 2, mChangeEmailButton);
     }
@@ -564,8 +564,8 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
     mName(new Label("wwwwwwwwwwwwwwwwwwwwwwww")),
     mLevel(new Label("(888)")),
     mMoney(new Label("wwwwwwwww")),
-    mButton(new Button("wwwwwwwww", "go", charSelectDialog)),
-    mDelete(new Button(_("Delete"), "delete", charSelectDialog))
+    mButton(new Button(this, "wwwwwwwww", "go", charSelectDialog)),
+    mDelete(new Button(this, _("Delete"), "delete", charSelectDialog))
 {
     LayoutHelper h(this);
     ContainerPlacer placer = h.getPlacer(0, 0);

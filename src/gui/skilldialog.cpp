@@ -234,8 +234,8 @@ SkillDialog::SkillDialog() :
     gcn::ActionListener(),
     mTabs(new TabbedArea(this)),
     mPointsLabel(new Label("0")),
-    mUseButton(new Button(_("Use"), "use", this)),
-    mIncreaseButton(new Button(_("Up"), "inc", this)),
+    mUseButton(new Button(this, _("Use"), "use", this)),
+    mIncreaseButton(new Button(this, _("Up"), "inc", this)),
     mDefaultModel(nullptr)
 {
     setWindowName("Skills");

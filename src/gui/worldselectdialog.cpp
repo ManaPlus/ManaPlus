@@ -82,8 +82,8 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     gcn::KeyListener(),
     mWorldListModel(new WorldListModel(worlds)),
     mWorldList(new ListBox(this, mWorldListModel)),
-    mChangeLoginButton(new Button(_("Change Login"), "login", this)),
-    mChooseWorld(new Button(_("Choose World"), "world", this))
+    mChangeLoginButton(new Button(this, _("Change Login"), "login", this)),
+    mChooseWorld(new Button(this, _("Choose World"), "world", this))
 {
     ScrollArea *const worldsScroll = new ScrollArea(mWorldList,
         getOptionBool("showbackground"), "world_background.xml");
