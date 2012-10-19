@@ -48,7 +48,7 @@ UnRegisterDialog::UnRegisterDialog(LoginData *const data):
     Window(_("Unregister"), true, nullptr, "unregister.xml"),
     gcn::ActionListener(),
     mLoginData(data),
-    mPasswordField(new PasswordField(mLoginData->password)),
+    mPasswordField(new PasswordField(this, mLoginData->password)),
     mUnRegisterButton(new Button(this, _("Unregister"), "unregister", this)),
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener)

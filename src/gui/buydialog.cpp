@@ -90,7 +90,7 @@ void BuyDialog::init()
     mQuantityLabel->setAlignment(gcn::Graphics::CENTER);
     mMoneyLabel = new Label(strprintf(_("Price: %s / Total: %s"), "", ""));
 
-    mAmountField = new IntTextField(1, 1, 123);
+    mAmountField = new IntTextField(this, 1, 1, 123);
     mAmountField->setActionEventId("amount");
     mAmountField->addActionListener(this);
     mAmountField->setSendAlwaysEvents(true);

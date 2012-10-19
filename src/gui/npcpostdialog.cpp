@@ -43,7 +43,7 @@ NpcPostDialog::NpcPostDialog(const int npcId):
     gcn::ActionListener(),
     mNpcId(npcId),
     mText(new TextBox),
-    mSender(new TextField)
+    mSender(new TextField(this))
 {
     setContentSize(400, 180);
 

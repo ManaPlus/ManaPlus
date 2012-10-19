@@ -110,7 +110,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mFilter(nullptr),
     mSortModel(new SortListModel()),
     mSortDropDown(new DropDown(this, mSortModel, this, "sort")),
-    mNameFilter(new TextField("", true, this, "namefilter", true)),
+    mNameFilter(new TextField(this, "", true, this, "namefilter", true)),
     mSortDropDownCell(nullptr),
     mNameFilterCell(nullptr),
     mFilterCell(nullptr),

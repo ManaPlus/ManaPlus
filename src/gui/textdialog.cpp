@@ -53,12 +53,12 @@ TextDialog::TextDialog(const std::string &title, const std::string &msg,
     place(0, 0, textLabel, 4);
     if (isPassword)
     {
-        mPasswordField = new PasswordField;
+        mPasswordField = new PasswordField(this);
         place(0, 1, mPasswordField, 4);
     }
     else
     {
-        mTextField = new TextField;
+        mTextField = new TextField(this);
         place(0, 1, mTextField, 4);
     }
     place(2, 2, mOkButton);

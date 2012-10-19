@@ -77,7 +77,7 @@ class ChatInput final : public TextField, public gcn::FocusListener
 {
     public:
         ChatInput(ChatWindow *const window, TabbedArea *const tabs):
-            TextField("", false),
+            TextField(window, "", false),
             gcn::FocusListener(),
             mWindow(window),
             mChatTabs(tabs)

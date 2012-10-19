@@ -71,7 +71,7 @@ TradeWindow::TradeWindow():
     mAddButton(new Button(this, _("Add"), "add", this)),
     mOkButton(new Button(this, "", "", this)), // Will be filled in later
     mMoneyChangeButton(new Button(this, _("Change"), "money", this)),
-    mMoneyField(new TextField),
+    mMoneyField(new TextField(this)),
     mStatus(PROPOSING),
     mAutoAddItem(nullptr),
     mAutoAddToNick(""),

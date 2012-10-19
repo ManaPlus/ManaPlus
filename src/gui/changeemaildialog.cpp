@@ -46,8 +46,8 @@
 ChangeEmailDialog::ChangeEmailDialog(LoginData *const data):
     Window(_("Change Email Address"), true, nullptr, "changeemail.xml"),
     gcn::ActionListener(),
-    mFirstEmailField(new TextField),
-    mSecondEmailField(new TextField),
+    mFirstEmailField(new TextField(this)),
+    mSecondEmailField(new TextField(this)),
     mChangeEmailButton(new Button(this, _("Change Email Address"),
         "change_email", this)),
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),

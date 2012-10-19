@@ -70,7 +70,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     gcn::ActionListener(),
     gcn::KeyListener(),
     mCharSelectDialog(parent),
-    mNameField(new TextField("")),
+    mNameField(new TextField(this, "")),
     mNameLabel(new Label(_("Name:"))),
     // TRANSLATORS: This is a narrow symbol used to denote 'next'.
     // You may change this symbol if your language uses another.

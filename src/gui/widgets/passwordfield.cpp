@@ -24,8 +24,9 @@
 
 #include "debug.h"
 
-PasswordField::PasswordField(const std::string &text):
-    TextField(text)
+PasswordField::PasswordField(const Widget2 *const widget,
+                             const std::string &text):
+    TextField(widget, text)
 {
 }
 

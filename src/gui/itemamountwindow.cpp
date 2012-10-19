@@ -140,11 +140,11 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     Window("", true, parent, "amount.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
-    mItemAmountTextField(new IntTextField(1)),
+    mItemAmountTextField(new IntTextField(this, 1)),
     mItemPriceTextField(nullptr),
     mGPLabel(nullptr),
     mItem(item),
-    mItemIcon(new Icon(this, item ? item->getImage() : 0)),
+    mItemIcon(new Icon(this, item ? item->getImage() : nullptr)),
     mMax(maxRange),
     mUsage(usage),
     mItemPopup(new ItemPopup),
@@ -181,7 +181,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     if (mUsage == ShopBuyAdd || mUsage == ShopSellAdd)
     {
         // Integer field
-        mItemPriceTextField = new IntTextField(1);
+        mItemPriceTextField = new IntTextField(this, 1);
         mItemPriceTextField->setRange(1, 10000000);
         mItemPriceTextField->setWidth(35);
         mItemPriceTextField->addKeyListener(this);

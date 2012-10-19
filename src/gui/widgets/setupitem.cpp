@@ -286,7 +286,7 @@ void SetupItemTextField::createControls()
     mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(mText);
-    mTextField = new TextField(mValue, true, mParent, mEventName);
+    mTextField = new TextField(this, mValue, true, mParent, mEventName);
     mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
     mTextField->setWidth(200);
@@ -407,7 +407,8 @@ void SetupItemIntTextField::createControls()
     mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(mText);
-    mTextField = new IntTextField(atoi(mValue.c_str()), mMin, mMax, true, 30);
+    mTextField = new IntTextField(this, atoi(mValue.c_str()),
+        mMin, mMax, true, 30);
     mTextField->setActionEventId(mEventName);
     mTextField->addActionListener(mParent);
 

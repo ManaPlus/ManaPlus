@@ -66,9 +66,9 @@ RegisterDialog::RegisterDialog(LoginData *const data):
     gcn::ActionListener(),
     gcn::KeyListener(),
     mLoginData(data),
-    mUserField(new TextField(mLoginData->username)),
-    mPasswordField(new PasswordField(mLoginData->password)),
-    mConfirmField(new PasswordField),
+    mUserField(new TextField(this, mLoginData->username)),
+    mPasswordField(new PasswordField(this, mLoginData->password)),
+    mConfirmField(new PasswordField(this)),
     mEmailField(nullptr),
     mRegisterButton(new Button(this, _("Register"), "register", this)),
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
@@ -119,7 +119,7 @@ RegisterDialog::RegisterDialog(LoginData *const data):
     if (optionalActions & Net::LoginHandler::SetEmailOnRegister)
     {
         Label *const emailLabel = new Label(_("Email:"));
-        mEmailField = new TextField;
+        mEmailField = new TextField(this);
         placer(0, row, emailLabel);
         placer(1, row, mEmailField, 3).setPadding(2);
 

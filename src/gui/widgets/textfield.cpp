@@ -47,11 +47,12 @@ int TextField::instances = 0;
 float TextField::mAlpha = 1.0;
 ImageRect TextField::skin;
 
-TextField::TextField(const std::string &text, const bool loseFocusOnTab,
+TextField::TextField(const Widget2 *const widget,
+                     const std::string &text, const bool loseFocusOnTab,
                      gcn::ActionListener *const listener, std::string eventId,
                      const bool sendAlwaysEvents):
     gcn::TextField(text),
-    Widget2(),
+    Widget2(widget),
     mSendAlwaysEvents(sendAlwaysEvents),
     mNumeric(false),
     mMinimum(0),

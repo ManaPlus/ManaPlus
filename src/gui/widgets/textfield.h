@@ -44,7 +44,8 @@ class TextField : public gcn::TextField,
         /**
          * Constructor, initializes the text field with the given string.
          */
-        TextField(const std::string &text = "",
+        TextField(const Widget2 *const widget,
+                  const std::string &text = "",
                   const bool loseFocusOnTab = true,
                   gcn::ActionListener *const listener = nullptr,
                   std::string eventId = "",

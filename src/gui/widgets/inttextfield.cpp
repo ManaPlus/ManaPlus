@@ -31,9 +31,10 @@
 
 #include "debug.h"
 
-IntTextField::IntTextField(const int def, const int min, const int max,
+IntTextField::IntTextField(const Widget2 *const widget, const int def,
+                           const int min, const int max,
                            const bool enabled, const int width) :
-    TextField(toString(def)),
+    TextField(widget, toString(def)),
     mMin(0),
     mMax(0),
     mDefault(def),

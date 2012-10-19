@@ -63,18 +63,18 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mGradTypeText(new Label),
     mGradDelayLabel(new Label(_("Delay:"))),
     mGradDelaySlider(new Slider(20, 100)),
-    mGradDelayText(new TextField()),
+    mGradDelayText(new TextField(this)),
     mRedLabel(new Label(_("Red:"))),
     mRedSlider(new Slider(0, 255)),
-    mRedText(new TextField),
+    mRedText(new TextField(this)),
     mRedValue(0),
     mGreenLabel(new Label(_("Green:"))),
     mGreenSlider(new Slider(0, 255)),
-    mGreenText(new TextField),
+    mGreenText(new TextField(this)),
     mGreenValue(0),
     mBlueLabel(new Label(_("Blue:"))),
     mBlueSlider(new Slider(0, 255)),
-    mBlueText(new TextField),
+    mBlueText(new TextField(this)),
     mBlueValue(0)
 {
     setName(_("Colors"));
