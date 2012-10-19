@@ -74,6 +74,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     mDragOffsetX = 0;
     mDragOffsetY = 0;
 
+    content->setWidget2(this);
     setupWindow->registerWindowForReset(this);
 
     const int border = SCROLL_PADDING * 2 + getPadding() * 2;
@@ -156,6 +157,7 @@ void ShortcutWindow::addTab(std::string name, ShortcutContainer *const content)
     ScrollArea *const scroll = new ScrollArea(content, false);
     scroll->setPosition(SCROLL_PADDING, SCROLL_PADDING);
     scroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    content->setWidget2(this);
     Tab *const tab = new ShortcutTab(this, name, content);
     mTabs->addTab(tab, scroll);
 }

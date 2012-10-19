@@ -56,10 +56,9 @@ class Widget2
                 return Palette::BLACK;
         }
 
-        void setPalette(int p)
+        void setWidget2(const Widget2 *const widget)
         {
-            if (p >= 1 && p <= THEME_PALETTES)
-                mPalette = p;
+            mPalette = widget ? widget->mPalette : 1;
         }
 
     private:
