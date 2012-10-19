@@ -43,12 +43,12 @@ class Icon final : public gcn::Widget,
         /**
          * Constructor.
          */
-        Icon(const std::string &filename);
+        Icon(const Widget2 *const widget, const std::string &filename);
 
         /**
          * Constructor, uses an existing Image.
          */
-        Icon(Image *const image);
+        Icon(const Widget2 *const widget, Image *const image);
 
         A_DELETE_COPY(Icon)
 
