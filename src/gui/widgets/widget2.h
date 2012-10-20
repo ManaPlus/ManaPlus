@@ -27,12 +27,12 @@ class Widget2
 {
     public:
         Widget2() :
-            mPalette(1)
+            mPaletteOffset(0)
         {
         }
 
         Widget2(const Widget2 *const widget) :
-            mPalette(widget ? widget->mPalette : 1)
+            mPaletteOffset(widget ? widget->mPaletteOffset : 0)
         {
             checkPalette();
         }
@@ -44,39 +44,42 @@ class Widget2
         inline const gcn::Color &getThemeColor(const int type,
                                                const int alpha = 255) const
         {
-            return Theme::getThemeColor(type * mPalette, alpha);
+            return Theme::getThemeColor(mPaletteOffset + type, alpha);
         }
 
         inline const gcn::Color &getThemeCharColor(const signed char c,
                                                    bool &valid) const
         {
-            const int colorId = Theme::getIdByChar(c, valid);
+            const int colorId = Theme::getThemeIdByChar(c, valid);
             if (valid)
-                return Theme::getThemeColor(colorId * mPalette);
+                return Theme::getThemeColor(mPaletteOffset + colorId);
             else
                 return Palette::BLACK;
         }
 
         virtual void setWidget2(const Widget2 *const widget)
         {
-            mPalette = widget ? widget->mPalette : 1;
+            mPaletteOffset = widget ? widget->mPaletteOffset : 0;
         }
 
         void setPalette(int palette)
         {
-            mPalette = palette;
+            mPaletteOffset = palette * Theme::THEME_COLORS_END;
             checkPalette();
             setWidget2(this);
         }
 
         void checkPalette()
         {
-            if (mPalette < 1 || mPalette > THEME_PALETTES)
-                mPalette = 1;
+            if (mPaletteOffset < 0 || mPaletteOffset
+                >= THEME_PALETTES * Theme::THEME_COLORS_END)
+            {
+                mPaletteOffset = 0;
+            }
         }
 
     protected:
-        int mPalette;
+        int mPaletteOffset;
 };
 
 #endif

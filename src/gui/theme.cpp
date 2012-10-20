@@ -924,8 +924,8 @@ void Theme::loadColors(std::string file)
             continue;
         }
 
-        int paletteId = XML::getProperty(paletteNode, "id", 1);
-        if (paletteId < 1 || paletteId > THEME_PALETTES)
+        const int paletteId = XML::getProperty(paletteNode, "id", 1);
+        if (paletteId < 0 || paletteId >= THEME_PALETTES)
             continue;
 
         for_each_xml_child_node(node, paletteNode)
@@ -942,8 +942,8 @@ void Theme::loadColors(std::string file)
 
                 color = readColor(temp);
                 grad = readColorGradient(XML::getProperty(node, "effect", ""));
-
-                mColors[type * paletteId].set(type, color, grad, 10);
+                mColors[paletteId * THEME_COLORS_END + type].set(
+                    type, color, grad, 10);
             }
         }
     }

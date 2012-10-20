@@ -143,9 +143,7 @@ Window::Window(const std::string &caption, const bool modal,
 
     addWidgetListener(this);
     mForegroundColor = getThemeColor(Theme::WINDOW);
-    logger->log("window palettes: %d, %d", mPalette, childPalette);
-    if (childPalette != mPalette)
-        setPalette(childPalette);
+    setPalette(childPalette);
 }
 
 Window::~Window()

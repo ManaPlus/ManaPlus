@@ -296,7 +296,7 @@ class Theme final : public Palette, public ConfigListener
                                                bool &valid)
         { return mInstance->getCharColor(c, valid); }
 
-        static int getIdByChar(const signed char c, bool &valid)
+        static int getThemeIdByChar(const signed char c, bool &valid)
         { return mInstance->getIdByChar(c, valid); }
 
         static gcn::Color getProgressColor(const int type,
