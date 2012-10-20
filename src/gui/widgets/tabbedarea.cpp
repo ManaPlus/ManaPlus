@@ -365,7 +365,6 @@ void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
     gcn::Widget *const w = getCurrentWidget();
     if (w)
     {
-        int newScroll = 0;
         ScrollArea* scr = dynamic_cast<ScrollArea*>(w);
         if (scr)
         {
@@ -379,14 +378,16 @@ void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
                         && scr->getVerticalScrollAmount()
                         <= scr->getVerticalMaxScroll() + 2)
                     {
-                        newScroll = scr->getVerticalScrollAmount()
+                        int newScroll = scr->getVerticalScrollAmount()
                             + rect.height - height;
+                        w->setSize(mWidgetContainer->getWidth() - frameSize,
+                            mWidgetContainer->getHeight() - frameSize);
+                        if (newScroll)
+                            scr->setVerticalScrollAmount(newScroll);
                     }
                 }
             }
         }
-        if (scr && newScroll)
-            scr->setVerticalScrollAmount(newScroll);
     }
 
     if (mArrowButton[1])
@@ -455,15 +456,18 @@ void TabbedArea::adjustSize()
 
     mWidgetContainer->setPosition(0, maxTabHeight);
     mWidgetContainer->setSize(getWidth(), getHeight() - maxTabHeight);
-    gcn::Widget *const w = getCurrentWidget();
-    if (w)
+    if (!mFollowDownScroll)
     {
-        const int wFrameSize = w->getFrameSize();
-        const int frame2 = 2 * wFrameSize;
+        gcn::Widget *const w = getCurrentWidget();
+        if (w)
+        {
+            const int wFrameSize = w->getFrameSize();
+            const int frame2 = 2 * wFrameSize;
 
-        w->setPosition(wFrameSize, wFrameSize);
-        w->setSize(mWidgetContainer->getWidth() - frame2,
-            mWidgetContainer->getHeight() - frame2);
+            w->setPosition(wFrameSize, wFrameSize);
+            w->setSize(mWidgetContainer->getWidth() - frame2,
+                mWidgetContainer->getHeight() - frame2);
+        }
     }
 }
 
