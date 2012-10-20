@@ -98,6 +98,7 @@ Window::Window(const std::string &caption, const bool modal,
     if (skin == "")
         skin = "window.xml";
 
+    int childPalette = 1;
     // Loads the skin
     if (Theme::instance())
     {
@@ -122,6 +123,8 @@ Window::Window(const std::string &caption, const bool modal,
             {
                 mCaptionAlign = gcn::Graphics::LEFT;
             }
+            setPalette(getOption("palette"));
+            childPalette = getOption("childPalette");
         }
     }
 
@@ -140,6 +143,9 @@ Window::Window(const std::string &caption, const bool modal,
 
     addWidgetListener(this);
     mForegroundColor = getThemeColor(Theme::WINDOW);
+    logger->log("window palettes: %d, %d", mPalette, childPalette);
+    if (childPalette != mPalette)
+        setPalette(childPalette);
 }
 
 Window::~Window()

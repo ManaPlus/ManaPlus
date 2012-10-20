@@ -68,7 +68,7 @@ Popup::Popup(const std::string &name,
         if (mSkin)
         {
             setPadding(mSkin->getPadding());
-            // init Widget2 fields
+            setPalette(mSkin->getOption("palette"));
         }
     }
     else

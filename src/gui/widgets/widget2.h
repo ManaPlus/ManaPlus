@@ -34,6 +34,7 @@ class Widget2
         Widget2(const Widget2 *const widget) :
             mPalette(widget ? widget->mPalette : 1)
         {
+            checkPalette();
         }
 
         virtual ~Widget2()
@@ -61,7 +62,20 @@ class Widget2
             mPalette = widget ? widget->mPalette : 1;
         }
 
-    private:
+        void setPalette(int palette)
+        {
+            mPalette = palette;
+            checkPalette();
+            setWidget2(this);
+        }
+
+        void checkPalette()
+        {
+            if (mPalette < 1 || mPalette > THEME_PALETTES)
+                mPalette = 1;
+        }
+
+    protected:
         int mPalette;
 };
 
