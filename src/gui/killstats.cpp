@@ -48,22 +48,26 @@ KillStats::KillStats():
     mKillTimer(0),
     mResetButton(new Button(this, _("Reset stats"), "reset", this)),
     mTimerButton(new Button(this, _("Reset timer"), "timer", this)),
-    mLine4(new Label(this, strprintf(_("Kills: %s, total exp: %s"), "?", "?"))),
+    mLine4(new Label(this, strprintf(_("Kills: %s, total exp: %s"),
+        "?", "?"))),
     mLine5(new Label(this, strprintf(_("Avg Exp: %s"), "?"))),
-    mLine6(new Label(this, strprintf(_("No. of avg mob to next level: %s"), "?"))),
-    mLine7(new Label(this, strprintf(_("Kills/Min: %s, Exp/Min: %s"), "?", "?"))),
-    mExpSpeed1Label(new Label(this, strprintf(ngettext("Exp speed per %d min: %s",
-        "Exp speed per %d min: %s", 1), 1, "?"))),
+    mLine6(new Label(this, strprintf(_("No. of avg mob to next level: %s"),
+        "?"))),
+    mLine7(new Label(this, strprintf(_("Kills/Min: %s, Exp/Min: %s"),
+        "?", "?"))),
+    mExpSpeed1Label(new Label(this, strprintf(ngettext(
+        "Exp speed per %d min: %s", "Exp speed per %d min: %s", 1), 1, "?"))),
     mExpTime1Label(new Label(this, strprintf(ngettext(
         "Time for next level per %d min: %s",
         "Time for next level per %d min: %s", 1), 1, "?"))),
-    mExpSpeed5Label(new Label(this, strprintf(ngettext("Exp speed per %d min: %s",
-        "Exp speed per %d min: %s", 5), 5, "?"))),
+    mExpSpeed5Label(new Label(this, strprintf(ngettext(
+        "Exp speed per %d min: %s", "Exp speed per %d min: %s", 5), 5, "?"))),
     mExpTime5Label(new Label(this, strprintf(ngettext(
         "Time for next level per %d min: %s",
         "Time for next level per %d min: %s", 5), 5, "?"))),
-    mExpSpeed15Label(new Label(this, strprintf(ngettext("Exp speed per %d min: %s",
-        "Exp speed per %d min: %s", 15), 15, "?"))),
+    mExpSpeed15Label(new Label(this, strprintf(ngettext(
+        "Exp speed per %d min: %s", "Exp speed per %d min: %s", 15),
+        15, "?"))),
     mExpTime15Label(new Label(this, strprintf(ngettext(
         "Time for next level per %d min: %s",
         "Time for next level per %d min: %s", 15), 15, "?"))),

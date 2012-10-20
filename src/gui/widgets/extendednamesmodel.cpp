@@ -20,8 +20,6 @@
 
 #include "gui/widgets/extendednamesmodel.h"
 
-#include "logger.h"
-
 #include "utils/gettext.h"
 
 #include <guichan/font.hpp>

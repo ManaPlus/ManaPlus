@@ -22,7 +22,6 @@
 
 #include "gui/buydialog.h"
 
-#include "logger.h"
 #include "shopitem.h"
 #include "units.h"
 
@@ -86,9 +85,11 @@ void BuyDialog::init()
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mSlider = new Slider(1.0);
-    mQuantityLabel = new Label(this, strprintf("%d / %d", mAmountItems, mMaxItems));
+    mQuantityLabel = new Label(this, strprintf(
+        "%d / %d", mAmountItems, mMaxItems));
     mQuantityLabel->setAlignment(gcn::Graphics::CENTER);
-    mMoneyLabel = new Label(this, strprintf(_("Price: %s / Total: %s"), "", ""));
+    mMoneyLabel = new Label(this, strprintf(
+        _("Price: %s / Total: %s"), "", ""));
 
     mAmountField = new IntTextField(this, 1, 1, 123);
     mAmountField->setActionEventId("amount");

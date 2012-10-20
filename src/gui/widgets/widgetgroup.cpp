@@ -20,8 +20,6 @@
 
 #include "gui/widgets/widgetgroup.h"
 
-#include "logger.h"
-
 #include "debug.h"
 
 WidgetGroup::WidgetGroup(const Widget2 *const widget,

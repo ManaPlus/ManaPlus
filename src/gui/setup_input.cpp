@@ -26,7 +26,6 @@
 #include "configuration.h"
 #include "inputmanager.h"
 #include "keyboardconfig.h"
-#include "logger.h"
 
 #include "gui/okdialog.h"
 #include "gui/setupactiondata.h"

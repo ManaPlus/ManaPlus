@@ -23,10 +23,8 @@
 #include "gui/shortcutwindow.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "gui/setup.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"

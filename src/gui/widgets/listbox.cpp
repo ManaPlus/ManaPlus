@@ -27,9 +27,7 @@
 #include "keyevent.h"
 
 #include "gui/gui.h"
-#include "gui/palette.h"
 #include "gui/sdlinput.h"
-#include "gui/theme.h"
 
 #include <guichan/focushandler.hpp>
 #include <guichan/font.hpp>

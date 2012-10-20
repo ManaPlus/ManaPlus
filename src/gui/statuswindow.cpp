@@ -33,7 +33,6 @@
 
 #include "gui/equipmentwindow.h"
 #include "gui/setup.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/label.h"
@@ -142,7 +141,7 @@ StatusWindow::StatusWindow() :
     mJobLvlLabel(nullptr),
     mJobLabel(nullptr),
     mJobBar(nullptr),
-    mAttrCont(new VertContainer(this,32)),
+    mAttrCont(new VertContainer(this, 32)),
     mAttrScroll(new ScrollArea(mAttrCont, false)),
     mDAttrCont(new VertContainer(this, 32)),
     mDAttrScroll(new ScrollArea(mDAttrCont, false)),
@@ -786,10 +785,9 @@ std::string AttrDisplay::update()
 }
 
 DerDisplay::DerDisplay(const Widget2 *const widget,
-                      const int id, const std::string &name) :
+                       const int id, const std::string &name) :
     AttrDisplay(widget, id, name)
 {
-//    LayoutHelper h(this);
     ContainerPlacer place = mLayout->getPlacer(0, 0);
 
     place(0, 0, mLabel, 3);

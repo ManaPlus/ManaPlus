@@ -24,9 +24,7 @@
 #include "configuration.h"
 #include "keyevent.h"
 
-#include "gui/palette.h"
 #include "gui/sdlinput.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/extendedlistmodel.h"
 

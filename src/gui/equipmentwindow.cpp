@@ -28,7 +28,6 @@
 #include "localplayer.h"
 
 #include "gui/itempopup.h"
-#include "gui/theme.h"
 #include "gui/setup.h"
 #include "gui/viewport.h"
 

@@ -25,12 +25,9 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphicsvertexes.h"
-#include "logger.h"
 #include "sound.h"
 
 #include "gui/gui.h"
-#include "gui/palette.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/layout.h"

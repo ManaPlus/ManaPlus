@@ -21,12 +21,10 @@
 #include "gui/questswindow.h"
 
 #include "configuration.h"
-#include "logger.h"
 #include "sound.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"

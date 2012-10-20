@@ -22,8 +22,6 @@
 
 #include "gui/connectiondialog.h"
 
-#include "logger.h"
-
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"

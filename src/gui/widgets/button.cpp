@@ -24,14 +24,9 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "graphics.h"
 #include "graphicsvertexes.h"
 #include "keydata.h"
 #include "keyevent.h"
-#include "logger.h"
-
-#include "gui/palette.h"
-#include "gui/theme.h"
 
 #include "resources/imageset.h"
 

@@ -35,7 +35,6 @@
 #include "gui/okdialog.h"
 #include "gui/sdlfont.h"
 #include "gui/sdlinput.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"

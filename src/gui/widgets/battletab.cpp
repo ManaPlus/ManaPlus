@@ -27,8 +27,6 @@
 #include "localplayer.h"
 #include "main.h"
 
-#include "gui/theme.h"
-
 #include "net/net.h"
 
 #include "resources/iteminfo.h"

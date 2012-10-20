@@ -34,7 +34,6 @@
 #include "gui/outfitwindow.h"
 #include "gui/setup.h"
 #include "gui/shopwindow.h"
-#include "gui/theme.h"
 #include "gui/tradewindow.h"
 #include "gui/viewport.h"
 

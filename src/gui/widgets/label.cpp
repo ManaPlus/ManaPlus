@@ -21,8 +21,6 @@
 
 #include "gui/widgets/label.h"
 
-#include "gui/theme.h"
-
 #include <guichan/font.hpp>
 
 #include "debug.h"

@@ -32,8 +32,6 @@
 
 #include "gui/widgets/button.h"
 
-#include "utils/stringvector.h"
-
 class Tab;
 
 /**

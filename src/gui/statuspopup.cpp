@@ -24,8 +24,6 @@
 #include "gui/statuspopup.h"
 
 #include "gui/gui.h"
-#include "gui/palette.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/label.h"

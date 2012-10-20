@@ -22,8 +22,6 @@
 
 #include "gui/widgets/icon.h"
 
-#include "graphics.h"
-
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 

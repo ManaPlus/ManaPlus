@@ -24,13 +24,11 @@
 #include "gui/itempopup.h"
 
 #include "client.h"
-#include "graphics.h"
 #include "item.h"
 #include "units.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/icon.h"
 #include "gui/widgets/label.h"

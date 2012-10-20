@@ -25,7 +25,6 @@
 #include "gui/gui.h"
 #include "gui/editdialog.h"
 #include "gui/okdialog.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"

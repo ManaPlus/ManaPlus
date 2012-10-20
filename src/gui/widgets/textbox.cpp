@@ -25,8 +25,6 @@
 #include "keydata.h"
 #include "keyevent.h"
 
-#include "gui/theme.h"
-
 #include <guichan/font.hpp>
 
 #include <sstream>

@@ -24,11 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "graphics.h"
 #include "graphicsvertexes.h"
-#include "logger.h"
-
-#include "gui/theme.h"
 
 #include "utils/dtor.h"
 

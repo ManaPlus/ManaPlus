@@ -1011,12 +1011,12 @@ int Client::gameExec()
             mPerfomanceButton->setPosition(x, 3);
             top->add(mPerfomanceButton);
 
-            mVideoButton = new Button(mDesktop,_("Video"), "Video", this);
+            mVideoButton = new Button(mDesktop, _("Video"), "Video", this);
             x -= mVideoButton->getWidth() + 6;
             mVideoButton->setPosition(x, 3);
             top->add(mVideoButton);
 
-            mThemesButton = new Button(mDesktop,_("Themes"), "Themes", this);
+            mThemesButton = new Button(mDesktop, _("Themes"), "Themes", this);
             x -= mThemesButton->getWidth() + 6;
             mThemesButton->setPosition(x, 3);
             top->add(mThemesButton);

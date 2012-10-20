@@ -25,8 +25,6 @@
 
 #include "debug.h"
 
-#include "utils/stringutils.h"
-
 class SortPartyFunctor final
 {
     public:

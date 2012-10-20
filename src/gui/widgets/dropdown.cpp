@@ -24,13 +24,10 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "graphics.h"
 #include "keydata.h"
 #include "keyevent.h"
 
-#include "gui/palette.h"
 #include "gui/sdlinput.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"

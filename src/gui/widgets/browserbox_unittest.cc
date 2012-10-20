@@ -39,7 +39,7 @@ TEST(browserbox, test1)
     PHYSFS_init("manaplus");
     logger = new Logger();
     Theme *theme = Theme::instance();
-    BrowserBox *box = new BrowserBox(BrowserBox::AUTO_WRAP);
+    BrowserBox *box = new BrowserBox(nullptr, BrowserBox::AUTO_WRAP);
     box->setWidth(100);
     std::string row = "test";
     box->addRow(row);

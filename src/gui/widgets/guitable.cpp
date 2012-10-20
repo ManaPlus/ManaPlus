@@ -27,7 +27,6 @@
 #include "keyevent.h"
 
 #include "gui/sdlinput.h"
-#include "gui/theme.h"
 
 #include "utils/dtor.h"
 

@@ -27,8 +27,6 @@
 
 #include <guichan/widgets/scrollarea.hpp>
 
-#include "graphics.h"
-
 #include "localconsts.h"
 
 class Being;

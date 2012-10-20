@@ -23,7 +23,6 @@
 #include "gui/changeemaildialog.h"
 
 #include "client.h"
-#include "logger.h"
 
 #include "gui/registerdialog.h"
 #include "gui/okdialog.h"

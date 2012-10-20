@@ -24,12 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "graphics.h"
 #include "graphicsvertexes.h"
-#include "logger.h"
-
-#include "gui/palette.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"

@@ -26,7 +26,6 @@
 #include "client.h"
 #include "configuration.h"
 #include "game.h"
-#include "graphics.h"
 #include "itemshortcut.h"
 #include "inputmanager.h"
 #include "keyboardconfig.h"

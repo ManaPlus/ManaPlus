@@ -22,7 +22,6 @@
 
 #include "gui/widgets/itemcontainer.h"
 
-#include "graphics.h"
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
@@ -32,11 +31,9 @@
 #include "gui/gui.h"
 #include "gui/itempopup.h"
 #include "gui/outfitwindow.h"
-#include "gui/palette.h"
 #include "gui/shopwindow.h"
 #include "gui/shortcutwindow.h"
 #include "gui/sdlinput.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "net/net.h"

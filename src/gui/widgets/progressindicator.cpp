@@ -21,10 +21,7 @@
 
 #include "gui/widgets/progressindicator.h"
 
-#include "graphics.h"
 #include "simpleanimation.h"
-
-#include "gui/theme.h"
 
 #include "resources/animation.h"
 #include "resources/imageset.h"

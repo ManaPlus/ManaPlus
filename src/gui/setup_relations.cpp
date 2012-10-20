@@ -262,7 +262,10 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mIgnoreActionChoicesBox = new DropDown(widget, mIgnoreActionChoicesModel);
 
     for (int i = 0; i < COLUMNS_NR; i++)
-        mPlayerTableTitleModel->set(0, i, new Label(this, gettext(table_titles[i])));
+    {
+        mPlayerTableTitleModel->set(0, i, new Label(
+            this, gettext(table_titles[i])));
+    }
 
     mPlayerTitleTable->setLinewiseSelection(true);
 

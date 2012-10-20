@@ -24,7 +24,6 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "graphics.h"
 #include "graphicsvertexes.h"
 #include "textrenderer.h"
 

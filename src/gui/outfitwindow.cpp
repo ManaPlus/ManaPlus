@@ -35,7 +35,6 @@
 
 #include "gui/chatwindow.h"
 #include "gui/inventorywindow.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/button.h"

@@ -25,7 +25,6 @@
 #include "client.h"
 #include "configuration.h"
 #include "emoteshortcut.h"
-#include "graphics.h"
 #include "inputmanager.h"
 #include "inventory.h"
 #include "item.h"
@@ -34,7 +33,6 @@
 #include "localplayer.h"
 
 #include "gui/textpopup.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "resources/image.h"

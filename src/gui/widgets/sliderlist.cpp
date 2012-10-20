@@ -21,7 +21,6 @@
 #include "gui/widgets/sliderlist.h"
 
 #include "client.h"
-#include "logger.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"

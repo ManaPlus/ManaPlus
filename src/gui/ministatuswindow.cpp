@@ -23,7 +23,6 @@
 #include "gui/ministatuswindow.h"
 
 #include "animatedsprite.h"
-#include "graphics.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 
@@ -32,7 +31,6 @@
 #include "gui/statuswindow.h"
 #include "gui/statuspopup.h"
 #include "gui/textpopup.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/chattab.h"

@@ -21,10 +21,7 @@
 
 #include "gui/specialswindow.h"
 
-#include "logger.h"
-
 #include "gui/setup.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/container.h"
 #include "gui/widgets/icon.h"

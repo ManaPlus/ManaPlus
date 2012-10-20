@@ -25,7 +25,6 @@
 #include "client.h"
 #include "configuration.h"
 #include "game.h"
-#include "graphics.h"
 
 #include "graphicsmanager.h"
 
@@ -234,9 +233,10 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mFsCheckBox(new CheckBox(this, _("Full screen"), mFullScreenEnabled)),
     mCustomCursorCheckBox(new CheckBox(this, _("Custom cursor"),
                           mCustomCursorEnabled)),
-    mEnableResizeCheckBox(new CheckBox(this,_("Enable resize"), mEnableResize)),
-    mNoFrameCheckBox(new CheckBox(this,_("No frame"), mNoFrame)),
-    mFpsCheckBox(new CheckBox(this,_("FPS limit:"))),
+    mEnableResizeCheckBox(new CheckBox(this, _("Enable resize"),
+                          mEnableResize)),
+    mNoFrameCheckBox(new CheckBox(this, _("No frame"), mNoFrame)),
+    mFpsCheckBox(new CheckBox(this, _("FPS limit:"))),
     mFpsSlider(new Slider(2, 160)),
     mFpsLabel(new Label(this)),
     mAltFpsSlider(new Slider(2, 160)),

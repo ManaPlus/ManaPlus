@@ -24,8 +24,6 @@
 #include "gui/textpopup.h"
 
 #include "gui/gui.h"
-#include "gui/palette.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"

@@ -29,8 +29,6 @@
 #include "localplayer.h"
 #include "sound.h"
 
-#include "gui/theme.h"
-
 #include "resources/iteminfo.h"
 #include "resources/itemdb.h"
 

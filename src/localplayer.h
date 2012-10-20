@@ -539,7 +539,8 @@ class LocalPlayer final : public Being,
         void tryMagic(const std::string &spell, const int baseMagic,
                       const int schoolMagic, const int mana) const;
 
-        const char *getVarItem(const char *const *const arr, const unsigned index,
+        const char *getVarItem(const char *const *const arr,
+                               const unsigned index,
                                const unsigned sz) const;
 
         void changeMode(unsigned *const var, const unsigned limit,

@@ -41,7 +41,7 @@ struct SpecialInfo final
     SpecialInfo() :
         id(0),
         isActive(false),
-        TargetMode(TARGET_SELF),
+        targetMode(TARGET_SELF),
         hasLevel(false),
         level(0),
         hasRechargeBar(false),

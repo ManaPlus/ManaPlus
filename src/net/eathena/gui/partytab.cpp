@@ -27,8 +27,6 @@
 #include "localplayer.h"
 #include "party.h"
 
-#include "gui/theme.h"
-
 #include "net/net.h"
 #include "net/partyhandler.h"
 

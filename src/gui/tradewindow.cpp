@@ -35,7 +35,6 @@
 #include "gui/itemamountwindow.h"
 #include "gui/sdlfont.h"
 #include "gui/setup.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/itemcontainer.h"

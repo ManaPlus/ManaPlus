@@ -37,7 +37,6 @@
 #include "gui/outfitwindow.h"
 #include "gui/setup.h"
 #include "gui/textdialog.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/chattab.h"

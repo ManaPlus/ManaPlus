@@ -86,7 +86,8 @@ void SellDialog::init()
 
     mSlider = new Slider(1.0);
 
-    mQuantityLabel = new Label(this, strprintf("%d / %d", mAmountItems, mMaxItems));
+    mQuantityLabel = new Label(this, strprintf(
+        "%d / %d", mAmountItems, mMaxItems));
     mQuantityLabel->setAlignment(gcn::Graphics::CENTER);
     mMoneyLabel = new Label(this, strprintf(_("Price: %s / Total: %s"),
                                       "", ""));

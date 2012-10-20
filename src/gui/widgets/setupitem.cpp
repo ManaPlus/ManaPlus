@@ -22,7 +22,6 @@
 
 #include "configuration.h"
 #include "main.h"
-#include "logger.h"
 #include "sound.h"
 
 #include "gui/editdialog.h"

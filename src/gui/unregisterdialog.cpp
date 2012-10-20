@@ -23,7 +23,6 @@
 #include "gui/unregisterdialog.h"
 
 #include "client.h"
-#include "logger.h"
 
 #include "gui/okdialog.h"
 #include "gui/registerdialog.h"

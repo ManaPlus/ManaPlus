@@ -27,7 +27,6 @@
 #include "configuration.h"
 #include "sound.h"
 
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/layouthelper.h"

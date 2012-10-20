@@ -28,8 +28,6 @@
 #include "party.h"
 #include "sound.h"
 
-#include "gui/theme.h"
-
 #include "net/net.h"
 #include "net/partyhandler.h"
 

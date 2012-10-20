@@ -24,12 +24,10 @@
 
 #include "gui/inventorywindow.h"
 #include "gui/okdialog.h"
-#include "gui/palette.h"
 #include "gui/shortcutwindow.h"
 #include "gui/spellpopup.h"
 #include "gui/viewport.h"
 #include "gui/textcommandeditor.h"
-#include "gui/theme.h"
 
 #include "client.h"
 #include "spellshortcut.h"

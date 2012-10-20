@@ -23,7 +23,6 @@
 
 #include "actorspritemanager.h"
 #include "configuration.h"
-#include "graphics.h"
 #include "guild.h"
 #include "localplayer.h"
 #include "maplayer.h"
@@ -31,7 +30,6 @@
 #include "gui/chatwindow.h"
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "resources/image.h"

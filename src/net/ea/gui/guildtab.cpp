@@ -28,8 +28,6 @@
 #include "localplayer.h"
 #include "sound.h"
 
-#include "gui/theme.h"
-
 #include "net/net.h"
 
 #include "net/ea/guildhandler.h"

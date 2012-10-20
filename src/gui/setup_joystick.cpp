@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "joystick.h"
-#include "logger.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"

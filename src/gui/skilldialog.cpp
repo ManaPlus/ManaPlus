@@ -30,7 +30,6 @@
 #include "gui/setup.h"
 #include "gui/shortcutwindow.h"
 #include "gui/textpopup.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/label.h"

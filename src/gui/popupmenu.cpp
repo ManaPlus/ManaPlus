@@ -27,7 +27,6 @@
 #include "game.h"
 #include "guild.h"
 #include "guildmanager.h"
-#include "graphics.h"
 #include "item.h"
 #include "itemshortcut.h"
 #include "localplayer.h"

@@ -23,7 +23,6 @@
 #include "gui/windowmenu.h"
 
 #include "emoteshortcut.h"
-#include "graphics.h"
 #include "inputmanager.h"
 #include "keyboardconfig.h"
 
@@ -224,10 +223,6 @@ void WindowMenu::action(const gcn::ActionEvent &event)
             window->requestMoveToTop();
     }
 }
-
-//void WindowMenu::valueChanged(const gcn::SelectionEvent &event)
-//{
-//}
 
 void WindowMenu::addButton(const char *const text,
                            const std::string &description,

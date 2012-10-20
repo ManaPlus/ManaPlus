@@ -23,8 +23,6 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/tab.h"
 
-#include "logger.h"
-
 #include "debug.h"
 
 TabStrip::TabStrip(const Widget2 *const widget,

@@ -139,7 +139,8 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     mMusicFileLabel(new Label(this, strprintf(_("Music:")))),
     mMapLabel(new Label(this, strprintf(_("Map:")))),
     mMinimapLabel(new Label(this, strprintf(_("Minimap:")))),
-    mTileMouseLabel(new Label(this, strprintf("%s (%d, %d)", _("Cursor:"), 0, 0))),
+    mTileMouseLabel(new Label(this, strprintf("%s (%d, %d)",
+        _("Cursor:"), 0, 0))),
     mParticleCountLabel(new Label(this, strprintf("%s %d",
         _("Particle count:"), 88888))),
     mMapActorCountLabel(new Label(this, strprintf("%s %d",
@@ -182,7 +183,8 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     place(0, 8, mMapActorCountLabel, 2);
 #ifdef USE_OPENGL
 #ifdef DEBUG_OPENGL_LEAKS
-    mTexturesLabel = new Label(this, strprintf("%s %s", _("Textures count:"), "?"));
+    mTexturesLabel = new Label(this, strprintf("%s %s",
+        _("Textures count:"), "?"));
     place(0, 9, mTexturesLabel, 2);
 #endif
 #endif

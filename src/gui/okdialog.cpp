@@ -49,9 +49,6 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
 
     Button *const okButton = new Button(this, _("OK"), "ok", this);
 
-    const int numRows = mTextBox->getNumberOfRows();
-    const int fontHeight = getFont()->getHeight();
-    const int height = numRows * fontHeight;
     int width = getFont()->getWidth(title);
 
     if (width < mTextBox->getMinWidth())

@@ -23,7 +23,6 @@
 #include "gui/helpwindow.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"

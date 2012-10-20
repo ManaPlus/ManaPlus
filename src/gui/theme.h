@@ -293,7 +293,7 @@ class Theme final : public Palette, public ConfigListener
         { return mInstance->getColor(type, alpha); }
 
         static const gcn::Color &getThemeCharColor(const signed char c,
-                                               bool &valid)
+                                                   bool &valid)
         { return mInstance->getCharColor(c, valid); }
 
         static int getThemeIdByChar(const signed char c, bool &valid)

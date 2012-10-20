@@ -28,8 +28,6 @@
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
-#include "utils/stringvector.h"
-
 #include "utils/mutex.h"
 
 #include <set>

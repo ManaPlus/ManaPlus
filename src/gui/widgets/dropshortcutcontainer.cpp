@@ -24,8 +24,6 @@
 
 #include "gui/inventorywindow.h"
 #include "gui/itempopup.h"
-#include "gui/palette.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "client.h"

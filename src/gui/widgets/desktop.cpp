@@ -22,12 +22,7 @@
 #include "gui/widgets/desktop.h"
 
 #include "configuration.h"
-#include "graphics.h"
-#include "logger.h"
 #include "main.h"
-
-#include "gui/palette.h"
-#include "gui/theme.h"
 
 #include "gui/widgets/label.h"
 

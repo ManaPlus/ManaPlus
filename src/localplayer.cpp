@@ -49,7 +49,6 @@
 #include "gui/sdlfont.h"
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/whispertab.h"
@@ -1903,7 +1902,7 @@ void LocalPlayer::invertDirection()
         &LocalPlayer::getInvertDirectionString, 0, false);
 }
 
-static const char *invertDirectionStrings[] =
+static const char *const invertDirectionStrings[] =
 {
     N_("(D) default moves"),
     N_("(I) invert moves"),
@@ -1953,7 +1952,7 @@ void LocalPlayer::changeMoveToTargetType()
         &LocalPlayer::getMoveToTargetTypeString);
 }
 
-static const char *moveToTargetTypeStrings[] =
+static const char *const moveToTargetTypeStrings[] =
 {
     N_("(0) default moves to target"),
     N_("(1) moves to target in distance 1"),
@@ -1981,7 +1980,7 @@ void LocalPlayer::changeFollowMode()
         &LocalPlayer::getFollowModeString);
 }
 
-static const char *followModeStrings[] =
+static const char *const followModeStrings[] =
 {
     N_("(D) default follow"),
     N_("(R) relative follow"),
@@ -2027,7 +2026,7 @@ void LocalPlayer::changeAttackType()
         &LocalPlayer::getAttackTypeString);
 }
 
-static const char *attackTypeStrings[] =
+static const char *const attackTypeStrings[] =
 {
     N_("(D) default attack"),
     N_("(G) go and attack"),
@@ -2082,7 +2081,7 @@ void LocalPlayer::changePickUpType()
         &LocalPlayer::getPickUpTypeString);
 }
 
-static const char *pickUpTypeStrings[] =
+static const char *const pickUpTypeStrings[] =
 {
     N_("(S) small pick up 1x1 cells"),
     N_("(D) default pick up 2x1 cells"),
@@ -2102,7 +2101,7 @@ std::string LocalPlayer::getPickUpTypeString()
 
 const unsigned debugPathSize = 5;
 
-static const char *debugPathStrings[] =
+static const char *const debugPathStrings[] =
 {
     N_("(N) normal map view"),
     N_("(D) debug map view"),
@@ -2126,7 +2125,7 @@ void LocalPlayer::switchMagicAttack()
         &LocalPlayer::getMagicAttackString);
 }
 
-static const char *magicAttackStrings[] =
+static const char *const magicAttackStrings[] =
 {
     N_("(f) use #flar for magic attack"),
     N_("(c) use #chiza for magic attack"),
@@ -2150,7 +2149,7 @@ void LocalPlayer::switchPvpAttack()
         &LocalPlayer::getPvpAttackString);
 }
 
-static const char *pvpAttackStrings[] =
+static const char *const pvpAttackStrings[] =
 {
     N_("(a) attack all players"),
     N_("(f) attack all except friends"),
@@ -2173,7 +2172,7 @@ void LocalPlayer::changeImitationMode()
         &LocalPlayer::getImitationModeString);
 }
 
-static const char *imitationModeStrings[] =
+static const char *const imitationModeStrings[] =
 {
     N_("(D) default imitation"),
     N_("(O) outfits imitation"),
@@ -2264,7 +2263,7 @@ void LocalPlayer::switchGameModifiers()
         debugMsg(str.substr(4));
 }
 
-static const char *gameModifiersStrings[] =
+static const char *const gameModifiersStrings[] =
 {
     _("Game modifiers are enabled"),
     _("Game modifiers are disabled"),

@@ -22,8 +22,6 @@
 
 #include "gui/widgets/radiobutton.h"
 
-#include "logger.h"
-
 #include "debug.h"
 
 RadioGroup::RadioGroup(const Widget2 *const widget,
