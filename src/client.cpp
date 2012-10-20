@@ -355,6 +355,11 @@ void Client::gameInit()
         putenv("SDL_VIDEO_CENTERED=0");
 #endif
 
+    if (config.getBoolValue("allowscreensaver"))
+        putenv("SDL_VIDEO_ALLOW_SCREENSAVER=1");
+    else
+        putenv("SDL_VIDEO_ALLOW_SCREENSAVER=0");
+
     chatLogger = new ChatLogger;
     if (mOptions.chatLogDir == "")
         chatLogger->setBaseLogDir(mLocalDataDir + std::string("/logs/"));

@@ -267,6 +267,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("useAtlases", true);
     AddDEF("useTextureSampler", false);
     AddDEF("ministatussaved", 0);
+    AddDEF("allowscreensaver", false);
     return configData;
 }
 

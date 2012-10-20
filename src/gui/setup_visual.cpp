@@ -111,6 +111,9 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
         "", "centerwindow", this, "centerwindowEvent");
 #endif
 
+    new SetupItemCheckBox(_("Allow screensaver to run"),
+        "", "allowscreensaver", this, "allowscreensaverEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
