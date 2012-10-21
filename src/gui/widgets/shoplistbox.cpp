@@ -180,7 +180,7 @@ void ShopListBox::mouseMoved(gcn::MouseEvent &event)
         return;
     }
 
-    const int index = event.getY() / mRowHeight;
+    const int index = (event.getY() + mPadding) / mRowHeight;
 
     if (index < 0 || index >= mShopItems->getNumberOfElements())
     {
