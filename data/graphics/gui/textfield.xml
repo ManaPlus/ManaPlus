@@ -2,7 +2,7 @@
 	<widget type="Window" xpos="41" ypos="186">
         <option name="padding" value="1" />
         <option name="frameSize" value="2" />
-        <option name="passwordChar" value="0" />
+        <option name="passwordChar" value="42" />
 
 		<!-- Top Row -->
 		<part type="top-left-corner" xpos="0" ypos="0" width="4" height="4" />
