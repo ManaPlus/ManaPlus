@@ -124,6 +124,8 @@ class TextField : public gcn::TextField,
 
         bool mSendAlwaysEvents;
 
+        static Skin *mSkin;
+
     private:
         void handlePaste();
 
@@ -132,7 +134,6 @@ class TextField : public gcn::TextField,
         static int instances;
         static float mAlpha;
         static ImageRect skin;
-        static Skin *mSkin;
         bool mNumeric;
         int mMinimum;
         unsigned mMaximum;

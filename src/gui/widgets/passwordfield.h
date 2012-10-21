@@ -45,6 +45,9 @@ class PasswordField final : public TextField
          * Draws the password field.
          */
         void draw(gcn::Graphics *graphics) override;
+
+    protected:
+        int mPasswordChar;
 };
 
 #endif

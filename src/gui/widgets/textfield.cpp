@@ -39,10 +39,10 @@
 
 #include "debug.h"
 
+Skin *TextField::mSkin;
 int TextField::instances = 0;
 float TextField::mAlpha = 1.0;
 ImageRect TextField::skin;
-Skin *TextField::mSkin;
 
 TextField::TextField(const Widget2 *const widget,
                      const std::string &text, const bool loseFocusOnTab,

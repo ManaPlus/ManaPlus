@@ -26,7 +26,8 @@
 
 PasswordField::PasswordField(const Widget2 *const widget,
                              const std::string &text):
-    TextField(widget, text)
+    TextField(widget, text),
+    mPasswordChar(mSkin ? mSkin->getOption("passwordChar", 42) : 42)
 {
 }
 
@@ -34,7 +35,10 @@ void PasswordField::draw(gcn::Graphics *graphics)
 {
     // std::string uses cow, thus cheap copy
     const std::string original = mText;
-    mText.assign(mText.length(), '*');
+    if (mPasswordChar)
+        mText.assign(mText.length(), mPasswordChar);
+    else
+        mText = "";
     TextField::draw(graphics);
     mText = original;
 }
