@@ -34,7 +34,7 @@ gui_DATA =				\
 	listbox.xml			\
 	mouse.png			\
 	ok.xml			\
-	playerbox_background.xml	\
+	playerbox.xml	\
 	popup.xml			\
 	progress-indicator.png		\
 	progressbar.xml			\

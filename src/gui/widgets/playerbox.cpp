@@ -73,9 +73,9 @@ void PlayerBox::init(std::string skin)
     if (Theme::instance())
     {
         if (skin.empty())
-            skin = "playerbox_background.xml";
+            skin = "playerbox.xml";
         mSkin = Theme::instance()->loadSkinRect(mBackground,
-            skin, "background.xml");
+            skin, "playerbox_background.xml");
         if (mSkin)
             mDrawBackground = (mSkin->getOption("drawbackground") != 0);
     }

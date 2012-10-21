@@ -29,7 +29,7 @@ SET (FILES
     mouse.png
     npc.xml
     ok.xml
-    playerbox_background.xml
+    playerbox.xml
     popup.xml
     progressbar.xml
     quests.xml
