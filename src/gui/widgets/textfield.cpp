@@ -63,7 +63,10 @@ TextField::TextField(const Widget2 *const widget,
     if (instances == 0)
     {
         if (Theme::instance())
-            Theme::instance()->loadRect(skin, "textfield_background.xml", "");
+        {
+            Theme::instance()->loadRect(skin, "textfield.xml",
+                "textfield_background.xml");
+        }
     }
 
     instances++;

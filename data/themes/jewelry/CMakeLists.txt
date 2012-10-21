@@ -52,7 +52,7 @@ SET (FILES
     tab_highlighted.xml
     tab_selected.xml
     tab_unused.xml
-    textfield_background.xml
+    textfield.xml
     VERSION.txt
     window.png
     window.xml
