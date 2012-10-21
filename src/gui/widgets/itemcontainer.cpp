@@ -39,6 +39,8 @@
 #include "net/net.h"
 #include "net/inventoryhandler.h"
 
+#include "utils/gettext.h"
+
 #include "resources/image.h"
 
 #include <guichan/mouseinput.hpp>
