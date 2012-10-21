@@ -167,10 +167,10 @@ class SkillListBox final : public ListBox
             if (!viewport)
                 return;
 
-            const int y = event.getY() / getRowHeight();
+            const int y = (event.getY() + mPadding) / getRowHeight();
             if (!mModel || y >= mModel->getNumberOfElements())
                 return;
-            const SkillInfo *const skill = mModel->getSkillAt(y + mPadding);
+            const SkillInfo *const skill = mModel->getSkillAt(y);
             if (!skill)
                 return;
 
