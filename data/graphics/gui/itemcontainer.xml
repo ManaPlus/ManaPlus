@@ -3,5 +3,7 @@
         <option name="boxWidth" value="35" />
         <option name="boxHeight" value="53" />
         <option name="equippedTextPadding" value="29" />
+        <option name="paddingItemX" value="0" />
+        <option name="paddingItemY" value="0" />
     </widget>
 </skinset>

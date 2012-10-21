@@ -215,6 +215,8 @@ class ItemContainer final : public gcn::Widget,
         int mBoxWidth;
         int mBoxHeight;
         int mEquippedTextPadding;
+        int mPaddingItemX;
+        int mPaddingItemY;
 
         typedef std::list<gcn::SelectionListener*> SelectionListenerList;
         typedef SelectionListenerList::iterator SelectionListenerIterator;

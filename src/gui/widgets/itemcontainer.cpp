@@ -180,6 +180,8 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mBoxHeight(mSkin ? mSkin->getOption("boxHeight", 43) : 43),
     mEquippedTextPadding(mSkin ? mSkin->getOption(
                          "equippedTextPadding", 29) : 29),
+    mPaddingItemX(mSkin ? mSkin->getOption("paddingItemX", 0) : 0),
+    mPaddingItemY(mSkin ? mSkin->getOption("paddingItemY", 0) : 0),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
     mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED))
 {
@@ -266,7 +268,8 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                     }
                 }
                 image->setAlpha(1.0f); // ensure the image if fully drawn...
-                g->drawImage(image, itemX, itemY);
+                g->drawImage(image, itemX + mPaddingItemX,
+                    itemY + mPaddingItemY);
             }
         }
     }
