@@ -109,8 +109,18 @@ class TextField : public gcn::TextField,
         void setSendAlwaysEvents(bool b)
         { mSendAlwaysEvents = b; }
 
+        void adjustSize();
+
+        void adjustHeight();
+
+        void setCaretPosition(unsigned int position);
+
     protected:
         void drawCaret(gcn::Graphics* graphics, int x) override;
+
+        void fixScroll();
+
+        void fontChanged();
 
         bool mSendAlwaysEvents;
 
@@ -122,11 +132,13 @@ class TextField : public gcn::TextField,
         static int instances;
         static float mAlpha;
         static ImageRect skin;
+        static Skin *mSkin;
         bool mNumeric;
         int mMinimum;
         unsigned mMaximum;
         bool mLoseFocusOnTab;
         int mLastEventPaste;
+        int mPadding;
         const gcn::Color *mCaretColor;
 };
 

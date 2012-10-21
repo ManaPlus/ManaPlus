@@ -115,46 +115,18 @@ namespace gcn
 
     void TextField::adjustSize()
     {
-        setWidth(getFont()->getWidth(mText) + 7);
-        adjustHeight();
-
-        fixScroll();
     }
 
     void TextField::adjustHeight()
     {
-        setHeight(getFont()->getHeight() + 4);
     }
 
     void TextField::fixScroll()
     {
-        if (isFocused())
-        {
-            const int caretX = getFont()->getWidth(
-                mText.substr(0, mCaretPosition));
-
-            if (caretX - mXScroll >= getWidth() - 4)
-            {
-                mXScroll = caretX - getWidth() + 4;
-            }
-            else if (caretX - mXScroll <= 0)
-            {
-                mXScroll = caretX - getWidth() / 2;
-
-                if (mXScroll < 0)
-                    mXScroll = 0;
-            }
-        }
     }
 
     void TextField::setCaretPosition(unsigned int position)
     {
-        if (position > mText.size())
-            mCaretPosition = static_cast<int>(mText.size());
-        else
-            mCaretPosition = position;
-
-        fixScroll();
     }
 
     unsigned int TextField::getCaretPosition() const
@@ -169,6 +141,5 @@ namespace gcn
 
     void TextField::fontChanged()
     {
-        fixScroll();
     }
 }

@@ -42,6 +42,7 @@
 int TextField::instances = 0;
 float TextField::mAlpha = 1.0;
 ImageRect TextField::skin;
+Skin *TextField::mSkin;
 
 TextField::TextField(const Widget2 *const widget,
                      const std::string &text, const bool loseFocusOnTab,
@@ -55,6 +56,7 @@ TextField::TextField(const Widget2 *const widget,
     mMaximum(0),
     mLoseFocusOnTab(loseFocusOnTab),
     mLastEventPaste(false),
+    mPadding(1),
     mCaretColor(&getThemeColor(Theme::CARET))
 {
     setFrameSize(2);
@@ -64,13 +66,20 @@ TextField::TextField(const Widget2 *const widget,
     {
         if (Theme::instance())
         {
-            Theme::instance()->loadRect(skin, "textfield.xml",
+            mSkin = Theme::instance()->loadSkinRect(skin, "textfield.xml",
                 "textfield_background.xml");
         }
     }
 
     instances++;
 
+    if (mSkin)
+    {
+        mPadding = mSkin->getPadding();
+        mFrameSize = mSkin->getOption("frameSize", 2);
+    }
+
+    adjustSize();
     if (!eventId.empty())
         setActionEventId(eventId);
 
@@ -81,8 +90,15 @@ TextField::TextField(const Widget2 *const widget,
 TextField::~TextField()
 {
     instances--;
-    if (instances == 0 && Theme::instance())
-        Theme::instance()->unloadRect(skin);
+    if (instances == 0)
+    {
+        Theme *const theme = Theme::instance();
+        if (theme)
+        {
+            theme->unload(mSkin);
+            theme->unloadRect(skin);
+        }
+    }
 }
 
 void TextField::updateAlpha()
@@ -114,19 +130,14 @@ void TextField::draw(gcn::Graphics *graphics)
 
     graphics->setColor(mForegroundColor);
     graphics->setFont(getFont());
-    graphics->drawText(mText, 1 - mXScroll, 1);
+    graphics->drawText(mText, mPadding - mXScroll, mPadding);
 }
 
 void TextField::drawFrame(gcn::Graphics *graphics)
 {
-    //updateAlpha(); -> Not useful...
-
-    int w, h;
     const int bs = 2 * getFrameSize();
-    w = getWidth() + bs;
-    h = getHeight() + bs;
-
-    static_cast<Graphics*>(graphics)->drawImageRect(0, 0, w, h, skin);
+    static_cast<Graphics*>(graphics)->drawImageRect(0, 0,
+        getWidth() + bs, getHeight() + bs, skin);
 }
 
 void TextField::setNumeric(const bool numeric)
@@ -447,5 +458,56 @@ void TextField::drawCaret(gcn::Graphics* graphics, int x)
     const gcn::Rectangle clipArea = graphics->getCurrentClipArea();
 
     graphics->setColor(*mCaretColor);
-    graphics->drawLine(x, clipArea.height - 2, x, 1);
+    graphics->drawLine(x + mPadding, clipArea.height - mPadding,
+        x + mPadding, mPadding);
+}
+
+void TextField::adjustSize()
+{
+    setWidth(getFont()->getWidth(mText) + 2 * mPadding + 1);
+    adjustHeight();
+
+    fixScroll();
+}
+
+void TextField::adjustHeight()
+{
+    setHeight(getFont()->getHeight() + 2 * mPadding);
+}
+
+void TextField::fixScroll()
+{
+    if (isFocused())
+    {
+        const int caretX = getFont()->getWidth(
+            mText.substr(0, mCaretPosition));
+
+        const int pad = 2 * mPadding;
+        if (caretX - mXScroll >= getWidth() - pad)
+        {
+            mXScroll = caretX - getWidth() + pad;
+        }
+        else if (caretX - mXScroll <= 0)
+        {
+            mXScroll = caretX - getWidth() / 2;
+
+            if (mXScroll < 0)
+                mXScroll = 0;
+        }
+    }
+}
+
+void TextField::setCaretPosition(unsigned int position)
+{
+    if (position > mText.size())
+        mCaretPosition = static_cast<int>(mText.size());
+    else
+        mCaretPosition = position;
+
+    fixScroll();
+}
+
+void TextField::fontChanged()
+{
+    fixScroll();
 }
