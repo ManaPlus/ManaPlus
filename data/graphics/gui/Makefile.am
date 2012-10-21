@@ -65,6 +65,7 @@ gui_DATA =				\
 	target-cursor-normal-m.png		\
 	target-cursor-normal-s.png		\
 	textfield.xml		\
+	textpreview.xml		\
 	unknown-item.png		\
 	window.png			\
 	window.xml			\

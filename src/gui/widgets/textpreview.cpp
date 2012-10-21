@@ -31,7 +31,9 @@
 
 #include "debug.h"
 
+int TextPreview::instances = 0;
 float TextPreview::mAlpha = 1.0;
+Skin *TextPreview::mSkin = nullptr;
 
 TextPreview::TextPreview(const Widget2 *const widget,
                          const std::string &text) :
@@ -45,8 +47,33 @@ TextPreview::TextPreview(const Widget2 *const widget,
     mTextAlpha(false),
     mOpaque(false),
     mShadow(false),
-    mOutline(false)
+    mOutline(false),
+    mPadding(0)
 {
+    if (instances == 0)
+    {
+        if (Theme::instance())
+            mSkin = Theme::instance()->load("textpreview.xml", "");
+    }
+
+    instances++;
+
+    if (mSkin)
+        mPadding = mSkin->getOption("padding", 0);
+
+    adjustSize();
+}
+
+TextPreview::~TextPreview()
+{
+    instances--;
+
+    if (instances == 0)
+    {
+        Theme *const theme = Theme::instance();
+        if (theme)
+            theme->unload(mSkin);
+    }
 }
 
 void TextPreview::draw(gcn::Graphics* graphics)
@@ -78,11 +105,16 @@ void TextPreview::draw(gcn::Graphics* graphics)
                                           static_cast<int>(mTextBGColor->g),
                                           static_cast<int>(mTextBGColor->b),
                                           static_cast<int>(mAlpha * 255.0f)));
-            graphics->fillRectangle(gcn::Rectangle(1, 1, x, y));
+            graphics->fillRectangle(gcn::Rectangle(mPadding, mPadding, x, y));
         }
     }
 
-    TextRenderer::renderText(graphics, mText, 2, 2, gcn::Graphics::LEFT,
-        gcn::Color(mTextColor->r, mTextColor->g, mTextColor->b, alpha),
-        mFont, mOutline, mShadow);
+    TextRenderer::renderText(graphics, mText, mPadding + 1, mPadding + 1,
+        gcn::Graphics::LEFT, gcn::Color(mTextColor->r, mTextColor->g,
+        mTextColor->b, alpha), mFont, mOutline, mShadow);
+}
+
+void TextPreview::adjustSize()
+{
+    setHeight(getFont()->getHeight() + 2 * mPadding);
 }

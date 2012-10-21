@@ -42,13 +42,15 @@ class TextPreview final : public gcn::Widget,
 
         A_DELETE_COPY(TextPreview)
 
+        ~TextPreview();
+
         /**
          * Sets the color the text is printed in.
          *
          * @param color the color to set
          */
         inline void setTextColor(const gcn::Color *color)
-        { mTextColor = color; }
+        { mTextColor = color; adjustSize(); }
 
         /**
          * Sets the text to use the set alpha value.
@@ -122,6 +124,8 @@ class TextPreview final : public gcn::Widget,
         bool isOpaque() const
         { return mOpaque; }
 
+        void adjustSize();
+
     private:
         gcn::Font *mFont;
         std::string mText;
@@ -132,7 +136,10 @@ class TextPreview final : public gcn::Widget,
         bool mOpaque;
         bool mShadow;
         bool mOutline;
+        int mPadding;
+        static int instances;
         static float mAlpha;
+        static Skin *mSkin;
 };
 
 #endif
