@@ -39,7 +39,9 @@ PlayerBox::PlayerBox(Being *const being, const std::string &skin) :
     mBeing(being),
     mAlpha(1.0),
     mSkin(nullptr),
-    mDrawBackground(false)
+    mDrawBackground(false),
+    mOffsetX(-16),
+    mOffsetY(-32)
 {
     init(skin);
 }
@@ -49,7 +51,9 @@ PlayerBox::PlayerBox(std::string skin) :
     mBeing(nullptr),
     mAlpha(1.0),
     mSkin(nullptr),
-    mDrawBackground(false)
+    mDrawBackground(false),
+    mOffsetX(-16),
+    mOffsetY(-32)
 {
     init(skin);
 }
@@ -77,7 +81,12 @@ void PlayerBox::init(std::string skin)
         mSkin = Theme::instance()->loadSkinRect(mBackground,
             skin, "playerbox_background.xml");
         if (mSkin)
+        {
             mDrawBackground = (mSkin->getOption("drawbackground") != 0);
+            mOffsetX = mSkin->getOption("offsetX", -16);
+            mOffsetY = mSkin->getOption("offsetY", -32);
+            mFrameSize = mSkin->getOption("frameSize", 2);
+        }
     }
     else
     {
@@ -92,8 +101,8 @@ void PlayerBox::draw(gcn::Graphics *graphics)
     {
         // Draw character
         const int bs = getFrameSize();
-        const int x = getWidth() / 2 + bs - 16;
-        const int y = getHeight() - bs - 32;
+        const int x = getWidth() / 2 + bs + mOffsetX;
+        const int y = getHeight() - bs + mOffsetY;
         mBeing->drawSpriteAt(static_cast<Graphics*>(graphics), x, y);
     }
 

@@ -87,6 +87,8 @@ class PlayerBox final : public Widget2,
         ImageRect mBackground;
         Skin *mSkin;
         bool mDrawBackground;
+        int mOffsetX;
+        int mOffsetY;
 };
 
 #endif
