@@ -65,7 +65,11 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mBorderColor(getThemeColor(Theme::BORDER)),
     mLabelsColor(getThemeColor(Theme::LABEL)),
     mItemPadding(getOption("itemPadding")),
-    mBoxSize(getOption("boxSize"))
+    mBoxSize(getOption("boxSize")),
+    mMinX(180),
+    mMinY(345),
+    mMaxX(0),
+    mMaxY(0)
 {
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
@@ -86,20 +90,20 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     setSaveVisible(true);
     setStickyButtonLock(true);
 
-    setDefaultSize(180, 345, ImageRect::CENTER);
-
     mBoxes.reserve(BOX_COUNT);
     for (int f = 0; f < BOX_COUNT; f ++)
         mBoxes.push_back(nullptr);
 
+    mButtonPadding = getOption("buttonPadding", 5);
+
     fillBoxes();
+    recalcSize();
 
     loadWindowState();
 
     const gcn::Rectangle &area = getChildrenArea();
-    const int buttonPadding = getOption("buttonPadding", 5);
-    mUnequip->setPosition(area.width  - mUnequip->getWidth() - buttonPadding,
-        area.height - mUnequip->getHeight() - buttonPadding);
+    mUnequip->setPosition(area.width  - mUnequip->getWidth() - mButtonPadding,
+        area.height - mUnequip->getHeight() - mButtonPadding);
     mUnequip->setEnabled(false);
 
     ImageRect rect;
@@ -369,20 +373,12 @@ void EquipmentWindow::fillBoxes()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlNameEqual(node, "window"))
-            loadWindow(node);
-        else if (xmlNameEqual(node, "playerbox"))
+        if (xmlNameEqual(node, "playerbox"))
             loadPlayerBox(node);
         else if (xmlNameEqual(node, "slot"))
             loadSlot(node, mImageSet);
     }
     delete doc;
-}
-
-void EquipmentWindow::loadWindow(const XmlNodePtr windowNode)
-{
-    setDefaultSize(XML::getProperty(windowNode, "width", 180),
-        XML::getProperty(windowNode, "height", 345), ImageRect::CENTER);
 }
 
 void EquipmentWindow::loadPlayerBox(const XmlNodePtr playerBoxNode)
@@ -423,6 +419,14 @@ void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
     {
         mBoxes[slot] = new EquipmentBox(x, y, image);
     }
+    if (x < mMinX)
+        mMinX = x;
+    if (y < mMinY)
+        mMinY = y;
+    if (x + mBoxSize > mMaxX)
+        mMaxX = x + mBoxSize;
+    if (y + mBoxSize > mMaxY)
+        mMaxY = y + mBoxSize;
 }
 
 int EquipmentWindow::parseSlotName(std::string name) const
@@ -508,8 +512,7 @@ void EquipmentWindow::fillDefault()
     addBox(12, 129, 123, 5); // ring
 }
 
-void EquipmentWindow::addBox(const int idx, const int x, const int y,
-                             const int imageIndex)
+void EquipmentWindow::addBox(const int idx, int x, int y, const int imageIndex)
 {
     Image *image = nullptr;
 
@@ -519,6 +522,23 @@ void EquipmentWindow::addBox(const int idx, const int x, const int y,
         image = mImageSet->get(imageIndex);
     }
 
-    mBoxes[idx] = new EquipmentBox(x + getPadding(), y + getTitleBarHeight(),
-        image);
+    x += getPadding();
+    y += getTitleBarHeight();
+    mBoxes[idx] = new EquipmentBox(x, y, image);
+
+    if (x < mMinX)
+        mMinX = x;
+    if (y < mMinY)
+        mMinY = y;
+    if (x + mBoxSize > mMaxX)
+        mMaxX = x + mBoxSize;
+    if (y + mBoxSize > mMaxY)
+        mMaxY = y + mBoxSize;
+}
+
+void EquipmentWindow::recalcSize()
+{
+    mMaxX += mMinX;
+    mMaxY += mMinY + mUnequip->getHeight() + mButtonPadding;
+    setDefaultSize(mMaxX, mMaxY, ImageRect::CENTER);
 }

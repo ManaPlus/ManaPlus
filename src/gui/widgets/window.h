@@ -428,6 +428,10 @@ class Window : public gcn::Window,
         { return mTitlePadding; }
 
         Skin *mSkin;                  /**< Skin in use by this window */
+        int mDefaultX;                /**< Default window X position */
+        int mDefaultY;                /**< Default window Y position */
+        int mDefaultWidth;            /**< Default window width */
+        int mDefaultHeight;           /**< Default window height */
 
     private:
         enum ResizeHandles
@@ -474,10 +478,6 @@ class Window : public gcn::Window,
         int mMinWinHeight;            /**< Minimum window height */
         int mMaxWinWidth;             /**< Maximum window width */
         int mMaxWinHeight;            /**< Maximum window height */
-        int mDefaultX;                /**< Default window X position */
-        int mDefaultY;                /**< Default window Y position */
-        int mDefaultWidth;            /**< Default window width */
-        int mDefaultHeight;           /**< Default window height */
 
         static int mouseResize;       /**< Active resize handles */
         static int instances;         /**< Number of Window instances */

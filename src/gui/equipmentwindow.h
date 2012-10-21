@@ -101,6 +101,8 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
 
         void mouseMoved(gcn::MouseEvent &event) override;
 
+        void recalcSize();
+
     private:
         Item *getItem(const int x, const int y) const;
 
@@ -110,8 +112,7 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
 
         void fillDefault();
 
-        void addBox(const int idx, const int x, const int y,
-                    const int imageIndex);
+        void addBox(const int idx, int x, int y, const int imageIndex);
 
         void loadWindow(const XmlNodePtr windowNode);
 
@@ -140,6 +141,11 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
         Image *mSlotHighlightedBackground;
         int mItemPadding;
         int mBoxSize;
+        int mButtonPadding;
+        int mMinX;
+        int mMinY;
+        int mMaxX;
+        int mMaxY;
 };
 
 extern EquipmentWindow *equipmentWindow;
