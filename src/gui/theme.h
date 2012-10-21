@@ -120,6 +120,14 @@ class Skin final
                 return 0;
         }
 
+        int getOption(const std::string &name, const int def) const
+        {
+            if (mOptions->find(name) != mOptions->end())
+                return (*mOptions)[name];
+            else
+                return def;
+        }
+
         int instances;
 
     private:

@@ -46,8 +46,6 @@
 
 #include "debug.h"
 
-static const int BOX_WIDTH = 35;
-static const int BOX_HEIGHT = 43;
 
 class ItemIdPair final
 {
@@ -174,6 +172,12 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mItemPopup(new ItemPopup),
     mShowMatrix(nullptr),
     mClicks(1),
+    mSkin(Theme::instance() ? Theme::instance()->load(
+          "itemcontainer.xml", "") : nullptr),
+    mBoxWidth(mSkin ? mSkin->getOption("boxWidth", 35) : 35),
+    mBoxHeight(mSkin ? mSkin->getOption("boxHeight", 43) : 43),
+    mEquippedTextPadding(mSkin ? mSkin->getOption(
+                         "equippedTextPadding", 29) : 29),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
     mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED))
 {
@@ -190,6 +194,9 @@ ItemContainer::~ItemContainer()
         mSelImg->decRef();
         mSelImg = nullptr;
     }
+    if (Theme::instance())
+        Theme::instance()->unload(mSkin);
+
     delete mItemPopup;
     mItemPopup = nullptr;
     delete []mShowMatrix;
@@ -222,11 +229,11 @@ void ItemContainer::draw(gcn::Graphics *graphics)
 
     for (int j = 0; j < mGridRows; j++)
     {
-        const int intY0 = j * BOX_HEIGHT;
+        const int intY0 = j * mBoxHeight;
         int itemIndex = j * mGridColumns - 1;
         for (int i = 0; i < mGridColumns; i++)
         {
-            int itemX = i * BOX_WIDTH;
+            int itemX = i * mBoxWidth;
             int itemY = intY0;
             itemIndex ++;
             if (mShowMatrix[itemIndex] < 0)
@@ -246,8 +253,8 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                     if (mSelectionStatus == SEL_DRAGGING)
                     {
                         // Reposition the coords to that of the cursor.
-                        itemX = mDragPosX - (BOX_WIDTH / 2);
-                        itemY = mDragPosY - (BOX_HEIGHT / 2);
+                        itemX = mDragPosX - (mBoxWidth / 2);
+                        itemY = mDragPosY - (mBoxHeight / 2);
                     }
                     else
                     {
@@ -264,11 +271,11 @@ void ItemContainer::draw(gcn::Graphics *graphics)
 
     for (int j = 0; j < mGridRows; j++)
     {
-        const int intY0 = j * BOX_HEIGHT;
+        const int intY0 = j * mBoxHeight;
         int itemIndex = j * mGridColumns - 1;
         for (int i = 0; i < mGridColumns; i++)
         {
-            int itemX = i * BOX_WIDTH;
+            int itemX = i * mBoxWidth;
             int itemY = intY0;
             itemIndex ++;
             if (mShowMatrix[itemIndex] < 0)
@@ -283,17 +290,22 @@ void ItemContainer::draw(gcn::Graphics *graphics)
             // Draw item caption
             std::string caption;
             if (item->getQuantity() > 1 || mForceQuantity)
+            {
                 caption = toString(item->getQuantity());
+            }
             else if (item->isEquipped())
-                caption = "Eq.";
+            {
+                // TRANSLATORS: Text under equipped items (should be small)
+                caption = _("Eq.");
+            }
 
             if (item->isEquipped())
                 g->setColor(mEquipedColor);
             else
                 g->setColor(mUnEquipedColor);
 
-            g->drawText(caption, itemX + BOX_WIDTH / 2,
-                        itemY + BOX_HEIGHT - 14, gcn::Graphics::CENTER);
+            g->drawText(caption, itemX + mBoxWidth / 2,
+                itemY + mEquippedTextPadding, gcn::Graphics::CENTER);
         }
     }
 }
@@ -474,7 +486,7 @@ void ItemContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
 
 void ItemContainer::widgetResized(const gcn::Event &event A_UNUSED)
 {
-    mGridColumns = std::max(1, getWidth() / BOX_WIDTH);
+    mGridColumns = std::max(1, getWidth() / mBoxWidth);
     adjustHeight();
 }
 
@@ -487,7 +499,7 @@ void ItemContainer::adjustHeight()
     if (mGridRows == 0 || (mLastUsedSlot + 1) % mGridColumns > 0)
         ++mGridRows;
 
-    setHeight(mGridRows * BOX_HEIGHT);
+    setHeight(mGridRows * mBoxHeight);
 
     updateMatrix();
 }
@@ -585,7 +597,7 @@ int ItemContainer::getSlotIndex(const int x, const int y) const
 
     if (x < getWidth() && y < getHeight())
     {
-        const int idx = (y / BOX_HEIGHT) * mGridColumns + (x / BOX_WIDTH);
+        const int idx = (y / mBoxHeight) * mGridColumns + (x / mBoxWidth);
         if (idx < mGridRows * mGridColumns && mShowMatrix[idx] >= 0)
             return mShowMatrix[idx];
     }

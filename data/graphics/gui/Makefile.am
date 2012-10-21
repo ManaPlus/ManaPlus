@@ -29,6 +29,7 @@ gui_DATA =				\
 	inventory.xml	\
 	item_selection.xml	\
 	item_shortcut_background.xml	\
+	itemcontainer.xml			\
 	label.xml			\
 	listbox.xml			\
 	mouse.png			\

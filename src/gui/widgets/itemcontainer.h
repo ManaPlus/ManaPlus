@@ -211,6 +211,10 @@ class ItemContainer final : public gcn::Widget,
         ItemPopup *mItemPopup;
         int *mShowMatrix;
         int mClicks;
+        Skin *mSkin;
+        int mBoxWidth;
+        int mBoxHeight;
+        int mEquippedTextPadding;
 
         typedef std::list<gcn::SelectionListener*> SelectionListenerList;
         typedef SelectionListenerList::iterator SelectionListenerIterator;
