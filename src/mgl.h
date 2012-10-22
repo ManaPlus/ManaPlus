@@ -67,13 +67,21 @@ typedef void (APIENTRY *glFramebufferRenderbuffer_t)(GLenum target,
 typedef void (APIENTRY *glDeleteFramebuffers_t) (GLsizei, const GLuint *);
 typedef void (APIENTRY *glDeleteRenderbuffers_t) (GLsizei, const GLuint *);
 typedef const GLubyte *(APIENTRY *glGetStringi_t) (GLenum, GLuint);
-
 typedef void (APIENTRY *glGenSamplers_t) (GLsizei count, GLuint *samplers);
 typedef void (APIENTRY *glDeleteSamplers_t)
     (GLsizei count, const GLuint * samplers);
 typedef void (APIENTRY *glBindSampler_t) (GLuint unit, GLuint sampler);
 typedef void (APIENTRY *glSamplerParameteri_t)
     (GLuint sampler, GLenum pname, GLint param);
+typedef void (APIENTRY *glDebugMessageControl_t) (GLenum source, GLenum type,
+    GLenum severity, GLsizei count, const GLuint* ids, GLboolean enabled);
+
+// callback
+typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,
+    GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
+
+typedef void (APIENTRY *glDebugMessageCallback_t) (GLDEBUGPROC_t callback,
+    const void *userParam);
 
 defNameE(glGenRenderbuffers);
 defNameE(glBindRenderbuffer);
@@ -89,6 +97,8 @@ defNameE(glGenSamplers);
 defNameE(glDeleteSamplers);
 defNameE(glBindSampler);
 defNameE(glSamplerParameteri);
+defNameE(glDebugMessageControl);
+defNameE(glDebugMessageCallback);
 
 #ifdef WIN32
 typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);

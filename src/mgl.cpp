@@ -40,6 +40,8 @@ defName(glGenSamplers);
 defName(glDeleteSamplers);
 defName(glBindSampler);
 defName(glSamplerParameteri);
+defName(glDebugMessageControl);
+defName(glDebugMessageCallback);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);

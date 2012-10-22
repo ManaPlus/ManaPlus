@@ -578,11 +578,31 @@ void GraphicsManager::deleteFBO(FBOInfo *fbo)
 
 void GraphicsManager::initOpenGLFunctions()
 {
+    // Texture sampler
+    if (checkGLVersion(1, 0) && supportExtension("GL_ARB_sampler_objects"))
+    {
+        logger->log("found GL_ARB_sampler_objects");
+        assignFunction(glGenSamplers, "glGenSamplers");
+        assignFunction(glDeleteSamplers, "glDeleteSamplers");
+        assignFunction(glBindSampler, "glBindSampler");
+        assignFunction(glSamplerParameteri, "glSamplerParameteri");
+        if (mglGenSamplers && config.getBoolValue("useTextureSampler"))
+            mUseTextureSampler &= true;
+        else
+            mUseTextureSampler = false;
+    }
+    else
+    {
+        logger->log("texture sampler not found");
+        mUseTextureSampler = false;
+    }
+
     if (!checkGLVersion(1, 1))
         return;
 
     if (supportExtension("GL_ARB_framebuffer_object"))
     {   // frame buffer supported
+        logger->log("found GL_ARB_framebuffer_object");
         assignFunction(glGenRenderbuffers, "glGenRenderbuffers");
         assignFunction(glBindRenderbuffer, "glBindRenderbuffer");
         assignFunction(glRenderbufferStorage, "glRenderbufferStorage");
@@ -595,6 +615,7 @@ void GraphicsManager::initOpenGLFunctions()
     }
     else if (supportExtension("GL_EXT_framebuffer_object"))
     {   // old frame buffer extension
+        logger->log("found GL_EXT_framebuffer_object");
         assignFunction(glGenRenderbuffers, "glGenRenderbuffersEXT");
         assignFunction(glBindRenderbuffer, "glBindRenderbufferEXT");
         assignFunction(glRenderbufferStorage, "glRenderbufferStorageEXT");
@@ -608,24 +629,26 @@ void GraphicsManager::initOpenGLFunctions()
     }
     else
     {   // no frame buffer support
+        logger->log("frame buffer not found");
         config.setValue("usefbo", false);
     }
 
-    // Texture sampler
-    if (checkGLVersion(1, 0) && supportExtension("GL_ARB_sampler_objects"))
+    // debug extensions
+    if (supportExtension("GL_KHR_debug"))
     {
-        assignFunction(glGenSamplers, "glGenSamplers");
-        assignFunction(glDeleteSamplers, "glDeleteSamplers");
-        assignFunction(glBindSampler, "glBindSampler");
-        assignFunction(glSamplerParameteri, "glSamplerParameteri");
-        if (mglGenSamplers && config.getBoolValue("useTextureSampler"))
-            mUseTextureSampler &= true;
-        else
-            mUseTextureSampler = false;
+        logger->log("found GL_KHR_debug");
+        assignFunction(glDebugMessageControl, "glDebugMessageControl");
+        assignFunction(glDebugMessageCallback, "glDebugMessageCallback");
+    }
+    else if (supportExtension("GL_ARB_debug_output"))
+    {
+        logger->log("found GL_ARB_debug_output");
+        assignFunction(glDebugMessageControl, "glDebugMessageControlARB");
+        assignFunction(glDebugMessageCallback, "glDebugMessageCallbackARB");
     }
     else
     {
-        mUseTextureSampler = false;
+        logger->log("debug extensions not found");
     }
 
 #ifdef WIN32
