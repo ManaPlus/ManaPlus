@@ -239,7 +239,7 @@ void ResourceManager::logResource(const Resource *const res)
         const int count = image->getRefCount();
         if (count)
             src += " " + toString(count);
-        if (image && image->getGLImage())
+        if (image)
         {
             logger->log("resource(%s, %u) %s", res->mIdPath.c_str(),
                 image->getGLImage(), src.c_str());

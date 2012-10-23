@@ -84,6 +84,7 @@ GraphicsManager::GraphicsManager() :
 #ifdef USE_OPENGL
     mUseTextureSampler(true),
     mTextureSampler(0),
+    mSupportDebug(0),
 #endif
     mUseAtlases(false)
 {
@@ -639,16 +640,19 @@ void GraphicsManager::initOpenGLFunctions()
         logger->log("found GL_KHR_debug");
         assignFunction(glDebugMessageControl, "glDebugMessageControl");
         assignFunction(glDebugMessageCallback, "glDebugMessageCallback");
+        mSupportDebug = 2;
     }
     else if (supportExtension("GL_ARB_debug_output"))
     {
         logger->log("found GL_ARB_debug_output");
         assignFunction(glDebugMessageControl, "glDebugMessageControlARB");
         assignFunction(glDebugMessageCallback, "glDebugMessageCallbackARB");
+        mSupportDebug = 1;
     }
     else
     {
         logger->log("debug extensions not found");
+        mSupportDebug = 0;
     }
 
 #ifdef WIN32
@@ -682,6 +686,7 @@ void GraphicsManager::initOpenGL()
     updateExtensions();
     initOpenGLFunctions();
     updatePlanformExtensions();
+    updateDebugLog();
     createTextureSampler();
     updateLimits();
 }
@@ -743,6 +748,104 @@ void GraphicsManager::detectVideoSettings()
                 config.setValue("compresstextures", val);
         }
         delete test;
+    }
+}
+
+static void debugCallback(GLenum source, GLenum type, GLuint id,
+                          GLenum severity, GLsizei length,
+                          const GLchar *text, GLvoid *userParam)
+{
+    std::string message("OPENGL:");
+    switch (source)
+    {
+        case GL_DEBUG_SOURCE_API:
+            message += " API";
+            break;
+        case GL_DEBUG_SOURCE_WINDOW_SYSTEM:
+            message += " WM";
+            break;
+        case GL_DEBUG_SOURCE_SHADER_COMPILER:
+            message += " SHADERS";
+            break;
+        case GL_DEBUG_SOURCE_THIRD_PARTY:
+            message += " THIRD_PARTY";
+            break;
+        case GL_DEBUG_SOURCE_APPLICATION:
+            message += " APP";
+            break;
+        case GL_DEBUG_SOURCE_OTHER:
+            message += " OTHER";
+            break;
+        default:
+            message += " ?" + toString(source);
+            break;
+    }
+    switch (type)
+    {
+        case GL_DEBUG_TYPE_ERROR:
+            message += " ERROR";
+            break;
+        case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:
+            message += " DEPRECATED";
+            break;
+        case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:
+            message += " UNDEFINED";
+            break;
+        case GL_DEBUG_TYPE_PORTABILITY:
+            message += " PORTABILITY";
+            break;
+        case GL_DEBUG_TYPE_PERFORMANCE:
+            message += " PERFOMANCE";
+            break;
+        case GL_DEBUG_TYPE_OTHER:
+            message += " OTHER";
+            break;
+        case GL_DEBUG_TYPE_MARKER:
+            message += " MARKER";
+            break;
+        default:
+            message += " ?" + toString(type);
+            break;
+    }
+    message += " " + toString(id);
+    switch (severity)
+    {
+        case GL_DEBUG_SEVERITY_NOTIFICATION:
+            message += " N";
+            break;
+        case GL_DEBUG_SEVERITY_HIGH:
+            message += " H";
+            break;
+        case GL_DEBUG_SEVERITY_MEDIUM:
+            message += " M";
+            break;
+        case GL_DEBUG_SEVERITY_LOW:
+            message += " L";
+            break;
+        default:
+            message += " ?" + toString(type);
+            break;
+    }
+    char *buf = new char[length + 1];
+    memcpy (buf, text, length);
+    buf[length] = 0;
+    message += " ";
+    message += buf;
+    delete [] buf;
+    logger->log(message);
+}
+
+void GraphicsManager::updateDebugLog()
+{
+    if (mSupportDebug && config.getIntValue("debugOpenGL"))
+    {
+        logger->log("Enable OpenGL debug log");
+        glEnable(GL_DEBUG_OUTPUT);
+        glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+
+        mglDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE,
+            0, nullptr, GL_TRUE);
+        mglDebugMessageCallback(&debugCallback, this);
     }
 }
 #endif

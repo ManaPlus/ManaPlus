@@ -111,6 +111,8 @@ class GraphicsManager final
         { return mUseTextureSampler; }
 
         unsigned int getLastError();
+
+        void updateDebugLog();
 #endif
 
     private:
@@ -140,6 +142,8 @@ class GraphicsManager final
         bool mUseTextureSampler;
 
         GLuint mTextureSampler;
+
+        int mSupportDebug;
 #endif
         bool mUseAtlases;
 

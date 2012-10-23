@@ -223,6 +223,9 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable debug log"), "",
         "debugLog", this, "debugLogEvent");
 
+    new SetupItemCheckBox(_("Enable OpenGL log"), "",
+        "debugOpenGL", this, "debugOpenGLEvent");
+
     new SetupItemCheckBox(_("Low traffic mode"), "", "lowTraffic",
         this, "lowTrafficEvent");
 

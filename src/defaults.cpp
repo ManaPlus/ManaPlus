@@ -268,6 +268,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("useTextureSampler", false);
     AddDEF("ministatussaved", 0);
     AddDEF("allowscreensaver", false);
+    AddDEF("debugOpenGL", 0);
     return configData;
 }
 
