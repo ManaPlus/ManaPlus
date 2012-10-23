@@ -266,31 +266,9 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
     GLenum error = glGetError();
     if (error)
     {
-        std::string errmsg = "Unknown error";
-        switch (error)
-        {
-            case GL_INVALID_ENUM:
-                errmsg = "GL_INVALID_ENUM";
-                break;
-            case GL_INVALID_VALUE:
-                errmsg = "GL_INVALID_VALUE";
-                break;
-            case GL_INVALID_OPERATION:
-                errmsg = "GL_INVALID_OPERATION";
-                break;
-            case GL_STACK_OVERFLOW:
-                errmsg = "GL_STACK_OVERFLOW";
-                break;
-            case GL_STACK_UNDERFLOW:
-                errmsg = "GL_STACK_UNDERFLOW";
-                break;
-            case GL_OUT_OF_MEMORY:
-                errmsg = "GL_OUT_OF_MEMORY";
-                break;
-            default:
-                break;
-        }
-        logger->log("Error: Image GL import failed: %s", errmsg.c_str());
+        std::string errmsg = GraphicsManager::errorToString(error);
+        logger->log("Error: Image GL import failed: %s (%d)",
+            errmsg.c_str(), error);
         return nullptr;
     }
 

@@ -112,6 +112,8 @@ class GraphicsManager final
 
         unsigned int getLastError();
 
+        static std::string errorToString(GLenum error);
+
         void updateDebugLog();
 #endif
 

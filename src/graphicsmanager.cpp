@@ -728,6 +728,39 @@ unsigned int GraphicsManager::getLastError()
     return error;
 }
 
+std::string GraphicsManager::errorToString(GLenum error)
+{
+    if (error)
+    {
+        std::string errmsg = "Unknown error";
+        switch (error)
+        {
+            case GL_INVALID_ENUM:
+                errmsg = "GL_INVALID_ENUM";
+                break;
+            case GL_INVALID_VALUE:
+                errmsg = "GL_INVALID_VALUE";
+                break;
+            case GL_INVALID_OPERATION:
+                errmsg = "GL_INVALID_OPERATION";
+                break;
+            case GL_STACK_OVERFLOW:
+                errmsg = "GL_STACK_OVERFLOW";
+                break;
+            case GL_STACK_UNDERFLOW:
+                errmsg = "GL_STACK_UNDERFLOW";
+                break;
+            case GL_OUT_OF_MEMORY:
+                errmsg = "GL_OUT_OF_MEMORY";
+                break;
+            default:
+                break;
+        }
+        return errmsg;
+    }
+    return "";
+}
+
 void GraphicsManager::detectVideoSettings()
 {
     config.setValue("videodetected", true);
