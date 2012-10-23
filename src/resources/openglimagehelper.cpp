@@ -297,6 +297,5 @@ void OpenGLImageHelper::initTextureSampler(GLint id)
         mglSamplerParameteri(id, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         mglSamplerParameteri(id, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     }
-    mglSamplerParameteri(id, GL_TEXTURE_MAX_LEVEL, 0);
 }
 #endif
