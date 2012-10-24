@@ -82,7 +82,7 @@ Gui::Gui(Graphics *const graphics) :
     mMouseCursors(nullptr),
     mMouseCursorAlpha(1.0f),
     mMouseInactivityTimer(0),
-    mCursorType(CURSOR_POINTER)
+    mCursorType(Cursor::CURSOR_POINTER)
 {
     logger->log1("Initializing GUI...");
     // Set graphics

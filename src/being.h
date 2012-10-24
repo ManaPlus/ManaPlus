@@ -843,6 +843,9 @@ class Being : public ActorSprite, public ConfigListener
         int getHitEffect(const Being *const attacker,
                          const AttackType type, const int attackId) const;
 
+        Cursor::Cursor getHoverCursor()
+        { return mInfo ? mInfo->getHoverCursor() : Cursor::CURSOR_POINTER; }
+
         static uint8_t genderToInt(const Gender sex);
 
         static Gender intToGender(uint8_t sex);

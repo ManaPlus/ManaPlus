@@ -131,7 +131,7 @@ Window::Window(const std::string &caption, const bool modal,
 
     if (mModal)
     {
-        gui->setCursorType(Gui::CURSOR_POINTER);
+        gui->setCursorType(Cursor::CURSOR_POINTER);
         requestModalFocus();
     }
 
@@ -443,7 +443,7 @@ void Window::widgetMoved(const gcn::Event& event A_UNUSED)
 void Window::widgetHidden(const gcn::Event &event A_UNUSED)
 {
     if (gui)
-        gui->setCursorType(Gui::CURSOR_POINTER);
+        gui->setCursorType(Cursor::CURSOR_POINTER);
 
     if (!mFocusHandler)
         return;
@@ -587,7 +587,7 @@ void Window::mouseReleased(gcn::MouseEvent &event A_UNUSED)
     {
         mouseResize = 0;
         if (gui)
-            gui->setCursorType(Gui::CURSOR_POINTER);
+            gui->setCursorType(Cursor::CURSOR_POINTER);
     }
 
     // This should be the responsibility of Guichan (and is from 0.8.0 on)
@@ -602,7 +602,7 @@ void Window::mouseEntered(gcn::MouseEvent &event)
 void Window::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     if (mGrip && !mouseResize && gui)
-        gui->setCursorType(Gui::CURSOR_POINTER);
+        gui->setCursorType(Cursor::CURSOR_POINTER);
 }
 
 void Window::updateResizeHandler(gcn::MouseEvent &event)
@@ -617,22 +617,22 @@ void Window::updateResizeHandler(gcn::MouseEvent &event)
     {
         case BOTTOM | RIGHT:
         case TOP | LEFT:
-            gui->setCursorType(Gui::CURSOR_RESIZE_DOWN_RIGHT);
+            gui->setCursorType(Cursor::CURSOR_RESIZE_DOWN_RIGHT);
             break;
         case TOP | RIGHT:
         case BOTTOM | LEFT:
-            gui->setCursorType(Gui::CURSOR_RESIZE_DOWN_LEFT);
+            gui->setCursorType(Cursor::CURSOR_RESIZE_DOWN_LEFT);
             break;
         case BOTTOM:
         case TOP:
-            gui->setCursorType(Gui::CURSOR_RESIZE_DOWN);
+            gui->setCursorType(Cursor::CURSOR_RESIZE_DOWN);
             break;
         case RIGHT:
         case LEFT:
-            gui->setCursorType(Gui::CURSOR_RESIZE_ACROSS);
+            gui->setCursorType(Cursor::CURSOR_RESIZE_ACROSS);
             break;
         default:
-            gui->setCursorType(Gui::CURSOR_POINTER);
+            gui->setCursorType(Cursor::CURSOR_POINTER);
     }
 }
 
@@ -735,7 +735,7 @@ void Window::setModal(bool modal)
         if (mModal)
         {
             if (gui)
-                gui->setCursorType(Gui::CURSOR_POINTER);
+                gui->setCursorType(Cursor::CURSOR_POINTER);
             requestModalFocus();
         }
         else

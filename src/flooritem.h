@@ -25,6 +25,8 @@
 
 #include "actorsprite.h"
 
+#include "resources/cursor.h"
+
 class ItemInfo;
 
 /**
@@ -95,6 +97,9 @@ class FloorItem final : public ActorSprite
         void disableHightlight()
         { mHighlight = false; }
 
+        Cursor::Cursor getHoverCursor()
+        { return mCursor; }
+
     private:
         int mItemId;
         int mX, mY;
@@ -107,6 +112,7 @@ class FloorItem final : public ActorSprite
         unsigned char mColor;
         bool mShowMsg;
         bool mHighlight;
+        Cursor::Cursor mCursor;
 };
 
 #endif

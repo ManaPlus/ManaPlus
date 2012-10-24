@@ -87,6 +87,9 @@ void MonsterDB::load()
         currentInfo->setTargetCursorSize(XML::getProperty(monsterNode,
             "targetCursor", "medium"));
 
+        currentInfo->setHoverCursor(XML::getProperty(monsterNode,
+            "hoverCursor", "attack"));
+
         currentInfo->setTargetOffsetX(XML::getProperty(monsterNode,
             "targetOffsetX", 0));
 

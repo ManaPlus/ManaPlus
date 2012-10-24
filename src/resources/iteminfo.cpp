@@ -53,7 +53,8 @@ ItemInfo::ItemInfo() :
     mHitEffectId(-1),
     mCriticalHitEffectId(-1),
     mMissEffectId(-1),
-    maxFloorOffset(32)
+    maxFloorOffset(32),
+    mPickupCursor(Cursor::CURSOR_POINTER)
 {
     for (int f = 0; f < 10; f ++)
     {
