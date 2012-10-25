@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef OPENGL1GRAPHICS_H
-#define OPENGL1GRAPHICS_H
+#ifndef SAFEOPENGLGRAPHICS_H
+#define SAFEOPENGLGRAPHICS_H
 
 #ifdef USE_OPENGL
 #include "main.h"

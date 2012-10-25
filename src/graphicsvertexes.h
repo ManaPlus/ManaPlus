@@ -37,8 +37,9 @@
 
 #include <SDL/SDL.h>
 
-#include "safeopenglgraphics.h"
+#include "mobileopenglgraphics.h"
 #include "normalopenglgraphics.h"
+#include "safeopenglgraphics.h"
 #endif
 
 #include "resources/image.h"
@@ -85,11 +86,16 @@ class NormalOpenGLGraphicsVertexes final
 
         GLint *switchIntTexArray();
 
+        GLshort *switchShortVertArray();
+
         std::vector<GLfloat*> *getFloatTexPool()
         { return &mFloatTexPool; }
 
         std::vector<GLint*> *getIntVertPool()
         { return &mIntVertPool; }
+
+        std::vector<GLshort*> *getShortVertPool()
+        { return &mShortVertPool; }
 
         std::vector<GLint*> *getIntTexPool()
         { return &mIntTexPool; }
@@ -99,6 +105,8 @@ class NormalOpenGLGraphicsVertexes final
         GLfloat *continueFloatTexArray();
 
         GLint *continueIntVertArray();
+
+        GLshort *continueShortVertArray();
 
         GLint *continueIntTexArray();
 
@@ -118,9 +126,11 @@ class NormalOpenGLGraphicsVertexes final
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;
+        GLshort *mShortVertArray;
         std::vector<int> mVp;
         std::vector<GLfloat*> mFloatTexPool;
         std::vector<GLint*> mIntVertPool;
+        std::vector<GLshort*> mShortVertPool;
         std::vector<GLint*> mIntTexPool;
 };
 #endif
@@ -202,5 +212,9 @@ class GraphicsVertexes final
         static int mUseOpenGL;
 #endif
 };
+
+#ifdef USE_OPENGL
+extern unsigned int vertexBufSize;
+#endif
 
 #endif // GRAPHICSVERTEXES_H

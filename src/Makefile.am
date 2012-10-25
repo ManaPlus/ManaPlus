@@ -605,7 +605,9 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      maplayer.h \
 	      mgl.cpp \
 	      mgl.h \
-	      normalopenglgraphics.cpp\
+	      mobileopenglgraphics.cpp \
+	      mobileopenglgraphics.h \
+	      normalopenglgraphics.cpp \
 	      normalopenglgraphics.h \
 	      particle.cpp \
 	      particle.h \

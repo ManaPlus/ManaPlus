@@ -601,6 +601,8 @@ SET(SRCS
     maplayer.h
     mgl.cpp
     mgl.h
+    mobileopenglgraphics.cpp
+    mobileopenglgraphics.h
     normalopenglgraphics.cpp
     normalopenglgraphics.h
     particle.cpp

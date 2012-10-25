@@ -23,6 +23,7 @@
 #include "resources/subimage.h"
 
 #ifdef USE_OPENGL
+#include "mobileopenglgraphics.h"
 #include "normalopenglgraphics.h"
 #include "safeopenglgraphics.h"
 #endif

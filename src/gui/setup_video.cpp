@@ -193,11 +193,12 @@ int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
     return -1;
 }
 
-const char *OPENGL_NAME[3] =
+const char *OPENGL_NAME[4] =
 {
     N_("Software"),
     N_("Fast OpenGL"),
     N_("Safe OpenGL"),
+    N_("Mobile OpenGL"),
 };
 
 class OpenGLListModel final : public gcn::ListModel
@@ -207,7 +208,7 @@ public:
     { }
 
     virtual int getNumberOfElements()
-    { return 3; }
+    { return 4; }
 
     virtual std::string getElementAt(int i)
     {
@@ -566,7 +567,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         if (test)
         {
             const int val = test->getConfig().getValueInt("opengl", -1);
-            if (val >= 0 && val <= 2)
+            if (val >= 0 && val <= 3)
                 mOpenGLDropDown->setSelected(val);
             delete test;
         }

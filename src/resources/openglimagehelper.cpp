@@ -29,6 +29,7 @@
 #include "graphicsmanager.h"
 #include "logger.h"
 #include "mgl.h"
+#include "mobileopenglgraphics.h"
 #include "normalopenglgraphics.h"
 #include "safeopenglgraphics.h"
 
@@ -215,15 +216,27 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
 
     GLuint texture;
     glGenTextures(1, &texture);
-    if (mUseOpenGL == 1)
-        NormalOpenGLGraphics::bindTexture(mTextureType, texture);
-    else if (mUseOpenGL == 2)
-        SafeOpenGLGraphics::bindTexture(mTextureType, texture);
+    switch (mUseOpenGL)
+    {
+        case 1:
+            NormalOpenGLGraphics::bindTexture(mTextureType, texture);
+            break;
+        case 2:
+            SafeOpenGLGraphics::bindTexture(mTextureType, texture);
+            break;
+        case 3:
+            MobileOpenGLGraphics::bindTexture(mTextureType, texture);
+            break;
+        default:
+            logger->log("Unknown OpenGL backend: %d", mUseOpenGL);
+            break;
+    }
 
     if (SDL_MUSTLOCK(tmpImage))
         SDL_LockSurface(tmpImage);
 
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+
     if (!mUseTextureSampler)
     {
         if (mBlur)

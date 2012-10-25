@@ -219,6 +219,12 @@ void GraphicsManager::initGraphics(bool noOpenGL)
             mainGraphics = new SafeOpenGLGraphics;
             mUseTextureSampler = false;
             break;
+        case 3:
+            imageHelper = new OpenGLImageHelper;
+            sdlImageHelper = new SDLImageHelper;
+            mainGraphics = new MobileOpenGLGraphics;
+            mUseTextureSampler = false;
+            break;
     };
     mUseAtlases = imageHelper->useOpenGL()
         && config.getBoolValue("useAtlases");

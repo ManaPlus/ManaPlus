@@ -25,6 +25,7 @@
 #include "debug.h"
 
 #ifdef USE_OPENGL
+unsigned int vertexBufSize = 500;
 int GraphicsVertexes::mUseOpenGL = 0;
 #endif
 
@@ -43,10 +44,12 @@ NormalOpenGLGraphicsVertexes::NormalOpenGLGraphicsVertexes() :
     ptr(0),
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),
-    mIntVertArray(nullptr)
+    mIntVertArray(nullptr),
+    mShortVertArray(nullptr)
 {
     mFloatTexPool.reserve(30);
     mIntVertPool.reserve(30);
+    mShortVertPool.reserve(30);
     mIntTexPool.reserve(30);
     mVp.reserve(30);
 }
@@ -72,6 +75,13 @@ void NormalOpenGLGraphicsVertexes::clear()
     }
     mIntVertPool.clear();
 
+    for (std::vector<GLshort*>::iterator it = mShortVertPool.begin();
+        it != mShortVertPool.end(); ++ it)
+    {
+        delete [] (*it);
+    }
+    mShortVertPool.clear();
+
     for (std::vector<GLint*>::iterator it = mIntTexPool.begin();
         it != mIntTexPool.end(); ++ it)
     {
@@ -86,6 +96,7 @@ void NormalOpenGLGraphicsVertexes::clear()
         delete []mFloatTexArray;
         delete []mIntTexArray;
         delete []mIntVertArray;
+        delete []mShortVertArray;
     }
 }
 
@@ -106,6 +117,13 @@ GLint *NormalOpenGLGraphicsVertexes::switchIntVertArray()
     mIntVertArray = new GLint[vertexBufSize * 4 + 30];
     mIntVertPool.push_back(mIntVertArray);
     return mIntVertArray;
+}
+
+GLshort *NormalOpenGLGraphicsVertexes::switchShortVertArray()
+{
+    mShortVertArray = new GLshort[vertexBufSize * 4 + 30];
+    mShortVertPool.push_back(mShortVertArray);
+    return mShortVertArray;
 }
 
 GLint *NormalOpenGLGraphicsVertexes::switchIntTexArray()
@@ -167,6 +185,20 @@ GLint *NormalOpenGLGraphicsVertexes::continueIntVertArray()
         mIntVertArray = mIntVertPool.back();
     }
     return mIntVertArray;
+}
+
+GLshort *NormalOpenGLGraphicsVertexes::continueShortVertArray()
+{
+    if (mShortVertPool.empty())
+    {
+        mShortVertArray = new GLshort[vertexBufSize * 4 + 30];
+        mShortVertPool.push_back(mShortVertArray);
+    }
+    else
+    {
+        mShortVertArray = mShortVertPool.back();
+    }
+    return mShortVertArray;
 }
 
 GLint *NormalOpenGLGraphicsVertexes::continueIntTexArray()

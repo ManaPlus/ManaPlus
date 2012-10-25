@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NORMALOPENGLGRAPHICS_H
-#define NORMALOPENGLGRAPHICS_H
+#ifndef MOBILEOPENGLGRAPHICS_H
+#define MOBILEOPENGLGRAPHICS_H
 
 #include "main.h"
 #ifdef USE_OPENGL
@@ -45,14 +45,14 @@
 
 class NormalOpenGLGraphicsVertexes;
 
-class NormalOpenGLGraphics final : public Graphics
+class MobileOpenGLGraphics final : public Graphics
 {
     public:
-        NormalOpenGLGraphics();
+        MobileOpenGLGraphics();
 
-        A_DELETE_COPY(NormalOpenGLGraphics)
+        A_DELETE_COPY(MobileOpenGLGraphics)
 
-        ~NormalOpenGLGraphics();
+        ~MobileOpenGLGraphics();
 
         bool setVideoMode(const int w, const int h, const int bpp,
                           const bool fs, const bool hwaccel,
@@ -127,21 +127,13 @@ class NormalOpenGLGraphics final : public Graphics
 
         void setTargetPlane(int width, int height);
 
-        inline void drawQuadArrayfi(int size);
+        inline void drawTriangleArrayfs(GLshort *shortVertArray,
+                                        GLfloat *floatTexArray,
+                                        const int size);
 
-        inline void drawQuadArrayfi(GLint *intVertArray,
-                                    GLfloat *floatTexArray,
-                                    const int size);
+        inline void drawTriangleArrayfs(int size);
 
-        inline void drawQuadArrayii(int size);
-
-        inline void drawQuadArrayii(GLint *intVertArray,
-                                    GLint *intTexArray,
-                                    const int size);
-
-        inline void drawLineArrayi(int size);
-
-        inline void drawLineArrayf(int size);
+        inline void drawLineArrays(int size);
 
         inline void drawVertexes(NormalOpenGLGraphicsVertexes &ogl);
 
@@ -190,6 +182,7 @@ class NormalOpenGLGraphics final : public Graphics
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;
+        GLshort *mShortVertArray;
         bool mAlpha;
         bool mTexture;
 
