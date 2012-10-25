@@ -25,6 +25,8 @@
 
 #include "actorsprite.h"
 
+#include "resources/cursor.h"
+
 #include <list>
 #include <map>
 
@@ -103,6 +105,15 @@ class BeingInfo final
         void setTargetCursorSize(const ActorSprite::TargetCursorSize
                                  &targetSize)
         { mTargetCursorSize = targetSize; }
+
+        void setHoverCursor(const std::string &name)
+        { return setHoverCursor(Cursor::stringToCursor(name)); }
+
+        void setHoverCursor(const Cursor::Cursor &cursor)
+        { mHoverCursor = cursor; }
+
+        Cursor::Cursor getHoverCursor()
+        { return mHoverCursor; }
 
         ActorSprite::TargetCursorSize getTargetCursorSize() const
         { return mTargetCursorSize; }
@@ -183,6 +194,7 @@ class BeingInfo final
         SpriteDisplay mDisplay;
         std::string mName;
         ActorSprite::TargetCursorSize mTargetCursorSize;
+        Cursor::Cursor mHoverCursor;
         SoundEvents mSounds;
         Attacks mAttacks;
         unsigned char mWalkMask;

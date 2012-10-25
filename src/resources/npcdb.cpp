@@ -78,13 +78,16 @@ void NPCDB::load()
         }
 
         currentInfo->setTargetCursorSize(XML::getProperty(npcNode,
-                                         "targetCursor", "medium"));
+            "targetCursor", "medium"));
+
+        currentInfo->setHoverCursor(XML::getProperty(npcNode,
+            "hoverCursor", "talk"));
 
         currentInfo->setTargetOffsetX(XML::getProperty(npcNode,
-                                         "targetOffsetX", 0));
+            "targetOffsetX", 0));
 
         currentInfo->setTargetOffsetY(XML::getProperty(npcNode,
-                                         "targetOffsetY", 0));
+            "targetOffsetY", 0));
 
         currentInfo->setSortOffsetY(XML::getProperty(npcNode,
             "sortOffsetY", 0));

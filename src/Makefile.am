@@ -416,6 +416,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/chardb.h \
 	      resources/colordb.cpp \
 	      resources/colordb.h \
+	      resources/cursor.cpp \
+	      resources/cursor.h \
 	      resources/dye.cpp \
 	      resources/dye.h \
 	      resources/emotedb.cpp \

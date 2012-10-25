@@ -37,6 +37,7 @@ Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK,
 BeingInfo::BeingInfo() :
     mName(_("unnamed")),
     mTargetCursorSize(ActorSprite::TC_MEDIUM),
+    mHoverCursor(Cursor::CURSOR_POINTER),
     mWalkMask(Map::BLOCKMASK_WALL | Map::BLOCKMASK_CHARACTER
               | Map::BLOCKMASK_MONSTER | Map::BLOCKMASK_AIR
               | Map::BLOCKMASK_WATER),

@@ -126,6 +126,8 @@ defNameE(glDebugMessageCallback);
 typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);
 
 defNameE(wglGetExtensionsString);
+#else
+#define CALLBACK
 #endif
 
 #endif

@@ -23,6 +23,8 @@
 #ifndef GUI_H
 #define GUI_H
 
+#include "resources/cursor.h"
+
 #include <guichan/gui.hpp>
 
 #include "localconsts.h"
@@ -138,24 +140,6 @@ class Gui final : public gcn::Gui
         MouseEvent *createMouseEvent(Window *widget);
 
         void getAbsolutePosition(gcn::Widget *widget, int &x, int &y);
-
-        /**
-         * Cursors are in graphic order from left to right.
-         * CURSOR_POINTER should be left untouched.
-         * CURSOR_TOTAL should always be last.
-         */
-        enum
-        {
-            CURSOR_POINTER = 0,
-            CURSOR_RESIZE_ACROSS,
-            CURSOR_RESIZE_DOWN,
-            CURSOR_RESIZE_DOWN_LEFT,
-            CURSOR_RESIZE_DOWN_RIGHT,
-            CURSOR_FIGHT,
-            CURSOR_PICKUP,
-            CURSOR_TALK,
-            CURSOR_TOTAL
-        };
 
     protected:
         void handleMouseMoved(const gcn::MouseInput &mouseInput);

@@ -236,8 +236,8 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
             glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         }
-        glTexParameteri(mTextureType, GL_TEXTURE_MAX_LEVEL, 0);
     }
+    glTexParameteri(mTextureType, GL_TEXTURE_MAX_LEVEL, 0);
 
     glTexImage2D(mTextureType, 0, mInternalTextureType,
         tmpImage->w, tmpImage->h,
@@ -297,6 +297,5 @@ void OpenGLImageHelper::initTextureSampler(GLint id)
         mglSamplerParameteri(id, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         mglSamplerParameteri(id, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     }
-    mglSamplerParameteri(id, GL_TEXTURE_MAX_LEVEL, 0);
 }
 #endif

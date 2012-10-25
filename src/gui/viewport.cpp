@@ -788,6 +788,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
                     if (mTextPopup->isVisible())
                         mTextPopup->setVisible(false);
                 }
+                gui->setCursorType(Cursor::CURSOR_UP);
                 return;
             }
         }
@@ -801,31 +802,34 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
         {
             // NPCs
             case ActorSprite::NPC:
-                gui->setCursorType(Gui::CURSOR_TALK);
+                gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 
             // Monsters
             case ActorSprite::MONSTER:
-                gui->setCursorType(Gui::CURSOR_FIGHT);
+                gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 
+            case ActorSprite::PORTAL:
+                gui->setCursorType(mHoverBeing->getHoverCursor());
+                break;
+
+            case ActorSprite::FLOOR_ITEM:
             case ActorSprite::UNKNOWN:
             case ActorSprite::PLAYER:
-            case ActorSprite::FLOOR_ITEM:
-            case ActorSprite::PORTAL:
             default:
-                gui->setCursorType(Gui::CURSOR_POINTER);
+                gui->setCursorType(Cursor::CURSOR_POINTER);
                 break;
         }
     }
     // Item mouseover
     else if (mHoverItem)
     {
-        gui->setCursorType(Gui::CURSOR_PICKUP);
+        gui->setCursorType(mHoverItem->getHoverCursor());
     }
     else
     {
-        gui->setCursorType(Gui::CURSOR_POINTER);
+        gui->setCursorType(Cursor::CURSOR_POINTER);
     }
 }
 

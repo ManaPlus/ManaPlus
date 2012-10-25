@@ -271,6 +271,15 @@ class ItemInfo final
         const std::string replaceColors(std::string str,
                                         const unsigned char color) const;
 
+        void setPickupCursor(const std::string &cursor)
+        { return setPickupCursor(Cursor::stringToCursor(cursor)); }
+
+        void setPickupCursor(const Cursor::Cursor &cursor)
+        { mPickupCursor = cursor; }
+
+        Cursor::Cursor getPickupCursor() const
+        { return mPickupCursor; }
+
         int mDrawBefore[10];
         int mDrawAfter[10];
         int mDrawPriority[10];
@@ -314,6 +323,7 @@ class ItemInfo final
         int mCriticalHitEffectId;
         int mMissEffectId;
         int maxFloorOffset;
+        Cursor::Cursor mPickupCursor;
 };
 
 #endif

@@ -48,7 +48,8 @@ FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
     mPickupCount(0),
     mColor(color),
     mShowMsg(true),
-    mHighlight(config.getBoolValue("floorItemsHighlight"))
+    mHighlight(config.getBoolValue("floorItemsHighlight")),
+    mCursor(Cursor::CURSOR_PICKUP)
 {
     setMap(map);
     const ItemInfo &info = ItemDB::get(itemId);
@@ -72,6 +73,7 @@ FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
         mPos.y = 0;
     }
 
+    mCursor = info.getPickupCursor();
     setupSpriteDisplay(info.getDisplay(), true, 1,
         info.getDyeColorsString(mColor));
     mYDiff = 31;

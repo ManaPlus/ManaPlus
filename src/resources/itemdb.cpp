@@ -313,6 +313,8 @@ void ItemDB::load()
         itemInfo->setDrawPriority(-1, drawPriority);
         itemInfo->setColorsList(colors);
         itemInfo->setMaxFloorOffset(maxFloorOffset);
+        itemInfo->setPickupCursor(XML::getProperty(
+            node, "pickupCursor", "pickup"));
 
         std::string effect;
         for (size_t i = 0; i < sizeof(fields) / sizeof(fields[0]); ++ i)
