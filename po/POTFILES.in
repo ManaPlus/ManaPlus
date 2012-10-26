@@ -73,6 +73,7 @@ src/gui/widgets/channeltab.cpp
 src/gui/widgets/chattab.cpp
 src/gui/widgets/extendednamesmodel.cpp
 src/gui/widgets/guildchattab.cpp
+src/gui/widgets/itemcontainer.cpp
 src/gui/widgets/itemlinkhandler.cpp
 src/gui/widgets/namesmodel.cpp
 src/gui/widgets/setupitem.cpp

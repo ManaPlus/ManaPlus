@@ -4,14 +4,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-06-23 19:58+0000\n"
-"Last-Translator: Marco Jäger <linuxcobra@gmx.de>\n"
+"PO-Revision-Date: 2012-10-17 17:34+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "##2End##P                      \"Change Attack Type\""
 msgstr "##2End##P                      \"Ändern der Angriffstaktik\""
@@ -43,6 +43,14 @@ msgstr "Die meisten Befehle arbeiten im Flüsterchat.\nZum Beispiel der Befehl '
 msgid "##2KeyPad[3]##P                \"On / Off audio\""
 msgstr "##2KeyPad[3]##P                \"Ein / Aus Ton\""
 
+msgid ""
+" To add an item to the shortcut bar click on the item in the inventory window,\n"
+" then click on the box in the shortcut-window which should be associated with\n"
+" the item. To reorder items within the shortcut-window simply click and drag\n"
+" them between the boxes. To remove items you simply drag them outside of the\n"
+" window and drop them."
+msgstr " Um einen Gegenstand der Schnellzugriffsleiste hinzuzufügen, klicken Sie auf den\n Gegenstand im Inventarfenster, dann auf das Feld im Schnellzugriffsfenster\n klicken, das mit dem Gegenstand verknüpft werden soll. Um Gegenstände innerhalb\n des Schnellzugriffsfenster neu anzuordnen, klicken Sie einfach auf das Feld und\n ziehen Sie diese zum gewünschten Feld. Um Gegenstände zu entfernen, ziehen Sie\n diese einfach außerhalb des Fensters und lassen es dort fallen."
+
 msgid "##2F2##P                       \"Status Window\""
 msgstr "##2F2##P                       \"Statusfenster\""
 
@@ -52,19 +60,16 @@ msgstr "/cacheinfo - Info über den Textspeicher anzeigen."
 msgid "##2LeftAlt + Minus(-)##P       \"Emote Shortcut 11\""
 msgstr "##2LeftAlt + Minus(-)##P       \"Emote Tastaturkürzel 11\""
 
-msgid "KEYBOARD:"
-msgstr "TASTATUR:"
+msgid ""
+"You can imitate other players by selecting \"imitation\" in player context menu\n"
+" or type chat command: /imitate playername."
+msgstr "Man kann andere Spieler nachahmen, indem Sie \"Imitation \"im Spieler-Kontext-Menü\n anklicken oder oder den Chat-Befehl: /imitate playername benutzen."
 
 msgid ""
 " If you're having troubles, please first of all read the FAQ. If you\n"
 " can't find a solution to your problem, feel free to check our\n"
 " Bugs/Support section of the forum:"
 msgstr " Wenn Sie Probleme haben, dann lesen Sie bitte zuerst die FAQ. Wenn Sie\n dort keine Lösung für Ihr Problem finden können, dann zögern Sie nicht,\n den Fehler- / Hilfebereich unseres Forums zu besuchen:"
-
-msgid ""
-"##2     http://forums.themanaworld.org/viewforum.php?f=3\n"
-" or visit IRC channel:"
-msgstr "##2     http://forums.themanaworld.org/viewforum.php?f=3\n oder besuche den IRC Raum:"
 
 msgid "ManaPlus Contributors"
 msgstr "ManaPlus Mitarbeiter"
@@ -130,6 +135,10 @@ msgstr "##2a##P                        \"Nächstgelegenes Ziel\""
 
 msgid "##2Party level2:##P enables a char to create a party."
 msgstr "##2Party level2:##P Ermöglicht es einer Spielfigur, eine Gruppe zu gründen."
+
+msgid ""
+"Website: @@http://manaplus.evolonline.org/|http://manaplus.evolonline.org/@@"
+msgstr ""
 
 msgid "##2y##P                        \"Quick Drop N Items from 0 slot\""
 msgstr "##2y##P                        \"Schnelles fallenlassen von N Artikeln auf Platz 0"
@@ -268,9 +277,6 @@ msgstr "##2LEFT##P                     \"Bewegung nach links\""
 msgid "##2LeftAlt + 9##P              \"Emote Shortcut 9\""
 msgstr "##2LeftAlt + 9##P              \"Emote Tastaturkürzel 9\""
 
-msgid "About"
-msgstr "Über"
-
 msgid "Look this page for help and downloads:"
 msgstr "Schauen Sie diese Seite für Hilfe und Downloads:"
 
@@ -290,6 +296,9 @@ msgstr "Sie können den Mumble-Voice-Chat für das Gespräch mit anderen\n Spiel
 
 msgid "##2RightAlt##P                 \"Copy Outfit\""
 msgstr "##2RightAlt##P                 \"Kopiere Ausrüstung\""
+
+msgid "Here contributors from parent projects"
+msgstr ""
 
 msgid "##20##P                        \"Item Shortcut 10\""
 msgstr "##20##P                        \"Item Tastaturkürzel 10\""
@@ -311,6 +320,9 @@ msgstr "/uptime - zeigt Ihre aktuelle Onlinezeit (Spielzeit) an."
 msgid "/dumpg - dump graphics and some other settings to chat."
 msgstr "/dumpg - Sendet Grafik- und einige andere Einstellungen in den Chat."
 
+msgid "Manaplus Developers"
+msgstr "Manaplus Entwickler"
+
 msgid "/trade NICK - start trade with nick."
 msgstr "/trade NICK - Startet den Handel mit NICK."
 
@@ -323,10 +335,8 @@ msgstr "##2LeftAlt + EmoteKey##P       \"Smilie\""
 msgid "##22##P                        \"Item Shortcut 2\""
 msgstr "##22##P                        \"Item Tastaturkürzel 2\""
 
-msgid ""
-"You can imitate other players by selecting \"imitation\" in player context menu\n"
-" or type chat command: /imitate playername."
-msgstr "Man kann andere Spieler nachahmen, indem Sie \"Imitation \"im Spieler-Kontext-Menü\n anklicken oder oder den Chat-Befehl: /imitate playername benutzen."
+msgid "KEYBOARD:"
+msgstr "TASTATUR:"
 
 msgid "##2Semicolon(;)##P             \"Set Direction Down\""
 msgstr "##2Semicolon(;)##P             \"Richtungseinstellung nach unten\""
@@ -343,9 +353,6 @@ msgstr "Server-Neuigkeiten"
 
 msgid "##2LeftAlt + 4##P              \"Emote Shortcut 4\""
 msgstr "##2LeftAlt + 4##P              \"Emote Tastaturkürzel 4\""
-
-msgid "Website: http://manaplus.evolonline.org/"
-msgstr "Website: http://manaplus.evolonline.org/"
 
 msgid "##2F3##P                       \"Inventory Window\""
 msgstr "##2F3##P                       \"Inventarfenster\""
@@ -541,6 +548,11 @@ msgid "##2g##P                        \"Change Attack Weapon Type\""
 msgstr "##2g##P                        \"Wechselt die AngriffswaffeChange Attack Weapon Type\""
 
 msgid ""
+"If client working very slow, you can improve speed\n"
+"by reading this: @@http://manaplus.evolonline.org/slowpc|http://manaplus.evolonline.org/slowpc@@"
+msgstr ""
+
+msgid ""
 " The player list lists all of your acquaintances.  They are categorised as one\n"
 " of the following:"
 msgstr " Die Spieler-Liste listet alle Ihre eingetragenen Bekannten.\n Sie werden als eine der folgenden Möglichkeiten eingestuft:"
@@ -600,11 +612,13 @@ msgstr "##2DOWN##P                     \"Bewegung nach unten\""
 msgid "##2n##P                        \"Target NPC\""
 msgstr "##2n##P                        \"Target NPC\""
 
+msgid ""
+"About yellow bar you can read here:\n"
+"@@http://manaplus.evolonline.org/yellowbar|http://manaplus.evolonline.org/yellowbar@@"
+msgstr ""
+
 msgid "##2LeftAlt + 3##P              \"Emote Shortcut 3\""
 msgstr "##2LeftAlt + 3##P              \"Emote Tastaturkürzel 3\""
-
-msgid "Manaplus Developers"
-msgstr "Manaplus Entwickler"
 
 msgid "##2Backslash(/)##P             \"Change Crazy Move mode\""
 msgstr "##2Backslash(/)##P             \"Wechsel der Verrückten Bewegungsart\""
@@ -660,11 +674,6 @@ msgid "/away, /away MSG - set away mode."
 msgstr "/away, /away MSG - Abwesenheitsmodus setzen"
 
 msgid ""
-"If client working very slow, you can improve speed\n"
-"by reading this: http://manaplus.evolonline.org/slowpc"
-msgstr "Falls der Client sehr langsam arbeitet, können Sie die Geschwindigkeit\nverbessern mit den Infos auf: http://manaplus.evolonline.org/slowpc"
-
-msgid ""
 "/mail NICK MSG - send offline message to NICK. Working only in tmw server."
 msgstr "/mail NICK MSG - schickt Offline-Nachricht an Nick. Funktioniert nur im TMW-Server."
 
@@ -688,6 +697,11 @@ msgstr "##2Period(.)##P                \"Ändern der Bewegungsart zum Ziel\""
 
 msgid "##2F10##P                      \"Debug Window\""
 msgstr "##2F10##P                      \"Debugfenster\""
+
+msgid ""
+"##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@\n"
+" or visit IRC channel:"
+msgstr ""
 
 msgid ""
 " - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
@@ -740,13 +754,8 @@ msgid ""
 " an open game, there is nothing the developers can do to prevent this."
 msgstr " Sie werden feststellen, dass nicht die gesamte Kommunikation nach Ihrem Geschmack\n ist. Während die meisten Leute nett sind, können einige beleidigen oder versuchen,\n Ihnen das Leben schwerer zu machen - denn dies ist ein offenes Spiel und es gibt\n nichts die Entwickler tun können, um dies zu verhindern."
 
-msgid ""
-" However, you can protect yourself from such players by ignoring them.  Right-\n"
-" click on them to bring up the context menu, then select `Ignore' or\n"
-" `Disregard' (see below).  You can fine-tune your player relations in the\n"
-" `Setup' menu, which lists all the players you have added to it.  To open this\n"
-" menu, select `Setup' in the upper right corner of the screen, then `Players'."
-msgstr " Allerdings können Sie sich selbst von solchen Spieler zu schützen, indem man\n sie ignoriert. Mit der rechten Maustaste diese Spieler anklicken, und im\n Kontextmenü wählen Sie dann 'Ignorieren' oder 'Missachtung' (siehe unten).\n Sie können eine Feinabstimmung Ihres Spielerbeziehungen im Setup-Menü\n vornehmen, das alle Spieler, die Sie hinzugefügt haben, auflistet. Um diese\n Liste zu öffnen, wählen Sie 'Einstellungen' in der oberen rechten Ecke des\n Bildschirms, dann 'Spieler'."
+msgid "About"
+msgstr "Über"
 
 msgid "##2KeyPad[9]##P                \"Next Chat Tab\""
 msgstr "##2KeyPad[9]##P                \"Nächstes Chatunterfenster\""
@@ -810,12 +819,12 @@ msgid "##2Equals(=)##P                \"Item Shortcut 12\""
 msgstr "##2Equals(=)##P                \"Item Shortcut 12\""
 
 msgid ""
-" To add an item to the shortcut bar click on the item in the inventory window,\n"
-" then click on the box in the shortcut-window which should be associated with\n"
-" the item. To reorder items within the shortcut-window simply click and drag\n"
-" them between the boxes. To remove items you simply drag them outside of the\n"
-" window and drop them."
-msgstr " Um einen Gegenstand der Schnellzugriffsleiste hinzuzufügen, klicken Sie auf den\n Gegenstand im Inventarfenster, dann auf das Feld im Schnellzugriffsfenster\n klicken, das mit dem Gegenstand verknüpft werden soll. Um Gegenstände innerhalb\n des Schnellzugriffsfenster neu anzuordnen, klicken Sie einfach auf das Feld und\n ziehen Sie diese zum gewünschten Feld. Um Gegenstände zu entfernen, ziehen Sie\n diese einfach außerhalb des Fensters und lassen es dort fallen."
+" However, you can protect yourself from such players by ignoring them.  Right-\n"
+" click on them to bring up the context menu, then select `Ignore' or\n"
+" `Disregard' (see below).  You can fine-tune your player relations in the\n"
+" `Setup' menu, which lists all the players you have added to it.  To open this\n"
+" menu, select `Setup' in the upper right corner of the screen, then `Relations'."
+msgstr ""
 
 msgid "/follow NICK - start follow mode."
 msgstr "/follow NICK - Starte Verfolgung von Spieler NICK."
@@ -841,10 +850,8 @@ msgstr "Aktionen"
 msgid "##2Insert##P                   \"Item Shortcut 14\""
 msgstr "##2Insert##P                   \"Item Tastaturkürzel 14\""
 
-msgid ""
-"About yellow bar you can read here:\n"
-"http://manaplus.evolonline.org/yellowbar"
-msgstr "Informationen über die gelbe Leiste können Sie hier lesen:\nhttp://manaplus.evolonline.org/yellowbar"
+msgid "Sound effects"
+msgstr ""
 
 msgid "##2F6##P                       \"Minimap Window\""
 msgstr "##2F6##P                       \"Minikartenfenster\""
