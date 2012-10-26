@@ -24,7 +24,7 @@
 #define NORMALOPENGLGRAPHICS_H
 
 #include "main.h"
-#ifdef USE_OPENGL
+#if defined USE_OPENGL && !defined ANDROID
 
 #include "localconsts.h"
 #include "graphics.h"

@@ -21,8 +21,7 @@
  */
 
 #include "main.h"
-
-#ifdef USE_OPENGL
+#if defined USE_OPENGL && !defined ANDROID
 
 #include "normalopenglgraphics.h"
 

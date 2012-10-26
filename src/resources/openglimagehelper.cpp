@@ -218,12 +218,17 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
     glGenTextures(1, &texture);
     switch (mUseOpenGL)
     {
+#ifndef ANDROID
         case 1:
             NormalOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
         case 2:
             SafeOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
+#else
+        case 1:
+        case 2:
+#endif
         case 3:
             MobileOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
@@ -250,7 +255,9 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
             glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         }
     }
+#ifndef ANDROID
     glTexParameteri(mTextureType, GL_TEXTURE_MAX_LEVEL, 0);
+#endif
 
     glTexImage2D(mTextureType, 0, mInternalTextureType,
         tmpImage->w, tmpImage->h,

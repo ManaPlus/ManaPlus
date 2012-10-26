@@ -208,6 +208,7 @@ void GraphicsManager::initGraphics(bool noOpenGL)
             break;
         case 1:
         default:
+#ifndef ANDROID
             imageHelper = new OpenGLImageHelper;
             sdlImageHelper = new SDLImageHelper;
             mainGraphics = new NormalOpenGLGraphics;
@@ -219,6 +220,7 @@ void GraphicsManager::initGraphics(bool noOpenGL)
             mainGraphics = new SafeOpenGLGraphics;
             mUseTextureSampler = false;
             break;
+#endif
         case 3:
             imageHelper = new OpenGLImageHelper;
             sdlImageHelper = new SDLImageHelper;
@@ -247,9 +249,13 @@ Graphics *GraphicsManager::createGraphics()
             return new Graphics;
         case 1:
         default:
+#ifndef ANDROID
             return new NormalOpenGLGraphics;
         case 2:
             return new SafeOpenGLGraphics;
+#endif
+        case 3:
+            return new MobileOpenGLGraphics;
     };
 #else
     return new Graphics;

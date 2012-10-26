@@ -253,14 +253,19 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mOpenGLListModel = new OpenGLListModel;
-    mOpenGLDropDown = new DropDown(widget, mOpenGLListModel),
+    mOpenGLDropDown = new DropDown(widget, mOpenGLListModel);
+
+#ifdef USE_OPENGL
+#ifdef ANDROID
+    if (mOpenGLEnabled == 1 || mOpenGLEnabled == 2)
+        mOpenGLEnabled = 3;
+#endif
     mOpenGLDropDown->setSelected(mOpenGLEnabled);
-
-    mModeList->setEnabled(true);
-
-#ifndef USE_OPENGL
+#else
     mOpenGLDropDown->setSelected(0);
 #endif
+
+    mModeList->setEnabled(true);
 
     mFpsLabel->setCaption(mFps > 0 ? toString(mFps) : _("None"));
     mFpsLabel->setWidth(60);

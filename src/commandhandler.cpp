@@ -1396,7 +1396,7 @@ void CommandHandler::replaceVars(std::string &str)
 void CommandHandler::handleDumpOGL(const std::string &args A_UNUSED,
                                    ChatTab *const tab A_UNUSED)
 {
-#if defined USE_OPENGL
+#if defined USE_OPENGL && !defined ANDROID
     NormalOpenGLGraphics::dumpSettings();
 #endif
 }

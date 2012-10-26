@@ -23,8 +23,8 @@
 #ifndef SAFEOPENGLGRAPHICS_H
 #define SAFEOPENGLGRAPHICS_H
 
-#ifdef USE_OPENGL
 #include "main.h"
+#if defined USE_OPENGL && !defined ANDROID
 
 #include "graphics.h"
 
