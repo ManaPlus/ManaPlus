@@ -365,7 +365,7 @@ void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
     gcn::Widget *const w = getCurrentWidget();
     if (w)
     {
-        ScrollArea* scr = dynamic_cast<ScrollArea*>(w);
+        ScrollArea *const scr = dynamic_cast<ScrollArea *const>(w);
         if (scr)
         {
             if (mFollowDownScroll && height != 0)
@@ -378,7 +378,7 @@ void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
                         && scr->getVerticalScrollAmount()
                         <= scr->getVerticalMaxScroll() + 2)
                     {
-                        int newScroll = scr->getVerticalScrollAmount()
+                        const int newScroll = scr->getVerticalScrollAmount()
                             + rect.height - height;
                         w->setSize(mWidgetContainer->getWidth() - frameSize,
                             mWidgetContainer->getHeight() - frameSize);

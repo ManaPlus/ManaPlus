@@ -125,7 +125,7 @@ namespace gcn
     {
     }
 
-    void TextField::setCaretPosition(unsigned int position)
+    void TextField::setCaretPosition(unsigned int position A_UNUSED)
     {
     }
 

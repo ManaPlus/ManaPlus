@@ -356,9 +356,9 @@ void Client::gameInit()
 #endif
 
     if (config.getBoolValue("allowscreensaver"))
-        putenv("SDL_VIDEO_ALLOW_SCREENSAVER=1");
+        putenv(const_cast<char*>("SDL_VIDEO_ALLOW_SCREENSAVER=1"));
     else
-        putenv("SDL_VIDEO_ALLOW_SCREENSAVER=0");
+        putenv(const_cast<char*>("SDL_VIDEO_ALLOW_SCREENSAVER=0"));
 
     chatLogger = new ChatLogger;
     if (mOptions.chatLogDir == "")

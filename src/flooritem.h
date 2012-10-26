@@ -97,7 +97,7 @@ class FloorItem final : public ActorSprite
         void disableHightlight()
         { mHighlight = false; }
 
-        Cursor::Cursor getHoverCursor()
+        Cursor::Cursor getHoverCursor() const
         { return mCursor; }
 
     private:

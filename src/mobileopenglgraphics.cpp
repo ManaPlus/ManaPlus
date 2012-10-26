@@ -312,7 +312,7 @@ void MobileOpenGLGraphics::drawImagePattern(const Image *const image,
     const unsigned int vLimit = mMaxVertices * 4;
     // Draw a set of textured rectangles
 //    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
-    {
+//    {
         float texX1 = static_cast<float>(srcX) / tw;
         float texY1 = static_cast<float>(srcY) / th;
 
@@ -346,23 +346,23 @@ void MobileOpenGLGraphics::drawImagePattern(const Image *const image,
                 mFloatTexArray[vp + 10] = texX2;     //3
                 mFloatTexArray[vp + 11] = texY2;
 
-                mShortVertArray[vp + 0] = dstX;
-                mShortVertArray[vp + 1] = dstY;
+                mShortVertArray[vp + 0] = static_cast<GLshort>(dstX);
+                mShortVertArray[vp + 1] = static_cast<GLshort>(dstY);
 
-                mShortVertArray[vp + 2] = dstX + width;
-                mShortVertArray[vp + 3] = dstY;
+                mShortVertArray[vp + 2] = static_cast<GLshort>(dstX + width);
+                mShortVertArray[vp + 3] = static_cast<GLshort>(dstY);
 
-                mShortVertArray[vp + 4] = dstX + width;
-                mShortVertArray[vp + 5] = dstY + height;
+                mShortVertArray[vp + 4] = static_cast<GLshort>(dstX + width);
+                mShortVertArray[vp + 5] = static_cast<GLshort>(dstY + height);
 
-                mShortVertArray[vp + 6] = dstX;
-                mShortVertArray[vp + 7] = dstY;
+                mShortVertArray[vp + 6] = static_cast<GLshort>(dstX);
+                mShortVertArray[vp + 7] = static_cast<GLshort>(dstY);
 
-                mShortVertArray[vp + 8] = dstX;
-                mShortVertArray[vp + 9] = dstY + height;
+                mShortVertArray[vp + 8] = static_cast<GLshort>(dstX);
+                mShortVertArray[vp + 9] = static_cast<GLshort>(dstY + height);
 
-                mShortVertArray[vp + 10] = dstX + width;
-                mShortVertArray[vp + 11] = dstY + height;
+                mShortVertArray[vp + 10] = static_cast<GLshort>(dstX + width);
+                mShortVertArray[vp + 11] = static_cast<GLshort>(dstY + height);
 
                 vp += 12;
                 if (vp >= vLimit)
@@ -374,7 +374,7 @@ void MobileOpenGLGraphics::drawImagePattern(const Image *const image,
         }
         if (vp > 0)
             drawTriangleArrayfs(vp);
-    }
+//    }
 }
 
 void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
@@ -411,7 +411,7 @@ void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
 
     // Draw a set of textured rectangles
 //    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
-    {
+//    {
         const float tw = static_cast<float>(image->mTexWidth);
         const float th = static_cast<float>(image->mTexHeight);
 
@@ -456,24 +456,23 @@ void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
                 mFloatTexArray[vp + 10] = texX2;
                 mFloatTexArray[vp + 11] = texY2;
 
+                mShortVertArray[vp + 0] = static_cast<GLshort>(dstX);
+                mShortVertArray[vp + 1] = static_cast<GLshort>(dstY);
 
-                mShortVertArray[vp + 0] = dstX;
-                mShortVertArray[vp + 1] = dstY;
+                mShortVertArray[vp + 2] = static_cast<GLshort>(dstX + width);
+                mShortVertArray[vp + 3] = static_cast<GLshort>(dstY);
 
-                mShortVertArray[vp + 2] = dstX + width;
-                mShortVertArray[vp + 3] = dstY;
+                mShortVertArray[vp + 4] = static_cast<GLshort>(dstX + width);
+                mShortVertArray[vp + 5] = static_cast<GLshort>(dstY + height);
 
-                mShortVertArray[vp + 4] = dstX + width;
-                mShortVertArray[vp + 5] = dstY + height;
+                mShortVertArray[vp + 6] = static_cast<GLshort>(dstX);
+                mShortVertArray[vp + 7] = static_cast<GLshort>(dstY);
 
-                mShortVertArray[vp + 6] = dstX;
-                mShortVertArray[vp + 7] = dstY;
+                mShortVertArray[vp + 8] = static_cast<GLshort>(dstX);
+                mShortVertArray[vp + 9] = static_cast<GLshort>(dstY + height);
 
-                mShortVertArray[vp + 8] = dstX;
-                mShortVertArray[vp + 9] = dstY + height;
-
-                mShortVertArray[vp + 10] = dstX + width;
-                mShortVertArray[vp + 11] = dstY + height;
+                mShortVertArray[vp + 10] = static_cast<GLshort>(dstX + width);
+                mShortVertArray[vp + 11] = static_cast<GLshort>(dstY + height);
 
                 vp += 12;
                 if (vp >= vLimit)
@@ -485,7 +484,7 @@ void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
         }
         if (vp > 0)
             drawTriangleArrayfs(vp);
-    }
+//    }
 }
 
 void MobileOpenGLGraphics::drawImagePattern2(GraphicsVertexes *const vert,

@@ -112,7 +112,7 @@ class BeingInfo final
         void setHoverCursor(const Cursor::Cursor &cursor)
         { mHoverCursor = cursor; }
 
-        Cursor::Cursor getHoverCursor()
+        Cursor::Cursor getHoverCursor() const
         { return mHoverCursor; }
 
         ActorSprite::TargetCursorSize getTargetCursorSize() const
