@@ -264,13 +264,30 @@ Graphics *GraphicsManager::createGraphics()
 
 void GraphicsManager::setVideoMode()
 {
-    const int width = config.getIntValue("screenwidth");
-    const int height = config.getIntValue("screenheight");
+    int width = config.getIntValue("screenwidth");
+    int height = config.getIntValue("screenheight");
     const int bpp = 0;
     const bool fullscreen = config.getBoolValue("screen");
     const bool hwaccel = config.getBoolValue("hwaccel");
     const bool enableResize = config.getBoolValue("enableresize");
     const bool noFrame = config.getBoolValue("noframe");
+
+#ifdef ANDROID
+    StringVect videoModes;
+    getAllVideoModes(videoModes);
+    if (!videoModes.empty())
+    {
+        std::string str = videoModes[0];
+        std::vector<int> res;
+        splitToIntVector(res, videoModes[0], 'x');
+        if (res.size() == 2)
+        {
+            width = res[0];
+            height = res[1];
+            logger->log("Autoselect mode %dx%d", width, height);
+        }
+    }
+#endif
 
     // Try to set the desired video mode
     if (!mainGraphics->setVideoMode(width, height, bpp,
@@ -299,6 +316,37 @@ void GraphicsManager::setVideoMode()
                     SDL_GetError()));
             }
         }
+    }
+}
+
+bool GraphicsManager::getAllVideoModes(StringVect &modeList)
+{
+    /* Get available fullscreen/hardware modes */
+    SDL_Rect **const modes = SDL_ListModes(nullptr,
+        SDL_FULLSCREEN | SDL_HWSURFACE);
+
+    /* Check which modes are available */
+    if (modes == static_cast<SDL_Rect **>(nullptr))
+    {
+        logger->log1("No modes available");
+        return false;
+    }
+    else if (modes == reinterpret_cast<SDL_Rect **>(-1))
+    {
+        logger->log1("All resolutions available");
+        return true;
+    }
+    else
+    {
+        for (int i = 0; modes[i]; ++ i)
+        {
+            const std::string modeString =
+                toString(static_cast<int>(modes[i]->w)) + "x"
+                + toString(static_cast<int>(modes[i]->h));
+            logger->log("support mode: " + modeString);
+            modeList.push_back(modeString);
+        }
+        return true;
     }
 }
 

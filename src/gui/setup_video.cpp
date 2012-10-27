@@ -132,29 +132,7 @@ static bool modeSorter(std::string mode1, std::string mode2)
 
 ModeListModel::ModeListModel()
 {
-    /* Get available fullscreen/hardware modes */
-    SDL_Rect **const modes = SDL_ListModes(nullptr,
-        SDL_FULLSCREEN | SDL_HWSURFACE);
-
-    /* Check which modes are available */
-    if (modes == static_cast<SDL_Rect **>(nullptr))
-    {
-        logger->log1("No modes available");
-    }
-    else if (modes == reinterpret_cast<SDL_Rect **>(-1))
-    {
-        logger->log1("All resolutions available");
-    }
-    else
-    {
-        for (int i = 0; modes[i]; ++ i)
-        {
-            const std::string modeString =
-                toString(static_cast<int>(modes[i]->w)) + "x"
-                + toString(static_cast<int>(modes[i]->h));
-            mVideoModes.push_back(modeString);
-        }
-    }
+    graphicsManager.getAllVideoModes(mVideoModes);
     addCustomMode("640x480");
     addCustomMode("800x600");
     addCustomMode("1024x768");

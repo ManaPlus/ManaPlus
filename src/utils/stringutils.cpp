@@ -476,6 +476,19 @@ void splitToStringSet(std::set<std::string> &tokens, const std::string &text,
     }
 }
 
+void splitToIntVector(std::vector<int> &tokens, const std::string &text,
+                      const char separator)
+{
+    std::stringstream ss(text);
+    std::string item;
+    while (std::getline(ss, item, separator))
+    {
+        item = trim(item);
+        if (!item.empty())
+            tokens.push_back(atoi(item.c_str()));
+    }
+}
+
 std::string combineDye(std::string file, std::string dye)
 {
     if (dye.empty())

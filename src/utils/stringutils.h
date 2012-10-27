@@ -191,6 +191,9 @@ void splitToStringVector(StringVect &tokens,
 void splitToStringSet(std::set<std::string> &tokens,
                       const std::string &text, const char separator);
 
+void splitToIntVector(std::vector<int> &tokens,
+                      const std::string &text, const char separator);
+
 std::string combineDye(std::string file, std::string dye);
 
 std::string combineDye2(std::string file, std::string dye);

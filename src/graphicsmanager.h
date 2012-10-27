@@ -37,6 +37,8 @@
 
 #endif
 
+#include "utils/stringvector.h"
+
 #include <set>
 #include <string>
 
@@ -61,6 +63,8 @@ class GraphicsManager final
         void setVideoMode();
 
         Graphics *createGraphics();
+
+        bool getAllVideoModes(StringVect &modeList);
 
 #ifdef USE_OPENGL
         TestMain *startDetection();
