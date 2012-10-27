@@ -65,7 +65,8 @@ Minimap::Minimap():
     setDefaultVisible(true);
     setSaveVisible(true);
 
-    setStickyButtonLock(true);
+    setStickyButton(true);
+    setSticky(false);
 
     loadWindowState();
     setVisible(mShow, isSticky());
