@@ -1,3 +1,18 @@
+2012-10-28 New release 1.2.10.28
+fix: some ARM fixes.
+fix: open/close sounds for some windows.
+fix: texture memory usage.
+add: extend theming.
+add: some changes for android support.
+add: mobile OpenGL backend.
+add: jewelry by Hal9000 (incomplete)
+add: info button with information about selected theme.
+add: option to disable/enable screensaver.
+add: OpenGL logging support.
+add: new cursor types.
+add: new cursor images. (by Hal9000)
+add: cursor selection for different items, monsters, npcs.
+
 2012-10-14 New release 1.2.10.14
 fix: monsters particle effects attacks.
 fix: chat window resize cursor.
