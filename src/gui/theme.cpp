@@ -450,6 +450,8 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     int titlePadding = 4;
     int titlebarHeight = 20;
     int closePadding = 3;
+    int stickySpacing = 3;
+    int stickyPadding = 3;
     int resizePadding = 2;
     std::map<std::string, int> *const mOptions
         = new std::map<std::string, int>();
@@ -507,6 +509,14 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
                     {
                         closePadding = XML::getProperty(partNode, "value", 3);
                     }
+                    else if (name == "stickySpacing")
+                    {
+                        stickySpacing = XML::getProperty(partNode, "value", 3);
+                    }
+                    else if (name == "stickyPadding")
+                    {
+                        stickyPadding = XML::getProperty(partNode, "value", 3);
+                    }
                     else if (name == "titlebarHeight")
                     {
                         titlebarHeight = XML::getProperty(
@@ -536,6 +546,8 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
         dBorders->decRef();
 
     (*mOptions)["closePadding"] = closePadding;
+    (*mOptions)["stickyPadding"] = stickyPadding;
+    (*mOptions)["stickySpacing"] = stickySpacing;
     (*mOptions)["titlebarHeight"] = titlebarHeight;
     (*mOptions)["resizePadding"] = resizePadding;
 

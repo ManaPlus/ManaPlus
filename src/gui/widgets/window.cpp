@@ -421,12 +421,13 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
         const Image *const button = mSkin->getStickyImage(mSticky);
         if (button)
         {
-            int x = mDimension.width - button->getWidth() - closePadding;
+            int x = mDimension.width - button->getWidth()
+                - getOption("stickySpacing");
             if (showClose)
                 x -= mSkin->getCloseImage(false)->getWidth() + closePadding;
 
             mStickyRect.x = x;
-            mStickyRect.y = closePadding;
+            mStickyRect.y = getOption("stickyPadding");
             mStickyRect.width = button->getWidth();
             mStickyRect.height = button->getHeight();
         }
