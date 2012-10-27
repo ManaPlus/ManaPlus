@@ -265,6 +265,7 @@ Client::Client(const Options &options) :
     mVideoButton(nullptr),
     mThemesButton(nullptr),
     mPerfomanceButton(nullptr),
+    mCloseButton(nullptr),
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
     mIcon(nullptr),
@@ -822,6 +823,12 @@ int Client::testsExec() const
 #endif
 }
 
+#define ADDBUTTON(var, object) var = object; \
+    x -= var->getWidth() + 6; \
+    var->setPosition(x, 3); \
+    top->add(var);
+
+
 int Client::gameExec()
 {
     int lastTickTime = tick_time;
@@ -1004,29 +1011,20 @@ int Client::gameExec()
             mDesktop = new Desktop(nullptr);
             top->add(mDesktop);
             int x = top->getWidth();
-            mSetupButton = new Button(mDesktop, _("Setup"), "Setup", this);
-            x -= mSetupButton->getWidth() + 3;
-            mSetupButton->setPosition(x, 3);
-            top->add(mSetupButton);
-
+            ADDBUTTON(mSetupButton, new Button(mDesktop,
+                _("Setup"), "Setup", this))
 #ifndef WIN32
-            mPerfomanceButton = new Button(mDesktop,
-                _("Perfomance"), "Perfomance", this);
-            x -= mPerfomanceButton->getWidth() + 6;
-            mPerfomanceButton->setPosition(x, 3);
-            top->add(mPerfomanceButton);
-
-            mVideoButton = new Button(mDesktop, _("Video"), "Video", this);
-            x -= mVideoButton->getWidth() + 6;
-            mVideoButton->setPosition(x, 3);
-            top->add(mVideoButton);
-
-            mThemesButton = new Button(mDesktop, _("Themes"), "Themes", this);
-            x -= mThemesButton->getWidth() + 6;
-            mThemesButton->setPosition(x, 3);
-            top->add(mThemesButton);
+            ADDBUTTON(mPerfomanceButton, new Button(mDesktop,
+                _("Perfomance"), "Perfomance", this))
+            ADDBUTTON(mVideoButton, new Button(mDesktop,
+                _("Video"), "Video", this))
+            ADDBUTTON(mThemesButton, new Button(mDesktop,
+                _("Themes"), "Themes", this))
+#ifdef ANDROID
+            ADDBUTTON(mCloseButton, new Button(mDesktop,
+                _("Close"), "close", this))
 #endif
-
+#endif
             mDesktop->setSize(mainGraphics->getWidth(),
                 mainGraphics->getHeight());
         }
@@ -1575,14 +1573,17 @@ void Client::optionChanged(const std::string &name)
 void Client::action(const gcn::ActionEvent &event)
 {
     std::string tab;
+    const std::string &eventId = event.getId();
 
-    if (event.getId() == "Setup")
+    if (eventId == "close")
+        setState(STATE_FORCE_QUIT);
+    else if (eventId == "Setup")
         tab = "";
-    else if (event.getId() == "Video")
+    else if (eventId == "Video")
         tab = "Video";
-    else if (event.getId() == "Themes")
+    else if (eventId == "Themes")
         tab = "Theme";
-    else if (event.getId() == "Perfomance")
+    else if (eventId == "Perfomance")
         tab = "Perfomance";
     else
         return;

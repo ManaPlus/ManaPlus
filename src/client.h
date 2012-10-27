@@ -370,6 +370,7 @@ private:
     Button *mVideoButton;
     Button *mThemesButton;
     Button *mPerfomanceButton;
+    Button *mCloseButton;
 
     State mState;
     State mOldState;
