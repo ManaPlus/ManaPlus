@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-10-27 00:15+0300\n"
-"PO-Revision-Date: 2012-10-26 21:19+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2012-10-27 15:52+0300\n"
+"PO-Revision-Date: 2012-10-26 23:09+0000\n"
+"Last-Translator: freya <freya.df@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
 "manaplus/language/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -66,7 +66,7 @@ msgstr "Configurar"
 msgid "Perfomance"
 msgstr "Performance"
 
-#: src/client.cpp:1019 src/gui/setup_video.cpp:248
+#: src/client.cpp:1019 src/gui/setup_video.cpp:226
 msgid "Video"
 msgstr "Vídeo"
 
@@ -746,7 +746,7 @@ msgstr "arco-íris 3"
 #: src/gui/itemamountwindow.cpp:94 src/gui/logindialog.cpp:79
 #: src/gui/logindialog.cpp:109 src/gui/setup_relations.cpp:227
 #: src/gui/setup_theme.cpp:109 src/gui/setup_theme.cpp:155
-#: src/gui/setup_video.cpp:216 src/gui/textcommandeditor.cpp:99
+#: src/gui/setup_video.cpp:194 src/gui/textcommandeditor.cpp:99
 #: src/gui/textcommandeditor.cpp:139 src/gui/textcommandeditor.cpp:159
 #: src/gui/widgets/extendednamesmodel.cpp:46 src/gui/widgets/namesmodel.cpp:48
 msgid "???"
@@ -2455,11 +2455,11 @@ msgstr "Som de convites de troca"
 
 #: src/gui/setup_audio.cpp:122
 msgid "Show window sound"
-msgstr ""
+msgstr "Mostrar som de janela"
 
 #: src/gui/setup_audio.cpp:125
 msgid "Hide window sound"
-msgstr ""
+msgstr "Ocultar som de janela"
 
 #: src/gui/setup_audio.cpp:131
 msgid "Enable mumble voice chat"
@@ -2927,7 +2927,7 @@ msgstr "Habilitar Depurador"
 
 #: src/gui/setup_other.cpp:226
 msgid "Enable OpenGL log"
-msgstr ""
+msgstr "Ativar LOG OpenGL"
 
 #: src/gui/setup_other.cpp:229
 msgid "Low traffic mode"
@@ -2976,11 +2976,11 @@ msgstr "Habilitar atraso composto de sprite (Software)"
 
 #: src/gui/setup_perfomance.cpp:72
 msgid "Enable delayed images load (OpenGL)"
-msgstr ""
+msgstr "Ativar carregamento imagens atrasados (OpenGL)"
 
 #: src/gui/setup_perfomance.cpp:75
 msgid "Enable texture sampler (OpenGL)"
-msgstr ""
+msgstr "Ativar exemplos de texturas (OpenGL)"
 
 #: src/gui/setup_perfomance.cpp:79
 msgid "Better quality (disable for better perfomance)"
@@ -3029,7 +3029,7 @@ msgstr "Usar nova textura de formato interno (OpenGL)"
 
 #: src/gui/setup_perfomance.cpp:115
 msgid "Enable texture atlases (OpenGL)"
-msgstr ""
+msgstr "Ativar atlas de textura (OpenGL)"
 
 #: src/gui/setup_players.cpp:53
 msgid "Show gender"
@@ -3278,7 +3278,7 @@ msgstr "Tamanho de fonte de NPC"
 #. TRANSLATORS: button name with information about selected theme
 #: src/gui/setup_theme.cpp:199
 msgid "i"
-msgstr ""
+msgstr "i"
 
 #: src/gui/setup_theme.cpp:201
 msgid "Theme"
@@ -3286,110 +3286,110 @@ msgstr "Tema"
 
 #: src/gui/setup_theme.cpp:365
 msgid "Theme info"
-msgstr ""
+msgstr "Informação de Tema"
 
 #: src/gui/setup_theme.cpp:386
 msgid "Theme Changed"
 msgstr "Tema alterado"
 
-#: src/gui/setup_theme.cpp:386 src/gui/setup_video.cpp:504
-#: src/gui/setup_video.cpp:511
+#: src/gui/setup_theme.cpp:386 src/gui/setup_video.cpp:482
+#: src/gui/setup_video.cpp:489
 msgid "Restart your client for the change to take effect."
 msgstr "Reincie o cliente para que as mudanças surtam efeito."
 
-#: src/gui/setup_video.cpp:198
+#: src/gui/setup_video.cpp:176
 msgid "Software"
 msgstr "Software"
 
-#: src/gui/setup_video.cpp:199
+#: src/gui/setup_video.cpp:177
 msgid "Fast OpenGL"
 msgstr "Rápido OpenGL"
 
-#: src/gui/setup_video.cpp:200
+#: src/gui/setup_video.cpp:178
 msgid "Safe OpenGL"
 msgstr "Seguro OpenGL"
 
-#: src/gui/setup_video.cpp:201
+#: src/gui/setup_video.cpp:179
 msgid "Mobile OpenGL"
-msgstr ""
+msgstr "OpenGL móvel"
 
-#: src/gui/setup_video.cpp:234
+#: src/gui/setup_video.cpp:212
 msgid "Full screen"
 msgstr "Tela cheia"
 
-#: src/gui/setup_video.cpp:235
+#: src/gui/setup_video.cpp:213
 msgid "Custom cursor"
 msgstr "Cursor customizado"
 
-#: src/gui/setup_video.cpp:237
+#: src/gui/setup_video.cpp:215
 msgid "Enable resize"
 msgstr "Habilitar redimensionamento de janela"
 
-#: src/gui/setup_video.cpp:239
+#: src/gui/setup_video.cpp:217
 msgid "No frame"
 msgstr "Sem moldura de janela"
 
-#: src/gui/setup_video.cpp:240
+#: src/gui/setup_video.cpp:218
 msgid "FPS limit:"
 msgstr "Limite de FPS:"
 
-#: src/gui/setup_video.cpp:244 src/gui/setup_video.cpp:272
-#: src/gui/setup_video.cpp:441 src/gui/setup_video.cpp:556
+#: src/gui/setup_video.cpp:222 src/gui/setup_video.cpp:250
+#: src/gui/setup_video.cpp:419 src/gui/setup_video.cpp:534
 msgid "Alt FPS limit: "
 msgstr "Limite de FPS alternativo: "
 
-#: src/gui/setup_video.cpp:245
+#: src/gui/setup_video.cpp:223
 msgid "Detect best mode"
 msgstr "Detectar melhor modo"
 
-#: src/gui/setup_video.cpp:270 src/gui/setup_video.cpp:273
-#: src/gui/setup_video.cpp:440 src/gui/setup_video.cpp:542
-#: src/gui/setup_video.cpp:554
+#: src/gui/setup_video.cpp:248 src/gui/setup_video.cpp:251
+#: src/gui/setup_video.cpp:418 src/gui/setup_video.cpp:520
+#: src/gui/setup_video.cpp:532
 msgid "None"
 msgstr "Nenhum"
 
-#: src/gui/setup_video.cpp:373
+#: src/gui/setup_video.cpp:351
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Falha ao mudar para o modo janela e falha na restauração do modo anterior!"
 
-#: src/gui/setup_video.cpp:379
+#: src/gui/setup_video.cpp:357
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Falha ao mudar para o modo tela cheia e falha na restauração do modo "
 "anterior!"
 
-#: src/gui/setup_video.cpp:390
+#: src/gui/setup_video.cpp:368
 msgid "Switching to Full Screen"
 msgstr "Mudando para tela cheia"
 
-#: src/gui/setup_video.cpp:391
+#: src/gui/setup_video.cpp:369
 msgid "Restart needed for changes to take effect."
 msgstr "É preciso reiniciar para as mudanças terem efeito."
 
-#: src/gui/setup_video.cpp:403
+#: src/gui/setup_video.cpp:381
 msgid "Changing to OpenGL"
 msgstr "Mudando para OpenGL"
 
-#: src/gui/setup_video.cpp:404
+#: src/gui/setup_video.cpp:382
 msgid "Applying change to OpenGL requires restart."
 msgstr "Mudanças no OpenGL requerem o reinício do jogo."
 
-#: src/gui/setup_video.cpp:479
+#: src/gui/setup_video.cpp:457
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Resolução customizada (exemplo 1024x768)"
 
-#: src/gui/setup_video.cpp:480
+#: src/gui/setup_video.cpp:458
 msgid "Enter new resolution:                "
 msgstr "Escolha a nova resolução                "
 
-#: src/gui/setup_video.cpp:503 src/gui/setup_video.cpp:510
+#: src/gui/setup_video.cpp:481 src/gui/setup_video.cpp:488
 msgid "Screen Resolution Changed"
 msgstr "Resolução de tela alterada"
 
-#: src/gui/setup_video.cpp:505
+#: src/gui/setup_video.cpp:483
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Algumas janelas podem ser movidas para se adequar à resolução mais baixa."
@@ -3512,7 +3512,7 @@ msgstr "Centro da janela de jogo"
 
 #: src/gui/setup_visual.cpp:114
 msgid "Allow screensaver to run"
-msgstr ""
+msgstr "Permitir rodar proteção de tela"
 
 #: src/gui/shopwindow.cpp:75
 msgid "Personal Shop"
@@ -4326,11 +4326,11 @@ msgstr "/kick > Expulsa alguém da guilda em que você está"
 #. TRANSLATORS: Text under equipped items (should be small)
 #: src/gui/widgets/itemcontainer.cpp:304
 msgid "Eq."
-msgstr ""
+msgstr "Eq."
 
 #: src/gui/widgets/itemlinkhandler.cpp:99
 msgid "Open url"
-msgstr ""
+msgstr "Abrir URL"
 
 #: src/gui/widgets/whispertab.cpp:103
 msgid "/ignore > Ignore the other player"

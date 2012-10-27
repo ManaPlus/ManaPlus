@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-10-27 00:15+0300\n"
+"POT-Creation-Date: 2012-10-27 15:52+0300\n"
 "PO-Revision-Date: 2012-10-26 21:19+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/"
@@ -65,7 +65,7 @@ msgstr "Impostazioni"
 msgid "Perfomance"
 msgstr "Performance"
 
-#: src/client.cpp:1019 src/gui/setup_video.cpp:248
+#: src/client.cpp:1019 src/gui/setup_video.cpp:226
 msgid "Video"
 msgstr "Video"
 
@@ -746,7 +746,7 @@ msgstr "Arcobaleno 3"
 #: src/gui/itemamountwindow.cpp:94 src/gui/logindialog.cpp:79
 #: src/gui/logindialog.cpp:109 src/gui/setup_relations.cpp:227
 #: src/gui/setup_theme.cpp:109 src/gui/setup_theme.cpp:155
-#: src/gui/setup_video.cpp:216 src/gui/textcommandeditor.cpp:99
+#: src/gui/setup_video.cpp:194 src/gui/textcommandeditor.cpp:99
 #: src/gui/textcommandeditor.cpp:139 src/gui/textcommandeditor.cpp:159
 #: src/gui/widgets/extendednamesmodel.cpp:46 src/gui/widgets/namesmodel.cpp:48
 msgid "???"
@@ -3290,105 +3290,105 @@ msgstr ""
 msgid "Theme Changed"
 msgstr "Tema cambiato"
 
-#: src/gui/setup_theme.cpp:386 src/gui/setup_video.cpp:504
-#: src/gui/setup_video.cpp:511
+#: src/gui/setup_theme.cpp:386 src/gui/setup_video.cpp:482
+#: src/gui/setup_video.cpp:489
 msgid "Restart your client for the change to take effect."
 msgstr "Per applicare le modifiche, è necessario riavviare il client."
 
-#: src/gui/setup_video.cpp:198
+#: src/gui/setup_video.cpp:176
 msgid "Software"
 msgstr "Software"
 
-#: src/gui/setup_video.cpp:199
+#: src/gui/setup_video.cpp:177
 msgid "Fast OpenGL"
 msgstr "OpenGL veloce"
 
-#: src/gui/setup_video.cpp:200
+#: src/gui/setup_video.cpp:178
 msgid "Safe OpenGL"
 msgstr "OpenGL sicuro"
 
-#: src/gui/setup_video.cpp:201
+#: src/gui/setup_video.cpp:179
 msgid "Mobile OpenGL"
 msgstr ""
 
-#: src/gui/setup_video.cpp:234
+#: src/gui/setup_video.cpp:212
 msgid "Full screen"
 msgstr "Schermo intero"
 
-#: src/gui/setup_video.cpp:235
+#: src/gui/setup_video.cpp:213
 msgid "Custom cursor"
 msgstr "Cursore personalizzato"
 
-#: src/gui/setup_video.cpp:237
+#: src/gui/setup_video.cpp:215
 msgid "Enable resize"
 msgstr ""
 
-#: src/gui/setup_video.cpp:239
+#: src/gui/setup_video.cpp:217
 msgid "No frame"
 msgstr ""
 
-#: src/gui/setup_video.cpp:240
+#: src/gui/setup_video.cpp:218
 msgid "FPS limit:"
 msgstr "Limite FPS:"
 
-#: src/gui/setup_video.cpp:244 src/gui/setup_video.cpp:272
-#: src/gui/setup_video.cpp:441 src/gui/setup_video.cpp:556
+#: src/gui/setup_video.cpp:222 src/gui/setup_video.cpp:250
+#: src/gui/setup_video.cpp:419 src/gui/setup_video.cpp:534
 msgid "Alt FPS limit: "
 msgstr "Limite Alt FPS:  "
 
-#: src/gui/setup_video.cpp:245
+#: src/gui/setup_video.cpp:223
 msgid "Detect best mode"
 msgstr ""
 
-#: src/gui/setup_video.cpp:270 src/gui/setup_video.cpp:273
-#: src/gui/setup_video.cpp:440 src/gui/setup_video.cpp:542
-#: src/gui/setup_video.cpp:554
+#: src/gui/setup_video.cpp:248 src/gui/setup_video.cpp:251
+#: src/gui/setup_video.cpp:418 src/gui/setup_video.cpp:520
+#: src/gui/setup_video.cpp:532
 msgid "None"
 msgstr "Nessuno"
 
-#: src/gui/setup_video.cpp:373
+#: src/gui/setup_video.cpp:351
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Cambio verso la modalità finestra fallito e anche il ripristino modalità "
 "precedente è fallito!"
 
-#: src/gui/setup_video.cpp:379
+#: src/gui/setup_video.cpp:357
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Cambio verso la modalità schermo intero fallito e anche il ripristino della "
 "modalità precedente è fallito!"
 
-#: src/gui/setup_video.cpp:390
+#: src/gui/setup_video.cpp:368
 msgid "Switching to Full Screen"
 msgstr "Cambiamento a schermo intero"
 
-#: src/gui/setup_video.cpp:391
+#: src/gui/setup_video.cpp:369
 msgid "Restart needed for changes to take effect."
 msgstr "Riavvio necessario affinchè i cambiamenti abbiano effetto."
 
-#: src/gui/setup_video.cpp:403
+#: src/gui/setup_video.cpp:381
 msgid "Changing to OpenGL"
 msgstr "Cambiamento a OpenGL"
 
-#: src/gui/setup_video.cpp:404
+#: src/gui/setup_video.cpp:382
 msgid "Applying change to OpenGL requires restart."
 msgstr "Applicare le modifiche ad OpenGL richiede il riavvio."
 
-#: src/gui/setup_video.cpp:479
+#: src/gui/setup_video.cpp:457
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Risoluzione scelta (esempio 1024x768)"
 
-#: src/gui/setup_video.cpp:480
+#: src/gui/setup_video.cpp:458
 msgid "Enter new resolution:                "
 msgstr "Nuova risoluzione:                                         "
 
-#: src/gui/setup_video.cpp:503 src/gui/setup_video.cpp:510
+#: src/gui/setup_video.cpp:481 src/gui/setup_video.cpp:488
 msgid "Screen Resolution Changed"
 msgstr "RIsoluzione schermo cambiata"
 
-#: src/gui/setup_video.cpp:505
+#: src/gui/setup_video.cpp:483
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Alcune finestre potrebbero essere spostate per addattarsi alla risoluzione "
