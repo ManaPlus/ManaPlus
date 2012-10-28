@@ -277,14 +277,30 @@ void GraphicsManager::setVideoMode()
     getAllVideoModes(videoModes);
     if (!videoModes.empty())
     {
-        std::string str = videoModes[0];
-        std::vector<int> res;
-        splitToIntVector(res, videoModes[0], 'x');
-        if (res.size() == 2)
+        bool found(false);
+        std::string str = strprintf("%dx%d", width, height);
+        for (StringVectCIter it = videoModes.begin(), it_end = videoModes.end();
+             it != it_end; ++ it)
         {
-            width = res[0];
-            height = res[1];
-            logger->log("Autoselect mode %dx%d", width, height);
+            if (str == *it)
+            {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            logger->log("Current resolution %s is incorrect.", str.c_str());
+            str = videoModes[0];
+            std::vector<int> res;
+            splitToIntVector(res, videoModes[0], 'x');
+            if (res.size() == 2)
+            {
+                width = res[0];
+                height = res[1];
+                logger->log("Autoselect mode %dx%d", width, height);
+            }
         }
     }
 #endif

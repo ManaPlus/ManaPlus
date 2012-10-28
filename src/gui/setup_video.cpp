@@ -133,6 +133,7 @@ static bool modeSorter(std::string mode1, std::string mode2)
 ModeListModel::ModeListModel()
 {
     graphicsManager.getAllVideoModes(mVideoModes);
+#ifndef ANDROID
     addCustomMode("640x480");
     addCustomMode("800x600");
     addCustomMode("1024x768");
@@ -144,6 +145,7 @@ ModeListModel::ModeListModel()
 
     std::sort(mVideoModes.begin(), mVideoModes.end(), modeSorter);
     mVideoModes.push_back("custom");
+#endif
 }
 
 void ModeListModel::addCustomMode(std::string mode)
