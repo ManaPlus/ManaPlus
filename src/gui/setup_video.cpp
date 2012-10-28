@@ -337,7 +337,7 @@ void Setup_Video::apply()
          * See http://libsdl.org/cgi/docwiki.cgi/SDL_SetVideoMode
          */
 
-#if defined(WIN32) || defined(__APPLE__)
+#if defined(WIN32) || defined(__APPLE__) || defined(ANDROID)
         // checks for opengl usage
         if (!config.getIntValue("opengl"))
         {
@@ -363,7 +363,7 @@ void Setup_Video::apply()
                     logger->safeError(errorMsg.str());
                 }
             }
-#if defined(WIN32) || defined(__APPLE__)
+#if defined(WIN32) || defined(__APPLE__) || defined(ANDROID)
         }
         else
         {
