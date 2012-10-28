@@ -276,7 +276,8 @@ Client::Client(const Options &options) :
     mIsMinimized(false),
     mInputFocused(true),
     mMouseFocused(true),
-    mGuiAlpha(1.0f)
+    mGuiAlpha(1.0f),
+    mNewMessageFlag(false)
 {
     mInstance = this;
 }
@@ -395,17 +396,19 @@ void Client::gameInit()
 
     if (mOptions.test.empty())
     {
-        SDL_WM_SetCaption(strprintf("%s %s",
+        mCaption = strprintf("%s %s",
             branding.getStringValue("appName").c_str(),
-            SMALL_VERSION).c_str(), nullptr);
+            SMALL_VERSION);
     }
     else
     {
-        SDL_WM_SetCaption(strprintf(
+        mCaption = strprintf(
             "Please wait - VIDEO MODE TEST - %s %s - Please wait",
             branding.getStringValue("appName").c_str(),
-            SMALL_VERSION).c_str(), nullptr);
+            SMALL_VERSION);
     }
+
+    SDL_WM_SetCaption(mCaption.c_str(), nullptr);
 
     const ResourceManager *const resman = ResourceManager::getInstance();
 
@@ -2565,4 +2568,32 @@ void Client::applyKeyRepeat()
 {
     SDL_EnableKeyRepeat(config.getIntValue("repeateDelay"),
         config.getIntValue("repeateInterval"));
+}
+
+void Client::setIsMinimized(const bool n)
+{
+    Client *client = instance();
+    if (!client)
+        return;
+
+    client->mIsMinimized = n;
+    if (!n && client->mNewMessageFlag)
+    {
+        client->mNewMessageFlag = false;
+        SDL_WM_SetCaption(client->mCaption.c_str(), nullptr);
+    }
+}
+
+void Client::newChatMessage()
+{
+    Client *client = instance();
+    if (!client)
+        return;
+
+    if (!client->mNewMessageFlag && client->mIsMinimized)
+    {
+        // show * on window caption
+        SDL_WM_SetCaption(("*" + client->mCaption).c_str(), nullptr);
+        client->mNewMessageFlag = true;
+    }
 }

@@ -319,6 +319,7 @@ void ChatTab::chatLog(std::string line, Own own,
                     chatWindow->unHideWindow();
                 playNewMessageSound();
             }
+            Client::newChatMessage();
         }
     }
 }

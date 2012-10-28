@@ -248,8 +248,9 @@ public:
     static bool getIsMinimized()
     { return instance()->mIsMinimized; }
 
-    static void setIsMinimized(const bool n)
-    { instance()->mIsMinimized = n; }
+    static void setIsMinimized(const bool n);
+
+    static void newChatMessage();
 
     static bool getInputFocused()
     { return instance()->mInputFocused; }
@@ -386,6 +387,8 @@ private:
     bool mInputFocused;
     bool mMouseFocused;
     float mGuiAlpha;
+    std::string mCaption;
+    bool mNewMessageFlag;
     FPSmanager mFpsManager;
 };
 
