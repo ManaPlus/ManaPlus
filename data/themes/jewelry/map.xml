@@ -1,7 +1,11 @@
 <skinset name="Default" image="window.png">
-    <widget type="Window" xpos="260" ypos="100">
-		
+	<widget type="Window" xpos="260" ypos="100">
+
+		<option name="captionoffsetx" value="12" /> 
+		<option name="captionoffsety" value="7" />
 		<option name="padding" value="10" />
+		<option name="titlebarHeight" value="26" />
+		<option name="stickySpacing" value="6" />
 
 		<!-- Top Row -->
 		<part type="top-left-corner" width="32" height="15" />
@@ -18,9 +22,8 @@
 		<part type="bottom-edge" xpos="33" ypos="27" width="64" height="15" />
 		<part type="bottom-right-corner" xpos="98" ypos="27" width="32" height="15" />
 
-		<!--<part type="closeImage" xpos="-131" ypos="0" width="16" height="16" />
-		<part type="stickyImageUp" xpos="-130" ypos="51" width="15" height="15" />
-		<part type="stickyImageDown" xpos="-115" ypos="51" width="15" height="15" />-->
-		
+		<part type="stickyImageUp" xpos="-130" ypos="-49" width="19" height="22" />
+		<part type="stickyImageDown" xpos="-99" ypos="-49" width="19" height="22" />
+
 	</widget>
 </skinset>

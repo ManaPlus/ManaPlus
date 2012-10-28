@@ -6,6 +6,7 @@
 		<option name="titlebarHeight" value="35" />
 		<option name="titlebarBold" value="1" />
 		<option name="padding" value="10" />
+		<option name="stickySpacing" value="6" />
 
 		<!-- Top Row -->
 		<part type="top-left-corner" width="32" height="32" />
@@ -24,8 +25,8 @@
 
 		<part type="closeImage" xpos="-163" ypos="0" width="22" height="22" />
 		<part type="closeImageHighlighted" xpos="-138" ypos="0" width="22" height="22" />
-		<!--<part type="stickyImageUp" xpos="-130" ypos="51" width="15" height="15" />
-		<part type="stickyImageDown" xpos="-115" ypos="51" width="15" height="15" />-->
+		<part type="stickyImageUp" xpos="-130" ypos="51" width="19" height="22" />
+		<part type="stickyImageDown" xpos="-115" ypos="51" width="19" height="22" />
 
 	</widget>
 </skinset>

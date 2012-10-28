@@ -24,8 +24,6 @@
 		<part type="bottom-right-corner" xpos="98" ypos="66" width="32" height="32" />
 
 		<part type="closeImage" xpos="-136" ypos="0" width="22" height="22" />
-		<!--<part type="stickyImageUp" xpos="-130" ypos="51" width="15" height="15" />
-		<part type="stickyImageDown" xpos="-115" ypos="51" width="15" height="15" />-->
 
 	</widget>
 </skinset>
