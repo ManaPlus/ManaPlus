@@ -1353,6 +1353,10 @@ int Client::gameExec()
                     // Allow any alpha opacity
                     Theme::instance()->setMinimumOpacity(-1.0f);
 
+#ifdef ANDROID
+                    delete mCloseButton;
+                    mCloseButton = nullptr;
+#endif
                     delete mSetupButton;
                     mSetupButton = nullptr;
                     delete mVideoButton;
@@ -1576,8 +1580,11 @@ void Client::action(const gcn::ActionEvent &event)
     const std::string &eventId = event.getId();
 
     if (eventId == "close")
+    {
         setState(STATE_FORCE_QUIT);
-    else if (eventId == "Setup")
+        return;
+    }
+    if (eventId == "Setup")
         tab = "";
     else if (eventId == "Video")
         tab = "Video";
@@ -2504,11 +2511,8 @@ void Client::resizeVideo(int width, int height, const bool always)
 
         if (mSetupButton)
         {
-//            mSetupButton->setPosition(width - mSetupButton->getWidth() - 3, 3);
-
             int x = width - mSetupButton->getWidth() - 3;
             mSetupButton->setPosition(x, 3);
-
 #ifndef WIN32
             x -= mPerfomanceButton->getWidth() + 6;
             mPerfomanceButton->setPosition(x, 3);
@@ -2518,6 +2522,10 @@ void Client::resizeVideo(int width, int height, const bool always)
 
             x -= mThemesButton->getWidth() + 6;
             mThemesButton->setPosition(x, 3);
+#ifdef ANDROID
+            x -= mCloseButton->getWidth() + 6;
+            mCloseButton->setPosition(x, 3);
+#endif
 #endif
         }
 
