@@ -227,7 +227,7 @@ namespace gcn
             {
                 uint16_t* q = reinterpret_cast<uint16_t*>(p);
                 for (; x1 <= x2; ++x1)
-                    *(q++) = static_cast<uint8_t>(pixel);
+                    *(q++) = pixel;
                 break;
             }
 
