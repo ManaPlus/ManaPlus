@@ -24,7 +24,9 @@ gui_DATA =				\
 	incomplete_icon.xml		\
 	info.xml		\
 	inventory.xml		\
+	itemcontainer.xml		\
 	itempopup.xml		\
+	item_selection.xml		\
 	items.xml		\
 	LICENSE.txt		\
 	listbox.xml		\
