@@ -46,6 +46,7 @@ gui_DATA =				\
 	scrollbuttons_pressed.xml		\
 	sell.xml		\
 	server.xml		\
+	shop.xml		\
 	slider.xml		\
 	slider_highlighted.xml		\
 	social.xml		\
