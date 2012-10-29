@@ -37,7 +37,7 @@ class KeyInput final : public gcn::KeyInput
         void setActionId(const int n)
         { mActionId = n; }
 
-        int getActionId() const
+        int getActionId() const A_WARN_UNUSED
         { return mActionId; }
 
     protected:

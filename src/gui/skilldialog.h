@@ -114,9 +114,9 @@ class SkillDialog final : public Window, public gcn::ActionListener
         void addSkill(const int id, const int level, const int range,
                       const bool modifiable);
 
-        SkillInfo* getSkill(int id);
+        SkillInfo* getSkill(int id) A_WARN_UNUSED;
 
-        bool hasSkills() const
+        bool hasSkills() const A_WARN_UNUSED
         { return !mSkills.empty(); }
 
         void widgetResized(const gcn::Event &event) override;

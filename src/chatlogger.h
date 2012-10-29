@@ -53,7 +53,7 @@ class ChatLogger final
         void loadLast(std::string name, std::list<std::string> &list,
                       const unsigned n) const;
 
-        std::string getDir() const;
+        std::string getDir() const A_WARN_UNUSED;
 
         std::string secureName(std::string &str) const;
 

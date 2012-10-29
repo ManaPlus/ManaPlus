@@ -67,9 +67,9 @@ class Palette
          *
          * @return the requested color or Palette::BLACK
          */
-        const gcn::Color &getCharColor(const signed char c, bool &valid);
+        const gcn::Color &getCharColor(const signed char c, bool &valid) A_WARN_UNUSED;
 
-        int getIdByChar(const signed char c, bool &valid);
+        int getIdByChar(const signed char c, bool &valid) A_WARN_UNUSED;
 
         /**
          * Gets the color associated with the type. Sets the alpha channel
@@ -80,7 +80,7 @@ class Palette
          *
          * @return the requested color
          */
-        inline const gcn::Color &getColor(int type, int alpha = 255)
+        inline const gcn::Color &getColor(int type, int alpha = 255) A_WARN_UNUSED
         {
             if (type >= static_cast<signed>(mColors.size()) || type < 0)
             {
@@ -93,7 +93,7 @@ class Palette
             return *col;
         }
 
-        inline const gcn::Color &getColorWithAlpha(int type)
+        inline const gcn::Color &getColorWithAlpha(int type) A_WARN_UNUSED
         {
             gcn::Color* col = &mColors[type].color;
             col->a = mColors[type].delay;
@@ -107,7 +107,7 @@ class Palette
          *
          * @return the gradient type of the color with the given index
          */
-        inline GradientType getGradientType(int type) const
+        inline GradientType getGradientType(int type) const A_WARN_UNUSED
         { return mColors[type].grad; }
 
         /**
@@ -117,7 +117,7 @@ class Palette
          *
          * @return the color char of the color with the given index
          */
-        inline char getColorChar(int type) const
+        inline char getColorChar(int type) const A_WARN_UNUSED
         { return mColors[type].ch; }
 
         /**
@@ -127,7 +127,7 @@ class Palette
          *
          * @return the gradient delay of the color with the given index
          */
-        inline int getGradientDelay(int type) const
+        inline int getGradientDelay(int type) const A_WARN_UNUSED
         { return mColors[type].delay; }
 
         /**
@@ -135,7 +135,8 @@ class Palette
          */
         static void advanceGradients();
 
-        static gcn::Color produceHPColor(int hp, int maxHp, int alpha = 255);
+        static gcn::Color produceHPColor(int hp, int maxHp,
+                                         int alpha = 255) A_WARN_UNUSED;
 
     protected:
         /** Colors used for the rainbow gradient */
@@ -200,7 +201,7 @@ class Palette
                 gradientIndex = rand();
             }
 
-            inline int getRGB() const
+            inline int getRGB() const A_WARN_UNUSED
             {
                 return (committedColor.r << 16) | (committedColor.g << 8) |
                         committedColor.b;

@@ -25,12 +25,14 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 /**
  * Returns the SHA-256 hash for the given string.
  *
  * @param string the string to create the SHA-256 hash for
  * @return the SHA-256 hash for the given string.
  */
-std::string sha256(const std::string &string);
+std::string sha256(const std::string &string) A_WARN_UNUSED;
 
 #endif // UTILS_SHA256_H

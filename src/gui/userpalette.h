@@ -98,7 +98,8 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the requested committed color
          */
-        inline const gcn::Color &getCommittedColor(const int type) const
+        inline const gcn::Color &getCommittedColor(const int type)
+                                                   const A_WARN_UNUSED
         {
             return mColors[type].committedColor;
         }
@@ -110,7 +111,8 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the requested test color
          */
-        inline const gcn::Color &getTestColor(const int type) const
+        inline const gcn::Color &getTestColor(const int type)
+                                              const A_WARN_UNUSED
         { return mColors[type].testColor; }
 
         /**
@@ -152,7 +154,7 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the number of colors known
          */
-        inline int getNumberOfElements() override
+        inline int getNumberOfElements() override A_WARN_UNUSED
         { return static_cast<int>(mColors.size()); }
 
         /**
@@ -162,7 +164,7 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the name of the color
          */
-        std::string getElementAt(int i) override;
+        std::string getElementAt(int i) override A_WARN_UNUSED;
 
         /**
          * Commit the colors
@@ -183,7 +185,7 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the color type of the color with the given index
          */
-        int getColorTypeAt(int i);
+        int getColorTypeAt(int i) A_WARN_UNUSED;
 
     private:
         /**
@@ -212,7 +214,8 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the transformed string
          */
-        static std::string getConfigName(const std::string &typeName);
+        static std::string getConfigName(const std::string &typeName)
+                                         A_WARN_UNUSED;
 
         /**
          * Initialise color

@@ -429,7 +429,7 @@ void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
         mMaxY = y + mBoxSize;
 }
 
-int EquipmentWindow::parseSlotName(std::string name) const
+int EquipmentWindow::parseSlotName(const std::string &name) const
 {
     int id = -1;
     if (name == "shoes" || name == "boot" || name == "boots")

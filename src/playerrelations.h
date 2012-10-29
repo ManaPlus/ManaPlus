@@ -98,6 +98,7 @@ class PlayerRelationsListener
         { }
 
         virtual void updatedPlayer(const std::string &name) = 0;
+
         virtual void updateAll() = 0;
 };
 
@@ -135,16 +136,19 @@ class PlayerRelationsManager final
          * the specified flags.
          */
         unsigned int checkPermissionSilently(const std::string &player_name,
-                                             const unsigned int flags);
+                                             const unsigned int flags)
+                                             A_WARN_UNUSED;
 
         /**
          * Tests whether the player in question is being ignored for any of the
          * actions in the specified flags. If so, trigger appropriate side effects
          * if requested by the player.
          */
-        bool hasPermission(const Being *const being, const unsigned int flags);
+        bool hasPermission(const Being *const being,
+                           const unsigned int flags) A_WARN_UNUSED;
 
-        bool hasPermission(const std::string &being, const unsigned int flags);
+        bool hasPermission(const std::string &being,
+                           const unsigned int flags) A_WARN_UNUSED;
 
         /**
          * Updates the relationship with this player.
@@ -155,7 +159,8 @@ class PlayerRelationsManager final
         /**
          * Updates the relationship with this player.
          */
-        PlayerRelation::Relation getRelation(const std::string &name);
+        PlayerRelation::Relation getRelation(const std::string &name)
+                                             A_WARN_UNUSED;
 
         /**
          * Deletes the information recorded for a player.
@@ -165,7 +170,7 @@ class PlayerRelationsManager final
         /**
          * Retrieves the default permissions.
          */
-        unsigned int getDefault() const;
+        unsigned int getDefault() const A_WARN_UNUSED;
 
         /**
          * Sets the default permissions.
@@ -178,14 +183,15 @@ class PlayerRelationsManager final
          * The player ignore strategies are allocated statically and must
          * not be deleted.
          */
-        std::vector<PlayerIgnoreStrategy *> *getPlayerIgnoreStrategies();
+        std::vector<PlayerIgnoreStrategy *> *getPlayerIgnoreStrategies()
+            A_WARN_UNUSED;
 
         /**
          * Return the current player ignore strategy.
          *
          * \return A player ignore strategy, or nullptr
          */
-        PlayerIgnoreStrategy *getPlayerIgnoreStrategy() const
+        PlayerIgnoreStrategy *getPlayerIgnoreStrategy() const A_WARN_UNUSED
         { return mIgnoreStrategy; }
 
         /**
@@ -201,15 +207,17 @@ class PlayerRelationsManager final
          * \param The short name of the ignore strategy to look up
          * \return The appropriate index, or -1
          */
-        int getPlayerIgnoreStrategyIndex(const std::string &shortname);
+        int getPlayerIgnoreStrategyIndex(const std::string &shortname)
+                                         A_WARN_UNUSED;
 
         /**
          * Retrieves a sorted vector of all players for which we have any
          * relations recorded.
          */
-        StringVect *getPlayers();
+        StringVect *getPlayers() A_WARN_UNUSED;
 
-        StringVect *getPlayersByRelation(const PlayerRelation::Relation rel);
+        StringVect *getPlayersByRelation(const PlayerRelation::Relation rel)
+                                         A_WARN_UNUSED;
 
         /**
          * Removes all recorded player info.
@@ -224,9 +232,9 @@ class PlayerRelationsManager final
 
         void ignoreTrade(std::string name);
 
-        bool isGoodName(Being *const being);
+        bool isGoodName(Being *const being) A_WARN_UNUSED;
 
-        bool isGoodName(std::string name);
+        bool isGoodName(std::string name) A_WARN_UNUSED;
 
         /**
          * Change the `ignore persist' flag.
@@ -242,7 +250,7 @@ class PlayerRelationsManager final
         void removeListener(PlayerRelationsListener *const listener)
         { mListeners.remove(listener); }
 
-        bool checkBadRelation(std::string name);
+        bool checkBadRelation(std::string name) A_WARN_UNUSED;
 
     private:
         void signalUpdate(const std::string &name);
@@ -251,7 +259,7 @@ class PlayerRelationsManager final
                               // ignored data upon reloading
         unsigned int mDefaultPermissions;
 
-        bool checkName(const std::string &name) const;
+        bool checkName(const std::string &name) const A_WARN_UNUSED;
 
         PlayerIgnoreStrategy *mIgnoreStrategy;
         std::map<std::string, PlayerRelation *> mRelations;

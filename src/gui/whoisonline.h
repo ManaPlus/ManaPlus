@@ -58,22 +58,22 @@ class OnlinePlayer final
 
         A_DELETE_COPY(OnlinePlayer)
 
-        const std::string getNick() const
+        const std::string getNick() const A_WARN_UNUSED
         { return mNick; }
 
-        unsigned char getStaus() const
+        unsigned char getStaus() const A_WARN_UNUSED
         { return mStatus; }
 
         void setIsGM(const bool b)
         { mIsGM = b; }
 
-        char getVersion() const
+        char getVersion() const A_WARN_UNUSED
         { return mVersion; }
 
-        char getLevel() const
+        char getLevel() const A_WARN_UNUSED
         { return mLevel; }
 
-        const std::string getText() const
+        const std::string getText() const A_WARN_UNUSED
         { return mText; }
 
         void setText(std::string str);
@@ -137,10 +137,10 @@ public:
 
     void widgetResized(const gcn::Event &event) override;
 
-    const std::set<OnlinePlayer*> &getOnlinePlayers() const
+    const std::set<OnlinePlayer*> &getOnlinePlayers() const A_WARN_UNUSED
     { return mOnlinePlayers; }
 
-    const std::set<std::string> &getOnlineNicks() const
+    const std::set<std::string> &getOnlineNicks() const A_WARN_UNUSED
     { return mOnlineNicks; }
 
     void setAllowUpdate(const bool n)
@@ -169,7 +169,7 @@ private:
                               FILE *stream);
 
     const std::string prepareNick(std::string nick, int level,
-                                  std::string color) const;
+                                  std::string color) const A_WARN_UNUSED;
 
     void updateWindow(std::vector<OnlinePlayer*> &friends,
                       std::vector<OnlinePlayer*> &neutral,

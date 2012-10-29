@@ -155,18 +155,18 @@ public:
     virtual void _pollInput()
     { }
 
-    virtual KeyInput dequeueKeyInput2();
+    virtual KeyInput dequeueKeyInput2() A_WARN_UNUSED;
 
-    virtual gcn::KeyInput dequeueKeyInput()
+    virtual gcn::KeyInput dequeueKeyInput() A_WARN_UNUSED
     { return gcn::KeyInput(); }
 
     // Inherited from Input
 
-    virtual bool isKeyQueueEmpty();
+    virtual bool isKeyQueueEmpty() A_WARN_UNUSED;
 
-    virtual bool isMouseQueueEmpty();
+    virtual bool isMouseQueueEmpty() A_WARN_UNUSED;
 
-    virtual gcn::MouseInput dequeueMouseInput();
+    virtual gcn::MouseInput dequeueMouseInput() A_WARN_UNUSED;
 
 protected:
     /**
@@ -176,7 +176,7 @@ protected:
      * @param button an SDL mouse button.
      * @return a Guichan mouse button.
      */
-    static int convertMouseButton(const int button);
+    static int convertMouseButton(const int button) A_WARN_UNUSED;
 
     /**
      * Converts an SDL event key to a key value.
@@ -185,7 +185,7 @@ protected:
      * @return a key value.
      * @see Key
      */
-    static int convertKeyCharacter(const SDL_Event &event);
+    static int convertKeyCharacter(const SDL_Event &event) A_WARN_UNUSED;
 
     std::queue<KeyInput> mKeyInputQueue;
     std::queue<gcn::MouseInput> mMouseInputQueue;

@@ -103,7 +103,7 @@ namespace PlayerInfo
     /**
      * Returns the value of the given attribute.
      */
-    int getAttribute(const Attribute id);
+    int getAttribute(const Attribute id) A_WARN_UNUSED;
 
     /**
      * Changes the value of the given attribute.
@@ -116,7 +116,7 @@ namespace PlayerInfo
     /**
      * Returns the base value of the given stat.
      */
-    int getStatBase(const Attribute id);
+    int getStatBase(const Attribute id) A_WARN_UNUSED;
 
     /**
      * Changes the base value of the given stat.
@@ -127,7 +127,7 @@ namespace PlayerInfo
     /**
      * Returns the modifier for the given stat.
      */
-    int getStatMod(const Attribute id);
+    int getStatMod(const Attribute id) A_WARN_UNUSED;
 
     /**
      * Changes the modifier for the given stat.
@@ -139,7 +139,7 @@ namespace PlayerInfo
      * Returns the current effective value of the given stat. Effective is base
      * + mod
      */
-    int getStatEffective(const Attribute id);
+    int getStatEffective(const Attribute id) A_WARN_UNUSED;
 
     /**
      * Changes the level of the given stat.
@@ -149,7 +149,7 @@ namespace PlayerInfo
     /**
      * Returns the experience of the given stat.
      */
-    std::pair<int, int> getStatExperience(const Attribute id);
+    std::pair<int, int> getStatExperience(const Attribute id) A_WARN_UNUSED;
 
     /**
      * Changes the experience of the given stat.
@@ -162,7 +162,7 @@ namespace PlayerInfo
     /**
      * Returns the player's inventory.
      */
-    Inventory *getInventory();
+    Inventory *getInventory() A_WARN_UNUSED;
 
     /**
      * Clears the player's inventory and equipment.
@@ -178,12 +178,12 @@ namespace PlayerInfo
     /**
      * Returns the player's equipment.
      */
-    Equipment *getEquipment();
+    Equipment *getEquipment() A_WARN_UNUSED;
 
     /**
      * Returns the player's equipment at the given slot.
      */
-    Item *getEquipment(const unsigned int slot);
+    Item *getEquipment(const unsigned int slot) A_WARN_UNUSED;
 
 // --- Specials ---------------------------------------------------------------
 

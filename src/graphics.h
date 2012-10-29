@@ -108,7 +108,7 @@ class Graphics : public gcn::SDLGraphics
          */
         void setSync(const bool sync);
 
-        bool getSync() const
+        bool getSync() const A_WARN_UNUSED
         { return mSync; }
 
         /**
@@ -244,7 +244,7 @@ class Graphics : public gcn::SDLGraphics
         void setBlitMode(const BlitMode mode)
         { mBlitMode = mode; }
 
-        BlitMode getBlitMode() const
+        BlitMode getBlitMode() const A_WARN_UNUSED
         { return mBlitMode; }
 
         void fillRectangle(const gcn::Rectangle& rectangle) override;
@@ -258,64 +258,64 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Returns the width of the screen.
          */
-        int getWidth() const;
+        int getWidth() const A_WARN_UNUSED;
 
         /**
          * Returns the height of the screen.
          */
-        int getHeight() const;
+        int getHeight() const A_WARN_UNUSED;
 
         /**
          * Takes a screenshot and returns it as SDL surface.
          */
-        virtual SDL_Surface *getScreenshot();
+        virtual SDL_Surface *getScreenshot() A_WARN_UNUSED;
 
         virtual void prepareScreenshot()
         { }
 
-        int getMemoryUsage() const;
+        int getMemoryUsage() const A_WARN_UNUSED;
 
         virtual bool drawNet(const int x1, const int y1,
                              const int x2, const int y2,
                              const int width, const int height);
 
-        gcn::Font *getFont() const
+        gcn::Font *getFont() const A_WARN_UNUSED
         { return mFont; }
 
-        gcn::ClipRectangle &getTopClip()
+        gcn::ClipRectangle &getTopClip() A_WARN_UNUSED
         { return mClipStack.top(); }
 
         void setRedraw(const bool n)
         { mRedraw = n; }
 
-        bool getRedraw() const
+        bool getRedraw() const A_WARN_UNUSED
         { return mRedraw; }
 
         void setSecure(const bool n)
         { mSecure = n; }
 
-        bool getSecure() const
+        bool getSecure() const A_WARN_UNUSED
         { return mSecure; }
 
-        int getBpp() const
+        int getBpp() const A_WARN_UNUSED
         { return mBpp; }
 
-        bool getFullScreen() const
+        bool getFullScreen() const A_WARN_UNUSED
         { return mFullscreen; }
 
-        bool getHWAccel() const
+        bool getHWAccel() const A_WARN_UNUSED
         { return mHWAccel; }
 
-        bool getDoubleBuffer() const
+        bool getDoubleBuffer() const A_WARN_UNUSED
         { return mDoubleBuffer; }
 
-        int getOpenGL() const
+        int getOpenGL() const A_WARN_UNUSED
         { return mOpenGL; }
 
         void setNoFrame(const bool n)
         { mNoFrame = n; }
 
-        const std::string &getName() const
+        const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
         virtual void initArrays()
@@ -341,9 +341,9 @@ class Graphics : public gcn::SDLGraphics
         void setMainFlags(int w, int h, int bpp, bool fs,
                           bool hwaccel, bool resize, bool noFrame);
 
-        int getOpenGLFlags() const;
+        int getOpenGLFlags() const A_WARN_UNUSED;
 
-        int getSoftwareFlags() const;
+        int getSoftwareFlags() const A_WARN_UNUSED;
 
         bool setOpenGLMode();
 

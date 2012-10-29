@@ -90,7 +90,7 @@ class ShopWindow final : public Window, public gcn::ActionListener,
         /**
          * Returns true if any instances exist.
          */
-        static bool isActive()
+        static bool isActive() A_WARN_UNUSED
         { return !instances.empty(); }
 
         void setItemSelected(const int id)
@@ -113,7 +113,7 @@ class ShopWindow final : public Window, public gcn::ActionListener,
         void setAcceptPlayer(std::string name)
         { mAcceptPlayer = name; }
 
-        const std::string &getAcceptPlayer() const
+        const std::string &getAcceptPlayer() const A_WARN_UNUSED
         { return mAcceptPlayer; }
 
         void sendMessage(const std::string &nick, std::string data,
@@ -124,15 +124,16 @@ class ShopWindow final : public Window, public gcn::ActionListener,
         void processRequest(std::string nick, std::string data,
                             const int mode);
 
-        bool findShopItem(const ShopItem *const shopItem, const int mode);
+        bool findShopItem(const ShopItem *const shopItem,
+                          const int mode) A_WARN_UNUSED;
 
-        static int sumAmount(const Item *const shopItem);
+        static int sumAmount(const Item *const shopItem) A_WARN_UNUSED;
 
         void updateTimes();
 
-        bool checkFloodCounter(int &counterTime) const;
+        bool checkFloodCounter(int &counterTime) const A_WARN_UNUSED;
 
-        bool isShopEmpty() const;
+        bool isShopEmpty() const A_WARN_UNUSED;
 
     private:
         void startTrade();

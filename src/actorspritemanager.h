@@ -26,6 +26,8 @@
 #include "being.h"
 #include "flooritem.h"
 
+#include "localconsts.h"
+
 class LocalPlayer;
 class Map;
 
@@ -56,7 +58,7 @@ class ActorSpriteManager final: public ConfigListener
          * Create a Being and add it to the list of ActorSprites.
          */
         Being *createBeing(const int id, const ActorSprite::Type type,
-                           const uint16_t subtype);
+                           const uint16_t subtype) A_WARN_UNUSED;
 
         /**
          * Create a FloorItem and add it to the list of ActorSprites.
@@ -79,19 +81,20 @@ class ActorSpriteManager final: public ConfigListener
         /**
          * Returns a specific Being, by id;
          */
-        Being *findBeing(const int id) const;
+        Being *findBeing(const int id) const A_WARN_UNUSED;
 
         /**
          * Returns a being at specific coordinates.
          */
         Being *findBeing(const int x, const int y, const ActorSprite::Type
-                         type = ActorSprite::UNKNOWN) const;
+                         type = ActorSprite::UNKNOWN) const A_WARN_UNUSED;
 
         /**
          * Returns a being at the specific pixel.
          */
         Being *findBeingByPixel(const int x, const int y,
-                                const bool allPlayers = false) const;
+                                const bool allPlayers = false)
+                                const A_WARN_UNUSED;
 
         /**
          * Returns a beings at the specific pixel.
@@ -103,17 +106,17 @@ class ActorSpriteManager final: public ConfigListener
         /**
          * Returns a portal at the specific tile.
          */
-        Being *findPortalByTile(const int x, const int y) const;
+        Being *findPortalByTile(const int x, const int y) const A_WARN_UNUSED;
 
         /**
          * Returns a specific FloorItem, by id.
          */
-        FloorItem *findItem(const int id) const;
+        FloorItem *findItem(const int id) const A_WARN_UNUSED;
 
         /**
          * Returns a FloorItem at specific coordinates.
          */
-        FloorItem *findItem(const int x, const int y) const;
+        FloorItem *findItem(const int x, const int y) const A_WARN_UNUSED;
 
         /**
          * Returns a being nearest to specific coordinates.
@@ -129,7 +132,7 @@ class ActorSpriteManager final: public ConfigListener
                                       const ActorSprite::Type
                                       type = Being::UNKNOWN,
                                       const Being *const
-                                      excluded = nullptr) const;
+                                      excluded = nullptr) const A_WARN_UNUSED;
 
         /**
          * Returns a being nearest to another being.
@@ -143,21 +146,21 @@ class ActorSpriteManager final: public ConfigListener
                                       const int maxTileDist,
                                       const ActorSprite::Type
                                       type = Being::UNKNOWN
-                                      ) const;
+                                      ) const A_WARN_UNUSED;
 
         /**
          * Finds a being by name and (optionally) by type.
          */
         Being *findBeingByName(const std::string &name,
                                const ActorSprite::Type
-                               type = Being::UNKNOWN) const;
+                               type = Being::UNKNOWN) const A_WARN_UNUSED;
 
        /**
         * Finds a nearest being by name and (optionally) by type.
         */
         Being *findNearestByName(const std::string &name,
                                  const Being::Type &type = Being::UNKNOWN
-                                ) const;
+                                 ) const A_WARN_UNUSED;
 
        /**
         * Heal all players in distance.
@@ -185,7 +188,8 @@ class ActorSpriteManager final: public ConfigListener
          *
          * \param actor the ActorSprite to search for
          */
-        bool hasActorSprite(const ActorSprite *const actor) const;
+        bool hasActorSprite(const ActorSprite *const actor)
+                            const A_WARN_UNUSED;
 
         /**
          * Performs ActorSprite logic and deletes ActorSprite scheduled to be
@@ -253,22 +257,22 @@ class ActorSpriteManager final: public ConfigListener
         void setAttackMobs(std::list<std::string> mobs)
         { mAttackMobs = mobs; }
 
-        int getPriorityAttackMobsSize() const
+        int getPriorityAttackMobsSize() const A_WARN_UNUSED
         { return static_cast<int>(mPriorityAttackMobs.size()); }
 
-        int getAttackMobsSize() const
+        int getAttackMobsSize() const A_WARN_UNUSED
         { return static_cast<int>(mAttackMobs.size()); }
 
-        int getPickupItemsSize() const
+        int getPickupItemsSize() const A_WARN_UNUSED
         { return static_cast<int>(mPickupItems.size()); }
 
 #define defList(list1, mob) \
-        bool isIn##list1##List(const std::string &name) const\
+        bool isIn##list1##List(const std::string &name) const A_WARN_UNUSED\
         { return m##list1##mob##Set.find(name) != m##list1##mob##Set.end(); }\
         void rebuild##list1##mob();\
-        std::set<std::string> get##list1##mob##Set() const\
+        std::set<std::string> get##list1##mob##Set() const A_WARN_UNUSED\
         { return m##list1##mob##Set; }\
-        std::list<std::string> get##list1##mob() const\
+        std::list<std::string> get##list1##mob() const A_WARN_UNUSED\
         { return m##list1##mob; }
 
         defList(Attack, Mobs)
@@ -277,36 +281,37 @@ class ActorSpriteManager final: public ConfigListener
         defList(Pickup, Items)
         defList(IgnorePickup, Items)
 
-        std::map<std::string, int> getAttackMobsMap() const
+        std::map<std::string, int> getAttackMobsMap() const A_WARN_UNUSED
         { return mAttackMobsMap; }
 
-        std::map<std::string, int> getPriorityAttackMobsMap() const
+        std::map<std::string, int> getPriorityAttackMobsMap()
+                                   const A_WARN_UNUSED
         { return mPriorityAttackMobsMap; }
 
-        int getAttackMobIndex(std::string name);
+        int getAttackMobIndex(std::string name) A_WARN_UNUSED;
 
-        int getPriorityAttackMobIndex(std::string name);
+        int getPriorityAttackMobIndex(std::string name) A_WARN_UNUSED;
 
-        int getPickupItemIndex(std::string name);
+        int getPickupItemIndex(std::string name) A_WARN_UNUSED;
 
         int getIndexByName(std::string name, std::map<std::string,
-                           int> &map) const;
+                           int> &map) const A_WARN_UNUSED;
 
-        bool checkForPickup(const FloorItem *const item) const;
+        bool checkForPickup(const FloorItem *const item) const A_WARN_UNUSED;
 
     protected:
         bool validateBeing(const Being *const aroundBeing,
                            Being *const being,
                            const Being::Type type,
                            const Being *const excluded = nullptr,
-                           const int maxCost = 20) const;
+                           const int maxCost = 20) const A_WARN_UNUSED;
 
         Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxdist,
                                       const Being::Type type,
                                       const int x, const int y,
                                       const Being *const
-                                      excluded = nullptr) const;
+                                      excluded = nullptr) const A_WARN_UNUSED;
 
         void loadAttackList();
         void storeAttackList();

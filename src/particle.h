@@ -113,13 +113,13 @@ class Particle : public Actor
         /**
          * Necessary for sorting with the other sprites.
          */
-        virtual int getPixelY() const override
+        virtual int getPixelY() const override A_WARN_UNUSED
         { return static_cast<int>(mPos.y) - 16; }
 
         /**
          * Necessary for sorting with the other sprites for sorting only.
          */
-        virtual int getSortPixelY() const override
+        virtual int getSortPixelY() const override A_WARN_UNUSED
         { return static_cast<int>(mPos.y) - 16; }
 
         /**
@@ -230,7 +230,7 @@ class Particle : public Actor
         /**
          * Gets the flag if the particle is supposed to be moved by its parent
          */
-        bool doesFollow() const
+        bool doesFollow() const A_WARN_UNUSED
         { return mFollow; }
 
         /**
@@ -258,13 +258,13 @@ class Particle : public Actor
         void setAllowSizeAdjust(const bool adjust)
         { mAllowSizeAdjust = adjust; }
 
-        bool isAlive() const
+        bool isAlive() const A_WARN_UNUSED
         { return mAlive == ALIVE; }
 
         /**
          * Determines whether the particle and its children are all dead
          */
-        bool isExtinct() const
+        bool isExtinct() const A_WARN_UNUSED
         { return !isAlive() && mChildParticles.empty(); }
 
         /**

@@ -59,19 +59,19 @@ class Item
         /**
          * Returns the item id.
          */
-        int getId() const
+        int getId() const A_WARN_UNUSED
         { return mId; }
 
         /**
          * Returns the item image.
          */
-        Image *getImage() const
+        Image *getImage() const A_WARN_UNUSED
         { return mImage; }
 
         /**
          * Returns the item image.
          */
-        Image *getDrawImage() const
+        Image *getDrawImage() const A_WARN_UNUSED
         { return mDrawImage; }
 
         /**
@@ -89,7 +89,7 @@ class Item
         /**
          * Returns the number of items.
          */
-        int getQuantity() const
+        int getQuantity() const A_WARN_UNUSED
         { return mQuantity; }
 
         /**
@@ -101,7 +101,7 @@ class Item
         /**
          * Returns whether this item is considered equipment.
          */
-        bool isEquipment() const
+        bool isEquipment() const A_WARN_UNUSED
         { return mEquipment; }
 
         /**
@@ -113,7 +113,7 @@ class Item
         /**
          * Returns whether this item is equipped.
          */
-        bool isEquipped() const
+        bool isEquipped() const A_WARN_UNUSED
         { return mEquipped; }
 
         /**
@@ -125,7 +125,7 @@ class Item
         /**
          * Returns this item refine level.
          */
-        int getRefine() const
+        int getRefine() const A_WARN_UNUSED
         { return mRefine; }
 
         /**
@@ -137,7 +137,7 @@ class Item
         /**
          * Returns whether this item is in equipment.
          */
-        bool isInEquipment() const
+        bool isInEquipment() const A_WARN_UNUSED
         { return mInEquipment; }
 
         /**
@@ -149,25 +149,26 @@ class Item
         /**
          * Returns the inventory index of this item.
          */
-        int getInvIndex() const
+        int getInvIndex() const A_WARN_UNUSED
         { return mInvIndex; }
 
         /**
          * Returns information about this item type.
          */
-        const ItemInfo &getInfo() const
+        const ItemInfo &getInfo() const A_WARN_UNUSED
         { return ItemDB::get(mId); }
 
-        std::string getName();
+        std::string getName() A_WARN_UNUSED;
 
-        static Image *getImage(const int id, const unsigned char color);
+        static Image *getImage(const int id,
+                               const unsigned char color) A_WARN_UNUSED;
 
-        bool isHaveTag(const int tagId);
+        bool isHaveTag(const int tagId) A_WARN_UNUSED;
 
-        unsigned char getColor() const
+        unsigned char getColor() const A_WARN_UNUSED
         { return mColor; }
 
-        std::string &getDescription()
+        std::string &getDescription() A_WARN_UNUSED
         { return mDescription; }
 
         int mId;              /**< Item type id. */

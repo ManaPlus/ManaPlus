@@ -50,7 +50,7 @@ class SpellShortcut final
          */
         void load();
 
-        unsigned int getSpellsCount() const;
+        unsigned int getSpellsCount() const A_WARN_UNUSED;
 
         /**
          * Set the item that is selected.
@@ -63,13 +63,13 @@ class SpellShortcut final
         /**
          * A flag to check if the item is selected.
          */
-        bool isItemSelected() const
+        bool isItemSelected() const A_WARN_UNUSED
         { return mItemSelected > -1; }
 
         /**
          * Returns selected shortcut item ID.
          */
-        int getSelectedItem() const
+        int getSelectedItem() const A_WARN_UNUSED
         { return mItemSelected; }
 
         /**

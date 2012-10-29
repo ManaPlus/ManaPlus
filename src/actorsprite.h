@@ -33,6 +33,8 @@
 #include <set>
 #include <list>
 
+#include "localconsts.h"
+
 class SimpleAnimation;
 class StatusEffect;
 class ActorSpriteListener;
@@ -72,7 +74,7 @@ public:
 
     ~ActorSprite();
 
-    int getId() const
+    int getId() const A_WARN_UNUSED
     { return mId; }
 
     void setId(const int id)
@@ -81,7 +83,7 @@ public:
     /**
      * Returns the type of the ActorSprite.
      */
-    virtual Type getType() const
+    virtual Type getType() const A_WARN_UNUSED
     { return UNKNOWN; }
 
     virtual bool draw(Graphics *graphics,
@@ -99,7 +101,7 @@ public:
     /**
      * Gets the way the object blocks pathfinding for other objects
      */
-    virtual Map::BlockType getBlockType() const
+    virtual Map::BlockType getBlockType() const A_WARN_UNUSED
     { return Map::BLOCKTYPE_NONE; }
 
     /**
@@ -110,13 +112,13 @@ public:
     /**
      * Returns the required size of a target cursor for this being.
      */
-    virtual TargetCursorSize getTargetCursorSize() const
+    virtual TargetCursorSize getTargetCursorSize() const A_WARN_UNUSED
     { return TC_MEDIUM; }
 
-    virtual int getTargetOffsetX() const
+    virtual int getTargetOffsetX() const A_WARN_UNUSED
     { return 0; }
 
-    virtual int getTargetOffsetY() const
+    virtual int getTargetOffsetY() const A_WARN_UNUSED
     { return 0; }
 
     /**
@@ -163,13 +165,13 @@ public:
     virtual void setAlpha(const float alpha) override
     { CompoundSprite::setAlpha(alpha); }
 
-    virtual float getAlpha() const override
+    virtual float getAlpha() const override A_WARN_UNUSED
     { return CompoundSprite::getAlpha(); }
 
-    virtual int getWidth() const override
+    virtual int getWidth() const override A_WARN_UNUSED
     { return CompoundSprite::getWidth(); }
 
-    virtual int getHeight() const override
+    virtual int getHeight() const override A_WARN_UNUSED
     { return CompoundSprite::getHeight(); }
 
     static void load();

@@ -86,7 +86,7 @@ class ShopItem final : public Item
          *
          * @return the quantity of the currently topmost duplicate
          */
-        int getCurrentQuantity() const
+        int getCurrentQuantity() const A_WARN_UNUSED
         {
             return mDuplicates.empty() ? 0 : mDuplicates.top()->quantity;
         }
@@ -96,7 +96,7 @@ class ShopItem final : public Item
          *
          * @return the inventory index of the currently topmost duplicate
          */
-        int getCurrentInvIndex() const
+        int getCurrentInvIndex() const A_WARN_UNUSED
         {
             return mDuplicates.empty() ? mInvIndex :
                    mDuplicates.top()->inventoryIndex;
@@ -120,7 +120,7 @@ class ShopItem final : public Item
          *
          * @return the price of the item
          */
-        int getPrice() const
+        int getPrice() const A_WARN_UNUSED
         { return mPrice; }
 
         /**
@@ -128,7 +128,7 @@ class ShopItem final : public Item
          *
          * @return the display name for the item in the shop list
          */
-        const std::string &getDisplayName() const
+        const std::string &getDisplayName() const A_WARN_UNUSED
         { return mDisplayName; }
 
     protected:

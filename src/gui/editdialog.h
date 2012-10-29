@@ -58,7 +58,7 @@ class EditDialog final : public Window, public gcn::ActionListener
          */
         void action(const gcn::ActionEvent &event) override;
 
-        std::string getMsg() const
+        std::string getMsg() const A_WARN_UNUSED
         { return mTextField->getText(); }
 
     private:

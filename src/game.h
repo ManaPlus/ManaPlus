@@ -67,7 +67,7 @@ class Game final
         /**
          * Provides access to the game instance.
          */
-        static Game *instance()
+        static Game *instance() A_WARN_UNUSED
         { return mInstance; }
 
         static void clearInstance()
@@ -92,10 +92,10 @@ class Game final
         /**
          * Returns the currently active map.
          */
-        Map *getCurrentMap() const
+        Map *getCurrentMap() const A_WARN_UNUSED
         { return mCurrentMap; }
 
-        const std::string &getCurrentMapName() const
+        const std::string &getCurrentMapName() const A_WARN_UNUSED
         { return mMapName; }
 
         void setValidSpeed();
@@ -111,7 +111,7 @@ class Game final
 
         void videoResized(const int width, const int height) const;
 
-        bool getValidSpeed() const
+        bool getValidSpeed() const A_WARN_UNUSED
         { return mValidSpeed; }
 
         static bool createScreenshot();
@@ -125,10 +125,7 @@ class Game final
 
         void clearKeysArray();
 
-
         int mLastTarget;
-
-//        WindowMenu *mWindowMenu;
 
         Map *mCurrentMap;
         std::string mMapName;

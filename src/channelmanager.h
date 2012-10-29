@@ -37,8 +37,8 @@ public:
     A_DELETE_COPY(ChannelManager)
     ~ChannelManager();
 
-    Channel *findById(const int id) const;
-    Channel *findByName(const std::string &name) const;
+    Channel *findById(const int id) const A_WARN_UNUSED;
+    Channel *findByName(const std::string &name) const A_WARN_UNUSED;
 
     void addChannel(Channel *const channel);
     void removeChannel(Channel *const channel);

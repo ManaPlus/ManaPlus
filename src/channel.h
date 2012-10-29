@@ -53,19 +53,19 @@ class Channel final
         /**
          * Get the id associated witht his channel.
          */
-        int getId() const
+        int getId() const A_WARN_UNUSED
         { return mId; }
 
          /**
          * Get this channel's name.
          */
-        const std::string &getName() const
+        const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
         /**
          * Get the announcement message for this channel.
          */
-        const std::string &getAnnouncement() const
+        const std::string &getAnnouncement() const A_WARN_UNUSED
         { return mAnnouncement; }
 
         /**
@@ -80,7 +80,7 @@ class Channel final
         void setAnnouncement(const std::string &channelAnnouncement)
         { mAnnouncement = channelAnnouncement; }
 
-        const ChannelTab *getTab() const
+        const ChannelTab *getTab() const A_WARN_UNUSED
         { return mTab; }
 
     protected:

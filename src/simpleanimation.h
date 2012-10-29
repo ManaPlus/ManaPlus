@@ -58,7 +58,7 @@ class SimpleAnimation final
 
         void setFrame(int frame);
 
-        int getLength() const;
+        int getLength() const A_WARN_UNUSED;
 
         bool update(const int timePassed);
 
@@ -70,7 +70,7 @@ class SimpleAnimation final
          */
         void reset();
 
-        Image *getCurrentImage() const;
+        Image *getCurrentImage() const A_WARN_UNUSED;
 
     private:
         void initializeAnimation(const XmlNodePtr animationNode,

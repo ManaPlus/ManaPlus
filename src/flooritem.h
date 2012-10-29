@@ -54,7 +54,7 @@ class FloorItem final : public ActorSprite
 
         A_DELETE_COPY(FloorItem)
 
-        Type getType() const override
+        Type getType() const override A_WARN_UNUSED
         { return FLOOR_ITEM; }
 
         bool draw(Graphics *graphics, int offsetX, int offsetY) const override;
@@ -62,33 +62,33 @@ class FloorItem final : public ActorSprite
         /**
          * Returns the item ID.
          */
-        int getItemId() const
+        int getItemId() const A_WARN_UNUSED
         { return mItemId; }
 
         /**
          * Returns the item info for this floor item. Useful for adding an item
          * link for the floor item to chat.
          */
-        const ItemInfo &getInfo() const;
+        const ItemInfo &getInfo() const A_WARN_UNUSED;
 
-        std::string getName() const;
+        std::string getName() const A_WARN_UNUSED;
 
-        virtual int getTileX() const override
+        virtual int getTileX() const override A_WARN_UNUSED
         { return mX; }
 
-        virtual int getTileY() const override
+        virtual int getTileY() const override A_WARN_UNUSED
         { return mY; }
 
         void incrementPickup()
         { mPickupCount ++; }
 
-        unsigned getPickupCount() const
+        unsigned getPickupCount() const A_WARN_UNUSED
         { return mPickupCount; }
 
-        unsigned char getColor() const
+        unsigned char getColor() const A_WARN_UNUSED
         { return mColor; }
 
-        bool getShowMsg() const
+        bool getShowMsg() const A_WARN_UNUSED
         { return mShowMsg; }
 
         void setShowMsg(const bool n)
@@ -97,15 +97,13 @@ class FloorItem final : public ActorSprite
         void disableHightlight()
         { mHighlight = false; }
 
-        Cursor::Cursor getHoverCursor() const
+        Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
         { return mCursor; }
 
     private:
         int mItemId;
         int mX, mY;
-//        Item *mItem;
         Map *mMap;
-//        float mAlpha;
         int mDropTime;
         int mAmount;
         unsigned mPickupCount;

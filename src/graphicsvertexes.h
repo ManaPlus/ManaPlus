@@ -88,16 +88,16 @@ class NormalOpenGLGraphicsVertexes final
 
         GLshort *switchShortVertArray();
 
-        std::vector<GLfloat*> *getFloatTexPool()
+        std::vector<GLfloat*> *getFloatTexPool() A_WARN_UNUSED
         { return &mFloatTexPool; }
 
-        std::vector<GLint*> *getIntVertPool()
+        std::vector<GLint*> *getIntVertPool() A_WARN_UNUSED
         { return &mIntVertPool; }
 
-        std::vector<GLshort*> *getShortVertPool()
+        std::vector<GLshort*> *getShortVertPool() A_WARN_UNUSED
         { return &mShortVertPool; }
 
-        std::vector<GLint*> *getIntTexPool()
+        std::vector<GLint*> *getIntTexPool() A_WARN_UNUSED
         { return &mIntTexPool; }
 
         void switchVp(int n);
@@ -114,7 +114,7 @@ class NormalOpenGLGraphicsVertexes final
 
         void updateVp(int n);
 
-        std::vector<int> *getVp()
+        std::vector<int> *getVp() A_WARN_UNUSED
         { return &mVp; }
 
         void init();
@@ -188,20 +188,20 @@ class GraphicsVertexes final
         { mPtr = num; }
 
 #ifdef USE_OPENGL
-        NormalOpenGLGraphicsVertexes &getOGL()
+        NormalOpenGLGraphicsVertexes &getOGL() A_WARN_UNUSED
         { return ogl[mPtr]; }
 #endif
 
-        int getX() const
+        int getX() const A_WARN_UNUSED
         { return mX; }
 
-        int getY() const
+        int getY() const A_WARN_UNUSED
         { return mY; }
 
-        int getW() const
+        int getW() const A_WARN_UNUSED
         { return mW; }
 
-        int getH() const
+        int getH() const A_WARN_UNUSED
         { return mH; }
 
         int mX, mY, mW, mH;

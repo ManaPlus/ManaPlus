@@ -25,7 +25,9 @@
 #ifdef WIN32
 #include <shlobj.h>
 #include <string>
-std::string getSpecialFolderLocation(int folderId);
+
+#include "localconsts.h"
+std::string getSpecialFolderLocation(int folderId) A_WARN_UNUSED;
 #endif
 
 #endif

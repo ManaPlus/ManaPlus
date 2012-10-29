@@ -79,7 +79,7 @@ class InventoryWindow final : public Window,
         /**
          * Returns the selected item.
          */
-        Item* getSelectedItem() const;
+        Item* getSelectedItem() const A_WARN_UNUSED;
 
         /**
          * Unselect item
@@ -124,13 +124,13 @@ class InventoryWindow final : public Window,
 
         void slotsChanged(Inventory *const inventory);
 
-        bool isMainInventory() const
+        bool isMainInventory() const A_WARN_UNUSED
         { return mInventory->isMainInventory(); }
 
         /**
          * Returns true if any instances exist.
          */
-        static bool isStorageActive()
+        static bool isStorageActive() A_WARN_UNUSED
         { return instances.size() > 1; }
 
         void updateDropButton();
@@ -140,7 +140,7 @@ class InventoryWindow final : public Window,
 
         void updateButtons(const Item *item = nullptr);
 
-        bool isInputFocused() const;
+        bool isInputFocused() const A_WARN_UNUSED;
 
         void widgetResized(const gcn::Event &event) override;
 

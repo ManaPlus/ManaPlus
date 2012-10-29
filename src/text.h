@@ -53,10 +53,10 @@ class Text
 
         void setColor(const gcn::Color *const color);
 
-        int getWidth() const
+        int getWidth() const A_WARN_UNUSED
         { return mWidth; }
 
-        int getHeight() const
+        int getHeight() const A_WARN_UNUSED
         { return mHeight; }
 
         /**

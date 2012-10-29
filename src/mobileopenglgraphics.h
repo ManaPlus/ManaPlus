@@ -144,7 +144,7 @@ class MobileOpenGLGraphics final : public Graphics
         /**
          * Takes a screenshot and returns it as SDL surface.
          */
-        SDL_Surface *getScreenshot() override;
+        SDL_Surface *getScreenshot() override A_WARN_UNUSED;
 
         void prepareScreenshot() override;
 

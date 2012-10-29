@@ -149,7 +149,7 @@ class MapLayer final: public ConfigListener
                         const Actors *const actors,
                         const int mDebugFlags, const int yFix) const;
 
-        bool isFringeLayer() const
+        bool isFringeLayer() const A_WARN_UNUSED
         { return mIsFringeLayer; }
 
         void setSpecialLayer(SpecialLayer *const val)
@@ -158,22 +158,16 @@ class MapLayer final: public ConfigListener
         void setTempLayer(SpecialLayer *const val)
         { mTempLayer = val; }
 
-        int getWidth() const
+        int getWidth() const A_WARN_UNUSED
         { return mWidth; }
 
-        int getHeight() const
+        int getHeight() const A_WARN_UNUSED
         { return mHeight; }
-
-//        void setTileInfo(int x, int y, int width, int cnt);
-
-//        void getTileInfo(int x, int y, int &width, int &cnt) const;
 
         void optionChanged(const std::string &value) override;
 
         int getTileDrawWidth(const Image *img,
-                             const int endX, int &width) const;
-
-//        void initTileInfo();
+                             const int endX, int &width) const A_WARN_UNUSED;
 
     private:
         int mX, mY;
@@ -206,7 +200,7 @@ class SpecialLayer final
                   int endX, int endY,
                   const int scrollX, const int scrollY) const;
 
-        MapItem* getTile(const int x, const int y) const;
+        MapItem* getTile(const int x, const int y) const A_WARN_UNUSED;
 
         void setTile(const int x, const int y, MapItem *const item);
 
@@ -263,26 +257,26 @@ class MapItem final
 
         ~MapItem();
 
-        int getType() const
+        int getType() const A_WARN_UNUSED
         { return mType; }
 
         void setType(const int type);
 
         void setPos(const int x, const int y);
 
-        int getX() const
+        int getX() const A_WARN_UNUSED
         { return mX; }
 
-        int getY() const
+        int getY() const A_WARN_UNUSED
         { return mY; }
 
-        const std::string &getComment() const
+        const std::string &getComment() const A_WARN_UNUSED
         { return mComment; }
 
         void setComment(std::string comment)
         { mComment = comment; }
 
-        const std::string &getName() const
+        const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
         void setName(std::string name)
@@ -313,7 +307,8 @@ class ObjectsLayer final
                        const unsigned x, const unsigned y,
                        unsigned dx, unsigned dy);
 
-        MapObjectList *getAt(const unsigned x, const unsigned y) const;
+        MapObjectList *getAt(const unsigned x,
+                             const unsigned y) const A_WARN_UNUSED;
     private:
         MapObjectList **mTiles;
         unsigned mWidth;

@@ -80,14 +80,14 @@ class CharCreateDialog final : public Window,
         void keyPressed(gcn::KeyEvent &keyEvent) override;
 
     private:
-        int getDistributedPoints() const;
+        int getDistributedPoints() const A_WARN_UNUSED;
 
         void updateSliders();
 
         /**
          * Returns the name of the character to create.
          */
-        std::string getName() const;
+        std::string getName() const A_WARN_UNUSED;
 
         /**
          * Communicate character creation to the server.

@@ -32,6 +32,7 @@
 
 class Button;
 class ListBox;
+class KeyListModel;
 class TabStrip;
 
 struct SetupActionData;
@@ -77,9 +78,9 @@ class Setup_Input final : public SetupTab
          */
         void keyUnresolved();
 
-        int keyToSetupData(const int index) const;
+        int keyToSetupData(const int index) const A_WARN_UNUSED;
 
-        std::string keyToString(const int index) const;
+        std::string keyToString(const int index) const A_WARN_UNUSED;
 
     private:
         void fixTranslations() const;
@@ -88,7 +89,7 @@ class Setup_Input final : public SetupTab
                             const int actionStart, const int actionEnd,
                             const std::string &text) const;
 
-        class KeyListModel *mKeyListModel;
+        KeyListModel *mKeyListModel;
         ListBox *mKeyList;
 
         Button *mAssignKeyButton;

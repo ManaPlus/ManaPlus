@@ -102,7 +102,7 @@ class CharSelectDialog final : public Window,
         void unlock();
         void setLocked(const bool locked);
 
-        bool getFocusedContainer(int &container, int &idx);
+        bool getFocusedContainer(int &container, int &idx) A_WARN_UNUSED;
 
         void setFocusedContainer(const int i, const int button);
 

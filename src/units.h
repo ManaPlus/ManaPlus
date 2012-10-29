@@ -40,12 +40,12 @@ class Units final
         /**
         * Formats the given number in the correct currency format.
         */
-        static std::string formatCurrency(const int value);
+        static std::string formatCurrency(const int value) A_WARN_UNUSED;
 
         /**
         * Formats the given number in the correct weight/mass format.
         */
-        static std::string formatWeight(const int value);
+        static std::string formatWeight(const int value) A_WARN_UNUSED;
 };
 
 #endif // UNITS_H

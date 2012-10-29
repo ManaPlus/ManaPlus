@@ -59,11 +59,11 @@ public:
     /**
      * Get the text in the textfield
      */
-    const std::string &getText() const;
+    const std::string &getText() const A_WARN_UNUSED;
 
     void setText(std::string text);
 
-    static bool isActive()
+    static bool isActive() A_WARN_UNUSED
     { return instances; }
 
     void close();

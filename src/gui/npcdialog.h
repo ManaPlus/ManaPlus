@@ -110,17 +110,17 @@ class NpcDialog final : public Window, public gcn::ActionListener,
         /**
          * Returns the number of items in the choices list.
          */
-        int getNumberOfElements() override;
+        int getNumberOfElements() override A_WARN_UNUSED;
 
         /**
          * Returns the name of item number i of the choices list.
          */
-        std::string getElementAt(int i) override;
+        std::string getElementAt(int i) override A_WARN_UNUSED;
 
         /**
          * Returns the image of item number i of the choices list.
          */
-        const Image *getImageAt(int i) override;
+        const Image *getImageAt(int i) override A_WARN_UNUSED;
 
         /**
          * Makes this dialog request a choice selection from the user.
@@ -144,11 +144,11 @@ class NpcDialog final : public Window, public gcn::ActionListener,
          */
         void textRequest(const std::string &defaultText = "");
 
-        bool isInputFocused() const;
+        bool isInputFocused() const A_WARN_UNUSED;
 
-        bool isTextInputFocused() const;
+        bool isTextInputFocused() const A_WARN_UNUSED;
 
-        static bool isAnyInputFocused();
+        static bool isAnyInputFocused() A_WARN_UNUSED;
 
         /**
          * Requests a interger from the user.
@@ -165,14 +165,14 @@ class NpcDialog final : public Window, public gcn::ActionListener,
         /**
          * Returns true if any instances exist.
          */
-        static bool isActive()
+        static bool isActive() A_WARN_UNUSED
         { return !instances.empty(); }
 
         /**
          * Returns the first active instance. Useful for pushing user
          * interaction.
          */
-        static NpcDialog *getActive();
+        static NpcDialog *getActive() A_WARN_UNUSED;
 
         /**
          * Closes all instances.

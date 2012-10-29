@@ -74,7 +74,7 @@ class OutfitWindow final : public Window, private gcn::ActionListener
 
         void setItemSelected(const Item *const item);
 
-        bool isItemSelected() const
+        bool isItemSelected() const A_WARN_UNUSED
         { return mItemSelected > 0; }
 
         void wearOutfit(const int outfit, const bool unwearEmpty = true,
@@ -104,7 +104,7 @@ class OutfitWindow final : public Window, private gcn::ActionListener
 
         void showCurrentOutfit();
 
-        std::string keyName(const int number) const;
+        std::string keyName(const int number) const A_WARN_UNUSED;
 
         void clearCurrentOutfit();
 
@@ -117,7 +117,8 @@ class OutfitWindow final : public Window, private gcn::ActionListener
         CheckBox *mAwayOutfitCheck;
         Label *mKeyLabel;
 
-        int getIndexFromGrid(const int pointX, const int pointY) const;
+        int getIndexFromGrid(const int pointX,
+                             const int pointY) const A_WARN_UNUSED;
 
         int mBoxWidth;
         int mBoxHeight;

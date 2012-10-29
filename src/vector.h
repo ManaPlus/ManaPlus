@@ -67,7 +67,7 @@ class Vector final
          * Returns true if all coordinates are set to 0, otherwise returns
          * false.
          */
-        bool isNull() const
+        bool isNull() const A_WARN_UNUSED
         {
             return x == 0.0f && y == 0.0f && z == 0.0f;
         }
@@ -75,7 +75,7 @@ class Vector final
         /**
          * Scale vector operator.
          */
-        Vector operator*(const float c) const
+        Vector operator*(const float c) const A_WARN_UNUSED
         {
             return Vector(x * c,
                           y * c,
@@ -96,7 +96,7 @@ class Vector final
         /**
          * Scale vector operator.
          */
-        Vector operator/(const float c) const
+        Vector operator/(const float c) const A_WARN_UNUSED
         {
             return Vector(x / c,
                           y / c,
@@ -106,7 +106,7 @@ class Vector final
         /**
          * In-place scale vector operator.
          */
-        Vector &operator/=(const float c)
+        Vector &operator/=(const float c) A_WARN_UNUSED
         {
             x /= c;
             y /= c;
@@ -117,7 +117,7 @@ class Vector final
         /**
          * Add vector operator.
          */
-        Vector operator+(const Vector &v) const
+        Vector operator+(const Vector &v) const A_WARN_UNUSED
         {
             return Vector(x + v.x,
                           y + v.y,
@@ -138,7 +138,7 @@ class Vector final
         /**
          * Subtract vector operator.
          */
-        Vector operator-(const Vector &v) const
+        Vector operator-(const Vector &v) const A_WARN_UNUSED
         {
             return Vector(x - v.x,
                           y - v.y,
@@ -160,7 +160,7 @@ class Vector final
          * Returns the length of this vector. This method does a relatively
          * slow square root.
          */
-        float length() const
+        float length() const A_WARN_UNUSED
         {
             return sqrtf(x * x + y * y + z * z);
         }
@@ -168,7 +168,7 @@ class Vector final
         /**
          * Returns the squared length of this vector. Avoids the square root.
          */
-        float squaredLength() const
+        float squaredLength() const A_WARN_UNUSED
         {
             return x * x + y * y + z * z;
         }
@@ -176,7 +176,7 @@ class Vector final
         /**
          * Returns the manhattan length of this vector.
          */
-        float manhattanLength() const
+        float manhattanLength() const A_WARN_UNUSED
         {
             return fabsf(x) + fabsf(y) + fabsf(z);
         }
@@ -185,7 +185,7 @@ class Vector final
          * Returns a normalized version of this vector. This is a unit vector
          * running parallel to it.
          */
-        Vector normalized() const
+        Vector normalized() const A_WARN_UNUSED
         {
             const float len = length();
             return Vector(x / len, y / len, z / len);

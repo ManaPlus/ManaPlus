@@ -76,13 +76,13 @@ class Inventory final
         /**
          * Returns the size that this instance is configured for.
          */
-        unsigned getSize() const
+        unsigned getSize() const A_WARN_UNUSED
         { return mSize; }
 
         /**
          * Returns the item at the specified index.
          */
-        Item *getItem(const int index) const;
+        Item *getItem(const int index) const A_WARN_UNUSED;
 
         /**
          * Searches for the specified item by it's id.
@@ -91,7 +91,8 @@ class Inventory final
          * @param color The color of the item to be searched.
          * @return Item found on success, NULL on failure.
          */
-        Item *findItem(const int itemId, const unsigned char color) const;
+        Item *findItem(const int itemId,
+                       const unsigned char color) const A_WARN_UNUSED;
 
         /**
          * Adds a new item in a free slot.
@@ -119,12 +120,12 @@ class Inventory final
         /**
          * Checks if the given item is in the inventory.
          */
-        bool contains(const Item *const item) const;
+        bool contains(const Item *const item) const A_WARN_UNUSED;
 
         /**
          * Returns id of next free slot or -1 if all occupied.
          */
-        int getFreeSlot() const;
+        int getFreeSlot() const A_WARN_UNUSED;
 
         /**
          * Reset all item slots.
@@ -134,28 +135,29 @@ class Inventory final
         /**
          * Get the number of slots filled with an item
          */
-        int getNumberOfSlotsUsed() const
+        int getNumberOfSlotsUsed() const A_WARN_UNUSED
         { return mUsed; }
 
         /**
          * Returns the index of the last occupied slot or 0 if none occupied.
          */
-        int getLastUsedSlot() const;
+        int getLastUsedSlot() const A_WARN_UNUSED;
 
         void addInventoyListener(InventoryListener *const listener);
 
         void removeInventoyListener(InventoryListener *const listener);
 
-        int getType() const
+        int getType() const A_WARN_UNUSED
         { return mType; }
 
-        bool isMainInventory() const
+        bool isMainInventory() const A_WARN_UNUSED
         { return mType == INVENTORY; }
 
         Item *findItemBySprite(std::string spritePath,
-                               const Gender gender, const int race) const;
+                               const Gender gender,
+                               const int race) const A_WARN_UNUSED;
 
-        std::string getName() const;
+        std::string getName() const A_WARN_UNUSED;
 
     protected:
         typedef std::list<InventoryListener*> InventoryListenerList;

@@ -100,7 +100,7 @@ class InputManager final
 
         bool handleEvent(const SDL_Event &event);
 
-        bool checkKey(const KeyData *const key) const;
+        bool checkKey(const KeyData *const key) const A_WARN_UNUSED;
 
         void retrieve();
 
@@ -110,15 +110,15 @@ class InputManager final
 
         void makeDefault(const int i);
 
-        bool hasConflicts(int &key1, int &key2) const;
+        bool hasConflicts(int &key1, int &key2) const A_WARN_UNUSED;
 
         void callbackNewKey();
 
-        KeyFunction &getKey(int index);
+        KeyFunction &getKey(int index) A_WARN_UNUSED;
 
-        std::string getKeyValueString(const int index) const;
+        std::string getKeyValueString(const int index) const A_WARN_UNUSED;
 
-        std::string getKeyStringLong(const int index) const;
+        std::string getKeyStringLong(const int index) const A_WARN_UNUSED;
 
         void addActionKey(const int action, const int type, const int val);
 
@@ -126,7 +126,7 @@ class InputManager final
 
         void unassignKey();
 
-        bool isActionActive(const int index) const;
+        bool isActionActive(const int index) const A_WARN_UNUSED;
 
         /**
          * Set the index of the new key to be assigned.
@@ -143,7 +143,7 @@ class InputManager final
         /**
          * Get the index of the new key to be assigned.
          */
-        int getNewKeyIndex() const
+        int getNewKeyIndex() const A_WARN_UNUSED
         { return mNewKeyIndex; }
 
         void updateKeyActionMap(KeyToActionMap &actionMap,
@@ -158,13 +158,14 @@ class InputManager final
 
         bool triggerAction(const KeysVector *const ptrs);
 
-        int getKeyIndex(const int value, const int grp, const int type) const;
+        int getKeyIndex(const int value, const int grp,
+                        const int type) const A_WARN_UNUSED;
 
         void update() const;
 
         void updateConditionMask();
 
-        int getActionByKey(const SDL_Event &event) const;
+        int getActionByKey(const SDL_Event &event) const A_WARN_UNUSED;
 
     protected:
         Setup_Input *mSetupInput;      /**< Reference to setup window */

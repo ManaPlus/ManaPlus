@@ -769,15 +769,17 @@ void GraphicsManager::initOpenGL()
 
 void GraphicsManager::createTextureSampler()
 {
+    GLenum err = getLastError();
+    if (err)
+        logger->log(errorToString(err));
     if (mUseTextureSampler)
     {
-        logger->log("using texture sampler");
-        getLastError();
+        logger->log1("using texture sampler");
         mglGenSamplers(1, &mTextureSampler);
         if (getLastError() != GL_NO_ERROR)
         {
             mUseTextureSampler = false;
-            logger->log("texture sampler error");
+            logger->log1("texture sampler error");
             OpenGLImageHelper::setUseTextureSampler(mUseTextureSampler);
             return;
         }
@@ -786,13 +788,13 @@ void GraphicsManager::createTextureSampler()
         if (getLastError() != GL_NO_ERROR)
         {
             mUseTextureSampler = false;
-            logger->log("texture sampler error");
+            logger->log1("texture sampler error");
         }
     }
     OpenGLImageHelper::setUseTextureSampler(mUseTextureSampler);
 }
 
-unsigned int GraphicsManager::getLastError()
+GLenum GraphicsManager::getLastError()
 {
     GLenum tmp = glGetError();
     GLenum error = GL_NO_ERROR;

@@ -48,7 +48,7 @@ class Tileset final : public ImageSet
         /**
          * Returns the first gid.
          */
-        int getFirstGid() const
+        int getFirstGid() const A_WARN_UNUSED
         { return mFirstGid; }
 
         /**
@@ -60,7 +60,7 @@ class Tileset final : public ImageSet
         /**
          * Returns property value.
          */
-        std::string getProperty(std::string name)
+        std::string getProperty(std::string name) A_WARN_UNUSED
         {
             const std::map<std::string, std::string>::const_iterator
                 it = mProperties.find(name);

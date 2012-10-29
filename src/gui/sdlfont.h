@@ -69,11 +69,11 @@ class SDLFont final : public gcn::Font
 
         void createSDLTextChunk(SDLTextChunk *const chunk);
 
-        virtual int getWidth(const std::string &text) const;
+        virtual int getWidth(const std::string &text) const A_WARN_UNUSED;
 
-        virtual int getHeight() const;
+        virtual int getHeight() const A_WARN_UNUSED;
 
-        std::list<SDLTextChunk> *getCache()
+        std::list<SDLTextChunk> *getCache() A_WARN_UNUSED
         { return mCache; }
 
         /**
@@ -89,10 +89,10 @@ class SDLFont final : public gcn::Font
 
         void slowLogic();
 
-        int getCreateCounter() const
+        int getCreateCounter() const A_WARN_UNUSED
         { return mCreateCounter; }
 
-        int getDeleteCounter() const
+        int getDeleteCounter() const A_WARN_UNUSED
         { return mDeleteCounter; }
 
     private:

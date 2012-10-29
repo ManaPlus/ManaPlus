@@ -54,19 +54,19 @@ class EmoteShortcut final
          *
          * @param index Index of the shortcut Emote.
          */
-        unsigned char getEmote(const int index) const
+        unsigned char getEmote(const int index) const A_WARN_UNUSED
         { return mEmotes[index]; }
 
         /**
          * Returns the amount of shortcut Emotes.
          */
-        unsigned int getEmoteCount() const
+        unsigned int getEmoteCount() const A_WARN_UNUSED
         { return SHORTCUT_EMOTES; }
 
         /**
          * Returns the emote ID that is currently selected.
          */
-        unsigned char getEmoteSelected() const
+        unsigned char getEmoteSelected() const A_WARN_UNUSED
         { return mEmoteSelected; }
 
         /**
@@ -97,7 +97,7 @@ class EmoteShortcut final
         /**
          * A flag to check if the Emote is selected.
          */
-        bool isEmoteSelected() const
+        bool isEmoteSelected() const A_WARN_UNUSED
         { return mEmoteSelected; }
 
         /**

@@ -88,7 +88,7 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
 
         void mousePressed(gcn::MouseEvent& mouseEvent) override;
 
-        Item* getEquipment(int i) const
+        Item* getEquipment(int i) const A_WARN_UNUSED
         { return mEquipment ? mEquipment->getEquipment(i) : nullptr; }
 
         void setBeing(Being *const being);
@@ -104,7 +104,7 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
         void recalcSize();
 
     private:
-        Item *getItem(const int x, const int y) const;
+        Item *getItem(const int x, const int y) const A_WARN_UNUSED;
 
         void setSelected(const int index);
 
@@ -121,7 +121,7 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
         void loadSlot(const XmlNodePtr slotNode,
                       const ImageSet *const imageset);
 
-        int parseSlotName(std::string name) const;
+        int parseSlotName(const std::string &name) const A_WARN_UNUSED;
 
         Equipment *mEquipment;
 

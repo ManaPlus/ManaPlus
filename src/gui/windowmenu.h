@@ -65,10 +65,10 @@ class WindowMenu final : public Container,
 
         void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override;
 
-        std::map <std::string, Button*> &getButtonNames()
+        std::map <std::string, Button*> &getButtonNames() A_WARN_UNUSED
         { return mButtonNames; }
 
-        std::vector <Button*> &getButtons()
+        std::vector <Button*> &getButtons() A_WARN_UNUSED
         { return mButtons; }
 
         void showButton(const std::string &name, const bool visible);

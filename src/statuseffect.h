@@ -52,23 +52,23 @@ public:
      * Creates the particle effect associated with this status effect, if
      * possible.
      */
-    Particle *getParticle() const;
+    Particle *getParticle() const A_WARN_UNUSED;
 
     /**
      * Retrieves the status icon for this effect, if applicable
      */
-    AnimatedSprite *getIcon() const;
+    AnimatedSprite *getIcon() const A_WARN_UNUSED;
 
     /**
      * Retrieves an action to perform, or SpriteAction::INVALID
      */
-    std::string getAction() const;
+    std::string getAction() const A_WARN_UNUSED;
 
     /**
      * Determines whether the particle effect should be restarted when the
      * being changes maps
      */
-    bool particleEffectIsPersistent() const
+    bool particleEffectIsPersistent() const A_WARN_UNUSED
     { return mPersistentParticleEffect; }
 
 
@@ -79,7 +79,8 @@ public:
      * \param enabling Whether to retrieve the activating effect (true) or
      *    the deactivating effect (false).
      */
-    static StatusEffect *getStatusEffect(const int index, const bool enabling);
+    static StatusEffect *getStatusEffect(const int index,
+                                         const bool enabling) A_WARN_UNUSED;
 
     /**
      * Retrieves a stun effect.
@@ -88,7 +89,7 @@ public:
      * \param enabling Whether to retrieve the activating effect (true) or
      *    the deactivating effect (false).
      */
-    static StatusEffect *getStunEffect(int index, bool enabling);
+    static StatusEffect *getStunEffect(int index, bool enabling) A_WARN_UNUSED;
 
     /**
      * Maps a block effect index to its corresponding effect index.  Block
@@ -97,7 +98,8 @@ public:
      *
      * Returns -1 on failure.
      */
-    static int blockEffectIndexToEffectIndex(const int blocKIndex);
+    static int blockEffectIndexToEffectIndex(const int blocKIndex)
+                                             A_WARN_UNUSED;
 
     static void load();
 

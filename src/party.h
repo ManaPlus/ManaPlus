@@ -37,10 +37,10 @@ class PartyMember final : public Avatar
 public:
     A_DELETE_COPY(PartyMember)
 
-    Party *getParty() const
+    Party *getParty() const A_WARN_UNUSED
     { return mParty; }
 
-    bool getLeader() const
+    bool getLeader() const A_WARN_UNUSED
     { return mLeader; }
 
     void setLeader(const bool leader)
@@ -76,27 +76,27 @@ public:
      *
      * @return the member with the given ID, or NULL if they don't exist.
      */
-    PartyMember *getMember(const int id) const;
+    PartyMember *getMember(const int id) const A_WARN_UNUSED;
 
     /**
      * Find a member by name.
      *
      * @return the member with the given name, or NULL if they don't exist.
      */
-    PartyMember *getMember(const std::string &name) const;
+    PartyMember *getMember(const std::string &name) const A_WARN_UNUSED;
 
     /**
      * Get the name of the party.
      * @return returns name of the party
      */
-    const std::string &getName() const
+    const std::string &getName() const A_WARN_UNUSED
     { return mName; }
 
     /**
      * Get the id of the party.
      * @return Returns the id of the party
      */
-    short getId() const
+    short getId() const A_WARN_UNUSED
     { return mId; }
 
     /**
@@ -123,7 +123,7 @@ public:
      * Get size of members list.
      * @return Returns the number of members in the party.
      */
-    int getNumberOfElements() override
+    int getNumberOfElements() override A_WARN_UNUSED
     { return static_cast<int>(mMembers.size()); }
 
     Avatar *getAvatarAt(const int i) override;
@@ -132,16 +132,16 @@ public:
      * Get whether user can invite users to this party.
      * @return Returns true if user can invite users
      */
-    bool getInviteRights() const
+    bool getInviteRights() const A_WARN_UNUSED
     { return mCanInviteUsers; }
 
     void setRights(const short rights);
 
-    bool isMember(const PartyMember *const member) const;
+    bool isMember(const PartyMember *const member) const A_WARN_UNUSED;
 
-    bool isMember(const int id) const;
+    bool isMember(const int id) const A_WARN_UNUSED;
 
-    bool isMember(const std::string &name) const;
+    bool isMember(const std::string &name) const A_WARN_UNUSED;
 
     void getNames(StringVect &names) const;
 
@@ -151,10 +151,10 @@ public:
 
     typedef std::vector<PartyMember*> MemberList;
 
-    MemberList *getMembers()
+    MemberList *getMembers() A_WARN_UNUSED
     { return &mMembers; }
 
-    static Party *getParty(const short id);
+    static Party *getParty(const short id) A_WARN_UNUSED;
 
     static void clearParties();
 

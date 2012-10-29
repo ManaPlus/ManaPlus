@@ -87,7 +87,7 @@ namespace XML
              * Returns the root node of the document (or NULL if there was a
              * load error).
              */
-            XmlNodePtr rootNode();
+            XmlNodePtr rootNode() A_WARN_UNUSED;
 
         private:
             xmlDocPtr mDoc;
@@ -97,42 +97,43 @@ namespace XML
      * Gets an floating point property from an XmlNodePtr.
      */
     double getFloatProperty(const XmlNodePtr node, const char *const name,
-                            double def);
+                            double def) A_WARN_UNUSED;
 
     /**
      * Gets an integer property from an XmlNodePtr.
      */
-    int getProperty(const XmlNodePtr node, const char *const name, int def);
+    int getProperty(const XmlNodePtr node, const char *const name,
+                    int def) A_WARN_UNUSED;
 
     /**
      * Gets an integer property from an XmlNodePtr.
      */
     int getIntProperty(const XmlNodePtr node, const char *const name, int def,
-                       const int min, const int max);
+                       const int min, const int max) A_WARN_UNUSED;
 
     /**
      * Gets a string property from an XmlNodePtr.
      */
     std::string getProperty(const XmlNodePtr node, const char *const name,
-                            const std::string &def);
+                            const std::string &def) A_WARN_UNUSED;
 
     /**
      * Gets a translated string property from an XmlNodePtr.
      */
     std::string langProperty(const XmlNodePtr node, const char *const name,
-                             const std::string &def);
+                             const std::string &def) A_WARN_UNUSED;
 
     /**
      * Gets a boolean property from an XmlNodePtr.
      */
     bool getBoolProperty(const XmlNodePtr node, const char *const name,
-                         const bool def);
+                         const bool def) A_WARN_UNUSED;
 
     /**
      * Finds the first child node with the given name
      */
     XmlNodePtr findFirstChildByName(const XmlNodePtr parent,
-                                    const char *const name);
+                                    const char *const name) A_WARN_UNUSED;
 
     void initXML();
 

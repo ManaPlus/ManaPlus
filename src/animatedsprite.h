@@ -54,10 +54,11 @@ class AnimatedSprite final : public Sprite
          * @param variant  the sprite variant
          */
         static AnimatedSprite *load(const std::string &filename,
-                                    int variant = 0);
+                                    int variant = 0) A_WARN_UNUSED;
 
         static AnimatedSprite *delayedLoad(const std::string &filename,
-                                           const int variant = 0);
+                                           const int variant = 0)
+                                           A_WARN_UNUSED;
 
         virtual ~AnimatedSprite();
 
@@ -69,26 +70,26 @@ class AnimatedSprite final : public Sprite
 
         bool draw(Graphics* graphics, int posX, int posY) const;
 
-        int getWidth() const;
+        int getWidth() const A_WARN_UNUSED;
 
-        int getHeight() const;
+        int getHeight() const A_WARN_UNUSED;
 
-        const Image* getImage() const;
+        const Image* getImage() const A_WARN_UNUSED;
 
         bool setSpriteDirection(const SpriteDirection direction);
 
-        int getNumberOfLayers() const
+        int getNumberOfLayers() const A_WARN_UNUSED
         { return 1; }
 
-        std::string getIdPath() const;
+        std::string getIdPath() const A_WARN_UNUSED;
 
-        unsigned int getCurrentFrame() const;
+        unsigned int getCurrentFrame() const A_WARN_UNUSED;
 
-        unsigned int getFrameCount() const;
+        unsigned int getFrameCount() const A_WARN_UNUSED;
 
         virtual void setAlpha(float alpha) override;
 
-        virtual void *getHash() override;
+        virtual void *getHash() override A_WARN_UNUSED;
 
         bool updateNumber(const unsigned num);
 

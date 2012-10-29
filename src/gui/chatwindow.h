@@ -107,7 +107,7 @@ class ChatWindow final : public Window,
         /**
          * Gets the focused tab.
          */
-        ChatTab *getFocused() const;
+        ChatTab *getFocused() const A_WARN_UNUSED;
 
         /**
          * Clear the given tab.
@@ -155,7 +155,7 @@ class ChatWindow final : public Window,
         /**
          * Checks whether ChatWindow is Focused or not.
          */
-        bool isInputFocused() const;
+        bool isInputFocused() const A_WARN_UNUSED;
 
         /**
          * Passes the text to the current tab as input
@@ -215,7 +215,7 @@ class ChatWindow final : public Window,
          */
         void setRecordingFile(const std::string &msg);
 
-        bool getReturnTogglesChat() const
+        bool getReturnTogglesChat() const A_WARN_UNUSED
         { return mReturnToggles; }
 
         void setReturnTogglesChat(const bool toggles)
@@ -227,9 +227,9 @@ class ChatWindow final : public Window,
                         const Own own = BY_OTHER);
 
         WhisperTab *addWhisperTab(const std::string &nick,
-                                  const bool switchTo = false);
+                                  const bool switchTo = false) A_WARN_UNUSED;
 
-        WhisperTab *getWhisperTab(const std::string &nick) const;
+        WhisperTab *getWhisperTab(const std::string &nick) const A_WARN_UNUSED;
 
         void removeAllWhispers();
 
@@ -253,7 +253,7 @@ class ChatWindow final : public Window,
 
         void loadGMCommands();
 
-        std::string doReplace(const std::string &msg) const;
+        std::string doReplace(const std::string &msg) const A_WARN_UNUSED;
 
         void adjustTabSize();
 
@@ -266,7 +266,7 @@ class ChatWindow final : public Window,
 
         void parseHighlights();
 
-        bool findHighlight(const std::string &str);
+        bool findHighlight(const std::string &str) A_WARN_UNUSED;
 
         void copyToClipboard(const int x, const int y) const;
 

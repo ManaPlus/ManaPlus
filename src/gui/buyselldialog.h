@@ -63,7 +63,7 @@ class BuySellDialog final : public Window, public gcn::ActionListener
         /**
          * Returns true if any instances exist.
          */
-        static bool isActive()
+        static bool isActive() A_WARN_UNUSED
         { return !instances.empty(); }
 
         /**

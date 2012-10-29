@@ -89,37 +89,37 @@ class TextCommand final
          */
         ~TextCommand();
 
-        std::string getName() const
+        std::string getName() const A_WARN_UNUSED
         { return mCommand; }
 
-        std::string getCommand() const
+        std::string getCommand() const A_WARN_UNUSED
         { return mCommand; }
 
-        std::string getComment() const
+        std::string getComment() const A_WARN_UNUSED
         { return mComment; }
 
-        std::string getSymbol() const
+        std::string getSymbol() const A_WARN_UNUSED
         { return mSymbol; }
 
-        unsigned int getId() const
+        unsigned int getId() const A_WARN_UNUSED
         { return mId; }
 
-        SpellTarget getTargetType() const
+        SpellTarget getTargetType() const A_WARN_UNUSED
         { return mTargetType; }
 
-        std::string getIcon() const
+        std::string getIcon() const A_WARN_UNUSED
         { return mIcon; }
 
-        int getMana() const
+        int getMana() const A_WARN_UNUSED
         { return mMana; }
 
-        MagicSchool getSchool() const
+        MagicSchool getSchool() const A_WARN_UNUSED
         { return mSchool; }
 
-        unsigned getBaseLvl() const
+        unsigned getBaseLvl() const A_WARN_UNUSED
         { return mBaseLvl; }
 
-        unsigned getSchoolLvl() const
+        unsigned getSchoolLvl() const A_WARN_UNUSED
         { return mSchoolLvl; }
 
         TextCommandType getCommandType() const
@@ -158,10 +158,10 @@ class TextCommand final
         void setCommandType(const TextCommandType commandType)
         { mCommandType = commandType; }
 
-        bool isEmpty() const
+        bool isEmpty() const A_WARN_UNUSED
         { return mCommand == "" && mSymbol == ""; }
 
-        Image *getImage() const
+        Image *getImage() const A_WARN_UNUSED
         { return mImage; }
 
     private:

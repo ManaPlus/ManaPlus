@@ -48,26 +48,26 @@ public:
 
     bool draw(Graphics* graphics, int posX, int posY) const override;
 
-    int getWidth() const override
+    int getWidth() const override A_WARN_UNUSED
     { return mImage ? mImage->getWidth() : 0; }
 
-    int getHeight() const override
+    int getHeight() const override A_WARN_UNUSED
     { return mImage ? mImage->getHeight() : 0; }
 
-    const Image* getImage() const
+    const Image* getImage() const A_WARN_UNUSED
     { return mImage; }
 
     virtual bool setSpriteDirection(const SpriteDirection
                                     direction A_UNUSED) override
     { return false; }
 
-    int getNumberOfLayers() const
+    int getNumberOfLayers() const A_WARN_UNUSED
     { return 1; }
 
-    unsigned int getCurrentFrame() const override
+    unsigned int getCurrentFrame() const override A_WARN_UNUSED
     { return 0; }
 
-    unsigned int getFrameCount() const override
+    unsigned int getFrameCount() const override A_WARN_UNUSED
     { return 1; }
 
     bool updateNumber(const unsigned num A_UNUSED) override

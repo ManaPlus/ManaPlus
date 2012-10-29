@@ -66,17 +66,17 @@ class Sprite
         /**
          * Gets the width in pixels of the image of the current frame
          */
-        virtual int getWidth() const = 0;
+        virtual int getWidth() const A_WARN_UNUSED = 0;
 
         /**
          * Gets the height in pixels of the image of the current frame
          */
-        virtual int getHeight() const = 0;
+        virtual int getHeight() const A_WARN_UNUSED = 0;
 
         /**
          * Returns a reference to the current image being drawn.
          */
-        virtual const Image* getImage() const = 0;
+        virtual const Image* getImage() const A_WARN_UNUSED = 0;
 
         /**
          * Sets the direction.
@@ -94,23 +94,23 @@ class Sprite
         /**
          * Returns the current alpha opacity of the animated sprite.
          */
-        virtual float getAlpha() const
+        virtual float getAlpha() const A_WARN_UNUSED
         { return mAlpha; }
 
         /**
          * Returns the current frame number for the sprite.
          */
-        virtual unsigned int getCurrentFrame() const = 0;
+        virtual unsigned int getCurrentFrame() const A_WARN_UNUSED = 0;
 
         /**
          * Returns the frame count for the sprite.
          */
-        virtual unsigned int getFrameCount() const = 0;
+        virtual unsigned int getFrameCount() const A_WARN_UNUSED = 0;
 
-        virtual void *getHash()
+        virtual void *getHash() A_WARN_UNUSED
         { return nullptr; }
 
-        virtual void *getHash2()
+        virtual void *getHash2() A_WARN_UNUSED
         { return this; }
 
         virtual bool updateNumber(const unsigned num) = 0;

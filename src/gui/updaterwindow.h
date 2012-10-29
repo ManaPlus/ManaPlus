@@ -151,7 +151,7 @@ private:
                               void *stream);
 
     static bool validateFile(const std::string &filePath,
-                             const unsigned long hash);
+                             const unsigned long hash) A_WARN_UNUSED;
 
     enum UpdateDownloadStatus
     {

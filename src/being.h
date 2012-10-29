@@ -34,6 +34,8 @@
 #include <map>
 #include <set>
 
+#include "localconsts.h"
+
 static const unsigned int FIRST_IGNORE_EMOTE = 14;
 static const unsigned int STATUS_EFFECTS = 32;
 
@@ -47,7 +49,6 @@ static const int DEFAULT_BEING_HEIGHT = 32;
 class AnimatedSprite;
 class BeingCacheEntry;
 class Being;
-//class BeingInfo;
 class FlashText;
 class Guild;
 class Inventory;
@@ -80,7 +81,7 @@ class BeingEquipBackend final : public Equipment::Backend
 
         virtual ~BeingEquipBackend();
 
-        Item *getEquipment(const int index) const;
+        Item *getEquipment(const int index) const A_WARN_UNUSED;
 
         void clear();
 
@@ -175,7 +176,7 @@ class Being : public ActorSprite, public ConfigListener
 
         virtual ~Being();
 
-        Type getType() const
+        Type getType() const A_WARN_UNUSED
         { return mType; }
 
         /**
@@ -186,7 +187,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns the time spent in the current action.
          */
-        int getActionTime() const
+        int getActionTime() const A_WARN_UNUSED
         { return mActionTime; }
 
         /**
@@ -206,14 +207,14 @@ class Being : public ActorSprite, public ConfigListener
          * Get the current X pixel offset.
          * TODO: Used by eAthena only?
          */
-        int getXOffset() const
+        int getXOffset() const A_WARN_UNUSED
         { return getOffset(LEFT, RIGHT); }
 
         /**
          * Get the current Y pixel offset.
          * TODO: Used by eAthena only?
          */
-        int getYOffset() const
+        int getYOffset() const A_WARN_UNUSED
         { return getOffset(UP, DOWN); }
 
         /**
@@ -224,19 +225,19 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns the destination for this being.
          */
-        const Vector &getDestination() const
+        const Vector &getDestination() const A_WARN_UNUSED
         { return mDest; }
 
         /**
          * Returns the tile x coord
          */
-        int getTileX() const
+        int getTileX() const A_WARN_UNUSED
         { return mX; }
 
         /**
          * Returns the tile y coord
          */
-        int getTileY() const
+        int getTileY() const A_WARN_UNUSED
         { return mY; }
 
         /**
@@ -278,13 +279,13 @@ class Being : public ActorSprite, public ConfigListener
         virtual void handleSkill(Being *const victim, const int damage,
                                  const int skillId);
 
-        const ItemInfo *getEquippedWeapon() const
+        const ItemInfo *getEquippedWeapon() const A_WARN_UNUSED
         { return mEquippedWeapon; }
 
         /**
          * Returns the name of the being.
          */
-        const std::string &getName() const
+        const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
         /**
@@ -294,7 +295,7 @@ class Being : public ActorSprite, public ConfigListener
          */
         void setName(const std::string &name);
 
-        bool getShowName() const
+        bool getShowName() const A_WARN_UNUSED
         { return mShowName; }
 
         void setShowName(const bool doShowName);
@@ -305,10 +306,10 @@ class Being : public ActorSprite, public ConfigListener
         void setPartyName(const std::string &name)
         { mPartyName = name; }
 
-        const std::string &getPartyName() const
+        const std::string &getPartyName() const A_WARN_UNUSED
         { return mPartyName; }
 
-        const std::string &getGuildName() const
+        const std::string &getGuildName() const A_WARN_UNUSED
         { return mGuildName; }
 
         /**
@@ -332,22 +333,22 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns a pointer to the specified guild that the being is in.
          */
-        Guild *getGuild(const std::string &guildName) const;
+        Guild *getGuild(const std::string &guildName) const A_WARN_UNUSED;
 
         /**
          * Returns a pointer to the specified guild that the being is in.
          */
-        Guild *getGuild(const int id) const;
+        Guild *getGuild(const int id) const A_WARN_UNUSED;
 
         /**
          * Returns a pointer to the specified guild that the being is in.
          */
-        Guild *getGuild() const;
+        Guild *getGuild() const A_WARN_UNUSED;
 
         /**
          * Returns all guilds the being is in.
          */
-        const std::map<int, Guild*> &getGuilds() const
+        const std::map<int, Guild*> &getGuilds() const A_WARN_UNUSED
         { return mGuilds; }
 
         /**
@@ -358,10 +359,10 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Get number of guilds the being belongs to.
          */
-        short getNumberOfGuilds() const
+        short getNumberOfGuilds() const A_WARN_UNUSED
         { return static_cast<short>(mGuilds.size()); }
 
-        bool isInParty() const
+        bool isInParty() const A_WARN_UNUSED
         { return mParty; }
 
         void setParty(Party *const party);
@@ -373,7 +374,7 @@ class Being : public ActorSprite, public ConfigListener
         Party *getParty() const
         { return mParty; }
 
-        int getSpritesCount() const
+        int getSpritesCount() const A_WARN_UNUSED
         { return static_cast<int>(size()); }
 
         /**
@@ -393,13 +394,13 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Get the number of hairstyles implemented
          */
-        static int getNumOfHairstyles()
+        static int getNumOfHairstyles() A_WARN_UNUSED
         { return mNumberOfHairstyles; }
 
         /**
          * Get the number of layers used to draw the being
          */
-        int getNumberOfLayers() const
+        int getNumberOfLayers() const A_WARN_UNUSED
         { return CompoundSprite::getNumberOfLayers(); }
 
         /**
@@ -426,19 +427,19 @@ class Being : public ActorSprite, public ConfigListener
           */
         void setSubtype(const uint16_t subtype);
 
-        const BeingInfo *getInfo() const
+        const BeingInfo *getInfo() const A_WARN_UNUSED
         { return mInfo; }
 
-        TargetCursorSize getTargetCursorSize() const;
+        TargetCursorSize getTargetCursorSize() const A_WARN_UNUSED;
 
-        int getTargetOffsetX() const
+        int getTargetOffsetX() const A_WARN_UNUSED
         {
             if (!mInfo)
                 return 0;
             return mInfo->getTargetOffsetX();
         }
 
-        int getTargetOffsetY() const
+        int getTargetOffsetY() const A_WARN_UNUSED
         {
             if (!mInfo)
                 return 0;
@@ -448,7 +449,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Gets the way the object is blocked by other objects.
          */
-        virtual unsigned char getWalkMask() const
+        virtual unsigned char getWalkMask() const A_WARN_UNUSED
         {
             if (!mInfo)
                 return 0;
@@ -458,7 +459,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Gets the way the monster blocks pathfinding for other objects
          */
-        Map::BlockType getBlockType() const
+        Map::BlockType getBlockType() const A_WARN_UNUSED
         {
             if (!mInfo)
                 return Map::BLOCKTYPE_NONE;
@@ -478,7 +479,7 @@ class Being : public ActorSprite, public ConfigListener
          * in pixels per second for eAthena,
          * in tiles per second for Manaserv (0.1 precision).
          */
-        Vector getWalkSpeed() const
+        Vector getWalkSpeed() const A_WARN_UNUSED
         { return mWalkSpeed; }
 
         /**
@@ -492,7 +493,7 @@ class Being : public ActorSprite, public ConfigListener
          * Gets the attack speed.
          * @todo In what unit?
          */
-        int getAttackSpeed() const
+        int getAttackSpeed() const A_WARN_UNUSED
         { return mAttackSpeed; }
 
         /**
@@ -503,19 +504,19 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Get the being's action currently performed.
          */
-        Action getCurrentAction() const
+        Action getCurrentAction() const A_WARN_UNUSED
         { return mAction; }
 
         /**
          * Returns whether this being is still alive.
          */
-        bool isAlive() const
+        bool isAlive() const A_WARN_UNUSED
         { return mAction != DEAD; }
 
         /**
          * Returns the current direction.
          */
-        uint8_t getDirection() const
+        uint8_t getDirection() const A_WARN_UNUSED
         { return mDirection; }
 
         /**
@@ -526,13 +527,13 @@ class Being : public ActorSprite, public ConfigListener
         virtual void setDirectionDelayed(const uint8_t direction)
         { mDirectionDelayed = direction; }
 
-        uint8_t getDirectionDelayed() const
+        uint8_t getDirectionDelayed() const A_WARN_UNUSED
         { return mDirectionDelayed; }
 
         /**
          * Returns the direction the being is facing.
          */
-        SpriteDirection getSpriteDirection() const
+        SpriteDirection getSpriteDirection() const A_WARN_UNUSED
         { return static_cast<SpriteDirection>(mSpriteDirection); }
 
         void setPosition(const Vector &pos);
@@ -549,19 +550,19 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns the horizontal size of the current base sprite of the being.
          */
-        virtual int getWidth() const override
+        virtual int getWidth() const override A_WARN_UNUSED
         { return std::max(CompoundSprite::getWidth(), DEFAULT_BEING_WIDTH); }
 
         /**
          * Returns the vertical size of the current base sprite of the being.
          */
-        virtual int getHeight() const override
+        virtual int getHeight() const override A_WARN_UNUSED
         { return std::max(CompoundSprite::getHeight(), DEFAULT_BEING_HEIGHT); }
 
         /**
          * Returns the being's pixel radius used to detect collisions.
          */
-        virtual int getCollisionRadius() const
+        virtual int getCollisionRadius() const A_WARN_UNUSED
         { return 16; }
 
         /**
@@ -574,10 +575,10 @@ class Being : public ActorSprite, public ConfigListener
          * Returns the path this being is following. An empty path is returned
          * when this being isn't following any path currently.
          */
-        const Path &getPath() const
+        const Path &getPath() const A_WARN_UNUSED
         { return mPath; }
 
-        int getDistance() const
+        int getDistance() const A_WARN_UNUSED
         { return mDistance; }
 
         void setDistance(const int n)
@@ -595,7 +596,7 @@ class Being : public ActorSprite, public ConfigListener
          * Get the current Emoticon type displayed above
          * the being.
          */
-        int getEmotion() const
+        int getEmotion() const A_WARN_UNUSED
         { return mEmotion; }
 
         virtual void drawSprites(Graphics* graphics,
@@ -615,7 +616,7 @@ class Being : public ActorSprite, public ConfigListener
 
         void flashName(const int time);
 
-        int getDamageTaken() const
+        int getDamageTaken() const A_WARN_UNUSED
         { return mDamageTaken; }
 
         void setDamageTaken(const int damage)
@@ -626,18 +627,18 @@ class Being : public ActorSprite, public ConfigListener
         void setLevel(const int n)
         { mLevel = n; }
 
-        virtual int getLevel() const
+        virtual int getLevel() const A_WARN_UNUSED
         { return mLevel; }
 
         void setIsReachable(const int n)
         { mIsReachable = n; }
 
-        int isReachable() const
+        int isReachable() const A_WARN_UNUSED
         { return mIsReachable; }
 
         static void reReadConfig();
 
-        static BeingCacheEntry* getCacheEntry(const int id);
+        static BeingCacheEntry* getCacheEntry(const int id) A_WARN_UNUSED;
 
         void addToCache() const;
 
@@ -648,18 +649,18 @@ class Being : public ActorSprite, public ConfigListener
          */
         virtual void setGender(const Gender gender);
 
-        Gender getGender() const
+        Gender getGender() const A_WARN_UNUSED
         { return mGender; }
 
         /**
          * Return sprite sit action for current environment.
          */
-        std::string getSitAction() const;
+        std::string getSitAction() const A_WARN_UNUSED;
 
         /**
          * Whether or not this player is a GM.
          */
-        bool isGM() const
+        bool isGM() const A_WARN_UNUSED
         { return mIsGM; }
 
         /**
@@ -667,7 +668,7 @@ class Being : public ActorSprite, public ConfigListener
          */
         void setGM(const bool gm);
 
-        bool canTalk() const
+        bool canTalk() const A_WARN_UNUSED
         { return mType == NPC; }
 
         void talkTo();
@@ -714,13 +715,13 @@ class Being : public ActorSprite, public ConfigListener
         void setEnemy(const bool n)
         { mEnemy = n; }
 
-        const std::string &getIp() const
+        const std::string &getIp() const A_WARN_UNUSED
         { return mIp; }
 
         void setIp(std::string ip)
         { mIp = ip; }
 
-        unsigned int getPvpRank() const
+        unsigned int getPvpRank() const A_WARN_UNUSED
         { return mPvpRank; }
 
         void setPvpRank(const unsigned int rank)
@@ -730,32 +731,33 @@ class Being : public ActorSprite, public ConfigListener
 
         void setMaxHP(const int hp);
 
-        int getHP() const
+        int getHP() const A_WARN_UNUSED
         { return mHP; }
 
-        uint8_t calcDirection(const int dstX, const int dstY) const;
+        uint8_t calcDirection(const int dstX,
+                              const int dstY) const A_WARN_UNUSED;
 
-        uint8_t calcDirection() const;
+        uint8_t calcDirection() const A_WARN_UNUSED;
 
         void setAttackDelay(const int n)
         { mAttackDelay = n; }
 
-        int getAttackDelay() const
+        int getAttackDelay() const A_WARN_UNUSED
         { return mAttackDelay; }
 
-        int getMinHit() const
+        int getMinHit() const A_WARN_UNUSED
         { return mMinHit; }
 
         void setMinHit(const int n)
         { mMinHit = n; }
 
-        int getMaxHit() const
+        int getMaxHit() const A_WARN_UNUSED
         { return mMaxHit; }
 
         void setMaxHit(const int n)
         { mMaxHit = n; }
 
-        int getCriticalHit() const
+        int getCriticalHit() const A_WARN_UNUSED
         { return mCriticalHit; }
 
         void setCriticalHit(const int n)
@@ -763,23 +765,23 @@ class Being : public ActorSprite, public ConfigListener
 
         void updateHit(const int amount);
 
-        Equipment *getEquipment();
+        Equipment *getEquipment() A_WARN_UNUSED;
 
         void undressItemById(const int id);
 
-        int getGoodStatus() const
+        int getGoodStatus() const A_WARN_UNUSED
         { return mGoodStatus; }
 
         void setGoodStatus(const int n)
         { mGoodStatus = n; }
 
-        std::string getGenderSign() const;
+        std::string getGenderSign() const A_WARN_UNUSED;
 
-        std::string getGenderSignWithSpace() const;
+        std::string getGenderSignWithSpace() const A_WARN_UNUSED;
 
         void updateComment();
 
-        const std::string getComment() const
+        const std::string getComment() const A_WARN_UNUSED
         { return mComment; }
 
         void setComment(std::string n)
@@ -788,18 +790,18 @@ class Being : public ActorSprite, public ConfigListener
         static void clearCache();
 
         static std::string loadComment(const std::string &name,
-                                       const int type);
+                                       const int type) A_WARN_UNUSED;
 
         static void saveComment(const std::string &name,
                                 const std::string &comment, const int type);
 
-        bool isAdvanced() const
+        bool isAdvanced() const A_WARN_UNUSED
         { return mAdvanced; }
 
         void setAdvanced(const bool n)
         { mAdvanced = n; addToCache(); }
 
-        bool isShopEnabled() const
+        bool isShopEnabled() const A_WARN_UNUSED
         { return mShop; }
 
         void enableShop(const bool b)
@@ -822,10 +824,10 @@ class Being : public ActorSprite, public ConfigListener
         void setRaceName(std::string name)
         { mRaceName = name; }
 
-        std::string getRaceName() const
+        std::string getRaceName() const A_WARN_UNUSED
         { return mRaceName; }
 
-        int getSpriteID(const int slot) const;
+        int getSpriteID(const int slot) const A_WARN_UNUSED;
 
         void setHairStyle(const unsigned int slot, const int id);
 
@@ -835,20 +837,21 @@ class Being : public ActorSprite, public ConfigListener
         void setHairColor(const unsigned char color)
         { mHairColor = color; }
 
-        unsigned char getHairColor() const
+        unsigned char getHairColor() const A_WARN_UNUSED
         { return mHairColor; }
 
         void recalcSpritesOrder();
 
         int getHitEffect(const Being *const attacker,
-                         const AttackType type, const int attackId) const;
+                         const AttackType type,
+                         const int attackId) const A_WARN_UNUSED;
 
-        Cursor::Cursor getHoverCursor()
+        Cursor::Cursor getHoverCursor() A_WARN_UNUSED
         { return mInfo ? mInfo->getHoverCursor() : Cursor::CURSOR_POINTER; }
 
-        static uint8_t genderToInt(const Gender sex);
+        static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
 
-        static Gender intToGender(uint8_t sex);
+        static Gender intToGender(uint8_t sex) A_WARN_UNUSED;
 
     protected:
         /**
@@ -925,9 +928,11 @@ class Being : public ActorSprite, public ConfigListener
          * If walking in direction 'neg' the value is negated.
          * TODO: Used by eAthena only?
          */
-        int getOffset(const signed char pos, const signed char neg) const;
+        int getOffset(const signed char pos,
+                      const signed char neg) const A_WARN_UNUSED;
 
-        int searchSlotValue(std::vector<int> &slotRemap, const int val) const;
+        int searchSlotValue(std::vector<int> &slotRemap,
+                            const int val) const A_WARN_UNUSED;
 
         void searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
                                 std::vector<int> &slotRemap,

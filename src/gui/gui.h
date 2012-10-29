@@ -84,38 +84,38 @@ class Gui final : public gcn::Gui
          */
         void videoResized() const;
 
-        gcn::FocusHandler *getFocusHandler() const
+        gcn::FocusHandler *getFocusHandler() const A_WARN_UNUSED
         { return mFocusHandler; }
 
         /**
          * Return game font.
          */
-        SDLFont *getFont() const
+        SDLFont *getFont() const A_WARN_UNUSED
         { return mGuiFont; }
 
         /**
          * Return help font.
          */
-        SDLFont *getHelpFont() const
+        SDLFont *getHelpFont() const A_WARN_UNUSED
         { return mHelpFont; }
 
         /**
          * Return secure font.
          */
-        SDLFont *getSecureFont() const
+        SDLFont *getSecureFont() const A_WARN_UNUSED
         { return mSecureFont; }
 
         /**
          * Return npc font.
          */
-        SDLFont *getNpcFont() const
+        SDLFont *getNpcFont() const A_WARN_UNUSED
         { return mNpcFont; }
 
         /**
          * Return the Font used for "Info Particles", i.e. ones showing, what
          * you picked up, etc.
          */
-        SDLFont *getInfoParticleFont() const
+        SDLFont *getInfoParticleFont() const A_WARN_UNUSED
         { return mInfoParticleFont; }
 
         /**
@@ -137,7 +137,7 @@ class Gui final : public gcn::Gui
 
         void resetClickCount();
 
-        MouseEvent *createMouseEvent(Window *widget);
+        MouseEvent *createMouseEvent(Window *widget) A_WARN_UNUSED;
 
         void getAbsolutePosition(gcn::Widget *widget, int &x, int &y);
 

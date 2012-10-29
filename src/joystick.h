@@ -60,7 +60,7 @@ class Joystick final
         /**
          * Returns the number of available joysticks.
          */
-        static int getNumberOfJoysticks()
+        static int getNumberOfJoysticks() A_WARN_UNUSED
         { return joystickCount; }
 
         /**
@@ -77,7 +77,7 @@ class Joystick final
 
         void close();
 
-        bool isEnabled() const
+        bool isEnabled() const A_WARN_UNUSED
         { return mEnabled; }
 
         void setNumber(const int n);
@@ -96,24 +96,24 @@ class Joystick final
 
         void finishCalibration();
 
-        bool isCalibrating() const
+        bool isCalibrating() const A_WARN_UNUSED
         { return mCalibrating; }
 
-        bool buttonPressed(const unsigned char no) const;
+        bool buttonPressed(const unsigned char no) const A_WARN_UNUSED;
 
-        bool isUp() const
+        bool isUp() const A_WARN_UNUSED
         { return mEnabled && (mDirection & UP); }
 
-        bool isDown() const
+        bool isDown() const A_WARN_UNUSED
         { return mEnabled && (mDirection & DOWN); }
 
-        bool isLeft() const
+        bool isLeft() const A_WARN_UNUSED
         { return mEnabled && (mDirection & LEFT); }
 
-        bool isRight() const
+        bool isRight() const A_WARN_UNUSED
         { return mEnabled && (mDirection & RIGHT); }
 
-        int getNumber() const
+        int getNumber() const A_WARN_UNUSED
         { return mNumber; }
 
         void setUseInactive(const bool b)
@@ -121,15 +121,15 @@ class Joystick final
 
         void update();
 
-        KeysVector *getActionVector(const SDL_Event &event);
+        KeysVector *getActionVector(const SDL_Event &event) A_WARN_UNUSED;
 
-        KeysVector *getActionVectorByKey(const int i);
+        KeysVector *getActionVectorByKey(const int i) A_WARN_UNUSED;
 
-        int getButtonFromEvent(const SDL_Event &event) const;
+        int getButtonFromEvent(const SDL_Event &event) const A_WARN_UNUSED;
 
-        bool isActionActive(const int index) const;
+        bool isActionActive(const int index) const A_WARN_UNUSED;
 
-        bool validate() const;
+        bool validate() const A_WARN_UNUSED;
 
         void handleRepeat(const int time);
 

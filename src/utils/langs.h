@@ -27,13 +27,15 @@
 #include <set>
 #include <vector>
 
+#include "localconsts.h"
+
 typedef std::vector<std::string> LangVect;
 typedef LangVect::const_iterator LangIter;
 
-LangVect getLang();
+LangVect getLang() A_WARN_UNUSED;
 
-std::string getLangSimple();
+std::string getLangSimple() A_WARN_UNUSED;
 
-std::string getLangShort();
+std::string getLangShort() A_WARN_UNUSED;
 
 #endif // UTILS_LANGS_H

@@ -36,6 +36,8 @@
 
 #include <sys/time.h>
 
+#include "localconsts.h"
+
 class Button;
 class Desktop;
 class Game;
@@ -74,9 +76,9 @@ extern LoginData loginData;
 /**
  * Returns elapsed time. (Warning: supposes the delay is always < 100 seconds)
  */
-int get_elapsed_time(const int startTime);
+int get_elapsed_time(const int startTime) A_WARN_UNUSED;
 
-int get_elapsed_time1(const int startTime);
+int get_elapsed_time1(const int startTime) A_WARN_UNUSED;
 
 /**
  * All client states.
@@ -207,7 +209,7 @@ public:
     /**
      * Provides access to the client instance.
      */
-    static Client *instance()
+    static Client *instance() A_WARN_UNUSED
     { return mInstance; }
 
     void gameInit();
@@ -221,53 +223,53 @@ public:
     static void setState(const State state)
     { instance()->mState = state; }
 
-    static State getState()
+    static State getState() A_WARN_UNUSED
     { return instance()->mState; }
 
-    static const std::string &getPackageDirectory()
+    static const std::string &getPackageDirectory() A_WARN_UNUSED
     { return instance()->mPackageDir; }
 
-    static const std::string &getConfigDirectory()
+    static const std::string &getConfigDirectory() A_WARN_UNUSED
     { return instance()->mConfigDir; }
 
-    static const std::string &getLocalDataDirectory()
+    static const std::string &getLocalDataDirectory() A_WARN_UNUSED
     { return instance()->mLocalDataDir; }
 
-    static const std::string &getTempDirectory()
+    static const std::string &getTempDirectory() A_WARN_UNUSED
     { return instance()->mTempDir; }
 
-    static const std::string &getScreenshotDirectory()
+    static const std::string &getScreenshotDirectory() A_WARN_UNUSED
     { return instance()->mScreenshotDir; }
 
-    static const std::string getServerConfigDirectory();
+    static const std::string getServerConfigDirectory() A_WARN_UNUSED;
 
-    static const std::string getUsersDirectory();
+    static const std::string getUsersDirectory() A_WARN_UNUSED;
 
-    static const std::string getNpcsDirectory();
+    static const std::string getNpcsDirectory() A_WARN_UNUSED;
 
-    static bool getIsMinimized()
+    static bool getIsMinimized() A_WARN_UNUSED
     { return instance()->mIsMinimized; }
 
     static void setIsMinimized(const bool n);
 
     static void newChatMessage();
 
-    static bool getInputFocused()
+    static bool getInputFocused() A_WARN_UNUSED
     { return instance()->mInputFocused; }
 
     static void setInputFocused(const bool n)
     { instance()->mInputFocused = n; }
 
-    static bool getMouseFocused()
+    static bool getMouseFocused() A_WARN_UNUSED
     { return instance()->mMouseFocused; }
 
     static void setMouseFocused(const bool n)
     { instance()->mMouseFocused = n; }
 
-    static std::string getUpdatesDir()
+    static std::string getUpdatesDir() A_WARN_UNUSED
     { return instance()->mUpdatesDir; }
 
-    static std::string getServerName()
+    static std::string getServerName() A_WARN_UNUSED
     { return instance()->mServerName; }
 
     static void resize(const int width, const int height,
@@ -276,15 +278,15 @@ public:
 
     static void setGuiAlpha(const float n);
 
-    static float getGuiAlpha();
+    static float getGuiAlpha() A_WARN_UNUSED;
 
     static void closeDialogs();
 
     static void setFramerate(const int fpsLimit);
 
-    static int getFramerate();
+    static int getFramerate() A_WARN_UNUSED;
 
-    static bool isTmw();
+    static bool isTmw() A_WARN_UNUSED;
 
     static void applyGrabMode();
 
@@ -308,9 +310,9 @@ public:
 
     void resizeVideo(int width, int height, const bool always);
 
-    static bool limitPackets(const int type);
+    static bool limitPackets(const int type) A_WARN_UNUSED;
 
-    static bool checkPackets(const int type);
+    static bool checkPackets(const int type) A_WARN_UNUSED;
 
     PacketLimit mPacketLimits[PACKET_SIZE + 1];
 

@@ -53,7 +53,7 @@ class GuildManager final
 
         void updateList();
 
-        static bool getEnableGuildBot()
+        static bool getEnableGuildBot() A_WARN_UNUSED
         { return mEnableGuildBot; }
 
         void kick(std::string msg) const;
@@ -66,7 +66,7 @@ class GuildManager final
 
         void createTab(Guild *const guild);
 
-        Guild *createGuild() const;
+        Guild *createGuild() const A_WARN_UNUSED;
 
         void clear() const;
 
@@ -76,7 +76,7 @@ class GuildManager final
 
         bool afterRemove();
 
-        bool havePower() const
+        bool havePower() const A_WARN_UNUSED
         { return mHavePower; }
 
     private:

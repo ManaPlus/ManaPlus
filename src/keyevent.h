@@ -46,7 +46,7 @@ class KeyEvent final : public gcn::KeyEvent
 
         virtual ~KeyEvent();
 
-        int getActionId() const
+        int getActionId() const A_WARN_UNUSED
         { return mActionId; }
 
     protected:

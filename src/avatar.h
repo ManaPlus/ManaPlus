@@ -45,7 +45,7 @@ public:
     /**
      * Returns the avatar's name.
      */
-    std::string getName() const
+    std::string getName() const A_WARN_UNUSED
     { return mName; }
 
     /**
@@ -57,12 +57,12 @@ public:
     /**
      * Returns the avatar's original name.
      */
-    std::string getOriginalName() const
+    std::string getOriginalName() const A_WARN_UNUSED
     { return mOriginalName; }
 
-    std::string getComplexName() const;
+    std::string getComplexName() const A_WARN_UNUSED;
 
-    virtual std::string getAdditionString() const;
+    virtual std::string getAdditionString() const A_WARN_UNUSED;
 
     /**
      * Set the avatar's original name.
@@ -73,7 +73,7 @@ public:
     /**
      * Returns the avatar's online status.
      */
-    bool getOnline() const
+    bool getOnline() const A_WARN_UNUSED
     { return mOnline; }
 
     /**
@@ -82,91 +82,91 @@ public:
     void setOnline(const bool online)
     { mOnline = online; }
 
-    int getHp() const
+    int getHp() const A_WARN_UNUSED
     { return mHp; }
 
     void setHp(const int hp)
     { mHp = hp; }
 
-    int getMaxHp() const
+    int getMaxHp() const A_WARN_UNUSED
     { return mMaxHp; }
 
     void setMaxHp(const int maxHp)
     { mMaxHp = maxHp; }
 
-    int getDamageHp() const
+    int getDamageHp() const A_WARN_UNUSED
     { return mDamageHp; }
 
     void setDamageHp(const int damageHp)
     { mDamageHp = damageHp; }
 
-    bool getDisplayBold() const
+    bool getDisplayBold() const A_WARN_UNUSED
     { return mDisplayBold; }
 
     void setDisplayBold(const bool displayBold)
     { mDisplayBold = displayBold; }
 
-    int getLevel() const
+    int getLevel() const A_WARN_UNUSED
     { return mLevel; }
 
     void setLevel(const int level)
     { mLevel = level; }
 
-    std::string getMap() const
+    std::string getMap() const A_WARN_UNUSED
     { return mMap; }
 
     void setMap(std::string map)
     { mMap = map; }
 
-    int getX() const
+    int getX() const A_WARN_UNUSED
     { return mX; }
 
     void setX(const int x)
     { mX = x; }
 
-    int getY() const
+    int getY() const A_WARN_UNUSED
     { return mY; }
 
     void setY(const int y)
     { mY = y; }
 
-    int getType() const
+    int getType() const A_WARN_UNUSED
     { return mType; }
 
     void setType(const int n)
     { mType = n; }
 
-    int getExp() const
+    int getExp() const A_WARN_UNUSED
     { return mExp; }
 
     void setExp(const int n)
     { mExp = n; }
 
-    int getID() const
+    int getID() const A_WARN_UNUSED
     { return mId; }
 
     void setID(const int id)
     { mId = id; }
 
-    int getCharId() const
+    int getCharId() const A_WARN_UNUSED
     { return mCharId; }
 
     void setCharId(const int id)
     { mCharId = id; }
 
-    int getGender() const
+    int getGender() const A_WARN_UNUSED
     { return mGender; }
 
     void setGender(const int g)
     { mGender = g; }
 
-    int getRace() const
+    int getRace() const A_WARN_UNUSED
     { return mRace; }
 
     void setRace(const int r)
     { mRace = r; }
 
-    const std::string &getIp() const
+    const std::string &getIp() const A_WARN_UNUSED
     { return mIp; }
 
     void setIp(std::string ip)

@@ -62,22 +62,22 @@ class GraphicsManager final
 
         void setVideoMode();
 
-        Graphics *createGraphics();
+        Graphics *createGraphics() A_WARN_UNUSED;
 
         bool getAllVideoModes(StringVect &modeList);
 
 #ifdef USE_OPENGL
-        TestMain *startDetection();
+        TestMain *startDetection() A_WARN_UNUSED;
 
-        int detectGraphics();
+        int detectGraphics() A_WARN_UNUSED;
 
-        bool supportExtension(const std::string &ext);
+        bool supportExtension(const std::string &ext) A_WARN_UNUSED;
 
         void updateTextureFormat();
 
-        bool checkGLVersion(int major, int minor) const;
+        bool checkGLVersion(int major, int minor) const A_WARN_UNUSED;
 
-        bool checkPlatformVersion(int major, int minor) const;
+        bool checkPlatformVersion(int major, int minor) const A_WARN_UNUSED;
 
         void createFBO(int width, int height, FBOInfo *fbo);
 
@@ -93,17 +93,17 @@ class GraphicsManager final
 
         void updateLimits();
 
-        int getMaxVertices() const
+        int getMaxVertices() const A_WARN_UNUSED
         { return mMaxVertices; }
 
-        bool getUseAtlases() const
+        bool getUseAtlases() const A_WARN_UNUSED
         { return mUseAtlases; }
 
         void logVersion();
 
         void setGLVersion();
 
-        std::string getGLString(int num) const;
+        std::string getGLString(int num) const A_WARN_UNUSED;
 
         void logString(const char *format, int num);
 
@@ -111,12 +111,12 @@ class GraphicsManager final
 
         void createTextureSampler();
 
-        bool isUseTextureSampler() const
+        bool isUseTextureSampler() const A_WARN_UNUSED
         { return mUseTextureSampler; }
 
-        unsigned int getLastError();
+        GLenum getLastError() A_WARN_UNUSED;
 
-        static std::string errorToString(GLenum error);
+        static std::string errorToString(GLenum error) A_WARN_UNUSED;
 
         void updateDebugLog();
 #endif

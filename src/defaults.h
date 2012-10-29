@@ -22,20 +22,23 @@
 #ifndef DEFAULTS_H
 #define DEFAULTS_H
 
+#include "variabledata.h"
+
 #include <map>
 #include <string>
-#include "variabledata.h"
+
+#include "localconsts.h"
 
 typedef std::map<std::string, VariableData*> DefaultsData;
 
-VariableData* createData(const int defData);
-VariableData* createData(const double defData);
-VariableData* createData(const float defData);
-VariableData* createData(const std::string &defData);
-VariableData* createData(const char *const defData);
-VariableData* createData(const bool defData);
-DefaultsData* getConfigDefaults();
-DefaultsData* getBrandingDefaults();
-DefaultsData* getPathsDefaults();
+VariableData* createData(const int defData) A_WARN_UNUSED;
+VariableData* createData(const double defData) A_WARN_UNUSED;
+VariableData* createData(const float defData) A_WARN_UNUSED;
+VariableData* createData(const std::string &defData) A_WARN_UNUSED;
+VariableData* createData(const char *const defData) A_WARN_UNUSED;
+VariableData* createData(const bool defData) A_WARN_UNUSED;
+DefaultsData* getConfigDefaults() A_WARN_UNUSED;
+DefaultsData* getBrandingDefaults() A_WARN_UNUSED;
+DefaultsData* getPathsDefaults() A_WARN_UNUSED;
 
 #endif

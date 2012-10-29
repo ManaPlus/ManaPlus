@@ -44,8 +44,10 @@
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
+#define A_WARN_UNUSED __attribute__ ((warn_unused_result))
 #else
 #define A_UNUSED
+#define A_WARN_UNUSED
 #define gnu_printf printf
 #endif
 #ifdef __clang__

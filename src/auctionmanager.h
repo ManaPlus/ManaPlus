@@ -42,9 +42,7 @@ class AuctionManager final
 
         static void send(const std::string &msg);
 
-//        static bool processAuctionMessage(const std::string &msg);
-
-        static bool getEnableAuctionBot()
+        static bool getEnableAuctionBot() A_WARN_UNUSED
         { return mEnableAuctionBot; }
 
         void clear();

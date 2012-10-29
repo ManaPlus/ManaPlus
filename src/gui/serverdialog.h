@@ -63,17 +63,17 @@ class ServersListModel final : public gcn::ListModel
         /**
          * Used to get number of line in the list
          */
-        int getNumberOfElements() override;
+        int getNumberOfElements() override A_WARN_UNUSED;
 
         /**
          * Used to get an element from the list
          */
-        std::string getElementAt(int elementIndex) override;
+        std::string getElementAt(int elementIndex) override A_WARN_UNUSED;
 
         /**
          * Used to get the corresponding Server struct
          */
-        const ServerInfo &getServer(const int elementIndex) const
+        const ServerInfo &getServer(const int elementIndex) const A_WARN_UNUSED
         { return mServers->at(elementIndex); }
 
         void setVersionString(const int index, const std::string &version);

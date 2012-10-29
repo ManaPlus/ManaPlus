@@ -64,55 +64,55 @@ class Skin final
          * name if a dialog for skin selection for a specific window type is
          * done.
          */
-        const std::string &getName() const
+        const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
         /**
          * Returns the skin's xml file path.
          */
-        const std::string &getFilePath() const
+        const std::string &getFilePath() const A_WARN_UNUSED
         { return mFilePath; }
 
         /**
          * Returns the background skin.
          */
-        ImageRect &getBorder() const
+        ImageRect &getBorder() const A_WARN_UNUSED
         { return *mBorder; }
 
         /**
          * Returns the image used by a close button for this skin.
          */
-        Image *getCloseImage(const bool state) const
+        Image *getCloseImage(const bool state) const A_WARN_UNUSED
         { return state ? mCloseImageHighlighted : mCloseImage; }
 
         /**
          * Returns the image used by a sticky button for this skin.
          */
-        Image *getStickyImage(const bool state) const
+        Image *getStickyImage(const bool state) const A_WARN_UNUSED
         { return state ? mStickyImageDown : mStickyImageUp; }
 
         /**
          * Returns the minimum width which can be used with this skin.
          */
-        int getMinWidth() const;
+        int getMinWidth() const A_WARN_UNUSED;
 
         /**
          * Returns the minimum height which can be used with this skin.
          */
-        int getMinHeight() const;
+        int getMinHeight() const A_WARN_UNUSED;
 
         /**
          * Updates the alpha value of the skin
          */
         void updateAlpha(const float minimumOpacityAllowed = 0.0f);
 
-        int getPadding() const
+        int getPadding() const A_WARN_UNUSED
         { return mPadding; }
 
-        int getTitlePadding() const
+        int getTitlePadding() const A_WARN_UNUSED
         { return mTitlePadding; }
 
-        int getOption(const std::string &name) const
+        int getOption(const std::string &name) const A_WARN_UNUSED
         {
             if (mOptions->find(name) != mOptions->end())
                 return (*mOptions)[name];
@@ -120,7 +120,8 @@ class Skin final
                 return 0;
         }
 
-        int getOption(const std::string &name, const int def) const
+        int getOption(const std::string &name,
+                      const int def) const A_WARN_UNUSED
         {
             if (mOptions->find(name) != mOptions->end())
                 return (*mOptions)[name];
@@ -148,7 +149,7 @@ class Theme final : public Palette, public ConfigListener
     public:
         A_DELETE_COPY(Theme)
 
-        static Theme *instance();
+        static Theme *instance() A_WARN_UNUSED;
 
         static void deleteInstance();
 
@@ -156,10 +157,10 @@ class Theme final : public Palette, public ConfigListener
 
         static void selectSkin();
 
-        static std::string getThemePath()
+        static std::string getThemePath() A_WARN_UNUSED
         { return mThemePath; }
 
-        static std::string getThemeName()
+        static std::string getThemeName() A_WARN_UNUSED
         { return mThemeName; }
 
         static void fillSkinsList(StringVect &list);
@@ -172,16 +173,19 @@ class Theme final : public Palette, public ConfigListener
          * Returns the patch to the given gui resource relative to the theme
          * or, if it isn't in the theme, relative to 'graphics/gui'.
          */
-        static std::string resolveThemePath(const std::string &path);
+        static std::string resolveThemePath(const std::string &path)
+                                            A_WARN_UNUSED;
 
-        static Image *getImageFromTheme(const std::string &path);
+        static Image *getImageFromTheme(const std::string &path) A_WARN_UNUSED;
 
         static ImageSet *getImageSetFromTheme(const std::string &path,
-                                              const int w, const int h);
+                                              const int w,
+                                              const int h) A_WARN_UNUSED;
 
         ImageSet *getImageSetFromThemeXml(const std::string &name,
                                           const std::string &name2,
-                                          const int w, const int h) const;
+                                          const int w,
+                                          const int h) const A_WARN_UNUSED;
         enum ThemePalette
         {
             BROWSERBOX = 0,
@@ -298,28 +302,30 @@ class Theme final : public Palette, public ConfigListener
          */
         inline static const gcn::Color &getThemeColor(const int type,
                                                       const int alpha = 255)
+                                                      A_WARN_UNUSED
         { return mInstance->getColor(type, alpha); }
 
         static const gcn::Color &getThemeCharColor(const signed char c,
-                                                   bool &valid)
+                                                   bool &valid) A_WARN_UNUSED
         { return mInstance->getCharColor(c, valid); }
 
-        static int getThemeIdByChar(const signed char c, bool &valid)
+        static int getThemeIdByChar(const signed char c,
+                                    bool &valid) A_WARN_UNUSED
         { return mInstance->getIdByChar(c, valid); }
 
         static gcn::Color getProgressColor(const int type,
-                                           const float progress);
+                                           const float progress) A_WARN_UNUSED;
 
         /**
          * Loads a skin.
          */
         Skin *load(const std::string &filename, const std::string &filename2,
                    const bool full = true, const std::string
-                   &defaultPath = getThemePath());
+                   &defaultPath = getThemePath()) A_WARN_UNUSED;
 
         Skin *loadSkinRect(ImageRect &image, const std::string &name,
                            const std::string &name2, const int start = 0,
-                           const int end = 8);
+                           const int end = 8) A_WARN_UNUSED;
 
         void unload(Skin *const skin);
 
@@ -331,7 +337,7 @@ class Theme final : public Palette, public ConfigListener
         /**
          * Get the minimum opacity allowed to skins.
          */
-        float getMinimumOpacity() const
+        float getMinimumOpacity() const A_WARN_UNUSED
         { return mMinimumOpacity; }
 
         /**
@@ -350,16 +356,18 @@ class Theme final : public Palette, public ConfigListener
                         const int end = 8) const;
 
         static Image *getImageFromThemeXml(const std::string &name,
-                                           const std::string &name2);
+                                           const std::string &name2)
+                                           A_WARN_UNUSED;
 
-        static ThemeInfo *loadInfo(const std::string &themeName);
+        static ThemeInfo *loadInfo(const std::string &themeName) A_WARN_UNUSED;
 
     private:
         Theme();
 
         ~Theme();
 
-        Skin *readSkin(const std::string &filename0, const bool full);
+        Skin *readSkin(const std::string &filename0,
+                       const bool full) A_WARN_UNUSED;
 
         // Map containing all window skins
         typedef std::map<std::string, Skin*> Skins;
@@ -371,7 +379,7 @@ class Theme final : public Palette, public ConfigListener
         static std::string mThemeName;
         static Theme *mInstance;
 
-        static bool tryThemePath(std::string themePath);
+        static bool tryThemePath(std::string themePath) A_WARN_UNUSED;
 
         void loadColors(std::string file = "");
 

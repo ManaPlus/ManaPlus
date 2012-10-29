@@ -26,6 +26,8 @@
 
 #include <list>
 
+#include "localconsts.h"
+
 class Actor;
 class Graphics;
 class Image;
@@ -56,20 +58,20 @@ public:
      * Returns the horizontal size of the actors graphical representation
      * in pixels or 0 when it is undefined.
      */
-    virtual int getWidth() const
+    virtual int getWidth() const A_WARN_UNUSED
     { return 0; }
 
     /**
      * Returns the vertical size of the actors graphical representation
      * in pixels or 0 when it is undefined.
      */
-    virtual int getHeight() const
+    virtual int getHeight() const A_WARN_UNUSED
     { return 0; }
 
     /**
      * Returns the pixel position of this actor.
      */
-    const Vector &getPosition() const
+    const Vector &getPosition() const A_WARN_UNUSED
     { return mPos; }
 
     /**
@@ -81,41 +83,41 @@ public:
     /**
      * Returns the pixels X coordinate of the actor.
      */
-    int getPixelX() const
+    int getPixelX() const A_WARN_UNUSED
     { return static_cast<int>(mPos.x); }
 
     /**
      * Returns the pixel Y coordinate of the actor.
      */
-    virtual int getPixelY() const
+    virtual int getPixelY() const A_WARN_UNUSED
     { return static_cast<int>(mPos.y); }
 
     /**
      * Returns the pixel Y coordinate of the actor for sorting only.
      */
-    virtual int getSortPixelY() const
+    virtual int getSortPixelY() const A_WARN_UNUSED
     { return static_cast<int>(mPos.y) - mYDiff; }
 
     /**
      * Returns the x coordinate in tiles of the actor.
      */
-    virtual int getTileX() const;
+    virtual int getTileX() const A_WARN_UNUSED;
 
     /**
      * Returns the y coordinate in tiles of the actor.
      */
-    virtual int getTileY() const;
+    virtual int getTileY() const A_WARN_UNUSED;
 
     /**
      * Returns the number of Image layers used to draw the actor.
      */
-    virtual int getNumberOfLayers() const
+    virtual int getNumberOfLayers() const A_WARN_UNUSED
     { return 0; }
 
     /**
      * Returns the current alpha value used to draw the actor.
      */
-    virtual float getAlpha() const = 0;
+    virtual float getAlpha() const A_WARN_UNUSED = 0;
 
     /**
      * Sets the alpha value used to draw the actor.
@@ -124,7 +126,7 @@ public:
 
     virtual void setMap(Map *const map);
 
-    const Map* getMap() const
+    const Map* getMap() const A_WARN_UNUSED
     { return mMap; }
 
 protected:

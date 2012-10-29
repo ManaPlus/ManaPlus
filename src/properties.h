@@ -48,7 +48,8 @@ class Properties
          *         doesn't exist.
          */
         const std::string getProperty(const std::string &name,
-                                      const std::string &def = "") const
+                                      const std::string &def = "")
+                                      const A_WARN_UNUSED
         {
             const PropertyMap::const_iterator i = mProperties.find(name);
             return (i != mProperties.end()) ? i->second : def;
@@ -63,7 +64,7 @@ class Properties
          *         doesn't exist.
          */
         float getFloatProperty(const std::string &name,
-                               const float def = 0.0f) const
+                               const float def = 0.0f) const A_WARN_UNUSED
         {
             const PropertyMap::const_iterator i = mProperties.find(name);
             float ret = def;
@@ -85,7 +86,7 @@ class Properties
          *         doesn't exist.
          */
         bool getBoolProperty(const std::string &name,
-                             const bool def = false) const
+                             const bool def = false) const A_WARN_UNUSED
         {
             const PropertyMap::const_iterator i = mProperties.find(name);
             bool ret = def;
@@ -106,7 +107,7 @@ class Properties
          * @return <code>true</code> when a property is defined,
          *         <code>false</code> otherwise.
          */
-        bool hasProperty(const std::string &name) const
+        bool hasProperty(const std::string &name) const A_WARN_UNUSED
         { return (mProperties.find(name) != mProperties.end()); }
 
         /**

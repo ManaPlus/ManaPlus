@@ -27,6 +27,8 @@
 #include <list>
 #include <vector>
 
+#include "localconsts.h"
+
 class Image;
 
 typedef std::list <void*> VectorPointers;
@@ -40,7 +42,6 @@ class CompoundItem final
 
         ~CompoundItem();
 
-//        float alpha;
         VectorPointers data;
         Image *image;
         Image *alphaImage;
@@ -69,34 +70,34 @@ public:
     /**
      * Gets the width in pixels of the first sprite in the list.
      */
-    virtual int getWidth() const override;
+    virtual int getWidth() const override A_WARN_UNUSED;
 
     /**
      * Gets the height in pixels of the first sprite in the list.
      */
-    virtual int getHeight() const override;
+    virtual int getHeight() const override A_WARN_UNUSED;
 
-    virtual const Image *getImage() const override;
+    virtual const Image *getImage() const override A_WARN_UNUSED;
 
     virtual bool setSpriteDirection(const SpriteDirection direction) override;
 
-    int getNumberOfLayers() const;
+    int getNumberOfLayers() const A_WARN_UNUSED;
 
-    unsigned int getCurrentFrame() const override;
+    unsigned int getCurrentFrame() const override A_WARN_UNUSED;
 
-    unsigned int getFrameCount() const override;
+    unsigned int getFrameCount() const override A_WARN_UNUSED;
 
-    size_t size() const
+    size_t size() const A_WARN_UNUSED
     { return mSprites.size(); }
 
-    bool empty() const
+    bool empty() const A_WARN_UNUSED
     { return mSprites.empty(); }
 
     void addSprite(Sprite *const sprite);
 
     void setSprite(const int layer, Sprite *const sprite);
 
-    Sprite *getSprite(int layer) const
+    Sprite *getSprite(int layer) const A_WARN_UNUSED
     { return mSprites.at(layer); }
 
     void removeSprite(const int layer);
@@ -114,12 +115,12 @@ public:
     /**
      * Returns the curent frame in the current animation of the given layer.
      */
-    virtual unsigned int getCurrentFrame(unsigned int layer);
+    virtual unsigned int getCurrentFrame(unsigned int layer) A_WARN_UNUSED;
 
     /**
      * Returns the frame count in the current animation of the given layer.
      */
-    virtual unsigned int getFrameCount(unsigned int layer);
+    virtual unsigned int getFrameCount(unsigned int layer) A_WARN_UNUSED;
 
     virtual void setAlpha(float alpha) override;
 

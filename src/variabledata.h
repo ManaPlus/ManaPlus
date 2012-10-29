@@ -41,7 +41,7 @@ class VariableData
         virtual ~VariableData()
         {};
 
-        virtual int getType() const = 0;
+        virtual int getType() const A_WARN_UNUSED = 0;
 };
 
 class IntData final : public VariableData
@@ -51,10 +51,10 @@ class IntData final : public VariableData
             mData(value)
         { }
 
-        int getData() const
+        int getData() const A_WARN_UNUSED
         { return mData; }
 
-        int getType() const override
+        int getType() const override A_WARN_UNUSED
         { return DATA_INT; }
 
     private:
@@ -68,10 +68,10 @@ class StringData final : public VariableData
             mData(value)
         { }
 
-        const std::string &getData() const
+        const std::string &getData() const A_WARN_UNUSED
         { return mData; }
 
-        int getType() const override
+        int getType() const override A_WARN_UNUSED
         { return DATA_STRING; }
 
     private:
@@ -85,10 +85,10 @@ class FloatData final : public VariableData
             mData(value)
         { }
 
-        double getData() const
+        double getData() const A_WARN_UNUSED
         { return mData; }
 
-        int getType() const override
+        int getType() const override A_WARN_UNUSED
         { return DATA_FLOAT; }
 
     private:
@@ -102,10 +102,10 @@ class BoolData final : public VariableData
             mData(value)
         { }
 
-        bool getData() const
+        bool getData() const A_WARN_UNUSED
         { return mData; }
 
-        int getType() const override
+        int getType() const override A_WARN_UNUSED
         { return DATA_BOOL; }
 
     private:

@@ -92,7 +92,7 @@ class BuyDialog final : public Window,
         /**
          * Returns the number of items in the shop inventory.
          */
-        int getNumberOfElements();
+        int getNumberOfElements() A_WARN_UNUSED;
 
         /**
          * Updates the labels according to the selected item.
@@ -112,7 +112,7 @@ class BuyDialog final : public Window,
         /**
          * Returns true if any instances exist.
          */
-        static bool isActive()
+        static bool isActive() A_WARN_UNUSED
         { return !instances.empty(); }
 
         /**

@@ -152,14 +152,14 @@ class NormalOpenGLGraphics final : public Graphics
         /**
          * Takes a screenshot and returns it as SDL surface.
          */
-        SDL_Surface *getScreenshot() override;
+        SDL_Surface *getScreenshot() override A_WARN_UNUSED;
 
         void prepareScreenshot() override;
 
         bool drawNet(const int x1, const int y1, const int x2, const int y2,
                      const int width, const int height) override;
 
-        int getMemoryUsage();
+        int getMemoryUsage() A_WARN_UNUSED;
 
         void updateTextureFormat();
 

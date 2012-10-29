@@ -94,7 +94,8 @@ class LocalPlayer final : public Being,
          * Compute the next pathnode location when walking using keyboard.
          * used by nextTile().
          */
-        Position getNextWalkPosition(const unsigned char dir) const;
+        Position getNextWalkPosition(const unsigned char dir)
+                                     const A_WARN_UNUSED;
 
         /**
          * Adds a new tile to the path when walking.
@@ -110,7 +111,8 @@ class LocalPlayer final : public Being,
         /**
          * Check the player has permission to invite users to specific guild
          */
-        bool checkInviteRights(const std::string &guildName) const;
+        bool checkInviteRights(const std::string &guildName)
+                               const A_WARN_UNUSED;
 
         /**
          * Invite a player to join guild
@@ -131,9 +133,9 @@ class LocalPlayer final : public Being,
         /**
          * Gets the attack range.
          */
-        int getAttackRange() const;
+        int getAttackRange() const A_WARN_UNUSED;
 
-        int getAttackRange2() const;
+        int getAttackRange2() const A_WARN_UNUSED;
 
         void attack(Being *const target = nullptr, const bool keep = false,
                     const bool dontChangeEquipment = false);
@@ -143,7 +145,7 @@ class LocalPlayer final : public Being,
 
         void setGMLevel(const int level);
 
-        int getGMLevel() const
+        int getGMLevel() const A_WARN_UNUSED
         { return mGMLevel; }
 
         void stopAttack(const bool keepAttack = false);
@@ -154,7 +156,7 @@ class LocalPlayer final : public Being,
          * Returns the current target of the player. Returns 0 if no being is
          * currently targeted.
          */
-        Being *getTarget() const;
+        Being *getTarget() const A_WARN_UNUSED;
 
         /**
          * Sets the target being of the player.
@@ -174,7 +176,7 @@ class LocalPlayer final : public Being,
         /**
          * Gets the walking direction
          */
-        unsigned char getWalkingDir() const
+        unsigned char getWalkingDir() const A_WARN_UNUSED
         { return mWalkingDir; }
 
         /**
@@ -187,7 +189,7 @@ class LocalPlayer final : public Being,
          */
         bool withinAttackRange(const Being *const target,
                                const bool fixDistance = false,
-                               const int addRange = 0) const;
+                               const int addRange = 0) const A_WARN_UNUSED;
 
         /**
          * Stops the player dead in his tracks
@@ -207,24 +209,19 @@ class LocalPlayer final : public Being,
                       const unsigned char color, const int floorItemId,
                       const unsigned char fail);
 
-        int getLevel() const override;
+        int getLevel() const override A_WARN_UNUSED;
 
-        int getTargetTime();
-
-//        int getSkillPoints() const
-//        { return mSkillPoints; }
-
-//        void setSkillPoints(int points);
+        int getTargetTime() A_WARN_UNUSED;
 
         /** Tells that the path has been set by mouse. */
         void pathSetByMouse()
         { mPathSetByMouse = true; }
 
         /** Tells if the path has been set by mouse. */
-        bool isPathSetByMouse() const
+        bool isPathSetByMouse() const A_WARN_UNUSED
         { return mPathSetByMouse; }
 
-        int getInvertDirection() const
+        int getInvertDirection() const A_WARN_UNUSED
         { return mInvertDirection; }
 
         void setInvertDirection(const int n)
@@ -232,16 +229,16 @@ class LocalPlayer final : public Being,
 
         void invertDirection();
 
-        int getAttackWeaponType() const
+        int getAttackWeaponType() const A_WARN_UNUSED
         { return mAttackWeaponType; }
 
-        int getAttackType() const
+        int getAttackType() const A_WARN_UNUSED
         { return mAttackType; }
 
-        int getFollowMode() const
+        int getFollowMode() const A_WARN_UNUSED
         { return mFollowMode; }
 
-        int getImitationMode() const
+        int getImitationMode() const A_WARN_UNUSED
         { return mImitationMode; }
 
         void changeAttackWeaponType();
@@ -254,20 +251,20 @@ class LocalPlayer final : public Being,
 
         void changePickUpType();
 
-        int getCrazyMoveType() const
+        int getCrazyMoveType() const A_WARN_UNUSED
         { return mCrazyMoveType; }
 
-        int getPickUpType() const
+        int getPickUpType() const A_WARN_UNUSED
         { return mPickUpType; }
 
-        int getQuickDropCounter() const
+        int getQuickDropCounter() const A_WARN_UNUSED
         { return mQuickDropCounter; }
 
         void setQuickDropCounter(const int n);
 
         void changeQuickDropCounter();
 
-        int getMoveState() const
+        int getMoveState() const A_WARN_UNUSED
         { return mMoveState; }
 
         void setMoveState(const int n)
@@ -277,19 +274,19 @@ class LocalPlayer final : public Being,
 
         void switchPvpAttack();
 
-        int getMagicAttackType() const
+        int getMagicAttackType() const A_WARN_UNUSED
         { return mMagicAttackType; }
 
-        int getPvpAttackType() const
+        int getPvpAttackType() const A_WARN_UNUSED
         { return mPvpAttackType; }
 
-        int getMoveToTargetType() const
+        int getMoveToTargetType() const A_WARN_UNUSED
         { return mMoveToTargetType; }
 
-        int getDisableGameModifiers() const
+        int getDisableGameModifiers() const A_WARN_UNUSED
         { return mDisableGameModifiers; }
 
-        int getPingTime() const
+        int getPingTime() const A_WARN_UNUSED
         { return mPingTime; }
 
         void tryPingRequest();
@@ -320,13 +317,11 @@ class LocalPlayer final : public Being,
 
         void debugMsg(std::string str) const;
 
-//        int getSkillLv(int id);
-
         bool isReachable(const int x, const int y,
-                         const int maxCost = 0) const;
+                         const int maxCost = 0) const A_WARN_UNUSED;
 
         bool isReachable(Being *const being,
-                         const int maxCost = 0);
+                         const int maxCost = 0) A_WARN_UNUSED;
 
         void setHome();
 
@@ -340,16 +335,16 @@ class LocalPlayer final : public Being,
 
         void setPseudoAway(const std::string &message);
 
-        bool getAway() const
+        bool getAway() const A_WARN_UNUSED
         { return mAwayMode; }
 
-        bool getPseudoAway() const
+        bool getPseudoAway() const A_WARN_UNUSED
         { return mPseudoAwayMode; }
 
         void setHalfAway(const bool n)
         { mInactive = n; }
 
-        bool getHalfAway() const
+        bool getHalfAway() const A_WARN_UNUSED
         { return mInactive; }
 
         void afkRespond(ChatTab *const tab, const std::string &nick);
@@ -376,13 +371,13 @@ class LocalPlayer final : public Being,
         void followMoveTo(const Being *const being, const int x1, const int y1,
                           const int x2, const int y2);
 
-        bool allowAction();
+        bool allowAction() A_WARN_UNUSED;
 
-        bool allowMove() const;
+        bool allowMove() const A_WARN_UNUSED;
 
         void setRealPos(const int x, const int y);
 
-        bool isServerBuggy() const
+        bool isServerBuggy() const A_WARN_UNUSED
         { return mIsServerBuggy; }
 
         void fixPos(const int maxDist = 1);
@@ -418,16 +413,15 @@ class LocalPlayer final : public Being,
          */
         void setNextDest(const int x, const int y);
 
-
-        int getNextDestX() const
+        int getNextDestX() const A_WARN_UNUSED
         { return mNextDestX; }
 
-        int getNextDestY() const
+        int getNextDestY() const A_WARN_UNUSED
         { return mNextDestY; }
 
         void respawn();
 
-        FloorItem *getPickUpTarget() const
+        FloorItem *getPickUpTarget() const A_WARN_UNUSED
         { return mPickUpTarget; }
 
         void unSetPickUpTarget()
@@ -441,13 +435,13 @@ class LocalPlayer final : public Being,
         /**
          * Get the playername followed by the current player.
          */
-        std::string getFollow() const
+        const std::string &getFollow() const A_WARN_UNUSED
         { return mPlayerFollowed; }
 
         /**
          * Get the playername imitated by the current player.
          */
-        std::string getImitate() const
+        const std::string &getImitate() const A_WARN_UNUSED
         { return mPlayerImitated; }
 
         /**
@@ -461,14 +455,14 @@ class LocalPlayer final : public Being,
          * Gets if the engine has to check
          * if the Player Name is to be displayed.
          */
-        bool getCheckNameSetting() const
+        bool getCheckNameSetting() const A_WARN_UNUSED
         { return mUpdateName; }
 
         void fixAttackTarget();
 
         void updateNavigateList();
 
-        int getPathLength(const Being *const being);
+        int getPathLength(const Being *const being) A_WARN_UNUSED;
 
         void targetMoved() const;
 
@@ -481,7 +475,7 @@ class LocalPlayer final : public Being,
 
         void resetYellowBar();
 
-        virtual unsigned char getWalkMask() const override;
+        unsigned char getWalkMask() const override A_WARN_UNUSED;
 
         void saveHomes();
 
@@ -489,7 +483,8 @@ class LocalPlayer final : public Being,
 
         void stopAdvert();
 
-        bool checAttackPermissions(const Being *const target) const;
+        bool checAttackPermissions(const Being *const target)
+                                   const A_WARN_UNUSED;
 
         void updateStatus() const;
 
@@ -541,7 +536,7 @@ class LocalPlayer final : public Being,
 
         const char *getVarItem(const char *const *const arr,
                                const unsigned index,
-                               const unsigned sz) const;
+                               const unsigned sz) const A_WARN_UNUSED;
 
         void changeMode(unsigned *const var, const unsigned limit,
                         const char *const conf,

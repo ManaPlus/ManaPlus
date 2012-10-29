@@ -23,18 +23,20 @@
 
 #include <string>
 
-std::string getRealPath(const std::string &str);
+#include "localconsts.h"
 
-bool isRealPath(const std::string &str);
+std::string getRealPath(const std::string &str) A_WARN_UNUSED;
 
-bool checkPath(std::string path);
+bool isRealPath(const std::string &str) A_WARN_UNUSED;
+
+bool checkPath(std::string path) A_WARN_UNUSED;
 
 std::string &fixDirSeparators(std::string &str);
 
-std::string removeLast(std::string str);
+std::string removeLast(std::string str) A_WARN_UNUSED;
 
-std::string getSelfName();
+std::string getSelfName() A_WARN_UNUSED;
 
-std::string getDesktopDir();
+std::string getDesktopDir() A_WARN_UNUSED;
 
 #endif // UTILS_PATHS_H

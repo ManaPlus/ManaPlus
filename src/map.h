@@ -208,12 +208,12 @@ class Map final : public Properties, public ConfigListener
         /**
          * Finds the tile set that a tile with the given global id is part of.
          */
-        Tileset *getTilesetWithGid(const int gid) const;
+        Tileset *getTilesetWithGid(const int gid) const A_WARN_UNUSED;
 
         /**
          * Get tile reference.
          */
-        MetaTile *getMetaTile(const int x, const int y) const;
+        MetaTile *getMetaTile(const int x, const int y) const A_WARN_UNUSED;
 
         /**
          * Marks a tile as occupied.
@@ -226,58 +226,54 @@ class Map final : public Properties, public ConfigListener
          */
         bool getWalk(const int x, const int y,
                      const unsigned char walkmask = BLOCKMASK_WALL
-                     | BLOCKMASK_AIR | BLOCKMASK_WATER) const;
+                     | BLOCKMASK_AIR | BLOCKMASK_WATER) const A_WARN_UNUSED;
 
         void setWalk(const int x, const int y, const bool walkable);
 
         /**
-         * Tells whether a tile is occupied by a being.
-         */
-//        bool occupied(const int x, const int y) const;
-
-        /**
          * Returns the width of this map in tiles.
          */
-        int getWidth() const
+        int getWidth() const A_WARN_UNUSED
         { return mWidth; }
 
         /**
          * Returns the height of this map in tiles.
          */
-        int getHeight() const
+        int getHeight() const A_WARN_UNUSED
         { return mHeight; }
 
         /**
          * Returns the tile width of this map.
          */
-        int getTileWidth() const
+        int getTileWidth() const A_WARN_UNUSED
         { return mTileWidth; }
 
         /**
          * Returns the tile height used by this map.
          */
-        int getTileHeight() const
+        int getTileHeight() const A_WARN_UNUSED
         { return mTileHeight; }
 
-        const std::string getMusicFile() const;
+        const std::string getMusicFile() const A_WARN_UNUSED;
 
-        const std::string getName() const;
+        const std::string getName() const A_WARN_UNUSED;
 
         /**
          * Gives the map id based on filepath (ex: 009-1)
          */
-        const std::string getFilename() const;
+        const std::string getFilename() const A_WARN_UNUSED;
 
         /**
          * Check the current position against surrounding blocking tiles, and
          * correct the position offset within tile when needed.
          */
         Position checkNodeOffsets(int radius, const unsigned char walkMask,
-                                  const Position &position) const;
+                                  const Position &position)
+                                  const A_WARN_UNUSED;
 
         Position checkNodeOffsets(const int radius,
                                   const unsigned char walkMask,
-                                  const int x, const int y) const
+                                  const int x, const int y) const A_WARN_UNUSED
         { return checkNodeOffsets(radius, walkMask, Position(x, y)); }
 
         /**
@@ -286,14 +282,15 @@ class Map final : public Properties, public ConfigListener
         Path findPixelPath(const int startPixelX, const int startPixelY,
                            const int destPixelX, const int destPixelY,
                            const int radius, const unsigned char walkmask,
-                           const int maxCost = 20);
+                           const int maxCost = 20) A_WARN_UNUSED;
 
         /**
          * Find a path from one location to the next.
          */
         Path findPath(const int startX, const int startY,
                       const int destX, const int destY,
-                      const unsigned char walkmask, const int maxCost = 20);
+                      const unsigned char walkmask,
+                      const int maxCost = 20) A_WARN_UNUSED;
 
         /**
          * Adds a particle effect
@@ -316,26 +313,26 @@ class Map final : public Properties, public ConfigListener
         void setDebugFlags(const int n)
         { mDebugFlags = n; }
 
-        int getDebugFlags() const
+        int getDebugFlags() const A_WARN_UNUSED
         { return mDebugFlags; }
 
         void addExtraLayer();
 
         void saveExtraLayer() const;
 
-        SpecialLayer *getTempLayer() const
+        SpecialLayer *getTempLayer() const A_WARN_UNUSED
         { return mTempLayer; }
 
-        SpecialLayer *getSpecialLayer() const
+        SpecialLayer *getSpecialLayer() const A_WARN_UNUSED
         { return mSpecialLayer; }
 
         void setHasWarps(const bool n)
         { mHasWarps = n; }
 
-        bool getHasWarps() const
+        bool getHasWarps() const A_WARN_UNUSED
         { return mHasWarps; }
 
-        std::string getUserMapDirectory() const;
+        std::string getUserMapDirectory() const A_WARN_UNUSED;
 
         void addPortal(const std::string &name, const int type,
                        const int x, const int y, const int dx, const int dy);
@@ -350,28 +347,28 @@ class Map final : public Properties, public ConfigListener
                               const int x, const int y,
                               const bool addNew = true);
 
-        std::vector<MapItem*> &getPortals()
+        std::vector<MapItem*> &getPortals() A_WARN_UNUSED
         { return mMapPortals; }
 
         /**
          * Gets the tile animation for a specific gid
          */
-        TileAnimation *getAnimationForGid(const int gid) const;
+        TileAnimation *getAnimationForGid(const int gid) const A_WARN_UNUSED;
 
         void optionChanged(const std::string &value) override;
 
-        MapItem *findPortalXY(const int x, const int y) const;
+        MapItem *findPortalXY(const int x, const int y) const A_WARN_UNUSED;
 
-        int getActorsCount() const
+        int getActorsCount() const A_WARN_UNUSED
         { return static_cast<int>(mActors.size()); }
 
         void setPvpMode(const int mode);
 
-        ObjectsLayer* getObjectsLayer() const
+        ObjectsLayer* getObjectsLayer() const A_WARN_UNUSED
         { return mObjects; }
 
         std::string getObjectData(const unsigned x, const unsigned y,
-                                  const int type) const;
+                                  const int type) const A_WARN_UNUSED;
 
         void indexTilesets();
 
@@ -380,7 +377,7 @@ class Map final : public Properties, public ConfigListener
         void setActorsFix(const int x, const int y)
         { mActorFixX = x; mActorFixY = y; }
 
-        int getVersion() const
+        int getVersion() const A_WARN_UNUSED
         { return mVersion; }
 
         void setVersion(const int n)
@@ -390,16 +387,16 @@ class Map final : public Properties, public ConfigListener
 
         void redrawMap();
 
-        bool empty() const
+        bool empty() const A_WARN_UNUSED
         { return mLayers.empty(); }
 
         void setCustom(const bool b)
         { mCustom = b; }
 
-        bool isCustom() const
+        bool isCustom() const A_WARN_UNUSED
         { return mCustom; }
 
-        std::map<int, TileAnimation*> &getTileAnimations()
+        std::map<int, TileAnimation*> &getTileAnimations() A_WARN_UNUSED
         { return mTileAnimations; }
 
         void setAtlas(Resource *const atlas)
@@ -441,7 +438,7 @@ class Map final : public Properties, public ConfigListener
         /**
          * Tells whether the given coordinates fall within the map boundaries.
          */
-        bool contains(const int x, const int y) const;
+        bool contains(const int x, const int y) const A_WARN_UNUSED;
 
         /**
          * Blockmasks for different entities

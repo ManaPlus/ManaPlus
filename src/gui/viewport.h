@@ -196,25 +196,25 @@ class Viewport final : public WindowContainer,
         /**
          * Returns camera x offset in pixels.
          */
-        int getCameraX() const
+        int getCameraX() const A_WARN_UNUSED
         { return mPixelViewX; }
 
         /**
          * Returns camera y offset in pixels.
          */
-        int getCameraY() const
+        int getCameraY() const A_WARN_UNUSED
         { return mPixelViewY; }
 
         /**
          * Returns mouse x in pixels.
          */
-        int getMouseX() const
+        int getMouseX() const A_WARN_UNUSED
         { return mMouseX; }
 
         /**
          * Returns mouse y in pixels.
          */
-        int getMouseY() const
+        int getMouseY() const A_WARN_UNUSED
         { return mMouseY; }
 
         /**
@@ -226,16 +226,16 @@ class Viewport final : public WindowContainer,
         /**
          * Returns the current map object.
          */
-        Map *getCurrentMap() const
+        Map *getCurrentMap() const A_WARN_UNUSED
         { return mMap; }
 
-        int getDebugPath() const
+        int getDebugPath() const A_WARN_UNUSED
         { return mShowDebugPath; }
 
         void setDebugPath(const int n)
         { mShowDebugPath = n; }
 
-        int getCameraMode() const
+        int getCameraMode() const A_WARN_UNUSED
         { return mCameraMode; }
 
         /**
@@ -248,15 +248,15 @@ class Viewport final : public WindowContainer,
          */
         void cleanHoverItems();
 
-        Map *getMap() const
+        Map *getMap() const A_WARN_UNUSED
         { return mMap; }
 
         void moveCamera(const int dx, const int dy);
 
-        int getCameraRelativeX() const
+        int getCameraRelativeX() const A_WARN_UNUSED
         { return mCameraRelativeX; }
 
-        int getCameraRelativeY() const
+        int getCameraRelativeY() const A_WARN_UNUSED
         { return mCameraRelativeY; }
 
         void setCameraRelativeX(const int n)
@@ -265,7 +265,7 @@ class Viewport final : public WindowContainer,
         void setCameraRelativeY(const int n)
         { mCameraRelativeY = n; }
 
-        bool isPopupMenuVisible() const;
+        bool isPopupMenuVisible() const A_WARN_UNUSED;
 
         void moveCameraToActor(const int actorId, const int x = 0,
                                const int y = 0);

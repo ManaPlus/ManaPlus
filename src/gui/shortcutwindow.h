@@ -57,7 +57,7 @@ class ShortcutWindow final : public Window
 
         void addTab(std::string name, ShortcutContainer *const content);
 
-        int getTabIndex() const;
+        int getTabIndex() const A_WARN_UNUSED;
 
         void widgetHidden(const gcn::Event &event) override;
 

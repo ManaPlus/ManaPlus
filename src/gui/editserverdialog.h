@@ -49,7 +49,7 @@ class TypeListModel : public gcn::ListModel
         /**
          * Used to get number of line in the list
          */
-        int getNumberOfElements() override
+        int getNumberOfElements() override A_WARN_UNUSED
 #ifdef EATHENA_SUPPORT
 #ifdef MANASERV_SUPPORT
         { return 4; }
@@ -67,7 +67,7 @@ class TypeListModel : public gcn::ListModel
         /**
          * Used to get an element from the list
          */
-        std::string getElementAt(int elementIndex) override;
+        std::string getElementAt(int elementIndex) override A_WARN_UNUSED;
 };
 
 /**

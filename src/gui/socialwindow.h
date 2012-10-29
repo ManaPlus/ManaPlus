@@ -93,7 +93,7 @@ public:
 
     void updatePortalNames();
 
-    int getPortalIndex(const int x, const int y);
+    int getPortalIndex(const int x, const int y) A_WARN_UNUSED;
 
     void addPortal(const int x, const int y);
 
@@ -103,13 +103,13 @@ public:
 
     void prevTab();
 
-    Map* getMap() const
+    Map* getMap() const A_WARN_UNUSED
     { return mMap; }
 
     void setMap(Map *const map)
     { mMap = map; mProcessedPortals = false; }
 
-    bool getProcessedPortals() const
+    bool getProcessedPortals() const A_WARN_UNUSED
     { return mProcessedPortals; }
 
     void setProcessedPortals(const bool n)

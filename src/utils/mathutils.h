@@ -27,6 +27,8 @@
 #include <stdint.h>
 #include <cstring>
 
+#include "localconsts.h"
+
 static const uint16_t crc_table[256] =
 {
     0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,
@@ -62,6 +64,14 @@ static const uint16_t crc_table[256] =
     0xef1f, 0xff3e, 0xcf5d, 0xdf7c, 0xaf9b, 0xbfba, 0x8fd9, 0x9ff8,
     0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0
 };
+
+inline uint16_t getCrc16(const std::string &str) A_WARN_UNUSED;
+inline float fastInvSqrt(float x) A_WARN_UNUSED;
+inline float fastSqrt(const float x) A_WARN_UNUSED;
+inline float weightedAverage(const float n1, const float n2,
+                             const float w) A_WARN_UNUSED;
+inline int roundDouble(const double v) A_WARN_UNUSED;
+inline int powerOfTwo(const int input) A_WARN_UNUSED;
 
 inline uint16_t getCrc16(const std::string &str)
 {

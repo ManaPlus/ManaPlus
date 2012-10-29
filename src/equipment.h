@@ -67,7 +67,7 @@ class Equipment
         class Backend
         {
             public:
-                virtual Item *getEquipment(int index) const = 0;
+                virtual Item *getEquipment(int index) const A_WARN_UNUSED = 0;
 
                 virtual void clear() = 0;
 
@@ -78,7 +78,7 @@ class Equipment
         /**
          * Get equipment at the given slot.
          */
-        Item *getEquipment(const int index) const
+        Item *getEquipment(const int index) const A_WARN_UNUSED
         { return mBackend ? mBackend->getEquipment(index) : nullptr; }
 
         /**
@@ -95,7 +95,7 @@ class Equipment
         void setBackend(Backend *const backend)
         { mBackend = backend; }
 
-        const Backend *getBackend() const
+        const Backend *getBackend() const A_WARN_UNUSED
         { return mBackend; }
 
     private:

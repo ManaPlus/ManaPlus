@@ -42,15 +42,15 @@ class SpellManager final
 
         ~SpellManager();
 
-        TextCommand *getSpell(const int spellId);
+        TextCommand *getSpell(const int spellId) A_WARN_UNUSED;
 
-        TextCommand* getSpellByItem(const int itemId);
+        TextCommand* getSpellByItem(const int itemId) A_WARN_UNUSED;
 
         bool addSpell(TextCommand *const spell);
 
-        TextCommand *createNewSpell() const;
+        TextCommand *createNewSpell() const A_WARN_UNUSED;
 
-        std::vector<TextCommand*> getAll() const;
+        std::vector<TextCommand*> getAll() const A_WARN_UNUSED;
 
         void useItem(const int itemId);
 
@@ -60,7 +60,7 @@ class SpellManager final
 
         void save();
 
-        std::string autoComplete(std::string partName);
+        std::string autoComplete(std::string partName) A_WARN_UNUSED;
 
     private:
         void fillSpells();
@@ -71,7 +71,8 @@ class SpellManager final
         void invokeSpell(const TextCommand *const spell) const;
 
         std::string parseCommand(std::string command,
-                                 const Being *const target) const;
+                                 const Being *const target)
+                                 const A_WARN_UNUSED;
 
         std::map<unsigned int, TextCommand*> mSpells;
         std::vector<TextCommand*> mSpellsVector;

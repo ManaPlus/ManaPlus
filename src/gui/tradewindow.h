@@ -137,12 +137,12 @@ class TradeWindow final : public Window,
 
         void initTrade(std::string nick);
 
-        std::string getAutoTradeNick() const
+        std::string getAutoTradeNick() const A_WARN_UNUSED
         { return mAutoAddToNick; }
 
-        bool checkItem(const Item *const item) const;
+        bool checkItem(const Item *const item) const A_WARN_UNUSED;
 
-        bool isInpupFocused() const;
+        bool isInpupFocused() const A_WARN_UNUSED;
 
     private:
         enum Status

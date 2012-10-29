@@ -129,15 +129,15 @@ class DepricatedEvent final
 
         ~DepricatedEvent();
 
-        DepricatedEvents getName() const
+        DepricatedEvents getName() const A_WARN_UNUSED
         { return mDepricatedEventName; }
 
         // Sets or gets a interger with a key to identify
         void setInt(const std::string &key, int value)
-        throw (BadDepricatedEvent);
+            throw (BadDepricatedEvent);
 
         int getInt(const std::string &key)
-        const throw (BadDepricatedEvent);
+            const throw (BadDepricatedEvent) A_WARN_UNUSED;
 
         // Sets or gets a string with a key to identify
         void setString(const std::string &key,
@@ -145,13 +145,13 @@ class DepricatedEvent final
         throw (BadDepricatedEvent);
 
         const std::string &getString(const std::string &key)
-        const throw (BadDepricatedEvent);
+            const throw (BadDepricatedEvent) A_WARN_UNUSED;
 
         // Sets or gets a floating point number with key to identify
         void setFloat(const std::string &key, double value)
-        throw (BadDepricatedEvent);
+            throw (BadDepricatedEvent);
         double getFloat(const std::string &key)
-        const throw (BadDepricatedEvent);
+            const throw (BadDepricatedEvent) A_WARN_UNUSED;
 
         // Sends event to all listener on the channel
         static void trigger(const Channels channel,

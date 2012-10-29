@@ -62,22 +62,22 @@ class DropShortcut final
          *
          * @param index Index of the shortcut item.
          */
-        int getItem(const int index) const
+        int getItem(const int index) const A_WARN_UNUSED
         { return mItems[index]; }
 
-        unsigned char getItemColor(const int index) const
+        unsigned char getItemColor(const int index) const A_WARN_UNUSED
         { return mItemColors[index]; }
 
         /**
          * Returns the amount of shortcut items.
          */
-        int getItemCount() const
+        int getItemCount() const A_WARN_UNUSED
         { return DROP_SHORTCUT_ITEMS; }
 
         /**
          * Returns the item ID that is currently selected.
          */
-        int getItemSelected() const
+        int getItemSelected() const A_WARN_UNUSED
         { return mItemSelected; }
 
         /**
@@ -110,7 +110,7 @@ class DropShortcut final
         /**
          * A flag to check if the item is selected.
          */
-        bool isItemSelected() const
+        bool isItemSelected() const A_WARN_UNUSED
         { return mItemSelected > -1; }
 
         /**

@@ -62,9 +62,9 @@ std::string &toUpper(std::string &str);
  * @param str the hex string to convert to an int
  * @return the integer representation of the hex string
  */
-unsigned int atox(const std::string &str);
+unsigned int atox(const std::string &str) A_WARN_UNUSED;
 
-template<typename T> std::string toString(const T &arg);
+template<typename T> std::string toString(const T &arg) A_WARN_UNUSED;
 
 /**
  * Converts the given value to a string using std::stringstream.
@@ -88,12 +88,12 @@ template<typename T> std::string toString(const T &arg)
  * @param address the address to convert to a string
  * @return the string representation of the address
  */
-const char *ipToString(const int address);
+const char *ipToString(const int address) A_WARN_UNUSED;
 
 /**
  * A safe version of sprintf that returns a std::string of the result.
  */
-std::string strprintf(const char *const format, ...)
+std::string strprintf(const char *const format, ...) A_WARN_UNUSED
 #ifdef __GNUC__
     /* This attribute is nice: it even works through gettext invokation. For
        example, gcc will complain that strprintf(_("%s"), 42) is ill-formed. */
@@ -115,7 +115,7 @@ std::string strprintf(const char *const format, ...)
  * @param msg the string to remove the colors from
  * @return string without colors
  */
-std::string removeColors(std::string msg);
+std::string removeColors(std::string msg) A_WARN_UNUSED;
 
 const std::string findSameSubstring(const std::string &str1,
                                     const std::string &str2);
@@ -131,32 +131,33 @@ const std::string findSameSubstringI(const std::string &str1,
  * @return 0 if the strings are equal, positive if the first is greater,
  *           negative if the second is greater
  */
-int compareStrI(const std::string &a, const std::string &b);
+int compareStrI(const std::string &a, const std::string &b) A_WARN_UNUSED;
 
 /**
  * Tells wether the character is a word separator.
  */
-bool isWordSeparator(const signed char chr);
+bool isWordSeparator(const signed char chr) A_WARN_UNUSED;
 
-size_t findI(std::string str, std::string subStr);
+size_t findI(std::string str, std::string subStr) A_WARN_UNUSED;
 
-size_t findI(std::string text, StringVect &list);
+size_t findI(std::string text, StringVect &list) A_WARN_UNUSED;
 
-const std::string encodeStr(unsigned int value, const unsigned int size = 0);
+const std::string encodeStr(unsigned int value,
+                            const unsigned int size = 0) A_WARN_UNUSED;
 
-unsigned int decodeStr(const std::string &str);
+unsigned int decodeStr(const std::string &str) A_WARN_UNUSED;
 
-std::string extractNameFromSprite(std::string str);
+std::string extractNameFromSprite(std::string str) A_WARN_UNUSED;
 
-std::string removeSpriteIndex(std::string str);
+std::string removeSpriteIndex(std::string str) A_WARN_UNUSED;
 
-const char* getSafeUtf8String(std::string text);
+const char* getSafeUtf8String(std::string text) A_WARN_UNUSED;
 
 void getSafeUtf8String(std::string text, char *const buf);
 
-std::string getFileName(std::string path);
+std::string getFileName(std::string path) A_WARN_UNUSED;
 
-std::string getFileDir(std::string path);
+std::string getFileDir(std::string path) A_WARN_UNUSED;
 
 std::string& replaceAll(std::string& context, const std::string& from,
                         const std::string& to);
@@ -167,23 +168,23 @@ std::string& replaceAll(std::string& context, const std::string& from,
  * @param text the string used to get the bool value
  * @return a boolean value..
  */
-bool getBoolFromString(const std::string &text);
+bool getBoolFromString(const std::string &text) A_WARN_UNUSED;
 
 void replaceSpecialChars(std::string &text);
 
 /**
  * Normalize a string, which means lowercase and trim it.
  */
-std::string normalize(const std::string &name);
+std::string normalize(const std::string &name) A_WARN_UNUSED;
 
 std::set<int> splitToIntSet(const std::string &text,
-                            const char separator);
+                            const char separator) A_WARN_UNUSED;
 
 std::list<int> splitToIntList(const std::string &text,
-                              const char separator);
+                              const char separator) A_WARN_UNUSED;
 
 std::list<std::string> splitToStringList(const std::string &text,
-                                         const char separator);
+                                         const char separator) A_WARN_UNUSED;
 
 void splitToStringVector(StringVect &tokens,
                          const std::string &text, const char separator);
@@ -194,30 +195,30 @@ void splitToStringSet(std::set<std::string> &tokens,
 void splitToIntVector(std::vector<int> &tokens,
                       const std::string &text, const char separator);
 
-std::string combineDye(std::string file, std::string dye);
+std::string combineDye(std::string file, std::string dye) A_WARN_UNUSED;
 
-std::string combineDye2(std::string file, std::string dye);
+std::string combineDye2(std::string file, std::string dye) A_WARN_UNUSED;
 
-std::string packList(std::list<std::string> &list);
+std::string packList(std::list<std::string> &list) A_WARN_UNUSED;
 
-std::list<std::string> unpackList(const std::string &str);
+std::list<std::string> unpackList(const std::string &str) A_WARN_UNUSED;
 
-std::string stringToHexPath(const std::string &str);
+std::string stringToHexPath(const std::string &str) A_WARN_UNUSED;
 
 void deleteCharLeft(std::string &str, unsigned *const pos);
 
-bool findLast(const std::string &str1, const std::string &str2);
+bool findLast(const std::string &str1, const std::string &str2) A_WARN_UNUSED;
 
-bool findFirst(const std::string &str1, const std::string &str2);
+bool findFirst(const std::string &str1, const std::string &str2) A_WARN_UNUSED;
 
-bool findCutLast(std::string &str1, std::string str2);
+bool findCutLast(std::string &str1, std::string str2) A_WARN_UNUSED;
 
-bool findCutFirst(std::string &str1, std::string str2);
+bool findCutFirst(std::string &str1, std::string str2) A_WARN_UNUSED;
 
 std::string &removeProtocol(std::string &url);
 
-bool strStartWith(std::string str, std::string start);
+bool strStartWith(std::string str, std::string start) A_WARN_UNUSED;
 
-std::string getDateString();
+std::string getDateString() A_WARN_UNUSED;
 
 #endif // UTILS_STRINGUTILS_H

@@ -66,7 +66,7 @@ class ConfigurationListManager
          * \param container The container to insert the object to
          */
         virtual CONT readConfigItem(ConfigurationObject *const obj,
-                                    CONT container) = 0;
+                                    CONT container) A_WARN_UNUSED = 0;
 
         virtual ~ConfigurationListManager() {}
 };
@@ -102,17 +102,22 @@ class ConfigurationObject
          * \param deflt Default option if not there or error.
          */
         std::string getValue(const std::string &key,
-                             const std::string &deflt) const;
+                             const std::string &deflt) const A_WARN_UNUSED;
 
-        int getValue(const std::string &key, const int deflt) const;
+        int getValue(const std::string &key,
+                     const int deflt) const A_WARN_UNUSED;
 
-        int getValueInt(const std::string &key, const int deflt) const;
+        int getValueInt(const std::string &key,
+                        const int deflt) const A_WARN_UNUSED;
 
-        bool getValueBool(const std::string &key, const bool deflt) const;
+        bool getValueBool(const std::string &key,
+                          const bool deflt) const A_WARN_UNUSED;
 
-        unsigned getValue(const std::string &key, const unsigned deflt) const;
+        unsigned getValue(const std::string &key,
+                          const unsigned deflt) const A_WARN_UNUSED;
 
-        double getValue(const std::string &key, const double deflt) const;
+        double getValue(const std::string &key,
+                        const double deflt) const A_WARN_UNUSED;
 
         /**
          * Re-sets all data in the configuration
@@ -304,7 +309,7 @@ class Configuration final : public ConfigurationObject
 
         bool resetBoolValue(const std::string &key);
 
-        const std::string getConfigPath() const
+        const std::string getConfigPath() const A_WARN_UNUSED
         { return mConfigPath; }
 
         /**
@@ -312,12 +317,12 @@ class Configuration final : public ConfigurationObject
          * The default value returned in based on fallbacks registry.
          * @see defaults.h
          */
-        int getIntValue(const std::string &key) const;
-        float getFloatValue(const std::string &key) const;
-        std::string getStringValue(const std::string &key) const;
-        bool getBoolValue(const std::string &key) const;
+        int getIntValue(const std::string &key) const A_WARN_UNUSED;
+        float getFloatValue(const std::string &key) const A_WARN_UNUSED;
+        std::string getStringValue(const std::string &key) const A_WARN_UNUSED;
+        bool getBoolValue(const std::string &key) const A_WARN_UNUSED;
 
-        std::string getDirectory() const
+        std::string getDirectory() const A_WARN_UNUSED
         { return mDirectory; }
 
         void removeOldKeys();

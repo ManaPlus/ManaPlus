@@ -41,16 +41,16 @@ class GuildMember final : public Avatar
 public:
     A_DELETE_COPY(GuildMember)
 
-    Guild *getGuild() const
+    Guild *getGuild() const A_WARN_UNUSED
     { return mGuild; }
 
-    int getPos() const
+    int getPos() const A_WARN_UNUSED
     { return mPos; }
 
     void setPos(const int pos)
     { mPos = pos; }
 
-    std::string getAdditionString() const override;
+    std::string getAdditionString() const override A_WARN_UNUSED;
 
 protected:
     friend class Guild;
@@ -100,27 +100,28 @@ public:
      *
      * @return the member with the given ID, or NULL if they don't exist.
      */
-    GuildMember *getMember(const int accountId, const int charId) const;
+    GuildMember *getMember(const int accountId, const int charId)
+                           const A_WARN_UNUSED;
 
     /**
      * Find a member by name.
      *
      * @return the member with the given name, or NULL if they don't exist.
      */
-    GuildMember *getMember(const std::string &name) const;
+    GuildMember *getMember(const std::string &name) const A_WARN_UNUSED;
 
     /**
      * Get the name of the guild.
      * @return returns name of the guild
      */
-    const std::string &getName() const
+    const std::string &getName() const A_WARN_UNUSED
     { return mName; }
 
     /**
      * Get the id of the guild.
      * @return Returns the id of the guild
      */
-    short getId() const
+    short getId() const A_WARN_UNUSED
     { return mId; }
 
     /**
@@ -147,25 +148,25 @@ public:
      * Get size of members list.
      * @return Returns the number of members in the guild.
      */
-    int getNumberOfElements() override
+    int getNumberOfElements() override A_WARN_UNUSED
     { return static_cast<int>(mMembers.size()); }
 
-    Avatar *getAvatarAt(const int i) override;
+    Avatar *getAvatarAt(const int i) override A_WARN_UNUSED;
 
     /**
      * Get whether user can invite users to this guild.
      * @return Returns true if user can invite users
      */
-    bool getInviteRights() const
+    bool getInviteRights() const A_WARN_UNUSED
     { return mCanInviteUsers; }
 
     void setRights(const short rights);
 
-    bool isMember(const GuildMember *const member) const;
+    bool isMember(const GuildMember *const member) const A_WARN_UNUSED;
 
-    bool isMember(const int id) const;
+    bool isMember(const int id) const A_WARN_UNUSED;
 
-    bool isMember(const std::string &name) const;
+    bool isMember(const std::string &name) const A_WARN_UNUSED;
 
     void getNames(StringVect &names) const;
 
@@ -173,17 +174,17 @@ public:
 
     void sort();
 
-    std::string getPos(int id) const;
+    std::string getPos(int id) const A_WARN_UNUSED;
 
-    static Guild *getGuild(const short id);
+    static Guild *getGuild(const short id) A_WARN_UNUSED;
 
-    const PositionsMap &getPositions() const
+    const PositionsMap &getPositions() const A_WARN_UNUSED
     { return mPositions; }
 
     void setEmblemId(const int id)
     { mEmblemId = id; }
 
-    int getEmblemId() const
+    int getEmblemId() const A_WARN_UNUSED
     { return mEmblemId; }
 
     static void clearGuilds();
@@ -191,7 +192,7 @@ public:
     void setServerGuild(const bool b)
     { mServerGuild = b; }
 
-    bool getServerGuild() const
+    bool getServerGuild() const A_WARN_UNUSED
     { return mServerGuild; }
 
 private:

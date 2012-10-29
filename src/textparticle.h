@@ -44,11 +44,11 @@ class TextParticle final : public Particle
                           int offsetX, int offsetY) const override;
 
         // hack to improve text visibility
-        virtual int getPixelY() const override
+        virtual int getPixelY() const override A_WARN_UNUSED
         { return static_cast<int>(mPos.y + mPos.z); }
 
         // hack to improve text visibility (for sorting only)
-        virtual int getSortPixelY() const override
+        virtual int getSortPixelY() const override A_WARN_UNUSED
         { return static_cast<int>(mPos.y + mPos.z); }
 
     private:
