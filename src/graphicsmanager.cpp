@@ -264,8 +264,6 @@ Graphics *GraphicsManager::createGraphics()
 
 void GraphicsManager::setVideoMode()
 {
-    int width = config.getIntValue("screenwidth");
-    int height = config.getIntValue("screenheight");
     const int bpp = 0;
     const bool fullscreen = config.getBoolValue("screen");
     const bool hwaccel = config.getBoolValue("hwaccel");
@@ -273,25 +271,35 @@ void GraphicsManager::setVideoMode()
     const bool noFrame = config.getBoolValue("noframe");
 
 #ifdef ANDROID
+    int width = config.getValue("screenwidth", 0);
+    int height = config.getValue("screenheight", 0);
     StringVect videoModes;
     getAllVideoModes(videoModes);
     if (!videoModes.empty())
     {
         bool found(false);
         std::string str = strprintf("%dx%d", width, height);
-        for (StringVectCIter it = videoModes.begin(), it_end = videoModes.end();
-             it != it_end; ++ it)
+        if (width != 0 && height != 0)
         {
-            if (str == *it)
+            for (StringVectCIter it = videoModes.begin(),
+                 it_end = videoModes.end();
+                 it != it_end; ++ it)
             {
-                found = true;
-                break;
+                if (str == *it)
+                {
+                    found = true;
+                    break;
+                }
             }
         }
 
         if (!found)
         {
-            logger->log("Current resolution %s is incorrect.", str.c_str());
+            if (width != 0 && height != 0)
+            {
+                logger->log("Current resolution %s is incorrect.",
+                    str.c_str());
+            }
             str = videoModes[0];
             std::vector<int> res;
             splitToIntVector(res, videoModes[0], 'x');
@@ -303,6 +311,9 @@ void GraphicsManager::setVideoMode()
             }
         }
     }
+#else
+    int width = config.getIntValue("screenwidth");
+    int height = config.getIntValue("screenheight");
 #endif
 
     // Try to set the desired video mode
