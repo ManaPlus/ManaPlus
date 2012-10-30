@@ -83,11 +83,9 @@ namespace gcn
          *
          * @return The source widget of the event.
          */
-        Widget* getSource() const;
-
+        Widget* getSource() const A_WARN_UNUSED;
 
     protected:
-
         /**
          * Holds the source widget of the event.
          */

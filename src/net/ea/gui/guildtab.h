@@ -47,7 +47,7 @@ class GuildTab : public ChatTab
 
         void saveToLogFile(std::string &msg) override;
 
-        int getType() const override
+        int getType() const override A_WARN_UNUSED
         { return ChatTab::TAB_GUILD; }
 
         void playNewMessageSound() override;

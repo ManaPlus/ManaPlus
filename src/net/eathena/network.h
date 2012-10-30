@@ -60,14 +60,14 @@ class Network final : public Ea::Network
 
         bool messageReady();
 
-        MessageIn *getNextMessage();
+        MessageIn *getNextMessage() A_WARN_UNUSED;
 
         void dispatchMessages();
 
     protected:
         friend class MessageOut;
 
-        static Network *instance();
+        static Network *instance() A_WARN_UNUSED;
 
         typedef std::map<uint16_t, MessageHandler*> MessageHandlers;
         typedef MessageHandlers::iterator MessageHandlerIterator;

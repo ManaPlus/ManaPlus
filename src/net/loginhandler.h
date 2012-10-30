@@ -52,34 +52,34 @@ class LoginHandler
         void setServer(const ServerInfo &server)
         { mServer = server; }
 
-        ServerInfo getServer() const
+        ServerInfo getServer() const A_WARN_UNUSED
         { return mServer; }
 
         virtual void connect() = 0;
 
-        virtual bool isConnected() = 0;
+        virtual bool isConnected() A_WARN_UNUSED = 0;
 
         virtual void disconnect() = 0;
 
         /**
          * @see OptionalAction
          */
-        virtual int supportedOptionalActions() const = 0;
+        virtual int supportedOptionalActions() const A_WARN_UNUSED = 0;
 
-        virtual bool isRegistrationEnabled() = 0;
+        virtual bool isRegistrationEnabled() A_WARN_UNUSED = 0;
 
         virtual void getRegistrationDetails() = 0;
 
-        virtual unsigned int getMinUserNameLength() const
+        virtual unsigned int getMinUserNameLength() const A_WARN_UNUSED
         { return 4; }
 
-        virtual unsigned int getMaxUserNameLength() const
+        virtual unsigned int getMaxUserNameLength() const A_WARN_UNUSED
         { return 25; }
 
-        virtual unsigned int getMinPasswordLength() const
+        virtual unsigned int getMinPasswordLength() const A_WARN_UNUSED
         { return 4; }
 
-        virtual unsigned int getMaxPasswordLength() const
+        virtual unsigned int getMaxPasswordLength() const A_WARN_UNUSED
         { return 255; }
 
         virtual void loginAccount(LoginData *loginData) = 0;
@@ -99,7 +99,7 @@ class LoginHandler
         virtual void unregisterAccount(const std::string &username,
                                        const std::string &password) = 0;
 
-        virtual Worlds getWorlds() const = 0;
+        virtual Worlds getWorlds() const A_WARN_UNUSED = 0;
 
         virtual void clearWorlds() = 0;
 

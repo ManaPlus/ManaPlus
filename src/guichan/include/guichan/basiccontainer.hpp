@@ -89,14 +89,13 @@ namespace gcn
          */
         virtual void showWidgetPart(Widget* widget, Rectangle area);
 
-        
         // Inherited from Widget
 
         virtual void moveToTop(Widget* widget);
 
         virtual void moveToBottom(Widget* widget);
 
-        virtual Rectangle getChildrenArea();
+        virtual Rectangle getChildrenArea() A_WARN_UNUSED;
 
         virtual void focusNext();
 
@@ -108,7 +107,7 @@ namespace gcn
 
         void setInternalFocusHandler(FocusHandler* focusHandler);
 
-        virtual Widget *getWidgetAt(int x, int y);
+        virtual Widget *getWidgetAt(int x, int y) A_WARN_UNUSED;
 
 
         // Inherited from DeathListener
@@ -161,7 +160,7 @@ namespace gcn
          * @return The widget with the corrosponding id, 
                    NULL of no widget is found.
          */
-        virtual Widget* findWidgetById(const std::string& id);
+        virtual Widget* findWidgetById(const std::string& id) A_WARN_UNUSED;
 
         /**
          * Typedef.

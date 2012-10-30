@@ -117,12 +117,6 @@ class BrowserBox final : public gcn::Widget,
         { mMaxRows = max; };
 
         /**
-         * Disable links & user defined colors to be used in chat input.
-         */
-/*
-        void disableLinksAndUserColors();
-*/
-        /**
          * Adds a text row to the browser.
          */
         void addRow(const std::string &row, const bool atTop = false);
@@ -138,10 +132,6 @@ class BrowserBox final : public gcn::Widget,
          * Remove all rows.
          */
         void clearRows();
-
-//        void setSize(int width, int height);
-
-//        void widgetResized(const gcn::Event &event);
 
         /**
          * Handles mouse actions.
@@ -192,10 +182,10 @@ class BrowserBox final : public gcn::Widget,
 
         typedef std::list<std::string> TextRows;
 
-        TextRows &getRows()
+        TextRows &getRows() A_WARN_UNUSED
         { return mTextRows; }
 
-        bool hasRows() const
+        bool hasRows() const A_WARN_UNUSED
         { return !mTextRows.empty(); }
 
         void setAlwaysUpdate(bool n)
@@ -207,10 +197,10 @@ class BrowserBox final : public gcn::Widget,
         void setEnableImages(bool n)
         { mEnableImages = n; }
 
-        std::string getTextAtPos(const int x, const int y) const;
+        std::string getTextAtPos(const int x, const int y) const A_WARN_UNUSED;
 
     private:
-        int calcHeight();
+        int calcHeight() A_WARN_UNUSED;
 
         typedef TextRows::iterator TextRowIterator;
         typedef TextRows::const_iterator TextRowCIter;

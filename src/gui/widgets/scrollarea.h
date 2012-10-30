@@ -98,7 +98,7 @@ class ScrollArea final : public gcn::ScrollArea,
         /**
          * Returns whether the widget draws its background or not.
          */
-        bool isOpaque() const
+        bool isOpaque() const A_WARN_UNUSED
         { return mOpaque; }
 
         /**

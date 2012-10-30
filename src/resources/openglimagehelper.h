@@ -78,15 +78,15 @@ class OpenGLImageHelper final : public ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Image *load(SDL_RWops *const rw, Dye const &dye);
+        Image *load(SDL_RWops *const rw, Dye const &dye) A_WARN_UNUSED;
 
         /**
          * Loads an image from an SDL surface.
          */
-        Image *load(SDL_Surface *const tmpImage);
+        Image *load(SDL_Surface *const tmpImage) A_WARN_UNUSED;
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
-                                 const float alpha);
+                                 const float alpha) A_WARN_UNUSED;
 
         // OpenGL only public functions
 
@@ -96,10 +96,10 @@ class OpenGLImageHelper final : public ImageHelper
          */
         static void setLoadAsOpenGL(int useOpenGL);
 
-        static int getTextureType()
+        static int getTextureType() A_WARN_UNUSED
         { return mTextureType; }
 
-        static int getInternalTextureType()
+        static int getInternalTextureType() A_WARN_UNUSED
         { return mInternalTextureType; }
 
         static void setInternalTextureType(const int n)
@@ -116,9 +116,9 @@ class OpenGLImageHelper final : public ImageHelper
          * Tells if the image was loaded using OpenGL or SDL
          * @return true if OpenGL, false if SDL.
          */
-        int useOpenGL();
+        int useOpenGL() A_WARN_UNUSED;
 
-        static int getTextureSize()
+        static int getTextureSize() A_WARN_UNUSED
         { return mTextureSize; }
 
         static void initTextureSampler(GLint id);
@@ -130,9 +130,9 @@ class OpenGLImageHelper final : public ImageHelper
         /**
          * Returns the first power of two equal or bigger than the input.
          */
-        int powerOfTwo(int input) const;
+        int powerOfTwo(int input) const A_WARN_UNUSED;
 
-        Image *glLoad(SDL_Surface *tmpImage);
+        Image *glLoad(SDL_Surface *tmpImage) A_WARN_UNUSED;
 
         static int mUseOpenGL;
         static int mTextureSize;

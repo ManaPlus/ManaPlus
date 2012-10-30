@@ -39,7 +39,7 @@ class BeingHandler : public Net::BeingHandler
     protected:
         virtual void requestNameById(int id) = 0;
 
-        virtual Being *createBeing(int id, short job);
+        virtual Being *createBeing(int id, short job) A_WARN_UNUSED;
 
         virtual void setSprite(Being *being, unsigned int slot, int id,
                                std::string color = "",

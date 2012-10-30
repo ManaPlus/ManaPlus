@@ -44,13 +44,13 @@ class ContainerPlacer final
         /**
          * Gets the pointed cell.
          */
-        LayoutCell &getCell()
+        LayoutCell &getCell() A_WARN_UNUSED
         { return *mCell; }
 
         /**
          * Returns a placer for the same container but to an inner cell.
          */
-        ContainerPlacer at(const int x, const int y);
+        ContainerPlacer at(const int x, const int y) A_WARN_UNUSED;
 
         /**
          * Adds the given widget to the container and places it in the layout.
@@ -81,7 +81,7 @@ class LayoutArray final
          * Returns a reference on the cell at given position.
          */
         LayoutCell &at(const int x, const int y,
-                       const int w = 1, const int h = 1);
+                       const int w = 1, const int h = 1) A_WARN_UNUSED;
 
         /**
          * Places a widget in a given cell.
@@ -141,12 +141,12 @@ class LayoutArray final
          * Gets the column/row sizes along a given axis.
          * @param upp target size for the array. Ignored if AUTO_DEF.
          */
-        std::vector<int> getSizes(const int dim, int upp) const;
+        std::vector<int> getSizes(const int dim, int upp) const A_WARN_UNUSED;
 
         /**
          * Gets the total size along a given axis.
          */
-        int getSize(const int dim) const;
+        int getSize(const int dim) const A_WARN_UNUSED;
 
         std::vector<int> mSizes[2];
         std::vector< std::vector < LayoutCell * > > mCells;
@@ -226,7 +226,7 @@ class LayoutCell
         /**
          * @see LayoutArray::at
          */
-        LayoutCell &at(int x, int y)
+        LayoutCell &at(int x, int y) A_WARN_UNUSED
         { return getArray().at(x, y); }
 
         /**
@@ -268,10 +268,10 @@ class LayoutCell
         void setType(int t)
         { mType = t; }
 
-        int getWidth() const
+        int getWidth() const A_WARN_UNUSED
         { return mExtent[0]; }
 
-        int getHeight() const
+        int getHeight() const A_WARN_UNUSED
         { return mExtent[1]; }
 
         void setWidth(int w)

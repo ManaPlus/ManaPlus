@@ -85,12 +85,12 @@ class SetupItem : public gcn::ActionListener,
         void setWidget(gcn::Widget *widget)
         { mWidget = widget; }
 
-        gcn::Widget *getWidget() const
+        gcn::Widget *getWidget() const A_WARN_UNUSED
         { return mWidget; }
 
-        Configuration *getConfig() const;
+        Configuration *getConfig() const A_WARN_UNUSED;
 
-        virtual std::string getActionEventId();
+        virtual std::string getActionEventId() const A_WARN_UNUSED;
 
         virtual void action(const gcn::ActionEvent &event) override;
 
@@ -102,7 +102,7 @@ class SetupItem : public gcn::ActionListener,
 
         virtual void externalUpdated(std::string eventName);
 
-        bool isMainConfig() const
+        bool isMainConfig() const A_WARN_UNUSED
         { return mMainConfig; }
 
         void fixFirstItemSize(gcn::Widget *const widget);

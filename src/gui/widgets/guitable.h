@@ -66,7 +66,7 @@ public:
     /**
      * Retrieves the active table model
      */
-    TableModel *getModel() const;
+    TableModel *getModel() const A_WARN_UNUSED;
 
     /**
      * Sets the table model
@@ -80,21 +80,21 @@ public:
 
     void setSelected(int row, int column);
 
-    int getSelectedRow() const;
+    int getSelectedRow() const A_WARN_UNUSED;
 
-    int getSelectedColumn() const;
+    int getSelectedColumn() const A_WARN_UNUSED;
 
     void setSelectedRow(int selected);
 
     void setSelectedColumn(int selected);
 
-    bool isWrappingEnabled() const
+    bool isWrappingEnabled() const A_WARN_UNUSED
     { return mWrappingEnabled; }
 
     void setWrappingEnabled(bool wrappingEnabled)
     { mWrappingEnabled = wrappingEnabled; }
 
-    gcn::Rectangle getChildrenArea() override;
+    gcn::Rectangle getChildrenArea() override A_WARN_UNUSED;
 
     /**
      * Toggle whether to use linewise selection mode, in which the table selects
@@ -112,7 +112,7 @@ public:
     // Inherited from Widget
     virtual void draw(gcn::Graphics* graphics) override;
 
-    virtual gcn::Widget *getWidgetAt(int x, int y) override;
+    virtual gcn::Widget *getWidgetAt(int x, int y) override A_WARN_UNUSED;
 
     virtual void moveToTop(gcn::Widget *child) override;
 
@@ -138,7 +138,7 @@ public:
      *
      * @return True if the table is opaque, false otherwise.
      */
-    virtual bool isOpaque() const
+    virtual bool isOpaque() const A_WARN_UNUSED
     { return mOpaque; }
 
     // Inherited from MouseListener
@@ -159,12 +159,12 @@ protected:
     /** Installs all action listeners on inner widgets. */
     virtual void installActionListeners();
 
-    virtual int getRowHeight() const;
-    virtual int getColumnWidth(int i) const;
+    virtual int getRowHeight() const A_WARN_UNUSED;
+    virtual int getColumnWidth(int i) const A_WARN_UNUSED;
 
 private:
-    int getRowForY(int y) const; // -1 on error
-    int getColumnForX(int x) const; // -1 on error
+    int getRowForY(int y) const A_WARN_UNUSED;    // -1 on error
+    int getColumnForX(int x) const A_WARN_UNUSED; // -1 on error
     void recomputeDimensions();
     bool mLinewiseMode;
     bool mWrappingEnabled;

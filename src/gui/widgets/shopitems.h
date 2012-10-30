@@ -81,10 +81,10 @@ class ShopItems final : public gcn::ListModel
         /**
          * Returns the number of items in the shop.
          */
-        int getNumberOfElements() override
+        int getNumberOfElements() override A_WARN_UNUSED
         { return static_cast<int>(mShopItems.size()); }
 
-        bool empty() const
+        bool empty() const A_WARN_UNUSED
         { return mShopItems.empty(); }
 
         /**
@@ -92,12 +92,12 @@ class ShopItems final : public gcn::ListModel
          *
          * @param i the index to retrieve
          */
-        std::string getElementAt(int i) override;
+        std::string getElementAt(int i) override A_WARN_UNUSED;
 
         /**
          * Returns the item number i in the shop.
          */
-        ShopItem *at(unsigned int i) const;
+        ShopItem *at(unsigned int i) const A_WARN_UNUSED;
 
         /**
          * Removes an element from the shop.
@@ -118,7 +118,7 @@ class ShopItems final : public gcn::ListModel
          */
         void clear();
 
-        std::vector<ShopItem*> &items()
+        std::vector<ShopItem*> &items() A_WARN_UNUSED
         { return mShopItems; }
 
     private:
@@ -128,7 +128,8 @@ class ShopItems final : public gcn::ListModel
          * 
          * @return the item found or 0
          */
-        ShopItem *findItem(const int id, const unsigned char color) const;
+        ShopItem *findItem(const int id,
+                           const unsigned char color) const A_WARN_UNUSED;
 
         /** The list of items in the shop. */
         std::vector<ShopItem*> mShopItems;

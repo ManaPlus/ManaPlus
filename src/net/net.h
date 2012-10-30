@@ -52,23 +52,23 @@ class SpecialHandler;
 class TradeHandler;
 class BuySellHandler;
 
-AdminHandler *getAdminHandler();
-BeingHandler *getBeingHandler();
-CharHandler *getCharHandler();
-ChatHandler *getChatHandler();
-GameHandler *getGameHandler();
-GeneralHandler *getGeneralHandler();
-GuildHandler *getGuildHandler();
-InventoryHandler *getInventoryHandler();
-LoginHandler *getLoginHandler();
-NpcHandler *getNpcHandler();
-PartyHandler *getPartyHandler();
-PlayerHandler *getPlayerHandler();
-SpecialHandler *getSpecialHandler();
-TradeHandler *getTradeHandler();
-BuySellHandler *getBuySellHandler();
+AdminHandler *getAdminHandler() A_WARN_UNUSED;
+BeingHandler *getBeingHandler() A_WARN_UNUSED;
+CharHandler *getCharHandler() A_WARN_UNUSED;
+ChatHandler *getChatHandler() A_WARN_UNUSED;
+GameHandler *getGameHandler() A_WARN_UNUSED;
+GeneralHandler *getGeneralHandler() A_WARN_UNUSED;
+GuildHandler *getGuildHandler() A_WARN_UNUSED;
+InventoryHandler *getInventoryHandler() A_WARN_UNUSED;
+LoginHandler *getLoginHandler() A_WARN_UNUSED;
+NpcHandler *getNpcHandler() A_WARN_UNUSED;
+PartyHandler *getPartyHandler() A_WARN_UNUSED;
+PlayerHandler *getPlayerHandler() A_WARN_UNUSED;
+SpecialHandler *getSpecialHandler() A_WARN_UNUSED;
+TradeHandler *getTradeHandler() A_WARN_UNUSED;
+BuySellHandler *getBuySellHandler() A_WARN_UNUSED;
 
-ServerInfo::Type getNetworkType();
+ServerInfo::Type getNetworkType() A_WARN_UNUSED;
 
 /**
  * Handles server detection and connection

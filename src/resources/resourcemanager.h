@@ -116,17 +116,17 @@ class ResourceManager final
          * Checks whether the given file or directory exists in the search path
          * (PhysFS)
          */
-        bool exists(const std::string &path) const;
+        bool exists(const std::string &path) const A_WARN_UNUSED;
 
         /**
          * Checks whether the given file or directory exists
          */
-        bool existsLocal(const std::string &path) const;
+        bool existsLocal(const std::string &path) const A_WARN_UNUSED;
 
         /**
          * Checks whether the given path is a directory.
          */
-        bool isDirectory(const std::string &path) const;
+        bool isDirectory(const std::string &path) const A_WARN_UNUSED;
 
         /**
          * Returns the real path to a file. Note that this method will always
@@ -135,7 +135,7 @@ class ResourceManager final
          * @param file The file to get the real path to.
          * @return The real path.
          */
-        std::string getPath(const std::string &file) const;
+        std::string getPath(const std::string &file) const A_WARN_UNUSED;
 
         /**
          * Creates a resource and adds it to the resource map.
@@ -147,11 +147,12 @@ class ResourceManager final
          *         not be generated.
          */
         Resource *get(const std::string &idPath, const generator fun,
-                      const void *const data);
+                      const void *const data) A_WARN_UNUSED;
 
-        Resource *getFromCache(const std::string &idPath);
+        Resource *getFromCache(const std::string &idPath) A_WARN_UNUSED;
 
-        Resource *getFromCache(const std::string &filename, const int variant);
+        Resource *getFromCache(const std::string &filename,
+                               const int variant) A_WARN_UNUSED;
 
         /**
          * Loads a resource from a file and adds it to the resource map.
@@ -161,7 +162,8 @@ class ResourceManager final
          * @return A valid resource or <code>NULL</code> if the resource could
          *         not be loaded.
          */
-        Resource *load(const std::string &path, const loader fun);
+        Resource *load(const std::string &path,
+                       const loader fun) A_WARN_UNUSED;
 
         /**
          * Adds a preformatted resource to the resource map.
@@ -187,42 +189,45 @@ class ResourceManager final
          * Convenience wrapper around ResourceManager::get for loading
          * images.
          */
-        Image *getImage(const std::string &idPath);
+        Image *getImage(const std::string &idPath) A_WARN_UNUSED;
 
         /**
          * Convenience wrapper around ResourceManager::get for loading
          * songs.
          */
-        Music *getMusic(const std::string &idPath);
+        Music *getMusic(const std::string &idPath) A_WARN_UNUSED;
 
         /**
          * Convenience wrapper around ResourceManager::get for loading
          * samples.
          */
-        SoundEffect *getSoundEffect(const std::string &idPath);
+        SoundEffect *getSoundEffect(const std::string &idPath) A_WARN_UNUSED;
 
         /**
          * Creates a image set based on the image referenced by the given
          * path and the supplied sprite sizes
          */
         ImageSet *getImageSet(const std::string &imagePath,
-                              const int w, const int h);
+                              const int w, const int h) A_WARN_UNUSED;
 
         ImageSet *getSubImageSet(Image *const parent,
-                                 const int width, const int height);
+                                 const int width,
+                                 const int height) A_WARN_UNUSED;
 
         Image *getSubImage(Image *const parent, const int x, const int y,
-                           const int width, const int height);
+                           const int width, const int height) A_WARN_UNUSED;
 
 #ifdef USE_OPENGL
-        Resource *getAtlas(const std::string &name, const StringVect &files);
+        Resource *getAtlas(const std::string &name,
+                           const StringVect &files) A_WARN_UNUSED;
 #endif
 
         /**
          * Creates a sprite definition based on a given path and the supplied
          * variant.
          */
-        SpriteDef *getSprite(const std::string &path, const int variant = 0);
+        SpriteDef *getSprite(const std::string &path,
+                             const int variant = 0) A_WARN_UNUSED;
 
         /**
          * Releases a resource, placing it in the set of orphaned resources.
@@ -248,7 +253,8 @@ class ResourceManager final
          * @return An allocated byte array containing the data that was loaded,
          *         or <code>NULL</code> on fail.
          */
-        static void *loadFile(const std::string &fileName, int &fileSize);
+        static void *loadFile(const std::string &fileName,
+                              int &fileSize) A_WARN_UNUSED;
 
         /**
          * Retrieves the contents of a text file (PhysFS).
@@ -259,19 +265,21 @@ class ResourceManager final
         /**
          * Retrieves the contents of a text file.
          */
-        static StringVect loadTextFileLocal(const std::string &fileName);
+        static StringVect loadTextFileLocal(const std::string &fileName)
+                                            A_WARN_UNUSED;
 
         void saveTextFile(std::string path, std::string name,
                           std::string text) const;
 
         Image *getRescaled(Image *const image,
-                           const int width, const int height);
+                           const int width, const int height) A_WARN_UNUSED;
 
         /**
          * Loads the given filename as an SDL surface. The returned surface is
          * expected to be freed by the caller using SDL_FreeSurface.
          */
-        SDL_Surface *loadSDLSurface(const std::string &filename) const;
+        SDL_Surface *loadSDLSurface(const std::string &filename)
+                                    const A_WARN_UNUSED;
 
         void scheduleDelete(SDL_Surface *const surface);
 
@@ -281,14 +289,14 @@ class ResourceManager final
          * Returns an instance of the class, creating one if it does not
          * already exist.
          */
-        static ResourceManager *getInstance();
+        static ResourceManager *getInstance() A_WARN_UNUSED;
 
         /**
          * Deletes the class instance if it exists.
          */
         static void deleteInstance();
 
-        int size() const
+        int size() const A_WARN_UNUSED
         { return static_cast<int>(mResources.size()); }
 
         typedef std::map<std::string, Resource*> Resources;
@@ -296,18 +304,18 @@ class ResourceManager final
         typedef Resources::const_iterator ResourceCIterator;
 
 #ifdef DEBUG_DUMP_LEAKS
-        Resources* getResources()
+        Resources* getResources() A_WARN_UNUSED
         { return &mResources; }
 
-        Resources* getOrphanedResources()
+        Resources* getOrphanedResources() A_WARN_UNUSED
         { return &mOrphanedResources; }
 #endif
 
         bool cleanOrphans(const bool always = false);
 
-        bool isInCache(const std::string &idPath) const;
+        bool isInCache(const std::string &idPath) const A_WARN_UNUSED;
 
-        Resource *getTempResource(const std::string &idPath);
+        Resource *getTempResource(const std::string &idPath) A_WARN_UNUSED;
 
         static void addDelayedAnimation(AnimationDelayLoad *const animation)
         { mDelayedAnimations.push_back(animation); }

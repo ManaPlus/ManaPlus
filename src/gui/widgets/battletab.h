@@ -37,7 +37,7 @@ class BattleTab final : public ChatTab
 
         ~BattleTab();
 
-        int getType() const override
+        int getType() const override A_WARN_UNUSED
         { return ChatTab::TAB_BATTLE; }
 
         void saveToLogFile(std::string &msg) override;

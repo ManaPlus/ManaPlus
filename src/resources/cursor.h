@@ -23,6 +23,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 namespace Cursor
 {
     /**
@@ -54,7 +56,7 @@ namespace Cursor
         Cursor cursor;
     };
 
-    Cursor stringToCursor(const std::string &name);
+    Cursor stringToCursor(const std::string &name) A_WARN_UNUSED;
 }
 
 #endif

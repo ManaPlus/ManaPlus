@@ -71,11 +71,11 @@ namespace ColorDB
      */
     void unload();
 
-    std::string &getHairColorName(const int id);
+    std::string &getHairColorName(const int id) A_WARN_UNUSED;
 
-    int getHairSize();
+    int getHairSize() A_WARN_UNUSED;
 
-    std::map <int, ItemColor> *getColorsList(std::string name);
+    std::map <int, ItemColor> *getColorsList(std::string name) A_WARN_UNUSED;
 
     // Color DB
     typedef std::map<int, ItemColor> Colors;

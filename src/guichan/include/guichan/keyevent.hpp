@@ -100,7 +100,7 @@ namespace gcn
          *
          * @return The type of the event.
          */
-         unsigned int getType() const;
+        unsigned int getType() const A_WARN_UNUSED;
 
         /**
          * Checks if the key event occured on the numeric pad.
@@ -109,14 +109,14 @@ namespace gcn
          *         false otherwise.
          *
          */
-        bool isNumericPad() const;
+        bool isNumericPad() const A_WARN_UNUSED;
 
         /**
          * Gets the key of the event.
          *
          * @return The key of the event.
          */
-        const Key& getKey() const;
+        const Key& getKey() const A_WARN_UNUSED;
 
     protected:
         /**

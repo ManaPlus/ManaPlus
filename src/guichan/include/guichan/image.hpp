@@ -49,6 +49,8 @@
 
 #include "guichan/platform.hpp"
 
+#include "localconsts.h"
+
 namespace gcn
 {
     class Color;
@@ -95,7 +97,7 @@ namespace gcn
          *
          * @since 0.1.0
          */
-        virtual int getWidth() const = 0;
+        virtual int getWidth() const A_WARN_UNUSED = 0;
 
         /**
          * Gets the height of the image.
@@ -104,7 +106,7 @@ namespace gcn
          *
          * @since 0.1.0
          */
-        virtual int getHeight() const = 0;
+        virtual int getHeight() const A_WARN_UNUSED = 0;
 
         /**
          * Gets the color of a pixel at coordinate (x, y) in the image.
@@ -118,7 +120,7 @@ namespace gcn
          *
          * @since 0.5.0
          */
-        virtual Color getPixel(int x, int y) = 0;
+        virtual Color getPixel(int x, int y) A_WARN_UNUSED = 0;
 
         /**
          * Puts a pixel with a certain color at coordinate (x, y).

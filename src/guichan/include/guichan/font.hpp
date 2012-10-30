@@ -48,6 +48,8 @@
 #include <string>
 #include "guichan/platform.hpp"
 
+#include "localconsts.h"
+
 namespace gcn
 {
     class Graphics;
@@ -74,14 +76,14 @@ namespace gcn
          * @param text The string to return the width of.
          * @return The width of a string.
          */
-        virtual int getWidth(const std::string& text) const = 0;
+        virtual int getWidth(const std::string& text) const A_WARN_UNUSED = 0;
 
         /**
          * Gets the height of the glyphs in the font.
          *
          * @return The height of the glyphs int the font.
          */
-        virtual int getHeight() const = 0;
+        virtual int getHeight() const A_WARN_UNUSED = 0;
 
         /**
          * Gets a string index in a string providing an x coordinate.
@@ -93,7 +95,7 @@ namespace gcn
          * @return A string index in a string providing an x coordinate.
          */
         virtual int getStringIndexAt(const std::string& text,
-                                     const int x) const;
+                                     const int x) const A_WARN_UNUSED;
 
         /**
          * Draws a string.

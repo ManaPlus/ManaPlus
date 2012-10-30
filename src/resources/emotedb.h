@@ -66,16 +66,21 @@ namespace EmoteDB
 
     void unload();
 
-    const EmoteInfo *get(const int id, const bool allowNull = false);
+    const EmoteInfo *get(const int id,
+                         const bool allowNull = false) A_WARN_UNUSED;
 
     const AnimatedSprite *getAnimation(const int id,
-                                       const bool allowNull = false);
+                                       const bool allowNull = false)
+                                       A_WARN_UNUSED;
 
-    const AnimatedSprite *getAnimation2(int id, const bool allowNull = false);
+    const AnimatedSprite *getAnimation2(int id,
+                                        const bool allowNull = false)
+                                        A_WARN_UNUSED;
 
-    const EmoteSprite *getSprite(const int id, const bool allowNull = false);
+    const EmoteSprite *getSprite(const int id, const bool allowNull = false)
+                                 A_WARN_UNUSED;
 
-    const int &getLast();
+    const int &getLast() A_WARN_UNUSED;
 
     typedef EmoteInfos::iterator EmoteInfosIterator;
 }

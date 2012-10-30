@@ -23,6 +23,8 @@
 #ifndef NPC_DB_H
 #define NPC_DB_H
 
+#include "localconsts.h"
+
 class BeingInfo;
 
 /**
@@ -34,7 +36,7 @@ namespace NPCDB
 
     void unload();
 
-    BeingInfo *get(const int id);
+    BeingInfo *get(const int id) A_WARN_UNUSED;
 }
 
 #endif

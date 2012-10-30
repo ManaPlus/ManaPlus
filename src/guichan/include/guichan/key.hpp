@@ -78,7 +78,7 @@ namespace gcn
          * @return True if the key is a letter, number or whitespace,
          *         false otherwise.
          */
-        bool isCharacter() const;
+        bool isCharacter() const A_WARN_UNUSED;
 
         /**
          * Checks if a key is a number.
@@ -86,7 +86,7 @@ namespace gcn
          * @return True if the key is a number (0-9),
          *         false otherwise.
          */
-        bool isNumber() const;
+        bool isNumber() const A_WARN_UNUSED;
 
         /**
          * Checks if a key is a letter.
@@ -94,7 +94,7 @@ namespace gcn
          * @return True if the key is a letter (a-z,A-Z),
          *         false otherwise.
          */
-        bool isLetter() const;
+        bool isLetter() const A_WARN_UNUSED;
 
         /**
          * Gets the value of the key. If an ascii value exists it 
@@ -102,7 +102,7 @@ namespace gcn
          *
          * @return the value of the key.
          */
-        int getValue() const;
+        int getValue() const A_WARN_UNUSED;
 
         /**
          * Compares two keys.

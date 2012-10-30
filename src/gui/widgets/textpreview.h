@@ -121,7 +121,7 @@ class TextPreview final : public gcn::Widget,
          * Gets opacity for this widget (whether or not the background color
          * is shown below the widget)
          */
-        bool isOpaque() const
+        bool isOpaque() const A_WARN_UNUSED
         { return mOpaque; }
 
         void adjustSize();

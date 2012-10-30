@@ -66,7 +66,7 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         void sellItem(int beingId, int itemId, int amount);
 
-        int getNpc(Net::MessageIn &msg, bool haveLength);
+        int getNpc(Net::MessageIn &msg, bool haveLength) A_WARN_UNUSED;
 
         void processNpcCutin(Net::MessageIn &msg, int npcId);
 

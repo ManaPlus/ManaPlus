@@ -32,17 +32,17 @@ public:
 
     static void incInPackets();
 
-    static int getInBytes();
+    static int getInBytes() A_WARN_UNUSED;
 
-    static int getInPackets();
+    static int getInPackets() A_WARN_UNUSED;
 
     static void incOutBytes(int cnt);
 
     static void incOutPackets();
 
-    static int getOutBytes();
+    static int getOutBytes() A_WARN_UNUSED;
 
-    static int getOutPackets();
+    static int getOutPackets() A_WARN_UNUSED;
 
     static void update();
 

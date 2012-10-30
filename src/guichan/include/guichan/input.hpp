@@ -79,7 +79,7 @@ namespace gcn
          * @return True if the key queue is empty, 
          *         false otherwise.
          */
-        virtual bool isKeyQueueEmpty() = 0;
+        virtual bool isKeyQueueEmpty() A_WARN_UNUSED = 0;
 
         /**
          * Dequeues the key input queue.
@@ -94,7 +94,7 @@ namespace gcn
          * @return True if the mouse queue is empty,
          *         false otherwise.
          */
-        virtual bool isMouseQueueEmpty() = 0;
+        virtual bool isMouseQueueEmpty() A_WARN_UNUSED = 0;
 
         /**
          * Dequeues the mouse input queue.

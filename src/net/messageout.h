@@ -65,12 +65,12 @@ class MessageOut
         /**
          * Returns the content of the message.
          */
-        virtual char *getData() const;
+        virtual char *getData() const A_WARN_UNUSED;
 
         /**
          * Returns the length of the data.
          */
-        virtual unsigned int getDataSize() const;
+        virtual unsigned int getDataSize() const A_WARN_UNUSED;
 
         virtual ~MessageOut()
         { }

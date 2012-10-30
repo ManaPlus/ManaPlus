@@ -49,6 +49,8 @@
 
 #include <iostream>
 
+#include "localconsts.h"
+
 namespace gcn
 {
     /**
@@ -95,7 +97,7 @@ namespace gcn
          * @return True if the rectangles intersect, false otherwise.
          * @since 0.1.0
          */
-        bool isIntersecting(const Rectangle& rectangle) const;
+        bool isIntersecting(const Rectangle& rectangle) const A_WARN_UNUSED;
 
         /**
          * Checks if a point is inside the rectangle
@@ -105,7 +107,7 @@ namespace gcn
          * @return True if the point is inside the rectangle.
          * @since 0.1.0
          */
-        bool isPointInRect(int x, int y) const;
+        bool isPointInRect(int x, int y) const A_WARN_UNUSED;
 
         /**
          * Output operator for output.

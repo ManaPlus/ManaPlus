@@ -128,7 +128,7 @@ namespace gcn
          * @return The top widget. NULL if no top widget has been set.
          * @since 0.1.0
          */
-        virtual Widget* getTop() const;
+        virtual Widget* getTop() const A_WARN_UNUSED;
 
         /**
          * Sets the graphics object to use for drawing.
@@ -149,7 +149,7 @@ namespace gcn
          *      OpenLayerGraphics, OpenGLGraphics, SDLGraphics
          * @since 0.1.0
          */
-        virtual Graphics* getGraphics() const;
+        virtual Graphics* getGraphics() const A_WARN_UNUSED;
 
         /**
          * Sets the input object to use for input handling.
@@ -170,7 +170,7 @@ namespace gcn
          *      SDLInput
          * @since 0.1.0
          */
-        virtual Input* getInput() const;
+        virtual Input* getInput() const A_WARN_UNUSED;
 
         /**
          * Performs logic of the GUI. By calling this function all logic
@@ -384,7 +384,7 @@ namespace gcn
          * @return The widget at a certain position.
          * @since 0.6.0
          */
-        virtual Widget* getWidgetAt(int x, int y);
+        virtual Widget* getWidgetAt(int x, int y) A_WARN_UNUSED;
 
         /**
          * Gets the source of the mouse event.
@@ -392,7 +392,7 @@ namespace gcn
          * @return The source widget of the mouse event.
          * @since 0.6.0
          */
-        virtual Widget* getMouseEventSource(int x, int y);
+        virtual Widget* getMouseEventSource(int x, int y) A_WARN_UNUSED;
 
         /**
          * Gets the source of the key event.
@@ -400,7 +400,7 @@ namespace gcn
          * @return The source widget of the key event.
          * @since 0.6.0
          */
-        virtual Widget* getKeyEventSource();
+        virtual Widget* getKeyEventSource() A_WARN_UNUSED;
 
         /**
          * Holds the top widget.
@@ -441,7 +441,7 @@ namespace gcn
          * Holds the global key listeners of the Gui.
          */
         KeyListenerList mKeyListeners;
-        
+
         /**
          * True if shift is pressed, false otherwise.
          */

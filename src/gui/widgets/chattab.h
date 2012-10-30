@@ -133,31 +133,31 @@ class ChatTab : public Tab
         /**
          * Returns type of the being.
          */
-        virtual int getType() const;
+        virtual int getType() const A_WARN_UNUSED;
 
         virtual void saveToLogFile(std::string &msg);
 
-        std::list<std::string> &getRows() const
+        std::list<std::string> &getRows() const A_WARN_UNUSED
         { return mTextOutput->getRows(); }
 
-        bool hasRows() const
+        bool hasRows() const A_WARN_UNUSED
         { return mTextOutput->hasRows(); }
 
         void loadFromLogFile(std::string name);
 
-        bool getAllowHighlight() const
+        bool getAllowHighlight() const A_WARN_UNUSED
         { return mAllowHightlight; }
 
         void setAllowHighlight(const bool n)
         { mAllowHightlight = n; }
 
-        bool getRemoveNames() const
+        bool getRemoveNames() const A_WARN_UNUSED
         { return mRemoveNames; }
 
         void setRemoveNames(const bool n)
         { mRemoveNames = n; }
 
-        bool getNoAway() const
+        bool getNoAway() const A_WARN_UNUSED
         { return mNoAway; }
 
         void setNoAway(const bool n)

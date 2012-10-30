@@ -99,7 +99,7 @@ class Tab : public gcn::BasicContainer,
         void setFlash(const int flash)
         { mFlash = flash; }
 
-        int getFlash() const
+        int getFlash() const A_WARN_UNUSED
         { return mFlash; }
 
         void widgetResized(const gcn::Event &event) override;
@@ -108,18 +108,18 @@ class Tab : public gcn::BasicContainer,
 
         void setLabelFont(gcn::Font *const font);
 
-        Label *getLabel() const
+        Label *getLabel() const A_WARN_UNUSED
         { return mLabel; }
 
         void adjustSize();
 
         void setTabbedArea(TabbedArea* tabbedArea);
 
-        TabbedArea* getTabbedArea();
+        TabbedArea* getTabbedArea() A_WARN_UNUSED;
 
         void setCaption(const std::string& caption);
 
-        const std::string &getCaption() const;
+        const std::string &getCaption() const A_WARN_UNUSED;
 
         void mouseEntered(gcn::MouseEvent &mouseEvent) override;
 

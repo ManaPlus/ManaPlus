@@ -55,7 +55,7 @@ class Music final : public Resource
          * @return <code>NULL</code> if the an error occurred, a valid pointer
          *         otherwise.
          */
-        static Resource *load(SDL_RWops *const rw);
+        static Resource *load(SDL_RWops *const rw) A_WARN_UNUSED;
 
         /**
          * Plays the music.

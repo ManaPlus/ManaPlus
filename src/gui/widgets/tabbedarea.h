@@ -64,26 +64,26 @@ class TabbedArea final : public Widget2,
          *
          * @todo Remove this method when upgrading to Guichan 0.9.0
          */
-        int getNumberOfTabs() const;
+        int getNumberOfTabs() const A_WARN_UNUSED;
 
         /**
          * Return tab with specified name as caption.
          */
-        Tab *getTab(const std::string &name) const;
+        Tab *getTab(const std::string &name) const A_WARN_UNUSED;
 
-        Tab *getTabByIndex(const int index) const;
+        Tab *getTabByIndex(const int index) const A_WARN_UNUSED;
 
-        gcn::Widget *getWidgetByIndex(const int index) const;
+        gcn::Widget *getWidgetByIndex(const int index) const A_WARN_UNUSED;
 
         /**
          * Returns the widget with the tab that has specified caption
          */
-        gcn::Widget *getWidget(const std::string &name) const;
+        gcn::Widget *getWidget(const std::string &name) const A_WARN_UNUSED;
 
         /**
          * Returns the widget for the current tab
          */
-        gcn::Widget *getCurrentWidget();
+        gcn::Widget *getCurrentWidget() A_WARN_UNUSED;
 
         /**
          * Add a tab. Overridden since it needs to size the widget.
@@ -95,9 +95,9 @@ class TabbedArea final : public Widget2,
 
         void addTab(const std::string &caption, gcn::Widget *const widget);
 
-        bool isTabSelected(unsigned int index) const;
+        bool isTabSelected(unsigned int index) const A_WARN_UNUSED;
 
-        bool isTabSelected(Tab* tab);
+        bool isTabSelected(Tab* tab) A_WARN_UNUSED;
 
         /**
          * Overload the remove tab function as it's broken in guichan 0.8.
@@ -111,22 +111,22 @@ class TabbedArea final : public Widget2,
          */
         void logic() override;
 
-        int getContainerHeight() const
+        int getContainerHeight() const A_WARN_UNUSED
         { return mWidgetContainer->getHeight(); }
 
         void setSelectedTab(Tab *tab);
 
         void setSelectedTab(unsigned int index);
 
-        int getSelectedTabIndex() const;
+        int getSelectedTabIndex() const A_WARN_UNUSED;
 
-        Tab* getSelectedTab()
+        Tab* getSelectedTab() A_WARN_UNUSED
         { return mSelectedTab; }
 
         void setOpaque(bool opaque)
         { mOpaque = opaque; }
 
-        bool isOpaque() const
+        bool isOpaque() const A_WARN_UNUSED
         { return mOpaque; }
 
         void adjustSize();
@@ -155,13 +155,13 @@ class TabbedArea final : public Widget2,
         void setRightMargin(int n)
         { mRightMargin = n; }
 
-        int getRightMargin() const
+        int getRightMargin() const A_WARN_UNUSED
         { return mRightMargin; }
 
         void setFollowDownScroll(bool n)
         { mFollowDownScroll = n; }
 
-        bool getFollowDownScroll() const
+        bool getFollowDownScroll() const A_WARN_UNUSED
         { return mFollowDownScroll; }
 
         void fixSize()

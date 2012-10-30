@@ -41,16 +41,18 @@ class MapReader final
          * Read an XML map from a file.
          */
         static Map *readMap(const std::string &filename,
-                            const std::string &realFilename);
+                            const std::string &realFilename) A_WARN_UNUSED;
 
         /**
          * Read an XML map from a parsed XML tree. The path is used to find the
          * location of referenced tileset images.
          */
-        static Map *readMap(XmlNodePtr node, const std::string &path);
+        static Map *readMap(XmlNodePtr node,
+                            const std::string &path) A_WARN_UNUSED;
 
         static Map *createEmptyMap(const std::string &filename,
-                                   const std::string &realFilename);
+                                   const std::string &realFilename)
+                                   A_WARN_UNUSED;
 
     private:
         /**
@@ -72,7 +74,7 @@ class MapReader final
          * Reads a tile set.
          */
         static Tileset *readTileset(XmlNodePtr node, const std::string &path,
-                                    Map *const map);
+                                    Map *const map) A_WARN_UNUSED;
 };
 
 #endif

@@ -46,7 +46,7 @@ class GuildHandler : public Net::GuildHandler
 
         void endAlliance(int guildId, int otherGuildId);
 
-        bool isSupported();
+        bool isSupported() A_WARN_UNUSED;
 
         virtual void processGuildCreateResponse(Net::MessageIn &msg);
 

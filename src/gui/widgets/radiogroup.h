@@ -34,7 +34,8 @@ class RadioGroup final : public WidgetGroup
 
         A_DELETE_COPY(RadioGroup)
 
-        gcn::Widget *createWidget(const std::string &name) override;
+        gcn::Widget *createWidget(const std::string &name)
+                                  override A_WARN_UNUSED;
 };
 
 #endif

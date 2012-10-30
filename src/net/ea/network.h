@@ -50,19 +50,19 @@ class Network
 
         void disconnect();
 
-        ServerInfo getServer() const
+        ServerInfo getServer() const A_WARN_UNUSED
         { return mServer; }
 
-        int getState() const
+        int getState() const A_WARN_UNUSED
         { return mState; }
 
-        const std::string &getError() const
+        const std::string &getError() const A_WARN_UNUSED
         { return mError; }
 
-        bool isConnected() const
+        bool isConnected() const A_WARN_UNUSED
         { return mState == CONNECTED; }
 
-        int getInSize() const
+        int getInSize() const A_WARN_UNUSED
         { return mInSize; }
 
         void skip(int len);
@@ -86,7 +86,7 @@ class Network
 
         void setError(const std::string &error);
 
-        uint16_t readWord(const int pos) const;
+        uint16_t readWord(const int pos) const A_WARN_UNUSED;
 
         bool realConnect();
 

@@ -57,10 +57,10 @@ class FlowContainer final : public Container,
          */
         void widgetResized(const gcn::Event &event) override;
 
-        int getBoxWidth() const
+        int getBoxWidth() const A_WARN_UNUSED
         { return mBoxWidth; }
 
-        int getBoxHeight() const
+        int getBoxHeight() const A_WARN_UNUSED
         { return mBoxHeight; }
 
         void add(gcn::Widget *widget);

@@ -59,33 +59,34 @@ class ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Image *load(SDL_RWops *const rw);
+        Image *load(SDL_RWops *const rw) A_WARN_UNUSED;
 
 #ifdef __GNUC__
-        virtual Image *load(SDL_RWops *rw, Dye const &dye) = 0;
+        virtual Image *load(SDL_RWops *rw, Dye const &dye) A_WARN_UNUSED = 0;
 
-        virtual Image *load(SDL_Surface *) = 0;
+        virtual Image *load(SDL_Surface *) A_WARN_UNUSED = 0;
 
         virtual Image *createTextSurface(SDL_Surface *tmpImage,
-                                         float alpha) = 0;
+                                         float alpha) A_WARN_UNUSED = 0;
 
-        virtual int useOpenGL() = 0;
+        virtual int useOpenGL() A_WARN_UNUSED = 0;
 #else
-        virtual Image *load(SDL_RWops *rw, Dye const &dye)
+        virtual Image *load(SDL_RWops *rw, Dye const &dye) A_WARN_UNUSED
         { return nullptr; }
 
-        virtual Image *load(SDL_Surface *)
+        virtual Image *load(SDL_Surface *) A_WARN_UNUSED
         { return nullptr; }
 
         virtual Image *createTextSurface(SDL_Surface *const tmpImage,
-                                         const float alpha)
+                                         const float alpha) A_WARN_UNUSED
         { return nullptr; }
 
-        virtual int useOpenGL()
+        virtual int useOpenGL() A_WARN_UNUSED
         { return 0; }
 #endif
 
-        static SDL_Surface *convertTo32Bit(SDL_Surface *const tmpImage);
+        static SDL_Surface *convertTo32Bit(SDL_Surface *const tmpImage)
+                                           A_WARN_UNUSED;
 
         void dumpSurfaceFormat(const SDL_Surface *const image) const;
 

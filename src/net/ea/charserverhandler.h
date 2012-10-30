@@ -53,11 +53,11 @@ class CharServerHandler : public Net::CharHandler
 
         virtual void requestCharacters();
 
-        virtual unsigned int baseSprite() const;
+        virtual unsigned int baseSprite() const A_WARN_UNUSED;
 
-        virtual unsigned int hairSprite() const;
+        virtual unsigned int hairSprite() const A_WARN_UNUSED;
 
-        virtual unsigned int maxSprite() const;
+        virtual unsigned int maxSprite() const A_WARN_UNUSED;
 
         virtual void connect() = 0;
 

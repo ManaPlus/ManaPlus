@@ -95,7 +95,7 @@ class Popup : public Container, public gcn::MouseListener,
          */
         void setMinWidth(const int width);
 
-        int getMinWidth() const
+        int getMinWidth() const A_WARN_UNUSED
         { return mMinWidth; }
 
         /**
@@ -103,7 +103,7 @@ class Popup : public Container, public gcn::MouseListener,
          */
         void setMinHeight(const int height);
 
-        int getMinHeight() const
+        int getMinHeight() const A_WARN_UNUSED
         { return mMinHeight; }
 
         /**
@@ -111,7 +111,7 @@ class Popup : public Container, public gcn::MouseListener,
          */
         void setMaxWidth(const int width);
 
-        int getMaxWidth() const
+        int getMaxWidth() const A_WARN_UNUSED
         { return mMaxWidth; }
 
         /**
@@ -119,7 +119,7 @@ class Popup : public Container, public gcn::MouseListener,
          */
         void setMaxHeight(const int height);
 
-        int getMaxHeight() const
+        int getMaxHeight() const A_WARN_UNUSED
         { return mMaxHeight; }
 
         /**
@@ -129,7 +129,7 @@ class Popup : public Container, public gcn::MouseListener,
          * @return The padding of the popup.
          * @see setPadding
          */
-        int getPadding() const
+        int getPadding() const A_WARN_UNUSED
         { return mPadding; }
 
         void setPadding(int padding)

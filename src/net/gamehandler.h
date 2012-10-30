@@ -55,9 +55,9 @@ class GameHandler
         /**
          * Tells whether the protocol is using the MP status bar
          */
-        virtual bool canUseMagicBar() const = 0;
+        virtual bool canUseMagicBar() const A_WARN_UNUSED = 0;
 
-        virtual bool mustPing() const = 0;
+        virtual bool mustPing() const A_WARN_UNUSED = 0;
 };
 
 } // namespace Net

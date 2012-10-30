@@ -44,12 +44,12 @@ class GameHandler : public Net::GameHandler, public Listener
 
         virtual void who();
 
-        virtual bool removeDeadBeings() const
+        virtual bool removeDeadBeings() const A_WARN_UNUSED
         { return true; }
 
         virtual void setMap(const std::string &map);
 
-        virtual bool canUseMagicBar() const
+        virtual bool canUseMagicBar() const A_WARN_UNUSED
         { return true; }
 
         virtual void mapLoadedEvent() = 0;

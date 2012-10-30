@@ -55,7 +55,7 @@ class TextBox final : public gcn::TextBox,
         /**
          * Get the minimum text width for the text box.
          */
-        int getMinWidth() const
+        int getMinWidth() const A_WARN_UNUSED
         { return mMinWidth; }
 
         void keyPressed(gcn::KeyEvent& keyEvent) override;

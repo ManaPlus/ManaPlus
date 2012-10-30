@@ -117,21 +117,22 @@ class SpriteDef final : public Resource
         /**
          * Loads a sprite definition file.
          */
-        static SpriteDef *load(const std::string &file, const int variant);
+        static SpriteDef *load(const std::string &file,
+                               const int variant) A_WARN_UNUSED;
 
         /**
          * Returns the specified action.
          */
-        Action *getAction(const std::string &action, const unsigned num) const;
+        Action *getAction(const std::string &action,
+                          const unsigned num) const A_WARN_UNUSED;
 
-        unsigned findNumber(const unsigned num) const;
+        unsigned findNumber(const unsigned num) const A_WARN_UNUSED;
 
         /**
          * Converts a string into a SpriteDirection enum.
          */
         static SpriteDirection
-
-        makeSpriteDirection(const std::string &direction);
+            makeSpriteDirection(const std::string &direction) A_WARN_UNUSED;
 
         void addAction(const unsigned hp, const std::string &name,
                        Action *const action);

@@ -134,7 +134,7 @@ void SetupItem::save() const
     cfg->setValue(mKeyName, mValue);
 }
 
-std::string SetupItem::getActionEventId()
+std::string SetupItem::getActionEventId() const
 {
     if (!mWidget)
         return "";

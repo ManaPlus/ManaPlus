@@ -70,23 +70,23 @@ class Resource
         /**
          * Return the path identifying this resource.
          */
-        const std::string &getIdPath() const
+        const std::string &getIdPath() const A_WARN_UNUSED
         { return mIdPath; }
 
         /**
          * Return refCount for this resource.
          */
-        unsigned getRefCount() const
+        unsigned getRefCount() const A_WARN_UNUSED
         { return mRefCount; }
 
         void setSource(const std::string &str)
         { mSource = str; }
 
-        std::string getSource() const
+        std::string getSource() const A_WARN_UNUSED
         { return mSource; }
 
 #ifdef DEBUG_DUMP_LEAKS
-        bool getDumped() const
+        bool getDumped() const A_WARN_UNUSED
         { return mDumped; }
 
         void setDumped(bool n)

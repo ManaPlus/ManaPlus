@@ -47,21 +47,21 @@ namespace CharDB
     void loadMinMax(const XmlNodePtr node,
                     unsigned *const min, unsigned *const max);
 
-    unsigned getMinHairColor();
+    unsigned getMinHairColor() A_WARN_UNUSED;
 
-    unsigned getMaxHairColor();
+    unsigned getMaxHairColor() A_WARN_UNUSED;
 
-    unsigned getMinHairStyle();
+    unsigned getMinHairStyle() A_WARN_UNUSED;
 
-    unsigned getMaxHairStyle();
+    unsigned getMaxHairStyle() A_WARN_UNUSED;
 
-    unsigned getMinStat();
+    unsigned getMinStat() A_WARN_UNUSED;
 
-    unsigned getMaxStat();
+    unsigned getMaxStat() A_WARN_UNUSED;
 
-    unsigned getSumStat();
+    unsigned getSumStat() A_WARN_UNUSED;
 
-    const std::vector<int> &getDefaultItems();
+    const std::vector<int> &getDefaultItems() A_WARN_UNUSED;
 }
 
 #endif

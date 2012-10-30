@@ -31,7 +31,7 @@
 
 class Resource;
 
-struct AtlasItem
+struct AtlasItem final
 {
     AtlasItem(Image *image0) :
         image(image0),
@@ -52,7 +52,7 @@ struct AtlasItem
     int height;
 };
 
-struct TextureAtlas
+struct TextureAtlas final
 {
     TextureAtlas() :
         atlasImage(nullptr),
@@ -72,7 +72,7 @@ struct TextureAtlas
     std::vector <AtlasItem*> items;
 };
 
-class AtlasResource : public Resource
+class AtlasResource final : public Resource
 {
     public:
         AtlasResource()
@@ -89,7 +89,7 @@ class AtlasResource : public Resource
         std::vector<TextureAtlas*> atlases;
 };
 
-class AtlasManager
+class AtlasManager final
 {
     public:
         AtlasManager();
@@ -97,7 +97,8 @@ class AtlasManager
         A_DELETE_COPY(AtlasManager)
 
         static AtlasResource *loadTextureAtlas(const std::string &name,
-                                               const StringVect &files);
+                                               const StringVect &files)
+                                               A_WARN_UNUSED;
 
         static void injectToResources(AtlasResource *resource);
 
@@ -111,7 +112,7 @@ class AtlasManager
                                std::vector<TextureAtlas*> &atlases,
                                std::vector<Image*> &images, int size);
 
-        static SDL_Surface *createSDLAtlas(TextureAtlas *atlas);
+        static SDL_Surface *createSDLAtlas(TextureAtlas *atlas) A_WARN_UNUSED;
 
 
         static void convertAtlas(TextureAtlas *atlas);

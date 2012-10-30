@@ -35,7 +35,7 @@ class ChannelTab final : public ChatTab
     public:
         A_DELETE_COPY(ChannelTab)
 
-        Channel *getChannel() const
+        Channel *getChannel() const A_WARN_UNUSED
         { return mChannel; }
 
         void showHelp() override;

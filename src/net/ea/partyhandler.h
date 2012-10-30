@@ -46,10 +46,10 @@ class PartyHandler : public Net::PartyHandler
 
         void requestPartyMembers() const;
 
-        PartyShare getShareExperience() const
+        PartyShare getShareExperience() const A_WARN_UNUSED
         { return mShareExp; }
 
-        PartyShare getShareItems() const
+        PartyShare getShareItems() const A_WARN_UNUSED
         { return mShareItems; }
 
         void reload();
@@ -77,7 +77,8 @@ class PartyHandler : public Net::PartyHandler
         virtual void processPartyMessage(Net::MessageIn &msg);
 
     protected:
-        PartyShare mShareExp, mShareItems;
+        PartyShare mShareExp;
+        PartyShare mShareItems;
 };
 
 extern PartyTab *partyTab;

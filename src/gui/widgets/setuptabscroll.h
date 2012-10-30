@@ -45,7 +45,7 @@ class SetupTabScroll : public SetupTab
 
         void addControl(SetupItem *const widget, const std::string &event);
 
-        VertContainer *getContainer() const
+        VertContainer *getContainer() const A_WARN_UNUSED
         { return mContainer; }
 
         virtual void apply() override;
@@ -57,7 +57,7 @@ class SetupTabScroll : public SetupTab
         virtual void action(const gcn::ActionEvent &event A_UNUSED) override
         { }
 
-        int getPreferredFirstItemSize()
+        int getPreferredFirstItemSize() A_WARN_UNUSED
         { return mPreferredFirstItemSize; }
 
     protected:

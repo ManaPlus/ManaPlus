@@ -49,21 +49,21 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         void connect();
 
-        bool isConnected();
+        bool isConnected() A_WARN_UNUSED;
 
         void disconnect();
 
-        int supportedOptionalActions() const
+        int supportedOptionalActions() const A_WARN_UNUSED
         { return SetGenderOnRegister; }
 
-        unsigned int getMaxPasswordLength() const
+        unsigned int getMaxPasswordLength() const A_WARN_UNUSED
         { return 25; }
 
         void changePassword(const std::string &username,
                             const std::string &oldPassword,
                             const std::string &newPassword);
 
-        ServerInfo *getCharServer();
+        ServerInfo *getCharServer() A_WARN_UNUSED;
 
         void processServerVersion(Net::MessageIn &msg);
 

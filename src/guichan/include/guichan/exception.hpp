@@ -124,28 +124,28 @@ namespace gcn
          *
          * @return The function name where the exception occured.
          */
-        const std::string& getFunction() const;
+        const std::string& getFunction() const A_WARN_UNUSED;
 
         /**
          * Gets the error message of the exception.
          *
          * @return The error message of the exception.
          */
-        const std::string& getMessage() const;
+        const std::string& getMessage() const A_WARN_UNUSED;
 
         /**
          * Gets the filename where the exception occured.
          *
          * @return The filename where the exception occured.
          */
-        const std::string& getFilename() const;
+        const std::string& getFilename() const A_WARN_UNUSED;
 
         /**
          * Gets the line number where the exception occured.
          *
          * @return The line number where the exception occured.
          */
-        unsigned int getLine() const;
+        unsigned int getLine() const A_WARN_UNUSED;
 
     protected:
         /**

@@ -103,7 +103,7 @@ namespace gcn
          *
          * @return The identifier of the event.
          */
-        const std::string& getId() const;
+        const std::string& getId() const A_WARN_UNUSED;
 
     protected:
         /**

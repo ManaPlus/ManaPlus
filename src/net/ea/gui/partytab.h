@@ -45,7 +45,7 @@ class PartyTab : public ChatTab
         bool handleCommand(const std::string &type,
                            const std::string &args) override;
 
-        int getType() const override
+        int getType() const override A_WARN_UNUSED
         { return ChatTab::TAB_PARTY; }
 
         void saveToLogFile(std::string &msg) override;

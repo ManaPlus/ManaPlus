@@ -95,7 +95,7 @@ namespace gcn
          * @return the input type.
          * @see setType
          */
-        int getType() const;
+        int getType() const A_WARN_UNUSED;
 
         /**
          * Sets the key of the key input.
@@ -111,7 +111,7 @@ namespace gcn
          * @return The key of the key input.
          * @see setKey
          */
-        const Key& getKey() const;
+        const Key& getKey() const A_WARN_UNUSED;
 
         /**
          * Checks if shift is pressed.
@@ -121,7 +121,7 @@ namespace gcn
          * @see setShiftPressed
          * @since 0.6.0
          */
-        bool isShiftPressed() const;
+        bool isShiftPressed() const A_WARN_UNUSED;
 
         /**
          * Sets shift to be pressed at the same time as the key, 
@@ -141,7 +141,7 @@ namespace gcn
          * @see setControlPressed
          * @since 0.6.0
          */
-        bool isControlPressed() const;
+        bool isControlPressed() const A_WARN_UNUSED;
 
         /**
          * Sets control to be pressed at the same time as the key, 
@@ -182,7 +182,7 @@ namespace gcn
          * @see setMetaPressed
          * @since 0.6.0
          */
-        bool isMetaPressed() const;
+        bool isMetaPressed() const A_WARN_UNUSED;
 
         /**
          * Sets meta to be pressed at the same time as the key, 
@@ -203,7 +203,7 @@ namespace gcn
          * @setNumericPad
          * @since 0.6.0
          */
-        bool isNumericPad() const;
+        bool isNumericPad() const A_WARN_UNUSED;
 
         /**
          * Sets the key to be pressed at the numeric pad.

@@ -82,7 +82,7 @@ class Animation final
         /**
          * Returns the length of this animation in frames.
          */
-        size_t getLength() const
+        size_t getLength() const A_WARN_UNUSED
         { return mFrames.size(); }
 
         void addJump(const std::string &name, const int rand);
@@ -98,7 +98,7 @@ class Animation final
         /**
          * Determines whether the given animation frame is a terminator.
          */
-        static bool isTerminator(const Frame &phase);
+        static bool isTerminator(const Frame &phase) A_WARN_UNUSED;
 
     protected:
 

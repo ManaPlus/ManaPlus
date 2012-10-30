@@ -88,12 +88,12 @@ class Download final
          */
         void cancel();
 
-        char *getError();
+        char *getError() A_WARN_UNUSED;
 
         void setIgnoreError(bool n)
         { mIgnoreError = n; }
 
-        static unsigned long fadler32(FILE *file);
+        static unsigned long fadler32(FILE *file) A_WARN_UNUSED;
 
         static void addProxy(CURL *curl);
 

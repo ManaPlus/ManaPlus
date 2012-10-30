@@ -26,6 +26,8 @@
 
 #include <map>
 
+#include "localconsts.h"
+
 /**
  * Color information database.
  */
@@ -51,9 +53,9 @@ namespace MapDB
      */
     void unload();
 
-    std::string getMapName(const std::string &name);
+    std::string getMapName(const std::string &name) A_WARN_UNUSED;
 
-    MapInfo *getMapAtlas(const std::string &name);
+    MapInfo *getMapAtlas(const std::string &name) A_WARN_UNUSED;
 
     // Maps DB
     typedef std::map<std::string, std::string> Maps;

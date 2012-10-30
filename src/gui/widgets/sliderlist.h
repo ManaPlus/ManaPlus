@@ -60,19 +60,19 @@ class SliderList final : public Container,
 
         void setSelectedString(std::string str);
 
-        std::string getSelectedString() const;
+        std::string getSelectedString() const A_WARN_UNUSED;
 
         void setSelected(int idx);
 
         void adjustSize();
 
-        int getSelected()
+        int getSelected() A_WARN_UNUSED
         { return mSelectedIndex; }
 
     protected:
         void updateLabel();
 
-        int getMaxLabelWidth();
+        int getMaxLabelWidth() A_WARN_UNUSED;
 
         Button *mButtons[2];
         Label *mLabel;

@@ -110,7 +110,7 @@ namespace gcn
          * @see setType
          * @since 0.1.0
          */
-        unsigned int getType() const;
+        unsigned int getType() const A_WARN_UNUSED;
 
         /**
          * Sets the button pressed.
@@ -130,7 +130,7 @@ namespace gcn
          * @see setButton
          * @since 0.1.0
          */
-        unsigned int getButton() const;
+        unsigned int getButton() const A_WARN_UNUSED;
 
         /**
          * Sets the timestamp for the mouse input.
@@ -150,7 +150,7 @@ namespace gcn
          * @see setTimeStamp
          * @since 0.1.0
          */
-        int getTimeStamp() const;
+        int getTimeStamp() const A_WARN_UNUSED;
 
         /**
          * Sets the x coordinate of the mouse input.
@@ -168,7 +168,7 @@ namespace gcn
          * @see setX
          * @since 0.6.0
          */
-        int getX() const;
+        int getX() const A_WARN_UNUSED;
 
         /**
          * Sets the y coordinate of the mouse input.
@@ -186,7 +186,7 @@ namespace gcn
          * @see setY
          * @since 0.6.0
          */
-        int getY() const;
+        int getY() const A_WARN_UNUSED;
 
         /**
          * Mouse input event types. This enum partially corresponds

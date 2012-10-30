@@ -131,14 +131,14 @@ class Window : public gcn::Window,
         /**
          * Returns whether the window can be resized.
          */
-        bool isResizable() const;
+        bool isResizable() const A_WARN_UNUSED;
 
         /**
          * Sets the minimum width of the window.
          */
         void setMinWidth(int width);
 
-        int getMinWidth() const
+        int getMinWidth() const A_WARN_UNUSED
         { return mMinWinWidth; }
 
         /**
@@ -146,7 +146,7 @@ class Window : public gcn::Window,
          */
         void setMinHeight(int height);
 
-        int getMinHeight() const
+        int getMinHeight() const A_WARN_UNUSED
         { return mMinWinHeight; }
 
         /**
@@ -154,7 +154,7 @@ class Window : public gcn::Window,
          */
         void setMaxWidth(const int width);
 
-        int getMaxWidth() const
+        int getMaxWidth() const A_WARN_UNUSED
         { return mMaxWinWidth; }
 
         /**
@@ -162,7 +162,7 @@ class Window : public gcn::Window,
          */
         void setMaxHeight(const int height);
 
-        int getMaxHeight() const
+        int getMaxHeight() const A_WARN_UNUSED
         { return mMaxWinHeight; }
 
         /**
@@ -186,7 +186,7 @@ class Window : public gcn::Window,
         /**
          * Returns whether the window is sticky.
          */
-        bool isSticky() const
+        bool isSticky() const A_WARN_UNUSED
         { return mSticky; }
 
         /**
@@ -197,7 +197,7 @@ class Window : public gcn::Window,
         /**
          * Returns whether the window sticky locking window.
          */
-        bool isStickyButtonLock() const
+        bool isStickyButtonLock() const A_WARN_UNUSED
         { return mStickyButtonLock; }
 
         /**
@@ -215,7 +215,7 @@ class Window : public gcn::Window,
         /**
          * Returns whether the window is visible by default.
          */
-        bool isDefaultVisible() const
+        bool isDefaultVisible() const A_WARN_UNUSED
         { return mDefaultVisible; }
 
         /**
@@ -292,7 +292,7 @@ class Window : public gcn::Window,
         /**
          * Returns the name of the window. This is not the window title.
          */
-        const std::string &getWindowName() const
+        const std::string &getWindowName() const A_WARN_UNUSED
         { return mWindowName; }
 
         /**
@@ -348,7 +348,7 @@ class Window : public gcn::Window,
         /**
          * Gets the layout handler for this window.
          */
-        Layout &getLayout();
+        Layout &getLayout() A_WARN_UNUSED;
 
         /**
          * Clears the window's layout (useful for redesigning the window). Does
@@ -375,7 +375,7 @@ class Window : public gcn::Window,
         /**
          * Returns a proxy for adding widgets in an inner table of the layout.
          */
-        ContainerPlacer getPlacer(const int x, const int y);
+        ContainerPlacer getPlacer(const int x, const int y) A_WARN_UNUSED;
 
         /**
          * Positions the window in the center of it's parent.
@@ -402,11 +402,11 @@ class Window : public gcn::Window,
         /**
          * Gets the alpha value used by the window, in a GUIChan usable format.
          */
-        int getGuiAlpha();
+        int getGuiAlpha() A_WARN_UNUSED;
 
-        gcn::Rectangle getWindowArea() const;
+        gcn::Rectangle getWindowArea() const A_WARN_UNUSED;
 
-        bool isResizeAllowed(const gcn::MouseEvent &event) const;
+        bool isResizeAllowed(const gcn::MouseEvent &event) const A_WARN_UNUSED;
 
         void setCaptionFont(gcn::Font *font)
         { mCaptionFont = font; }
@@ -415,16 +415,17 @@ class Window : public gcn::Window,
         { mPlayVisibleSound = b; }
 
     protected:
-        bool canMove() const;
+        bool canMove() const A_WARN_UNUSED;
 
-        int getOption(const std::string &name, const int def = 0) const;
+        int getOption(const std::string &name,
+                      const int def = 0) const A_WARN_UNUSED;
 
-        bool getOptionBool(std::string name);
+        bool getOptionBool(std::string name) A_WARN_UNUSED;
 
         void setTitlePadding(int p)
         { mTitlePadding = p; }
 
-        int getTitlePadding() const
+        int getTitlePadding() const A_WARN_UNUSED
         { return mTitlePadding; }
 
         Skin *mSkin;                  /**< Skin in use by this window */
@@ -457,7 +458,7 @@ class Window : public gcn::Window,
          *
          * @see ResizeHandles
          */
-        int getResizeHandles(const gcn::MouseEvent &event);
+        int getResizeHandles(const gcn::MouseEvent &event) A_WARN_UNUSED;
 
         Image *mGrip;                 /**< Resize grip */
         Window *mParent;              /**< The parent window */

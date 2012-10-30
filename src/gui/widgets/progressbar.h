@@ -81,7 +81,7 @@ class ProgressBar final : public gcn::Widget,
         /**
          * Returns the current progress.
          */
-        float getProgress() const
+        float getProgress() const A_WARN_UNUSED
         { return mProgress; }
 
         /**
@@ -98,7 +98,7 @@ class ProgressBar final : public gcn::Widget,
         /**
          * Returns the color of the progress bar.
          */
-        const gcn::Color &getColor() const
+        const gcn::Color &getColor() const A_WARN_UNUSED
         { return mColor; }
 
         /**
@@ -110,7 +110,7 @@ class ProgressBar final : public gcn::Widget,
         /**
          * Returns the text shown on the progress bar.
          */
-        const std::string &text() const
+        const std::string &text() const A_WARN_UNUSED
         { return mText; }
 
         /**

@@ -104,7 +104,7 @@ class TextField : public gcn::TextField,
         /**
          * Return the value for a numeric field
          */
-        int getValue() const;
+        int getValue() const A_WARN_UNUSED;
 
         void setSendAlwaysEvents(bool b)
         { mSendAlwaysEvents = b; }

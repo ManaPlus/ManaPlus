@@ -28,7 +28,7 @@
 class ExtendedListModel : public gcn::ListModel
 {
     public:
-        virtual const Image *getImageAt(int i) = 0;
+        virtual const Image *getImageAt(int i) A_WARN_UNUSED = 0;
 };
 
 #endif

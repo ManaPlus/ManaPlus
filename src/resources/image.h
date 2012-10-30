@@ -85,26 +85,26 @@ class Image : public Resource
         /**
          * Tells is the image is loaded
          */
-        bool isLoaded() const
+        bool isLoaded() const A_WARN_UNUSED
         { return mLoaded; }
 
         /**
          * Returns the width of the image.
          */
-        inline int getWidth() const     // was virtual
+        inline int getWidth() const A_WARN_UNUSED
         { return mBounds.w; }
 
         /**
          * Returns the height of the image.
          */
-        inline int getHeight() const     // was virtual
+        inline int getHeight() const A_WARN_UNUSED
         { return mBounds.h; }
 
         /**
          * Tells if the image has got an alpha channel
          * @return true if it's true, false otherwise.
          */
-        bool hasAlphaChannel() const;
+        bool hasAlphaChannel() const A_WARN_UNUSED;
 
         /**
          * Sets the alpha value of this image.
@@ -114,7 +114,7 @@ class Image : public Resource
         /**
          * Returns the alpha value of this image.
          */
-        float getAlpha() const
+        float getAlpha() const A_WARN_UNUSED
         { return mAlpha; }
 
         /**
@@ -124,7 +124,8 @@ class Image : public Resource
          *         object otherwise.
          */
         virtual Image *getSubImage(const int x, const int y,
-                                   const int width, const int height);
+                                   const int width,
+                                   const int height) A_WARN_UNUSED;
 
 
         // SDL only public functions
@@ -137,12 +138,13 @@ class Image : public Resource
          *
          * @return A new Image* object.
          */
-        Image* SDLgetScaledImage(const int width, const int height) const;
+        Image* SDLgetScaledImage(const int width,
+                                 const int height) const A_WARN_UNUSED;
 
         /**
          * Get the alpha Channel of a SDL surface.
          */
-        uint8_t *SDLgetAlphaChannel() const
+        uint8_t *SDLgetAlphaChannel() const A_WARN_UNUSED
         { return mAlphaChannel; }
 
         void SDLCleanCache();
@@ -150,13 +152,13 @@ class Image : public Resource
         void SDLTerminateAlphaCache();
 
 #ifdef USE_OPENGL
-        int getTextureWidth() const
+        int getTextureWidth() const A_WARN_UNUSED
         { return mTexWidth; }
 
-        int getTextureHeight() const
+        int getTextureHeight() const A_WARN_UNUSED
         { return mTexHeight; }
 
-        GLuint getGLImage() const
+        GLuint getGLImage() const A_WARN_UNUSED
         { return mGLImage; }
 
         GLuint mGLImage;
@@ -164,16 +166,16 @@ class Image : public Resource
         int mTexHeight;
 #endif
 
-        bool isHasAlphaChannel() const
+        bool isHasAlphaChannel() const A_WARN_UNUSED
         { return mHasAlphaChannel; }
 
-        bool isAlphaVisible() const
+        bool isAlphaVisible() const A_WARN_UNUSED
         { return mIsAlphaVisible; }
 
         void setAlphaVisible(const bool b)
         { mIsAlphaVisible = b; }
 
-        bool isAlphaCalculated() const
+        bool isAlphaCalculated() const A_WARN_UNUSED
         { return mIsAlphaCalculated; }
 
         void setAlphaCalculated(const bool b)
@@ -199,7 +201,7 @@ class Image : public Resource
         Image(SDL_Surface *const image, const bool hasAlphaChannel = false,
               uint8_t *const alphaChannel = nullptr);
 
-        SDL_Surface *getByAlpha(const float alpha);
+        SDL_Surface *getByAlpha(const float alpha) A_WARN_UNUSED;
 
         SDL_Surface *mSDLSurface;
 

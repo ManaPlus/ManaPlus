@@ -45,19 +45,19 @@ class MessageIn
         /**
          * Returns the message ID.
          */
-        int getId() const
+        int getId() const A_WARN_UNUSED
         { return mId; }
 
         /**
          * Returns the message length.
          */
-        unsigned int getLength() const
+        unsigned int getLength() const A_WARN_UNUSED
         { return mLength; }
 
         /**
          * Returns the length of unread data.
          */
-        unsigned int getUnreadLength() const
+        unsigned int getUnreadLength() const A_WARN_UNUSED
         { return mLength > mPos ? mLength - mPos : 0; }
 
         virtual unsigned char readInt8();             /**< Reads a byte. */
@@ -105,7 +105,7 @@ class MessageIn
         virtual ~MessageIn()
         { }
 
-        static uint8_t fromServerDirection(uint8_t serverDir);
+        static uint8_t fromServerDirection(uint8_t serverDir) A_WARN_UNUSED;
 
     protected:
         /**

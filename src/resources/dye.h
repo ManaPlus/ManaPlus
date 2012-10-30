@@ -80,7 +80,7 @@ class DyePalette final
          */
         void replaceAOGLColor(uint8_t *const color) const;
 
-        static int hexDecode(const signed char c);
+        static int hexDecode(const signed char c) A_WARN_UNUSED;
 
     private:
         struct Color
@@ -125,19 +125,19 @@ class Dye final
         /**
          * Return special dye palete (S)
          */
-        DyePalette *getSPalete() const
+        DyePalette *getSPalete() const A_WARN_UNUSED
         { return mDyePalettes[sPaleteIndex]; }
 
         /**
          * Return special dye palete (A)
          */
-        DyePalette *getAPalete() const
+        DyePalette *getAPalete() const A_WARN_UNUSED
         { return mDyePalettes[aPaleteIndex]; }
 
         /**
          * Return dye type for S - 1, for A - 2, 0 for other
          */
-        int getType() const;
+        int getType() const A_WARN_UNUSED;
 
     private:
 

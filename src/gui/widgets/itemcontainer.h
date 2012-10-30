@@ -105,7 +105,7 @@ class ItemContainer final : public gcn::Widget,
         /**
          * Returns the selected item.
          */
-        Item *getSelectedItem() const;
+        Item *getSelectedItem() const A_WARN_UNUSED;
 
         /**
          * Sets selected item to NULL.
@@ -135,7 +135,7 @@ class ItemContainer final : public gcn::Widget,
 
         void updateMatrix();
 
-        bool getClickCount()
+        bool getClickCount() A_WARN_UNUSED
         { return mClicks; }
 
     private:
@@ -191,7 +191,6 @@ class ItemContainer final : public gcn::Widget,
          * @return The slot index on success, -1 on failure.
          */
         int getSlotIndex(const int x, const int y) const;
-
 
         Inventory *mInventory;
         int mGridColumns, mGridRows;

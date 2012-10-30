@@ -28,6 +28,8 @@
 #include <list>
 #include <map>
 
+#include "localconsts.h"
+
 class ItemInfo;
 
 /**
@@ -47,10 +49,10 @@ namespace ItemDB
 
     const StringVect &getTags();
 
-    bool exists(const int id);
+    bool exists(const int id) A_WARN_UNUSED;
 
-    const ItemInfo &get(const int id);
-    const ItemInfo &get(const std::string &name);
+    const ItemInfo &get(const int id) A_WARN_UNUSED;
+    const ItemInfo &get(const std::string &name) A_WARN_UNUSED;
 
     // Items database
     typedef std::map<int, ItemInfo*> ItemInfos;
@@ -58,7 +60,7 @@ namespace ItemDB
 
     const std::map<int, ItemInfo*> &getItemInfos();
 
-    int getTagId(std::string tagName);
+    int getTagId(std::string tagName) A_WARN_UNUSED;
 
     struct Stat
     {
@@ -73,7 +75,6 @@ namespace ItemDB
     };
 
     void setStatsList(const std::vector<Stat> &stats);
-
 }
 
 #endif

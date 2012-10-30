@@ -65,11 +65,11 @@ class PartyHandler
 
         virtual void requestPartyMembers() const = 0;
 
-        virtual PartyShare getShareExperience() const = 0;
+        virtual PartyShare getShareExperience() const A_WARN_UNUSED = 0;
 
         virtual void setShareExperience(PartyShare share) = 0;
 
-        virtual PartyShare getShareItems() const = 0;
+        virtual PartyShare getShareItems() const A_WARN_UNUSED = 0;
 
         virtual void setShareItems(PartyShare share) = 0;
 

@@ -35,7 +35,7 @@ class WhisperTab final : public ChatTab
     public:
         A_DELETE_COPY(WhisperTab)
 
-        const std::string &getNick() const
+        const std::string &getNick() const A_WARN_UNUSED
         { return mNick; }
 
         void showHelp() override;
@@ -43,7 +43,7 @@ class WhisperTab final : public ChatTab
         bool handleCommand(const std::string &type,
                            const std::string &args) override;
 
-        int getType() const override
+        int getType() const override A_WARN_UNUSED
         { return ChatTab::TAB_WHISPER; }
 
         void saveToLogFile(std::string &msg) override;

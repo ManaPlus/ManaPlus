@@ -103,16 +103,16 @@ class Button final : public gcn::Button,
         void setDescription(std::string text)
         { mDescription = text; }
 
-        std::string getDescription() const
+        std::string getDescription() const A_WARN_UNUSED
         { return mDescription; }
 
-        unsigned getClickCount() const
+        unsigned getClickCount() const A_WARN_UNUSED
         { return mClickCount; }
 
         void setTag(int tag)
         { mTag = tag; }
 
-        int getTag() const
+        int getTag() const A_WARN_UNUSED
         { return mTag; }
 
         void setStick(bool b)
@@ -135,7 +135,7 @@ class Button final : public gcn::Button,
 
         void keyReleased(gcn::KeyEvent &keyEvent) override;
 
-        bool isPressed2() const;
+        bool isPressed2() const A_WARN_UNUSED;
 
     private:
         void init();

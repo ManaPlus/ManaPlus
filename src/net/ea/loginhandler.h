@@ -45,14 +45,14 @@ class LoginHandler : public Net::LoginHandler
 
         ~LoginHandler();
 
-        int supportedOptionalActions() const
+        int supportedOptionalActions() const A_WARN_UNUSED
         { return SetGenderOnRegister; }
 
-        virtual bool isRegistrationEnabled();
+        virtual bool isRegistrationEnabled() A_WARN_UNUSED;
 
         virtual void getRegistrationDetails();
 
-        virtual unsigned int getMaxPasswordLength() const
+        virtual unsigned int getMaxPasswordLength() const A_WARN_UNUSED
         { return 25; }
 
         virtual void loginAccount(LoginData *loginData);
@@ -61,13 +61,13 @@ class LoginHandler : public Net::LoginHandler
 
         virtual void registerAccount(LoginData *loginData);
 
-        virtual Worlds getWorlds() const;
+        virtual Worlds getWorlds() const A_WARN_UNUSED;
 
         virtual void clearWorlds();
 
-        virtual ServerInfo *getCharServer() = 0;
+        virtual ServerInfo *getCharServer() A_WARN_UNUSED = 0;
 
-        const Token &getToken() const
+        const Token &getToken() const A_WARN_UNUSED
         { return mToken; }
 
         virtual void logout();

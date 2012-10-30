@@ -63,27 +63,28 @@ public:
     /**
      * Determines the number of rows (lines) in the table
      */
-    virtual int getRows() const = 0;
+    virtual int getRows() const A_WARN_UNUSED = 0;
 
     /**
      * Determines the number of columns in each row
      */
-    virtual int getColumns() const = 0;
+    virtual int getColumns() const A_WARN_UNUSED = 0;
 
     /**
      * Determines the height for each row
      */
-    virtual int getRowHeight() const = 0;
+    virtual int getRowHeight() const A_WARN_UNUSED = 0;
 
     /**
      * Determines the width of each individual column
      */
-    virtual int getColumnWidth(int index) const = 0;
+    virtual int getColumnWidth(int index) const A_WARN_UNUSED = 0;
 
     /**
      * Retrieves the widget stored at the specified location within the table.
      */
-    virtual gcn::Widget *getElementAt(int row, int column) const = 0;
+    virtual gcn::Widget *getElementAt(int row, int column)
+                                      const A_WARN_UNUSED = 0;
 
     virtual void installListener(TableModelListener *const listener);
 
@@ -142,13 +143,14 @@ public:
      */
     virtual void resize();
 
-    virtual int getRows() const;
-    virtual int getColumns() const;
-    virtual int getRowHeight() const override;
-    virtual int getWidth() const;
-    virtual int getHeight() const;
-    virtual int getColumnWidth(int index) const;
-    virtual gcn::Widget *getElementAt(int row, int column) const override;
+    virtual int getRows() const A_WARN_UNUSED;
+    virtual int getColumns() const A_WARN_UNUSED;
+    virtual int getRowHeight() const override A_WARN_UNUSED;
+    virtual int getWidth() const A_WARN_UNUSED;
+    virtual int getHeight() const A_WARN_UNUSED;
+    virtual int getColumnWidth(int index) const A_WARN_UNUSED;
+    virtual gcn::Widget *getElementAt(int row, int column)
+                                      const override A_WARN_UNUSED;
 
 protected:
     int mRows, mColumns;

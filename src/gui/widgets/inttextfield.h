@@ -48,7 +48,7 @@ class IntTextField final : public TextField
         /**
          * Returns the value in the text box.
          */
-        int getValue() const;
+        int getValue() const A_WARN_UNUSED;
 
         /**
          * Reset the field to the default value.

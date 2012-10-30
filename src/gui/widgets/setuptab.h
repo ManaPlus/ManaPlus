@@ -41,7 +41,7 @@ class SetupTab : public Container, public gcn::ActionListener
 
         A_DELETE_COPY(SetupTab)
 
-        const std::string &getName() const
+        const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
         /**

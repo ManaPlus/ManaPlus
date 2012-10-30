@@ -47,11 +47,11 @@ class PlayerHandler : public Net::PlayerHandler
 
         bool canCorrectAttributes() const;
 
-        Vector getDefaultWalkSpeed() const;
+        Vector getDefaultWalkSpeed() const A_WARN_UNUSED;
 
-        PlayerInfo::Attribute getJobLocation() const;
+        PlayerInfo::Attribute getJobLocation() const A_WARN_UNUSED;
 
-        PlayerInfo::Attribute getAttackLocation() const;
+        PlayerInfo::Attribute getAttackLocation() const A_WARN_UNUSED;
 
         void processWalkResponse(Net::MessageIn &msg);
 

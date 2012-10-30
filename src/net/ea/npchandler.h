@@ -50,7 +50,8 @@ class NpcHandler : public Net::NpcHandler
 
         void clearDialogs();
 
-        virtual int getNpc(Net::MessageIn &msg, bool haveLength) = 0;
+        virtual int getNpc(Net::MessageIn &msg,
+                           bool haveLength) A_WARN_UNUSED = 0;
 
         void processNpcChoice(Net::MessageIn &msg);
 

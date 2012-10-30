@@ -61,7 +61,7 @@ class ShopListBox final : public ListBox
         /**
          * Returns the height of a row.
          */
-        unsigned int getRowHeight() const override
+        unsigned int getRowHeight() const override A_WARN_UNUSED
         { return mRowHeight; }
 
         /**

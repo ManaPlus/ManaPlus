@@ -92,12 +92,12 @@ class BeingInfo final
         void setName(const std::string &name)
         { mName = name; }
 
-        const std::string &getName() const
+        const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
         void setDisplay(SpriteDisplay display);
 
-        const SpriteDisplay &getDisplay() const
+        const SpriteDisplay &getDisplay() const A_WARN_UNUSED
         { return mDisplay; }
 
         void setTargetCursorSize(const std::string &size);
@@ -112,22 +112,23 @@ class BeingInfo final
         void setHoverCursor(const Cursor::Cursor &cursor)
         { mHoverCursor = cursor; }
 
-        Cursor::Cursor getHoverCursor() const
+        Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
         { return mHoverCursor; }
 
-        ActorSprite::TargetCursorSize getTargetCursorSize() const
+        ActorSprite::TargetCursorSize getTargetCursorSize() const A_WARN_UNUSED
         { return mTargetCursorSize; }
 
         void addSound(const SoundEvent event, const std::string &filename);
 
-        const std::string &getSound(const SoundEvent event) const;
+        const std::string &getSound(const SoundEvent event)
+                                    const A_WARN_UNUSED;
 
         void addAttack(const int id, std::string action, const int effectId,
                        const int hitEffectId, const int criticalHitEffectId,
                        const int missEffectId,
                        const std::string &missileParticle);
 
-        const Attack *getAttack(const int id) const;
+        const Attack *getAttack(const int id) const A_WARN_UNUSED;
 
         void setWalkMask(const unsigned char mask)
         { mWalkMask = mask; }
@@ -135,34 +136,34 @@ class BeingInfo final
         /**
          * Gets the way the being is blocked by other objects
          */
-        unsigned char getWalkMask() const
+        unsigned char getWalkMask() const A_WARN_UNUSED
         { return mWalkMask; }
 
         void setBlockType(const Map::BlockType &blockType)
         { mBlockType = blockType; }
 
-        Map::BlockType getBlockType() const
+        Map::BlockType getBlockType() const A_WARN_UNUSED
         { return mBlockType; }
 
         void setTargetOffsetX(const int n)
         { mTargetOffsetX = n; }
 
-        int getTargetOffsetX() const
+        int getTargetOffsetX() const A_WARN_UNUSED
         { return mTargetOffsetX; }
 
         void setTargetOffsetY(const int n)
         { mTargetOffsetY = n; }
 
-        int getTargetOffsetY() const
+        int getTargetOffsetY() const A_WARN_UNUSED
         { return mTargetOffsetY; }
 
         void setMaxHP(const int n)
         { mMaxHP = n; }
 
-        int getMaxHP() const
+        int getMaxHP() const A_WARN_UNUSED
         { return mMaxHP; }
 
-        bool isStaticMaxHP() const
+        bool isStaticMaxHP() const A_WARN_UNUSED
         { return mStaticMaxHP; }
 
         void setStaticMaxHP(const bool n)
@@ -171,16 +172,16 @@ class BeingInfo final
         void setTargetSelection(const bool n)
         { mTargetSelection = n; }
 
-        bool isTargetSelection() const
+        bool isTargetSelection() const A_WARN_UNUSED
         { return mTargetSelection; }
 
-        int getSortOffsetY() const
+        int getSortOffsetY() const A_WARN_UNUSED
         { return mSortOffsetY; }
 
         void setSortOffsetY(const int n)
         { mSortOffsetY = n; }
 
-        int getDeadSortOffsetY() const
+        int getDeadSortOffsetY() const A_WARN_UNUSED
         { return mDeadSortOffsetY; }
 
         void setDeadSortOffsetY(const int n)

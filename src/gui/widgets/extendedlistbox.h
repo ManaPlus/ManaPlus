@@ -41,7 +41,7 @@ class ExtendedListBox final : public ListBox
          */
         void draw(gcn::Graphics *graphics) override;
 
-        unsigned int getRowHeight() const override
+        unsigned int getRowHeight() const override A_WARN_UNUSED
         { return mRowHeight; }
 
         void setRowHeight(unsigned int n)

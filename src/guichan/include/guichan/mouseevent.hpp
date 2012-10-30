@@ -94,7 +94,7 @@ namespace gcn
          *
          * @return The button of the mouse event.
          */
-        unsigned int getButton() const;
+        unsigned int getButton() const A_WARN_UNUSED;
 
         /**
          * Gets the x coordinate of the mouse event. 
@@ -104,7 +104,7 @@ namespace gcn
          * @return The x coordinate of the mouse event.
          * @see Widget::addMouseListener, Widget::removeMouseListener
          */
-        int getX() const;
+        int getX() const A_WARN_UNUSED;
 
         /**
          * Gets the y coordinate of the mouse event. 
@@ -114,7 +114,7 @@ namespace gcn
          * @return The y coordinate of the mouse event.
          * @see Widget::addMouseListener, Widget::removeMouseListener
          */
-        int getY() const;
+        int getY() const A_WARN_UNUSED;
 
         /**
          * Gets the number of clicks generated with the same button.
@@ -122,14 +122,14 @@ namespace gcn
          *
          * @return The number of clicks generated with the same button.
          */
-        int getClickCount() const;
+        int getClickCount() const A_WARN_UNUSED;
 
         /**
          * Gets the type of the event.
          *
          * @return The type of the event.
          */
-        unsigned int getType() const;
+        unsigned int getType() const A_WARN_UNUSED;
 
         /**
          * Mouse event types.

@@ -161,7 +161,7 @@ namespace gcn
          * @see setFrameSize, drawFrame
          * @since 0.8.0
          */
-        unsigned int getFrameSize() const;
+        unsigned int getFrameSize() const A_WARN_UNUSED;
 
         /**
          * Called for all widgets in the gui each time Gui::logic is called.
@@ -180,7 +180,7 @@ namespace gcn
          *         has no parent.
          * @since 0.1.0
          */
-        virtual Widget* getParent() const
+        virtual Widget* getParent() const A_WARN_UNUSED
         { return mParent; }
 
         /**
@@ -201,7 +201,7 @@ namespace gcn
          *      setDimension, getDimension
          * @since 0.1.0
          */
-        int getWidth() const
+        int getWidth() const A_WARN_UNUSED
         { return mDimension.width; }
 
         /**
@@ -222,7 +222,7 @@ namespace gcn
          *      setDimension, getDimension
          * @since 0.1.0
          */
-        int getHeight() const
+        int getHeight() const A_WARN_UNUSED
         { return mDimension.height; }
 
         /**
@@ -254,7 +254,7 @@ namespace gcn
          * @see setX, setY, getY, setPosition, setDimension, getDimension
          * @since 0.1.0
          */
-        int getX() const
+        int getX() const A_WARN_UNUSED
         { return mDimension.x; }
 
         /**
@@ -275,7 +275,7 @@ namespace gcn
          * @see setY, setX, getX, setPosition, setDimension, getDimension
          * @since 0.1.0
          */
-        int getY() const
+        int getY() const A_WARN_UNUSED
         { return mDimension.y; }
 
         /**
@@ -307,7 +307,7 @@ namespace gcn
          * @see getDimension, setX, getX, setY, getY, setPosition
          * @since 0.1.0
          */
-        const Rectangle& getDimension() const;
+        const Rectangle& getDimension() const A_WARN_UNUSED;
 
         /**
          * Sets the widget to be fosusable, or not.
@@ -326,7 +326,7 @@ namespace gcn
          * @see setFocusable
          * @since 0.1.0
          */
-        bool isFocusable() const;
+        bool isFocusable() const A_WARN_UNUSED;
 
         /**
          * Checks if the widget is focused.
@@ -334,7 +334,7 @@ namespace gcn
          * @return True if the widget is focused, false otherwise.
          * @since 0.1.0
          */
-        virtual bool isFocused() const;
+        virtual bool isFocused() const A_WARN_UNUSED;
 
         /**
          * Sets the widget to enabled, or not. A disabled
@@ -355,7 +355,7 @@ namespace gcn
          * @see setEnabled
          * @since 0.1.0
          */
-        bool isEnabled() const;
+        bool isEnabled() const A_WARN_UNUSED;
 
         /**
          * Sets the widget to be visible, or not.
@@ -373,7 +373,7 @@ namespace gcn
          * @see setVisible
          * @since 0.1.0
          */
-        bool isVisible() const
+        bool isVisible() const A_WARN_UNUSED
         { return mVisible && (!mParent || mParent->isVisible()); }
 
         /**
@@ -392,7 +392,7 @@ namespace gcn
          * @see setBaseColor
          * @since 0.1.0
          */
-        const Color& getBaseColor() const;
+        const Color& getBaseColor() const A_WARN_UNUSED;
 
         /**
          * Sets the foreground color.
@@ -409,7 +409,7 @@ namespace gcn
          * @see setForegroundColor
          * @since 0.1.0
          */
-        const Color& getForegroundColor() const;
+        const Color& getForegroundColor() const A_WARN_UNUSED;
 
         /**
          * Sets the background color.
@@ -426,7 +426,7 @@ namespace gcn
          * @see setBackgroundColor
          * @since 0.1.0
          */
-        const Color& getBackgroundColor() const;
+        const Color& getBackgroundColor() const A_WARN_UNUSED;
 
         /**
          * Sets the selection color.
@@ -444,8 +444,8 @@ namespace gcn
          * @see setSelectionColor
          * @since 0.6.0
          */
-        const Color& getSelectionColor() const;
-        
+        const Color& getSelectionColor() const A_WARN_UNUSED;
+
         /**
          * Requests focus for the widget. A widget will only recieve focus
          * if it is focusable.
@@ -486,7 +486,7 @@ namespace gcn
          * @see _setFocusHandler
          * @since 0.1.0
          */
-        virtual FocusHandler* _getFocusHandler();
+        virtual FocusHandler* _getFocusHandler() A_WARN_UNUSED;
 
         /**
          * Adds an action listener to the widget. When an action event 
@@ -662,7 +662,7 @@ namespace gcn
          * @see setFont, setGlobalFont
          * @since 0.1.0
          */
-        Font *getFont() const;
+        Font *getFont() const A_WARN_UNUSED;
 
         /**
          * Sets the global font to be used by default for all widgets.
@@ -701,7 +701,7 @@ namespace gcn
          * @return True if an instance of the widget exists, false otherwise.
          * @since 0.1.0
          */
-        static bool widgetExists(const Widget* widget);
+        static bool widgetExists(const Widget* widget) A_WARN_UNUSED;
 
         /**
          * Checks if tab in is enabled. Tab in means that you can set focus
@@ -713,7 +713,7 @@ namespace gcn
          * @see setTabInEnabled
          * @since 0.1.0
          */
-        bool isTabInEnabled() const;
+        bool isTabInEnabled() const A_WARN_UNUSED;
 
         /**
          * Sets tab in enabled, or not. Tab in means that you can set focus
@@ -737,7 +737,7 @@ namespace gcn
          * @see setTabOutEnabled
          * @since 0.1.0
          */
-        bool isTabOutEnabled() const;
+        bool isTabOutEnabled() const A_WARN_UNUSED;
 
         /**
          * Sets tab out enabled. Tab out means that you can lose
@@ -797,7 +797,7 @@ namespace gcn
          * @see requestModalFocus, releaseModalFocus
          * @since 0.8.0
          */
-        virtual bool isModalFocused() const;
+        virtual bool isModalFocused() const A_WARN_UNUSED;
 
         /**
          * Checks if the widget or it's parent has modal mouse input focus.
@@ -807,7 +807,7 @@ namespace gcn
          * @see requestModalMouseInputFocus, releaseModalMouseInputFocus
          * @since 0.8.0
          */
-        virtual bool isModalMouseInputFocused() const;
+        virtual bool isModalMouseInputFocused() const A_WARN_UNUSED;
 
         /**
          * Gets a widget from a certain position in the widget.
@@ -823,7 +823,7 @@ namespace gcn
          *         if no widget is found.
          * @since 0.6.0
          */
-        virtual Widget *getWidgetAt(int x, int y);
+        virtual Widget *getWidgetAt(int x, int y) A_WARN_UNUSED;
 
         /**
          * Gets the mouse listeners of the widget.
@@ -831,7 +831,8 @@ namespace gcn
          * @return The mouse listeners of the widget.
          * @since 0.6.0
          */
-        virtual const std::list<MouseListener*>& _getMouseListeners();
+        virtual const std::list<MouseListener*>& _getMouseListeners()
+                                                 A_WARN_UNUSED;
 
         /**
          * Gets the key listeners of the widget.
@@ -839,7 +840,8 @@ namespace gcn
          * @return The key listeners of the widget.
          * @since 0.6.0
          */
-        virtual const std::list<KeyListener*>& _getKeyListeners();
+        virtual const std::list<KeyListener*>& _getKeyListeners()
+                                               A_WARN_UNUSED;
 
         /**
          * Gets the focus listeners of the widget.
@@ -847,7 +849,8 @@ namespace gcn
          * @return The focus listeners of the widget.
          * @since 0.7.0
          */
-        virtual const std::list<FocusListener*>& _getFocusListeners();
+        virtual const std::list<FocusListener*>& _getFocusListeners()
+                                                 A_WARN_UNUSED;
 
         /**
          * Gets the area of the widget occupied by the widget's children.
@@ -869,7 +872,7 @@ namespace gcn
          * @see BasicContainer::drawChildren
          * @since 0.1.0
          */
-        virtual Rectangle getChildrenArea();
+        virtual Rectangle getChildrenArea() A_WARN_UNUSED;
 
         /**
          * Gets the internal focus handler used.
@@ -879,7 +882,7 @@ namespace gcn
          * @see setInternalFocusHandler
          * @since 0.1.0
          */
-        virtual FocusHandler* _getInternalFocusHandler();
+        virtual FocusHandler* _getInternalFocusHandler() A_WARN_UNUSED;
 
         /**
          * Sets the internal focus handler. An internal focus handler is
@@ -966,7 +969,7 @@ namespace gcn
          * @see setId, BasicContainer::findWidgetById
          * @since 0.8.0
          */
-        const std::string& getId();
+        const std::string& getId() A_WARN_UNUSED;
 
         /**
          * Shows a certain part of a widget in the widget's parent.

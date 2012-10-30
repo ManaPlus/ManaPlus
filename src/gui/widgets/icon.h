@@ -55,7 +55,7 @@ class Icon final : public gcn::Widget,
         /** 
          * Gets the current Image.
          */
-        Image *getImage() const
+        Image *getImage() const A_WARN_UNUSED
         { return mImage; }
 
         /**

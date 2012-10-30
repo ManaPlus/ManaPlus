@@ -87,11 +87,11 @@ class CharHandler
 
         virtual void switchCharacter() = 0;
 
-        virtual unsigned int baseSprite() const = 0;
+        virtual unsigned int baseSprite() const A_WARN_UNUSED = 0;
 
-        virtual unsigned int hairSprite() const = 0;
+        virtual unsigned int hairSprite() const A_WARN_UNUSED = 0;
 
-        virtual unsigned int maxSprite() const = 0;
+        virtual unsigned int maxSprite() const A_WARN_UNUSED = 0;
 
         virtual void clear() = 0;
 

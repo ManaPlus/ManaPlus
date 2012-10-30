@@ -44,7 +44,7 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
 
         void connect();
 
-        bool isConnected();
+        bool isConnected() A_WARN_UNUSED;
 
         void disconnect();
 
@@ -60,7 +60,7 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
 
         void processMapCharId(Net::MessageIn &msg);
 
-        bool mustPing() const
+        bool mustPing() const A_WARN_UNUSED
         { return true; }
 };
 

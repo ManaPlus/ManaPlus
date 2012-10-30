@@ -88,7 +88,7 @@ class DropDown final : public gcn::DropDown,
 
         void setSelectedString(std::string str);
 
-        std::string getSelectedString() const;
+        std::string getSelectedString() const A_WARN_UNUSED;
 
         void adjustHeight();
 

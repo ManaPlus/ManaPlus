@@ -81,7 +81,7 @@ namespace gcn
          * @return True if shift was pressed at the same time as the key,
          *         false otherwise.
          */
-        bool isShiftPressed() const;
+        bool isShiftPressed() const A_WARN_UNUSED;
 
         /**
          * Checks if control is pressed.
@@ -89,7 +89,7 @@ namespace gcn
          * @return True if control was pressed at the same time as the key,
          *         false otherwise.
          */
-        bool isControlPressed() const;
+        bool isControlPressed() const A_WARN_UNUSED;
 
         /**
          * Checks if alt is pressed.
@@ -97,7 +97,7 @@ namespace gcn
          * @return True if alt was pressed at the same time as the key,
          *         false otherwise.
          */
-        bool isAltPressed() const;
+        bool isAltPressed() const A_WARN_UNUSED;
 
         /**
          * Checks whether meta is pressed.
@@ -105,7 +105,7 @@ namespace gcn
          * @return True if meta was pressed at the same time as the key,
          *         false otherwise.
          */
-        bool isMetaPressed() const;
+        bool isMetaPressed() const A_WARN_UNUSED;
 
         /**
          * Marks the event as consumed. Input event listeners may discard
@@ -126,7 +126,7 @@ namespace gcn
          *         false otherwise.
          * @see consume
          */
-        bool isConsumed() const;
+        bool isConsumed() const A_WARN_UNUSED;
 
     protected:
         /**

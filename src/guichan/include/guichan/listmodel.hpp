@@ -49,6 +49,8 @@
 
 #include "guichan/platform.hpp"
 
+#include "localconsts.h"
+
 namespace gcn
 {
     /**
@@ -73,7 +75,7 @@ namespace gcn
          *
          * @return The number of elements in the list
          */
-        virtual int getNumberOfElements() = 0;
+        virtual int getNumberOfElements() A_WARN_UNUSED = 0;
 
         /**
          * Gets an element at a certain index in the list.
@@ -81,7 +83,7 @@ namespace gcn
          * @param i An index in the list.
          * @return An element as a string at the a certain index.
          */
-        virtual std::string getElementAt(int i) = 0;
+        virtual std::string getElementAt(int i) A_WARN_UNUSED = 0;
     };
 }
 

@@ -52,7 +52,8 @@ class WidgetGroup : public Container,
 
         void widgetResized(const gcn::Event &event) override;
 
-        virtual Widget *createWidget(const std::string &name) = 0;
+        virtual Widget *createWidget(const std::string &name)
+                                     A_WARN_UNUSED = 0;
 
     protected:
         int mSpacing;

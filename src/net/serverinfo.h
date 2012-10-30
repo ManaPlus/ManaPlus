@@ -74,7 +74,7 @@ public:
         version.second = info.version.second;
     }
 
-    bool isValid() const
+    bool isValid() const A_WARN_UNUSED
     {
         return !(hostname.empty() || port == 0 || type == UNKNOWN);
     }
@@ -103,7 +103,7 @@ public:
                 port != other.port);
     }
 
-    static Type parseType(const std::string &type)
+    static Type parseType(const std::string &type) A_WARN_UNUSED
     {
         if (compareStrI(type, "tmwathena") == 0)
             return TMWATHENA;

@@ -42,13 +42,15 @@ class Widget2
         }
 
         inline const gcn::Color &getThemeColor(const int type,
-                                               const int alpha = 255) const
+                                               const int alpha = 255)
+                                               const A_WARN_UNUSED
         {
             return Theme::getThemeColor(mPaletteOffset + type, alpha);
         }
 
         inline const gcn::Color &getThemeCharColor(const signed char c,
-                                                   bool &valid) const
+                                                   bool &valid)
+                                                   const A_WARN_UNUSED
         {
             const int colorId = Theme::getThemeIdByChar(c, valid);
             if (valid)

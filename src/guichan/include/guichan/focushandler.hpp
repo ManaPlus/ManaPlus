@@ -157,7 +157,7 @@ namespace gcn
          *
          * @return The widget with focus. NULL if no widget has focus.
          */
-        virtual Widget* getFocused() const;
+        virtual Widget* getFocused() const A_WARN_UNUSED;
 
         /**
          * Gets the widget with modal focus.
@@ -165,7 +165,7 @@ namespace gcn
          * @return The widget with modal focus. NULL if no widget has
          *         modal focus.
          */
-        virtual Widget* getModalFocused() const;
+        virtual Widget* getModalFocused() const A_WARN_UNUSED;
 
         /**
          * Gets the widget with modal mouse input focus.
@@ -173,7 +173,7 @@ namespace gcn
          * @return The widget with modal mouse input focus. NULL if
          *         no widget has modal mouse input focus.
          */
-        virtual Widget* getModalMouseInputFocused() const;
+        virtual Widget* getModalMouseInputFocused() const A_WARN_UNUSED;
 
         /**
          * Focuses the next widget added to a conainer. 
@@ -240,7 +240,7 @@ namespace gcn
          * @return the widget being dragged.
          * @see setDraggedWidget
          */
-        virtual Widget* getDraggedWidget();
+        virtual Widget* getDraggedWidget() A_WARN_UNUSED;
 
         /**
          * Sets the widget being dragged. Used by the Gui class to 
@@ -258,7 +258,7 @@ namespace gcn
          * @return The last widget with the mouse.
          * @see setLastWidgetWithMouse
          */ 
-        virtual Widget* getLastWidgetWithMouse();
+        virtual Widget* getLastWidgetWithMouse() A_WARN_UNUSED;
 
         /**
          * Sets the last widget with the mouse. Used by the Gui class 
@@ -275,7 +275,7 @@ namespace gcn
          * @return The last widget with modal focus.
          * @see setLastWidgetWithModalFocus
          */
-        virtual Widget* getLastWidgetWithModalFocus();
+        virtual Widget* getLastWidgetWithModalFocus() A_WARN_UNUSED;
 
         /**
          * Sets the last widget with modal focus.
@@ -291,7 +291,7 @@ namespace gcn
          * @return The last widget with modal mouse input focus.
          * @see setLastWidgetWithModalMouseInputFocus
          */
-        virtual Widget* getLastWidgetWithModalMouseInputFocus();
+        virtual Widget* getLastWidgetWithModalMouseInputFocus() A_WARN_UNUSED;
 
         /**
          * Sets the last widget with modal mouse input focus.
@@ -308,7 +308,7 @@ namespace gcn
          * @return The last widget pressed. 
          * @see setLastWidgetPressed
          */
-        virtual Widget* getLastWidgetPressed();
+        virtual Widget* getLastWidgetPressed() A_WARN_UNUSED;
 
         /**
          * Sets the last widget pressed. Used by the Gui class to keep track

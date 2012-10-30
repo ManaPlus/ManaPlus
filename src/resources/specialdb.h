@@ -79,9 +79,10 @@ namespace SpecialDB
     /** gets the special info for ID. Will return 0 when it is
      *  a server-specific special.
      */
-    SpecialInfo *get(const int id);
+    SpecialInfo *get(const int id) A_WARN_UNUSED;
 
-    SpecialInfo::TargetMode targetModeFromString(const std::string& str);
+    SpecialInfo::TargetMode targetModeFromString(const std::string& str)
+                                                 A_WARN_UNUSED;
 }
 
 typedef std::map<int, SpecialInfo *> SpecialInfos;

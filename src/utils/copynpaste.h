@@ -21,6 +21,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 /**
  * Attempts to retrieve text from the clipboard buffer and inserts it in
  * \a text at position \pos. The characters are encoded in utf-8.
@@ -30,6 +32,6 @@
  * @return <code>true</code> when successful or <code>false</code> when there
  *         was a problem retrieving the clipboard buffer.
  */
-bool retrieveBuffer(std::string& text, size_t& pos);
+bool retrieveBuffer(std::string& text, size_t& pos) A_WARN_UNUSED;
 
 bool sendBuffer(std::string& text);

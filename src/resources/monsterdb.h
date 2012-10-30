@@ -23,6 +23,8 @@
 #ifndef MONSTER_DB_H
 #define MONSTER_DB_H
 
+#include "localconsts.h"
+
 class BeingInfo;
 
 /**
@@ -34,7 +36,7 @@ namespace MonsterDB
 
     void unload();
 
-    BeingInfo *get(const int id);
+    BeingInfo *get(const int id) A_WARN_UNUSED;
 }
 
 #endif

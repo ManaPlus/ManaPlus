@@ -50,7 +50,7 @@ class LayoutHelper final : public gcn::WidgetListener
         /**
          * Gets the layout handler.
          */
-        const Layout &getLayout() const;
+        const Layout &getLayout() const A_WARN_UNUSED;
 
         /**
          * Computes the position of the widgets according to the current
@@ -73,7 +73,7 @@ class LayoutHelper final : public gcn::WidgetListener
         /**
          * Returns a proxy for adding widgets in an inner table of the layout.
          */
-        ContainerPlacer getPlacer(const int x, const int y);
+        ContainerPlacer getPlacer(const int x, const int y) A_WARN_UNUSED;
 
         /**
          * Called whenever the managed container changes size.

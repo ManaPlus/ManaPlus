@@ -112,53 +112,55 @@ class ItemInfo final
         void setId(const int id)
         { mId = id; }
 
-        int getId() const
+        int getId() const A_WARN_UNUSED
         { return mId; }
 
         void setName(const std::string &name)
         { mName = name; }
 
-        const std::string &getName() const
+        const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
-        const std::string getName(const unsigned char color) const;
+        const std::string getName(const unsigned char color)
+                                  const A_WARN_UNUSED;
 
         void setParticleEffect(const std::string &particleEffect)
         { mParticle = particleEffect; }
 
-        std::string getParticleEffect() const
+        std::string getParticleEffect() const A_WARN_UNUSED
         { return mParticle; }
 
         void setDisplay(SpriteDisplay display)
         { mDisplay = display; }
 
-        const SpriteDisplay &getDisplay() const
+        const SpriteDisplay &getDisplay() const A_WARN_UNUSED
         { return mDisplay; }
 
         void setDescription(const std::string &description)
         { mDescription = description; }
 
-        const std::string &getDescription() const
+        const std::string &getDescription() const A_WARN_UNUSED
         { return mDescription; }
 
-        const std::string getDescription(const unsigned char color) const;
+        const std::string getDescription(const unsigned char color)
+                                         const A_WARN_UNUSED;
 
         void setEffect(const std::string &effect)
         { mEffect = effect; }
 
-        const std::string &getEffect() const
+        const std::string &getEffect() const A_WARN_UNUSED
         { return mEffect; }
 
         void setType(const ItemType type)
         { mType = type; }
 
-        ItemType getType() const
+        ItemType getType() const A_WARN_UNUSED
         { return mType; }
 
         void setWeight(const int weight)
         { mWeight = weight; }
 
-        int getWeight() const
+        int getWeight() const A_WARN_UNUSED
         { return mWeight; }
 
         int getView() const
@@ -171,7 +173,7 @@ class ItemInfo final
                        const Gender gender, const int race);
 
         const std::string &getSprite(const Gender gender,
-                                     const int race) const;
+                                     const int race) const A_WARN_UNUSED;
 
         void setAttackAction(std::string attackAction);
 
@@ -179,31 +181,31 @@ class ItemInfo final
         void setMissileParticleFile(const std::string &s)
         { mMissileParticleFile = s; }
 
-        const std::string &getMissileParticleFile() const
+        const std::string &getMissileParticleFile() const A_WARN_UNUSED
         { return mMissileParticleFile; }
 
         void setHitEffectId(const int s)
         { mHitEffectId = s; }
 
-        int getHitEffectId() const
+        int getHitEffectId() const A_WARN_UNUSED
         { return mHitEffectId; }
 
         void setCriticalHitEffectId(const int s)
         { mCriticalHitEffectId = s; }
 
-        int getCriticalHitEffectId() const
+        int getCriticalHitEffectId() const A_WARN_UNUSED
         { return mCriticalHitEffectId; }
 
         void setMissEffectId(const int s)
         { mMissEffectId = s; }
 
-        int getMissEffectId() const
+        int getMissEffectId() const A_WARN_UNUSED
         { return mMissEffectId; }
 
         const std::string &getAttackAction() const
         { return mAttackAction; }
 
-        int getAttackRange() const
+        int getAttackRange() const A_WARN_UNUSED
         { return mAttackRange; }
 
         void setAttackRange(const int r)
@@ -212,24 +214,25 @@ class ItemInfo final
         void addSound(const EquipmentSoundEvent event,
                       const std::string &filename);
 
-        const std::string &getSound(const EquipmentSoundEvent event) const;
+        const std::string &getSound(const EquipmentSoundEvent event)
+                                    const A_WARN_UNUSED;
 
-        int getDrawBefore(const int direction) const;
+        int getDrawBefore(const int direction) const A_WARN_UNUSED;
 
         void setDrawBefore(const int direction, const int n);
 
-        int getDrawAfter(const int direction) const;
+        int getDrawAfter(const int direction) const A_WARN_UNUSED;
 
         void setDrawAfter(const int direction, int n);
 
-        int getDrawPriority(const int direction) const;
+        int getDrawPriority(const int direction) const A_WARN_UNUSED;
 
         void setDrawPriority(const int direction, const int n);
 
         void setSpriteOrder(int *const ptr, const int direction,
                             const int n, const int def = -1) const;
 
-        std::map<int, int> getTags() const
+        std::map<int, int> getTags() const A_WARN_UNUSED
         { return mTags; }
 
         void addTag(const int tag)
@@ -238,38 +241,38 @@ class ItemInfo final
         void setRemoveSprites()
         { mIsRemoveSprites = true; }
 
-        bool isRemoveSprites() const
+        bool isRemoveSprites() const A_WARN_UNUSED
         { return mIsRemoveSprites; }
 
         void setMaxFloorOffset(const int i)
         { maxFloorOffset = i; }
 
-        int getMaxFloorOffset() const
+        int getMaxFloorOffset() const A_WARN_UNUSED
         { return maxFloorOffset; }
 
-        bool isRemoveItemId(int id) const;
+        bool isRemoveItemId(int id) const A_WARN_UNUSED;
 
         /** Effects to be shown when weapon attacks - see also effects.xml */
         std::string mMissileParticleFile;
 
-        int getReplaceToSpriteId(int id) const;
+        int getReplaceToSpriteId(int id) const A_WARN_UNUSED;
 
         std::map<int, int> *addReplaceSprite(const int sprite,
                                              const int direction);
 
-        SpriteToItemMap *getSpriteToItemReplaceMap(const int directions) const;
+        SpriteToItemMap *getSpriteToItemReplaceMap(const int directions)
+                                                   const A_WARN_UNUSED;
 
-//        std::string getDyeString(int color) const;
-
-        std::string getDyeColorsString(const int color) const;
+        std::string getDyeColorsString(const int color) const A_WARN_UNUSED;
 
         void setColorsList(std::string name);
 
-        bool isHaveColors() const
+        bool isHaveColors() const A_WARN_UNUSED
         { return !mColorList.empty(); }
 
         const std::string replaceColors(std::string str,
-                                        const unsigned char color) const;
+                                        const unsigned char color)
+                                        const A_WARN_UNUSED;
 
         void setPickupCursor(const std::string &cursor)
         { return setPickupCursor(Cursor::stringToCursor(cursor)); }
@@ -277,7 +280,7 @@ class ItemInfo final
         void setPickupCursor(const Cursor::Cursor &cursor)
         { mPickupCursor = cursor; }
 
-        Cursor::Cursor getPickupCursor() const
+        Cursor::Cursor getPickupCursor() const A_WARN_UNUSED
         { return mPickupCursor; }
 
         int mDrawBefore[10];

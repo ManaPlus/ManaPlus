@@ -77,7 +77,7 @@ class PlayerBox final : public Widget2,
          */
         void drawFrame(gcn::Graphics *graphics) override;
 
-        Being *getBeing()
+        Being *getBeing() A_WARN_UNUSED
         { return mBeing; }
 
     private:

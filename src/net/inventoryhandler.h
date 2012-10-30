@@ -60,7 +60,7 @@ class InventoryHandler
                                int destination) = 0;
 
         // TODO: fix/remove me
-        virtual size_t getSize(int type) const = 0;
+        virtual size_t getSize(int type) const A_WARN_UNUSED = 0;
 
         virtual int convertFromServerSlot(int eAthenaSlot) const = 0;
 };

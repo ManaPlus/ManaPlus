@@ -37,7 +37,7 @@ class TradeTab final : public ChatTab
 
         ~TradeTab();
 
-        int getType() const override
+        int getType() const override A_WARN_UNUSED
         { return ChatTab::TAB_TRADE; }
 
         void saveToLogFile(std::string &msg) override;

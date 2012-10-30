@@ -81,13 +81,13 @@ class ShortcutContainer : public gcn::Widget,
          */
         virtual void mouseReleased(gcn::MouseEvent &event) override = 0;
 
-        int getMaxItems() const
+        int getMaxItems() const A_WARN_UNUSED
         { return mMaxItems; }
 
-        int getBoxWidth() const
+        int getBoxWidth() const A_WARN_UNUSED
         { return mBoxWidth; }
 
-        int getBoxHeight() const
+        int getBoxHeight() const A_WARN_UNUSED
         { return mBoxHeight; }
 
     protected:
@@ -98,7 +98,8 @@ class ShortcutContainer : public gcn::Widget,
          * @param pointY Y coordinate of the point.
          * @return index on success, -1 on failure.
          */
-        int getIndexFromGrid(const int pointX, const int pointY) const;
+        int getIndexFromGrid(const int pointX,
+                             const int pointY) const A_WARN_UNUSED;
 
         Image *mBackgroundImg;
         static float mAlpha;

@@ -37,9 +37,9 @@ class Image;
 class AvatarListModel : public gcn::ListModel
 {
 public:
-    virtual Avatar *getAvatarAt(const int i) = 0;
+    virtual Avatar *getAvatarAt(const int i) A_WARN_UNUSED = 0;
 
-    std::string getElementAt(int i) override
+    std::string getElementAt(int i) override A_WARN_UNUSED
     { return getAvatarAt(i)->getName(); }
 };
 
