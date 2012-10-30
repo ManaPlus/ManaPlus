@@ -41,14 +41,18 @@ class Window;
 
 struct ButtonInfo final
 {
-    ButtonInfo(Button *button0, Window *window0) :
+    ButtonInfo(Button *button0, Window *window0, bool visible0) :
         button(button0),
-        window(window0)
+        window(window0),
+        visible(visible0)
     {
     }
 
+    A_DELETE_COPY(ButtonInfo)
+
     Button *button;
     Window *window;
+    bool visible;
 };
 
 /**

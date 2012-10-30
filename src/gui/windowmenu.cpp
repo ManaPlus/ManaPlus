@@ -27,6 +27,7 @@
 #include "keyboardconfig.h"
 
 #include "gui/didyouknowwindow.h"
+#include "gui/helpwindow.h"
 #include "gui/skilldialog.h"
 #ifdef MANASERV_SUPPORT
 #include "gui/specialswindow.h"
@@ -43,19 +44,23 @@
 
 #include "debug.h"
 
+extern Window *botCheckerWindow;
+extern Window *debugWindow;
+extern Window *dropShortcutWindow;
 extern Window *emoteShortcutWindow;
 extern Window *equipmentWindow;
 extern Window *inventoryWindow;
 extern Window *itemShortcutWindow;
-extern Window *dropShortcutWindow;
-extern Window *setupWindow;
-extern Window *statusWindow;
-extern Window *whoIsOnline;
 extern Window *killStats;
+extern Window *minimap;
+extern Window *outfitWindow;
+extern Window *setupWindow;
+extern Window *shopWindow;
 extern Window *spellShortcutWindow;
-extern Window *botCheckerWindow;
 extern Window *socialWindow;
+extern Window *statusWindow;
 extern Window *questsWindow;
+extern Window *whoIsOnline;
 
 WindowMenu::WindowMenu(const Widget2 *const widget) :
     Container(widget),
@@ -72,7 +77,9 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     setFocusable(false);
 
     addButton(N_("ONL"), _("Who is online"), x, h,
-              Input::KEY_NO_VALUE, whoIsOnline);
+              Input::KEY_WINDOW_ONLINE, whoIsOnline);
+    addButton(N_("HLP"), _("Help"), x, h,
+              Input::KEY_WINDOW_HELP, helpWindow);
     addButton(N_("QE"), _("Quests"), x, h,
               Input::KEY_WINDOW_QUESTS, questsWindow);
     addButton(N_("BC"), _("Bot checker"), x, h,
@@ -81,12 +88,21 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
               Input::KEY_WINDOW_KILLS, killStats);
     addButton(":-)", _("Smilies"), x, h,
               Input::KEY_WINDOW_EMOTE_SHORTCUT, emoteShortcutWindow);
+    addButton(N_("CH"), _("Chat"), x, h,
+              Input::KEY_WINDOW_CHAT, minimap,
+#ifdef ANDROID
+              true);
+#else
+              false);
+#endif
     addButton(N_("STA"), _("Status"), x, h,
               Input::KEY_WINDOW_STATUS, statusWindow);
     addButton(N_("EQU"), _("Equipment"), x, h,
               Input::KEY_WINDOW_EQUIPMENT, equipmentWindow);
     addButton(N_("INV"), _("Inventory"), x, h,
               Input::KEY_WINDOW_INVENTORY, inventoryWindow);
+    addButton(N_("MAP"), _("Map"), x, h,
+              Input::KEY_WINDOW_MINIMAP, minimap, false);
 
     if (skillDialog->hasSkills())
     {
@@ -109,9 +125,20 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     addButton(N_("SP"), _("Spells"), x, h,
               Input::KEY_WINDOW_SPELLS, spellShortcutWindow);
     addButton(N_("DR"), _("Drop"), x, h,
-              Input::KEY_WINDOW_DROP, dropShortcutWindow);
+              Input::KEY_WINDOW_DROP, dropShortcutWindow, false);
     addButton(N_("YK"), _("Did you know"), x, h,
         Input::KEY_WINDOW_DIDYOUKNOW, didYouKnowWindow);
+    addButton(N_("SHP"), _("Shop"), x, h,
+        Input::KEY_WINDOW_SHOP, shopWindow, false);
+    addButton(N_("OU"), _("Outfits"), x, h,
+        Input::KEY_WINDOW_OUTFIT, outfitWindow, false);
+    addButton(N_("DBG"), _("Debug"), x, h,
+              Input::KEY_WINDOW_DEBUG, debugWindow,
+#ifdef ANDROID
+              true);
+#else
+              false);
+#endif
     addButton(N_("SET"), _("Setup"), x, h,
               Input::KEY_WINDOW_SETUP, setupWindow);
 
@@ -171,7 +198,10 @@ void WindowMenu::action(const gcn::ActionEvent &event)
     Window *const window = info->window;
     if (window)
     {
-        window->setVisible(!window->isVisible());
+        if (window == helpWindow)
+            helpWindow->loadHelp("index");
+        else
+            window->setVisible(!window->isVisible());
         if (window->isVisible())
             window->requestMoveToTop();
     }
@@ -188,17 +218,19 @@ void WindowMenu::addButton(const char *const text,
     btn->setTag(key);
     add(btn);
     btn->setFocusable(false);
+/*
     if (!visible)
     {
         btn->setVisible(false);
     }
     else
+*/
     {
         x += btn->getWidth() + 3;
         h = btn->getHeight();
     }
     mButtons.push_back(btn);
-    mButtonNames[text] = new ButtonInfo(btn, window);
+    mButtonNames[text] = new ButtonInfo(btn, window, visible);
 }
 
 void WindowMenu::mousePressed(gcn::MouseEvent &event)
@@ -306,9 +338,21 @@ void WindowMenu::updateButtons()
 void WindowMenu::loadButtons()
 {
     if (config.getValue("windowmenu0", "") == "")
+    {
+        for (std::map <std::string, ButtonInfo*>::iterator
+             it = mButtonNames.begin(),
+             it_end = mButtonNames.end(); it != it_end; ++it)
+        {
+            ButtonInfo *info = (*it).second;
+            if (!info || !info->button || info->visible)
+                continue;
+            info->button->setVisible(false);
+        }
+        updateButtons();
         return;
+    }
 
-    for (int f = 0; f < 15; f ++)
+    for (int f = 0; f < 30; f ++)
     {
         std::string str = config.getValue("windowmenu" + toString(f), "");
         if (str == "" || str == "SET")
@@ -337,7 +381,7 @@ void WindowMenu::saveButtons()
             i ++;
         }
     }
-    for (int f = i; f < 15; f ++)
+    for (int f = i; f < 30; f ++)
         config.deleteKey("windowmenu" + toString(f));
 }
 
