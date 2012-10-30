@@ -37,6 +37,19 @@
 #include <vector>
 
 class TextPopup;
+class Window;
+
+struct ButtonInfo final
+{
+    ButtonInfo(Button *button0, Window *window0) :
+        button(button0),
+        window(window0)
+    {
+    }
+
+    Button *button;
+    Window *window;
+};
 
 /**
  * The window menu. Allows showing and hiding many of the different windows
@@ -65,7 +78,7 @@ class WindowMenu final : public Container,
 
         void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override;
 
-        std::map <std::string, Button*> &getButtonNames() A_WARN_UNUSED
+        std::map <std::string, ButtonInfo*> &getButtonNames() A_WARN_UNUSED
         { return mButtonNames; }
 
         std::vector <Button*> &getButtons() A_WARN_UNUSED
@@ -86,13 +99,14 @@ class WindowMenu final : public Container,
         inline void addButton(const char *const text,
                               const std::string &description,
                               int &x, int &h, const int key,
+                              Window *window,
                               const bool visible = true);
 
         void updateButtons();
 
         TextPopup *mTextPopup;
         std::vector <Button*> mButtons;
-        std::map <std::string, Button*> mButtonNames;
+        std::map <std::string, ButtonInfo*> mButtonNames;
         bool mHaveMouse;
         int mAutoHide;
 };

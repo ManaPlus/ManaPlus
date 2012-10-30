@@ -72,43 +72,48 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     setFocusable(false);
 
     addButton(N_("ONL"), _("Who is online"), x, h,
-              Input::KEY_NO_VALUE);
+              Input::KEY_NO_VALUE, whoIsOnline);
     addButton(N_("QE"), _("Quests"), x, h,
-              Input::KEY_WINDOW_QUESTS);
+              Input::KEY_WINDOW_QUESTS, questsWindow);
     addButton(N_("BC"), _("Bot checker"), x, h,
-              Input::KEY_WINDOW_BOT_CHECKER, false);
+              Input::KEY_WINDOW_BOT_CHECKER, botCheckerWindow, false);
     addButton(N_("KS"), _("Kill stats"), x, h,
-              Input::KEY_WINDOW_KILLS);
+              Input::KEY_WINDOW_KILLS, killStats);
     addButton(":-)", _("Smilies"), x, h,
-              Input::KEY_WINDOW_EMOTE_SHORTCUT);
-    addButton(N_("STA"), _("Status"), x, h, Input::KEY_WINDOW_STATUS);
+              Input::KEY_WINDOW_EMOTE_SHORTCUT, emoteShortcutWindow);
+    addButton(N_("STA"), _("Status"), x, h,
+              Input::KEY_WINDOW_STATUS, statusWindow);
     addButton(N_("EQU"), _("Equipment"), x, h,
-              Input::KEY_WINDOW_EQUIPMENT);
+              Input::KEY_WINDOW_EQUIPMENT, equipmentWindow);
     addButton(N_("INV"), _("Inventory"), x, h,
-              Input::KEY_WINDOW_INVENTORY);
+              Input::KEY_WINDOW_INVENTORY, inventoryWindow);
 
     if (skillDialog->hasSkills())
     {
         addButton(N_("SKI"), _("Skills"), x, h,
-                  Input::KEY_WINDOW_SKILL);
+                  Input::KEY_WINDOW_SKILL, skillDialog);
     }
 
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         addButton(N_("SPE"), _("Specials"), x, h,
-                  Input::KEY_NO_VALUE);
+                  Input::KEY_NO_VALUE, specialsWindow);
     }
 #endif
 
-    addButton(N_("SOC"), _("Social"), x, h, Input::KEY_WINDOW_SOCIAL);
+    addButton(N_("SOC"), _("Social"), x, h,
+              Input::KEY_WINDOW_SOCIAL, socialWindow);
     addButton(N_("SH"), _("Shortcuts"), x, h,
-              Input::KEY_WINDOW_SHORTCUT);
-    addButton(N_("SP"), _("Spells"), x, h, Input::KEY_WINDOW_SPELLS);
-    addButton(N_("DR"), _("Drop"), x, h, Input::KEY_WINDOW_DROP);
+              Input::KEY_WINDOW_SHORTCUT, itemShortcutWindow);
+    addButton(N_("SP"), _("Spells"), x, h,
+              Input::KEY_WINDOW_SPELLS, spellShortcutWindow);
+    addButton(N_("DR"), _("Drop"), x, h,
+              Input::KEY_WINDOW_DROP, dropShortcutWindow);
     addButton(N_("YK"), _("Did you know"), x, h,
-        Input::KEY_WINDOW_DIDYOUKNOW);
-    addButton(N_("SET"), _("Setup"), x, h, Input::KEY_WINDOW_SETUP);
+        Input::KEY_WINDOW_DIDYOUKNOW, didYouKnowWindow);
+    addButton(N_("SET"), _("Setup"), x, h,
+              Input::KEY_WINDOW_SETUP, setupWindow);
 
     if (mainGraphics)
     {
@@ -131,6 +136,12 @@ WindowMenu::~WindowMenu()
 
     delete mTextPopup;
     mTextPopup = nullptr;
+    for (std::map <std::string, ButtonInfo*>::iterator
+         it = mButtonNames.begin(),
+         it_end = mButtonNames.end(); it != it_end; ++it)
+    {
+        delete (*it).second;
+    }
     mButtonNames.clear();
     for (std::vector <Button*>::iterator it = mButtons.begin(),
          it_end = mButtons.end(); it != it_end; ++it)
@@ -147,75 +158,17 @@ WindowMenu::~WindowMenu()
 
 void WindowMenu::action(const gcn::ActionEvent &event)
 {
-    Window *window = nullptr;
+    const std::string &eventId = event.getId();
 
-    if (event.getId() == ":-)")
-    {
-        window = emoteShortcutWindow;
-    }
-    else if (event.getId() == "STA")
-    {
-        window = statusWindow;
-    }
-    else if (event.getId() == "EQU")
-    {
-        window = equipmentWindow;
-    }
-    else if (event.getId() == "INV")
-    {
-        window = inventoryWindow;
-    }
-    else if (event.getId() == "SKI")
-    {
-        window = skillDialog;
-    }
-#ifdef MANASERV_SUPPORT
-    else if (event.getId() == "SPE")
-    {
-        window = specialsWindow;
-    }
-#endif
-    else if (event.getId() == "SH")
-    {
-        window = itemShortcutWindow;
-    }
-    else if (event.getId() == "SOC")
-    {
-        window = socialWindow;
-    }
-    else if (event.getId() == "DR")
-    {
-        window = dropShortcutWindow;
-    }
-    else if (event.getId() == "SET")
-    {
-        window = setupWindow;
-    }
-    else if (event.getId() == "ONL")
-    {
-        window = whoIsOnline;
-    }
-    else if (event.getId() == "KS")
-    {
-        window = killStats;
-    }
-    else if (event.getId() == "BC")
-    {
-        window = botCheckerWindow;
-    }
-    else if (event.getId() == "SP")
-    {
-        window = spellShortcutWindow;
-    }
-    else if (event.getId() == "YK")
-    {
-        window = didYouKnowWindow;
-    }
-    else if (event.getId() == "QE")
-    {
-        window = questsWindow;
-    }
+    std::map <std::string, ButtonInfo*>::iterator
+        it = mButtonNames.find(eventId);
+    if (it == mButtonNames.end())
+        return;
 
+    ButtonInfo *const info = (*it).second;
+    if (!info)
+        return;
+    Window *const window = info->window;
     if (window)
     {
         window->setVisible(!window->isVisible());
@@ -226,7 +179,8 @@ void WindowMenu::action(const gcn::ActionEvent &event)
 
 void WindowMenu::addButton(const char *const text,
                            const std::string &description,
-                           int &x, int &h, const int key, const bool visible)
+                           int &x, int &h, const int key, Window *window,
+                           const bool visible)
 {
     Button *const btn = new Button(this, gettext(text), text, this);
     btn->setPosition(x, 0);
@@ -244,7 +198,7 @@ void WindowMenu::addButton(const char *const text,
         h = btn->getHeight();
     }
     mButtons.push_back(btn);
-    mButtonNames[text] = btn;
+    mButtonNames[text] = new ButtonInfo(btn, window);
 }
 
 void WindowMenu::mousePressed(gcn::MouseEvent &event)
@@ -313,11 +267,12 @@ void WindowMenu::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
 
 void WindowMenu::showButton(const std::string &name, const bool visible)
 {
-    Button *const btn = dynamic_cast<Button *const>(mButtonNames[name]);
-    if (!btn)
+    ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
+        mButtonNames[name]);
+    if (!info || !info->button)
         return;
 
-    btn->setVisible(visible);
+    info->button->setVisible(visible);
     updateButtons();
     saveButtons();
 }
@@ -358,10 +313,11 @@ void WindowMenu::loadButtons()
         std::string str = config.getValue("windowmenu" + toString(f), "");
         if (str == "" || str == "SET")
             continue;
-        Button *const btn = dynamic_cast<Button *const>(mButtonNames[str]);
-        if (!btn)
+        ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
+            mButtonNames[str]);
+        if (!info || !info->button)
             continue;
-        btn->setVisible(false);
+        info->button->setVisible(false);
     }
     updateButtons();
 }
