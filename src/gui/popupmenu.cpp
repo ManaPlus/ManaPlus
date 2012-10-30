@@ -1882,15 +1882,15 @@ void PopupMenu::showPopup(const int x, const int y, Button *const button)
 
         if (btn->isVisible())
         {
-            mBrowserBox->addRow(strprintf("@@hide button_%s|%s %s@@",
+            mBrowserBox->addRow(strprintf("@@hide button_%s|%s %s (%s)@@",
                 btn->getActionEventId().c_str(), _("Hide"),
-                btn->getCaption().c_str()));
+                btn->getDescription().c_str(), btn->getCaption().c_str()));
         }
         else
         {
-            mBrowserBox->addRow(strprintf("@@show button_%s|%s %s@@",
+            mBrowserBox->addRow(strprintf("@@show button_%s|%s %s (%s)@@",
                 btn->getActionEventId().c_str(), _("Show"),
-                btn->getCaption().c_str()));
+                btn->getDescription().c_str(), btn->getCaption().c_str()));
         }
     }
     mBrowserBox->addRow("##3---");
