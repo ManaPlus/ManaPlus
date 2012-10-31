@@ -58,14 +58,14 @@
 
 #if defined __APPLE__
 #define PACKAGE_OS "Apple"
+#elif defined(__ANDROID__) || defined(ANDROID)
+#define PACKAGE_OS "Android"
 #elif defined __FreeBSD__ || defined __DragonFly__
 #define PACKAGE_OS "FreeBSD"
 #elif defined __NetBSD__
 #define PACKAGE_OS "NetBSD"
 #elif defined __OpenBSD__
 #define PACKAGE_OS "OpenBSD"
-#elif defined(__ANDROID__) || defined(ANDROID)
-#define PACKAGE_OS "Android"
 #elif defined __linux__ || defined __linux
 #define PACKAGE_OS "Linux"
 #elif defined __GNU__
@@ -94,6 +94,16 @@
 #define PACKAGE_VERSION_4144 "ManaPlus 4144-" SMALL_VERSION ""
 
 #define FULL_VERSION "ManaPlus " SMALL_VERSION " " PACKAGE_OS
+
+#ifdef ANDROID
+#ifdef PKG_DATADIR
+#undef PKG_DATADIR
+#endif
+#ifdef LOCALEDIR
+#undef LOCALEDIR
+#endif
+#define LOCALEDIR "locale"
+#endif
 
 #ifndef PKG_DATADIR
 #define PKG_DATADIR ""
