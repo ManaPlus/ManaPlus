@@ -348,6 +348,8 @@ private:
 
     static Client *mInstance;
 
+    static void bindTextDomain(char *name, char *path);
+
     Options mOptions;
 
     std::string mPackageDir;

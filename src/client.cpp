@@ -331,7 +331,7 @@ void Client::gameInit()
     putenv((char*)("LANGUAGE=" + lang).c_str());
     // mingw doesn't like LOCALEDIR to be defined for some reason
     if (lang != "C")
-        bindtextdomain("manaplus", "translations/");
+        bindTextDomain("manaplus", "translations/");
 #else
     if (!lang.empty())
     {
@@ -339,13 +339,17 @@ void Client::gameInit()
         putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
     }
 #ifdef ENABLE_PORTABLE
-    bindtextdomain("manaplus", (std::string(PHYSFS_getBaseDir())
+    bindTextDomain("manaplus", (std::string(PHYSFS_getBaseDir())
         + "../locale/").c_str());
 #else
-    bindtextdomain("manaplus", LOCALEDIR);
+    bindTextDomain("manaplus", LOCALEDIR);
 #endif
 #endif
-    setlocale(LC_MESSAGES, lang.c_str());
+    char *locale = setlocale(LC_MESSAGES, lang.c_str());
+    if (locale)
+        logger->log("locale: %s", locale);
+    else
+        logger->log("locale empty");
     bind_textdomain_codeset("manaplus", "UTF-8");
     textdomain("manaplus");
 #endif
@@ -664,6 +668,15 @@ Client::~Client()
         gameClear();
     else
         testsClear();
+}
+
+void Client::bindTextDomain(char *name, char *path)
+{
+    const char *const dir = bindtextdomain(name, path);
+    if (dir)
+        logger->log("bindtextdomain: %s", dir);
+    else
+        logger->log("bindtextdomain failed");
 }
 
 void Client::testsClear()
