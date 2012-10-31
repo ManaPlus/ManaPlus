@@ -56,11 +56,13 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
     if (width < okButton->getWidth())
         width = okButton->getWidth();
 
-    width = mTextBox->getWidth();
+    if (mTextBox->getWidth() > width)
+        width = mTextBox->getWidth();
+    if (okButton->getWidth() > width)
+        width = okButton->getWidth();
     setContentSize(width, mTextBox->getHeight() + okButton->getHeight()
         + getOption("buttonPadding", 8));
-    mTextBox->setPosition(0, 0);
-
+    mTextBox->setPosition((width - mTextBox->getWidth()) / 2, 0);
     okButton->setPosition((width - okButton->getWidth()) / 2,
         mTextBox->getHeight() + getOption("buttonPadding", 8));
 
