@@ -241,7 +241,11 @@ int main(int argc, char *argv[])
     }
 
     // Initialize PhysicsFS
+#ifdef ANDROID
+    if (!PHYSFS_init((getRealPath(".") + "/fakebinary").c_str()))
+#else
     if (!PHYSFS_init(argv[0]))
+#endif
     {
         std::cout << "Error while initializing PhysFS: "
                   << PHYSFS_getLastError() << std::endl;
