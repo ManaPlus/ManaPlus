@@ -338,11 +338,16 @@ void Client::gameInit()
         putenv(const_cast<char*>(("LANG=" + lang).c_str()));
         putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
     }
+#ifdef ANDROID
+    bindTextDomain("manaplus", (std::string(PHYSFS_getBaseDir())
+        + "/locale").c_str());
+#else
 #ifdef ENABLE_PORTABLE
     bindTextDomain("manaplus", (std::string(PHYSFS_getBaseDir())
         + "../locale/").c_str());
 #else
     bindTextDomain("manaplus", LOCALEDIR);
+#endif
 #endif
 #endif
     char *locale = setlocale(LC_MESSAGES, lang.c_str());
@@ -421,7 +426,6 @@ void Client::gameInit()
         logger->error(strprintf("%s couldn't be set as home directory! "
                                 "Exiting.", mLocalDataDir.c_str()));
     }
-
 
     resman->addToSearchPath(PKG_DATADIR "data/perserver/default", false);
 
@@ -670,7 +674,7 @@ Client::~Client()
         testsClear();
 }
 
-void Client::bindTextDomain(char *name, char *path)
+void Client::bindTextDomain(const char *const name, const char *const path)
 {
     const char *const dir = bindtextdomain(name, path);
     if (dir)
