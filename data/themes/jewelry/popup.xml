@@ -2,6 +2,7 @@
 	<widget type="Window" xpos="260" ypos="100">
 
 		<option name="padding" value="10" />
+		<option name="palette" value="1" />
 
 		<!-- Top Row -->
 		<part type="top-left-corner" width="32" height="15" />
