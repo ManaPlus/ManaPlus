@@ -168,14 +168,14 @@
         <color id="PLAYER_ADVANCED" color="#005000" />
         <color id="BUBBLE_NAME" color="#cccccc" />
         <color id="BUBBLE_TEXT" color="#ffffff" />
-        <color id="RED" color="#ff0000" />
-        <color id="GREEN" color="#009000" />
-        <color id="BLUE" color="#0000ff" />
-        <color id="ORANGE" color="#e0980e" />
-        <color id="YELLOW" color="#f1dc27" />
-        <color id="PINK" color="#ff00d8" />
-        <color id="PURPLE" color="#8415e2" />
-        <color id="GRAY" color="#919191" />
+        <color id="RED" color="#ff8080" />
+        <color id="GREEN" color="#67ec67" />
+        <color id="BLUE" color="#9f9fff" />
+        <color id="ORANGE" color="#f1c777" />
+        <color id="YELLOW" color="#f8eb7c" />
+        <color id="PINK" color="#ff9ff0" />
+        <color id="PURPLE" color="#ddb1ff" />
+        <color id="GRAY" color="#d7d7d7" />
         <color id="BROWN" color="#e7d1bc" />
     </palette>
 
