@@ -104,8 +104,13 @@ DefaultsData* getConfigDefaults()
     AddDEF("particleeffects", true);
     AddDEF("logToStandardOut", false);
     AddDEF("opengl", 0);
+#ifdef ANDROID
+    AddDEF("screenwidth", 0);
+    AddDEF("screenheight", 0);
+#else
     AddDEF("screenwidth", defaultScreenWidth);
     AddDEF("screenheight", defaultScreenHeight);
+#endif
     AddDEF("screen", false);
     AddDEF("hwaccel", false);
     AddDEF("sound", false);
