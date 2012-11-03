@@ -528,7 +528,7 @@ void Client::gameInit()
     }
 #endif
 
-#ifdef USE_OPENGL
+#if defined(USE_OPENGL) && !defined(ANDROID)
     if (!mOptions.safeMode && mOptions.test.empty()
         && !config.getBoolValue("videodetected"))
     {
@@ -2115,8 +2115,13 @@ void Client::storeSafeParameters() const
         config.setValue("altfpslimit", 3);
         config.setValue("sound", false);
         config.setValue("safemode", true);
+#ifdef ANDROID
+        config.setValue("screenwidth", 0);
+        config.setValue("screenheight", 0);
+#else
         config.setValue("screenwidth", 640);
         config.setValue("screenheight", 480);
+#endif
         config.setValue("font", "fonts/dejavusans.ttf");
         config.setValue("boldFont", "fonts/dejavusans-bold.ttf");
         config.setValue("particleFont", "fonts/dejavusans.ttf");
@@ -2131,8 +2136,13 @@ void Client::storeSafeParameters() const
     {
         // if video mode not configured reset only video mode to safe
         config.setValue("opengl", 0);
+#ifdef ANDROID
+        config.setValue("screenwidth", 0);
+        config.setValue("screenheight", 0);
+#else
         config.setValue("screenwidth", 640);
         config.setValue("screenheight", 480);
+#endif
     }
 
     config.write();
