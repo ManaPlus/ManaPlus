@@ -157,7 +157,7 @@ else
             AC_CHECK_LIB([GL], [glBegin], ,
             AC_MSG_ERROR([ *** Unable to find OpenGL library]))
         else
-            LDFLAGS="$LDFLAGS -lGLESv2 -lEGL"
+            LDFLAGS="$LDFLAGS -lGLESv1_CM"
         fi
     else
         LDFLAGS="$LDFLAGS -framework OpenGL"
