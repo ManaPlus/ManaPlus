@@ -100,6 +100,8 @@ class SkillListBox final : public ListBox
             mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
             mTextColor(getThemeColor(Theme::TEXT))
         {
+            if (mSkin)
+                mTextPadding = mSkin->getOption("textPadding", 34);
         }
 
         A_DELETE_COPY(SkillListBox)
@@ -148,13 +150,14 @@ class SkillListBox final : public ListBox
 
             // Draw the list elements
             graphics->setColor(mTextColor);
+            const int width2 = getWidth() - mPadding;
             for (int i = 0, y = 1;
                  i < model->getNumberOfElements();
                  ++i, y += getRowHeight())
             {
                 SkillInfo *const e = model->getSkillAt(i);
                 if (e)
-                    e->draw(graphics, y + mPadding, getWidth() + mPadding);
+                    e->draw(graphics, mPadding, mTextPadding, y, width2);
             }
         }
 
@@ -188,6 +191,7 @@ class SkillListBox final : public ListBox
         TextPopup *mPopup;
         gcn::Color mHighlightColor;
         gcn::Color mTextColor;
+        int mTextPadding;
 };
 
 class SkillTab final : public Tab
@@ -626,10 +630,12 @@ void SkillInfo::update()
         model->updateVisibilities();
 }
 
-void SkillInfo::draw(Graphics *const graphics, const int y, const int width)
+void SkillInfo::draw(Graphics *const graphics, const int padding,
+                     const int paddingText, const int y, const int width)
 {
-    graphics->drawImage(icon, 1, y);
-    graphics->drawText(name, 34, y);
+    const int yPad = y + padding;
+    graphics->drawImage(icon, padding, yPad);
+    graphics->drawText(name, paddingText, yPad);
 
     if (skillLevelWidth < 0)
     {
@@ -637,7 +643,7 @@ void SkillInfo::draw(Graphics *const graphics, const int y, const int width)
         skillLevelWidth = graphics->getFont()->getWidth(skillLevel) + 1;
     }
 
-    graphics->drawText(skillLevel, width - skillLevelWidth, y);
+    graphics->drawText(skillLevel, width - skillLevelWidth, yPad);
 }
 
 SkillInfo* SkillDialog::getSkill(int id)

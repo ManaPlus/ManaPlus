@@ -73,7 +73,8 @@ struct SkillInfo final
 
     void update();
 
-    void draw(Graphics *const graphics, const int y, const int width);
+    void draw(Graphics *const graphics, const int padding,
+              const int paddingText, const int y, const int width);
 };
 
 typedef std::vector<SkillInfo*> SkillList;
