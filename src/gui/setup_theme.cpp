@@ -315,6 +315,7 @@ void Setup_Theme::updateInfo()
         mThemeInfo = "";
     }
     replaceAll(mThemeInfo, "\\n", "\n");
+    mInfoButton->setEnabled(!mThemeInfo.empty());
     delete info;
 }
 
