@@ -222,7 +222,9 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mFpsLabel(new Label(this)),
     mAltFpsSlider(new Slider(2, 160)),
     mAltFpsLabel(new Label(this, _("Alt FPS limit: "))),
+#ifndef ANDROID
     mDetectButton(new Button(this, _("Detect best mode"), "detect", this)),
+#endif
     mDialog(nullptr)
 {
     setName(_("Video"));
@@ -302,7 +304,9 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     place(0, 7, mAltFpsSlider);
     place(1, 7, mAltFpsLabel).setPadding(3);
 
+#ifndef ANDROID
     place(0, 8, mDetectButton);
+#endif
 
     int width = 600;
 
@@ -545,7 +549,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     {
         config.setValue("noframe", mNoFrameCheckBox->isSelected());
     }
-#ifdef USE_OPENGL
+#if defined(USE_OPENGL) && !defined(ANDROID)
     else if (id == "detect")
     {
         TestMain *test = graphicsManager.startDetection();

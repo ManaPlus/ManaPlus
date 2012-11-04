@@ -87,7 +87,9 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
         Slider *mAltFpsSlider;
         Label *mAltFpsLabel;
 
+#ifndef ANDROID
         Button *mDetectButton;
+#endif
         TextDialog *mDialog;
 };
 
