@@ -1373,6 +1373,9 @@ int Client::gameExec()
                     // Allow any alpha opacity
                     Theme::instance()->setMinimumOpacity(-1.0f);
 
+                    if (chatLogger)
+                        chatLogger->setServerName(mServerName);
+
 #ifdef ANDROID
                     delete mCloseButton;
                     mCloseButton = nullptr;

@@ -164,7 +164,6 @@ const unsigned adjustDelay = 10;
  */
 static void initEngines()
 {
-
     DepricatedEvent::trigger(CHANNEL_GAME,
         DepricatedEvent(EVENT_ENGINESINITALIZING));
 
