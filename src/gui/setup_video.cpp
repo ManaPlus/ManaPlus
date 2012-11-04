@@ -306,6 +306,10 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
 
 #ifndef ANDROID
     place(0, 8, mDetectButton);
+#else
+    mNoFrameCheckBox->setEnabled(false);
+    mEnableResizeCheckBox->setEnabled(false);
+    mFsCheckBox->setEnabled(false);
 #endif
 
     int width = 600;

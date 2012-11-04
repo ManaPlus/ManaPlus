@@ -56,8 +56,10 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
     new SetupItemLabel(_("Effects"), "", this);
 
+#ifndef ANDROID
     new SetupItemCheckBox(_("Grab mouse and keyboard input"),
         "", "grabinput", this, "grabinputEvent");
+#endif
 
     new SetupItemCheckBox(_("Blurring textures (OpenGL)"),
         "", "blur", this, "blurEvent");
