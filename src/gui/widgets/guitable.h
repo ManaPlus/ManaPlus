@@ -153,6 +153,8 @@ public:
     // Constraints inherited from TableModelListener
     virtual void modelUpdated(bool) override;
 
+    void requestFocus();
+
 protected:
     /** Frees all action listeners on inner widgets. */
     virtual void uninstallActionListeners();

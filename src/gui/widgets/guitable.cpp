@@ -599,3 +599,10 @@ void GuiTable::_setFocusHandler(gcn::FocusHandler* focusHandler)
         }
     }
 }
+
+void GuiTable::requestFocus()
+{
+    if (!mFocusHandler)
+        return;
+    gcn::Widget::requestFocus();
+}
