@@ -1243,6 +1243,7 @@ void Being::nextTile()
 
 void Being::logic()
 {
+    BLOCK_START("Being::logic")
     // Reduce the time that speech is still displayed
     if (mSpeechTime > 0)
         mSpeechTime--;
@@ -1264,7 +1265,10 @@ void Being::logic()
 
         // This is a hack that stops NPCs from running off the map...
         if (mDest.x <= 0 && mDest.y <= 0)
+        {
+            BLOCK_END("Being::logic")
             return;
+        }
 
         // The Vector representing the difference between current position
         // and the next destination path node.
@@ -1449,6 +1453,7 @@ void Being::logic()
         if (mType != PLAYER && actorSpriteManager)
             actorSpriteManager->destroy(this);
     }
+    BLOCK_END("Being::logic")
 }
 
 void Being::drawEmotion(Graphics *const graphics, const int offsetX,
@@ -1878,6 +1883,7 @@ void Being::updateName()
 
 void Being::reReadConfig()
 {
+    BLOCK_START("Being::reReadConfig")
     if (mUpdateConfigTime + 1 < cur_time)
     {
         mHighlightMapPortals = config.getBoolValue("highlightMapPortals");
@@ -1898,6 +1904,7 @@ void Being::reReadConfig()
 
         mUpdateConfigTime = cur_time;
     }
+    BLOCK_END("Being::reReadConfig")
 }
 
 bool Being::updateFromCache()

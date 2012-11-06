@@ -155,6 +155,7 @@ namespace gcn
     void Graphics::drawText(const std::string& text, int x, int y,
                             Alignment alignment)
     {
+        FUNC_BLOCK("Graphics::drawText", 1)
         if (!mFont)
             throw GCN_EXCEPTION("No font set.");
 

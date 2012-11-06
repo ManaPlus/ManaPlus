@@ -1693,8 +1693,10 @@ void ChatWindow::mouseExited(gcn::MouseEvent& mouseEvent)
 
 void ChatWindow::draw(gcn::Graphics* graphics)
 {
+    BLOCK_START("ChatWindow::draw")
     if (!mAutoHide || mHaveMouse)
         Window::draw(graphics);
+    BLOCK_END("ChatWindow::draw")
 }
 
 void ChatWindow::updateVisibility()

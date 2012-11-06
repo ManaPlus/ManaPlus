@@ -1023,12 +1023,14 @@ void ResourceManager::scheduleDelete(SDL_Surface *const surface)
 
 void ResourceManager::clearScheduled()
 {
+    BLOCK_START("ResourceManager::clearScheduled")
     for (std::set<SDL_Surface*>::iterator i = deletedSurfaces.begin(),
          i_end = deletedSurfaces.end(); i != i_end; ++i)
     {
         SDL_FreeSurface(*i);
     }
     deletedSurfaces.clear();
+    BLOCK_END("ResourceManager::clearScheduled")
 }
 
 struct RescaledLoader
@@ -1069,6 +1071,7 @@ Image *ResourceManager::getRescaled(Image *const image,
 
 void ResourceManager::delayedLoad()
 {
+    BLOCK_START("ResourceManager::delayedLoad")
     static int loadTime = 0;
     if (loadTime < cur_time)
     {
@@ -1091,6 +1094,7 @@ void ResourceManager::delayedLoad()
         else
             loadTime = time2 + 3;
     }
+    BLOCK_END("ResourceManager::delayedLoad")
 }
 
 void ResourceManager::removeDelayLoad(const AnimationDelayLoad

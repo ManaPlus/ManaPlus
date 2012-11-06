@@ -206,10 +206,14 @@ void Minimap::toggle()
 
 void Minimap::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("Minimap::draw")
     Window::draw(graphics);
 
     if (!userPalette || !player_node || !viewport)
+    {
+        BLOCK_END("Minimap::draw")
         return;
+    }
 
     Graphics *const graph = static_cast<Graphics*>(graphics);
 
@@ -218,7 +222,10 @@ void Minimap::draw(gcn::Graphics *graphics)
     graphics->pushClipArea(a);
 
     if (!actorSpriteManager)
+    {
+        BLOCK_END("Minimap::draw")
         return;
+    }
 
     mMapOriginX = 0;
     mMapOriginY = 0;
@@ -396,6 +403,7 @@ void Minimap::draw(gcn::Graphics *graphics)
     graphics->setColor(userPalette->getColor(UserPalette::PC));
     graphics->drawRectangle(gcn::Rectangle(x, y, w, h));
     graphics->popClipArea();
+    BLOCK_END("Minimap::draw")
 }
 
 void Minimap::mouseReleased(gcn::MouseEvent &event)

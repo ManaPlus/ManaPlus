@@ -93,6 +93,7 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
     if (!spellShortcut)
         return;
 
+    BLOCK_START("SpellShortcutContainer::draw")
     if (Client::getGuiAlpha() != mAlpha)
     {
         mAlpha = Client::getGuiAlpha();
@@ -155,7 +156,7 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
     {
         // Draw the item image being dragged by the cursor.
     }
-
+    BLOCK_END("SpellShortcutContainer::draw")
 }
 
 void SpellShortcutContainer::mouseDragged(gcn::MouseEvent &event)

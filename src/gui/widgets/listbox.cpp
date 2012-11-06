@@ -86,6 +86,7 @@ void ListBox::draw(gcn::Graphics *graphics)
     if (!mListModel)
         return;
 
+    BLOCK_START("ListBox::draw")
     updateAlpha();
 
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
@@ -109,6 +110,7 @@ void ListBox::draw(gcn::Graphics *graphics)
         graphics->drawText(mListModel->getElementAt(i),
             mPadding, y + mPadding);
     }
+    BLOCK_END("ListBox::draw")
 }
 
 void ListBox::keyPressed(gcn::KeyEvent &keyEvent)
@@ -225,11 +227,13 @@ void ListBox::refocus()
 
 void ListBox::adjustSize()
 {
+    BLOCK_START("ListBox::adjustSize")
     if (mListModel)
     {
         setHeight(getRowHeight() * mListModel->getNumberOfElements()
             + 2 * mPadding);
     }
+    BLOCK_END("ListBox::adjustSize")
 }
 
 void ListBox::logic()

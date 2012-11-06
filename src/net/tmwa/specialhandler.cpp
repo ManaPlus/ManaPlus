@@ -50,6 +50,7 @@ SpecialHandler::SpecialHandler() :
 
 void SpecialHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("SpecialHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_PLAYER_SKILLS:
@@ -67,6 +68,7 @@ void SpecialHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("SpecialHandler::handleMessage")
 }
 
 void SpecialHandler::useBeing(int id, int level, int beingId)

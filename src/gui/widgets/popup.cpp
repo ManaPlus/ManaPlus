@@ -102,6 +102,7 @@ void Popup::setWindowContainer(WindowContainer *const wc)
 
 void Popup::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("Popup::draw")
     Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (mRedraw)
@@ -116,6 +117,7 @@ void Popup::draw(gcn::Graphics *graphics)
 //    g->drawImageRect(0, 0, getWidth(), getHeight(), mSkin->getBorder());
 
     drawChildren(graphics);
+    BLOCK_END("Popup::draw")
 }
 
 gcn::Rectangle Popup::getChildrenArea()

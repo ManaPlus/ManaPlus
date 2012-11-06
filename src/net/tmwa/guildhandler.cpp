@@ -80,6 +80,7 @@ GuildHandler::~GuildHandler()
 
 void GuildHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("GuildHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_GUILD_CREATE_RESPONSE:
@@ -189,6 +190,7 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("GuildHandler::handleMessage")
 }
 
 void GuildHandler::create(const std::string &name)

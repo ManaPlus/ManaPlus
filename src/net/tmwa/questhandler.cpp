@@ -52,6 +52,7 @@ QuestHandler::QuestHandler() :
 
 void QuestHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("QuestHandler::handleMessage")
     switch (msg.getId())
     {
         case CMSG_QUEST_SET_VAR:
@@ -65,6 +66,7 @@ void QuestHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("QuestHandler::handleMessage")
 }
 
 void QuestHandler::processSetQuestVar(Net::MessageIn &msg A_UNUSED)

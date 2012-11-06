@@ -177,8 +177,12 @@ void ScrollArea::init(std::string skinName)
 
 void ScrollArea::logic()
 {
+    BLOCK_START("ScrollArea::logic")
     if (!isVisible())
+    {
+        BLOCK_END("ScrollArea::logic")
         return;
+    }
 
     gcn::ScrollArea::logic();
     gcn::Widget *const content = getContent();
@@ -208,6 +212,7 @@ void ScrollArea::logic()
         setHorizontalScrollAmount(mHScroll - mLeftButtonScrollAmount);
     else if (mRightButtonPressed)
         setHorizontalScrollAmount(mHScroll + mRightButtonScrollAmount);
+    BLOCK_END("ScrollArea::logic")
 }
 
 void ScrollArea::updateAlpha()
@@ -236,6 +241,7 @@ void ScrollArea::updateAlpha()
 
 void ScrollArea::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("ScrollArea::draw")
     if (mVBarVisible)
     {
         drawUpButton(graphics);
@@ -254,10 +260,12 @@ void ScrollArea::draw(gcn::Graphics *graphics)
 
     updateAlpha();
     drawChildren(graphics);
+    BLOCK_END("ScrollArea::draw")
 }
 
 void ScrollArea::drawFrame(gcn::Graphics *graphics)
 {
+    BLOCK_START("ScrollArea::drawFrame")
     if (mOpaque)
     {
         const int bs = getFrameSize();
@@ -307,6 +315,7 @@ void ScrollArea::drawFrame(gcn::Graphics *graphics)
 //        static_cast<Graphics*>(graphics)->
 //            drawImageRect(0, 0, w, h, background);
     }
+    BLOCK_END("ScrollArea::drawFrame")
 }
 
 void ScrollArea::setOpaque(bool opaque)

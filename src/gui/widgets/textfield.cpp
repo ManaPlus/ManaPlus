@@ -119,6 +119,7 @@ void TextField::updateAlpha()
 
 void TextField::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("TextField::draw")
     updateAlpha();
 
     if (isFocused())
@@ -131,13 +132,16 @@ void TextField::draw(gcn::Graphics *graphics)
     graphics->setColor(mForegroundColor);
     graphics->setFont(getFont());
     graphics->drawText(mText, mPadding - mXScroll, mPadding);
+    BLOCK_END("TextField::draw")
 }
 
 void TextField::drawFrame(gcn::Graphics *graphics)
 {
+    BLOCK_START("TextField::drawFrame")
     const int bs = 2 * getFrameSize();
     static_cast<Graphics*>(graphics)->drawImageRect(0, 0,
         getWidth() + bs, getHeight() + bs, skin);
+    BLOCK_END("TextField::drawFrame")
 }
 
 void TextField::setNumeric(const bool numeric)

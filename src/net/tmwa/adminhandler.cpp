@@ -56,6 +56,7 @@ AdminHandler::AdminHandler() :
 
 void AdminHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("AdminHandler::handleMessage")
     int id;
     switch (msg.getId())
     {
@@ -68,6 +69,7 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("AdminHandler::handleMessage")
 }
 
 void AdminHandler::announce(const std::string &text)

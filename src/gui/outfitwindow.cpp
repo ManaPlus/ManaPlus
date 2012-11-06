@@ -308,6 +308,7 @@ void OutfitWindow::copyOutfit(const int src, const int dst)
 
 void OutfitWindow::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("OutfitWindow::draw")
     Window::draw(graphics);
     Graphics *const g = static_cast<Graphics*>(graphics);
 
@@ -364,6 +365,7 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
             g->drawImage(image, tPosX, tPosY);
         }
     }
+    BLOCK_END("OutfitWindow::draw")
 }
 
 

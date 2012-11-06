@@ -147,6 +147,7 @@ void Tab::updateAlpha()
 
 void Tab::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("Tab::draw")
     int mode = TAB_STANDARD;
 
     // check which type of tab to draw
@@ -184,7 +185,10 @@ void Tab::draw(gcn::Graphics *graphics)
 
     const Skin *const skin = tabImg[mode];
     if (!skin)
+    {
+        BLOCK_END("Tab::draw")
         return;
+    }
 
     updateAlpha();
 
@@ -206,6 +210,7 @@ void Tab::draw(gcn::Graphics *graphics)
 
     // draw label
     drawChildren(graphics);
+    BLOCK_END("Tab::draw")
 }
 
 void Tab::widgetResized(const gcn::Event &event A_UNUSED)

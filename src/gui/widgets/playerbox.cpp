@@ -97,6 +97,7 @@ void PlayerBox::init(std::string skin)
 
 void PlayerBox::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("PlayerBox::draw")
     if (mBeing)
     {
         // Draw character
@@ -114,10 +115,12 @@ void PlayerBox::draw(gcn::Graphics *graphics)
                 mBackground.grid[a]->setAlpha(Client::getGuiAlpha());
         }
     }
+    BLOCK_END("PlayerBox::draw")
 }
 
 void PlayerBox::drawFrame(gcn::Graphics *graphics)
 {
+    BLOCK_START("PlayerBox::drawFrame")
     if (mDrawBackground)
     {
         int w, h, bs;
@@ -128,4 +131,5 @@ void PlayerBox::drawFrame(gcn::Graphics *graphics)
         static_cast<Graphics*>(graphics)->drawImageRect(
             0, 0, w, h, mBackground);
     }
+    BLOCK_END("PlayerBox::drawFrame")
 }

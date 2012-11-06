@@ -91,6 +91,7 @@ CheckBox::~CheckBox()
 
 void CheckBox::draw(gcn::Graphics* graphics)
 {
+    BLOCK_START("CheckBox::draw")
     drawBox(graphics);
 
     graphics->setFont(getFont());
@@ -98,6 +99,7 @@ void CheckBox::draw(gcn::Graphics* graphics)
 
     graphics->drawText(getCaption(), mPadding + mImageSize + mSpacing,
         mPadding);
+    BLOCK_END("CheckBox::draw")
 }
 
 void CheckBox::updateAlpha()

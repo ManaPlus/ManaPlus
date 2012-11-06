@@ -65,6 +65,7 @@ PartyHandler::~PartyHandler()
 
 void PartyHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("PartyHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_PARTY_CREATE:
@@ -101,6 +102,7 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("PartyHandler::handleMessage")
 }
 
 void PartyHandler::create(const std::string &name)

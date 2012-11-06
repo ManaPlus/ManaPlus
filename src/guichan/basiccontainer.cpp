@@ -257,6 +257,8 @@ namespace gcn
 
     void BasicContainer::drawChildren(Graphics* graphics)
     {
+        BLOCK_START("BasicContainer::drawChildren")
+
         graphics->pushClipArea(getChildrenArea());
 
         for (WidgetListConstIterator iter = mWidgets.begin();
@@ -274,26 +276,33 @@ namespace gcn
                     rec.width += 2 * (*iter)->getFrameSize();
                     rec.height += 2 * (*iter)->getFrameSize();
                     graphics->pushClipArea(rec);
+                    BLOCK_START("BasicContainer::drawChildren 1")
                     (*iter)->drawFrame(graphics);
+                    BLOCK_END("BasicContainer::drawChildren 1")
                     graphics->popClipArea();
                 }
 
                 graphics->pushClipArea((*iter)->getDimension());
+                BLOCK_START("BasicContainer::drawChildren 2")
                 (*iter)->draw(graphics);
+                BLOCK_END("BasicContainer::drawChildren 2")
                 graphics->popClipArea();
             }
         }
 
         graphics->popClipArea();
+        BLOCK_END("BasicContainer::drawChildren")
     }
 
     void BasicContainer::logicChildren()
     {
+        BLOCK_START("BasicContainer::logicChildren")
         for (WidgetListConstIterator iter = mWidgets.begin();
              iter != mWidgets.end(); ++ iter)
         {
             (*iter)->logic();
         }
+        BLOCK_END("BasicContainer::logicChildren")
     }
 
     void BasicContainer::showWidgetPart(Widget* widget, Rectangle area)

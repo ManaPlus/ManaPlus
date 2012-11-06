@@ -255,6 +255,7 @@ void MiniStatusWindow::updateStatus()
 
 void MiniStatusWindow::logic()
 {
+    BLOCK_START("MiniStatusWindow::logic")
     Popup::logic();
 
     for (size_t i = 0, sz = mIcons.size(); i < sz; i++)
@@ -262,11 +263,14 @@ void MiniStatusWindow::logic()
         if (mIcons[i])
             mIcons[i]->update(tick_time * 10);
     }
+    BLOCK_END("MiniStatusWindow::logic")
 }
 
 void MiniStatusWindow::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("MiniStatusWindow::draw")
     drawChildren(graphics);
+    BLOCK_END("MiniStatusWindow::draw")
 }
 
 void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)

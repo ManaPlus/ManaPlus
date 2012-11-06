@@ -68,6 +68,7 @@ SimpleAnimation::~SimpleAnimation()
 bool SimpleAnimation::draw(Graphics *const graphics,
                            const int posX, const int posY) const
 {
+    FUNC_BLOCK("SimpleAnimation::draw", 1)
     if (!mCurrentFrame || !mCurrentFrame->image)
         return false;
 

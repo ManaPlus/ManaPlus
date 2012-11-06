@@ -121,6 +121,7 @@ GeneralHandler::~GeneralHandler()
 
 void GeneralHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("GeneralHandler::handleMessage")
     int code;
 
     switch (msg.getId())
@@ -164,6 +165,7 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("GeneralHandler::handleMessage")
 }
 
 void GeneralHandler::load()
@@ -220,9 +222,12 @@ void GeneralHandler::flushNetwork()
     if (!mNetwork)
         return;
 
+    BLOCK_START("GeneralHandler::flushNetwork 1")
     mNetwork->flush();
+    BLOCK_END("GeneralHandler::flushNetwork 1")
     mNetwork->dispatchMessages();
 
+    BLOCK_START("GeneralHandler::flushNetwork 3")
     if (mNetwork->getState() == Network::NET_ERROR)
     {
         if (!mNetwork->getError().empty())
@@ -232,6 +237,7 @@ void GeneralHandler::flushNetwork()
 
         Client::setState(STATE_ERROR);
     }
+    BLOCK_END("GeneralHandler::flushNetwork 3")
 }
 
 void GeneralHandler::clearHandlers()

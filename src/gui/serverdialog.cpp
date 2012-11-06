@@ -492,6 +492,7 @@ void ServerDialog::mouseClicked(gcn::MouseEvent &mouseEvent)
 
 void ServerDialog::logic()
 {
+    BLOCK_START("ServerDialog::logic")
     {
         MutexLocker tempLock(&mMutex);
         if (mDownloadStatus == DOWNLOADING_COMPLETE)
@@ -520,6 +521,7 @@ void ServerDialog::logic()
     }
 
     Window::logic();
+    BLOCK_END("ServerDialog::logic")
 }
 
 void ServerDialog::downloadServerList()

@@ -67,6 +67,7 @@ ImageParticle::~ImageParticle()
 
 bool ImageParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
 {
+    FUNC_BLOCK("ImageParticle::draw", 1)
     if (!isAlive() || !mImage)
         return false;
 

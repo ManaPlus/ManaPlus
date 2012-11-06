@@ -325,6 +325,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     if (!player_node)
         return;
 
+    BLOCK_START("Map::draw")
     // Calculate range of tiles which are on-screen
     const int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1
         + mMaxTileHeight - mTileHeight;
@@ -338,7 +339,9 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     // so that they overlap correctly
 //    if (mSpritesUpdated)
 //    {
+    BLOCK_START("Map::draw sort")
         mActors.sort(actorCompare);
+    BLOCK_END("Map::draw sort")
 //        mSpritesUpdated = false;
 //    }
 
@@ -475,6 +478,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     }
 
     drawAmbientLayers(graphics, FOREGROUND_LAYERS, mOverlayDetail);
+    BLOCK_END("Map::draw")
 }
 
 #define fillCollision(collision, color) \
@@ -546,6 +550,7 @@ void Map::drawCollision(Graphics *const graphics,
 
 void Map::updateAmbientLayers(const float scrollX, const float scrollY)
 {
+    BLOCK_START("Map::updateAmbientLayers")
     static int lastTick = tick_time; // static = only initialized at first call
 
     if (mLastAScrollX == 0.0f && mLastAScrollY == 0.0f)
@@ -575,14 +580,19 @@ void Map::updateAmbientLayers(const float scrollX, const float scrollY)
     mLastAScrollX = scrollX;
     mLastAScrollY = scrollY;
     lastTick = tick_time;
+    BLOCK_END("Map::updateAmbientLayers")
 }
 
 void Map::drawAmbientLayers(Graphics *const graphics, const LayerType type,
                             const int detail)
 {
+    BLOCK_START("Map::drawAmbientLayers")
     // Detail 0 = no ambient effects except background image
     if (detail <= 0 && type != BACKGROUND_LAYERS)
+    {
+        BLOCK_END("Map::drawAmbientLayers")
         return;
+    }
 
     // find out which layer list to draw
     AmbientLayerVector *layers;
@@ -609,6 +619,7 @@ void Map::drawAmbientLayers(Graphics *const graphics, const LayerType type,
         if (detail == 1)
             break;
     }
+    BLOCK_END("Map::drawAmbientLayers")
 }
 
 Tileset *Map::getTilesetWithGid(const int gid) const

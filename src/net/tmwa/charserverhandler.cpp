@@ -73,6 +73,7 @@ CharServerHandler::CharServerHandler() :
 
 void CharServerHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("CharServerHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_CHAR_LOGIN:
@@ -162,6 +163,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("CharServerHandler::handleMessage")
 }
 
 void CharServerHandler::readPlayerData(Net::MessageIn &msg,

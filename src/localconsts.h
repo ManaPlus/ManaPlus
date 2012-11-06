@@ -62,3 +62,8 @@
 
 //Android logging
 #define ANDROID_LOG 1
+
+//profiler
+//#define USE_PROFILER 1
+
+#include "utils/perfomance.h"

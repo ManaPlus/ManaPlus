@@ -80,6 +80,7 @@ ActorSprite::~ActorSprite()
 
 bool ActorSprite::draw(Graphics *graphics, int offsetX, int offsetY) const
 {
+    FUNC_BLOCK("ActorSprite::draw", 1)
     // TODO: Eventually, we probably should fix all sprite offsets so that
     //       these translations aren't necessary anymore. The sprites know
     //       best where their base point should be.
@@ -111,6 +112,7 @@ bool ActorSprite::drawSpriteAt(Graphics *const graphics,
 
 void ActorSprite::logic()
 {
+    BLOCK_START("ActorSprite::logic")
     // Update sprite animations
     update(tick_time * MILLISECONDS_IN_A_TICK);
 
@@ -130,6 +132,7 @@ void ActorSprite::logic()
 
     // Update particle effects
     mChildParticleEffects.moveTo(mPos.x, mPos.y);
+    BLOCK_END("ActorSprite::logic")
 }
 
 void ActorSprite::actorLogic()

@@ -82,6 +82,7 @@ void Desktop::widgetResized(const gcn::Event &event A_UNUSED)
 
 void Desktop::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("Desktop::draw")
     Graphics *const g = static_cast<Graphics *const>(graphics);
 
     if (!mWallpaper || (getWidth() > mWallpaper->getWidth() ||
@@ -112,6 +113,7 @@ void Desktop::draw(gcn::Graphics *graphics)
     g->fillRectangle(gcn::Rectangle(mVersionLabel->getDimension()));
 
     Container::draw(graphics);
+    BLOCK_END("Desktop::draw")
 }
 
 void Desktop::setBestFittingWallpaper()

@@ -89,8 +89,12 @@ AvatarListBox::~AvatarListBox()
 
 void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 {
+    BLOCK_START("AvatarListBox::draw")
     if (!mListModel || !player_node)
+    {
+        BLOCK_END("AvatarListBox::draw")
         return;
+    }
 
     AvatarListModel *const model = static_cast<AvatarListModel *const>(
         mListModel);
@@ -276,6 +280,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
     }
 
     setWidth(parent->getWidth() - 10);
+    BLOCK_END("AvatarListBox::draw")
 }
 
 void AvatarListBox::mousePressed(gcn::MouseEvent &event)

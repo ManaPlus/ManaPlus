@@ -90,8 +90,12 @@ DebugWindow::~DebugWindow()
 
 void DebugWindow::slowLogic()
 {
+    BLOCK_START("DebugWindow::slowLogic")
     if (!isVisible() || !mTabs)
+    {
+        BLOCK_END("DebugWindow::slowLogic")
         return;
+    }
 
     switch (mTabs->getSelectedTabIndex())
     {
@@ -109,10 +113,12 @@ void DebugWindow::slowLogic()
 
     if (player_node)
         player_node->tryPingRequest();
+    BLOCK_END("DebugWindow::slowLogic")
 }
 
 void DebugWindow::draw(gcn::Graphics *g)
 {
+    BLOCK_START("DebugWindow::draw")
     Window::draw(g);
 
     if (player_node)
@@ -125,6 +131,7 @@ void DebugWindow::draw(gcn::Graphics *g)
                          -target->getPixelY() + 32 + getHeight() / 2);
         }
     }
+    BLOCK_END("DebugWindow::draw")
 }
 
 void DebugWindow::widgetResized(const gcn::Event &event)

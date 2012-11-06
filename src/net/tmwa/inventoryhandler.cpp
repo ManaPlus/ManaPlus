@@ -67,6 +67,7 @@ InventoryHandler::~InventoryHandler()
 
 void InventoryHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_PLAYER_INVENTORY:
@@ -133,6 +134,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("InventoryHandler::handleMessage")
 }
 
 void InventoryHandler::equipItem(const Item *item)

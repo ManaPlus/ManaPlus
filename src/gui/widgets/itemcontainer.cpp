@@ -208,10 +208,14 @@ ItemContainer::~ItemContainer()
 
 void ItemContainer::logic()
 {
+    BLOCK_START("ItemContainer::logic")
     gcn::Widget::logic();
 
     if (!mInventory)
+    {
+        BLOCK_END("ItemContainer::logic")
         return;
+    }
 
     const int lastUsedSlot = mInventory->getLastUsedSlot();
 
@@ -220,6 +224,7 @@ void ItemContainer::logic()
         mLastUsedSlot = lastUsedSlot;
         adjustHeight();
     }
+    BLOCK_END("ItemContainer::logic")
 }
 
 void ItemContainer::draw(gcn::Graphics *graphics)
@@ -227,6 +232,7 @@ void ItemContainer::draw(gcn::Graphics *graphics)
     if (!mInventory || !mShowMatrix)
         return;
 
+    BLOCK_START("ItemContainer::draw")
     Graphics *const g = static_cast<Graphics *const>(graphics);
 
     g->setFont(getFont());
@@ -313,6 +319,7 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                 itemY + mEquippedTextPadding, gcn::Graphics::CENTER);
         }
     }
+    BLOCK_END("ItemContainer::draw")
 }
 
 void ItemContainer::selectNone()

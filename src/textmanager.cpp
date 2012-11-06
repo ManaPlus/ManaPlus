@@ -66,12 +66,14 @@ TextManager::~TextManager()
 void TextManager::draw(gcn::Graphics *const graphics,
                        const int xOff, const int yOff)
 {
+    BLOCK_START("TextManager::draw")
     for (TextList::const_iterator bPtr = mTextList.begin(),
          ePtr = mTextList.end();
          bPtr != ePtr; ++ bPtr)
     {
         (*bPtr)->draw(graphics, xOff, yOff);
     }
+    BLOCK_END("TextManager::draw")
 }
 
 void TextManager::place(const Text *const textObj, const Text *const omit,

@@ -100,9 +100,13 @@ void ItemShortcutContainer::setWidget2(const Widget2 *const widget)
 
 void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("ItemShortcutContainer::draw")
     const ItemShortcut *const selShortcut = itemShortcut[mNumber];
     if (!selShortcut)
+    {
+        BLOCK_END("ItemShortcutContainer::draw")
         return;
+    }
 
     mAlpha = Client::getGuiAlpha();
     if (Client::getGuiAlpha() != mAlpha)
@@ -126,7 +130,10 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 
     const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
+    {
+        BLOCK_END("ItemShortcutContainer::draw")
         return;
+    }
 
     for (unsigned i = 0; i < mMaxItems; i++)
     {
@@ -231,6 +238,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                         gcn::Graphics::CENTER);
         }
     }
+    BLOCK_END("ItemShortcutContainer::draw")
 }
 
 void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)

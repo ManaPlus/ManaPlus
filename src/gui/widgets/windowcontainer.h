@@ -57,6 +57,10 @@ class WindowContainer : public Container
         void adjustAfterResize(const int oldScreenWidth,
                                const int oldScreenHeight);
 
+#ifdef USE_PROFILER
+        void draw(gcn::Graphics* graphics);
+#endif
+
     private:
         /**
          * List of widgets that are scheduled to be deleted.

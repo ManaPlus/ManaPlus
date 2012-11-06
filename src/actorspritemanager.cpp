@@ -746,6 +746,7 @@ const ActorSprites &ActorSpriteManager::getAll() const
 
 void ActorSpriteManager::logic()
 {
+    BLOCK_START("ActorSpriteManager::logic")
     for_actors
     {
         if (*it)
@@ -753,8 +754,12 @@ void ActorSpriteManager::logic()
     }
 
     if (mDeleteActors.empty())
+    {
+        BLOCK_END("ActorSpriteManager::logic")
         return;
+    }
 
+    BLOCK_START("ActorSpriteManager::logic 1")
     for (ActorSpritesConstIterator it = mDeleteActors.begin(),
          it_end = mDeleteActors.end();
          it != it_end; ++it)
@@ -789,6 +794,8 @@ void ActorSpriteManager::logic()
     }
 
     mDeleteActors.clear();
+    BLOCK_END("ActorSpriteManager::logic 1")
+    BLOCK_END("ActorSpriteManager::logic")
 }
 
 void ActorSpriteManager::clear()

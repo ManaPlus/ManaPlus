@@ -455,6 +455,7 @@ namespace gcn
 
     void ScrollArea::logic()
     {
+        BLOCK_START("ScrollArea::logic")
         checkPolicies();
 
         setVerticalScrollAmount(getVerticalScrollAmount());
@@ -466,6 +467,7 @@ namespace gcn
                 -mVScroll + getContent()->getFrameSize());
             getContent()->logic();
         }
+        BLOCK_END("ScrollArea::logic")
     }
 
     void ScrollArea::checkPolicies()

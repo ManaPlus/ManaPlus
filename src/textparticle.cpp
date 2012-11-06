@@ -41,8 +41,12 @@ TextParticle::TextParticle(Map *const map, const std::string &text,
 
 bool TextParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
 {
+    BLOCK_START("TextParticle::draw")
     if (!isAlive())
+    {
+        BLOCK_END("TextParticle::draw")
         return false;
+    }
 
     const int screenX = static_cast<int>(mPos.x) + offsetX;
     const int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
@@ -69,5 +73,6 @@ bool TextParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
             screenX, screenY, gcn::Graphics::CENTER,
             color, mTextFont, mOutline, false, static_cast<int>(alpha));
 
+    BLOCK_END("TextParticle::draw")
     return true;
 }

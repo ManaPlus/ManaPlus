@@ -258,11 +258,15 @@ Gui::~Gui()
 
 void Gui::logic()
 {
+    BLOCK_START("Gui::logic")
     ResourceManager *const resman = ResourceManager::getInstance();
     resman->clearScheduled();
 
     if (!mTop)
+    {
+        BLOCK_END("Gui::logic")
         return;
+    }
 
     handleModalFocus();
     handleModalMouseInputFocus();
@@ -271,10 +275,12 @@ void Gui::logic()
         handleMouseInput();
 
     mTop->logic();
+    BLOCK_END("Gui::logic")
 }
 
 void Gui::slowLogic()
 {
+    BLOCK_START("Gui::slowLogic")
     Palette::advanceGradients();
 
     // Fade out mouse cursor after extended inactivity
@@ -297,14 +303,17 @@ void Gui::slowLogic()
         mSecureFont->slowLogic();
     if (boldFont)
         boldFont->slowLogic();
+    BLOCK_END("Gui::slowLogic")
 }
 
 bool Gui::handleInput()
 {
+    BLOCK_START("Gui::handleInput")
     if (mInput)
         return handleKeyInput2();
     else
         return false;
+    BLOCK_END("Gui::handleInput")
 }
 
 bool Gui::handleKeyInput2()
@@ -312,6 +321,7 @@ bool Gui::handleKeyInput2()
     if (!guiInput)
         return false;
 
+    BLOCK_START("Gui::handleKeyInput2")
     bool consumed(false);
 
     while (!mInput->isKeyQueueEmpty())
@@ -376,11 +386,13 @@ bool Gui::handleKeyInput2()
             }
         }
     } // end while
+    BLOCK_END("Gui::handleKeyInput2")
     return consumed;
 }
 
 void Gui::draw()
 {
+    BLOCK_START("Gui::draw 1")
     mGraphics->pushClipArea(getTop()->getDimension());
     getTop()->draw(mGraphics);
 
@@ -403,6 +415,7 @@ void Gui::draw()
     }
 
     mGraphics->popClipArea();
+    BLOCK_END("Gui::draw 1")
 }
 
 void Gui::videoResized() const

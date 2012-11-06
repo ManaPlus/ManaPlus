@@ -90,6 +90,7 @@ ProgressBar::~ProgressBar()
 
 void ProgressBar::logic()
 {
+    BLOCK_START("ProgressBar::logic")
     if (mSmoothColorChange && mColorToGo != mColor)
     {
         // Smoothly changing the color for a nicer effect.
@@ -115,6 +116,7 @@ void ProgressBar::logic()
         if (mProgressToGo < mProgress)
             mProgress = std::max(0.0f, mProgress - 0.005f);
     }
+    BLOCK_END("ProgressBar::logic")
 }
 
 void ProgressBar::updateAlpha()
@@ -139,11 +141,11 @@ void ProgressBar::updateAlpha()
 
 void ProgressBar::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("ProgressBar::draw")
     updateAlpha();
-
     mColor.a = static_cast<int>(mAlpha * 255);
-
     render(static_cast<Graphics*>(graphics));
+    BLOCK_END("ProgressBar::draw")
 }
 
 void ProgressBar::setProgress(const float progress)

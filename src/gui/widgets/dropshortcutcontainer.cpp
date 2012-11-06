@@ -91,6 +91,7 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
     if (!dropShortcut)
         return;
 
+    BLOCK_START("DropShortcutContainer::draw")
     if (Client::getGuiAlpha() != mAlpha)
     {
         mAlpha = Client::getGuiAlpha();
@@ -113,7 +114,10 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
 
     const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
+    {
+        BLOCK_END("DropShortcutContainer::draw")
         return;
+    }
 
     for (unsigned i = 0; i < mMaxItems; i++)
     {
@@ -166,6 +170,7 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
                         gcn::Graphics::CENTER);
         }
     }
+    BLOCK_END("DropShortcutContainer::draw")
 }
 
 void DropShortcutContainer::mouseDragged(gcn::MouseEvent &event)

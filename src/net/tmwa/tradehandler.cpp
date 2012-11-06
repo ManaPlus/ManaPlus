@@ -58,6 +58,7 @@ TradeHandler::TradeHandler() :
 
 void TradeHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("TradeHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_TRADE_REQUEST:
@@ -91,6 +92,7 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("TradeHandler::handleMessage")
 }
 
 void TradeHandler::request(Being *being)

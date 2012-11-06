@@ -605,6 +605,7 @@ void UpdaterWindow::addUpdateFile(const ResourceManager *const resman,
 
 void UpdaterWindow::logic()
 {
+    BLOCK_START("UpdaterWindow::logic")
     // Update Scroll logic
     mScrollArea->logic();
 
@@ -826,6 +827,7 @@ void UpdaterWindow::logic()
                         + toString(static_cast<unsigned>(mDownloadStatus)));
             break;
     }
+    BLOCK_END("UpdaterWindow::logic")
 }
 
 bool UpdaterWindow::validateFile(const std::string &filePath,

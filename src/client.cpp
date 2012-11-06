@@ -809,6 +809,10 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting11");
 
+#ifdef USE_PROFILER
+    Perfomance::clear();
+#endif
+
 #ifdef DEBUG_OPENGL_LEAKS
     if (logger)
         logger->log("textures left: %d", textures_count);
@@ -862,6 +866,8 @@ int Client::gameExec()
 
     while (mState != STATE_EXIT)
     {
+        PROFILER_START();
+        BLOCK_START("Client::gameExec 1")
         if (mGame)
         {
             // Let the game handle the events while it is active
@@ -869,6 +875,7 @@ int Client::gameExec()
         }
         else
         {
+            BLOCK_START("Client::gameExec 2")
             // Handle SDL events
             while (SDL_PollEvent(&event))
             {
@@ -917,11 +924,15 @@ int Client::gameExec()
                 }
                 #endif
             }
+            BLOCK_END("Client::gameExec 2")
         }
 
+        BLOCK_START("Client::gameExec 3")
         if (Net::getGeneralHandler())
             Net::getGeneralHandler()->flushNetwork();
+        BLOCK_END("Client::gameExec 3")
 
+        BLOCK_START("Client::gameExec 4")
         int k = 0;
         while (lastTickTime != tick_time && k < 40)
         {
@@ -942,6 +953,7 @@ int Client::gameExec()
             gui->slowLogic();
         if (mGame)
             mGame->slowLogic();
+        BLOCK_END("Client::gameExec 4")
 
         // This is done because at some point tick_time will wrap.
         lastTickTime = tick_time;
@@ -961,9 +973,12 @@ int Client::gameExec()
             SDL_Delay(100);
         }
 
+        BLOCK_START("Client::SDL_framerateDelay")
         if (mLimitFps)
             SDL_framerateDelay(&mFpsManager);
+        BLOCK_END("Client::SDL_framerateDelay")
 
+        BLOCK_START("Client::gameExec 6")
         // TODO: Add connect timeouts
         if (mState == STATE_CONNECT_GAME &&
             Net::getGameHandler()->isConnected())
@@ -1048,12 +1063,14 @@ int Client::gameExec()
             mDesktop->setSize(mainGraphics->getWidth(),
                 mainGraphics->getHeight());
         }
+        BLOCK_END("Client::gameExec 6")
 
         if (mState == STATE_SWITCH_LOGIN && mOldState == STATE_GAME)
             Net::getGameHandler()->disconnect();
 
         if (mState != mOldState)
         {
+            BLOCK_START("Client::gameExec 7")
             DepricatedEvent evt(EVENT_STATECHANGE);
             evt.setInt("oldState", mOldState);
             evt.setInt("newState", mState);
@@ -1088,10 +1105,13 @@ int Client::gameExec()
                 mQuitDialog->scheduleDelete();
                 mQuitDialog = nullptr;
             }
+            BLOCK_END("Client::gameExec 7")
 
+            BLOCK_START("Client::gameExec 8")
             switch (mState)
             {
                 case STATE_CHOOSE_SERVER:
+                    BLOCK_START("Client::gameExec STATE_CHOOSE_SERVER")
                     logger->log1("State: CHOOSE SERVER");
 
                     loginData.clearUpdateHost();
@@ -1119,14 +1139,17 @@ int Client::gameExec()
                         mOptions.serverName.clear();
                         mOptions.serverPort = 0;
                     }
+                    BLOCK_END("Client::gameExec STATE_CHOOSE_SERVER")
                     break;
 
                 case STATE_CONNECT_SERVER:
+                    BLOCK_START("Client::gameExec STATE_CONNECT_SERVER")
                     logger->log1("State: CONNECT SERVER");
                     loginData.updateHosts.clear();
                     mCurrentDialog = new ConnectionDialog(
                             _("Connecting to server"), STATE_SWITCH_SERVER);
                     TranslationManager::loadCurrentLang();
+                    BLOCK_END("Client::gameExec STATE_CONNECT_SERVER")
                     break;
 
                 case STATE_PRE_LOGIN:
@@ -1136,6 +1159,7 @@ int Client::gameExec()
                     break;
 
                 case STATE_LOGIN:
+                    BLOCK_START("Client::gameExec STATE_LOGIN")
                     logger->log1("State: LOGIN");
                     // Don't allow an alpha opacity
                     // lower than the default value
@@ -1157,16 +1181,20 @@ int Client::gameExec()
                         // dialog will show up next time.
                         mOptions.password.clear();
                     }
+                    BLOCK_END("Client::gameExec STATE_LOGIN")
                     break;
 
                 case STATE_LOGIN_ATTEMPT:
+                    BLOCK_START("Client::gameExec STATE_LOGIN_ATTEMPT")
                     logger->log1("State: LOGIN ATTEMPT");
                     accountLogin(&loginData);
                     mCurrentDialog = new ConnectionDialog(
                             _("Logging in"), STATE_SWITCH_SERVER);
+                    BLOCK_END("Client::gameExec STATE_LOGIN_ATTEMPT")
                     break;
 
                 case STATE_WORLD_SELECT:
+                    BLOCK_START("Client::gameExec STATE_WORLD_SELECT")
                     logger->log1("State: WORLD SELECT");
                     {
                         TranslationManager::loadCurrentLang();
@@ -1192,15 +1220,19 @@ int Client::gameExec()
                             }
                         }
                     }
+                    BLOCK_END("Client::gameExec STATE_WORLD_SELECT")
                     break;
 
                 case STATE_WORLD_SELECT_ATTEMPT:
+                    BLOCK_START("Client::gameExec STATE_WORLD_SELECT_ATTEMPT")
                     logger->log1("State: WORLD SELECT ATTEMPT");
                     mCurrentDialog = new ConnectionDialog(
                             _("Entering game world"), STATE_WORLD_SELECT);
+                    BLOCK_END("Client::gameExec STATE_WORLD_SELECT_ATTEMPT")
                     break;
 
                 case STATE_UPDATE:
+                    BLOCK_START("Client::gameExec STATE_UPDATE")
                     // Determine which source to use for the update host
                     if (!mOptions.updateHost.empty())
                         mUpdateHost = mOptions.updateHost;
@@ -1226,10 +1258,12 @@ int Client::gameExec()
                             + mUpdatesDir, mOptions.dataPath.empty(),
                             loginData.updateType);
                     }
+                    BLOCK_END("Client::gameExec STATE_UPDATE")
                     break;
 
                 case STATE_LOAD_DATA:
                 {
+                    BLOCK_START("Client::gameExec STATE_LOAD_DATA")
                     logger->log1("State: LOAD DATA");
 
                     const ResourceManager *const resman
@@ -1298,17 +1332,21 @@ int Client::gameExec()
                         mDesktop->reloadWallpaper();
 
                     mState = STATE_GET_CHARACTERS;
+                    BLOCK_END("Client::gameExec STATE_LOAD_DATA")
                     break;
                 }
                 case STATE_GET_CHARACTERS:
+                    BLOCK_START("Client::gameExec STATE_GET_CHARACTERS")
                     logger->log1("State: GET CHARACTERS");
                     Net::getCharHandler()->requestCharacters();
                     mCurrentDialog = new ConnectionDialog(
                             _("Requesting characters"),
                             STATE_SWITCH_SERVER);
+                    BLOCK_END("Client::gameExec STATE_GET_CHARACTERS")
                     break;
 
                 case STATE_CHAR_SELECT:
+                    BLOCK_START("Client::gameExec STATE_CHAR_SELECT")
                     logger->log1("State: CHAR SELECT");
                     // Don't allow an alpha opacity
                     // lower than the default value
@@ -1331,10 +1369,11 @@ int Client::gameExec()
                     // Choosing character on the command line should work only
                     // once, clear it so that 'switch character' works.
                     mOptions.character.clear();
-
+                    BLOCK_END("Client::gameExec STATE_CHAR_SELECT")
                     break;
 
                 case STATE_CONNECT_GAME:
+                    BLOCK_START("Client::gameExec STATE_CONNECT_GAME")
                     logger->log1("State: CONNECT GAME");
 
                     Net::getGameHandler()->connect();
@@ -1342,18 +1381,22 @@ int Client::gameExec()
                             _("Connecting to the game server"),
                             Net::getNetworkType() != ServerInfo::MANASERV ?
                             STATE_CHOOSE_SERVER : STATE_SWITCH_CHARACTER);
+                    BLOCK_END("Client::gameExec STATE_CONNECT_GAME")
                     break;
 
                 case STATE_CHANGE_MAP:
+                    BLOCK_START("Client::gameExec STATE_CHANGE_MAP")
                     logger->log1("State: CHANGE_MAP");
 
                     Net::getGameHandler()->connect();
                     mCurrentDialog = new ConnectionDialog(
                             _("Changing game servers"),
                             STATE_SWITCH_CHARACTER);
+                    BLOCK_END("Client::gameExec STATE_CHANGE_MAP")
                     break;
 
                 case STATE_GAME:
+                    BLOCK_START("Client::gameExec STATE_GAME")
                     if (player_node)
                     {
                         logger->log("Memorizing selected character %s",
@@ -1397,29 +1440,36 @@ int Client::gameExec()
                     if (Net::getGeneralHandler())
                         Net::getGeneralHandler()->reloadPartially();
                     mGame = new Game;
+                    BLOCK_END("Client::gameExec STATE_GAME")
                     break;
 
                 case STATE_LOGIN_ERROR:
+                    BLOCK_START("Client::gameExec STATE_LOGIN_ERROR")
                     logger->log1("State: LOGIN ERROR");
                     mCurrentDialog = new OkDialog(_("Error"),
                         errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&loginListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
+                    BLOCK_END("Client::gameExec STATE_LOGIN_ERROR")
                     break;
 
                 case STATE_ACCOUNTCHANGE_ERROR:
+                    BLOCK_START("Client::gameExec STATE_ACCOUNTCHANGE_ERROR")
                     logger->log1("State: ACCOUNT CHANGE ERROR");
                     mCurrentDialog = new OkDialog(_("Error"),
                         errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
+                    BLOCK_END("Client::gameExec STATE_ACCOUNTCHANGE_ERROR")
                     break;
 
                 case STATE_REGISTER_PREP:
+                    BLOCK_START("Client::gameExec STATE_REGISTER_PREP")
                     logger->log1("State: REGISTER_PREP");
                     Net::getLoginHandler()->getRegistrationDetails();
                     mCurrentDialog = new ConnectionDialog(
                             _("Requesting registration details"), STATE_LOGIN);
+                    BLOCK_END("Client::gameExec STATE_REGISTER_PREP")
                     break;
 
                 case STATE_REGISTER:
@@ -1428,22 +1478,29 @@ int Client::gameExec()
                     break;
 
                 case STATE_REGISTER_ATTEMPT:
+                    BLOCK_START("Client::gameExec STATE_REGISTER_ATTEMPT")
                     logger->log("Username is %s", loginData.username.c_str());
                     Net::getLoginHandler()->registerAccount(&loginData);
+                    BLOCK_END("Client::gameExec STATE_REGISTER_ATTEMPT")
                     break;
 
                 case STATE_CHANGEPASSWORD:
+                    BLOCK_START("Client::gameExec STATE_CHANGEPASSWORD")
                     logger->log1("State: CHANGE PASSWORD");
                     mCurrentDialog = new ChangePasswordDialog(&loginData);
+                    BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD")
                     break;
 
                 case STATE_CHANGEPASSWORD_ATTEMPT:
+                    BLOCK_START("Client::gameExec STATE_CHANGEPASSWORD_ATTEMPT")
                     logger->log1("State: CHANGE PASSWORD ATTEMPT");
                     Net::getLoginHandler()->changePassword(loginData.username,
                         loginData.password, loginData.newPassword);
+                    BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD_ATTEMPT")
                     break;
 
                 case STATE_CHANGEPASSWORD_SUCCESS:
+                    BLOCK_START("Client::gameExec STATE_CHANGEPASSWORD_SUCCESS")
                     logger->log1("State: CHANGE PASSWORD SUCCESS");
                     mCurrentDialog = new OkDialog(_("Password Change"),
                         _("Password changed successfully!"), DIALOG_ERROR);
@@ -1451,6 +1508,7 @@ int Client::gameExec()
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     loginData.password = loginData.newPassword;
                     loginData.newPassword = "";
+                    BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD_SUCCESS")
                     break;
 
                 case STATE_CHANGEEMAIL:
@@ -1495,29 +1553,35 @@ int Client::gameExec()
                     break;
 
                 case STATE_SWITCH_SERVER:
+                    BLOCK_START("Client::gameExec STATE_SWITCH_SERVER")
                     logger->log1("State: SWITCH SERVER");
 
                     Net::getLoginHandler()->disconnect();
                     Net::getGameHandler()->disconnect();
 
                     mState = STATE_CHOOSE_SERVER;
+                    BLOCK_END("Client::gameExec STATE_SWITCH_SERVER")
                     break;
 
                 case STATE_SWITCH_LOGIN:
+                    BLOCK_START("Client::gameExec STATE_SWITCH_LOGIN")
                     logger->log1("State: SWITCH LOGIN");
 
                     Net::getLoginHandler()->logout();
 
                     mState = STATE_LOGIN;
+                    BLOCK_END("Client::gameExec STATE_SWITCH_LOGIN")
                     break;
 
                 case STATE_SWITCH_CHARACTER:
+                    BLOCK_START("Client::gameExec STATE_SWITCH_CHARACTER")
                     logger->log1("State: SWITCH CHARACTER");
 
                     // Done with game
                     Net::getGameHandler()->disconnect();
 
                     mState = STATE_GET_CHARACTERS;
+                    BLOCK_END("Client::gameExec STATE_SWITCH_CHARACTER")
                     break;
 
                 case STATE_LOGOUT_ATTEMPT:
@@ -1530,18 +1594,23 @@ int Client::gameExec()
                     break;
 
                 case STATE_EXIT:
+                    BLOCK_START("Client::gameExec STATE_EXIT")
                     logger->log1("State: EXIT");
                     Net::unload();
+                    BLOCK_END("Client::gameExec STATE_EXIT")
                     break;
 
                 case STATE_FORCE_QUIT:
+                    BLOCK_START("Client::gameExec STATE_FORCE_QUIT")
                     logger->log1("State: FORCE QUIT");
                     if (Net::getGeneralHandler())
                         Net::getGeneralHandler()->unload();
                     mState = STATE_EXIT;
+                    BLOCK_END("Client::gameExec STATE_FORCE_QUIT")
                   break;
 
                 case STATE_ERROR:
+                    BLOCK_START("Client::gameExec STATE_ERROR")
                     logger->log1("State: ERROR");
                     logger->log("Error: %s\n", errorMessage.c_str());
                     mCurrentDialog = new OkDialog(_("Error"),
@@ -1549,6 +1618,7 @@ int Client::gameExec()
                     mCurrentDialog->addActionListener(&errorListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     Net::getGameHandler()->disconnect();
+                    BLOCK_END("Client::gameExec STATE_ERROR")
                     break;
 
                 case STATE_AUTORECONNECT_SERVER:
@@ -1560,7 +1630,9 @@ int Client::gameExec()
                     mState = STATE_FORCE_QUIT;
                     break;
             }
+            BLOCK_END("Client::gameExec 8")
         }
+        BLOCK_END("Client::gameExec 1")
     }
 
     return 0;
@@ -1722,6 +1794,9 @@ void Client::initLocalDataDir()
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
             "Exiting."), mLocalDataDir.c_str()));
     }
+#ifdef USE_PROFILER
+    Perfomance::init(mLocalDataDir + "/profiler.log");
+#endif
 }
 
 void Client::initTempDir()

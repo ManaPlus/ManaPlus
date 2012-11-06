@@ -78,6 +78,7 @@ TextPreview::~TextPreview()
 
 void TextPreview::draw(gcn::Graphics* graphics)
 {
+    BLOCK_START("TextPreview::draw")
     if (Client::getGuiAlpha() != mAlpha)
         mAlpha = Client::getGuiAlpha();
 
@@ -112,6 +113,7 @@ void TextPreview::draw(gcn::Graphics* graphics)
     TextRenderer::renderText(graphics, mText, mPadding + 1, mPadding + 1,
         gcn::Graphics::LEFT, gcn::Color(mTextColor->r, mTextColor->g,
         mTextColor->b, alpha), mFont, mOutline, mShadow);
+    BLOCK_END("TextPreview::draw")
 }
 
 void TextPreview::adjustSize()

@@ -266,6 +266,7 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
 
 bool AnimatedSprite::draw(Graphics *graphics, int posX, int posY) const
 {
+    FUNC_BLOCK("AnimatedSprite::draw", 1)
     if (!mFrame || !mFrame->image)
         return false;
 

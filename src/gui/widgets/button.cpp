@@ -276,6 +276,7 @@ void Button::updateAlpha()
 
 void Button::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("Button::draw")
     int mode;
 
     if (!isEnabled())
@@ -289,7 +290,10 @@ void Button::draw(gcn::Graphics *graphics)
 
     const Skin *const skin = button[mode];
     if (!skin)
+    {
+        BLOCK_END("Button::draw")
         return;
+    }
 
     updateAlpha();
 
@@ -409,6 +413,7 @@ void Button::draw(gcn::Graphics *graphics)
             g2->drawImage(mImages[mode], imageX, imageY);
         g2->drawText(getCaption(), textX, textY, getAlignment());
     }
+    BLOCK_END("Button::draw")
 }
 
 void Button::mouseReleased(gcn::MouseEvent& mouseEvent)

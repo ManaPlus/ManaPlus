@@ -65,6 +65,7 @@ LoginHandler::~LoginHandler()
 
 void LoginHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("LoginHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_CHAR_PASSWORD_RESPONSE:
@@ -94,6 +95,7 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("LoginHandler::handleMessage")
 }
 
 void LoginHandler::connect()

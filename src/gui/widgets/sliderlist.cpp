@@ -108,12 +108,14 @@ void SliderList::resize()
 
 void SliderList::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("SliderList::draw")
     if (mOldWidth != getWidth())
     {
         resize();
         mOldWidth = getWidth();
     }
     Container::draw(graphics);
+    BLOCK_END("SliderList::draw")
 }
 
 void SliderList::updateLabel()

@@ -84,8 +84,12 @@ void ShopListBox::setPlayersMoney(const int money)
 
 void ShopListBox::draw(gcn::Graphics *gcnGraphics)
 {
+    BLOCK_START("ShopListBox::draw")
     if (!mListModel || !mShopItems)
+    {
+        BLOCK_END("ShopListBox::draw")
         return;
+    }
 
     if (Client::getGuiAlpha() != mAlpha)
         mAlpha = Client::getGuiAlpha();
@@ -156,6 +160,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
             ITEM_ICON_SIZE + mPadding,
             y + (ITEM_ICON_SIZE - getFont()->getHeight()) / 2 + mPadding);
     }
+    BLOCK_END("ShopListBox::draw")
 }
 
 void ShopListBox::adjustSize()

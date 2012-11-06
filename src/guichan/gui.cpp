@@ -161,6 +161,7 @@ namespace gcn
 
     void Gui::handleMouseInput()
     {
+        BLOCK_START("Gui::handleMouseInput")
         while (!mInput->isMouseQueueEmpty())
         {
              const MouseInput mouseInput = mInput->dequeueMouseInput();
@@ -192,6 +193,7 @@ namespace gcn
                      break;
              }
         }
+        BLOCK_END("Gui::handleMouseInput")
     }
 
     void Gui::handleKeyInput()
@@ -748,6 +750,7 @@ namespace gcn
 
     void Gui::handleModalMouseInputFocus()
     {
+        BLOCK_START("Gui::handleModalMouseInputFocus")
         // Check if modal mouse input focus has been gained by a widget.
         if ((mFocusHandler->getLastWidgetWithModalMouseInputFocus() 
             != mFocusHandler->getModalMouseInputFocused())
@@ -765,10 +768,12 @@ namespace gcn
             handleModalFocusReleased();
             mFocusHandler->setLastWidgetWithModalMouseInputFocus(nullptr);
         }
+        BLOCK_END("Gui::handleModalMouseInputFocus")
     }
 
     void Gui::handleModalFocus()
     {
+        BLOCK_START("Gui::handleModalFocus")
         // Check if modal focus has been gained by a widget.
         if ((mFocusHandler->getLastWidgetWithModalFocus() 
             != mFocusHandler->getModalFocused())
@@ -786,6 +791,7 @@ namespace gcn
             handleModalFocusReleased();
             mFocusHandler->setLastWidgetWithModalFocus(nullptr);
         }
+        BLOCK_END("Gui::handleModalFocus")
     }
 
     void Gui::handleModalFocusGained()

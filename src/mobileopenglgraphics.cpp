@@ -188,6 +188,7 @@ bool MobileOpenGLGraphics::drawImage2(const Image *const image,
                                       const int width, const int height,
                                       const bool useColor)
 {
+    FUNC_BLOCK("Graphics::drawImage2", 1)
     if (!image)
         return false;
 
@@ -231,6 +232,7 @@ bool MobileOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
                                              const bool useColor,
                                              bool smooth)
 {
+    FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     if (!image)
         return false;
 
@@ -284,6 +286,7 @@ void MobileOpenGLGraphics::drawImagePattern(const Image *const image,
                                             const int x, const int y,
                                             const int w, const int h)
 {
+    FUNC_BLOCK("Graphics::drawImagePattern", 1)
     if (!image)
         return;
 
@@ -739,11 +742,13 @@ void MobileOpenGLGraphics::drawTile(ImageVertexes *const vert)
 
 void MobileOpenGLGraphics::updateScreen()
 {
+    BLOCK_START("Graphics::updateScreen")
 //    glFlush();
 //    glFinish();
     SDL_GL_SwapBuffers();
 // may be need clear?
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    BLOCK_END("Graphics::updateScreen")
 }
 
 void MobileOpenGLGraphics::_beginDraw()
@@ -984,6 +989,7 @@ void MobileOpenGLGraphics::setTexturingAndBlending(bool enable)
 void MobileOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
                                          bool filled)
 {
+    BLOCK_START("Graphics::drawRectangle")
     setTexturingAndBlending(false);
     restoreColor();
 
@@ -1020,6 +1026,7 @@ void MobileOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
         glVertexPointer(2, GL_SHORT, 0, &vert);
         glDrawArrays(GL_LINE_LOOP, 0, 4);
     }
+    BLOCK_END("Graphics::drawRectangle")
 }
 
 bool MobileOpenGLGraphics::drawNet(const int x1, const int y1,

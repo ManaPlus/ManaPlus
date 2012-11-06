@@ -745,6 +745,7 @@ void NpcDialog::setAvatarAction(const int actionId)
 
 void NpcDialog::logic()
 {
+    BLOCK_START("NpcDialog::logic")
     Window::logic();
     if (mShowAvatar && mAvatarBeing)
     {
@@ -760,6 +761,7 @@ void NpcDialog::logic()
             }
         }
     }
+    BLOCK_END("NpcDialog::logic")
 }
 
 void NpcDialog::clearRows()

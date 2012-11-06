@@ -120,6 +120,7 @@ void PacketCounters::update()
     if (!runCounters)
         return;
 
+    BLOCK_START("PacketCounters::update")
     updateCounter(PacketCounters::mInCurrentSec, PacketCounters::mInBytesCalc,
         PacketCounters::mInBytes);
     updateCounter(PacketCounters::mInCurrentSec,
@@ -128,4 +129,5 @@ void PacketCounters::update()
         PacketCounters::mOutBytesCalc, PacketCounters::mOutBytes);
     updateCounter(PacketCounters::mOutCurrentSec,
         PacketCounters::mOutPacketsCalc, PacketCounters::mOutPackets);
+    BLOCK_END("PacketCounters::update")
 }

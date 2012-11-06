@@ -120,6 +120,7 @@ namespace gcn
 
     void TextBox::draw(Graphics* graphics)
     {
+        BLOCK_START("TextBox::draw")
         if (mOpaque)
         {
             graphics->setColor(mBackgroundColor);
@@ -142,6 +143,7 @@ namespace gcn
             graphics->drawText(mTextRows[i], 1,
                 static_cast<int>(i * getFont()->getHeight()));
         }
+        BLOCK_END("TextBox::draw")
     }
 
     void TextBox::drawCaret(Graphics* graphics, int x, int y)

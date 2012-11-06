@@ -1666,6 +1666,7 @@ void SocialWindow::updateActiveList()
 
 void SocialWindow::slowLogic()
 {
+    BLOCK_START("SocialWindow::slowLogic")
     const unsigned int nowTime = cur_time;
     if (mNeedUpdate && nowTime - mLastUpdateTime > 1)
     {
@@ -1680,6 +1681,7 @@ void SocialWindow::slowLogic()
         mNeedUpdate = false;
         mLastUpdateTime = nowTime;
     }
+    BLOCK_END("SocialWindow::slowLogic")
 }
 
 void SocialWindow::updateAvatar(std::string name)

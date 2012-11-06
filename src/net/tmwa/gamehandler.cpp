@@ -58,6 +58,7 @@ GameHandler::GameHandler() :
 
 void GameHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("GameHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_MAP_LOGIN_SUCCESS:
@@ -84,6 +85,7 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("GameHandler::handleMessage")
 }
 
 void GameHandler::mapLoadedEvent()

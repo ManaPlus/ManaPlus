@@ -86,6 +86,7 @@ void MapLayer::draw(Graphics *const graphics,
     if (!player_node)
         return;
 
+    BLOCK_START("MapLayer::draw")
     startX -= mX;
     startY -= mY;
     endX -= mX;
@@ -145,10 +146,12 @@ void MapLayer::draw(Graphics *const graphics,
             x += c;
         }
     }
+    BLOCK_END("MapLayer::draw")
 }
 
 void MapLayer::drawSDL(Graphics *const graphics)
 {
+    BLOCK_START("MapLayer::drawSDL")
     MapRows::const_iterator rit = mTempRows.begin();
     const MapRows::const_iterator rit_end = mTempRows.end();
     while (rit != rit_end)
@@ -163,6 +166,7 @@ void MapLayer::drawSDL(Graphics *const graphics)
         }
         ++ rit;
     }
+    BLOCK_END("MapLayer::drawSDL")
 }
 
 #ifdef USE_OPENGL
@@ -171,6 +175,7 @@ void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
                          const int scrollX, const int scrollY,
                          const int debugFlags)
 {
+    BLOCK_START("MapLayer::updateSDL")
     delete_all(mTempRows);
     mTempRows.clear();
 
@@ -226,6 +231,7 @@ void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
             }
         }
     }
+    BLOCK_END("MapLayer::updateSDL")
 }
 
 void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
@@ -233,6 +239,7 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
                          const int scrollX, const int scrollY,
                          const int debugFlags)
 {
+    BLOCK_START("MapLayer::updateOGL")
     delete_all(mTempRows);
     mTempRows.clear();
 
@@ -302,10 +309,12 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
             }
         }
     }
+    BLOCK_END("MapLayer::updateOGL")
 }
 
 void MapLayer::drawOGL(Graphics *const graphics)
 {
+    BLOCK_START("MapLayer::drawOGL")
     MapRows::const_iterator rit = mTempRows.begin();
     const MapRows::const_iterator rit_end = mTempRows.end();
 //    int k = 0;
@@ -322,6 +331,7 @@ void MapLayer::drawOGL(Graphics *const graphics)
         }
         ++ rit;
     }
+    BLOCK_END("MapLayer::drawOGL")
 //    logger->log("draws: %d", k);
 }
 #endif
@@ -332,8 +342,12 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                           const Actors *const actors,
                           const int debugFlags, const int yFix) const
 {
+    BLOCK_START("MapLayer::drawFringe")
     if (!player_node || !mSpecialLayer || !mTempLayer)
+    {
+        BLOCK_END("MapLayer::drawFringe")
         return;
+    }
 
     startX -= mX;
     startY -= mY;
@@ -512,16 +526,19 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             }
         }
     }
+    BLOCK_END("MapLayer::drawFringe")
 }
 
 int MapLayer::getTileDrawWidth(const Image *img,
                                const int endX, int &width) const
 {
+    BLOCK_START("MapLayer::getTileDrawWidth")
     const Image *const img1 = img;
     int c = 0;
     if (!img1)
     {
         width = 0;
+        BLOCK_END("MapLayer::getTileDrawWidth")
         return c;
     }
     width = img1->mBounds.w;
@@ -534,6 +551,7 @@ int MapLayer::getTileDrawWidth(const Image *img,
         if (img)
             width += img->mBounds.w;
     }
+    BLOCK_END("MapLayer::getTileDrawWidth")
     return c;
 }
 
@@ -634,6 +652,7 @@ void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
                         int endX, int endY,
                         const int scrollX, const int scrollY) const
 {
+    BLOCK_START("SpecialLayer::draw")
     if (startX < 0)
         startX = 0;
     if (startY < 0)
@@ -648,6 +667,7 @@ void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
         for (int x = startX; x < endX; x++)
             itemDraw(graphics, x, y, scrollX, scrollY);
     }
+    BLOCK_END("SpecialLayer::draw")
 }
 
 void SpecialLayer::itemDraw(Graphics *const graphics, const int x, const int y,
@@ -742,6 +762,7 @@ void MapItem::setPos(const int x, const int y)
 void MapItem::draw(Graphics *const graphics, const int x, const int y,
                    const int dx, const int dy) const
 {
+    BLOCK_START("MapItem::draw")
     if (mImage)
         graphics->drawImage(mImage, x, y);
 
@@ -780,6 +801,7 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
             font->drawString(graphics, mName, x, y);
         }
     }
+    BLOCK_END("MapItem::draw")
 }
 
 ObjectsLayer::ObjectsLayer(const unsigned width, const unsigned height) :

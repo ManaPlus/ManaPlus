@@ -69,6 +69,7 @@ void Label::init()
 
 void Label::draw(gcn::Graphics* graphics)
 {
+    BLOCK_START("Label::draw")
     int textX;
     const int textY = getHeight() / 2 - getFont()->getHeight() / 2;
 
@@ -92,6 +93,7 @@ void Label::draw(gcn::Graphics* graphics)
     graphics->setFont(getFont());
     graphics->setColor(mForegroundColor);
     graphics->drawText(getCaption(), textX, textY, getAlignment());
+    BLOCK_END("Label::draw")
 }
 
 void Label::adjustSize()

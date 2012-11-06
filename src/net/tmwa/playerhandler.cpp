@@ -62,6 +62,7 @@ PlayerHandler::PlayerHandler() :
 
 void PlayerHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("PlayerHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_WALK_RESPONSE:
@@ -107,6 +108,7 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("PlayerHandler::handleMessage")
 }
 
 void PlayerHandler::attack(int id, bool keep)

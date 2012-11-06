@@ -50,6 +50,7 @@ ImageSprite::~ImageSprite()
 
 bool ImageSprite::draw(Graphics* graphics, int posX, int posY) const
 {
+    FUNC_BLOCK("ImageSprite::draw", 1)
     if (!mImage)
         return false;
 

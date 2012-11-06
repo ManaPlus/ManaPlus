@@ -107,6 +107,7 @@ void BeingHandler::requestNameById(int id)
 
 void BeingHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("BeingHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_BEING_VISIBLE:
@@ -235,6 +236,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("BeingHandler::handleMessage")
 }
 
 void BeingHandler::undress(Being *being)

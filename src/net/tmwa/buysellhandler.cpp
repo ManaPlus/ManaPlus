@@ -73,6 +73,7 @@ BuySellHandler::BuySellHandler() :
 
 void BuySellHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("BuySellHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_NPC_BUY_SELL_CHOICE:
@@ -98,7 +99,7 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
-
+    BLOCK_END("BuySellHandler::handleMessage")
 }
 
 void BuySellHandler::processNpcBuy(Net::MessageIn &msg)

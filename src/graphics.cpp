@@ -376,6 +376,7 @@ bool Graphics::drawRescaledImage(Image *const image, int srcX, int srcY,
                                  const int desiredHeight,
                                  const bool useColor A_UNUSED)
 {
+    FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     // Check that preconditions for blitting are met.
     if (!mTarget || !image)
         return false;
@@ -416,6 +417,7 @@ bool Graphics::drawImage2(const Image *const image, int srcX, int srcY,
                           int dstX, int dstY, const int width,
                           const int height, const bool useColor A_UNUSED)
 {
+    FUNC_BLOCK("Graphics::drawImage2", 1)
     // Check that preconditions for blitting are met.
     if (!mTarget || !image || !image->mSDLSurface)
         return false;
@@ -451,6 +453,7 @@ void Graphics::drawImagePattern(const Image *const image,
                                 const int x, const int y,
                                 const int w, const int h)
 {
+    FUNC_BLOCK("Graphics::drawImagePattern", 1)
     // Check that preconditions for blitting are met.
     if (!mTarget || !image)
         return;
@@ -555,6 +558,7 @@ void Graphics::drawImageRect(const int x, const int y,
                              const Image *const left,
                              const Image *const center)
 {
+    BLOCK_START("Graphics::drawImageRect")
     const bool drawMain = center && topLeft && topRight
         && bottomLeft && bottomRight;
 
@@ -597,6 +601,7 @@ void Graphics::drawImageRect(const int x, const int y,
             x + w - bottomRight->getWidth(),
             y + h - bottomRight->getHeight());
     }
+    BLOCK_END("Graphics::drawImageRect")
 }
 
 void Graphics::drawImageRect(int x, int y, int w, int h,
@@ -685,6 +690,7 @@ bool Graphics::calcImageRect(GraphicsVertexes *const vert,
     if (!vert)
         return false;
 
+    BLOCK_START("Graphics::calcImageRect")
     const bool drawMain = center && topLeft && topRight
         && bottomLeft && bottomRight;
 
@@ -729,6 +735,7 @@ bool Graphics::calcImageRect(GraphicsVertexes *const vert,
     }
 
     popClipArea();
+    BLOCK_END("Graphics::calcImageRect")
     return 0;
 }
 
@@ -837,6 +844,7 @@ void Graphics::drawTile(ImageVertexes *const vert)
 
 void Graphics::updateScreen()
 {
+    BLOCK_START("Graphics::updateScreen")
     if (mDoubleBuffer)
     {
         SDL_Flip(mTarget);
@@ -846,6 +854,7 @@ void Graphics::updateScreen()
         SDL_UpdateRects(mTarget, 1, &mRect);
 //        SDL_UpdateRect(mTarget, 0, 0, 0, 0);
     }
+    BLOCK_END("Graphics::updateScreen")
 }
 
 SDL_Surface *Graphics::getScreenshot()
@@ -998,6 +1007,7 @@ int Graphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
 
 void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 {
+    FUNC_BLOCK("Graphics::fillRectangle", 1)
     if (mClipStack.empty())
         return;
 

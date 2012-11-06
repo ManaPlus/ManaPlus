@@ -98,6 +98,7 @@ bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
     if (!mMap)
         return false;
 
+    BLOCK_START("FloorItem::draw")
     const int x = mX * mMap->getTileWidth() + offsetX;
     const int y = mY * mMap->getTileHeight() + offsetY;
     gcn::Font *font = nullptr;
@@ -145,5 +146,6 @@ bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
             font->drawString(graphics, toString(mAmount), x, y);
         }
     }
+    BLOCK_END("FloorItem::draw")
     return res;
 }

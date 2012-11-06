@@ -285,6 +285,7 @@ void Sound::fadeOutAndPlayMusic(const std::string &fileName, const int ms)
 
 void Sound::logic()
 {
+    BLOCK_START("Sound::logic")
     if (sFadingOutEnded)
     {
         if (mMusic)
@@ -300,6 +301,7 @@ void Sound::logic()
             mNextMusicFile.clear();
         }
     }
+    BLOCK_END("Sound::logic")
 }
 
 void Sound::playSfx(const std::string &path, const int x, const int y) const

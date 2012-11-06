@@ -37,10 +37,12 @@ WindowContainer::WindowContainer(const Widget2 *const widget) :
 
 void WindowContainer::logic()
 {
+    BLOCK_START("WindowContainer::logic")
     delete_all(mDeathList);
     mDeathList.clear();
 
     gcn::Container::logic();
+    BLOCK_END("WindowContainer::logic")
 }
 
 void WindowContainer::scheduleDelete(gcn::Widget *const widget)
@@ -59,3 +61,12 @@ void WindowContainer::adjustAfterResize(const int oldScreenWidth,
             window->adjustPositionAfterResize(oldScreenWidth, oldScreenHeight);
     }
 }
+
+#ifdef USE_PROFILER
+void WindowContainer::draw(gcn::Graphics* graphics)
+{
+    BLOCK_START("WindowContainer::draw")
+    Container::draw(graphics);
+    BLOCK_END("WindowContainer::draw")
+}
+#endif

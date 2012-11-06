@@ -141,6 +141,7 @@ EquipmentWindow::~EquipmentWindow()
 
 void EquipmentWindow::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("EquipmentWindow::draw")
     // Draw window graphics
     Window::draw(graphics);
     Graphics *const g = static_cast<Graphics*>(graphics);
@@ -162,7 +163,10 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
     }
 
     if (!mEquipment)
+    {
+        BLOCK_END("EquipmentWindow::draw")
         return;
+    }
 
     i = 0;
     for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
@@ -197,6 +201,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
                 box->y + mItemPadding);
         }
     }
+    BLOCK_END("EquipmentWindow::draw")
 }
 
 void EquipmentWindow::action(const gcn::ActionEvent &event)

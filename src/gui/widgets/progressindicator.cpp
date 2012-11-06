@@ -65,6 +65,7 @@ void ProgressIndicator::logic()
 
 void ProgressIndicator::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("ProgressIndicator::draw")
     if (mIndicator)
     {
         // Draw the indicator centered on the widget
@@ -72,4 +73,5 @@ void ProgressIndicator::draw(gcn::Graphics *graphics)
         const int y = (getHeight() - 32) / 2;
         mIndicator->draw(static_cast<Graphics*>(graphics), x, y);
     }
+    BLOCK_END("ProgressIndicator::draw")
 }

@@ -606,6 +606,7 @@ void WhoIsOnline::slowLogic()
     if (!mAllowUpdate)
         return;
 
+    BLOCK_START("WhoIsOnline::slowLogic")
     if (mUpdateTimer == 0)
         mUpdateTimer = cur_time;
 
@@ -658,6 +659,7 @@ void WhoIsOnline::slowLogic()
         default:
             break;
     }
+    BLOCK_END("WhoIsOnline::slowLogic")
 }
 
 void WhoIsOnline::action(const gcn::ActionEvent &event)

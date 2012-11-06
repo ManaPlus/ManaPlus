@@ -186,6 +186,7 @@ void DropDown::updateAlpha()
 
 void DropDown::draw(gcn::Graphics* graphics)
 {
+    BLOCK_START("DropDown::draw")
     int h;
 
     if (mDroppedDown)
@@ -227,15 +228,18 @@ void DropDown::draw(gcn::Graphics* graphics)
         graphics->setColor(mShadowColor);
         graphics->drawLine(0, h + 1, getWidth(), h + 1);
     }
+    BLOCK_END("DropDown::draw")
 }
 
 void DropDown::drawFrame(gcn::Graphics *graphics)
 {
+    BLOCK_START("DropDown::drawFrame")
     const int bs = getFrameSize();
     const int w = getWidth() + bs * 2;
     const int h = getHeight() + bs * 2;
 
     static_cast<Graphics*>(graphics)->drawImageRect(0, 0, w, h, skinRect);
+    BLOCK_END("DropDown::drawFrame")
 }
 
 void DropDown::drawButton(gcn::Graphics *graphics)

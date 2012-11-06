@@ -108,6 +108,7 @@ namespace gcn
 
     void Widget::drawFrame(Graphics* graphics)
     {
+        BLOCK_START("Widget::drawFrame")
         const Color &faceColor = getBaseColor();
         Color highlightColor = faceColor + 0x303030;
         Color shadowColor = faceColor - 0x303030;
@@ -126,6 +127,7 @@ namespace gcn
             graphics->drawLine(width - i, i + 1, width - i, height - i);
             graphics->drawLine(i, height - i, width - i - 1, height - i);
         }
+        BLOCK_END("Widget::drawFrame")
     }
 
     void Widget::_setParent(Widget* parent)

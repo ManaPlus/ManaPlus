@@ -120,6 +120,7 @@ bool CompoundSprite::update(int time)
 
 bool CompoundSprite::draw(Graphics *graphics, int posX, int posY) const
 {
+    FUNC_BLOCK("CompoundSprite::draw", 1)
     if (mNeedsRedraw)
         updateImages();
 

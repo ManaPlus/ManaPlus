@@ -33,6 +33,7 @@ PasswordField::PasswordField(const Widget2 *const widget,
 
 void PasswordField::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("PasswordField::draw")
     // std::string uses cow, thus cheap copy
     const std::string original = mText;
     if (mPasswordChar)
@@ -41,4 +42,5 @@ void PasswordField::draw(gcn::Graphics *graphics)
         mText = "";
     TextField::draw(graphics);
     mText = original;
+    BLOCK_END("PasswordField::draw")
 }

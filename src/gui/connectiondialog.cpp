@@ -63,6 +63,8 @@ void ConnectionDialog::action(const gcn::ActionEvent &)
 
 void ConnectionDialog::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("ConnectionDialog::draw")
     // Don't draw the window background, only draw the children
     drawChildren(graphics);
+    BLOCK_END("ConnectionDialog::draw")
 }

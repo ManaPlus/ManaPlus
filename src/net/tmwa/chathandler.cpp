@@ -69,6 +69,7 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
     if (!localChatTab)
         return;
 
+    BLOCK_START("ChatHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_WHISPER_RESPONSE:
@@ -100,6 +101,7 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("ChatHandler::handleMessage")
 }
 
 void ChatHandler::talk(const std::string &text)

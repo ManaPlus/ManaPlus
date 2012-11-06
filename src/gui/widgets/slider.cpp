@@ -112,9 +112,11 @@ void Slider::updateAlpha()
 
 void Slider::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("Slider::draw")
     if (!buttons[0].grid[HSTART] || !buttons[1].grid[HSTART]
         || !buttons[0].grid[HEND])
     {
+        BLOCK_END("Slider::draw")
         return;
     }
 
@@ -174,6 +176,7 @@ void Slider::draw(gcn::Graphics *graphics)
     }
 
     drawMarker(graphics);
+    BLOCK_END("Slider::draw")
 }
 
 void Slider::drawMarker(gcn::Graphics *const graphics) const

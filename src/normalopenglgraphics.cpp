@@ -225,6 +225,7 @@ bool NormalOpenGLGraphics::drawImage2(const Image *const image,
                                       const int width, const int height,
                                       const bool useColor)
 {
+    FUNC_BLOCK("Graphics::drawImage2", 1)
     if (!image)
         return false;
 
@@ -268,6 +269,7 @@ bool NormalOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
                                              const bool useColor,
                                              bool smooth)
 {
+    FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     if (!image)
         return false;
 
@@ -321,6 +323,7 @@ void NormalOpenGLGraphics::drawImagePattern(const Image *const image,
                                             const int x, const int y,
                                             const int w, const int h)
 {
+    FUNC_BLOCK("Graphics::drawImagePattern", 1)
     if (!image)
         return;
 
@@ -928,11 +931,13 @@ void NormalOpenGLGraphics::drawTile(ImageVertexes *const vert)
 
 void NormalOpenGLGraphics::updateScreen()
 {
+    BLOCK_START("Graphics::updateScreen")
 //    glFlush();
 //    glFinish();
     SDL_GL_SwapBuffers();
 // may be need clear?
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    BLOCK_END("Graphics::updateScreen")
 }
 
 void NormalOpenGLGraphics::_beginDraw()
@@ -1173,6 +1178,7 @@ void NormalOpenGLGraphics::setTexturingAndBlending(bool enable)
 void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
                                          bool filled)
 {
+    BLOCK_START("Graphics::drawRectangle")
     const float offset = filled ? 0 : 0.5f;
     const float x = static_cast<float>(rect.x);
     const float y = static_cast<float>(rect.y);
@@ -1192,6 +1198,7 @@ void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
 
     glVertexPointer(2, GL_FLOAT, 0, &vert);
     glDrawArrays(filled ? GL_QUADS : GL_LINE_LOOP, 0, 4);
+    BLOCK_END("Graphics::drawRectangle")
 }
 
 bool NormalOpenGLGraphics::drawNet(const int x1, const int y1,

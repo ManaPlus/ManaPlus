@@ -54,6 +54,7 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     if (!mListModel)
         return;
 
+    BLOCK_START("ExtendedListBox::draw")
     ExtendedListModel *const model = static_cast<ExtendedListModel* const>(
         mListModel);
     Graphics *const g = static_cast<Graphics *const>(graphics);
@@ -95,4 +96,5 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
                 image->getWidth() + mImagePadding + mSpacing, y + textPos);
         }
     }
+    BLOCK_END("ExtendedListBox::draw")
 }

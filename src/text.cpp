@@ -125,6 +125,7 @@ void Text::adviseXY(const int x, const int y)
 
 void Text::draw(gcn::Graphics *const graphics, const int xOff, const int yOff)
 {
+    BLOCK_START("Text::draw")
     if (mIsSpeech)
     {
         static_cast<Graphics*>(graphics)->drawImageRect(
@@ -135,6 +136,7 @@ void Text::draw(gcn::Graphics *const graphics, const int xOff, const int yOff)
     TextRenderer::renderText(graphics, mText,
             mX - xOff, mY - yOff, gcn::Graphics::LEFT,
             *mColor, mFont, !mIsSpeech, true);
+    BLOCK_END("Text::draw")
 }
 
 FlashText::FlashText(const std::string &text, const int x, const int y,
@@ -148,10 +150,15 @@ FlashText::FlashText(const std::string &text, const int x, const int y,
 void FlashText::draw(gcn::Graphics *const graphics,
                      const int xOff, const int yOff)
 {
+    BLOCK_START("FlashText::draw")
     if (mTime)
     {
         if ((--mTime & 4) == 0)
+        {
+            BLOCK_END("FlashText::draw")
             return;
+        }
     }
     Text::draw(graphics, xOff, yOff);
+    BLOCK_END("FlashText::draw")
 }

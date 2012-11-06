@@ -104,6 +104,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
     if (!emoteShortcut)
         return;
 
+    BLOCK_START("EmoteShortcutContainer::draw")
     mAlpha = Client::getGuiAlpha();
     if (Client::getGuiAlpha() != mAlpha && mBackgroundImg)
         mBackgroundImg->setAlpha(mAlpha);
@@ -157,6 +158,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
             spr->draw(g, tPosX, tPosY);
         }
     }
+    BLOCK_END("EmoteShortcutContainer::draw")
 }
 
 void EmoteShortcutContainer::mouseDragged(gcn::MouseEvent &event A_UNUSED)

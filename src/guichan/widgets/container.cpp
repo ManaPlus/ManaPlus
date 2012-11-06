@@ -69,6 +69,7 @@ namespace gcn
 
     void Container::draw(Graphics* graphics)
     {
+        BLOCK_START("Container::draw")
         if (isOpaque())
         {
             graphics->setColor(getBaseColor());
@@ -76,6 +77,7 @@ namespace gcn
         }
 
         drawChildren(graphics);
+        BLOCK_END("Container::draw")
     }
 
     void Container::setOpaque(bool opaque)

@@ -557,6 +557,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
 
 void Game::logic()
 {
+    BLOCK_START("Game::logic")
     handleInput();
 
     // Handle all necessary game logic
@@ -569,10 +570,12 @@ void Game::logic()
         mCurrentMap->update();
 
     cur_time = static_cast<int>(time(nullptr));
+    BLOCK_END("Game::logic")
 }
 
 void Game::slowLogic()
 {
+    BLOCK_START("Game::slowLogic")
     if (player_node)
         player_node->slowLogic();
     if (botCheckerWindow)
@@ -645,10 +648,12 @@ void Game::slowLogic()
             disconnectedDialog = nullptr;
         }
     }
+    BLOCK_END("Game::slowLogic")
 }
 
 void Game::adjustPerfomance()
 {
+    FUNC_BLOCK("Game::adjustPerfomance", 1)
     if (mNextAdjustTime <= adjustDelay)
     {
         mNextAdjustTime = cur_time + adjustDelay;
@@ -907,6 +912,7 @@ void Game::handleActive(const SDL_Event &event)
  */
 void Game::handleInput()
 {
+    BLOCK_START("Game::handleInput 1")
     if (joystick)
         joystick->logic();
 
@@ -914,6 +920,7 @@ void Game::handleInput()
     SDL_Event event;
     while (SDL_PollEvent(&event))
     {
+        BLOCK_START("Game::handleInput 2")
         updateHistory(event);
         checkKeys();
 
@@ -935,6 +942,7 @@ void Game::handleInput()
         {
             Client::setState(STATE_EXIT);
         }
+        BLOCK_END("Game::handleInput 2")
     } // End while
 
     // If the user is configuring the keys then don't respond.
@@ -951,6 +959,7 @@ void Game::handleInput()
 
     handleMove();
     inputManager.handleRepeat();
+    BLOCK_END("Game::handleInput 1")
 }
 
 /**

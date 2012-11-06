@@ -351,6 +351,7 @@ BotCheckerWindow::~BotCheckerWindow()
 
 void BotCheckerWindow::slowLogic()
 {
+    BLOCK_START("BotCheckerWindow::slowLogic")
     if (mEnabled && mTableModel)
     {
         const unsigned int nowTime = cur_time;
@@ -367,6 +368,7 @@ void BotCheckerWindow::slowLogic()
             mLastUpdateTime = nowTime;
         }
     }
+    BLOCK_END("BotCheckerWindow::slowLogic")
 }
 
 void BotCheckerWindow::action(const gcn::ActionEvent &event)

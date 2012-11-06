@@ -129,10 +129,15 @@ Tab *TabbedArea::getTab(const std::string &name) const
 
 void TabbedArea::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("TabbedArea::draw")
     if (mTabs.empty())
+    {
+        BLOCK_END("TabbedArea::draw")
         return;
+    }
 
     drawChildren(graphics);
+    BLOCK_END("TabbedArea::draw")
 }
 
 gcn::Widget *TabbedArea::getWidget(const std::string &name) const
@@ -274,7 +279,9 @@ void TabbedArea::removeTab(Tab *tab)
 
 void TabbedArea::logic()
 {
+    BLOCK_START("TabbedArea::logic")
     logicChildren();
+    BLOCK_END("TabbedArea::logic")
 }
 
 void TabbedArea::mousePressed(gcn::MouseEvent &mouseEvent)

@@ -63,6 +63,7 @@ NpcHandler::NpcHandler() :
 
 void NpcHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("NpcHandler::handleMessage")
     const int npcId = getNpc(msg, msg.getId() == SMSG_NPC_CHOICE
         || msg.getId() == SMSG_NPC_MESSAGE);
 
@@ -107,6 +108,7 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
     }
 
     mDialog = nullptr;
+    BLOCK_END("NpcHandler::handleMessage")
 }
 
 void NpcHandler::talk(int npcId)

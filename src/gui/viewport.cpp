@@ -116,6 +116,7 @@ extern MiniStatusWindow *miniStatusWindow;
 
 void Viewport::draw(gcn::Graphics *gcnGraphics)
 {
+    BLOCK_START("Viewport::draw 1")
     static int lastTick = tick_time;
 
     if (!mMap || !player_node)
@@ -123,6 +124,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         gcnGraphics->setColor(gcn::Color(64, 64, 64));
         gcnGraphics->fillRectangle(
                 gcn::Rectangle(0, 0, getWidth(), getHeight()));
+        BLOCK_END("Viewport::draw 1")
         return;
     }
 
@@ -265,15 +267,18 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
 
     // Draw contained widgets
     WindowContainer::draw(gcnGraphics);
+    BLOCK_END("Viewport::draw 1")
 }
 
 void Viewport::logic()
 {
+    BLOCK_START("Viewport::logic")
     WindowContainer::logic();
 
     // Make the player follow the mouse position
     // if the mouse is dragged elsewhere than in a window.
     _followMouse();
+    BLOCK_END("Viewport::logic")
 }
 
 void Viewport::_followMouse()

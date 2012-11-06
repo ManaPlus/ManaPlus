@@ -135,6 +135,7 @@ void Network::clearHandlers()
 
 void Network::dispatchMessages()
 {
+    BLOCK_START("Network::dispatchMessages")
     while (messageReady())
     {
         MessageIn *const msg = getNextMessage();
@@ -158,6 +159,7 @@ void Network::dispatchMessages()
         skip(msg->getLength());
         delete msg;
     }
+    BLOCK_END("Network::dispatchMessages")
 }
 
 bool Network::messageReady()
@@ -197,6 +199,7 @@ bool Network::messageReady()
 
 MessageIn *Network::getNextMessage()
 {
+    BLOCK_START("Network::getNextMessage")
     while (!messageReady())
     {
         if (mState == NET_ERROR)
@@ -224,6 +227,7 @@ MessageIn *Network::getNextMessage()
     MessageIn *const msg = new MessageIn(mInBuffer, len);
     SDL_mutexV(mMutex);
 
+    BLOCK_END("Network::getNextMessage")
     return msg;
 }
 

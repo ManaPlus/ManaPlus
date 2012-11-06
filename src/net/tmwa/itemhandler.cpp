@@ -45,6 +45,7 @@ ItemHandler::ItemHandler() :
 
 void ItemHandler::handleMessage(Net::MessageIn &msg)
 {
+    BLOCK_START("ItemHandler::handleMessage")
     switch (msg.getId())
     {
         case SMSG_ITEM_VISIBLE:
@@ -62,6 +63,7 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+    BLOCK_END("ItemHandler::handleMessage")
 }
 
 } // namespace TmwAthena

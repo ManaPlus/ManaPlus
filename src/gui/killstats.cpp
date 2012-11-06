@@ -259,6 +259,7 @@ void KillStats::gainXp(int xp)
 
 void KillStats::recalcStats()
 {
+    BLOCK_START("KillStats::recalcStats")
     const int curTime = cur_time;
 
     // Need Update Exp Counter
@@ -295,10 +296,12 @@ void KillStats::recalcStats()
         m15minExpNum = newExp;
     }
     validateJacko();
+    BLOCK_END("KillStats::recalcStats")
 }
 
 void KillStats::update()
 {
+    BLOCK_START("KillStats::update")
     mExpSpeed1Label->setCaption(strprintf(ngettext("Exp speed per %d min: %s",
         "Exp speed per %d min: %s", 1), 1, toString(m1minSpeed).c_str()));
 
@@ -355,6 +358,7 @@ void KillStats::update()
 
     validateJacko();
     updateJackoLabel();
+    BLOCK_END("KillStats::update")
 }
 void KillStats::draw(gcn::Graphics *g)
 {

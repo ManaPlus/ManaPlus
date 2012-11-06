@@ -208,6 +208,7 @@ LocalPlayer::~LocalPlayer()
 
 void LocalPlayer::logic()
 {
+    BLOCK_START("LocalPlayer::logic")
     #ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setPos(mX, mY, mDirection);
@@ -325,10 +326,12 @@ void LocalPlayer::logic()
     }
 
     Being::logic();
+    BLOCK_END("LocalPlayer::logic")
 }
 
 void LocalPlayer::slowLogic()
 {
+    BLOCK_START("LocalPlayer::slowLogic")
     if (weightNotice && weightNoticeTime < cur_time)
     {
         weightNotice->scheduleDelete();
@@ -354,6 +357,7 @@ void LocalPlayer::slowLogic()
         else
             mAdvertTime = cur_time + 30;
     }
+    BLOCK_END("LocalPlayer::slowLogic")
 }
 
 void LocalPlayer::setAction(const Action &action, const int attackType)

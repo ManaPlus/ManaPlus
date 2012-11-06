@@ -66,6 +66,7 @@ class SDLTextChunk final
 
         void generate(TTF_Font *const font, const float alpha)
         {
+            BLOCK_START("SDLTextChunk::generate")
             SDL_Color sdlCol;
             sdlCol.b = static_cast<uint8_t>(color.b);
             sdlCol.r = static_cast<uint8_t>(color.r);
@@ -80,11 +81,13 @@ class SDLTextChunk final
             if (!surface)
             {
                 img = nullptr;
+                BLOCK_END("SDLTextChunk::generate")
                 return;
             }
 
             img = imageHelper->createTextSurface(surface, alpha);
             SDL_FreeSurface(surface);
+            BLOCK_END("SDLTextChunk::generate")
         }
 
         Image *img;
@@ -192,8 +195,12 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
                          const std::string &text,
                          const int x, const int y)
 {
+    BLOCK_START("SDLFont::drawString")
     if (text.empty())
+    {
+        BLOCK_END("SDLFont::drawString")
         return;
+    }
 
     Graphics *const g = dynamic_cast<Graphics *const>(graphics);
 
@@ -260,11 +267,12 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
         image->setAlpha(alpha);
         g->drawImage(image, x, y);
     }
-
+    BLOCK_END("SDLFont::drawString")
 }
 
 void SDLFont::slowLogic()
 {
+    BLOCK_START("SDLFont::slowLogic")
     if (!mCleanTime)
     {
         mCleanTime = cur_time + CLEAN_TIME;
@@ -274,6 +282,7 @@ void SDLFont::slowLogic()
         doClean();
         mCleanTime = cur_time + CLEAN_TIME;
     }
+    BLOCK_END("SDLFont::slowLogic")
 }
 
 void SDLFont::createSDLTextChunk(SDLTextChunk *const chunk)

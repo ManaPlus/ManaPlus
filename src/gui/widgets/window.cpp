@@ -186,6 +186,7 @@ void Window::draw(gcn::Graphics *graphics)
     if (!mSkin)
         return;
 
+    BLOCK_START("Window::draw")
     Graphics *const g = static_cast<Graphics*>(graphics);
     bool update = false;
 
@@ -237,6 +238,7 @@ void Window::draw(gcn::Graphics *graphics)
     {
         drawChildren(graphics);
     }
+    BLOCK_END("Window::draw")
 }
 
 void Window::setContentSize(int width, int height)

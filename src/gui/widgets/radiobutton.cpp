@@ -149,6 +149,7 @@ void RadioButton::drawBox(gcn::Graphics* graphics)
 
 void RadioButton::draw(gcn::Graphics* graphics)
 {
+    BLOCK_START("RadioButton::draw")
     drawBox(graphics);
 
     graphics->setFont(getFont());
@@ -156,6 +157,7 @@ void RadioButton::draw(gcn::Graphics* graphics)
 
     graphics->drawText(getCaption(), mPadding + mImageSize + mSpacing,
         mPadding);
+    BLOCK_END("RadioButton::draw")
 }
 
 void RadioButton::mouseEntered(gcn::MouseEvent& event A_UNUSED)

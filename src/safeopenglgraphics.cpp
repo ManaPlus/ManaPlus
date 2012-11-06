@@ -147,6 +147,7 @@ bool SafeOpenGLGraphics::drawImage2(const Image *const image,
                                     const int width, const int height,
                                     const bool useColor)
 {
+    FUNC_BLOCK("Graphics::drawImage2", 1)
     if (!image)
         return false;
 
@@ -190,6 +191,7 @@ bool SafeOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
                                            const bool useColor,
                                            bool smooth)
 {
+    FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     if (!image)
         return false;
 
@@ -245,6 +247,7 @@ void SafeOpenGLGraphics::drawImagePattern(const Image *const image,
                                           const int x, const int y,
                                           const int w, const int h)
 {
+    FUNC_BLOCK("Graphics::drawImagePattern", 1)
     if (!image)
         return;
 
@@ -375,9 +378,11 @@ void SafeOpenGLGraphics::drawImageRect2(GraphicsVertexes* vert,
 
 void SafeOpenGLGraphics::updateScreen()
 {
+    BLOCK_START("Graphics::updateScreen")
     glFlush();
     glFinish();
     SDL_GL_SwapBuffers();
+    BLOCK_END("Graphics::updateScreen")
 }
 
 void SafeOpenGLGraphics::_beginDraw()
@@ -589,6 +594,7 @@ void SafeOpenGLGraphics::setTexturingAndBlending(bool enable)
 
 void SafeOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect, bool filled)
 {
+    BLOCK_START("Graphics::drawRectangle")
     const float offset = filled ? 0 : 0.5f;
 
     setTexturingAndBlending(false);
@@ -604,6 +610,7 @@ void SafeOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect, bool filled)
     glVertex2f(static_cast<float>(rect.x) + offset,
         static_cast<float>(rect.y + rect.height) - offset);
     glEnd();
+    BLOCK_END("Graphics::drawRectangle")
 }
 
 void SafeOpenGLGraphics::bindTexture(GLenum target, GLuint texture)

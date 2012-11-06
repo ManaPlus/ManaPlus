@@ -293,6 +293,7 @@ void GuiTable::draw(gcn::Graphics* graphics)
     if (!mModel || !getRowHeight())
         return;
 
+    BLOCK_START("GuiTable::draw")
     if (Client::getGuiAlpha() != mAlpha)
         mAlpha = Client::getGuiAlpha();
 
@@ -386,6 +387,7 @@ void GuiTable::draw(gcn::Graphics* graphics)
         mTopWidget->draw(graphics);
         graphics->popClipArea();
     }
+    BLOCK_END("GuiTable::draw")
 }
 
 void GuiTable::moveToTop(gcn::Widget *widget)

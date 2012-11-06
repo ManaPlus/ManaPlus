@@ -335,6 +335,7 @@ void BrowserBox::mouseMoved(gcn::MouseEvent &event)
 
 void BrowserBox::draw(gcn::Graphics *graphics)
 {
+    BLOCK_START("BrowserBox::draw")
     const gcn::ClipRectangle cr = graphics->getCurrentClipArea();
     Graphics *const graphics2 = static_cast<Graphics *const>(graphics);
     mYStart = cr.y - cr.yOffset;
@@ -400,7 +401,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
         }
     }
 
-    return;
+    BLOCK_END("BrowserBox::draw")
 }
 
 int BrowserBox::calcHeight()

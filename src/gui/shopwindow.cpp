@@ -776,12 +776,14 @@ void ShopWindow::processRequest(std::string nick, std::string data,
 
 void ShopWindow::updateTimes()
 {
+    BLOCK_START("ShopWindow::updateTimes")
     if (mAnnonceTime + (2 * 60) < cur_time
         || mAnnonceTime > cur_time)
     {
         mBuyAnnounceButton->setEnabled(true);
         mSellAnnounceButton->setEnabled(true);
     }
+    BLOCK_END("ShopWindow::updateTimes")
 }
 
 bool ShopWindow::checkFloodCounter(int &counterTime) const
