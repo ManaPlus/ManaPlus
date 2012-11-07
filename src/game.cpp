@@ -871,12 +871,16 @@ void Game::handleActive(const SDL_Event &event)
         }
         else
         {   // window minimisation
+#ifdef ANDROID
+            Client::setState(STATE_EXIT);
+#else
             Client::setIsMinimized(true);
             if (player_node && !player_node->getAway())
             {
                 fpsLimit = config.getIntValue("altfpslimit");
                 player_node->setHalfAway(true);
             }
+#endif
         }
         if (player_node)
             player_node->updateStatus();

@@ -883,6 +883,7 @@ int Client::gameExec()
                 {
                     case SDL_QUIT:
                         mState = STATE_EXIT;
+                        logger->log("force exit");
                         break;
 
                     case SDL_KEYDOWN:
@@ -907,7 +908,21 @@ int Client::gameExec()
                         inputManager.handleAssignKey(event, INPUT_JOYSTICK);
                         break;
 
+#ifdef ANDROID
+                    case SDL_ACTIVEEVENT:
+                        if ((event.active.state & SDL_APPACTIVE)
+                            && !event.active.gain)
+                        {
+                            mState = STATE_EXIT;
+                            logger->log("exit on lost focus");
+                        }
+                        break;
+#endif
+                    case SDL_MOUSEMOTION:
+                        break;
+
                     default:
+//                        logger->log("unknown event: %d", event.type);
                         break;
 
                     case SDL_VIDEORESIZE:
@@ -924,6 +939,8 @@ int Client::gameExec()
                 }
                 #endif
             }
+            if (mState == STATE_EXIT)
+                continue;
             BLOCK_END("Client::gameExec 2")
         }
 
