@@ -644,6 +644,10 @@ SET(SRCS
     textparticle.h
     textrenderer.h
     tileset.h
+    touchactions.cpp
+    touchactions.h
+    touchmanager.cpp
+    touchmanager.h
     units.cpp
     units.h
     variabledata.h

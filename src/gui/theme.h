@@ -361,6 +361,12 @@ class Theme final : public Palette, public ConfigListener
 
         static ThemeInfo *loadInfo(const std::string &themeName) A_WARN_UNUSED;
 
+        static SDL_Rect *getKeybRect()
+#ifdef ANDROID
+        { return mKeybRect; }
+#else
+        { return nullptr; }
+#endif
     private:
         Theme();
 
@@ -391,6 +397,9 @@ class Theme final : public Palette, public ConfigListener
 
         typedef std::vector<DyePalette*> ProgressColors;
         ProgressColors mProgressColors;
+#ifdef ANDROID
+        static SDL_Rect *mKeybRect;
+#endif
 };
 
 #endif

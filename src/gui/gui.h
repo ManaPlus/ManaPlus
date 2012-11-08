@@ -24,6 +24,7 @@
 #define GUI_H
 
 #include "resources/cursor.h"
+#include "resources/image.h"
 
 #include <guichan/gui.hpp>
 
@@ -143,6 +144,8 @@ class Gui final : public gcn::Gui
 
     protected:
         void handleMouseMoved(const gcn::MouseInput &mouseInput);
+
+        void handleMouseInput();
 
         void distributeMouseEvent(gcn::Widget* source, int type, int button,
                                   int x, int y, bool force = false,

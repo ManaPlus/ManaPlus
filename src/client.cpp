@@ -44,6 +44,7 @@
 #include "sound.h"
 #include "statuseffect.h"
 #include "units.h"
+#include "touchmanager.h"
 
 #include "gui/buydialog.h"
 #include "gui/buyselldialog.h"
@@ -557,6 +558,7 @@ void Client::gameInit()
     mainGraphics->_beginDraw();
 
     Theme::selectSkin();
+    touchManager.init();
 //    Theme::prepareThemePath();
 
     // Initialize the item and emote shortcuts.
@@ -775,6 +777,7 @@ void Client::gameClear()
 
     ActorSprite::unload();
 
+    touchManager.clear();
     ResourceManager::deleteInstance();
 
     if (logger)

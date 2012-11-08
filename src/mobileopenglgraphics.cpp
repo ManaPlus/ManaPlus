@@ -745,7 +745,9 @@ void MobileOpenGLGraphics::updateScreen()
     BLOCK_START("Graphics::updateScreen")
 //    glFlush();
 //    glFinish();
+//    setTexturingAndBlending(true);
     SDL_GL_SwapBuffers();
+//    mLastImage = 0;
 // may be need clear?
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     BLOCK_END("Graphics::updateScreen")

@@ -36,6 +36,7 @@
 #include "keydata.h"
 #include "keyevent.h"
 #include "keyinput.h"
+#include "touchmanager.h"
 
 #include "resources/image.h"
 #include "resources/imageset.h"
@@ -395,6 +396,7 @@ void Gui::draw()
     BLOCK_START("Gui::draw 1")
     mGraphics->pushClipArea(getTop()->getDimension());
     getTop()->draw(mGraphics);
+    touchManager.draw();
 
     int mouseX, mouseY;
     const uint8_t button = SDL_GetMouseState(&mouseX, &mouseY);
@@ -649,4 +651,44 @@ void Gui::getAbsolutePosition(gcn::Widget *widget, int &x, int &y)
         y += widget->getY();
         widget = widget->getParent();
     }
+}
+
+void Gui::handleMouseInput()
+{
+    BLOCK_START("Gui::handleMouseInput")
+    while (!mInput->isMouseQueueEmpty())
+    {
+        const gcn::MouseInput mouseInput = mInput->dequeueMouseInput();
+
+        if (touchManager.processEvent(mouseInput))
+            continue;
+
+        // Save the current mouse state. It will be needed if modal focus
+        // changes or modal mouse input focus changes.
+        mLastMouseX = mouseInput.getX();
+        mLastMouseY = mouseInput.getY();
+
+        switch (mouseInput.getType())
+        {
+            case gcn::MouseInput::PRESSED:
+                handleMousePressed(mouseInput);
+                break;
+            case gcn::MouseInput::RELEASED:
+                handleMouseReleased(mouseInput);
+                break;
+            case gcn::MouseInput::MOVED:
+                handleMouseMoved(mouseInput);
+                break;
+            case gcn::MouseInput::WHEEL_MOVED_DOWN:
+                handleMouseWheelMovedDown(mouseInput);
+                break;
+            case gcn::MouseInput::WHEEL_MOVED_UP:
+                handleMouseWheelMovedUp(mouseInput);
+                break;
+            default:
+                throw GCN_EXCEPTION("Unknown mouse input type.");
+                break;
+        }
+    }
+    BLOCK_END("Gui::handleMouseInput")
 }

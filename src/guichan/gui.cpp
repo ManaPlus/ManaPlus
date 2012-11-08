@@ -161,39 +161,6 @@ namespace gcn
 
     void Gui::handleMouseInput()
     {
-        BLOCK_START("Gui::handleMouseInput")
-        while (!mInput->isMouseQueueEmpty())
-        {
-             const MouseInput mouseInput = mInput->dequeueMouseInput();
-
-             // Save the current mouse state. It will be needed if modal focus
-             // changes or modal mouse input focus changes.
-             mLastMouseX = mouseInput.getX();
-             mLastMouseY = mouseInput.getY();
-
-             switch (mouseInput.getType())
-             {
-                 case MouseInput::PRESSED:
-                     handleMousePressed(mouseInput);
-                     break;
-                 case MouseInput::RELEASED:
-                     handleMouseReleased(mouseInput);
-                     break;
-                 case MouseInput::MOVED:
-                     handleMouseMoved(mouseInput);
-                     break;
-                 case MouseInput::WHEEL_MOVED_DOWN:
-                     handleMouseWheelMovedDown(mouseInput);
-                     break;
-                 case MouseInput::WHEEL_MOVED_UP:
-                     handleMouseWheelMovedUp(mouseInput);
-                     break;
-                 default:
-                     throw GCN_EXCEPTION("Unknown mouse input type.");
-                     break;
-             }
-        }
-        BLOCK_END("Gui::handleMouseInput")
     }
 
     void Gui::handleKeyInput()
