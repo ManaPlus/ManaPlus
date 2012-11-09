@@ -76,71 +76,96 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 
     setFocusable(false);
 
-    addButton(N_("ONL"), _("Who is online"), x, h,
-              Input::KEY_WINDOW_ONLINE, whoIsOnline);
-    addButton(N_("HLP"), _("Help"), x, h,
-              Input::KEY_WINDOW_HELP, helpWindow);
-    addButton(N_("QE"), _("Quests"), x, h,
-              Input::KEY_WINDOW_QUESTS, questsWindow);
-    addButton(N_("BC"), _("Bot checker"), x, h,
-              Input::KEY_WINDOW_BOT_CHECKER, botCheckerWindow, false);
-    addButton(N_("KS"), _("Kill stats"), x, h,
-              Input::KEY_WINDOW_KILLS, killStats);
-    addButton(":-)", _("Smilies"), x, h,
-              Input::KEY_WINDOW_EMOTE_SHORTCUT, emoteShortcutWindow);
-    addButton(N_("CH"), _("Chat"), x, h,
-              Input::KEY_WINDOW_CHAT, chatWindow,
+    // TRANSLATORS: short button name for who is online window.
+    addButton(N_("ONL"),
+        _("Who is online"), x, h, Input::KEY_WINDOW_ONLINE, whoIsOnline);
+    // TRANSLATORS: short button name for help window.
+    addButton(N_("HLP"),
+        _("Help"), x, h, Input::KEY_WINDOW_HELP, helpWindow);
+    // TRANSLATORS: short button name for quests window.
+    addButton(N_("QE"),
+        _("Quests"), x, h, Input::KEY_WINDOW_QUESTS, questsWindow);
+    // TRANSLATORS: short button name for bot checker window.
+    addButton(N_("BC"),
+        _("Bot checker"), x, h, Input::KEY_WINDOW_BOT_CHECKER,
+        botCheckerWindow, false);
+    // TRANSLATORS: short button name for kill stats window.
+    addButton(N_("KS"),
+        _("Kill stats"), x, h, Input::KEY_WINDOW_KILLS, killStats);
+    // TRANSLATORS: short button name for smilies window.
+    addButton(":-)",
+        _("Smilies"), x, h, Input::KEY_WINDOW_EMOTE_SHORTCUT,
+        emoteShortcutWindow);
+    // TRANSLATORS: short button name for chat window.
+    addButton(N_("CH"),
+        _("Chat"), x, h, Input::KEY_WINDOW_CHAT, chatWindow,
 #ifdef ANDROID
-              true);
+        true);
 #else
-              false);
+        false);
 #endif
-    addButton(N_("STA"), _("Status"), x, h,
-              Input::KEY_WINDOW_STATUS, statusWindow);
-    addButton(N_("EQU"), _("Equipment"), x, h,
-              Input::KEY_WINDOW_EQUIPMENT, equipmentWindow);
-    addButton(N_("INV"), _("Inventory"), x, h,
-              Input::KEY_WINDOW_INVENTORY, inventoryWindow);
-    addButton(N_("MAP"), _("Map"), x, h,
-              Input::KEY_WINDOW_MINIMAP, minimap, false);
+    // TRANSLATORS: short button name for status window.
+    addButton(N_("STA"),
+        _("Status"), x, h, Input::KEY_WINDOW_STATUS, statusWindow);
+    // TRANSLATORS: short button name for equipment window.
+    addButton(N_("EQU"),
+        _("Equipment"), x, h, Input::KEY_WINDOW_EQUIPMENT, equipmentWindow);
+    // TRANSLATORS: short button name for inventory window.
+    addButton(N_("INV"),
+        _("Inventory"), x, h, Input::KEY_WINDOW_INVENTORY, inventoryWindow);
+    // TRANSLATORS: short button name for map window.
+    addButton(N_("MAP"),
+        _("Map"), x, h, Input::KEY_WINDOW_MINIMAP, minimap, false);
 
     if (skillDialog->hasSkills())
     {
-        addButton(N_("SKI"), _("Skills"), x, h,
-                  Input::KEY_WINDOW_SKILL, skillDialog);
+        // TRANSLATORS: short button name for skills window.
+        addButton(N_("SKI"),
+            _("Skills"), x, h, Input::KEY_WINDOW_SKILL, skillDialog);
     }
 
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
-        addButton(N_("SPE"), _("Specials"), x, h,
-                  Input::KEY_NO_VALUE, specialsWindow);
+        // TRANSLATORS: short button name for specials window.
+        addButton(N_("SPE"),
+            _("Specials"), x, h, Input::KEY_NO_VALUE, specialsWindow);
     }
 #endif
 
-    addButton(N_("SOC"), _("Social"), x, h,
-              Input::KEY_WINDOW_SOCIAL, socialWindow);
-    addButton(N_("SH"), _("Shortcuts"), x, h,
-              Input::KEY_WINDOW_SHORTCUT, itemShortcutWindow);
-    addButton(N_("SP"), _("Spells"), x, h,
-              Input::KEY_WINDOW_SPELLS, spellShortcutWindow);
-    addButton(N_("DR"), _("Drop"), x, h,
-              Input::KEY_WINDOW_DROP, dropShortcutWindow, false);
-    addButton(N_("YK"), _("Did you know"), x, h,
-        Input::KEY_WINDOW_DIDYOUKNOW, didYouKnowWindow);
-    addButton(N_("SHP"), _("Shop"), x, h,
-        Input::KEY_WINDOW_SHOP, shopWindow, false);
-    addButton(N_("OU"), _("Outfits"), x, h,
-        Input::KEY_WINDOW_OUTFIT, outfitWindow, false);
-    addButton(N_("DBG"), _("Debug"), x, h,
-              Input::KEY_WINDOW_DEBUG, debugWindow,
+    // TRANSLATORS: short button name for social window.
+    addButton(N_("SOC"),
+        _("Social"), x, h, Input::KEY_WINDOW_SOCIAL, socialWindow);
+    // TRANSLATORS: short button name for shortcuts window.
+    addButton(N_("SH"),
+        _("Shortcuts"), x, h, Input::KEY_WINDOW_SHORTCUT, itemShortcutWindow);
+    // TRANSLATORS: short button name for spells window.
+    addButton(N_("SP"),
+        _("Spells"), x, h, Input::KEY_WINDOW_SPELLS, spellShortcutWindow);
+    // TRANSLATORS: short button name for drops window.
+    addButton(N_("DR"),
+        _("Drop"), x, h, Input::KEY_WINDOW_DROP, dropShortcutWindow, false);
+    // TRANSLATORS: short button name for did you know window.
+    addButton(N_("YK"),
+        _("Did you know"), x, h, Input::KEY_WINDOW_DIDYOUKNOW,
+        didYouKnowWindow);
+    // TRANSLATORS: short button name for shop window.
+    addButton(N_("SHP"),
+        _("Shop"), x, h, Input::KEY_WINDOW_SHOP, shopWindow, false);
+    // TRANSLATORS: short button name for outfits window.
+    addButton(N_("OU"),
+        _("Outfits"), x, h, Input::KEY_WINDOW_OUTFIT, outfitWindow, false);
+    // TRANSLATORS: short button name for debug window.
+    addButton(N_("DBG"),
+        _("Debug"), x, h, Input::KEY_WINDOW_DEBUG, debugWindow,
 #ifdef ANDROID
-              true);
+        true);
 #else
-              false);
+        false);
 #endif
-    addButton(N_("SET"), _("Setup"), x, h,
-              Input::KEY_WINDOW_SETUP, setupWindow);
+    // TRANSLATORS: short button name for setup window.
+    addButton(N_("SET"),
+        _("Setup"), x, h, Input::KEY_WINDOW_SETUP, setupWindow);
 
     if (mainGraphics)
     {
