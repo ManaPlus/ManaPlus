@@ -45,6 +45,7 @@
 #include "debug.h"
 
 extern Window *botCheckerWindow;
+extern Window *chatWindow;
 extern Window *debugWindow;
 extern Window *dropShortcutWindow;
 extern Window *emoteShortcutWindow;
