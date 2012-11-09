@@ -62,7 +62,6 @@
 #undef malloc
 #endif
 
-
 class NameFunctuator final
 {
     public:

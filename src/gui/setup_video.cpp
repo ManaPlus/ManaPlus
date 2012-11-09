@@ -108,6 +108,7 @@ class ModeListModel final : public gcn::ListModel
         StringVect mVideoModes;
 };
 
+#ifndef ANDROID
 static bool modeSorter(std::string mode1, std::string mode2);
 
 static bool modeSorter(std::string mode1, std::string mode2)
@@ -129,6 +130,7 @@ static bool modeSorter(std::string mode1, std::string mode2)
 
     return false;
 }
+#endif
 
 ModeListModel::ModeListModel()
 {

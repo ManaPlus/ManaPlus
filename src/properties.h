@@ -23,6 +23,8 @@
 #ifndef PROPERTIES_H
 #define PROPERTIES_H
 
+#include "localconsts.h"
+
 #include <map>
 #include <sstream>
 #include <string>

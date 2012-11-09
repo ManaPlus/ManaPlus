@@ -67,7 +67,8 @@ class Palette
          *
          * @return the requested color or Palette::BLACK
          */
-        const gcn::Color &getCharColor(const signed char c, bool &valid) A_WARN_UNUSED;
+        const gcn::Color &getCharColor(const signed char c,
+                                       bool &valid) A_WARN_UNUSED;
 
         int getIdByChar(const signed char c, bool &valid) A_WARN_UNUSED;
 
@@ -80,7 +81,8 @@ class Palette
          *
          * @return the requested color
          */
-        inline const gcn::Color &getColor(int type, int alpha = 255) A_WARN_UNUSED
+        inline const gcn::Color &getColor(int type,
+                                          int alpha = 255) A_WARN_UNUSED
         {
             if (type >= static_cast<signed>(mColors.size()) || type < 0)
             {

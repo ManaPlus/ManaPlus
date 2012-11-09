@@ -23,6 +23,8 @@
 #ifndef PARTYHANDLER_H
 #define PARTYHANDLER_H
 
+#include "localconsts.h"
+
 #include <string>
 
 class Being;

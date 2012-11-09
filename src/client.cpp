@@ -1509,7 +1509,8 @@ int Client::gameExec()
                     break;
 
                 case STATE_CHANGEPASSWORD_ATTEMPT:
-                    BLOCK_START("Client::gameExec STATE_CHANGEPASSWORD_ATTEMPT")
+                    BLOCK_START("Client::gameExec "
+                        "STATE_CHANGEPASSWORD_ATTEMPT")
                     logger->log1("State: CHANGE PASSWORD ATTEMPT");
                     Net::getLoginHandler()->changePassword(loginData.username,
                         loginData.password, loginData.newPassword);
@@ -1517,7 +1518,8 @@ int Client::gameExec()
                     break;
 
                 case STATE_CHANGEPASSWORD_SUCCESS:
-                    BLOCK_START("Client::gameExec STATE_CHANGEPASSWORD_SUCCESS")
+                    BLOCK_START("Client::gameExec "
+                        "STATE_CHANGEPASSWORD_SUCCESS")
                     logger->log1("State: CHANGE PASSWORD SUCCESS");
                     mCurrentDialog = new OkDialog(_("Password Change"),
                         _("Password changed successfully!"), DIALOG_ERROR);

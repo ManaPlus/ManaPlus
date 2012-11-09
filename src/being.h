@@ -846,7 +846,7 @@ class Being : public ActorSprite, public ConfigListener
                          const AttackType type,
                          const int attackId) const A_WARN_UNUSED;
 
-        Cursor::Cursor getHoverCursor() A_WARN_UNUSED
+        Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
         { return mInfo ? mInfo->getHoverCursor() : Cursor::CURSOR_POINTER; }
 
         static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;

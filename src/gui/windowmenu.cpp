@@ -89,7 +89,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     addButton(":-)", _("Smilies"), x, h,
               Input::KEY_WINDOW_EMOTE_SHORTCUT, emoteShortcutWindow);
     addButton(N_("CH"), _("Chat"), x, h,
-              Input::KEY_WINDOW_CHAT, minimap,
+              Input::KEY_WINDOW_CHAT, chatWindow,
 #ifdef ANDROID
               true);
 #else

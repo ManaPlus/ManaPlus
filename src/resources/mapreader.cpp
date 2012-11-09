@@ -254,7 +254,6 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
 
     // Take the filename off the path
     const std::string pathDir = path.substr(0, path.rfind("/") + 1);
-    const std::string fileName = path.substr(path.rfind("/") + 1);
 
     const int w = XML::getProperty(node, "width", 0);
     const int h = XML::getProperty(node, "height", 0);
@@ -278,6 +277,7 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
 #ifdef USE_OPENGL
     if (graphicsManager.getUseAtlases())
     {
+        const std::string fileName = path.substr(path.rfind("/") + 1);
         const MapDB::MapInfo *const info = MapDB::getMapAtlas(fileName);
         if (info)
         {

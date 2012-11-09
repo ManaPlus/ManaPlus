@@ -47,6 +47,8 @@
 
 #include "guichan/platform.hpp"
 
+#include "localconsts.h"
+
 namespace gcn
 {
     class KeyInput;
