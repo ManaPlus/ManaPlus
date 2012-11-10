@@ -1,3 +1,19 @@
+2012-11-11 New release 1.2.11.11
+fix: resolution switching under Android with OpenGL.
+fix: guichan draw lines under ARM.
+fix: some fixes in jewelry theme.
+fix: translations under Android.
+fix: ok dialog size.
+fix: disable video mode autodetection under Android.
+fix: chat log if switch game characters.
+fix: crash with empty relations list.
+fix: game termination under Android by using "home" key.
+fix: minimaps loading.
+add: close button in android version.
+add: extend theming.
+add: select maximum resolution under Android.
+add: highlight window header with "*" if got new chat messages.
+
 2012-10-28 New release 1.2.10.28
 fix: some ARM fixes.
 fix: open/close sounds for some windows.
