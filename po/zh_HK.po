@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-10-27 00:15+0300\n"
-"PO-Revision-Date: 2012-10-26 21:19+0000\n"
+"POT-Creation-Date: 2012-11-09 16:04+0300\n"
+"PO-Revision-Date: 2012-11-09 13:17+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Accepting incoming trade requests"
 msgstr ""
 
-#: src/actorspritemanager.cpp:1279
+#: src/actorspritemanager.cpp:1286
 msgid "Visible on map"
 msgstr ""
 
@@ -43,56 +43,63 @@ msgid "miss"
 msgstr ""
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1615 src/gui/whoisonline.cpp:771
+#: src/being.cpp:1620 src/gui/whoisonline.cpp:772
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1620 src/gui/whoisonline.cpp:776
+#: src/being.cpp:1625 src/gui/whoisonline.cpp:777
 msgid "I"
 msgstr ""
 
-#: src/client.cpp:1007 src/gui/setup.cpp:53 src/gui/windowmenu.cpp:111
+#: src/client.cpp:1067 src/gui/setup.cpp:53 src/gui/windowmenu.cpp:142
 msgid "Setup"
 msgstr "設定"
 
-#: src/client.cpp:1014 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:1070 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr ""
 
-#: src/client.cpp:1019 src/gui/setup_video.cpp:248
+#: src/client.cpp:1072 src/gui/setup_video.cpp:232
 msgid "Video"
 msgstr "顯示"
 
-#: src/client.cpp:1024
+#: src/client.cpp:1074
 msgid "Themes"
 msgstr ""
 
-#: src/client.cpp:1110
+#: src/client.cpp:1077 src/gui/didyouknowwindow.cpp:71
+#: src/gui/helpwindow.cpp:64 src/gui/inventorywindow.cpp:208
+#: src/gui/npcdialog.cpp:58 src/gui/npcdialog.cpp:82 src/gui/popupmenu.cpp:501
+#: src/gui/questswindow.cpp:98 src/gui/shopwindow.cpp:78
+msgid "Close"
+msgstr "關閉"
+
+#: src/client.cpp:1167
 msgid "Connecting to server"
 msgstr ""
 
-#: src/client.cpp:1148
+#: src/client.cpp:1209
 msgid "Logging in"
 msgstr ""
 
-#: src/client.cpp:1182
+#: src/client.cpp:1247
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:1289
+#: src/client.cpp:1360
 msgid "Requesting characters"
 msgstr ""
 
-#: src/client.cpp:1324
+#: src/client.cpp:1398
 msgid "Connecting to the game server"
 msgstr ""
 
-#: src/client.cpp:1334
+#: src/client.cpp:1410
 msgid "Changing game servers"
 msgstr ""
 
-#: src/client.cpp:1379 src/client.cpp:1387 src/client.cpp:1522
+#: src/client.cpp:1466 src/client.cpp:1476 src/client.cpp:1635
 #: src/gui/changeemaildialog.cpp:159 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:293 src/gui/charselectdialog.cpp:273
 #: src/gui/editserverdialog.cpp:204 src/gui/registerdialog.cpp:245
@@ -101,50 +108,50 @@ msgstr ""
 msgid "Error"
 msgstr "錯誤"
 
-#: src/client.cpp:1397
+#: src/client.cpp:1488
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1423
+#: src/client.cpp:1524
 msgid "Password Change"
 msgstr ""
 
-#: src/client.cpp:1424
+#: src/client.cpp:1525
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1443
+#: src/client.cpp:1545
 msgid "Email Change"
 msgstr ""
 
-#: src/client.cpp:1444
+#: src/client.cpp:1546
 msgid "Email changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1464
+#: src/client.cpp:1566
 msgid "Unregister Successful"
 msgstr ""
 
-#: src/client.cpp:1465
+#: src/client.cpp:1567
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1691 src/client.cpp:1702 src/client.cpp:1737
-#: src/client.cpp:1752 src/client.cpp:2184 src/client.cpp:2191
+#: src/client.cpp:1813 src/client.cpp:1827 src/client.cpp:1862
+#: src/client.cpp:1877 src/client.cpp:2319 src/client.cpp:2326
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1895
+#: src/client.cpp:2020
 #, c-format
 msgid "Invalid update host: %s"
 msgstr ""
 
-#: src/client.cpp:1934 src/client.cpp:1940
+#: src/client.cpp:2059 src/client.cpp:2065
 msgid "Error creating updates directory!"
 msgstr ""
 
-#: src/client.cpp:1961
+#: src/client.cpp:2086
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -321,27 +328,28 @@ msgstr ""
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 
-#: src/game.cpp:259 src/gui/widgets/chattab.cpp:446
+#: src/game.cpp:258 src/gui/widgets/chattab.cpp:447
 msgid "General"
 msgstr ""
 
-#: src/game.cpp:263 src/gui/debugwindow.cpp:50 src/gui/widgets/chattab.cpp:448
+#: src/game.cpp:262 src/gui/debugwindow.cpp:50 src/gui/widgets/chattab.cpp:449
+#: src/gui/windowmenu.cpp:135
 msgid "Debug"
 msgstr ""
 
-#: src/game.cpp:540
+#: src/game.cpp:539
 msgid "Screenshot saved as "
 msgstr ""
 
-#: src/game.cpp:548
+#: src/game.cpp:547
 msgid "Saving screenshot failed!"
 msgstr ""
 
-#: src/game.cpp:609
+#: src/game.cpp:611
 msgid "The connection to the server was lost."
 msgstr ""
 
-#: src/game.cpp:610
+#: src/game.cpp:612
 msgid "Network Error"
 msgstr ""
 
@@ -380,7 +388,7 @@ msgstr "名字"
 #: src/gui/botcheckerwindow.cpp:305 src/gui/popupmenu.cpp:132
 #: src/gui/popupmenu.cpp:212 src/gui/popupmenu.cpp:543
 #: src/gui/setupactiondata.h:53 src/net/eathena/generalhandler.cpp:265
-#: src/net/tmwa/generalhandler.cpp:268
+#: src/net/tmwa/generalhandler.cpp:274
 msgid "Attack"
 msgstr ""
 
@@ -447,6 +455,7 @@ msgstr ""
 
 #: src/gui/buyselldialog.cpp:38 src/gui/buyselldialog.cpp:48
 #: src/gui/inventorywindow.cpp:183 src/gui/setup_other.cpp:148
+#: src/gui/windowmenu.cpp:131
 msgid "Shop"
 msgstr "商店"
 
@@ -583,7 +592,7 @@ msgstr "女生"
 #: src/gui/charcreatedialog.cpp:91 src/gui/registerdialog.cpp:104
 #: src/gui/setupactiondata.h:1485 src/gui/setupactiondata.h:1558
 #: src/gui/setup_audio.cpp:128 src/gui/setup_chat.cpp:128
-#: src/gui/setup_other.cpp:211 src/gui/setup_visual.cpp:98
+#: src/gui/setup_other.cpp:211 src/gui/setup_visual.cpp:100
 msgid "Other"
 msgstr ""
 
@@ -672,7 +681,7 @@ msgid "(empty)"
 msgstr ""
 
 #: src/gui/chatwindow.cpp:118 src/gui/inventorywindow.cpp:63
-#: src/gui/setup_visual.cpp:103
+#: src/gui/setup_visual.cpp:105
 msgid "default"
 msgstr ""
 
@@ -732,14 +741,14 @@ msgstr ""
 #: src/gui/itemamountwindow.cpp:94 src/gui/logindialog.cpp:79
 #: src/gui/logindialog.cpp:109 src/gui/setup_relations.cpp:227
 #: src/gui/setup_theme.cpp:109 src/gui/setup_theme.cpp:155
-#: src/gui/setup_video.cpp:216 src/gui/textcommandeditor.cpp:99
+#: src/gui/setup_video.cpp:198 src/gui/textcommandeditor.cpp:99
 #: src/gui/textcommandeditor.cpp:139 src/gui/textcommandeditor.cpp:159
 #: src/gui/widgets/extendednamesmodel.cpp:46 src/gui/widgets/namesmodel.cpp:48
 msgid "???"
 msgstr ""
 
 #: src/gui/chatwindow.cpp:158 src/gui/setupactiondata.h:1557
-#: src/gui/setup_chat.cpp:47
+#: src/gui/setup_chat.cpp:47 src/gui/windowmenu.cpp:91
 msgid "Chat"
 msgstr ""
 
@@ -768,7 +777,7 @@ msgid "Ignore"
 msgstr ""
 
 #: src/gui/debugwindow.cpp:67 src/gui/minimap.cpp:48 src/gui/minimap.cpp:101
-#: src/gui/setup_other.cpp:64
+#: src/gui/setup_other.cpp:64 src/gui/windowmenu.cpp:104
 msgid "Map"
 msgstr ""
 
@@ -780,144 +789,144 @@ msgstr ""
 msgid "Net"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:139 src/gui/debugwindow.cpp:219
-#: src/gui/debugwindow.cpp:248
+#: src/gui/debugwindow.cpp:146 src/gui/debugwindow.cpp:226
+#: src/gui/debugwindow.cpp:255
 msgid "Music:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:140 src/gui/debugwindow.cpp:223
-#: src/gui/debugwindow.cpp:250
+#: src/gui/debugwindow.cpp:147 src/gui/debugwindow.cpp:230
+#: src/gui/debugwindow.cpp:257
 msgid "Map:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:141 src/gui/debugwindow.cpp:221
-#: src/gui/debugwindow.cpp:249
+#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:228
+#: src/gui/debugwindow.cpp:256
 msgid "Minimap:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:143 src/gui/debugwindow.cpp:217
-#: src/gui/debugwindow.cpp:246
+#: src/gui/debugwindow.cpp:150 src/gui/debugwindow.cpp:224
+#: src/gui/debugwindow.cpp:253
 msgid "Cursor:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:145
+#: src/gui/debugwindow.cpp:152
 msgid "Particle count:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:147 src/gui/debugwindow.cpp:234
-#: src/gui/debugwindow.cpp:253
+#: src/gui/debugwindow.cpp:154 src/gui/debugwindow.cpp:241
+#: src/gui/debugwindow.cpp:260
 msgid "Map actors count:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:200
-#: src/gui/debugwindow.cpp:205
+#: src/gui/debugwindow.cpp:155 src/gui/debugwindow.cpp:207
+#: src/gui/debugwindow.cpp:212
 msgid "Player Position:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:151
+#: src/gui/debugwindow.cpp:158
 #, c-format
 msgid "%d FPS"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:152 src/gui/debugwindow.cpp:260
+#: src/gui/debugwindow.cpp:159 src/gui/debugwindow.cpp:267
 #, c-format
 msgid "%d LPS"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:161 src/gui/debugwindow.cpp:172
+#: src/gui/debugwindow.cpp:168 src/gui/debugwindow.cpp:179
 #, c-format
 msgid "%d FPS (Software)"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:165
+#: src/gui/debugwindow.cpp:172
 #, c-format
 msgid "%d FPS (fast OpenGL)"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:168
+#: src/gui/debugwindow.cpp:175
 #, c-format
 msgid "%d FPS (old OpenGL)"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:187 src/gui/debugwindow.cpp:239
+#: src/gui/debugwindow.cpp:194 src/gui/debugwindow.cpp:246
 msgid "Textures count:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:230
+#: src/gui/debugwindow.cpp:237
 #, c-format
 msgid "Particle count: %d"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:265 src/gui/debugwindow.cpp:301
-#: src/gui/debugwindow.cpp:348
+#: src/gui/debugwindow.cpp:272 src/gui/debugwindow.cpp:308
+#: src/gui/debugwindow.cpp:355
 msgid "Target:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:266 src/gui/debugwindow.cpp:306
-#: src/gui/debugwindow.cpp:349
+#: src/gui/debugwindow.cpp:273 src/gui/debugwindow.cpp:313
+#: src/gui/debugwindow.cpp:356
 msgid "Target Id:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:267
+#: src/gui/debugwindow.cpp:274
 msgid "Target level:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:268 src/gui/debugwindow.cpp:319
+#: src/gui/debugwindow.cpp:275 src/gui/debugwindow.cpp:326
 msgid "Target race:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:269
+#: src/gui/debugwindow.cpp:276
 msgid "Target party:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:270
+#: src/gui/debugwindow.cpp:277
 msgid "Target guild:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:271 src/gui/debugwindow.cpp:338
-#: src/gui/debugwindow.cpp:343 src/gui/debugwindow.cpp:353
+#: src/gui/debugwindow.cpp:278 src/gui/debugwindow.cpp:345
+#: src/gui/debugwindow.cpp:350 src/gui/debugwindow.cpp:360
 msgid "Attack delay:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:272 src/gui/debugwindow.cpp:328
-#: src/gui/debugwindow.cpp:354
+#: src/gui/debugwindow.cpp:279 src/gui/debugwindow.cpp:335
+#: src/gui/debugwindow.cpp:361
 msgid "Minimal hit:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:273 src/gui/debugwindow.cpp:330
-#: src/gui/debugwindow.cpp:355
+#: src/gui/debugwindow.cpp:280 src/gui/debugwindow.cpp:337
+#: src/gui/debugwindow.cpp:362
 msgid "Maximum hit:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:274 src/gui/debugwindow.cpp:332
-#: src/gui/debugwindow.cpp:356
+#: src/gui/debugwindow.cpp:281 src/gui/debugwindow.cpp:339
+#: src/gui/debugwindow.cpp:363
 msgid "Critical hit:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:310 src/gui/debugwindow.cpp:315
-#: src/gui/debugwindow.cpp:350
+#: src/gui/debugwindow.cpp:317 src/gui/debugwindow.cpp:322
+#: src/gui/debugwindow.cpp:357
 msgid "Target Level:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:321 src/gui/debugwindow.cpp:351
+#: src/gui/debugwindow.cpp:328 src/gui/debugwindow.cpp:358
 msgid "Target Party:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:324 src/gui/debugwindow.cpp:352
+#: src/gui/debugwindow.cpp:331 src/gui/debugwindow.cpp:359
 msgid "Target Guild:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:389 src/gui/debugwindow.cpp:394
+#: src/gui/debugwindow.cpp:396 src/gui/debugwindow.cpp:401
 #, c-format
 msgid "Ping: %s ms"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:397
+#: src/gui/debugwindow.cpp:404
 #, c-format
 msgid "In: %d bytes/s"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:399
+#: src/gui/debugwindow.cpp:406
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr ""
@@ -937,13 +946,6 @@ msgstr ""
 #: src/gui/didyouknowwindow.cpp:57
 msgid "Auto open this window"
 msgstr ""
-
-#: src/gui/didyouknowwindow.cpp:71 src/gui/helpwindow.cpp:64
-#: src/gui/inventorywindow.cpp:208 src/gui/npcdialog.cpp:58
-#: src/gui/npcdialog.cpp:82 src/gui/popupmenu.cpp:501
-#: src/gui/questswindow.cpp:98 src/gui/shopwindow.cpp:78
-msgid "Close"
-msgstr "關閉"
 
 #: src/gui/editdialog.cpp:45 src/gui/editserverdialog.cpp:74
 #: src/gui/itemamountwindow.cpp:210 src/gui/okdialog.cpp:50
@@ -980,7 +982,7 @@ msgid "Please at least type both the address and the port of the server."
 msgstr ""
 
 #: src/gui/equipmentwindow.cpp:54 src/gui/inventorywindow.cpp:184
-#: src/gui/windowmenu.cpp:85
+#: src/gui/windowmenu.cpp:100
 msgid "Equipment"
 msgstr "裝備"
 
@@ -990,7 +992,7 @@ msgstr "裝備"
 msgid "Unequip"
 msgstr "卸下裝備"
 
-#: src/gui/helpwindow.cpp:47
+#: src/gui/helpwindow.cpp:47 src/gui/windowmenu.cpp:81
 msgid "Help"
 msgstr "說明"
 
@@ -1014,7 +1016,7 @@ msgstr ""
 msgid "by type"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:127 src/gui/windowmenu.cpp:87
+#: src/gui/inventorywindow.cpp:127 src/gui/windowmenu.cpp:102
 #: src/inventory.cpp:255
 msgid "Inventory"
 msgstr "物品攔"
@@ -1028,7 +1030,7 @@ msgstr "裝備"
 #: src/gui/inventorywindow.cpp:167 src/gui/inventorywindow.cpp:601
 #: src/gui/popupmenu.cpp:1673 src/gui/popupmenu.cpp:1738
 #: src/gui/popupmenu.cpp:1775 src/gui/popupmenu.cpp:1831
-#: src/gui/skilldialog.cpp:236
+#: src/gui/skilldialog.cpp:240
 msgid "Use"
 msgstr "使用"
 
@@ -1045,6 +1047,7 @@ msgstr "分開"
 
 #: src/gui/inventorywindow.cpp:182 src/gui/outfitwindow.cpp:58
 #: src/gui/popupmenu.cpp:459 src/gui/setupactiondata.h:1556
+#: src/gui/windowmenu.cpp:133
 msgid "Outfits"
 msgstr ""
 
@@ -1060,7 +1063,7 @@ msgstr ""
 
 #: src/gui/inventorywindow.cpp:699 src/gui/popupmenu.cpp:1683
 #: src/gui/popupmenu.cpp:1785 src/gui/popupmenu.cpp:1841
-#: src/gui/windowmenu.cpp:108
+#: src/gui/windowmenu.cpp:127
 msgid "Drop"
 msgstr "丟棄"
 
@@ -1109,7 +1112,7 @@ msgstr ""
 msgid "Weight: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:42 src/gui/windowmenu.cpp:80
+#: src/gui/killstats.cpp:42 src/gui/windowmenu.cpp:87
 msgid "Kill stats"
 msgstr ""
 
@@ -1122,34 +1125,34 @@ msgid "Reset timer"
 msgstr ""
 
 #: src/gui/killstats.cpp:51 src/gui/killstats.cpp:153
-#: src/gui/killstats.cpp:247 src/gui/killstats.cpp:469
+#: src/gui/killstats.cpp:247 src/gui/killstats.cpp:473
 #, c-format
 msgid "Kills: %s, total exp: %s"
 msgstr ""
 
 #: src/gui/killstats.cpp:53 src/gui/killstats.cpp:154
 #: src/gui/killstats.cpp:228 src/gui/killstats.cpp:240
-#: src/gui/killstats.cpp:470
+#: src/gui/killstats.cpp:474
 #, c-format
 msgid "Avg Exp: %s"
 msgstr ""
 
 #: src/gui/killstats.cpp:54 src/gui/killstats.cpp:156
 #: src/gui/killstats.cpp:232 src/gui/killstats.cpp:243
-#: src/gui/killstats.cpp:472
+#: src/gui/killstats.cpp:476
 #, c-format
 msgid "No. of avg mob to next level: %s"
 msgstr ""
 
 #: src/gui/killstats.cpp:56 src/gui/killstats.cpp:166
-#: src/gui/killstats.cpp:250 src/gui/killstats.cpp:474
+#: src/gui/killstats.cpp:250 src/gui/killstats.cpp:478
 #, c-format
 msgid "Kills/Min: %s, Exp/Min: %s"
 msgstr ""
 
 #: src/gui/killstats.cpp:59 src/gui/killstats.cpp:64 src/gui/killstats.cpp:69
-#: src/gui/killstats.cpp:302 src/gui/killstats.cpp:319
-#: src/gui/killstats.cpp:338
+#: src/gui/killstats.cpp:305 src/gui/killstats.cpp:322
+#: src/gui/killstats.cpp:341
 #, c-format
 msgid "Exp speed per %d min: %s"
 msgid_plural "Exp speed per %d min: %s"
@@ -1165,9 +1168,9 @@ msgstr[0] ""
 msgid "Last kill exp:"
 msgstr ""
 
-#: src/gui/killstats.cpp:76 src/gui/killstats.cpp:371
-#: src/gui/killstats.cpp:377 src/gui/killstats.cpp:383
-#: src/gui/killstats.cpp:388
+#: src/gui/killstats.cpp:76 src/gui/killstats.cpp:375
+#: src/gui/killstats.cpp:381 src/gui/killstats.cpp:387
+#: src/gui/killstats.cpp:392
 msgid "Time before jacko spawn:"
 msgstr ""
 
@@ -1187,19 +1190,19 @@ msgstr ""
 msgid "1%% = %d exp, avg mob for 1%%: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:307 src/gui/killstats.cpp:315
-#: src/gui/killstats.cpp:325 src/gui/killstats.cpp:333
-#: src/gui/killstats.cpp:345 src/gui/killstats.cpp:353
+#: src/gui/killstats.cpp:310 src/gui/killstats.cpp:318
+#: src/gui/killstats.cpp:328 src/gui/killstats.cpp:336
+#: src/gui/killstats.cpp:348 src/gui/killstats.cpp:356
 #, c-format
 msgid "  Time for next level: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:377
+#: src/gui/killstats.cpp:381
 #, c-format
 msgid "%s %d?"
 msgstr ""
 
-#: src/gui/killstats.cpp:383
+#: src/gui/killstats.cpp:387
 msgid "jacko spawning"
 msgstr ""
 
@@ -1289,18 +1292,18 @@ msgstr ""
 msgid "job bar"
 msgstr ""
 
-#: src/gui/ministatuswindow.cpp:288 src/gui/statuswindow.cpp:281
+#: src/gui/ministatuswindow.cpp:293 src/gui/statuswindow.cpp:281
 #, c-format
 msgid "Level: %d (GM %d)"
 msgstr ""
 
-#: src/gui/ministatuswindow.cpp:294 src/gui/statuswindow.cpp:133
+#: src/gui/ministatuswindow.cpp:299 src/gui/statuswindow.cpp:133
 #: src/gui/statuswindow.cpp:287 src/gui/statuswindow.cpp:353
 #, c-format
 msgid "Level: %d"
 msgstr "等級：%d"
 
-#: src/gui/ministatuswindow.cpp:310 src/gui/ministatuswindow.cpp:346
+#: src/gui/ministatuswindow.cpp:315 src/gui/ministatuswindow.cpp:351
 msgid "Need"
 msgstr ""
 
@@ -1337,7 +1340,7 @@ msgstr ""
 msgid "Failed to send as sender or letter invalid."
 msgstr ""
 
-#: src/gui/outfitwindow.cpp:63 src/gui/outfitwindow.cpp:543
+#: src/gui/outfitwindow.cpp:63 src/gui/outfitwindow.cpp:545
 #, c-format
 msgid "Outfit: %d"
 msgstr ""
@@ -1350,8 +1353,8 @@ msgstr ""
 msgid "Away outfit"
 msgstr ""
 
-#: src/gui/outfitwindow.cpp:68 src/gui/outfitwindow.cpp:545
-#: src/gui/windowmenu.cpp:296
+#: src/gui/outfitwindow.cpp:68 src/gui/outfitwindow.cpp:547
+#: src/gui/windowmenu.cpp:282
 #, c-format
 msgid "Key: %s"
 msgstr ""
@@ -1464,7 +1467,7 @@ msgstr ""
 msgid "Clear outfit"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:480 src/gui/windowmenu.cpp:107
+#: src/gui/popupmenu.cpp:480 src/gui/windowmenu.cpp:125
 msgid "Spells"
 msgstr ""
 
@@ -1691,7 +1694,7 @@ msgstr ""
 msgid "Add to pickup list"
 msgstr ""
 
-#: src/gui/questswindow.cpp:88 src/gui/windowmenu.cpp:76
+#: src/gui/questswindow.cpp:88 src/gui/windowmenu.cpp:83
 msgid "Quests"
 msgstr ""
 
@@ -1765,28 +1768,28 @@ msgstr ""
 msgid "Use same ip for game sub servers"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:505
+#: src/gui/serverdialog.cpp:506
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:510
+#: src/gui/serverdialog.cpp:511
 msgid "Waiting for server..."
 msgstr ""
 
-#: src/gui/serverdialog.cpp:514
+#: src/gui/serverdialog.cpp:515
 msgid "Preparing download"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:518
+#: src/gui/serverdialog.cpp:519
 msgid "Error retreiving server list!"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:606
+#: src/gui/serverdialog.cpp:608
 msgid "requires a newer version"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:608
+#: src/gui/serverdialog.cpp:610
 #, c-format
 msgid "requires v%s"
 msgstr ""
@@ -2325,7 +2328,7 @@ msgstr ""
 msgid "Basic"
 msgstr ""
 
-#: src/gui/setupactiondata.h:1553 src/gui/windowmenu.cpp:105
+#: src/gui/setupactiondata.h:1553 src/gui/windowmenu.cpp:123
 msgid "Shortcuts"
 msgstr ""
 
@@ -3264,109 +3267,109 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:365
+#: src/gui/setup_theme.cpp:366
 msgid "Theme info"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:386
+#: src/gui/setup_theme.cpp:387
 msgid "Theme Changed"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:386 src/gui/setup_video.cpp:504
-#: src/gui/setup_video.cpp:511
+#: src/gui/setup_theme.cpp:387 src/gui/setup_video.cpp:494
+#: src/gui/setup_video.cpp:501
 msgid "Restart your client for the change to take effect."
 msgstr ""
 
-#: src/gui/setup_video.cpp:198
+#: src/gui/setup_video.cpp:180
 msgid "Software"
 msgstr ""
 
-#: src/gui/setup_video.cpp:199
+#: src/gui/setup_video.cpp:181
 msgid "Fast OpenGL"
 msgstr ""
 
-#: src/gui/setup_video.cpp:200
+#: src/gui/setup_video.cpp:182
 msgid "Safe OpenGL"
 msgstr ""
 
-#: src/gui/setup_video.cpp:201
+#: src/gui/setup_video.cpp:183
 msgid "Mobile OpenGL"
 msgstr ""
 
-#: src/gui/setup_video.cpp:234
+#: src/gui/setup_video.cpp:216
 msgid "Full screen"
 msgstr "全螢幕"
 
-#: src/gui/setup_video.cpp:235
+#: src/gui/setup_video.cpp:217
 msgid "Custom cursor"
 msgstr "自訂滑鼠標"
 
-#: src/gui/setup_video.cpp:237
+#: src/gui/setup_video.cpp:219
 msgid "Enable resize"
 msgstr ""
 
-#: src/gui/setup_video.cpp:239
+#: src/gui/setup_video.cpp:221
 msgid "No frame"
 msgstr ""
 
-#: src/gui/setup_video.cpp:240
+#: src/gui/setup_video.cpp:222
 msgid "FPS limit:"
 msgstr ""
 
-#: src/gui/setup_video.cpp:244 src/gui/setup_video.cpp:272
-#: src/gui/setup_video.cpp:441 src/gui/setup_video.cpp:556
+#: src/gui/setup_video.cpp:226 src/gui/setup_video.cpp:256
+#: src/gui/setup_video.cpp:431 src/gui/setup_video.cpp:546
 msgid "Alt FPS limit: "
 msgstr ""
 
-#: src/gui/setup_video.cpp:245
+#: src/gui/setup_video.cpp:228
 msgid "Detect best mode"
 msgstr ""
 
-#: src/gui/setup_video.cpp:270 src/gui/setup_video.cpp:273
-#: src/gui/setup_video.cpp:440 src/gui/setup_video.cpp:542
-#: src/gui/setup_video.cpp:554
+#: src/gui/setup_video.cpp:254 src/gui/setup_video.cpp:257
+#: src/gui/setup_video.cpp:430 src/gui/setup_video.cpp:532
+#: src/gui/setup_video.cpp:544
 msgid "None"
 msgstr ""
 
-#: src/gui/setup_video.cpp:373
+#: src/gui/setup_video.cpp:363
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 
-#: src/gui/setup_video.cpp:379
+#: src/gui/setup_video.cpp:369
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 
-#: src/gui/setup_video.cpp:390
+#: src/gui/setup_video.cpp:380
 msgid "Switching to Full Screen"
 msgstr ""
 
-#: src/gui/setup_video.cpp:391
+#: src/gui/setup_video.cpp:381
 msgid "Restart needed for changes to take effect."
 msgstr "請重新啟動"
 
-#: src/gui/setup_video.cpp:403
+#: src/gui/setup_video.cpp:393
 msgid "Changing to OpenGL"
 msgstr ""
 
-#: src/gui/setup_video.cpp:404
+#: src/gui/setup_video.cpp:394
 msgid "Applying change to OpenGL requires restart."
 msgstr "確認切換OpenGL需要重新開始"
 
-#: src/gui/setup_video.cpp:479
+#: src/gui/setup_video.cpp:469
 msgid "Custom resolution (example: 1024x768)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:480
+#: src/gui/setup_video.cpp:470
 msgid "Enter new resolution:                "
 msgstr ""
 
-#: src/gui/setup_video.cpp:503 src/gui/setup_video.cpp:510
+#: src/gui/setup_video.cpp:493 src/gui/setup_video.cpp:500
 msgid "Screen Resolution Changed"
 msgstr ""
 
-#: src/gui/setup_video.cpp:505
+#: src/gui/setup_video.cpp:495
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 
@@ -3390,103 +3393,103 @@ msgstr ""
 msgid "Effects"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:59
+#: src/gui/setup_visual.cpp:60
 msgid "Grab mouse and keyboard input"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:62
+#: src/gui/setup_visual.cpp:64
 msgid "Blurring textures (OpenGL)"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:65
+#: src/gui/setup_visual.cpp:67
 msgid "Gui opacity"
 msgstr "Gui 透明度"
 
-#: src/gui/setup_visual.cpp:68
+#: src/gui/setup_visual.cpp:70
 msgid "No text"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:69
+#: src/gui/setup_visual.cpp:71
 msgid "Text"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:70
+#: src/gui/setup_visual.cpp:72
 msgid "Bubbles, no names"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:71
+#: src/gui/setup_visual.cpp:73
 msgid "Bubbles with names"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:72
+#: src/gui/setup_visual.cpp:74
 msgid "Overhead text"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:75 src/gui/setup_visual.cpp:104
+#: src/gui/setup_visual.cpp:77 src/gui/setup_visual.cpp:106
 msgid "off"
 msgstr "關閉"
 
-#: src/gui/setup_visual.cpp:76 src/gui/setup_visual.cpp:84
+#: src/gui/setup_visual.cpp:78 src/gui/setup_visual.cpp:86
 msgid "low"
 msgstr "低"
 
-#: src/gui/setup_visual.cpp:77 src/gui/setup_visual.cpp:86
+#: src/gui/setup_visual.cpp:79 src/gui/setup_visual.cpp:88
 msgid "high"
 msgstr "高"
 
-#: src/gui/setup_visual.cpp:78
+#: src/gui/setup_visual.cpp:80
 msgid "Ambient FX"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:81
+#: src/gui/setup_visual.cpp:83
 msgid "Particle effects"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:85
+#: src/gui/setup_visual.cpp:87
 msgid "medium"
 msgstr "中"
 
-#: src/gui/setup_visual.cpp:87
+#: src/gui/setup_visual.cpp:89
 msgid "max"
 msgstr "最大"
 
-#: src/gui/setup_visual.cpp:88
+#: src/gui/setup_visual.cpp:90
 msgid "Particle detail"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:92
+#: src/gui/setup_visual.cpp:94
 msgid "best quality"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:93
+#: src/gui/setup_visual.cpp:95
 msgid "normal"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:94
+#: src/gui/setup_visual.cpp:96
 msgid "best perfomance"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:95
+#: src/gui/setup_visual.cpp:97
 msgid "Particle physics"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:100
+#: src/gui/setup_visual.cpp:102
 msgid "Gamma"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:105
+#: src/gui/setup_visual.cpp:107
 msgid "on"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:106
+#: src/gui/setup_visual.cpp:108
 msgid "Vsync"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:110
+#: src/gui/setup_visual.cpp:112
 msgid "Center game window"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:114
+#: src/gui/setup_visual.cpp:116
 msgid "Allow screensaver to run"
 msgstr ""
 
@@ -3523,48 +3526,48 @@ msgstr ""
 msgid "%s wants to %s %s do you accept?"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:232 src/gui/windowmenu.cpp:92
+#: src/gui/skilldialog.cpp:236 src/gui/windowmenu.cpp:109
 msgid "Skills"
 msgstr "技能"
 
-#: src/gui/skilldialog.cpp:237
+#: src/gui/skilldialog.cpp:241
 msgid "Up"
 msgstr "升級"
 
-#: src/gui/skilldialog.cpp:345
+#: src/gui/skilldialog.cpp:349
 #, c-format
 msgid "Skill points available: %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:388
+#: src/gui/skilldialog.cpp:392
 msgid "basic"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:389
+#: src/gui/skilldialog.cpp:393
 msgid "Skill: basic, Id: 1"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:425
+#: src/gui/skilldialog.cpp:429
 #, c-format
 msgid "Skill Set %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:438
+#: src/gui/skilldialog.cpp:442
 #, c-format
 msgid "Skill %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:444
+#: src/gui/skilldialog.cpp:448
 #, c-format
 msgid "Skill: %s, Id: %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:515 src/gui/skilldialog.cpp:606
+#: src/gui/skilldialog.cpp:519 src/gui/skilldialog.cpp:610
 #, c-format
 msgid "Lvl: %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:598
+#: src/gui/skilldialog.cpp:602
 #, c-format
 msgid "Lvl: %d (%+d)"
 msgstr ""
@@ -3677,7 +3680,7 @@ msgstr ""
 msgid "Create Party"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1227 src/gui/windowmenu.cpp:104
+#: src/gui/socialwindow.cpp:1227 src/gui/windowmenu.cpp:121
 msgid "Social"
 msgstr ""
 
@@ -3785,7 +3788,7 @@ msgstr ""
 msgid "Choose your party's name."
 msgstr ""
 
-#: src/gui/specialswindow.cpp:75 src/gui/windowmenu.cpp:99
+#: src/gui/specialswindow.cpp:75 src/gui/windowmenu.cpp:116
 msgid "Specials"
 msgstr ""
 
@@ -3973,21 +3976,21 @@ msgstr "連線中..."
 msgid "Play"
 msgstr "開始"
 
-#: src/gui/updaterwindow.cpp:640
+#: src/gui/updaterwindow.cpp:641
 msgid "##1  The update process is incomplete."
 msgstr ""
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updaterwindow.cpp:642
+#: src/gui/updaterwindow.cpp:643
 msgid "##1  It is strongly recommended that"
 msgstr ""
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updaterwindow.cpp:644
+#: src/gui/updaterwindow.cpp:645
 msgid "##1  you try again later."
 msgstr ""
 
-#: src/gui/updaterwindow.cpp:820
+#: src/gui/updaterwindow.cpp:821
 msgid "Completed"
 msgstr "已完成"
 
@@ -4143,15 +4146,15 @@ msgstr ""
 msgid "Road Point"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:77 src/gui/whoisonline.cpp:620
+#: src/gui/whoisonline.cpp:76 src/gui/whoisonline.cpp:620
 msgid "Who Is Online - Updating"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:101
+#: src/gui/whoisonline.cpp:100
 msgid "Update"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:194
+#: src/gui/whoisonline.cpp:193
 msgid "Who Is Online - "
 msgstr ""
 
@@ -4159,7 +4162,7 @@ msgstr ""
 msgid "Who Is Online - error"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:674
+#: src/gui/whoisonline.cpp:675
 msgid "Who Is Online - Update"
 msgstr ""
 
@@ -4299,7 +4302,7 @@ msgid "/kick > Kick some one from the guild you are in"
 msgstr ""
 
 #. TRANSLATORS: Text under equipped items (should be small)
-#: src/gui/widgets/itemcontainer.cpp:304
+#: src/gui/widgets/itemcontainer.cpp:310
 msgid "Eq."
 msgstr ""
 
@@ -4344,83 +4347,107 @@ msgid ""
 "This command stops ignoring the other player if they are being ignored."
 msgstr ""
 
-#: src/gui/windowmenu.cpp:74
+#: src/gui/windowmenu.cpp:79
 msgid "ONL"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:74
+#: src/gui/windowmenu.cpp:79
 msgid "Who is online"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:76
+#: src/gui/windowmenu.cpp:81
+msgid "HLP"
+msgstr ""
+
+#: src/gui/windowmenu.cpp:83
 msgid "QE"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:78
+#: src/gui/windowmenu.cpp:85
 msgid "BC"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:78
+#: src/gui/windowmenu.cpp:85
 msgid "Bot checker"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:80
+#: src/gui/windowmenu.cpp:87
 msgid "KS"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:82
+#: src/gui/windowmenu.cpp:89
 msgid "Smilies"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:84
+#: src/gui/windowmenu.cpp:91
+msgid "CH"
+msgstr ""
+
+#: src/gui/windowmenu.cpp:98
 msgid "STA"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:84
+#: src/gui/windowmenu.cpp:98
 msgid "Status"
 msgstr "狀態"
 
-#: src/gui/windowmenu.cpp:85
+#: src/gui/windowmenu.cpp:100
 msgid "EQU"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:87
+#: src/gui/windowmenu.cpp:102
 msgid "INV"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:92
+#: src/gui/windowmenu.cpp:104
+msgid "MAP"
+msgstr ""
+
+#: src/gui/windowmenu.cpp:109
 msgid "SKI"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:116
 msgid "SPE"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:104
+#: src/gui/windowmenu.cpp:121
 msgid "SOC"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:105
+#: src/gui/windowmenu.cpp:123
 msgid "SH"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:107
+#: src/gui/windowmenu.cpp:125
 msgid "SP"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:108
+#: src/gui/windowmenu.cpp:127
 msgid "DR"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:109
+#: src/gui/windowmenu.cpp:129
 msgid "YK"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:109
+#: src/gui/windowmenu.cpp:129
 msgid "Did you know"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:111
+#: src/gui/windowmenu.cpp:131
+msgid "SHP"
+msgstr ""
+
+#: src/gui/windowmenu.cpp:133
+msgid "OU"
+msgstr ""
+
+#: src/gui/windowmenu.cpp:135
+msgid "DBG"
+msgstr ""
+
+#: src/gui/windowmenu.cpp:142
 msgid "SET"
 msgstr ""
 
@@ -4470,345 +4497,345 @@ msgstr ""
 msgid "Cart"
 msgstr ""
 
-#: src/localplayer.cpp:366
+#: src/localplayer.cpp:370
 #, c-format
 msgid "You were killed by %s"
 msgstr ""
 
-#: src/localplayer.cpp:1422
+#: src/localplayer.cpp:1426
 msgid "Tried to pick up nonexistent item."
 msgstr ""
 
-#: src/localplayer.cpp:1425
+#: src/localplayer.cpp:1429
 msgid "Item is too heavy."
 msgstr ""
 
-#: src/localplayer.cpp:1428
+#: src/localplayer.cpp:1432
 msgid "Item is too far away."
 msgstr ""
 
-#: src/localplayer.cpp:1431
+#: src/localplayer.cpp:1435
 msgid "Inventory is full."
 msgstr ""
 
-#: src/localplayer.cpp:1434
+#: src/localplayer.cpp:1438
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1437
+#: src/localplayer.cpp:1441
 msgid "Item belongs to someone else."
 msgstr ""
 
-#: src/localplayer.cpp:1440
+#: src/localplayer.cpp:1444
 msgid "Unknown problem picking up item."
 msgstr ""
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1464
+#: src/localplayer.cpp:1468
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] ""
 
-#: src/localplayer.cpp:1671 src/localplayer.cpp:1705 src/localplayer.cpp:1706
+#: src/localplayer.cpp:1675 src/localplayer.cpp:1709 src/localplayer.cpp:1710
 msgid "xp"
 msgstr ""
 
-#: src/localplayer.cpp:1711 src/localplayer.cpp:1718 src/localplayer.cpp:1725
+#: src/localplayer.cpp:1715 src/localplayer.cpp:1722 src/localplayer.cpp:1729
 msgid "job"
 msgstr ""
 
-#: src/localplayer.cpp:1907
+#: src/localplayer.cpp:1911
 msgid "(D) default moves"
 msgstr ""
 
-#: src/localplayer.cpp:1908
+#: src/localplayer.cpp:1912
 msgid "(I) invert moves"
 msgstr ""
 
-#: src/localplayer.cpp:1909
+#: src/localplayer.cpp:1913
 msgid "(c) moves with some crazy moves"
 msgstr ""
 
-#: src/localplayer.cpp:1910
+#: src/localplayer.cpp:1914
 msgid "(C) moves with crazy moves"
 msgstr ""
 
-#: src/localplayer.cpp:1911
+#: src/localplayer.cpp:1915
 msgid "(d) double normal + crazy"
 msgstr ""
 
-#: src/localplayer.cpp:1912
+#: src/localplayer.cpp:1916
 msgid "(?) unknown move"
 msgstr ""
 
-#: src/localplayer.cpp:1934
+#: src/localplayer.cpp:1938
 #, c-format
 msgid "(%u) crazy move number %u"
 msgstr ""
 
-#: src/localplayer.cpp:1939
+#: src/localplayer.cpp:1943
 msgid "(a) custom crazy move"
 msgstr ""
 
-#: src/localplayer.cpp:1943
+#: src/localplayer.cpp:1947
 msgid "(?) crazy move"
 msgstr ""
 
-#: src/localplayer.cpp:1957
+#: src/localplayer.cpp:1961
 msgid "(0) default moves to target"
 msgstr ""
 
-#: src/localplayer.cpp:1958
+#: src/localplayer.cpp:1962
 msgid "(1) moves to target in distance 1"
 msgstr ""
 
-#: src/localplayer.cpp:1959
+#: src/localplayer.cpp:1963
 msgid "(2) moves to target in distance 2"
 msgstr ""
 
-#: src/localplayer.cpp:1960
+#: src/localplayer.cpp:1964
 msgid "(3) moves to target in distance 3"
 msgstr ""
 
-#: src/localplayer.cpp:1961
+#: src/localplayer.cpp:1965
 msgid "(5) moves to target in distance 5"
 msgstr ""
 
-#: src/localplayer.cpp:1962
+#: src/localplayer.cpp:1966
 msgid "(7) moves to target in distance 7"
 msgstr ""
 
-#: src/localplayer.cpp:1963
+#: src/localplayer.cpp:1967
 msgid "(A) moves to target in attack range"
 msgstr ""
 
-#: src/localplayer.cpp:1964
+#: src/localplayer.cpp:1968
 msgid "(a) archer attack range"
 msgstr ""
 
-#: src/localplayer.cpp:1965
+#: src/localplayer.cpp:1969
 msgid "(B) moves to target in attack range - 1"
 msgstr ""
 
-#: src/localplayer.cpp:1966
+#: src/localplayer.cpp:1970
 msgid "(?) move to target"
 msgstr ""
 
-#: src/localplayer.cpp:1985
+#: src/localplayer.cpp:1989
 msgid "(D) default follow"
 msgstr ""
 
-#: src/localplayer.cpp:1986
+#: src/localplayer.cpp:1990
 msgid "(R) relative follow"
 msgstr ""
 
-#: src/localplayer.cpp:1987
+#: src/localplayer.cpp:1991
 msgid "(M) mirror follow"
 msgstr ""
 
-#: src/localplayer.cpp:1988
+#: src/localplayer.cpp:1992
 msgid "(P) pet follow"
 msgstr ""
 
-#: src/localplayer.cpp:1989
+#: src/localplayer.cpp:1993
 msgid "(?) unknown follow"
 msgstr ""
 
-#: src/localplayer.cpp:2008 src/localplayer.cpp:2012 src/localplayer.cpp:2035
+#: src/localplayer.cpp:2012 src/localplayer.cpp:2016 src/localplayer.cpp:2039
 msgid "(?) attack"
 msgstr ""
 
-#: src/localplayer.cpp:2009 src/localplayer.cpp:2031
+#: src/localplayer.cpp:2013 src/localplayer.cpp:2035
 msgid "(D) default attack"
 msgstr ""
 
-#: src/localplayer.cpp:2010
+#: src/localplayer.cpp:2014
 msgid "(s) switch attack without shield"
 msgstr ""
 
-#: src/localplayer.cpp:2011
+#: src/localplayer.cpp:2015
 msgid "(S) switch attack with shield"
 msgstr ""
 
-#: src/localplayer.cpp:2032
+#: src/localplayer.cpp:2036
 msgid "(G) go and attack"
 msgstr ""
 
-#: src/localplayer.cpp:2033
+#: src/localplayer.cpp:2037
 msgid "(A) go, attack, pickup"
 msgstr ""
 
-#: src/localplayer.cpp:2034
+#: src/localplayer.cpp:2038
 msgid "(d) without auto attack"
 msgstr ""
 
-#: src/localplayer.cpp:2086
+#: src/localplayer.cpp:2090
 msgid "(S) small pick up 1x1 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2087
+#: src/localplayer.cpp:2091
 msgid "(D) default pick up 2x1 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2088
+#: src/localplayer.cpp:2092
 msgid "(F) forward pick up 2x3 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2089
+#: src/localplayer.cpp:2093
 msgid "(3) pick up 3x3 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2090
+#: src/localplayer.cpp:2094
 msgid "(g) go and pick up in distance 4"
 msgstr ""
 
-#: src/localplayer.cpp:2091
+#: src/localplayer.cpp:2095
 msgid "(G) go and pick up in distance 8"
 msgstr ""
 
-#: src/localplayer.cpp:2092
+#: src/localplayer.cpp:2096
 msgid "(A) go and pick up in max distance"
 msgstr ""
 
-#: src/localplayer.cpp:2093
+#: src/localplayer.cpp:2097
 msgid "(?) pick up"
 msgstr ""
 
-#: src/localplayer.cpp:2106
+#: src/localplayer.cpp:2110
 msgid "(N) normal map view"
 msgstr ""
 
-#: src/localplayer.cpp:2107
+#: src/localplayer.cpp:2111
 msgid "(D) debug map view"
 msgstr ""
 
-#: src/localplayer.cpp:2108
+#: src/localplayer.cpp:2112
 msgid "(u) ultra map view"
 msgstr ""
 
-#: src/localplayer.cpp:2109
+#: src/localplayer.cpp:2113
 msgid "(U) ultra map view 2"
 msgstr ""
 
-#: src/localplayer.cpp:2110
+#: src/localplayer.cpp:2114
 msgid "(e) empty map view"
 msgstr ""
 
-#: src/localplayer.cpp:2111
+#: src/localplayer.cpp:2115
 msgid "(b) black & white map view"
 msgstr ""
 
-#: src/localplayer.cpp:2130
+#: src/localplayer.cpp:2134
 msgid "(f) use #flar for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2131
+#: src/localplayer.cpp:2135
 msgid "(c) use #chiza for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2132
+#: src/localplayer.cpp:2136
 msgid "(I) use #ingrav for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2133
+#: src/localplayer.cpp:2137
 msgid "(F) use #frillyar for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2134
+#: src/localplayer.cpp:2138
 msgid "(U) use #upmarmu for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2135
+#: src/localplayer.cpp:2139
 msgid "(?) magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2154
+#: src/localplayer.cpp:2158
 msgid "(a) attack all players"
 msgstr ""
 
-#: src/localplayer.cpp:2155
+#: src/localplayer.cpp:2159
 msgid "(f) attack all except friends"
 msgstr ""
 
-#: src/localplayer.cpp:2156
+#: src/localplayer.cpp:2160
 msgid "(b) attack bad relations"
 msgstr ""
 
-#: src/localplayer.cpp:2157
+#: src/localplayer.cpp:2161
 msgid "(d) don't attack players"
 msgstr ""
 
-#: src/localplayer.cpp:2158
+#: src/localplayer.cpp:2162
 msgid "(?) pvp attack"
 msgstr ""
 
-#: src/localplayer.cpp:2177
+#: src/localplayer.cpp:2181
 msgid "(D) default imitation"
 msgstr ""
 
-#: src/localplayer.cpp:2178
+#: src/localplayer.cpp:2182
 msgid "(O) outfits imitation"
 msgstr ""
 
-#: src/localplayer.cpp:2179
+#: src/localplayer.cpp:2183
 msgid "(?) imitation"
 msgstr ""
 
-#: src/localplayer.cpp:2207
+#: src/localplayer.cpp:2211
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:2227
+#: src/localplayer.cpp:2231
 msgid "(O) on keyboard"
 msgstr ""
 
-#: src/localplayer.cpp:2228
+#: src/localplayer.cpp:2232
 msgid "(A) away"
 msgstr ""
 
-#: src/localplayer.cpp:2229 src/localplayer.cpp:2244
+#: src/localplayer.cpp:2233 src/localplayer.cpp:2248
 msgid "(?) away"
 msgstr ""
 
-#: src/localplayer.cpp:2242
+#: src/localplayer.cpp:2246
 msgid "(G) game camera mode"
 msgstr ""
 
-#: src/localplayer.cpp:2243
+#: src/localplayer.cpp:2247
 msgid "(F) free camera mode"
 msgstr ""
 
-#: src/localplayer.cpp:2268
+#: src/localplayer.cpp:2272
 msgid "Game modifiers are enabled"
 msgstr ""
 
-#: src/localplayer.cpp:2269
+#: src/localplayer.cpp:2273
 msgid "Game modifiers are disabled"
 msgstr ""
 
-#: src/localplayer.cpp:2270
+#: src/localplayer.cpp:2274
 msgid "Game modifiers are unknown"
 msgstr ""
 
-#: src/localplayer.cpp:3800
+#: src/localplayer.cpp:3804
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3802 src/localplayer.cpp:3817
+#: src/localplayer.cpp:3806 src/localplayer.cpp:3821
 msgid "Follow canceled"
 msgstr ""
 
-#: src/localplayer.cpp:3809
+#: src/localplayer.cpp:3813
 msgid "Imitation: "
 msgstr ""
 
-#: src/localplayer.cpp:3811 src/localplayer.cpp:3819
+#: src/localplayer.cpp:3815 src/localplayer.cpp:3823
 msgid "Imitation canceled"
 msgstr ""
 
-#: src/localplayer.cpp:4176
+#: src/localplayer.cpp:4180
 msgid "You see "
 msgstr ""
 
@@ -5605,27 +5632,27 @@ msgstr ""
 msgid "Poison had no effect..."
 msgstr ""
 
-#: src/net/eathena/adminhandler.cpp:66 src/net/tmwa/adminhandler.cpp:65
+#: src/net/eathena/adminhandler.cpp:66 src/net/tmwa/adminhandler.cpp:66
 msgid "Kick failed!"
 msgstr ""
 
-#: src/net/eathena/adminhandler.cpp:68 src/net/tmwa/adminhandler.cpp:67
+#: src/net/eathena/adminhandler.cpp:68 src/net/tmwa/adminhandler.cpp:68
 msgid "Kick succeeded!"
 msgstr ""
 
-#: src/net/eathena/buysellhandler.cpp:127 src/net/tmwa/buysellhandler.cpp:132
+#: src/net/eathena/buysellhandler.cpp:127 src/net/tmwa/buysellhandler.cpp:133
 msgid "Thanks for selling."
 msgstr ""
 
-#: src/net/eathena/buysellhandler.cpp:131 src/net/tmwa/buysellhandler.cpp:136
+#: src/net/eathena/buysellhandler.cpp:131 src/net/tmwa/buysellhandler.cpp:137
 msgid "Unable to sell."
 msgstr ""
 
-#: src/net/eathena/buysellhandler.cpp:134 src/net/tmwa/buysellhandler.cpp:139
+#: src/net/eathena/buysellhandler.cpp:134 src/net/tmwa/buysellhandler.cpp:140
 msgid "Unable to sell while trading."
 msgstr ""
 
-#: src/net/eathena/buysellhandler.cpp:137 src/net/tmwa/buysellhandler.cpp:142
+#: src/net/eathena/buysellhandler.cpp:137 src/net/tmwa/buysellhandler.cpp:143
 msgid "Unable to sell unsellable item."
 msgstr ""
 
@@ -5659,106 +5686,106 @@ msgstr ""
 msgid "Luck %+d"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:133 src/net/tmwa/generalhandler.cpp:135
+#: src/net/eathena/generalhandler.cpp:133 src/net/tmwa/generalhandler.cpp:136
 msgid "Authentication failed."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:136 src/net/tmwa/generalhandler.cpp:138
+#: src/net/eathena/generalhandler.cpp:136 src/net/tmwa/generalhandler.cpp:139
 msgid "No servers available."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:141 src/net/tmwa/generalhandler.cpp:143
+#: src/net/eathena/generalhandler.cpp:141 src/net/tmwa/generalhandler.cpp:144
 msgid "Someone else is trying to use this account."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:146 src/net/tmwa/generalhandler.cpp:148
+#: src/net/eathena/generalhandler.cpp:146 src/net/tmwa/generalhandler.cpp:149
 msgid "This account is already logged in."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:150 src/net/tmwa/generalhandler.cpp:152
+#: src/net/eathena/generalhandler.cpp:150 src/net/tmwa/generalhandler.cpp:153
 msgid "Speed hack detected."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:153 src/net/tmwa/generalhandler.cpp:155
+#: src/net/eathena/generalhandler.cpp:153 src/net/tmwa/generalhandler.cpp:156
 msgid "Duplicated login."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:156 src/net/tmwa/generalhandler.cpp:158
+#: src/net/eathena/generalhandler.cpp:156 src/net/tmwa/generalhandler.cpp:159
 msgid "Unknown connection error."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:228 src/net/tmwa/generalhandler.cpp:231
+#: src/net/eathena/generalhandler.cpp:228 src/net/tmwa/generalhandler.cpp:236
 msgid "Got disconnected from server!"
 msgstr "和伺服器失去連線"
 
-#: src/net/eathena/generalhandler.cpp:258 src/net/tmwa/generalhandler.cpp:261
+#: src/net/eathena/generalhandler.cpp:258 src/net/tmwa/generalhandler.cpp:267
 msgid "Strength"
 msgstr "力量"
 
-#: src/net/eathena/generalhandler.cpp:259 src/net/tmwa/generalhandler.cpp:262
+#: src/net/eathena/generalhandler.cpp:259 src/net/tmwa/generalhandler.cpp:268
 msgid "Agility"
 msgstr "敏捷"
 
-#: src/net/eathena/generalhandler.cpp:260 src/net/tmwa/generalhandler.cpp:263
+#: src/net/eathena/generalhandler.cpp:260 src/net/tmwa/generalhandler.cpp:269
 msgid "Vitality"
 msgstr "體力"
 
-#: src/net/eathena/generalhandler.cpp:261 src/net/tmwa/generalhandler.cpp:264
+#: src/net/eathena/generalhandler.cpp:261 src/net/tmwa/generalhandler.cpp:270
 msgid "Intelligence"
 msgstr "智力"
 
-#: src/net/eathena/generalhandler.cpp:262 src/net/tmwa/generalhandler.cpp:265
+#: src/net/eathena/generalhandler.cpp:262 src/net/tmwa/generalhandler.cpp:271
 msgid "Dexterity"
 msgstr "閃躲"
 
-#: src/net/eathena/generalhandler.cpp:263 src/net/tmwa/generalhandler.cpp:266
+#: src/net/eathena/generalhandler.cpp:263 src/net/tmwa/generalhandler.cpp:272
 msgid "Luck"
 msgstr "幸運"
 
-#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:269
+#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:275
 msgid "Defense"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:267 src/net/tmwa/generalhandler.cpp:270
+#: src/net/eathena/generalhandler.cpp:267 src/net/tmwa/generalhandler.cpp:276
 msgid "M.Attack"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:271
+#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:277
 msgid "M.Defense"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:270 src/net/tmwa/generalhandler.cpp:273
+#: src/net/eathena/generalhandler.cpp:270 src/net/tmwa/generalhandler.cpp:279
 #, no-c-format
 msgid "% Accuracy"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:272 src/net/tmwa/generalhandler.cpp:275
+#: src/net/eathena/generalhandler.cpp:272 src/net/tmwa/generalhandler.cpp:281
 #, no-c-format
 msgid "% Evade"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:274 src/net/tmwa/generalhandler.cpp:277
+#: src/net/eathena/generalhandler.cpp:274 src/net/tmwa/generalhandler.cpp:283
 #, no-c-format
 msgid "% Critical"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:276 src/net/tmwa/generalhandler.cpp:279
+#: src/net/eathena/generalhandler.cpp:276 src/net/tmwa/generalhandler.cpp:285
 msgid "Attack Delay"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:278 src/net/tmwa/generalhandler.cpp:281
+#: src/net/eathena/generalhandler.cpp:278 src/net/tmwa/generalhandler.cpp:287
 msgid "Walk Delay"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:280 src/net/tmwa/generalhandler.cpp:283
+#: src/net/eathena/generalhandler.cpp:280 src/net/tmwa/generalhandler.cpp:289
 msgid "Attack Range"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:282 src/net/tmwa/generalhandler.cpp:285
+#: src/net/eathena/generalhandler.cpp:282 src/net/tmwa/generalhandler.cpp:291
 msgid "Damage per sec."
 msgstr ""
 
-#: src/net/eathena/partyhandler.cpp:171 src/net/tmwa/partyhandler.cpp:171
+#: src/net/eathena/partyhandler.cpp:171 src/net/tmwa/partyhandler.cpp:173
 #, c-format
 msgid "%s is not in your party!"
 msgstr ""
