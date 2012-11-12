@@ -10,7 +10,7 @@
         <color id="BUTTON" color="#efd7a7" />
         <color id="BUTTON_HIGHLIGHTED" color="#f9eabc" />
         <color id="BUTTON_PRESSED" color="#f9eabc" />
-        <color id="BUTTON_DISABLED" color="#dddddd" />
+        <color id="BUTTON_DISABLED" color="#aaaaaa" />
         <color id="CHECKBOX" color="#000000" />
         <color id="DROPDOWN" color="#000000" />
         <color id="LABEL" color="#000000" />
@@ -100,7 +100,7 @@
         <color id="BUTTON" color="#efd7a7" />
         <color id="BUTTON_HIGHLIGHTED" color="#f9eabc" />
         <color id="BUTTON_PRESSED" color="#f9eabc" />
-        <color id="BUTTON_DISABLED" color="#dddddd" />
+        <color id="BUTTON_DISABLED" color="#aaaaaa" />
         <color id="CHECKBOX" color="#000000" />
         <color id="DROPDOWN" color="#000000" />
         <color id="LABEL" color="#000000" />
@@ -190,7 +190,7 @@
         <color id="BUTTON" color="#efd7a7" />
         <color id="BUTTON_HIGHLIGHTED" color="#f9eabc" />
         <color id="BUTTON_PRESSED" color="#f9eabc" />
-        <color id="BUTTON_DISABLED" color="#dddddd" />
+        <color id="BUTTON_DISABLED" color="#aaaaaa" />
         <color id="CHECKBOX" color="#000000" />
         <color id="DROPDOWN" color="#000000" />
         <color id="LABEL" color="#000000" />
