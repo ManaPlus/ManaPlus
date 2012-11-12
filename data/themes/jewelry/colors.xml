@@ -179,6 +179,96 @@
         <color id="BROWN" color="#e7d1bc" />
     </palette>
 
+    <palette id="2">
+        <color id="BROWSERBOX" color="#402600" />
+        <color id="TEXT" color="#402600" />
+        <color id="CARET" color="#80561f" />
+        <color id="SHADOW" color="#000000" />
+        <color id="OUTLINE" color="#000000" />
+        <color id="BORDER" color="#000000" />
+        <color id="PROGRESS_BAR" color="#ffffff" />
+        <color id="BUTTON" color="#efd7a7" />
+        <color id="BUTTON_HIGHLIGHTED" color="#f9eabc" />
+        <color id="BUTTON_PRESSED" color="#f9eabc" />
+        <color id="BUTTON_DISABLED" color="#dddddd" />
+        <color id="CHECKBOX" color="#000000" />
+        <color id="DROPDOWN" color="#000000" />
+        <color id="LABEL" color="#000000" />
+        <color id="LISTBOX" color="#000000" />
+        <color id="RADIOBUTTON" color="#000000" />
+        <color id="POPUP" color="#f9eabc" />
+        <color id="TAB" color="#efd7a7" />
+        <color id="TAB_HIGHLIGHTED" color="#f9eabc" />
+        <color id="TAB_SELECTED" color="#f9eabc" />
+        <color id="TEXTBOX" color="#000000" />
+        <color id="TEXTFIELD" color="#000000" />
+        <color id="WINDOW" color="#f1d9a9" />
+        <color id="PARTY_CHAT_TAB" color="#f48055" />
+        <color id="PARTY_SOCIAL_TAB" color="#f48055" />
+        <color id="GUILD_CHAT_TAB" color="#f48055" />
+        <color id="GUILD_SOCIAL_TAB" color="#f48055" />
+        <color id="PARTY_CHAT_TAB_HIGHLIGHTED" color="#f48055" />
+        <color id="PARTY_SOCIAL_TAB_HIGHLIGHTED" color="#f48055" />
+        <color id="GUILD_CHAT_TAB_HIGHLIGHTED" color="#f48055" />
+        <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED" color="#f48055" />
+        <color id="PARTY_CHAT_TAB_SELECTED" color="#f48055" />
+        <color id="PARTY_SOCIAL_TAB_SELECTED" color="#f48055" />
+        <color id="GUILD_CHAT_TAB_SELECTED" color="#f48055" />
+        <color id="GUILD_SOCIAL_TAB_SELECTED" color="#f48055" />
+        <color id="BACKGROUND" color="#ffffff" />
+        <color id="BACKGROUND_GRAY" color="#404040" />
+        <color id="SCROLLBAR_GRAY" color="#000000" />
+        <color id="DROPDOWN_SHADOW" color="#c0c0c0" />
+        <color id="HIGHLIGHT" color="#ebc873" />
+        <color id="TAB_FLASH" color="#fec4ff" effect="pulse" />
+        <color id="TAB_PLAYER_FLASH" color="#00ff00" effect="pulse" />
+        <color id="SHOP_WARNING" color="#e07a7a" />
+        <color id="ITEM_EQUIPPED" color="#000091" />
+        <color id="ITEM_NOT_EQUIPPED" color="#000000" />
+        <color id="CHAT" color="#f1d9a9" />
+        <color id="GM" color="#fec4ff" />
+        <color id="PLAYER" color="#eeeeee" />
+        <color id="WHISPER_TAB" color="#ff96f6" />
+        <color id="WHISPER_TAB_OFFLINE" color="#444444" />
+        <color id="WHISPER_TAB_HIGHLIGHTED" color="#ffdcfc" />
+        <color id="WHISPER_TAB_OFFLINE_HIGHLIGHTED" color="#ffdcfc" />
+        <color id="WHISPER_TAB_SELECTED" color="#ffbcf9" />
+        <color id="WHISPER_TAB_OFFLINE_SELECTED" color="#444444" />
+        <color id="IS" color="#edbedb" />
+        <color id="SERVER" color="#edbedb" />
+        <color id="LOGGER" color="#919191" />
+        <color id="HYPERLINK" color="#870082" />
+        <color id="UNKNOWN_ITEM" color="#ffffff" />
+        <color id="CHARM" color="#ffffff" />
+        <color id="GENERIC" color="#eeeeee" />
+        <color id="HEAD" color="#b4d7ec" />
+        <color id="USABLE" color="#ece9b4" />
+        <color id="TORSO" color="#b4d7ec" />
+        <color id="ONEHAND" color="#b4d7ec" />
+        <color id="LEGS" color="#b4d7ec" />
+        <color id="FEET" color="#b4d7ec" />
+        <color id="TWOHAND" color="#b4d7ec" />
+        <color id="SHIELD" color="#b4d7ec" />
+        <color id="RING" color="#b4d7ec" />
+        <color id="NECKLACE" color="#b4d7ec" />
+        <color id="ARMS" color="#b4d7ec" />
+        <color id="AMMO" color="#b4d7ec" />
+        <color id="SERVER_VERSION_NOT_SUPPORTED" color="#DC0000" />
+        <color id="WARNING" color="#FF0000" />
+        <color id="PLAYER_ADVANCED" color="#005000" />
+        <color id="BUBBLE_NAME" color="#cccccc" />
+        <color id="BUBBLE_TEXT" color="#ffffff" />
+        <color id="RED" color="#bf0000" />
+        <color id="GREEN" color="#000000" />
+        <color id="BLUE" color="#bf0000" />
+        <color id="ORANGE" color="#f1c777" />
+        <color id="YELLOW" color="#f8eb7c" />
+        <color id="PINK" color="#000000" />
+        <color id="PURPLE" color="#870082" />
+        <color id="GRAY" color="#d7d7d7" />
+        <color id="BROWN" color="#4e361f" />
+    </palette>
+
     <progressbar id="DEFAULT" color="#969696" />
     <progressbar id="HP" color="#b80000" />
     <progressbar id="MP" color="#1a66e6" />
