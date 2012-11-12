@@ -25,6 +25,7 @@ SET (FILES
     inventory.xml
     itempopup.xml
     items.xml
+    keyboard_icon.xml
     LICENSE.txt
     listbox.xml
     map.xml
