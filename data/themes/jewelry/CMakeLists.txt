@@ -10,6 +10,7 @@ SET (FILES
     circle-on.xml
     colors.xml
     complete_icon.xml
+    didyouknow.xml
     dropdown.xml
     dropdown_background.xml
     dropdown_pressed.xml
@@ -18,12 +19,11 @@ SET (FILES
     equipment.xml
     equipment_background.xml
     equipmentbox.png
+    help.xml
     incomplete_icon.xml
     info.xml
     inventory.xml
-    itemcontainer.xml
     itempopup.xml
-    item_selection.xml
     items.xml
     LICENSE.txt
     listbox.xml
@@ -45,7 +45,6 @@ SET (FILES
     scrollbuttons_pressed.xml
     sell.xml
     server.xml
-    shop.xml
     slider.xml
     slider_highlighted.xml
     social.xml

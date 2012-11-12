@@ -13,6 +13,7 @@ gui_DATA =				\
 	circle-on.xml		\
 	colors.xml		\
 	complete_icon.xml		\
+	didyouknow.xml		\
 	dropdown.xml		\
 	dropdown_background.xml		\
 	dropdown_pressed.xml		\
@@ -21,12 +22,11 @@ gui_DATA =				\
 	equipment.xml		\
 	equipment_background.xml		\
 	equipmentbox.png		\
+	help.xml		\
 	incomplete_icon.xml		\
 	info.xml		\
 	inventory.xml		\
-	itemcontainer.xml		\
 	itempopup.xml		\
-	item_selection.xml		\
 	items.xml		\
 	LICENSE.txt		\
 	listbox.xml		\
@@ -48,7 +48,6 @@ gui_DATA =				\
 	scrollbuttons_pressed.xml		\
 	sell.xml		\
 	server.xml		\
-	shop.xml		\
 	slider.xml		\
 	slider_highlighted.xml		\
 	social.xml		\
