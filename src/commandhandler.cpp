@@ -152,6 +152,8 @@ void CommandHandler::handleCommand(const std::string &command,
         handleMove(args, tab);
     else if (type == "target")
         handleTarget(args, tab);
+    else if (type == "atkhuman")
+        handleAttackHuman(args, tab);
     else if (type == "outfit")
         handleOutfit(args, tab);
     else if (type == "emote")
@@ -708,6 +710,25 @@ void CommandHandler::handleTarget(const std::string &args,
     if (target)
         player_node->setTarget(target);
 }
+
+void CommandHandler::handleAttackHuman(const std::string &args,
+                                       ChatTab *const tab A_UNUSED)
+{
+    if (!actorSpriteManager || !player_node)
+        return;
+
+    Being *const target = actorSpriteManager->findNearestLivingBeing(
+        player_node, 10, ActorSprite::PLAYER);
+    if (target)
+    {
+        if (player_node->checAttackPermissions(target))
+        {
+            player_node->setTarget(target);
+            player_node->attack2(target, true);
+        }
+    }
+}
+
 
 void CommandHandler::handleCloseAll(const std::string &args A_UNUSED,
                                     ChatTab *const tab A_UNUSED)
