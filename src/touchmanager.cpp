@@ -41,11 +41,28 @@ TouchManager::~TouchManager()
 void TouchManager::init()
 {
 #ifdef ANDROID
-    Image *image = Theme::getImageFromThemeXml("keyboard_icon.xml", "");
-    TouchItem *keyboard = new TouchItem(gcn::Rectangle(10, 10,
-        image->getWidth(), image->getHeight()), image, 10, 10,
-        nullptr, nullptr, &showKeyboard);
-    mObjects.push_back(keyboard);
+    Theme *theme = Theme::instance();
+    if (!theme)
+        return;
+    Skin *skin = theme->load("keyboard_icon.xml", "");
+    if (skin)
+    {
+        const ImageRect &images = skin->getBorder();
+        Image *image = images.grid[0];
+        if (image)
+        {
+            image->incRef();
+            const int x = skin->getOption("x", 10);
+            const int y = skin->getOption("y", 10);
+            const int pad = skin->getPadding();
+            const int pad2 = 2 * pad;
+            TouchItem *keyboard = new TouchItem(gcn::Rectangle(x, y,
+                image->getWidth() + pad2, image->getHeight() + pad2),
+                image, x + pad, y + pad, nullptr, nullptr, &showKeyboard);
+            mObjects.push_back(keyboard);
+        }
+        theme->unload(skin);
+    }
 #endif
 }
 

@@ -82,7 +82,6 @@ class TouchManager final
 
     private:
         TouchItemVector mObjects;
-
 //        std::map <std::string, int> mNameToRect;
 };
 
