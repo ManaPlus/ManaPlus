@@ -214,7 +214,12 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mModeListModel(new ModeListModel),
     mModeList(new ListBox(widget, mModeListModel)),
     mFsCheckBox(new CheckBox(this, _("Full screen"), mFullScreenEnabled)),
-    mCustomCursorCheckBox(new CheckBox(this, _("Custom cursor"),
+    mCustomCursorCheckBox(new CheckBox(this,
+#ifdef ANDROID
+                          _("Show cursor"),
+#else
+                          _("Custom cursor"),
+#endif
                           mCustomCursorEnabled)),
     mEnableResizeCheckBox(new CheckBox(this, _("Enable resize"),
                           mEnableResize)),
