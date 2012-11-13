@@ -160,7 +160,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     if (config.getIntValue("screenwidth") >= 730)
         width += 100;
 
-    setDimension(gcn::Rectangle(0, 0, width, 300));
+    setDimension(gcn::Rectangle(0, 0, width, 350));
 }
 
 Setup_Input::~Setup_Input()
