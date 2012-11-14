@@ -178,8 +178,10 @@ int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
 const char *OPENGL_NAME[4] =
 {
     N_("Software"),
+#ifndef ANDROID
     N_("Fast OpenGL"),
     N_("Safe OpenGL"),
+#endif
     N_("Mobile OpenGL"),
 };
 
@@ -190,7 +192,11 @@ public:
     { }
 
     virtual int getNumberOfElements()
+#ifdef ANDROID
+    { return 2; }
+#else
     { return 4; }
+#endif
 
     virtual std::string getElementAt(int i)
     {
@@ -392,7 +398,12 @@ void Setup_Video::apply()
     // OpenGL change
     if (mOpenGLDropDown->getSelected() != mOpenGLEnabled)
     {
-        config.setValue("opengl", mOpenGLDropDown->getSelected());
+        int mode = mOpenGLDropDown->getSelected();
+#ifdef ANDROID
+        if (mode == 1 || mode == 2)
+            mode = 3;
+#endif
+        config.setValue("opengl", mode);
 
         // OpenGL can currently only be changed by restarting, notify user.
         new OkDialog(_("Changing to OpenGL"),
