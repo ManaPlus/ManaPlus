@@ -51,16 +51,40 @@ static void moveChar(int x, int y)
     if (!game)
         return;
 
-    static const int lim = 10;
+    static const int lim1 = 10;
+    static const int diff = 20;
+
+    // set center at (0,0)
     x -= 50;
     y -= 50;
 
-    if (x > lim)
+    // some magic for checking at what sector was click
+    if (abs(x) < lim1)
+        x = 0;
+
+    if (abs(y) < lim1)
+        y = 0;
+
+    const int x2 = abs(x);
+    const int y2 = abs(y);
+    if (x2 > y2)
+    {
+        if (y2 && x2 * 10 / y2 > diff)
+            y = 0;
+    }
+    else
+    {
+        if (x2 && y2 * 10 / x2 > diff)
+            x = 0;
+    }
+
+    // detecting direction
+    if (x > 0)
     {
         touchManager.setActionActive(Input::KEY_MOVE_LEFT, false);
         touchManager.setActionActive(Input::KEY_MOVE_RIGHT, true);
     }
-    else if (x < -lim)
+    else if (x < 0)
     {
         touchManager.setActionActive(Input::KEY_MOVE_LEFT, true);
         touchManager.setActionActive(Input::KEY_MOVE_RIGHT, false);
@@ -70,12 +94,12 @@ static void moveChar(int x, int y)
         touchManager.setActionActive(Input::KEY_MOVE_LEFT, false);
         touchManager.setActionActive(Input::KEY_MOVE_RIGHT, false);
     }
-    if (y > lim)
+    if (y > 0)
     {
         touchManager.setActionActive(Input::KEY_MOVE_DOWN, true);
         touchManager.setActionActive(Input::KEY_MOVE_UP, false);
     }
-    else if (y < -lim)
+    else if (y < 0)
     {
         touchManager.setActionActive(Input::KEY_MOVE_DOWN, false);
         touchManager.setActionActive(Input::KEY_MOVE_UP, true);
