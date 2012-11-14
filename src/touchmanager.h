@@ -34,18 +34,21 @@
 
 typedef void (*TouchFuncPtr) (const gcn::MouseInput &mouseInput);
 
+const int actionsSize = 10;
+
 struct TouchItem final
 {
     TouchItem(const gcn::Rectangle rect0, Image *const img, int x0, int y0,
               TouchFuncPtr ptrAll, TouchFuncPtr ptrPressed,
-              TouchFuncPtr ptrReleased) :
+              TouchFuncPtr ptrReleased, TouchFuncPtr ptrOut) :
         rect(rect0),
         image(img),
         x(x0),
         y(y0),
         funcAll(ptrAll),
         funcPressed(ptrPressed),
-        funcReleased(ptrReleased)
+        funcReleased(ptrReleased),
+        funcOut(ptrOut)
     {
     }
 
@@ -58,6 +61,7 @@ struct TouchItem final
     TouchFuncPtr funcAll;
     TouchFuncPtr funcPressed;
     TouchFuncPtr funcReleased;
+    TouchFuncPtr funcOut;
 };
 
 typedef std::vector<TouchItem*> TouchItemVector;
@@ -74,15 +78,33 @@ class TouchManager final
 
         void init();
 
+        void loadTouchItem(TouchItem **item, std::string name, bool type,
+                           TouchFuncPtr fAll, TouchFuncPtr fPressed,
+                           TouchFuncPtr fReleased, TouchFuncPtr fOut);
+
         void clear();
+
+        void unloadTouchItem(TouchItem **item0);
 
         void draw();
 
+        void drawTouchItem(const TouchItem *const item) const;
+
         bool processEvent(const gcn::MouseInput &mouseInput);
 
+        bool isActionActive(const int index) const;
+
+        void setActionActive(const int index, const bool value)
+        {
+            if (index >= 0 && index < actionsSize)
+                mActions[index] = value;
+        }
+
     private:
+        TouchItem *mKeyboard;
+        TouchItem *mPad;
         TouchItemVector mObjects;
-//        std::map <std::string, int> mNameToRect;
+        bool mActions[actionsSize];
 };
 
 extern TouchManager touchManager;

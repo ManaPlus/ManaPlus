@@ -107,9 +107,11 @@ DefaultsData* getConfigDefaults()
 #ifdef ANDROID
     AddDEF("screenwidth", 0);
     AddDEF("screenheight", 0);
+    AddDEF("showScreenJoystick", true);
 #else
     AddDEF("screenwidth", defaultScreenWidth);
     AddDEF("screenheight", defaultScreenHeight);
+    AddDEF("showScreenJoystick", false);
 #endif
     AddDEF("screen", false);
     AddDEF("hwaccel", false);

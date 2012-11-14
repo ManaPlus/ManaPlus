@@ -16,6 +16,7 @@ gui_DATA =				\
 	circle-on.xml		\
 	colors.xml			\
 	complete_icon.xml		\
+	dpad.xml		\
 	dropdown.xml		\
 	dropdown_background.xml		\
 	dropdown_pressed.xml		\

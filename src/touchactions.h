@@ -27,4 +27,12 @@
 
 void showKeyboard(const gcn::MouseInput &mouseInput);
 
+void padClick(const gcn::MouseInput &mouseInput);
+
+void padEvents(const gcn::MouseInput &mouseInput);
+
+void padOut(const gcn::MouseInput &mouseInput);
+
+void padUp(const gcn::MouseInput &mouseInput);
+
 #endif

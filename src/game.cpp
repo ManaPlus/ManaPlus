@@ -828,27 +828,30 @@ void Game::handleMove()
         }
 
         if (!inputManager.isActionActive(Input::KEY_EMOTE) || direction == 0)
-        {
-            if (!viewport->getCameraMode())
-            {
-                player_node->specialMove(direction);
-            }
-            else
-            {
-                int dx = 0;
-                int dy = 0;
-                if (direction & Being::LEFT)
-                    dx = -5;
-                else if (direction & Being::RIGHT)
-                    dx = 5;
+            moveInDirection(direction);
+    }
+}
 
-                if (direction & Being::UP)
-                    dy = -5;
-                else if (direction & Being::DOWN)
-                    dy = 5;
-                viewport->moveCamera(dx, dy);
-            }
-        }
+void Game::moveInDirection(const unsigned char direction)
+{
+    if (!viewport->getCameraMode())
+    {
+        player_node->specialMove(direction);
+    }
+    else
+    {
+        int dx = 0;
+        int dy = 0;
+        if (direction & Being::LEFT)
+            dx = -5;
+        else if (direction & Being::RIGHT)
+            dx = 5;
+
+        if (direction & Being::UP)
+            dy = -5;
+        else if (direction & Being::DOWN)
+            dy = 5;
+        viewport->moveCamera(dx, dy);
     }
 }
 

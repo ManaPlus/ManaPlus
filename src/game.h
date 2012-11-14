@@ -114,6 +114,8 @@ class Game final
         bool getValidSpeed() const A_WARN_UNUSED
         { return mValidSpeed; }
 
+        void moveInDirection(const unsigned char direction);
+
         static bool createScreenshot();
 
         static bool saveScreenshot(SDL_Surface *const screenshot);

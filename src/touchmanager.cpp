@@ -20,6 +20,7 @@
 
 #include "touchmanager.h"
 
+#include "configuration.h"
 #include "graphics.h"
 #include "touchactions.h"
 
@@ -29,7 +30,9 @@
 
 TouchManager touchManager;
 
-TouchManager::TouchManager()
+TouchManager::TouchManager() :
+    mKeyboard(nullptr),
+    mPad(nullptr)
 {
 }
 
@@ -41,10 +44,26 @@ TouchManager::~TouchManager()
 void TouchManager::init()
 {
 #ifdef ANDROID
+    loadTouchItem(&mKeyboard, "keyboard_icon.xml", false,
+        nullptr, nullptr, &showKeyboard, nullptr);
+#endif
+
+    if (config.getBoolValue("showScreenJoystick"))
+    {
+        loadTouchItem(&mPad, "dpad.xml", true,
+            &padEvents, &padClick, &padUp, &padOut);
+    }
+}
+
+void TouchManager::loadTouchItem(TouchItem **item, std::string name, bool type,
+                                 TouchFuncPtr fAll, TouchFuncPtr fPressed,
+                                 TouchFuncPtr fReleased, TouchFuncPtr fOut)
+{
+    *item = nullptr;
     Theme *theme = Theme::instance();
     if (!theme)
         return;
-    Skin *skin = theme->load("keyboard_icon.xml", "");
+    Skin *const skin = theme->load(name, "");
     if (skin)
     {
         const ImageRect &images = skin->getBorder();
@@ -53,44 +72,65 @@ void TouchManager::init()
         {
             image->incRef();
             const int x = skin->getOption("x", 10);
-            const int y = skin->getOption("y", 10);
+            const int y = type ? (mainGraphics->mHeight - image->mBounds.h) / 2
+                + skin->getOption("y", 10) : skin->getOption("y", 10);
             const int pad = skin->getPadding();
             const int pad2 = 2 * pad;
-            TouchItem *keyboard = new TouchItem(gcn::Rectangle(x, y,
+            *item = new TouchItem(gcn::Rectangle(x, y,
                 image->getWidth() + pad2, image->getHeight() + pad2),
-                image, x + pad, y + pad, nullptr, nullptr, &showKeyboard);
-            mObjects.push_back(keyboard);
+                image, x + pad, y + pad, fAll, fPressed, fReleased, fOut);
+            mObjects.push_back(*item);
         }
         theme->unload(skin);
     }
-#endif
 }
 
 void TouchManager::clear()
 {
+//    unloadTouchItem(&mPad);
+//    unloadTouchItem(&mKeyboard);
+
     for (TouchItemVectorCIter it = mObjects.begin(), it_end = mObjects.end();
          it != it_end; ++ it)
     {
-        const TouchItem *const item = *it;
+        TouchItem *item = *it;
         if (item)
         {
             if (item->image)
                 item->image->decRef();
-            delete *it;
+            delete item;
         }
     }
     mObjects.clear();
 }
 
+void TouchManager::unloadTouchItem(TouchItem **item0)
+{
+    TouchItem *item = *item0;
+    if (item)
+    {
+        if (item->image)
+            item->image->decRef();
+        delete item;
+        *item0 = nullptr;
+    }
+}
+
 void TouchManager::draw()
 {
+//    drawTouchItem(mPad);
     for (TouchItemVectorCIter it = mObjects.begin(), it_end = mObjects.end();
          it != it_end; ++ it)
     {
-        const TouchItem *const item = *it;
-        if (item && item->image)
-            mainGraphics->drawImage(item->image, item->x, item->y);
+        drawTouchItem(*it);
     }
+//    drawTouchItem(mKeyboard);
+}
+
+void TouchManager::drawTouchItem(const TouchItem *const item) const
+{
+    if (item && item->image)
+        mainGraphics->drawImage(item->image, item->x, item->y);
 }
 
 bool TouchManager::processEvent(const gcn::MouseInput &mouseInput)
@@ -102,30 +142,43 @@ bool TouchManager::processEvent(const gcn::MouseInput &mouseInput)
          it != it_end; ++ it)
     {
         const TouchItem *const item = *it;
-        if (item && item->rect.isPointInRect(x, y))
+        if (!item)
+            continue;
+        const gcn::Rectangle &rect = item->rect;
+        if (rect.isPointInRect(x, y))
         {
+            gcn::MouseInput event = mouseInput;
+            event.setX(event.getX() - item->x);
+            event.setY(event.getY() - item->y);
             if (item->funcAll)
+                item->funcAll(event);
+
+            switch (mouseInput.getType())
             {
-                item->funcAll(mouseInput);
-            }
-            else
-            {
-                switch (mouseInput.getType())
-                {
-                    case gcn::MouseInput::PRESSED:
-                        if (item->funcPressed)
-                            item->funcPressed(mouseInput);
-                        break;
-                    case gcn::MouseInput::RELEASED:
-                        if (item->funcReleased)
-                            item->funcReleased(mouseInput);
-                        break;
-                    default:
-                        break;
-                }
+                case gcn::MouseInput::PRESSED:
+                    if (item->funcPressed)
+                        item->funcPressed(event);
+                    break;
+                case gcn::MouseInput::RELEASED:
+                    if (item->funcReleased)
+                        item->funcReleased(event);
+                    break;
+                default:
+                    break;
             }
             return true;
         }
+        else if (item->funcOut)
+        {
+            item->funcOut(mouseInput);
+        }
     }
     return false;
+}
+
+bool TouchManager::isActionActive(const int index) const
+{
+    if (index < 0 || index > actionsSize)
+        return false;
+    return mActions[index];
 }

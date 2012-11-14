@@ -170,9 +170,23 @@ void KeyboardConfig::handleActicateKey(const SDL_Event &event)
     resetRepeat(key);
 }
 
+void KeyboardConfig::handleActicateKey(const int key)
+{
+    if (key < -1 && key > -500)
+        mActiveKeys2[-key] = 1;
+    resetRepeat(key);
+}
+
 void KeyboardConfig::handleDeActicateKey(const SDL_Event &event)
 {
     const int key = getKeyValueFromEvent(event);
+    if (key < -1 && key > -500)
+        mActiveKeys2[-key] = 0;
+    resetRepeat(key);
+}
+
+void KeyboardConfig::handleDeActicateKey(const int key)
+{
     if (key < -1 && key > -500)
         mActiveKeys2[-key] = 0;
     resetRepeat(key);

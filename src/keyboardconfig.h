@@ -90,7 +90,11 @@ class KeyboardConfig final
 
         void handleActicateKey(const SDL_Event &event);
 
+        void handleActicateKey(const int key);
+
         void handleDeActicateKey(const SDL_Event &event);
+
+        void handleDeActicateKey(const int key);
 
         int getActionId(const SDL_Event &event) A_WARN_UNUSED;
 

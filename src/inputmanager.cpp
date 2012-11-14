@@ -27,6 +27,7 @@
 #include "keyboardconfig.h"
 #include "keyboarddata.h"
 #include "localplayer.h"
+#include "touchmanager.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"
@@ -280,9 +281,9 @@ bool InputManager::isActionActive(const int index) const
 {
     if (keyboard.isActionActive(index))
         return true;
-    if (joystick)
-        return joystick->isActionActive(index);
-    return false;
+    if (joystick && joystick->isActionActive(index))
+        return true;
+    return touchManager.isActionActive(index);
 }
 
 KeyFunction &InputManager::getKey(int index)

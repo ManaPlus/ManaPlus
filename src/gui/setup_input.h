@@ -31,6 +31,7 @@
 #include <string>
 
 class Button;
+class CheckBox;
 class ListBox;
 class KeyListModel;
 class TabStrip;
@@ -97,6 +98,8 @@ class Setup_Input final : public SetupTab
         Button *mDefaultButton;
         Button *mResetKeysButton;
         TabStrip *mTabs;
+        bool mShowJoystick;
+        CheckBox *mJoystickCheckBox;
 
         bool mKeySetting; /**< flag to check if key being set. */
 

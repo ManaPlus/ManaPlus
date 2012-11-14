@@ -661,7 +661,10 @@ void Gui::handleMouseInput()
         const gcn::MouseInput mouseInput = mInput->dequeueMouseInput();
 
         if (touchManager.processEvent(mouseInput))
+        {
+            mMouseInactivityTimer = 0;
             continue;
+        }
 
         // Save the current mouse state. It will be needed if modal focus
         // changes or modal mouse input focus changes.
