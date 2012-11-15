@@ -108,10 +108,12 @@ DefaultsData* getConfigDefaults()
     AddDEF("screenwidth", 0);
     AddDEF("screenheight", 0);
     AddDEF("showScreenJoystick", true);
+    AddDEF("showBeingPopup", false);
 #else
     AddDEF("screenwidth", defaultScreenWidth);
     AddDEF("screenheight", defaultScreenHeight);
     AddDEF("showScreenJoystick", false);
+    AddDEF("showBeingPopup", true);
 #endif
     AddDEF("screen", false);
     AddDEF("hwaccel", false);
@@ -203,7 +205,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("showOwnHP", true);
     AddDEF("usePersistentIP", false);
     AddDEF("showJobExp", true);
-    AddDEF("showBeingPopup", true);
     AddDEF("showExtMinimaps", false);
     AddDEF("hideChatInput", true);
     AddDEF("enableAttackFilter", true);
