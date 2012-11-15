@@ -1,6 +1,8 @@
 <skinset name="Default" image="window.png">
     <widget type="Window">
 
+        <option name="padding" value="6" />
+
         <part type="standart" xpos="153" ypos="186" width="32" height="32" />
 
     </widget>
