@@ -231,4 +231,5 @@ void DropShortcut::clear()
         mItems[i] = -1;
         mItemColors[i] = 1;
     }
+    save();
 }
