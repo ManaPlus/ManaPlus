@@ -1,4 +1,5 @@
 SET (FILES
+    browserbox.xml
     bubble.png
     bubble.xml
     button.xml

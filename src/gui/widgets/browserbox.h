@@ -230,11 +230,16 @@ class BrowserBox final : public gcn::Widget,
         bool mAlwaysUpdate;
         bool mProcessVersion;
         bool mEnableImages;
+        int mPadding;
+        int mNewLinePadding;
 
         gcn::Color mBackgroundColor;
         gcn::Color mHighlightColor;
         gcn::Color mHyperLinkColor;
         gcn::Color mColors[COLORS_MAX];
+
+        static Skin *mSkin;
+        static int mInstances;
 };
 
 #endif

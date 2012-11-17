@@ -41,6 +41,9 @@
 
 #include "debug.h"
 
+Skin *BrowserBox::mSkin = nullptr;
+int BrowserBox::mInstances = 0;
+
 BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
                        const bool opaque) :
     gcn::Widget(),
@@ -60,12 +63,27 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     mAlwaysUpdate(true),
     mProcessVersion(false),
     mEnableImages(false),
+    mPadding(0),
+    mNewLinePadding(15),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mHyperLinkColor(getThemeColor(Theme::HYPERLINK))
 {
     setFocusable(true);
     addMouseListener(this);
+
+    if (mInstances == 0)
+    {
+        if (Theme::instance())
+            mSkin = Theme::instance()->load("browserbox.xml", "");
+    }
+    mInstances ++;
+
+    if (mSkin)
+    {
+        mPadding = mSkin->getPadding();
+        mNewLinePadding = mSkin->getOption("newLinePadding", 15);
+    }
 
     mColors[RED] = getThemeColor(Theme::RED);
     mColors[GREEN] = getThemeColor(Theme::GREEN);
@@ -81,6 +99,9 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
 
 BrowserBox::~BrowserBox()
 {
+    mInstances --;
+    if (mInstances == 0 && Theme::instance())
+        Theme::instance()->unload(mSkin);
 }
 
 void BrowserBox::setLinkHandler(LinkHandler* linkHandler)
@@ -246,7 +267,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                     if ((x + nextWordWidth + 10)
                         > static_cast<unsigned>(getWidth()))
                     {
-                        x = 15; // Ident in new line
+                        x = mNewLinePadding; // Ident in new line
                         y += 1;
                         j ++;
                     }
@@ -255,7 +276,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                 else if ((x + 2 * hyphenWidth)
                          > static_cast<unsigned>(getWidth()))
                 {
-                    x = 15; // Ident in new line
+                    x = mNewLinePadding; // Ident in new line
                     y += 1;
                 }
             }
@@ -406,14 +427,15 @@ void BrowserBox::draw(gcn::Graphics *graphics)
 
 int BrowserBox::calcHeight()
 {
-    unsigned x = 0, y = 0;
+    unsigned x = mPadding, y = mPadding;
     int wrappedLines = 0;
     int moreHeight = 0;
-    int maxWidth = getWidth();
+    int maxWidth = getWidth() - mPadding;
     int link = 0;
     bool bold = false;
+    unsigned int wWidth = maxWidth;
 
-    if (getWidth() < 0)
+    if (maxWidth < 0)
         return 1;
 
     const gcn::Font *const font = getFont();
@@ -434,13 +456,13 @@ int BrowserBox::calcHeight()
     {
         const std::string row = *(i);
         bool wrapped = false;
-        x = 0;
+        x = mPadding;
 
         // Check for separator lines
         if (row.find("---", 0) == 0)
         {
             const int dashWidth = fontWidthMinus;
-            for (x = 0; x < static_cast<unsigned>(getWidth()); x ++)
+            for (x = mPadding; x < wWidth; x ++)
             {
                 mLineParts.push_back(LinePart(x, y, selColor, "-", false));
                 x += dashWidth - 2;
@@ -480,7 +502,7 @@ int BrowserBox::calcHeight()
             if (wrapped)
             {
                 y += fontHeight;
-                x = 15;
+                x = mNewLinePadding + mPadding;
                 wrapped = false;
             }
 
@@ -573,8 +595,8 @@ int BrowserBox::calcHeight()
                 width = font->getWidth(part);
 
             // Auto wrap mode
-            if (mMode == AUTO_WRAP && getWidth() > 0 && width > 0
-                && (x + width + 10) > static_cast<unsigned>(getWidth()))
+            if (mMode == AUTO_WRAP && wWidth > 0 && width > 0
+                && (x + width + 10) > wWidth)
             {
                 bool forced = false;
 
@@ -607,13 +629,12 @@ int BrowserBox::calcHeight()
                     else
                         width = font->getWidth(part);
                 }
-                while (end > start && width > 0 && (x + width + 10)
-                       > static_cast<unsigned>(getWidth()));
+                while (end > start && width > 0 && (x + width + 10) > wWidth);
 
                 if (forced)
                 {
                     x -= hyphenWidth; // Remove the wrap-notifier accounting
-                    mLineParts.push_back(LinePart(getWidth() - hyphenWidth,
+                    mLineParts.push_back(LinePart(wWidth - hyphenWidth,
                         y, selColor, hyphen, bold));
                     end++; // Skip to the next character
                 }
@@ -640,11 +661,14 @@ int BrowserBox::calcHeight()
         }
         y += fontHeight;
     }
-    if (getWidth() != maxWidth)
+    if (wWidth != maxWidth)
+    {
+        wWidth = maxWidth;
         setWidth(maxWidth);
+    }
 
     return (static_cast<int>(mTextRows.size()) + wrappedLines)
-        * fontHeight + moreHeight;
+        * fontHeight + moreHeight + 2 * mPadding;
 }
 
 void BrowserBox::updateHeight()

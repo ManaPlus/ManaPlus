@@ -2,6 +2,7 @@
 guidir = $(pkgdatadir)/data/graphics/gui
 
 gui_DATA =				\
+	browserbox.xml			\
 	bubble.png			\
 	bubble.xml			\
 	button.xml			\
