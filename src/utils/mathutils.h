@@ -68,9 +68,9 @@ static const uint16_t crc_table[256] =
 inline uint16_t getCrc16(const std::string &str) A_WARN_UNUSED;
 inline float fastInvSqrt(float x) A_WARN_UNUSED;
 inline float fastSqrt(const float x) A_WARN_UNUSED;
-inline float weightedAverage(const float n1, const float n2,
-                             const float w) A_WARN_UNUSED;
-inline int roundDouble(const double v) A_WARN_UNUSED;
+constexpr inline float weightedAverage(const float n1, const float n2,
+                                       const float w) A_WARN_UNUSED;
+constexpr inline int roundDouble(const double v) A_WARN_UNUSED;
 inline int powerOfTwo(const int input) A_WARN_UNUSED;
 
 inline uint16_t getCrc16(const std::string &str)
@@ -113,18 +113,13 @@ inline float fastSqrt(const float x)
     return 1.0f / fastInvSqrt(x);
 }
 
-inline float weightedAverage(const float n1, const float n2, const float w)
+constexpr inline float weightedAverage(const float n1, const float n2,
+                                       const float w)
 {
-    if (w < 0.0f)
-        return n1;
-
-    if (w > 1.0f)
-        return n2;
-
-    return w * n2 + (1.0f - w) * n1;
+    return w < 0.0f ? n1 : (w > 1.0f ? n2 : w * n2 + (1.0f - w) * n1);
 }
 
-inline int roundDouble(const double v)
+constexpr inline int roundDouble(const double v)
 {
     return (v > 0.0) ? static_cast<int>(v + 0.5) : static_cast<int>(v - 0.5);
 }

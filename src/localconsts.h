@@ -23,6 +23,7 @@
 #define nullptr 0
 #define final
 #define override
+#define constexpr
 #define A_DELETE(func)
 #define A_DELETE_COPY(func)
 #else
@@ -32,6 +33,7 @@
 #if GCC_VERSION < 40700
 #define final
 #define override
+#define constexpr
 //#define A_DELETE
 //#define A_DELETE_COPY
 #endif
