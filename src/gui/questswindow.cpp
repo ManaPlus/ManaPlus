@@ -43,6 +43,13 @@
 
 #include "debug.h"
 
+enum QuestType
+{
+    QUEST_TEXT = 0,
+    QUEST_NAME = 1,
+    QUEST_REWARD = 2
+};
+
 struct QuestItemText final
 {
     QuestItemText(std::string text0, const int type0) :
@@ -223,9 +230,11 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
         std::string str = translator->getStr(data);
 
         if (xmlNameEqual(dataNode, "text"))
-            quest->texts.push_back(QuestItemText(str, 0));
+            quest->texts.push_back(QuestItemText(str, QuestType::QUEST_TEXT));
         else if (xmlNameEqual(dataNode, "name"))
-            quest->texts.push_back(QuestItemText(str, 1));
+            quest->texts.push_back(QuestItemText(str, QuestType::QUEST_NAME));
+        else if (xmlNameEqual(dataNode, "reward"))
+            quest->texts.push_back(QuestItemText(str, QuestType::QUEST_REWARD));
     }
     mQuests[var].push_back(quest);
 }
@@ -369,11 +378,11 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
         const QuestItemText &data = *it;
         switch (data.type)
         {
-            case 0:
+            case QuestType::QUEST_TEXT:
             default:
                 mText->addRow(translator->getStr(data.text));
                 break;
-            case 1:
+            case QuestType::QUEST_NAME:
                 mText->addRow("[" + translator->getStr(data.text) + "]");
                 break;
         }
