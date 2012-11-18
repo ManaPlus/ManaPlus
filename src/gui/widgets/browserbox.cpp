@@ -661,7 +661,7 @@ int BrowserBox::calcHeight()
         }
         y += fontHeight;
     }
-    if (wWidth != maxWidth)
+    if ((signed)wWidth != maxWidth)
     {
         wWidth = maxWidth;
         setWidth(maxWidth);

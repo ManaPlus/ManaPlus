@@ -230,11 +230,11 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
         std::string str = translator->getStr(data);
 
         if (xmlNameEqual(dataNode, "text"))
-            quest->texts.push_back(QuestItemText(str, QuestType::QUEST_TEXT));
+            quest->texts.push_back(QuestItemText(str, QUEST_TEXT));
         else if (xmlNameEqual(dataNode, "name"))
-            quest->texts.push_back(QuestItemText(str, QuestType::QUEST_NAME));
+            quest->texts.push_back(QuestItemText(str, QUEST_NAME));
         else if (xmlNameEqual(dataNode, "reward"))
-            quest->texts.push_back(QuestItemText(str, QuestType::QUEST_REWARD));
+            quest->texts.push_back(QuestItemText(str, QUEST_REWARD));
     }
     mQuests[var].push_back(quest);
 }
@@ -378,11 +378,12 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
         const QuestItemText &data = *it;
         switch (data.type)
         {
-            case QuestType::QUEST_TEXT:
+            case QUEST_TEXT:
+            case QUEST_REWARD:
             default:
                 mText->addRow(translator->getStr(data.text));
                 break;
-            case QuestType::QUEST_NAME:
+            case QUEST_NAME:
                 mText->addRow("[" + translator->getStr(data.text) + "]");
                 break;
         }
