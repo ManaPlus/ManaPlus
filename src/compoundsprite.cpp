@@ -495,11 +495,12 @@ bool CompoundSprite::updateFromCache() const
 //    logger->log("cache size: %d, hit %d, miss %d",
 //        (int)imagesCache.size(), hits, miss);
 
+    const size_t sz = size();
     for (ImagesCache::iterator it = imagesCache.begin(),
          it_end = imagesCache.end(); it != it_end; ++ it)
     {
         CompoundItem *const ic = *it;
-        if (ic && ic->data.size() == size())
+        if (ic && ic->data.size() == sz)
         {
             bool fail(false);
             VectorPointers::const_iterator it2 = ic->data.begin();

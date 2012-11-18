@@ -346,6 +346,8 @@ private:
 
     void testsClear();
 
+    void logVars();
+
     static Client *mInstance;
 
     static void bindTextDomain(const char *const name, const char *const path);

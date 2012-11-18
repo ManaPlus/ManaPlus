@@ -30,6 +30,9 @@
 #include <physfs.h>
 
 #include "utils/gettext.h"
+#ifdef ANDROID
+#include "utils/mkdir.h"
+#endif
 #include "utils/paths.h"
 #include "utils/xml.h"
 
@@ -242,6 +245,8 @@ int main(int argc, char *argv[])
 
     // Initialize PhysicsFS
 #ifdef ANDROID
+    mkdir_r(getenv("DATADIR2"));
+
     if (!PHYSFS_init((getRealPath(".") + "/fakebinary").c_str()))
 #else
     if (!PHYSFS_init(argv[0]))

@@ -547,6 +547,7 @@ void Client::gameInit()
     SDLImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache"));
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
 #endif
+    logVars();
     graphicsManager.initGraphics(mOptions.noOpenGL);
     runCounters = config.getBoolValue("packetcounters");
     applyVSync();
@@ -1804,7 +1805,8 @@ void Client::initLocalDataDir()
             mLocalDataDir = std::string(PHYSFS_getUserDir());
         mLocalDataDir += "/Mana";
 #elif defined __ANDROID__
-        mLocalDataDir = "local";
+        mLocalDataDir = getenv("DATADIR2") + branding.getValue(
+            "appShort", "ManaPlus") + "/local";
 #else
         mLocalDataDir = std::string(PHYSFS_getUserDir()) +
             ".local/share/mana";
@@ -1852,7 +1854,8 @@ void Client::initConfigDir()
         else
             mConfigDir += "/mana/" + branding.getValue("appShort", "mana");
 #elif defined __ANDROID__
-        mConfigDir = "config";
+        mConfigDir = getenv("DATADIR2") + branding.getValue(
+            "appShort", "ManaPlus") + "/config";
 #else
         mConfigDir = std::string(PHYSFS_getUserDir()) +
             "/.config/mana/" + branding.getValue("appShort", "mana");
@@ -2098,12 +2101,17 @@ void Client::initScreenshotDir()
     }
     else if (mScreenshotDir.empty())
     {
+#ifdef __ANDROID__
+        mLocalDataDir = getenv("DATADIR2") + std::string("/images");
+#else
         std::string configScreenshotDir =
             config.getStringValue("screenshotDirectory");
         if (!configScreenshotDir.empty())
             mScreenshotDir = configScreenshotDir;
         else
             mScreenshotDir = getDesktopDir();
+#endif
+
         //config.setValue("screenshotDirectory", mScreenshotDir);
         logger->log("screenshotDirectory: " + mScreenshotDir);
 
@@ -2729,4 +2737,13 @@ void Client::newChatMessage()
         SDL_WM_SetCaption(("*" + client->mCaption).c_str(), nullptr);
         client->mNewMessageFlag = true;
     }
+}
+
+void Client::logVars()
+{
+#ifdef ANDROID
+    logger->log("APPDIR: %s", getenv("APPDIR"));
+    logger->log("DATADIR: %s", getenv("DATADIR"));
+    logger->log("DATADIR2: %s", getenv("DATADIR2"));
+#endif
 }
