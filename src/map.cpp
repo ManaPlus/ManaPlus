@@ -418,7 +418,8 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             else
             {
 #ifdef USE_OPENGL
-                if ((mOpenGL == 1 || mOpenGL == 3) && updateFlag != 2)
+//                if ((mOpenGL == 1 || mOpenGL == 3) && updateFlag != 2)
+                if (mOpenGL == 1 || mOpenGL == 3)
                 {
                     if (updateFlag)
                     {
