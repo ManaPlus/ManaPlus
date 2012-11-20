@@ -2102,7 +2102,14 @@ void Client::initScreenshotDir()
     else if (mScreenshotDir.empty())
     {
 #ifdef __ANDROID__
-        mLocalDataDir = getenv("DATADIR2") + std::string("/images");
+        mScreenshotDir = getenv("DATADIR2") + std::string("/images");
+
+        if (mkdir_r(mScreenshotDir.c_str()))
+        {
+            logger->log(strprintf(
+                _("Error: %s doesn't exist and can't be created! "
+                "Exiting."), mScreenshotDir.c_str()));
+        }
 #else
         std::string configScreenshotDir =
             config.getStringValue("screenshotDirectory");
