@@ -155,6 +155,10 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     mXYLabel(new Label(this, strprintf("%s (?,?)", _("Player Position:")))),
     mTexturesLabel(nullptr),
     mUpdateTime(0),
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCallsLabel(new Label(this, strprintf("%s %s",
+        _("Draw calls:"), "?"))),
+#endif
     mFPSLabel(new Label(this, strprintf(_("%d FPS"), 0))),
     mLPSLabel(new Label(this, strprintf(_("%d LPS"), 0)))
 {
@@ -174,6 +178,9 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
         case 2:
             mFPSText = _("%d FPS (old OpenGL)");
             break;
+        case 3:
+            mFPSText = _("%d FPS (mobile OpenGL)");
+            break;
     };
 #else
     mFPSText = _("%d FPS (Software)");
@@ -189,10 +196,15 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     place(0, 7, mParticleCountLabel, 2);
     place(0, 8, mMapActorCountLabel, 2);
 #ifdef USE_OPENGL
+    int n = 9;
 #ifdef DEBUG_OPENGL_LEAKS
     mTexturesLabel = new Label(this, strprintf("%s %s",
         _("Textures count:"), "?"));
-    place(0, 9, mTexturesLabel, 2);
+    place(0, n, mTexturesLabel, 2);
+    n ++;
+#endif
+#ifdef DEBUG_DRAW_CALLS
+    place(0, n, mDrawCallsLabel, 2);
 #endif
 #endif
     place.getCell().matchColWidth(0, 0);
@@ -244,6 +256,13 @@ void MapDebugTab::logic()
 #ifdef DEBUG_OPENGL_LEAKS
             mTexturesLabel->setCaption(strprintf("%s %d",
                 _("Textures count:"), textures_count));
+#endif
+#ifdef DEBUG_DRAW_CALLS
+            if (mainGraphics)
+            {
+                mDrawCallsLabel->setCaption(strprintf("%s %d",
+                    _("Draw calls:"), mainGraphics->getDrawCalls()));
+            }
 #endif
 #endif
         }

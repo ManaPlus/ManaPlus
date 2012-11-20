@@ -40,6 +40,10 @@
 #include "debug.h"
 
 GLuint NormalOpenGLGraphics::mLastImage = 0;
+#ifdef DEBUG_DRAW_CALLS
+unsigned int NormalOpenGLGraphics::mDrawCalls = 0;
+unsigned int NormalOpenGLGraphics::mLastDrawCalls = 0;
+#endif
 
 //unsigned int vertexBufSize = 500;
 
@@ -130,6 +134,9 @@ static inline void drawQuad(const Image *image,
         glVertexPointer(2, GL_INT, 0, &vert);
         glTexCoordPointer(2, GL_FLOAT, 0, &tex);
 
+#ifdef DEBUG_DRAW_CALLS
+        NormalOpenGLGraphics::mDrawCalls ++;
+#endif
         glDrawArrays(GL_QUADS, 0, 4);
     }
     else
@@ -152,6 +159,9 @@ static inline void drawQuad(const Image *image,
         glVertexPointer(2, GL_INT, 0, &vert);
         glTexCoordPointer(2, GL_INT, 0, &tex);
 
+#ifdef DEBUG_DRAW_CALLS
+        NormalOpenGLGraphics::mDrawCalls ++;
+#endif
         glDrawArrays(GL_QUADS, 0, 4);
     }
 }
@@ -192,6 +202,9 @@ static inline void drawRescaledQuad(const Image *const image,
         glVertexPointer(2, GL_INT, 0, &vert);
         glTexCoordPointer(2, GL_FLOAT, 0, &tex);
 
+#ifdef DEBUG_DRAW_CALLS
+        NormalOpenGLGraphics::mDrawCalls ++;
+#endif
         glDrawArrays(GL_QUADS, 0, 4);
     }
     else
@@ -214,6 +227,9 @@ static inline void drawRescaledQuad(const Image *const image,
         glVertexPointer(2, GL_INT, 0, &vert);
         glTexCoordPointer(2, GL_INT, 0, &tex);
 
+#ifdef DEBUG_DRAW_CALLS
+        NormalOpenGLGraphics::mDrawCalls ++;
+#endif
         glDrawArrays(GL_QUADS, 0, 4);
     }
 }
@@ -934,6 +950,10 @@ void NormalOpenGLGraphics::updateScreen()
     BLOCK_START("Graphics::updateScreen")
 //    glFlush();
 //    glFinish();
+#ifdef DEBUG_DRAW_CALLS
+    mLastDrawCalls = mDrawCalls;
+    mDrawCalls = 0;
+#endif
     SDL_GL_SwapBuffers();
 // may be need clear?
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -1197,6 +1217,9 @@ void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
     };
 
     glVertexPointer(2, GL_FLOAT, 0, &vert);
+#ifdef DEBUG_DRAW_CALLS
+        mDrawCalls ++;
+#endif
     glDrawArrays(filled ? GL_QUADS : GL_LINE_LOOP, 0, 4);
     BLOCK_END("Graphics::drawRectangle")
 }
@@ -1268,6 +1291,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(int size)
     glVertexPointer(2, GL_INT, 0, mIntVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArray);
 
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
@@ -1278,6 +1304,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(GLint *const intVertArray,
     glVertexPointer(2, GL_INT, 0, intVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, floatTexArray);
 
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
@@ -1286,6 +1315,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(int size)
     glVertexPointer(2, GL_INT, 0, mIntVertArray);
     glTexCoordPointer(2, GL_INT, 0, mIntTexArray);
 
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
@@ -1296,6 +1328,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(GLint *const intVertArray,
     glVertexPointer(2, GL_INT, 0, intVertArray);
     glTexCoordPointer(2, GL_INT, 0, intTexArray);
 
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
@@ -1303,6 +1338,9 @@ inline void NormalOpenGLGraphics::drawLineArrayi(int size)
 {
     glVertexPointer(2, GL_INT, 0, mIntVertArray);
 
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_LINES, 0, size / 2);
 }
 
@@ -1310,6 +1348,9 @@ inline void NormalOpenGLGraphics::drawLineArrayf(int size)
 {
     glVertexPointer(2, GL_FLOAT, 0, mFloatTexArray);
 
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_LINES, 0, size / 2);
 }
 

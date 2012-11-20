@@ -68,4 +68,7 @@
 //profiler
 //#define USE_PROFILER 1
 
+//draw calls
+//#define DEBUG_DRAW_CALLS 1
+
 #include "utils/perfomance.h"

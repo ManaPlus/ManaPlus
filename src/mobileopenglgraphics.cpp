@@ -41,6 +41,10 @@
 #include "debug.h"
 
 GLuint MobileOpenGLGraphics::mLastImage = 0;
+#ifdef DEBUG_DRAW_CALLS
+unsigned int MobileOpenGLGraphics::mDrawCalls = 0;
+unsigned int MobileOpenGLGraphics::mLastDrawCalls = 0;
+#endif
 
 //unsigned int vertexBufSize = 500;
 
@@ -135,6 +139,9 @@ static inline void drawQuad(const Image *image,
         glVertexPointer(2, GL_SHORT, 0, &vert);
         glTexCoordPointer(2, GL_FLOAT, 0, &tex);
 
+#ifdef DEBUG_DRAW_CALLS
+        MobileOpenGLGraphics::mDrawCalls ++;
+#endif
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
 }
@@ -177,6 +184,9 @@ static inline void drawRescaledQuad(const Image *const image,
         glVertexPointer(2, GL_SHORT, 0, &vert);
         glTexCoordPointer(2, GL_FLOAT, 0, &tex);
 
+#ifdef DEBUG_DRAW_CALLS
+        MobileOpenGLGraphics::mDrawCalls ++;
+#endif
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
 }
@@ -745,9 +755,11 @@ void MobileOpenGLGraphics::updateScreen()
     BLOCK_START("Graphics::updateScreen")
 //    glFlush();
 //    glFinish();
-//    setTexturingAndBlending(true);
+#ifdef DEBUG_DRAW_CALLS
+    mLastDrawCalls = mDrawCalls;
+    mDrawCalls = 0;
+#endif
     SDL_GL_SwapBuffers();
-//    mLastImage = 0;
 // may be need clear?
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     BLOCK_END("Graphics::updateScreen")
@@ -1013,6 +1025,9 @@ void MobileOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
         };
 
         glVertexPointer(2, GL_SHORT, 0, &vert);
+#ifdef DEBUG_DRAW_CALLS
+        mDrawCalls ++;
+#endif
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
     else
@@ -1026,6 +1041,9 @@ void MobileOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
         };
 
         glVertexPointer(2, GL_SHORT, 0, &vert);
+#ifdef DEBUG_DRAW_CALLS
+        mDrawCalls ++;
+#endif
         glDrawArrays(GL_LINE_LOOP, 0, 4);
     }
     BLOCK_END("Graphics::drawRectangle")
@@ -1098,6 +1116,9 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfs(int size)
     glVertexPointer(2, GL_SHORT, 0, mShortVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArray);
 
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_TRIANGLES, 0, size / 2);
 }
 
@@ -1110,6 +1131,9 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfs(GLshort *const
     glVertexPointer(2, GL_SHORT, 0, shortVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, floatTexArray);
 
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_TRIANGLES, 0, size / 2);
 }
 
@@ -1117,6 +1141,9 @@ inline void MobileOpenGLGraphics::drawLineArrays(int size)
 {
     glVertexPointer(2, GL_SHORT, 0, mShortVertArray);
 
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_LINES, 0, size / 2);
 }
 

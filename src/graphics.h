@@ -321,6 +321,10 @@ class Graphics : public gcn::SDLGraphics
         virtual void initArrays()
         { }
 
+#ifdef DEBUG_DRAW_CALLS
+        virtual unsigned int getDrawCalls() const
+        { return 0; }
+#endif
         int mWidth;
         int mHeight;
 

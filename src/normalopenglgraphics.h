@@ -163,6 +163,15 @@ class NormalOpenGLGraphics final : public Graphics
 
         void updateTextureFormat();
 
+#ifdef DEBUG_DRAW_CALLS
+        virtual unsigned int getDrawCalls() const
+        { return mLastDrawCalls; }
+
+        static unsigned int mDrawCalls;
+
+        static unsigned int mLastDrawCalls;
+#endif
+
         static void bindTexture(GLenum target, GLuint texture);
 
         static GLuint mLastImage;
