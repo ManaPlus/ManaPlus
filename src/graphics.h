@@ -29,6 +29,7 @@
 
 class GraphicsVertexes;
 class Image;
+class ImageCollection;
 class ImageVertexes;
 class MapLayer;
 
@@ -211,7 +212,30 @@ class Graphics : public gcn::SDLGraphics
                                    const Image *const left,
                                    const Image *const center);
 
+        virtual bool calcImageRect(ImageVertexes *const vert,
+                                   const int x, const int y,
+                                   const int w, const int h,
+                                   const Image *const topLeft,
+                                   const Image *const topRight,
+                                   const Image *const bottomLeft,
+                                   const Image *const bottomRight,
+                                   const Image *const top,
+                                   const Image *const right,
+                                   const Image *const bottom,
+                                   const Image *const left,
+                                   const Image *const center);
+
         virtual void calcImagePattern(GraphicsVertexes *const vert,
+                                      const Image *const image,
+                                      const int x, const int y,
+                                      const int w, const int h) const;
+
+        virtual void calcImagePattern(ImageVertexes *const vert,
+                                      const Image *const image,
+                                      const int x, const int y,
+                                      const int w, const int h) const;
+
+        virtual void calcImagePattern(ImageCollection *const vert,
                                       const Image *const image,
                                       const int x, const int y,
                                       const int w, const int h) const;
@@ -223,6 +247,12 @@ class Graphics : public gcn::SDLGraphics
 
         virtual void drawTile(const ImageVertexes *const vert);
 
+        virtual void drawTile(const ImageCollection *const vertCol);
+
+        virtual void calcTile(ImageCollection *const vertCol,
+                              const Image *const image,
+                              int x, int y);
+
         virtual void drawImageRect2(GraphicsVertexes *const vert,
                                     const ImageRect &imgRect);
 
@@ -232,6 +262,11 @@ class Graphics : public gcn::SDLGraphics
         bool calcWindow(GraphicsVertexes *const vert,
                         const int x, const int y, const int w, const int h,
                         const ImageRect &imgRect);
+
+        virtual bool calcWindow(ImageCollection *const vertCol,
+                                const int x, const int y,
+                                const int w, const int h,
+                                const ImageRect &imgRect);
 
         /**
          * Draws a rectangle using images. 4 corner images, 4 side images and 1

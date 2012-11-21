@@ -147,6 +147,7 @@ UserPalette *userPalette = nullptr;
 Graphics *mainGraphics = nullptr;
 
 Sound sound;
+int openGLMode = 0;
 
 static uint32_t nextTick(uint32_t interval, void *param A_UNUSED);
 static uint32_t nextSecond(uint32_t interval, void *param A_UNUSED);
@@ -538,12 +539,14 @@ void Client::gameInit()
 #endif
 
 #ifdef USE_OPENGL
+    openGLMode = config.getIntValue("opengl");
     OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
     SDLImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache")
-        && !config.getIntValue("opengl"));
+        && !openGLMode);
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f
-        || config.getIntValue("opengl"));
+        || openGLMode);
 #else
+    openGLMode = 0;
     SDLImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache"));
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
 #endif

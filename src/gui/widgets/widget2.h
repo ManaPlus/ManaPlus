@@ -84,4 +84,5 @@ class Widget2
         int mPaletteOffset;
 };
 
+extern int openGLMode;
 #endif

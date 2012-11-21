@@ -31,8 +31,8 @@
 
 #include "localconsts.h"
 
-class GraphicsVertexes;
 class Image;
+class ImageCollection;
 class ImageSet;
 class ImageRect;
 class Skin;
@@ -147,7 +147,7 @@ class Button final : public gcn::Button,
         std::string mDescription;
         unsigned mClickCount;
         int mTag;
-        GraphicsVertexes *mVertexes;
+        ImageCollection *mVertexes2;
         bool mRedraw;
         int mMode;
         int mXOffset;

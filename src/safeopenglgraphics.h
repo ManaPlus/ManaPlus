@@ -102,6 +102,9 @@ class SafeOpenGLGraphics final : public Graphics
         void calcTile(ImageVertexes *const vert, const Image *const image,
                       int x, int y) const override;
 
+        void calcTile(ImageCollection *const vertCol,
+                      const Image *const image, int x, int y) override;
+
         void drawTile(const ImageVertexes *const vert) override;
 
         void updateScreen() override;

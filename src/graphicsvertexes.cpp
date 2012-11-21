@@ -286,3 +286,30 @@ ImageVertexes::~ImageVertexes()
     delete_all(sdl);
     sdl.clear();
 }
+
+ImageCollection::ImageCollection() :
+#ifdef USE_OPENGL
+    currentGLImage(0),
+#endif
+    currentImage(nullptr),
+    currentVert(nullptr)
+{
+
+}
+
+ImageCollection::~ImageCollection()
+{
+    clear();
+}
+
+void ImageCollection::clear()
+{
+#ifdef USE_OPENGL
+    currentGLImage = 0;
+#endif
+    currentImage = nullptr;
+    currentVert = nullptr;
+
+    delete_all(draws);
+    draws.clear();
+}

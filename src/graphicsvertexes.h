@@ -154,6 +154,28 @@ class ImageVertexes final
 #endif
 };
 
+typedef std::vector<ImageVertexes*> ImageVertexesVector;
+typedef ImageVertexesVector::const_iterator ImageCollectionCIter;
+
+class ImageCollection final
+{
+    public:
+        ImageCollection();
+
+        ~ImageCollection();
+
+        void clear();
+
+#ifdef USE_OPENGL
+        GLuint currentGLImage;
+#endif
+        const Image *currentImage;
+
+        ImageVertexes *currentVert;
+
+        ImageVertexesVector draws;
+};
+
 class GraphicsVertexes final
 {
     public:

@@ -95,13 +95,33 @@ class MobileOpenGLGraphics final : public Graphics
                               const int x, const int y,
                               const int w, const int h) const override;
 
+        void calcImagePattern(ImageVertexes *const vert,
+                              const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h) const override;
+
+        void calcImagePattern(ImageCollection *const vert,
+                              const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h) const override;
+
         void calcTile(ImageVertexes *const vert, const Image *const image,
                       int x, int y) const override;
+
+        void drawTile(const ImageCollection *const vertCol);
+
+        void calcTile(ImageCollection *const vertCol,
+                      const Image *const image, int x, int y) override;
 
         void drawTile(const ImageVertexes *const vert) override;
 
         void drawImagePattern2(const GraphicsVertexes *const vert,
                                const Image *const image) override;
+
+        bool calcWindow(ImageCollection *const vertCol,
+                        const int x, const int y,
+                        const int w, const int h,
+                        const ImageRect &imgRect);
 
         void updateScreen() override;
 

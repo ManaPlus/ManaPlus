@@ -65,7 +65,7 @@ Button::Button(const Widget2 *const widget) :
     gcn::WidgetListener(),
     mDescription(""), mClickCount(0),
     mTag(0),
-    mVertexes(new GraphicsVertexes()),
+    mVertexes2(new ImageCollection()),
     mRedraw(true),
     mMode(0),
     mXOffset(0),
@@ -90,7 +90,7 @@ Button::Button(const Widget2 *const widget,
     mDescription(""),
     mClickCount(0),
     mTag(0),
-    mVertexes(new GraphicsVertexes()),
+    mVertexes2(new ImageCollection()),
     mRedraw(true),
     mMode(0),
     mXOffset(0),
@@ -121,7 +121,7 @@ Button::Button(const Widget2 *const widget,
     mDescription(""),
     mClickCount(0),
     mTag(0),
-    mVertexes(new GraphicsVertexes()),
+    mVertexes2(new ImageCollection()),
     mRedraw(true),
     mMode(0),
     mXOffset(0),
@@ -152,7 +152,7 @@ Button::Button(const Widget2 *const widget, const std::string &imageName,
     mDescription(""),
     mClickCount(0),
     mTag(0),
-    mVertexes(new GraphicsVertexes()),
+    mVertexes2(new ImageCollection()),
     mRedraw(true),
     mMode(0),
     mXOffset(0),
@@ -210,8 +210,8 @@ Button::~Button()
         for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             theme->unload(button[mode]);
     }
-    delete mVertexes;
-    mVertexes = nullptr;
+    delete mVertexes2;
+    mVertexes2 = nullptr;
     if (mImageSet)
     {
         mImageSet->decRef();
@@ -326,18 +326,6 @@ void Button::draw(gcn::Graphics *graphics)
         }
     }
 
-    if (recalc)
-    {
-        mRedraw = false;
-        mMode = mode;
-        g2->calcWindow(mVertexes, 0, 0, getWidth(), getHeight(),
-            skin->getBorder());
-    }
-
-    g2->drawImageRect2(mVertexes, skin->getBorder());
-
-//    g2->drawImageRect(0, 0, getWidth(), getHeight(), button[mode]);
-
     const int padding = skin->getPadding();
     const int spacing = skin->getOption("spacing");
 
@@ -401,18 +389,47 @@ void Button::draw(gcn::Graphics *graphics)
 
     graphics->setFont(getFont());
 
-    if (isPressed())
+    if (openGLMode != 2)
     {
-        if (mImages)
-            g2->drawImage(mImages[mode], imageX + 1, imageY + 1);
-        g2->drawText(getCaption(), textX + 1, textY + 1, getAlignment());
+        if (recalc)
+        {
+            mRedraw = false;
+            mMode = mode;
+            mVertexes2->clear();
+            g2->calcWindow(mVertexes2, 0, 0, getWidth(), getHeight(),
+                skin->getBorder());
+
+            if (mImages)
+            {
+                if (isPressed())
+                {
+                    g2->calcTile(mVertexes2, mImages[mode],
+                        imageX + 1, imageY + 1);
+                }
+                else
+                {
+                    g2->calcTile(mVertexes2, mImages[mode], imageX, imageY);
+                }
+            }
+        }
+        g2->drawTile(mVertexes2);
     }
     else
     {
+        g2->drawImageRect(0, 0, getWidth(), getHeight(), skin->getBorder());
         if (mImages)
-            g2->drawImage(mImages[mode], imageX, imageY);
-        g2->drawText(getCaption(), textX, textY, getAlignment());
+        {
+            if (isPressed())
+                g2->drawImage(mImages[mode], imageX + 1, imageY + 1);
+            else
+                g2->drawImage(mImages[mode], imageX, imageY);
+        }
     }
+
+    if (isPressed())
+        g2->drawText(getCaption(), textX + 1, textY + 1, getAlignment());
+    else
+        g2->drawText(getCaption(), textX, textY, getAlignment());
     BLOCK_END("Button::draw")
 }
 

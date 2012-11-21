@@ -590,7 +590,6 @@ void Graphics::drawImageRect(const int x, const int y,
             right->getWidth(),
             h - top->getHeight() - bottom->getHeight());
     }
-
     // Draw the corners
     if (drawMain)
     {
@@ -739,6 +738,67 @@ bool Graphics::calcImageRect(GraphicsVertexes *const vert,
     return 0;
 }
 
+bool Graphics::calcImageRect(ImageVertexes *const vert,
+                             const int x, const int y,
+                             const int w, const int h,
+                             const Image *const topLeft,
+                             const Image *const topRight,
+                             const Image *const bottomLeft,
+                             const Image *const bottomRight,
+                             const Image *const top,
+                             const Image *const right,
+                             const Image *const bottom,
+                             const Image *const left,
+                             const Image *const center)
+{
+    if (!vert)
+        return false;
+
+    BLOCK_START("Graphics::calcImageRect")
+    const bool drawMain = center && topLeft && topRight
+        && bottomLeft && bottomRight;
+
+//    pushClipArea(gcn::Rectangle(x, y, w, h));
+
+    // Draw the center area
+    if (center && drawMain)
+    {
+        calcImagePattern(vert, center,
+            topLeft->getWidth() + x, topLeft->getHeight() + y,
+            w - topLeft->getWidth() - topRight->getWidth(),
+            h - topLeft->getHeight() - bottomLeft->getHeight());
+    }
+    // Draw the sides
+    if (top && left && bottom && right)
+    {
+        calcImagePattern(vert, top,
+            x + left->getWidth(), y,
+            w - left->getWidth() - right->getWidth(), top->getHeight());
+        calcImagePattern(vert, bottom,
+            x + left->getWidth(), y + h - bottom->getHeight(),
+            w - left->getWidth() - right->getWidth(),
+            bottom->getHeight());
+        calcImagePattern(vert, left,
+            x, y + top->getHeight(),
+            left->getWidth(),
+            h - top->getHeight() - bottom->getHeight());
+        calcImagePattern(vert, right,
+            x + w - right->getWidth(), y + top->getHeight(),
+            right->getWidth(),
+            h - top->getHeight() - bottom->getHeight());
+    }
+
+    calcTile(vert, topLeft, x, y);
+    calcTile(vert, topRight, x + w - topRight->getWidth(), y);
+    calcTile(vert, bottomLeft, x, y + h - bottomLeft->getHeight());
+    calcTile(vert, bottomRight, x + w - bottomRight->getWidth(),
+        y + h - bottomRight->getHeight());
+
+//    popClipArea();
+    BLOCK_END("Graphics::calcImageRect")
+    return 0;
+}
+
 void Graphics::calcImagePattern(GraphicsVertexes* const vert,
                                 const Image *const image,
                                 const int x, const int y,
@@ -792,10 +852,119 @@ void Graphics::calcImagePattern(GraphicsVertexes* const vert,
     vert->incPtr(1);
 }
 
-void Graphics::calcTile(ImageVertexes *const vert A_UNUSED,
-                        const Image *const image A_UNUSED,
-                        int x A_UNUSED, int y A_UNUSED) const
+void Graphics::calcImagePattern(ImageVertexes* const vert,
+                                const Image *const image,
+                                const int x, const int y,
+                                const int w, const int h) const
 {
+    // Check that preconditions for blitting are met.
+    if (!vert || !mTarget || !image || !image->mSDLSurface)
+        return;
+
+    const int iw = image->mBounds.w;
+    const int ih = image->mBounds.h;
+
+    if (iw == 0 || ih == 0)
+        return;
+
+    for (int py = 0; py < h; py += ih)     // Y position on pattern plane
+    {
+        const int dh = (py + ih >= h) ? h - py : ih;
+        const int srcY = image->mBounds.y;
+        const int dstY = y + py + mClipStack.top().yOffset;
+
+        for (int px = 0; px < w; px += iw) // X position on pattern plane
+        {
+            const int dw = (px + iw >= w) ? w - px : iw;
+            const int srcX = image->mBounds.x;
+            const int dstX = x + px + mClipStack.top().xOffset;
+
+            DoubleRect *const r = new DoubleRect();
+            SDL_Rect &dstRect = r->dst;
+            SDL_Rect &srcRect = r->src;
+            dstRect.x = static_cast<short>(dstX);
+            dstRect.y = static_cast<short>(dstY);
+            srcRect.x = static_cast<short>(srcX);
+            srcRect.y = static_cast<short>(srcY);
+            srcRect.w = static_cast<uint16_t>(dw);
+            srcRect.h = static_cast<uint16_t>(dh);
+
+            if (SDL_FakeUpperBlit(image->mSDLSurface, &srcRect,
+                mTarget, &dstRect) == 1)
+            {
+                vert->sdl.push_back(r);
+            }
+        }
+    }
+}
+
+void Graphics::calcImagePattern(ImageCollection* const vertCol,
+                                const Image *const image,
+                                const int x, const int y,
+                                const int w, const int h) const
+{
+    ImageVertexes *vert = nullptr;
+    if (vertCol->currentImage != image)
+    {
+        vert = new ImageVertexes();
+        vertCol->currentImage = image;
+        vertCol->currentVert = vert;
+        vert->image = image;
+        vertCol->draws.push_back(vert);
+    }
+    else
+    {
+        vert = vertCol->currentVert;
+    }
+
+    calcImagePattern(vert, image, x, y, w, h);
+}
+
+void Graphics::calcTile(ImageVertexes *const vert,
+                        const Image *const image,
+                        int x, int y) const
+{
+    vert->image = image;
+    calcTile(vert, x, y);
+}
+
+void Graphics::calcTile(ImageCollection *const vertCol,
+                        const Image *const image,
+                        int x, int y)
+{
+    if (vertCol->currentImage != image)
+    {
+        ImageVertexes *const vert = new ImageVertexes();
+        vertCol->currentImage = image;
+        vertCol->currentVert = vert;
+        vert->image = image;
+        vertCol->draws.push_back(vert);
+        calcTile(vert, x, y);
+    }
+    else
+    {
+        calcTile(vertCol->currentVert, x, y);
+    }
+}
+
+void Graphics::drawTile(const ImageCollection *const vertCol)
+{
+    const ImageVertexesVector &draws = vertCol->draws;
+    const ImageCollectionCIter it_end = draws.end();
+    for (ImageCollectionCIter it = draws.begin(); it != it_end; ++ it)
+    {
+        const ImageVertexes *const vert = *it;
+        const Image *const img = vert->image;
+        const DoubleRects *const rects = &vert->sdl;
+        DoubleRects::const_iterator it2 = rects->begin();
+        const DoubleRects::const_iterator it2_end = rects->end();
+        while (it2 != it2_end)
+        {
+            SDL_LowerBlit(img->mSDLSurface, &(*it2)->src,
+                mTarget, &(*it2)->dst);
+            ++ it2;
+        }
+    }
 }
 
 void Graphics::calcTile(ImageVertexes *const vert, int x, int y) const
@@ -895,6 +1064,32 @@ bool Graphics::calcWindow(GraphicsVertexes *const vert,
                           const int x, const int y, const int w, const int h,
                           const ImageRect &imgRect)
 {
+    return calcImageRect(vert, x, y, w, h,
+        imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
+        imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
+        imgRect.grid[4]);
+}
+
+bool Graphics::calcWindow(ImageCollection *const vertCol,
+                          const int x, const int y, const int w, const int h,
+                          const ImageRect &imgRect)
+{
+    ImageVertexes *vert = nullptr;
+    Image *const image = imgRect.grid[4];
+    if (vertCol->currentImage != image)
+    {
+        vert = new ImageVertexes();
+        vertCol->currentImage = image;
+        vertCol->currentVert = vert;
+        vert->image = image;
+        vertCol->draws.push_back(vert);
+//        calcTile(vert, x, y);
+    }
+    else
+    {
+        vert = vertCol->currentVert;
+    }
+
     return calcImageRect(vert, x, y, w, h,
         imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
         imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
