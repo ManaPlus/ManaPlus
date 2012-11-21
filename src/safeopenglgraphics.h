@@ -55,7 +55,7 @@ class SafeOpenGLGraphics final : public Graphics
         /**
          * Draws a resclaled version of the image
          */
-        bool drawRescaledImage(Image *const image, int srcX, int srcY,
+        bool drawRescaledImage(const Image *const image, int srcX, int srcY,
                                int dstX, int dstY,
                                const int width, const int height,
                                const int desiredWidth, const int desiredHeight,
@@ -64,7 +64,7 @@ class SafeOpenGLGraphics final : public Graphics
         /**
          * Used to get the smooth rescale option over the standard function.
          */
-        bool drawRescaledImage(Image *const image, int srcX, int srcY,
+        bool drawRescaledImage(const Image *const image, int srcX, int srcY,
                                int dstX, int dstY,
                                const int width, const int height,
                                const int desiredWidth, const int desiredHeight,
@@ -100,9 +100,9 @@ class SafeOpenGLGraphics final : public Graphics
                             const ImageRect &imgRect) override;
 
         void calcTile(ImageVertexes *const vert, const Image *const image,
-                      int x, int y) override;
+                      int x, int y) const override;
 
-        void drawTile(ImageVertexes *const vert) override;
+        void drawTile(const ImageVertexes *const vert) override;
 
         void updateScreen() override;
 
@@ -120,7 +120,7 @@ class SafeOpenGLGraphics final : public Graphics
 
         void drawLine(int x1, int y1, int x2, int y2);
 
-        void drawRectangle(const gcn::Rectangle &rect, bool filled);
+        void drawRectangle(const gcn::Rectangle &rect, const bool filled);
 
         void drawRectangle(const gcn::Rectangle &rect);
 

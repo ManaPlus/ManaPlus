@@ -270,6 +270,11 @@ std::vector<DoubleRect*> *GraphicsVertexes::getRectsSDL()
     return &sdl[mPtr].mList;
 }
 
+const std::vector<DoubleRect*> *GraphicsVertexes::getRectsSDLconst() const
+{
+    return &sdl[mPtr].mList;
+}
+
 ImageVertexes::ImageVertexes() :
     image(nullptr)
 {

@@ -146,7 +146,7 @@ class ImageVertexes final
 
         ~ImageVertexes();
 
-        Image *image;
+        const Image *image;
         DoubleRects sdl;
 
 #ifdef USE_OPENGL
@@ -181,6 +181,8 @@ class GraphicsVertexes final
 
         std::vector<DoubleRect*> *getRectsSDL();
 
+        const std::vector<DoubleRect*> *getRectsSDLconst() const;
+
         void incPtr(const int num = 1)
         { mPtr += num; }
 
@@ -189,6 +191,9 @@ class GraphicsVertexes final
 
 #ifdef USE_OPENGL
         NormalOpenGLGraphicsVertexes &getOGL() A_WARN_UNUSED
+        { return ogl[mPtr]; }
+
+        const NormalOpenGLGraphicsVertexes &getOGLconst() const A_WARN_UNUSED
         { return ogl[mPtr]; }
 #endif
 

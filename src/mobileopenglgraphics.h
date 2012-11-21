@@ -62,7 +62,7 @@ class MobileOpenGLGraphics final : public Graphics
         /**
          * Draws a resclaled version of the image
          */
-        bool drawRescaledImage(Image *const image, int srcX, int srcY,
+        bool drawRescaledImage(const Image *const image, int srcX, int srcY,
                                int dstX, int dstY,
                                const int width, const int height,
                                const int desiredWidth, const int desiredHeight,
@@ -71,7 +71,7 @@ class MobileOpenGLGraphics final : public Graphics
         /**
          * Used to get the smooth rescale option over the standard function.
          */
-        bool drawRescaledImage(Image *const image, int srcX, int srcY,
+        bool drawRescaledImage(const Image *const image, int srcX, int srcY,
                                int dstX, int dstY,
                                const int width, const int height,
                                const int desiredWidth, const int desiredHeight,
@@ -93,14 +93,14 @@ class MobileOpenGLGraphics final : public Graphics
         void calcImagePattern(GraphicsVertexes *const vert,
                               const Image *const image,
                               const int x, const int y,
-                              const int w, const int h) override;
+                              const int w, const int h) const override;
 
         void calcTile(ImageVertexes *const vert, const Image *const image,
-                      int x, int y) override;
+                      int x, int y) const override;
 
-        void drawTile(ImageVertexes *const vert) override;
+        void drawTile(const ImageVertexes *const vert) override;
 
-        void drawImagePattern2(GraphicsVertexes *const vert,
+        void drawImagePattern2(const GraphicsVertexes *const vert,
                                const Image *const image) override;
 
         void updateScreen() override;
@@ -119,7 +119,7 @@ class MobileOpenGLGraphics final : public Graphics
 
         void drawLine(int x1, int y1, int x2, int y2);
 
-        void drawRectangle(const gcn::Rectangle &rect, bool filled);
+        void drawRectangle(const gcn::Rectangle &rect, const bool filled);
 
         void drawRectangle(const gcn::Rectangle &rect);
 
@@ -131,11 +131,11 @@ class MobileOpenGLGraphics final : public Graphics
                                         GLfloat *floatTexArray,
                                         const int size);
 
-        inline void drawTriangleArrayfs(int size);
+        inline void drawTriangleArrayfs(const int size);
 
-        inline void drawLineArrays(int size);
+        inline void drawLineArrays(const int size);
 
-        inline void drawVertexes(NormalOpenGLGraphicsVertexes &ogl);
+        inline void drawVertexes(const NormalOpenGLGraphicsVertexes &ogl);
 
         void initArrays() override;
 
@@ -176,8 +176,6 @@ class MobileOpenGLGraphics final : public Graphics
                         const bool useColor) override;
 
         void setTexturingAndBlending(bool enable);
-
-        void logString(const char *format, GLenum num);
 
         void updateMemoryInfo();
 

@@ -169,7 +169,7 @@ bool SafeOpenGLGraphics::drawImage2(const Image *const image,
     return true;
 }
 
-bool SafeOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
+bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image, int srcX,
                                            int srcY, int dstX, int dstY,
                                            const int width, const int height,
                                            const int desiredWidth,
@@ -183,7 +183,7 @@ bool SafeOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
                              useColor, true);
 }
 
-bool SafeOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
+bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image, int srcX,
                                            int srcY, int dstX, int dstY,
                                            const int width, const int height,
                                            const int desiredWidth,
@@ -355,11 +355,11 @@ bool SafeOpenGLGraphics::calcImageRect(GraphicsVertexes *const vert,
 
 void SafeOpenGLGraphics::calcTile(ImageVertexes *const vert A_UNUSED,
                                   const Image *const image A_UNUSED,
-                                  int x A_UNUSED, int y A_UNUSED)
+                                  int x A_UNUSED, int y A_UNUSED) const
 {
 }
 
-void SafeOpenGLGraphics::drawTile(ImageVertexes *const vert A_UNUSED)
+void SafeOpenGLGraphics::drawTile(const ImageVertexes *const vert A_UNUSED)
 {
 
 }
@@ -592,7 +592,8 @@ void SafeOpenGLGraphics::setTexturingAndBlending(bool enable)
     }
 }
 
-void SafeOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect, bool filled)
+void SafeOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
+                                       const bool filled)
 {
     BLOCK_START("Graphics::drawRectangle")
     const float offset = filled ? 0 : 0.5f;

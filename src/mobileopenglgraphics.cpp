@@ -220,8 +220,9 @@ bool MobileOpenGLGraphics::drawImage2(const Image *const image,
     return true;
 }
 
-bool MobileOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
-                                             int srcY, int dstX, int dstY,
+bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
+                                             int srcX, int srcY,
+                                             int dstX, int dstY,
                                              const int width, const int height,
                                              const int desiredWidth,
                                              const int desiredHeight,
@@ -234,8 +235,9 @@ bool MobileOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
                              useColor, true);
 }
 
-bool MobileOpenGLGraphics::drawRescaledImage(Image *const image, int srcX,
-                                             int srcY, int dstX, int dstY,
+bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
+                                             int srcX, int srcY,
+                                             int dstX, int dstY,
                                              const int width, const int height,
                                              const int desiredWidth,
                                              const int desiredHeight,
@@ -500,7 +502,8 @@ void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
 //    }
 }
 
-void MobileOpenGLGraphics::drawImagePattern2(GraphicsVertexes *const vert,
+void MobileOpenGLGraphics::drawImagePattern2(const GraphicsVertexes
+                                             *const vert,
                                              const Image *const image)
 {
     if (!image)
@@ -513,25 +516,26 @@ void MobileOpenGLGraphics::drawImagePattern2(GraphicsVertexes *const vert,
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
-    drawVertexes(vert->getOGL());
+    drawVertexes(vert->getOGLconst());
 }
 
-inline void MobileOpenGLGraphics::drawVertexes(NormalOpenGLGraphicsVertexes
+inline void MobileOpenGLGraphics::drawVertexes(const
+                                               NormalOpenGLGraphicsVertexes
                                                &ogl)
 {
-    std::vector<GLshort*> &shortVertPool = ogl.mShortVertPool;
+    const std::vector<GLshort*> &shortVertPool = ogl.mShortVertPool;
     std::vector<GLshort*>::const_iterator iv;
-    std::vector<GLshort*>::const_iterator iv_end = shortVertPool.end();
-    std::vector<int> &vp = ogl.mVp;
+    const std::vector<GLshort*>::const_iterator iv_end = shortVertPool.end();
+    const std::vector<int> &vp = ogl.mVp;
     std::vector<int>::const_iterator ivp;
-    std::vector<int>::const_iterator ivp_end = vp.end();
+    const std::vector<int>::const_iterator ivp_end = vp.end();
 
     // Draw a set of textured rectangles
 //    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
-        std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
+        const std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
         std::vector<GLfloat*>::const_iterator ft;
-        std::vector<GLfloat*>::const_iterator ft_end = floatTexPool.end();
+        const std::vector<GLfloat*>::const_iterator ft_end = floatTexPool.end();
 
         for (iv = shortVertPool.begin(), ft = floatTexPool.begin(),
              ivp = vp.begin();
@@ -547,7 +551,7 @@ inline void MobileOpenGLGraphics::drawVertexes(NormalOpenGLGraphicsVertexes
 void MobileOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
                                             const Image *const image,
                                             const int x, const int y,
-                                            const int w, const int h)
+                                            const int w, const int h) const
 {
     if (!image)
     {
@@ -651,7 +655,7 @@ void MobileOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
 
 void MobileOpenGLGraphics::calcTile(ImageVertexes *const vert,
                                     const Image *const image,
-                                    int dstX, int dstY)
+                                    int dstX, int dstY) const
 {
     if (!vert || !image)
         return;
@@ -735,11 +739,11 @@ void MobileOpenGLGraphics::calcTile(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void MobileOpenGLGraphics::drawTile(ImageVertexes *const vert)
+void MobileOpenGLGraphics::drawTile(const ImageVertexes *const vert)
 {
     if (!vert)
         return;
-    Image *image = vert->image;
+    const Image *image = vert->image;
 
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -1001,7 +1005,7 @@ void MobileOpenGLGraphics::setTexturingAndBlending(bool enable)
 }
 
 void MobileOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
-                                         bool filled)
+                                         const bool filled)
 {
     BLOCK_START("Graphics::drawRectangle")
     setTexturingAndBlending(false);
@@ -1111,7 +1115,7 @@ void MobileOpenGLGraphics::bindTexture(GLenum target, GLuint texture)
     }
 }
 
-inline void MobileOpenGLGraphics::drawTriangleArrayfs(int size)
+inline void MobileOpenGLGraphics::drawTriangleArrayfs(const int size)
 {
     glVertexPointer(2, GL_SHORT, 0, mShortVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArray);
@@ -1137,7 +1141,7 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfs(GLshort *const
     glDrawArrays(GL_TRIANGLES, 0, size / 2);
 }
 
-inline void MobileOpenGLGraphics::drawLineArrays(int size)
+inline void MobileOpenGLGraphics::drawLineArrays(const int size)
 {
     glVertexPointer(2, GL_SHORT, 0, mShortVertArray);
 

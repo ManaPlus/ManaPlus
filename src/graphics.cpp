@@ -369,7 +369,7 @@ bool Graphics::drawImage(const Image *image, int x, int y)
     }
 }
 
-bool Graphics::drawRescaledImage(Image *const image, int srcX, int srcY,
+bool Graphics::drawRescaledImage(const Image *const image, int srcX, int srcY,
                                  int dstX, int dstY,
                                  const int width, const int height,
                                  const int desiredWidth,
@@ -659,12 +659,12 @@ void Graphics::drawImageRect2(GraphicsVertexes *const vert,
     }
 }
 
-void Graphics::drawImagePattern2(GraphicsVertexes *const vert,
+void Graphics::drawImagePattern2(const GraphicsVertexes *const vert,
                                  const Image *const img)
 {
     // here not checking input parameters
 
-    std::vector<DoubleRect*> *const arr = vert->getRectsSDL();
+    const std::vector<DoubleRect*> *const arr = vert->getRectsSDLconst();
 
     for (std::vector<DoubleRect*>::const_iterator it = arr->begin(),
          it_end = arr->end(); it != it_end; ++it)
@@ -742,7 +742,7 @@ bool Graphics::calcImageRect(GraphicsVertexes *const vert,
 void Graphics::calcImagePattern(GraphicsVertexes* const vert,
                                 const Image *const image,
                                 const int x, const int y,
-                                const int w, const int h)
+                                const int w, const int h) const
 {
     // Check that preconditions for blitting are met.
     if (!vert || !mTarget || !image || !image->mSDLSurface || !vert->sdl)
@@ -794,11 +794,11 @@ void Graphics::calcImagePattern(GraphicsVertexes* const vert,
 
 void Graphics::calcTile(ImageVertexes *const vert A_UNUSED,
                         const Image *const image A_UNUSED,
-                        int x A_UNUSED, int y A_UNUSED)
+                        int x A_UNUSED, int y A_UNUSED) const
 {
 }
 
-void Graphics::calcTile(ImageVertexes *const vert, int x, int y)
+void Graphics::calcTile(ImageVertexes *const vert, int x, int y) const
 {
     // Check that preconditions for blitting are met.
     if (!vert || !vert->image || !vert->image->mSDLSurface)
@@ -828,7 +828,7 @@ void Graphics::calcTile(ImageVertexes *const vert, int x, int y)
     }
 }
 
-void Graphics::drawTile(ImageVertexes *const vert)
+void Graphics::drawTile(const ImageVertexes *const vert)
 {
     // vert and img must be != 0
     const Image *const img = vert->image;

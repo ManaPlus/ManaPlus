@@ -139,7 +139,7 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Draws a resclaled version of the image
          */
-        bool drawRescaledImage(Image *const image,
+        bool drawRescaledImage(const Image *const image,
                                const int srcX, const int srcY,
                                const int dstX, const int dstY,
                                const int width, const int height,
@@ -155,7 +155,7 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Draws a resclaled version of the image
          */
-        virtual bool drawRescaledImage(Image *const image, int srcX,
+        virtual bool drawRescaledImage(const Image *const image, int srcX,
                                        int srcY, int dstX, int dstY,
                                        const int width, const int height,
                                        const int desiredWidth,
@@ -214,19 +214,19 @@ class Graphics : public gcn::SDLGraphics
         virtual void calcImagePattern(GraphicsVertexes *const vert,
                                       const Image *const image,
                                       const int x, const int y,
-                                      const int w, const int h);
+                                      const int w, const int h) const;
 
         virtual void calcTile(ImageVertexes *const vert,
-                              const Image *const image, int x, int y);
+                              const Image *const image, int x, int y) const;
 
-        virtual void calcTile(ImageVertexes *const vert, int x, int y);
+        virtual void calcTile(ImageVertexes *const vert, int x, int y) const;
 
-        virtual void drawTile(ImageVertexes *const vert);
+        virtual void drawTile(const ImageVertexes *const vert);
 
         virtual void drawImageRect2(GraphicsVertexes *const vert,
                                     const ImageRect &imgRect);
 
-        virtual void drawImagePattern2(GraphicsVertexes *const vert,
+        virtual void drawImagePattern2(const GraphicsVertexes *const vert,
                                        const Image *const img);
 
         bool calcWindow(GraphicsVertexes *const vert,
