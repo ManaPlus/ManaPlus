@@ -380,7 +380,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
 
         // If drawing the fringe layer, make sure all actors above this row of
         // tiles have been drawn
-        while (ai != ai_end && (*ai)->getPixelY() <= y32s)
+        while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
         {
             (*ai)->draw(graphics, -scrollX, -scrollY);
             ++ ai;
