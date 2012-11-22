@@ -43,7 +43,7 @@ DropShortcut::DropShortcut() :
     mItemColorSelected(1),
     mLastDropIndex(0)
 {
-    clear();
+    clear(false);
     load();
 }
 
@@ -224,12 +224,13 @@ void DropShortcut::setItem(const int index)
     save();
 }
 
-void DropShortcut::clear()
+void DropShortcut::clear(bool isSave)
 {
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
     {
         mItems[i] = -1;
         mItemColors[i] = 1;
     }
-    save();
+    if (isSave)
+        save();
 }
