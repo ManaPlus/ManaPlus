@@ -1,4 +1,5 @@
 SET (FILES
+    browserbox.xml
     button.xml
     button_disabled.xml
     button_highlighted.xml

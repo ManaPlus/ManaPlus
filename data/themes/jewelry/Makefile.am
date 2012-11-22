@@ -2,6 +2,7 @@
 guidir = $(pkgdatadir)/data/themes/jewelry
 
 gui_DATA =				\
+	browserbox.xml		\
 	button.xml		\
 	button_disabled.xml		\
 	button_highlighted.xml		\
