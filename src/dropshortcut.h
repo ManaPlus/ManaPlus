@@ -146,7 +146,7 @@ class DropShortcut final
          */
         void dropItems(const int cnt = 1);
 
-        void clear(bool isSave = true);
+        void clear(const bool isSave = true);
 
     private:
 

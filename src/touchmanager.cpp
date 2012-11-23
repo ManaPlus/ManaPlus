@@ -34,6 +34,8 @@ TouchManager::TouchManager() :
     mKeyboard(nullptr),
     mPad(nullptr)
 {
+    for (int f = 0;f < actionsSize; f ++)
+        mActions[f] = false;
 }
 
 TouchManager::~TouchManager()

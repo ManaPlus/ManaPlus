@@ -263,8 +263,9 @@ bool NormalOpenGLGraphics::drawImage2(const Image *const image,
     return true;
 }
 
-bool NormalOpenGLGraphics::drawRescaledImage(const Image *const image, int srcX,
-                                             int srcY, int dstX, int dstY,
+bool NormalOpenGLGraphics::drawRescaledImage(const Image *const image,
+                                             int srcX, int srcY,
+                                             int dstX, int dstY,
                                              const int width, const int height,
                                              const int desiredWidth,
                                              const int desiredHeight,
@@ -619,7 +620,8 @@ void NormalOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     }
 }
 
-void NormalOpenGLGraphics::drawImagePattern2(const GraphicsVertexes *const vert,
+void NormalOpenGLGraphics::drawImagePattern2(const GraphicsVertexes
+                                             *const vert,
                                              const Image *const image)
 {
     if (!image)
@@ -651,7 +653,8 @@ inline void NormalOpenGLGraphics::drawVertexes(const
     {
         const std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
         std::vector<GLfloat*>::const_iterator ft;
-        const std::vector<GLfloat*>::const_iterator ft_end = floatTexPool.end();
+        const std::vector<GLfloat*>::const_iterator
+            ft_end = floatTexPool.end();
 
         for (iv = intVertPool.begin(), ft = floatTexPool.begin(),
              ivp = vp.begin();

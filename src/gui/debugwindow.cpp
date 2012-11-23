@@ -196,7 +196,9 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     place(0, 7, mParticleCountLabel, 2);
     place(0, 8, mMapActorCountLabel, 2);
 #ifdef USE_OPENGL
+#if defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS)
     int n = 9;
+#endif
 #ifdef DEBUG_OPENGL_LEAKS
     mTexturesLabel = new Label(this, strprintf("%s %s",
         _("Textures count:"), "?"));

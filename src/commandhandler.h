@@ -222,7 +222,8 @@ class CommandHandler final
         /**
          * Handle atkhuman command.
          */
-        static void handleAttackHuman(const std::string &args, ChatTab *const tab);
+        static void handleAttackHuman(const std::string &args,
+                                      ChatTab *const tab);
 
         /**
          * Handle closeall command.

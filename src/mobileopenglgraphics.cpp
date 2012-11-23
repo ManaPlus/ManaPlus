@@ -535,7 +535,8 @@ inline void MobileOpenGLGraphics::drawVertexes(const
     {
         const std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
         std::vector<GLfloat*>::const_iterator ft;
-        const std::vector<GLfloat*>::const_iterator ft_end = floatTexPool.end();
+        const std::vector<GLfloat*>::const_iterator
+            ft_end = floatTexPool.end();
 
         for (iv = shortVertPool.begin(), ft = floatTexPool.begin(),
              ivp = vp.begin();
@@ -922,7 +923,11 @@ void MobileOpenGLGraphics::setColor(const gcn::Color& color)
     mColorAlpha = (color.a != 255);
 }
 
+#ifdef ANDROID
+void MobileOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED)
+#else
 void MobileOpenGLGraphics::drawPoint(int x, int y)
+#endif
 {
     setTexturingAndBlending(false);
     restoreColor();

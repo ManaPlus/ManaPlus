@@ -711,7 +711,7 @@ void CommandHandler::handleTarget(const std::string &args,
         player_node->setTarget(target);
 }
 
-void CommandHandler::handleAttackHuman(const std::string &args,
+void CommandHandler::handleAttackHuman(const std::string &args A_UNUSED,
                                        ChatTab *const tab A_UNUSED)
 {
     if (!actorSpriteManager || !player_node)

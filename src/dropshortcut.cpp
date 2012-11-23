@@ -224,7 +224,7 @@ void DropShortcut::setItem(const int index)
     save();
 }
 
-void DropShortcut::clear(bool isSave)
+void DropShortcut::clear(const bool isSave)
 {
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
     {
