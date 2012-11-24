@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-11-21 01:21+0300\n"
+"POT-Creation-Date: 2012-11-24 15:21+0300\n"
 "PO-Revision-Date: 2012-11-20 22:35+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/manaplus/"
@@ -800,23 +800,23 @@ msgstr "Alvo"
 msgid "Net"
 msgstr "Rede"
 
-#: src/gui/debugwindow.cpp:146 src/gui/debugwindow.cpp:238
-#: src/gui/debugwindow.cpp:274
+#: src/gui/debugwindow.cpp:146 src/gui/debugwindow.cpp:240
+#: src/gui/debugwindow.cpp:276
 msgid "Music:"
 msgstr "Música:"
 
-#: src/gui/debugwindow.cpp:147 src/gui/debugwindow.cpp:242
-#: src/gui/debugwindow.cpp:276
+#: src/gui/debugwindow.cpp:147 src/gui/debugwindow.cpp:244
+#: src/gui/debugwindow.cpp:278
 msgid "Map:"
 msgstr "Mapa:"
 
-#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:240
-#: src/gui/debugwindow.cpp:275
+#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:242
+#: src/gui/debugwindow.cpp:277
 msgid "Minimap:"
 msgstr "Minimapa:"
 
-#: src/gui/debugwindow.cpp:150 src/gui/debugwindow.cpp:236
-#: src/gui/debugwindow.cpp:272
+#: src/gui/debugwindow.cpp:150 src/gui/debugwindow.cpp:238
+#: src/gui/debugwindow.cpp:274
 msgid "Cursor:"
 msgstr "Cursor:"
 
@@ -824,17 +824,17 @@ msgstr "Cursor:"
 msgid "Particle count:"
 msgstr "Contador de Particulas:"
 
-#: src/gui/debugwindow.cpp:154 src/gui/debugwindow.cpp:253
-#: src/gui/debugwindow.cpp:279
+#: src/gui/debugwindow.cpp:154 src/gui/debugwindow.cpp:255
+#: src/gui/debugwindow.cpp:281
 msgid "Map actors count:"
 msgstr "Jogadores no mapa:"
 
-#: src/gui/debugwindow.cpp:155 src/gui/debugwindow.cpp:219
-#: src/gui/debugwindow.cpp:224
+#: src/gui/debugwindow.cpp:155 src/gui/debugwindow.cpp:221
+#: src/gui/debugwindow.cpp:226
 msgid "Player Position:"
 msgstr "Sua posição:"
 
-#: src/gui/debugwindow.cpp:160 src/gui/debugwindow.cpp:264
+#: src/gui/debugwindow.cpp:160 src/gui/debugwindow.cpp:266
 msgid "Draw calls:"
 msgstr ""
 
@@ -843,7 +843,7 @@ msgstr ""
 msgid "%d FPS"
 msgstr "%d FPS"
 
-#: src/gui/debugwindow.cpp:163 src/gui/debugwindow.cpp:286
+#: src/gui/debugwindow.cpp:163 src/gui/debugwindow.cpp:288
 #, c-format
 msgid "%d LPS"
 msgstr "%d LPS"
@@ -868,85 +868,85 @@ msgstr "%d FPS (velho OpenGL)"
 msgid "%d FPS (mobile OpenGL)"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:202 src/gui/debugwindow.cpp:258
+#: src/gui/debugwindow.cpp:204 src/gui/debugwindow.cpp:260
 msgid "Textures count:"
 msgstr "Contador de Texturas:"
 
-#: src/gui/debugwindow.cpp:249
+#: src/gui/debugwindow.cpp:251
 #, c-format
 msgid "Particle count: %d"
 msgstr "Contagem de partículas: %d"
 
-#: src/gui/debugwindow.cpp:291 src/gui/debugwindow.cpp:327
-#: src/gui/debugwindow.cpp:374
+#: src/gui/debugwindow.cpp:293 src/gui/debugwindow.cpp:329
+#: src/gui/debugwindow.cpp:376
 msgid "Target:"
 msgstr "Alvo:"
 
-#: src/gui/debugwindow.cpp:292 src/gui/debugwindow.cpp:332
-#: src/gui/debugwindow.cpp:375
+#: src/gui/debugwindow.cpp:294 src/gui/debugwindow.cpp:334
+#: src/gui/debugwindow.cpp:377
 msgid "Target Id:"
 msgstr "ID do alvo:"
 
-#: src/gui/debugwindow.cpp:293
+#: src/gui/debugwindow.cpp:295
 msgid "Target level:"
 msgstr "Level do alvo:"
 
-#: src/gui/debugwindow.cpp:294 src/gui/debugwindow.cpp:345
+#: src/gui/debugwindow.cpp:296 src/gui/debugwindow.cpp:347
 msgid "Target race:"
 msgstr "Corrida do alvo:"
 
-#: src/gui/debugwindow.cpp:295
+#: src/gui/debugwindow.cpp:297
 msgid "Target party:"
 msgstr "Grupo do alvo:"
 
-#: src/gui/debugwindow.cpp:296
+#: src/gui/debugwindow.cpp:298
 msgid "Target guild:"
 msgstr "Guilda de alvo:"
 
-#: src/gui/debugwindow.cpp:297 src/gui/debugwindow.cpp:364
-#: src/gui/debugwindow.cpp:369 src/gui/debugwindow.cpp:379
+#: src/gui/debugwindow.cpp:299 src/gui/debugwindow.cpp:366
+#: src/gui/debugwindow.cpp:371 src/gui/debugwindow.cpp:381
 msgid "Attack delay:"
 msgstr "Atraso de Ataque:"
 
-#: src/gui/debugwindow.cpp:298 src/gui/debugwindow.cpp:354
-#: src/gui/debugwindow.cpp:380
+#: src/gui/debugwindow.cpp:300 src/gui/debugwindow.cpp:356
+#: src/gui/debugwindow.cpp:382
 msgid "Minimal hit:"
 msgstr "Dano Minimo:"
 
-#: src/gui/debugwindow.cpp:299 src/gui/debugwindow.cpp:356
-#: src/gui/debugwindow.cpp:381
+#: src/gui/debugwindow.cpp:301 src/gui/debugwindow.cpp:358
+#: src/gui/debugwindow.cpp:383
 msgid "Maximum hit:"
 msgstr "Dano Máximo:"
 
-#: src/gui/debugwindow.cpp:300 src/gui/debugwindow.cpp:358
-#: src/gui/debugwindow.cpp:382
+#: src/gui/debugwindow.cpp:302 src/gui/debugwindow.cpp:360
+#: src/gui/debugwindow.cpp:384
 msgid "Critical hit:"
 msgstr "Dano Crítico:"
 
-#: src/gui/debugwindow.cpp:336 src/gui/debugwindow.cpp:341
-#: src/gui/debugwindow.cpp:376
+#: src/gui/debugwindow.cpp:338 src/gui/debugwindow.cpp:343
+#: src/gui/debugwindow.cpp:378
 msgid "Target Level:"
 msgstr "Nível do alvo:"
 
-#: src/gui/debugwindow.cpp:347 src/gui/debugwindow.cpp:377
+#: src/gui/debugwindow.cpp:349 src/gui/debugwindow.cpp:379
 msgid "Target Party:"
 msgstr "Grupo do alvo:"
 
-#: src/gui/debugwindow.cpp:350 src/gui/debugwindow.cpp:378
+#: src/gui/debugwindow.cpp:352 src/gui/debugwindow.cpp:380
 msgid "Target Guild:"
 msgstr "Guilda do alvo:"
 
-#: src/gui/debugwindow.cpp:415 src/gui/debugwindow.cpp:420
+#: src/gui/debugwindow.cpp:417 src/gui/debugwindow.cpp:422
 #, c-format
 msgid "Ping: %s ms"
 msgstr "Ping: %s ms"
 
-#: src/gui/debugwindow.cpp:423
+#: src/gui/debugwindow.cpp:425
 #, c-format
 msgid "In: %d bytes/s"
 msgstr "Entrada: %d bytes/s"
 
-#: src/gui/debugwindow.cpp:425
+#: src/gui/debugwindow.cpp:427
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr "Saída: %d bytes/s"
