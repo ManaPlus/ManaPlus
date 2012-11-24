@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([ManaPlus], [1.2.11.11], [akaras@inbox.ru], [manaplus])
+AC_INIT([ManaPlus], [1.2.11.25], [akaras@inbox.ru], [manaplus])
 AM_INIT_AUTOMAKE([1.9])
 AC_CONFIG_HEADERS([config.h:config.h.in])
 AC_LANG_CPLUSPLUS

@@ -1,3 +1,17 @@
+2012-11-25 New release 1.2.11.25
+fix: some fixes in jewelry theme.
+fix: disable some popups in Android version.
+fix: drops window cleaning.
+fix: missing themes in windows installer.
+fix: random incorrect beings draw order.
+add: show/hide on screen keyboard on Android.
+add: attack human chat command (by Travolta)
+command: /atkhuman
+add: extend theming.
+add: onscreen joystick.
+add: improve OpenGL draw speed.
+add: persistend directories under Android.
+
 2012-11-11 New release 1.2.11.11
 fix: resolution switching under Android with OpenGL.
 fix: guichan draw lines under ARM.
