@@ -64,6 +64,7 @@ Viewport::Viewport() :
     mEnableLazyScrolling(config.getBoolValue("enableLazyScrolling")),
     mScrollCenterOffsetX(config.getIntValue("ScrollCenterOffsetX")),
     mScrollCenterOffsetY(config.getIntValue("ScrollCenterOffsetY")),
+    mMouseDirectionMove(config.getBoolValue("mouseDirectionMove")),
     mMouseX(0),
     mMouseY(0),
     mPixelViewX(0),
@@ -89,6 +90,7 @@ Viewport::Viewport() :
     config.addListener("showBeingPopup", this);
     config.addListener("selfMouseHeal", this);
     config.addListener("enableLazyScrolling", this);
+    config.addListener("mouseDirectionMove", this);
 
     setFocusable(true);
 }
@@ -583,27 +585,109 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
             if (mLocalWalkTime != player_node->getActionTime())
             {
                 mLocalWalkTime = cur_time;
-                const int destX = (event.getX() + mPixelViewX)
-                    / static_cast<float>(mMap->getTileWidth());
-                const int destY = (event.getY() + mPixelViewY)
-                    / static_cast<float>(mMap->getTileHeight());
                 player_node->unSetPickUpTarget();
-                if (!player_node->navigateTo(destX, destY))
+                int playerX = player_node->getTileX();
+                int playerY = player_node->getTileY();
+                if (mMouseDirectionMove)
                 {
-                    int playerX = player_node->getTileX();
-                    int playerY = player_node->getTileY();
+                    const int width = mainGraphics->mWidth / 2;
+                    const int height = mainGraphics->mHeight / 2;
+                    const float wh = static_cast<float>(width)
+                        / static_cast<float>(height);
+                    int x = event.getX() - width;
+                    int y = event.getY() - height;
+                    if (!x && !y)
+                        return;
+                    const int x2 = abs(x);
+                    const int y2 = abs(y);
+                    const float diff = 2;
+                    int dx = 0;
+                    int dy = 0;
+                    if (x2 > y2)
+                    {
+                        if (y2 && x2 / y2 / wh > diff)
+                            y = 0;
+                    }
+                    else
+                    {
+                        if (x2 && y2 * wh / x2 > diff)
+                            x = 0;
+                    }
+                    if (x > 0)
+                        dx = 1;
+                    else if (x < 0)
+                        dx = -1;
+                    if (y > 0)
+                        dy = 1;
+                    else if (y < 0)
+                        dy = -1;
+
+                    if (mMap->getWalk(playerX + dx, playerY + dy))
+                    {
+                        player_node->navigateTo(playerX + dx, playerY + dy);
+                    }
+                    else
+                    {
+                        if (dx && dy)
+                        {
+                            // try avoid diagonal collision
+                            if (x2 > y2)
+                            {
+                                if (mMap->getWalk(playerX + dx, playerY))
+                                    dy = 0;
+                                else
+                                    dx = 0;
+                            }
+                            else
+                            {
+                                if (mMap->getWalk(playerX, playerY + dy))
+                                    dx = 0;
+                                else
+                                    dy = 0;
+                            }
+                        }
+                        else
+                        {
+                            // try avoid vertical or horisontal collision
+                            if (!dx)
+                            {
+                                if (mMap->getWalk(playerX + 1, playerY + dy))
+                                    dx = 1;
+                                if (mMap->getWalk(playerX - 1, playerY + dy))
+                                    dx = -1;
+                            }
+                            if (!dy)
+                            {
+                                if (mMap->getWalk(playerX + dx, playerY + 1))
+                                    dy = 1;
+                                if (mMap->getWalk(playerX + dx, playerY - 1))
+                                    dy = -1;
+                            }
+                        }
+                        player_node->navigateTo(playerX + dx, playerY + dy);
+                    }
+                }
+                else
+                {
+                    const int destX = (event.getX() + mPixelViewX)
+                        / static_cast<float>(mMap->getTileWidth());
+                    const int destY = (event.getY() + mPixelViewY)
+                        / static_cast<float>(mMap->getTileHeight());
                     if (playerX != destX && playerY != destY)
                     {
-                        if (playerX > destX)
-                            playerX --;
-                        else if (playerX < destX)
-                            playerX ++;
-                        if (playerY > destY)
-                            playerY --;
-                        else if (playerY < destY)
-                            playerY ++;
-                        if (mMap->getWalk(playerX, playerY, 0))
-                            player_node->navigateTo(playerX, playerY);
+                        if (!player_node->navigateTo(destX, destY))
+                        {
+                            if (playerX > destX)
+                                playerX --;
+                            else if (playerX < destX)
+                                playerX ++;
+                            if (playerY > destY)
+                                playerY --;
+                            else if (playerY < destY)
+                                playerY ++;
+                            if (mMap->getWalk(playerX, playerY, 0))
+                                player_node->navigateTo(playerX, playerY);
+                        }
                     }
                 }
             }
@@ -742,6 +826,8 @@ void Viewport::optionChanged(const std::string &name A_UNUSED)
         mSelfMouseHeal = config.getBoolValue("selfMouseHeal");
     else if (name == "enableLazyScrolling")
         mEnableLazyScrolling = config.getBoolValue("enableLazyScrolling");
+    else if (name == "mouseDirectionMove")
+        mMouseDirectionMove = config.getBoolValue("mouseDirectionMove");
 }
 
 void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)

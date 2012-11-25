@@ -311,6 +311,7 @@ class Viewport final : public WindowContainer,
         bool mEnableLazyScrolling;
         int mScrollCenterOffsetX;
         int mScrollCenterOffsetY;
+        bool mMouseDirectionMove;
         int mMouseX;                /**< Current mouse position in pixels. */
         int mMouseY;                /**< Current mouse position in pixels. */
         int mPixelViewX;            /**< Current viewpoint in pixels. */
