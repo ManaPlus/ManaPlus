@@ -653,3 +653,19 @@ std::string getDateString()
     strftime(buffer, 79, "%Y-%m-%d", timeinfo);
     return std::string(buffer);
 }
+
+signed char parseBoolean(const std::string &value)
+{
+    std::string opt = value.substr(0, 1);
+
+    if (opt == "1" ||
+        opt == "y" || opt == "Y" ||
+        opt == "t" || opt == "T")
+        return 1;
+    else if (opt == "0" ||
+             opt == "n" || opt == "N" ||
+             opt == "f" || opt == "F")
+        return 0;
+    else
+        return -1;
+}

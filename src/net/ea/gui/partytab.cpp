@@ -160,7 +160,7 @@ bool PartyTab::handleCommand(const std::string &type, const std::string &args)
             }
         }
 
-        const signed char opt = CommandHandler::parseBoolean(args);
+        const signed char opt = parseBoolean(args);
 
         switch (opt)
         {
@@ -199,7 +199,7 @@ bool PartyTab::handleCommand(const std::string &type, const std::string &args)
             }
         }
 
-        const signed char opt = CommandHandler::parseBoolean(args);
+        const signed char opt = parseBoolean(args);
 
         switch (opt)
         {

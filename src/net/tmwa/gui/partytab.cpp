@@ -23,7 +23,6 @@
 #include "net/tmwa/gui/partytab.h"
 
 #include "chatlogger.h"
-#include "commandhandler.h"
 #include "localplayer.h"
 #include "party.h"
 

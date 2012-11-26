@@ -23,7 +23,6 @@
 #include "gui/widgets/guildchattab.h"
 
 #include "chatlogger.h"
-#include "commandhandler.h"
 #include "guild.h"
 #include "guildmanager.h"
 #include "localplayer.h"

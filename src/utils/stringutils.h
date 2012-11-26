@@ -221,4 +221,6 @@ bool strStartWith(std::string str, std::string start) A_WARN_UNUSED;
 
 std::string getDateString() A_WARN_UNUSED;
 
+signed char parseBoolean(const std::string &value);
+
 #endif // UTILS_STRINGUTILS_H

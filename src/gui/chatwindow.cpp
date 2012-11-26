@@ -24,7 +24,7 @@
 
 #include "actorspritemanager.h"
 #include "client.h"
-#include "commandhandler.h"
+#include "commands.h"
 #include "configuration.h"
 #include "game.h"
 #include "guild.h"

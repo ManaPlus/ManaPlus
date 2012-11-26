@@ -119,4 +119,6 @@ namespace ActionManager
     decHandler(questsWindowShow);
 }
 
+#undef decHandler
+
 #endif

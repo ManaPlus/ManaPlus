@@ -23,7 +23,6 @@
 #include "gui/widgets/battletab.h"
 
 #include "chatlogger.h"
-#include "commandhandler.h"
 #include "localplayer.h"
 #include "main.h"
 

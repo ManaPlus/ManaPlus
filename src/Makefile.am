@@ -533,6 +533,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      channelmanager.h \
 	      commandhandler.cpp \
 	      commandhandler.h \
+	      commands.cpp \
+	      commands.h \
 	      compoundsprite.cpp \
 	      compoundsprite.h \
 	      configlistener.h \

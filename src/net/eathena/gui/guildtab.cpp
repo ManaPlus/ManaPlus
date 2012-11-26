@@ -23,7 +23,6 @@
 #include "net/eathena/gui/guildtab.h"
 
 #include "chatlogger.h"
-#include "commandhandler.h"
 #include "guild.h"
 #include "localplayer.h"
 

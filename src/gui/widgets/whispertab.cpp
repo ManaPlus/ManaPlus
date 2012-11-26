@@ -23,7 +23,7 @@
 #include "gui/widgets/whispertab.h"
 
 #include "chatlogger.h"
-#include "commandhandler.h"
+#include "commands.h"
 #include "localplayer.h"
 
 #include "net/chathandler.h"
@@ -140,13 +140,11 @@ bool WhisperTab::handleCommand(const std::string &type,
     }
     else if (type == "ignore")
     {
-        if (commandHandler)
-            commandHandler->handleIgnore(mNick, this);
+        Commands::ignore(mNick, this);
     }
     else if (type == "unignore")
     {
-        if (commandHandler)
-            commandHandler->handleUnignore(mNick, this);
+        Commands::unignore(mNick, this);
     }
     else
     {

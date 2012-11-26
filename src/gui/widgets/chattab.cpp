@@ -375,8 +375,7 @@ void ChatTab::chatInput(const std::string &message)
         start = msg.find('[', start + 1);
     }
 
-    if (commandHandler)
-        commandHandler->replaceVars(msg);
+    Commands::replaceVars(msg);
 
     switch (msg[0])
     {
