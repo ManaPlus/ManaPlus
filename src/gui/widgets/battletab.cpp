@@ -23,6 +23,7 @@
 #include "gui/widgets/battletab.h"
 
 #include "chatlogger.h"
+#include "configuration.h"
 #include "localplayer.h"
 #include "main.h"
 
@@ -39,7 +40,8 @@
 BattleTab::BattleTab(const Widget2 *const widget) :
     ChatTab(widget, _("Battle"))
 {
-    loadFromLogFile("#Battle");
+    if (config.getBoolValue("showChatHistory"))
+        loadFromLogFile("#Battle");
 }
 
 BattleTab::~BattleTab()

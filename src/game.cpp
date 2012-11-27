@@ -257,7 +257,8 @@ static void createGuiWindows()
 
     localChatTab = new ChatTab(chatWindow, _("General"));
     localChatTab->setAllowHighlight(false);
-    localChatTab->loadFromLogFile("#General");
+    if (config.getBoolValue("showChatHistory"))
+        localChatTab->loadFromLogFile("#General");
 
     debugChatTab = new ChatTab(chatWindow, _("Debug"));
     debugChatTab->setAllowHighlight(false);

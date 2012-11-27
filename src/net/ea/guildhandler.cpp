@@ -22,6 +22,7 @@
 #include "net/ea/guildhandler.h"
 
 #include "actorspritemanager.h"
+#include "configuration.h"
 #include "localplayer.h"
 
 #include "gui/socialwindow.h"
@@ -122,7 +123,8 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg)
     if (!guildTab && chatWindow)
     {
         guildTab = new GuildTab(chatWindow);
-        guildTab->loadFromLogFile("#Guild");
+        if (config.getBoolValue("showChatHistory"))
+            guildTab->loadFromLogFile("#Guild");
         if (player_node)
             player_node->addGuild(taGuild);
         memberList(guildId);

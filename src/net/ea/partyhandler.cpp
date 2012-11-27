@@ -22,6 +22,7 @@
 #include "net/ea/partyhandler.h"
 
 #include "actorspritemanager.h"
+#include "configuration.h"
 #include "localplayer.h"
 
 #include "gui/socialwindow.h"
@@ -220,7 +221,8 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
             return;
 
         Ea::partyTab = new PartyTab(chatWindow);
-        Ea::partyTab->loadFromLogFile("#Party");
+        if (config.getBoolValue("showChatHistory"))
+            Ea::partyTab->loadFromLogFile("#Party");
     }
 
     // These seem to indicate the sharing mode for exp and items
