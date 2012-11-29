@@ -12,6 +12,7 @@ SET (FILES
     colors.xml
     complete_icon.xml
     didyouknow.xml
+    dpad.xml
     dropdown.xml
     dropdown_background.xml
     dropdown_pressed.xml
