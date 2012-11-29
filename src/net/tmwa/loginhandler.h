@@ -53,8 +53,7 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         void disconnect();
 
-        int supportedOptionalActions() const A_WARN_UNUSED
-        { return SetGenderOnRegister; }
+        int supportedOptionalActions() const A_WARN_UNUSED;
 
         unsigned int getMaxPasswordLength() const A_WARN_UNUSED
         { return 25; }
@@ -73,7 +72,8 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
     private:
         void sendLoginRegister(const std::string &username,
-                               const std::string &password);
+                               const std::string &password,
+                               const std::string &email);
 };
 
 } // namespace TmwAthena

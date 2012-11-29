@@ -73,7 +73,8 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
     private:
         void sendLoginRegister(const std::string &username,
-                               const std::string &password);
+                               const std::string &password,
+                               const std::string &email);
 };
 
 } // namespace EAthena

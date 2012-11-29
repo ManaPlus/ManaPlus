@@ -91,7 +91,8 @@ class LoginHandler : public Net::LoginHandler
 
     protected:
         virtual void sendLoginRegister(const std::string &username,
-                                       const std::string &password) = 0;
+                                       const std::string &password,
+                                       const std::string &email) = 0;
 
         bool mVersionResponse;
         bool mRegistrationEnabled;

@@ -129,7 +129,8 @@ void LoginHandler::changePassword(const std::string &username A_UNUSED,
 }
 
 void LoginHandler::sendLoginRegister(const std::string &username,
-                                     const std::string &password)
+                                     const std::string &password,
+                                     const std::string &email)
 {
     MessageOut outMsg(0x0064);
     outMsg.writeInt32(0); // client version

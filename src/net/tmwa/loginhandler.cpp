@@ -131,20 +131,40 @@ void LoginHandler::changePassword(const std::string &username A_UNUSED,
 }
 
 void LoginHandler::sendLoginRegister(const std::string &username,
-                                     const std::string &password)
+                                     const std::string &password,
+                                     const std::string &email)
 {
-    MessageOut outMsg(0x0064);
-    outMsg.writeInt32(0); // client version
-    outMsg.writeString(username, 24);
-    outMsg.writeStringNoLog(password, 24);
+    if (email.empty())
+    {
+        MessageOut outMsg(CMSG_LOGIN_REGISTER);
+        outMsg.writeInt32(0); // client version
+        outMsg.writeString(username, 24);
+        outMsg.writeStringNoLog(password, 24);
 
-    /*
-     * eAthena calls the last byte "client version 2", but it isn't used at
-     * at all. We're retasking it, as a bit mask:
-     *  0 - can handle the 0x63 "update host" packet
-     *  1 - defaults to the first char-server (instead of the last)
-     */
-    outMsg.writeInt8(0x03);
+        /*
+         * eAthena calls the last byte "client version 2", but it isn't used at
+         * at all. We're retasking it, as a bit mask:
+         *  0 - can handle the 0x63 "update host" packet
+         *  1 - defaults to the first char-server (instead of the last)
+         */
+        outMsg.writeInt8(0x03);
+    }
+    else
+    {
+        MessageOut outMsg(CMSG_LOGIN_REGISTER2);
+        outMsg.writeInt32(0); // client version
+        outMsg.writeString(username, 24);
+        outMsg.writeStringNoLog(password, 24);
+
+        /*
+         * eAthena calls the last byte "client version 2", but it isn't used at
+         * at all. We're retasking it, as a bit mask:
+         *  0 - can handle the 0x63 "update host" packet
+         *  1 - defaults to the first char-server (instead of the last)
+         */
+        outMsg.writeInt8(0x03);
+        outMsg.writeString(email, 24);
+    }
 }
 
 ServerInfo *LoginHandler::getCharServer()
@@ -215,6 +235,12 @@ void LoginHandler::processUpdateHost2(Net::MessageIn &msg)
 
     if (Client::getState() == STATE_PRE_LOGIN)
         Client::setState(STATE_LOGIN);
+}
+
+int LoginHandler::supportedOptionalActions() const
+{
+    return serverVersion >= 7 ? SetEmailOnRegister | SetGenderOnRegister
+        : SetGenderOnRegister;
 }
 
 } // namespace TmwAthena

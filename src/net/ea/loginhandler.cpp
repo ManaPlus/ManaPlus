@@ -70,7 +70,7 @@ void LoginHandler::loginAccount(LoginData *loginData)
         // with a different config.
         loginData->resetCharacterSlots();
 
-        sendLoginRegister(loginData->username, loginData->password);
+        sendLoginRegister(loginData->username, loginData->password, "");
     }
 }
 
@@ -114,7 +114,7 @@ void LoginHandler::registerAccount(LoginData *loginData)
             break;
     }
 
-    sendLoginRegister(username, loginData->password);
+    sendLoginRegister(username, loginData->password, loginData->email);
 }
 
 Worlds LoginHandler::getWorlds() const
@@ -260,6 +260,9 @@ void LoginHandler::processLoginError(Net::MessageIn &msg)
             break;
         case 10:
             errorMessage = _("Wrong name.");
+            break;
+        case 11:
+            errorMessage = _("Incorrect email.");
             break;
         case 99:
             errorMessage = _("Username permanently erased.");
