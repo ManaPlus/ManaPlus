@@ -12,7 +12,7 @@
  <option name="defaultServerType" value="evol"/>
  <option name="font" value="fonts/dejavusans.ttf" />
  <option name="boldFont" value="fonts/dejavusans-bold.ttf" />
- <option name="theme" value="wood" />
+ <option name="theme" value="jewelry" />
  <option name="wallpapersPath" value="evol/images/" />
  <option name="wallpaperFile" value="loginwallpaper_800x600.png" />
 </configuration>
