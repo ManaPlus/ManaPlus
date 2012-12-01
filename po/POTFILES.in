@@ -3,7 +3,8 @@ src/actorspritemanager.cpp
 src/being.cpp
 src/client.cpp
 src/commandhandler.cpp
-src/commandhandler.h
+src/commands.cpp
+src/commands.h
 src/game.cpp
 src/gui/beingpopup.cpp
 src/gui/botcheckerwindow.cpp

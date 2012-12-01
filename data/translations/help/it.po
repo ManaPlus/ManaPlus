@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-10-17 17:34+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2012-11-28 13:43+0000\n"
+"Last-Translator: hal9OOO <miglietta.francesco@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,7 +52,7 @@ msgid ""
 msgstr " Per aggiungere un oggetto ad una Barra Veloce clicca su di esso nella finestra dell'Inventario,\n poi clicca sullo slot della finestra delle Scorciatoie.\nPer riordinare gli oggetti della Barra Veloce clicca e tieni premuto\nl'oggetto durante lo spostamento. Per rimuovere gli oggetti spostarli semplicemente fuori dalla\nfinestra."
 
 msgid "##2F2##P                       \"Status Window\""
-msgstr ""
+msgstr "##2F2##P                       \"Finestra Personaggio\""
 
 msgid "/cacheinfo - show text cache info."
 msgstr "/cacheinfo - mostra informazioni sulla cache testuale."
@@ -102,7 +102,7 @@ msgid "##2s##P                        \"Sit\""
 msgstr "##2s##P                        \"Posizione Seduta\""
 
 msgid "##2e##P                        \"Kills Stats Window\""
-msgstr ""
+msgstr "##2e##P                        \"Finestra Statistiche\""
 
 msgid "##2KeyPad[8]##P                \"Disable / Enable Game modifier keys\""
 msgstr ""
@@ -134,7 +134,7 @@ msgid "##2a##P                        \"Target Closest\""
 msgstr "##2a##P                        \"Target sul più vicino \""
 
 msgid "##2Party level2:##P enables a char to create a party."
-msgstr ""
+msgstr "##2Party Livello 2:##P permette ad un personaggio di creare un party."
 
 msgid ""
 "Website: @@http://manaplus.evolonline.org/|http://manaplus.evolonline.org/@@"
@@ -419,7 +419,7 @@ msgid "/clear - clear current chat tab."
 msgstr "/clear - pulisci la Chat corrente."
 
 msgid "##2KeyPad[9]##P                \"Next chat tab line\""
-msgstr ""
+msgstr "##2KeyPad[9]##P                \"Riga Chat successiva\""
 
 msgid "Chat commands"
 msgstr "Comandi della Chat"
@@ -452,7 +452,7 @@ msgid "##2KeyPad[2]##P                \"Enable / Disable away mode\""
 msgstr "##2KeyPad[2]##P                \"Attiva/Disabilità modalità Away\""
 
 msgid "##2j##P                        \"Commands Window\""
-msgstr ""
+msgstr "##2j##P                        \"Finestra Comandi\""
 
 msgid "THE PLAYER LIST"
 msgstr "LISTA GIOCATORI"
@@ -761,7 +761,7 @@ msgid "##2KeyPad[9]##P                \"Next Chat Tab\""
 msgstr "##2KeyPad[9]##P                \"Chat Tab Successivo\""
 
 msgid "##2KeyPad[7]##P                \"Previous chat tab line\""
-msgstr ""
+msgstr "##2KeyPad[7]##P                \"Linea Chat precedente\""
 
 msgid "##2Trade:##P enables the ability to trade with others."
 msgstr ""
@@ -785,7 +785,7 @@ msgid "##2Tab##P                      \"Emulate right click from keyboard\""
 msgstr "##2Tab##P                      \"Emula il tasto destro del mouse da tastiera\""
 
 msgid "##2LeftBracket([)##P           \"Bot Checker Window\""
-msgstr ""
+msgstr "##2LeftBracket([)##P           \"Finestra Rileva Bot\""
 
 msgid "##2l##P                        \"Set Direction Up\""
 msgstr "##2l##P                        \"Direzione Su\""
@@ -851,7 +851,7 @@ msgid "##2Insert##P                   \"Item Shortcut 14\""
 msgstr "##2Insert##P                   \"Scorciatoia Oggetto 14\""
 
 msgid "Sound effects"
-msgstr ""
+msgstr "Effetti sonori"
 
 msgid "##2F6##P                       \"Minimap Window\""
 msgstr "##2F6##P                       \"Mini Mappa\""
