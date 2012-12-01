@@ -33,7 +33,7 @@
 #include <guichan/widgets/window.hpp>
 
 class ContainerPlacer;
-class GraphicsVertexes;
+class ImageCollection;
 class Layout;
 class LayoutCell;
 class ResizeGrip;
@@ -490,13 +490,14 @@ class Window : public gcn::Window,
          * where two borders are moved at the same time.
          */
         static const unsigned resizeBorderWidth = 10;
-        GraphicsVertexes *mVertexes;
+        ImageCollection *mVertexes;
         int mCaptionOffsetX;
         int mCaptionOffsetY;
         int mCaptionAlign;
         int mTitlePadding;
         int mGripPadding;
         int mResizeHandles;
+        int mOldResizeHandles;
         bool mRedraw;
         bool mPlayVisibleSound;
         gcn::Font *mCaptionFont;
