@@ -30,8 +30,8 @@
 
 #include "localconsts.h"
 
-class GraphicsVertexes;
 class Image;
+class ImageCollection;
 class ImageRect;
 
 /**
@@ -140,6 +140,7 @@ class ScrollArea final : public gcn::ScrollArea,
         void init(std::string skinName);
 
         void drawButton(gcn::Graphics *const graphics, const BUTTON_DIR dir);
+        void calcButton(gcn::Graphics *const graphics, const BUTTON_DIR dir);
         void drawUpButton(gcn::Graphics *const graphics) override;
         void drawDownButton(gcn::Graphics *const graphics) override;
         void drawLeftButton(gcn::Graphics *const graphics) override;
@@ -148,6 +149,13 @@ class ScrollArea final : public gcn::ScrollArea,
         void drawHBar(gcn::Graphics *const graphics) override;
         void drawVMarker(gcn::Graphics *const graphics) override;
         void drawHMarker(gcn::Graphics *const graphics) override;
+
+        void calcVBar(gcn::Graphics *const graphics);
+        void calcHBar(gcn::Graphics *const graphics);
+        void calcVMarker(gcn::Graphics *const graphics);
+        void calcHMarker(gcn::Graphics *const graphics);
+
+        void updateCalcFlag(gcn::Graphics *const graphics);
 
         static int instances;
         static float mAlpha;
@@ -162,7 +170,8 @@ class ScrollArea final : public gcn::ScrollArea,
         int mClickX, mClickY;
         bool mHasMouse;
         bool mOpaque;
-        GraphicsVertexes *mVertexes;
+        ImageCollection *mVertexes;
+        ImageCollection *mVertexes2;
         bool mRedraw;
         int mXOffset;
         int mYOffset;
