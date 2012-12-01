@@ -68,7 +68,7 @@ Tab::Tab(const Widget2 *const widget) :
     mTabSelectedColor(&getThemeColor(Theme::TAB_SELECTED)),
     mFlashColor(&getThemeColor(Theme::TAB_FLASH)),
     mPlayerFlashColor(&getThemeColor(Theme::TAB_PLAYER_FLASH)),
-    mVertexes(new GraphicsVertexes()),
+    mVertexes(new ImageCollection),
     mRedraw(true),
     mMode(0)
 {
@@ -192,18 +192,26 @@ void Tab::draw(gcn::Graphics *graphics)
 
     updateAlpha();
 
-    ImageRect &rect = skin->getBorder();
     // draw tab
-    if (mRedraw || mode != mMode
-        || static_cast<Graphics*>(graphics)->getRedraw())
+    if (openGLMode != 2)
     {
-        mMode = mode;
-        mRedraw = false;
-        static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0,
-            getWidth(), getHeight(), rect);
-    }
+        ImageRect &rect = skin->getBorder();
+        if (mRedraw || mode != mMode
+            || static_cast<Graphics*>(graphics)->getRedraw())
+        {
+            mMode = mode;
+            mRedraw = false;
+            static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0,
+                getWidth(), getHeight(), rect);
+        }
 
-    static_cast<Graphics*>(graphics)->drawImageRect2(mVertexes, rect);
+        static_cast<Graphics*>(graphics)->drawTile(mVertexes);
+    }
+    else
+    {
+        static_cast<Graphics*>(graphics)->
+            drawImageRect(0, 0, getWidth(), getHeight(), skin->getBorder());
+    }
 
 //    static_cast<Graphics*>(graphics)->
 //        drawImageRect(0, 0, getWidth(), getHeight(), tabImg[mode]);

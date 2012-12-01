@@ -31,7 +31,7 @@
 
 #include "localconsts.h"
 
-class GraphicsVertexes;
+class ImageCollection;
 class ImageRect;
 class Label;
 class Skin;
@@ -151,7 +151,7 @@ class Tab : public gcn::BasicContainer,
         const gcn::Color *mFlashColor;
         const gcn::Color *mPlayerFlashColor;
         int mFlash;
-        GraphicsVertexes *mVertexes;
+        ImageCollection *mVertexes;
         bool mRedraw;
         int mMode;
 };
