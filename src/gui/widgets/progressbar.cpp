@@ -190,6 +190,7 @@ void ProgressBar::render(Graphics *graphics)
         if (mRedraw || graphics->getRedraw())
         {
             mRedraw = false;
+            mVertexes->clear();
             graphics->calcWindow(mVertexes, 0, 0,
                 mDimension.width, mDimension.height, mSkin->getBorder());
         }

@@ -201,6 +201,7 @@ void Tab::draw(gcn::Graphics *graphics)
         {
             mMode = mode;
             mRedraw = false;
+            mVertexes->clear();
             static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0,
                 getWidth(), getHeight(), rect);
         }
