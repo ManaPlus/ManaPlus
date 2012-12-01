@@ -32,6 +32,8 @@
 
 #include "localconsts.h"
 
+class ImageCollection;
+
 typedef void (*TouchFuncPtr) (const gcn::MouseInput &mouseInput);
 
 const int actionsSize = 10;
@@ -88,8 +90,6 @@ class TouchManager final
 
         void draw();
 
-        void drawTouchItem(const TouchItem *const item) const;
-
         bool processEvent(const gcn::MouseInput &mouseInput);
 
         bool isActionActive(const int index) const;
@@ -104,7 +104,9 @@ class TouchManager final
         TouchItem *mKeyboard;
         TouchItem *mPad;
         TouchItemVector mObjects;
+        ImageCollection *mVertexes;
         bool mActions[actionsSize];
+        bool mRedraw;
 };
 
 extern TouchManager touchManager;

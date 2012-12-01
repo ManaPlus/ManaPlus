@@ -22,6 +22,7 @@
 
 #include "configuration.h"
 #include "graphics.h"
+#include "graphicsvertexes.h"
 #include "touchactions.h"
 
 #include "gui/theme.h"
@@ -30,9 +31,13 @@
 
 TouchManager touchManager;
 
+extern int openGLMode;
+
 TouchManager::TouchManager() :
     mKeyboard(nullptr),
-    mPad(nullptr)
+    mPad(nullptr),
+    mVertexes(new ImageCollection),
+    mRedraw(true)
 {
     for (int f = 0;f < actionsSize; f ++)
         mActions[f] = false;
@@ -85,6 +90,7 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name, bool type,
         }
         theme->unload(skin);
     }
+    mRedraw = true;
 }
 
 void TouchManager::clear()
@@ -104,6 +110,7 @@ void TouchManager::clear()
         }
     }
     mObjects.clear();
+    mRedraw = true;
 }
 
 void TouchManager::unloadTouchItem(TouchItem **item0)
@@ -116,23 +123,42 @@ void TouchManager::unloadTouchItem(TouchItem **item0)
         delete item;
         *item0 = nullptr;
     }
+    mRedraw = true;
 }
 
 void TouchManager::draw()
 {
-//    drawTouchItem(mPad);
-    for (TouchItemVectorCIter it = mObjects.begin(), it_end = mObjects.end();
-         it != it_end; ++ it)
+    if (openGLMode != 2)
     {
-        drawTouchItem(*it);
+        if (mRedraw)
+        {
+            mRedraw = false;
+            mVertexes->clear();
+            for (TouchItemVectorCIter it = mObjects.begin(),
+                 it_end = mObjects.end();
+                 it != it_end; ++ it)
+            {
+                const TouchItem *const item = *it;
+                if (item && item->image)
+                {
+                    mainGraphics->calcTile(mVertexes, item->image,
+                        item->x, item->y);
+                }
+            }
+        }
+        mainGraphics->drawTile(mVertexes);
     }
-//    drawTouchItem(mKeyboard);
-}
-
-void TouchManager::drawTouchItem(const TouchItem *const item) const
-{
-    if (item && item->image)
-        mainGraphics->drawImage(item->image, item->x, item->y);
+    else
+    {
+        for (TouchItemVectorCIter it = mObjects.begin(),
+             it_end = mObjects.end();
+             it != it_end; ++ it)
+        {
+            const TouchItem *const item = *it;
+            if (item && item->image)
+                mainGraphics->drawImage(item->image, item->x, item->y);
+        }
+    }
 }
 
 bool TouchManager::processEvent(const gcn::MouseInput &mouseInput)
