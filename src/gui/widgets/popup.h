@@ -30,7 +30,7 @@
 #include <guichan/mouselistener.hpp>
 #include <guichan/widgetlistener.hpp>
 
-class GraphicsVertexes;
+class ImageCollection;
 class Skin;
 class WindowContainer;
 
@@ -177,7 +177,7 @@ class Popup : public Container, public gcn::MouseListener,
         int mPadding;                 /**< Holds the padding of the popup. */
 
         Skin *mSkin;                  /**< Skin in use by this popup */
-        GraphicsVertexes *mVertexes;
+        ImageCollection *mVertexes;
         bool mRedraw;
 };
 

@@ -43,7 +43,7 @@ Popup::Popup(const std::string &name,
     mMinHeight(40),
     mMaxWidth(mainGraphics->mWidth),
     mMaxHeight(mainGraphics->mHeight),
-    mVertexes(new GraphicsVertexes()),
+    mVertexes(new ImageCollection),
     mRedraw(true)
 {
     logger->log("Popup::Popup(\"%s\")", name.c_str());
@@ -105,16 +105,22 @@ void Popup::draw(gcn::Graphics *graphics)
     BLOCK_START("Popup::draw")
     Graphics *const g = static_cast<Graphics*>(graphics);
 
-    if (mRedraw)
+    if (openGLMode != 2)
     {
-        mRedraw = false;
-        g->calcWindow(mVertexes, 0, 0, getWidth(),
-            getHeight(), mSkin->getBorder());
+        if (mRedraw)
+        {
+            mRedraw = false;
+            mVertexes->clear();
+            g->calcWindow(mVertexes, 0, 0, getWidth(),
+                getHeight(), mSkin->getBorder());
+        }
+
+        g->drawTile(mVertexes);
     }
-
-    g->drawImageRect2(mVertexes, mSkin->getBorder());
-
-//    g->drawImageRect(0, 0, getWidth(), getHeight(), mSkin->getBorder());
+    else
+    {
+        g->drawImageRect(0, 0, getWidth(), getHeight(), mSkin->getBorder());
+    }
 
     drawChildren(graphics);
     BLOCK_END("Popup::draw")
