@@ -54,6 +54,7 @@ Window::Window(const std::string &caption, const bool modal,
     mDefaultY(0),
     mDefaultWidth(0),
     mDefaultHeight(0),
+    mLastRedraw(true),
     mGrip(nullptr),
     mParent(parent),
     mLayout(nullptr),
@@ -200,6 +201,7 @@ void Window::draw(gcn::Graphics *graphics)
         }
         if (mRedraw)
         {
+            mLastRedraw = true;
             mRedraw = false;
             update = true;
             mVertexes->clear();
@@ -229,7 +231,10 @@ void Window::draw(gcn::Graphics *graphics)
                 g->calcTile(mVertexes, mGrip, mGripRect.x, mGripRect.y);
 
         }
-
+        else
+        {
+            mLastRedraw = false;
+        }
         g->drawTile(mVertexes);
     }
     else

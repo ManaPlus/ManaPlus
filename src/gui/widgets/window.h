@@ -433,6 +433,7 @@ class Window : public gcn::Window,
         int mDefaultY;                /**< Default window Y position */
         int mDefaultWidth;            /**< Default window width */
         int mDefaultHeight;           /**< Default window height */
+        bool mLastRedraw;
 
     private:
         enum ResizeHandles

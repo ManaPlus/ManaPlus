@@ -23,6 +23,7 @@
 #include "gui/equipmentwindow.h"
 
 #include "being.h"
+#include "graphicsvertexes.h"
 #include "inventory.h"
 #include "item.h"
 #include "localplayer.h"
@@ -64,6 +65,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mBorderColor(getThemeColor(Theme::BORDER)),
     mLabelsColor(getThemeColor(Theme::LABEL)),
+    mVertexes(new ImageCollection),
     mItemPadding(getOption("itemPadding")),
     mBoxSize(getOption("boxSize")),
     mMinX(180),
@@ -145,21 +147,48 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
     // Draw window graphics
     Window::draw(graphics);
     Graphics *const g = static_cast<Graphics*>(graphics);
-    Window::drawChildren(graphics);
 
     int i = 0;
     const int fontHeight = getFont()->getHeight();
 
-    for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
-         it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
+    if (openGLMode != 2)
     {
-        const EquipmentBox *const box = *it;
-        if (!box)
-            continue;
-        if (i == mSelected)
-            g->drawImage(mSlotHighlightedBackground, box->x, box->y);
-        else
-            g->drawImage(mSlotBackground, box->x, box->y);
+        if (mLastRedraw)
+        {
+            mVertexes->clear();
+            for (std::vector<EquipmentBox*>::const_iterator
+                 it = mBoxes.begin(), it_end = mBoxes.end();
+                 it != it_end; ++ it, ++ i)
+            {
+                const EquipmentBox *const box = *it;
+                if (!box)
+                    continue;
+                if (i == mSelected)
+                {
+                    g->calcTile(mVertexes, mSlotHighlightedBackground,
+                        box->x, box->y);
+                }
+                else
+                {
+                    g->calcTile(mVertexes, mSlotBackground, box->x, box->y);
+                }
+            }
+        }
+        g->drawTile(mVertexes);
+    }
+    else
+    {
+        for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
+             it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
+        {
+            const EquipmentBox *const box = *it;
+            if (!box)
+                continue;
+            if (i == mSelected)
+                g->drawImage(mSlotHighlightedBackground, box->x, box->y);
+            else
+                g->drawImage(mSlotBackground, box->x, box->y);
+        }
     }
 
     if (!mEquipment)
