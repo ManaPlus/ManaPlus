@@ -50,7 +50,7 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     mSmoothProgress(true),
     mProgressPalette(color),
     mSmoothColorChange(true),
-    mVertexes(new GraphicsVertexes()),
+    mVertexes(new ImageCollection),
     mRedraw(true),
     mPadding(2),
     mFillPadding(3)
@@ -185,14 +185,22 @@ void ProgressBar::render(Graphics *graphics)
     gcn::Font *const oldFont = graphics->getFont();
     const gcn::Color oldColor = graphics->getColor();
 
-    if (mRedraw || graphics->getRedraw())
+    if (openGLMode != 2)
     {
-        mRedraw = false;
-        graphics->calcWindow(mVertexes, 0, 0,
-            mDimension.width, mDimension.height, mSkin->getBorder());
-    }
+        if (mRedraw || graphics->getRedraw())
+        {
+            mRedraw = false;
+            graphics->calcWindow(mVertexes, 0, 0,
+                mDimension.width, mDimension.height, mSkin->getBorder());
+        }
 
-    graphics->drawImageRect2(mVertexes, mSkin->getBorder());
+        graphics->drawTile(mVertexes);
+    }
+    else
+    {
+        graphics->drawImageRect(0, 0, mDimension.width, mDimension.height,
+            mSkin->getBorder());
+    }
 
     // The bar
     if (mProgress > 0)

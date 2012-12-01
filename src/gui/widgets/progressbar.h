@@ -33,7 +33,7 @@
 #include "localconsts.h"
 
 class Graphics;
-class GraphicsVertexes;
+class ImageCollection;
 class ImageRect;
 class Skin;
 
@@ -149,7 +149,7 @@ class ProgressBar final : public gcn::Widget,
         bool mSmoothColorChange;
 
         std::string mText;
-        GraphicsVertexes *mVertexes;
+        ImageCollection *mVertexes;
         bool mRedraw;
         unsigned int mPadding;
         unsigned int mFillPadding;
