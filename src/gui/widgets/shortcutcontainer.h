@@ -30,6 +30,7 @@
 #include <guichan/widgetlistener.hpp>
 
 class Image;
+class ImageCollection;
 
 /**
  * A generic shortcut container.
@@ -66,6 +67,8 @@ class ShortcutContainer : public gcn::Widget,
          */
         virtual void widgetResized(const gcn::Event &event) override;
 
+        virtual void widgetMoved(const gcn::Event& event) override;
+
         /**
          * Handles mouse when dragged.
          */
@@ -90,6 +93,11 @@ class ShortcutContainer : public gcn::Widget,
         int getBoxHeight() const A_WARN_UNUSED
         { return mBoxHeight; }
 
+        void drawBackground(Graphics *g);
+
+        void setRedraw(bool b)
+        { mRedraw = true; }
+
     protected:
         /**
          * Gets the index from the grid provided the point is in an item box.
@@ -109,6 +117,8 @@ class ShortcutContainer : public gcn::Widget,
         int mBoxHeight;
         int mCursorPosX, mCursorPosY;
         int mGridWidth, mGridHeight;
+        ImageCollection *mVertexes;
+        bool mRedraw;
 };
 
 #endif

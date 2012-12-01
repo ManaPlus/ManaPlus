@@ -107,15 +107,7 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
 
     const int selectedId = spellShortcut->getSelectedItem();
     g->setColor(mForegroundColor);
-
-    if (mBackgroundImg)
-    {
-        for (unsigned i = 0; i < mMaxItems; i++)
-        {
-            g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
-                (i / mGridWidth) * mBoxHeight);
-        }
-    }
+    drawBackground(g);
 
     for (unsigned i = 0; i < mMaxItems; i++)
     {

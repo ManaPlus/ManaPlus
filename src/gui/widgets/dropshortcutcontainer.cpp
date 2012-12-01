@@ -100,17 +100,8 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
     }
 
     Graphics *const g = static_cast<Graphics*>(graphics);
-
     graphics->setFont(getFont());
-
-    if (mBackgroundImg)
-    {
-        for (unsigned i = 0; i < mMaxItems; i++)
-        {
-            g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
-                (i / mGridWidth) * mBoxHeight);
-        }
-    }
+    drawBackground(g);
 
     const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)

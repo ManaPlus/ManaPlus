@@ -110,17 +110,8 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         mBackgroundImg->setAlpha(mAlpha);
 
     Graphics *const g = static_cast<Graphics *const>(graphics);
-
     graphics->setFont(getFont());
-
-    if (mBackgroundImg)
-    {
-        for (unsigned i = 0; i < mMaxItems; i++)
-        {
-            g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
-                (i / mGridWidth) * mBoxHeight);
-        }
-    }
+    drawBackground(g);
 
     graphics->setColor(mForegroundColor);
     for (unsigned i = 0; i < mMaxItems; i++)

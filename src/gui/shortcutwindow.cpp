@@ -216,3 +216,10 @@ void ShortcutWindow::mouseDragged(gcn::MouseEvent &event)
         setPosition(newX, newY);
     }
 }
+
+void ShortcutWindow::widgetMoved(const gcn::Event& event)
+{
+    Window::widgetMoved(event);
+    if (mItems)
+        mItems->setRedraw(true);
+}

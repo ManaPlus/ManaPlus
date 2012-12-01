@@ -61,6 +61,8 @@ class ShortcutWindow final : public Window
 
         void widgetHidden(const gcn::Event &event) override;
 
+        void widgetMoved(const gcn::Event& event) override;
+
         void mousePressed(gcn::MouseEvent &event) override;
 
         void mouseDragged(gcn::MouseEvent &event) override;

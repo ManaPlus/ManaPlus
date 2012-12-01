@@ -23,6 +23,7 @@
 #include "gui/widgets/shortcutcontainer.h"
 
 #include "configuration.h"
+#include "graphicsvertexes.h"
 
 #include "resources/image.h"
 
@@ -42,7 +43,9 @@ ShortcutContainer::ShortcutContainer() :
     mCursorPosX(0),
     mCursorPosY(0),
     mGridWidth(1),
-    mGridHeight(1)
+    mGridHeight(1),
+    mVertexes(new ImageCollection),
+    mRedraw(true)
 {
 }
 
@@ -59,6 +62,7 @@ void ShortcutContainer::widgetResized(const gcn::Event &event A_UNUSED)
         ++mGridHeight;
 
     setHeight(mGridHeight * mBoxHeight);
+    mRedraw = true;
 }
 
 int ShortcutContainer::getIndexFromGrid(const int pointX,
@@ -76,4 +80,39 @@ int ShortcutContainer::getIndexFromGrid(const int pointX,
     }
 
     return index;
+}
+
+void ShortcutContainer::drawBackground(Graphics *g)
+{
+    if (mBackgroundImg)
+    {
+        if (openGLMode != 2)
+        {
+            if (mRedraw)
+            {
+                mRedraw = false;
+                mVertexes->clear();
+                for (unsigned i = 0; i < mMaxItems; i ++)
+                {
+                    g->calcTile(mVertexes, mBackgroundImg,
+                        (i % mGridWidth) * mBoxWidth,
+                        (i / mGridWidth) * mBoxHeight);
+                }
+            }
+            g->drawTile(mVertexes);
+        }
+        else
+        {
+            for (unsigned i = 0; i < mMaxItems; i ++)
+            {
+                g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
+                    (i / mGridWidth) * mBoxHeight);
+            }
+        }
+    }
+}
+
+void ShortcutContainer::widgetMoved(const gcn::Event& event)
+{
+    mRedraw = true;
 }
