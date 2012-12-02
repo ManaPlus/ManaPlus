@@ -33,8 +33,9 @@
 #include "localconsts.h"
 
 class ImageCollection;
+class MouseInput;
 
-typedef void (*TouchFuncPtr) (const gcn::MouseInput &mouseInput);
+typedef void (*TouchFuncPtr) (const MouseInput &mouseInput);
 
 const int actionsSize = 10;
 
@@ -90,7 +91,7 @@ class TouchManager final
 
         void draw();
 
-        bool processEvent(const gcn::MouseInput &mouseInput);
+        bool processEvent(const MouseInput &mouseInput);
 
         bool isActionActive(const int index) const;
 

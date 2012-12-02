@@ -24,6 +24,7 @@
 #include "game.h"
 #include "keydata.h"
 #include "logger.h"
+#include "mouseinput.h"
 #include "touchmanager.h"
 
 #ifdef ANDROID
@@ -35,12 +36,12 @@
 bool padClicked(false);
 
 #ifdef ANDROID
-void showKeyboard(const gcn::MouseInput &mouseInput)
+void showKeyboard(const MouseInput &mouseInput)
 {
     SDL_ANDROID_ToggleScreenKeyboardTextInput(nullptr);
 }
 #else
-void showKeyboard(const gcn::MouseInput &mouseInput A_UNUSED)
+void showKeyboard(const MouseInput &mouseInput A_UNUSED)
 {
 }
 #endif
@@ -111,13 +112,13 @@ static void moveChar(int x, int y)
     }
 }
 
-void padClick(const gcn::MouseInput &mouseInput)
+void padClick(const MouseInput &mouseInput)
 {
     moveChar(mouseInput.getX(), mouseInput.getY());
     padClicked = true;
 }
 
-void padEvents(const gcn::MouseInput &mouseInput)
+void padEvents(const MouseInput &mouseInput)
 {
     if (mouseInput.getType() == gcn::MouseInput::MOVED)
     {
@@ -126,13 +127,13 @@ void padEvents(const gcn::MouseInput &mouseInput)
     }
 }
 
-void padOut(const gcn::MouseInput &mouseInput A_UNUSED)
+void padOut(const MouseInput &mouseInput A_UNUSED)
 {
     padClicked = false;
     moveChar(50, 50);
 }
 
-void padUp(const gcn::MouseInput &mouseInput A_UNUSED)
+void padUp(const MouseInput &mouseInput A_UNUSED)
 {
     padClicked = false;
     moveChar(50, 50);

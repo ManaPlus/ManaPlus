@@ -23,6 +23,7 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
+#include "mouseinput.h"
 #include "touchactions.h"
 
 #include "gui/theme.h"
@@ -161,10 +162,10 @@ void TouchManager::draw()
     }
 }
 
-bool TouchManager::processEvent(const gcn::MouseInput &mouseInput)
+bool TouchManager::processEvent(const MouseInput &mouseInput)
 {
-    const int x = mouseInput.getX();
-    const int y = mouseInput.getY();
+    const int x = mouseInput.getTouchX();
+    const int y = mouseInput.getTouchY();
 
     for (TouchItemVectorCIter it = mObjects.begin(), it_end = mObjects.end();
          it != it_end; ++ it)
@@ -175,9 +176,9 @@ bool TouchManager::processEvent(const gcn::MouseInput &mouseInput)
         const gcn::Rectangle &rect = item->rect;
         if (rect.isPointInRect(x, y))
         {
-            gcn::MouseInput event = mouseInput;
-            event.setX(event.getX() - item->x);
-            event.setY(event.getY() - item->y);
+            MouseInput event = mouseInput;
+            event.setX(event.getTouchX() - item->x);
+            event.setY(event.getTouchY() - item->y);
             if (item->funcAll)
                 item->funcAll(event);
 

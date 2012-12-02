@@ -611,6 +611,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      mgl.h \
 	      mobileopenglgraphics.cpp \
 	      mobileopenglgraphics.h \
+	      mouseinput.cpp \
+	      mouseinput.h \
 	      normalopenglgraphics.cpp \
 	      normalopenglgraphics.h \
 	      particle.cpp \

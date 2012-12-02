@@ -58,9 +58,9 @@
 
 #include "gui/sdlinput.h"
 
-#include "keydata.h"
-
 #include "inputmanager.h"
+#include "keydata.h"
+#include "mouseinput.h" 
 
 #include <guichan/exception.hpp>
 
@@ -108,10 +108,25 @@ gcn::MouseInput SDLInput::dequeueMouseInput()
     return mouseInput;
 }
 
+MouseInput SDLInput::dequeueMouseInput2()
+{
+    MouseInput mouseInput;
+
+    if (mMouseInputQueue.empty())
+    {
+        throw GCN_EXCEPTION("The queue is empty.");
+    }
+
+    mouseInput = mMouseInputQueue.front();
+    mMouseInputQueue.pop();
+
+    return mouseInput;
+}
+
 void SDLInput::pushInput(const SDL_Event &event)
 {
     KeyInput keyInput;
-    gcn::MouseInput mouseInput;
+    MouseInput mouseInput;
 
     switch (event.type)
     {
@@ -153,6 +168,9 @@ void SDLInput::pushInput(const SDL_Event &event)
             mMouseDown = true;
             mouseInput.setX(event.button.x);
             mouseInput.setY(event.button.y);
+#ifdef ANDROID
+            mouseInput.setReal(event.button.realx, event.button.realy);
+#endif
             mouseInput.setButton(convertMouseButton(event.button.button));
 
             if (event.button.button == SDL_BUTTON_WHEELDOWN)
@@ -169,6 +187,9 @@ void SDLInput::pushInput(const SDL_Event &event)
             mMouseDown = false;
             mouseInput.setX(event.button.x);
             mouseInput.setY(event.button.y);
+#ifdef ANDROID
+            mouseInput.setReal(event.button.realx, event.button.realy);
+#endif
             mouseInput.setButton(convertMouseButton(event.button.button));
             mouseInput.setType(gcn::MouseInput::RELEASED);
             mouseInput.setTimeStamp(SDL_GetTicks());
@@ -178,6 +199,9 @@ void SDLInput::pushInput(const SDL_Event &event)
         case SDL_MOUSEMOTION:
             mouseInput.setX(event.button.x);
             mouseInput.setY(event.button.y);
+#ifdef ANDROID
+            mouseInput.setReal(event.button.realx, event.button.realy);
+#endif
             mouseInput.setButton(gcn::MouseInput::EMPTY);
             mouseInput.setType(gcn::MouseInput::MOVED);
             mouseInput.setTimeStamp(SDL_GetTicks());

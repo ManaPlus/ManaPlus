@@ -25,14 +25,16 @@
 
 #include "localconsts.h"
 
-void showKeyboard(const gcn::MouseInput &mouseInput);
+class MouseInput;
 
-void padClick(const gcn::MouseInput &mouseInput);
+void showKeyboard(const MouseInput &mouseInput);
 
-void padEvents(const gcn::MouseInput &mouseInput);
+void padClick(const MouseInput &mouseInput);
 
-void padOut(const gcn::MouseInput &mouseInput);
+void padEvents(const MouseInput &mouseInput);
 
-void padUp(const gcn::MouseInput &mouseInput);
+void padOut(const MouseInput &mouseInput);
+
+void padUp(const MouseInput &mouseInput);
 
 #endif

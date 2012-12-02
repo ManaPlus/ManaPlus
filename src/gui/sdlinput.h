@@ -70,6 +70,7 @@
 #include <queue>
 
 class KeyInput;
+class MouseInput;
 
 namespace Key
 {
@@ -168,6 +169,8 @@ public:
 
     virtual gcn::MouseInput dequeueMouseInput() A_WARN_UNUSED;
 
+    virtual MouseInput dequeueMouseInput2() A_WARN_UNUSED;
+
 protected:
     /**
      * Converts a mouse button from SDL to a Guichan mouse button
@@ -188,7 +191,7 @@ protected:
     static int convertKeyCharacter(const SDL_Event &event) A_WARN_UNUSED;
 
     std::queue<KeyInput> mKeyInputQueue;
-    std::queue<gcn::MouseInput> mMouseInputQueue;
+    std::queue<MouseInput> mMouseInputQueue;
 
     bool mMouseDown;
     bool mMouseInWindow;

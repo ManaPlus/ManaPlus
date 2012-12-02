@@ -36,6 +36,7 @@
 #include "keydata.h"
 #include "keyevent.h"
 #include "keyinput.h"
+#include "mouseinput.h"
 #include "touchmanager.h"
 
 #include "resources/image.h"
@@ -272,7 +273,7 @@ void Gui::logic()
     handleModalFocus();
     handleModalMouseInputFocus();
 
-    if (mInput)
+    if (guiInput)
         handleMouseInput();
 
     mTop->logic();
@@ -658,7 +659,7 @@ void Gui::handleMouseInput()
     BLOCK_START("Gui::handleMouseInput")
     while (!mInput->isMouseQueueEmpty())
     {
-        const gcn::MouseInput mouseInput = mInput->dequeueMouseInput();
+        const MouseInput mouseInput = guiInput->dequeueMouseInput2();
 
         if (touchManager.processEvent(mouseInput))
         {
