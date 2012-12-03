@@ -112,7 +112,7 @@ void ShortcutContainer::drawBackground(Graphics *g)
     }
 }
 
-void ShortcutContainer::widgetMoved(const gcn::Event& event)
+void ShortcutContainer::widgetMoved(const gcn::Event& event A_UNUSED)
 {
     mRedraw = true;
 }

@@ -111,8 +111,9 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemTextField(_("Crazy move A program"), "",
         "crazyMoveProgram", this, "crazyMoveProgramEvent");
 
-    new SetupItemCheckBox(_("Mouse relative moves (good for touch interfaces)"),
-        "", "mouseDirectionMove", this, "mouseDirectionMoveEvent");
+    new SetupItemCheckBox(_("Mouse relative moves "
+        "(good for touch interfaces)"), "", "mouseDirectionMove",
+        this, "mouseDirectionMoveEvent");
 
     new SetupItemLabel(_("Player"), "", this);
 

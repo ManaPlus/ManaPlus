@@ -40,7 +40,7 @@ TouchManager::TouchManager() :
     mVertexes(new ImageCollection),
     mRedraw(true)
 {
-    for (int f = 0;f < actionsSize; f ++)
+    for (int f = 0; f < actionsSize; f ++)
         mActions[f] = false;
 }
 

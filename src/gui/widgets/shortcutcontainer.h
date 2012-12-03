@@ -96,7 +96,7 @@ class ShortcutContainer : public gcn::Widget,
         void drawBackground(Graphics *g);
 
         void setRedraw(bool b)
-        { mRedraw = true; }
+        { mRedraw = b; }
 
     protected:
         /**

@@ -36,7 +36,7 @@
 bool padClicked(false);
 
 #ifdef ANDROID
-void showKeyboard(const MouseInput &mouseInput)
+void showKeyboard(const MouseInput &mouseInput A_UNUSED)
 {
     SDL_ANDROID_ToggleScreenKeyboardTextInput(nullptr);
 }

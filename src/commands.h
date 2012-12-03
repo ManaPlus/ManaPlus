@@ -115,7 +115,8 @@ namespace Commands
     void replaceVars(std::string &str);
 }
 
-static const CommandInfo commands[] = {
+static const CommandInfo commands[] =
+{
     {"closeall", &Commands::closeAll},
     {"ignoreall", &Commands::ignoreAll},
     {"help", &Commands::help},
