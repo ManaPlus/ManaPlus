@@ -63,6 +63,8 @@
 #define getFunction(name) wglGetProcAddress(name)
 #elif defined ANDROID
 #define getFunction(name) eglGetProcAddress(name)
+#elif defined __APPLE__
+#define getFunction(name) nullptr
 #else
 #define getFunction(name) glXGetProcAddress(\
     reinterpret_cast<const GLubyte*>(name))
