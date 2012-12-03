@@ -56,6 +56,9 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Auto hide chat window."), "",
         "autohideChat", this, "autohideChatEvent");
 
+    new SetupItemCheckBox(_("Protect chat focus."), "",
+        "protectChatFocus", this, "protectChatFocusEvent");
+
 
     new SetupItemLabel(_("Colors"), "", this);
 

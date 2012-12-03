@@ -79,7 +79,8 @@ class ChatInput final : public TextField, public gcn::FocusListener
             TextField(window, "", false),
             gcn::FocusListener(),
             mWindow(window),
-            mChatTabs(tabs)
+            mChatTabs(tabs),
+            mFocusGaining(false)
         {
             setVisible(false);
             addFocusListener(this);
@@ -93,9 +94,17 @@ class ChatInput final : public TextField, public gcn::FocusListener
          */
         void focusLost(const gcn::Event &event A_UNUSED)
         {
-            processVisible(false);
-            if (chatWindow)
-                chatWindow->updateVisibility();
+            if (mFocusGaining || !config.getBoolValue("protectChatFocus"))
+            {
+                processVisible(false);
+                if (chatWindow)
+                    chatWindow->updateVisibility();
+                mFocusGaining = false;
+                return;
+            }
+            mFocusGaining = true;
+            requestFocus();
+            mFocusGaining = false;
         }
 
         void processVisible(const bool n)
@@ -103,14 +112,25 @@ class ChatInput final : public TextField, public gcn::FocusListener
             if (!mWindow || isVisible() == n)
                 return;
 
+            if (!n)
+                mFocusGaining = true;
             setVisible(n);
             if (config.getBoolValue("hideChatInput"))
                 mWindow->adjustTabSize();
         }
 
+        void unprotectFocus()
+        { mFocusGaining = true; }
+
+        void setVisible(bool visible)
+        {
+            TextField::setVisible(visible);
+        }
+
     private:
         ChatWindow *mWindow;
         TabbedArea *mChatTabs;
+        bool mFocusGaining;
 };
 
 const char *COLOR_NAME[14] =
@@ -503,6 +523,7 @@ void ChatWindow::action(const gcn::ActionEvent &event)
         if (message.empty() || !mReturnToggles)
         {
             // Remove focus and hide input
+            mChatInput->unprotectFocus();
             if (mFocusHandler)
                 mFocusHandler->focusNone();
 

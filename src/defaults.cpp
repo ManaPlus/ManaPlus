@@ -279,6 +279,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("ministatussaved", 0);
     AddDEF("allowscreensaver", false);
     AddDEF("debugOpenGL", 0);
+    AddDEF("protectChatFocus", true);
     return configData;
 }
 
