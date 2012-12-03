@@ -439,8 +439,6 @@ SET(SRCS
     resources/mapreader.h
     resources/monsterdb.cpp
     resources/monsterdb.h
-    resources/music.cpp
-    resources/music.h
     resources/npcdb.cpp
     resources/npcdb.h
     resources/openglimagehelper.cpp
@@ -451,6 +449,8 @@ SET(SRCS
     resources/resourcemanager.h
     resources/sdlimagehelper.cpp
     resources/sdlimagehelper.h
+    resources/sdlmusic.cpp
+    resources/sdlmusic.h
     resources/soundeffect.h
     resources/soundeffect.cpp
     resources/spritedef.h

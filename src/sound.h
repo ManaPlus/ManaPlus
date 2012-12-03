@@ -31,7 +31,7 @@
 
 #include "localconsts.h"
 
-class Music;
+class SDLMusic;
 
 static const std::string SOUND_INFO = "soundinfo";
 static const std::string SOUND_ERROR = "sounderror";
@@ -164,7 +164,7 @@ class Sound final : public ConfigListener
         int mMusicVolume;
 
         std::string mCurrentMusicFile;
-        Music *mMusic;
+        SDLMusic *mMusic;
         bool mPlayBattle;
         bool mPlayGui;
         bool mPlayMusic;

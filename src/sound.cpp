@@ -25,7 +25,7 @@
 #include "configuration.h"
 #include "localplayer.h"
 
-#include "resources/music.h"
+#include "resources/sdlmusic.h"
 #include "resources/resourcemanager.h"
 #include "resources/soundeffect.h"
 
@@ -211,7 +211,7 @@ void Sound::setSfxVolume(const int volume)
         Mix_Volume(-1, mSfxVolume);
 }
 
-static Music *loadMusic(const std::string &fileName)
+static SDLMusic *loadMusic(const std::string &fileName)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
     return resman->getMusic(paths.getStringValue("music") + fileName);

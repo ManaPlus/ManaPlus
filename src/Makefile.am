@@ -441,8 +441,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/mapreader.h \
 	      resources/monsterdb.cpp \
 	      resources/monsterdb.h \
-	      resources/music.cpp \
-	      resources/music.h \
 	      resources/npcdb.cpp \
 	      resources/npcdb.h \
 	      resources/openglimagehelper.cpp \
@@ -453,6 +451,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/resourcemanager.h \
 	      resources/sdlimagehelper.cpp \
 	      resources/sdlimagehelper.h \
+	      resources/sdlmusic.cpp \
+	      resources/sdlmusic.h \
 	      resources/soundeffect.cpp \
 	      resources/soundeffect.h \
 	      resources/spritedef.cpp \

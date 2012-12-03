@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MUSIC_H
-#define MUSIC_H
+#ifndef SDLMUSIC_H
+#define SDLMUSIC_H
 
 #include "resources/resource.h"
 
@@ -32,20 +32,20 @@
 /**
  * Defines a class for loading and storing music.
  */
-class Music final : public Resource
+class SDLMusic final : public Resource
 {
     public:
-        Music() :
+        SDLMusic() :
             Resource(),
             mMusic(nullptr)
         { }
 
-        A_DELETE_COPY(Music)
+        A_DELETE_COPY(SDLMusic)
 
         /**
          * Destructor.
          */
-        virtual ~Music();
+        virtual ~SDLMusic();
 
         /**
          * Loads a music from a buffer in memory.
@@ -73,7 +73,7 @@ class Music final : public Resource
         /**
          * Constructor.
          */
-        Music(Mix_Music *const music);
+        SDLMusic(Mix_Music *const music);
 
         Mix_Music *mMusic;
 };

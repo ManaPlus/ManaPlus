@@ -20,28 +20,28 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/music.h"
+#include "resources/sdlmusic.h"
 
 #include "logger.h"
 
 #include "debug.h"
 
-Music::Music(Mix_Music *const music) :
+SDLMusic::SDLMusic(Mix_Music *const music) :
     Resource(),
     mMusic(music)
 {
 }
 
-Music::~Music()
+SDLMusic::~SDLMusic()
 {
     Mix_FreeMusic(mMusic);
 }
 
-Resource *Music::load(SDL_RWops *const rw)
+Resource *SDLMusic::load(SDL_RWops *const rw)
 {
     if (Mix_Music *const music = Mix_LoadMUS_RW(rw))
     {
-        return new Music(music);
+        return new SDLMusic(music);
     }
     else
     {
@@ -50,7 +50,7 @@ Resource *Music::load(SDL_RWops *const rw)
     }
 }
 
-bool Music::play(const int loops, const int fadeIn)
+bool SDLMusic::play(const int loops, const int fadeIn)
 {
     if (fadeIn > 0)
         return Mix_FadeInMusic(mMusic, loops, fadeIn);

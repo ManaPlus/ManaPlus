@@ -32,7 +32,7 @@
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/imageset.h"
-#include "resources/music.h"
+#include "resources/sdlmusic.h"
 #include "resources/openglimagehelper.h"
 #include "resources/soundeffect.h"
 #include "resources/spritedef.h"
@@ -549,9 +549,9 @@ Resource *ResourceManager::load(const std::string &path, const loader fun)
     return get(path, ResourceLoader::load, &rl);
 }
 
-Music *ResourceManager::getMusic(const std::string &idPath)
+SDLMusic *ResourceManager::getMusic(const std::string &idPath)
 {
-    return static_cast<Music*>(load(idPath, Music::load));
+    return static_cast<SDLMusic*>(load(idPath, SDLMusic::load));
 }
 
 SoundEffect *ResourceManager::getSoundEffect(const std::string &idPath)

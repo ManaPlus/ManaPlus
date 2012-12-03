@@ -37,7 +37,7 @@
 class AnimationDelayLoad;
 class Image;
 class ImageSet;
-class Music;
+class SDLMusic;
 class Resource;
 class SoundEffect;
 class SpriteDef;
@@ -195,7 +195,7 @@ class ResourceManager final
          * Convenience wrapper around ResourceManager::get for loading
          * songs.
          */
-        Music *getMusic(const std::string &idPath) A_WARN_UNUSED;
+        SDLMusic *getMusic(const std::string &idPath) A_WARN_UNUSED;
 
         /**
          * Convenience wrapper around ResourceManager::get for loading
