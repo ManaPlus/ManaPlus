@@ -24,34 +24,34 @@ namespace Cursor
 {
     static StrToCursor hoverCursors[] =
     {
-        {"select", Cursor::CURSOR_POINTER},
-        {"pointer", Cursor::CURSOR_POINTER},
-        {"lr", Cursor::CURSOR_RESIZE_ACROSS},
-        {"rl", Cursor::CURSOR_RESIZE_ACROSS},
-        {"resizeAcross", Cursor::CURSOR_RESIZE_ACROSS},
-        {"ud", Cursor::CURSOR_RESIZE_DOWN},
-        {"du", Cursor::CURSOR_RESIZE_DOWN},
-        {"resizeDown", Cursor::CURSOR_RESIZE_DOWN},
-        {"ldru", Cursor::CURSOR_RESIZE_DOWN_LEFT},
-        {"ruld", Cursor::CURSOR_RESIZE_DOWN_LEFT},
-        {"ld", Cursor::CURSOR_RESIZE_DOWN_LEFT},
-        {"ru", Cursor::CURSOR_RESIZE_DOWN_LEFT},
-        {"resizeDownLeft", Cursor::CURSOR_RESIZE_DOWN_LEFT},
-        {"lurd", Cursor::CURSOR_RESIZE_DOWN_RIGHT},
-        {"rdlu", Cursor::CURSOR_RESIZE_DOWN_RIGHT},
-        {"rd", Cursor::CURSOR_RESIZE_DOWN_RIGHT},
-        {"lu", Cursor::CURSOR_RESIZE_DOWN_RIGHT},
-        {"resizeDownRight", Cursor::CURSOR_RESIZE_DOWN_RIGHT},
-        {"attack", Cursor::CURSOR_FIGHT},
-        {"fight", Cursor::CURSOR_FIGHT},
-        {"take", Cursor::CURSOR_PICKUP},
-        {"pickup", Cursor::CURSOR_PICKUP},
-        {"talk", Cursor::CURSOR_TALK},
-        {"action", Cursor::CURSOR_ACTION},
-        {"left", Cursor::CURSOR_LEFT},
-        {"up", Cursor::CURSOR_UP},
-        {"right", Cursor::CURSOR_RIGHT},
-        {"down", Cursor::CURSOR_DOWN}
+        {"select", CURSOR_POINTER},
+        {"pointer", CURSOR_POINTER},
+        {"lr", CURSOR_RESIZE_ACROSS},
+        {"rl", CURSOR_RESIZE_ACROSS},
+        {"resizeAcross", CURSOR_RESIZE_ACROSS},
+        {"ud", CURSOR_RESIZE_DOWN},
+        {"du", CURSOR_RESIZE_DOWN},
+        {"resizeDown", CURSOR_RESIZE_DOWN},
+        {"ldru", CURSOR_RESIZE_DOWN_LEFT},
+        {"ruld", CURSOR_RESIZE_DOWN_LEFT},
+        {"ld", CURSOR_RESIZE_DOWN_LEFT},
+        {"ru", CURSOR_RESIZE_DOWN_LEFT},
+        {"resizeDownLeft", CURSOR_RESIZE_DOWN_LEFT},
+        {"lurd", CURSOR_RESIZE_DOWN_RIGHT},
+        {"rdlu", CURSOR_RESIZE_DOWN_RIGHT},
+        {"rd", CURSOR_RESIZE_DOWN_RIGHT},
+        {"lu", CURSOR_RESIZE_DOWN_RIGHT},
+        {"resizeDownRight", CURSOR_RESIZE_DOWN_RIGHT},
+        {"attack", CURSOR_FIGHT},
+        {"fight", CURSOR_FIGHT},
+        {"take", CURSOR_PICKUP},
+        {"pickup", CURSOR_PICKUP},
+        {"talk", CURSOR_TALK},
+        {"action", CURSOR_ACTION},
+        {"left", CURSOR_LEFT},
+        {"up", CURSOR_UP},
+        {"right", CURSOR_RIGHT},
+        {"down", CURSOR_DOWN}
     };
 
     Cursor stringToCursor(const std::string &name)
@@ -62,7 +62,7 @@ namespace Cursor
             if (hoverCursors[f].str == name)
                 return hoverCursors[f].cursor;
         }
-        return Cursor::CURSOR_POINTER;
+        return CURSOR_POINTER;
     }
 
 }
