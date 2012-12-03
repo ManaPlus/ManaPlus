@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "sound.h"
+#include "soundmanager.h"
 
 #include "configuration.h"
 #include "localplayer.h"
@@ -48,7 +48,7 @@ static void fadeOutCallBack()
     sFadingOutEnded = true;
 }
 
-Sound::Sound():
+SoundManager::SoundManager():
     mInstalled(false),
     mSfxVolume(100),
     mMusicVolume(60),
@@ -64,7 +64,7 @@ Sound::Sound():
     Mix_HookMusicFinished(fadeOutCallBack);
 }
 
-Sound::~Sound()
+SoundManager::~SoundManager()
 {
     config.removeListeners(this);
 
@@ -72,7 +72,7 @@ Sound::~Sound()
     Mix_HookMusicFinished(nullptr);
 }
 
-void Sound::optionChanged(const std::string &value)
+void SoundManager::optionChanged(const std::string &value)
 {
     if (value == "playBattleSound")
         mPlayBattle = config.getBoolValue("playBattleSound");
@@ -86,13 +86,13 @@ void Sound::optionChanged(const std::string &value)
         setMusicVolume(config.getIntValue("musicVolume"));
 }
 
-void Sound::init()
+void SoundManager::init()
 {
     // Don't initialize sound engine twice
     if (mInstalled)
         return;
 
-    logger->log1("Sound::init() Initializing sound...");
+    logger->log1("SoundManager::init() Initializing sound...");
 
     mPlayBattle = config.getBoolValue("playBattleSound");
     mPlayGui = config.getBoolValue("playGuiSound");
@@ -105,7 +105,7 @@ void Sound::init()
 
     if (SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
     {
-        logger->log1("Sound::init() Failed to initialize audio subsystem");
+        logger->log1("SoundManager::init() Failed to initialize audio subsystem");
         return;
     }
 
@@ -128,7 +128,7 @@ void Sound::init()
 
     if (res < 0)
     {
-        logger->log("Sound::init Could not initialize audio: %s",
+        logger->log("SoundManager::init Could not initialize audio: %s",
                     Mix_GetError());
         if (Mix_OpenAudio(22010, MIX_DEFAULT_FORMAT, 2, audioBuffer) < 0)
             return;
@@ -147,7 +147,7 @@ void Sound::init()
         playMusic(mCurrentMusicFile);
 }
 
-void Sound::info() const
+void SoundManager::info() const
 {
     SDL_version compiledVersion;
     const SDL_version *linkedVersion;
@@ -174,28 +174,28 @@ void Sound::info() const
         default: break;
     }
 
-    logger->log("Sound::info() SDL_mixer: %i.%i.%i (compiled)",
+    logger->log("SoundManager::info() SDL_mixer: %i.%i.%i (compiled)",
             compiledVersion.major,
             compiledVersion.minor,
             compiledVersion.patch);
     if (linkedVersion)
     {
-        logger->log("Sound::info() SDL_mixer: %i.%i.%i (linked)",
+        logger->log("SoundManager::info() SDL_mixer: %i.%i.%i (linked)",
             linkedVersion->major,
             linkedVersion->minor,
             linkedVersion->patch);
     }
     else
     {
-        logger->log1("Sound::info() SDL_mixer: unknown");
+        logger->log1("SoundManager::info() SDL_mixer: unknown");
     }
-    logger->log("Sound::info() Driver: %s", driver);
-    logger->log("Sound::info() Format: %s", format);
-    logger->log("Sound::info() Rate: %i", rate);
-    logger->log("Sound::info() Channels: %i", channels);
+    logger->log("SoundManager::info() Driver: %s", driver);
+    logger->log("SoundManager::info() Format: %s", format);
+    logger->log("SoundManager::info() Rate: %i", rate);
+    logger->log("SoundManager::info() Channels: %i", channels);
 }
 
-void Sound::setMusicVolume(const int volume)
+void SoundManager::setMusicVolume(const int volume)
 {
     mMusicVolume = volume;
 
@@ -203,7 +203,7 @@ void Sound::setMusicVolume(const int volume)
         Mix_VolumeMusic(mMusicVolume);
 }
 
-void Sound::setSfxVolume(const int volume)
+void SoundManager::setSfxVolume(const int volume)
 {
     mSfxVolume = volume;
 
@@ -217,7 +217,7 @@ static SDLMusic *loadMusic(const std::string &fileName)
     return resman->getMusic(paths.getStringValue("music") + fileName);
 }
 
-void Sound::playMusic(const std::string &fileName)
+void SoundManager::playMusic(const std::string &fileName)
 {
     mCurrentMusicFile = fileName;
 
@@ -234,12 +234,12 @@ void Sound::playMusic(const std::string &fileName)
     }
 }
 
-void Sound::stopMusic()
+void SoundManager::stopMusic()
 {
     haltMusic();
 }
 
-void Sound::fadeInMusic(const std::string &fileName, const int ms)
+void SoundManager::fadeInMusic(const std::string &fileName, const int ms)
 {
     mCurrentMusicFile = fileName;
 
@@ -256,14 +256,14 @@ void Sound::fadeInMusic(const std::string &fileName, const int ms)
     }
 }
 
-void Sound::fadeOutMusic(const int ms)
+void SoundManager::fadeOutMusic(const int ms)
 {
     mCurrentMusicFile.clear();
 
     if (!mInstalled)
         return;
 
-    logger->log("Sound::fadeOutMusic() Fading-out (%i ms)", ms);
+    logger->log("SoundManager::fadeOutMusic() Fading-out (%i ms)", ms);
 
     if (mMusic)
     {
@@ -277,15 +277,15 @@ void Sound::fadeOutMusic(const int ms)
     }
 }
 
-void Sound::fadeOutAndPlayMusic(const std::string &fileName, const int ms)
+void SoundManager::fadeOutAndPlayMusic(const std::string &fileName, const int ms)
 {
     mNextMusicFile = fileName;
     fadeOutMusic(ms);
 }
 
-void Sound::logic()
+void SoundManager::logic()
 {
-    BLOCK_START("Sound::logic")
+    BLOCK_START("SoundManager::logic")
     if (sFadingOutEnded)
     {
         if (mMusic)
@@ -301,10 +301,10 @@ void Sound::logic()
             mNextMusicFile.clear();
         }
     }
-    BLOCK_END("Sound::logic")
+    BLOCK_END("SoundManager::logic")
 }
 
-void Sound::playSfx(const std::string &path, const int x, const int y) const
+void SoundManager::playSfx(const std::string &path, const int x, const int y) const
 {
     if (!mInstalled || path.empty() || !mPlayBattle)
         return;
@@ -318,7 +318,7 @@ void Sound::playSfx(const std::string &path, const int x, const int y) const
     SoundEffect *const sample = resman->getSoundEffect(tmpPath);
     if (sample)
     {
-        logger->log("Sound::playSfx() Playing: %s", path.c_str());
+        logger->log("SoundManager::playSfx() Playing: %s", path.c_str());
         int vol = 120;
         if (player_node && (x > 0 || y > 0))
         {
@@ -338,13 +338,13 @@ void Sound::playSfx(const std::string &path, const int x, const int y) const
     }
 }
 
-void Sound::playGuiSound(const std::string &name)
+void SoundManager::playGuiSound(const std::string &name)
 {
     playGuiSfx(branding.getStringValue("systemsounds")
         + config.getStringValue(name) + ".ogg");
 }
 
-void Sound::playGuiSfx(const std::string &path)
+void SoundManager::playGuiSfx(const std::string &path)
 {
     if (!mInstalled || path.empty() || !mPlayGui)
         return;
@@ -358,26 +358,26 @@ void Sound::playGuiSfx(const std::string &path)
     SoundEffect *const sample = resman->getSoundEffect(tmpPath);
     if (sample)
     {
-        logger->log("Sound::playGuiSfx() Playing: %s", path.c_str());
+        logger->log("SoundManager::playGuiSfx() Playing: %s", path.c_str());
         const int ret = sample->play(0, 120, mGuiChannel);
         if (ret != -1)
             mGuiChannel = ret;
     }
 }
 
-void Sound::close()
+void SoundManager::close()
 {
     if (!mInstalled)
         return;
 
     haltMusic();
-    logger->log1("Sound::close() Shutting down sound...");
+    logger->log1("SoundManager::close() Shutting down sound...");
     Mix_CloseAudio();
 
     mInstalled = false;
 }
 
-void Sound::haltMusic()
+void SoundManager::haltMusic()
 {
     if (!mMusic)
         return;
@@ -390,7 +390,7 @@ void Sound::haltMusic()
     }
 }
 
-void Sound::changeAudio()
+void SoundManager::changeAudio()
 {
     if (mInstalled)
         close();
@@ -398,7 +398,7 @@ void Sound::changeAudio()
         init();
 }
 
-void Sound::volumeOff() const
+void SoundManager::volumeOff() const
 {
     if (mInstalled)
     {
@@ -407,7 +407,7 @@ void Sound::volumeOff() const
     }
 }
 
-void Sound::volumeRestore()
+void SoundManager::volumeRestore()
 {
     if (mInstalled)
     {

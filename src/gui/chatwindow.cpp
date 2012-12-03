@@ -34,7 +34,7 @@
 #include "party.h"
 #include "playerinfo.h"
 #include "spellshortcut.h"
-#include "sound.h"
+#include "soundmanager.h"
 
 #include "gui/gui.h"
 #include "gui/setup.h"

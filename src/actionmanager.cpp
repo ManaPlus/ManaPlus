@@ -31,7 +31,7 @@
 #include "localplayer.h"
 #include "playerinfo.h"
 #include "playerrelations.h"
-#include "sound.h"
+#include "soundmanager.h"
 
 #include "gui/botcheckerwindow.h"
 #include "gui/buyselldialog.h"

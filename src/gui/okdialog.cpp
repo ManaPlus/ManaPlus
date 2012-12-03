@@ -22,7 +22,7 @@
 
 #include "gui/okdialog.h"
 
-#include "sound.h"
+#include "soundmanager.h"
 
 #include "gui/gui.h"
 

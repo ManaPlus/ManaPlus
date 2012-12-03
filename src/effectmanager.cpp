@@ -25,7 +25,7 @@
 #include "being.h"
 #include "logger.h"
 #include "particle.h"
-#include "sound.h"
+#include "soundmanager.h"
 
 #include "debug.h"
 

@@ -639,8 +639,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      shopitem.h \
 	      simpleanimation.cpp \
 	      simpleanimation.h \
-	      sound.cpp \
-	      sound.h \
+	      soundmanager.cpp \
+	      soundmanager.h \
 	      sprite.h \
 	      statuseffect.cpp \
 	      statuseffect.h \

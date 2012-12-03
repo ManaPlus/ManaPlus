@@ -49,7 +49,7 @@
 #include "playerinfo.h"
 #include "playerrelations.h"
 #include "shopitem.h"
-#include "sound.h"
+#include "soundmanager.h"
 #include "units.h"
 
 #include "net/net.h"

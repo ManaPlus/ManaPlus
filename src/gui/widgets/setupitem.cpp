@@ -22,7 +22,7 @@
 
 #include "configuration.h"
 #include "main.h"
-#include "sound.h"
+#include "soundmanager.h"
 
 #include "gui/editdialog.h"
 #include "gui/gui.h"

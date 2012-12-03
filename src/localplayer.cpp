@@ -36,7 +36,7 @@
 #include "playerinfo.h"
 #include "playerrelations.h"
 #include "simpleanimation.h"
-#include "sound.h"
+#include "soundmanager.h"
 #include "statuseffect.h"
 #include "dropshortcut.h"
 

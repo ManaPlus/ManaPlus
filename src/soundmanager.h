@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SOUND_H
-#define SOUND_H
+#ifndef SOUNDMANAGER_H
+#define SOUNDMANAGER_H
 
 #include <SDL_mixer.h>
 
@@ -44,18 +44,18 @@ static const std::string SOUND_GUILD = "soundguild";
 static const std::string SOUND_SHOW_WINDOW = "soundshowwindow";
 static const std::string SOUND_HIDE_WINDOW = "soundhidewindow";
 
-/** Sound engine
+/** SoundManager
  *
  * \ingroup CORE
  */
-class Sound final : public ConfigListener
+class SoundManager final : public ConfigListener
 {
     public:
-        Sound();
+        SoundManager();
 
-        A_DELETE_COPY(Sound)
+        A_DELETE_COPY(SoundManager)
 
-        ~Sound();
+        ~SoundManager();
 
         void optionChanged(const std::string &value) override;
 
@@ -171,6 +171,6 @@ class Sound final : public ConfigListener
         int mGuiChannel;
 };
 
-extern Sound sound;
+extern SoundManager sound;
 
 #endif

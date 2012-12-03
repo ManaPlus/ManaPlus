@@ -25,7 +25,7 @@
 #include "main.h"
 
 #include "configuration.h"
-#include "sound.h"
+#include "soundmanager.h"
 
 #include "gui/viewport.h"
 

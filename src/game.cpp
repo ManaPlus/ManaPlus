@@ -40,7 +40,7 @@
 #include "localplayer.h"
 #include "particle.h"
 #include "playerinfo.h"
-#include "sound.h"
+#include "soundmanager.h"
 #include "spellshortcut.h"
 
 #include "gui/botcheckerwindow.h"

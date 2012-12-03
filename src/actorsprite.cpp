@@ -28,7 +28,7 @@
 #include "imagesprite.h"
 #include "localplayer.h"
 #include "simpleanimation.h"
-#include "sound.h"
+#include "soundmanager.h"
 #include "statuseffect.h"
 
 #include "gui/theme.h"

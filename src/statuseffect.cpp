@@ -23,7 +23,7 @@
 #include "statuseffect.h"
 
 #include "logger.h"
-#include "sound.h"
+#include "soundmanager.h"
 
 #include "gui/widgets/chattab.h"
 

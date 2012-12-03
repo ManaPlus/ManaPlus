@@ -41,7 +41,7 @@
 #include "keyboardconfig.h"
 #include "party.h"
 #include "playerrelations.h"
-#include "sound.h"
+#include "soundmanager.h"
 #include "statuseffect.h"
 #include "units.h"
 #include "touchmanager.h"
@@ -146,7 +146,7 @@ KeyboardConfig keyboard;
 UserPalette *userPalette = nullptr;
 Graphics *mainGraphics = nullptr;
 
-Sound sound;
+SoundManager sound;
 int openGLMode = 0;
 
 static uint32_t nextTick(uint32_t interval, void *param A_UNUSED);

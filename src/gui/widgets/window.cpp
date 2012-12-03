@@ -25,7 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphicsvertexes.h"
-#include "sound.h"
+#include "soundmanager.h"
 
 #include "gui/gui.h"
 #include "gui/viewport.h"

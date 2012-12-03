@@ -26,7 +26,7 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsmanager.h"
-#include "sound.h"
+#include "soundmanager.h"
 
 #include "gui/theme.h"
 

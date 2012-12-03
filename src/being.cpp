@@ -35,7 +35,7 @@
 #include "party.h"
 #include "playerrelations.h"
 #include "simpleanimation.h"
-#include "sound.h"
+#include "soundmanager.h"
 #include "text.h"
 
 #include "gui/equipmentwindow.h"
