@@ -1325,6 +1325,15 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                 const unsigned gMask = format->Gmask;
                 const unsigned bMask = format->Bmask;
                 const unsigned aMask = format->Amask;
+                unsigned rShift = rMask / 0xff;
+                unsigned gShift = gMask / 0xff;
+                unsigned bShift = bMask / 0xff;
+                if (!rShift)
+                    rShift = 1;
+                if (!gShift)
+                    gShift = 1;
+                if (!bShift)
+                    bShift = 1;
                 if (pixel != mOldPixel || mColor.a != mOldAlpha)
                 {
                     const unsigned pb = (pixel & bMask) * mColor.a;
@@ -1332,9 +1341,9 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                     const unsigned pr = (pixel & rMask) * mColor.a;
                     const unsigned a0 = (255 - mColor.a);
 
-                    const unsigned int a1 = a0 * bMask / 0xff;
-                    const unsigned int a2 = a0 * gMask / 0xff;
-                    const unsigned int a3 = a0 * rMask / 0xff;
+                    const unsigned int a1 = a0 * bShift;
+                    const unsigned int a2 = a0 * gShift;
+                    const unsigned int a3 = a0 * rShift;
 
                     for (int f = 0; f <= 0xff; f ++)
                     {
@@ -1356,8 +1365,9 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                     {
                         uint32_t *const p = p0 + x;
                         const uint32_t dst = *p;
-                        *p = cB[dst & bMask] | cG[(dst & gMask) >> 8]
-                            | cR[(dst & 0xff0000) >> 16];
+                        *p = cB[dst & bMask / bShift]
+                            | cG[(dst & gMask) / gShift]
+                            | cR[(dst & rMask) / rShift];
                     }
                 }
 #endif
