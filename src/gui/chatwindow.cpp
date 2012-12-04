@@ -1410,12 +1410,19 @@ void ChatWindow::resortChatLog(std::string line, Own own,
             return;
         }
 
-        const size_t idx = line.find(": \302\202");
-        if (idx != std::string::npos)
+        const size_t idx2 = line.find(": ");
+        if (idx2 != std::string::npos)
         {
-            line = line.erase(idx + 2, 2);
-            tradeChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
-            return;
+            const size_t idx = line.find(": \302\202");
+            if (idx == idx2)
+            {
+                // ignore special message formats.
+                if (line.find(": \302\202\302") != std::string::npos)
+                    return;
+                line = line.erase(idx + 2, 2);
+                tradeChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
+                return;
+            }
         }
 
         const size_t idx1 = line.find("@@");

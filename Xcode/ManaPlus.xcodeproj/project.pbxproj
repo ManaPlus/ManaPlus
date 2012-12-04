@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B4EBD02166DE12200BDD105 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 2B4EBD01166DE12200BDD105 /* locale */; };
 		2BAC2B44166DB4B300874178 /* manaplus.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC2B43166DB4B300874178 /* manaplus.icns */; };
 		2BAC2B4E166DCFB900874178 /* libXdmcp.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BAC2B46166DCFB900874178 /* libXdmcp.6.dylib */; };
 		2BAC2B4F166DCFB900874178 /* libXau.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BAC2B47166DCFB900874178 /* libXau.6.dylib */; };
@@ -746,7 +747,6 @@
 		2BDF4D53166D5D9E0054E77F /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D4E166D5D9E0054E77F /* SDL.framework */; };
 		2BDF4D55166D5DCD0054E77F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D54166D5DCD0054E77F /* OpenGL.framework */; };
 		2BDF4D57166D5E040054E77F /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D56166D5E040054E77F /* libcurl.dylib */; };
-		2BDF4D6F166D6ADC0054E77F /* Mana.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF4D6E166D6ADC0054E77F /* Mana.icns */; };
 		2BDF4D76166D783A0054E77F /* data in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF4D75166D781C0054E77F /* data */; };
 		2BDF4D81166D7F060054E77F /* SDL_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D4A166D5D9E0054E77F /* SDL_image.framework */; };
 		2BDF4D82166D7F090054E77F /* SDL_mixer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D4B166D5D9E0054E77F /* SDL_mixer.framework */; };
@@ -826,6 +826,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B4EBD01166DE12200BDD105 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = locale; sourceTree = SOURCE_ROOT; };
 		2BAC2B43166DB4B300874178 /* manaplus.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = manaplus.icns; sourceTree = "<group>"; };
 		2BAC2B46166DCFB900874178 /* libXdmcp.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXdmcp.6.dylib; path = libs/libXdmcp.6.dylib; sourceTree = "<group>"; };
 		2BAC2B47166DCFB900874178 /* libXau.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXau.6.dylib; path = libs/libXau.6.dylib; sourceTree = "<group>"; };
@@ -1640,7 +1641,6 @@
 		2BDF4D4E166D5D9E0054E77F /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
 		2BDF4D54166D5DCD0054E77F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2BDF4D56166D5E040054E77F /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
-		2BDF4D6E166D6ADC0054E77F /* Mana.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Mana.icns; sourceTree = "<group>"; };
 		2BDF4D75166D781C0054E77F /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = "<group>"; };
 		2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = libs/libfreetype.6.dylib; sourceTree = "<group>"; };
 		2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = libs/libiconv.2.dylib; sourceTree = "<group>"; };
@@ -1709,7 +1709,6 @@
 			isa = PBXGroup;
 			children = (
 				2BAC2B43166DB4B300874178 /* manaplus.icns */,
-				2BDF4D6E166D6ADC0054E77F /* Mana.icns */,
 				2BDF45C9166D5AEC0054E77F /* ManaPlus */,
 				2BDF45E6166D5AEC0054E77F /* ManaPlusTests */,
 				2BDF45C2166D5AEC0054E77F /* Frameworks */,
@@ -1805,6 +1804,7 @@
 				2BDF4778166D5B680054E77F /* configlistener.h */,
 				2BDF4779166D5B680054E77F /* configuration.cpp */,
 				2BDF477A166D5B680054E77F /* configuration.h */,
+				2B4EBD01166DE12200BDD105 /* locale */,
 				2BDF4D75166D781C0054E77F /* data */,
 				2BDF477B166D5B680054E77F /* debug */,
 				2BDF4780166D5B680054E77F /* debug.h */,
@@ -2834,9 +2834,9 @@
 				2BDF45CE166D5AEC0054E77F /* InfoPlist.strings in Resources */,
 				2BDF45D4166D5AEC0054E77F /* Credits.rtf in Resources */,
 				2BDF45DA166D5AEC0054E77F /* MainMenu.xib in Resources */,
-				2BDF4D6F166D6ADC0054E77F /* Mana.icns in Resources */,
 				2BDF4D76166D783A0054E77F /* data in Resources */,
 				2BAC2B44166DB4B300874178 /* manaplus.icns in Resources */,
+				2B4EBD02166DE12200BDD105 /* locale in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3737,6 +3737,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"-DUSE_INTERNALGUICHAN",
 					"-DUSE_OPENGL",
+					"-DENABLE_NLS",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -3777,6 +3778,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"-DUSE_INTERNALGUICHAN",
 					"-DUSE_OPENGL",
+					"-DENABLE_NLS",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
