@@ -735,15 +735,29 @@
 		2BDF4D53166D5D9E0054E77F /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D4E166D5D9E0054E77F /* SDL.framework */; };
 		2BDF4D55166D5DCD0054E77F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D54166D5DCD0054E77F /* OpenGL.framework */; };
 		2BDF4D57166D5E040054E77F /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D56166D5E040054E77F /* libcurl.dylib */; };
-		2BDF4D59166D5E300054E77F /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D58166D5E300054E77F /* libfreetype.a */; };
-		2BDF4D5B166D5E3D0054E77F /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D5A166D5E3D0054E77F /* libz.a */; };
-		2BDF4D5D166D5E4B0054E77F /* libiconv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D5C166D5E4B0054E77F /* libiconv.a */; };
-		2BDF4D5F166D5E630054E77F /* libphysfs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D5E166D5E630054E77F /* libphysfs.a */; };
-		2BDF4D61166D5E660054E77F /* libpng15.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D60166D5E660054E77F /* libpng15.a */; };
-		2BDF4D63166D5E700054E77F /* libSDL_gfx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D62166D5E700054E77F /* libSDL_gfx.a */; };
-		2BDF4D65166D5E840054E77F /* libxml2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D64166D5E840054E77F /* libxml2.a */; };
-		2BDF4D67166D5EAE0054E77F /* libintl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D66166D5EAE0054E77F /* libintl.a */; };
 		2BDF4D6F166D6ADC0054E77F /* Mana.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF4D6E166D6ADC0054E77F /* Mana.icns */; };
+		2BDF4D76166D783A0054E77F /* data in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF4D75166D781C0054E77F /* data */; };
+		2BDF4D81166D7F060054E77F /* SDL_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D4A166D5D9E0054E77F /* SDL_image.framework */; };
+		2BDF4D82166D7F090054E77F /* SDL_mixer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D4B166D5D9E0054E77F /* SDL_mixer.framework */; };
+		2BDF4D83166D7F0D0054E77F /* SDL_net.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D4C166D5D9E0054E77F /* SDL_net.framework */; };
+		2BDF4D84166D7F0F0054E77F /* SDL_ttf.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D4D166D5D9E0054E77F /* SDL_ttf.framework */; };
+		2BDF4D85166D7F120054E77F /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D4E166D5D9E0054E77F /* SDL.framework */; };
+		2BDF4D97166D8E0D0054E77F /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */; };
+		2BDF4D98166D8E0D0054E77F /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */; };
+		2BDF4D99166D8E0D0054E77F /* libintl.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D91166D8E0C0054E77F /* libintl.8.dylib */; };
+		2BDF4D9B166D8E0D0054E77F /* libpng15.15.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */; };
+		2BDF4D9C166D8E0D0054E77F /* libSDL_gfx.14.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */; };
+		2BDF4D9D166D8E0D0054E77F /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */; };
+		2BDF4D9E166D8E0D0054E77F /* libz.1.2.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */; };
+		2BDF4D9F166D8E2C0054E77F /* libfreetype.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */; };
+		2BDF4DA0166D8E2F0054E77F /* libiconv.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */; };
+		2BDF4DA1166D8E330054E77F /* libintl.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D91166D8E0C0054E77F /* libintl.8.dylib */; };
+		2BDF4DA3166D8E370054E77F /* libpng15.15.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */; };
+		2BDF4DA4166D8E3C0054E77F /* libSDL_gfx.14.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */; };
+		2BDF4DA5166D8E3E0054E77F /* libxml2.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */; };
+		2BDF4DA6166D8E410054E77F /* libz.1.2.7.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */; };
+		2BDF4DA9166D99330054E77F /* libphysfs.2.0.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4DA8166D99320054E77F /* libphysfs.2.0.2.dylib */; };
+		2BDF4DAA166D99410054E77F /* libphysfs.2.0.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4DA8166D99320054E77F /* libphysfs.2.0.2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -755,6 +769,40 @@
 			remoteInfo = ManaPlus;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2BDF4D77166D7EA00054E77F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2BDF4D81166D7F060054E77F /* SDL_image.framework in CopyFiles */,
+				2BDF4D82166D7F090054E77F /* SDL_mixer.framework in CopyFiles */,
+				2BDF4D83166D7F0D0054E77F /* SDL_net.framework in CopyFiles */,
+				2BDF4D84166D7F0F0054E77F /* SDL_ttf.framework in CopyFiles */,
+				2BDF4D85166D7F120054E77F /* SDL.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BDF4D86166D88400054E77F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 12;
+			files = (
+				2BDF4DAA166D99410054E77F /* libphysfs.2.0.2.dylib in CopyFiles */,
+				2BDF4DA6166D8E410054E77F /* libz.1.2.7.dylib in CopyFiles */,
+				2BDF4DA5166D8E3E0054E77F /* libxml2.2.dylib in CopyFiles */,
+				2BDF4DA3166D8E370054E77F /* libpng15.15.dylib in CopyFiles */,
+				2BDF4DA4166D8E3C0054E77F /* libSDL_gfx.14.dylib in CopyFiles */,
+				2BDF4D9F166D8E2C0054E77F /* libfreetype.6.dylib in CopyFiles */,
+				2BDF4DA0166D8E2F0054E77F /* libiconv.2.dylib in CopyFiles */,
+				2BDF4DA1166D8E330054E77F /* libintl.8.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2BDF45BF166D5AEC0054E77F /* ManaPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManaPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1560,15 +1608,16 @@
 		2BDF4D4E166D5D9E0054E77F /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
 		2BDF4D54166D5DCD0054E77F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2BDF4D56166D5E040054E77F /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
-		2BDF4D58166D5E300054E77F /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = /opt/local/lib/libfreetype.a; sourceTree = "<absolute>"; };
-		2BDF4D5A166D5E3D0054E77F /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = /opt/local/lib/libz.a; sourceTree = "<absolute>"; };
-		2BDF4D5C166D5E4B0054E77F /* libiconv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiconv.a; path = /opt/local/lib/libiconv.a; sourceTree = "<absolute>"; };
-		2BDF4D5E166D5E630054E77F /* libphysfs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libphysfs.a; path = /opt/local/lib/libphysfs.a; sourceTree = "<absolute>"; };
-		2BDF4D60166D5E660054E77F /* libpng15.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng15.a; path = /opt/local/lib/libpng15.a; sourceTree = "<absolute>"; };
-		2BDF4D62166D5E700054E77F /* libSDL_gfx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL_gfx.a; path = /opt/local/lib/libSDL_gfx.a; sourceTree = "<absolute>"; };
-		2BDF4D64166D5E840054E77F /* libxml2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxml2.a; path = /opt/local/lib/libxml2.a; sourceTree = "<absolute>"; };
-		2BDF4D66166D5EAE0054E77F /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = /opt/local/lib/libintl.a; sourceTree = "<absolute>"; };
 		2BDF4D6E166D6ADC0054E77F /* Mana.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Mana.icns; sourceTree = "<group>"; };
+		2BDF4D75166D781C0054E77F /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = "<group>"; };
+		2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = libs/libfreetype.6.dylib; sourceTree = "<group>"; };
+		2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = libs/libiconv.2.dylib; sourceTree = "<group>"; };
+		2BDF4D91166D8E0C0054E77F /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = libs/libintl.8.dylib; sourceTree = "<group>"; };
+		2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng15.15.dylib; path = libs/libpng15.15.dylib; sourceTree = "<group>"; };
+		2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL_gfx.14.dylib; path = libs/libSDL_gfx.14.dylib; sourceTree = "<group>"; };
+		2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = libs/libxml2.2.dylib; sourceTree = "<group>"; };
+		2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.7.dylib; path = libs/libz.1.2.7.dylib; sourceTree = "<group>"; };
+		2BDF4DA8166D99320054E77F /* libphysfs.2.0.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libphysfs.2.0.2.dylib; path = libs/libphysfs.2.0.2.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1576,14 +1625,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BDF4D67166D5EAE0054E77F /* libintl.a in Frameworks */,
-				2BDF4D65166D5E840054E77F /* libxml2.a in Frameworks */,
-				2BDF4D63166D5E700054E77F /* libSDL_gfx.a in Frameworks */,
-				2BDF4D61166D5E660054E77F /* libpng15.a in Frameworks */,
-				2BDF4D5F166D5E630054E77F /* libphysfs.a in Frameworks */,
-				2BDF4D5D166D5E4B0054E77F /* libiconv.a in Frameworks */,
-				2BDF4D5B166D5E3D0054E77F /* libz.a in Frameworks */,
-				2BDF4D59166D5E300054E77F /* libfreetype.a in Frameworks */,
+				2BDF4DA9166D99330054E77F /* libphysfs.2.0.2.dylib in Frameworks */,
+				2BDF4D97166D8E0D0054E77F /* libfreetype.6.dylib in Frameworks */,
+				2BDF4D98166D8E0D0054E77F /* libiconv.2.dylib in Frameworks */,
+				2BDF4D99166D8E0D0054E77F /* libintl.8.dylib in Frameworks */,
+				2BDF4D9B166D8E0D0054E77F /* libpng15.15.dylib in Frameworks */,
+				2BDF4D9C166D8E0D0054E77F /* libSDL_gfx.14.dylib in Frameworks */,
+				2BDF4D9D166D8E0D0054E77F /* libxml2.2.dylib in Frameworks */,
+				2BDF4D9E166D8E0D0054E77F /* libz.1.2.7.dylib in Frameworks */,
 				2BDF4D57166D5E040054E77F /* libcurl.dylib in Frameworks */,
 				2BDF4D55166D5DCD0054E77F /* OpenGL.framework in Frameworks */,
 				2BDF45C4166D5AEC0054E77F /* Cocoa.framework in Frameworks */,
@@ -1630,14 +1679,14 @@
 		2BDF45C2166D5AEC0054E77F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2BDF4D66166D5EAE0054E77F /* libintl.a */,
-				2BDF4D64166D5E840054E77F /* libxml2.a */,
-				2BDF4D62166D5E700054E77F /* libSDL_gfx.a */,
-				2BDF4D60166D5E660054E77F /* libpng15.a */,
-				2BDF4D5E166D5E630054E77F /* libphysfs.a */,
-				2BDF4D5C166D5E4B0054E77F /* libiconv.a */,
-				2BDF4D5A166D5E3D0054E77F /* libz.a */,
-				2BDF4D58166D5E300054E77F /* libfreetype.a */,
+				2BDF4DA8166D99320054E77F /* libphysfs.2.0.2.dylib */,
+				2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */,
+				2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */,
+				2BDF4D91166D8E0C0054E77F /* libintl.8.dylib */,
+				2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */,
+				2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */,
+				2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */,
+				2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */,
 				2BDF4D56166D5E040054E77F /* libcurl.dylib */,
 				2BDF4D54166D5DCD0054E77F /* OpenGL.framework */,
 				2BDF4D4A166D5D9E0054E77F /* SDL_image.framework */,
@@ -1812,6 +1861,7 @@
 				2BDF4A2E166D5B680054E77F /* spellmanager.cpp */,
 				2BDF4A2F166D5B680054E77F /* spellmanager.h */,
 				2BDF4A30166D5B680054E77F /* spellshortcut.cpp */,
+				2BDF4D75166D781C0054E77F /* data */,
 				2BDF4A31166D5B680054E77F /* spellshortcut.h */,
 				2BDF4A32166D5B680054E77F /* sprite.h */,
 				2BDF4A33166D5B680054E77F /* statuseffect.cpp */,
@@ -2666,6 +2716,9 @@
 				2BDF45BB166D5AEC0054E77F /* Sources */,
 				2BDF45BC166D5AEC0054E77F /* Frameworks */,
 				2BDF45BD166D5AEC0054E77F /* Resources */,
+				2BDF4D77166D7EA00054E77F /* CopyFiles */,
+				2BDF4D86166D88400054E77F /* CopyFiles */,
+				2BDF4DA7166D96290054E77F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2731,6 +2784,7 @@
 				2BDF45D4166D5AEC0054E77F /* Credits.rtf in Resources */,
 				2BDF45DA166D5AEC0054E77F /* MainMenu.xib in Resources */,
 				2BDF4D6F166D6ADC0054E77F /* Mana.icns in Resources */,
+				2BDF4D76166D783A0054E77F /* data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2757,6 +2811,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		2BDF4DA7166D96290054E77F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -change /opt/local/lib/libSDL_gfx.14.dylib @rpath/../SharedSupport/libSDL_gfx.14.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libpng15.15.dylib @rpath/../SharedSupport/libpng15.15.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libphysfs.1.dylib @rpath/../SharedSupport/libphysfs.2.0.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libintl.8.dylib @rpath/../SharedSupport/libintl.8.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libiconv.2.dylib @rpath/../SharedSupport/libiconv.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libfreetype.6.dylib @rpath/../SharedSupport/libfreetype.6.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libxml2.2.dylib @rpath/../SharedSupport/libxml2.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libz.1.dylib @rpath/../SharedSupport/libz.1.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3560,7 +3627,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -3582,7 +3649,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};
@@ -3608,7 +3675,12 @@
 					/Library/Frameworks/SDL_mixer.framework/Headers,
 				);
 				INFOPLIST_FILE = "ManaPlus/ManaPlus-Info.plist";
-				LIBRARY_SEARCH_PATHS = /opt/local/lib;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					/opt/local/lib,
+					"\"$(SRCROOT)/libs\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-DUSE_INTERNALGUICHAN",
@@ -3643,7 +3715,12 @@
 					/Library/Frameworks/SDL_mixer.framework/Headers,
 				);
 				INFOPLIST_FILE = "ManaPlus/ManaPlus-Info.plist";
-				LIBRARY_SEARCH_PATHS = /opt/local/lib;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					/opt/local/lib,
+					"\"$(SRCROOT)/libs\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-DUSE_INTERNALGUICHAN",
@@ -3665,7 +3742,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ManaPlus/ManaPlus-Prefix.pch";
 				INFOPLIST_FILE = "ManaPlusTests/ManaPlusTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -3680,7 +3759,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ManaPlus/ManaPlus-Prefix.pch";
 				INFOPLIST_FILE = "ManaPlusTests/ManaPlusTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
