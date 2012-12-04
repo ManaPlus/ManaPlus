@@ -1,0 +1,16 @@
+-id @executable_path/../SharedSupport/libSDL-1.2.0.dylib
+-id @executable_path/../SharedSupport/libSDL_gfx.14.dylib
+-id @executable_path/../SharedSupport/libX11.6.dylib
+-id @executable_path/../SharedSupport/libXau.6.dylib
+-id @executable_path/../SharedSupport/libXdmcp.6.dylib
+-id @executable_path/../SharedSupport/libXext.6.dylib
+-id @executable_path/../SharedSupport/libXrandr.2.dylib
+-id @executable_path/../SharedSupport/libXrender.1.dylib
+-id @executable_path/../SharedSupport/libfreetype.6.dylib
+-id @executable_path/../SharedSupport/libiconv.2.dylib
+-id @executable_path/../SharedSupport/libintl.8.dylib
+-id @executable_path/../SharedSupport/libphysfs.2.0.2.dylib
+-id @executable_path/../SharedSupport/libpng15.15.dylib
+-id @executable_path/../SharedSupport/libxcb.1.dylib
+-id @executable_path/../SharedSupport/libxml2.2.dylib
+-id @executable_path/../SharedSupport/libz.1.2.7.dylib
