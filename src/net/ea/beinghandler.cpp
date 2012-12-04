@@ -691,7 +691,7 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
 
     msg.readInt16(); // unused
 
-    const unsigned char dir = msg.readInt8();
+    const unsigned char dir = msg.readInt8() & 0x0f;
     dstBeing->setDirection(dir);
     if (player_node)
         player_node->imitateDirection(dstBeing, dir);
