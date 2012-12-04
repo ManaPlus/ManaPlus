@@ -1320,21 +1320,27 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                     mOldAlpha = mColor.a;
                 }
 
+                const SDL_PixelFormat * const format = mTarget->format;
+                const unsigned rMask = format->Rmask;
+                const unsigned gMask = format->Gmask;
+                const unsigned bMask = format->Bmask;
+                const unsigned aMask = format->Amask;
                 if (pixel != mOldPixel || mColor.a != mOldAlpha)
                 {
-                    const unsigned pb = (pixel & 0xff) * mColor.a;
-                    const unsigned pg = (pixel & 0xff00) * mColor.a;
-                    const unsigned pr = (pixel & 0xff0000) * mColor.a;
-                    const unsigned a1 = (255 - mColor.a);
+                    const unsigned pb = (pixel & bMask) * mColor.a;
+                    const unsigned pg = (pixel & gMask) * mColor.a;
+                    const unsigned pr = (pixel & rMask) * mColor.a;
+                    const unsigned a0 = (255 - mColor.a);
 
-                    const unsigned int a2 = a1 * 0xff;
-                    const unsigned int a3 = a1 * 0xff00;
+                    const unsigned int a1 = a0 * bMask / 0xff;
+                    const unsigned int a2 = a0 * gMask / 0xff;
+                    const unsigned int a3 = a0 * rMask / 0xff;
 
                     for (int f = 0; f <= 0xff; f ++)
                     {
-                        cB[f] = ((pb + f * a1) >> 8) & 0xff;
-                        cG[f] = ((pg + f * a2) >> 8) & 0xff00;
-                        cR[f] = ((pr + f * a3) >> 8) & 0xff0000;
+                        cB[f] = ((pb + f * a1) >> 8) & bMask;
+                        cG[f] = ((pg + f * a2) >> 8) & gMask;
+                        cR[f] = ((pr + f * a3) >> 8) & rMask;
                     }
 
                     mOldPixel = pixel;
@@ -1350,7 +1356,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                     {
                         uint32_t *const p = p0 + x;
                         const uint32_t dst = *p;
-                        *p = cB[dst & 0xff] | cG[(dst & 0xff00) >> 8]
+                        *p = cB[dst & bMask] | cG[(dst & gMask) >> 8]
                             | cR[(dst & 0xff0000) >> 16];
                     }
                 }
