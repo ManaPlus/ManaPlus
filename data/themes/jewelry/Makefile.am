@@ -2,6 +2,7 @@
 guidir = $(pkgdatadir)/data/themes/jewelry
 
 gui_DATA =				\
+	beingpopup.xml		\
 	browserbox.xml		\
 	button.xml		\
 	button_disabled.xml		\

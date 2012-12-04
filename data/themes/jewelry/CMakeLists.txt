@@ -1,4 +1,5 @@
 SET (FILES
+    beingpopup.xml
     browserbox.xml
     button.xml
     button_disabled.xml

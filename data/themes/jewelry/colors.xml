@@ -165,7 +165,7 @@
         <color id="AMMO" color="#b4d7ec" />
         <color id="SERVER_VERSION_NOT_SUPPORTED" color="#DC0000" />
         <color id="WARNING" color="#FF0000" />
-        <color id="PLAYER_ADVANCED" color="#005000" />
+        <color id="PLAYER_ADVANCED" color="#f9eabc" />
         <color id="BUBBLE_NAME" color="#cccccc" />
         <color id="BUBBLE_TEXT" color="#ffffff" />
         <color id="RED" color="#ff8080" />
