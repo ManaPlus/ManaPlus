@@ -24,6 +24,7 @@
 #include "being.h"
 #include "game.h"
 #include "keydata.h"
+#include "localplayer.h"
 #include "logger.h"
 #include "mouseinput.h"
 #include "touchmanager.h"
@@ -156,6 +157,8 @@ impHandler(attackOut)
 impHandler(cancelClick)
 {
     ActionManager::stopAttack(tempEvent);
+    if (!player_node->getTarget())
+        ActionManager::sit(tempEvent);
 }
 
 impHandler(cancelUp)
