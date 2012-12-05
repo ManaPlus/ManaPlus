@@ -53,8 +53,7 @@ class ShortcutContainer : public gcn::Widget,
         /**
          * Destructor.
          */
-        ~ShortcutContainer()
-        { }
+        ~ShortcutContainer();
 
         /**
          * Draws the shortcuts

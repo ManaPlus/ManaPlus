@@ -49,6 +49,12 @@ ShortcutContainer::ShortcutContainer() :
 {
 }
 
+ShortcutContainer::~ShortcutContainer()
+{
+    delete mVertexes;
+    mVertexes = nullptr;
+}
+
 void ShortcutContainer::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mGridWidth = getWidth() / mBoxWidth;

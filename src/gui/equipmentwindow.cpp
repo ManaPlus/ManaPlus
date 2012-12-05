@@ -139,6 +139,8 @@ EquipmentWindow::~EquipmentWindow()
         mSlotBackground->decRef();
     if (mSlotHighlightedBackground)
         mSlotHighlightedBackground->decRef();
+    delete mVertexes;
+    mVertexes = nullptr;
 }
 
 void EquipmentWindow::draw(gcn::Graphics *graphics)

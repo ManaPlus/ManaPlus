@@ -48,6 +48,8 @@ TouchManager::TouchManager() :
 TouchManager::~TouchManager()
 {
     clear();
+    delete mVertexes;
+    mVertexes = nullptr;
 }
 
 void TouchManager::init()
