@@ -18,6 +18,8 @@ gui_DATA =				\
 	colors.xml			\
 	complete_icon.xml		\
 	dpad.xml		\
+	dpad_attack.xml		\
+	dpad_cancel.xml		\
 	dropdown.xml		\
 	dropdown_background.xml		\
 	dropdown_pressed.xml		\

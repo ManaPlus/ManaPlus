@@ -20,6 +20,7 @@
 
 #include "touchactions.h"
 
+#include "actionmanager.h"
 #include "being.h"
 #include "game.h"
 #include "keydata.h"
@@ -33,6 +34,7 @@
 
 #include "debug.h"
 
+InputEvent tempEvent(0, 0);
 bool padClicked(false);
 
 #define impHandler(name) void name(const MouseInput &mouseInput)
@@ -137,3 +139,30 @@ impHandler0(padUp)
     padClicked = false;
     moveChar(50, 50);
 }
+
+impHandler(attackClick)
+{
+    ActionManager::targetAttack(tempEvent);
+}
+
+impHandler(attackUp)
+{
+}
+
+impHandler(attackOut)
+{
+}
+
+impHandler(cancelClick)
+{
+    ActionManager::stopAttack(tempEvent);
+}
+
+impHandler(cancelUp)
+{
+}
+
+impHandler(cancelOut)
+{
+}
+

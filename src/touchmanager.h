@@ -23,6 +23,8 @@
 
 #include "resources/image.h"
 
+#include "keydata.h"
+
 #include <guichan/mouseinput.hpp>
 #include <guichan/rectangle.hpp>
 
@@ -37,7 +39,7 @@ class MouseInput;
 
 typedef void (*TouchFuncPtr) (const MouseInput &mouseInput);
 
-const int actionsSize = 10;
+const int actionsSize = Input::KEY_TOTAL;
 
 struct TouchItem final
 {
@@ -79,9 +81,16 @@ class TouchManager final
 
         A_DELETE_COPY(TouchManager)
 
+        enum Types
+        {
+            NORMAL = 0,
+            LEFT = 1,
+            RIGHT = 2,
+        };
+
         void init();
 
-        void loadTouchItem(TouchItem **item, std::string name, bool type,
+        void loadTouchItem(TouchItem **item, std::string name, int type,
                            TouchFuncPtr fAll, TouchFuncPtr fPressed,
                            TouchFuncPtr fReleased, TouchFuncPtr fOut);
 
@@ -104,6 +113,8 @@ class TouchManager final
     private:
         TouchItem *mKeyboard;
         TouchItem *mPad;
+        TouchItem *mAttack;
+        TouchItem *mCancel;
         TouchItemVector mObjects;
         ImageCollection *mVertexes;
         bool mActions[actionsSize];

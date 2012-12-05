@@ -1,0 +1,9 @@
+<skinset name="Default" image="window.png">
+    <widget type="Window">
+        <option name="padding" value="20" />
+        <option name="x" value="0" />
+        <option name="y" value="0" />
+
+        <part type="standart" xpos="452" ypos="96" width="60" height="60" />
+    </widget>
+</skinset>

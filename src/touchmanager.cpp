@@ -37,6 +37,7 @@ extern int openGLMode;
 TouchManager::TouchManager() :
     mKeyboard(nullptr),
     mPad(nullptr),
+    mAttack(nullptr),
     mVertexes(new ImageCollection),
     mRedraw(true)
 {
@@ -52,18 +53,22 @@ TouchManager::~TouchManager()
 void TouchManager::init()
 {
 #ifdef ANDROID
-    loadTouchItem(&mKeyboard, "keyboard_icon.xml", false,
+    loadTouchItem(&mKeyboard, "keyboard_icon.xml", NORMAL,
         nullptr, nullptr, &showKeyboard, nullptr);
 #endif
 
     if (config.getBoolValue("showScreenJoystick"))
     {
-        loadTouchItem(&mPad, "dpad.xml", true,
+        loadTouchItem(&mPad, "dpad.xml", LEFT,
             &padEvents, &padClick, &padUp, &padOut);
+        loadTouchItem(&mAttack, "dpad_attack.xml", RIGHT,
+            nullptr, &attackClick, &attackUp, &attackOut);
+        loadTouchItem(&mCancel, "dpad_cancel.xml", RIGHT,
+            nullptr, &cancelClick, &cancelUp, &cancelOut);
     }
 }
 
-void TouchManager::loadTouchItem(TouchItem **item, std::string name, bool type,
+void TouchManager::loadTouchItem(TouchItem **item, std::string name, int type,
                                  TouchFuncPtr fAll, TouchFuncPtr fPressed,
                                  TouchFuncPtr fReleased, TouchFuncPtr fOut)
 {
@@ -79,11 +84,23 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name, bool type,
         if (image)
         {
             image->incRef();
-            const int x = skin->getOption("x", 10);
-            const int y = type ? (mainGraphics->mHeight - image->mBounds.h) / 2
-                + skin->getOption("y", 10) : skin->getOption("y", 10);
+            int x = skin->getOption("x", 10);
+            int y = skin->getOption("y", 10);
             const int pad = skin->getPadding();
             const int pad2 = 2 * pad;
+            switch (type)
+            {
+                case LEFT:
+                    y += (mainGraphics->mHeight - image->mBounds.h) / 2;
+                    break;
+                case RIGHT:
+                    x = mainGraphics->mWidth - image->mBounds.w - pad2 - x;
+                    y = mainGraphics->mHeight - image->mBounds.h - pad2 - y;
+                    break;
+                case NORMAL:
+                default:
+                    break;
+            }
             *item = new TouchItem(gcn::Rectangle(x, y,
                 image->getWidth() + pad2, image->getHeight() + pad2),
                 image, x + pad, y + pad, fAll, fPressed, fReleased, fOut);
