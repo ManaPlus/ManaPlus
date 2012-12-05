@@ -25,16 +25,16 @@
 
 #include "localconsts.h"
 
+#define decHandler(name) void name(const MouseInput &mouseInput)
+
 class MouseInput;
 
-void showKeyboard(const MouseInput &mouseInput);
+decHandler(showKeyboard);
+decHandler(padClick);
+decHandler(padEvents);
+decHandler(padOut);
+decHandler(padUp);
 
-void padClick(const MouseInput &mouseInput);
-
-void padEvents(const MouseInput &mouseInput);
-
-void padOut(const MouseInput &mouseInput);
-
-void padUp(const MouseInput &mouseInput);
+#undef decHandler
 
 #endif

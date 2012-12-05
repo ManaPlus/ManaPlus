@@ -35,16 +35,15 @@
 
 bool padClicked(false);
 
+#define impHandler(name) void name(const MouseInput &mouseInput)
+#define impHandler0(name) void name(const MouseInput &mouseInput A_UNUSED)
+
+impHandler0(showKeyboard)
+{
 #ifdef ANDROID
-void showKeyboard(const MouseInput &mouseInput A_UNUSED)
-{
     SDL_ANDROID_ToggleScreenKeyboardTextInput(nullptr);
-}
-#else
-void showKeyboard(const MouseInput &mouseInput A_UNUSED)
-{
-}
 #endif
+}
 
 static void moveChar(int x, int y)
 {
@@ -112,13 +111,13 @@ static void moveChar(int x, int y)
     }
 }
 
-void padClick(const MouseInput &mouseInput)
+impHandler(padClick)
 {
     moveChar(mouseInput.getX(), mouseInput.getY());
     padClicked = true;
 }
 
-void padEvents(const MouseInput &mouseInput)
+impHandler(padEvents)
 {
     if (mouseInput.getType() == gcn::MouseInput::MOVED)
     {
@@ -127,13 +126,13 @@ void padEvents(const MouseInput &mouseInput)
     }
 }
 
-void padOut(const MouseInput &mouseInput A_UNUSED)
+impHandler0(padOut)
 {
     padClicked = false;
     moveChar(50, 50);
 }
 
-void padUp(const MouseInput &mouseInput A_UNUSED)
+impHandler0(padUp)
 {
     padClicked = false;
     moveChar(50, 50);
