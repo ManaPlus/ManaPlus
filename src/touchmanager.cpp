@@ -55,22 +55,23 @@ TouchManager::~TouchManager()
 void TouchManager::init()
 {
 #ifdef ANDROID
-    loadTouchItem(&mKeyboard, "keyboard_icon.xml", NORMAL,
+    loadTouchItem(&mKeyboard, "keyboard_icon.xml", 28, 28, NORMAL,
         nullptr, nullptr, &showKeyboard, nullptr);
 #endif
 
     if (config.getBoolValue("showScreenJoystick"))
     {
-        loadTouchItem(&mPad, "dpad.xml", LEFT,
+        loadTouchItem(&mPad, "dpad.xml", 100, 100, LEFT,
             &padEvents, &padClick, &padUp, &padOut);
-        loadTouchItem(&mAttack, "dpad_attack.xml", RIGHT,
+        loadTouchItem(&mAttack, "dpad_attack.xml", 60, 60, RIGHT,
             nullptr, &attackClick, &attackUp, &attackOut);
-        loadTouchItem(&mCancel, "dpad_cancel.xml", RIGHT,
+        loadTouchItem(&mCancel, "dpad_cancel.xml", 60, 60, RIGHT,
             nullptr, &cancelClick, &cancelUp, &cancelOut);
     }
 }
 
-void TouchManager::loadTouchItem(TouchItem **item, std::string name, int type,
+void TouchManager::loadTouchItem(TouchItem **item, std::string name,
+                                 int width, int height, int type,
                                  TouchFuncPtr fAll, TouchFuncPtr fPressed,
                                  TouchFuncPtr fReleased, TouchFuncPtr fOut)
 {
@@ -78,14 +79,17 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name, int type,
     Theme *theme = Theme::instance();
     if (!theme)
         return;
-    Skin *const skin = theme->load(name, "");
+    ImageRect *images = new ImageRect;
+    for (int f = 0; f < 9; f ++)
+        images->grid[f] = nullptr;
+
+    Skin *const skin = theme->loadSkinRect(*images, name, "");
     if (skin)
     {
-        const ImageRect &images = skin->getBorder();
-        Image *image = images.grid[0];
+        Image *image = images->grid[0];
         if (image)
         {
-            image->incRef();
+//            image->incRef();
             int x = skin->getOption("x", 10);
             int y = skin->getOption("y", 10);
             const int pad = skin->getPadding();
@@ -96,16 +100,17 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name, int type,
                     y += (mainGraphics->mHeight - image->mBounds.h) / 2;
                     break;
                 case RIGHT:
-                    x = mainGraphics->mWidth - image->mBounds.w - pad2 - x;
-                    y = mainGraphics->mHeight - image->mBounds.h - pad2 - y;
+                    x = mainGraphics->mWidth - width - pad2 - x;
+                    y = mainGraphics->mHeight - height - pad2 - y;
                     break;
                 case NORMAL:
                 default:
                     break;
             }
             *item = new TouchItem(gcn::Rectangle(x, y,
-                image->getWidth() + pad2, image->getHeight() + pad2),
-                image, x + pad, y + pad, fAll, fPressed, fReleased, fOut);
+                width + pad2, height + pad2),
+                images, x + pad, y + pad, width, height,
+                fAll, fPressed, fReleased, fOut);
             mObjects.push_back(*item);
         }
         theme->unload(skin);
@@ -118,14 +123,21 @@ void TouchManager::clear()
 //    unloadTouchItem(&mPad);
 //    unloadTouchItem(&mKeyboard);
 
+    Theme *theme = Theme::instance();
+    if (!theme)
+        return;
     for (TouchItemVectorCIter it = mObjects.begin(), it_end = mObjects.end();
          it != it_end; ++ it)
     {
         TouchItem *item = *it;
         if (item)
         {
-            if (item->image)
-                item->image->decRef();
+            if (item->images)
+            {
+                theme->unloadRect(*item->images);
+                delete item->images;
+                item->images = nullptr;
+            }
             delete item;
         }
     }
@@ -133,18 +145,25 @@ void TouchManager::clear()
     mRedraw = true;
 }
 
+/*
 void TouchManager::unloadTouchItem(TouchItem **item0)
 {
     TouchItem *item = *item0;
     if (item)
     {
-        if (item->image)
-            item->image->decRef();
+//        if (item->image)
+//            item->image->decRef();
+        if (item->skin)
+        {
+            theme->unload(skin);
+            item->skin = nullptr;
+        }
         delete item;
         *item0 = nullptr;
     }
     mRedraw = true;
 }
+*/
 
 void TouchManager::draw()
 {
@@ -159,10 +178,10 @@ void TouchManager::draw()
                  it != it_end; ++ it)
             {
                 const TouchItem *const item = *it;
-                if (item && item->image)
+                if (item && item->images)
                 {
-                    mainGraphics->calcTile(mVertexes, item->image,
-                        item->x, item->y);
+                    mainGraphics->calcWindow(mVertexes, item->x, item->y,
+                        item->width, item->height, *item->images);
                 }
             }
         }
@@ -175,8 +194,11 @@ void TouchManager::draw()
              it != it_end; ++ it)
         {
             const TouchItem *const item = *it;
-            if (item && item->image)
-                mainGraphics->drawImage(item->image, item->x, item->y);
+            if (item && item->images)
+            {
+                mainGraphics->drawImageRect(item->x, item->y,
+                    item->width, item->height, *item->images);
+            }
         }
     }
 }

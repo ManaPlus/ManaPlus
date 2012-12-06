@@ -1150,6 +1150,8 @@ bool NormalOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
 {
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
+    if (!image)
+        return false;
     if (vertCol->currentGLImage != image->mGLImage)
     {
         vert = new ImageVertexes();

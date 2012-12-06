@@ -35,7 +35,9 @@
 #include "localconsts.h"
 
 class ImageCollection;
+class ImageRect;
 class MouseInput;
+class Skin;
 
 typedef void (*TouchFuncPtr) (const MouseInput &mouseInput);
 
@@ -43,13 +45,16 @@ const int actionsSize = Input::KEY_TOTAL;
 
 struct TouchItem final
 {
-    TouchItem(const gcn::Rectangle rect0, Image *const img, int x0, int y0,
+    TouchItem(const gcn::Rectangle rect0, ImageRect *const images0,
+              int x0, int y0, int width0, int height0,
               TouchFuncPtr ptrAll, TouchFuncPtr ptrPressed,
               TouchFuncPtr ptrReleased, TouchFuncPtr ptrOut) :
         rect(rect0),
-        image(img),
+        images(images0),
         x(x0),
         y(y0),
+        width(width0),
+        height(height0),
         funcAll(ptrAll),
         funcPressed(ptrPressed),
         funcReleased(ptrReleased),
@@ -60,9 +65,11 @@ struct TouchItem final
     A_DELETE_COPY(TouchItem)
 
     gcn::Rectangle rect;
-    Image *image;
+    ImageRect *images;
     int x;
     int y;
+    int width;
+    int height;
     TouchFuncPtr funcAll;
     TouchFuncPtr funcPressed;
     TouchFuncPtr funcReleased;
@@ -90,13 +97,14 @@ class TouchManager final
 
         void init();
 
-        void loadTouchItem(TouchItem **item, std::string name, int type,
+        void loadTouchItem(TouchItem **item, std::string name,
+                           int type, int width, int height,
                            TouchFuncPtr fAll, TouchFuncPtr fPressed,
                            TouchFuncPtr fReleased, TouchFuncPtr fOut);
 
         void clear();
 
-        void unloadTouchItem(TouchItem **item0);
+//        void unloadTouchItem(TouchItem **item0);
 
         void draw();
 
