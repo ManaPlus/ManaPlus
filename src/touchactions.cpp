@@ -141,31 +141,14 @@ impHandler0(padUp)
     moveChar(50, 50);
 }
 
-impHandler(attackClick)
+impHandler0(attackClick)
 {
     ActionManager::targetAttack(tempEvent);
 }
 
-impHandler(attackUp)
-{
-}
-
-impHandler(attackOut)
-{
-}
-
-impHandler(cancelClick)
+impHandler0(cancelClick)
 {
     ActionManager::stopAttack(tempEvent);
     if (!player_node->getTarget())
         ActionManager::sit(tempEvent);
 }
-
-impHandler(cancelUp)
-{
-}
-
-impHandler(cancelOut)
-{
-}
-

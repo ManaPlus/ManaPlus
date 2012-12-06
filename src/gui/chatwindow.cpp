@@ -1410,7 +1410,7 @@ void ChatWindow::resortChatLog(std::string line, Own own,
             return;
         }
 
-        const size_t idx2 = line.find(": ");
+        size_t idx2 = line.find(": ");
         if (idx2 != std::string::npos)
         {
             const size_t idx = line.find(": \302\202");
@@ -1428,7 +1428,7 @@ void ChatWindow::resortChatLog(std::string line, Own own,
         const size_t idx1 = line.find("@@");
         if (idx1 != std::string::npos)
         {
-            const size_t idx2 = line.find("|", idx1);
+            idx2 = line.find("|", idx1);
             if (idx2 != std::string::npos)
             {
                 const size_t idx3 = line.find("@@", idx2);

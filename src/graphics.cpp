@@ -1135,7 +1135,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                 const unsigned rMask = format->Rmask;
                 const unsigned gMask = format->Gmask;
                 const unsigned bMask = format->Bmask;
-                const unsigned aMask = format->Amask;
+//                const unsigned aMask = format->Amask;
                 unsigned rShift = rMask / 0xff;
                 unsigned gShift = gMask / 0xff;
                 unsigned bShift = bMask / 0xff;

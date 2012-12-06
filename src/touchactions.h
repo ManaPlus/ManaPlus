@@ -34,14 +34,8 @@ decHandler(padClick);
 decHandler(padEvents);
 decHandler(padOut);
 decHandler(padUp);
-
 decHandler(attackClick);
-decHandler(attackOut);
-decHandler(attackUp);
-
 decHandler(cancelClick);
-decHandler(cancelOut);
-decHandler(cancelUp);
 
 #undef decHandler
 
