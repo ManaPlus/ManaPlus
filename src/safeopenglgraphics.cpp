@@ -333,26 +333,6 @@ void SafeOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     glEnd();
 }
 
-bool SafeOpenGLGraphics::calcImageRect(GraphicsVertexes *const vert,
-                                       const int x, const int y,
-                                       const int w, const int h,
-                                       const Image *const topLeft A_UNUSED,
-                                       const Image *const topRight A_UNUSED,
-                                       const Image *const bottomLeft A_UNUSED,
-                                       const Image *const bottomRight A_UNUSED,
-                                       const Image *const top A_UNUSED,
-                                       const Image *const right A_UNUSED,
-                                       const Image *const bottom A_UNUSED,
-                                       const Image *const left A_UNUSED,
-                                       const Image *const center A_UNUSED)
-{
-    if (!vert)
-        return false;
-
-    vert->init(x, y, w, h);
-    return true;
-}
-
 void SafeOpenGLGraphics::calcTile(ImageCollection *const vertCol A_UNUSED,
                                   const Image *const image A_UNUSED,
                                   int x A_UNUSED, int y A_UNUSED)
@@ -368,18 +348,6 @@ void SafeOpenGLGraphics::calcTile(ImageVertexes *const vert A_UNUSED,
 void SafeOpenGLGraphics::drawTile(const ImageVertexes *const vert A_UNUSED)
 {
 
-}
-
-void SafeOpenGLGraphics::drawImageRect2(GraphicsVertexes* vert,
-                                        const ImageRect &imgRect)
-{
-    if (!vert)
-        return;
-
-    drawImageRect(vert->getX(), vert->getY(), vert->getW(), vert->getH(),
-            imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
-            imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
-            imgRect.grid[4]);
 }
 
 void SafeOpenGLGraphics::updateScreen()

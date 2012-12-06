@@ -197,7 +197,7 @@ void GraphicsManager::initGraphics(bool noOpenGL)
 
     // Setup image loading for the right image format
     OpenGLImageHelper::setLoadAsOpenGL(useOpenGL);
-    GraphicsVertexes::setLoadAsOpenGL(useOpenGL);
+//    GraphicsVertexes::setLoadAsOpenGL(useOpenGL);
 
     // Create the graphics context
     switch (useOpenGL)

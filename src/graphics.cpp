@@ -612,132 +612,6 @@ void Graphics::drawImageRect(int x, int y, int w, int h,
             imgRect.grid[4]);
 }
 
-void Graphics::drawImageRect2(GraphicsVertexes *const vert,
-                              const ImageRect &imgRect)
-{
-    if (!vert)
-        return;
-
-    vert->setPtr(0);
-
-    const bool drawMain = imgRect.grid[4] && imgRect.grid[0] && imgRect.grid[2]
-        && imgRect.grid[6] && imgRect.grid[8];
-
-    if (drawMain)
-    {
-        // center
-        drawImagePattern2(vert, imgRect.grid[4]);
-    }
-    vert->incPtr();
-
-    // top
-    drawImagePattern2(vert, imgRect.grid[1]);
-    vert->incPtr();
-
-    // bottom
-    drawImagePattern2(vert, imgRect.grid[7]);
-    vert->incPtr();
-
-    // left
-    drawImagePattern2(vert, imgRect.grid[3]);
-    vert->incPtr();
-
-    // right
-    drawImagePattern2(vert, imgRect.grid[5]);
-    vert->incPtr();
-
-    // Draw the corners
-    if (drawMain)
-    {
-        drawImage(imgRect.grid[0], 0, 0);
-        drawImage(imgRect.grid[2], vert->mW - imgRect.grid[2]->getWidth(), 0);
-        drawImage(imgRect.grid[6], 0, vert->mH - imgRect.grid[6]->getHeight());
-        drawImage(imgRect.grid[8],
-            vert->mW - imgRect.grid[8]->getWidth(),
-            vert->mH - imgRect.grid[8]->getHeight());
-    }
-}
-
-void Graphics::drawImagePattern2(const GraphicsVertexes *const vert,
-                                 const Image *const img)
-{
-    // here not checking input parameters
-
-    const std::vector<DoubleRect*> *const arr = vert->getRectsSDLconst();
-
-    for (std::vector<DoubleRect*>::const_iterator it = arr->begin(),
-         it_end = arr->end(); it != it_end; ++it)
-    {
-        SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
-//        SDL_BlitSurface(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
-    }
-}
-
-bool Graphics::calcImageRect(GraphicsVertexes *const vert,
-                             const int x, const int y,
-                             const int w, const int h,
-                             const Image *const topLeft,
-                             const Image *const topRight,
-                             const Image *const bottomLeft,
-                             const Image *const bottomRight,
-                             const Image *const top,
-                             const Image *const right,
-                             const Image *const bottom,
-                             const Image *const left,
-                             const Image *const center)
-{
-    if (!vert)
-        return false;
-
-    BLOCK_START("Graphics::calcImageRect")
-    const bool drawMain = center && topLeft && topRight
-        && bottomLeft && bottomRight;
-
-    vert->init(x, y, w, h);
-    pushClipArea(gcn::Rectangle(vert->mX, vert->mY, vert->mW, vert->mH));
-
-    // Draw the center area
-    if (center && drawMain)
-    {
-        calcImagePattern(vert, center,
-            topLeft->getWidth(), topLeft->getHeight(),
-            w - topLeft->getWidth() - topRight->getWidth(),
-            h - topLeft->getHeight() - bottomLeft->getHeight());
-    }
-    else
-    {
-        vert->incPtr(1);
-    }
-
-    // Draw the sides
-    if (top && left && bottom && right)
-    {
-        calcImagePattern(vert, top,
-            left->getWidth(), 0,
-            w - left->getWidth() - right->getWidth(), top->getHeight());
-        calcImagePattern(vert, bottom,
-            left->getWidth(), h - bottom->getHeight(),
-            w - left->getWidth() - right->getWidth(),
-            bottom->getHeight());
-        calcImagePattern(vert, left,
-            0, top->getHeight(),
-            left->getWidth(),
-            h - top->getHeight() - bottom->getHeight());
-        calcImagePattern(vert, right,
-            w - right->getWidth(), top->getHeight(),
-            right->getWidth(),
-            h - top->getHeight() - bottom->getHeight());
-    }
-    else
-    {
-        vert->incPtr(4);
-    }
-
-    popClipArea();
-    BLOCK_END("Graphics::calcImageRect")
-    return 0;
-}
-
 bool Graphics::calcImageRect(ImageVertexes *const vert,
                              const int x, const int y,
                              const int w, const int h,
@@ -797,59 +671,6 @@ bool Graphics::calcImageRect(ImageVertexes *const vert,
 //    popClipArea();
     BLOCK_END("Graphics::calcImageRect")
     return 0;
-}
-
-void Graphics::calcImagePattern(GraphicsVertexes* const vert,
-                                const Image *const image,
-                                const int x, const int y,
-                                const int w, const int h) const
-{
-    // Check that preconditions for blitting are met.
-    if (!vert || !mTarget || !image || !image->mSDLSurface || !vert->sdl)
-    {
-        vert->incPtr(1);
-        return;
-    }
-    vert->clearSDL();
-
-    const int iw = image->mBounds.w;
-    const int ih = image->mBounds.h;
-
-    if (iw == 0 || ih == 0)
-    {
-        vert->incPtr(1);
-        return;
-    }
-
-    for (int py = 0; py < h; py += ih)     // Y position on pattern plane
-    {
-        const int dh = (py + ih >= h) ? h - py : ih;
-        const int srcY = image->mBounds.y;
-        const int dstY = y + py + mClipStack.top().yOffset;
-
-        for (int px = 0; px < w; px += iw) // X position on pattern plane
-        {
-            const int dw = (px + iw >= w) ? w - px : iw;
-            const int srcX = image->mBounds.x;
-            const int dstX = x + px + mClipStack.top().xOffset;
-
-            SDL_Rect dstRect;
-            SDL_Rect srcRect;
-            dstRect.x = static_cast<short>(dstX);
-            dstRect.y = static_cast<short>(dstY);
-            srcRect.x = static_cast<short>(srcX);
-            srcRect.y = static_cast<short>(srcY);
-            srcRect.w = static_cast<uint16_t>(dw);
-            srcRect.h = static_cast<uint16_t>(dh);
-
-            if (SDL_FakeUpperBlit(image->mSDLSurface, &srcRect,
-                mTarget, &dstRect) == 1)
-            {
-                vert->pushSDL(srcRect, dstRect);
-            }
-        }
-    }
-    vert->incPtr(1);
 }
 
 void Graphics::calcImagePattern(ImageVertexes* const vert,
@@ -1058,16 +879,6 @@ bool Graphics::drawNet(const int x1, const int y1, const int x2, const int y2,
         drawLine(x, y1, x, y2);
 
     return true;
-}
-
-bool Graphics::calcWindow(GraphicsVertexes *const vert,
-                          const int x, const int y, const int w, const int h,
-                          const ImageRect &imgRect)
-{
-    return calcImageRect(vert, x, y, w, h,
-        imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
-        imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
-        imgRect.grid[4]);
 }
 
 bool Graphics::calcWindow(ImageCollection *const vertCol,

@@ -26,7 +26,7 @@
 
 #ifdef USE_OPENGL
 unsigned int vertexBufSize = 500;
-int GraphicsVertexes::mUseOpenGL = 0;
+//int GraphicsVertexes::mUseOpenGL = 0;
 #endif
 
 SDLGraphicsVertexes::SDLGraphicsVertexes()
@@ -216,64 +216,12 @@ GLint *NormalOpenGLGraphicsVertexes::continueIntTexArray()
 }
 #endif
 
-GraphicsVertexes::GraphicsVertexes() :
-    mX(0), mY(0),
-    mW(0), mH(0),
-    mPtr(0)
-{
-}
-
-GraphicsVertexes::~GraphicsVertexes()
-{
-}
-
-void GraphicsVertexes::init(const int x, const int y, const int w, const int h)
-{
-    mPtr = 0;
-    mX = x;
-    mY = y;
-    mW = w;
-    mH = h;
-    for (int f = 0; f < 10; f ++)
-    {
-        delete_all(sdl[mPtr].mList);
-        sdl[mPtr].mList.clear();
 #ifdef USE_OPENGL
-        ogl[mPtr].init();
+//void GraphicsVertexes::setLoadAsOpenGL(int useOpenGL)
+//{
+//    mUseOpenGL = useOpenGL;
+//}
 #endif
-    }
-}
-
-#ifdef USE_OPENGL
-void GraphicsVertexes::setLoadAsOpenGL(int useOpenGL)
-{
-    mUseOpenGL = useOpenGL;
-}
-#endif
-
-void GraphicsVertexes::pushSDL(const SDL_Rect &r1, const SDL_Rect &r2)
-{
-    DoubleRect *const r = new DoubleRect();
-    r->src = r1;
-    r->dst = r2;
-    sdl[mPtr].mList.push_back(r);
-}
-
-void GraphicsVertexes::clearSDL()
-{
-    delete_all(sdl[mPtr].mList);
-    sdl[mPtr].mList.clear();
-}
-
-std::vector<DoubleRect*> *GraphicsVertexes::getRectsSDL()
-{
-    return &sdl[mPtr].mList;
-}
-
-const std::vector<DoubleRect*> *GraphicsVertexes::getRectsSDLconst() const
-{
-    return &sdl[mPtr].mList;
-}
 
 ImageVertexes::ImageVertexes() :
     image(nullptr)

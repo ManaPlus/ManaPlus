@@ -83,22 +83,6 @@ class SafeOpenGLGraphics final : public Graphics
                                       const int scaledWidth,
                                       const int scaledHeight) override;
 
-        bool calcImageRect(GraphicsVertexes *const vert,
-                           const int x, const int y,
-                           const int w, const int h,
-                           const Image *const topLeft,
-                           const Image *const topRight,
-                           const Image *const bottomLeft,
-                           const Image *const bottomRight,
-                           const Image *const top,
-                           const Image *const right,
-                           const Image *const bottom,
-                           const Image *const left,
-                           const Image *const center) override;
-
-        void drawImageRect2(GraphicsVertexes *const vert,
-                            const ImageRect &imgRect) override;
-
         void calcTile(ImageVertexes *const vert, const Image *const image,
                       int x, int y) const override;
 

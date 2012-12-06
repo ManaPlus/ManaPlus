@@ -21,7 +21,6 @@
 #ifndef GRAPHICSVERTEXES_H
 #define GRAPHICSVERTEXES_H
 
-
 #include "main.h"
 
 #include "localconsts.h"
@@ -67,10 +66,6 @@ class SDLGraphicsVertexes final
 };
 
 #ifdef USE_OPENGL
-class SafeOpenGLGraphicsVertexes final
-{
-};
-
 class NormalOpenGLGraphicsVertexes final
 {
     public:
@@ -174,70 +169,6 @@ class ImageCollection final
         ImageVertexes *currentVert;
 
         ImageVertexesVector draws;
-};
-
-class GraphicsVertexes final
-{
-    public:
-        GraphicsVertexes();
-
-        A_DELETE_COPY(GraphicsVertexes)
-
-        ~GraphicsVertexes();
-
-        static void setLoadAsOpenGL(int useOpenGL);
-
-        SDLGraphicsVertexes sdl[5];
-
-#ifdef USE_OPENGL
-//        SafeOpenGLGraphicsVertexes ogl1[5];
-
-        NormalOpenGLGraphicsVertexes ogl[5];
-#endif
-
-        void init(const int x, const int y, const int w, const int h);
-
-        void pushSDL(const SDL_Rect &r1, const SDL_Rect &r2);
-
-        void clearSDL();
-
-        std::vector<DoubleRect*> *getRectsSDL();
-
-        const std::vector<DoubleRect*> *getRectsSDLconst() const;
-
-        void incPtr(const int num = 1)
-        { mPtr += num; }
-
-        void setPtr(const int num)
-        { mPtr = num; }
-
-#ifdef USE_OPENGL
-        NormalOpenGLGraphicsVertexes &getOGL() A_WARN_UNUSED
-        { return ogl[mPtr]; }
-
-        const NormalOpenGLGraphicsVertexes &getOGLconst() const A_WARN_UNUSED
-        { return ogl[mPtr]; }
-#endif
-
-        int getX() const A_WARN_UNUSED
-        { return mX; }
-
-        int getY() const A_WARN_UNUSED
-        { return mY; }
-
-        int getW() const A_WARN_UNUSED
-        { return mW; }
-
-        int getH() const A_WARN_UNUSED
-        { return mH; }
-
-        int mX, mY, mW, mH;
-        int mPtr;
-
-    private:
-#ifdef USE_OPENGL
-        static int mUseOpenGL;
-#endif
 };
 
 #ifdef USE_OPENGL

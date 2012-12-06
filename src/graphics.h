@@ -27,7 +27,6 @@
 
 #include "localconsts.h"
 
-class GraphicsVertexes;
 class Image;
 class ImageCollection;
 class ImageVertexes;
@@ -199,19 +198,6 @@ class Graphics : public gcn::SDLGraphics
         void drawImageRect(int x, int y, int w, int h,
                            const ImageRect &imgRect);
 
-        virtual bool calcImageRect(GraphicsVertexes *const vert,
-                                   const int x, const int y,
-                                   const int w, const int h,
-                                   const Image *const topLeft,
-                                   const Image *const topRight,
-                                   const Image *const bottomLeft,
-                                   const Image *const bottomRight,
-                                   const Image *const top,
-                                   const Image *const right,
-                                   const Image *const bottom,
-                                   const Image *const left,
-                                   const Image *const center);
-
         virtual bool calcImageRect(ImageVertexes *const vert,
                                    const int x, const int y,
                                    const int w, const int h,
@@ -224,11 +210,6 @@ class Graphics : public gcn::SDLGraphics
                                    const Image *const bottom,
                                    const Image *const left,
                                    const Image *const center);
-
-        virtual void calcImagePattern(GraphicsVertexes *const vert,
-                                      const Image *const image,
-                                      const int x, const int y,
-                                      const int w, const int h) const;
 
         virtual void calcImagePattern(ImageVertexes *const vert,
                                       const Image *const image,
@@ -252,16 +233,6 @@ class Graphics : public gcn::SDLGraphics
         virtual void calcTile(ImageCollection *const vertCol,
                               const Image *const image,
                               int x, int y);
-
-        virtual void drawImageRect2(GraphicsVertexes *const vert,
-                                    const ImageRect &imgRect);
-
-        virtual void drawImagePattern2(const GraphicsVertexes *const vert,
-                                       const Image *const img);
-
-        bool calcWindow(GraphicsVertexes *const vert,
-                        const int x, const int y, const int w, const int h,
-                        const ImageRect &imgRect);
 
         virtual bool calcWindow(ImageCollection *const vertCol,
                                 const int x, const int y,

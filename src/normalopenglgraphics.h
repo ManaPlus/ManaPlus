@@ -90,11 +90,6 @@ class NormalOpenGLGraphics final : public Graphics
                                       const int scaledWidth,
                                       const int scaledHeight) override;
 
-        void calcImagePattern(GraphicsVertexes *const vert,
-                              const Image *const image,
-                              const int x, const int y,
-                              const int w, const int h) const override;
-
         void calcImagePattern(ImageVertexes* const vert,
                               const Image *const image,
                               const int x, const int y,
@@ -114,9 +109,6 @@ class NormalOpenGLGraphics final : public Graphics
         void drawTile(const ImageCollection *const vertCol) override;
 
         void drawTile(const ImageVertexes *const vert) override;
-
-        void drawImagePattern2(const GraphicsVertexes *const vert,
-                               const Image *const image) override;
 
         bool calcWindow(ImageCollection *const vertCol,
                         const int x, const int y,

@@ -502,23 +502,6 @@ void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
 //    }
 }
 
-void MobileOpenGLGraphics::drawImagePattern2(const GraphicsVertexes
-                                             *const vert,
-                                             const Image *const image)
-{
-    if (!image)
-        return;
-
-    setColorAlpha(image->mAlpha);
-#ifdef DEBUG_BIND_TEXTURE
-    debugBindTexture(image);
-#endif
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
-
-    drawVertexes(vert->getOGLconst());
-}
-
 inline void MobileOpenGLGraphics::drawVertexes(const
                                                NormalOpenGLGraphicsVertexes
                                                &ogl)
@@ -547,111 +530,6 @@ inline void MobileOpenGLGraphics::drawVertexes(const
             drawTriangleArrayfs(*iv, *ft, *ivp);
         }
     }
-}
-
-void MobileOpenGLGraphics::calcImagePattern(GraphicsVertexes *const vert,
-                                            const Image *const image,
-                                            const int x, const int y,
-                                            const int w, const int h) const
-{
-    if (!image)
-    {
-        vert->incPtr(1);
-        return;
-    }
-
-    const int srcX = image->mBounds.x;
-    const int srcY = image->mBounds.y;
-
-    const int iw = image->mBounds.w;
-    const int ih = image->mBounds.h;
-
-    if (iw == 0 || ih == 0)
-    {
-        vert->incPtr(1);
-        return;
-    }
-
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
-
-    unsigned int vp = 0;
-    const unsigned int vLimit = mMaxVertices * 4;
-
-    NormalOpenGLGraphicsVertexes &ogl = vert->getOGL();
-    ogl.init();
-
-    // Draw a set of textured rectangles
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
-    {
-        float texX1 = static_cast<float>(srcX) / tw;
-        float texY1 = static_cast<float>(srcY) / th;
-
-        GLfloat *floatTexArray = ogl.switchFloatTexArray();
-        GLshort *shortVertArray = ogl.switchShortVertArray();
-
-        for (int py = 0; py < h; py += ih)
-        {
-            const int height = (py + ih >= h) ? h - py : ih;
-            const int dstY = y + py;
-            for (int px = 0; px < w; px += iw)
-            {
-                int width = (px + iw >= w) ? w - px : iw;
-                int dstX = x + px;
-
-                float texX2 = static_cast<float>(srcX + width) / tw;
-                float texY2 = static_cast<float>(srcY + height) / th;
-
-                floatTexArray[vp + 0] = texX1;
-                floatTexArray[vp + 1] = texY1;
-
-                floatTexArray[vp + 2] = texX2;
-                floatTexArray[vp + 3] = texY1;
-
-                floatTexArray[vp + 4] = texX2;
-                floatTexArray[vp + 5] = texY2;
-
-                floatTexArray[vp + 6] = texX1;
-                floatTexArray[vp + 7] = texY1;
-
-                floatTexArray[vp + 8] = texX1;
-                floatTexArray[vp + 9] = texY2;
-
-                floatTexArray[vp + 10] = texX2;
-                floatTexArray[vp + 11] = texY2;
-
-
-                shortVertArray[vp + 0] = dstX;
-                shortVertArray[vp + 1] = dstY;
-
-                shortVertArray[vp + 2] = dstX + width;
-                shortVertArray[vp + 3] = dstY;
-
-                shortVertArray[vp + 4] = dstX + width;
-                shortVertArray[vp + 5] = dstY + height;
-
-                shortVertArray[vp + 6] = dstX;
-                shortVertArray[vp + 7] = dstY;
-
-                shortVertArray[vp + 8] = dstX;
-                shortVertArray[vp + 9] = dstY + height;
-
-                shortVertArray[vp + 10] = dstX + width;
-                shortVertArray[vp + 11] = dstY + height;
-
-                vp += 12;
-                if (vp >= vLimit)
-                {
-                    floatTexArray = ogl.switchFloatTexArray();
-                    shortVertArray = ogl.switchShortVertArray();
-                    ogl.switchVp(vp);
-                    vp = 0;
-                }
-            }
-        }
-    }
-    ogl.switchVp(vp);
-    vert->incPtr(1);
 }
 
 void MobileOpenGLGraphics::calcImagePattern(ImageVertexes *const vert,
