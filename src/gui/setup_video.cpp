@@ -235,7 +235,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mFpsLabel(new Label(this)),
     mAltFpsSlider(new Slider(2, 160)),
     mAltFpsLabel(new Label(this, _("Alt FPS limit: "))),
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__APPLE__)
     mDetectButton(new Button(this, _("Detect best mode"), "detect", this)),
 #endif
     mDialog(nullptr)
@@ -317,7 +317,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     place(0, 7, mAltFpsSlider);
     place(1, 7, mAltFpsLabel).setPadding(3);
 
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__APPLE__)
     place(0, 8, mDetectButton);
 #else
     mNoFrameCheckBox->setEnabled(false);
@@ -571,7 +571,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     {
         config.setValue("noframe", mNoFrameCheckBox->isSelected());
     }
-#if defined(USE_OPENGL) && !defined(ANDROID)
+#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__APPLE__)
     else if (id == "detect")
     {
         TestMain *test = graphicsManager.startDetection();

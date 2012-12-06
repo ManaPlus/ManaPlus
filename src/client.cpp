@@ -535,7 +535,7 @@ void Client::gameInit()
     }
 #endif
 
-#if defined(USE_OPENGL) && !defined(ANDROID)
+#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__APPLE__)
     if (!mOptions.safeMode && mOptions.test.empty()
         && !config.getBoolValue("videodetected"))
     {
