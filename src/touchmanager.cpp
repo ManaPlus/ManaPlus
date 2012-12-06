@@ -89,7 +89,6 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
         Image *image = images->grid[0];
         if (image)
         {
-//            image->incRef();
             int x = skin->getOption("x", 10);
             int y = skin->getOption("y", 10);
             const int pad = skin->getPadding();
@@ -97,7 +96,7 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
             switch (type)
             {
                 case LEFT:
-                    y += (mainGraphics->mHeight - image->mBounds.h) / 2;
+                    y += (mainGraphics->mHeight - height) / 2;
                     break;
                 case RIGHT:
                     x = mainGraphics->mWidth - width - pad2 - x;
@@ -108,7 +107,7 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
                     break;
             }
             *item = new TouchItem(gcn::Rectangle(x, y,
-                width + pad2, height + pad2),
+                width + pad2, height + pad2), type,
                 images, x + pad, y + pad, width, height,
                 fAll, fPressed, fReleased, fOut);
             mObjects.push_back(*item);
@@ -144,26 +143,6 @@ void TouchManager::clear()
     mObjects.clear();
     mRedraw = true;
 }
-
-/*
-void TouchManager::unloadTouchItem(TouchItem **item0)
-{
-    TouchItem *item = *item0;
-    if (item)
-    {
-//        if (item->image)
-//            item->image->decRef();
-        if (item->skin)
-        {
-            theme->unload(skin);
-            item->skin = nullptr;
-        }
-        delete item;
-        *item0 = nullptr;
-    }
-    mRedraw = true;
-}
-*/
 
 void TouchManager::draw()
 {
@@ -251,4 +230,40 @@ bool TouchManager::isActionActive(const int index) const
     if (index < 0 || index > actionsSize)
         return false;
     return mActions[index];
+}
+
+void TouchManager::resize(int width, int height)
+{
+    mRedraw = true;
+    for (TouchItemVectorCIter it = mObjects.begin(),
+         it_end = mObjects.end(); it != it_end; ++ it)
+    {
+        TouchItem *const item = *it;
+        if (!item)
+            continue;
+
+        switch (item->type)
+        {
+            case LEFT:
+                if (height != mainGraphics->mHeight)
+                {
+                    item->y += (height - item->height) / 2;
+                    item->rect.y += (height - item->rect.y) / 2;
+                }
+                break;
+            case RIGHT:
+            {
+                const int diffW = width - mainGraphics->mWidth;
+                const int diffH = height - mainGraphics->mHeight;
+                item->x += diffW;
+                item->rect.x += diffW;
+                item->y += diffH;
+                item->rect.y += diffH;
+                break;
+            }
+            case NORMAL:
+            default:
+                break;
+        }
+    }
 }

@@ -2660,6 +2660,8 @@ void Client::resizeVideo(int width, int height, const bool always)
         return;
     }
 
+    touchManager.resize(width, height);
+
     if (mainGraphics->resizeScreen(width, height))
     {
         if (gui)

@@ -45,11 +45,12 @@ const int actionsSize = Input::KEY_TOTAL;
 
 struct TouchItem final
 {
-    TouchItem(const gcn::Rectangle rect0, ImageRect *const images0,
+    TouchItem(const gcn::Rectangle rect0, int type0, ImageRect *const images0,
               int x0, int y0, int width0, int height0,
               TouchFuncPtr ptrAll, TouchFuncPtr ptrPressed,
               TouchFuncPtr ptrReleased, TouchFuncPtr ptrOut) :
         rect(rect0),
+        type(type0),
         images(images0),
         x(x0),
         y(y0),
@@ -65,6 +66,7 @@ struct TouchItem final
     A_DELETE_COPY(TouchItem)
 
     gcn::Rectangle rect;
+    int type;
     ImageRect *images;
     int x;
     int y;
@@ -104,8 +106,6 @@ class TouchManager final
 
         void clear();
 
-//        void unloadTouchItem(TouchItem **item0);
-
         void draw();
 
         bool processEvent(const MouseInput &mouseInput);
@@ -117,6 +117,8 @@ class TouchManager final
             if (index >= 0 && index < actionsSize)
                 mActions[index] = value;
         }
+
+        void resize(int width, int height);
 
     private:
         TouchItem *mKeyboard;
