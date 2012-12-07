@@ -1420,7 +1420,8 @@ void ChatWindow::resortChatLog(std::string line, Own own,
                 if (line.find(": \302\202\302") != std::string::npos)
                     return;
                 line = line.erase(idx + 2, 2);
-                tradeChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
+                tradeChatTab->chatLog(line, own, ignoreRecord,
+                    tryRemoveColors);
                 return;
             }
         }

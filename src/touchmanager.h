@@ -94,7 +94,7 @@ class TouchManager final
         {
             NORMAL = 0,
             LEFT = 1,
-            RIGHT = 2,
+            RIGHT = 2
         };
 
         void init();

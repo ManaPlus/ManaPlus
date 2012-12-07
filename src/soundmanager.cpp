@@ -105,7 +105,8 @@ void SoundManager::init()
 
     if (SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
     {
-        logger->log1("SoundManager::init() Failed to initialize audio subsystem");
+        logger->log1("SoundManager::init() Failed to "
+            "initialize audio subsystem");
         return;
     }
 
@@ -277,7 +278,8 @@ void SoundManager::fadeOutMusic(const int ms)
     }
 }
 
-void SoundManager::fadeOutAndPlayMusic(const std::string &fileName, const int ms)
+void SoundManager::fadeOutAndPlayMusic(const std::string &fileName,
+                                       const int ms)
 {
     mNextMusicFile = fileName;
     fadeOutMusic(ms);
@@ -304,7 +306,8 @@ void SoundManager::logic()
     BLOCK_END("SoundManager::logic")
 }
 
-void SoundManager::playSfx(const std::string &path, const int x, const int y) const
+void SoundManager::playSfx(const std::string &path,
+                           const int x, const int y) const
 {
     if (!mInstalled || path.empty() || !mPlayBattle)
         return;

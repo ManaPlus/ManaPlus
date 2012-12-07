@@ -302,7 +302,7 @@ void GraphicsManager::setVideoMode()
                 logger->log("Current resolution %s is incorrect.",
                     str.c_str());
             }
-            str = videoModes[0];
+//            str = videoModes[0];
             std::vector<int> res;
             splitToIntVector(res, videoModes[0], 'x');
             if (res.size() == 2)
