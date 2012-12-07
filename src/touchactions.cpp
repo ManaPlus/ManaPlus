@@ -148,7 +148,10 @@ impHandler0(attackClick)
 
 impHandler0(cancelClick)
 {
-    ActionManager::stopAttack(tempEvent);
-    if (!player_node->getTarget())
-        ActionManager::sit(tempEvent);
+    if (player_node)
+    {
+        ActionManager::stopAttack(tempEvent);
+        if (!player_node->getTarget())
+            ActionManager::sit(tempEvent);
+    }
 }
