@@ -23,6 +23,8 @@
 
 #include <guichan/mouseinput.hpp>
 
+#include "localconsts.h"
+
 #include <string>
 
 class MouseInput final : public gcn::MouseInput

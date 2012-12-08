@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-12-02 01:31+0300\n"
+"POT-Creation-Date: 2012-12-08 15:54+0300\n"
 "PO-Revision-Date: 2012-12-01 22:32+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
@@ -57,54 +57,54 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:1074 src/gui/setup.cpp:53 src/gui/windowmenu.cpp:169
+#: src/client.cpp:1079 src/gui/setup.cpp:53 src/gui/windowmenu.cpp:169
 msgid "Setup"
 msgstr "設定"
 
-#: src/client.cpp:1077 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:1082 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr "パフォーマンス"
 
-#: src/client.cpp:1079 src/gui/setup_video.cpp:243
+#: src/client.cpp:1084 src/gui/setup_video.cpp:243
 msgid "Video"
 msgstr "ビデオ"
 
-#: src/client.cpp:1081
+#: src/client.cpp:1086
 msgid "Themes"
 msgstr "テーマ"
 
-#: src/client.cpp:1084 src/gui/didyouknowwindow.cpp:71
+#: src/client.cpp:1089 src/gui/didyouknowwindow.cpp:71
 #: src/gui/helpwindow.cpp:64 src/gui/inventorywindow.cpp:208
 #: src/gui/npcdialog.cpp:58 src/gui/npcdialog.cpp:82 src/gui/popupmenu.cpp:501
 #: src/gui/questswindow.cpp:105 src/gui/shopwindow.cpp:78
 msgid "Close"
 msgstr "閉じる"
 
-#: src/client.cpp:1174
+#: src/client.cpp:1179
 msgid "Connecting to server"
 msgstr "サーバーに接続しています"
 
-#: src/client.cpp:1216
+#: src/client.cpp:1221
 msgid "Logging in"
 msgstr "ログインしています"
 
-#: src/client.cpp:1254
+#: src/client.cpp:1259
 msgid "Entering game world"
 msgstr "ゲームの世界に移動しています"
 
-#: src/client.cpp:1367
+#: src/client.cpp:1372
 msgid "Requesting characters"
 msgstr "キャラクターを呼び出しています"
 
-#: src/client.cpp:1405
+#: src/client.cpp:1410
 msgid "Connecting to the game server"
 msgstr "ゲームサーバーに接続しています"
 
-#: src/client.cpp:1417
+#: src/client.cpp:1422
 msgid "Changing game servers"
 msgstr "ゲームサーバーを変更しています"
 
-#: src/client.cpp:1473 src/client.cpp:1483 src/client.cpp:1642
+#: src/client.cpp:1478 src/client.cpp:1488 src/client.cpp:1647
 #: src/gui/changeemaildialog.cpp:159 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:293 src/gui/charselectdialog.cpp:273
 #: src/gui/editserverdialog.cpp:204 src/gui/registerdialog.cpp:245
@@ -113,50 +113,50 @@ msgstr "ゲームサーバーを変更しています"
 msgid "Error"
 msgstr "エラー"
 
-#: src/client.cpp:1495
+#: src/client.cpp:1500
 msgid "Requesting registration details"
 msgstr "登録内容を呼び出しています"
 
-#: src/client.cpp:1531
+#: src/client.cpp:1536
 msgid "Password Change"
 msgstr "パスワード変更"
 
-#: src/client.cpp:1532
+#: src/client.cpp:1537
 msgid "Password changed successfully!"
 msgstr "パスワードを変更しました"
 
-#: src/client.cpp:1552
+#: src/client.cpp:1557
 msgid "Email Change"
 msgstr "メールアドレス変更"
 
-#: src/client.cpp:1553
+#: src/client.cpp:1558
 msgid "Email changed successfully!"
 msgstr "メールアドレスを変更しました"
 
-#: src/client.cpp:1573
+#: src/client.cpp:1578
 msgid "Unregister Successful"
 msgstr "登録を解除しました"
 
-#: src/client.cpp:1574
+#: src/client.cpp:1579
 msgid "Farewell, come back any time..."
 msgstr "さようなら　また会いましょう"
 
-#: src/client.cpp:1821 src/client.cpp:1835 src/client.cpp:1871
-#: src/client.cpp:1886 src/client.cpp:2346 src/client.cpp:2353
+#: src/client.cpp:1826 src/client.cpp:1840 src/client.cpp:1876
+#: src/client.cpp:1891 src/client.cpp:2351 src/client.cpp:2358
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%sは存在しない為、作成できません"
 
-#: src/client.cpp:2035
+#: src/client.cpp:2040
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "無効なアップデートホスト:%s"
 
-#: src/client.cpp:2074 src/client.cpp:2080
+#: src/client.cpp:2079 src/client.cpp:2085
 msgid "Error creating updates directory!"
 msgstr "更新フォルダの作成エラー"
 
-#: src/client.cpp:2101 src/client.cpp:2113
+#: src/client.cpp:2106 src/client.cpp:2118
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "エラー: %s は存在しない為、作成できません"
@@ -462,7 +462,7 @@ msgid "Max"
 msgstr "最大"
 
 #: src/gui/buyselldialog.cpp:38 src/gui/buyselldialog.cpp:48
-#: src/gui/inventorywindow.cpp:183 src/gui/setup_other.cpp:150
+#: src/gui/inventorywindow.cpp:183 src/gui/setup_other.cpp:151
 #: src/gui/windowmenu.cpp:155
 msgid "Shop"
 msgstr "店"
@@ -599,8 +599,8 @@ msgstr "女性"
 
 #: src/gui/charcreatedialog.cpp:91 src/gui/registerdialog.cpp:104
 #: src/gui/setupactiondata.h:1485 src/gui/setupactiondata.h:1558
-#: src/gui/setup_audio.cpp:128 src/gui/setup_chat.cpp:128
-#: src/gui/setup_other.cpp:213 src/gui/setup_visual.cpp:100
+#: src/gui/setup_audio.cpp:128 src/gui/setup_chat.cpp:131
+#: src/gui/setup_other.cpp:214 src/gui/setup_visual.cpp:100
 msgid "Other"
 msgstr "その他"
 
@@ -688,64 +688,64 @@ msgstr "レベル%d"
 msgid "(empty)"
 msgstr "(空)"
 
-#: src/gui/chatwindow.cpp:118 src/gui/inventorywindow.cpp:63
+#: src/gui/chatwindow.cpp:138 src/gui/inventorywindow.cpp:63
 #: src/gui/setup_visual.cpp:105
 msgid "default"
 msgstr "デフォルト"
 
-#: src/gui/chatwindow.cpp:119
+#: src/gui/chatwindow.cpp:139
 msgid "black"
 msgstr "黒"
 
-#: src/gui/chatwindow.cpp:120
+#: src/gui/chatwindow.cpp:140
 msgid "red"
 msgstr "赤"
 
-#: src/gui/chatwindow.cpp:121
+#: src/gui/chatwindow.cpp:141
 msgid "green"
 msgstr "緑"
 
-#: src/gui/chatwindow.cpp:122
+#: src/gui/chatwindow.cpp:142
 msgid "blue"
 msgstr "青"
 
-#: src/gui/chatwindow.cpp:123
+#: src/gui/chatwindow.cpp:143
 msgid "gold"
 msgstr "金色"
 
-#: src/gui/chatwindow.cpp:124
+#: src/gui/chatwindow.cpp:144
 msgid "yellow"
 msgstr "黄色"
 
-#: src/gui/chatwindow.cpp:125
+#: src/gui/chatwindow.cpp:145
 msgid "pink"
 msgstr "ピンク"
 
-#: src/gui/chatwindow.cpp:126
+#: src/gui/chatwindow.cpp:146
 msgid "purple"
 msgstr "紫"
 
-#: src/gui/chatwindow.cpp:127
+#: src/gui/chatwindow.cpp:147
 msgid "grey"
 msgstr "グレー"
 
-#: src/gui/chatwindow.cpp:128
+#: src/gui/chatwindow.cpp:148
 msgid "brown"
 msgstr "茶色"
 
-#: src/gui/chatwindow.cpp:129
+#: src/gui/chatwindow.cpp:149
 msgid "rainbow 1"
 msgstr "カラフル1"
 
-#: src/gui/chatwindow.cpp:130
+#: src/gui/chatwindow.cpp:150
 msgid "rainbow 2"
 msgstr "カラフル 2"
 
-#: src/gui/chatwindow.cpp:131
+#: src/gui/chatwindow.cpp:151
 msgid "rainbow 3"
 msgstr "カラフル 3"
 
-#: src/gui/chatwindow.cpp:149 src/gui/inventorywindow.cpp:83
+#: src/gui/chatwindow.cpp:169 src/gui/inventorywindow.cpp:83
 #: src/gui/itemamountwindow.cpp:94 src/gui/logindialog.cpp:79
 #: src/gui/logindialog.cpp:109 src/gui/setup_relations.cpp:227
 #: src/gui/setup_theme.cpp:109 src/gui/setup_theme.cpp:155
@@ -755,17 +755,17 @@ msgstr "カラフル 3"
 msgid "???"
 msgstr "???"
 
-#: src/gui/chatwindow.cpp:158 src/gui/setupactiondata.h:1557
+#: src/gui/chatwindow.cpp:178 src/gui/setupactiondata.h:1557
 #: src/gui/setup_chat.cpp:47 src/gui/windowmenu.cpp:102
 msgid "Chat"
 msgstr "チャット"
 
-#: src/gui/chatwindow.cpp:676
+#: src/gui/chatwindow.cpp:697
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "現在: %s; %d プレイヤーがいます"
 
-#: src/gui/chatwindow.cpp:1092
+#: src/gui/chatwindow.cpp:1113
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "%sにささやき中:%s"
@@ -1337,7 +1337,7 @@ msgid "Submit"
 msgstr "決定"
 
 #: src/gui/npcdialog.cpp:64 src/gui/npcpostdialog.cpp:42
-#: src/gui/setup_other.cpp:159
+#: src/gui/setup_other.cpp:160
 msgid "NPC"
 msgstr "NPC"
 
@@ -2349,7 +2349,7 @@ msgstr ""
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: src/gui/setupactiondata.h:1554 src/gui/setup_other.cpp:187
+#: src/gui/setupactiondata.h:1554 src/gui/setup_other.cpp:188
 msgid "Windows"
 msgstr "ウィンドウ"
 
@@ -2481,103 +2481,107 @@ msgstr "ウィンドウ"
 msgid "Auto hide chat window."
 msgstr "チャットウィンドウを自動で隠す"
 
-#: src/gui/setup_chat.cpp:60 src/gui/setup_colors.cpp:79
+#: src/gui/setup_chat.cpp:59
+msgid "Protect chat focus."
+msgstr ""
+
+#: src/gui/setup_chat.cpp:63 src/gui/setup_colors.cpp:79
 msgid "Colors"
 msgstr "色"
 
-#: src/gui/setup_chat.cpp:62
+#: src/gui/setup_chat.cpp:65
 msgid "Remove colors from received chat messages"
 msgstr "受信したメッセージの色を無効にする"
 
-#: src/gui/setup_chat.cpp:65
+#: src/gui/setup_chat.cpp:68
 msgid "Show chat colors list"
 msgstr "チャットの文字色リストを表示"
 
-#: src/gui/setup_chat.cpp:69
+#: src/gui/setup_chat.cpp:72
 msgid "Commands"
 msgstr "コマンド"
 
-#: src/gui/setup_chat.cpp:71
+#: src/gui/setup_chat.cpp:74
 msgid "Allow magic and GM commands in all chat tabs"
 msgstr "全てのタブで呪文とGMコマンドをログする"
 
-#: src/gui/setup_chat.cpp:75
+#: src/gui/setup_chat.cpp:78
 msgid "Limits"
 msgstr "制限"
 
-#: src/gui/setup_chat.cpp:77
+#: src/gui/setup_chat.cpp:80
 msgid "Limit max chars in chat line"
 msgstr "チャットで一行に表示する最大文字数を制限する"
 
-#: src/gui/setup_chat.cpp:80
+#: src/gui/setup_chat.cpp:83
 msgid "Limit max lines in chat"
 msgstr "チャットで表示する最大行数を制限する"
 
-#: src/gui/setup_chat.cpp:84
+#: src/gui/setup_chat.cpp:87
 msgid "Logs"
 msgstr "ログ"
 
-#: src/gui/setup_chat.cpp:86
+#: src/gui/setup_chat.cpp:89
 msgid "Enable chat Log"
 msgstr "チャットログを有効"
 
-#: src/gui/setup_chat.cpp:89
+#: src/gui/setup_chat.cpp:92
 msgid "Show chat history"
 msgstr "チャット履歴を表示"
 
-#: src/gui/setup_chat.cpp:93
+#: src/gui/setup_chat.cpp:96
 msgid "Messages"
 msgstr "メッセージ"
 
-#: src/gui/setup_chat.cpp:95
+#: src/gui/setup_chat.cpp:98
 msgid "Hide shop messages"
 msgstr "売買メッセージを隠す"
 
-#: src/gui/setup_chat.cpp:99
+#: src/gui/setup_chat.cpp:102
 msgid "Tabs"
 msgstr "タブ"
 
-#: src/gui/setup_chat.cpp:101
+#: src/gui/setup_chat.cpp:104
 msgid "Put all whispers in tabs"
 msgstr "ささやきををタブで表示する"
 
-#: src/gui/setup_chat.cpp:104
+#: src/gui/setup_chat.cpp:107
 msgid "Log magic messages in debug tab"
 msgstr "デバッグタブに呪文をログする"
 
-#: src/gui/setup_chat.cpp:107
+#: src/gui/setup_chat.cpp:110
 msgid "Show server messages in debug tab"
 msgstr "デバッグタブにサーバーメッセージをログする"
 
-#: src/gui/setup_chat.cpp:110
+#: src/gui/setup_chat.cpp:113
 msgid "Enable trade tab"
 msgstr "トレードタブを有効"
 
-#: src/gui/setup_chat.cpp:113
+#: src/gui/setup_chat.cpp:116
 msgid "Enable battle tab"
 msgstr "バトルタブを有効"
 
-#: src/gui/setup_chat.cpp:116
+#: src/gui/setup_chat.cpp:119
 msgid "Show battle events"
 msgstr "バトルイベントを表示"
 
-#: src/gui/setup_chat.cpp:119
+#: src/gui/setup_chat.cpp:122
 msgid "Resize chat tabs if need"
 msgstr "チャットタブをリサイズする"
 
-#: src/gui/setup_chat.cpp:123
+#: src/gui/setup_chat.cpp:126
 msgid "Time"
 msgstr "時間"
 
-#: src/gui/setup_chat.cpp:125
+#: src/gui/setup_chat.cpp:128
 msgid "Use local time"
 msgstr "ローカルタイムを使う"
 
-#: src/gui/setup_chat.cpp:130
+#: src/gui/setup_chat.cpp:133
 msgid "Highlight words (separated by comma)"
 msgstr "文字をハイライト (コンマで区切る)"
 
-#: src/gui/setup_chat.cpp:133
+#: src/gui/setup_chat.cpp:136
 msgid "Show MVP messages"
 msgstr "MVPメッセージを表示する"
 
@@ -2797,167 +2801,167 @@ msgstr "クレイジームーブ A プログラム"
 msgid "Mouse relative moves (good for touch interfaces)"
 msgstr ""
 
-#: src/gui/setup_other.cpp:117
+#: src/gui/setup_other.cpp:118
 msgid "Player"
 msgstr "プレイヤー"
 
-#: src/gui/setup_other.cpp:119
+#: src/gui/setup_other.cpp:120
 msgid "Show own hp bar"
 msgstr "自分のHPバーを表示する"
 
-#: src/gui/setup_other.cpp:122
+#: src/gui/setup_other.cpp:123
 msgid "Enable quick stats"
 msgstr "クイックスタッツを有効にする"
 
-#: src/gui/setup_other.cpp:125
+#: src/gui/setup_other.cpp:126
 msgid "Cycle player targets"
 msgstr "選択したプレイヤーを円で表示"
 
-#: src/gui/setup_other.cpp:128
+#: src/gui/setup_other.cpp:129
 msgid "Show job exp messages"
 msgstr "ジョブExpメッセージを表示する"
 
-#: src/gui/setup_other.cpp:131
+#: src/gui/setup_other.cpp:132
 msgid "Show players popups"
 msgstr "プレイヤーポップアップを表示する"
 
-#: src/gui/setup_other.cpp:134
+#: src/gui/setup_other.cpp:135
 msgid "Afk message"
 msgstr "AFKメッセージ"
 
-#: src/gui/setup_other.cpp:137
+#: src/gui/setup_other.cpp:138
 msgid "Show job"
 msgstr "ジョブを表示する"
 
-#: src/gui/setup_other.cpp:140
+#: src/gui/setup_other.cpp:141
 msgid "Enable attack filter"
 msgstr "攻撃フィルターを有効にする"
 
-#: src/gui/setup_other.cpp:143
+#: src/gui/setup_other.cpp:144
 msgid "Enable pickup filter"
 msgstr ""
 
-#: src/gui/setup_other.cpp:146
+#: src/gui/setup_other.cpp:147
 msgid "Enable advert protocol"
 msgstr "アドバートプロトコルを有効にする"
 
-#: src/gui/setup_other.cpp:152
+#: src/gui/setup_other.cpp:153
 msgid "Accept sell/buy requests"
 msgstr "売買リクエストを受け入れる"
 
-#: src/gui/setup_other.cpp:155
+#: src/gui/setup_other.cpp:156
 msgid "Enable shop mode"
 msgstr "ショップモードを有効にする"
 
-#: src/gui/setup_other.cpp:161
+#: src/gui/setup_other.cpp:162
 msgid "Cycle npc targets"
 msgstr ""
 
-#: src/gui/setup_other.cpp:164
+#: src/gui/setup_other.cpp:165
 msgid "Log NPC dialogue"
 msgstr "NPCダイアログを記録する"
 
-#: src/gui/setup_other.cpp:168
+#: src/gui/setup_other.cpp:169
 msgid "Bots support"
 msgstr "ボットサポート"
 
-#: src/gui/setup_other.cpp:170
+#: src/gui/setup_other.cpp:171
 msgid "Enable auction bot support"
 msgstr "オークションボットのサポート"
 
-#: src/gui/setup_other.cpp:173
+#: src/gui/setup_other.cpp:174
 msgid "Enable guild bot support and disable native guild support"
 msgstr "ギルドサポートを無効にしギルドボットを有効にする"
 
-#: src/gui/setup_other.cpp:178
+#: src/gui/setup_other.cpp:179
 msgid "Keyboard"
 msgstr ""
 
-#: src/gui/setup_other.cpp:180
+#: src/gui/setup_other.cpp:181
 msgid "Repeat delay"
 msgstr ""
 
-#: src/gui/setup_other.cpp:183
+#: src/gui/setup_other.cpp:184
 msgid "Repeat interval"
 msgstr ""
 
-#: src/gui/setup_other.cpp:189
+#: src/gui/setup_other.cpp:190
 msgid "Always show"
 msgstr ""
 
-#: src/gui/setup_other.cpp:190
+#: src/gui/setup_other.cpp:191
 msgid "Auto hide in small resolution"
 msgstr ""
 
-#: src/gui/setup_other.cpp:191
+#: src/gui/setup_other.cpp:192
 msgid "Always auto hide"
 msgstr ""
 
-#: src/gui/setup_other.cpp:192
+#: src/gui/setup_other.cpp:193
 msgid "Shortcut buttons"
 msgstr ""
 
-#: src/gui/setup_other.cpp:196
+#: src/gui/setup_other.cpp:197
 msgid "Proxy server"
 msgstr ""
 
-#: src/gui/setup_other.cpp:198
+#: src/gui/setup_other.cpp:199
 msgid "System proxy"
 msgstr ""
 
-#: src/gui/setup_other.cpp:199
+#: src/gui/setup_other.cpp:200
 msgid "Direct connection"
 msgstr ""
 
-#: src/gui/setup_other.cpp:205
+#: src/gui/setup_other.cpp:206
 msgid "SOCKS5 hostname"
 msgstr ""
 
-#: src/gui/setup_other.cpp:206
+#: src/gui/setup_other.cpp:207
 msgid "Proxy type"
 msgstr ""
 
-#: src/gui/setup_other.cpp:209
+#: src/gui/setup_other.cpp:210
 msgid "Proxy address:port"
 msgstr ""
 
-#: src/gui/setup_other.cpp:215
+#: src/gui/setup_other.cpp:216
 msgid "Enable server side attack"
 msgstr "サーバーサイドアタックを有効にする"
 
-#: src/gui/setup_other.cpp:218
+#: src/gui/setup_other.cpp:219
 msgid "Enable bot checker"
 msgstr "ボットチェッカーを有効にする"
 
-#: src/gui/setup_other.cpp:221
+#: src/gui/setup_other.cpp:222
 msgid "Enable buggy servers protection (do not disable)"
 msgstr "不安定なサーバー保護を有効にする(無効にしない)"
 
-#: src/gui/setup_other.cpp:225
+#: src/gui/setup_other.cpp:226
 msgid "Enable debug log"
 msgstr "デバッグログを有効にする"
 
-#: src/gui/setup_other.cpp:228
+#: src/gui/setup_other.cpp:229
 msgid "Enable OpenGL log"
 msgstr ""
 
-#: src/gui/setup_other.cpp:231
+#: src/gui/setup_other.cpp:232
 msgid "Low traffic mode"
 msgstr "低トラフィックモード"
 
-#: src/gui/setup_other.cpp:234
+#: src/gui/setup_other.cpp:235
 msgid "Hide shield sprite"
 msgstr "シールドスプライトを隠す"
 
-#: src/gui/setup_other.cpp:237
+#: src/gui/setup_other.cpp:238
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr "スクリーンショットにFBOを使う (OpenGLのみ)"
 
-#: src/gui/setup_other.cpp:240
+#: src/gui/setup_other.cpp:241
 msgid "Network delay between sub servers"
 msgstr ""
 
-#: src/gui/setup_other.cpp:243
+#: src/gui/setup_other.cpp:244
 msgid "Show background"
 msgstr "背景を表示する"
 
