@@ -1,3 +1,13 @@
+2012-12-09 New release 1.2.12.9
+fix: relative mouse moving for Android.
+fix: show chat history option.
+fix: MacOSX compilation.
+add: email in registration dialog (evol only).
+add: enable jewelry theme by default for evol branding.
+add: improve OpenGL draw speed.
+add: protect chat focus by default.
+add: basic on screen buttons for Android version.
+
 2012-11-25 New release 1.2.11.25
 fix: some fixes in jewelry theme.
 fix: disable some popups in Android version.
