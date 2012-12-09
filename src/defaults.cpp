@@ -282,6 +282,8 @@ DefaultsData* getConfigDefaults()
     AddDEF("allowscreensaver", false);
     AddDEF("debugOpenGL", 0);
     AddDEF("protectChatFocus", true);
+    AddDEF("screenButtonsSize", 1);
+    AddDEF("screenJoystickSize", 1);
     return configData;
 }
 

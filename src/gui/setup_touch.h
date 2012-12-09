@@ -38,6 +38,7 @@ class Setup_Touch final : public SetupTabScroll
         ~Setup_Touch();
 
     protected:
+        SetupItemNames *mSizeList;
 };
 
 #endif

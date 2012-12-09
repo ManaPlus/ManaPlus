@@ -102,7 +102,7 @@ class TouchManager final : public ConfigListener
         void init();
 
         void loadTouchItem(TouchItem **item, std::string name,
-                           int type, int width, int height,
+                           int type, int x, int y, int width, int height,
                            TouchFuncPtr fAll, TouchFuncPtr fPressed,
                            TouchFuncPtr fReleased, TouchFuncPtr fOut);
 
@@ -132,6 +132,9 @@ class TouchManager final : public ConfigListener
 
         void loadButtons();
 
+        int getPadSize()
+        { return (mJoystickSize + 2) * 50; }
+
     private:
         TouchItem *mKeyboard;
         TouchItem *mPad;
@@ -143,6 +146,8 @@ class TouchManager final : public ConfigListener
         bool mRedraw;
         bool mShowJoystick;
         bool mShowButtons;
+        int mButtonsSize;
+        int mJoystickSize;
 };
 
 extern TouchManager touchManager;

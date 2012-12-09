@@ -37,6 +37,7 @@
 
 InputEvent tempEvent(0, 0);
 bool padClicked(false);
+int haldJoyPad = 50;
 
 #define impHandler(name) void name(const MouseInput &mouseInput)
 #define impHandler0(name) void name(const MouseInput &mouseInput A_UNUSED)
@@ -46,6 +47,12 @@ impHandler0(showKeyboard)
 #ifdef ANDROID
     SDL_ANDROID_ToggleScreenKeyboardTextInput(nullptr);
 #endif
+}
+
+void setHalfJoyPad(int s)
+{
+    logger->log("set size: %d", s);
+    haldJoyPad = s;
 }
 
 static void moveChar(int x, int y)
@@ -58,8 +65,8 @@ static void moveChar(int x, int y)
     static const int diff = 20;
 
     // set center at (0,0)
-    x -= 50;
-    y -= 50;
+    x -= haldJoyPad;
+    y -= haldJoyPad;
 
     // some magic for checking at what sector was click
     if (abs(x) < lim1)
@@ -132,13 +139,13 @@ impHandler(padEvents)
 impHandler0(padOut)
 {
     padClicked = false;
-    moveChar(50, 50);
+    moveChar(haldJoyPad, haldJoyPad);
 }
 
 impHandler0(padUp)
 {
     padClicked = false;
-    moveChar(50, 50);
+    moveChar(haldJoyPad, haldJoyPad);
 }
 
 impHandler0(attackClick)

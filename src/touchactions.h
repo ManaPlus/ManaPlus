@@ -37,6 +37,8 @@ decHandler(padUp);
 decHandler(attackClick);
 decHandler(cancelClick);
 
+void setHalfJoyPad(int s);
+
 #undef decHandler
 
 #endif

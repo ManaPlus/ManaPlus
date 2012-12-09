@@ -39,7 +39,11 @@ TouchManager::TouchManager() :
     mPad(nullptr),
     mAttack(nullptr),
     mVertexes(new ImageCollection),
-    mRedraw(true)
+    mRedraw(true),
+    mShowJoystick(false),
+    mShowButtons(false),
+    mButtonsSize(1),
+    mJoystickSize(1)
 {
     for (int f = 0; f < actionsSize; f ++)
         mActions[f] = false;
@@ -57,12 +61,18 @@ void TouchManager::init()
 {
     config.addListener("showScreenJoystick", this);
     config.addListener("showScreenButtons", this);
+    config.addListener("screenButtonsSize", this);
+    config.addListener("screenJoystickSize", this);
 
     mShowJoystick = config.getBoolValue("showScreenJoystick");
     mShowButtons = config.getBoolValue("showScreenButtons");
+    mButtonsSize = config.getIntValue("screenButtonsSize");
+    mJoystickSize = config.getIntValue("screenJoystickSize");
+
+    setHalfJoyPad(getPadSize() / 2);
 
 #ifdef ANDROID
-    loadTouchItem(&mKeyboard, "keyboard_icon.xml", 28, 28, NORMAL,
+    loadTouchItem(&mKeyboard, "keyboard_icon.xml", -1, -1, 28, 28, NORMAL,
         nullptr, nullptr, &showKeyboard, nullptr);
 #endif
 
@@ -73,7 +83,7 @@ void TouchManager::init()
 }
 
 void TouchManager::loadTouchItem(TouchItem **item, std::string name,
-                                 int width, int height, int type,
+                                 int x, int y, int width, int height, int type,
                                  TouchFuncPtr fAll, TouchFuncPtr fPressed,
                                  TouchFuncPtr fReleased, TouchFuncPtr fOut)
 {
@@ -91,8 +101,10 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
         Image *image = images->grid[0];
         if (image)
         {
-            int x = skin->getOption("x", 10);
-            int y = skin->getOption("y", 10);
+            if (x == -1)
+                x = skin->getOption("x", 10);
+            if (y == -1)
+                y = skin->getOption("y", 10);
             const int pad = skin->getPadding();
             const int pad2 = 2 * pad;
             switch (type)
@@ -294,16 +306,36 @@ void TouchManager::unloadTouchItem(TouchItem **unloadItem)
 
 void TouchManager::loadPad()
 {
-    loadTouchItem(&mPad, "dpad.xml", 100, 100, LEFT,
+    const int sz = (mJoystickSize + 2) * 50;
+    loadTouchItem(&mPad, "dpad.xml", -1, -1, sz, sz, LEFT,
         &padEvents, &padClick, &padUp, &padOut);
 }
 
 void TouchManager::loadButtons()
 {
-    loadTouchItem(&mAttack, "dpad_attack.xml", 60, 60, RIGHT,
-        nullptr, &attackClick, nullptr, nullptr);
-    loadTouchItem(&mCancel, "dpad_cancel.xml", 60, 60, RIGHT,
-        nullptr, &cancelClick, nullptr, nullptr);
+    const int sz = (mButtonsSize + 1) * 50;
+    Theme *theme = Theme::instance();
+    if (!theme)
+        return;
+    Skin *const skin = theme->load("dbutton.xml", "");
+
+    if (skin)
+    {
+        const int x = skin->getOption("x", 10);
+        const int y = skin->getOption("y", 10);
+        const int pad = skin->getPadding();
+        const int pad2 = 2 * pad;
+        const int skipWidth = pad2 + sz + x;
+
+        loadTouchItem(&mAttack, "dbutton.xml", x, y, sz, sz, RIGHT,
+            nullptr, &attackClick, nullptr, nullptr);
+
+        loadTouchItem(&mCancel, "dbutton.xml", skipWidth, y, sz, sz, RIGHT,
+            nullptr, &cancelClick, nullptr, nullptr);
+
+        theme->unload(skin);
+    }
+
 }
 
 void TouchManager::optionChanged(const std::string &value)
@@ -335,5 +367,29 @@ void TouchManager::optionChanged(const std::string &value)
             unloadTouchItem(&mCancel);
         }
         mRedraw = true;
+    }
+    else if (value == "screenButtonsSize")
+    {
+        if (mButtonsSize == config.getIntValue("screenButtonsSize"))
+            return;
+        mButtonsSize = config.getIntValue("screenButtonsSize");
+        if (mShowButtons)
+        {
+            unloadTouchItem(&mAttack);
+            unloadTouchItem(&mCancel);
+            loadButtons();
+        }
+    }
+    else if (value == "screenJoystickSize")
+    {
+        if (mJoystickSize == config.getIntValue("screenJoystickSize"))
+            return;
+        mJoystickSize = config.getIntValue("screenJoystickSize");
+        setHalfJoyPad(getPadSize() / 2);
+        if (mShowJoystick)
+        {
+            unloadTouchItem(&mPad);
+            loadPad();
+        }
     }
 }
