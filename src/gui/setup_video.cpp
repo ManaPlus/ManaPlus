@@ -395,14 +395,15 @@ void Setup_Video::apply()
         config.setValue("screen", fullscreen);
     }
 
-    // OpenGL change
-    if (mOpenGLDropDown->getSelected() != mOpenGLEnabled)
-    {
-        int mode = mOpenGLDropDown->getSelected();
+    int mode = mOpenGLDropDown->getSelected();
 #ifdef ANDROID
-        if (mode == 1 || mode == 2)
-            mode = 3;
+    if (mode == 1 || mode == 2)
+        mode = 3;
 #endif
+
+    // OpenGL change
+    if (mode != mOpenGLEnabled)
+    {
         config.setValue("opengl", mode);
 
         // OpenGL can currently only be changed by restarting, notify user.
