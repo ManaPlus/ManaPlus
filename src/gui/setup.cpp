@@ -37,6 +37,7 @@
 #include "gui/setup_perfomance.h"
 #include "gui/setup_players.h"
 #include "gui/setup_relations.h"
+#include "gui/setup_touch.h"
 #include "gui/setup_video.h"
 #include "gui/setup_visual.h"
 
@@ -97,8 +98,9 @@ Setup::Setup():
     mTabs.push_back(new Setup_Visual(this));
     mTabs.push_back(new Setup_Audio(this));
     mTabs.push_back(new Setup_Perfomance(this));
-    mTabs.push_back(new Setup_Joystick(this));
+    mTabs.push_back(new Setup_Touch(this));
     mTabs.push_back(new Setup_Input(this));
+    mTabs.push_back(new Setup_Joystick(this));
     mTabs.push_back(new Setup_Colors(this));
     mTabs.push_back(new Setup_Chat(this));
     mTabs.push_back(new Setup_Players(this));

@@ -321,6 +321,8 @@ SET(SRCS
     gui/setup_other.h
     gui/setup_theme.cpp
     gui/setup_theme.h
+    gui/setup_touch.cpp
+    gui/setup_touch.h
     gui/setup_chat.cpp
     gui/setup_chat.h
     gui/setup_input.cpp

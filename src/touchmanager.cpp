@@ -63,6 +63,9 @@ void TouchManager::init()
     {
         loadTouchItem(&mPad, "dpad.xml", 100, 100, LEFT,
             &padEvents, &padClick, &padUp, &padOut);
+    }
+    if (config.getBoolValue("showScreenButtons"))
+    {
         loadTouchItem(&mAttack, "dpad_attack.xml", 60, 60, RIGHT,
             nullptr, &attackClick, nullptr, nullptr);
         loadTouchItem(&mCancel, "dpad_cancel.xml", 60, 60, RIGHT,

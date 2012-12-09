@@ -1,7 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  Andrei Karas
  *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -20,31 +18,35 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETYP_OTHER_H
-#define GUI_SETUP_OTHER_H
+#include "gui/setup_touch.h"
 
-#include "gui/widgets/setupitem.h"
+#include "gui/widgets/layouthelper.h"
+#include "gui/widgets/scrollarea.h"
 
-#include <guichan/actionlistener.hpp>
+#include "configuration.h"
 
-class EditDialog;
-class TextField;
+#include "utils/gettext.h"
 
-class Setup_Other final : public SetupTabScroll
+#include "debug.h"
+
+Setup_Touch::Setup_Touch(const Widget2 *const widget) :
+    SetupTabScroll(widget)
 {
-    public:
-        Setup_Other(const Widget2 *const widget);
+    setName(_("Touch"));
 
-        A_DELETE_COPY(Setup_Other)
+    LayoutHelper h(this);
+    ContainerPlacer place = h.getPlacer(0, 0);
+    place(0, 0, mScroll, 10, 10);
 
-        ~Setup_Other();
+    new SetupItemCheckBox(_("Show on screen buttons"), "",
+        "showScreenButtons", this, "showScreenButtonsEvent");
 
-        void apply();
+    new SetupItemCheckBox(_("Show on screen joystick"), "",
+        "showScreenJoystick", this, "showScreenJoystickEvent");
 
-    protected:
-        SetupItemNames *mProxyTypeList;
+    setDimension(gcn::Rectangle(0, 0, 550, 350));
+}
 
-        SetupItemNames *mShortcutsList;
-};
-
-#endif
+Setup_Touch::~Setup_Touch()
+{
+}

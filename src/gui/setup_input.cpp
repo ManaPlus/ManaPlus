@@ -99,9 +99,6 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     mDefaultButton(new Button(this, _("Default"), "default", this)),
     mResetKeysButton(new Button(this, _("Reset all keys"), "resetkeys", this)),
     mTabs(new TabStrip(this, config.getIntValue("fontSize") + 10)),
-    mShowJoystick(config.getBoolValue("showScreenJoystick")),
-    mJoystickCheckBox(new CheckBox(this,
-        _("Show onscreen joystick"), mShowJoystick)),
     mKeySetting(false),
     mActionDataSize(new int [9])
 {
@@ -159,7 +156,6 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     place(2, 6, mAssignKeyButton);
     place(3, 6, mUnassignKeyButton);
     place(4, 6, mDefaultButton);
-    place(0, 7, mJoystickCheckBox);
 
     int width = 600;
     if (config.getIntValue("screenwidth") >= 730)
@@ -200,8 +196,6 @@ void Setup_Input::apply()
             "Resolve them, or gameplay may result in strange behaviour."),
             gettext(str1.c_str()), gettext(str2.c_str())), DIALOG_ERROR);
     }
-    mShowJoystick = mJoystickCheckBox->isSelected();
-    config.setValue("showScreenJoystick", mShowJoystick);
     keyboard.setEnabled(true);
     inputManager.store();
 }

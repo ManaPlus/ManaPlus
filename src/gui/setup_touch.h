@@ -1,7 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  Andrei Karas
  *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -20,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETYP_OTHER_H
-#define GUI_SETUP_OTHER_H
+#ifndef GUI_SETUP_TOUCH_H
+#define GUI_SETUP_TOUCH_H
 
 #include "gui/widgets/setupitem.h"
 
@@ -30,21 +28,16 @@
 class EditDialog;
 class TextField;
 
-class Setup_Other final : public SetupTabScroll
+class Setup_Touch final : public SetupTabScroll
 {
     public:
-        Setup_Other(const Widget2 *const widget);
+        Setup_Touch(const Widget2 *const widget);
 
-        A_DELETE_COPY(Setup_Other)
+        A_DELETE_COPY(Setup_Touch)
 
-        ~Setup_Other();
-
-        void apply();
+        ~Setup_Touch();
 
     protected:
-        SetupItemNames *mProxyTypeList;
-
-        SetupItemNames *mShortcutsList;
 };
 
 #endif
