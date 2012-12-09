@@ -47,6 +47,7 @@ TouchManager::TouchManager() :
 
 TouchManager::~TouchManager()
 {
+    config.removeListeners(this);
     clear();
     delete mVertexes;
     mVertexes = nullptr;
@@ -54,23 +55,21 @@ TouchManager::~TouchManager()
 
 void TouchManager::init()
 {
+    config.addListener("showScreenJoystick", this);
+    config.addListener("showScreenButtons", this);
+
+    mShowJoystick = config.getBoolValue("showScreenJoystick");
+    mShowButtons = config.getBoolValue("showScreenButtons");
+
 #ifdef ANDROID
     loadTouchItem(&mKeyboard, "keyboard_icon.xml", 28, 28, NORMAL,
         nullptr, nullptr, &showKeyboard, nullptr);
 #endif
 
-    if (config.getBoolValue("showScreenJoystick"))
-    {
-        loadTouchItem(&mPad, "dpad.xml", 100, 100, LEFT,
-            &padEvents, &padClick, &padUp, &padOut);
-    }
-    if (config.getBoolValue("showScreenButtons"))
-    {
-        loadTouchItem(&mAttack, "dpad_attack.xml", 60, 60, RIGHT,
-            nullptr, &attackClick, nullptr, nullptr);
-        loadTouchItem(&mCancel, "dpad_cancel.xml", 60, 60, RIGHT,
-            nullptr, &cancelClick, nullptr, nullptr);
-    }
+    if (mShowJoystick)
+        loadPad();
+    if (mShowButtons)
+        loadButtons();
 }
 
 void TouchManager::loadTouchItem(TouchItem **item, std::string name,
@@ -122,26 +121,13 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
 
 void TouchManager::clear()
 {
-//    unloadTouchItem(&mPad);
-//    unloadTouchItem(&mKeyboard);
-
     Theme *theme = Theme::instance();
     if (!theme)
         return;
     for (TouchItemVectorCIter it = mObjects.begin(), it_end = mObjects.end();
          it != it_end; ++ it)
     {
-        TouchItem *item = *it;
-        if (item)
-        {
-            if (item->images)
-            {
-                theme->unloadRect(*item->images);
-                delete item->images;
-                item->images = nullptr;
-            }
-            delete item;
-        }
+        unload(*it);
     }
     mObjects.clear();
     mRedraw = true;
@@ -268,5 +254,86 @@ void TouchManager::resize(int width, int height)
             default:
                 break;
         }
+    }
+}
+
+void TouchManager::unload(TouchItem *item)
+{
+    if (item)
+    {
+        Theme *const theme = Theme::instance();
+        if (!theme)
+            return;
+        if (item->images)
+        {
+            theme->unloadRect(*item->images);
+            delete item->images;
+            item->images = nullptr;
+        }
+        delete item;
+    }
+}
+
+void TouchManager::unloadTouchItem(TouchItem **unloadItem)
+{
+    Theme *theme = Theme::instance();
+    if (!theme)
+        return;
+    for (TouchItemVectorIter it = mObjects.begin(), it_end = mObjects.end();
+         it != it_end; ++ it)
+    {
+        TouchItem *item = *it;
+        if (item && *unloadItem == item)
+        {
+            mObjects.erase(it);
+            unload(item);
+            return;
+        }
+    }
+}
+
+void TouchManager::loadPad()
+{
+    loadTouchItem(&mPad, "dpad.xml", 100, 100, LEFT,
+        &padEvents, &padClick, &padUp, &padOut);
+}
+
+void TouchManager::loadButtons()
+{
+    loadTouchItem(&mAttack, "dpad_attack.xml", 60, 60, RIGHT,
+        nullptr, &attackClick, nullptr, nullptr);
+    loadTouchItem(&mCancel, "dpad_cancel.xml", 60, 60, RIGHT,
+        nullptr, &cancelClick, nullptr, nullptr);
+}
+
+void TouchManager::optionChanged(const std::string &value)
+{
+    logger->log("changed");
+    if (value == "showScreenJoystick")
+    {
+        if (mShowJoystick == config.getBoolValue("showScreenJoystick"))
+            return;
+        mShowJoystick = config.getBoolValue("showScreenJoystick");
+        if (mShowJoystick)
+            loadPad();
+        else
+            unloadTouchItem(&mPad);
+        mRedraw = true;
+    }
+    else if (value == "showScreenButtons")
+    {
+        if (mShowButtons == config.getBoolValue("showScreenButtons"))
+            return;
+        mShowButtons = config.getBoolValue("showScreenButtons");
+        if (mShowButtons)
+        {
+            loadButtons();
+        }
+        else
+        {
+            unloadTouchItem(&mAttack);
+            unloadTouchItem(&mCancel);
+        }
+        mRedraw = true;
     }
 }

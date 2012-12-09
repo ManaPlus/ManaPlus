@@ -23,6 +23,7 @@
 
 #include "resources/image.h"
 
+#include "configlistener.h"
 #include "keydata.h"
 
 #include <guichan/mouseinput.hpp>
@@ -80,8 +81,9 @@ struct TouchItem final
 
 typedef std::vector<TouchItem*> TouchItemVector;
 typedef TouchItemVector::const_iterator TouchItemVectorCIter;
+typedef TouchItemVector::iterator TouchItemVectorIter;
 
-class TouchManager final
+class TouchManager final : public ConfigListener
 {
     public:
         TouchManager();
@@ -120,6 +122,16 @@ class TouchManager final
 
         void resize(int width, int height);
 
+        void unload(TouchItem *item);
+
+        void unloadTouchItem(TouchItem **unloadItem);
+
+        void optionChanged(const std::string &value);
+
+        void loadPad();
+
+        void loadButtons();
+
     private:
         TouchItem *mKeyboard;
         TouchItem *mPad;
@@ -129,6 +141,8 @@ class TouchManager final
         ImageCollection *mVertexes;
         bool mActions[actionsSize];
         bool mRedraw;
+        bool mShowJoystick;
+        bool mShowButtons;
 };
 
 extern TouchManager touchManager;
