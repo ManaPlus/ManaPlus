@@ -26,6 +26,8 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "gui/logindialog.h"
+
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/paths.h"
@@ -231,6 +233,7 @@ void LoginHandler::processLoginError(Net::MessageIn &msg)
             break;
         case 1:
             errorMessage = _("Wrong password.");
+            LoginDialog::savedPassword = "";
             break;
         case 2:
             errorMessage = _("Account expired.");
