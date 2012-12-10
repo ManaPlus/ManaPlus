@@ -448,7 +448,7 @@ public:
     SocialPlayersTab(const Widget2 *const widget,
                      std::string name, const bool showBackground) :
         SocialTab(widget),
-        mBeings(new BeingsListModal())
+        mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
         mScroll = new ScrollArea(mList, showBackground,
@@ -617,7 +617,7 @@ public:
     SocialNavigationTab(const Widget2 *const widget,
                         const bool showBackground) :
         SocialTab(widget),
-        mBeings(new BeingsListModal())
+        mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
         mScroll = new ScrollArea(mList, showBackground,
@@ -956,7 +956,7 @@ public:
     SocialAttackTab(const Widget2 *const widget,
                     const bool showBackground) :
         SocialTab(widget),
-        mBeings(new BeingsListModal())
+        mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
         mScroll = new ScrollArea(mList, showBackground,
@@ -1015,7 +1015,7 @@ public:
     SocialPickupTab(const Widget2 *const widget,
                     const bool showBackground) :
         SocialTab(widget),
-        mBeings(new BeingsListModal())
+        mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
         mScroll = new ScrollArea(mList, showBackground,
@@ -1074,7 +1074,7 @@ public:
     SocialFriendsTab(const Widget2 *const widget,
                      std::string name, const bool showBackground) :
         SocialTab(widget),
-        mBeings(new BeingsListModal())
+        mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
         mScroll = new ScrollArea(mList, showBackground,

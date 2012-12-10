@@ -33,8 +33,8 @@
 
 Setup_Other::Setup_Other(const Widget2 *const widget) :
     SetupTabScroll(widget),
-    mProxyTypeList(new SetupItemNames()),
-    mShortcutsList(new SetupItemNames())
+    mProxyTypeList(new SetupItemNames),
+    mShortcutsList(new SetupItemNames)
 {
     setName(_("Misc"));
 

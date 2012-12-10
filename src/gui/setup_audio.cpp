@@ -53,8 +53,8 @@ public:
 
 Setup_Audio::Setup_Audio(const Widget2 *const widget) :
     SetupTabScroll(widget),
-    mSoundModel(new SoundsModel()),
-    mChannelsList(new SetupItemNames())
+    mSoundModel(new SoundsModel),
+    mChannelsList(new SetupItemNames)
 {
     setName(_("Audio"));
 

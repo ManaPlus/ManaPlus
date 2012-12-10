@@ -107,7 +107,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mWeightBar(nullptr),
     mSlotsBar(new ProgressBar(this, 0.0f, 100, 0, Theme::PROG_INVY_SLOTS)),
     mFilter(nullptr),
-    mSortModel(new SortListModel()),
+    mSortModel(new SortListModel),
     mSortDropDown(new DropDown(this, mSortModel, this, "sort")),
     mNameFilter(new TextField(this, "", true, this, "namefilter", true)),
     mSortDropDownCell(nullptr),

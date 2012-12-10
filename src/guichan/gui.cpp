@@ -67,7 +67,7 @@ namespace gcn
         mTop(nullptr),
         mGraphics(nullptr),
         mInput(nullptr),
-        mFocusHandler(new FocusHandler()),
+        mFocusHandler(new FocusHandler),
         mTabbing(true),
         mShiftPressed(false),
         mMetaPressed(false),

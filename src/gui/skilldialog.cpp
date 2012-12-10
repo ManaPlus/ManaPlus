@@ -96,7 +96,7 @@ class SkillListBox final : public ListBox
         SkillListBox(const Widget2 *const widget, SkillModel *const model) :
             ListBox(widget, model),
             mModel(model),
-            mPopup(new TextPopup()),
+            mPopup(new TextPopup),
             mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
             mTextColor(getThemeColor(Theme::TEXT))
         {

@@ -558,9 +558,9 @@ PlayerRelationsManager::getPlayerIgnoreStrategies()
         mIgnoreStrategies.push_back(new PIS_emote(FIRST_IGNORE_EMOTE + 1,
                                     _("Floating bubble"),
                                     "emote1"));
-        mIgnoreStrategies.push_back(new PIS_nothing());
-        mIgnoreStrategies.push_back(new PIS_dotdotdot());
-        mIgnoreStrategies.push_back(new PIS_blinkname());
+        mIgnoreStrategies.push_back(new PIS_nothing);
+        mIgnoreStrategies.push_back(new PIS_dotdotdot);
+        mIgnoreStrategies.push_back(new PIS_blinkname);
     }
     return &mIgnoreStrategies;
 }
