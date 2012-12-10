@@ -42,6 +42,7 @@
 #include "playerinfo.h"
 #include "soundmanager.h"
 #include "spellshortcut.h"
+#include "touchmanager.h"
 
 #include "gui/botcheckerwindow.h"
 #include "gui/debugwindow.h"
@@ -377,6 +378,7 @@ Game::Game():
     mLowerCounter(0),
     mPing(0)
 {
+    touchManager.setInGame(true);
     spellManager = new SpellManager;
     spellShortcut = new SpellShortcut;
 
@@ -438,6 +440,7 @@ Game::Game():
 
 Game::~Game()
 {
+    touchManager.setInGame(false);
     config.write();
     serverConfig.write();
 

@@ -135,6 +135,8 @@ class TouchManager final : public ConfigListener
         int getPadSize()
         { return (mJoystickSize + 2) * 50; }
 
+        void setInGame(bool b);
+
     private:
         TouchItem *mKeyboard;
         TouchItem *mPad;
@@ -148,6 +150,7 @@ class TouchManager final : public ConfigListener
         bool mShowButtons;
         int mButtonsSize;
         int mJoystickSize;
+        bool mInGame;
 };
 
 extern TouchManager touchManager;

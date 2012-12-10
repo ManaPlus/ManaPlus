@@ -43,7 +43,8 @@ TouchManager::TouchManager() :
     mShowJoystick(false),
     mShowButtons(false),
     mButtonsSize(1),
-    mJoystickSize(1)
+    mJoystickSize(1),
+    mInGame(false)
 {
     for (int f = 0; f < actionsSize; f ++)
         mActions[f] = false;
@@ -158,7 +159,7 @@ void TouchManager::draw()
                  it != it_end; ++ it)
             {
                 const TouchItem *const item = *it;
-                if (item && item->images)
+                if (item && item->images && (mInGame || item == mKeyboard))
                 {
                     mainGraphics->calcWindow(mVertexes, item->x, item->y,
                         item->width, item->height, *item->images);
@@ -174,7 +175,7 @@ void TouchManager::draw()
              it != it_end; ++ it)
         {
             const TouchItem *const item = *it;
-            if (item && item->images)
+            if (item && item->images && (mInGame || item == mKeyboard))
             {
                 mainGraphics->drawImageRect(item->x, item->y,
                     item->width, item->height, *item->images);
@@ -192,7 +193,7 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
          it != it_end; ++ it)
     {
         const TouchItem *const item = *it;
-        if (!item)
+        if (!item || (!mInGame && item != mKeyboard))
             continue;
         const gcn::Rectangle &rect = item->rect;
         if (rect.isPointInRect(x, y))
@@ -392,4 +393,10 @@ void TouchManager::optionChanged(const std::string &value)
             loadPad();
         }
     }
+}
+
+void TouchManager::setInGame(bool b)
+{
+    mInGame = b;
+    mRedraw = true;
 }
