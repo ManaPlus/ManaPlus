@@ -12,6 +12,7 @@ SET (FILES
     circle-on.xml
     colors.xml
     complete_icon.xml
+    dbutton.xml
     didyouknow.xml
     dpad.xml
     dropdown.xml
