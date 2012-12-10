@@ -6,6 +6,7 @@ SET (FILES
     button_highlighted.xml
     button_pressed.xml
     buy.xml
+    CHANGELOG.txt
     chat.xml
     checkbox.xml
     circle-off.xml
@@ -60,7 +61,6 @@ SET (FILES
     tab_selected.xml
     tab_unused.xml
     textfield.xml
-    VERSION.txt
     window.png
     window.xml
     )

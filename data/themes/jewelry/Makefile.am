@@ -9,6 +9,7 @@ gui_DATA =				\
 	button_highlighted.xml		\
 	button_pressed.xml		\
 	buy.xml		\
+	CHANGELOG.txt		\
 	chat.xml		\
 	checkbox.xml		\
 	circle-off.xml		\
@@ -63,7 +64,6 @@ gui_DATA =				\
 	tab_selected.xml		\
 	tab_unused.xml		\
 	textfield.xml		\
-	VERSION.txt		\
 	window.png		\
 	window.xml
 
