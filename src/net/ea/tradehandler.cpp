@@ -131,12 +131,12 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
     switch (msg.readInt8())
     {
         case 0: // Too far away
-            SERVER_NOTICE(_("Trading isn't possible. Trade "
-                "partner is too far away."))
+            SERVER_NOTICE(strprintf(_("Trading with %s isn't possible."
+                " Trade partner is too far away."), tradePartnerName.c_str()))
             break;
         case 1: // Character doesn't exist
-            SERVER_NOTICE(_("Trading isn't possible. Character "
-                "doesn't exist."))
+            SERVER_NOTICE(strprintf(_("Trading with %s isn't possible."
+                " Character doesn't exist."), tradePartnerName.c_str()))
             break;
         case 2: // Invite request check failed...
             SERVER_NOTICE(_("Trade cancelled due to an unknown reason."))
@@ -156,7 +156,7 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
                 PlayerRelation::SPEECH_LOG))
             {
                 SERVER_NOTICE(strprintf(_("Trade with %s cancelled."),
-                              tradePartnerName.c_str()))
+                    tradePartnerName.c_str()))
             }
             // otherwise ignore silently
 
@@ -168,7 +168,8 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
             PlayerInfo::setTrading(false);
             break;
         default: // Shouldn't happen as well, but to be sure
-            SERVER_NOTICE(_("Unhandled trade cancel packet."))
+            SERVER_NOTICE(strprintf(_("Unhandled trade cancel packet with %s"),
+                tradePartnerName.c_str()))
             if (tradeWindow)
                 tradeWindow->clear();
             break;
