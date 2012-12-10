@@ -57,6 +57,9 @@ class ImageParticle : public Particle
         virtual bool draw(Graphics *graphics,
                           int offsetX, int offsetY) const override;
 
+        virtual void setAlpha(const float alpha) override
+        { mAlpha = alpha; }
+
         static std::map<std::string, int> imageParticleCountByName;
     protected:
         Image *mImage;   /**< The image used for this particle. */
