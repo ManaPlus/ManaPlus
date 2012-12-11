@@ -62,7 +62,7 @@ int16_t MessageIn::readInt16()
     return value;
 }
 
-int MessageIn::readInt32()
+int32_t MessageIn::readInt32()
 {
     int32_t value = -1;
     if (mPos + 4 <= mLength)

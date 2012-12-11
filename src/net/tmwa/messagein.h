@@ -49,7 +49,7 @@ class MessageIn final : public Net::MessageIn
         A_DELETE_COPY(MessageIn)
 
         int16_t readInt16();            /**< Reads a short. */
-        int readInt32();            /**< Reads a long. */
+        int32_t readInt32();            /**< Reads a long. */
 };
 
 }
