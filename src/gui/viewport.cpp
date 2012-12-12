@@ -673,7 +673,7 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
                         / static_cast<float>(mMap->getTileWidth());
                     const int destY = (event.getY() + mPixelViewY)
                         / static_cast<float>(mMap->getTileHeight());
-                    if (playerX != destX && playerY != destY)
+                    if (playerX != destX || playerY != destY)
                     {
                         if (!player_node->navigateTo(destX, destY))
                         {
