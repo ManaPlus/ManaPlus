@@ -58,7 +58,7 @@
 
 #include "debug.h"
 
-const char *SORT_NAME[6] =
+static const char *SORT_NAME[6] =
 {
     N_("default"),
     N_("by name"),

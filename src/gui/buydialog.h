@@ -29,8 +29,10 @@
 #include <guichan/selectionlistener.hpp>
 
 class Button;
+class DropDown;
 class ShopItems;
 class ShopListBox;
+class SortListModel;
 class IntTextField;
 class Label;
 class ListBox;
@@ -145,6 +147,8 @@ class BuyDialog final : public Window,
         int mAmountItems;
         int mMaxItems;
         std::string mNick;
+        SortListModel *mSortModel;
+        DropDown *mSortDropDown;
 };
 
 #endif

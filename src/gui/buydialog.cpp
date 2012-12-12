@@ -28,6 +28,7 @@
 #include "gui/setup.h"
 #include "gui/tradewindow.h"
 
+#include "gui/widgets/dropdown.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
@@ -44,7 +45,140 @@
 
 #include "utils/gettext.h"
 
+#include <algorithm>
+
 #include "debug.h"
+
+static const char *SORT_NAME[7] =
+{
+    N_("unsorted"),
+    N_("by price"),
+    N_("by name"),
+    N_("by id"),
+    N_("by weight"),
+    N_("by amount"),
+    N_("by type")
+};
+
+class SortListModel final : public gcn::ListModel
+{
+public:
+    virtual ~SortListModel()
+    { }
+
+    virtual int getNumberOfElements()
+    { return 7; }
+
+    virtual std::string getElementAt(int i)
+    {
+        if (i >= getNumberOfElements() || i < 0)
+            return _("???");
+
+        return gettext(SORT_NAME[i]);
+    }
+};
+
+static class SortItemPriceFunctor final
+{
+    public:
+        bool operator() (const ShopItem *const item1,
+                         const ShopItem *const item2) const
+        {
+            if (!item1 || !item2)
+                return false;
+
+            const int price1 = item1->getPrice();
+            const int price2 = item2->getPrice();
+            if (price1 == price2)
+                return item1->getDisplayName() < item2->getDisplayName();
+            return price1 < price2;
+        }
+} itemPriceSorter;
+
+static class SortItemNameFunctor final
+{
+    public:
+        bool operator() (const ShopItem *const item1,
+                         const ShopItem *const item2) const
+        {
+            if (!item1 || !item2)
+                return false;
+
+            const std::string &name1 = item1->getDisplayName();
+            const std::string &name2 = item2->getDisplayName();
+            if (name1 == name2)
+                return item1->getPrice() < item2->getPrice();
+            return name1 < name2;
+        }
+} itemNameSorter;
+
+static class SortItemIdFunctor final
+{
+    public:
+        bool operator() (const ShopItem *const item1,
+                         const ShopItem *const item2) const
+        {
+            if (!item1 || !item2)
+                return false;
+
+            const int id1 = item1->getId();
+            const int id2 = item2->getId();
+            if (id1 == id2)
+                return item1->getPrice() < item2->getPrice();
+            return id1 < id2;
+        }
+} itemIdSorter;
+
+static class SortItemWeightFunctor final
+{
+    public:
+        bool operator() (const ShopItem *const item1,
+                         const ShopItem *const item2) const
+        {
+            if (!item1 || !item2)
+                return false;
+
+            const int weight1 = item1->getInfo().getWeight();
+            const int weight2 = item2->getInfo().getWeight();
+            if (weight1 == weight2)
+                return item1->getPrice() < item2->getPrice();
+            return weight1 < weight2;
+        }
+} itemWeightSorter;
+
+static class SortItemAmountFunctor final
+{
+    public:
+        bool operator() (const ShopItem *const item1,
+                         const ShopItem *const item2) const
+        {
+            if (!item1 || !item2)
+                return false;
+
+            const int amount1 = item1->getQuantity();
+            const int amount2 = item2->getQuantity();
+            if (amount1 == amount2)
+                return item1->getPrice() < item2->getPrice();
+            return amount1 < amount2;
+        }
+} itemAmountSorter;
+
+static class SortItemTypeFunctor final
+{
+    public:
+        bool operator() (const ShopItem *const item1,
+                         const ShopItem *const item2) const
+        {
+            if (!item1 || !item2)
+                return false;
+
+            const int type1 = item1->getInfo().getType();
+            const int type2 = item2->getInfo().getType();
+            if (type1 == type2)
+                return item1->getPrice() < item2->getPrice();
+            return type1 < type2;
+        }
+} itemTypeSorter;
 
 BuyDialog::DialogList BuyDialog::instances;
 
@@ -52,7 +186,9 @@ BuyDialog::BuyDialog(const int npcId) :
     Window(_("Buy"), false, nullptr, "buy.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
-    mNpcId(npcId), mMoney(0), mAmountItems(0), mMaxItems(0), mNick("")
+    mNpcId(npcId), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(""),
+    mSortModel(nullptr),
+    mSortDropDown(nullptr)
 {
     init();
 }
@@ -61,7 +197,9 @@ BuyDialog::BuyDialog(std::string nick) :
     Window(_("Buy"), false, nullptr, "buy.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
-    mNpcId(-1), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(nick)
+    mNpcId(-1), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(nick),
+    mSortModel(new SortListModel),
+    mSortDropDown(new DropDown(this, mSortModel, false, false, this, "sort"))
 {
     init();
     logger->log("BuyDialog::BuyDialog nick:" + mNick);
@@ -138,6 +276,8 @@ void BuyDialog::init()
     placer(0, 6, mAmountLabel, 2);
     placer(2, 6, mAmountField, 2);
     placer(0, 7, mMoneyLabel, 8);
+    if (mSortDropDown)
+        placer(0, 8, mSortDropDown, 2);
     placer(7, 8, mBuyButton);
     placer(8, 8, mQuitButton);
 
@@ -190,12 +330,46 @@ void BuyDialog::addItem(const int id, const unsigned char color,
 void BuyDialog::action(const gcn::ActionEvent &event)
 {
     const std::string &eventId = event.getId();
+    logger->log("event: " + eventId);
 
     if (eventId == "quit")
     {
         close();
         return;
     }
+    else if (eventId == "sort")
+    {
+        if (mSortDropDown && mShopItems)
+        {
+            std::vector<ShopItem*> &items = mShopItems->items();
+            switch (mSortDropDown->getSelected())
+            {
+                case 1:
+                    std::sort(items.begin(), items.end(), itemPriceSorter);
+                    break;
+                case 2:
+                    std::sort(items.begin(), items.end(), itemNameSorter);
+                    break;
+                case 3:
+                    std::sort(items.begin(), items.end(), itemIdSorter);
+                    break;
+                case 4:
+                    std::sort(items.begin(), items.end(), itemWeightSorter);
+                    break;
+                case 5:
+                    std::sort(items.begin(), items.end(), itemAmountSorter);
+                    break;
+                case 6:
+                    std::sort(items.begin(), items.end(), itemTypeSorter);
+                    break;
+                case 0:
+                default:
+                    break;
+            }
+        }
+        return;
+    }
+
     const int selectedItem = mShopItemList->getSelected();
 
     // The following actions require a valid selection
