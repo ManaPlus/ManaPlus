@@ -29,6 +29,7 @@
 #include "actorsprite.h"
 
 #include <guichan/actionlistener.hpp>
+#include <guichan/listmodel.hpp>
 
 #include "localconsts.h"
 
@@ -164,6 +165,8 @@ class PopupMenu final : public Popup, public LinkHandler
         void showChatPopup(const int x, const int y, ChatTab *const tab);
 
         void showChangePos(const int x, const int y);
+
+        void showPopup(const int x, const int y, gcn::ListModel *model);
 
         /**
          * Handles link action.

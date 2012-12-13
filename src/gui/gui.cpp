@@ -696,3 +696,13 @@ void Gui::handleMouseInput()
     }
     BLOCK_END("Gui::handleMouseInput")
 }
+
+void Gui::addGlobalFocusListener(gcn::FocusListener* focusListener)
+{
+    mFocusListeners.push_back(focusListener);
+}
+
+void Gui::removeGlobalFocusListener(gcn::FocusListener* focusListener)
+{
+    mFocusListeners.remove(focusListener);
+}

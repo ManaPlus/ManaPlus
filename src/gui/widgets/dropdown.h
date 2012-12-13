@@ -25,12 +25,25 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widgets/dropdown.hpp>
+#include "guichan/actionlistener.hpp"
+#include "guichan/basiccontainer.hpp"
+#include "guichan/focushandler.hpp"
+#include "guichan/focuslistener.hpp"
+#include "guichan/keylistener.hpp"
+#include "guichan/listmodel.hpp"
+#include "guichan/mouselistener.hpp"
+#include "guichan/selectionlistener.hpp"
+
+#include "guichan/widgets/listbox.hpp"
+#include "guichan/widgets/scrollarea.hpp"
 
 #include "localconsts.h"
 
 class Image;
 class ImageRect;
+class ListBox;
+class PopupList;
+class ScrollArea;
 class Skin;
 
 /**
@@ -40,7 +53,12 @@ class Skin;
  * DropDown you must give DropDown an implemented ListModel which represents
  * your list.
  */
-class DropDown final : public gcn::DropDown,
+class DropDown final : public gcn::ActionListener,
+                       public gcn::BasicContainer,
+                       public gcn::KeyListener,
+                       public gcn::MouseListener,
+                       public gcn::FocusListener,
+                       public gcn::SelectionListener,
                        public Widget2
 {
     public:
@@ -70,10 +88,6 @@ class DropDown final : public gcn::DropDown,
 
         void drawFrame(gcn::Graphics *graphics) override;
 
-        // Inherited from FocusListener
-
-        void focusLost(const gcn::Event& event) override;
-
         // Inherited from KeyListener
 
         void keyPressed(gcn::KeyEvent& keyEvent) override;
@@ -81,6 +95,10 @@ class DropDown final : public gcn::DropDown,
         // Inherited from MouseListener
 
         void mousePressed(gcn::MouseEvent& mouseEvent) override;
+
+        void mouseReleased(gcn::MouseEvent& mouseEvent) override;
+
+        void mouseDragged(gcn::MouseEvent& mouseEvent) override;
 
         void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override;
 
@@ -90,11 +108,35 @@ class DropDown final : public gcn::DropDown,
 
         std::string getSelectedString() const A_WARN_UNUSED;
 
+        void valueChanged(const gcn::SelectionEvent& event);
+
+        void updateSelection();
+
         void adjustHeight();
 
-        void dropDown() override;
+        void dropDown();
 
-        void foldUp() override;
+        void foldUp();
+
+        void hideDrop();
+
+        int getSelected() const;
+
+        void setSelected(int selected);
+
+        void setListModel(gcn::ListModel *listModel);
+
+        gcn::ListModel *getListModel();
+
+        void addSelectionListener(SelectionListener* listener);
+
+        void removeSelectionListener(SelectionListener* selectionListener);
+
+        gcn::Rectangle getChildrenArea();
+
+        void action(const gcn::ActionEvent &actionEvent);
+
+        void distributeValueChangedEvent();
 
     protected:
         /**
@@ -104,10 +146,20 @@ class DropDown final : public gcn::DropDown,
          */
         void drawButton(gcn::Graphics *graphics);
 
+        PopupList *mPopup;
         gcn::Color mShadowColor;
         gcn::Color mHighlightColor;
         int mPadding;
         int mImagePadding;
+
+        bool mDroppedDown;
+        bool mPushed;
+        int mFoldedUpHeight;
+//        gcn::FocusHandler mInternalFocusHandler;
+        bool mIsDragged;
+        typedef std::list<SelectionListener*> SelectionListenerList;
+        SelectionListenerList mSelectionListeners;
+        typedef SelectionListenerList::iterator SelectionListenerIterator;
 
         // Add own Images.
         static int instances;

@@ -62,7 +62,6 @@ manaplus_SOURCES += guichan/include/guichan/actionevent.hpp \
 	      guichan/include/guichan/widgets/button.hpp \
 	      guichan/include/guichan/widgets/checkbox.hpp \
 	      guichan/include/guichan/widgets/container.hpp \
-	      guichan/include/guichan/widgets/dropdown.hpp \
 	      guichan/include/guichan/widgets/label.hpp \
 	      guichan/include/guichan/widgets/listbox.hpp \
 	      guichan/include/guichan/widgets/radiobutton.hpp \
@@ -96,7 +95,6 @@ manaplus_SOURCES += guichan/actionevent.cpp \
 	      guichan/widgets/button.cpp \
 	      guichan/widgets/checkbox.cpp \
 	      guichan/widgets/container.cpp \
-	      guichan/widgets/dropdown.cpp \
 	      guichan/widgets/label.cpp \
 	      guichan/widgets/listbox.cpp \
 	      guichan/widgets/radiobutton.cpp \
@@ -174,6 +172,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/playerbox.h \
 	      gui/widgets/popup.cpp \
 	      gui/widgets/popup.h \
+	      gui/widgets/popuplist.cpp \
+	      gui/widgets/popuplist.h \
 	      gui/widgets/progressbar.cpp \
 	      gui/widgets/progressbar.h \
 	      gui/widgets/progressindicator.cpp \

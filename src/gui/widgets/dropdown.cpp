@@ -28,8 +28,10 @@
 #include "keyevent.h"
 
 #include "gui/sdlinput.h"
+#include "gui/viewport.h"
 
 #include "gui/widgets/listbox.h"
+#include "gui/widgets/popuplist.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "resources/image.h"
@@ -58,14 +60,26 @@ DropDown::DropDown(const Widget2 *const widget,
                    gcn::ListModel *const listModel,
                    gcn::ActionListener *const listener,
                    const std::string &eventId):
-    gcn::DropDown::DropDown(listModel,
-        new ScrollArea, new ListBox(widget, listModel)),
+    gcn::ActionListener(),
+    gcn::BasicContainer(),
+    gcn::KeyListener(),
+    gcn::MouseListener(),
+    gcn::FocusListener(),
+    gcn::SelectionListener(),
+    Widget2(widget),
+    mPopup(new PopupList(this, listModel)),
     mShadowColor(getThemeColor(Theme::DROPDOWN_SHADOW)),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mPadding(1),
-    mImagePadding(2)
+    mImagePadding(2),
+    mDroppedDown(false),
+    mPushed(false),
+    mFoldedUpHeight(0),
+    mIsDragged(false)
 {
     mFrameSize = 2;
+
+    mPopup->setHeight(100);
 
     // Initialize graphics
     if (instances == 0)
@@ -113,7 +127,19 @@ DropDown::DropDown(const Widget2 *const widget,
 
     instances++;
 
-    mListBox->setForegroundColor(getThemeColor(Theme::DROPDOWN));
+    setWidth(100);
+    setFocusable(true);
+    setListModel(listModel);
+
+    if (mPopup->getSelected() < 0)
+        mPopup->setSelected(0);
+
+    addMouseListener(this);
+    addKeyListener(this);
+    addFocusListener(this);
+
+    adjustHeight();
+    mPopup->setForegroundColor(getThemeColor(Theme::DROPDOWN));
     setForegroundColor(getThemeColor(Theme::DROPDOWN));
 
     if (!eventId.empty())
@@ -122,8 +148,8 @@ DropDown::DropDown(const Widget2 *const widget,
     if (listener)
         addActionListener(listener);
 
-    if (mListBox)
-        mListBox->adjustSize();
+    if (mPopup)
+        mPopup->adjustSize();
 
     if (mSkin)
     {
@@ -154,8 +180,6 @@ DropDown::~DropDown()
             theme->unloadRect(skinRect);
         }
     }
-    delete mScrollArea;
-    mScrollArea = nullptr;
 }
 
 void DropDown::updateAlpha()
@@ -201,12 +225,12 @@ void DropDown::draw(gcn::Graphics* graphics)
     mHighlightColor.a = alpha;
     mShadowColor.a = alpha;
 
-    if (mListBox->getListModel() && mListBox->getSelected() >= 0)
+    if (mPopup->getListModel() && mPopup->getSelected() >= 0)
     {
         graphics->setFont(getFont());
         graphics->setColor(mForegroundColor);
-        graphics->drawText(mListBox->getListModel()->getElementAt(
-            mListBox->getSelected()), mPadding, mPadding);
+        graphics->drawText(mPopup->getListModel()->getElementAt(
+            mPopup->getSelected()), mPadding, mPadding);
     }
 
     if (isFocused())
@@ -220,7 +244,7 @@ void DropDown::draw(gcn::Graphics* graphics)
 
     if (mDroppedDown)
     {
-        drawChildren(graphics);
+//        drawChildren(graphics);
         // Draw two lines separating the ListBox with selected
         // element view.
         graphics->setColor(mHighlightColor);
@@ -255,7 +279,6 @@ void DropDown::drawButton(gcn::Graphics *graphics)
     }
 }
 
-// -- KeyListener notifications
 void DropDown::keyPressed(gcn::KeyEvent& keyEvent)
 {
     if (keyEvent.isConsumed())
@@ -283,9 +306,9 @@ void DropDown::keyPressed(gcn::KeyEvent& keyEvent)
             break;
 
         case Input::KEY_GUI_END:
-            if (mListBox->getListModel())
+            if (mPopup->getListModel())
             {
-                setSelected(mListBox->getListModel()->
+                setSelected(mPopup->getListModel()->
                     getNumberOfElements() - 1);
             }
             break;
@@ -297,26 +320,57 @@ void DropDown::keyPressed(gcn::KeyEvent& keyEvent)
     keyEvent.consume();
 }
 
-void DropDown::focusLost(const gcn::Event& event)
+void DropDown::hideDrop()
 {
-    gcn::DropDown::focusLost(event);
-    releaseModalMouseInputFocus();
+    distributeActionEvent();
+    mPopup->setVisible(false);
 }
 
 void DropDown::mousePressed(gcn::MouseEvent& mouseEvent)
 {
-    gcn::DropDown::mousePressed(mouseEvent);
-
-    if (0 <= mouseEvent.getY() && mouseEvent.getY() < getHeight() &&
-        mouseEvent.getX() >= 0 && mouseEvent.getX() < getWidth() &&
-        mouseEvent.getButton() == gcn::MouseEvent::LEFT && mDroppedDown &&
-        mouseEvent.getSource() == mListBox)
+    // If we have a mouse press on the widget.
+    if (mouseEvent.getButton() == gcn::MouseEvent::LEFT
+        && !mDroppedDown && mouseEvent.getSource() == this)
+    {
+        mPushed = true;
+        dropDown();
+    }
+    else
     {
         mPushed = false;
         foldUp();
-        releaseModalMouseInputFocus();
-        distributeActionEvent();
+        hideDrop();
     }
+}
+
+void DropDown::mouseReleased(gcn::MouseEvent &mouseEvent)
+{
+    if (mIsDragged)
+        mPushed = false;
+
+    // Released outside of widget. Can happen when we have modal
+    // input focus.
+    if ((0 > mouseEvent.getY()
+        || mouseEvent.getY() >= getHeight()
+        || mouseEvent.getX() < 0
+        || mouseEvent.getX() >= getWidth())
+        && mouseEvent.getButton() == gcn::MouseEvent::LEFT)
+    {
+        if (mIsDragged)
+            foldUp();
+    }
+    else if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
+    {
+        mPushed = false;
+    }
+
+    mIsDragged = false;
+}
+
+void DropDown::mouseDragged(gcn::MouseEvent &mouseEvent)
+{
+    mIsDragged = true;
+    mouseEvent.consume();
 }
 
 void DropDown::mouseWheelMovedUp(gcn::MouseEvent& mouseEvent)
@@ -333,7 +387,7 @@ void DropDown::mouseWheelMovedDown(gcn::MouseEvent& mouseEvent)
 
 void DropDown::setSelectedString(std::string str)
 {
-    gcn::ListModel *const listModel = mListBox->getListModel();
+    gcn::ListModel *const listModel = mPopup->getListModel();
     if (!listModel)
         return;
 
@@ -349,7 +403,7 @@ void DropDown::setSelectedString(std::string str)
 
 std::string DropDown::getSelectedString() const
 {
-    gcn::ListModel *const listModel = mListBox->getListModel();
+    gcn::ListModel *const listModel = mPopup->getListModel();
     if (!listModel)
         return "";
 
@@ -358,48 +412,120 @@ std::string DropDown::getSelectedString() const
 
 void DropDown::adjustHeight()
 {
-    if (!mScrollArea || !mListBox)
-        return;
-
-    const int listBoxHeight = mListBox->getHeight();
-    const int h2 = getFont()->getHeight() + 2 * mPadding;
-    int newHeight = h2;
-
-    if (mDroppedDown && getParent())
-    {
-        const int h = getParent()->getChildrenArea().height - getY();
-        const int h0 = h - h2;
-        if (listBoxHeight > h0)
-        {
-            mScrollArea->setHeight(h0);
-            newHeight = h;
-        }
-        else
-        {
-            newHeight = listBoxHeight + h2;
-            mScrollArea->setHeight(listBoxHeight);
-        }
-    }
-
-    setHeight(newHeight);
-
-    mScrollArea->setWidth(getWidth());
-    mListBox->setWidth(mScrollArea->getChildrenArea().width);
-    mScrollArea->setPosition(0, 0);
+    setHeight(getFont()->getHeight() + 2 * mPadding);
 }
 
 void DropDown::dropDown()
 {
-    const bool dropped = mDroppedDown;
-    gcn::DropDown::dropDown();
-    if (!dropped)
+    if (!mPopup)
+        return;
+
+    if (!mDroppedDown)
+    {
+        mDroppedDown = true;
+        mFoldedUpHeight = getHeight();
         adjustHeight();
+
+//        if (getParent())
+//            getParent()->moveToTop(this);
+        int x = 0;
+        int y = 0;
+        getAbsolutePosition(x, y);
+        const int frame = getParent()->getFrameSize();
+        const int pad = mPopup->getPadding();
+        const int pad2 = pad * 2;
+
+        // here width should be adjusted on some other parameters
+        mPopup->setWidth(getWidth() - pad2 + 10);
+        mPopup->show(x - mPadding - frame - 1, y + getHeight());
+        mPopup->requestMoveToTop();
+        mPopup->requestFocus();
+    }
 }
 
 void DropDown::foldUp()
 {
-    const bool dropped = mDroppedDown;
-    gcn::DropDown::foldUp();
-    if (dropped)
+    if (mDroppedDown)
+    {
+        mDroppedDown = false;
         adjustHeight();
+//        mInternalFocusHandler.focusNone();
+    }
+}
+
+int DropDown::getSelected() const
+{
+    return mPopup->getSelected();
+}
+
+void DropDown::setSelected(int selected)
+{
+    if (selected >= 0)
+        mPopup->setSelected(selected);
+}
+
+void DropDown::setListModel(gcn::ListModel *listModel)
+{
+    mPopup->setListModel(listModel);
+
+    if (mPopup->getSelected() < 0)
+        mPopup->setSelected(0);
+
+    adjustHeight();
+}
+
+gcn::ListModel *DropDown::getListModel()
+{
+    return mPopup->getListModel();
+}
+
+void DropDown::action(const gcn::ActionEvent &actionEvent A_UNUSED)
+{
+    foldUp();
+    distributeActionEvent();
+}
+
+gcn::Rectangle DropDown::getChildrenArea()
+{
+    if (mDroppedDown)
+    {
+        // Calculate the children area (with the one pixel border in mind)
+        return gcn::Rectangle(1, mFoldedUpHeight + 1, 
+            getWidth() - 2, getHeight() - mFoldedUpHeight - 2);
+    }
+
+    return gcn::Rectangle();
+}
+
+void DropDown::valueChanged(const gcn::SelectionEvent& event A_UNUSED)
+{
+}
+
+void DropDown::updateSelection()
+{
+    mDroppedDown = false;
+    mPushed = false;
+    distributeActionEvent();
+    distributeValueChangedEvent();
+}
+
+void DropDown::addSelectionListener(SelectionListener* selectionListener)
+{
+    mSelectionListeners.push_back(selectionListener);
+}
+
+void DropDown::removeSelectionListener(SelectionListener* listener)
+{
+    mSelectionListeners.remove(listener);
+}
+
+void DropDown::distributeValueChangedEvent()
+{
+    for (SelectionListenerIterator iter = mSelectionListeners.begin();
+          iter != mSelectionListeners.end(); 
+          ++iter)
+    {
+        gcn::SelectionEvent event(this);
+        (*iter)->valueChanged(event);
+    }
 }

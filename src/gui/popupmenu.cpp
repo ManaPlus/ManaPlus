@@ -70,6 +70,8 @@
 
 #include "utils/gettext.h"
 
+#include <guichan/listmodel.hpp>
+
 #include "debug.h"
 
 extern int serverVersion;
@@ -2185,6 +2187,21 @@ void PopupMenu::addPickupFilter(const std::string &name)
         mBrowserBox->addRow("add pickup ignore",
             _("Add to ignore list"));
     }
+}
+
+void PopupMenu::showPopup(const int x, const int y, gcn::ListModel *model)
+{
+    if (!model)
+        return;
+
+    mBrowserBox->clearRows();
+    for (int f = 0, sz = model->getNumberOfElements(); f < sz; f ++)
+    {
+        mBrowserBox->addRow(strprintf("dropdown_%d", f),
+            model->getElementAt(f).c_str());
+    }
+    mBrowserBox->addRow("cancel", _("Cancel"));
+    showPopup(x, y);
 }
 
 RenameListener::RenameListener() :

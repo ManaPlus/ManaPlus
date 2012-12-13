@@ -142,6 +142,10 @@ class Gui final : public gcn::Gui
 
         void getAbsolutePosition(gcn::Widget *widget, int &x, int &y);
 
+        void addGlobalFocusListener(gcn::FocusListener* focusListener);
+
+        void removeGlobalFocusListener(gcn::FocusListener* focusListener);
+
     protected:
         void handleMouseMoved(const gcn::MouseInput &mouseInput);
 
@@ -163,6 +167,9 @@ class Gui final : public gcn::Gui
         float mMouseCursorAlpha;
         int mMouseInactivityTimer;
         int mCursorType;
+
+        typedef std::list<FocusListener*> FocusListenerList;
+        FocusListenerList mFocusListeners;
 };
 
 extern Gui *gui;                            /**< The GUI system */
