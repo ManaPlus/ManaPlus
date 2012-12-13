@@ -63,7 +63,7 @@
 //#define DEBUG_DUMP_LEAKS1 1
 
 //Android logging
-#define ANDROID_LOG 1
+//#define ANDROID_LOG 1
 
 //profiler
 //#define USE_PROFILER 1
