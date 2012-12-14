@@ -359,8 +359,11 @@ void EquipmentWindow::mouseExited(gcn::MouseEvent &event A_UNUSED)
 void EquipmentWindow::setSelected(const int index)
 {
     mSelected = index;
+    mRedraw = true;
     if (mUnequip)
         mUnequip->setEnabled(mSelected != -1);
+    if (mItemPopup)
+        mItemPopup->setVisible(false);
 }
 
 void EquipmentWindow::setBeing(Being *const being)

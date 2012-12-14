@@ -433,6 +433,7 @@ class Window : public gcn::Window,
         int mDefaultY;                /**< Default window Y position */
         int mDefaultWidth;            /**< Default window width */
         int mDefaultHeight;           /**< Default window height */
+        bool mRedraw;
         bool mLastRedraw;
 
     private:
@@ -499,7 +500,6 @@ class Window : public gcn::Window,
         int mGripPadding;
         int mResizeHandles;
         int mOldResizeHandles;
-        bool mRedraw;
         bool mPlayVisibleSound;
         gcn::Font *mCaptionFont;
 };
