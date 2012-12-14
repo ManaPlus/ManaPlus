@@ -16,6 +16,6 @@ Version 1.0 (10.12.2012)
 	- Transparent background for specific windows
 	- Updated Cursors
 	- New graphic for scrollbar background
-	- ANDROID: graphic for on-screen keyboard, joypad area and on-screen buttons
 	- New Cursors graphic: Mechanism Trigger, Doors/Warps
 	- New Font color combinations and window-specific color scheme for better readability
+	- ANDROID: graphic for on-screen keyboard, joypad area and on-screen buttons
