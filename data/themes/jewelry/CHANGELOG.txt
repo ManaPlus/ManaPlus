@@ -2,7 +2,12 @@
 Francesco Miglietta (Hal9000)
 
 
-Version 1.0 (10.12.2012)
+Version 1.01 (WIP)
+
+	- New graphic for quest status icons in quest window
+
+
+Version 1.00 (11.12.2012)
 
 	JEWELRY THEME first release.
 	Changes are described comparing JT to standard The Mana World client themes.
