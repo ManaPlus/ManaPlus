@@ -42,6 +42,7 @@ gui_DATA =				\
 	ok.xml		\
 	playerbox.xml		\
 	popup.xml		\
+	popuplist.xml		\
 	progressbar.xml		\
 	quests.xml		\
 	radio.xml		\

@@ -436,7 +436,7 @@ void DropDown::dropDown()
         const int pad2 = pad * 2;
 
         // here width should be adjusted on some other parameters
-        mPopup->setWidth(getWidth() - pad2 + 10);
+        mPopup->setWidth(getWidth() - pad2 + 8);
         mPopup->show(x - mPadding - frame - 1, y + getHeight());
         mPopup->requestMoveToTop();
         mPopup->requestFocus();
@@ -449,7 +449,6 @@ void DropDown::foldUp()
     {
         mDroppedDown = false;
         adjustHeight();
-//        mInternalFocusHandler.focusNone();
     }
 }
 
