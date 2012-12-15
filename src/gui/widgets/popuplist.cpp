@@ -42,7 +42,6 @@ PopupList::PopupList(DropDown *const widget,
     setFocusable(true);
 
     mListBox->setDistributeMousePressed(true);
-    mListBox->addSelectionListener(this);
     mScrollArea->setPosition(mPadding, mPadding);
     add(mScrollArea);
 
@@ -51,6 +50,8 @@ PopupList::PopupList(DropDown *const widget,
     if (gui)
         gui->addGlobalFocusListener(this);
 
+    addKeyListener(mDropDown);
+    addMouseListener(this);
     adjustSize();
 }
 
@@ -58,6 +59,7 @@ PopupList::~PopupList()
 {
     if (gui)
         gui->removeGlobalFocusListener(this);
+    removeKeyListener(mDropDown);
 }
 
 void PopupList::show(int x, int y)
@@ -113,7 +115,7 @@ void PopupList::adjustSize()
     mListBox->setWidth(getWidth() - pad2);
 }
 
-void PopupList::valueChanged(const gcn::SelectionEvent& event A_UNUSED)
+void PopupList::mousePressed(gcn::MouseEvent& mouseEvent)
 {
     if (mDropDown)
         mDropDown->updateSelection();

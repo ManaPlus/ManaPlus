@@ -27,7 +27,6 @@
 #include <guichan/actionlistener.hpp>
 #include "guichan/focuslistener.hpp"
 #include <guichan/listmodel.hpp>
-#include "guichan/selectionlistener.hpp"
 
 #include "localconsts.h"
 
@@ -36,8 +35,7 @@ class ListBox;
 class ScrollArea;
 
 class PopupList final : public Popup,
-                        public gcn::FocusListener,
-                        public gcn::SelectionListener
+                        public gcn::FocusListener
 {
     public:
         PopupList(DropDown *const widget,
@@ -62,11 +60,11 @@ class PopupList final : public Popup,
 
         void adjustSize();
 
-        void valueChanged(const gcn::SelectionEvent& event);
-
         void focusGained(const gcn::Event& event A_UNUSED);
 
         void focusLost(const gcn::Event& event A_UNUSED);
+
+        void mousePressed(gcn::MouseEvent& mouseEvent);
 
     private:
         gcn::ListModel *mListModel;
