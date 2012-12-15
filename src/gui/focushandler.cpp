@@ -22,6 +22,8 @@
 
 #include "gui/focushandler.h"
 
+#include "gui/gui.h"
+
 #include "gui/widgets/window.h"
 
 #include "debug.h"
@@ -99,4 +101,11 @@ void FocusHandler::checkForWindow()
             widget = widget->getParent();
         }
     }
+}
+
+void FocusHandler::distributeFocusGainedEvent(const gcn::Event &focusEvent)
+{
+    if (gui)
+        gui->distributeGlobalFocusGainedEvent(focusEvent);
+    gcn::FocusHandler::distributeFocusGainedEvent(focusEvent);
 }

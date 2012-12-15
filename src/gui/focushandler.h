@@ -60,15 +60,17 @@ class FocusHandler final : public gcn::FocusHandler
          * Removes a widget from the focus handler. Also makes sure no dangling
          * pointers remain in modal focus stack.
          */
-        void remove(gcn::Widget *widget);
+        void remove(gcn::Widget *widget) override;
 
         /**
          * Overloaded to allow windows to move to the top when one of their
          * widgets is tabbed to when tabbing through focusable elements.
          */
-        void tabNext();
+        void tabNext() override;
 
-        void tabPrevious();
+        void tabPrevious() override;
+
+        void distributeFocusGainedEvent(const gcn::Event &focusEvent) override;
 
     private:
         /**

@@ -706,3 +706,13 @@ void Gui::removeGlobalFocusListener(gcn::FocusListener* focusListener)
 {
     mFocusListeners.remove(focusListener);
 }
+
+void Gui::distributeGlobalFocusGainedEvent(const gcn::Event &focusEvent)
+{
+    for (FocusListenerIterator iter = mFocusListeners.begin();
+         iter != mFocusListeners.end();
+         ++ iter)
+    {
+        (*iter)->focusGained(focusEvent);
+    }
+}

@@ -20,6 +20,8 @@
 
 #include "gui/widgets/popuplist.h"
 
+#include "gui/gui.h"
+
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
@@ -46,6 +48,14 @@ PopupList::PopupList(DropDown *const widget,
 
     if (getParent())
         getParent()->addFocusListener(this);
+    if (gui)
+        gui->addGlobalFocusListener(this);
+}
+
+PopupList::~PopupList()
+{
+    if (gui)
+        gui->removeGlobalFocusListener(this);
 }
 
 void PopupList::show(int x, int y)
@@ -106,10 +116,22 @@ void PopupList::valueChanged(const gcn::SelectionEvent& event A_UNUSED)
     setVisible(false);
 }
 
-void PopupList::focusLost(const gcn::Event& event A_UNUSED)
+void PopupList::focusGained(const gcn::Event& event A_UNUSED)
 {
-    logger->log("lost focus");
+    const gcn::Widget *const source = event.getSource();
+    if (source == this || source == mListBox
+        || source == mScrollArea || source == mDropDown)
+    {
+        return;
+    }
+
     if (mDropDown)
         mDropDown->updateSelection();
-//    setVisible(false);
+    setVisible(false);
+}
+
+void PopupList::focusLost(const gcn::Event& event A_UNUSED)
+{
+    if (mDropDown)
+        mDropDown->updateSelection();
 }

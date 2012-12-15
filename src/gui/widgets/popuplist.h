@@ -43,6 +43,8 @@ class PopupList final : public Popup,
         PopupList(DropDown *const widget,
                   gcn::ListModel *const listModel);
 
+        ~PopupList();
+
         A_DELETE_COPY(PopupList)
 
         void show(int x, int y);
@@ -61,6 +63,8 @@ class PopupList final : public Popup,
         void adjustSize();
 
         void valueChanged(const gcn::SelectionEvent& event);
+
+        void focusGained(const gcn::Event& event A_UNUSED);
 
         void focusLost(const gcn::Event& event A_UNUSED);
 

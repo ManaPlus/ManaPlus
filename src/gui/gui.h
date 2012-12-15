@@ -26,6 +26,7 @@
 #include "resources/cursor.h"
 #include "resources/image.h"
 
+#include <guichan/focuslistener.hpp>
 #include <guichan/gui.hpp>
 
 #include "localconsts.h"
@@ -146,6 +147,8 @@ class Gui final : public gcn::Gui
 
         void removeGlobalFocusListener(gcn::FocusListener* focusListener);
 
+        void distributeGlobalFocusGainedEvent(const gcn::Event &focusEvent);
+
     protected:
         void handleMouseMoved(const gcn::MouseInput &mouseInput);
 
@@ -168,7 +171,8 @@ class Gui final : public gcn::Gui
         int mMouseInactivityTimer;
         int mCursorType;
 
-        typedef std::list<FocusListener*> FocusListenerList;
+        typedef std::list<gcn::FocusListener*> FocusListenerList;
+        typedef FocusListenerList::iterator FocusListenerIterator;
         FocusListenerList mFocusListeners;
 };
 
