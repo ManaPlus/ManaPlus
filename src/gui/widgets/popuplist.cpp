@@ -125,7 +125,7 @@ void PopupList::mousePressed(gcn::MouseEvent& mouseEvent)
 void PopupList::focusGained(const gcn::Event& event A_UNUSED)
 {
     const gcn::Widget *const source = event.getSource();
-    if (source == this || source == mListBox
+    if (!mVisible || source == this || source == mListBox
         || source == mScrollArea || source == mDropDown)
     {
         return;
