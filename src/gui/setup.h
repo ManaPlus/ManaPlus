@@ -76,6 +76,8 @@ class Setup final : public Window, public gcn::ActionListener
 
         void activateTab(const std::string &name);
 
+        void setVisible(bool visible) override;
+
     private:
         std::list<SetupTab*> mTabs;
         std::list<Window*> mWindowsToReset;

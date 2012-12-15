@@ -44,7 +44,9 @@ TouchManager::TouchManager() :
     mShowButtons(false),
     mButtonsSize(1),
     mJoystickSize(1),
-    mInGame(false)
+    mShow(false),
+    mInGame(false),
+    mTempHideButtons(false)
 {
     for (int f = 0; f < actionsSize; f ++)
         mActions[f] = false;
@@ -159,7 +161,7 @@ void TouchManager::draw()
                  it != it_end; ++ it)
             {
                 const TouchItem *const item = *it;
-                if (item && item->images && (mInGame || item == mKeyboard))
+                if (item && item->images && (mShow || item == mKeyboard))
                 {
                     mainGraphics->calcWindow(mVertexes, item->x, item->y,
                         item->width, item->height, *item->images);
@@ -175,7 +177,7 @@ void TouchManager::draw()
              it != it_end; ++ it)
         {
             const TouchItem *const item = *it;
-            if (item && item->images && (mInGame || item == mKeyboard))
+            if (item && item->images && (mShow || item == mKeyboard))
             {
                 mainGraphics->drawImageRect(item->x, item->y,
                     item->width, item->height, *item->images);
@@ -193,7 +195,7 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
          it != it_end; ++ it)
     {
         const TouchItem *const item = *it;
-        if (!item || (!mInGame && item != mKeyboard))
+        if (!item || (!mShow && item != mKeyboard))
             continue;
         const gcn::Rectangle &rect = item->rect;
         if (rect.isPointInRect(x, y))
@@ -398,5 +400,13 @@ void TouchManager::optionChanged(const std::string &value)
 void TouchManager::setInGame(bool b)
 {
     mInGame = b;
+    mShow = mInGame && !mTempHideButtons;
+    mRedraw = true;
+}
+
+void TouchManager::setTempHide(bool b)
+{
+    mTempHideButtons = b;
+    mShow = mInGame && !mTempHideButtons;
     mRedraw = true;
 }

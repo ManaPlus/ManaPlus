@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "game.h"
 #include "main.h"
+#include "touchmanager.h"
 
 #include "gui/setup_audio.h"
 #include "gui/setup_chat.h"
@@ -209,22 +210,12 @@ void Setup::activateTab(const std::string &name)
 {
     std::string tmp = gettext(name.c_str());
     mPanel->setSelectedTabByName(tmp);
-/*
-    for (std::list<SetupTab*>::const_iterator it = mTabs.begin();
-         it != mTabs.end(); ++it)
-    {
-        if (*it)
-        {
-            SetupTab *tab = *it;
-            logger->log("check tab: " + tab->getName());
-            if (tab->getName() == tmp)
-            {
-                mPanel->setSelectedTabByName(name);
-                return;
-            }
-        }
-    }
-*/
+}
+
+void Setup::setVisible(bool visible)
+{
+    touchManager.setTempHide(visible);
+    Window::setVisible(visible);
 }
 
 Setup *setupWindow;

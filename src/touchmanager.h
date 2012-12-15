@@ -137,6 +137,8 @@ class TouchManager final : public ConfigListener
 
         void setInGame(bool b);
 
+        void setTempHide(bool b);
+
     private:
         TouchItem *mKeyboard;
         TouchItem *mPad;
@@ -150,7 +152,9 @@ class TouchManager final : public ConfigListener
         bool mShowButtons;
         int mButtonsSize;
         int mJoystickSize;
+        bool mShow;
         bool mInGame;
+        bool mTempHideButtons;
 };
 
 extern TouchManager touchManager;
