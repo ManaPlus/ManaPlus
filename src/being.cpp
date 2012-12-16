@@ -772,7 +772,7 @@ void Being::handleSkill(Being *const victim, const int damage,
 
     const SkillInfo *const skill = skillDialog->getSkill(skillId);
     if (skill)
-        fireMissile(victim, skill->data.particle);
+        fireMissile(victim, skill->data->particle);
 
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() != ServerInfo::MANASERV)
@@ -795,9 +795,9 @@ void Being::handleSkill(Being *const victim, const int damage,
     if (skill)
     {
         if (damage > 0)
-            sound.playSfx(skill->data.soundHit, mX, mY);
+            sound.playSfx(skill->data->soundHit, mX, mY);
         else
-            sound.playSfx(skill->data.soundMiss, mX, mY);
+            sound.playSfx(skill->data->soundMiss, mX, mY);
     }
     else
     {

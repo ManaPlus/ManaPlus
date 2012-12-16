@@ -55,7 +55,13 @@ struct SkillData final
     SkillData();
     A_DELETE_COPY(SkillData)
     ~SkillData();
+
+    void setIcon(const std::string &iconPath);
 };
+
+typedef std::map<int, SkillData*> SkillDataMap;
+typedef SkillDataMap::iterator SkillDataMapIter;
+typedef SkillDataMap::const_iterator SkillDataMapCIter;
 
 struct SkillInfo final
 {
@@ -71,7 +77,8 @@ struct SkillInfo final
     int range;
     gcn::Color color;
 
-    SkillData data;
+    SkillData *data;
+    SkillDataMap dataMap;
 
     SkillInfo();
     A_DELETE_COPY(SkillInfo)
@@ -83,10 +90,13 @@ struct SkillInfo final
               const int paddingText, const int spacingText,
               const int y, const int width);
 
-    void setIcon(const std::string &iconPath);
+    SkillData *getData(const int level);
+
+    void addData(const int level, SkillData *const data);
 };
 
 typedef std::vector<SkillInfo*> SkillList;
+typedef SkillList::iterator SkillListIter;
 
 /**
  * The skill dialog.

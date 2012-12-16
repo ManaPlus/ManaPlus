@@ -75,7 +75,7 @@ class SkillModel final : public gcn::ListModel
         std::string getElementAt(int i)
         {
             if (getSkillAt(i))
-                return getSkillAt(i)->data.name;
+                return getSkillAt(i)->data->name;
             else
                 return "";
         }
@@ -185,7 +185,7 @@ class SkillListBox final : public ListBox
                 return;
 
             mPopup->show(viewport->getMouseX(), viewport->getMouseY(),
-                skill->data.dispName);
+                skill->data->dispName);
         }
 
         void mouseExited(gcn::MouseEvent &event A_UNUSED)
@@ -346,7 +346,7 @@ std::string SkillDialog::update(const int id)
         if (info)
         {
             info->update();
-            return info->data.name;
+            return info->data->name;
         }
     }
 
@@ -405,11 +405,11 @@ void SkillDialog::loadSkills()
 
             SkillInfo *const skill = new SkillInfo;
             skill->id = 1;
-            skill->data.name = _("basic");
-            skill->data.description = "";
-            skill->data.dispName = _("Skill: basic, Id: 1");
-            skill->data.shortName = "bas";
-            skill->setIcon("");
+            skill->data->name = _("basic");
+            skill->data->description = "";
+            skill->data->dispName = _("Skill: basic, Id: 1");
+            skill->data->shortName = "bas";
+            skill->data->setIcon("");
             skill->modifiable = true;
             skill->visible = true;
             skill->model = model;
@@ -455,34 +455,44 @@ void SkillDialog::loadSkills()
                 {
                     const int id = atoi(XML::getProperty(
                         node, "id", "-1").c_str());
+
+                    SkillInfo *skill = getSkill(id);
+                    if (!skill)
+                    {
+                        skill = new SkillInfo;
+                        skill->id = static_cast<short unsigned>(id);
+                        skill->modifiable = false;
+                        skill->visible = false;
+                        skill->model = model;
+                        skill->update();
+                        model->addSkill(skill);
+                        mSkills[id] = skill;
+                    }
+
                     std::string name = XML::langProperty(node, "name",
                         strprintf(_("Skill %d"), id));
                     std::string icon = XML::getProperty(node, "icon", "");
+                    const int level = XML::getProperty(node, "level", 0);
+                    SkillData *data = skill->getData(level);
+                    if (!data)
+                        data = new SkillData();
 
-                    SkillInfo *const skill = new SkillInfo;
-                    skill->id = static_cast<short unsigned>(id);
-                    skill->data.name = name;
-                    skill->data.dispName = strprintf(_("Skill: %s, Id: %d"),
+                    data->name = name;
+                    data->setIcon(icon);
+                    data->dispName = strprintf(_("Skill: %s, Id: %d"),
                         name.c_str(), skill->id);
-                    skill->data.shortName = XML::langProperty(node,
+                    data->shortName = XML::langProperty(node,
                         "shortName", name.substr(0, 3));
-                    skill->data.description = XML::langProperty(
+                    data->description = XML::langProperty(
                         node, "description", "");
-                    skill->setIcon(icon);
-                    skill->modifiable = false;
-                    skill->visible = false;
-                    skill->data.particle = XML::getProperty(
+                    data->particle = XML::getProperty(
                         node, "particle", "");
-                    skill->data.soundHit = XML::getProperty(
+                    data->soundHit = XML::getProperty(
                         node, "soundHit", "");
-                    skill->data.soundMiss = XML::getProperty(
+                    data->soundMiss = XML::getProperty(
                         node, "soundMiss", "");
-                    skill->model = model;
-                    skill->update();
 
-                    model->addSkill(skill);
-
-                    mSkills[id] = skill;
+                    skill->addData(level, data);
                 }
             }
 
@@ -531,10 +541,10 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
     {
         SkillInfo *const skill = new SkillInfo;
         skill->id = static_cast<short unsigned>(id);
-        skill->data.name = "Unknown skill Id: " + toString(id);
-        skill->data.dispName = "Unknown skill Id: " + toString(id);
-        skill->data.description = "";
-        skill->setIcon("");
+        skill->data->name = "Unknown skill Id: " + toString(id);
+        skill->data->dispName = "Unknown skill Id: " + toString(id);
+        skill->data->description = "";
+        skill->data->setIcon("");
         skill->modifiable = modifiable;
         skill->visible = false;
         skill->model = mDefaultModel;
@@ -608,25 +618,18 @@ SkillInfo::SkillInfo() :
     level(0), skillLevelWidth(0), id(0), modifiable(false),
     visible(false), model(nullptr), progress(0.0f), range(0)
 {
+    dataMap[0] = new SkillData();
+    data = dataMap[0];
 }
 
 SkillInfo::~SkillInfo()
 {
-}
-
-void SkillInfo::setIcon(const std::string &iconPath)
-{
-    ResourceManager *const res = ResourceManager::getInstance();
-    if (!iconPath.empty())
+    for (SkillDataMapIter it = dataMap.begin(), it_end = dataMap.end();
+         it != it_end; ++ it)
     {
-        data.icon = res->getImage(iconPath);
+        delete (*it).second;
     }
-
-    if (!data.icon)
-    {
-        data.icon = Theme::getImageFromTheme(
-            paths.getStringValue("unknownItemFile"));
-    }
+    dataMap.clear();
 }
 
 void SkillInfo::update()
@@ -685,6 +688,10 @@ void SkillInfo::update()
 
     if (updateVisibility && model)
         model->updateVisibilities();
+
+    data = getData(level);
+    if (!data)
+        data = dataMap[0];
 }
 
 void SkillInfo::draw(Graphics *const graphics, const int padding,
@@ -692,10 +699,10 @@ void SkillInfo::draw(Graphics *const graphics, const int padding,
                      const int y, const int width)
 {
     const int yPad = y + padding;
-    graphics->drawImage(data.icon, padding, yPad);
-    graphics->drawText(data.name, paddingText, yPad);
-    if (!data.description.empty())
-        graphics->drawText(data.description, paddingText, yPad + spacingText);
+    graphics->drawImage(data->icon, padding, yPad);
+    graphics->drawText(data->name, paddingText, yPad);
+    if (!data->description.empty())
+        graphics->drawText(data->description, paddingText, yPad + spacingText);
 
     if (skillLevelWidth < 0)
     {
@@ -704,6 +711,19 @@ void SkillInfo::draw(Graphics *const graphics, const int padding,
     }
 
     graphics->drawText(skillLevel, width - skillLevelWidth, yPad);
+}
+
+void SkillInfo::addData(const int l, SkillData *const d)
+{
+    dataMap[l] = d;
+}
+
+SkillData *SkillInfo::getData(const int l)
+{
+    SkillDataMapIter it = dataMap.find(l);
+    if (it == dataMap.end())
+        return nullptr;
+    return (*it).second;
 }
 
 SkillData::SkillData() :
@@ -717,5 +737,18 @@ SkillData::~SkillData()
     {
         icon->decRef();
         icon = nullptr;
+    }
+}
+
+void SkillData::setIcon(const std::string &iconPath)
+{
+    ResourceManager *const res = ResourceManager::getInstance();
+    if (!iconPath.empty())
+        icon = res->getImage(iconPath);
+
+    if (!icon)
+    {
+        icon = Theme::getImageFromTheme(
+            paths.getStringValue("unknownItemFile"));
     }
 }
