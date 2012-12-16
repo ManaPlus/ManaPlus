@@ -45,8 +45,8 @@ struct SkillData final
     std::string name;
     std::string shortName;
     std::string dispName;
+    std::string description;
     Image *icon;
-
 
     std::string particle;
     std::string soundHit;
@@ -80,7 +80,8 @@ struct SkillInfo final
     void update();
 
     void draw(Graphics *const graphics, const int padding,
-              const int paddingText, const int y, const int width);
+              const int paddingText, const int spacingText,
+              const int y, const int width);
 
     void setIcon(const std::string &iconPath);
 };

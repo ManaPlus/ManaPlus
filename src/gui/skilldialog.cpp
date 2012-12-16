@@ -98,10 +98,13 @@ class SkillListBox final : public ListBox
             mModel(model),
             mPopup(new TextPopup),
             mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
-            mTextColor(getThemeColor(Theme::TEXT))
+            mTextColor(getThemeColor(Theme::TEXT)),
+            mTextPadding(mSkin ? mSkin->getOption("textPadding", 34) : 34),
+            mSpacing(mSkin ? mSkin->getOption("spacing", 0) : 0)
         {
-            if (mSkin)
-                mTextPadding = mSkin->getOption("textPadding", 34);
+            mRowHeight = mainGraphics->getFont()->getHeight() * 2 + mSpacing;
+            if (mRowHeight < 34)
+                mRowHeight = 34;
         }
 
         A_DELETE_COPY(SkillListBox)
@@ -150,6 +153,7 @@ class SkillListBox final : public ListBox
 
             // Draw the list elements
             graphics->setColor(mTextColor);
+            const int space = graphics->getFont()->getHeight() + mSpacing;
             const int width2 = getWidth() - mPadding;
             for (int i = 0, y = 1;
                  i < model->getNumberOfElements();
@@ -157,12 +161,15 @@ class SkillListBox final : public ListBox
             {
                 SkillInfo *const e = model->getSkillAt(i);
                 if (e)
-                    e->draw(graphics, mPadding, mTextPadding, y, width2);
+                {
+                    e->draw(graphics, mPadding, mTextPadding,
+                        space, y, width2);
+                }
             }
         }
 
         unsigned int getRowHeight() const
-        { return 34; }
+        { return mRowHeight; }
 
         void mouseMoved(gcn::MouseEvent &event)
         {
@@ -192,6 +199,8 @@ class SkillListBox final : public ListBox
         gcn::Color mHighlightColor;
         gcn::Color mTextColor;
         int mTextPadding;
+        int mSpacing;
+        int mRowHeight;
 };
 
 class SkillTab final : public Tab
@@ -397,6 +406,7 @@ void SkillDialog::loadSkills()
             SkillInfo *const skill = new SkillInfo;
             skill->id = 1;
             skill->data.name = _("basic");
+            skill->data.description = "";
             skill->data.dispName = _("Skill: basic, Id: 1");
             skill->data.shortName = "bas";
             skill->setIcon("");
@@ -456,6 +466,8 @@ void SkillDialog::loadSkills()
                         name.c_str(), skill->id);
                     skill->data.shortName = XML::langProperty(node,
                         "shortName", name.substr(0, 3));
+                    skill->data.description = XML::langProperty(
+                        node, "description", "");
                     skill->setIcon(icon);
                     skill->modifiable = false;
                     skill->visible = false;
@@ -521,6 +533,7 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
         skill->id = static_cast<short unsigned>(id);
         skill->data.name = "Unknown skill Id: " + toString(id);
         skill->data.dispName = "Unknown skill Id: " + toString(id);
+        skill->data.description = "";
         skill->setIcon("");
         skill->modifiable = modifiable;
         skill->visible = false;
@@ -592,9 +605,8 @@ void SkillDialog::updateTabSelection()
 }
 
 SkillInfo::SkillInfo() :
-    level(0), skillLevel(""), skillLevelWidth(0), id(0),
-    modifiable(false), visible(false), model(nullptr),
-    skillExp(""), progress(0.0f), range(0)
+    level(0), skillLevelWidth(0), id(0), modifiable(false),
+    visible(false), model(nullptr), progress(0.0f), range(0)
 {
 }
 
@@ -676,11 +688,14 @@ void SkillInfo::update()
 }
 
 void SkillInfo::draw(Graphics *const graphics, const int padding,
-                     const int paddingText, const int y, const int width)
+                     const int paddingText, const int spacingText,
+                     const int y, const int width)
 {
     const int yPad = y + padding;
     graphics->drawImage(data.icon, padding, yPad);
     graphics->drawText(data.name, paddingText, yPad);
+    if (!data.description.empty())
+        graphics->drawText(data.description, paddingText, yPad + spacingText);
 
     if (skillLevelWidth < 0)
     {
@@ -692,8 +707,7 @@ void SkillInfo::draw(Graphics *const graphics, const int padding,
 }
 
 SkillData::SkillData() :
-    name(""), shortName(""), dispName(""), icon(nullptr),
-    particle(""), soundHit(""), soundMiss("")
+    icon(nullptr)
 {
 }
 
