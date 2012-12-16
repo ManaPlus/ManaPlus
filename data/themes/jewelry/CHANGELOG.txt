@@ -4,6 +4,7 @@ Francesco Miglietta (Hal9000)
 
 Version 1.01 (WIP)
 
+	- Fixed bu with item selection in inventory window
 	- New graphic for quest status icons in quest window
 
 

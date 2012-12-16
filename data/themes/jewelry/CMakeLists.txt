@@ -28,6 +28,7 @@ SET (FILES
     incomplete_icon.xml
     info.xml
     inventory.xml
+    item_selection.xml
     itempopup.xml
     items.xml
     keyboard_icon.xml
