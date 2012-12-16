@@ -75,7 +75,7 @@ class SkillModel final : public gcn::ListModel
         std::string getElementAt(int i)
         {
             if (getSkillAt(i))
-                return getSkillAt(i)->name;
+                return getSkillAt(i)->data.name;
             else
                 return "";
         }
@@ -178,7 +178,7 @@ class SkillListBox final : public ListBox
                 return;
 
             mPopup->show(viewport->getMouseX(), viewport->getMouseY(),
-                skill->dispName);
+                skill->data.dispName);
         }
 
         void mouseExited(gcn::MouseEvent &event A_UNUSED)
@@ -337,7 +337,7 @@ std::string SkillDialog::update(const int id)
         if (info)
         {
             info->update();
-            return info->name;
+            return info->data.name;
         }
     }
 
@@ -396,9 +396,9 @@ void SkillDialog::loadSkills()
 
             SkillInfo *const skill = new SkillInfo;
             skill->id = 1;
-            skill->name = _("basic");
-            skill->dispName = _("Skill: basic, Id: 1");
-            skill->shortName = "bas";
+            skill->data.name = _("basic");
+            skill->data.dispName = _("Skill: basic, Id: 1");
+            skill->data.shortName = "bas";
             skill->setIcon("");
             skill->modifiable = true;
             skill->visible = true;
@@ -451,17 +451,20 @@ void SkillDialog::loadSkills()
 
                     SkillInfo *const skill = new SkillInfo;
                     skill->id = static_cast<short unsigned>(id);
-                    skill->name = name;
-                    skill->dispName = strprintf(_("Skill: %s, Id: %d"),
+                    skill->data.name = name;
+                    skill->data.dispName = strprintf(_("Skill: %s, Id: %d"),
                         name.c_str(), skill->id);
-                    skill->shortName = XML::langProperty(node,
+                    skill->data.shortName = XML::langProperty(node,
                         "shortName", name.substr(0, 3));
                     skill->setIcon(icon);
                     skill->modifiable = false;
                     skill->visible = false;
-                    skill->particle = XML::getProperty(node, "particle", "");
-                    skill->soundHit = XML::getProperty(node, "soundHit", "");
-                    skill->soundMiss = XML::getProperty(node, "soundMiss", "");
+                    skill->data.particle = XML::getProperty(
+                        node, "particle", "");
+                    skill->data.soundHit = XML::getProperty(
+                        node, "soundHit", "");
+                    skill->data.soundMiss = XML::getProperty(
+                        node, "soundMiss", "");
                     skill->model = model;
                     skill->update();
 
@@ -516,8 +519,8 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
     {
         SkillInfo *const skill = new SkillInfo;
         skill->id = static_cast<short unsigned>(id);
-        skill->name = "Unknown skill Id: " + toString(id);
-        skill->dispName = "Unknown skill Id: " + toString(id);
+        skill->data.name = "Unknown skill Id: " + toString(id);
+        skill->data.dispName = "Unknown skill Id: " + toString(id);
         skill->setIcon("");
         skill->modifiable = modifiable;
         skill->visible = false;
@@ -547,21 +550,56 @@ void SkillModel::updateVisibilities()
     }
 }
 
+
+SkillInfo* SkillDialog::getSkill(int id)
+{
+    return mSkills[id];
+}
+
+void SkillDialog::widgetResized(const gcn::Event &event)
+{
+    Window::widgetResized(event);
+
+    if (mTabs)
+        mTabs->fixSize();
+}
+
+void SkillDialog::useItem(const int itemId)
+{
+    const SkillInfo *const info = mSkills[itemId - SKILL_MIN_ID];
+    if (info && player_node && player_node->getTarget())
+    {
+        const Being *const being = player_node->getTarget();
+        if (being)
+        {
+            Net::getSpecialHandler()->useBeing(info->level,
+                info->id, being->getId());
+        }
+    }
+}
+
+void SkillDialog::updateTabSelection()
+{
+    const SkillTab *const tab = static_cast<SkillTab*>(
+        mTabs->getSelectedTab());
+    if (tab)
+    {
+        if (const SkillInfo *const info = tab->getSelectedInfo())
+            mUseButton->setEnabled(info->range > 0);
+        else
+            mUseButton->setEnabled(false);
+    }
+}
+
 SkillInfo::SkillInfo() :
-    id(0), name(""), shortName(""), dispName(""), icon(nullptr),
-    modifiable(false), visible(false), model(nullptr), level(0),
-    skillLevel(""), skillLevelWidth(0), skillExp(""), progress(0.0f), range(0),
-    particle(""), soundHit(""), soundMiss("")
+    level(0), skillLevel(""), skillLevelWidth(0), id(0),
+    modifiable(false), visible(false), model(nullptr),
+    skillExp(""), progress(0.0f), range(0)
 {
 }
 
 SkillInfo::~SkillInfo()
 {
-    if (icon)
-    {
-        icon->decRef();
-        icon = nullptr;
-    }
 }
 
 void SkillInfo::setIcon(const std::string &iconPath)
@@ -569,12 +607,12 @@ void SkillInfo::setIcon(const std::string &iconPath)
     ResourceManager *const res = ResourceManager::getInstance();
     if (!iconPath.empty())
     {
-        icon = res->getImage(iconPath);
+        data.icon = res->getImage(iconPath);
     }
 
-    if (!icon)
+    if (!data.icon)
     {
-        icon = Theme::getImageFromTheme(
+        data.icon = Theme::getImageFromTheme(
             paths.getStringValue("unknownItemFile"));
     }
 }
@@ -641,8 +679,8 @@ void SkillInfo::draw(Graphics *const graphics, const int padding,
                      const int paddingText, const int y, const int width)
 {
     const int yPad = y + padding;
-    graphics->drawImage(icon, padding, yPad);
-    graphics->drawText(name, paddingText, yPad);
+    graphics->drawImage(data.icon, padding, yPad);
+    graphics->drawText(data.name, paddingText, yPad);
 
     if (skillLevelWidth < 0)
     {
@@ -653,42 +691,17 @@ void SkillInfo::draw(Graphics *const graphics, const int padding,
     graphics->drawText(skillLevel, width - skillLevelWidth, yPad);
 }
 
-SkillInfo* SkillDialog::getSkill(int id)
+SkillData::SkillData() :
+    name(""), shortName(""), dispName(""), icon(nullptr),
+    particle(""), soundHit(""), soundMiss("")
 {
-    return mSkills[id];
 }
 
-void SkillDialog::widgetResized(const gcn::Event &event)
+SkillData::~SkillData()
 {
-    Window::widgetResized(event);
-
-    if (mTabs)
-        mTabs->fixSize();
-}
-
-void SkillDialog::useItem(const int itemId)
-{
-    const SkillInfo *const info = mSkills[itemId - SKILL_MIN_ID];
-    if (info && player_node && player_node->getTarget())
+    if (icon)
     {
-        const Being *const being = player_node->getTarget();
-        if (being)
-        {
-            Net::getSpecialHandler()->useBeing(info->level,
-                info->id, being->getId());
-        }
-    }
-}
-
-void SkillDialog::updateTabSelection()
-{
-    const SkillTab *const tab = static_cast<SkillTab*>(
-        mTabs->getSelectedTab());
-    if (tab)
-    {
-        if (const SkillInfo *const info = tab->getSelectedInfo())
-            mUseButton->setEnabled(info->range > 0);
-        else
-            mUseButton->setEnabled(false);
+        icon->decRef();
+        icon = nullptr;
     }
 }

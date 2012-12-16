@@ -200,7 +200,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                 itemId - SKILL_MIN_ID);
             if (skill)
             {
-                Image *const image = skill->icon;
+                Image *const image = skill->data.icon;
 
                 if (image)
                 {
@@ -208,7 +208,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                     g->drawImage(image, itemX, itemY);
                 }
 
-                g->drawText(skill->shortName, itemX + 2,
+                g->drawText(skill->data.shortName, itemX + 2,
                     itemY + mBoxHeight / 2, gcn::Graphics::LEFT);
             }
         }

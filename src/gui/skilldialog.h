@@ -40,41 +40,49 @@ class SkillModel;
 class Tab;
 class TabbedArea;
 
-struct SkillInfo final
+struct SkillData final
 {
-    unsigned short id;
     std::string name;
     std::string shortName;
     std::string dispName;
     Image *icon;
-    bool modifiable;
-    bool visible;
-    SkillModel *model;
 
-    int level;
-    std::string skillLevel;
-    int skillLevelWidth;
 
-    std::string skillExp;
-    float progress;
-    gcn::Color color;
-    int range;
     std::string particle;
     std::string soundHit;
     std::string soundMiss;
 
+    SkillData();
+    A_DELETE_COPY(SkillData)
+    ~SkillData();
+};
+
+struct SkillInfo final
+{
+    int level;
+    std::string skillLevel;
+    int skillLevelWidth;
+    unsigned short id;
+    bool modifiable;
+    bool visible;
+    SkillModel *model;
+    std::string skillExp;
+    float progress;
+    int range;
+    gcn::Color color;
+
+    SkillData data;
+
     SkillInfo();
-
     A_DELETE_COPY(SkillInfo)
-
     ~SkillInfo();
-
-    void setIcon(const std::string &iconPath);
 
     void update();
 
     void draw(Graphics *const graphics, const int padding,
               const int paddingText, const int y, const int width);
+
+    void setIcon(const std::string &iconPath);
 };
 
 typedef std::vector<SkillInfo*> SkillList;
