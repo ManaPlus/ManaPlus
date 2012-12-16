@@ -108,7 +108,9 @@ class SkillDialog final : public Window, public gcn::ActionListener
          */
         void update();
 
-        void loadSkills(const std::string &file);
+        void clearSkills();
+
+        void loadSkills();
 
         bool updateSkill(const int id, const int range, const bool modifiable);
 

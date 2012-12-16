@@ -264,7 +264,7 @@ SkillDialog::SkillDialog() :
 SkillDialog::~SkillDialog()
 {
     // Clear gui
-    loadSkills("");
+    clearSkills();
 }
 
 void SkillDialog::action(const gcn::ActionEvent &event)
@@ -358,18 +358,20 @@ void SkillDialog::update()
     }
 }
 
-void SkillDialog::loadSkills(const std::string &file)
+void SkillDialog::clearSkills()
 {
     mTabs->removeAll();
-
     delete_all(mSkills);
     mSkills.clear();
+}
 
-    if (file.length() == 0)
-        return;
+void SkillDialog::loadSkills()
+{
+    clearSkills();
 
-    XML::Document doc(file);
-    const XmlNodePtr root = doc.rootNode();
+    XML::Document doc("ea-skills.xml");
+    XML::Document doc2("skills.xml");
+    XmlNodePtr root = doc.rootNode();
 
     int setCount = 0;
     std::string setName;
@@ -378,10 +380,15 @@ void SkillDialog::loadSkills(const std::string &file)
     SkillTab *tab;
 
     if (!root || !xmlNameEqual(root, "skills"))
-    {
-        logger->log("Error loading skills file: %s", file.c_str());
+        root = doc2.rootNode();
 
+    if (!root || !xmlNameEqual(root, "skills"))
+    {
+        logger->log("Error loading skills");
+
+#ifdef MANASERV_SUPPORT
         if (Net::getNetworkType() != ServerInfo::MANASERV)
+#endif
         {
             SkillModel *const model = new SkillModel();
             if (!mDefaultModel)

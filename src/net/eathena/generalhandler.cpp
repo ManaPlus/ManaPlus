@@ -247,7 +247,7 @@ void GeneralHandler::processEvent(Channels channel,
             if (inventoryWindow)
                 inventoryWindow->setSplitAllowed(false);
             if (skillDialog)
-                skillDialog->loadSkills("ea-skills.xml");
+                skillDialog->loadSkills();
 
             if (!statusWindow)
                 return;
