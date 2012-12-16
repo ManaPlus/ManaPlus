@@ -186,7 +186,7 @@ class SkillListBox final : public ListBox
                 return;
 
             mPopup->show(viewport->getMouseX(), viewport->getMouseY(),
-                skill->data->dispName);
+                skill->data->dispName, skill->data->description);
         }
 
         void mouseExited(gcn::MouseEvent &event A_UNUSED)
@@ -408,7 +408,7 @@ void SkillDialog::loadSkills()
             skill->id = 1;
             skill->data->name = _("basic");
             skill->data->description = "";
-            skill->data->dispName = _("Skill: basic, Id: 1");
+            skill->data->dispName = _("basic, 1");
             skill->data->shortName = "bas";
             skill->data->setIcon("");
             skill->modifiable = true;
@@ -480,7 +480,7 @@ void SkillDialog::loadSkills()
 
                     data->name = name;
                     data->setIcon(icon);
-                    data->dispName = strprintf(_("Skill: %s, Id: %d"),
+                    data->dispName = strprintf("%s, %d",
                         name.c_str(), skill->id);
                     data->shortName = XML::langProperty(node,
                         "shortName", name.substr(0, 3));
