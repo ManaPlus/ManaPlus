@@ -97,10 +97,17 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     new SetupItemSlider2(_("Particle physics"), "", "particleFastPhysics",
         this, "particleFastPhysicsEvent", 0, 2, mParticleTypeList);
 
-    new SetupItemLabel(_("Other"), "", this);
+
+    new SetupItemLabel(_("Gamma"), "", this);
+
+    new SetupItemCheckBox(_("Enable gamma control"),
+        "", "enableGamma", this, "enableGammaEvent");
 
     new SetupItemSlider(_("Gamma"), "", "gamma",
         this, "gammeEvent", 1, 20, 350, true);
+
+
+    new SetupItemLabel(_("Other"), "", this);
 
     mVSyncList->push_back(_("default"));
     mVSyncList->push_back(_("off"));

@@ -284,6 +284,11 @@ DefaultsData* getConfigDefaults()
     AddDEF("protectChatFocus", true);
     AddDEF("screenButtonsSize", 1);
     AddDEF("screenJoystickSize", 1);
+#if defined(__APPLE__)
+    AddDEF("enableGamma", false);
+#else
+    AddDEF("enableGamma", true);
+#endif
     return configData;
 }
 

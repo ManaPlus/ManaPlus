@@ -663,6 +663,7 @@ void Client::gameInit()
     config.addListener("fpslimit", this);
     config.addListener("guialpha", this);
     config.addListener("gamma", this);
+    config.addListener("enableGamma", this);
     config.addListener("particleEmitterSkip", this);
     config.addListener("vsync", this);
     config.addListener("repeateDelay", this);
@@ -1682,7 +1683,7 @@ void Client::optionChanged(const std::string &name)
         setGuiAlpha(config.getFloatValue("guialpha"));
         ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
     }
-    else if (name == "gamma")
+    else if (name == "gamma" || name == "enableGamma")
     {
         applyGamma();
     }
@@ -2711,8 +2712,11 @@ void Client::applyGrabMode()
 
 void Client::applyGamma()
 {
-    const float val = config.getFloatValue("gamma");
-    SDL_SetGamma(val, val, val);
+    if (config.getFloatValue("enableGamma"))
+    {
+        const float val = config.getFloatValue("gamma");
+        SDL_SetGamma(val, val, val);
+    }
 }
 
 void Client::applyVSync()
