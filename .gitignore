@@ -147,5 +147,4 @@ gmon.out
 .DS_Store
 Xcode/ManaPlus.xcodeproj/xcuserdata
 Xcode/ManaPlus.xcodeproj/project.xcworkspace/xcuserdata
-Xcode/Release
-Xcode/locale
+Xcode/Release/ManaPlus.dmg
