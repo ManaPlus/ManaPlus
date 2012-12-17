@@ -460,7 +460,7 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg)
     msg.readInt32(); // src speed
     msg.readInt32(); // dst speed
     param1 = msg.readInt32(); // Damage
-    msg.readInt16(); // Skill level
+    const int level = msg.readInt16(); // Skill level
     msg.readInt16(); // Div
     msg.readInt8(); // Skill hit/type (?)
     if (dstBeing)
@@ -474,7 +474,7 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg)
 //                if (srcSpeed)
 //                    srcBeing->setAttackDelay(srcSpeed);
 //        srcBeing->handleAttack(dstBeing, param1, Being::HIT);
-        srcBeing->handleSkill(dstBeing, param1, id);
+        srcBeing->handleSkill(dstBeing, param1, id, level);
     }
 }
 

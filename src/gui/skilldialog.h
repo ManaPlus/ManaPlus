@@ -92,6 +92,8 @@ struct SkillInfo final
 
     SkillData *getData(const int level);
 
+    SkillData *getData1(const int level);
+
     void addData(const int level, SkillData *const data);
 };
 

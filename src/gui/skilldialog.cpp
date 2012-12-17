@@ -727,6 +727,14 @@ SkillData *SkillInfo::getData(const int l)
     return (*it).second;
 }
 
+SkillData *SkillInfo::getData1(const int l)
+{
+    SkillDataMapIter it = dataMap.find(l);
+    if (it == dataMap.end())
+        return dataMap[0];
+    return (*it).second;
+}
+
 SkillData::SkillData() :
     icon(nullptr)
 {

@@ -277,7 +277,7 @@ class Being : public ActorSprite, public ConfigListener
                                   const int attackId = 1);
 
         virtual void handleSkill(Being *const victim, const int damage,
-                                 const int skillId);
+                                 const int skillId, const int skillLevel);
 
         const ItemInfo *getEquippedWeapon() const A_WARN_UNUSED
         { return mEquippedWeapon; }
