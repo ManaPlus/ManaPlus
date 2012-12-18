@@ -1,0 +1,5 @@
+<skinset name="Default" image="window.png">
+    <widget type="Window">
+        <part type="standart" xpos="412" ypos="132" width="100" height="100" />
+    </widget>
+</skinset>

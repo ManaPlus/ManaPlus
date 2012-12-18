@@ -15,7 +15,9 @@ SET (FILES
     colors.xml
     complete_icon.xml
     dbutton.xml
+    dbutton_image.xml
     dpad.xml
+    dpad_image.xml
     dropdown.xml
     dropdown_background.xml
     dropdown_pressed.xml

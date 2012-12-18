@@ -51,7 +51,6 @@ impHandler0(showKeyboard)
 
 void setHalfJoyPad(int s)
 {
-    logger->log("set size: %d", s);
     haldJoyPad = s;
 }
 

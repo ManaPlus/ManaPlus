@@ -47,12 +47,13 @@ const int actionsSize = Input::KEY_TOTAL;
 struct TouchItem final
 {
     TouchItem(const gcn::Rectangle rect0, int type0, ImageRect *const images0,
-              int x0, int y0, int width0, int height0,
+              Image *const icon0, int x0, int y0, int width0, int height0,
               TouchFuncPtr ptrAll, TouchFuncPtr ptrPressed,
               TouchFuncPtr ptrReleased, TouchFuncPtr ptrOut) :
         rect(rect0),
         type(type0),
         images(images0),
+        icon(icon0),
         x(x0),
         y(y0),
         width(width0),
@@ -69,6 +70,7 @@ struct TouchItem final
     gcn::Rectangle rect;
     int type;
     ImageRect *images;
+    Image *icon;
     int x;
     int y;
     int width;
@@ -102,6 +104,7 @@ class TouchManager final : public ConfigListener
         void init();
 
         void loadTouchItem(TouchItem **item, std::string name,
+                           std::string imageName,
                            int type, int x, int y, int width, int height,
                            TouchFuncPtr fAll, TouchFuncPtr fPressed,
                            TouchFuncPtr fReleased, TouchFuncPtr fOut);

@@ -75,7 +75,7 @@ void TouchManager::init()
     setHalfJoyPad(getPadSize() / 2);
 
 #ifdef ANDROID
-    loadTouchItem(&mKeyboard, "keyboard_icon.xml", -1, -1, 28, 28, NORMAL,
+    loadTouchItem(&mKeyboard, "keyboard_icon.xml", "", -1, -1, 28, 28, NORMAL,
         nullptr, nullptr, &showKeyboard, nullptr);
 #endif
 
@@ -86,6 +86,7 @@ void TouchManager::init()
 }
 
 void TouchManager::loadTouchItem(TouchItem **item, std::string name,
+                                 std::string imageName,
                                  int x, int y, int width, int height, int type,
                                  TouchFuncPtr fAll, TouchFuncPtr fPressed,
                                  TouchFuncPtr fReleased, TouchFuncPtr fOut)
@@ -97,6 +98,12 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
     ImageRect *images = new ImageRect;
     for (int f = 0; f < 9; f ++)
         images->grid[f] = nullptr;
+
+    Image *icon;
+    if (imageName.empty())
+        icon = nullptr;
+    else
+        icon = Theme::getImageFromThemeXml(imageName, "");
 
     Skin *const skin = theme->loadSkinRect(*images, name, "");
     if (skin)
@@ -125,7 +132,7 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
             }
             *item = new TouchItem(gcn::Rectangle(x, y,
                 width + pad2, height + pad2), type,
-                images, x + pad, y + pad, width, height,
+                images, icon,  x + pad, y + pad, width, height,
                 fAll, fPressed, fReleased, fOut);
             mObjects.push_back(*item);
         }
@@ -165,6 +172,13 @@ void TouchManager::draw()
                 {
                     mainGraphics->calcWindow(mVertexes, item->x, item->y,
                         item->width, item->height, *item->images);
+                    const Image *const icon = item->icon;
+                    if (icon)
+                    {
+                        mainGraphics->calcTile(mVertexes, icon,
+                            item->x + (item->width - icon->mBounds.w) / 2,
+                            item->y + (item->height - icon->mBounds.h) / 2);
+                    }
                 }
             }
         }
@@ -181,6 +195,13 @@ void TouchManager::draw()
             {
                 mainGraphics->drawImageRect(item->x, item->y,
                     item->width, item->height, *item->images);
+                const Image *const icon = item->icon;
+                if (icon)
+                {
+                    mainGraphics->drawImage(icon,
+                        item->x + (item->width - icon->mBounds.w) / 2,
+                        item->y + (item->height - icon->mBounds.h) / 2);
+                }
             }
         }
     }
@@ -284,6 +305,11 @@ void TouchManager::unload(TouchItem *item)
             theme->unloadRect(*item->images);
             delete item->images;
             item->images = nullptr;
+            if (item->icon)
+            {
+                item->icon->decRef();
+                item->icon = nullptr;
+            }
         }
         delete item;
     }
@@ -310,7 +336,7 @@ void TouchManager::unloadTouchItem(TouchItem **unloadItem)
 void TouchManager::loadPad()
 {
     const int sz = (mJoystickSize + 2) * 50;
-    loadTouchItem(&mPad, "dpad.xml", -1, -1, sz, sz, LEFT,
+    loadTouchItem(&mPad, "dpad.xml", "dpad_image.xml", -1, -1, sz, sz, LEFT,
         &padEvents, &padClick, &padUp, &padOut);
 }
 
@@ -330,11 +356,12 @@ void TouchManager::loadButtons()
         const int pad2 = 2 * pad;
         const int skipWidth = pad2 + sz + x;
 
-        loadTouchItem(&mAttack, "dbutton.xml", x, y, sz, sz, RIGHT,
-            nullptr, &attackClick, nullptr, nullptr);
+        loadTouchItem(&mAttack, "dbutton.xml", "dbutton_image.xml", x, y,
+            sz, sz, RIGHT, nullptr, &attackClick, nullptr, nullptr);
 
-        loadTouchItem(&mCancel, "dbutton.xml", skipWidth, y, sz, sz, RIGHT,
-            nullptr, &cancelClick, nullptr, nullptr);
+        loadTouchItem(&mCancel, "dbutton.xml", "dbutton_image.xml",
+            skipWidth, y, sz, sz, RIGHT, nullptr, &cancelClick,
+            nullptr, nullptr);
 
         theme->unload(skin);
     }
