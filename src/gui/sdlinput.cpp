@@ -197,10 +197,10 @@ void SDLInput::pushInput(const SDL_Event &event)
             break;
 
         case SDL_MOUSEMOTION:
-            mouseInput.setX(event.button.x);
-            mouseInput.setY(event.button.y);
+            mouseInput.setX(event.motion.x);
+            mouseInput.setY(event.motion.y);
 #ifdef ANDROID
-            mouseInput.setReal(event.button.realx, event.button.realy);
+            mouseInput.setReal(event.motion.realx, event.motion.realy);
 #endif
             mouseInput.setButton(gcn::MouseInput::EMPTY);
             mouseInput.setType(gcn::MouseInput::MOVED);
