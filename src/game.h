@@ -139,6 +139,7 @@ class Game final
         bool mAdjustPerfomance;
         int mLowerCounter;
         int mPing;
+        bool mLogInput;
 
         static Game *mInstance;
 };

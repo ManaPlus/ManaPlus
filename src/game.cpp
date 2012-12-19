@@ -376,7 +376,8 @@ Game::Game():
     mAdjustLevel(0),
     mAdjustPerfomance(config.getBoolValue("adjustPerfomance")),
     mLowerCounter(0),
-    mPing(0)
+    mPing(0),
+    mLogInput(config.getBoolValue("logInput"))
 {
     touchManager.setInGame(true);
     spellManager = new SpellManager;
@@ -932,6 +933,8 @@ void Game::handleInput()
     while (SDL_PollEvent(&event))
     {
         BLOCK_START("Game::handleInput 2")
+        if (mLogInput)
+            Client::logEvent(event);
         updateHistory(event);
         checkKeys();
 

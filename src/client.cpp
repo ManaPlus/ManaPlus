@@ -2768,3 +2768,73 @@ void Client::logVars()
     logger->log("DATADIR2: %s", getenv("DATADIR2"));
 #endif
 }
+
+void Client::logEvent(const SDL_Event &event)
+{
+    switch (event.type)
+    {
+        case SDL_MOUSEMOTION:
+            logger->log("event: SDL_MOUSEMOTION: %d,%d,%d",
+                event.motion.state, event.motion.x, event.motion.y);
+            break;
+        case SDL_KEYDOWN:
+            logger->log("event: SDL_KEYDOWN: %d,%d,%d", event.key.state,
+                event.key.keysym.scancode, event.key.keysym.unicode);
+            break;
+        case SDL_KEYUP:
+            logger->log("event: SDL_KEYUP: %d,%d,%d", event.key.state,
+                event.key.keysym.scancode, event.key.keysym.unicode);
+            break;
+        case SDL_MOUSEBUTTONDOWN:
+            logger->log("event: SDL_MOUSEBUTTONDOWN: %d,%d,%d,%d",
+                event.button.button, event.button.state,
+            event.button.x, event.button.y);
+            break;
+        case SDL_MOUSEBUTTONUP:
+            logger->log("event: SDL_MOUSEBUTTONUP: %d,%d,%d,%d",
+                event.button.button, event.button.state,
+            event.button.x, event.button.y);
+            break;
+        case SDL_JOYAXISMOTION:
+            logger->log("event: SDL_JOYAXISMOTION: %d,%d,%d",
+                event.jaxis.which, event.jaxis.axis, event.jaxis.value);
+            break;
+        case SDL_JOYBALLMOTION:
+            logger->log("event: SDL_JOYBALLMOTION: %d,%d,%d,%d",
+                event.jball.which, event.jball.ball,
+                event.jball.xrel, event.jball.yrel);
+            break;
+        case SDL_JOYHATMOTION:
+            logger->log("event: SDL_JOYHATMOTION: %d,%d,%d", event.jhat.which,
+                event.jhat.hat, event.jhat.value);
+            break;
+        case SDL_JOYBUTTONDOWN:
+            logger->log("event: SDL_JOYBUTTONDOWN: %d,%d,%d",
+                event.jbutton.which, event.jbutton.button,
+                event.jbutton.state);
+            break;
+        case SDL_JOYBUTTONUP:
+            logger->log("event: SDL_JOYBUTTONUP: %d,%d,%d",
+                event.jbutton.which, event.jbutton.button,
+                event.jbutton.state);
+            break;
+        case SDL_QUIT:
+            logger->log("event: SDL_QUIT");
+            break;
+        case SDL_SYSWMEVENT:
+            logger->log("event: SDL_SYSWMEVENT");
+            break;
+        case SDL_VIDEORESIZE:
+            logger->log("event: SDL_VIDEORESIZE");
+            break;
+        case SDL_VIDEOEXPOSE:
+            logger->log("event: SDL_VIDEOEXPOSE");
+            break;
+        case SDL_USEREVENT:
+            logger->log("event: SDL_USEREVENT");
+            break;
+        default:
+            logger->log("event: other: %d", event.type);
+            break;
+    };
+}

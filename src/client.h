@@ -314,6 +314,8 @@ public:
 
     static bool checkPackets(const int type) A_WARN_UNUSED;
 
+    static void logEvent(const SDL_Event &event);
+
     PacketLimit mPacketLimits[PACKET_SIZE + 1];
 
 private:

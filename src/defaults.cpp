@@ -289,6 +289,7 @@ DefaultsData* getConfigDefaults()
 #else
     AddDEF("enableGamma", true);
 #endif
+    AddDEF("logInput", false);
     return configData;
 }
 
