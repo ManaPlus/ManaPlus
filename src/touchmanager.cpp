@@ -252,7 +252,7 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
 
 bool TouchManager::isActionActive(const int index) const
 {
-    if (index < 0 || index > actionsSize)
+    if (index < 0 || index >= actionsSize)
         return false;
     return mActions[index];
 }
