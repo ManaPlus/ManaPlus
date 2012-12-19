@@ -55,6 +55,7 @@ src/gui/setup_perfomance.cpp
 src/gui/setup_players.cpp
 src/gui/setup_relations.cpp
 src/gui/setup_theme.cpp
+src/gui/setup_touch.cpp
 src/gui/setup_video.cpp
 src/gui/setup_visual.cpp
 src/gui/shopwindow.cpp
