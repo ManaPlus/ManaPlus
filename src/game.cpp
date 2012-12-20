@@ -984,6 +984,9 @@ void Game::changeMap(const std::string &mapPath)
 {
     resetAdjustLevel();
 
+    if (viewport)
+        viewport->clearPopup();
+
     // Clean up floor items, beings and particles
     if (actorSpriteManager)
         actorSpriteManager->clear();

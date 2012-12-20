@@ -276,6 +276,8 @@ class Viewport final : public WindowContainer,
 
         void returnCamera();
 
+        void clearPopup();
+
     protected:
         friend class ActorSpriteManager;
 

@@ -174,6 +174,8 @@ class PopupMenu final : public Popup, public LinkHandler
         void handleLink(const std::string &link,
                         gcn::MouseEvent *event A_UNUSED) override;
 
+        void clear();
+
     private:
         void addPlayerRelation(std::string name);
 

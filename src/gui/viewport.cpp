@@ -1033,3 +1033,9 @@ void Viewport::validateSpeed() const
             Game::instance()->setValidSpeed();
     }
 }
+
+void Viewport::clearPopup()
+{
+    if (mPopupMenu)
+        mPopupMenu->clear();
+}

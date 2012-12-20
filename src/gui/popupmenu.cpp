@@ -2204,6 +2204,15 @@ void PopupMenu::showPopup(const int x, const int y, gcn::ListModel *model)
     showPopup(x, y);
 }
 
+void PopupMenu::clear()
+{
+    if (mDialog)
+    {
+        mDialog->close();
+        mDialog = nullptr;
+    }
+}
+
 RenameListener::RenameListener() :
     gcn::ActionListener(),
     mMapItem(nullptr),
