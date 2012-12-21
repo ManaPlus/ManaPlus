@@ -714,22 +714,22 @@ void SkillInfo::draw(Graphics *const graphics, const int padding,
     graphics->drawText(skillLevel, width - skillLevelWidth, yPad);
 }
 
-void SkillInfo::addData(const int l, SkillData *const d)
+void SkillInfo::addData(const int level1, SkillData *const data1)
 {
-    dataMap[l] = d;
+    dataMap[level1] = data1;
 }
 
-SkillData *SkillInfo::getData(const int l)
+SkillData *SkillInfo::getData(const int level1)
 {
-    SkillDataMapIter it = dataMap.find(l);
+    SkillDataMapIter it = dataMap.find(level1);
     if (it == dataMap.end())
         return nullptr;
     return (*it).second;
 }
 
-SkillData *SkillInfo::getData1(const int l)
+SkillData *SkillInfo::getData1(const int level)
 {
-    SkillDataMapIter it = dataMap.find(l);
+    SkillDataMapIter it = dataMap.find(level);
     if (it == dataMap.end())
         return dataMap[0];
     return (*it).second;

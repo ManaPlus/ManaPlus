@@ -115,7 +115,7 @@ void PopupList::adjustSize()
     mListBox->setWidth(getWidth() - pad2);
 }
 
-void PopupList::mousePressed(gcn::MouseEvent& mouseEvent)
+void PopupList::mousePressed(gcn::MouseEvent& mouseEvent A_UNUSED)
 {
     if (mDropDown)
         mDropDown->updateSelection();

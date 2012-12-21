@@ -771,7 +771,8 @@ void Being::handleSkill(Being *const victim, const int damage,
         setAction(Being::ATTACK, 1);
 
     SkillInfo *const skill = skillDialog->getSkill(skillId);
-    const SkillData *const data = skill ? skill->getData1(skillLevel) : nullptr;
+    const SkillData *const data = skill
+        ? skill->getData1(skillLevel) : nullptr;
     if (data)
         fireMissile(victim, data->particle);
 

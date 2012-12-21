@@ -115,6 +115,7 @@ class OutfitWindow final : public Window, private gcn::ActionListener
         Label *mCurrentLabel;
         CheckBox *mUnequipCheck;
         CheckBox *mAwayOutfitCheck;
+        int mCurrentOutfit;
         Label *mKeyLabel;
 
         int getIndexFromGrid(const int pointX,
@@ -137,7 +138,6 @@ class OutfitWindow final : public Window, private gcn::ActionListener
         int mItemSelected;
         unsigned char mItemColorSelected;
 
-        int mCurrentOutfit;
         int mAwayOutfit;
 
         gcn::Color mBorderColor;

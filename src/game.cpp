@@ -935,7 +935,8 @@ void Game::handleInput()
         BLOCK_START("Game::handleInput 2")
         if (mLogInput)
             Client::logEvent(event);
-        updateHistory(event);
+        if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
+            updateHistory(event);
         checkKeys();
 
         if (inputManager.handleEvent(event))

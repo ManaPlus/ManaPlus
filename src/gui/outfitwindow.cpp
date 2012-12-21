@@ -65,6 +65,7 @@ OutfitWindow::OutfitWindow():
         serverConfig.getValueBool("OutfitUnequip0", true))),
     mAwayOutfitCheck(new CheckBox(this, _("Away outfit"),
         serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1))),
+    mCurrentOutfit(0),
     mKeyLabel(new Label(this, strprintf(_("Key: %s"),
         keyName(mCurrentOutfit).c_str()))),
     mBoxWidth(33),
@@ -77,7 +78,6 @@ OutfitWindow::OutfitWindow():
     mItemMoved(nullptr),
     mItemSelected(-1),
     mItemColorSelected(1),
-    mCurrentOutfit(0),
     mAwayOutfit(0)
 {
     setWindowName("Outfits");
