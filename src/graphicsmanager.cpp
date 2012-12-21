@@ -176,9 +176,9 @@ int GraphicsManager::detectGraphics()
 
     if (mode > 0 && findI(mGlVersionString, "Mesa") != std::string::npos)
     {
-        // Mesa detected
-        config.setValue("compresstextures", true);
-        compressTextures = 1;
+        // Mesa detected. In latest Mesa look like compression broken.
+        config.setValue("compresstextures", false);
+        compressTextures = 0;
     }
 
     config.setValue("opengl", mode);
