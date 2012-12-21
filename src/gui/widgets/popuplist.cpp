@@ -45,8 +45,8 @@ PopupList::PopupList(DropDown *const widget,
     mScrollArea->setPosition(mPadding, mPadding);
     add(mScrollArea);
 
-    if (getParent())
-        getParent()->addFocusListener(this);
+//    if (getParent())
+//        getParent()->addFocusListener(this);
     if (gui)
         gui->addGlobalFocusListener(this);
 
@@ -57,6 +57,8 @@ PopupList::PopupList(DropDown *const widget,
 
 PopupList::~PopupList()
 {
+    if (getParent())
+        getParent()->removeFocusListener(this);
     if (gui)
         gui->removeGlobalFocusListener(this);
     removeKeyListener(mDropDown);
