@@ -290,6 +290,9 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableGamma", true);
 #endif
     AddDEF("logInput", false);
+    AddDEF("highlightWords", "");
+    AddDEF("selfMouseHeal", true);
+    AddDEF("serverslistupdate", "");
     return configData;
 }
 
