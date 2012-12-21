@@ -689,7 +689,7 @@ void ConfigurationObject::initFromXML(const XmlNodePtr parent_node)
 
 void Configuration::init(const std::string &filename, const bool useResManager)
 {
-    mDefaultsData = nullptr;
+    cleanDefaults();
     XML::Document doc(filename, useResManager);
     mFilename = filename;
     mUseResManager = useResManager;
