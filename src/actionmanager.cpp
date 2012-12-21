@@ -227,8 +227,11 @@ impHandler(shortcut)
         const int num = itemShortcutWindow->getTabIndex();
         if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
         {
-            itemShortcut[num]->useItem(event.action
-                - Input::KEY_SHORTCUT_1);
+            if (itemShortcut[num])
+            {
+                itemShortcut[num]->useItem(event.action
+                    - Input::KEY_SHORTCUT_1);
+            }
         }
         return true;
     }
@@ -237,7 +240,7 @@ impHandler(shortcut)
 
 impHandler0(toggleChat)
 {
-    return chatWindow->requestChatFocus();
+    return chatWindow ? chatWindow->requestChatFocus() : false;
 }
 
 impHandler0(prevChatTab)
@@ -970,8 +973,9 @@ impHandler0(attack)
 {
     if (player_node)
     {
-        if (player_node->getTarget())
-            player_node->attack(player_node->getTarget(), true);
+        Being *const target = player_node->getTarget();
+        if (target)
+            player_node->attack(target, true);
         return true;
     }
     return false;
