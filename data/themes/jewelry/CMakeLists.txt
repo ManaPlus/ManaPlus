@@ -29,11 +29,13 @@ SET (FILES
     info.xml
     inventory.xml
     item_selection.xml
+    itemcontainer.xml
     itempopup.xml
     items.xml
     keyboard_icon.xml
     LICENSE.txt
     listbox.xml
+    login.xml
     map.xml
     mouse.png
     npc.xml
@@ -66,6 +68,7 @@ SET (FILES
     textfield.xml
     window.png
     window.xml
+    world.xml
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/themes/jewelry)

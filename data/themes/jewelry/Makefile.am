@@ -32,11 +32,13 @@ gui_DATA =				\
 	info.xml		\
 	inventory.xml		\
 	item_selection.xml		\
+	itemcontainer.xml		\
 	itempopup.xml		\
 	items.xml		\
 	keyboard_icon.xml		\
 	LICENSE.txt		\
 	listbox.xml		\
+	login.xml		\
 	map.xml		\
 	mouse.png		\
 	npc.xml		\
@@ -68,7 +70,8 @@ gui_DATA =				\
 	tab_unused.xml		\
 	textfield.xml		\
 	window.png		\
-	window.xml
+	window.xml		\
+	world.xml
 
 EXTRA_DIST =				\
 	$(gui_DATA) \
