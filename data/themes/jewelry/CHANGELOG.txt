@@ -2,8 +2,9 @@
 Francesco Miglietta (Hal9000)
 
 
-Version 1.0.1 (WIP)
+Version 1.0.1 (22.12.2012)
 
+	- Fix bug in Shop window
 	- Add transparency to onscreen buttons
 	- Improved Skill window layout
 	- Fixed bug with item selection in Inventory window
