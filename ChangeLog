@@ -1,3 +1,21 @@
+2012-12-23 New release 1.2.12.23
+fix: reset in memory password if password was wrong.
+fix: dont show opengl restart mesasge in settings under Android.
+fix: image particles alpha property.
+fix: equipment window selection draw.
+fix: mouse move events under Android.
+fix: possible crash in rename nav point dialog.
+fix: by default disable texture compression.
+add: settings page for onscreen controls.
+add; show trading partner nick in trade error messages.
+add: replace drop down listboxes to popup lists.
+add: different skills for each skill level.
+add: description to skills.
+add: option to disable gamma correction.
+add: new default wallpaper.
+add: option for log input events.
+add: update mplus fonts.
+
 2012-12-09 New release 1.2.12.9
 fix: relative mouse moving for Android.
 fix: show chat history option.
