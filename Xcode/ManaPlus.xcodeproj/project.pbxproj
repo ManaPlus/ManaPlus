@@ -21,6 +21,8 @@
 		2BAC2B55166DCFB900874178 /* libSDL-1.2.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BAC2B4D166DCFB900874178 /* libSDL-1.2.0.dylib */; };
 		2BAC2B59166DD61B00874178 /* liblzma.5.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BAC2B57166DD61B00874178 /* liblzma.5.dylib */; };
 		2BAC2B5A166DD61B00874178 /* libbz2.1.0.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BAC2B58166DD61B00874178 /* libbz2.1.0.6.dylib */; };
+		2BC90A6216852FB800FE7AD3 /* libcurl.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BC90A5F16852EC000FE7AD3 /* libcurl.4.dylib */; };
+		2BC90A6316852FC300FE7AD3 /* libcurl.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC90A5F16852EC000FE7AD3 /* libcurl.4.dylib */; };
 		2BDF45C4166D5AEC0054E77F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF45C3166D5AEC0054E77F /* Cocoa.framework */; };
 		2BDF45CE166D5AEC0054E77F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF45CC166D5AEC0054E77F /* InfoPlist.strings */; };
 		2BDF45D4166D5AEC0054E77F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF45D2166D5AEC0054E77F /* Credits.rtf */; };
@@ -746,7 +748,6 @@
 		2BDF4D52166D5D9E0054E77F /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D4D166D5D9E0054E77F /* SDL_ttf.framework */; };
 		2BDF4D53166D5D9E0054E77F /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D4E166D5D9E0054E77F /* SDL.framework */; };
 		2BDF4D55166D5DCD0054E77F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D54166D5DCD0054E77F /* OpenGL.framework */; };
-		2BDF4D57166D5E040054E77F /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D56166D5E040054E77F /* libcurl.dylib */; };
 		2BDF4D76166D783A0054E77F /* data in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF4D75166D781C0054E77F /* data */; };
 		2BDF4D81166D7F060054E77F /* SDL_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D4A166D5D9E0054E77F /* SDL_image.framework */; };
 		2BDF4D82166D7F090054E77F /* SDL_mixer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D4B166D5D9E0054E77F /* SDL_mixer.framework */; };
@@ -802,6 +803,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 12;
 			files = (
+				2BC90A6216852FB800FE7AD3 /* libcurl.4.dylib in CopyFiles */,
 				2BAC2B59166DD61B00874178 /* liblzma.5.dylib in CopyFiles */,
 				2BAC2B5A166DD61B00874178 /* libbz2.1.0.6.dylib in CopyFiles */,
 				2BAC2B4E166DCFB900874178 /* libXdmcp.6.dylib in CopyFiles */,
@@ -842,6 +844,7 @@
 		2BAC2B4D166DCFB900874178 /* libSDL-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL-1.2.0.dylib"; path = "libs/libSDL-1.2.0.dylib"; sourceTree = "<group>"; };
 		2BAC2B57166DD61B00874178 /* liblzma.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblzma.5.dylib; path = libs/liblzma.5.dylib; sourceTree = "<group>"; };
 		2BAC2B58166DD61B00874178 /* libbz2.1.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.6.dylib; path = libs/libbz2.1.0.6.dylib; sourceTree = "<group>"; };
+		2BC90A5F16852EC000FE7AD3 /* libcurl.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.4.dylib; path = libs/libcurl.4.dylib; sourceTree = "<group>"; };
 		2BDF45BF166D5AEC0054E77F /* ManaPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManaPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDF45C3166D5AEC0054E77F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2BDF45C6166D5AEC0054E77F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -1644,7 +1647,6 @@
 		2BDF4D4D166D5D9E0054E77F /* SDL_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_ttf.framework; path = /Library/Frameworks/SDL_ttf.framework; sourceTree = "<absolute>"; };
 		2BDF4D4E166D5D9E0054E77F /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
 		2BDF4D54166D5DCD0054E77F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		2BDF4D56166D5E040054E77F /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		2BDF4D75166D781C0054E77F /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = "<group>"; };
 		2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = libs/libfreetype.6.dylib; sourceTree = "<group>"; };
 		2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = libs/libiconv.2.dylib; sourceTree = "<group>"; };
@@ -1669,10 +1671,10 @@
 				2BDF4D9C166D8E0D0054E77F /* libSDL_gfx.14.dylib in Frameworks */,
 				2BDF4D9D166D8E0D0054E77F /* libxml2.2.dylib in Frameworks */,
 				2BDF4D9E166D8E0D0054E77F /* libz.1.2.7.dylib in Frameworks */,
-				2BDF4D57166D5E040054E77F /* libcurl.dylib in Frameworks */,
 				2BDF4D55166D5DCD0054E77F /* OpenGL.framework in Frameworks */,
 				2BDF45C4166D5AEC0054E77F /* Cocoa.framework in Frameworks */,
 				2BDF4D4F166D5D9E0054E77F /* SDL_image.framework in Frameworks */,
+				2BC90A6316852FC300FE7AD3 /* libcurl.4.dylib in Frameworks */,
 				2BDF4D50166D5D9E0054E77F /* SDL_mixer.framework in Frameworks */,
 				2BDF4D51166D5D9E0054E77F /* SDL_net.framework in Frameworks */,
 				2BDF4D52166D5D9E0054E77F /* SDL_ttf.framework in Frameworks */,
@@ -1733,6 +1735,7 @@
 			isa = PBXGroup;
 			children = (
 				2BAC2B56166DCFC600874178 /* Dependencies */,
+				2BC90A5F16852EC000FE7AD3 /* libcurl.4.dylib */,
 				2BDF4DA8166D99320054E77F /* libphysfs.2.0.2.dylib */,
 				2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */,
 				2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */,
@@ -1741,7 +1744,6 @@
 				2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */,
 				2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */,
 				2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */,
-				2BDF4D56166D5E040054E77F /* libcurl.dylib */,
 				2BDF4D54166D5DCD0054E77F /* OpenGL.framework */,
 				2BDF4D4A166D5D9E0054E77F /* SDL_image.framework */,
 				2BDF4D4B166D5D9E0054E77F /* SDL_mixer.framework */,
@@ -2883,7 +2885,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "install_name_tool -change /opt/local/lib/libSDL_gfx.14.dylib @executable_path/../SharedSupport/libSDL_gfx.14.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libpng15.15.dylib @executable_path/../SharedSupport/libpng15.15.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libphysfs.1.dylib @executable_path/../SharedSupport/libphysfs.2.0.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libintl.8.dylib @executable_path/../SharedSupport/libintl.8.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libiconv.2.dylib @executable_path/../SharedSupport/libiconv.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libfreetype.6.dylib @executable_path/../SharedSupport/libfreetype.6.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libxml2.2.dylib @executable_path/../SharedSupport/libxml2.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libz.1.dylib @executable_path/../SharedSupport/libz.1.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\n";
+			shellScript = "install_name_tool -change /usr/lib/libcurl.4.dylib @executable_path/../SharedSupport/libcurl.4.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libSDL_gfx.14.dylib @executable_path/../SharedSupport/libSDL_gfx.14.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libpng15.15.dylib @executable_path/../SharedSupport/libpng15.15.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libphysfs.1.dylib @executable_path/../SharedSupport/libphysfs.2.0.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libintl.8.dylib @executable_path/../SharedSupport/libintl.8.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libiconv.2.dylib @executable_path/../SharedSupport/libiconv.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libfreetype.6.dylib @executable_path/../SharedSupport/libfreetype.6.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libxml2.2.dylib @executable_path/../SharedSupport/libxml2.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libz.1.dylib @executable_path/../SharedSupport/libz.1.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
