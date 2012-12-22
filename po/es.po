@@ -11,13 +11,14 @@
 # Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2011-2012.
 # Nelson Martell <nelson6eeduardo65@gmail.com>, 2011.
 # Nelson  <nelson6eeduardo65@gmail.com>, 2011.
+#   <owen942009@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-12-20 01:36+0300\n"
-"PO-Revision-Date: 2012-12-19 22:46+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2012-12-22 13:48+0300\n"
+"PO-Revision-Date: 2012-12-20 16:12+0000\n"
+"Last-Translator: osuka <owen942009@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/"
 "language/es/)\n"
 "Language: es\n"
@@ -26,11 +27,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/actionmanager.cpp:831
+#: src/actionmanager.cpp:834
 msgid "Ignoring incoming trade requests"
 msgstr "Ignorando las peticiones de intercambio"
 
-#: src/actionmanager.cpp:840
+#: src/actionmanager.cpp:843
 msgid "Accepting incoming trade requests"
 msgstr "Aceptando las peticiones de intercambio"
 
@@ -51,12 +52,12 @@ msgid "miss"
 msgstr "falla"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1621 src/gui/whoisonline.cpp:772
+#: src/being.cpp:1622 src/gui/whoisonline.cpp:772
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1626 src/gui/whoisonline.cpp:777
+#: src/being.cpp:1627 src/gui/whoisonline.cpp:777
 msgid "I"
 msgstr "I"
 
@@ -1386,7 +1387,7 @@ msgstr "Quitárselo antes"
 msgid "Away outfit"
 msgstr "Conjunto para modo AFK"
 
-#: src/gui/outfitwindow.cpp:68 src/gui/outfitwindow.cpp:547
+#: src/gui/outfitwindow.cpp:69 src/gui/outfitwindow.cpp:547
 #: src/gui/windowmenu.cpp:308
 #, c-format
 msgid "Key: %s"
@@ -3340,31 +3341,31 @@ msgstr "Reinicia el juego para que los cambios tengan efecto."
 
 #: src/gui/setup_touch.cpp:36
 msgid "Touch"
-msgstr ""
+msgstr "Tocar"
 
 #: src/gui/setup_touch.cpp:42
 msgid "Show on screen buttons"
-msgstr ""
+msgstr "Mostrar los botones en la pantalla"
 
 #: src/gui/setup_touch.cpp:45
 msgid "Small"
-msgstr ""
+msgstr "Pequeño"
 
 #: src/gui/setup_touch.cpp:47
 msgid "Medium"
-msgstr ""
+msgstr "Mediano"
 
 #: src/gui/setup_touch.cpp:48
 msgid "Large"
-msgstr ""
+msgstr "Grande"
 
 #: src/gui/setup_touch.cpp:49
 msgid "Buttons size"
-msgstr ""
+msgstr "Tamaño del Botón "
 
 #: src/gui/setup_touch.cpp:52
 msgid "Show on screen joystick"
-msgstr ""
+msgstr "Mostrar la palanca de mando (joystick) en la pantalla"
 
 #: src/gui/setup_touch.cpp:55
 msgid "Joystick size"

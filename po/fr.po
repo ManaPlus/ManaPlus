@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-12-20 01:36+0300\n"
-"PO-Revision-Date: 2012-12-19 22:46+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2012-12-22 13:48+0300\n"
+"PO-Revision-Date: 2012-12-20 05:22+0000\n"
+"Last-Translator: Alige <aligetmw@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -26,11 +26,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/actionmanager.cpp:831
+#: src/actionmanager.cpp:834
 msgid "Ignoring incoming trade requests"
 msgstr "Ignorer les requêtes d'échanges entrantes"
 
-#: src/actionmanager.cpp:840
+#: src/actionmanager.cpp:843
 msgid "Accepting incoming trade requests"
 msgstr "Accepter les requêtes d'échanges entrantes"
 
@@ -51,12 +51,12 @@ msgid "miss"
 msgstr "raté"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1621 src/gui/whoisonline.cpp:772
+#: src/being.cpp:1622 src/gui/whoisonline.cpp:772
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1626 src/gui/whoisonline.cpp:777
+#: src/being.cpp:1627 src/gui/whoisonline.cpp:777
 msgid "I"
 msgstr "I"
 
@@ -1384,7 +1384,7 @@ msgstr "Retirer d'abord l'équipement"
 msgid "Away outfit"
 msgstr "Équipement en absence"
 
-#: src/gui/outfitwindow.cpp:68 src/gui/outfitwindow.cpp:547
+#: src/gui/outfitwindow.cpp:69 src/gui/outfitwindow.cpp:547
 #: src/gui/windowmenu.cpp:308
 #, c-format
 msgid "Key: %s"
@@ -2497,7 +2497,7 @@ msgstr "Cacher automatiquement la fenêtre de dialogue."
 
 #: src/gui/setup_chat.cpp:59
 msgid "Protect chat focus."
-msgstr ""
+msgstr "Protéger la concentration de conversation."
 
 #: src/gui/setup_chat.cpp:63 src/gui/setup_colors.cpp:79
 msgid "Colors"
@@ -2958,7 +2958,7 @@ msgstr "Activer historique OpenGL"
 
 #: src/gui/setup_other.cpp:232
 msgid "Enable input log"
-msgstr ""
+msgstr "Activer l'historique d'entrées"
 
 #: src/gui/setup_other.cpp:235
 msgid "Low traffic mode"
@@ -3330,35 +3330,35 @@ msgstr "Redémarres le jeu pour que les changements soient appliqués."
 
 #: src/gui/setup_touch.cpp:36
 msgid "Touch"
-msgstr ""
+msgstr "Toucher"
 
 #: src/gui/setup_touch.cpp:42
 msgid "Show on screen buttons"
-msgstr ""
+msgstr "Montrer sur les boutons de l'écran"
 
 #: src/gui/setup_touch.cpp:45
 msgid "Small"
-msgstr ""
+msgstr "Petit"
 
 #: src/gui/setup_touch.cpp:47
 msgid "Medium"
-msgstr ""
+msgstr "Moyen"
 
 #: src/gui/setup_touch.cpp:48
 msgid "Large"
-msgstr ""
+msgstr "Grand"
 
 #: src/gui/setup_touch.cpp:49
 msgid "Buttons size"
-msgstr ""
+msgstr "Taille des boutons"
 
 #: src/gui/setup_touch.cpp:52
 msgid "Show on screen joystick"
-msgstr ""
+msgstr "Montrer le joystick à l'écran"
 
 #: src/gui/setup_touch.cpp:55
 msgid "Joystick size"
-msgstr ""
+msgstr "Taille de Joystick"
 
 #: src/gui/setup_video.cpp:180
 msgid "Software"
@@ -3571,7 +3571,7 @@ msgstr "Gamma"
 
 #: src/gui/setup_visual.cpp:103
 msgid "Enable gamma control"
-msgstr ""
+msgstr "Activer le contrôle de gamma"
 
 #: src/gui/setup_visual.cpp:114
 msgid "on"
@@ -3641,7 +3641,7 @@ msgstr "de base"
 
 #: src/gui/skilldialog.cpp:411
 msgid "basic, 1"
-msgstr ""
+msgstr "fondamental, 1"
 
 #: src/gui/skilldialog.cpp:447
 #, c-format
@@ -5965,12 +5965,12 @@ msgstr "%s souhaite réaliser un échange avec vous. Acceptez-vous ?"
 #: src/net/ea/tradehandler.cpp:134
 #, c-format
 msgid "Trading with %s isn't possible. Trade partner is too far away."
-msgstr ""
+msgstr "Troquer ave %s n'est pas possible. Cette personne est trop loin."
 
 #: src/net/ea/tradehandler.cpp:138
 #, c-format
 msgid "Trading with %s isn't possible. Character doesn't exist."
-msgstr ""
+msgstr "Troquer ave %s n'est pas possible. Ce personnage n'existe pas."
 
 #: src/net/ea/tradehandler.cpp:142
 msgid "Trade cancelled due to an unknown reason."
@@ -5989,7 +5989,7 @@ msgstr "Échange avec %s annulé."
 #: src/net/ea/tradehandler.cpp:171
 #, c-format
 msgid "Unhandled trade cancel packet with %s"
-msgstr ""
+msgstr "Annulation du paquet d'échange non contrôlée avec %s"
 
 #: src/net/ea/tradehandler.cpp:237
 msgid "Failed adding item. Trade partner is over weighted."
