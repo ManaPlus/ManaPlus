@@ -5,8 +5,18 @@
 ##3-- <<ManaPlus Contributors>> --
 ##3---------------------------
 ##3== <<Contributors to client development>> ==
- 
+
+##3<<Android porting>>
 ##9Andrei Karas (4144) <akaras inbox ru>
+##9Danil Sagunov (Vasily_Makarov) <danilka.pro gmail com>
+ 
+##3<<MacOSX porting>>
+##9Philippe Groarke (Socapex) <>
+ 
+##3<<Main development>>
+##9Andrei Karas (4144) <akaras inbox ru>
+ 
+##3<<Different patches>>
 ##9Ben Longbons <b.r.longbons gmail com>
 ##9Helmut Grohne (gnurfk) <helmut subdivi de>
 ##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>
@@ -30,6 +40,7 @@
 ##9Bernard Hugonnet (Nard)
 ##9Nina O'Reilly (Reid) <reidyaro gmail com>
 ##9Yohann Ferreira (Bertram) <bertram cegetel net>
+##9(Alige) <alige@evolonline.org>
  
 ##3German
 ##9Marco (LinuxCobra/Cobraxas)
