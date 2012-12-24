@@ -50,6 +50,7 @@ public:
     unsigned short port;
 
     std::string description;
+    std::string registerUrl;
     VersionString version;
 
     bool save;
@@ -68,6 +69,7 @@ public:
         hostname(info.hostname),
         port(info.port),
         description(info.description),
+        registerUrl(info.registerUrl),
         save(info.save)
     {
         version.first = info.version.first;
@@ -86,6 +88,7 @@ public:
         hostname.clear();
         port = 0;
         description.clear();
+        registerUrl.clear();
         version.first = 0;
         version.second.clear();
         save = false;

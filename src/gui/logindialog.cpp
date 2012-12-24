@@ -27,6 +27,7 @@
 #include "keydata.h"
 #include "keyevent.h"
 
+#include "gui/confirmdialog.h"
 #include "gui/okdialog.h"
 #include "gui/sdlinput.h"
 
@@ -43,12 +44,23 @@
 
 #include "utils/gettext.h"
 #include "utils/paths.h"
+#include "utils/process.h"
 
 #include "debug.h"
 
 std::string LoginDialog::savedPassword("");
 std::string LoginDialog::savedPasswordKey("");
 
+struct OpenUrlListener : public gcn::ActionListener
+{
+    void action(const gcn::ActionEvent &event)
+    {
+        if (event.getId() == "yes")
+            openBrowser(url);
+    }
+
+    std::string url;
+} urlListener;
 
 const char *UPDATE_TYPE_TEXT[3] =
 {
@@ -221,8 +233,8 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
         mPassField->requestFocus();
 
     mLoginButton->setEnabled(canSubmit());
-    mRegisterButton->setEnabled(Net::getLoginHandler()
-                                ->isRegistrationEnabled());
+    mRegisterButton->setEnabled(Net::getLoginHandler()->isRegistrationEnabled()
+        || !mLoginData->registerUrl.empty());
 }
 
 LoginDialog::~LoginDialog()
@@ -299,10 +311,20 @@ void LoginDialog::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == "register")
     {
-        mLoginData->username = mUserField->getText();
-        mLoginData->password = mPassField->getText();
-
-        Client::setState(STATE_REGISTER_PREP);
+        if (Net::getLoginHandler()->isRegistrationEnabled())
+        {
+            mLoginData->username = mUserField->getText();
+            mLoginData->password = mPassField->getText();
+            Client::setState(STATE_REGISTER_PREP);
+        }
+        else if (!mLoginData->registerUrl.empty())
+        {
+            const std::string &url = mLoginData->registerUrl;
+            urlListener.url = url;
+            ConfirmDialog *const confirmDlg = new ConfirmDialog(
+                _("Open register url"), url, false, true);
+            confirmDlg->addActionListener(&urlListener);
+        }
     }
     else if (event.getId() == "customhost")
     {

@@ -1023,6 +1023,7 @@ int Client::gameExec()
         {
             mServerName = mCurrentServer.hostname;
             initServerConfig(mCurrentServer.hostname);
+            loginData.registerUrl = mCurrentServer.registerUrl;
             if (mOptions.username.empty())
             {
                 if (loginData.remember)

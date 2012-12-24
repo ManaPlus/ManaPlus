@@ -38,6 +38,7 @@ class LoginData final
             updateType(0),
             email(""),
             captchaResponse(""),
+            registerUrl(""),
             gender(GENDER_UNSPECIFIED),
             remember(false),
             registerLogin(false)
@@ -65,6 +66,7 @@ class LoginData final
 
         std::string email;
         std::string captchaResponse;
+        std::string registerUrl;
 
         Gender gender;
 
@@ -84,6 +86,7 @@ class LoginData final
             updateType = Upd_Normal;
             email.clear();
             captchaResponse.clear();
+            registerUrl.clear();
             gender = GENDER_UNSPECIFIED;
             lastLogin.clear();
             resetCharacterSlots();
