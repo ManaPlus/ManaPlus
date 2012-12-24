@@ -28,6 +28,7 @@
 #include <guichan/actionlistener.hpp>
 
 class EditDialog;
+class NamesModel;
 class TextField;
 
 class Setup_Other final : public SetupTabScroll
@@ -42,9 +43,9 @@ class Setup_Other final : public SetupTabScroll
         void apply();
 
     protected:
-        SetupItemNames *mProxyTypeList;
+        NamesModel *mProxyTypeList;
 
-        SetupItemNames *mShortcutsList;
+        NamesModel *mShortcutsList;
 };
 
 #endif

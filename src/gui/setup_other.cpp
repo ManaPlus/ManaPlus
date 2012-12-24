@@ -23,6 +23,7 @@
 #include "gui/setup_other.h"
 
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "configuration.h"
@@ -31,10 +32,36 @@
 
 #include "debug.h"
 
+static const int shortcutsListSize = 3;
+
+static const char *const shortcutsList[] =
+{
+    N_("Always show"),
+    N_("Auto hide in small resolution"),
+    N_("Always auto hide")
+};
+
+static const int proxyTypeListSize = 8;
+
+static const char *const proxyTypeList[] =
+{
+    // TRANSLATORS: Proxy type selection
+    N_("System proxy"),
+    // TRANSLATORS: Proxy type selection
+    N_("Direct connection"),
+    "HTTP",
+    "HTTP 1.0",
+    "SOCKS4",
+    "SOCKS4A",
+    "SOCKS5",
+    // TRANSLATORS: Proxy type selection
+    N_("SOCKS5 hostname")
+};
+
 Setup_Other::Setup_Other(const Widget2 *const widget) :
     SetupTabScroll(widget),
-    mProxyTypeList(new SetupItemNames),
-    mShortcutsList(new SetupItemNames)
+    mProxyTypeList(new NamesModel),
+    mShortcutsList(new NamesModel)
 {
     setName(_("Misc"));
 
@@ -187,25 +214,16 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
 
     new SetupItemLabel(_("Windows"), "", this);
 
-    mShortcutsList->push_back(_("Always show"));
-    mShortcutsList->push_back(_("Auto hide in small resolution"));
-    mShortcutsList->push_back(_("Always auto hide"));
-    new SetupItemSlider2(_("Shortcut buttons"), "", "autohideButtons", this,
-        "autohideButtonsEvent", 0, 2, mShortcutsList, false, true, true);
+    mShortcutsList->fillFromArray(&shortcutsList[0], shortcutsListSize);
+    new SetupItemDropDown(_("Shortcut buttons"), "", "autohideButtons", this,
+        "autohideButtonsEvent", mShortcutsList, 200);
 
 
     new SetupItemLabel(_("Proxy server"), "", this);
 
-    mProxyTypeList->push_back(_("System proxy"));
-    mProxyTypeList->push_back(_("Direct connection"));
-    mProxyTypeList->push_back("HTTP");
-    mProxyTypeList->push_back("HTTP 1.0");
-    mProxyTypeList->push_back("SOCKS4");
-    mProxyTypeList->push_back("SOCKS4A");
-    mProxyTypeList->push_back("SOCKS5");
-    mProxyTypeList->push_back(_("SOCKS5 hostname"));
-    new SetupItemSlider2(_("Proxy type"), "", "downloadProxyType", this,
-        "downloadProxyTypeEvent", 0, 7, mProxyTypeList);
+    mProxyTypeList->fillFromArray(&proxyTypeList[0], proxyTypeListSize);
+    new SetupItemDropDown(_("Proxy type"), "", "downloadProxyType", this,
+        "downloadProxyTypeEvent", mProxyTypeList, 200);
 
     new SetupItemTextField(_("Proxy address:port"), "",
         "downloadProxy", this, "downloadProxyEvent");
