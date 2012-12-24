@@ -26,6 +26,7 @@
 #include <guichan/actionlistener.hpp>
 
 class EditDialog;
+class NamesModel;
 class TextField;
 
 class Setup_Touch final : public SetupTabScroll
@@ -38,7 +39,7 @@ class Setup_Touch final : public SetupTabScroll
         ~Setup_Touch();
 
     protected:
-        SetupItemNames *mSizeList;
+        NamesModel *mSizeList;
 };
 
 #endif

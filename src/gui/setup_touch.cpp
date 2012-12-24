@@ -21,6 +21,7 @@
 #include "gui/setup_touch.h"
 
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "configuration.h"
@@ -29,9 +30,19 @@
 
 #include "debug.h"
 
+static const int sizeListSize = 4;
+
+static const char *const sizeList[] =
+{
+    N_("Small"),
+    N_("Normal"),
+    N_("Medium"),
+    N_("Large")
+};
+
 Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     SetupTabScroll(widget),
-    mSizeList(new SetupItemNames)
+    mSizeList(new NamesModel)
 {
     setName(_("Touch"));
 
@@ -42,18 +53,15 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Show on screen buttons"), "",
         "showScreenButtons", this, "showScreenButtonsEvent");
 
-    mSizeList->push_back(_("Small"));
-    mSizeList->push_back(_("Normal"));
-    mSizeList->push_back(_("Medium"));
-    mSizeList->push_back(_("Large"));
-    new SetupItemSlider2(_("Buttons size"), "", "screenButtonsSize", this,
-        "screenButtonsSizeEvent", 0, 3, mSizeList);
+    mSizeList->fillFromArray(&sizeList[0], sizeListSize);
+    new SetupItemDropDown(_("Buttons size"), "", "screenButtonsSize", this,
+        "screenButtonsSizeEvent", mSizeList, 100);
 
     new SetupItemCheckBox(_("Show on screen joystick"), "",
         "showScreenJoystick", this, "showScreenJoystickEvent");
 
-    new SetupItemSlider2(_("Joystick size"), "", "screenJoystickSize", this,
-        "screenJoystickEvent", 0, 3, mSizeList);
+    new SetupItemDropDown(_("Joystick size"), "", "screenJoystickSize", this,
+        "screenJoystickEvent", mSizeList, 100);
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
