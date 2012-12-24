@@ -370,7 +370,6 @@ void TouchManager::loadButtons()
 
 void TouchManager::optionChanged(const std::string &value)
 {
-    logger->log("changed");
     if (value == "showScreenJoystick")
     {
         if (mShowJoystick == config.getBoolValue("showScreenJoystick"))
