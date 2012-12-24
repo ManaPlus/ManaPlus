@@ -203,6 +203,7 @@ class Theme final : public Palette, public ConfigListener
             DROPDOWN,
             LABEL,
             LISTBOX,
+            LISTBOX_SELECTED,
             RADIOBUTTON,
             POPUP,
             TAB,

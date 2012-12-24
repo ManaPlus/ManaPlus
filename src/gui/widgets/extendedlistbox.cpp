@@ -82,18 +82,37 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     for (int i = 0, y = 0; i < mListModel->getNumberOfElements();
          ++i, y += height)
     {
-        const Image *const image = model->getImageAt(i);
+        if (i != mSelected)
+        {
+            const Image *const image = model->getImageAt(i);
+            if (!image)
+            {
+                graphics->drawText(mListModel->getElementAt(i),
+                    mPadding, y + textPos);
+            }
+            else
+            {
+                g->drawImage(image, mImagePadding, y + (height
+                    - image->getHeight()) / 2 + mPadding);
+                graphics->drawText(mListModel->getElementAt(i),
+                    image->getWidth() + mImagePadding + mSpacing, y + textPos);
+            }
+        }
+    }
+    if (mSelected >= 0)
+    {
+        const Image *const image = model->getImageAt(mSelected);
         if (!image)
         {
-            graphics->drawText(mListModel->getElementAt(i),
-                mPadding, y + textPos);
+            graphics->drawText(mListModel->getElementAt(mSelected),
+                mPadding, mSelected * height + textPos);
         }
         else
         {
-            g->drawImage(image, mImagePadding, y + (height
-                - image->getHeight()) / 2 + mPadding);
-            graphics->drawText(mListModel->getElementAt(i),
-                image->getWidth() + mImagePadding + mSpacing, y + textPos);
+            graphics->setColor(mForegroundSelectedColor);
+            graphics->drawText(mListModel->getElementAt(mSelected),
+                image->getWidth() + mImagePadding + mSpacing,
+                mSelected * height + textPos);
         }
     }
     BLOCK_END("ExtendedListBox::draw")

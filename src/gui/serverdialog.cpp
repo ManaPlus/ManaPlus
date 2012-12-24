@@ -160,7 +160,6 @@ public:
                    ServersListModel *const model) :
         ListBox(widget, model),
         mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
-        mTextColor(getThemeColor(Theme::LISTBOX)),
         mNotSupportedColor(getThemeColor(Theme::SERVER_VERSION_NOT_SUPPORTED))
     {
     }
@@ -196,7 +195,10 @@ public:
         {
             ServerInfo info = model->getServer(i);
 
-            graphics->setColor(mTextColor);
+            if (mSelected == i)
+                graphics->setColor(mForegroundSelectedColor);
+            else
+                graphics->setColor(mForegroundColor);
 
             int top;
             int x = mPadding;
@@ -235,7 +237,6 @@ public:
     }
 private:
     gcn::Color mHighlightColor;
-    gcn::Color mTextColor;
     gcn::Color mNotSupportedColor;
 };
 

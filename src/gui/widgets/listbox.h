@@ -89,6 +89,7 @@ class ListBox : public gcn::ListBox,
 
     protected:
         gcn::Color mHighlightColor;
+        gcn::Color mForegroundSelectedColor;
         bool mDistributeMousePressed;
         int mOldSelected;
         int mPadding;

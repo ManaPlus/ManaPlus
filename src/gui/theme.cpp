@@ -725,6 +725,7 @@ static int readColorType(const std::string &type)
         "DROPDOWN",
         "LABEL",
         "LISTBOX",
+        "LISTBOX_SELECTED",
         "RADIOBUTTON",
         "POPUP",
         "TAB",

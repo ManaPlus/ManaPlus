@@ -15,6 +15,7 @@
         <color id="DROPDOWN" color="#ffffff" />
         <color id="LABEL" color="#ffffff" />
         <color id="LISTBOX" color="#ffffff" />
+        <color id="LISTBOX_SELECTED" color="#ffffff" />
         <color id="RADIOBUTTON" color="#ffffff" />
         <color id="POPUP" color="#ffffff" />
         <color id="TAB" color="#13f00d" />

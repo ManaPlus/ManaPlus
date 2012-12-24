@@ -46,6 +46,7 @@ ListBox::ListBox(const Widget2 *const widget,
     gcn::ListBox(listModel),
     Widget2(widget),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
+    mForegroundSelectedColor(getThemeColor(Theme::LISTBOX_SELECTED)),
     mDistributeMousePressed(true),
     mOldSelected(-1),
     mPadding(0)
@@ -102,13 +103,23 @@ void ListBox::draw(gcn::Graphics *graphics)
             height * mSelected + mPadding, getWidth() - 2 * mPadding, height));
     }
 
+    const int sel = getSelected();
+    if (sel >= 0)
+    {
+        graphics->setColor(mForegroundSelectedColor);
+        graphics->drawText(mListModel->getElementAt(sel),
+            mPadding, sel * height + mPadding);
+    }
     // Draw the list elements
     graphics->setColor(mForegroundColor);
     for (int i = 0, y = 0; i < mListModel->getNumberOfElements();
          ++i, y += height)
     {
-        graphics->drawText(mListModel->getElementAt(i),
-            mPadding, y + mPadding);
+        if (i != sel)
+        {
+            graphics->drawText(mListModel->getElementAt(i),
+                mPadding, y + mPadding);
+        }
     }
     BLOCK_END("ListBox::draw")
 }
