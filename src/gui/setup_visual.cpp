@@ -22,6 +22,7 @@
 #include "gui/setup_visual.h"
 
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "client.h"
@@ -30,13 +31,50 @@
 
 #include "debug.h"
 
+static const int speachListSize = 4;
+
+static const char *const speachList[] =
+{
+    N_("No text"),
+    N_("Text"),
+    N_("Bubbles, no names"),
+    N_("Bubbles with names")
+};
+
+static const int ambientFxListSize = 3;
+
+static const char *const ambientFxList[] =
+{
+    N_("off"),
+    N_("low"),
+    N_("high")
+};
+
+static const int particleTypeListSize = 3;
+
+static const char *const particleTypeList[] =
+{
+    N_("best quality"),
+    N_("normal"),
+    N_("best perfomance")
+};
+
+static const int vSyncListSize = 3;
+
+static const char *const vSyncList[] =
+{
+    N_("default"),
+    N_("off"),
+    N_("on")
+};
+
 Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     SetupTabScroll(widget),
-    mSpeachList(new SetupItemNames),
-    mAmbientFxList(new SetupItemNames),
+    mSpeachList(new NamesModel),
+    mAmbientFxList(new NamesModel),
     mParticleList(new SetupItemNames),
-    mParticleTypeList(new SetupItemNames),
-    mVSyncList(new SetupItemNames)
+    mParticleTypeList(new NamesModel),
+    mVSyncList(new NamesModel)
 {
     setName(_("Visual"));
     // Do the layout
@@ -67,18 +105,13 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     new SetupItemSlider(_("Gui opacity"), "", "guialpha",
         this, "guialphaEvent", 0.1, 1.0, 150, true);
 
-    mSpeachList->push_back(_("No text"));
-    mSpeachList->push_back(_("Text"));
-    mSpeachList->push_back(_("Bubbles, no names"));
-    mSpeachList->push_back(_("Bubbles with names"));
-    new SetupItemSlider2(_("Overhead text"), "", "speech", this,
-        "speechEvent", 0, 3, mSpeachList);
+    mSpeachList->fillFromArray(&speachList[0], speachListSize);
+    new SetupItemDropDown(_("Overhead text"), "", "speech", this,
+        "speechEvent", mSpeachList, 200);
 
-    mAmbientFxList->push_back(_("off"));
-    mAmbientFxList->push_back(_("low"));
-    mAmbientFxList->push_back(_("high"));
-    new SetupItemSlider2(_("Ambient FX"), "", "OverlayDetail", this,
-        "OverlayDetailEvent", 0, 2, mAmbientFxList);
+    mAmbientFxList->fillFromArray(&ambientFxList[0], ambientFxListSize);
+    new SetupItemDropDown(_("Ambient FX"), "", "OverlayDetail", this,
+        "OverlayDetailEvent", mAmbientFxList, 100);
 
     new SetupItemCheckBox(_("Particle effects"), "",
         "particleeffects", this, "particleeffectsEvent");
@@ -91,11 +124,10 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
         this, "particleEmitterSkipEvent", 0, 3,
         mParticleList, true))->setInvertValue(3);
 
-    mParticleTypeList->push_back(_("best quality"));
-    mParticleTypeList->push_back(_("normal"));
-    mParticleTypeList->push_back(_("best perfomance"));
-    new SetupItemSlider2(_("Particle physics"), "", "particleFastPhysics",
-        this, "particleFastPhysicsEvent", 0, 2, mParticleTypeList);
+    mParticleTypeList->fillFromArray(&particleTypeList[0],
+        particleTypeListSize);
+    new SetupItemDropDown(_("Particle physics"), "", "particleFastPhysics",
+        this, "particleFastPhysicsEvent", mParticleTypeList, 200);
 
 
     new SetupItemLabel(_("Gamma"), "", this);
@@ -109,11 +141,9 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
     new SetupItemLabel(_("Other"), "", this);
 
-    mVSyncList->push_back(_("default"));
-    mVSyncList->push_back(_("off"));
-    mVSyncList->push_back(_("on"));
-    new SetupItemSlider2(_("Vsync"), "", "vsync", this,
-        "vsyncEvent", 0, 2, mVSyncList);
+    mVSyncList->fillFromArray(&vSyncList[0], vSyncListSize);
+    new SetupItemDropDown(_("Vsync"), "", "vsync", this,
+        "vsyncEvent", mVSyncList, 100);
 
 #if defined(WIN32) || defined(__APPLE__)
     new SetupItemCheckBox(_("Center game window"),

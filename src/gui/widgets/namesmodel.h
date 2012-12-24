@@ -49,6 +49,8 @@ class NamesModel : public gcn::ListModel
         void clear()
         { mNames.clear(); }
 
+        void fillFromArray(const char *const *const arr, std::size_t size);
+
     protected:
         StringVect mNames;
 };

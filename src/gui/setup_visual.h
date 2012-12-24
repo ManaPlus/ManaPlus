@@ -24,6 +24,8 @@
 
 #include "gui/widgets/setupitem.h"
 
+class NamesModel;
+
 class Setup_Visual final : public SetupTabScroll
 {
     public:
@@ -36,11 +38,11 @@ class Setup_Visual final : public SetupTabScroll
         void apply();
 
     private:
-        SetupItemNames *mSpeachList;
-        SetupItemNames *mAmbientFxList;
+        NamesModel *mSpeachList;
+        NamesModel *mAmbientFxList;
         SetupItemNames *mParticleList;
-        SetupItemNames *mParticleTypeList;
-        SetupItemNames *mVSyncList;
+        NamesModel *mParticleTypeList;
+        NamesModel *mVSyncList;
 };
 
 #endif
