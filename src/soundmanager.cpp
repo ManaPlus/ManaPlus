@@ -66,6 +66,10 @@ SoundManager::SoundManager():
 
 SoundManager::~SoundManager()
 {
+}
+
+void SoundManager::shutdown()
+{
     config.removeListeners(this);
 
     // Unlink the callback function.

@@ -809,6 +809,9 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting10");
 
+    sound.shutdown();
+    touchManager.shutdown();
+
 #ifdef DEBUG_CONFIG
     config.enableKeyLogging();
 #endif

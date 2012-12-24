@@ -54,10 +54,14 @@ TouchManager::TouchManager() :
 
 TouchManager::~TouchManager()
 {
-    config.removeListeners(this);
     clear();
     delete mVertexes;
     mVertexes = nullptr;
+}
+
+void TouchManager::shutdown()
+{
+    config.removeListeners(this);
 }
 
 void TouchManager::init()

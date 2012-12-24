@@ -145,6 +145,8 @@ class SoundManager final : public ConfigListener
          */
         void logic();
 
+        void shutdown();
+
     private:
         /** Logs various info about sound device. */
         void info() const;

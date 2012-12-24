@@ -142,6 +142,8 @@ class TouchManager final : public ConfigListener
 
         void setTempHide(bool b);
 
+        void shutdown();
+
     private:
         TouchItem *mKeyboard;
         TouchItem *mPad;
