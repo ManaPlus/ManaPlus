@@ -267,12 +267,13 @@ class SetupItemDropDown final : public SetupItem
         SetupItemDropDown(std::string text, std::string description,
                           std::string keyName, SetupTabScroll *const parent,
                           std::string eventName, gcn::ListModel *const model,
-                          const bool mainConfig = true);
+                          int width, const bool mainConfig = true);
 
         SetupItemDropDown(std::string text, std::string description,
                           std::string keyName, SetupTabScroll *const parent,
                           std::string eventName, gcn::ListModel *const model,
-                          std::string def, const bool mainConfig = true);
+                          int width, std::string def,
+                          const bool mainConfig = true);
 
         A_DELETE_COPY(SetupItemDropDown)
 
@@ -289,6 +290,7 @@ class SetupItemDropDown final : public SetupItem
         Label *mLabel;
         gcn::ListModel *mModel;
         DropDown *mDropDown;
+        int mWidth;
 };
 
 class SetupItemSlider final : public SetupItem

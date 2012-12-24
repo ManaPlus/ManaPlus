@@ -536,12 +536,14 @@ SetupItemDropDown::SetupItemDropDown(std::string text,
                                      SetupTabScroll *const parent,
                                      std::string eventName,
                                      gcn::ListModel *const model,
+                                     int width,
                                      const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
     mModel(model),
-    mDropDown(nullptr)
+    mDropDown(nullptr),
+    mWidth(width)
 {
     mValueType = VSTR;
     createControls();
@@ -553,6 +555,7 @@ SetupItemDropDown::SetupItemDropDown(std::string text,
                                      SetupTabScroll *const parent,
                                      std::string eventName,
                                      gcn::ListModel *const model,
+                                     int width,
                                      std::string def,
                                      const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
@@ -583,6 +586,8 @@ void SetupItemDropDown::createControls()
     mDropDown = new DropDown(this, mModel);
     mDropDown->setActionEventId(mEventName);
     mDropDown->addActionListener(mParent);
+    mDropDown->setWidth(mWidth);
+    mDropDown->setSelected(atoi(mValue.c_str()));
 
     mWidget = mDropDown;
 //    mTextField->setWidth(50);
@@ -601,7 +606,7 @@ void SetupItemDropDown::fromWidget()
     if (!mDropDown)
         return;
 
-    mValue = mDropDown->getSelectedString();
+    mValue = toString(mDropDown->getSelected());
 }
 
 void SetupItemDropDown::toWidget()
@@ -609,7 +614,7 @@ void SetupItemDropDown::toWidget()
     if (!mDropDown)
         return;
 
-    mDropDown->setSelectedString(mValue);
+    mDropDown->setSelected(atoi(mValue.c_str()));
 }
 
 
