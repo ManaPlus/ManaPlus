@@ -503,9 +503,10 @@ void CharCreateDialog::setFixedGender(const bool fixed, const Gender gender)
 
 void CharCreateDialog::updateHair()
 {
-    mHairStyle %= Being::getNumOfHairstyles();
-    if (mHairStyle < 0)
-        mHairStyle += Being::getNumOfHairstyles();
+    if (mHairStyle <= 0)
+        mHairStyle = Being::getNumOfHairstyles() - 1;
+    else
+        mHairStyle %= Being::getNumOfHairstyles();
     if (mHairStyle < static_cast<signed>(minHairStyle)
         || mHairStyle > static_cast<signed>(maxHairStyle))
     {
