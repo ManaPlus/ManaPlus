@@ -1045,4 +1045,24 @@ impHandler0(safeVideoMode)
     return true;
 }
 
+impHandler0(stopSit)
+{
+    if (player_node)
+    {
+        player_node->stopAttack();
+        // not consume if target attack key pressed
+        if (inputManager.isActionActive(Input::KEY_TARGET_ATTACK))
+            return false;
+        if (!player_node->getTarget())
+        {
+            if (inputManager.isActionActive(Input::KEY_EMOTE))
+                player_node->updateSit();
+            else
+                player_node->toggleSit();
+        }
+        return true;
+    }
+    return false;
+}
+
 }

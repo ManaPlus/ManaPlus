@@ -337,6 +337,7 @@ namespace Input
         KEY_GUI_INSERT,
         KEY_GUI_MOD,
         KEY_SAFE_VIDEO,
+        KEY_STOP_SIT,
         KEY_TOTAL
     };
 }

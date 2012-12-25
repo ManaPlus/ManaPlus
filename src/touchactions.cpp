@@ -21,10 +21,7 @@
 #include "touchactions.h"
 
 #include "actionmanager.h"
-#include "being.h"
 #include "game.h"
-#include "keydata.h"
-#include "localplayer.h"
 #include "logger.h"
 #include "mouseinput.h"
 #include "touchmanager.h"
@@ -154,10 +151,5 @@ impHandler0(attackClick)
 
 impHandler0(cancelClick)
 {
-    if (player_node)
-    {
-        ActionManager::stopAttack(tempEvent);
-        if (!player_node->getTarget())
-            ActionManager::sit(tempEvent);
-    }
+    ActionManager::stopSit(tempEvent);
 }

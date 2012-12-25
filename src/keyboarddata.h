@@ -1922,6 +1922,13 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         Input::GRP_DEFAULT,
         &ActionManager::safeVideoMode,
         Input::KEY_NO_VALUE, 50,
+        COND_DEFAULT},
+    {"keyStopSit",
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        Input::GRP_DEFAULT,
+        &ActionManager::stopSit,
+        Input::KEY_NO_VALUE, 50,
         COND_DEFAULT}
 };
 

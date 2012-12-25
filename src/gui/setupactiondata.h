@@ -160,6 +160,11 @@ static SetupActionData setupActionData0[] =
         "",
     },
     {
+        N_("Stop or sit"),
+        Input::KEY_STOP_SIT,
+        "",
+    },
+    {
         N_("Return to safe video mode"),
         Input::KEY_SAFE_VIDEO,
         "",
