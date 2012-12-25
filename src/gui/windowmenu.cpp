@@ -225,7 +225,12 @@ void WindowMenu::action(const gcn::ActionEvent &event)
     if (window)
     {
         if (window == helpWindow)
-            helpWindow->loadHelp("index");
+        {
+            if (window->isVisible())
+                window->setVisible(false);
+            else
+                helpWindow->loadHelp("index");
+        }
         else
             window->setVisible(!window->isVisible());
         if (window->isVisible())
