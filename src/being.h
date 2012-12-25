@@ -398,6 +398,12 @@ class Being : public ActorSprite, public ConfigListener
         { return mNumberOfHairstyles; }
 
         /**
+         * Get the number of races implemented
+         */
+        static int getNumOfRaces() A_WARN_UNUSED
+        { return mNumberOfRaces; }
+
+        /**
          * Get the number of layers used to draw the being
          */
         int getNumberOfLayers() const A_WARN_UNUSED
@@ -900,6 +906,7 @@ class Being : public ActorSprite, public ConfigListener
         const ItemInfo *mEquippedWeapon;
 
         static int mNumberOfHairstyles; /** Number of hair styles in use */
+        static int mNumberOfRaces; /** Number of races in use */
 
         Path mPath;
         std::string mSpeech;

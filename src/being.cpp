@@ -171,6 +171,7 @@ class BeingCacheEntry final
 
 
 int Being::mNumberOfHairstyles = 1;
+int Being::mNumberOfRaces = 1;
 
 int Being::mUpdateConfigTime = 0;
 unsigned int Being::mConfLineLim = 0;
@@ -1867,14 +1868,20 @@ void Being::load()
     // Hairstyles are encoded as negative numbers. Count how far negative
     // we can go.
     int hairstyles = 1;
-
     while (ItemDB::get(-hairstyles).getSprite(GENDER_MALE, 0) !=
            paths.getStringValue("spriteErrorFile"))
     {
         hairstyles ++;
     }
-
     mNumberOfHairstyles = hairstyles;
+
+    int races = 100;
+    while (ItemDB::get(-races).getSprite(GENDER_MALE, 0) !=
+           paths.getStringValue("spriteErrorFile"))
+    {
+        races ++;
+    }
+    mNumberOfRaces = races - 100;
 }
 
 void Being::updateName()

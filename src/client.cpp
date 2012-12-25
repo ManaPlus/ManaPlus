@@ -1350,7 +1350,7 @@ int Client::gameExec()
                     ColorDB::load();
                     MapDB::load();
                     ItemDB::load();
-                    Being::load(); // Hairstyles
+                    Being::load();
                     MonsterDB::load();
 #ifdef MANASERV_SUPPORT
                     SpecialDB::load();

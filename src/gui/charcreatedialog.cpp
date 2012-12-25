@@ -538,17 +538,10 @@ void CharCreateDialog::updateRace()
 {
     int id;
     if (mRace < 0)
-    {
+        mRace = Being::getNumOfRaces() - 1;
+    else if (mRace >= Being::getNumOfRaces())
         mRace = 0;
-        id = -100;
-    }
-    else
-    {
-        id = -100 - mRace;
-        while (id < -100 && !ItemDB::exists(id))
-            id ++;
-        mRace = -100 - id;
-    }
+    id = -100 - mRace;
 
     mPlayer->setSubtype(static_cast<uint16_t>(mRace));
     const ItemInfo &item = ItemDB::get(id);
