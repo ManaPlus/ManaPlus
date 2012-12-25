@@ -3245,6 +3245,7 @@
 				2B1713121686A98C002E9493 /* CopyFiles */,
 				2B1713181686A98C002E9493 /* CopyFiles */,
 				2B17132B1686A98C002E9493 /* ShellScript */,
+				2BDB77BB16870F00006DDD51 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -3265,6 +3266,7 @@
 				2BDF4D77166D7EA00054E77F /* CopyFiles */,
 				2BDF4D86166D88400054E77F /* CopyFiles */,
 				2BDF4DA7166D96290054E77F /* ShellScript */,
+				2BDB77BC16870F36006DDD51 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -3372,6 +3374,32 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "install_name_tool -change /usr/lib/libcurl.4.dylib @executable_path/../SharedSupport/libcurl.4.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libSDL_gfx.14.dylib @executable_path/../SharedSupport/libSDL_gfx.14.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libpng15.15.dylib @executable_path/../SharedSupport/libpng15.15.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libphysfs.1.dylib @executable_path/../SharedSupport/libphysfs.2.0.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\n#install_name_tool -change /opt/local/lib/libintl.8.dylib @executable_path/../SharedSupport/libintl.8.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libiconv.2.dylib @executable_path/../SharedSupport/libiconv.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libfreetype.6.dylib @executable_path/../SharedSupport/libfreetype.6.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libxml2.2.dylib @executable_path/../SharedSupport/libxml2.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libz.1.dylib @executable_path/../SharedSupport/libz.1.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\n";
+		};
+		2BDB77BB16870F00006DDD51 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Update the CFBundleShortVersionString in the generated Info.plist using the most recent Git tag.\n# Idea taken from http://tinyurl.com/3usjj9d by Joachim Bondo.\n\n# Get the current release description from Git.\nGIT_RELEASE_VERSION=`git describe --tags --abbrev=0`\n\n# Set the CFBundleShortVersionString in the generated Info.plist (stripping off the leading \"v\").\ndefaults write \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH%.*}\" \"CFBundleShortVersionString\" \"${GIT_RELEASE_VERSION#*v}\"";
+		};
+		2BDB77BC16870F36006DDD51 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Update the CFBundleShortVersionString in the generated Info.plist using the most recent Git tag.\n# Idea taken from http://tinyurl.com/3usjj9d by Joachim Bondo.\n\n# Get the current release description from Git.\nGIT_RELEASE_VERSION=`git describe --tags --abbrev=0`\n\n# Set the CFBundleShortVersionString in the generated Info.plist (stripping off the leading \"v\").\ndefaults write \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH%.*}\" \"CFBundleShortVersionString\" \"${GIT_RELEASE_VERSION#*v}\"";
 		};
 		2BDF45DE166D5AEC0054E77F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

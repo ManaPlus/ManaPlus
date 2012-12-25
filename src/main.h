@@ -57,7 +57,7 @@
 #endif
 
 #if defined __APPLE__
-#define PACKAGE_OS "Mac OSX"
+#define PACKAGE_OS "Mac OS X"
 #elif defined(__ANDROID__) || defined(ANDROID)
 #define PACKAGE_OS "Android"
 #elif defined __FreeBSD__ || defined __DragonFly__
