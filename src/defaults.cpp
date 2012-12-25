@@ -293,6 +293,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("highlightWords", "");
     AddDEF("selfMouseHeal", true);
     AddDEF("serverslistupdate", "");
+    AddDEF("fadeoutmusic", false);
     return configData;
 }
 

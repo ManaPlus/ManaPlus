@@ -56,6 +56,7 @@ SoundManager::SoundManager():
     mPlayBattle(false),
     mPlayGui(false),
     mPlayMusic(false),
+    mFadeoutMusic(true),
     mGuiChannel(-1)
 {
     // This set up our callback function used to
@@ -88,6 +89,8 @@ void SoundManager::optionChanged(const std::string &value)
         setSfxVolume(config.getIntValue("sfxVolume"));
     else if (value == "musicVolume")
         setMusicVolume(config.getIntValue("musicVolume"));
+    else if (value == "fadeoutmusic")
+        mFadeoutMusic = config.getIntValue("fadeoutmusic");
 }
 
 void SoundManager::init()
@@ -101,11 +104,16 @@ void SoundManager::init()
     mPlayBattle = config.getBoolValue("playBattleSound");
     mPlayGui = config.getBoolValue("playGuiSound");
     mPlayMusic = config.getBoolValue("playMusic");
+    mFadeoutMusic = config.getBoolValue("fadeoutmusic");
+    mMusicVolume = config.getIntValue("musicVolume");
+    mSfxVolume = config.getIntValue("sfxVolume");
+
     config.addListener("playBattleSound", this);
     config.addListener("playGuiSound", this);
     config.addListener("playMusic", this);
     config.addListener("sfxVolume", this);
     config.addListener("musicVolume", this);
+    config.addListener("fadeoutmusic", this);
 
     if (SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
     {
@@ -244,6 +252,7 @@ void SoundManager::stopMusic()
     haltMusic();
 }
 
+/*
 void SoundManager::fadeInMusic(const std::string &fileName, const int ms)
 {
     mCurrentMusicFile = fileName;
@@ -260,6 +269,7 @@ void SoundManager::fadeInMusic(const std::string &fileName, const int ms)
             mMusic->play(-1, ms);
     }
 }
+*/
 
 void SoundManager::fadeOutMusic(const int ms)
 {
@@ -270,7 +280,7 @@ void SoundManager::fadeOutMusic(const int ms)
 
     logger->log("SoundManager::fadeOutMusic() Fading-out (%i ms)", ms);
 
-    if (mMusic)
+    if (mMusic && mFadeoutMusic)
     {
         Mix_FadeOutMusic(ms);
         // Note: The fadeOutCallBack handler will take care about freeing
@@ -279,6 +289,8 @@ void SoundManager::fadeOutMusic(const int ms)
     else
     {
         sFadingOutEnded = true;
+        if (!mFadeoutMusic)
+            haltMusic();
     }
 }
 

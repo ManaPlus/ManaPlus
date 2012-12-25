@@ -87,7 +87,7 @@ class SoundManager final : public ConfigListener
          * @param fileName The name of the music file.
          * @param ms       Duration of fade-in effect (ms)
          */
-        void fadeInMusic(const std::string &fileName, const int ms = 1000);
+//        void fadeInMusic(const std::string &fileName, const int ms = 1000);
 
         /**
          * Fades out currently running background music track.
@@ -170,6 +170,7 @@ class SoundManager final : public ConfigListener
         bool mPlayBattle;
         bool mPlayGui;
         bool mPlayMusic;
+        bool mFadeoutMusic;
         int mGuiChannel;
 };
 
