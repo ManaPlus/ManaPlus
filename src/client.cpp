@@ -359,9 +359,17 @@ void Client::gameInit()
 #endif
     char *locale = setlocale(LC_MESSAGES, lang.c_str());
     if (locale)
+    {
         logger->log("locale: %s", locale);
+    }
     else
-        logger->log("locale empty");
+    {
+        locale = setlocale(LC_MESSAGES, (lang + ".utf8").c_str());
+        if (locale)
+            logger->log("locale: %s", locale);
+        else
+            logger->log("locale empty");
+    }
     bind_textdomain_codeset("manaplus", "UTF-8");
     textdomain("manaplus");
 #endif
