@@ -183,10 +183,10 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     if (serverVersion >= 2)
     {
-        mPrevRaceButton->setPosition(leftX, 103);
-        mNextRaceButton->setPosition(rightX, 103);
-        mRaceLabel->setPosition(labelX, 108);
-        mRaceNameLabel->setPosition(nameX, 108);
+        mPrevRaceButton->setPosition(leftX, 98);
+        mNextRaceButton->setPosition(rightX, 98);
+        mRaceLabel->setPosition(labelX, 103);
+        mRaceNameLabel->setPosition(nameX, 103);
     }
 
     mAttributesLeft->setPosition(15, 280);
