@@ -2,9 +2,14 @@
 Francesco Miglietta (Hal9000)
 
 
+Version 1.0.2 (WIP)
+
+	- New rounded border for Chat window, Map window and popups
+
+
 Version 1.0.1 (22.12.2012)
 
-	- Fix bug in Shop window
+	- Fix bug in Login, Shop, World and Itemcontainer windows
 	- Add transparency to onscreen buttons
 	- Improved Skill window layout
 	- Fixed bug with item selection in Inventory window
@@ -14,7 +19,7 @@ Version 1.0.1 (22.12.2012)
 Version 1.0.0 (11.12.2012)
 
 	JEWELRY THEME first release.
-	Changes are described comparing JT to standard The Mana World client themes.
+	Changes are described comparing Jewelry Theme to standard The Mana World client themes.
 
 	- New graphics for all GUI elements
 	- Title bars on most windows
