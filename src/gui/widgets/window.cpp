@@ -611,6 +611,7 @@ void Window::mousePressed(gcn::MouseEvent &event)
             setSticky(!isSticky());
             mouseResize = 0;
             mMoved = 0;
+            mRedraw = true;
             return;
         }
 
