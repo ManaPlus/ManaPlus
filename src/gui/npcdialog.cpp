@@ -235,7 +235,7 @@ void NpcDialog::addText(const std::string &text, const bool save)
     if (save || mLogInteraction)
     {
         if (mText.size() > 5000)
-            mText = "";
+            mText.clear();
 
         mNewText += text;
         mTextBox->addRow(text);

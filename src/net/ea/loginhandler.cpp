@@ -171,7 +171,7 @@ void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 
     if (!checkPath(mUpdateHost))
     {
-        mUpdateHost = "";
+        mUpdateHost.clear();
         logger->log1("Warning: incorrect update server name");
     }
     loginData.updateHost = mUpdateHost;
@@ -233,7 +233,7 @@ void LoginHandler::processLoginError(Net::MessageIn &msg)
             break;
         case 1:
             errorMessage = _("Wrong password.");
-            LoginDialog::savedPassword = "";
+            LoginDialog::savedPassword.clear();
             break;
         case 2:
             errorMessage = _("Account expired.");

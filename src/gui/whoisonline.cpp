@@ -365,7 +365,7 @@ void WhoIsOnline::loadWebList()
                 else
                 {
                     nick = lineStr;
-                    lineStr = "";
+                    lineStr.clear();
                 }
                 trim(nick);
 
@@ -736,7 +736,7 @@ void WhoIsOnline::optionChanged(const std::string &name)
 
 void OnlinePlayer::setText(std::string color)
 {
-    mText = "";
+    mText.clear();
 
     if (mStatus != 255 && actorSpriteManager)
     {

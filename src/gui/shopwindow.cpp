@@ -200,12 +200,12 @@ void ShopWindow::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == "no")
     {
-        mTradeNick = "";
+        mTradeNick.clear();
     }
     else if (event.getId() == "ignore")
     {
         player_relations.ignoreTrade(mTradeNick);
-        mTradeNick = "";
+        mTradeNick.clear();
     }
     else if (event.getId() == "delete buy" && mBuyShopItemList
              && mBuyShopItemList->getSelected() >= 0)
@@ -286,7 +286,7 @@ void ShopWindow::startTrade()
     }
     Net::getTradeHandler()->request(being);
     tradePartnerName = mTradeNick;
-    mTradeNick = "";
+    mTradeNick.clear();
 }
 
 void ShopWindow::valueChanged(const gcn::SelectionEvent &event A_UNUSED)

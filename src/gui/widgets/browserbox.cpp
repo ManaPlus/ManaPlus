@@ -695,7 +695,7 @@ std::string BrowserBox::getTextAtPos(const int x, const int y) const
 //    textX = x - textX;
     textY = y - textY;
 
-    std::string str = "";
+    std::string str;
 
     int lastY = 0;
 

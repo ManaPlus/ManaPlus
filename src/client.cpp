@@ -1029,7 +1029,7 @@ int Client::gameExec()
                 if (loginData.remember)
                     loginData.username = serverConfig.getValue("username", "");
                 else
-                    loginData.username = "";
+                    loginData.username.clear();
             }
             else
             {
@@ -1543,7 +1543,7 @@ int Client::gameExec()
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     loginData.password = loginData.newPassword;
-                    loginData.newPassword = "";
+                    loginData.newPassword.clear();
                     BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD_SUCCESS")
                     break;
 
@@ -1716,7 +1716,7 @@ void Client::action(const gcn::ActionEvent &event)
         return;
     }
     if (eventId == "Setup")
-        tab = "";
+        tab.clear();
     else if (eventId == "Video")
         tab = "Video";
     else if (eventId == "Themes")
@@ -1965,7 +1965,7 @@ void Client::initConfiguration() const
     config.setValue("fpslimit", 60);
     std::string defaultUpdateHost = branding.getValue("defaultUpdateHost", "");
     if (!checkPath(defaultUpdateHost))
-        defaultUpdateHost = "";
+        defaultUpdateHost.clear();
     config.setValue("updatehost", defaultUpdateHost);
     config.setValue("customcursor", true);
     config.setValue("useScreenshotDirectorySuffix", true);
@@ -2163,7 +2163,7 @@ void Client::accountLogin(LoginData *const data) const
         Net::getLoginHandler()->loginAccount(data);
 
     // Clear the password, avoids auto login when returning to login
-    data->password = "";
+    data->password.clear();
 
     // TODO This is not the best place to save the config, but at least better
     // than the login gui window

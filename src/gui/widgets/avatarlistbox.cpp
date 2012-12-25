@@ -344,7 +344,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             {
                 std::string name;
                 if (model->getAvatarAt(selected)->getLevel() == 0)
-                    name = "";
+                    name.clear();
                 else
                     name = model->getAvatarAt(selected)->getName();
 
@@ -357,7 +357,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             {
                 std::string name;
                 if (model->getAvatarAt(selected)->getLevel() == 0)
-                    name = "";
+                    name.clear();
                 else
                     name = model->getAvatarAt(selected)->getName();
 

@@ -356,7 +356,7 @@ std::string SpellManager::autoComplete(std::string partName)
     std::vector<TextCommand*>::const_iterator i = mSpellsVector.begin();
     const std::vector<TextCommand*>::const_iterator
         i_end = mSpellsVector.end();
-    std::string newName = "";
+    std::string newName;
     const TextCommand *newCommand = nullptr;
 
     while (i != i_end)

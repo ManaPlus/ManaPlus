@@ -216,7 +216,7 @@ void ChatLogger::loadLast(std::string name, std::list<std::string> &list,
 
 void ChatLogger::clear()
 {
-    mLogDir = "";
-    mServerName = "";
-    mLogFileName = "";
+    mLogDir.clear();
+    mServerName.clear();
+    mLogFileName.clear();
 }

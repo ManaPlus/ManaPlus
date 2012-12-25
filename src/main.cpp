@@ -151,7 +151,7 @@ static void parseOptions(const int argc, char *const argv[],
                 if (checkPath(optarg))
                     options.updateHost = optarg;
                 else
-                    options.updateHost = "";
+                    options.updateHost.clear();
                 break;
             case 'c':
                 options.character = optarg;
@@ -193,7 +193,7 @@ static void parseOptions(const int argc, char *const argv[],
                 break;
             case 'T':
                 options.testMode = true;
-                options.test = "";
+                options.test.clear();
                 break;
             case 't':
                 options.testMode = true;

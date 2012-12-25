@@ -369,7 +369,7 @@ void LocalPlayer::setAction(const Action &action, const int attackType)
         {
             debugMsg(strprintf(_("You were killed by %s"),
                 mLastHitFrom.c_str()));
-            mLastHitFrom = "";
+            mLastHitFrom.clear();
         }
         setTarget(nullptr);
     }
@@ -3821,8 +3821,8 @@ void LocalPlayer::cancelFollow()
         debugMsg(_("Follow canceled"));
     if (!mPlayerImitated.empty())
         debugMsg(_("Imitation canceled"));
-    mPlayerFollowed = "";
-    mPlayerImitated = "";
+    mPlayerFollowed.clear();
+    mPlayerImitated.clear();
 }
 
 void LocalPlayer::imitateEmote(const Being *const being,
@@ -4179,7 +4179,7 @@ void LocalPlayer::checkNewName(Being *const being)
     {
         debugMsg(_("You see ") + mWaitFor);
         sound.playGuiSound(SOUND_INFO);
-        mWaitFor = "";
+        mWaitFor.clear();
     }
 }
 

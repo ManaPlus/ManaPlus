@@ -218,8 +218,8 @@ void OutfitWindow::save()
             serverConfig.setValue("OutfitUnequip" + toString(o),
                 mItemsUnequip[o]);
         }
-        outfitStr = "";
-        outfitColorsStr = "";
+        outfitStr.clear();
+        outfitColorsStr.clear();
     }
     serverConfig.setValue("OutfitAwayIndex", mAwayOutfit);
 }

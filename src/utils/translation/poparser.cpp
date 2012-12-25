@@ -64,8 +64,8 @@ PoDict *PoParser::load(const std::string &lang, const std::string &fileName,
     else
         openFile(fileName);
 
-    mMsgId = "";
-    mMsgStr = "";
+    mMsgId.clear();
+    mMsgStr.clear();
 
     // cycle by msgid+msgstr
     while (readLine())
@@ -98,8 +98,8 @@ PoDict *PoParser::load(const std::string &lang, const std::string &fileName,
             mDict->set(mMsgId, mMsgStr);
         }
 
-        mMsgId = "";
-        mMsgStr = "";
+        mMsgId.clear();
+        mMsgStr.clear();
     }
 
     return mDict;
@@ -135,7 +135,7 @@ bool PoParser::readMsgId()
         {
             // reading text from: "text"
             mMsgId += mLine.substr(1, mLine.size() - 2);
-            mLine = "";
+            mLine.clear();
             return true;
         }
         // stop reading in other case
@@ -151,7 +151,7 @@ bool PoParser::readMsgId()
             // reading text from: msgid "text"
             mMsgId += mLine.substr(msgId1.size(),
                 mLine.size() - 1 - msgId1.size());
-            mLine = "";
+            mLine.clear();
             return true;
         }
         // stop reading if we don't read msgid before
@@ -176,7 +176,7 @@ bool PoParser::readMsgStr()
         {
             // reading text from: "text"
             mMsgStr += mLine.substr(1, mLine.size() - 2);
-            mLine = "";
+            mLine.clear();
             return true;
         }
         // stop reading in other case
@@ -191,7 +191,7 @@ bool PoParser::readMsgStr()
             // reading text from: msgid "text"
             mMsgStr += mLine.substr(msgStr1.size(),
                 mLine.size() - 1 - msgStr1.size());
-            mLine = "";
+            mLine.clear();
             return true;
         }
     }

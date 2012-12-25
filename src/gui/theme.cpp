@@ -646,8 +646,8 @@ void Theme::prepareThemePath()
 {
     initDefaultThemePath();
 
-    mThemePath = "";
-    mThemeName = "";
+    mThemePath.clear();
+    mThemeName.clear();
 
     // Try theme from settings
     if (tryThemePath(config.getStringValue("theme")))

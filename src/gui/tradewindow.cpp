@@ -398,7 +398,7 @@ void TradeWindow::close()
 void TradeWindow::clear()
 {
     mAutoAddItem = nullptr;
-    mAutoAddToNick = "";
+    mAutoAddToNick.clear();
     mAutoMoney = 0;
     mAutoAddAmount = 0;
     mGotMoney = 0;

@@ -157,7 +157,7 @@ void Units::loadUnits()
 
             // Add one more level for saftey
             struct UnitLevel lev;
-            lev.symbol = "";
+            lev.symbol.clear();
             lev.count = INT_MAX;
             lev.round = 0;
 

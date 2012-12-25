@@ -307,7 +307,7 @@ impHandler(msg)
         else
         {
             recvnick = std::string(args);
-            msg = "";
+            msg.clear();
         }
     }
 
@@ -1164,7 +1164,7 @@ void replaceVars(std::string &str)
     if (str.find("<PEOPLE>") != std::string::npos)
     {
         StringVect names;
-        std::string newStr = "";
+        std::string newStr;
         actorSpriteManager->getPlayerNames(names, false);
         for (StringVectCIter it = names.begin(), it_end = names.end();
              it != it_end; ++ it)
@@ -1182,7 +1182,7 @@ void replaceVars(std::string &str)
     if (str.find("<PARTY>") != std::string::npos)
     {
         StringVect names;
-        std::string newStr = "";
+        std::string newStr;
         const Party *party = nullptr;
         if (player_node->isInParty() && (party = player_node->getParty()))
         {

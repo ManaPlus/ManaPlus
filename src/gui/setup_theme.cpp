@@ -312,7 +312,7 @@ void Setup_Theme::updateInfo()
     }
     else
     {
-        mThemeInfo = "";
+        mThemeInfo.clear();
     }
     replaceAll(mThemeInfo, "\\n", "\n");
     mInfoButton->setEnabled(!mThemeInfo.empty());
@@ -324,7 +324,7 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
     if (event.getId() == ACTION_THEME)
     {
         if (mThemeDropDown->getSelected() == 0)
-            mTheme = "";
+            mTheme.clear();
         else
             mTheme = mThemeDropDown->getSelectedString();
         updateInfo();
@@ -337,7 +337,7 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
     {
         const int id = mLangDropDown->getSelected();
         if (id < 0 || id >= langs_count)
-            mLang = "";
+            mLang.clear();
         else
             mLang = LANG_NAME[id].value;
     }

@@ -697,7 +697,7 @@ void Configuration::init(const std::string &filename, const bool useResManager)
     if (useResManager)
     {
         mConfigPath = "PhysFS://" + filename;
-        mDirectory = "";
+        mDirectory.clear();
     }
     else
     {

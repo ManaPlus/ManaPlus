@@ -34,7 +34,7 @@
 
 #include "debug.h"
 
-std::string fileName = "";
+std::string fileName;
 extern char *selfName;
 
 TestMain::TestMain() :

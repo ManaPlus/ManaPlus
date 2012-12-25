@@ -117,7 +117,7 @@ std::vector<updateFile> loadTxtFile(const std::string &fileName)
             thisFile.hash = hash;
             thisFile.type = "data";
             thisFile.required = true;
-            thisFile.desc = "";
+            thisFile.desc.clear();
 
             if (!thisFile.name.empty() && checkPath(thisFile.name))
                 files.push_back(thisFile);

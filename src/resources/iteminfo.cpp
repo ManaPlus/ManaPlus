@@ -155,7 +155,7 @@ void ItemInfo::setColorsList(std::string name)
     if (name.empty())
     {
         mColors = nullptr;
-        mColorList = "";
+        mColorList.clear();
     }
     else
     {

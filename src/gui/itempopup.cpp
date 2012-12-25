@@ -260,6 +260,6 @@ void ItemPopup::mouseMoved(gcn::MouseEvent &event)
 
     // When the mouse moved on top of the popup, hide it
     setVisible(false);
-    mLastName = "";
+    mLastName.clear();
     mLastColor = 1;
 }

@@ -663,7 +663,7 @@ void PopupMenu::showChangePos(const int x, const int y)
         mFloorItemId = 0;
         mItem = nullptr;
         mMapItem = nullptr;
-        mNick = "";
+        mNick.clear();
         mType = static_cast<int>(Being::UNKNOWN);
         mX = 0;
         mY = 0;
@@ -1611,7 +1611,7 @@ void PopupMenu::handleLink(const std::string &link,
     mItemId = 0;
     mItemColor = 1;
     mMapItem = nullptr;
-    mNick = "";
+    mNick.clear();
     mType = static_cast<int>(Being::UNKNOWN);
     mX = 0;
     mY = 0;
@@ -1629,7 +1629,7 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
     mWindow = parent;
     mX = x;
     mY = y;
-    mNick = "";
+    mNick.clear();
     mBrowserBox->clearRows();
 
     const int cnt = item->getQuantity();
@@ -1760,7 +1760,7 @@ void PopupMenu::showItemPopup(const int x, const int y, Item *const item)
         mItemId = 0;
         mItemColor = 1;
     }
-    mNick = "";
+    mNick.clear();
     mBrowserBox->clearRows();
 
     if (item)
@@ -1813,7 +1813,7 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
     mItem = item;
     mX = x;
     mY = y;
-    mNick = "";
+    mNick.clear();
     mBrowserBox->clearRows();
 
     if (item)

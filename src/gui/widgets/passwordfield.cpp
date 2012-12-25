@@ -39,7 +39,7 @@ void PasswordField::draw(gcn::Graphics *graphics)
     if (mPasswordChar)
         mText.assign(mText.length(), mPasswordChar);
     else
-        mText = "";
+        mText.clear();
     TextField::draw(graphics);
     mText = original;
     BLOCK_END("PasswordField::draw")

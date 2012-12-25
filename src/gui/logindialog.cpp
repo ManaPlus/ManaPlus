@@ -268,8 +268,8 @@ void LoginDialog::action(const gcn::ActionEvent &event)
             }
             else
             {
-                mLoginData->updateHost = "";
-                *mUpdateHost = "";
+                mLoginData->updateHost.clear();
+                (*mUpdateHost).clear();
             }
         }
         else if (mUpdateHostDropDown)
@@ -283,8 +283,8 @@ void LoginDialog::action(const gcn::ActionEvent &event)
             }
             else
             {
-                mLoginData->updateHost = "";
-                *mUpdateHost = "";
+                mLoginData->updateHost.clear();
+                (*mUpdateHost).clear();
             }
         }
 

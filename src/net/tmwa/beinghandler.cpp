@@ -287,7 +287,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
             id2 = msg.readInt16();
         else
             id2 = 1;
-        color = "";
+        color.clear();
     }
 
     if (dstBeing->getType() == Being::PLAYER)

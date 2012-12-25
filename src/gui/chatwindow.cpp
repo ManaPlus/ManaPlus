@@ -679,7 +679,7 @@ void ChatWindow::doPresent() const
         return;
 
     const ActorSprites &actors = actorSpriteManager->getAll();
-    std::string response = "";
+    std::string response;
     int playercount = 0;
 
     for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();

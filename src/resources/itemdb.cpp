@@ -226,7 +226,7 @@ void ItemDB::load()
             if (id <= -1 && id > -100)
                 colors = "hair";
             else
-                colors = "";
+                colors.clear();
         }
 
         std::string tags[3];

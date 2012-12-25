@@ -407,7 +407,7 @@ void SkillDialog::loadSkills()
             SkillInfo *const skill = new SkillInfo;
             skill->id = 1;
             skill->data->name = _("basic");
-            skill->data->description = "";
+            skill->data->description.clear();
             skill->data->dispName = _("basic, 1");
             skill->data->shortName = "bas";
             skill->data->setIcon("");
@@ -544,7 +544,7 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
         skill->id = static_cast<short unsigned>(id);
         skill->data->name = "Unknown skill Id: " + toString(id);
         skill->data->dispName = "Unknown skill Id: " + toString(id);
-        skill->data->description = "";
+        skill->data->description.clear();
         skill->data->setIcon("");
         skill->modifiable = modifiable;
         skill->visible = false;

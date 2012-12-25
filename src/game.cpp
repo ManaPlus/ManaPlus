@@ -634,7 +634,7 @@ void Game::slowLogic()
         Client::setFramerate(config.getIntValue("fpslimit"));
         mNextAdjustTime = cur_time + adjustDelay;
         if (Client::getState() != STATE_ERROR)
-            errorMessage = "";
+            errorMessage.clear();
     }
     else
     {

@@ -373,7 +373,7 @@ void ServerDialog::connectToSelectedServer()
     if (!LoginDialog::savedPasswordKey.empty())
     {
         if (mServerInfo->hostname != LoginDialog::savedPasswordKey)
-            LoginDialog::savedPassword = "";
+            LoginDialog::savedPassword.clear();
     }
 
     config.setValue("usePersistentIP",

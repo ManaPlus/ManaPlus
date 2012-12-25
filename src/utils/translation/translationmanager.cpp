@@ -60,7 +60,7 @@ PoDict *TranslationManager::loadLang(LangVect lang,
                                      const std::string &subName,
                                      PoDict *const dict)
 {
-    std::string name = "";
+    std::string name;
     PoParser parser;
 
     for (LangIter it = lang.begin(), it_end = lang.end(); it != it_end; ++ it)
