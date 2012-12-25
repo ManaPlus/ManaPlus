@@ -362,6 +362,7 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
     if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
+        int cnt = 1;
         for (Path::const_iterator i = path.begin(), i_end = path.end();
              i != i_end; ++i)
         {
@@ -371,10 +372,10 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
             graphics->fillRectangle(gcn::Rectangle(squareX, squareY, 8, 8));
             if (mMap)
             {
-                graphics->drawText(
-                    toString(mMap->getMetaTile(i->x, i->y)->Gcost),
+                graphics->drawText(toString(cnt),
                     squareX + 4, squareY + 12, gcn::Graphics::CENTER);
             }
+            cnt ++;
         }
     }
 #ifdef MANASERV_SUPPORT
