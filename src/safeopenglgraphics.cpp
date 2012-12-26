@@ -482,12 +482,6 @@ void SafeOpenGLGraphics::popClipArea()
         clipArea.width, clipArea.height);
 }
 
-void SafeOpenGLGraphics::setColor(const gcn::Color& color)
-{
-    mColor = color;
-    mColorAlpha = (color.a != 255);
-}
-
 void SafeOpenGLGraphics::drawPoint(int x, int y)
 {
     setTexturingAndBlending(false);

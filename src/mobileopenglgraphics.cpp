@@ -978,12 +978,6 @@ void MobileOpenGLGraphics::popClipArea()
         clipArea.width, clipArea.height);
 }
 
-void MobileOpenGLGraphics::setColor(const gcn::Color& color)
-{
-    mColor = color;
-    mColorAlpha = (color.a != 255);
-}
-
 #ifdef ANDROID
 void MobileOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED)
 #else

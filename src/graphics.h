@@ -327,7 +327,11 @@ class Graphics : public gcn::SDLGraphics
         virtual void initArrays()
         { }
 
-        void setColor(const gcn::Color &color);
+        void setColor(const gcn::Color &color)
+        {
+            mColor = color;
+            mAlpha = (color.a != 255);
+        }
 
 #ifdef DEBUG_DRAW_CALLS
         virtual unsigned int getDrawCalls() const

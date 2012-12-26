@@ -125,7 +125,11 @@ class NormalOpenGLGraphics final : public Graphics
 
         void popClipArea();
 
-        void setColor(const gcn::Color &color);
+        void setColor(const gcn::Color &color)
+        {
+            mColor = color;
+            mColorAlpha = (color.a != 255);
+        }
 
         void drawPoint(int x, int y);
 

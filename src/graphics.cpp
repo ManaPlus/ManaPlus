@@ -1206,9 +1206,3 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
         SDL_FillRect(mTarget, &rect, color);
     }
 }
-
-void Graphics::setColor(const gcn::Color &color)
-{
-    mColor = color;
-    mAlpha = (color.a != 255);
-}

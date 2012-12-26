@@ -1175,12 +1175,6 @@ void NormalOpenGLGraphics::popClipArea()
         clipArea.width, clipArea.height);
 }
 
-void NormalOpenGLGraphics::setColor(const gcn::Color& color)
-{
-    mColor = color;
-    mColorAlpha = (color.a != 255);
-}
-
 void NormalOpenGLGraphics::drawPoint(int x, int y)
 {
     setTexturingAndBlending(false);
