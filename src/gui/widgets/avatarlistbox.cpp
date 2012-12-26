@@ -105,13 +105,11 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
     Graphics *const graphics = static_cast<Graphics *const>(gcnGraphics);
 
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
-//    graphics->setColor(mHighlightColor);
-    graphics->setFont(getFont());
+    gcn::Font *const font = getFont();
+    graphics->setFont(font);
 
     const int fontHeight = getFont()->getHeight();
-
     const gcn::Widget *const parent = mParent;
-
     const std::string name = player_node->getName();
 
     // Draw the list elements
@@ -271,9 +269,9 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
         // Draw Name
         if (a->getType() == MapItem::SEPARATOR)
-            graphics->drawText(text, mPadding, y + mPadding);
+            font->drawString(graphics, text, mPadding, y + mPadding);
         else
-            graphics->drawText(text, 15 + mPadding, y + mPadding);
+            font->drawString(graphics, text, 15 + mPadding, y + mPadding);
 
         if (a->getDisplayBold())
             graphics->setFont(getFont());

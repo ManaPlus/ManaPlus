@@ -92,7 +92,8 @@ void ListBox::draw(gcn::Graphics *graphics)
 
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
     graphics->setColor(mHighlightColor);
-    graphics->setFont(getFont());
+    gcn::Font *const font = getFont();
+    graphics->setFont(font);
 
     const int height = getRowHeight();
 
@@ -107,7 +108,7 @@ void ListBox::draw(gcn::Graphics *graphics)
     if (sel >= 0)
     {
         graphics->setColor(mForegroundSelectedColor);
-        graphics->drawText(mListModel->getElementAt(sel),
+        font->drawString(graphics, mListModel->getElementAt(sel),
             mPadding, sel * height + mPadding);
     }
     // Draw the list elements
@@ -117,7 +118,7 @@ void ListBox::draw(gcn::Graphics *graphics)
     {
         if (i != sel)
         {
-            graphics->drawText(mListModel->getElementAt(i),
+            font->drawString(graphics, mListModel->getElementAt(i),
                 mPadding, y + mPadding);
         }
     }

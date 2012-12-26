@@ -95,10 +95,9 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         mAlpha = Client::getGuiAlpha();
 
     const int alpha = static_cast<int>(mAlpha * 255.0f);
-
     Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
-
-    graphics->setFont(getFont());
+    gcn::Font *const font = getFont();
+    graphics->setFont(font);
 
     // Draw the list elements
     for (int i = 0, y = 0;
@@ -159,7 +158,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
             graphics->setColor(mForegroundSelectedColor);
         else
             graphics->setColor(mForegroundColor);
-        graphics->drawText(mListModel->getElementAt(i),
+        font->drawString(graphics, mListModel->getElementAt(i),
             ITEM_ICON_SIZE + mPadding,
             y + (ITEM_ICON_SIZE - getFont()->getHeight()) / 2 + mPadding);
     }
