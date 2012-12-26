@@ -189,6 +189,12 @@ public:
                 height));
         }
 
+        gcn::Font *const font1 = boldFont;
+        gcn::Font *const font2 = getFont();
+        const int fontHeight = font1->getHeight();
+        const int pad1 = fontHeight + mPadding;
+        const int pad2 = height / 4 + mPadding;
+        const int width = getWidth();
         // Draw the list elements
         for (int i = 0, y = 0; i < model->getNumberOfElements();
              ++i, y += height)
@@ -205,28 +211,24 @@ public:
 
             if (!info.name.empty())
             {
-                graphics->setFont(boldFont);
-                x += boldFont->getWidth(info.name) + 15;
-                graphics->drawText(info.name, mPadding, y + mPadding);
-                top = y + boldFont->getHeight() + mPadding;
+                x += font1->getWidth(info.name) + 15;
+                font1->drawString(graphics, info.name, mPadding, y + mPadding);
+                top = y + pad1;
             }
             else
             {
-                top = y + height / 4 + mPadding;
+                top = y + pad2;
             }
 
-            graphics->setFont(getFont());
-
             if (!info.description.empty())
-                graphics->drawText(info.description, x, y + mPadding);
-            graphics->drawText(model->getElementAt(i), mPadding, top);
+                font2->drawString(graphics, info.description, x, y + mPadding);
+            font2->drawString(graphics, model->getElementAt(i), mPadding, top);
 
             if (info.version.first > 0)
             {
                 graphics->setColor(mNotSupportedColor);
-
-                graphics->drawText(info.version.second,
-                    getWidth() - info.version.first - mPadding, top);
+                font2->drawString(graphics, info.version.second,
+                    width - info.version.first - mPadding, top);
             }
         }
     }
