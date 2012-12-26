@@ -25,7 +25,6 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphicsvertexes.h"
-#include "textrenderer.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
@@ -53,12 +52,14 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     mVertexes(new ImageCollection),
     mRedraw(true),
     mPadding(2),
-    mFillPadding(3)
+    mFillPadding(3),
+    mOutlineColor(getThemeColor(Theme::OUTLINE))
 {
     // The progress value is directly set at load time:
     if (mProgress > 1.0f || mProgress < 0.0f)
         mProgress = 1.0f;
 
+    mForegroundColor = getThemeColor(Theme::PROGRESS_BAR);
     mColor = Theme::getProgressColor(color >= 0 ? color : 0, mProgress);
     mColorToGo = mColor;
     addWidgetListener(this);
@@ -182,9 +183,6 @@ void ProgressBar::render(Graphics *graphics)
     if (!mSkin)
         return;
 
-    gcn::Font *const oldFont = graphics->getFont();
-    const gcn::Color oldColor = graphics->getColor();
-
     if (openGLMode != 2)
     {
         if (mRedraw || graphics->getRedraw())
@@ -222,17 +220,19 @@ void ProgressBar::render(Graphics *graphics)
     // The label
     if (!mText.empty())
     {
+        const gcn::Color oldColor = graphics->getColor();
+
+        gcn::Font *const font = gui->getFont();
         const int textX = mDimension.width / 2;
-        const int textY = (mDimension.height - boldFont->getHeight()) / 2;
+        const int textY = (mDimension.height - font->getHeight()) / 2;
 
-        TextRenderer::renderText(graphics, mText, textX, textY,
-                                 gcn::Graphics::CENTER,
-                                 getThemeColor(Theme::PROGRESS_BAR),
-                                 gui->getFont(), true, false);
+        graphics->setColor(mForegroundColor);
+        graphics->setColor2(mOutlineColor);
+        font->drawString(graphics, mText, textX
+            - font->getWidth(mText) / 2, textY);
+
+        graphics->setColor(oldColor);
     }
-
-    graphics->setFont(oldFont);
-    graphics->setColor(oldColor);
 }
 
 void ProgressBar::widgetResized(const gcn::Event &event A_UNUSED)

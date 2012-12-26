@@ -153,6 +153,7 @@ class ProgressBar final : public gcn::Widget,
         bool mRedraw;
         unsigned int mPadding;
         unsigned int mFillPadding;
+        gcn::Color mOutlineColor;
 
         static int mInstances;
         static float mAlpha;
