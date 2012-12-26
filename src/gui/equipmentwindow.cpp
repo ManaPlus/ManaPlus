@@ -151,7 +151,8 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
     Graphics *const g = static_cast<Graphics*>(graphics);
 
     int i = 0;
-    const int fontHeight = getFont()->getHeight();
+    gcn::Font *const font = getFont();
+    const int fontHeight = font->getHeight();
 
     if (openGLMode != 2)
     {
@@ -220,9 +221,10 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
                 if (i == EQUIP_PROJECTILE_SLOT)
                 {
                     g->setColor(mLabelsColor);
-                    graphics->drawText(toString(item->getQuantity()),
-                        box->x + (mBoxSize / 2), box->y - fontHeight,
-                        gcn::Graphics::CENTER);
+                    const std::string str = toString(item->getQuantity());
+                    font->drawString(g, str,
+                        box->x + (mBoxSize - font->getWidth(str)) / 2,
+                        box->y - fontHeight);
                 }
             }
         }
