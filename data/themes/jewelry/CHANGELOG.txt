@@ -6,6 +6,7 @@ Version 1.0.2 (WIP)
 
 	- New resize grip graphic
 	- Fix position of resize grip
+	- Fix bug with Status window lock button graphic
 	- New rounded border graphic for all windows
 
 
