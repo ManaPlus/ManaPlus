@@ -572,11 +572,8 @@ namespace gcn
         }
     }
 
-    void SDLGraphics::setColor(const Color& color)
+    void SDLGraphics::setColor(const Color& color A_UNUSED)
     {
-        mColor = color;
-
-        mAlpha = color.a != 255;
     }
 
     const Color& SDLGraphics::getColor() const
