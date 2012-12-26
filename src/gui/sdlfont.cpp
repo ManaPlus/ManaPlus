@@ -42,14 +42,16 @@ const unsigned int CACHE_SIZE_SMALL1 = 2;
 const unsigned int CACHE_SIZE_SMALL2 = 50;
 const unsigned int CACHE_SIZE_SMALL3 = 170;
 const unsigned int CLEAN_TIME = 5;
+const int OUTLINE_SIZE = 1;
 
 char *strBuf;
 
 class SDLTextChunk final
 {
     public:
-        SDLTextChunk(const std::string &text0, const gcn::Color &color0) :
-            img(nullptr), text(text0), color(color0)
+        SDLTextChunk(const std::string &text0, const gcn::Color &color0,
+                     const gcn::Color &color1) :
+            img(nullptr), text(text0), color(color0), color2(color1)
         {
         }
 
@@ -61,10 +63,12 @@ class SDLTextChunk final
 
         bool operator==(const SDLTextChunk &chunk) const
         {
-            return (chunk.text == text && chunk.color == color);
+            return (chunk.text == text && chunk.color == color
+                    && chunk.color2 == color2);
         }
 
-        void generate(TTF_Font *const font, const float alpha)
+        void generate(TTF_Font *const font, TTF_Font *const font2,
+                      const float alpha)
         {
             BLOCK_START("SDLTextChunk::generate")
             SDL_Color sdlCol;
@@ -74,9 +78,8 @@ class SDLTextChunk final
 
             getSafeUtf8String(text, strBuf);
 
-//            SDL_Surface *surface = TTF_RenderUTF8_Solid(
-            SDL_Surface *const surface = TTF_RenderUTF8_Blended(
-                    font, strBuf, sdlCol);
+            SDL_Surface *surface = TTF_RenderUTF8_Blended(
+                font, strBuf, sdlCol);
 
             if (!surface)
             {
@@ -85,14 +88,42 @@ class SDLTextChunk final
                 return;
             }
 
+            if (color.r != color2.r || color.g != color2.g
+                || color.b != color2.b)
+            {   // outlining
+                SDL_Color sdlCol2;
+                sdlCol2.b = static_cast<uint8_t>(color2.b);
+                sdlCol2.r = static_cast<uint8_t>(color2.r);
+                sdlCol2.g = static_cast<uint8_t>(color2.g);
+                SDL_Surface *const surface2 = TTF_RenderUTF8_Blended(
+                    font2, strBuf, sdlCol2);
+                if (!surface2)
+                {
+                    img = nullptr;
+                    SDL_FreeSurface(surface);
+                    BLOCK_END("SDLTextChunk::generate")
+                    return;
+                }
+                SDL_Rect rect =
+                {
+                    OUTLINE_SIZE, OUTLINE_SIZE,
+                    surface2->w, surface2->h
+                };
+//                SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
+                SDL_BlitSurface(surface, nullptr, surface2, &rect);
+                SDL_FreeSurface(surface);
+                surface = surface2;
+            }
             img = imageHelper->createTextSurface(surface, alpha);
             SDL_FreeSurface(surface);
+
             BLOCK_END("SDLTextChunk::generate")
         }
 
         Image *img;
         std::string text;
         gcn::Color color;
+        gcn::Color color2;
 };
 
 typedef std::list<SDLTextChunk>::iterator CacheIterator;
@@ -122,8 +153,9 @@ SDLFont::SDLFont(std::string filename, const int size, const int style) :
 
     fixDirSeparators(filename);
     mFont = TTF_OpenFont(resman->getPath(filename).c_str(), size);
+    mFontOutline = TTF_OpenFont(resman->getPath(filename).c_str(), size);
 
-    if (!mFont)
+    if (!mFont || !mFontOutline)
     {
         logger->log("Error finding font " + filename);
         std::string backFile = "fonts/dejavusans.ttf";
@@ -134,15 +166,26 @@ SDLFont::SDLFont(std::string filename, const int size, const int style) :
             throw GCN_EXCEPTION("SDLSDLFont::SDLSDLFont: " +
                                 std::string(TTF_GetError()));
         }
+        mFontOutline = TTF_OpenFont(resman->getPath(
+            fixDirSeparators(backFile)).c_str(), size);
+        if (!mFont)
+        {
+            throw GCN_EXCEPTION("SDLSDLFont::SDLSDLFont: " +
+                                std::string(TTF_GetError()));
+        }
     }
 
     TTF_SetFontStyle(mFont, style);
+    TTF_SetFontStyle(mFontOutline, style);
+    TTF_SetFontOutline(mFontOutline, OUTLINE_SIZE);
 }
 
 SDLFont::~SDLFont()
 {
     TTF_CloseFont(mFont);
     mFont = nullptr;
+    TTF_CloseFont(mFontOutline);
+    mFontOutline = nullptr;
     --fontCounter;
 
     if (fontCounter == 0)
@@ -205,6 +248,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
     Graphics *const g = dynamic_cast<Graphics *const>(graphics);
 
     gcn::Color col = g->getColor();
+    gcn::Color col2 = g->getColor2();
     const float alpha = static_cast<float>(col.a) / 255.0f;
 
     /* The alpha value is ignored at string generation so avoid caching the
@@ -212,7 +256,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
      */
     col.a = 255;
 
-    SDLTextChunk chunk(text, col);
+    SDLTextChunk chunk(text, col, col2);
 
     const unsigned char chr = text[0];
     std::list<SDLTextChunk> *const cache = &mCache[chr];
@@ -256,7 +300,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
 #endif
         cache->push_front(chunk);
         SDLTextChunk &data = cache->front();
-        data.generate(mFont, alpha);
+        data.generate(mFont, mFontOutline, alpha);
 
         if (data.img)
             g->drawImage(data.img, x, y);
@@ -292,9 +336,7 @@ void SDLFont::createSDLTextChunk(SDLTextChunk *const chunk)
 
     const float alpha = static_cast<float>(chunk->color.a) / 255.0f;
     chunk->color.a = 255;
-    chunk->generate(mFont, alpha);
-//    if (chunk->img)
-//        chunk->img->setAlpha(alpha);
+    chunk->generate(mFont, mFontOutline, alpha);
 }
 
 int SDLFont::getWidth(const std::string &text) const

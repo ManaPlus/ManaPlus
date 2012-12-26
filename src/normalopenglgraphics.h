@@ -128,6 +128,7 @@ class NormalOpenGLGraphics final : public Graphics
         void setColor(const gcn::Color &color)
         {
             mColor = color;
+            mColor2 = color;
             mColorAlpha = (color.a != 255);
         }
 

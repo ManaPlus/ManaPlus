@@ -330,8 +330,15 @@ class Graphics : public gcn::SDLGraphics
         void setColor(const gcn::Color &color)
         {
             mColor = color;
+            mColor2 = color;
             mAlpha = (color.a != 255);
         }
+
+        void setColor2(const gcn::Color &color)
+        { mColor2 = color; }
+
+        const gcn::Color &getColor2() const
+        { return mColor2; }
 
 #ifdef DEBUG_DRAW_CALLS
         virtual unsigned int getDrawCalls() const
@@ -388,6 +395,7 @@ class Graphics : public gcn::SDLGraphics
         std::string mName;
         int mStartFreeMem;
         bool mSync;
+        gcn::Color mColor2;
 };
 
 extern Graphics *mainGraphics;
