@@ -39,6 +39,8 @@
 
 #include "utils/dtor.h"
 
+#include <guichan/font.hpp>
+
 #include "debug.h"
 
 static const int MAX_ITEMS = 48;
@@ -110,7 +112,8 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         mBackgroundImg->setAlpha(mAlpha);
 
     Graphics *const g = static_cast<Graphics *const>(graphics);
-    graphics->setFont(getFont());
+    gcn::Font *const font = getFont();
+    graphics->setFont(font);
     drawBackground(g);
 
     graphics->setColor(mForegroundColor);
@@ -123,7 +126,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         const std::string key = inputManager.getKeyValueString(
             Input::KEY_EMOTE_1 + i);
 
-        g->drawText(key, emoteX + 2, emoteY + 2, gcn::Graphics::LEFT);
+        font->drawString(g, key, emoteX + 2, emoteY + 2);
     }
     const unsigned sz = static_cast<unsigned>(mEmoteImg.size());
     for (unsigned i = 0; i < mMaxItems; i++)

@@ -43,6 +43,7 @@
 
 #include "resources/image.h"
 
+#include <guichan/font.hpp>
 #include <guichan/mouseinput.hpp>
 #include <guichan/selectionlistener.hpp>
 
@@ -234,8 +235,8 @@ void ItemContainer::draw(gcn::Graphics *graphics)
 
     BLOCK_START("ItemContainer::draw")
     Graphics *const g = static_cast<Graphics *const>(graphics);
-
-    g->setFont(getFont());
+    gcn::Font *const font = getFont();
+    g->setFont(font);
 
     for (int j = 0; j < mGridRows; j++)
     {
@@ -315,8 +316,9 @@ void ItemContainer::draw(gcn::Graphics *graphics)
             else
                 g->setColor(mUnEquipedColor);
 
-            g->drawText(caption, itemX + mBoxWidth / 2,
-                itemY + mEquippedTextPadding, gcn::Graphics::CENTER);
+            font->drawString(g, caption,
+                itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                itemY + mEquippedTextPadding);
         }
     }
     BLOCK_END("ItemContainer::draw")

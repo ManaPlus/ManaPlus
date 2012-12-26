@@ -35,6 +35,8 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
+#include <guichan/font.hpp>
+
 #include "debug.h"
 
 DropShortcutContainer::DropShortcutContainer():
@@ -110,6 +112,8 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
         return;
     }
 
+    gcn::Font *const font = getFont();
+
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int itemX = (i % mGridWidth) * mBoxWidth;
@@ -140,8 +144,9 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
                     g->setColor(mEquipedColor);
                 else
                     g->setColor(mUnEquipedColor);
-                g->drawText(caption, itemX + mBoxWidth / 2,
-                    itemY + mBoxHeight - 14, gcn::Graphics::CENTER);
+                font->drawString(g, caption,
+                    itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                    itemY + mBoxHeight - 14);
             }
         }
     }
@@ -154,11 +159,12 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
         {
             const int tPosX = mCursorPosX - (image->mBounds.w / 2);
             const int tPosY = mCursorPosY - (image->mBounds.h / 2);
+            const std::string str = toString(mItemMoved->getQuantity());
 
             g->drawImage(image, tPosX, tPosY);
-            g->drawText(toString(mItemMoved->getQuantity()),
-                        tPosX + mBoxWidth / 2, tPosY + mBoxHeight - 14,
-                        gcn::Graphics::CENTER);
+            font->drawString(g, str,
+                tPosX + (mBoxWidth / 2 - font->getWidth(str)) / 2,
+                tPosY + mBoxHeight - 14);
         }
     }
     BLOCK_END("DropShortcutContainer::draw")

@@ -41,6 +41,8 @@
 
 #include "resources/image.h"
 
+#include <guichan/font.hpp>
+
 #include "debug.h"
 
 ItemShortcutContainer::ItemShortcutContainer(const unsigned number) :
@@ -116,7 +118,8 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
     }
 
     Graphics *const g = static_cast<Graphics*>(graphics);
-    graphics->setFont(getFont());
+    gcn::Font *const font = getFont();
+    graphics->setFont(font);
     drawBackground(g);
 
     const Inventory *const inv = PlayerInfo::getInventory();
@@ -136,7 +139,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
             Input::KEY_SHORTCUT_1 + i);
         graphics->setColor(mForegroundColor);
 
-        g->drawText(key, itemX + 2, itemY + 2, gcn::Graphics::LEFT);
+        font->drawString(g, key, itemX + 2, itemY + 2);
 
         const int itemId = selShortcut->getItem(i);
         const unsigned char itemColor = selShortcut->getItemColor(i);
@@ -168,8 +171,9 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                         g->setColor(mEquipedColor);
                     else
                         g->setColor(mUnEquipedColor);
-                    g->drawText(caption, itemX + mBoxWidth / 2,
-                        itemY + mBoxHeight - 14, gcn::Graphics::CENTER);
+                    font->drawString(g, caption,
+                        itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                        itemY + mBoxHeight - 14);
                 }
             }
         }
@@ -190,8 +194,8 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                     }
                 }
 
-                g->drawText(spell->getSymbol(), itemX + 2,
-                            itemY + mBoxHeight / 2, gcn::Graphics::LEFT);
+                font->drawString(g, spell->getSymbol(),
+                    itemX + 2, itemY + mBoxHeight / 2);
             }
         }
         else if (skillDialog)
@@ -208,8 +212,8 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                     g->drawImage(image, itemX, itemY);
                 }
 
-                g->drawText(skill->data->shortName, itemX + 2,
-                    itemY + mBoxHeight / 2, gcn::Graphics::LEFT);
+                font->drawString(g, skill->data->shortName, itemX + 2,
+                    itemY + mBoxHeight / 2);
             }
         }
     }
@@ -222,11 +226,12 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         {
             const int tPosX = mCursorPosX - (image->mBounds.w / 2);
             const int tPosY = mCursorPosY - (image->mBounds.h / 2);
+            const std::string str = toString(mItemMoved->getQuantity());
 
             g->drawImage(image, tPosX, tPosY);
-            g->drawText(toString(mItemMoved->getQuantity()),
-                        tPosX + mBoxWidth / 2, tPosY + mBoxHeight - 14,
-                        gcn::Graphics::CENTER);
+            font->drawString(g, str,
+                tPosX + (mBoxWidth - font->getWidth(str)) / 2,
+                tPosY + mBoxHeight - 14);
         }
     }
     BLOCK_END("ItemShortcutContainer::draw")

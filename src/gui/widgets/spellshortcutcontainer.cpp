@@ -40,6 +40,8 @@
 
 #include "utils/gettext.h"
 
+#include <guichan/font.hpp>
+
 #include "debug.h"
 
 SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
@@ -102,8 +104,8 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
     }
 
     Graphics *const g = static_cast<Graphics *const>(graphics);
-
-    graphics->setFont(getFont());
+    gcn::Font *const font = getFont();
+    graphics->setFont(font);
 
     const int selectedId = spellShortcut->getSelectedItem();
     g->setColor(mForegroundColor);
@@ -139,8 +141,8 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
                 }
             }
 
-            g->drawText(spell->getSymbol(), itemX + 2,
-                        itemY + mBoxHeight / 2, gcn::Graphics::LEFT);
+            font->drawString(g, spell->getSymbol(),
+                itemX + 2, itemY + mBoxHeight / 2);
         }
     }
 
