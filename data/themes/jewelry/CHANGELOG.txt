@@ -4,7 +4,9 @@ Francesco Miglietta (Hal9000)
 
 Version 1.0.2 (WIP)
 
-	- New rounded border for Chat window, Map window and popups
+	- New resize grip graphic
+	- Fix position of resize grip
+	- New rounded border graphic for all windows
 
 
 Version 1.0.1 (22.12.2012)
