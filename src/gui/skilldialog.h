@@ -86,10 +86,6 @@ struct SkillInfo final
 
     void update();
 
-    void draw(Graphics *const graphics, const int padding,
-              const int paddingText, const int spacingText,
-              const int y, const int width);
-
     SkillData *getData(const int level);
 
     SkillData *getData1(const int level);

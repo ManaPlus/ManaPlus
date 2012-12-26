@@ -154,7 +154,8 @@ class SkillListBox final : public ListBox
 
             // Draw the list elements
             graphics->setColor(mTextColor);
-            const int space = graphics->getFont()->getHeight() + mSpacing;
+            gcn::Font *const font = getFont();
+            const int space = font->getHeight() + mSpacing;
             const int width2 = getWidth() - mPadding;
             for (int i = 0, y = 1;
                  i < model->getNumberOfElements();
@@ -163,8 +164,25 @@ class SkillListBox final : public ListBox
                 SkillInfo *const e = model->getSkillAt(i);
                 if (e)
                 {
-                    e->draw(graphics, mPadding, mTextPadding,
-                        space, y, width2);
+                    const SkillData *const data = e->data;
+                    const int yPad = y + mPadding;
+                    const std::string &description = data->description;
+                    graphics->drawImage(data->icon, mPadding, yPad);
+                    font->drawString(graphics, data->name, mTextPadding, yPad);
+                    if (!description.empty())
+                    {
+                        font->drawString(graphics, description,
+                            mTextPadding, yPad + space);
+                    }
+
+                    if (e->skillLevelWidth < 0)
+                    {
+                        // Add one for padding
+                        e->skillLevelWidth = font->getWidth(e->skillLevel) + 1;
+                    }
+
+                    font->drawString(graphics, e->skillLevel, width2
+                        - e->skillLevelWidth, yPad);
                 }
             }
         }
@@ -695,24 +713,6 @@ void SkillInfo::update()
         data = dataMap[0];
 }
 
-void SkillInfo::draw(Graphics *const graphics, const int padding,
-                     const int paddingText, const int spacingText,
-                     const int y, const int width)
-{
-    const int yPad = y + padding;
-    graphics->drawImage(data->icon, padding, yPad);
-    graphics->drawText(data->name, paddingText, yPad);
-    if (!data->description.empty())
-        graphics->drawText(data->description, paddingText, yPad + spacingText);
-
-    if (skillLevelWidth < 0)
-    {
-        // Add one for padding
-        skillLevelWidth = graphics->getFont()->getWidth(skillLevel) + 1;
-    }
-
-    graphics->drawText(skillLevel, width - skillLevelWidth, yPad);
-}
 
 void SkillInfo::addData(const int level1, SkillData *const data1)
 {
