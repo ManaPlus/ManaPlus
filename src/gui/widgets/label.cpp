@@ -92,6 +92,7 @@ void Label::draw(gcn::Graphics* graphics)
     }
 
     graphics->setColor(mForegroundColor);
+    static_cast<Graphics*>(graphics)->setColor2(mForegroundColor2);
     font->drawString(graphics, mCaption, textX, textY);
     BLOCK_END("Label::draw")
 }
@@ -100,4 +101,17 @@ void Label::adjustSize()
 {
     setWidth(getFont()->getWidth(getCaption()) + 2 * mPadding);
     setHeight(getFont()->getHeight() + 2 * mPadding);
+}
+
+void Label::setForegroundColor(const gcn::Color &color)
+{
+    mForegroundColor = color;
+    mForegroundColor2 = color;
+}
+
+void Label::setForegroundColorAll(const gcn::Color &color1,
+                                  const gcn::Color &color2)
+{
+    mForegroundColor = color1;
+    mForegroundColor2 = color2;
 }

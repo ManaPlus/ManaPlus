@@ -249,7 +249,6 @@ class BrowserBox final : public gcn::Widget,
         gcn::Color mHighlightColor;
         gcn::Color mHyperLinkColor;
         gcn::Color mColors[2][COLORS_MAX];
-        gcn::Color mForegroundColor2;
 
         static Skin *mSkin;
         static int mInstances;

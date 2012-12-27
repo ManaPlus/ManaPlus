@@ -67,8 +67,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     mNewLinePadding(15),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
-    mHyperLinkColor(getThemeColor(Theme::HYPERLINK)),
-    mForegroundColor2(getThemeColor(Theme::BROWSERBOX_OUTLINE))
+    mHyperLinkColor(getThemeColor(Theme::HYPERLINK))
 {
     setFocusable(true);
     addMouseListener(this);
@@ -107,6 +106,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     mColors[1][BROWN] = getThemeColor(Theme::BROWN_OUTLINE);
 
     mForegroundColor = getThemeColor(Theme::BROWSERBOX);
+    mForegroundColor2 = getThemeColor(Theme::BROWSERBOX_OUTLINE);
 }
 
 BrowserBox::~BrowserBox()

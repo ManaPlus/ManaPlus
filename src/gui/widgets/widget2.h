@@ -80,8 +80,14 @@ class Widget2
             }
         }
 
+        void setForegroundColor2(const gcn::Color &color)
+        {
+            mForegroundColor2 = color;
+        }
+
     protected:
         int mPaletteOffset;
+        gcn::Color mForegroundColor2;
 };
 
 extern int openGLMode;
