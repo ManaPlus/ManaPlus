@@ -64,10 +64,16 @@ Tab::Tab(const Widget2 *const widget) :
     mHasMouse(false),
     mTabbedArea(nullptr),
     mTabColor(&getThemeColor(Theme::TAB)),
+    mTabOutlineColor(&getThemeColor(Theme::TAB_OUTLINE)),
     mTabHighlightedColor(&getThemeColor(Theme::TAB_HIGHLIGHTED)),
+    mTabHighlightedOutlineColor(&getThemeColor(
+        Theme::TAB_HIGHLIGHTED_OUTLINE)),
     mTabSelectedColor(&getThemeColor(Theme::TAB_SELECTED)),
+    mTabSelectedOutlineColor(&getThemeColor(Theme::TAB_SELECTED_OUTLINE)),
     mFlashColor(&getThemeColor(Theme::TAB_FLASH)),
+    mFlashOutlineColor(&getThemeColor(Theme::TAB_FLASH_OUTLINE)),
     mPlayerFlashColor(&getThemeColor(Theme::TAB_PLAYER_FLASH)),
+    mPlayerFlashOutlineColor(&getThemeColor(Theme::TAB_PLAYER_FLASH_OUTLINE)),
     mVertexes(new ImageCollection),
     mRedraw(true),
     mMode(0)
@@ -155,28 +161,32 @@ void Tab::draw(gcn::Graphics *graphics)
     {
         if (mTabbedArea->isTabSelected(this))
         {
-            mLabel->setForegroundColor(*mTabSelectedColor);
+            mLabel->setForegroundColorAll(*mTabSelectedColor,
+                *mTabSelectedOutlineColor);
             mode = TAB_SELECTED;
             // if tab is selected, it doesnt need to highlight activity
             mFlash = 0;
         }
         else if (mHasMouse)
         {
-            mLabel->setForegroundColor(*mTabHighlightedColor);
+            mLabel->setForegroundColorAll(*mTabHighlightedColor,
+                *mTabHighlightedOutlineColor);
             mode = TAB_HIGHLIGHTED;
         }
         else
         {
-            mLabel->setForegroundColor(*mTabColor);
+            mLabel->setForegroundColorAll(*mTabColor, *mTabOutlineColor);
         }
 
         switch (mFlash)
         {
             case 1:
-                mLabel->setForegroundColor(*mFlashColor);
+                mLabel->setForegroundColorAll(*mFlashColor,
+                    *mFlashOutlineColor);
                 break;
             case 2:
-                mLabel->setForegroundColor(*mPlayerFlashColor);
+                mLabel->setForegroundColorAll(*mPlayerFlashColor,
+                    *mPlayerFlashOutlineColor);
                 break;
             default:
                 break;

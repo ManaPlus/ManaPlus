@@ -167,17 +167,21 @@ void WhisperTab::getAutoCompleteList(StringVect &names) const
 
 void WhisperTab::setWhisperTabColors()
 {
-    setTabColor(&getThemeColor(Theme::WHISPER_TAB));
-    setHighlightedTabColor(&getThemeColor(
-        Theme::WHISPER_TAB_HIGHLIGHTED));
-    setSelectedTabColor(&getThemeColor(Theme::WHISPER_TAB_SELECTED));
+    setTabColor(&getThemeColor(Theme::WHISPER_TAB),
+        &getThemeColor(Theme::WHISPER_TAB_OUTLINE));
+    setHighlightedTabColor(&getThemeColor(Theme::WHISPER_TAB_HIGHLIGHTED),
+        &getThemeColor(Theme::WHISPER_TAB_HIGHLIGHTED_OUTLINE));
+    setSelectedTabColor(&getThemeColor(Theme::WHISPER_TAB_SELECTED),
+        &getThemeColor(Theme::WHISPER_TAB_SELECTED_OUTLINE));
 }
 
 void WhisperTab::setWhisperTabOfflineColors()
 {
-    setTabColor(&getThemeColor(Theme::WHISPER_TAB_OFFLINE));
+    setTabColor(&getThemeColor(Theme::WHISPER_TAB_OFFLINE),
+        &getThemeColor(Theme::WHISPER_TAB_OFFLINE_OUTLINE));
     setHighlightedTabColor(&getThemeColor(
-        Theme::WHISPER_TAB_OFFLINE_HIGHLIGHTED));
-    setSelectedTabColor(&getThemeColor(
-        Theme::WHISPER_TAB_OFFLINE_SELECTED));
+        Theme::WHISPER_TAB_OFFLINE_HIGHLIGHTED), &getThemeColor(
+        Theme::WHISPER_TAB_OFFLINE_HIGHLIGHTED_OUTLINE));
+    setSelectedTabColor(&getThemeColor(Theme::WHISPER_TAB_OFFLINE_SELECTED),
+        &getThemeColor(Theme::WHISPER_TAB_OFFLINE_SELECTED_OUTLINE));
 }

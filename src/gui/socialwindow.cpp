@@ -143,11 +143,13 @@ public:
     {
         setCaption(_("Guild"));
 
-        setTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB));
+        setTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB),
+            &getThemeColor(Theme::GUILD_SOCIAL_TAB_OUTLINE));
         setHighlightedTabColor(&getThemeColor(
-            Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED));
-        setSelectedTabColor(&getThemeColor(
-            Theme::GUILD_SOCIAL_TAB_SELECTED));
+            Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED), &getThemeColor(
+            Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
+        setSelectedTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED),
+            &getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
 
         mList = new AvatarListBox(this, guild);
         mScroll = new ScrollArea(mList, showBackground,
@@ -250,11 +252,13 @@ public:
     {
         setCaption(_("Guild"));
 
-        setTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB));
+        setTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB),
+            &getThemeColor(Theme::GUILD_SOCIAL_TAB_OUTLINE));
         setHighlightedTabColor(&getThemeColor(
-            Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED));
-        setSelectedTabColor(&getThemeColor(
-            Theme::GUILD_SOCIAL_TAB_SELECTED));
+            Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED), &getThemeColor(
+            Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
+        setSelectedTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED),
+            &getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
 
         mList = new AvatarListBox(this, guild);
         mScroll = new ScrollArea(mList, showBackground,
@@ -313,11 +317,13 @@ public:
     {
         setCaption(_("Party"));
 
-        setTabColor(&getThemeColor(Theme::PARTY_SOCIAL_TAB));
+        setTabColor(&getThemeColor(Theme::PARTY_SOCIAL_TAB),
+            &getThemeColor(Theme::PARTY_SOCIAL_TAB_OUTLINE));
         setHighlightedTabColor(&getThemeColor(
-            Theme::PARTY_SOCIAL_TAB_HIGHLIGHTED));
-        setSelectedTabColor(&getThemeColor(
-            Theme::PARTY_SOCIAL_TAB_SELECTED));
+            Theme::PARTY_SOCIAL_TAB_HIGHLIGHTED), &getThemeColor(
+            Theme::PARTY_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
+        setSelectedTabColor(&getThemeColor(Theme::PARTY_SOCIAL_TAB_SELECTED),
+            &getThemeColor(Theme::PARTY_SOCIAL_TAB_SELECTED_OUTLINE));
 
         mList = new AvatarListBox(this, party);
         mScroll = new ScrollArea(mList, showBackground,

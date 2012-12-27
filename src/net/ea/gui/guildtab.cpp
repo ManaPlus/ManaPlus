@@ -45,9 +45,12 @@ extern Guild *taGuild;
 GuildTab::GuildTab(const Widget2 *const widget) :
     ChatTab(widget, _("Guild"))
 {
-    setTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB));
-    setHighlightedTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB_HIGHLIGHTED));
-    setSelectedTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB_SELECTED));
+    setTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB),
+        &getThemeColor(Theme::GUILD_CHAT_TAB_OUTLINE));
+    setHighlightedTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB_HIGHLIGHTED),
+        &getThemeColor(Theme::GUILD_CHAT_TAB_HIGHLIGHTED_OUTLINE));
+    setSelectedTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB_SELECTED),
+        &getThemeColor(Theme::GUILD_CHAT_TAB_SELECTED_OUTLINE));
 }
 
 GuildTab::~GuildTab()

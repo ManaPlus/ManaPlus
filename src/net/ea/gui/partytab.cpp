@@ -46,9 +46,12 @@ namespace Ea
 PartyTab::PartyTab(const Widget2 *const widget) :
     ChatTab(widget, _("Party"))
 {
-    setTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB));
-    setHighlightedTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB_HIGHLIGHTED));
-    setSelectedTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB_SELECTED));
+    setTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB),
+        &getThemeColor(Theme::PARTY_CHAT_TAB_OUTLINE));
+    setHighlightedTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB_HIGHLIGHTED),
+        &getThemeColor(Theme::PARTY_CHAT_TAB_HIGHLIGHTED_OUTLINE));
+    setSelectedTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB_SELECTED),
+        &getThemeColor(Theme::PARTY_CHAT_TAB_SELECTED_OUTLINE));
 }
 
 PartyTab::~PartyTab()
