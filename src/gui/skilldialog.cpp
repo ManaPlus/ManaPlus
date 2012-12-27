@@ -102,7 +102,7 @@ class SkillListBox final : public ListBox
             mTextPadding(mSkin ? mSkin->getOption("textPadding", 34) : 34),
             mSpacing(mSkin ? mSkin->getOption("spacing", 0) : 0)
         {
-            mRowHeight = mainGraphics->getFont()->getHeight() * 2
+            mRowHeight = getFont()->getHeight() * 2
                 + mSpacing + 2 * mPadding;
             if (mRowHeight < 34)
                 mRowHeight = 34;

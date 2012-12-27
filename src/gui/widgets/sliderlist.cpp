@@ -210,7 +210,7 @@ int SliderList::getMaxLabelWidth()
         return 1;
 
     int maxWidth = 0;
-    const SDLFont *const font = gui->getFont();
+    const gcn::Font *const font = getFont();
 
     const int num = mListModel->getNumberOfElements();
     for (int f = 0; f < num; f ++)

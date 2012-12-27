@@ -613,6 +613,8 @@ void ServerDialog::loadServers(const bool addNew)
         else
             version = strprintf(_("requires v%s"), version.c_str());
 
+        gcn::Font *font = gui->getFont();
+
         for_each_xml_child_node(subNode, serverNode)
         {
             if (xmlNameEqual(subNode, "connection"))
@@ -641,7 +643,7 @@ void ServerDialog::loadServers(const bool addNew)
             }
         }
 
-        server.version.first = gui->getFont()->getWidth(version);
+        server.version.first = font->getWidth(version);
         server.version.second = version;
 
         MutexLocker tempLock(&mMutex);
