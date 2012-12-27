@@ -24,7 +24,6 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "textrenderer.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
@@ -110,9 +109,16 @@ void TextPreview::draw(gcn::Graphics* graphics)
         }
     }
 
-    TextRenderer::renderText(graphics, mText, mPadding + 1, mPadding + 1,
-        gcn::Graphics::LEFT, gcn::Color(mTextColor->r, mTextColor->g,
-        mTextColor->b, alpha), mFont, mOutline, mShadow);
+    graphics->setColor(gcn::Color(mTextColor->r, mTextColor->g,
+        mTextColor->b, alpha));
+
+    if (mOutline)
+    {
+        Graphics *const g = static_cast<Graphics *const>(graphics);
+        g->setColor2(Theme::getThemeColor(Theme::OUTLINE));
+    }
+
+    mFont->drawString(graphics, mText, mPadding + 1, mPadding + 1);
     BLOCK_END("TextPreview::draw")
 }
 

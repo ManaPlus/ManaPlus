@@ -22,9 +22,12 @@
 
 #include "textparticle.h"
 
-#include "textrenderer.h"
+#include "graphics.h"
+
+#include "gui/theme.h"
 
 #include <guichan/color.hpp>
+#include <guichan/font.hpp>
 
 #include "debug.h"
 
@@ -35,7 +38,8 @@ TextParticle::TextParticle(Map *const map, const std::string &text,
     mText(text),
     mTextFont(font),
     mColor(color),
-    mOutline(outline)
+    mOutline(outline),
+    mTextWidth(mTextFont->getWidth(mText) / 2)
 {
 }
 
@@ -66,13 +70,16 @@ bool TextParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
                 / static_cast<float>(mFadeIn);
     }
 
-    const gcn::Color color = *mColor;
-//    color.a = (int)alpha;
+    gcn::Color color = *mColor;
+    color.a = (int)alpha;
 
-    TextRenderer::renderText(graphics, mText,
-            screenX, screenY, gcn::Graphics::CENTER,
-            color, mTextFont, mOutline, false, static_cast<int>(alpha));
-
+    graphics->setColor(color);
+    if (mOutline)
+    {
+        graphics->setColor2(Theme::getThemeColor(
+            Theme::OUTLINE, static_cast<int>(alpha)));
+    }
+    mTextFont->drawString(graphics, mText, screenX - mTextWidth, screenY);
     BLOCK_END("TextParticle::draw")
     return true;
 }

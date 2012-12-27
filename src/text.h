@@ -67,7 +67,7 @@ class Text
         /**
          * Draws the text.
          */
-        virtual void draw(gcn::Graphics *const graphics,
+        virtual void draw(Graphics *const graphics,
                           const int xOff, const int yOff);
 
     private:
@@ -80,6 +80,7 @@ class Text
         static int mInstances; /**< Instances of text. */
         std::string mText;     /**< The text to display. */
         const gcn::Color *mColor;     /**< The color of the text. */
+        const gcn::Color mOutlineColor;
         bool mIsSpeech;        /**< Is this text a speech bubble? */
 
     protected:
@@ -111,7 +112,7 @@ class FlashText final : public Text
         /**
          * Draws the text.
          */
-        virtual void draw(gcn::Graphics *const graphics,
+        virtual void draw(Graphics *const graphics,
                           const int xOff, const int yOff) override;
 
     private:

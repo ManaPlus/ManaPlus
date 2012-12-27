@@ -26,12 +26,8 @@
 
 #include "localconsts.h"
 
+class Graphics;
 class Text;
-
-namespace gcn
-{
-    class Graphics;
-}
 
 class TextManager final
 {
@@ -66,7 +62,7 @@ class TextManager final
         /**
          * Draw the text
          */
-        void draw(gcn::Graphics *const graphics,
+        void draw(Graphics *const graphics,
                   const int xOff, const int yOff);
 
     private:

@@ -652,7 +652,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      textmanager.h \
 	      textparticle.cpp \
 	      textparticle.h \
-	      textrenderer.h \
 	      tileset.h \
 	      touchactions.cpp \
 	      touchactions.h \

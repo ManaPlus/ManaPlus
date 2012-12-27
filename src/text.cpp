@@ -25,10 +25,10 @@
 
 #include "configuration.h"
 #include "textmanager.h"
-#include "textrenderer.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
+#include "gui/theme.h"
 
 #include "resources/resourcemanager.h"
 #include "resources/image.h"
@@ -50,6 +50,7 @@ Text::Text(const std::string &text, const int x, const int y,
     mHeight(mFont->getHeight()),
     mText(text),
     mColor(color),
+    mOutlineColor(Theme::getThemeColor(Theme::OUTLINE)),
     mIsSpeech(isSpeech)
 {
     if (!textManager)
@@ -123,7 +124,7 @@ void Text::adviseXY(const int x, const int y)
         textManager->moveText(this, x - mXOffset, y);
 }
 
-void Text::draw(gcn::Graphics *const graphics, const int xOff, const int yOff)
+void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
 {
     BLOCK_START("Text::draw")
     if (mIsSpeech)
@@ -133,9 +134,11 @@ void Text::draw(gcn::Graphics *const graphics, const int xOff, const int yOff)
                 mBubble);
     }
 
-    TextRenderer::renderText(graphics, mText,
-            mX - xOff, mY - yOff, gcn::Graphics::LEFT,
-            *mColor, mFont, !mIsSpeech, true);
+    graphics->setColor(*mColor);
+    if (!mIsSpeech)
+        graphics->setColor2(mOutlineColor);
+
+    mFont->drawString(graphics, mText, mX - xOff, mY - yOff);
     BLOCK_END("Text::draw")
 }
 
@@ -147,8 +150,7 @@ FlashText::FlashText(const std::string &text, const int x, const int y,
 {
 }
 
-void FlashText::draw(gcn::Graphics *const graphics,
-                     const int xOff, const int yOff)
+void FlashText::draw(Graphics *const graphics, const int xOff, const int yOff)
 {
     BLOCK_START("FlashText::draw")
     if (mTime)

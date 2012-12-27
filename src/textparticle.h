@@ -56,6 +56,7 @@ class TextParticle final : public Particle
         gcn::Font *mTextFont;          /**< Font used for drawing the text. */
         const gcn::Color *mColor;      /**< Color used for drawing the text. */
         bool mOutline;                 /**< Make the text better readable */
+        int mTextWidth;
 };
 
 #endif

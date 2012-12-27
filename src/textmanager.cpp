@@ -63,7 +63,7 @@ TextManager::~TextManager()
 {
 }
 
-void TextManager::draw(gcn::Graphics *const graphics,
+void TextManager::draw(Graphics *const graphics,
                        const int xOff, const int yOff)
 {
     BLOCK_START("TextManager::draw")
