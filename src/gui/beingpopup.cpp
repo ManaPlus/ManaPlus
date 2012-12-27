@@ -57,10 +57,14 @@ BeingPopup::BeingPopup() :
     mBeingRank->setPosition(0, 3 * fontHeight);
     mBeingComment->setPosition(0, 4 * fontHeight);
 
-    mBeingParty->setForegroundColor(getThemeColor(Theme::POPUP));
-    mBeingGuild->setForegroundColor(getThemeColor(Theme::POPUP));
-    mBeingRank->setForegroundColor(getThemeColor(Theme::POPUP));
-    mBeingComment->setForegroundColor(getThemeColor(Theme::POPUP));
+    mBeingParty->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mBeingGuild->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mBeingRank->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mBeingComment->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
 
     add(mBeingName);
     add(mBeingParty);

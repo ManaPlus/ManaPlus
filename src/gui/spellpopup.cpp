@@ -42,8 +42,10 @@ SpellPopup::SpellPopup():
     mItemComment(new Label(this))
 {
     mItemName->setFont(boldFont);
-    mItemName->setForegroundColor(getThemeColor(Theme::POPUP));
-    mItemComment->setForegroundColor(getThemeColor(Theme::POPUP));
+    mItemName->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mItemComment->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
 
     add(mItemName);
     add(mItemComment);
