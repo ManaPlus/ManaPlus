@@ -142,7 +142,6 @@ class SkillListBox final : public ListBox
 
             mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
             graphics->setColor(mHighlightColor);
-            graphics->setFont(getFont());
 
             // Draw filled rectangle around the selected list element
             if (mSelected >= 0)

@@ -236,7 +236,6 @@ void ItemContainer::draw(gcn::Graphics *graphics)
     BLOCK_START("ItemContainer::draw")
     Graphics *const g = static_cast<Graphics *const>(graphics);
     gcn::Font *const font = getFont();
-    g->setFont(font);
 
     for (int j = 0; j < mGridRows; j++)
     {

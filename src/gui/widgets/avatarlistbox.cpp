@@ -106,7 +106,6 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
     gcn::Font *const font = getFont();
-    graphics->setFont(font);
 
     const int fontHeight = getFont()->getHeight();
     const gcn::Widget *const parent = mParent;
@@ -130,9 +129,6 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             if (icon)
                 graphics->drawImage(icon, mPadding, y + mPadding);
         }
-
-        if (a->getDisplayBold())
-            graphics->setFont(boldFont);
 
         std::string text;
 
@@ -268,13 +264,25 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
         graphics->setColor(mForegroundColor);
 
         // Draw Name
-        if (a->getType() == MapItem::SEPARATOR)
-            font->drawString(graphics, text, mPadding, y + mPadding);
-        else
-            font->drawString(graphics, text, 15 + mPadding, y + mPadding);
-
         if (a->getDisplayBold())
-            graphics->setFont(getFont());
+        {
+            if (a->getType() == MapItem::SEPARATOR)
+            {
+                boldFont->drawString(graphics, text, mPadding, y + mPadding);
+            }
+            else
+            {
+                boldFont->drawString(graphics, text,
+                    15 + mPadding, y + mPadding);
+            }
+        }
+        else
+        {
+            if (a->getType() == MapItem::SEPARATOR)
+                font->drawString(graphics, text, mPadding, y + mPadding);
+            else
+                font->drawString(graphics, text, 15 + mPadding, y + mPadding);
+        }
     }
 
     setWidth(parent->getWidth() - 10);

@@ -176,7 +176,6 @@ public:
 
         mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
         graphics->setColor(mHighlightColor);
-        graphics->setFont(getFont());
 
         const int height = getRowHeight();
         mNotSupportedColor.a = static_cast<int>(mAlpha * 255.0f);

@@ -131,7 +131,6 @@ void TextField::draw(gcn::Graphics *graphics)
 
     graphics->setColor(mForegroundColor);
     gcn::Font *const font = getFont();
-    graphics->setFont(font);
     font->drawString(graphics, mText, mPadding - mXScroll, mPadding);
     BLOCK_END("TextField::draw")
 }

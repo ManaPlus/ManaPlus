@@ -147,12 +147,11 @@ namespace gcn
     {
     }
 
+/*
     void Graphics::setFont(Font* font)
     {
-        mFont = font;
     }
 
-/*
     void Graphics::drawText(const std::string& text, int x, int y,
                             Alignment alignment)
     {

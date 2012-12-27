@@ -102,7 +102,6 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
     }
 
     Graphics *const g = static_cast<Graphics*>(graphics);
-    graphics->setFont(getFont());
     drawBackground(g);
 
     const Inventory *const inv = PlayerInfo::getInventory();

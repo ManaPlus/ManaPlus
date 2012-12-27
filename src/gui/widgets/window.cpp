@@ -267,7 +267,6 @@ void Window::draw(gcn::Graphics *graphics)
     if (mShowTitle)
     {
         g->setColor(mForegroundColor);
-        g->setFont(mCaptionFont);
         int x;
         switch (static_cast<gcn::Graphics::Alignment>(mCaptionAlign))
         {

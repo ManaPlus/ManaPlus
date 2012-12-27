@@ -97,7 +97,6 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
     const int alpha = static_cast<int>(mAlpha * 255.0f);
     Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
     gcn::Font *const font = getFont();
-    graphics->setFont(font);
 
     // Draw the list elements
     for (int i = 0, y = 0;

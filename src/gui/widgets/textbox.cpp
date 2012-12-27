@@ -357,7 +357,6 @@ void TextBox::draw(gcn::Graphics* graphics)
 
     graphics->setColor(mForegroundColor);
     gcn::Font *const font = getFont();
-    graphics->setFont(font);
     const int fontHeight = font->getHeight();
 
     for (size_t i = 0, sz = mTextRows.size(); i < sz; i++)

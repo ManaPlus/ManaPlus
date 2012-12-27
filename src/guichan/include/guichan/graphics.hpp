@@ -260,13 +260,6 @@ namespace gcn
          */
         virtual const Color& getColor() const = 0;
 
-        /**
-         * Sets the font to use when drawing text.
-         *
-         * @param font The font to use when drawing.
-         */
-        virtual void setFont(Font* font);
-
     protected:
         /**
          * Holds the clip area stack.

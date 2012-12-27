@@ -113,7 +113,6 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
 
     Graphics *const g = static_cast<Graphics *const>(graphics);
     gcn::Font *const font = getFont();
-    graphics->setFont(font);
     drawBackground(g);
 
     graphics->setColor(mForegroundColor);

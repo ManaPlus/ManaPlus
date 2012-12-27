@@ -73,7 +73,6 @@ void Label::draw(gcn::Graphics* graphics)
     int textX;
     const int textY = getHeight() / 2 - getFont()->getHeight() / 2;
     gcn::Font *const font = getFont();
-    graphics->setFont(font);
 
     switch (mAlignment)
     {

@@ -61,7 +61,6 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
 
     updateAlpha();
     gcn::Font *const font = getFont();
-    graphics->setFont(font);
 
     const int height = getRowHeight();
     int textPos = (height - getFont()->getHeight()) / 2 + mPadding;

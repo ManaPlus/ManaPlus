@@ -355,7 +355,6 @@ void Button::draw(gcn::Graphics *graphics)
 // need move calculation from draw!!!
 
     gcn::Font *const font = getFont();
-    graphics->setFont(font);
 
     switch (mAlignment)
     {
