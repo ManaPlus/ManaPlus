@@ -126,6 +126,8 @@ class OpenGLImageHelper final : public ImageHelper
         static void setUseTextureSampler(bool b)
         { mUseTextureSampler = b; }
 
+        SDL_Surface *create32BitSurface(int width, int height);
+
     protected:
         /**
          * Returns the first power of two equal or bigger than the input.

@@ -82,6 +82,8 @@ class SDLImageHelper final : public ImageHelper
         static SDL_Surface* SDLDuplicateSurface(SDL_Surface *const tmpImage)
                                                 A_WARN_UNUSED;
 
+        SDL_Surface *create32BitSurface(int width, int height);
+
     protected:
         /** SDL_Surface to SDL_Surface Image loader */
         Image *_SDLload(SDL_Surface *tmpImage) const A_WARN_UNUSED;

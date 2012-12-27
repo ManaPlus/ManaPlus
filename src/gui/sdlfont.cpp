@@ -35,6 +35,8 @@
 
 #include <guichan/exception.hpp>
 
+#include <SDL_gfxBlitFunc.h>
+
 #include "debug.h"
 
 const unsigned int CACHE_SIZE = 256;
@@ -92,11 +94,21 @@ class SDLTextChunk final
                 || color.b != color2.b)
             {   // outlining
                 SDL_Color sdlCol2;
+                const SDL_PixelFormat * const format = surface->format;
+                SDL_Surface *background = imageHelper->create32BitSurface(
+                    surface->w, surface->h); 
+                if (!background)
+                {
+                    img = nullptr;
+                    SDL_FreeSurface(surface);
+                    BLOCK_END("SDLTextChunk::generate")
+                    return;
+                }
                 sdlCol2.b = static_cast<uint8_t>(color2.b);
                 sdlCol2.r = static_cast<uint8_t>(color2.r);
                 sdlCol2.g = static_cast<uint8_t>(color2.g);
                 SDL_Surface *const surface2 = TTF_RenderUTF8_Blended(
-                    font2, strBuf, sdlCol2);
+                    font, strBuf, sdlCol2);
                 if (!surface2)
                 {
                     img = nullptr;
@@ -106,13 +118,25 @@ class SDLTextChunk final
                 }
                 SDL_Rect rect =
                 {
-                    OUTLINE_SIZE, OUTLINE_SIZE,
-                    surface2->w, surface2->h
+                    OUTLINE_SIZE, 0,
+                    surface->w, surface->h
                 };
+//                SDL_SetAlpha(surface2, 0, SDL_ALPHA_OPAQUE);
+                SDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+                rect.x = -OUTLINE_SIZE;
+                SDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+                rect.x = 0;
+                rect.y = -OUTLINE_SIZE;
+                SDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+                rect.y = OUTLINE_SIZE;
+                SDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+                rect.x = 0;
+                rect.y = 0;
 //                SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
-                SDL_BlitSurface(surface, nullptr, surface2, &rect);
+                SDL_gfxBlitRGBA(surface, nullptr, background, &rect);
                 SDL_FreeSurface(surface);
-                surface = surface2;
+                SDL_FreeSurface(surface2);
+                surface = background;
             }
             img = imageHelper->createTextSurface(surface, alpha);
             SDL_FreeSurface(surface);
