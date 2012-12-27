@@ -67,7 +67,8 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     mNewLinePadding(15),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
-    mHyperLinkColor(getThemeColor(Theme::HYPERLINK))
+    mHyperLinkColor(getThemeColor(Theme::HYPERLINK)),
+    mForegroundColor2(getThemeColor(Theme::BROWSERBOX_OUTLINE))
 {
     setFocusable(true);
     addMouseListener(this);
@@ -85,15 +86,26 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
         mNewLinePadding = mSkin->getOption("newLinePadding", 15);
     }
 
-    mColors[RED] = getThemeColor(Theme::RED);
-    mColors[GREEN] = getThemeColor(Theme::GREEN);
-    mColors[BLUE] = getThemeColor(Theme::BLUE);
-    mColors[ORANGE] = getThemeColor(Theme::ORANGE);
-    mColors[YELLOW] = getThemeColor(Theme::YELLOW);
-    mColors[PINK] = getThemeColor(Theme::PINK);
-    mColors[PURPLE] = getThemeColor(Theme::PURPLE);
-    mColors[GRAY] = getThemeColor(Theme::GRAY);
-    mColors[BROWN] = getThemeColor(Theme::BROWN);
+    mColors[0][RED] = getThemeColor(Theme::RED);
+    mColors[0][GREEN] = getThemeColor(Theme::GREEN);
+    mColors[0][BLUE] = getThemeColor(Theme::BLUE);
+    mColors[0][ORANGE] = getThemeColor(Theme::ORANGE);
+    mColors[0][YELLOW] = getThemeColor(Theme::YELLOW);
+    mColors[0][PINK] = getThemeColor(Theme::PINK);
+    mColors[0][PURPLE] = getThemeColor(Theme::PURPLE);
+    mColors[0][GRAY] = getThemeColor(Theme::GRAY);
+    mColors[0][BROWN] = getThemeColor(Theme::BROWN);
+
+    mColors[1][RED] = getThemeColor(Theme::RED_OUTLINE);
+    mColors[1][GREEN] = getThemeColor(Theme::GREEN_OUTLINE);
+    mColors[1][BLUE] = getThemeColor(Theme::BLUE_OUTLINE);
+    mColors[1][ORANGE] = getThemeColor(Theme::ORANGE_OUTLINE);
+    mColors[1][YELLOW] = getThemeColor(Theme::YELLOW_OUTLINE);
+    mColors[1][PINK] = getThemeColor(Theme::PINK_OUTLINE);
+    mColors[1][PURPLE] = getThemeColor(Theme::PURPLE_OUTLINE);
+    mColors[1][GRAY] = getThemeColor(Theme::GRAY_OUTLINE);
+    mColors[1][BROWN] = getThemeColor(Theme::BROWN_OUTLINE);
+
     mForegroundColor = getThemeColor(Theme::BROWSERBOX);
 }
 
@@ -410,7 +422,8 @@ void BrowserBox::draw(gcn::Graphics *graphics)
             break;
         if (!part.mType)
         {
-            graphics->setColor(part.mColor);
+            graphics2->setColor(part.mColor);
+            graphics2->setColor2(part.mColor2);
             if (part.mBold)
                 boldFont->drawString(graphics, part.mText, part.mX, part.mY);
             else
@@ -445,8 +458,8 @@ int BrowserBox::calcHeight()
     const char *const hyphen = "~";
     const int hyphenWidth = font->getWidth(hyphen);
 
-    gcn::Color selColor = mForegroundColor;
-    const gcn::Color &textColor = mForegroundColor;
+    gcn::Color selColor[2] = {mForegroundColor, mForegroundColor2};
+    const gcn::Color textColor[2] = {mForegroundColor, mForegroundColor2};
     ResourceManager *const resman = ResourceManager::getInstance();
 
     mLineParts.clear();
@@ -464,7 +477,8 @@ int BrowserBox::calcHeight()
             const int dashWidth = fontWidthMinus;
             for (x = mPadding; x < wWidth; x ++)
             {
-                mLineParts.push_back(LinePart(x, y, selColor, "-", false));
+                mLineParts.push_back(LinePart(x, y,
+                    selColor[0], selColor[1], "-", false));
                 x += dashWidth - 2;
             }
 
@@ -480,7 +494,8 @@ int BrowserBox::calcHeight()
             if (img)
             {
                 img->incRef();
-                mLineParts.push_back(LinePart(x, y, selColor, img));
+                mLineParts.push_back(LinePart(x, y,
+                    selColor[0], selColor[1], img));
                 y += img->getHeight() + 2;
                 moreHeight += img->getHeight();
                 if (img->getWidth() > maxWidth)
@@ -489,7 +504,9 @@ int BrowserBox::calcHeight()
             continue;
         }
 
-        gcn::Color prevColor = selColor;
+        gcn::Color prevColor[2];
+        prevColor[0] = selColor[0];
+        prevColor[1] = selColor[1];
         bold = false;
 
         // TODO: Check if we must take texture size limits into account here
@@ -519,17 +536,20 @@ int BrowserBox::calcHeight()
                     const signed char c = row.at(start + 2);
 
                     bool valid;
-                    const gcn::Color col = getThemeCharColor(c, valid);
+                    const gcn::Color col[2] = {getThemeCharColor(c, valid),
+                        getThemeCharColor(c | 0x80, valid)};
 
                     if (c == '>')
                     {
-                        selColor = prevColor;
+                        selColor[0] = prevColor[0];
+                        selColor[1] = prevColor[1];
                     }
                     else if (c == '<')
                     {
-//                        link++;
-                        prevColor = selColor;
-                        selColor = col;
+                        prevColor[0] = selColor[0];
+                        prevColor[1] = selColor[1];
+                        selColor[0] = col[0];
+                        selColor[1] = col[1];
                     }
                     else if (c == 'B')
                     {
@@ -541,25 +561,54 @@ int BrowserBox::calcHeight()
                     }
                     else if (valid)
                     {
-                        selColor = col;
+                        selColor[0] = col[0];
+                        selColor[1] = col[1];
                     }
                     else
                     {
 
                         switch (c)
                         {
-                            case '1': selColor = mColors[RED]; break;
-                            case '2': selColor = mColors[GREEN]; break;
-                            case '3': selColor = mColors[BLUE]; break;
-                            case '4': selColor = mColors[ORANGE]; break;
-                            case '5': selColor = mColors[YELLOW]; break;
-                            case '6': selColor = mColors[PINK]; break;
-                            case '7': selColor = mColors[PURPLE]; break;
-                            case '8': selColor = mColors[GRAY]; break;
-                            case '9': selColor = mColors[BROWN]; break;
+                            case '1':
+                                selColor[0] = mColors[0][RED];
+                                selColor[1] = mColors[1][RED];
+                                break;
+                            case '2':
+                                selColor[0] = mColors[0][GREEN];
+                                selColor[1] = mColors[1][GREEN];
+                                break;
+                            case '3':
+                                selColor[0] = mColors[0][BLUE];
+                                selColor[1] = mColors[1][BLUE];
+                                break;
+                            case '4':
+                                selColor[0] = mColors[0][ORANGE];
+                                selColor[1] = mColors[1][ORANGE];
+                                break;
+                            case '5':
+                                selColor[0] = mColors[0][YELLOW];
+                                selColor[1] = mColors[1][YELLOW];
+                                break;
+                            case '6':
+                                selColor[0] = mColors[0][PINK];
+                                selColor[1] = mColors[1][PINK];
+                                break;
+                            case '7':
+                                selColor[0] = mColors[0][PURPLE];
+                                selColor[1] = mColors[1][PURPLE];
+                                break;
+                            case '8':
+                                selColor[0] = mColors[0][GRAY];
+                                selColor[1] = mColors[1][GRAY];
+                                break;
+                            case '9':
+                                selColor[0] = mColors[0][BROWN];
+                                selColor[1] = mColors[1][BROWN];
+                                break;
                             case '0':
                             default:
-                                selColor = textColor;
+                                selColor[0] = textColor[0];
+                                selColor[1] = textColor[1];
                         }
                     }
 
@@ -635,7 +684,7 @@ int BrowserBox::calcHeight()
                 {
                     x -= hyphenWidth; // Remove the wrap-notifier accounting
                     mLineParts.push_back(LinePart(wWidth - hyphenWidth,
-                        y, selColor, hyphen, bold));
+                        y, selColor[0], selColor[1], hyphen, bold));
                     end++; // Skip to the next character
                 }
                 else
@@ -647,7 +696,8 @@ int BrowserBox::calcHeight()
                 wrappedLines++;
             }
 
-            mLineParts.push_back(LinePart(x, y, selColor, part.c_str(), bold));
+            mLineParts.push_back(LinePart(x, y, selColor[0], selColor[1],
+                part.c_str(), bold));
 
             if (bold)
                 width = boldFont->getWidth(part);

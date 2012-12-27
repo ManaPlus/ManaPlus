@@ -49,15 +49,26 @@ class LinePart final
 {
     public:
         LinePart(const int x, const int y, const gcn::Color color,
-                 const std::string &text, const bool bold) :
-            mX(x), mY(y), mColor(color), mText(text), mType(0),
-            mImage(nullptr), mBold(bold)
+                 const gcn::Color color2, const std::string &text,
+                 const bool bold) :
+            mX(x),
+            mY(y),
+            mColor(color),
+            mColor2(color2),
+            mText(text),
+            mType(0),
+            mImage(nullptr),
+            mBold(bold)
         {
         }
 
         LinePart(const int x, const int y, const gcn::Color color,
-                 Image *const image) :
-            mX(x), mY(y), mColor(color), mText(""), mType(1),
+                 const gcn::Color color2, Image *const image) :
+            mX(x),
+            mY(y),
+            mColor(color),
+            mColor2(color2),
+            mType(1),
             mImage(image), mBold(false)
         {
         }
@@ -66,6 +77,7 @@ class LinePart final
 
         int mX, mY;
         gcn::Color mColor;
+        gcn::Color mColor2;
         std::string mText;
         unsigned char mType;
         Image *mImage;
@@ -236,7 +248,8 @@ class BrowserBox final : public gcn::Widget,
         gcn::Color mBackgroundColor;
         gcn::Color mHighlightColor;
         gcn::Color mHyperLinkColor;
-        gcn::Color mColors[COLORS_MAX];
+        gcn::Color mColors[2][COLORS_MAX];
+        gcn::Color mForegroundColor2;
 
         static Skin *mSkin;
         static int mInstances;
