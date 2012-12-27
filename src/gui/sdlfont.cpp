@@ -69,8 +69,7 @@ class SDLTextChunk final
                     && chunk.color2 == color2);
         }
 
-        void generate(TTF_Font *const font, TTF_Font *const font2,
-                      const float alpha)
+        void generate(TTF_Font *const font, const float alpha)
         {
             BLOCK_START("SDLTextChunk::generate")
             SDL_Color sdlCol;
@@ -181,9 +180,8 @@ SDLFont::SDLFont(std::string filename, const int size, const int style) :
 
     fixDirSeparators(filename);
     mFont = TTF_OpenFont(resman->getPath(filename).c_str(), size);
-    mFontOutline = TTF_OpenFont(resman->getPath(filename).c_str(), size);
 
-    if (!mFont || !mFontOutline)
+    if (!mFont)
     {
         logger->log("Error finding font " + filename);
         std::string backFile = "fonts/dejavusans.ttf";
@@ -194,26 +192,15 @@ SDLFont::SDLFont(std::string filename, const int size, const int style) :
             throw GCN_EXCEPTION("SDLSDLFont::SDLSDLFont: " +
                                 std::string(TTF_GetError()));
         }
-        mFontOutline = TTF_OpenFont(resman->getPath(
-            fixDirSeparators(backFile)).c_str(), size);
-        if (!mFont)
-        {
-            throw GCN_EXCEPTION("SDLSDLFont::SDLSDLFont: " +
-                                std::string(TTF_GetError()));
-        }
     }
 
     TTF_SetFontStyle(mFont, style);
-    TTF_SetFontStyle(mFontOutline, style);
-    TTF_SetFontOutline(mFontOutline, OUTLINE_SIZE);
 }
 
 SDLFont::~SDLFont()
 {
     TTF_CloseFont(mFont);
     mFont = nullptr;
-    TTF_CloseFont(mFontOutline);
-    mFontOutline = nullptr;
     --fontCounter;
 
     if (fontCounter == 0)
@@ -328,7 +315,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
 #endif
         cache->push_front(chunk);
         SDLTextChunk &data = cache->front();
-        data.generate(mFont, mFontOutline, alpha);
+        data.generate(mFont, alpha);
 
         if (data.img)
             g->drawImage(data.img, x, y);
@@ -364,7 +351,7 @@ void SDLFont::createSDLTextChunk(SDLTextChunk *const chunk)
 
     const float alpha = static_cast<float>(chunk->color.a) / 255.0f;
     chunk->color.a = 255;
-    chunk->generate(mFont, mFontOutline, alpha);
+    chunk->generate(mFont, alpha);
 }
 
 int SDLFont::getWidth(const std::string &text) const

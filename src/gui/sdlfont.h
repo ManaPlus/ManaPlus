@@ -97,7 +97,6 @@ class SDLFont final : public gcn::Font
 
     private:
         TTF_Font *mFont;
-        TTF_Font *mFontOutline;
         unsigned mCreateCounter;
         unsigned mDeleteCounter;
 
