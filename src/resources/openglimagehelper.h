@@ -86,6 +86,7 @@ class OpenGLImageHelper final : public ImageHelper
         Image *load(SDL_Surface *const tmpImage) A_WARN_UNUSED;
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
+                                 int width, int height,
                                  const float alpha) A_WARN_UNUSED;
 
         // OpenGL only public functions
@@ -134,7 +135,8 @@ class OpenGLImageHelper final : public ImageHelper
          */
         int powerOfTwo(int input) const A_WARN_UNUSED;
 
-        Image *glLoad(SDL_Surface *tmpImage) A_WARN_UNUSED;
+        Image *glLoad(SDL_Surface *tmpImage,
+                      int width = 0, int height = 0) A_WARN_UNUSED;
 
         static int mUseOpenGL;
         static int mTextureSize;

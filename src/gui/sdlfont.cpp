@@ -82,6 +82,8 @@ class SDLTextChunk final
 
             SDL_Surface *surface = TTF_RenderUTF8_Blended(
                 font, strBuf, sdlCol);
+            const int width = surface->w;
+            const int height = surface->h;
 
             if (!surface)
             {
@@ -96,7 +98,7 @@ class SDLTextChunk final
                 SDL_Color sdlCol2;
                 const SDL_PixelFormat * const format = surface->format;
                 SDL_Surface *background = imageHelper->create32BitSurface(
-                    surface->w, surface->h); 
+                    width, height);
                 if (!background)
                 {
                     img = nullptr;
@@ -138,7 +140,8 @@ class SDLTextChunk final
                 SDL_FreeSurface(surface2);
                 surface = background;
             }
-            img = imageHelper->createTextSurface(surface, alpha);
+            img = imageHelper->createTextSurface(
+                surface, width, height, alpha);
             SDL_FreeSurface(surface);
 
             BLOCK_END("SDLTextChunk::generate")

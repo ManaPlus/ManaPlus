@@ -67,6 +67,7 @@ class ImageHelper
         virtual Image *load(SDL_Surface *) A_WARN_UNUSED = 0;
 
         virtual Image *createTextSurface(SDL_Surface *tmpImage,
+                                         int width, int height,
                                          float alpha) A_WARN_UNUSED = 0;
 
         virtual int useOpenGL() A_WARN_UNUSED = 0;

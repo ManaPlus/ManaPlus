@@ -132,12 +132,13 @@ Image *OpenGLImageHelper::load(SDL_Surface *const tmpImage)
 }
 
 Image *OpenGLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
+                                            int width, int height,
                                             const float alpha)
 {
     if (!tmpImage)
         return nullptr;
 
-    Image *const img = glLoad(tmpImage);
+    Image *const img = glLoad(tmpImage, width, height);
     if (img)
         img->setAlpha(alpha);
     return img;
@@ -159,7 +160,7 @@ int OpenGLImageHelper::powerOfTwo(int input) const
     return value >= mTextureSize ? mTextureSize : value;
 }
 
-Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
+Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage, int width, int height)
 {
     if (!tmpImage)
         return nullptr;
@@ -167,8 +168,10 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
     // Flush current error flag.
     glGetError();
 
-    int width = tmpImage->w;
-    int height = tmpImage->h;
+    if (!width)
+        width = tmpImage->w;
+    if (!height)
+        height = tmpImage->h;
     int realWidth = powerOfTwo(width);
     int realHeight = powerOfTwo(height);
 
