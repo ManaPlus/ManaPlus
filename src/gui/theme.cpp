@@ -207,6 +207,20 @@ Theme::Theme():
     mCharColors['S'] = SERVER;
     mCharColors['L'] = LOGGER;
     mCharColors['<'] = HYPERLINK;
+
+    // here need use outlined colors
+    mCharColors['H' | 0x80] = HIGHLIGHT_OUTLINE;
+    mCharColors['C' | 0x80] = CHAT_OUTLINE;
+    mCharColors['G' | 0x80] = GM_OUTLINE;
+    mCharColors['Y' | 0x80] = PLAYER_OUTLINE;
+    mCharColors['W' | 0x80] = WHISPER_TAB_OUTLINE;
+    mCharColors['w' | 0x80] = WHISPER_TAB_OFFLINE_OUTLINE;
+    mCharColors['I' | 0x80] = IS_OUTLINE;
+    mCharColors['P' | 0x80] = PARTY_CHAT_TAB_OUTLINE;
+    mCharColors['U' | 0x80] = GUILD_CHAT_TAB_OUTLINE;
+    mCharColors['S' | 0x80] = SERVER_OUTLINE;
+    mCharColors['L' | 0x80] = LOGGER_OUTLINE;
+    mCharColors['<' | 0x80] = HYPERLINK_OUTLINE;
 }
 
 Theme::~Theme()
@@ -711,6 +725,7 @@ static int readColorType(const std::string &type)
     static const std::string colors[] =
     {
         "BROWSERBOX",
+        "BROWSERBOX_OUTLINE",
         "TEXT",
         "CARET",
         "SHADOW",
@@ -735,8 +750,10 @@ static int readColorType(const std::string &type)
         "TEXTFIELD",
         "WINDOW",
         "PARTY_CHAT_TAB",
+        "PARTY_CHAT_TAB_OUTLINE",
         "PARTY_SOCIAL_TAB",
         "GUILD_CHAT_TAB",
+        "GUILD_CHAT_TAB_OUTLINE",
         "GUILD_SOCIAL_TAB",
         "PARTY_CHAT_TAB_HIGHLIGHTED",
         "PARTY_SOCIAL_TAB_HIGHLIGHTED",
@@ -751,24 +768,34 @@ static int readColorType(const std::string &type)
         "SCROLLBAR_GRAY",
         "DROPDOWN_SHADOW",
         "HIGHLIGHT",
+        "HIGHLIGHT_OUTLINE",
         "TAB_FLASH",
         "TAB_PLAYER_FLASH",
         "SHOP_WARNING",
         "ITEM_EQUIPPED",
         "ITEM_NOT_EQUIPPED",
         "CHAT",
+        "CHAT_OUTLINE",
         "GM",
+        "GM_OUTLINE",
         "PLAYER",
+        "PLAYER_OUTLINE",
         "WHISPER_TAB",
+        "WHISPER_TAB_OUTLINE",
         "WHISPER_TAB_OFFLINE",
+        "WHISPER_TAB_OFFLINE_OUTLINE",
         "WHISPER_TAB_HIGHLIGHTED",
         "WHISPER_TAB_OFFLINE_HIGHLIGHTED",
         "WHISPER_TAB_SELECTED",
         "WHISPER_TAB_OFFLINE_SELECTED",
         "IS",
+        "IS_OUTLINE",
         "SERVER",
+        "SERVER_OUTLINE",
         "LOGGER",
+        "LOGGER_OUTLINE",
         "HYPERLINK",
+        "HYPERLINK_OUTLINE",
         "UNKNOWN_ITEM",
         "GENERIC",
         "HEAD",
@@ -790,14 +817,23 @@ static int readColorType(const std::string &type)
         "BUBBLE_NAME",
         "BUBBLE_TEXT",
         "RED",
+        "RED_OUTLINE",
         "GREEN",
+        "GREEN_OUTLINE",
         "BLUE",
+        "BLUE_OUTLINE",
         "ORANGE",
+        "ORANGE_OUTLINE",
         "YELLOW",
+        "YELLOW_OUTLINE",
         "PINK",
+        "PINK_OUTLINE",
         "PURPLE",
+        "PURPLE_OUTLINE",
         "GRAY",
-        "BROWN"
+        "GRAY_OUTLINE",
+        "BROWN",
+        "BROWN_OUTLINE"
     };
 
     if (type.empty())
@@ -951,7 +987,8 @@ void Theme::loadColors(std::string file)
         {
             if (xmlNameEqual(node, "color"))
             {
-                type = readColorType(XML::getProperty(node, "id", ""));
+                std::string id = XML::getProperty(node, "id", "");
+                type = readColorType(id);
                 if (type < 0) // invalid or no type given
                     continue;
 
@@ -963,6 +1000,16 @@ void Theme::loadColors(std::string file)
                 grad = readColorGradient(XML::getProperty(node, "effect", ""));
                 mColors[paletteId * THEME_COLORS_END + type].set(
                     type, color, grad, 10);
+
+
+                if (!findLast(id, "_OUTLINE"))
+                {
+                    const int type2 = readColorType(id + "_OUTLINE");
+                    if (type2 < 0)
+                        continue;
+                    const int idx = paletteId * THEME_COLORS_END;
+                    mColors[idx + type2] = mColors[idx + type];
+                }
             }
         }
     }
