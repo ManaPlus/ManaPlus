@@ -743,6 +743,7 @@ static int readColorType(const std::string &type)
         "LISTBOX_SELECTED",
         "RADIOBUTTON",
         "POPUP",
+        "POPUP_OUTLINE",
         "TAB",
         "TAB_HIGHLIGHTED",
         "TAB_SELECTED",
@@ -1000,7 +1001,6 @@ void Theme::loadColors(std::string file)
                 grad = readColorGradient(XML::getProperty(node, "effect", ""));
                 mColors[paletteId * THEME_COLORS_END + type].set(
                     type, color, grad, 10);
-
 
                 if (!findLast(id, "_OUTLINE"))
                 {

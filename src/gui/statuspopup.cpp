@@ -75,21 +75,36 @@ StatusPopup::StatusPopup() :
     mCameraMode->setPosition(0, 16 + 13 * fontHeight);
     mDisableGameModifiers->setPosition(0, 20 + 14 * fontHeight);
 
-    mMoveType->setForegroundColor(getThemeColor(Theme::POPUP));
-    mCrazyMoveType->setForegroundColor(getThemeColor(Theme::POPUP));
-    mMoveToTargetType->setForegroundColor(getThemeColor(Theme::POPUP));
-    mFollowMode->setForegroundColor(getThemeColor(Theme::POPUP));
-    mAttackWeaponType->setForegroundColor(getThemeColor(Theme::POPUP));
-    mAttackType->setForegroundColor(getThemeColor(Theme::POPUP));
-    mMagicAttackType->setForegroundColor(getThemeColor(Theme::POPUP));
-    mPvpAttackType->setForegroundColor(getThemeColor(Theme::POPUP));
-    mDropCounter->setForegroundColor(getThemeColor(Theme::POPUP));
-    mPickUpType->setForegroundColor(getThemeColor(Theme::POPUP));
-    mMapType->setForegroundColor(getThemeColor(Theme::POPUP));
-    mImitationMode->setForegroundColor(getThemeColor(Theme::POPUP));
-    mAwayMode->setForegroundColor(getThemeColor(Theme::POPUP));
-    mCameraMode->setForegroundColor(getThemeColor(Theme::POPUP));
-    mDisableGameModifiers->setForegroundColor(getThemeColor(Theme::POPUP));
+    mMoveType->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mCrazyMoveType->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mMoveToTargetType->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mFollowMode->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mAttackWeaponType->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mAttackType->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mMagicAttackType->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mPvpAttackType->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mDropCounter->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mPickUpType->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mMapType->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mImitationMode->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mAwayMode->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mCameraMode->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mDisableGameModifiers->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
 
     add(mMoveType);
     add(mCrazyMoveType);
@@ -106,8 +121,6 @@ StatusPopup::StatusPopup() :
     add(mImitationMode);
     add(mAwayMode);
     add(mCameraMode);
-
-//    addMouseListener(this);
 }
 
 StatusPopup::~StatusPopup()
