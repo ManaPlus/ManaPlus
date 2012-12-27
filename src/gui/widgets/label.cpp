@@ -72,27 +72,28 @@ void Label::draw(gcn::Graphics* graphics)
     BLOCK_START("Label::draw")
     int textX;
     const int textY = getHeight() / 2 - getFont()->getHeight() / 2;
+    gcn::Font *const font = getFont();
+    graphics->setFont(font);
 
-    switch (getAlignment())
+    switch (mAlignment)
     {
         case Graphics::LEFT:
         default:
             textX = mPadding;
             break;
         case Graphics::CENTER:
-            textX = getWidth() / 2;
+            textX = (getWidth() - font->getWidth(mCaption)) / 2;
             break;
         case Graphics::RIGHT:
             if (getWidth() > mPadding)
-                textX = getWidth() - mPadding;
+                textX = getWidth() - mPadding - font->getWidth(mCaption);
             else
                 textX = 0;
             break;
     }
 
-    graphics->setFont(getFont());
     graphics->setColor(mForegroundColor);
-    graphics->drawText(getCaption(), textX, textY, getAlignment());
+    font->drawString(graphics, mCaption, textX, textY);
     BLOCK_END("Label::draw")
 }
 

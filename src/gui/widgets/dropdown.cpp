@@ -227,9 +227,10 @@ void DropDown::draw(gcn::Graphics* graphics)
 
     if (mPopup->getListModel() && mPopup->getSelected() >= 0)
     {
-        graphics->setFont(getFont());
+        gcn::Font *const font = getFont();
+        graphics->setFont(font);
         graphics->setColor(mForegroundColor);
-        graphics->drawText(mPopup->getListModel()->getElementAt(
+        font->drawString(graphics, mPopup->getListModel()->getElementAt(
             mPopup->getSelected()), mPadding, mPadding);
     }
 

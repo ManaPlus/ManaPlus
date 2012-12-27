@@ -338,3 +338,32 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
 
     keyEvent.consume();
 }
+
+void TextBox::draw(gcn::Graphics* graphics)
+{
+    BLOCK_START("TextBox::draw")
+    if (mOpaque)
+    {
+        graphics->setColor(mBackgroundColor);
+        graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
+    }
+
+    if (isFocused() && isEditable())
+    {
+        drawCaret(graphics, getFont()->getWidth(
+            mTextRows[mCaretRow].substr(0, mCaretColumn)),
+            mCaretRow * getFont()->getHeight());
+    }
+
+    graphics->setColor(mForegroundColor);
+    gcn::Font *const font = getFont();
+    graphics->setFont(font);
+    const int fontHeight = font->getHeight();
+
+    for (size_t i = 0, sz = mTextRows.size(); i < sz; i++)
+    {
+        // Move the text one pixel so we can have a caret before a letter.
+        font->drawString(graphics, mTextRows[i], 1, i * fontHeight);
+    }
+    BLOCK_END("TextBox::draw")
+}

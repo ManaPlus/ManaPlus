@@ -230,7 +230,7 @@ namespace gcn
 
         // Inherited from Widget
 
-        virtual void draw(Graphics* graphics);
+//        virtual void draw(Graphics* graphics);
 
         virtual void fontChanged();
 

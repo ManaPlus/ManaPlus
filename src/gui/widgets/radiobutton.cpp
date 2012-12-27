@@ -152,10 +152,11 @@ void RadioButton::draw(gcn::Graphics* graphics)
     BLOCK_START("RadioButton::draw")
     drawBox(graphics);
 
-    graphics->setFont(getFont());
+    gcn::Font *const font = getFont();
+    graphics->setFont(font);
     graphics->setColor(mForegroundColor);
 
-    graphics->drawText(getCaption(), mPadding + mImageSize + mSpacing,
+    font->drawString(graphics, mCaption, mPadding + mImageSize + mSpacing,
         mPadding);
     BLOCK_END("RadioButton::draw")
 }

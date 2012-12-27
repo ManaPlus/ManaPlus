@@ -49,6 +49,8 @@
 
 #include "resources/resourcemanager.h"
 
+#include <guichan/font.hpp>
+
 #include "debug.h"
 
 extern volatile int tick_time;
@@ -358,6 +360,8 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
 {
     graphics->setColor(color);
 
+    gcn::Font *const font = getFont();
+
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
@@ -372,8 +376,9 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
             graphics->fillRectangle(gcn::Rectangle(squareX, squareY, 8, 8));
             if (mMap)
             {
-                graphics->drawText(toString(cnt),
-                    squareX + 4, squareY + 12, gcn::Graphics::CENTER);
+                const std::string str = toString(cnt);
+                font->drawString(graphics, str, squareX + 4
+                    - font->getWidth(str) / 2, squareY + 12);
             }
             cnt ++;
         }
@@ -391,9 +396,10 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
                                                    8, 8));
             if (mMap)
             {
-                graphics->drawText(
-                    toString(mMap->getMetaTile(i->x / 32, i->y / 32)->Gcost),
-                    squareX + 4, squareY + 12, gcn::Graphics::CENTER);
+                const std::string str = toString(mMap->getMetaTile(
+                    i->x / 32, i->y / 32)->Gcost);
+                font->drawString(graphics, str,
+                    squareX + 4 - font->getWidth(text) / 2, squareY + 12);
             }
         }
     }

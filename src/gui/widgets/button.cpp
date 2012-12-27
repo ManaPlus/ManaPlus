@@ -345,19 +345,23 @@ void Button::draw(gcn::Graphics *graphics)
             break;
     }
 
-    int textX = 0;
-    const int textY = getHeight() / 2 - getFont()->getHeight() / 2;
     int imageX = 0;
     int imageY = 0;
+    int textX = 0;
+    int textY = getHeight() / 2 - getFont()->getHeight() / 2;
     if (mImages)
         imageY = getHeight() / 2 - mImageHeight / 2;
 
 // need move calculation from draw!!!
 
-    switch (getAlignment())
+    gcn::Font *const font = getFont();
+    graphics->setFont(font);
+
+    switch (mAlignment)
     {
         default:
         case gcn::Graphics::LEFT:
+        {
             if (mImages)
             {
                 imageX = padding;
@@ -368,26 +372,30 @@ void Button::draw(gcn::Graphics *graphics)
                 textX = padding;
             }
             break;
+        }
         case gcn::Graphics::CENTER:
+        {
+            const int width = font->getWidth(mCaption);
             if (mImages)
             {
-                const int width = getFont()->getWidth(mCaption)
-                    + mImageWidth + spacing;
+                const int width = width + mImageWidth + spacing;
                 imageX = getWidth() / 2 - width / 2;
-                textX = imageX + mImageWidth + spacing;
+                textX = imageX + mImageWidth + spacing - width / 2;
             }
             else
             {
-                textX = getWidth() / 2;
+                textX = (getWidth() - width) / 2;
             }
             break;
+        }
         case gcn::Graphics::RIGHT:
-            textX = getWidth() - padding;
-            imageX = textX - getFont()->getWidth(mCaption) - spacing;
+        {
+            const int width = font->getWidth(mCaption);
+            textX = getWidth() - width - padding;
+            imageX = textX - width - spacing;
             break;
+        }
     }
-
-    graphics->setFont(getFont());
 
     if (openGLMode != 2)
     {
@@ -427,9 +435,11 @@ void Button::draw(gcn::Graphics *graphics)
     }
 
     if (isPressed())
-        g2->drawText(getCaption(), textX + 1, textY + 1, getAlignment());
-    else
-        g2->drawText(getCaption(), textX, textY, getAlignment());
+    {
+        textX ++;
+        textY ++;
+    }
+    font->drawString(g2, mCaption, textX, textY);
     BLOCK_END("Button::draw")
 }
 

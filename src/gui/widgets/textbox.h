@@ -60,6 +60,8 @@ class TextBox final : public gcn::TextBox,
 
         void keyPressed(gcn::KeyEvent& keyEvent) override;
 
+        void draw(gcn::Graphics* graphics);
+
     private:
         int mMinWidth;
 };

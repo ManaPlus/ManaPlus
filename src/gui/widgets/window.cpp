@@ -36,6 +36,7 @@
 
 #include <guichan/exception.hpp>
 #include <guichan/focushandler.hpp>
+#include <guichan/font.hpp>
 
 #include "debug.h"
 
@@ -267,8 +268,21 @@ void Window::draw(gcn::Graphics *graphics)
     {
         g->setColor(mForegroundColor);
         g->setFont(mCaptionFont);
-        g->drawText(getCaption(), mCaptionOffsetX, mCaptionOffsetY,
-            static_cast<gcn::Graphics::Alignment>(mCaptionAlign));
+        int x;
+        switch (static_cast<gcn::Graphics::Alignment>(mCaptionAlign))
+        {
+            case Graphics::LEFT:
+            default:
+                x = mCaptionOffsetX;
+                break;
+            case Graphics::CENTER:
+                x = mCaptionOffsetX - mCaptionFont->getWidth(mCaption) / 2;
+                break;
+            case Graphics::RIGHT:
+                x = mCaptionOffsetX - mCaptionFont->getWidth(mCaption);
+                break;
+        }
+        mCaptionFont->drawString(g, mCaption, x, mCaptionOffsetY);
     }
 
     if (update)
