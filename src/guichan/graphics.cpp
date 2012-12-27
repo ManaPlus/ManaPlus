@@ -152,27 +152,10 @@ namespace gcn
         mFont = font;
     }
 
+/*
     void Graphics::drawText(const std::string& text, int x, int y,
                             Alignment alignment)
     {
-        FUNC_BLOCK("Graphics::drawText", 1)
-        if (!mFont)
-            throw GCN_EXCEPTION("No font set.");
-
-        switch (alignment)
-        {
-            case LEFT:
-                mFont->drawString(this, text, x, y);
-                break;
-            case CENTER:
-                mFont->drawString(this, text, x
-                    - mFont->getWidth(text) / 2, y);
-                break;
-            case RIGHT:
-                mFont->drawString(this, text, x - mFont->getWidth(text), y);
-                break;
-            default:
-                throw GCN_EXCEPTION("Unknown alignment.");
-        }
     }
+*/
 }

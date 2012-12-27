@@ -267,20 +267,6 @@ namespace gcn
          */
         virtual void setFont(Font* font);
 
-        /**
-         * Draws text.
-         *
-         * @param text The text to draw.
-         * @param x The x coordinate where to draw the text.
-         * @param y The y coordinate where to draw the text.
-         * @param alignment The alignemnt to use when drawing.
-         * @throws Exception when no font has been set.
-         */
-        virtual void drawText(const std::string& text,
-                              int x,
-                              int y,
-                              Alignment alignment = LEFT);
-
     protected:
         /**
          * Holds the clip area stack.
