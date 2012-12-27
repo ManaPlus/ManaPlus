@@ -62,6 +62,11 @@ class TextBox final : public gcn::TextBox,
 
         void draw(gcn::Graphics* graphics);
 
+        void setForegroundColor(const gcn::Color &color);
+
+        void setForegroundColorAll(const gcn::Color &color1,
+                                   const gcn::Color &color2);
+
     private:
         int mMinWidth;
 };

@@ -356,6 +356,7 @@ void TextBox::draw(gcn::Graphics* graphics)
     }
 
     graphics->setColor(mForegroundColor);
+    static_cast<Graphics*>(graphics)->setColor2(mForegroundColor2);
     gcn::Font *const font = getFont();
     const int fontHeight = font->getHeight();
 
@@ -365,4 +366,17 @@ void TextBox::draw(gcn::Graphics* graphics)
         font->drawString(graphics, mTextRows[i], 1, i * fontHeight);
     }
     BLOCK_END("TextBox::draw")
+}
+
+void TextBox::setForegroundColor(const gcn::Color &color)
+{
+    mForegroundColor = color;
+    mForegroundColor2 = color;
+}
+
+void TextBox::setForegroundColorAll(const gcn::Color &color1,
+                                    const gcn::Color &color2)
+{
+    mForegroundColor = color1;
+    mForegroundColor2 = color2;
 }
