@@ -143,6 +143,7 @@ Window::Window(const std::string &caption, const bool modal,
 
     addWidgetListener(this);
     mForegroundColor = getThemeColor(Theme::WINDOW);
+    mForegroundColor2 = getThemeColor(Theme::WINDOW_OUTLINE);
     setPalette(childPalette);
 }
 
@@ -267,6 +268,7 @@ void Window::draw(gcn::Graphics *graphics)
     if (mShowTitle)
     {
         g->setColor(mForegroundColor);
+        g->setColor2(mForegroundColor2);
         int x;
         switch (static_cast<gcn::Graphics::Alignment>(mCaptionAlign))
         {

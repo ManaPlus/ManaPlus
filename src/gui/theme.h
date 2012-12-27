@@ -214,6 +214,7 @@ class Theme final : public Palette, public ConfigListener
             TEXTBOX,
             TEXTFIELD,
             WINDOW,
+            WINDOW_OUTLINE,
             PARTY_CHAT_TAB,
             PARTY_CHAT_TAB_OUTLINE,
             PARTY_SOCIAL_TAB,
