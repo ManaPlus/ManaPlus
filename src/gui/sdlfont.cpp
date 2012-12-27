@@ -96,7 +96,6 @@ class SDLTextChunk final
                 || color.b != color2.b)
             {   // outlining
                 SDL_Color sdlCol2;
-                const SDL_PixelFormat * const format = surface->format;
                 SDL_Surface *background = imageHelper->create32BitSurface(
                     width, height);
                 if (!background)
@@ -120,8 +119,10 @@ class SDLTextChunk final
                 }
                 SDL_Rect rect =
                 {
-                    OUTLINE_SIZE, 0,
-                    surface->w, surface->h
+                    OUTLINE_SIZE,
+                    0,
+                    static_cast<Uint16>(surface->w),
+                    static_cast<Uint16>(surface->h)
                 };
 //                SDL_SetAlpha(surface2, 0, SDL_ALPHA_OPAQUE);
                 SDL_gfxBlitRGBA(surface2, nullptr, background, &rect);

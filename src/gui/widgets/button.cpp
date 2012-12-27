@@ -377,8 +377,8 @@ void Button::draw(gcn::Graphics *graphics)
             const int width = font->getWidth(mCaption);
             if (mImages)
             {
-                const int width = width + mImageWidth + spacing;
-                imageX = getWidth() / 2 - width / 2;
+                const int w = width + mImageWidth + spacing;
+                imageX = (getWidth() - w) / 2;
                 textX = imageX + mImageWidth + spacing - width / 2;
             }
             else

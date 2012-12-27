@@ -562,7 +562,8 @@ SetupItemDropDown::SetupItemDropDown(std::string text,
     mHorizont(nullptr),
     mLabel(nullptr),
     mModel(model),
-    mDropDown(nullptr)
+    mDropDown(nullptr),
+    mWidth(width)
 {
     mValueType = VSTR;
     createControls();

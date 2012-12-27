@@ -726,9 +726,9 @@ SkillData *SkillInfo::getData(const int level1)
     return (*it).second;
 }
 
-SkillData *SkillInfo::getData1(const int level)
+SkillData *SkillInfo::getData1(const int lev)
 {
-    SkillDataMapIter it = dataMap.find(level);
+    SkillDataMapIter it = dataMap.find(lev);
     if (it == dataMap.end())
         return dataMap[0];
     return (*it).second;

@@ -476,10 +476,6 @@ void ServerDialog::valueChanged(const gcn::SelectionEvent &)
         mDeleteButton->setEnabled(false);
         return;
     }
-
-    // Update the server and post fields according to the new selection
-    const ServerInfo &myServer = mServersListModel->getServer(index);
-
     mDeleteButton->setEnabled(true);
 }
 
