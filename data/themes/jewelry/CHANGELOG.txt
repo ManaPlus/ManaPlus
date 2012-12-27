@@ -7,7 +7,7 @@ Version 1.0.2 (WIP)
 	- Chat Tab color scheme is now user friendly
 	- Chat Tab color scheme for Party and Guild tabs implemented
 	- New resize grip graphic
-	- Fix position of resize grip
+	- Fix position of resize grip in all windows
 	- Fix bug with Status window lock button graphic
 	- New rounded border graphic for all windows
 
