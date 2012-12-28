@@ -29,6 +29,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/dropdown.h"
+#include "gui/widgets/extendedlistmodel.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/namesmodel.h"
@@ -116,46 +117,73 @@ struct Language final
 {
     std::string name;
     std::string value;
+    std::string icon;
 };
 
 const int langs_count = 16;
 
 const Language LANG_NAME[langs_count] =
 {
-    {N_("(default)"), ""},
-    {N_("Chinese (China)"), "zh_CN"},
-    {N_("Czech"), "cs_CZ"},
-    {N_("English"), "C"},
-    {N_("Finnish"), "fi_FI"},
-    {N_("French"), "fr_FR"},
-    {N_("German"), "de_DE"},
-    {N_("Indonesian"), "id_ID"},
-    {N_("Italian"), "it_IT"},
-    {N_("Polish"), "pl_PL"},
-    {N_("Japanese"), "ja_JP.utf8"},
-    {N_("Dutch (Belgium/Flemish)"), "nl_BE"},
-    {N_("Portuguese"), "pt_PT"},
-    {N_("Portuguese (Brazilian)"), "pt_BR"},
-    {N_("Russian"), "ru_RU"},
-    {N_("Spanish (Castilian)"), "es_ES"}
+    {N_("(default)"), "", ""},
+    {N_("Chinese (China)"), "zh_CN", "cn.png"},
+    {N_("Czech"), "cs_CZ", "cz.png"},
+    {N_("English"), "C", "en.png"},
+    {N_("Finnish"), "fi_FI", "fi.png"},
+    {N_("French"), "fr_FR", "fr.png"},
+    {N_("German"), "de_DE", "de.png"},
+    {N_("Indonesian"), "id_ID", "id.png"},
+    {N_("Italian"), "it_IT", "it.png"},
+    {N_("Polish"), "pl_PL", "pl.png"},
+    {N_("Japanese"), "ja_JP", "jp.png"},
+    {N_("Dutch (Belgium/Flemish)"), "nl_BE", ""},
+    {N_("Portuguese"), "pt_PT", "pt.png"},
+    {N_("Portuguese (Brazilian)"), "pt_BR", "pt_BR.png"},
+    {N_("Russian"), "ru_RU", "ru.png"},
+    {N_("Spanish (Castilian)"), "es_ES", "es.png"}
 };
 
-class LangListModel final : public gcn::ListModel
+class LangListModel final : public ExtendedListModel
 {
 public:
-    virtual ~LangListModel()
-    { }
+    LangListModel()
+    {
+        ResourceManager *const resman = ResourceManager::getInstance();
+        for (int f = 0; f < langs_count; f ++)
+        {
+            mIcons[f] = resman->getImage("graphics/flags/"
+                + LANG_NAME[f].icon);
+        }
+    }
 
-    virtual int getNumberOfElements() override
+    virtual ~LangListModel()
+    {
+        for (int f = 0; f < langs_count; f ++)
+        {
+            Image *const img = mIcons[f];
+            if (img)
+                img->decRef();
+        }
+    }
+
+    int getNumberOfElements() override A_WARN_UNUSED
     { return langs_count; }
 
-    virtual std::string getElementAt(int i) override
+    std::string getElementAt(int i) override A_WARN_UNUSED
     {
         if (i >= getNumberOfElements() || i < 0)
             return _("???");
 
         return gettext(LANG_NAME[i].name.c_str());
     }
+
+    const Image *getImageAt(int i) override A_WARN_UNUSED
+    {
+        if (i >= getNumberOfElements() || i < 0)
+            return nullptr;
+        return mIcons[i];
+    }
+
+    Image *mIcons[langs_count];
 };
 
 Setup_Theme::Setup_Theme(const Widget2 *const widget) :
@@ -170,7 +198,7 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     mFont(config.getStringValue("font")),
     mLangListModel(new LangListModel),
     mLangLabel(new Label(this, _("Language"))),
-    mLangDropDown(new DropDown(this, mLangListModel)),
+    mLangDropDown(new DropDown(this, mLangListModel, true)),
     mLang(config.getStringValue("lang")),
     mBoldFontLabel(new Label(this, _("Bold font"))),
     mBoldFontDropDown(new DropDown(this, mFontsModel)),

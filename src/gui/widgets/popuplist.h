@@ -39,7 +39,7 @@ class PopupList final : public Popup,
 {
     public:
         PopupList(DropDown *const widget,
-                  gcn::ListModel *const listModel);
+                  gcn::ListModel *const listModel, bool extended);
 
         ~PopupList();
 

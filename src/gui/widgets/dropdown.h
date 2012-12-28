@@ -72,6 +72,7 @@ class DropDown final : public gcn::ActionListener,
          */
         DropDown(const Widget2 *const widget,
                  gcn::ListModel *const listModel = nullptr,
+                 bool extended = false,
                  gcn::ActionListener *const listener = nullptr,
                  const std::string &eventId = "");
 

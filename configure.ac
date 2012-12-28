@@ -310,6 +310,7 @@ data/Makefile
 data/evol/Makefile
 data/fonts/Makefile
 data/graphics/Makefile
+data/graphics/flags/Makefile
 data/graphics/gui/Makefile
 data/graphics/images/Makefile
 data/graphics/sprites/Makefile

@@ -30,7 +30,8 @@ class ExtendedListBox final : public ListBox
          * Constructor.
          */
         ExtendedListBox(const Widget2 *const widget,
-                        gcn::ListModel *const listModel);
+                        gcn::ListModel *const listModel,
+                        int rowHeight = 13);
 
         A_DELETE_COPY(ExtendedListBox)
 

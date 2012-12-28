@@ -58,6 +58,7 @@ static std::string const dropdownFiles[2] =
 
 DropDown::DropDown(const Widget2 *const widget,
                    gcn::ListModel *const listModel,
+                   bool extended,
                    gcn::ActionListener *const listener,
                    const std::string &eventId):
     gcn::ActionListener(),
@@ -67,7 +68,7 @@ DropDown::DropDown(const Widget2 *const widget,
     gcn::FocusListener(),
     gcn::SelectionListener(),
     Widget2(widget),
-    mPopup(new PopupList(this, listModel)),
+    mPopup(new PopupList(this, listModel, extended)),
     mShadowColor(getThemeColor(Theme::DROPDOWN_SHADOW)),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mPadding(1),

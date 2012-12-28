@@ -37,12 +37,21 @@
 #include "debug.h"
 
 ExtendedListBox::ExtendedListBox(const Widget2 *const widget,
-                                 gcn::ListModel *const listModel) :
+                                 gcn::ListModel *const listModel,
+                                 int rowHeight) :
     ListBox(widget, listModel),
-    mRowHeight(13),
+    mRowHeight(rowHeight),
     mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
     mSpacing(mSkin ? mSkin->getOption("spacing") : 0)
 {
+    if (!mRowHeight)
+    {
+        const gcn::Font *font = getFont();
+        if (font)
+            mRowHeight = font->getHeight() + 2 * mPadding;
+        else
+            mRowHeight = 13;
+    }
 }
 
 ExtendedListBox::~ExtendedListBox()

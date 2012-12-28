@@ -23,7 +23,7 @@
 #include "gui/gui.h"
 
 #include "gui/widgets/dropdown.h"
-#include "gui/widgets/listbox.h"
+#include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "utils/gettext.h"
@@ -31,11 +31,13 @@
 #include "debug.h"
 
 PopupList::PopupList(DropDown *const widget,
-                     gcn::ListModel *const listModel):
+                     gcn::ListModel *const listModel,
+                     bool extended):
     Popup("PopupList", "popuplist.xml"),
     gcn::FocusListener(),
     mListModel(listModel),
-    mListBox(new ListBox(widget, listModel)),
+    mListBox(extended ? new ExtendedListBox(widget, listModel, 0) :
+        new ListBox(widget, listModel)),
     mScrollArea(new ScrollArea(mListBox, false)),
     mDropDown(widget)
 {
