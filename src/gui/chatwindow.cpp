@@ -206,7 +206,11 @@ ChatWindow::ChatWindow():
     setSaveVisible(true);
     setStickyButtonLock(true);
 
+#ifdef ANDROID
+    setDefaultSize(600, 123, ImageRect::UPPER_LEFT, -110, -35);
+#else
     setDefaultSize(600, 123, ImageRect::LOWER_LEFT);
+#endif
     setMinWidth(150);
     setMinHeight(90);
 
