@@ -109,12 +109,12 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
         }
         else
         {
+            const int y = mSelected * height;
             g->drawImage(image, mImagePadding, y + (height
                 - image->getHeight()) / 2 + mPadding);
             graphics->setColor(mForegroundSelectedColor);
             font->drawString(graphics, mListModel->getElementAt(mSelected),
-                image->getWidth() + mImagePadding + mSpacing,
-                mSelected * height + textPos);
+                image->getWidth() + mImagePadding + mSpacing, y + textPos);
         }
     }
     BLOCK_END("ExtendedListBox::draw")
