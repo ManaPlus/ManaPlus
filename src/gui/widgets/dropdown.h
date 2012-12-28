@@ -25,17 +25,15 @@
 
 #include "gui/widgets/widget2.h"
 
-#include "guichan/actionlistener.hpp"
-#include "guichan/basiccontainer.hpp"
-#include "guichan/focushandler.hpp"
-#include "guichan/focuslistener.hpp"
-#include "guichan/keylistener.hpp"
-#include "guichan/listmodel.hpp"
-#include "guichan/mouselistener.hpp"
-#include "guichan/selectionlistener.hpp"
-
-#include "guichan/widgets/listbox.hpp"
-#include "guichan/widgets/scrollarea.hpp"
+#include <guichan/actionlistener.hpp>
+#include <guichan/basiccontainer.hpp>
+#include <guichan/focushandler.hpp>
+#include <guichan/focuslistener.hpp>
+#include <guichan/keylistener.hpp>
+#include <guichan/listmodel.hpp>
+#include <guichan/mouselistener.hpp>
+#include <guichan/selectionlistener.hpp>
+#include <guichan/widgets/scrollarea.hpp>
 
 #include "localconsts.h"
 
@@ -147,11 +145,13 @@ class DropDown final : public gcn::ActionListener,
          */
         void drawButton(gcn::Graphics *graphics);
 
+        bool mExtended;
         PopupList *mPopup;
         gcn::Color mShadowColor;
         gcn::Color mHighlightColor;
         int mPadding;
         int mImagePadding;
+        int mSpacing;
 
         bool mDroppedDown;
         bool mPushed;

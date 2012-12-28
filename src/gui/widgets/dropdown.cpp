@@ -30,6 +30,7 @@
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
+#include "gui/widgets/extendedlistmodel.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/popuplist.h"
 #include "gui/widgets/scrollarea.h"
@@ -68,6 +69,7 @@ DropDown::DropDown(const Widget2 *const widget,
     gcn::FocusListener(),
     gcn::SelectionListener(),
     Widget2(widget),
+    mExtended(extended),
     mPopup(new PopupList(this, listModel, extended)),
     mShadowColor(getThemeColor(Theme::DROPDOWN_SHADOW)),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
@@ -157,6 +159,7 @@ DropDown::DropDown(const Widget2 *const widget,
         mFrameSize = mSkin->getOption("frameSize");
         mPadding = mSkin->getPadding();
         mImagePadding = mSkin->getOption("imagePadding");
+        mSpacing = mSkin->getOption("spacing");
     }
     adjustHeight();
 }
@@ -226,12 +229,36 @@ void DropDown::draw(gcn::Graphics* graphics)
     mHighlightColor.a = alpha;
     mShadowColor.a = alpha;
 
-    if (mPopup->getListModel() && mPopup->getSelected() >= 0)
+    gcn::ListModel *const model = mPopup->getListModel();
+    if (model && mPopup->getSelected() >= 0)
     {
         gcn::Font *const font = getFont();
         graphics->setColor(mForegroundColor);
-        font->drawString(graphics, mPopup->getListModel()->getElementAt(
-            mPopup->getSelected()), mPadding, mPadding);
+        if (mExtended)
+        {
+            const int sel = mPopup->getSelected();
+            ExtendedListModel *const model2
+                = static_cast<ExtendedListModel *const>(model);
+            const Image *const image = model2->getImageAt(sel);
+            if (!image)
+            {
+                font->drawString(graphics, model->getElementAt(sel),
+                    mPadding, mPadding);
+            }
+            else
+            {
+                static_cast<Graphics*>(graphics)->drawImage(
+                    image, mImagePadding, (getHeight()
+                    - image->getHeight()) / 2 + mPadding);
+                font->drawString(graphics, model->getElementAt(sel),
+                    image->getWidth() + mImagePadding + mSpacing, mPadding);
+            }
+        }
+        else
+        {
+            font->drawString(graphics, model->getElementAt(
+                mPopup->getSelected()), mPadding, mPadding);
+        }
     }
 
     if (isFocused())
