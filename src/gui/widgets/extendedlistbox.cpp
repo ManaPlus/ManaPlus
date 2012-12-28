@@ -63,7 +63,7 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     gcn::Font *const font = getFont();
 
     const int height = getRowHeight();
-    int textPos = (height - getFont()->getHeight()) / 2 + mPadding;
+    int textPos = (height - font->getHeight()) / 2 + mPadding;
     if (textPos < 0)
         textPos = 0;
 
@@ -109,6 +109,8 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
         }
         else
         {
+            g->drawImage(image, mImagePadding, y + (height
+                - image->getHeight()) / 2 + mPadding);
             graphics->setColor(mForegroundSelectedColor);
             font->drawString(graphics, mListModel->getElementAt(mSelected),
                 image->getWidth() + mImagePadding + mSpacing,
