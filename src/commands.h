@@ -108,6 +108,7 @@ namespace Commands
     decHandler(open);
     decHandler(dump);
     decHandler(dumpGraphics);
+    decHandler(dumpEnvironment);
     decHandler(dumpTests);
     decHandler(dumpOGL);
     decHandler(cacheInfo);
@@ -182,6 +183,7 @@ static const CommandInfo commands[] =
     {"setdrop", &Commands::setDrop},
     {"error", &Commands::error},
     {"dumpg", &Commands::dumpGraphics},
+    {"dumpe", &Commands::dumpEnvironment},
     {"dumpt", &Commands::dumpTests},
     {"dumpogl", &Commands::dumpOGL},
     {"url", &Commands::url},

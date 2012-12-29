@@ -81,6 +81,7 @@
     ChatTab *const tab)
 
 extern std::string tradePartnerName;
+extern char **environ;
 
 namespace Commands
 {
@@ -1005,6 +1006,16 @@ impHandler2(dumpGraphics)
 
     str += strprintf(",%d-%d", fps, config.getIntValue("fpslimit"));
     outStringNormal(tab, str, str);
+}
+
+impHandler0(dumpEnvironment)
+{
+    logger->log("Start environment variables");
+    for (char **env = environ; *env; ++ env)
+        logger->log(*env);
+    logger->log("End environment variables");
+    if (debugChatTab)
+        debugChatTab->chatLog(_("Environment variables dumped"));
 }
 
 impHandler2(dumpTests)
