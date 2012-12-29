@@ -96,12 +96,6 @@ bool execFile(std::string pathName, std::string name A_UNUSED,
     return res;
 }
 
-bool openBrowser(std::string url)
-{
-    return (int)ShellExecute(nullptr, "open", url.c_str(), nullptr,
-        nullptr, SW_SHOWNORMAL) > 32;
-}
-
 
 #elif defined __linux__ || defined __linux || defined __APPLE__
 
@@ -210,11 +204,6 @@ bool execFile(std::string pathName, std::string name,
     return true;
 }
 
-bool openBrowser(std::string url)
-{
-    return execFile("/usr/bin/xdg-open", "/usr/bin/xdg-open", url, "") == 0;
-}
-
 #else
 
 int execFileWait(std::string pathName, std::string name,
@@ -229,6 +218,27 @@ bool execFile(std::string pathName, std::string name,
     return false;
 }
 
+#endif
+
+#ifdef WIN32
+bool openBrowser(std::string url)
+{
+    return (int)ShellExecute(nullptr, "open", url.c_str(), nullptr,
+        nullptr, SW_SHOWNORMAL) > 32;
+}
+
+#elif defined __linux__ || defined __linux
+bool openBrowser(std::string url)
+{
+    return execFile("/usr/bin/xdg-open", "/usr/bin/xdg-open", url, "") == 0;
+}
+#elif defined __APPLE__
+bool openBrowser(std::string url)
+{
+    return execFile("/usr/bin/open", "/usr/bin/open", url, "") == 0;
+}
+
+#else
 bool openBrowser(std::string url)
 {
     return false;
