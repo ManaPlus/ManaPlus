@@ -177,16 +177,22 @@ SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *handle)
 
 SDL_RWops *PHYSFSRWOPS_openRead(const char *fname)
 {
+    if (!fname || !*fname)
+        return nullptr;
     return create_rwops(PHYSFS_openRead(fname));
 } /* PHYSFSRWOPS_openRead */
 
 SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname)
 {
+    if (!fname || !*fname)
+        return nullptr;
     return create_rwops(PHYSFS_openWrite(fname));
 } /* PHYSFSRWOPS_openWrite */
 
 SDL_RWops *PHYSFSRWOPS_openAppend(const char *fname)
 {
+    if (!fname || !*fname)
+        return nullptr;
     return create_rwops(PHYSFS_openAppend(fname));
 } /* PHYSFSRWOPS_openAppend */
 
