@@ -1267,7 +1267,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2B17132F1686A98C002E9493 /* ManaPlus10.6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManaPlus10.6.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B17132F1686A98C002E9493 /* ManaPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManaPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B1713311686A98C002E9493 /* ManaPlus-10.6-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ManaPlus-10.6-Info.plist"; path = "/Volumes/User/philippe_groarke/Documents/XCode/socapexs-manaplus/Xcode/ManaPlus-10.6-Info.plist"; sourceTree = "<absolute>"; };
 		2B8B70C9167EBCB3003A8440 /* popuplist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = popuplist.cpp; sourceTree = "<group>"; };
 		2B8B70CA167EBCB3003A8440 /* popuplist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popuplist.h; sourceTree = "<group>"; };
@@ -2189,7 +2189,7 @@
 			children = (
 				2BDF45BF166D5AEC0054E77F /* ManaPlus.app */,
 				2BDF45E0166D5AEC0054E77F /* ManaPlusTests.octest */,
-				2B17132F1686A98C002E9493 /* ManaPlus10.6.app */,
+				2B17132F1686A98C002E9493 /* ManaPlus.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3251,7 +3251,7 @@
 			);
 			name = "ManaPlus 10.6";
 			productName = ManaPlus;
-			productReference = 2B17132F1686A98C002E9493 /* ManaPlus10.6.app */;
+			productReference = 2B17132F1686A98C002E9493 /* ManaPlus.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2BDF45BE166D5AEC0054E77F /* ManaPlus */ = {
@@ -4637,7 +4637,7 @@
 					"-DUSE_OPENGL",
 				);
 				OTHER_LDFLAGS = "$(SRCROOT)/libs/libintl.a";
-				PRODUCT_NAME = ManaPlus10.6;
+				PRODUCT_NAME = ManaPlus;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "i386 x86_64";
@@ -4685,7 +4685,7 @@
 					"-DUSE_OPENGL",
 				);
 				OTHER_LDFLAGS = "$(SRCROOT)/libs/libintl.a";
-				PRODUCT_NAME = ManaPlus10.6;
+				PRODUCT_NAME = ManaPlus;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "i386 x86_64";
