@@ -354,6 +354,8 @@ private:
 
     static void bindTextDomain(const char *const name, const char *const path);
 
+    static void setEnv(const char *const name, const char *const value);
+
     Options mOptions;
 
     std::string mPackageDir;

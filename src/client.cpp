@@ -337,8 +337,8 @@ void Client::gameInit()
 #else
     if (!lang.empty())
     {
-        putenv(const_cast<char*>(("LANG=" + lang).c_str()));
-        putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
+        setEnv("LANG", lang.c_str());
+        setEnv("LANGUAGE", lang.c_str());
         logger->log("set lang: " + lang);
     }
     logger->log("lang1=%s", getenv("LANG"));
@@ -384,15 +384,15 @@ void Client::gameInit()
 
 #if defined(WIN32) || defined(__APPLE__)
     if (config.getBoolValue("centerwindow"))
-        putenv("SDL_VIDEO_CENTERED=1");
+        setEnv("SDL_VIDEO_CENTERED", "1");
     else
-        putenv("SDL_VIDEO_CENTERED=0");
+        setEnv("SDL_VIDEO_CENTERED", "0");
 #endif
 
     if (config.getBoolValue("allowscreensaver"))
-        putenv(const_cast<char*>("SDL_VIDEO_ALLOW_SCREENSAVER=1"));
+        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "1");
     else
-        putenv(const_cast<char*>("SDL_VIDEO_ALLOW_SCREENSAVER=0"));
+        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "0");
 
     chatLogger = new ChatLogger;
     if (mOptions.chatLogDir == "")
@@ -709,6 +709,14 @@ void Client::bindTextDomain(const char *const name, const char *const path)
         logger->log("bindtextdomain: %s", dir);
     else
         logger->log("bindtextdomain failed");
+}
+
+void Client::setEnv(const char *const name, const char *const value)
+{
+    if (!name || !value)
+        return;
+    if (setenv(name, value, 1))
+        logger->log("setenv failed: %s=%s", name, value);
 }
 
 void Client::testsClear()
