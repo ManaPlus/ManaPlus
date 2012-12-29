@@ -2032,7 +2032,6 @@
 		2BDF4A3F166D5B680054E77F /* textmanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = textmanager.h; path = ../../src/textmanager.h; sourceTree = "<group>"; };
 		2BDF4A40166D5B680054E77F /* textparticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = textparticle.cpp; path = ../../src/textparticle.cpp; sourceTree = "<group>"; };
 		2BDF4A41166D5B680054E77F /* textparticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = textparticle.h; path = ../../src/textparticle.h; sourceTree = "<group>"; };
-		2BDF4A42166D5B680054E77F /* textrenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = textrenderer.h; path = ../../src/textrenderer.h; sourceTree = "<group>"; };
 		2BDF4A43166D5B680054E77F /* tileset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tileset.h; path = ../../src/tileset.h; sourceTree = "<group>"; };
 		2BDF4A44166D5B680054E77F /* touchactions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = touchactions.cpp; path = ../../src/touchactions.cpp; sourceTree = "<group>"; };
 		2BDF4A45166D5B680054E77F /* touchactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = touchactions.h; path = ../../src/touchactions.h; sourceTree = "<group>"; };
@@ -2398,7 +2397,6 @@
 				2BDF4A3F166D5B680054E77F /* textmanager.h */,
 				2BDF4A40166D5B680054E77F /* textparticle.cpp */,
 				2BDF4A41166D5B680054E77F /* textparticle.h */,
-				2BDF4A42166D5B680054E77F /* textrenderer.h */,
 				2BDF4A43166D5B680054E77F /* tileset.h */,
 				2BDF4A44166D5B680054E77F /* touchactions.cpp */,
 				2BDF4A45166D5B680054E77F /* touchactions.h */,

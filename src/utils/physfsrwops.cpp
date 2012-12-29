@@ -176,7 +176,7 @@ SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *handle)
 } /* PHYSFSRWOPS_makeRWops */
 
 #ifdef __APPLE__
-static bool checkFilePath(char *fname)
+static bool checkFilePath(const char *fname)
 {
     if (!fname || !*fname)
         return false;
