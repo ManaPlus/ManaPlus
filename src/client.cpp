@@ -339,9 +339,7 @@ void Client::gameInit()
     {
         setEnv("LANG", lang.c_str());
         setEnv("LANGUAGE", lang.c_str());
-        logger->log("set lang: " + lang);
     }
-    logger->log("lang1=%s", getenv("LANG"));
 #ifdef ANDROID
     bindTextDomain("manaplus", (std::string(PHYSFS_getBaseDir())
         + "/locale").c_str());
@@ -359,27 +357,21 @@ void Client::gameInit()
 #endif
 #endif
 #endif
-    logger->log("lang2=%s", getenv("LANG"));
     char *locale = setlocale(LC_MESSAGES, lang.c_str());
-    logger->log("lang3=%s", getenv("LANG"));
     if (locale)
     {
         logger->log("locale: %s", locale);
     }
     else
     {
-        logger->log("lang4=%s", getenv("LANG"));
         locale = setlocale(LC_MESSAGES, (lang + ".utf8").c_str());
-        logger->log("lang5=%s", getenv("LANG"));
         if (locale)
             logger->log("locale: %s", locale);
         else
             logger->log("locale empty");
     }
     bind_textdomain_codeset("manaplus", "UTF-8");
-    logger->log("lang6=%s", getenv("LANG"));
     textdomain("manaplus");
-    logger->log("lang7=%s", getenv("LANG"));
 #endif
 
 #if defined(WIN32) || defined(__APPLE__)
