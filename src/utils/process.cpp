@@ -102,29 +102,12 @@ bool openBrowser(std::string url)
         nullptr, SW_SHOWNORMAL) > 32;
 }
 
-#elif defined(__APPLE__)
 
-int execFileWait(std::string pathName, std::string name,
-                 std::string arg1, std::string arg2, int waitTime)
-{
-    return -1;
-}
-
-bool execFile(std::string pathName, std::string name,
-              std::string arg1, std::string arg2)
-{
-    return false;
-}
-
-bool openBrowser(std::string url)
-{
-    return false;
-}
-
-#elif defined __linux__ || defined __linux
+#elif defined __linux__ || defined __linux || defined __APPLE__
 
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <signal.h>
 
 int execFileWait(std::string pathName, std::string name,
                  std::string arg1, std::string arg2, int waitTime)

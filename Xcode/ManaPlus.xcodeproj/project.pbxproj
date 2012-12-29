@@ -4634,7 +4634,10 @@
 					"-DUSE_INTERNALGUICHAN",
 					"-DUSE_OPENGL",
 				);
-				OTHER_LDFLAGS = "$(SRCROOT)/libs/libintl.a";
+				OTHER_LDFLAGS = (
+					"$(SRCROOT)/libs/libintl.a",
+					"-headerpad_max_install_names",
+				);
 				PRODUCT_NAME = ManaPlus;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -4682,7 +4685,10 @@
 					"-DUSE_INTERNALGUICHAN",
 					"-DUSE_OPENGL",
 				);
-				OTHER_LDFLAGS = "$(SRCROOT)/libs/libintl.a";
+				OTHER_LDFLAGS = (
+					"$(SRCROOT)/libs/libintl.a",
+					"-headerpad_max_install_names",
+				);
 				PRODUCT_NAME = ManaPlus;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -4782,7 +4788,10 @@
 					"-DUSE_OPENGL",
 					"-DENABLE_NLS",
 				);
-				OTHER_LDFLAGS = "$(SRCROOT)/libs/libintl.a";
+				OTHER_LDFLAGS = (
+					"$(SRCROOT)/libs/libintl.a",
+					"-headerpad_max_install_names",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -4831,7 +4840,10 @@
 					"-DUSE_OPENGL",
 					"-DENABLE_NLS",
 				);
-				OTHER_LDFLAGS = "$(SRCROOT)/libs/libintl.a";
+				OTHER_LDFLAGS = (
+					"$(SRCROOT)/libs/libintl.a",
+					"-headerpad_max_install_names",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				USER_HEADER_SEARCH_PATHS = "";
