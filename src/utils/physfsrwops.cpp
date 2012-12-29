@@ -175,12 +175,21 @@ SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *handle)
     return retval;
 } /* PHYSFSRWOPS_makeRWops */
 
-SDL_RWops *PHYSFSRWOPS_openRead(const char *fname)
+#ifdef __APPLE__
+static bool checkFilePath(char *fname)
 {
     if (!fname || !*fname)
-        return nullptr;
+        return false;
+    if (!PHYSFS_exists(fname) || PHYSFS_isDirectory(fname))
+        return false;
+    return true;
+}
+#endif
+
+SDL_RWops *PHYSFSRWOPS_openRead(const char *fname)
+{
 #ifdef __APPLE__
-    if (!PHYSFS_exists(fname))
+    if (!checkFilePath(fname))
         return nullptr;
 #endif
     return create_rwops(PHYSFS_openRead(fname));
@@ -188,10 +197,8 @@ SDL_RWops *PHYSFSRWOPS_openRead(const char *fname)
 
 SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname)
 {
-    if (!fname || !*fname)
-        return nullptr;
 #ifdef __APPLE__
-    if (!PHYSFS_exists(fname))
+    if (!checkFilePath(fname))
         return nullptr;
 #endif
     return create_rwops(PHYSFS_openWrite(fname));
@@ -199,10 +206,8 @@ SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname)
 
 SDL_RWops *PHYSFSRWOPS_openAppend(const char *fname)
 {
-    if (!fname || !*fname)
-        return nullptr;
 #ifdef __APPLE__
-    if (!PHYSFS_exists(fname))
+    if (!checkFilePath(fname))
         return nullptr;
 #endif
     return create_rwops(PHYSFS_openAppend(fname));
