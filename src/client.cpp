@@ -349,7 +349,6 @@ void Client::gameInit()
         + "../locale/").c_str());
 #else
 #ifdef __APPLE__
-    //TODO: Use physfs instead of absolute path.
     bindTextDomain("manaplus", (std::string(PHYSFS_getBaseDir())
         + "ManaPlus.app/Contents/Resources/locale/").c_str());
 #else
