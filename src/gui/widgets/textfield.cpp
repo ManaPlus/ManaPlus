@@ -27,6 +27,7 @@
 #include "keyevent.h"
 
 #include "gui/sdlinput.h"
+#include "gui/viewport.h"
 
 #include "resources/image.h"
 
@@ -514,4 +515,14 @@ void TextField::setCaretPosition(unsigned int position)
 void TextField::fontChanged()
 {
     fixScroll();
+}
+
+void TextField::mousePressed(gcn::MouseEvent &mouseEvent)
+{
+    if (mouseEvent.getButton() == gcn::MouseEvent::RIGHT)
+    {
+        if (viewport)
+            viewport->showTextFieldPopup(this);
+    }
+    else gcn::TextField::mousePressed(mouseEvent);
 }

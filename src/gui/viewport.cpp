@@ -44,6 +44,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/progressbar.h"
+#include "gui/widgets/textfield.h"
 
 #include "net/net.h"
 
@@ -813,6 +814,11 @@ void Viewport::showUndressPopup(const int x, const int y,
 void Viewport::showMapPopup(const int x, const int y)
 {
     mPopupMenu->showMapPopup(getMouseX(), getMouseY(), x, y);
+}
+
+void Viewport::showTextFieldPopup(TextField *input)
+{
+    mPopupMenu->showTextFieldPopup(getMouseX(), getMouseY(), input);
 }
 
 void Viewport::closePopupMenu()

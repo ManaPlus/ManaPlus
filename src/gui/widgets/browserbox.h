@@ -211,6 +211,9 @@ class BrowserBox final : public gcn::Widget,
 
         std::string getTextAtPos(const int x, const int y) const A_WARN_UNUSED;
 
+        int getPadding() const A_WARN_UNUSED
+        { return mPadding; }
+
     private:
         int calcHeight() A_WARN_UNUSED;
 

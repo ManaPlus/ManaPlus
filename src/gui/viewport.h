@@ -46,6 +46,7 @@ class PopupMenu;
 class ProgressBar;
 class StatusPopup;
 class TextCommand;
+class TextField;
 class TextPopup;
 class Window;
 
@@ -181,6 +182,8 @@ class Viewport final : public WindowContainer,
                               const Being *const being, Item *const item);
 
         void showMapPopup(const int x, const int y);
+
+        void showTextFieldPopup(TextField *input);
 
         /**
          * Closes the popup menu. Needed for when the player dies or switching

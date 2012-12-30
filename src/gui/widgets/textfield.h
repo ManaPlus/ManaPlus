@@ -115,6 +115,12 @@ class TextField : public gcn::TextField,
 
         void setCaretPosition(unsigned int position);
 
+        void mousePressed(gcn::MouseEvent &mouseEvent) override;
+
+        void handlePaste();
+
+        void handleCopy() const;
+
     protected:
         void drawCaret(gcn::Graphics* graphics, int x) override;
 
@@ -127,10 +133,6 @@ class TextField : public gcn::TextField,
         static Skin *mSkin;
 
     private:
-        void handlePaste();
-
-        void handleCopy() const;
-
         static int instances;
         static float mAlpha;
         static ImageRect skin;

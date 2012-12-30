@@ -43,6 +43,7 @@ class ItemShortcut;
 class MapItem;
 class TextCommand;
 class TextDialog;
+class TextField;
 class ProgressBar;
 class Window;
 
@@ -168,6 +169,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showPopup(const int x, const int y, gcn::ListModel *model);
 
+        void showTextFieldPopup(int x, int y, TextField *input);
+
         /**
          * Handles link action.
          */
@@ -207,6 +210,7 @@ class PopupMenu final : public Popup, public LinkHandler
         TextDialog *mDialog;
         Button *mButton;
         std::string mNick;
+        TextField *mTextField;
         int mType;
         int mX;
         int mY;

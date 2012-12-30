@@ -55,6 +55,7 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/progressbar.h"
+#include "gui/widgets/textfield.h"
 #include "gui/widgets/whispertab.h"
 
 #include "net/adminhandler.h"
@@ -93,11 +94,11 @@ PopupMenu::PopupMenu():
     mDialog(nullptr),
     mButton(nullptr),
     mNick(""),
+    mTextField(nullptr),
     mType(static_cast<int>(Being::UNKNOWN)),
     mX(0),
     mY(0)
 {
-    mBrowserBox->setPosition(4, 4);
     mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);
     mBrowserBox->setOpaque(false);
     mBrowserBox->setLinkHandler(this);
@@ -1534,6 +1535,16 @@ void PopupMenu::handleLink(const std::string &link,
         if (outfitWindow)
             outfitWindow->clearCurrentOutfit();
     }
+    else if (link == "clipboard copy")
+    {
+        if (mTextField)
+            mTextField->handleCopy();
+    }
+    else if (link == "clipboard paste")
+    {
+        if (mTextField)
+            mTextField->handlePaste();
+    }
     else if (!link.compare(0, 10, "guild-pos-"))
     {
         if (player_node)
@@ -1611,7 +1622,13 @@ void PopupMenu::handleLink(const std::string &link,
     mItemId = 0;
     mItemColor = 1;
     mMapItem = nullptr;
+    mTab = nullptr;
+    mSpell = nullptr;
+    mWindow = nullptr;
+    mDialog = nullptr;
+    mButton = nullptr;
     mNick.clear();
+    mTextField = nullptr;
     mType = static_cast<int>(Being::UNKNOWN);
     mX = 0;
     mY = 0;
@@ -2040,12 +2057,33 @@ void PopupMenu::showUndressPopup(const int x, const int y,
     mBrowserBox->addRow("cancel", _("Cancel"));
 
     showPopup(x, y);
+}
 
+void PopupMenu::showTextFieldPopup(int x, int y, TextField *input)
+{
+    mX = x;
+    mY = y;
+    mTextField = input;
+
+    mBrowserBox->clearRows();
+
+    mBrowserBox->addRow("clipboard copy", _("Copy"));
+    mBrowserBox->addRow("clipboard paste", _("Paste"));
+    mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(x, y);
 }
 
 void PopupMenu::showPopup(int x, int y)
 {
-    setContentSize(mBrowserBox->getWidth() + 8, mBrowserBox->getHeight() + 8);
+    const int pad2 = 2 * getPadding();
+    const int bPad2 = 2 * mBrowserBox->getPadding();
+    mBrowserBox->setPosition(mPadding, mPadding);
+    // add padding to initial size before draw browserbox
+    mBrowserBox->setWidth(mBrowserBox->getWidth() + bPad2);
+    setContentSize(mBrowserBox->getWidth() + pad2,
+        mBrowserBox->getHeight() + pad2);
     if (mainGraphics->mWidth < (x + getWidth() + 5))
         x = mainGraphics->mWidth - getWidth();
     if (mainGraphics->mHeight < (y + getHeight() + 5))
@@ -2211,6 +2249,13 @@ void PopupMenu::clear()
         mDialog->close();
         mDialog = nullptr;
     }
+    mItem = nullptr;
+    mMapItem = nullptr;
+    mTab = nullptr;
+    mSpell = nullptr;
+    mWindow = nullptr;
+    mButton = nullptr;
+    mTextField = nullptr;
 }
 
 RenameListener::RenameListener() :
