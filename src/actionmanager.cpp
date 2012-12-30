@@ -65,6 +65,10 @@
 
 #include <guichan/actionlistener.hpp>
 
+#ifdef ANDROID
+#include <SDL_screenkeyboard.h>
+#endif
+
 #include "debug.h"
 
 #define impHandler(name) bool name(const InputEvent &event)
@@ -1063,6 +1067,13 @@ impHandler0(stopSit)
         return true;
     }
     return false;
+}
+
+impHandler0(showKeyboard)
+{
+#ifdef ANDROID
+    SDL_ANDROID_ToggleScreenKeyboardTextInput(nullptr);
+#endif
 }
 
 }

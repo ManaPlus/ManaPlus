@@ -95,6 +95,7 @@ namespace ActionManager
     decHandler(targetNPC);
     decHandler(safeVideoMode);
     decHandler(stopSit);
+    decHandler(showKeyboard);
 
     decHandler(hideWindows);
     decHandler(helpWindowShow);

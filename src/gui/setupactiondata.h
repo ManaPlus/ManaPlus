@@ -1154,6 +1154,11 @@ static SetupActionData setupActionData6[] =
         "",
     },
     {
+        N_("Show onscreen keyboard"),
+        Input::KEY_SHOW_KEYBOARD,
+        "",
+    },
+    {
         "",
         Input::KEY_NO_VALUE,
         ""

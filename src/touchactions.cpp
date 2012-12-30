@@ -26,10 +26,6 @@
 #include "mouseinput.h"
 #include "touchmanager.h"
 
-#ifdef ANDROID
-#include <SDL_screenkeyboard.h>
-#endif
-
 #include "debug.h"
 
 InputEvent tempEvent(0, 0);
@@ -41,9 +37,7 @@ int haldJoyPad = 50;
 
 impHandler0(showKeyboard)
 {
-#ifdef ANDROID
-    SDL_ANDROID_ToggleScreenKeyboardTextInput(nullptr);
-#endif
+    ActionManager::showKeyboard(tempEvent);
 }
 
 void setHalfJoyPad(int s)
