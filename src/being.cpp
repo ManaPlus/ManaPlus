@@ -617,7 +617,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
         if (mInfo)
         {
             sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT),
-                attacker->getTileX(), attacker->getTileY());
+                getTileX(), getTileY());
 
             if (!mInfo->isStaticMaxHP())
             {
