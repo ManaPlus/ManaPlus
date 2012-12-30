@@ -682,7 +682,7 @@ void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
     {
         itemInfo->addSound(EQUIP_EVENT_HIT, filename);
     }
-    else if (event == "strike")
+    else if (event == "strike" || event == "miss")
     {
         itemInfo->addSound(EQUIP_EVENT_STRIKE, filename);
     }
