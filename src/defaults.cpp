@@ -111,6 +111,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showScreenButtons", true);
     AddDEF("showBeingPopup", false);
     AddDEF("mouseDirectionMove", true);
+    AddDEF("showScreenKeyboard", true);
 #else
     AddDEF("screenwidth", defaultScreenWidth);
     AddDEF("screenheight", defaultScreenHeight);
@@ -118,6 +119,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showScreenButtons", false);
     AddDEF("showBeingPopup", true);
     AddDEF("mouseDirectionMove", false);
+    AddDEF("showScreenKeyboard", false);
 #endif
     AddDEF("screen", false);
     AddDEF("hwaccel", false);

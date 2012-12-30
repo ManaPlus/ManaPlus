@@ -50,6 +50,9 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
+    new SetupItemCheckBox(_("Show on screen keyboard icon"), "",
+        "showScreenKeyboard", this, "showScreenKeyboardEvent");
+
     new SetupItemCheckBox(_("Show on screen buttons"), "",
         "showScreenButtons", this, "showScreenButtonsEvent");
 

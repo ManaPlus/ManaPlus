@@ -42,6 +42,7 @@ TouchManager::TouchManager() :
     mRedraw(true),
     mShowJoystick(false),
     mShowButtons(false),
+    mShowKeyboard(false),
     mButtonsSize(1),
     mJoystickSize(1),
     mShow(false),
@@ -68,21 +69,20 @@ void TouchManager::init()
 {
     config.addListener("showScreenJoystick", this);
     config.addListener("showScreenButtons", this);
+    config.addListener("showScreenKeyboard", this);
     config.addListener("screenButtonsSize", this);
     config.addListener("screenJoystickSize", this);
 
     mShowJoystick = config.getBoolValue("showScreenJoystick");
     mShowButtons = config.getBoolValue("showScreenButtons");
+    mShowKeyboard = config.getBoolValue("showScreenKeyboard");
     mButtonsSize = config.getIntValue("screenButtonsSize");
     mJoystickSize = config.getIntValue("screenJoystickSize");
 
     setHalfJoyPad(getPadSize() / 2);
 
-#ifdef ANDROID
-    loadTouchItem(&mKeyboard, "keyboard_icon.xml", "", -1, -1, 28, 28, NORMAL,
-        nullptr, nullptr, &showKeyboard, nullptr);
-#endif
-
+    if (mShowKeyboard)
+        loadKeyboard();
     if (mShowJoystick)
         loadPad();
     if (mShowButtons)
@@ -172,7 +172,8 @@ void TouchManager::draw()
                  it != it_end; ++ it)
             {
                 const TouchItem *const item = *it;
-                if (item && item->images && (mShow || item == mKeyboard))
+                if (item && item->images && (mShow ||
+                    (item == mKeyboard && mShowKeyboard)))
                 {
                     mainGraphics->calcWindow(mVertexes, item->x, item->y,
                         item->width, item->height, *item->images);
@@ -195,7 +196,8 @@ void TouchManager::draw()
              it != it_end; ++ it)
         {
             const TouchItem *const item = *it;
-            if (item && item->images && (mShow || item == mKeyboard))
+            if (item && item->images && (mShow ||
+                (item == mKeyboard && mShowKeyboard)))
             {
                 mainGraphics->drawImageRect(item->x, item->y,
                     item->width, item->height, *item->images);
@@ -220,7 +222,7 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
          it != it_end; ++ it)
     {
         const TouchItem *const item = *it;
-        if (!item || (!mShow && item != mKeyboard))
+        if (!item || (!mShow && (item != mKeyboard || !mShowKeyboard)))
             continue;
         const gcn::Rectangle &rect = item->rect;
         if (rect.isPointInRect(x, y))
@@ -372,6 +374,12 @@ void TouchManager::loadButtons()
 
 }
 
+void TouchManager::loadKeyboard()
+{
+    loadTouchItem(&mKeyboard, "keyboard_icon.xml", "", -1, -1, 28, 28, NORMAL,
+        nullptr, nullptr, &showKeyboard, nullptr);
+}
+
 void TouchManager::optionChanged(const std::string &value)
 {
     if (value == "showScreenJoystick")
@@ -399,6 +407,17 @@ void TouchManager::optionChanged(const std::string &value)
             unloadTouchItem(&mAttack);
             unloadTouchItem(&mCancel);
         }
+        mRedraw = true;
+    }
+    else if (value == "showScreenKeyboard")
+    {
+        if (mShowKeyboard == config.getBoolValue("showScreenKeyboard"))
+            return;
+        mShowKeyboard = config.getBoolValue("showScreenKeyboard");
+        if (mShowKeyboard)
+            loadKeyboard();
+        else
+            unloadTouchItem(&mKeyboard);
         mRedraw = true;
     }
     else if (value == "screenButtonsSize")

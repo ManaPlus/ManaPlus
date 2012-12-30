@@ -135,6 +135,8 @@ class TouchManager final : public ConfigListener
 
         void loadButtons();
 
+        void loadKeyboard();
+
         int getPadSize()
         { return (mJoystickSize + 2) * 50; }
 
@@ -155,6 +157,7 @@ class TouchManager final : public ConfigListener
         bool mRedraw;
         bool mShowJoystick;
         bool mShowButtons;
+        bool mShowKeyboard;
         int mButtonsSize;
         int mJoystickSize;
         bool mShow;
