@@ -758,8 +758,41 @@ void Being::handleAttack(Being *const victim, const int damage,
     if (damage && victim->mType == PLAYER && victim->mAction == SIT)
         victim->setAction(STAND);
 
-    sound.playSfx(mInfo->getSound((damage > 0) ?
-                  SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
+    if (mType == PLAYER)
+    {
+        if (mSpriteIDs.size() >= 10)
+        {
+            // here 10 is weapon slot
+            const int weaponId = mSpriteIDs[10];
+            std::string soundFile;
+            if (weaponId > 0)
+            {
+                const ItemInfo &info = ItemDB::get(weaponId);
+                soundFile = info.getSound((damage > 0) ?
+                    EQUIP_EVENT_HIT : EQUIP_EVENT_STRIKE);
+            }
+            else
+            {
+                soundFile = mInfo->getSound((damage > 0) ?
+                    SOUND_EVENT_HIT : SOUND_EVENT_MISS);
+            }
+            if (!soundFile.empty())
+            {
+                sound.playSfx(soundFile, mX, mY);
+            }
+            else
+            {
+                sound.playSfx(paths.getValue((damage > 0)
+                    ? "attackSfxFile" : "missSfxFile",
+                    "fist-swish.ogg"), mX, mY);
+            }
+        }
+    }
+    else
+    {
+        sound.playSfx(mInfo->getSound((damage > 0) ?
+            SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
+    }
 }
 
 void Being::handleSkill(Being *const victim, const int damage,

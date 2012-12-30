@@ -32,7 +32,9 @@
 
 enum EquipmentSoundEvent
 {
+    // miss
     EQUIP_EVENT_STRIKE = 0,
+    // hit
     EQUIP_EVENT_HIT
 };
 

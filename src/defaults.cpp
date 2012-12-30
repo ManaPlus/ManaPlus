@@ -359,6 +359,7 @@ DefaultsData* getPathsDefaults()
 
     AddDEF("sfx", "sfx/");
     AddDEF("attackSfxFile", "fist-swish.ogg");
+    AddDEF("missSfxFile", "fist-swish.ogg");
     AddDEF("music", "music/");
 
     AddDEF("wallpapers", "graphics/images/");
