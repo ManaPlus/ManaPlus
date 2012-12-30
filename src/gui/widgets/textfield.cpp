@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "keyevent.h"
 
+#include "gui/popupmenu.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
@@ -58,7 +59,8 @@ TextField::TextField(const Widget2 *const widget,
     mLoseFocusOnTab(loseFocusOnTab),
     mLastEventPaste(false),
     mPadding(1),
-    mCaretColor(&getThemeColor(Theme::CARET))
+    mCaretColor(&getThemeColor(Theme::CARET)),
+    mPopupMenu(nullptr)
 {
     setFrameSize(2);
     mForegroundColor = getThemeColor(Theme::TEXTFIELD);
@@ -90,6 +92,9 @@ TextField::TextField(const Widget2 *const widget,
 
 TextField::~TextField()
 {
+    delete mPopupMenu;
+    mPopupMenu = nullptr;
+
     instances--;
     if (instances == 0)
     {
@@ -522,7 +527,21 @@ void TextField::mousePressed(gcn::MouseEvent &mouseEvent)
     if (mouseEvent.getButton() == gcn::MouseEvent::RIGHT)
     {
         if (viewport)
+        {
             viewport->showTextFieldPopup(this);
+        }
+        else
+        {
+            if (!mPopupMenu)
+                mPopupMenu = new PopupMenu();
+            int x = 0;
+            int y = 0;
+            SDL_GetMouseState(&x, &y);
+            mPopupMenu->showTextFieldPopup(x, y, this);
+        }
     }
-    else gcn::TextField::mousePressed(mouseEvent);
+    else
+    {
+        gcn::TextField::mousePressed(mouseEvent);
+    }
 }

@@ -30,6 +30,7 @@
 #include "localconsts.h"
 
 class ImageRect;
+class PopupMenu;
 class TextField;
 
 /**
@@ -143,6 +144,7 @@ class TextField : public gcn::TextField,
         int mLastEventPaste;
         int mPadding;
         const gcn::Color *mCaretColor;
+        PopupMenu *mPopupMenu;
 };
 
 #endif

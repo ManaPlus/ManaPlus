@@ -675,10 +675,9 @@ void PopupMenu::showChangePos(const int x, const int y)
 void PopupMenu::handleLink(const std::string &link,
                            gcn::MouseEvent *event A_UNUSED)
 {
-    if (!actorSpriteManager)
-        return;
-
-    Being *being = actorSpriteManager->findBeing(mBeingId);
+    Being *being = nullptr;
+    if (actorSpriteManager)
+        being = actorSpriteManager->findBeing(mBeingId);
 
     // Talk To action
     if (link == "talk" && being && being->canTalk())
@@ -724,7 +723,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "heal" && being && being->getType() != Being::MONSTER)
     {
-        actorSpriteManager->heal(being);
+        if (actorSpriteManager)
+            actorSpriteManager->heal(being);
     }
     else if (link == "unignore" && being &&
              being->getType() == ActorSprite::PLAYER)
@@ -813,8 +813,12 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "nuke" && being)
     {
-        actorSpriteManager->addBlock(static_cast<uint32_t>(being->getId()));
-        actorSpriteManager->destroy(being);
+        if (actorSpriteManager)
+        {
+            actorSpriteManager->addBlock(static_cast<uint32_t>(
+                being->getId()));
+            actorSpriteManager->destroy(being);
+        }
     }
     // Follow Player action
     else if (link == "follow" && !mNick.empty())
