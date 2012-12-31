@@ -31,9 +31,7 @@
 
 #include <string>
 
-#include "debug.h"
-
-int selectedData = 0;
+//#include "debug.h"
 
 struct SetupActionData final
 {
@@ -1568,6 +1566,16 @@ static const char *const pages[] =
     N_("Other"),
     N_("Gui"),
     nullptr
+};
+
+const int touchActionDataSize = 4;
+
+static SetupActionData *const touchActionData[] =
+{
+    setupActionData0,
+    setupActionData2,
+    setupActionData5,
+    setupActionData6
 };
 
 #endif

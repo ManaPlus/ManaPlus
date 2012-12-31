@@ -594,10 +594,22 @@ bool InputManager::invokeKey(const KeyData *const key, const int keyNum)
     if (checkKey(key))
     {
         InputEvent evt(keyNum, mMask);
-        if ((*(keyData[keyNum].action))(evt))
+        ActionFuncPtr func = *(keyData[keyNum].action);
+        if (func && func(evt))
             return true;
     }
     return false;
+}
+
+void InputManager::executeAction(const int keyNum)
+{
+    if (keyNum < 0 || keyNum >= Input::KEY_TOTAL)
+        return;
+
+    InputEvent evt(keyNum, mMask);
+    ActionFuncPtr func = *(keyData[keyNum].action);
+    if (func)
+        func(evt);
 }
 
 void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,

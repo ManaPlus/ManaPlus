@@ -24,8 +24,9 @@
 #include "utils/stringutils.h"
 
 #include "being.h"
-#include "graphics.h"
 #include "client.h"
+#include "graphics.h"
+#include "keydata.h"
 
 #include <stdlib.h>
 
@@ -296,6 +297,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("selfMouseHeal", true);
     AddDEF("serverslistupdate", "");
     AddDEF("fadeoutmusic", false);
+    AddDEF("screenActionKeyboard", Input::KEY_SHOW_KEYBOARD);
     return configData;
 }
 

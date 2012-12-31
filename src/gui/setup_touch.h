@@ -21,12 +21,11 @@
 #ifndef GUI_SETUP_TOUCH_H
 #define GUI_SETUP_TOUCH_H
 
-#include "gui/widgets/setupitem.h"
+#include "gui/widgets/setuptouchitem.h"
 
 #include <guichan/actionlistener.hpp>
 
 class EditDialog;
-class NamesModel;
 class TextField;
 
 class Setup_Touch final : public SetupTabScroll
@@ -40,6 +39,7 @@ class Setup_Touch final : public SetupTabScroll
 
     protected:
         NamesModel *mSizeList;
+        TouchActionsModel *mActionsList;
 };
 
 #endif

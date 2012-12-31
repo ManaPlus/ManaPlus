@@ -167,6 +167,8 @@ class InputManager final
 
         int getActionByKey(const SDL_Event &event) const A_WARN_UNUSED;
 
+        void executeAction(const int keyNum);
+
     protected:
         Setup_Input *mSetupInput;      /**< Reference to setup window */
 

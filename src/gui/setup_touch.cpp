@@ -21,7 +21,6 @@
 #include "gui/setup_touch.h"
 
 #include "gui/widgets/layouthelper.h"
-#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "configuration.h"
@@ -42,7 +41,8 @@ static const char *const sizeList[] =
 
 Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     SetupTabScroll(widget),
-    mSizeList(new NamesModel)
+    mSizeList(new NamesModel),
+    mActionsList(new TouchActionsModel)
 {
     setName(_("Touch"));
 
@@ -65,6 +65,10 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
 
     new SetupItemDropDown(_("Joystick size"), "", "screenJoystickSize", this,
         "screenJoystickEvent", mSizeList, 100);
+
+    new SetupActionDropDown(_("Keyboard icon action"), "",
+        "screenActionKeyboard", this, "screenActionKeyboardEvent",
+        mActionsList, 250);
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }

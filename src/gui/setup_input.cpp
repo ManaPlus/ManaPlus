@@ -43,7 +43,8 @@
 
 #include "debug.h"
 
-const int setupGroups = 9;
+static int selectedData = 0;
+static const int setupGroups = 9;
 
 /**
  * The list model for key function list.

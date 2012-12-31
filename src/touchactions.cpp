@@ -21,7 +21,9 @@
 #include "touchactions.h"
 
 #include "actionmanager.h"
+#include "configuration.h"
 #include "game.h"
+#include "inputmanager.h"
 #include "logger.h"
 #include "mouseinput.h"
 #include "touchmanager.h"
@@ -37,7 +39,9 @@ int haldJoyPad = 50;
 
 impHandler0(showKeyboard)
 {
-    ActionManager::showKeyboard(tempEvent);
+    inputManager.executeAction(config.getIntValue("screenActionKeyboard"));
+
+//    ActionManager::showKeyboard(tempEvent);
 }
 
 void setHalfJoyPad(int s)
