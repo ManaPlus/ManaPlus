@@ -49,16 +49,19 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
+    mSizeList->fillFromArray(&sizeList[0], sizeListSize);
+
+    new SetupItemLabel(_("Onscreen keyboard"), "", this);
 
     new SetupItemCheckBox(_("Show onscreen keyboard icon"), "",
         "showScreenKeyboard", this, "showScreenKeyboardEvent");
 
-    new SetupItemCheckBox(_("Show onscreen buttons"), "",
-        "showScreenButtons", this, "showScreenButtonsEvent");
+    new SetupActionDropDown(_("Keyboard icon action"), "",
+        "screenActionKeyboard", this, "screenActionKeyboardEvent",
+        mActionsList, 250);
 
-    mSizeList->fillFromArray(&sizeList[0], sizeListSize);
-    new SetupItemDropDown(_("Buttons size"), "", "screenButtonsSize", this,
-        "screenButtonsSizeEvent", mSizeList, 100);
+
+    new SetupItemLabel(_("Onscreen joystick"), "", this);
 
     new SetupItemCheckBox(_("Show onscreen joystick"), "",
         "showScreenJoystick", this, "showScreenJoystickEvent");
@@ -66,8 +69,21 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     new SetupItemDropDown(_("Joystick size"), "", "screenJoystickSize", this,
         "screenJoystickEvent", mSizeList, 100);
 
-    new SetupActionDropDown(_("Keyboard icon action"), "",
-        "screenActionKeyboard", this, "screenActionKeyboardEvent",
+
+    new SetupItemLabel(_("Onscreen buttons"), "", this);
+
+    new SetupItemCheckBox(_("Show onscreen buttons"), "",
+        "showScreenButtons", this, "showScreenButtonsEvent");
+
+    new SetupItemDropDown(_("Buttons size"), "", "screenButtonsSize", this,
+        "screenButtonsSizeEvent", mSizeList, 100);
+
+    new SetupActionDropDown(strprintf(_("Button %u action"), 1), "",
+        "screenActionButton0", this, "screenActionButton0Event",
+        mActionsList, 250);
+
+    new SetupActionDropDown(strprintf(_("Button %u action"), 2), "",
+        "screenActionButton1", this, "screenActionButton1Event",
         mActionsList, 250);
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));

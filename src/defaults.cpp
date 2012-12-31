@@ -298,6 +298,8 @@ DefaultsData* getConfigDefaults()
     AddDEF("serverslistupdate", "");
     AddDEF("fadeoutmusic", false);
     AddDEF("screenActionKeyboard", Input::KEY_SHOW_KEYBOARD);
+    AddDEF("screenActionButton0", Input::KEY_STOP_SIT);
+    AddDEF("screenActionButton1", Input::KEY_TARGET_ATTACK);
     return configData;
 }
 

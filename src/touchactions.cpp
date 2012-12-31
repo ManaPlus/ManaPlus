@@ -23,7 +23,6 @@
 #include "actionmanager.h"
 #include "configuration.h"
 #include "game.h"
-#include "inputmanager.h"
 #include "logger.h"
 #include "mouseinput.h"
 #include "touchmanager.h"
@@ -36,13 +35,6 @@ int haldJoyPad = 50;
 
 #define impHandler(name) void name(const MouseInput &mouseInput)
 #define impHandler0(name) void name(const MouseInput &mouseInput A_UNUSED)
-
-impHandler0(showKeyboard)
-{
-    inputManager.executeAction(config.getIntValue("screenActionKeyboard"));
-
-//    ActionManager::showKeyboard(tempEvent);
-}
 
 void setHalfJoyPad(int s)
 {
@@ -140,14 +132,4 @@ impHandler0(padUp)
 {
     padClicked = false;
     moveChar(haldJoyPad, haldJoyPad);
-}
-
-impHandler0(attackClick)
-{
-    ActionManager::targetAttack(tempEvent);
-}
-
-impHandler0(cancelClick)
-{
-    ActionManager::stopSit(tempEvent);
 }

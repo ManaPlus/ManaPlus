@@ -23,6 +23,7 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
+#include "inputmanager.h"
 #include "mouseinput.h"
 #include "touchactions.h"
 
@@ -92,6 +93,8 @@ void TouchManager::init()
 void TouchManager::loadTouchItem(TouchItem **item, std::string name,
                                  std::string imageName,
                                  int x, int y, int width, int height, int type,
+                                 const std::string &eventPressed,
+                                 const std::string &eventReleased,
                                  TouchFuncPtr fAll, TouchFuncPtr fPressed,
                                  TouchFuncPtr fReleased, TouchFuncPtr fOut)
 {
@@ -136,7 +139,8 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
             }
             *item = new TouchItem(gcn::Rectangle(x, y,
                 width + pad2, height + pad2), type,
-                images, icon,  x + pad, y + pad, width, height,
+                eventPressed, eventReleased, images, icon,
+                x + pad, y + pad, width, height,
                 fAll, fPressed, fReleased, fOut);
             mObjects.push_back(*item);
         }
@@ -236,11 +240,15 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
             switch (mouseInput.getType())
             {
                 case gcn::MouseInput::PRESSED:
-                    if (item->funcPressed)
+                    if (!item->eventPressed.empty())
+                        executeAction(item->eventPressed);
+                    else if (item->funcPressed)
                         item->funcPressed(event);
                     break;
                 case gcn::MouseInput::RELEASED:
-                    if (item->funcReleased)
+                    if (!item->eventReleased.empty())
+                        executeAction(item->eventReleased);
+                    else if (item->funcReleased)
                         item->funcReleased(event);
                     break;
                 default:
@@ -343,7 +351,7 @@ void TouchManager::loadPad()
 {
     const int sz = (mJoystickSize + 2) * 50;
     loadTouchItem(&mPad, "dpad.xml", "dpad_image.xml", -1, -1, sz, sz, LEFT,
-        &padEvents, &padClick, &padUp, &padOut);
+        "", "", &padEvents, &padClick, &padUp, &padOut);
 }
 
 void TouchManager::loadButtons()
@@ -363,11 +371,10 @@ void TouchManager::loadButtons()
         const int skipWidth = pad2 + sz + x;
 
         loadTouchItem(&mAttack, "dbutton.xml", "dbutton_image.xml", x, y,
-            sz, sz, RIGHT, nullptr, &attackClick, nullptr, nullptr);
+            sz, sz, RIGHT, "screenActionButton1", "");
 
         loadTouchItem(&mCancel, "dbutton.xml", "dbutton_image.xml",
-            skipWidth, y, sz, sz, RIGHT, nullptr, &cancelClick,
-            nullptr, nullptr);
+            skipWidth, y, sz, sz, RIGHT, "screenActionButton0", "");
 
         theme->unload(skin);
     }
@@ -377,7 +384,7 @@ void TouchManager::loadButtons()
 void TouchManager::loadKeyboard()
 {
     loadTouchItem(&mKeyboard, "keyboard_icon.xml", "", -1, -1, 28, 28, NORMAL,
-        nullptr, nullptr, &showKeyboard, nullptr);
+        "", "screenActionKeyboard");
 }
 
 void TouchManager::optionChanged(const std::string &value)
@@ -458,4 +465,9 @@ void TouchManager::setTempHide(bool b)
     mTempHideButtons = b;
     mShow = mInGame && !mTempHideButtons;
     mRedraw = true;
+}
+
+void TouchManager::executeAction(const std::string &event)
+{
+    inputManager.executeAction(config.getIntValue(event));
 }

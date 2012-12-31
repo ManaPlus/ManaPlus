@@ -46,12 +46,17 @@ const int actionsSize = Input::KEY_TOTAL;
 
 struct TouchItem final
 {
-    TouchItem(const gcn::Rectangle rect0, int type0, ImageRect *const images0,
-              Image *const icon0, int x0, int y0, int width0, int height0,
+    TouchItem(const gcn::Rectangle rect0, int type0,
+              const std::string &eventPressed0,
+              const std::string &eventReleased0,
+              ImageRect *const images0, Image *const icon0,
+              int x0, int y0, int width0, int height0,
               TouchFuncPtr ptrAll, TouchFuncPtr ptrPressed,
               TouchFuncPtr ptrReleased, TouchFuncPtr ptrOut) :
         rect(rect0),
         type(type0),
+        eventPressed(eventPressed0),
+        eventReleased(eventReleased0),
         images(images0),
         icon(icon0),
         x(x0),
@@ -69,6 +74,8 @@ struct TouchItem final
 
     gcn::Rectangle rect;
     int type;
+    std::string eventPressed;
+    std::string eventReleased;
     ImageRect *images;
     Image *icon;
     int x;
@@ -105,9 +112,13 @@ class TouchManager final : public ConfigListener
 
         void loadTouchItem(TouchItem **item, std::string name,
                            std::string imageName,
-                           int type, int x, int y, int width, int height,
-                           TouchFuncPtr fAll, TouchFuncPtr fPressed,
-                           TouchFuncPtr fReleased, TouchFuncPtr fOut);
+                           int x, int y, int width, int height,
+                           int type, const std::string &eventPressed,
+                           const std::string &eventReleased,
+                           TouchFuncPtr fAll = nullptr,
+                           TouchFuncPtr fPressed = nullptr,
+                           TouchFuncPtr fReleased = nullptr,
+                           TouchFuncPtr fOut = nullptr);
 
         void clear();
 
@@ -145,6 +156,8 @@ class TouchManager final : public ConfigListener
         void setTempHide(bool b);
 
         void shutdown();
+
+        void executeAction(const std::string &event);
 
     private:
         TouchItem *mKeyboard;

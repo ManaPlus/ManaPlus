@@ -29,13 +29,10 @@
 
 class MouseInput;
 
-decHandler(showKeyboard);
 decHandler(padClick);
 decHandler(padEvents);
 decHandler(padOut);
 decHandler(padUp);
-decHandler(attackClick);
-decHandler(cancelClick);
 
 void setHalfJoyPad(int s);
 
