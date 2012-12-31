@@ -25,8 +25,6 @@
 
 #include "configuration.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 static const int sizeListSize = 4;

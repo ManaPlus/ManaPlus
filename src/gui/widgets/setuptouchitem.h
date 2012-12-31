@@ -38,9 +38,9 @@ class TouchActionsModel final : public NamesModel
         virtual ~TouchActionsModel()
         { }
 
-        int getActionFromSelection(int sel);
+        int getActionFromSelection(const int sel) const;
 
-        int getSelectionFromAction(int action);
+        int getSelectionFromAction(const int action) const;
 
     private:
         std::vector<int> mActionId;

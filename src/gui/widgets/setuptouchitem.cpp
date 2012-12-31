@@ -39,7 +39,8 @@ class SortTouchActionFunctor final
         }
 } touchActionSorter;
 
-TouchActionsModel::TouchActionsModel()
+TouchActionsModel::TouchActionsModel() :
+    NamesModel()
 {
     std::vector<SetupActionData*> data;
 
@@ -66,14 +67,14 @@ TouchActionsModel::TouchActionsModel()
     }
 }
 
-int TouchActionsModel::getActionFromSelection(int sel)
+int TouchActionsModel::getActionFromSelection(const int sel) const
 {
-    if (sel < 0 || sel > mActionId.size())
+    if (sel < 0 || sel > static_cast<signed int>(mActionId.size()))
         return -1;
     return mActionId[sel];
 }
 
-int TouchActionsModel::getSelectionFromAction(int action)
+int TouchActionsModel::getSelectionFromAction(const int action) const
 {
     std::map<int, int>::const_iterator it
         = mActionToSelection.find(action);

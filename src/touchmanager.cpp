@@ -39,6 +39,7 @@ TouchManager::TouchManager() :
     mKeyboard(nullptr),
     mPad(nullptr),
     mAttack(nullptr),
+    mCancel(nullptr),
     mVertexes(new ImageCollection),
     mRedraw(true),
     mShowJoystick(false),

@@ -707,7 +707,11 @@ void Client::setEnv(const char *const name, const char *const value)
 {
     if (!name || !value)
         return;
+#ifdef WIN32
+    if (putenv((char*)(std::string(name) + "=" + value).c_str()))
+#else
     if (setenv(name, value, 1))
+#endif
         logger->log("setenv failed: %s=%s", name, value);
 }
 

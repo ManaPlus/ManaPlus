@@ -71,7 +71,7 @@ bool TextParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
     }
 
     gcn::Color color = *mColor;
-    color.a = (int)alpha;
+    color.a = static_cast<int>(alpha);
 
     graphics->setColor(color);
     if (mOutline)

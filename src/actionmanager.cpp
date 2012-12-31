@@ -1073,6 +1073,9 @@ impHandler0(showKeyboard)
 {
 #ifdef ANDROID
     SDL_ANDROID_ToggleScreenKeyboardTextInput(nullptr);
+    return true;
+#else
+    return false;
 #endif
 }
 
