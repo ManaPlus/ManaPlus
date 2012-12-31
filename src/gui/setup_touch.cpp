@@ -50,17 +50,17 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
-    new SetupItemCheckBox(_("Show on screen keyboard icon"), "",
+    new SetupItemCheckBox(_("Show onscreen keyboard icon"), "",
         "showScreenKeyboard", this, "showScreenKeyboardEvent");
 
-    new SetupItemCheckBox(_("Show on screen buttons"), "",
+    new SetupItemCheckBox(_("Show onscreen buttons"), "",
         "showScreenButtons", this, "showScreenButtonsEvent");
 
     mSizeList->fillFromArray(&sizeList[0], sizeListSize);
     new SetupItemDropDown(_("Buttons size"), "", "screenButtonsSize", this,
         "screenButtonsSizeEvent", mSizeList, 100);
 
-    new SetupItemCheckBox(_("Show on screen joystick"), "",
+    new SetupItemCheckBox(_("Show onscreen joystick"), "",
         "showScreenJoystick", this, "showScreenJoystickEvent");
 
     new SetupItemDropDown(_("Joystick size"), "", "screenJoystickSize", this,
