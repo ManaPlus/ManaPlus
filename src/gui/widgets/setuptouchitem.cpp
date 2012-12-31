@@ -27,6 +27,62 @@
 
 #include "debug.h"
 
+class SortTouchActionFunctor final
+{
+    public:
+        bool operator() (const SetupActionData *const data1,
+                         const SetupActionData *const data2) const
+        {
+            if (!data1 || !data2)
+                return false;
+            return data1->name < data2->name;
+        }
+} touchActionSorter;
+
+TouchActionsModel::TouchActionsModel()
+{
+    std::vector<SetupActionData*> data;
+
+    for (int f = 0, sz = touchActionDataSize; f < sz; f ++)
+    {
+        int k = 0;
+        while (!touchActionData[f][k].name.empty())
+        {
+            data.push_back(&touchActionData[f][k]);
+            k ++;
+        }
+    }
+
+    std::sort(data.begin(), data.end(), touchActionSorter);
+    int cnt = 0;
+    for (std::vector<SetupActionData*>::iterator it = data.begin(),
+          it_end = data.end(); it != it_end; ++ it)
+    {
+        const SetupActionData *data1 = *it;
+        mNames.push_back(data1->name);
+        mActionId.push_back(data1->actionId);
+        mActionToSelection[data1->actionId] = cnt;
+        cnt ++;
+    }
+}
+
+int TouchActionsModel::getActionFromSelection(int sel)
+{
+    if (sel < 0 || sel > mActionId.size())
+        return -1;
+    return mActionId[sel];
+}
+
+int TouchActionsModel::getSelectionFromAction(int action)
+{
+    std::map<int, int>::const_iterator it
+        = mActionToSelection.find(action);
+    if (it == mActionToSelection.end())
+        return 0;
+    return (*it).second;
+}
+
+
 SetupActionDropDown::SetupActionDropDown(std::string text,
                                          std::string description,
                                          std::string keyName,
@@ -89,7 +145,6 @@ void SetupActionDropDown::createControls()
         atoi(mValue.c_str())));
 
     mWidget = mDropDown;
-//    mTextField->setWidth(50);
     fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mDropDown);

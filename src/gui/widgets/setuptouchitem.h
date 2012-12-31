@@ -26,46 +26,21 @@
 #include "gui/widgets/namesmodel.h"
 #include "gui/widgets/setupitem.h"
 
+#include <algorithm>
+
 class TouchActionsModel final : public NamesModel
 {
     public:
-        TouchActionsModel() :
-            NamesModel()
-        {
-            int cnt = 0;
-            for (int f = 0, sz = touchActionDataSize; f < sz; f ++)
-            {
-                int k = 0;
-                while (!touchActionData[f][k].name.empty())
-                {
-                    const SetupActionData &data = touchActionData[f][k];
-                    mNames.push_back(data.name);
-                    mActionId.push_back(data.actionId);
-                    mActionToSelection[data.actionId] = cnt;
-                    k ++;
-                    cnt ++;
-                }
-            }
-        }
+        TouchActionsModel();
+
+        A_DELETE_COPY(TouchActionsModel)
 
         virtual ~TouchActionsModel()
         { }
 
-        int getActionFromSelection(int sel)
-        {
-            if (sel < 0 || sel > mActionId.size())
-                return -1;
-            return mActionId[sel];
-        }
+        int getActionFromSelection(int sel);
 
-        int getSelectionFromAction(int action)
-        {
-            std::map<int, int>::const_iterator it
-                = mActionToSelection.find(action);
-            if (it == mActionToSelection.end())
-                return 0;
-            return (*it).second;
-        }
+        int getSelectionFromAction(int action);
 
     private:
         std::vector<int> mActionId;
