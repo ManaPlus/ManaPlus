@@ -39,6 +39,7 @@ class Setup_Touch final : public SetupTabScroll
 
     protected:
         NamesModel *mSizeList;
+        NamesModel *mFormatList;
         TouchActionsModel *mActionsList;
 };
 

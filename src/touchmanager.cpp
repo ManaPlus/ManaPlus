@@ -38,8 +38,6 @@ extern int openGLMode;
 TouchManager::TouchManager() :
     mKeyboard(nullptr),
     mPad(nullptr),
-    mAttack(nullptr),
-    mCancel(nullptr),
     mVertexes(new ImageCollection),
     mRedraw(true),
     mShowJoystick(false),
@@ -47,12 +45,15 @@ TouchManager::TouchManager() :
     mShowKeyboard(false),
     mButtonsSize(1),
     mJoystickSize(1),
+    mButtonsFormat(0),
     mShow(false),
     mInGame(false),
     mTempHideButtons(false)
 {
     for (int f = 0; f < actionsSize; f ++)
         mActions[f] = false;
+    for (int f = 0; f < buttonsCount; f ++)
+        mButtons[f] = nullptr;
 }
 
 TouchManager::~TouchManager()
@@ -74,12 +75,14 @@ void TouchManager::init()
     config.addListener("showScreenKeyboard", this);
     config.addListener("screenButtonsSize", this);
     config.addListener("screenJoystickSize", this);
+    config.addListener("screenButtonsFormat", this);
 
     mShowJoystick = config.getBoolValue("showScreenJoystick");
     mShowButtons = config.getBoolValue("showScreenButtons");
     mShowKeyboard = config.getBoolValue("showScreenKeyboard");
     mButtonsSize = config.getIntValue("screenButtonsSize");
     mJoystickSize = config.getIntValue("screenJoystickSize");
+    mButtonsFormat = config.getIntValue("screenButtonsFormat");
 
     setHalfJoyPad(getPadSize() / 2);
 
@@ -370,16 +373,35 @@ void TouchManager::loadButtons()
         const int pad = skin->getPadding();
         const int pad2 = 2 * pad;
         const int skipWidth = pad2 + sz + x;
+        const int skipHeight = pad2 + sz + y;
 
-        loadTouchItem(&mAttack, "dbutton.xml", "dbutton_image.xml", x, y,
-            sz, sz, RIGHT, "screenActionButton1", "");
+        // 2x1
+        if (mButtonsFormat == 0)
+        {
+            loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml", x, y,
+                sz, sz, RIGHT, "screenActionButton1", "");
 
-        loadTouchItem(&mCancel, "dbutton.xml", "dbutton_image.xml",
-            skipWidth, y, sz, sz, RIGHT, "screenActionButton0", "");
+            loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
+                skipWidth, y, sz, sz, RIGHT, "screenActionButton0", "");
+        }
+        // 2x2
+        else if (mButtonsFormat == 1)
+        {
+            loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml", x, y,
+                sz, sz, RIGHT, "screenActionButton3", "");
 
+            loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
+                skipWidth, y, sz, sz, RIGHT, "screenActionButton2", "");
+
+            loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
+                x, skipHeight, sz, sz, RIGHT, "screenActionButton1", "");
+
+            loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
+                skipWidth, skipHeight, sz, sz, RIGHT,
+                "screenActionButton0", "");
+        }
         theme->unload(skin);
     }
-
 }
 
 void TouchManager::loadKeyboard()
@@ -412,8 +434,8 @@ void TouchManager::optionChanged(const std::string &value)
         }
         else
         {
-            unloadTouchItem(&mAttack);
-            unloadTouchItem(&mCancel);
+            for (int f = 0; f < buttonsCount; f ++)
+                unloadTouchItem(&mButtons[f]);
         }
         mRedraw = true;
     }
@@ -435,8 +457,8 @@ void TouchManager::optionChanged(const std::string &value)
         mButtonsSize = config.getIntValue("screenButtonsSize");
         if (mShowButtons)
         {
-            unloadTouchItem(&mAttack);
-            unloadTouchItem(&mCancel);
+            for (int f = 0; f < buttonsCount; f ++)
+                unloadTouchItem(&mButtons[f]);
             loadButtons();
         }
     }
@@ -450,6 +472,18 @@ void TouchManager::optionChanged(const std::string &value)
         {
             unloadTouchItem(&mPad);
             loadPad();
+        }
+    }
+    else if (value == "screenButtonsFormat")
+    {
+        if (mButtonsFormat == config.getIntValue("screenButtonsFormat"))
+            return;
+        mButtonsFormat = config.getIntValue("screenButtonsFormat");
+        if (mButtonsFormat)
+        {
+            for (int f = 0; f < buttonsCount; f ++)
+                unloadTouchItem(&mButtons[f]);
+            loadButtons();
         }
     }
 }

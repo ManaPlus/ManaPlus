@@ -37,9 +37,18 @@ static const char *const sizeList[] =
     N_("Large")
 };
 
+static const int formatListSize = 2;
+
+static const char *const formatList[] =
+{
+    "2x1",
+    "2x2",
+};
+
 Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     SetupTabScroll(widget),
     mSizeList(new NamesModel),
+    mFormatList(new NamesModel),
     mActionsList(new TouchActionsModel)
 {
     setName(_("Touch"));
@@ -48,6 +57,7 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
     mSizeList->fillFromArray(&sizeList[0], sizeListSize);
+    mFormatList->fillFromArray(&formatList[0], formatListSize);
 
     new SetupItemLabel(_("Onscreen keyboard"), "", this);
 
@@ -73,6 +83,9 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Show onscreen buttons"), "",
         "showScreenButtons", this, "showScreenButtonsEvent");
 
+    new SetupItemDropDown(_("Buttons format"), "", "screenButtonsFormat", this,
+        "screenButtonsFormatEvent", mFormatList, 100);
+
     new SetupItemDropDown(_("Buttons size"), "", "screenButtonsSize", this,
         "screenButtonsSizeEvent", mSizeList, 100);
 
@@ -91,4 +104,8 @@ Setup_Touch::~Setup_Touch()
 {
     delete mSizeList;
     mSizeList = nullptr;
+    delete mFormatList;
+    mFormatList = nullptr;
+    delete mActionsList;
+    mActionsList = nullptr;
 }

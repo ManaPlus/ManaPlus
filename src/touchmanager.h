@@ -43,6 +43,7 @@ class Skin;
 typedef void (*TouchFuncPtr) (const MouseInput &mouseInput);
 
 const int actionsSize = Input::KEY_TOTAL;
+const int buttonsCount = 4;
 
 struct TouchItem final
 {
@@ -162,8 +163,7 @@ class TouchManager final : public ConfigListener
     private:
         TouchItem *mKeyboard;
         TouchItem *mPad;
-        TouchItem *mAttack;
-        TouchItem *mCancel;
+        TouchItem *mButtons[buttonsCount];
         TouchItemVector mObjects;
         ImageCollection *mVertexes;
         bool mActions[actionsSize];
@@ -173,6 +173,7 @@ class TouchManager final : public ConfigListener
         bool mShowKeyboard;
         int mButtonsSize;
         int mJoystickSize;
+        int mButtonsFormat;
         bool mShow;
         bool mInGame;
         bool mTempHideButtons;

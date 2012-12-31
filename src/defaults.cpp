@@ -300,6 +300,9 @@ DefaultsData* getConfigDefaults()
     AddDEF("screenActionKeyboard", Input::KEY_SHOW_KEYBOARD);
     AddDEF("screenActionButton0", Input::KEY_STOP_SIT);
     AddDEF("screenActionButton1", Input::KEY_TARGET_ATTACK);
+    AddDEF("screenActionButton2", Input::KEY_PICKUP);
+    AddDEF("screenActionButton3", Input::KEY_PATHFIND);
+    AddDEF("screenButtonsFormat", 0);
     return configData;
 }
 
