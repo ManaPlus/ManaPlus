@@ -169,10 +169,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
         _("Setup"), x, h, Input::KEY_WINDOW_SETUP, setupWindow);
 
     if (mainGraphics)
-    {
-        setDimension(gcn::Rectangle(mainGraphics->mWidth - x - 3,
-            3, x - 3, h));
-    }
+        setDimension(gcn::Rectangle(mainGraphics->mWidth - x, 0, x, h));
 
     loadButtons();
 
@@ -360,10 +357,7 @@ void WindowMenu::updateButtons()
         }
     }
     if (mainGraphics)
-    {
-        setDimension(gcn::Rectangle(mainGraphics->mWidth - x - 3,
-            3, x - 3, h));
-    }
+        setDimension(gcn::Rectangle(mainGraphics->mWidth - x, 0, x, h));
 }
 
 void WindowMenu::loadButtons()

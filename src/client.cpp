@@ -885,7 +885,7 @@ int Client::testsExec() const
 
 #define ADDBUTTON(var, object) var = object; \
     x -= var->getWidth() + 6; \
-    var->setPosition(x, 3); \
+    var->setPosition(x, 0); \
     top->add(var);
 
 

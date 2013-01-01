@@ -1187,5 +1187,5 @@ void Game::videoResized(const int width, const int height) const
     if (viewport)
         viewport->setSize(width, height);
     if (windowMenu)
-        windowMenu->setPosition(width - 3 - windowMenu->getWidth(), 3);
+        windowMenu->setPosition(width - windowMenu->getWidth(), 0);
 }
