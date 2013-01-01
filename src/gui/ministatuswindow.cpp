@@ -51,6 +51,9 @@ extern volatile int tick_time;
 MiniStatusWindow::MiniStatusWindow() :
     Popup("MiniStatus", "ministatus.xml"),
     InventoryListener(),
+    mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
+    mIconPadding(mSkin ? mSkin->getOption("iconPadding", 3) : 3),
+    mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
     mHpBar(createBar(0, 100, 0, Theme::PROG_HP, "hp bar", _("health bar"))),
     mMpBar(Net::getGameHandler()->canUseMagicBar()
            ? createBar(0, 100, 0, Net::getPlayerHandler()->canUseMagic()
@@ -149,7 +152,7 @@ ProgressBar *MiniStatusWindow::createBar(const float progress,
 
 void MiniStatusWindow::updateBars()
 {
-    int x = 0;
+    int x = mPadding;
     const ProgressBar *lastBar = nullptr;
     for (std::vector <ProgressBar*>::const_iterator it = mBars.begin(),
          it_end = mBars.end(); it != it_end; ++it)
@@ -164,17 +167,18 @@ void MiniStatusWindow::updateBars()
             continue;
         if (bar->isVisible())
         {
-            bar->setPosition(x, 3);
+            bar->setPosition(x, mPadding);
             add(bar);
-            x += bar->getWidth() + 3;
+            x += bar->getWidth() + mSpacing;
             lastBar = bar;
         }
     }
 
     if (lastBar)
     {
-        setContentSize(lastBar->getX() + lastBar->getWidth(),
-            lastBar->getY() + lastBar->getHeight());
+        const int pad2 = 2 * mPadding;
+        setContentSize(lastBar->getX() + lastBar->getWidth() + pad2,
+            lastBar->getY() + lastBar->getHeight() + pad2);
     }
 }
 
@@ -200,13 +204,13 @@ void MiniStatusWindow::eraseIcon(const int index)
 void MiniStatusWindow::drawIcons(Graphics *const graphics)
 {
     // Draw icons
-    int icon_x = mStatusBar->getX() + mStatusBar->getWidth() + 4;
+    int icon_x = mStatusBar->getX() + mStatusBar->getWidth() + mIconPadding;
     for (size_t i = 0, sz = mIcons.size(); i < sz; i ++)
     {
         if (mIcons[i])
         {
-            mIcons[i]->draw(graphics, icon_x, 3);
-            icon_x += 2 + mIcons[i]->getWidth();
+            mIcons[i]->draw(graphics, icon_x, mIconPadding);
+            icon_x += mIconSpacing + mIcons[i]->getWidth();
         }
     }
 }

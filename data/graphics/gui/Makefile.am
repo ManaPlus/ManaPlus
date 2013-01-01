@@ -38,6 +38,7 @@ gui_DATA =				\
 	keyboard_icon.xml			\
 	label.xml			\
 	listbox.xml			\
+	ministatus.xml			\
 	mouse.png			\
 	ok.xml			\
 	playerbox.xml	\

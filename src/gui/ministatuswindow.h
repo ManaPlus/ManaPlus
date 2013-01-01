@@ -105,6 +105,10 @@ class MiniStatusWindow final : public Popup,
         std::map <std::string, ProgressBar*> mBarNames;
         std::vector<AnimatedSprite *> mIcons;
 
+        int mSpacing;
+        int mIconPadding;
+        int mIconSpacing;
+
         /*
          * Mini Status Bars
          */

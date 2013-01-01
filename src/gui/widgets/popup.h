@@ -170,6 +170,7 @@ class Popup : public Container, public gcn::MouseListener,
 
     protected:
         int mPadding;                 /**< Holds the padding of the popup. */
+        Skin *mSkin;                  /**< Skin in use by this popup */
 
     private:
         std::string mPopupName;       /**< Name of the popup */
@@ -178,7 +179,6 @@ class Popup : public Container, public gcn::MouseListener,
         int mMaxWidth;                /**< Maximum popup width */
         int mMaxHeight;               /**< Maximum popup height */
 
-        Skin *mSkin;                  /**< Skin in use by this popup */
         ImageCollection *mVertexes;
         bool mRedraw;
 };
