@@ -108,6 +108,9 @@ class WindowMenu final : public Container,
 
         void updateButtons();
 
+        Skin *mSkin;
+        int mPadding;
+        int mSpacing;
         TextPopup *mTextPopup;
         std::vector <Button*> mButtons;
         std::map <std::string, ButtonInfo*> mButtonNames;

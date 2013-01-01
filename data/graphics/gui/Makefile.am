@@ -75,6 +75,7 @@ gui_DATA =				\
 	unknown-item.png		\
 	window.png			\
 	window.xml			\
+	windowmenu.xml			\
 	world.xml
 
 EXTRA_DIST =				\

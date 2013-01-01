@@ -68,11 +68,15 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     gcn::ActionListener(),
     gcn::SelectionListener(),
     gcn::MouseListener(),
+    mSkin(Theme::instance() ? Theme::instance()->load("windowmenu.xml", "")
+        : nullptr),
+    mPadding(mSkin ? mSkin->getPadding() : 1),
+    mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
     mTextPopup(new TextPopup),
     mHaveMouse(false),
     mAutoHide(1)
 {
-    int x = 0;
+    int x = mPadding;
     int h = 0;
 
     setFocusable(false);
@@ -168,6 +172,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     addButton(N_("SET"),
         _("Setup"), x, h, Input::KEY_WINDOW_SETUP, setupWindow);
 
+    x += mPadding - mSpacing;
     if (mainGraphics)
         setDimension(gcn::Rectangle(mainGraphics->mWidth - x, 0, x, h));
 
@@ -241,7 +246,7 @@ void WindowMenu::addButton(const char *const text,
                            const bool visible)
 {
     Button *const btn = new Button(this, gettext(text), text, this);
-    btn->setPosition(x, 0);
+    btn->setPosition(x, mPadding);
     btn->setDescription(description);
     btn->setTag(key);
     add(btn);
@@ -254,8 +259,8 @@ void WindowMenu::addButton(const char *const text,
     else
 */
     {
-        x += btn->getWidth() + 3;
-        h = btn->getHeight();
+        x += btn->getWidth() + mSpacing;
+        h = btn->getHeight() + 2 * mPadding;
     }
     mButtons.push_back(btn);
     mButtonNames[text] = new ButtonInfo(btn, window, visible);
@@ -339,10 +344,11 @@ void WindowMenu::showButton(const std::string &name, const bool visible)
 
 void WindowMenu::updateButtons()
 {
-    int x = 0, h = 0;
+    int x = mPadding, h = 0;
     std::vector <Button*>::const_iterator it, it_end;
     for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
         safeRemove(*it);
+    const int pad2 = 2 * mPadding;
     for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
     {
         Button *const btn = dynamic_cast<Button *const>(*it);
@@ -350,12 +356,13 @@ void WindowMenu::updateButtons()
             continue;
         if (btn->isVisible())
         {
-            btn->setPosition(x, 0);
+            btn->setPosition(x, mPadding);
             add(btn);
-            x += btn->getWidth() + 3;
-            h = btn->getHeight();
+            x += btn->getWidth() + mSpacing;
+            h = btn->getHeight() + pad2;
         }
     }
+    x += mPadding - mSpacing;
     if (mainGraphics)
         setDimension(gcn::Rectangle(mainGraphics->mWidth - x, 0, x, h));
 }

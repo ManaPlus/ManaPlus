@@ -72,6 +72,7 @@ SET (FILES
     unknown-item.png
     window.png
     window.xml
+    windowmenu.xml
     world.xml
     )
 
