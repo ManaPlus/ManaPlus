@@ -100,6 +100,7 @@ bool execFile(std::string pathName, std::string name A_UNUSED,
 #elif defined __linux__ || defined __linux || defined __APPLE__
 
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/wait.h>
 #include <signal.h>
 
@@ -182,6 +183,11 @@ int execFileWait(std::string pathName, std::string name,
 bool execFile(std::string pathName, std::string name,
               std::string arg1, std::string arg2)
 {
+    struct stat statbuf;
+    // file not exists
+    if (stat(pathName.c_str(), &statbuf))
+        return false;
+
     pid_t pid;
     if ((pid = fork()) == -1)
     {   // fork error
@@ -199,6 +205,7 @@ bool execFile(std::string pathName, std::string name,
             execl(pathName.c_str(), name.c_str(), arg1.c_str(),
                 arg2.c_str(), static_cast<char *>(nullptr));
         }
+        _exit(-1);
         return false;
     }
     return true;
@@ -230,12 +237,12 @@ bool openBrowser(std::string url)
 #elif defined __linux__ || defined __linux
 bool openBrowser(std::string url)
 {
-    return execFile("/usr/bin/xdg-open", "/usr/bin/xdg-open", url, "") == 0;
+    return execFile("/usr/bin/xdg-open", "/usr/bin/xdg-open", url, "");
 }
 #elif defined __APPLE__
 bool openBrowser(std::string url)
 {
-    return execFile("/usr/bin/open", "/usr/bin/open", url, "") == 0;
+    return execFile("/usr/bin/open", "/usr/bin/open", url, "");
 }
 
 #else
