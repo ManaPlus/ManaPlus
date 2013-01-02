@@ -58,6 +58,12 @@ static unsigned int *cR = nullptr;
 static unsigned int *cG = nullptr;
 static unsigned int *cB = nullptr;
 
+int MSDL_gfxBlitRGBA(SDL_Surface *src, SDL_Rect *srcrect,
+                     SDL_Surface *dst, SDL_Rect *dstrect)
+{
+    return SDL_gfxBlitRGBA(src, srcrect, dst, dstrect);
+}
+
 Graphics::Graphics() :
     SDLGraphics(),
     mWidth(0),

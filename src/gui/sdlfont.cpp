@@ -35,8 +35,6 @@
 
 #include <guichan/exception.hpp>
 
-#include <SDL_gfxBlitFunc.h>
-
 #include "debug.h"
 
 const unsigned int CACHE_SIZE = 256;
@@ -124,18 +122,18 @@ class SDLTextChunk final
                     static_cast<Uint16>(surface->h)
                 };
 //                SDL_SetAlpha(surface2, 0, SDL_ALPHA_OPAQUE);
-                SDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+                MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
                 rect.x = -OUTLINE_SIZE;
-                SDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+                MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
                 rect.x = 0;
                 rect.y = -OUTLINE_SIZE;
-                SDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+                MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
                 rect.y = OUTLINE_SIZE;
-                SDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+                MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
                 rect.x = 0;
                 rect.y = 0;
 //                SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
-                SDL_gfxBlitRGBA(surface, nullptr, background, &rect);
+                MSDL_gfxBlitRGBA(surface, nullptr, background, &rect);
                 SDL_FreeSurface(surface);
                 SDL_FreeSurface(surface2);
                 surface = background;
