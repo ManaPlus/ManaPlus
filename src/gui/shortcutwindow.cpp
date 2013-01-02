@@ -158,6 +158,7 @@ void ShortcutWindow::addTab(std::string name, ShortcutContainer *const content)
     content->setWidget2(this);
     Tab *const tab = new ShortcutTab(this, name, content);
     mTabs->addTab(tab, scroll);
+    mPages.push_back(content);
 }
 
 int ShortcutWindow::getTabIndex() const
@@ -222,4 +223,9 @@ void ShortcutWindow::widgetMoved(const gcn::Event& event)
     Window::widgetMoved(event);
     if (mItems)
         mItems->setRedraw(true);
+    for (std::vector<ShortcutContainer*>::iterator it = mPages.begin(),
+         it_end = mPages.end(); it != it_end; ++ it)
+    {
+        (*it)->setRedraw(true);
+    }
 }

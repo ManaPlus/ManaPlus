@@ -73,6 +73,7 @@ class ShortcutWindow final : public Window
 
         ScrollArea *mScrollArea;
         TabbedArea *mTabs;
+        std::vector<ShortcutContainer*> mPages;
 
         static int mBoxesWidth;
 };
