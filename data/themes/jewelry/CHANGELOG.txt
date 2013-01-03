@@ -2,6 +2,18 @@
 Francesco Miglietta (Hal9000)
 
 
+Version 1.0.2 (03.01.2012)
+
+	- Add outline to windows' headers
+	- Add outline to Menu Popup window, readability issue fixed
+	- Chat Tab color scheme is now user friendly
+	- Chat Tab color scheme for Party and Guild tabs implemented
+	- New resize grip graphic
+	- Fix position of resize grip in all windows
+	- Fix bug with Status window lock button graphic
+	- New rounded border graphic for all windows
+
+
 Version 1.0.1 (22.12.2012)
 
 	- Fix bug in Login, Shop, World and Itemcontainer windows
