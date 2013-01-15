@@ -255,31 +255,32 @@ void GeneralHandler::processEvent(Channels channel,
             // protection against double addition attributes.
             statusWindow->clearAttributes();
 
-            statusWindow->addAttribute(STR, _("Strength"), true, "");
-            statusWindow->addAttribute(AGI, _("Agility"), true, "");
-            statusWindow->addAttribute(VIT, _("Vitality"), true, "");
-            statusWindow->addAttribute(INT, _("Intelligence"), true, "");
-            statusWindow->addAttribute(DEX, _("Dexterity"), true, "");
-            statusWindow->addAttribute(LUK, _("Luck"), true, "");
+            statusWindow->addAttribute(STR, _("Strength"), "str", true, "");
+            statusWindow->addAttribute(AGI, _("Agility"), "agi", true, "");
+            statusWindow->addAttribute(VIT, _("Vitality"), "vit", true, "");
+            statusWindow->addAttribute(INT, _("Intelligence"),
+                "int", true, "");
+            statusWindow->addAttribute(DEX, _("Dexterity"), "dex", true, "");
+            statusWindow->addAttribute(LUK, _("Luck"), "luk", true, "");
 
-            statusWindow->addAttribute(ATK, _("Attack"), false, "");
-            statusWindow->addAttribute(DEF, _("Defense"), false, "");
-            statusWindow->addAttribute(MATK, _("M.Attack"), false, "");
-            statusWindow->addAttribute(MDEF, _("M.Defense"), false, "");
+            statusWindow->addAttribute(ATK, _("Attack"));
+            statusWindow->addAttribute(DEF, _("Defense"));
+            statusWindow->addAttribute(MATK, _("M.Attack"));
+            statusWindow->addAttribute(MDEF, _("M.Defense"));
             // xgettext:no-c-format
-            statusWindow->addAttribute(HIT, _("% Accuracy"), false, "");
+            statusWindow->addAttribute(HIT, _("% Accuracy"));
             // xgettext:no-c-format
-            statusWindow->addAttribute(FLEE, _("% Evade"), false, "");
+            statusWindow->addAttribute(FLEE, _("% Evade"));
             // xgettext:no-c-format
-            statusWindow->addAttribute(CRIT, _("% Critical"), false, "");
+            statusWindow->addAttribute(CRIT, _("% Critical"));
             statusWindow->addAttribute(PlayerInfo::ATTACK_DELAY,
-                _("Attack Delay"), false, "");
+                _("Attack Delay"));
             statusWindow->addAttribute(PlayerInfo::WALK_SPEED,
-                _("Walk Delay"), false, "");
+                _("Walk Delay"));
             statusWindow->addAttribute(PlayerInfo::ATTACK_RANGE,
-                _("Attack Range"), false, "");
+                _("Attack Range"));
             statusWindow->addAttribute(PlayerInfo::ATTACK_SPEED,
-                _("Damage per sec."), false, "");
+                _("Damage per sec."));
         }
         else if (event.getName() == EVENT_GUIWINDOWSUNLOADING)
         {

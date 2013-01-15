@@ -61,8 +61,9 @@ class StatusWindow final : public Window,
         void setPointsNeeded(const int id, const int needed);
 
         void addAttribute(const int id, const std::string &name,
-                          const bool modifiable,
-                          const std::string &description);
+                          const std::string &shortName = "",
+                          const bool modifiable = false,
+                          const std::string &description = "");
 
         static void updateHPBar(ProgressBar *const bar,
                                 const bool showMax = false);

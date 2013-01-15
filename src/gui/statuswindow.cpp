@@ -77,12 +77,17 @@ class AttrDisplay : public Container
                 return mValue->getCaption();
         }
 
+        const std::string &getShortName() const
+        { return mShortName; }
+
     protected:
         AttrDisplay(const Widget2 *const widget,
-                    const int id, const std::string &name);
+                    const int id, const std::string &name,
+                    const std::string &shortName);
 
         const int mId;
         const std::string mName;
+        const std::string mShortName;
 
         LayoutHelper *mLayout;
         Label *mLabel;
@@ -93,7 +98,8 @@ class DerDisplay final : public AttrDisplay
 {
     public:
         DerDisplay(const Widget2 *const widget,
-                   const int id, const std::string &name);
+                   const int id, const std::string &name,
+                   const std::string &shortName);
 
         A_DELETE_COPY(DerDisplay)
 
@@ -105,7 +111,8 @@ class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
 {
     public:
         ChangeDisplay(const Widget2 *const widget,
-                      const int id, const std::string &name);
+                      const int id, const std::string &name,
+                      const std::string &shortName);
 
         A_DELETE_COPY(ChangeDisplay)
 
@@ -436,6 +443,7 @@ void StatusWindow::setPointsNeeded(const int id, const int needed)
 }
 
 void StatusWindow::addAttribute(const int id, const std::string &name,
+                                const std::string &shortName,
                                 const bool modifiable,
                                 const std::string &description A_UNUSED)
 {
@@ -443,12 +451,12 @@ void StatusWindow::addAttribute(const int id, const std::string &name,
 
     if (modifiable)
     {
-        disp = new ChangeDisplay(this, id, name);
+        disp = new ChangeDisplay(this, id, name, shortName);
         mAttrCont->add1(disp);
     }
     else
     {
-        disp = new DerDisplay(this, id, name);
+        disp = new DerDisplay(this, id, name, shortName);
         mDAttrCont->add1(disp);
     }
     mAttrs[id] = disp;
@@ -743,7 +751,10 @@ void StatusWindow::action(const gcn::ActionEvent &event)
             const ChangeDisplay *const attr = dynamic_cast<ChangeDisplay*>(
                 (*it).second);
             if (attr)
-                str += attr->getValue() + " ";
+            {
+                str += strprintf("%s:%s ", attr->getShortName().c_str(),
+                    attr->getValue().c_str());
+            }
             ++ it;
         }
         chatWindow->addInputText(str);
@@ -751,10 +762,12 @@ void StatusWindow::action(const gcn::ActionEvent &event)
 }
 
 AttrDisplay::AttrDisplay(const Widget2 *const widget,
-                         const int id, const std::string &name) :
+                         const int id, const std::string &name,
+                         const std::string &shortName) :
     Container(widget),
     mId(id),
     mName(name),
+    mShortName(shortName),
     mLayout(new LayoutHelper(this)),
     mLabel(new Label(this, name)),
     mValue(new Label(this, "1 "))
@@ -785,8 +798,9 @@ std::string AttrDisplay::update()
 }
 
 DerDisplay::DerDisplay(const Widget2 *const widget,
-                       const int id, const std::string &name) :
-    AttrDisplay(widget, id, name)
+                       const int id, const std::string &name,
+                       const std::string &shortName) :
+    AttrDisplay(widget, id, name, shortName)
 {
     ContainerPlacer place = mLayout->getPlacer(0, 0);
 
@@ -797,8 +811,9 @@ DerDisplay::DerDisplay(const Widget2 *const widget,
 }
 
 ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
-                             const int id, const std::string &name) :
-    AttrDisplay(widget, id, name),
+                             const int id, const std::string &name,
+                             const std::string &shortName) :
+    AttrDisplay(widget, id, name, shortName),
     gcn::ActionListener(),
     mNeeded(1),
     mPoints(new Label(this, _("Max"))),
