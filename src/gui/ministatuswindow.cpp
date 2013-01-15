@@ -152,7 +152,7 @@ ProgressBar *MiniStatusWindow::createBar(const float progress,
 
 void MiniStatusWindow::updateBars()
 {
-    int x = mPadding;
+    int x = 0;
     const ProgressBar *lastBar = nullptr;
     for (std::vector <ProgressBar*>::const_iterator it = mBars.begin(),
          it_end = mBars.end(); it != it_end; ++it)
@@ -167,7 +167,7 @@ void MiniStatusWindow::updateBars()
             continue;
         if (bar->isVisible())
         {
-            bar->setPosition(x, mPadding);
+            bar->setPosition(x, 0);
             add(bar);
             x += bar->getWidth() + mSpacing;
             lastBar = bar;
@@ -176,9 +176,8 @@ void MiniStatusWindow::updateBars()
 
     if (lastBar)
     {
-        const int pad2 = 2 * mPadding;
-        setContentSize(lastBar->getX() + lastBar->getWidth() + pad2,
-            lastBar->getY() + lastBar->getHeight() + pad2);
+        setContentSize(lastBar->getX() + lastBar->getWidth(),
+            lastBar->getY() + lastBar->getHeight());
     }
 }
 
@@ -490,6 +489,7 @@ void MiniStatusWindow::updateArrows()
 
 gcn::Rectangle MiniStatusWindow::getChildrenArea()
 {
-    return gcn::Rectangle(getPadding(), 0, getWidth() - getPadding() * 2,
-                          getHeight() - getPadding() * 2);
+    return gcn::Rectangle(getPadding(), getPadding(),
+        getWidth() - getPadding() * 2,
+        getHeight() - getPadding() * 2);
 }
