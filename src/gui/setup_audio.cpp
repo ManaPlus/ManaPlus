@@ -82,7 +82,7 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
     new SetupItemSlider(_("Music volume"), "", "musicVolume",
         this, "musicVolumeEvent", 0, sound.getMaxVolume(), 150, true);
 
-    new SetupItemCheckBox(_("Enable music fade out (can be very slow)"), "",
+    new SetupItemCheckBox(_("Enable music fade out"), "",
         "fadeoutmusic", this, "fadeoutmusicEvent");
 
 
