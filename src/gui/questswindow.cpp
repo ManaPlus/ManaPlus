@@ -205,7 +205,7 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
     quest->group = XML::getProperty(node, "group", "");
     std::string incompleteStr = XML::getProperty(node, "incomplete", "");
     std::string completeStr = XML::getProperty(node, "complete", "");
-    if (incompleteStr.empty() || completeStr.empty())
+    if (incompleteStr.empty() && completeStr.empty())
     {
         logger->log("complete flags incorrect");
         delete quest;
