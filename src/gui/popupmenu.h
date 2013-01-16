@@ -171,6 +171,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showTextFieldPopup(int x, int y, TextField *input);
 
+        void showLinkPopup(const int x, const int y, const std::string &link);
+
         /**
          * Handles link action.
          */

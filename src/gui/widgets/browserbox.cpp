@@ -355,6 +355,7 @@ void BrowserBox::mousePressed(gcn::MouseEvent &event)
 
     if (i != mLinks.end())
         mLinkHandler->handleLink(i->link, &event);
+    event.consume();
 }
 
 void BrowserBox::mouseMoved(gcn::MouseEvent &event)

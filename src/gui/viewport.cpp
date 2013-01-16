@@ -821,6 +821,11 @@ void Viewport::showTextFieldPopup(TextField *input)
     mPopupMenu->showTextFieldPopup(getMouseX(), getMouseY(), input);
 }
 
+void Viewport::showLinkPopup(const std::string &link)
+{
+    mPopupMenu->showLinkPopup(getMouseX(), getMouseY(), link);
+}
+
 void Viewport::closePopupMenu()
 {
     if (mPopupMenu)

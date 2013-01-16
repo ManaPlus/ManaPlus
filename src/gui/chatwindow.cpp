@@ -718,6 +718,9 @@ void ChatWindow::scroll(const int amount) const
 
 void ChatWindow::mousePressed(gcn::MouseEvent &event)
 {
+    if (event.isConsumed())
+        return;
+
     if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
         if (viewport)

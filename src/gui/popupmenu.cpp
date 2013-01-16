@@ -69,7 +69,9 @@
 
 #include "resources/iteminfo.h"
 
+#include "utils/copynpaste.h"
 #include "utils/gettext.h"
+#include "utils/process.h"
 
 #include <guichan/listmodel.hpp>
 
@@ -1549,6 +1551,14 @@ void PopupMenu::handleLink(const std::string &link,
         if (mTextField)
             mTextField->handlePaste();
     }
+    else if (link == "open link" && !mNick.empty())
+    {
+        openBrowser(mNick);
+    }
+    else if (link == "clipboard link" && !mNick.empty())
+    {
+        sendBuffer(mNick);
+    }
     else if (!link.compare(0, 10, "guild-pos-"))
     {
         if (player_node)
@@ -2073,6 +2083,23 @@ void PopupMenu::showTextFieldPopup(int x, int y, TextField *input)
 
     mBrowserBox->addRow("clipboard copy", _("Copy"));
     mBrowserBox->addRow("clipboard paste", _("Paste"));
+    mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(x, y);
+}
+
+void PopupMenu::showLinkPopup(const int x, const int y,
+                              const std::string &link)
+{
+    mX = x;
+    mY = y;
+    mNick = link;
+
+    mBrowserBox->clearRows();
+
+    mBrowserBox->addRow("open link", _("Open link"));
+    mBrowserBox->addRow("clipboard link", _("Copy to clipboard"));
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("cancel", _("Cancel"));
 
