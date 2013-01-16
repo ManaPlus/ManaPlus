@@ -42,6 +42,7 @@ class Button;
 class Desktop;
 class Game;
 class LoginData;
+class Skin;
 class Window;
 class QuitDialog;
 
@@ -400,6 +401,9 @@ private:
     std::string mCaption;
     bool mNewMessageFlag;
     FPSmanager mFpsManager;
+    Skin *mSkin;
+    int mButtonPadding;
+    int mButtonSpacing;
 };
 
 #endif // CLIENT_H
