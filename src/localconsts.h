@@ -56,6 +56,9 @@
 #define gnu_printf printf
 #endif
 
+#define FOR_EACH(type, iter, array) for (type iter = array.begin(), \
+    iter##_end = array.end(); iter != iter##_end; ++ iter)
+
 //#define DEBUG_CONFIG 1
 //#define DEBUG_BIND_TEXTURE 1
 //#define DISABLE_RESOURCE_CACHING 1

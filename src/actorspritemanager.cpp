@@ -273,10 +273,7 @@ void ActorSpriteManager::undelete(const ActorSprite *const actor)
     if (!actor || actor == player_node)
         return;
 
-    ActorSpritesConstIterator it, it_end;
-
-    for (it = mDeleteActors.begin(), it_end = mDeleteActors.end();
-         it != it_end; ++it)
+    FOR_EACH (ActorSpritesConstIterator, it, mDeleteActors)
     {
         if (*it == actor)
         {
@@ -760,9 +757,7 @@ void ActorSpriteManager::logic()
     }
 
     BLOCK_START("ActorSpriteManager::logic 1")
-    for (ActorSpritesConstIterator it = mDeleteActors.begin(),
-         it_end = mDeleteActors.end();
-         it != it_end; ++it)
+    FOR_EACH (ActorSpritesConstIterator, it, mDeleteActors)
     {
         if (!*it)
             continue;
@@ -785,9 +780,7 @@ void ActorSpriteManager::logic()
             viewport->clearHover(*it);
     }
 
-    for (ActorSpritesConstIterator it = mDeleteActors.begin(),
-         it_end = mDeleteActors.end();
-         it != it_end; ++it)
+    FOR_EACH (ActorSpritesConstIterator, it, mDeleteActors)
     {
         mActors.erase(*it);
         delete *it;
@@ -906,9 +899,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
     {
         std::vector<Being*> sortedBeings;
 
-        for (ActorSprites::const_iterator i = mActors.begin(),
-             i_end = mActors.end();
-             i != i_end; ++i)
+        FOR_EACH (ActorSprites::const_iterator, i, mActors)
         {
             if (!*i)
                 continue;
@@ -1003,9 +994,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
         int index = defaultPriorityIndex;
         Being *closestBeing = nullptr;
 
-        for (ActorSprites::const_iterator i = mActors.begin(),
-             i_end = mActors.end();
-             i != i_end; ++i)
+        FOR_EACH (ActorSprites::const_iterator, i, mActors)
         {
             if (!*i)
                 continue;
@@ -1294,9 +1283,7 @@ void ActorSpriteManager::printBeingsToChat(ActorSprites beings,
 
     debugChatTab->chatLog("---------------------------------------");
     debugChatTab->chatLog(header);
-    std::set<ActorSprite*>::const_iterator it;
-    const std::set<ActorSprite*>::const_iterator it_end = beings.end();
-    for (it = beings.begin(); it != it_end; ++it)
+    FOR_EACH (std::set<ActorSprite*>::const_iterator, it, beings)
     {
         if (!*it)
             continue;
@@ -1323,9 +1310,7 @@ void ActorSpriteManager::printBeingsToChat(std::vector<Being*> beings,
     debugChatTab->chatLog("---------------------------------------");
     debugChatTab->chatLog(header);
 
-    std::vector<Being*>::const_iterator i;
-    const std::vector<Being*>::const_iterator i_end = beings.end();
-    for (i = beings.begin(); i != i_end; ++i)
+    FOR_EACH (std::vector<Being*>::const_iterator, i, beings)
     {
         if (!*i)
             continue;
