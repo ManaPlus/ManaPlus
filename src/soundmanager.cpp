@@ -232,10 +232,13 @@ static SDLMusic *loadMusic(const std::string &fileName)
 
 void SoundManager::playMusic(const std::string &fileName)
 {
-    mCurrentMusicFile = fileName;
-
     if (!mInstalled || !mPlayMusic)
         return;
+
+    if (mCurrentMusicFile == fileName)
+        return;
+
+    mCurrentMusicFile = fileName;
 
     haltMusic();
 
@@ -407,6 +410,7 @@ void SoundManager::haltMusic()
         mMusic->decRef();
         mMusic = nullptr;
     }
+    mCurrentMusicFile.clear();
 }
 
 void SoundManager::changeAudio()
