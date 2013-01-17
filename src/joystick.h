@@ -135,6 +135,8 @@ class Joystick final
 
         void resetRepeat(const int key);
 
+        void reload();
+
     protected:
         unsigned char mDirection;
 

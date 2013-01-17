@@ -45,6 +45,7 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     mCalibrateLabel(new Label(this,
         _("Press the button to start calibration"))),
     mCalibrateButton(new Button(this, _("Calibrate"), "calibrate", this)),
+    mDetectButton(new Button(this, _("Detect joysticks"), "detect", this)),
     mJoystickEnabled(new CheckBox(this, _("Enable joystick"))),
     mNamesModel(new NamesModel),
     mNamesDropDown(new DropDown(this, mNamesModel)),
@@ -83,8 +84,9 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     place(0, 0, mJoystickEnabled);
     place(0, 1, mNamesDropDown);
     place(0, 2, mUseInactiveCheckBox);
-    place(0, 3, mCalibrateLabel);
-    place(0, 4, mCalibrateButton);
+    place(0, 3, mDetectButton);
+    place(0, 4, mCalibrateLabel);
+    place(0, 5, mCalibrateButton);
 
     setDimension(gcn::Rectangle(0, 0, 365, 75));
 }
@@ -97,14 +99,24 @@ Setup_Joystick::~Setup_Joystick()
 
 void Setup_Joystick::action(const gcn::ActionEvent &event)
 {
-    if (event.getSource() == mJoystickEnabled)
+    const gcn::Widget *const source = event.getSource();
+    if (source == mJoystickEnabled)
     {
         setTempEnabled(mJoystickEnabled->isSelected());
     }
-    else if (event.getSource() == mNamesDropDown)
+    else if (source == mNamesDropDown)
     {
         if (joystick)
             joystick->setNumber(mNamesDropDown->getSelected());
+    }
+    else if (source == mDetectButton)
+    {
+        if (joystick)
+        {
+            joystick->reload();
+            Joystick::getNames(mNamesModel->getNames());
+            mNamesDropDown->setSelected(joystick->getNumber());
+        }
     }
     else
     {

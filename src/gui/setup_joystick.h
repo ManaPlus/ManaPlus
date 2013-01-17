@@ -53,6 +53,7 @@ class Setup_Joystick final : public SetupTab
     private:
         Label *mCalibrateLabel;
         Button *mCalibrateButton;
+        Button *mDetectButton;
         bool mOriginalJoystickEnabled;
         CheckBox *mJoystickEnabled;
         NamesModel *mNamesModel;
