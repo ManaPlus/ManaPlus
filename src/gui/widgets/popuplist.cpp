@@ -32,14 +32,15 @@
 
 PopupList::PopupList(DropDown *const widget,
                      gcn::ListModel *const listModel,
-                     bool extended):
+                     bool extended, bool modal):
     Popup("PopupList", "popuplist.xml"),
     gcn::FocusListener(),
     mListModel(listModel),
     mListBox(extended ? new ExtendedListBox(widget, listModel, 0) :
         new ListBox(widget, listModel)),
     mScrollArea(new ScrollArea(mListBox, false)),
-    mDropDown(widget)
+    mDropDown(widget),
+    mModal(modal)
 {
     setFocusable(true);
 
@@ -79,6 +80,8 @@ void PopupList::show(int x, int y)
     setPosition(x, y);
     setVisible(true);
     requestMoveToTop();
+    if (mModal)
+        requestModalFocus();
 }
 
 void PopupList::widgetResized(const gcn::Event &event)
@@ -124,6 +127,8 @@ void PopupList::mousePressed(gcn::MouseEvent& mouseEvent A_UNUSED)
     if (mDropDown)
         mDropDown->updateSelection();
     setVisible(false);
+    if (mModal)
+        releaseModalFocus();
 }
 
 void PopupList::focusGained(const gcn::Event& event A_UNUSED)
@@ -138,6 +143,8 @@ void PopupList::focusGained(const gcn::Event& event A_UNUSED)
     if (mDropDown)
         mDropDown->updateSelection();
     setVisible(false);
+    if (mModal)
+        releaseModalFocus();
 }
 
 void PopupList::focusLost(const gcn::Event& event A_UNUSED)

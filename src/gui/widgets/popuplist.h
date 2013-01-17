@@ -39,7 +39,8 @@ class PopupList final : public Popup,
 {
     public:
         PopupList(DropDown *const widget,
-                  gcn::ListModel *const listModel, bool extended);
+                  gcn::ListModel *const listModel, bool extended,
+                  bool modal = false);
 
         ~PopupList();
 
@@ -71,6 +72,7 @@ class PopupList final : public Popup,
         ListBox *mListBox;
         ScrollArea *mScrollArea;
         DropDown *mDropDown;
+        bool mModal;
 };
 
 #endif
