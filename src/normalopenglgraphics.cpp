@@ -1049,11 +1049,20 @@ void NormalOpenGLGraphics::_beginDraw()
 
     glEnable(GL_SCISSOR_TEST);
     glDisable(GL_DITHER);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_FOG);
+    glDisable(GL_COLOR_LOGIC_OP);
+    glDisable(GL_COLOR_MATERIAL);
+    glDisable(GL_STENCIL_TEST);
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glEnableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    glShadeModel(GL_FLAT);
+    glDepthMask(GL_FALSE);
 
 #ifndef ANDROID
     glHint(GL_LINE_SMOOTH_HINT, GL_FASTEST);
