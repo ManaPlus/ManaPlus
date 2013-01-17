@@ -11,6 +11,7 @@ flags_DATA =				\
 	id.png			\
 	it.png			\
 	jp.png			\
+	nl_BE.png			\
 	pl.png			\
 	pt_BR.png			\
 	pt.png			\
