@@ -40,6 +40,7 @@ gui_DATA =				\
 	listbox.xml		\
 	login.xml		\
 	map.xml		\
+	ministatus.xml		\
 	mouse.png		\
 	npc.xml		\
 	ok.xml		\
@@ -71,6 +72,7 @@ gui_DATA =				\
 	textfield.xml		\
 	window.png		\
 	window.xml		\
+	windowmenu.xml		\
 	world.xml
 
 EXTRA_DIST =				\

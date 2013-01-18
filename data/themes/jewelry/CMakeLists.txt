@@ -37,6 +37,7 @@ SET (FILES
     listbox.xml
     login.xml
     map.xml
+    ministatus.xml
     mouse.png
     npc.xml
     ok.xml
@@ -68,6 +69,7 @@ SET (FILES
     textfield.xml
     window.png
     window.xml
+    windowmenu.xml
     world.xml
     )
 
