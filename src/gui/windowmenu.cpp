@@ -69,7 +69,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     gcn::SelectionListener(),
     gcn::MouseListener(),
     mSkin(Theme::instance() ? Theme::instance()->load("windowmenu.xml", "")
-        : nullptr),
+          : nullptr),
     mPadding(mSkin ? mSkin->getPadding() : 1),
     mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
     mTextPopup(new TextPopup),

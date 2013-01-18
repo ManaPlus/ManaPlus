@@ -946,7 +946,7 @@ impHandler0(talk)
             if (target)
             {
                 if (abs(target->getTileX() - player_node->getTileX()) > 1
-                || abs(target->getTileY() - player_node->getTileY()) > 1)
+                    || abs(target->getTileY() - player_node->getTileY()) > 1)
                 {
                     return true;
                 }
