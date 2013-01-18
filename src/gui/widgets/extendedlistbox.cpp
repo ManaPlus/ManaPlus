@@ -42,13 +42,14 @@ ExtendedListBox::ExtendedListBox(const Widget2 *const widget,
     ListBox(widget, listModel),
     mRowHeight(rowHeight),
     mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
-    mSpacing(mSkin ? mSkin->getOption("spacing") : 0)
+    mSpacing(mSkin ? mSkin->getOption("spacing") : 0),
+    mItemPadding(mSkin ? mSkin->getOption("itemPadding") : 1)
 {
     if (!mRowHeight)
     {
         const gcn::Font *font = getFont();
         if (font)
-            mRowHeight = font->getHeight() + 2 * mPadding;
+            mRowHeight = font->getHeight() + 2 * mItemPadding;
         else
             mRowHeight = 13;
     }

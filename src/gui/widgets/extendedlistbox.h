@@ -52,6 +52,7 @@ class ExtendedListBox final : public ListBox
         unsigned int mRowHeight;
         int mImagePadding;
         int mSpacing;
+        int mItemPadding;
 };
 
 #endif
