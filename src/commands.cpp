@@ -1012,7 +1012,7 @@ impHandler0(dumpEnvironment)
 {
     logger->log("Start environment variables");
     for (char **env = environ; *env; ++ env)
-        logger->log(*env);
+        logger->log1(*env);
     logger->log("End environment variables");
     if (debugChatTab)
         debugChatTab->chatLog(_("Environment variables dumped"));
