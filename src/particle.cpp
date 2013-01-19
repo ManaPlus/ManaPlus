@@ -204,12 +204,10 @@ bool Particle::update()
         // Update child emitters
         if ((mLifetimePast - 1) % Particle::emitterSkip == 0)
         {
-            for (EmitterConstIterator e = mChildEmitters.begin(),
-                 e2 = mChildEmitters.end(); e != e2; ++ e)
+            FOR_EACH (EmitterConstIterator, e, mChildEmitters)
             {
                 Particles newParticles = (*e)->createParticles(mLifetimePast);
-                for (ParticleConstIterator p = newParticles.begin(),
-                     p2 = newParticles.end(); p != p2; ++ p)
+                FOR_EACH (ParticleConstIterator, p, newParticles)
                 {
                     (*p)->moveBy(mPos);
                     mChildParticles.push_back (*p);
@@ -262,8 +260,7 @@ bool Particle::update()
 void Particle::moveBy(const Vector &change)
 {
     mPos += change;
-    for (ParticleConstIterator p = mChildParticles.begin(),
-         p2 = mChildParticles.end(); p != p2; ++p)
+    FOR_EACH (ParticleConstIterator, p, mChildParticles)
     {
         if ((*p)->doesFollow())
             (*p)->moveBy(change);
@@ -461,11 +458,8 @@ void Particle::adjustEmitterSize(const int w, const int h)
 {
     if (mAllowSizeAdjust)
     {
-        for (EmitterConstIterator e = mChildEmitters.begin(),
-             e2 = mChildEmitters.end(); e != e2; ++e)
-        {
+        FOR_EACH (EmitterConstIterator, e, mChildEmitters)
             (*e)->adjustSize(w, h);
-        }
     }
 }
 

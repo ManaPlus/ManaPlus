@@ -618,8 +618,7 @@ void SpecialLayer::setTile(const int x, const int y, const int type)
 
 void SpecialLayer::addRoad(Path road)
 {
-    for (Path::const_iterator i = road.begin(), i_end = road.end();
-         i != i_end; ++i)
+    FOR_EACH (Path::const_iterator, i, road)
     {
         const Position &pos = (*i);
         MapItem *item = getTile(pos.x, pos.y);

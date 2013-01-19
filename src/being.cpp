@@ -190,7 +190,8 @@ bool Being::mEnableReorderSprites = true;
 bool Being::mHideErased = false;
 
 std::list<BeingCacheEntry*> beingInfoCache;
-
+typedef std::map<int, Guild*>::const_iterator GuildsMapCIter;
+typedef std::map<int, int>::const_iterator IntMapCIter;
 
 // TODO: mWalkTime used by eAthena only
 Being::Being(const int id, const Type type, const uint16_t subtype,
@@ -908,8 +909,7 @@ void Being::removeGuild(const int id)
 
 Guild *Being::getGuild(const std::string &guildName) const
 {
-    for (std::map<int, Guild*>::const_iterator itr = mGuilds.begin(),
-         itr_end = mGuilds.end(); itr != itr_end; ++itr)
+    FOR_EACH (GuildsMapCIter, itr, mGuilds)
     {
         Guild *const guild = itr->second;
         if (guild && guild->getName() == guildName)
@@ -939,8 +939,7 @@ Guild *Being::getGuild() const
 
 void Being::clearGuilds()
 {
-    for (std::map<int, Guild*>::const_iterator itr = mGuilds.begin(),
-         itr_end = mGuilds.end(); itr != itr_end; ++itr)
+    FOR_EACH (GuildsMapCIter, itr, mGuilds)
     {
         Guild *const guild = itr->second;
 
@@ -2034,8 +2033,7 @@ void Being::addToCache() const
 
 BeingCacheEntry* Being::getCacheEntry(const int id)
 {
-    for (std::list<BeingCacheEntry*>::iterator i = beingInfoCache.begin();
-         i != beingInfoCache.end(); ++ i)
+    FOR_EACH (std::list<BeingCacheEntry*>::iterator, i, beingInfoCache)
     {
         if (!*i)
             continue;
@@ -2346,8 +2344,7 @@ void Being::recalcSpritesOrder()
 
             if (spriteToItems)
             {
-                for (SpriteToItemMapCIter itr = spriteToItems->begin(),
-                     itr_end = spriteToItems->end(); itr != itr_end; ++ itr)
+                FOR_EACHP (SpriteToItemMapCIter, itr, spriteToItems)
                 {
                     const int remSprite = itr->first;
                     const std::map<int, int> &itemReplacer = itr->second;
@@ -2392,10 +2389,7 @@ void Being::recalcSpritesOrder()
                     }
                     else
                     {   // slot unknown. Search for real slot, this can be slow
-                        for (std::map<int, int>::const_iterator
-                             repIt = itemReplacer.begin(),
-                             repIt_end = itemReplacer.end();
-                             repIt != repIt_end; ++ repIt)
+                        FOR_EACH (IntMapCIter, repIt, itemReplacer)
                         {
                             for (unsigned slot2 = 0; slot2 < sz; slot2 ++)
                             {

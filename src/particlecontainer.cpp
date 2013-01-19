@@ -25,6 +25,9 @@
 
 #include "debug.h"
 
+typedef std::list<Particle *>::iterator ParticleListIter;
+typedef std::list<Particle *>::const_iterator ParticleListCIter;
+
 ParticleContainer::ParticleContainer(ParticleContainer *const parent,
                                      const bool delParent):
     mDelParent(delParent),
@@ -93,11 +96,8 @@ void ParticleList::removeLocally(const Particle *const particle)
 
 void ParticleList::clearLocally()
 {
-    for (std::list<Particle *>::const_iterator it = mElements.begin(),
-         it_end = mElements.end(); it != it_end; ++ it)
-    {
+    FOR_EACH (ParticleListCIter, it, mElements)
         (*it)->kill();
-    }
 
     mElements.clear();
 }

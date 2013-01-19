@@ -202,11 +202,8 @@ void Inventory::removeInventoyListener(InventoryListener* const listener)
 
 void Inventory::distributeSlotsChangedEvent()
 {
-    for (InventoryListenerList::const_iterator i = mInventoryListeners.begin(),
-         i_end = mInventoryListeners.end(); i != i_end; ++i)
-    {
+    FOR_EACH (InventoryListenerList::const_iterator, i, mInventoryListeners)
         (*i)->slotsChanged(this);
-    }
 }
 
 Item *Inventory::findItemBySprite(std::string spritePath,

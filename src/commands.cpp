@@ -1177,8 +1177,7 @@ void replaceVars(std::string &str)
         StringVect names;
         std::string newStr;
         actorSpriteManager->getPlayerNames(names, false);
-        for (StringVectCIter it = names.begin(), it_end = names.end();
-             it != it_end; ++ it)
+        FOR_EACH (StringVectCIter, it, names)
         {
             if (*it != player_node->getName())
                 newStr += *it + ",";
@@ -1198,8 +1197,7 @@ void replaceVars(std::string &str)
         if (player_node->isInParty() && (party = player_node->getParty()))
         {
             party->getNames(names);
-            for (StringVectCIter it = names.begin(), it_end = names.end();
-                 it != it_end; ++ it)
+            FOR_EACH (StringVectCIter, it, names)
             {
                 if (*it != player_node->getName())
                     newStr += *it + ",";

@@ -38,6 +38,9 @@
 static const float SIN45 = 0.707106781f;
 static const float DEG_RAD_FACTOR = 0.017453293f;
 
+typedef std::vector<ImageSet*>::const_iterator ImageSetVectorCIter;
+typedef std::list<ParticleEmitter>::const_iterator ParticleEmitterListCIter;
+
 ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
                                  Particle *const target,
                                  Map *const map, const int rotation,
@@ -435,9 +438,7 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
     mDeathEffect = o.mDeathEffect;
     mTempSets = o.mTempSets;
 
-    for (std::vector<ImageSet*>::const_iterator
-         i = mTempSets.begin(), i_end = mTempSets.end();
-         i != i_end; ++ i)
+    FOR_EACH (ImageSetVectorCIter, i, mTempSets)
     {
         if (*i)
             (*i)->incRef();
@@ -453,9 +454,7 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
 
 ParticleEmitter::~ParticleEmitter()
 {
-    for (std::vector<ImageSet*>::const_iterator
-         i = mTempSets.begin(), i_end = mTempSets.end();
-         i != i_end; ++i)
+    FOR_EACH (ImageSetVectorCIter, i, mTempSets)
     {
         if (*i)
             (*i)->decRef();
@@ -576,13 +575,8 @@ std::list<Particle *> ParticleEmitter::createParticles(const int tick)
         newParticle->setFadeIn(mParticleFadeIn.value(tick));
         newParticle->setAlpha(mParticleAlpha.value(tick));
 
-        for (std::list<ParticleEmitter>::const_iterator
-             it = mParticleChildEmitters.begin(),
-             it_end = mParticleChildEmitters.end();
-             it != it_end; ++it)
-        {
+        FOR_EACH (ParticleEmitterListCIter, it,  mParticleChildEmitters)
             newParticle->addEmitter(new ParticleEmitter(*it));
-        }
 
         if (!mDeathEffect.empty())
             newParticle->setDeathEffect(mDeathEffect, mDeathEffectConditions);

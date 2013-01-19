@@ -41,10 +41,7 @@ ChannelManager::~ChannelManager()
 Channel *ChannelManager::findById(const int id) const
 {
     Channel *channel = nullptr;
-    for (std::list<Channel*>::const_iterator itr = mChannels.begin(),
-         end = mChannels.end();
-         itr != end;
-         ++itr)
+    FOR_EACH (std::list<Channel*>::const_iterator, itr, mChannels)
     {
         Channel *const c = (*itr);
         if (!c)
@@ -63,10 +60,7 @@ Channel *ChannelManager::findByName(const std::string &name) const
     Channel *channel = nullptr;
     if (!name.empty())
     {
-        for (std::list<Channel*>::const_iterator itr = mChannels.begin(),
-             end = mChannels.end();
-             itr != end;
-             ++itr)
+        FOR_EACH (std::list<Channel*>::const_iterator, itr, mChannels)
         {
             Channel *const c = (*itr);
             if (!c)

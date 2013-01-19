@@ -109,8 +109,7 @@ bool TileAnimation::update(const int ticks)
     Image *const img = mAnimation->getCurrentImage();
     if (img != mLastImage)
     {
-        for (TilePairVectorCIter i = mAffected.begin(),
-             i_end = mAffected.end(); i != i_end; ++i)
+        FOR_EACH (TilePairVectorCIter, i, mAffected)
         {
             if (i->first)
                 i->first->setTile(i->second, img);
@@ -311,9 +310,7 @@ void Map::addTileset(Tileset *const tileset)
 void Map::update(const int ticks)
 {
     // Update animated tiles
-    for (TileAnimationMapCIter iAni = mTileAnimations.begin(),
-         i_end = mTileAnimations.end();
-         iAni != i_end; ++iAni)
+    FOR_EACH (TileAnimationMapCIter, iAni, mTileAnimations)
     {
         if (iAni->second && iAni->second->update(ticks))
             mRedrawMap = true;
@@ -566,17 +563,11 @@ void Map::updateAmbientLayers(const float scrollX, const float scrollY)
     const float dy = scrollY - mLastAScrollY;
     const int timePassed = get_elapsed_time(lastTick);
 
-    for (AmbientLayerVectorCIter i = mBackgrounds.begin(),
-         i_end = mBackgrounds.end(); i != i_end; ++i)
-    {
+    FOR_EACH (AmbientLayerVectorCIter, i, mBackgrounds)
         (*i)->update(timePassed, dx, dy);
-    }
 
-    for (AmbientLayerVectorCIter i = mForegrounds.begin(),
-        i_end = mForegrounds.end(); i != i_end; ++i)
-    {
+    FOR_EACH (AmbientLayerVectorCIter, i, mForegrounds)
         (*i)->update(timePassed, dx, dy);
-    }
 
     mLastAScrollX = scrollX;
     mLastAScrollY = scrollY;
@@ -610,8 +601,7 @@ void Map::drawAmbientLayers(Graphics *const graphics, const LayerType type,
     }
 
     // Draw overlays
-    for (AmbientLayerVectorCIter i = layers->begin(), i_end = layers->end();
-         i != i_end; ++i)
+    FOR_EACHP (AmbientLayerVectorCIter, i, layers)
     {
         if (*i)
             (*i)->draw(graphics, graphics->mWidth, graphics->mHeight);
@@ -1103,12 +1093,10 @@ void Map::initializeParticleEffects(Particle *const engine)
     if (!engine)
         return;
 
-
     if (config.getBoolValue("particleeffects"))
     {
-        for (std::vector<ParticleEffectData>::const_iterator
-             i = particleEffects.begin();
-             i != particleEffects.end(); ++i)
+        FOR_EACH (std::vector<ParticleEffectData>::const_iterator,
+                  i, particleEffects)
         {
             Particle *const p = engine->addEffect(i->file, i->x, i->y);
             if (p && i->w > 0 && i->h > 0)
@@ -1288,8 +1276,7 @@ void Map::updatePortalTile(const std::string &name, const int type,
 
 MapItem *Map::findPortalXY(const int x, const int y) const
 {
-    for (std::vector<MapItem*>::const_iterator it = mMapPortals.begin(),
-         it_end = mMapPortals.end(); it != it_end; ++it)
+    FOR_EACH (std::vector<MapItem*>::const_iterator, it, mMapPortals)
     {
         if (!*it)
             continue;
@@ -1372,9 +1359,7 @@ void Map::indexTilesets()
     mTilesetsIndexed = true;
 
     Tileset *s = nullptr;
-    for (Tilesets::const_iterator it = mTilesets.begin(),
-         it_end = mTilesets.end(); it < it_end;
-         ++it)
+    FOR_EACH (Tilesets::const_iterator, it, mTilesets)
     {
         if (!s || s->getFirstGid() + s->size()
             < (*it)->getFirstGid() + (*it)->size())
@@ -1395,9 +1380,7 @@ void Map::indexTilesets()
     mIndexedTilesets = new Tileset*[size];
     std::fill_n(mIndexedTilesets, size, static_cast<Tileset*>(nullptr));
 
-    for (Tilesets::const_iterator it = mTilesets.begin(),
-         it_end = mTilesets.end(); it < it_end;
-         ++it)
+    FOR_EACH (Tilesets::const_iterator, it, mTilesets)
     {
         s = *it;
         if (s)
@@ -1439,9 +1422,7 @@ void Map::reduce()
             bool correct(true);
             bool dontHaveAlpha(false);
 
-            for (LayersCIter layeri = mLayers.begin(),
-                 layeri_end = mLayers.end();
-                 layeri != layeri_end; ++ layeri)
+            FOR_EACH (LayersCIter, layeri, mLayers)
             {
                 const MapLayer *const layer = *layeri;
                 if (x >= layer->mWidth || y >= layer->mHeight)

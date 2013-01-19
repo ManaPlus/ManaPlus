@@ -137,21 +137,16 @@ PlayerRelationsManager::~PlayerRelationsManager()
 {
     delete_all(mIgnoreStrategies);
 
-    for (PlayerRelationsCIter it = mRelations.begin(),
-         it_end = mRelations.end(); it != it_end; ++ it)
-    {
+    FOR_EACH (PlayerRelationsCIter, it, mRelations)
         delete it->second;
-    }
+    mRelations.clear();
 }
 
 void PlayerRelationsManager::clear()
 {
     StringVect *names = getPlayers();
-    for (StringVectCIter it = names->begin(), it_end = names->end();
-         it != it_end; ++ it)
-    {
+    FOR_EACHP (StringVectCIter, it, names)
         removePlayer(*it);
-    }
     delete names;
 }
 
@@ -217,11 +212,8 @@ void PlayerRelationsManager::init()
                  // until the next update.
     }
 
-    for (PlayerRelationListenersCIter it = mListeners.begin(),
-         it_end = mListeners.end(); it != it_end; ++it)
-    {
+    FOR_EACH (PlayerRelationListenersCIter, it, mListeners)
         (*it)->updateAll();
-    }
 }
 
 void PlayerRelationsManager::store()
@@ -245,11 +237,8 @@ void PlayerRelationsManager::store()
 
 void PlayerRelationsManager::signalUpdate(const std::string &name)
 {
-    for (PlayerRelationListenersCIter it = mListeners.begin(),
-         it_end = mListeners.end(); it != it_end; ++ it)
-    {
+    FOR_EACH (PlayerRelationListenersCIter, it, mListeners)
         (*it)->updatedPlayer(name);
-    }
 
     if (actorSpriteManager)
     {
@@ -357,8 +346,7 @@ StringVect * PlayerRelationsManager::getPlayers()
 {
     StringVect *const retval = new StringVect();
 
-    for (PlayerRelationsCIter it = mRelations.begin(),
-         it_end = mRelations.end(); it != it_end; ++ it)
+    FOR_EACH (PlayerRelationsCIter, it, mRelations)
     {
         if (it->second)
             retval->push_back(it->first);
@@ -374,8 +362,7 @@ StringVect *PlayerRelationsManager::getPlayersByRelation(
 {
     StringVect *const retval = new StringVect();
 
-    for (PlayerRelationsCIter it = mRelations.begin(),
-         it_end = mRelations.end(); it != it_end; ++ it)
+    FOR_EACH (PlayerRelationsCIter, it, mRelations)
     {
         if (it->second && it->second->mRelation == rel)
             retval->push_back(it->first);

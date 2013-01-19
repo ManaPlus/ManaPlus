@@ -221,11 +221,8 @@ void Configuration::setValue(const std::string &key, const std::string &value)
     if (list != mListenerMap.end())
     {
         Listeners listeners = list->second;
-        for (ListenerIterator i = listeners.begin(), i_end = listeners.end();
-             i != i_end; ++i)
-        {
+        FOR_EACH (ListenerIterator, i, listeners)
             (*i)->optionChanged(key);
-        }
     }
 }
 
@@ -746,8 +743,7 @@ void Configuration::reInit()
 
 void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
 {
-    for (Options::const_iterator i = mOptions.begin(), i_end = mOptions.end();
-         i != i_end; ++i)
+    FOR_EACH (Options::const_iterator, i, mOptions)
     {
 #ifdef DEBUG_CONFIG
         if (mLogKeys)
@@ -772,8 +768,7 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
         XmlTextWriterWriteAttribute(writer, "name", name);
 
         // recurse on all elements
-        for (ConfigurationList::const_iterator elt_it = it->second.begin(),
-             elt_it_end = it->second.end(); elt_it != elt_it_end; ++elt_it)
+        FOR_EACH (ConfigurationList::const_iterator, elt_it, it->second)
         {
             XmlTextWriterStartElement(writer, name);
             if (*elt_it)
@@ -836,11 +831,8 @@ void Configuration::removeListener(const std::string &key,
 
 void Configuration::removeListeners(ConfigListener *const listener)
 {
-    for (ListenerMapIterator it = mListenerMap.begin(),
-         it_end = mListenerMap.end(); it != it_end; ++ it)
-    {
+    FOR_EACH (ListenerMapIterator, it, mListenerMap)
         (it->second).remove(listener);
-    }
 }
 
 void Configuration::removeOldKeys()

@@ -48,8 +48,7 @@ void TextManager::moveText(Text *const text, const int x, const int y)
 
 void TextManager::removeText(const Text *const text)
 {
-    for (TextList::iterator ptr = mTextList.begin(),
-         pEnd = mTextList.end(); ptr != pEnd; ++ptr)
+    FOR_EACH (TextList::iterator, ptr, mTextList)
     {
         if (*ptr == text)
         {
@@ -67,12 +66,8 @@ void TextManager::draw(Graphics *const graphics,
                        const int xOff, const int yOff)
 {
     BLOCK_START("TextManager::draw")
-    for (TextList::const_iterator bPtr = mTextList.begin(),
-         ePtr = mTextList.end();
-         bPtr != ePtr; ++ bPtr)
-    {
+    FOR_EACH (TextList::const_iterator, bPtr, mTextList)
         (*bPtr)->draw(graphics, xOff, yOff);
-    }
     BLOCK_END("TextManager::draw")
 }
 
@@ -110,10 +105,8 @@ void TextManager::place(const Text *const textObj, const Text *const omit,
         }
     }
     bool ok = true;
-    for (int i = wantedTop; i < wantedTop + h; ++i)
-    {
+    for (int i = wantedTop; i < wantedTop + h; ++ i)
         ok = ok && !occupied[i];
-    }
 
     if (ok)
         return;

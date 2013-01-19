@@ -334,8 +334,7 @@ bool Joystick::validate() const
 
 void Joystick::handleRepeat(const int time)
 {
-    for (KeyTimeMapIter it = mKeyTimeMap.begin(), it_end = mKeyTimeMap.end();
-         it != it_end; ++ it)
+    FOR_EACH (KeyTimeMapIter, it, mKeyTimeMap)
     {
         bool repeat(false);
         const int key = (*it).first;

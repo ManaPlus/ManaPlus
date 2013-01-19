@@ -653,8 +653,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
     }
 
     keySorter.keys = &keyData[0];
-    for (KeyToActionMapIter it = actionMap.begin(), it_end = actionMap.end();
-         it != it_end; ++ it)
+    FOR_EACH (KeyToActionMapIter, it, actionMap)
     {
         KeysVector *const keys = &it->second;
         if (keys && keys->size() > 1)
@@ -669,8 +668,7 @@ bool InputManager::triggerAction(const KeysVector *const ptrs)
 
 //    logger->log("ptrs: %d", (int)ptrs.size());
 
-    for (KeysVectorCIter it = ptrs->begin(), it_end = ptrs->end();
-         it != it_end; ++ it)
+    FOR_EACHP (KeysVectorCIter, it, ptrs)
     {
         const int keyNum = *it;
         if (keyNum < 0 || keyNum >= Input::KEY_TOTAL)

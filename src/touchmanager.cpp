@@ -158,11 +158,8 @@ void TouchManager::clear()
     Theme *theme = Theme::instance();
     if (!theme)
         return;
-    for (TouchItemVectorCIter it = mObjects.begin(), it_end = mObjects.end();
-         it != it_end; ++ it)
-    {
+    FOR_EACH (TouchItemVectorCIter, it, mObjects)
         unload(*it);
-    }
     mObjects.clear();
     mRedraw = true;
 }
@@ -175,9 +172,7 @@ void TouchManager::draw()
         {
             mRedraw = false;
             mVertexes->clear();
-            for (TouchItemVectorCIter it = mObjects.begin(),
-                 it_end = mObjects.end();
-                 it != it_end; ++ it)
+            FOR_EACH (TouchItemVectorCIter, it, mObjects)
             {
                 const TouchItem *const item = *it;
                 if (item && item->images && (mShow ||
@@ -199,9 +194,7 @@ void TouchManager::draw()
     }
     else
     {
-        for (TouchItemVectorCIter it = mObjects.begin(),
-             it_end = mObjects.end();
-             it != it_end; ++ it)
+        FOR_EACH (TouchItemVectorCIter, it, mObjects)
         {
             const TouchItem *const item = *it;
             if (item && item->images && (mShow ||
@@ -226,8 +219,7 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
     const int x = mouseInput.getTouchX();
     const int y = mouseInput.getTouchY();
 
-    for (TouchItemVectorCIter it = mObjects.begin(), it_end = mObjects.end();
-         it != it_end; ++ it)
+    FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
         const TouchItem *const item = *it;
         if (!item || (!mShow && (item != mKeyboard || !mShowKeyboard)))
@@ -278,8 +270,7 @@ bool TouchManager::isActionActive(const int index) const
 void TouchManager::resize(int width, int height)
 {
     mRedraw = true;
-    for (TouchItemVectorCIter it = mObjects.begin(),
-         it_end = mObjects.end(); it != it_end; ++ it)
+    FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
         TouchItem *const item = *it;
         if (!item)
@@ -338,8 +329,7 @@ void TouchManager::unloadTouchItem(TouchItem **unloadItem)
     Theme *theme = Theme::instance();
     if (!theme)
         return;
-    for (TouchItemVectorIter it = mObjects.begin(), it_end = mObjects.end();
-         it != it_end; ++ it)
+    FOR_EACH (TouchItemVectorIter, it, mObjects)
     {
         TouchItem *item = *it;
         if (item && *unloadItem == item)

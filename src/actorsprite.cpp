@@ -70,8 +70,7 @@ ActorSprite::~ActorSprite()
         player_node->setTarget(nullptr);
 
     // Notify listeners of the destruction.
-    for (ActorSpriteListenerIterator iter = mActorSpriteListeners.begin(),
-         e = mActorSpriteListeners.end(); iter != e; ++iter)
+    FOR_EACH (ActorSpriteListenerIterator, iter, mActorSpriteListeners)
     {
         if (reportFalse(*iter))
             (*iter)->actorSpriteDestroyed(*this);
@@ -120,8 +119,7 @@ void ActorSprite::logic()
     if (mMustResetParticles)
     {
         mMustResetParticles = false;
-        for (std::set<int>::const_iterator it = mStatusEffects.begin(),
-             it_end = mStatusEffects.end(); it != it_end; ++it)
+        FOR_EACH (std::set<int>::const_iterator, it, mStatusEffects)
         {
             const StatusEffect *const effect
                 = StatusEffect::getStatusEffect(*it, true);
@@ -331,9 +329,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
 {
     clear();
 
-    for (SpriteRefs it = display.sprites.begin(),
-         it_end = display.sprites.end();
-         it != it_end; ++it)
+    FOR_EACH (SpriteRefs, it, display.sprites)
     {
         if (!*it)
             continue;
@@ -387,9 +383,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     //setup particle effects
     if (Particle::enabled && particleEngine)
     {
-        for (StringVectCIter itr = display.particles.begin(),
-             itr_end = display.particles.end();
-             itr != itr_end; ++itr)
+        FOR_EACH (StringVectCIter, itr, display.particles)
         {
             Particle *const p = particleEngine->addEffect(*itr, 0, 0);
             controlParticle(p);

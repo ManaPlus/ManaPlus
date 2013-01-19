@@ -77,8 +77,7 @@ bool CompoundSprite::reset()
 {
     bool ret = false;
 
-    for (SpriteIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteIterator, it, mSprites)
     {
         if (*it)
             ret |= (*it)->reset();
@@ -92,8 +91,7 @@ bool CompoundSprite::play(std::string action)
 {
     bool ret = false;
 
-    for (SpriteIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteIterator, it, mSprites)
     {
         if (*it)
             ret |= (*it)->play(action);
@@ -107,8 +105,7 @@ bool CompoundSprite::update(int time)
 {
     bool ret = false;
 
-    for (SpriteIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteIterator, it, mSprites)
     {
         if (*it)
             ret |= (*it)->update(time);
@@ -147,8 +144,7 @@ bool CompoundSprite::draw(Graphics *graphics, int posX, int posY) const
 
 void CompoundSprite::drawSprites(Graphics* graphics, int posX, int posY) const
 {
-    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteConstIterator, it, mSprites)
     {
         if (*it)
         {
@@ -161,8 +157,7 @@ void CompoundSprite::drawSprites(Graphics* graphics, int posX, int posY) const
 void CompoundSprite::drawSpritesSDL(Graphics* graphics,
                                     int posX, int posY) const
 {
-    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteConstIterator, it, mSprites)
     {
         if (*it)
             (*it)->draw(graphics, posX, posY);
@@ -173,8 +168,7 @@ int CompoundSprite::getWidth() const
 {
     const Sprite *base = nullptr;
 
-    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteConstIterator, it, mSprites)
     {
         if ((base = *it))
         {
@@ -190,8 +184,7 @@ int CompoundSprite::getHeight() const
 {
     const Sprite *base = nullptr;
 
-    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteConstIterator, it, mSprites)
     {
         if ((base = *it))
         {
@@ -212,8 +205,7 @@ bool CompoundSprite::setSpriteDirection(const SpriteDirection direction)
 {
     bool ret = false;
 
-    for (SpriteIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteIterator, it, mSprites)
     {
         if (*it)
             ret |= (*it)->setSpriteDirection(direction);
@@ -233,8 +225,7 @@ int CompoundSprite::getNumberOfLayers() const
 
 unsigned int CompoundSprite::getCurrentFrame() const
 {
-    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteConstIterator, it, mSprites)
     {
         if (*it)
             return (*it)->getCurrentFrame();
@@ -245,8 +236,7 @@ unsigned int CompoundSprite::getCurrentFrame() const
 
 unsigned int CompoundSprite::getFrameCount() const
 {
-    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteConstIterator, it, mSprites)
     {
         if (*it)
             return (*it)->getFrameCount();
@@ -424,8 +414,7 @@ void CompoundSprite::setAlpha(float alpha)
         if (mEnableAlphaFix && size() > 3)
 #endif
         {
-            for (SpriteConstIterator it = mSprites.begin(),
-                 it_end = mSprites.end(); it != it_end; ++ it)
+            FOR_EACH (SpriteConstIterator, it, mSprites)
             {
                 if (*it)
                     (*it)->setAlpha(alpha);
@@ -496,8 +485,7 @@ bool CompoundSprite::updateFromCache() const
 //        (int)imagesCache.size(), hits, miss);
 
     const size_t sz = size();
-    for (ImagesCache::iterator it = imagesCache.begin(),
-         it_end = imagesCache.end(); it != it_end; ++ it)
+    FOR_EACH (ImagesCache::iterator, it, imagesCache)
     {
         CompoundItem *const ic = *it;
         if (ic && ic->data.size() == sz)
@@ -548,8 +536,7 @@ void CompoundSprite::initCurrentCacheItem() const
     mCacheItem->alphaImage = mAlphaImage;
 //    mCacheItem->alpha = mAlpha;
 
-    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
-         it != it_end; ++ it)
+    FOR_EACH (SpriteConstIterator, it, mSprites)
     {
         if (*it)
             mCacheItem->data.push_back((*it)->getHash());
@@ -561,8 +548,7 @@ void CompoundSprite::initCurrentCacheItem() const
 bool CompoundSprite::updateNumber(unsigned num)
 {
     bool res(false);
-    for (SpriteConstIterator it = mSprites.begin(),
-         it_end = mSprites.end(); it != it_end; ++ it)
+    FOR_EACH (SpriteConstIterator, it, mSprites)
     {
         if (*it)
         {

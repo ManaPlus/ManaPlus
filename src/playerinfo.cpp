@@ -265,8 +265,7 @@ void logic()
     if ((mSpecialRechargeUpdateNeeded % 11) == 0)
     {
         mSpecialRechargeUpdateNeeded = 0;
-        for (SpecialsMap::iterator it = mSpecials.begin(),
-             it_end = mSpecials.end(); it != it_end; ++it)
+        FOR_EACH (SpecialsMap::iterator, it, mSpecials)
         {
             Special &special = it->second;
             special.currentMana += special.recharge;

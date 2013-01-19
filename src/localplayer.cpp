@@ -75,6 +75,8 @@
 
 const short awayLimitTimer = 60;
 
+typedef std::map<int, Guild*>::const_iterator GuildMapCIter;
+
 LocalPlayer *player_node = nullptr;
 
 extern std::list<BeingCacheEntry*> beingInfoCache;
@@ -903,8 +905,7 @@ void LocalPlayer::inviteToGuild(Being *const being)
 
     // TODO: Allow user to choose which guild to invite being to
     // For now, just invite to the first guild you have permissions to invite with
-    for (std::map<int, Guild*>::const_iterator itr = mGuilds.begin(),
-         itr_end = mGuilds.end(); itr != itr_end; ++itr)
+    FOR_EACH (GuildMapCIter, itr, mGuilds)
     {
         if (itr->second && checkInviteRights(itr->second->getName()))
         {

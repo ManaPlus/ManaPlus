@@ -283,9 +283,7 @@ void GraphicsManager::setVideoMode()
         std::string str = strprintf("%dx%d", width, height);
         if (width != 0 && height != 0)
         {
-            for (StringVectCIter it = videoModes.begin(),
-                 it_end = videoModes.end();
-                 it != it_end; ++ it)
+            FOR_EACH (StringVectCIter, it, videoModes)
             {
                 if (str == *it)
                 {
