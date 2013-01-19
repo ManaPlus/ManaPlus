@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2013-01-18 14:19+0300\n"
-"PO-Revision-Date: 2013-01-18 11:25+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2013-01-18 14:34+0000\n"
+"Last-Translator: Alige <aligetmw@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -1680,7 +1680,7 @@ msgstr "Coller"
 
 #: src/gui/popupmenu.cpp:2101
 msgid "Open link"
-msgstr ""
+msgstr "Ouvrir lien"
 
 #: src/gui/popupmenu.cpp:2132
 msgid "Be friend"
@@ -2443,7 +2443,7 @@ msgstr "Volume de la musique"
 
 #: src/gui/setup_audio.cpp:85
 msgid "Enable music fade out"
-msgstr ""
+msgstr "Activer l'effacement de la musique"
 
 #: src/gui/setup_audio.cpp:89
 msgid "Audio frequency"
@@ -2731,7 +2731,7 @@ msgstr "Calibrer"
 
 #: src/gui/setup_joystick.cpp:48
 msgid "Detect joysticks"
-msgstr ""
+msgstr "Détecter les joysticks"
 
 #: src/gui/setup_joystick.cpp:49
 msgid "Enable joystick"
