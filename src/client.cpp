@@ -777,6 +777,9 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting2");
 
+    delete mCurrentDialog;
+    mCurrentDialog = nullptr;
+
     delete gui;
     gui = nullptr;
 
@@ -2872,4 +2875,10 @@ void Client::logEvent(const SDL_Event &event)
             logger->log("event: other: %d", event.type);
             break;
     };
+}
+
+void Client::windowRemoved(const Window *const window)
+{
+    if (instance()->mCurrentDialog == window)
+        instance()->mCurrentDialog = nullptr;
 }

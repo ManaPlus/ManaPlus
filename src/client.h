@@ -319,6 +319,8 @@ public:
 
     PacketLimit mPacketLimits[PACKET_SIZE + 1];
 
+    static void windowRemoved(const Window *const window);
+
 private:
     void initRootDir();
 

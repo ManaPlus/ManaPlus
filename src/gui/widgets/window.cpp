@@ -151,6 +151,8 @@ Window::~Window()
 {
     logger->log("Window::~Window(\"%s\")", getCaption().c_str());
 
+    Client::windowRemoved(this);
+
     saveWindowState();
 
     delete mLayout;
