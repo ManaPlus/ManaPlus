@@ -92,11 +92,8 @@ int Palette::getIdByChar(const signed char c, bool &valid)
 
 void Palette::advanceGradients()
 {
-    for (Palettes::const_iterator it = mInstances.begin(),
-         it_end = mInstances.end(); it != it_end; ++it)
-    {
+    FOR_EACH (Palettes::const_iterator, it, mInstances)
         (*it)->advanceGradient();
-    }
 }
 
 void Palette::advanceGradient()

@@ -341,9 +341,7 @@ void Theme::setMinimumOpacity(const float minimumOpacity)
 
 void Theme::updateAlpha()
 {
-    for (SkinIterator iter = mSkins.begin(), iter_end = mSkins.end();
-         iter != iter_end;
-         ++ iter)
+    FOR_EACH (SkinIterator, iter, mSkins)
     {
         if (iter->second)
             iter->second->updateAlpha(mMinimumOpacity);

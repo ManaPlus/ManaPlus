@@ -1095,8 +1095,9 @@ void Map::initializeParticleEffects(Particle *const engine)
 
     if (config.getBoolValue("particleeffects"))
     {
-        FOR_EACH (std::vector<ParticleEffectData>::const_iterator,
-                  i, particleEffects)
+        for (std::vector<ParticleEffectData>::const_iterator
+             i = particleEffects.begin();
+             i != particleEffects.end(); ++i)
         {
             Particle *const p = engine->addEffect(i->file, i->x, i->y);
             if (p && i->w > 0 && i->h > 0)

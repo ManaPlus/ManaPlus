@@ -173,8 +173,7 @@ UserPalette::UserPalette():
 
 UserPalette::~UserPalette()
 {
-    for (Colors::const_iterator col = mColors.begin(),
-         colEnd = mColors.end(); col != colEnd; ++col)
+    FOR_EACH (Colors::const_iterator, col, mColors)
     {
         const std::string &configName = ColorTypeNames[col->type];
         config.setValue(configName + "Gradient",
@@ -233,8 +232,7 @@ std::string UserPalette::getElementAt(int i)
 
 void UserPalette::commit(const bool commitNonStatic)
 {
-    for (Colors::iterator i = mColors.begin(), iEnd = mColors.end();
-         i != iEnd; ++i)
+    FOR_EACH (Colors::iterator, i, mColors)
     {
         i->committedGrad = i->grad;
         i->committedDelay = i->delay;
@@ -247,8 +245,7 @@ void UserPalette::commit(const bool commitNonStatic)
 
 void UserPalette::rollback()
 {
-    for (Colors::iterator i = mColors.begin(), iEnd = mColors.end();
-         i != iEnd; ++i)
+    FOR_EACH (Colors::iterator, i, mColors)
     {
         if (i->grad != i->committedGrad)
             setGradient(i->type, i->committedGrad);

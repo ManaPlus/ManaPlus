@@ -139,11 +139,8 @@ WhoIsOnline::~WhoIsOnline()
     // Remove possibly leftover temporary download
     delete []mCurlError;
 
-    for (std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin(),
-         itd_end = mOnlinePlayers.end(); itd != itd_end; ++ itd)
-    {
+    FOR_EACH (std::set<OnlinePlayer*>::iterator, itd, mOnlinePlayers)
         delete *itd;
-    }
     mOnlinePlayers.clear();
     mOnlineNicks.clear();
 }
@@ -247,18 +244,14 @@ void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
     std::vector<OnlinePlayer*> disregard;
     std::vector<OnlinePlayer*> enemy;
 
-    for (std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin(),
-         itd_end = mOnlinePlayers.end(); itd != itd_end; ++ itd)
-    {
+    FOR_EACH (std::set<OnlinePlayer*>::iterator, itd, mOnlinePlayers)
         delete *itd;
-    }
     mOnlinePlayers.clear();
     mOnlineNicks.clear();
 
     mShowLevel = config.getBoolValue("showlevel");
 
-    for (std::vector<OnlinePlayer*>::const_iterator it = list.begin(),
-         it_end = list.end(); it != it_end; ++ it)
+    FOR_EACH (std::vector<OnlinePlayer*>::const_iterator, it, list)
     {
         OnlinePlayer *player = *it;
         std::string nick = player->getNick();
@@ -335,11 +328,8 @@ void WhoIsOnline::loadWebList()
     char *line = strtok(mMemoryBuffer, "\n");
     const std::string gmText = "(GM)";
 
-    for (std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin(),
-         itd_end = mOnlinePlayers.end(); itd != itd_end; ++ itd)
-    {
+    FOR_EACH (std::set<OnlinePlayer*>::iterator, itd, mOnlinePlayers)
         delete *itd;
-    }
 
     mOnlinePlayers.clear();
     mOnlineNicks.clear();

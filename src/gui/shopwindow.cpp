@@ -413,8 +413,7 @@ void ShopWindow::saveList()
     }
 
     std::vector<ShopItem*> items = mBuyShopItems->items();
-    for (std::vector<ShopItem*>::const_iterator it = items.begin(),
-         it_end = items.end(); it != it_end; ++it)
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         ShopItem *const item = *(it);
         if (item)
@@ -422,8 +421,7 @@ void ShopWindow::saveList()
     }
 
     items = mSellShopItems->items();
-    for (std::vector<ShopItem*>::const_iterator it = items.begin(),
-         it_end = items.end(); it != it_end; ++it)
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         if (!(*it))
             continue;
@@ -487,8 +485,7 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
 
     std::vector<ShopItem*> items = list->items();
 
-    for (std::vector<ShopItem*>::const_iterator it = items.begin(),
-         it_end = items.end(); it != it_end; ++it)
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *(it);
         if (item->getQuantity() > 1)
@@ -553,8 +550,7 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
 
     std::vector<ShopItem*> items = list->items();
 
-    for (std::vector<ShopItem*>::const_iterator it = items.begin(),
-         it_end = items.end(); it != it_end; ++it)
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *(it);
         if (!item)
@@ -816,8 +812,7 @@ bool ShopWindow::findShopItem(const ShopItem *const shopItem, const int mode)
         items = mBuyShopItems->items();
     }
 
-    for (std::vector<ShopItem*>::const_iterator it = items.begin(),
-         it_end = items.end(); it != it_end; ++ it)
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *(it);
         if (!item)

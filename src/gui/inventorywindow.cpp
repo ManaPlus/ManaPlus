@@ -708,8 +708,7 @@ bool InventoryWindow::isInputFocused() const
 
 bool InventoryWindow::isAnyInputFocused()
 {
-    for (WindowList::const_iterator it = instances.begin(),
-         it_end = instances.end(); it != it_end; ++it)
+    FOR_EACH (WindowList::const_iterator, it, instances)
     {
         if ((*it) && (*it)->isInputFocused())
             return true;

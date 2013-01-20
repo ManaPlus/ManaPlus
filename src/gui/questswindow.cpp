@@ -277,8 +277,7 @@ void QuestsWindow::rebuild(const bool playSound)
         const int var = (*it).first;
         const int val = (*it).second;
         const std::vector<QuestItem*> &quests = mQuests[var];
-        for (std::vector<QuestItem*>::const_iterator it2 = quests.begin(),
-             it2_end = quests.end(); it2 != it2_end; ++ it2)
+        FOR_EACH (std::vector<QuestItem*>::const_iterator, it2, quests)
         {
             if (!*it2)
                 continue;
@@ -372,8 +371,7 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
 
     const std::vector<QuestItemText> &texts = quest->texts;
     mText->clearRows();
-    for (std::vector<QuestItemText>::const_iterator it = texts.begin(),
-         it_end = texts.end(); it != it_end; ++ it)
+    FOR_EACH (std::vector<QuestItemText>::const_iterator, it, texts)
     {
         const QuestItemText &data = *it;
         switch (data.type)

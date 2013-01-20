@@ -109,9 +109,7 @@ Setup::Setup():
     mTabs.push_back(new Setup_Theme(this));
     mTabs.push_back(new Setup_Other(this));
 
-    for (std::list<SetupTab*>::const_iterator i = mTabs.begin(),
-         i_end = mTabs.end();
-         i != i_end; ++i)
+    FOR_EACH (std::list<SetupTab*>::const_iterator, i, mTabs)
     {
         SetupTab *const tab = *i;
         mPanel->addTab(tab->getName(), tab);
@@ -170,9 +168,7 @@ void Setup::action(const gcn::ActionEvent &event)
         if (!statusWindow)
             return;
 
-        for (std::list<Window*>::const_iterator it = mWindowsToReset.begin(),
-             it_end = mWindowsToReset.end();
-             it != it_end; ++it)
+        FOR_EACH (std::list<Window*>::const_iterator, it, mWindowsToReset)
         {
             if (*it)
                 (*it)->resetToDefaultSize();
@@ -187,8 +183,7 @@ void Setup::setInGame(const bool inGame)
 
 void Setup::externalUpdate()
 {
-    for (std::list<SetupTab*>::const_iterator it = mTabs.begin(),
-         it_end = mTabs.end(); it != it_end; ++ it)
+    FOR_EACH (std::list<SetupTab*>::const_iterator, it, mTabs)
     {
         if (*it)
             (*it)->externalUpdated();

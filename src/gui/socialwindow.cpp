@@ -1143,8 +1143,7 @@ public:
         if (!players)
             return;
 
-        for (StringVectCIter it = players->begin(), it_end = players->end();
-             it != it_end; ++ it)
+        FOR_EACHP (StringVectCIter, it, players)
         {
             Avatar *const ava = new Avatar(*it);
             if (actorSpriteManager->findBeingByName(*it, Being::PLAYER)

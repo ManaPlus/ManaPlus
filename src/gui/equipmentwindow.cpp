@@ -159,9 +159,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
         if (mLastRedraw)
         {
             mVertexes->clear();
-            for (std::vector<EquipmentBox*>::const_iterator
-                 it = mBoxes.begin(), it_end = mBoxes.end();
-                 it != it_end; ++ it, ++ i)
+            FOR_EACH (std::vector<EquipmentBox*>::const_iterator, it, mBoxes)
             {
                 const EquipmentBox *const box = *it;
                 if (!box)

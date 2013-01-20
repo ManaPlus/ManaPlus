@@ -76,11 +76,8 @@ public:
         }
         tempStrings.sort();
         mStrings.push_back("");
-        for (std::list<std::string>::const_iterator i = tempStrings.begin(),
-             i_end = tempStrings.end(); i != i_end; ++i)
-        {
+        FOR_EACH (std::list<std::string>::const_iterator, i, tempStrings)
             mStrings.push_back(*i);
-        }
     }
 
     A_DELETE_COPY(IconsModal)

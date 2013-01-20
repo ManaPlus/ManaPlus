@@ -346,8 +346,7 @@ void BuyDialog::setVisible(bool visible)
 
 void BuyDialog::closeAll()
 {
-    for (DialogList::const_iterator it = instances.begin(),
-         it_end = instances.end(); it != it_end; ++it)
+    FOR_EACH (DialogList::const_iterator, it, instances)
     {
         if (*it)
             (*it)->close();

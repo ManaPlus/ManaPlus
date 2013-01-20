@@ -60,6 +60,8 @@
 
 NpcDialog::DialogList NpcDialog::instances;
 
+typedef std::vector<Image *>::iterator ImageVectorIter;
+
 NpcDialog::NpcDialog(const int npcId) :
     Window(_("NPC"), false, nullptr, "npc.xml"),
     gcn::ActionListener(),
@@ -209,8 +211,7 @@ NpcDialog::~NpcDialog()
     delete mListScrollArea;
     mListScrollArea = nullptr;
 
-    for (std::vector<Image *>::iterator it = mImages.begin(),
-         it_end = mImages.end(); it != it_end; ++ it)
+    FOR_EACH (ImageVectorIter, it, mImages)
     {
         if (*it)
             (*it)->decRef();
@@ -378,8 +379,7 @@ const Image *NpcDialog::getImageAt(int i)
 void NpcDialog::choiceRequest()
 {
     mItems.clear();
-    for (std::vector<Image *>::iterator it = mImages.begin(),
-         it_end = mImages.end(); it != it_end; ++ it)
+    FOR_EACH (ImageVectorIter, it, mImages)
     {
         if (*it)
             (*it)->decRef();
@@ -459,8 +459,7 @@ bool NpcDialog::isInputFocused() const
 
 bool NpcDialog::isAnyInputFocused()
 {
-    for (DialogList::const_iterator it = instances.begin(),
-         it_end = instances.end(); it != it_end; ++it)
+    FOR_EACH (DialogList::const_iterator, it, instances)
     {
         if ((*it) && (*it)->isInputFocused())
             return true;
@@ -519,8 +518,7 @@ NpcDialog *NpcDialog::getActive()
     if (instances.size() == 1)
         return instances.front();
 
-    for (DialogList::const_iterator it = instances.begin(),
-         it_end = instances.end(); it != it_end; ++it)
+    FOR_EACH (DialogList::const_iterator, it, instances)
     {
         if ((*it) && (*it)->isFocused())
             return (*it);
@@ -531,8 +529,7 @@ NpcDialog *NpcDialog::getActive()
 
 void NpcDialog::closeAll()
 {
-    for (DialogList::const_iterator it = instances.begin(),
-         it_end = instances.end(); it != it_end; ++it)
+    FOR_EACH (DialogList::const_iterator, it, instances)
     {
         if (*it)
             (*it)->close();

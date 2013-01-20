@@ -256,8 +256,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
 
     // Draw player names, speech, and emotion sprite as needed
     const ActorSprites &actors = actorSpriteManager->getAll();
-    for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
-         it != it_end; ++it)
+    FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
             continue;
@@ -342,8 +341,7 @@ void Viewport::_drawDebugPath(Graphics *const graphics)
 
     // Draw the path debug information for every beings.
     const ActorSprites &actors = actorSpriteManager->getAll();
-    for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
-         it != it_end; ++ it)
+    FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
         const Being *const being = dynamic_cast<Being*>(*it);
         if (being && being != player_node)
@@ -368,8 +366,7 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
 #endif
     {
         int cnt = 1;
-        for (Path::const_iterator i = path.begin(), i_end = path.end();
-             i != i_end; ++i)
+        FOR_EACH (Path::const_iterator, i, path)
         {
             const int squareX = i->x * 32 - mPixelViewX + 12;
             const int squareY = i->y * 32 - mPixelViewY + 12;
@@ -387,8 +384,7 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
 #ifdef MANASERV_SUPPORT
     else if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
-        for (Path::const_iterator i = path.begin(), i_end = path.end();
-             i != i_end; ++i)
+        FOR_EACH (Path::const_iterator, i, path)
         {
             int squareX = i->x - mPixelViewX;
             int squareY = i->y - mPixelViewY;

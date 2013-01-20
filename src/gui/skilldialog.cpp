@@ -377,8 +377,7 @@ void SkillDialog::update()
         PlayerInfo::getAttribute(PlayerInfo::SKILL_POINTS)));
     mPointsLabel->adjustSize();
 
-    for (SkillMap::const_iterator it = mSkills.begin(), it_end = mSkills.end();
-         it != it_end; ++ it)
+    FOR_EACH (SkillMap::const_iterator, it, mSkills)
     {
         if ((*it).second && (*it).second->modifiable)
             (*it).second->update();
@@ -582,9 +581,7 @@ void SkillModel::updateVisibilities()
 {
     mVisibleSkills.clear();
 
-    for (SkillList::const_iterator it = mSkills.begin(),
-         it_end = mSkills.end();
-         it != it_end; ++ it)
+    FOR_EACH (SkillList::const_iterator, it, mSkills)
     {
         if ((*it)->visible)
             mVisibleSkills.push_back((*it));
@@ -642,11 +639,8 @@ SkillInfo::SkillInfo() :
 
 SkillInfo::~SkillInfo()
 {
-    for (SkillDataMapIter it = dataMap.begin(), it_end = dataMap.end();
-         it != it_end; ++ it)
-    {
+    FOR_EACH (SkillDataMapIter, it, dataMap)
         delete (*it).second;
-    }
     dataMap.clear();
 }
 

@@ -613,11 +613,8 @@ void ChatWindow::removeAllWhispers()
 {
     std::list<ChatTab*> tabs;
 
-    for (TabMap::iterator iter = mWhispers.begin(),
-         iter_end = mWhispers.end(); iter != iter_end; ++ iter)
-    {
+    FOR_EACH (TabMap::iterator, iter, mWhispers)
         tabs.push_back(iter->second);
-    }
 
     for (std::list<ChatTab*>::iterator it = tabs.begin();
          it != tabs.end(); ++it)
@@ -687,8 +684,7 @@ void ChatWindow::doPresent() const
     std::string response;
     int playercount = 0;
 
-    for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
-         it != it_end; ++it)
+    FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
         if ((*it)->getType() == ActorSprite::PLAYER)
         {
@@ -1504,8 +1500,7 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
         party = player_node->getParty();
         guild = player_node->getGuild();
     }
-    for (TabMap::const_iterator iter = mWhispers.begin(),
-         iter_end = mWhispers.end(); iter != iter_end; ++iter)
+    FOR_EACH (TabMap::const_iterator, iter, mWhispers)
     {
         if (!iter->second)
             return;

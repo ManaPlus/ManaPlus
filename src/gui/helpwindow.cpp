@@ -132,8 +132,7 @@ void HelpWindow::loadTags()
         helpPath = paths.getStringValue("help");
     StringVect lines;
     ResourceManager::loadTextFile(helpPath + "tags.idx", lines);
-    for (StringVectCIter it = lines.begin(), it_end = lines.end();
-         it != it_end; ++ it)
+    FOR_EACH (StringVectCIter, it, lines)
     {
         const std::string &str = *it;
         const size_t idx = str.find('|');
@@ -164,8 +163,7 @@ void HelpWindow::search(const std::string &text0)
             mBrowserBox->clearRows();
             loadFile("header");
             loadFile("searchmany");
-            for (HelpNamesCIter it = names.begin(), it_end = names.end();
-                 it != it_end; ++ it)
+            FOR_EACH (HelpNamesCIter, it, names)
             {
                 const char *const str = (*it).c_str();
                 mBrowserBox->addRow(strprintf(" -> @@%s|%s@@", str,

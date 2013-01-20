@@ -345,11 +345,10 @@ void WindowMenu::showButton(const std::string &name, const bool visible)
 void WindowMenu::updateButtons()
 {
     int x = mPadding, h = 0;
-    std::vector <Button*>::const_iterator it, it_end;
-    for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
+    FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
         safeRemove(*it);
     const int pad2 = 2 * mPadding;
-    for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
+    FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
     {
         Button *const btn = dynamic_cast<Button *const>(*it);
         if (!btn)

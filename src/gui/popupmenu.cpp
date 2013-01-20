@@ -267,8 +267,7 @@ void PopupMenu::showPopup(const int x, const int y,
     mY = y;
     mBrowserBox->clearRows();
     mBrowserBox->addRow(_("Players"));
-    for (std::vector<ActorSprite*>::const_iterator it = beings.begin(),
-         it_end = beings.end(); it != it_end; ++it)
+    FOR_EACH (std::vector<ActorSprite*>::const_iterator, it, beings)
     {
         const Being *const being = dynamic_cast<Being*>(*it);
         const ActorSprite *const actor = *it;
@@ -650,8 +649,7 @@ void PopupMenu::showChangePos(const int x, const int y)
     if (guild)
     {
         PositionsMap map = guild->getPositions();
-        for (PositionsMap::const_iterator itr = map.begin(),
-             itr_end = map.end(); itr != itr_end; ++itr)
+        FOR_EACH (PositionsMap::const_iterator, itr, map)
         {
             mBrowserBox->addRow(strprintf("@@guild-pos-%u|%s@@",
                 itr->first, itr->second.c_str()));
@@ -1905,8 +1903,8 @@ void PopupMenu::showPopup(const int x, const int y, Button *const button)
     mY = y;
 
     mBrowserBox->clearRows();
-    std::vector <Button*> names = windowMenu->getButtons();
-    for (std::vector <Button*>::const_iterator it = names.begin(),
+    std::vector<Button *> names = windowMenu->getButtons();
+    for (std::vector<Button *>::const_iterator it = names.begin(),
          it_end = names.end(); it != it_end; ++ it)
     {
         const Button *const btn = dynamic_cast<Button*>(*it);

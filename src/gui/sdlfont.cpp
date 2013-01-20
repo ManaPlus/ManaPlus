@@ -280,8 +280,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
     int cnt = 0;
 #endif
 
-    for (CacheIterator i = cache->begin(), i_end = cache->end();
-         i != i_end; ++ i)
+    FOR_EACH (CacheIterator, i, cache)
     {
         if (chunk == (*i))
         {
@@ -364,8 +363,7 @@ int SDLFont::getWidth(const std::string &text) const
     int cnt = 0;
 #endif
 
-    for (CacheIterator i = cache->begin(), i_end = cache->end();
-         i != i_end; ++ i)
+    FOR_EACHP (CacheIterator, i, cache)
     {
         if (i->text == text)
         {

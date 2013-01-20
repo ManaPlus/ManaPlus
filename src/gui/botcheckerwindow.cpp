@@ -110,8 +110,7 @@ public:
             && botCheckerWindow->mEnabled)
         {
             std::set<ActorSprite*> beings = actorSpriteManager->getAll();
-            for (ActorSprites::const_iterator i = beings.begin(),
-                 i_end = beings.end(); i != i_end; ++i)
+            FOR_EACH (ActorSprites::const_iterator, i, beings)
             {
                 Being *const being = dynamic_cast<Being*>(*i);
 
@@ -396,8 +395,7 @@ void BotCheckerWindow::reset()
     if (actorSpriteManager)
     {
         std::set<ActorSprite*> beings = actorSpriteManager->getAll();
-        for (ActorSprites::const_iterator i = beings.begin(),
-             i_end = beings.end(); i != i_end; ++i)
+        FOR_EACH (ActorSprites::const_iterator, i, beings)
         {
             Being *const being = dynamic_cast<Being*>(*i);
 

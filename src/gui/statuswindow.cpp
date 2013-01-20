@@ -466,11 +466,8 @@ void StatusWindow::clearAttributes()
 {
     mAttrCont->clear();
     mDAttrCont->clear();
-    for (Attrs::iterator it = mAttrs.begin(), it_end = mAttrs.end();
-         it != it_end; ++ it)
-    {
+    FOR_EACH (Attrs::iterator, it, mAttrs)
         delete (*it).second;
-    }
     mAttrs.clear();
 }
 

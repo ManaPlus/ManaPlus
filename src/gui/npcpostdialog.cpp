@@ -125,9 +125,6 @@ void NpcPostDialog::setVisible(bool visible)
 
 void NpcPostDialog::closeAll()
 {
-    for (DialogList::const_iterator it = instances.begin(),
-         it_end = instances.end(); it != it_end; ++it)
-    {
+    FOR_EACH (DialogList::const_iterator, it, instances)
         (*it)->close();
-    }
 }

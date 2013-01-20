@@ -48,6 +48,8 @@
 
 extern volatile int tick_time;
 
+typedef std::vector <ProgressBar*>::const_iterator ProgressBarVectorCIter;
+
 MiniStatusWindow::MiniStatusWindow() :
     Popup("MiniStatus", "ministatus.xml"),
     InventoryListener(),
@@ -124,8 +126,7 @@ MiniStatusWindow::~MiniStatusWindow()
     if (inv)
         inv->removeInventoyListener(this);
 
-    for (std::vector <ProgressBar*>::const_iterator it = mBars.begin(),
-         it_end = mBars.end(); it != it_end; ++it)
+    FOR_EACH (ProgressBarVectorCIter, it, mBars)
     {
         ProgressBar *bar = *it;
         if (!bar)
@@ -154,13 +155,10 @@ void MiniStatusWindow::updateBars()
 {
     int x = 0;
     const ProgressBar *lastBar = nullptr;
-    for (std::vector <ProgressBar*>::const_iterator it = mBars.begin(),
-         it_end = mBars.end(); it != it_end; ++it)
-    {
+    FOR_EACH (ProgressBarVectorCIter, it, mBars)
         safeRemove(*it);
-    }
-    for (std::vector <ProgressBar*>::const_iterator it = mBars.begin(),
-         it_end = mBars.end(); it != it_end; ++it)
+
+    FOR_EACH (ProgressBarVectorCIter, it, mBars)
     {
         ProgressBar *const bar = *it;
         if (!bar)
@@ -456,8 +454,7 @@ void MiniStatusWindow::loadBars()
 void MiniStatusWindow::saveBars()
 {
     int i = 0;
-    for (std::vector <ProgressBar*>::const_iterator it = mBars.begin(),
-         it_end = mBars.end(); it != it_end; ++it)
+    FOR_EACH (ProgressBarVectorCIter, it, mBars)
     {
         const ProgressBar *const bar = *it;
         if (!bar->isVisible())

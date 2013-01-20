@@ -66,11 +66,8 @@ EditDialog::EditDialog(const std::string &title, const std::string &msg,
 void EditDialog::action(const gcn::ActionEvent &event)
 {
     // Proxy button events to our listeners
-    for (ActionListenerIterator i = mActionListeners.begin(),
-         i_end = mActionListeners.end(); i != i_end; ++i)
-    {
+    FOR_EACH (ActionListenerIterator, i, mActionListeners)
         (*i)->action(event);
-    }
 
     if (event.getId() == mEventOk)
         scheduleDelete();

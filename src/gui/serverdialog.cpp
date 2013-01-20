@@ -708,8 +708,7 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
         }
         else
         {
-            for (ServerInfos::iterator i = mServers.begin(),
-                 i_end = mServers.end(); i != i_end; ++i)
+            FOR_EACH (ServerInfos::iterator, i, mServers)
             {
                 if (*i == currentServer)
                 {
