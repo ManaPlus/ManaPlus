@@ -124,8 +124,7 @@ void Network::unregisterHandler(MessageHandler *handler)
 
 void Network::clearHandlers()
 {
-    for (MessageHandlerIterator i = mMessageHandlers.begin();
-         i != mMessageHandlers.end(); ++i)
+    FOR_EACH (MessageHandlerIterator, i, mMessageHandlers)
     {
         if (i->second)
             i->second->setNetwork(nullptr);

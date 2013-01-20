@@ -72,8 +72,7 @@ void Action::setAnimation(const int direction, Animation *const animation)
 
 void Action::setLastFrameDelay(const int delay)
 {
-    for (AnimationIter it = mAnimations.begin(),
-         it_end = mAnimations.end(); it != it_end; ++ it)
+    FOR_EACH (AnimationIter, it, mAnimations)
     {
         Animation *const animation = (*it).second;
         if (!animation)

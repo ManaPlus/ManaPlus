@@ -57,8 +57,7 @@ void TabStrip::action(const gcn::ActionEvent &event)
         gcn::Widget *const widget = event.getSource();
         if (static_cast<Button*>(widget)->isPressed2())
         {
-            for (WidgetListConstIterator iter = mWidgets.begin();
-                 iter != mWidgets.end(); ++ iter)
+            FOR_EACH (WidgetListConstIterator, iter, mWidgets)
             {
                 if (*iter != widget)
                 {

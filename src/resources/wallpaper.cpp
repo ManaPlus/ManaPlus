@@ -142,9 +142,7 @@ std::string Wallpaper::getWallpaper(const int width, const int height)
     // Wallpaper filename container
     StringVect wallPaperVector;
 
-    for (std::vector<WallpaperData>::const_iterator
-         iter = wallpaperData.begin(), iter_end = wallpaperData.end();
-         iter != iter_end; ++iter)
+    FOR_EACH (std::vector<WallpaperData>::const_iterator, iter, wallpaperData)
     {
         wp = *iter;
         if (wp.width <= width && wp.height <= height)

@@ -175,8 +175,7 @@ void EmoteDB::load()
 
 void EmoteDB::unload()
 {
-    for (EmoteInfos::const_iterator i = mEmoteInfos.begin(),
-         i_end = mEmoteInfos.end(); i != i_end; ++ i)
+    FOR_EACH (EmoteInfos::const_iterator, i, mEmoteInfos)
     {
         if (i->second)
         {

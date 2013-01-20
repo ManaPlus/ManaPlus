@@ -208,8 +208,7 @@ size_t findI(std::string text, StringVect &list)
 {
     std::string str = toLower(text);
     size_t idx;
-    for (StringVectCIter i = list.begin(), i_end = list.end();
-         i != i_end; ++ i)
+    FOR_EACH (StringVectCIter, i, list)
     {
         std::string subStr = *i;
         subStr = toLower(subStr);

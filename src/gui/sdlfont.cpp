@@ -280,7 +280,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
     int cnt = 0;
 #endif
 
-    FOR_EACH (CacheIterator, i, cache)
+    FOR_EACHP (CacheIterator, i, cache)
     {
         if (chunk == (*i))
         {

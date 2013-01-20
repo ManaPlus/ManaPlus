@@ -54,8 +54,7 @@ void WindowContainer::scheduleDelete(gcn::Widget *const widget)
 void WindowContainer::adjustAfterResize(const int oldScreenWidth,
                                         const int oldScreenHeight)
 {
-    for (WidgetListIterator i = mWidgets.begin(), i_end = mWidgets.end();
-         i != i_end; ++i)
+    FOR_EACH (WidgetListIterator, i, mWidgets)
     {
         if (Window *const window = dynamic_cast<Window*>(*i))
             window->adjustPositionAfterResize(oldScreenWidth, oldScreenHeight);

@@ -1024,11 +1024,8 @@ void ResourceManager::scheduleDelete(SDL_Surface *const surface)
 void ResourceManager::clearScheduled()
 {
     BLOCK_START("ResourceManager::clearScheduled")
-    for (std::set<SDL_Surface*>::iterator i = deletedSurfaces.begin(),
-         i_end = deletedSurfaces.end(); i != i_end; ++i)
-    {
+    FOR_EACH (std::set<SDL_Surface*>::iterator, i, deletedSurfaces)
         SDL_FreeSurface(*i);
-    }
     deletedSurfaces.clear();
     BLOCK_END("ResourceManager::clearScheduled")
 }
@@ -1100,8 +1097,7 @@ void ResourceManager::delayedLoad()
 void ResourceManager::removeDelayLoad(const AnimationDelayLoad
                                       *const delayedLoad)
 {
-    for (DelayedAnimIter it = mDelayedAnimations.begin(),
-        it_end = mDelayedAnimations.end(); it != it_end; ++ it)
+    FOR_EACH (DelayedAnimIter, it, mDelayedAnimations)
     {
         if (*it == delayedLoad)
         {

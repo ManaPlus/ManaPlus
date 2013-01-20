@@ -63,7 +63,7 @@ PoDict *TranslationManager::loadLang(LangVect lang,
     std::string name;
     PoParser parser;
 
-    for (LangIter it = lang.begin(), it_end = lang.end(); it != it_end; ++ it)
+    FOR_EACH (LangIter, it, lang)
     {
         if (*it == "C")
             continue;

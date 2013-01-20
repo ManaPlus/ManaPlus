@@ -155,8 +155,7 @@ std::string getDesktopDir()
         file = std::string(xdg) + "/user-dirs.dirs";
 
     StringVect arr = ResourceManager::loadTextFileLocal(file);
-    for (StringVectCIter it = arr.begin(), it_end = arr.end();
-        it != it_end; ++ it)
+    FOR_EACH (StringVectCIter, it, arr)
     {
         std::string str = *it;
         if (findCutFirst(str, "XDG_DESKTOP_DIR=\""))

@@ -56,8 +56,7 @@ TouchActionsModel::TouchActionsModel() :
 
     std::sort(data.begin(), data.end(), touchActionSorter);
     int cnt = 0;
-    for (std::vector<SetupActionData*>::iterator it = data.begin(),
-          it_end = data.end(); it != it_end; ++ it)
+    FOR_EACH (std::vector<SetupActionData*>::iterator, it, data)
     {
         const SetupActionData *data1 = *it;
         mNames.push_back(data1->name);

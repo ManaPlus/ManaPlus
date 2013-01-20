@@ -62,8 +62,7 @@ Action *SpriteDef::getAction(const std::string &action,
 unsigned SpriteDef::findNumber(const unsigned num) const
 {
     unsigned min = 101;
-    for (Actions::const_iterator it = mActions.begin(),
-         it_end = mActions.end(); it != it_end; ++ it)
+    FOR_EACH (Actions::const_iterator, it, mActions)
     {
         const unsigned n = (*it).first;
         if (n >= num && n < min)
@@ -107,8 +106,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, const int variant)
 
 void SpriteDef::fixDeadAction()
 {
-    for (ActionsIter it = mActions.begin(), it_end = mActions.end();
-         it != it_end; ++ it)
+    FOR_EACH (ActionsIter, it, mActions)
     {
         ActionMap *const d = (*it).second;
         if (!d)
@@ -123,8 +121,7 @@ void SpriteDef::fixDeadAction()
 
 void SpriteDef::substituteAction(std::string complete, std::string with)
 {
-    for (ActionsConstIter it = mActions.begin(), it_end = mActions.end();
-         it != it_end; ++ it)
+    FOR_EACH (ActionsConstIter, it, mActions)
     {
         ActionMap *const d = (*it).second;
         if (!d)
@@ -330,8 +327,7 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
             {
                 StringVect vals;
                 splitToStringVector(vals, value, ',');
-                for (StringVectCIter it = vals.begin(), it_end = vals.end();
-                     it != it_end; ++ it)
+                FOR_EACH (StringVectCIter, it, vals)
                 {
                     std::string str = *it;
                     const size_t idx = str.find("-");
@@ -419,27 +415,19 @@ SpriteDef::~SpriteDef()
 {
     // Actions are shared, so ensure they are deleted only once.
     std::set<Action*> actions;
-    for (Actions::iterator i = mActions.begin(),
-         i_end = mActions.end(); i != i_end; ++i)
+    FOR_EACH (Actions::iterator, i, mActions)
     {
-        for (ActionMap::iterator it = (*i).second->begin(),
-             it_end = (*i).second->end(); it != it_end; ++ it)
-        {
+        FOR_EACHP (ActionMap::iterator, it, (*i).second)
             actions.insert(it->second);
-        }
         delete (*i).second;
     }
 
-    for (std::set<Action*>::const_iterator i = actions.begin(),
-         i_end = actions.end(); i != i_end; ++i)
-    {
+    FOR_EACH (std::set<Action*>::const_iterator, i, actions)
         delete *i;
-    }
 
     mActions.clear();
 
-    for (ImageSetIterator i = mImageSets.begin();
-         i != mImageSets.end(); ++i)
+    FOR_EACH (ImageSetIterator, i, mImageSets)
     {
         if (i->second)
         {
@@ -447,6 +435,7 @@ SpriteDef::~SpriteDef()
             i->second = nullptr;
         }
     }
+    mImageSets.clear();
 }
 
 SpriteDirection SpriteDef::makeSpriteDirection(const std::string &direction)

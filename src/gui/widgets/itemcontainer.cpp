@@ -354,9 +354,7 @@ Item *ItemContainer::getSelectedItem() const
 
 void ItemContainer::distributeValueChangedEvent()
 {
-    for (SelectionListenerIterator i = mSelectionListeners.begin(),
-         i_end = mSelectionListeners.end();
-         i != i_end; ++i)
+    FOR_EACH (SelectionListenerIterator, i, mSelectionListeners)
     {
         if (*i)
         {
@@ -576,8 +574,7 @@ void ItemContainer::updateMatrix()
 
     int jMult = j * mGridColumns;
     const int maxSize = mGridRows * mGridColumns;
-    for (std::vector<ItemIdPair*>::const_iterator iter = sortedItems.begin(),
-         iter_end = sortedItems.end(); iter != iter_end; ++ iter)
+    FOR_EACH (std::vector<ItemIdPair*>::const_iterator, iter, sortedItems)
     {
         if (jMult >= maxSize)
             break;
@@ -593,11 +590,8 @@ void ItemContainer::updateMatrix()
         }
     }
 
-    for (int idx = j * mGridColumns + i;
-         idx < maxSize; idx ++)
-    {
+    for (int idx = j * mGridColumns + i; idx < maxSize; idx ++)
         mShowMatrix[idx] = -1;
-    }
 
     for (size_t idx = 0, sz = sortedItems.size(); idx < sz; idx ++)
         delete sortedItems[idx];

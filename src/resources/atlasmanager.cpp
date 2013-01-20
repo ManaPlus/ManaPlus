@@ -60,8 +60,7 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
     simpleSort(name, atlases, images, maxSize);
 
 //    int k = 0;
-    for (std::vector<TextureAtlas*>::iterator it = atlases.begin(),
-         it_end = atlases.end(); it != it_end; ++ it)
+    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
     {
         TextureAtlas *atlas = *it;
         if (!atlas)
@@ -95,8 +94,7 @@ void AtlasManager::loadImages(const StringVect &files,
 {
     ResourceManager *const resman = ResourceManager::getInstance();
 
-    for (StringVectCIter it = files.begin(), it_end = files.end();
-          it != it_end; ++ it)
+    FOR_EACH (StringVectCIter, it, files)
     {
         const std::string str = *it;
         // check is image with same name already in cache
@@ -237,9 +235,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *atlas)
     graphics->_beginDraw();
 
     // drawing SDL images to surface
-    for (std::vector<AtlasItem*>::iterator it = atlas->items.begin(),
-         it_end = atlas->items.end();
-         it != it_end; ++ it)
+    FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
     {
         AtlasItem *item = *it;
         Image *image = item->image;
@@ -267,9 +263,7 @@ void AtlasManager::convertAtlas(TextureAtlas *atlas)
         image->incRef();
     }
 
-    for (std::vector<AtlasItem*>::iterator it = atlas->items.begin(),
-         it_end = atlas->items.end();
-         it != it_end; ++ it)
+    FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
     {
         AtlasItem *const item = *it;
         // delete SDL Image
@@ -289,8 +283,7 @@ void AtlasManager::convertAtlas(TextureAtlas *atlas)
 void AtlasManager::injectToResources(AtlasResource *resource)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
-    for (std::vector<TextureAtlas*>::iterator it = resource->atlases.begin(),
-         it_end = resource->atlases.end(); it != it_end; ++ it)
+    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, resource->atlases)
     {
         // add each atlas image to resources
         TextureAtlas *const atlas = *it;
@@ -299,9 +292,7 @@ void AtlasManager::injectToResources(AtlasResource *resource)
             Image *const image = atlas->atlasImage;
             if (image)
                 resman->addResource(atlas->name, image);
-            for (std::vector<AtlasItem*>::iterator it2 = atlas->items.begin(),
-                 it2_end = atlas->items.end();
-                 it2 != it2_end; ++ it2)
+            FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
                 if (!item)
@@ -316,8 +307,7 @@ void AtlasManager::injectToResources(AtlasResource *resource)
 void AtlasManager::moveToDeleted(AtlasResource *resource)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
-    for (std::vector<TextureAtlas*>::iterator it = resource->atlases.begin(),
-         it_end = resource->atlases.end(); it != it_end; ++ it)
+    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, resource->atlases)
     {
         // move each atlas image to deleted
         TextureAtlas *const atlas = *it;
@@ -329,9 +319,7 @@ void AtlasManager::moveToDeleted(AtlasResource *resource)
                 // move each atlas image to deleted
                 resman->moveToDeleted(image);
             }
-            for (std::vector<AtlasItem*>::iterator it2 = atlas->items.begin(),
-                 it2_end = atlas->items.end();
-                 it2 != it2_end; ++ it2)
+            FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
                 if (item)
@@ -350,15 +338,12 @@ void AtlasManager::moveToDeleted(AtlasResource *resource)
 
 AtlasResource::~AtlasResource()
 {
-    for (std::vector<TextureAtlas*>::iterator it = atlases.begin(),
-         it_end = atlases.end(); it != it_end; ++ it)
+    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
     {
         TextureAtlas *const atlas = *it;
         if (atlas)
         {
-            for (std::vector<AtlasItem*>::iterator it2 = atlas->items.begin(),
-                 it2_end = atlas->items.end();
-                 it2 != it2_end; ++ it2)
+            FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
                 if (item)

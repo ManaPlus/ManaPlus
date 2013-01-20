@@ -343,8 +343,7 @@ int TabbedArea::getSelectedTabIndex() const
 
 void TabbedArea::setSelectedTabByName(const std::string &name)
 {
-    for (TabContainer::const_iterator itr = mTabs.begin(),
-         itr_end = mTabs.end(); itr != itr_end; ++itr)
+    FOR_EACH (TabContainer::const_iterator, itr, mTabs)
     {
         if ((*itr).first && (*itr).first->getCaption() == name)
         {
@@ -430,8 +429,7 @@ void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
 void TabbedArea::updateTabsWidth()
 {
     mTabsWidth = 0;
-    for (TabContainer::const_iterator itr = mTabs.begin(),
-         itr_end = mTabs.end(); itr != itr_end; ++itr)
+    FOR_EACH (TabContainer::const_iterator, itr, mTabs)
     {
         if ((*itr).first)
             mTabsWidth += (*itr).first->getWidth();
