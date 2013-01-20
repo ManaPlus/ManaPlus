@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -32,25 +32,6 @@
 int Joystick::joystickCount = 0;
 bool Joystick::mEnabled = false;
 
-void Joystick::init()
-{
-    SDL_InitSubSystem(SDL_INIT_JOYSTICK);
-    SDL_JoystickEventState(SDL_ENABLE);
-    joystickCount = SDL_NumJoysticks();
-    logger->log("%i joysticks/gamepads found", joystickCount);
-    for (int i = 0; i < joystickCount; i++)
-        logger->log("- %s", SDL_JoystickName(i));
-
-    mEnabled = config.getBoolValue("joystickEnabled");
-
-    if (Joystick::getNumberOfJoysticks() > 0)
-    {
-        joystick = new Joystick(config.getIntValue("selectedJoystick"));
-        if (mEnabled)
-            joystick->open();
-    }
-}
-
 Joystick::Joystick(const int no):
     mDirection(0),
     mJoystick(nullptr),
@@ -74,8 +55,34 @@ Joystick::~Joystick()
     close();
 }
 
+void Joystick::init()
+{
+    SDL_InitSubSystem(SDL_INIT_JOYSTICK);
+    SDL_JoystickEventState(SDL_ENABLE);
+    joystickCount = SDL_NumJoysticks();
+    logger->log("%i joysticks/gamepads found", joystickCount);
+    for (int i = 0; i < joystickCount; i++)
+        logger->log("- %s", SDL_JoystickName(i));
+
+    mEnabled = config.getBoolValue("joystickEnabled");
+
+    if (joystickCount > 0)
+    {
+        joystick = new Joystick(config.getIntValue("selectedJoystick"));
+        if (mEnabled)
+            joystick->open();
+    }
+}
+
 bool Joystick::open()
 {
+    if (mNumber >= joystickCount)
+        mNumber = joystickCount - 1;
+    if (mNumber < 0)
+    {
+        logger->log("error: incorrect joystick selection");
+        return false;
+    }
     logger->log("open joystick %d", mNumber);
 
     mJoystick = SDL_JoystickOpen(mNumber);
@@ -118,6 +125,12 @@ void Joystick::close()
         SDL_JoystickClose(mJoystick);
         mJoystick = nullptr;
     }
+}
+
+void Joystick::reload()
+{
+    joystickCount = SDL_NumJoysticks();
+    setNumber(mNumber);
 }
 
 void Joystick::setNumber(const int n)

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -184,6 +184,8 @@ class Viewport final : public WindowContainer,
         void showMapPopup(const int x, const int y);
 
         void showTextFieldPopup(TextField *input);
+
+        void showLinkPopup(const std::string &link);
 
         /**
          * Closes the popup menu. Needed for when the player dies or switching

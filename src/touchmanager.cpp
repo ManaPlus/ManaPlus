@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2012  The ManaPlus Developers
+ *  Copyright (C) 2012-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -378,8 +378,8 @@ void TouchManager::loadButtons()
         // 2x1
         if (mButtonsFormat == 0)
         {
-            loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml", x, y,
-                sz, sz, RIGHT, "screenActionButton1", "");
+            loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
+                x, y, sz, sz, RIGHT, "screenActionButton1", "");
 
             loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
                 skipWidth, y, sz, sz, RIGHT, "screenActionButton0", "");
@@ -387,8 +387,8 @@ void TouchManager::loadButtons()
         // 2x2
         else if (mButtonsFormat == 1)
         {
-            loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml", x, y,
-                sz, sz, RIGHT, "screenActionButton3", "");
+            loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml",
+                x, y, sz, sz, RIGHT, "screenActionButton3", "");
 
             loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
                 skipWidth, y, sz, sz, RIGHT, "screenActionButton2", "");

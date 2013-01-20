@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -69,7 +69,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     gcn::SelectionListener(),
     gcn::MouseListener(),
     mSkin(Theme::instance() ? Theme::instance()->load("windowmenu.xml", "")
-        : nullptr),
+          : nullptr),
     mPadding(mSkin ? mSkin->getPadding() : 1),
     mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
     mTextPopup(new TextPopup),

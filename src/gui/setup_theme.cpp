@@ -135,7 +135,7 @@ const Language LANG_NAME[langs_count] =
     {N_("Italian"), "it_IT", "it.png"},
     {N_("Polish"), "pl_PL", "pl.png"},
     {N_("Japanese"), "ja_JP", "jp.png"},
-    {N_("Dutch (Belgium/Flemish)"), "nl_BE", ""},
+    {N_("Dutch (Belgium/Flemish)"), "nl_BE", "nl_BE.png"},
     {N_("Portuguese"), "pt_PT", "pt.png"},
     {N_("Portuguese (Brazilian)"), "pt_BR", "pt_BR.png"},
     {N_("Russian"), "ru_RU", "ru.png"},

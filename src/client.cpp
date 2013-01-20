@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -279,7 +279,10 @@ Client::Client(const Options &options) :
     mInputFocused(true),
     mMouseFocused(true),
     mGuiAlpha(1.0f),
-    mNewMessageFlag(false)
+    mNewMessageFlag(false),
+    mSkin(nullptr),
+    mButtonPadding(1),
+    mButtonSpacing(3)
 {
     mInstance = this;
 }
@@ -884,8 +887,8 @@ int Client::testsExec() const
 }
 
 #define ADDBUTTON(var, object) var = object; \
-    x -= var->getWidth() + 6; \
-    var->setPosition(x, 0); \
+    x -= var->getWidth() + mButtonSpacing; \
+    var->setPosition(x, mButtonPadding); \
     top->add(var);
 
 
@@ -899,6 +902,14 @@ int Client::gameExec()
     #endif
 
     SDL_Event event;
+
+    if (Theme::instance())
+        mSkin = Theme::instance()->load("windowmenu.xml", "");
+    if (mSkin)
+    {
+        mButtonPadding = mSkin->getPadding();
+        mButtonSpacing = mSkin->getOption("spacing", 3);
+    }
 
     while (mState != STATE_EXIT)
     {
@@ -1099,7 +1110,7 @@ int Client::gameExec()
 
             mDesktop = new Desktop(nullptr);
             top->add(mDesktop);
-            int x = top->getWidth();
+            int x = top->getWidth() - mButtonPadding;
             ADDBUTTON(mSetupButton, new Button(mDesktop,
                 _("Setup"), "Setup", this))
 #ifndef WIN32
@@ -2697,20 +2708,20 @@ void Client::resizeVideo(int width, int height, const bool always)
 
         if (mSetupButton)
         {
-            int x = width - mSetupButton->getWidth() - 3;
-            mSetupButton->setPosition(x, 3);
+            int x = width - mSetupButton->getWidth() - mButtonPadding;
+            mSetupButton->setPosition(x, mButtonPadding);
 #ifndef WIN32
-            x -= mPerfomanceButton->getWidth() + 6;
-            mPerfomanceButton->setPosition(x, 3);
+            x -= mPerfomanceButton->getWidth() + mButtonSpacing;
+            mPerfomanceButton->setPosition(x, mButtonPadding);
 
-            x -= mVideoButton->getWidth() + 6;
-            mVideoButton->setPosition(x, 3);
+            x -= mVideoButton->getWidth() + mButtonSpacing;
+            mVideoButton->setPosition(x, mButtonPadding);
 
-            x -= mThemesButton->getWidth() + 6;
-            mThemesButton->setPosition(x, 3);
+            x -= mThemesButton->getWidth() + mButtonSpacing;
+            mThemesButton->setPosition(x, mButtonPadding);
 #ifdef ANDROID
-            x -= mCloseButton->getWidth() + 6;
-            mCloseButton->setPosition(x, 3);
+            x -= mCloseButton->getWidth() + mButtonSpacing;
+            mCloseButton->setPosition(x, mButtonPadding);
 #endif
 #endif
         }

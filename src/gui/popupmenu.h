@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -170,6 +170,8 @@ class PopupMenu final : public Popup, public LinkHandler
         void showPopup(const int x, const int y, gcn::ListModel *model);
 
         void showTextFieldPopup(int x, int y, TextField *input);
+
+        void showLinkPopup(const int x, const int y, const std::string &link);
 
         /**
          * Handles link action.

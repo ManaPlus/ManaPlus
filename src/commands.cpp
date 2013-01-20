@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -1012,7 +1012,7 @@ impHandler0(dumpEnvironment)
 {
     logger->log("Start environment variables");
     for (char **env = environ; *env; ++ env)
-        logger->log(*env);
+        logger->log1(*env);
     logger->log("End environment variables");
     if (debugChatTab)
         debugChatTab->chatLog(_("Environment variables dumped"));

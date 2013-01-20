@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -232,10 +232,13 @@ static SDLMusic *loadMusic(const std::string &fileName)
 
 void SoundManager::playMusic(const std::string &fileName)
 {
-    mCurrentMusicFile = fileName;
-
     if (!mInstalled || !mPlayMusic)
         return;
+
+    if (mCurrentMusicFile == fileName)
+        return;
+
+    mCurrentMusicFile = fileName;
 
     haltMusic();
 
@@ -407,6 +410,7 @@ void SoundManager::haltMusic()
         mMusic->decRef();
         mMusic = nullptr;
     }
+    mCurrentMusicFile.clear();
 }
 
 void SoundManager::changeAudio()

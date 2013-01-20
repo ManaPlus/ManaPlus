@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2012  The ManaPlus Developers
+ *  Copyright (C) 2012-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -937,7 +937,21 @@ impHandler0(talk)
 {
     if (player_node)
     {
-        Being *const target = player_node->getTarget();
+        Being *target = player_node->getTarget();
+        if (!target)
+        {
+            target = actorSpriteManager->findNearestLivingBeing(
+                player_node, 1, ActorSprite::NPC);
+            // ignore closest target if distance in each direction more than 1
+            if (target)
+            {
+                if (abs(target->getTileX() - player_node->getTileX()) > 1
+                    || abs(target->getTileY() - player_node->getTileY()) > 1)
+                {
+                    return true;
+                }
+            }
+        }
         if (target)
         {
             if (target->canTalk())

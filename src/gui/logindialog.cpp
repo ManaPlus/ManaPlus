@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -163,7 +163,7 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
             mLoginData->updateHost.c_str()));
         mUpdateListModel = new UpdateListModel(mLoginData);
         mUpdateHostDropDown = new DropDown(this, mUpdateListModel,
-            false, this, "updateselect");
+            false, false, this, "updateselect");
         const std::string str = serverConfig.getValue("updateHost2", "");
         if (!str.empty())
             mUpdateHostDropDown->setSelectedString(str);

@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -262,7 +262,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("autohideChat", false);
     AddDEF("downloadProxy", "");
     AddDEF("downloadProxyType", 0);
-    AddDEF("blur", true);
+    AddDEF("blur", false);
 #if defined(WIN32) || defined(__APPLE__)
     AddDEF("centerwindow", true);
 #endif
@@ -296,7 +296,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("highlightWords", "");
     AddDEF("selfMouseHeal", true);
     AddDEF("serverslistupdate", "");
-    AddDEF("fadeoutmusic", false);
+    AddDEF("fadeoutmusic", true);
     AddDEF("screenActionKeyboard", Input::KEY_SHOW_KEYBOARD);
     AddDEF("screenActionButton0", Input::KEY_STOP_SIT);
     AddDEF("screenActionButton1", Input::KEY_TARGET_ATTACK);

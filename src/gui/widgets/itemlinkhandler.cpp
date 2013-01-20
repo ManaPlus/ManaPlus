@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -35,6 +35,7 @@
 #include <string>
 
 #include <guichan/actionlistener.hpp>
+#include <guichan/mouseinput.hpp>
 
 #include "debug.h"
 
@@ -61,7 +62,7 @@ ItemLinkHandler::~ItemLinkHandler()
 }
 
 void ItemLinkHandler::handleLink(const std::string &link,
-                                 gcn::MouseEvent *event A_UNUSED)
+                                 gcn::MouseEvent *event)
 {
     if (!strStartWith(link, "http://"))
     {
@@ -92,11 +93,22 @@ void ItemLinkHandler::handleLink(const std::string &link,
     }
     else
     {
+        if (!event)
+            return;
         std::string url = link;
         replaceAll(url, " ", "");
         listener.url = url;
-        ConfirmDialog *const confirmDlg = new ConfirmDialog(
-            _("Open url"), url, false, true);
-        confirmDlg->addActionListener(&listener); 
+        const int button = event->getButton();
+        if (button == gcn::MouseInput::LEFT)
+        {
+            ConfirmDialog *const confirmDlg = new ConfirmDialog(
+                _("Open url"), url, false, true);
+            confirmDlg->addActionListener(&listener); 
+        }
+        else if (button == gcn::MouseInput::RIGHT)
+        {
+            if (viewport)
+                viewport->showLinkPopup(url);
+        }
     }
 }

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -108,7 +108,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mSlotsBar(new ProgressBar(this, 0.0f, 100, 0, Theme::PROG_INVY_SLOTS)),
     mFilter(nullptr),
     mSortModel(new SortListModel),
-    mSortDropDown(new DropDown(this, mSortModel, false, this, "sort")),
+    mSortDropDown(new DropDown(this, mSortModel, false, false, this, "sort")),
     mNameFilter(new TextField(this, "", true, this, "namefilter", true)),
     mSortDropDownCell(nullptr),
     mNameFilterCell(nullptr),

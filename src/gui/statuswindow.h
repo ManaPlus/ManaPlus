@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -61,8 +61,9 @@ class StatusWindow final : public Window,
         void setPointsNeeded(const int id, const int needed);
 
         void addAttribute(const int id, const std::string &name,
-                          const bool modifiable,
-                          const std::string &description);
+                          const std::string &shortName = "",
+                          const bool modifiable = false,
+                          const std::string &description = "");
 
         static void updateHPBar(ProgressBar *const bar,
                                 const bool showMax = false);

@@ -1,3 +1,31 @@
+2013-01-20 New release 1.3.1.20
+fix: macosx fixes.
+fix: collision masks.
+fix: crash on exit on windows.
+fix: minor changes in black&black theme.
+fix; servers deletion from servers list.
+fix: language selection in last ubuntu.
+fix: environment variables usage.
+fix: different game sound fixes.
+fix: shortcuts window resize issue in software draw mode.
+add: extend theming.
+add: http registrations in register dialog.
+add: updated jewelry theme.
+add: support for outlined texts in some windows and controls.
+add: show flag icons in language selection list.
+add: chat command to dump environment variables (/dumpe)
+add: open broweser in MacOSX.
+add: popup menu for text fields.
+add: for sound "strike" alias "miss".
+add: different sounds from different weapons.
+add: option to show/hide onscreen keyboard.
+add: actions for onscreen buttons (touch tab).
+add: configurable number of onscreen buttons.
+add: talk to very close npc by only talk key (T).
+add: better stats line in copy to chat stats.
+add: context menu for hyper links.
+add: detect joystick button.
+
 2012-12-23 New release 1.2.12.23
 fix: reset in memory password if password was wrong.
 fix: dont show opengl restart mesasge in settings under Android.

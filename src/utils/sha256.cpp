@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file has been slighly modified as part of The ManaPlus Client.
  *

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -819,6 +819,11 @@ void Viewport::showMapPopup(const int x, const int y)
 void Viewport::showTextFieldPopup(TextField *input)
 {
     mPopupMenu->showTextFieldPopup(getMouseX(), getMouseY(), input);
+}
+
+void Viewport::showLinkPopup(const std::string &link)
+{
+    mPopupMenu->showLinkPopup(getMouseX(), getMouseY(), link);
 }
 
 void Viewport::closePopupMenu()

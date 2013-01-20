@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2012  The ManaPlus Developers
+ *  Copyright (C) 2012-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -52,6 +52,7 @@ class ExtendedListBox final : public ListBox
         unsigned int mRowHeight;
         int mImagePadding;
         int mSpacing;
+        int mItemPadding;
 };
 
 #endif

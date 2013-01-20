@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -45,8 +45,8 @@
  * different interfaces, which have different implementations for each server.
  */
 
-#define SMALL_VERSION "1.2.12.23"
-#define CHECK_VERSION "01.02.12.23"
+#define SMALL_VERSION "1.3.1.20"
+#define CHECK_VERSION "01.03.01.20"
 
 #ifdef HAVE_CONFIG_H
 #include "../config.h"

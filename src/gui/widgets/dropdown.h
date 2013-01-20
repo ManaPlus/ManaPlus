@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2006-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -71,6 +71,7 @@ class DropDown final : public gcn::ActionListener,
         DropDown(const Widget2 *const widget,
                  gcn::ListModel *const listModel = nullptr,
                  bool extended = false,
+                 bool modal = false,
                  gcn::ActionListener *const listener = nullptr,
                  const std::string &eventId = "");
 

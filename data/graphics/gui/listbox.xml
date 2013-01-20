@@ -4,5 +4,6 @@
         <option name="imagePadding" value="1" />
         <option name="textPadding" value="34" />
         <option name="spacing" value="2" />
+        <option name="itemPadding" value="1" />
     </widget>
 </skinset>

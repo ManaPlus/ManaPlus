@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -718,6 +718,9 @@ void ChatWindow::scroll(const int amount) const
 
 void ChatWindow::mousePressed(gcn::MouseEvent &event)
 {
+    if (event.isConsumed())
+        return;
+
     if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
         if (viewport)

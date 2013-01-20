@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2006-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -60,6 +60,7 @@ static std::string const dropdownFiles[2] =
 DropDown::DropDown(const Widget2 *const widget,
                    gcn::ListModel *const listModel,
                    bool extended,
+                   bool modal,
                    gcn::ActionListener *const listener,
                    const std::string &eventId):
     gcn::ActionListener(),
@@ -70,7 +71,7 @@ DropDown::DropDown(const Widget2 *const widget,
     gcn::SelectionListener(),
     Widget2(widget),
     mExtended(extended),
-    mPopup(new PopupList(this, listModel, extended)),
+    mPopup(new PopupList(this, listModel, extended, modal)),
     mShadowColor(getThemeColor(Theme::DROPDOWN_SHADOW)),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mPadding(1),

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -374,6 +374,15 @@ void SafeOpenGLGraphics::_beginDraw()
     glLoadIdentity();
 
     glEnable(GL_SCISSOR_TEST);
+    glDisable(GL_DITHER);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_FOG);
+    glDisable(GL_COLOR_LOGIC_OP);
+    glDisable(GL_COLOR_MATERIAL);
+    glDisable(GL_STENCIL_TEST);
+
+    glShadeModel(GL_FLAT);
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
