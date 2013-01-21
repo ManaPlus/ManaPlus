@@ -64,7 +64,9 @@ struct QuestItemText final
 struct QuestItem final
 {
     QuestItem() :
-        var(0), completeFlag(-1)
+        var(0),
+        completeFlag(-1),
+        broken(false)
     {
     }
 
@@ -75,6 +77,7 @@ struct QuestItem final
     std::set<int> complete;
     std::vector<QuestItemText> texts;
     int completeFlag;
+    bool broken;
 };
 
 class QuestsModel final : public ExtendedNamesModel
@@ -219,6 +222,9 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
         delete quest;
         return;
     }
+    if (quest->incomplete.empty() || quest->complete.empty())
+        quest->broken = true;
+
     for_each_xml_child_node(dataNode, node)
     {
         if (!xmlTypeEqual(dataNode, XML_ELEMENT_NODE))
@@ -301,7 +307,8 @@ void QuestsWindow::rebuild(const bool playSound)
         it_end = complete.end(); it != it_end; ++ it, k ++)
     {
         QuestItem *const quest = *it;
-        if (quest->completeFlag == 0)
+        if (quest->completeFlag == 0 || (quest->broken
+            && quest->completeFlag == -1))
         {
             updatedQuest = k;
             newCompleteStatus = 1;
