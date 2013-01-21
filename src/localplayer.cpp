@@ -3452,6 +3452,26 @@ void LocalPlayer::pingRequest()
     Net::getBeingHandler()->requestNameById(getId());
 }
 
+int LocalPlayer::getPingTime() const
+{
+    int time = 0;
+    if (!mWaitPing)
+    {
+        time = mPingTime;
+    }
+    else
+    {
+        time = tick_time;
+        if (time > mPingSendTick)
+        {
+            time -= mPingSendTick;
+            if (time <= mPingTime)
+                time = mPingTime;
+        }
+    }
+    return time;
+}
+
 void LocalPlayer::pingResponse()
 {
     if (mWaitPing == true && mPingSendTick > 0)
