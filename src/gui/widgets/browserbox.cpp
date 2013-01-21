@@ -353,8 +353,10 @@ void BrowserBox::mousePressed(gcn::MouseEvent &event)
         MouseOverLink(event.getX(), event.getY()));
 
     if (i != mLinks.end())
+    {
         mLinkHandler->handleLink(i->link, &event);
-    event.consume();
+        event.consume();
+    }
 }
 
 void BrowserBox::mouseMoved(gcn::MouseEvent &event)
