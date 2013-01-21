@@ -268,6 +268,7 @@ void QuestsWindow::rebuild(const bool playSound)
     std::vector<Image*> &images = mQuestsModel->getImages();
     std::vector<QuestItem*> complete;
     std::vector<QuestItem*> incomplete;
+    std::vector<QuestItem*> hidden;
     int updatedQuest = -1;
     int newCompleteStatus = -1;
 
@@ -288,6 +289,9 @@ void QuestsWindow::rebuild(const bool playSound)
             // incomplete quest
             else if (quest->incomplete.find(val) != quest->incomplete.end())
                 incomplete.push_back(quest);
+            // hidden quest
+            else
+                hidden.push_back(quest);
         }
     }
 
@@ -337,6 +341,12 @@ void QuestsWindow::rebuild(const bool playSound)
         {
             images.push_back(nullptr);
         }
+    }
+
+    FOR_EACH (std::vector<QuestItem*>::const_iterator, it, hidden)
+    {
+        QuestItem *const quest = *it;
+        quest->completeFlag = -1;
     }
 
     if (updatedQuest == -1)
