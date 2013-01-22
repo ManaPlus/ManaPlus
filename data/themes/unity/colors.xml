@@ -1,6 +1,7 @@
 <colors>
     <palette id="0">
         <color id="BROWSERBOX" color="#E0E0E0" />
+        <color id="SELFNICK" color="#E0E0E0" />
         <color id="TEXT" color="#E0E0E0" />
         <color id="CARET" color="#E0E0E0" />
         <color id="SHADOW" color="#000000" />

@@ -195,6 +195,7 @@ Theme::Theme():
     mColors[SERVER].ch = 'S';
     mColors[LOGGER].ch = 'L';
     mColors[HYPERLINK].ch = '<';
+    mColors[SELFNICK].ch = 's';
     mCharColors['H'] = HIGHLIGHT;
     mCharColors['C'] = CHAT;
     mCharColors['G'] = GM;
@@ -207,6 +208,7 @@ Theme::Theme():
     mCharColors['S'] = SERVER;
     mCharColors['L'] = LOGGER;
     mCharColors['<'] = HYPERLINK;
+    mCharColors['s'] = SELFNICK;
 
     // here need use outlined colors
     mCharColors['H' | 0x80] = HIGHLIGHT_OUTLINE;
@@ -221,6 +223,7 @@ Theme::Theme():
     mCharColors['S' | 0x80] = SERVER_OUTLINE;
     mCharColors['L' | 0x80] = LOGGER_OUTLINE;
     mCharColors['<' | 0x80] = HYPERLINK_OUTLINE;
+    mCharColors['s' | 0x80] = SELFNICK_OUTLINE;
 }
 
 Theme::~Theme()
@@ -724,6 +727,8 @@ static int readColorType(const std::string &type)
     {
         "BROWSERBOX",
         "BROWSERBOX_OUTLINE",
+        "SELFNICK",
+        "SELFNICK_OUTLINE",
         "TEXT",
         "CARET",
         "SHADOW",

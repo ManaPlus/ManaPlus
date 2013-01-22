@@ -733,6 +733,11 @@ void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
     if (actorSpriteManager && player_node)
     {
         const std::string &nick = player->getNick();
+        if (nick == player_node->getName())
+        {
+            player->setText("s");
+            return;
+        }
         if (player_node->isInParty())
         {
             const Party *const party = player_node->getParty();

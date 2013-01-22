@@ -190,6 +190,8 @@ class Theme final : public Palette, public ConfigListener
         {
             BROWSERBOX = 0,
             BROWSERBOX_OUTLINE,
+            SELFNICK_OUTLINE,
+            SELFNICK,
             TEXT,
             CARET,
             SHADOW,

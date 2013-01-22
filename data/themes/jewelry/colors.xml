@@ -1,6 +1,7 @@
 <colors>
     <palette id="0">
         <color id="BROWSERBOX" color="#402600" />
+        <color id="SELFNICK" color="#402600" />
         <color id="TEXT" color="#402600" />
         <color id="CARET" color="#80561f" />
         <color id="SHADOW" color="#000000" />
@@ -93,6 +94,7 @@
 
     <palette id="1">
         <color id="BROWSERBOX" color="#402600" />
+        <color id="SELFNICK" color="#402600" />
         <color id="TEXT" color="#402600" />
         <color id="CARET" color="#80561f" />
         <color id="SHADOW" color="#000000" />
@@ -185,6 +187,7 @@
 
     <palette id="2">
         <color id="BROWSERBOX" color="#402600" />
+        <color id="SELFNICK" color="#402600" />
         <color id="TEXT" color="#402600" />
         <color id="CARET" color="#80561f" />
         <color id="SHADOW" color="#000000" />
