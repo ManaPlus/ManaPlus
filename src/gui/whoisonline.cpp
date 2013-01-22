@@ -22,10 +22,8 @@
 
 #include "gui/whoisonline.h"
 
-#include <SDL.h>
-#include <SDL_thread.h>
-#include <vector>
-#include <algorithm>
+#include "guild.h"
+#include "party.h"
 
 #include "gui/socialwindow.h"
 #include "gui/viewport.h"
@@ -48,6 +46,11 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
+
+#include <SDL.h>
+#include <SDL_thread.h>
+#include <vector>
+#include <algorithm>
 
 // Curl should be included after Guichan to avoid Windows redefinitions
 #include <curl/curl.h>
@@ -263,7 +266,7 @@ void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
         {
             case PlayerRelation::NEUTRAL:
             default:
-                player->setText("0");
+                setNeutralColor(player);
                 neutral.push_back(player);
                 break;
 
@@ -411,7 +414,7 @@ void WhoIsOnline::loadWebList()
                 {
                     case PlayerRelation::NEUTRAL:
                     default:
-                        player->setText("0");
+                        setNeutralColor(player);
                         neutral.push_back(player);
                         break;
 
@@ -720,6 +723,60 @@ void WhoIsOnline::optionChanged(const std::string &name)
         mUpdateOnlineList = config.getBoolValue("updateOnlineList");
     else if (name == "groupFriends")
         mGroupFriends = config.getBoolValue("groupFriends");
+}
+
+void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
+{
+    if (!player)
+        return;
+
+    if (actorSpriteManager && player_node)
+    {
+        const std::string &nick = player->getNick();
+        if (player_node->isInParty())
+        {
+            const Party *const party = player_node->getParty();
+            if (party)
+            {
+                if (party->getMember(nick))
+                {
+                    player->setText("P");
+                    return;
+                }
+            }
+        }
+
+        const Being *const being = actorSpriteManager->findBeingByName(nick);
+        if (being)
+        {
+            const Guild *const guild2 = player_node->getGuild();
+            if (guild2)
+            {
+                const Guild *const guild1 = being->getGuild();
+                if (guild1)
+                {
+                    if (guild1->getId() == guild2->getId()
+                        || guild2->getMember(nick))
+                    {
+                        player->setText("U");
+                        return;
+                    }
+                }
+                else if (guild2->isMember(nick))
+                {
+                    player->setText("U");
+                    return;
+                }
+            }
+        }
+        const Guild *const guild3 = Guild::getGuild(1);
+        if (guild3 && guild3->isMember(nick))
+        {
+            player->setText("U");
+            return;
+        }
+    }
+    player->setText("0");
 }
 
 void OnlinePlayer::setText(std::string color)

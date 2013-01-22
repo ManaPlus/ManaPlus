@@ -152,6 +152,8 @@ public:
 
     void readFromWeb();
 
+    void setNeutralColor(OnlinePlayer *const player);
+
 private:
     void download();
 
