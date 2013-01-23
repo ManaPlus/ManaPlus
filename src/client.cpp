@@ -115,6 +115,10 @@
 #include <cerrno>
 #endif
 
+#ifdef ANDROID
+#include <SDL_screenkeyboard.h>
+#endif
+
 #include <sys/stat.h>
 
 #include <iostream>
@@ -685,8 +689,11 @@ void Client::gameInit()
 
     start_time = static_cast<int>(time(nullptr));
 
-    // Initialize PlayerInfo
     PlayerInfo::init();
+
+#ifdef ANDROID
+    updateScreenKeyboard(SDL_GetScreenKeyboardHeight(nullptr));
+#endif
 }
 
 Client::~Client()
@@ -958,6 +965,9 @@ int Client::gameExec()
                         inputManager.handleAssignKey(event, INPUT_JOYSTICK);
                         break;
 
+                    case SDL_MOUSEMOTION:
+                        break;
+
 #ifdef ANDROID
                     case SDL_ACTIVEEVENT:
                         if ((event.active.state & SDL_APPACTIVE)
@@ -967,9 +977,11 @@ int Client::gameExec()
                             logger->log("exit on lost focus");
                         }
                         break;
-#endif
-                    case SDL_MOUSEMOTION:
+
+                    case SDL_KEYBOARDSHOW:
+                        updateScreenKeyboard(event.user.code);
                         break;
+#endif
 
                     default:
 //                        logger->log("unknown event: %d", event.type);
@@ -2881,4 +2893,9 @@ void Client::windowRemoved(const Window *const window)
 {
     if (instance()->mCurrentDialog == window)
         instance()->mCurrentDialog = nullptr;
+}
+
+void Client::updateScreenKeyboard(int height)
+{
+//    logger->log("keyboard height: %d", height);
 }

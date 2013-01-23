@@ -942,20 +942,28 @@ void Game::handleInput()
         if (inputManager.handleEvent(event))
             return;
 
-        if (event.type == SDL_VIDEORESIZE)
+        switch (event.type)
         {
-            // Let the client deal with this one (it'll pass down from there)
-            Client::resize(event.resize.w, event.resize.h);
-        }
-        // Active event
-        else if (event.type == SDL_ACTIVEEVENT)
-        {
-            handleActive(event);
-        }
-        // Quit event
-        else if (event.type == SDL_QUIT)
-        {
-            Client::setState(STATE_EXIT);
+            case SDL_VIDEORESIZE:
+                // Let the client deal with this one (it'll 
+                // pass down from there)
+                Client::resize(event.resize.w, event.resize.h);
+                break;
+            // Active event
+            case  SDL_ACTIVEEVENT:
+                handleActive(event);
+                break;
+            // Quit event
+            case SDL_QUIT:
+                Client::setState(STATE_EXIT);
+                break;
+#ifdef ANDROID
+            case SDL_KEYBOARDSHOW:
+                Client::updateScreenKeyboard(event.user.code);
+                break;
+#endif
+            default:
+                break;
         }
         BLOCK_END("Game::handleInput 2")
     } // End while

@@ -321,6 +321,8 @@ public:
 
     static void windowRemoved(const Window *const window);
 
+    static void updateScreenKeyboard(int height);
+
 private:
     void initRootDir();
 
