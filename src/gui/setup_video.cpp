@@ -218,7 +218,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mEnableResize(config.getBoolValue("enableresize")),
     mNoFrame(config.getBoolValue("noframe")),
     mModeListModel(new ModeListModel),
-    mModeList(new ListBox(widget, mModeListModel)),
+    mModeList(new ListBox(widget, mModeListModel, "")),
     mFsCheckBox(new CheckBox(this, _("Full screen"), mFullScreenEnabled)),
     mCustomCursorCheckBox(new CheckBox(this,
 #ifdef ANDROID

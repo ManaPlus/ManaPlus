@@ -45,7 +45,7 @@ Image *AvatarListBox::offlineIcon = nullptr;
 
 AvatarListBox::AvatarListBox(const Widget2 *const widget,
                              AvatarListModel *const model) :
-    ListBox(widget, model),
+    ListBox(widget, model, "avatarlistbox.xml"),
     mShowGender(config.getBoolValue("showgender")),
     mShowLevel(config.getBoolValue("showlevel")),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT))

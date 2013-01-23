@@ -50,7 +50,7 @@ const std::string Setup_Colors::rawmsg =
 Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     SetupTab(widget),
     gcn::SelectionListener(),
-    mColorBox(new ListBox(this, userPalette)),
+    mColorBox(new ListBox(this, userPalette, "")),
     mScroll(new ScrollArea(mColorBox, true, "setup_colors_background.xml")),
     mPreview(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
     mTextPreview(new TextPreview(this, rawmsg)),

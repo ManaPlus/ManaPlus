@@ -46,7 +46,9 @@ class ListBox : public gcn::ListBox,
         /**
          * Constructor.
          */
-        ListBox(const Widget2 *const widget, gcn::ListModel *const listModel);
+        ListBox(const Widget2 *const widget,
+                gcn::ListModel *const listModel,
+                const std::string &skin);
 
         A_DELETE_COPY(ListBox)
 
@@ -94,8 +96,7 @@ class ListBox : public gcn::ListBox,
         int mOldSelected;
         int mPadding;
         static float mAlpha;
-        static Skin *mSkin;
-        static int mInstances;
+        Skin *mSkin;
 };
 
 #endif

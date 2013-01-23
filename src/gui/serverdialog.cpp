@@ -158,7 +158,7 @@ class ServersListBox final : public ListBox
 public:
     ServersListBox(const Widget2 *const widget,
                    ServersListModel *const model) :
-        ListBox(widget, model),
+        ListBox(widget, model, "serverslistbox.xml"),
         mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
         mNotSupportedColor(getThemeColor(Theme::SERVER_VERSION_NOT_SUPPORTED))
     {

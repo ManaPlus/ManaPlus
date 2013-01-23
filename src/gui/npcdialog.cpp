@@ -71,7 +71,7 @@ NpcDialog::NpcDialog(const int npcId) :
     mTextBox(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
     mScrollArea(new ScrollArea(mTextBox,
         getOptionBool("showtextbackground"), "npc_textbackground.xml")),
-    mItemList(new ExtendedListBox(this, this)),
+    mItemList(new ExtendedListBox(this, this, "extendedlistbox.xml")),
     mListScrollArea(new ScrollArea(mItemList,
         getOptionBool("showlistbackground"), "npc_listbackground.xml")),
     mItemLinkHandler(new ItemLinkHandler),

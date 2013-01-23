@@ -38,11 +38,10 @@
 #include "debug.h"
 
 float ListBox::mAlpha = 1.0;
-Skin *ListBox::mSkin = nullptr;
-int ListBox::mInstances = 0;
 
 ListBox::ListBox(const Widget2 *const widget,
-                 gcn::ListModel *const listModel) :
+                 gcn::ListModel *const listModel,
+                 const std::string &skin) :
     gcn::ListBox(listModel),
     Widget2(widget),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
@@ -53,12 +52,9 @@ ListBox::ListBox(const Widget2 *const widget,
 {
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 
-    if (mInstances == 0)
-    {
-        if (Theme::instance())
-            mSkin = Theme::instance()->load("listbox.xml", "");
-    }
-    mInstances ++;
+    Theme *const theme = Theme::instance();
+    if (theme)
+        mSkin = Theme::instance()->load(skin, "listbox.xml");
 
     if (mSkin)
         mPadding = mSkin->getPadding();
@@ -68,8 +64,7 @@ ListBox::ListBox(const Widget2 *const widget,
 
 ListBox::~ListBox()
 {
-    mInstances --;
-    if (mInstances == 0 && Theme::instance())
+    if (Theme::instance())
         Theme::instance()->unload(mSkin);
 }
 

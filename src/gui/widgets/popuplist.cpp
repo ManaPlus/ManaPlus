@@ -36,8 +36,9 @@ PopupList::PopupList(DropDown *const widget,
     Popup("PopupList", "popuplist.xml"),
     gcn::FocusListener(),
     mListModel(listModel),
-    mListBox(extended ? new ExtendedListBox(widget, listModel, 0) :
-        new ListBox(widget, listModel)),
+    mListBox(extended ? new ExtendedListBox(
+        widget, listModel, "extendedlistbox.xml", 0) :
+        new ListBox(widget, listModel, "popuplistbox.xml")),
     mScrollArea(new ScrollArea(mListBox, false)),
     mDropDown(widget),
     mModal(modal)

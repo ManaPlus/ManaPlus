@@ -44,7 +44,7 @@ float ShopListBox::mAlpha = 1.0;
 
 ShopListBox::ShopListBox(const Widget2 *const widget,
                          gcn::ListModel *const listModel) :
-    ListBox(widget, listModel),
+    ListBox(widget, listModel, "shoplisbox.xml"),
     mPlayerMoney(0),
     mShopItems(nullptr),
     mItemPopup(new ItemPopup),
@@ -60,7 +60,7 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
 ShopListBox::ShopListBox(const Widget2 *const widget,
                          gcn::ListModel *const listModel,
                          ShopItems *const shopListModel) :
-    ListBox(widget, listModel),
+    ListBox(widget, listModel, "shoplisbox.xml"),
     mPlayerMoney(0),
     mShopItems(shopListModel),
     mItemPopup(new ItemPopup),

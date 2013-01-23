@@ -38,8 +38,9 @@
 
 ExtendedListBox::ExtendedListBox(const Widget2 *const widget,
                                  gcn::ListModel *const listModel,
+                                 const std::string &skin,
                                  int rowHeight) :
-    ListBox(widget, listModel),
+    ListBox(widget, listModel, skin),
     mRowHeight(rowHeight),
     mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
     mSpacing(mSkin ? mSkin->getOption("spacing") : 0),

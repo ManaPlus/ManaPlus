@@ -94,7 +94,7 @@ class KeyListModel final : public gcn::ListModel
 Setup_Input::Setup_Input(const Widget2 *const widget) :
     SetupTab(widget),
     mKeyListModel(new KeyListModel),
-    mKeyList(new ListBox(this, mKeyListModel)),
+    mKeyList(new ListBox(this, mKeyListModel, "")),
     mAssignKeyButton(new Button(this, _("Assign"), "assign", this)),
     mUnassignKeyButton(new Button(this, _("Unassign"), "unassign", this)),
     mDefaultButton(new Button(this, _("Default"), "default", this)),
