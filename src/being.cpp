@@ -1734,7 +1734,10 @@ void Being::updateColors()
         {
             mTextColor = &Theme::getThemeColor(Theme::PLAYER);
 
-            mErased = false;
+            if (player_relations.getRelation(mName) != PlayerRelation::ERASED)
+                mErased = false;
+            else
+                mErased = true;
 
             if (mIsGM)
             {
@@ -1776,7 +1779,6 @@ void Being::updateColors()
                      PlayerRelation::ERASED)
             {
                 mNameColor = &userPalette->getColor(UserPalette::ERASED);
-                mErased = true;
             }
             else
             {
