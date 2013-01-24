@@ -326,7 +326,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     // Calculate range of tiles which are on-screen
     const int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1
         + mMaxTileHeight - mTileHeight;
-    const int startX = scrollX / mTileWidth - 1;
+    const int startX = scrollX / mTileWidth - 2;
     const int startY = scrollY / mTileHeight;
     const int endX = (graphics->mWidth + scrollX + mTileWidth - 1)
         / mTileWidth;
