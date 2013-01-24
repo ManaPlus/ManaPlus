@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <skinset name="Default" image="window.png">
     <widget type="Window" xpos="41" ypos="100">
         <part type="left" xpos="0" ypos="0" width="12" height="12" />

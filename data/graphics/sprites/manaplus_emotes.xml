@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <emotes>
     <its:rules xmlns:its="http://www.w3.org/2005/11/its" version="1.0">
         <its:translateRule selector="//emote/sprite/@name" translate="yes"/>

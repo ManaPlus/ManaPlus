@@ -1,10 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <sprite>
-	<imageset name="base" src="graphics/sprites/error.png" width="29" height="9" />
-	
-	<action name="default" imageset="base">
-		<animation direction="default">
-			<frame index="0" />
-		</animation>
-	</action>
+    <imageset name="base" src="graphics/sprites/error.png" width="29" height="9" />
+
+    <action name="default" imageset="base">
+        <animation direction="default">
+            <frame index="0" />
+        </animation>
+    </action>
 </sprite>

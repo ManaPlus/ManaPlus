@@ -1,17 +1,16 @@
-<?xml version="1.0"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <configuration>
- <option name="appName" value="The Mana World"/>
- <option name="appShort" value="mana"/>
- <option name="appIcon" value="icons/manaplus.png"/>
- <option name="loginMusic" value="Magick - Real.ogg"/>
- <option name="onlineServerList" value="http://manasource.org/serverlist.xml"/>
- <option name="defaultServer" value="server.themanaworld.org"/>
- <option name="defaultPort" value="6901"/>
- <option name="defaultServerType" value="evol"/>
- <option name="font" value="fonts/dejavusans.ttf" />
- <option name="boldFont" value="fonts/dejavusans-bold.ttf" />
- <option name="theme" value="wood" />
- <option name="wallpapersPath" value="tmw/images/" />
- <option name="wallpaperFile" value="loginwallpaper_800x600.png" />
+    <option name="appName" value="The Mana World"/>
+    <option name="appShort" value="mana"/>
+    <option name="appIcon" value="icons/manaplus.png"/>
+    <option name="loginMusic" value="Magick - Real.ogg"/>
+    <option name="onlineServerList" value="http://manasource.org/serverlist.xml"/>
+    <option name="defaultServer" value="server.themanaworld.org"/>
+    <option name="defaultPort" value="6901"/>
+    <option name="defaultServerType" value="evol"/>
+    <option name="font" value="fonts/dejavusans.ttf" />
+    <option name="boldFont" value="fonts/dejavusans-bold.ttf" />
+    <option name="theme" value="wood" />
+    <option name="wallpapersPath" value="tmw/images/" />
+    <option name="wallpaperFile" value="loginwallpaper_800x600.png" />
 </configuration>

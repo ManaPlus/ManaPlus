@@ -1,6 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <skinset name="Default" image="window.png">
     <widget type="Window" xpos="260" ypos="0">
-
         <option name="showbuybackground" value="1" />
         <option name="showsellbackground" value="1" />
         <option name="captionoffsetx" value="20" /> 
@@ -26,6 +26,5 @@
 
         <part type="closeImage" xpos="-163" ypos="0" width="22" height="22" />
         <part type="closeImageHighlighted" xpos="-138" ypos="0" width="22" height="22" />
-
     </widget>
 </skinset>

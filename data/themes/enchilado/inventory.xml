@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <skinset name="Default" image="window.png">
     <widget type="Window" xpos="190" ypos="30">
         <option name="showbackground" value="1" />
