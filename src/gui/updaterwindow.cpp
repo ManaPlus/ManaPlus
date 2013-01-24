@@ -296,31 +296,26 @@ void UpdaterWindow::loadNews()
 
     mMemoryBuffer[mDownloadedBytes] = '\0';
     mBrowserBox->clearRows();
-    // Tokenize and add each line separately
-    const char *line = strtok(mMemoryBuffer, "\n");
 
     std::string newsName = mUpdatesDir + "/local/help/news.txt";
     mkdir_r((mUpdatesDir + "/local/help/").c_str());
-    std::ofstream file;
-    file.open(newsName.c_str(), std::ios::out);
-
     bool firstLine(true);
-    while (line)
+    std::ofstream file;
+    std::stringstream ss(mMemoryBuffer);
+    std::string line;
+    file.open(newsName.c_str(), std::ios::out);
+    while (std::getline(ss, line, '\n'))
     {
         if (firstLine)
         {
             firstLine = false;
-            std::string str = line;
-            const size_t i = str.find("##9 Latest client version: ##6");
+            const size_t i = line.find("##9 Latest client version: ##6");
             if (!i)
-            {
-                line = strtok(nullptr, "\n");
                 continue;
-            }
 
             if (file.is_open())
-                file << str << std::endl;
-            mBrowserBox->addRow(str);
+                file << line << std::endl;
+            mBrowserBox->addRow(line);
         }
         else
         {
@@ -328,7 +323,6 @@ void UpdaterWindow::loadNews()
                 file << line << std::endl;
             mBrowserBox->addRow(line);
         }
-        line = strtok(nullptr, "\n");
     }
 
     file.close();
