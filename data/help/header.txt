@@ -1,9 +1,9 @@
- 
+
 ##1               M   A   N   A      P   L   U   S
 ##1               ================================
- 
+
                        <<##2Version:##6%VER%>>
- 
+
 ##2    <<Website: @@http://manaplus.evolonline.org/|http://manaplus.evolonline.org/@@>>
- 
- 
+
+

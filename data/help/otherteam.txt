@@ -1,17 +1,17 @@
  <- @@index|<<Back to Index>>@@
- 
- 
+
+
 <<Here contributors from parent projects>>
- 
+
 ##3-----------------------
 ##3-- <<Mana Contributors>> --
 ##3-----------------------
- 
+
 <<##P This file lists all contributors up to the current release. Check the wiki
 ##P for the currently active development team.>>
- 
+
 ##3== <<Contributors to client/server development>> ==
- 
+
 ##9Aaron Marks  <nymacro gmail.com>
 ##9Alexander Baldeck (Shura)  <alexander archlinux.org>
 ##9Andreas Habel  <mail exceptionfault.de>
@@ -55,9 +55,9 @@
 ##9Thorbjørn Lindeijer  <thorbjorn lindeijer.nl>
 ##9Maximilian Philipps  <Turmfalke2007 web.de>
 ##9Yohann Ferreira  <bertram cegetel.net>
- 
+
 ##3== <<Translators>> ==
- 
+
 ##9Alexander Breidenbroich (German)  <metast gmx.de>
 ##9Blue Sans Douze (French) <bluesansdouze gmail.com>
 ##9Eugenio Favalli (Italian)  <elvenprogrammer gmail.com>
@@ -67,11 +67,11 @@
 ##9Leif Kildelund (Danish)  <gonzo.dark gmail.com>
 ##9Matthias Hartmann (German)  <hartmann.matthias gmail.com>
 ##9Thorbjørn Lindeijer (Dutch)  <thorbjorn lindeijer.nl>
- 
+
 ##3== <<Other contributors>> ==
- 
+
 ##9Jean-Francois Lampron  <sull.kf gmail.com>
 ##9Rodney Dawes  <dobey novell.com>
 ##9Ultramichy
 ##9Zuzanna K. Filutowska  <platyna users.sourceforge.net>
- 
+

@@ -1,30 +1,30 @@
  <- @@index|<<Back to Index>>@@
- 
- 
+
+
 ##3                            === <<SUPPORT>> ===
- 
+
 << If you're having troubles, please first of all read the FAQ. If you
  can't find a solution to your problem, feel free to check our
  Bugs/Support section of the forum:>>
- 
+
 << For Evol Online support:
- 
+
  <<Visit IRC channel:>>
 ##2     #evolonline ##P@##2 irc.freenode.net
- 
+
 << For ManaPlus Online support:
- 
+
  <<Visit IRC channel:>>
 ##2     #manaplus #evolonline ##P@##2 irc.freenode.net
- 
- 
+
+
 << For TMW support:
- 
+
 <<##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@
  or visit IRC channel:>>
 ##2     #themanaworld ##P@##2 irc.freenode.net
- 
+
 << Otherwise see the @@team|Development Team@@ section to have a list of
  developers and how to contact them.>>
- 
+
  <<For other server look servers pages for support.>>
