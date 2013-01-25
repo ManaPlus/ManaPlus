@@ -113,6 +113,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showBeingPopup", false);
     AddDEF("mouseDirectionMove", true);
     AddDEF("showScreenKeyboard", true);
+    AddDEF("fpslimit", 100);
 #else
     AddDEF("screenwidth", defaultScreenWidth);
     AddDEF("screenheight", defaultScreenHeight);
@@ -121,6 +122,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showBeingPopup", true);
     AddDEF("mouseDirectionMove", false);
     AddDEF("showScreenKeyboard", false);
+    AddDEF("fpslimit", 60);
 #endif
     AddDEF("screen", false);
     AddDEF("hwaccel", false);
@@ -130,7 +132,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("remember", false);
     AddDEF("username", "");
     AddDEF("lastCharacter", "");
-    AddDEF("fpslimit", 60);
     AddDEF("altfpslimit", 5);
     AddDEF("updatehost", "");
     AddDEF("screenshotDirectory", "");
