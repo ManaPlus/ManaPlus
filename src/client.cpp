@@ -981,6 +981,9 @@ int Client::gameExec()
                     case SDL_KEYBOARDSHOW:
                         updateScreenKeyboard(event.user.code);
                         break;
+
+                    case SDL_ACCELEROMETER:
+                        break;
 #endif
 
                     default:
@@ -2883,6 +2886,10 @@ void Client::logEvent(const SDL_Event &event)
         case SDL_USEREVENT:
             logger->log("event: SDL_USEREVENT");
             break;
+#ifdef ANDROID
+        case SDL_ACCELEROMETER:
+            logger->log("event: SDL_ACCELEROMETER");
+#endif
         default:
             logger->log("event: other: %d", event.type);
             break;

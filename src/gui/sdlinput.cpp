@@ -164,6 +164,11 @@ void SDLInput::pushInput(const SDL_Event &event)
             break;
         }
 
+#ifdef ANDROID
+        case SDL_ACCELEROMETER:
+            break;
+#endif
+
         case SDL_MOUSEBUTTONDOWN:
             mMouseDown = true;
             mouseInput.setX(event.button.x);

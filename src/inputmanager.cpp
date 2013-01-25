@@ -487,6 +487,12 @@ bool InputManager::handleEvent(const SDL_Event &event)
 //            joystick.handleDeActicateButton(event);
             break;
         }
+#ifdef ANDROID
+        case SDL_ACCELEROMETER:
+        {
+            break;
+        }
+#endif
         default:
             break;
     }
@@ -522,6 +528,12 @@ bool InputManager::handleEvent(const SDL_Event &event)
                     return true;
             }
             break;
+#ifdef ANDROID
+        case SDL_ACCELEROMETER:
+        {
+            break;
+        }
+#endif
         default:
             break;
     }
