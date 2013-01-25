@@ -329,8 +329,8 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     const int startX = scrollX / mTileWidth - 2;
     const int startY = scrollY / mTileHeight;
     const int endX = (graphics->mWidth + scrollX + mTileWidth - 1)
-        / mTileWidth;
-    const int endY = endPixelY / mTileHeight;
+        / mTileWidth + 1;
+    const int endY = endPixelY / mTileHeight + 1;
 
     // Make sure actors are sorted ascending by Y-coordinate
     // so that they overlap correctly

@@ -31,6 +31,7 @@
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/setupitem.h"
 
@@ -41,8 +42,19 @@
 
 #include "debug.h"
 
+static const int texturesListSize = 4;
+
+static const char *const texturesList[] =
+{
+    N_("no"),
+    N_("s3tc"),
+    N_("fxt1"),
+    N_("ARB")
+};
+
 Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
-    SetupTabScroll(widget)
+    SetupTabScroll(widget),
+    mTexturesList(new NamesModel)
 {
     setName(_("Perfomance"));
 
@@ -103,8 +115,10 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     new SetupItemLabel(_("Different options (enable or disable can "
         "improve perfomance)"), "", this);
 
-    new SetupItemCheckBox(_("Enable texture compression (fast OpenGL)"), "",
-        "compresstextures", this, "compresstexturesEvent");
+
+    mTexturesList->fillFromArray(&texturesList[0], texturesListSize);
+    new SetupItemDropDown(_("Enable texture compression (fast OpenGL)"), "",
+        "compresstextures", this, "compresstexturesEvent", mTexturesList, 100);
 
     new SetupItemCheckBox(_("Enable rectangular texture extension (OpenGL)"),
         "", "rectangulartextures", this, "rectangulartexturesEvent");
@@ -116,6 +130,12 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
         "useAtlases", this, "useAtlasesEvent");
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
+}
+
+Setup_Perfomance::~Setup_Perfomance()
+{
+    delete mTexturesList;
+    mTexturesList = nullptr;
 }
 
 void Setup_Perfomance::apply()

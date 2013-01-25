@@ -152,7 +152,6 @@ class GraphicsManager final
         int mSupportDebug;
 #endif
         bool mUseAtlases;
-
 };
 
 extern GraphicsManager graphicsManager;

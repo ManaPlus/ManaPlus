@@ -493,7 +493,8 @@ bool GraphicsManager::supportExtension(const std::string &ext)
 
 void GraphicsManager::updateTextureFormat()
 {
-    if (config.getBoolValue("compresstextures"))
+    const int compressionFormat = config.getIntValue("compresstextures");
+    if (compressionFormat)
     {
         // using extensions if can
         if (supportExtension("GL_ARB_texture_compression"))
@@ -507,8 +508,12 @@ void GraphicsManager::updateTextureFormat()
                 GLint *formats = new GLint[num > 10 ? num : 10];
                 glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
                 for (int f = 0; f < num; f ++)
+                    logger->log(" 0x%x", formats[f]);
+
+                for (int f = 0; f < num; f ++)
                 {
-                    if (formats[f] == GL_COMPRESSED_RGBA_S3TC_DXT5_EXT)
+                    if (formats[f] == GL_COMPRESSED_RGBA_S3TC_DXT5_EXT
+                        && compressionFormat == 1)
                     {
                         delete []formats;
                         OpenGLImageHelper::setInternalTextureType(
@@ -516,7 +521,8 @@ void GraphicsManager::updateTextureFormat()
                         logger->log1("using s3tc texture compression");
                         return;
                     }
-                    else if (formats[f] == GL_COMPRESSED_RGBA_FXT1_3DFX)
+                    else if (formats[f] == GL_COMPRESSED_RGBA_FXT1_3DFX
+                             && compressionFormat == 2)
                     {
                         delete []formats;
                         OpenGLImageHelper::setInternalTextureType(
@@ -525,18 +531,29 @@ void GraphicsManager::updateTextureFormat()
                         return;
                     }
                 }
-                OpenGLImageHelper::setInternalTextureType(
-                    GL_COMPRESSED_RGBA_ARB);
-                logger->log1("using texture compression");
-                return;
+                delete []formats;
+                if (compressionFormat == 3)
+                {
+                    OpenGLImageHelper::setInternalTextureType(
+                        GL_COMPRESSED_RGBA_ARB);
+                    logger->log1("using ARB texture compression");
+                    return;
+                }
             }
             else
             {
-                OpenGLImageHelper::setInternalTextureType(
-                    GL_COMPRESSED_RGBA_ARB);
-                logger->log1("using texture compression");
-                return;
+                if (compressionFormat == 3)
+                {
+                    OpenGLImageHelper::setInternalTextureType(
+                        GL_COMPRESSED_RGBA_ARB);
+                    logger->log1("using ARB texture compression");
+                    return;
+                }
             }
+        }
+        else
+        {
+            logger->log("no correct compression format found");
         }
     }
 

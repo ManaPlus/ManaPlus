@@ -27,8 +27,9 @@
 
 #include <guichan/actionlistener.hpp>
 
-class IntTextField;
 class EditDialog;
+class IntTextField;
+class NamesModel;
 
 class Setup_Perfomance final : public SetupTabScroll
 {
@@ -37,7 +38,12 @@ class Setup_Perfomance final : public SetupTabScroll
 
         A_DELETE_COPY(Setup_Perfomance)
 
+        ~Setup_Perfomance();
+
         void apply();
+
+    private:
+        NamesModel *mTexturesList;
 };
 
 #endif
