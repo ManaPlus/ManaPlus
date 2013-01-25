@@ -46,9 +46,6 @@ static std::string defaultThemePath;
 std::string Theme::mThemePath;
 std::string Theme::mThemeName;
 Theme *Theme::mInstance = nullptr;
-#ifdef ANDROID
-SDL_Rect *Theme::mKeybRect = nullptr;
-#endif
 
 // Set the theme path...
 static void initDefaultThemePath()
@@ -652,9 +649,6 @@ void Theme::fillSoundsList(StringVect &list)
 void Theme::selectSkin()
 {
     prepareThemePath();
-#ifdef ANDROID
-    mKeybRect = SDL_GetScreenKeyboardBlock();
-#endif
 }
 
 void Theme::prepareThemePath()
