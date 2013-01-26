@@ -583,7 +583,7 @@ void SkillModel::updateVisibilities()
 
     FOR_EACH (SkillList::const_iterator, it, mSkills)
     {
-        if ((*it)->visible)
+        if ((*it) && (*it)->visible)
             mVisibleSkills.push_back((*it));
     }
 }
