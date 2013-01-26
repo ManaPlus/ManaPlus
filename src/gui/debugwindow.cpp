@@ -412,16 +412,8 @@ NetDebugTab::NetDebugTab(const Widget2 *const widget) :
 
 void NetDebugTab::logic()
 {
-    if (player_node && player_node->getPingTime() != 0)
-    {
-        mPingLabel->setCaption(strprintf(_("Ping: %s ms"),
-            toString(static_cast<int>(player_node->getPingTime())).c_str()));
-    }
-    else
-    {
-        mPingLabel->setCaption(strprintf(_("Ping: %s ms"), "?"));
-    }
-
+    mPingLabel->setCaption(strprintf(_("Ping: %s ms"),
+        player_node->getPingTime().c_str()));
     mInPackets1Label->setCaption(strprintf(_("In: %d bytes/s"),
         PacketCounters::getInBytes()));
     mOutPackets1Label->setCaption(strprintf(_("Out: %d bytes/s"),

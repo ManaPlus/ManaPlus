@@ -286,7 +286,7 @@ class LocalPlayer final : public Being,
         int getDisableGameModifiers() const A_WARN_UNUSED
         { return mDisableGameModifiers; }
 
-        int getPingTime() const A_WARN_UNUSED;
+        std::string getPingTime() const A_WARN_UNUSED;
 
         void tryPingRequest();
 

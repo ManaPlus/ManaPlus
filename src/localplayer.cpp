@@ -73,7 +73,8 @@
 
 #include "debug.h"
 
-const short awayLimitTimer = 60;
+static const short awayLimitTimer = 60;
+static const int MAX_TICK_VALUE = 10000;
 
 typedef std::map<int, Guild*>::const_iterator GuildMapCIter;
 
@@ -3452,24 +3453,32 @@ void LocalPlayer::pingRequest()
     Net::getBeingHandler()->requestNameById(getId());
 }
 
-int LocalPlayer::getPingTime() const
+std::string LocalPlayer::getPingTime() const
 {
     int time = 0;
+    std::string str;
     if (!mWaitPing)
     {
-        time = mPingTime;
+        if (!mPingTime)
+            str = "?";
+        else
+            str = toString(mPingTime);
     }
     else
     {
         time = tick_time;
         if (time > mPingSendTick)
-        {
             time -= mPingSendTick;
-            if (time <= mPingTime)
-                time = mPingTime;
-        }
+        else
+            time += MAX_TICK_VALUE - mPingSendTick;
+        if (time <= mPingTime)
+            time = mPingTime;
+        if (mPingTime != time)
+            str = strprintf("%d (%d)", mPingTime, time);
+        else
+            str = toString(time);
     }
-    return time;
+    return str;
 }
 
 void LocalPlayer::pingResponse()
@@ -3477,14 +3486,15 @@ void LocalPlayer::pingResponse()
     if (mWaitPing == true && mPingSendTick > 0)
     {
         mWaitPing = false;
-        if (tick_time < mPingSendTick)
+        const int time = tick_time;
+        if (time < mPingSendTick)
         {
             mPingSendTick = 0;
             mPingTime = 0;
         }
         else
         {
-            mPingTime = (tick_time - mPingSendTick) * 10;
+            mPingTime = (time - mPingSendTick) * 10;
         }
     }
 }
