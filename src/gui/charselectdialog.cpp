@@ -565,6 +565,9 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
     mButton(new Button(this, "wwwwwwwww", "go", charSelectDialog)),
     mDelete(new Button(this, _("Delete"), "delete", charSelectDialog))
 {
+    mPlayerBox->setActionEventId("use");
+    mPlayerBox->addActionListener(charSelectDialog);
+
     LayoutHelper h(this);
     ContainerPlacer placer = h.getPlacer(0, 0);
 

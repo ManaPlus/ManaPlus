@@ -80,6 +80,8 @@ class PlayerBox final : public Widget2,
         Being *getBeing() A_WARN_UNUSED
         { return mBeing; }
 
+        void mouseReleased(gcn::MouseEvent& event);
+
     private:
         Being *mBeing; /**< The character used for display */
 

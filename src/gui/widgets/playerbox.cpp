@@ -133,3 +133,13 @@ void PlayerBox::drawFrame(gcn::Graphics *graphics)
     }
     BLOCK_END("PlayerBox::drawFrame")
 }
+
+void PlayerBox::mouseReleased(gcn::MouseEvent& event)
+{
+    ScrollArea::mouseReleased(event);
+    if (event.getButton() == gcn::MouseEvent::LEFT)
+    {
+        if (!mActionEventId.empty())
+            distributeActionEvent();
+    }
+}
