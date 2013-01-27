@@ -24,6 +24,7 @@ SET (FILES
     equipment.xml
     equipment_background.xml
     equipmentbox.png
+    extendedlistbox.xml
     help.xml
     incomplete_icon.xml
     info.xml
@@ -56,7 +57,10 @@ SET (FILES
     scrollbuttons_pressed.xml
     sell.xml
     server.xml
+    serverslistbox.xml
     shop.xml
+    shoplistbox.xml
+    skilllistbox.xml
     slider.xml
     slider_highlighted.xml
     social.xml
