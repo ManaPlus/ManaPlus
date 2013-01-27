@@ -114,6 +114,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("mouseDirectionMove", true);
     AddDEF("showScreenKeyboard", true);
     AddDEF("fpslimit", 100);
+    AddDEF("theme", "jewelry");
 #else
     AddDEF("screenwidth", defaultScreenWidth);
     AddDEF("screenheight", defaultScreenHeight);
@@ -123,6 +124,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("mouseDirectionMove", false);
     AddDEF("showScreenKeyboard", false);
     AddDEF("fpslimit", 60);
+    AddDEF("theme", "");
 #endif
     AddDEF("screen", false);
     AddDEF("hwaccel", false);
@@ -160,7 +162,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("ScrollCenterOffsetX", 0);
     AddDEF("ScrollCenterOffsetY", 0);
     AddDEF("onlineServerList", "");
-    AddDEF("theme", "");
     AddDEF("enableMumble", false);
     AddDEF("playBattleSound", true);
     AddDEF("playGuiSound", true);
