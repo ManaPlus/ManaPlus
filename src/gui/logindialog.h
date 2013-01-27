@@ -82,6 +82,8 @@ class LoginDialog final : public Window, public gcn::ActionListener,
          */
         bool canSubmit() const;
 
+        void prepareUpdate();
+
         LoginData *mLoginData;
 
         TextField *mUserField;

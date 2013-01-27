@@ -249,60 +249,8 @@ void LoginDialog::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "login" && canSubmit())
     {
-        mLoginData->username = mUserField->getText();
-        mLoginData->password = mPassField->getText();
-        mLoginData->remember = mKeepCheck->isSelected();
-        int updateType = mUpdateTypeDropDown->getSelected();
-
-        if (mCustomUpdateHost->isSelected()
-            && mUpdateHostText->getText().empty())
-        {
-            updateType |= LoginData::Upd_Custom;
-            serverConfig.setValue("customUpdateHost",
-                mUpdateHostText->getText());
-
-            if (checkPath(mUpdateHostText->getText()))
-            {
-                mLoginData->updateHost = mUpdateHostText->getText();
-                *mUpdateHost = mUpdateHostText->getText();
-            }
-            else
-            {
-                mLoginData->updateHost.clear();
-                (*mUpdateHost).clear();
-            }
-        }
-        else if (mUpdateHostDropDown)
-        {
-            const std::string str = mUpdateHostDropDown->getSelectedString();
-            serverConfig.setValue("updateHost2", str);
-            if (!str.empty() && checkPath(str))
-            {
-                mLoginData->updateHost = str;
-                *mUpdateHost = str;
-            }
-            else
-            {
-                mLoginData->updateHost.clear();
-                (*mUpdateHost).clear();
-            }
-        }
-
-        mLoginData->updateType = updateType;
-        serverConfig.setValue("updateType", updateType);
-
+        prepareUpdate();
         mLoginData->registerLogin = false;
-
-        mRegisterButton->setEnabled(false);
-        mServerButton->setEnabled(false);
-        mLoginButton->setEnabled(false);
-
-        LoginDialog::savedPassword = mPassField->getText();
-        if (mLoginData->remember)
-            LoginDialog::savedPasswordKey = mServerName;
-        else
-            LoginDialog::savedPasswordKey = "-";
-
         Client::setState(STATE_LOGIN_ATTEMPT);
     }
     else if (event.getId() == "server")
@@ -313,8 +261,7 @@ void LoginDialog::action(const gcn::ActionEvent &event)
     {
         if (Net::getLoginHandler()->isRegistrationEnabled())
         {
-            mLoginData->username = mUserField->getText();
-            mLoginData->password = mPassField->getText();
+            prepareUpdate();
             Client::setState(STATE_REGISTER_PREP);
         }
         else if (!mLoginData->registerUrl.empty())
@@ -367,4 +314,59 @@ bool LoginDialog::canSubmit() const
     return !mUserField->getText().empty() &&
         !mPassField->getText().empty() &&
         Client::getState() == STATE_LOGIN;
+}
+
+void LoginDialog::prepareUpdate()
+{
+    mLoginData->username = mUserField->getText();
+    mLoginData->password = mPassField->getText();
+    mLoginData->remember = mKeepCheck->isSelected();
+    int updateType = mUpdateTypeDropDown->getSelected();
+
+    if (mCustomUpdateHost->isSelected()
+        && mUpdateHostText->getText().empty())
+    {
+        updateType |= LoginData::Upd_Custom;
+        serverConfig.setValue("customUpdateHost",
+            mUpdateHostText->getText());
+
+        if (checkPath(mUpdateHostText->getText()))
+        {
+            mLoginData->updateHost = mUpdateHostText->getText();
+            *mUpdateHost = mUpdateHostText->getText();
+        }
+        else
+        {
+            mLoginData->updateHost.clear();
+            (*mUpdateHost).clear();
+        }
+    }
+    else if (mUpdateHostDropDown)
+    {
+        const std::string str = mUpdateHostDropDown->getSelectedString();
+        serverConfig.setValue("updateHost2", str);
+        if (!str.empty() && checkPath(str))
+        {
+            mLoginData->updateHost = str;
+            *mUpdateHost = str;
+        }
+        else
+        {
+            mLoginData->updateHost.clear();
+            (*mUpdateHost).clear();
+        }
+    }
+
+    mLoginData->updateType = updateType;
+    serverConfig.setValue("updateType", updateType);
+
+    mRegisterButton->setEnabled(false);
+    mServerButton->setEnabled(false);
+    mLoginButton->setEnabled(false);
+
+    LoginDialog::savedPassword = mPassField->getText();
+    if (mLoginData->remember)
+        LoginDialog::savedPasswordKey = mServerName;
+    else
+        LoginDialog::savedPasswordKey = "-";
 }
