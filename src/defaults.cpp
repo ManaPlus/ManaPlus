@@ -304,6 +304,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("screenActionButton2", Input::KEY_PICKUP);
     AddDEF("screenActionButton3", Input::KEY_PATHFIND);
     AddDEF("screenButtonsFormat", 0);
+    AddDEF("autoresizeminimaps", false);
     return configData;
 }
 

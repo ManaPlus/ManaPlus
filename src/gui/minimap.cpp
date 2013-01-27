@@ -52,10 +52,14 @@ Minimap::Minimap():
     mCustomMapImage(false),
     mMapOriginX(0),
     mMapOriginY(0),
-    mTextPopup(new TextPopup)
+    mTextPopup(new TextPopup),
+    mAutoResize(config.getBoolValue("autoresizeminimaps"))
 {
     setWindowName("Minimap");
     mShow = config.getValueBool(getWindowName() + "Show", true);
+
+    config.addListener("autoresizeminimaps", this);
+
     setDefaultSize(5, 25, 100, 100);
     // set this to false as the minimap window size is changed
     //depending on the map size
@@ -76,6 +80,7 @@ Minimap::Minimap():
 Minimap::~Minimap()
 {
     config.setValue(getWindowName() + "Show", mShow);
+    config.removeListeners(this);
 
     if (mMapImage)
     {
@@ -174,12 +179,11 @@ void Minimap::setMap(const Map *const map)
 
     if (mMapImage && map)
     {
-        const int offsetX = 2 * getPadding();
-        const int offsetY = getTitleBarHeight() + getPadding();
-        const int mapWidth = mMapImage->mBounds.w < 100 ?
-                             mMapImage->mBounds.w + offsetX : 100;
-        const int mapHeight = mMapImage->mBounds.h < 100 ?
-                              mMapImage->mBounds.h + offsetY : 100;
+        const int width = mMapImage->mBounds.w + 2 * getPadding();
+        const int height = mMapImage->mBounds.h
+            + getTitleBarHeight() + getPadding();
+        const int mapWidth = mMapImage->mBounds.w < 100 ? width : 100;
+        const int mapHeight = mMapImage->mBounds.h < 100 ? height : 100;
 
         setMinWidth(mapWidth);
         setMinHeight(mapHeight);
@@ -189,8 +193,13 @@ void Minimap::setMap(const Map *const map)
         mHeightProportion = static_cast<float>(
                 mMapImage->mBounds.h) / static_cast<float>(map->getHeight());
 
-        setMaxWidth(mMapImage->mBounds.w + offsetX);
-        setMaxHeight(mMapImage->mBounds.h + offsetY);
+        setMaxWidth(width);
+        setMaxHeight(height);
+        if (mAutoResize)
+        {
+            setWidth(width);
+            setHeight(height);
+        }
 
         setDefaultSize(getX(), getY(), getWidth(), getHeight());
         resetToDefaultSize();
@@ -454,4 +463,10 @@ void Minimap::screenToMap(int &x, int &y)
     const gcn::Rectangle a = getChildrenArea();
     x = (x - a.x - mMapOriginX + mWidthProportion) / mWidthProportion;
     y = (y - a.y - mMapOriginY + mHeightProportion) / mHeightProportion;
+}
+
+void Minimap::optionChanged(const std::string &name)
+{
+    if (name == "autoresizeminimaps")
+        mAutoResize = config.getBoolValue("autoresizeminimaps");
 }

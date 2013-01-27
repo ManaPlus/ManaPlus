@@ -38,7 +38,7 @@ class TextPopup;
  *
  * \ingroup Interface
  */
-class Minimap final : public Window
+class Minimap final : public Window, public ConfigListener
 {
     public:
         Minimap();
@@ -70,6 +70,8 @@ class Minimap final : public Window
 
         void screenToMap(int &x, int &y);
 
+        void optionChanged(const std::string &name);
+
     private:
         Image *mMapImage;
         float mWidthProportion;
@@ -79,6 +81,7 @@ class Minimap final : public Window
         int mMapOriginX;
         int mMapOriginY;
         TextPopup *mTextPopup;
+        bool mAutoResize;
 };
 
 extern Minimap *minimap;

@@ -120,6 +120,9 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemIntTextField(_("Scroll radius"), "", "ScrollRadius",
         this, "ScrollRadiusEvent", 0, 32);
 
+    new SetupItemCheckBox(_("Auto resize minimaps"), "", "autoresizeminimaps",
+        this, "autoresizeminimapsEvent");
+
 
     new SetupItemLabel(_("Moving"), "", this);
 
