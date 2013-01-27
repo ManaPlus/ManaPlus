@@ -75,6 +75,8 @@ class MapReader final
          */
         static Tileset *readTileset(XmlNodePtr node, const std::string &path,
                                     Map *const map) A_WARN_UNUSED;
+
+        static void updateMusic(Map *const map);
 };
 
 #endif

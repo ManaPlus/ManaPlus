@@ -244,6 +244,8 @@ Map *MapReader::readMap(const std::string &filename,
         map->setProperty("_realfilename", filename);
     }
 
+    if (map->getProperty("music").empty())
+        updateMusic(map);
     return map;
 }
 
@@ -274,10 +276,11 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
 
     Map *const map = new Map(w, h, tilew, tileh);
 
+    const std::string fileName = path.substr(path.rfind("/") + 1);
+    map->setProperty("shortName", fileName);
 #ifdef USE_OPENGL
     if (graphicsManager.getUseAtlases())
     {
-        const std::string fileName = path.substr(path.rfind("/") + 1);
         const MapDB::MapInfo *const info = MapDB::getMapAtlas(fileName);
         if (info)
         {
@@ -843,6 +846,7 @@ Map *MapReader::createEmptyMap(const std::string &filename,
     Map *const map = new Map(300, 300, 32, 32);
     map->setProperty("_filename", realFilename);
     map->setProperty("_realfilename", filename);
+    updateMusic(map);
     map->setCustom(true);
     MapLayer *layer = new MapLayer(0, 0, 300, 300, false);
     map->addLayer(layer);
@@ -850,4 +854,14 @@ Map *MapReader::createEmptyMap(const std::string &filename,
     map->addLayer(layer);
 
     return map;
+}
+
+void MapReader::updateMusic(Map *const map)
+{
+    std::string name = map->getProperty("shortName");
+    const size_t p = name.rfind(".");
+    if (p != std::string::npos)
+        name = name.substr(0, p);
+    name += ".ogg";
+    map->setProperty("music", name);
 }
