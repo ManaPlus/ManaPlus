@@ -44,7 +44,7 @@
 #include "debug.h"
 
 static const int minTip = 1;
-static const int maxTip = 16;
+static const int maxTip = 18;
 
 DidYouKnowWindow::DidYouKnowWindow():
     Window(_("Did You Know?"), false, nullptr, "didyouknow.xml"),
@@ -112,7 +112,13 @@ void DidYouKnowWindow::loadData(int num)
 {
     mBrowserBox->clearRows();
     if (!num)
-        num = config.getIntValue("currentTip") + 1;
+    {
+        const int curTip = config.getIntValue("currentTip");
+        if (curTip == 1)
+            num = maxTip;
+        else
+            num = curTip + 1;
+    }
 
     if (num < minTip || num > maxTip)
         num = minTip;

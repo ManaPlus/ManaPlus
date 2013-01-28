@@ -18,7 +18,10 @@ helptips_DATA =				\
 	12.txt			\
 	13.txt			\
 	14.txt			\
-	15.txt
+	15.txt			\
+	16.txt			\
+	17.txt			\
+	18.txt
 
 EXTRA_DIST =			\
 	$(helptips_DATA) \
