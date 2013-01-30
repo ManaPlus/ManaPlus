@@ -83,6 +83,7 @@ Setup::Setup():
     for (const char ** curBtn = buttonNames; *curBtn; ++ curBtn)
     {
         Button *const btn = new Button(this, gettext(*curBtn), *curBtn, this);
+        mButtons.push_back(btn);
         x -= btn->getWidth() + buttonPadding;
         btn->setPosition(x, height - btn->getHeight() - buttonPadding);
         add(btn);
@@ -139,6 +140,7 @@ Setup::Setup():
 Setup::~Setup()
 {
     delete_all(mTabs);
+    mButtons.clear();
 }
 
 void Setup::action(const gcn::ActionEvent &event)
@@ -211,6 +213,24 @@ void Setup::setVisible(bool visible)
 {
     touchManager.setTempHide(visible);
     Window::setVisible(visible);
+}
+
+void Setup::widgetResized(const gcn::Event &event)
+{
+    Window::widgetResized(event);
+
+    const gcn::Rectangle area = getChildrenArea();
+    int x = area.width;
+    const int height = area.height;
+    const int width = area.width;
+    const int buttonPadding = getOption("buttonPadding", 5);
+    mPanel->setDimension(gcn::Rectangle(5, 5, width - 10, height - 40));
+    FOR_EACH (std::vector<Button*>::iterator, it, mButtons)
+    {
+        Button *const btn = *it;
+        x -= btn->getWidth() + buttonPadding;
+        btn->setPosition(x, height - btn->getHeight() - buttonPadding);
+    }
 }
 
 Setup *setupWindow;

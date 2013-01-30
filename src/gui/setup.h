@@ -78,9 +78,12 @@ class Setup final : public Window, public gcn::ActionListener
 
         void setVisible(bool visible) override;
 
+        void widgetResized(const gcn::Event &event) override;
+
     private:
         std::list<SetupTab*> mTabs;
         std::list<Window*> mWindowsToReset;
+        std::vector<Button*> mButtons;
         Button *mResetWindows;
         TabbedArea *mPanel;
 };
