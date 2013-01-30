@@ -48,7 +48,8 @@ AvatarListBox::AvatarListBox(const Widget2 *const widget,
     ListBox(widget, model, "avatarlistbox.xml"),
     mShowGender(config.getBoolValue("showgender")),
     mShowLevel(config.getBoolValue("showlevel")),
-    mHighlightColor(getThemeColor(Theme::HIGHLIGHT))
+    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
+    mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0)
 {
     instances++;
 
@@ -127,7 +128,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             const Image *const icon = a->getOnline()
                 ? onlineIcon : offlineIcon;
             if (icon)
-                graphics->drawImage(icon, mPadding, y + mPadding);
+                graphics->drawImage(icon, mImagePadding, y + mPadding);
         }
 
         std::string text;
@@ -268,20 +269,20 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
         {
             if (a->getType() == MapItem::SEPARATOR)
             {
-                boldFont->drawString(graphics, text, mPadding, y + mPadding);
+                boldFont->drawString(graphics, text, mImagePadding + mPadding, y + mPadding);
             }
             else
             {
                 boldFont->drawString(graphics, text,
-                    15 + mPadding, y + mPadding);
+                    15 + mImagePadding + mPadding, y + mPadding);
             }
         }
         else
         {
             if (a->getType() == MapItem::SEPARATOR)
-                font->drawString(graphics, text, mPadding, y + mPadding);
+                font->drawString(graphics, text, mImagePadding + mPadding, y + mPadding);
             else
-                font->drawString(graphics, text, 15 + mPadding, y + mPadding);
+                font->drawString(graphics, text, 15 + mImagePadding + mPadding, y + mPadding);
         }
     }
 

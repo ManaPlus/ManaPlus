@@ -64,6 +64,7 @@ public:
 private:
     bool mShowGender;
     bool mShowLevel;
+    int mImagePadding;
     gcn::Color mHighlightColor;
 
     static int instances;
