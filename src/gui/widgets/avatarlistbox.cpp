@@ -48,8 +48,8 @@ AvatarListBox::AvatarListBox(const Widget2 *const widget,
     ListBox(widget, model, "avatarlistbox.xml"),
     mShowGender(config.getBoolValue("showgender")),
     mShowLevel(config.getBoolValue("showlevel")),
-    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
-    mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0)
+    mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
+    mHighlightColor(getThemeColor(Theme::HIGHLIGHT))
 {
     instances++;
 
@@ -269,7 +269,8 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
         {
             if (a->getType() == MapItem::SEPARATOR)
             {
-                boldFont->drawString(graphics, text, mImagePadding + mPadding, y + mPadding);
+                boldFont->drawString(graphics, text,
+                    mImagePadding + mPadding, y + mPadding);
             }
             else
             {
@@ -280,9 +281,15 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
         else
         {
             if (a->getType() == MapItem::SEPARATOR)
-                font->drawString(graphics, text, mImagePadding + mPadding, y + mPadding);
+            {
+                font->drawString(graphics, text, mImagePadding + mPadding,
+                    y + mPadding);
+            }
             else
-                font->drawString(graphics, text, 15 + mImagePadding + mPadding, y + mPadding);
+            {
+                font->drawString(graphics, text, 15 + mImagePadding + mPadding,
+                    y + mPadding);
+            }
         }
     }
 
