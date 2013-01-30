@@ -1,4 +1,5 @@
 SET (FILES
+    avatarlistbox.xml
     beingpopup.xml
     browserbox.xml
     button.xml
