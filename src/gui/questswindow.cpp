@@ -117,8 +117,8 @@ QuestsWindow::QuestsWindow() :
     setSaveVisible(true);
 
     setDefaultSize(400, 350, ImageRect::RIGHT);
-    setMinWidth(400);
-    setMinHeight(350);
+    setMinWidth(310);
+    setMinHeight(220);
 
     mQuestsListBox->setActionEventId("select");
     mQuestsListBox->addActionListener(this);

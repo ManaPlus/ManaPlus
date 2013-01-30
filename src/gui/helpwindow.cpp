@@ -50,7 +50,7 @@ HelpWindow::HelpWindow():
     mScrollArea(new ScrollArea(mBrowserBox, true, "help_background.xml"))
 {
     setMinWidth(300);
-    setMinHeight(250);
+    setMinHeight(220);
     setContentSize(455, 350);
     setWindowName("Help");
     setResizable(true);

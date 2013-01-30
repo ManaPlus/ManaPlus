@@ -139,7 +139,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     setStickyButtonLock(true);
 
     setDefaultSize(387, 307, ImageRect::CENTER);
-    setMinWidth(316);
+    setMinWidth(310);
     setMinHeight(179);
     addKeyListener(this);
 

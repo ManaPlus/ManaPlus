@@ -87,7 +87,7 @@ OutfitWindow::OutfitWindow():
 
     setDefaultSize(250, 400, 150, 290);
     setMinWidth(145);
-    setMinHeight(283);
+    setMinHeight(220);
 
     mBorderColor = getThemeColor(Theme::BORDER, 64);
     mBackgroundColor = getThemeColor(Theme::BACKGROUND, 32);

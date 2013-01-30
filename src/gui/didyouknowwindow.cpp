@@ -58,7 +58,7 @@ DidYouKnowWindow::DidYouKnowWindow():
         config.getBoolValue("showDidYouKnow"), this, "openagain"))
 {
     setMinWidth(300);
-    setMinHeight(250);
+    setMinHeight(220);
     setContentSize(455, 350);
     setWindowName("DidYouKnow");
     setResizable(true);

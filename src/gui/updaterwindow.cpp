@@ -167,8 +167,8 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     setWindowName("UpdaterWindow");
     setResizable(true);
     setDefaultSize(450, 400, ImageRect::CENTER);
-    setMinWidth(320);
-    setMinHeight(240);
+    setMinWidth(310);
+    setMinHeight(220);
 
     mProgressBar->setSmoothProgress(false);
     mBrowserBox->setOpaque(false);

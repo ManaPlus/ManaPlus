@@ -308,8 +308,8 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     getLayout().reflow(width, height);
     setContentSize(width, height);
 
-    setMinWidth(getWidth());
-    setMinHeight(getHeight());
+    setMinWidth(310);
+    setMinHeight(220);
     setDefaultSize(getWidth(), getHeight(), ImageRect::CENTER);
 
     setResizable(true);

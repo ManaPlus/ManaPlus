@@ -184,9 +184,15 @@ void Minimap::setMap(const Map *const map)
             + getTitleBarHeight() + getPadding();
         const int mapWidth = mMapImage->mBounds.w < 100 ? width : 100;
         const int mapHeight = mMapImage->mBounds.h < 100 ? height : 100;
+        int minWidth = mapWidth;
+        int minHeight = mapHeight;
+        if (mapWidth > 310)
+            minWidth = 310;
+        if (mapHeight > 220)
+            minHeight = 220;
 
-        setMinWidth(mapWidth);
-        setMinHeight(mapHeight);
+        setMinWidth(minWidth);
+        setMinHeight(minHeight);
 
         mWidthProportion = static_cast<float>(
                 mMapImage->mBounds.w) / static_cast<float>(map->getWidth());

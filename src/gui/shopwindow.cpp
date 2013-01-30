@@ -112,7 +112,7 @@ ShopWindow::ShopWindow():
     setCloseButton(true);
     setStickyButtonLock(true);
     setMinWidth(260);
-    setMinHeight(230);
+    setMinHeight(220);
     setDefaultSize(380, 300, ImageRect::CENTER);
 
     mAnnounceCounter[BUY] = 0;

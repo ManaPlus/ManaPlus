@@ -73,7 +73,7 @@ void SellDialog::init()
     setCloseButton(true);
     setStickyButtonLock(true);
     setMinWidth(260);
-    setMinHeight(230);
+    setMinHeight(220);
     setDefaultSize(260, 230, ImageRect::CENTER);
 
     // Create a ShopItems instance, that is aware of duplicate entries.
