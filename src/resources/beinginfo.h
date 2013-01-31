@@ -187,6 +187,12 @@ class BeingInfo final
         void setDeadSortOffsetY(const int n)
         { mDeadSortOffsetY = n; }
 
+        uint16_t getAvatarId() const A_WARN_UNUSED
+        { return mAvatarId; }
+
+        void setAvatarId(const uint16_t id)
+        { mAvatarId = id; }
+
         static void init();
 
         static void clear();
@@ -207,6 +213,7 @@ class BeingInfo final
         bool mTargetSelection;
         int mSortOffsetY;
         int mDeadSortOffsetY;
+        uint16_t mAvatarId;
 };
 
 typedef std::map<int, BeingInfo*> BeingInfos;

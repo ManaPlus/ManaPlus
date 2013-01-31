@@ -22,6 +22,7 @@
 
 #include "gui/npcdialog.h"
 
+#include "actorspritemanager.h"
 #include "being.h"
 #include "configuration.h"
 #include "client.h"
@@ -42,6 +43,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textbox.h"
 
+#include "resources/npcdb.h"
 #include "resources/resourcemanager.h"
 
 #include "net/net.h"
@@ -165,6 +167,13 @@ NpcDialog::NpcDialog(const int npcId) :
     requestFocus();
     enableVisibleSound(true);
     sound.playGuiSound(SOUND_SHOW_WINDOW);
+
+    if (actorSpriteManager)
+    {
+        const Being *const being = actorSpriteManager->findBeing(mNpcId);
+        if (being)
+            showAvatar(NPCDB::getAvatarFor(being->getSubType()));
+    }
 
     config.addListener("logNpcInGui", this);
 }

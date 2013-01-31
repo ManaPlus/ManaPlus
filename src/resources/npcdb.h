@@ -23,6 +23,8 @@
 #ifndef NPC_DB_H
 #define NPC_DB_H
 
+#include <stdint.h>
+
 #include "localconsts.h"
 
 class BeingInfo;
@@ -37,6 +39,8 @@ namespace NPCDB
     void unload();
 
     BeingInfo *get(const int id) A_WARN_UNUSED;
+
+    uint16_t getAvatarFor(const int id);
 }
 
 #endif

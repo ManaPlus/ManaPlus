@@ -95,6 +95,8 @@ void NPCDB::load()
         currentInfo->setDeadSortOffsetY(XML::getProperty(npcNode,
             "deadSortOffsetY", 31));
 
+        currentInfo->setAvatarId(XML::getProperty(npcNode, "avatar", 0));
+
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, npcNode)
         {
@@ -147,4 +149,12 @@ BeingInfo *NPCDB::get(const int id)
     {
         return i->second;
     }
+}
+
+uint16_t NPCDB::getAvatarFor(const int id)
+{
+    BeingInfo *const info = get(id);
+    if (!info)
+        return 0;
+    return info->getAvatarId();
 }
