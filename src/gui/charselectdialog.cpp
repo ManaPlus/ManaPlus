@@ -165,20 +165,24 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     placer(2, 0, mLastLoginLabel);
     placer(0, 1, mSwitchLoginButton);
 
+    int n = 1;
     if (optionalActions & Net::LoginHandler::Unregister)
     {
         mUnregisterButton = new Button(this, _("Unregister"),
                                        "unregister", this);
-        placer(3, 1, mUnregisterButton);
+        placer(n, 1, mUnregisterButton);
+        n ++;
     }
 
-    placer(0, 2, mChangePasswordButton);
+    placer(n, 1, mChangePasswordButton);
+    n ++;
 
     if (optionalActions & Net::LoginHandler::ChangeEmail)
     {
         mChangeEmailButton = new Button(this, _("Change Email"),
                                         "change_email", this);
-        placer(3, 2, mChangeEmailButton);
+        placer(n, 1, mChangeEmailButton);
+        n ++;
     }
 
     placer = getPlacer(0, 1);
