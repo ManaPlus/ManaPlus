@@ -151,7 +151,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     invenScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     const int size = config.getIntValue("fontSize");
-    mFilter = new TabStrip(this, "filter_" + getWindowName(), size + 8);
+    mFilter = new TabStrip(this, "filter_" + getWindowName(), size + 16);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
 
