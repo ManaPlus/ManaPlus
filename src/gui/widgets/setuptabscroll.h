@@ -60,6 +60,8 @@ class SetupTabScroll : public SetupTab
         int getPreferredFirstItemSize() A_WARN_UNUSED
         { return mPreferredFirstItemSize; }
 
+        void widgetResized(const gcn::Event &event) override;
+
     protected:
         VertContainer *mContainer;
         ScrollArea *mScroll;

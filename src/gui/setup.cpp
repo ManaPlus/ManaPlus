@@ -55,7 +55,8 @@ Setup::Setup():
     Window(_("Setup"), false, nullptr, "setup.xml"),
     gcn::ActionListener(),
     mResetWindows(nullptr),
-    mPanel(new TabbedArea(this))
+    mPanel(new TabbedArea(this)),
+    mVersion(new Label(this, FULL_VERSION))
 {
     setCloseButton(true);
     setResizable(true);
@@ -68,7 +69,8 @@ Setup::Setup():
         width += 100;
 
     setContentSize(width, height);
-    //setMaxHeight(height);
+    setMinWidth(310);
+    setMinHeight(210);
 
     static const char *buttonNames[] =
     {
@@ -118,18 +120,16 @@ Setup::Setup():
 
     add(mPanel);
 
-    Label *const version = new Label(this, FULL_VERSION);
-//    version->setPosition(9, height - version->getHeight() - 9);
     if (mResetWindows)
     {
-        version->setPosition(9,
-            height - version->getHeight() - mResetWindows->getHeight() - 9);
+        mVersion->setPosition(9,
+            height - mVersion->getHeight() - mResetWindows->getHeight() - 9);
     }
     else
     {
-        version->setPosition(9, height - version->getHeight() - 30);
+        mVersion->setPosition(9, height - mVersion->getHeight() - 30);
     }
-    add(version);
+    add(mVersion);
 
     center();
 
@@ -230,6 +230,15 @@ void Setup::widgetResized(const gcn::Event &event)
         Button *const btn = *it;
         x -= btn->getWidth() + buttonPadding;
         btn->setPosition(x, height - btn->getHeight() - buttonPadding);
+    }
+    if (mResetWindows)
+    {
+        mVersion->setPosition(9,
+            height - mVersion->getHeight() - mResetWindows->getHeight() - 9);
+    }
+    else
+    {
+        mVersion->setPosition(9, height - mVersion->getHeight() - 30);
     }
 }
 

@@ -26,6 +26,7 @@
 #include "gui/widgets/container.h"
 
 #include <guichan/actionlistener.hpp>
+#include <guichan/widgetlistener.hpp>
 
 #include <string>
 
@@ -34,7 +35,9 @@
 /**
  * A container for the contents of a tab in the setup window.
  */
-class SetupTab : public Container, public gcn::ActionListener
+class SetupTab : public Container,
+                 public gcn::ActionListener,
+                 public gcn::WidgetListener
 {
     public:
         SetupTab(const Widget2 *const widget);

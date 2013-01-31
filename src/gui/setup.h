@@ -31,6 +31,7 @@
 
 #include <list>
 
+class Label;
 class SetupTab;
 
 /**
@@ -86,6 +87,7 @@ class Setup final : public Window, public gcn::ActionListener
         std::vector<Button*> mButtons;
         Button *mResetWindows;
         TabbedArea *mPanel;
+        Label *mVersion;
 };
 
 extern Setup* setupWindow;

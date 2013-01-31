@@ -22,6 +22,8 @@
 
 #include "gui/widgets/setuptab.h"
 
+#include "logger.h"
+
 #include "debug.h"
 
 SetupTab::SetupTab(const Widget2 *const widget) :
@@ -29,6 +31,7 @@ SetupTab::SetupTab(const Widget2 *const widget) :
     gcn::ActionListener()
 {
     setOpaque(false);
+    addWidgetListener(this);
 }
 
 void SetupTab::externalUpdated()
