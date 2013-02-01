@@ -365,15 +365,21 @@ void UpdaterWindow::loadPatch()
         }
         if (version > CHECK_VERSION)
         {
+#if defined(ANDROID)
             mBrowserBox->addRow("", true);
-#ifdef WIN32
+            mBrowserBox->addRow("##1You can download from Google Play", true);
+            mBrowserBox->addRow("##1ManaPlus updated.", true);
+#elif defined(WIN32)
+            mBrowserBox->addRow("", true);
             mBrowserBox->addRow("  ##1[@@http://download.evolonline.org/"
                 "manaplus/download/manaplus-win32.exe|download here@@]", true);
-#endif
+#else
+            mBrowserBox->addRow("", true);
             mBrowserBox->addRow("  ##1@@http://manaplus.evolonline.org/|"
                 "http://manaplus.evolonline.org/@@", true);
             mBrowserBox->addRow("##1You can download it from", true);
             mBrowserBox->addRow("##1ManaPlus updated.", true);
+#endif
         }
         else
         {
