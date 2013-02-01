@@ -3455,7 +3455,6 @@ void LocalPlayer::pingRequest()
 
 std::string LocalPlayer::getPingTime() const
 {
-    int time = 0;
     std::string str;
     if (!mWaitPing)
     {
@@ -3466,7 +3465,7 @@ std::string LocalPlayer::getPingTime() const
     }
     else
     {
-        time = tick_time;
+        int time = tick_time;
         if (time > mPingSendTick)
             time -= mPingSendTick;
         else

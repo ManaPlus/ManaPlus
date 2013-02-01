@@ -25,7 +25,7 @@
 
 #include "debug.h"
 
-class SortPartyFunctor final
+static const class SortPartyFunctor final
 {
     public:
         bool operator() (const PartyMember *const p1,

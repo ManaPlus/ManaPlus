@@ -27,7 +27,7 @@
 
 #include "debug.h"
 
-class SortTouchActionFunctor final
+static const class SortTouchActionFunctor final
 {
     public:
         bool operator() (const SetupActionData *const data1,

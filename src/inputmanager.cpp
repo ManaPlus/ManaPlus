@@ -51,7 +51,7 @@ InputManager inputManager;
 
 extern QuitDialog *quitDialog;
 
-class KeyFunctor final
+static class KeyFunctor final
 {
     public:
         bool operator() (const int key1, const int key2) const

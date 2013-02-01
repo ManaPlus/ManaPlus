@@ -119,7 +119,7 @@ void SetupTabScroll::externalUpdated()
     }
 }
 
-void SetupTabScroll::widgetResized(const gcn::Event &event)
+void SetupTabScroll::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mScroll->setWidth(getWidth() - 12);
     mScroll->setHeight(getHeight() - 12 - 12);

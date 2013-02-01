@@ -26,7 +26,7 @@
 
 #include "debug.h"
 
-class SortGuildFunctor final
+static const class SortGuildFunctor final
 {
     public:
         bool operator() (const GuildMember *const m1,

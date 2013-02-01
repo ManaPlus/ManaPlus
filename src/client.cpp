@@ -2902,7 +2902,7 @@ void Client::windowRemoved(const Window *const window)
         instance()->mCurrentDialog = nullptr;
 }
 
-void Client::updateScreenKeyboard(int height)
+void Client::updateScreenKeyboard(int height A_UNUSED)
 {
 //    logger->log("keyboard height: %d", height);
 }

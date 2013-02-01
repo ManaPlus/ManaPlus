@@ -49,7 +49,7 @@ typedef PlayerRelations::const_iterator PlayerRelationsCIter;
 typedef std::list<PlayerRelationsListener *> PlayerRelationListeners;
 typedef PlayerRelationListeners::const_iterator PlayerRelationListenersCIter;
 
-class SortPlayersFunctor final
+static const class SortPlayersFunctor final
 {
     public:
         bool operator() (const std::string &str1,

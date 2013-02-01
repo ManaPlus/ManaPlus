@@ -79,8 +79,6 @@ class SDLTextChunk final
 
             SDL_Surface *surface = TTF_RenderUTF8_Blended(
                 font, strBuf, sdlCol);
-            const int width = surface->w;
-            const int height = surface->h;
 
             if (!surface)
             {
@@ -88,6 +86,9 @@ class SDLTextChunk final
                 BLOCK_END("SDLTextChunk::generate")
                 return;
             }
+
+            const int width = surface->w;
+            const int height = surface->h;
 
             if (color.r != color2.r || color.g != color2.g
                 || color.b != color2.b)

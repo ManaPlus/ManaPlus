@@ -22,13 +22,12 @@
 
 #include "gui/widgets/setuptab.h"
 
-#include "logger.h"
-
 #include "debug.h"
 
 SetupTab::SetupTab(const Widget2 *const widget) :
     Container(widget),
-    gcn::ActionListener()
+    gcn::ActionListener(),
+    gcn::WidgetListener()
 {
     setOpaque(false);
     addWidgetListener(this);

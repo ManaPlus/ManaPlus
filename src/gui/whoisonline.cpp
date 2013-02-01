@@ -44,7 +44,6 @@
 #include "net/net.h"
 #include "net/playerhandler.h"
 
-#include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include <SDL.h>
