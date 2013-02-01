@@ -46,10 +46,10 @@ static const int texturesListSize = 4;
 
 static const char *const texturesList[] =
 {
-    N_("no"),
-    N_("s3tc"),
-    N_("fxt1"),
-    N_("ARB")
+    N_("No"),
+    "s3tc",
+    "fxt1",
+    "ARB"
 };
 
 Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :

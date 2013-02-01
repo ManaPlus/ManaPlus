@@ -2,11 +2,12 @@
 # Translators:
 #   <alasmirt@gmail.com>, 2012.
 #   <freya.df@gmail.com>, 2012.
+# Luciano Zago <lcnzg7@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-12-26 13:42+0000\n"
-"Last-Translator: alastrim <alasmirt@gmail.com>\n"
+"PO-Revision-Date: 2013-01-30 15:14+0000\n"
+"Last-Translator: luckZago <lcnzg7@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -139,7 +140,7 @@ msgstr "##2Party level2:##P Habilita o jogador criar grupo."
 
 msgid ""
 "Website: @@http://manaplus.evolonline.org/|http://manaplus.evolonline.org/@@"
-msgstr ""
+msgstr "Site: @@http://manaplus.evolonline.org/|http://manaplus.evolonline.org/@@"
 
 msgid "##2y##P                        \"Quick Drop N Items from 0 slot\""
 msgstr "##2y##P                        \"Joga fora rápido N Items do slot 0\""
@@ -224,7 +225,7 @@ msgid "/createparty NAME - create party with selected name."
 msgstr "/createparty NAME - cria um grupo com o nome selecionado."
 
 msgid "##2t##P                        \"Talk\""
-msgstr ""
+msgstr "##2t##P                        \"Falar\""
 
 msgid "/heal NICK - heal nick."
 msgstr "/heal NICK - curar o NICK."
@@ -279,7 +280,7 @@ msgid "##2LeftAlt + 9##P              \"Emote Shortcut 9\""
 msgstr "##2Alt esquerdo + 9##P              \"Atalho de smiley 9\""
 
 msgid "Look this page for help and downloads:"
-msgstr ""
+msgstr "Olhe esta página para ajuda e downloads:"
 
 msgid "Other skills:"
 msgstr "Outras habilidades:"
@@ -350,7 +351,7 @@ msgid "Windows"
 msgstr "Janelas"
 
 msgid "Server news"
-msgstr ""
+msgstr "Notícias do servidor"
 
 msgid "##2LeftAlt + 4##P              \"Emote Shortcut 4\""
 msgstr "##2Alt Esquerdo + 4##P              \"Atalho de smiley 4\""
@@ -365,7 +366,7 @@ msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr "##2KeyPad0##P                  \"Muda o tipo de movimentos\""
 
 msgid "Search results"
-msgstr ""
+msgstr "Resultados de pesquisa"
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway MSG - habilita/desabilita o falso modo ausente."
@@ -503,7 +504,7 @@ msgid ""
 " source MMORPG Client. ManaPlus uses 2D graphics and aims to create a large\n"
 " and diverse interactive world. It is licensed under the GPL, making\n"
 " sure this game can't ever run away from you."
-msgstr ""
+msgstr "##2ManaPlus##P é um serio esforço para criar um inovado, grátis e de código\naberto cliente MMORPG. Mana utiliza gráficos 2D e foca em criar um largo\ne diverso mundo interativo. É licenciado sobre licença GPL.Tendo\ncerteza que o jogo jamais te abandonará."
 
 msgid "##2LeftAlt + 2##P              \"Emote Shortcut 2\""
 msgstr "##2LeftAlt + 2##P              \"Atalho para emoticon 2\""
@@ -535,7 +536,7 @@ msgid ""
 msgstr " Lá você vai encontrar uma lista dos jogadores que você conhece, assim\n como diversas opções de configuração:"
 
 msgid "Search error"
-msgstr ""
+msgstr "Erro na pesquisa"
 
 msgid ""
 "/msg NICK text, /whisper NICK text, /w NICK text - send whisper message to "
@@ -551,7 +552,7 @@ msgstr "##2g##P                        \"Mudar tipo de ataque de arma\""
 msgid ""
 "If client working very slow, you can improve speed\n"
 "by reading this: @@http://manaplus.evolonline.org/slowpc|http://manaplus.evolonline.org/slowpc@@"
-msgstr ""
+msgstr "Se o seu cliente está funcionando muito devagar, você pode aumentar sua velocidade\nlendo isto: @@http://manaplus.evolonline.org/slowpc|http://manaplus.evolonline.org/slowpc@@"
 
 msgid ""
 " The player list lists all of your acquaintances.  They are categorised as one\n"
@@ -573,7 +574,7 @@ msgid "##2KeyPad[1]##P                \"Change Follow mode\""
 msgstr "##2KeyPad[1]##P                \"Mudar modo de seguir\""
 
 msgid "SHORTCUTS:"
-msgstr ""
+msgstr "ATALHOS:"
 
 msgid "/target NICK - select nick as target. Can be monster or player nick."
 msgstr "/target NOME - selecione o nome como alvo. Pode ser um monstro ou um jogador."
@@ -611,15 +612,15 @@ msgid "##2DOWN##P                     \"Move Down\""
 msgstr "##2DOWN##P                     \"Move para baixo\""
 
 msgid "##2n##P                        \"Target NPC\""
-msgstr ""
+msgstr "##2n##P                        \"NPC Alvo\""
 
 msgid ""
 "About yellow bar you can read here:\n"
 "@@http://manaplus.evolonline.org/yellowbar|http://manaplus.evolonline.org/yellowbar@@"
-msgstr ""
+msgstr "Informações sobre a barra amarela você pode ler aqui:\n@@http://manaplus.evolonline.org/yellowbar|http://manaplus.evolonline.org/yellowbar@@"
 
 msgid "##2LeftAlt + 3##P              \"Emote Shortcut 3\""
-msgstr ""
+msgstr "##2LeftAlt + 3##P              \"Atalho de smiley 3\""
 
 msgid "##2Backslash(/)##P             \"Change Crazy Move mode\""
 msgstr ""
@@ -663,7 +664,7 @@ msgstr "/undress NICK - remove all clothes from nick. Local effect only."
 msgid ""
 " Otherwise see the @@team|Development Team@@ section to have a list of\n"
 " developers and how to contact them."
-msgstr ""
+msgstr "Caso contrário, veja a seção da @@team|Equipe de Desenvolvimento@@ para ver a lista de desenvolvedores\ne como contatá-los."
 
 msgid "##2Quote(')##P                 \"Set Direction Right\""
 msgstr ""
@@ -702,7 +703,7 @@ msgstr ""
 msgid ""
 "##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@\n"
 " or visit IRC channel:"
-msgstr ""
+msgstr "##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@\n ou visite o canal IRC:"
 
 msgid ""
 " - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
@@ -710,7 +711,7 @@ msgid ""
 msgstr ""
 
 msgid "Whispers commands"
-msgstr ""
+msgstr "Comandos de mensagens particulares"
 
 msgid "##2LeftAlt + Insert##P         \"Emote Shortcut 14\""
 msgstr ""
@@ -730,13 +731,13 @@ msgid "##2d##P                        \"Move to Home location\""
 msgstr ""
 
 msgid "Whispers"
-msgstr ""
+msgstr "Sussurros"
 
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
 msgstr ""
 
 msgid "/help - show small help about chat commands. "
-msgstr ""
+msgstr "/help - mostra uma pequena ajuda sobre os comandos do chat."
 
 msgid ""
 "You can set any client resolution. In settings in video tab,\n"
@@ -774,10 +775,10 @@ msgid "##2p##P                        \"Screenshot\""
 msgstr ""
 
 msgid "##2x##P                        \"Target & Attack\""
-msgstr ""
+msgstr "##2x##P                        \"Alvo & Ataque\""
 
 msgid "##2b##P                        \"Use magic attack\""
-msgstr ""
+msgstr "##2b##P                        \"Usar ataque mágico\""
 
 msgid "##2KeyPad[4]##P                \"Change Imitation mode\""
 msgstr ""
@@ -792,10 +793,10 @@ msgid "##2l##P                        \"Set Direction Up\""
 msgstr ""
 
 msgid "/serverignoreall - ignore all whispers on server side."
-msgstr ""
+msgstr "/serverignoreall - ignora todos sussurros vindos do servidor."
 
 msgid "##2v##P                        \"Move to Target\""
-msgstr ""
+msgstr "##2v##P                        \"Mover para o Alvo\""
 
 msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
 msgstr ""
@@ -811,13 +812,13 @@ msgid ""
 msgstr ""
 
 msgid "##2h##P                        \"Hide Windows\""
-msgstr ""
+msgstr "##2h##P                        \"Ocultar Janelas\""
 
 msgid "##2Version:##6%VER%"
 msgstr "##2Versão:##6%VER%"
 
 msgid "##2Equals(=)##P                \"Item Shortcut 12\""
-msgstr ""
+msgstr "##2Equals(=)##P                \"Atalho de item 12\""
 
 msgid ""
 " However, you can protect yourself from such players by ignoring them.  Right-\n"
@@ -828,13 +829,13 @@ msgid ""
 msgstr ""
 
 msgid "/follow NICK - start follow mode."
-msgstr ""
+msgstr "/follow NICK - Começa o modo de perseguição."
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr ""
 
 msgid "SKILLS"
-msgstr ""
+msgstr "HABILIDADES"
 
 msgid "Art or images contributors"
 msgstr ""
@@ -846,22 +847,22 @@ msgid "##2F12##P                      \"Emote Shortcut Window\""
 msgstr ""
 
 msgid "Actions"
-msgstr ""
+msgstr "Ações"
 
 msgid "##2Insert##P                   \"Item Shortcut 14\""
-msgstr ""
+msgstr "##2Insert##P                   \"Atalho de item 14\""
 
 msgid "Sound effects"
-msgstr ""
+msgstr "Efeitos de som"
 
 msgid "##2F6##P                       \"Minimap Window\""
-msgstr ""
+msgstr "##2F6##P                       \"Janela do Mini-mapa\""
 
 msgid "##2c##P                        \"Quick heal target or self\""
 msgstr ""
 
 msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
-msgstr ""
+msgstr "##2KeyPad[5]##P                \"Definir local da casa/Definir seta\""
 
 msgid "##26##P                        \"Item Shortcut 6\""
-msgstr ""
+msgstr "##26##P                        \"Atalho de item 6\""
