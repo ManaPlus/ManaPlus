@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-02-01 13:17+0300\n"
+"POT-Creation-Date: 2013-02-02 17:34+0300\n"
 "PO-Revision-Date: 2013-02-01 10:20+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -50,12 +50,12 @@ msgid "miss"
 msgstr "errou"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1655 src/gui/whoisonline.cpp:822
+#: src/being.cpp:1655 src/gui/whoisonline.cpp:821
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1660 src/gui/whoisonline.cpp:827
+#: src/being.cpp:1660 src/gui/whoisonline.cpp:826
 msgid "I"
 msgstr "I"
 
@@ -4310,23 +4310,23 @@ msgstr "Borda do Lugar Inicial"
 msgid "Road Point"
 msgstr "Ponto de estrada"
 
-#: src/gui/whoisonline.cpp:79 src/gui/whoisonline.cpp:611
+#: src/gui/whoisonline.cpp:78 src/gui/whoisonline.cpp:610
 msgid "Who Is Online - Updating"
 msgstr "Quem está online - Atualizando"
 
-#: src/gui/whoisonline.cpp:103
+#: src/gui/whoisonline.cpp:102
 msgid "Update"
 msgstr "Atualizar"
 
-#: src/gui/whoisonline.cpp:193
+#: src/gui/whoisonline.cpp:192
 msgid "Who Is Online - "
 msgstr "Quem está online - "
 
-#: src/gui/whoisonline.cpp:625
+#: src/gui/whoisonline.cpp:624
 msgid "Who Is Online - error"
 msgstr "Quem está online - Erro"
 
-#: src/gui/whoisonline.cpp:666
+#: src/gui/whoisonline.cpp:665
 msgid "Who Is Online - Update"
 msgstr "Quem está online - Atualizado"
 
@@ -5006,23 +5006,23 @@ msgstr "Modificadores de jogo desativados"
 msgid "Game modifiers are unknown"
 msgstr "Modificadores são desconhecidos"
 
-#: src/localplayer.cpp:3836
+#: src/localplayer.cpp:3835
 msgid "Follow: "
 msgstr "Seguindo:"
 
-#: src/localplayer.cpp:3838 src/localplayer.cpp:3853
+#: src/localplayer.cpp:3837 src/localplayer.cpp:3852
 msgid "Follow canceled"
 msgstr "Seguindo cancelado"
 
-#: src/localplayer.cpp:3845
+#: src/localplayer.cpp:3844
 msgid "Imitation: "
 msgstr "Imitando:"
 
-#: src/localplayer.cpp:3847 src/localplayer.cpp:3855
+#: src/localplayer.cpp:3846 src/localplayer.cpp:3854
 msgid "Imitation canceled"
 msgstr "Imitação cancelada"
 
-#: src/localplayer.cpp:4212
+#: src/localplayer.cpp:4211
 msgid "You see "
 msgstr "Você vê "
 

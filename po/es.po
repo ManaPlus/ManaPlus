@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-02-01 13:17+0300\n"
-"PO-Revision-Date: 2013-02-01 10:20+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2013-02-02 17:34+0300\n"
+"PO-Revision-Date: 2013-02-01 21:27+0000\n"
+"Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/"
 "language/es/)\n"
 "Language: es\n"
@@ -52,12 +52,12 @@ msgid "miss"
 msgstr "falla"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1655 src/gui/whoisonline.cpp:822
+#: src/being.cpp:1655 src/gui/whoisonline.cpp:821
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1660 src/gui/whoisonline.cpp:827
+#: src/being.cpp:1660 src/gui/whoisonline.cpp:826
 msgid "I"
 msgstr "I"
 
@@ -431,11 +431,11 @@ msgstr "Resultado"
 
 #: src/gui/buydialog.cpp:54
 msgid "unsorted"
-msgstr ""
+msgstr "desordenado"
 
 #: src/gui/buydialog.cpp:55
 msgid "by price"
-msgstr ""
+msgstr "por precio"
 
 #: src/gui/buydialog.cpp:56 src/gui/inventorywindow.cpp:64
 msgid "by name"
@@ -2867,7 +2867,7 @@ msgstr "Radio de desplazamiento"
 
 #: src/gui/setup_other.cpp:123
 msgid "Auto resize minimaps"
-msgstr ""
+msgstr "Auto-redimensionar minimapas"
 
 #: src/gui/setup_other.cpp:127
 msgid "Moving"
@@ -4326,23 +4326,23 @@ msgstr "Limites de Lugar de Inicio"
 msgid "Road Point"
 msgstr "Mostrar camino"
 
-#: src/gui/whoisonline.cpp:79 src/gui/whoisonline.cpp:611
+#: src/gui/whoisonline.cpp:78 src/gui/whoisonline.cpp:610
 msgid "Who Is Online - Updating"
 msgstr "Quién está conectado - Actualizando"
 
-#: src/gui/whoisonline.cpp:103
+#: src/gui/whoisonline.cpp:102
 msgid "Update"
 msgstr "Actualizar"
 
-#: src/gui/whoisonline.cpp:193
+#: src/gui/whoisonline.cpp:192
 msgid "Who Is Online - "
 msgstr "Quienes están conectados - "
 
-#: src/gui/whoisonline.cpp:625
+#: src/gui/whoisonline.cpp:624
 msgid "Who Is Online - error"
 msgstr "Quienes están conectados - error"
 
-#: src/gui/whoisonline.cpp:666
+#: src/gui/whoisonline.cpp:665
 msgid "Who Is Online - Update"
 msgstr "Quienes están conectados - Actualizar"
 
@@ -5024,23 +5024,23 @@ msgstr "Modificadores del juego están deshabilitados"
 msgid "Game modifiers are unknown"
 msgstr "Los modificadores del juego son desconocidos"
 
-#: src/localplayer.cpp:3836
+#: src/localplayer.cpp:3835
 msgid "Follow: "
 msgstr "Seguir: "
 
-#: src/localplayer.cpp:3838 src/localplayer.cpp:3853
+#: src/localplayer.cpp:3837 src/localplayer.cpp:3852
 msgid "Follow canceled"
 msgstr "Seguir cancelado"
 
-#: src/localplayer.cpp:3845
+#: src/localplayer.cpp:3844
 msgid "Imitation: "
 msgstr "Imitación: "
 
-#: src/localplayer.cpp:3847 src/localplayer.cpp:3855
+#: src/localplayer.cpp:3846 src/localplayer.cpp:3854
 msgid "Imitation canceled"
 msgstr "Imitación cancelada"
 
-#: src/localplayer.cpp:4212
+#: src/localplayer.cpp:4211
 msgid "You see "
 msgstr "Ves "
 

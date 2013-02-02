@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-02-01 13:17+0300\n"
+"POT-Creation-Date: 2013-02-02 17:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,12 +43,12 @@ msgid "miss"
 msgstr ""
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1655 src/gui/whoisonline.cpp:822
+#: src/being.cpp:1655 src/gui/whoisonline.cpp:821
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1660 src/gui/whoisonline.cpp:827
+#: src/being.cpp:1660 src/gui/whoisonline.cpp:826
 msgid "I"
 msgstr ""
 
@@ -4291,23 +4291,23 @@ msgstr ""
 msgid "Road Point"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:79 src/gui/whoisonline.cpp:611
+#: src/gui/whoisonline.cpp:78 src/gui/whoisonline.cpp:610
 msgid "Who Is Online - Updating"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:103
+#: src/gui/whoisonline.cpp:102
 msgid "Update"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:193
+#: src/gui/whoisonline.cpp:192
 msgid "Who Is Online - "
 msgstr ""
 
-#: src/gui/whoisonline.cpp:625
+#: src/gui/whoisonline.cpp:624
 msgid "Who Is Online - error"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:666
+#: src/gui/whoisonline.cpp:665
 msgid "Who Is Online - Update"
 msgstr ""
 
@@ -4985,23 +4985,23 @@ msgstr ""
 msgid "Game modifiers are unknown"
 msgstr ""
 
-#: src/localplayer.cpp:3836
+#: src/localplayer.cpp:3835
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3838 src/localplayer.cpp:3853
+#: src/localplayer.cpp:3837 src/localplayer.cpp:3852
 msgid "Follow canceled"
 msgstr ""
 
-#: src/localplayer.cpp:3845
+#: src/localplayer.cpp:3844
 msgid "Imitation: "
 msgstr ""
 
-#: src/localplayer.cpp:3847 src/localplayer.cpp:3855
+#: src/localplayer.cpp:3846 src/localplayer.cpp:3854
 msgid "Imitation canceled"
 msgstr ""
 
-#: src/localplayer.cpp:4212
+#: src/localplayer.cpp:4211
 msgid "You see "
 msgstr ""
 
