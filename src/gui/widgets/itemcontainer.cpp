@@ -62,7 +62,7 @@ class ItemIdPair final
         Item* mItem;
 };
 
-static const class SortItemAlphaFunctor final
+static class SortItemAlphaFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -76,7 +76,7 @@ static const class SortItemAlphaFunctor final
         }
 } itemAlphaSorter;
 
-static const class SortItemIdFunctor final
+static class SortItemIdFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -89,7 +89,7 @@ static const class SortItemIdFunctor final
         }
 } itemIdSorter;
 
-static const class SortItemWeightFunctor final
+static class SortItemWeightFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -109,7 +109,7 @@ static const class SortItemWeightFunctor final
         }
 } itemWeightSorter;
 
-static const class SortItemAmountFunctor final
+static class SortItemAmountFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -129,7 +129,7 @@ static const class SortItemAmountFunctor final
         }
 } itemAmountSorter;
 
-static const class SortItemTypeFunctor final
+static class SortItemTypeFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,

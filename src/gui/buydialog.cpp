@@ -78,7 +78,7 @@ public:
     }
 };
 
-static const class SortItemPriceFunctor final
+static class SortItemPriceFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -95,7 +95,7 @@ static const class SortItemPriceFunctor final
         }
 } itemPriceSorter;
 
-static const class SortItemNameFunctor final
+static class SortItemNameFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -112,7 +112,7 @@ static const class SortItemNameFunctor final
         }
 } itemNameSorter;
 
-static const class SortItemIdFunctor final
+static class SortItemIdFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -129,7 +129,7 @@ static const class SortItemIdFunctor final
         }
 } itemIdSorter;
 
-static const class SortItemWeightFunctor final
+static class SortItemWeightFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -146,7 +146,7 @@ static const class SortItemWeightFunctor final
         }
 } itemWeightSorter;
 
-static const class SortItemAmountFunctor final
+static class SortItemAmountFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -163,7 +163,7 @@ static const class SortItemAmountFunctor final
         }
 } itemAmountSorter;
 
-static const class SortItemTypeFunctor final
+static class SortItemTypeFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,

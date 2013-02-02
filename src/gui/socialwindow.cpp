@@ -54,7 +54,7 @@
 
 #include "debug.h"
 
-static const class SortFriendsFunctor final
+static class SortFriendsFunctor final
 {
     public:
         bool operator() (const Avatar *const m1, const Avatar *const m2) const
