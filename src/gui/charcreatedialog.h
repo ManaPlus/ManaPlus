@@ -84,6 +84,8 @@ class CharCreateDialog final : public Window,
 
         void updateSliders();
 
+        void setButtonsPosition(const int w, const int h);
+
         /**
          * Returns the name of the character to create.
          */

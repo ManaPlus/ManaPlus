@@ -156,47 +156,41 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mNameField->setActionEventId("create");
     mNameField->addActionListener(this);
 
-
     const int w = 480;
     const int h = 350;
-    setContentSize(w, h);
-    mPlayerBox->setDimension(gcn::Rectangle(350, 40, 110, 90));
-    mActionButton->setPosition(375, 140);
-    mRotateButton->setPosition(405, 140);
 
-    mNameLabel->setPosition(5, 10);
+    setContentSize(w, h);
+    mPlayerBox->setDimension(gcn::Rectangle(360, 0, 110, 90));
+    mActionButton->setPosition(385, 100);
+    mRotateButton->setPosition(415, 100);
+
+    mNameLabel->setPosition(5, 5);
     mNameField->setDimension(
-            gcn::Rectangle(60, 10, 300, mNameField->getHeight()));
+            gcn::Rectangle(60, 5, 300, mNameField->getHeight()));
 
     const int leftX = 120;
     const int rightX = 300;
     const int labelX = 5;
     const int nameX = 145;
-    mPrevHairColorButton->setPosition(leftX, 40);
-    mNextHairColorButton->setPosition(rightX, 40);
-    mHairColorLabel->setPosition(labelX, 45);
-    mHairColorNameLabel->setPosition(nameX, 45);
-    mPrevHairStyleButton->setPosition(leftX, 69);
-    mNextHairStyleButton->setPosition(rightX, 69);
-    mHairStyleLabel->setPosition(labelX, 74);
-    mHairStyleNameLabel->setPosition(nameX, 74);
+    mPrevHairColorButton->setPosition(leftX, 35);
+    mNextHairColorButton->setPosition(rightX, 35);
+    mHairColorLabel->setPosition(labelX, 40);
+    mHairColorNameLabel->setPosition(nameX, 40);
+    mPrevHairStyleButton->setPosition(leftX, 64);
+    mNextHairStyleButton->setPosition(rightX, 64);
+    mHairStyleLabel->setPosition(labelX, 69);
+    mHairStyleNameLabel->setPosition(nameX, 69);
 
     if (serverVersion >= 2)
     {
-        mPrevRaceButton->setPosition(leftX, 98);
-        mNextRaceButton->setPosition(rightX, 98);
-        mRaceLabel->setPosition(labelX, 103);
-        mRaceNameLabel->setPosition(nameX, 103);
+        mPrevRaceButton->setPosition(leftX, 93);
+        mNextRaceButton->setPosition(rightX, 93);
+        mRaceLabel->setPosition(labelX, 98);
+        mRaceNameLabel->setPosition(nameX, 98);
     }
 
-    mAttributesLeft->setPosition(15, 280);
     updateSliders();
-    mCancelButton->setPosition(
-            w / 2,
-            h - 5 - mCancelButton->getHeight());
-    mCreateButton->setPosition(
-            mCancelButton->getX() - 5 - mCreateButton->getWidth(),
-            h - 5 - mCancelButton->getHeight());
+    setButtonsPosition(w, h);
 
     mMale->setPosition(30, 120);
     mFemale->setPosition(100, 120);
@@ -443,31 +437,24 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     {
         mAttributeLabel[i] = new Label(this, labels[i]);
         mAttributeLabel[i]->setWidth(70);
-        mAttributeLabel[i]->setPosition(5, 145 + i * 24);
+        mAttributeLabel[i]->setPosition(5, 135 + i * 24);
         mAttributeLabel[i]->adjustSize();
         add(mAttributeLabel[i]);
 
         mAttributeSlider[i] = new Slider(min, max);
-        mAttributeSlider[i]->setDimension(gcn::Rectangle(140, 145 + i * 24,
+        mAttributeSlider[i]->setDimension(gcn::Rectangle(140, 135 + i * 24,
                                                          150, 12));
         mAttributeSlider[i]->setActionEventId("statslider");
         mAttributeSlider[i]->addActionListener(this);
         add(mAttributeSlider[i]);
 
         mAttributeValue[i] = new Label(this, toString(min));
-        mAttributeValue[i]->setPosition(295, 145 + i * 24);
+        mAttributeValue[i]->setPosition(295, 135 + i * 24);
         add(mAttributeValue[i]);
     }
 
-    mAttributesLeft->setPosition(15, 300);
     updateSliders();
-
-    mCancelButton->setPosition(
-            w / 2,
-            h - 5 - mCancelButton->getHeight());
-    mCreateButton->setPosition(
-            mCancelButton->getX() - 5 - mCreateButton->getWidth(),
-            h - 5 - mCancelButton->getHeight());
+    setButtonsPosition(w, h);
 }
 
 void CharCreateDialog::setFixedGender(const bool fixed, const Gender gender)
@@ -578,4 +565,23 @@ void CharCreateDialog::keyPressed(gcn::KeyEvent &keyEvent)
         default:
             break;
     }
+}
+
+void CharCreateDialog::setButtonsPosition(const int w, const int h)
+{
+    if (mainGraphics->getHeight() < 480)
+    {
+        mCreateButton->setPosition(340, 150);
+        mCancelButton->setPosition(340, 160 + mCreateButton->getHeight());
+    }
+    else
+    {
+        mCancelButton->setPosition(
+            w / 2,
+            h - 5 - mCancelButton->getHeight());
+        mCreateButton->setPosition(
+            mCancelButton->getX() - 5 - mCreateButton->getWidth(),
+            h - 5 - mCancelButton->getHeight());
+    }
+    mAttributesLeft->setPosition(15, 280);
 }
