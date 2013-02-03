@@ -235,7 +235,7 @@ void WindowMenu::mousePressed(gcn::MouseEvent &event)
     if (!viewport)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::RIGHT)
+    if (!mSmallWindow && event.getButton() == gcn::MouseEvent::RIGHT)
     {
         Button *const btn = dynamic_cast<Button*>(event.getSource());
         if (!btn)
