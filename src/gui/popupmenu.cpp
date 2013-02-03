@@ -56,6 +56,7 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/progressbar.h"
+#include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/whispertab.h"
 
@@ -110,8 +111,10 @@ PopupMenu::PopupMenu():
     mPlayerListener.setNick("");
     mPlayerListener.setDialog(nullptr);
     mPlayerListener.setType(static_cast<int>(Being::UNKNOWN));
+    mScrollArea = new ScrollArea(mBrowserBox, false);
+    mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO); 
 
-    add(mBrowserBox);
+    add(mScrollArea);
 }
 
 void PopupMenu::showPopup(const int x, const int y, const Being *const being)
@@ -2140,14 +2143,27 @@ void PopupMenu::showPopup(int x, int y)
     const int pad2 = 2 * getPadding();
     const int bPad2 = 2 * mBrowserBox->getPadding();
     mBrowserBox->setPosition(mPadding, mPadding);
+    mScrollArea->setPosition(mPadding, mPadding);
     // add padding to initial size before draw browserbox
     mBrowserBox->setWidth(mBrowserBox->getWidth() + bPad2);
+    int height = mBrowserBox->getHeight();
+    if (height + pad2 >= mainGraphics->getHeight())
+    {
+        height = mainGraphics->getHeight() - pad2;
+        mBrowserBox->setWidth(mBrowserBox->getWidth() + bPad2 + 10);
+    }
+    else
+    {
+        mBrowserBox->setWidth(mBrowserBox->getWidth() + bPad2);
+    }
     setContentSize(mBrowserBox->getWidth() + pad2,
-        mBrowserBox->getHeight() + pad2);
+        height + pad2);
     if (mainGraphics->mWidth < (x + getWidth() + 5))
         x = mainGraphics->mWidth - getWidth();
     if (mainGraphics->mHeight < (y + getHeight() + 5))
         y = mainGraphics->mHeight - getHeight();
+    mScrollArea->setWidth(mBrowserBox->getWidth() + pad2);
+    mScrollArea->setHeight(height + pad2);
     setPosition(x, y);
     setVisible(true);
     requestMoveToTop();

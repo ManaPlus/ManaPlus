@@ -41,6 +41,7 @@ class FloorItem;
 class Item;
 class ItemShortcut;
 class MapItem;
+class ScrollArea;
 class TextCommand;
 class TextDialog;
 class TextField;
@@ -198,7 +199,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addPickupFilter(const std::string &name);
 
-        BrowserBox* mBrowserBox;
+        BrowserBox *mBrowserBox;
+        ScrollArea *mScrollArea;
 
         int mBeingId;
         int mFloorItemId;
