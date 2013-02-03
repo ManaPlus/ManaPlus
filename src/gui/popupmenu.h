@@ -173,6 +173,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showLinkPopup(const int x, const int y, const std::string &link);
 
+        void showWindowsPopup(const int x, const int y);
+
         /**
          * Handles link action.
          */

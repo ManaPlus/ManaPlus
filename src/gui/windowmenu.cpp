@@ -38,30 +38,12 @@
 #include "net/net.h"
 #include "net/playerhandler.h"
 
+#include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include <string>
 
 #include "debug.h"
-
-extern Window *botCheckerWindow;
-extern Window *chatWindow;
-extern Window *debugWindow;
-extern Window *dropShortcutWindow;
-extern Window *emoteShortcutWindow;
-extern Window *equipmentWindow;
-extern Window *inventoryWindow;
-extern Window *itemShortcutWindow;
-extern Window *killStats;
-extern Window *minimap;
-extern Window *outfitWindow;
-extern Window *setupWindow;
-extern Window *shopWindow;
-extern Window *spellShortcutWindow;
-extern Window *socialWindow;
-extern Window *statusWindow;
-extern Window *questsWindow;
-extern Window *whoIsOnline;
 
 WindowMenu::WindowMenu(const Widget2 *const widget) :
     Container(widget),
@@ -74,7 +56,8 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
     mTextPopup(new TextPopup),
     mHaveMouse(false),
-    mAutoHide(1)
+    mAutoHide(1),
+    mSmallWindow(mainGraphics->getWidth() < 600)
 {
     int x = mPadding;
     int h = 0;
@@ -83,27 +66,24 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 
     // TRANSLATORS: short button name for who is online window.
     addButton(N_("ONL"),
-        _("Who is online"), x, h, Input::KEY_WINDOW_ONLINE, whoIsOnline);
+        _("Who is online"), x, h, Input::KEY_WINDOW_ONLINE);
     // TRANSLATORS: short button name for help window.
     addButton(N_("HLP"),
-        _("Help"), x, h, Input::KEY_WINDOW_HELP, helpWindow);
+        _("Help"), x, h, Input::KEY_WINDOW_HELP);
     // TRANSLATORS: short button name for quests window.
     addButton(N_("QE"),
-        _("Quests"), x, h, Input::KEY_WINDOW_QUESTS, questsWindow);
+        _("Quests"), x, h, Input::KEY_WINDOW_QUESTS);
     // TRANSLATORS: short button name for bot checker window.
     addButton(N_("BC"),
-        _("Bot checker"), x, h, Input::KEY_WINDOW_BOT_CHECKER,
-        botCheckerWindow, false);
+        _("Bot checker"), x, h, Input::KEY_WINDOW_BOT_CHECKER, false);
     // TRANSLATORS: short button name for kill stats window.
     addButton(N_("KS"),
-        _("Kill stats"), x, h, Input::KEY_WINDOW_KILLS, killStats);
-    // TRANSLATORS: short button name for smilies window.
+        _("Kill stats"), x, h, Input::KEY_WINDOW_KILLS);
     addButton(":-)",
-        _("Smilies"), x, h, Input::KEY_WINDOW_EMOTE_SHORTCUT,
-        emoteShortcutWindow);
+        _("Smilies"), x, h, Input::KEY_WINDOW_EMOTE_SHORTCUT);
     // TRANSLATORS: short button name for chat window.
     addButton(N_("CH"),
-        _("Chat"), x, h, Input::KEY_WINDOW_CHAT, chatWindow,
+        _("Chat"), x, h, Input::KEY_WINDOW_CHAT,
 #ifdef ANDROID
         true);
 #else
@@ -111,22 +91,22 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 #endif
     // TRANSLATORS: short button name for status window.
     addButton(N_("STA"),
-        _("Status"), x, h, Input::KEY_WINDOW_STATUS, statusWindow);
+        _("Status"), x, h, Input::KEY_WINDOW_STATUS);
     // TRANSLATORS: short button name for equipment window.
     addButton(N_("EQU"),
-        _("Equipment"), x, h, Input::KEY_WINDOW_EQUIPMENT, equipmentWindow);
+        _("Equipment"), x, h, Input::KEY_WINDOW_EQUIPMENT);
     // TRANSLATORS: short button name for inventory window.
     addButton(N_("INV"),
-        _("Inventory"), x, h, Input::KEY_WINDOW_INVENTORY, inventoryWindow);
+        _("Inventory"), x, h, Input::KEY_WINDOW_INVENTORY);
     // TRANSLATORS: short button name for map window.
     addButton(N_("MAP"),
-        _("Map"), x, h, Input::KEY_WINDOW_MINIMAP, minimap, false);
+        _("Map"), x, h, Input::KEY_WINDOW_MINIMAP, false);
 
     if (skillDialog->hasSkills())
     {
         // TRANSLATORS: short button name for skills window.
         addButton(N_("SKI"),
-            _("Skills"), x, h, Input::KEY_WINDOW_SKILL, skillDialog);
+            _("Skills"), x, h, Input::KEY_WINDOW_SKILL);
     }
 
 #ifdef MANASERV_SUPPORT
@@ -134,43 +114,45 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     {
         // TRANSLATORS: short button name for specials window.
         addButton(N_("SPE"),
-            _("Specials"), x, h, Input::KEY_NO_VALUE, specialsWindow);
+            _("Specials"), x, h, Input::KEY_NO_VALUE);
     }
 #endif
 
     // TRANSLATORS: short button name for social window.
     addButton(N_("SOC"),
-        _("Social"), x, h, Input::KEY_WINDOW_SOCIAL, socialWindow);
+        _("Social"), x, h, Input::KEY_WINDOW_SOCIAL);
     // TRANSLATORS: short button name for shortcuts window.
     addButton(N_("SH"),
-        _("Shortcuts"), x, h, Input::KEY_WINDOW_SHORTCUT, itemShortcutWindow);
+        _("Shortcuts"), x, h, Input::KEY_WINDOW_SHORTCUT);
     // TRANSLATORS: short button name for spells window.
     addButton(N_("SP"),
-        _("Spells"), x, h, Input::KEY_WINDOW_SPELLS, spellShortcutWindow);
+        _("Spells"), x, h, Input::KEY_WINDOW_SPELLS);
     // TRANSLATORS: short button name for drops window.
     addButton(N_("DR"),
-        _("Drop"), x, h, Input::KEY_WINDOW_DROP, dropShortcutWindow, false);
+        _("Drop"), x, h, Input::KEY_WINDOW_DROP, false);
     // TRANSLATORS: short button name for did you know window.
     addButton(N_("YK"),
-        _("Did you know"), x, h, Input::KEY_WINDOW_DIDYOUKNOW,
-        didYouKnowWindow);
+        _("Did you know"), x, h, Input::KEY_WINDOW_DIDYOUKNOW);
     // TRANSLATORS: short button name for shop window.
     addButton(N_("SHP"),
-        _("Shop"), x, h, Input::KEY_WINDOW_SHOP, shopWindow, false);
+        _("Shop"), x, h, Input::KEY_WINDOW_SHOP, false);
     // TRANSLATORS: short button name for outfits window.
     addButton(N_("OU"),
-        _("Outfits"), x, h, Input::KEY_WINDOW_OUTFIT, outfitWindow, false);
+        _("Outfits"), x, h, Input::KEY_WINDOW_OUTFIT, false);
     // TRANSLATORS: short button name for debug window.
     addButton(N_("DBG"),
-        _("Debug"), x, h, Input::KEY_WINDOW_DEBUG, debugWindow,
+        _("Debug"), x, h, Input::KEY_WINDOW_DEBUG,
 #ifdef ANDROID
         true);
 #else
         false);
 #endif
+    // TRANSLATORS: short button name for windows list menu.
+    addButton(N_("WIN"),
+        _("Windows"), x, h, Input::KEY_SHOW_WINDOWS);
     // TRANSLATORS: short button name for setup window.
     addButton(N_("SET"),
-        _("Setup"), x, h, Input::KEY_WINDOW_SETUP, setupWindow);
+        _("Setup"), x, h, Input::KEY_WINDOW_SETUP);
 
     x += mPadding - mSpacing;
     if (mainGraphics)
@@ -209,6 +191,8 @@ WindowMenu::~WindowMenu()
             delete btn;
         }
     }
+    delete_all(mButtonTexts);
+    mButtonTexts.clear();
 }
 
 void WindowMenu::action(const gcn::ActionEvent &event)
@@ -223,26 +207,13 @@ void WindowMenu::action(const gcn::ActionEvent &event)
     ButtonInfo *const info = (*it).second;
     if (!info)
         return;
-    Window *const window = info->window;
-    if (window)
-    {
-        if (window == helpWindow)
-        {
-            if (window->isVisible())
-                window->setVisible(false);
-            else
-                helpWindow->loadHelp("index");
-        }
-        else
-            window->setVisible(!window->isVisible());
-        if (window->isVisible())
-            window->requestMoveToTop();
-    }
+
+    inputManager.executeAction(info->key);
 }
 
 void WindowMenu::addButton(const char *const text,
                            const std::string &description,
-                           int &x, int &h, const int key, Window *window,
+                           int &x, int &h, const int key,
                            const bool visible)
 {
     Button *const btn = new Button(this, gettext(text), text, this);
@@ -251,19 +222,12 @@ void WindowMenu::addButton(const char *const text,
     btn->setTag(key);
     add(btn);
     btn->setFocusable(false);
-/*
-    if (!visible)
-    {
-        btn->setVisible(false);
-    }
-    else
-*/
-    {
-        x += btn->getWidth() + mSpacing;
-        h = btn->getHeight() + 2 * mPadding;
-    }
+    x += btn->getWidth() + mSpacing;
+    h = btn->getHeight() + 2 * mPadding;
     mButtons.push_back(btn);
-    mButtonNames[text] = new ButtonInfo(btn, window, visible);
+    mButtonNames[text] = new ButtonInfo(btn, key, visible);
+    if (key != Input::KEY_SHOW_WINDOWS)
+        mButtonTexts.push_back(new ButtonText(description, key));
 }
 
 void WindowMenu::mousePressed(gcn::MouseEvent &event)
@@ -368,31 +332,48 @@ void WindowMenu::updateButtons()
 
 void WindowMenu::loadButtons()
 {
-    if (config.getValue("windowmenu0", "") == "")
+    if (!mSmallWindow)
+    {
+        if (config.getValue("windowmenu0", "") == "")
+        {
+            for (std::map <std::string, ButtonInfo*>::iterator
+                 it = mButtonNames.begin(),
+                 it_end = mButtonNames.end(); it != it_end; ++it)
+            {
+                ButtonInfo *info = (*it).second;
+                if (!info || !info->button || info->visible)
+                    continue;
+                info->button->setVisible(false);
+            }
+            updateButtons();
+            return;
+        }
+
+        for (int f = 0; f < 30; f ++)
+        {
+            std::string str = config.getValue("windowmenu" + toString(f), "");
+            if (str == "" || str == "SET")
+                continue;
+            ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
+                mButtonNames[str]);
+            if (!info || !info->button)
+                continue;
+            info->button->setVisible(false);
+        }
+    }
+    else
     {
         for (std::map <std::string, ButtonInfo*>::iterator
              it = mButtonNames.begin(),
              it_end = mButtonNames.end(); it != it_end; ++it)
         {
             ButtonInfo *info = (*it).second;
-            if (!info || !info->button || info->visible)
+            if (!info || !info->button)
                 continue;
-            info->button->setVisible(false);
+            Button *const button = info->button;
+            const std::string &str = button->getActionEventId();
+            button->setVisible(str == "SET" || str == "WIN");
         }
-        updateButtons();
-        return;
-    }
-
-    for (int f = 0; f < 30; f ++)
-    {
-        std::string str = config.getValue("windowmenu" + toString(f), "");
-        if (str == "" || str == "SET")
-            continue;
-        ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
-            mButtonNames[str]);
-        if (!info || !info->button)
-            continue;
-        info->button->setVisible(false);
     }
     updateButtons();
 }

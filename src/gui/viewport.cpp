@@ -822,6 +822,11 @@ void Viewport::showLinkPopup(const std::string &link)
     mPopupMenu->showLinkPopup(getMouseX(), getMouseY(), link);
 }
 
+void Viewport::showWindowsPopup()
+{
+    mPopupMenu->showWindowsPopup(getMouseX(), getMouseY());
+}
+
 void Viewport::closePopupMenu()
 {
     if (mPopupMenu)

@@ -301,6 +301,11 @@ static SetupActionData setupActionData1[] =
 static SetupActionData setupActionData2[] =
 {
     {
+        N_("Show Windows Menu"),
+        Input::KEY_SHOW_WINDOWS,
+        "",
+    },
+    {
         N_("Hide Windows"),
         Input::KEY_HIDE_WINDOWS,
         "",

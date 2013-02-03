@@ -41,9 +41,9 @@ class Window;
 
 struct ButtonInfo final
 {
-    ButtonInfo(Button *button0, Window *window0, bool visible0) :
+    ButtonInfo(Button *const button0, const int key0, const bool visible0) :
         button(button0),
-        window(window0),
+        key(key0),
         visible(visible0)
     {
     }
@@ -51,8 +51,22 @@ struct ButtonInfo final
     A_DELETE_COPY(ButtonInfo)
 
     Button *button;
-    Window *window;
+    int key;
     bool visible;
+};
+
+struct ButtonText final
+{
+    ButtonText(const std::string &text0, const int key0) :
+        text(text0),
+        key(key0)
+    {
+    }
+
+    A_DELETE_COPY(ButtonText)
+
+    std::string text;
+    int key;
 };
 
 /**
@@ -88,6 +102,9 @@ class WindowMenu final : public Container,
         std::vector <Button*> &getButtons() A_WARN_UNUSED
         { return mButtons; }
 
+        std::vector <ButtonText*> &getButtonTexts() A_WARN_UNUSED
+        { return mButtonTexts; }
+
         void showButton(const std::string &name, const bool visible);
 
         void loadButtons();
@@ -103,7 +120,6 @@ class WindowMenu final : public Container,
         inline void addButton(const char *const text,
                               const std::string &description,
                               int &x, int &h, const int key,
-                              Window *window,
                               const bool visible = true);
 
         void updateButtons();
@@ -113,9 +129,11 @@ class WindowMenu final : public Container,
         int mSpacing;
         TextPopup *mTextPopup;
         std::vector <Button*> mButtons;
+        std::vector <ButtonText*> mButtonTexts;
         std::map <std::string, ButtonInfo*> mButtonNames;
         bool mHaveMouse;
         int mAutoHide;
+        bool mSmallWindow;
 };
 
 extern WindowMenu *windowMenu;

@@ -339,6 +339,7 @@ namespace Input
         KEY_SAFE_VIDEO,
         KEY_STOP_SIT,
         KEY_SHOW_KEYBOARD,
+        KEY_SHOW_WINDOWS,
         KEY_TOTAL
     };
 }

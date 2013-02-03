@@ -187,6 +187,8 @@ class Viewport final : public WindowContainer,
 
         void showLinkPopup(const std::string &link);
 
+        void showWindowsPopup();
+
         /**
          * Closes the popup menu. Needed for when the player dies or switching
          * maps.

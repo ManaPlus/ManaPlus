@@ -27,6 +27,7 @@
 #include "game.h"
 #include "guild.h"
 #include "guildmanager.h"
+#include "inputmanager.h"
 #include "item.h"
 #include "itemshortcut.h"
 #include "localplayer.h"
@@ -1620,6 +1621,12 @@ void PopupMenu::handleLink(const std::string &link,
         if (miniStatusWindow)
             miniStatusWindow->showBar(link.substr(9), true);
     }
+    else if (!link.compare(0, 12, "show window_"))
+    {
+        const int id = atoi(link.substr(12).c_str());
+        if (id >= 0)
+            inputManager.executeAction(id);
+    }
     // Unknown actions
     else if (link != "cancel")
     {
@@ -2098,6 +2105,30 @@ void PopupMenu::showLinkPopup(const int x, const int y,
 
     mBrowserBox->addRow("open link", _("Open link"));
     mBrowserBox->addRow("clipboard link", _("Copy to clipboard"));
+    mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(x, y);
+}
+
+void PopupMenu::showWindowsPopup(const int x, const int y)
+{
+    mX = x;
+    mY = y;
+
+    mBrowserBox->clearRows();
+    const std::vector<ButtonText*> &names = windowMenu->getButtonTexts();
+    mBrowserBox->addRow(_("Show window"));
+
+    FOR_EACH (std::vector<ButtonText*>::const_iterator, it, names)
+    {
+        const ButtonText *const btn = *it;
+        if (!btn)
+            continue;
+
+        mBrowserBox->addRow(strprintf("show window_%d", btn->key),
+            btn->text.c_str());
+    }
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("cancel", _("Cancel"));
 

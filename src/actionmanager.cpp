@@ -1093,4 +1093,9 @@ impHandler0(showKeyboard)
 #endif
 }
 
+impHandler0(showWindows)
+{
+    viewport->showWindowsPopup();
+}
+
 }
