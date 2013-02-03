@@ -42,7 +42,7 @@ class ItemContainer;
 class Label;
 class LayoutCell;
 class ProgressBar;
-class SortListModel;
+class SortListModelInv;
 class TabStrip;
 class TextField;
 
@@ -174,7 +174,7 @@ class InventoryWindow final : public Window,
         ProgressBar *mWeightBar;
         ProgressBar *mSlotsBar;
         TabStrip *mFilter;
-        SortListModel *mSortModel;
+        SortListModelInv *mSortModel;
         DropDown *mSortDropDown;
         TextField *mNameFilter;
         LayoutCell *mSortDropDownCell;

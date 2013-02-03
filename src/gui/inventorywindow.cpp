@@ -58,7 +58,7 @@
 
 #include "debug.h"
 
-static const char *SORT_NAME[6] =
+static const char *SORT_NAME_INVENTORY[6] =
 {
     N_("default"),
     N_("by name"),
@@ -68,10 +68,10 @@ static const char *SORT_NAME[6] =
     N_("by type")
 };
 
-class SortListModel final : public gcn::ListModel
+class SortListModelInv final : public gcn::ListModel
 {
 public:
-    virtual ~SortListModel()
+    virtual ~SortListModelInv()
     { }
 
     virtual int getNumberOfElements()
@@ -82,7 +82,7 @@ public:
         if (i >= getNumberOfElements() || i < 0)
             return _("???");
 
-        return gettext(SORT_NAME[i]);
+        return gettext(SORT_NAME_INVENTORY[i]);
     }
 };
 
@@ -107,7 +107,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mWeightBar(nullptr),
     mSlotsBar(new ProgressBar(this, 0.0f, 100, 0, Theme::PROG_INVY_SLOTS)),
     mFilter(nullptr),
-    mSortModel(new SortListModel),
+    mSortModel(new SortListModelInv),
     mSortDropDown(new DropDown(this, mSortModel, false, false, this, "sort")),
     mNameFilter(new TextField(this, "", true, this, "namefilter", true)),
     mSortDropDownCell(nullptr),

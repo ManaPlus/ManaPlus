@@ -49,7 +49,7 @@
 
 #include "debug.h"
 
-static const char *SORT_NAME[7] =
+static const char *SORT_NAME_BUY[7] =
 {
     N_("unsorted"),
     N_("by price"),
@@ -60,10 +60,10 @@ static const char *SORT_NAME[7] =
     N_("by type")
 };
 
-class SortListModel final : public gcn::ListModel
+class SortListModelBuy final : public gcn::ListModel
 {
 public:
-    virtual ~SortListModel()
+    virtual ~SortListModelBuy()
     { }
 
     virtual int getNumberOfElements()
@@ -74,11 +74,11 @@ public:
         if (i >= getNumberOfElements() || i < 0)
             return _("???");
 
-        return gettext(SORT_NAME[i]);
+        return gettext(SORT_NAME_BUY[i]);
     }
 };
 
-static class SortItemPriceFunctor final
+class SortItemPriceFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -93,9 +93,9 @@ static class SortItemPriceFunctor final
                 return item1->getDisplayName() < item2->getDisplayName();
             return price1 < price2;
         }
-} itemPriceSorter;
+} itemPriceBuySorter;
 
-static class SortItemNameFunctor final
+class SortItemNameFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -110,9 +110,9 @@ static class SortItemNameFunctor final
                 return item1->getPrice() < item2->getPrice();
             return name1 < name2;
         }
-} itemNameSorter;
+} itemNameBuySorter;
 
-static class SortItemIdFunctor final
+class SortItemIdFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -127,9 +127,9 @@ static class SortItemIdFunctor final
                 return item1->getPrice() < item2->getPrice();
             return id1 < id2;
         }
-} itemIdSorter;
+} itemIdBuySorter;
 
-static class SortItemWeightFunctor final
+class SortItemWeightFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -144,9 +144,9 @@ static class SortItemWeightFunctor final
                 return item1->getPrice() < item2->getPrice();
             return weight1 < weight2;
         }
-} itemWeightSorter;
+} itemWeightBuySorter;
 
-static class SortItemAmountFunctor final
+class SortItemAmountFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -161,9 +161,9 @@ static class SortItemAmountFunctor final
                 return item1->getPrice() < item2->getPrice();
             return amount1 < amount2;
         }
-} itemAmountSorter;
+} itemAmountBuySorter;
 
-static class SortItemTypeFunctor final
+class SortItemTypeFunctor final
 {
     public:
         bool operator() (const ShopItem *const item1,
@@ -178,7 +178,7 @@ static class SortItemTypeFunctor final
                 return item1->getPrice() < item2->getPrice();
             return type1 < type2;
         }
-} itemTypeSorter;
+} itemTypeBuySorter;
 
 BuyDialog::DialogList BuyDialog::instances;
 
@@ -198,7 +198,7 @@ BuyDialog::BuyDialog(std::string nick) :
     gcn::ActionListener(),
     gcn::SelectionListener(),
     mNpcId(-1), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(nick),
-    mSortModel(new SortListModel),
+    mSortModel(new SortListModelBuy),
     mSortDropDown(new DropDown(this, mSortModel, false, false, this, "sort"))
 {
     init();
@@ -345,22 +345,22 @@ void BuyDialog::action(const gcn::ActionEvent &event)
             switch (mSortDropDown->getSelected())
             {
                 case 1:
-                    std::sort(items.begin(), items.end(), itemPriceSorter);
+                    std::sort(items.begin(), items.end(), itemPriceBuySorter);
                     break;
                 case 2:
-                    std::sort(items.begin(), items.end(), itemNameSorter);
+                    std::sort(items.begin(), items.end(), itemNameBuySorter);
                     break;
                 case 3:
-                    std::sort(items.begin(), items.end(), itemIdSorter);
+                    std::sort(items.begin(), items.end(), itemIdBuySorter);
                     break;
                 case 4:
-                    std::sort(items.begin(), items.end(), itemWeightSorter);
+                    std::sort(items.begin(), items.end(), itemWeightBuySorter);
                     break;
                 case 5:
-                    std::sort(items.begin(), items.end(), itemAmountSorter);
+                    std::sort(items.begin(), items.end(), itemAmountBuySorter);
                     break;
                 case 6:
-                    std::sort(items.begin(), items.end(), itemTypeSorter);
+                    std::sort(items.begin(), items.end(), itemTypeBuySorter);
                     break;
                 case 0:
                 default:

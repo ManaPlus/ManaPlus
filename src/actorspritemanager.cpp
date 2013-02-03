@@ -51,7 +51,7 @@
 #define for_actors for (ActorSpritesConstIterator it = mActors.begin(), \
     it_end = mActors.end() ; it != it_end; ++it)
 
-static class FindBeingFunctor final
+class FindBeingFunctor final
 {
     public:
         bool operator() (const ActorSprite *const actor) const
@@ -75,9 +75,9 @@ static class FindBeingFunctor final
 
         uint16_t x, y;
         ActorSprite::Type type;
-} beingFinder;
+} beingActorFinder;
 
-static class FindBeingEqualFunctor final
+class FindBeingEqualFunctor final
 {
     public:
         bool operator() (const Being *const being) const
@@ -88,9 +88,9 @@ static class FindBeingEqualFunctor final
         }
 
         Being *findBeing;
-} beingEqualFinder;
+} beingEqualActorFinder;
 
-static class SortBeingFunctor final
+class SortBeingFunctor final
 {
     public:
         bool operator() (const Being *const being1,
@@ -178,7 +178,7 @@ static class SortBeingFunctor final
         int defaultPriorityIndex;
         bool specialDistance;
         int attackRange;
-} beingSorter;
+} beingActorSorter;
 
 ActorSpriteManager::ActorSpriteManager() :
     mMap(nullptr),
@@ -301,12 +301,12 @@ Being *ActorSpriteManager::findBeing(const int id) const
 Being *ActorSpriteManager::findBeing(const int x, const int y,
                                      const ActorSprite::Type type) const
 {
-    beingFinder.x = static_cast<uint16_t>(x);
-    beingFinder.y = static_cast<uint16_t>(y);
-    beingFinder.type = type;
+    beingActorFinder.x = static_cast<uint16_t>(x);
+    beingActorFinder.y = static_cast<uint16_t>(y);
+    beingActorFinder.type = type;
 
     const ActorSpritesConstIterator it = std::find_if(
-        mActors.begin(), mActors.end(), beingFinder);
+        mActors.begin(), mActors.end(), beingActorFinder);
 
     return (it == mActors.end()) ? nullptr : static_cast<Being*>(*it);
 }
@@ -880,10 +880,10 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
         ignoreAttackMobs = mIgnoreAttackMobsSet;
         attackMobsMap = mAttackMobsMap;
         priorityMobsMap = mPriorityAttackMobsMap;
-        beingSorter.attackBeings = &attackMobsMap;
-        beingSorter.priorityBeings = &priorityMobsMap;
-        beingSorter.specialDistance = specialDistance;
-        beingSorter.attackRange = attackRange;
+        beingActorSorter.attackBeings = &attackMobsMap;
+        beingActorSorter.priorityBeings = &priorityMobsMap;
+        beingActorSorter.specialDistance = specialDistance;
+        beingActorSorter.attackRange = attackRange;
         if (ignoreAttackMobs.find("") != ignoreAttackMobs.end())
             ignoreDefault = true;
         std::map<std::string, int>::const_iterator
@@ -941,25 +941,25 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
         if (sortedBeings.empty())
             return nullptr;
 
-        beingSorter.x = x;
-        beingSorter.y = y;
+        beingActorSorter.x = x;
+        beingActorSorter.y = y;
         if (filtered)
         {
-            beingSorter.attackBeings = &attackMobsMap;
-            beingSorter.defaultAttackIndex = defaultAttackIndex;
-            beingSorter.priorityBeings = &priorityMobsMap;
-            beingSorter.defaultPriorityIndex = defaultPriorityIndex;
+            beingActorSorter.attackBeings = &attackMobsMap;
+            beingActorSorter.defaultAttackIndex = defaultAttackIndex;
+            beingActorSorter.priorityBeings = &priorityMobsMap;
+            beingActorSorter.defaultPriorityIndex = defaultPriorityIndex;
         }
         else
         {
-            beingSorter.attackBeings = nullptr;
-            beingSorter.priorityBeings = nullptr;
+            beingActorSorter.attackBeings = nullptr;
+            beingActorSorter.priorityBeings = nullptr;
         }
-        std::sort(sortedBeings.begin(), sortedBeings.end(), beingSorter);
+        std::sort(sortedBeings.begin(), sortedBeings.end(), beingActorSorter);
         if (filtered)
         {
-            beingSorter.attackBeings = nullptr;
-            beingSorter.priorityBeings = nullptr;
+            beingActorSorter.attackBeings = nullptr;
+            beingActorSorter.priorityBeings = nullptr;
         }
 
         if (player_node->getTarget() == nullptr)
@@ -975,9 +975,9 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
             return target;
         }
 
-        beingEqualFinder.findBeing = player_node->getTarget();
+        beingEqualActorFinder.findBeing = player_node->getTarget();
         std::vector<Being*>::const_iterator i = std::find_if(
-            sortedBeings.begin(), sortedBeings.end(), beingEqualFinder);
+            sortedBeings.begin(), sortedBeings.end(), beingEqualActorFinder);
 
         if (i == sortedBeings.end() || ++i == sortedBeings.end())
         {

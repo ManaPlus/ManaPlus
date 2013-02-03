@@ -62,7 +62,7 @@ class ItemIdPair final
         Item* mItem;
 };
 
-static class SortItemAlphaFunctor final
+class SortItemAlphaFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -74,9 +74,9 @@ static class SortItemAlphaFunctor final
             return (pair1->mItem->getInfo().getName()
                     < pair2->mItem->getInfo().getName());
         }
-} itemAlphaSorter;
+} itemAlphaInvSorter;
 
-static class SortItemIdFunctor final
+class SortItemIdFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -87,9 +87,9 @@ static class SortItemIdFunctor final
 
             return pair1->mItem->getId() < pair2->mItem->getId();
         }
-} itemIdSorter;
+} itemIdInvSorter;
 
-static class SortItemWeightFunctor final
+class SortItemWeightFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -107,9 +107,9 @@ static class SortItemWeightFunctor final
             }
             return w1 < w2;
         }
-} itemWeightSorter;
+} itemWeightInvSorter;
 
-static class SortItemAmountFunctor final
+class SortItemAmountFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -127,9 +127,9 @@ static class SortItemAmountFunctor final
             }
             return c1 < c2;
         }
-} itemAmountSorter;
+} itemAmountInvSorter;
 
-static class SortItemTypeFunctor final
+class SortItemTypeFunctor final
 {
     public:
         bool operator() (const ItemIdPair *const pair1,
@@ -147,7 +147,7 @@ static class SortItemTypeFunctor final
             }
             return t1 < t2;
         }
-} itemTypeSorter;
+} itemTypeInvSorter;
 
 ItemContainer::ItemContainer(const Widget2 *const widget,
                              Inventory *const inventory,
@@ -554,21 +554,23 @@ void ItemContainer::updateMatrix()
         default:
             break;
         case 1:
-            std::sort(sortedItems.begin(), sortedItems.end(), itemAlphaSorter);
+            std::sort(sortedItems.begin(), sortedItems.end(),
+                itemAlphaInvSorter);
             break;
         case 2:
-            std::sort(sortedItems.begin(), sortedItems.end(), itemIdSorter);
+            std::sort(sortedItems.begin(), sortedItems.end(), itemIdInvSorter);
             break;
         case 3:
             std::sort(sortedItems.begin(), sortedItems.end(),
-                itemWeightSorter);
+                itemWeightInvSorter);
             break;
         case 4:
             std::sort(sortedItems.begin(), sortedItems.end(),
-                itemAmountSorter);
+                itemAmountInvSorter);
             break;
         case 5:
-            std::sort(sortedItems.begin(), sortedItems.end(), itemTypeSorter);
+            std::sort(sortedItems.begin(), sortedItems.end(),
+                itemTypeInvSorter);
             break;
     }
 

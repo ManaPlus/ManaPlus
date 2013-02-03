@@ -61,7 +61,7 @@ static class KeyFunctor final
 
         const KeyData *keys;
 
-} keySorter;
+} keyDataSorter;
 
 
 InputManager::InputManager() :
@@ -664,12 +664,12 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
         }
     }
 
-    keySorter.keys = &keyData[0];
+    keyDataSorter.keys = &keyData[0];
     FOR_EACH (KeyToActionMapIter, it, actionMap)
     {
         KeysVector *const keys = &it->second;
         if (keys && keys->size() > 1)
-            std::sort(keys->begin(), keys->end(), keySorter);
+            std::sort(keys->begin(), keys->end(), keyDataSorter);
     }
 }
 

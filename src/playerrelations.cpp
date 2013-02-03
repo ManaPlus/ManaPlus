@@ -49,7 +49,7 @@ typedef PlayerRelations::const_iterator PlayerRelationsCIter;
 typedef std::list<PlayerRelationsListener *> PlayerRelationListeners;
 typedef PlayerRelationListeners::const_iterator PlayerRelationListenersCIter;
 
-static class SortPlayersFunctor final
+class SortPlayersFunctor final
 {
     public:
         bool operator() (const std::string &str1,
@@ -63,7 +63,7 @@ static class SortPlayersFunctor final
                 return str1 < str2;
             return s1 < s2;
         }
-} playersSorter;
+} playersRelSorter;
 
 // (De)serialisation class
 class PlayerConfSerialiser final :
@@ -352,7 +352,7 @@ StringVect * PlayerRelationsManager::getPlayers()
             retval->push_back(it->first);
     }
 
-    std::sort(retval->begin(), retval->end(), playersSorter);
+    std::sort(retval->begin(), retval->end(), playersRelSorter);
 
     return retval;
 }
@@ -368,7 +368,7 @@ StringVect *PlayerRelationsManager::getPlayersByRelation(
             retval->push_back(it->first);
     }
 
-    std::sort(retval->begin(), retval->end(), playersSorter);
+    std::sort(retval->begin(), retval->end(), playersRelSorter);
 
     return retval;
 }
