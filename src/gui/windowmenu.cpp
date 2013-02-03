@@ -149,7 +149,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 #endif
     // TRANSLATORS: short button name for windows list menu.
     addButton(N_("WIN"),
-        _("Windows"), x, h, Input::KEY_SHOW_WINDOWS);
+        _("Windows"), x, h, Input::KEY_SHOW_WINDOWS, false);
     // TRANSLATORS: short button name for setup window.
     addButton(N_("SET"),
         _("Setup"), x, h, Input::KEY_WINDOW_SETUP);
