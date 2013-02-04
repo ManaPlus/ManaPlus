@@ -23,6 +23,7 @@
 #include "imageparticle.h"
 
 #include "graphics.h"
+#include "logger.h"
 
 #include "resources/image.h"
 
@@ -38,16 +39,13 @@ ImageParticle::ImageParticle(Map *const map, Image *const image):
     {
         mImage->incRef();
 
-        std::string name = mImage->getIdPath();
-        if (ImageParticle::imageParticleCountByName.find(name)
-            == ImageParticle::imageParticleCountByName.end())
-        {
+        const std::string &name = mImage->getIdPath();
+        std::map<std::string, int>::iterator it
+            = ImageParticle::imageParticleCountByName.find(name);
+        if (it == ImageParticle::imageParticleCountByName.end())
             ImageParticle::imageParticleCountByName[name] = 1;
-        }
         else
-        {
-            ImageParticle::imageParticleCountByName[name] ++;
-        }
+            (*it).second ++;
     }
 }
 
@@ -55,9 +53,15 @@ ImageParticle::~ImageParticle()
 {
     if (mImage)
     {
-        std::string name = mImage->getIdPath();
-        if (ImageParticle::imageParticleCountByName[name] > 0)
-            ImageParticle::imageParticleCountByName[name] --;
+        const std::string &name = mImage->getIdPath();
+        std::map<std::string, int>::iterator it
+            = ImageParticle::imageParticleCountByName.find(name);
+        if (it != ImageParticle::imageParticleCountByName.end())
+        {
+            int &cnt = (*it).second;
+            if (cnt > 0)
+                cnt --;
+        }
 
         mImage->decRef();
         mImage = nullptr;
