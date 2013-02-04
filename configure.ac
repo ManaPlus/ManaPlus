@@ -307,6 +307,7 @@ Makefile
 PKGBUILD
 src/Makefile
 data/Makefile
+data/evol/evol.desktop
 data/evol/Makefile
 data/fonts/Makefile
 data/graphics/Makefile
@@ -326,6 +327,7 @@ data/themes/mana/Makefile
 data/themes/pink/Makefile
 data/themes/unity/Makefile
 data/themes/wood/Makefile
+data/tmw/tmw.desktop
 data/tmw/Makefile
 data/help/Makefile
 data/help/tips/Makefile
