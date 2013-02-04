@@ -326,6 +326,7 @@ data/themes/mana/Makefile
 data/themes/pink/Makefile
 data/themes/unity/Makefile
 data/themes/wood/Makefile
+data/tmw/Makefile
 data/help/Makefile
 data/help/tips/Makefile
 data/icons/Makefile

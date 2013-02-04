@@ -11,3 +11,4 @@
  sure this game can't ever run away from you.>>
 
  -> @@team|<<Manaplus Developers>>@@
+ -> @@about-tmw|<<About The Mana World>>@@
