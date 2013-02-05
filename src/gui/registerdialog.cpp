@@ -24,6 +24,8 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "keydata.h"
+#include "keyevent.h"
 
 #include "gui/logindialog.h"
 #include "gui/okdialog.h"
@@ -270,7 +272,26 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
 
 void RegisterDialog::keyPressed(gcn::KeyEvent &keyEvent A_UNUSED)
 {
-    mRegisterButton->setEnabled(canSubmit());
+    if (keyEvent.isConsumed())
+    {
+        mRegisterButton->setEnabled(canSubmit());
+        return;
+    }
+    const int actionId = static_cast<KeyEvent*>(
+        &keyEvent)->getActionId();
+    if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
+    {
+        action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
+    }
+    else if (actionId == static_cast<int>(Input::KEY_GUI_SELECT)
+             || actionId == static_cast<int>(Input::KEY_GUI_SELECT2))
+    {
+        action(gcn::ActionEvent(nullptr, mRegisterButton->getActionEventId()));
+    }
+    else
+    {
+        mRegisterButton->setEnabled(canSubmit());
+    }
 }
 
 bool RegisterDialog::canSubmit() const
