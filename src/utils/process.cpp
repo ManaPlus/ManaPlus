@@ -233,18 +233,22 @@ bool openBrowser(std::string url)
     return (int)ShellExecute(nullptr, "open", url.c_str(), nullptr,
         nullptr, SW_SHOWNORMAL) > 32;
 }
-
-#elif defined __linux__ || defined __linux
+#elif defined ANDROID
+#include <SDL_screenkeyboard.h>
 bool openBrowser(std::string url)
 {
-    return execFile("/usr/bin/xdg-open", "/usr/bin/xdg-open", url, "");
+    SDL_ANDROID_OpenBrowser(url.c_str());
 }
 #elif defined __APPLE__
 bool openBrowser(std::string url)
 {
     return execFile("/usr/bin/open", "/usr/bin/open", url, "");
 }
-
+#elif defined __linux__ || defined __linux
+bool openBrowser(std::string url)
+{
+    return execFile("/usr/bin/xdg-open", "/usr/bin/xdg-open", url, "");
+}
 #else
 bool openBrowser(std::string url)
 {
