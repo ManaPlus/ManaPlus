@@ -1728,7 +1728,7 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         Input::KEY_NO_VALUE, 50,
         COND_GAME | COND_VALIDSPEED | COND_EMODS},
     {"keyInvertDirection",
-        INPUT_KEYBOARD, SDLK_KP0,
+        INPUT_KEYBOARD, Input::KEY_NO_VALUE,
         INPUT_UNKNOWN, Input::KEY_NO_VALUE,
         Input::GRP_DEFAULT,
         &ActionManager::changeMoveType,
