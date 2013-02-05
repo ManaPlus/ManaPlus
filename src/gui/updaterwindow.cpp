@@ -367,7 +367,9 @@ void UpdaterWindow::loadPatch()
         {
 #if defined(ANDROID)
             mBrowserBox->addRow("", true);
-            mBrowserBox->addRow("##1You can download from Google Play", true);
+            mBrowserBox->addRow("##1You can download from [[@@"
+                "https://play.google.com/store/apps/details?id=org.evolonline"
+                ".beta.manaplus|Google Play@@]", true);
             mBrowserBox->addRow("##1ManaPlus updated.", true);
 #elif defined(WIN32)
             mBrowserBox->addRow("", true);
