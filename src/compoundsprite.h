@@ -107,10 +107,10 @@ public:
 
     void ensureSize(size_t layerCount);
 
-    virtual void drawSprites(Graphics* graphics,
+    virtual void drawSprites(Graphics *const graphics,
                              int posX, int posY) const;
 
-    virtual void drawSpritesSDL(Graphics* graphics,
+    virtual void drawSpritesSDL(Graphics *const graphics,
                                 int posX, int posY) const;
 
     /**

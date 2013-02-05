@@ -605,10 +605,10 @@ class Being : public ActorSprite, public ConfigListener
         int getEmotion() const A_WARN_UNUSED
         { return mEmotion; }
 
-        virtual void drawSprites(Graphics* graphics,
+        virtual void drawSprites(Graphics *const  graphics,
                                  int posX, int posY) const override;
 
-        virtual void drawSpritesSDL(Graphics* graphics,
+        virtual void drawSpritesSDL(Graphics *const graphics,
                                     int posX, int posY) const override;
 
         void drawHpBar(Graphics *const graphics, const int x, const int y,
@@ -677,7 +677,7 @@ class Being : public ActorSprite, public ConfigListener
         bool canTalk() const A_WARN_UNUSED
         { return mType == NPC; }
 
-        void talkTo();
+        void talkTo() const;
 
         bool draw(Graphics *const graphics,
                   const int offsetX, const int offsetY) const override;
@@ -873,6 +873,8 @@ class Being : public ActorSprite, public ConfigListener
 
         void showName();
 
+        static int getDefaultEffectId(const int type);
+
         BeingInfo *mInfo;
 
         int mActionTime;      /**< Time spent in current action */
@@ -939,14 +941,14 @@ class Being : public ActorSprite, public ConfigListener
         int getOffset(const signed char pos,
                       const signed char neg) const A_WARN_UNUSED;
 
-        int searchSlotValue(std::vector<int> &slotRemap,
+        int searchSlotValue(const std::vector<int> &slotRemap,
                             const int val) const A_WARN_UNUSED;
 
         void searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
                                 std::vector<int> &slotRemap,
                                 const int val) const;
 
-        void dumpSprites();
+        void dumpSprites() const;
 
         const Type mType;
 

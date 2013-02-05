@@ -143,7 +143,8 @@ bool CompoundSprite::draw(Graphics *const graphics,
     return false;
 }
 
-void CompoundSprite::drawSprites(Graphics* graphics, int posX, int posY) const
+void CompoundSprite::drawSprites(Graphics *const graphics,
+                                 const int posX, const int posY) const
 {
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
@@ -155,8 +156,8 @@ void CompoundSprite::drawSprites(Graphics* graphics, int posX, int posY) const
     }
 }
 
-void CompoundSprite::drawSpritesSDL(Graphics* graphics,
-                                    int posX, int posY) const
+void CompoundSprite::drawSpritesSDL(Graphics *const graphics,
+                                    const int posX, const int posY) const
 {
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {

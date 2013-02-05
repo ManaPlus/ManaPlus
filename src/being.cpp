@@ -338,7 +338,8 @@ void Being::setSubtype(const uint16_t subtype)
             setRaceName(info.getName());
         }
 
-        setSprite(Net::getCharHandler()->baseSprite(), id);
+        if (Net::getCharHandler())
+            setSprite(Net::getCharHandler()->baseSprite(), id);
     }
 }
 
@@ -457,8 +458,9 @@ void Being::setSpeech(const std::string &text, int time)
     if (mSpeech.empty())
         return;
 
-    if (!time && mSpeech.size() < 200)
-        time = static_cast<int>(SPEECH_TIME - 300 + (3 * mSpeech.size()));
+    const int sz = mSpeech.size();
+    if (!time && sz < 200)
+        time = static_cast<int>(SPEECH_TIME - 300 + (3 * sz));
 
     if (time < static_cast<int>(SPEECH_MIN_TIME))
         time = static_cast<int>(SPEECH_MIN_TIME);
@@ -520,7 +522,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
         return;
 
     gcn::Font *font = nullptr;
-    std::string damage = amount ? toString(amount) : type == FLEE ?
+    const std::string damage = amount ? toString(amount) : type == FLEE ?
             _("dodge") : _("miss");
     const gcn::Color *color;
 
@@ -645,7 +647,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
 
         if (effectManager)
         {
-            int hitEffectId = getHitEffect(attacker, type, attackId);
+            const int hitEffectId = getHitEffect(attacker, type, attackId);
             if (hitEffectId >= 0)
                 effectManager->trigger(hitEffectId, this);
         }
@@ -654,7 +656,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
     {
         if (effectManager)
         {
-            int hitEffectId = getHitEffect(attacker,
+            const int hitEffectId = getHitEffect(attacker,
                 MISS, attackId);
             if (hitEffectId >= 0)
                 effectManager->trigger(hitEffectId, this);
@@ -673,50 +675,47 @@ int Being::getHitEffect(const Being *const attacker,
     int hitEffectId = 0;
     if (type != SKILL)
     {
-        const ItemInfo *attackerWeapon = attacker->getEquippedWeapon();
-        if (attackerWeapon && attacker->getType() == PLAYER)
+        if (attacker)
         {
-            if (type == MISS)
-                hitEffectId = attackerWeapon->getMissEffectId();
-            else if (type != CRITICAL)
-                hitEffectId = attackerWeapon->getHitEffectId();
-            else
-                hitEffectId = attackerWeapon->getCriticalHitEffectId();
-        }
-        else if (attacker && attacker->getType() == MONSTER)
-        {
-            const BeingInfo *const info = attacker->getInfo();
-            if (info)
+            const ItemInfo *attackerWeapon = attacker->getEquippedWeapon();
+            if (attackerWeapon && attacker->getType() == PLAYER)
             {
-                const Attack *atk = info->getAttack(attackId);
-                if (atk)
-                {
-                    if (type == MISS)
-                        hitEffectId = atk->mMissEffectId;
-                    else if (type != CRITICAL)
-                        hitEffectId = atk->mHitEffectId;
-                    else
-                        hitEffectId = atk->mCriticalHitEffectId;
-                }
+                if (type == MISS)
+                    hitEffectId = attackerWeapon->getMissEffectId();
+                else if (type != CRITICAL)
+                    hitEffectId = attackerWeapon->getHitEffectId();
                 else
+                    hitEffectId = attackerWeapon->getCriticalHitEffectId();
+            }
+            else if (attacker->getType() == MONSTER)
+            {
+                const BeingInfo *const info = attacker->getInfo();
+                if (info)
                 {
-                    if (type == MISS)
-                        hitEffectId = paths.getIntValue("missEffectId");
-                    else if (type != CRITICAL)
-                        hitEffectId = paths.getIntValue("hitEffectId");
+                    const Attack *atk = info->getAttack(attackId);
+                    if (atk)
+                    {
+                        if (type == MISS)
+                            hitEffectId = atk->mMissEffectId;
+                        else if (type != CRITICAL)
+                            hitEffectId = atk->mHitEffectId;
+                        else
+                            hitEffectId = atk->mCriticalHitEffectId;
+                    }
                     else
-                        hitEffectId = paths.getIntValue("criticalHitEffectId");
+                    {
+                        hitEffectId = getDefaultEffectId(type);
+                    }
                 }
+            }
+            else
+            {
+                hitEffectId = getDefaultEffectId(type);
             }
         }
         else
         {
-            if (type == MISS)
-                hitEffectId = paths.getIntValue("missEffectId");
-            else if (type != CRITICAL)
-                hitEffectId = paths.getIntValue("hitEffectId");
-            else
-                hitEffectId = paths.getIntValue("criticalHitEffectId");
+            hitEffectId = getDefaultEffectId(type);
         }
     }
     else
@@ -725,6 +724,16 @@ int Being::getHitEffect(const Being *const attacker,
         hitEffectId = attackId + 100000;
     }
     return hitEffectId;
+}
+
+int Being::getDefaultEffectId(const int type)
+{
+    if (type == MISS)
+        return paths.getIntValue("missEffectId");
+    else if (type != CRITICAL)
+        return paths.getIntValue("hitEffectId");
+    else
+        return paths.getIntValue("criticalHitEffectId");
 }
 
 void Being::handleAttack(Being *const victim, const int damage,
@@ -1110,12 +1119,13 @@ void Being::setAction(const Action &action, const int attackId)
                 //attack particle effect
                 if (Particle::enabled)
                 {
-                    int effectId = mInfo->getAttack(attackId)->mEffectId;
+                    const int effectId = mInfo->getAttack(attackId)->mEffectId;
 
-                    int rotation = 0;
+                    int rotation;
                     switch (mSpriteDirection)
                     {
                         case DIRECTION_DOWN:
+                        default:
                             rotation = 0;
                             break;
                         case DIRECTION_LEFT:
@@ -1126,8 +1136,6 @@ void Being::setAction(const Action &action, const int attackId)
                             break;
                         case DIRECTION_RIGHT:
                             rotation = 270;
-                            break;
-                        default:
                             break;
                     }
                     if (effectManager && effectId >= 0)
@@ -1416,45 +1424,6 @@ void Being::logic()
                         / mAttackSpeed;
                 }
 
-/*
-                //attack particle effect
-                if (mEquippedWeapon)
-                {
-                    particleEffect = mEquippedWeapon->getParticleEffect();
-
-                    if (!particleEffect.empty() &&
-                        findSameSubstring(particleEffect,
-                        paths.getStringValue("particles")).empty())
-                    {
-                        particleEffect = paths.getStringValue("particles")
-                                         + particleEffect;
-                    }
-                }
-                else if (mInfo && mInfo->getAttack(mAttackType))
-                {
-                    particleEffect = mInfo->getAttack(mAttackType)
-                        ->particleEffect;
-                }
-
-                if (particleEngine && !particleEffect.empty()
-                    && Particle::enabled && curFrame == 1)
-                {
-                    int rotation = 0;
-
-                    switch (mDirection)
-                    {
-                        case DOWN: rotation = 0; break;
-                        case LEFT: rotation = 90; break;
-                        case UP: rotation = 180; break;
-                        case RIGHT: rotation = 270; break;
-                        default: break;
-                    }
-                    Particle *const p = particleEngine->addEffect(
-                        particleEffect, 0, 0, rotation);
-                    controlParticle(p);
-                }
-*/
-
                 if (this == player_node && curFrame >= frameCount)
                     nextTile();
 
@@ -1476,7 +1445,6 @@ void Being::logic()
 
     ActorSprite::logic();
 
-//    int frameCount = static_cast<int>(getFrameCount());
     if (frameCount < 10)
         frameCount = 10;
 
@@ -1503,8 +1471,10 @@ void Being::drawEmotion(Graphics *const graphics, const int offsetX,
 
     if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
     {
-        if (EmoteDB::getAnimation2(emotionIndex, true))
-            EmoteDB::getAnimation2(emotionIndex)->draw(graphics, px, py);
+        const AnimatedSprite *const sprite = EmoteDB::getAnimation2(
+            emotionIndex, true);
+        if (sprite)
+            sprite->draw(graphics, px, py);
         else
             mEmotion = 0;
     }
@@ -1560,7 +1530,6 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
     }
 }
 
-/** TODO: eAthena only */
 int Being::getOffset(const signed char pos, const signed char neg) const
 {
     // Check whether we're walking in the requested direction
@@ -1571,11 +1540,12 @@ int Being::getOffset(const signed char pos, const signed char neg) const
 
     if (mMap)
     {
+        const int time = get_elapsed_time(mActionTime);
         offset = (pos == LEFT && neg == RIGHT) ?
-            static_cast<int>((static_cast<float>(get_elapsed_time(mActionTime))
+            static_cast<int>((static_cast<float>(time)
              * static_cast<float>(mMap->getTileWidth()))
              / static_cast<float>(mWalkSpeed.x)) :
-            static_cast<int>((static_cast<float>(get_elapsed_time(mActionTime))
+            static_cast<int>((static_cast<float>(time)
             * static_cast<float>(mMap->getTileHeight()))
             / static_cast<float>(mWalkSpeed.y));
     }
@@ -1677,21 +1647,21 @@ void Being::showName()
         return;
     }
 
-    std::string mDisplayName(mName);
+    std::string displayName(mName);
 
     if (mType != MONSTER && (mShowGender || mShowLevel))
     {
-        mDisplayName += " ";
+        displayName += " ";
         if (mShowLevel && getLevel() != 0)
-            mDisplayName += toString(getLevel());
+            displayName += toString(getLevel());
 
-        mDisplayName += getGenderSign();
+        displayName += getGenderSign();
     }
 
     if (mType == MONSTER)
     {
         if (config.getBoolValue("showMonstersTakedDamage"))
-            mDisplayName += ", " + toString(getDamageTaken());
+            displayName += ", " + toString(getDamageTaken());
     }
 
     gcn::Font *font = nullptr;
@@ -1705,7 +1675,7 @@ void Being::showName()
         font = gui->getSecureFont();
     }
 
-    mDispName = new FlashText(mDisplayName, getPixelX(), getPixelY(),
+    mDispName = new FlashText(displayName, getPixelX(), getPixelY(),
                               gcn::Graphics::CENTER, mNameColor, font);
 
     updateCoords();
@@ -1752,7 +1722,8 @@ void Being::updateColors()
             {
                 mNameColor = &userPalette->getColor(UserPalette::PARTY);
             }
-            else if (getGuild() && getGuild() == player_node->getGuild())
+            else if (player_node && getGuild()
+                     && getGuild() == player_node->getGuild())
             {
                 mNameColor = &userPalette->getColor(UserPalette::GUILD);
             }
@@ -1821,17 +1792,16 @@ void Being::setSprite(const unsigned int slot, const int id,
     else
     {
         const ItemInfo &info = ItemDB::get(id);
-        std::string filename = info.getSprite(mGender, mSubType);
+        const std::string filename = info.getSprite(mGender, mSubType);
         AnimatedSprite *equipmentSprite = nullptr;
 
         if (!filename.empty())
         {
             if (color.empty())
                 color = info.getDyeColorsString(colorId);
-            filename = combineDye(filename, color);
 
             equipmentSprite = AnimatedSprite::delayedLoad(
-                paths.getStringValue("sprites") + filename);
+                paths.getStringValue("sprites") + combineDye(filename, color));
         }
 
         if (equipmentSprite)
@@ -1880,7 +1850,7 @@ void Being::setHairColor(const unsigned int slot, const unsigned char color)
         getSpriteID(slot)).getDyeColorsString(color));
 }
 
-void Being::dumpSprites()
+void Being::dumpSprites() const
 {
     std::vector<int>::const_iterator it1 = mSpriteIDs.begin();
     const std::vector<int>::const_iterator it1_end = mSpriteIDs.end();
@@ -2079,7 +2049,7 @@ void Being::setGM(const bool gm)
     updateColors();
 }
 
-void Being::talkTo()
+void Being::talkTo() const
 {
     if (!Client::limitPackets(PACKET_NPC_TALK))
         return;
@@ -2097,7 +2067,8 @@ bool Being::draw(Graphics *const graphics,
     return res;
 }
 
-void Being::drawSprites(Graphics* graphics, int posX, int posY) const
+void Being::drawSprites(Graphics *const graphics,
+                        const int posX, const int posY) const
 {
     const int sz = getNumberOfLayers();
     for (int f = 0; f < sz; f ++)
@@ -2115,7 +2086,8 @@ void Being::drawSprites(Graphics* graphics, int posX, int posY) const
     }
 }
 
-void Being::drawSpritesSDL(Graphics* graphics, int posX, int posY) const
+void Being::drawSpritesSDL(Graphics *const graphics,
+                           const int posX, const int posY) const
 {
     const size_t sz = size();
     for (unsigned f = 0; f < sz; f ++)
@@ -2137,6 +2109,9 @@ bool Being::drawSpriteAt(Graphics *const graphics,
 
     if (!mErased)
         res = ActorSprite::drawSpriteAt(graphics, x, y);
+
+    if (!userPalette)
+        return res;
 
     if (mHighlightMapPortals && mMap && mSubType == 45 && !mMap->getHasWarps())
     {
@@ -2200,7 +2175,7 @@ void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,
                       const int x, const int y, const int width,
                       const int height) const
 {
-    if (maxHP <= 0)
+    if (maxHP <= 0 || !userPalette)
         return;
 
     if (!hp && maxHP < hp)
@@ -2560,7 +2535,8 @@ void Being::recalcSpritesOrder()
     }
 }
 
-int Being::searchSlotValue(std::vector<int> &slotRemap, const int val) const
+int Being::searchSlotValue(const std::vector<int> &slotRemap,
+                           const int val) const
 {
     for (unsigned slot = 0; slot < size(); slot ++)
     {
