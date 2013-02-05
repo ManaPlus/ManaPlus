@@ -36,6 +36,8 @@ po/POTFILES
 stamp-h1
 /manaplus.spec
 PKGBUILD
+data/evol/evol.desktop
+data/tmw/tmw.desktop
 
 # files created by CMake
 CMakeFiles/
