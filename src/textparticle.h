@@ -40,8 +40,8 @@ class TextParticle final : public Particle
         /**
          * Draws the particle image.
          */
-        virtual bool draw(Graphics *graphics,
-                          int offsetX, int offsetY) const override;
+        virtual bool draw(Graphics *const graphics,
+                          const int offsetX, const int offsetY) const override;
 
         // hack to improve text visibility
         virtual int getPixelY() const override A_WARN_UNUSED

@@ -2087,7 +2087,8 @@ void Being::talkTo()
     Net::getNpcHandler()->talk(mId);
 }
 
-bool Being::draw(Graphics *graphics, int offsetX, int offsetY) const
+bool Being::draw(Graphics *const graphics,
+                 const int offsetX, const int offsetY) const
 {
     bool res = true;
     if (!mErased)

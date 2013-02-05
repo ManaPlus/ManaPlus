@@ -48,7 +48,8 @@ ImageSprite::~ImageSprite()
     }
 }
 
-bool ImageSprite::draw(Graphics* graphics, int posX, int posY) const
+bool ImageSprite::draw(Graphics *const graphics,
+                       const int posX, const int posY) const
 {
     FUNC_BLOCK("ImageSprite::draw", 1)
     if (!mImage)

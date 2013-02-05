@@ -43,7 +43,8 @@ TextParticle::TextParticle(Map *const map, const std::string &text,
 {
 }
 
-bool TextParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
+bool TextParticle::draw(Graphics *const graphics,
+                        const int offsetX, const int offsetY) const
 {
     BLOCK_START("TextParticle::draw")
     if (!isAlive())

@@ -87,7 +87,7 @@ bool CompoundSprite::reset()
     return ret;
 }
 
-bool CompoundSprite::play(std::string action)
+bool CompoundSprite::play(const std::string &action)
 {
     bool ret = false;
 
@@ -101,7 +101,7 @@ bool CompoundSprite::play(std::string action)
     return ret;
 }
 
-bool CompoundSprite::update(int time)
+bool CompoundSprite::update(const int time)
 {
     bool ret = false;
 
@@ -115,7 +115,8 @@ bool CompoundSprite::update(int time)
     return ret;
 }
 
-bool CompoundSprite::draw(Graphics *graphics, int posX, int posY) const
+bool CompoundSprite::draw(Graphics *const graphics,
+                          const int posX, const int posY) const
 {
     FUNC_BLOCK("CompoundSprite::draw", 1)
     if (mNeedsRedraw)

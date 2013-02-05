@@ -58,7 +58,8 @@ AnimatedSprite::AnimatedSprite(SpriteDef *const sprite):
     play(SpriteAction::STAND);
 }
 
-AnimatedSprite *AnimatedSprite::load(const std::string &filename, int variant)
+AnimatedSprite *AnimatedSprite::load(const std::string &filename,
+                                     const int variant)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
     SpriteDef *const s = resman->getSprite(filename, variant);
@@ -118,7 +119,7 @@ bool AnimatedSprite::reset()
     return ret;
 }
 
-bool AnimatedSprite::play(std::string spriteAction)
+bool AnimatedSprite::play(const std::string &spriteAction)
 {
     if (!mSprite)
     {
@@ -146,7 +147,7 @@ bool AnimatedSprite::play(std::string spriteAction)
     return false;
 }
 
-bool AnimatedSprite::update(int time)
+bool AnimatedSprite::update(const int time)
 {
     // Avoid freaking out at first frame or when tick_time overflows
     if (time < mLastTime || mLastTime == 0)
@@ -172,7 +173,7 @@ bool AnimatedSprite::update(int time)
     return animation != mAnimation || frame != mFrame;
 }
 
-bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
+bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
 {
     // move code from Animation::isTerminator(*mFrame)
     if (!mFrame || !mAnimation || (!mFrame->image
@@ -264,16 +265,18 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
     return true;
 }
 
-bool AnimatedSprite::draw(Graphics *graphics, int posX, int posY) const
+bool AnimatedSprite::draw(Graphics *const graphics,
+                          const int posX, const int posY) const
 {
     FUNC_BLOCK("AnimatedSprite::draw", 1)
     if (!mFrame || !mFrame->image)
         return false;
 
-    if (mFrame->image->getAlpha() != mAlpha)
-        mFrame->image->setAlpha(mAlpha);
+    Image *const image = mFrame->image;
+    if (image->getAlpha() != mAlpha)
+        image->setAlpha(mAlpha);
 
-    return graphics->drawImage(mFrame->image,
+    return graphics->drawImage(image,
                                posX + mFrame->offsetX,
                                posY + mFrame->offsetY);
 }
@@ -346,8 +349,12 @@ void AnimatedSprite::setAlpha(float alpha)
 {
     mAlpha = alpha;
 
-    if (mFrame && mFrame->image && mFrame->image->getAlpha() != mAlpha)
-        mFrame->image->setAlpha(mAlpha);
+    if (mFrame)
+    {
+        Image *const image = mFrame->image;
+        if (image && image->getAlpha() != mAlpha)
+            image->setAlpha(mAlpha);
+    }
 }
 
 void *AnimatedSprite::getHash()

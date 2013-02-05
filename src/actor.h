@@ -52,7 +52,8 @@ public:
      * would support setting a translation offset. It already does this
      * partly with the clipping rectangle support.
      */
-    virtual bool draw(Graphics *graphics, int offsetX, int offsetY) const = 0;
+    virtual bool draw(Graphics *const graphics,
+                      const int offsetX, const int offsetY) const = 0;
 
     /**
      * Returns the horizontal size of the actors graphical representation

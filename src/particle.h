@@ -107,8 +107,8 @@ class Particle : public Actor
         /**
          * Draws the particle image.
          */
-        virtual bool draw(Graphics *graphics,
-                          int offsetX, int offsetY) const override;
+        virtual bool draw(Graphics *const graphics,
+                          const int offsetX, const int offsetY) const override;
 
         /**
          * Necessary for sorting with the other sprites.

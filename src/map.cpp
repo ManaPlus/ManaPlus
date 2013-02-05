@@ -317,7 +317,7 @@ void Map::update(const int ticks)
     }
 }
 
-void Map::draw(Graphics *graphics, int scrollX, int scrollY)
+void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
 {
     if (!player_node)
         return;

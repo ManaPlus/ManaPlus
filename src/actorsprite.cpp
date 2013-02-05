@@ -77,7 +77,8 @@ ActorSprite::~ActorSprite()
     }
 }
 
-bool ActorSprite::draw(Graphics *graphics, int offsetX, int offsetY) const
+bool ActorSprite::draw(Graphics *const graphics,
+                       const int offsetX, const int offsetY) const
 {
     FUNC_BLOCK("ActorSprite::draw", 1)
     // TODO: Eventually, we probably should fix all sprite offsets so that

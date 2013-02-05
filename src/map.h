@@ -186,7 +186,7 @@ class Map final : public Properties, public ConfigListener
          * the clipping rectangle set on the Graphics object. However,
          * currently the map is always drawn full-screen.
          */
-        void draw(Graphics *graphics, int scrollX, int scrollY);
+        void draw(Graphics *const graphics, int scrollX, int scrollY);
 
         /**
          * Visualizes collision layer for debugging

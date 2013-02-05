@@ -54,8 +54,8 @@ class ImageParticle : public Particle
         /**
          * Draws the particle image
          */
-        virtual bool draw(Graphics *graphics,
-                          int offsetX, int offsetY) const override;
+        virtual bool draw(Graphics *const graphics,
+                          const int offsetX, const int offsetY) const override;
 
         virtual void setAlpha(const float alpha) override
         { mAlpha = alpha; }

@@ -93,7 +93,8 @@ std::string FloorItem::getName() const
         return info.getName();
 }
 
-bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
+bool FloorItem::draw(Graphics *const graphics,
+                     const int offsetX, const int offsetY) const
 {
     if (!mMap)
         return false;

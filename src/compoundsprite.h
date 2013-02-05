@@ -61,11 +61,12 @@ public:
 
     virtual bool reset() override;
 
-    virtual bool play(std::string action) override;
+    virtual bool play(const std::string &action) override;
 
-    virtual bool update(int time) override;
+    virtual bool update(const int time) override;
 
-    virtual bool draw(Graphics *graphics, int posX, int posY) const override;
+    virtual bool draw(Graphics *const graphics,
+                      const int posX, const int posY) const override;
 
     /**
      * Gets the width in pixels of the first sprite in the list.

@@ -69,7 +69,8 @@ ImageParticle::~ImageParticle()
     setMap(nullptr);
 }
 
-bool ImageParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
+bool ImageParticle::draw(Graphics *const graphics,
+                         const int offsetX, const int offsetY) const
 {
     FUNC_BLOCK("ImageParticle::draw", 1)
     if (!isAlive() || !mImage)

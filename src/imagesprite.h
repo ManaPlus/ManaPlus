@@ -40,13 +40,14 @@ public:
     bool reset() override
     { return false; }
 
-    bool play(std::string action A_UNUSED) override
+    bool play(const std::string &action A_UNUSED) override
     { return false; }
 
-    bool update(int time A_UNUSED) override
+    bool update(const int time A_UNUSED) override
     { return false; }
 
-    bool draw(Graphics* graphics, int posX, int posY) const override;
+    bool draw(Graphics *const graphics,
+              const int posX, const int posY) const override;
 
     int getWidth() const override A_WARN_UNUSED
     { return mImage ? mImage->getWidth() : 0; }

@@ -47,7 +47,7 @@ class Sprite
          *
          * @returns true if the sprite changed, false otherwise
          */
-        virtual bool play(std::string action) = 0;
+        virtual bool play(const std::string &action) = 0;
 
         /**
          * Inform the animation of the passed time so that it can output the
@@ -55,13 +55,14 @@ class Sprite
          *
          * @returns true if the sprite changed, false otherwise
          */
-        virtual bool update(int time) = 0;
+        virtual bool update(const int time) = 0;
 
         /**
          * Draw the current animation frame at the coordinates given in screen
          * pixels.
          */
-        virtual bool draw(Graphics* graphics, int posX, int posY) const = 0;
+        virtual bool draw(Graphics *const graphics,
+                          const int posX, const int posY) const = 0;
 
         /**
          * Gets the width in pixels of the image of the current frame

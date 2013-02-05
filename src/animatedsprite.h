@@ -54,7 +54,7 @@ class AnimatedSprite final : public Sprite
          * @param variant  the sprite variant
          */
         static AnimatedSprite *load(const std::string &filename,
-                                    int variant = 0) A_WARN_UNUSED;
+                                    const int variant = 0) A_WARN_UNUSED;
 
         static AnimatedSprite *delayedLoad(const std::string &filename,
                                            const int variant = 0)
@@ -62,13 +62,14 @@ class AnimatedSprite final : public Sprite
 
         virtual ~AnimatedSprite();
 
-        bool reset();
+        bool reset() override;
 
-        bool play(std::string action);
+        bool play(const std::string &action) override;
 
-        bool update(int time);
+        bool update(const int time) override;
 
-        bool draw(Graphics* graphics, int posX, int posY) const;
+        bool draw(Graphics *const graphics,
+                  const int posX, const int posY) const override;
 
         int getWidth() const A_WARN_UNUSED;
 
@@ -102,7 +103,7 @@ class AnimatedSprite final : public Sprite
         { mEnableCache = b; }
 
     private:
-        bool updateCurrentAnimation(unsigned int dt);
+        bool updateCurrentAnimation(const unsigned int dt);
 
         void setDelayLoad(const std::string &filename, const int variant);
 
