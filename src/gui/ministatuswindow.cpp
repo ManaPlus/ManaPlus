@@ -436,13 +436,15 @@ void MiniStatusWindow::loadBars()
             mMoneyBar->setVisible(false);
         if (mArrowsBar)
             mArrowsBar->setVisible(false);
+        if (mStatusBar)
+            mStatusBar->setVisible(false);
         return;
     }
 
     for (int f = 0; f < 10; f ++)
     {
         std::string str = config.getValue("ministatus" + toString(f), "");
-        if (str == "" || str == "status bar")
+        if (str == "")
             continue;
         ProgressBar *const bar = mBarNames[str];
         if (!bar)

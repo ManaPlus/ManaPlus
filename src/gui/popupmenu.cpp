@@ -1951,11 +1951,31 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
 
     mBrowserBox->clearRows();
     std::vector <ProgressBar*> bars = miniStatusWindow->getBars();
+    ProgressBar *onlyBar = nullptr;
+    int cnt = 0;
+
+    // search for alone visible bar
     for (std::vector <ProgressBar*>::const_iterator it = bars.begin(),
          it_end = bars.end(); it != it_end; ++it)
     {
         ProgressBar *const bar = *it;
-        if (!bar || bar->getActionEventId() == "status bar")
+        if (!bar)
+            continue;
+
+        if (bar->isVisible())
+        {
+            cnt ++;
+            onlyBar = bar;
+        }
+    }
+    if (cnt > 1)
+        onlyBar = nullptr;
+
+    for (std::vector <ProgressBar*>::const_iterator it = bars.begin(),
+         it_end = bars.end(); it != it_end; ++it)
+    {
+        ProgressBar *const bar = *it;
+        if (!bar || bar == onlyBar)
             continue;
 
         if (bar->isVisible())
