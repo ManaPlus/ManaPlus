@@ -199,7 +199,7 @@ std::string combineDye(std::string file, std::string dye) A_WARN_UNUSED;
 
 std::string combineDye2(std::string file, std::string dye) A_WARN_UNUSED;
 
-std::string packList(std::list<std::string> &list) A_WARN_UNUSED;
+std::string packList(const std::list<std::string> &list) A_WARN_UNUSED;
 
 std::list<std::string> unpackList(const std::string &str) A_WARN_UNUSED;
 

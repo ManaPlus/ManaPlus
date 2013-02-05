@@ -611,7 +611,7 @@ bool ActorSpriteManager::pickUpAll(const int x1, const int y1,
     return finded;
 }
 
-bool ActorSpriteManager::pickUpNearest(const int x, const int y, int maxdist)
+bool ActorSpriteManager::pickUpNearest(const int x, const int y, int maxdist) const
 {
     if (!player_node)
         return false;
@@ -718,7 +718,9 @@ Being *ActorSpriteManager::findNearestByName(const std::string &name,
             (type == Being::UNKNOWN || type == being->getType()))
         {
             if (being->getType() == Being::PLAYER)
+            {
                 return being;
+            }
             else
             {
                 const int d = (being->getTileX() - x) * (being->getTileX() - x)
@@ -1024,8 +1026,6 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
             if (being->getInfo() && !being->getInfo()->isTargetSelection())
                 continue;
 
-//            Being *being = (*i);
-
             const bool valid = validateBeing(aroundBeing, being,
                                              type, excluded, 50);
             int d = being->getDistance();
@@ -1104,6 +1104,8 @@ bool ActorSpriteManager::validateBeing(const Being *const aroundBeing,
                                        const Being* const excluded,
                                        const int maxCost) const
 {
+    if (!player_node)
+        return false;
     return being && ((being->getType() == type
         || type == Being::UNKNOWN) && (being->isAlive()
         || (mTargetDeadPlayers && type == Being::PLAYER))
@@ -1228,46 +1230,17 @@ bool ActorSpriteManager::hasActorSprite(const ActorSprite *const actor) const
 
 void ActorSpriteManager::addBlock(const uint32_t id)
 {
-    bool alreadyBlocked(false);
-    for (int i = 0; i < static_cast<int>(blockedBeings.size()); ++i)
-    {
-        if (id == blockedBeings.at(i))
-        {
-            alreadyBlocked = true;
-            break;
-        }
-    }
-    if (alreadyBlocked == false)
-        blockedBeings.push_back(id);
+    mBlockedBeings.insert(id);
 }
 
 void ActorSpriteManager::deleteBlock(const uint32_t id)
 {
-    std::vector<uint32_t>::iterator iter = blockedBeings.begin();
-    const std::vector<uint32_t>::iterator iter_end = blockedBeings.end();
-    while (iter != iter_end)
-    {
-        if (*iter == id)
-        {
-            blockedBeings.erase(iter);
-            break;
-        }
-        ++ iter;
-    }
+    mBlockedBeings.erase(id);
 }
 
 bool ActorSpriteManager::isBlocked(const uint32_t id) const
 {
-    bool blocked(false);
-    for (int i = 0; i < static_cast<int>(blockedBeings.size()); ++i)
-    {
-        if (id == blockedBeings.at(i))
-        {
-            blocked = true;
-            break;
-        }
-    }
-    return blocked;
+    return mBlockedBeings.find(id) != mBlockedBeings.end();
 }
 
 void ActorSpriteManager::printAllToChat() const
@@ -1275,8 +1248,8 @@ void ActorSpriteManager::printAllToChat() const
     printBeingsToChat(getAll(), _("Visible on map"));
 }
 
-void ActorSpriteManager::printBeingsToChat(ActorSprites beings,
-                                           std::string header) const
+void ActorSpriteManager::printBeingsToChat(const ActorSprites &beings,
+                                           const std::string &header) const
 {
     if (!debugChatTab)
         return;
@@ -1293,16 +1266,15 @@ void ActorSpriteManager::printBeingsToChat(ActorSprites beings,
 
         const Being *const being = static_cast<Being*>(*it);
 
-        debugChatTab->chatLog(being->getName()
-            + " (" + toString(being->getTileX()) + ","
-            + toString(being->getTileY()) + ") "
-            + toString(being->getSubType()), BY_SERVER);
+        debugChatTab->chatLog(strprintf("%s (%d,%d) %d",
+            being->getName().c_str(), being->getTileX(), being->getTileY(),
+            being->getSubType()), BY_SERVER);
     }
     debugChatTab->chatLog("---------------------------------------");
 }
 
-void ActorSpriteManager::printBeingsToChat(std::vector<Being*> beings,
-                                           std::string header) const
+void ActorSpriteManager::printBeingsToChat(const std::vector<Being*> &beings,
+                                           const std::string &header) const
 {
     if (!debugChatTab)
         return;
@@ -1317,10 +1289,9 @@ void ActorSpriteManager::printBeingsToChat(std::vector<Being*> beings,
 
         const Being *const being = *i;
 
-        debugChatTab->chatLog(being->getName()
-            + " (" + toString(being->getTileX()) + ","
-            + toString(being->getTileY()) + ") "
-            + toString(being->getSubType()), BY_SERVER);
+        debugChatTab->chatLog(strprintf("%s (%d,%d) %d",
+            being->getName().c_str(), being->getTileX(), being->getTileY(),
+            being->getSubType()), BY_SERVER);
     }
     debugChatTab->chatLog("---------------------------------------");
 }
@@ -1534,18 +1505,18 @@ void ActorSpriteManager::removePickupItem(const std::string &name)
     }\
 }
 
-void ActorSpriteManager::addAttackMob(std::string name)
+void ActorSpriteManager::addAttackMob(const std::string &name)
 {
     addMobToList(name, AttackMob);
     rebuildPriorityAttackMobs();
 }
 
-void ActorSpriteManager::addPriorityAttackMob(std::string name)
+void ActorSpriteManager::addPriorityAttackMob(const std::string &name)
 {
     addMobToList(name, PriorityAttackMob);
 }
 
-void ActorSpriteManager::addIgnoreAttackMob(std::string name)
+void ActorSpriteManager::addIgnoreAttackMob(const std::string &name)
 {
     mIgnoreAttackMobs.push_back(name);
     mIgnoreAttackMobsSet.insert(name);
@@ -1553,13 +1524,13 @@ void ActorSpriteManager::addIgnoreAttackMob(std::string name)
     rebuildPriorityAttackMobs();
 }
 
-void ActorSpriteManager::addPickupItem(std::string name)
+void ActorSpriteManager::addPickupItem(const std::string &name)
 {
     addMobToList(name, PickupItem);
     rebuildPickupItems();
 }
 
-void ActorSpriteManager::addIgnorePickupItem(std::string name)
+void ActorSpriteManager::addIgnorePickupItem(const std::string &name)
 {
     mIgnorePickupItems.push_back(name);
     mIgnorePickupItemsSet.insert(name);
@@ -1581,8 +1552,8 @@ void ActorSpriteManager::rebuildPickupItems()
     rebuildMobsList(PickupItem);
 }
 
-int ActorSpriteManager::getIndexByName(std::string name,
-                                       std::map<std::string, int> &map) const
+int ActorSpriteManager::getIndexByName(const std::string &name,
+                                       const std::map<std::string, int> &map) const
 {
     const std::map<std::string, int>::const_iterator
         i = map.find(name);
@@ -1592,17 +1563,17 @@ int ActorSpriteManager::getIndexByName(std::string name,
     return (*i).second;
 }
 
-int ActorSpriteManager::getPriorityAttackMobIndex(std::string name)
+int ActorSpriteManager::getPriorityAttackMobIndex(const std::string &name) const
 {
     return getIndexByName(name, mPriorityAttackMobsMap);
 }
 
-int ActorSpriteManager::getAttackMobIndex(std::string name)
+int ActorSpriteManager::getAttackMobIndex(const std::string &name) const
 {
     return getIndexByName(name, mAttackMobsMap);
 }
 
-int ActorSpriteManager::getPickupItemIndex(std::string name)
+int ActorSpriteManager::getPickupItemIndex(const std::string &name) const
 {
     return getIndexByName(name, mPickupItemsMap);
 }
@@ -1652,7 +1623,7 @@ void ActorSpriteManager::loadAttackList()
     rebuildPickupItems();
 }
 
-void ActorSpriteManager::storeAttackList()
+void ActorSpriteManager::storeAttackList() const
 {
     serverConfig.setValue("attackPriorityMobs", packList(mPriorityAttackMobs));
     serverConfig.setValue("attackMobs", packList(mAttackMobs));
@@ -1672,7 +1643,7 @@ bool ActorSpriteManager::checkForPickup(const FloorItem *const item) const
             return true;
         }
     }
-    else if (mPickupItemsSet.find(item->getName()) != mPickupItemsSet.end())
+    else if (item && mPickupItemsSet.find(item->getName()) != mPickupItemsSet.end())
     {
         return true;
     }

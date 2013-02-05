@@ -525,7 +525,7 @@ std::string combineDye2(std::string file, std::string dye)
     }
 }
 
-std::string packList(std::list<std::string> &list)
+std::string packList(const std::list<std::string> &list)
 {
     std::list<std::string>::const_iterator i = list.begin();
     std::string str("");

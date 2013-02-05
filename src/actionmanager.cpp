@@ -211,7 +211,7 @@ impHandler0(ok)
         return true;
     }
     // Close the config window, cancelling changes if opened
-    else if (setupWindow->isVisible())
+    else if (setupWindow && setupWindow->isVisible())
     {
         setupWindow->action(gcn::ActionEvent(nullptr, "cancel"));
         return true;
@@ -389,7 +389,7 @@ impHandler0(itenplz)
 {
     if (actorSpriteManager)
     {
-        if (Net::getPlayerHandler()->canUseMagic()
+        if (Net::getPlayerHandler() && Net::getPlayerHandler()->canUseMagic()
             && PlayerInfo::getAttribute(PlayerInfo::MP) >= 3)
         {
             actorSpriteManager->itenplz();
@@ -874,7 +874,8 @@ impHandler0(directUp)
 //            if (Client::limitPackets(PACKET_DIRECTION))
             {
                 player_node->setDirection(Being::UP);
-                Net::getPlayerHandler()->setDirection(Being::UP);
+                if (Net::getPlayerHandler())
+                    Net::getPlayerHandler()->setDirection(Being::UP);
             }
         }
         return true;
@@ -891,7 +892,8 @@ impHandler0(directDown)
 //            if (Client::limitPackets(PACKET_DIRECTION))
             {
                 player_node->setDirection(Being::DOWN);
-                Net::getPlayerHandler()->setDirection(Being::DOWN);
+                if (Net::getPlayerHandler())
+                    Net::getPlayerHandler()->setDirection(Being::DOWN);
             }
         }
         return true;
@@ -908,7 +910,8 @@ impHandler0(directLeft)
 //            if (Client::limitPackets(PACKET_DIRECTION))
             {
                 player_node->setDirection(Being::LEFT);
-                Net::getPlayerHandler()->setDirection(Being::LEFT);
+                if (Net::getPlayerHandler())
+                    Net::getPlayerHandler()->setDirection(Being::LEFT);
             }
         }
         return true;
@@ -925,7 +928,8 @@ impHandler0(directRight)
 //            if (Client::limitPackets(PACKET_DIRECTION))
             {
                 player_node->setDirection(Being::RIGHT);
-                Net::getPlayerHandler()->setDirection(Being::RIGHT);
+                if (Net::getPlayerHandler())
+                    Net::getPlayerHandler()->setDirection(Being::RIGHT);
             }
         }
         return true;
@@ -938,7 +942,7 @@ impHandler0(talk)
     if (player_node)
     {
         Being *target = player_node->getTarget();
-        if (!target)
+        if (!target && actorSpriteManager)
         {
             target = actorSpriteManager->findNearestLivingBeing(
                 player_node, 1, ActorSprite::NPC);
@@ -1095,7 +1099,12 @@ impHandler0(showKeyboard)
 
 impHandler0(showWindows)
 {
-    viewport->showWindowsPopup();
+    if (viewport)
+    {
+        viewport->showWindowsPopup();
+        return true;
+    }
+    return false;
 }
 
 }

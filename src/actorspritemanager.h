@@ -202,8 +202,6 @@ class ActorSpriteManager final: public ConfigListener
          */
         void clear();
 
-        std::vector<uint32_t> blockedBeings;
-
         void addBlock(const uint32_t id);
 
         void deleteBlock(const uint32_t id);
@@ -212,10 +210,11 @@ class ActorSpriteManager final: public ConfigListener
 
         void printAllToChat() const;
 
-        void printBeingsToChat(ActorSprites beings, std::string header) const;
+        void printBeingsToChat(const ActorSprites &beings,
+                               const std::string &header) const;
 
-        void printBeingsToChat(std::vector<Being*> beings,
-                               std::string header) const;
+        void printBeingsToChat(const std::vector<Being*> &beings,
+                               const std::string &header) const;
 
         void getPlayerNames(StringVect &names,
                             const bool npcNames) const;
@@ -233,7 +232,7 @@ class ActorSpriteManager final: public ConfigListener
         bool pickUpAll(const int x1, const int y1, const int x2, const int y2,
                        const bool serverBuggy = false);
 
-        bool pickUpNearest(const int x, const int y, int maxdist);
+        bool pickUpNearest(const int x, const int y, int maxdist) const;
 
         void optionChanged(const std::string &name) override;
 
@@ -241,15 +240,15 @@ class ActorSpriteManager final: public ConfigListener
 
         void removePickupItem(const std::string &name);
 
-        void addPriorityAttackMob(std::string name);
+        void addPriorityAttackMob(const std::string &name);
 
-        void addAttackMob(std::string name);
+        void addAttackMob(const std::string &name);
 
-        void addIgnoreAttackMob(std::string name);
+        void addIgnoreAttackMob(const std::string &name);
 
-        void addPickupItem(std::string name);
+        void addPickupItem(const std::string &name);
 
-        void addIgnorePickupItem(std::string name);
+        void addIgnorePickupItem(const std::string &name);
 
         void setPriorityAttackMobs(std::list<std::string> mobs)
         { mPriorityAttackMobs = mobs; }
@@ -288,13 +287,13 @@ class ActorSpriteManager final: public ConfigListener
                                    const A_WARN_UNUSED
         { return mPriorityAttackMobsMap; }
 
-        int getAttackMobIndex(std::string name) A_WARN_UNUSED;
+        int getAttackMobIndex(const std::string &name) const A_WARN_UNUSED;
 
-        int getPriorityAttackMobIndex(std::string name) A_WARN_UNUSED;
+        int getPriorityAttackMobIndex(const std::string &name) const A_WARN_UNUSED;
 
-        int getPickupItemIndex(std::string name) A_WARN_UNUSED;
+        int getPickupItemIndex(const std::string &name) const A_WARN_UNUSED;
 
-        int getIndexByName(std::string name, std::map<std::string,
+        int getIndexByName(const std::string &name, const std::map<std::string,
                            int> &map) const A_WARN_UNUSED;
 
         bool checkForPickup(const FloorItem *const item) const A_WARN_UNUSED;
@@ -314,10 +313,11 @@ class ActorSpriteManager final: public ConfigListener
                                       excluded = nullptr) const A_WARN_UNUSED;
 
         void loadAttackList();
-        void storeAttackList();
+        void storeAttackList() const;
 
         ActorSprites mActors;
         ActorSprites mDeleteActors;
+        std::set<uint32_t> mBlockedBeings;
         Map *mMap;
         std::string mSpellHeal1;
         std::string mSpellHeal2;

@@ -223,7 +223,7 @@ protected:
     void setupSpriteDisplay(const SpriteDisplay &display,
                             const bool forceDisplay = true,
                             const int imageType = 0,
-                            std::string color = "");
+                            const std::string &color = "");
 
     int mId;
     uint16_t mStunMode;               /**< Stun mode; zero if not stunned */

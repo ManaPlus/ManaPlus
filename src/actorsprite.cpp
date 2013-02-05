@@ -221,7 +221,11 @@ static EffectDescription *getEffectDescription(const int effectId)
         effects_initialized = true;
     } // done initializing
 
-    EffectDescription *const ed = effects[effectId];
+    std::map<int, EffectDescription *>::iterator it = effects.find(effectId);
+    if (it == effects.end())
+        return default_effect;
+
+    EffectDescription *const ed = (*it).second;
 
     return ed ? ed : default_effect;
 }
@@ -274,12 +278,7 @@ void ActorSprite::internalTriggerEffect(const int effectId, const bool sfx,
     }
 
     if (gfx && !ed->mGFXEffect.empty())
-    {
-        Particle *selfFX;
-
-        selfFX = particleEngine->addEffect(ed->mGFXEffect, 0, 0);
-        controlParticle(selfFX);
-    }
+        controlParticle(particleEngine->addEffect(ed->mGFXEffect, 0, 0));
 
     if (sfx && !ed->mSFXEffect.empty())
         sound.playSfx(ed->mSFXEffect);
@@ -325,7 +324,7 @@ void ActorSprite::handleStatusEffect(StatusEffect *const effect,
 void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
                                      const bool forceDisplay,
                                      const int imageType,
-                                     std::string color)
+                                     const std::string &color)
 {
     clear();
 
@@ -333,7 +332,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     {
         if (!*it)
             continue;
-        std::string file = paths.getStringValue("sprites")
+        const std::string file = paths.getStringValue("sprites")
             + combineDye2((*it)->sprite, color);
 
         const int variant = (*it)->variant;
