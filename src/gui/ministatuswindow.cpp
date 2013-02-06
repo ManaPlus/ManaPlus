@@ -84,7 +84,7 @@ MiniStatusWindow::MiniStatusWindow() :
         StatusWindow::updateMPBar(mMpBar);
 
     const int job = Net::getPlayerHandler()->getJobLocation()
-        && serverConfig.getValueBool("showJob", false);
+        && serverConfig.getValueBool("showJob", true);
 
     StatusWindow::updateXPBar(mXpBar);
 
@@ -438,6 +438,8 @@ void MiniStatusWindow::loadBars()
             mArrowsBar->setVisible(false);
         if (mStatusBar)
             mStatusBar->setVisible(false);
+        if (mJobBar)
+            mJobBar->setVisible(false);
         return;
     }
 

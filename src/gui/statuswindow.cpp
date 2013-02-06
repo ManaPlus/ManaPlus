@@ -190,7 +190,7 @@ StatusWindow::StatusWindow() :
 
     const bool magicBar = Net::getGameHandler()->canUseMagicBar();
     const int job = Net::getPlayerHandler()->getJobLocation()
-              && serverConfig.getValueBool("showJob", false);
+              && serverConfig.getValueBool("showJob", true);
 
     if (magicBar)
     {
