@@ -164,29 +164,29 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mActionButton->setPosition(385, 100);
     mRotateButton->setPosition(415, 100);
 
-    mNameLabel->setPosition(5, 5);
+    mNameLabel->setPosition(5, 2);
     mNameField->setDimension(
-            gcn::Rectangle(60, 5, 300, mNameField->getHeight()));
+            gcn::Rectangle(60, 2, 300, mNameField->getHeight()));
 
     const int leftX = 120;
     const int rightX = 300;
     const int labelX = 5;
     const int nameX = 145;
-    mPrevHairColorButton->setPosition(leftX, 35);
-    mNextHairColorButton->setPosition(rightX, 35);
-    mHairColorLabel->setPosition(labelX, 40);
-    mHairColorNameLabel->setPosition(nameX, 40);
-    mPrevHairStyleButton->setPosition(leftX, 64);
-    mNextHairStyleButton->setPosition(rightX, 64);
-    mHairStyleLabel->setPosition(labelX, 69);
-    mHairStyleNameLabel->setPosition(nameX, 69);
+    mPrevHairColorButton->setPosition(leftX, 30);
+    mNextHairColorButton->setPosition(rightX, 30);
+    mHairColorLabel->setPosition(labelX, 35);
+    mHairColorNameLabel->setPosition(nameX, 35);
+    mPrevHairStyleButton->setPosition(leftX, 59);
+    mNextHairStyleButton->setPosition(rightX, 59);
+    mHairStyleLabel->setPosition(labelX, 64);
+    mHairStyleNameLabel->setPosition(nameX, 64);
 
     if (serverVersion >= 2)
     {
-        mPrevRaceButton->setPosition(leftX, 93);
-        mNextRaceButton->setPosition(rightX, 93);
-        mRaceLabel->setPosition(labelX, 98);
-        mRaceNameLabel->setPosition(nameX, 98);
+        mPrevRaceButton->setPosition(leftX, 88);
+        mNextRaceButton->setPosition(rightX, 88);
+        mRaceLabel->setPosition(labelX, 93);
+        mRaceNameLabel->setPosition(nameX, 93);
     }
 
     updateSliders();
@@ -437,19 +437,19 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     {
         mAttributeLabel[i] = new Label(this, labels[i]);
         mAttributeLabel[i]->setWidth(70);
-        mAttributeLabel[i]->setPosition(5, 135 + i * 24);
+        mAttributeLabel[i]->setPosition(5, 118 + i * 24);
         mAttributeLabel[i]->adjustSize();
         add(mAttributeLabel[i]);
 
         mAttributeSlider[i] = new Slider(min, max);
-        mAttributeSlider[i]->setDimension(gcn::Rectangle(140, 135 + i * 24,
+        mAttributeSlider[i]->setDimension(gcn::Rectangle(140, 118 + i * 24,
                                                          150, 12));
         mAttributeSlider[i]->setActionEventId("statslider");
         mAttributeSlider[i]->addActionListener(this);
         add(mAttributeSlider[i]);
 
         mAttributeValue[i] = new Label(this, toString(min));
-        mAttributeValue[i]->setPosition(295, 135 + i * 24);
+        mAttributeValue[i]->setPosition(295, 118 + i * 24);
         add(mAttributeValue[i]);
     }
 
@@ -583,5 +583,5 @@ void CharCreateDialog::setButtonsPosition(const int w, const int h)
             mCancelButton->getX() - 5 - mCreateButton->getWidth(),
             h - 5 - mCancelButton->getHeight());
     }
-    mAttributesLeft->setPosition(15, 280);
+    mAttributesLeft->setPosition(15, 260);
 }
