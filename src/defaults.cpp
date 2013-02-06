@@ -115,6 +115,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showScreenKeyboard", true);
     AddDEF("fpslimit", 100);
     AddDEF("theme", "jewelry");
+    AddDEF("showChatColorsList", false);
 #else
     AddDEF("screenwidth", defaultScreenWidth);
     AddDEF("screenheight", defaultScreenHeight);
@@ -125,6 +126,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showScreenKeyboard", false);
     AddDEF("fpslimit", 60);
     AddDEF("theme", "");
+    AddDEF("showChatColorsList", true);
 #endif
     AddDEF("screen", false);
     AddDEF("hwaccel", false);
@@ -189,7 +191,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("serverMsgInDebug", true);
     AddDEF("hideShopMessages", true);
     AddDEF("showChatHistory", true);
-    AddDEF("showChatColorsList", true);
     AddDEF("chatMaxLinesLimit", 40);
     AddDEF("chatColor", 0);
     AddDEF("hideShield", true);
