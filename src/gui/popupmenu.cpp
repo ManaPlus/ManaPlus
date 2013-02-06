@@ -2160,30 +2160,32 @@ void PopupMenu::showWindowsPopup(const int x, const int y)
 
 void PopupMenu::showPopup(int x, int y)
 {
-    const int pad2 = 2 * getPadding();
+    const int pad2 = 2 * mPadding;
     const int bPad2 = 2 * mBrowserBox->getPadding();
     mBrowserBox->setPosition(mPadding, mPadding);
     mScrollArea->setPosition(mPadding, mPadding);
     // add padding to initial size before draw browserbox
-    mBrowserBox->setWidth(mBrowserBox->getWidth() + bPad2);
     int height = mBrowserBox->getHeight();
     if (height + pad2 >= mainGraphics->getHeight())
     {
-        height = mainGraphics->getHeight() - pad2;
-        mBrowserBox->setWidth(mBrowserBox->getWidth() + bPad2 + 10);
+        height = mainGraphics->getHeight() - bPad2 - pad2;
+        mBrowserBox->setWidth(mBrowserBox->getWidth() + bPad2 + 5);
+        mScrollArea->setWidth(mBrowserBox->getWidth() + pad2 + 10);
+        setContentSize(mBrowserBox->getWidth() + pad2 + 20,
+            height + pad2);
     }
     else
     {
         mBrowserBox->setWidth(mBrowserBox->getWidth() + bPad2);
+        mScrollArea->setWidth(mBrowserBox->getWidth() + pad2);
+        setContentSize(mBrowserBox->getWidth() + pad2,
+            height + pad2);
     }
-    setContentSize(mBrowserBox->getWidth() + pad2,
-        height + pad2);
     if (mainGraphics->mWidth < (x + getWidth() + 5))
         x = mainGraphics->mWidth - getWidth();
     if (mainGraphics->mHeight < (y + getHeight() + 5))
         y = mainGraphics->mHeight - getHeight();
-    mScrollArea->setWidth(mBrowserBox->getWidth() + pad2);
-    mScrollArea->setHeight(height + pad2);
+    mScrollArea->setHeight(height);
     setPosition(x, y);
     setVisible(true);
     requestMoveToTop();
