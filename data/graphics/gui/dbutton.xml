@@ -2,8 +2,9 @@
 <skinset name="Default" image="window.png">
     <widget type="Window" xpos="486" ypos="232">
         <option name="padding" value="20" />
+        <option name="clickborder" value="0" />
         <option name="x" value="0" />
-        <option name="y" value="0" />
+        <option name="y" value="10" />
 
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="10" height="5" />

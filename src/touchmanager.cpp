@@ -128,6 +128,9 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
                 y = skin->getOption("y", 10);
             const int pad = skin->getPadding();
             const int pad2 = 2 * pad;
+            const int border = skin->getOption("clickborder");
+            const int border2 = border * 2;
+            const int diff = pad - border;
             switch (type)
             {
                 case LEFT:
@@ -141,8 +144,8 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
                 default:
                     break;
             }
-            *item = new TouchItem(gcn::Rectangle(x, y,
-                width + pad2, height + pad2), type,
+            *item = new TouchItem(gcn::Rectangle(x + diff, y + diff,
+                width + border2, height + border2), type,
                 eventPressed, eventReleased, images, icon,
                 x + pad, y + pad, width, height,
                 fAll, fPressed, fReleased, fOut);
