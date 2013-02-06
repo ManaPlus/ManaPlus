@@ -91,6 +91,8 @@ class CharSelectDialog final : public Window,
 
         void askPasswordForDeletion(const int index);
 
+        void close() override;
+
     private:
         void attemptCharacterDelete(const int index);
 

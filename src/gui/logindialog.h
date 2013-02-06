@@ -72,6 +72,8 @@ class LoginDialog final : public Window, public gcn::ActionListener,
          */
         void keyPressed(gcn::KeyEvent &keyEvent) override;
 
+        void close() override;
+
         static std::string savedPasswordKey;
         static std::string savedPassword;
 

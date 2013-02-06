@@ -89,6 +89,8 @@ class RegisterDialog final : public Window, public gcn::ActionListener,
          */
         void keyPressed(gcn::KeyEvent &keyEvent) override;
 
+        void close() override;
+
     private:
         /**
          * Returns whether submit can be enabled. This is true in the register

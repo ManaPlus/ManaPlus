@@ -830,4 +830,5 @@ void ServerDialog::close()
     if (mDownload)
         mDownload->cancel();
     Client::setState(STATE_FORCE_QUIT);
+    Window::close();
 }

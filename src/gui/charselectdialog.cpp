@@ -153,7 +153,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     mDeleteDialog(nullptr),
     mDeleteIndex(-1)
 {
-    setCloseButton(false);
+    setCloseButton(true);
 
     const int optionalActions = Net::getLoginHandler()
         ->supportedOptionalActions();
@@ -250,7 +250,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "switch")
     {
-        Client::setState(STATE_SWITCH_LOGIN);
+        close();
     }
     else if (eventId == "change_password")
     {
@@ -555,6 +555,12 @@ bool CharSelectDialog::selectByName(const std::string &name,
     }
 
     return false;
+}
+
+void CharSelectDialog::close()
+{
+    Client::setState(STATE_SWITCH_LOGIN);
+    Window::close();
 }
 
 

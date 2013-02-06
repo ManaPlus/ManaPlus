@@ -78,6 +78,8 @@ RegisterDialog::RegisterDialog(LoginData *const data):
     mOtherButton(nullptr),
     mWrongDataNoticeListener(new WrongDataNoticeListener)
 {
+    setCloseButton(true);
+
     const int optionalActions = Net::getLoginHandler()->
         supportedOptionalActions();
 
@@ -168,7 +170,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "cancel")
     {
-        Client::setState(STATE_LOGIN);
+        close();
     }
     else if (event.getId() == "register" && canSubmit())
     {
@@ -300,4 +302,10 @@ bool RegisterDialog::canSubmit() const
            !mPasswordField->getText().empty() &&
            !mConfirmField->getText().empty() &&
            Client::getState() == STATE_REGISTER;
+}
+
+void RegisterDialog::close()
+{
+    Client::setState(STATE_LOGIN);
+    Window::close();
 }

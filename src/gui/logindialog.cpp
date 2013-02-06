@@ -152,6 +152,8 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
     mUpdateHost(updateHost),
     mServerName(serverName)
 {
+    setCloseButton(true);
+
     Label *const serverLabel1 = new Label(this, _("Server:"));
     Label *const serverLabel2 = new Label(this, serverName);
     serverLabel2->adjustSize();
@@ -255,7 +257,7 @@ void LoginDialog::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == "server")
     {
-        Client::setState(STATE_SWITCH_SERVER);
+        close();
     }
     else if (event.getId() == "register")
     {
@@ -369,4 +371,10 @@ void LoginDialog::prepareUpdate()
         LoginDialog::savedPasswordKey = mServerName;
     else
         LoginDialog::savedPasswordKey = "-";
+}
+
+void LoginDialog::close()
+{
+    Client::setState(STATE_SWITCH_SERVER);
+    Window::close();
 }
