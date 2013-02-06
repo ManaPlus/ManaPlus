@@ -132,6 +132,8 @@ class ServerDialog : public Window,
 
         void connectToSelectedServer();
 
+        void close() override;
+
     protected:
         friend class ServersListModel;
 

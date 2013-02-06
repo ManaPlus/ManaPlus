@@ -270,6 +270,8 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
 
     setWindowName("ServerDialog");
 
+    setCloseButton(true);
+
     mPersistentIPCheckBox = new CheckBox(this,
         _("Use same ip for game sub servers"),
         config.getBoolValue("usePersistentIP"),
@@ -391,9 +393,7 @@ void ServerDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "quit")
     {
-        if (mDownload)
-            mDownload->cancel();
-        Client::setState(STATE_FORCE_QUIT);
+        close();
     }
     else if (eventId == "load")
     {
@@ -823,4 +823,11 @@ bool ServerDialog::needUpdateServers() const
     }
 
     return false;
+}
+
+void ServerDialog::close()
+{
+    if (mDownload)
+        mDownload->cancel();
+    Client::setState(STATE_FORCE_QUIT);
 }
