@@ -254,6 +254,9 @@ class Configuration final : public ConfigurationObject
          */
         void setDefaultValues(DefaultsData *const defaultsData);
 
+        DefaultsData *getDefaultValues()
+        { return mDefaultsData; }
+
         /**
          * Writes the current settings back to the config file.
          */

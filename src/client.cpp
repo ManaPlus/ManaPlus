@@ -575,6 +575,7 @@ void Client::gameInit()
     runCounters = config.getBoolValue("packetcounters");
     applyVSync();
     graphicsManager.setVideoMode();
+    getConfigDefaults2(config.getDefaultValues());
     applyGrabMode();
     applyGamma();
 

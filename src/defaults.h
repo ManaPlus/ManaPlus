@@ -38,6 +38,7 @@ VariableData* createData(const std::string &defData) A_WARN_UNUSED;
 VariableData* createData(const char *const defData) A_WARN_UNUSED;
 VariableData* createData(const bool defData) A_WARN_UNUSED;
 DefaultsData* getConfigDefaults() A_WARN_UNUSED;
+void getConfigDefaults2(DefaultsData *const configData);
 DefaultsData* getBrandingDefaults() A_WARN_UNUSED;
 DefaultsData* getPathsDefaults() A_WARN_UNUSED;
 

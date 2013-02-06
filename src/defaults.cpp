@@ -287,8 +287,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("allowscreensaver", false);
     AddDEF("debugOpenGL", 0);
     AddDEF("protectChatFocus", true);
-    AddDEF("screenButtonsSize", 1);
-    AddDEF("screenJoystickSize", 1);
 #if defined(__APPLE__)
     AddDEF("enableGamma", false);
 #else
@@ -307,6 +305,22 @@ DefaultsData* getConfigDefaults()
     AddDEF("screenButtonsFormat", 0);
     AddDEF("autoresizeminimaps", false);
     return configData;
+}
+
+void getConfigDefaults2(DefaultsData *const configData)
+{
+    if (!configData)
+        return;
+    if (mainGraphics->getHeight() < 480)
+    {
+        AddDEF("screenButtonsSize", 0);
+        AddDEF("screenJoystickSize", 0);
+    }
+    else
+    {
+        AddDEF("screenButtonsSize", 1);
+        AddDEF("screenJoystickSize", 1);
+    }
 }
 
 DefaultsData* getBrandingDefaults()
