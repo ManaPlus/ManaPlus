@@ -3,7 +3,7 @@
 
         <option name="padding" value="8" />
         <option name="textPadding" value="48" />
-        <option name="imagePadding" value="0" />
+        <option name="imagePadding" value="6" />
         <option name="itemPadding" value="1" />
         <option name="spacing" value="8" />
 
