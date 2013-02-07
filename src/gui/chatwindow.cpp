@@ -206,10 +206,22 @@ ChatWindow::ChatWindow():
     setSaveVisible(true);
     setStickyButtonLock(true);
 
+    int w = 600;
 #ifdef ANDROID
-    setDefaultSize(600, 123, ImageRect::UPPER_LEFT, -110, -35);
+    if (mainGraphics->getWidth() < 710)
+        w = mainGraphics->getWidth() - 110;
+    if (w < 100)
+        w = 100;
+    if (mainGraphics->getHeight() < 480)
+        setDefaultSize(w, 90, ImageRect::UPPER_LEFT, -110, -35);
+    else
+        setDefaultSize(w, 123, ImageRect::UPPER_LEFT, -110, -35);
 #else
-    setDefaultSize(600, 123, ImageRect::LOWER_LEFT);
+    if (mainGraphics->getWidth() < 600)
+        w = mainGraphics->getWidth() - 10;
+    if (w < 100)
+        w = 100;
+    setDefaultSize(w, 123, ImageRect::LOWER_LEFT);
 #endif
     setMinWidth(150);
     setMinHeight(90);
