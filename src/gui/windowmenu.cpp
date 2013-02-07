@@ -400,7 +400,7 @@ void WindowMenu::saveButtons()
 void WindowMenu::drawChildren(gcn::Graphics* graphics)
 {
     if (mHaveMouse || !mAutoHide || (mAutoHide == 1
-        && mainGraphics && mainGraphics->mWidth > 800))
+        && mainGraphics && (mSmallWindow || mainGraphics->mWidth > 800)))
     {
         Container::drawChildren(graphics);
     }
