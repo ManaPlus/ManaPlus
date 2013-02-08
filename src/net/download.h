@@ -97,6 +97,8 @@ class Download final
 
         static void addProxy(CURL *curl);
 
+        static void secureCurl(CURL *curl);
+
     private:
         static int downloadThread(void *ptr);
         static int downloadProgress(void *clientp, double dltotal,

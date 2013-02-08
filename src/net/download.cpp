@@ -253,6 +253,7 @@ int Download::downloadThread(void *ptr)
             curl_easy_setopt(d->mCurl, CURLOPT_CONNECTTIMEOUT, 30);
             curl_easy_setopt(d->mCurl, CURLOPT_TIMEOUT, 1800);
             addProxy(d->mCurl);
+            secureCurl(d->mCurl);
 
             if ((res = curl_easy_perform(d->mCurl)) != 0
                 && !d->mOptions.cancel)
@@ -408,6 +409,14 @@ void Download::addProxy(CURL *curl)
 #endif
             break;
     }
+}
+
+void Download::secureCurl(CURL *curl)
+{
+    curl_easy_setopt(curl, CURLOPT_PROTOCOLS,
+        CURLPROTO_HTTP | CURLPROTO_HTTPS);
+    curl_easy_setopt(curl, CURLOPT_REDIR_PROTOCOLS,
+        CURLPROTO_HTTP | CURLPROTO_HTTPS);
 }
 
 } // namespace Net
