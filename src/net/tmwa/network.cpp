@@ -88,7 +88,7 @@ short packet_lengths[] =
 
 static constexpr const int packet_lengths_size
     = static_cast<int>(sizeof(packet_lengths) / sizeof (short));
-static constexpr const unsigned int messagesSize = 0xffff;
+static constexpr const int messagesSize = 0xffff;
 Network *Network::mInstance = nullptr;
 
 Network::Network() :
@@ -146,22 +146,35 @@ void Network::dispatchMessages()
     BLOCK_START("Network::dispatchMessages")
     while (messageReady())
     {
-        MessageIn *const msg = getNextMessage();
-        if (msg->getLength() == 0)
+        SDL_mutexP(mMutex);
+        const int msgId = readWord(0);
+        int len;
+        if (msgId == SMSG_SERVER_VERSION_RESPONSE)
+            len = 10;
+        else if (msgId == SMSG_UPDATE_HOST2)
+            len = -1;
+        else
+            len = packet_lengths[msgId];
+
+        if (len == -1)
+            len = readWord(2);
+
+        MessageIn msg(mInBuffer, len);
+        SDL_mutexV(mMutex);
+
+        if (len == 0)
             logger->safeError("Zero length packet received. Exiting.");
 
-        const int id = msg->getId();
-        if (id >= 0 && id < messagesSize)
+        if (msgId >= 0 && msgId < messagesSize)
         {
-            MessageHandler *const handler = mMessageHandlers[id];
+            MessageHandler *const handler = mMessageHandlers[msgId];
             if (handler)
-                handler->handleMessage(*msg);
+                handler->handleMessage(msg);
             else
-                logger->log("Unhandled packet: %x", msg->getId());
+                logger->log("Unhandled packet: %x", msgId);
         }
 
-        skip(msg->getLength());
-        delete msg;
+        skip(len);
     }
     BLOCK_END("Network::dispatchMessages")
 }
@@ -196,40 +209,6 @@ bool Network::messageReady()
     SDL_mutexV(mMutex);
 
     return ret;
-}
-
-MessageIn *Network::getNextMessage()
-{
-    BLOCK_START("Network::getNextMessage")
-    while (!messageReady())
-    {
-        if (mState == NET_ERROR)
-            break;
-    }
-
-    SDL_mutexP(mMutex);
-    const int msgId = readWord(0);
-    int len;
-    if (msgId == SMSG_SERVER_VERSION_RESPONSE)
-        len = 10;
-    else if (msgId == SMSG_UPDATE_HOST2)
-        len = -1;
-    else
-        len = packet_lengths[msgId];
-
-    if (len == -1)
-        len = readWord(2);
-
-#ifdef ENABLEDEBUGLOG
-//    logger->dlog(strprintf("Received packet 0x%x of length %d\n",
-//        msgId, len));
-#endif
-
-    MessageIn *const msg = new MessageIn(mInBuffer, len);
-    SDL_mutexV(mMutex);
-
-    BLOCK_END("Network::getNextMessage")
-    return msg;
 }
 
 Network *Network::instance()

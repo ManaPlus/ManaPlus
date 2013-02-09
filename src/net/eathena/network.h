@@ -60,8 +60,6 @@ class Network final : public Ea::Network
 
         bool messageReady();
 
-        MessageIn *getNextMessage() A_WARN_UNUSED;
-
         void dispatchMessages();
 
     protected:
