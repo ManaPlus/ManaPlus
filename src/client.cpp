@@ -2704,8 +2704,8 @@ void Client::resizeVideo(int width, int height, const bool always)
 {
     // Keep a minimum size. This isn't adhered to by the actual window, but
     // it keeps some window positions from getting messed up.
-    width = std::max(640, width);
-    height = std::max(480, height);
+    width = std::max(470, width);
+    height = std::max(320, height);
 
     if (!mainGraphics)
         return;
