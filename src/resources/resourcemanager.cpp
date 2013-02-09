@@ -1012,7 +1012,15 @@ SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename) const
 {
     SDL_Surface *surface = nullptr;
     if (SDL_RWops *const rw = PHYSFSRWOPS_openRead(filename.c_str()))
-        surface = IMG_Load_RW(rw, 1);
+    {
+        if (!IMG_isPNG(rw))
+        {
+            logger->log("Error, image is not png: " + filename);
+            return nullptr;
+        }
+        surface = IMG_LoadPNG_RW(rw);
+        SDL_RWclose(rw);
+    }
     return surface;
 }
 

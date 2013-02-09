@@ -97,6 +97,8 @@ class ImageHelper
         static void setEnableAlpha(const bool n)
         { mEnableAlpha = n; }
 
+        static SDL_Surface *loadPng(SDL_RWops *const rw);
+
     protected:
         static bool mEnableAlpha;
 };

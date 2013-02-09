@@ -40,8 +40,7 @@ bool SDLImageHelper::mEnableAlphaCache = false;
 
 Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
-    SDL_Surface *const tmpImage = IMG_Load_RW(rw, 1);
-
+    SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)
     {
         logger->log("Error, image load failed: %s", IMG_GetError());

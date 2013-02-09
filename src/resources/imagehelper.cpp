@@ -43,8 +43,7 @@ bool ImageHelper::mEnableAlpha = true;
 
 Image *ImageHelper::load(SDL_RWops *const rw)
 {
-    SDL_Surface *const tmpImage = IMG_Load_RW(rw, 1);
-
+    SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)
     {
         logger->log("Error, image load failed: %s", IMG_GetError());
@@ -114,4 +113,16 @@ void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image) const
         logger->log("Mask: %08x, %08x, %08x, %08x", format->Rmask,
             format->Gmask, format->Bmask, format->Amask);
     }
+}
+
+SDL_Surface *ImageHelper::loadPng(SDL_RWops *const rw)
+{
+    if (!rw || !IMG_isPNG(rw))
+    {
+        logger->log("Error, image missing or not png");
+        return nullptr;
+    }
+    SDL_Surface *const tmpImage = IMG_LoadPNG_RW(rw);
+    SDL_RWclose(rw);
+    return tmpImage;
 }
