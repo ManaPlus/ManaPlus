@@ -86,17 +86,24 @@ short packet_lengths[] =
  -1, 122,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
 };
 
+static constexpr const int packet_lengths_size
+    = static_cast<int>(sizeof(packet_lengths) / sizeof (short));
+static constexpr const unsigned int messagesSize = 0xffff;
 Network *Network::mInstance = nullptr;
 
 Network::Network() :
     Ea::Network()
 {
     mInstance = this;
+    mMessageHandlers = new MessageHandler*[messagesSize];
+    memset(&mMessageHandlers[0], 0, sizeof(MessageHandler*) * 0xffff);
 }
 
 Network::~Network()
 {
     clearHandlers();
+    delete mMessageHandlers;
+    mMessageHandlers = nullptr;
     mInstance = nullptr;
 }
 
@@ -117,19 +124,21 @@ void Network::unregisterHandler(MessageHandler *handler)
         return;
 
     for (const uint16_t *i = handler->handledMessages; *i; ++i)
-        mMessageHandlers.erase(*i);
+        mMessageHandlers[*i] = nullptr;
 
     handler->setNetwork(nullptr);
 }
 
 void Network::clearHandlers()
 {
-    FOR_EACH (MessageHandlerIterator, i, mMessageHandlers)
+    for (int f = 0; f < messagesSize; f ++)
     {
-        if (i->second)
-            i->second->setNetwork(nullptr);
+        if (mMessageHandlers[f])
+        {
+            mMessageHandlers[f]->setNetwork(nullptr);
+            mMessageHandlers[f] = nullptr;
+        }
     }
-    mMessageHandlers.clear();
 }
 
 void Network::dispatchMessages()
@@ -138,21 +147,17 @@ void Network::dispatchMessages()
     while (messageReady())
     {
         MessageIn *const msg = getNextMessage();
-
-        const MessageHandlerIterator iter = mMessageHandlers.find(
-            msg->getId());
-
         if (msg->getLength() == 0)
             logger->safeError("Zero length packet received. Exiting.");
 
-        if (iter != mMessageHandlers.end())
+        const int id = msg->getId();
+        if (id >= 0 && id < messagesSize)
         {
-            if (iter->second)
-                iter->second->handleMessage(*msg);
-        }
-        else
-        {
-            logger->log("Unhandled packet: %x", msg->getId());
+            MessageHandler *const handler = mMessageHandlers[id];
+            if (handler)
+                handler->handleMessage(*msg);
+            else
+                logger->log("Unhandled packet: %x", msg->getId());
         }
 
         skip(msg->getLength());
@@ -179,11 +184,8 @@ bool Network::messageReady()
         }
         else
         {
-            if (msgId >= 0 && msgId < static_cast<signed>(
-                sizeof(packet_lengths) / sizeof (short)))
-            {
+            if (msgId >= 0 && msgId < packet_lengths_size)
                 len = packet_lengths[msgId];
-            }
         }
 
         if (len == -1 && mInSize > 4)

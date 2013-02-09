@@ -69,9 +69,7 @@ class Network final : public Ea::Network
 
         static Network *instance() A_WARN_UNUSED;
 
-        typedef std::map<uint16_t, MessageHandler*> MessageHandlers;
-        typedef MessageHandlers::iterator MessageHandlerIterator;
-        MessageHandlers mMessageHandlers;
+        MessageHandler **mMessageHandlers;
 
         static Network *mInstance;
 };
