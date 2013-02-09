@@ -296,15 +296,17 @@ void Gui::slowLogic()
         mMouseCursorAlpha = std::max(0.0f, mMouseCursorAlpha - 0.005f);
     }
     if (mGuiFont)
-        mGuiFont->slowLogic();
+        mGuiFont->slowLogic(0);
     if (mInfoParticleFont)
-        mInfoParticleFont->slowLogic();
+        mInfoParticleFont->slowLogic(1);
     if (mHelpFont)
-        mHelpFont->slowLogic();
+        mHelpFont->slowLogic(2);
     if (mSecureFont)
-        mSecureFont->slowLogic();
+        mSecureFont->slowLogic(3);
     if (boldFont)
-        boldFont->slowLogic();
+        boldFont->slowLogic(4);
+    if (mNpcFont)
+        mNpcFont->slowLogic(5);
     BLOCK_END("Gui::slowLogic")
 }
 

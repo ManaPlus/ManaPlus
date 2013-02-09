@@ -87,7 +87,7 @@ class SDLFont final : public gcn::Font
 
         void doClean();
 
-        void slowLogic();
+        void slowLogic(const int rnd);
 
         int getCreateCounter() const A_WARN_UNUSED
         { return mCreateCounter; }

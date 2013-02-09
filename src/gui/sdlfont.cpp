@@ -41,7 +41,7 @@ const unsigned int CACHE_SIZE = 256;
 const unsigned int CACHE_SIZE_SMALL1 = 2;
 const unsigned int CACHE_SIZE_SMALL2 = 50;
 const unsigned int CACHE_SIZE_SMALL3 = 170;
-const unsigned int CLEAN_TIME = 5;
+const unsigned int CLEAN_TIME = 7;
 const int OUTLINE_SIZE = 1;
 
 char *strBuf;
@@ -327,17 +327,17 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
     BLOCK_END("SDLFont::drawString")
 }
 
-void SDLFont::slowLogic()
+void SDLFont::slowLogic(const int rnd)
 {
     BLOCK_START("SDLFont::slowLogic")
     if (!mCleanTime)
     {
-        mCleanTime = cur_time + CLEAN_TIME;
+        mCleanTime = cur_time + CLEAN_TIME + rnd;
     }
     else if (mCleanTime < cur_time)
     {
         doClean();
-        mCleanTime = cur_time + CLEAN_TIME;
+        mCleanTime = cur_time + CLEAN_TIME + rnd;
     }
     BLOCK_END("SDLFont::slowLogic")
 }
@@ -410,8 +410,10 @@ void SDLFont::doClean()
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter += 100;
 #endif
-            for (int d = 0; d < 100; d ++)
-                cache->pop_back();
+            const std::list<SDLTextChunk>::iterator it_end = cache->end();
+            std::list<SDLTextChunk>::iterator it = cache->begin();
+            std::advance(it, -100);
+            cache->erase(it, it_end);
 #ifdef DEBUG_FONT_COUNTERS
             logger->log("delete3");
 #endif
@@ -421,8 +423,10 @@ void SDLFont::doClean()
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter += 20;
 #endif
-            for (int d = 0; d < 20; d ++)
-                cache->pop_back();
+            const std::list<SDLTextChunk>::iterator it_end = cache->end();
+            std::list<SDLTextChunk>::iterator it = cache->begin();
+            std::advance(it, -20);
+            cache->erase(it, it_end);
 #ifdef DEBUG_FONT_COUNTERS
             logger->log("delete2");
 #endif
