@@ -35,6 +35,7 @@
 
 class Button;
 class CharacterDisplay;
+class CharacterScroller;
 class Label;
 class LocalPlayer;
 class LoginData;
@@ -93,6 +94,10 @@ class CharSelectDialog final : public Window,
 
         void close() override;
 
+        void focusCharacter(int i);
+
+        void widgetResized(const gcn::Event &event) override;
+
     private:
         void attemptCharacterDelete(const int index);
 
@@ -119,6 +124,7 @@ class CharSelectDialog final : public Window,
         Button *mChangePasswordButton;
         Button *mUnregisterButton;
         Button *mChangeEmailButton;
+        CharacterScroller *mCharacterScroller;
 
         /** The player boxes */
         std::vector<CharacterDisplay*> mCharacterEntries;
@@ -126,6 +132,7 @@ class CharSelectDialog final : public Window,
         Net::CharHandler *mCharHandler;
         TextDialog *mDeleteDialog;
         int mDeleteIndex;
+        bool mSmallScreen;
 };
 
 #endif

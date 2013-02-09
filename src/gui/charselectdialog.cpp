@@ -135,6 +135,101 @@ class CharacterDisplay final : public Container
         Button *mDelete;
 };
 
+class CharacterScroller final : public Container,
+                                public gcn::ActionListener
+{
+    public:
+        CharacterScroller(CharSelectDialog *widget,
+                          std::vector<CharacterDisplay*> *entries) :
+            Container(widget),
+            gcn::ActionListener(),
+            mSelectedEntry(nullptr),
+            mPrevious(new Button(this, "<", "prev", this)),
+            mNext(new Button(this, ">", "next", this)),
+            mNumber(new Label(this, "??")),
+            mSelected(0),
+            mCharacterEntries(entries)
+        {
+            addKeyListener(widget);
+            if (entries)
+            {
+                FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
+                           it, entries)
+                {
+                    CharacterDisplay *character = *it;
+                    add(character);
+                }
+                show(0);
+            }
+            add(mPrevious);
+            add(mNext);
+            add(mNumber);
+        }
+
+        void show(const int i)
+        {
+            const int sz = (signed)mCharacterEntries->size();
+            if (mSelectedEntry)
+                mSelectedEntry->setVisible(false);
+            if (i >= sz)
+                mSelected = 0;
+            else if (i < 0)
+                mSelected = mCharacterEntries->size() - 1;
+            else
+                mSelected = i;
+            mSelectedEntry = (*mCharacterEntries)[mSelected];
+            mSelectedEntry->setVisible(true);
+            mNumber->setCaption(strprintf("%d / %d", mSelected + 1, sz));
+            mNumber->adjustSize();
+        }
+
+        void resize()
+        {
+            CharacterDisplay *firtChar = (*mCharacterEntries)[0];
+            const int x = (getWidth() - firtChar->getWidth()) / 2;
+            const int y = (getHeight() - firtChar->getHeight()) / 2;
+            FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
+                       it, mCharacterEntries)
+            {
+                CharacterDisplay *character = *it;
+                character->setPosition(x, y);
+            }
+            const int y2 = (getHeight() - mPrevious->getHeight()) / 2;
+            const int y3 = y2 - 55;
+            mPrevious->setPosition(x - mPrevious->getWidth() - 10, y3);
+            mNext->setPosition(getWidth() - x + 10, y3);
+            mNumber->setPosition(10, y2);
+        }
+
+        void action(const gcn::ActionEvent &event) override
+        {
+            const std::string &eventId = event.getId();
+            if (eventId == "next")
+            {
+                mSelected ++;
+                show(mSelected);
+            }
+            else if (eventId == "prev")
+            {
+                mSelected --;
+                show(mSelected);
+            }
+        }
+
+        int getSelected()
+        {
+            return mSelected;
+        }
+
+    private:
+        CharacterDisplay *mSelectedEntry;
+        Button *mPrevious;
+        Button *mNext;
+        Label *mNumber;
+        int mSelected;
+        std::vector<CharacterDisplay*> *mCharacterEntries;
+};
+
 CharSelectDialog::CharSelectDialog(LoginData *const data):
     Window(_("Account and Character Management"), false, nullptr, "char.xml"),
     gcn::ActionListener(),
@@ -148,10 +243,13 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
                           "change_password", this)),
     mUnregisterButton(nullptr),
     mChangeEmailButton(nullptr),
+    mCharacterScroller(nullptr),
     mCharacterEntries(0),
     mCharHandler(Net::getCharHandler()),
     mDeleteDialog(nullptr),
-    mDeleteIndex(-1)
+    mDeleteIndex(-1),
+    mSmallScreen(mainGraphics->getWidth() < 485
+                 || mainGraphics->getHeight() < 485)
 {
     setCloseButton(true);
 
@@ -186,12 +284,30 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     }
 
     placer = getPlacer(0, 1);
-
-    for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
+    if (!mSmallScreen)
     {
-        mCharacterEntries.push_back(new CharacterDisplay(this, this));
-        placer(i % SLOTS_PER_ROW, static_cast<int>(i) / SLOTS_PER_ROW,
-            mCharacterEntries[i]);
+        for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
+        {
+            mCharacterEntries.push_back(new CharacterDisplay(this, this));
+            placer(i % SLOTS_PER_ROW, static_cast<int>(i) / SLOTS_PER_ROW,
+                mCharacterEntries[i]);
+        }
+    }
+    else
+    {
+        for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
+        {
+            CharacterDisplay *character = new CharacterDisplay(this, this);
+            character->setVisible(false);
+            mCharacterEntries.push_back(character);
+//            placer(i % SLOTS_PER_ROW, static_cast<int>(i) / SLOTS_PER_ROW,
+//                mCharacterEntries[i]);
+        }
+        mCharacterScroller = new CharacterScroller(this, &mCharacterEntries);
+        mCharacterScroller->setWidth(mainGraphics->getWidth() - 2 * getPadding());
+        mCharacterScroller->setHeight(200);
+        placer(0, 0, mCharacterScroller);
+//        placer(0, 0, mCharacterEntries[0]);
     }
 
     reflowLayout();
@@ -202,8 +318,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     setVisible(true);
 
     Net::getCharHandler()->setCharSelectDialog(this);
-    if (mCharacterEntries[0])
-        mCharacterEntries[0]->requestFocus();
+    focusCharacter(0);
 }
 
 CharSelectDialog::~CharSelectDialog()
@@ -216,13 +331,20 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     // Check if a button of a character was pressed
     const gcn::Widget *const sourceParent = event.getSource()->getParent();
     int selected = -1;
-    for (unsigned int i = 0, sz = static_cast<unsigned int>(
-         mCharacterEntries.size()); i < sz; ++i)
+    if (mCharacterScroller)
     {
-        if (mCharacterEntries[i] == sourceParent)
+        selected = mCharacterScroller->getSelected();
+    }
+    else
+    {
+        for (unsigned int i = 0, sz = static_cast<unsigned int>(
+             mCharacterEntries.size()); i < sz; ++i)
         {
-            selected = i;
-            break;
+            if (mCharacterEntries[i] == sourceParent)
+            {
+                selected = i;
+                break;
+            }
         }
     }
 
@@ -230,9 +352,10 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
 
     if (selected >= 0)
     {
-        if (eventId == "use")
+        if (eventId == "use" && mCharacterEntries[selected]->getCharacter())
         {
             attemptCharacterSelect(selected);
+            return;
         }
         else if (eventId == "new" &&
                  !mCharacterEntries[selected]->getCharacter())
@@ -241,14 +364,16 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
             CharCreateDialog *const charCreateDialog =
                 new CharCreateDialog(this, selected);
             mCharHandler->setCharCreateDialog(charCreateDialog);
+            return;
         }
         else if (eventId == "delete"
                  && mCharacterEntries[selected]->getCharacter())
         {
             new CharDeleteConfirm(this, selected);
+            return;
         }
     }
-    else if (eventId == "switch")
+    if (eventId == "switch")
     {
         close();
     }
@@ -293,6 +418,8 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Input::KEY_GUI_RIGHT:
         {
+            if (mCharacterScroller)
+                return;
             keyEvent.consume();
             int idx;
             int idx2;
@@ -308,6 +435,8 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Input::KEY_GUI_LEFT:
         {
+            if (mCharacterScroller)
+                return;
             keyEvent.consume();
             int idx;
             int idx2;
@@ -334,7 +463,7 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
                 {
                     idx2 = 0;
                 }
-                else
+                else if (!mCharacterScroller)
                 {
                     idx -= SLOTS_PER_ROW;
                     if (mCharacterEntries[idx]->getCharacter())
@@ -361,7 +490,7 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
                     idx += SLOTS_PER_ROW;
                     idx2 = 0;
                 }
-                else
+                else if (!mCharacterScroller)
                 {
                     if (mCharacterEntries[idx]->getCharacter())
                         idx2 = 1;
@@ -544,8 +673,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
             {
                 if (character->dummy && character->dummy->getName() == name)
                 {
-                    if (mCharacterEntries[i])
-                        mCharacterEntries[i]->requestFocus();
+                    focusCharacter(i);
                     if (selAction == Choose)
                         attemptCharacterSelect(static_cast<int>(i));
                     return true;
@@ -563,6 +691,20 @@ void CharSelectDialog::close()
     Window::close();
 }
 
+void CharSelectDialog::focusCharacter(const int i)
+{
+    if (mCharacterEntries[i])
+        mCharacterEntries[i]->requestFocus();
+    if (mCharacterScroller)
+        mCharacterScroller->show(i);
+}
+
+void CharSelectDialog::widgetResized(const gcn::Event &event)
+{
+    Window::widgetResized(event);
+    if (mCharacterScroller)
+        mCharacterScroller->resize();
+}
 
 CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
                                    CharSelectDialog *const charSelectDialog) :
