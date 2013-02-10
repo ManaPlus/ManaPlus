@@ -438,26 +438,6 @@ void ScrollArea::calcButton(gcn::Graphics *const graphics,
     }
 }
 
-void ScrollArea::drawUpButton(gcn::Graphics *const graphics)
-{
-    drawButton(graphics, UP);
-}
-
-void ScrollArea::drawDownButton(gcn::Graphics *const graphics)
-{
-    drawButton(graphics, DOWN);
-}
-
-void ScrollArea::drawLeftButton(gcn::Graphics *const graphics)
-{
-    drawButton(graphics, LEFT);
-}
-
-void ScrollArea::drawRightButton(gcn::Graphics *const graphics)
-{
-    drawButton(graphics, RIGHT);
-}
-
 void ScrollArea::drawVBar(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getVerticalBarDimension();

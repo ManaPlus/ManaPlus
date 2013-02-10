@@ -141,10 +141,6 @@ class ScrollArea final : public gcn::ScrollArea,
 
         void drawButton(gcn::Graphics *const graphics, const BUTTON_DIR dir);
         void calcButton(gcn::Graphics *const graphics, const BUTTON_DIR dir);
-        void drawUpButton(gcn::Graphics *const graphics) override;
-        void drawDownButton(gcn::Graphics *const graphics) override;
-        void drawLeftButton(gcn::Graphics *const graphics) override;
-        void drawRightButton(gcn::Graphics *const graphics) override;
         void drawVBar(gcn::Graphics *const graphics) override;
         void drawHBar(gcn::Graphics *const graphics) override;
         void drawVMarker(gcn::Graphics *const graphics) override;
