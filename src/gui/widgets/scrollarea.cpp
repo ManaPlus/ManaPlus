@@ -167,7 +167,8 @@ void ScrollArea::init(std::string skinName)
                     rect.grid[f]->incRef();
                     buttons[f][i] = rect.grid[f];
                 }
-                mShowButtons = (skin->getOption("showbuttons", 1) == 1);
+                if (i == 0)
+                    mShowButtons = (skin->getOption("showbuttons", 1) == 1);
             }
             else
             {
@@ -821,19 +822,19 @@ gcn::Rectangle ScrollArea::getVerticalBarDimension() const
     if (!mVBarVisible)
         return gcn::Rectangle(0, 0, 0, 0);
 
-    const int height = mVBarVisible ? mScrollbarWidth : 0;
+    const int height = (mVBarVisible && mShowButtons) ? mScrollbarWidth : 0;
     if (mHBarVisible)
     {
         return gcn::Rectangle(mDimension.width - mScrollbarWidth,
             height,
             mScrollbarWidth,
-            mDimension.height - height - height - mScrollbarWidth);
+            mDimension.height - 2 * height - mScrollbarWidth);
     }
 
     return gcn::Rectangle(mDimension.width - mScrollbarWidth,
         height,
         mScrollbarWidth,
-        mDimension.height - height - height);
+        mDimension.height - 2 * height);
 }
 
 gcn::Rectangle ScrollArea::getHorizontalBarDimension() const
@@ -841,18 +842,18 @@ gcn::Rectangle ScrollArea::getHorizontalBarDimension() const
     if (!mHBarVisible)
         return gcn::Rectangle(0, 0, 0, 0);
 
-    const int width = mHBarVisible ? mScrollbarWidth : 0;
+    const int width = (mHBarVisible && mShowButtons) ? mScrollbarWidth : 0;
     if (mVBarVisible)
     {
         return gcn::Rectangle(width,
             mDimension.height - mScrollbarWidth,
-            mDimension.width - width - width - mScrollbarWidth,
+            mDimension.width - 2 * width - mScrollbarWidth,
             mScrollbarWidth);
     }
 
     return gcn::Rectangle(width,
                       mDimension.height - mScrollbarWidth,
-                      mDimension.width - width - width,
+                      mDimension.width - 2 * width,
                       mScrollbarWidth);
 }
 
@@ -863,7 +864,7 @@ gcn::Rectangle ScrollArea::getVerticalMarkerDimension()
 
     int length, pos;
     int height;
-    const int h2 = mVBarVisible ? mScrollbarWidth : 0;
+    const int h2 = (mVBarVisible && mShowButtons) ? mScrollbarWidth : 0;
     const gcn::Widget *content;
     if (!mWidgets.empty())
         content = *mWidgets.begin();
@@ -912,7 +913,7 @@ gcn::Rectangle ScrollArea::getHorizontalMarkerDimension()
 
     int length, pos;
     int width;
-    const int w2 = mHBarVisible ? mScrollbarWidth : 0;
+    const int w2 = (mHBarVisible && mShowButtons) ? mScrollbarWidth : 0;
     const gcn::Widget *content;
     if (!mWidgets.empty())
         content = *mWidgets.begin();
@@ -956,7 +957,7 @@ gcn::Rectangle ScrollArea::getHorizontalMarkerDimension()
 
 gcn::Rectangle ScrollArea::getUpButtonDimension() const
 {
-    if (!mVBarVisible)
+    if (!mVBarVisible || !mShowButtons)
         return gcn::Rectangle(0, 0, 0, 0);
 
     return gcn::Rectangle(mDimension.width - mScrollbarWidth, 0,
@@ -965,7 +966,7 @@ gcn::Rectangle ScrollArea::getUpButtonDimension() const
 
 gcn::Rectangle ScrollArea::getDownButtonDimension() const
 {
-    if (!mVBarVisible)
+    if (!mVBarVisible || !mShowButtons)
         return gcn::Rectangle(0, 0, 0, 0);
 
     if (mVBarVisible && mHBarVisible)
@@ -984,7 +985,7 @@ gcn::Rectangle ScrollArea::getDownButtonDimension() const
 
 gcn::Rectangle ScrollArea::getLeftButtonDimension() const
 {
-    if (!mHBarVisible)
+    if (!mHBarVisible || !mShowButtons)
         return gcn::Rectangle(0, 0, 0, 0);
 
     return gcn::Rectangle(0, mDimension.height - mScrollbarWidth,
@@ -993,7 +994,7 @@ gcn::Rectangle ScrollArea::getLeftButtonDimension() const
 
 gcn::Rectangle ScrollArea::getRightButtonDimension() const
 {
-    if (!mHBarVisible)
+    if (!mHBarVisible || !mShowButtons)
         return gcn::Rectangle(0, 0, 0, 0);
 
     if (mVBarVisible && mHBarVisible)
