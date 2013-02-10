@@ -64,7 +64,7 @@ ItemLinkHandler::~ItemLinkHandler()
 void ItemLinkHandler::handleLink(const std::string &link,
                                  gcn::MouseEvent *event)
 {
-    if (!strStartWith(link, "http://"))
+    if (!strStartWith(link, "http://") && !strStartWith(link, "https://"))
     {
         if (!mItemPopup)
             return;

@@ -88,7 +88,7 @@ void HelpWindow::action(const gcn::ActionEvent &event)
 void HelpWindow::handleLink(const std::string &link,
                             gcn::MouseEvent *event A_UNUSED)
 {
-    if (!strStartWith(link, "http://"))
+    if (!strStartWith(link, "http://") && !strStartWith(link, "https://"))
     {
         std::string helpFile = link;
         loadHelp(helpFile);
