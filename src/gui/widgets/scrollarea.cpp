@@ -33,6 +33,7 @@
 int ScrollArea::instances = 0;
 float ScrollArea::mAlpha = 1.0;
 bool ScrollArea::mShowButtons = true;
+int ScrollArea::mMarkerSize = 0;
 ImageRect ScrollArea::background;
 ImageRect ScrollArea::vMarker;
 ImageRect ScrollArea::vMarkerHi;
@@ -168,7 +169,10 @@ void ScrollArea::init(std::string skinName)
                     buttons[f][i] = rect.grid[f];
                 }
                 if (i == 0)
+                {
                     mShowButtons = (skin->getOption("showbuttons", 1) == 1);
+                    mMarkerSize = skin->getOption("markersize", 0);
+                }
             }
             else
             {
@@ -864,7 +868,8 @@ gcn::Rectangle ScrollArea::getVerticalMarkerDimension()
 
     int length, pos;
     int height;
-    const int h2 = (mVBarVisible && mShowButtons) ? mScrollbarWidth : 0;
+    const int h2 = (mVBarVisible && mShowButtons)
+        ? mScrollbarWidth : mMarkerSize / 2;
     const gcn::Widget *content;
     if (!mWidgets.empty())
         content = *mWidgets.begin();
@@ -876,30 +881,42 @@ gcn::Rectangle ScrollArea::getVerticalMarkerDimension()
     else
         height = mDimension.height - 2 * h2;
 
-    if (content && content->getHeight() != 0)
+    const int maxV = getVerticalMaxScroll();
+    if (mMarkerSize && maxV)
     {
-        length = (height * getChildrenArea().height)
-            / content->getHeight();
+        pos = (mVScroll * height / maxV - mMarkerSize / 2);
+        length = mMarkerSize;
     }
     else
     {
-        length = height;
-    }
+        if (content)
+        {
+            const int h3 = content->getHeight();
+            if (h3)
+                length = (height * getChildrenArea().height) / h3;
+            else
+                length = height;
+        }
+        else
+        {
+            length = height;
+        }
 
-    if (length < mScrollbarWidth)
-        length = mScrollbarWidth;
+        if (length < mScrollbarWidth)
+            length = mScrollbarWidth;
 
-    if (length > height)
-        length = height;
+        if (length > height)
+            length = height;
 
-    if (getVerticalMaxScroll() != 0)
-    {
-        pos = ((height - length) * mVScroll)
-            / getVerticalMaxScroll();
-    }
-    else
-    {
-        pos = 0;
+        if (getVerticalMaxScroll() != 0)
+        {
+            pos = ((height - length) * mVScroll)
+                / getVerticalMaxScroll();
+        }
+        else
+        {
+            pos = 0;
+        }
     }
 
     return gcn::Rectangle(mDimension.width - mScrollbarWidth, h2 + pos,
@@ -913,7 +930,8 @@ gcn::Rectangle ScrollArea::getHorizontalMarkerDimension()
 
     int length, pos;
     int width;
-    const int w2 = (mHBarVisible && mShowButtons) ? mScrollbarWidth : 0;
+    const int w2 = (mHBarVisible && mShowButtons)
+        ? mScrollbarWidth : mMarkerSize / 2;
     const gcn::Widget *content;
     if (!mWidgets.empty())
         content = *mWidgets.begin();
@@ -925,30 +943,40 @@ gcn::Rectangle ScrollArea::getHorizontalMarkerDimension()
     else
         width = mDimension.width - w2 - mScrollbarWidth;
 
-    if (content && content->getWidth() != 0)
+    const int maxH = getHorizontalMaxScroll();
+    if (mMarkerSize && maxH)
     {
-        length = (width * getChildrenArea().width)
-            / content->getWidth();
+        pos = (getHorizontalScrollAmount() * width / maxH - mMarkerSize / 2);
+        length = mMarkerSize;
     }
     else
     {
-        length = width;
-    }
+        if (content)
+        {
+            const int w3 = content->getWidth();
+            if (w3)
+                length = (width * getChildrenArea().width) / w3;
+        }
+        else
+        {
+            length = width;
+        }
 
-    if (length < mScrollbarWidth)
-        length = mScrollbarWidth;
+        if (length < mScrollbarWidth)
+            length = mScrollbarWidth;
 
-    if (length > width)
-        length = width;
+        if (length > width)
+            length = width;
 
-    if (getHorizontalMaxScroll() != 0)
-    {
-        pos = ((width - length) * getHorizontalScrollAmount())
-            / getHorizontalMaxScroll();
-    }
-    else
-    {
-        pos = 0;
+        if (getHorizontalMaxScroll() != 0)
+        {
+            pos = ((width - length) * getHorizontalScrollAmount())
+                / getHorizontalMaxScroll();
+        }
+        else
+        {
+            pos = 0;
+        }
     }
 
     return gcn::Rectangle(w2 + pos, mDimension.height - mScrollbarWidth,
