@@ -115,8 +115,6 @@ SET(SRCS
     gui/widgets/browserbox.h
     gui/widgets/button.cpp
     gui/widgets/button.h
-    gui/widgets/channeltab.cpp
-    gui/widgets/channeltab.h
     gui/widgets/chattab.cpp
     gui/widgets/chattab.h
     gui/widgets/checkbox.cpp
@@ -529,10 +527,6 @@ SET(SRCS
     chatlogger.h
     client.cpp
     client.h
-    channel.cpp
-    channel.h
-    channelmanager.cpp
-    channelmanager.h
     commandhandler.cpp
     commandhandler.h
     commands.cpp

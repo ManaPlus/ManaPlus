@@ -24,8 +24,6 @@
 
 #include "auctionmanager.h"
 #include "actorspritemanager.h"
-#include "channelmanager.h"
-#include "channel.h"
 #include "client.h"
 #include "configuration.h"
 #include "game.h"
@@ -43,7 +41,6 @@
 #include "gui/tradewindow.h"
 #include "gui/sdlfont.h"
 
-#include "gui/widgets/channeltab.h"
 #include "gui/widgets/whispertab.h"
 
 #include "net/adminhandler.h"

@@ -27,7 +27,6 @@
 #include "actorspritemanager.h"
 #include "auctionmanager.h"
 #include "animatedsprite.h"
-#include "channelmanager.h"
 #include "client.h"
 #include "commandhandler.h"
 #include "effectmanager.h"
@@ -141,7 +140,6 @@ QuestsWindow *questsWindow = nullptr;
 WindowMenu *windowMenu = nullptr;
 
 ActorSpriteManager *actorSpriteManager = nullptr;
-ChannelManager *channelManager = nullptr;
 CommandHandler *commandHandler = nullptr;
 #ifdef USE_MUMBLE
 MumbleManager *mumbleManager = nullptr;
@@ -170,7 +168,6 @@ static void initEngines()
 
     actorSpriteManager = new ActorSpriteManager;
     commandHandler = new CommandHandler;
-    channelManager = new ChannelManager;
     effectManager = new EffectManager;
     AuctionManager::init();
     GuildManager::init();
@@ -457,7 +454,6 @@ Game::~Game()
     del_0(actorSpriteManager)
     if (Client::getState() != STATE_CHANGE_MAP)
         del_0(player_node)
-    del_0(channelManager)
     del_0(commandHandler)
     del_0(effectManager)
     del_0(particleEngine)
