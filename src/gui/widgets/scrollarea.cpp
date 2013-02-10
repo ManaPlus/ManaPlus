@@ -32,6 +32,7 @@
 
 int ScrollArea::instances = 0;
 float ScrollArea::mAlpha = 1.0;
+bool ScrollArea::mShowButtons = true;
 ImageRect ScrollArea::background;
 ImageRect ScrollArea::vMarker;
 ImageRect ScrollArea::vMarkerHi;
@@ -166,6 +167,7 @@ void ScrollArea::init(std::string skinName)
                     rect.grid[f]->incRef();
                     buttons[f][i] = rect.grid[f];
                 }
+                mShowButtons = (skin->getOption("showbuttons", 1) == 1);
             }
             else
             {
@@ -257,16 +259,22 @@ void ScrollArea::draw(gcn::Graphics *graphics)
                 mVertexes->clear();
                 if (mVBarVisible)
                 {
-                    calcButton(graphics, UP);
-                    calcButton(graphics, DOWN);
+                    if (mShowButtons)
+                    {
+                        calcButton(graphics, UP);
+                        calcButton(graphics, DOWN);
+                    }
                     calcVBar(graphics);
                     calcVMarker(graphics);
                 }
 
                 if (mHBarVisible)
                 {
-                    calcButton(graphics, LEFT);
-                    calcButton(graphics, RIGHT);
+                    if (mShowButtons)
+                    {
+                        calcButton(graphics, LEFT);
+                        calcButton(graphics, RIGHT);
+                    }
                     calcHBar(graphics);
                     calcHMarker(graphics);
                 }
@@ -277,16 +285,22 @@ void ScrollArea::draw(gcn::Graphics *graphics)
         {
             if (mVBarVisible)
             {
-                drawButton(graphics, UP);
-                drawButton(graphics, DOWN);
+                if (mShowButtons)
+                {
+                    drawButton(graphics, UP);
+                    drawButton(graphics, DOWN);
+                }
                 drawVBar(graphics);
                 drawVMarker(graphics);
             }
 
             if (mHBarVisible)
             {
-                drawButton(graphics, LEFT);
-                drawButton(graphics, RIGHT);
+                if (mShowButtons)
+                {
+                    drawButton(graphics, LEFT);
+                    drawButton(graphics, RIGHT);
+                }
                 drawHBar(graphics);
                 drawHMarker(graphics);
             }
@@ -331,9 +345,9 @@ void ScrollArea::drawFrame(gcn::Graphics *graphics)
     BLOCK_START("ScrollArea::drawFrame")
     if (mOpaque)
     {
-        const int bs = getFrameSize();
-        const int w = getWidth() + bs * 2;
-        const int h = getHeight() + bs * 2;
+        const int bs = mFrameSize;
+        const int w = mDimension.width + bs * 2;
+        const int h = mDimension.height + bs * 2;
 
         updateCalcFlag(graphics);
 
@@ -538,7 +552,7 @@ void ScrollArea::drawVMarker(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getVerticalMarkerDimension();
 
-    if ((mHasMouse) && (mX > (getWidth() - mScrollbarWidth)))
+    if ((mHasMouse) && (mX > (mDimension.width - mScrollbarWidth)))
     {
         static_cast<Graphics*>(graphics)->
             drawImageRect(dim.x, dim.y, dim.width, dim.height, vMarkerHi);
@@ -554,7 +568,7 @@ void ScrollArea::calcVMarker(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getVerticalMarkerDimension();
 
-    if ((mHasMouse) && (mX > (getWidth() - mScrollbarWidth)))
+    if ((mHasMouse) && (mX > (mDimension.width - mScrollbarWidth)))
     {
         static_cast<Graphics*>(graphics)->calcWindow(
             mVertexes, dim.x, dim.y, dim.width, dim.height, vMarkerHi);
@@ -570,7 +584,7 @@ void ScrollArea::drawHMarker(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle dim = getHorizontalMarkerDimension();
 
-    if ((mHasMouse) && (mY > (getHeight() - mScrollbarWidth)))
+    if ((mHasMouse) && (mY > (mDimension.height - mScrollbarWidth)))
     {
         static_cast<Graphics*>(graphics)->
             drawImageRect(dim.x, dim.y, dim.width, dim.height, vMarkerHi);
@@ -586,7 +600,7 @@ void ScrollArea::calcHMarker(gcn::Graphics *const graphics)
 {
     const gcn::Rectangle dim = getHorizontalMarkerDimension();
 
-    if ((mHasMouse) && (mY > (getHeight() - mScrollbarWidth)))
+    if ((mHasMouse) && (mY > (mDimension.height - mScrollbarWidth)))
     {
         static_cast<Graphics*>(graphics)->calcWindow(
             mVertexes, dim.x, dim.y, dim.width, dim.height, vMarkerHi);
@@ -617,8 +631,9 @@ void ScrollArea::mouseExited(gcn::MouseEvent& event A_UNUSED)
 void ScrollArea::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
-    const unsigned int frameSize = 2 * getFrameSize();
-    getContent()->setSize(getWidth() - frameSize, getHeight() - frameSize);
+    const unsigned int frameSize = 2 * mFrameSize;
+    getContent()->setSize(mDimension.width - frameSize,
+        mDimension.height - frameSize);
 }
 
 void ScrollArea::widgetMoved(const gcn::Event& event A_UNUSED)
@@ -628,7 +643,74 @@ void ScrollArea::widgetMoved(const gcn::Event& event A_UNUSED)
 
 void ScrollArea::mousePressed(gcn::MouseEvent& event)
 {
-    gcn::ScrollArea::mousePressed(event);
+    const int x = event.getX();
+    const int y = event.getY();
+
+    if (getUpButtonDimension().isPointInRect(x, y))
+    {
+        setVerticalScrollAmount(mVScroll
+                                - mUpButtonScrollAmount);
+        mUpButtonPressed = true;
+    }
+    else if (getDownButtonDimension().isPointInRect(x, y))
+    {
+        setVerticalScrollAmount(mVScroll
+                                + mDownButtonScrollAmount);
+        mDownButtonPressed = true;
+    }
+    else if (getLeftButtonDimension().isPointInRect(x, y))
+    {
+        setHorizontalScrollAmount(getHorizontalScrollAmount()
+                                  - mLeftButtonScrollAmount);
+        mLeftButtonPressed = true;
+    }
+    else if (getRightButtonDimension().isPointInRect(x, y))
+    {
+        setHorizontalScrollAmount(getHorizontalScrollAmount()
+                                  + mRightButtonScrollAmount);
+        mRightButtonPressed = true;
+    }
+    else if (getVerticalMarkerDimension().isPointInRect(x, y))
+    {
+        mIsHorizontalMarkerDragged = false;
+        mIsVerticalMarkerDragged = true;
+
+        mVerticalMarkerDragOffset = y - getVerticalMarkerDimension().y;
+    }
+    else if (getVerticalBarDimension().isPointInRect(x, y))
+    {
+        if (y < getVerticalMarkerDimension().y)
+        {
+            setVerticalScrollAmount(mVScroll
+                - static_cast<int>(getChildrenArea().height * 0.95));
+        }
+        else
+        {
+            setVerticalScrollAmount(mVScroll
+                + static_cast<int>(getChildrenArea().height * 0.95));
+        }
+    }
+    else if (getHorizontalMarkerDimension().isPointInRect(x, y))
+    {
+        mIsHorizontalMarkerDragged = true;
+        mIsVerticalMarkerDragged = false;
+
+        mHorizontalMarkerDragOffset = x - getHorizontalMarkerDimension().x;
+    }
+    else if (getHorizontalBarDimension().isPointInRect(x, y))
+    {
+        if (x < getHorizontalMarkerDimension().x)
+        {
+            setHorizontalScrollAmount(getHorizontalScrollAmount()
+                - static_cast<int>(getChildrenArea().width * 0.95));
+        }
+        else
+        {
+            setHorizontalScrollAmount(getHorizontalScrollAmount()
+                + static_cast<int>(getChildrenArea().width * 0.95));
+        }
+    }
+
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
         mClickX = event.getX();
@@ -689,4 +771,241 @@ void ScrollArea::mouseReleased(gcn::MouseEvent& event)
         }
     }
     gcn::ScrollArea::mouseReleased(event);
+}
+
+void ScrollArea::mouseDragged(gcn::MouseEvent &event)
+{
+    if (mIsVerticalMarkerDragged)
+    {
+        const gcn::Rectangle barDim = getVerticalBarDimension();
+
+        const int pos = event.getY() - barDim.y
+              - mVerticalMarkerDragOffset;
+        const int length = getVerticalMarkerDimension().height;
+
+        if ((barDim.height - length) > 0)
+        {
+            setVerticalScrollAmount((getVerticalMaxScroll() * pos)
+                                      / (barDim.height - length));
+        }
+        else
+        {
+            setVerticalScrollAmount(0);
+        }
+    }
+
+    if (mIsHorizontalMarkerDragged)
+    {
+        const gcn::Rectangle barDim = getHorizontalBarDimension();
+
+        const int pos = event.getX() - barDim.x 
+            - mHorizontalMarkerDragOffset;
+        const int length = getHorizontalMarkerDimension().width;
+
+        if ((barDim.width - length) > 0)
+        {
+            setHorizontalScrollAmount((getHorizontalMaxScroll() * pos)
+                                      / (barDim.width - length));
+        }
+        else
+        {
+            setHorizontalScrollAmount(0);
+        }
+    }
+
+    event.consume();
+}
+
+gcn::Rectangle ScrollArea::getVerticalBarDimension() const
+{
+    if (!mVBarVisible)
+        return gcn::Rectangle(0, 0, 0, 0);
+
+    const int height = mVBarVisible ? mScrollbarWidth : 0;
+    if (mHBarVisible)
+    {
+        return gcn::Rectangle(mDimension.width - mScrollbarWidth,
+            height,
+            mScrollbarWidth,
+            mDimension.height - height - height - mScrollbarWidth);
+    }
+
+    return gcn::Rectangle(mDimension.width - mScrollbarWidth,
+        height,
+        mScrollbarWidth,
+        mDimension.height - height - height);
+}
+
+gcn::Rectangle ScrollArea::getHorizontalBarDimension() const
+{
+    if (!mHBarVisible)
+        return gcn::Rectangle(0, 0, 0, 0);
+
+    const int width = mHBarVisible ? mScrollbarWidth : 0;
+    if (mVBarVisible)
+    {
+        return gcn::Rectangle(width,
+            mDimension.height - mScrollbarWidth,
+            mDimension.width - width - width - mScrollbarWidth,
+            mScrollbarWidth);
+    }
+
+    return gcn::Rectangle(width,
+                      mDimension.height - mScrollbarWidth,
+                      mDimension.width - width - width,
+                      mScrollbarWidth);
+}
+
+gcn::Rectangle ScrollArea::getVerticalMarkerDimension()
+{
+    if (!mVBarVisible)
+        return gcn::Rectangle(0, 0, 0, 0);
+
+    int length, pos;
+    int height;
+    const int h2 = mVBarVisible ? mScrollbarWidth : 0;
+    const gcn::Widget *content;
+    if (!mWidgets.empty())
+        content = *mWidgets.begin();
+    else
+        content = nullptr;
+
+    if (mHBarVisible)
+        height = mDimension.height - 2 * h2 - mScrollbarWidth;
+    else
+        height = mDimension.height - 2 * h2;
+
+    if (content && content->getHeight() != 0)
+    {
+        length = (height * getChildrenArea().height)
+            / content->getHeight();
+    }
+    else
+    {
+        length = height;
+    }
+
+    if (length < mScrollbarWidth)
+        length = mScrollbarWidth;
+
+    if (length > height)
+        length = height;
+
+    if (getVerticalMaxScroll() != 0)
+    {
+        pos = ((height - length) * mVScroll)
+            / getVerticalMaxScroll();
+    }
+    else
+    {
+        pos = 0;
+    }
+
+    return gcn::Rectangle(mDimension.width - mScrollbarWidth, h2 + pos,
+        mScrollbarWidth, length);
+}
+
+gcn::Rectangle ScrollArea::getHorizontalMarkerDimension()
+{
+    if (!mHBarVisible)
+        return gcn::Rectangle(0, 0, 0, 0);
+
+    int length, pos;
+    int width;
+    const int w2 = mHBarVisible ? mScrollbarWidth : 0;
+    const gcn::Widget *content;
+    if (!mWidgets.empty())
+        content = *mWidgets.begin();
+    else
+        content = nullptr;
+
+    if (mVBarVisible)
+        width = mDimension.width - 2 * w2 - mScrollbarWidth;
+    else
+        width = mDimension.width - w2 - mScrollbarWidth;
+
+    if (content && content->getWidth() != 0)
+    {
+        length = (width * getChildrenArea().width)
+            / content->getWidth();
+    }
+    else
+    {
+        length = width;
+    }
+
+    if (length < mScrollbarWidth)
+        length = mScrollbarWidth;
+
+    if (length > width)
+        length = width;
+
+    if (getHorizontalMaxScroll() != 0)
+    {
+        pos = ((width - length) * getHorizontalScrollAmount())
+            / getHorizontalMaxScroll();
+    }
+    else
+    {
+        pos = 0;
+    }
+
+    return gcn::Rectangle(w2 + pos, mDimension.height - mScrollbarWidth,
+        length, mScrollbarWidth);
+}
+
+gcn::Rectangle ScrollArea::getUpButtonDimension() const
+{
+    if (!mVBarVisible)
+        return gcn::Rectangle(0, 0, 0, 0);
+
+    return gcn::Rectangle(mDimension.width - mScrollbarWidth, 0,
+        mScrollbarWidth, mScrollbarWidth);
+}
+
+gcn::Rectangle ScrollArea::getDownButtonDimension() const
+{
+    if (!mVBarVisible)
+        return gcn::Rectangle(0, 0, 0, 0);
+
+    if (mVBarVisible && mHBarVisible)
+    {
+        return gcn::Rectangle(mDimension.width - mScrollbarWidth,
+            mDimension.height - mScrollbarWidth*2,
+            mScrollbarWidth,
+            mScrollbarWidth);
+    }
+
+    return gcn::Rectangle(mDimension.width - mScrollbarWidth,
+        mDimension.height - mScrollbarWidth,
+        mScrollbarWidth,
+        mScrollbarWidth);
+}
+
+gcn::Rectangle ScrollArea::getLeftButtonDimension() const
+{
+    if (!mHBarVisible)
+        return gcn::Rectangle(0, 0, 0, 0);
+
+    return gcn::Rectangle(0, mDimension.height - mScrollbarWidth,
+        mScrollbarWidth, mScrollbarWidth);
+}
+
+gcn::Rectangle ScrollArea::getRightButtonDimension() const
+{
+    if (!mHBarVisible)
+        return gcn::Rectangle(0, 0, 0, 0);
+
+    if (mVBarVisible && mHBarVisible)
+    {
+        return gcn::Rectangle(mDimension.width - mScrollbarWidth*2,
+            mDimension.height - mScrollbarWidth,
+            mScrollbarWidth,
+            mScrollbarWidth);
+    }
+
+    return gcn::Rectangle(mDimension.width - mScrollbarWidth,
+        mDimension.height - mScrollbarWidth,
+        mScrollbarWidth,
+        mScrollbarWidth);
 }

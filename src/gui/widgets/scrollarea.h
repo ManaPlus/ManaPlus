@@ -120,9 +120,27 @@ class ScrollArea final : public gcn::ScrollArea,
 
         void mouseReleased(gcn::MouseEvent& event) override;
 
+        void mouseDragged(gcn::MouseEvent &event);
+
         void widgetResized(const gcn::Event &event) override;
 
         void widgetMoved(const gcn::Event &event) override;
+
+        gcn::Rectangle getVerticalBarDimension() const;
+
+        gcn::Rectangle getHorizontalBarDimension() const;
+
+        gcn::Rectangle getVerticalMarkerDimension();
+
+        gcn::Rectangle getHorizontalMarkerDimension();
+
+        gcn::Rectangle getUpButtonDimension() const;
+
+        gcn::Rectangle getDownButtonDimension() const;
+
+        gcn::Rectangle getLeftButtonDimension() const;
+
+        gcn::Rectangle getRightButtonDimension() const;
 
     protected:
         enum BUTTON_DIR
@@ -155,6 +173,7 @@ class ScrollArea final : public gcn::ScrollArea,
 
         static int instances;
         static float mAlpha;
+        static bool mShowButtons;
         static ImageRect background;
         static ImageRect vMarker;
         static ImageRect vMarkerHi;

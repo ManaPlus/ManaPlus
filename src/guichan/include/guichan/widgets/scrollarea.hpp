@@ -351,11 +351,7 @@ namespace gcn
 
         // Inherited from MouseListener
 
-        virtual void mousePressed(MouseEvent& mouseEvent) override;
-
         virtual void mouseReleased(MouseEvent& mouseEvent) override;
-
-        virtual void mouseDragged(MouseEvent& mouseEvent) override;
 
         virtual void mouseWheelMovedUp(MouseEvent& mouseEvent) override;
 
@@ -430,62 +426,6 @@ namespace gcn
          * Checks the policies for the scroll bars.
          */
         virtual void checkPolicies();
-
-        /**
-         * Gets the up button dimension.
-         *
-         * @return the dimension of the up button.
-         */
-        Rectangle getUpButtonDimension() const;
-
-        /**
-         * Gets the down button dimension.
-         *
-         * @return the dimension of the down button.
-         */
-        Rectangle getDownButtonDimension() const;
-
-        /**
-         * Gets the left button dimension.
-         *
-         * @return the dimension of the left button.
-         */
-        Rectangle getLeftButtonDimension() const;
-
-        /**
-         * Gets the right button dimension.
-         *
-         * @return the dimension of the right button.
-         */
-        Rectangle getRightButtonDimension() const;
-
-        /**
-         * Gets the vertical scrollbar dimension.
-         *
-         * @return the dimension of the vertical scrollbar.
-         */
-        Rectangle getVerticalBarDimension() const;
-
-        /**
-         * Gets the horizontal scrollbar dimension.
-         *
-         * @return the dimension of the horizontal scrollbar.
-         */
-        Rectangle getHorizontalBarDimension() const;
-
-        /**
-         * Gets the vertical marker dimension.
-         *
-         * @return the dimension of the vertical marker.
-         */
-        Rectangle getVerticalMarkerDimension();
-
-        /**
-         * Gets the horizontal marker dimension.
-         *
-         * @return the dimension of the horizontal marker.
-         */
-        Rectangle getHorizontalMarkerDimension();
 
         /**
          * Holds the vertical scroll amount.
