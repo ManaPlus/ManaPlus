@@ -108,9 +108,9 @@ short packet_lengths[] =
   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
 };
 
-static constexpr const int packet_lengths_size
+static const int packet_lengths_size
     = static_cast<int>(sizeof(packet_lengths) / sizeof (short));
-static constexpr const int messagesSize = 0xffff;
+static const int messagesSize = 0xffff;
 Network *Network::mInstance = nullptr;
 
 Network::Network() :

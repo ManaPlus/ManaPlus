@@ -956,6 +956,8 @@ gcn::Rectangle ScrollArea::getHorizontalMarkerDimension()
             const int w3 = content->getWidth();
             if (w3)
                 length = (width * getChildrenArea().width) / w3;
+            else
+                length = width;
         }
         else
         {
