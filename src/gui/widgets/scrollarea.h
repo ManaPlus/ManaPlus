@@ -175,6 +175,7 @@ class ScrollArea final : public gcn::ScrollArea,
         static float mAlpha;
         static bool mShowButtons;
         static int mMarkerSize;
+        static int mScrollbarSize;
         static ImageRect background;
         static ImageRect vMarker;
         static ImageRect vMarkerHi;

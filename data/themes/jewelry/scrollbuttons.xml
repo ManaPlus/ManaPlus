@@ -3,6 +3,7 @@
     <widget type="Window" xpos="41" ypos="100">
         <option name="showbuttons" value="0" />
         <option name="markersize" value="0" />
+        <option name="scrollbarsize" value="12" />
         <part type="left" xpos="0" ypos="0" width="12" height="12" />
         <part type="right" xpos="0" ypos="16" width="12" height="12" />
         <part type="down" xpos="0" ypos="32" width="12" height="12" />

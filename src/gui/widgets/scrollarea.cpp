@@ -34,6 +34,7 @@ int ScrollArea::instances = 0;
 float ScrollArea::mAlpha = 1.0;
 bool ScrollArea::mShowButtons = true;
 int ScrollArea::mMarkerSize = 0;
+int ScrollArea::mScrollbarSize = 12;
 ImageRect ScrollArea::background;
 ImageRect ScrollArea::vMarker;
 ImageRect ScrollArea::vMarkerHi;
@@ -172,6 +173,7 @@ void ScrollArea::init(std::string skinName)
                 {
                     mShowButtons = (skin->getOption("showbuttons", 1) == 1);
                     mMarkerSize = skin->getOption("markersize", 0);
+                    mScrollbarSize = skin->getOption("scrollbarsize", 12);
                 }
             }
             else
@@ -182,6 +184,7 @@ void ScrollArea::init(std::string skinName)
             Theme::instance()->unload(skin);
         }
     }
+    mScrollbarWidth = mScrollbarSize;
 
     instances++;
 }
