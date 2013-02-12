@@ -2,6 +2,16 @@
 Francesco Miglietta (Hal9000)
 
 
+Version 1.0.3 (12.02.2013)
+
+	- Fix Login window minor graphic artifacts
+	- Improved listboxes menu layout
+	- Fix language selection menus in Setup window and NPC dialogue
+	- Fix height in popuplist for language selection in Setup window
+	- Fix bug in joypad area
+	- Bars and icons on top left corner and windows button in top right corner position tuning
+
+
 Version 1.0.2 (03.01.2012)
 
 	- Add outline to windows' headers
