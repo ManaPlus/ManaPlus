@@ -946,7 +946,7 @@ void Game::handleInput()
                 Client::resize(event.resize.w, event.resize.h);
                 break;
             // Active event
-            case  SDL_ACTIVEEVENT:
+            case SDL_ACTIVEEVENT:
                 handleActive(event);
                 break;
             // Quit event

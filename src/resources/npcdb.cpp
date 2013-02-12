@@ -154,7 +154,7 @@ BeingInfo *NPCDB::get(const int id)
 
 uint16_t NPCDB::getAvatarFor(const int id)
 {
-    BeingInfo *const info = get(id);
+    const BeingInfo *const info = get(id);
     if (!info)
         return 0;
     return info->getAvatarId();

@@ -611,7 +611,8 @@ bool ActorSpriteManager::pickUpAll(const int x1, const int y1,
     return finded;
 }
 
-bool ActorSpriteManager::pickUpNearest(const int x, const int y, int maxdist) const
+bool ActorSpriteManager::pickUpNearest(const int x, const int y,
+                                       int maxdist) const
 {
     if (!player_node)
         return false;
@@ -1553,7 +1554,8 @@ void ActorSpriteManager::rebuildPickupItems()
 }
 
 int ActorSpriteManager::getIndexByName(const std::string &name,
-                                       const std::map<std::string, int> &map) const
+                                       const std::map<std::string, int> &map)
+                                       const
 {
     const std::map<std::string, int>::const_iterator
         i = map.find(name);
@@ -1563,7 +1565,8 @@ int ActorSpriteManager::getIndexByName(const std::string &name,
     return (*i).second;
 }
 
-int ActorSpriteManager::getPriorityAttackMobIndex(const std::string &name) const
+int ActorSpriteManager::getPriorityAttackMobIndex(const std::string &name)
+                                                  const
 {
     return getIndexByName(name, mPriorityAttackMobsMap);
 }
@@ -1643,7 +1646,8 @@ bool ActorSpriteManager::checkForPickup(const FloorItem *const item) const
             return true;
         }
     }
-    else if (item && mPickupItemsSet.find(item->getName()) != mPickupItemsSet.end())
+    else if (item && mPickupItemsSet.find(item->getName())
+             != mPickupItemsSet.end())
     {
         return true;
     }

@@ -238,6 +238,7 @@ bool openBrowser(std::string url)
 bool openBrowser(std::string url)
 {
     SDL_ANDROID_OpenBrowser(url.c_str());
+    return true;
 }
 #elif defined __APPLE__
 bool openBrowser(std::string url)

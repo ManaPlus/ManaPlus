@@ -67,32 +67,32 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_NPC_CHOICE:
-            npcId = getNpc(msg, true);
+            getNpc(msg, true);
             processNpcChoice(msg);
             break;
 
         case SMSG_NPC_MESSAGE:
-            npcId = getNpc(msg, true);
+            getNpc(msg, true);
             processNpcMessage(msg);
             break;
 
         case SMSG_NPC_CLOSE:
-            npcId = getNpc(msg, false);
+            getNpc(msg, false);
             processNpcClose(msg);
             break;
 
         case SMSG_NPC_NEXT:
-            npcId = getNpc(msg, false);
+            getNpc(msg, false);
             processNpcNext(msg);
             break;
 
         case SMSG_NPC_INT_INPUT:
-            npcId = getNpc(msg, false);
+            getNpc(msg, false);
             processNpcIntInput(msg);
             break;
 
         case SMSG_NPC_STR_INPUT:
-            npcId = getNpc(msg, false);
+            getNpc(msg, false);
             processNpcStrInput(msg);
             break;
 
@@ -101,7 +101,7 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_VIEWPOINT:
-            npcId = getNpc(msg, true);
+            getNpc(msg, true);
             processNpcViewPoint(msg, npcId);
             break;
 

@@ -114,10 +114,10 @@ static const int messagesSize = 0xffff;
 Network *Network::mInstance = nullptr;
 
 Network::Network() :
-    Ea::Network()
+    Ea::Network(),
+    mMessageHandlers(new MessageHandler*[messagesSize])
 {
     mInstance = this;
-    mMessageHandlers = new MessageHandler*[messagesSize];
     memset(&mMessageHandlers[0], 0, sizeof(MessageHandler*) * 0xffff);
 }
 

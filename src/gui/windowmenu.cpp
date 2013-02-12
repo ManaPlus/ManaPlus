@@ -199,12 +199,12 @@ void WindowMenu::action(const gcn::ActionEvent &event)
 {
     const std::string &eventId = event.getId();
 
-    std::map <std::string, ButtonInfo*>::iterator
+    const std::map <std::string, ButtonInfo*>::iterator
         it = mButtonNames.find(eventId);
     if (it == mButtonNames.end())
         return;
 
-    ButtonInfo *const info = (*it).second;
+    const ButtonInfo *const info = (*it).second;
     if (!info)
         return;
 
@@ -296,7 +296,7 @@ void WindowMenu::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
 
 void WindowMenu::showButton(const std::string &name, const bool visible)
 {
-    ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
+    const ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
         mButtonNames[name]);
     if (!info || !info->button)
         return;
@@ -340,7 +340,7 @@ void WindowMenu::loadButtons()
                  it = mButtonNames.begin(),
                  it_end = mButtonNames.end(); it != it_end; ++it)
             {
-                ButtonInfo *info = (*it).second;
+                const ButtonInfo *const info = (*it).second;
                 if (!info || !info->button || info->visible)
                     continue;
                 info->button->setVisible(false);
@@ -354,7 +354,7 @@ void WindowMenu::loadButtons()
             std::string str = config.getValue("windowmenu" + toString(f), "");
             if (str == "" || str == "SET")
                 continue;
-            ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
+            const ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
                 mButtonNames[str]);
             if (!info || !info->button)
                 continue;
@@ -367,7 +367,7 @@ void WindowMenu::loadButtons()
              it = mButtonNames.begin(),
              it_end = mButtonNames.end(); it != it_end; ++it)
         {
-            ButtonInfo *info = (*it).second;
+            const ButtonInfo *const info = (*it).second;
             if (!info || !info->button)
                 continue;
             Button *const button = info->button;

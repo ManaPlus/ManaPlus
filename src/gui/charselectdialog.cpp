@@ -139,8 +139,8 @@ class CharacterScroller final : public Container,
                                 public gcn::ActionListener
 {
     public:
-        CharacterScroller(CharSelectDialog *widget,
-                          std::vector<CharacterDisplay*> *entries) :
+        CharacterScroller(CharSelectDialog *const widget,
+                          std::vector<CharacterDisplay*> *const entries) :
             Container(widget),
             gcn::ActionListener(),
             mSelectedEntry(nullptr),
@@ -168,7 +168,7 @@ class CharacterScroller final : public Container,
 
         void show(const int i)
         {
-            const int sz = (signed)mCharacterEntries->size();
+            const int sz = static_cast<signed>(mCharacterEntries->size());
             if (mSelectedEntry)
                 mSelectedEntry->setVisible(false);
             if (i >= sz)
@@ -185,14 +185,13 @@ class CharacterScroller final : public Container,
 
         void resize()
         {
-            CharacterDisplay *firtChar = (*mCharacterEntries)[0];
+            const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
             const int x = (getWidth() - firtChar->getWidth()) / 2;
             const int y = (getHeight() - firtChar->getHeight()) / 2;
             FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
                        it, mCharacterEntries)
             {
-                CharacterDisplay *character = *it;
-                character->setPosition(x, y);
+                (*it)->setPosition(x, y);
             }
             const int y2 = (getHeight() - mPrevious->getHeight()) / 2;
             const int y3 = y2 - 55;
@@ -216,7 +215,7 @@ class CharacterScroller final : public Container,
             }
         }
 
-        int getSelected()
+        int getSelected() const
         {
             return mSelected;
         }
@@ -297,23 +296,20 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     {
         for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
         {
-            CharacterDisplay *character = new CharacterDisplay(this, this);
+            CharacterDisplay *const character
+                = new CharacterDisplay(this, this);
             character->setVisible(false);
             mCharacterEntries.push_back(character);
-//            placer(i % SLOTS_PER_ROW, static_cast<int>(i) / SLOTS_PER_ROW,
-//                mCharacterEntries[i]);
         }
         mCharacterScroller = new CharacterScroller(this, &mCharacterEntries);
-        mCharacterScroller->setWidth(mainGraphics->getWidth() - 2 * getPadding());
+        mCharacterScroller->setWidth(mainGraphics->getWidth()
+            - 2 * getPadding());
         mCharacterScroller->setHeight(200);
         placer(0, 0, mCharacterScroller);
-//        placer(0, 0, mCharacterEntries[0]);
     }
 
     reflowLayout();
-
     addKeyListener(this);
-
     center();
     setVisible(true);
 
@@ -673,7 +669,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
             {
                 if (character->dummy && character->dummy->getName() == name)
                 {
-                    focusCharacter(i);
+                    focusCharacter(static_cast<int>(i));
                     if (selAction == Choose)
                         attemptCharacterSelect(static_cast<int>(i));
                     return true;

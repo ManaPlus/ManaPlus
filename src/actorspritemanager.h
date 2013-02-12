@@ -289,7 +289,8 @@ class ActorSpriteManager final: public ConfigListener
 
         int getAttackMobIndex(const std::string &name) const A_WARN_UNUSED;
 
-        int getPriorityAttackMobIndex(const std::string &name) const A_WARN_UNUSED;
+        int getPriorityAttackMobIndex(const std::string &name) 
+                                      const A_WARN_UNUSED;
 
         int getPickupItemIndex(const std::string &name) const A_WARN_UNUSED;
 
