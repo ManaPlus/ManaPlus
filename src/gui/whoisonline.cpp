@@ -122,6 +122,7 @@ WhoIsOnline::WhoIsOnline():
 
     download();
 
+    widgetResized(nullptr);
     config.addListener("updateOnlineList", this);
     config.addListener("groupFriends", this);
     mUpdateOnlineList = config.getBoolValue("updateOnlineList");
@@ -303,6 +304,7 @@ void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
         if (socialWindow)
             socialWindow->updateActiveList();
     }
+    updateSize();
 }
 
 void WhoIsOnline::loadWebList()
@@ -691,15 +693,14 @@ void WhoIsOnline::widgetResized(const gcn::Event &event)
 
 void WhoIsOnline::updateSize()
 {
-    if (mDownloadStatus == UPDATE_COMPLETE)
-    {
-        const gcn::Rectangle area = getChildrenArea();
-        if (mUpdateButton)
-            mUpdateButton->setWidth(area.width - 10);
+    const gcn::Rectangle area = getChildrenArea();
+    if (mUpdateButton)
+        mUpdateButton->setWidth(area.width - 10);
 
-        if (mScrollArea)
-            mScrollArea->setSize(area.width - 10, area.height - 10 - 30);
-    }
+    if (mScrollArea)
+        mScrollArea->setSize(area.width - 10, area.height - 10 - 30);
+    if (mBrowserBox)
+        mBrowserBox->setWidth(area.width - 10);
 }
 
 const std::string WhoIsOnline::prepareNick(std::string nick, int level,
