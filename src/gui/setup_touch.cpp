@@ -97,6 +97,14 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
         "screenActionButton1", this, "screenActionButton1Event",
         mActionsList, 250);
 
+    new SetupActionDropDown(strprintf(_("Button %u action"), 3), "",
+        "screenActionButton2", this, "screenActionButton2Event",
+        mActionsList, 250);
+
+    new SetupActionDropDown(strprintf(_("Button %u action"), 4), "",
+        "screenActionButton3", this, "screenActionButton3Event",
+        mActionsList, 250);
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
