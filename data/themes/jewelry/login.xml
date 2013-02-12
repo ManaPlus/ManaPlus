@@ -23,6 +23,7 @@
         <part type="bottom-edge" xpos="31" ypos="79" width="48" height="28" />
         <part type="bottom-right-corner" xpos="80" ypos="79" width="30" height="28" />
 
-        <part type="closeImage" xpos="-136" ypos="0" width="22" height="22" />
+        <part type="closeImage" xpos="-163" ypos="0" width="22" height="22" />
+        <part type="closeImageHighlighted" xpos="-138" ypos="0" width="22" height="22" />
     </widget>
 </skinset>
