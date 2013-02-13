@@ -85,13 +85,13 @@ ChangePasswordDialog::~ChangePasswordDialog()
 
 void ChangePasswordDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "cancel")
+    const std::string &eventId = event.getId();
+    if (eventId == "cancel")
     {
         Client::setState(STATE_CHAR_SELECT);
     }
-    else if (event.getId() == "change_password")
+    else if (eventId == "change_password")
     {
-
         const std::string username = mLoginData->username.c_str();
         const std::string oldPassword = mOldPassField->getText();
         const std::string newFirstPass = mFirstPassField->getText();

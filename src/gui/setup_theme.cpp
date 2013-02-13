@@ -349,7 +349,8 @@ void Setup_Theme::updateInfo()
 
 void Setup_Theme::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == ACTION_THEME)
+    const std::string &eventId = event.getId();
+    if (eventId == ACTION_THEME)
     {
         if (mThemeDropDown->getSelected() == 0)
             mTheme.clear();
@@ -357,11 +358,11 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
             mTheme = mThemeDropDown->getSelectedString();
         updateInfo();
     }
-    else if (event.getId() == ACTION_FONT)
+    else if (eventId == ACTION_FONT)
     {
         mFont = mFontDropDown->getSelectedString();
     }
-    else if (event.getId() == ACTION_LANG)
+    else if (eventId == ACTION_LANG)
     {
         const int id = mLangDropDown->getSelected();
         if (id < 0 || id >= langs_count)
@@ -369,27 +370,27 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
         else
             mLang = LANG_NAME[id].value;
     }
-    else if (event.getId() == ACTION_BOLD_FONT)
+    else if (eventId == ACTION_BOLD_FONT)
     {
         mBoldFont = mBoldFontDropDown->getSelectedString();
     }
-    else if (event.getId() == ACTION_PARTICLE_FONT)
+    else if (eventId == ACTION_PARTICLE_FONT)
     {
         mParticleFont = mParticleFontDropDown->getSelectedString();
     }
-    else if (event.getId() == ACTION_HELP_FONT)
+    else if (eventId == ACTION_HELP_FONT)
     {
         mHelpFont = mHelpFontDropDown->getSelectedString();
     }
-    else if (event.getId() == ACTION_SECURE_FONT)
+    else if (eventId == ACTION_SECURE_FONT)
     {
         mSecureFont = mSecureFontDropDown->getSelectedString();
     }
-    else if (event.getId() == ACTION_JAPAN_FONT)
+    else if (eventId == ACTION_JAPAN_FONT)
     {
         mJapanFont = mJapanFontDropDown->getSelectedString();
     }
-    else if (event.getId() == ACTION_INFO)
+    else if (eventId == ACTION_INFO)
     {
         new OkDialog(_("Theme info"), mThemeInfo, DIALOG_OK,
             false, true, nullptr, 600);

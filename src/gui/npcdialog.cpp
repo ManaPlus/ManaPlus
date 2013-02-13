@@ -270,7 +270,8 @@ void NpcDialog::showCloseButton()
 
 void NpcDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "ok")
+    const std::string &eventId = event.getId();
+    if (eventId == "ok")
     {
         if (mActionState == NPC_ACTION_NEXT)
         {
@@ -330,26 +331,26 @@ void NpcDialog::action(const gcn::ActionEvent &event)
         if (!mLogInteraction)
             mTextBox->clearRows();
     }
-    else if (event.getId() == "reset")
+    else if (eventId == "reset")
     {
         if (mInputState == NPC_INPUT_STRING)
             mTextField->setText(mDefaultString);
         else if (mInputState == NPC_INPUT_INTEGER)
             mIntField->setValue(mDefaultInt);
     }
-    else if (event.getId() == "inc")
+    else if (eventId == "inc")
     {
         mIntField->setValue(mIntField->getValue() + 1);
     }
-    else if (event.getId() == "dec")
+    else if (eventId == "dec")
     {
         mIntField->setValue(mIntField->getValue() - 1);
     }
-    else if (event.getId() == "clear")
+    else if (eventId == "clear")
     {
         clearRows();
     }
-    else if (event.getId() == "close")
+    else if (eventId == "close")
     {
         if (mActionState == NPC_ACTION_INPUT)
         {

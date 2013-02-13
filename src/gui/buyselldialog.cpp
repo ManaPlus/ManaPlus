@@ -112,14 +112,15 @@ void BuySellDialog::setVisible(bool visible)
 
 void BuySellDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "Buy")
+    const std::string &eventId = event.getId();
+    if (eventId == "Buy")
     {
         if (mNpcId != -1)
             Net::getNpcHandler()->buy(mNpcId);
         else
             Net::getBuySellHandler()->requestSellList(mNick);
     }
-    else if (event.getId() == "Sell")
+    else if (eventId == "Sell")
     {
         if (mNpcId != -1)
             Net::getNpcHandler()->sell(mNpcId);

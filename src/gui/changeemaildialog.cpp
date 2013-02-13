@@ -107,11 +107,12 @@ ChangeEmailDialog::~ChangeEmailDialog()
 
 void ChangeEmailDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "cancel")
+    const std::string &eventId = event.getId();
+    if (eventId == "cancel")
     {
         Client::setState(STATE_CHAR_SELECT);
     }
-    else if (event.getId() == "change_email")
+    else if (eventId == "change_email")
     {
 
         const std::string username = mLoginData->username.c_str();

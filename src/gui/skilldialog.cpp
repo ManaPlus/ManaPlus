@@ -296,7 +296,8 @@ SkillDialog::~SkillDialog()
 
 void SkillDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "inc")
+    const std::string &eventId = event.getId();
+    if (eventId == "inc")
     {
         const SkillTab *const tab = static_cast<const SkillTab *const>(
             mTabs->getSelectedTab());
@@ -306,7 +307,7 @@ void SkillDialog::action(const gcn::ActionEvent &event)
                 Net::getPlayerHandler()->increaseSkill(info->id);
         }
     }
-    else if (event.getId() == "sel")
+    else if (eventId == "sel")
     {
         const SkillTab *const tab = static_cast<const SkillTab *const>(
             mTabs->getSelectedTab());
@@ -330,7 +331,7 @@ void SkillDialog::action(const gcn::ActionEvent &event)
             }
         }
     }
-    else if (event.getId() == "use")
+    else if (eventId == "use")
     {
         const SkillTab *const tab = static_cast<const SkillTab *const>(
             mTabs->getSelectedTab());
@@ -348,7 +349,7 @@ void SkillDialog::action(const gcn::ActionEvent &event)
             }
         }
     }
-    else if (event.getId() == "close")
+    else if (eventId == "close")
     {
         setVisible(false);
     }

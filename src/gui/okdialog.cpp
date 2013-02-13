@@ -86,8 +86,5 @@ void OkDialog::action(const gcn::ActionEvent &event)
 {
     setActionEventId(event.getId());
     distributeActionEvent();
-
-    // Can we receive anything else anyway?
-    if (event.getId() == "ok")
-        scheduleDelete();
+    scheduleDelete();
 }

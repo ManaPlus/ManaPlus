@@ -325,12 +325,13 @@ void ItemAmountWindow::resetAmount()
 
 void ItemAmountWindow::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "cancel")
+    const std::string &eventId = event.getId();
+    if (eventId == "cancel")
     {
         close();
         return;
     }
-    else if (event.getId() == "ok")
+    else if (eventId == "ok")
     {
         if (mItemPriceTextField)
         {
@@ -345,7 +346,7 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
         close();
         return;
     }
-    else if (event.getId() == "itemType")
+    else if (eventId == "itemType")
     {
         if (!mItemDropDown || !mItemsModal)
             return;
@@ -366,13 +367,13 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
 
     int amount = mItemAmountTextField->getValue();
 
-    if (event.getId() == "inc" && amount < mMax)
+    if (eventId == "inc" && amount < mMax)
         amount++;
-    else if (event.getId() == "dec" && amount > 1)
+    else if (eventId == "dec" && amount > 1)
         amount--;
-    else if (event.getId() == "all")
+    else if (eventId == "all")
         amount = mMax;
-    else if (event.getId() == "slide")
+    else if (eventId == "slide")
         amount = static_cast<int>(mItemAmountSlide->getValue());
     mItemAmountTextField->setValue(amount);
     mItemAmountSlide->setValue(amount);
@@ -386,17 +387,17 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
         else if (mPrice < 0)
             mPrice = 0;
 
-        if (event.getId() == "incPrice")
+        if (eventId == "incPrice")
         {
             mPrice++;
             price = static_cast<int>(pow(10.0, mPrice));
         }
-        else if (event.getId() == "decPrice")
+        else if (eventId == "decPrice")
         {
             mPrice--;
             price = static_cast<int>(pow(10.0, mPrice));
         }
-        else if (event.getId() == "slidePrice")
+        else if (eventId == "slidePrice")
         {
             price = static_cast<int>(mItemPriceSlide->getValue());
             if (price)

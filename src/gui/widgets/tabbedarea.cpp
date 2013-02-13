@@ -524,18 +524,18 @@ void TabbedArea::action(const gcn::ActionEvent& actionEvent)
     }
     else
     {
-        if (actionEvent.getId() == "shift_left")
+        const std::string &eventId = actionEvent.getId();
+        if (eventId == "shift_left")
         {
             if (mTabScrollIndex)
                 --mTabScrollIndex;
         }
-        else if (actionEvent.getId() == "shift_right")
+        else if (eventId == "shift_right")
         {
             if (mTabScrollIndex < mTabs.size() - 1)
                 ++mTabScrollIndex;
         }
         adjustTabPositions();
-
         updateArrowEnableState();
     }
 }

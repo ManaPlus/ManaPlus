@@ -148,23 +148,25 @@ void Setup::action(const gcn::ActionEvent &event)
 {
     if (Game::instance())
         Game::instance()->resetAdjustLevel();
-    if (event.getId() == "Apply")
+    const std::string &eventId = event.getId();
+
+    if (eventId == "Apply")
     {
         setVisible(false);
         for_each(mTabs.begin(), mTabs.end(), std::mem_fun(&SetupTab::apply));
     }
-    else if (event.getId() == "Cancel")
+    else if (eventId == "Cancel")
     {
         doCancel();
     }
-    else if (event.getId() == "Store")
+    else if (eventId == "Store")
     {
         if (chatWindow)
             chatWindow->saveState();
         config.write();
         serverConfig.write();
     }
-    else if (event.getId() == "Reset Windows")
+    else if (eventId == "Reset Windows")
     {
         // Bail out if this action happens to be activated before the windows
         // are created (though it should be disabled then)

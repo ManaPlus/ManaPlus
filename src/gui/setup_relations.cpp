@@ -363,7 +363,8 @@ void Setup_Relations::cancel()
 
 void Setup_Relations::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == ACTION_TABLE)
+    const std::string &eventId = event.getId();
+    if (eventId == ACTION_TABLE)
     {
         // temporarily eliminate ourselves: we are fully aware of this change,
         // so there is no need for asynchronous updates.  (In fact, thouse
@@ -378,7 +379,7 @@ void Setup_Relations::action(const gcn::ActionEvent &event)
         player_relations.addListener(this);
 
     }
-    else if (event.getId() == ACTION_DELETE)
+    else if (eventId == ACTION_DELETE)
     {
         const int player_index = mPlayerTable->getSelectedRow();
 
@@ -389,7 +390,7 @@ void Setup_Relations::action(const gcn::ActionEvent &event)
 
         player_relations.removePlayer(name);
     }
-    else if (event.getId() == ACTION_STRATEGY)
+    else if (eventId == ACTION_STRATEGY)
     {
         PlayerIgnoreStrategy *const s =
             (*player_relations.getPlayerIgnoreStrategies())[

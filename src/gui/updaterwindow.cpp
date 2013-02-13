@@ -240,7 +240,8 @@ void UpdaterWindow::enable()
 
 void UpdaterWindow::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "cancel")
+    const std::string &eventId = event.getId();
+    if (eventId == "cancel")
     {
         // Register the user cancel
         mUserCancel = true;
@@ -251,7 +252,7 @@ void UpdaterWindow::action(const gcn::ActionEvent &event)
             mDownloadStatus = UPDATE_ERROR;
         }
     }
-    else if (event.getId() == "play")
+    else if (eventId == "play")
     {
         Client::setState(STATE_LOAD_DATA);
     }

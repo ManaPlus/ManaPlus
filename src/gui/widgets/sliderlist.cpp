@@ -145,13 +145,14 @@ void SliderList::action(const gcn::ActionEvent &event)
     if (!mListModel)
         return;
 
-    if (event.getId() == mPrevEventId)
+    const std::string &eventId = event.getId();
+    if (eventId == mPrevEventId)
     {
         mSelectedIndex --;
         if (mSelectedIndex < 0)
             mSelectedIndex = mListModel->getNumberOfElements() - 1;
     }
-    else if (event.getId() == mNextEventId)
+    else if (eventId == mNextEventId)
     {
         mSelectedIndex ++;
         if (mSelectedIndex >= mListModel->getNumberOfElements())

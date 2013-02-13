@@ -91,17 +91,28 @@ DidYouKnowWindow::DidYouKnowWindow():
 
 void DidYouKnowWindow::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "close")
+    const std::string &eventId = event.getId();
+    if (eventId == "close")
+    {
         setVisible(false);
-
-    const unsigned num = config.getIntValue("currentTip");
-
-    if (event.getId() == "prev")
-        loadData(num - 1);
-    else if (event.getId() == "next")
-        loadData(num + 1);
-    else if (event.getId() == "openagain")
-        config.setValue("showDidYouKnow", mOpenAgainCheckBox->isSelected());
+    }
+    else
+    {
+        const unsigned num = config.getIntValue("currentTip");
+        if (eventId == "prev")
+        {
+            loadData(num - 1);
+        }
+        else if (eventId == "next")
+        {
+            loadData(num + 1);
+        }
+        else if (eventId == "openagain")
+        {
+            config.setValue("showDidYouKnow",
+                mOpenAgainCheckBox->isSelected());
+        }
+    }
 }
 
 void DidYouKnowWindow::handleLink(const std::string &link A_UNUSED,

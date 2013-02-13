@@ -53,9 +53,10 @@ namespace
         void action(const gcn::ActionEvent &event)
         {
             confirmDlg = nullptr;
-            if (event.getId() == "ignore")
+            const std::string &eventId = event.getId();
+            if (eventId == "ignore")
                 player_relations.ignoreTrade(tradePartnerName);
-            Net::getTradeHandler()->respond(event.getId() == "yes");
+            Net::getTradeHandler()->respond(eventId == "yes");
         }
     } listener;
 }

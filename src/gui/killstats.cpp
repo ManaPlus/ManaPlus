@@ -144,7 +144,8 @@ KillStats::~KillStats()
 
 void KillStats::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "reset")
+    const std::string &eventId = event.getId();
+    if (eventId == "reset")
     {
         mKillCounter = 0;
         mExpCounter = 0;
@@ -157,7 +158,7 @@ void KillStats::action(const gcn::ActionEvent &event)
 
         resetTimes();
     }
-    else if (event.getId() == "timer")
+    else if (eventId == "timer")
     {
         mKillTimer = 0;
         mKillTCounter = 0;

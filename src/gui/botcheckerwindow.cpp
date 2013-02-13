@@ -377,7 +377,6 @@ void BotCheckerWindow::action(const gcn::ActionEvent &event)
         reset();
         mNeedUpdate = true;
     }
-
 }
 
 void BotCheckerWindow::update()

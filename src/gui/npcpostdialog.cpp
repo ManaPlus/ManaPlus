@@ -92,7 +92,8 @@ NpcPostDialog::~NpcPostDialog()
 
 void NpcPostDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "send")
+    const std::string &eventId = event.getId();
+    if (eventId == "send")
     {
         if (mSender->getText().empty() || mText->getText().empty())
         {
@@ -109,7 +110,7 @@ void NpcPostDialog::action(const gcn::ActionEvent &event)
         }
         setVisible(false);
     }
-    else if (event.getId() == "cancel")
+    else if (eventId == "cancel")
     {
         setVisible(false);
     }

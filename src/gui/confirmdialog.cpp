@@ -106,11 +106,5 @@ void ConfirmDialog::action(const gcn::ActionEvent &event)
 {
     setActionEventId(event.getId());
     distributeActionEvent();
-
-    // Can we receive anything else anyway?
-    if (event.getId() == "yes" || event.getId() == "no"
-        || event.getId() == "ignore")
-    {
-        scheduleDelete();
-    }
+    scheduleDelete();
 }

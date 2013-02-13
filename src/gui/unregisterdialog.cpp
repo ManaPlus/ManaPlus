@@ -95,11 +95,12 @@ UnRegisterDialog::~UnRegisterDialog()
 
 void UnRegisterDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "cancel")
+    const std::string &eventId = event.getId();
+    if (eventId == "cancel")
     {
         Client::setState(STATE_CHAR_SELECT);
     }
-    else if (event.getId() == "unregister")
+    else if (eventId == "unregister")
     {
         const std::string username = mLoginData->username.c_str();
         const std::string password = mPasswordField->getText();

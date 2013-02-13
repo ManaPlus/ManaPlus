@@ -194,36 +194,34 @@ Setup_Colors::~Setup_Colors()
 
 void Setup_Colors::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "slider_grad")
+    const std::string &eventId = event.getId();
+    if (eventId == "slider_grad")
     {
         updateGradType();
         updateColor();
         return;
     }
 
-    if (event.getId() == "slider_graddelay")
+    if (eventId == "slider_graddelay")
     {
         mGradDelayText->setText(toString(
             std::floor(mGradDelaySlider->getValue())));
         updateColor();
         return;
     }
-
-    if (event.getId() == "slider_red")
+    if (eventId == "slider_red")
     {
         mRedText->setText(toString(std::floor(mRedSlider->getValue())));
         updateColor();
         return;
     }
-
-    if (event.getId() == "slider_green")
+    if (eventId == "slider_green")
     {
         mGreenText->setText(toString(std::floor(mGreenSlider->getValue())));
         updateColor();
         return;
     }
-
-    if (event.getId() == "slider_blue")
+    if (eventId == "slider_blue")
     {
         mBlueText->setText(toString(std::floor(mBlueSlider->getValue())));
         updateColor();

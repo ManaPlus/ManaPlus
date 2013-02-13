@@ -125,7 +125,8 @@ WorldSelectDialog::~WorldSelectDialog()
 
 void WorldSelectDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "world")
+    const std::string &eventId = event.getId();
+    if (eventId == "world")
     {
         mChangeLoginButton->setEnabled(false);
         mChooseWorld->setEnabled(false);
@@ -135,7 +136,7 @@ void WorldSelectDialog::action(const gcn::ActionEvent &event)
         if (Client::getState() == STATE_WORLD_SELECT)
             Client::setState(STATE_WORLD_SELECT_ATTEMPT);
     }
-    else if (event.getId() == "login")
+    else if (eventId == "login")
     {
         Client::setState(STATE_PRE_LOGIN);
     }

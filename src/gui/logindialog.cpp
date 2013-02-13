@@ -249,17 +249,18 @@ LoginDialog::~LoginDialog()
 
 void LoginDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "login" && canSubmit())
+    const std::string &eventId = event.getId();
+    if (eventId == "login" && canSubmit())
     {
         prepareUpdate();
         mLoginData->registerLogin = false;
         Client::setState(STATE_LOGIN_ATTEMPT);
     }
-    else if (event.getId() == "server")
+    else if (eventId == "server")
     {
         close();
     }
-    else if (event.getId() == "register")
+    else if (eventId == "register")
     {
         if (Net::getLoginHandler()->isRegistrationEnabled())
         {
@@ -275,11 +276,11 @@ void LoginDialog::action(const gcn::ActionEvent &event)
             confirmDlg->addActionListener(&urlListener);
         }
     }
-    else if (event.getId() == "customhost")
+    else if (eventId == "customhost")
     {
         mUpdateHostText->setVisible(mCustomUpdateHost->isSelected());
     }
-    else if (event.getId() == "updateselect")
+    else if (eventId == "updateselect")
     {
         mCustomUpdateHost->setSelected(false);
         mUpdateHostText->setVisible(false);

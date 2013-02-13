@@ -171,7 +171,8 @@ public:
 
     void action(const gcn::ActionEvent &event)
     {
-        if (event.getId() == "do invite")
+        const std::string &eventId = event.getId();
+        if (eventId == "do invite")
         {
             std::string name = mInviteDialog->getText();
             Net::getGuildHandler()->invite(mGuild->getId(), name);
@@ -184,11 +185,11 @@ public:
             }
             mInviteDialog = nullptr;
         }
-        else if (event.getId() == "~do invite")
+        else if (eventId == "~do invite")
         {
             mInviteDialog = nullptr;
         }
-        else if (event.getId() == "yes")
+        else if (eventId == "yes")
         {
             Net::getGuildHandler()->leave(mGuild->getId());
             if (localChatTab)
@@ -198,7 +199,7 @@ public:
             }
             mConfirmDialog = nullptr;
         }
-        else if (event.getId() == "~yes")
+        else if (eventId == "~yes")
         {
             mConfirmDialog = nullptr;
         }
@@ -345,7 +346,8 @@ public:
 
     void action(const gcn::ActionEvent &event)
     {
-        if (event.getId() == "do invite")
+        const std::string &eventId = event.getId();
+        if (eventId == "do invite")
         {
             std::string name = mInviteDialog->getText();
             Net::getPartyHandler()->invite(name);
@@ -357,11 +359,11 @@ public:
             }
             mInviteDialog = nullptr;
         }
-        else if (event.getId() == "~do invite")
+        else if (eventId == "~do invite")
         {
             mInviteDialog = nullptr;
         }
-        else if (event.getId() == "yes")
+        else if (eventId == "yes")
         {
             Net::getPartyHandler()->leave();
             if (localChatTab)
@@ -371,7 +373,7 @@ public:
             }
             mConfirmDialog = nullptr;
         }
-        else if (event.getId() == "~yes")
+        else if (eventId == "~yes")
         {
             mConfirmDialog = nullptr;
         }
@@ -1487,7 +1489,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
         mGuildInvited = 0;
         mGuildAcceptDialog = nullptr;
     }
-    else if (event.getId() == "create")
+    else if (eventId == "create")
     {
         if (Net::getGuildHandler()->isSupported())
         {
@@ -1499,17 +1501,17 @@ void SocialWindow::action(const gcn::ActionEvent &event)
             showPartyCreate();
         }
     }
-    else if (event.getId() == "invite" && mTabs->getSelectedTabIndex() > -1)
+    else if (eventId == "invite" && mTabs->getSelectedTabIndex() > -1)
     {
         if (mTabs->getSelectedTab())
             static_cast<SocialTab*>(mTabs->getSelectedTab())->invite();
     }
-    else if (event.getId() == "leave" && mTabs->getSelectedTabIndex() > -1)
+    else if (eventId == "leave" && mTabs->getSelectedTabIndex() > -1)
     {
         if (mTabs->getSelectedTab())
             static_cast<SocialTab*>(mTabs->getSelectedTab())->leave();
     }
-    else if (event.getId() == "create guild")
+    else if (eventId == "create guild")
     {
         std::string name = mGuildCreateDialog->getText();
 
@@ -1528,11 +1530,11 @@ void SocialWindow::action(const gcn::ActionEvent &event)
 
         mGuildCreateDialog = nullptr;
     }
-    else if (event.getId() == "~create guild")
+    else if (eventId == "~create guild")
     {
         mGuildCreateDialog = nullptr;
     }
-    else if (event.getId() == "create party")
+    else if (eventId == "create party")
     {
         std::string name = mPartyCreateDialog->getText();
 
@@ -1551,7 +1553,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
 
         mPartyCreateDialog = nullptr;
     }
-    else if (event.getId() == "~create party")
+    else if (eventId == "~create party")
     {
         mPartyCreateDialog = nullptr;
     }

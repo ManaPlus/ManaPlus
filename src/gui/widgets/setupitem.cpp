@@ -324,17 +324,18 @@ void SetupItemTextField::action(const gcn::ActionEvent &event)
     if (!mTextField)
         return;
 
-    if (event.getId() == mWidget->getActionEventId())
+    const std::string &eventId = event.getId();
+    if (eventId == mWidget->getActionEventId())
     {
         fromWidget();
     }
-    else if (event.getId() == mEventName + "_EDIT")
+    else if (eventId == mEventName + "_EDIT")
     {
         mEditDialog =  new EditDialog(mText, mTextField->getText(),
             mEventName + "_EDIT_OK");
         mEditDialog->addActionListener(this);
     }
-    else if (event.getId() == mEventName + "_EDIT_OK")
+    else if (eventId == mEventName + "_EDIT_OK")
     {
         mTextField->setText(mEditDialog->getMsg());
         mEditDialog = nullptr;
@@ -449,17 +450,18 @@ void SetupItemIntTextField::action(const gcn::ActionEvent &event)
     if (!mTextField)
         return;
 
-    if (event.getId() == mWidget->getActionEventId())
+    const std::string &eventId = event.getId();
+    if (eventId == mWidget->getActionEventId())
     {
         fromWidget();
     }
-    else if (event.getId() == mEventName + "_EDIT")
+    else if (eventId == mEventName + "_EDIT")
     {
         mEditDialog =  new EditDialog(mText, mTextField->getText(),
             mEventName + "_EDIT_OK");
         mEditDialog->addActionListener(this);
     }
-    else if (event.getId() == mEventName + "_EDIT_OK")
+    else if (eventId == mEventName + "_EDIT_OK")
     {
         mTextField->setValue(atoi(mEditDialog->getMsg().c_str()));
         mEditDialog = nullptr;

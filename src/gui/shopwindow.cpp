@@ -188,55 +188,56 @@ ShopWindow::~ShopWindow()
 
 void ShopWindow::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "close")
+    const std::string &eventId = event.getId();
+    if (eventId == "close")
     {
         close();
         return;
     }
 
-    if (event.getId() == "yes")
+    if (eventId == "yes")
     {
         startTrade();
     }
-    else if (event.getId() == "no")
+    else if (eventId == "no")
     {
         mTradeNick.clear();
     }
-    else if (event.getId() == "ignore")
+    else if (eventId == "ignore")
     {
         player_relations.ignoreTrade(mTradeNick);
         mTradeNick.clear();
     }
-    else if (event.getId() == "delete buy" && mBuyShopItemList
+    else if (eventId == "delete buy" && mBuyShopItemList
              && mBuyShopItemList->getSelected() >= 0)
     {
         mBuyShopItems->del(mBuyShopItemList->getSelected());
         if (isShopEmpty() && player_node)
             player_node->updateStatus();
     }
-    else if (event.getId() == "delete sell" && mSellShopItemList
+    else if (eventId == "delete sell" && mSellShopItemList
              && mSellShopItemList->getSelected() >= 0)
     {
         mSellShopItems->del(mSellShopItemList->getSelected());
         if (isShopEmpty() && player_node)
             player_node->updateStatus();
     }
-    else if (event.getId() == "announce buy" && mBuyShopItems
+    else if (eventId == "announce buy" && mBuyShopItems
              && mBuyShopItems->getNumberOfElements() > 0)
     {
         announce(mBuyShopItems, BUY);
     }
-    else if (event.getId() == "announce sell" && mSellShopItems
+    else if (eventId == "announce sell" && mSellShopItems
              && mSellShopItems->getNumberOfElements() > 0)
     {
         announce(mSellShopItems, SELL);
     }
-    else if (event.getId() == "auction buy" && mBuyShopItems
+    else if (eventId == "auction buy" && mBuyShopItems
              && mBuyShopItems->getNumberOfElements() > 0)
     {
         Net::getChatHandler()->privateMessage("AuctionBot", "!pull4144 seek");
     }
-    else if (event.getId() == "auction sell" && mSellShopItems
+    else if (eventId == "auction sell" && mSellShopItems
              && mSellShopItems->getNumberOfElements() > 0)
     {
         Net::getChatHandler()->privateMessage("AuctionBot", "!pull4144 offer");
@@ -253,12 +254,12 @@ void ShopWindow::action(const gcn::ActionEvent &event)
     Item *const item = inv->findItem(mSelectedItem, 0);
     if (item)
     {
-        if (event.getId() == "add buy")
+        if (eventId == "add buy")
         {
             ItemAmountWindow::showWindow(ItemAmountWindow::ShopBuyAdd,
                                          this, item, sumAmount(item));
         }
-        else if (event.getId() == "add sell")
+        else if (eventId == "add sell")
         {
             ItemAmountWindow::showWindow(ItemAmountWindow::ShopSellAdd,
                                          this, item, sumAmount(item));

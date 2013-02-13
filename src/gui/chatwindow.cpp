@@ -517,7 +517,8 @@ void ChatWindow::defaultTab()
 
 void ChatWindow::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "chatinput")
+    const std::string &eventId = event.getId();
+    if (eventId == "chatinput")
     {
         std::string message = mChatInput->getText();
 
@@ -550,7 +551,7 @@ void ChatWindow::action(const gcn::ActionEvent &event)
                 setVisible(false);
         }
     }
-    else if (event.getId() == ACTION_COLOR_PICKER)
+    else if (eventId == ACTION_COLOR_PICKER)
     {
         if (mColorPicker)
         {

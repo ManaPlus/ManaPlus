@@ -257,7 +257,8 @@ InventoryWindow::~InventoryWindow()
 
 void InventoryWindow::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "outfit")
+    const std::string &eventId = event.getId();
+    if (eventId == "outfit")
     {
         if (outfitWindow)
         {
@@ -266,7 +267,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
                 outfitWindow->requestMoveToTop();
         }
     }
-    else if (event.getId() == "shop")
+    else if (eventId == "shop")
     {
         if (shopWindow)
         {
@@ -275,7 +276,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
                 shopWindow->requestMoveToTop();
         }
     }
-    else if (event.getId() == "equipment")
+    else if (eventId == "equipment")
     {
         if (equipmentWindow)
         {
@@ -284,11 +285,11 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
                 equipmentWindow->requestMoveToTop();
         }
     }
-    else if (event.getId() == "close")
+    else if (eventId == "close")
     {
         close();
     }
-    else if (event.getId() == "store")
+    else if (eventId == "store")
     {
         if (!inventoryWindow || !inventoryWindow->isVisible())
             return;
@@ -300,17 +301,17 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
 
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd, this, item);
     }
-    else if (event.getId() == "sort")
+    else if (eventId == "sort")
     {
         mItems->setSortType(mSortDropDown->getSelected());
         return;
     }
-    else if (event.getId() == "namefilter")
+    else if (eventId == "namefilter")
     {
         mItems->setName(mNameFilter->getText());
         mItems->updateMatrix();
     }
-    else if (!event.getId().find("tag_") && mItems)
+    else if (!eventId.find("tag_") && mItems)
     {
         std::string tagName = event.getId().substr(4);
         mItems->setFilter(ItemDB::getTagId(tagName));
@@ -322,7 +323,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     if (!item)
         return;
 
-    if (event.getId() == "use")
+    if (eventId == "use")
     {
         if (item->isEquipment())
         {
@@ -336,7 +337,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
             Net::getInventoryHandler()->useItem(item);
         }
     }
-    if (event.getId() == "equip")
+    if (eventId == "equip")
     {
         if (!item->isEquipment())
         {
@@ -350,7 +351,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
             Net::getInventoryHandler()->useItem(item);
         }
     }
-    else if (event.getId() == "drop")
+    else if (eventId == "drop")
     {
         if (isStorageActive())
         {
@@ -372,12 +373,12 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
             }
         }
     }
-    else if (event.getId() == "split")
+    else if (eventId == "split")
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit, this, item,
             (item->getQuantity() - 1));
     }
-    else if (event.getId() == "retrieve")
+    else if (eventId == "retrieve")
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
             this, item);

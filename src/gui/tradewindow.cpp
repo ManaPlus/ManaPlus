@@ -318,8 +318,9 @@ void TradeWindow::action(const gcn::ActionEvent &event)
         return;
 
     Item *const item = inventoryWindow->getSelectedItem();
+    const std::string &eventId = event.getId();
 
-    if (event.getId() == "add")
+    if (eventId == "add")
     {
         if (mStatus != PREPARING)
             return;
@@ -345,7 +346,7 @@ void TradeWindow::action(const gcn::ActionEvent &event)
 
         setStatus(PREPARING);
     }
-    else if (event.getId() == "cancel")
+    else if (eventId == "cancel")
     {
         setVisible(false);
         reset();
@@ -353,7 +354,7 @@ void TradeWindow::action(const gcn::ActionEvent &event)
 
         Net::getTradeHandler()->cancel();
     }
-    else if (event.getId() == "ok")
+    else if (eventId == "ok")
     {
         mMoneyField->setEnabled(false);
         mAddButton->setEnabled(false);
@@ -362,13 +363,13 @@ void TradeWindow::action(const gcn::ActionEvent &event)
         setStatus(PROPOSING);
         Net::getTradeHandler()->confirm();
     }
-    else if (event.getId() == "trade")
+    else if (eventId == "trade")
     {
         receivedOk(true);
         setStatus(ACCEPTED);
         Net::getTradeHandler()->finish();
     }
-    else if (event.getId() == "money")
+    else if (eventId == "money")
     {
         if (mStatus != PREPARING) 
             return;
