@@ -55,6 +55,7 @@ gui_DATA =				\
 	resize.xml		\
 	scroll.xml		\
 	scroll_background.xml		\
+	scroll_hbackground.xml		\
 	scroll_highlighted.xml		\
 	scroll_vbackground.xml		\
 	scrollbuttons.xml		\
