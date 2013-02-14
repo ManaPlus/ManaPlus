@@ -1,7 +1,7 @@
 /*
  *  Support for non-overlapping floating text
  *  Copyright (C) 2008  Douglas Boffey <DougABoffey@netscape.net>
- *  Copyright (C) 2011-2012  The ManaPlus developers
+ *  Copyright (C) 2011-2013  The ManaPlus developers
  *
  *  This file is part of The ManaPlus Client.
  *
