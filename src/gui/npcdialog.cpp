@@ -131,21 +131,10 @@ NpcDialog::NpcDialog(const int npcId) :
         mItemList->setRowHeight(gui->getNpcFont()->getHeight());
 
     setContentSize(260, 175);
-
     mListScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-
     mItemList->setVisible(true);
-
-    // Setup string input box
     mTextField->setVisible(true);
-
-    // Setup int input box
     mIntField->setVisible(true);
-
-
-    // Setup button
-
-    //Setup more and less buttons (int input)
 
     const gcn::Font *const fnt = mButton->getFont();
     int width = std::max(fnt->getWidth(CAPTION_WAITING),
@@ -154,7 +143,6 @@ NpcDialog::NpcDialog(const int npcId) :
     width = std::max(width, fnt->getWidth(CAPTION_SUBMIT));
 
     mButton->setWidth(8 + width);
-
 
     // Place widgets
     buildLayout();
