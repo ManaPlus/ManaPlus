@@ -2295,7 +2295,14 @@ void Client::storeSafeParameters() const
     {
         // if video mode configured reset most settings to safe
         config.setValue("hwaccel", false);
+
+#if defined(ANDROID)
+        config.setValue("opengl", 2);
+#elif defined(__APPLE__)
+        config.setValue("opengl", 1);
+#else
         config.setValue("opengl", 0);
+#endif
         config.setValue("altfpslimit", 3);
         config.setValue("sound", false);
         config.setValue("safemode", true);
