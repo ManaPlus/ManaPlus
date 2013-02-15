@@ -30,6 +30,7 @@
 class Animation;
 class Graphics;
 class Image;
+class ImageSet;
 
 struct Frame;
 
@@ -91,6 +92,8 @@ class SimpleAnimation final
 
         /**  Tell whether the animation is ready */
         bool mInitialized;
+
+        ImageSet *mImageSet;
 };
 
 #endif

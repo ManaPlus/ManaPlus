@@ -40,7 +40,8 @@ SimpleAnimation::SimpleAnimation(Animation *const animation) :
     mAnimationTime(0),
     mAnimationPhase(0),
     mCurrentFrame(&mAnimation->mFrames[0]),
-    mInitialized(true)
+    mInitialized(true),
+    mImageSet(nullptr)
 {
 }
 
@@ -50,7 +51,8 @@ SimpleAnimation::SimpleAnimation(const XmlNodePtr animationNode,
     mAnimationTime(0),
     mAnimationPhase(0),
     mCurrentFrame(nullptr),
-    mInitialized(false)
+    mInitialized(false),
+    mImageSet(nullptr)
 {
     initializeAnimation(animationNode, dyePalettes);
     if (mAnimation)
@@ -63,6 +65,11 @@ SimpleAnimation::~SimpleAnimation()
 {
     delete mAnimation;
     mAnimation = nullptr;
+    if (mImageSet)
+    {
+        mImageSet->decRef();
+        mImageSet = nullptr;
+    }
 }
 
 bool SimpleAnimation::draw(Graphics *const graphics,
@@ -231,6 +238,6 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
         }
     }
 
-    imageset->decRef();
+//    imageset->decRef();
     mInitialized = true;
 }
