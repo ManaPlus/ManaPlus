@@ -77,7 +77,7 @@ void TextManager::place(const Text *const textObj, const Text *const omit,
     const int xLeft = textObj->mX;
     const int xRight1 = xLeft + textObj->mWidth;
     const int TEST = 50; // Number of lines to test for text
-    const int nBeings = 50;
+    const int nBeings = 30;
     bool occupied[TEST]; // is some other text obscuring this line?
     std::memset(&occupied, 0, sizeof(occupied)); // set all to false
     const int wantedTop = (TEST - h) / 2; // Entry in occupied at top of text
@@ -105,8 +105,15 @@ void TextManager::place(const Text *const textObj, const Text *const omit,
         }
     }
     bool ok = true;
-    for (int i = wantedTop; i < wantedTop + h; ++ i)
-        ok = ok && !occupied[i];
+    const int sz = wantedTop + h;
+    for (int i = wantedTop; i < sz; i ++)
+    {
+        if (occupied[i])
+        {
+            ok = false;
+            break;
+        }
+    }
 
     if (ok)
         return;
@@ -114,7 +121,8 @@ void TextManager::place(const Text *const textObj, const Text *const omit,
     // Have to move it up or down, so find nearest spaces either side
     int consec = 0;
     int upSlot = -1; // means not found
-    for (int seek = wantedTop + h - 2; seek >= 0; --seek)
+    const int sz2 = wantedTop + h - 2;
+    for (int seek = sz2; seek >= 0; --seek)
     {
         if (occupied[seek])
         {
