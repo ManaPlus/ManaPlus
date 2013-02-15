@@ -441,7 +441,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
 
 int BrowserBox::calcHeight()
 {
-    unsigned x = mPadding, y = mPadding;
+    unsigned int y = mPadding;
     int wrappedLines = 0;
     int moreHeight = 0;
     int maxWidth = getWidth() - mPadding;
@@ -467,9 +467,9 @@ int BrowserBox::calcHeight()
 
     FOR_EACH (TextRowCIter, i, mTextRows)
     {
+        unsigned int x = mPadding;
         const std::string row = *(i);
         bool wrapped = false;
-        x = mPadding;
 
         // Check for separator lines
         if (row.find("---", 0) == 0)
