@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-01-30 15:14+0000\n"
-"Last-Translator: luckZago <lcnzg7@gmail.com>\n"
+"PO-Revision-Date: 2013-02-03 11:31+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,8 +27,11 @@ msgstr "Para ler sobre sussurros e outros comandos de chat, veja aqui: "
 msgid "##2UP##P                       \"Move Up\""
 msgstr "##2UP##P \"Mover para cima\""
 
-msgid "##21##P                        \"Item Shortcut 1\""
-msgstr "##21##P \"Atalho de item 1\""
+msgid ""
+"You can select other themes.\n"
+"For this you should open settings and select theme tab\n"
+"and change \"gui theme\""
+msgstr ""
 
 msgid "Translators"
 msgstr "Tradutores"
@@ -299,8 +302,8 @@ msgstr "Você pode utilizar o bate-papo de voz mumble para conversar com outras 
 msgid "##2RightAlt##P                 \"Copy Outfit\""
 msgstr "##2Alt Direito##P                 \"Copiar roupas\""
 
-msgid "Here contributors from parent projects"
-msgstr ""
+msgid "##21##P                        \"Item Shortcut 1\""
+msgstr "##21##P \"Atalho de item 1\""
 
 msgid "##20##P                        \"Item Shortcut 10\""
 msgstr "##20##P                        \"Atalho de item 10\""
@@ -362,11 +365,21 @@ msgstr "##2F3##P                       \"Janela de inventário\""
 msgid "ABOUT MANAPLUS"
 msgstr "SOBRE O MANAPLUS"
 
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr ""
+
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr "##2KeyPad0##P                  \"Muda o tipo de movimentos\""
 
-msgid "Search results"
-msgstr "Resultados de pesquisa"
+msgid "MacOSX porting"
+msgstr ""
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway MSG - habilita/desabilita o falso modo ausente."
@@ -404,6 +417,9 @@ msgstr "Você pode colocar o modo ausente digitando o comando /away"
 
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - mover para as posições X,Y. em curta distância."
+
+msgid "Themes:"
+msgstr ""
 
 msgid "Magic skills:"
 msgstr "Habilidades de Feitiços:"
@@ -452,6 +468,9 @@ msgstr "##2PageDOWN##P                 \"Rola o chat para baixo\""
 
 msgid "##2KeyPad[2]##P                \"Enable / Disable away mode\""
 msgstr "##2KeyPad[2]##P                \"Habilita/Desabilita o modo ausente\""
+
+msgid "Here contributors from parent projects"
+msgstr ""
 
 msgid "##2j##P                        \"Commands Window\""
 msgstr "##2j##P                        \"Janela de comandos\""
@@ -608,6 +627,9 @@ msgstr "##2RIGHT##P                    \"Mover para a direita\""
 msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr "##2RightBracket(])##P          \"Copiar roupa equipada\""
 
+msgid "To type chat message, press enter"
+msgstr ""
+
 msgid "##2DOWN##P                     \"Move Down\""
 msgstr "##2DOWN##P                     \"Move para baixo\""
 
@@ -736,12 +758,18 @@ msgstr "Sussurros"
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
 msgstr ""
 
+msgid "Search results"
+msgstr "Resultados de pesquisa"
+
 msgid "/help - show small help about chat commands. "
 msgstr "/help - mostra uma pequena ajuda sobre os comandos do chat."
 
 msgid ""
 "You can set any client resolution. In settings in video tab,\n"
 "click on \"custom\" and enter for example: 900x500 and press ok."
+msgstr ""
+
+msgid "Main development"
 msgstr ""
 
 msgid "/attack - attack target."
@@ -801,14 +829,7 @@ msgstr "##2v##P                        \"Mover para o Alvo\""
 msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
 msgstr ""
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
+msgid "Android porting"
 msgstr ""
 
 msgid "##2h##P                        \"Hide Windows\""
@@ -828,8 +849,11 @@ msgid ""
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
 msgstr ""
 
-msgid "/follow NICK - start follow mode."
-msgstr "/follow NICK - Começa o modo de perseguição."
+msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
+msgstr "##2KeyPad[5]##P                \"Definir local da casa/Definir seta\""
+
+msgid "Different patches"
+msgstr ""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr ""
@@ -861,8 +885,8 @@ msgstr "##2F6##P                       \"Janela do Mini-mapa\""
 msgid "##2c##P                        \"Quick heal target or self\""
 msgstr ""
 
-msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
-msgstr "##2KeyPad[5]##P                \"Definir local da casa/Definir seta\""
+msgid "/follow NICK - start follow mode."
+msgstr "/follow NICK - Começa o modo de perseguição."
 
 msgid "##26##P                        \"Item Shortcut 6\""
 msgstr "##26##P                        \"Atalho de item 6\""

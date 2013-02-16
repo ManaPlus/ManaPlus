@@ -2,11 +2,11 @@
 # Translators:
 # Maria   <mtorres2022@gmail.com>, 2012.
 # Mr Pirate <salahbubuli44@gmail.com>, 2012.
-# Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2012.
+# Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2012-2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-10-17 22:18+0000\n"
+"PO-Revision-Date: 2013-02-03 15:38+0000\n"
 "Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -27,8 +27,11 @@ msgstr "Para leer acerca de los comandos de susurros y otros, ve aquí:"
 msgid "##2UP##P                       \"Move Up\""
 msgstr "##2Arriba##P                   \"Moverse hacia arriba\""
 
-msgid "##21##P                        \"Item Shortcut 1\""
-msgstr "##21##P                        \"Atajo de artículo 1\""
+msgid ""
+"You can select other themes.\n"
+"For this you should open settings and select theme tab\n"
+"and change \"gui theme\""
+msgstr "Puedes seleccionar otros temas.\nPara esto, debes abrir las configuraciones y seleccionar la pestaña\nTema y cambiar \"Tema de interfaz\""
 
 msgid "Translators"
 msgstr "Traductores"
@@ -299,8 +302,8 @@ msgstr "Puedes usar el chat de voz de mumble para hablar con otros jugadores.\nI
 msgid "##2RightAlt##P                 \"Copy Outfit\""
 msgstr "##2AltDerecho##P               \"Copiar Vestimenta\""
 
-msgid "Here contributors from parent projects"
-msgstr "Aquí los contribuyentes de proyectos padre"
+msgid "##21##P                        \"Item Shortcut 1\""
+msgstr "##21##P                        \"Atajo de artículo 1\""
 
 msgid "##20##P                        \"Item Shortcut 10\""
 msgstr "##20##P                        \"Atajo de Artículo 10\""
@@ -362,11 +365,21 @@ msgstr "##2F3##P                       \"Ventana de Inventario\""
 msgid "ABOUT MANAPLUS"
 msgstr "ACERCA DE MANAPLUS"
 
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
+
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr "##2KeyPad0##P                  \"Cambiar tipo de movimiento\""
 
-msgid "Search results"
-msgstr "Resultados de la búsqueda"
+msgid "MacOSX porting"
+msgstr "Portabilidad MacOSX"
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway MSG - fijar/desfijar modo pseudo away."
@@ -404,6 +417,9 @@ msgstr "Puedes establecer el modo afk, escribiendo en el chat el comando /away"
 
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - moverse a la posición X,Y en corta distancia."
+
+msgid "Themes:"
+msgstr "Temas:"
 
 msgid "Magic skills:"
 msgstr "Habilidades mágicas:"
@@ -452,6 +468,9 @@ msgstr "##2PageDOWN##P                 \"Desplazarse en el Chat hacia abajo\""
 
 msgid "##2KeyPad[2]##P                \"Enable / Disable away mode\""
 msgstr "##2KeyPad[2]##P                \"Habilitar/Deshabilitar modo AFK\""
+
+msgid "Here contributors from parent projects"
+msgstr "Aquí los contribuyentes de proyectos padre"
 
 msgid "##2j##P                        \"Commands Window\""
 msgstr "##2j##P                        \"Ventana de Comandos\""
@@ -608,6 +627,9 @@ msgstr "##2Derecha##P                  \"Moverse a la Derecha\""
 msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr "##2CorcheteDerecho(])##P       \"Copiar lo equipado al Equipamiento\""
 
+msgid "To type chat message, press enter"
+msgstr "Para escribir un mensaje en el chat, presiona enter"
+
 msgid "##2DOWN##P                     \"Move Down\""
 msgstr "##2Abajo##P                    \"Moverse hacia abajo\""
 
@@ -736,6 +758,9 @@ msgstr "Susurros"
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
 msgstr "##2AltIzq + 0##P               \"Atajo de Emoticón 10\""
 
+msgid "Search results"
+msgstr "Resultados de la búsqueda"
+
 msgid "/help - show small help about chat commands. "
 msgstr "/help - mostrar una pequeña ayuda de los comandos. "
 
@@ -743,6 +768,9 @@ msgid ""
 "You can set any client resolution. In settings in video tab,\n"
 "click on \"custom\" and enter for example: 900x500 and press ok."
 msgstr "Puedes ajustar la resolución de cliente a la que quieras. En Configuración, en la\npestaña Video, haz clic en \"personalizado\" y escribe, p.e., 900x500 y presiona OK."
+
+msgid "Main development"
+msgstr "Desarrollo principal"
 
 msgid "/attack - attack target."
 msgstr "/attack - atacar al objetivo."
@@ -801,15 +829,8 @@ msgstr "##2v##P                        \"Moverse al objetivo\""
 msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
 msgstr "##2KeyPad[7]##P                \"Pestaña del chat previa\""
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
+msgid "Android porting"
+msgstr "Portabilidad Android"
 
 msgid "##2h##P                        \"Hide Windows\""
 msgstr "##2h##P                        \"Ocultar Ventanas\""
@@ -828,8 +849,11 @@ msgid ""
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
 msgstr " Sin embargo, tú puedes protegerte de esos jugadores ignorándolos. Haz clic\n derecho sobre ellos y, en el menú contextual, selecciona \"Ignorar\" o\n \"Desatender\" (ver abajo). Puedes ver tus relaciones con los jugadores\n en el menú \"Configuración\", donde se enlistan todos los jugadores que has añadido.\n Para abrir este menú, selecciona \"Configuración\" en esquina superior de la ventana\n del cliente y después en \"Relaciones\"."
 
-msgid "/follow NICK - start follow mode."
-msgstr "/follow NICK - iniciar el modo seguimiento."
+msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
+msgstr "##2KeyPad[5]##P                \"Colocar punto inicio/Colocar flecha\""
+
+msgid "Different patches"
+msgstr "Parches diferentes"
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr "/navigate x y - moverse a la posición x,y en el mapa actual, a cualquier distancia."
@@ -861,8 +885,8 @@ msgstr "##2F6##P                       \"Ventana del Minimapa\""
 msgid "##2c##P                        \"Quick heal target or self\""
 msgstr "##2c##P                        \"Curar rápido al objetivo o a ti mismo\""
 
-msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
-msgstr "##2KeyPad[5]##P                \"Colocar punto inicio/Colocar flecha\""
+msgid "/follow NICK - start follow mode."
+msgstr "/follow NICK - iniciar el modo seguimiento."
 
 msgid "##26##P                        \"Item Shortcut 6\""
 msgstr "##26##P                        \"Atajo al artículo 6\""

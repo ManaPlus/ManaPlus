@@ -1,11 +1,12 @@
 # en#
 # Translators:
+# Elvano Miok <prd.studio@gmail.com>, 2013.
 #   <prd.studio@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-10-17 17:34+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2013-02-06 21:09+0000\n"
+"Last-Translator: elvano <prd.studio@gmail.com>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/language/nl_BE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,8 +26,11 @@ msgstr "Om over persoonlijke berichten en andere commandos te lezen, kijk hier!"
 msgid "##2UP##P                       \"Move Up\""
 msgstr "##2UP##P \"Beweeg Omhoog\""
 
-msgid "##21##P                        \"Item Shortcut 1\""
-msgstr "##21##P \"Voorwerp Sneltoets 1\""
+msgid ""
+"You can select other themes.\n"
+"For this you should open settings and select theme tab\n"
+"and change \"gui theme\""
+msgstr ""
 
 msgid "Translators"
 msgstr "Vertalers"
@@ -55,10 +59,10 @@ msgid "##2F2##P                       \"Status Window\""
 msgstr "##2F2##P \"Staat Venster\""
 
 msgid "/cacheinfo - show text cache info."
-msgstr ""
+msgstr "/cacheinfo - toon tekst cache info."
 
 msgid "##2LeftAlt + Minus(-)##P       \"Emote Shortcut 11\""
-msgstr ""
+msgstr "##2LeftAlt + Minus(-)##P \"Emote Sneltoets 11\""
 
 msgid ""
 "You can imitate other players by selecting \"imitation\" in player context menu\n"
@@ -72,13 +76,13 @@ msgid ""
 msgstr ""
 
 msgid "ManaPlus Contributors"
-msgstr ""
+msgstr "Manaplus Bijdragers"
 
 msgid "MOUSE:"
-msgstr ""
+msgstr "MUIS:"
 
 msgid "/neutral NICK - add nick to neutral relation list."
-msgstr ""
+msgstr "/neutral NICK - voeg nick toe aan neutrale relatielijst."
 
 msgid "/addpriorityattack NAME - add monster to priority attack list."
 msgstr ""
@@ -87,10 +91,10 @@ msgid "##2Enter##P                    \"Toggle Chat\""
 msgstr ""
 
 msgid "Back to Index"
-msgstr ""
+msgstr "Terug naar de Opgavetabel"
 
 msgid "##2LeftControl##P              \"Attack\""
-msgstr ""
+msgstr "##2LeftControl##P \"Val Aan\""
 
 msgid "/priceload - load shop price from disc."
 msgstr ""
@@ -297,8 +301,8 @@ msgstr ""
 msgid "##2RightAlt##P                 \"Copy Outfit\""
 msgstr ""
 
-msgid "Here contributors from parent projects"
-msgstr ""
+msgid "##21##P                        \"Item Shortcut 1\""
+msgstr "##21##P \"Voorwerp Sneltoets 1\""
 
 msgid "##20##P                        \"Item Shortcut 10\""
 msgstr ""
@@ -336,7 +340,7 @@ msgid "##22##P                        \"Item Shortcut 2\""
 msgstr ""
 
 msgid "KEYBOARD:"
-msgstr ""
+msgstr "TOETSENBORD:"
 
 msgid "##2Semicolon(;)##P             \"Set Direction Down\""
 msgstr ""
@@ -360,10 +364,20 @@ msgstr ""
 msgid "ABOUT MANAPLUS"
 msgstr "OVER MANAPLUS"
 
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr ""
+
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr ""
 
-msgid "Search results"
+msgid "MacOSX porting"
 msgstr ""
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
@@ -401,6 +415,9 @@ msgid ""
 msgstr ""
 
 msgid "/move X Y - move to X,Y position in short distance."
+msgstr ""
+
+msgid "Themes:"
 msgstr ""
 
 msgid "Magic skills:"
@@ -449,6 +466,9 @@ msgid "##2PageDOWN##P                 \"Scroll Chat Down\""
 msgstr ""
 
 msgid "##2KeyPad[2]##P                \"Enable / Disable away mode\""
+msgstr ""
+
+msgid "Here contributors from parent projects"
 msgstr ""
 
 msgid "##2j##P                        \"Commands Window\""
@@ -606,6 +626,9 @@ msgstr ""
 msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr ""
 
+msgid "To type chat message, press enter"
+msgstr ""
+
 msgid "##2DOWN##P                     \"Move Down\""
 msgstr ""
 
@@ -734,12 +757,18 @@ msgstr ""
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
 msgstr ""
 
+msgid "Search results"
+msgstr ""
+
 msgid "/help - show small help about chat commands. "
 msgstr ""
 
 msgid ""
 "You can set any client resolution. In settings in video tab,\n"
 "click on \"custom\" and enter for example: 900x500 and press ok."
+msgstr ""
+
+msgid "Main development"
 msgstr ""
 
 msgid "/attack - attack target."
@@ -799,14 +828,7 @@ msgstr ""
 msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
 msgstr ""
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
+msgid "Android porting"
 msgstr ""
 
 msgid "##2h##P                        \"Hide Windows\""
@@ -826,7 +848,10 @@ msgid ""
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
 msgstr ""
 
-msgid "/follow NICK - start follow mode."
+msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
+msgstr ""
+
+msgid "Different patches"
 msgstr ""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
@@ -859,7 +884,7 @@ msgstr ""
 msgid "##2c##P                        \"Quick heal target or self\""
 msgstr ""
 
-msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
+msgid "/follow NICK - start follow mode."
 msgstr ""
 
 msgid "##26##P                        \"Item Shortcut 6\""

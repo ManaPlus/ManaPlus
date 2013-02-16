@@ -61,7 +61,6 @@ src/gui/setup_visual.cpp
 src/gui/shopwindow.cpp
 src/gui/skilldialog.cpp
 src/gui/socialwindow.cpp
-src/gui/specialswindow.cpp
 src/gui/statuswindow.cpp
 src/gui/textcommandeditor.cpp
 src/gui/textdialog.cpp
@@ -71,7 +70,6 @@ src/gui/updaterwindow.cpp
 src/gui/userpalette.cpp
 src/gui/whoisonline.cpp
 src/gui/widgets/battletab.cpp
-src/gui/widgets/channeltab.cpp
 src/gui/widgets/chattab.cpp
 src/gui/widgets/extendednamesmodel.cpp
 src/gui/widgets/guildchattab.cpp

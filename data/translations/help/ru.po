@@ -1,7 +1,7 @@
 # en#
 # Translators:
 # Alexandr Uspensky <AlexandrUSP@yandex.com>, 2012.
-# Andrei Karas <akaras@inbox.ru>, 2012.
+# Andrei Karas <akaras@inbox.ru>, 2012-2013.
 #   <BoBaH4spam@ukr.net>, 2012.
 # Dan Sagunov <danilka.pro@gmail.com>, 2012.
 #   <ratrex@mail.ru>, 2013.
@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-01-18 07:21+0000\n"
+"PO-Revision-Date: 2013-02-03 13:21+0000\n"
 "Last-Translator: RatreX <ratrex@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -30,8 +30,11 @@ msgstr "Чтобы узнать о привате (шепоте, whisper) и д�
 msgid "##2UP##P                       \"Move Up\""
 msgstr "##2UP##P                       \"Двигаться вверх\""
 
-msgid "##21##P                        \"Item Shortcut 1\""
-msgstr "##21##P                        \"Ярлык предметов 1\""
+msgid ""
+"You can select other themes.\n"
+"For this you should open settings and select theme tab\n"
+"and change \"gui theme\""
+msgstr "Вы можете выбрать другое оформление.\n Откройте окно настроек, выберите вкладку \"темы\"\n и смените \"тему интерфейса\""
 
 msgid "Translators"
 msgstr "Переводчики"
@@ -302,8 +305,8 @@ msgstr "Вы можете использовать голосовой чат Mum
 msgid "##2RightAlt##P                 \"Copy Outfit\""
 msgstr "##2RightAlt##P                 \"Копировать костюм\""
 
-msgid "Here contributors from parent projects"
-msgstr "Здесь участники из родительских проектов"
+msgid "##21##P                        \"Item Shortcut 1\""
+msgstr "##21##P                        \"Ярлык предметов 1\""
 
 msgid "##20##P                        \"Item Shortcut 10\""
 msgstr "##20##P                        \"Ярлык предмета 10\""
@@ -365,11 +368,21 @@ msgstr "##2F3##P                       \"Окно инвентаря\""
 msgid "ABOUT MANAPLUS"
 msgstr "Об игре MANAPLUS"
 
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr "##2 SDL, SDL_image, SDL_mixer (Медиа фрэймворк)\n##2 SDL_net (Сетевой фрэймворк)\n##2 Guichan (Графический фреймворк)\n##2 libxml2 (XML парсинг и запись)\n##2 PhysFS (Файлы данных)\n##2 libcurl (HTTP загрузки)\n##2 zlib (Архивы)"
+
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr "##2Цифровая клавиша 0##P                  \"Сменить тип движения\""
 
-msgid "Search results"
-msgstr "Результат поиска"
+msgid "MacOSX porting"
+msgstr "Портирование на MacOSX"
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway ТЕКСТ - включить/выключить режим псевдо-\"Отошел\"."
@@ -407,6 +420,9 @@ msgstr "Вы можете установить рехим отошел,\nнаб�
 
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - идти в точку X, Y, находящуюся на коротком расстоянии."
+
+msgid "Themes:"
+msgstr "Темы:"
 
 msgid "Magic skills:"
 msgstr "Магические умения:"
@@ -455,6 +471,9 @@ msgstr "##2PageDOWN##P                 \"Прокрутить чат Вниз\""
 
 msgid "##2KeyPad[2]##P                \"Enable / Disable away mode\""
 msgstr "##2Цифровая клавиша [2]##P                \"Включить / Выключить режим отсутствия\""
+
+msgid "Here contributors from parent projects"
+msgstr "Здесь участники из родительских проектов"
 
 msgid "##2j##P                        \"Commands Window\""
 msgstr "##2j##P                        \"Окно команд\""
@@ -611,6 +630,9 @@ msgstr "##2RIGHT##P                    \"Двигаться вправо\""
 msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr "##2Правая квадратная скобка (])##P          \"Копировать одетое в Экипировку\""
 
+msgid "To type chat message, press enter"
+msgstr "Для ввода сообщений в чат, нажмите enter"
+
 msgid "##2DOWN##P                     \"Move Down\""
 msgstr "##2DOWN##P                     \"Двигаться вниз\""
 
@@ -739,6 +761,9 @@ msgstr "Приват (шепот, whisper)"
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
 msgstr "##2Левый Alt + 0##P              \"Ярлык эмоций 10\""
 
+msgid "Search results"
+msgstr "Результат поиска"
+
 msgid "/help - show small help about chat commands. "
 msgstr "/help - отображает небольшую справку о чат командах. "
 
@@ -746,6 +771,9 @@ msgid ""
 "You can set any client resolution. In settings in video tab,\n"
 "click on \"custom\" and enter for example: 900x500 and press ok."
 msgstr "Вы можете установить любое разрешение. В настройках на вкладке видео,\nщелкните по строке \"произвольное\" и введите например: 900x500 и нажмите ok."
+
+msgid "Main development"
+msgstr "Основная разработка"
 
 msgid "/attack - attack target."
 msgstr "/attack - атаковать цель."
@@ -804,15 +832,8 @@ msgstr "##2v##P                        \"Двигаться к цели\""
 msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
 msgstr "##2Цифровая клавиша [7]##P                \"Предыдущая вкладка чата\""
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr "##2 SDL, SDL_image, SDL_mixer (Медиа фрэймворк)\n##2 SDL_net (Сетевой фрэймворк)\n##2 Guichan (Графический фреймворк)\n##2 libxml2 (XML парсинг и запись)\n##2 PhysFS (Файлы данных)\n##2 libcurl (HTTP загрузки)\n##2 zlib (Архивы)"
+msgid "Android porting"
+msgstr "Портирование на Android"
 
 msgid "##2h##P                        \"Hide Windows\""
 msgstr "##2h##P                        \"Спрятать окна\""
@@ -831,8 +852,11 @@ msgid ""
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
 msgstr "Впрочем, вы можете защититься от таких игроков, игнорируя их. Правым-⏎ кликом на игроке откройте контекстное меню, затем выберите `Игнорировать' или⏎ `Пренебречь' (см. выше). Вы можете настраивать отношения с игроками в меню ⏎ `Настройка', которое показывает всех игроков, добавленных туда. Чтобы открыть это⏎ меню, выберите `Настройка' в правом верхнем углу экрана, затем `Игроки'."
 
-msgid "/follow NICK - start follow mode."
-msgstr "/follow НИК- следовать за данным игроком."
+msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
+msgstr "##2Цифровая клавиша [5]##P                \"Установить свой маркер/Установить стрелку\""
+
+msgid "Different patches"
+msgstr "Различные патчи"
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr "/navigate x y - двигаться в позицию x,y на текущей карте на любом расстоянии."
@@ -864,8 +888,8 @@ msgstr "##2F6##P                       \"Окно миникарты\""
 msgid "##2c##P                        \"Quick heal target or self\""
 msgstr "##2c##P                        \"Быстрое лечение цели или себя\""
 
-msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
-msgstr "##2Цифровая клавиша [5]##P                \"Установить свой маркер/Установить стрелку\""
+msgid "/follow NICK - start follow mode."
+msgstr "/follow НИК- следовать за данным игроком."
 
 msgid "##26##P                        \"Item Shortcut 6\""
 msgstr "##26##P                        \"Ярлык предмета 6\""

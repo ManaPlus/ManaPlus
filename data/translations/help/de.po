@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-01-03 15:21+0000\n"
-"Last-Translator: Slimor <madjuca@gmx.de>\n"
+"PO-Revision-Date: 2013-02-03 11:31+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,8 +27,11 @@ msgstr "Um mehr über das Flüstern und andere Chat-Befehle zu erfahren, lesen S
 msgid "##2UP##P                       \"Move Up\""
 msgstr "##2UP##P                       \"Bewegung nach oben\""
 
-msgid "##21##P                        \"Item Shortcut 1\""
-msgstr "##21##P                        \"Item Tastaturkürzel 1\""
+msgid ""
+"You can select other themes.\n"
+"For this you should open settings and select theme tab\n"
+"and change \"gui theme\""
+msgstr ""
 
 msgid "Translators"
 msgstr "Übersetzer"
@@ -299,8 +302,8 @@ msgstr "Sie können den Mumble-Voice-Chat für das Gespräch mit anderen\n Spiel
 msgid "##2RightAlt##P                 \"Copy Outfit\""
 msgstr "##2RightAlt##P                 \"Kopiere Ausrüstung\""
 
-msgid "Here contributors from parent projects"
-msgstr ""
+msgid "##21##P                        \"Item Shortcut 1\""
+msgstr "##21##P                        \"Item Tastaturkürzel 1\""
 
 msgid "##20##P                        \"Item Shortcut 10\""
 msgstr "##20##P                        \"Item Tastaturkürzel 10\""
@@ -362,11 +365,21 @@ msgstr "##2F3##P                       \"Inventarfenster\""
 msgid "ABOUT MANAPLUS"
 msgstr "ÜBER MANAPLUS"
 
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
+
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr "##2KeyPad0##P                  \"Änderung der Bewegungsart\""
 
-msgid "Search results"
-msgstr "Suchergebnisse"
+msgid "MacOSX porting"
+msgstr ""
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway MSG - setzt/löscht den Pseudo-Abwesenheitsmodus"
@@ -404,6 +417,9 @@ msgstr "Sie können den Weg-Modus durch Eingabe des Chat-Befehls /away setzen."
 
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - Zur Position X,Y in kurzer Entfernung gehen."
+
+msgid "Themes:"
+msgstr ""
 
 msgid "Magic skills:"
 msgstr "Magische Fähigkeiten:"
@@ -452,6 +468,9 @@ msgstr "##2PageDOWN##P                 \"Scrolle Chat runter\""
 
 msgid "##2KeyPad[2]##P                \"Enable / Disable away mode\""
 msgstr "##2KeyPad[2]##P                \"Aktiviere / Deaktiviere Weg-Modus\""
+
+msgid "Here contributors from parent projects"
+msgstr ""
 
 msgid "##2j##P                        \"Commands Window\""
 msgstr "##2j##P                        \"Befehlsfenster\""
@@ -608,6 +627,9 @@ msgstr "##2RIGHT##P                    \"Bewegung nach Rechts\""
 msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr "##2RightBracket(])##P          \"Kopieren der Ausstattung zur Ausrüstung\""
 
+msgid "To type chat message, press enter"
+msgstr ""
+
 msgid "##2DOWN##P                     \"Move Down\""
 msgstr "##2DOWN##P                     \"Bewegung nach unten\""
 
@@ -736,6 +758,9 @@ msgstr "Flüstern"
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
 msgstr "##2LeftAlt + 0##P              \"Emote Tastaturkürzel 10\""
 
+msgid "Search results"
+msgstr "Suchergebnisse"
+
 msgid "/help - show small help about chat commands. "
 msgstr "/help - zeigt eine kleine Hilfe über die Chat-Befehle."
 
@@ -743,6 +768,9 @@ msgid ""
 "You can set any client resolution. In settings in video tab,\n"
 "click on \"custom\" and enter for example: 900x500 and press ok."
 msgstr "Sie können eine beliebige Client-Auflösung wählen. In Einstellungen\nim Video-Tab auf \"custom\" klicken und geben Sie zum Beispiel ein:\n900x500, und drücken Sie OK."
+
+msgid "Main development"
+msgstr ""
 
 msgid "/attack - attack target."
 msgstr "/attack - Ziel angreifen"
@@ -801,15 +829,8 @@ msgstr "##2v##P                        \"Zum Ziel bewegen\""
 msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
 msgstr "##2KeyPad[7]##P                \"Voriges Chatunterfenster\""
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
+msgid "Android porting"
+msgstr ""
 
 msgid "##2h##P                        \"Hide Windows\""
 msgstr "##2h##P                        \"Fenster verstecken\""
@@ -828,8 +849,11 @@ msgid ""
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
 msgstr ""
 
-msgid "/follow NICK - start follow mode."
-msgstr "/follow NICK - Starte Verfolgung von Spieler NICK."
+msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
+msgstr "##2KeyPad[5]##P                \"Setze Startplatz / Pfeil\""
+
+msgid "Different patches"
+msgstr ""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr "/navigate x y - Geht im aktuellen Gebiet zur Position x y,\n                unabhängig der Entfernung."
@@ -861,8 +885,8 @@ msgstr "##2F6##P                       \"Minikartenfenster\""
 msgid "##2c##P                        \"Quick heal target or self\""
 msgstr "##2c##P                        \"Schnelles heilen von Ziel oder sich selbst"
 
-msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
-msgstr "##2KeyPad[5]##P                \"Setze Startplatz / Pfeil\""
+msgid "/follow NICK - start follow mode."
+msgstr "/follow NICK - Starte Verfolgung von Spieler NICK."
 
 msgid "##26##P                        \"Item Shortcut 6\""
 msgstr "##26##P                        \"Item Tastaturkürzel 6\""

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-12-12 15:53+0000\n"
-"Last-Translator: foobo <lukasz.antoni.komorowski@poczta.fm>\n"
+"PO-Revision-Date: 2013-02-03 11:31+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/manaplus/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,8 +26,11 @@ msgstr "O szeptach i innych poleceniach czatu, przeczytasz tutaj:"
 msgid "##2UP##P                       \"Move Up\""
 msgstr ""
 
-msgid "##21##P                        \"Item Shortcut 1\""
-msgstr "##21##P                        \"Skrót do Przedmiotu 1\""
+msgid ""
+"You can select other themes.\n"
+"For this you should open settings and select theme tab\n"
+"and change \"gui theme\""
+msgstr ""
 
 msgid "Translators"
 msgstr "Tłumacze"
@@ -298,8 +301,8 @@ msgstr ""
 msgid "##2RightAlt##P                 \"Copy Outfit\""
 msgstr ""
 
-msgid "Here contributors from parent projects"
-msgstr ""
+msgid "##21##P                        \"Item Shortcut 1\""
+msgstr "##21##P                        \"Skrót do Przedmiotu 1\""
 
 msgid "##20##P                        \"Item Shortcut 10\""
 msgstr "##20##P                        \"Skrót do Przedmiotu 10\""
@@ -361,11 +364,21 @@ msgstr "##2F3##P                       \"Okno Inwentarza\""
 msgid "ABOUT MANAPLUS"
 msgstr "O MANAPLUS"
 
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr ""
+
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr ""
 
-msgid "Search results"
-msgstr "Wyniki wyszukiwania"
+msgid "MacOSX porting"
+msgstr ""
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr ""
@@ -402,6 +415,9 @@ msgid ""
 msgstr ""
 
 msgid "/move X Y - move to X,Y position in short distance."
+msgstr ""
+
+msgid "Themes:"
 msgstr ""
 
 msgid "Magic skills:"
@@ -450,6 +466,9 @@ msgid "##2PageDOWN##P                 \"Scroll Chat Down\""
 msgstr "##2PageDOWN##P                 \"Przewiń czat w dół\""
 
 msgid "##2KeyPad[2]##P                \"Enable / Disable away mode\""
+msgstr ""
+
+msgid "Here contributors from parent projects"
 msgstr ""
 
 msgid "##2j##P                        \"Commands Window\""
@@ -607,6 +626,9 @@ msgstr ""
 msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr ""
 
+msgid "To type chat message, press enter"
+msgstr ""
+
 msgid "##2DOWN##P                     \"Move Down\""
 msgstr ""
 
@@ -735,6 +757,9 @@ msgstr "Szepty"
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
 msgstr "##2LeftAlt + 0##P              \"Skrót do Emotki 10\""
 
+msgid "Search results"
+msgstr "Wyniki wyszukiwania"
+
 msgid "/help - show small help about chat commands. "
 msgstr "/help - pokaż niewielką pomoc dotyczącą komend czatu."
 
@@ -742,6 +767,9 @@ msgid ""
 "You can set any client resolution. In settings in video tab,\n"
 "click on \"custom\" and enter for example: 900x500 and press ok."
 msgstr "Możesz ustalić dowolną rozdzielczość . W ustawieniach, w zakładce Obraz,\nkliknij na \"własny\" i na przykład wpisz: 900x500 po czym naciśnij ok."
+
+msgid "Main development"
+msgstr ""
 
 msgid "/attack - attack target."
 msgstr "/attack - zaatakuj cel."
@@ -800,14 +828,7 @@ msgstr "##2v##P                        \"Idź do Celu\""
 msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
 msgstr "##2KeyPad[7]##P                \"Poprzednia Zakładka Czatu\""
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
+msgid "Android porting"
 msgstr ""
 
 msgid "##2h##P                        \"Hide Windows\""
@@ -827,8 +848,11 @@ msgid ""
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
 msgstr ""
 
-msgid "/follow NICK - start follow mode."
-msgstr "/follow NICK - rozpocznij tryb podążania."
+msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
+msgstr ""
+
+msgid "Different patches"
+msgstr ""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr ""
@@ -860,8 +884,8 @@ msgstr "##2F6##P                       \"Okno Minimapy\""
 msgid "##2c##P                        \"Quick heal target or self\""
 msgstr "##2c##P                        \"Szybkie uleczenie celu lub siebie\""
 
-msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
-msgstr ""
+msgid "/follow NICK - start follow mode."
+msgstr "/follow NICK - rozpocznij tryb podążania."
 
 msgid "##26##P                        \"Item Shortcut 6\""
 msgstr "##26##P                        \"Skrót do Przedmiotu 6\""

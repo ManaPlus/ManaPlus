@@ -1,11 +1,12 @@
 # en#
 # Translators:
+# Alessandro <ale.camplese@gmail.com>, 2013.
 #   <miglietta.francesco@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-12-03 12:37+0000\n"
-"Last-Translator: hal9OOO <miglietta.francesco@gmail.com>\n"
+"PO-Revision-Date: 2013-02-15 20:53+0000\n"
+"Last-Translator: Alel <ale.camplese@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,8 +26,11 @@ msgstr "Informazioni sul Whisper ed altri comandi della chat:"
 msgid "##2UP##P                       \"Move Up\""
 msgstr "##2UP##P                       \"Su\""
 
-msgid "##21##P                        \"Item Shortcut 1\""
-msgstr "##21##P                        \"Scorciatoia Oggetto 1\""
+msgid ""
+"You can select other themes.\n"
+"For this you should open settings and select theme tab\n"
+"and change \"gui theme\""
+msgstr ""
 
 msgid "Translators"
 msgstr "Traduttori"
@@ -193,7 +197,7 @@ msgid ""
 "You can walk to warps automatically.\n"
 "Open Social Window (f11) and selecy Nav tab,\n"
 "then click on warp what you want."
-msgstr ""
+msgstr "Puoi camminare fino ai teletrasporti automaticamente.\nApri la finestra sociale (F11) e seleziona Nav tab,\nquindi clicca sul teletrasporto che vuoi."
 
 msgid "##2LeftAlt + 7##P              \"Emote Shortcut 7\""
 msgstr "##2LeftAlt + 7##P              \"Scorciatoia Emote 7\""
@@ -297,8 +301,8 @@ msgstr "Puoi usare la voice-chat Mumble per parlare in Live con gli altri giocat
 msgid "##2RightAlt##P                 \"Copy Outfit\""
 msgstr "##2RightAlt##P                 \"Copia Combinazione equipaggiamento\""
 
-msgid "Here contributors from parent projects"
-msgstr "Collaboratori progetti esterni"
+msgid "##21##P                        \"Item Shortcut 1\""
+msgstr "##21##P                        \"Scorciatoia Oggetto 1\""
 
 msgid "##20##P                        \"Item Shortcut 10\""
 msgstr "##20##P                        \"Scorciatoia Oggetto 10\""
@@ -360,11 +364,21 @@ msgstr "##2F3##P                       \"Inventario\""
 msgid "ABOUT MANAPLUS"
 msgstr "INFORMAZIONI MANAPLUS"
 
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
+
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr "##2KeyPad0##P                  \"Cambia tipo di movimento\""
 
-msgid "Search results"
-msgstr "Risultati ricerca"
+msgid "MacOSX porting"
+msgstr ""
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway MSG - attiva/disattiva la modalità Pseudo Away."
@@ -402,6 +416,9 @@ msgstr "Puoi attivare la modalità AWAY,\ndigitando il comando /away in chat."
 
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - spostati alla posizione X,Y (distanza ravvicinata)."
+
+msgid "Themes:"
+msgstr ""
 
 msgid "Magic skills:"
 msgstr "Abilità magiche:"
@@ -450,6 +467,9 @@ msgstr "##2PageDOWN##P                 \"Scrolla la Chat Giù\""
 
 msgid "##2KeyPad[2]##P                \"Enable / Disable away mode\""
 msgstr "##2KeyPad[2]##P                \"Attiva/Disabilità modalità Away\""
+
+msgid "Here contributors from parent projects"
+msgstr "Collaboratori progetti esterni"
 
 msgid "##2j##P                        \"Commands Window\""
 msgstr "##2j##P                        \"Finestra Comandi\""
@@ -606,6 +626,9 @@ msgstr "##2RIGHT##P                    \"Destra\""
 msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr "##2RightBracket(])##P          \"Memorizza Equipaggiamento come Combinazione\""
 
+msgid "To type chat message, press enter"
+msgstr ""
+
 msgid "##2DOWN##P                     \"Move Down\""
 msgstr "##2DOWN##P                     \"Giù\""
 
@@ -734,6 +757,9 @@ msgstr "Whispers"
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
 msgstr "##2LeftAlt + 0##P              \"Scorciatoia Emote 10\""
 
+msgid "Search results"
+msgstr "Risultati ricerca"
+
 msgid "/help - show small help about chat commands. "
 msgstr "/help - visualizza un piccolo help in linea sui comandi della chat."
 
@@ -741,6 +767,9 @@ msgid ""
 "You can set any client resolution. In settings in video tab,\n"
 "click on \"custom\" and enter for example: 900x500 and press ok."
 msgstr "Puoi impostare qualsiasi risoluzione del Client. Nella finestra Setup, tab Video,\nclicca su \"personalizzata\" e digita per esempio: 900x500."
+
+msgid "Main development"
+msgstr ""
 
 msgid "/attack - attack target."
 msgstr "/attack - attacca il target selezionato."
@@ -799,15 +828,8 @@ msgstr "##2v##P                        \"Raggiungi il Target selezionato\""
 msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
 msgstr "##2KeyPad[7]##P                \"Chat Tab Precedente\""
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
+msgid "Android porting"
+msgstr ""
 
 msgid "##2h##P                        \"Hide Windows\""
 msgstr "##2h##P                        \"Nascondi Finestre\""
@@ -826,8 +848,11 @@ msgid ""
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
 msgstr "Tuttavia, puoi tutelarti da questi giocatori ignorandoli.  Clicca sul giocatore col tasto destro del mouse e seleziona la voce 'ignore' \ndal menu contestuale.\nPuoi personalizzare le relazioni del tuo personaggio\n dal menu' 'Setup', in cui puoi trovare la lista di tutti i giocatori coinvolti.  Per accedervi\n seleziona 'Setup' nell'angolo dello schermo in alto a destra, nella sezione 'Relazioni'."
 
-msgid "/follow NICK - start follow mode."
-msgstr "/follow NICK - attiva la modalità 'Segui' sul personaggio scelto."
+msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
+msgstr ""
+
+msgid "Different patches"
+msgstr ""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr ""
@@ -859,8 +884,8 @@ msgstr "##2F6##P                       \"Mini Mappa\""
 msgid "##2c##P                        \"Quick heal target or self\""
 msgstr "##2c##P                        \"Cura veloce al target selezionato o a se stesso\""
 
-msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
-msgstr ""
+msgid "/follow NICK - start follow mode."
+msgstr "/follow NICK - attiva la modalità 'Segui' sul personaggio scelto."
 
 msgid "##26##P                        \"Item Shortcut 6\""
 msgstr "##26##P                        \"Scorciatoia Oggetto 6\""
