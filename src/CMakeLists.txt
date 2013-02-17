@@ -880,10 +880,6 @@ SET(SRCS_EATHENA
     )
 
 SET(SRCS_MANASERV
-    gui/specialswindow.cpp
-    gui/specialswindow.h
-    utils/sha256.cpp
-    utils/sha256.h
     net/manaserv/attributes.cpp
     net/manaserv/attributes.h
     net/manaserv/adminhandler.cpp
