@@ -40,7 +40,6 @@
 #include "utils/mkdir.h"
 #include "utils/physfsrwops.h"
 
-#include <physfs.h>
 #include <SDL_image.h>
 #include <cassert>
 #include <fstream>
@@ -298,7 +297,7 @@ void ResourceManager::clearDeleted(bool full)
 }
 bool ResourceManager::setWriteDir(const std::string &path) const
 {
-    return static_cast<bool>(PHYSFS_setWriteDir(path.c_str()));
+    return static_cast<bool>(PhysFs::setWriteDir(path.c_str()));
 }
 
 bool ResourceManager::addToSearchPath(const std::string &path,
@@ -306,7 +305,7 @@ bool ResourceManager::addToSearchPath(const std::string &path,
 {
     logger->log("Adding to PhysicsFS: %s (%s)", path.c_str(),
                 append ? "append" : "prepend");
-    if (!PHYSFS_addToSearchPath(path.c_str(), append ? 1 : 0))
+    if (!PhysFs::addToSearchPath(path.c_str(), append ? 1 : 0))
     {
         logger->log("Error: %s", PHYSFS_getLastError());
         return false;
@@ -317,7 +316,7 @@ bool ResourceManager::addToSearchPath(const std::string &path,
 bool ResourceManager::removeFromSearchPath(const std::string &path) const
 {
     logger->log("Removing from PhysicsFS: %s", path.c_str());
-    if (!PHYSFS_removeFromSearchPath(path.c_str()))
+    if (!PhysFs::removeFromSearchPath(path.c_str()))
     {
         logger->log("Error: %s", PHYSFS_getLastError());
         return false;
@@ -329,8 +328,8 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
                                            const std::string &ext,
                                            const bool append) const
 {
-    const char *const dirSep = PHYSFS_getDirSeparator();
-    char **list = PHYSFS_enumerateFiles(path.c_str());
+    const char *const dirSep = PhysFs::getDirSeparator();
+    char **list = PhysFs::enumerateFiles(path.c_str());
 
     for (char **i = list; *i; i++)
     {
@@ -341,21 +340,21 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
             std::string file, realPath, archive;
 
             file = path + (*i);
-            realPath = std::string(PHYSFS_getRealDir(file.c_str()));
+            realPath = std::string(PhysFs::getRealDir(file.c_str()));
             archive = realPath + dirSep + file;
 
             addToSearchPath(archive, append);
         }
     }
 
-    PHYSFS_freeList(list);
+    PhysFs::freeList(list);
 }
 
 void ResourceManager::searchAndRemoveArchives(const std::string &path,
                                               const std::string &ext) const
 {
-    const char *const dirSep = PHYSFS_getDirSeparator();
-    char **list = PHYSFS_enumerateFiles(path.c_str());
+    const char *const dirSep = PhysFs::getDirSeparator();
+    char **list = PhysFs::enumerateFiles(path.c_str());
 
     for (char **i = list; *i; i++)
     {
@@ -366,24 +365,24 @@ void ResourceManager::searchAndRemoveArchives(const std::string &path,
             std::string file, realPath, archive;
 
             file = path + (*i);
-            realPath = std::string(PHYSFS_getRealDir(file.c_str()));
+            realPath = std::string(PhysFs::getRealDir(file.c_str()));
             archive = realPath + dirSep + file;
 
             removeFromSearchPath(archive);
         }
     }
 
-    PHYSFS_freeList(list);
+    PhysFs::freeList(list);
 }
 
 bool ResourceManager::mkdir(const std::string &path) const
 {
-    return static_cast<bool>(PHYSFS_mkdir(path.c_str()));
+    return static_cast<bool>(PhysFs::mkdir(path.c_str()));
 }
 
 bool ResourceManager::exists(const std::string &path) const
 {
-    return PHYSFS_exists(path.c_str());
+    return PhysFs::exists(path.c_str());
 }
 
 bool ResourceManager::existsLocal(const std::string &path) const
@@ -399,24 +398,24 @@ bool ResourceManager::existsLocal(const std::string &path) const
 
 bool ResourceManager::isDirectory(const std::string &path) const
 {
-    return PHYSFS_isDirectory(path.c_str());
+    return PhysFs::isDirectory(path.c_str());
 }
 
 std::string ResourceManager::getPath(const std::string &file) const
 {
     // get the real path to the file
-    const char *const tmp = PHYSFS_getRealDir(file.c_str());
+    const char *const tmp = PhysFs::getRealDir(file.c_str());
     std::string path;
 
     // if the file is not in the search path, then its nullptr
     if (tmp)
     {
-        path = std::string(tmp) + PHYSFS_getDirSeparator() + file;
+        path = std::string(tmp) + PhysFs::getDirSeparator() + file;
     }
     else
     {
         // if not found in search path return the default path
-        path = Client::getPackageDirectory() + PHYSFS_getDirSeparator() + file;
+        path = Client::getPackageDirectory() + PhysFs::getDirSeparator() + file;
     }
 
     return path;
@@ -894,7 +893,7 @@ void ResourceManager::deleteInstance()
 void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
 {
     // Attempt to open the specified file using PhysicsFS
-    PHYSFS_file *const file = PHYSFS_openRead(fileName.c_str());
+    PHYSFS_file *const file = PhysFs::openRead(fileName.c_str());
 
     // If the handler is an invalid pointer indicate failure
     if (!file)
@@ -905,7 +904,7 @@ void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
     }
 
     // Log the real dir of the file
-    logger->log("Loaded %s/%s", PHYSFS_getRealDir(fileName.c_str()),
+    logger->log("Loaded %s/%s", PhysFs::getRealDir(fileName.c_str()),
                 fileName.c_str());
 
     // Get the size of the file
@@ -924,13 +923,13 @@ void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
 bool ResourceManager::copyFile(const std::string &src,
                                const std::string &dst) const
 {
-    PHYSFS_file *const srcFile = PHYSFS_openRead(src.c_str());
+    PHYSFS_file *const srcFile = PhysFs::openRead(src.c_str());
     if (!srcFile)
     {
         logger->log("Read error: %s", PHYSFS_getLastError());
         return false;
     }
-    PHYSFS_file *const dstFile = PHYSFS_openWrite(dst.c_str());
+    PHYSFS_file *const dstFile = PhysFs::openWrite(dst.c_str());
     if (!dstFile)
     {
         logger->log("Write error: %s", PHYSFS_getLastError());

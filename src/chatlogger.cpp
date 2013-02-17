@@ -39,8 +39,7 @@
 #include "logger.h"
 #include "configuration.h"
 #include "utils/mkdir.h"
-
-#include <physfs.h>
+#include "utils/physfstools.h"
 
 #include "debug.h"
 
@@ -171,11 +170,11 @@ void ChatLogger::setServerName(const std::string &serverName)
     secureName(mServerName);
     if (mLogDir != "")
     {
-        DIR *const dir = opendir((mLogDir + PHYSFS_getDirSeparator()
+        DIR *const dir = opendir((mLogDir + PhysFs::getDirSeparator()
             + mServerName).c_str());
         if (!dir)
         {
-            mkdir_r((mLogDir + PHYSFS_getDirSeparator()
+            mkdir_r((mLogDir + PhysFs::getDirSeparator()
                 + mServerName).c_str());
         }
         else

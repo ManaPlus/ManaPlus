@@ -40,9 +40,9 @@
 
 #include "utils/dtor.h"
 #include "utils/mkdir.h"
+#include "utils/physfstools.h"
 
 #include <limits.h>
-#include <physfs.h>
 #include <queue>
 
 #include <sys/stat.h>
@@ -1223,7 +1223,7 @@ void Map::saveExtraLayer() const
 
 std::string Map::getUserMapDirectory() const
 {
-    return Client::getServerConfigDirectory() + PHYSFS_getDirSeparator()
+    return Client::getServerConfigDirectory() + PhysFs::getDirSeparator()
         + getProperty("_realfilename");
 }
 

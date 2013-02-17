@@ -95,6 +95,7 @@
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
+#include "utils/physfstools.h"
 
 #include "utils/translation/translationmanager.h"
 
@@ -105,7 +106,6 @@
 #include <CoreFoundation/CFBundle.h>
 #endif
 
-#include <physfs.h>
 #include <SDL_image.h>
 
 #ifdef WIN32
@@ -348,15 +348,15 @@ void Client::gameInit()
         setEnv("LANGUAGE", lang.c_str());
     }
 #ifdef ANDROID
-    bindTextDomain("manaplus", (std::string(PHYSFS_getBaseDir())
+    bindTextDomain("manaplus", (std::string(PhysFs::getBaseDir())
         + "/locale").c_str());
 #else
 #ifdef ENABLE_PORTABLE
-    bindTextDomain("manaplus", (std::string(PHYSFS_getBaseDir())
+    bindTextDomain("manaplus", (std::string(PhysFs::getBaseDir())
         + "../locale/").c_str());
 #else
 #ifdef __APPLE__
-    bindTextDomain("manaplus", (std::string(PHYSFS_getBaseDir())
+    bindTextDomain("manaplus", (std::string(PhysFs::getBaseDir())
         + "ManaPlus.app/Contents/Resources/locale/").c_str());
 #else
     bindTextDomain("manaplus", LOCALEDIR);
@@ -503,7 +503,7 @@ void Client::gameInit()
         else
         {
             mOptions.dataPath = branding.getDirectory()
-                + PHYSFS_getDirSeparator()
+                + PhysFs::getDirSeparator()
                 + branding.getStringValue("dataPath");
         }
         mOptions.skipUpdate = true;
@@ -1331,14 +1331,14 @@ int Client::gameExec()
                     else if (loginData.updateType & LoginData::Upd_Skip)
                     {
                         UpdaterWindow::loadLocalUpdates(mLocalDataDir
-                            + PHYSFS_getDirSeparator() + mUpdatesDir);
+                            + PhysFs::getDirSeparator() + mUpdatesDir);
                         mState = STATE_LOAD_DATA;
                     }
                     else
                     {
                         logger->log1("State: UPDATE");
                         mCurrentDialog = new UpdaterWindow(mUpdateHost,
-                            mLocalDataDir + PHYSFS_getDirSeparator()
+                            mLocalDataDir + PhysFs::getDirSeparator()
                             + mUpdatesDir, mOptions.dataPath.empty(),
                             loginData.updateType);
                     }
@@ -1372,7 +1372,7 @@ int Client::gameExec()
                             false);
 
                         resman->addToSearchPath(mLocalDataDir
-                            + PHYSFS_getDirSeparator()
+                            + PhysFs::getDirSeparator()
                             + mUpdatesDir + "/local/", false);
                     }
 
@@ -1790,7 +1790,7 @@ void Client::action(const gcn::ActionEvent &event)
 
 void Client::initRootDir()
 {
-    mRootDir = PHYSFS_getBaseDir();
+    mRootDir = PhysFs::getBaseDir();
     std::string portableName = mRootDir + "portable.xml";
     struct stat statbuf;
 
@@ -1856,22 +1856,22 @@ void Client::initLocalDataDir()
     {
 #ifdef __APPLE__
         // Use Application Directory instead of .mana
-        mLocalDataDir = std::string(PHYSFS_getUserDir()) +
+        mLocalDataDir = std::string(PhysFs::getUserDir()) +
             "/Library/Application Support/" +
             branding.getValue("appName", "ManaPlus");
 #elif defined __HAIKU__
-        mLocalDataDir = std::string(PHYSFS_getUserDir()) +
+        mLocalDataDir = std::string(PhysFs::getUserDir()) +
            "/config/data/Mana";
 #elif defined WIN32
         mLocalDataDir = getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
         if (mLocalDataDir.empty())
-            mLocalDataDir = std::string(PHYSFS_getUserDir());
+            mLocalDataDir = std::string(PhysFs::getUserDir());
         mLocalDataDir += "/Mana";
 #elif defined __ANDROID__
         mLocalDataDir = getenv("DATADIR2") + branding.getValue(
             "appShort", "ManaPlus") + "/local";
 #else
-        mLocalDataDir = std::string(PHYSFS_getUserDir()) +
+        mLocalDataDir = std::string(PhysFs::getUserDir()) +
             ".local/share/mana";
 #endif
     }
@@ -1888,7 +1888,7 @@ void Client::initLocalDataDir()
 
 void Client::initTempDir()
 {
-    mTempDir = mLocalDataDir + PHYSFS_getDirSeparator() + "temp";
+    mTempDir = mLocalDataDir + PhysFs::getDirSeparator() + "temp";
 
     if (mkdir_r(mTempDir.c_str()))
     {
@@ -1904,10 +1904,10 @@ void Client::initConfigDir()
     if (mConfigDir.empty())
     {
 #ifdef __APPLE__
-        mConfigDir = mLocalDataDir + PHYSFS_getDirSeparator()
+        mConfigDir = mLocalDataDir + PhysFs::getDirSeparator()
             + branding.getValue("appShort", "mana");
 #elif defined __HAIKU__
-        mConfigDir = std::string(PHYSFS_getUserDir()) +
+        mConfigDir = std::string(PhysFs::getUserDir()) +
            "/config/settings/Mana" +
            branding.getValue("appName", "ManaPlus");
 #elif defined WIN32
@@ -1920,7 +1920,7 @@ void Client::initConfigDir()
         mConfigDir = getenv("DATADIR2") + branding.getValue(
             "appShort", "ManaPlus") + "/config";
 #else
-        mConfigDir = std::string(PHYSFS_getUserDir()) +
+        mConfigDir = std::string(PhysFs::getUserDir()) +
             "/.config/mana/" + branding.getValue("appShort", "mana");
 #endif
         logger->log("Generating config dir: " + mConfigDir);
@@ -1939,7 +1939,7 @@ void Client::initConfigDir()
  */
 void Client::initServerConfig(std::string serverName)
 {
-    mServerConfigDir = mConfigDir + PHYSFS_getDirSeparator() + serverName;
+    mServerConfigDir = mConfigDir + PhysFs::getDirSeparator() + serverName;
 
     if (mkdir_r(mServerConfigDir.c_str()))
     {
@@ -2192,7 +2192,7 @@ void Client::initScreenshotDir()
 
             if (!configScreenshotSuffix.empty())
             {
-                mScreenshotDir += PHYSFS_getDirSeparator()
+                mScreenshotDir += PhysFs::getDirSeparator()
                     + configScreenshotSuffix;
             }
         }

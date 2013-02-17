@@ -486,6 +486,8 @@ SET(SRCS
     utils/perfomance.h
     utils/physfsrwops.cpp
     utils/physfsrwops.h
+    utils/physfstools.cpp
+    utils/physfstools.h
     utils/process.cpp
     utils/process.h
     utils/stringutils.cpp

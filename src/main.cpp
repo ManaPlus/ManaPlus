@@ -27,13 +27,13 @@
 
 #include <getopt.h>
 #include <iostream>
-#include <physfs.h>
 
 #include "utils/gettext.h"
 #ifdef ANDROID
 #include "utils/mkdir.h"
 #endif
 #include "utils/paths.h"
+#include "utils/physfstools.h"
 #include "utils/xml.h"
 
 #ifdef UNITTESTS
@@ -262,7 +262,7 @@ int main(int argc, char *argv[])
     XML::initXML();
 
 #ifdef WIN32
-    SetCurrentDirectory(PHYSFS_getBaseDir());
+    SetCurrentDirectory(PhysFs::getBaseDir());
 #endif
     Client client(options);
     if (!options.testMode)

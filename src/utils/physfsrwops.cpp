@@ -26,8 +26,6 @@
 
 #include <stdio.h>  /* used for SEEK_SET, SEEK_CUR, SEEK_END ... */
 
-#include "localconsts.h"
-
 #include "debug.h"
 
 static int physfsrwops_seek(SDL_RWops *rw, int offset, int whence)
@@ -180,7 +178,7 @@ static bool checkFilePath(const char *fname)
 {
     if (!fname || !*fname)
         return false;
-    if (!PHYSFS_exists(fname) || PHYSFS_isDirectory(fname))
+    if (!PhysFs::exists(fname) || PhysFs::isDirectory(fname))
         return false;
     return true;
 }
@@ -192,7 +190,7 @@ SDL_RWops *PHYSFSRWOPS_openRead(const char *fname)
     if (!checkFilePath(fname))
         return nullptr;
 #endif
-    return create_rwops(PHYSFS_openRead(fname));
+    return create_rwops(PhysFs::openRead(fname));
 } /* PHYSFSRWOPS_openRead */
 
 SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname)
@@ -201,7 +199,7 @@ SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname)
     if (!checkFilePath(fname))
         return nullptr;
 #endif
-    return create_rwops(PHYSFS_openWrite(fname));
+    return create_rwops(PhysFs::openWrite(fname));
 } /* PHYSFSRWOPS_openWrite */
 
 SDL_RWops *PHYSFSRWOPS_openAppend(const char *fname)
@@ -210,7 +208,7 @@ SDL_RWops *PHYSFSRWOPS_openAppend(const char *fname)
     if (!checkFilePath(fname))
         return nullptr;
 #endif
-    return create_rwops(PHYSFS_openAppend(fname));
+    return create_rwops(PhysFs::openAppend(fname));
 } /* PHYSFSRWOPS_openAppend */
 
 /* end of physfsrwops.c ... */

@@ -33,11 +33,9 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/dtor.h"
-
-#include <physfs.h>
+#include "utils/physfstools.h"
 
 #include <algorithm>
-#include <physfs.h>
 
 #include "debug.h"
 
@@ -578,7 +576,7 @@ bool Theme::tryThemePath(std::string themeName)
     if (!themeName.empty())
     {
         std::string path = defaultThemePath + themeName;
-        if (PHYSFS_exists(path.c_str()))
+        if (PhysFs::exists(path.c_str()))
         {
             mThemePath = path;
             mThemeName = themeName;
@@ -593,48 +591,48 @@ bool Theme::tryThemePath(std::string themeName)
 
 void Theme::fillSkinsList(StringVect &list)
 {
-    char **skins = PHYSFS_enumerateFiles(
+    char **skins = PhysFs::enumerateFiles(
         branding.getStringValue("guiThemePath").c_str());
 
     for (char **i = skins; *i; i++)
     {
-        if (PHYSFS_isDirectory((
+        if (PhysFs::isDirectory((
             branding.getStringValue("guiThemePath") + *i).c_str()))
         {
             list.push_back(*i);
         }
     }
 
-    PHYSFS_freeList(skins);
+    PhysFs::freeList(skins);
 }
 
 void Theme::fillFontsList(StringVect &list)
 {
     PHYSFS_permitSymbolicLinks(1);
-    char **fonts = PHYSFS_enumerateFiles(
+    char **fonts = PhysFs::enumerateFiles(
         branding.getStringValue("fontsPath").c_str());
 
     for (char **i = fonts; *i; i++)
     {
-        if (!PHYSFS_isDirectory((
+        if (!PhysFs::isDirectory((
             branding.getStringValue("fontsPath") + *i).c_str()))
         {
             list.push_back(*i);
         }
     }
 
-    PHYSFS_freeList(fonts);
+    PhysFs::freeList(fonts);
     PHYSFS_permitSymbolicLinks(0);
 }
 
 void Theme::fillSoundsList(StringVect &list)
 {
-    char **skins = PHYSFS_enumerateFiles(
+    char **skins = PhysFs::enumerateFiles(
         branding.getStringValue("systemsounds").c_str());
 
     for (char **i = skins; *i; i++)
     {
-        if (!PHYSFS_isDirectory((
+        if (!PhysFs::isDirectory((
             branding.getStringValue("systemsounds") + *i).c_str()))
         {
             std::string str = *i;
@@ -643,7 +641,7 @@ void Theme::fillSoundsList(StringVect &list)
         }
     }
 
-    PHYSFS_freeList(skins);
+    PhysFs::freeList(skins);
 }
 
 void Theme::selectSkin()
@@ -688,14 +686,14 @@ std::string Theme::resolveThemePath(const std::string &path)
     if (file.find('/') != std::string::npos)
     {
         // Might be a valid path already
-        if (PHYSFS_exists(file.c_str()))
+        if (PhysFs::exists(file.c_str()))
             return path;
     }
 
     // Try the theme
     file = getThemePath() + "/" + file;
 
-    if (PHYSFS_exists(file.c_str()))
+    if (PhysFs::exists(file.c_str()))
         return getThemePath() + "/" + path;
 
     // Backup

@@ -25,7 +25,7 @@
 #endif
 
 #include "utils/paths.h"
-
+#include "utils/physfstools.h"
 #include "utils/stringutils.h"
 
 #include "resources/resourcemanager.h"
@@ -33,7 +33,6 @@
 #include <string.h>
 #include <cstdarg>
 #include <cstdio>
-#include <physfs.h>
 #include <stdlib.h>
 
 #ifdef WIN32
@@ -80,7 +79,7 @@ bool checkPath(std::string path)
 
 std::string &fixDirSeparators(std::string &str)
 {
-    if (*PHYSFS_getDirSeparator() == '/')
+    if (*PhysFs::getDirSeparator() == '/')
         return str;
 
     return replaceAll(str, "/", "\\");
@@ -150,7 +149,7 @@ std::string getDesktopDir()
     char *xdg = getenv("XDG_CONFIG_HOME");
     std::string file;
     if (!xdg)
-        file = std::string(PHYSFS_getUserDir()) + "/.config/user-dirs.dirs";
+        file = std::string(PhysFs::getUserDir()) + "/.config/user-dirs.dirs";
     else
         file = std::string(xdg) + "/user-dirs.dirs";
 
@@ -163,16 +162,16 @@ std::string getDesktopDir()
             str = str.substr(0, str.size() - 1);
             // use hack to replace $HOME var.
             // if in string other vars, fallback to default path
-            replaceAll(str, "$HOME/", PHYSFS_getUserDir());
+            replaceAll(str, "$HOME/", PhysFs::getUserDir());
             str = getRealPath(str);
             if (str.empty())
-                str = std::string(PHYSFS_getUserDir()) + "Desktop";
+                str = std::string(PhysFs::getUserDir()) + "Desktop";
             return str;
         }
     }
 
-    return std::string(PHYSFS_getUserDir()) + "Desktop";
+    return std::string(PhysFs::getUserDir()) + "Desktop";
 #else
-    return std::string(PHYSFS_getUserDir()) + "Desktop";
+    return std::string(PhysFs::getUserDir()) + "Desktop";
 #endif
 }

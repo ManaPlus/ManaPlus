@@ -22,13 +22,13 @@
 
 #include "resources/wallpaper.h"
 
-#include "resources/resourcemanager.h"
+#include "configuration.h"
 #include "logger.h"
 
-#include "utils/stringutils.h"
-#include "configuration.h"
+#include "resources/resourcemanager.h"
 
-#include <physfs.h>
+#include "utils/physfstools.h"
+#include "utils/stringutils.h"
 
 #include <algorithm>
 #include <cstring>
@@ -92,7 +92,7 @@ void Wallpaper::loadWallpapers()
 
     initDefaultWallpaperPaths();
 
-    char **imgs = PHYSFS_enumerateFiles(wallpaperPath.c_str());
+    char **imgs = PhysFs::enumerateFiles(wallpaperPath.c_str());
 
     for (char **i = imgs; *i; i++)
     {
@@ -130,7 +130,7 @@ void Wallpaper::loadWallpapers()
         }
     }
 
-    PHYSFS_freeList(imgs);
+    PhysFs::freeList(imgs);
 
     std::sort(wallpaperData.begin(), wallpaperData.end(), wallpaperCompare);
 }

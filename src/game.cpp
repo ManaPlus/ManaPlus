@@ -89,11 +89,10 @@
 
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
+#include "utils/physfstools.h"
 
 #include <guichan/exception.hpp>
 #include <guichan/focushandler.hpp>
-
-#include <physfs.h>
 
 #include <fstream>
 #include <sstream>
@@ -513,7 +512,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
         logger->log("Directory %s doesn't exist and can't be created! "
                     "Setting screenshot directory to home.",
                     screenshotDirectory.c_str());
-        screenshotDirectory = std::string(PHYSFS_getUserDir());
+        screenshotDirectory = std::string(PhysFs::getUserDir());
     }
 
     do
