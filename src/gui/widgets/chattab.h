@@ -165,6 +165,9 @@ class ChatTab : public Tab
 
         void addNewRow(std::string &line);
 
+        void showOnline(const std::string &nick,
+                        const bool isOnline);
+
         virtual void playNewMessageSound();
 
     protected:
@@ -190,6 +193,7 @@ class ChatTab : public Tab
         bool mAllowHightlight;
         bool mRemoveNames;
         bool mNoAway;
+        bool mShowOnline;
 };
 
 extern ChatTab *localChatTab;

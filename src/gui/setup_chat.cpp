@@ -92,6 +92,9 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Show chat history"), "",
         "showChatHistory", this, "showChatHistoryEvent");
 
+    new SetupItemCheckBox(_("Show guild online messages"), "",
+        "showGuildOnline", this, "showGuildOnlineEvent");
+
 
     new SetupItemLabel(_("Messages"), "", this);
 

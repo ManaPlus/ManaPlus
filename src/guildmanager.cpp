@@ -270,6 +270,8 @@ bool GuildManager::process(std::string msg)
             m->setOnline(false);
         guild->sort();
         mRequest = false;
+        if (mTab)
+            mTab->showOnline(msg, false);
         return true;
     }
     else if (!haveNick && findCutLast(msg, " is now Online."))
@@ -286,6 +288,8 @@ bool GuildManager::process(std::string msg)
             m->setOnline(true);
         guild->sort();
         mRequest = false;
+        if (mTab)
+            mTab->showOnline(msg, true);
         return true;
     }
     else if (findCutFirst(msg, "Welcome to the "))

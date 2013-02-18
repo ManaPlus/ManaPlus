@@ -28,7 +28,7 @@
 /**
  * A tab for a guild chat channel.
  */
-class GuildChatTab final : public ChatTab
+class GuildChatTab final : public ChatTab, public ConfigListener
 {
     public:
         GuildChatTab(const Widget2 *const widget);
@@ -48,6 +48,8 @@ class GuildChatTab final : public ChatTab
         { return ChatTab::TAB_GUILD; }
 
         void playNewMessageSound() override;
+
+        void optionChanged(const std::string &value) override;
 
     protected:
         void handleInput(const std::string &msg) override;

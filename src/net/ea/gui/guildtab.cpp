@@ -23,6 +23,7 @@
 #include "net/ea/gui/guildtab.h"
 
 #include "chatlogger.h"
+#include "configuration.h"
 #include "guild.h"
 #include "localplayer.h"
 #include "soundmanager.h"
@@ -51,10 +52,13 @@ GuildTab::GuildTab(const Widget2 *const widget) :
         &getThemeColor(Theme::GUILD_CHAT_TAB_HIGHLIGHTED_OUTLINE));
     setSelectedTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB_SELECTED),
         &getThemeColor(Theme::GUILD_CHAT_TAB_SELECTED_OUTLINE));
+    mShowOnline = config.getBoolValue("showGuildOnline");
+    config.addListener("showGuildOnline", this);
 }
 
 GuildTab::~GuildTab()
 {
+    config.removeListeners(this);
 }
 
 bool GuildTab::handleCommand(const std::string &type, const std::string &args)
@@ -153,6 +157,12 @@ void GuildTab::saveToLogFile(std::string &msg)
 void GuildTab::playNewMessageSound()
 {
     sound.playGuiSound(SOUND_GUILD);
+}
+
+void GuildTab::optionChanged(const std::string &value)
+{
+    if (value == "showGuildOnline")
+        mShowOnline = config.getBoolValue("showGuildOnline");
 }
 
 } // namespace Ea

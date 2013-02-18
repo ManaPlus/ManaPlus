@@ -55,7 +55,8 @@ ChatTab::ChatTab(const Widget2 *const widget, const std::string &name) :
     mScrollArea(new ScrollArea(mTextOutput, false)),
     mAllowHightlight(true),
     mRemoveNames(false),
-    mNoAway(false)
+    mNoAway(false),
+    mShowOnline(false)
 {
     setCaption(name);
 
@@ -505,4 +506,16 @@ void ChatTab::addNewRow(std::string &line)
 void ChatTab::playNewMessageSound()
 {
     sound.playGuiSound(SOUND_WHISPER);
+}
+
+void ChatTab::showOnline(const std::string &nick,
+                         const bool isOnline)
+{
+    if (!mShowOnline)
+        return;
+
+    if (isOnline)
+        chatLog(strprintf(_("%s is now Online."), nick.c_str()));
+    else
+        chatLog(strprintf(_("%s is now Offline."), nick.c_str()));
 }

@@ -149,7 +149,11 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg)
     {
         GuildMember *const m = taGuild->getMember(accountId, charId);
         if (m)
+        {
             m->setOnline(online);
+            if (guildTab)
+                guildTab->showOnline(m->getName(), online);
+        }
     }
 }
 

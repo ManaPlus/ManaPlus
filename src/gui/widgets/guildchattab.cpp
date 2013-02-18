@@ -23,6 +23,7 @@
 #include "gui/widgets/guildchattab.h"
 
 #include "chatlogger.h"
+#include "configuration.h"
 #include "guild.h"
 #include "guildmanager.h"
 #include "localplayer.h"
@@ -44,10 +45,13 @@ GuildChatTab::GuildChatTab(const Widget2 *const widget) :
         &getThemeColor(Theme::GUILD_CHAT_TAB_HIGHLIGHTED_OUTLINE));
     setSelectedTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB_SELECTED),
         &getThemeColor(Theme::GUILD_CHAT_TAB_SELECTED_OUTLINE));
+    mShowOnline = config.getBoolValue("showGuildOnline");
+    config.addListener("showGuildOnline", this);
 }
 
 GuildChatTab::~GuildChatTab()
 {
+    config.removeListeners(this);
 }
 
 bool GuildChatTab::handleCommand(const std::string &type,
@@ -131,4 +135,10 @@ void GuildChatTab::saveToLogFile(std::string &msg)
 void GuildChatTab::playNewMessageSound()
 {
     sound.playGuiSound(SOUND_GUILD);
+}
+
+void GuildChatTab::optionChanged(const std::string &value)
+{
+    if (value == "showGuildOnline")
+        mShowOnline = config.getBoolValue("showGuildOnline");
 }

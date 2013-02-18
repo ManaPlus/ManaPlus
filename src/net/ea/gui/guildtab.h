@@ -31,7 +31,7 @@ namespace Ea
 /**
  * A tab for a guild chat channel.
  */
-class GuildTab : public ChatTab
+class GuildTab : public ChatTab, public ConfigListener
 {
     public:
         GuildTab(const Widget2 *const widget);
@@ -51,6 +51,8 @@ class GuildTab : public ChatTab
         { return ChatTab::TAB_GUILD; }
 
         void playNewMessageSound() override;
+
+        void optionChanged(const std::string &value) override;
 
     protected:
         void handleInput(const std::string &msg) override;

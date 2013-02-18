@@ -305,6 +305,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("screenActionButton3", Input::KEY_PATHFIND);
     AddDEF("screenButtonsFormat", 0);
     AddDEF("autoresizeminimaps", false);
+    AddDEF("showGuildOnline", false);
     return configData;
 }
 
