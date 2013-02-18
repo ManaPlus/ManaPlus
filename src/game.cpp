@@ -586,6 +586,8 @@ void Game::slowLogic()
         shopWindow->updateTimes();
     if (mainGraphics->getOpenGL())
         ResourceManager::delayedLoad();
+    if (guildManager)
+        guildManager->slowLogic();
     PacketCounters::update();
 
     // Handle network stuff

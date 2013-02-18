@@ -76,6 +76,8 @@ class GuildManager final
 
         bool afterRemove();
 
+        void slowLogic();
+
         bool havePower() const A_WARN_UNUSED
         { return mHavePower; }
 
@@ -91,6 +93,8 @@ class GuildManager final
         StringVect mTempList;
         GuildChatTab *mTab;
         bool mRequest;
+        int mRequestTime;
+        bool mGotOnlineInfo;
 };
 
 extern GuildManager *guildManager;

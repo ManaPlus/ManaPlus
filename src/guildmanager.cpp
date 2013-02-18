@@ -37,6 +37,8 @@
 
 #include "debug.h"
 
+static const int requestTimeout = 5;
+
 bool GuildManager::mEnableGuildBot = false;
 
 GuildManager::GuildManager() :
@@ -46,7 +48,9 @@ GuildManager::GuildManager() :
     mSentNameRequest(false),
     mHavePower(false),
     mTab(nullptr),
-    mRequest(false)
+    mRequest(false),
+    mRequestTime(cur_time + 3),
+    mGotOnlineInfo(false)
 {
 }
 
@@ -90,6 +94,8 @@ void GuildManager::reload()
     mRequest = false;
     mSentNameRequest = false;
     mSentInfoRequest = false;
+    mGotOnlineInfo = false;
+    mRequestTime = 0;
     mTempList.clear();
 
     if (socialWindow)
@@ -125,7 +131,7 @@ void GuildManager::getNames(StringVect &names) const
 
 void GuildManager::requestGuildInfo()
 {
-    if (mRequest)
+    if (mRequest && mRequestTime + 15 < cur_time)
         return;
 
     if (!mGotName && !mSentNameRequest)
@@ -135,6 +141,7 @@ void GuildManager::requestGuildInfo()
         send("!info " + toString(tick_time));
         mRequest = true;
         mSentNameRequest = true;
+        mRequestTime = cur_time + requestTimeout;
     }
     else if (!mGotInfo && !mSentInfoRequest && !mSentNameRequest)
     {
@@ -143,6 +150,20 @@ void GuildManager::requestGuildInfo()
         send("!getonlineinfo " + toString(tick_time));
         mRequest = true;
         mSentInfoRequest = true;
+        mRequestTime = cur_time + requestTimeout;
+    }
+}
+
+void GuildManager::slowLogic()
+{
+    if (!mGotOnlineInfo && mGotName && mRequestTime < cur_time)
+    {
+        if (!Client::limitPackets(PACKET_WHISPER))
+            return;
+        send("!getonlineinfo " + toString(tick_time));
+        mRequest = true;
+        mSentInfoRequest = true;
+        mRequestTime = cur_time + requestTimeout;
     }
 }
 
@@ -332,6 +353,7 @@ bool GuildManager::process(std::string msg)
         if (msg.size() < 1 || msg[msg.size() - 1] != '#')
             updateList();
         mRequest = false;
+        mGotOnlineInfo = true;
         return true;
     }
     else if (findCutFirst(msg, "oL#"))
@@ -341,6 +363,7 @@ bool GuildManager::process(std::string msg)
         if (msg.size() < 1 || msg[msg.size() - 1] != '#')
             updateList();
         mRequest = false;
+        mGotOnlineInfo = true;
         return true;
     }
     else if (msg == "You are currently not in a guild. For more information "
