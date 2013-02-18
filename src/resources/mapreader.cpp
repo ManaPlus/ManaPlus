@@ -486,7 +486,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
     // Load the tile data
     for_each_xml_child_node(childNode, node)
     {
-        if (serverVersion > 0 && xmlNameEqual(childNode, "properties"))
+        if (xmlNameEqual(childNode, "properties"))
         {
             for_each_xml_child_node(prop, childNode)
             {

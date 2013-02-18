@@ -71,11 +71,8 @@ void NPCDB::load()
 
         BeingInfo *const currentInfo = new BeingInfo;
 
-        if (serverVersion > 0)
-        {
-            currentInfo->setTargetSelection(XML::getProperty(
-                npcNode, "targetSelection", true));
-        }
+        currentInfo->setTargetSelection(XML::getProperty(npcNode,
+            "targetSelection", true));
 
         currentInfo->setTargetCursorSize(XML::getProperty(npcNode,
             "targetCursor", "medium"));

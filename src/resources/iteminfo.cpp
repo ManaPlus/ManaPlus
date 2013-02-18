@@ -89,12 +89,9 @@ const std::string &ItemInfo::getSprite(const Gender gender,
 
         if (i != mAnimationFiles.end())
             return i->second;
-        if (serverVersion > 0)
-        {
-            i = mAnimationFiles.find(static_cast<int>(gender));
-            if (i != mAnimationFiles.end())
-                return i->second;
-        }
+        i = mAnimationFiles.find(static_cast<int>(gender));
+        if (i != mAnimationFiles.end())
+            return i->second;
         return empty;
     }
 }
