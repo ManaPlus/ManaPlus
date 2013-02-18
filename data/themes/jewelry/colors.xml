@@ -31,14 +31,17 @@
         <color id="PARTY_SOCIAL_TAB" color="#f48055" />
         <color id="GUILD_CHAT_TAB" color="#f48055" />
         <color id="GUILD_SOCIAL_TAB" color="#f48055" />
+        <color id="GM_CHAT_TAB" color="#f48055" />
         <color id="PARTY_CHAT_TAB_HIGHLIGHTED" color="#f48055" />
         <color id="PARTY_SOCIAL_TAB_HIGHLIGHTED" color="#f48055" />
         <color id="GUILD_CHAT_TAB_HIGHLIGHTED" color="#f48055" />
         <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED" color="#f48055" />
+        <color id="GM_CHAT_TAB_HIGHLIGHTED" color="#f48055" />
         <color id="PARTY_CHAT_TAB_SELECTED" color="#f48055" />
         <color id="PARTY_SOCIAL_TAB_SELECTED" color="#f48055" />
         <color id="GUILD_CHAT_TAB_SELECTED" color="#f48055" />
         <color id="GUILD_SOCIAL_TAB_SELECTED" color="#f48055" />
+        <color id="GM_CHAT_TAB_SELECTED" color="#f48055" />
         <color id="BACKGROUND" color="#ffffff" />
         <color id="BACKGROUND_GRAY" color="#404040" />
         <color id="SCROLLBAR_GRAY" color="#000000" />
@@ -123,14 +126,17 @@
         <color id="PARTY_SOCIAL_TAB" color="#efd7a7" />
         <color id="GUILD_CHAT_TAB" color="#efd7a7" />
         <color id="GUILD_SOCIAL_TAB" color="#efd7a7" />
+        <color id="GM_CHAT_TAB" color="#efd7a7" />
         <color id="PARTY_CHAT_TAB_HIGHLIGHTED" color="#fffbed" />
         <color id="PARTY_SOCIAL_TAB_HIGHLIGHTED" color="#fffbed" />
         <color id="GUILD_CHAT_TAB_HIGHLIGHTED" color="#fffbed" />
         <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED" color="#fffbed" />
+        <color id="GM_CHAT_TAB_HIGHLIGHTED" color="#fffbed" />
         <color id="PARTY_CHAT_TAB_SELECTED" color="#f9eabc" />
         <color id="PARTY_SOCIAL_TAB_SELECTED" color="#f9eabc" />
         <color id="GUILD_CHAT_TAB_SELECTED" color="#f9eabc" />
         <color id="GUILD_SOCIAL_TAB_SELECTED" color="#f9eabc" />
+        <color id="GM_CHAT_TAB_SELECTED" color="#f9eabc" />
         <color id="BACKGROUND" color="#ffffff" />
         <color id="BACKGROUND_GRAY" color="#404040" />
         <color id="SCROLLBAR_GRAY" color="#000000" />
@@ -216,14 +222,17 @@
         <color id="PARTY_SOCIAL_TAB" color="#f48055" />
         <color id="GUILD_CHAT_TAB" color="#f48055" />
         <color id="GUILD_SOCIAL_TAB" color="#f48055" />
+        <color id="GM_CHAT_TAB" color="#f48055" />
         <color id="PARTY_CHAT_TAB_HIGHLIGHTED" color="#f48055" />
         <color id="PARTY_SOCIAL_TAB_HIGHLIGHTED" color="#f48055" />
         <color id="GUILD_CHAT_TAB_HIGHLIGHTED" color="#f48055" />
         <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED" color="#f48055" />
+        <color id="GM_CHAT_TAB_HIGHLIGHTED" color="#f48055" />
         <color id="PARTY_CHAT_TAB_SELECTED" color="#f48055" />
         <color id="PARTY_SOCIAL_TAB_SELECTED" color="#f48055" />
         <color id="GUILD_CHAT_TAB_SELECTED" color="#f48055" />
         <color id="GUILD_SOCIAL_TAB_SELECTED" color="#f48055" />
+        <color id="GM_CHAT_TAB_SELECTED" color="#f48055" />
         <color id="BACKGROUND" color="#ffffff" />
         <color id="BACKGROUND_GRAY" color="#404040" />
         <color id="SCROLLBAR_GRAY" color="#000000" />

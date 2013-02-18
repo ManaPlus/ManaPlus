@@ -32,6 +32,7 @@
 #include "gui/shopwindow.h"
 
 #include "gui/widgets/chattab.h"
+#include "gui/widgets/gmtab.h"
 
 #include "utils/gettext.h"
 
@@ -246,7 +247,24 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
     }
     else if (localChatTab)
     {
-        localChatTab->chatLog(chatMsg, BY_SERVER);
+        if (gmChatTab && strStartWith(chatMsg, "[GM] "))
+        {
+            chatMsg = chatMsg.substr(5);
+            const size_t pos = chatMsg.find(": ", 0);
+            if (pos == std::string::npos)
+            {
+                gmChatTab->chatLog(chatMsg);
+            }
+            else
+            {
+                gmChatTab->chatLog(chatMsg.substr(0, pos),
+                    chatMsg.substr(pos + 2));
+            }
+        }
+        else
+        {
+            localChatTab->chatLog(chatMsg, BY_SERVER);
+        }
     }
 }
 

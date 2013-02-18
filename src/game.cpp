@@ -73,6 +73,7 @@
 #include "gui/widgets/battletab.h"
 #include "gui/widgets/dropshortcutcontainer.h"
 #include "gui/widgets/emoteshortcutcontainer.h"
+#include "gui/widgets/gmtab.h"
 #include "gui/widgets/itemshortcutcontainer.h"
 #include "gui/widgets/spellshortcutcontainer.h"
 #include "gui/widgets/tradetab.h"
@@ -153,6 +154,7 @@ ChatTab *localChatTab = nullptr;
 ChatTab *debugChatTab = nullptr;
 TradeTab *tradeChatTab = nullptr;
 BattleTab *battleChatTab = nullptr;
+GmTab *gmChatTab = nullptr;
 
 const unsigned adjustDelay = 10;
 
@@ -278,6 +280,9 @@ static void createGuiWindows()
         battleChatTab = nullptr;
     }
 
+    if (player_node && !gmChatTab && player_node->getGMLevel() > 0)
+        gmChatTab = new GmTab(chatWindow);
+
     if (config.getBoolValue("logToChat"))
         logger->setChatWindow(chatWindow);
 
@@ -316,6 +321,7 @@ static void destroyGuiWindows()
     del_0(debugChatTab)
     del_0(tradeChatTab)
     del_0(battleChatTab)
+    del_0(gmChatTab);
     logger->log("start deleting");
     del_0(chatWindow)
     logger->log("end deleting");

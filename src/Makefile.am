@@ -132,6 +132,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/extendednamesmodel.h \
 	      gui/widgets/flowcontainer.cpp \
 	      gui/widgets/flowcontainer.h \
+	      gui/widgets/gmtab.cpp \
+	      gui/widgets/gmtab.h \
 	      gui/widgets/guildchattab.cpp \
 	      gui/widgets/guildchattab.h \
 	      gui/widgets/guitable.cpp \

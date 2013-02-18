@@ -51,6 +51,7 @@
 #include "gui/socialwindow.h"
 #include "gui/viewport.h"
 
+#include "gui/widgets/gmtab.h"
 #include "gui/widgets/whispertab.h"
 
 #include "net/beinghandler.h"
@@ -392,10 +393,13 @@ void LocalPlayer::setGMLevel(const int level)
     {
         setGM(true);
         if (chatWindow)
+        {
             chatWindow->loadGMCommands();
+            if (!gmChatTab)
+                gmChatTab = new GmTab(chatWindow);
+        }
     }
 }
-
 
 Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
 {
