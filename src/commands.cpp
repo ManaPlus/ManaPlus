@@ -22,7 +22,6 @@
 
 #include "commandhandler.h"
 
-#include "auctionmanager.h"
 #include "actorspritemanager.h"
 #include "client.h"
 #include "configuration.h"
@@ -706,12 +705,6 @@ impHandler1(heal)
 impHandler1(hack)
 {
     Net::getChatHandler()->sendRaw(args);
-}
-
-impHandler1(mail)
-{
-    if (auctionManager && auctionManager->getEnableAuctionBot())
-        auctionManager->sendMail(args);
 }
 
 impHandler0(priceLoad)
