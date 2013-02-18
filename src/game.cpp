@@ -280,8 +280,11 @@ static void createGuiWindows()
         battleChatTab = nullptr;
     }
 
-    if (player_node && !gmChatTab && player_node->getGMLevel() > 0)
+    if (player_node && !gmChatTab && config.getBoolValue("enableGmTab")
+        && player_node->getGMLevel() > 0)
+    {
         gmChatTab = new GmTab(chatWindow);
+    }
 
     if (config.getBoolValue("logToChat"))
         logger->setChatWindow(chatWindow);

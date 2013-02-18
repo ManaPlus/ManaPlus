@@ -395,7 +395,7 @@ void LocalPlayer::setGMLevel(const int level)
         if (chatWindow)
         {
             chatWindow->loadGMCommands();
-            if (!gmChatTab)
+            if (!gmChatTab && config.getBoolValue("enableGmTab"))
                 gmChatTab = new GmTab(chatWindow);
         }
     }

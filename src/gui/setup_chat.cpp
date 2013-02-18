@@ -116,6 +116,9 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable trade tab"), "",
         "enableTradeTab", this, "enableTradeTabEvent");
 
+    new SetupItemCheckBox(_("Enable gm tab"), "",
+        "enableGmTab", this, "enableGmTabEvent");
+
     new SetupItemCheckBox(_("Enable battle tab"), "",
         "enableBattleTab", this, "enableBattleTabEvent");
 
