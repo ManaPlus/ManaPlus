@@ -33,6 +33,7 @@
 #include "utils/mkdir.h"
 #endif
 #include "utils/paths.h"
+#include "utils/process.h"
 #include "utils/physfstools.h"
 #include "utils/xml.h"
 
@@ -264,6 +265,7 @@ int main(int argc, char *argv[])
 #ifdef WIN32
     SetCurrentDirectory(PhysFs::getBaseDir());
 #endif
+    setPriority(true);
     Client client(options);
     if (!options.testMode)
     {

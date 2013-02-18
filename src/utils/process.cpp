@@ -257,3 +257,18 @@ bool openBrowser(std::string url)
 }
 
 #endif
+
+#ifdef WIN32
+void setPriority(const bool big)
+{
+    HANDLE hCurrentProcess = GetCurrentProcess();
+    if (big)
+        SetPriorityClass(hCurrentProcess, ABOVE_NORMAL_PRIORITY_CLASS);
+    else
+        SetPriorityClass(hCurrentProcess, BELOW_NORMAL_PRIORITY_CLASS);
+}
+#else
+void setPriority(const bool big A_UNUSED)
+{
+}
+#endif

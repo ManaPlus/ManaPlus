@@ -89,6 +89,7 @@
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/physfstools.h"
+#include "utils/process.h"
 
 #include <guichan/exception.hpp>
 #include <guichan/focushandler.hpp>
@@ -863,6 +864,7 @@ void Game::handleActive(const SDL_Event &event)
                 fpsLimit = config.getIntValue("fpslimit");
             if (player_node)
                 player_node->setHalfAway(false);
+            setPriority(true);
         }
         else
         {   // window minimisation
@@ -875,6 +877,7 @@ void Game::handleActive(const SDL_Event &event)
                 fpsLimit = config.getIntValue("altfpslimit");
                 player_node->setHalfAway(true);
             }
+            setPriority(false);
 #endif
         }
         if (player_node)

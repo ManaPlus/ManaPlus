@@ -31,4 +31,6 @@ bool execFile(std::string pathName, std::string name,
 
 bool openBrowser(std::string url);
 
+void setPriority(const bool big);
+
 #endif // UTILS_PROCESS_H
