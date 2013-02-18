@@ -25,6 +25,7 @@
 #include "item.h"
 
 #include "gui/confirmdialog.h"
+#include "gui/helpwindow.h"
 #include "gui/itempopup.h"
 #include "gui/viewport.h"
 
@@ -64,7 +65,43 @@ ItemLinkHandler::~ItemLinkHandler()
 void ItemLinkHandler::handleLink(const std::string &link,
                                  gcn::MouseEvent *event)
 {
-    if (!strStartWith(link, "http://") && !strStartWith(link, "https://"))
+    if (strStartWith(link, "http://") || strStartWith(link, "https://"))
+    {
+        if (!event)
+            return;
+        std::string url = link;
+        replaceAll(url, " ", "");
+        listener.url = url;
+        const int button = event->getButton();
+        if (button == gcn::MouseInput::LEFT)
+        {
+            ConfirmDialog *const confirmDlg = new ConfirmDialog(
+                _("Open url"), url, false, true);
+            confirmDlg->addActionListener(&listener); 
+        }
+        else if (button == gcn::MouseInput::RIGHT)
+        {
+            if (viewport)
+                viewport->showLinkPopup(url);
+        }
+    }
+    else if (!link.empty() && link[0] == '?')
+    {
+        if (helpWindow)
+        {
+            helpWindow->search(link.substr(1));
+            helpWindow->requestMoveToTop();
+        }
+    }
+    else if (strStartWith(link, "help://"))
+    {
+        if (helpWindow)
+        {
+            helpWindow->loadHelp(link.substr(7));
+            helpWindow->requestMoveToTop();
+        }
+    }
+    else
     {
         if (!mItemPopup)
             return;
@@ -89,26 +126,6 @@ void ItemLinkHandler::handleLink(const std::string &link,
                 mItemPopup->position(viewport->getMouseX(),
                     viewport->getMouseY());
             }
-        }
-    }
-    else
-    {
-        if (!event)
-            return;
-        std::string url = link;
-        replaceAll(url, " ", "");
-        listener.url = url;
-        const int button = event->getButton();
-        if (button == gcn::MouseInput::LEFT)
-        {
-            ConfirmDialog *const confirmDlg = new ConfirmDialog(
-                _("Open url"), url, false, true);
-            confirmDlg->addActionListener(&listener); 
-        }
-        else if (button == gcn::MouseInput::RIGHT)
-        {
-            if (viewport)
-                viewport->showLinkPopup(url);
         }
     }
 }

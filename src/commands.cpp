@@ -1038,7 +1038,7 @@ impHandler(url)
     if (tab)
     {
         std::string url = args;
-        if (!strStartWith(url, "http"))
+        if (!strStartWith(url, "http") && !strStartWith(url, "?"))
             url = "http://" + url;
         std::string str = strprintf("[@@%s |%s@@]", url.c_str(), args.c_str());
         outStringNormal(tab, str, str);

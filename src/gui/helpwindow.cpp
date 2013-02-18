@@ -36,6 +36,7 @@
 
 #include "utils/gettext.h"
 #include "utils/langs.h"
+#include "utils/paths.h"
 #include "utils/process.h"
 
 #include "utils/translation/podict.h"
@@ -101,18 +102,19 @@ void HelpWindow::handleLink(const std::string &link,
 
 void HelpWindow::loadHelp(const std::string &helpFile)
 {
+    if (!checkPath(helpFile))
+        return;
     mBrowserBox->clearRows();
-
     loadFile("header");
     loadFile(helpFile);
     loadFile("footer");
-
     mScrollArea->setVerticalScrollAmount(0);
     setVisible(true);
 }
 
-void HelpWindow::loadFile(const std::string &file)
+void HelpWindow::loadFile(std::string file)
 {
+    trim(file);
     std::string helpPath = branding.getStringValue("helpPath");
     if (helpPath.empty())
         helpPath = paths.getStringValue("help");
@@ -144,6 +146,7 @@ void HelpWindow::loadTags()
 void HelpWindow::search(const std::string &text0)
 {
     std::string text = text0;
+    trim(text);
     toLower(text);
     if (mTagFileMap.find(text) == mTagFileMap.end())
     {

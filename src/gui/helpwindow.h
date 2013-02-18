@@ -79,7 +79,7 @@ class HelpWindow final : public Window, public LinkHandler,
     private:
         void loadTags();
 
-        void loadFile(const std::string &file);
+        void loadFile(std::string file);
 
         BrowserBox *mBrowserBox;
         ScrollArea *mScrollArea;
