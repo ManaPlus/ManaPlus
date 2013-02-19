@@ -29,6 +29,8 @@
 
 #include "localconsts.h"
 
+#include "utils/stringutils.h"
+
 #include "debug.h"
 
 const int timeOut = 10;
