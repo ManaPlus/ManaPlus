@@ -2220,6 +2220,7 @@ void LocalPlayer::changeAwayMode()
             DIALOG_SILENCE, true, false);
         mAwayDialog->addActionListener(mAwayListener);
         sound.volumeOff();
+        addAfkEffect();
     }
     else
     {
@@ -2230,6 +2231,7 @@ void LocalPlayer::changeAwayMode()
             chatWindow->displayAwayLog();
             chatWindow->clearAwayLog();
         }
+        removeAfkEffect();
     }
 }
 

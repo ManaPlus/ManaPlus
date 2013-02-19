@@ -856,6 +856,12 @@ class Being : public ActorSprite, public ConfigListener
         Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
         { return mInfo ? mInfo->getHoverCursor() : Cursor::CURSOR_POINTER; }
 
+        void addAfkEffect();
+
+        void removeAfkEffect();
+
+        void updateAwayEffect();
+
         static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
 
         static Gender intToGender(uint8_t sex) A_WARN_UNUSED;
@@ -987,6 +993,7 @@ class Being : public ActorSprite, public ConfigListener
         static bool mShowPlayersStatus;
         static bool mEnableReorderSprites;
         static bool mHideErased;
+        static int mAwayEffect;
 
         unsigned int mMoveTime;
         unsigned int mAttackTime;
@@ -1011,6 +1018,7 @@ class Being : public ActorSprite, public ConfigListener
         bool mInactive;
         unsigned mNumber;
         unsigned char mHairColor;
+        Particle *mAfkParticle;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

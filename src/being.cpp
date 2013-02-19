@@ -188,6 +188,7 @@ bool Being::mShowLevel = false;
 bool Being::mShowPlayersStatus = false;
 bool Being::mEnableReorderSprites = true;
 bool Being::mHideErased = false;
+int Being::mAwayEffect = -1;
 
 std::list<BeingCacheEntry*> beingInfoCache;
 typedef std::map<int, Guild*>::const_iterator GuildsMapCIter;
@@ -245,7 +246,8 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mAway(false),
     mInactive(false),
     mNumber(100),
-    mHairColor(0)
+    mHairColor(0),
+    mAfkParticle(nullptr)
 {
 
     for (int f = 0; f < 20; f ++)
@@ -1899,6 +1901,7 @@ void Being::reReadConfig()
     BLOCK_START("Being::reReadConfig")
     if (mUpdateConfigTime + 1 < cur_time)
     {
+        mAwayEffect = paths.getIntValue("afkEffectId");
         mHighlightMapPortals = config.getBoolValue("highlightMapPortals");
         mConfLineLim = config.getIntValue("chatMaxCharLimit");
         mSpeechType = config.getIntValue("speech");
@@ -1951,6 +1954,7 @@ bool Being::updateFromCache()
             mInactive = false;
         }
 
+        updateAwayEffect();
         if (mType == PLAYER)
             updateColors();
         return true;
@@ -2678,6 +2682,7 @@ void Being::setState(const uint8_t state)
     mShop = shop;
     mAway = away;
     mInactive = inactive;
+    updateAwayEffect();
 
     if (needUpdate)
     {
@@ -2751,6 +2756,26 @@ int Being::getSpriteID(const int slot) const
         return -1;
 
     return mSpriteIDs[slot];
+}
+
+void Being::addAfkEffect()
+{
+    if (effectManager && !mAfkParticle && mAwayEffect != -1)
+        mAfkParticle = effectManager->triggerReturn(mAwayEffect, this);
+}
+
+void Being::removeAfkEffect()
+{
+    if (effectManager && mAfkParticle)
+        mChildParticleEffects.removeLocally(mAfkParticle);
+}
+
+void Being::updateAwayEffect()
+{
+    if (mAway)
+        addAfkEffect();
+    else
+        removeAfkEffect();
 }
 
 BeingEquipBackend::BeingEquipBackend(Being *const being):

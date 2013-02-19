@@ -87,6 +87,31 @@ bool EffectManager::trigger(const int id, Being *const being,
     return rValue;
 }
 
+Particle *EffectManager::triggerReturn(const int id, Being *const being,
+                                       const int rotation)
+{
+    if (!being || !particleEngine)
+        return nullptr;
+
+    Particle *rValue = nullptr;
+    FOR_EACH (std::vector<EffectDescription>::const_iterator, i, mEffects)
+    {
+        if ((*i).id == id)
+        {
+            if (!(*i).GFX.empty())
+            {
+                rValue = particleEngine->addEffect(
+                    (*i).GFX, 0, 0, rotation);
+                being->controlParticle(rValue);
+            }
+            if (!(*i).SFX.empty())
+                sound.playSfx((*i).SFX);
+            break;
+        }
+    }
+    return rValue;
+}
+
 bool EffectManager::trigger(const int id, const int x, const int y,
                             const int rotation)
 {

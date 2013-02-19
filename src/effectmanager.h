@@ -30,6 +30,7 @@
 #include "localconsts.h"
 
 class Being;
+class Particle;
 
 class EffectManager final
 {
@@ -52,6 +53,9 @@ class EffectManager final
          * the specified being.
          */
         bool trigger(const int id, Being *const being, const int rotation = 0);
+
+        Particle *triggerReturn(const int id, Being *const being,
+                                const int rotation = 0);
 
         /**
          * Triggers a effect with the id, at
