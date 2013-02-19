@@ -230,14 +230,14 @@ bool execFile(std::string pathName, std::string name,
 #ifdef WIN32
 bool openBrowser(std::string url)
 {
-    return (int)ShellExecute(nullptr, "open", url.c_str(), nullptr,
-        nullptr, SW_SHOWNORMAL) > 32;
+    return (int)ShellExecute(nullptr, "open", replaceAll(url, " ", "").c_str(),
+        nullptr, nullptr, SW_SHOWNORMAL) > 32;
 }
 #elif defined ANDROID
 #include <SDL_screenkeyboard.h>
 bool openBrowser(std::string url)
 {
-    SDL_ANDROID_OpenBrowser(url.c_str());
+    SDL_ANDROID_OpenBrowser(replaceAll(url, " ", "").c_str());
     return true;
 }
 #elif defined __APPLE__
