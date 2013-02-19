@@ -57,17 +57,17 @@ namespace PhysFs
         PHYSFS_freeList(listVar);
     }
 
-    PHYSFS_File *openRead(const char *filename)
+    PHYSFS_file *openRead(const char *filename)
     {
         return PHYSFS_openRead(filename);
     }
 
-    PHYSFS_File *openWrite(const char *filename)
+    PHYSFS_file *openWrite(const char *filename)
     {
         return PHYSFS_openWrite(filename);
     }
 
-    PHYSFS_File *openAppend(const char *filename)
+    PHYSFS_file *openAppend(const char *filename)
     {
         return PHYSFS_openAppend(filename);
     }

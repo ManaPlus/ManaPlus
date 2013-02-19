@@ -32,9 +32,9 @@ namespace PhysFs
     char **enumerateFiles(const char *dir);
     bool isDirectory(const char *fname);
     void freeList(void *listVar);
-    PHYSFS_File *openRead(const char *filename);
-    PHYSFS_File *openWrite(const char *filename);
-    PHYSFS_File *openAppend(const char *filename);
+    PHYSFS_file *openRead(const char *filename);
+    PHYSFS_file *openWrite(const char *filename);
+    PHYSFS_file *openAppend(const char *filename);
     bool setWriteDir(const char *newDir);
     bool addToSearchPath(const char *newDir, int appendToPath);
     bool removeFromSearchPath(const char *oldDir);
