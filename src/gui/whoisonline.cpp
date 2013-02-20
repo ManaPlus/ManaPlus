@@ -154,10 +154,11 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
     {
         if (chatWindow)
         {
+            std::string text = decodeLinkText(link);
             if (config.getBoolValue("whispertab"))
-                chatWindow->localChatInput("/q " + link);
+                chatWindow->localChatInput("/q " + text);
             else
-                chatWindow->addInputText("/w \"" + link + "\" ");
+                chatWindow->addInputText("/w \"" + text + "\" ");
         }
     }
     else if (event->getButton() == gcn::MouseEvent::RIGHT)
@@ -169,8 +170,9 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
         {
             if (actorSpriteManager)
             {
+                std::string text = decodeLinkText(link);
                 Being* being = actorSpriteManager->findBeingByName(
-                    link, Being::PLAYER);
+                    text, Being::PLAYER);
 
                 if (being && viewport)
                 {
@@ -706,15 +708,15 @@ void WhoIsOnline::updateSize()
 const std::string WhoIsOnline::prepareNick(std::string nick, int level,
                                            std::string color) const
 {
+    const char *const text = encodeLinkText(nick).c_str();
     if (mShowLevel && level > 1)
     {
-        return strprintf("@@%s|##%s%s (%d)@@", nick.c_str(),
-                         color.c_str(), nick.c_str(), level);
+        return strprintf("@@%s|##%s%s (%d)@@", text,
+            color.c_str(), text, level);
     }
     else
     {
-        return strprintf("@@%s|##%s%s@@", nick.c_str(),
-                         color.c_str(), nick.c_str());
+        return strprintf("@@%s|##%s%s@@", text, color.c_str(), text);
     }
 }
 
@@ -839,6 +841,7 @@ void OnlinePlayer::setText(std::string color)
     if (mVersion > 0)
         mText += strprintf(" - %d", mVersion);
 
-    mText = strprintf("@@%s|##%s%s %s@@", mNick.c_str(),
-        color.c_str(), mNick.c_str(), mText.c_str());
+    const char *const text = encodeLinkText(mNick).c_str();
+    mText = strprintf("@@%s|##%s%s %s@@", text, color.c_str(),
+        text, mText.c_str());
 }

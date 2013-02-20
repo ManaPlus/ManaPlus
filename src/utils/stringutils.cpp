@@ -668,3 +668,13 @@ signed char parseBoolean(const std::string &value)
     else
         return -1;
 }
+
+std::string encodeLinkText(std::string data)
+{
+    return replaceAll(data, "|", "\342\235\230");
+}
+
+std::string decodeLinkText(std::string data)
+{
+    return replaceAll(data, "\342\235\230", "|");
+}

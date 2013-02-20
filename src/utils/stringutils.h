@@ -223,4 +223,8 @@ std::string getDateString() A_WARN_UNUSED;
 
 signed char parseBoolean(const std::string &value);
 
+std::string encodeLinkText(std::string data);
+
+std::string decodeLinkText(std::string data);
+
 #endif // UTILS_STRINGUTILS_H

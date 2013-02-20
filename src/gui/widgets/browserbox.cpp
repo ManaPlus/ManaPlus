@@ -306,7 +306,8 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
 
 void BrowserBox::addRow(const std::string &cmd, const char *const text)
 {
-    addRow(strprintf("@@%s|%s@@", cmd.c_str(), text));
+    addRow(strprintf("@@%s|%s@@", encodeLinkText(cmd).c_str(),
+        encodeLinkText(text).c_str()));
 }
 
 void BrowserBox::addImage(const std::string &path)
