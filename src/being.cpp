@@ -1938,7 +1938,7 @@ bool Being::updateFromCache()
         setIp(entry->getIp());
 
         mAdvanced = entry->isAdvanced();
-        if (entry->isAdvanced())
+        if (mAdvanced)
         {
             const int flags = entry->getFlags();
             mShop = ((flags & FLAG_SHOP) != 0);
@@ -2686,6 +2686,8 @@ void Being::setState(const uint8_t state)
 
     if (needUpdate)
     {
+        if (shop || away || inactive)
+            mAdvanced = true;
         updateName();
         addToCache();
     }
