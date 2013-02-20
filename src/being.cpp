@@ -2767,7 +2767,10 @@ void Being::addAfkEffect()
 void Being::removeAfkEffect()
 {
     if (effectManager && mAfkParticle)
+    {
         mChildParticleEffects.removeLocally(mAfkParticle);
+        mAfkParticle = nullptr;
+    }
 }
 
 void Being::updateAwayEffect()
