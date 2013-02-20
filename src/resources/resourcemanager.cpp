@@ -328,7 +328,7 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
                                            const std::string &ext,
                                            const bool append) const
 {
-    const char *const dirSep = PhysFs::getDirSeparator();
+    const char *const dirSep = dirSeparator;
     char **list = PhysFs::enumerateFiles(path.c_str());
 
     for (char **i = list; *i; i++)
@@ -353,7 +353,7 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
 void ResourceManager::searchAndRemoveArchives(const std::string &path,
                                               const std::string &ext) const
 {
-    const char *const dirSep = PhysFs::getDirSeparator();
+    const char *const dirSep = dirSeparator;
     char **list = PhysFs::enumerateFiles(path.c_str());
 
     for (char **i = list; *i; i++)
@@ -410,12 +410,12 @@ std::string ResourceManager::getPath(const std::string &file) const
     // if the file is not in the search path, then its nullptr
     if (tmp)
     {
-        path = std::string(tmp) + PhysFs::getDirSeparator() + file;
+        path = std::string(tmp) + dirSeparator + file;
     }
     else
     {
         // if not found in search path return the default path
-        path = Client::getPackageDirectory() + PhysFs::getDirSeparator() + file;
+        path = Client::getPackageDirectory() + dirSeparator + file;
     }
 
     return path;

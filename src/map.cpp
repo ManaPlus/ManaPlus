@@ -1223,7 +1223,7 @@ void Map::saveExtraLayer() const
 
 std::string Map::getUserMapDirectory() const
 {
-    return Client::getServerConfigDirectory() + PhysFs::getDirSeparator()
+    return Client::getServerConfigDirectory() + dirSeparator
         + getProperty("_realfilename");
 }
 

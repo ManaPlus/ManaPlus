@@ -20,11 +20,20 @@
 
 #include "utils/physfstools.h"
 
+#include "logger.h"
+
+const char *dirSeparator = nullptr;
+
 namespace PhysFs
 {
+    void updateDirSeparator()
+    {
+        dirSeparator = PHYSFS_getDirSeparator();
+    }
+
     const char *getDirSeparator()
     {
-        return PHYSFS_getDirSeparator();
+        return dirSeparator;
     }
 
     const char *getBaseDir()

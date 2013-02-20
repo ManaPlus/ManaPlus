@@ -170,17 +170,12 @@ void ChatLogger::setServerName(const std::string &serverName)
     secureName(mServerName);
     if (mLogDir != "")
     {
-        DIR *const dir = opendir((mLogDir + PhysFs::getDirSeparator()
+        DIR *const dir = opendir((mLogDir + dirSeparator
             + mServerName).c_str());
         if (!dir)
-        {
-            mkdir_r((mLogDir + PhysFs::getDirSeparator()
-                + mServerName).c_str());
-        }
+            mkdir_r((mLogDir + dirSeparator + mServerName).c_str());
         else
-        {
             closedir(dir);
-        }
     }
 }
 

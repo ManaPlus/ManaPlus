@@ -79,7 +79,7 @@ bool checkPath(std::string path)
 
 std::string &fixDirSeparators(std::string &str)
 {
-    if (*PhysFs::getDirSeparator() == '/')
+    if (dirSeparator[0] == '/')
         return str;
 
     return replaceAll(str, "/", "\\");

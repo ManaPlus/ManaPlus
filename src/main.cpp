@@ -258,6 +258,8 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    PhysFs::updateDirSeparator();
+
     atexit((void(*)()) PHYSFS_deinit);
 
     XML::initXML();

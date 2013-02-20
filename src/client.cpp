@@ -501,8 +501,7 @@ void Client::gameInit()
         }
         else
         {
-            mOptions.dataPath = branding.getDirectory()
-                + PhysFs::getDirSeparator()
+            mOptions.dataPath = branding.getDirectory() + dirSeparator
                 + branding.getStringValue("dataPath");
         }
         mOptions.skipUpdate = true;
@@ -1329,16 +1328,15 @@ int Client::gameExec()
                     else if (loginData.updateType & LoginData::Upd_Skip)
                     {
                         UpdaterWindow::loadLocalUpdates(mLocalDataDir
-                            + PhysFs::getDirSeparator() + mUpdatesDir);
+                            + dirSeparator + mUpdatesDir);
                         mState = STATE_LOAD_DATA;
                     }
                     else
                     {
                         logger->log1("State: UPDATE");
                         mCurrentDialog = new UpdaterWindow(mUpdateHost,
-                            mLocalDataDir + PhysFs::getDirSeparator()
-                            + mUpdatesDir, mOptions.dataPath.empty(),
-                            loginData.updateType);
+                            mLocalDataDir + dirSeparator + mUpdatesDir,
+                            mOptions.dataPath.empty(), loginData.updateType);
                     }
                     BLOCK_END("Client::gameExec STATE_UPDATE")
                     break;
@@ -1369,8 +1367,7 @@ int Client::gameExec()
                             "zip",
                             false);
 
-                        resman->addToSearchPath(mLocalDataDir
-                            + PhysFs::getDirSeparator()
+                        resman->addToSearchPath(mLocalDataDir + dirSeparator
                             + mUpdatesDir + "/local/", false);
                     }
 
@@ -1886,7 +1883,7 @@ void Client::initLocalDataDir()
 
 void Client::initTempDir()
 {
-    mTempDir = mLocalDataDir + PhysFs::getDirSeparator() + "temp";
+    mTempDir = mLocalDataDir + dirSeparator + "temp";
 
     if (mkdir_r(mTempDir.c_str()))
     {
@@ -1902,7 +1899,7 @@ void Client::initConfigDir()
     if (mConfigDir.empty())
     {
 #ifdef __APPLE__
-        mConfigDir = mLocalDataDir + PhysFs::getDirSeparator()
+        mConfigDir = mLocalDataDir + dirSeparator
             + branding.getValue("appShort", "mana");
 #elif defined __HAIKU__
         mConfigDir = std::string(PhysFs::getUserDir()) +
@@ -1937,7 +1934,7 @@ void Client::initConfigDir()
  */
 void Client::initServerConfig(std::string serverName)
 {
-    mServerConfigDir = mConfigDir + PhysFs::getDirSeparator() + serverName;
+    mServerConfigDir = mConfigDir + dirSeparator + serverName;
 
     if (mkdir_r(mServerConfigDir.c_str()))
     {
@@ -2189,10 +2186,7 @@ void Client::initScreenshotDir()
                 branding.getValue("appShort", "mana");
 
             if (!configScreenshotSuffix.empty())
-            {
-                mScreenshotDir += PhysFs::getDirSeparator()
-                    + configScreenshotSuffix;
-            }
+                mScreenshotDir += dirSeparator + configScreenshotSuffix;
         }
     }
 }

@@ -25,6 +25,7 @@
 
 namespace PhysFs
 {
+    void updateDirSeparator();
     const char *getDirSeparator();
     const char *getBaseDir();
     const char *getUserDir();
@@ -41,5 +42,7 @@ namespace PhysFs
     const char *getRealDir(const char *filename);
     bool mkdir(const char *dirName);
 }
+
+extern const char *dirSeparator;
 
 #endif // UTILS_PHYSFS_H
