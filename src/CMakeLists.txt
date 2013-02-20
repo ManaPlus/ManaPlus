@@ -42,6 +42,9 @@ ELSEIF (CMAKE_SYSTEM_NAME STREQUAL "Darwin" OR BEOS)
 ELSEIF (CMAKE_SYSTEM_NAME STREQUAL SunOS)
     # explicit linking to libintl is required on Solaris
     SET(EXTRA_LIBRARIES intl)
+ELSEIF (CMAKE_SYSTEM_NAME STREQUAL Linux)
+    #some distros need this explicitly linked
+    SET(EXTRA_LIBRARIES rt)
 ENDIF()
 
 SET(FLAGS "${FLAGS} -DUSE_MUMBLE")
