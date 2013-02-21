@@ -319,7 +319,6 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
 
 CharSelectDialog::~CharSelectDialog()
 {
-    Net::getCharHandler()->clear();
 }
 
 void CharSelectDialog::action(const gcn::ActionEvent &event)
@@ -351,6 +350,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
         if (eventId == "use" && mCharacterEntries[selected]->getCharacter())
         {
             attemptCharacterSelect(selected);
+//            Net::getCharHandler()->clear();
             return;
         }
         else if (eventId == "new" &&
@@ -371,6 +371,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     }
     if (eventId == "switch")
     {
+        Net::getCharHandler()->clear();
         close();
     }
     else if (eventId == "change_password")
@@ -383,6 +384,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "unregister")
     {
+        Net::getCharHandler()->clear();
         Client::setState(STATE_UNREGISTER);
     }
     else if (eventId == "try delete character")

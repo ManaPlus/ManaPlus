@@ -128,8 +128,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 
             mSelectedCharacter->dummy = nullptr;
 
-            delete_all(mCharacters);
-            mCharacters.clear();
+            Net::getCharHandler()->clear();
             updateCharSelectDialog();
 
             if (mNetwork)

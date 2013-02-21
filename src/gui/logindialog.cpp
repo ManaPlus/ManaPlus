@@ -38,6 +38,7 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/passwordfield.h"
 
+#include "net/charhandler.h"
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
@@ -153,6 +154,8 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
     mServerName(serverName)
 {
     setCloseButton(true);
+
+    Net::getCharHandler()->clear();
 
     Label *const serverLabel1 = new Label(this, _("Server:"));
     Label *const serverLabel2 = new Label(this, serverName);
