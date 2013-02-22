@@ -88,8 +88,9 @@ void ChatLogger::setLogDir(const std::string &logDir)
 
 void ChatLogger::log(std::string str)
 {
-    std::string dateStr = getDir();
-    std::string logFileName = strprintf("%s/#General.log", dateStr.c_str());
+    const std::string &dateStr = getDir();
+    const std::string logFileName = strprintf(
+        "%s/#General.log", dateStr.c_str());
     if (!mLogFile.is_open() || logFileName != mLogFileName)
     {
         setLogDir(dateStr);
@@ -102,8 +103,8 @@ void ChatLogger::log(std::string str)
 
 void ChatLogger::log(std::string name, std::string str)
 {
-    std::string dateStr = getDir();
-    std::string logFileName = strprintf("%s/%s.log",
+    const std::string &dateStr = getDir();
+    const std::string logFileName = strprintf("%s/%s.log",
         dateStr.c_str(), secureName(name).c_str());
 
     if (!mLogFile.is_open() || logFileName != mLogFileName)
@@ -121,11 +122,10 @@ std::string ChatLogger::getDir() const
     std::string date;
 
     time_t rawtime;
-    struct tm *timeinfo;
     char buffer [81];
 
     time (&rawtime);
-    timeinfo = localtime(&rawtime);
+    struct tm *const timeinfo = localtime(&rawtime);
 
     strftime(buffer, 79, "%Y-%m/%d", timeinfo);
 
@@ -137,15 +137,16 @@ std::string ChatLogger::getDir() const
 
 std::string ChatLogger::secureName(std::string &name) const
 {
-    for (unsigned int f = 0; f < name.length(); f ++)
+    for (unsigned int f = 0, sz = name.length(); f < sz; f ++)
     {
-        if ((name[f] < '0' || name[f] > '9')
-            && (name[f] < 'a' || name[f] > 'z')
-            && (name[f] < 'A' || name[f] > 'Z')
-            && name[f] != '-' && name[f] != '+' && name[f] != '='
-            && name[f] != '.' && name[f] != ',' && name[f] != ')'
-            && name[f] != '(' && name[f] != '[' && name[f] != ']'
-            && name[f] != '#')
+        const unsigned char ch = name[f];
+        if ((ch < '0' || ch > '9')
+            && (ch < 'a' || ch > 'z')
+            && (ch < 'A' || ch > 'Z')
+            && ch != '-' && ch != '+' && ch != '='
+            && ch != '.' && ch != ',' && ch != ')'
+            && ch != '(' && ch != '[' && ch != ']'
+            && ch != '#')
         {
             name[f] = '_';
         }

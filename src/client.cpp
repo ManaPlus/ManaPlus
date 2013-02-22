@@ -210,28 +210,26 @@ static uint32_t nextSecond(uint32_t interval, void *param A_UNUSED)
  */
 int get_elapsed_time(const int startTime)
 {
-    if (startTime <= tick_time)
+    const int time = tick_time;
+    if (startTime <= time)
     {
-        return (tick_time - startTime) * MILLISECONDS_IN_A_TICK;
+        return (time - startTime) * MILLISECONDS_IN_A_TICK;
     }
     else
     {
-        return (tick_time + (MAX_TICK_VALUE - startTime))
+        return (time + (MAX_TICK_VALUE - startTime))
             * MILLISECONDS_IN_A_TICK;
     }
 }
 
 int get_elapsed_time1(const int startTime)
 {
-    if (startTime <= tick_time)
-        return tick_time - startTime;
+    const int time = tick_time;
+    if (startTime <= time)
+        return time - startTime;
     else
-        return tick_time + (MAX_TICK_VALUE - startTime);
+        return time + (MAX_TICK_VALUE - startTime);
 }
-
-// This anonymous namespace hides whatever is inside from other modules.
-namespace
-{
 
 class AccountListener final : public gcn::ActionListener
 {
@@ -250,8 +248,6 @@ class LoginListener final : public gcn::ActionListener
             Client::setState(STATE_PRE_LOGIN);
         }
 } loginListener;
-
-} // anonymous namespace
 
 
 Client *Client::mInstance = nullptr;
@@ -393,15 +389,15 @@ void Client::gameInit()
         setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "0");
 
     chatLogger = new ChatLogger;
-    if (mOptions.chatLogDir == "")
+    if (mOptions.chatLogDir.empty())
         chatLogger->setBaseLogDir(mLocalDataDir + std::string("/logs/"));
     else
         chatLogger->setBaseLogDir(mOptions.chatLogDir);
 
     logger->setLogToStandardOut(config.getBoolValue("logToStandardOut"));
 
-    // Log the mana version
-    logger->log("ManaPlus %s", FULL_VERSION);
+    // Log the client version
+    logger->log1(FULL_VERSION);
     logger->log("Start configPath: " + config.getConfigPath());
 
     initScreenshotDir();
@@ -411,7 +407,7 @@ void Client::gameInit()
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
     {
         logger->safeError(strprintf("Could not initialize SDL: %s",
-                      SDL_GetError()));
+            SDL_GetError()));
     }
     atexit(SDL_Quit);
 
@@ -465,14 +461,9 @@ void Client::gameInit()
     resman->addToSearchPath(path, false);
 // possible this need for support run client from dmg images.
 //    mPackageDir = path;
-
-    resman->addToSearchPath(PKG_DATADIR "data", false);
-    mPackageDir = PKG_DATADIR "data";
-#else
-    resman->addToSearchPath(PKG_DATADIR "data", false);
-    mPackageDir = PKG_DATADIR "data";
 #endif
-
+    resman->addToSearchPath(PKG_DATADIR "data", false);
+    mPackageDir = PKG_DATADIR "data";
     resman->addToSearchPath("data", false);
 
     // Add branding/data to PhysFS search path
@@ -513,9 +504,6 @@ void Client::gameInit()
 
     // Add the local data directory to PhysicsFS search path
     resman->addToSearchPath(mLocalDataDir, false);
-
-    //resman->selectSkin();
-
     TranslationManager::loadCurrentLang();
 
     std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
@@ -577,20 +565,15 @@ void Client::gameInit()
     applyGrabMode();
     applyGamma();
 
-    // Initialize for drawing
     mainGraphics->_beginDraw();
 
     Theme::selectSkin();
     touchManager.init();
-//    Theme::prepareThemePath();
 
     // Initialize the item and emote shortcuts.
     for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
         itemShortcut[f] = new ItemShortcut(f);
-
     emoteShortcut = new EmoteShortcut;
-
-    // Initialize the drop shortcuts.
     dropShortcut = new DropShortcut;
 
     gui = new Gui(mainGraphics);
@@ -683,7 +666,6 @@ void Client::gameInit()
     config.addListener("repeateDelay", this);
     config.addListener("repeateInterval", this);
     setGuiAlpha(config.getFloatValue("guialpha"));
-
     optionChanged("fpslimit");
 
     start_time = static_cast<int>(time(nullptr));
@@ -727,16 +709,9 @@ void Client::setEnv(const char *const name, const char *const value)
 void Client::testsClear()
 {
     if (!mOptions.test.empty())
-    {
         gameClear();
-    }
     else
-    {
         BeingInfo::clear();
-
-        //delete logger;
-        //logger = nullptr;
-    }
 }
 
 void Client::gameClear()
@@ -760,10 +735,10 @@ void Client::gameClear()
     if (Net::getLoginHandler())
         Net::getLoginHandler()->clearWorlds();
 
-    #ifdef USE_MUMBLE
+#ifdef USE_MUMBLE
     delete mumbleManager;
     mumbleManager = nullptr;
-    #endif
+#endif
 
     PlayerInfo::deinit();
 
@@ -905,10 +880,10 @@ int Client::gameExec()
 {
     int lastTickTime = tick_time;
 
-    #ifdef USE_MUMBLE
+#ifdef USE_MUMBLE
     if (!mumbleManager)
         mumbleManager = new MumbleManager();
-    #endif
+#endif
 
     SDL_Event event;
 
@@ -939,7 +914,7 @@ int Client::gameExec()
                 {
                     case SDL_QUIT:
                         mState = STATE_EXIT;
-                        logger->log("force exit");
+                        logger->log1("force exit");
                         break;
 
                     case SDL_KEYDOWN:
@@ -973,7 +948,7 @@ int Client::gameExec()
                             && !event.active.gain)
                         {
                             mState = STATE_EXIT;
-                            logger->log("exit on lost focus");
+                            logger->log1("exit on lost focus");
                         }
                         break;
 
@@ -995,13 +970,13 @@ int Client::gameExec()
                 }
 
                 guiInput->pushInput(event);
-                #ifdef USE_MUMBLE
+#ifdef USE_MUMBLE
                 if (player_node && mumbleManager)
                 {
                     mumbleManager->setPos(player_node->getTileX(),
                         player_node->getTileY(), player_node->getDirection());
                 }
-                #endif
+#endif
             }
             if (mState == STATE_EXIT)
                 continue;
@@ -1085,13 +1060,12 @@ int Client::gameExec()
             }
 
             loginData.remember = serverConfig.getValue("remember", 1);
-
             Net::connectToServer(mCurrentServer);
 
-            #ifdef USE_MUMBLE
+#ifdef USE_MUMBLE
             if (mumbleManager)
                 mumbleManager->setServer(mCurrentServer.hostname);
-            #endif
+#endif
 
             GuildManager::init();
 
@@ -1482,10 +1456,10 @@ int Client::gameExec()
                             player_node->getName().c_str());
                         serverConfig.setValue("lastCharacter",
                             player_node->getName());
-                        #ifdef USE_MUMBLE
+#ifdef USE_MUMBLE
                         if (mumbleManager)
                             mumbleManager->setPlayer(player_node->getName());
-                        #endif
+#endif
                     }
 
                     // Fade out logon-music here too to give the desired effect
@@ -1729,8 +1703,9 @@ void Client::optionChanged(const std::string &name)
     }
     else if (name == "guialpha")
     {
-        setGuiAlpha(config.getFloatValue("guialpha"));
-        ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
+        const float alpha = config.getFloatValue("guialpha");
+        setGuiAlpha(alpha);
+        ImageHelper::setEnableAlpha(alpha != 1.0f);
     }
     else if (name == "gamma" || name == "enableGamma")
     {
@@ -1744,7 +1719,7 @@ void Client::optionChanged(const std::string &name)
     {
         applyVSync();
     }
-    else if (name == "repeateInterval" or name == "repeateDelay")
+    else if (name == "repeateInterval" || name == "repeateDelay")
     {
         applyKeyRepeat();
     }
@@ -1786,7 +1761,7 @@ void Client::action(const gcn::ActionEvent &event)
 void Client::initRootDir()
 {
     mRootDir = PhysFs::getBaseDir();
-    std::string portableName = mRootDir + "portable.xml";
+    const std::string portableName = mRootDir + "portable.xml";
     struct stat statbuf;
 
     if (!stat(portableName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
@@ -1941,9 +1916,7 @@ void Client::initServerConfig(std::string serverName)
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mServerConfigDir.c_str()));
     }
-    std::string configPath;
-
-    configPath = mServerConfigDir + "/config.xml";
+    const std::string configPath = mServerConfigDir + "/config.xml";
     FILE *configFile = fopen(configPath.c_str(), "r");
     if (!configFile)
     {
@@ -1981,7 +1954,6 @@ void Client::initServerConfig(std::string serverName)
  */
 void Client::initConfiguration() const
 {
-
 #ifdef DEBUG_CONFIG
     config.setIsMain(true);
 #endif
@@ -2016,11 +1988,7 @@ void Client::initConfiguration() const
     config.setValue("useScreenshotDirectorySuffix", true);
     config.setValue("ChatLogLength", 128);
 
-    // Checking if the configuration file exists... otherwise create it with
-    // default options.
     std::string configPath;
-//    bool oldConfig = false;
-//    int emptySize = config.getSize();
 
     if (mOptions.test.empty())
         configPath = mConfigDir + "/config.xml";
@@ -2028,15 +1996,10 @@ void Client::initConfiguration() const
         configPath = mConfigDir + "/test.xml";
 
     FILE *configFile = fopen(configPath.c_str(), "r");
-
-    // If we can't read it, it doesn't exist !
     if (!configFile)
     {
-        // We reopen the file in write mode and we create it
         configFile = fopen(configPath.c_str(), "wt");
-
         logger->log1("Creating new config");
-//        oldConfig = false;
     }
     if (!configFile)
     {
@@ -2046,11 +2009,10 @@ void Client::initConfiguration() const
     {
         fclose(configFile);
         config.init(configPath);
-        logger->log("init 3");
+        logger->log1("init 3");
         config.setDefaultValues(getConfigDefaults());
         logger->log("configPath: " + configPath);
     }
-
 }
 
 /**
@@ -2072,10 +2034,10 @@ void Client::initUpdatesDir()
         return;
 
     // Remove any trailing slash at the end of the update host
-    if (!mUpdateHost.empty() && mUpdateHost.at(mUpdateHost.size() - 1) == '/')
+    if (mUpdateHost.at(mUpdateHost.size() - 1) == '/')
         mUpdateHost.resize(mUpdateHost.size() - 1);
 
-    // Parse out any "http://" or "ftp://", and set the updates directory
+    // Parse out any "http://" or "https://", and set the updates directory
     const size_t pos = mUpdateHost.find("://");
     if (pos != mUpdateHost.npos)
     {
@@ -2105,11 +2067,12 @@ void Client::initUpdatesDir()
 #endif
 
     const ResourceManager *const resman = ResourceManager::getInstance();
+    const std::string updateDir = "/" + mUpdatesDir;
 
     // Verify that the updates directory exists. Create if necessary.
-    if (!resman->isDirectory("/" + mUpdatesDir))
+    if (!resman->isDirectory(updateDir))
     {
-        if (!resman->mkdir("/" + mUpdatesDir))
+        if (!resman->mkdir(updateDir))
         {
 #if defined WIN32
             std::string newDir = mLocalDataDir + "\\" + mUpdatesDir;
@@ -2137,8 +2100,8 @@ void Client::initUpdatesDir()
 #endif
         }
     }
-    std::string updateLocal = "/" + mUpdatesDir + "/local";
-    std::string updateFix = "/" + mUpdatesDir + "/fix";
+    const std::string updateLocal = updateDir + "/local";
+    const std::string updateFix = updateDir + "/fix";
     if (!resman->isDirectory(updateLocal))
         resman->mkdir(updateLocal);
     if (!resman->isDirectory(updateFix))
@@ -2169,7 +2132,7 @@ void Client::initScreenshotDir()
                 "Exiting."), mScreenshotDir.c_str()));
         }
 #else
-        std::string configScreenshotDir =
+        const std::string configScreenshotDir =
             config.getStringValue("screenshotDirectory");
         if (!configScreenshotDir.empty())
             mScreenshotDir = configScreenshotDir;
@@ -2182,7 +2145,7 @@ void Client::initScreenshotDir()
 
         if (config.getBoolValue("useScreenshotDirectorySuffix"))
         {
-            std::string configScreenshotSuffix =
+            const std::string configScreenshotSuffix =
                 branding.getValue("appShort", "mana");
 
             if (!configScreenshotSuffix.empty())
@@ -2207,19 +2170,18 @@ void Client::accountLogin(LoginData *const data) const
     // Clear the password, avoids auto login when returning to login
     data->password.clear();
 
-    // TODO This is not the best place to save the config, but at least better
-    // than the login gui window
-    if (data->remember)
+    const bool remember = data->remember;
+    if (remember)
         serverConfig.setValue("username", data->username);
     else
         serverConfig.setValue("username", "");
-    serverConfig.setValue("remember", data->remember);
+    serverConfig.setValue("remember", remember);
 }
 
 bool Client::copyFile(const std::string &configPath,
                       const std::string &oldConfigPath) const
 {
-    FILE *configFile = fopen(oldConfigPath.c_str(), "r");
+    FILE *const configFile = fopen(oldConfigPath.c_str(), "r");
 
     if (configFile)
     {
@@ -2366,7 +2328,7 @@ void Client::storeSafeParameters() const
 
 void Client::initTradeFilter() const
 {
-    std::string tradeListName =
+    const std::string tradeListName =
         Client::getServerConfigDirectory() + "/tradefilter.txt";
 
     std::ofstream tradeFile;
@@ -2416,7 +2378,7 @@ void Client::initUsersDir()
 
 void Client::initPacketLimiter()
 {
-    //here i setting packet limits. but current server is broken,
+    // here i setting packet limits. but current server is broken,
     // and this limits may not help.
 
     mPacketLimits[PACKET_CHAT].timeLimit = 10 + 5;
@@ -2494,7 +2456,7 @@ void Client::initPacketLimiter()
 
     if (!mServerConfigDir.empty())
     {
-        std::string packetLimitsName =
+        const std::string packetLimitsName =
             Client::getServerConfigDirectory() + "/packetlimiter.txt";
 
         std::ifstream inPacketFile;
@@ -2534,7 +2496,7 @@ void Client::initPacketLimiter()
     }
 }
 
-void Client::writePacketLimits(std::string packetLimitsName) const
+void Client::writePacketLimits(const std::string &packetLimitsName) const
 {
     std::ofstream outPacketFile;
     outPacketFile.open(packetLimitsName.c_str(), std::ios::out);
@@ -2561,7 +2523,7 @@ bool Client::checkPackets(const int type)
     if (!serverConfig.getValueBool("enableBuggyServers", true))
         return true;
 
-    PacketLimit &limit = instance()->mPacketLimits[type];
+    const PacketLimit &limit = instance()->mPacketLimits[type];
     const int timeLimit = limit.timeLimit;
 
     if (!timeLimit)
@@ -2598,27 +2560,27 @@ bool Client::checkPackets(const int type)
 
 bool Client::limitPackets(const int type)
 {
-    if (type > PACKET_SIZE)
+    if (type < 0 || type > PACKET_SIZE)
         return false;
 
     if (!serverConfig.getValueBool("enableBuggyServers", true))
         return true;
 
-    const int timeLimit = instance()->mPacketLimits[type].timeLimit;
+    PacketLimit &pack = instance()->mPacketLimits[type];
+    const int timeLimit = pack.timeLimit;
 
     if (!timeLimit)
         return true;
 
     const int time = tick_time;
-    const int lastTime = instance()->mPacketLimits[type].lastTime;
-    const int cnt = instance()->mPacketLimits[type].cnt;
-    const int cntLimit = instance()->mPacketLimits[type].cntLimit;
+    const int lastTime = pack.lastTime;
+    const int cnt = pack.cnt;
+    const int cntLimit = pack.cntLimit;
 
     if (lastTime > tick_time)
     {
-        instance()->mPacketLimits[type].lastTime = time;
-        instance()->mPacketLimits[type].cnt = 0;
-
+        pack.lastTime = time;
+        pack.cnt = 0;
         return true;
     }
     else if (lastTime + timeLimit > time)
@@ -2629,12 +2591,12 @@ bool Client::limitPackets(const int type)
         }
         else
         {
-            instance()->mPacketLimits[type].cnt ++;
+            pack.cnt ++;
             return true;
         }
     }
-    instance()->mPacketLimits[type].lastTime = time;
-    instance()->mPacketLimits[type].cnt = 1;
+    pack.lastTime = time;
+    pack.cnt = 1;
     return true;
 }
 
@@ -2665,18 +2627,23 @@ float Client::getGuiAlpha()
 
 void Client::setFramerate(const int fpsLimit)
 {
-    if (!fpsLimit || !instance()->mLimitFps)
+    if (!fpsLimit)
         return;
 
-    SDL_setFramerate(&instance()->mFpsManager, fpsLimit);
+    Client *const client = instance();
+    if (!client->mLimitFps)
+        return;
+
+    SDL_setFramerate(&client->mFpsManager, fpsLimit);
 }
 
 int Client::getFramerate()
 {
-    if (!instance()->mLimitFps)
+    Client *const client = instance();
+    if (!client->mLimitFps)
         return 0;
 
-    return SDL_getFramerate(&instance()->mFpsManager);
+    return SDL_getFramerate(&client->mFpsManager);
 }
 
 void Client::closeDialogs()
@@ -2690,9 +2657,10 @@ void Client::closeDialogs()
 
 bool Client::isTmw()
 {
-    if (getServerName() == "server.themanaworld.org"
-        || getServerName() == "themanaworld.org"
-        || getServerName() == "81.161.192.4")
+    const std::string &name = getServerName();
+    if (name == "server.themanaworld.org"
+        || name == "themanaworld.org"
+        || name == "81.161.192.4")
     {
         return true;
     }
@@ -2750,8 +2718,6 @@ void Client::resizeVideo(int width, int height, const bool always)
         if (gui)
             gui->draw();
 
-        // Since everything appears to have worked out, remember to store the
-        // new size in the configuration.
         config.setValue("screenwidth", width);
         config.setValue("screenheight", height);
     }
@@ -2787,7 +2753,7 @@ void Client::applyKeyRepeat()
 
 void Client::setIsMinimized(const bool n)
 {
-    Client *client = instance();
+    Client *const client = instance();
     if (!client)
         return;
 
@@ -2801,7 +2767,7 @@ void Client::setIsMinimized(const bool n)
 
 void Client::newChatMessage()
 {
-    Client *client = instance();
+    Client *const client = instance();
     if (!client)
         return;
 
@@ -2898,8 +2864,9 @@ void Client::logEvent(const SDL_Event &event)
 
 void Client::windowRemoved(const Window *const window)
 {
-    if (instance()->mCurrentDialog == window)
-        instance()->mCurrentDialog = nullptr;
+    Client *const inst = instance();
+    if (inst->mCurrentDialog == window)
+        inst->mCurrentDialog = nullptr;
 }
 
 void Client::updateScreenKeyboard(int height A_UNUSED)

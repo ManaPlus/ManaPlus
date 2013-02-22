@@ -307,7 +307,7 @@ public:
 
     void initPacketLimiter();
 
-    void writePacketLimits(std::string packetLimitsName) const;
+    void writePacketLimits(const std::string &packetLimitsName) const;
 
     void resizeVideo(int width, int height, const bool always);
 
