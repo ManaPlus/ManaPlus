@@ -42,7 +42,7 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
 
         void handleMessage(Net::MessageIn &msg);
 
-        void request(Being *being);
+        void request(const Being *const being);
 
         void respond(bool accept);
 

@@ -123,6 +123,9 @@ static void changeRelation(const std::string &args,
                            const std::string &relationText,
                            ChatTab *const tab)
 {
+    if (!tab)
+        return;
+
     if (args.empty())
     {
         if (tab)
@@ -132,11 +135,8 @@ static void changeRelation(const std::string &args,
 
     if (player_relations.getRelation(args) == relation)
     {
-        if (tab)
-        {
-            tab->chatLog(strprintf(_("Player already %s!"),
-                         relationText.c_str()), BY_SERVER);
-        }
+        tab->chatLog(strprintf(_("Player already %s!"),
+                     relationText.c_str()), BY_SERVER);
         return;
     }
     else
@@ -146,19 +146,13 @@ static void changeRelation(const std::string &args,
 
     if (player_relations.getRelation(args) == relation)
     {
-        if (tab)
-        {
-            tab->chatLog(strprintf(_("Player successfully %s!"),
-                         relationText.c_str()), BY_SERVER);
-        }
+        tab->chatLog(strprintf(_("Player successfully %s!"),
+                     relationText.c_str()), BY_SERVER);
     }
     else
     {
-        if (tab)
-        {
-            tab->chatLog(strprintf(_("Player could not be %s!"),
-                         relationText.c_str()), BY_SERVER);
-        }
+        tab->chatLog(strprintf(_("Player could not be %s!"),
+                     relationText.c_str()), BY_SERVER);
     }
 }
 
@@ -200,8 +194,6 @@ static void outStringNormal(ChatTab *const tab,
         }
         case ChatTab::TAB_GUILD:
         {
-            if (!player_node)
-                return;
             const Guild *const guild = player_node->getGuild();
             if (guild)
             {
@@ -279,8 +271,8 @@ impHandler0(who)
 
 impHandler(msg)
 {
-    std::string recvnick("");
-    std::string msg("");
+    std::string recvnick;
+    std::string msg;
 
     if (args.substr(0, 1) == "\"")
     {
@@ -338,9 +330,12 @@ impHandler(query)
         }
     }
 
-    tab->chatLog(strprintf(_("Cannot create a whisper tab for nick \"%s\"! "
-        "It either already exists, or is you."),
-        args.c_str()), BY_SERVER);
+    if (tab)
+    {
+        tab->chatLog(strprintf(_("Cannot create a whisper tab for nick \"%s\"! "
+            "It either already exists, or is you."),
+            args.c_str()), BY_SERVER);
+    }
 }
 
 impHandler0(clear)
@@ -474,8 +469,8 @@ impHandler(unignore)
         return;
     }
 
-    if (player_relations.getRelation(args) != PlayerRelation::NEUTRAL
-        && player_relations.getRelation(args) != PlayerRelation::FRIEND)
+    const PlayerRelation::Relation rel = player_relations.getRelation(args);
+    if (rel != PlayerRelation::NEUTRAL && rel != PlayerRelation::FRIEND)
     {
         player_relations.setRelation(args, PlayerRelation::NEUTRAL);
     }
@@ -662,13 +657,9 @@ impHandler(follow)
         return;
 
     if (!args.empty())
-    {
         player_node->setFollow(args);
-    }
     else if (tab && tab->getType() == ChatTab::TAB_WHISPER)
-    {
         player_node->setFollow(static_cast<WhisperTab*>(tab)->getNick());
-    }
 }
 
 impHandler(imitation)
@@ -750,7 +741,7 @@ impHandler1(trade)
     if (!actorSpriteManager)
         return;
 
-    Being *const being = actorSpriteManager->findBeingByName(
+    const Being *const being = actorSpriteManager->findBeingByName(
         args, Being::PLAYER);
     if (being)
     {
@@ -778,12 +769,13 @@ impHandler0(dirs)
 
 impHandler2(info)
 {
+    if (!tab || !player_node)
+        return;
+
     switch (tab->getType())
     {
         case ChatTab::TAB_GUILD:
         {
-            if (!player_node)
-                return;
             const Guild *const guild = player_node->getGuild();
             if (guild)
                 Net::getGuildHandler()->info(guild->getId());
@@ -930,9 +922,9 @@ impHandler0(cacheInfo)
     {
         if (!cache[f].empty())
         {
-            all += static_cast<int>(cache[f].size());
-            str += strprintf("%d: %u, ", f,
-                static_cast<unsigned int>(cache[f].size()));
+            const int sz = static_cast<int>(cache[f].size());
+            all += sz;
+            str += strprintf("%d: %u, ", f, sz);
         }
     }
     debugChatTab->chatLog(str);
@@ -958,8 +950,7 @@ impHandler0(serverUnIgnoreAll)
 
 impHandler2(dumpGraphics)
 {
-    std::string str;
-    str = strprintf ("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,
+    std::string str = strprintf ("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,
         mainGraphics->getWidth(), mainGraphics->getHeight(),
         mainGraphics->getBpp());
 
@@ -1000,17 +991,17 @@ impHandler2(dumpGraphics)
 
 impHandler0(dumpEnvironment)
 {
-    logger->log("Start environment variables");
+    logger->log1("Start environment variables");
     for (char **env = environ; *env; ++ env)
         logger->log1(*env);
-    logger->log("End environment variables");
+    logger->log1("End environment variables");
     if (debugChatTab)
         debugChatTab->chatLog(_("Environment variables dumped"));
 }
 
 impHandler2(dumpTests)
 {
-    std::string str = config.getStringValue("testInfo");
+    const std::string str = config.getStringValue("testInfo");
     outStringNormal(tab, str, str);
 }
 
@@ -1022,7 +1013,7 @@ impHandler1(setDrop)
 
 impHandler0(error)
 {
-    int *ptr = nullptr;
+    const int *const ptr = nullptr;
     logger->log("test %d", *ptr);
 }
 
@@ -1058,15 +1049,15 @@ void showRes(std::string str, ResourceManager::Resources *res)
         debugChatTab->chatLog(str + toString(res->size()));
     logger->log(str + toString(res->size()));
     ResourceManager::ResourceIterator iter = res->begin();
-    ResourceManager::ResourceIterator iter_end = res->end();
+    const ResourceManager::ResourceIterator iter_end = res->end();
     while (iter != iter_end)
     {
         if (iter->second && iter->second->getRefCount())
         {
-            std::string type = " ";
-            std::string isNew = "N";
+            char type = ' ';
+            char isNew = 'N';
             if (iter->second->getDumped())
-                isNew = "O";
+                isNew = 'O';
             else
                 iter->second->setDumped(true);
 
@@ -1075,12 +1066,12 @@ void showRes(std::string str, ResourceManager::Resources *res)
             Image *const image = dynamic_cast<Image *const>(iter->second);
             int id = 0;
             if (subImage)
-                type = "S";
+                type = 'S';
             else if (image)
-                type = "I";
+                type = 'I';
             if (image)
                 id = image->getGLImage();
-            logger->log("Resource %s%s: %s (%d) id=%d", type.c_str(),
+            logger->log("Resource %c%c: %s (%d) id=%d", type.c_str(),
                 isNew.c_str(), iter->second->getIdPath().c_str(),
                 iter->second->getRefCount(), id);
         }
@@ -1093,7 +1084,7 @@ impHandler1(dump)
     if (!debugChatTab)
         return;
 
-    ResourceManager *resman = ResourceManager::getInstance();
+    ResourceManager *const resman = ResourceManager::getInstance();
 
     if (!args.empty())
     {

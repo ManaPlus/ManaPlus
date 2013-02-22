@@ -93,7 +93,7 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void TradeHandler::request(Being *being)
+void TradeHandler::request(const Being *const being)
 {
     if (!being)
         return;

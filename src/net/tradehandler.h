@@ -37,7 +37,7 @@ class TradeHandler
         virtual ~TradeHandler()
         { }
 
-        virtual void request(Being *being A_UNUSED)
+        virtual void request(const Being *const being A_UNUSED)
         { }
 
         virtual void respond(bool accept A_UNUSED)

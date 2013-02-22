@@ -95,7 +95,7 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("TradeHandler::handleMessage")
 }
 
-void TradeHandler::request(Being *being)
+void TradeHandler::request(const Being *const being)
 {
     if (!being)
         return;
