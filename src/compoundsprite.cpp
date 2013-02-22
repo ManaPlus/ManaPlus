@@ -66,23 +66,18 @@ CompoundSprite::CompoundSprite() :
 CompoundSprite::~CompoundSprite()
 {
     clear();
-
-//    delete mImage;
     mImage = nullptr;
-//    delete mAlphaImage;
     mAlphaImage = nullptr;
 }
 
 bool CompoundSprite::reset()
 {
     bool ret = false;
-
     FOR_EACH (SpriteIterator, it, mSprites)
     {
         if (*it)
             ret |= (*it)->reset();
     }
-
     mNeedsRedraw |= ret;
     return ret;
 }
@@ -90,13 +85,11 @@ bool CompoundSprite::reset()
 bool CompoundSprite::play(const std::string &action)
 {
     bool ret = false;
-
     FOR_EACH (SpriteIterator, it, mSprites)
     {
         if (*it)
             ret |= (*it)->play(action);
     }
-
     mNeedsRedraw |= ret;
     return ret;
 }
@@ -104,13 +97,11 @@ bool CompoundSprite::play(const std::string &action)
 bool CompoundSprite::update(const int time)
 {
     bool ret = false;
-
     FOR_EACH (SpriteIterator, it, mSprites)
     {
         if (*it)
             ret |= (*it)->update(time);
     }
-
     mNeedsRedraw |= ret;
     return ret;
 }
@@ -132,9 +123,8 @@ bool CompoundSprite::draw(Graphics *const graphics,
     else if (mAlpha && mAlphaImage)
     {
         mAlphaImage->setAlpha(mAlpha);
-
         return graphics->drawImage(mAlphaImage,
-                                   posX + mOffsetX, posY + mOffsetY);
+            posX + mOffsetX, posY + mOffsetY);
     }
     else
     {
@@ -206,13 +196,11 @@ const Image *CompoundSprite::getImage() const
 bool CompoundSprite::setSpriteDirection(const SpriteDirection direction)
 {
     bool ret = false;
-
     FOR_EACH (SpriteIterator, it, mSprites)
     {
         if (*it)
             ret |= (*it)->setSpriteDirection(direction);
     }
-
     mNeedsRedraw |= ret;
     return ret;
 }
@@ -232,7 +220,6 @@ unsigned int CompoundSprite::getCurrentFrame() const
         if (*it)
             return (*it)->getCurrentFrame();
     }
-
     return 0;
 }
 
@@ -243,7 +230,6 @@ unsigned int CompoundSprite::getFrameCount() const
         if (*it)
             return (*it)->getFrameCount();
     }
-
     return 0;
 }
 
@@ -304,7 +290,7 @@ void CompoundSprite::ensureSize(size_t layerCount)
 /**
  * Returns the curent frame in the current animation of the given layer.
  */
-unsigned int CompoundSprite::getCurrentFrame(unsigned int layer)
+unsigned int CompoundSprite::getCurrentFrame(unsigned int layer) const
 {
     if (layer >= mSprites.size())
         return 0;

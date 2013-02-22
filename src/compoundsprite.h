@@ -116,7 +116,8 @@ public:
     /**
      * Returns the curent frame in the current animation of the given layer.
      */
-    virtual unsigned int getCurrentFrame(unsigned int layer) A_WARN_UNUSED;
+    virtual unsigned int getCurrentFrame(unsigned int layer)
+                                         const A_WARN_UNUSED;
 
     /**
      * Returns the frame count in the current animation of the given layer.
