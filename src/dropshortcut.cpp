@@ -110,14 +110,14 @@ void DropShortcut::dropFirst() const
             ->findItem(itemId, itemColor);
         if (item && item->getQuantity())
         {
+            const int cnt = player_node->getQuickDropCounter();
             if (player_node->isServerBuggy())
             {
-                Net::getInventoryHandler()->dropItem(item,
-                    player_node->getQuickDropCounter());
+                Net::getInventoryHandler()->dropItem(item, cnt);
             }
             else
             {
-                for (int i = 0; i < player_node->getQuickDropCounter(); i++)
+                for (int i = 0; i < cnt; i++)
                     Net::getInventoryHandler()->dropItem(item, 1);
             }
         }
@@ -129,7 +129,6 @@ void DropShortcut::dropItems(const int cnt)
     if (!player_node)
         return;
 
-
     if (player_node->isServerBuggy())
     {
         dropItem(player_node->getQuickDropCounter());
@@ -137,9 +136,10 @@ void DropShortcut::dropItems(const int cnt)
     }
 
     int n = 0;
+    const int sz = player_node->getQuickDropCounter();
     for (int f = 0; f < 9; f++)
     {
-        for (int i = 0; i < player_node->getQuickDropCounter(); i++)
+        for (int i = 0; i < sz; i++)
         {
             if (!Client::limitPackets(PACKET_DROP))
                 return;
