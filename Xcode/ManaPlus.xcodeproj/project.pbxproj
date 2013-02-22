@@ -15,8 +15,11 @@
 		2B17119A1686A98C002E9493 /* animatedsprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF475E166D5B680054E77F /* animatedsprite.cpp */; };
 		2B17119B1686A98C002E9493 /* animationdelayload.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4760166D5B680054E77F /* animationdelayload.cpp */; };
 		2B17119C1686A98C002E9493 /* animationparticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4762166D5B680054E77F /* animationparticle.cpp */; };
+		2B17119D1686A98C002E9493 /* auctionmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4764166D5B680054E77F /* auctionmanager.cpp */; };
 		2B17119E1686A98C002E9493 /* avatar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4766166D5B680054E77F /* avatar.cpp */; };
 		2B17119F1686A98C002E9493 /* being.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4768166D5B680054E77F /* being.cpp */; };
+		2B1711A01686A98C002E9493 /* channel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF476A166D5B680054E77F /* channel.cpp */; };
+		2B1711A11686A98C002E9493 /* channelmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF476C166D5B680054E77F /* channelmanager.cpp */; };
 		2B1711A21686A98C002E9493 /* chatlogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF476E166D5B680054E77F /* chatlogger.cpp */; };
 		2B1711A31686A98C002E9493 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4770166D5B680054E77F /* client.cpp */; };
 		2B1711A41686A98C002E9493 /* commandhandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4772166D5B680054E77F /* commandhandler.cpp */; };
@@ -108,6 +111,7 @@
 		2B1711FA1686A98C002E9493 /* battletab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF482B166D5B680054E77F /* battletab.cpp */; };
 		2B1711FB1686A98C002E9493 /* browserbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF482D166D5B680054E77F /* browserbox.cpp */; };
 		2B1711FC1686A98C002E9493 /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4830166D5B680054E77F /* button.cpp */; };
+		2B1711FD1686A98C002E9493 /* channeltab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4832166D5B680054E77F /* channeltab.cpp */; };
 		2B1711FE1686A98C002E9493 /* chattab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4834166D5B680054E77F /* chattab.cpp */; };
 		2B1711FF1686A98C002E9493 /* checkbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4836166D5B680054E77F /* checkbox.cpp */; };
 		2B1712001686A98C002E9493 /* container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4838166D5B680054E77F /* container.cpp */; };
@@ -321,6 +325,7 @@
 		2B1712D01686A98C002E9493 /* sdlimagehelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A14166D5B680054E77F /* sdlimagehelper.cpp */; };
 		2B1712D11686A98C002E9493 /* sdlmusic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A16166D5B680054E77F /* sdlmusic.cpp */; };
 		2B1712D21686A98C002E9493 /* soundeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A18166D5B680054E77F /* soundeffect.cpp */; };
+		2B1712D31686A98C002E9493 /* specialdb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A1A166D5B680054E77F /* specialdb.cpp */; };
 		2B1712D41686A98C002E9493 /* spritedef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A1C166D5B680054E77F /* spritedef.cpp */; };
 		2B1712D51686A98C002E9493 /* subimage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A1E166D5B680054E77F /* subimage.cpp */; };
 		2B1712D61686A98C002E9493 /* wallpaper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A20166D5B680054E77F /* wallpaper.cpp */; };
@@ -363,6 +368,7 @@
 		2B1712FC1686A98C002E9493 /* libphysfs.2.0.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4DA8166D99320054E77F /* libphysfs.2.0.2.dylib */; };
 		2B1712FD1686A98C002E9493 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */; };
 		2B1712FE1686A98C002E9493 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */; };
+		2B1712FF1686A98C002E9493 /* libpng15.15.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */; };
 		2B1713001686A98C002E9493 /* libSDL_gfx.14.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */; };
 		2B1713011686A98C002E9493 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */; };
 		2B1713021686A98C002E9493 /* libz.1.2.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */; };
@@ -402,10 +408,6 @@
 		2B1713291686A98C002E9493 /* libfreetype.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */; };
 		2B17132A1686A98C002E9493 /* libiconv.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */; };
 		2B43647A16AB8BE40034DAC2 /* setuptouchitem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B43647816AB8BE40034DAC2 /* setuptouchitem.cpp */; };
-		2B7A5E5D16D82A3E0020A1C1 /* physfstools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */; };
-		2B7A5E5E16D82A3E0020A1C1 /* physfstools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */; };
-		2B7A5E6116D82C010020A1C1 /* gmtab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */; };
-		2B7A5E6216D82C010020A1C1 /* gmtab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */; };
 		2B8B70CB167EBCB3003A8440 /* popuplist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B70C9167EBCB3003A8440 /* popuplist.cpp */; };
 		2B8B70CE167EBE3A003A8440 /* setup_touch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B70CC167EBE3A003A8440 /* setup_touch.cpp */; };
 		2BAC2B44166DB4B300874178 /* manaplus.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC2B43166DB4B300874178 /* manaplus.icns */; };
@@ -444,10 +446,16 @@
 		2BDF4A81166D5B690054E77F /* animationdelayload.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4760166D5B680054E77F /* animationdelayload.cpp */; };
 		2BDF4A82166D5B690054E77F /* animationparticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4762166D5B680054E77F /* animationparticle.cpp */; };
 		2BDF4A83166D5B690054E77F /* animationparticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4762166D5B680054E77F /* animationparticle.cpp */; };
+		2BDF4A84166D5B690054E77F /* auctionmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4764166D5B680054E77F /* auctionmanager.cpp */; };
+		2BDF4A85166D5B690054E77F /* auctionmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4764166D5B680054E77F /* auctionmanager.cpp */; };
 		2BDF4A86166D5B690054E77F /* avatar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4766166D5B680054E77F /* avatar.cpp */; };
 		2BDF4A87166D5B690054E77F /* avatar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4766166D5B680054E77F /* avatar.cpp */; };
 		2BDF4A88166D5B690054E77F /* being.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4768166D5B680054E77F /* being.cpp */; };
 		2BDF4A89166D5B690054E77F /* being.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4768166D5B680054E77F /* being.cpp */; };
+		2BDF4A8A166D5B690054E77F /* channel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF476A166D5B680054E77F /* channel.cpp */; };
+		2BDF4A8B166D5B690054E77F /* channel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF476A166D5B680054E77F /* channel.cpp */; };
+		2BDF4A8C166D5B690054E77F /* channelmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF476C166D5B680054E77F /* channelmanager.cpp */; };
+		2BDF4A8D166D5B690054E77F /* channelmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF476C166D5B680054E77F /* channelmanager.cpp */; };
 		2BDF4A8E166D5B690054E77F /* chatlogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF476E166D5B680054E77F /* chatlogger.cpp */; };
 		2BDF4A8F166D5B690054E77F /* chatlogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF476E166D5B680054E77F /* chatlogger.cpp */; };
 		2BDF4A90166D5B690054E77F /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4770166D5B680054E77F /* client.cpp */; };
@@ -630,6 +638,8 @@
 		2BDF4B47166D5B690054E77F /* browserbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF482D166D5B680054E77F /* browserbox.cpp */; };
 		2BDF4B4A166D5B690054E77F /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4830166D5B680054E77F /* button.cpp */; };
 		2BDF4B4B166D5B690054E77F /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4830166D5B680054E77F /* button.cpp */; };
+		2BDF4B4C166D5B690054E77F /* channeltab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4832166D5B680054E77F /* channeltab.cpp */; };
+		2BDF4B4D166D5B690054E77F /* channeltab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4832166D5B680054E77F /* channeltab.cpp */; };
 		2BDF4B4E166D5B690054E77F /* chattab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4834166D5B680054E77F /* chattab.cpp */; };
 		2BDF4B4F166D5B690054E77F /* chattab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4834166D5B680054E77F /* chattab.cpp */; };
 		2BDF4B50166D5B690054E77F /* checkbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4836166D5B680054E77F /* checkbox.cpp */; };
@@ -1056,6 +1066,8 @@
 		2BDF4CF7166D5B690054E77F /* sdlmusic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A16166D5B680054E77F /* sdlmusic.cpp */; };
 		2BDF4CF8166D5B690054E77F /* soundeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A18166D5B680054E77F /* soundeffect.cpp */; };
 		2BDF4CF9166D5B690054E77F /* soundeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A18166D5B680054E77F /* soundeffect.cpp */; };
+		2BDF4CFA166D5B690054E77F /* specialdb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A1A166D5B680054E77F /* specialdb.cpp */; };
+		2BDF4CFB166D5B690054E77F /* specialdb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A1A166D5B680054E77F /* specialdb.cpp */; };
 		2BDF4CFC166D5B690054E77F /* spritedef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A1C166D5B680054E77F /* spritedef.cpp */; };
 		2BDF4CFD166D5B690054E77F /* spritedef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A1C166D5B680054E77F /* spritedef.cpp */; };
 		2BDF4CFE166D5B690054E77F /* subimage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4A1E166D5B680054E77F /* subimage.cpp */; };
@@ -1144,6 +1156,7 @@
 		2BDF4D85166D7F120054E77F /* SDL.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 2BDF4D4E166D5D9E0054E77F /* SDL.framework */; };
 		2BDF4D97166D8E0D0054E77F /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */; };
 		2BDF4D98166D8E0D0054E77F /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */; };
+		2BDF4D9B166D8E0D0054E77F /* libpng15.15.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */; };
 		2BDF4D9C166D8E0D0054E77F /* libSDL_gfx.14.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */; };
 		2BDF4D9D166D8E0D0054E77F /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */; };
 		2BDF4D9E166D8E0D0054E77F /* libz.1.2.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */; };
@@ -1257,10 +1270,6 @@
 		2B43647816AB8BE40034DAC2 /* setuptouchitem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = setuptouchitem.cpp; sourceTree = "<group>"; };
 		2B43647916AB8BE40034DAC2 /* setuptouchitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setuptouchitem.h; sourceTree = "<group>"; };
 		2B57D0AD16D81F1800F0B9D0 /* libpng15.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng15.a; path = libs/libpng15.a; sourceTree = "<group>"; };
-		2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = physfstools.cpp; sourceTree = "<group>"; };
-		2B7A5E5C16D82A3E0020A1C1 /* physfstools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = physfstools.h; sourceTree = "<group>"; };
-		2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gmtab.cpp; sourceTree = "<group>"; };
-		2B7A5E6016D82C010020A1C1 /* gmtab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gmtab.h; sourceTree = "<group>"; };
 		2B8B70C9167EBCB3003A8440 /* popuplist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = popuplist.cpp; sourceTree = "<group>"; };
 		2B8B70CA167EBCB3003A8440 /* popuplist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popuplist.h; sourceTree = "<group>"; };
 		2B8B70CC167EBE3A003A8440 /* setup_touch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = setup_touch.cpp; sourceTree = "<group>"; };
@@ -2082,6 +2091,7 @@
 		2BDF4D75166D781C0054E77F /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = "<group>"; };
 		2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = libs/libfreetype.6.dylib; sourceTree = "<group>"; };
 		2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = libs/libiconv.2.dylib; sourceTree = "<group>"; };
+		2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng15.15.dylib; path = libs/libpng15.15.dylib; sourceTree = "<group>"; };
 		2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL_gfx.14.dylib; path = libs/libSDL_gfx.14.dylib; sourceTree = "<group>"; };
 		2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = libs/libxml2.2.dylib; sourceTree = "<group>"; };
 		2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.7.dylib; path = libs/libz.1.2.7.dylib; sourceTree = "<group>"; };
@@ -2096,6 +2106,7 @@
 				2B1712FC1686A98C002E9493 /* libphysfs.2.0.2.dylib in Frameworks */,
 				2B1712FD1686A98C002E9493 /* libfreetype.6.dylib in Frameworks */,
 				2B1712FE1686A98C002E9493 /* libiconv.2.dylib in Frameworks */,
+				2B1712FF1686A98C002E9493 /* libpng15.15.dylib in Frameworks */,
 				2B1713001686A98C002E9493 /* libSDL_gfx.14.dylib in Frameworks */,
 				2B1713011686A98C002E9493 /* libxml2.2.dylib in Frameworks */,
 				2B1713021686A98C002E9493 /* libz.1.2.7.dylib in Frameworks */,
@@ -2117,6 +2128,7 @@
 				2BDF4DA9166D99330054E77F /* libphysfs.2.0.2.dylib in Frameworks */,
 				2BDF4D97166D8E0D0054E77F /* libfreetype.6.dylib in Frameworks */,
 				2BDF4D98166D8E0D0054E77F /* libiconv.2.dylib in Frameworks */,
+				2BDF4D9B166D8E0D0054E77F /* libpng15.15.dylib in Frameworks */,
 				2BDF4D9C166D8E0D0054E77F /* libSDL_gfx.14.dylib in Frameworks */,
 				2BDF4D9D166D8E0D0054E77F /* libxml2.2.dylib in Frameworks */,
 				2BDF4D9E166D8E0D0054E77F /* libz.1.2.7.dylib in Frameworks */,
@@ -2190,6 +2202,7 @@
 				2BDF4DA8166D99320054E77F /* libphysfs.2.0.2.dylib */,
 				2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */,
 				2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */,
+				2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */,
 				2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */,
 				2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */,
 				2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */,
@@ -2605,8 +2618,6 @@
 		2BDF4828166D5B680054E77F /* widgets */ = {
 			isa = PBXGroup;
 			children = (
-				2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */,
-				2B7A5E6016D82C010020A1C1 /* gmtab.h */,
 				2B43647816AB8BE40034DAC2 /* setuptouchitem.cpp */,
 				2B43647916AB8BE40034DAC2 /* setuptouchitem.h */,
 				2B8B70C9167EBCB3003A8440 /* popuplist.cpp */,
@@ -3169,8 +3180,6 @@
 		2BDF4A4A166D5B680054E77F /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */,
-				2B7A5E5C16D82A3E0020A1C1 /* physfstools.h */,
 				2BDF4A4B166D5B680054E77F /* base64.cpp */,
 				2BDF4A4C166D5B680054E77F /* base64.h */,
 				2BDF4A4D166D5B680054E77F /* checkutils.cpp */,
@@ -3464,8 +3473,11 @@
 				2B17119A1686A98C002E9493 /* animatedsprite.cpp in Sources */,
 				2B17119B1686A98C002E9493 /* animationdelayload.cpp in Sources */,
 				2B17119C1686A98C002E9493 /* animationparticle.cpp in Sources */,
+				2B17119D1686A98C002E9493 /* auctionmanager.cpp in Sources */,
 				2B17119E1686A98C002E9493 /* avatar.cpp in Sources */,
 				2B17119F1686A98C002E9493 /* being.cpp in Sources */,
+				2B1711A01686A98C002E9493 /* channel.cpp in Sources */,
+				2B1711A11686A98C002E9493 /* channelmanager.cpp in Sources */,
 				2B1711A21686A98C002E9493 /* chatlogger.cpp in Sources */,
 				2B1711A31686A98C002E9493 /* client.cpp in Sources */,
 				2B1711A41686A98C002E9493 /* commandhandler.cpp in Sources */,
@@ -3557,6 +3569,7 @@
 				2B1711FA1686A98C002E9493 /* battletab.cpp in Sources */,
 				2B1711FB1686A98C002E9493 /* browserbox.cpp in Sources */,
 				2B1711FC1686A98C002E9493 /* button.cpp in Sources */,
+				2B1711FD1686A98C002E9493 /* channeltab.cpp in Sources */,
 				2B1711FE1686A98C002E9493 /* chattab.cpp in Sources */,
 				2B1711FF1686A98C002E9493 /* checkbox.cpp in Sources */,
 				2B1712001686A98C002E9493 /* container.cpp in Sources */,
@@ -3770,6 +3783,7 @@
 				2B1712D01686A98C002E9493 /* sdlimagehelper.cpp in Sources */,
 				2B1712D11686A98C002E9493 /* sdlmusic.cpp in Sources */,
 				2B1712D21686A98C002E9493 /* soundeffect.cpp in Sources */,
+				2B1712D31686A98C002E9493 /* specialdb.cpp in Sources */,
 				2B1712D41686A98C002E9493 /* spritedef.cpp in Sources */,
 				2B1712D51686A98C002E9493 /* subimage.cpp in Sources */,
 				2B1712D61686A98C002E9493 /* wallpaper.cpp in Sources */,
@@ -3810,8 +3824,6 @@
 				2B1712F91686A98C002E9493 /* popuplist.cpp in Sources */,
 				2B1712FA1686A98C002E9493 /* setup_touch.cpp in Sources */,
 				2BDFBEA016AB8D6B00D25914 /* setuptouchitem.cpp in Sources */,
-				2B7A5E5E16D82A3E0020A1C1 /* physfstools.cpp in Sources */,
-				2B7A5E6216D82C010020A1C1 /* gmtab.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3827,8 +3839,11 @@
 				2BDF4A7E166D5B690054E77F /* animatedsprite.cpp in Sources */,
 				2BDF4A80166D5B690054E77F /* animationdelayload.cpp in Sources */,
 				2BDF4A82166D5B690054E77F /* animationparticle.cpp in Sources */,
+				2BDF4A84166D5B690054E77F /* auctionmanager.cpp in Sources */,
 				2BDF4A86166D5B690054E77F /* avatar.cpp in Sources */,
 				2BDF4A88166D5B690054E77F /* being.cpp in Sources */,
+				2BDF4A8A166D5B690054E77F /* channel.cpp in Sources */,
+				2BDF4A8C166D5B690054E77F /* channelmanager.cpp in Sources */,
 				2BDF4A8E166D5B690054E77F /* chatlogger.cpp in Sources */,
 				2BDF4A90166D5B690054E77F /* client.cpp in Sources */,
 				2BDF4A92166D5B690054E77F /* commandhandler.cpp in Sources */,
@@ -3920,6 +3935,7 @@
 				2BDF4B44166D5B690054E77F /* battletab.cpp in Sources */,
 				2BDF4B46166D5B690054E77F /* browserbox.cpp in Sources */,
 				2BDF4B4A166D5B690054E77F /* button.cpp in Sources */,
+				2BDF4B4C166D5B690054E77F /* channeltab.cpp in Sources */,
 				2BDF4B4E166D5B690054E77F /* chattab.cpp in Sources */,
 				2BDF4B50166D5B690054E77F /* checkbox.cpp in Sources */,
 				2BDF4B52166D5B690054E77F /* container.cpp in Sources */,
@@ -4133,6 +4149,7 @@
 				2BDF4CF4166D5B690054E77F /* sdlimagehelper.cpp in Sources */,
 				2BDF4CF6166D5B690054E77F /* sdlmusic.cpp in Sources */,
 				2BDF4CF8166D5B690054E77F /* soundeffect.cpp in Sources */,
+				2BDF4CFA166D5B690054E77F /* specialdb.cpp in Sources */,
 				2BDF4CFC166D5B690054E77F /* spritedef.cpp in Sources */,
 				2BDF4CFE166D5B690054E77F /* subimage.cpp in Sources */,
 				2BDF4D00166D5B690054E77F /* wallpaper.cpp in Sources */,
@@ -4173,8 +4190,6 @@
 				2B8B70CB167EBCB3003A8440 /* popuplist.cpp in Sources */,
 				2B8B70CE167EBE3A003A8440 /* setup_touch.cpp in Sources */,
 				2B43647A16AB8BE40034DAC2 /* setuptouchitem.cpp in Sources */,
-				2B7A5E5D16D82A3E0020A1C1 /* physfstools.cpp in Sources */,
-				2B7A5E6116D82C010020A1C1 /* gmtab.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4190,8 +4205,11 @@
 				2BDF4A7F166D5B690054E77F /* animatedsprite.cpp in Sources */,
 				2BDF4A81166D5B690054E77F /* animationdelayload.cpp in Sources */,
 				2BDF4A83166D5B690054E77F /* animationparticle.cpp in Sources */,
+				2BDF4A85166D5B690054E77F /* auctionmanager.cpp in Sources */,
 				2BDF4A87166D5B690054E77F /* avatar.cpp in Sources */,
 				2BDF4A89166D5B690054E77F /* being.cpp in Sources */,
+				2BDF4A8B166D5B690054E77F /* channel.cpp in Sources */,
+				2BDF4A8D166D5B690054E77F /* channelmanager.cpp in Sources */,
 				2BDF4A8F166D5B690054E77F /* chatlogger.cpp in Sources */,
 				2BDF4A91166D5B690054E77F /* client.cpp in Sources */,
 				2BDF4A93166D5B690054E77F /* commandhandler.cpp in Sources */,
@@ -4283,6 +4301,7 @@
 				2BDF4B45166D5B690054E77F /* battletab.cpp in Sources */,
 				2BDF4B47166D5B690054E77F /* browserbox.cpp in Sources */,
 				2BDF4B4B166D5B690054E77F /* button.cpp in Sources */,
+				2BDF4B4D166D5B690054E77F /* channeltab.cpp in Sources */,
 				2BDF4B4F166D5B690054E77F /* chattab.cpp in Sources */,
 				2BDF4B51166D5B690054E77F /* checkbox.cpp in Sources */,
 				2BDF4B53166D5B690054E77F /* container.cpp in Sources */,
@@ -4496,6 +4515,7 @@
 				2BDF4CF5166D5B690054E77F /* sdlimagehelper.cpp in Sources */,
 				2BDF4CF7166D5B690054E77F /* sdlmusic.cpp in Sources */,
 				2BDF4CF9166D5B690054E77F /* soundeffect.cpp in Sources */,
+				2BDF4CFB166D5B690054E77F /* specialdb.cpp in Sources */,
 				2BDF4CFD166D5B690054E77F /* spritedef.cpp in Sources */,
 				2BDF4CFF166D5B690054E77F /* subimage.cpp in Sources */,
 				2BDF4D01166D5B690054E77F /* wallpaper.cpp in Sources */,
