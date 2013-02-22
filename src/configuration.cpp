@@ -365,34 +365,29 @@ int Configuration::getIntValue(const std::string &key) const
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
+                VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<const
-                    VariableData::DataType>(itdef->second->getType());
+                    VariableData::DataType>(data->getType());
                 if (type == VariableData::DATA_INT)
                 {
-                    defaultValue = (static_cast<IntData*>(
-                        itdef->second))->getData();
+                    defaultValue = (static_cast<IntData*>(data))->getData();
                 }
                 else if (type == VariableData::DATA_STRING)
                 {
                     defaultValue = atoi((static_cast<StringData*>(
-                        itdef->second))->getData().c_str());
+                        data))->getData().c_str());
                 }
                 else if (type == VariableData::DATA_BOOL)
                 {
-                    if ((static_cast<BoolData*>(
-                        itdef->second))->getData())
-                    {
+                    if ((static_cast<BoolData*>(data))->getData())
                         defaultValue = 1;
-                    }
                     else
-                    {
                         defaultValue = 0;
-                    }
                 }
                 else if (type == VariableData::DATA_FLOAT)
                 {
                     defaultValue = static_cast<int>(
-                        (static_cast<FloatData*>(itdef->second))->getData());
+                        (static_cast<FloatData*>(data))->getData());
                 }
             }
             else
@@ -416,12 +411,11 @@ int Configuration::resetIntValue(const std::string &key)
     if (mDefaultsData)
     {
         const DefaultsData::const_iterator itdef = mDefaultsData->find(key);
-
-        if (itdef != mDefaultsData->end() && itdef->second
-            && itdef->second->getType() == VariableData::DATA_INT)
+        VariableData *const data = itdef->second;
+        if (itdef != mDefaultsData->end() && data
+            && data->getType() == VariableData::DATA_INT)
         {
-            defaultValue = (static_cast<IntData*>(
-            itdef->second))->getData();
+            defaultValue = (static_cast<IntData*>(data))->getData();
         }
         else
         {
@@ -447,29 +441,24 @@ std::string Configuration::getStringValue(const std::string &key) const
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
+                VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<const
-                    VariableData::DataType>(itdef->second->getType());
+                    VariableData::DataType>(data->getType());
                 if (type == VariableData::DATA_STRING)
                 {
-                    defaultValue = (static_cast<StringData*>(
-                        itdef->second))->getData();
+                    defaultValue = (static_cast<StringData*>(data))->getData();
                 }
                 else if (type == VariableData::DATA_BOOL)
                 {
-                    if ((static_cast<BoolData*>(
-                        itdef->second))->getData())
-                    {
+                    if ((static_cast<BoolData*>(data))->getData())
                         defaultValue = "1";
-                    }
                     else
-                    {
                         defaultValue = "0";
-                    }
                 }
                 else if (type == VariableData::DATA_INT)
                 {
                     defaultValue = toString((static_cast<IntData*>(
-                        itdef->second))->getData());
+                        data))->getData());
                 }
             }
             else
@@ -501,35 +490,30 @@ float Configuration::getFloatValue(const std::string &key) const
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
+                VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<
-                    VariableData::DataType>(itdef->second->getType());
+                    VariableData::DataType>(data->getType());
                 if (type == VariableData::DATA_FLOAT)
                 {
                     defaultValue = static_cast<float>(
-                        (static_cast<FloatData*>(itdef->second))->getData());
+                        (static_cast<FloatData*>(data))->getData());
                 }
                 else if (type == VariableData::DATA_STRING)
                 {
                     defaultValue = static_cast<float>(atof((
-                        static_cast<StringData*>(
-                        itdef->second))->getData().c_str()));
+                        static_cast<StringData*>(data))->getData().c_str()));
                 }
                 else if (type == VariableData::DATA_BOOL)
                 {
-                    if ((static_cast<BoolData*>(
-                        itdef->second))->getData())
-                    {
+                    if ((static_cast<BoolData*>(data))->getData())
                         defaultValue = 1;
-                    }
                     else
-                    {
                         defaultValue = 0;
-                    }
                 }
                 else if (type == VariableData::DATA_INT)
                 {
                     defaultValue = static_cast<float>((static_cast<IntData*>(
-                        itdef->second))->getData());
+                        data))->getData());
                 }
             }
             else
@@ -560,41 +544,31 @@ bool Configuration::getBoolValue(const std::string &key) const
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
+                VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<
-                    VariableData::DataType>(itdef->second->getType());
+                    VariableData::DataType>(data->getType());
                 if (type == VariableData::DATA_BOOL)
                 {
-                    defaultValue = (static_cast<BoolData*>(
-                        itdef->second))->getData();
+                    defaultValue = (static_cast<BoolData*>(data))->getData();
                 }
                 else if (type == VariableData::DATA_INT)
                 {
-                    if ((static_cast<IntData*>(
-                        itdef->second))->getData() != 0)
-                    {
+                    if ((static_cast<IntData*>(data))->getData() != 0)
                         defaultValue = true;
-                    }
                     else
-                    {
                         defaultValue = false;
-                    }
                 }
                 else if (type == VariableData::DATA_STRING)
                 {
-                    if ((static_cast<StringData*>(
-                        itdef->second))->getData() != "0")
-                    {
+                    if ((static_cast<StringData*>(data))->getData() != "0")
                         defaultValue = true;
-                    }
                     else
-                    {
                         defaultValue = false;
-                    }
                 }
                 if (type == VariableData::DATA_FLOAT)
                 {
                     if (static_cast<int>((static_cast<FloatData*>(
-                        itdef->second))->getData()) != 0)
+                        data))->getData()) != 0)
                     {
                         defaultValue = true;
                     }
@@ -626,12 +600,12 @@ bool Configuration::resetBoolValue(const std::string &key)
     if (mDefaultsData)
     {
         const DefaultsData::const_iterator itdef = mDefaultsData->find(key);
+        VariableData *const data = itdef->second;
 
-        if (itdef != mDefaultsData->end() && itdef->second
-            && itdef->second->getType() == VariableData::DATA_BOOL)
+        if (itdef != mDefaultsData->end() && data
+            && data->getType() == VariableData::DATA_BOOL)
         {
-            defaultValue = (static_cast<BoolData*>(
-                itdef->second))->getData();
+            defaultValue = (static_cast<BoolData*>(data))->getData();
         }
         else
         {
@@ -654,8 +628,8 @@ void ConfigurationObject::initFromXML(const XmlNodePtr parent_node)
         if (xmlNameEqual(node, "list"))
         {
             // list option handling
-
-            std::string name = XML::getProperty(node, "name", std::string());
+            const std::string name = XML::getProperty(node,
+                "name", std::string());
 
             for_each_xml_child_node(subnode, node)
             {
@@ -663,9 +637,7 @@ void ConfigurationObject::initFromXML(const XmlNodePtr parent_node)
                     && subnode->type == XML_ELEMENT_NODE)
                 {
                     ConfigurationObject *const cobj = new ConfigurationObject;
-
                     cobj->initFromXML(subnode); // recurse
-
                     mContainerOptions[name].push_back(cobj);
                 }
             }
@@ -674,12 +646,13 @@ void ConfigurationObject::initFromXML(const XmlNodePtr parent_node)
         else if (xmlNameEqual(node, "option"))
         {
             // single option handling
-
-            std::string name = XML::getProperty(node, "name", std::string());
-            std::string value = XML::getProperty(node, "value", std::string());
-
+            const std::string name = XML::getProperty(node,
+                "name", std::string());
             if (!name.empty())
-                mOptions[name] = value;
+            {
+                mOptions[name] = XML::getProperty(node,
+                    "value", std::string());
+            }
         } // otherwise ignore
     }
 }
@@ -699,10 +672,10 @@ void Configuration::init(const std::string &filename, const bool useResManager)
     else
     {
         mConfigPath = filename;
-        logger->log("init 1");
+        logger->log1("init 1");
         mDirectory = getRealPath(getFileDir(filename));
     }
-    logger->log("init 2");
+    logger->log1("init 2");
 
     if (!doc.rootNode())
     {
@@ -783,7 +756,7 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
 void Configuration::write()
 {
     // Do not attempt to write to file that cannot be opened for writing
-    FILE *testFile = fopen(mConfigPath.c_str(), "w");
+    FILE *const testFile = fopen(mConfigPath.c_str(), "w");
     if (!testFile)
     {
         logger->log("Configuration::write() couldn't open %s for writing",

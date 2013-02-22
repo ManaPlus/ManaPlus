@@ -149,11 +149,11 @@ class ConfigurationObject
 
             for (IT it = begin; it != end; it++)
             {
-                ConfigurationObject *wrobj
+                ConfigurationObject *const wrobj
                     = manager->writeConfigItem(*it, nextobj);
                 if (wrobj)
                 { // wrote something
-                    assert (wrobj == nextobj);
+//                    assert (wrobj == nextobj);
                     nextobj = new ConfigurationObject;
                     list->push_back(wrobj);
                 }
@@ -181,7 +181,7 @@ class ConfigurationObject
         CONT getList(const std::string &name, CONT empty,
                      ConfigurationListManager<T, CONT> *manager)
         {
-            ConfigurationList *list = &(mContainerOptions[name]);
+            ConfigurationList *const list = &(mContainerOptions[name]);
             CONT container = empty;
 
             if (!manager)
