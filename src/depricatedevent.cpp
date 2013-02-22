@@ -40,71 +40,68 @@ DepricatedEvent::~DepricatedEvent()
 }
 
 void DepricatedEvent::setInt(const std::string &key, const int value)
-                             throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
-        throw KEY_ALREADY_EXISTS;
+        delete mData[key];
 
     mData[key] = new IntData(value);
 }
 
 int DepricatedEvent::getInt(const std::string &key) const
-                            throw (BadDepricatedEvent)
 {
     const VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())
-        throw BAD_KEY;
+        return 0;
 
-    if (!it->second || it->second->getType() != VariableData::DATA_INT)
-        throw BAD_VALUE;
+    VariableData *const data = it->second;
+    if (!data || data->getType() != VariableData::DATA_INT)
+        return 0;
 
-    return static_cast<IntData *>(it->second)->getData();
+    return static_cast<IntData *>(data)->getData();
 }
 
 void DepricatedEvent::setString(const std::string &key,
                                 const std::string &value)
-                                throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
-        throw KEY_ALREADY_EXISTS;
+        delete mData[key];
 
     mData[key] = new StringData(value);
 }
 
-const std::string &DepricatedEvent::getString(const std::string &key)
-                                    const throw (BadDepricatedEvent)
+const std::string &DepricatedEvent::getString(const std::string &key) const
 {
     const VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())
-        throw BAD_KEY;
+        return "";
 
-    if (!it->second || it->second->getType() != VariableData::DATA_STRING)
-        throw BAD_VALUE;
+    VariableData *const data = it->second;
+    if (!data || data->getType() != VariableData::DATA_STRING)
+        return "";
 
-    return static_cast<StringData *>(it->second)->getData();
+    return static_cast<StringData *>(data)->getData();
 }
 
 
 void DepricatedEvent::setFloat(const std::string &key, const double value)
-                               throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
-        throw KEY_ALREADY_EXISTS;
+        delete mData[key];
 
     mData[key] = new FloatData(value);
 }
 
 double DepricatedEvent::getFloat(const std::string &key) const
-                                 throw (BadDepricatedEvent)
 {
     const VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())
-        throw BAD_KEY;
+        return 0;
 
-    if (!it->second || it->second->getType() != VariableData::DATA_FLOAT)
-        throw BAD_VALUE;
+    VariableData *const data = it->second;
+    if (!data || data->getType() != VariableData::DATA_FLOAT)
+        return 0;
 
-    return static_cast<FloatData *>(it->second)->getData();
+    return static_cast<FloatData *>(data)->getData();
 }
 
 void DepricatedEvent::trigger(const Channels channel,
