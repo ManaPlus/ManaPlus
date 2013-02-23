@@ -166,7 +166,7 @@ bool Graphics::setOpenGLMode()
     // Setup OpenGL
     glViewport(0, 0, mWidth, mHeight);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
-    int gotDoubleBuffer;
+    int gotDoubleBuffer = 0;
     SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &gotDoubleBuffer);
     logger->log("Using OpenGL %s double buffering.",
                 (gotDoubleBuffer ? "with" : "without"));
@@ -389,7 +389,8 @@ bool Graphics::drawRescaledImage(const Image *const image, int srcX, int srcY,
     if (!image->mSDLSurface)
         return false;
 
-    Image *tmpImage = image->SDLgetScaledImage(desiredWidth, desiredHeight);
+    Image *const tmpImage = image->SDLgetScaledImage(
+        desiredWidth, desiredHeight);
 
     if (!tmpImage)
         return false;
@@ -513,7 +514,8 @@ void Graphics::drawRescaledImagePattern(const Image *const image,
     if (scaledHeight == 0 || scaledWidth == 0)
         return;
 
-    Image *tmpImage = image->SDLgetScaledImage(scaledWidth, scaledHeight);
+    Image *const tmpImage = image->SDLgetScaledImage(
+        scaledWidth, scaledHeight);
     if (!tmpImage)
         return;
 
@@ -571,30 +573,24 @@ void Graphics::drawImageRect(const int x, const int y,
     // Draw the center area
     if (center && drawMain)
     {
-        drawImagePattern(center,
-            topLeft->getWidth() + x, topLeft->getHeight() + y,
-            w - topLeft->getWidth() - topRight->getWidth(),
-            h - topLeft->getHeight() - bottomLeft->getHeight());
+        const int tlw = topLeft->getWidth();
+        const int tlh = topLeft->getHeight();
+        drawImagePattern(center, tlw + x, tlh + y,
+            w - tlw - topRight->getWidth(),
+            h - tlh - bottomLeft->getHeight());
     }
 
     // Draw the sides
     if (top && left && bottom && right)
     {
-        drawImagePattern(top,
-            x + left->getWidth(), y,
-            w - left->getWidth() - right->getWidth(), top->getHeight());
-        drawImagePattern(bottom,
-            x + left->getWidth(), h - bottom->getHeight() + y,
-            w - left->getWidth() - right->getWidth(),
-            bottom->getHeight());
-        drawImagePattern(left,
-            x, y + top->getHeight(),
-            left->getWidth(),
-            h - top->getHeight() - bottom->getHeight());
-        drawImagePattern(right,
-            x + w - right->getWidth(), top->getHeight() + y,
-            right->getWidth(),
-            h - top->getHeight() - bottom->getHeight());
+        const int lw = left->getWidth();
+        const int rw = right->getWidth();
+        const int th = top->getHeight();
+        const int bh = bottom->getHeight();
+        drawImagePattern(top, x + lw, y, w - lw - rw, th);
+        drawImagePattern(bottom, x + lw, h - bh + y, w - lw - rw, bh);
+        drawImagePattern(left, x, y + th, lw, h - th - bh);
+        drawImagePattern(right, x + w - rw, th + y, rw, h - th - bh);
     }
     // Draw the corners
     if (drawMain)
@@ -643,29 +639,23 @@ bool Graphics::calcImageRect(ImageVertexes *const vert,
     // Draw the center area
     if (center && drawMain)
     {
-        calcImagePattern(vert, center,
-            topLeft->getWidth() + x, topLeft->getHeight() + y,
-            w - topLeft->getWidth() - topRight->getWidth(),
-            h - topLeft->getHeight() - bottomLeft->getHeight());
+        const int tlw = topLeft->getWidth();
+        const int tlh = topLeft->getHeight();
+        calcImagePattern(vert, center, tlw + x, tlh + y,
+            w - tlw - topRight->getWidth(),
+            h - tlh - bottomLeft->getHeight());
     }
     // Draw the sides
     if (top && left && bottom && right)
     {
-        calcImagePattern(vert, top,
-            x + left->getWidth(), y,
-            w - left->getWidth() - right->getWidth(), top->getHeight());
-        calcImagePattern(vert, bottom,
-            x + left->getWidth(), y + h - bottom->getHeight(),
-            w - left->getWidth() - right->getWidth(),
-            bottom->getHeight());
-        calcImagePattern(vert, left,
-            x, y + top->getHeight(),
-            left->getWidth(),
-            h - top->getHeight() - bottom->getHeight());
-        calcImagePattern(vert, right,
-            x + w - right->getWidth(), y + top->getHeight(),
-            right->getWidth(),
-            h - top->getHeight() - bottom->getHeight());
+        const int lw = left->getWidth();
+        const int rw = right->getWidth();
+        const int th = top->getHeight();
+        const int bh = bottom->getHeight();
+        calcImagePattern(vert, top, x + lw, y, w - lw - rw, th);
+        calcImagePattern(vert, bottom, x + lw, y + h - bh, w - lw - rw, bh);
+        calcImagePattern(vert, left, x, y + th, lw, h - th - bh);
+        calcImagePattern(vert, right, x + w - rw, y + th, rw, h - th - bh);
     }
 
     calcTile(vert, topLeft, x, y);
@@ -939,8 +929,6 @@ int Graphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
     /* clip the source rectangle to the source surface */
     if (srcrect)
     {
-        int maxw, maxh;
-
         srcx = srcrect->x;
         w = srcrect->w;
         if (srcx < 0)
@@ -949,7 +937,7 @@ int Graphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
             dstrect->x -= static_cast<int16_t>(srcx);
             srcx = 0;
         }
-        maxw = src->w - srcx;
+        int maxw = src->w - srcx;
         if (maxw < w)
             w = maxw;
 
@@ -961,7 +949,7 @@ int Graphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
             dstrect->y -= static_cast<int16_t>(srcy);
             srcy = 0;
         }
-        maxh = src->h - srcy;
+        int maxh = src->h - srcy;
         if (maxh < h)
             h = maxh;
     }
@@ -976,9 +964,7 @@ int Graphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
     /* clip the destination rectangle against the clip rectangle */
     {
         const SDL_Rect *const clip = &dst->clip_rect;
-        int dx, dy;
-
-        dx = clip->x - dstrect->x;
+        int dx = clip->x - dstrect->x;
         if (dx > 0)
         {
             w -= dx;
@@ -989,7 +975,7 @@ int Graphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
         if (dx > 0)
             w -= dx;
 
-        dy = clip->y - dstrect->y;
+        int dy = clip->y - dstrect->y;
         if (dy > 0)
         {
             h -= dy;
