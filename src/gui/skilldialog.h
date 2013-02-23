@@ -32,6 +32,7 @@
 #include <vector>
 
 const int SKILL_MIN_ID = 200000;
+const int SKILL_VAR_MIN_ID = 1000000;
 
 class Button;
 class Label;
@@ -68,7 +69,7 @@ struct SkillInfo final
     int level;
     std::string skillLevel;
     int skillLevelWidth;
-    unsigned short id;
+    unsigned int id;
     bool modifiable;
     bool visible;
     SkillModel *model;
@@ -144,6 +145,8 @@ class SkillDialog final : public Window, public gcn::ActionListener
         void useItem(const int itemId);
 
         void updateTabSelection();
+
+        void updateQuest(const int var, const int val);
 
     private:
         typedef std::map<int, SkillInfo*> SkillMap;

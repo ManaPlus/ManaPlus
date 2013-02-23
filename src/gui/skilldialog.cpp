@@ -277,6 +277,7 @@ SkillDialog::SkillDialog() :
     setupWindow->registerWindowForReset(this);
 
     mUseButton->setEnabled(false);
+    mIncreaseButton->setEnabled(false);
 
     place(0, 0, mTabs, 5, 5);
     place(0, 5, mPointsLabel, 4);
@@ -316,7 +317,7 @@ void SkillDialog::action(const gcn::ActionEvent &event)
             if (const SkillInfo *const info = tab->getSelectedInfo())
             {
                 mUseButton->setEnabled(info->range > 0);
-
+                mIncreaseButton->setEnabled(info->id < SKILL_VAR_MIN_ID);
                 const int num = itemShortcutWindow->getTabIndex();
                 if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
                     && itemShortcut[num])
@@ -328,6 +329,7 @@ void SkillDialog::action(const gcn::ActionEvent &event)
             else
             {
                 mUseButton->setEnabled(false);
+                mIncreaseButton->setEnabled(false);
             }
         }
     }
@@ -471,14 +473,20 @@ void SkillDialog::loadSkills()
             {
                 if (xmlNameEqual(node, "skill"))
                 {
-                    const int id = atoi(XML::getProperty(
-                        node, "id", "-1").c_str());
+                    int id = XML::getIntProperty(node, "id", -1, -1, 1000000);
+                    if (id == -1)
+                    {
+                        id = XML::getIntProperty(node, "var", -1, -1, 100000);
+                        if (id == -1)
+                            continue;
+                        id += SKILL_VAR_MIN_ID;
+                    }
 
                     SkillInfo *skill = getSkill(id);
                     if (!skill)
                     {
                         skill = new SkillInfo;
-                        skill->id = static_cast<short unsigned>(id);
+                        skill->id = static_cast<unsigned int>(id);
                         skill->modifiable = false;
                         skill->visible = false;
                         skill->model = model;
@@ -497,8 +505,16 @@ void SkillDialog::loadSkills()
 
                     data->name = name;
                     data->setIcon(icon);
-                    data->dispName = strprintf("%s, %d",
-                        name.c_str(), skill->id);
+                    if (skill->id < SKILL_VAR_MIN_ID)
+                    {
+                        data->dispName = strprintf("%s, %d",
+                            name.c_str(), skill->id);
+                    }
+                    else
+                    {
+                        data->dispName = strprintf("%s, (%d)",
+                            name.c_str(), skill->id - SKILL_VAR_MIN_ID);
+                    }
                     data->shortName = XML::langProperty(node,
                         "shortName", name.substr(0, 3));
                     data->description = XML::langProperty(
@@ -558,7 +574,7 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
     if (mDefaultModel)
     {
         SkillInfo *const skill = new SkillInfo;
-        skill->id = static_cast<short unsigned>(id);
+        skill->id = static_cast<unsigned int>(id);
         skill->data->name = "Unknown skill Id: " + toString(id);
         skill->data->dispName = "Unknown skill Id: " + toString(id);
         skill->data->description.clear();
@@ -624,9 +640,31 @@ void SkillDialog::updateTabSelection()
     if (tab)
     {
         if (const SkillInfo *const info = tab->getSelectedInfo())
+        {
             mUseButton->setEnabled(info->range > 0);
+            mIncreaseButton->setEnabled(info->id < SKILL_VAR_MIN_ID);
+        }
         else
+        {
             mUseButton->setEnabled(false);
+        }
+    }
+}
+
+void SkillDialog::updateQuest(const int var, const int val)
+{
+    const int id = var + SKILL_VAR_MIN_ID;
+    const SkillMap::const_iterator it = mSkills.find(id);
+
+    if (it != mSkills.end())
+    {
+        SkillInfo *const info = it->second;
+        if (info)
+        {
+            PlayerInfo::setStatBase(id, val);
+            info->level = val;
+            info->update();
+        }
     }
 }
 
@@ -647,13 +685,9 @@ SkillInfo::~SkillInfo()
 
 void SkillInfo::update()
 {
-    const int baseLevel = PlayerInfo::getStatBase(
-        static_cast<PlayerInfo::Attribute>(id));
-    const int effLevel = PlayerInfo::getStatEffective(
-        static_cast<PlayerInfo::Attribute>(id));
-
-    const std::pair<int, int> exp = PlayerInfo::getStatExperience(
-        static_cast<PlayerInfo::Attribute>(id));
+    const int baseLevel = PlayerInfo::getStatBase(id);
+    const int effLevel = PlayerInfo::getStatEffective(id);
+    const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
 
     if (!modifiable && baseLevel == 0 && effLevel == 0 && exp.second == 0)
     {
@@ -663,7 +697,6 @@ void SkillInfo::update()
             if (model)
                 model->updateVisibilities();
         }
-
         return;
     }
 

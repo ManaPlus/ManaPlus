@@ -103,12 +103,12 @@ namespace PlayerInfo
     /**
      * Returns the value of the given attribute.
      */
-    int getAttribute(const Attribute id) A_WARN_UNUSED;
+    int getAttribute(const int id) A_WARN_UNUSED;
 
     /**
      * Changes the value of the given attribute.
      */
-    void setAttribute(const Attribute id, const int value,
+    void setAttribute(const int id, const int value,
                       const bool notify = true);
 
 // --- Stats ------------------------------------------------------------------
@@ -116,45 +116,45 @@ namespace PlayerInfo
     /**
      * Returns the base value of the given stat.
      */
-    int getStatBase(const Attribute id) A_WARN_UNUSED;
+    int getStatBase(const int id) A_WARN_UNUSED;
 
     /**
      * Changes the base value of the given stat.
      */
-    void setStatBase(const Attribute id, const int value,
+    void setStatBase(const int id, const int value,
                      const bool notify = true);
 
     /**
      * Returns the modifier for the given stat.
      */
-    int getStatMod(const Attribute id) A_WARN_UNUSED;
+    int getStatMod(const int id) A_WARN_UNUSED;
 
     /**
      * Changes the modifier for the given stat.
      */
-    void setStatMod(const Attribute id, const int value,
+    void setStatMod(const int id, const int value,
                     const bool notify = true);
 
     /**
      * Returns the current effective value of the given stat. Effective is base
      * + mod
      */
-    int getStatEffective(const Attribute id) A_WARN_UNUSED;
+    int getStatEffective(const int id) A_WARN_UNUSED;
 
     /**
      * Changes the level of the given stat.
      */
-    void setStatLevel(Attribute id, int value, bool notify = true);
+    void setStatLevel(int id, int value, bool notify = true);
 
     /**
      * Returns the experience of the given stat.
      */
-    std::pair<int, int> getStatExperience(const Attribute id) A_WARN_UNUSED;
+    std::pair<int, int> getStatExperience(const int id) A_WARN_UNUSED;
 
     /**
      * Changes the experience of the given stat.
      */
-    void setStatExperience(const Attribute id, const int have,
+    void setStatExperience(const int id, const int have,
                            const int need, const bool notify = true);
 
 // --- Inventory / Equipment --------------------------------------------------

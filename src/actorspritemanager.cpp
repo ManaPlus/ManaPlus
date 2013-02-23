@@ -1144,10 +1144,8 @@ void ActorSpriteManager::heal(const Being *const target) const
         }
     }
     // magic levels < 2
-    else if (PlayerInfo::getStatEffective(
-             static_cast<PlayerInfo::Attribute>(340)) < 2
-             || PlayerInfo::getStatEffective(
-             static_cast<PlayerInfo::Attribute>(341)) < 2)
+    else if (PlayerInfo::getStatEffective(340) < 2
+             || PlayerInfo::getStatEffective(341) < 2)
     {
         if (PlayerInfo::getAttribute(PlayerInfo::MP) >= 6)
         {

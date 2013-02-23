@@ -22,6 +22,7 @@
 
 #include "localplayer.h"
 
+#include "gui/skilldialog.h"
 #include "gui/questswindow.h"
 
 #include "net/tmwa/protocol.h"
@@ -78,6 +79,8 @@ void QuestHandler::processSetQuestVar(Net::MessageIn &msg A_UNUSED)
         questsWindow->updateQuest(var, val);
         questsWindow->rebuild(true);
     }
+    if (skillDialog)
+        skillDialog->updateQuest(var, val);
 }
 
 void QuestHandler::processPlayerQuests(Net::MessageIn &msg A_UNUSED)
@@ -89,6 +92,8 @@ void QuestHandler::processPlayerQuests(Net::MessageIn &msg A_UNUSED)
         const int val = msg.readInt32();    // value
         if (questsWindow)
             questsWindow->updateQuest(var, val);
+        if (skillDialog)
+            skillDialog->updateQuest(var, val);
     }
     if (questsWindow)
         questsWindow->rebuild(false);

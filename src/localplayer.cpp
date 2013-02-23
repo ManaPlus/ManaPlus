@@ -1697,8 +1697,8 @@ void LocalPlayer::processEvent(Channels channel,
             const int id = event.getInt("id");
             if (id == Net::getPlayerHandler()->getJobLocation())
             {
-                const std::pair<int, int> exp = PlayerInfo::getStatExperience(
-                    static_cast<PlayerInfo::Attribute>(id));
+                const std::pair<int, int> exp
+                    = PlayerInfo::getStatExperience(id);
                 if (event.getInt("oldValue1") > exp.first
                     || !event.getInt("oldValue2"))
                 {
@@ -3272,10 +3272,8 @@ void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
     if (!chatWindow)
         return;
 
-    if (PlayerInfo::getStatEffective(static_cast<PlayerInfo::Attribute>(
-        340)) >= baseMagic
-        && PlayerInfo::getStatEffective(static_cast<PlayerInfo::Attribute>(
-        342)) >= schoolMagic)
+    if (PlayerInfo::getStatEffective(340) >= baseMagic
+        && PlayerInfo::getStatEffective(342) >= schoolMagic)
     {
         if (PlayerInfo::getAttribute(PlayerInfo::MP) >= mana)
         {

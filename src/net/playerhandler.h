@@ -66,10 +66,9 @@ class PlayerHandler
 
         virtual bool canCorrectAttributes() const = 0;
 
-        virtual PlayerInfo::Attribute getJobLocation() const A_WARN_UNUSED = 0;
+        virtual int getJobLocation() const A_WARN_UNUSED = 0;
 
-        virtual PlayerInfo::Attribute getAttackLocation()
-                                      const A_WARN_UNUSED = 0;
+        virtual int getAttackLocation() const A_WARN_UNUSED = 0;
 
         virtual Vector getDefaultWalkSpeed() const A_WARN_UNUSED = 0;
 

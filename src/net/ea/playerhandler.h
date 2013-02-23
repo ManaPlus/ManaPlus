@@ -49,9 +49,9 @@ class PlayerHandler : public Net::PlayerHandler
 
         Vector getDefaultWalkSpeed() const A_WARN_UNUSED;
 
-        PlayerInfo::Attribute getJobLocation() const A_WARN_UNUSED;
+        int getJobLocation() const A_WARN_UNUSED;
 
-        PlayerInfo::Attribute getAttackLocation() const A_WARN_UNUSED;
+        int getAttackLocation() const A_WARN_UNUSED;
 
         void processWalkResponse(Net::MessageIn &msg);
 

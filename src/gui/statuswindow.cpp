@@ -373,12 +373,10 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
         {
             if (mJobLvlLabel)
             {
-                int lvl = PlayerInfo::getStatBase(
-                    static_cast<PlayerInfo::Attribute>(id));
-
+                int lvl = PlayerInfo::getStatBase(id);
                 const int oldExp = event.getInt("oldValue1");
-                const std::pair<int, int> exp = PlayerInfo::getStatExperience(
-                    static_cast<PlayerInfo::Attribute>(id));
+                const std::pair<int, int> exp
+                    = PlayerInfo::getStatExperience(id);
 
                 if (!lvl)
                 {
@@ -392,8 +390,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
                     {
                         lvl = (exp.second - 20000) / 150;
                         blocked = true;
-                        PlayerInfo::setStatBase(
-                            static_cast<PlayerInfo::Attribute>(id), lvl);
+                        PlayerInfo::setStatBase(id, lvl);
                         blocked = false;
                     }
                 }
@@ -404,10 +401,8 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
                     lvl ++;
                     blocked = true;
                     PlayerInfo::setStatExperience(
-                        static_cast<PlayerInfo::Attribute>(id),
-                        exp.first, 20000 + lvl * 150);
-                    PlayerInfo::setStatBase(
-                        static_cast<PlayerInfo::Attribute>(id), lvl);
+                        id, exp.first, 20000 + lvl * 150);
+                    PlayerInfo::setStatBase(id, lvl);
                     blocked = false;
                 }
 
@@ -589,8 +584,7 @@ void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
 void StatusWindow::updateProgressBar(ProgressBar *const bar, const int id,
                                      const bool percent) const
 {
-    const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
-        static_cast<PlayerInfo::Attribute>(id));
+    const std::pair<int, int> exp =  PlayerInfo::getStatExperience(id);
     updateProgressBar(bar, exp.first, exp.second, percent);
 }
 
@@ -783,10 +777,8 @@ AttrDisplay::~AttrDisplay()
 
 std::string AttrDisplay::update()
 {
-    const int base = PlayerInfo::getStatBase(
-        static_cast<PlayerInfo::Attribute>(mId));
-    const int bonus = PlayerInfo::getStatMod(
-        static_cast<PlayerInfo::Attribute>(mId));
+    const int base = PlayerInfo::getStatBase(mId);
+    const int bonus = PlayerInfo::getStatMod(mId);
     std::string value = toString(base + bonus);
     if (bonus)
         value += strprintf("=%d%+d", base, bonus);
@@ -872,10 +864,8 @@ void ChangeDisplay::action(const gcn::ActionEvent &event)
             PlayerInfo::CHAR_POINTS) + 1;
         PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, newpoints);
 
-        const int newbase = PlayerInfo::getStatBase(
-            static_cast<PlayerInfo::Attribute>(mId)) - 1;
-        PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
-            mId), newbase);
+        const int newbase = PlayerInfo::getStatBase(mId) - 1;
+        PlayerInfo::setStatBase(mId, newbase);
 
         Net::getPlayerHandler()->decreaseAttribute(mId);
     }
@@ -893,10 +883,8 @@ void ChangeDisplay::action(const gcn::ActionEvent &event)
             PlayerInfo::CHAR_POINTS) - cnt;
         PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, newpoints);
 
-        const int newbase = PlayerInfo::getStatBase(
-            static_cast<PlayerInfo::Attribute>(mId)) + cnt;
-        PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
-            mId), newbase);
+        const int newbase = PlayerInfo::getStatBase(mId) + cnt;
+        PlayerInfo::setStatBase(mId, newbase);
 
         for (unsigned f = 0; f < mInc->getClickCount(); f ++)
         {
