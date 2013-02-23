@@ -390,7 +390,8 @@ Game::Game():
     viewport->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
 
     gcn::Container *const top = static_cast<gcn::Container*>(gui->getTop());
-    top->add(viewport);
+    if (top)
+        top->add(viewport);
     viewport->requestMoveToBottom();
 
     AnimatedSprite::setEnableCache(mainGraphics->getOpenGL()
@@ -400,9 +401,7 @@ Game::Game():
         config.getBoolValue("enableCompoundSpriteDelay"));
 
     createGuiWindows();
-
     windowMenu = new WindowMenu(nullptr);
-//    mWindowMenu = windowMenu;
 
     if (windowContainer)
         windowContainer->add(windowMenu);
@@ -413,15 +412,6 @@ Game::Game():
     if (actorSpriteManager)
         actorSpriteManager->setPlayer(player_node);
 
-    /*
-     * To prevent the server from sending data before the client
-     * has initialized, I've modified it to wait for a "ping"
-     * from the client to complete its initialization
-     *
-     * Note: This only affects the latest eAthena version.  This
-     * packet is handled by the older version, but its response
-     * is ignored by the client
-     */
     Net::getGameHandler()->ping(tick_time);
 
     if (setupWindow)
@@ -430,7 +420,6 @@ Game::Game():
 
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
-
 
     DepricatedEvent::trigger(CHANNEL_GAME,
         DepricatedEvent(EVENT_CONSTRUCTED));
@@ -441,12 +430,7 @@ Game::~Game()
     touchManager.setInGame(false);
     config.write();
     serverConfig.write();
-
     resetAdjustLevel();
-
-//    delete mWindowMenu;
-//    mWindowMenu = 0;
-
     destroyGuiWindows();
 
     AnimatedSprite::setEnableCache(false);
@@ -462,14 +446,12 @@ Game::~Game()
     del_0(spellManager)
     del_0(spellShortcut)
     del_0(guildManager)
-    #ifdef USE_MUMBLE
+#ifdef USE_MUMBLE
     del_0(mumbleManager)
-    #endif
+#endif
 
     Being::clearCache();
-
     mInstance = nullptr;
-
     DepricatedEvent::trigger(CHANNEL_GAME,
         DepricatedEvent(EVENT_DESTRUCTED));
 }
@@ -499,13 +481,7 @@ bool Game::createScreenshot()
 
 bool Game::saveScreenshot(SDL_Surface *const screenshot)
 {
-    static unsigned int screenshotCount = 0;
-    // Search for an unused screenshot name
-    std::stringstream filenameSuffix;
-    std::stringstream filename;
-    std::fstream testExists;
     std::string screenshotDirectory = Client::getScreenshotDirectory();
-    bool found = false;
 
     if (mkdir_r(screenshotDirectory.c_str()) != 0)
     {
@@ -515,6 +491,12 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
         screenshotDirectory = std::string(PhysFs::getUserDir());
     }
 
+    // Search for an unused screenshot name
+    std::stringstream filenameSuffix;
+    std::stringstream filename;
+    std::fstream testExists;
+    bool found = false;
+    static unsigned int screenshotCount = 0;
     do
     {
         screenshotCount++;
@@ -656,13 +638,14 @@ void Game::slowLogic()
 void Game::adjustPerfomance()
 {
     FUNC_BLOCK("Game::adjustPerfomance", 1)
+    const int time = cur_time;
     if (mNextAdjustTime <= adjustDelay)
     {
-        mNextAdjustTime = cur_time + adjustDelay;
+        mNextAdjustTime = time + adjustDelay;
     }
-    else if (mNextAdjustTime < static_cast<unsigned>(cur_time))
+    else if (mNextAdjustTime < static_cast<unsigned>(time))
     {
-        mNextAdjustTime = cur_time + adjustDelay;
+        mNextAdjustTime = time + adjustDelay;
 
         if (mAdjustLevel > 3 || !player_node || player_node->getHalfAway()
             || player_node->getAway())
@@ -705,7 +688,7 @@ void Game::adjustPerfomance()
                     }
                     else
                     {
-                        mNextAdjustTime = cur_time + 1;
+                        mNextAdjustTime = time + 1;
                         mLowerCounter = 2;
                     }
                     break;
@@ -714,7 +697,6 @@ void Game::adjustPerfomance()
                     if (Particle::emitterSkip < 4)
                     {
                         Particle::emitterSkip = 4;
-//                        config.setValue("particleEmitterSkip", 3);
                         if (localChatTab)
                         {
                             localChatTab->chatLog("Auto lower Particle "
@@ -723,7 +705,7 @@ void Game::adjustPerfomance()
                     }
                     else
                     {
-                        mNextAdjustTime = cur_time + 1;
+                        mNextAdjustTime = time + 1;
                         mLowerCounter = 2;
                     }
                     break;
@@ -779,6 +761,9 @@ void Game::resetAdjustLevel()
 
 void Game::handleMove()
 {
+    if (!player_node)
+        return;
+
     // Moving player around
     if (player_node->isAlive() && !PlayerInfo::isTalking()
         && chatWindow && !chatWindow->isInputFocused()
@@ -836,9 +821,13 @@ void Game::handleMove()
 
 void Game::moveInDirection(const unsigned char direction)
 {
+    if (!viewport)
+        return;
+
     if (!viewport->getCameraMode())
     {
-        player_node->specialMove(direction);
+        if (player_node)
+            player_node->specialMove(direction);
     }
     else
     {
@@ -869,14 +858,16 @@ void Game::handleActive(const SDL_Event &event)
         if (event.active.gain)
         {   // window restore
             Client::setIsMinimized(false);
-            if (player_node && !player_node->getAway())
-                fpsLimit = config.getIntValue("fpslimit");
             if (player_node)
+            {
+                if (!player_node->getAway())
+                    fpsLimit = config.getIntValue("fpslimit");
                 player_node->setHalfAway(false);
+            }
             setPriority(true);
         }
         else
-        {   // window minimisation
+        {   // window minimization
 #ifdef ANDROID
             Client::setState(STATE_EXIT);
 #else
@@ -1029,16 +1020,6 @@ void Game::changeMap(const std::string &mapPath)
     // Attempt to load the new map
     Map *const newMap = MapReader::readMap(fullMap, realFullMap);
 
-    if (!newMap)
-    {
-/*
-        logger->log("Error while loading %s", fullMap.c_str());
-        new OkDialog(_("Could Not Load Map"), strprintf(
-            _("Error while loading %s"), fullMap.c_str()),
-            DIALOG_ERROR, false);
-*/
-    }
-
     if (mCurrentMap)
         mCurrentMap->saveExtraLayer();
 
@@ -1063,8 +1044,8 @@ void Game::changeMap(const std::string &mapPath)
         newMap->initializeParticleEffects(particleEngine);
 
     // Start playing new music file when necessary
-    std::string oldMusic = mCurrentMap ? mCurrentMap->getMusicFile() : "";
-    std::string newMusic = newMap ? newMap->getMusicFile() : "";
+    const std::string oldMusic = mCurrentMap ? mCurrentMap->getMusicFile() : "";
+    const std::string newMusic = newMap ? newMap->getMusicFile() : "";
     if (newMusic != oldMusic)
     {
         if (newMusic.empty())
@@ -1078,12 +1059,11 @@ void Game::changeMap(const std::string &mapPath)
 
     delete mCurrentMap;
     mCurrentMap = newMap;
-//    mCurrentMap = 0;
 
-    #ifdef USE_MUMBLE
+#ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setMap(mapPath);
-    #endif
+#endif
     DepricatedEvent event(EVENT_MAPLOADED);
     event.setString("mapPath", mapPath);
     DepricatedEvent::trigger(CHANNEL_GAME, event);
@@ -1103,40 +1083,42 @@ void Game::updateHistory(const SDL_Event &event)
         int idx = -1;
         for (int f = 0; f < MAX_LASTKEYS; f ++)
         {
-            if (mLastKeys[f].key == key)
+            LastKey &lastKey = mLastKeys[f];
+            if (lastKey.key == key)
             {
                 idx = f;
                 old = true;
                 break;
             }
-            else if (idx >= 0 && mLastKeys[f].time < mLastKeys[idx].time)
+            else if (idx >= 0 && lastKey.time < mLastKeys[idx].time)
+            {
                 idx = f;
+            }
         }
         if (idx < 0)
         {
             idx = 0;
             for (int f = 0; f < MAX_LASTKEYS; f ++)
             {
-                if (mLastKeys[f].key == -1
-                    ||  mLastKeys[f].time < mLastKeys[idx].time)
-                {
+                LastKey &lastKey = mLastKeys[f];
+                if (lastKey.key == -1 ||  lastKey.time < mLastKeys[idx].time)
                     idx = f;
-                }
             }
         }
 
         if (idx < 0)
             idx = 0;
 
+        LastKey &keyIdx = mLastKeys[idx];
         if (!old)
         {
-            mLastKeys[idx].time = time;
-            mLastKeys[idx].key = key;
-            mLastKeys[idx].cnt = 0;
+            keyIdx.time = time;
+            keyIdx.key = key;
+            keyIdx.cnt = 0;
         }
         else
         {
-            mLastKeys[idx].cnt++;
+            keyIdx.cnt++;
         }
     }
 }
@@ -1149,15 +1131,17 @@ void Game::checkKeys()
     if (!player_node || !player_node->getAttackType())
         return;
 
+    const int time = cur_time;
     for (int f = 0; f < MAX_LASTKEYS; f ++)
     {
-        if (mLastKeys[f].key != -1)
+        LastKey &lastKey = mLastKeys[f];
+        if (lastKey.key != -1)
         {
-            if (mLastKeys[f].time + timeRange < cur_time)
+            if (lastKey.time + timeRange < time)
             {
-                if (mLastKeys[f].cnt > cntInTime)
+                if (lastKey.cnt > cntInTime)
                     mValidSpeed = false;
-                mLastKeys[f].key = -1;
+                lastKey.key = -1;
             }
         }
     }
