@@ -22,10 +22,11 @@
 
 #include "gui/skilldialog.h"
 
+#include "configuration.h"
+#include "effectmanager.h"
 #include "itemshortcut.h"
 #include "localplayer.h"
 #include "playerinfo.h"
-#include "configuration.h"
 
 #include "gui/setup.h"
 #include "gui/shortcutwindow.h"
@@ -665,6 +666,19 @@ void SkillDialog::updateQuest(const int var, const int val)
             info->level = val;
             info->update();
         }
+    }
+}
+
+void SkillDialog::playUpdateEffect(const int id)
+{
+    const int effectId = paths.getIntValue("skillLevelUpEffectId");
+    if (!effectManager || effectId == -1)
+        return;
+    const SkillMap::const_iterator it = mSkills.find(id);
+    if (it != mSkills.end())
+    {
+        if (it->second)
+            effectManager->trigger(effectId, player_node);
     }
 }
 

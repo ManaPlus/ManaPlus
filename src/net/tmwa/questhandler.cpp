@@ -80,7 +80,10 @@ void QuestHandler::processSetQuestVar(Net::MessageIn &msg A_UNUSED)
         questsWindow->rebuild(true);
     }
     if (skillDialog)
+    {
         skillDialog->updateQuest(var, val);
+        skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
+    }
 }
 
 void QuestHandler::processPlayerQuests(Net::MessageIn &msg A_UNUSED)

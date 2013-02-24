@@ -32,7 +32,7 @@
 #include <vector>
 
 const int SKILL_MIN_ID = 200000;
-const int SKILL_VAR_MIN_ID = 1000000;
+const unsigned int SKILL_VAR_MIN_ID = 1000000;
 
 class Button;
 class Label;
@@ -147,6 +147,8 @@ class SkillDialog final : public Window, public gcn::ActionListener
         void updateTabSelection();
 
         void updateQuest(const int var, const int val);
+
+        void playUpdateEffect(const int id);
 
     private:
         typedef std::map<int, SkillInfo*> SkillMap;

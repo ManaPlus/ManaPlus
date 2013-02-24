@@ -384,6 +384,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("afkEffectId", -1);
     AddDEF("newQuestEffectId", -1);
     AddDEF("completeQuestEffectId", -1);
+    AddDEF("skillLevelUpEffectId", -1);
 
     AddDEF("minimaps", "graphics/minimaps/");
     AddDEF("maps", "maps/");
