@@ -48,7 +48,7 @@ class LoginHandler;
 class NpcHandler;
 class PartyHandler;
 class PlayerHandler;
-class SpecialHandler;
+class SkillHandler;
 class TradeHandler;
 class BuySellHandler;
 
@@ -64,7 +64,7 @@ LoginHandler *getLoginHandler() A_WARN_UNUSED;
 NpcHandler *getNpcHandler() A_WARN_UNUSED;
 PartyHandler *getPartyHandler() A_WARN_UNUSED;
 PlayerHandler *getPlayerHandler() A_WARN_UNUSED;
-SpecialHandler *getSpecialHandler() A_WARN_UNUSED;
+SkillHandler *getSkillHandler() A_WARN_UNUSED;
 TradeHandler *getTradeHandler() A_WARN_UNUSED;
 BuySellHandler *getBuySellHandler() A_WARN_UNUSED;
 

@@ -20,34 +20,35 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_SKILLHANDLER_H
-#define NET_EA_SKILLHANDLER_H
+#ifndef NET_TA_SKILLHANDLER_H
+#define NET_TA_SKILLHANDLER_H
 
-#include "net/messagein.h"
 #include "net/net.h"
-#include "net/specialhandler.h"
+#include "net/skillhandler.h"
 
-namespace Ea
+#include "net/ea/skillhandler.h"
+
+#include "net/tmwa/messagehandler.h"
+
+namespace TmwAthena
 {
 
-class SpecialHandler : public Net::SpecialHandler
+class SkillHandler final : public MessageHandler, public Ea::SkillHandler
 {
     public:
-        SpecialHandler();
+        SkillHandler();
 
-        A_DELETE_COPY(SpecialHandler)
+        A_DELETE_COPY(SkillHandler)
 
         void handleMessage(Net::MessageIn &msg);
 
-        void use(int id);
+        void useBeing(int id, int level, int beingId);
 
-        void processPlayerSkills(Net::MessageIn &msg);
+        void usePos(int id, int level, int x, int y);
 
-        void processPlayerSkillUp(Net::MessageIn &msg);
-
-        void processSkillFailed(Net::MessageIn &msg);
+        void useMap(int id, const std::string &map);
 };
 
-} // namespace Ea
+} // namespace TmwAthena
 
-#endif // NET_EA_SKILLHANDLER_H
+#endif // NET_TA_SKILLHANDLER_H

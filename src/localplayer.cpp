@@ -61,7 +61,7 @@
 #include "net/net.h"
 #include "net/partyhandler.h"
 #include "net/playerhandler.h"
-#include "net/specialhandler.h"
+#include "net/skillhandler.h"
 #include "net/tradehandler.h"
 
 #include "resources/imageset.h"

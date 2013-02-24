@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/eathena/specialhandler.h"
+#include "net/eathena/skillhandler.h"
 
 #include "logger.h"
 
@@ -28,14 +28,14 @@
 
 #include "debug.h"
 
-extern Net::SpecialHandler *specialHandler;
+extern Net::SkillHandler *skillHandler;
 
 namespace EAthena
 {
 
-SpecialHandler::SpecialHandler() :
+SkillHandler::SkillHandler() :
     MessageHandler(),
-    Ea::SpecialHandler()
+    Ea::SkillHandler()
 {
     static const uint16_t _messages[] =
     {
@@ -45,10 +45,10 @@ SpecialHandler::SpecialHandler() :
         0
     };
     handledMessages = _messages;
-    specialHandler = this;
+    skillHandler = this;
 }
 
-void SpecialHandler::handleMessage(Net::MessageIn &msg)
+void SkillHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
@@ -69,7 +69,7 @@ void SpecialHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void SpecialHandler::useBeing(int id, int level, int beingId)
+void SkillHandler::useBeing(int id, int level, int beingId)
 {
     MessageOut outMsg(CMSG_SKILL_USE_BEING);
     outMsg.writeInt16(static_cast<int16_t>(id));
@@ -77,7 +77,7 @@ void SpecialHandler::useBeing(int id, int level, int beingId)
     outMsg.writeInt32(beingId);
 }
 
-void SpecialHandler::usePos(int id, int level, int x, int y)
+void SkillHandler::usePos(int id, int level, int x, int y)
 {
     MessageOut outMsg(CMSG_SKILL_USE_POSITION);
     outMsg.writeInt16(static_cast<int16_t>(level));
@@ -86,7 +86,7 @@ void SpecialHandler::usePos(int id, int level, int x, int y)
     outMsg.writeInt16(static_cast<int16_t>(y));
 }
 
-void SpecialHandler::useMap(int id, const std::string &map)
+void SkillHandler::useMap(int id, const std::string &map)
 {
     MessageOut outMsg(CMSG_SKILL_USE_MAP);
     outMsg.writeInt16(static_cast<int16_t>(id));

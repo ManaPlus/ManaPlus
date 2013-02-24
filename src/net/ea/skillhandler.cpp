@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/specialhandler.h"
+#include "net/ea/skillhandler.h"
 
 #include "logger.h"
 #include "localplayer.h"
@@ -68,16 +68,16 @@ static const unsigned int SKILL_FAILED =      0x00;
 namespace Ea
 {
 
-SpecialHandler::SpecialHandler()
+SkillHandler::SkillHandler()
 {
 }
 
-void SpecialHandler::use(int id A_UNUSED)
+void SkillHandler::use(int id A_UNUSED)
 {
     // TODO
 }
 
-void SpecialHandler::processPlayerSkills(Net::MessageIn &msg)
+void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
 {
     msg.readInt16();  // length
     const int skillCount = (msg.getLength() - 4) / 37;
@@ -102,7 +102,7 @@ void SpecialHandler::processPlayerSkills(Net::MessageIn &msg)
     }
 }
 
-void SpecialHandler::processPlayerSkillUp(Net::MessageIn &msg)
+void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg)
 {
     const int skillId = msg.readInt16();
     const int level = msg.readInt16();
@@ -118,7 +118,7 @@ void SpecialHandler::processPlayerSkillUp(Net::MessageIn &msg)
     }
 }
 
-void SpecialHandler::processSkillFailed(Net::MessageIn &msg)
+void SkillHandler::processSkillFailed(Net::MessageIn &msg)
 {
     // Action failed (ex. sit because you have not reached the
     // right level)

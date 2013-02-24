@@ -53,7 +53,7 @@
 #include "net/eathena/playerhandler.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/tradehandler.h"
-#include "net/eathena/specialhandler.h"
+#include "net/eathena/skillhandler.h"
 
 #include "net/eathena/gui/guildtab.h"
 #include "net/eathena/gui/partytab.h"
@@ -87,7 +87,7 @@ GeneralHandler::GeneralHandler() :
     mNpcHandler(new NpcHandler),
     mPartyHandler(new PartyHandler),
     mPlayerHandler(new PlayerHandler),
-    mSpecialHandler(new SpecialHandler),
+    mSkillHandler(new SkillHandler),
     mTradeHandler(new TradeHandler)
 {
     static const uint16_t _messages[] =
@@ -183,7 +183,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mLoginHandler.get());
     mNetwork->registerHandler(mNpcHandler.get());
     mNetwork->registerHandler(mPlayerHandler.get());
-    mNetwork->registerHandler(mSpecialHandler.get());
+    mNetwork->registerHandler(mSkillHandler.get());
     mNetwork->registerHandler(mTradeHandler.get());
     mNetwork->registerHandler(mPartyHandler.get());
 }

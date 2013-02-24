@@ -20,17 +20,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SPECIALHANDLER_H
-#define SPECIALHANDLER_H
+#ifndef SKILLHANDLER_H
+#define SKILLHANDLER_H
 
 #include <iosfwd>
 
 namespace Net
 {
-class SpecialHandler
+class SkillHandler
 {
     public:
-        virtual ~SpecialHandler ()
+        virtual ~SkillHandler ()
         { }
 
         virtual void use(int id) = 0;
@@ -43,4 +43,4 @@ class SpecialHandler
 };
 }
 
-#endif // SPECIALHANDLER_H
+#endif // SKILLHANDLER_H

@@ -41,7 +41,7 @@
 
 #include "net/net.h"
 #include "net/playerhandler.h"
-#include "net/specialhandler.h"
+#include "net/skillhandler.h"
 
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
@@ -345,7 +345,7 @@ void SkillDialog::action(const gcn::ActionEvent &event)
                 const Being *const being = player_node->getTarget();
                 if (being)
                 {
-                    Net::getSpecialHandler()->useBeing(info->level,
+                    Net::getSkillHandler()->useBeing(info->level,
                         info->id, being->getId());
                 }
             }
@@ -627,7 +627,7 @@ void SkillDialog::useItem(const int itemId)
         const Being *const being = player_node->getTarget();
         if (being)
         {
-            Net::getSpecialHandler()->useBeing(info->level,
+            Net::getSkillHandler()->useBeing(info->level,
                 info->id, being->getId());
         }
     }

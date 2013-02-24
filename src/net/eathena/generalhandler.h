@@ -77,7 +77,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mNpcHandler;
         MessageHandlerPtr mPartyHandler;
         MessageHandlerPtr mPlayerHandler;
-        MessageHandlerPtr mSpecialHandler;
+        MessageHandlerPtr mSkillHandler;
         MessageHandlerPtr mTradeHandler;
 };
 

@@ -20,25 +20,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_SKILLHANDLER_H
-#define NET_TA_SKILLHANDLER_H
+#ifndef NET_EATHENA_SKILLHANDLER_H
+#define NET_EATHENA_SKILLHANDLER_H
 
 #include "net/net.h"
-#include "net/specialhandler.h"
+#include "net/skillhandler.h"
 
-#include "net/ea/specialhandler.h"
+#include "net/ea/skillhandler.h"
 
-#include "net/tmwa/messagehandler.h"
+#include "net/eathena/messagehandler.h"
 
-namespace TmwAthena
+namespace EAthena
 {
 
-class SpecialHandler final : public MessageHandler, public Ea::SpecialHandler
+class SkillHandler final : public MessageHandler, public Ea::SkillHandler
 {
     public:
-        SpecialHandler();
+        SkillHandler();
 
-        A_DELETE_COPY(SpecialHandler)
+        A_DELETE_COPY(SkillHandler)
 
         void handleMessage(Net::MessageIn &msg);
 
@@ -49,6 +49,6 @@ class SpecialHandler final : public MessageHandler, public Ea::SpecialHandler
         void useMap(int id, const std::string &map);
 };
 
-} // namespace TmwAthena
+} // namespace EAthena
 
-#endif // NET_TA_SKILLHANDLER_H
+#endif // NET_EATHENA_SKILLHANDLER_H

@@ -37,7 +37,7 @@
 #include "net/npchandler.h"
 #include "net/partyhandler.h"
 #include "net/playerhandler.h"
-#include "net/specialhandler.h"
+#include "net/skillhandler.h"
 #include "net/tradehandler.h"
 
 #include "net/tmwa/generalhandler.h"
@@ -63,7 +63,7 @@ Net::GuildHandler *guildHandler = nullptr;
 Net::NpcHandler *npcHandler = nullptr;
 Net::PartyHandler *partyHandler = nullptr;
 Net::PlayerHandler *playerHandler = nullptr;
-Net::SpecialHandler *specialHandler = nullptr;
+Net::SkillHandler *skillHandler = nullptr;
 Net::TradeHandler *tradeHandler = nullptr;
 Net::BeingHandler *beingHandler = nullptr;
 Net::BuySellHandler *buySellHandler = nullptr;
@@ -123,9 +123,9 @@ Net::PlayerHandler *Net::getPlayerHandler()
     return playerHandler;
 }
 
-Net::SpecialHandler *Net::getSpecialHandler()
+Net::SkillHandler *Net::getSkillHandler()
 {
-    return specialHandler;
+    return skillHandler;
 }
 
 Net::TradeHandler *Net::getTradeHandler()

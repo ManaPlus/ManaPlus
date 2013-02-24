@@ -53,7 +53,7 @@
 #include "net/tmwa/playerhandler.h"
 #include "net/tmwa/protocol.h"
 #include "net/tmwa/tradehandler.h"
-#include "net/tmwa/specialhandler.h"
+#include "net/tmwa/skillhandler.h"
 #include "net/tmwa/questhandler.h"
 
 #include "net/tmwa/gui/guildtab.h"
@@ -88,7 +88,7 @@ GeneralHandler::GeneralHandler() :
     mNpcHandler(new NpcHandler),
     mPartyHandler(new PartyHandler),
     mPlayerHandler(new PlayerHandler),
-    mSpecialHandler(new SpecialHandler),
+    mSkillHandler(new SkillHandler),
     mTradeHandler(new TradeHandler),
     mQuestHandler(new QuestHandler)
 {
@@ -187,7 +187,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mLoginHandler.get());
     mNetwork->registerHandler(mNpcHandler.get());
     mNetwork->registerHandler(mPlayerHandler.get());
-    mNetwork->registerHandler(mSpecialHandler.get());
+    mNetwork->registerHandler(mSkillHandler.get());
     mNetwork->registerHandler(mTradeHandler.get());
     mNetwork->registerHandler(mPartyHandler.get());
     mNetwork->registerHandler(mQuestHandler.get());

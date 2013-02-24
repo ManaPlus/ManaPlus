@@ -400,7 +400,7 @@ SET(SRCS
     net/partyhandler.h
     net/playerhandler.h
     net/serverinfo.h
-    net/specialhandler.h
+    net/skillhandler.h
     net/tradehandler.h
     net/worldinfo.h
     net/packetcounters.cpp
@@ -773,8 +773,8 @@ SET(SRCS_EVOL
     net/ea/partyhandler.h
     net/ea/playerhandler.cpp
     net/ea/playerhandler.h
-    net/ea/specialhandler.cpp
-    net/ea/specialhandler.h
+    net/ea/skillhandler.cpp
+    net/ea/skillhandler.h
     net/ea/token.h
     net/ea/tradehandler.cpp
     net/ea/tradehandler.h
@@ -824,8 +824,8 @@ SET(SRCS_TMWA
     net/tmwa/protocol.h
     net/tmwa/questhandler.cpp
     net/tmwa/questhandler.h
-    net/tmwa/specialhandler.cpp
-    net/tmwa/specialhandler.h
+    net/tmwa/skillhandler.cpp
+    net/tmwa/skillhandler.h
     net/tmwa/tradehandler.cpp
     net/tmwa/tradehandler.h
     )
@@ -872,8 +872,8 @@ SET(SRCS_EATHENA
     net/eathena/playerhandler.cpp
     net/eathena/playerhandler.h
     net/eathena/protocol.h
-    net/eathena/specialhandler.cpp
-    net/eathena/specialhandler.h
+    net/eathena/skillhandler.cpp
+    net/eathena/skillhandler.h
     net/eathena/tradehandler.cpp
     net/eathena/tradehandler.h
     )
