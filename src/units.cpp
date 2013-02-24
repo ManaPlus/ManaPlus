@@ -205,7 +205,7 @@ static std::string formatUnit(const int value, const int type)
             if (amount > 0)
             {
                 output = splitNumber(strprintf("%.*f", pl.round,
-                    amount), pl.separator) + pl.symbol;
+                    amount), pl.separator).append(pl.symbol);
             }
 
             for (unsigned int i = 2; i < ud.levels.size(); i++)
@@ -222,7 +222,7 @@ static std::string formatUnit(const int value, const int type)
                 if (levelAmount > 0)
                 {
                     output = splitNumber(strprintf("%d", levelAmount),
-                        pl.separator) + pl.symbol + output;
+                        pl.separator).append(pl.symbol).append(output);
                 }
 
                 if (!nextAmount)
@@ -247,7 +247,7 @@ static std::string formatUnit(const int value, const int type)
             }
 
             return splitNumber(strprintf("%.*f", ul.round, amount),
-                ul.separator) + ul.symbol;
+                ul.separator).append(ul.symbol);
         }
     }
 }
@@ -278,15 +278,20 @@ static std::string splitNumber(std::string str, const std::string &separator)
         while (str.size() >= 3)
         {
             if (str.size() >= 6)
-                result = separator + str.substr(str.size() - 3) + result;
+            {
+                result = std::string(separator).append(str.substr(
+                    str.size() - 3)).append(result);
+            }
             else
-                result = str.substr(str.size() - 3) + result;
+            {
+                result = str.substr(str.size() - 3).append(result);
+            }
             str = str.substr(0, str.size() - 3);
         }
         if (!str.empty())
         {
             if (!result.empty())
-                result = str + separator + result;
+                result = std::string(str).append(separator).append(result);
             else
                 result = str;
         }

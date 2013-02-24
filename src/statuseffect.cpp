@@ -76,14 +76,8 @@ AnimatedSprite *StatusEffect::getIcon() const
     }
     else
     {
-        AnimatedSprite *const sprite = AnimatedSprite::load(
-            paths.getStringValue("sprites") + mIcon);
-        if (false && sprite)
-        {
-            sprite->play(SpriteAction::DEFAULT);
-            sprite->reset();
-        }
-        return sprite;
+        return AnimatedSprite::load(paths.getStringValue(
+            "sprites").append(mIcon));
     }
 }
 

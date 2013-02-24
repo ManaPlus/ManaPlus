@@ -52,9 +52,14 @@ Avatar::Avatar(const std::string &name):
 std::string Avatar::getComplexName() const
 {
     if (mName == mOriginalName || mOriginalName.empty())
+    {
         return mName;
+    }
     else
-        return mName + "(" + mOriginalName + ")";
+    {
+        return std::string(mName).append("(").append(
+            mOriginalName).append(")");
+    }
 }
 
 std::string Avatar::getAdditionString() const

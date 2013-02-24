@@ -117,7 +117,7 @@ void TextCommand::loadImage()
     ResourceManager *const resman = ResourceManager::getInstance();
     SpriteDisplay display = ItemDB::get(getIcon()).getDisplay();
     mImage = resman->getImage(paths.getStringValue("itemIcons")
-        + display.image);
+        .append(display.image));
 
     if (!mImage)
         mImage = Theme::getImageFromTheme("unknown-item.png");

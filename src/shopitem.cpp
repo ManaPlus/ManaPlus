@@ -38,16 +38,16 @@ ShopItem::ShopItem(const int inventoryIndex, const int id,
 {
     if (serverVersion > 0)
     {
-        mDisplayName = getInfo().getName(color) + " ("
-            + Units::formatCurrency(mPrice).c_str() + ") ";
+        mDisplayName = std::string(getInfo().getName(color)).append(" (")
+            .append(Units::formatCurrency(mPrice)).append(") ");
     }
     else
     {
-        mDisplayName = getInfo().getName() + " ("
-            + Units::formatCurrency(mPrice).c_str() + ") ";
+        mDisplayName = std::string(getInfo().getName()).append(" (")
+            .append(Units::formatCurrency(mPrice)).append(") ");
     }
     if (quantity > 0)
-        mDisplayName += "[" + toString(quantity) + "]";
+        mDisplayName.append("[").append(toString(quantity)).append("]");
 
     setInvIndex(inventoryIndex);
     addDuplicate(inventoryIndex, quantity);
@@ -60,13 +60,13 @@ ShopItem::ShopItem (const int id, const unsigned char color, const int price) :
 {
     if (serverVersion > 0)
     {
-        mDisplayName = getInfo().getName(color) +
-            " (" + Units::formatCurrency(mPrice).c_str() + ")";
+        mDisplayName = std::string(getInfo().getName(color)).append(" (")
+            .append(Units::formatCurrency(mPrice)).append(")");
     }
     else
     {
-        mDisplayName = getInfo().getName() +
-            " (" + Units::formatCurrency(mPrice).c_str() + ")";
+        mDisplayName = std::string(getInfo().getName()).append(" (")
+            .append(Units::formatCurrency(mPrice)).append(")");
     }
     setInvIndex(-1);
     addDuplicate(-1, 0);
@@ -88,16 +88,16 @@ void ShopItem::update()
     {
         if (serverVersion > 0)
         {
-            mDisplayName = getInfo().getName(mColor) + " ("
-                + Units::formatCurrency(mPrice).c_str() + ") ";
+            mDisplayName = std::string(getInfo().getName(mColor)).append(" (")
+                .append(Units::formatCurrency(mPrice)).append(") ");
         }
         else
         {
-            mDisplayName = getInfo().getName() + " ("
-                + Units::formatCurrency(mPrice).c_str() + ") ";
+            mDisplayName = std::string(getInfo().getName()).append(" (")
+                .append(Units::formatCurrency(mPrice)).append(") ");
         }
         if (mQuantity > 0)
-            mDisplayName += "[" + toString(mQuantity) + "]";
+            mDisplayName.append("[").append(toString(mQuantity)).append("]");
     }
 }
 

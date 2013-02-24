@@ -173,12 +173,12 @@ void InputManager::store() const
                     {
                         if (keyStr.empty())
                         {
-                            keyStr = tmp + toString(key.value);
+                            keyStr.append(tmp).append(toString(key.value));
                         }
                         else
                         {
-                            keyStr += strprintf(",%s%d",
-                                tmp.c_str(), key.value);
+                            keyStr.append(strprintf(",%s%d",
+                                tmp.c_str(), key.value));
                         }
                     }
                 }
@@ -318,7 +318,7 @@ std::string InputManager::getKeyStringLong(const int index) const
             if (keyStr.empty())
                 keyStr = str;
             else
-                keyStr += std::string(" ") + str;
+                keyStr.append(" ").append(str);
         }
     }
 
@@ -357,7 +357,7 @@ std::string InputManager::getKeyValueString(const int index) const
             if (keyStr.empty())
                 keyStr = str;
             else
-                keyStr += std::string(" ") + str;
+                keyStr.append(" ").append(str);
         }
     }
 

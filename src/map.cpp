@@ -238,12 +238,20 @@ void Map::initializeAmbientLayers()
     for (int i = 0; /* terminated by a break */; i++)
     {
         std::string name;
-        if (hasProperty("foreground" + toString(i) + "image"))
+        if (hasProperty(std::string("foreground").append(
+            toString(i)).append("image")))
+        {
             name = "foreground" + toString(i);
-        else if (hasProperty("overlay" + toString(i) + "image"))
+        }
+        else if (hasProperty(std::string("overlay").append(
+                 toString(i)).append("image")))
+        {
             name = "overlay" + toString(i);
+        }
         else
+        {
             break; // the FOR loop
+        }
 
         Image *const img = resman->getImage(getProperty(name + "image"));
         const float speedX = getFloatProperty(name + "scrollX");
@@ -263,9 +271,8 @@ void Map::initializeAmbientLayers()
 
 
     // search for "background*" in map properties
-    for (int i = 0;
-         hasProperty("background" + toString(i) + "image");
-         i++)
+    for (int i = 0; hasProperty(std::string("background").append(
+         toString(i)).append("image")); i ++)
     {
         const std::string name = "background" + toString(i);
 
@@ -1113,7 +1120,7 @@ void Map::addExtraLayer()
         logger->log1("No special layer");
         return;
     }
-    std::string mapFileName = getUserMapDirectory() + "/extralayer.txt";
+    std::string mapFileName = getUserMapDirectory().append("/extralayer.txt");
     logger->log("loading extra layer: " + mapFileName);
     struct stat statbuf;
     if (!stat(mapFileName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
@@ -1143,7 +1150,7 @@ void Map::addExtraLayer()
                 ss >> type1;
                 ss >> comment;
                 while (ss >> buf)
-                    comment += " " + buf;
+                    comment.append(" ").append(buf);
 
                 const int type = atoi(type1.c_str());
 
@@ -1183,7 +1190,7 @@ void Map::saveExtraLayer() const
         logger->log1("No special layer");
         return;
     }
-    std::string mapFileName = getUserMapDirectory() + "/extralayer.txt";
+    std::string mapFileName = getUserMapDirectory().append("/extralayer.txt");
     logger->log("saving extra layer: " + mapFileName);
 
     if (mkdir_r(getUserMapDirectory().c_str()))
@@ -1223,8 +1230,8 @@ void Map::saveExtraLayer() const
 
 std::string Map::getUserMapDirectory() const
 {
-    return Client::getServerConfigDirectory() + dirSeparator
-        + getProperty("_realfilename");
+    return Client::getServerConfigDirectory() + 
+        dirSeparator + getProperty("_realfilename");
 }
 
 void Map::addRange(const std::string &name, const int type,

@@ -227,7 +227,7 @@ void SoundManager::setSfxVolume(const int volume)
 static SDLMusic *loadMusic(const std::string &fileName)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
-    return resman->getMusic(paths.getStringValue("music") + fileName);
+    return resman->getMusic(paths.getStringValue("music").append(fileName));
 }
 
 void SoundManager::playMusic(const std::string &fileName)
@@ -335,7 +335,7 @@ void SoundManager::playSfx(const std::string &path,
     if (!path.compare(0, 4, "sfx/"))
         tmpPath = path;
     else
-        tmpPath = paths.getValue("sfx", "sfx/") + path;
+        tmpPath = paths.getValue("sfx", "sfx/").append(path);
     ResourceManager *const resman = ResourceManager::getInstance();
     SoundEffect *const sample = resman->getSoundEffect(tmpPath);
     if (sample)
@@ -362,8 +362,8 @@ void SoundManager::playSfx(const std::string &path,
 
 void SoundManager::playGuiSound(const std::string &name)
 {
-    playGuiSfx(branding.getStringValue("systemsounds")
-        + config.getStringValue(name) + ".ogg");
+    playGuiSfx(branding.getStringValue("systemsounds").append(
+        config.getStringValue(name)).append(".ogg"));
 }
 
 void SoundManager::playGuiSfx(const std::string &path)
@@ -375,7 +375,7 @@ void SoundManager::playGuiSfx(const std::string &path)
     if (!path.compare(0, 4, "sfx/"))
         tmpPath = path;
     else
-        tmpPath = paths.getValue("sfx", "sfx/") + path;
+        tmpPath = paths.getValue("sfx", "sfx/").append(path);
     ResourceManager *const resman = ResourceManager::getInstance();
     SoundEffect *const sample = resman->getSoundEffect(tmpPath);
     if (sample)

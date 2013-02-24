@@ -248,7 +248,7 @@ int main(int argc, char *argv[])
 #ifdef ANDROID
     mkdir_r(getenv("DATADIR2"));
 
-    if (!PHYSFS_init((getRealPath(".") + "/fakebinary").c_str()))
+    if (!PHYSFS_init((getRealPath(".").append("/fakebinary")).c_str()))
 #else
     if (!PHYSFS_init(argv[0]))
 #endif

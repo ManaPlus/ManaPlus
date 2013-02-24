@@ -817,33 +817,35 @@ impHandler0(uptime)
         if (days > 0)
         {
             if (!str.empty())
-                str += ", ";
-            str += strprintf(ngettext("%d day", "%d days", days), days);
+                str.append(", ");
+            str.append(strprintf(ngettext("%d day", "%d days", days), days));
             timeDiff -= days * 60 * 60 * 24;
         }
         const int hours = timeDiff / 60 / 60;
         if (hours > 0)
         {
             if (!str.empty())
-                str += ", ";
-            str += strprintf(ngettext("%d hour", "%d hours", hours), hours);
+                str.append(", ");
+            str.append(strprintf(ngettext("%d hour", "%d hours",
+                hours), hours));
             timeDiff -= hours * 60 * 60;
         }
         const int min = timeDiff / 60;
         if (min > 0)
         {
             if (!str.empty())
-                str += ", ";
-            str += strprintf(ngettext("%d minute", "%d minutes", min), min);
+                str.append(", ");
+            str.append(strprintf(ngettext("%d minute", "%d minutes",
+                min), min));
             timeDiff -= min * 60;
         }
 
         if (timeDiff > 0)
         {
             if (!str.empty())
-                str += ", ";
-            str += strprintf(ngettext("%d second", "%d seconds",
-                timeDiff), timeDiff);
+                str.append(", ");
+            str.append(strprintf(ngettext("%d second", "%d seconds",
+                timeDiff), timeDiff));
         }
         debugChatTab->chatLog(strprintf(_("Client uptime: %s"), str.c_str()));
     }
@@ -924,7 +926,7 @@ impHandler0(cacheInfo)
         {
             const int sz = static_cast<int>(cache[f].size());
             all += sz;
-            str += strprintf("%d: %u, ", f, sz);
+            str.append(strprintf("%d: %u, ", f, sz));
         }
     }
     debugChatTab->chatLog(str);
@@ -955,37 +957,36 @@ impHandler2(dumpGraphics)
         mainGraphics->getBpp());
 
     if (mainGraphics->getFullScreen())
-        str += "F";
+        str.append("F");
     else
-        str += "W";
+        str.append("W");
     if (mainGraphics->getHWAccel())
-        str += "H";
+        str.append("H");
     else
-        str += "S";
+        str.append("S");
 
     if (mainGraphics->getDoubleBuffer())
-        str += "D";
+        str.append("D");
     else
-        str += "_";
+        str.append("_");
 
 #if defined USE_OPENGL
-    str += strprintf(",%d", mainGraphics->getOpenGL());
+    str.append(strprintf(",%d", mainGraphics->getOpenGL()));
 #else
-    str += ",0";
+    str.append(",0");
 #endif
 
-    str += strprintf(",%f,", static_cast<double>(Client::getGuiAlpha()));
-    str += config.getBoolValue("adjustPerfomance") ? "1" : "0";
-    str += config.getBoolValue("alphaCache") ? "1" : "0";
-    str += config.getBoolValue("enableMapReduce") ? "1" : "0";
-    str += config.getBoolValue("beingopacity") ? "1" : "0";
-    str += ",";
-    str += config.getBoolValue("enableAlphaFix") ? "1" : "0";
-    str += config.getBoolValue("disableAdvBeingCaching") ? "1" : "0";
-    str += config.getBoolValue("disableBeingCaching") ? "1" : "0";
-    str += config.getBoolValue("particleeffects") ? "1" : "0";
-
-    str += strprintf(",%d-%d", fps, config.getIntValue("fpslimit"));
+    str.append(strprintf(",%f,", static_cast<double>(Client::getGuiAlpha())))
+    .append(config.getBoolValue("adjustPerfomance") ? "1" : "0")
+    .append(config.getBoolValue("alphaCache") ? "1" : "0")
+    .append(config.getBoolValue("enableMapReduce") ? "1" : "0")
+    .append(config.getBoolValue("beingopacity") ? "1" : "0")
+    .append(",")
+    .append(config.getBoolValue("enableAlphaFix") ? "1" : "0")
+    .append(config.getBoolValue("disableAdvBeingCaching") ? "1" : "0")
+    .append(config.getBoolValue("disableBeingCaching") ? "1" : "0")
+    .append(config.getBoolValue("particleeffects") ? "1" : "0")
+    .append(strprintf(",%d-%d", fps, config.getIntValue("fpslimit")));
     outStringNormal(tab, str, str);
 }
 
@@ -1045,9 +1046,10 @@ void showRes(std::string str, ResourceManager::Resources *res)
     if (!res)
         return;
 
+    str.append(toString(res->size());
     if (debugChatTab)
-        debugChatTab->chatLog(str + toString(res->size()));
-    logger->log(str + toString(res->size()));
+        debugChatTab->chatLog(str));
+    logger->log(str);
     ResourceManager::ResourceIterator iter = res->begin();
     const ResourceManager::ResourceIterator iter_end = res->end();
     while (iter != iter_end)
@@ -1161,7 +1163,7 @@ void replaceVars(std::string &str)
         FOR_EACH (StringVectCIter, it, names)
         {
             if (*it != player_node->getName())
-                newStr += *it + ",";
+                newStr.append(*it).append(",");
         }
         if (newStr[newStr.size() - 1] == ',')
             newStr = newStr.substr(0, newStr.size() - 1);
@@ -1181,7 +1183,7 @@ void replaceVars(std::string &str)
             FOR_EACH (StringVectCIter, it, names)
             {
                 if (*it != player_node->getName())
-                    newStr += *it + ",";
+                    newStr.append(*it).append(",");
             }
             if (newStr[newStr.size() - 1] == ',')
                 newStr = newStr.substr(0, newStr.size() - 1);

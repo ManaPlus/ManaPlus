@@ -1604,7 +1604,7 @@ std::string Being::getGenderSignWithSpace() const
     if (str.empty())
         return str;
     else
-        return " " + str;
+        return std::string(" ").append(str);
 }
 
 std::string Being::getGenderSign() const
@@ -1620,16 +1620,16 @@ std::string Being::getGenderSign() const
     if (mShowPlayersStatus && mAdvanced)
     {
         if (mShop)
-            str += "$";
+            str.append("$");
         if (mAway)
         {
             // TRANSLATORS: this away status writed in player nick
-            str += _("A");
+            str.append(_("A"));
         }
         else if (mInactive)
         {
             // TRANSLATORS: this inactive status writed in player nick
-            str += _("I");
+            str.append(_("I"));
         }
     }
     return str;
@@ -1653,17 +1653,17 @@ void Being::showName()
 
     if (mType != MONSTER && (mShowGender || mShowLevel))
     {
-        displayName += " ";
+        displayName.append(" ");
         if (mShowLevel && getLevel() != 0)
-            displayName += toString(getLevel());
+            displayName.append(toString(getLevel()));
 
-        displayName += getGenderSign();
+        displayName.append(getGenderSign());
     }
 
     if (mType == MONSTER)
     {
         if (config.getBoolValue("showMonstersTakedDamage"))
-            displayName += ", " + toString(getDamageTaken());
+            displayName.append(", ").append(toString(getDamageTaken()));
     }
 
     gcn::Font *font = nullptr;
@@ -1803,7 +1803,8 @@ void Being::setSprite(const unsigned int slot, const int id,
                 color = info.getDyeColorsString(colorId);
 
             equipmentSprite = AnimatedSprite::delayedLoad(
-                paths.getStringValue("sprites") + combineDye(filename, color));
+                paths.getStringValue("sprites").append(
+                combineDye(filename, color)));
         }
 
         if (equipmentSprite)
@@ -2637,7 +2638,7 @@ std::string Being::loadComment(const std::string &name, const int type)
             return "";
     }
 
-    str += stringToHexPath(name) + "/comment.txt";
+    str.append(stringToHexPath(name)).append("/comment.txt");
     logger->log("load from: %s", str.c_str());
     StringVect lines;
 
@@ -2666,9 +2667,10 @@ void Being::saveComment(const std::string &name,
         default:
             return;
     }
-    dir += stringToHexPath(name);
+    dir.append(stringToHexPath(name));
     const ResourceManager *const resman = ResourceManager::getInstance();
-    resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
+    resman->saveTextFile(dir, "comment.txt",
+        (name + "\n").append(comment));
 }
 
 void Being::setState(const uint8_t state)
