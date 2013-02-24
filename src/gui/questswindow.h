@@ -83,6 +83,8 @@ class QuestsWindow final : public Window, public gcn::ActionListener
         std::vector<QuestItem*> mQuestLinks;
         Image *mCompleteIcon;
         Image *mIncompleteIcon;
+        int mNewQuestEffectId;
+        int mCompleteQuestEffectId;
 };
 
 extern QuestsWindow *questsWindow;

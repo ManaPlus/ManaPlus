@@ -21,6 +21,8 @@
 #include "gui/questswindow.h"
 
 #include "configuration.h"
+#include "effectmanager.h"
+#include "localplayer.h"
 #include "soundmanager.h"
 
 #include "gui/gui.h"
@@ -108,7 +110,9 @@ QuestsWindow::QuestsWindow() :
         getOptionBool("showtextbackground"), "quests_text_background.xml")),
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
-    mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", ""))
+    mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", "")),
+    mNewQuestEffectId(paths.getIntValue("newQuestEffectId")),
+    mCompleteQuestEffectId(paths.getIntValue("completeQuestEffectId"))
 {
     setWindowName("Quests");
     setResizable(true);
@@ -370,10 +374,15 @@ void QuestsWindow::rebuild(const bool playSound)
             switch (newCompleteStatus)
             {
                 case 0:
-                    sound.playSfx(paths.getValue("newQuestSfx", ""));
+                    if (effectManager)
+                        effectManager->trigger(mNewQuestEffectId, player_node);
                     break;
                 case 1:
-                    sound.playSfx(paths.getValue("completeQuestSfx", ""));
+                    if (effectManager)
+                    {
+                        effectManager->trigger(mCompleteQuestEffectId,
+                            player_node);
+                    }
                     break;
                 default:
                     break;

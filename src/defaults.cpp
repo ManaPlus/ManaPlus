@@ -382,6 +382,8 @@ DefaultsData* getPathsDefaults()
     AddDEF("missEffectId", -1);
     AddDEF("criticalHitEffectId", 28);
     AddDEF("afkEffectId", -1);
+    AddDEF("newQuestEffectId", -1);
+    AddDEF("completeQuestEffectId", -1);
 
     AddDEF("minimaps", "graphics/minimaps/");
     AddDEF("maps", "maps/");
