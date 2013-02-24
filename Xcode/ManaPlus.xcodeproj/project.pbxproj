@@ -363,7 +363,6 @@
 		2B1712FC1686A98C002E9493 /* libphysfs.2.0.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4DA8166D99320054E77F /* libphysfs.2.0.2.dylib */; };
 		2B1712FD1686A98C002E9493 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */; };
 		2B1712FE1686A98C002E9493 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */; };
-		2B1712FF1686A98C002E9493 /* libpng15.15.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */; };
 		2B1713001686A98C002E9493 /* libSDL_gfx.14.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */; };
 		2B1713011686A98C002E9493 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */; };
 		2B1713021686A98C002E9493 /* libz.1.2.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */; };
@@ -1145,7 +1144,6 @@
 		2BDF4D85166D7F120054E77F /* SDL.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 2BDF4D4E166D5D9E0054E77F /* SDL.framework */; };
 		2BDF4D97166D8E0D0054E77F /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */; };
 		2BDF4D98166D8E0D0054E77F /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */; };
-		2BDF4D9B166D8E0D0054E77F /* libpng15.15.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */; };
 		2BDF4D9C166D8E0D0054E77F /* libSDL_gfx.14.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */; };
 		2BDF4D9D166D8E0D0054E77F /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */; };
 		2BDF4D9E166D8E0D0054E77F /* libz.1.2.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */; };
@@ -2084,7 +2082,6 @@
 		2BDF4D75166D781C0054E77F /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = "<group>"; };
 		2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = libs/libfreetype.6.dylib; sourceTree = "<group>"; };
 		2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = libs/libiconv.2.dylib; sourceTree = "<group>"; };
-		2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng15.15.dylib; path = libs/libpng15.15.dylib; sourceTree = "<group>"; };
 		2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL_gfx.14.dylib; path = libs/libSDL_gfx.14.dylib; sourceTree = "<group>"; };
 		2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = libs/libxml2.2.dylib; sourceTree = "<group>"; };
 		2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.7.dylib; path = libs/libz.1.2.7.dylib; sourceTree = "<group>"; };
@@ -2099,7 +2096,6 @@
 				2B1712FC1686A98C002E9493 /* libphysfs.2.0.2.dylib in Frameworks */,
 				2B1712FD1686A98C002E9493 /* libfreetype.6.dylib in Frameworks */,
 				2B1712FE1686A98C002E9493 /* libiconv.2.dylib in Frameworks */,
-				2B1712FF1686A98C002E9493 /* libpng15.15.dylib in Frameworks */,
 				2B1713001686A98C002E9493 /* libSDL_gfx.14.dylib in Frameworks */,
 				2B1713011686A98C002E9493 /* libxml2.2.dylib in Frameworks */,
 				2B1713021686A98C002E9493 /* libz.1.2.7.dylib in Frameworks */,
@@ -2121,7 +2117,6 @@
 				2BDF4DA9166D99330054E77F /* libphysfs.2.0.2.dylib in Frameworks */,
 				2BDF4D97166D8E0D0054E77F /* libfreetype.6.dylib in Frameworks */,
 				2BDF4D98166D8E0D0054E77F /* libiconv.2.dylib in Frameworks */,
-				2BDF4D9B166D8E0D0054E77F /* libpng15.15.dylib in Frameworks */,
 				2BDF4D9C166D8E0D0054E77F /* libSDL_gfx.14.dylib in Frameworks */,
 				2BDF4D9D166D8E0D0054E77F /* libxml2.2.dylib in Frameworks */,
 				2BDF4D9E166D8E0D0054E77F /* libz.1.2.7.dylib in Frameworks */,
@@ -2195,7 +2190,6 @@
 				2BDF4DA8166D99320054E77F /* libphysfs.2.0.2.dylib */,
 				2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */,
 				2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */,
-				2BDF4D93166D8E0D0054E77F /* libpng15.15.dylib */,
 				2BDF4D94166D8E0D0054E77F /* libSDL_gfx.14.dylib */,
 				2BDF4D95166D8E0D0054E77F /* libxml2.2.dylib */,
 				2BDF4D96166D8E0D0054E77F /* libz.1.2.7.dylib */,
