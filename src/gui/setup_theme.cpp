@@ -335,8 +335,8 @@ void Setup_Theme::updateInfo()
     ThemeInfo *info = Theme::loadInfo(mTheme);
     if (info)
     {
-        mThemeInfo = "Name: " + info->name
-            + "\nCopyright:\n" + info->copyright;
+        mThemeInfo = std::string("Name: ").append(info->name)
+            .append("\nCopyright:\n").append(info->copyright);
     }
     else
     {

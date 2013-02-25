@@ -190,12 +190,13 @@ void OutfitWindow::save()
             const int res = mItems[o][i] ? mItems[o][i] : -1;
             if (res != -1)
                 good = true;
-            outfitStr += toString(res);
+            outfitStr.append(toString(res));
             if (i < OUTFIT_ITEM_COUNT - 1)
-                outfitStr += " ";
-            outfitColorsStr += toString(static_cast<int>(mItemColors[o][i]));
+                outfitStr.append(" ");
+            outfitColorsStr.append(toString(static_cast<int>(
+                mItemColors[o][i])));
             if (i < OUTFIT_ITEM_COUNT - 1)
-                outfitColorsStr += " ";
+                outfitColorsStr.append(" ");
         }
         if (good)
         {

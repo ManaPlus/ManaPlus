@@ -143,8 +143,8 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
     {
         ResourceManager *const resman = ResourceManager::getInstance();
         Image *const image = resman->getImage(combineDye2(
-            paths.getStringValue("itemIcons")
-            + item.getDisplay().image, item.getDyeColorsString(color)));
+            paths.getStringValue("itemIcons").append(
+            item.getDisplay().image), item.getDyeColorsString(color)));
 
         mIcon->setImage(image);
         if (image)
@@ -165,14 +165,14 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
 
     if (serverVersion > 0)
     {
-        mItemName->setCaption(item.getName(color) + _(", ")
-            + toString(id));
+        mItemName->setCaption(std::string(item.getName(color)).append(
+            _(", ")).append(toString(id)));
         mItemDesc->setTextWrapped(item.getDescription(color), 196);
     }
     else
     {
-        mItemName->setCaption(item.getName() + _(", ")
-            + toString(id));
+        mItemName->setCaption(std::string(item.getName()).append(
+            _(", ")).append(toString(id)));
         mItemDesc->setTextWrapped(item.getDescription(), 196);
     }
 

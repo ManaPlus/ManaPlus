@@ -143,7 +143,7 @@ public:
             else
             {
                 widget = new Label(this, toString(curTime
-                    - player->getTestTime()) + "?");
+                    - player->getTestTime()).append("?"));
             }
             mWidgets.push_back(widget);
 
@@ -155,7 +155,7 @@ public:
             else
             {
                 widget = new Label(this, toString(curTime
-                    - player->getTestTime()) + "?");
+                    - player->getTestTime()).append("?"));
             }
             mWidgets.push_back(widget);
 
@@ -167,7 +167,7 @@ public:
             else
             {
                 widget = new Label(this, toString(curTime
-                    - player->getTestTime()) + "?");
+                    - player->getTestTime()).append("?"));
             }
             mWidgets.push_back(widget);
 
@@ -199,14 +199,14 @@ public:
                 if (talk > 2 * 60)
                 {
                     talkBot = true;
-                    str += toString((talk) / 60) + " ";
+                    str.append(toString((talk) / 60)).append(" ");
                 }
 
                 // attacking but not moving more than 2 minutes
                 if (move > 2 * 60)
                 {
                     moveBot = true;
-                    str += toString((move) / 60);
+                    str.append(toString((move) / 60));
                 }
 
                 // attacking but not other activity more than 2 minutes

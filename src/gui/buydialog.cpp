@@ -330,8 +330,6 @@ void BuyDialog::addItem(const int id, const unsigned char color,
 void BuyDialog::action(const gcn::ActionEvent &event)
 {
     const std::string &eventId = event.getId();
-    logger->log("event: " + eventId);
-
     if (eventId == "quit")
     {
         close();

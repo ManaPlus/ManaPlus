@@ -130,7 +130,7 @@ std::string ServersListModel::getElementAt(int elementIndex)
     MutexLocker lock = mParent->lock();
     const ServerInfo &server = mServers->at(elementIndex);
     std::string myServer;
-    myServer += server.hostname;
+    myServer.append(server.hostname);
 //    myServer += ":";
 //    myServer += toString(server.port);
     return myServer;
@@ -543,8 +543,8 @@ void ServerDialog::downloadServerList()
     }
 
     mDownload = new Net::Download(this, listFile, &downloadUpdate);
-    mDownload->setFile(mDir + "/" + branding.getStringValue(
-        "onlineServerFile"));
+    mDownload->setFile(std::string(mDir).append("/").append(
+        branding.getStringValue("onlineServerFile")));
     mDownload->start();
 
     config.setValue("serverslistupdate", getDateString());
@@ -552,8 +552,8 @@ void ServerDialog::downloadServerList()
 
 void ServerDialog::loadServers(const bool addNew)
 {
-    XML::Document doc(mDir + "/" + branding.getStringValue(
-        "onlineServerFile"), false);
+    XML::Document doc(std::string(mDir).append("/").append(
+        branding.getStringValue("onlineServerFile")), false);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "serverlist"))

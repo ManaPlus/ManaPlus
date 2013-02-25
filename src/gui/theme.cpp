@@ -691,13 +691,13 @@ std::string Theme::resolveThemePath(const std::string &path)
     }
 
     // Try the theme
-    file = getThemePath() + "/" + file;
+    file = getThemePath().append("/").append(file);
 
     if (PhysFs::exists(file.c_str()))
-        return getThemePath() + "/" + path;
+        return getThemePath().append("/").append(path);
 
     // Backup
-    return branding.getStringValue("guiPath") + path;
+    return branding.getStringValue("guiPath").append(path);
 }
 
 Image *Theme::getImageFromTheme(const std::string &path)
@@ -967,7 +967,7 @@ void Theme::loadColors(std::string file)
     if (file == "")
         file = "colors.xml";
     else
-        file += "/colors.xml";
+        file.append("/colors.xml");
 
     XML::Document doc(resolveThemePath(file));
     const XmlNodePtr root = doc.rootNode();
@@ -1135,9 +1135,14 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
 {
     std::string path;
     if (themeName.empty())
+    {
         path = "graphics/gui/info.xml";
+    }
     else
-        path = defaultThemePath + themeName + "/info.xml";
+    {
+        path = std::string(defaultThemePath).append(
+            themeName).append("/info.xml");
+    }
     logger->log("loading: " + path);
     XML::Document doc(path);
     const XmlNodePtr rootNode = doc.rootNode();

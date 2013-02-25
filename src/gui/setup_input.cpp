@@ -248,7 +248,7 @@ void Setup_Input::action(const gcn::ActionEvent &event)
             const int ik = key.actionId;
             inputManager.setNewKeyIndex(ik);
             mKeyListModel->setElementAt(i, std::string(
-                gettext(key.name.c_str())) + ": ?");
+                gettext(key.name.c_str())).append(": ?"));
         }
     }
     else if (id == "unassign")

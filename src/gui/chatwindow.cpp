@@ -702,8 +702,8 @@ void ChatWindow::doPresent() const
         if ((*it)->getType() == ActorSprite::PLAYER)
         {
             if (!response.empty())
-                response += ", ";
-            response += static_cast<Being*>(*it)->getName();
+                response.append(", ");
+            response.append(static_cast<Being*>(*it)->getName());
             ++playercount;
         }
     }
@@ -978,12 +978,15 @@ void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
                         - event.getInt("oldValue");
 
                     if (change != 0)
-                        battleChatLog("+" + toString(change) + " xp");
+                    {
+                        battleChatLog(std::string("+").append(toString(
+                            change)).append(" xp"));
+                    }
                     break;
                 }
                 case PlayerInfo::LEVEL:
-                    battleChatLog("Level: " + toString(
-                        event.getInt("newValue")));
+                    battleChatLog(std::string("Level: ").append(toString(
+                        event.getInt("newValue"))));
                     break;
                 default:
                     break;
@@ -1007,7 +1010,10 @@ void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
 
                 const int change = exp.first - event.getInt("oldValue1");
                 if (change != 0)
-                    battleChatLog("+" + toString(change) + " job");
+                {
+                    battleChatLog(std::string("+").append(
+                        toString(change)).append(" job"));
+                }
             }
         }
     }
@@ -1131,7 +1137,8 @@ void ChatWindow::addWhisper(const std::string &nick,
         }
         else
         {
-            localChatTab->chatLog(nick + " : " + mes, ACT_WHISPER, false);
+            localChatTab->chatLog(std::string(nick).append(
+                " : ").append(mes), ACT_WHISPER, false);
             if (player_node)
                 player_node->afkRespond(nullptr, nick);
         }
@@ -1246,7 +1253,7 @@ std::string ChatWindow::addColors(std::string &msg)
     }
 
     // simple colors
-    return "##" + toString(mChatColor - 1) + msg;
+    return std::string("##").append(toString(mChatColor - 1)).append(msg);
 }
 
 void ChatWindow::autoComplete()
@@ -1309,8 +1316,9 @@ void ChatWindow::autoComplete()
         {
             newName = "_" + newName;
         }
-        mChatInput->setText(inputText.substr(0, startName) + newName
-            + inputText.substr(caretPos, inputText.length() - caretPos));
+        mChatInput->setText(inputText.substr(0, startName).append(newName)
+            .append(inputText.substr(caretPos,
+            inputText.length() - caretPos)));
 
         const int len = caretPos - static_cast<int>(name.length())
             + static_cast<int>(newName.length());

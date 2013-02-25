@@ -130,7 +130,6 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     mY = y;
 
     const std::string &name = mNick;
-
     mBrowserBox->addRow(name + being->getGenderSignWithSpace());
 
     switch (being->getType())
@@ -924,9 +923,14 @@ void PopupMenu::handleLink(const std::string &link,
         if (chatWindow)
         {
             if (config.getBoolValue("whispertab"))
+            {
                 chatWindow->localChatInput("/q " + mNick);
+            }
             else
-                chatWindow->addInputText("/w \"" + mNick + "\" ");
+            {
+                chatWindow->addInputText(std::string("/w \"").append(
+                    mNick).append("\" "));
+            }
         }
     }
     else if (link == "move" && !mNick.empty())

@@ -68,9 +68,14 @@ class WorldListModel final : public gcn::ListModel
         {
             const WorldInfo *const si = mWorlds[i];
             if (si)
-                return si->name + " (" + toString(si->online_users) + ")";
+            {
+                return std::string(si->name).append(" (").append(
+                    toString(si->online_users)).append(")");
+            }
             else
+            {
                 return "???";
+            }
         }
     private:
         Worlds mWorlds;

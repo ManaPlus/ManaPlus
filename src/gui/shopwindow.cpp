@@ -440,9 +440,9 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
 
     std::string data = "\302\202";
     if (mode == BUY)
-        data += "Buy ";
+        data.append("Buy ");
     else
-        data += "Sell ";
+        data.append("Sell ");
 
     if (mAnnonceTime && (mAnnonceTime + (2 * 60) > cur_time
         || mAnnonceTime > cur_time))
@@ -465,30 +465,28 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
         {
             if (mAnnounceLinks->isSelected())
             {
-                data += strprintf("[@@%d|%s@@] (%dGP) %d, ", item->getId(),
-                                  item->getInfo().getName().c_str(),
-                                  item->getPrice(), item->getQuantity());
+                data.append(strprintf("[@@%d|%s@@] (%dGP) %d, ", item->getId(),
+                    item->getInfo().getName().c_str(),
+                    item->getPrice(), item->getQuantity()));
             }
             else
             {
-                data += strprintf("%s (%dGP) %d, ",
-                                  item->getInfo().getName().c_str(),
-                                  item->getPrice(), item->getQuantity());
+                data.append(strprintf("%s (%dGP) %d, ",
+                    item->getInfo().getName().c_str(),
+                    item->getPrice(), item->getQuantity()));
             }
         }
         else
         {
             if (mAnnounceLinks->isSelected())
             {
-                data += strprintf("[@@%d|%s@@] (%dGP), ", item->getId(),
-                                  item->getInfo().getName().c_str(),
-                                  item->getPrice());
+                data.append(strprintf("[@@%d|%s@@] (%dGP), ", item->getId(),
+                    item->getInfo().getName().c_str(), item->getPrice()));
             }
             else
             {
-                data += strprintf("%s (%dGP), ",
-                                  item->getInfo().getName().c_str(),
-                                  item->getPrice());
+                data.append(strprintf("%s (%dGP), ",
+                    item->getInfo().getName().c_str(), item->getPrice()));
             }
         }
     }
@@ -507,12 +505,12 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
     if (mode == BUY)
     {
         list = mBuyShopItems;
-        data += "S1";
+        data.append("S1");
     }
     else
     {
         list = mSellShopItems;
-        data += "B1";
+        data.append("B1");
     }
     if (!list)
         return;
@@ -541,10 +539,10 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
 
                 if (amount)
                 {
-                    data += strprintf("%s%s%s",
+                    data.append(strprintf("%s%s%s",
                         encodeStr(item->getId(), 2).c_str(),
                         encodeStr(item->getPrice(), 4).c_str(),
-                        encodeStr(amount, 3).c_str());
+                        encodeStr(amount, 3).c_str()));
                 }
             }
         }
@@ -560,10 +558,10 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
 
             if (amount > 0)
             {
-                data += strprintf("%s%s%s",
-                                  encodeStr(item->getId(), 2).c_str(),
-                                  encodeStr(item->getPrice(), 4).c_str(),
-                                  encodeStr(amount, 3).c_str());
+                data.append(strprintf("%s%s%s",
+                    encodeStr(item->getId(), 2).c_str(),
+                    encodeStr(item->getPrice(), 4).c_str(),
+                    encodeStr(amount, 3).c_str()));
             }
         }
     }
@@ -581,7 +579,7 @@ void ShopWindow::sendMessage(const std::string &nick,
         mRandCounter ++;
         if (mRandCounter > 200)
             mRandCounter = 0;
-        data += encodeStr(mRandCounter, 2);
+        data.append(encodeStr(mRandCounter, 2));
     }
 
     if (config.getBoolValue("hideShopMessages"))

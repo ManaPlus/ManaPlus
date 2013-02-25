@@ -295,7 +295,8 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
 #endif
     }
 #ifdef DEBUG_FONT
-    logger->log("drawString: " + text + ", iterations: " + toString(cnt));
+    logger->log(std::string("drawString: ").append(text).append(
+        ", iterations: ").append(toString(cnt)));
 #endif
 
     // Surface not found
@@ -382,7 +383,8 @@ int SDLFont::getWidth(const std::string &text) const
     }
 
 #ifdef DEBUG_FONT
-    logger->log("getWidth: " + text + ", iterations: " + toString(cnt));
+    logger->log(std::string("getWidth: ").append(text).append(
+        ", iterations: ").append(toString(cnt)));
 #endif
 
     int w, h;

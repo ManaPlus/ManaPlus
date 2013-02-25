@@ -439,8 +439,8 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus status,
     if (progress > 1.0f)
         progress = 1.0f;
 
-    uw->setLabel(uw->mCurrentFile + " ("
-        + toString(static_cast<int>(progress * 100)) + "%)");
+    uw->setLabel(std::string(uw->mCurrentFile).append(" (")
+        .append(toString(static_cast<int>(progress * 100))).append("%)"));
 
     uw->setProgress(progress);
 
@@ -485,8 +485,8 @@ void UpdaterWindow::download()
     }
     else
     {
-        mDownload = new Net::Download(this, mUpdateHost + "/" + mCurrentFile,
-                                      updateProgress);
+        mDownload = new Net::Download(this, std::string(mUpdateHost).append(
+            "/").append(mCurrentFile), updateProgress);
     }
 
     if (mStoreInMemory)
@@ -497,12 +497,13 @@ void UpdaterWindow::download()
     {
         if (mDownloadStatus == UPDATE_RESOURCES)
         {
-            mDownload->setFile(mUpdatesDir + "/" + mCurrentFile,
-                               mCurrentChecksum);
+            mDownload->setFile(std::string(mUpdatesDir).append("/").append(
+                mCurrentFile), mCurrentChecksum);
         }
         else
         {
-            mDownload->setFile(mUpdatesDir + "/" + mCurrentFile);
+            mDownload->setFile(std::string(mUpdatesDir).append(
+                "/").append(mCurrentFile));
         }
     }
 
@@ -522,13 +523,15 @@ void UpdaterWindow::loadUpdates()
 
     if (mUpdateFiles.empty())
     {   // updates not downloaded
-        mUpdateFiles = loadXMLFile(mUpdatesDir + "/" + xmlUpdateFile);
+        mUpdateFiles = loadXMLFile(std::string(mUpdatesDir).append(
+            "/").append(xmlUpdateFile));
         if (mUpdateFiles.empty())
         {
             logger->log("Warning this server does not have a"
                         " %s file falling back to %s", xmlUpdateFile.c_str(),
                         txtUpdateFile.c_str());
-            mUpdateFiles = loadTxtFile(mUpdatesDir + "/" + txtUpdateFile);
+            mUpdateFiles = loadTxtFile(std::string(mUpdatesDir).append(
+                "/").append(txtUpdateFile));
         }
     }
 
@@ -547,14 +550,15 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
     const ResourceManager *const resman = ResourceManager::getInstance();
 
     std::vector<updateFile> updateFiles
-        = loadXMLFile(dir + "/" + xmlUpdateFile);
+        = loadXMLFile(std::string(dir).append("/").append(xmlUpdateFile));
 
     if (updateFiles.empty())
     {
         logger->log("Warning this server does not have a"
                     " %s file falling back to %s", xmlUpdateFile.c_str(),
                     txtUpdateFile.c_str());
-        updateFiles = loadTxtFile(dir + "/" + txtUpdateFile);
+        updateFiles = loadTxtFile(std::string(dir).append(
+            "/").append(txtUpdateFile));
     }
 
     std::string fixPath = dir + "/fix";
@@ -572,7 +576,7 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
 {
     std::string fixPath = dir + "/fix";
     std::vector<updateFile> updateFiles
-        = loadXMLFile(fixPath + "/" + xmlUpdateFile);
+        = loadXMLFile(std::string(fixPath).append("/").append(xmlUpdateFile));
 
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
@@ -581,7 +585,7 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
         if (strStartWith(name, "manaplus_"))
         {
             struct stat statbuf;
-            std::string file = fixPath + "/" + name;
+            std::string file = std::string(fixPath).append("/").append(name);
             if (!stat(file.c_str(), &statbuf))
                 resman->addToSearchPath(file, false);
         }
@@ -594,16 +598,17 @@ void UpdaterWindow::addUpdateFile(const ResourceManager *const resman,
                                   const std::string &file,
                                   const bool append)
 {
+    const std::string tmpPath = std::string(path).append("/").append(file);
     if (!append)
-        resman->addToSearchPath(path + "/" + file, append);
+        resman->addToSearchPath(tmpPath, append);
 
-    const std::string fixFile = fixPath + "/" + file;
+    const std::string fixFile = std::string(fixPath).append("/").append(file);
     struct stat statbuf;
     if (!stat(fixFile.c_str(), &statbuf))
         resman->addToSearchPath(fixFile, append);
 
     if (append)
-        resman->addToSearchPath(path + "/" + file, append);
+        resman->addToSearchPath(tmpPath, append);
 }
 
 void UpdaterWindow::logic()
@@ -671,7 +676,7 @@ void UpdaterWindow::logic()
                 loadPatch();
 
                 mUpdateHost = updateServer2 + mUpdateServerPath;
-                mUpdatesDir += "/fix";
+                mUpdatesDir.append("/fix");
                 mCurrentFile = xmlUpdateFile;
                 mStoreInMemory = false;
                 mDownloadStatus = UPDATE_LIST2;
@@ -684,8 +689,8 @@ void UpdaterWindow::logic()
             {
                 if (mCurrentFile == xmlUpdateFile)
                 {
-                    mUpdateFiles = loadXMLFile(
-                        mUpdatesDir + "/" + xmlUpdateFile);
+                    mUpdateFiles = loadXMLFile(std::string(mUpdatesDir).append(
+                        "/").append(xmlUpdateFile));
 
                     if (mUpdateFiles.empty())
                     {
@@ -705,8 +710,8 @@ void UpdaterWindow::logic()
                 }
                 else if (mCurrentFile == txtUpdateFile)
                 {
-                    mUpdateFiles = loadTxtFile(
-                        mUpdatesDir + "/" + txtUpdateFile);
+                    mUpdateFiles = loadTxtFile(std::string(mUpdatesDir).append(
+                        "/").append(txtUpdateFile));
                 }
                 mStoreInMemory = false;
                 mDownloadStatus = UPDATE_RESOURCES;
@@ -740,11 +745,11 @@ void UpdaterWindow::logic()
                     std::stringstream ss(checksum);
                     ss >> std::hex >> mCurrentChecksum;
 
-                    std::ifstream temp(
-                            (mUpdatesDir + "/" + mCurrentFile).c_str());
+                    std::ifstream temp((std::string(mUpdatesDir).append(
+                        "/").append(mCurrentFile)).c_str());
 
-                    if (!temp.is_open() || !validateFile(mUpdatesDir + "/"
-                        + mCurrentFile, mCurrentChecksum))
+                    if (!temp.is_open() || !validateFile(std::string(mUpdatesDir).append(
+                        "/").append(mCurrentFile), mCurrentChecksum))
                     {
                         temp.close();
                         download();
@@ -773,8 +778,8 @@ void UpdaterWindow::logic()
             {
                 if (mCurrentFile == xmlUpdateFile)
                 {
-                    mTempUpdateFiles = loadXMLFile(
-                        mUpdatesDir + "/" + xmlUpdateFile);
+                    mTempUpdateFiles = loadXMLFile(std::string(
+                        mUpdatesDir).append("/").append(xmlUpdateFile));
                 }
                 mUpdateIndexOffset = mUpdateIndex;
                 mUpdateIndex = 0;
@@ -795,11 +800,12 @@ void UpdaterWindow::logic()
                     std::stringstream ss(checksum);
                     ss >> std::hex >> mCurrentChecksum;
 
-                    std::ifstream temp(
-                            (mUpdatesDir + "/" + mCurrentFile).c_str());
+                    std::ifstream temp((std::string(mUpdatesDir).append(
+                        "/").append(mCurrentFile)).c_str());
 
-                    if (!temp.is_open() || !validateFile(mUpdatesDir + "/"
-                        + mCurrentFile, mCurrentChecksum))
+                    if (!temp.is_open() || !validateFile(std::string(
+                        mUpdatesDir).append("/").append(mCurrentFile),
+                        mCurrentChecksum))
                     {
                         temp.close();
                         download();

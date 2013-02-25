@@ -150,7 +150,7 @@ void DidYouKnowWindow::loadFile(const int num)
         helpPath = paths.getStringValue("help");
 
     StringVect lines;
-    TranslationManager::translateFile(helpPath + file + ".txt",
+    TranslationManager::translateFile(helpPath.append(file).append(".txt"),
         translator, lines);
 
     for (size_t i = 0, sz = lines.size(); i < sz; ++i)

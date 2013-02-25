@@ -129,8 +129,8 @@ Gui::Gui(Graphics *const graphics) :
     }
     catch (const gcn::Exception &e)
     {
-        logger->error(std::string("Unable to load '") + fontFile +
-                      std::string("': ") + e.getMessage());
+        logger->error(std::string("Unable to load '").append(fontFile)
+                      .append("': ").append(e.getMessage()));
     }
 
     // Set particle font
@@ -154,8 +154,8 @@ Gui::Gui(Graphics *const graphics) :
     }
     catch (const gcn::Exception &e)
     {
-        logger->error(std::string("Unable to load '") + fontFile +
-                      std::string("': ") + e.getMessage());
+        logger->error(std::string("Unable to load '").append(fontFile)
+                      .append("': ").append(e.getMessage()));
     }
 
     // Set bold font
@@ -169,8 +169,8 @@ Gui::Gui(Graphics *const graphics) :
     }
     catch (const gcn::Exception &e)
     {
-        logger->error(std::string("Unable to load '") + fontFile +
-                      std::string("': ") + e.getMessage());
+        logger->error(std::string("Unable to load '").append(fontFile)
+                      .append("': ").append(e.getMessage()));
     }
 
     // Set help font
@@ -184,8 +184,8 @@ Gui::Gui(Graphics *const graphics) :
     }
     catch (const gcn::Exception &e)
     {
-        logger->error(std::string("Unable to load '") + fontFile +
-                      std::string("': ") + e.getMessage());
+        logger->error(std::string("Unable to load '").append(fontFile)
+                      .append("': ").append(e.getMessage()));
     }
 
     // Set secure font
@@ -199,8 +199,8 @@ Gui::Gui(Graphics *const graphics) :
     }
     catch (const gcn::Exception &e)
     {
-        logger->error(std::string("Unable to load '") + fontFile +
-                      std::string("': ") + e.getMessage());
+        logger->error(std::string("Unable to load '").append(fontFile)
+                      .append("': ").append(e.getMessage()));
     }
 
     // Set npc font
@@ -215,8 +215,8 @@ Gui::Gui(Graphics *const graphics) :
     }
     catch (const gcn::Exception &e)
     {
-        logger->error(std::string("Unable to load '") + fontFile +
-                      std::string("': ") + e.getMessage());
+        logger->error(std::string("Unable to load '").append(fontFile)
+                      .append("': ").append(e.getMessage()));
     }
 
     gcn::Widget::setGlobalFont(mGuiFont);

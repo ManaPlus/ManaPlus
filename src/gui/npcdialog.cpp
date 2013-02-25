@@ -235,7 +235,7 @@ void NpcDialog::addText(const std::string &text, const bool save)
         if (mText.size() > 5000)
             mText.clear();
 
-        mNewText += text;
+        mNewText.append(text);
         mTextBox->addRow(text);
 //        setText(mText + text + "\n");
     }
@@ -413,7 +413,7 @@ void NpcDialog::parseListItems(const std::string &itemString)
             mItems.push_back(tmp.substr(pos + 1));
             Image *const img = resman->getImage(
                 paths.getStringValue("guiIcons")
-                + tmp.substr(0, pos) + ".png");
+                .append(tmp.substr(0, pos)).append(".png"));
             mImages.push_back(img);
         }
     }

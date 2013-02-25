@@ -473,8 +473,9 @@ void StatusWindow::updateHPBar(ProgressBar *const bar, const bool showMax)
 
     if (showMax)
     {
-        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::HP)) +
-            "/" + toString(PlayerInfo::getAttribute(PlayerInfo::MAX_HP)));
+        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::HP)).append(
+            "/").append(toString(PlayerInfo::getAttribute(
+            PlayerInfo::MAX_HP))));
     }
     else
     {
@@ -498,8 +499,9 @@ void StatusWindow::updateMPBar(ProgressBar *const bar, const bool showMax)
 
     if (showMax)
     {
-        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::MP)) +
-            "/" + toString(PlayerInfo::getAttribute(PlayerInfo::MAX_MP)));
+        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::MP)).append(
+            "/").append(toString(PlayerInfo::getAttribute(
+            PlayerInfo::MAX_MP))));
     }
     else
     {
@@ -555,7 +557,7 @@ void StatusWindow::updateProgressBar(ProgressBar *const bar, const int value,
         }
         else
         {
-            bar->setText(toString(value) + "/" + toString(max));
+            bar->setText(toString(value).append("/").append(toString(max)));
         }
 
         bar->setProgress(progress);
@@ -694,19 +696,23 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         return;
 
     bar->setText(translateLetter2(player_node->getInvertDirectionString())
-        += translateLetter2(player_node->getCrazyMoveTypeString())
-        += translateLetter2(player_node->getMoveToTargetTypeString())
-        += translateLetter2(player_node->getFollowModeString())
-        += " " + translateLetter2(player_node->getAttackWeaponTypeString())
-        += translateLetter2(player_node->getAttackTypeString())
-        += translateLetter2(player_node->getMagicAttackString())
-        += translateLetter2(player_node->getPvpAttackString())
-        += " " + translateLetter2(player_node->getQuickDropCounterString())
-        += translateLetter2(player_node->getPickUpTypeString())
-        += " " + translateLetter2(player_node->getDebugPathString())
-        += " " + translateLetter2(player_node->getImitationModeString())
-        += translateLetter2(player_node->getCameraModeString())
-        += translateLetter2(player_node->getAwayModeString()));
+        .append(translateLetter2(player_node->getCrazyMoveTypeString()))
+        .append(translateLetter2(player_node->getMoveToTargetTypeString()))
+        .append(translateLetter2(player_node->getFollowModeString()))
+        .append(" ").append(translateLetter2(
+        player_node->getAttackWeaponTypeString()))
+        .append(translateLetter2(player_node->getAttackTypeString()))
+        .append(translateLetter2(player_node->getMagicAttackString()))
+        .append(translateLetter2(player_node->getPvpAttackString()))
+        .append(" ").append(translateLetter2(
+        player_node->getQuickDropCounterString()))
+        .append(translateLetter2(player_node->getPickUpTypeString()))
+        .append(" ").append(translateLetter2(
+        player_node->getDebugPathString()))
+        .append(" ").append(translateLetter2(
+        player_node->getImitationModeString()))
+        .append(translateLetter2(player_node->getCameraModeString()))
+        .append(translateLetter2(player_node->getAwayModeString())));
 
     bar->setProgress(50);
     if (player_node->getDisableGameModifiers())
@@ -743,8 +749,8 @@ void StatusWindow::action(const gcn::ActionEvent &event)
                 (*it).second);
             if (attr)
             {
-                str += strprintf("%s:%s ", attr->getShortName().c_str(),
-                    attr->getValue().c_str());
+                str.append(strprintf("%s:%s ", attr->getShortName().c_str(),
+                    attr->getValue().c_str()));
             }
             ++ it;
         }
@@ -781,7 +787,7 @@ std::string AttrDisplay::update()
     const int bonus = PlayerInfo::getStatMod(mId);
     std::string value = toString(base + bonus);
     if (bonus)
-        value += strprintf("=%d%+d", base, bonus);
+        value.append(strprintf("=%d%+d", base, bonus));
     mValue->setCaption(value);
     return mName;
 }

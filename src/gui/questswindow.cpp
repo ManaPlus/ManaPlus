@@ -393,7 +393,7 @@ void QuestsWindow::rebuild(const bool playSound)
 
 void QuestsWindow::showQuest(const QuestItem *const quest)
 {
-    if (!quest)
+    if (!quest || !translator)
         return;
 
     const std::vector<QuestItemText> &texts = quest->texts;
@@ -409,7 +409,8 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
                 mText->addRow(translator->getStr(data.text));
                 break;
             case QUEST_NAME:
-                mText->addRow("[" + translator->getStr(data.text) + "]");
+                mText->addRow(std::string("[").append(translator->getStr(
+                    data.text)).append("]"));
                 break;
         }
     }

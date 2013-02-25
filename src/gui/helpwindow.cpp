@@ -120,7 +120,7 @@ void HelpWindow::loadFile(std::string file)
         helpPath = paths.getStringValue("help");
 
     StringVect lines;
-    TranslationManager::translateFile(helpPath + file + ".txt",
+    TranslationManager::translateFile(helpPath.append(file).append(".txt"),
         translator, lines);
 
     for (size_t i = 0, sz = lines.size(); i < sz; ++i)
@@ -133,7 +133,7 @@ void HelpWindow::loadTags()
     if (helpPath.empty())
         helpPath = paths.getStringValue("help");
     StringVect lines;
-    ResourceManager::loadTextFile(helpPath + "tags.idx", lines);
+    ResourceManager::loadTextFile(helpPath.append("tags.idx"), lines);
     FOR_EACH (StringVectCIter, it, lines)
     {
         const std::string &str = *it;

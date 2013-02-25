@@ -156,9 +156,14 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
         {
             std::string text = decodeLinkText(link);
             if (config.getBoolValue("whispertab"))
+            {
                 chatWindow->localChatInput("/q " + text);
+            }
             else
-                chatWindow->addInputText("/w \"" + text + "\" ");
+            {
+                chatWindow->addInputText(std::string("/w \"").append(
+                    text).append("\" "));
+            }
         }
     }
     else if (event->getButton() == gcn::MouseEvent::RIGHT)
@@ -805,29 +810,29 @@ void OnlinePlayer::setText(std::string color)
     }
 
     if ((mStatus != 255 && mStatus & Being::FLAG_GM) || mIsGM)
-        mText += "(GM) ";
+        mText.append("(GM) ");
 
     if (mLevel > 0)
-        mText += strprintf("%d", mLevel);
+        mText.append(strprintf("%d", mLevel));
 
     if (mGender == GENDER_FEMALE)
-        mText += "\u2640";
+        mText.append("\u2640");
     else if (mGender == GENDER_MALE)
-        mText += "\u2642";
+        mText.append("\u2642");
 
     if (mStatus > 0 && mStatus != 255)
     {
         if (mStatus & Being::FLAG_SHOP)
-            mText += "$";
+            mText.append("$");
         if (mStatus & Being::FLAG_AWAY)
         {
             // TRANSLATORS: this away status writed in player nick
-            mText += _("A");
+            mText.append(_("A"));
         }
         if (mStatus & Being::FLAG_INACTIVE)
         {
             // TRANSLATORS: this inactive status writed in player nick
-            mText += _("I");
+            mText.append(_("I"));
         }
 
         if (mStatus & Being::FLAG_GM && color == "0")
@@ -839,7 +844,7 @@ void OnlinePlayer::setText(std::string color)
     }
 
     if (mVersion > 0)
-        mText += strprintf(" - %d", mVersion);
+        mText.append(strprintf(" - %d", mVersion));
 
     const char *const text = encodeLinkText(mNick).c_str();
     mText = strprintf("@@%s|##%s%s %s@@", text, color.c_str(),

@@ -142,8 +142,8 @@ ModeListModel::ModeListModel()
     addCustomMode("1280x1024");
     addCustomMode("1400x900");
     addCustomMode("1500x990");
-    addCustomMode(toString(mainGraphics->mWidth) + "x"
-        + toString(mainGraphics->mHeight));
+    addCustomMode(toString(mainGraphics->mWidth).append("x")
+        .append(toString(mainGraphics->mHeight)));
 
     std::sort(mVideoModes.begin(), mVideoModes.end(), modeSorter);
     mVideoModes.push_back("custom");
@@ -274,8 +274,8 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mFpsCheckBox->setSelected(mFps > 0);
 
     // Pre-select the current video mode.
-    std::string videoMode = toString(mainGraphics->mWidth) + "x"
-        + toString(mainGraphics->mHeight);
+    std::string videoMode = toString(mainGraphics->mWidth).append("x")
+        .append(toString(mainGraphics->mHeight));
     mModeList->setSelected(mModeListModel->getIndexOf(videoMode));
 
     mModeList->setActionEventId("videomode");
@@ -452,8 +452,8 @@ void Setup_Video::cancel()
     config.setValue("screen", mFullScreenEnabled);
 
     // Set back to the current video mode.
-    std::string videoMode = toString(mainGraphics->mWidth) + "x"
-        + toString(mainGraphics->mHeight);
+    std::string videoMode = toString(mainGraphics->mWidth).append("x")
+        .append(toString(mainGraphics->mHeight));
     mModeList->setSelected(mModeListModel->getIndexOf(videoMode));
     config.setValue("screenwidth", mainGraphics->mWidth);
     config.setValue("screenheight", mainGraphics->mHeight);
