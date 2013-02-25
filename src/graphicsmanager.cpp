@@ -368,8 +368,8 @@ bool GraphicsManager::getAllVideoModes(StringVect &modeList)
         for (int i = 0; modes[i]; ++ i)
         {
             const std::string modeString =
-                toString(static_cast<int>(modes[i]->w)) + "x"
-                + toString(static_cast<int>(modes[i]->h));
+                toString(static_cast<int>(modes[i]->w)).append("x")
+                .append(toString(static_cast<int>(modes[i]->h)));
             logger->log("support mode: " + modeString);
             modeList.push_back(modeString);
         }
@@ -395,7 +395,7 @@ void GraphicsManager::updateExtensions()
             std::string str = reinterpret_cast<const char*>(
                 mglGetStringi(GL_EXTENSIONS, f));
             mExtensions.insert(str);
-            extList += str + " ";
+            extList.append(str).append(" ");
         }
         logger->log1(extList.c_str());
     }
@@ -898,78 +898,77 @@ static CALLBACK void debugCallback(GLenum source, GLenum type, GLuint id,
     switch (source)
     {
         case GL_DEBUG_SOURCE_API:
-            message += " API";
+            message.append(" API");
             break;
         case GL_DEBUG_SOURCE_WINDOW_SYSTEM:
-            message += " WM";
+            message.append(" WM");
             break;
         case GL_DEBUG_SOURCE_SHADER_COMPILER:
-            message += " SHADERS";
+            message.append(" SHADERS");
             break;
         case GL_DEBUG_SOURCE_THIRD_PARTY:
-            message += " THIRD_PARTY";
+            message.append(" THIRD_PARTY");
             break;
         case GL_DEBUG_SOURCE_APPLICATION:
-            message += " APP";
+            message.append(" APP");
             break;
         case GL_DEBUG_SOURCE_OTHER:
-            message += " OTHER";
+            message.append(" OTHER");
             break;
         default:
-            message += " ?" + toString(source);
+            message.append(" ?").append(toString(source));
             break;
     }
     switch (type)
     {
         case GL_DEBUG_TYPE_ERROR:
-            message += " ERROR";
+            message.append(" ERROR");
             break;
         case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:
-            message += " DEPRECATED";
+            message.append(" DEPRECATED");
             break;
         case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:
-            message += " UNDEFINED";
+            message.append(" UNDEFINED");
             break;
         case GL_DEBUG_TYPE_PORTABILITY:
-            message += " PORTABILITY";
+            message.append(" PORTABILITY");
             break;
         case GL_DEBUG_TYPE_PERFORMANCE:
-            message += " PERFOMANCE";
+            message.append(" PERFOMANCE");
             break;
         case GL_DEBUG_TYPE_OTHER:
-            message += " OTHER";
+            message.append(" OTHER");
             break;
         case GL_DEBUG_TYPE_MARKER:
-            message += " MARKER";
+            message.append(" MARKER");
             break;
         default:
-            message += " ?" + toString(type);
+            message.append(" ?").append(toString(type));
             break;
     }
-    message += " " + toString(id);
+    message.append(" ").append(toString(id));
     switch (severity)
     {
         case GL_DEBUG_SEVERITY_NOTIFICATION:
-            message += " N";
+            message.append(" N");
             break;
         case GL_DEBUG_SEVERITY_HIGH:
-            message += " H";
+            message.append(" H");
             break;
         case GL_DEBUG_SEVERITY_MEDIUM:
-            message += " M";
+            message.append(" M");
             break;
         case GL_DEBUG_SEVERITY_LOW:
-            message += " L";
+            message.append(" L");
             break;
         default:
-            message += " ?" + toString(type);
+            message.append(" ?").append(toString(type));
             break;
     }
     char *buf = new char[length + 1];
     memcpy (buf, text, length);
     buf[length] = 0;
-    message += " ";
-    message += buf;
+    message.append(" ").append(buf);
     delete [] buf;
     logger->log(message);
 }

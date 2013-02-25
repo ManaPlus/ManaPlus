@@ -222,7 +222,8 @@ void Logger::safeError(const std::string &error_text)
 //                  (ConstStr255Param) msg, nullptr, nullptr);
 #elif defined(__linux__) || defined(__linux)
     std::cerr << "Error: " << error_text << std::endl;
-    const std::string msg = "xmessage \"" + error_text + "\"";
+    const std::string msg = std::string("xmessage \"").append(
+        error_text).append("\"");
     if (system(msg.c_str()) == -1)
         std::cerr << "Error: " << error_text << std::endl;
 #else

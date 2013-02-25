@@ -1008,14 +1008,14 @@ void Game::changeMap(const std::string &mapPath)
 
     mMapName = mapPath;
 
-    std::string fullMap = paths.getValue("maps", "maps/")
-                          + mMapName + ".tmx";
-    std::string realFullMap = paths.getValue("maps", "maps/")
-                              + MapDB::getMapName(mMapName) + ".tmx";
+    std::string fullMap = paths.getValue("maps", "maps/").append(
+        mMapName).append(".tmx");
+    std::string realFullMap = paths.getValue("maps", "maps/").append(
+        MapDB::getMapName(mMapName)).append(".tmx");
 
     const ResourceManager *const resman = ResourceManager::getInstance();
     if (!resman->exists(realFullMap))
-        realFullMap += ".gz";
+        realFullMap.append(".gz");
 
     // Attempt to load the new map
     Map *const newMap = MapReader::readMap(fullMap, realFullMap);

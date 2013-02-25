@@ -822,13 +822,14 @@ void Configuration::removeOldKeys()
         }
         for (f = 0; f < 80; f ++)
         {
-            deleteKey("Outfit" + toString(f));
-            deleteKey("OutfitUnequip" + toString(f));
-            deleteKey("commandShortcutCmd" + toString(f));
-            deleteKey("commandShortcutFlags" + toString(f));
-            deleteKey("commandShortcutSymbol" + toString(f));
-            deleteKey("drop" + toString(f));
-            deleteKey("shortcut" + toString(f));
+            const std::string str = toString(f);
+            deleteKey("Outfit" + str);
+            deleteKey("OutfitUnequip" + str);
+            deleteKey("commandShortcutCmd" + str);
+            deleteKey("commandShortcutFlags" + str);
+            deleteKey("commandShortcutSymbol" + str);
+            deleteKey("drop" + str);
+            deleteKey("shortcut" + str);
         }
     }
 }

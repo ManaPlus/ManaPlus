@@ -82,7 +82,8 @@ void Item::setId(const int id, const unsigned char color)
     mTags = info.getTags();
 
     SpriteDisplay display = info.getDisplay();
-    std::string imagePath = paths.getStringValue("itemIcons") + display.image;
+    std::string imagePath = paths.getStringValue(
+        "itemIcons").append(display.image);
     std::string dye = combineDye2(imagePath, info.getDyeColorsString(color));
     mImage = resman->getImage(dye);
     mDrawImage = resman->getImage(dye);
@@ -112,9 +113,9 @@ Image *Item::getImage(const int id, const unsigned char color)
     ResourceManager *const resman = ResourceManager::getInstance();
     const ItemInfo &info = ItemDB::get(id);
     SpriteDisplay display = info.getDisplay();
-    std::string imagePath = paths.getStringValue("itemIcons") + display.image;
-    Image *image;
-    image = resman->getImage(combineDye2(imagePath,
+    std::string imagePath = paths.getStringValue(
+        "itemIcons").append(display.image);
+    Image *image = resman->getImage(combineDye2(imagePath,
         info.getDyeColorsString(color)));
 
     if (!image)

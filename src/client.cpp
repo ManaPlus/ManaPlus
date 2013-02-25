@@ -317,7 +317,7 @@ void Client::gameInit()
     if (!mOptions.logFileName.empty())
         logger->setLogFile(mOptions.logFileName);
     else
-        logger->setLogFile(mLocalDataDir + std::string("/manaplus.log"));
+        logger->setLogFile(mLocalDataDir + "/manaplus.log");
 
     initConfiguration();
     logger->log("init 4");
@@ -344,15 +344,15 @@ void Client::gameInit()
     }
 #ifdef ANDROID
     bindTextDomain("manaplus", (std::string(PhysFs::getBaseDir())
-        + "/locale").c_str());
+        .append("/locale")).c_str());
 #else
 #ifdef ENABLE_PORTABLE
     bindTextDomain("manaplus", (std::string(PhysFs::getBaseDir())
-        + "../locale/").c_str());
+        .append("../locale/")).c_str());
 #else
 #ifdef __APPLE__
     bindTextDomain("manaplus", (std::string(PhysFs::getBaseDir())
-        + "ManaPlus.app/Contents/Resources/locale/").c_str());
+        .append("ManaPlus.app/Contents/Resources/locale/")).c_str());
 #else
     bindTextDomain("manaplus", LOCALEDIR);
 #endif
@@ -480,7 +480,10 @@ void Client::gameInit()
         const int loc = static_cast<int>(path.find_last_of('/'));
 #endif
         if (loc > 0)
-            resman->addToSearchPath(path.substr(0, loc + 1) + "data", false);
+        {
+            resman->addToSearchPath(path.substr(
+                0, loc + 1).append("data"), false);
+        }
     }
 
     if (mOptions.dataPath.empty()
@@ -492,7 +495,7 @@ void Client::gameInit()
         }
         else
         {
-            mOptions.dataPath = branding.getDirectory() + dirSeparator
+            mOptions.dataPath = branding.getDirectory().append(dirSeparator)
                 + branding.getStringValue("dataPath");
         }
         mOptions.skipUpdate = true;
@@ -508,9 +511,9 @@ void Client::gameInit()
 
     std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
 #ifdef WIN32
-    iconFile += ".ico";
+    iconFile.append(".ico");
 #else
-    iconFile += ".png";
+    iconFile.append(".png");
 #endif
     iconFile = resman->getPath(iconFile);
     logger->log("Loading icon from file: %s", iconFile.c_str());
@@ -1836,7 +1839,7 @@ void Client::initLocalDataDir()
         mLocalDataDir = getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
         if (mLocalDataDir.empty())
             mLocalDataDir = std::string(PhysFs::getUserDir());
-        mLocalDataDir += "/Mana";
+        mLocalDataDir.append("/Mana");
 #elif defined __ANDROID__
         mLocalDataDir = getenv("DATADIR2") + branding.getValue(
             "appShort", "ManaPlus") + "/local";
@@ -1883,15 +1886,20 @@ void Client::initConfigDir()
 #elif defined WIN32
         mConfigDir = getSpecialFolderLocation(CSIDL_APPDATA);
         if (mConfigDir.empty())
+        {
             mConfigDir = mLocalDataDir;
+        }
         else
-            mConfigDir += "/mana/" + branding.getValue("appShort", "mana");
+        {
+            mConfigDir.append("/mana/").append(branding.getValue(
+                "appShort", "mana"));
+        }
 #elif defined __ANDROID__
         mConfigDir = getenv("DATADIR2") + branding.getValue(
-            "appShort", "ManaPlus") + "/config";
+            "appShort", "ManaPlus").append("/config");
 #else
-        mConfigDir = std::string(PhysFs::getUserDir()) +
-            "/.config/mana/" + branding.getValue("appShort", "mana");
+        mConfigDir = std::string(PhysFs::getUserDir()).append(
+            "/.config/mana/").append(branding.getValue("appShort", "mana"));
 #endif
         logger->log("Generating config dir: " + mConfigDir);
     }
@@ -2149,7 +2157,10 @@ void Client::initScreenshotDir()
                 branding.getValue("appShort", "mana");
 
             if (!configScreenshotSuffix.empty())
-                mScreenshotDir += dirSeparator + configScreenshotSuffix;
+            {
+                mScreenshotDir.append(dirSeparator).append(
+                    configScreenshotSuffix);
+            }
         }
     }
 }

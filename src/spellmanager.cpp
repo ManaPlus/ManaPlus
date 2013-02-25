@@ -218,7 +218,7 @@ std::string SpellManager::parseCommand(std::string command,
     }
 
     if (!found && !name.empty())
-        command += " " + name;
+        command.append(" ").append(name);
 
     return command;
 }
@@ -385,7 +385,7 @@ std::string SpellManager::autoComplete(std::string partName)
     if (newName != "" && newCommand
         && newCommand->getTargetType() == NEEDTARGET)
     {
-        return newName + " ";
+        return newName.append(" ");
     }
     return newName;
 }

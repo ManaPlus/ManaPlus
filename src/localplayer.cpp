@@ -1718,8 +1718,8 @@ void LocalPlayer::processEvent(Channels channel,
                         {
                             mMessages.pop_back();
                             // TRANSLATORS: this is job experience
-                            pair.first += strprintf (", %d %s",
-                                change, _("job"));
+                            pair.first.append(strprintf (", %d %s",
+                                change, _("job")));
                             mMessages.push_back(pair);
                         }
                         else

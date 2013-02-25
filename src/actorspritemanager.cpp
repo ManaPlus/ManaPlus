@@ -1402,7 +1402,7 @@ void ActorSpriteManager::updatePlayerGuild() const
 
 void ActorSpriteManager::parseLevels(std::string levels) const
 {
-    levels += ", ";
+    levels.append(", ");
     size_t f = 0;
     const std::string brkEnd = "), ";
     size_t pos = levels.find(brkEnd, f);
