@@ -71,7 +71,7 @@ static std::string resolveRelativePath(std::string base, std::string relative)
 
     // Re-add trailing slash, if needed
     if (!base.empty() && base[base.length() - 1] != '/')
-        base += '/';
+        base.append("/");
 
     return base + relative;
 }
@@ -264,7 +264,7 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
 
     const bool showWarps = config.getBoolValue("warpParticle");
     const std::string warpPath = paths.getStringValue("particles")
-        + paths.getStringValue("portalEffectFile");
+        .append(paths.getStringValue("portalEffectFile"));
 
     if (tilew < 0 || tileh < 0)
     {
@@ -862,6 +862,6 @@ void MapReader::updateMusic(Map *const map)
     const size_t p = name.rfind(".");
     if (p != std::string::npos)
         name = name.substr(0, p);
-    name += ".ogg";
+    name.append(".ogg");
     map->setProperty("music", name);
 }

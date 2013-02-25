@@ -91,8 +91,8 @@ void EmoteDB::load()
             {
                 EmoteSprite *const currentSprite = new EmoteSprite;
                 std::string file = paths.getStringValue("sprites")
-                    + std::string(reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content));
+                    .append(std::string(reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content)));
                 currentSprite->sprite = AnimatedSprite::load(file,
                     XML::getProperty(spriteNode, "variant", 0));
                 currentSprite->name = XML::langProperty(
@@ -147,8 +147,8 @@ void EmoteDB::load()
             {
                 EmoteSprite *const currentSprite = new EmoteSprite;
                 std::string file = paths.getStringValue("sprites")
-                    + std::string(reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content));
+                    .append(std::string(reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content)));
                 currentSprite->sprite = AnimatedSprite::load(file,
                                 XML::getProperty(spriteNode, "variant", 0));
                 currentSprite->name = XML::langProperty(

@@ -52,7 +52,7 @@ DyePalette::DyePalette(const std::string &description, const int8_t blockSize)
         };
 
         for (int i = 0, colorIdx = 0; i < blockSize && colorIdx < 4;
-             i +=2, colorIdx ++)
+             i += 2, colorIdx ++)
         {
             color.value[colorIdx] = static_cast<unsigned char>((
                 hexDecode(description[pos + i]) << 4)

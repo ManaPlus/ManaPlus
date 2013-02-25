@@ -93,17 +93,17 @@ int TestMain::exec(const bool testAudio)
     else
         soundTest = true;
 
-    info += strprintf("%d.%d,%d,%d.", soundTest, softwareTest,
-        fastOpenGLTest, safeOpenGLTest);
+    info.append(strprintf("%d.%d,%d,%d.", soundTest, softwareTest,
+        fastOpenGLTest, safeOpenGLTest));
 
     if (!softwareTest)
     {
         int softFpsTest = invokeSoftwareRenderTest("8");
-        info += strprintf ("%d", softFpsTest);
+        info.append(strprintf ("%d", softFpsTest));
         if (!softFpsTest)
         {
             softFps = readValue2(8);
-            info += strprintf (",%d", softFps);
+            info.append(strprintf (",%d", softFps));
             if (!softFps)
             {
                 softwareTest = -1;
@@ -112,7 +112,7 @@ int TestMain::exec(const bool testAudio)
             else
             {
                 rescaleTest[0] = invokeSoftwareRenderTest("5");
-                info += strprintf (",%d", rescaleTest[0]);
+                info.append(strprintf (",%d", rescaleTest[0]));
             }
         }
         else
@@ -120,15 +120,15 @@ int TestMain::exec(const bool testAudio)
             softwareTest = -1;
         }
     }
-    info += ".";
+    info.append(".");
     if (!fastOpenGLTest)
     {
         int fastOpenGLFpsTest = invokeFastOpenGLRenderTest("9");
-        info += strprintf ("%d", fastOpenGLFpsTest);
+        info.append(strprintf("%d", fastOpenGLFpsTest));
         if (!fastOpenGLFpsTest)
         {
             fastOpenGLFps = readValue2(9);
-            info += strprintf (",%d", fastOpenGLFps);
+            info.append(strprintf(",%d", fastOpenGLFps));
             if (!fastOpenGLFps)
             {
                 fastOpenGLTest = -1;
@@ -137,7 +137,7 @@ int TestMain::exec(const bool testAudio)
             else
             {
                 rescaleTest[1] = invokeFastOpenGLRenderTest("6");
-                info += strprintf (",%d", rescaleTest[1]);
+                info.append(strprintf (",%d", rescaleTest[1]));
             }
         }
         else
@@ -145,15 +145,15 @@ int TestMain::exec(const bool testAudio)
             fastOpenGLTest = -1;
         }
     }
-    info += ".";
+    info.append(".");
     if (!safeOpenGLTest)
     {
         int safeOpenGLFpsTest = invokeSafeOpenGLRenderTest("10");
-        info += strprintf ("%d", safeOpenGLFpsTest);
+        info.append(strprintf("%d", safeOpenGLFpsTest));
         if (!safeOpenGLFpsTest)
         {
             safeOpenGLFps = readValue2(10);
-            info += strprintf (",%d", safeOpenGLFps);
+            info.append(strprintf(",%d", safeOpenGLFps));
             if (!safeOpenGLFps)
             {
                 safeOpenGLTest = -1;
@@ -162,7 +162,7 @@ int TestMain::exec(const bool testAudio)
             else
             {
                 rescaleTest[2] = invokeSafeOpenGLRenderTest("7");
-                info += strprintf (",%d", rescaleTest[2]);
+                info.append(strprintf(",%d", rescaleTest[2]));
             }
         }
         else
@@ -170,7 +170,7 @@ int TestMain::exec(const bool testAudio)
             safeOpenGLTest = -1;
         }
     }
-    info += ".";
+    info.append(".");
 
     int maxFps = softFps;
     if (maxFps < fastOpenGLFps)

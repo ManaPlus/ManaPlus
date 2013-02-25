@@ -69,8 +69,9 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y)
     }
     mPos += 3;
     PacketCounters::incInBytes(3);
-    DEBUGLOG("readCoordinates: " + toString(static_cast<int>(x)) + ","
-             + toString(static_cast<int>(y)));
+    DEBUGLOG(std::string("readCoordinates: ").append(toString(
+        static_cast<int>(x))).append(",").append(toString(
+        static_cast<int>(y))));
 }
 
 uint8_t MessageIn::fromServerDirection(uint8_t serverDir)
@@ -124,9 +125,10 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction)
     }
     mPos += 3;
     PacketCounters::incInBytes(3);
-    DEBUGLOG("readCoordinates: " + toString(static_cast<int>(x))
-        + "," + toString(static_cast<int>(y)) + "," + toString(
-        static_cast<int>(serverDir)));
+    DEBUGLOG(std::string("readCoordinates: ").append(toString(
+        static_cast<int>(x))).append(",").append(toString(
+        static_cast<int>(y))).append(",").append(toString(
+        static_cast<int>(serverDir))));
 }
 
 void MessageIn::readCoordinatePair(uint16_t &srcX, uint16_t &srcY,
@@ -149,10 +151,11 @@ void MessageIn::readCoordinatePair(uint16_t &srcX, uint16_t &srcY,
         srcY = static_cast<unsigned short>(temp >> 4);
     }
     mPos += 5;
-    DEBUGLOG("readCoordinatePair: " + toString(static_cast<int>(srcX)) + ","
-        + toString(static_cast<int>(srcY)) + " "
-        + toString(static_cast<int>(dstX)) + ","
-        + toString(static_cast<int>(dstY)));
+    DEBUGLOG(std::string("readCoordinatePair: ").append(toString(
+        static_cast<int>(srcX))).append(",").append(toString(
+        static_cast<int>(srcY))).append(" ").append(toString(
+        static_cast<int>(dstX))).append(",").append(toString(
+        static_cast<int>(dstY))));
     PacketCounters::incInBytes(5);
 }
 
@@ -223,8 +226,7 @@ std::string MessageIn::readRawString(int length)
         if (hiddenPart.length() > 0)
         {
             DEBUGLOG("readString2: " + hiddenPart);
-
-            return str + "|" + hiddenPart;
+            return str.append("|").append(hiddenPart);
         }
     }
 
@@ -255,14 +257,14 @@ unsigned char *MessageIn::readBytes(int length)
 #ifdef ENABLEDEBUGLOG
     std::string str;
     for (int f = 0; f < length; f ++)
-        str += strprintf ("%02x", static_cast<unsigned>(buf[f]));
+        str.append(strprintf("%02x", static_cast<unsigned>(buf[f])));
     str += " ";
     for (int f = 0; f < length; f ++)
     {
         if (buf[f])
-            str += strprintf ("%c", buf[f]);
+            str.append(strprintf("%c", buf[f]));
         else
-            str += "_";
+            str.append("_");
     }
     logger->dlog("ReadBytes: " + str);
 #endif

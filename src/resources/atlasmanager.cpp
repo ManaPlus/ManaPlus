@@ -148,7 +148,8 @@ void AtlasManager::simpleSort(const std::string &name,
         Image *img = *it;
         if (img)
         {
-            atlas->name = "atlas_" + name + "_" + img->getIdPath();
+            atlas->name = std::string("atlas_").append(name).append(
+                "_").append(img->getIdPath());
             break;
         }
     }
@@ -175,7 +176,8 @@ void AtlasManager::simpleSort(const std::string &name,
                 y = 0;
                 atlases.push_back(atlas);
                 atlas = new TextureAtlas();
-                atlas->name = "atlas_" + name + "_" + img->getIdPath();
+                atlas->name = std::string("atlas_").append(name).append(
+                    "_").append(img->getIdPath());
             }
 
             if (img->mBounds.h > tempHeight)

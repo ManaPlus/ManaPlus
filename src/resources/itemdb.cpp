@@ -323,8 +323,8 @@ void ItemDB::load()
             if (!value)
                 continue;
             if (!effect.empty())
-                effect += " / ";
-            effect += strprintf(gettext(fields[i][1]), value);
+                effect.append(" / ");
+            effect.append(strprintf(gettext(fields[i][1]), value));
         }
         FOR_EACH (std::vector<Stat>::const_iterator, it, extraStats)
         {
@@ -332,13 +332,13 @@ void ItemDB::load()
             if (!value)
                 continue;
             if (!effect.empty())
-                effect += " / ";
-            effect += strprintf(it->format.c_str(), value);
+                effect.append(" / ");
+            effect.append(strprintf(it->format.c_str(), value));
         }
         std::string temp = XML::langProperty(node, "effect", "");
         if (!effect.empty() && !temp.empty())
-            effect += " / ";
-        effect += temp;
+            effect.append(" / ");
+        effect.append(temp);
         itemInfo->setEffect(effect);
 
         for_each_xml_child_node(itemChild, node)

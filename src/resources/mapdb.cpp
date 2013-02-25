@@ -54,7 +54,7 @@ void MapDB::load()
 void MapDB::loadRemap()
 {
     XML::Document *doc = new XML::Document(
-        paths.getStringValue("maps") + "remap.xml");
+        paths.getStringValue("maps").append("remap.xml"));
 
     const XmlNodePtr root = doc->rootNode();
     if (!root)

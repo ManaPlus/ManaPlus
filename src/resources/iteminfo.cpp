@@ -107,7 +107,7 @@ void ItemInfo::setAttackAction(std::string attackAction)
 void ItemInfo::addSound(const EquipmentSoundEvent event,
                         const std::string &filename)
 {
-    mSounds[event].push_back(paths.getStringValue("sfx") + filename);
+    mSounds[event].push_back(paths.getStringValue("sfx").append(filename));
 }
 
 const std::string &ItemInfo::getSound(const EquipmentSoundEvent event) const

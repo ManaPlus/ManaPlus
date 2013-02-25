@@ -212,12 +212,12 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
         {
             if (a->getX() != -1)
             {
-                text += strprintf(" [%d,%d %s]", a->getX(), a->getY(),
-                                  a->getMap().c_str());
+                text.append(strprintf(" [%d,%d %s]", a->getX(), a->getY(),
+                    a->getMap().c_str()));
             }
             else
             {
-                text += strprintf(" [%s]", a->getMap().c_str());
+                text.append(strprintf(" [%s]", a->getMap().c_str()));
             }
         }
 
@@ -228,10 +228,10 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
                 switch (a->getGender())
                 {
                     case GENDER_FEMALE:
-                        text += strprintf(" \u2640 ");
+                        text.append(" \u2640 ");
                         break;
                     case GENDER_MALE:
-                        text += strprintf(" \u2642 ");
+                        text.append(" \u2642 ");
                         break;
                     default:
                         break;
@@ -245,12 +245,12 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
                 switch (a->getGender())
                 {
                     case GENDER_FEMALE:
-                        text += strprintf(" \u2640 %s",
-                            a->getAdditionString().c_str());
+                        text.append(strprintf(" \u2640 %s",
+                            a->getAdditionString().c_str()));
                         break;
                     case GENDER_MALE:
-                        text += strprintf(" \u2642 %s",
-                            a->getAdditionString().c_str());
+                        text.append(strprintf(" \u2642 %s",
+                            a->getAdditionString().c_str()));
                         break;
                     default:
                         break;
@@ -258,7 +258,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             }
             else
             {
-                text += a->getAdditionString();
+                text.append(a->getAdditionString());
             }
         }
 

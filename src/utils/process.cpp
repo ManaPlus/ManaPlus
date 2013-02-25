@@ -51,9 +51,9 @@ int execFileWait(std::string pathName, std::string name A_UNUSED,
     memset(&piProcessInfo, 0, sizeof(piProcessInfo));
     siStartupInfo.cb = sizeof(siStartupInfo); 
     DWORD ret = -1;
-    std::string args(pathName + " " + arg1);
+    std::string args(std::string(pathName).append(" ").append(arg1));
     if (!arg2.empty())
-        args += " " + arg2;
+        args.append(" ").append(arg2);
 
     if (CreateProcess(pathName.c_str(), (char*)args.c_str(), nullptr, nullptr,
         false, CREATE_DEFAULT_ERROR_MODE, nullptr, nullptr, &siStartupInfo,
@@ -84,9 +84,9 @@ bool execFile(std::string pathName, std::string name A_UNUSED,
     memset(&siStartupInfo, 0, sizeof(siStartupInfo));
     memset(&piProcessInfo, 0, sizeof(piProcessInfo));
     siStartupInfo.cb = sizeof(siStartupInfo); 
-    std::string args(pathName + " " + arg1);
+    std::string args(std::string(pathName).append(" ").append(arg1));
     if (!arg2.empty())
-        args += " " + arg2;
+        args.append(" ").append(arg2);
 
     bool res = CreateProcess(pathName.c_str(), const_cast<char*>(
         args.c_str()), nullptr, nullptr, false,

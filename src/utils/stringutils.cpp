@@ -494,8 +494,8 @@ std::string combineDye(std::string file, std::string dye)
         return file;
     const size_t pos = file.find_last_of("|");
     if (pos != std::string::npos)
-        return file.substr(0, pos) + "|" + dye;
-    return file + "|" + dye;
+        return file.substr(0, pos).append("|").append(dye);
+    return file.append("|").append(dye);
 }
 
 std::string combineDye2(std::string file, std::string dye)
@@ -515,9 +515,9 @@ std::string combineDye2(std::string file, std::string dye)
              it2 = list2.begin(), it1_end = list1.end(), it2_end = list2.end();
              it1 != it1_end && it2 != it2_end; ++it1, ++it2)
         {
-            str += (*it1) + ":" + (*it2) + ";";
+            str.append(*it1).append(":").append(*it2).append(";");
         }
-        return file + "|" + str;
+        return file.append("|").append(str);
     }
     else
     {
@@ -531,7 +531,7 @@ std::string packList(const std::list<std::string> &list)
     std::string str("");
     while (i != list.end())
     {
-        str = str + (*i) + "|";
+        str.append(*i).append("|");
         ++ i;
     }
     if (str.size() > 1)
@@ -551,7 +551,7 @@ std::string stringToHexPath(const std::string &str)
 
     std::string hex = strprintf("%%%2x/", static_cast<int>(str[0]));
     for (unsigned f = 1, sz = static_cast<unsigned>(str.size()); f < sz; f ++)
-        hex += strprintf("%%%2x", static_cast<int>(str[f]));
+        hex.append(strprintf("%%%2x", static_cast<int>(str[f])));
     return hex;
 }
 

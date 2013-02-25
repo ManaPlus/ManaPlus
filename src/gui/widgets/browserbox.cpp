@@ -162,7 +162,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             bLink.y1 = sz * font->getHeight();
             bLink.y2 = bLink.y1 + font->getHeight();
 
-            newRow += tmp.substr(0, idx1);
+            newRow.append(tmp.substr(0, idx1));
 
             std::string tmp2 = newRow;
             idx1 = tmp2.find("##");
@@ -180,16 +180,16 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                 mLinks.push_back(bLink);
             linksCount ++;
 
-            newRow += "##<" + bLink.caption;
+            newRow.append("##<").append(bLink.caption);
 
             tmp.erase(0, idx3 + 2);
             if (!tmp.empty())
-                newRow += "##>";
+                newRow.append("##>");
 
             idx1 = tmp.find("@@");
         }
 
-        newRow += tmp;
+        newRow.append(tmp);
     }
     // Don't use links and user defined colors
     else
@@ -768,7 +768,7 @@ std::string BrowserBox::getTextAtPos(const int x, const int y) const
         }
         else
         {
-            str += part.mText;
+            str.append(part.mText);
         }
     }
 

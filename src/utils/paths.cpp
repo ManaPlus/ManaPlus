@@ -149,9 +149,14 @@ std::string getDesktopDir()
     char *xdg = getenv("XDG_CONFIG_HOME");
     std::string file;
     if (!xdg)
-        file = std::string(PhysFs::getUserDir()) + "/.config/user-dirs.dirs";
+    {
+        file = std::string(PhysFs::getUserDir()).append(
+            "/.config/user-dirs.dirs");
+    }
     else
-        file = std::string(xdg) + "/user-dirs.dirs";
+    {
+        file = std::string(xdg).append("/user-dirs.dirs");
+    }
 
     StringVect arr = ResourceManager::loadTextFileLocal(file);
     FOR_EACH (StringVectCIter, it, arr)
@@ -165,13 +170,13 @@ std::string getDesktopDir()
             replaceAll(str, "$HOME/", PhysFs::getUserDir());
             str = getRealPath(str);
             if (str.empty())
-                str = std::string(PhysFs::getUserDir()) + "Desktop";
+                str = std::string(PhysFs::getUserDir()).append("Desktop");
             return str;
         }
     }
 
-    return std::string(PhysFs::getUserDir()) + "Desktop";
+    return std::string(PhysFs::getUserDir()).append("Desktop");
 #else
-    return std::string(PhysFs::getUserDir()) + "Desktop";
+    return std::string(PhysFs::getUserDir()).append("Desktop");
 #endif
 }

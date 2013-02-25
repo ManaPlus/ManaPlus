@@ -146,30 +146,27 @@ void ChatTab::chatLog(std::string line, Own own,
         case BY_GM:
             if (tmp.nick.empty())
             {
-                tmp.nick = std::string(_("Global announcement:"));
-                tmp.nick += " ";
+                tmp.nick = std::string(_("Global announcement:")).append(" ");
                 lineColor = "##G";
             }
             else
             {
                 tmp.nick = strprintf(_("Global announcement from %s:"),
-                                     tmp.nick.c_str());
-                tmp.nick += " ";
+                                     tmp.nick.c_str()).append(" ");
                 lineColor = "##1"; // Equiv. to BrowserBox::RED
             }
             break;
         case BY_PLAYER:
-            tmp.nick += ": ";
+            tmp.nick.append(": ");
             lineColor = "##Y";
             break;
         case BY_OTHER:
         case BY_UNKNOWN:
-            tmp.nick += ": ";
+            tmp.nick.append(": ");
             lineColor = "##C";
             break;
         case BY_SERVER:
-            tmp.nick = _("Server:");
-            tmp.nick += " ";
+            tmp.nick = std::string(_("Server:")).append(" ");
             tmp.text = line;
             lineColor = "##S";
             break;
@@ -243,7 +240,8 @@ void ChatTab::chatLog(std::string line, Own own,
             << ":" << (((t / 60) % 60 < 10) ? "0" : "")
             << static_cast<int>((t / 60) % 60)
             << "] ";
-        line = lineColor + timeStr.str() + tmp.nick + tmp.text;
+        line = std::string(lineColor).append(timeStr.str()).append(
+            tmp.nick).append(tmp.text);
     }
 
     if (config.getBoolValue("enableChatLog"))
@@ -330,7 +328,7 @@ void ChatTab::chatLog(const std::string &nick, std::string msg)
     const Own byWho = (nick == player_node->getName() ? BY_PLAYER : BY_OTHER);
     if (byWho == BY_OTHER && config.getBoolValue("removeColors"))
         msg = removeColors(msg);
-    chatLog(nick + " : " + msg, byWho, false, false);
+    chatLog(std::string(nick).append(" : ").append(msg), byWho, false, false);
 }
 
 void ChatTab::chatInput(const std::string &message)

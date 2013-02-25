@@ -80,9 +80,9 @@ ResourceManager::~ResourceManager()
         {
             if (iter->second->getRefCount())
             {
-                logger->log("ResourceLeak: " + iter->second->getIdPath()
-                            + " (" + toString(iter->second->getRefCount())
-                            + ")");
+                logger->log(std::string("ResourceLeak: ").append(
+                    iter->second->getIdPath()).append(" (").append(
+                    toString(iter->second->getRefCount())).append(")"));
             }
         }
         ++iter;
@@ -237,7 +237,7 @@ void ResourceManager::logResource(const Resource *const res)
         std::string src = image->getSource();
         const int count = image->getRefCount();
         if (count)
-            src += " " + toString(count);
+            src.append(" ").append(toString(count));
         if (image)
         {
             logger->log("resource(%s, %u) %s", res->mIdPath.c_str(),
@@ -341,8 +341,7 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
 
             file = path + (*i);
             realPath = std::string(PhysFs::getRealDir(file.c_str()));
-            archive = realPath + dirSep + file;
-
+            archive = std::string(realPath).append(dirSep).append(file);
             addToSearchPath(archive, append);
         }
     }
@@ -366,8 +365,7 @@ void ResourceManager::searchAndRemoveArchives(const std::string &path,
 
             file = path + (*i);
             realPath = std::string(PhysFs::getRealDir(file.c_str()));
-            archive = realPath + dirSep + file;
-
+            archive = std::string(realPath).append(dirSep).append(file);
             removeFromSearchPath(archive);
         }
     }
@@ -410,12 +408,13 @@ std::string ResourceManager::getPath(const std::string &file) const
     // if the file is not in the search path, then its nullptr
     if (tmp)
     {
-        path = std::string(tmp) + dirSeparator + file;
+        path = std::string(tmp).append(dirSeparator).append(file);
     }
     else
     {
         // if not found in search path return the default path
-        path = Client::getPackageDirectory() + dirSeparator + file;
+        path = std::string(Client::getPackageDirectory()).append(
+            dirSeparator).append(file);
     }
 
     return path;
@@ -878,8 +877,9 @@ void ResourceManager::deleteInstance()
             {
                 if (res->getRefCount())
                 {
-                    logger->log("ResourceLeak: " + res->getIdPath()
-                        + " (" + toString(res->getRefCount()) + ")");
+                    logger->log(std::string("ResourceLeak: ").append(
+                        res->getIdPath()).append(" (").append(toString(
+                        res->getRefCount())).append(")"));
                 }
             }
             ++iter;
@@ -998,9 +998,7 @@ void ResourceManager::saveTextFile(std::string path, std::string name,
     if (!mkdir_r(path.c_str()))
     {
         std::ofstream file;
-        std::string fileName = path + "/" + name;
-
-        file.open(fileName.c_str(), std::ios::out);
+        file.open((path.append("/").append(name)).c_str(), std::ios::out);
         if (file.is_open())
             file << text << std::endl;
         file.close();

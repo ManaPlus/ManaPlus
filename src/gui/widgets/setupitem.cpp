@@ -501,7 +501,7 @@ void SetupItemLabel::createControls()
     {
         const std::string str = " \342\200\225\342\200\225\342\200\225"
             "\342\200\225\342\200\225 ";
-        mLabel = new Label(this, str + mText + str);
+        mLabel = new Label(this, std::string(str).append(mText).append(str));
     }
     else
     {
@@ -1032,7 +1032,7 @@ void SetupItemSound::action(const gcn::ActionEvent &event)
         if (mSlider->getSelected())
         {
             sound.playGuiSfx(branding.getStringValue("systemsounds")
-                + mSlider->getSelectedString() + ".ogg");
+                .append(mSlider->getSelectedString()).append(".ogg"));
         }
     }
     else
