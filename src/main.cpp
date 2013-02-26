@@ -62,7 +62,7 @@ static void printHelp()
         << endl << endl
         << _("Options:") << endl
         << _("  -l --log-file       : Log file to use") << endl
-        << _("  -L --chat-log-dir   : Chat log dir to use") << endl
+        << _("  -a --chat-log-dir   : Chat log dir to use") << endl
         << _("  -v --version        : Display the version") << endl
         << _("  -h --help           : Display this help") << endl
         << _("  -C --config-dir     : Configuration directory to use") << endl
@@ -71,7 +71,7 @@ static void printHelp()
         << _("  -c --character      : Login with this character") << endl
         << _("  -s --server         : Login server name or IP") << endl
         << _("  -p --port           : Login server port") << endl
-        << _("     --update-host    : Use this update host") << endl
+        << _("  -H --update-host    : Use this update host") << endl
         << _("  -D --default        : Choose default character server and "
                                      "character") << endl
         << _("  -u --skip-update    : Skip the update downloads") << endl
@@ -84,7 +84,7 @@ static void printHelp()
         << _("  -T --tests          : Start testing drivers and "
                                      "auto configuring") << endl
 #ifdef USE_OPENGL
-        << _("     --no-opengl      : Disable OpenGL for this session") << endl
+        << _("  -O --no-opengl      : Disable OpenGL for this session") << endl
 #endif
         ;
 }
@@ -175,7 +175,7 @@ static void parseOptions(const int argc, char *const argv[],
             case 'v':
                 options.printVersion = true;
                 break;
-            case 'S':
+            case 'L':
                 options.localDataDir = optarg;
                 break;
             case 'O':
