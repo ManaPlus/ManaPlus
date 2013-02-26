@@ -134,7 +134,7 @@ bool PoParser::readMsgId()
         else if (checkLine())
         {
             // reading text from: "text"
-            mMsgId += mLine.substr(1, mLine.size() - 2);
+            mMsgId.append(mLine.substr(1, mLine.size() - 2));
             mLine.clear();
             return true;
         }
@@ -149,8 +149,8 @@ bool PoParser::readMsgId()
         {
             mReadingId = true;
             // reading text from: msgid "text"
-            mMsgId += mLine.substr(msgId1.size(),
-                mLine.size() - 1 - msgId1.size());
+            mMsgId.append(mLine.substr(msgId1.size(),
+                mLine.size() - 1 - msgId1.size()));
             mLine.clear();
             return true;
         }
@@ -175,7 +175,7 @@ bool PoParser::readMsgStr()
         if (checkLine())
         {
             // reading text from: "text"
-            mMsgStr += mLine.substr(1, mLine.size() - 2);
+            mMsgStr.append(mLine.substr(1, mLine.size() - 2));
             mLine.clear();
             return true;
         }
@@ -189,8 +189,8 @@ bool PoParser::readMsgStr()
         {
             mReadingStr = true;
             // reading text from: msgid "text"
-            mMsgStr += mLine.substr(msgStr1.size(),
-                mLine.size() - 1 - msgStr1.size());
+            mMsgStr.append(mLine.substr(msgStr1.size(),
+                mLine.size() - 1 - msgStr1.size()));
             mLine.clear();
             return true;
         }

@@ -150,7 +150,7 @@ void Network::flush()
 
     SDL_mutexP(mMutex);
     ret = SDLNet_TCP_Send(mSocket, mOutBuffer, mOutSize);
-    DEBUGLOG("Send " + toString(mOutSize) + " bytes");
+    DEBUGLOG(std::string("Send ").append(toString(mOutSize)).append(" bytes"));
     if (ret < static_cast<int>(mOutSize))
     {
         setError("Error in SDLNet_TCP_Send(): " +
@@ -191,8 +191,8 @@ bool Network::realConnect()
     if (SDLNet_ResolveHost(&ipAddress, mServer.hostname.c_str(),
         mServer.port) == -1)
     {
-        std::string errorMessage = _("Unable to resolve host \"") +
-            mServer.hostname + "\"";
+        std::string errorMessage = std::string(_("Unable to resolve host \""))
+            .append(mServer.hostname).append("\"");
         setError(errorMessage);
         logger->log("SDLNet_ResolveHost: %s", errorMessage.c_str());
         return false;

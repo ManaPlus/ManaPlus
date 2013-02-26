@@ -264,7 +264,8 @@ void GuildHandler::chat(int guildId A_UNUSED, const std::string &text)
     if (!player_node)
         return;
 
-    std::string str = player_node->getName() + " : " + text;
+    std::string str = std::string(player_node->getName()).append(
+        " : ").append(text);
     MessageOut msg(CMSG_GUILD_MESSAGE);
     msg.writeInt16(static_cast<uint16_t>(str.size() + 4));
     msg.writeString(str, static_cast<int>(str.length()));

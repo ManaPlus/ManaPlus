@@ -307,7 +307,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
         PlayerRelation::SPEECH_LOG) && chatWindow)
     {
         chatWindow->resortChatLog(removeColors(sender_name)
-            + " : " + chatMsg, BY_OTHER);
+            .append(" : ").append(chatMsg), BY_OTHER);
     }
 
     if (player_relations.hasPermission(sender_name,

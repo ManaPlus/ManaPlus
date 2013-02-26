@@ -269,9 +269,8 @@ namespace gcn
 
         const int sz = static_cast<int>(mTextRows.size());
         for (i = 0; i < sz - 1; ++ i)
-            text = text + mTextRows[i] + "\n";
-
-        text = text + mTextRows[i];
+            text.append(mTextRows[i]).append("\n");
+        text.append(mTextRows[i]);
 
         return text;
     }

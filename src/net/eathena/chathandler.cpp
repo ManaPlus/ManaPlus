@@ -107,7 +107,8 @@ void ChatHandler::talk(const std::string &text)
     if (!player_node)
         return;
 
-    std::string mes = player_node->getName() + " : " + text;
+    std::string mes = std::string(player_node->getName()).append(
+        " : ").append(text);
 
     MessageOut outMsg(CMSG_CHAT_MESSAGE);
     // Added + 1 in order to let eAthena parse admin commands correctly

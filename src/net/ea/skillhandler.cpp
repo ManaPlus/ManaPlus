@@ -176,43 +176,43 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
                 break;
         }
 
-        txt += " ";
+        txt.append(" ");
 
         switch (reason)
         {
             case RFAIL_SKILLDEP:
-                txt += _("You have not yet reached a high enough lvl!");
+                txt.append(_("You have not yet reached a high enough lvl!"));
                 break;
             case RFAIL_INSUFHP:
-                txt += _("Insufficient HP!");
+                txt.append(_("Insufficient HP!"));
                 break;
             case RFAIL_INSUFSP:
-                txt += _("Insufficient SP!");
+                txt.append(_("Insufficient SP!"));
                 break;
             case RFAIL_NOMEMO:
-                txt += _("You have no memos!");
+                txt.append(_("You have no memos!"));
                 break;
             case RFAIL_SKILLDELAY:
-                txt += _("You cannot do that right now!");
+                txt.append(_("You cannot do that right now!"));
                 break;
             case RFAIL_ZENY:
-                txt += _("Seems you need more money... ;-)");
+                txt.append(_("Seems you need more money... ;-)"));
                 break;
             case RFAIL_WEAPON:
-                txt += _("You cannot use this skill with that "
-                    "kind of weapon!");
+                txt.append(_("You cannot use this skill with that "
+                    "kind of weapon!"));
                 break;
             case RFAIL_REDGEM:
-                txt += _("You need another red gem!");
+                txt.append(_("You need another red gem!"));
                 break;
             case RFAIL_BLUEGEM:
-                txt += _("You need another blue gem!");
+                txt.append(_("You need another blue gem!"));
                 break;
             case RFAIL_OVERWEIGHT:
-                txt += _("You're carrying to much to do this!");
+                txt.append(_("You're carrying to much to do this!"));
                 break;
             default:
-                txt += _("Huh? What's that?");
+                txt.append(_("Huh? What's that?"));
                 logger->log("QQQ SMSG_SKILL_FAILED: reason "
                             + toString(reason));
                 break;
