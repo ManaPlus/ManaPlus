@@ -93,10 +93,10 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         const int range = msg.readInt16();
         msg.skip(24); // 0 unused
         const int up = msg.readInt8();
-        const int oldLevel = PlayerInfo::getStatBase(skillId);
+        const int oldLevel = PlayerInfo::getSkillLevel(skillId);
         if (oldLevel && oldLevel != level)
             updateSkill = skillId;
-        PlayerInfo::setStatBase(skillId, level);
+        PlayerInfo::setSkillLevel(skillId, level);
         if (skillDialog)
         {
             if (!skillDialog->updateSkill(skillId, range, up))
@@ -115,9 +115,9 @@ void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg)
     const int range = msg.readInt16();
     const int up = msg.readInt8();
 
-    if (skillDialog && PlayerInfo::getStatBase(skillId) != level)
+    if (skillDialog && PlayerInfo::getSkillLevel(skillId) != level)
         skillDialog->playUpdateEffect(skillId);
-    PlayerInfo::setStatBase(skillId, level);
+    PlayerInfo::setSkillLevel(skillId, level);
     if (skillDialog)
     {
         if (!skillDialog->updateSkill(skillId, range, up))

@@ -388,6 +388,7 @@ Game::Game():
     // Create the viewport
     viewport = new Viewport;
     viewport->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
+    PlayerInfo::clear();
 
     gcn::Container *const top = static_cast<gcn::Container*>(gui->getTop());
     if (top)

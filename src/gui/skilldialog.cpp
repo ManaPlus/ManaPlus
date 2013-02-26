@@ -662,7 +662,7 @@ void SkillDialog::updateQuest(const int var, const int val)
         SkillInfo *const info = it->second;
         if (info)
         {
-            PlayerInfo::setStatBase(id, val);
+            PlayerInfo::setSkillLevel(id, val);
             info->level = val;
             info->update();
         }
@@ -699,11 +699,10 @@ SkillInfo::~SkillInfo()
 
 void SkillInfo::update()
 {
-    const int baseLevel = PlayerInfo::getStatBase(id);
-    const int effLevel = PlayerInfo::getStatEffective(id);
+    const int baseLevel = PlayerInfo::getSkillLevel(id);
     const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
 
-    if (!modifiable && baseLevel == 0 && effLevel == 0 && exp.second == 0)
+    if (!modifiable && baseLevel == 0 && exp.second == 0)
     {
         if (visible)
         {
@@ -717,18 +716,11 @@ void SkillInfo::update()
     const bool updateVisibility = !visible;
     visible = true;
 
-    if (effLevel != baseLevel)
-    {
-        skillLevel = strprintf(_("Lvl: %d (%+d)"), baseLevel,
-                               effLevel - baseLevel);
-    }
+    if (baseLevel == 0)
+        skillLevel.clear();
     else
-    {
-        if (baseLevel == 0)
-            skillLevel.clear();
-        else
-            skillLevel = strprintf(_("Lvl: %d"), baseLevel);
-    }
+        skillLevel = strprintf(_("Lvl: %d"), baseLevel);
+
     level = baseLevel;
     skillLevelWidth = -1;
 

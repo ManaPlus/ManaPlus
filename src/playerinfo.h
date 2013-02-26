@@ -49,6 +49,7 @@ struct PlayerInfoBackend final
 {
     IntMap mAttributes;
     StatMap mStats;
+    IntMap mSkills;
 };
 
 class Equipment;
@@ -111,6 +112,10 @@ namespace PlayerInfo
     void setAttribute(const int id, const int value,
                       const bool notify = true);
 
+    int getSkillLevel(const int id) A_WARN_UNUSED;
+
+    void setSkillLevel(const int id, const int value);
+
 // --- Stats ------------------------------------------------------------------
 
     /**
@@ -168,6 +173,8 @@ namespace PlayerInfo
      * Clears the player's inventory and equipment.
      */
     void clearInventory();
+
+    void clear();
 
     /**
      * Changes the inventory item at the given slot.

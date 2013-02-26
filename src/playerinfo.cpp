@@ -106,6 +106,20 @@ void setAttribute(const int id, const int value, const bool notify)
         triggerAttr(id, old);
 }
 
+int getSkillLevel(const int id)
+{
+    const IntMap::const_iterator it = mData.mSkills.find(id);
+    if (it != mData.mSkills.end())
+        return it->second;
+    else
+        return 0;
+}
+
+void setSkillLevel(const int id, const int value)
+{
+    mData.mSkills[id] = value;
+}
+
 // --- Stats ------------------------------------------------------------------
 
 int getStatBase(const int id)
@@ -365,6 +379,11 @@ void deinit()
     clearInventory();
     delete mListener;
     mListener = nullptr;
+}
+
+void clear()
+{
+    mData.mSkills.clear();
 }
 
 bool isTalking()
