@@ -378,6 +378,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
         const int y32s = (y + yFix) * 32;
         const int yWidth = y * mWidth;
 
+        BLOCK_START("MapLayer::drawFringe drawmobs")
         // If drawing the fringe layer, make sure all actors above this row of
         // tiles have been drawn
         while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
@@ -385,6 +386,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             (*ai)->draw(graphics, -scrollX, -scrollY);
             ++ ai;
         }
+        BLOCK_END("MapLayer::drawFringe drawmobs")
 
         if (debugFlags == Map::MAP_SPECIAL3
             || debugFlags == Map::MAP_BLACKWHITE)
@@ -485,11 +487,13 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
     // Draw any remaining actors
     if (debugFlags != Map::MAP_SPECIAL3)
     {
+        BLOCK_START("MapLayer::drawFringe drawmobs")
         while (ai != ai_end)
         {
             (*ai)->draw(graphics, -scrollX, -scrollY);
             ++ai;
         }
+        BLOCK_END("MapLayer::drawFringe drawmobs")
         if (mHighlightAttackRange && player_node)
         {
             const int px = player_node->getPixelX() - scrollX - 16;
