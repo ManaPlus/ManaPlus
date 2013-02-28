@@ -305,9 +305,9 @@ class Particle : public Actor
                                          finished*/
         Vector mVelocity;           /**< Speed in pixels per game-tick. */
 
-    private:
         AliveStatus mAlive;         /**< Is the particle supposed to be
                                          drawn and updated?*/
+    private:
         // generic properties
         bool mAutoDelete;           /**< May the particle request its deletion
                                          by the parent particle? */
