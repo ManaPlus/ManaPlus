@@ -70,7 +70,6 @@ void Item::setId(const int id, const unsigned char color)
     // Types 0 and 1 are not equippable items.
     mEquipment = id && getInfo().getType() >= 2;
 
-    // Load the associated image
     if (mImage)
         mImage->decRef();
 
@@ -81,10 +80,9 @@ void Item::setId(const int id, const unsigned char color)
     const ItemInfo &info = getInfo();
     mTags = info.getTags();
 
-    SpriteDisplay display = info.getDisplay();
-    std::string imagePath = paths.getStringValue(
-        "itemIcons").append(display.image);
-    std::string dye = combineDye2(imagePath, info.getDyeColorsString(color));
+    const std::string dye = combineDye2(paths.getStringValue(
+        "itemIcons").append(info.getDisplay().image),
+        info.getDyeColorsString(color));
     mImage = resman->getImage(dye);
     mDrawImage = resman->getImage(dye);
 
@@ -112,10 +110,8 @@ Image *Item::getImage(const int id, const unsigned char color)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
     const ItemInfo &info = ItemDB::get(id);
-    SpriteDisplay display = info.getDisplay();
-    std::string imagePath = paths.getStringValue(
-        "itemIcons").append(display.image);
-    Image *image = resman->getImage(combineDye2(imagePath,
+    Image *image = resman->getImage(combineDye2(paths.getStringValue(
+        "itemIcons").append(info.getDisplay().image),
         info.getDyeColorsString(color)));
 
     if (!image)

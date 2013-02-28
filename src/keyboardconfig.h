@@ -71,10 +71,10 @@ class KeyboardConfig final
          */
         void refreshActiveKeys();
 
-        std::string getKeyShortString(const std::string &key)
-                                      const A_WARN_UNUSED;
+        static std::string getKeyShortString(const std::string &key)
+                                             A_WARN_UNUSED;
 
-        SDLKey getKeyFromEvent(const SDL_Event &event) const A_WARN_UNUSED;
+        static SDLKey getKeyFromEvent(const SDL_Event &event) A_WARN_UNUSED;
 
         int getKeyValueFromEvent(const SDL_Event &event) const A_WARN_UNUSED;
 
@@ -82,7 +82,7 @@ class KeyboardConfig final
 
         KeysVector *getActionVectorByKey(const int i) A_WARN_UNUSED;
 
-        std::string getKeyName(const int key) const A_WARN_UNUSED;
+        static std::string getKeyName(const int key)A_WARN_UNUSED;
 
         bool isActionActive(const int index) const A_WARN_UNUSED;
 

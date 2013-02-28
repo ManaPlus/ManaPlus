@@ -75,7 +75,7 @@ void KeyboardConfig::refreshActiveKeys()
     mActiveKeys = SDL_GetKeyState(nullptr);
 }
 
-std::string KeyboardConfig::getKeyName(const int key) const
+std::string KeyboardConfig::getKeyName(const int key)
 {
     if (key == Input::KEY_NO_VALUE)
         return "";
@@ -85,7 +85,7 @@ std::string KeyboardConfig::getKeyName(const int key) const
     return strprintf(_("key_%d"), key);
 }
 
-std::string KeyboardConfig::getKeyShortString(const std::string &key) const
+std::string KeyboardConfig::getKeyShortString(const std::string &key)
 {
     if (key == "backspace")
     {
@@ -99,7 +99,7 @@ std::string KeyboardConfig::getKeyShortString(const std::string &key) const
     return key;
 }
 
-SDLKey KeyboardConfig::getKeyFromEvent(const SDL_Event &event) const
+SDLKey KeyboardConfig::getKeyFromEvent(const SDL_Event &event)
 {
     return event.key.keysym.sym;
 }
@@ -138,10 +138,11 @@ bool KeyboardConfig::isActionActive(const int index) const
     const KeyFunction &key = inputManager.getKey(index);
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        if (key.values[i].type != INPUT_KEYBOARD)
+        const KeyItem &val = key.values[i];
+        if (val.type != INPUT_KEYBOARD)
             continue;
 
-        const int value = key.values[i].value;
+        const int value = val.value;
         if (value >= 0)
         {
             if (mActiveKeys[value])

@@ -120,7 +120,8 @@ void ItemShortcut::save() const
 
 void ItemShortcut::useItem(const int index) const
 {
-    if (!PlayerInfo::getInventory())
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (!inv)
         return;
 
     const int itemId = mItems[index];
@@ -129,8 +130,7 @@ void ItemShortcut::useItem(const int index) const
     {
         if (itemId < SPELL_MIN_ID)
         {
-            const Item *const item = PlayerInfo::getInventory()->findItem(
-                itemId, itemColor);
+            const Item *const item = inv->findItem(itemId, itemColor);
             if (item && item->getQuantity())
             {
                 if (item->isEquipment())
@@ -159,13 +159,14 @@ void ItemShortcut::useItem(const int index) const
 
 void ItemShortcut::equipItem(const int index) const
 {
-    if (!PlayerInfo::getInventory())
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (!inv)
         return;
 
-    if (mItems[index])
+    const int itemId = mItems[index];
+    if (itemId)
     {
-        const Item *const item = PlayerInfo::getInventory()->findItem(
-            mItems[index], mItemColors[index]);
+        const Item *const item = inv->findItem(itemId, mItemColors[index]);
         if (item && item->getQuantity())
         {
             if (item->isEquipment())
@@ -178,13 +179,14 @@ void ItemShortcut::equipItem(const int index) const
 }
 void ItemShortcut::unequipItem(const int index) const
 {
-    if (!PlayerInfo::getInventory())
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (!inv)
         return;
 
-    if (mItems[index])
+    const int itemId = mItems[index];
+    if (itemId)
     {
-        const Item *const item = PlayerInfo::getInventory()->findItem(
-            mItems[index], mItemColors[index]);
+        const Item *const item = inv->findItem(itemId, mItemColors[index]);
         if (item && item->getQuantity())
         {
             if (item->isEquipment())

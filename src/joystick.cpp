@@ -80,7 +80,7 @@ bool Joystick::open()
         mNumber = joystickCount - 1;
     if (mNumber < 0)
     {
-        logger->log("error: incorrect joystick selection");
+        logger->log1("error: incorrect joystick selection");
         return false;
     }
     logger->log("open joystick %d", mNumber);
@@ -312,9 +312,10 @@ bool Joystick::isActionActive(const int index) const
     const KeyFunction &key = inputManager.getKey(index);
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        if (key.values[i].type != INPUT_JOYSTICK)
+        const KeyItem &val = key.values[i];
+        if (val.type != INPUT_JOYSTICK)
             continue;
-        const int value = key.values[i].value;
+        const int value = val.value;
         if (value >= 0 && value < mButtonsNumber)
         {
             if (mActiveButtons[value])
