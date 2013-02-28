@@ -55,8 +55,6 @@ bool ImageSprite::draw(Graphics *const graphics,
     if (!mImage)
         return false;
 
-    if (mImage->getAlpha() != mAlpha)
-        mImage->setAlpha(mAlpha);
-
+    mImage->setAlpha(mAlpha);
     return graphics->drawImage(mImage, posX, posY);
 }

@@ -69,7 +69,7 @@ void DepricatedEvent::setString(const std::string &key,
     mData[key] = new StringData(value);
 }
 
-const std::string &DepricatedEvent::getString(const std::string &key) const
+const std::string DepricatedEvent::getString(const std::string &key) const
 {
     const VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())

@@ -141,8 +141,8 @@ class DepricatedEvent final
         void setString(const std::string &key,
                        const std::string &value);
 
-        const std::string &getString(const std::string &key)
-                                     const A_WARN_UNUSED;
+        const std::string getString(const std::string &key)
+                                    const A_WARN_UNUSED;
 
         // Sets or gets a floating point number with key to identify
         void setFloat(const std::string &key, double value);
