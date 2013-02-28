@@ -153,9 +153,9 @@ class Inventory final
         bool isMainInventory() const A_WARN_UNUSED
         { return mType == INVENTORY; }
 
-        Item *findItemBySprite(std::string spritePath,
-                               const Gender gender,
-                               const int race) const A_WARN_UNUSED;
+        const Item *findItemBySprite(std::string spritePath,
+                                     const Gender gender,
+                                     const int race) const A_WARN_UNUSED;
 
         std::string getName() const A_WARN_UNUSED;
 

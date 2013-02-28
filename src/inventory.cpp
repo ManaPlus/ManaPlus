@@ -81,12 +81,13 @@ Item *Inventory::findItem(const int itemId, const unsigned char color) const
 {
     for (unsigned i = 0; i < mSize; i++)
     {
-        if (mItems[i] && mItems[i]->mId == itemId)
+        Item *const item = mItems[i];
+        if (item && item->mId == itemId)
         {
-            if (color == 0 || mItems[i]->mColor == color
-                || (color == 1 && mItems[i]->mColor <= 1))
+            if (color == 0 || item->mColor == color
+                || (color == 1 && item->mColor <= 1))
             {
-                return mItems[i];
+                return item;
             }
         }
     }
@@ -110,7 +111,8 @@ void Inventory::setItem(const int index, const int id, const int quantity,
         return;
     }
 
-    if (!mItems[index] && id > 0)
+    Item *const item1 = mItems[index];
+    if (!item1 && id > 0)
     {
         Item *const item = new Item(id, quantity, refine, color, equipment);
         item->setInvIndex(index);
@@ -118,14 +120,14 @@ void Inventory::setItem(const int index, const int id, const int quantity,
         mUsed++;
         distributeSlotsChangedEvent();
     }
-    else if (id > 0 && mItems[index])
+    else if (id > 0 && item1)
     {
-        mItems[index]->setId(id, color);
-        mItems[index]->setQuantity(quantity);
-        mItems[index]->setRefine(refine);
-        mItems[index]->setEquipment(equipment);
+        item1->setId(id, color);
+        item1->setQuantity(quantity);
+        item1->setRefine(refine);
+        item1->setEquipment(equipment);
     }
-    else if (mItems[index])
+    else if (item1)
     {
         removeItemAt(index);
     }
@@ -141,7 +143,8 @@ void Inventory::removeItem(const int id)
 {
     for (unsigned i = 0; i < mSize; i++)
     {
-        if (mItems[i] && mItems[i]->mId == id)
+        const Item *const item = mItems[i];
+        if (item && item->mId == id)
             removeItemAt(i);
     }
 }
@@ -162,9 +165,11 @@ bool Inventory::contains(const Item *const item) const
     if (!item)
         return false;
 
+    const int id = item->mId;
     for (unsigned i = 0; i < mSize; i++)
     {
-        if (mItems[i] && mItems[i]->mId == item->mId)
+        const Item *const item1 = mItems[i];
+        if (item1 && item1->mId == id)
             return true;
     }
 
@@ -206,21 +211,23 @@ void Inventory::distributeSlotsChangedEvent()
         (*i)->slotsChanged(this);
 }
 
-Item *Inventory::findItemBySprite(std::string spritePath,
-                                  const Gender gender, const int race) const
+const Item *Inventory::findItemBySprite(std::string spritePath,
+                                        const Gender gender,
+                                        const int race) const
 {
     spritePath = removeSpriteIndex(spritePath);
 //    logger->log1("Inventory::FindItemBySprite sprite: " + spritePath);
 
-    std::string spritePathShort = extractNameFromSprite(spritePath);
+    const std::string spritePathShort = extractNameFromSprite(spritePath);
 //    logger->log1("Inventory::FindItemBySprite spriteShort: " + spritePathShort);
     int partialIndex = -1;
 
     for (unsigned i = 0; i < mSize; i++)
     {
-        if (mItems[i])
+        const Item *const item = mItems[i];
+        if (item)
         {
-            std::string path = mItems[i]->getInfo().getSprite(gender, race);
+            std::string path = item->getInfo().getSprite(gender, race);
             if (!path.empty())
             {
                 path = removeSpriteIndex(path);
@@ -228,7 +235,7 @@ Item *Inventory::findItemBySprite(std::string spritePath,
 //                logger->log("Inventory::FindItemBySprite normal: " + path);
 
                 if (spritePath == path)
-                    return mItems[i];
+                    return item;
 
                 path = extractNameFromSprite(path);
 //                logger->log("Inventory::FindItemBySprite short: " + path);

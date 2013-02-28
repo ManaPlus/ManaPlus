@@ -126,7 +126,7 @@ class InputManager final
 
         void unassignKey();
 
-        bool isActionActive(const int index) const A_WARN_UNUSED;
+        static bool isActionActive(const int index) A_WARN_UNUSED;
 
         /**
          * Set the index of the new key to be assigned.

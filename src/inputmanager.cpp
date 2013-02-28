@@ -75,10 +75,12 @@ void InputManager::init()
 {
     for (unsigned int i = 0; i < Input::KEY_TOTAL; i++)
     {
+        KeyFunction &kf = mKey[i];
         for (unsigned int f = 0; f < KeyFunctionSize; f ++)
         {
-            mKey[i].values[f].type = INPUT_UNKNOWN;
-            mKey[i].values[f].value = -1;
+            KeyItem &ki = kf.values[f];
+            ki.type = INPUT_UNKNOWN;
+            ki.value = -1;
         }
     }
 
@@ -100,10 +102,11 @@ void InputManager::retrieve()
 {
     for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
-        if (*keyData[i].configField)
+        const char *const cf = keyData[i].configField;
+        if (*cf)
         {
             KeyFunction &kf = mKey[i];
-            std::string keyStr = config.getValue(keyData[i].configField, "");
+            const std::string keyStr = config.getValue(cf, "");
             if (keyStr.empty())
                 continue;
 
@@ -148,13 +151,15 @@ void InputManager::store() const
 {
     for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
-        if (*keyData[i].configField)
+        const char *const cf = keyData[i].configField;
+        if (*cf)
         {
             std::string keyStr;
+            const KeyFunction &kf = mKey[i];
 
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
-                const KeyItem &key = mKey[i].values[i2];
+                const KeyItem &key = kf.values[i2];
                 if (key.type != INPUT_UNKNOWN)
                 {
                     std::string tmp = "k";
@@ -186,7 +191,7 @@ void InputManager::store() const
             if (keyStr.empty())
                 keyStr = "-1";
 
-            config.setValue(keyData[i].configField, keyStr);
+            config.setValue(cf, keyStr);
         }
     }
 }
@@ -198,13 +203,17 @@ void InputManager::resetKeys()
         KeyFunction &key = mKey[i];
         for (size_t i2 = 1; i2 < KeyFunctionSize; i2 ++)
         {
-            key.values[i2].type = INPUT_UNKNOWN;
-            key.values[i2].value = -1;
+            KeyItem &ki2 = key.values[i2];
+            ki2.type = INPUT_UNKNOWN;
+            ki2.value = -1;
         }
-        key.values[0].type = keyData[i].defaultType1;
-        key.values[0].value = keyData[i].defaultValue1;
-        key.values[1].type = keyData[i].defaultType2;
-        key.values[1].value = keyData[i].defaultValue2;
+        const KeyData &kd = keyData[i];
+        KeyItem &val0 = key.values[0];
+        val0.type = kd.defaultType1;
+        val0.value = kd.defaultValue1;
+        KeyItem &val1 = key.values[1];
+        val1.type = kd.defaultType2;
+        val1.value = kd.defaultValue2;
     }
 }
 
@@ -215,13 +224,17 @@ void InputManager::makeDefault(const int i)
         KeyFunction &key = mKey[i];
         for (size_t i2 = 1; i2 < KeyFunctionSize; i2 ++)
         {
-            key.values[i2].type = INPUT_UNKNOWN;
-            key.values[i2].value = -1;
+            KeyItem &ki2 = key.values[i2];
+            ki2.type = INPUT_UNKNOWN;
+            ki2.value = -1;
         }
-        key.values[0].type = keyData[i].defaultType1;
-        key.values[0].value = keyData[i].defaultValue1;
-        key.values[1].type = keyData[i].defaultType2;
-        key.values[1].value = keyData[i].defaultValue2;
+        const KeyData &kd = keyData[i];
+        KeyItem &val0 = key.values[0];
+        val0.type = kd.defaultType1;
+        val0.value = kd.defaultValue1;
+        KeyItem &val1 = key.values[1];
+        val1.type = kd.defaultType2;
+        val1.value = kd.defaultValue2;
 
         update();
     }
@@ -235,31 +248,31 @@ bool InputManager::hasConflicts(int &key1, int &key2) const
      */
     for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
-        if (!*keyData[i].configField)
+        const KeyData &kdi = keyData[i];
+        if (!*kdi.configField)
             continue;
 
+        const KeyFunction &ki = mKey[i];
         for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
         {
-            if (mKey[i].values[i2].value == Input::KEY_NO_VALUE)
+            const KeyItem &vali2 = ki.values[i2];
+            if (vali2.value == Input::KEY_NO_VALUE)
                 continue;
 
             size_t j;
             for (j = i, j++; j < Input::KEY_TOTAL; j++)
             {
-
-                if ((keyData[i].grp & keyData[j].grp) == 0 ||
-                    !*keyData[i].configField)
-                {
+                if ((kdi.grp & keyData[j].grp) == 0 || !*kdi.configField)
                     continue;
-                }
 
                 for (size_t j2 = 0; j2 < KeyFunctionSize; j2 ++)
                 {
+                    const KeyItem &valj2 = mKey[j].values[j2];
                     // Allow for item shortcut and emote keys to overlap
                     // as well as emote and ignore keys, but no other keys
-                    if (mKey[j].values[j2].type != INPUT_UNKNOWN
-                        && mKey[i].values[i2].value == mKey[j].values[j2].value
-                        && mKey[i].values[i2].type == mKey[j].values[j2].type)
+                    if (valj2.type != INPUT_UNKNOWN
+                        && vali2.value == valj2.value
+                        && vali2.type == valj2.type)
                     {
                         key1 = static_cast<int>(i);
                         key2 = static_cast<int>(j);
@@ -277,7 +290,7 @@ void InputManager::callbackNewKey()
     mSetupInput->newKeyCallback(mNewKeyIndex);
 }
 
-bool InputManager::isActionActive(const int index) const
+bool InputManager::isActionActive(const int index)
 {
     if (keyboard.isActionActive(index))
         return true;
@@ -296,10 +309,11 @@ KeyFunction &InputManager::getKey(int index)
 std::string InputManager::getKeyStringLong(const int index) const
 {
     std::string keyStr;
+    const KeyFunction &ki = mKey[index];
 
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        const KeyItem &key = mKey[index].values[i];
+        const KeyItem &key = ki.values[i];
         std::string str;
         if (key.type == INPUT_KEYBOARD)
         {
@@ -330,10 +344,11 @@ std::string InputManager::getKeyStringLong(const int index) const
 std::string InputManager::getKeyValueString(const int index) const
 {
     std::string keyStr;
+    const KeyFunction &ki = mKey[index];
 
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        const KeyItem &key = mKey[index].values[i];
+        const KeyItem &key = ki.values[i];
         std::string str;
         if (key.type == INPUT_KEYBOARD)
         {
@@ -376,9 +391,9 @@ void InputManager::addActionKey(const int action, const int type,
     KeyFunction &key = mKey[action];
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        if (key.values[i].type == INPUT_UNKNOWN
-            || (key.values[i].type == type
-            && key.values[i].value == val))
+        const KeyItem &val2 = key.values[i];
+        if (val2.type == INPUT_UNKNOWN || (val2.type == type
+            && val2.value == val))
         {
             idx = static_cast<int>(i);
             break;
@@ -388,8 +403,10 @@ void InputManager::addActionKey(const int action, const int type,
     {
         for (size_t i = 1; i < KeyFunctionSize; i ++)
         {
-            key.values[i - 1].type = key.values[i].type;
-            key.values[i - 1].value = key.values[i].value;
+            KeyItem &val1 = key.values[i - 1];
+            KeyItem &val2 = key.values[i];
+            val1.type = val2.type;
+            val1.value = val2.value;
         }
         idx = KeyFunctionSize - 1;
     }
@@ -417,8 +434,9 @@ void InputManager::unassignKey()
     KeyFunction &key = mKey[mNewKeyIndex];
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        key.values[i].type = INPUT_UNKNOWN;
-        key.values[i].value = -1;
+        KeyItem &val = key.values[i];
+        val.type = INPUT_UNKNOWN;
+        val.value = -1;
     }
     update();
 }
@@ -553,42 +571,42 @@ void InputManager::updateConditionMask()
 {
     mMask = 1;
     if (keyboard.isEnabled())
-        mMask += COND_ENABLED;
+        mMask |= COND_ENABLED;
     if ((!chatWindow || !chatWindow->isInputFocused()) &&
         !NpcDialog::isAnyInputFocused() &&
         !InventoryWindow::isAnyInputFocused() &&
         (!tradeWindow || !tradeWindow->isInpupFocused()))
     {
-        mMask += COND_NOINPUT;
+        mMask |= COND_NOINPUT;
     }
 
     if (!player_node || !player_node->getAway())
-        mMask += COND_NOAWAY;
+        mMask |= COND_NOAWAY;
 
     if (!setupWindow || !setupWindow->isVisible())
-        mMask += COND_NOSETUP;
+        mMask |= COND_NOSETUP;
 
     if (Game::instance() && Game::instance()->getValidSpeed())
-        mMask += COND_VALIDSPEED;
+        mMask |= COND_VALIDSPEED;
 
     if (gui && !gui->getFocusHandler()->getModalFocused())
-        mMask += COND_NOMODAL;
+        mMask |= COND_NOMODAL;
 
     const NpcDialog *const dialog = NpcDialog::getActive();
     if (!dialog || !dialog->isTextInputFocused())
-        mMask += COND_NONPCINPUT;
+        mMask |= COND_NONPCINPUT;
 
     if (!player_node || !player_node->getDisableGameModifiers())
-        mMask += COND_EMODS;
+        mMask |= COND_EMODS;
 
     if (!isActionActive(Input::KEY_STOP_ATTACK)
         && !isActionActive(Input::KEY_UNTARGET))
     {
-        mMask += COND_NOTARGET;
+        mMask |= COND_NOTARGET;
     }
 
     if (!player_node || player_node->getFollow().empty())
-        mMask += COND_NOFOLLOW;
+        mMask |= COND_NOFOLLOW;
 }
 
 bool InputManager::checkKey(const KeyData *const key) const
@@ -603,6 +621,8 @@ bool InputManager::checkKey(const KeyData *const key) const
 
 bool InputManager::invokeKey(const KeyData *const key, const int keyNum)
 {
+    // no validation to keyNum because it validated in caller
+
     if (checkKey(key))
     {
         InputEvent evt(keyNum, mMask);
@@ -635,7 +655,8 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
     for (size_t i = 0; i < Input::KEY_TOTAL; i ++)
     {
         const KeyFunction &key = mKey[i];
-        if (keyData[i].action)
+        const KeyData &kd = keyData[i];
+        if (kd.action)
         {
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
@@ -644,7 +665,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
                     actionMap[ki.value].push_back(static_cast<int>(i));
             }
         }
-        if (keyData[i].configField && (keyData[i].grp & Input::GRP_GUICHAN))
+        if (kd.configField && (kd.grp & Input::GRP_GUICHAN))
         {
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
@@ -653,7 +674,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
                     idMap[ki.value] = static_cast<int>(i);
             }
         }
-        if (keyData[i].configField && (keyData[i].grp & Input::GRP_REPEAT))
+        if (kd.configField && (kd.grp & Input::GRP_REPEAT))
         {
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
@@ -698,11 +719,12 @@ int InputManager::getKeyIndex(const int value, const int grp,
     for (size_t i = 0; i < Input::KEY_TOTAL; i++)
     {
         const KeyFunction &key = mKey[i];
+        const KeyData &kd = keyData[i];
         for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
         {
-            if (value == key.values[i2].value
-                && (grp & keyData[i].grp) != 0
-                && key.values[i2].type == type)
+            const KeyItem &vali2 = key.values[i2];
+            if (value == vali2.value && (grp & kd.grp) != 0
+                && vali2.type == type)
             {
                 return static_cast<int>(i);
             }
