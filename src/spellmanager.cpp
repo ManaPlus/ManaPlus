@@ -135,9 +135,9 @@ void SpellManager::invoke(const int spellId)
 
     if (spell->getCommandType() == TEXT_COMMAND_TEXT
         || (Net::getPlayerHandler()->canUseMagic()
-        && PlayerInfo::getStatEffective(SKILL_MAGIC)
+        && PlayerInfo::getSkillLevel(SKILL_MAGIC)
         >= static_cast<signed>(spell->getBaseLvl())
-        && PlayerInfo::getStatEffective(
+        && PlayerInfo::getSkillLevel(
         spell->getSchool()) >= static_cast<signed>(spell->getSchoolLvl())
         && PlayerInfo::getAttribute(PlayerInfo::MP) >= spell->getMana()))
     {

@@ -3211,8 +3211,8 @@ void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
     if (!chatWindow)
         return;
 
-    if (PlayerInfo::getStatEffective(340) >= baseMagic
-        && PlayerInfo::getStatEffective(342) >= schoolMagic)
+    if (PlayerInfo::getSkillLevel(340) >= baseMagic
+        && PlayerInfo::getSkillLevel(342) >= schoolMagic)
     {
         if (PlayerInfo::getAttribute(PlayerInfo::MP) >= mana)
         {
