@@ -91,7 +91,6 @@ LocalPlayer::LocalPlayer(const int id, const int subtype) :
     Being(id, PLAYER, subtype, nullptr),
     mUpdateName(true),
     mTargetTime(-1),
-    mLastTarget(-1),
     mGMLevel(0),
     mInvertDirection(0),
     mCrazyMoveType(config.getIntValue("crazyMoveType")),
@@ -213,10 +212,10 @@ LocalPlayer::~LocalPlayer()
 void LocalPlayer::logic()
 {
     BLOCK_START("LocalPlayer::logic")
-    #ifdef USE_MUMBLE
+#ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setPos(mX, mY, mDirection);
-    #endif
+#endif
 
     // Actions are allowed once per second
     if (get_elapsed_time(mLastAction) >= 1000)
@@ -272,17 +271,8 @@ void LocalPlayer::logic()
     PlayerInfo::logic();
 #endif
 
-    // Targeting allowed 4 times a second
-    if (get_elapsed_time(mLastTarget) >= 250)
-        mLastTarget = -1;
-
-//    // Remove target if its been on a being for more than a minute
     if (get_elapsed_time(mTargetTime) >= 60000)
-    {
         mTargetTime = tick_time;
-//        setTarget(nullptr);
-        mLastTarget = -1;
-    }
 
     if (mTarget)
     {
@@ -294,7 +284,6 @@ void LocalPlayer::logic()
         else
         {
             // Find whether target is in range
-            // TODO: Make this nicer, probably using getPosition() only
 #ifdef MANASERV_SUPPORT
             const int rangeX =
                 (Net::getNetworkType() == ServerInfo::MANASERV) ?
@@ -336,7 +325,8 @@ void LocalPlayer::logic()
 void LocalPlayer::slowLogic()
 {
     BLOCK_START("LocalPlayer::slowLogic")
-    if (weightNotice && weightNoticeTime < cur_time)
+    const int time = cur_time;
+    if (weightNotice && weightNoticeTime < time)
     {
         weightNotice->scheduleDelete();
         weightNotice = nullptr;
@@ -348,18 +338,18 @@ void LocalPlayer::slowLogic()
     {
         uint8_t smile = FLAG_SPECIAL;
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
-            smile += FLAG_SHOP;
+            smile |= FLAG_SHOP;
 
         if (mAwayMode || mPseudoAwayMode)
-            smile += FLAG_AWAY;
+            smile |= FLAG_AWAY;
 
         if (mInactive)
-            smile += FLAG_INACTIVE;
+            smile |= FLAG_INACTIVE;
 
         if (emote(smile))
-            mAdvertTime = cur_time + 60;
+            mAdvertTime = time + 60;
         else
-            mAdvertTime = cur_time + 30;
+            mAdvertTime = time + 30;
     }
     BLOCK_END("LocalPlayer::slowLogic")
 }
@@ -368,7 +358,6 @@ void LocalPlayer::setAction(const Action &action, const int attackType)
 {
     if (action == DEAD)
     {
-        mLastTarget = -1;
         if (!mLastHitFrom.empty())
         {
             debugMsg(strprintf(_("You were killed by %s"),
@@ -379,10 +368,10 @@ void LocalPlayer::setAction(const Action &action, const int attackType)
     }
 
     Being::setAction(action, attackType);
-    #ifdef USE_MUMBLE
+#ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setAction(static_cast<int>(action));
-    #endif
+#endif
 }
 
 void LocalPlayer::setGMLevel(const int level)
@@ -420,21 +409,25 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
     if (!mMap || (!dx && !dy))
         return Position(static_cast<int>(pos.x), static_cast<int>(pos.y));
 
+    const int posX = static_cast<int>(pos.x);
+    const int posY = static_cast<int>(pos.y);
     // Get the current tile pos and its offset
-    const int tileX = static_cast<int>(pos.x) / mMap->getTileWidth();
-    const int tileY = static_cast<int>(pos.y) / mMap->getTileHeight();
-    const int offsetX = static_cast<int>(pos.x) % mMap->getTileWidth();
-    const int offsetY = static_cast<int>(pos.y) % mMap->getTileHeight();
+    const int tileX = posX / mMap->getTileWidth();
+    const int tileY = posY / mMap->getTileHeight();
+    const int offsetX = posX % mMap->getTileWidth();
+    const int offsetY = posY % mMap->getTileHeight();
+    const unsigned char walkMask = getWalkMask();
+    const int radius = getCollisionRadius();
 
     // Get the walkability of every surrounding tiles.
-    bool wTopLeft = mMap->getWalk(tileX - 1, tileY - 1, getWalkMask());
-    const bool wTop = mMap->getWalk(tileX, tileY - 1, getWalkMask());
-    bool wTopRight = mMap->getWalk(tileX + 1, tileY - 1, getWalkMask());
-    const bool wLeft = mMap->getWalk(tileX - 1, tileY, getWalkMask());
-    const bool wRight = mMap->getWalk(tileX + 1, tileY, getWalkMask());
-    bool wBottomLeft = mMap->getWalk(tileX - 1, tileY + 1, getWalkMask());
-    const bool wBottom = mMap->getWalk(tileX, tileY + 1, getWalkMask());
-    bool wBottomRight = mMap->getWalk(tileX + 1, tileY + 1, getWalkMask());
+    bool wTopLeft = mMap->getWalk(tileX - 1, tileY - 1, walkMask);
+    const bool wTop = mMap->getWalk(tileX, tileY - 1, walkMask);
+    bool wTopRight = mMap->getWalk(tileX + 1, tileY - 1, walkMask);
+    const bool wLeft = mMap->getWalk(tileX - 1, tileY, walkMask);
+    const bool wRight = mMap->getWalk(tileX + 1, tileY, walkMask);
+    bool wBottomLeft = mMap->getWalk(tileX - 1, tileY + 1, walkMask);
+    const bool wBottom = mMap->getWalk(tileX, tileY + 1, walkMask);
+    bool wBottomRight = mMap->getWalk(tileX + 1, tileY + 1, walkMask);
 
     // Make diagonals unwalkable when both straight directions are blocking
     if (!wTop)
@@ -474,8 +467,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 }
                 else if (!wTop && !wRight)
                 {
-                    return Position(tileX * 32 + 32 - getCollisionRadius(),
-                                    tileY * 32 + getCollisionRadius());
+                    return Position(tileX * 32 + 32 - radius,
+                        tileY * 32 + getCollisionRadius());
                 }
                 else // Both straight direction are walkable
                 {
@@ -494,9 +487,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             }
             else // The diagonal is walkable
             {
-                return mMap->checkNodeOffsets(getCollisionRadius(),
-                        getWalkMask(), Position(static_cast<int>(pos.x) + 32,
-                                                static_cast<int>(pos.y) - 32));
+                return mMap->checkNodeOffsets(radius,
+                    walkMask, Position(posX + 32, posY - 32));
             }
         }
 
@@ -516,8 +508,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 }
                 else if (!wTop && !wLeft)
                 {
-                    return Position(tileX * 32 + getCollisionRadius(),
-                                    tileY * 32 + getCollisionRadius());
+                    return Position(tileX * 32 + radius,
+                                    tileY * 32 + radius);
                 }
                 else // Both straight direction are walkable
                 {
@@ -535,9 +527,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             }
             else // The diagonal is walkable
             {
-                return mMap->checkNodeOffsets(getCollisionRadius(),
-                        getWalkMask(), Position(static_cast<int>(pos.x) - 32,
-                                                static_cast<int>(pos.y) - 32));
+                return mMap->checkNodeOffsets(radius,
+                    walkMask, Position(posX - 32, posY - 32));
             }
         }
 
@@ -557,8 +548,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 }
                 else if (!wBottom && !wLeft)
                 {
-                    return Position(tileX * 32 + getCollisionRadius(),
-                                    tileY * 32 + 32 - getCollisionRadius());
+                    return Position(tileX * 32 + radius,
+                                    tileY * 32 + 32 - radius);
                 }
                 else // Both straight direction are walkable
                 {
@@ -577,9 +568,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             }
             else // The diagonal is walkable
             {
-                return mMap->checkNodeOffsets(getCollisionRadius(),
-                        getWalkMask(), Position(static_cast<int>(pos.x) - 32,
-                                                static_cast<int>(pos.y) + 32));
+                return mMap->checkNodeOffsets(radius,
+                    walkMask, Position(posX - 32, posY + 32));
             }
         }
 
@@ -599,8 +589,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 }
                 else if (!wBottom && !wRight)
                 {
-                    return Position(tileX * 32 + 32 - getCollisionRadius(),
-                                    tileY * 32 + 32 - getCollisionRadius());
+                    return Position(tileX * 32 + 32 - radius,
+                                    tileY * 32 + 32 - radius);
                 }
                 else // Both straight direction are walkable
                 {
@@ -618,9 +608,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             }
             else // The diagonal is walkable
             {
-                return mMap->checkNodeOffsets(getCollisionRadius(),
-                        getWalkMask(), Position(static_cast<int>(pos.x) + 32,
-                                                static_cast<int>(pos.y) + 32));
+                return mMap->checkNodeOffsets(radius,
+                    walkMask, Position(posX + 32, posY + 32));
             }
         }
 
@@ -634,20 +623,19 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
         // Make the player go the closest possible.
         if (!wRight)
         {
-            return Position(tileX * 32 + 32 - getCollisionRadius(),
-                            static_cast<int>(pos.y));
+            return Position(tileX * 32 + 32 - radius, posY);
         }
         else
         {
             if (!wTopRight)
             {
                 // If we're going to collide with the top-right corner
-                if (offsetY - getCollisionRadius() < 0)
+                if (offsetY - radius < 0)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + 32 - getCollisionRadius(),
-                                    tileY * 32 + getCollisionRadius());
+                    return Position(tileX * 32 + 32 - radius,
+                                    tileY * 32 + radius);
 
                 }
             }
@@ -655,19 +643,18 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             if (!wBottomRight)
             {
                 // If we're going to collide with the bottom-right corner
-                if (offsetY + getCollisionRadius() > 32)
+                if (offsetY + radius > 32)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + 32 - getCollisionRadius(),
-                                    tileY * 32 + 32 - getCollisionRadius());
+                    return Position(tileX * 32 + 32 - radius,
+                                    tileY * 32 + 32 - radius);
 
                 }
             }
             // If the way is clear, step up one checked tile ahead.
-            return mMap->checkNodeOffsets(getCollisionRadius(), getWalkMask(),
-                    Position(static_cast<int>(pos.x) + 32,
-                             static_cast<int>(pos.y)));
+            return mMap->checkNodeOffsets(radius,
+                walkMask, Position(posX + 32, posY));
         }
     }
 
@@ -678,20 +665,19 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
         // Make the player go the closest possible.
         if (!wLeft)
         {
-            return Position(tileX * 32 + getCollisionRadius(),
-                            static_cast<int>(pos.y));
+            return Position(tileX * 32 + radius, posY);
         }
         else
         {
             if (!wTopLeft)
             {
                 // If we're going to collide with the top-left corner
-                if (offsetY - getCollisionRadius() < 0)
+                if (offsetY - radius < 0)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + getCollisionRadius(),
-                                    tileY * 32 + getCollisionRadius());
+                    return Position(tileX * 32 + radius,
+                                    tileY * 32 + radius);
 
                 }
             }
@@ -699,19 +685,18 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             if (!wBottomLeft)
             {
                 // If we're going to collide with the bottom-left corner
-                if (offsetY + getCollisionRadius() > 32)
+                if (offsetY + radius > 32)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + getCollisionRadius(),
-                                    tileY * 32 + 32 - getCollisionRadius());
+                    return Position(tileX * 32 + radius,
+                                    tileY * 32 + 32 - radius);
 
                 }
             }
             // If the way is clear, step up one checked tile ahead.
-            return mMap->checkNodeOffsets(getCollisionRadius(), getWalkMask(),
-                    Position(static_cast<int>(pos.x) - 32,
-                             static_cast<int>(pos.y)));
+            return mMap->checkNodeOffsets(radius,
+                walkMask, Position(posX - 32, posY));
         }
     }
 
@@ -722,20 +707,19 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
         // Make the player go the closest possible.
         if (!wTop)
         {
-            return Position(static_cast<int>(pos.x),
-                            tileY * 32 + getCollisionRadius());
+            return Position(posX, tileY * 32 + radius);
         }
         else
         {
             if (!wTopLeft)
             {
                 // If we're going to collide with the top-left corner
-                if (offsetX - getCollisionRadius() < 0)
+                if (offsetX - radius < 0)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + getCollisionRadius(),
-                                    tileY * 32 + getCollisionRadius());
+                    return Position(tileX * 32 + radius,
+                                    tileY * 32 + radius);
 
                 }
             }
@@ -743,19 +727,18 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             if (!wTopRight)
             {
                 // If we're going to collide with the top-right corner
-                if (offsetX + getCollisionRadius() > 32)
+                if (offsetX + radius > 32)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + 32 - getCollisionRadius(),
-                                    tileY * 32 + getCollisionRadius());
+                    return Position(tileX * 32 + 32 - radius,
+                                    tileY * 32 + radius);
 
                 }
             }
             // If the way is clear, step up one checked tile ahead.
-            return mMap->checkNodeOffsets(getCollisionRadius(), getWalkMask(),
-                    Position(static_cast<int>(pos.x),
-                             static_cast<int>(pos.y) - 32));
+            return mMap->checkNodeOffsets(radius,
+                walkMask, Position(posX, posY - 32));
         }
     }
 
@@ -766,45 +749,42 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
         // Make the player go the closest possible.
         if (!wBottom)
         {
-            return Position(static_cast<int>(pos.x),
-                            tileY * 32 + 32 - getCollisionRadius());
+            return Position(posX, tileY * 32 + 32 - radius);
         }
         else
         {
             if (!wBottomLeft)
             {
                 // If we're going to collide with the bottom-left corner
-                if (offsetX - getCollisionRadius() < 0)
+                if (offsetX - radius < 0)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + getCollisionRadius(),
-                                    tileY * 32 + 32 - getCollisionRadius());
-
+                    return Position(tileX * 32 + radius,
+                                    tileY * 32 + 32 - radius);
                 }
             }
 
             if (!wBottomRight)
             {
                 // If we're going to collide with the bottom-right corner
-                if (offsetX + getCollisionRadius() > 32)
+                if (offsetX + radius > 32)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + 32 - getCollisionRadius(),
-                                    tileY * 32 + 32 - getCollisionRadius());
+                    return Position(tileX * 32 + 32 - radius,
+                                    tileY * 32 + 32 - radius);
 
                 }
             }
             // If the way is clear, step up one checked tile ahead.
-            return mMap->checkNodeOffsets(getCollisionRadius(), getWalkMask(),
-                    Position(static_cast<int>(pos.x),
-                             static_cast<int>(pos.y) + 32));
+            return mMap->checkNodeOffsets(radius,
+                walkMask, Position(posX, posY + 32));
         }
     }
 
     // Return the current position if everything else has failed.
-    return Position(static_cast<int>(pos.x), static_cast<int>(pos.y));
+    return Position(posX, posY);
 }
 
 void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
@@ -813,9 +793,10 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
     if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
-        if (Party::getParty(1))
+        Party *const party = Party::getParty(1);
+        if (party)
         {
-            PartyMember *const pm = Party::getParty(1)->getMember(getName());
+            PartyMember *const pm = party->getMember(getName());
             if (pm)
             {
                 pm->setX(mX);
@@ -823,8 +804,6 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
             }
         }
 
-        // TODO: Fix picking up when reaching target (this method is obsolete)
-        // TODO: Fix holding walking button to keep walking smoothly
         if (mPath.empty())
         {
             if (mPickUpTarget)
@@ -839,7 +818,6 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
                 pickUp(mPickUpTarget);
         }
 
-        // TODO: Fix automatically walking within range of target, when wanted
         if (mGoingToTarget && mTarget && withinAttackRange(mTarget))
         {
             mAction = Being::STAND;
@@ -873,7 +851,7 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
             return;
 
         const Vector &pos = getPosition();
-        Position destination = getNextWalkPosition(dir);
+        const Position destination = getNextWalkPosition(dir);
 
         if (static_cast<int>(pos.x) != destination.x
             || static_cast<int>(pos.y) != destination.y)
@@ -882,42 +860,11 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
         }
         else if (dir != mDirection)
         {
-            // If the being can't move, just change direction
-
-//            if (!Client::limitPackets(PACKET_DIRECTION))
-//                return;
-
             Net::getPlayerHandler()->setDirection(dir);
             setDirection(dir);
         }
     }
 #endif
-}
-
-bool LocalPlayer::checkInviteRights(const std::string &guildName) const
-{
-    const Guild *const guild = getGuild(guildName);
-    if (guild)
-        return guild->getInviteRights();
-
-    return false;
-}
-
-void LocalPlayer::inviteToGuild(Being *const being)
-{
-    if (!being || being->getType() != PLAYER)
-        return;
-
-    // TODO: Allow user to choose which guild to invite being to
-    // For now, just invite to the first guild you have permissions to invite with
-    FOR_EACH (GuildMapCIter, itr, mGuilds)
-    {
-        if (itr->second && checkInviteRights(itr->second->getName()))
-        {
-            Net::getGuildHandler()->invite(itr->second->getId(), being);
-            return;
-        }
-    }
 }
 
 bool LocalPlayer::pickUp(FloorItem *const item)
@@ -937,7 +884,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
 
     if (dx * dx + dy * dy < dist)
     {
-        if (actorSpriteManager->checkForPickup(item))
+        if (actorSpriteManager && actorSpriteManager->checkForPickup(item))
         {
             Net::getPlayerHandler()->pickUp(item);
             mPickUpTarget = nullptr;
@@ -956,7 +903,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
 #endif
         {
             const Vector &playerPos = getPosition();
-            Path debugPath = mMap->findPath(
+            const Path debugPath = mMap->findPath(
                     static_cast<int>(playerPos.x - 16) / 32,
                     static_cast<int>(playerPos.y - 32) / 32,
                     item->getTileX(), item->getTileY(), getWalkMask(), 0);
@@ -985,11 +932,8 @@ Being *LocalPlayer::getTarget() const
 
 void LocalPlayer::setTarget(Being *const target)
 {
-    if ((mLastTarget != -1 || target == this) && target)
+    if (target == this && target)
         return;
-
-    if (target)
-        mLastTarget = tick_time;
 
     if (target == mTarget)
         return;
@@ -1167,18 +1111,19 @@ void LocalPlayer::startWalking(const unsigned char dir)
     if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
+        const unsigned char walkMask = getWalkMask();
         // Prevent skipping corners over colliding tiles
-        if (dx && !mMap->getWalk(mX + dx, mY, getWalkMask()))
+        if (dx && !mMap->getWalk(mX + dx, mY, walkMask))
             dx = 0;
-        if (dy && !mMap->getWalk(mX, mY + dy, getWalkMask()))
+        if (dy && !mMap->getWalk(mX, mY + dy, walkMask))
             dy = 0;
 
         // Choose a straight direction when diagonal target is blocked
-        if (dx && dy && !mMap->getWalk(mX + dx, mY + dy, getWalkMask()))
+        if (dx && dy && !mMap->getWalk(mX + dx, mY + dy, walkMask))
             dx = 0;
 
         // Walk to where the player can actually go
-        if ((dx || dy) && mMap->getWalk(mX + dx, mY + dy, getWalkMask()))
+        if ((dx || dy) && mMap->getWalk(mX + dx, mY + dy, walkMask))
         {
             setDestination(mX + dx, mY + dy);
         }
@@ -1254,7 +1199,7 @@ bool LocalPlayer::toggleSit() const
     return true;
 }
 
-bool LocalPlayer::updateSit()
+bool LocalPlayer::updateSit() const
 {
     if (!Client::limitPackets(PACKET_SIT))
         return false;
@@ -1263,7 +1208,7 @@ bool LocalPlayer::updateSit()
     return true;
 }
 
-bool LocalPlayer::emote(const uint8_t emotion) const
+bool LocalPlayer::emote(const uint8_t emotion)
 {
     if (!Client::limitPackets(PACKET_EMOTE))
         return false;
@@ -1293,18 +1238,15 @@ void LocalPlayer::attack(Being *const target, const bool keep,
         return;
 
     if (mTarget != target || !mTarget)
-    {
-        mLastTarget = -1;
         setTarget(target);
-    }
 
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
-        Vector plaPos = this->getPosition();
-        Vector tarPos = mTarget->getPosition();
-        int dist_x = static_cast<int>(plaPos.x - tarPos.x);
-        int dist_y = static_cast<int>(plaPos.y - tarPos.y);
+        const Vector plaPos = this->getPosition();
+        const Vector tarPos = mTarget->getPosition();
+        const int dist_x = static_cast<int>(plaPos.x - tarPos.x);
+        const int dist_y = static_cast<int>(plaPos.y - tarPos.y);
 
         if (abs(dist_y) >= abs(dist_x))
         {
@@ -1406,8 +1348,6 @@ void LocalPlayer::untarget()
 
     if (mTarget)
         setTarget(nullptr);
-
-    mLastTarget = -1;
 }
 
 void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
@@ -1452,7 +1392,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
                 break;
         }
         if (localChatTab && config.getBoolValue("showpickupchat"))
-            localChatTab->chatLog(_(msg), BY_SERVER);
+            localChatTab->chatLog(gettext(msg), BY_SERVER);
 
         if (mMap && config.getBoolValue("showpickupparticle"))
         {
@@ -1546,8 +1486,6 @@ bool LocalPlayer::withinAttackRange(const Being *const target,
 
 void LocalPlayer::setGotoTarget(Being *const target)
 {
-    mLastTarget = -1;
-
     if (!target)
         return;
 
@@ -2663,8 +2601,9 @@ void LocalPlayer::crazyMove8()
 
 
     int mult = 1;
+    const unsigned char walkMask = getWalkMask();
     if (mMap->getWalk(mX + movesX[idx][0],
-        mY + movesY[idx][0], getWalkMask()))
+        mY + movesY[idx][0], walkMask))
     {
         while (mMap->getWalk(mX + movesX[idx][0] * mult,
                mY + movesY[idx][0] * mult,
@@ -2675,7 +2614,7 @@ void LocalPlayer::crazyMove8()
         move(movesX[idx][0] * (mult - 1), movesY[idx][0] * (mult - 1));
     }
     else if (mMap->getWalk(mX + movesX[idx][1],
-             mY + movesY[idx][1], getWalkMask()))
+             mY + movesY[idx][1], walkMask))
     {
         while (mMap->getWalk(mX + movesX[idx][1] * mult,
                mY + movesY[idx][1] * mult,
@@ -2686,7 +2625,7 @@ void LocalPlayer::crazyMove8()
         move(movesX[idx][1] * (mult - 1), movesY[idx][1] * (mult - 1));
     }
     else if (mMap->getWalk(mX + movesX[idx][2],
-             mY + movesY[idx][2], getWalkMask()))
+             mY + movesY[idx][2], walkMask))
     {
         while (mMap->getWalk(mX + movesX[idx][2] * mult,
                mY + movesY[idx][2] * mult,
@@ -2697,7 +2636,7 @@ void LocalPlayer::crazyMove8()
         move(movesX[idx][2] * (mult - 1), movesY[idx][2] * (mult - 1));
     }
     else if (mMap->getWalk(mX + movesX[idx][3],
-             mY + movesY[idx][3], getWalkMask()))
+             mY + movesY[idx][3], walkMask))
     {
         while (mMap->getWalk(mX + movesX[idx][3] * mult,
                mY + movesY[idx][3] * mult,
@@ -2750,7 +2689,7 @@ void LocalPlayer::crazyMove9()
 
 void LocalPlayer::crazyMoveA()
 {
-    std::string mMoveProgram(config.getStringValue("crazyMoveProgram"));
+    const std::string mMoveProgram(config.getStringValue("crazyMoveProgram"));
 
     if (mAction == MOVE)
         return;
@@ -3003,7 +2942,7 @@ bool LocalPlayer::isReachable(const int x, const int y,
 
     const Vector &playerPos = getPosition();
 
-    Path debugPath = mMap->findPath(
+    const Path debugPath = mMap->findPath(
         static_cast<int>(playerPos.x - 16) / 32,
         static_cast<int>(playerPos.y - 32) / 32,
         x, y, getWalkMask(), maxCost);
@@ -3039,7 +2978,7 @@ bool LocalPlayer::isReachable(Being *const being,
 
     const Vector &playerPos = getPosition();
 
-    Path debugPath = mMap->findPath(
+    const Path debugPath = mMap->findPath(
         static_cast<int>(playerPos.x - 16) / 32,
         static_cast<int>(playerPos.y - 32) / 32,
         being->getTileX(), being->getTileY(), getWalkMask(), maxCost);
@@ -3188,8 +3127,8 @@ void LocalPlayer::specialMove(const unsigned char direction)
     if (direction && (mNavigateX || mNavigateY))
         navigateClean();
 
-    if (direction && (getInvertDirection() >= 2
-        && getInvertDirection() <= 4)
+    if (direction && (mInvertDirection >= 2
+        && mInvertDirection <= 4)
         && !mIsServerBuggy)
     {
         if (mAction == MOVE)
@@ -3197,9 +3136,9 @@ void LocalPlayer::specialMove(const unsigned char direction)
 
         int max;
 
-        if (getInvertDirection() == 2)
+        if (mInvertDirection == 2)
             max = 5;
-        else if (getInvertDirection() == 4)
+        else if (mInvertDirection == 4)
             max = 1;
         else
             max = 3;
@@ -3222,7 +3161,7 @@ void LocalPlayer::specialMove(const unsigned char direction)
 
 }
 
-void LocalPlayer::debugMsg(std::string str) const
+void LocalPlayer::debugMsg(const std::string &str) const
 {
     if (debugChatTab)
         debugChatTab->chatLog(str);
@@ -3267,7 +3206,7 @@ void LocalPlayer::magicAttack() const
 }
 
 void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
-                           const int schoolMagic, const int mana) const
+                           const int schoolMagic, const int mana)
 {
     if (!chatWindow)
         return;
@@ -3287,10 +3226,11 @@ void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
 
 void LocalPlayer::loadHomes()
 {
-    std::string homeStr = serverConfig.getValue("playerHomes",
-            "maps/018-1.tmx 71 76 maps/013-3.tmx 71 24");
+    if (serverVersion > 0)
+        return;
     std::string buf;
-    std::stringstream ss(homeStr);
+    std::stringstream ss(serverConfig.getValue("playerHomes",
+        "maps/018-1.tmx 71 76 maps/013-3.tmx 71 24"));
 
     while (ss >> buf)
     {
@@ -3327,7 +3267,7 @@ void LocalPlayer::setHome()
     if (!specialLayer)
         return;
 
-    std::string key = mMap->getProperty("_realfilename");
+    const std::string key = mMap->getProperty("_realfilename");
     Vector pos = mHomes[key];
 
     if (mAction == SIT)
@@ -3425,8 +3365,7 @@ void LocalPlayer::setHome()
 
 void LocalPlayer::saveHomes()
 {
-    std::string homeStr;
-    std::stringstream ss(homeStr);
+    std::stringstream ss;
 
     for (std::map<std::string, Vector>::const_iterator iter = mHomes.begin(),
          iter_end = mHomes.end(); iter != iter_end; ++iter )
@@ -3443,16 +3382,14 @@ void LocalPlayer::saveHomes()
 
 void LocalPlayer::pingRequest()
 {
+    const int time = tick_time;
     if (mWaitPing == true && mPingSendTick != 0)
     {
-        if (tick_time >= mPingSendTick
-            && (tick_time - mPingSendTick) > 1000)
-        {
+        if (time >= mPingSendTick && (time - mPingSendTick) > 1000)
             return;
-        }
     }
 
-    mPingSendTick = tick_time;
+    mPingSendTick = time;
     mWaitPing = true;
     Net::getBeingHandler()->requestNameById(getId());
 }
@@ -3531,20 +3468,20 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
 {
     if (mAwayMode)
     {
-        if (mAfkTime == 0
-            || cur_time < mAfkTime
-            || cur_time - mAfkTime > awayLimitTimer)
+        const int time = cur_time;
+        if (mAfkTime == 0 || time < mAfkTime
+            || time - mAfkTime > awayLimitTimer)
         {
-            std::string msg = "*AFK*: "
-                    + config.getStringValue("afkMessage");
+            const std::string msg = "*AFK*: "
+                + config.getStringValue("afkMessage");
 
             if (!tab)
             {
                 Net::getChatHandler()->privateMessage(nick, msg);
                 if (localChatTab)
                 {
-                    localChatTab->chatLog(getName() + " : " + msg,
-                        ACT_WHISPER, false);
+                    localChatTab->chatLog(std::string(getName()).append(
+                        " : ").append(msg), ACT_WHISPER, false);
                 }
             }
             else
@@ -3554,7 +3491,7 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
                 Net::getChatHandler()->privateMessage(nick, msg);
                 tab->chatLog(getName(), msg);
             }
-            mAfkTime = cur_time;
+            mAfkTime = time;
         }
     }
 }
@@ -3707,7 +3644,7 @@ void LocalPlayer::updateCoords()
             else
             {
                 for (Path::const_iterator i = mNavigatePath.begin(),
-                     i_end = mNavigatePath.end(); i != i_end; ++i)
+                     i_end = mNavigatePath.end(); i != i_end; ++ i)
                 {
                     if ((*i).x == mX && (*i).y == mY)
                     {
@@ -3747,7 +3684,7 @@ void LocalPlayer::targetMoved() const
 */
 }
 
-int LocalPlayer::getPathLength(const Being *const being)
+int LocalPlayer::getPathLength(const Being *const being) const
 {
     if (!mMap || !being)
         return 0;
@@ -3765,7 +3702,7 @@ int LocalPlayer::getPathLength(const Being *const being)
 
     if (mTargetOnlyReachable)
     {
-        Path debugPath = mMap->findPath(
+        const Path debugPath = mMap->findPath(
             static_cast<int>(playerPos.x - 16) / 32,
             static_cast<int>(playerPos.y - 32) / 32,
             being->getTileX(), being->getTileY(),
@@ -3796,13 +3733,14 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
     if (!dontChangeEquipment && target)
         changeEquipmentBeforeAttack(target);
 
-    if ((!target || getAttackType() == 0 || getAttackType() == 3)
+    // probably need cache getPathLength(target)
+    if ((!target || mAttackType == 0 || mAttackType == 3)
         || (withinAttackRange(target, serverVersion < 1,
         serverVersion < 1 ? 1 : 0)
         && getPathLength(target) <= getAttackRange2()))
     {
         attack(target, keep);
-        if (getAttackType() == 2)
+        if (mAttackType == 2)
         {
             if (!target)
             {
@@ -3818,7 +3756,7 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
     }
     else if (!mPickUpTarget)
     {
-        if (getAttackType() == 2)
+        if (mAttackType == 2)
         {
             if (pickUpItems())
                 return;
@@ -3832,7 +3770,7 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
     }
 }
 
-void LocalPlayer::setFollow(std::string player)
+void LocalPlayer::setFollow(const std::string &player)
 {
     mPlayerFollowed = player;
     if (!mPlayerFollowed.empty())
@@ -3841,7 +3779,7 @@ void LocalPlayer::setFollow(std::string player)
         debugMsg(_("Follow canceled"));
 }
 
-void LocalPlayer::setImitate(std::string player)
+void LocalPlayer::setImitate(const std::string &player)
 {
     mPlayerImitated = player;
     if (!mPlayerImitated.empty())
@@ -3877,8 +3815,7 @@ void LocalPlayer::imitateAction(const Being *const being,
     if (!being)
         return;
 
-    std::string player_imitated = getImitate();
-    if (!player_imitated.empty() && being->getName() == player_imitated)
+    if (!mPlayerImitated.empty() && being->getName() == mPlayerImitated)
     {
         setAction(action);
         Net::getPlayerHandler()->changeAction(action);
@@ -3891,8 +3828,7 @@ void LocalPlayer::imitateDirection(const Being *const being,
     if (!being)
         return;
 
-    std::string player_imitated = getImitate();
-    if (!player_imitated.empty() && being->getName() == player_imitated)
+    if (!mPlayerImitated.empty() && being->getName() == mPlayerImitated)
     {
         if (!Client::limitPackets(PACKET_DIRECTION))
             return;
@@ -3925,15 +3861,15 @@ void LocalPlayer::imitateOutfit(Being *const player, const int sprite) const
     if (!player)
         return;
 
-    std::string player_imitated = getImitate();
-    if (mImitationMode == 1 && !player_imitated.empty()
-        && player->getName() == player_imitated)
+    if (mImitationMode == 1 && !mPlayerImitated.empty()
+        && player->getName() == mPlayerImitated)
     {
         if (sprite < 0 || sprite >= player->getNumberOfLayers())
             return;
 
         const AnimatedSprite *const equipmentSprite
-            = dynamic_cast<AnimatedSprite *>(player->getSprite(sprite));
+            = dynamic_cast<const AnimatedSprite *const>(
+            player->getSprite(sprite));
 
         if (equipmentSprite)
         {
@@ -3942,28 +3878,19 @@ void LocalPlayer::imitateOutfit(Being *const player, const int sprite) const
             if (!inv)
                 return;
 
-            std::string path = equipmentSprite->getIdPath();
+            const std::string &path = equipmentSprite->getIdPath();
             if (path.empty())
                 return;
 
 //            logger->log("idPath: " + path);
-
             const Item *const item = inv->findItemBySprite(path,
                 player->getGender(), player->getSubType());
-//            if (item)
-//            {
-//                logger->log("got item");
-//                if (item->isEquipped())
-//                    logger->log("isEquipped");
-//            }
-
             if (item && !item->isEquipped())
                 Net::getInventoryHandler()->equipItem(item);
         }
         else
         {
 //            logger->log("have unequip %d", sprite);
-
             const int equipmentSlot = Net::getInventoryHandler()
                 ->convertFromServerSlot(sprite);
 //            logger->log("equipmentSlot: " + toString(equipmentSlot));
@@ -4057,6 +3984,7 @@ bool LocalPlayer::allowAction()
     return true;
 }
 
+/*
 bool LocalPlayer::allowMove() const
 {
     if (mIsServerBuggy)
@@ -4066,6 +3994,7 @@ bool LocalPlayer::allowMove() const
     }
     return true;
 }
+*/
 
 void LocalPlayer::fixPos(const int maxDist)
 {
@@ -4075,11 +4004,12 @@ void LocalPlayer::fixPos(const int maxDist)
     const int dx = abs(mX - mCrossX);
     const int dy = abs(mY - mCrossY);
     const int dest = (dx * dx) + (dy * dy);
+    const int time = cur_time;
 
     if (dest > maxDist && mActivityTime
-        && (cur_time < mActivityTime || cur_time - mActivityTime > 2))
+        && (time < mActivityTime || time - mActivityTime > 2))
     {
-        mActivityTime = cur_time;
+        mActivityTime = time;
         moveTo(mCrossX, mCrossY);
     }
 }
@@ -4118,14 +4048,14 @@ void LocalPlayer::fixAttackTarget()
     if (!mMap || !mTarget)
         return;
 
-    if (getMoveToTargetType() == 7 || !getAttackType()
+    if (mMoveToTargetType == 7 || !mAttackType
         || !config.getBoolValue("autofixPos"))
     {
         return;
     }
 
     const Vector &playerPos = getPosition();
-    Path debugPath = mMap->findPath(
+    const Path debugPath = mMap->findPath(
         static_cast<int>(playerPos.x - 16) / 32,
         static_cast<int>(playerPos.y - 32) / 32,
         mTarget->getTileX(), mTarget->getTileY(),
@@ -4141,14 +4071,6 @@ void LocalPlayer::fixAttackTarget()
 void LocalPlayer::respawn()
 {
     navigateClean();
-}
-
-int LocalPlayer::getTargetTime()
-{
-    if (mTargetTime != -1)
-        return get_elapsed_time(mTargetTime);
-    else
-        return -1;
 }
 
 int LocalPlayer::getLevel() const
@@ -4175,7 +4097,7 @@ void LocalPlayer::updateNavigateList()
     }
 }
 
-void LocalPlayer::waitFor(std::string nick)
+void LocalPlayer::waitFor(const std::string &nick)
 {
     mWaitFor = nick;
 }
@@ -4212,7 +4134,7 @@ void LocalPlayer::checkNewName(Being *const being)
 
     if (!mWaitFor.empty() && mWaitFor == nick)
     {
-        debugMsg(_("You see ") + mWaitFor);
+        debugMsg(strprintf(_("You see %s"), mWaitFor.c_str()));
         sound.playGuiSound(SOUND_INFO);
         mWaitFor.clear();
     }
@@ -4256,7 +4178,7 @@ void LocalPlayer::removeHome()
     if (!mMap)
         return;
 
-    std::string key = mMap->getProperty("_realfilename");
+    const std::string key = mMap->getProperty("_realfilename");
     const std::map<std::string, Vector>::iterator iter = mHomes.find(key);
 
     if (iter != mHomes.end())
@@ -4304,13 +4226,13 @@ void LocalPlayer::updateStatus() const
     {
         uint8_t status = 0;
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
-            status += FLAG_SHOP;
+            status |= FLAG_SHOP;
 
         if (mAwayMode || mPseudoAwayMode)
-            status += FLAG_AWAY;
+            status |= FLAG_AWAY;
 
         if (mInactive)
-            status += FLAG_INACTIVE;
+            status |= FLAG_INACTIVE;
 
         Net::getPlayerHandler()->updateStatus(status);
     }

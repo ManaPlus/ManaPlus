@@ -108,20 +108,6 @@ class LocalPlayer final : public Being,
 
         virtual void nextTile(unsigned char dir);
 
-        /**
-         * Check the player has permission to invite users to specific guild
-         */
-        bool checkInviteRights(const std::string &guildName)
-                               const A_WARN_UNUSED;
-
-        /**
-         * Invite a player to join guild
-         */
-        void inviteToGuild(Being *const being);
-
-//        void clearInventory();
-//        void setInvItem(int index, int id, int amount);
-
         bool pickUp(FloorItem *const item);
 
         /**
@@ -198,9 +184,9 @@ class LocalPlayer final : public Being,
 
         bool toggleSit() const;
 
-        bool updateSit();
+        bool updateSit() const;
 
-        bool emote(const uint8_t emotion) const;
+        static bool emote(const uint8_t emotion);
 
         /**
          * Shows item pickup notifications.
@@ -210,8 +196,6 @@ class LocalPlayer final : public Being,
                       const unsigned char fail);
 
         int getLevel() const override A_WARN_UNUSED;
-
-        int getTargetTime() A_WARN_UNUSED;
 
         /** Tells that the path has been set by mouse. */
         void pathSetByMouse()
@@ -314,7 +298,7 @@ class LocalPlayer final : public Being,
 
         void moveToHome();
 
-        void debugMsg(std::string str) const;
+        void debugMsg(const std::string &str) const;
 
         bool isReachable(const int x, const int y,
                          const int maxCost = 0) const A_WARN_UNUSED;
@@ -372,8 +356,6 @@ class LocalPlayer final : public Being,
 
         bool allowAction() A_WARN_UNUSED;
 
-        bool allowMove() const A_WARN_UNUSED;
-
         void setRealPos(const int x, const int y);
 
         bool isServerBuggy() const A_WARN_UNUSED
@@ -400,12 +382,12 @@ class LocalPlayer final : public Being,
         /**
          * set a following player.
          */
-        void setFollow(std::string player);
+        void setFollow(const std::string &player);
 
         /**
          * set an imitation player.
          */
-        void setImitate(std::string player);
+        void setImitate(const std::string &player);
 
         /**
          * setting the next destination of the following, in case of warp
@@ -461,14 +443,14 @@ class LocalPlayer final : public Being,
 
         void updateNavigateList();
 
-        int getPathLength(const Being *const being) A_WARN_UNUSED;
+        int getPathLength(const Being *const being) const A_WARN_UNUSED;
 
         void targetMoved() const;
 
-        void setLastHitFrom(std::string n)
+        void setLastHitFrom(const std::string &n)
         { mLastHitFrom = n; }
 
-        void waitFor(std::string nick);
+        void waitFor(const std::string &nick);
 
         void checkNewName(Being *const being);
 
@@ -530,8 +512,8 @@ class LocalPlayer final : public Being,
 
         void changeEquipmentBeforeAttack(const Being *const target) const;
 
-        void tryMagic(const std::string &spell, const int baseMagic,
-                      const int schoolMagic, const int mana) const;
+        static void tryMagic(const std::string &spell, const int baseMagic,
+                      const int schoolMagic, const int mana);
 
         const char *getVarItem(const char *const *const arr,
                                const unsigned index,
@@ -557,8 +539,6 @@ class LocalPlayer final : public Being,
         void loadHomes();
 
         int mTargetTime;      /** How long the being has been targeted **/
-        int mLastTarget;      /** Time stamp of last targeting action,
-                                  -1 if none. */
         int mGMLevel;
 
         //move type
