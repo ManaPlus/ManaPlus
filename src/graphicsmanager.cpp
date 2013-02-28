@@ -103,15 +103,15 @@ GraphicsManager::~GraphicsManager()
 #ifdef USE_OPENGL
 TestMain *GraphicsManager::startDetection()
 {
-    TestMain *test = new TestMain();
+    TestMain *const test = new TestMain();
     test->exec(false);
     return test;
 }
 
 int GraphicsManager::detectGraphics()
 {
-    logger->log("start detecting best mode...");
-    logger->log("enable opengl mode");
+    logger->log1("start detecting best mode...");
+    logger->log1("enable opengl mode");
     int textureSampler = 0;
     int compressTextures = 0;
     SDL_SetVideoMode(100, 100, 0, SDL_ANYFORMAT | SDL_OPENGL);
@@ -189,7 +189,7 @@ int GraphicsManager::detectGraphics()
     return mode | (1024 * textureSampler) | (2048 * compressTextures);
 }
 
-void GraphicsManager::initGraphics(bool noOpenGL)
+void GraphicsManager::initGraphics(const bool noOpenGL)
 {
     int useOpenGL = 0;
     if (!noOpenGL)
@@ -197,7 +197,6 @@ void GraphicsManager::initGraphics(bool noOpenGL)
 
     // Setup image loading for the right image format
     OpenGLImageHelper::setLoadAsOpenGL(useOpenGL);
-//    GraphicsVertexes::setLoadAsOpenGL(useOpenGL);
 
     // Create the graphics context
     switch (useOpenGL)
@@ -233,7 +232,7 @@ void GraphicsManager::initGraphics(bool noOpenGL)
     mUseAtlases = imageHelper->useOpenGL()
         && config.getBoolValue("useAtlases");
 #else
-void GraphicsManager::initGraphics(bool noOpenGL A_UNUSED)
+void GraphicsManager::initGraphics(const bool noOpenGL A_UNUSED)
 {
     // Create the graphics context
     imageHelper = new SDLImageHelper;
@@ -380,13 +379,11 @@ bool GraphicsManager::getAllVideoModes(StringVect &modeList)
 #ifdef USE_OPENGL
 void GraphicsManager::updateExtensions()
 {
-    if (checkGLVersion(3, 0))
-        assignFunction(glGetStringi, "glGetStringi");
-
     mExtensions.clear();
     logger->log1("opengl extensions: ");
     if (checkGLVersion(3, 0))
     {   // get extensions in new way
+        assignFunction(glGetStringi, "glGetStringi");
         std::string extList;
         int num = 0;
         glGetIntegerv(GL_NUM_EXTENSIONS, &num);
@@ -422,62 +419,63 @@ void GraphicsManager::updatePlanformExtensions()
         HDC hdc = GetDC(info.window);
         if (hdc)
         {
-            const char *extensions = mwglGetExtensionsString (hdc);
+            const char *const extensions = mwglGetExtensionsString (hdc);
             if (extensions)
             {
-                logger->log("wGL extensions:");
+                logger->log1("wGL extensions:");
                 logger->log1(extensions);
                 splitToStringSet(mPlatformExtensions, extensions, ' ');
             }
         }
 #elif defined USE_X11
-        Display *display = info.info.x11.display;
+        Display *const display = info.info.x11.display;
         if (display)
         {
-            Screen *screen = XDefaultScreenOfDisplay(display);
+            Screen *const screen = XDefaultScreenOfDisplay(display);
             if (!screen)
                 return;
 
-            int screenNum = XScreenNumberOfScreen(screen);
-            const char *extensions = glXQueryExtensionsString(
+            const int screenNum = XScreenNumberOfScreen(screen);
+            const char *const extensions = glXQueryExtensionsString(
                 display, screenNum);
             if (extensions)
             {
-                logger->log("glx extensions:");
+                logger->log1("glx extensions:");
                 logger->log1(extensions);
                 splitToStringSet(mPlatformExtensions, extensions, ' ');
             }
             glXQueryVersion(display, &mPlatformMajor, &mPlatformMinor);
             if (checkPlatformVersion(1, 1))
             {
-                const char *vendor1 = glXQueryServerString(
+                const char *const vendor1 = glXQueryServerString(
                     display, screenNum, GLX_VENDOR);
                 if (vendor1)
                     logger->log("glx server vendor: %s", vendor1);
-                const char *version1 = glXQueryServerString(
+                const char *const version1 = glXQueryServerString(
                     display, screenNum, GLX_VERSION);
                 if (version1)
                     logger->log("glx server version: %s", version1);
-                const char *extensions1 = glXQueryServerString(
+                const char *const extensions1 = glXQueryServerString(
                     display, screenNum, GLX_EXTENSIONS);
                 if (extensions1)
                 {
-                    logger->log("glx server extensions:");
+                    logger->log1("glx server extensions:");
                     logger->log1(extensions1);
                 }
 
-                const char *vendor2 = glXGetClientString(display, GLX_VENDOR);
+                const char *const vendor2 = glXGetClientString(
+                    display, GLX_VENDOR);
                 if (vendor2)
                     logger->log("glx client vendor: %s", vendor2);
-                const char *version2 = glXGetClientString(
+                const char *const version2 = glXGetClientString(
                     display, GLX_VERSION);
                 if (version2)
                     logger->log("glx client version: %s", version2);
-                const char *extensions2 = glXGetClientString(
+                const char *const extensions2 = glXGetClientString(
                     display, GLX_EXTENSIONS);
                 if (extensions2)
                 {
-                    logger->log("glx client extensions:");
+                    logger->log1("glx client extensions:");
                     logger->log1(extensions2);
                 }
             }
@@ -486,7 +484,7 @@ void GraphicsManager::updatePlanformExtensions()
     }
 }
 
-bool GraphicsManager::supportExtension(const std::string &ext)
+bool GraphicsManager::supportExtension(const std::string &ext) const
 {
     return mExtensions.find(ext) != mExtensions.end();
 }
@@ -502,10 +500,10 @@ void GraphicsManager::updateTextureFormat()
             if (supportExtension("GL_EXT_texture_compression_s3tc")
                 || supportExtension("3DFX_texture_compression_FXT1"))
             {
-                GLint num;
+                GLint num = 0;
                 glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
                 logger->log("support %d compressed formats", num);
-                GLint *formats = new GLint[num > 10 ? num : 10];
+                GLint *const formats = new GLint[num > 10 ? num : 10];
                 glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
                 for (int f = 0; f < num; f ++)
                     logger->log(" 0x%x", formats[f]);
@@ -553,7 +551,7 @@ void GraphicsManager::updateTextureFormat()
         }
         else
         {
-            logger->log("no correct compression format found");
+            logger->log1("no correct compression format found");
         }
     }
 
@@ -573,7 +571,7 @@ void GraphicsManager::updateTextureFormat()
 
 #ifdef USE_OPENGL
 
-void GraphicsManager::logString(const char *format, int num)
+void GraphicsManager::logString(const char *const format, const int num)
 {
     const char *str = reinterpret_cast<const char*>(glGetString(num));
     if (!str)
@@ -582,7 +580,7 @@ void GraphicsManager::logString(const char *format, int num)
         logger->log(format, str);
 }
 
-std::string GraphicsManager::getGLString(int num) const
+std::string GraphicsManager::getGLString(const int num)
 {
     const char *str = reinterpret_cast<const char*>(glGetString(num));
     return str ? str : "";
@@ -596,25 +594,26 @@ void GraphicsManager::setGLVersion()
     mGlRenderer = getGLString(GL_RENDERER);
 }
 
-void GraphicsManager::logVersion()
+void GraphicsManager::logVersion() const
 {
     logger->log("gl vendor: " + mGlVendor);
     logger->log("gl renderer: " + mGlRenderer);
     logger->log("gl version: " + mGlVersionString);
 }
 
-bool GraphicsManager::checkGLVersion(int major, int minor) const
+bool GraphicsManager::checkGLVersion(const int major, const int minor) const
 {
     return mMajor > major || (mMajor == major && mMinor >= minor);
 }
 
-bool GraphicsManager::checkPlatformVersion(int major, int minor) const
+bool GraphicsManager::checkPlatformVersion(const int major, const int minor) const
 {
     return mPlatformMajor > major || (mPlatformMajor == major
         && mPlatformMinor >= minor);
 }
 
-void GraphicsManager::createFBO(int width, int height, FBOInfo *fbo)
+void GraphicsManager::createFBO(const int width, const int height,
+                                FBOInfo *const fbo)
 {
     if (!fbo)
         return;
@@ -657,7 +656,7 @@ void GraphicsManager::createFBO(int width, int height, FBOInfo *fbo)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void GraphicsManager::deleteFBO(FBOInfo *fbo)
+void GraphicsManager::deleteFBO(FBOInfo *const fbo)
 {
     if (!fbo)
         return;
@@ -686,7 +685,7 @@ void GraphicsManager::initOpenGLFunctions()
     // Texture sampler
     if (checkGLVersion(1, 0) && supportExtension("GL_ARB_sampler_objects"))
     {
-        logger->log("found GL_ARB_sampler_objects");
+        logger->log1("found GL_ARB_sampler_objects");
         assignFunction(glGenSamplers, "glGenSamplers");
         assignFunction(glDeleteSamplers, "glDeleteSamplers");
         assignFunction(glBindSampler, "glBindSampler");
@@ -698,7 +697,7 @@ void GraphicsManager::initOpenGLFunctions()
     }
     else
     {
-        logger->log("texture sampler not found");
+        logger->log1("texture sampler not found");
         mUseTextureSampler = false;
     }
 
@@ -707,7 +706,7 @@ void GraphicsManager::initOpenGLFunctions()
 
     if (supportExtension("GL_ARB_framebuffer_object"))
     {   // frame buffer supported
-        logger->log("found GL_ARB_framebuffer_object");
+        logger->log1("found GL_ARB_framebuffer_object");
         assignFunction(glGenRenderbuffers, "glGenRenderbuffers");
         assignFunction(glBindRenderbuffer, "glBindRenderbuffer");
         assignFunction(glRenderbufferStorage, "glRenderbufferStorage");
@@ -720,7 +719,7 @@ void GraphicsManager::initOpenGLFunctions()
     }
     else if (supportExtension("GL_EXT_framebuffer_object"))
     {   // old frame buffer extension
-        logger->log("found GL_EXT_framebuffer_object");
+        logger->log1("found GL_EXT_framebuffer_object");
         assignFunction(glGenRenderbuffers, "glGenRenderbuffersEXT");
         assignFunction(glBindRenderbuffer, "glBindRenderbufferEXT");
         assignFunction(glRenderbufferStorage, "glRenderbufferStorageEXT");
@@ -734,28 +733,28 @@ void GraphicsManager::initOpenGLFunctions()
     }
     else
     {   // no frame buffer support
-        logger->log("frame buffer not found");
+        logger->log1("frame buffer not found");
         config.setValue("usefbo", false);
     }
 
     // debug extensions
     if (supportExtension("GL_KHR_debug"))
     {
-        logger->log("found GL_KHR_debug");
+        logger->log1("found GL_KHR_debug");
         assignFunction(glDebugMessageControl, "glDebugMessageControl");
         assignFunction(glDebugMessageCallback, "glDebugMessageCallback");
         mSupportDebug = 2;
     }
     else if (supportExtension("GL_ARB_debug_output"))
     {
-        logger->log("found GL_ARB_debug_output");
+        logger->log1("found GL_ARB_debug_output");
         assignFunction(glDebugMessageControl, "glDebugMessageControlARB");
         assignFunction(glDebugMessageCallback, "glDebugMessageCallbackARB");
         mSupportDebug = 1;
     }
     else
     {
-        logger->log("debug extensions not found");
+        logger->log1("debug extensions not found");
         mSupportDebug = 0;
     }
 
@@ -766,7 +765,7 @@ void GraphicsManager::initOpenGLFunctions()
 
 void GraphicsManager::updateLimits()
 {
-    GLint value;
+    GLint value = 0;
     glGetIntegerv(GL_MAX_ELEMENTS_VERTICES, &value);
     logger->log("GL_MAX_ELEMENTS_VERTICES: %d", value);
 
@@ -834,7 +833,7 @@ GLenum GraphicsManager::getLastError()
     return error;
 }
 
-std::string GraphicsManager::errorToString(GLenum error)
+std::string GraphicsManager::errorToString(const GLenum error)
 {
     if (error)
     {
@@ -870,7 +869,7 @@ std::string GraphicsManager::errorToString(GLenum error)
 void GraphicsManager::detectVideoSettings()
 {
     config.setValue("videodetected", true);
-    TestMain *test = startDetection();
+    TestMain *const test = startDetection();
 
     if (test)
     {
@@ -965,7 +964,7 @@ static CALLBACK void debugCallback(GLenum source, GLenum type, GLuint id,
             message.append(" ?").append(toString(type));
             break;
     }
-    char *buf = new char[length + 1];
+    char *const buf = new char[length + 1];
     memcpy (buf, text, length);
     buf[length] = 0;
     message.append(" ").append(buf);
@@ -973,11 +972,11 @@ static CALLBACK void debugCallback(GLenum source, GLenum type, GLuint id,
     logger->log(message);
 }
 
-void GraphicsManager::updateDebugLog()
+void GraphicsManager::updateDebugLog() const
 {
     if (mSupportDebug && config.getIntValue("debugOpenGL"))
     {
-        logger->log("Enable OpenGL debug log");
+        logger->log1("Enable OpenGL debug log");
         glEnable(GL_DEBUG_OUTPUT);
         glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 

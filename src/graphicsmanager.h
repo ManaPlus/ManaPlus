@@ -58,7 +58,7 @@ class GraphicsManager final
 
         virtual ~GraphicsManager();
 
-        void initGraphics(bool noOpenGL);
+        void initGraphics(const bool noOpenGL);
 
         void setVideoMode();
 
@@ -71,17 +71,20 @@ class GraphicsManager final
 
         int detectGraphics() A_WARN_UNUSED;
 
-        bool supportExtension(const std::string &ext) A_WARN_UNUSED;
+        bool supportExtension(const std::string &ext) const A_WARN_UNUSED;
 
         void updateTextureFormat();
 
-        bool checkGLVersion(int major, int minor) const A_WARN_UNUSED;
+        bool checkGLVersion(const int major, const int minor)
+                            const A_WARN_UNUSED;
 
-        bool checkPlatformVersion(int major, int minor) const A_WARN_UNUSED;
+        bool checkPlatformVersion(const int major, const int minor)
+                                  const A_WARN_UNUSED;
 
-        void createFBO(int width, int height, FBOInfo *fbo);
+        static void createFBO(const int width, const int height,
+                              FBOInfo *const fbo);
 
-        void deleteFBO(FBOInfo *fbo);
+        static void deleteFBO(FBOInfo *const fbo);
 
         void initOpenGLFunctions();
 
@@ -99,13 +102,13 @@ class GraphicsManager final
         bool getUseAtlases() const A_WARN_UNUSED
         { return mUseAtlases; }
 
-        void logVersion();
+        void logVersion() const;
 
         void setGLVersion();
 
-        std::string getGLString(int num) const A_WARN_UNUSED;
+        static std::string getGLString(const int num) A_WARN_UNUSED;
 
-        void logString(const char *format, int num);
+        static void logString(const char *const format, const int num);
 
         void detectVideoSettings();
 
@@ -114,11 +117,11 @@ class GraphicsManager final
         bool isUseTextureSampler() const A_WARN_UNUSED
         { return mUseTextureSampler; }
 
-        GLenum getLastError() A_WARN_UNUSED;
+        static GLenum getLastError() A_WARN_UNUSED;
 
-        static std::string errorToString(GLenum error) A_WARN_UNUSED;
+        static std::string errorToString(const GLenum error) A_WARN_UNUSED;
 
-        void updateDebugLog();
+        void updateDebugLog() const;
 #endif
 
     private:

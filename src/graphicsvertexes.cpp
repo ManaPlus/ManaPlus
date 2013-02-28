@@ -133,7 +133,7 @@ GLint *NormalOpenGLGraphicsVertexes::switchIntTexArray()
     return mIntTexArray;
 }
 
-void NormalOpenGLGraphicsVertexes::switchVp(int n)
+void NormalOpenGLGraphicsVertexes::switchVp(const int n)
 {
     mVp.push_back(n);
 }
@@ -152,7 +152,7 @@ int NormalOpenGLGraphicsVertexes::continueVp()
     }
 }
 
-void NormalOpenGLGraphicsVertexes::updateVp(int n)
+void NormalOpenGLGraphicsVertexes::updateVp(const int n)
 {
     if (!mVp.empty())
         mVp.pop_back();

@@ -95,7 +95,7 @@ class NormalOpenGLGraphicsVertexes final
         std::vector<GLint*> *getIntTexPool() A_WARN_UNUSED
         { return &mIntTexPool; }
 
-        void switchVp(int n);
+        void switchVp(const int n);
 
         GLfloat *continueFloatTexArray();
 
@@ -107,7 +107,7 @@ class NormalOpenGLGraphicsVertexes final
 
         int continueVp();
 
-        void updateVp(int n);
+        void updateVp(const int n);
 
         std::vector<int> *getVp() A_WARN_UNUSED
         { return &mVp; }
