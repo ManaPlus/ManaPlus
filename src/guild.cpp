@@ -235,9 +235,12 @@ void Guild::removeFromMembers()
     const MemberList::const_iterator itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        Being *const b = actorSpriteManager->findBeing((*itr)->getID());
-        if (b)
-            b->removeGuild(getId());
+        if (*itr)
+        {
+            Being *const b = actorSpriteManager->findBeing((*itr)->getID());
+            if (b)
+                b->removeGuild(mId);
+        }
         ++itr;
     }
 }
@@ -319,7 +322,7 @@ void Guild::getNames(StringVect &names) const
     }
 }
 
-void Guild::addPos(const int id, std::string name)
+void Guild::addPos(const int id, const std::string &name)
 {
     mPositions[id] = name;
 }

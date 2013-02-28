@@ -108,12 +108,12 @@ void GuildManager::reload()
     mTab = nullptr;
 }
 
-void GuildManager::send(std::string msg) const
+void GuildManager::send(const std::string &msg)
 {
     Net::getChatHandler()->privateMessage("guild", msg);
 }
 
-void GuildManager::chat(std::string msg)
+void GuildManager::chat(const std::string &msg)
 {
     if (!player_node || !mTab)
         return;
@@ -238,7 +238,7 @@ Guild *GuildManager::createGuild() const
     return guild;
 }
 
-bool GuildManager::processGuildMessage(std::string msg)
+bool GuildManager::processGuildMessage(const std::string &msg)
 {
     const bool res = process(msg);
 
@@ -354,7 +354,7 @@ bool GuildManager::process(std::string msg)
 //        logger->log("OL");
         mTempList.clear();
         splitToStringVector(mTempList, msg, '#');
-        if (msg.size() < 1 || msg[msg.size() - 1] != '#')
+        if (msg.empty() || msg[msg.size() - 1] != '#')
             updateList();
         mRequest = false;
         mGotOnlineInfo = true;
@@ -364,7 +364,7 @@ bool GuildManager::process(std::string msg)
     {
 //        logger->log("oL");
         splitToStringVector(mTempList, msg, '#');
-        if (msg.size() < 1 || msg[msg.size() - 1] != '#')
+        if (msg.empty() || msg[msg.size() - 1] != '#')
             updateList();
         mRequest = false;
         mGotOnlineInfo = true;
@@ -431,7 +431,7 @@ bool GuildManager::process(std::string msg)
             const size_t pos = msg.find(": ", 0);
             if (pos != std::string::npos)
             {
-                std::string sender_name = ((pos == std::string::npos)
+                const std::string sender_name = ((pos == std::string::npos)
                     ? "" : msg.substr(0, pos));
                 if (!guild->getMember(sender_name))
                 {
@@ -456,22 +456,22 @@ bool GuildManager::process(std::string msg)
     return false;
 }
 
-void GuildManager::kick(std::string msg) const
+void GuildManager::kick(const std::string &msg)
 {
     send("!remove " + msg);
 }
 
-void GuildManager::invite(std::string msg) const
+void GuildManager::invite(const std::string &msg)
 {
     send("!invite " + msg);
 }
 
-void GuildManager::leave() const
+void GuildManager::leave()
 {
     send("!leave");
 }
 
-void GuildManager::notice(std::string msg) const
+void GuildManager::notice(const std::string &msg)
 {
     if (msg.empty())
         send("!removemotd");
@@ -479,7 +479,7 @@ void GuildManager::notice(std::string msg) const
         send("!setmotd " + msg);
 }
 
-void GuildManager::clear() const
+void GuildManager::clear()
 {
     if (socialWindow)
     {
@@ -489,7 +489,7 @@ void GuildManager::clear() const
     }
 }
 
-void GuildManager::inviteResponse(const bool response) const
+void GuildManager::inviteResponse(const bool response)
 {
     if (response)
         send("yes");

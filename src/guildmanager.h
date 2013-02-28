@@ -41,11 +41,11 @@ class GuildManager final
 
         static void init();
 
-        void chat(std::string msg);
+        void chat(const std::string &msg);
 
-        void send(std::string msg) const;
+        static void send(const std::string &msg);
 
-        bool processGuildMessage(std::string msg);
+        bool processGuildMessage(const std::string &msg);
 
         void getNames(StringVect &names) const;
 
@@ -56,23 +56,23 @@ class GuildManager final
         static bool getEnableGuildBot() A_WARN_UNUSED
         { return mEnableGuildBot; }
 
-        void kick(std::string msg) const;
+        static void kick(const std::string &msg);
 
-        void invite(std::string msg) const;
+        static void invite(const std::string &msg);
 
-        void leave() const;
+        static void leave();
 
-        void notice(std::string msg) const;
+        static void notice(const std::string &msg);
 
         void createTab(Guild *const guild);
 
         Guild *createGuild() const A_WARN_UNUSED;
 
-        void clear() const;
+        static void clear();
 
         void reload();
 
-        void inviteResponse(const bool response) const;
+        static void inviteResponse(const bool response);
 
         bool afterRemove();
 

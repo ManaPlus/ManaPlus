@@ -170,7 +170,7 @@ public:
 
     void getNames(StringVect &names) const;
 
-    void addPos(const int id, std::string name);
+    void addPos(const int id, const std::string &name);
 
     void sort();
 
