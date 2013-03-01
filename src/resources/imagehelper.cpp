@@ -117,9 +117,12 @@ void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image) const
 
 SDL_Surface *ImageHelper::loadPng(SDL_RWops *const rw)
 {
-    if (!rw || !IMG_isPNG(rw))
+    if (!rw)
+        return nullptr;
+
+    if (!IMG_isPNG(rw))
     {
-        logger->log("Error, image missing or not png");
+        logger->log("Error, image is not png");
         return nullptr;
     }
     SDL_Surface *const tmpImage = IMG_LoadPNG_RW(rw);

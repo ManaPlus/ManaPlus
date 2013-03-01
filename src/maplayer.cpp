@@ -730,16 +730,16 @@ void MapItem::setType(const int type)
     switch (type)
     {
         case ARROW_UP:
-            name = "graphics/sprites/arrow_up.gif";
+            name = "graphics/sprites/arrow_up.png";
             break;
         case ARROW_DOWN:
-            name = "graphics/sprites/arrow_down.gif";
+            name = "graphics/sprites/arrow_down.png";
             break;
         case ARROW_LEFT:
-            name = "graphics/sprites/arrow_left.gif";
+            name = "graphics/sprites/arrow_left.png";
             break;
         case ARROW_RIGHT:
-            name = "graphics/sprites/arrow_right.gif";
+            name = "graphics/sprites/arrow_right.png";
             break;
         default:
             break;

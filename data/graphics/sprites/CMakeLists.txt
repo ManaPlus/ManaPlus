@@ -1,8 +1,8 @@
 SET(FILES
-    arrow_up.gif
-    arrow_down.gif
-    arrow_left.gif
-    arrow_right.gif
+    arrow_up.png
+    arrow_down.png
+    arrow_left.png
+    arrow_right.png
     error.png
     error.xml
     manaplus_emotions.png

@@ -82,7 +82,7 @@ int TestLauncher::exec()
 int TestLauncher::testBackend() const
 {
     const Image *const img = Theme::getImageFromTheme(
-        "graphics/sprites/arrow_up.gif");
+        "graphics/sprites/arrow_up.png");
     if (!img)
         return 1;
     const int cnt = 100;
@@ -129,7 +129,7 @@ int TestLauncher::testFps()
     Wallpaper::getWallpaper(800, 600);
     Image *img[5];
 
-    img[0] = Theme::getImageFromTheme("graphics/sprites/arrow_up.gif");
+    img[0] = Theme::getImageFromTheme("graphics/sprites/arrow_up.png");
     img[1] = Theme::getImageFromTheme(
         "graphics/gui/target-cursor-normal-l.png");
     img[2] = Theme::getImageFromTheme("themes/wood/window.png");
@@ -190,8 +190,8 @@ int TestLauncher::testInternal()
         "graphics/sprites/manaplus_emotions.png");
     img[1] = Theme::getImageFromTheme(
         "graphics/sprites/manaplus_emotions.png");
-    img[2] = Theme::getImageFromTheme("graphics/sprites/arrow_left.gif");
-    img[3] = Theme::getImageFromTheme("graphics/sprites/arrow_right.gif");
+    img[2] = Theme::getImageFromTheme("graphics/sprites/arrow_left.png");
+    img[3] = Theme::getImageFromTheme("graphics/sprites/arrow_right.png");
     int idx = 0;
     const int mem =  mainGraphics->getMemoryUsage();
 
