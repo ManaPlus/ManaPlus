@@ -332,8 +332,8 @@ impHandler(query)
 
     if (tab)
     {
-        tab->chatLog(strprintf(_("Cannot create a whisper tab for nick \"%s\"! "
-            "It either already exists, or is you."),
+        tab->chatLog(strprintf(_("Cannot create a whisper tab for nick "
+            "\"%s\"! It either already exists, or is you."),
             args.c_str()), BY_SERVER);
     }
 }

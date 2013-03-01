@@ -606,7 +606,8 @@ bool GraphicsManager::checkGLVersion(const int major, const int minor) const
     return mMajor > major || (mMajor == major && mMinor >= minor);
 }
 
-bool GraphicsManager::checkPlatformVersion(const int major, const int minor) const
+bool GraphicsManager::checkPlatformVersion(const int major,
+                                           const int minor) const
 {
     return mPlatformMajor > major || (mPlatformMajor == major
         && mPlatformMinor >= minor);

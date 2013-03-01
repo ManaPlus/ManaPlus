@@ -472,8 +472,8 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
             PlayerInfo::setAttribute(PlayerInfo::EXP_NEEDED, msg.readInt32());
             break;
         case 0x0017:
-            PlayerInfo::setStatExperience(EA_JOB, PlayerInfo::getStatExperience(
-                EA_JOB).first, msg.readInt32());
+            PlayerInfo::setStatExperience(EA_JOB,
+                PlayerInfo::getStatExperience(EA_JOB).first, msg.readInt32());
             break;
         default:
             logger->log("QQQQ PLAYER_STAT_UPDATE_2 " + toString(type));

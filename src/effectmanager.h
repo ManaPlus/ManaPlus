@@ -37,8 +37,8 @@ class EffectManager final
     public:
         struct EffectDescription
         {
-            EffectDescription(int id0, const std::string GFX0,
-                              const std::string SFX0) :
+            EffectDescription(const int id0, const std::string &GFX0,
+                              const std::string &SFX0) :
                 id(id0),
                 GFX(GFX0),
                 SFX(SFX0)

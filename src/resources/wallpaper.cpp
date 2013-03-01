@@ -28,7 +28,6 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/physfstools.h"
-#include "utils/stringutils.h"
 
 #include <algorithm>
 #include <cstring>

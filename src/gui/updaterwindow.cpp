@@ -748,8 +748,9 @@ void UpdaterWindow::logic()
                     std::ifstream temp((std::string(mUpdatesDir).append(
                         "/").append(mCurrentFile)).c_str());
 
-                    if (!temp.is_open() || !validateFile(std::string(mUpdatesDir).append(
-                        "/").append(mCurrentFile), mCurrentChecksum))
+                    if (!temp.is_open() || !validateFile(std::string(
+                        mUpdatesDir).append("/").append(mCurrentFile),
+                        mCurrentChecksum))
                     {
                         temp.close();
                         download();

@@ -1045,7 +1045,8 @@ void Game::changeMap(const std::string &mapPath)
         newMap->initializeParticleEffects(particleEngine);
 
     // Start playing new music file when necessary
-    const std::string oldMusic = mCurrentMap ? mCurrentMap->getMusicFile() : "";
+    const std::string oldMusic = mCurrentMap
+        ? mCurrentMap->getMusicFile() : "";
     const std::string newMusic = newMap ? newMap->getMusicFile() : "";
     if (newMusic != oldMusic)
     {

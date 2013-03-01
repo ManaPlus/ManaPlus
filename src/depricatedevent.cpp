@@ -53,11 +53,11 @@ int DepricatedEvent::getInt(const std::string &key) const
     if (it == mData.end())
         return 0;
 
-    VariableData *const data = it->second;
+    const VariableData *const data = it->second;
     if (!data || data->getType() != VariableData::DATA_INT)
         return 0;
 
-    return static_cast<IntData *>(data)->getData();
+    return static_cast<const IntData *>(data)->getData();
 }
 
 void DepricatedEvent::setString(const std::string &key,
@@ -75,11 +75,11 @@ const std::string DepricatedEvent::getString(const std::string &key) const
     if (it == mData.end())
         return "";
 
-    VariableData *const data = it->second;
+    const VariableData *const data = it->second;
     if (!data || data->getType() != VariableData::DATA_STRING)
         return "";
 
-    return static_cast<StringData *>(data)->getData();
+    return static_cast<const StringData *>(data)->getData();
 }
 
 
@@ -97,11 +97,11 @@ double DepricatedEvent::getFloat(const std::string &key) const
     if (it == mData.end())
         return 0;
 
-    VariableData *const data = it->second;
+    const VariableData *const data = it->second;
     if (!data || data->getType() != VariableData::DATA_FLOAT)
         return 0;
 
-    return static_cast<FloatData *>(data)->getData();
+    return static_cast<const FloatData *>(data)->getData();
 }
 
 void DepricatedEvent::trigger(const Channels channel,

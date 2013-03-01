@@ -513,7 +513,7 @@ class LocalPlayer final : public Being,
         void changeEquipmentBeforeAttack(const Being *const target) const;
 
         static void tryMagic(const std::string &spell, const int baseMagic,
-                      const int schoolMagic, const int mana);
+                             const int schoolMagic, const int mana);
 
         const char *getVarItem(const char *const *const arr,
                                const unsigned index,
