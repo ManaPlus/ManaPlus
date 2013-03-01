@@ -276,7 +276,6 @@ Section "Core files (required)" SecCore
   File /x minimap_*.png ${SRCDIR}\data\graphics\images\*.png
   File "${SRCDIR}\data\graphics\images\error.png"
   SetOutPath "$INSTDIR\data\graphics\sprites"
-  File "${SRCDIR}\data\graphics\sprites\*.gif"
   File "${SRCDIR}\data\graphics\sprites\*.png"
   File "${SRCDIR}\data\graphics\sprites\*.xml"
   SetOutPath "$INSTDIR\data\sfx\system"
