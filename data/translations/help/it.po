@@ -1,12 +1,13 @@
 # en#
 # Translators:
 # Alessandro <ale.camplese@gmail.com>, 2013.
+# Alessandro Camplese <ale.camplese@gmail.com>, 2013.
 #   <miglietta.francesco@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-02-15 20:53+0000\n"
-"Last-Translator: Alel <ale.camplese@gmail.com>\n"
+"PO-Revision-Date: 2013-03-01 15:18+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -252,7 +253,7 @@ msgstr "##2Shift Destro + tasto##P         \"Muoviti al punto di navigazione\""
 msgid ""
 "You can do basic searching in help by using command\n"
 "##2?text"
-msgstr ""
+msgstr "Puoi fare la ricerca base usando il comando\n##2?text"
 
 msgid "##24##P                        \"Item Shortcut 4\""
 msgstr "##24##P                        \"Scorciatoia Oggetto 4\""
@@ -362,7 +363,7 @@ msgid "##2F3##P                       \"Inventory Window\""
 msgstr "##2F3##P                       \"Inventario\""
 
 msgid "ABOUT MANAPLUS"
-msgstr "INFORMAZIONI MANAPLUS"
+msgstr "INFORMAZIONI SU MANAPLUS"
 
 msgid ""
 "##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
@@ -409,6 +410,9 @@ msgstr "##29##P                        \"Scorciatoia Oggetto 9\""
 msgid "/outfit next - wear next outfit."
 msgstr "/outfit next - equipaggia la combinazione successiva."
 
+msgid "About The Mana World"
+msgstr ""
+
 msgid ""
 "You can set away mode,\n"
 "by type in chat command /away"
@@ -418,7 +422,7 @@ msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - spostati alla posizione X,Y (distanza ravvicinata)."
 
 msgid "Themes:"
-msgstr ""
+msgstr "Temi:"
 
 msgid "Magic skills:"
 msgstr "Abilità magiche:"
@@ -627,7 +631,7 @@ msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr "##2RightBracket(])##P          \"Memorizza Equipaggiamento come Combinazione\""
 
 msgid "To type chat message, press enter"
-msgstr ""
+msgstr "Per scrivere un messaggio in chat,premi invio"
 
 msgid "##2DOWN##P                     \"Move Down\""
 msgstr "##2DOWN##P                     \"Giù\""
@@ -722,11 +726,6 @@ msgid "##2F10##P                      \"Debug Window\""
 msgstr "##2F10##P                      \"Finestra Debug\""
 
 msgid ""
-"##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@\n"
-" or visit IRC channel:"
-msgstr "##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@\n oppure visita il canale IRC:"
-
-msgid ""
 " - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
 "   players?"
 msgstr ""
@@ -769,7 +768,7 @@ msgid ""
 msgstr "Puoi impostare qualsiasi risoluzione del Client. Nella finestra Setup, tab Video,\nclicca su \"personalizzata\" e digita per esempio: 900x500."
 
 msgid "Main development"
-msgstr ""
+msgstr "Sviluppo principale"
 
 msgid "/attack - attack target."
 msgstr "/attack - attacca il target selezionato."
@@ -829,7 +828,7 @@ msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
 msgstr "##2KeyPad[7]##P                \"Chat Tab Precedente\""
 
 msgid "Android porting"
-msgstr ""
+msgstr "Porting per Android"
 
 msgid "##2h##P                        \"Hide Windows\""
 msgstr "##2h##P                        \"Nascondi Finestre\""
@@ -852,7 +851,7 @@ msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
 msgstr ""
 
 msgid "Different patches"
-msgstr ""
+msgstr "Patch differenti"
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr ""

@@ -72,6 +72,7 @@ src/gui/whoisonline.cpp
 src/gui/widgets/battletab.cpp
 src/gui/widgets/chattab.cpp
 src/gui/widgets/extendednamesmodel.cpp
+src/gui/widgets/gmtab.cpp
 src/gui/widgets/guildchattab.cpp
 src/gui/widgets/itemcontainer.cpp
 src/gui/widgets/itemlinkhandler.cpp
@@ -99,7 +100,7 @@ src/net/ea/loginhandler.cpp
 src/net/ea/network.cpp
 src/net/ea/partyhandler.cpp
 src/net/ea/playerhandler.cpp
-src/net/ea/specialhandler.cpp
+src/net/ea/skillhandler.cpp
 src/net/eathena/adminhandler.cpp
 src/net/eathena/buysellhandler.cpp
 src/net/eathena/generalhandler.cpp

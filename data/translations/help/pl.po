@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-02-03 11:31+0000\n"
+"PO-Revision-Date: 2013-03-01 15:18+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/manaplus/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -409,6 +409,9 @@ msgstr "##29##P                        \"Skrót do Przedmiotu 9\""
 msgid "/outfit next - wear next outfit."
 msgstr "/outfit next - załóż następny strój."
 
+msgid "About The Mana World"
+msgstr ""
+
 msgid ""
 "You can set away mode,\n"
 "by type in chat command /away"
@@ -720,11 +723,6 @@ msgstr ""
 
 msgid "##2F10##P                      \"Debug Window\""
 msgstr "##2F10##P                      \"Okno Debugowania\""
-
-msgid ""
-"##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@\n"
-" or visit IRC channel:"
-msgstr ""
 
 msgid ""
 " - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
