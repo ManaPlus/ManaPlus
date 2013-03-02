@@ -59,9 +59,10 @@
 #ifdef DEBUG_DUMP_LEAKS1
 #include "resources/image.h"
 #include "resources/resource.h"
-#include "resources/resourcemanager.h"
 #include "resources/subimage.h"
 #endif
+
+#include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
 #include "utils/process.h"
@@ -342,6 +343,15 @@ impHandler0(clear)
 {
     if (chatWindow)
         chatWindow->clearTab();
+}
+
+impHandler0(cleanGraphics)
+{
+    ResourceManager *const resman = ResourceManager::getInstance();
+    while(resman->cleanOrphans(true));
+
+    if (debugChatTab)
+        debugChatTab->chatLog("cache cleaned");
 }
 
 impHandler(join)
