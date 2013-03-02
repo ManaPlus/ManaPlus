@@ -49,6 +49,8 @@ Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
     Resource(),
 #ifdef USE_OPENGL
     mGLImage(0),
+    mTexWidth(0),
+    mTexHeight(0),
 #endif
     mLoaded(false),
     mAlpha(1.0f),

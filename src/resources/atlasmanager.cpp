@@ -256,14 +256,15 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *atlas)
 
 void AtlasManager::convertAtlas(TextureAtlas *atlas)
 {
+    // no check for null pointer in atlas because it was in caller
     // convert surface to OpemGL image
     atlas->atlasImage = imageHelper->load(atlas->surface);
     Image *const image = atlas->atlasImage;
-    if (image)
-    {
-        image->mIdPath = atlas->name;
-        image->incRef();
-    }
+    if (!image)
+        return;
+
+    image->mIdPath = atlas->name;
+    image->incRef();
 
     FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
     {

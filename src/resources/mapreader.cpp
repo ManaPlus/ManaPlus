@@ -242,10 +242,11 @@ Map *MapReader::readMap(const std::string &filename,
     {
         map->setProperty("_filename", realFilename);
         map->setProperty("_realfilename", filename);
+
+        if (map->getProperty("music").empty())
+            updateMusic(map);
     }
 
-    if (map->getProperty("music").empty())
-        updateMusic(map);
     return map;
 }
 
@@ -716,7 +717,10 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
         doc = new XML::Document(filename);
         node = doc->rootNode();
         if (!node)
+        {
+            delete doc;
             return nullptr;
+        }
 
         // Reset path to be realtive to the tsx file
         pathDir = filename.substr(0, filename.rfind("/") + 1);
@@ -729,6 +733,10 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
     {
         if (xmlNameEqual(childNode, "image"))
         {
+            // ignore second other <image> tags in tileset
+            if (set)
+                continue;
+
             const std::string source = XML::getProperty(
                 childNode, "source", "");
 

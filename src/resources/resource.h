@@ -42,8 +42,9 @@ class Resource
          * Constructor
          */
         Resource() :
-#ifdef DEBUG_DUMP_LEAKS
+            mTimeStamp(0),
             mRefCount(0),
+#ifdef DEBUG_DUMP_LEAKS
             mDumped(false)
 #else
             mRefCount(0)
