@@ -234,6 +234,7 @@ static std::string formatUnit(const int value, const int type)
         }
         else
         {
+            ul.round = 0;
             for (unsigned int i = 0; i < ud.levels.size(); i++)
             {
                 ul = ud.levels[i];

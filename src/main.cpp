@@ -186,6 +186,7 @@ static void parseOptions(const int argc, char *const argv[],
                 break;
             case 'a':
                 options.chatLogDir = std::string(optarg);
+                break;
             case 'i':
                 options.screenshotDir = optarg;
                 break;

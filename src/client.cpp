@@ -284,6 +284,12 @@ Client::Client(const Options &options) :
     mButtonSpacing(3)
 {
     mInstance = this;
+
+    // Initialize frame limiting
+    mFpsManager.framecount = 0;
+    mFpsManager.rateticks = 0;
+    mFpsManager.lastticks = 0;
+    mFpsManager.rate = 0;
 }
 
 void Client::testsInit()
@@ -652,11 +658,6 @@ void Client::gameInit()
     const int fpsLimit = config.getIntValue("fpslimit");
     mLimitFps = fpsLimit > 0;
 
-    // Initialize frame limiting
-    mFpsManager.framecount = 0;
-    mFpsManager.rateticks = 0;
-    mFpsManager.lastticks = 0;
-    mFpsManager.rate = 0;
 
     SDL_initFramerate(&mFpsManager);
     setFramerate(fpsLimit);

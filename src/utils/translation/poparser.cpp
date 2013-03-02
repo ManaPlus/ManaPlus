@@ -41,6 +41,8 @@ PoParser::PoParser() :
 void PoParser::openFile(std::string name)
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
+    if (!resman)
+        return;
     int size;
     char *buf = static_cast<char*>(resman->loadFile(getFileName(name), size));
 

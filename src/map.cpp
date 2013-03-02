@@ -1252,12 +1252,10 @@ void Map::addPortal(const std::string &name, const int type,
 void Map::addPortalTile(const std::string &name, const int type,
                         const int x, const int y)
 {
-    MapItem *item = new MapItem(type, name, x, y);
     if (mSpecialLayer)
-        mSpecialLayer->setTile(x, y, item);
+        mSpecialLayer->setTile(x, y, new MapItem(type, name, x, y));
 
-    item = new MapItem(type, name, x, y);
-    mMapPortals.push_back(item);
+    mMapPortals.push_back(new MapItem(type, name, x, y));
 }
 
 void Map::updatePortalTile(const std::string &name, const int type,

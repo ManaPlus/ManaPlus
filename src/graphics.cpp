@@ -659,10 +659,15 @@ bool Graphics::calcImageRect(ImageVertexes *const vert,
     }
 
     calcTile(vert, topLeft, x, y);
-    calcTile(vert, topRight, x + w - topRight->getWidth(), y);
-    calcTile(vert, bottomLeft, x, y + h - bottomLeft->getHeight());
-    calcTile(vert, bottomRight, x + w - bottomRight->getWidth(),
-        y + h - bottomRight->getHeight());
+    if (topRight)
+        calcTile(vert, topRight, x + w - topRight->getWidth(), y);
+    if (bottomLeft)
+        calcTile(vert, bottomLeft, x, y + h - bottomLeft->getHeight());
+    if (bottomRight)
+    {
+        calcTile(vert, bottomRight, x + w - bottomRight->getWidth(),
+            y + h - bottomRight->getHeight());
+    }
 
 //    popClipArea();
     BLOCK_END("Graphics::calcImageRect")
@@ -710,6 +715,10 @@ void Graphics::calcImagePattern(ImageVertexes* const vert,
                 mTarget, &dstRect) == 1)
             {
                 vert->sdl.push_back(r);
+            }
+            else
+            {
+                delete r;
             }
         }
     }
@@ -989,11 +998,14 @@ int Graphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
 
     if (w > 0 && h > 0)
     {
-        srcrect->x = static_cast<int16_t>(srcx);
-        srcrect->y = static_cast<int16_t>(srcy);
-        srcrect->w = static_cast<int16_t>(w);
+        if (srcrect)
+        {
+            srcrect->x = static_cast<int16_t>(srcx);
+            srcrect->y = static_cast<int16_t>(srcy);
+            srcrect->w = static_cast<int16_t>(w);
+            srcrect->h = static_cast<int16_t>(h);
+        }
         dstrect->w = static_cast<int16_t>(w);
-        srcrect->h = static_cast<int16_t>(h);
         dstrect->h = static_cast<int16_t>(h);
 
         return 1;
