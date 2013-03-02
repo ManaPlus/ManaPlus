@@ -311,7 +311,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
         mItems->setName(mNameFilter->getText());
         mItems->updateMatrix();
     }
-    else if (!eventId.find("tag_") && mItems)
+    else if (!eventId.find("tag_"))
     {
         std::string tagName = event.getId().substr(4);
         mItems->setFilter(ItemDB::getTagId(tagName));
@@ -398,8 +398,7 @@ void InventoryWindow::unselectItem()
 void InventoryWindow::widgetHidden(const gcn::Event &event)
 {
     Window::widgetHidden(event);
-    if (mItems)
-        mItems->hidePopup();
+    mItems->hidePopup();
 }
 
 void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
@@ -590,16 +589,19 @@ void InventoryWindow::updateButtons(const Item *item)
     if (mDropButton)
         mDropButton->setEnabled(true);
 
-    if (mUseButton && item && item->isEquipment())
+    if (mUseButton)
     {
-        if (item->isEquipped())
-            mUseButton->setCaption(_("Unequip"));
+        if (item && item->isEquipment())
+        {
+            if (item->isEquipped())
+                mUseButton->setCaption(_("Unequip"));
+            else
+                mUseButton->setCaption(_("Equip"));
+        }
         else
-            mUseButton->setCaption(_("Equip"));
-    }
-    else
-    {
-        mUseButton->setCaption(_("Use"));
+        {
+            mUseButton->setCaption(_("Use"));
+        }
     }
 
     updateDropButton();
@@ -674,8 +676,7 @@ void InventoryWindow::slotsChanged(Inventory *const inventory)
         }
 
         mSlotsBar->setText(strprintf("%d/%d", usedSlots, maxSlots));
-        if (mItems)
-            mItems->updateMatrix();
+        mItems->updateMatrix();
     }
 }
 
@@ -690,15 +691,12 @@ void InventoryWindow::updateDropButton()
     }
     else
     {
-        if (mItems)
-        {
-            const Item *const item = mItems->getSelectedItem();
+        const Item *const item = mItems->getSelectedItem();
 
-            if (item && item->getQuantity() > 1)
-                mDropButton->setCaption(_("Drop..."));
-            else
-                mDropButton->setCaption(_("Drop"));
-        }
+        if (item && item->getQuantity() > 1)
+            mDropButton->setCaption(_("Drop..."));
+        else
+            mDropButton->setCaption(_("Drop"));
     }
 }
 

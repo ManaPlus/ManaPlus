@@ -177,10 +177,8 @@ StatusWindow::StatusWindow() :
     if (!max)
         max = 1;
 
-    mHpBar = new ProgressBar(this, max ?
-            static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::HP))
-            / static_cast<float>(max):
-            static_cast<float>(0), 80, 0, Theme::PROG_HP);
+    mHpBar = new ProgressBar(this, static_cast<float>(PlayerInfo::getAttribute(
+        PlayerInfo::HP)) / static_cast<float>(max), 80, 0, Theme::PROG_HP);
 
     max = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
     mXpBar = new ProgressBar(this, max ?

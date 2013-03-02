@@ -74,6 +74,7 @@ class SDLTextChunk final
             sdlCol.b = static_cast<uint8_t>(color.b);
             sdlCol.r = static_cast<uint8_t>(color.r);
             sdlCol.g = static_cast<uint8_t>(color.g);
+            sdlCol.unused = 0;
 
             getSafeUtf8String(text, strBuf);
 
@@ -106,6 +107,7 @@ class SDLTextChunk final
                 sdlCol2.b = static_cast<uint8_t>(color2.b);
                 sdlCol2.r = static_cast<uint8_t>(color2.r);
                 sdlCol2.g = static_cast<uint8_t>(color2.g);
+                sdlCol2.unused = 0;
                 SDL_Surface *const surface2 = TTF_RenderUTF8_Blended(
                     font, strBuf, sdlCol2);
                 if (!surface2)
@@ -260,6 +262,8 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
     }
 
     Graphics *const g = dynamic_cast<Graphics *const>(graphics);
+    if (!g)
+        return;
 
     gcn::Color col = g->getColor();
     gcn::Color col2 = g->getColor2();

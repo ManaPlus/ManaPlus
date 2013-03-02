@@ -139,6 +139,13 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mRaceLabel = new Label(this, _("Race:"));
         mRaceNameLabel = new Label(this, "");
     }
+    else
+    {
+        mNextRaceButton = nullptr;
+        mPrevRaceButton = nullptr;
+        mRaceLabel = nullptr;
+        mRaceNameLabel = nullptr;
+    }
 
     // Default to a Male character
     mMale->setSelected(true);

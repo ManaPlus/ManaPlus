@@ -713,15 +713,16 @@ void WhoIsOnline::updateSize()
 const std::string WhoIsOnline::prepareNick(std::string nick, int level,
                                            std::string color) const
 {
-    const char *const text = encodeLinkText(nick).c_str();
+    const std::string text = encodeLinkText(nick);
     if (mShowLevel && level > 1)
     {
-        return strprintf("@@%s|##%s%s (%d)@@", text,
-            color.c_str(), text, level);
+        return strprintf("@@%s|##%s%s (%d)@@", text.c_str(),
+            color.c_str(), text.c_str(), level);
     }
     else
     {
-        return strprintf("@@%s|##%s%s@@", text, color.c_str(), text);
+        return strprintf("@@%s|##%s%s@@", text.c_str(),
+            color.c_str(), text.c_str());
     }
 }
 
@@ -846,7 +847,7 @@ void OnlinePlayer::setText(std::string color)
     if (mVersion > 0)
         mText.append(strprintf(" - %d", mVersion));
 
-    const char *const text = encodeLinkText(mNick).c_str();
-    mText = strprintf("@@%s|##%s%s %s@@", text, color.c_str(),
-        text, mText.c_str());
+    const std::string text = encodeLinkText(mNick);
+    mText = strprintf("@@%s|##%s%s %s@@", text.c_str(), color.c_str(),
+        text.c_str(), mText.c_str());
 }

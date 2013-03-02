@@ -412,7 +412,7 @@ void ScrollArea::drawButton(gcn::Graphics *const graphics,
         default:
             logger->log("ScrollArea::drawButton unknown dir: "
                         + toString(static_cast<unsigned>(dir)));
-            break;
+            return;
     }
 
     if (buttons[dir][state])
@@ -450,7 +450,7 @@ void ScrollArea::calcButton(gcn::Graphics *const graphics,
         default:
             logger->log("ScrollArea::drawButton unknown dir: "
                         + toString(static_cast<unsigned>(dir)));
-            break;
+            return;
     }
 
     if (buttons[dir][state])

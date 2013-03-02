@@ -152,8 +152,7 @@ DropDown::DropDown(const Widget2 *const widget,
     if (listener)
         addActionListener(listener);
 
-    if (mPopup)
-        mPopup->adjustSize();
+    mPopup->adjustSize();
 
     if (mSkin)
     {
@@ -446,9 +445,6 @@ void DropDown::adjustHeight()
 
 void DropDown::dropDown()
 {
-    if (!mPopup)
-        return;
-
     if (!mDroppedDown)
     {
         mDroppedDown = true;

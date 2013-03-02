@@ -49,6 +49,7 @@ ItemPopup::ItemPopup() :
     mItemDesc(new TextBox(this)),
     mItemEffect(new TextBox(this)),
     mItemWeight(new TextBox(this)),
+    mItemType(ITEM_UNUSABLE),
     mIcon(new Icon(this, nullptr)),
     mLastName(""),
     mLastColor(1)

@@ -293,7 +293,8 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
         }
     }
 
-    setWidth(parent->getWidth() - 10);
+    if (parent)
+        setWidth(parent->getWidth() - 10);
     BLOCK_END("AvatarListBox::draw")
 }
 

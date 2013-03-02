@@ -86,6 +86,11 @@ Window::Window(const std::string &caption, const bool modal,
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
 
+#ifndef USE_INTERNALGUICHAN
+    mDragOffsetX = 0;
+    mDragOffsetY = 0;
+#endif
+
     if (!windowContainer)
         throw GCN_EXCEPTION("Window::Window(): no windowContainer set");
 

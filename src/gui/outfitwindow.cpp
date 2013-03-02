@@ -544,7 +544,10 @@ void OutfitWindow::previous()
 void OutfitWindow::showCurrentOutfit()
 {
     mCurrentLabel->setCaption(strprintf(_("Outfit: %d"), mCurrentOutfit + 1));
-    mUnequipCheck->setSelected(mItemsUnequip[mCurrentOutfit]);
+    if (mCurrentOutfit < static_cast<int>(OUTFITS_COUNT))
+        mUnequipCheck->setSelected(mItemsUnequip[mCurrentOutfit]);
+    else
+        mUnequipCheck->setSelected(false);
     mKeyLabel->setCaption(strprintf(_("Key: %s"),
         keyName(mCurrentOutfit).c_str()));
     mAwayOutfitCheck->setSelected(mAwayOutfit == mCurrentOutfit);
