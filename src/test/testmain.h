@@ -36,6 +36,8 @@ class TestMain
 
         A_DELETE_COPY(TestMain)
 
+        ~TestMain();
+
         int exec(const bool testAudio = true);
 
         static int readValue(const int ver, int def);

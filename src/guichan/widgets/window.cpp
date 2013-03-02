@@ -65,6 +65,8 @@ namespace gcn
         mTitleBarHeight(16),
         mMovable(true),
         mOpaque(true),
+        mDragOffsetX(0),
+        mDragOffsetY(0),
         mMoved(false)
     {
         mFrameSize = 1;
@@ -80,6 +82,8 @@ namespace gcn
         mTitleBarHeight(16),
         mMovable(true),
         mOpaque(true),
+        mDragOffsetX(0),
+        mDragOffsetY(0),
         mMoved(false)
     {
         mFrameSize = 1;

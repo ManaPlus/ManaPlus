@@ -45,6 +45,12 @@ TestMain::TestMain() :
         + std::string("/manaplustest.log"));
 }
 
+TestMain::~TestMain()
+{
+    delete log;
+    log = nullptr;
+}
+
 void TestMain::initConfig()
 {
     mConfig.init(Client::getConfigDirectory() + "/test.xml");

@@ -1156,9 +1156,11 @@ void Being::setAction(const Action &action, const int attackId)
         case DEAD:
             currentAction = SpriteAction::DEAD;
             if (mInfo)
+            {
                 sound.playSfx(mInfo->getSound(SOUND_EVENT_DIE), mX, mY);
-            if (mType == MONSTER || mType == NPC)
-                mYDiff = mInfo->getDeadSortOffsetY();
+                if (mType == MONSTER || mType == NPC)
+                    mYDiff = mInfo->getDeadSortOffsetY();
+            }
             break;
         case STAND:
             currentAction = SpriteAction::STAND;
@@ -2181,9 +2183,6 @@ void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,
                       const int height) const
 {
     if (maxHP <= 0 || !userPalette)
-        return;
-
-    if (!hp && maxHP < hp)
         return;
 
     float p;
