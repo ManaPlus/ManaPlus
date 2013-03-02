@@ -1,3 +1,20 @@
+2013-03-03 New release 1.3.3.3
+fix: guild tab update in guild bot integration.
+fix: http links in windows.
+fix: incorrect chars in links.
+fix: name signs update.
+fix: password change issue with empty players list.
+fix: skills and stats conflict.
+fix: command line parameters.
+fix: map arrows images draw.
+add: enable some aditinal feature on tmw like servers.
+add: help seach links: /url ?word
+add: option to show hide guil online messages.
+add: gm tab for gms and @wgm command output.
+add: away particle effect.
+add: pseudo skills based on quest variables (evol only)
+add: particle effect to skill levelup.
+
 2013-02-17 New release 1.3.2.17
 fix: inventory sorting
 fix: initial setup window resize issue.
