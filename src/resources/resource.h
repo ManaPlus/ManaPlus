@@ -43,8 +43,8 @@ class Resource
          */
         Resource() :
             mTimeStamp(0),
-            mRefCount(0),
 #ifdef DEBUG_DUMP_LEAKS
+            mRefCount(0),
             mDumped(false)
 #else
             mRefCount(0)
