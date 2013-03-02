@@ -286,7 +286,11 @@ int Download::downloadThread(void *ptr)
 
                 if (!d->mOptions.memoryWrite)
                 {
-                    fclose(file);
+                    if (file)
+                    {
+                        fclose(file);
+                        file = nullptr;
+                    }
                     ::remove(outFilename.c_str());
                 }
                 attempts++;
@@ -305,7 +309,11 @@ int Download::downloadThread(void *ptr)
 
                     if (d->mAdler != adler)
                     {
-                        fclose(file);
+                        if (file)
+                        {
+                            fclose(file);
+                            file = nullptr;
+                        }
 
                         // Remove the corrupted file
                         ::remove(d->mFileName.c_str());
@@ -316,7 +324,11 @@ int Download::downloadThread(void *ptr)
                         continue; // Bail out here to avoid the renaming
                     }
                 }
-                fclose(file);
+                if (file)
+                {
+                    fclose(file);
+                    file = nullptr;
+                }
 
                 // Any existing file with this name is deleted first, otherwise
                 // the rename will fail on Windows.
@@ -331,6 +343,7 @@ int Download::downloadThread(void *ptr)
                     if (file)
                     {
                         fclose(file);
+                        file = nullptr;
                         complete = true;
                     }
                 }

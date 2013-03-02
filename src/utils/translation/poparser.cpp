@@ -46,8 +46,15 @@ void PoParser::openFile(std::string name)
     int size;
     char *buf = static_cast<char*>(resman->loadFile(getFileName(name), size));
 
-    mFile.str(std::string(buf, size));
-    free(buf);
+    if (buf)
+    {
+        mFile.str(std::string(buf, size));
+        free(buf);
+    }
+    else
+    {
+        mFile.clear();
+    }
 }
 
 PoDict *PoParser::load(const std::string &lang, const std::string &fileName,
