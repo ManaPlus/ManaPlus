@@ -431,8 +431,7 @@ bool GuildManager::process(std::string msg)
             const size_t pos = msg.find(": ", 0);
             if (pos != std::string::npos)
             {
-                const std::string sender_name = ((pos == std::string::npos)
-                    ? "" : msg.substr(0, pos));
+                const std::string sender_name = msg.substr(0, pos);
                 if (!guild->getMember(sender_name))
                 {
                     mTab->chatLog(msg);

@@ -68,6 +68,8 @@ Download::Download(void *ptr, const std::string &url,
     mError[0] = 0;
 
     mOptions.cancel = 0;
+    mOptions.memoryWrite = 0;
+    mOptions.checkAdler = true;
 }
 
 Download::~Download()
@@ -88,9 +90,16 @@ Download::~Download()
  */
 unsigned long Download::fadler32(FILE *file)
 {
+    if (!file)
+        return 0;
+
     // Obtain file size
     fseek(file, 0, SEEK_END);
     long fileSize = ftell(file);
+    if (fileSize < 0)
+    {   // file size error
+        return 0;
+    }
     rewind(file);
 
     // Calculate Adler-32 checksum
