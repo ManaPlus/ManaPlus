@@ -20,9 +20,11 @@
 
 #include "gui/questswindow.h"
 
+#include "actorspritemanager.h"
 #include "configuration.h"
 #include "effectmanager.h"
 #include "localplayer.h"
+#include "map.h"
 #include "soundmanager.h"
 
 #include "gui/gui.h"
@@ -37,6 +39,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
 
+#include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include "utils/translation/podict.h"
@@ -96,6 +99,22 @@ class QuestsModel final : public ExtendedNamesModel
         { }
 };
 
+struct QuestEffect final
+{
+    QuestEffect() :
+        var(0),
+        id(0),
+        effectId(0)
+    {
+    }
+
+    std::string map;
+    int var;
+    int id;
+    int effectId;
+    std::set<int> values;
+};
+
 QuestsWindow::QuestsWindow() :
     Window(_("Quests"), false, nullptr, "quests.xml"),
     gcn::ActionListener(),
@@ -112,7 +131,8 @@ QuestsWindow::QuestsWindow() :
     mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
     mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", "")),
     mNewQuestEffectId(paths.getIntValue("newQuestEffectId")),
-    mCompleteQuestEffectId(paths.getIntValue("completeQuestEffectId"))
+    mCompleteQuestEffectId(paths.getIntValue("completeQuestEffectId")),
+    mMap(nullptr)
 {
     setWindowName("Quests");
     setResizable(true);
@@ -167,6 +187,9 @@ QuestsWindow::~QuestsWindow()
             delete *it2;
         }
     }
+    delete_all(mAllEffects);
+    mAllEffects.clear();
+
     delete mItemLinkHandler;
     mItemLinkHandler = nullptr;
     mQuests.clear();
@@ -201,6 +224,8 @@ void QuestsWindow::loadXml()
             {
                 if (xmlNameEqual(questNode, "quest"))
                     loadQuest(id, questNode);
+                else if (xmlNameEqual(questNode, "effect"))
+                    loadEffect(id, questNode);
             }
         }
     }
@@ -248,6 +273,26 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
             quest->texts.push_back(QuestItemText(str, QUEST_REWARD));
     }
     mQuests[var].push_back(quest);
+}
+
+void QuestsWindow::loadEffect(const int var, const XmlNodePtr node)
+{
+    QuestEffect *const effect = new QuestEffect;
+
+    effect->map = XML::getProperty(node, "map", "");
+    effect->id = XML::getProperty(node, "npc", -1);
+    effect->effectId = XML::getProperty(node, "effect", -1);
+    const std::string values = XML::getProperty(node, "value", "");
+    effect->values = splitToIntSet(values, ',');
+
+    if (effect->map.empty() || effect->id == -1
+        || effect->effectId == -1 || values.empty())
+    {
+        delete effect;
+        return;
+    }
+    effect->var = var;
+    mAllEffects.push_back(effect);
 }
 
 void QuestsWindow::action(const gcn::ActionEvent &event)
@@ -389,6 +434,7 @@ void QuestsWindow::rebuild(const bool playSound)
             }
         }
     }
+    updateEffects();
 }
 
 void QuestsWindow::showQuest(const QuestItem *const quest)
@@ -413,5 +459,105 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
                     data.text)).append("]"));
                 break;
         }
+    }
+}
+
+void QuestsWindow::setMap(const Map *const map)
+{
+    if (mMap != map)
+    {
+        mMap = map;
+        mMapEffects.clear();
+        if (!mMap)
+            return;
+
+        const std::string name = mMap->getProperty("shortName");
+        logger->log("current map: " + name);
+        FOR_EACH (std::vector<QuestEffect*>::const_iterator, it,  mAllEffects)
+        {
+            const QuestEffect *const effect = *it;
+            if (effect && name == effect->map)
+                mMapEffects.push_back(effect);
+        }
+        updateEffects();
+    }
+}
+
+void QuestsWindow::updateEffects()
+{
+    NpcQuestEffectMap oldNpc = mNpcEffects;
+    mNpcEffects.clear();
+
+    FOR_EACH (std::vector<const QuestEffect*>::const_iterator,
+              it,  mMapEffects)
+    {
+        const QuestEffect *const effect = *it;
+        if (effect)
+        {
+            const std::map<int, int>::const_iterator
+                varIt = mVars.find(effect->var);
+            if (varIt != mVars.end())
+            {
+                const std::set<int> &vals = effect->values;
+                if (vals.find(mVars[effect->var]) != vals.end())
+                    mNpcEffects[effect->id] = effect;
+            }
+        }
+    }
+    if (!actorSpriteManager)
+        return;
+
+    std::set<int> removeEffects;
+    std::map<int, int> addEffects;
+
+    // for old effects
+    FOR_EACH (NpcQuestEffectMapCIter, it, oldNpc)
+    {
+        const int id = (*it).first;
+        const QuestEffect *const effect = (*it).second;
+
+        const NpcQuestEffectMapCIter itNew = mNpcEffects.find(id);
+        if (itNew == mNpcEffects.end())
+        {   // in new list no effect for this npc
+            removeEffects.insert(id);
+        }
+        else
+        {   // in new list exists effect for this npc
+            const QuestEffect *const newEffect = (*itNew).second;
+            if (effect != newEffect)
+            { // new effects is not equal to old effect
+                addEffects[id] = newEffect->effectId;
+                removeEffects.insert(id);
+            }
+        }
+    }
+
+    // for new effects
+    FOR_EACH (NpcQuestEffectMapCIter, it, mNpcEffects)
+    {
+        const int id = (*it).first;
+        const QuestEffect *const effect = (*it).second;
+
+        const NpcQuestEffectMapCIter itNew = oldNpc.find(id);
+        // check if old effect was not present
+        if (itNew == oldNpc.end())
+            addEffects[id] = effect->effectId;
+    }
+    if (!removeEffects.empty() || !addEffects.empty())
+        actorSpriteManager->updateEffects(addEffects, removeEffects);
+}
+
+void QuestsWindow::addEffect(Being *const being)
+{
+    if (!being)
+        return;
+    const int id = being->getSubType();
+    const std::map<int, const QuestEffect*>::const_iterator
+        it = mNpcEffects.find(id);
+    if (it != mNpcEffects.end())
+    {
+        const QuestEffect *const effect = (*it).second;
+        if (effect)
+            being->addSpecialEffect(effect->effectId);
     }
 }

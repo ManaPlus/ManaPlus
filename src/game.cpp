@@ -1062,6 +1062,9 @@ void Game::changeMap(const std::string &mapPath)
     delete mCurrentMap;
     mCurrentMap = newMap;
 
+    if (questsWindow)
+        questsWindow->setMap(mCurrentMap);
+
 #ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setMap(mapPath);

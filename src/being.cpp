@@ -247,9 +247,8 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mInactive(false),
     mNumber(100),
     mHairColor(0),
-    mAfkParticle(nullptr)
+    mSpecialParticle(nullptr)
 {
-
     for (int f = 0; f < 20; f ++)
     {
         mSpriteRemap[f] = f;
@@ -2763,16 +2762,26 @@ int Being::getSpriteID(const int slot) const
 
 void Being::addAfkEffect()
 {
-    if (effectManager && !mAfkParticle && mAwayEffect != -1)
-        mAfkParticle = effectManager->triggerReturn(mAwayEffect, this);
+    addSpecialEffect(mAwayEffect);
 }
 
 void Being::removeAfkEffect()
 {
-    if (effectManager && mAfkParticle)
+    removeSpecialEffect();
+}
+
+void Being::addSpecialEffect(const int effect)
+{
+    if (effectManager && !mSpecialParticle && effect != -1)
+        mSpecialParticle = effectManager->triggerReturn(effect, this);
+}
+
+void Being::removeSpecialEffect()
+{
+    if (effectManager && mSpecialParticle)
     {
-        mChildParticleEffects.removeLocally(mAfkParticle);
-        mAfkParticle = nullptr;
+        mChildParticleEffects.removeLocally(mSpecialParticle);
+        mSpecialParticle = nullptr;
     }
 }
 

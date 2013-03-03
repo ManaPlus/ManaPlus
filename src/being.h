@@ -862,6 +862,10 @@ class Being : public ActorSprite, public ConfigListener
 
         void updateAwayEffect();
 
+        void addSpecialEffect(const int effect);
+
+        void removeSpecialEffect();
+
         static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
 
         static Gender intToGender(uint8_t sex) A_WARN_UNUSED;
@@ -1018,7 +1022,7 @@ class Being : public ActorSprite, public ConfigListener
         bool mInactive;
         unsigned mNumber;
         unsigned char mHairColor;
-        Particle *mAfkParticle;
+        Particle *mSpecialParticle;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

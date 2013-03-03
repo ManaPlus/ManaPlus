@@ -299,6 +299,9 @@ class ActorSpriteManager final: public ConfigListener
 
         bool checkForPickup(const FloorItem *const item) const A_WARN_UNUSED;
 
+        void updateEffects(const std::map<int, int> &addEffects,
+                           const std::set<int> removeEffects);
+
     protected:
         bool validateBeing(const Being *const aroundBeing,
                            Being *const being,

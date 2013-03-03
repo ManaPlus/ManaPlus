@@ -32,14 +32,20 @@
 #include <map>
 #include <vector>
 
+class Being;
 class Button;
 class BrowserBox;
 class ExtendedListBox;
 class ItemLinkHandler;
+class Map;
 class ScrollArea;
+class QuestEffect;
 class QuestsModel;
 
 struct QuestItem;
+
+typedef std::map<int, const QuestEffect*> NpcQuestEffectMap;
+typedef NpcQuestEffectMap::const_iterator NpcQuestEffectMapCIter;
 
 class QuestsWindow final : public Window, public gcn::ActionListener
 {
@@ -66,10 +72,18 @@ class QuestsWindow final : public Window, public gcn::ActionListener
 
         void showQuest(const QuestItem *const quest);
 
+        void setMap(const Map *const map);
+
+        void updateEffects();
+
+        void addEffect(Being *const being);
+
     private:
         void loadXml();
 
         void loadQuest(const int var, const XmlNodePtr node);
+
+        void loadEffect(const int var, const XmlNodePtr node);
 
         QuestsModel *mQuestsModel;
         ExtendedListBox *mQuestsListBox;
@@ -78,13 +92,20 @@ class QuestsWindow final : public Window, public gcn::ActionListener
         BrowserBox *mText;
         ScrollArea *mTextScrollArea;
         Button *mCloseButton;
+        //quest variables: var, value
         std::map<int, int> mVars;
+        //quests: var, quests
         std::map<int, std::vector<QuestItem*> > mQuests;
+        std::vector<QuestEffect*> mAllEffects;
+        std::vector<const QuestEffect*> mMapEffects;
+        //npc effects for current map and values: npc, effect
+        NpcQuestEffectMap mNpcEffects;
         std::vector<QuestItem*> mQuestLinks;
         Image *mCompleteIcon;
         Image *mIncompleteIcon;
         int mNewQuestEffectId;
         int mCompleteQuestEffectId;
+        const Map *mMap;
 };
 
 extern QuestsWindow *questsWindow;

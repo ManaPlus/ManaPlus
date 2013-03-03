@@ -1651,3 +1651,20 @@ bool ActorSpriteManager::checkForPickup(const FloorItem *const item) const
     }
     return false;
 }
+
+void ActorSpriteManager::updateEffects(const std::map<int, int> &addEffects,
+                                       const std::set<int> removeEffects)
+{
+    for_actors
+    {
+        if (!*it || (*it)->getType() != ActorSprite::NPC)
+            continue;
+        Being *const being = static_cast<Being*>(*it);
+        const int type = being->getSubType();
+        if (removeEffects.find(type) != removeEffects.end())
+            being->removeSpecialEffect();
+        const std::map<int, int>::const_iterator idAdd = addEffects.find(type);
+        if (idAdd != addEffects.end())
+            being->addSpecialEffect((*idAdd).second);
+    }
+}

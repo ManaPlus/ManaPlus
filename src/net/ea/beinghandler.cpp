@@ -41,6 +41,7 @@
 #include "gui/outfitwindow.h"
 #include "gui/socialwindow.h"
 #include "gui/killstats.h"
+#include "gui/questswindow.h"
 
 #include "utils/gettext.h"
 
@@ -94,6 +95,11 @@ Being *BeingHandler::createBeing(int id, short job)
             botCheckerWindow->updateList();
         if (socialWindow)
             socialWindow->updateActiveList();
+    }
+    if (type == Being::NPC)
+    {
+        if (questsWindow)
+            questsWindow->addEffect(being);
     }
     return being;
 }
