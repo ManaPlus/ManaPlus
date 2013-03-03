@@ -153,6 +153,10 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
         }
         theme->unload(skin);
     }
+    else
+    {
+        delete images;
+    }
     mRedraw = true;
 }
 
