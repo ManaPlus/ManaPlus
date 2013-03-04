@@ -94,6 +94,7 @@ class TargetDebugTab final : public DebugTab
     private:
         Label *mTargetLabel;
         Label *mTargetIdLabel;
+        Label *mTargetTypeLabel;
         Label *mTargetLevelLabel;
         Label *mTargetRaceLabel;
         Label *mTargetPartyLabel;

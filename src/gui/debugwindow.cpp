@@ -292,6 +292,8 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
     DebugTab(widget),
     mTargetLabel(new Label(this, strprintf("%s ?", _("Target:")))),
     mTargetIdLabel(new Label(this, strprintf("%s ?     ", _("Target Id:")))),
+    mTargetTypeLabel(new Label(this, strprintf(
+        "%s ?     ", _("Target type:")))),
     mTargetLevelLabel(new Label(this, strprintf("%s ?", _("Target level:")))),
     mTargetRaceLabel(new Label(this, strprintf("%s ?", _("Target race:")))),
     mTargetPartyLabel(new Label(this, strprintf("%s ?", _("Target party:")))),
@@ -306,14 +308,15 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
 
     place(0, 0, mTargetLabel, 2);
     place(0, 1, mTargetIdLabel, 2);
-    place(0, 2, mTargetLevelLabel, 2);
-    place(0, 3, mTargetRaceLabel, 2);
-    place(0, 4, mAttackDelayLabel, 2);
-    place(0, 5, mTargetPartyLabel, 2);
-    place(0, 6, mTargetGuildLabel, 2);
-    place(0, 7, mMinHitLabel, 2);
-    place(0, 8, mMaxHitLabel, 2);
-    place(0, 9, mCriticalHitLabel, 2);
+    place(0, 2, mTargetTypeLabel, 2);
+    place(0, 3, mTargetLevelLabel, 2);
+    place(0, 4, mTargetRaceLabel, 2);
+    place(0, 5, mAttackDelayLabel, 2);
+    place(0, 6, mTargetPartyLabel, 2);
+    place(0, 7, mTargetGuildLabel, 2);
+    place(0, 8, mMinHitLabel, 2);
+    place(0, 9, mMaxHitLabel, 2);
+    place(0, 10, mCriticalHitLabel, 2);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -332,6 +335,8 @@ void TargetDebugTab::logic()
 
         mTargetIdLabel->setCaption(strprintf("%s %d",
             _("Target Id:"), target->getId()));
+        mTargetTypeLabel->setCaption(strprintf("%s %d",
+            _("Target type:"), target->getSubType()));
         if (target->getLevel())
         {
             mTargetLevelLabel->setCaption(strprintf("%s %d",
@@ -375,6 +380,7 @@ void TargetDebugTab::logic()
     {
         mTargetLabel->setCaption(strprintf("%s ?", _("Target:")));
         mTargetIdLabel->setCaption(strprintf("%s ?", _("Target Id:")));
+        mTargetTypeLabel->setCaption(strprintf("%s ?", _("Target type:")));
         mTargetLevelLabel->setCaption(strprintf("%s ?", _("Target Level:")));
         mTargetPartyLabel->setCaption(strprintf("%s ?", _("Target Party:")));
         mTargetGuildLabel->setCaption(strprintf("%s ?", _("Target Guild:")));
@@ -386,6 +392,7 @@ void TargetDebugTab::logic()
 
     mTargetLabel->adjustSize();
     mTargetIdLabel->adjustSize();
+    mTargetTypeLabel->adjustSize();
     mTargetLevelLabel->adjustSize();
     mTargetPartyLabel->adjustSize();
     mTargetGuildLabel->adjustSize();
