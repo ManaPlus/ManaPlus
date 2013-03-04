@@ -290,6 +290,7 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/closeall");
     mCommands.push_back("/clear");
     mCommands.push_back("/cleangraphics");
+    mCommands.push_back("/cleanfonts");
     mCommands.push_back("/create ");
     mCommands.push_back("/close");
     mCommands.push_back("/cacheinfo");

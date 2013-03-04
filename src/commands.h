@@ -56,6 +56,7 @@ namespace Commands
     decHandler(listChannels);
     decHandler(clear);
     decHandler(cleanGraphics);
+    decHandler(cleanFonts);
     decHandler(createParty);
     decHandler(createGuild);
     decHandler(party);
@@ -142,6 +143,7 @@ static const CommandInfo commands[] =
     {"list", &Commands::listChannels},
     {"clear", &Commands::clear},
     {"cleangraphics", &Commands::cleanGraphics},
+    {"cleanfonts", &Commands::cleanFonts},
     {"createparty", &Commands::createParty},
     {"createguild", &Commands::createGuild},
     {"party", &Commands::party},

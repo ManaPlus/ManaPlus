@@ -310,6 +310,22 @@ void Gui::slowLogic()
     BLOCK_END("Gui::slowLogic")
 }
 
+void Gui::clearFonts()
+{
+    if (mGuiFont)
+        mGuiFont->clear();
+    if (mInfoParticleFont)
+        mInfoParticleFont->clear();
+    if (mHelpFont)
+        mHelpFont->clear();
+    if (mSecureFont)
+        mSecureFont->clear();
+    if (boldFont)
+        boldFont->clear();
+    if (mNpcFont)
+        mNpcFont->clear();
+}
+
 bool Gui::handleInput()
 {
     BLOCK_START("Gui::handleInput")

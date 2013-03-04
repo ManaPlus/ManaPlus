@@ -75,6 +75,8 @@ class Gui final : public gcn::Gui
 
         void slowLogic();
 
+        void clearFonts();
+
         /**
          * Draws the whole Gui by calling draw functions down in the
          * Gui hierarchy. It also draws the mouse pointer.

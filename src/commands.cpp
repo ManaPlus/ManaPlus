@@ -351,7 +351,15 @@ impHandler0(cleanGraphics)
     while(resman->cleanOrphans(true));
 
     if (debugChatTab)
-        debugChatTab->chatLog("cache cleaned");
+        debugChatTab->chatLog(_("Cache cleaned"));
+}
+
+impHandler0(cleanFonts)
+{
+    if (gui)
+        gui->clearFonts();
+    if (debugChatTab)
+        debugChatTab->chatLog(_("Cache cleaned"));
 }
 
 impHandler(join)
