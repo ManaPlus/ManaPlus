@@ -383,6 +383,8 @@ Game::Game():
     assert(!mInstance);
     mInstance = this;
 
+    config.incValue("gamecount");
+
     disconnectedDialog = nullptr;
 
     // Create the viewport

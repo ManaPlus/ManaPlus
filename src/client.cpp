@@ -329,6 +329,8 @@ void Client::gameInit()
     logger->log("init 4");
     logger->setDebugLog(config.getBoolValue("debugLog"));
 
+    config.incValue("runcount");
+
     storeSafeParameters();
 
 #ifdef ENABLE_NLS
