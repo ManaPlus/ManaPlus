@@ -307,6 +307,8 @@ DefaultsData* getConfigDefaults()
     AddDEF("autoresizeminimaps", false);
     AddDEF("showGuildOnline", false);
     AddDEF("enableGmTab", true);
+    AddDEF("gamecount", 0);
+    AddDEF("rated", false);
     return configData;
 }
 

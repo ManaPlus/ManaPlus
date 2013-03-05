@@ -23,6 +23,7 @@
 #include "gui/quitdialog.h"
 
 #include "client.h"
+#include "configuration.h"
 #include "game.h"
 #include "keydata.h"
 #include "keyevent.h"
@@ -44,6 +45,7 @@
 #include "net/net.h"
 
 #include "utils/gettext.h"
+#include "utils/process.h"
 
 #include "debug.h"
 
@@ -57,6 +59,7 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
         _("Switch server"), "quitdialog")),
     mSwitchCharacter(new RadioButton(this,
         _("Switch character"), "quitdialog")),
+    mRate(nullptr),
     mOkButton(new Button(this, _("OK"), "ok", this)),
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mMyPointer(pointerToMe)
@@ -67,14 +70,13 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
 
     const State state = Client::getState();
 
+    mNeedForceQuit = state == STATE_CHOOSE_SERVER
+        || state == STATE_CONNECT_SERVER || state == STATE_LOGIN
+        || state == STATE_PRE_LOGIN || state == STATE_LOGIN_ATTEMPT
+        || state == STATE_UPDATE || state == STATE_LOAD_DATA;
+
     // All states, when we're not logged in to someone.
-    if (state == STATE_CHOOSE_SERVER ||
-        state == STATE_CONNECT_SERVER ||
-        state == STATE_LOGIN ||
-        state == STATE_PRE_LOGIN ||
-        state == STATE_LOGIN_ATTEMPT ||
-        state == STATE_UPDATE ||
-        state == STATE_LOAD_DATA)
+    if (mNeedForceQuit)
     {
         placeOption(placer, mForceQuit);
     }
@@ -89,10 +91,21 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
             placeOption(placer, mSwitchCharacter);
     }
 
-    mOptions[0]->setSelected(true);
+#ifdef ANDROID
+    if (config.getBoolValue("rated") == false
+        && config.getIntValue("gamecount") > 3)
+    {
+        mRate = new RadioButton(this, _("Rate in google play"), "quitdialog");
+        placeOption(placer, mRate);
+        mOptions[mOptions.size() - 1]->setSelected(true);
+    }
+    else
+#endif
+    {
+        mOptions[0]->setSelected(true);
+    }
 
     placer = getPlacer(0, 1);
-
     placer(1, 0, mOkButton, 1);
     placer(2, 0, mCancelButton, 1);
 
@@ -129,6 +142,7 @@ void QuitDialog::placeOption(ContainerPlacer &placer,
 
 void QuitDialog::action(const gcn::ActionEvent &event)
 {
+    sound.playGuiSound(SOUND_HIDE_WINDOW);
     if (event.getId() == "ok")
     {
         if (viewport)
@@ -147,6 +161,21 @@ void QuitDialog::action(const gcn::ActionEvent &event)
             Game::closeDialogs();
             Client::setState(STATE_EXIT);
         }
+        else if (mRate && mRate->isSelected())
+        {
+            openBrowser("https://play.google.com/store/apps/details?"
+                "id=org.evolonline.beta.manaplus");
+            config.setValue("rated", true);
+            if (mNeedForceQuit)
+            {
+                Client::setState(STATE_FORCE_QUIT);
+            }
+            else
+            {
+                Game::closeDialogs();
+                Client::setState(STATE_EXIT);
+            }
+        }
         else if (Net::getGameHandler()->isConnected()
                  && mSwitchAccountServer->isSelected())
         {
@@ -161,10 +190,6 @@ void QuitDialog::action(const gcn::ActionEvent &event)
                 Game::closeDialogs();
             }
         }
-    }
-    else
-    {
-        sound.playGuiSound(SOUND_HIDE_WINDOW);
     }
     scheduleDelete();
 }

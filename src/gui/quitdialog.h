@@ -72,10 +72,12 @@ class QuitDialog final : public Window, public gcn::ActionListener,
         RadioButton *mForceQuit;
         RadioButton *mSwitchAccountServer;
         RadioButton *mSwitchCharacter;
+        RadioButton *mRate;
         Button *mOkButton;
         Button *mCancelButton;
 
         QuitDialog **mMyPointer;
+        bool mNeedForceQuit;
 };
 
 #endif
