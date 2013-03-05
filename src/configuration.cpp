@@ -226,6 +226,14 @@ void Configuration::setValue(const std::string &key, const std::string &value)
     }
 }
 
+void Configuration::incValue(const std::string &key)
+{
+    GETLOG();
+    const Options::const_iterator iter = mOptions.find(key);
+    setValue(key, (iter != mOptions.end())
+        ? atoi(iter->second.c_str()) + 1 : 1);
+}
+
 void Configuration::setSilent(const std::string &key, const std::string &value)
 {
     ConfigurationObject::setValue(key, value);

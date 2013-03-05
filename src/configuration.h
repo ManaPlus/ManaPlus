@@ -279,6 +279,8 @@ class Configuration final : public ConfigurationObject
 
         void setValue(const std::string &key, const std::string &value);
 
+        void incValue(const std::string &key);
+
         void setSilent(const std::string &key, const std::string &value);
 
         inline void setValue(const std::string &key, const char *const value)
