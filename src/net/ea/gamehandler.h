@@ -62,6 +62,8 @@ class GameHandler : public Net::GameHandler, public Listener
 
         virtual void processMapQuitResponse(Net::MessageIn &msg);
 
+        virtual void clear();
+
     protected:
         std::string mMap;
         int mCharID; /// < Saved for map-server switching

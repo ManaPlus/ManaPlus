@@ -1619,6 +1619,7 @@ int Client::gameExec()
 
                     Net::getLoginHandler()->disconnect();
                     Net::getGameHandler()->disconnect();
+                    Net::getGameHandler()->clear();
 
                     mState = STATE_CHOOSE_SERVER;
                     BLOCK_END("Client::gameExec STATE_SWITCH_SERVER")

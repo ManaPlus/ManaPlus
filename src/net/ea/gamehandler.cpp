@@ -48,7 +48,7 @@ void GameHandler::processEvent(Channels channel,
     {
         if (event.getName() == EVENT_ENGINESINITALIZED)
         {
-            if (mMap != "")
+            if (!mMap.empty())
                 Game::instance()->changeMap(mMap);
         }
         else if (event.getName() == EVENT_MAPLOADED)
@@ -97,6 +97,12 @@ void GameHandler::processMapQuitResponse(Net::MessageIn &msg)
 {
     if (msg.readInt8())
         new OkDialog(_("Game"), _("Request to quit denied!"), DIALOG_ERROR);
+}
+
+void GameHandler::clear()
+{
+    mMap.clear();
+    mCharID = 0;
 }
 
 } // namespace Ea

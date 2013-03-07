@@ -58,6 +58,8 @@ class GameHandler
         virtual bool canUseMagicBar() const A_WARN_UNUSED = 0;
 
         virtual bool mustPing() const A_WARN_UNUSED = 0;
+
+        virtual void clear() = 0;
 };
 
 } // namespace Net

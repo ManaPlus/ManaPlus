@@ -52,8 +52,6 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
 
         void ping(int tick);
 
-        void clear();
-
         void disconnect2();
 
         void mapLoadedEvent();
