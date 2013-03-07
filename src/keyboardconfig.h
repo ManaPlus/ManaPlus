@@ -109,6 +109,8 @@ class KeyboardConfig final
 
         uint8_t *mActiveKeys2;           /**< Stores a list of all the keys */
 
+        unsigned int mRepeatTime;
+
         KeyToActionMap mKeyToAction;
 
         KeyToIdMap mKeyToId;

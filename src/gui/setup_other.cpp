@@ -211,6 +211,8 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemIntTextField(_("Repeat interval"), "",
         "repeateInterval", this, "repeateIntervalEvent", 0, 10000);
 
+    new SetupItemIntTextField(_("Custom repeat interval"), "",
+        "repeateInterval2", this, "repeateInterval2Event", 0, 10000);
 
     new SetupItemLabel(_("Windows"), "", this);
 

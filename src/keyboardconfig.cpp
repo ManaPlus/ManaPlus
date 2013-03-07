@@ -37,7 +37,8 @@ extern volatile int tick_time;
 KeyboardConfig::KeyboardConfig() :
     mEnabled(true),
     mActiveKeys(nullptr),
-    mActiveKeys2(nullptr)
+    mActiveKeys2(nullptr),
+    mRepeatTime(0)
 {
 }
 
@@ -47,6 +48,7 @@ void KeyboardConfig::init()
     if (mActiveKeys2)
         delete mActiveKeys2;
     mActiveKeys2 = new uint8_t[500];
+    mRepeatTime = config.getIntValue("repeateInterval2") * 10;
 }
 
 void KeyboardConfig::deinit()
@@ -210,10 +212,13 @@ void KeyboardConfig::handleRepeat(const int time)
             if (mActiveKeys2 && mActiveKeys2[-key])
                 repeat = true;
         }
-        if (repeat && abs(keyTime - time) > 10)
+        if (repeat)
         {
-            keyTime = time;
-            inputManager.triggerAction(getActionVectorByKey(key));
+            if (time > keyTime && abs(time - keyTime) > mRepeatTime)
+            {
+                keyTime = time;
+                inputManager.triggerAction(getActionVectorByKey(key));
+            }
         }
     }
 }

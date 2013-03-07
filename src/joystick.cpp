@@ -345,10 +345,14 @@ void Joystick::handleRepeat(const int time)
             if (mActiveButtons[key])
                 repeat = true;
         }
-        if (repeat && abs(keyTime - time) > 10)
+        if (repeat)
         {
-            keyTime = time;
-            inputManager.triggerAction(getActionVectorByKey(key));
+            if (time > keyTime && abs(time - keyTime)
+                > SDL_DEFAULT_REPEAT_DELAY * 10)
+            {
+                keyTime = time;
+                inputManager.triggerAction(getActionVectorByKey(key));
+            }
         }
     }
 }
