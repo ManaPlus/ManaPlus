@@ -113,6 +113,7 @@ namespace Commands
     decHandler(dumpTests);
     decHandler(dumpOGL);
     decHandler(cacheInfo);
+    decHandler(execute);
 
     void replaceVars(std::string &str);
 }
@@ -190,6 +191,7 @@ static const CommandInfo commands[] =
     {"dumpogl", &Commands::dumpOGL},
     {"url", &Commands::url},
     {"open", &Commands::open},
+    {"execute", &Commands::execute},
     {"hack", &Commands::hack}
 };
 

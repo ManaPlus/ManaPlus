@@ -1056,6 +1056,23 @@ impHandler1(open)
     openBrowser(url);
 }
 
+impHandler1(execute)
+{
+    const size_t idx = args.find(" ");
+    std::string name;
+    std::string params;
+    if (idx == std::string::npos)
+    {
+        name = args;
+    }
+    else
+    {
+        name = args.substr(0, idx);
+        params = args.substr(idx + 1);
+    }
+    execFile(name, name, params, "");
+}
+
 #ifdef DEBUG_DUMP_LEAKS1
 void showRes(std::string str, ResourceManager::Resources *res);
 

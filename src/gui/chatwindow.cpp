@@ -295,6 +295,7 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/close");
     mCommands.push_back("/cacheinfo");
     mCommands.push_back("/erase ");
+    mCommands.push_back("/execute ");
     mCommands.push_back("/follow ");
     mCommands.push_back("/heal ");
     mCommands.push_back("/ignoreall");
