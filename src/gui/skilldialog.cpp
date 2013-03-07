@@ -391,6 +391,9 @@ void SkillDialog::update()
 void SkillDialog::clearSkills()
 {
     mTabs->removeAll();
+    mDeleteTabs.clear();
+    mDefaultModel = nullptr;
+
     delete_all(mSkills);
     mSkills.clear();
 }
