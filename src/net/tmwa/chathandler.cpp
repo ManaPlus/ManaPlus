@@ -24,7 +24,6 @@
 
 #include "actorspritemanager.h"
 #include "configuration.h"
-#include "depricatedevent.h"
 #include "game.h"
 #include "localplayer.h"
 #include "playerrelations.h"

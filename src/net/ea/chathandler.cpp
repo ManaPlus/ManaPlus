@@ -56,48 +56,40 @@ void ChatHandler::me(const std::string &text)
 
 void ChatHandler::channelList()
 {
-    SERVER_NOTICE(_("Channels are not supported!"))
 }
 
 void ChatHandler::enterChannel(const std::string &channel A_UNUSED,
                                const std::string &password A_UNUSED)
 {
-    SERVER_NOTICE(_("Channels are not supported!"))
 }
 
 void ChatHandler::quitChannel(int channelId A_UNUSED)
 {
-    SERVER_NOTICE(_("Channels are not supported!"))
 }
 
 void ChatHandler::sendToChannel(int channelId A_UNUSED,
                                 const std::string &text A_UNUSED)
 {
-    SERVER_NOTICE(_("Channels are not supported!"))
 }
 
 void ChatHandler::userList(const std::string &channel A_UNUSED)
 {
-    SERVER_NOTICE(_("Channels are not supported!"))
 }
 
 void ChatHandler::setChannelTopic(int channelId A_UNUSED,
                                   const std::string &text A_UNUSED)
 {
-    SERVER_NOTICE(_("Channels are not supported!"))
 }
 
 void ChatHandler::setUserMode(int channelId A_UNUSED,
                               const std::string &name A_UNUSED,
                               int mode A_UNUSED)
 {
-    SERVER_NOTICE(_("Channels are not supported!"))
 }
 
 void ChatHandler::kickUser(int channelId A_UNUSED,
                            const std::string &name A_UNUSED)
 {
-    SERVER_NOTICE(_("Channels are not supported!"))
 }
 
 void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
