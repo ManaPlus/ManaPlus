@@ -24,9 +24,9 @@
 
 #include "actorspritemanager.h"
 #include "configuration.h"
-#include "depricatedevent.h"
 #include "inventory.h"
 #include "localplayer.h"
+#include "notifymanager.h"
 #include "playerinfo.h"
 
 #include "gui/buydialog.h"
@@ -124,17 +124,17 @@ void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg)
     switch (msg.readInt8())
     {
         case 0:
-            SERVER_NOTICE(_("Thanks for selling."))
+            NotifyManager::notify(NotifyManager::SOLD);
             break;
         case 1:
         default:
-            SERVER_NOTICE(_("Unable to sell."))
+            NotifyManager::notify(NotifyManager::SELL_FAILED);
             break;
         case 2:
-            SERVER_NOTICE(_("Unable to sell while trading."))
+            NotifyManager::notify(NotifyManager::SELL_TRADE_FAILED);
             break;
         case 3:
-            SERVER_NOTICE(_("Unable to sell unsellable item."))
+            NotifyManager::notify(NotifyManager::SELL_UNSELLABLE_FAILED);
             break;
     }
 }

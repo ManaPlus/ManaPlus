@@ -25,9 +25,9 @@
 #include "actorspritemanager.h"
 #include "client.h"
 #include "configuration.h"
-#include "depricatedevent.h"
 #include "inventory.h"
 #include "localplayer.h"
+#include "notifymanager.h"
 #include "playerinfo.h"
 
 #include "gui/buydialog.h"
@@ -160,7 +160,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg, int offset)
     }
     else
     {
-        SERVER_NOTICE(_("Nothing to sell."))
+        NotifyManager::notify(NotifyManager::SELL_LIST_EMPTY);
     }
 }
 
@@ -168,7 +168,7 @@ void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg)
 {
     if (msg.readInt8() == 0)
     {
-        SERVER_NOTICE(_("Thanks for buying."))
+        NotifyManager::notify(NotifyManager::BUY_DONE);
     }
     else
     {
@@ -176,7 +176,7 @@ void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg)
         // would go fine
         if (mBuyDialog)
             mBuyDialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
-        SERVER_NOTICE(_("Unable to buy."))
+        NotifyManager::notify(NotifyManager::BUY_FAILED);
     }
 }
 
