@@ -27,6 +27,7 @@
 
 #include "localconsts.h"
 
+class ChatTab;
 class Guild;
 class GuildChatTab;
 
@@ -80,6 +81,8 @@ class GuildManager final
 
         bool havePower() const A_WARN_UNUSED
         { return mHavePower; }
+
+        ChatTab *getTab();
 
     private:
         bool process(std::string msg);

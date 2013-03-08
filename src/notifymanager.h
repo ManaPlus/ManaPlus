@@ -23,9 +23,12 @@
 
 #include "notifications.h"
 
+#include <string>
+
 namespace NotifyManager
 {
     void notify(const unsigned int message);
     void notify(const unsigned int message, const int num);
+    void notify(const unsigned int message, const std::string &str);
 }
 #endif

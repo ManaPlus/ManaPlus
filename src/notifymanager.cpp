@@ -20,21 +20,69 @@
 
 #include "notifymanager.h"
 
+#include "guildmanager.h"
+#include "localplayer.h"
+
 #include "gui/widgets/chattab.h"
+
+#include "net/guildhandler.h"
+#include "net/net.h"
+#include "net/partyhandler.h"
 
 #include "utils/gettext.h"
 
 namespace NotifyManager
 {
+    static ChatTab *getGuildTab()
+    {
+        const Guild *const guild = player_node->getGuild();
+        if (guild)
+        {
+            if (guild->getServerGuild())
+                return Net::getGuildHandler()->getTab();
+            else if (guildManager)
+                return guildManager->getTab();
+        }
+        return nullptr;
+    }
+
+    static void chatLog(ChatTab *const tab, const std::string &str)
+    {
+        if (tab)
+            tab->chatLog(str, BY_SERVER);
+        else if (debugChatTab)
+            debugChatTab->chatLog(str, BY_SERVER);
+    }
+
     void notify(const unsigned int message)
     {
         if (message >= TYPE_END || !localChatTab)
             return;
         const NotificationInfo &info = notifications[message];
-        if (info.flags == EMPTY)
+        switch (info.flags)
         {
-            localChatTab->chatLog(gettext(info.text),
-                BY_SERVER);
+            case EMPTY:
+                localChatTab->chatLog(gettext(info.text),
+                    BY_SERVER);
+                break;
+
+            case GUILD:
+            {
+                if (!player_node)
+                    return;
+                ChatTab *const tab = getGuildTab();
+                chatLog(tab, gettext(info.text));
+                break;
+            }
+
+            case PARTY:
+            {
+                ChatTab *const tab = Net::getPartyHandler()->getTab();
+                chatLog(tab, gettext(info.text));
+            }
+
+            default:
+                break;
         }
     }
 
@@ -47,6 +95,30 @@ namespace NotifyManager
         {
             localChatTab->chatLog(strprintf(gettext(info.text),
                 num), BY_SERVER);
+        }
+    }
+
+    void notify(const unsigned int message, const std::string &str)
+    {
+        if (message >= TYPE_END || !localChatTab)
+            return;
+        const NotificationInfo &info = notifications[message];
+        switch (info.flags)
+        {
+            case GUILD_STRING:
+            {
+                ChatTab *const tab = getGuildTab();
+                chatLog(tab, strprintf(gettext(info.text), str.c_str()));
+                break;
+            }
+            case PARTY_STRING:
+            {
+                ChatTab *const tab = Net::getPartyHandler()->getTab();
+                chatLog(tab, strprintf(gettext(info.text), str.c_str()));
+                break;
+            }
+            default:
+                break;
         }
     }
 }

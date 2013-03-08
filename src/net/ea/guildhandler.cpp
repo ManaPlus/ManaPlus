@@ -24,6 +24,7 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "localplayer.h"
+#include "notifymanager.h"
 
 #include "gui/socialwindow.h"
 
@@ -78,27 +79,27 @@ void GuildHandler::processGuildCreateResponse(Net::MessageIn &msg)
     {
         case 0:
             // Success
-            SERVER_NOTICE(_("Guild created."))
+            NotifyManager::notify(NotifyManager::GUILD_CREATED);
             break;
 
         case 1:
             // Already in a guild
-            SERVER_NOTICE(_("You are already in guild."))
+            NotifyManager::notify(NotifyManager::GUILD_ALREADY);
             break;
 
         case 2:
             // Unable to make (likely name already in use)
-            SERVER_NOTICE(_("You are already in guild."))
+            NotifyManager::notify(NotifyManager::GUILD_ALREADY);
             break;
 
         case 3:
             // Emperium check failed
-            SERVER_NOTICE(_("Emperium check failed."))
+            NotifyManager::notify(NotifyManager::GUILD_EMPERIUM_CHECK_FAILED);
             break;
 
         default:
             // Unknown response
-            SERVER_NOTICE(_("Unknown server response."))
+            NotifyManager::notify(NotifyManager::GUILD_ERROR);
             break;
     }
 }
@@ -406,23 +407,23 @@ void GuildHandler::processGuildInviteAck(Net::MessageIn &msg)
     switch (flag)
     {
         case 0:
-            guildTab->chatLog(_("Could not inivte user to guild."), BY_SERVER);
+            NotifyManager::notify(NotifyManager::GUILD_INVITE_FAILED);
             break;
 
         case 1:
-            guildTab->chatLog(_("User rejected guild invite."), BY_SERVER);
+            NotifyManager::notify(NotifyManager::GUILD_INVITE_REJECTED);
             break;
 
         case 2:
-            guildTab->chatLog(_("User is now part of your guild."), BY_SERVER);
+            NotifyManager::notify(NotifyManager::GUILD_INVITE_JOINED);
             break;
 
         case 3:
-            guildTab->chatLog(_("Your guild is full."), BY_SERVER);
+            NotifyManager::notify(NotifyManager::GUILD_INVITE_FULL);
             break;
 
         default:
-            guildTab->chatLog(_("Unknown guild invite response."), BY_SERVER);
+            NotifyManager::notify(NotifyManager::GUILD_INVITE_ERROR);
             break;
     }
 }
@@ -445,7 +446,7 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg)
             taGuild->removeFromMembers();
             taGuild->clearMembers();
         }
-        SERVER_NOTICE(_("You have left the guild."))
+        NotifyManager::notify(NotifyManager::GUILD_LEFT);
         delete guildTab;
         guildTab = nullptr;
 
@@ -456,11 +457,7 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg)
     }
     else
     {
-        if (guildTab)
-        {
-            guildTab->chatLog(strprintf(_("%s has left your guild."),
-                nick.c_str()), BY_SERVER);
-        }
+        NotifyManager::notify(NotifyManager::GUILD_USER_LEFT, nick);
         if (actorSpriteManager)
         {
             Being *const b = actorSpriteManager->findBeingByName(
@@ -493,7 +490,7 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
             taGuild->removeFromMembers();
             taGuild->clearMembers();
         }
-        SERVER_NOTICE(_("You were kicked from guild."));
+        NotifyManager::notify(NotifyManager::GUILD_KICKED);
         delete guildTab;
         guildTab = nullptr;
 
@@ -504,12 +501,7 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
     }
     else
     {
-        if (guildTab)
-        {
-            guildTab->chatLog(strprintf(_("%s has kicked from your guild."),
-                nick.c_str()), BY_SERVER);
-        }
-
+        NotifyManager::notify(NotifyManager::GUILD_USER_KICKED, nick);
         if (actorSpriteManager)
         {
             Being *const b = actorSpriteManager->findBeingByName(
@@ -603,6 +595,11 @@ void GuildHandler::processGuildBroken(Net::MessageIn &msg)
 void GuildHandler::clear()
 {
     taGuild = nullptr;
+}
+
+ChatTab *GuildHandler::getTab()
+{
+    return guildTab;
 }
 
 } // namespace Ea

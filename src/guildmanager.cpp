@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "guild.h"
 #include "localplayer.h"
+#include "notifymanager.h"
 
 #include "gui/socialwindow.h"
 
@@ -508,7 +509,7 @@ bool GuildManager::afterRemove()
         player_node->setGuildName("");
         player_node->clearGuilds();
     }
-    SERVER_NOTICE(_("You have left the guild."))
+    NotifyManager::notify(NotifyManager::GUILD_LEFT);
     delete mTab;
     mTab = nullptr;
 
@@ -521,4 +522,9 @@ bool GuildManager::afterRemove()
     }
     reload();
     return true;
+}
+
+ChatTab *GuildManager::getTab()
+{
+    return mTab;
 }

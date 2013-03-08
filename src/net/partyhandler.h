@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+#include "gui/widgets/chattab.h"
+
 #include <string>
 
 class Being;
@@ -76,6 +78,8 @@ class PartyHandler
         virtual void setShareItems(PartyShare share) = 0;
 
         virtual void clear() = 0;
+
+        virtual ChatTab *getTab() = 0;
 };
 
 } // namespace Net

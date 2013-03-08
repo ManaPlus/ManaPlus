@@ -102,6 +102,8 @@ class GuildHandler : public Net::GuildHandler
 
         void clear();
 
+        ChatTab *getTab();
+
     protected:
         bool showBasicInfo;
 };

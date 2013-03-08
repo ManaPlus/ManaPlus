@@ -24,6 +24,7 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "localplayer.h"
+#include "notifymanager.h"
 
 #include "gui/socialwindow.h"
 
@@ -74,9 +75,9 @@ void PartyHandler::clear()
 void PartyHandler::processPartyCreate(Net::MessageIn &msg)
 {
     if (msg.readInt8())
-        SERVER_NOTICE(_("Could not create party."))
+        NotifyManager::notify(NotifyManager::PARTY_CREATE_FAILED);
     else
-        SERVER_NOTICE(_("Party successfully created."))
+        NotifyManager::notify(NotifyManager::PARTY_CREATED);
 }
 
 void PartyHandler::processPartyInfo(Net::MessageIn &msg)
@@ -128,11 +129,10 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
             if (oldParty)
             {
                 //member = Ea::taParty->getMember(id);
-                if (Ea::partyTab && names.find(nick) == names.end())
+                if (names.find(nick) == names.end())
                 {
-                    Ea::partyTab->chatLog(strprintf(
-                        _("%s has joined your party."),
-                        nick.c_str()), BY_SERVER);
+                    NotifyManager::notify(NotifyManager::PARTY_USER_JOINED,
+                        nick);
                 }
             }
             PartyMember *member = Ea::taParty->addMember(id, nick);
@@ -166,29 +166,21 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg)
     switch (msg.readInt8())
     {
         case 0:
-            Ea::partyTab->chatLog(strprintf(
-                _("%s is already a member of a party."),
-                nick.c_str()), BY_SERVER);
+            NotifyManager::notify(NotifyManager::PARTY_INVITE_ALREADY_MEMBER,
+                nick);
             break;
         case 1:
-            Ea::partyTab->chatLog(strprintf(
-                _("%s refused your invitation."),
-                nick.c_str()), BY_SERVER);
+            NotifyManager::notify(NotifyManager::PARTY_INVITE_REFUSED, nick);
             break;
         case 2:
-            Ea::partyTab->chatLog(strprintf(
-                _("%s is now a member of your party."),
-                nick.c_str()), BY_SERVER);
+            NotifyManager::notify(NotifyManager::PARTY_INVITE_DONE, nick);
             break;
         case 3:
-            Ea::partyTab->chatLog(strprintf(
-                _("%s can't join your party because party is "
-                "full."), nick.c_str()), BY_SERVER);
+            NotifyManager::notify(NotifyManager::PARTY_INVITE_PARTY_FULL,
+                nick);
             break;
         default:
-            Ea::partyTab->chatLog(strprintf(
-                _("QQQ Unknown invite response for %s."),
-                nick.c_str()), BY_SERVER);
+            NotifyManager::notify(NotifyManager::PARTY_INVITE_ERROR, nick);
             break;
     }
 }
@@ -238,32 +230,19 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
             if (mShareExp == PARTY_SHARE)
                 break;
             mShareExp = PARTY_SHARE;
-            if (Ea::partyTab)
-            {
-                Ea::partyTab->chatLog(
-                    _("Experience sharing enabled."), BY_SERVER);
-            }
+            NotifyManager::notify(NotifyManager::PARTY_EXP_SHARE_ON);
             break;
         case PARTY_SHARE_NO:
             if (mShareExp == PARTY_SHARE_NO)
                 break;
             mShareExp = PARTY_SHARE_NO;
-            if (Ea::partyTab)
-            {
-                Ea::partyTab->chatLog(
-                    _("Experience sharing disabled."), BY_SERVER);
-            }
+            NotifyManager::notify(NotifyManager::PARTY_EXP_SHARE_OFF);
             break;
         case PARTY_SHARE_NOT_POSSIBLE:
             if (mShareExp == PARTY_SHARE_NOT_POSSIBLE)
                 break;
             mShareExp = PARTY_SHARE_NOT_POSSIBLE;
-            if (Ea::partyTab)
-            {
-                Ea::partyTab->chatLog(
-                    _("Experience sharing not possible."),
-                    BY_SERVER);
-            }
+            NotifyManager::notify(NotifyManager::PARTY_EXP_SHARE_ERROR);
             break;
         default:
             logger->log("QQQ Unknown party exp option: %d\n", exp);
@@ -276,35 +255,22 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
             if (mShareItems == PARTY_SHARE)
                 break;
             mShareItems = PARTY_SHARE;
-            if (Ea::partyTab)
-            {
-                Ea::partyTab->chatLog(
-                    _("Item sharing enabled."), BY_SERVER);
-            }
+            NotifyManager::notify(NotifyManager::PARTY_ITEM_SHARE_ON);
             break;
         case PARTY_SHARE_NO:
             if (mShareItems == PARTY_SHARE_NO)
                 break;
             mShareItems = PARTY_SHARE_NO;
-            if (Ea::partyTab)
-            {
-                Ea::partyTab->chatLog(
-                    _("Item sharing disabled."), BY_SERVER);
-            }
+            NotifyManager::notify(NotifyManager::PARTY_ITEM_SHARE_OFF);
             break;
         case PARTY_SHARE_NOT_POSSIBLE:
             if (mShareItems == PARTY_SHARE_NOT_POSSIBLE)
                 break;
             mShareItems = PARTY_SHARE_NOT_POSSIBLE;
-            if (Ea::partyTab)
-            {
-                Ea::partyTab->chatLog(
-                    _("Item sharing not possible."), BY_SERVER);
-            }
+            NotifyManager::notify(NotifyManager::PARTY_ITEM_SHARE_ERROR);
             break;
         default:
-            logger->log("QQQ Unknown party item option: %d\n",
-                        exp);
+            logger->log("QQQ Unknown party item option: %d\n", exp);
             break;
     }
 }
@@ -352,7 +318,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
             Ea::taParty->removeFromMembers();
             Ea::taParty->clearMembers();
         }
-        SERVER_NOTICE(_("You have left the party."))
+        NotifyManager::notify(NotifyManager::PARTY_LEFT);
         delete Ea::partyTab;
         Ea::partyTab = nullptr;
 
@@ -362,12 +328,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
     }
     else
     {
-        if (Ea::partyTab)
-        {
-            Ea::partyTab->chatLog(strprintf(
-                _("%s has left your party."),
-                nick.c_str()), BY_SERVER);
-        }
+        NotifyManager::notify(NotifyManager::PARTY_USER_LEFT, nick);
         if (actorSpriteManager)
         {
             Being *const b = actorSpriteManager->findBeing(id);
@@ -441,11 +402,15 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg)
         }
         else
         {
-            Ea::partyTab->chatLog(strprintf(
-                _("An unknown member tried to say: %s"),
-                chatMsg.c_str()), BY_SERVER);
+            NotifyManager::notify(NotifyManager::PARTY_UNKNOWN_USER_MSG,
+                chatMsg);
         }
     }
+}
+
+ChatTab *PartyHandler::getTab()
+{
+    return partyTab;
 }
 
 } // namespace Ea

@@ -23,6 +23,7 @@
 
 #include "actorspritemanager.h"
 #include "localplayer.h"
+#include "notifymanager.h"
 
 #include "net/tmwa/protocol.h"
 
@@ -168,11 +169,7 @@ void PartyHandler::kick(const std::string &name)
     const PartyMember *const m = Ea::taParty->getMember(name);
     if (!m)
     {
-        if (Ea::partyTab)
-        {
-            Ea::partyTab->chatLog(strprintf(_("%s is not in your party!"),
-                              name.c_str()), BY_SERVER);
-        }
+        NotifyManager::notify(NotifyManager::PARTY_USER_NOT_IN_PARTY, name);
         return;
     }
 

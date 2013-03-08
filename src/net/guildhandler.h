@@ -25,6 +25,8 @@
 
 #include "guild.h"
 
+#include "gui/widgets/chattab.h"
+
 #include <iosfwd>
 
 class Being;
@@ -72,6 +74,8 @@ class GuildHandler
                                   std::string msg2) = 0;
 
         virtual void clear() = 0;
+
+        virtual ChatTab *getTab() = 0;
 };
 
 }

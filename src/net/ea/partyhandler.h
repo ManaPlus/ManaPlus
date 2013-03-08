@@ -56,6 +56,8 @@ class PartyHandler : public Net::PartyHandler
 
         void clear();
 
+        ChatTab *getTab();
+
         virtual void processPartyCreate(Net::MessageIn &msg);
 
         virtual void processPartyInfo(Net::MessageIn &msg);

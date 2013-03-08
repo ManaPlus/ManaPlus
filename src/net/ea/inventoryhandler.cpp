@@ -23,6 +23,7 @@
 #include "net/ea/inventoryhandler.h"
 
 #include "localplayer.h"
+#include "notifymanager.h"
 
 #include "gui/ministatuswindow.h"
 
@@ -399,7 +400,7 @@ void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
 
     if (msg.readInt8() == 0)
     {
-        SERVER_NOTICE(_("Failed to use item."))
+        NotifyManager::notify(NotifyManager::USE_FAILED);
     }
     else
     {
@@ -565,7 +566,7 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
     const int flag = msg.readInt8();
 
     if (!flag)
-        SERVER_NOTICE(_("Unable to equip."))
+        NotifyManager::notify(NotifyManager::EQUIP_FAILED);
     else
         mEquips.setEquipment(getSlot(equipType), index);
 }
