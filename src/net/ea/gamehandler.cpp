@@ -25,6 +25,7 @@
 #include "client.h"
 #include "game.h"
 #include "localplayer.h"
+#include "notifymanager.h"
 
 #include "gui/okdialog.h"
 
@@ -84,7 +85,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg)
 
 void GameHandler::processWhoAnswer(Net::MessageIn &msg)
 {
-    SERVER_NOTICE(strprintf(_("Online users: %d"), msg.readInt32()))
+    NotifyManager::notify(NotifyManager::ONLINE_USERS, msg.readInt32());
 }
 
 void GameHandler::processCharSwitchResponse(Net::MessageIn &msg)

@@ -26,5 +26,6 @@
 namespace NotifyManager
 {
     void notify(const unsigned int message);
+    void notify(const unsigned int message, const int num);
 }
 #endif

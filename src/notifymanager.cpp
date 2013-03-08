@@ -30,7 +30,23 @@ namespace NotifyManager
     {
         if (message >= TYPE_END || !localChatTab)
             return;
-        localChatTab->chatLog(gettext(notifications[message].text),
-            BY_SERVER);
+        const NotificationInfo &info = notifications[message];
+        if (info.flags == EMPTY)
+        {
+            localChatTab->chatLog(gettext(info.text),
+                BY_SERVER);
+        }
+    }
+
+    void notify(const unsigned int message, const int num)
+    {
+        if (message >= TYPE_END || !localChatTab)
+            return;
+        const NotificationInfo &info = notifications[message];
+        if (info.flags == INT)
+        {
+            localChatTab->chatLog(strprintf(gettext(info.text),
+                num), BY_SERVER);
+        }
     }
 }

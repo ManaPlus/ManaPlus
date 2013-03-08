@@ -25,11 +25,6 @@
 
 namespace NotifyManager
 {
-    struct NotificationInfo
-    {
-        const char *text;
-    };
-
     enum NotifyTypes
     {
         BUY_DONE,
@@ -39,18 +34,32 @@ namespace NotifyManager
         SELL_FAILED,
         SELL_TRADE_FAILED,
         SELL_UNSELLABLE_FAILED,
+        ONLINE_USERS,
         TYPE_END
+    };
+
+    enum NotifyFlags
+    {
+        EMPTY,
+        INT
+    };
+
+    struct NotificationInfo
+    {
+        const char *text;
+        const NotifyFlags flags;
     };
 
     static const NotificationInfo notifications[] =
     {
-        {N_("Thanks for buying.")},
-        {N_("Unable to buy.")},
-        {N_("Nothing to sell.")},
-        {N_("Thanks for selling.")},
-        {N_("Unable to sell.")},
-        {N_("Unable to sell while trading.")},
-        {N_("Unable to sell unsellable item.")}
+        {N_("Thanks for buying."), EMPTY},
+        {N_("Unable to buy."), EMPTY},
+        {N_("Nothing to sell."), EMPTY},
+        {N_("Thanks for selling."), EMPTY},
+        {N_("Unable to sell."), EMPTY},
+        {N_("Unable to sell while trading."), EMPTY},
+        {N_("Unable to sell unsellable item."), EMPTY},
+        {N_("Online users: %d"), INT}
     };
 }
 #endif
