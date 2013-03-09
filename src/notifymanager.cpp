@@ -79,6 +79,7 @@ namespace NotifyManager
             {
                 ChatTab *const tab = Net::getPartyHandler()->getTab();
                 chatLog(tab, gettext(info.text));
+                break;
             }
 
             case SPEECH:
