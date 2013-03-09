@@ -63,7 +63,7 @@ struct MetaTile final
      * Constructor.
      */
     MetaTile() : Fcost(0), Gcost(0), Hcost(0), whichList(0),
-            parentX(0), parentY(0), blockmask(0)
+        parentX(0), parentY(0), blockmask(0)
     {}
 
     A_DELETE_COPY(MetaTile)
@@ -263,6 +263,7 @@ class Map final : public Properties, public ConfigListener
          */
         const std::string getFilename() const A_WARN_UNUSED;
 
+#ifdef MANASERV_SUPPORT
         /**
          * Check the current position against surrounding blocking tiles, and
          * correct the position offset within tile when needed.
@@ -283,6 +284,7 @@ class Map final : public Properties, public ConfigListener
                            const int destPixelX, const int destPixelY,
                            const int radius, const unsigned char walkmask,
                            const int maxCost = 20) A_WARN_UNUSED;
+#endif
 
         /**
          * Find a path from one location to the next.

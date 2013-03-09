@@ -390,6 +390,7 @@ void LocalPlayer::setGMLevel(const int level)
     }
 }
 
+#ifdef MANASERV_SUPPORT
 Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
 {
     // Compute where the next tile will be set.
@@ -786,6 +787,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
     // Return the current position if everything else has failed.
     return Position(posX, posY);
 }
+#endif
 
 void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
 {

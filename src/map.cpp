@@ -24,9 +24,9 @@
 
 #include "client.h"
 #include "configuration.h"
-
 #include "localplayer.h"
 #include "maplayer.h"
+#include "notifymanager.h"
 #include "particle.h"
 #include "simpleanimation.h"
 #include "tileset.h"
@@ -254,38 +254,33 @@ void Map::initializeAmbientLayers()
         }
 
         Image *const img = resman->getImage(getProperty(name + "image"));
-        const float speedX = getFloatProperty(name + "scrollX");
-        const float speedY = getFloatProperty(name + "scrollY");
-        const float parallax = getFloatProperty(name + "parallax");
-        const bool keepRatio = getBoolProperty(name + "keepratio");
-
         if (img)
         {
-            mForegrounds.push_back(
-                new AmbientLayer(img, parallax, speedX, speedY, keepRatio));
+            mForegrounds.push_back(new AmbientLayer(img,
+                getFloatProperty(name + "parallax"),
+                getFloatProperty(name + "scrollX"),
+                getFloatProperty(name + "scrollY"),
+                getBoolProperty(name + "keepratio")));
 
             // The AmbientLayer takes control over the image.
             img->decRef();
         }
     }
 
-
     // search for "background*" in map properties
     for (int i = 0; hasProperty(std::string("background").append(
          toString(i)).append("image")); i ++)
     {
         const std::string name = "background" + toString(i);
-
         Image *const img = resman->getImage(getProperty(name + "image"));
-        const float speedX = getFloatProperty(name + "scrollX");
-        const float speedY = getFloatProperty(name + "scrollY");
-        const float parallax = getFloatProperty(name + "parallax");
-        const bool keepRatio = getBoolProperty(name + "keepratio");
 
         if (img)
         {
-            mBackgrounds.push_back(
-                new AmbientLayer(img, parallax, speedX, speedY, keepRatio));
+            mBackgrounds.push_back(new AmbientLayer(img,
+                getFloatProperty(name + "parallax"),
+                getFloatProperty(name + "scrollX"),
+                getFloatProperty(name + "scrollY"),
+                getBoolProperty(name + "keepratio")));
 
             // The AmbientLayer takes control over the image.
             img->decRef();
@@ -309,9 +304,9 @@ void Map::addTileset(Tileset *const tileset)
         return;
 
     mTilesets.push_back(tileset);
-
-    if (tileset->getHeight() > mMaxTileHeight)
-        mMaxTileHeight = tileset->getHeight();
+    const int height = tileset->getHeight();
+    if (height > mMaxTileHeight)
+        mMaxTileHeight = height;
 }
 
 void Map::update(const int ticks)
@@ -319,7 +314,8 @@ void Map::update(const int ticks)
     // Update animated tiles
     FOR_EACH (TileAnimationMapCIter, iAni, mTileAnimations)
     {
-        if (iAni->second && iAni->second->update(ticks))
+        TileAnimation *const tileAni = iAni->second;
+        if (tileAni && tileAni->update(ticks))
             mRedrawMap = true;
     }
 }
@@ -409,14 +405,15 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         for (LayersCIter layeri = mLayers.begin(), layeri_end = mLayers.end();
              layeri != layeri_end && !overFringe; ++ layeri)
         {
-            if ((*layeri)->isFringeLayer())
+            MapLayer *const layer = *layeri;
+            if (layer->isFringeLayer())
             {
-                (*layeri)->setSpecialLayer(mSpecialLayer);
-                (*layeri)->setTempLayer(mTempLayer);
+                layer->setSpecialLayer(mSpecialLayer);
+                layer->setTempLayer(mTempLayer);
                 if (mDebugFlags == MAP_SPECIAL2)
                     overFringe = true;
 
-                (*layeri)->drawFringe(graphics, startX, startY, endX, endY,
+                layer->drawFringe(graphics, startX, startY, endX, endY,
                     scrollX, scrollY, &mActors, mDebugFlags, mActorFixY);
             }
             else
@@ -427,11 +424,11 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                 {
                     if (updateFlag)
                     {
-                        (*layeri)->updateOGL(graphics, startX, startY,
+                        layer->updateOGL(graphics, startX, startY,
                             endX, endY, scrollX, scrollY, mDebugFlags);
                     }
 
-                    (*layeri)->drawOGL(graphics);
+                    layer->drawOGL(graphics);
                 }
                 else
 #endif
@@ -445,7 +442,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
 
                     (*layeri)->drawSDL(graphics);
 */
-                    (*layeri)->draw(graphics, startX, startY, endX, endY,
+                    layer->draw(graphics, startX, startY, endX, endY,
                         scrollX, scrollY, mDebugFlags);
                 }
             }
@@ -463,12 +460,15 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         {
             if (Actor *const actor = *ai)
             {
-                if (!mOpenGL && (actor->getTileX() < startX
-                    || actor->getTileX() > endX || actor->getTileY() < startY
-                    || actor->getTileY() > endY))
+                if (!mOpenGL)
                 {
-                    ++ai;
-                    continue;
+                    const int x = actor->getTileX();
+                    const int y = actor->getTileY();
+                    if (x < startX || x > endX || y < startY || y > endY)
+                    {
+                        ++ai;
+                        continue;
+                    }
                 }
                 // For now, just draw actors with only one layer.
                 if (actor->getNumberOfLayers() == 1)
@@ -519,11 +519,14 @@ void Map::drawCollision(Graphics *const graphics,
     int endX = (graphics->mWidth + scrollX + mTileWidth - 1) / mTileWidth;
     int endY = endPixelY / mTileHeight;
 
-    if (startX < 0) startX = 0;
-    if (startY < 0) startY = 0;
-    if (endX > mWidth) endX = mWidth;
-    if (endY > mHeight) endY = mHeight;
-
+    if (startX < 0)
+        startX = 0;
+    if (startY < 0)
+        startY = 0;
+    if (endX > mWidth)
+        endX = mWidth;
+    if (endY > mHeight)
+        endY = mHeight;
 
     if (debugFlags < MAP_SPECIAL)
     {
@@ -685,28 +688,6 @@ void Map::setWalk(const int x, const int y, const bool walkable A_UNUSED)
     blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
 }
 
-/*
-bool Map::occupied(const int x, const int y) const
-{
-    const ActorSprites &actors = actorSpriteManager->getAll();
-    for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
-         it != it_end; ++it)
-    {
-        const ActorSprite *const actor = *it;
-
-//+++        if (actor->getTileX() == x && actor->getTileY() == y
-//            && being->getSubType() != 45)
-        if (actor->getTileX() == x && actor->getTileY() == y &&
-            actor->getType() != ActorSprite::FLOOR_ITEM)
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-*/
-
 bool Map::contains(const int x, const int y) const
 {
     return x >= 0 && y >= 0 && x < mWidth && y < mHeight;
@@ -745,11 +726,12 @@ const std::string Map::getName() const
 
 const std::string Map::getFilename() const
 {
-    std::string fileName = getProperty("_filename");
+    const std::string fileName = getProperty("_filename");
     const size_t lastSlash = fileName.rfind("/") + 1;
     return fileName.substr(lastSlash, fileName.rfind(".") - lastSlash);
 }
 
+#ifdef MANASERV_SUPPORT
 Position Map::checkNodeOffsets(int radius, const unsigned char walkMask,
                                const Position &position) const
 {
@@ -867,13 +849,16 @@ Path Map::findPixelPath(const int startPixelX, const int startPixelY,
 
     return myPath;
 }
+#endif
 
 Path Map::findPath(const int startX, const int startY,
                    const int destX, const int destY,
                    const unsigned char walkmask, const int maxCost)
 {
     // The basic walking cost of a tile.
-    static int const basicCost = 100;
+    static const int basicCost = 100;
+    const int basicCost2 = 100 * 362 / 256;
+    const float basicCostF = 100 * 362 / 256;
 
     // Path to be built up (empty by default)
     Path path;
@@ -907,20 +892,26 @@ Path Map::findPath(const int startX, const int startY,
         const Location curr = openList.top();
         openList.pop();
 
+        const MetaTile *const tile = curr.tile;
+
         // If the tile is already on the closed list, this means it has already
         // been processed with a shorter path to the start point (lower G cost)
-        if (curr.tile->whichList == mOnClosedList)
+        if (tile->whichList == mOnClosedList)
             continue;
 
         // Put the current tile on the closed list
         curr.tile->whichList = mOnClosedList;
 
         const int curWidth = curr.y * mWidth;
+        const int tileGcost = tile->Gcost;
 
         // Check the adjacent tiles
         for (int dy = -1; dy <= 1; dy++)
         {
             const int y = curr.y + dy;
+            if (y < 0 || y >= mHeight)
+                continue;
+
             const int yWidth = y * mWidth;
             const int dy1 = std::abs(y - destY);
 
@@ -931,7 +922,7 @@ Path Map::findPath(const int startX, const int startY,
 
                 // Skip if if we're checking the same tile we're leaving from,
                 // or if the new location falls outside of the map boundaries
-                if ((dx == 0 && dy == 0) || !contains(x, y))
+                if ((dx == 0 && dy == 0) || x < 0 || x >= mWidth)
                     continue;
 
                 MetaTile *const newTile = &mMetaTiles[x + yWidth];
@@ -962,8 +953,8 @@ Path Map::findPath(const int startX, const int startY,
                 }
 
                 // Calculate G cost for this route, ~sqrt(2) for moving diagonal
-                int Gcost = curr.tile->Gcost +
-                    (dx == 0 || dy == 0 ? basicCost : basicCost * 362 / 256);
+                int Gcost = tileGcost + (dx == 0 || dy == 0
+                    ? basicCost : basicCost2);
 
                 /* Demote an arbitrary direction to speed pathfinding by
                    adding a defect (TODO: change depending on the desired
@@ -1001,7 +992,7 @@ Path Map::findPath(const int startX, const int startY,
                        forbidden here. */
                     const int dx1 = std::abs(x - destX);
                     newTile->Hcost = std::abs(dx1 - dy1) * basicCost +
-                        std::min(dx1, dy1) * (basicCost * 362 / 256);
+                        std::min(dx1, dy1) * (basicCostF);
 
                     // Set the current tile as the parent of the new tile
                     newTile->parentX = curr.x;
@@ -1120,7 +1111,8 @@ void Map::addExtraLayer()
         logger->log1("No special layer");
         return;
     }
-    std::string mapFileName = getUserMapDirectory().append("/extralayer.txt");
+    const std::string mapFileName = getUserMapDirectory().append(
+        "/extralayer.txt");
     logger->log("loading extra layer: " + mapFileName);
     struct stat statbuf;
     if (!stat(mapFileName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
@@ -1190,7 +1182,8 @@ void Map::saveExtraLayer() const
         logger->log1("No special layer");
         return;
     }
-    std::string mapFileName = getUserMapDirectory().append("/extralayer.txt");
+    const std::string mapFileName = getUserMapDirectory().append(
+        "/extralayer.txt");
     logger->log("saving extra layer: " + mapFileName);
 
     if (mkdir_r(getUserMapDirectory().c_str()))
@@ -1317,19 +1310,19 @@ void Map::setPvpMode(const int mode)
         switch (mPvp)
         {
             case 0:
-                player_node->setSpeech("pvp off, gvg off");
+                NotifyManager::notify(NotifyManager::PVP_OFF_GVG_OFF);
                 break;
             case 1:
-                player_node->setSpeech("pvp on");
+                NotifyManager::notify(NotifyManager::PVP_ON);
                 break;
             case 2:
-                player_node->setSpeech("gvg on");
+                NotifyManager::notify(NotifyManager::GVG_ON);
                 break;
             case 3:
-                player_node->setSpeech("pvp on, gvg on");
+                NotifyManager::notify(NotifyManager::PVP_ON_GVG_ON);
                 break;
             default:
-                player_node->setSpeech("unknown pvp");
+                NotifyManager::notify(NotifyManager::PVP_UNKNOWN);
                 break;
         }
     }
@@ -1364,7 +1357,7 @@ void Map::indexTilesets()
 
     mTilesetsIndexed = true;
 
-    Tileset *s = nullptr;
+    const Tileset *s = nullptr;
     FOR_EACH (Tilesets::const_iterator, it, mTilesets)
     {
         if (!s || s->getFirstGid() + s->size()
@@ -1388,7 +1381,7 @@ void Map::indexTilesets()
 
     FOR_EACH (Tilesets::const_iterator, it, mTilesets)
     {
-        s = *it;
+        Tileset *const s = *it;
         if (s)
         {
             const int start = s->getFirstGid();
@@ -1521,10 +1514,12 @@ void Map::reduce()
                     ++ ri;
                     while (ri != mLayers.rend())
                     {
-                        img = (*ri)->mTiles[x + y * (*ri)->mWidth];
+                        MapLayer *const layer = *ri;
+                        const size_t pos = x + y * layer->mWidth;
+                        img = layer->mTiles[pos];
                         if (img)
                         {
-                            (*ri)->mTiles[x + y * (*ri)->mWidth] = nullptr;
+                            layer->mTiles[pos] = nullptr;
                             cnt ++;
                         }
                         ++ ri;

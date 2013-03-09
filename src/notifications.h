@@ -27,13 +27,14 @@ namespace NotifyManager
 {
     enum NotifyFlags
     {
-        EMPTY,
+        EMPTY = 0,
         INT,
         STRING,
         GUILD,
         GUILD_STRING,
         PARTY,
-        PARTY_STRING
+        PARTY_STRING,
+        SPEECH
     };
 
     struct NotificationInfo
@@ -44,7 +45,7 @@ namespace NotifyManager
 
     enum NotifyTypes
     {
-        NONE,
+        NONE = 0,
         BUY_DONE,
         BUY_FAILED,
         SELL_LIST_EMPTY,
@@ -109,6 +110,11 @@ namespace NotifyManager
         WHISPERS_UNIGNORED,
         WHISPERS_UNIGNORE_FAILED,
         SKILL_FAIL_MESSAGE,
+        PVP_OFF_GVG_OFF,
+        PVP_ON,
+        GVG_ON,
+        PVP_ON_GVG_ON,
+        PVP_UNKNOWN,
 
         TYPE_END
     };
@@ -181,6 +187,11 @@ namespace NotifyManager
         {N_("All whispers unignored."), EMPTY},
         {N_("All whispers unignore failed."), EMPTY},
         {N_("%s"), STRING},
+        {N_("pvp off, gvg off"), SPEECH},
+        {N_("pvp on"), SPEECH},
+        {N_("gvg on"), SPEECH},
+        {N_("pvp on, gvg on"), SPEECH},
+        {N_("unknown pvp"), SPEECH},
     };
 }
 #endif

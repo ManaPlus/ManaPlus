@@ -81,6 +81,12 @@ namespace NotifyManager
                 chatLog(tab, gettext(info.text));
             }
 
+            case SPEECH:
+            {
+                if (player_node)
+                    player_node->setSpeech(gettext(info.text));
+            }
+
             default:
                 break;
         }
