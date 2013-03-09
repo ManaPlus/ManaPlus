@@ -23,7 +23,6 @@
 #include "net/eathena/adminhandler.h"
 
 #include "actorspritemanager.h"
-#include "depricatedevent.h"
 #include "game.h"
 #include "notifymanager.h"
 #include "playerrelations.h"

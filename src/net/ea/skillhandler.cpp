@@ -24,6 +24,7 @@
 
 #include "logger.h"
 #include "localplayer.h"
+#include "notifymanager.h"
 #include "playerinfo.h"
 
 #include "gui/skilldialog.h"
@@ -238,7 +239,6 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
         }
     }
 
-    if (localChatTab)
-        localChatTab->chatLog(txt);
+    NotifyManager::notify(NotifyManager::SKILL_FAIL_MESSAGE, txt);
 }
 } // namespace Ea

@@ -44,6 +44,7 @@ namespace NotifyManager
 
     enum NotifyTypes
     {
+        NONE,
         BUY_DONE,
         BUY_FAILED,
         SELL_LIST_EMPTY,
@@ -107,12 +108,14 @@ namespace NotifyManager
         WHISPERS_IGNORE_FAILED,
         WHISPERS_UNIGNORED,
         WHISPERS_UNIGNORE_FAILED,
+        SKILL_FAIL_MESSAGE,
 
         TYPE_END
     };
 
     static const NotificationInfo notifications[] =
     {
+        {"", EMPTY},
         {N_("Thanks for buying."), EMPTY},
         {N_("Unable to buy."), EMPTY},
         {N_("Nothing to sell."), EMPTY},
@@ -177,6 +180,7 @@ namespace NotifyManager
         {N_("All whispers ignore failed."), EMPTY},
         {N_("All whispers unignored."), EMPTY},
         {N_("All whispers unignore failed."), EMPTY},
+        {N_("%s"), STRING},
     };
 }
 #endif
