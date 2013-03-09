@@ -206,12 +206,9 @@ class SpecialLayer final
 
         void setTile(const int x, const int y, const int type);
 
-        void addRoad(Path road);
+        void addRoad(const Path road);
 
         void clean() const;
-
-        void itemDraw(Graphics *const graphics, const int x, const int y,
-                      const int scrollX, const int scrollY) const;
 
     private:
         int mWidth, mHeight;

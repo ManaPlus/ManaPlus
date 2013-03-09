@@ -280,16 +280,17 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
             {
                 const int px = x * 32 + dx;
                 const int py = py0 - img->mBounds.h;
+                const GLuint imgGlImage = img->mGLImage;
                 if (flag || img->mBounds.h <= 32)
                 {
-                    if (!lastImage || lastImage->mGLImage != img->mGLImage)
+                    if (!lastImage || lastImage->mGLImage != imgGlImage)
                     {
                         if (img->mBounds.w > 32)
                             imgSet.clear();
 
-                        if (imgSet.find(img->mGLImage) != imgSet.end())
+                        if (imgSet.find(imgGlImage) != imgSet.end())
                         {
-                            imgVert = imgSet[img->mGLImage];
+                            imgVert = imgSet[imgGlImage];
                         }
                         else
                         {
@@ -320,7 +321,7 @@ void MapLayer::drawOGL(Graphics *const graphics)
 //    int k = 0;
     while (rit != rit_end)
     {
-        MepRowImages *const images = &(*rit)->images;
+        const MepRowImages *const images = &(*rit)->images;
         MepRowImages::const_iterator iit = images->begin();
         const MepRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
@@ -516,17 +517,10 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             {
                 graphics->setColor(userPalette->getColorWithAlpha(
                     UserPalette::ATTACK_RANGE));
-
-                graphics->fillRectangle(gcn::Rectangle(
-                                                       x, y,
-                                                       w, h));
-
+                graphics->fillRectangle(gcn::Rectangle(x, y, w, h));
                 graphics->setColor(userPalette->getColorWithAlpha(
                     UserPalette::ATTACK_RANGE_BORDER));
-
-                graphics->drawRectangle(gcn::Rectangle(
-                                                       x, y,
-                                                       w, h));
+                graphics->drawRectangle(gcn::Rectangle(x, y, w, h));
             }
         }
     }
@@ -613,28 +607,29 @@ void SpecialLayer::setTile(const int x, const int y, const int type)
     }
 
     const int idx = x + y * mWidth;
-    if (mTiles[idx])
-        mTiles[idx]->setType(type);
+    MapItem *const tile = mTiles[idx];
+    if (tile)
+    {
+        tile->setType(type);
+        tile->setPos(x, y);
+    }
     else
+    {
         mTiles[idx] = new MapItem(type);
-    mTiles[idx]->setPos(x, y);
+        mTiles[idx]->setPos(x, y);
+    }
 }
 
-void SpecialLayer::addRoad(Path road)
+void SpecialLayer::addRoad(const Path road)
 {
     FOR_EACH (Path::const_iterator, i, road)
     {
         const Position &pos = (*i);
-        MapItem *item = getTile(pos.x, pos.y);
+        MapItem *const item = getTile(pos.x, pos.y);
         if (!item)
-        {
-            item = new MapItem(MapItem::ROAD);
-            setTile(pos.x, pos.y, item);
-        }
+            setTile(pos.x, pos.y, new MapItem(MapItem::ROAD));
         else
-        {
             item->setType(MapItem::ROAD);
-        }
     }
 }
 
@@ -665,26 +660,19 @@ void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
     if (endY > mHeight)
         endY = mHeight;
 
-    for (int y = startY; y < endY; y++)
+    for (int y = startY; y < endY; y ++)
     {
-        for (int x = startX; x < endX; x++)
-            itemDraw(graphics, x, y, scrollX, scrollY);
+        const int py = y * 32 - scrollY;
+        const int y2 = y * mWidth;
+        for (int x = startX; x < endX; x ++)
+        {
+            const MapItem *const item = mTiles[x + y2];
+            if (item)
+                item->draw(graphics, x * 32 - scrollX, py, 32, 32);
+        }
     }
     BLOCK_END("SpecialLayer::draw")
 }
-
-void SpecialLayer::itemDraw(Graphics *const graphics, const int x, const int y,
-                            const int scrollX, const int scrollY) const
-{
-    const MapItem *const item = getTile(x, y);
-    if (item)
-    {
-        const int px = x * 32 - scrollX;
-        const int py = y * 32 - scrollY;
-        item->draw(graphics, px, py, 32, 32);
-    }
-}
-
 
 MapItem::MapItem():
     mImage(nullptr), mComment(""), mName(""), mX(-1), mY(-1)
@@ -722,7 +710,7 @@ MapItem::~MapItem()
 
 void MapItem::setType(const int type)
 {
-    std::string name("");
+    std::string name;
     mType = type;
     if (mImage)
         mImage->decRef();
@@ -745,7 +733,7 @@ void MapItem::setType(const int type)
             break;
     }
 
-    if (name != "")
+    if (!name.empty())
     {
         ResourceManager *const resman = ResourceManager::getInstance();
         mImage = resman->getImage(name);
@@ -782,14 +770,10 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
         {
             graphics->setColor(userPalette->getColorWithAlpha(
                                UserPalette::HOME_PLACE));
-            graphics->fillRectangle(gcn::Rectangle(
-                                                   x, y,
-                                                   dx, dy));
+            graphics->fillRectangle(gcn::Rectangle(x, y, dx, dy));
             graphics->setColor(userPalette->getColorWithAlpha(
                                UserPalette::HOME_PLACE_BORDER));
-            graphics->drawRectangle(gcn::Rectangle(
-                                                   x, y,
-                                                   dx, dy));
+            graphics->drawRectangle(gcn::Rectangle(x, y, dx, dy));
             break;
         }
         default:
