@@ -88,12 +88,12 @@ class Logger final
         /**
          * Enters a message in the log. The message will be timestamped.
          */
-        void log(std::string str);
+        void log(const std::string &str);
 
         /**
          * Enters debug message in the log. The message will be timestamped.
          */
-        void dlog(std::string str);
+        void dlog(const std::string &str);
 
         void setDebugLog(const bool n)
         { mDebugLog = n; }

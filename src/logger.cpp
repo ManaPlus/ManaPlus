@@ -51,6 +51,21 @@
 
 #include "debug.h"
 
+#define DATESTREAM \
+    timeStr << "[" \
+        << ((((tv.tv_sec / 60) / 60) % 24 < 10) ? "0" : "") \
+        << static_cast<int>(((tv.tv_sec / 60) / 60) % 24) \
+        << ":" \
+        << (((tv.tv_sec / 60) % 60 < 10) ? "0" : "") \
+        << static_cast<int>((tv.tv_sec / 60) % 60) \
+        << ":" \
+        << ((tv.tv_sec % 60 < 10) ? "0" : "") \
+        << static_cast<int>(tv.tv_sec % 60) \
+        << "." \
+        << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "") \
+        << static_cast<int>((tv.tv_usec / 10000) % 100) \
+        << "] ";
+
 Logger::Logger():
     mLogToStandardOut(true),
     mChatWindow(nullptr),
@@ -78,12 +93,12 @@ void Logger::setLogFile(const std::string &logFilename)
     }
 }
 
-void Logger::log(std::string str)
+void Logger::log(const std::string &str)
 {
     log("%s", str.c_str());
 }
 
-void Logger::dlog(std::string str)
+void Logger::dlog(const std::string &str)
 {
     if (!mDebugLog)
         return;
@@ -94,20 +109,7 @@ void Logger::dlog(std::string str)
 
     // Print the log entry
     std::stringstream timeStr;
-    timeStr << "["
-        << ((((tv.tv_sec / 60) / 60) % 24 < 10) ? "0" : "")
-        << static_cast<int>(((tv.tv_sec / 60) / 60) % 24)
-        << ":"
-        << (((tv.tv_sec / 60) % 60 < 10) ? "0" : "")
-        << static_cast<int>((tv.tv_sec / 60) % 60)
-        << ":"
-        << ((tv.tv_sec % 60 < 10) ? "0" : "")
-        << static_cast<int>(tv.tv_sec % 60)
-        << "."
-        << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "")
-        << static_cast<int>((tv.tv_usec / 10000) % 100)
-        << "] ";
-
+    DATESTREAM
     DLOG_ANDROID(str.c_str())
 
     if (mLogFile.is_open())
@@ -128,20 +130,7 @@ void Logger::log1(const char *const buf)
 
     // Print the log entry
     std::stringstream timeStr;
-    timeStr << "["
-        << ((((tv.tv_sec / 60) / 60) % 24 < 10) ? "0" : "")
-        << static_cast<int>(((tv.tv_sec / 60) / 60) % 24)
-        << ":"
-        << (((tv.tv_sec / 60) % 60 < 10) ? "0" : "")
-        << static_cast<int>((tv.tv_sec / 60) % 60)
-        << ":"
-        << ((tv.tv_sec % 60 < 10) ? "0" : "")
-        << static_cast<int>(tv.tv_sec % 60)
-        << "."
-        << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "")
-        << static_cast<int>((tv.tv_usec / 10000) % 100)
-        << "] ";
-
+    DATESTREAM
     LOG_ANDROID(buf)
 
     if (mLogFile.is_open())
@@ -175,20 +164,7 @@ void Logger::log(const char *const log_text, ...)
 
     // Print the log entry
     std::stringstream timeStr;
-    timeStr << "["
-        << ((((tv.tv_sec / 60) / 60) % 24 < 10) ? "0" : "")
-        << static_cast<int>(((tv.tv_sec / 60) / 60) % 24)
-        << ":"
-        << (((tv.tv_sec / 60) % 60 < 10) ? "0" : "")
-        << static_cast<int>((tv.tv_sec / 60) % 60)
-        << ":"
-        << ((tv.tv_sec % 60 < 10) ? "0" : "")
-        << static_cast<int>(tv.tv_sec % 60)
-        << "."
-        << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "")
-        << static_cast<int>((tv.tv_usec / 10000) % 100)
-        << "] ";
-
+    DATESTREAM
     LOG_ANDROID(buf)
 
     if (mLogFile.is_open())
