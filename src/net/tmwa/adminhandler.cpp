@@ -25,6 +25,7 @@
 #include "actorspritemanager.h"
 #include "depricatedevent.h"
 #include "game.h"
+#include "notifymanager.h"
 #include "playerrelations.h"
 
 #include "net/chathandler.h"
@@ -63,9 +64,9 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_ADMIN_KICK_ACK:
             id = msg.readInt32();
             if (id == 0)
-                SERVER_NOTICE(_("Kick failed!"))
+                NotifyManager::notify(NotifyManager::KICK_FAIL);
             else
-                SERVER_NOTICE(_("Kick succeeded!"))
+                NotifyManager::notify(NotifyManager::KICK_SUCCEED);
         default:
             break;
     }

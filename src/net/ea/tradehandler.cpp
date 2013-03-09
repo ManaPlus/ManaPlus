@@ -22,7 +22,6 @@
 
 #include "net/ea/tradehandler.h"
 
-#include "depricatedevent.h"
 #include "inventory.h"
 #include "item.h"
 #include "logger.h"

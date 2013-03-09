@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "guildmanager.h"
 #include "localplayer.h"
+#include "notifymanager.h"
 #include "playerrelations.h"
 
 #include "gui/chatwindow.h"
@@ -353,14 +354,9 @@ void ChatHandler::processMVP(Net::MessageIn &msg)
     {
         const Being *const being = actorSpriteManager->findBeing(id);
         if (!being)
-        {
-            localChatTab->chatLog(_("MVP player."), BY_SERVER);
-        }
+            NotifyManager::notify(NotifyManager::MVP_PLAYER, "");
         else
-        {
-            localChatTab->chatLog(_("MVP player: ")
-                + being->getName(), BY_SERVER);
-        }
+            NotifyManager::notify(NotifyManager::MVP_PLAYER, being->getName());
     }
 }
 
@@ -378,12 +374,11 @@ void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg)
             switch (fail)
             {
                 case 0:
-                    localChatTab->chatLog(_("All whispers ignored."),
-                        BY_SERVER);
+                    NotifyManager::notify(NotifyManager::WHISPERS_IGNORED);
                     break;
                 default:
-                    localChatTab->chatLog(_("All whispers ignore failed."),
-                        BY_SERVER);
+                    NotifyManager::notify(NotifyManager::
+                        WHISPERS_IGNORE_FAILED);
                     break;
             }
             break;
@@ -393,12 +388,11 @@ void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg)
             switch (fail)
             {
                 case 0:
-                    localChatTab->chatLog(_("All whispers unignored."),
-                        BY_SERVER);
+                    NotifyManager::notify(NotifyManager::WHISPERS_UNIGNORED);
                     break;
                 default:
-                    localChatTab->chatLog(_("All whispers unignore failed."),
-                        BY_SERVER);
+                    NotifyManager::notify(NotifyManager::
+                        WHISPERS_UNIGNORE_FAILED);
                     break;
             }
             break;

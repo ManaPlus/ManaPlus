@@ -100,6 +100,13 @@ namespace NotifyManager
         TRADE_ADD_ERROR,
         TRADE_CANCELLED,
         TRADE_COMPLETE,
+        KICK_FAIL,
+        KICK_SUCCEED,
+        MVP_PLAYER,
+        WHISPERS_IGNORED,
+        WHISPERS_IGNORE_FAILED,
+        WHISPERS_UNIGNORED,
+        WHISPERS_UNIGNORE_FAILED,
 
         TYPE_END
     };
@@ -163,6 +170,13 @@ namespace NotifyManager
         {N_("Failed adding item for unknown reason."), EMPTY},
         {N_("Trade canceled."), EMPTY},
         {N_("Trade completed."), EMPTY},
+        {N_("Kick failed!"), EMPTY},
+        {N_("Kick succeeded!"), EMPTY},
+        {N_("MVP player: %s"), STRING},
+        {N_("All whispers ignored."), EMPTY},
+        {N_("All whispers ignore failed."), EMPTY},
+        {N_("All whispers unignored."), EMPTY},
+        {N_("All whispers unignore failed."), EMPTY},
     };
 }
 #endif
