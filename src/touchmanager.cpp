@@ -151,6 +151,10 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
                 fAll, fPressed, fReleased, fOut);
             mObjects.push_back(*item);
         }
+        else
+        {
+            delete images;
+        }
         theme->unload(skin);
     }
     else

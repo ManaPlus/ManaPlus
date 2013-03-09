@@ -2870,9 +2870,11 @@ void Client::logEvent(const SDL_Event &event)
         case SDL_ACTIVEEVENT:
             logger->log("event: SDL_ACTIVEEVENT: %d %d",
                 event.active.state, event.active.gain);
+            break;
 #ifdef ANDROID
         case SDL_ACCELEROMETER:
             logger->log("event: SDL_ACCELEROMETER");
+            break;
 #endif
         default:
             logger->log("event: other: %d", event.type);
