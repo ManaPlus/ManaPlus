@@ -105,6 +105,12 @@ namespace NotifyManager
         const NotificationInfo &info = notifications[message];
         switch (info.flags)
         {
+            case STRING:
+            {
+                localChatTab->chatLog(strprintf(gettext(info.text),
+                    str.c_str()), BY_SERVER);
+                break;
+            }
             case GUILD_STRING:
             {
                 ChatTab *const tab = getGuildTab();

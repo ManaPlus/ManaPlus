@@ -68,6 +68,10 @@ namespace NotifyManager
         PARTY_USER_LEFT,
         PARTY_UNKNOWN_USER_MSG,
         PARTY_USER_NOT_IN_PARTY,
+        MONEY_GET,
+        MONEY_SPENT,
+        SKILL_RAISE_ERROR,
+        ARROWS_EQUIP_NEEDED,
 
         TYPE_END
     };
@@ -76,6 +80,7 @@ namespace NotifyManager
     {
         EMPTY,
         INT,
+        STRING,
         GUILD,
         GUILD_STRING,
         PARTY,
@@ -131,6 +136,10 @@ namespace NotifyManager
         {N_("%s has left your party."), PARTY_STRING},
         {N_("An unknown member tried to say: %s"), PARTY_STRING},
         {N_("%s is not in your party!"), PARTY_STRING},
+        {N_("You picked up %s."), STRING},
+        {N_("You spent %s."), STRING},
+        {N_("Cannot raise skill!"), EMPTY},
+        {N_("Equip arrows first."), EMPTY},
     };
 }
 #endif

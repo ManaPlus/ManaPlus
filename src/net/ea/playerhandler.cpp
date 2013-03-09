@@ -25,6 +25,7 @@
 #include "game.h"
 #include "localplayer.h"
 #include "party.h"
+#include "notifymanager.h"
 #include "units.h"
 
 #include "gui/ministatuswindow.h"
@@ -456,13 +457,13 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
             const int newMoney = msg.readInt32();
             if (newMoney > oldMoney)
             {
-                SERVER_NOTICE(strprintf(_("You picked up %s."),
-                    Units::formatCurrency(newMoney - oldMoney).c_str()))
+                NotifyManager::notify(NotifyManager::MONEY_GET,
+                    Units::formatCurrency(newMoney - oldMoney));
             }
             else if (newMoney < oldMoney)
             {
-                SERVER_NOTICE(strprintf(_("You spent %s."),
-                    Units::formatCurrency(oldMoney - newMoney).c_str()))
+                NotifyManager::notify(NotifyManager::MONEY_SPENT,
+                    Units::formatCurrency(oldMoney - newMoney).c_str());
             }
 
             PlayerInfo::setAttribute(PlayerInfo::MONEY, newMoney);
@@ -505,7 +506,7 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
         int points = PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS);
         points += oldValue - value;
         PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, points);
-        SERVER_NOTICE(_("Cannot raise skill!"))
+        NotifyManager::notify(NotifyManager::SKILL_RAISE_ERROR);
     }
 
     PlayerInfo::setStatBase(type, value);
@@ -623,7 +624,7 @@ void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg)
     switch (type)
     {
         case 0:
-            SERVER_NOTICE(_("Equip arrows first."))
+            NotifyManager::notify(NotifyManager::ARROWS_EQUIP_NEEDED);
             break;
         case 3:
             // arrows equiped
