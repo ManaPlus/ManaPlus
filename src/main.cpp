@@ -51,40 +51,41 @@ char *selfName = nullptr;
 
 static void printHelp()
 {
-    using std::endl;
-
     std::cout
-        << _("manaplus [options] [manaplus-file]") << endl << endl
+        << _("manaplus [options] [manaplus-file]") << std::endl << std::endl
         << _("[manaplus-file] : The manaplus file is an XML file (.manaplus)")
-        << endl
-        << _("                  used to set custom parameters") << endl
+        << std::endl
+        << _("                  used to set custom parameters") << std::endl
         << _("                  to the manaplus client.")
-        << endl << endl
-        << _("Options:") << endl
-        << _("  -l --log-file       : Log file to use") << endl
-        << _("  -a --chat-log-dir   : Chat log dir to use") << endl
-        << _("  -v --version        : Display the version") << endl
-        << _("  -h --help           : Display this help") << endl
-        << _("  -C --config-dir     : Configuration directory to use") << endl
-        << _("  -U --username       : Login with this username") << endl
-        << _("  -P --password       : Login with this password") << endl
-        << _("  -c --character      : Login with this character") << endl
-        << _("  -s --server         : Login server name or IP") << endl
-        << _("  -p --port           : Login server port") << endl
-        << _("  -H --update-host    : Use this update host") << endl
+        << std::endl << std::endl
+        << _("Options:") << std::endl
+        << _("  -l --log-file       : Log file to use") << std::endl
+        << _("  -a --chat-log-dir   : Chat log dir to use") << std::endl
+        << _("  -v --version        : Display the version") << std::endl
+        << _("  -h --help           : Display this help") << std::endl
+        << _("  -C --config-dir     : Configuration directory to use")
+        << std::endl
+        << _("  -U --username       : Login with this username") << std::endl
+        << _("  -P --password       : Login with this password") << std::endl
+        << _("  -c --character      : Login with this character") << std::endl
+        << _("  -s --server         : Login server name or IP") << std::endl
+        << _("  -p --port           : Login server port") << std::endl
+        << _("  -H --update-host    : Use this update host") << std::endl
         << _("  -D --default        : Choose default character server and "
-                                     "character") << endl
-        << _("  -u --skip-update    : Skip the update downloads") << endl
+                                     "character") << std::endl
+        << _("  -u --skip-update    : Skip the update downloads") << std::endl
         << _("  -d --data           : Directory to load game "
-             "data from") << endl
+             "data from") << std::endl
         << _("  -L --localdata-dir  : Directory to use as local data"
-             " directory") << endl
-        << _("     --screenshot-dir : Directory to store screenshots") << endl
-        << _("     --safemode       : Start game in safe mode") << endl
+             " directory") << std::endl
+        << _("     --screenshot-dir : Directory to store screenshots")
+        << std::endl
+        << _("     --safemode       : Start game in safe mode") << std::endl
         << _("  -T --tests          : Start testing drivers and "
-                                     "auto configuring") << endl
+                                     "auto configuring") << std::endl
 #ifdef USE_OPENGL
-        << _("  -O --no-opengl      : Disable OpenGL for this session") << endl
+        << _("  -O --no-opengl      : Disable OpenGL for this session")
+        << std::endl
 #endif
         ;
 }
