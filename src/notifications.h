@@ -25,6 +25,23 @@
 
 namespace NotifyManager
 {
+    enum NotifyFlags
+    {
+        EMPTY,
+        INT,
+        STRING,
+        GUILD,
+        GUILD_STRING,
+        PARTY,
+        PARTY_STRING
+    };
+
+    struct NotificationInfo
+    {
+        const char *text;
+        const NotifyFlags flags;
+    };
+
     enum NotifyTypes
     {
         BUY_DONE,
@@ -72,25 +89,19 @@ namespace NotifyManager
         MONEY_SPENT,
         SKILL_RAISE_ERROR,
         ARROWS_EQUIP_NEEDED,
+        TRADE_FAIL_FAR_AWAY,
+        TRADE_FAIL_CHAR_NOT_EXISTS,
+        TRADE_CANCELLED_ERROR,
+        TRADE_CANCELLED_NAME,
+        TRADE_ERROR_UNKNOWN,
+        TRADE_ADD_PARTNER_OVER_WEIGHT,
+        TRADE_ADD_PARTNER_NO_SLOTS,
+        TRADE_ADD_UNTRADABLE_ITEM,
+        TRADE_ADD_ERROR,
+        TRADE_CANCELLED,
+        TRADE_COMPLETE,
 
         TYPE_END
-    };
-
-    enum NotifyFlags
-    {
-        EMPTY,
-        INT,
-        STRING,
-        GUILD,
-        GUILD_STRING,
-        PARTY,
-        PARTY_STRING
-    };
-
-    struct NotificationInfo
-    {
-        const char *text;
-        const NotifyFlags flags;
     };
 
     static const NotificationInfo notifications[] =
@@ -140,6 +151,18 @@ namespace NotifyManager
         {N_("You spent %s."), STRING},
         {N_("Cannot raise skill!"), EMPTY},
         {N_("Equip arrows first."), EMPTY},
+        {N_("Trading with %s isn't possible. Trade partner is too far away."),
+            STRING},
+        {N_("Trading with %s isn't possible. Character doesn't exist."), STRING},
+        {N_("Trade cancelled due to an unknown reason."), EMPTY},
+        {N_("Trade with %s cancelled."), STRING},
+        {N_("Unhandled trade cancel packet with %s"), STRING},
+        {N_("Failed adding item. Trade partner is over weighted."), EMPTY},
+        {N_("Failed adding item. Trade partner has no free slot."), EMPTY},
+        {N_("Failed adding item. You can't trade this item."), EMPTY},
+        {N_("Failed adding item for unknown reason."), EMPTY},
+        {N_("Trade canceled."), EMPTY},
+        {N_("Trade completed."), EMPTY},
     };
 }
 #endif

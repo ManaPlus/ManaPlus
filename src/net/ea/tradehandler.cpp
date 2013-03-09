@@ -26,6 +26,7 @@
 #include "inventory.h"
 #include "item.h"
 #include "logger.h"
+#include "notifymanager.h"
 #include "playerinfo.h"
 #include "playerrelations.h"
 
@@ -132,15 +133,15 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
     switch (msg.readInt8())
     {
         case 0: // Too far away
-            SERVER_NOTICE(strprintf(_("Trading with %s isn't possible."
-                " Trade partner is too far away."), tradePartnerName.c_str()))
+            NotifyManager::notify(NotifyManager::TRADE_FAIL_FAR_AWAY,
+                tradePartnerName);
             break;
         case 1: // Character doesn't exist
-            SERVER_NOTICE(strprintf(_("Trading with %s isn't possible."
-                " Character doesn't exist."), tradePartnerName.c_str()))
+            NotifyManager::notify(NotifyManager::TRADE_FAIL_CHAR_NOT_EXISTS,
+                tradePartnerName);
             break;
         case 2: // Invite request check failed...
-            SERVER_NOTICE(_("Trade cancelled due to an unknown reason."))
+            NotifyManager::notify(NotifyManager::TRADE_CANCELLED_ERROR);
             break;
         case 3: // Trade accepted
             if (tradeWindow)
@@ -156,8 +157,8 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
             if (player_relations.hasPermission(tradePartnerName,
                 PlayerRelation::SPEECH_LOG))
             {
-                SERVER_NOTICE(strprintf(_("Trade with %s cancelled."),
-                    tradePartnerName.c_str()))
+                NotifyManager::notify(NotifyManager::TRADE_CANCELLED_NAME,
+                    tradePartnerName);
             }
             // otherwise ignore silently
 
@@ -169,8 +170,8 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
             PlayerInfo::setTrading(false);
             break;
         default: // Shouldn't happen as well, but to be sure
-            SERVER_NOTICE(strprintf(_("Unhandled trade cancel packet with %s"),
-                tradePartnerName.c_str()))
+            NotifyManager::notify(NotifyManager::TRADE_ERROR_UNKNOWN,
+                tradePartnerName);
             if (tradeWindow)
                 tradeWindow->clear();
             break;
@@ -235,22 +236,19 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
             break;
         case 1:
             // Add item failed - player overweighted
-            SERVER_NOTICE(_("Failed adding item. Trade "
-                    "partner is over weighted."))
+            NotifyManager::notify(NotifyManager::
+                TRADE_ADD_PARTNER_OVER_WEIGHT);
             break;
         case 2:
-              // Add item failed - player has no free slot
-              SERVER_NOTICE(_("Failed adding item. Trade "
-                      "partner has no free slot."))
-              break;
+            // Add item failed - player has no free slot
+            NotifyManager::notify(NotifyManager::TRADE_ADD_PARTNER_NO_SLOTS);
+            break;
         case 3:
-              // Add item failed - non tradable item
-              SERVER_NOTICE(_("Failed adding item. You "
-                      "can't trade this item."))
-              break;
+            // Add item failed - non tradable item
+            NotifyManager::notify(NotifyManager::TRADE_ADD_UNTRADABLE_ITEM);
+            break;
         default:
-            SERVER_NOTICE(_("Failed adding item for "
-                    "unknown reason."))
+            NotifyManager::notify(NotifyManager::TRADE_ADD_ERROR);
             logger->log("QQQ SMSG_TRADE_ITEM_ADD_RESPONSE: "
                         + toString(res));
             break;
@@ -268,7 +266,7 @@ void TradeHandler::processTradeOk(Net::MessageIn &msg)
 
 void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED)
 {
-    SERVER_NOTICE(_("Trade canceled."))
+    NotifyManager::notify(NotifyManager::TRADE_CANCELLED);
     if (tradeWindow)
     {
         tradeWindow->setVisible(false);
@@ -279,7 +277,7 @@ void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED)
 
 void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED)
 {
-    SERVER_NOTICE(_("Trade completed."))
+    NotifyManager::notify(NotifyManager::TRADE_COMPLETE);
     if (tradeWindow)
     {
         tradeWindow->setVisible(false);
