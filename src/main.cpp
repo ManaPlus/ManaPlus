@@ -27,6 +27,7 @@
 
 #include <getopt.h>
 #include <iostream>
+#include <unistd.h>
 
 #include "utils/gettext.h"
 #ifdef ANDROID
@@ -238,12 +239,12 @@ int main(int argc, char *argv[])
     if (options.printHelp)
     {
         printHelp();
-        return 0;
+        _exit(0);
     }
     else if (options.printVersion)
     {
         printVersion();
-        return 0;
+        _exit(0);
     }
 
     // Initialize PhysicsFS
