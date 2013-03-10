@@ -186,7 +186,7 @@ namespace NotifyManager
         {N_("All whispers ignore failed."), EMPTY},
         {N_("All whispers unignored."), EMPTY},
         {N_("All whispers unignore failed."), EMPTY},
-        {N_("%s"), STRING},
+        {"%s", STRING},
         {N_("pvp off, gvg off"), SPEECH},
         {N_("pvp on"), SPEECH},
         {N_("gvg on"), SPEECH},
