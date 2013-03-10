@@ -126,10 +126,10 @@ void Party::removeMember(const PartyMember *const member)
         const MemberList::iterator itr_end = mMembers.end();
         while (itr != itr_end)
         {
-            if ((*itr) && (*itr)->mId == member->mId &&
-                (*itr)->getName() == member->getName())
+            const PartyMember *const m = *itr;
+            if (m && m->mId == member->mId
+                && m->getName() == member->getName())
             {
-                PartyMember *m = (*itr);
                 mMembers.erase(itr);
                 delete m;
                 deleted = true;
@@ -150,9 +150,9 @@ void Party::removeMember(const int id)
         const MemberList::iterator itr_end = mMembers.end();
         while (itr != itr_end)
         {
-            if ((*itr) && (*itr)->mId == id)
+            const PartyMember *const member = *itr;
+            if (member && member->mId == id)
             {
-                PartyMember *member = (*itr);
                 mMembers.erase(itr);
                 delete member;
                 deleted = true;
@@ -173,9 +173,9 @@ void Party::removeMember(const std::string &name)
         const MemberList::iterator itr_end = mMembers.end();
         while (itr != itr_end)
         {
-            if ((*itr) && (*itr)->getName() == name)
+            const PartyMember *const member = *itr;
+            if (member && member->getName() == name)
             {
-                PartyMember *member = (*itr);
                 mMembers.erase(itr);
                 delete member;
                 deleted = true;
@@ -227,11 +227,9 @@ bool Party::isMember(const PartyMember *const member) const
     const MemberList::const_iterator itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        if ((*itr) && (*itr)->mId == member->mId &&
-            (*itr)->getName() == member->getName())
-        {
+        const PartyMember *const m = *itr;
+        if (m && m->mId == member->mId && m->getName() == member->getName())
             return true;
-        }
         ++itr;
     }
 
@@ -244,7 +242,8 @@ bool Party::isMember(const int id) const
     const MemberList::const_iterator itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        if ((*itr) && (*itr)->mId == id)
+        const PartyMember *const m = *itr;
+        if (m && m->mId == id)
             return true;
         ++itr;
     }
@@ -258,7 +257,8 @@ bool Party::isMember(const std::string &name) const
     const MemberList::const_iterator itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        if ((*itr) && (*itr)->getName() == name)
+        const PartyMember *const m = *itr;
+        if (m && m->getName() == name)
             return true;
         ++itr;
     }
@@ -273,8 +273,9 @@ void Party::getNames(StringVect &names) const
     const MemberList::const_iterator it_end = mMembers.end();
     while (it != it_end)
     {
-        if (*it)
-            names.push_back((*it)->getName());
+        const PartyMember *const m = *it;
+        if (m)
+            names.push_back(m->getName());
         ++it;
     }
 }
@@ -286,8 +287,9 @@ void Party::getNamesSet(std::set<std::string> &names) const
     const MemberList::const_iterator it_end = mMembers.end();
     while (it != it_end)
     {
-        if (*it)
-            names.insert((*it)->getName());
+        const PartyMember *const m = *it;
+        if (m)
+            names.insert(m->getName());
         ++it;
     }
 }
