@@ -146,14 +146,14 @@ class NormalOpenGLGraphics final : public Graphics
 
         inline void drawQuadArrayfi(const int size);
 
-        inline void drawQuadArrayfi(GLint *intVertArray,
-                                    GLfloat *floatTexArray,
+        inline void drawQuadArrayfi(const GLint *const intVertArray,
+                                    const GLfloat *const floatTexArray,
                                     const int size);
 
         inline void drawQuadArrayii(const int size);
 
-        inline void drawQuadArrayii(GLint *intVertArray,
-                                    GLint *intTexArray,
+        inline void drawQuadArrayii(const GLint *const intVertArray,
+                                    const GLint *const intTexArray,
                                     const int size);
 
         inline void drawLineArrayi(const int size);
@@ -189,7 +189,7 @@ class NormalOpenGLGraphics final : public Graphics
         static unsigned int mLastDrawCalls;
 #endif
 
-        static void bindTexture(GLenum target, GLuint texture);
+        static void bindTexture(const GLenum target, const GLuint texture);
 
         static GLuint mLastImage;
 
@@ -200,11 +200,11 @@ class NormalOpenGLGraphics final : public Graphics
                         const int width, const int height,
                         const bool useColor) override;
 
-        void setTexturingAndBlending(bool enable);
+        void setTexturingAndBlending(const bool enable);
 
         void updateMemoryInfo();
 
-        void debugBindTexture(const Image *image);
+        void debugBindTexture(const Image *const image);
 
     private:
         void inline setColorAlpha(float alpha);

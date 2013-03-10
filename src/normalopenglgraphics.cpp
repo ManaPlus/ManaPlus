@@ -84,9 +84,10 @@ void NormalOpenGLGraphics::initArrays()
 
     // need alocate small size, after if limit reached reallocate to double size
     vertexBufSize = mMaxVertices;
-    mFloatTexArray = new GLfloat[mMaxVertices * 4 + 30];
-    mIntTexArray = new GLint[mMaxVertices * 4 + 30];
-    mIntVertArray = new GLint[mMaxVertices * 4 + 30];
+    const int sz = mMaxVertices * 4 + 30;
+    mFloatTexArray = new GLfloat[sz];
+    mIntTexArray = new GLint[sz];
+    mIntVertArray = new GLint[sz];
 }
 
 bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
@@ -99,9 +100,10 @@ bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
     return setOpenGLMode();
 }
 
-static inline void drawQuad(const Image *image,
-                            int srcX, int srcY, int dstX, int dstY,
-                            int width, int height)
+static inline void drawQuad(const Image *const image,
+                            const int srcX, const int srcY,
+                            const int dstX, const int dstY,
+                            const int width, const int height)
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
@@ -167,9 +169,11 @@ static inline void drawQuad(const Image *image,
 }
 
 static inline void drawRescaledQuad(const Image *const image,
-                                    int srcX, int srcY, int dstX, int dstY,
-                                    int width, int height,
-                                    int desiredWidth, int desiredHeight)
+                                    const int srcX, const int srcY,
+                                    const int dstX, const int dstY,
+                                    const int width, const int height,
+                                    const int desiredWidth,
+                                    const int desiredHeight)
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
@@ -245,8 +249,9 @@ bool NormalOpenGLGraphics::drawImage2(const Image *const image,
     if (!image)
         return false;
 
-    srcX += image->mBounds.x;
-    srcY += image->mBounds.y;
+    const SDL_Rect &imageRect = image->mBounds;
+    srcX += imageRect.x;
+    srcY += imageRect.y;
 
     if (!useColor)
         setColorAlpha(image->mAlpha);
@@ -303,8 +308,9 @@ bool NormalOpenGLGraphics::drawRescaledImage(const Image *const image,
     if (width > desiredWidth && height > desiredHeight)
         smooth = false;
 
-    srcX += image->mBounds.x;
-    srcY += image->mBounds.y;
+    const SDL_Rect &imageRect = image->mBounds;
+    srcX += imageRect.x;
+    srcY += imageRect.y;
 
     if (!useColor)
         setColorAlpha(image->mAlpha);
@@ -345,11 +351,11 @@ void NormalOpenGLGraphics::drawImagePattern(const Image *const image,
     if (!image)
         return;
 
-    const int srcX = image->mBounds.x;
-    const int srcY = image->mBounds.y;
-
-    const int iw = image->mBounds.w;
-    const int ih = image->mBounds.h;
+    const SDL_Rect &imageRect = image->mBounds;
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+    const int iw = imageRect.w;
+    const int ih = imageRect.h;
 
     if (iw == 0 || ih == 0)
         return;
@@ -371,20 +377,20 @@ void NormalOpenGLGraphics::drawImagePattern(const Image *const image,
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
-        float texX1 = static_cast<float>(srcX) / tw;
-        float texY1 = static_cast<float>(srcY) / th;
+        const float texX1 = static_cast<float>(srcX) / tw;
+        const float texY1 = static_cast<float>(srcY) / th;
 
         for (int py = 0; py < h; py += ih)
         {
             const int height = (py + ih >= h) ? h - py : ih;
             const int dstY = y + py;
+            const float texY2 = static_cast<float>(srcY + height) / th;
             for (int px = 0; px < w; px += iw)
             {
-                int width = (px + iw >= w) ? w - px : iw;
-                int dstX = x + px;
+                const int width = (px + iw >= w) ? w - px : iw;
+                const int dstX = x + px;
 
-                float texX2 = static_cast<float>(srcX + width) / tw;
-                float texY2 = static_cast<float>(srcY + height) / th;
+                const float texX2 = static_cast<float>(srcX + width) / tw;
 
                 mFloatTexArray[vp + 0] = texX1;
                 mFloatTexArray[vp + 1] = texY1;
@@ -429,8 +435,8 @@ void NormalOpenGLGraphics::drawImagePattern(const Image *const image,
             const int dstY = y + py;
             for (int px = 0; px < w; px += iw)
             {
-                int width = (px + iw >= w) ? w - px : iw;
-                int dstX = x + px;
+                const int width = (px + iw >= w) ? w - px : iw;
+                const int dstX = x + px;
 
                 mIntTexArray[vp + 0] = srcX;
                 mIntTexArray[vp + 1] = srcY;
@@ -481,13 +487,14 @@ void NormalOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     if (scaledWidth == 0 || scaledHeight == 0)
         return;
 
-    const int srcX = image->mBounds.x;
-    const int srcY = image->mBounds.y;
-
-    const int iw = image->getWidth();
-    const int ih = image->getHeight();
+    const SDL_Rect &imageRect = image->mBounds;
+    const int iw = imageRect.w;
+    const int ih = imageRect.h;
     if (iw == 0 || ih == 0)
         return;
+
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
 
     setColorAlpha(image->mAlpha);
 
@@ -518,17 +525,17 @@ void NormalOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
             const int height = (py + scaledHeight >= h)
                 ? h - py : scaledHeight;
             const int dstY = y + py;
+            const float visibleFractionH = static_cast<float>(height)
+                / scaledHeight;
+            const float texY2 = texY1 + tFractionH * visibleFractionH;
             for (int px = 0; px < w; px += scaledWidth)
             {
-                int width = (px + scaledWidth >= w) ? w - px : scaledWidth;
-                int dstX = x + px;
+                const int width = (px + scaledWidth >= w)
+                    ? w - px : scaledWidth;
+                const int dstX = x + px;
                 const float visibleFractionW = static_cast<float>(width)
                     / scaledWidth;
-                const float visibleFractionH = static_cast<float>(height)
-                    / scaledHeight;
-
                 const float texX2 = texX1 + tFractionW * visibleFractionW;
-                const float texY2 = texY1 + tFractionH * visibleFractionH;
 
                 mFloatTexArray[vp + 0] = texX1;
                 mFloatTexArray[vp + 1] = texY1;
@@ -673,15 +680,15 @@ void NormalOpenGLGraphics::calcImagePattern(ImageVertexes* const vert,
     if (!image)
         return;
 
-    const int srcX = image->mBounds.x;
-    const int srcY = image->mBounds.y;
-
-    const int iw = image->mBounds.w;
-    const int ih = image->mBounds.h;
+    const SDL_Rect &imageRect = image->mBounds;
+    const int iw = imageRect.w;
+    const int ih = imageRect.h;
 
     if (iw == 0 || ih == 0)
         return;
 
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
     const float tw = static_cast<float>(image->mTexWidth);
     const float th = static_cast<float>(image->mTexHeight);
 
@@ -693,8 +700,8 @@ void NormalOpenGLGraphics::calcImagePattern(ImageVertexes* const vert,
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
-        float texX1 = static_cast<float>(srcX) / tw;
-        float texY1 = static_cast<float>(srcY) / th;
+        const float texX1 = static_cast<float>(srcX) / tw;
+        const float texY1 = static_cast<float>(srcY) / th;
 
         GLfloat *floatTexArray = ogl.continueFloatTexArray();
         GLint *intVertArray = ogl.continueIntVertArray();
@@ -703,13 +710,12 @@ void NormalOpenGLGraphics::calcImagePattern(ImageVertexes* const vert,
         {
             const int height = (py + ih >= h) ? h - py : ih;
             const int dstY = y + py;
+            const float texY2 = static_cast<float>(srcY + height) / th;
             for (int px = 0; px < w; px += iw)
             {
-                int width = (px + iw >= w) ? w - px : iw;
-                int dstX = x + px;
-
-                float texX2 = static_cast<float>(srcX + width) / tw;
-                float texY2 = static_cast<float>(srcY + height) / th;
+                const int width = (px + iw >= w) ? w - px : iw;
+                const int dstX = x + px;
+                const float texX2 = static_cast<float>(srcX + width) / tw;
 
                 floatTexArray[vp + 0] = texX1;
                 floatTexArray[vp + 1] = texY1;
@@ -757,8 +763,8 @@ void NormalOpenGLGraphics::calcImagePattern(ImageVertexes* const vert,
             const int dstY = y + py;
             for (int px = 0; px < w; px += iw)
             {
-                int width = (px + iw >= w) ? w - px : iw;
-                int dstX = x + px;
+                const int width = (px + iw >= w) ? w - px : iw;
+                const int dstX = x + px;
 
                 intTexArray[vp + 0] = srcX;
                 intTexArray[vp + 1] = srcY;
@@ -865,14 +871,15 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
     if (!vert || !image)
         return;
 
-    const int srcX = image->mBounds.x;
-    const int srcY = image->mBounds.y;
-
-    const int w = image->mBounds.w;
-    const int h = image->mBounds.h;
+    const SDL_Rect &imageRect = image->mBounds;
+    const int w = imageRect.w;
+    const int h = imageRect.h;
 
     if (w == 0 || h == 0)
         return;
+
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
 
     const float tw = static_cast<float>(image->mTexWidth);
     const float th = static_cast<float>(image->mTexHeight);
@@ -887,14 +894,14 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
-        float texX1 = static_cast<float>(srcX) / tw;
-        float texY1 = static_cast<float>(srcY) / th;
+        const float texX1 = static_cast<float>(srcX) / tw;
+        const float texY1 = static_cast<float>(srcY) / th;
 
-        float texX2 = static_cast<float>(srcX + w) / tw;
-        float texY2 = static_cast<float>(srcY + h) / th;
+        const float texX2 = static_cast<float>(srcX + w) / tw;
+        const float texY2 = static_cast<float>(srcY + h) / th;
 
-        GLfloat *floatTexArray = ogl.continueFloatTexArray();
-        GLint *intVertArray = ogl.continueIntVertArray();
+        GLfloat *const floatTexArray = ogl.continueFloatTexArray();
+        GLint *const intVertArray = ogl.continueIntVertArray();
 
         floatTexArray[vp + 0] = texX1;
         floatTexArray[vp + 1] = texY1;
@@ -931,8 +938,8 @@ void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
     }
     else
     {
-        GLint *intTexArray = ogl.continueIntTexArray();
-        GLint *intVertArray = ogl.continueIntVertArray();
+        GLint *const intTexArray = ogl.continueIntTexArray();
+        GLint *const intVertArray = ogl.continueIntVertArray();
 
         intTexArray[vp + 0] = srcX;
         intTexArray[vp + 1] = srcY;
@@ -974,7 +981,7 @@ void NormalOpenGLGraphics::drawTile(const ImageVertexes *const vert)
 {
     if (!vert)
         return;
-    const Image *image = vert->image;
+    const Image *const image = vert->image;
 
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -1096,7 +1103,7 @@ SDL_Surface* NormalOpenGLGraphics::getScreenshot()
     const int w = mTarget->w - (mTarget->w % 4);
     GLint pack = 1;
 
-    SDL_Surface *screenshot = SDL_CreateRGBSurface(
+    SDL_Surface *const screenshot = SDL_CreateRGBSurface(
             SDL_SWSURFACE,
             w, h, 24,
             0xff0000, 0x00ff00, 0x0000ff, 0x000000);
@@ -1113,14 +1120,14 @@ SDL_Surface* NormalOpenGLGraphics::getScreenshot()
     glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
 
     // Flip the screenshot, as OpenGL has 0,0 in bottom left
-    unsigned int lineSize = 3 * w;
-    GLubyte* buf = static_cast<GLubyte*>(malloc(lineSize));
+    const unsigned int lineSize = 3 * w;
+    GLubyte *const buf = static_cast<GLubyte *const>(malloc(lineSize));
 
     for (int i = 0; i < (h / 2); i++)
     {
-        GLubyte *top = static_cast<GLubyte*>(
+        GLubyte *const top = static_cast<GLubyte *const>(
             screenshot->pixels) + lineSize * i;
-        GLubyte *bot = static_cast<GLubyte*>(
+        GLubyte *const bot = static_cast<GLubyte *const>(
             screenshot->pixels) + lineSize * (h - 1 - i);
 
         memcpy(buf, top, lineSize);
@@ -1153,7 +1160,7 @@ bool NormalOpenGLGraphics::pushClipArea(gcn::Rectangle area)
         transY = -clipArea.yOffset;
     }
 
-    bool result = gcn::Graphics::pushClipArea(area);
+    const bool result = gcn::Graphics::pushClipArea(area);
 
     const gcn::ClipRectangle &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
@@ -1226,7 +1233,7 @@ void NormalOpenGLGraphics::setTargetPlane(int width A_UNUSED,
 {
 }
 
-void NormalOpenGLGraphics::setTexturingAndBlending(bool enable)
+void NormalOpenGLGraphics::setTexturingAndBlending(const bool enable)
 {
     if (enable)
     {
@@ -1348,7 +1355,8 @@ bool NormalOpenGLGraphics::drawNet(const int x1, const int y1,
     return true;
 }
 
-void NormalOpenGLGraphics::bindTexture(GLenum target, GLuint texture)
+void NormalOpenGLGraphics::bindTexture(const GLenum target,
+                                       const GLuint texture)
 {
     if (mLastImage != texture)
     {
@@ -1368,8 +1376,8 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size)
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void NormalOpenGLGraphics::drawQuadArrayfi(GLint *const intVertArray,
-                                                  GLfloat *const floatTexArray,
+inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *const intVertArray,
+                                                  const GLfloat *const floatTexArray,
                                                   const int size)
 {
     glVertexPointer(2, GL_INT, 0, intVertArray);
@@ -1392,8 +1400,8 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const int size)
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void NormalOpenGLGraphics::drawQuadArrayii(GLint *const intVertArray,
-                                                  GLint *const intTexArray,
+inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *const intVertArray,
+                                                  const GLint *const intTexArray,
                                                   const int size)
 {
     glVertexPointer(2, GL_INT, 0, intVertArray);
@@ -1469,7 +1477,7 @@ void NormalOpenGLGraphics::restoreColor()
 }
 
 #ifdef DEBUG_BIND_TEXTURE
-void NormalOpenGLGraphics::debugBindTexture(const Image *image)
+void NormalOpenGLGraphics::debugBindTexture(const Image *const image)
 {
     const std::string texture = image->getIdPath();
     if (mOldTexture != texture)
@@ -1485,7 +1493,7 @@ void NormalOpenGLGraphics::debugBindTexture(const Image *image)
     }
 }
 #else
-void NormalOpenGLGraphics::debugBindTexture(const Image *image A_UNUSED)
+void NormalOpenGLGraphics::debugBindTexture(const Image *const image A_UNUSED)
 {
 }
 #endif
