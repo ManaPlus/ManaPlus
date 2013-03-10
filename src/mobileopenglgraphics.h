@@ -144,8 +144,8 @@ class MobileOpenGLGraphics final : public Graphics
 
         void setTargetPlane(int width, int height);
 
-        inline void drawTriangleArrayfs(GLshort *shortVertArray,
-                                        GLfloat *floatTexArray,
+        inline void drawTriangleArrayfs(const GLshort *const shortVertArray,
+                                        const GLfloat *const floatTexArray,
                                         const int size);
 
         inline void drawTriangleArrayfs(const int size);
@@ -181,7 +181,7 @@ class MobileOpenGLGraphics final : public Graphics
         static unsigned int mLastDrawCalls;
 #endif
 
-        static void bindTexture(GLenum target, GLuint texture);
+        static void bindTexture(const GLenum target, const GLuint texture);
 
         static GLuint mLastImage;
 
@@ -192,7 +192,7 @@ class MobileOpenGLGraphics final : public Graphics
                         const int width, const int height,
                         const bool useColor) override;
 
-        void setTexturingAndBlending(bool enable);
+        void setTexturingAndBlending(const bool enable);
 
         void updateMemoryInfo();
 
