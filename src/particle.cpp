@@ -207,10 +207,11 @@ bool Particle::update()
             FOR_EACH (EmitterConstIterator, e, mChildEmitters)
             {
                 Particles newParticles = (*e)->createParticles(mLifetimePast);
-                FOR_EACH (ParticleConstIterator, p, newParticles)
+                FOR_EACH (ParticleConstIterator, it, newParticles)
                 {
-                    (*p)->moveBy(mPos);
-                    mChildParticles.push_back (*p);
+                    Particle *const p = *it;
+                    p->moveBy(mPos);
+                    mChildParticles.push_back (p);
                 }
             }
         }
@@ -236,18 +237,19 @@ bool Particle::update()
     for (ParticleIterator p = mChildParticles.begin(),
          p2 = mChildParticles.end(); p != p2; )
     {
+        Particle *const particle = *p;
         //move particle with its parent if desired
-        if ((*p)->doesFollow())
-            (*p)->moveBy(change);
+        if (particle->doesFollow())
+            particle->moveBy(change);
 
         //update particle
-        if ((*p)->update())
+        if (particle->update())
         {
             ++p;
         }
         else
         {
-            delete (*p);
+            delete particle;
             p = mChildParticles.erase(p);
         }
     }
@@ -262,8 +264,9 @@ void Particle::moveBy(const Vector &change)
     mPos += change;
     FOR_EACH (ParticleConstIterator, p, mChildParticles)
     {
-        if ((*p)->doesFollow())
-            (*p)->moveBy(change);
+        Particle *const particle = *p;
+        if (particle->doesFollow())
+            particle->moveBy(change);
     }
 }
 
@@ -285,11 +288,9 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
 {
     Particle *newParticle = nullptr;
 
-    size_t pos = particleEffectFile.find('|');
-    std::string dyePalettes;
-    if (pos != std::string::npos)
-        dyePalettes = particleEffectFile.substr(pos + 1);
-
+    const size_t pos = particleEffectFile.find('|');
+    const std::string dyePalettes = (pos != std::string::npos)
+        ? particleEffectFile.substr(pos + 1) : "";
     XML::Document doc(particleEffectFile.substr(0, pos));
     const XmlNodePtr rootNode = doc.rootNode();
 
@@ -346,9 +347,9 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
             effectChildNode, "position-y", 0));
         const float offsetZ = static_cast<float>(XML::getFloatProperty(
             effectChildNode, "position-z", 0));
-        Vector position (mPos.x + static_cast<float>(pixelX) + offsetX,
-                         mPos.y + static_cast<float>(pixelY) + offsetY,
-                         mPos.z + offsetZ);
+        const Vector position (mPos.x + static_cast<float>(pixelX) + offsetX,
+            mPos.y + static_cast<float>(pixelY) + offsetY,
+            mPos.z + offsetZ);
         newParticle->moveTo(position);
 
         const int lifetime = XML::getProperty(effectChildNode, "lifetime", -1);
@@ -363,14 +364,13 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         {
             if (xmlNameEqual(emitterNode, "emitter"))
             {
-                ParticleEmitter *newEmitter;
-                newEmitter = new ParticleEmitter(emitterNode, newParticle,
-                    mMap, rotation, dyePalettes);
+                ParticleEmitter *const newEmitter = new ParticleEmitter(
+                    emitterNode, newParticle, mMap, rotation, dyePalettes);
                 newParticle->addEmitter(newEmitter);
             }
             else if (xmlNameEqual(emitterNode, "deatheffect"))
             {
-                std::string deathEffect = reinterpret_cast<const char*>(
+                const std::string deathEffect = reinterpret_cast<const char*>(
                     emitterNode->xmlChildrenNode->content);
 
                 char deathEffectConditions = 0x00;

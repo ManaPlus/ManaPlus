@@ -76,7 +76,8 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
     {
         if (xmlNameEqual(propertyNode, "property"))
         {
-            std::string name = XML::getProperty(propertyNode, "name", "");
+            const std::string name = XML::getProperty(
+                propertyNode, "name", "");
 
             if (name == "position-x")
             {
@@ -227,13 +228,12 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             {
                 const int delay = XML::getIntProperty(
                     frameNode, "delay", 0, 0, 100000);
-                int offsetX = XML::getProperty(frameNode, "offsetX", 0);
-                int offsetY = XML::getProperty(frameNode, "offsetY", 0);
+                const int offsetX = XML::getProperty(frameNode, "offsetX", 0)
+                    - imageset->getWidth() / 2 + 16;
+                const int offsetY = XML::getProperty(frameNode, "offsetY", 0)
+                    - imageset->getHeight() + 32;
                 const int rand = XML::getIntProperty(
                     frameNode, "rand", 100, 0, 100);
-
-                offsetY -= imageset->getHeight() - 32;
-                offsetX -= imageset->getWidth() / 2 - 16;
 
                 if (xmlNameEqual(frameNode, "frame"))
                 {
@@ -270,7 +270,6 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
                     while (end >= start)
                     {
                         Image *const img = imageset->get(start);
-
                         if (!img)
                         {
                             logger->log("No image at index %d", start);
@@ -279,7 +278,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
 
                         mParticleRotation.addFrame(img, delay,
                             offsetX, offsetY, rand);
-                        start++;
+                        start ++;
                     }
                 }
                 else if (xmlNameEqual(frameNode, "end"))
@@ -309,16 +308,15 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
                 const int delay = XML::getIntProperty(
                     frameNode, "delay", 0, 0, 100000);
                 const int offsetX = XML::getProperty(frameNode, "offsetX", 0)
-                     - (imageset->getWidth() / 2 - 16);
+                    - imageset->getWidth() / 2 + 16;
                 const int offsetY = XML::getProperty(frameNode, "offsetY", 0)
-                    - (imageset->getHeight() - 32);
+                    - imageset->getHeight() + 32;
                 const int rand = XML::getIntProperty(
                     frameNode, "rand", 100, 0, 100);
 
                 if (xmlNameEqual(frameNode, "frame"))
                 {
                     const int index = XML::getProperty(frameNode, "index", -1);
-
                     if (index < 0)
                     {
                         logger->log1("No valid value for 'index'");
@@ -468,7 +466,6 @@ ParticleEmitter::~ParticleEmitter()
     }
 }
 
-
 template <typename T> ParticleEmitterProp<T>
 ParticleEmitter::readParticleEmitterProp(XmlNodePtr propertyNode, T def)
 {
@@ -480,12 +477,13 @@ ParticleEmitter::readParticleEmitterProp(XmlNodePtr propertyNode, T def)
         static_cast<double>(def))), static_cast<T>(XML::getFloatProperty(
         propertyNode, "max", static_cast<double>(def))));
 
-    std::string change = XML::getProperty(propertyNode, "change-func", "none");
+    const std::string change = XML::getProperty(
+        propertyNode, "change-func", "none");
     T amplitude = static_cast<T>(XML::getFloatProperty(propertyNode,
         "change-amplitude", 0.0));
 
-    int period = XML::getProperty(propertyNode, "change-period", 0);
-    int phase = XML::getProperty(propertyNode, "change-phase", 0);
+    const int period = XML::getProperty(propertyNode, "change-period", 0);
+    const int phase = XML::getProperty(propertyNode, "change-phase", 0);
     if (change == "saw" || change == "sawtooth")
         retval.setFunction(FUNC_SAW, amplitude, period, phase);
     else if (change == "sine" || change == "sinewave")
@@ -498,14 +496,13 @@ ParticleEmitter::readParticleEmitterProp(XmlNodePtr propertyNode, T def)
     return retval;
 }
 
-
 std::list<Particle *> ParticleEmitter::createParticles(const int tick)
 {
     std::list<Particle *> newParticles;
 
     if (mOutputPauseLeft > 0)
     {
-        mOutputPauseLeft--;
+        mOutputPauseLeft --;
         return newParticles;
     }
     mOutputPauseLeft = mOutputPause.value(tick);
@@ -519,7 +516,7 @@ std::list<Particle *> ParticleEmitter::createParticles(const int tick)
         Particle *newParticle;
         if (mParticleImage)
         {
-            std::string name = mParticleImage->getIdPath();
+            const std::string name = mParticleImage->getIdPath();
             if (ImageParticle::imageParticleCountByName.find(name) ==
                 ImageParticle::imageParticleCountByName.end())
             {
@@ -546,9 +543,9 @@ std::list<Particle *> ParticleEmitter::createParticles(const int tick)
             newParticle = new Particle(mMap);
         }
 
-        Vector position(mParticlePosX.value(tick),
-                        mParticlePosY.value(tick),
-                        mParticlePosZ.value(tick));
+        const Vector position(mParticlePosX.value(tick),
+            mParticlePosY.value(tick),
+            mParticlePosZ.value(tick));
         newParticle->moveTo(position);
 
         const float angleH = mParticleAngleHorizontal.value(tick);
@@ -593,11 +590,9 @@ void ParticleEmitter::adjustSize(const int w, const int h)
         return; // new dimensions are illegal
 
     // calculate the old rectangle
-    const int oldWidth = static_cast<int>(
-        mParticlePosX.maxVal - mParticlePosX.minVal);
-    const int oldHeight = static_cast<int>(
+    const int oldArea = static_cast<int>(
+        mParticlePosX.maxVal - mParticlePosX.minVal) * static_cast<int>(
         mParticlePosX.maxVal - mParticlePosY.minVal);
-    const int oldArea = oldWidth * oldHeight;
     if (oldArea == 0)
     {
         //when the effect has no dimension it is

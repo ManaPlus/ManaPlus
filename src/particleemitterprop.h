@@ -58,7 +58,8 @@ template <typename T> struct ParticleEmitterProp final
         set(val, val);
     }
 
-    void setFunction(ChangeFunc func, T amplitude, int period, int phase)
+    void setFunction(ChangeFunc func, T amplitude,
+                     const int period, const int phase)
     {
         changeFunc = func;
         changeAmplitude = amplitude;

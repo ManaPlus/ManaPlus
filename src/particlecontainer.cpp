@@ -32,7 +32,8 @@ ParticleContainer::ParticleContainer(ParticleContainer *const parent,
                                      const bool delParent):
     mDelParent(delParent),
     mNext(parent)
-{}
+{
+}
 
 ParticleContainer::~ParticleContainer()
 {
@@ -82,9 +83,10 @@ void ParticleList::removeLocally(const Particle *const particle)
     for (std::list<Particle *>::iterator it = mElements.begin();
          it != mElements.end(); )
     {
-        if (*it == particle)
+        Particle *const p = *it;
+        if (p == particle)
         {
-            (*it)->kill();
+            p->kill();
             it = mElements.erase(it);
         }
         else
@@ -109,10 +111,11 @@ void ParticleList::moveTo(const float x, const float y)
     for (std::list<Particle *>::iterator it = mElements.begin();
          it != mElements.end(); )
     {
-        (*it)->moveTo(x, y);
-        if ((*it)->isExtinct())
+        Particle *const p = *it;
+        p->moveTo(x, y);
+        if (p->isExtinct())
         {
-            (*it)->kill();
+            p->kill();
             it = mElements.erase(it);
         }
         else
@@ -176,13 +179,14 @@ void ParticleVector::moveTo(const float x, const float y)
     for (std::vector<Particle *>::iterator it = mIndexedElements.begin();
          it != mIndexedElements.end(); ++it)
     {
-        if (*it)
+        Particle *const p = *it;
+        if (p)
         {
-            (*it)->moveTo(x, y);
+            p->moveTo(x, y);
 
-            if ((*it)->isExtinct())
+            if (p->isExtinct())
             {
-                (*it)->kill();
+                p->kill();
                 *it = nullptr;
             }
         }
