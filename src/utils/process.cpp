@@ -42,8 +42,8 @@ const int timeOut = 10;
 int execFileWait(std::string pathName, std::string name A_UNUSED,
                  std::string arg1, std::string arg2, int waitTime)
 {
-    if (!waitTime)
-        waitTime = timeOut;
+//    if (!waitTime)
+//        waitTime = timeOut;
 
     STARTUPINFO siStartupInfo;
     PROCESS_INFORMATION piProcessInfo;

@@ -158,15 +158,11 @@ void CompoundSprite::drawSpritesSDL(Graphics *const graphics,
 
 int CompoundSprite::getWidth() const
 {
-    const Sprite *base = nullptr;
-
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
-        if ((base = *it))
-        {
-            if (base)
-                return base->getWidth();
-        }
+        const Sprite *const base = *it;
+        if (base)
+            return base->getWidth();
     }
 
     return 0;
@@ -174,15 +170,11 @@ int CompoundSprite::getWidth() const
 
 int CompoundSprite::getHeight() const
 {
-    const Sprite *base = nullptr;
-
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
-        if ((base = *it))
-        {
-            if (base)
-                return base->getHeight();
-        }
+        const Sprite *const base = nullptr;
+        if (base)
+            return base->getHeight();
     }
 
     return 0;

@@ -160,14 +160,8 @@ int InventoryHandler::getSlot(int eAthenaSlot)
 void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
                                               bool playerInvintory)
 {
-    int index, amount, itemId, arrow;
-    int cards[4], itemType;
-    unsigned char identified;
-    Inventory *inventory = nullptr;
-
-    if (player_node)
-        inventory = PlayerInfo::getInventory();
-
+    Inventory *const inventory = player_node
+        ? PlayerInfo::getInventory() : nullptr;
     if (playerInvintory)
     {
         if (PlayerInfo::getEquipment())
@@ -190,16 +184,16 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
 
     for (int loop = 0; loop < number; loop++)
     {
-        index = msg.readInt16();
-        itemId = msg.readInt16();
-        itemType = msg.readInt8();
-        identified = msg.readInt8();
-        amount = msg.readInt16();
-        arrow = msg.readInt16();
+        int cards[4];
+        const int index = msg.readInt16() - (playerInvintory
+            ? INVENTORY_OFFSET : STORAGE_OFFSET);
+        const int itemId = msg.readInt16();
+        const int itemType = msg.readInt8();
+        unsigned char identified = msg.readInt8();
+        const int amount = msg.readInt16();
+        const int arrow = msg.readInt16();
         for (int i = 0; i < 4; i++)
             cards[i] = msg.readInt16();
-
-        index -= (playerInvintory ? INVENTORY_OFFSET : STORAGE_OFFSET);
 
         if (mDebugInventory)
         {
@@ -233,24 +227,21 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
 
 void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
 {
-    int index, amount, itemId, refine;
-    int cards[4], itemType;
-    unsigned char identified;
-
     msg.readInt16();  // length
     const int number = (msg.getLength() - 4) / 20;
 
     for (int loop = 0; loop < number; loop++)
     {
-        index = msg.readInt16() - STORAGE_OFFSET;
-        itemId = msg.readInt16();
-        itemType = msg.readInt8();
-        identified = msg.readInt8();
-        amount = 1;
+        int cards[4];
+        const int index = msg.readInt16() - STORAGE_OFFSET;
+        const int itemId = msg.readInt16();
+        const int itemType = msg.readInt8();
+        unsigned char identified = msg.readInt8();
+        const int amount = 1;
         msg.readInt16();    // Equip Point?
         msg.readInt16();    // Another Equip Point?
         msg.readInt8();   // Attribute (broken)
-        refine = msg.readInt8();
+        const int refine = msg.readInt8();
         for (int i = 0; i < 4; i++)
             cards[i] = msg.readInt16();
 
@@ -507,10 +498,6 @@ void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
 
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 {
-    int index, itemId, equipType, refine;
-    int number;
-    unsigned char identified;
-
     Inventory *inventory = nullptr;
     if (player_node)
         inventory = PlayerInfo::getInventory();
@@ -522,21 +509,20 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         mEquips.clear();
         PlayerInfo::getEquipment()->setBackend(&mEquips);
     }
-    number = (msg.getLength() - 4) / 20;
+    const int number = (msg.getLength() - 4) / 20;
 
     for (int loop = 0; loop < number; loop++)
     {
-        index = msg.readInt16() - INVENTORY_OFFSET;
-        itemId = msg.readInt16();
+        const int index = msg.readInt16() - INVENTORY_OFFSET;
+        const int itemId = msg.readInt16();
         const int itemType = msg.readInt8();  // type
-        identified = msg.readInt8();  // identify flag
+        unsigned char identified = msg.readInt8();  // identify flag
 
         msg.readInt16(); // equip type
-        equipType = msg.readInt16();
+        const int equipType = msg.readInt16();
         msg.readInt8();  // attribute
-        refine = msg.readInt8();
+        const int refine = msg.readInt8();
         msg.skip(8);     // card
-
 
         if (mDebugInventory)
         {

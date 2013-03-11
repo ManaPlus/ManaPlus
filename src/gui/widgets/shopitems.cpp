@@ -116,13 +116,11 @@ void ShopItems::clear()
 
 ShopItem *ShopItems::findItem(const int id, const unsigned char color) const
 {
-    ShopItem *item;
-
     std::vector<ShopItem*>::const_iterator it = mShopItems.begin();
     const std::vector<ShopItem*>::const_iterator e = mShopItems.end();
     while (it != e)
     {
-        item = *(it);
+        ShopItem *const item = *it;
         if (item->getId() == id && item->getColor() == color)
             return item;
 

@@ -2193,25 +2193,6 @@ void Client::accountLogin(LoginData *const data) const
     serverConfig.setValue("remember", remember);
 }
 
-bool Client::copyFile(const std::string &configPath,
-                      const std::string &oldConfigPath) const
-{
-    FILE *const configFile = fopen(oldConfigPath.c_str(), "r");
-
-    if (configFile)
-    {
-        fclose(configFile);
-
-        std::ifstream ifs(oldConfigPath.c_str(), std::ios::binary);
-        std::ofstream ofs(configPath.c_str(), std::ios::binary);
-        ofs << ifs.rdbuf();
-        ifs.close();
-        ofs.close();
-        return true;
-    }
-    return false;
-}
-
 void Client::storeSafeParameters() const
 {
     bool tmpHwaccel;

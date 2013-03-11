@@ -207,12 +207,11 @@ size_t findI(std::string str, std::string subStr)
 size_t findI(std::string text, StringVect &list)
 {
     std::string str = toLower(text);
-    size_t idx;
     FOR_EACH (StringVectCIter, i, list)
     {
         std::string subStr = *i;
         subStr = toLower(subStr);
-        idx = str.find(subStr);
+        const size_t idx = str.find(subStr);
         if (idx != std::string::npos)
             return idx;
     }
@@ -375,11 +374,10 @@ bool getBoolFromString(const std::string &text)
 
 void replaceSpecialChars(std::string &text)
 {
-    size_t idx = 0;
     size_t pos1 = text.find("&");
     while (pos1 != std::string::npos)
     {
-        idx = pos1 + 1;
+        const size_t idx = pos1 + 1;
         if (idx >= text.size())
             break;
 

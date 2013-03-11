@@ -188,14 +188,7 @@ void StatusPopup::view(const int x, const int y)
     requestMoveToTop();
 }
 
-void StatusPopup::setLabelText(Label *const label, const char *const text,
-                               int const key) const
-{
-    label->setCaption(strprintf("%s  %s", text,
-        inputManager.getKeyValueString(key).c_str()));
-}
-
-void StatusPopup::setLabelText2(Label *const label,
+void StatusPopup::setLabelText(Label *const label,
                                 const std::string &text,
                                 const Input::KeyAction key) const
 {
@@ -209,34 +202,34 @@ void StatusPopup::updateLabels()
     if (!player_node || !viewport)
         return;
 
-    setLabelText2(mMoveType, player_node->getInvertDirectionString(),
+    setLabelText(mMoveType, player_node->getInvertDirectionString(),
         Input::KEY_INVERT_DIRECTION);
-    setLabelText2(mCrazyMoveType, player_node->getCrazyMoveTypeString(),
+    setLabelText(mCrazyMoveType, player_node->getCrazyMoveTypeString(),
         Input::KEY_CHANGE_CRAZY_MOVES_TYPE);
-    setLabelText2(mMoveToTargetType, player_node->getMoveToTargetTypeString(),
+    setLabelText(mMoveToTargetType, player_node->getMoveToTargetTypeString(),
         Input::KEY_CHANGE_MOVE_TO_TARGET);
-    setLabelText2(mFollowMode, player_node->getFollowModeString(),
+    setLabelText(mFollowMode, player_node->getFollowModeString(),
         Input::KEY_CHANGE_FOLLOW_MODE);
-    setLabelText2(mAttackWeaponType, player_node->getAttackWeaponTypeString(),
+    setLabelText(mAttackWeaponType, player_node->getAttackWeaponTypeString(),
         Input::KEY_CHANGE_ATTACK_WEAPON_TYPE);
-    setLabelText2(mAttackType, player_node->getAttackTypeString(),
+    setLabelText(mAttackType, player_node->getAttackTypeString(),
         Input::KEY_CHANGE_ATTACK_TYPE);
-    setLabelText2(mDropCounter, player_node->getQuickDropCounterString(),
+    setLabelText(mDropCounter, player_node->getQuickDropCounterString(),
         Input::KEY_SWITCH_QUICK_DROP);
-    setLabelText2(mPickUpType, player_node->getPickUpTypeString(),
+    setLabelText(mPickUpType, player_node->getPickUpTypeString(),
         Input::KEY_CHANGE_PICKUP_TYPE);
-    setLabelText2(mMapType, player_node->getDebugPathString(),
+    setLabelText(mMapType, player_node->getDebugPathString(),
         Input::KEY_PATHFIND);
-    setLabelText2(mMagicAttackType, player_node->getMagicAttackString(),
+    setLabelText(mMagicAttackType, player_node->getMagicAttackString(),
         Input::KEY_SWITCH_MAGIC_ATTACK);
-    setLabelText2(mPvpAttackType, player_node->getPvpAttackString(),
+    setLabelText(mPvpAttackType, player_node->getPvpAttackString(),
         Input::KEY_SWITCH_PVP_ATTACK);
-    setLabelText2(mImitationMode, player_node->getImitationModeString(),
+    setLabelText(mImitationMode, player_node->getImitationModeString(),
         Input::KEY_CHANGE_IMITATION_MODE);
-    setLabelText2(mAwayMode, player_node->getAwayModeString(),
+    setLabelText(mAwayMode, player_node->getAwayModeString(),
         Input::KEY_AWAY);
-    setLabelText2(mCameraMode, player_node->getCameraModeString(),
+    setLabelText(mCameraMode, player_node->getCameraModeString(),
         Input::KEY_CAMERA);
-    setLabelText2(mDisableGameModifiers, player_node->getGameModifiersString(),
+    setLabelText(mDisableGameModifiers, player_node->getGameModifiersString(),
         Input::KEY_DISABLE_GAME_MODIFIERS);
 }

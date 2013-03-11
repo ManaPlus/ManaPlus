@@ -206,7 +206,7 @@ class SpecialLayer final
 
         void setTile(const int x, const int y, const int type);
 
-        void addRoad(const Path road);
+        void addRoad(const Path &road);
 
         void clean() const;
 

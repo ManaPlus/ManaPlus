@@ -382,7 +382,7 @@ void GuiTable::draw(gcn::Graphics* graphics)
 
     if (mTopWidget)
     {
-        const gcn::Rectangle bounds = mTopWidget->getDimension();
+        const gcn::Rectangle &bounds = mTopWidget->getDimension();
         graphics->pushClipArea(bounds);
         mTopWidget->draw(graphics);
         graphics->popClipArea();

@@ -842,7 +842,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
 
 Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
                                                   aroundBeing, int maxDist,
-                                                  const Being::Type type,
+                                                  const Being::Type &type,
                                                   const int x, const int y,
                                                   const Being *const
                                                   excluded) const
@@ -1653,7 +1653,7 @@ bool ActorSpriteManager::checkForPickup(const FloorItem *const item) const
 }
 
 void ActorSpriteManager::updateEffects(const std::map<int, int> &addEffects,
-                                       const std::set<int> removeEffects)
+                                       const std::set<int> &removeEffects)
 {
     for_actors
     {

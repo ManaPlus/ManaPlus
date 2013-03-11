@@ -300,7 +300,7 @@ class ActorSpriteManager final: public ConfigListener
         bool checkForPickup(const FloorItem *const item) const A_WARN_UNUSED;
 
         void updateEffects(const std::map<int, int> &addEffects,
-                           const std::set<int> removeEffects);
+                           const std::set<int> &removeEffects);
 
     protected:
         bool validateBeing(const Being *const aroundBeing,
@@ -311,7 +311,7 @@ class ActorSpriteManager final: public ConfigListener
 
         Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxdist,
-                                      const Being::Type type,
+                                      const Being::Type &type,
                                       const int x, const int y,
                                       const Being *const
                                       excluded = nullptr) const A_WARN_UNUSED;

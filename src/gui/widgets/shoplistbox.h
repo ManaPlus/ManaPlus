@@ -85,8 +85,6 @@ class ShopListBox final : public ListBox
         void mouseExited(gcn::MouseEvent& mouseEvent) override;
 
     private:
-        void init();
-
         int mPlayerMoney;
 
         /**

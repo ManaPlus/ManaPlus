@@ -73,10 +73,6 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 }
 
-void ShopListBox::init()
-{
-}
-
 void ShopListBox::setPlayersMoney(const int money)
 {
     mPlayerMoney = money;

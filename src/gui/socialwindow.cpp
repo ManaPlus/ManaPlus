@@ -766,16 +766,15 @@ public:
         if (!map)
             return;
 
-        Avatar *ava = nullptr;
         std::vector<Avatar*>::const_iterator i = avatars->begin();
         const std::vector<Avatar*>::const_iterator i_end = avatars->end();
         while (i != i_end)
         {
-            ava = (*i);
+            Avatar *const ava = *i;
             if (!ava)
                 break;
 
-            const MapItem *const item = map->findPortalXY(
+            const  MapItem *const item = map->findPortalXY(
                 ava->getX(), ava->getY());
             if (item)
             {
@@ -802,14 +801,12 @@ public:
         if (!map)
             return 01;
 
-        const Avatar *ava = nullptr;
         std::vector<Avatar*>::const_iterator i = avatars->begin();
         const std::vector<Avatar*>::const_iterator i_end = avatars->end();
         unsigned num = 0;
         while (i != i_end)
         {
-            ava = (*i);
-
+            const Avatar *const ava = *i;
             if (!ava)
                 break;
 

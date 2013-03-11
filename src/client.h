@@ -342,9 +342,6 @@ private:
 
     void initServerConfig(std::string serverName);
 
-    bool copyFile(const std::string &configPath,
-                  const std::string &oldConfigPath) const;
-
     void accountLogin(LoginData *const data) const;
 
     void storeSafeParameters() const;

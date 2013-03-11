@@ -620,7 +620,7 @@ void SpecialLayer::setTile(const int x, const int y, const int type)
     }
 }
 
-void SpecialLayer::addRoad(const Path road)
+void SpecialLayer::addRoad(const Path &road)
 {
     FOR_EACH (Path::const_iterator, i, road)
     {

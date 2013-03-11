@@ -635,13 +635,11 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
                 return;
 
             std::string csv(data);
-
-            size_t pos = 0;
             size_t oldPos = 0;
 
             while (oldPos != csv.npos)
             {
-                pos = csv.find_first_of(",", oldPos);
+                const size_t pos = csv.find_first_of(",", oldPos);
                 if (pos == csv.npos)
                     return;
 
