@@ -1381,15 +1381,15 @@ void Map::indexTilesets()
 
     FOR_EACH (Tilesets::const_iterator, it, mTilesets)
     {
-        Tileset *const s = *it;
-        if (s)
+        Tileset *const s2 = *it;
+        if (s2)
         {
-            const int start = s->getFirstGid();
-            const int end = static_cast<int>(start + s->size());
+            const int start = s2->getFirstGid();
+            const int end = static_cast<int>(start + s2->size());
             for (int f = start; f < end; f ++)
             {
                 if (f < size)
-                    mIndexedTilesets[f] = s;
+                    mIndexedTilesets[f] = s2;
             }
         }
     }
@@ -1514,12 +1514,12 @@ void Map::reduce()
                     ++ ri;
                     while (ri != mLayers.rend())
                     {
-                        MapLayer *const layer = *ri;
-                        const size_t pos = x + y * layer->mWidth;
-                        img = layer->mTiles[pos];
+                        MapLayer *const layer2 = *ri;
+                        const size_t pos = x + y * layer2->mWidth;
+                        img = layer2->mTiles[pos];
                         if (img)
                         {
-                            layer->mTiles[pos] = nullptr;
+                            layer2->mTiles[pos] = nullptr;
                             cnt ++;
                         }
                         ++ ri;
