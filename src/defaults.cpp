@@ -310,6 +310,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableGmTab", true);
     AddDEF("gamecount", 0);
     AddDEF("rated", false);
+    AddDEF("weightMsg", true);
     return configData;
 }
 

@@ -177,6 +177,9 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable advert protocol"), "",
         "enableAdvert", this, "enableAdvertEvent");
 
+    new SetupItemCheckBox(_("Enable weight notifications"), "",
+        "weightMsg", this, "weightMsgEvent");
+
 
     new SetupItemLabel(_("Shop"), "", this);
 

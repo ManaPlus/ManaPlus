@@ -327,7 +327,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                 skillDialog->update();
             break;
         case 0x0018:
-            if (!weightNotice)
+            if (!weightNotice && config.getBoolValue("weightMsg"))
             {
                 const int max = PlayerInfo::getAttribute(
                     PlayerInfo::MAX_WEIGHT) / 2;
