@@ -50,8 +50,10 @@ int mCharId = 0;
 Inventory *mInventory = nullptr;
 Equipment *mEquipment = nullptr;
 
+#ifdef MANASERV_SUPPORT
 std::map<int, Special> mSpecials;
 signed char mSpecialRechargeUpdateNeeded = 0;
+#endif
 
 bool mTrading = false;
 int mLevelProgress = 0;
@@ -165,7 +167,7 @@ int getStatEffective(const int id)
         return 0;
 }
 
-std::pair<int, int> getStatExperience(const int id)
+const std::pair<int, int> getStatExperience(const int id)
 {
     const StatMap::const_iterator it = mData.mStats.find(id);
     int a, b;
@@ -240,23 +242,6 @@ void setEquipmentBackend(Equipment::Backend *const backend)
         mEquipment->setBackend(backend);
 }
 
-// --- Specials ---------------------------------------------------------------
-
-void setSpecialStatus(const int id, const int current,
-                      const int max, const int recharge)
-{
-    logger->log("SpecialUpdate Skill #%d -- (%d/%d) -> %d", id, current, max,
-                recharge);
-    mSpecials[id].currentMana = current;
-    mSpecials[id].neededMana = max;
-    mSpecials[id].recharge = recharge;
-}
-
-const SpecialsMap &getSpecialStatus()
-{
-    return mSpecials;
-}
-
 // --- Misc -------------------------------------------------------------------
 
 void setBackend(const PlayerInfoBackend &backend)
@@ -276,6 +261,7 @@ int getCharId()
 
 void logic()
 {
+#ifdef MANASERV_SUPPORT
     if ((mSpecialRechargeUpdateNeeded % 11) == 0)
     {
         mSpecialRechargeUpdateNeeded = 0;
@@ -288,6 +274,7 @@ void logic()
         }
     }
     mSpecialRechargeUpdateNeeded++;
+#endif
 }
 
 bool isTrading()
@@ -297,26 +284,22 @@ bool isTrading()
 
 void setTrading(const bool trading)
 {
-    const bool notify = mTrading != trading;
     mTrading = trading;
-
-    if (notify)
-    {
-        DepricatedEvent event(EVENT_TRADING);
-        event.setInt("trading", trading);
-        DepricatedEvent::trigger(CHANNEL_STATUS, event);
-    }
 }
 
 void updateAttrs()
 {
-    const int attr = Net::getPlayerHandler()->getAttackLocation();
-    if (attr != -1 && getStatBase(ATTACK_DELAY))
+    const Net::PlayerHandler *const handler = Net::getPlayerHandler();
+    if (!handler)
+        return;
+    const int attr = handler->getAttackLocation();
+    const int attackDelay = getStatBase(ATTACK_DELAY);
+    if (attr != -1 && attackDelay)
     {
         setStatBase(ATTACK_SPEED, getStatBase(attr) * 1000
-            / getStatBase(ATTACK_DELAY), false);
+            / attackDelay, false);
         setStatMod(ATTACK_SPEED, getStatMod(attr) * 1000
-            / getStatBase(ATTACK_DELAY), true);
+            / attackDelay, true);
     }
     else
     {
@@ -341,7 +324,6 @@ public:
             if (event.getName() == EVENT_STATECHANGE)
             {
                 const int newState = event.getInt("newState");
-
                 if (newState == STATE_GAME)
                 {
                     if (!mInventory)

@@ -154,7 +154,7 @@ namespace PlayerInfo
     /**
      * Returns the experience of the given stat.
      */
-    std::pair<int, int> getStatExperience(const int id) A_WARN_UNUSED;
+    const std::pair<int, int> getStatExperience(const int id) A_WARN_UNUSED;
 
     /**
      * Changes the experience of the given stat.
@@ -191,19 +191,6 @@ namespace PlayerInfo
      * Returns the player's equipment at the given slot.
      */
     Item *getEquipment(const unsigned int slot) A_WARN_UNUSED;
-
-// --- Specials ---------------------------------------------------------------
-
-    /**
-     * Changes the status of the given special.
-     */
-    void setSpecialStatus(const int id, const int current,
-                          const int max, const int recharge);
-
-    /**
-     * Returns the status of the given special.
-     */
-    const SpecialsMap &getSpecialStatus();
 
 // --- Misc -------------------------------------------------------------------
 
