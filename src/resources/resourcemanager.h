@@ -325,6 +325,8 @@ class ResourceManager final
         static void removeDelayLoad(const AnimationDelayLoad
                                     *const delayedLoad);
 
+        static void deleteFilesInDirectory(std::string path);
+
     private:
         /**
          * Deletes the resource after logging a cleanup message.

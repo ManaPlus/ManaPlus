@@ -42,6 +42,7 @@
 
 #include <SDL_image.h>
 #include <cassert>
+#include <dirent.h>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -1102,5 +1103,20 @@ void ResourceManager::removeDelayLoad(const AnimationDelayLoad
             mDelayedAnimations.erase(it);
             return;
         }
+    }
+}
+
+void ResourceManager::deleteFilesInDirectory(std::string path)
+{
+    path += "/";
+    struct dirent *next_file;
+    DIR *dir = opendir(path.c_str());
+
+    while ((next_file = readdir(dir)))
+    {
+        const std::string file = next_file->d_name;
+        const std::string name = path + file;
+        if (file != "." && file != "..")
+            remove(name.c_str());
     }
 }
