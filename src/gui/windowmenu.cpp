@@ -132,7 +132,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
         _("Drop"), x, h, Input::KEY_WINDOW_DROP, false);
     // TRANSLATORS: short button name for did you know window.
     addButton(N_("YK"),
-        _("Did you know"), x, h, Input::KEY_WINDOW_DIDYOUKNOW);
+        _("Did you know"), x, h, Input::KEY_WINDOW_DIDYOUKNOW, false);
     // TRANSLATORS: short button name for shop window.
     addButton(N_("SHP"),
         _("Shop"), x, h, Input::KEY_WINDOW_SHOP, false);

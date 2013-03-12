@@ -33,6 +33,7 @@
 #include <map>
 #include <set>
 
+class Button;
 class BrowserBox;
 class LinkHandler;
 class ScrollArea;
@@ -80,6 +81,8 @@ class HelpWindow final : public Window, public LinkHandler,
         void loadTags();
 
         void loadFile(std::string file);
+
+        Button *mDYKButton;
 
         BrowserBox *mBrowserBox;
         ScrollArea *mScrollArea;

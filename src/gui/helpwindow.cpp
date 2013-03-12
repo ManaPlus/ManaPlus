@@ -24,6 +24,7 @@
 
 #include "configuration.h"
 
+#include "gui/didyouknowwindow.h"
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
 #include "gui/setup.h"
@@ -47,6 +48,7 @@
 HelpWindow::HelpWindow():
     Window(_("Help"), false, nullptr, "help.xml"),
     gcn::ActionListener(),
+    mDYKButton(new Button(this, _("Did you know..."), "DYK", this)),
     mBrowserBox(new BrowserBox(this)),
     mScrollArea(new ScrollArea(mBrowserBox, true, "help_background.xml"))
 {
@@ -54,6 +56,7 @@ HelpWindow::HelpWindow():
     setMinHeight(220);
     setContentSize(455, 350);
     setWindowName("Help");
+    setCloseButton(true);
     setResizable(true);
     setStickyButtonLock(true);
 
@@ -62,15 +65,14 @@ HelpWindow::HelpWindow():
     setDefaultSize(500, 400, ImageRect::CENTER);
 
     mBrowserBox->setOpaque(false);
-    Button *const okButton = new Button(this, _("Close"), "close", this);
 
     mBrowserBox->setLinkHandler(this);
     mBrowserBox->setFont(gui->getHelpFont());
     mBrowserBox->setProcessVersion(true);
     mBrowserBox->setEnableImages(true);
 
+    place(4, 3, mDYKButton);
     place(0, 0, mScrollArea, 5, 3).setPadding(3);
-    place(4, 3, okButton);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
@@ -82,8 +84,16 @@ HelpWindow::HelpWindow():
 
 void HelpWindow::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "close")
-        setVisible(false);
+    if (event.getId() == "DYK")
+    {
+        if(didYouKnowWindow)
+        {
+            didYouKnowWindow->setVisible(!didYouKnowWindow->isVisible());
+            if (didYouKnowWindow->isVisible())
+                didYouKnowWindow->requestMoveToTop();
+        }
+    }
+
 }
 
 void HelpWindow::handleLink(const std::string &link,
