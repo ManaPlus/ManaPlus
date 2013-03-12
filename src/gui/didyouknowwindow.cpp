@@ -61,6 +61,7 @@ DidYouKnowWindow::DidYouKnowWindow():
     setMinHeight(220);
     setContentSize(455, 350);
     setWindowName("DidYouKnow");
+    setCloseButton(true);
     setResizable(true);
     setStickyButtonLock(true);
 
