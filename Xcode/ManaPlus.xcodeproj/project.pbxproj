@@ -1464,8 +1464,6 @@
 		2BDF4807166D5B680054E77F /* skilldialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skilldialog.h; sourceTree = "<group>"; };
 		2BDF4808166D5B680054E77F /* socialwindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socialwindow.cpp; sourceTree = "<group>"; };
 		2BDF4809166D5B680054E77F /* socialwindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialwindow.h; sourceTree = "<group>"; };
-		2BDF480A166D5B680054E77F /* specialswindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = specialswindow.cpp; sourceTree = "<group>"; };
-		2BDF480B166D5B680054E77F /* specialswindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = specialswindow.h; sourceTree = "<group>"; };
 		2BDF480C166D5B680054E77F /* speechbubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = speechbubble.cpp; sourceTree = "<group>"; };
 		2BDF480D166D5B680054E77F /* speechbubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speechbubble.h; sourceTree = "<group>"; };
 		2BDF480E166D5B680054E77F /* spellpopup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spellpopup.cpp; sourceTree = "<group>"; };
@@ -1503,8 +1501,6 @@
 		2BDF482F166D5B680054E77F /* browserbox_unittest.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = browserbox_unittest.cc; sourceTree = "<group>"; };
 		2BDF4830166D5B680054E77F /* button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = button.cpp; sourceTree = "<group>"; };
 		2BDF4831166D5B680054E77F /* button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
-		2BDF4832166D5B680054E77F /* channeltab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = channeltab.cpp; sourceTree = "<group>"; };
-		2BDF4833166D5B680054E77F /* channeltab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = channeltab.h; sourceTree = "<group>"; };
 		2BDF4834166D5B680054E77F /* chattab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chattab.cpp; sourceTree = "<group>"; };
 		2BDF4835166D5B680054E77F /* chattab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chattab.h; sourceTree = "<group>"; };
 		2BDF4836166D5B680054E77F /* checkbox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = checkbox.cpp; sourceTree = "<group>"; };
@@ -2547,8 +2543,6 @@
 				2BDF4807166D5B680054E77F /* skilldialog.h */,
 				2BDF4808166D5B680054E77F /* socialwindow.cpp */,
 				2BDF4809166D5B680054E77F /* socialwindow.h */,
-				2BDF480A166D5B680054E77F /* specialswindow.cpp */,
-				2BDF480B166D5B680054E77F /* specialswindow.h */,
 				2BDF480C166D5B680054E77F /* speechbubble.cpp */,
 				2BDF480D166D5B680054E77F /* speechbubble.h */,
 				2BDF480E166D5B680054E77F /* spellpopup.cpp */,
@@ -2605,8 +2599,6 @@
 				2BDF482F166D5B680054E77F /* browserbox_unittest.cc */,
 				2BDF4830166D5B680054E77F /* button.cpp */,
 				2BDF4831166D5B680054E77F /* button.h */,
-				2BDF4832166D5B680054E77F /* channeltab.cpp */,
-				2BDF4833166D5B680054E77F /* channeltab.h */,
 				2BDF4834166D5B680054E77F /* chattab.cpp */,
 				2BDF4835166D5B680054E77F /* chattab.h */,
 				2BDF4836166D5B680054E77F /* checkbox.cpp */,
