@@ -25,6 +25,7 @@
 #include "actorspritemanager.h"
 #include "client.h"
 #include "configuration.h"
+#include "dropshortcut.h"
 #include "effectmanager.h"
 #include "graphics.h"
 #include "guild.h"
@@ -38,7 +39,7 @@
 #include "simpleanimation.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
-#include "dropshortcut.h"
+#include "walklayer.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"
@@ -2930,28 +2931,6 @@ void LocalPlayer::crazyMoveA()
         mCrazyMoveState = 0;
 }
 
-bool LocalPlayer::isReachable(const int x, const int y,
-                              const int maxCost) const
-{
-    if (!mMap)
-        return false;
-
-    if (x - 1 <= mX && x + 1 >= mX
-        && y - 1 <= mY && y + 1 >= mY )
-    {
-        return true;
-    }
-
-    const Vector &playerPos = getPosition();
-
-    const Path debugPath = mMap->findPath(
-        static_cast<int>(playerPos.x - 16) / 32,
-        static_cast<int>(playerPos.y - 32) / 32,
-        x, y, getWalkMask(), maxCost);
-
-    return !debugPath.empty();
-}
-
 bool LocalPlayer::isReachable(Being *const being,
                               const int maxCost)
 {
@@ -2996,6 +2975,19 @@ bool LocalPlayer::isReachable(Being *const being,
         being->setIsReachable(Being::REACH_NO);
         return false;
     }
+}
+
+bool LocalPlayer::isReachable(const int x, const int y,
+                              const int allowCollision) const
+{
+    const WalkLayer *const walk = mMap->getWalkLayer();
+    if (!walk)
+        return false;
+    int num = walk->getDataAt(x, y);
+    if (allowCollision && num < 0)
+        num = -num;
+
+    return walk->getDataAt(mX, mY) == num;
 }
 
 bool LocalPlayer::pickUpItems(int pickUpType)

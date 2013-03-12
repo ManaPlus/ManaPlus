@@ -41,6 +41,7 @@ class Tileset;
 class SpecialLayer;
 class MapItem;
 class ObjectsLayer;
+class WalkLayer;
 
 typedef std::vector<Tileset*> Tilesets;
 typedef std::vector<MapLayer*> Layers;
@@ -404,6 +405,15 @@ class Map final : public Properties, public ConfigListener
         void setAtlas(Resource *const atlas)
         { mAtlas = atlas; }
 
+        const MetaTile *getMetaTiles() const
+        { return mMetaTiles; }
+
+        WalkLayer *getWalkLayer()
+        { return mWalkLayer; }
+
+        void setWalkLayer(WalkLayer *l)
+        { mWalkLayer = l; }
+
     protected:
         friend class Actor;
         friend class Minimap;
@@ -451,6 +461,7 @@ class Map final : public Properties, public ConfigListener
         int mTileWidth, mTileHeight;
         int mMaxTileHeight;
         MetaTile *mMetaTiles;
+        WalkLayer *mWalkLayer;
         Layers mLayers;
         Tilesets mTilesets;
         Actors mActors;

@@ -1872,6 +1872,7 @@ void Client::initTempDir()
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
             "Exiting."), mTempDir.c_str()));
     }
+//    ResourceManager::deleteFilesInDirectory(mTempDir);
 }
 
 void Client::initConfigDir()

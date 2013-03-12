@@ -701,7 +701,7 @@ public:
 
             Avatar *const ava = new Avatar(name);
             if (player_node)
-                ava->setOnline(player_node->isReachable(x, y, 0));
+                ava->setOnline(player_node->isReachable(x, y, true));
             else
                 ava->setOnline(false);
             ava->setLevel(-1);
@@ -842,7 +842,7 @@ public:
 
         Avatar *const ava = new Avatar(name);
         if (player_node)
-            ava->setOnline(player_node->isReachable(x, y, 0));
+            ava->setOnline(player_node->isReachable(x, y, true));
         else
             ava->setOnline(false);
         ava->setLevel(-1);

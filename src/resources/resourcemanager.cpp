@@ -26,6 +26,9 @@
 #include "client.h"
 #include "configuration.h"
 #include "logger.h"
+#include "map.h"
+#include "navigationmanager.h"
+#include "walklayer.h"
 
 #include "resources/atlasmanager.h"
 #include "resources/dye.h"
@@ -739,6 +742,31 @@ Resource *ResourceManager::getAtlas(const std::string &name,
     return get("atlas_" + name, AtlasLoader::load, &rl);
 }
 #endif
+
+struct WalkLayerLoader
+{
+    const std::string name;
+    Map *map;
+
+    static Resource *load(const void *const v)
+    {
+        if (!v)
+            return nullptr;
+
+        const WalkLayerLoader *const rl = static_cast<const
+            WalkLayerLoader *const>(v);
+        Resource *const resource = NavigationManager::loadWalkLayer(rl->map);
+        return resource;
+    }
+};
+
+WalkLayer *ResourceManager::getWalkLayer(const std::string &name,
+                                        Map *const map)
+{
+    WalkLayerLoader rl = {name, map};
+    return static_cast<WalkLayer*>(get("map_" + name,
+        WalkLayerLoader::load, &rl));
+}
 
 struct SpriteDefLoader
 {

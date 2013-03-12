@@ -37,10 +37,12 @@
 class AnimationDelayLoad;
 class Image;
 class ImageSet;
+class Map;
 class SDLMusic;
 class Resource;
 class SoundEffect;
 class SpriteDef;
+class WalkLayer;
 
 struct SDL_Surface;
 struct SDL_RWops;
@@ -221,6 +223,8 @@ class ResourceManager final
         Resource *getAtlas(const std::string &name,
                            const StringVect &files) A_WARN_UNUSED;
 #endif
+
+        WalkLayer *getWalkLayer(const std::string &name, Map *const map);
 
         /**
          * Creates a sprite definition based on a given path and the supplied

@@ -610,6 +610,10 @@ SET(SRCS
     mobileopenglgraphics.h
     mouseinput.cpp
     mouseinput.h
+    mumblemanager.cpp
+    mumblemanager.h
+    navigationmanager.cpp
+    navigationmanager.h
     normalopenglgraphics.cpp
     normalopenglgraphics.h
     notifications.h
@@ -660,8 +664,8 @@ SET(SRCS
     variabledata.h
     vector.cpp
     vector.h
-    mumblemanager.cpp
-    mumblemanager.h
+    walklayer.cpp
+    walklayer.h
     )
 
 SET(SRCS_GUICHAN

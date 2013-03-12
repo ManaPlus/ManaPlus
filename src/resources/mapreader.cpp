@@ -279,13 +279,15 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
 
     const std::string fileName = path.substr(path.rfind("/") + 1);
     map->setProperty("shortName", fileName);
+    ResourceManager *const resman = ResourceManager::getInstance();
+
 #ifdef USE_OPENGL
     if (graphicsManager.getUseAtlases())
     {
         const MapDB::MapInfo *const info = MapDB::getMapAtlas(fileName);
         if (info)
         {
-            map->setAtlas(ResourceManager::getInstance()->getAtlas(
+            map->setAtlas(resman->getAtlas(
                 info->atlas, *info->files));
         }
     }
@@ -393,6 +395,7 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
     map->clearIndexedTilesets();
     map->setActorsFix(0, atoi(map->getProperty("actorsfix").c_str()));
     map->reduce();
+    map->setWalkLayer(resman->getWalkLayer(fileName, map));
     return map;
 }
 

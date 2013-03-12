@@ -300,11 +300,11 @@ class LocalPlayer final : public Being,
 
         void debugMsg(const std::string &str) const;
 
-        bool isReachable(const int x, const int y,
-                         const int maxCost = 0) const A_WARN_UNUSED;
-
         bool isReachable(Being *const being,
                          const int maxCost = 0) A_WARN_UNUSED;
+
+        bool isReachable(const int x, const int y,
+                         const int allowCollision) const A_WARN_UNUSED;
 
         void setHome();
 

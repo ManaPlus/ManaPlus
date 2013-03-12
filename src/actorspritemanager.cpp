@@ -636,7 +636,7 @@ bool ActorSpriteManager::pickUpNearest(const int x, const int y,
 
             if ((d < dist || !closestItem) && (!mTargetOnlyReachable
                 || player_node->isReachable(item->getTileX(),
-                item->getTileY())))
+                item->getTileY(), false)))
             {
                 if (allowAll)
                 {

@@ -30,6 +30,7 @@
 #include "particle.h"
 #include "simpleanimation.h"
 #include "tileset.h"
+#include "walklayer.h"
 
 #include "resources/ambientlayer.h"
 #include "resources/image.h"
@@ -126,6 +127,7 @@ Map::Map(const int width, const int height,
     mTileWidth(tileWidth), mTileHeight(tileHeight),
     mMaxTileHeight(height),
     mMetaTiles(new MetaTile[mWidth * mHeight]),
+    mWalkLayer(nullptr),
     mHasWarps(false),
     mDebugFlags(MAP_NORMAL),
     mOnClosedList(1), mOnOpenList(2),
@@ -187,6 +189,11 @@ Map::~Map()
     for (int i = 0; i < NB_BLOCKTYPES; i++)
         delete [] mOccupation[i];
 
+    if (mWalkLayer)
+    {
+        mWalkLayer->decRef();
+        mWalkLayer = nullptr;
+    }
     mFringeLayer = nullptr;
     delete_all(mLayers);
     delete_all(mTilesets);

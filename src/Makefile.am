@@ -613,6 +613,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      mobileopenglgraphics.h \
 	      mouseinput.cpp \
 	      mouseinput.h \
+	      navigationmanager.cpp \
+	      navigationmanager.h \
 	      normalopenglgraphics.cpp \
 	      normalopenglgraphics.h \
 	      notifications.h \
@@ -663,6 +665,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      variabledata.h \
 	      vector.cpp \
 	      vector.h \
+	      walklayer.cpp \
+	      walklayer.h \
 	      winver.h
 
 manaplus_SOURCES += \

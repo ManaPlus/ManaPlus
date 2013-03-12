@@ -29,6 +29,7 @@
 
 class Map;
 class Properties;
+class Resource;
 class Tileset;
 
 /**
