@@ -40,7 +40,7 @@ const int timeOut = 10;
 #include <windows.h>
 
 int execFileWait(std::string pathName, std::string name A_UNUSED,
-                 std::string arg1, std::string arg2, int waitTime)
+                 std::string arg1, std::string arg2, int waitTime A_UNUSED)
 {
 //    if (!waitTime)
 //        waitTime = timeOut;

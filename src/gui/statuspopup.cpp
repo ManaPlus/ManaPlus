@@ -189,8 +189,8 @@ void StatusPopup::view(const int x, const int y)
 }
 
 void StatusPopup::setLabelText(Label *const label,
-                                const std::string &text,
-                                const Input::KeyAction key) const
+                               const std::string &text,
+                               const Input::KeyAction key) const
 {
     label->setCaption(strprintf("%s  %s", text.c_str(),
         inputManager.getKeyValueString(static_cast<int>(key)).c_str()));

@@ -70,10 +70,10 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
 
     const State state = Client::getState();
 
-    mNeedForceQuit = state == STATE_CHOOSE_SERVER
+    mNeedForceQuit = (state == STATE_CHOOSE_SERVER
         || state == STATE_CONNECT_SERVER || state == STATE_LOGIN
         || state == STATE_PRE_LOGIN || state == STATE_LOGIN_ATTEMPT
-        || state == STATE_UPDATE || state == STATE_LOAD_DATA;
+        || state == STATE_UPDATE || state == STATE_LOAD_DATA);
 
     // All states, when we're not logged in to someone.
     if (mNeedForceQuit)

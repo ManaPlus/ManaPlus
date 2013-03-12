@@ -31,8 +31,6 @@
 
 #include "net/tmwa/protocol.h"
 
-#include "utils/gettext.h"
-
 #include <string>
 
 #include "debug.h"

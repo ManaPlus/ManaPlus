@@ -43,8 +43,6 @@
 #include "net/eathena/chathandler.h"
 #include "net/eathena/protocol.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 extern Net::BuySellHandler *buySellHandler;

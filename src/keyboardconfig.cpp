@@ -214,7 +214,8 @@ void KeyboardConfig::handleRepeat(const int time)
         }
         if (repeat)
         {
-            if (time > keyTime && abs(time - keyTime) > mRepeatTime)
+            if (time > keyTime && abs(time - keyTime)
+                > static_cast<signed>(mRepeatTime))
             {
                 keyTime = time;
                 inputManager.triggerAction(getActionVectorByKey(key));

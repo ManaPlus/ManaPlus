@@ -29,8 +29,6 @@
 
 #include "net/eathena/gui/partytab.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 extern Net::PartyHandler *partyHandler;

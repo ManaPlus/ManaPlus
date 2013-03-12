@@ -43,8 +43,6 @@
 #include "net/tmwa/chathandler.h"
 #include "net/tmwa/protocol.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 extern Net::BuySellHandler *buySellHandler;

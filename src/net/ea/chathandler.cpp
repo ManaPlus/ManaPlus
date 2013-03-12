@@ -35,8 +35,6 @@
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/gmtab.h"
 
-#include "utils/gettext.h"
-
 #include <string>
 
 #include "debug.h"

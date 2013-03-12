@@ -29,8 +29,6 @@
 #include "net/net.h"
 #include "net/partyhandler.h"
 
-#include "utils/gettext.h"
-
 namespace NotifyManager
 {
     static ChatTab *getGuildTab()
@@ -88,6 +86,10 @@ namespace NotifyManager
                     player_node->setSpeech(gettext(info.text));
             }
 
+            case INT:
+            case STRING:
+            case GUILD_STRING:
+            case PARTY_STRING:
             default:
                 break;
         }
@@ -130,6 +132,10 @@ namespace NotifyManager
                 chatLog(tab, strprintf(gettext(info.text), str.c_str()));
                 break;
             }
+            case INT:
+            case GUILD:
+            case PARTY:
+            case SPEECH:
             default:
                 break;
         }

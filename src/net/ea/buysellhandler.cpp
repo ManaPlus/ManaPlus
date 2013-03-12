@@ -39,8 +39,6 @@
 
 #include "net/chathandler.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 namespace Ea

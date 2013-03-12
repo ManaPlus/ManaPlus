@@ -1376,8 +1376,10 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size)
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *const intVertArray,
-                                                  const GLfloat *const floatTexArray,
+inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *const
+                                                  intVertArray,
+                                                  const GLfloat *const
+                                                  floatTexArray,
                                                   const int size)
 {
     glVertexPointer(2, GL_INT, 0, intVertArray);
@@ -1400,8 +1402,10 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const int size)
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *const intVertArray,
-                                                  const GLint *const intTexArray,
+inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *const
+                                                  intVertArray,
+                                                  const GLint *const
+                                                  intTexArray,
                                                   const int size)
 {
     glVertexPointer(2, GL_INT, 0, intVertArray);

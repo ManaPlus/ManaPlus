@@ -24,7 +24,6 @@
 #include "configuration.h"
 #include "effectmanager.h"
 #include "localplayer.h"
-#include "map.h"
 #include "soundmanager.h"
 
 #include "gui/gui.h"

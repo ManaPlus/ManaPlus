@@ -28,8 +28,6 @@
 
 #include "gui/socialwindow.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 namespace Ea

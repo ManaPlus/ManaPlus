@@ -33,8 +33,6 @@
 
 #include "net/messageout.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 /** job dependend identifiers (?)  */

@@ -50,7 +50,7 @@ enum DepricatedEvents
     EVENT_SERVERNOTICE,
     EVENT_STATECHANGE,
     EVENT_UPDATEATTRIBUTE,
-    EVENT_UPDATESTAT,
+    EVENT_UPDATESTAT
 };
 
 class Listener;

@@ -38,8 +38,6 @@
 
 #include "net/ea/eaprotocol.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 extern OkDialog *weightNotice;

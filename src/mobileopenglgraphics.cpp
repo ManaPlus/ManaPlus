@@ -452,7 +452,8 @@ void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
             const float texY2 = texY1 + tFractionH * visibleFractionH;
             for (int px = 0; px < w; px += scaledWidth)
             {
-                const int width = (px + scaledWidth >= w) ? w - px : scaledWidth;
+                const int width = (px + scaledWidth >= w)
+                    ? w - px : scaledWidth;
                 const int dstX = x + px;
                 const float visibleFractionW = static_cast<float>(width)
                     / scaledWidth;
@@ -1175,7 +1176,8 @@ bool MobileOpenGLGraphics::drawNet(const int x1, const int y1,
     return true;
 }
 
-void MobileOpenGLGraphics::bindTexture(const GLenum target, const GLuint texture)
+void MobileOpenGLGraphics::bindTexture(const GLenum target,
+                                       const GLuint texture)
 {
     if (mLastImage != texture)
     {

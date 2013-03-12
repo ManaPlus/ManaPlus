@@ -348,7 +348,7 @@ impHandler0(clear)
 impHandler0(cleanGraphics)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
-    while(resman->cleanOrphans(true));
+    while (resman->cleanOrphans(true));
 
     if (debugChatTab)
         debugChatTab->chatLog(_("Cache cleaned"));

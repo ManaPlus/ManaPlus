@@ -64,7 +64,7 @@ class StatusPopup final : public Popup
         void updateLabels();
 
         void setLabelText(Label *const label, const std::string &text,
-                           const Input::KeyAction key) const;
+                          const Input::KeyAction key) const;
 
         Label *mMoveType;
         Label *mCrazyMoveType;

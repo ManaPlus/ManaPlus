@@ -21,6 +21,8 @@
 #ifndef NOTIFYCATIONS_H
 #define NOTIFYCATIONS_H
 
+#include "localconsts.h"
+
 #include "utils/gettext.h"
 
 namespace NotifyManager
@@ -37,7 +39,7 @@ namespace NotifyManager
         SPEECH
     };
 
-    struct NotificationInfo
+    struct NotificationInfo final
     {
         const char *text;
         const NotifyFlags flags;
@@ -169,7 +171,8 @@ namespace NotifyManager
         {N_("Equip arrows first."), EMPTY},
         {N_("Trading with %s isn't possible. Trade partner is too far away."),
             STRING},
-        {N_("Trading with %s isn't possible. Character doesn't exist."), STRING},
+        {N_("Trading with %s isn't possible. Character doesn't exist."),
+            STRING},
         {N_("Trade cancelled due to an unknown reason."), EMPTY},
         {N_("Trade with %s cancelled."), STRING},
         {N_("Unhandled trade cancel packet with %s"), STRING},

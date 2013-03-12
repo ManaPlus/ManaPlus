@@ -29,8 +29,6 @@
 
 #include "gui/okdialog.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 namespace Ea
