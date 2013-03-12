@@ -399,6 +399,8 @@
 		2B1713291686A98C002E9493 /* libfreetype.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D8F166D8E0C0054E77F /* libfreetype.6.dylib */; };
 		2B17132A1686A98C002E9493 /* libiconv.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BDF4D90166D8E0C0054E77F /* libiconv.2.dylib */; };
 		2B43647A16AB8BE40034DAC2 /* setuptouchitem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B43647816AB8BE40034DAC2 /* setuptouchitem.cpp */; };
+		2B65B45716EFC75D00AAD717 /* notifymanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B65B45516EFC75D00AAD717 /* notifymanager.cpp */; };
+		2B65B45816EFC75D00AAD717 /* notifymanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B65B45516EFC75D00AAD717 /* notifymanager.cpp */; };
 		2B7A5E5D16D82A3E0020A1C1 /* physfstools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */; };
 		2B7A5E5E16D82A3E0020A1C1 /* physfstools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */; };
 		2B7A5E6116D82C010020A1C1 /* gmtab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */; };
@@ -1254,6 +1256,9 @@
 		2B43647816AB8BE40034DAC2 /* setuptouchitem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = setuptouchitem.cpp; sourceTree = "<group>"; };
 		2B43647916AB8BE40034DAC2 /* setuptouchitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setuptouchitem.h; sourceTree = "<group>"; };
 		2B57D0AD16D81F1800F0B9D0 /* libpng15.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng15.a; path = libs/libpng15.a; sourceTree = "<group>"; };
+		2B65B45416EFC75D00AAD717 /* notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = notifications.h; path = ../../src/notifications.h; sourceTree = "<group>"; };
+		2B65B45516EFC75D00AAD717 /* notifymanager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = notifymanager.cpp; path = ../../src/notifymanager.cpp; sourceTree = "<group>"; };
+		2B65B45616EFC75D00AAD717 /* notifymanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = notifymanager.h; path = ../../src/notifymanager.h; sourceTree = "<group>"; };
 		2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = physfstools.cpp; sourceTree = "<group>"; };
 		2B7A5E5C16D82A3E0020A1C1 /* physfstools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = physfstools.h; sourceTree = "<group>"; };
 		2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gmtab.cpp; sourceTree = "<group>"; };
@@ -2208,6 +2213,9 @@
 		2BDF45C9166D5AEC0054E77F /* ManaPlus */ = {
 			isa = PBXGroup;
 			children = (
+				2B65B45416EFC75D00AAD717 /* notifications.h */,
+				2B65B45516EFC75D00AAD717 /* notifymanager.cpp */,
+				2B65B45616EFC75D00AAD717 /* notifymanager.h */,
 				2BDF4755166D5B680054E77F /* actionmanager.cpp */,
 				2BDF4756166D5B680054E77F /* actionmanager.h */,
 				2BDF4757166D5B680054E77F /* actor.cpp */,
@@ -3789,6 +3797,7 @@
 				2BFB6E3116E2AE69007EE3A6 /* skillhandler.cpp in Sources */,
 				2BFB6E3616E2AE99007EE3A6 /* skillhandler.cpp in Sources */,
 				2BFB6E3A16E2AEB9007EE3A6 /* skillhandler.cpp in Sources */,
+				2B65B45816EFC75D00AAD717 /* notifymanager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4152,6 +4161,7 @@
 				2BFB6E3016E2AE69007EE3A6 /* skillhandler.cpp in Sources */,
 				2BFB6E3516E2AE99007EE3A6 /* skillhandler.cpp in Sources */,
 				2BFB6E3916E2AEB9007EE3A6 /* skillhandler.cpp in Sources */,
+				2B65B45716EFC75D00AAD717 /* notifymanager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
