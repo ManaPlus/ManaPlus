@@ -56,6 +56,7 @@ MiniStatusWindow::MiniStatusWindow() :
     mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
     mIconPadding(mSkin ? mSkin->getOption("iconPadding", 3) : 3),
     mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
+    mMaxX(0),
     mHpBar(createBar(0, 100, 0, Theme::PROG_HP, "hp bar", _("health bar"))),
     mMpBar(Net::getGameHandler()->canUseMagicBar()
            ? createBar(0, 100, 0, Net::getPlayerHandler()->canUseMagic()
@@ -177,6 +178,7 @@ void MiniStatusWindow::updateBars()
         setContentSize(lastBar->getX() + lastBar->getWidth(),
             lastBar->getY() + lastBar->getHeight());
     }
+    mMaxX = x;
 }
 
 void MiniStatusWindow::setIcon(const int index, AnimatedSprite *const sprite)
@@ -201,7 +203,7 @@ void MiniStatusWindow::eraseIcon(const int index)
 void MiniStatusWindow::drawIcons(Graphics *const graphics)
 {
     // Draw icons
-    int icon_x = mStatusBar->getX() + mStatusBar->getWidth() + mIconPadding;
+    int icon_x = mMaxX + mIconPadding;
     for (size_t i = 0, sz = mIcons.size(); i < sz; i ++)
     {
         if (mIcons[i])

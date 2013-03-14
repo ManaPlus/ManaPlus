@@ -108,6 +108,7 @@ class MiniStatusWindow final : public Popup,
         int mSpacing;
         int mIconPadding;
         int mIconSpacing;
+        int mMaxX;
 
         /*
          * Mini Status Bars
