@@ -132,6 +132,7 @@ namespace NotifyManager
                 chatLog(tab, strprintf(gettext(info.text), str.c_str()));
                 break;
             }
+            case EMPTY:
             case INT:
             case GUILD:
             case PARTY:

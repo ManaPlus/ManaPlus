@@ -86,7 +86,7 @@ void HelpWindow::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "DYK")
     {
-        if(didYouKnowWindow)
+        if (didYouKnowWindow)
         {
             didYouKnowWindow->setVisible(!didYouKnowWindow->isVisible());
             if (didYouKnowWindow->isVisible())

@@ -126,7 +126,7 @@ void Party::removeMember(const PartyMember *const member)
         const MemberList::iterator itr_end = mMembers.end();
         while (itr != itr_end)
         {
-            const PartyMember *const m = *itr;
+            PartyMember *const m = *itr;
             if (m && m->mId == member->mId
                 && m->getName() == member->getName())
             {
@@ -150,7 +150,7 @@ void Party::removeMember(const int id)
         const MemberList::iterator itr_end = mMembers.end();
         while (itr != itr_end)
         {
-            const PartyMember *const member = *itr;
+            PartyMember *const member = *itr;
             if (member && member->mId == id)
             {
                 mMembers.erase(itr);
@@ -173,7 +173,7 @@ void Party::removeMember(const std::string &name)
         const MemberList::iterator itr_end = mMembers.end();
         while (itr != itr_end)
         {
-            const PartyMember *const member = *itr;
+            PartyMember *const member = *itr;
             if (member && member->getName() == name)
             {
                 mMembers.erase(itr);

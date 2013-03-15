@@ -206,12 +206,12 @@ size_t findI(std::string str, std::string subStr)
 
 size_t findI(std::string text, StringVect &list)
 {
-    std::string str = toLower(text);
+    toLower(text);
     FOR_EACH (StringVectCIter, i, list)
     {
         std::string subStr = *i;
         subStr = toLower(subStr);
-        const size_t idx = str.find(subStr);
+        const size_t idx = text.find(subStr);
         if (idx != std::string::npos)
             return idx;
     }
