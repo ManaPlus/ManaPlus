@@ -37,6 +37,7 @@
 
 #include "utils/gettext.h"
 #include "utils/langs.h"
+#include "utils/process.h"
 
 #include "utils/translation/podict.h"
 #include "utils/translation/translationmanager.h"
@@ -119,6 +120,8 @@ void DidYouKnowWindow::action(const gcn::ActionEvent &event)
 void DidYouKnowWindow::handleLink(const std::string &link A_UNUSED,
                                   gcn::MouseEvent *event A_UNUSED)
 {
+    if (strStartWith(link, "http://") || strStartWith(link, "https://"))
+        openBrowser(link);
 }
 
 void DidYouKnowWindow::loadData(int num)
