@@ -1,3 +1,16 @@
+2013-03-17 New release 1.3.3.17
+fix: key repeat time calculation.
+fix: incorrect map loading on server switching.
+fix: sefault on exit with help switch.
+fix: status icons draw posiiton.
+add: chat command /cleangraphics to clean graphics cache.
+add: chat command /cleanfonts to clean fonts cache.
+add: chat command /execute to execute external programs.
+add: in debug window field "target type".
+add: different npc effects depend on quest statuses (evol only).
+add: rate button in quit dialog in android version.
+add: option to enable/disable weight notifications.
+
 2013-03-03 New release 1.3.3.3
 fix: guild tab update in guild bot integration.
 fix: http links in windows.
