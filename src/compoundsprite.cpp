@@ -172,7 +172,7 @@ int CompoundSprite::getHeight() const
 {
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
-        const Sprite *const base = nullptr;
+        const Sprite *const base = *it;
         if (base)
             return base->getHeight();
     }
