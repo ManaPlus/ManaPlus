@@ -29,7 +29,7 @@
 ##3Dutch
 ##9Elvano Miok (Elvano)
 
-##3Dutch (Belgium)
+##3Vlaams
 ##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>
 
 ##3Finnish
