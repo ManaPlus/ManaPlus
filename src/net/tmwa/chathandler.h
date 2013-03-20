@@ -42,7 +42,7 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void handleMessage(Net::MessageIn &msg);
 
-        void talk(const std::string &text);
+        void talk(const std::string &text, const std::string &channel);
 
         void talkRaw(const std::string &text);
 

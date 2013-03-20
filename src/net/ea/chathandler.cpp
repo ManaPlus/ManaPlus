@@ -49,8 +49,7 @@ ChatHandler::ChatHandler()
 void ChatHandler::me(const std::string &text)
 {
     std::string action = strprintf("*%s*", text.c_str());
-
-    talk(action);
+    talk(action, GENERAL_CHANNEL);
 }
 
 void ChatHandler::channelList()

@@ -101,7 +101,8 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void ChatHandler::talk(const std::string &text)
+void ChatHandler::talk(const std::string &text,
+                       const std::string &channel A_UNUSED)
 {
     if (!player_node)
         return;

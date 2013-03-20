@@ -491,7 +491,7 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
         }
     }
 
-    Net::getChatHandler()->talk(data);
+    Net::getChatHandler()->talk(data, GENERAL_CHANNEL);
 }
 
 void ShopWindow::giveList(const std::string &nick, const int mode)

@@ -103,7 +103,7 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("ChatHandler::handleMessage")
 }
 
-void ChatHandler::talk(const std::string &text)
+void ChatHandler::talk(const std::string &text, const std::string &channel)
 {
     if (!player_node)
         return;

@@ -182,7 +182,7 @@ static void outStringNormal(ChatTab *const tab,
 
     if (!tab)
     {
-        Net::getChatHandler()->talk(str);
+        Net::getChatHandler()->talk(str, GENERAL_CHANNEL);
         return;
     }
 
@@ -214,7 +214,7 @@ static void outStringNormal(ChatTab *const tab,
             break;
         }
         default:
-            Net::getChatHandler()->talk(def);
+            Net::getChatHandler()->talk(def, GENERAL_CHANNEL);
             break;
     }
 }

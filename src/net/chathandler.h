@@ -34,7 +34,8 @@ class ChatHandler
         virtual ~ChatHandler()
         { }
 
-        virtual void talk(const std::string &text) = 0;
+        virtual void talk(const std::string &text,
+                          const std::string &channel) = 0;
 
         virtual void talkRaw(const std::string &text) = 0;
 
