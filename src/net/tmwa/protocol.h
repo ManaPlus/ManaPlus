@@ -143,6 +143,7 @@ enum
 #define SMSG_BEING_EMOTION           0x00c0
 #define SMSG_BEING_ACTION            0x008a /**< Attack, sit, stand up, ... */
 #define SMSG_BEING_CHAT              0x008d /**< A being talks */
+#define SMSG_BEING_CHAT2             0x0223 /**< A being talks in channels */
 #define SMSG_BEING_NAME_RESPONSE     0x0095 /**< Has to be requested */
 #define SMSG_BEING_NAME_RESPONSE2    0x0220 /**< Has to be requested */
 #define SMSG_BEING_CHANGE_DIRECTION  0x009c
@@ -164,6 +165,7 @@ enum
 #define SMSG_NPC_INT_INPUT           0x0142 /**< Integer input */
 #define SMSG_NPC_STR_INPUT           0x01d4 /**< String input */
 #define SMSG_PLAYER_CHAT             0x008e /**< Player talks */
+#define SMSG_PLAYER_CHAT2            0x0224 /**< Player talks */
 #define SMSG_WHISPER                 0x0097 /**< Whisper Recieved */
 #define SMSG_WHISPER_RESPONSE        0x0098
 #define SMSG_GM_CHAT                 0x009a /**< GM announce */
@@ -246,6 +248,7 @@ enum
 #define CMSG_CLIENT_QUIT             0x018A
 
 #define CMSG_CHAT_MESSAGE            0x008c
+#define CMSG_CHAT_MESSAGE2           0x0222
 #define CMSG_CHAT_WHISPER            0x0096
 #define CMSG_CHAT_ANNOUNCE           0x0099
 #define CMSG_CHAT_WHO                0x00c1

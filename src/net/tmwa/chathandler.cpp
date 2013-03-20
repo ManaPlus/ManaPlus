@@ -40,6 +40,7 @@
 #include "debug.h"
 
 extern Net::ChatHandler *chatHandler;
+extern int serverVersion;
 
 namespace TmwAthena
 {
@@ -51,7 +52,9 @@ ChatHandler::ChatHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_BEING_CHAT,
+        SMSG_BEING_CHAT2,
         SMSG_PLAYER_CHAT,
+        SMSG_PLAYER_CHAT2,
         SMSG_WHISPER,
         SMSG_WHISPER_RESPONSE,
         SMSG_GM_CHAT,
@@ -82,12 +85,21 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         // Received speech from being
         case SMSG_BEING_CHAT:
-            processBeingChat(msg);
+            processBeingChat(msg, false);
+            break;
+
+        // Received speech from being
+        case SMSG_BEING_CHAT2:
+            processBeingChat(msg, true);
             break;
 
         case SMSG_PLAYER_CHAT:
         case SMSG_GM_CHAT:
-            processChat(msg, msg.getId() == SMSG_PLAYER_CHAT);
+            processChat(msg, msg.getId() == SMSG_PLAYER_CHAT, false);
+            break;
+
+        case SMSG_PLAYER_CHAT2:
+            processChat(msg, true, true);
             break;
 
         case SMSG_MVP:
@@ -111,10 +123,23 @@ void ChatHandler::talk(const std::string &text, const std::string &channel)
     std::string mes = std::string(player_node->getName()).append(
         " : ").append(text);
 
-    MessageOut outMsg(CMSG_CHAT_MESSAGE);
-    // Added + 1 in order to let eAthena parse admin commands correctly
-    outMsg.writeInt16(static_cast<short>(mes.length() + 4 + 1));
-    outMsg.writeString(mes, static_cast<int>(mes.length() + 1));
+    if (serverVersion >= 8 && channel.size() == 3)
+    {
+        MessageOut outMsg(CMSG_CHAT_MESSAGE2);
+        // Added + 1 in order to let eAthena parse admin commands correctly
+        outMsg.writeInt16(static_cast<short>(mes.length() + 4 + 3 + 1));
+        outMsg.writeInt8(channel[0]);
+        outMsg.writeInt8(channel[1]);
+        outMsg.writeInt8(channel[2]);
+        outMsg.writeString(mes, static_cast<int>(mes.length() + 1));
+    }
+    else
+    {
+        MessageOut outMsg(CMSG_CHAT_MESSAGE);
+        // Added + 1 in order to let eAthena parse admin commands correctly
+        outMsg.writeInt16(static_cast<short>(mes.length() + 4 + 1));
+        outMsg.writeString(mes, static_cast<int>(mes.length() + 1));
+    }
 }
 
 void ChatHandler::talkRaw(const std::string &mes)

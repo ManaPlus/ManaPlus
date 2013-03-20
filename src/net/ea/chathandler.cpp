@@ -258,15 +258,25 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
     }
 }
 
-void ChatHandler::processBeingChat(Net::MessageIn &msg)
+void ChatHandler::processBeingChat(Net::MessageIn &msg, const bool channels)
 {
     if (!actorSpriteManager)
         return;
 
-    const int chatMsgLength = msg.readInt16() - 8;
+    int chatMsgLength = msg.readInt16() - 8;
     Being *const being = actorSpriteManager->findBeing(msg.readInt32());
+    if (!being)
+        return;
 
-    if (!being || chatMsgLength <= 0)
+    if (channels)
+    {
+        chatMsgLength -= 3;
+        msg.readInt8(); // channel
+        msg.readInt8(); // channel
+        msg.readInt8(); // channel
+    }
+
+    if (chatMsgLength <= 0)
         return;
 
     std::string chatMsg = msg.readRawString(chatMsgLength);
@@ -307,10 +317,17 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     }
 }
 
-void ChatHandler::processChat(Net::MessageIn &msg, bool normalChat)
+void ChatHandler::processChat(Net::MessageIn &msg, bool normalChat,
+                              bool channels)
 {
-    const int chatMsgLength = msg.readInt16() - 4;
-
+    int chatMsgLength = msg.readInt16() - 4;
+    if (channels)
+    {
+        chatMsgLength -= 3;
+        msg.readInt8(); // channel
+        msg.readInt8(); // channel
+        msg.readInt8(); // channel
+    }
     if (chatMsgLength <= 0)
         return;
 

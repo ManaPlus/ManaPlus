@@ -32,8 +32,10 @@
 
 class ScrollArea;
 
-const std::string GENERAL_CHANNEL = "\000\000\000";
-const std::string TRADE_CHANNEL = "\000\000\001";
+//const std::string GENERAL_CHANNEL = "\000\000\000";
+//const std::string TRADE_CHANNEL = "\000\000\001";
+const std::string GENERAL_CHANNEL = "";
+const std::string TRADE_CHANNEL = "";
 
 /**
  * A tab for the chat window. This is special to ease chat handling.

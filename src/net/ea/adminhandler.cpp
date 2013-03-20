@@ -31,7 +31,8 @@
 namespace Ea
 {
 
-const std::string GENERAL_CHANNEL = "\000\000\000";
+//const std::string GENERAL_CHANNEL = "\000\000\000";
+const std::string GENERAL_CHANNEL = "";
 
 void AdminHandler::kickName(const std::string &name)
 {

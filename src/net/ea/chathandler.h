@@ -75,9 +75,11 @@ class ChatHandler : public Net::ChatHandler
 
         virtual void processWhisper(Net::MessageIn &msg);
 
-        virtual void processBeingChat(Net::MessageIn &msg);
+        virtual void processBeingChat(Net::MessageIn &msg,
+                                      const bool channels);
 
-        virtual void processChat(Net::MessageIn &msg, bool normalChat);
+        virtual void processChat(Net::MessageIn &msg, bool normalChat,
+                                 bool channels);
 
         virtual void processMVP(Net::MessageIn &msg);
 

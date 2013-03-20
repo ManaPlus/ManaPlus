@@ -81,12 +81,12 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         // Received speech from being
         case SMSG_BEING_CHAT:
-            processBeingChat(msg);
+            processBeingChat(msg, false);
             break;
 
         case SMSG_PLAYER_CHAT:
         case SMSG_GM_CHAT:
-            processChat(msg, msg.getId() == SMSG_PLAYER_CHAT);
+            processChat(msg, msg.getId() == SMSG_PLAYER_CHAT, false);
             break;
 
         case SMSG_MVP:
