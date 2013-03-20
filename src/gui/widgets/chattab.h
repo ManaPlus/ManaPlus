@@ -32,6 +32,9 @@
 
 class ScrollArea;
 
+const std::string GENERAL_CHANNEL = "\000\000\000";
+const std::string TRADE_CHANNEL = "\000\000\001";
+
 /**
  * A tab for the chat window. This is special to ease chat handling.
  */
@@ -54,7 +57,8 @@ class ChatTab : public Tab
         /**
          * Constructor.
          */
-        ChatTab(const Widget2 *const widget, const std::string &name);
+        ChatTab(const Widget2 *const widget, const std::string &name,
+                const std::string &channel);
 
         A_DELETE_COPY(ChatTab)
 
@@ -171,6 +175,9 @@ class ChatTab : public Tab
 
         virtual void playNewMessageSound();
 
+        std::string getChannelName()
+        { return mChannelName; }
+
     protected:
         friend class ChatWindow;
         friend class WhisperWindow;
@@ -195,6 +202,7 @@ class ChatTab : public Tab
         bool mRemoveNames;
         bool mNoAway;
         bool mShowOnline;
+        std::string mChannelName;
 };
 
 extern ChatTab *localChatTab;

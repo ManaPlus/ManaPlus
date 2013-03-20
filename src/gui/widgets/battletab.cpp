@@ -38,7 +38,7 @@
 #include "debug.h"
 
 BattleTab::BattleTab(const Widget2 *const widget) :
-    ChatTab(widget, _("Battle"))
+    ChatTab(widget, _("Battle"), "")
 {
     if (config.getBoolValue("showChatHistory"))
         loadFromLogFile("#Battle");

@@ -37,7 +37,7 @@
 #include "debug.h"
 
 GuildChatTab::GuildChatTab(const Widget2 *const widget) :
-    ChatTab(widget, _("Guild"))
+    ChatTab(widget, _("Guild"), "")
 {
     setTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB),
         &getThemeColor(Theme::GUILD_CHAT_TAB_OUTLINE));

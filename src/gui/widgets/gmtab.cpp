@@ -32,7 +32,7 @@
 #include "debug.h"
 
 GmTab::GmTab(const Widget2 *const widget) :
-    ChatTab(widget, _("GM"))
+    ChatTab(widget, _("GM"), "")
 {
     setTabColor(&getThemeColor(Theme::GM_CHAT_TAB),
         &getThemeColor(Theme::GM_CHAT_TAB_OUTLINE));

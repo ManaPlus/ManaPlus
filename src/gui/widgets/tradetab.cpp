@@ -36,7 +36,7 @@
 #include "debug.h"
 
 TradeTab::TradeTab(const Widget2 *const widget) :
-    ChatTab(widget, _("Trade"))
+    ChatTab(widget, _("Trade"), TRADE_CHANNEL)
 {
 }
 

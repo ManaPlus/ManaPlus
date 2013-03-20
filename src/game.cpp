@@ -252,12 +252,12 @@ static void createGuiWindows()
     if (serverVersion >= 6)
         questsWindow = new QuestsWindow;
 
-    localChatTab = new ChatTab(chatWindow, _("General"));
+    localChatTab = new ChatTab(chatWindow, _("General"), GENERAL_CHANNEL);
     localChatTab->setAllowHighlight(false);
     if (config.getBoolValue("showChatHistory"))
         localChatTab->loadFromLogFile("#General");
 
-    debugChatTab = new ChatTab(chatWindow, _("Debug"));
+    debugChatTab = new ChatTab(chatWindow, _("Debug"), "");
     debugChatTab->setAllowHighlight(false);
 
     if (config.getBoolValue("enableTradeTab"))

@@ -44,7 +44,7 @@ namespace Ea
 {
 
 PartyTab::PartyTab(const Widget2 *const widget) :
-    ChatTab(widget, _("Party"))
+    ChatTab(widget, _("Party"), "")
 {
     setTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB),
         &getThemeColor(Theme::PARTY_CHAT_TAB_OUTLINE));
