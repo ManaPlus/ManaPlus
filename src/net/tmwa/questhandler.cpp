@@ -43,8 +43,8 @@ QuestHandler::QuestHandler() :
 {
     static const uint16_t _messages[] =
     {
-        CMSG_QUEST_SET_VAR,
-        CMSG_QUEST_PLAYER_VARS,
+        SMSG_QUEST_SET_VAR,
+        SMSG_QUEST_PLAYER_VARS,
         0
     };
     handledMessages = _messages;
@@ -56,11 +56,11 @@ void QuestHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_START("QuestHandler::handleMessage")
     switch (msg.getId())
     {
-        case CMSG_QUEST_SET_VAR:
+        case SMSG_QUEST_SET_VAR:
             processSetQuestVar(msg);
             break;
 
-        case CMSG_QUEST_PLAYER_VARS:
+        case SMSG_QUEST_PLAYER_VARS:
             processPlayerQuests(msg);
             break;
 
