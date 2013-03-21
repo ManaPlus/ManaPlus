@@ -191,7 +191,7 @@ fi
 AM_CONDITIONAL(USE_INTERNALGUICHAN, test x$with_internalguichan = xyes)
 
 # Option to enable mumble support
-AC_ARG_WITH(internalguichan,[  --without-mumble        don't use mumble integration ] )
+AC_ARG_WITH(mumble,[  --without-mumble        don't use mumble integration ] )
 if test "x$with_mumble" == "xno"; then
     with_mumble=no
 else
