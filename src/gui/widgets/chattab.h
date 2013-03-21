@@ -51,6 +51,7 @@ class ChatTab : public Tab
             TAB_DEBUG,
             TAB_TRADE,
             TAB_BATTLE,
+            TAB_LANG,
             TAB_GM
         };
 

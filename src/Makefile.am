@@ -156,6 +156,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/spellshortcutcontainer.h \
 	      gui/widgets/label.cpp \
 	      gui/widgets/label.h \
+	      gui/widgets/langtab.cpp \
+	      gui/widgets/langtab.h \
 	      gui/widgets/layout.cpp \
 	      gui/widgets/layout.h \
 	      gui/widgets/layouthelper.cpp \

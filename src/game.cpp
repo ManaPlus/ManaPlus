@@ -75,6 +75,7 @@
 #include "gui/widgets/emoteshortcutcontainer.h"
 #include "gui/widgets/gmtab.h"
 #include "gui/widgets/itemshortcutcontainer.h"
+#include "gui/widgets/langtab.h"
 #include "gui/widgets/spellshortcutcontainer.h"
 #include "gui/widgets/tradetab.h"
 
@@ -88,6 +89,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
+#include "utils/langs.h"
 #include "utils/mkdir.h"
 #include "utils/physfstools.h"
 #include "utils/process.h"
@@ -155,6 +157,7 @@ ChatTab *debugChatTab = nullptr;
 TradeTab *tradeChatTab = nullptr;
 BattleTab *battleChatTab = nullptr;
 GmTab *gmChatTab = nullptr;
+LangTab *langChatTab = nullptr;
 
 const unsigned adjustDelay = 10;
 
@@ -256,6 +259,16 @@ static void createGuiWindows()
     localChatTab->setAllowHighlight(false);
     if (config.getBoolValue("showChatHistory"))
         localChatTab->loadFromLogFile("#General");
+
+    if (serverVersion >= 8)
+    {
+        const std::string lang = getLangShort();
+        if (lang.size() == 2)
+        {
+            langChatTab = new LangTab(chatWindow, lang);
+            langChatTab->setAllowHighlight(false);
+        }
+    }
 
     debugChatTab = new ChatTab(chatWindow, _("Debug"), "");
     debugChatTab->setAllowHighlight(false);
