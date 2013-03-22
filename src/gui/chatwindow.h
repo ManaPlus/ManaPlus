@@ -235,9 +235,10 @@ class ChatWindow final : public Window,
 
         void ignoreAllWhispers();
 
-        void resortChatLog(std::string line, Own own = BY_UNKNOWN,
-                           const bool ignoreRecord = false,
-                           const bool tryRemoveColors = true);
+        void resortChatLog(std::string line, Own own,
+                           const std::string &channel,
+                           const bool ignoreRecord,
+                           const bool tryRemoveColors);
 
         void battleChatLog(std::string line, Own own = BY_UNKNOWN,
                            const bool ignoreRecord = false,

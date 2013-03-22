@@ -27,7 +27,7 @@
 #include "debug.h"
 
 LangTab::LangTab(const Widget2 *const widget, const std::string &lang) :
-    ChatTab(widget, _("Lang"), " " + lang)
+    ChatTab(widget, _("Lang"), lang + " ")
 {
 }
 

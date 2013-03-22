@@ -45,6 +45,7 @@
 #include "gui/widgets/battletab.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemlinkhandler.h"
+#include "gui/widgets/langtab.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
@@ -1422,18 +1423,23 @@ std::string ChatWindow::autoCompleteHistory(std::string partName)
 }
 
 void ChatWindow::resortChatLog(std::string line, Own own,
+                               const std::string &channel,
                                const bool ignoreRecord,
                                const bool tryRemoveColors)
 {
     if (own == -1)
         own = BY_SERVER;
 
+    std::string prefix;
+    if (!channel.empty())
+        prefix = std::string("##3").append(channel).append("##0");
+
     if (tradeChatTab)
     {
         if (findI(line, mTradeFilter) != std::string::npos)
         {
-//            logger->log("trade: " + line);
-            tradeChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
+            tradeChatTab->chatLog(prefix + line, own,
+                ignoreRecord, tryRemoveColors);
             return;
         }
 
@@ -1447,7 +1453,7 @@ void ChatWindow::resortChatLog(std::string line, Own own,
                 if (line.find(": \302\202\302") != std::string::npos)
                     return;
                 line = line.erase(idx + 2, 2);
-                tradeChatTab->chatLog(line, own, ignoreRecord,
+                tradeChatTab->chatLog(prefix + line, own, ignoreRecord,
                     tryRemoveColors);
                 return;
             }
@@ -1464,8 +1470,8 @@ void ChatWindow::resortChatLog(std::string line, Own own,
                 {
                     if (line.find("http", idx1) != idx1 + 2)
                     {
-                        tradeChatTab->chatLog(line, own, ignoreRecord,
-                                              tryRemoveColors);
+                        tradeChatTab->chatLog(prefix + line, own,
+                            ignoreRecord, tryRemoveColors);
                         return;
                     }
                 }
@@ -1473,8 +1479,15 @@ void ChatWindow::resortChatLog(std::string line, Own own,
         }
     }
 
-    if (localChatTab)
+    if (langChatTab && !channel.empty()
+        && langChatTab->getChannelName() == channel)
+    {
+        langChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
+    }
+    else if (localChatTab && channel.empty())
+    {
         localChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
+    }
 }
 
 void ChatWindow::battleChatLog(std::string line, Own own,

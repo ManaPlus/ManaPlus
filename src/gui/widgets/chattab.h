@@ -176,7 +176,7 @@ class ChatTab : public Tab
 
         virtual void playNewMessageSound();
 
-        std::string getChannelName()
+        const std::string &getChannelName() const
         { return mChannelName; }
 
     protected:

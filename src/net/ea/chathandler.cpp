@@ -268,12 +268,13 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg, const bool channels)
     if (!being)
         return;
 
+    std::string channel;
     if (channels)
     {
         chatMsgLength -= 3;
-        msg.readInt8(); // channel
-        msg.readInt8(); // channel
-        msg.readInt8(); // channel
+        channel = msg.readInt8();
+        channel += msg.readInt8();
+        channel += msg.readInt8();
     }
 
     if (chatMsgLength <= 0)
@@ -307,7 +308,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg, const bool channels)
         PlayerRelation::SPEECH_LOG) && chatWindow)
     {
         chatWindow->resortChatLog(removeColors(sender_name)
-            .append(" : ").append(chatMsg), BY_OTHER);
+            .append(" : ").append(chatMsg), BY_OTHER, channel, false, true);
     }
 
     if (player_relations.hasPermission(sender_name,
@@ -321,12 +322,13 @@ void ChatHandler::processChat(Net::MessageIn &msg, bool normalChat,
                               bool channels)
 {
     int chatMsgLength = msg.readInt16() - 4;
+    std::string channel;
     if (channels)
     {
         chatMsgLength -= 3;
-        msg.readInt8(); // channel
-        msg.readInt8(); // channel
-        msg.readInt8(); // channel
+        channel = msg.readInt8();
+        channel += msg.readInt8();
+        channel += msg.readInt8();
     }
     if (chatMsgLength <= 0)
         return;
@@ -337,13 +339,19 @@ void ChatHandler::processChat(Net::MessageIn &msg, bool normalChat,
     if (normalChat)
     {
         if (chatWindow)
-            chatWindow->resortChatLog(chatMsg, BY_PLAYER);
-
-        const std::string senseStr = "You sense the following: ";
-        if (actorSpriteManager && !chatMsg.find(senseStr))
         {
-            actorSpriteManager->parseLevels(
-                chatMsg.substr(senseStr.size()));
+            chatWindow->resortChatLog(chatMsg, BY_PLAYER,
+                channel, false, true);
+        }
+
+        if (channel.empty())
+        {
+            const std::string senseStr = "You sense the following: ";
+            if (actorSpriteManager && !chatMsg.find(senseStr))
+            {
+                actorSpriteManager->parseLevels(
+                    chatMsg.substr(senseStr.size()));
+            }
         }
 
         if (pos != std::string::npos)
