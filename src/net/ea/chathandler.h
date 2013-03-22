@@ -88,6 +88,7 @@ class ChatHandler : public Net::ChatHandler
     protected:
         typedef std::queue<std::string> WhisperQueue;
         WhisperQueue mSentWhispers;
+        bool mShowAllLang;
 };
 
 } // namespace Ea

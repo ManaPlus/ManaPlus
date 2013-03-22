@@ -124,6 +124,9 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable language tab"), "",
         "enableLangTab", this, "enableLangTabEvent", false);
 
+    new SetupItemCheckBox(_("Show all languages messages"), "",
+        "showAllLang", this, "showAllLangEvent", false);
+
     new SetupItemCheckBox(_("Enable battle tab"), "",
         "enableBattleTab", this, "enableBattleTabEvent");
 
@@ -159,4 +162,10 @@ void Setup_Chat::apply()
         chatWindow->adjustTabSize();
         chatWindow->parseHighlights();
     }
+}
+
+void Setup_Chat::externalUpdated()
+{
+    reread("enableLangTab");
+    reread("showAllLang");
 }

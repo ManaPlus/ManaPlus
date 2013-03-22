@@ -124,3 +124,10 @@ void SetupTabScroll::widgetResized(const gcn::Event &event A_UNUSED)
     mScroll->setWidth(getWidth() - 12);
     mScroll->setHeight(getHeight() - 12 - 12);
 }
+
+void SetupTabScroll::reread(const std::string &name)
+{
+    SetupItem *const item = mItems[name + "Event"];
+    if (item)
+        item->rereadValue();
+}

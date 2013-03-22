@@ -42,7 +42,8 @@
 namespace Ea
 {
 
-ChatHandler::ChatHandler()
+ChatHandler::ChatHandler() :
+    mShowAllLang(serverConfig.getValue("showAllLang", 0))
 {
 }
 
@@ -314,7 +315,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg, const bool channels)
     if (player_relations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
-        being->setSpeech(chatMsg);
+        being->setSpeech(chatMsg, channel);
     }
 }
 
@@ -360,7 +361,7 @@ void ChatHandler::processChat(Net::MessageIn &msg, bool normalChat,
         trim(chatMsg);
 
         if (player_node)
-            player_node->setSpeech(chatMsg);
+            player_node->setSpeech(chatMsg, channel);
     }
     else if (localChatTab)
     {

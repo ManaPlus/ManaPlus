@@ -107,6 +107,8 @@ class SetupItem : public gcn::ActionListener,
 
         void fixFirstItemSize(gcn::Widget *const widget);
 
+        void rereadValue();
+
     protected:
         std::string mText;
 

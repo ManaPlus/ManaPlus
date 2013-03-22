@@ -60,6 +60,7 @@
 #include "resources/resourcemanager.h"
 
 #include "gui/widgets/chattab.h"
+#include "gui/widgets/langtab.h"
 
 #include "utils/gettext.h"
 
@@ -440,10 +441,17 @@ void Being::setPath(const Path &path)
     }
 }
 
-void Being::setSpeech(const std::string &text, int time)
+void Being::setSpeech(const std::string &text, const std::string &channel,
+                      int time)
 {
     if (!userPalette)
         return;
+
+    if (!channel.empty() && (langChatTab && langChatTab->getChannelName()
+        != channel))
+    {
+        return;
+    }
 
     // Remove colors
     mSpeech = removeColors(text);

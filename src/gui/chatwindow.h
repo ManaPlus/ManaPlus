@@ -360,6 +360,7 @@ class ChatWindow final : public Window,
         bool mHaveMouse;
         bool mAutoHide;
         bool mShowBattleEvents;
+        bool mShowAllLang;
 };
 
 extern ChatWindow *chatWindow;

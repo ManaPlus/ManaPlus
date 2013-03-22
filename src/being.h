@@ -253,7 +253,9 @@ class Being : public ActorSprite, public ConfigListener
          * @param text The text that should appear.
          * @param time The amount of time the text should stay in milliseconds.
          */
-        void setSpeech(const std::string &text, int time = 0);
+        void setSpeech(const std::string &text,
+                       const std::string &channel = "",
+                       int time = 0);
 
         /**
          * Puts a damage bubble above this being.

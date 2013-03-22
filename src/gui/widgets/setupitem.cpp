@@ -180,6 +180,12 @@ void SetupItem::fixFirstItemSize(gcn::Widget *const widget)
         widget->setWidth(maxSize);
 }
 
+void SetupItem::rereadValue()
+{
+    load();
+    toWidget();
+}
+
 SetupItemCheckBox::SetupItemCheckBox(std::string text, std::string description,
                                      std::string keyName,
                                      SetupTabScroll *const parent,

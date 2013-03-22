@@ -267,6 +267,7 @@ ChatWindow::ChatWindow():
 
     mAutoHide = config.getBoolValue("autohideChat");
     mShowBattleEvents = config.getBoolValue("showBattleEvents");
+    mShowAllLang = serverConfig.getValue("showAllLang", 0);
     enableVisibleSound(true);
 }
 
@@ -1479,10 +1480,25 @@ void ChatWindow::resortChatLog(std::string line, Own own,
         }
     }
 
-    if (langChatTab && !channel.empty()
-        && langChatTab->getChannelName() == channel)
+    if (langChatTab && !channel.empty())
     {
-        langChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
+        if (langChatTab->getChannelName() == channel)
+        {
+            langChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
+        }
+        else if (mShowAllLang)
+        {
+            if (langChatTab)
+            {
+                langChatTab->chatLog(prefix + line, own,
+                    ignoreRecord, tryRemoveColors);
+            }
+            else if (localChatTab)
+            {
+                localChatTab->chatLog(prefix + line, own,
+                    ignoreRecord, tryRemoveColors);
+            }
+        }
     }
     else if (localChatTab && channel.empty())
     {

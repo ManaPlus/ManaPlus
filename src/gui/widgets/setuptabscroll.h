@@ -62,6 +62,8 @@ class SetupTabScroll : public SetupTab
 
         void widgetResized(const gcn::Event &event) override;
 
+        void reread(const std::string &name);
+
     protected:
         VertContainer *mContainer;
         ScrollArea *mScroll;

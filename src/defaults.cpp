@@ -312,6 +312,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("rated", false);
     AddDEF("weightMsg", true);
     AddDEF("enableLangTab", true);
+    AddDEF("showAllLang", false);
     return configData;
 }
 
