@@ -41,6 +41,8 @@
 
 #include "debug.h"
 
+extern int serverVersion;
+
 Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     SetupTabScroll(widget)
 {
@@ -118,6 +120,9 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
 
     new SetupItemCheckBox(_("Enable gm tab"), "",
         "enableGmTab", this, "enableGmTabEvent");
+
+    new SetupItemCheckBox(_("Enable language tab"), "",
+        "enableLangTab", this, "enableLangTabEvent", false);
 
     new SetupItemCheckBox(_("Enable battle tab"), "",
         "enableBattleTab", this, "enableBattleTabEvent");

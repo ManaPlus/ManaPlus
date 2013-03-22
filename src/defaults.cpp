@@ -311,6 +311,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("gamecount", 0);
     AddDEF("rated", false);
     AddDEF("weightMsg", true);
+    AddDEF("enableLangTab", true);
     return configData;
 }
 
