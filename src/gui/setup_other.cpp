@@ -289,3 +289,10 @@ void Setup_Other::apply()
 
     logger->setDebugLog(config.getBoolValue("debugLog"));
 }
+
+void Setup_Other::externalUpdated()
+{
+    reread("showJob");
+    reread("enableGuildBot");
+    reread("enableBuggyServers");
+}
