@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-03-16 13:52+0300\n"
-"PO-Revision-Date: 2013-03-10 11:26+0000\n"
+"POT-Creation-Date: 2013-03-22 23:28+0300\n"
+"PO-Revision-Date: 2013-03-22 20:31+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/manaplus/"
 "language/zh_CN/)\n"
@@ -34,25 +34,25 @@ msgstr "接受传入的交易请求"
 msgid "Visible on map"
 msgstr "在地图上可见"
 
-#: src/being.cpp:334
+#: src/being.cpp:335
 msgid "Human"
 msgstr ""
 
-#: src/being.cpp:527
+#: src/being.cpp:535
 msgid "dodge"
 msgstr "躲闪"
 
-#: src/being.cpp:527
+#: src/being.cpp:535
 msgid "miss"
 msgstr "失误"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1628 src/gui/whoisonline.cpp:831
+#: src/being.cpp:1636 src/gui/whoisonline.cpp:831
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1633 src/gui/whoisonline.cpp:836
+#: src/being.cpp:1641 src/gui/whoisonline.cpp:836
 msgid "I"
 msgstr "I"
 
@@ -72,7 +72,7 @@ msgstr "视频"
 msgid "Themes"
 msgstr "主题"
 
-#: src/client.cpp:1121 src/gui/didyouknowwindow.cpp:72
+#: src/client.cpp:1121 src/gui/didyouknowwindow.cpp:73
 #: src/gui/inventorywindow.cpp:208 src/gui/npcdialog.cpp:60
 #: src/gui/npcdialog.cpp:86 src/gui/popupmenu.cpp:508
 #: src/gui/questswindow.cpp:129 src/gui/shopwindow.cpp:77
@@ -140,22 +140,22 @@ msgstr "取消注册成功"
 msgid "Farewell, come back any time..."
 msgstr "再见，欢迎随时回来... ..."
 
-#: src/client.cpp:1858 src/client.cpp:1872 src/client.cpp:1913
-#: src/client.cpp:1928 src/client.cpp:2363 src/client.cpp:2370
+#: src/client.cpp:1858 src/client.cpp:1872 src/client.cpp:1914
+#: src/client.cpp:1929 src/client.cpp:2364 src/client.cpp:2371
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s 不存在，且无法创建！正在退出。"
 
-#: src/client.cpp:2064
+#: src/client.cpp:2065
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "主机更新无效：%s"
 
-#: src/client.cpp:2104 src/client.cpp:2110
+#: src/client.cpp:2105 src/client.cpp:2111
 msgid "Error creating updates directory!"
 msgstr "创建更新目录错误！"
 
-#: src/client.cpp:2131 src/client.cpp:2143
+#: src/client.cpp:2132 src/client.cpp:2144
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "错误：%s 不存在且无法创建！正在退出。"
@@ -340,28 +340,28 @@ msgstr ""
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr "/%s的选项是\"yes\"，\"no\"，\"true\"，\"false\"，\"1\"，\"0\"。"
 
-#: src/game.cpp:255 src/gui/widgets/chattab.cpp:445
+#: src/game.cpp:258 src/gui/widgets/chattab.cpp:452
 msgid "General"
 msgstr "常规"
 
-#: src/game.cpp:260 src/gui/debugwindow.cpp:50 src/gui/widgets/chattab.cpp:447
+#: src/game.cpp:273 src/gui/debugwindow.cpp:50 src/gui/widgets/chattab.cpp:454
 #: src/gui/windowmenu.cpp:144
 msgid "Debug"
 msgstr "调试 "
 
-#: src/game.cpp:524
+#: src/game.cpp:537
 msgid "Screenshot saved as "
 msgstr "截图保存为"
 
-#: src/game.cpp:532
+#: src/game.cpp:545
 msgid "Saving screenshot failed!"
 msgstr "保存屏幕快照失败！"
 
-#: src/game.cpp:598
+#: src/game.cpp:611
 msgid "The connection to the server was lost."
 msgstr "服务器的连接丢失。"
 
-#: src/game.cpp:599
+#: src/game.cpp:612
 msgid "Network Error"
 msgstr "网络错误"
 
@@ -448,7 +448,7 @@ msgstr ""
 msgid "by type"
 msgstr ""
 
-#: src/gui/buydialog.cpp:75 src/gui/chatwindow.cpp:169
+#: src/gui/buydialog.cpp:75 src/gui/chatwindow.cpp:170
 #: src/gui/inventorywindow.cpp:83 src/gui/itemamountwindow.cpp:91
 #: src/gui/logindialog.cpp:92 src/gui/logindialog.cpp:122
 #: src/gui/setup_relations.cpp:227 src/gui/setup_theme.cpp:110
@@ -644,7 +644,7 @@ msgstr "美女"
 
 #: src/gui/charcreatedialog.cpp:91 src/gui/registerdialog.cpp:108
 #: src/gui/setupactiondata.h:1498 src/gui/setupactiondata.h:1571
-#: src/gui/setup_audio.cpp:132 src/gui/setup_chat.cpp:137
+#: src/gui/setup_audio.cpp:132 src/gui/setup_chat.cpp:145
 #: src/gui/setup_other.cpp:237 src/gui/setup_visual.cpp:142
 msgid "Other"
 msgstr "其他"
@@ -733,74 +733,74 @@ msgstr "等级 %d"
 msgid "(empty)"
 msgstr "()"
 
-#: src/gui/chatwindow.cpp:138 src/gui/inventorywindow.cpp:63
+#: src/gui/chatwindow.cpp:139 src/gui/inventorywindow.cpp:63
 #: src/gui/setup_visual.cpp:66
 msgid "default"
 msgstr "默认"
 
-#: src/gui/chatwindow.cpp:139
+#: src/gui/chatwindow.cpp:140
 msgid "black"
 msgstr "黑色"
 
-#: src/gui/chatwindow.cpp:140
+#: src/gui/chatwindow.cpp:141
 msgid "red"
 msgstr "红色"
 
-#: src/gui/chatwindow.cpp:141
+#: src/gui/chatwindow.cpp:142
 msgid "green"
 msgstr "绿色"
 
-#: src/gui/chatwindow.cpp:142
+#: src/gui/chatwindow.cpp:143
 msgid "blue"
 msgstr "蓝色"
 
-#: src/gui/chatwindow.cpp:143
+#: src/gui/chatwindow.cpp:144
 msgid "gold"
 msgstr "金"
 
-#: src/gui/chatwindow.cpp:144
+#: src/gui/chatwindow.cpp:145
 msgid "yellow"
 msgstr "黄色"
 
-#: src/gui/chatwindow.cpp:145
+#: src/gui/chatwindow.cpp:146
 msgid "pink"
 msgstr "粉红色"
 
-#: src/gui/chatwindow.cpp:146
+#: src/gui/chatwindow.cpp:147
 msgid "purple"
 msgstr "紫"
 
-#: src/gui/chatwindow.cpp:147
+#: src/gui/chatwindow.cpp:148
 msgid "grey"
 msgstr "灰色"
 
-#: src/gui/chatwindow.cpp:148
+#: src/gui/chatwindow.cpp:149
 msgid "brown"
 msgstr "棕色"
 
-#: src/gui/chatwindow.cpp:149
+#: src/gui/chatwindow.cpp:150
 msgid "rainbow 1"
 msgstr "彩虹1"
 
-#: src/gui/chatwindow.cpp:150
+#: src/gui/chatwindow.cpp:151
 msgid "rainbow 2"
 msgstr "彩虹2"
 
-#: src/gui/chatwindow.cpp:151
+#: src/gui/chatwindow.cpp:152
 msgid "rainbow 3"
 msgstr "彩虹3"
 
-#: src/gui/chatwindow.cpp:178 src/gui/setupactiondata.h:1570
-#: src/gui/setup_chat.cpp:47 src/gui/windowmenu.cpp:86
+#: src/gui/chatwindow.cpp:179 src/gui/setupactiondata.h:1570
+#: src/gui/setup_chat.cpp:49 src/gui/windowmenu.cpp:86
 msgid "Chat"
 msgstr "聊天"
 
-#: src/gui/chatwindow.cpp:714
+#: src/gui/chatwindow.cpp:716
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr ""
 
-#: src/gui/chatwindow.cpp:1138
+#: src/gui/chatwindow.cpp:1140
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "对%s密语到：%s"
@@ -988,19 +988,19 @@ msgstr "输入:%d 字节/"
 msgid "Out: %d bytes/s"
 msgstr ""
 
-#: src/gui/didyouknowwindow.cpp:50
+#: src/gui/didyouknowwindow.cpp:51
 msgid "Did You Know?"
 msgstr "你知道吗？"
 
-#: src/gui/didyouknowwindow.cpp:55
+#: src/gui/didyouknowwindow.cpp:56
 msgid "< Previous"
 msgstr "<上一页"
 
-#: src/gui/didyouknowwindow.cpp:56
+#: src/gui/didyouknowwindow.cpp:57
 msgid "Next >"
 msgstr "下一页>"
 
-#: src/gui/didyouknowwindow.cpp:57
+#: src/gui/didyouknowwindow.cpp:58
 msgid "Auto open this window"
 msgstr "自动打开这个窗口"
 
@@ -1054,9 +1054,8 @@ msgid "Help"
 msgstr "帮助"
 
 #: src/gui/helpwindow.cpp:51
-#, fuzzy
 msgid "Did you know..."
-msgstr "你知道吗"
+msgstr ""
 
 #: src/gui/inventorywindow.cpp:127 src/gui/windowmenu.cpp:100
 #: src/inventory.cpp:259
@@ -1285,7 +1284,7 @@ msgstr "注册"
 msgid "Custom update host"
 msgstr "自定义更新主机"
 
-#: src/gui/logindialog.cpp:160 src/gui/widgets/chattab.cpp:169
+#: src/gui/logindialog.cpp:160 src/gui/widgets/chattab.cpp:171
 msgid "Server:"
 msgstr "服务器："
 
@@ -1768,10 +1767,6 @@ msgstr "交换服务器"
 msgid "Switch character"
 msgstr "交换角色"
 
-#: src/gui/quitdialog.cpp:98
-msgid "Rate in google play"
-msgstr ""
-
 #: src/gui/registerdialog.cpp:88
 msgid "Confirm:"
 msgstr "确认："
@@ -1813,8 +1808,8 @@ msgstr "选择您的服务器"
 msgid "Add"
 msgstr "添加"
 
-#: src/gui/serverdialog.cpp:255 src/gui/widgets/setupitem.cpp:289
-#: src/gui/widgets/setupitem.cpp:415
+#: src/gui/serverdialog.cpp:255 src/gui/widgets/setupitem.cpp:295
+#: src/gui/widgets/setupitem.cpp:421
 msgid "Edit"
 msgstr "编辑"
 
@@ -2535,123 +2530,131 @@ msgstr "启用语音聊天"
 msgid "Download music"
 msgstr "下载音乐"
 
-#: src/gui/setup_chat.cpp:54
+#: src/gui/setup_chat.cpp:56
 msgid "Window"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:56
+#: src/gui/setup_chat.cpp:58
 msgid "Auto hide chat window."
 msgstr ""
 
-#: src/gui/setup_chat.cpp:59
+#: src/gui/setup_chat.cpp:61
 msgid "Protect chat focus."
 msgstr ""
 
-#: src/gui/setup_chat.cpp:63 src/gui/setup_colors.cpp:79
+#: src/gui/setup_chat.cpp:65 src/gui/setup_colors.cpp:79
 msgid "Colors"
 msgstr "颜色"
 
-#: src/gui/setup_chat.cpp:65
+#: src/gui/setup_chat.cpp:67
 msgid "Remove colors from received chat messages"
 msgstr "从收到的聊天消息中删除颜色"
 
-#: src/gui/setup_chat.cpp:68
+#: src/gui/setup_chat.cpp:70
 msgid "Show chat colors list"
 msgstr "显示聊天颜色列表"
 
-#: src/gui/setup_chat.cpp:72
+#: src/gui/setup_chat.cpp:74
 msgid "Commands"
 msgstr "命令"
 
-#: src/gui/setup_chat.cpp:74
+#: src/gui/setup_chat.cpp:76
 msgid "Allow magic and GM commands in all chat tabs"
 msgstr "允许在所有聊天标签中使用魔法和GM命令"
 
-#: src/gui/setup_chat.cpp:78
+#: src/gui/setup_chat.cpp:80
 msgid "Limits"
 msgstr "限制"
 
-#: src/gui/setup_chat.cpp:80
+#: src/gui/setup_chat.cpp:82
 msgid "Limit max chars in chat line"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:83
+#: src/gui/setup_chat.cpp:85
 msgid "Limit max lines in chat"
 msgstr "限制聊天的最大"
 
-#: src/gui/setup_chat.cpp:87
+#: src/gui/setup_chat.cpp:89
 msgid "Logs"
 msgstr "日志"
 
-#: src/gui/setup_chat.cpp:89
+#: src/gui/setup_chat.cpp:91
 msgid "Enable chat Log"
 msgstr "启用聊天记录"
 
-#: src/gui/setup_chat.cpp:92
+#: src/gui/setup_chat.cpp:94
 msgid "Show chat history"
 msgstr "显示聊天记录"
 
-#: src/gui/setup_chat.cpp:95
+#: src/gui/setup_chat.cpp:97
 msgid "Show guild online messages"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:99
+#: src/gui/setup_chat.cpp:101
 msgid "Messages"
 msgstr "消息"
 
-#: src/gui/setup_chat.cpp:101
+#: src/gui/setup_chat.cpp:103
 msgid "Hide shop messages"
 msgstr "隐藏商店消息"
 
-#: src/gui/setup_chat.cpp:105
+#: src/gui/setup_chat.cpp:107
 msgid "Tabs"
 msgstr "标签"
 
-#: src/gui/setup_chat.cpp:107
+#: src/gui/setup_chat.cpp:109
 msgid "Put all whispers in tabs"
 msgstr "将所有密语放于标签夜"
 
-#: src/gui/setup_chat.cpp:110
+#: src/gui/setup_chat.cpp:112
 msgid "Log magic messages in debug tab"
 msgstr "在调试页记录魔法信息"
 
-#: src/gui/setup_chat.cpp:113
+#: src/gui/setup_chat.cpp:115
 msgid "Show server messages in debug tab"
 msgstr "在调试选项卡中显示服务器的消息"
 
-#: src/gui/setup_chat.cpp:116
+#: src/gui/setup_chat.cpp:118
 msgid "Enable trade tab"
 msgstr "标签"
 
-#: src/gui/setup_chat.cpp:119
+#: src/gui/setup_chat.cpp:121
 msgid "Enable gm tab"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:122
+#: src/gui/setup_chat.cpp:124
+msgid "Enable language tab"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:127
+msgid "Show all languages messages"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:130
 msgid "Enable battle tab"
 msgstr "启用战斗“选项卡"
 
-#: src/gui/setup_chat.cpp:125
+#: src/gui/setup_chat.cpp:133
 msgid "Show battle events"
 msgstr "显示的战斗事件"
 
-#: src/gui/setup_chat.cpp:128
+#: src/gui/setup_chat.cpp:136
 msgid "Resize chat tabs if need"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:132
+#: src/gui/setup_chat.cpp:140
 msgid "Time"
 msgstr "时间"
 
-#: src/gui/setup_chat.cpp:134
+#: src/gui/setup_chat.cpp:142
 msgid "Use local time"
 msgstr "使用本地时间"
 
-#: src/gui/setup_chat.cpp:139
+#: src/gui/setup_chat.cpp:147
 msgid "Highlight words (separated by comma)"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:142
+#: src/gui/setup_chat.cpp:150
 msgid "Show MVP messages"
 msgstr ""
 
@@ -2945,9 +2948,8 @@ msgid "Enable advert protocol"
 msgstr ""
 
 #: src/gui/setup_other.cpp:180
-#, fuzzy
 msgid "Enable weight notifications"
-msgstr "到期通知"
+msgstr ""
 
 #: src/gui/setup_other.cpp:186
 msgid "Accept sell/buy requests"
@@ -4336,26 +4338,26 @@ msgstr "谁在线 - 更新"
 msgid "Battle"
 msgstr "战斗"
 
-#: src/gui/widgets/chattab.cpp:149
+#: src/gui/widgets/chattab.cpp:151
 msgid "Global announcement:"
 msgstr "全局公告："
 
-#: src/gui/widgets/chattab.cpp:154
+#: src/gui/widgets/chattab.cpp:156
 #, c-format
 msgid "Global announcement from %s:"
 msgstr "%s 全局公告："
 
-#: src/gui/widgets/chattab.cpp:179
+#: src/gui/widgets/chattab.cpp:181
 #, c-format
 msgid "%s whispers: %s"
 msgstr "%s私语:%s"
 
-#: src/gui/widgets/chattab.cpp:516
+#: src/gui/widgets/chattab.cpp:523
 #, c-format
 msgid "%s is now Online."
 msgstr ""
 
-#: src/gui/widgets/chattab.cpp:518
+#: src/gui/widgets/chattab.cpp:525
 #, c-format
 msgid "%s is now Offline."
 msgstr ""
@@ -4411,6 +4413,10 @@ msgstr ""
 
 #: src/gui/widgets/itemlinkhandler.cpp:79
 msgid "Open url"
+msgstr ""
+
+#: src/gui/widgets/langtab.cpp:30
+msgid "Lang"
 msgstr ""
 
 #: src/gui/widgets/whispertab.cpp:103
@@ -4629,345 +4635,345 @@ msgstr "仓库"
 msgid "Cart"
 msgstr ""
 
-#: src/localplayer.cpp:363
+#: src/localplayer.cpp:364
 #, c-format
 msgid "You were killed by %s"
 msgstr "你被 %s 杀掉了"
 
-#: src/localplayer.cpp:1375
+#: src/localplayer.cpp:1376
 msgid "Tried to pick up nonexistent item."
 msgstr ""
 
-#: src/localplayer.cpp:1378
+#: src/localplayer.cpp:1379
 msgid "Item is too heavy."
 msgstr "项目是太重了。"
 
-#: src/localplayer.cpp:1381
+#: src/localplayer.cpp:1382
 msgid "Item is too far away."
 msgstr "物品太远了。"
 
-#: src/localplayer.cpp:1384
+#: src/localplayer.cpp:1385
 msgid "Inventory is full."
 msgstr ""
 
-#: src/localplayer.cpp:1387
+#: src/localplayer.cpp:1388
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1390
+#: src/localplayer.cpp:1391
 msgid "Item belongs to someone else."
 msgstr ""
 
-#: src/localplayer.cpp:1393
+#: src/localplayer.cpp:1394
 msgid "Unknown problem picking up item."
 msgstr ""
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1417
+#: src/localplayer.cpp:1418
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "你拾起%d[@@%d|%s @@]。"
 
-#: src/localplayer.cpp:1622 src/localplayer.cpp:1656 src/localplayer.cpp:1657
+#: src/localplayer.cpp:1623 src/localplayer.cpp:1657 src/localplayer.cpp:1658
 msgid "xp"
 msgstr ""
 
-#: src/localplayer.cpp:1662 src/localplayer.cpp:1669 src/localplayer.cpp:1676
+#: src/localplayer.cpp:1663 src/localplayer.cpp:1670 src/localplayer.cpp:1677
 msgid "job"
 msgstr ""
 
-#: src/localplayer.cpp:1858
+#: src/localplayer.cpp:1859
 msgid "(D) default moves"
 msgstr ""
 
-#: src/localplayer.cpp:1859
+#: src/localplayer.cpp:1860
 msgid "(I) invert moves"
 msgstr ""
 
-#: src/localplayer.cpp:1860
+#: src/localplayer.cpp:1861
 msgid "(c) moves with some crazy moves"
 msgstr ""
 
-#: src/localplayer.cpp:1861
+#: src/localplayer.cpp:1862
 msgid "(C) moves with crazy moves"
 msgstr ""
 
-#: src/localplayer.cpp:1862
+#: src/localplayer.cpp:1863
 msgid "(d) double normal + crazy"
 msgstr ""
 
-#: src/localplayer.cpp:1863
+#: src/localplayer.cpp:1864
 msgid "(?) unknown move"
 msgstr ""
 
-#: src/localplayer.cpp:1885
+#: src/localplayer.cpp:1886
 #, c-format
 msgid "(%u) crazy move number %u"
 msgstr ""
 
-#: src/localplayer.cpp:1890
+#: src/localplayer.cpp:1891
 msgid "(a) custom crazy move"
 msgstr ""
 
-#: src/localplayer.cpp:1894
+#: src/localplayer.cpp:1895
 msgid "(?) crazy move"
 msgstr ""
 
-#: src/localplayer.cpp:1908
+#: src/localplayer.cpp:1909
 msgid "(0) default moves to target"
 msgstr ""
 
-#: src/localplayer.cpp:1909
+#: src/localplayer.cpp:1910
 msgid "(1) moves to target in distance 1"
 msgstr ""
 
-#: src/localplayer.cpp:1910
+#: src/localplayer.cpp:1911
 msgid "(2) moves to target in distance 2"
 msgstr ""
 
-#: src/localplayer.cpp:1911
+#: src/localplayer.cpp:1912
 msgid "(3) moves to target in distance 3"
 msgstr ""
 
-#: src/localplayer.cpp:1912
+#: src/localplayer.cpp:1913
 msgid "(5) moves to target in distance 5"
 msgstr ""
 
-#: src/localplayer.cpp:1913
+#: src/localplayer.cpp:1914
 msgid "(7) moves to target in distance 7"
 msgstr ""
 
-#: src/localplayer.cpp:1914
+#: src/localplayer.cpp:1915
 msgid "(A) moves to target in attack range"
 msgstr ""
 
-#: src/localplayer.cpp:1915
+#: src/localplayer.cpp:1916
 msgid "(a) archer attack range"
 msgstr ""
 
-#: src/localplayer.cpp:1916
+#: src/localplayer.cpp:1917
 msgid "(B) moves to target in attack range - 1"
 msgstr ""
 
-#: src/localplayer.cpp:1917
+#: src/localplayer.cpp:1918
 msgid "(?) move to target"
 msgstr "(?)移动到目标"
 
-#: src/localplayer.cpp:1936
+#: src/localplayer.cpp:1937
 msgid "(D) default follow"
 msgstr ""
 
-#: src/localplayer.cpp:1937
+#: src/localplayer.cpp:1938
 msgid "(R) relative follow"
 msgstr ""
 
-#: src/localplayer.cpp:1938
+#: src/localplayer.cpp:1939
 msgid "(M) mirror follow"
 msgstr ""
 
-#: src/localplayer.cpp:1939
+#: src/localplayer.cpp:1940
 msgid "(P) pet follow"
 msgstr ""
 
-#: src/localplayer.cpp:1940
+#: src/localplayer.cpp:1941
 msgid "(?) unknown follow"
 msgstr ""
 
-#: src/localplayer.cpp:1959 src/localplayer.cpp:1963 src/localplayer.cpp:1986
+#: src/localplayer.cpp:1960 src/localplayer.cpp:1964 src/localplayer.cpp:1987
 msgid "(?) attack"
 msgstr "(?) 攻击"
 
-#: src/localplayer.cpp:1960 src/localplayer.cpp:1982
+#: src/localplayer.cpp:1961 src/localplayer.cpp:1983
 msgid "(D) default attack"
 msgstr ""
 
-#: src/localplayer.cpp:1961
+#: src/localplayer.cpp:1962
 msgid "(s) switch attack without shield"
 msgstr ""
 
-#: src/localplayer.cpp:1962
+#: src/localplayer.cpp:1963
 msgid "(S) switch attack with shield"
 msgstr ""
 
-#: src/localplayer.cpp:1983
+#: src/localplayer.cpp:1984
 msgid "(G) go and attack"
 msgstr "(G) 去攻击"
 
-#: src/localplayer.cpp:1984
+#: src/localplayer.cpp:1985
 msgid "(A) go, attack, pickup"
 msgstr ""
 
-#: src/localplayer.cpp:1985
+#: src/localplayer.cpp:1986
 msgid "(d) without auto attack"
 msgstr ""
 
-#: src/localplayer.cpp:2037
+#: src/localplayer.cpp:2038
 msgid "(S) small pick up 1x1 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2038
+#: src/localplayer.cpp:2039
 msgid "(D) default pick up 2x1 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2039
+#: src/localplayer.cpp:2040
 msgid "(F) forward pick up 2x3 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2040
+#: src/localplayer.cpp:2041
 msgid "(3) pick up 3x3 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2041
+#: src/localplayer.cpp:2042
 msgid "(g) go and pick up in distance 4"
 msgstr ""
 
-#: src/localplayer.cpp:2042
+#: src/localplayer.cpp:2043
 msgid "(G) go and pick up in distance 8"
 msgstr ""
 
-#: src/localplayer.cpp:2043
+#: src/localplayer.cpp:2044
 msgid "(A) go and pick up in max distance"
 msgstr ""
 
-#: src/localplayer.cpp:2044
+#: src/localplayer.cpp:2045
 msgid "(?) pick up"
 msgstr "(?)拿起"
 
-#: src/localplayer.cpp:2057
+#: src/localplayer.cpp:2058
 msgid "(N) normal map view"
 msgstr ""
 
-#: src/localplayer.cpp:2058
+#: src/localplayer.cpp:2059
 msgid "(D) debug map view"
 msgstr ""
 
-#: src/localplayer.cpp:2059
+#: src/localplayer.cpp:2060
 msgid "(u) ultra map view"
 msgstr ""
 
-#: src/localplayer.cpp:2060
+#: src/localplayer.cpp:2061
 msgid "(U) ultra map view 2"
 msgstr ""
 
-#: src/localplayer.cpp:2061
+#: src/localplayer.cpp:2062
 msgid "(e) empty map view"
 msgstr ""
 
-#: src/localplayer.cpp:2062
+#: src/localplayer.cpp:2063
 msgid "(b) black & white map view"
 msgstr ""
 
-#: src/localplayer.cpp:2081
+#: src/localplayer.cpp:2082
 msgid "(f) use #flar for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2082
+#: src/localplayer.cpp:2083
 msgid "(c) use #chiza for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2083
+#: src/localplayer.cpp:2084
 msgid "(I) use #ingrav for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2084
+#: src/localplayer.cpp:2085
 msgid "(F) use #frillyar for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2085
+#: src/localplayer.cpp:2086
 msgid "(U) use #upmarmu for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2086
+#: src/localplayer.cpp:2087
 msgid "(?) magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2105
+#: src/localplayer.cpp:2106
 msgid "(a) attack all players"
 msgstr "(a) 攻击所有玩家"
 
-#: src/localplayer.cpp:2106
+#: src/localplayer.cpp:2107
 msgid "(f) attack all except friends"
 msgstr ""
 
-#: src/localplayer.cpp:2107
+#: src/localplayer.cpp:2108
 msgid "(b) attack bad relations"
 msgstr ""
 
-#: src/localplayer.cpp:2108
+#: src/localplayer.cpp:2109
 msgid "(d) don't attack players"
 msgstr ""
 
-#: src/localplayer.cpp:2109
+#: src/localplayer.cpp:2110
 msgid "(?) pvp attack"
 msgstr ""
 
-#: src/localplayer.cpp:2128
+#: src/localplayer.cpp:2129
 msgid "(D) default imitation"
 msgstr ""
 
-#: src/localplayer.cpp:2129
+#: src/localplayer.cpp:2130
 msgid "(O) outfits imitation"
 msgstr ""
 
-#: src/localplayer.cpp:2130
+#: src/localplayer.cpp:2131
 msgid "(?) imitation"
 msgstr ""
 
-#: src/localplayer.cpp:2158
+#: src/localplayer.cpp:2159
 msgid "Away"
 msgstr "距离"
 
-#: src/localplayer.cpp:2180
+#: src/localplayer.cpp:2181
 msgid "(O) on keyboard"
 msgstr ""
 
-#: src/localplayer.cpp:2181
+#: src/localplayer.cpp:2182
 msgid "(A) away"
 msgstr ""
 
-#: src/localplayer.cpp:2182 src/localplayer.cpp:2197
+#: src/localplayer.cpp:2183 src/localplayer.cpp:2198
 msgid "(?) away"
 msgstr ""
 
-#: src/localplayer.cpp:2195
+#: src/localplayer.cpp:2196
 msgid "(G) game camera mode"
 msgstr ""
 
-#: src/localplayer.cpp:2196
+#: src/localplayer.cpp:2197
 msgid "(F) free camera mode"
 msgstr ""
 
-#: src/localplayer.cpp:2221
+#: src/localplayer.cpp:2222
 msgid "Game modifiers are enabled"
 msgstr ""
 
-#: src/localplayer.cpp:2222
+#: src/localplayer.cpp:2223
 msgid "Game modifiers are disabled"
 msgstr ""
 
-#: src/localplayer.cpp:2223
+#: src/localplayer.cpp:2224
 msgid "Game modifiers are unknown"
 msgstr ""
 
-#: src/localplayer.cpp:3779
+#: src/localplayer.cpp:3771
 msgid "Follow: "
 msgstr "跟随:"
 
-#: src/localplayer.cpp:3781 src/localplayer.cpp:3796
+#: src/localplayer.cpp:3773 src/localplayer.cpp:3788
 msgid "Follow canceled"
 msgstr ""
 
-#: src/localplayer.cpp:3788
+#: src/localplayer.cpp:3780
 msgid "Imitation: "
 msgstr ""
 
-#: src/localplayer.cpp:3790 src/localplayer.cpp:3798
+#: src/localplayer.cpp:3782 src/localplayer.cpp:3790
 msgid "Imitation canceled"
 msgstr ""
 
-#: src/localplayer.cpp:4139
+#: src/localplayer.cpp:4131
 #, c-format
 msgid "You see %s"
 msgstr ""
