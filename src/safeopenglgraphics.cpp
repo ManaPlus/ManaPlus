@@ -64,20 +64,21 @@ bool SafeOpenGLGraphics::setVideoMode(const int w, const int h, const int bpp,
 }
 
 static inline void drawQuad(const Image *image,
-                            int srcX, int srcY, int dstX, int dstY,
-                            int width, int height)
+                            const int srcX, const int srcY,
+                            const int dstX, const int dstY,
+                            const int width, const int height)
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
-        float texX1 = static_cast<float>(srcX)
+        const float texX1 = static_cast<float>(srcX)
             / static_cast<float>(image->mTexWidth);
-        float texY1 = static_cast<float>(srcY)
+        const float texY1 = static_cast<float>(srcY)
             / static_cast<float>(image->mTexHeight);
-        float texX2 = static_cast<float>(srcX + width) / static_cast<float>(
-            image->mTexWidth);
-        float texY2 = static_cast<float>(srcY + height) / static_cast<float>(
-            image->mTexHeight);
+        const float texX2 = static_cast<float>(srcX + width)
+            / static_cast<float>(image->mTexWidth);
+        const float texY2 = static_cast<float>(srcY + height)
+            / static_cast<float>(image->mTexHeight);
 
         glTexCoord2f(texX1, texY1);
         glVertex2i(dstX, dstY);
@@ -102,21 +103,22 @@ static inline void drawQuad(const Image *image,
 }
 
 static inline void drawRescaledQuad(const Image *const image,
-                                    int srcX, int srcY,
-                                    int dstX, int dstY, int width, int height,
-                                    int desiredWidth, int desiredHeight)
+                                    const int srcX, const int srcY,
+                                    const int dstX, const int dstY,
+                                    const int width, const int height,
+                                    const int desiredWidth, const int desiredHeight)
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
-        float texX1 = static_cast<float>(srcX)
+        const float texX1 = static_cast<float>(srcX)
             / static_cast<float>(image->mTexWidth);
-        float texY1 = static_cast<float>(srcY)
+        const float texY1 = static_cast<float>(srcY)
             / static_cast<float>(image->mTexHeight);
-        float texX2 = static_cast<float>(srcX + width) / static_cast<float>(
-            image->mTexWidth);
-        float texY2 = static_cast<float>(srcY + height) / static_cast<float>(
-            image->mTexHeight);
+        const float texX2 = static_cast<float>(srcX + width)
+            / static_cast<float>(image->mTexWidth);
+        const float texY2 = static_cast<float>(srcY + height)
+            / static_cast<float>(image->mTexHeight);
 
         glTexCoord2f(texX1, texY1);
         glVertex2i(dstX, dstY);
@@ -251,18 +253,16 @@ void SafeOpenGLGraphics::drawImagePattern(const Image *const image,
     if (!image)
         return;
 
-    const int srcX = image->mBounds.x;
-    const int srcY = image->mBounds.y;
-
     const int iw = image->mBounds.w;
     const int ih = image->mBounds.h;
     if (iw == 0 || ih == 0)
         return;
 
+    const int srcX = image->mBounds.x;
+    const int srcY = image->mBounds.y;
+
     setColorAlpha(image->mAlpha);
-
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-
     setTexturingAndBlending(true);
 
     // Draw a set of textured rectangles
@@ -276,7 +276,6 @@ void SafeOpenGLGraphics::drawImagePattern(const Image *const image,
         {
             int width = (px + iw >= w) ? w - px : iw;
             int dstX = x + px;
-
             drawQuad(image, srcX, srcY, dstX, dstY, width, height);
         }
     }
@@ -293,18 +292,16 @@ void SafeOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     if (!image)
         return;
 
-    const int srcX = image->mBounds.x;
-    const int srcY = image->mBounds.y;
-
     const int iw = scaledWidth;
     const int ih = scaledHeight;
     if (iw == 0 || ih == 0)
         return;
 
+    const int srcX = image->mBounds.x;
+    const int srcY = image->mBounds.y;
+
     setColorAlpha(image->mAlpha);
-
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-
     setTexturingAndBlending(true);
 
     // Draw a set of textured rectangles
@@ -406,10 +403,8 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
     const int w = mTarget->w - (mTarget->w % 4);
     GLint pack = 1;
 
-    SDL_Surface *screenshot = SDL_CreateRGBSurface(
-            SDL_SWSURFACE,
-            w, h, 24,
-            0xff0000, 0x00ff00, 0x0000ff, 0x000000);
+    SDL_Surface *const screenshot = SDL_CreateRGBSurface(
+        SDL_SWSURFACE, w, h, 24, 0xff0000, 0x00ff00, 0x0000ff, 0x000000);
 
     if (!screenshot)
         return nullptr;
@@ -428,9 +423,9 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
 
     for (int i = 0; i < (h / 2); i++)
     {
-        GLubyte *top = static_cast<GLubyte*>(
+        GLubyte *const top = static_cast<GLubyte*>(
             screenshot->pixels) + lineSize * i;
-        GLubyte *bot = static_cast<GLubyte*>(
+        GLubyte *const bot = static_cast<GLubyte*>(
             screenshot->pixels) + lineSize * (h - 1 - i);
 
         memcpy(buf, top, lineSize);
@@ -463,7 +458,7 @@ bool SafeOpenGLGraphics::pushClipArea(gcn::Rectangle area)
         transY = -clipArea.yOffset;
     }
 
-    bool result = gcn::Graphics::pushClipArea(area);
+    const bool result = gcn::Graphics::pushClipArea(area);
 
     const gcn::ClipRectangle &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
@@ -531,7 +526,7 @@ void SafeOpenGLGraphics::setTargetPlane(int width A_UNUSED,
 {
 }
 
-void SafeOpenGLGraphics::setTexturingAndBlending(bool enable)
+void SafeOpenGLGraphics::setTexturingAndBlending(const bool enable)
 {
     if (enable)
     {
@@ -591,7 +586,7 @@ void SafeOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
     BLOCK_END("Graphics::drawRectangle")
 }
 
-void SafeOpenGLGraphics::bindTexture(GLenum target, GLuint texture)
+void SafeOpenGLGraphics::bindTexture(const GLenum target, const GLuint texture)
 {
     if (mLastImage != texture)
     {
