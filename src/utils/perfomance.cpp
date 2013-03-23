@@ -39,8 +39,8 @@
 //static const clockid_t clockType = CLOCK_PROCESS_CPUTIME_ID;
 static const clockid_t clockType = CLOCK_MONOTONIC;
 
-#define timeData (static_cast<long long int>(time.tv_sec) * 1000000000LL \
-    + static_cast<long long int>(time.tv_nsec))
+#define timeData ((static_cast<long long int>(time.tv_sec) * 1000000000LL \
+    + static_cast<long long int>(time.tv_nsec)) / 1000)
 
 namespace Perfomance
 {
