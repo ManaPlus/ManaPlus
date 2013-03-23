@@ -39,13 +39,20 @@
 //static const clockid_t clockType = CLOCK_PROCESS_CPUTIME_ID;
 static const clockid_t clockType = CLOCK_MONOTONIC;
 
+#define timeData (static_cast<long long int>(time.tv_sec) * 1000000000LL \
+    + static_cast<long long int>(time.tv_nsec))
+
 namespace Perfomance
 {
     std::ofstream file;
+    long long unsigned int startTime;
 
     void init(const std::string &path)
     {
         file.open(path.c_str(), std::ios_base::trunc);
+        timespec time;
+        clock_gettime(clockType, &time);
+        startTime = timeData;
     }
 
     void clear()
@@ -58,27 +65,21 @@ namespace Perfomance
     {
         timespec time;
         clock_gettime(clockType, &time);
-        file << static_cast<long long int>(time.tv_sec) * 1000000000LL
-            + static_cast<long long int>(time.tv_nsec)
-            << " __init__" << std::endl;
+        file << (timeData - startTime) << " __init__" << std::endl;
     }
 
     void blockStart(const std::string &name)
     {
         timespec time;
         clock_gettime(clockType, &time);
-        file << static_cast<long long int>(time.tv_sec) * 1000000000LL
-            + static_cast<long long int>(time.tv_nsec)
-            << " start: " << name << std::endl;
+        file << (timeData - startTime) << " start: " << name << std::endl;
     }
 
     void blockEnd(const std::string &name)
     {
         timespec time;
         clock_gettime(clockType, &time);
-        file << static_cast<long long int>(time.tv_sec) * 1000000000LL
-            + static_cast<long long int>(time.tv_nsec)
-            << " end: " << name << std::endl;
+        file << (timeData - startTime) << " end: " << name << std::endl;
     }
 }
 
