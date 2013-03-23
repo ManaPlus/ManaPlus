@@ -28,6 +28,7 @@
 #include "debug.h"
 
 static const double PI = 3.14159265;
+static const float PI2 = 2 * 3.14159265;
 
 RotationalParticle::RotationalParticle(Map *const map,
                                        Animation *const animation) :
@@ -64,12 +65,12 @@ bool RotationalParticle::update()
 
     float rad = static_cast<float>(atan2(mVelocity.x, mVelocity.y));
     if (rad < 0)
-        rad = static_cast<float>(PI) + static_cast<float>(PI) + rad;
+        rad = PI2 + rad;
 
     const float range = static_cast<const float>(PI / size);
 
     // Determines which frame the particle should play
-    if (rad < range || rad > ((static_cast<float>(PI)*2) - range))
+    if (rad < range || rad > PI2 - range)
     {
         mAnimation->setFrame(0);
     }
