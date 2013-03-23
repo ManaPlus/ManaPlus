@@ -948,6 +948,7 @@ void Game::handleInput()
         if (inputManager.handleEvent(event))
         {
             BLOCK_END("Game::handleInput 2")
+            BLOCK_END("Game::handleInput 1")
             return;
         }
 
@@ -979,13 +980,17 @@ void Game::handleInput()
 
     // If the user is configuring the keys then don't respond.
     if (!player_node || !keyboard.isEnabled() || player_node->getAway())
+    {
+        BLOCK_END("Game::handleInput 1")
         return;
+    }
 
     // If pressed outfits keys, stop processing keys.
     if (inputManager.isActionActive(Input::KEY_WEAR_OUTFIT)
         || inputManager.isActionActive(Input::KEY_COPY_OUTFIT)
         || (setupWindow && setupWindow->isVisible()))
     {
+        BLOCK_END("Game::handleInput 1")
         return;
     }
 
