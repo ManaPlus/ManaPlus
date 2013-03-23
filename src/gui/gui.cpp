@@ -328,12 +328,10 @@ void Gui::clearFonts()
 
 bool Gui::handleInput()
 {
-    BLOCK_START("Gui::handleInput")
     if (mInput)
         return handleKeyInput2();
     else
         return false;
-    BLOCK_END("Gui::handleInput")
 }
 
 bool Gui::handleKeyInput2()

@@ -946,7 +946,10 @@ void Game::handleInput()
         checkKeys();
 
         if (inputManager.handleEvent(event))
+        {
+            BLOCK_END("Game::handleInput 2")
             return;
+        }
 
         switch (event.type)
         {
