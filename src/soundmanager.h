@@ -133,7 +133,7 @@ class SoundManager final : public ConfigListener
 
         void volumeOff() const;
 
-        void volumeRestore();
+        void volumeRestore() const;
 
         std::string getCurrentMusicFile() const A_WARN_UNUSED
         { return mCurrentMusicFile; }

@@ -63,7 +63,7 @@ class SoundEffect final : public Resource
          *         <code>false</code> otherwise.
          */
         virtual bool play(const int loops, const int volume,
-                          const int channel = -1);
+                          const int channel = -1) const;
 
     protected:
         /**

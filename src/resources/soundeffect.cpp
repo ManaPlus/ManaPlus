@@ -49,7 +49,8 @@ Resource *SoundEffect::load(SDL_RWops *const rw)
     }
 }
 
-bool SoundEffect::play(const int loops, const int volume, const int channel)
+bool SoundEffect::play(const int loops, const int volume,
+                       const int channel) const
 {
     Mix_VolumeChunk(mChunk, volume);
 

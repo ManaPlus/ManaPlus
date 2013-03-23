@@ -163,7 +163,6 @@ void SoundManager::init()
 void SoundManager::info() const
 {
     SDL_version compiledVersion;
-    const SDL_version *linkedVersion;
     char driver[40] = "Unknown";
     const char *format = "Unknown";
     int rate = 0;
@@ -171,19 +170,30 @@ void SoundManager::info() const
     int channels = 0;
 
     MIX_VERSION(&compiledVersion);
-    linkedVersion = Mix_Linked_Version();
+    const SDL_version *const linkedVersion = Mix_Linked_Version();
 
     SDL_AudioDriverName(driver, 40);
 
     Mix_QuerySpec(&rate, &audioFormat, &channels);
     switch (audioFormat)
     {
-        case AUDIO_U8: format = "U8"; break;
-        case AUDIO_S8: format = "S8"; break;
-        case AUDIO_U16LSB: format = "U16LSB"; break;
-        case AUDIO_S16LSB: format = "S16LSB"; break;
-        case AUDIO_U16MSB: format = "U16MSB"; break;
-        case AUDIO_S16MSB: format = "S16MSB"; break;
+        case AUDIO_U8:
+            format = "U8";
+            break;
+        case AUDIO_S8:
+            format = "S8"; break;
+        case AUDIO_U16LSB:
+            format = "U16LSB";
+            break;
+        case AUDIO_S16LSB:
+            format = "S16LSB";
+            break;
+        case AUDIO_U16MSB:
+            format = "U16MSB";
+            break;
+        case AUDIO_S16MSB:
+            format = "S16MSB";
+            break;
         default: break;
     }
 
@@ -337,7 +347,7 @@ void SoundManager::playSfx(const std::string &path,
     else
         tmpPath = paths.getValue("sfx", "sfx/").append(path);
     ResourceManager *const resman = ResourceManager::getInstance();
-    SoundEffect *const sample = resman->getSoundEffect(tmpPath);
+    const SoundEffect *const sample = resman->getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("SoundManager::playSfx() Playing: %s", path.c_str());
@@ -377,7 +387,7 @@ void SoundManager::playGuiSfx(const std::string &path)
     else
         tmpPath = paths.getValue("sfx", "sfx/").append(path);
     ResourceManager *const resman = ResourceManager::getInstance();
-    SoundEffect *const sample = resman->getSoundEffect(tmpPath);
+    const SoundEffect *const sample = resman->getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("SoundManager::playGuiSfx() Playing: %s", path.c_str());
@@ -430,7 +440,7 @@ void SoundManager::volumeOff() const
     }
 }
 
-void SoundManager::volumeRestore()
+void SoundManager::volumeRestore() const
 {
     if (mInstalled)
     {
