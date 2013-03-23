@@ -97,37 +97,31 @@ void SimpleAnimation::setFrame(int frame)
 
     if (frame < 0)
         frame = 0;
-    if (static_cast<unsigned>(frame) >= mAnimation->getLength())
-        frame = static_cast<int>(mAnimation->getLength()) - 1;
+    const unsigned int len = mAnimation->getLength();
+    if (static_cast<unsigned>(frame) >= len)
+        frame = len - 1;
     mAnimationPhase = frame;
-    mCurrentFrame = &mAnimation->mFrames[mAnimationPhase];
+    mCurrentFrame = &mAnimation->mFrames[frame];
 }
 
 bool SimpleAnimation::update(const int timePassed)
 {
-    if (!mCurrentFrame || !mAnimation)
+    if (!mCurrentFrame || !mAnimation || !mInitialized || !mAnimation)
         return false;
 
     bool updated(false);
-    if (mInitialized && mAnimation)
+    mAnimationTime += timePassed;
+
+    while (mAnimationTime > mCurrentFrame->delay && mCurrentFrame->delay > 0)
     {
-        mAnimationTime += timePassed;
+        updated = true;
+        mAnimationTime -= mCurrentFrame->delay;
+        mAnimationPhase++;
 
-        while (mAnimationTime > mCurrentFrame->delay
-               && mCurrentFrame->delay > 0)
-        {
-            updated = true;
-            mAnimationTime -= mCurrentFrame->delay;
-            mAnimationPhase++;
+        if (static_cast<unsigned>(mAnimationPhase) >= mAnimation->getLength())
+            mAnimationPhase = 0;
 
-            if (static_cast<unsigned>(mAnimationPhase)
-                >= mAnimation->getLength())
-            {
-                mAnimationPhase = 0;
-            }
-
-            mCurrentFrame = &mAnimation->mFrames[mAnimationPhase];
-        }
+        mCurrentFrame = &mAnimation->mFrames[mAnimationPhase];
     }
     return updated;
 }
@@ -149,15 +143,15 @@ Image *SimpleAnimation::getCurrentImage() const
 }
 
 void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
-                                          const std::string& dyePalettes)
+                                          const std::string &dyePalettes)
 {
     mInitialized = false;
 
     if (!animationNode)
         return;
 
-    std::string imagePath = XML::getProperty(animationNode,
-                                                   "imageset", "");
+    std::string imagePath = XML::getProperty(
+        animationNode, "imageset", "");
 
     // Instanciate the dye coloration.
     if (!imagePath.empty() && !dyePalettes.empty())
@@ -172,17 +166,18 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
     if (!imageset)
         return;
 
+    const int x1 = imageset->getWidth() / 2 - 16;
+    const int y1 = imageset->getHeight() - 32;
+
     // Get animation frames
     for (XmlNodePtr frameNode = animationNode->xmlChildrenNode;
          frameNode; frameNode = frameNode->next)
     {
         const int delay = XML::getIntProperty(
             frameNode, "delay", 0, 0, 100000);
-        int offsetX = XML::getProperty(frameNode, "offsetX", 0);
-        int offsetY = XML::getProperty(frameNode, "offsetY", 0);
+        const int offsetX = XML::getProperty(frameNode, "offsetX", 0) - x1;
+        const int offsetY = XML::getProperty(frameNode, "offsetY", 0) - y1;
         const int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
-        offsetY -= imageset->getHeight() - 32;
-        offsetX -= imageset->getWidth() / 2 - 16;
 
         if (xmlNameEqual(frameNode, "frame"))
         {
@@ -238,6 +233,5 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
         }
     }
 
-//    imageset->decRef();
     mInitialized = true;
 }

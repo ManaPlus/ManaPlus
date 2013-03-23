@@ -88,7 +88,7 @@ class SimpleAnimation final
         int mAnimationPhase;
 
         /** Current animation phase. */
-        Frame *mCurrentFrame;
+        const Frame *mCurrentFrame;
 
         /**  Tell whether the animation is ready */
         bool mInitialized;
