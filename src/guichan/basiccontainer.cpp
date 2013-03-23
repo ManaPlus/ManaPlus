@@ -264,27 +264,30 @@ namespace gcn
         for (WidgetListConstIterator iter = mWidgets.begin();
              iter != mWidgets.end(); ++ iter)
         {
-            if ((*iter)->isVisible())
+            Widget *const widget = *iter;
+            if (widget->isVisible())
             {
                 // If the widget has a frame,
                 // draw it before drawing the widget
-                if ((*iter)->getFrameSize() > 0)
+                if (widget->getFrameSize() > 0)
                 {
-                    Rectangle rec = (*iter)->getDimension();
-                    rec.x -= (*iter)->getFrameSize();
-                    rec.y -= (*iter)->getFrameSize();
-                    rec.width += 2 * (*iter)->getFrameSize();
-                    rec.height += 2 * (*iter)->getFrameSize();
+                    Rectangle rec = widget->getDimension();
+                    const int frame = widget->getFrameSize();
+                    const int frame2 = frame * 2;
+                    rec.x -= frame;
+                    rec.y -= frame;
+                    rec.width += frame2;
+                    rec.height += frame2;
                     graphics->pushClipArea(rec);
                     BLOCK_START("BasicContainer::drawChildren 1")
-                    (*iter)->drawFrame(graphics);
+                    widget->drawFrame(graphics);
                     BLOCK_END("BasicContainer::drawChildren 1")
                     graphics->popClipArea();
                 }
 
-                graphics->pushClipArea((*iter)->getDimension());
+                graphics->pushClipArea(widget->getDimension());
                 BLOCK_START("BasicContainer::drawChildren 2")
-                (*iter)->draw(graphics);
+                widget->draw(graphics);
                 BLOCK_END("BasicContainer::drawChildren 2")
                 graphics->popClipArea();
             }
