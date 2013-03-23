@@ -995,21 +995,21 @@ int Client::gameExec()
         BLOCK_END("Client::gameExec 3")
 
         BLOCK_START("Client::gameExec 4")
+        if (gui)
+            gui->logic();
         int k = 0;
         while (lastTickTime != tick_time && k < 40)
         {
-            if (gui)
-                gui->logic();
             if (mGame)
                 mGame->logic();
             else if (gui)
                 gui->handleInput();
 
-            sound.logic();
-
             ++lastTickTime;
             k ++;
         }
+        sound.logic();
+
         logic_count += k;
         if (gui)
             gui->slowLogic();
