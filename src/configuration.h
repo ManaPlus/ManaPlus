@@ -56,8 +56,9 @@ class ConfigurationListManager
          * \return obj, or otherwise NULL to indicate that this option should
          *         be skipped
          */
-        virtual ConfigurationObject
-            *writeConfigItem(T value, ConfigurationObject *obj) = 0;
+        virtual ConfigurationObject *writeConfigItem(const T &value,
+                                                     ConfigurationObject
+                                                     *const obj) const = 0;
 
         /**
          * Reads a value from a configuration object
@@ -65,8 +66,9 @@ class ConfigurationListManager
          * \param obj The configuration object to read from
          * \param container The container to insert the object to
          */
-        virtual CONT readConfigItem(ConfigurationObject *const obj,
-                                    CONT container) A_WARN_UNUSED = 0;
+        virtual CONT readConfigItem(const ConfigurationObject *const obj,
+                                    CONT container)
+                                    const A_WARN_UNUSED = 0;
 
         virtual ~ConfigurationListManager() {}
 };

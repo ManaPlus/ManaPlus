@@ -129,7 +129,7 @@ class PlayerRelationsManager final
         /**
          * Save configuration to our config file.
          */
-        void store();
+        void store() const;
 
         /**
          * Determines whether the player in question is being ignored, filtered by
@@ -137,7 +137,7 @@ class PlayerRelationsManager final
          */
         unsigned int checkPermissionSilently(const std::string &player_name,
                                              const unsigned int flags)
-                                             A_WARN_UNUSED;
+                                             const A_WARN_UNUSED;
 
         /**
          * Tests whether the player in question is being ignored for any of the
@@ -145,10 +145,10 @@ class PlayerRelationsManager final
          * if requested by the player.
          */
         bool hasPermission(const Being *const being,
-                           const unsigned int flags) A_WARN_UNUSED;
+                           const unsigned int flags) const A_WARN_UNUSED;
 
         bool hasPermission(const std::string &being,
-                           const unsigned int flags) A_WARN_UNUSED;
+                           const unsigned int flags) const A_WARN_UNUSED;
 
         /**
          * Updates the relationship with this player.
@@ -160,7 +160,7 @@ class PlayerRelationsManager final
          * Updates the relationship with this player.
          */
         PlayerRelation::Relation getRelation(const std::string &name)
-                                             A_WARN_UNUSED;
+                                             const A_WARN_UNUSED;
 
         /**
          * Deletes the information recorded for a player.
@@ -214,10 +214,10 @@ class PlayerRelationsManager final
          * Retrieves a sorted vector of all players for which we have any
          * relations recorded.
          */
-        StringVect *getPlayers() A_WARN_UNUSED;
+        StringVect *getPlayers() const A_WARN_UNUSED;
 
         StringVect *getPlayersByRelation(const PlayerRelation::Relation rel)
-                                         A_WARN_UNUSED;
+                                         const A_WARN_UNUSED;
 
         /**
          * Removes all recorded player info.
@@ -230,11 +230,11 @@ class PlayerRelationsManager final
         bool getPersistIgnores() const
         { return mPersistIgnores; }
 
-        void ignoreTrade(std::string name);
+        void ignoreTrade(const std::string &name);
 
-        bool isGoodName(Being *const being) A_WARN_UNUSED;
+        bool isGoodName(Being *const being) const A_WARN_UNUSED;
 
-        bool isGoodName(std::string name) A_WARN_UNUSED;
+        bool isGoodName(const std::string &name) const A_WARN_UNUSED;
 
         /**
          * Change the `ignore persist' flag.
@@ -250,7 +250,7 @@ class PlayerRelationsManager final
         void removeListener(PlayerRelationsListener *const listener)
         { mListeners.remove(listener); }
 
-        bool checkBadRelation(std::string name) A_WARN_UNUSED;
+        bool checkBadRelation(const std::string &name) const A_WARN_UNUSED;
 
     private:
         void signalUpdate(const std::string &name);

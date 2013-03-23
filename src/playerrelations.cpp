@@ -72,8 +72,8 @@ class PlayerConfSerialiser final :
 {
 public:
     virtual ConfigurationObject *writeConfigItem(
-        std::pair<std::string, PlayerRelation *> value,
-        ConfigurationObject *cobj) override
+        const std::pair<std::string, PlayerRelation *> &value,
+        ConfigurationObject *const cobj) const override
     {
         if (!cobj || !value.second)
             return nullptr;
@@ -85,12 +85,13 @@ public:
     }
 
     virtual std::map<std::string, PlayerRelation *> *
-    readConfigItem(ConfigurationObject *const cobj,
-                   std::map<std::string, PlayerRelation *> *container) override
+    readConfigItem(const ConfigurationObject *const cobj,
+                   std::map<std::string, PlayerRelation *>
+                   *const container) const override
     {
         if (!cobj)
             return container;
-        std::string name = cobj->getValue(NAME, "");
+        const std::string name = cobj->getValue(NAME, "");
         if (name.empty())
             return container;
 
@@ -144,7 +145,7 @@ PlayerRelationsManager::~PlayerRelationsManager()
 
 void PlayerRelationsManager::clear()
 {
-    StringVect *names = getPlayers();
+    StringVect *const names = getPlayers();
     FOR_EACHP (StringVectCIter, it, names)
         removePlayer(*it);
     delete names;
@@ -157,7 +158,7 @@ static const char *const DEFAULT_PERMISSIONS = "default-player-permissions";
 int PlayerRelationsManager::getPlayerIgnoreStrategyIndex(
     const std::string &name)
 {
-    std::vector<PlayerIgnoreStrategy *> *const strategies
+    const std::vector<PlayerIgnoreStrategy *> *const strategies
         = getPlayerIgnoreStrategies();
 
     if (!strategies)
@@ -185,8 +186,8 @@ void PlayerRelationsManager::load(const bool oldConfig)
     mDefaultPermissions = static_cast<int>(cfg->getValue(DEFAULT_PERMISSIONS,
                                            mDefaultPermissions));
 
-    std::string ignore_strategy_name = cfg->getValue(PLAYER_IGNORE_STRATEGY,
-                                                     DEFAULT_IGNORE_STRATEGY);
+    const std::string ignore_strategy_name = cfg->getValue(
+        PLAYER_IGNORE_STRATEGY, DEFAULT_IGNORE_STRATEGY);
     const int ignore_strategy_index = getPlayerIgnoreStrategyIndex(
         ignore_strategy_name);
 
@@ -216,15 +217,14 @@ void PlayerRelationsManager::init()
         (*it)->updateAll();
 }
 
-void PlayerRelationsManager::store()
+void PlayerRelationsManager::store() const
 {
     serverConfig.setList<std::map<std::string,
         PlayerRelation *>::const_iterator,
         std::pair<std::string, PlayerRelation *>,
         std::map<std::string, PlayerRelation *> *>
-        ("player",
-         mRelations.begin(), mRelations.end(),
-         &player_conf_serialiser);
+        ("player", mRelations.begin(), mRelations.end(),
+        &player_conf_serialiser);
 
     serverConfig.setValue(DEFAULT_PERMISSIONS, mDefaultPermissions);
     serverConfig.setValue(PERSIST_IGNORE_LIST, mPersistIgnores);
@@ -251,15 +251,17 @@ void PlayerRelationsManager::signalUpdate(const std::string &name)
 }
 
 unsigned int PlayerRelationsManager::checkPermissionSilently(
-    const std::string &player_name, const unsigned int flags)
+    const std::string &player_name, const unsigned int flags) const
 {
-    const PlayerRelation *const r = mRelations[player_name];
-    if (!r)
+    const std::map<std::string, PlayerRelation *>::const_iterator
+        it = mRelations.find(player_name);
+    if (it == mRelations.end())
     {
         return mDefaultPermissions & flags;
     }
     else
     {
+        const PlayerRelation *const r = (*it).second;
         unsigned int permissions =
             PlayerRelation::RELATION_PERMISSIONS[r->mRelation];
 
@@ -287,7 +289,7 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
 }
 
 bool PlayerRelationsManager::hasPermission(const Being *const being,
-                                           const unsigned int flags)
+                                           const unsigned int flags) const
 {
     if (!being)
         return false;
@@ -298,7 +300,7 @@ bool PlayerRelationsManager::hasPermission(const Being *const being,
 }
 
 bool PlayerRelationsManager::hasPermission(const std::string &name,
-                                           const unsigned int flags)
+                                           const unsigned int flags) const
 {
     if (!actorSpriteManager)
         return false;
@@ -342,7 +344,7 @@ void PlayerRelationsManager::setRelation(const std::string &player_name,
     signalUpdate(player_name);
 }
 
-StringVect * PlayerRelationsManager::getPlayers()
+StringVect *PlayerRelationsManager::getPlayers() const
 {
     StringVect *const retval = new StringVect();
 
@@ -358,7 +360,7 @@ StringVect * PlayerRelationsManager::getPlayers()
 }
 
 StringVect *PlayerRelationsManager::getPlayersByRelation(
-    const PlayerRelation::Relation rel)
+    const PlayerRelation::Relation rel) const
 {
     StringVect *const retval = new StringVect();
 
@@ -385,10 +387,12 @@ void PlayerRelationsManager::removePlayer(const std::string &name)
 
 
 PlayerRelation::Relation PlayerRelationsManager::getRelation(
-    const std::string &name)
+    const std::string &name) const
 {
-    if (mRelations[name])
-        return mRelations[name]->mRelation;
+    const std::map<std::string, PlayerRelation *>::const_iterator
+        it = mRelations.find(name);
+    if (it != mRelations.end())
+        return (*it).second->mRelation;
 
     return PlayerRelation::NEUTRAL;
 }
@@ -409,7 +413,7 @@ void PlayerRelationsManager::setDefault(const unsigned int permissions)
     signalUpdate("");
 }
 
-void PlayerRelationsManager::ignoreTrade(std::string name)
+void PlayerRelationsManager::ignoreTrade(const std::string &name)
 {
     if (name.empty())
         return;
@@ -429,7 +433,7 @@ void PlayerRelationsManager::ignoreTrade(std::string name)
     }
 }
 
-bool PlayerRelationsManager::checkBadRelation(std::string name)
+bool PlayerRelationsManager::checkBadRelation(const std::string &name) const
 {
     if (name.empty())
         return true;
@@ -552,17 +556,22 @@ PlayerRelationsManager::getPlayerIgnoreStrategies()
     return &mIgnoreStrategies;
 }
 
-bool PlayerRelationsManager::isGoodName(std::string name)
+bool PlayerRelationsManager::isGoodName(const std::string &name) const
 {
     const size_t size = name.size();
 
-    if (size < 3 || mRelations[name])
+    if (size < 3)
+        return true;
+
+    const std::map<std::string, PlayerRelation *>::const_iterator
+        it = mRelations.find(name);
+    if (it != mRelations.end())
         return true;
 
     return checkName(name);
 }
 
-bool PlayerRelationsManager::isGoodName(Being *const being)
+bool PlayerRelationsManager::isGoodName(Being *const being) const
 {
     if (!being)
         return false;
@@ -572,7 +581,12 @@ bool PlayerRelationsManager::isGoodName(Being *const being)
     const std::string name = being->getName();
     const size_t size = name.size();
 
-    if (size < 3 || mRelations[name])
+    if (size < 3)
+        return true;
+
+    const std::map<std::string, PlayerRelation *>::const_iterator
+        it = mRelations.find(name);
+    if (it != mRelations.end())
         return true;
 
     const bool status = checkName(name);
@@ -583,9 +597,9 @@ bool PlayerRelationsManager::isGoodName(Being *const being)
 bool PlayerRelationsManager::checkName(const std::string &name) const
 {
     const size_t size = name.size();
-    std::string check = config.getStringValue("unsecureChars");
+    const std::string check = config.getStringValue("unsecureChars");
+    const std::string lastChar = name.substr(size - 1, 1);
 
-    std::string lastChar = name.substr(size - 1, 1);
     if (name.substr(0, 1) == " " || lastChar == " " || lastChar == "."
         || name.find("  ") != std::string::npos)
     {
