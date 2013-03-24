@@ -52,7 +52,7 @@ class TextManager final
         /**
          * Move the text around the screen
          */
-        void moveText(Text *const text, const int x, const int y);
+        void moveText(Text *const text, const int x, const int y) const;
 
         /**
          * Remove the text from the manager
@@ -70,7 +70,7 @@ class TextManager final
          * Position the text so as to avoid conflict
          */
         void place(const Text *const textObj, const Text *const omit,
-                   const int &x, int &y, const int h);
+                   const int &x, int &y, const int h) const;
 
         typedef std::list<Text *> TextList; /**< The container type */
         TextList mTextList; /**< The container */

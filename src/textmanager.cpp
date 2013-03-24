@@ -39,7 +39,7 @@ void TextManager::addText(Text *const text)
     mTextList.push_back(text);
 }
 
-void TextManager::moveText(Text *const text, const int x, const int y)
+void TextManager::moveText(Text *const text, const int x, const int y) const
 {
     text->mX = x;
     text->mY = y;
@@ -72,7 +72,7 @@ void TextManager::draw(Graphics *const graphics,
 }
 
 void TextManager::place(const Text *const textObj, const Text *const omit,
-                        const int &x A_UNUSED, int &y, const int h)
+                        const int &x A_UNUSED, int &y, const int h) const
 {
     const int xLeft = textObj->mX;
     const int xRight1 = xLeft + textObj->mWidth;
@@ -88,12 +88,13 @@ void TextManager::place(const Text *const textObj, const Text *const omit,
     for (TextList::const_iterator ptr = mTextList.begin(),
          pEnd = mTextList.end(); ptr != pEnd && cnt < nBeings; ++ptr, cnt ++)
     {
-        if (*ptr != omit &&
-            (*ptr)->mX + 1 <= xRight1 &&
-            (*ptr)->mX + (*ptr)->mWidth > xLeft)
+        const Text *const text = *ptr;
+
+        if (text != omit && text->mX + 1 <= xRight1
+            && text->mX + text->mWidth > xLeft)
         {
-            int from = (*ptr)->mY - occupiedTop;
-            int to = from + (*ptr)->mHeight - 1;
+            int from = text->mY - occupiedTop;
+            int to = from + text->mHeight - 1;
             if (to < 0 || from >= TEST) // out of range considered
                 continue;
             if (from < 0)
