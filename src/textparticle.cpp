@@ -39,13 +39,16 @@ TextParticle::TextParticle(Map *const map, const std::string &text,
     mTextFont(font),
     mColor(color),
     mOutline(outline),
-    mTextWidth(mTextFont->getWidth(mText) / 2)
+    mTextWidth(mTextFont ? mTextFont->getWidth(mText) / 2 : 1)
 {
 }
 
 bool TextParticle::draw(Graphics *const graphics,
                         const int offsetX, const int offsetY) const
 {
+    if (!mColor || !mTextFont)
+        return false;
+
     BLOCK_START("TextParticle::draw")
     if (!isAlive())
     {
@@ -61,13 +64,13 @@ bool TextParticle::draw(Graphics *const graphics,
 
     if (mFadeOut && mLifetimeLeft > -1 && mLifetimeLeft < mFadeOut)
     {
-        alpha = alpha * static_cast<float>(mLifetimeLeft)
+        alpha *= static_cast<float>(mLifetimeLeft)
                 / static_cast<float>(mFadeOut);
     }
 
     if (mFadeIn && mLifetimePast < mFadeIn)
     {
-        alpha = alpha * static_cast<float>(mLifetimePast)
+        alpha *= static_cast<float>(mLifetimePast)
                 / static_cast<float>(mFadeIn);
     }
 
