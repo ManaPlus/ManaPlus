@@ -23,12 +23,11 @@
 #include "map.h"
 #include "walklayer.h"
 
-#include "resources/resource.h"
-
 static const int walkMask = (Map::BLOCKMASK_WALL | Map::BLOCKMASK_AIR
     | Map::BLOCKMASK_WATER);
 
-namespace {
+namespace
+{
     struct Cell
     {
         Cell(const int x0, const int y0) :
@@ -50,7 +49,7 @@ NavigationManager::~NavigationManager()
 {
 }
 
-Resource *NavigationManager::loadWalkLayer(Map *const map)
+Resource *NavigationManager::loadWalkLayer(const Map *const map)
 {
     if (!map)
         return nullptr;
@@ -62,12 +61,12 @@ Resource *NavigationManager::loadWalkLayer(Map *const map)
     WalkLayer *const walkLayer = new WalkLayer(width, height);
 
     const MetaTile *const tiles = map->getMetaTiles();
-    int *data = walkLayer->getData();
+    int *const data = walkLayer->getData();
 
     int x = 0;
     int y = 0;
     int num = 1;
-    while(findWalkableTile(x, y, width, height,tiles, data))
+    while (findWalkableTile(x, y, width, height, tiles, data))
     {
         fillNum(x, y, width, height, num, tiles, data);
         num ++;

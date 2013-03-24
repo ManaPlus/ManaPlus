@@ -260,13 +260,12 @@ void OutfitWindow::wearOutfit(const int outfit, const bool unwearEmpty,
 {
     bool isEmpty = true;
 
-    const Item *item;
     if (outfit < 0 || outfit > static_cast<int>(OUTFITS_COUNT))
         return;
 
     for (unsigned i = 0; i < OUTFIT_ITEM_COUNT; i++)
     {
-        item = PlayerInfo::getInventory()->findItem(
+        const Item *const item = PlayerInfo::getInventory()->findItem(
             mItems[outfit][i], mItemColors[outfit][i]);
         if (item && !item->isEquipped() && item->getQuantity())
         {

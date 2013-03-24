@@ -97,7 +97,7 @@ void SimpleAnimation::setFrame(int frame)
 
     if (frame < 0)
         frame = 0;
-    const unsigned int len = mAnimation->getLength();
+    const unsigned int len = static_cast<unsigned>(mAnimation->getLength());
     if (static_cast<unsigned>(frame) >= len)
         frame = len - 1;
     mAnimationPhase = frame;
@@ -106,7 +106,7 @@ void SimpleAnimation::setFrame(int frame)
 
 bool SimpleAnimation::update(const int timePassed)
 {
-    if (!mCurrentFrame || !mAnimation || !mInitialized || !mAnimation)
+    if (!mCurrentFrame || !mAnimation || !mInitialized)
         return false;
 
     bool updated(false);

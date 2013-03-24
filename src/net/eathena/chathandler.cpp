@@ -175,7 +175,7 @@ void ChatHandler::sendRaw(const std::string &args)
     delete outMsg;
 }
 
-void ChatHandler::processRaw(MessageOut &outMsg, std::string &line)
+void ChatHandler::processRaw(MessageOut &outMsg, const std::string &line)
 {
     size_t pos = line.find(":");
     if (pos == std::string::npos)

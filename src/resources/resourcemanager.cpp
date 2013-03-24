@@ -1147,4 +1147,6 @@ void ResourceManager::deleteFilesInDirectory(std::string path)
         if (file != "." && file != "..")
             remove(name.c_str());
     }
+    if (dir)
+        closedir(dir);
 }

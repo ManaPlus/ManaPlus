@@ -411,8 +411,8 @@ class Map final : public Properties, public ConfigListener
         WalkLayer *getWalkLayer()
         { return mWalkLayer; }
 
-        void setWalkLayer(WalkLayer *l)
-        { mWalkLayer = l; }
+        void setWalkLayer(WalkLayer *const layer)
+        { mWalkLayer = layer; }
 
     protected:
         friend class Actor;

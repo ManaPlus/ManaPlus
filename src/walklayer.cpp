@@ -23,12 +23,12 @@
 #include "debug.h"
 
 WalkLayer::WalkLayer(const int width, const int height) :
+    Resource(),
     mWidth(width),
-    mHeight(height)
+    mHeight(height),
+    mTiles(new int[width * height])
 {
-    const int sz = width * height;
-    mTiles = new int[sz];
-    std::fill_n(mTiles, sz, 0);
+    std::fill_n(mTiles, width * height, 0);
 }
 
 WalkLayer::~WalkLayer()

@@ -152,10 +152,10 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
     if (mScrollLaziness < 1)
         mScrollLaziness = 1; // Avoids division by zero
 
-    int cnt = 0;
-
     if (mEnableLazyScrolling)
     {
+        int cnt = 0;
+
         // Apply lazy scrolling
         while (lastTick < tick_time && cnt < 32)
         {

@@ -57,7 +57,7 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void unIgnoreAll();
 
-        void processRaw(MessageOut &outMsg, std::string &line);
+        void processRaw(MessageOut &outMsg, const std::string &line);
 };
 
 } // namespace TmwAthena

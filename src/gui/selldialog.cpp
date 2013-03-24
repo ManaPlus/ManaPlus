@@ -226,7 +226,6 @@ void SellDialog::action(const gcn::ActionEvent &event)
         {
             // Attempt sell
             ShopItem *const item = mShopItems->at(selectedItem);
-            int sellCount, itemIndex;
             mPlayerMoney +=
                 mAmountItems * mShopItems->at(selectedItem)->getPrice();
             mMaxItems -= mAmountItems;
@@ -234,16 +233,17 @@ void SellDialog::action(const gcn::ActionEvent &event)
             {
                 // This order is important, item->getCurrentInvIndex() would return
                 // the inventory index of the next Duplicate otherwise.
-                itemIndex = item->getCurrentInvIndex();
-                sellCount = item->sellCurrentDuplicate(mAmountItems);
-
+                const int sellCount = item->sellCurrentDuplicate(mAmountItems);
 #ifdef MANASERV_SUPPORT
+                int itemIndex = item->getCurrentInvIndex();
                 // For Manaserv, the Item id is to be given as index.
                 if ((Net::getNetworkType() == ServerInfo::MANASERV))
                     itemIndex = item->getId();
-#endif
-
                 Net::getNpcHandler()->sellItem(mNpcId, itemIndex, sellCount);
+#else
+                Net::getNpcHandler()->sellItem(mNpcId,
+                    item->getCurrentInvIndex(), sellCount);
+#endif
                 mAmountItems -= sellCount;
             }
 

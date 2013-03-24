@@ -97,7 +97,6 @@ unsigned char *php3_base64_decode(const unsigned char *const string,
 {
     const unsigned char *current = string;
     int ch, i = 0, j = 0, k;
-    const char *chp;
 
     unsigned char *result = static_cast<unsigned char *>(
         calloc(length + 1, 1));
@@ -120,7 +119,7 @@ unsigned char *php3_base64_decode(const unsigned char *const string,
 
         if (ch == ' ') ch = '+';
 
-        chp = strchr(base64_table, ch);
+        const char *const chp = strchr(base64_table, ch);
         if (!chp)
             continue;
         ch = static_cast<int>(chp - base64_table);

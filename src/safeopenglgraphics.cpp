@@ -106,7 +106,8 @@ static inline void drawRescaledQuad(const Image *const image,
                                     const int srcX, const int srcY,
                                     const int dstX, const int dstY,
                                     const int width, const int height,
-                                    const int desiredWidth, const int desiredHeight)
+                                    const int desiredWidth,
+                                    const int desiredHeight)
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {

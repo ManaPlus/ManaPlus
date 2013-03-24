@@ -466,7 +466,7 @@ public:
     }
 
     virtual void ignore(Being *const being A_UNUSED,
-                        const unsigned int flags A_UNUSED) override
+                        const unsigned int flags A_UNUSED) const override
     {
     }
 };
@@ -482,7 +482,7 @@ public:
     }
 
     virtual void ignore(Being *const being,
-                        const unsigned int flags A_UNUSED) override
+                        const unsigned int flags A_UNUSED) const override
     {
         if (!being)
             return;
@@ -504,7 +504,7 @@ public:
     }
 
     virtual void ignore(Being *const being,
-                        const unsigned int flags A_UNUSED) override
+                        const unsigned int flags A_UNUSED) const override
     {
         if (!being)
             return;
@@ -527,7 +527,7 @@ public:
     }
 
     virtual void ignore(Being *const being,
-                        const unsigned int flags A_UNUSED) override
+                        const unsigned int flags A_UNUSED) const override
     {
         if (!being)
             return;

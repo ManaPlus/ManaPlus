@@ -85,7 +85,8 @@ class PlayerIgnoreStrategy
         /**
          * Handle the ignoring of the indicated action by the indicated player.
          */
-        virtual void ignore(Being *const being, const unsigned int flags) = 0;
+        virtual void ignore(Being *const being,
+                            const unsigned int flags) const = 0;
 };
 
 class PlayerRelationsListener

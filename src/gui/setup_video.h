@@ -70,9 +70,6 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
 
         OpenGLListModel *mOpenGLListModel;
 
-        Label *scrollRadiusLabel;
-        Label *scrollLazinessLabel;
-
         ListBox *mModeList;
         CheckBox *mFsCheckBox;
         DropDown *mOpenGLDropDown;

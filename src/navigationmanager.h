@@ -36,7 +36,7 @@ class NavigationManager final
 
         ~NavigationManager();
 
-        static Resource *loadWalkLayer(Map *const map);
+        static Resource *loadWalkLayer(const Map *const map);
 
     private:
         static bool findWalkableTile(int &x1, int &y1,
