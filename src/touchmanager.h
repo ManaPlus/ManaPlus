@@ -47,13 +47,13 @@ const int buttonsCount = 4;
 
 struct TouchItem final
 {
-    TouchItem(const gcn::Rectangle rect0, int type0,
+    TouchItem(const gcn::Rectangle rect0, const int type0,
               const std::string &eventPressed0,
               const std::string &eventReleased0,
               ImageRect *const images0, Image *const icon0,
-              int x0, int y0, int width0, int height0,
-              TouchFuncPtr ptrAll, TouchFuncPtr ptrPressed,
-              TouchFuncPtr ptrReleased, TouchFuncPtr ptrOut) :
+              const int x0, const int y0, const int width0, const int height0,
+              const TouchFuncPtr ptrAll, const TouchFuncPtr ptrPressed,
+              const TouchFuncPtr ptrReleased, const TouchFuncPtr ptrOut) :
         rect(rect0),
         type(type0),
         eventPressed(eventPressed0),
@@ -111,15 +111,15 @@ class TouchManager final : public ConfigListener
 
         void init();
 
-        void loadTouchItem(TouchItem **item, std::string name,
-                           std::string imageName,
-                           int x, int y, int width, int height,
+        void loadTouchItem(TouchItem **item, const std::string &name,
+                           const std::string &imageName,
+                           int x, int y, const int width, const int height,
                            int type, const std::string &eventPressed,
                            const std::string &eventReleased,
-                           TouchFuncPtr fAll = nullptr,
-                           TouchFuncPtr fPressed = nullptr,
-                           TouchFuncPtr fReleased = nullptr,
-                           TouchFuncPtr fOut = nullptr);
+                           const TouchFuncPtr fAll = nullptr,
+                           const TouchFuncPtr fPressed = nullptr,
+                           const TouchFuncPtr fReleased = nullptr,
+                           const TouchFuncPtr fOut = nullptr);
 
         void clear();
 
@@ -135,9 +135,9 @@ class TouchManager final : public ConfigListener
                 mActions[index] = value;
         }
 
-        void resize(int width, int height);
+        void resize(const int width, const int height);
 
-        void unload(TouchItem *item);
+        static void unload(TouchItem *const item);
 
         void unloadTouchItem(TouchItem **unloadItem);
 
@@ -152,9 +152,9 @@ class TouchManager final : public ConfigListener
         int getPadSize()
         { return (mJoystickSize + 2) * 50; }
 
-        void setInGame(bool b);
+        void setInGame(const bool b);
 
-        void setTempHide(bool b);
+        void setTempHide(const bool b);
 
         void shutdown();
 

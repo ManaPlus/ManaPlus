@@ -94,16 +94,20 @@ void TouchManager::init()
         loadButtons();
 }
 
-void TouchManager::loadTouchItem(TouchItem **item, std::string name,
-                                 std::string imageName,
-                                 int x, int y, int width, int height, int type,
+void TouchManager::loadTouchItem(TouchItem **item, const std::string &name,
+                                 const std::string &imageName,
+                                 int x, int y,
+                                 const int width, const int height,
+                                 const int type,
                                  const std::string &eventPressed,
                                  const std::string &eventReleased,
-                                 TouchFuncPtr fAll, TouchFuncPtr fPressed,
-                                 TouchFuncPtr fReleased, TouchFuncPtr fOut)
+                                 const TouchFuncPtr fAll,
+                                 const TouchFuncPtr fPressed,
+                                 const TouchFuncPtr fReleased,
+                                 const TouchFuncPtr fOut)
 {
     *item = nullptr;
-    Theme *theme = Theme::instance();
+    Theme *const theme = Theme::instance();
     if (!theme)
         return;
     ImageRect *images = new ImageRect;
@@ -119,7 +123,7 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
     Skin *const skin = theme->loadSkinRect(*images, name, "");
     if (skin)
     {
-        Image *image = images->grid[0];
+        Image *const image = images->grid[0];
         if (image)
         {
             if (x == -1)
@@ -166,9 +170,6 @@ void TouchManager::loadTouchItem(TouchItem **item, std::string name,
 
 void TouchManager::clear()
 {
-    Theme *theme = Theme::instance();
-    if (!theme)
-        return;
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
         unload(*it);
     mObjects.clear();
@@ -278,9 +279,12 @@ bool TouchManager::isActionActive(const int index) const
     return mActions[index];
 }
 
-void TouchManager::resize(int width, int height)
+void TouchManager::resize(const int width, const int height)
 {
     mRedraw = true;
+    const int maxHeight = mainGraphics->mHeight;
+    const int diffW = width - mainGraphics->mWidth;
+    const int diffH = height - maxHeight;
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
         TouchItem *const item = *it;
@@ -290,7 +294,7 @@ void TouchManager::resize(int width, int height)
         switch (item->type)
         {
             case LEFT:
-                if (height != mainGraphics->mHeight)
+                if (height != maxHeight)
                 {
                     item->y += (height - item->height) / 2;
                     item->rect.y += (height - item->rect.y) / 2;
@@ -298,8 +302,6 @@ void TouchManager::resize(int width, int height)
                 break;
             case RIGHT:
             {
-                const int diffW = width - mainGraphics->mWidth;
-                const int diffH = height - mainGraphics->mHeight;
                 item->x += diffW;
                 item->rect.x += diffW;
                 item->y += diffH;
@@ -313,7 +315,7 @@ void TouchManager::resize(int width, int height)
     }
 }
 
-void TouchManager::unload(TouchItem *item)
+void TouchManager::unload(TouchItem *const item)
 {
     if (item)
     {
@@ -337,9 +339,6 @@ void TouchManager::unload(TouchItem *item)
 
 void TouchManager::unloadTouchItem(TouchItem **unloadItem)
 {
-    Theme *theme = Theme::instance();
-    if (!theme)
-        return;
     FOR_EACH (TouchItemVectorIter, it, mObjects)
     {
         TouchItem *item = *it;
@@ -362,7 +361,7 @@ void TouchManager::loadPad()
 void TouchManager::loadButtons()
 {
     const int sz = (mButtonsSize + 1) * 50;
-    Theme *theme = Theme::instance();
+    Theme *const theme = Theme::instance();
     if (!theme)
         return;
     Skin *const skin = theme->load("dbutton.xml", "");
@@ -489,14 +488,14 @@ void TouchManager::optionChanged(const std::string &value)
     }
 }
 
-void TouchManager::setInGame(bool b)
+void TouchManager::setInGame(const bool b)
 {
     mInGame = b;
     mShow = mInGame && !mTempHideButtons;
     mRedraw = true;
 }
 
-void TouchManager::setTempHide(bool b)
+void TouchManager::setTempHide(const bool b)
 {
     mTempHideButtons = b;
     mShow = mInGame && !mTempHideButtons;
