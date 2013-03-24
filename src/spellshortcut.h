@@ -27,7 +27,7 @@
 
 class TextCommand;
 
-const int SPELLS_SIZE = SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS;
+const unsigned int SPELLS_SIZE = SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS;
 
 /**
  * The class which keeps track of the item shortcuts.
