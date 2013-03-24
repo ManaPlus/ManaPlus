@@ -55,7 +55,7 @@ enum UnitType
     UNIT_END
 };
 
-static std::string formatUnit(int value, int type);
+static std::string formatUnit(const int value, const int type);
 
 static std::string splitNumber(std::string str, const std::string &separator);
 
@@ -64,39 +64,39 @@ struct UnitDescription units[UNIT_END];
 void Units::loadUnits()
 {
     { // Setup default weight
-        struct UnitDescription ud;
+        UnitDescription ud;
 
         ud.conversion = 1.0;
         ud.mix = false;
 
-        struct UnitLevel bu;
-        bu.symbol = "g";
-        bu.count = 1;
-        bu.round = 0;
-
+        const UnitLevel bu =
+        {
+            "g",
+            1,
+            0,
+            ""
+        };
         ud.levels.push_back(bu);
 
-        struct UnitLevel ul;
-        ul.symbol = "kg";
-        ul.count = 1000;
-        ul.round = 2;
-
+        const UnitLevel ul =
+        {
+            "kg",
+            1000,
+            2,
+            ""
+        };
         ud.levels.push_back(ul);
 
         units[UNIT_WEIGHT] = ud;
     }
 
     { // Setup default currency
-        struct UnitDescription ud;
+        UnitDescription ud;
 
         ud.conversion = 1.0;
         ud.mix = false;
 
-        struct UnitLevel bu;
-        bu.symbol = "¤";
-        bu.count = 1;
-        bu.round = 0;
-
+        UnitLevel bu = {"¤", 1, 0, ""};
         ud.levels.push_back(bu);
 
         units[UNIT_CURRENCY] = ud;
@@ -115,13 +115,13 @@ void Units::loadUnits()
     {
         if (xmlNameEqual(node, "unit"))
         {
-            struct UnitDescription ud;
+            UnitDescription ud;
             int level = 1;
             const std::string type = XML::getProperty(node, "type", "");
             ud.conversion = XML::getProperty(node, "conversion", 1);
             ud.mix = XML::getProperty(node, "mix", "no") == "yes";
 
-            struct UnitLevel bu;
+            UnitLevel bu;
             bu.symbol = XML::getProperty(node, "base", "¤");
             bu.count = 1;
             bu.round = XML::getProperty(node, "round", 2);
@@ -133,13 +133,14 @@ void Units::loadUnits()
             {
                 if (xmlNameEqual(uLevel, "level"))
                 {
-                    struct UnitLevel ul;
-                    ul.symbol = XML::getProperty(uLevel, "symbol",
-                                                 strprintf("¤%d", level));
-                    ul.count = XML::getProperty(uLevel, "count", -1);
-                    ul.round = XML::getProperty(uLevel, "round", bu.round);
-                    ul.separator = XML::getProperty(uLevel,
-                        "separator", bu.separator);
+                    const UnitLevel ul =
+                    {
+                        XML::getProperty(uLevel, "symbol",
+                                         strprintf("¤%d", level)),
+                        XML::getProperty(uLevel, "count", -1),
+                        XML::getProperty(uLevel, "round", bu.round),
+                        XML::getProperty(uLevel, "separator", bu.separator)
+                    };
 
                     if (ul.count > 0)
                     {
@@ -156,11 +157,13 @@ void Units::loadUnits()
             }
 
             // Add one more level for saftey
-            struct UnitLevel lev;
-            lev.symbol.clear();
-            lev.count = INT_MAX;
-            lev.round = 0;
-
+            const UnitLevel lev =
+            {
+                "",
+                INT_MAX,
+                0,
+                ""
+            };
             ud.levels.push_back(lev);
 
             if (type == "weight")
@@ -175,8 +178,8 @@ void Units::loadUnits()
 
 static std::string formatUnit(const int value, const int type)
 {
-    struct UnitDescription ud = units[type];
-    struct UnitLevel ul;
+    UnitDescription ud = units[type];
+    UnitLevel ul;
 
     // Shortcut for 0; do the same for values less than 0  (for now)
     if (value <= 0)
@@ -192,7 +195,7 @@ static std::string formatUnit(const int value, const int type)
         if (ud.mix && !ud.levels.empty() && ud.levels[1].count < amount)
         {
             std::string output;
-            struct UnitLevel pl = ud.levels[0];
+            UnitLevel pl = ud.levels[0];
             ul = ud.levels[1];
             int levelAmount = static_cast<int>(amount);
             int nextAmount = 0;
