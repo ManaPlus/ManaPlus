@@ -122,7 +122,7 @@ class TextCommand final
         unsigned getSchoolLvl() const A_WARN_UNUSED
         { return mSchoolLvl; }
 
-        TextCommandType getCommandType() const
+        TextCommandType getCommandType() const A_WARN_UNUSED
         { return mCommandType; }
 
         void setCommand(std::string command)
