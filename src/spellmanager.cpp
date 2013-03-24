@@ -47,15 +47,18 @@ SpellManager::~SpellManager()
     mSpellsVector.clear();
 }
 
-TextCommand* SpellManager::getSpell(const int spellId)
+TextCommand* SpellManager::getSpell(const int spellId) const
 {
     if (spellId < 0 || static_cast<unsigned int>(spellId) >= mSpells.size())
         return nullptr;
 
-    return mSpells[spellId];
+    std::map<unsigned int, TextCommand*>::const_iterator
+        it = mSpells.find(spellId);
+
+    return it != mSpells.end() ? (*it).second : nullptr;
 }
 
-TextCommand* SpellManager::getSpellByItem(const int itemId)
+TextCommand* SpellManager::getSpellByItem(const int itemId) const
 {
     return getSpell(itemId - SPELL_MIN_ID);
 }
@@ -116,12 +119,12 @@ std::vector<TextCommand*> SpellManager::getAll() const
     return mSpellsVector;
 }
 
-void SpellManager::useItem(const int itemId)
+void SpellManager::useItem(const int itemId) const
 {
     invoke(itemId - SPELL_MIN_ID);
 }
 
-void SpellManager::invoke(const int spellId)
+void SpellManager::invoke(const int spellId) const
 {
     if (!player_node)
         return;
@@ -181,8 +184,8 @@ std::string SpellManager::parseCommand(std::string command,
     if (!player_node)
         return command;
 
-    std::string name("");
-    std::string id("");
+    std::string name;
+    std::string id;
     std::string name2;
 
     if (target)
@@ -289,7 +292,7 @@ void SpellManager::load(const bool oldConfig)
     }
 }
 
-void SpellManager::save()
+void SpellManager::save() const
 {
     for (unsigned i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
     {
@@ -350,7 +353,7 @@ void SpellManager::save()
     }
 }
 
-std::string SpellManager::autoComplete(std::string partName)
+std::string SpellManager::autoComplete(const std::string &partName) const
 {
     std::vector<TextCommand*>::const_iterator i = mSpellsVector.begin();
     const std::vector<TextCommand*>::const_iterator
@@ -363,12 +366,12 @@ std::string SpellManager::autoComplete(std::string partName)
         const TextCommand *const cmd = *i;
         const std::string line = cmd->getCommand();
 
-        if (line != "")
+        if (!line.empty())
         {
             const size_t pos = line.find(partName, 0);
             if (pos == 0)
             {
-                if (newName != "")
+                if (!newName.empty())
                 {
                     newName = findSameSubstring(line, newName);
                     newCommand = nullptr;
@@ -382,7 +385,7 @@ std::string SpellManager::autoComplete(std::string partName)
         }
         ++i;
     }
-    if (newName != "" && newCommand
+    if (!newName.empty() && newCommand
         && newCommand->getTargetType() == NEEDTARGET)
     {
         return newName.append(" ");

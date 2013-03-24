@@ -42,9 +42,9 @@ class SpellManager final
 
         ~SpellManager();
 
-        TextCommand *getSpell(const int spellId) A_WARN_UNUSED;
+        TextCommand *getSpell(const int spellId) const A_WARN_UNUSED;
 
-        TextCommand* getSpellByItem(const int itemId) A_WARN_UNUSED;
+        TextCommand* getSpellByItem(const int itemId) const A_WARN_UNUSED;
 
         bool addSpell(TextCommand *const spell);
 
@@ -52,15 +52,16 @@ class SpellManager final
 
         std::vector<TextCommand*> getAll() const A_WARN_UNUSED;
 
-        void useItem(const int itemId);
+        void useItem(const int itemId) const;
 
-        void invoke(const int spellId);
+        void invoke(const int spellId) const;
 
         void load(const bool oldConfig = false);
 
-        void save();
+        void save() const;
 
-        std::string autoComplete(std::string partName) A_WARN_UNUSED;
+        std::string autoComplete(const std::string &partName)
+                                 const A_WARN_UNUSED;
 
     private:
         void fillSpells();
