@@ -60,7 +60,7 @@ class Tileset final : public ImageSet
         /**
          * Returns property value.
          */
-        std::string getProperty(std::string name) A_WARN_UNUSED
+        std::string getProperty(const std::string &name) A_WARN_UNUSED
         {
             const std::map<std::string, std::string>::const_iterator
                 it = mProperties.find(name);
