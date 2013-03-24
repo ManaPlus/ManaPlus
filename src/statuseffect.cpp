@@ -109,11 +109,13 @@ int StatusEffect::blockEffectIndexToEffectIndex(const int blockIndex)
 StatusEffect *StatusEffect::getStatusEffect(const int index,
                                             const bool enabling)
 {
+    //+++ need check
     return statusEffects[enabling][index];
 }
 
 StatusEffect *StatusEffect::getStunEffect(const int index, const bool enabling)
 {
+    //+++ need check
     return stunEffects[enabling][index];
 }
 
