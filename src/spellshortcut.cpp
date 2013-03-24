@@ -48,18 +48,17 @@ SpellShortcut::~SpellShortcut()
 
 void SpellShortcut::load()
 {
-    for (unsigned f = 0; f < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; f ++)
+    for (unsigned f = 0; f < SPELLS_SIZE; f ++)
         mItems[f] = -1;
 
     if (!spellManager)
         return;
 
-    std::vector<TextCommand*> spells = spellManager->getAll();
+    const std::vector<TextCommand*> spells = spellManager->getAll();
     unsigned k = 0;
 
     for (std::vector<TextCommand*>::const_iterator i = spells.begin(),
-         i_end = spells.end(); i != i_end
-         && k < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; ++i)
+         i_end = spells.end(); i != i_end && k < SPELLS_SIZE; ++i)
     {
         mItems[k++] = (*i)->getId();
     }

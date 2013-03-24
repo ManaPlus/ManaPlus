@@ -27,6 +27,8 @@
 
 class TextCommand;
 
+const int SPELLS_SIZE = SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS;
+
 /**
  * The class which keeps track of the item shortcuts.
  */
@@ -81,7 +83,7 @@ class SpellShortcut final
         { return mItems[index]; }
 
     private:
-        int mItems[SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS];
+        int mItems[SPELLS_SIZE];
         int mItemSelected;              /**< The item held by cursor. */
 };
 
