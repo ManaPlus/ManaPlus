@@ -34,7 +34,7 @@ decHandler(padEvents);
 decHandler(padOut);
 decHandler(padUp);
 
-void setHalfJoyPad(int s);
+void setHalfJoyPad(const int s);
 
 #undef decHandler
 

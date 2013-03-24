@@ -29,24 +29,19 @@
 
 #include "debug.h"
 
-InputEvent tempEvent(0, 0);
 bool padClicked(false);
 int haldJoyPad = 50;
 
 #define impHandler(name) void name(const MouseInput &mouseInput)
 #define impHandler0(name) void name(const MouseInput &mouseInput A_UNUSED)
 
-void setHalfJoyPad(int s)
+void setHalfJoyPad(const int s)
 {
     haldJoyPad = s;
 }
 
 static void moveChar(int x, int y)
 {
-    Game *const game = Game::instance();
-    if (!game)
-        return;
-
     static const int lim1 = 10;
     static const int diff = 20;
 
