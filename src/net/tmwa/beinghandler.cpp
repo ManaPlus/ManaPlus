@@ -99,7 +99,7 @@ BeingHandler::BeingHandler(bool enableSync) :
     beingHandler = this;
 }
 
-void BeingHandler::requestNameById(int id)
+void BeingHandler::requestNameById(const int id) const
 {
     MessageOut outMsg(0x0094);
     outMsg.writeInt32(id); //readLong(2));
@@ -239,7 +239,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("BeingHandler::handleMessage")
 }
 
-void BeingHandler::undress(Being *being)
+void BeingHandler::undress(Being *const being) const
 {
     being->setSprite(SPRITE_BOTTOMCLOTHES, 0);
     being->setSprite(SPRITE_TOPCLOTHES, 0);
@@ -249,12 +249,12 @@ void BeingHandler::undress(Being *being)
 //    being->setSprite(SPRITE_WEAPON, 0, "", true);
 }
 
-void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
+void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
+                                          const bool look2) const
 {
     if (!actorSpriteManager)
         return;
 
-    Being *dstBeing;
     /*
       * SMSG_BEING_CHANGE_LOOKS (0x00c3) and
       * SMSG_BEING_CHANGE_LOOKS2 (0x01d7) do basically the same
@@ -267,13 +267,14 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
       * 16 bit value will be 0.
       */
 
-    if (!(dstBeing = actorSpriteManager->findBeing(msg.readInt32())))
+    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    if (!dstBeing)
         return;
 
     const int type = msg.readInt8();
     int id = 0;
     int id2 = 0;
-    std::string color;
+    const std::string color;
 
     if (!look2)
     {
@@ -287,7 +288,6 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
             id2 = msg.readInt16();
         else
             id2 = 1;
-        color.clear();
     }
 
     if (dstBeing->getType() == Being::PLAYER)
@@ -306,7 +306,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
             break;
         case 2:     // Weapon ID in id, Shield ID in id2
             dstBeing->setSprite(SPRITE_WEAPON, id, "", 1, true);
-            if (!config.getBoolValue("hideShield"))
+            if (!mHideShield)
                 dstBeing->setSprite(SPRITE_SHIELD, id2);
             player_node->imitateOutfit(dstBeing, SPRITE_SHIELD);
             break;
@@ -332,7 +332,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
             // ignoring it
             break;
         case 8:     // eAthena LOOK_SHIELD
-            if (!config.getBoolValue("hideShield"))
+            if (!mHideShield)
             {
                 dstBeing->setSprite(SPRITE_SHIELD, id, color,
                     static_cast<unsigned char>(id2));
@@ -386,17 +386,17 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
     }
 }
 
-void BeingHandler::processNameResponse2(Net::MessageIn &msg)
+void BeingHandler::processNameResponse2(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager || !player_node)
         return;
 
-    Being *dstBeing;
 
     const int len = msg.readInt16();
     const int beingId = msg.readInt32();
-    std::string str = msg.readString(len - 8);
-    if ((dstBeing = actorSpriteManager->findBeing(beingId)))
+    const std::string str = msg.readString(len - 8);
+    Being *const dstBeing = actorSpriteManager->findBeing(beingId);
+    if (dstBeing)
     {
         if (beingId == player_node->getId())
         {
@@ -428,20 +428,11 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
     }
 }
 
-void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
+void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
+                                           const int msgType) const
 {
     if (!actorSpriteManager || !player_node)
         return;
-
-    uint16_t headTop, headMid, headBottom;
-    uint16_t weapon, shield;
-    uint16_t gmstatus;
-    int level;
-    int guild;
-    Being *dstBeing;
-    int hairStyle, hairColor;
-    unsigned char colors[9];
-
 
     // An update about a player, potentially including movement.
     const int id = msg.readInt32();
@@ -452,7 +443,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
         << 16; // status.options; Aethyra uses this as misc2
     const short job = msg.readInt16();
 
-    dstBeing = actorSpriteManager->findBeing(id);
+    Being *dstBeing = actorSpriteManager->findBeing(id);
 
     if (!dstBeing)
     {
@@ -480,18 +471,20 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     dstBeing->setSubtype(job);
-    hairStyle = msg.readInt16();
-    weapon = msg.readInt16();
-    shield = msg.readInt16();
-    headBottom = msg.readInt16();
+
+    const int hairStyle = msg.readInt16();
+    const uint16_t weapon = msg.readInt16();
+    const uint16_t shield = msg.readInt16();
+    const uint16_t headBottom = msg.readInt16();
 
     if (msgType == 3)
         msg.readInt32(); // server tick
 
-    headTop = msg.readInt16();
-    headMid = msg.readInt16();
-    hairColor = msg.readInt16();
+    const uint16_t headTop = msg.readInt16();
+    const uint16_t headMid = msg.readInt16();
+    const int hairColor = msg.readInt16();
 
+    unsigned char colors[9];
     colors[0] = msg.readInt8();
     colors[1] = msg.readInt8();
     colors[2] = msg.readInt8();
@@ -500,7 +493,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
 //            shoes = msg.readInt16();
 //            gloves = msg.readInt16();       //sd->head_dir
 
-    guild = msg.readInt32();  // guild
+    const int guild = msg.readInt32();  // guild
 
     if (!guildManager || !GuildManager::getEnableGuildBot())
     {
@@ -520,7 +513,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
 
     // Set these after the gender, as the sprites may be gender-specific
     dstBeing->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
-    if (!config.getBoolValue("hideShield"))
+    if (!mHideShield)
         dstBeing->setSprite(SPRITE_SHIELD, shield);
     //dstBeing->setSprite(SPRITE_SHOE, shoes);
     if (serverVersion > 0)
@@ -586,7 +579,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
         player_node->imitateDirection(dstBeing, dir);
     }
 
-    gmstatus = msg.readInt16();
+    const uint16_t gmstatus = msg.readInt16();
 
     if (gmstatus & 0x80)
         dstBeing->setGM(true);
@@ -634,7 +627,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
         msg.readInt8(); // unknown
     }
 
-    level = msg.readInt8();   // Lv
+    const int level = msg.readInt8();   // Lv
     if (level)
         dstBeing->setLevel(level);
 

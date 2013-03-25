@@ -42,16 +42,18 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         virtual void handleMessage(Net::MessageIn &msg);
 
-        virtual void requestNameById(int id);
+        virtual void requestNameById(const int id) const;
 
-        virtual void undress(Being *being);
+        virtual void undress(Being *const being) const;
 
     protected:
-        virtual void processBeingChangeLook(Net::MessageIn &msg, bool look2);
+        virtual void processBeingChangeLook(Net::MessageIn &msg,
+                                            const bool look2) const;
 
-        void processNameResponse2(Net::MessageIn &msg);
+        void processNameResponse2(Net::MessageIn &msg) const;
 
-        virtual void processPlayerMoveUpdate(Net::MessageIn &msg, int type);
+        virtual void processPlayerMoveUpdate(Net::MessageIn &msg,
+                                             const int type) const;
 };
 
 } // namespace TmwAthena

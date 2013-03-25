@@ -36,9 +36,9 @@ class BeingHandler
 
         virtual void handleMessage(Net::MessageIn &msg) = 0;
 
-        virtual void requestNameById(int id) = 0;
+        virtual void requestNameById(const int id) const = 0;
 
-        virtual void undress(Being *being) = 0;
+        virtual void undress(Being *const being) const = 0;
 };
 
 } // namespace Net

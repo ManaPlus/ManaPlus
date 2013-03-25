@@ -61,11 +61,12 @@ const int EMOTION_TIME = 500;    /**< Duration of emotion icon */
 
 BeingHandler::BeingHandler(bool enableSync) :
     mSync(enableSync),
-    mSpawnId(0)
+    mSpawnId(0),
+    mHideShield(config.getBoolValue("hideShield"))
 {
 }
 
-Being *BeingHandler::createBeing(int id, short job)
+Being *BeingHandler::createBeing(const int id, const short job) const
 {
     if (!actorSpriteManager)
         return nullptr;
@@ -96,7 +97,7 @@ Being *BeingHandler::createBeing(int id, short job)
         if (socialWindow)
             socialWindow->updateActiveList();
     }
-    if (type == Being::NPC)
+    else if (type == Being::NPC)
     {
         if (questsWindow)
             questsWindow->addEffect(being);
@@ -104,46 +105,39 @@ Being *BeingHandler::createBeing(int id, short job)
     return being;
 }
 
-void BeingHandler::setSprite(Being *being, unsigned int slot, int id,
-                             std::string color, unsigned char colorId,
-                             bool isWeapon, bool isTempSprite)
+void BeingHandler::setSprite(Being *const being, const unsigned int slot,
+                             const int id, const std::string &color,
+                             const unsigned char colorId,
+                             const bool isWeapon,
+                             const bool isTempSprite) const
 {
     if (!being)
         return;
     being->setSprite(slot, id, color, colorId, isWeapon, isTempSprite);
 }
 
-void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
+void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
+                                             const bool visible)
 {
     if (!actorSpriteManager)
         return;
 
-    int id;
-    short job, speed;
-    uint8_t gender;
-    uint16_t headTop, headMid, headBottom;
-    uint16_t shoes, gloves;
-    uint16_t weapon, shield;
-    uint16_t stunMode;
-    uint32_t statusEffects;
-    Being *dstBeing;
-    int hairStyle, hairColor;
     int spawnId;
 
     // Information about a being in range
-    id = msg.readInt32();
+    const int id = msg.readInt32();
     if (id == mSpawnId)
         spawnId = mSpawnId;
     else
         spawnId = 0;
     mSpawnId = 0;
-    speed = msg.readInt16();
-    stunMode = msg.readInt16();  // opt1
-    statusEffects = msg.readInt16();  // opt2
+    short speed = msg.readInt16();
+    const uint16_t stunMode = msg.readInt16();  // opt1
+    uint32_t statusEffects = msg.readInt16();  // opt2
     statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;  // option
-    job = msg.readInt16();  // class
+    const short job = msg.readInt16();  // class
 
-    dstBeing = actorSpriteManager->findBeing(id);
+    Being *dstBeing = actorSpriteManager->findBeing(id);
 
     if (dstBeing && dstBeing->getType() == Being::MONSTER
         && !dstBeing->isAlive())
@@ -201,19 +195,20 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
     if (dstBeing->getType() == ActorSprite::MONSTER && player_node)
         player_node->checkNewName(dstBeing);
 
-    hairStyle = msg.readInt16();
-    weapon = msg.readInt16();
-    headBottom = msg.readInt16();
+    const int hairStyle = msg.readInt16();
+    const uint16_t weapon = msg.readInt16();
+    const uint16_t headBottom = msg.readInt16();
 
     if (!visible)
         msg.readInt32(); // server tick
 
-    shield = msg.readInt16();
-    headTop = msg.readInt16();
-    headMid = msg.readInt16();
-    hairColor = msg.readInt16();
-    shoes = msg.readInt16();  // clothes color - "abused" as shoes
+    const uint16_t shield = msg.readInt16();
+    const uint16_t headTop = msg.readInt16();
+    const uint16_t headMid = msg.readInt16();
+    const int hairColor = msg.readInt16();
+    const uint16_t shoes = msg.readInt16(); //clothes color - "abused" as shoes
 
+    uint16_t gloves;
     if (dstBeing->getType() == ActorSprite::MONSTER)
     {
         if (serverVersion > 0)
@@ -242,12 +237,6 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
         msg.readInt16();  // guild emblem
     }
 //            logger->log("being guild: " + toString(guild));
-/*
-    if (guild == 0)
-        dstBeing->clearGuilds();
-    else
-        dstBeing->setGuild(Guild::getGuild(static_cast<short>(guild)));
-*/
 
     msg.readInt16();  // manner
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
@@ -260,7 +249,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
     {
         msg.readInt8();   // karma
     }
-    gender = msg.readInt8();
+    uint8_t gender = msg.readInt8();
 
     // reserving bits for future usage
 
@@ -278,7 +267,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
         setSprite(dstBeing, EA_SPRITE_SHOE, shoes);
         setSprite(dstBeing, EA_SPRITE_GLOVES, gloves);
         setSprite(dstBeing, EA_SPRITE_WEAPON, weapon, "", 1, true);
-        if (!config.getBoolValue("hideShield"))
+        if (!mHideShield)
             setSprite(dstBeing, EA_SPRITE_SHIELD, shield);
     }
     else if (dstBeing->getType() == ActorSprite::NPC)
@@ -334,7 +323,6 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
     msg.readInt8();   // unknown
     msg.readInt8();   // unknown
-//            msg.readInt8();   // unknown / sit
     msg.readInt16();
 
     dstBeing->setStunMode(stunMode);
@@ -344,7 +332,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
         statusEffects & 0xffff));
 }
 
-void BeingHandler::processBeingMove2(Net::MessageIn &msg)
+void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager)
         return;
@@ -387,7 +375,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     msg.readInt16();    // disguise
 }
 
-void BeingHandler::processBeingRemove(Net::MessageIn &msg)
+void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager || !player_node)
         return;
@@ -429,7 +417,7 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg)
     }
 }
 
-void BeingHandler::processBeingResurrect(Net::MessageIn &msg)
+void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager || !player_node)
         return;
@@ -450,22 +438,18 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg)
 }
 
 
-void BeingHandler::processSkillDamage(Net::MessageIn &msg)
+void BeingHandler::processSkillDamage(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager)
         return;
 
-    Being *srcBeing;
-    Being *dstBeing;
-    int param1;
-
     const int id = msg.readInt16(); // Skill Id
-    srcBeing = actorSpriteManager->findBeing(msg.readInt32());
-    dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const srcBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
     msg.readInt32(); // Server tick
     msg.readInt32(); // src speed
     msg.readInt32(); // dst speed
-    param1 = msg.readInt32(); // Damage
+    const int param1 = msg.readInt32(); // Damage
     const int level = msg.readInt16(); // Skill level
     msg.readInt16(); // Div
     msg.readInt8(); // Skill hit/type (?)
@@ -484,7 +468,7 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg)
     }
 }
 
-void BeingHandler::processBeingAction(Net::MessageIn &msg)
+void BeingHandler::processBeingAction(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager)
         return;
@@ -572,7 +556,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
     if (!effectManager || !actorSpriteManager)
         return;
 
-    int id = static_cast<uint32_t>(msg.readInt32());
+    const int id = static_cast<uint32_t>(msg.readInt32());
     Being *const being = actorSpriteManager->findBeing(id);
     if (!being)
         return;
@@ -582,8 +566,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
     effectManager->trigger(effectType, being);
 
     //+++ need dehard code effectType == 3
-    if (being && effectType == 3
-        && being->getType() == Being::PLAYER
+    if (effectType == 3 && being->getType() == Being::PLAYER
         && socialWindow)
     {   //reset received damage
         socialWindow->resetDamage(being->getName());
@@ -595,9 +578,8 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg)
     if (!player_node || !actorSpriteManager)
         return;
 
-    Being *dstBeing;
-
-    if (!(dstBeing = actorSpriteManager->findBeing(msg.readInt32())))
+    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    if (!dstBeing)
         return;
 
     if (player_relations.hasPermission(dstBeing, PlayerRelation::EMOTE))
@@ -618,10 +600,10 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg)
     if (!player_node || !actorSpriteManager)
         return;
 
-    Being *dstBeing;
-
     const int beingId = msg.readInt32();
-    if ((dstBeing = actorSpriteManager->findBeing(beingId)))
+    Being *const dstBeing = actorSpriteManager->findBeing(beingId);
+
+    if (dstBeing)
     {
         if (beingId == player_node->getId())
         {
@@ -658,13 +640,9 @@ void BeingHandler::processIpResponse(Net::MessageIn &msg)
     if (!actorSpriteManager)
         return;
 
-    Being *dstBeing;
-
-    if ((dstBeing = actorSpriteManager->findBeing(
-        msg.readInt32())))
-    {
+    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    if (dstBeing)
         dstBeing->setIp(ipToString(msg.readInt32()));
-    }
 }
 
 void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
@@ -672,9 +650,9 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
     if (!actorSpriteManager)
         return;
 
-    Being *dstBeing;
+    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
 
-    if ((dstBeing = actorSpriteManager->findBeing(msg.readInt32())))
+    if (dstBeing)
     {
         dstBeing->setPartyName(msg.readString(24));
         if (!guildManager || !GuildManager::getEnableGuildBot())
@@ -690,9 +668,9 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
     if (!actorSpriteManager)
         return;
 
-    Being *dstBeing;
+    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
 
-    if (!(dstBeing = actorSpriteManager->findBeing(msg.readInt32())))
+    if (!dstBeing)
         return;
 
     msg.readInt16(); // unused
@@ -727,9 +705,8 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg)
         Being *const dstBeing = actorSpriteManager->findBeing(id);
         if (dstBeing)
         {
-            uint16_t x, y;
-            x = msg.readInt16();
-            y = msg.readInt16();
+            const uint16_t x = msg.readInt16();
+            const uint16_t y = msg.readInt16();
             dstBeing->setTileCoords(x, y);
             if (dstBeing->getCurrentAction() == Being::MOVE)
                 dstBeing->setAction(Being::STAND);

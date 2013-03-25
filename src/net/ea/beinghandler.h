@@ -37,37 +37,36 @@ class BeingHandler : public Net::BeingHandler
         A_DELETE_COPY(BeingHandler)
 
     protected:
-        virtual void requestNameById(int id) = 0;
+        virtual Being *createBeing(int id, short job) const A_WARN_UNUSED;
 
-        virtual Being *createBeing(int id, short job) A_WARN_UNUSED;
-
-        virtual void setSprite(Being *being, unsigned int slot, int id,
-                               std::string color = "",
-                               unsigned char colorId = 1,
-                               bool isWeapon = false,
-                               bool isTempSprite = false);
+        virtual void setSprite(Being *const being, const unsigned int slot,
+                               const int id,
+                               const std::string &color = "",
+                               const unsigned char colorId = 1,
+                               const bool isWeapon = false,
+                               const bool isTempSprite = false) const;
 
         virtual void processBeingVisibleOrMove(Net::MessageIn &msg,
-                                               bool visible);
+                                               const bool visible);
 
-        virtual void processBeingMove2(Net::MessageIn &msg);
+        virtual void processBeingMove2(Net::MessageIn &msg) const;
 
         virtual void processBeingSpawn(Net::MessageIn &msg);
 
-        virtual void processBeingRemove(Net::MessageIn &msg);
+        virtual void processBeingRemove(Net::MessageIn &msg) const;
 
-        virtual void processBeingResurrect(Net::MessageIn &msg);
+        virtual void processBeingResurrect(Net::MessageIn &msg) const;
 
-        virtual void processSkillDamage(Net::MessageIn &msg);
+        virtual void processSkillDamage(Net::MessageIn &msg) const;
 
-        virtual void processBeingAction(Net::MessageIn &msg);
+        virtual void processBeingAction(Net::MessageIn &msg) const;
 
         virtual void processBeingSelfEffect(Net::MessageIn &msg);
 
         virtual void processBeingEmotion(Net::MessageIn &msg);
 
         virtual void processBeingChangeLook(Net::MessageIn &msg,
-                                            bool look2) = 0;
+                                            const bool look2) const = 0;
 
         virtual void processNameResponse(Net::MessageIn &msg);
 
@@ -78,7 +77,7 @@ class BeingHandler : public Net::BeingHandler
         virtual void processBeingChangeDirection(Net::MessageIn &msg);
 
         virtual void processPlayerMoveUpdate(Net::MessageIn &msg,
-                                             int type) = 0;
+                                             const int type) const = 0;
 
         virtual void processPlayerStop(Net::MessageIn &msg);
 
@@ -100,6 +99,7 @@ class BeingHandler : public Net::BeingHandler
         // Should we honor server "Stop Walking" packets
         bool mSync;
         int mSpawnId;
+        bool mHideShield;
 };
 
 } // namespace Ea
