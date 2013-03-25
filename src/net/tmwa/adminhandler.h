@@ -46,9 +46,9 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
         void localAnnounce(const std::string &text);
 
-        void hide(bool h);
+        void hide(const bool h);
 
-        void kick(int playerId);
+        void kick(const int playerId);
 };
 
 } // namespace TmwAthena

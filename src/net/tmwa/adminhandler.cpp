@@ -55,12 +55,10 @@ AdminHandler::AdminHandler() :
 void AdminHandler::handleMessage(Net::MessageIn &msg)
 {
     BLOCK_START("AdminHandler::handleMessage")
-    int id;
     switch (msg.getId())
     {
         case SMSG_ADMIN_KICK_ACK:
-            id = msg.readInt32();
-            if (id == 0)
+            if (msg.readInt32() == 0)
                 NotifyManager::notify(NotifyManager::KICK_FAIL);
             else
                 NotifyManager::notify(NotifyManager::KICK_SUCCEED);
@@ -84,13 +82,13 @@ void AdminHandler::localAnnounce(const std::string &text)
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 
-void AdminHandler::hide(bool h A_UNUSED)
+void AdminHandler::hide(const bool h A_UNUSED)
 {
     MessageOut outMsg(CMSG_ADMIN_HIDE);
     outMsg.writeInt32(0); //unused
 }
 
-void AdminHandler::kick(int playerId)
+void AdminHandler::kick(const int playerId)
 {
     MessageOut outMsg(CMSG_ADMIN_KICK);
     outMsg.writeInt32(playerId);

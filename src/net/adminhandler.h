@@ -39,24 +39,25 @@ class AdminHandler
 
         virtual void localAnnounce(const std::string &text) = 0;
 
-        virtual void hide(bool hide) = 0;
+        virtual void hide(const bool hide) = 0;
 
-        virtual void kick(int playerId) = 0;
+        virtual void kick(const int playerId) = 0;
 
         virtual void kickName(const std::string &name) = 0;
 
-        virtual void ban(int playerId) = 0;
+        virtual void ban(const int playerId) = 0;
 
         virtual void banName(const std::string &name) = 0;
 
-        virtual void unban(int playerId) = 0;
+        virtual void unban(const int playerId) = 0;
 
         virtual void unbanName(const std::string &name) = 0;
 
-        virtual void mute(int playerId, int type, int limit) = 0;
+        virtual void mute(const int playerId, const int type,
+                          const int limit) = 0;
 
-        virtual void warp(std::string map, int x, int y) = 0;
-        // TODO
+        virtual void warp(const std::string &map,
+                          const int x, const int y) = 0;
 };
 
 } // namespace Net

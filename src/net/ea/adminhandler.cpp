@@ -38,7 +38,7 @@ void AdminHandler::kickName(const std::string &name)
     Net::getChatHandler()->talk("@kick " + name, GENERAL_CHANNEL);
 }
 
-void AdminHandler::ban(int playerId A_UNUSED)
+void AdminHandler::ban(const int playerId A_UNUSED)
 {
     // Not supported
 }
@@ -48,7 +48,7 @@ void AdminHandler::banName(const std::string &name)
     Net::getChatHandler()->talk("@ban " + name, GENERAL_CHANNEL);
 }
 
-void AdminHandler::unban(int playerId A_UNUSED)
+void AdminHandler::unban(const int playerId A_UNUSED)
 {
     // Not supported
 }
@@ -58,13 +58,13 @@ void AdminHandler::unbanName(const std::string &name)
     Net::getChatHandler()->talk("@unban " + name, GENERAL_CHANNEL);
 }
 
-void AdminHandler::mute(int playerId A_UNUSED, int type A_UNUSED,
-                        int limit A_UNUSED)
+void AdminHandler::mute(const int playerId A_UNUSED, const int type A_UNUSED,
+                        const int limit A_UNUSED)
 {
-    return; // Still looking into this
+    return;
 }
 
-void AdminHandler::warp(std::string map, int x, int y)
+void AdminHandler::warp(const std::string &map, const int x, const int y)
 {
     Net::getChatHandler()->talk(strprintf(
         "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);
