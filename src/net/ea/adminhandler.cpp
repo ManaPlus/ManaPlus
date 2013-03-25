@@ -33,38 +33,38 @@ namespace Ea
 
 const std::string GENERAL_CHANNEL = "";
 
-void AdminHandler::kickName(const std::string &name)
+void AdminHandler::kickName(const std::string &name) const
 {
     Net::getChatHandler()->talk("@kick " + name, GENERAL_CHANNEL);
 }
 
-void AdminHandler::ban(const int playerId A_UNUSED)
+void AdminHandler::ban(const int playerId A_UNUSED) const
 {
     // Not supported
 }
 
-void AdminHandler::banName(const std::string &name)
+void AdminHandler::banName(const std::string &name) const
 {
     Net::getChatHandler()->talk("@ban " + name, GENERAL_CHANNEL);
 }
 
-void AdminHandler::unban(const int playerId A_UNUSED)
+void AdminHandler::unban(const int playerId A_UNUSED) const
 {
     // Not supported
 }
 
-void AdminHandler::unbanName(const std::string &name)
+void AdminHandler::unbanName(const std::string &name) const
 {
     Net::getChatHandler()->talk("@unban " + name, GENERAL_CHANNEL);
 }
 
 void AdminHandler::mute(const int playerId A_UNUSED, const int type A_UNUSED,
-                        const int limit A_UNUSED)
+                        const int limit A_UNUSED) const
 {
     return;
 }
 
-void AdminHandler::warp(const std::string &map, const int x, const int y)
+void AdminHandler::warp(const std::string &map, const int x, const int y) const
 {
     Net::getChatHandler()->talk(strprintf(
         "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);

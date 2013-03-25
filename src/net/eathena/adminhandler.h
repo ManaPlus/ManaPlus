@@ -42,13 +42,13 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
         void handleMessage(Net::MessageIn &msg);
 
-        void announce(const std::string &text);
+        void announce(const std::string &text) const;
 
-        void localAnnounce(const std::string &text);
+        void localAnnounce(const std::string &text) const;
 
-        void hide(const bool h);
+        void hide(const bool h) const;
 
-        void kick(const int playerId);
+        void kick(const int playerId) const;
 };
 
 } // namespace EAthena

@@ -35,29 +35,29 @@ class AdminHandler
         virtual ~AdminHandler()
         { }
 
-        virtual void announce(const std::string &text) = 0;
+        virtual void announce(const std::string &text) const = 0;
 
-        virtual void localAnnounce(const std::string &text) = 0;
+        virtual void localAnnounce(const std::string &text) const = 0;
 
-        virtual void hide(const bool hide) = 0;
+        virtual void hide(const bool hide) const = 0;
 
-        virtual void kick(const int playerId) = 0;
+        virtual void kick(const int playerId) const = 0;
 
-        virtual void kickName(const std::string &name) = 0;
+        virtual void kickName(const std::string &name) const = 0;
 
-        virtual void ban(const int playerId) = 0;
+        virtual void ban(const int playerId) const = 0;
 
-        virtual void banName(const std::string &name) = 0;
+        virtual void banName(const std::string &name) const = 0;
 
-        virtual void unban(const int playerId) = 0;
+        virtual void unban(const int playerId) const = 0;
 
-        virtual void unbanName(const std::string &name) = 0;
+        virtual void unbanName(const std::string &name) const = 0;
 
         virtual void mute(const int playerId, const int type,
-                          const int limit) = 0;
+                          const int limit) const = 0;
 
         virtual void warp(const std::string &map,
-                          const int x, const int y) = 0;
+                          const int x, const int y) const = 0;
 };
 
 } // namespace Net

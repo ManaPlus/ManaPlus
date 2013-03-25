@@ -68,27 +68,27 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("AdminHandler::handleMessage")
 }
 
-void AdminHandler::announce(const std::string &text)
+void AdminHandler::announce(const std::string &text) const
 {
     MessageOut outMsg(CMSG_ADMIN_ANNOUNCE);
     outMsg.writeInt16(static_cast<int16_t>(text.length() + 4));
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 
-void AdminHandler::localAnnounce(const std::string &text)
+void AdminHandler::localAnnounce(const std::string &text) const
 {
     MessageOut outMsg(CMSG_ADMIN_LOCAL_ANNOUNCE);
     outMsg.writeInt16(static_cast<int16_t>(text.length() + 4));
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 
-void AdminHandler::hide(const bool h A_UNUSED)
+void AdminHandler::hide(const bool h A_UNUSED) const
 {
     MessageOut outMsg(CMSG_ADMIN_HIDE);
     outMsg.writeInt32(0); //unused
 }
 
-void AdminHandler::kick(const int playerId)
+void AdminHandler::kick(const int playerId) const
 {
     MessageOut outMsg(CMSG_ADMIN_KICK);
     outMsg.writeInt32(playerId);
