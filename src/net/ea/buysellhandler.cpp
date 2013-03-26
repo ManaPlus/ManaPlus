@@ -50,12 +50,12 @@ BuySellHandler::BuySellHandler() :
 {
 }
 
-void BuySellHandler::requestSellList(std::string nick)
+void BuySellHandler::requestSellList(const std::string &nick) const
 {
     if (nick.empty() != 0 || !shopWindow)
         return;
 
-    std::string data = "!selllist " + toString(tick_time);
+    const std::string data = "!selllist " + toString(tick_time);
     shopWindow->setAcceptPlayer(nick);
 
     if (config.getBoolValue("hideShopMessages"))
@@ -69,12 +69,12 @@ void BuySellHandler::requestSellList(std::string nick)
     }
 }
 
-void BuySellHandler::requestBuyList(std::string nick)
+void BuySellHandler::requestBuyList(const std::string &nick) const
 {
     if (nick.empty() || !shopWindow)
         return;
 
-    std::string data = "!buylist " + toString(tick_time);
+    const std::string data = "!buylist " + toString(tick_time);
     shopWindow->setAcceptPlayer(nick);
 
     if (config.getBoolValue("hideShopMessages"))
@@ -90,14 +90,14 @@ void BuySellHandler::requestBuyList(std::string nick)
 
 void BuySellHandler::sendBuyRequest(const std::string &nick,
                                     const ShopItem *const item,
-                                    const int amount)
+                                    const int amount) const
 {
     if (!chatWindow || nick.empty() || !item ||
         amount < 1 || amount > item->getQuantity())
     {
         return;
     }
-    std::string data = strprintf("!buyitem %d %d %d",
+    const std::string data = strprintf("!buyitem %d %d %d",
         item->getId(), item->getPrice(), amount);
 
     if (config.getBoolValue("hideShopMessages"))
@@ -108,7 +108,7 @@ void BuySellHandler::sendBuyRequest(const std::string &nick,
 
 void BuySellHandler::sendSellRequest(const std::string &nick,
                                      const ShopItem *const item,
-                                     const int amount)
+                                     const int amount) const
 {
     if (!chatWindow || nick.empty() || !item ||
         amount < 1 || amount > item->getQuantity())
@@ -116,7 +116,7 @@ void BuySellHandler::sendSellRequest(const std::string &nick,
         return;
     }
 
-    std::string data = strprintf("!sellitem %d %d %d",
+    const std::string data = strprintf("!sellitem %d %d %d",
         item->getId(), item->getPrice(), amount);
 
     if (config.getBoolValue("hideShopMessages"))
@@ -134,7 +134,8 @@ void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)
     }
 }
 
-void BuySellHandler::processNpcSell(Net::MessageIn &msg, int offset)
+void BuySellHandler::processNpcSell(Net::MessageIn &msg,
+                                    const int offset) const
 {
     msg.readInt16();  // length
     const int n_items = (msg.getLength() - 4) / 10;
@@ -162,7 +163,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg, int offset)
     }
 }
 
-void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg)
+void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg) const
 {
     if (msg.readInt8() == 0)
     {

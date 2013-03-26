@@ -117,7 +117,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
     }
 }
 
-void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg)
+void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg) const
 {
     switch (msg.readInt8())
     {

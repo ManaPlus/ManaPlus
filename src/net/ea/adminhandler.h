@@ -40,21 +40,21 @@ class AdminHandler : public Net::AdminHandler
         virtual ~AdminHandler()
         { }
 
-        virtual void kickName(const std::string &name) const;
+        virtual void kickName(const std::string &name) const override;
 
-        virtual void ban(const int playerId) const;
+        virtual void ban(const int playerId) const override;
 
-        virtual void banName(const std::string &name) const;
+        virtual void banName(const std::string &name) const override;
 
-        virtual void unban(const int playerId) const;
+        virtual void unban(const int playerId) const override;
 
-        virtual void unbanName(const std::string &name) const;
+        virtual void unbanName(const std::string &name) const override;
 
         virtual void mute(const int playerId, const int type,
-                          const int limit) const;
+                          const int limit) const override;
 
         virtual void warp(const std::string &map,
-                          const int x, const int y) const;
+                          const int x, const int y) const override;
 };
 
 } // namespace Ea

@@ -43,7 +43,7 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
 
         virtual void processNpcBuy(Net::MessageIn &msg);
 
-        virtual void processNpcSellResponse(Net::MessageIn &msg);
+        virtual void processNpcSellResponse(Net::MessageIn &msg) const;
 };
 
 } // namespace EAthena

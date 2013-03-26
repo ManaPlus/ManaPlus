@@ -835,15 +835,4 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
 }
 
-void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
-{
-    // skipping this packet
-    mSpawnId = msg.readInt32();    // id
-    msg.readInt16();    // speed
-    msg.readInt16();  // opt1
-    msg.readInt16();  // opt2
-    msg.readInt16();  // option
-    msg.readInt16();    // disguise
-}
-
 } // namespace EAthena

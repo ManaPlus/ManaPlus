@@ -41,27 +41,24 @@ class BuySellHandler : public Net::BuySellHandler
 
         A_DELETE_COPY(BuySellHandler)
 
-        virtual void requestSellList(std::string nick);
+        virtual void requestSellList(const std::string &nick) const override;
 
-        virtual void requestBuyList(std::string nick);
+        virtual void requestBuyList(const std::string &nick) const override;
 
         virtual void sendBuyRequest(const std::string &nick,
                                     const ShopItem *const item,
-                                    const int amount);
+                                    const int amount) const override;
 
         virtual void sendSellRequest(const std::string &nick,
                                      const ShopItem *const item,
-                                     const int amount);
+                                     const int amount) const override;
 
         virtual void processNpcBuySellChoice(Net::MessageIn &msg);
 
-        virtual void processNpcBuy(Net::MessageIn &msg) = 0;
+        virtual void processNpcSell(Net::MessageIn &msg,
+                                    const int offset) const;
 
-        virtual void processNpcSell(Net::MessageIn &msg, int offset);
-
-        virtual void processNpcBuyResponse(Net::MessageIn &msg);
-
-        virtual void processNpcSellResponse(Net::MessageIn &msg) = 0;
+        virtual void processNpcBuyResponse(Net::MessageIn &msg) const;
 
     protected:
         int mNpcId;
