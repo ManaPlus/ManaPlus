@@ -56,8 +56,9 @@ namespace Net
 class Download final
 {
     public:
-        Download(void *ptr, const std::string &url,
-                 DownloadUpdate updateFunction, bool ignoreError = false);
+        Download(void *const ptr, const std::string &url,
+                 const DownloadUpdate updateFunction,
+                 const bool ignoreError = false);
 
         A_DELETE_COPY(Download)
 
@@ -70,7 +71,7 @@ class Download final
          */
         void noCache();
 
-        void setFile(const std::string &filename, int64_t adler32 = -1);
+        void setFile(const std::string &filename, const int64_t adler32 = -1);
 
         void setWriteFunction(WriteFunction write);
 
@@ -88,16 +89,16 @@ class Download final
          */
         void cancel();
 
-        char *getError() A_WARN_UNUSED;
+        char *getError() const A_WARN_UNUSED;
 
-        void setIgnoreError(bool n)
+        void setIgnoreError(const bool n)
         { mIgnoreError = n; }
 
-        static unsigned long fadler32(FILE *file) A_WARN_UNUSED;
+        static unsigned long fadler32(FILE *const file) A_WARN_UNUSED;
 
-        static void addProxy(CURL *curl);
+        static void addProxy(CURL *const curl);
 
-        static void secureCurl(CURL *curl);
+        static void secureCurl(CURL *const curl);
 
     private:
         static int downloadThread(void *ptr);

@@ -51,8 +51,9 @@ enum
 namespace Net
 {
 
-Download::Download(void *ptr, const std::string &url,
-                   DownloadUpdate updateFunction, bool ignoreError) :
+Download::Download(void *const ptr, const std::string &url,
+                   const DownloadUpdate updateFunction,
+                   const bool ignoreError) :
     mPtr(ptr),
     mUrl(url),
     mFileName(""),
@@ -88,14 +89,14 @@ Download::~Download()
 /**
  * Calculates the Alder-32 checksum for the given file.
  */
-unsigned long Download::fadler32(FILE *file)
+unsigned long Download::fadler32(FILE *const file)
 {
     if (!file)
         return 0;
 
     // Obtain file size
     fseek(file, 0, SEEK_END);
-    long fileSize = ftell(file);
+    const long fileSize = ftell(file);
     if (fileSize < 0)
     {   // file size error
         return 0;
@@ -103,7 +104,7 @@ unsigned long Download::fadler32(FILE *file)
     rewind(file);
 
     // Calculate Adler-32 checksum
-    char *buffer = static_cast<char*>(malloc(fileSize));
+    char *const buffer = static_cast<char*>(malloc(fileSize));
     const uInt read = static_cast<uInt>(fread(buffer, 1, fileSize, file));
     unsigned long adler = adler32(0L, Z_NULL, 0);
     adler = adler32(static_cast<uInt>(adler),
@@ -124,7 +125,7 @@ void Download::noCache()
     addHeader("Cache-Control: no-cache");
 }
 
-void Download::setFile(const std::string &filename, int64_t adler32)
+void Download::setFile(const std::string &filename, const int64_t adler32)
 {
     mOptions.memoryWrite = 0;
     mFileName = filename;
@@ -175,7 +176,7 @@ void Download::cancel()
     mThread = nullptr;
 }
 
-char *Download::getError()
+char *Download::getError() const
 {
     return mError;
 }
@@ -183,7 +184,7 @@ char *Download::getError()
 int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
                                double ultotal A_UNUSED, double ulnow A_UNUSED)
 {
-    Download *d = reinterpret_cast<Download*>(clientp);
+    Download *const d = reinterpret_cast<Download *const>(clientp);
     if (!d)
         return -5;
 
@@ -203,19 +204,17 @@ int Download::downloadThread(void *ptr)
 {
     int attempts = 0;
     bool complete = false;
-    Download *d = reinterpret_cast<Download*>(ptr);
+    Download *const d = reinterpret_cast<Download*>(ptr);
     CURLcode res;
-    std::string outFilename;
 
     if (!d)
         return 0;
 
-    if (!d->mOptions.memoryWrite)
-        outFilename = d->mFileName + ".part";
+    const std::string outFilename = !d->mOptions.memoryWrite
+        ? (d->mFileName + ".part") : "";
 
     while (attempts < 3 && !complete && !d->mOptions.cancel)
     {
-
         d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_STARTING, 0, 0);
 
         if (d->mOptions.cancel)
@@ -305,7 +304,7 @@ int Download::downloadThread(void *ptr)
                 // Don't check resources.xml checksum
                 if (d->mOptions.checkAdler)
                 {
-                    unsigned long adler = fadler32(file);
+                    const unsigned long adler = fadler32(file);
 
                     if (d->mAdler != adler)
                     {
@@ -387,7 +386,7 @@ int Download::downloadThread(void *ptr)
     return 0;
 }
 
-void Download::addProxy(CURL *curl)
+void Download::addProxy(CURL *const curl)
 {
     const int mode = config.getIntValue("downloadProxyType");
     if (!mode)
@@ -433,12 +432,14 @@ void Download::addProxy(CURL *curl)
     }
 }
 
-void Download::secureCurl(CURL *curl)
+void Download::secureCurl(CURL *const curl)
 {
     curl_easy_setopt(curl, CURLOPT_PROTOCOLS,
         CURLPROTO_HTTP | CURLPROTO_HTTPS);
     curl_easy_setopt(curl, CURLOPT_REDIR_PROTOCOLS,
         CURLPROTO_HTTP | CURLPROTO_HTTPS);
+    curl_easy_setopt(curl, CURLOPT_WILDCARDMATCH, 0);
+    curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 3);
 }
 
 } // namespace Net
