@@ -39,6 +39,7 @@
 #include "gui/widgets/tradetab.h"
 
 #include "actorspritemanager.h"
+#include "auctionmanager.h"
 #include "client.h"
 #include "configuration.h"
 #include "confirmdialog.h"
@@ -88,10 +89,12 @@ ShopWindow::ShopWindow():
     mBuyAddButton(new Button(this, _("Add"), "add buy", this)),
     mBuyDeleteButton(new Button(this, _("Delete"), "delete buy", this)),
     mBuyAnnounceButton(new Button(this, _("Announce"), "announce buy", this)),
+    mBuyAuctionButton(nullptr),
     mSellAddButton(new Button(this, _("Add"), "add sell", this)),
     mSellDeleteButton(new Button(this, _("Delete"), "delete sell", this)),
     mSellAnnounceButton(new Button(this, _("Announce"),
         "announce sell", this)),
+    mSellAuctionButton(nullptr),
     mAnnounceLinks(new CheckBox(this, _("Show links in announce"), false,
         this, "link announce")),
     mSelectedItem(-1),
@@ -141,6 +144,21 @@ ShopWindow::ShopWindow():
     placer(11, 6, mSellAnnounceButton);
     placer(0, 7, mAnnounceLinks, 8);
     placer(15, 7, mCloseButton);
+
+    if (auctionManager && auctionManager->getEnableAuctionBot())
+    {
+        mBuyAuctionButton = new Button(this,
+            _("Auction"), "auction buy", this);
+        mSellAuctionButton = new Button(this,
+            _("Auction"), "auction sell", this);
+        placer(4, 6, mBuyAuctionButton);
+        placer(12, 6, mSellAuctionButton);
+    }
+    else
+    {
+        mBuyAuctionButton = nullptr;
+        mSellAuctionButton = nullptr;
+    }
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
@@ -213,6 +231,16 @@ void ShopWindow::action(const gcn::ActionEvent &event)
              && mSellShopItems->getNumberOfElements() > 0)
     {
         announce(mSellShopItems, SELL);
+    }
+    else if (eventId == "auction buy" && mBuyShopItems
+             && mBuyShopItems->getNumberOfElements() > 0)
+    {
+        Net::getChatHandler()->privateMessage("AuctionBot", "!pull4144 seek");
+    }
+    else if (eventId == "auction sell" && mSellShopItems
+             && mSellShopItems->getNumberOfElements() > 0)
+    {
+        Net::getChatHandler()->privateMessage("AuctionBot", "!pull4144 offer");
     }
 
     if (mSelectedItem < 1)

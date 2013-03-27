@@ -25,6 +25,7 @@
 #include "main.h"
 
 #include "actorspritemanager.h"
+#include "auctionmanager.h"
 #include "animatedsprite.h"
 #include "client.h"
 #include "commandhandler.h"
@@ -151,6 +152,7 @@ EffectManager *effectManager = nullptr;
 SpellManager *spellManager = nullptr;
 Viewport *viewport = nullptr;                    /**< Viewport on the map. */
 GuildManager *guildManager = nullptr;
+AuctionManager *auctionManager = nullptr;
 
 ChatTab *localChatTab = nullptr;
 ChatTab *debugChatTab = nullptr;
@@ -172,6 +174,7 @@ static void initEngines()
     actorSpriteManager = new ActorSpriteManager;
     commandHandler = new CommandHandler;
     effectManager = new EffectManager;
+    AuctionManager::init();
     GuildManager::init();
 
     particleEngine = new Particle(nullptr);
@@ -328,6 +331,9 @@ static void destroyGuiWindows()
     if (whoIsOnline)
         whoIsOnline->setAllowUpdate(false);
 
+    if (auctionManager)
+        auctionManager->clear();
+
     if (guildManager)
         guildManager->clear();
 
@@ -368,6 +374,9 @@ static void destroyGuiWindows()
 
     DepricatedEvent::trigger(CHANNEL_GAME,
         DepricatedEvent(EVENT_GUIWINDOWSUNLOADED));
+
+    if (auctionManager && AuctionManager::getEnableAuctionBot())
+        auctionManager->reload();
 
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->reload();
@@ -460,6 +469,7 @@ Game::~Game()
     del_0(mCurrentMap)
     del_0(spellManager)
     del_0(spellShortcut)
+    del_0(auctionManager)
     del_0(guildManager)
 #ifdef USE_MUMBLE
     del_0(mumbleManager)

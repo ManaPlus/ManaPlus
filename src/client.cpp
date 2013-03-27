@@ -24,6 +24,7 @@
 
 #include "client.h"
 
+#include "auctionmanager.h"
 #include "chatlogger.h"
 #include "configuration.h"
 #include "depricatedevent.h"
@@ -1074,6 +1075,7 @@ int Client::gameExec()
 #endif
 
             GuildManager::init();
+            AuctionManager::init();
 
             if (!mConfigAutoSaved)
             {

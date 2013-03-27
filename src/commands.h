@@ -84,6 +84,7 @@ namespace Commands
     decHandler(imitation);
     decHandler(heal);
     decHandler(navigate);
+    decHandler(mail);
     decHandler(hack);
     decHandler(priceLoad);
     decHandler(priceSave);
@@ -160,6 +161,7 @@ static const CommandInfo commands[] =
     {"heal", &Commands::heal},
     {"navigate", &Commands::navigate},
     {"imitation", &Commands::imitation},
+    {"mail", &Commands::mail},
     {"trade", &Commands::trade},
     {"priceload", &Commands::priceLoad},
     {"pricesave", &Commands::priceSave},
