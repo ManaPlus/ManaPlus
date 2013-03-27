@@ -40,25 +40,25 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
 
         A_DELETE_COPY(GameHandler)
 
-        void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg) override;
 
-        void connect();
+        void connect() override;
 
-        bool isConnected() A_WARN_UNUSED;
+        bool isConnected() const override A_WARN_UNUSED;
 
-        void disconnect();
+        void disconnect() override;
 
-        void quit();
+        void quit() const override;
 
-        void ping(int tick);
+        void ping(const int tick) const override;
 
-        void disconnect2();
+        void disconnect2() const override;
 
-        void mapLoadedEvent();
+        void mapLoadedEvent() const override;
 
         void processMapCharId(Net::MessageIn &msg);
 
-        bool mustPing() const A_WARN_UNUSED
+        bool mustPing() const override A_WARN_UNUSED
         { return true; }
 };
 

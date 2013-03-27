@@ -38,26 +38,27 @@ class GameHandler
 
         virtual void connect() = 0;
 
-        virtual bool isConnected() = 0;
+        virtual bool isConnected() const = 0;
 
         virtual void disconnect() = 0;
 
-        virtual void who() = 0;
+        virtual void who() const = 0;
 
-        virtual void quit() = 0;
+        virtual void quit() const = 0;
 
-        virtual void ping(int tick) = 0;
+        virtual void ping(const int tick) const = 0;
 
         virtual bool removeDeadBeings() const = 0;
 
-        virtual void disconnect2() = 0;
+        virtual void disconnect2() const = 0;
 
-        /**
-         * Tells whether the protocol is using the MP status bar
-         */
         virtual bool canUseMagicBar() const A_WARN_UNUSED = 0;
 
         virtual bool mustPing() const A_WARN_UNUSED = 0;
+
+        virtual void mapLoadedEvent() const = 0;
+
+        virtual void initEngines() const = 0;
 
         virtual void clear() = 0;
 };

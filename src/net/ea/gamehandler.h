@@ -23,8 +23,6 @@
 #ifndef NET_EA_GAMEHANDLER_H
 #define NET_EA_GAMEHANDLER_H
 
-#include "listener.h"
-
 #include "net/gamehandler.h"
 #include "net/messagein.h"
 #include "net/net.h"
@@ -32,37 +30,34 @@
 namespace Ea
 {
 
-class GameHandler : public Net::GameHandler, public Listener
+class GameHandler : public Net::GameHandler
 {
     public:
         GameHandler();
 
         A_DELETE_COPY(GameHandler)
 
-        virtual void processEvent(Channels channel,
-                                  const DepricatedEvent &event) override;
+        virtual void who() const override;
 
-        virtual void who();
-
-        virtual bool removeDeadBeings() const A_WARN_UNUSED
+        virtual bool removeDeadBeings() const override A_WARN_UNUSED
         { return true; }
 
         virtual void setMap(const std::string &map);
 
-        virtual bool canUseMagicBar() const A_WARN_UNUSED
+        virtual bool canUseMagicBar() const override A_WARN_UNUSED
         { return true; }
 
-        virtual void mapLoadedEvent() = 0;
+        virtual void processMapLogin(Net::MessageIn &msg) const;
 
-        virtual void processMapLogin(Net::MessageIn &msg);
+        virtual void processWhoAnswer(Net::MessageIn &msg) const;
 
-        virtual void processWhoAnswer(Net::MessageIn &msg);
+        virtual void processCharSwitchResponse(Net::MessageIn &msg) const;
 
-        virtual void processCharSwitchResponse(Net::MessageIn &msg);
+        virtual void processMapQuitResponse(Net::MessageIn &msg) const;
 
-        virtual void processMapQuitResponse(Net::MessageIn &msg);
+        virtual void clear() override;
 
-        virtual void clear();
+        virtual void initEngines() const override;
 
     protected:
         std::string mMap;

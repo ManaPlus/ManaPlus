@@ -89,7 +89,7 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void GameHandler::mapLoadedEvent()
+void GameHandler::mapLoadedEvent() const
 {
     MessageOut outMsg(CMSG_MAP_LOADED);
 }
@@ -138,7 +138,7 @@ void GameHandler::connect()
 //    mNetwork->skip(4);
 }
 
-bool GameHandler::isConnected()
+bool GameHandler::isConnected() const
 {
     if (!mNetwork)
         return false;
@@ -151,18 +151,18 @@ void GameHandler::disconnect()
         mNetwork->disconnect();
 }
 
-void GameHandler::quit()
+void GameHandler::quit() const
 {
     MessageOut outMsg(CMSG_CLIENT_QUIT);
 }
 
-void GameHandler::ping(int tick)
+void GameHandler::ping(const int tick) const
 {
     MessageOut msg(CMSG_CLIENT_PING);
     msg.writeInt32(tick);
 }
 
-void GameHandler::disconnect2()
+void GameHandler::disconnect2() const
 {
     MessageOut outMsg(CMSG_CLIENT_DISCONNECT);
 }

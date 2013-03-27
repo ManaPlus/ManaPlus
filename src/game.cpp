@@ -178,8 +178,7 @@ static void initEngines()
     particleEngine->setupEngine();
     BeingInfo::init();
 
-    DepricatedEvent::trigger(CHANNEL_GAME,
-        DepricatedEvent(EVENT_ENGINESINITALIZED));
+    Net::getGameHandler()->initEngines();
 
     keyboard.update();
     if (joystick)
@@ -1092,9 +1091,7 @@ void Game::changeMap(const std::string &mapPath)
     if (mumbleManager)
         mumbleManager->setMap(mapPath);
 #endif
-    DepricatedEvent event(EVENT_MAPLOADED);
-    event.setString("mapPath", mapPath);
-    DepricatedEvent::trigger(CHANNEL_GAME, event);
+    Net::getGameHandler()->mapLoadedEvent();
 }
 
 void Game::updateHistory(const SDL_Event &event)

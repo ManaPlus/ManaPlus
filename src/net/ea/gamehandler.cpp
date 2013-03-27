@@ -37,27 +37,9 @@ namespace Ea
 GameHandler::GameHandler() :
     mCharID(0)
 {
-    listen(CHANNEL_GAME);
 }
 
-void GameHandler::processEvent(Channels channel,
-                               const DepricatedEvent &event)
-{
-    if (channel == CHANNEL_GAME)
-    {
-        if (event.getName() == EVENT_ENGINESINITALIZED)
-        {
-            if (!mMap.empty())
-                Game::instance()->changeMap(mMap);
-        }
-        else if (event.getName() == EVENT_MAPLOADED)
-        {
-            mapLoadedEvent();
-        }
-    }
-}
-
-void GameHandler::who()
+void GameHandler::who() const
 {
 }
 
@@ -66,7 +48,7 @@ void GameHandler::setMap(const std::string &map)
     mMap = map.substr(0, map.rfind("."));
 }
 
-void GameHandler::processMapLogin(Net::MessageIn &msg)
+void GameHandler::processMapLogin(Net::MessageIn &msg) const
 {
     unsigned char direction;
     uint16_t x, y;
@@ -81,18 +63,18 @@ void GameHandler::processMapLogin(Net::MessageIn &msg)
         player_node->setTileCoords(x, y);
 }
 
-void GameHandler::processWhoAnswer(Net::MessageIn &msg)
+void GameHandler::processWhoAnswer(Net::MessageIn &msg) const
 {
     NotifyManager::notify(NotifyManager::ONLINE_USERS, msg.readInt32());
 }
 
-void GameHandler::processCharSwitchResponse(Net::MessageIn &msg)
+void GameHandler::processCharSwitchResponse(Net::MessageIn &msg) const
 {
     if (msg.readInt8())
         Client::setState(STATE_SWITCH_CHARACTER);
 }
 
-void GameHandler::processMapQuitResponse(Net::MessageIn &msg)
+void GameHandler::processMapQuitResponse(Net::MessageIn &msg) const
 {
     if (msg.readInt8())
         new OkDialog(_("Game"), _("Request to quit denied!"), DIALOG_ERROR);
@@ -102,6 +84,12 @@ void GameHandler::clear()
 {
     mMap.clear();
     mCharID = 0;
+}
+
+void GameHandler::initEngines() const
+{
+    if (!mMap.empty())
+        Game::instance()->changeMap(mMap);
 }
 
 } // namespace Ea
