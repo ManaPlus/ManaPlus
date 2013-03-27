@@ -252,7 +252,7 @@ CharCreateDialog::~CharCreateDialog()
     mPlayer = nullptr;
 
     // Make sure the char server handler knows that we're gone
-    Net::getCharHandler()->setCharCreateDialog(nullptr);
+    Net::getCharServerHandler()->setCharCreateDialog(nullptr);
 }
 
 void CharCreateDialog::action(const gcn::ActionEvent &event)
@@ -285,7 +285,7 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
             const int characterSlot = mSlot;
 #endif
 
-            Net::getCharHandler()->newCharacter(getName(), characterSlot,
+            Net::getCharServerHandler()->newCharacter(getName(), characterSlot,
                 mFemale->isSelected(), mHairStyle, mHairColor,
                 static_cast<unsigned char>(mRace), atts);
         }
@@ -524,7 +524,7 @@ void CharCreateDialog::updateHair()
     mHairColorNameLabel->setCaption(ColorDB::getHairColorName(mHairColor));
     mHairColorNameLabel->adjustSize();
 
-    mPlayer->setSprite(Net::getCharHandler()->hairSprite(),
+    mPlayer->setSprite(Net::getCharServerHandler()->hairSprite(),
         mHairStyle * -1, item.getDyeColorsString(mHairColor));
 }
 

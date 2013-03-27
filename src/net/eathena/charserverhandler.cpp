@@ -42,7 +42,7 @@
 
 #include "debug.h"
 
-extern Net::CharHandler *charHandler;
+extern Net::CharServerHandler *charServerHandler;
 
 namespace EAthena
 {
@@ -68,7 +68,7 @@ CharServerHandler::CharServerHandler() :
         0
     };
     handledMessages = _messages;
-    charHandler = this;
+    charServerHandler = this;
 }
 
 void CharServerHandler::handleMessage(Net::MessageIn &msg)
@@ -104,59 +104,12 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_CHAR_MAP_INFO:
-        {
-//            msg.skip(4); // CharID, must be the same as player_node->charID
-            PlayerInfo::setCharId(msg.readInt32());
-            GameHandler *const gh = static_cast<GameHandler*>(
-                Net::getGameHandler());
-            gh->setMap(msg.readString(16));
-            if (config.getBoolValue("usePersistentIP"))
-            {
-                msg.readInt32();
-                mapServer.hostname = Client::getServerName();
-            }
-            else
-            {
-                mapServer.hostname = ipToString(msg.readInt32());
-            }
-            mapServer.port = msg.readInt16();
-
-            // Prevent the selected local player from being deleted
-            player_node = mSelectedCharacter->dummy;
-            PlayerInfo::setBackend(mSelectedCharacter->data);
-
-            mSelectedCharacter->dummy = nullptr;
-
-            Net::getCharHandler()->clear();
-            updateCharSelectDialog();
-
-            if (mNetwork)
-                mNetwork->disconnect();
-            Client::setState(STATE_CONNECT_GAME);
-        }
-        break;
+            processCharMapInfo(msg, mNetwork, mapServer);
+            break;
 
         case SMSG_CHANGE_MAP_SERVER:
-        {
-            GameHandler *const gh = static_cast<GameHandler*>(
-                Net::getGameHandler());
-            if (!gh || !mNetwork)
-                return;
-            gh->setMap(msg.readString(16));
-            const int x = msg.readInt16();
-            const int y = msg.readInt16();
-            mapServer.hostname = ipToString(msg.readInt32());
-            mapServer.port = msg.readInt16();
-
-            mNetwork->disconnect();
-            Client::setState(STATE_CHANGE_MAP);
-            if (player_node)
-            {
-                player_node->setTileCoords(x, y);
-                player_node->setMap(nullptr);
-            }
-        }
-        break;
+            processChangeMapServer(msg, mNetwork, mapServer);
+            break;
 
         default:
             break;
@@ -164,7 +117,8 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 }
 
 void CharServerHandler::readPlayerData(Net::MessageIn &msg,
-                                       Net::Character *character, bool)
+                                       Net::Character *const character,
+                                       const bool) const
 {
     if (!character)
         return;
@@ -244,7 +198,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt8();                        // unknown
 }
 
-void CharServerHandler::chooseCharacter(Net::Character *character)
+void CharServerHandler::chooseCharacter(Net::Character *const character)
 {
     if (!character)
         return;
@@ -256,11 +210,11 @@ void CharServerHandler::chooseCharacter(Net::Character *character)
     outMsg.writeInt8(static_cast<unsigned char>(mSelectedCharacter->slot));
 }
 
-void CharServerHandler::newCharacter(const std::string &name, int slot,
-                                     bool gender A_UNUSED, int hairstyle,
-                                     int hairColor,
-                                     unsigned char race A_UNUSED,
-                                     const std::vector<int> &stats)
+void CharServerHandler::newCharacter(const std::string &name, const int slot,
+                                     const bool gender A_UNUSED,
+                                     const int hairstyle, const int hairColor,
+                                     const unsigned char race A_UNUSED,
+                                     const std::vector<int> &stats) const
 {
     MessageOut outMsg(CMSG_CHAR_CREATE);
     outMsg.writeString(name, 24);
@@ -272,7 +226,7 @@ void CharServerHandler::newCharacter(const std::string &name, int slot,
     outMsg.writeInt16(static_cast<short>(hairstyle));
 }
 
-void CharServerHandler::deleteCharacter(Net::Character *character)
+void CharServerHandler::deleteCharacter(Net::Character *const character)
 {
     if (!character)
         return;
@@ -284,7 +238,7 @@ void CharServerHandler::deleteCharacter(Net::Character *character)
     outMsg.writeString("a@a.com", 40);
 }
 
-void CharServerHandler::switchCharacter()
+void CharServerHandler::switchCharacter() const
 {
     // This is really a map-server packet
     MessageOut outMsg(CMSG_PLAYER_RESTART);

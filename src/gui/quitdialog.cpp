@@ -39,7 +39,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/radiobutton.h"
 
-#include "net/charhandler.h"
+#include "net/charserverhandler.h"
 #include "net/gamehandler.h"
 #include "net/npchandler.h"
 #include "net/net.h"
@@ -188,7 +188,7 @@ void QuitDialog::action(const gcn::ActionEvent &event)
         {
             if (Client::getState() == STATE_GAME)
             {
-                Net::getCharHandler()->switchCharacter();
+                Net::getCharServerHandler()->switchCharacter();
                 Game::closeDialogs();
             }
         }

@@ -23,7 +23,7 @@
 #ifndef NET_EA_CHARSERVERHANDLER_H
 #define NET_EA_CHARSERVERHANDLER_H
 
-#include "net/charhandler.h"
+#include "net/charserverhandler.h"
 #include "net/messagein.h"
 #include "net/net.h"
 
@@ -32,40 +32,43 @@ class LoginData;
 namespace Ea
 {
 
+class Network;
+
 /**
  * Deals with incoming messages from the character server.
  */
-class CharServerHandler : public Net::CharHandler
+class CharServerHandler : public Net::CharServerHandler
 {
     public:
         CharServerHandler();
 
         A_DELETE_COPY(CharServerHandler)
 
-        virtual void setCharSelectDialog(CharSelectDialog *window);
+        virtual void setCharSelectDialog(CharSelectDialog *const window)
+                                         override;
 
         /**
          * Sets the character create dialog. The handler will clean up this
          * dialog when a new character is succesfully created, and will unlock
          * the dialog when a new character failed to be created.
          */
-        virtual void setCharCreateDialog(CharCreateDialog *window);
+        virtual void setCharCreateDialog(CharCreateDialog *const window)
+                                         override;
 
-        virtual void requestCharacters();
+        virtual void requestCharacters() override;
 
-        virtual unsigned int baseSprite() const A_WARN_UNUSED;
+        virtual unsigned int baseSprite() const override A_WARN_UNUSED;
 
-        virtual unsigned int hairSprite() const A_WARN_UNUSED;
+        virtual unsigned int hairSprite() const override A_WARN_UNUSED;
 
-        virtual unsigned int maxSprite() const A_WARN_UNUSED;
+        virtual unsigned int maxSprite() const override A_WARN_UNUSED;
 
         virtual void connect() = 0;
 
-        virtual void processCharLogin(Net::MessageIn &msg) = 0;
+        virtual void processCharLoginError(Net::MessageIn &msg) const;
 
-        virtual void processCharLoginError(Net::MessageIn &msg);
-
-        virtual void processCharCreate(Net::MessageIn &msg, bool withColors);
+        virtual void processCharCreate(Net::MessageIn &msg,
+                                       const bool withColors);
 
         virtual void processCharCreateFailed(Net::MessageIn &msg);
 
@@ -73,12 +76,20 @@ class CharServerHandler : public Net::CharHandler
 
         virtual void processCharDeleteFailed(Net::MessageIn &msg);
 
-        virtual void clear();
+        virtual void processCharMapInfo(Net::MessageIn &msg,
+                                        Network *const network,
+                                        ServerInfo &mapServer);
+
+        virtual void processChangeMapServer(Net::MessageIn &msg,
+                                            Network *const network,
+                                            ServerInfo &mapServer) const;
+
+        virtual void clear() override;
 
     protected:
         virtual void readPlayerData(Net::MessageIn &msg,
-                                    Net::Character *character,
-                                    bool withColors) = 0;
+                                    Net::Character *const character,
+                                    const bool withColors) const = 0;
 };
 
 } // namespace Ea

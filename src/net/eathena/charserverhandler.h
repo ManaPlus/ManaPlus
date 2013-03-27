@@ -23,7 +23,7 @@
 #ifndef NET_EATHENA_CHARSERVERHANDLER_H
 #define NET_EATHENA_CHARSERVERHANDLER_H
 
-#include "net/charhandler.h"
+#include "net/charserverhandler.h"
 
 #include "net/ea/charserverhandler.h"
 
@@ -47,26 +47,27 @@ class CharServerHandler final : public MessageHandler,
 
         A_DELETE_COPY(CharServerHandler)
 
-        virtual void handleMessage(Net::MessageIn &msg);
+        virtual void handleMessage(Net::MessageIn &msg) override;
 
-        void chooseCharacter(Net::Character *character);
+        void chooseCharacter(Net::Character *const character) override;
 
-        void newCharacter(const std::string &name, int slot,
-                          bool gender, int hairstyle, int hairColor,
-                          unsigned char race,
-                          const std::vector<int> &stats);
+        void newCharacter(const std::string &name, const int slot,
+                          const bool gender, const int hairstyle,
+                          const int hairColor, const unsigned char race,
+                          const std::vector<int> &stats) const override;
 
-        void deleteCharacter(Net::Character *character);
+        void deleteCharacter(Net::Character *const character) override;
 
-        void switchCharacter();
+        void switchCharacter() const override;
 
-        void connect();
+        void connect() override;
 
         void processCharLogin(Net::MessageIn &msg);
 
     protected:
-        void readPlayerData(Net::MessageIn &msg, Net::Character *character,
-                            bool);
+        void readPlayerData(Net::MessageIn &msg,
+                            Net::Character *const character,
+                            const bool) const override;
 };
 
 } // namespace EAthena

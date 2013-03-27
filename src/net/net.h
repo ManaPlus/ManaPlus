@@ -38,7 +38,7 @@ namespace Net
 
 class AdminHandler;
 class BeingHandler;
-class CharHandler;
+class CharServerHandler;
 class ChatHandler;
 class GameHandler;
 class GeneralHandler;
@@ -54,7 +54,7 @@ class BuySellHandler;
 
 AdminHandler *getAdminHandler() A_WARN_UNUSED;
 BeingHandler *getBeingHandler() A_WARN_UNUSED;
-CharHandler *getCharHandler() A_WARN_UNUSED;
+CharServerHandler *getCharServerHandler() A_WARN_UNUSED;
 ChatHandler *getChatHandler() A_WARN_UNUSED;
 GameHandler *getGameHandler() A_WARN_UNUSED;
 GeneralHandler *getGeneralHandler() A_WARN_UNUSED;

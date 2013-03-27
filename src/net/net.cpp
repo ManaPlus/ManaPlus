@@ -27,7 +27,7 @@
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"
 #include "net/buysellhandler.h"
-#include "net/charhandler.h"
+#include "net/charserverhandler.h"
 #include "net/chathandler.h"
 #include "net/generalhandler.h"
 #include "net/guildhandler.h"
@@ -53,7 +53,7 @@
 #include "debug.h"
 
 Net::AdminHandler *adminHandler = nullptr;
-Net::CharHandler *charHandler = nullptr;
+Net::CharServerHandler *charServerHandler = nullptr;
 Net::ChatHandler *chatHandler = nullptr;
 Net::GeneralHandler *generalHandler = nullptr;
 Net::InventoryHandler *inventoryHandler = nullptr;
@@ -73,9 +73,9 @@ Net::AdminHandler *Net::getAdminHandler()
     return adminHandler;
 }
 
-Net::CharHandler *Net::getCharHandler()
+Net::CharServerHandler *Net::getCharServerHandler()
 {
-    return charHandler;
+    return charServerHandler;
 }
 
 Net::ChatHandler *Net::getChatHandler()

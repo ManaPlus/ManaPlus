@@ -23,12 +23,15 @@
 #include "net/ea/charserverhandler.h"
 
 #include "client.h"
+#include "configuration.h"
 
 #include "gui/charcreatedialog.h"
 #include "gui/okdialog.h"
 
 #include "net/ea/loginhandler.h"
 #include "net/ea/eaprotocol.h"
+#include "net/ea/gamehandler.h"
+#include "net/ea/network.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
@@ -37,23 +40,25 @@
 
 #include "debug.h"
 
-extern Net::CharHandler *charHandler;
+extern Net::CharServerHandler *charServerHandler;
 
 namespace Ea
 {
 
+extern ServerInfo mapServer;
+
 CharServerHandler::CharServerHandler() :
-    Net::CharHandler()
+    Net::CharServerHandler()
 {
 }
 
-void CharServerHandler::setCharSelectDialog(CharSelectDialog *window)
+void CharServerHandler::setCharSelectDialog(CharSelectDialog *const window)
 {
     mCharSelectDialog = window;
     updateCharSelectDialog();
 }
 
-void CharServerHandler::setCharCreateDialog(CharCreateDialog *window)
+void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
 {
     mCharCreateDialog = window;
 
@@ -105,7 +110,7 @@ unsigned int CharServerHandler::maxSprite() const
     return EA_SPRITE_VECTOREND;
 }
 
-void CharServerHandler::processCharLoginError(Net::MessageIn &msg)
+void CharServerHandler::processCharLoginError(Net::MessageIn &msg) const
 {
     switch (msg.readInt8())
     {
@@ -123,7 +128,8 @@ void CharServerHandler::processCharLoginError(Net::MessageIn &msg)
     Client::setState(STATE_ERROR);
 }
 
-void CharServerHandler::processCharCreate(Net::MessageIn &msg, bool withColors)
+void CharServerHandler::processCharCreate(Net::MessageIn &msg,
+                                          const bool withColors)
 {
     Net::Character *const character = new Net::Character;
     readPlayerData(msg, character, withColors);
@@ -190,6 +196,61 @@ void CharServerHandler::clear()
 {
     delete_all(mCharacters);
     mCharacters.clear();
+}
+
+void CharServerHandler::processCharMapInfo(Net::MessageIn &msg,
+                                           Network *const network,
+                                           ServerInfo &server)
+{
+//    msg.skip(4); // CharID, must be the same as player_node->charID
+    PlayerInfo::setCharId(msg.readInt32());
+    GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
+    gh->setMap(msg.readString(16));
+    if (config.getBoolValue("usePersistentIP"))
+    {
+        msg.readInt32();
+        server.hostname = Client::getServerName();
+    }
+    else
+    {
+        server.hostname = ipToString(msg.readInt32());
+    }
+    server.port = msg.readInt16();
+
+    // Prevent the selected local player from being deleted
+    player_node = mSelectedCharacter->dummy;
+    PlayerInfo::setBackend(mSelectedCharacter->data);
+
+    mSelectedCharacter->dummy = nullptr;
+
+    Net::getCharServerHandler()->clear();
+    updateCharSelectDialog();
+
+    if (network)
+        network->disconnect();
+    Client::setState(STATE_CONNECT_GAME);
+}
+
+void CharServerHandler::processChangeMapServer(Net::MessageIn &msg,
+                                               Network *const network,
+                                               ServerInfo &server) const
+{
+    GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
+    if (!gh || !network)
+        return;
+    gh->setMap(msg.readString(16));
+    const int x = msg.readInt16();
+    const int y = msg.readInt16();
+    server.hostname = ipToString(msg.readInt32());
+    server.port = msg.readInt16();
+
+    network->disconnect();
+    Client::setState(STATE_CHANGE_MAP);
+    if (player_node)
+    {
+        player_node->setTileCoords(x, y);
+        player_node->setMap(nullptr);
+    }
 }
 
 } // namespace Ea

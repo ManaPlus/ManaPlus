@@ -45,7 +45,7 @@
 #include "gui/sdlfont.h"
 #include "gui/skilldialog.h"
 
-#include "net/charhandler.h"
+#include "net/charserverhandler.h"
 #include "net/gamehandler.h"
 #include "net/inventoryhandler.h"
 #include "net/net.h"
@@ -340,8 +340,8 @@ void Being::setSubtype(const uint16_t subtype)
             setRaceName(info.getName());
         }
 
-        if (Net::getCharHandler())
-            setSprite(Net::getCharHandler()->baseSprite(), id);
+        if (Net::getCharServerHandler())
+            setSprite(Net::getCharServerHandler()->baseSprite(), id);
     }
 }
 
@@ -1777,7 +1777,7 @@ void Being::setSprite(const unsigned int slot, const int id,
                       std::string color, const unsigned char colorId,
                       const bool isWeapon, const bool isTempSprite)
 {
-    if (slot >= Net::getCharHandler()->maxSprite())
+    if (slot >= Net::getCharServerHandler()->maxSprite())
         return;
 
     if (slot >= size())
@@ -2305,7 +2305,7 @@ void Being::recalcSpritesOrder()
     if (mAction == DEAD)
         dir = 9;
 
-    const unsigned int hairSlot = Net::getCharHandler()->hairSprite();
+    const unsigned int hairSlot = Net::getCharServerHandler()->hairSprite();
 
     for (unsigned slot = 0; slot < sz; slot ++)
     {

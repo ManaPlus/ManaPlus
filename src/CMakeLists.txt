@@ -380,8 +380,8 @@ SET(SRCS
     gui/worldselectdialog.cpp
     gui/worldselectdialog.h
     net/adminhandler.h
-    net/charhandler.cpp
-    net/charhandler.h
+    net/charserverhandler.cpp
+    net/charserverhandler.h
     net/chathandler.h
     net/download.cpp
     net/download.h

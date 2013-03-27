@@ -244,7 +244,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     mChangeEmailButton(nullptr),
     mCharacterScroller(nullptr),
     mCharacterEntries(0),
-    mCharHandler(Net::getCharHandler()),
+    mCharServerHandler(Net::getCharServerHandler()),
     mDeleteDialog(nullptr),
     mDeleteIndex(-1),
     mSmallScreen(mainGraphics->getWidth() < 485
@@ -313,7 +313,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     center();
     setVisible(true);
 
-    Net::getCharHandler()->setCharSelectDialog(this);
+    Net::getCharServerHandler()->setCharSelectDialog(this);
     focusCharacter(0);
 }
 
@@ -350,7 +350,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
         if (eventId == "use" && mCharacterEntries[selected]->getCharacter())
         {
             attemptCharacterSelect(selected);
-//            Net::getCharHandler()->clear();
+//            Net::getCharServerHandler()->clear();
             return;
         }
         else if (eventId == "new" &&
@@ -359,7 +359,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
             // Start new character dialog
             CharCreateDialog *const charCreateDialog =
                 new CharCreateDialog(this, selected);
-            mCharHandler->setCharCreateDialog(charCreateDialog);
+            mCharServerHandler->setCharCreateDialog(charCreateDialog);
             return;
         }
         else if (eventId == "delete"
@@ -371,7 +371,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     }
     if (eventId == "switch")
     {
-        Net::getCharHandler()->clear();
+        Net::getCharServerHandler()->clear();
         close();
     }
     else if (eventId == "change_password")
@@ -384,7 +384,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "unregister")
     {
-        Net::getCharHandler()->clear();
+        Net::getCharServerHandler()->clear();
         Client::setState(STATE_UNREGISTER);
     }
     else if (eventId == "try delete character")
@@ -558,7 +558,7 @@ void CharSelectDialog::attemptCharacterDelete(const int index)
     if (mLocked)
         return;
 
-    mCharHandler->deleteCharacter(mCharacterEntries[index]->getCharacter());
+    mCharServerHandler->deleteCharacter(mCharacterEntries[index]->getCharacter());
     lock();
 }
 
@@ -581,9 +581,9 @@ void CharSelectDialog::attemptCharacterSelect(const int index)
         return;
 
     setVisible(false);
-    if (mCharHandler && mCharacterEntries[index])
+    if (mCharServerHandler && mCharacterEntries[index])
     {
-        mCharHandler->chooseCharacter(
+        mCharServerHandler->chooseCharacter(
             mCharacterEntries[index]->getCharacter());
     }
     lock();

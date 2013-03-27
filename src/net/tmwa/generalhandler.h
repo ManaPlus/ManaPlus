@@ -64,7 +64,7 @@ class GeneralHandler final : public MessageHandler, public Net::GeneralHandler,
         MessageHandlerPtr mAdminHandler;
         MessageHandlerPtr mBeingHandler;
         MessageHandlerPtr mBuySellHandler;
-        MessageHandlerPtr mCharHandler;
+        MessageHandlerPtr mCharServerHandler;
         MessageHandlerPtr mChatHandler;
         MessageHandlerPtr mGameHandler;
         MessageHandlerPtr mGuildHandler;

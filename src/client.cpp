@@ -1397,7 +1397,7 @@ int Client::gameExec()
                 case STATE_GET_CHARACTERS:
                     BLOCK_START("Client::gameExec STATE_GET_CHARACTERS")
                     logger->log1("State: GET CHARACTERS");
-                    Net::getCharHandler()->requestCharacters();
+                    Net::getCharServerHandler()->requestCharacters();
                     mCurrentDialog = new ConnectionDialog(
                             _("Requesting characters"),
                             STATE_SWITCH_SERVER);

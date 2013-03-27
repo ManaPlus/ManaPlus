@@ -28,7 +28,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "net/charhandler.h"
+#include "net/charserverhandler.h"
 
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
@@ -44,7 +44,7 @@ class TextDialog;
 
 namespace Net
 {
-    class CharHandler;
+    class CharServerHandler;
 }
 
 /**
@@ -58,7 +58,7 @@ class CharSelectDialog final : public Window,
 {
     public:
         friend class CharDeleteConfirm;
-        friend class Net::CharHandler;
+        friend class Net::CharServerHandler;
 
         /**
          * Constructor.
@@ -129,7 +129,7 @@ class CharSelectDialog final : public Window,
         /** The player boxes */
         std::vector<CharacterDisplay*> mCharacterEntries;
 
-        Net::CharHandler *mCharHandler;
+        Net::CharServerHandler *mCharServerHandler;
         TextDialog *mDeleteDialog;
         int mDeleteIndex;
         bool mSmallScreen;

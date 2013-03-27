@@ -78,7 +78,7 @@ GeneralHandler::GeneralHandler() :
     mAdminHandler(new AdminHandler),
     mBeingHandler(new BeingHandler(config.getBoolValue("EnableSync"))),
     mBuySellHandler(new BuySellHandler),
-    mCharHandler(new CharServerHandler),
+    mCharServerHandler(new CharServerHandler),
     mChatHandler(new ChatHandler),
     mGameHandler(new GameHandler),
     mGuildHandler(new GuildHandler),
@@ -179,7 +179,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mBeingHandler.get());
     mNetwork->registerHandler(mBuySellHandler.get());
     mNetwork->registerHandler(mChatHandler.get());
-    mNetwork->registerHandler(mCharHandler.get());
+    mNetwork->registerHandler(mCharServerHandler.get());
     mNetwork->registerHandler(mGameHandler.get());
     mNetwork->registerHandler(mGuildHandler.get());
     mNetwork->registerHandler(mInventoryHandler.get());
@@ -200,9 +200,9 @@ void GeneralHandler::reload()
 
     static_cast<LoginHandler*>(mLoginHandler.get())->clearWorlds();
     static_cast<CharServerHandler*>(
-        mCharHandler.get())->setCharCreateDialog(nullptr);
+        mCharServerHandler.get())->setCharCreateDialog(nullptr);
     static_cast<CharServerHandler*>(
-        mCharHandler.get())->setCharSelectDialog(nullptr);
+        mCharServerHandler.get())->setCharSelectDialog(nullptr);
 
     static_cast<PartyHandler*>(mPartyHandler.get())->reload();
 }
