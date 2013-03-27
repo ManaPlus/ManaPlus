@@ -40,50 +40,21 @@ class ChatHandler : public Net::ChatHandler
 
         A_DELETE_COPY(ChatHandler)
 
-        virtual void talk(const std::string &text,
-                          const std::string &channel) = 0;
-
-        virtual void talkRaw(const std::string &text) = 0;
-
-        void me(const std::string &text);
-
-        virtual void privateMessage(const std::string &recipient,
-                                    const std::string &text) = 0;
-
-        void channelList();
-
-        void enterChannel(const std::string &channel,
-                          const std::string &password);
-
-        void quitChannel(int channelId);
-
-        void sendToChannel(int channelId, const std::string &text);
-
-        void userList(const std::string &channel);
-
-        void setChannelTopic(int channelId, const std::string &text);
-
-        void setUserMode(int channelId, const std::string &name, int mode);
-
-        void kickUser(int channelId, const std::string &name);
-
-        virtual void who() = 0;
-
-        virtual void sendRaw(const std::string &args) = 0;
+        void me(const std::string &text, const std::string &channel) const;
 
         virtual void processWhisperResponse(Net::MessageIn &msg);
 
         virtual void processWhisper(Net::MessageIn &msg);
 
         virtual void processBeingChat(Net::MessageIn &msg,
-                                      const bool channels);
+                                      const bool channels) const;
 
         virtual void processChat(Net::MessageIn &msg, bool normalChat,
-                                 bool channels);
+                                 const bool channels) const;
 
-        virtual void processMVP(Net::MessageIn &msg);
+        virtual void processMVP(Net::MessageIn &msg) const;
 
-        virtual void processIgnoreAllResponse(Net::MessageIn &msg);
+        virtual void processIgnoreAllResponse(Net::MessageIn &msg) const;
 
     protected:
         typedef std::queue<std::string> WhisperQueue;

@@ -47,48 +47,11 @@ ChatHandler::ChatHandler() :
 {
 }
 
-void ChatHandler::me(const std::string &text)
+void ChatHandler::me(const std::string &text, const std::string &channel) const
 {
+    // here need string duplication
     std::string action = strprintf("*%s*", text.c_str());
-    talk(action, GENERAL_CHANNEL);
-}
-
-void ChatHandler::channelList()
-{
-}
-
-void ChatHandler::enterChannel(const std::string &channel A_UNUSED,
-                               const std::string &password A_UNUSED)
-{
-}
-
-void ChatHandler::quitChannel(int channelId A_UNUSED)
-{
-}
-
-void ChatHandler::sendToChannel(int channelId A_UNUSED,
-                                const std::string &text A_UNUSED)
-{
-}
-
-void ChatHandler::userList(const std::string &channel A_UNUSED)
-{
-}
-
-void ChatHandler::setChannelTopic(int channelId A_UNUSED,
-                                  const std::string &text A_UNUSED)
-{
-}
-
-void ChatHandler::setUserMode(int channelId A_UNUSED,
-                              const std::string &name A_UNUSED,
-                              int mode A_UNUSED)
-{
-}
-
-void ChatHandler::kickUser(int channelId A_UNUSED,
-                           const std::string &name A_UNUSED)
-{
+    talk(action, channel);
 }
 
 void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
@@ -259,7 +222,8 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
     }
 }
 
-void ChatHandler::processBeingChat(Net::MessageIn &msg, const bool channels)
+void ChatHandler::processBeingChat(Net::MessageIn &msg,
+                                   const bool channels) const
 {
     if (!actorSpriteManager)
         return;
@@ -319,8 +283,8 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg, const bool channels)
     }
 }
 
-void ChatHandler::processChat(Net::MessageIn &msg, bool normalChat,
-                              bool channels)
+void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
+                              const bool channels) const
 {
     int chatMsgLength = msg.readInt16() - 4;
     std::string channel;
@@ -369,7 +333,7 @@ void ChatHandler::processChat(Net::MessageIn &msg, bool normalChat,
     }
 }
 
-void ChatHandler::processMVP(Net::MessageIn &msg)
+void ChatHandler::processMVP(Net::MessageIn &msg) const
 {
     // Display MVP player
     const int id = msg.readInt32(); // id
@@ -383,7 +347,7 @@ void ChatHandler::processMVP(Net::MessageIn &msg)
     }
 }
 
-void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg)
+void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg) const
 {
     const int action = msg.readInt8();
     const int fail = msg.readInt8();

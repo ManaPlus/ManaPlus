@@ -102,12 +102,12 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 }
 
 void ChatHandler::talk(const std::string &text,
-                       const std::string &channel A_UNUSED)
+                       const std::string &channel A_UNUSED) const
 {
     if (!player_node)
         return;
 
-    std::string mes = std::string(player_node->getName()).append(
+    const std::string mes = std::string(player_node->getName()).append(
         " : ").append(text);
 
     MessageOut outMsg(CMSG_CHAT_MESSAGE);
@@ -116,7 +116,7 @@ void ChatHandler::talk(const std::string &text,
     outMsg.writeString(mes, static_cast<int>(mes.length() + 1));
 }
 
-void ChatHandler::talkRaw(const std::string &mes)
+void ChatHandler::talkRaw(const std::string &mes) const
 {
     MessageOut outMsg(CMSG_CHAT_MESSAGE);
     // Added + 1 in order to let eAthena parse admin commands correctly
@@ -134,12 +134,12 @@ void ChatHandler::privateMessage(const std::string &recipient,
     mSentWhispers.push(recipient);
 }
 
-void ChatHandler::who()
+void ChatHandler::who() const
 {
     MessageOut outMsg(CMSG_WHO_REQUEST);
 }
 
-void ChatHandler::sendRaw(const std::string &args)
+void ChatHandler::sendRaw(const std::string &args) const
 {
     std::string line = args;
     std::string str;
@@ -190,7 +190,7 @@ void ChatHandler::processRaw(MessageOut &outMsg, const std::string &line)
     }
     else
     {
-        std::string header = line.substr(0, pos);
+        const std::string header = line.substr(0, pos);
         std::string data = line.substr(pos + 1);
         if (header.length() != 1)
             return;
@@ -248,13 +248,13 @@ void ChatHandler::processRaw(MessageOut &outMsg, const std::string &line)
     }
 }
 
-void ChatHandler::ignoreAll()
+void ChatHandler::ignoreAll() const
 {
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(0);
 }
 
-void ChatHandler::unIgnoreAll()
+void ChatHandler::unIgnoreAll() const
 {
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(1);

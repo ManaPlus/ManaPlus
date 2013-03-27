@@ -88,7 +88,7 @@ static void outString(ChatTab *const tab, const std::string &str,
 {
     if (!tab)
     {
-        Net::getChatHandler()->me(def);
+        Net::getChatHandler()->me(def, GENERAL_CHANNEL);
         return;
     }
 
@@ -114,7 +114,7 @@ static void outString(ChatTab *const tab, const std::string &str,
             break;
         }
         default:
-            Net::getChatHandler()->me(def);
+            Net::getChatHandler()->me(def, GENERAL_CHANNEL);
             break;
     }
 }
@@ -360,23 +360,6 @@ impHandler0(cleanFonts)
         gui->clearFonts();
     if (debugChatTab)
         debugChatTab->chatLog(_("Cache cleaned"));
-}
-
-impHandler(join)
-{
-    if (!tab)
-        return;
-
-    const size_t pos = args.find(' ');
-    const std::string name(args, 0, pos);
-    const std::string password(args, pos + 1);
-    tab->chatLog(strprintf(_("Requesting to join channel %s."), name.c_str()));
-    Net::getChatHandler()->enterChannel(name, password);
-}
-
-impHandler0(listChannels)
-{
-    Net::getChatHandler()->channelList();
 }
 
 impHandler(createParty)

@@ -115,12 +115,13 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("ChatHandler::handleMessage")
 }
 
-void ChatHandler::talk(const std::string &text, const std::string &channel)
+void ChatHandler::talk(const std::string &text,
+                       const std::string &channel) const
 {
     if (!player_node)
         return;
 
-    std::string mes = std::string(player_node->getName()).append(
+    const std::string mes = std::string(player_node->getName()).append(
         " : ").append(text);
 
     if (serverVersion >= 8 && channel.size() == 3)
@@ -142,7 +143,7 @@ void ChatHandler::talk(const std::string &text, const std::string &channel)
     }
 }
 
-void ChatHandler::talkRaw(const std::string &mes)
+void ChatHandler::talkRaw(const std::string &mes) const
 {
     MessageOut outMsg(CMSG_CHAT_MESSAGE);
     // Added + 1 in order to let eAthena parse admin commands correctly
@@ -160,12 +161,12 @@ void ChatHandler::privateMessage(const std::string &recipient,
     mSentWhispers.push(recipient);
 }
 
-void ChatHandler::who()
+void ChatHandler::who() const
 {
     MessageOut outMsg(CMSG_WHO_REQUEST);
 }
 
-void ChatHandler::sendRaw(const std::string &args)
+void ChatHandler::sendRaw(const std::string &args) const
 {
     std::string line = args;
     std::string str;
@@ -216,11 +217,10 @@ void ChatHandler::processRaw(MessageOut &outMsg, const std::string &line)
     }
     else
     {
-        std::string header = line.substr(0, pos);
-        std::string data = line.substr(pos + 1);
+        const std::string header = line.substr(0, pos);
         if (header.length() != 1)
             return;
-
+        std::string data = line.substr(pos + 1);
         int i = 0;
 
         switch (header[0])
@@ -274,13 +274,13 @@ void ChatHandler::processRaw(MessageOut &outMsg, const std::string &line)
     }
 }
 
-void ChatHandler::ignoreAll()
+void ChatHandler::ignoreAll() const
 {
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(0);
 }
 
-void ChatHandler::unIgnoreAll()
+void ChatHandler::unIgnoreAll() const
 {
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(1);

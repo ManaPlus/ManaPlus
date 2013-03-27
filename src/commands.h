@@ -52,8 +52,6 @@ namespace Commands
     decHandler(who);
     decHandler(msg);
     decHandler(query);
-    decHandler(join);
-    decHandler(listChannels);
     decHandler(clear);
     decHandler(cleanGraphics);
     decHandler(cleanFonts);
@@ -140,8 +138,6 @@ static const CommandInfo commands[] =
     {"blacklist", &Commands::blackList},
     {"enemy", &Commands::enemy},
     {"erase", &Commands::erase},
-    {"join", &Commands::join},
-    {"list", &Commands::listChannels},
     {"clear", &Commands::clear},
     {"cleangraphics", &Commands::cleanGraphics},
     {"cleanfonts", &Commands::cleanFonts},

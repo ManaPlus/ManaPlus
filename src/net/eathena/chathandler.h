@@ -42,22 +42,23 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void handleMessage(Net::MessageIn &msg);
 
-        void talk(const std::string &text, const std::string &channel);
+        void talk(const std::string &text,
+                  const std::string &channel) const;
 
-        void talkRaw(const std::string &text);
+        void talkRaw(const std::string &text) const;
 
         void privateMessage(const std::string &recipient,
                             const std::string &text);
 
-        void who();
+        void who() const;
 
-        void sendRaw(const std::string &args);
+        void sendRaw(const std::string &args) const;
 
-        void ignoreAll();
+        void ignoreAll() const;
 
-        void unIgnoreAll();
+        void unIgnoreAll() const;
 
-        void processRaw(MessageOut &outMsg, const std::string &line);
+        static void processRaw(MessageOut &outMsg, const std::string &line);
 };
 
 } // namespace EAthena

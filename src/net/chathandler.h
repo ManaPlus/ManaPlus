@@ -35,41 +35,23 @@ class ChatHandler
         { }
 
         virtual void talk(const std::string &text,
-                          const std::string &channel) = 0;
+                          const std::string &channel) const = 0;
 
-        virtual void talkRaw(const std::string &text) = 0;
+        virtual void talkRaw(const std::string &text) const = 0;
 
-        virtual void me(const std::string &text) = 0;
+        virtual void me(const std::string &text,
+                        const std::string &channel) const = 0;
 
         virtual void privateMessage(const std::string &recipient,
                                     const std::string &text) = 0;
 
-        virtual void channelList() = 0;
+        virtual void who() const = 0;
 
-        virtual void enterChannel(const std::string &channel,
-                                  const std::string &password) = 0;
+        virtual void sendRaw(const std::string &args) const = 0;
 
-        virtual void quitChannel(int channelId) = 0;
+        virtual void ignoreAll() const = 0;
 
-        virtual void sendToChannel(int channelId, const std::string &text) = 0;
-
-        virtual void userList(const std::string &channel) = 0;
-
-        virtual void setChannelTopic(int channelId,
-                                     const std::string &text) = 0;
-
-        virtual void setUserMode(int channelId, const std::string &name,
-                                 int mode) = 0;
-
-        virtual void kickUser(int channelId, const std::string &name) = 0;
-
-        virtual void who() = 0;
-
-        virtual void sendRaw(const std::string &args) = 0;
-
-        virtual void ignoreAll() = 0;
-
-        virtual void unIgnoreAll() = 0;
+        virtual void unIgnoreAll() const = 0;
 };
 }
 
