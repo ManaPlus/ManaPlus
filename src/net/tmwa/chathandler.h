@@ -40,22 +40,22 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         A_DELETE_COPY(ChatHandler)
 
-        void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg) override;
 
-        void talk(const std::string &text, const std::string &channel) const;
+        void talk(const std::string &text, const std::string &channel) const override;
 
-        void talkRaw(const std::string &text) const;
+        void talkRaw(const std::string &text) const override;
 
         void privateMessage(const std::string &recipient,
-                            const std::string &text);
+                            const std::string &text) override;
 
-        void who() const;
+        void who() const override;
 
         void sendRaw(const std::string &args) const;
 
-        void ignoreAll() const;
+        void ignoreAll() const override;
 
-        void unIgnoreAll() const;
+        void unIgnoreAll() const override;
 
         static void processRaw(MessageOut &outMsg, const std::string &line);
 };
