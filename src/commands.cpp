@@ -925,14 +925,14 @@ impHandler0(cacheInfo)
     if (!cache)
         return;
 
-    int all = 0;
+    unsigned int all = 0;
     debugChatTab->chatLog(_("font cache size"));
     std::string str;
     for (int f = 0; f < 256; f ++)
     {
         if (!cache[f].empty())
         {
-            const int sz = static_cast<int>(cache[f].size());
+            const unsigned int sz = static_cast<int>(cache[f].size());
             all += sz;
             str.append(strprintf("%d: %u, ", f, sz));
         }

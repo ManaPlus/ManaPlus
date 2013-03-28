@@ -89,19 +89,19 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     new SetupItemDropDown(_("Buttons size"), "", "screenButtonsSize", this,
         "screenButtonsSizeEvent", mSizeList, 100);
 
-    new SetupActionDropDown(strprintf(_("Button %u action"), 1), "",
+    new SetupActionDropDown(strprintf(_("Button %u action"), 1u), "",
         "screenActionButton0", this, "screenActionButton0Event",
         mActionsList, 250);
 
-    new SetupActionDropDown(strprintf(_("Button %u action"), 2), "",
+    new SetupActionDropDown(strprintf(_("Button %u action"), 2u), "",
         "screenActionButton1", this, "screenActionButton1Event",
         mActionsList, 250);
 
-    new SetupActionDropDown(strprintf(_("Button %u action"), 3), "",
+    new SetupActionDropDown(strprintf(_("Button %u action"), 3u), "",
         "screenActionButton2", this, "screenActionButton2Event",
         mActionsList, 250);
 
-    new SetupActionDropDown(strprintf(_("Button %u action"), 4), "",
+    new SetupActionDropDown(strprintf(_("Button %u action"), 4u), "",
         "screenActionButton3", this, "screenActionButton3Event",
         mActionsList, 250);
 

@@ -511,12 +511,12 @@ void SkillDialog::loadSkills()
                     data->setIcon(icon);
                     if (skill->id < SKILL_VAR_MIN_ID)
                     {
-                        data->dispName = strprintf("%s, %d",
+                        data->dispName = strprintf("%s, %u",
                             name.c_str(), skill->id);
                     }
                     else
                     {
-                        data->dispName = strprintf("%s, (%d)",
+                        data->dispName = strprintf("%s, (%u)",
                             name.c_str(), skill->id - SKILL_VAR_MIN_ID);
                     }
                     data->shortName = XML::langProperty(node,
