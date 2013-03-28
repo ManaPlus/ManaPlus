@@ -40,10 +40,6 @@
 namespace PlayerInfo
 {
 
-class PlayerInfoListener;
-
-PlayerInfoListener *mListener = nullptr;
-
 PlayerInfoBackend mData;
 int mCharId = 0;
 
@@ -308,59 +304,13 @@ void updateAttrs()
     }
 }
 
-class PlayerInfoListener final : private Listener
-{
-public:
-    PlayerInfoListener()
-    {
-        listen(CHANNEL_CLIENT);
-        listen(CHANNEL_GAME);
-    }
-
-    void processEvent(Channels channel, const DepricatedEvent &event)
-    {
-        if (channel == CHANNEL_CLIENT)
-        {
-            if (event.getName() == EVENT_STATECHANGE)
-            {
-                const int newState = event.getInt("newState");
-                if (newState == STATE_GAME)
-                {
-                    if (!mInventory)
-                    {
-                        mInventory = new Inventory(Inventory::INVENTORY);
-                        mEquipment = new Equipment();
-                    }
-                }
-            }
-        }
-        else if (channel == CHANNEL_GAME)
-        {
-            if (event.getName() == EVENT_DESTRUCTED)
-            {
-                delete mInventory;
-                mInventory = nullptr;
-                delete mEquipment;
-                mEquipment = nullptr;
-            }
-        }
-    }
-};
-
 void init()
 {
-    if (mListener)
-        return;
-
-    // may be need remove it?
-    mListener = new PlayerInfoListener();
 }
 
 void deinit()
 {
     clearInventory();
-    delete mListener;
-    mListener = nullptr;
 }
 
 void clear()
@@ -372,6 +322,26 @@ bool isTalking()
 {
     return NpcDialog::isActive() || NpcPostDialog::isActive()
         || InventoryWindow::isStorageActive();
+}
+
+void gameDestroyed()
+{
+    delete mInventory;
+    mInventory = nullptr;
+    delete mEquipment;
+    mEquipment = nullptr;
+}
+
+void stateChange(const int state)
+{
+    if (state == STATE_GAME)
+    {
+        if (!mInventory)
+        {
+            mInventory = new Inventory(Inventory::INVENTORY);
+            mEquipment = new Equipment();
+        }
+    }
 }
 
 } // namespace PlayerInfo

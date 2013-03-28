@@ -169,9 +169,6 @@ const unsigned adjustDelay = 10;
  */
 static void initEngines()
 {
-    DepricatedEvent::trigger(CHANNEL_GAME,
-        DepricatedEvent(EVENT_ENGINESINITALIZING));
-
     actorSpriteManager = new ActorSpriteManager;
     commandHandler = new CommandHandler;
     effectManager = new EffectManager;
@@ -194,9 +191,6 @@ static void initEngines()
  */
 static void createGuiWindows()
 {
-    DepricatedEvent::trigger(CHANNEL_GAME,
-        DepricatedEvent(EVENT_GUIWINDOWSLOADING));
-
     if (setupWindow)
         setupWindow->clearWindowsForReset();
 
@@ -371,9 +365,6 @@ static void destroyGuiWindows()
     del_0(killStats);
     del_0(didYouKnowWindow);
 
-    DepricatedEvent::trigger(CHANNEL_GAME,
-        DepricatedEvent(EVENT_GUIWINDOWSUNLOADED));
-
     if (auctionManager && AuctionManager::getEnableAuctionBot())
         auctionManager->reload();
 
@@ -443,9 +434,6 @@ Game::Game():
 
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
-
-    DepricatedEvent::trigger(CHANNEL_GAME,
-        DepricatedEvent(EVENT_CONSTRUCTED));
 }
 
 Game::~Game()
@@ -476,8 +464,7 @@ Game::~Game()
 
     Being::clearCache();
     mInstance = nullptr;
-    DepricatedEvent::trigger(CHANNEL_GAME,
-        DepricatedEvent(EVENT_DESTRUCTED));
+    PlayerInfo::gameDestroyed();
 }
 
 bool Game::createScreenshot()

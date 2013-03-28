@@ -193,7 +193,6 @@ ChatWindow::ChatWindow():
     mAutoHide(false),
     mShowBattleEvents(false)
 {
-    listen(CHANNEL_NOTICES);
     listen(CHANNEL_ATTRIBUTES);
 
     setWindowName("Chat");
@@ -960,12 +959,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
 
 void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
 {
-    if (channel == CHANNEL_NOTICES)
-    {
-        if (event.getName() == EVENT_SERVERNOTICE && localChatTab)
-            localChatTab->chatLog(event.getString("message"), BY_SERVER);
-    }
-    else if (channel == CHANNEL_ATTRIBUTES)
+    if (channel == CHANNEL_ATTRIBUTES)
     {
         if (!mShowBattleEvents)
             return;

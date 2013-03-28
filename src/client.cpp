@@ -1134,10 +1134,7 @@ int Client::gameExec()
         if (mState != mOldState)
         {
             BLOCK_START("Client::gameExec 7")
-            DepricatedEvent evt(EVENT_STATECHANGE);
-            evt.setInt("oldState", mOldState);
-            evt.setInt("newState", mState);
-            DepricatedEvent::trigger(CHANNEL_CLIENT, evt);
+            PlayerInfo::stateChange(mState);
 
             if (mOldState == STATE_GAME)
             {
@@ -1366,11 +1363,7 @@ int Client::gameExec()
                         BeingInfo::unknown = new BeingInfo;
 
                     TranslationManager::loadCurrentLang();
-
-                    DepricatedEvent evt2(EVENT_STATECHANGE);
-                    evt2.setInt("newState", STATE_LOAD_DATA);
-                    evt2.setInt("oldState", mOldState);
-                    DepricatedEvent::trigger(CHANNEL_CLIENT, evt2);
+                    PlayerInfo::stateChange(mState);
 
                     // Load XML databases
                     CharDB::load();

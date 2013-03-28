@@ -230,6 +230,10 @@ namespace PlayerInfo
 
     bool isTalking();
 
+    void gameDestroyed();
+
+    void stateChange(const int state);
+
     void triggerAttr(int id);
 
     void triggerAttr(const int id, const int old);
