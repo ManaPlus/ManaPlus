@@ -33,6 +33,7 @@
 #include "inputmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
+#include "particle.h"
 #include "party.h"
 #include "playerrelations.h"
 #include "configuration.h"
@@ -563,7 +564,8 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
 
     const int effectType = msg.readInt32();
 
-    effectManager->trigger(effectType, being);
+    if (Particle::enabled)
+        effectManager->trigger(effectType, being);
 
     //+++ need dehard code effectType == 3
     if (effectType == 3 && being->getType() == Being::PLAYER

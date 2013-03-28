@@ -1147,7 +1147,7 @@ void Being::setAction(const Action &action, const int attackId)
                             rotation = 270;
                             break;
                     }
-                    if (effectManager && effectId >= 0)
+                    if (Particle::enabled && effectManager && effectId >= 0)
                         effectManager->trigger(effectId, this, rotation);
                 }
             }
@@ -2780,8 +2780,11 @@ void Being::removeAfkEffect()
 
 void Being::addSpecialEffect(const int effect)
 {
-    if (effectManager && !mSpecialParticle && effect != -1)
+    if (effectManager && Particle::enabled
+        && !mSpecialParticle && effect != -1)
+    {
         mSpecialParticle = effectManager->triggerReturn(effect, this);
+    }
 }
 
 void Being::removeSpecialEffect()
