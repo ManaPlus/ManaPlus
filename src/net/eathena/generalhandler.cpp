@@ -107,8 +107,6 @@ GeneralHandler::GeneralHandler() :
     stats.push_back(ItemDB::Stat("luck", _("Luck %+d")));
 
     ItemDB::setStatsList(stats);
-
-    listen(CHANNEL_GAME);
 }
 
 GeneralHandler::~GeneralHandler()
@@ -119,12 +117,11 @@ GeneralHandler::~GeneralHandler()
 
 void GeneralHandler::handleMessage(Net::MessageIn &msg)
 {
-    int code;
-
     switch (msg.getId())
     {
         case SMSG_CONNECTION_PROBLEM:
-            code = msg.readInt8();
+        {
+            const int code = msg.readInt8();
             logger->log("Connection problem: %i", code);
 
             switch (code)
@@ -158,6 +155,7 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
             }
             Client::setState(STATE_ERROR);
             break;
+        }
 
         default:
             break;
@@ -194,11 +192,10 @@ void GeneralHandler::reload()
         mNetwork->disconnect();
 
     static_cast<LoginHandler*>(mLoginHandler.get())->clearWorlds();
-    static_cast<CharServerHandler*>(
-        mCharServerHandler.get())->setCharCreateDialog(nullptr);
-    static_cast<CharServerHandler*>(
-        mCharServerHandler.get())->setCharSelectDialog(nullptr);
-
+    CharServerHandler *charHandler = static_cast<CharServerHandler*>(
+        mCharServerHandler.get());
+    charHandler->setCharCreateDialog(nullptr);
+    charHandler->setCharSelectDialog(nullptr);
     static_cast<PartyHandler*>(mPartyHandler.get())->reload();
 }
 
@@ -237,70 +234,55 @@ void GeneralHandler::clearHandlers()
         mNetwork->clearHandlers();
 }
 
-void GeneralHandler::processEvent(Channels channel,
-                                  const DepricatedEvent &event)
+void GeneralHandler::gameStarted() const
 {
-    if (channel == CHANNEL_GAME)
-    {
-        if (event.getName() == EVENT_GUIWINDOWSLOADED)
-        {
-            if (inventoryWindow)
-                inventoryWindow->setSplitAllowed(false);
-            if (skillDialog)
-                skillDialog->loadSkills();
+    if (inventoryWindow)
+        inventoryWindow->setSplitAllowed(false);
+    if (skillDialog)
+        skillDialog->loadSkills();
 
-            if (!statusWindow)
-                return;
+    if (!statusWindow)
+        return;
 
-            // protection against double addition attributes.
-            statusWindow->clearAttributes();
+    // protection against double addition attributes.
+    statusWindow->clearAttributes();
 
-            statusWindow->addAttribute(STR, _("Strength"), "str", true, "");
-            statusWindow->addAttribute(AGI, _("Agility"), "agi", true, "");
-            statusWindow->addAttribute(VIT, _("Vitality"), "vit", true, "");
-            statusWindow->addAttribute(INT, _("Intelligence"),
-                "int", true, "");
-            statusWindow->addAttribute(DEX, _("Dexterity"), "dex", true, "");
-            statusWindow->addAttribute(LUK, _("Luck"), "luk", true, "");
+    statusWindow->addAttribute(STR, _("Strength"), "str", true, "");
+    statusWindow->addAttribute(AGI, _("Agility"), "agi", true, "");
+    statusWindow->addAttribute(VIT, _("Vitality"), "vit", true, "");
+    statusWindow->addAttribute(INT, _("Intelligence"), "int", true, "");
+    statusWindow->addAttribute(DEX, _("Dexterity"), "dex", true, "");
+    statusWindow->addAttribute(LUK, _("Luck"), "luk", true, "");
 
-            statusWindow->addAttribute(ATK, _("Attack"));
-            statusWindow->addAttribute(DEF, _("Defense"));
-            statusWindow->addAttribute(MATK, _("M.Attack"));
-            statusWindow->addAttribute(MDEF, _("M.Defense"));
-            // xgettext:no-c-format
-            statusWindow->addAttribute(HIT, _("% Accuracy"));
-            // xgettext:no-c-format
-            statusWindow->addAttribute(FLEE, _("% Evade"));
-            // xgettext:no-c-format
-            statusWindow->addAttribute(CRIT, _("% Critical"));
-            statusWindow->addAttribute(PlayerInfo::ATTACK_DELAY,
-                _("Attack Delay"));
-            statusWindow->addAttribute(PlayerInfo::WALK_SPEED,
-                _("Walk Delay"));
-            statusWindow->addAttribute(PlayerInfo::ATTACK_RANGE,
-                _("Attack Range"));
-            statusWindow->addAttribute(PlayerInfo::ATTACK_SPEED,
-                _("Damage per sec."));
-        }
-        else if (event.getName() == EVENT_GUIWINDOWSUNLOADING)
-        {
-            if (socialWindow)
-            {
-                socialWindow->removeTab(Ea::taGuild);
-                socialWindow->removeTab(Ea::taParty);
-            }
-
-            delete Ea::guildTab;
-            Ea::guildTab = nullptr;
-
-            delete Ea::partyTab;
-            Ea::partyTab = nullptr;
-        }
-    }
+    statusWindow->addAttribute(ATK, _("Attack"));
+    statusWindow->addAttribute(DEF, _("Defense"));
+    statusWindow->addAttribute(MATK, _("M.Attack"));
+    statusWindow->addAttribute(MDEF, _("M.Defense"));
+    // xgettext:no-c-format
+    statusWindow->addAttribute(HIT, _("% Accuracy"));
+    // xgettext:no-c-format
+    statusWindow->addAttribute(FLEE, _("% Evade"));
+    // xgettext:no-c-format
+    statusWindow->addAttribute(CRIT, _("% Critical"));
+    statusWindow->addAttribute(PlayerInfo::ATTACK_DELAY, _("Attack Delay"));
+    statusWindow->addAttribute(PlayerInfo::WALK_SPEED, _("Walk Delay"));
+    statusWindow->addAttribute(PlayerInfo::ATTACK_RANGE, _("Attack Range"));
+    statusWindow->addAttribute(PlayerInfo::ATTACK_SPEED, _("Damage per sec."));
 }
 
-void GeneralHandler::requestOnlineList()
+void GeneralHandler::gameEnded() const
 {
+    if (socialWindow)
+    {
+        socialWindow->removeTab(Ea::taGuild);
+        socialWindow->removeTab(Ea::taParty);
+    }
+
+    delete Ea::guildTab;
+    Ea::guildTab = nullptr;
+
+    delete Ea::partyTab;
+    Ea::partyTab = nullptr;
 }
 
 } // namespace EAthena

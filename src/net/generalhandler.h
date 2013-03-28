@@ -44,6 +44,9 @@ class GeneralHandler
 
         virtual void reloadPartially() = 0;
 
+        virtual void gameStarted() const = 0;
+
+        virtual void gameEnded() const = 0;
 };
 
 } // namespace Net

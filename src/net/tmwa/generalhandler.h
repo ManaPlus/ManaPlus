@@ -33,8 +33,8 @@
 namespace TmwAthena
 {
 
-class GeneralHandler final : public MessageHandler, public Net::GeneralHandler,
-                             public Listener
+class GeneralHandler final : public MessageHandler,
+                             public Net::GeneralHandler
 {
     public:
         GeneralHandler();
@@ -43,22 +43,23 @@ class GeneralHandler final : public MessageHandler, public Net::GeneralHandler,
 
         ~GeneralHandler();
 
-        void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg) override;
 
-        void load();
+        void load() override;
 
-        void reload();
+        void reload() override;
 
-        void unload();
+        void unload() override;
 
-        void flushNetwork();
+        void flushNetwork() override;
 
-        void clearHandlers();
+        void clearHandlers() override;
 
-        void processEvent(Channels channel,
-                          const DepricatedEvent &event) override;
+        void reloadPartially() override;
 
-        void reloadPartially();
+        void gameStarted() const override;
+
+        void gameEnded() const override;
 
     protected:
         MessageHandlerPtr mAdminHandler;

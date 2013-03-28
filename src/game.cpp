@@ -80,6 +80,7 @@
 #include "gui/widgets/spellshortcutcontainer.h"
 #include "gui/widgets/tradetab.h"
 
+#include "net/generalhandler.h"
 #include "net/gamehandler.h"
 #include "net/packetcounters.h"
 #include "net/playerhandler.h"
@@ -313,8 +314,7 @@ static void createGuiWindows()
     if (player_node)
         player_node->updateStatus();
 
-    DepricatedEvent::trigger(CHANNEL_GAME,
-        DepricatedEvent(EVENT_GUIWINDOWSLOADED));
+    Net::getGeneralHandler()->gameStarted();
 }
 
 #define del_0(X) { delete X; X = nullptr; }
@@ -324,8 +324,7 @@ static void createGuiWindows()
  */
 static void destroyGuiWindows()
 {
-    DepricatedEvent::trigger(CHANNEL_GAME,
-        DepricatedEvent(EVENT_GUIWINDOWSUNLOADING));
+    Net::getGeneralHandler()->gameEnded();
 
     logger->setChatWindow(nullptr);
     if (whoIsOnline)
