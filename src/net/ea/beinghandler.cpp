@@ -658,8 +658,14 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
     {
         dstBeing->setPartyName(msg.readString(24));
         if (!guildManager || !GuildManager::getEnableGuildBot())
+        {
             dstBeing->setGuildName(msg.readString(24));
-        dstBeing->setGuildPos(msg.readString(24));
+            dstBeing->setGuildPos(msg.readString(24));
+        }
+        else
+        {
+            msg.skip(48);
+        }
         dstBeing->addToCache();
         msg.readString(24); // Discard this
     }
