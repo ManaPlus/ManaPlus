@@ -42,7 +42,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void handleMessage(Net::MessageIn &msg) override;
 
-        void talk(const std::string &text, const std::string &channel) const override;
+        void talk(const std::string &text,
+                  const std::string &channel) const override;
 
         void talkRaw(const std::string &text) const override;
 

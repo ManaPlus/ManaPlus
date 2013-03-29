@@ -55,7 +55,7 @@ class GeneralHandler final : public MessageHandler,
 
         void clearHandlers() override;
 
-        void reloadPartially() override;
+        void reloadPartially() const override;
 
         void gameStarted() const override;
 

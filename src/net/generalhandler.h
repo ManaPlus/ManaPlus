@@ -42,7 +42,7 @@ class GeneralHandler
 
         virtual void clearHandlers() = 0;
 
-        virtual void reloadPartially() = 0;
+        virtual void reloadPartially() const = 0;
 
         virtual void gameStarted() const = 0;
 

@@ -199,14 +199,14 @@ void GeneralHandler::reload()
         mNetwork->disconnect();
 
     static_cast<LoginHandler*>(mLoginHandler.get())->clearWorlds();
-    CharServerHandler *charHandler = static_cast<CharServerHandler*>(
+    CharServerHandler *const charHandler = static_cast<CharServerHandler*>(
         mCharServerHandler.get());
     charHandler->setCharCreateDialog(nullptr);
     charHandler->setCharSelectDialog(nullptr);
     static_cast<PartyHandler*>(mPartyHandler.get())->reload();
 }
 
-void GeneralHandler::reloadPartially()
+void GeneralHandler::reloadPartially() const
 {
     static_cast<PartyHandler*>(mPartyHandler.get())->reload();
 }

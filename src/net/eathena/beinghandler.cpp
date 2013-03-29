@@ -727,7 +727,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     const uint16_t headTop = msg.readInt16();
     const uint16_t headMid = msg.readInt16();
     const int hairColor = msg.readInt16();
-    const uint16_t shoes = msg.readInt16();  // clothes color - "abused" as shoes
+    const uint16_t shoes = msg.readInt16(); //clothes color - "abused" as shoes
 
     uint16_t gloves;
     if (dstBeing->getType() == ActorSprite::MONSTER)

@@ -100,7 +100,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
     }
 }
 
-void ChatHandler::processWhisper(Net::MessageIn &msg)
+void ChatHandler::processWhisper(Net::MessageIn &msg) const
 {
     const int chatMsgLength = msg.readInt16() - 28;
     std::string nick = msg.readString(24);

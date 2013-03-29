@@ -32,7 +32,7 @@ namespace Ea
 class BeingHandler : public Net::BeingHandler
 {
     public:
-        BeingHandler(bool enableSync);
+        BeingHandler(const bool enableSync);
 
         A_DELETE_COPY(BeingHandler)
 
@@ -61,39 +61,39 @@ class BeingHandler : public Net::BeingHandler
 
         virtual void processBeingAction(Net::MessageIn &msg) const;
 
-        virtual void processBeingSelfEffect(Net::MessageIn &msg);
+        virtual void processBeingSelfEffect(Net::MessageIn &msg) const;
 
-        virtual void processBeingEmotion(Net::MessageIn &msg);
+        virtual void processBeingEmotion(Net::MessageIn &msg) const;
 
         virtual void processBeingChangeLook(Net::MessageIn &msg,
                                             const bool look2) const = 0;
 
-        virtual void processNameResponse(Net::MessageIn &msg);
+        virtual void processNameResponse(Net::MessageIn &msg) const;
 
-        virtual void processIpResponse(Net::MessageIn &msg);
+        virtual void processIpResponse(Net::MessageIn &msg) const;
 
-        virtual void processPlayerGuilPartyInfo(Net::MessageIn &msg);
+        virtual void processPlayerGuilPartyInfo(Net::MessageIn &msg) const;
 
-        virtual void processBeingChangeDirection(Net::MessageIn &msg);
+        virtual void processBeingChangeDirection(Net::MessageIn &msg) const;
 
         virtual void processPlayerMoveUpdate(Net::MessageIn &msg,
                                              const int type) const = 0;
 
-        virtual void processPlayerStop(Net::MessageIn &msg);
+        virtual void processPlayerStop(Net::MessageIn &msg) const;
 
-        virtual void processPlayerMoveToAttack(Net::MessageIn &msg);
+        virtual void processPlayerMoveToAttack(Net::MessageIn &msg) const;
 
-        virtual void processPlaterStatusChange(Net::MessageIn &msg);
+        virtual void processPlaterStatusChange(Net::MessageIn &msg) const;
 
-        virtual void processBeingStatusChange(Net::MessageIn &msg);
+        virtual void processBeingStatusChange(Net::MessageIn &msg) const;
 
-        virtual void processSkilCasting(Net::MessageIn &msg);
+        virtual void processSkilCasting(Net::MessageIn &msg) const;
 
-        virtual void processSkillNoDamage(Net::MessageIn &msg);
+        virtual void processSkillNoDamage(Net::MessageIn &msg) const;
 
-        virtual void processPvpMapMode(Net::MessageIn &msg);
+        virtual void processPvpMapMode(Net::MessageIn &msg) const;
 
-        virtual void processPvpSet(Net::MessageIn &msg);
+        virtual void processPvpSet(Net::MessageIn &msg) const;
 
     protected:
         // Should we honor server "Stop Walking" packets

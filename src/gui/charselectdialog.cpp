@@ -558,7 +558,8 @@ void CharSelectDialog::attemptCharacterDelete(const int index)
     if (mLocked)
         return;
 
-    mCharServerHandler->deleteCharacter(mCharacterEntries[index]->getCharacter());
+    mCharServerHandler->deleteCharacter(
+        mCharacterEntries[index]->getCharacter());
     lock();
 }
 

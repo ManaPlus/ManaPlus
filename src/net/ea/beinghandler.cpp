@@ -60,7 +60,7 @@ namespace Ea
 {
 const int EMOTION_TIME = 500;    /**< Duration of emotion icon */
 
-BeingHandler::BeingHandler(bool enableSync) :
+BeingHandler::BeingHandler(const bool enableSync) :
     mSync(enableSync),
     mSpawnId(0),
     mHideShield(config.getBoolValue("hideShield"))
@@ -552,7 +552,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
     }
 }
 
-void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
+void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg) const
 {
     if (!effectManager || !actorSpriteManager)
         return;
@@ -575,7 +575,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
     }
 }
 
-void BeingHandler::processBeingEmotion(Net::MessageIn &msg)
+void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
 {
     if (!player_node || !actorSpriteManager)
         return;
@@ -597,7 +597,7 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg)
         dstBeing->setOtherTime();
 }
 
-void BeingHandler::processNameResponse(Net::MessageIn &msg)
+void BeingHandler::processNameResponse(Net::MessageIn &msg) const
 {
     if (!player_node || !actorSpriteManager)
         return;
@@ -637,7 +637,7 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg)
     }
 }
 
-void BeingHandler::processIpResponse(Net::MessageIn &msg)
+void BeingHandler::processIpResponse(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager)
         return;
@@ -647,7 +647,7 @@ void BeingHandler::processIpResponse(Net::MessageIn &msg)
         dstBeing->setIp(ipToString(msg.readInt32()));
 }
 
-void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
+void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager)
         return;
@@ -671,7 +671,7 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
     }
 }
 
-void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
+void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager)
         return;
@@ -689,7 +689,7 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
         player_node->imitateDirection(dstBeing, dir);
 }
 
-void BeingHandler::processPlayerStop(Net::MessageIn &msg)
+void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager || !player_node)
         return;
@@ -723,6 +723,7 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg)
 }
 
 void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg A_UNUSED)
+                                             const
 {
     /*
       * This is an *advisory* message, telling the client that
@@ -734,7 +735,7 @@ void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg A_UNUSED)
         player_node->fixAttackTarget();
 }
 
-void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg)
+void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager)
         return;
@@ -758,7 +759,7 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg)
         statusEffects & 0xffff));
 }
 
-void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)
+void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
 {
     if (!actorSpriteManager)
         return;
@@ -773,7 +774,7 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)
         dstBeing->setStatusEffect(status, flag);
 }
 
-void BeingHandler::processSkilCasting(Net::MessageIn &msg)
+void BeingHandler::processSkilCasting(Net::MessageIn &msg) const
 {
     msg.readInt32();    // src id
     msg.readInt32();    // dst id
@@ -784,7 +785,7 @@ void BeingHandler::processSkilCasting(Net::MessageIn &msg)
     msg.readInt32();    // cast time
 }
 
-void BeingHandler::processSkillNoDamage(Net::MessageIn &msg)
+void BeingHandler::processSkillNoDamage(Net::MessageIn &msg) const
 {
     msg.readInt16();    // skill id
     msg.readInt16();    // heal
@@ -793,7 +794,7 @@ void BeingHandler::processSkillNoDamage(Net::MessageIn &msg)
     msg.readInt8();     // fail
 }
 
-void BeingHandler::processPvpMapMode(Net::MessageIn &msg)
+void BeingHandler::processPvpMapMode(Net::MessageIn &msg) const
 {
     const Game *const game = Game::instance();
     if (!game)
@@ -804,7 +805,7 @@ void BeingHandler::processPvpMapMode(Net::MessageIn &msg)
         map->setPvpMode(msg.readInt16());
 }
 
-void BeingHandler::processPvpSet(Net::MessageIn &msg)
+void BeingHandler::processPvpSet(Net::MessageIn &msg) const
 {
     const int id = msg.readInt32();    // id
     const int rank = msg.readInt32();  // rank
