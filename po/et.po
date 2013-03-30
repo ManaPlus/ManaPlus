@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-03-22 23:28+0300\n"
-"PO-Revision-Date: 2013-03-22 20:31+0000\n"
+"POT-Creation-Date: 2013-03-30 15:45+0300\n"
+"PO-Revision-Date: 2013-03-30 12:52+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -52,106 +52,106 @@ msgstr ""
 msgid "I"
 msgstr ""
 
-#: src/client.cpp:1111 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:155
+#: src/client.cpp:1113 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:155
 msgid "Setup"
 msgstr ""
 
-#: src/client.cpp:1114 src/gui/setup_perfomance.cpp:59
+#: src/client.cpp:1116 src/gui/setup_perfomance.cpp:59
 msgid "Perfomance"
 msgstr ""
 
-#: src/client.cpp:1116 src/gui/setup_video.cpp:243
+#: src/client.cpp:1118 src/gui/setup_video.cpp:243
 msgid "Video"
 msgstr ""
 
-#: src/client.cpp:1118
+#: src/client.cpp:1120
 msgid "Themes"
 msgstr ""
 
-#: src/client.cpp:1121 src/gui/didyouknowwindow.cpp:73
+#: src/client.cpp:1123 src/gui/didyouknowwindow.cpp:73
 #: src/gui/inventorywindow.cpp:208 src/gui/npcdialog.cpp:60
 #: src/gui/npcdialog.cpp:86 src/gui/popupmenu.cpp:508
-#: src/gui/questswindow.cpp:129 src/gui/shopwindow.cpp:77
+#: src/gui/questswindow.cpp:129 src/gui/shopwindow.cpp:78
 msgid "Close"
 msgstr "Sulge"
 
-#: src/client.cpp:1211
+#: src/client.cpp:1210
 msgid "Connecting to server"
 msgstr ""
 
-#: src/client.cpp:1253
+#: src/client.cpp:1252
 msgid "Logging in"
 msgstr ""
 
-#: src/client.cpp:1291
+#: src/client.cpp:1290
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:1402
+#: src/client.cpp:1397
 msgid "Requesting characters"
 msgstr ""
 
-#: src/client.cpp:1440
+#: src/client.cpp:1435
 msgid "Connecting to the game server"
 msgstr ""
 
-#: src/client.cpp:1452
+#: src/client.cpp:1447
 msgid "Changing game servers"
 msgstr ""
 
-#: src/client.cpp:1508 src/client.cpp:1518 src/client.cpp:1678
+#: src/client.cpp:1503 src/client.cpp:1513 src/client.cpp:1673
 #: src/gui/changeemaildialog.cpp:160 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:294 src/gui/charselectdialog.cpp:400
 #: src/gui/editserverdialog.cpp:204 src/gui/registerdialog.cpp:250
-#: src/gui/unregisterdialog.cpp:138 src/net/ea/charserverhandler.cpp:168
-#: src/net/ea/charserverhandler.cpp:186
+#: src/gui/unregisterdialog.cpp:138 src/net/ea/charserverhandler.cpp:174
+#: src/net/ea/charserverhandler.cpp:192
 msgid "Error"
 msgstr "Viga"
 
-#: src/client.cpp:1530
+#: src/client.cpp:1525
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1566
+#: src/client.cpp:1561
 msgid "Password Change"
 msgstr ""
 
-#: src/client.cpp:1567
+#: src/client.cpp:1562
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1587
+#: src/client.cpp:1582
 msgid "Email Change"
 msgstr ""
 
-#: src/client.cpp:1588
+#: src/client.cpp:1583
 msgid "Email changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1608
+#: src/client.cpp:1603
 msgid "Unregister Successful"
 msgstr ""
 
-#: src/client.cpp:1609
+#: src/client.cpp:1604
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1858 src/client.cpp:1872 src/client.cpp:1914
-#: src/client.cpp:1929 src/client.cpp:2364 src/client.cpp:2371
+#: src/client.cpp:1853 src/client.cpp:1867 src/client.cpp:1909
+#: src/client.cpp:1924 src/client.cpp:2359 src/client.cpp:2366
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:2065
+#: src/client.cpp:2060
 #, c-format
 msgid "Invalid update host: %s"
 msgstr ""
 
-#: src/client.cpp:2105 src/client.cpp:2111
+#: src/client.cpp:2100 src/client.cpp:2106
 msgid "Error creating updates directory!"
 msgstr ""
 
-#: src/client.cpp:2132 src/client.cpp:2144
+#: src/client.cpp:2127 src/client.cpp:2139
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -160,179 +160,174 @@ msgstr ""
 msgid "Unknown command."
 msgstr ""
 
-#: src/commands.cpp:133 src/commands.cpp:412 src/commands.cpp:486
-#: src/commands.cpp:526
+#: src/commands.cpp:134 src/commands.cpp:396 src/commands.cpp:470
+#: src/commands.cpp:510
 msgid "Please specify a name."
 msgstr ""
 
-#: src/commands.cpp:139
+#: src/commands.cpp:140
 #, c-format
 msgid "Player already %s!"
 msgstr ""
 
-#: src/commands.cpp:150
+#: src/commands.cpp:151
 #, c-format
 msgid "Player successfully %s!"
 msgstr ""
 
-#: src/commands.cpp:155
+#: src/commands.cpp:156
 #, c-format
 msgid "Player could not be %s!"
 msgstr ""
 
-#: src/commands.cpp:320
+#: src/commands.cpp:321
 msgid "Cannot send empty whispers!"
 msgstr ""
 
-#: src/commands.cpp:336
+#: src/commands.cpp:337
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
 " you."
 msgstr ""
 
-#: src/commands.cpp:354 src/commands.cpp:362
+#: src/commands.cpp:355 src/commands.cpp:363
 msgid "Cache cleaned"
 msgstr ""
 
-#: src/commands.cpp:373
-#, c-format
-msgid "Requesting to join channel %s."
-msgstr ""
-
-#: src/commands.cpp:388 src/net/ea/gui/partytab.cpp:127
+#: src/commands.cpp:372 src/net/ea/gui/partytab.cpp:127
 msgid "Party name is missing."
 msgstr ""
 
-#: src/commands.cpp:399
+#: src/commands.cpp:383
 msgid "Guild name is missing."
 msgstr ""
 
-#: src/commands.cpp:427
+#: src/commands.cpp:411
 msgid "Return toggles chat."
 msgstr ""
 
-#: src/commands.cpp:427
+#: src/commands.cpp:411
 msgid "Message closes chat."
 msgstr ""
 
-#: src/commands.cpp:436
+#: src/commands.cpp:420
 msgid "Return now toggles chat."
 msgstr ""
 
-#: src/commands.cpp:442
+#: src/commands.cpp:426
 msgid "Message now closes chat."
 msgstr ""
 
-#: src/commands.cpp:468
+#: src/commands.cpp:452
 msgid "friend"
 msgstr ""
 
-#: src/commands.cpp:473
+#: src/commands.cpp:457
 msgid "disregarded"
 msgstr ""
 
-#: src/commands.cpp:478
+#: src/commands.cpp:462
 msgid "neutral"
 msgstr ""
 
-#: src/commands.cpp:498
+#: src/commands.cpp:482
 msgid "Player wasn't ignored!"
 msgstr ""
 
-#: src/commands.cpp:505
+#: src/commands.cpp:489
 msgid "Player no longer ignored!"
 msgstr ""
 
-#: src/commands.cpp:507
+#: src/commands.cpp:491
 msgid "Player could not be unignored!"
 msgstr ""
 
-#: src/commands.cpp:513
+#: src/commands.cpp:497
 msgid "blacklisted"
 msgstr ""
 
-#: src/commands.cpp:518
+#: src/commands.cpp:502
 msgid "enemy"
 msgstr ""
 
-#: src/commands.cpp:533
+#: src/commands.cpp:517
 msgid "Player already erased!"
 msgstr ""
 
-#: src/commands.cpp:544
+#: src/commands.cpp:528
 msgid "Player successfully erased!"
 msgstr ""
 
-#: src/commands.cpp:546
+#: src/commands.cpp:530
 msgid "Player could not be erased!"
 msgstr ""
 
-#: src/commands.cpp:820 src/commands.cpp:868
+#: src/commands.cpp:810 src/commands.cpp:858
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
-#: src/commands.cpp:830
+#: src/commands.cpp:820
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commands.cpp:839
+#: src/commands.cpp:829
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commands.cpp:847
+#: src/commands.cpp:837
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commands.cpp:856
+#: src/commands.cpp:846
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commands.cpp:865
+#: src/commands.cpp:855
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commands.cpp:939
+#: src/commands.cpp:929
 msgid "font cache size"
 msgstr ""
 
-#: src/commands.cpp:951
+#: src/commands.cpp:941
 msgid "Cache size:"
 msgstr ""
 
-#: src/commands.cpp:955
+#: src/commands.cpp:945
 msgid "Created:"
 msgstr ""
 
-#: src/commands.cpp:957
+#: src/commands.cpp:947
 msgid "Deleted:"
 msgstr ""
 
-#: src/commands.cpp:1018
+#: src/commands.cpp:1008
 msgid "Environment variables dumped"
 msgstr ""
 
-#: src/commands.cpp:1129 src/commands.cpp:1136
+#: src/commands.cpp:1119 src/commands.cpp:1126
 msgid "Resource images:"
 msgstr ""
 
-#: src/commands.cpp:1131 src/commands.cpp:1138
+#: src/commands.cpp:1121 src/commands.cpp:1128
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -341,28 +336,28 @@ msgstr ""
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 
-#: src/game.cpp:258 src/gui/widgets/chattab.cpp:452
+#: src/game.cpp:255 src/gui/widgets/chattab.cpp:452
 msgid "General"
 msgstr ""
 
-#: src/game.cpp:273 src/gui/debugwindow.cpp:50 src/gui/widgets/chattab.cpp:454
+#: src/game.cpp:270 src/gui/debugwindow.cpp:50 src/gui/widgets/chattab.cpp:454
 #: src/gui/windowmenu.cpp:144
 msgid "Debug"
 msgstr ""
 
-#: src/game.cpp:537
+#: src/game.cpp:532
 msgid "Screenshot saved as "
 msgstr ""
 
-#: src/game.cpp:545
+#: src/game.cpp:540
 msgid "Saving screenshot failed!"
 msgstr ""
 
-#: src/game.cpp:611
+#: src/game.cpp:606
 msgid "The connection to the server was lost."
 msgstr ""
 
-#: src/game.cpp:612
+#: src/game.cpp:607
 msgid "Network Error"
 msgstr ""
 
@@ -400,8 +395,8 @@ msgstr ""
 
 #: src/gui/botcheckerwindow.cpp:304 src/gui/popupmenu.cpp:140
 #: src/gui/popupmenu.cpp:220 src/gui/popupmenu.cpp:550
-#: src/gui/setupactiondata.h:51 src/net/eathena/generalhandler.cpp:266
-#: src/net/tmwa/generalhandler.cpp:275
+#: src/gui/setupactiondata.h:51 src/net/eathena/generalhandler.cpp:257
+#: src/net/tmwa/generalhandler.cpp:268
 msgid "Attack"
 msgstr ""
 
@@ -646,7 +641,7 @@ msgstr "Naine"
 #: src/gui/charcreatedialog.cpp:91 src/gui/registerdialog.cpp:108
 #: src/gui/setupactiondata.h:1498 src/gui/setupactiondata.h:1571
 #: src/gui/setup_audio.cpp:132 src/gui/setup_chat.cpp:145
-#: src/gui/setup_other.cpp:237 src/gui/setup_visual.cpp:142
+#: src/gui/setup_other.cpp:240 src/gui/setup_visual.cpp:142
 msgid "Other"
 msgstr ""
 
@@ -655,7 +650,7 @@ msgstr ""
 msgid "Please distribute %d points"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:96 src/gui/charselectdialog.cpp:788
+#: src/gui/charcreatedialog.cpp:96 src/gui/charselectdialog.cpp:789
 #: src/gui/socialwindow.cpp:1249
 msgid "Create"
 msgstr ""
@@ -706,31 +701,31 @@ msgstr ""
 msgid "Incorrect password"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:569
+#: src/gui/charselectdialog.cpp:570
 msgid "Enter password for deleting character"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:569
+#: src/gui/charselectdialog.cpp:570
 msgid "Enter password:"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:716 src/gui/serverdialog.cpp:256
+#: src/gui/charselectdialog.cpp:717 src/gui/serverdialog.cpp:256
 #: src/gui/setupactiondata.h:1518 src/gui/setup_relations.cpp:250
-#: src/gui/shopwindow.cpp:89 src/gui/shopwindow.cpp:92
+#: src/gui/shopwindow.cpp:90 src/gui/shopwindow.cpp:94
 #: src/gui/textcommandeditor.cpp:193
 msgid "Delete"
 msgstr "Kustuta"
 
-#: src/gui/charselectdialog.cpp:776
+#: src/gui/charselectdialog.cpp:777
 msgid "Choose"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:779
+#: src/gui/charselectdialog.cpp:780
 #, c-format
 msgid "Level %d"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:790 src/gui/charselectdialog.cpp:791
+#: src/gui/charselectdialog.cpp:791 src/gui/charselectdialog.cpp:792
 msgid "(empty)"
 msgstr ""
 
@@ -796,12 +791,12 @@ msgstr ""
 msgid "Chat"
 msgstr "Vestlus"
 
-#: src/gui/chatwindow.cpp:716
+#: src/gui/chatwindow.cpp:715
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr ""
 
-#: src/gui/chatwindow.cpp:1140
+#: src/gui/chatwindow.cpp:1134
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr ""
@@ -1384,7 +1379,7 @@ msgstr ""
 msgid "Failed to send as sender or letter invalid."
 msgstr ""
 
-#: src/gui/outfitwindow.cpp:63 src/gui/outfitwindow.cpp:546
+#: src/gui/outfitwindow.cpp:63 src/gui/outfitwindow.cpp:545
 #, c-format
 msgid "Outfit: %d"
 msgstr ""
@@ -1397,7 +1392,7 @@ msgstr ""
 msgid "Away outfit"
 msgstr ""
 
-#: src/gui/outfitwindow.cpp:69 src/gui/outfitwindow.cpp:551
+#: src/gui/outfitwindow.cpp:69 src/gui/outfitwindow.cpp:550
 #: src/gui/windowmenu.cpp:279
 #, c-format
 msgid "Key: %s"
@@ -1722,7 +1717,7 @@ msgid "Unignore"
 msgstr ""
 
 #: src/gui/popupmenu.cpp:2229 src/gui/popupmenu.cpp:2249
-#: src/playerrelations.cpp:460
+#: src/playerrelations.cpp:464
 msgid "Completely ignore"
 msgstr ""
 
@@ -1806,8 +1801,8 @@ msgstr ""
 msgid "Choose Your Server"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:254 src/gui/shopwindow.cpp:88
-#: src/gui/shopwindow.cpp:91 src/gui/tradewindow.cpp:70
+#: src/gui/serverdialog.cpp:254 src/gui/shopwindow.cpp:89
+#: src/gui/shopwindow.cpp:93 src/gui/tradewindow.cpp:70
 msgid "Add"
 msgstr ""
 
@@ -2404,7 +2399,7 @@ msgstr ""
 msgid "Shortcuts"
 msgstr ""
 
-#: src/gui/setupactiondata.h:1567 src/gui/setup_other.cpp:220
+#: src/gui/setupactiondata.h:1567 src/gui/setup_other.cpp:223
 #: src/gui/windowmenu.cpp:152
 msgid "Windows"
 msgstr ""
@@ -2975,82 +2970,86 @@ msgid "Bots support"
 msgstr ""
 
 #: src/gui/setup_other.cpp:204
+msgid "Enable auction bot support"
+msgstr ""
+
+#: src/gui/setup_other.cpp:207
 msgid "Enable guild bot support and disable native guild support"
 msgstr ""
 
-#: src/gui/setup_other.cpp:209
+#: src/gui/setup_other.cpp:212
 msgid "Keyboard"
 msgstr ""
 
-#: src/gui/setup_other.cpp:211
+#: src/gui/setup_other.cpp:214
 msgid "Repeat delay"
 msgstr ""
 
-#: src/gui/setup_other.cpp:214
+#: src/gui/setup_other.cpp:217
 msgid "Repeat interval"
 msgstr ""
 
-#: src/gui/setup_other.cpp:217
+#: src/gui/setup_other.cpp:220
 msgid "Custom repeat interval"
 msgstr ""
 
-#: src/gui/setup_other.cpp:223
+#: src/gui/setup_other.cpp:226
 msgid "Shortcut buttons"
 msgstr ""
 
-#: src/gui/setup_other.cpp:227
+#: src/gui/setup_other.cpp:230
 msgid "Proxy server"
 msgstr ""
 
-#: src/gui/setup_other.cpp:230
+#: src/gui/setup_other.cpp:233
 msgid "Proxy type"
 msgstr ""
 
-#: src/gui/setup_other.cpp:233
+#: src/gui/setup_other.cpp:236
 msgid "Proxy address:port"
 msgstr ""
 
-#: src/gui/setup_other.cpp:239
+#: src/gui/setup_other.cpp:242
 msgid "Enable server side attack"
 msgstr ""
 
-#: src/gui/setup_other.cpp:242
+#: src/gui/setup_other.cpp:245
 msgid "Enable bot checker"
 msgstr ""
 
-#: src/gui/setup_other.cpp:245
+#: src/gui/setup_other.cpp:248
 msgid "Enable buggy servers protection (do not disable)"
 msgstr ""
 
-#: src/gui/setup_other.cpp:249
+#: src/gui/setup_other.cpp:252
 msgid "Enable debug log"
 msgstr ""
 
-#: src/gui/setup_other.cpp:252
+#: src/gui/setup_other.cpp:255
 msgid "Enable OpenGL log"
 msgstr ""
 
-#: src/gui/setup_other.cpp:255
+#: src/gui/setup_other.cpp:258
 msgid "Enable input log"
 msgstr ""
 
-#: src/gui/setup_other.cpp:258
+#: src/gui/setup_other.cpp:261
 msgid "Low traffic mode"
 msgstr ""
 
-#: src/gui/setup_other.cpp:261
+#: src/gui/setup_other.cpp:264
 msgid "Hide shield sprite"
 msgstr ""
 
-#: src/gui/setup_other.cpp:265
+#: src/gui/setup_other.cpp:268
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr ""
 
-#: src/gui/setup_other.cpp:269
+#: src/gui/setup_other.cpp:272
 msgid "Network delay between sub servers"
 msgstr ""
 
-#: src/gui/setup_other.cpp:272
+#: src/gui/setup_other.cpp:275
 msgid "Show background"
 msgstr ""
 
@@ -3683,31 +3682,35 @@ msgstr ""
 msgid "Allow screensaver to run"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:74
+#: src/gui/shopwindow.cpp:75
 msgid "Personal Shop"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:86
+#: src/gui/shopwindow.cpp:87
 msgid "Buy items"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:87
+#: src/gui/shopwindow.cpp:88
 msgid "Sell items"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:90 src/gui/shopwindow.cpp:93
+#: src/gui/shopwindow.cpp:91 src/gui/shopwindow.cpp:95
 msgid "Announce"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:95
+#: src/gui/shopwindow.cpp:98
 msgid "Show links in announce"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:737 src/net/ea/tradehandler.cpp:102
+#: src/gui/shopwindow.cpp:151 src/gui/shopwindow.cpp:153
+msgid "Auction"
+msgstr ""
+
+#: src/gui/shopwindow.cpp:765 src/net/ea/tradehandler.cpp:102
 msgid "Request for Trade"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:737
+#: src/gui/shopwindow.cpp:765
 #, c-format
 msgid "%s wants to %s %s do you accept?"
 msgstr ""
@@ -5080,93 +5083,93 @@ msgstr ""
 msgid "  -O --no-opengl      : Disable OpenGL for this session"
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:64
+#: src/net/ea/charserverhandler.cpp:69
 msgid "Strength:"
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:65
+#: src/net/ea/charserverhandler.cpp:70
 msgid "Agility:"
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:66
+#: src/net/ea/charserverhandler.cpp:71
 msgid "Vitality:"
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:67
+#: src/net/ea/charserverhandler.cpp:72
 msgid "Intelligence:"
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:68
+#: src/net/ea/charserverhandler.cpp:73
 msgid "Dexterity:"
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:69
+#: src/net/ea/charserverhandler.cpp:74
 msgid "Luck:"
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:113
+#: src/net/ea/charserverhandler.cpp:118
 msgid "Access denied. Most likely, there are too many players on this server."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:117
+#: src/net/ea/charserverhandler.cpp:122
 msgid "Cannot use this ID."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:120
+#: src/net/ea/charserverhandler.cpp:125
 msgid "Unknown char-server failure."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:149
+#: src/net/ea/charserverhandler.cpp:155
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:153 src/net/ea/loginhandler.cpp:265
+#: src/net/ea/charserverhandler.cpp:159 src/net/ea/loginhandler.cpp:265
 msgid "Wrong name."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:156
+#: src/net/ea/charserverhandler.cpp:162
 msgid "Incorrect stats."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:159
+#: src/net/ea/charserverhandler.cpp:165
 msgid "Incorrect hair."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:162
+#: src/net/ea/charserverhandler.cpp:168
 msgid "Incorrect slot."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:165
+#: src/net/ea/charserverhandler.cpp:171
 msgid "Incorrect race."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:180
+#: src/net/ea/charserverhandler.cpp:186
 msgid "Info"
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:180
+#: src/net/ea/charserverhandler.cpp:186
 msgid "Character deleted."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:186
+#: src/net/ea/charserverhandler.cpp:192
 msgid "Failed to delete character."
 msgstr ""
 
-#: src/net/ea/chathandler.cpp:118
+#: src/net/ea/chathandler.cpp:81
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
 msgstr ""
 
-#: src/net/ea/chathandler.cpp:126
+#: src/net/ea/chathandler.cpp:89
 #, c-format
 msgid "Whisper could not be sent, ignored by %s."
 msgstr ""
 
-#: src/net/ea/gamehandler.cpp:98
+#: src/net/ea/gamehandler.cpp:80
 msgid "Game"
 msgstr ""
 
-#: src/net/ea/gamehandler.cpp:98
+#: src/net/ea/gamehandler.cpp:80
 msgid "Request to quit denied!"
 msgstr ""
 
@@ -5635,102 +5638,102 @@ msgstr ""
 msgid "Luck %+d"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:133 src/net/tmwa/generalhandler.cpp:136
+#: src/net/eathena/generalhandler.cpp:130 src/net/tmwa/generalhandler.cpp:134
 msgid "Authentication failed."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:136 src/net/tmwa/generalhandler.cpp:139
+#: src/net/eathena/generalhandler.cpp:133 src/net/tmwa/generalhandler.cpp:137
 msgid "No servers available."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:141 src/net/tmwa/generalhandler.cpp:144
+#: src/net/eathena/generalhandler.cpp:138 src/net/tmwa/generalhandler.cpp:142
 msgid "Someone else is trying to use this account."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:146 src/net/tmwa/generalhandler.cpp:149
+#: src/net/eathena/generalhandler.cpp:143 src/net/tmwa/generalhandler.cpp:147
 msgid "This account is already logged in."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:150 src/net/tmwa/generalhandler.cpp:153
+#: src/net/eathena/generalhandler.cpp:147 src/net/tmwa/generalhandler.cpp:151
 msgid "Speed hack detected."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:153 src/net/tmwa/generalhandler.cpp:156
+#: src/net/eathena/generalhandler.cpp:150 src/net/tmwa/generalhandler.cpp:154
 msgid "Duplicated login."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:156 src/net/tmwa/generalhandler.cpp:159
+#: src/net/eathena/generalhandler.cpp:153 src/net/tmwa/generalhandler.cpp:157
 msgid "Unknown connection error."
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:228 src/net/tmwa/generalhandler.cpp:236
+#: src/net/eathena/generalhandler.cpp:225 src/net/tmwa/generalhandler.cpp:235
 msgid "Got disconnected from server!"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:258 src/net/tmwa/generalhandler.cpp:267
+#: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:261
 msgid "Strength"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:259 src/net/tmwa/generalhandler.cpp:268
+#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:262
 msgid "Agility"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:260 src/net/tmwa/generalhandler.cpp:269
+#: src/net/eathena/generalhandler.cpp:252 src/net/tmwa/generalhandler.cpp:263
 msgid "Vitality"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:261 src/net/tmwa/generalhandler.cpp:270
+#: src/net/eathena/generalhandler.cpp:253 src/net/tmwa/generalhandler.cpp:264
 msgid "Intelligence"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:263 src/net/tmwa/generalhandler.cpp:272
+#: src/net/eathena/generalhandler.cpp:254 src/net/tmwa/generalhandler.cpp:265
 msgid "Dexterity"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:264 src/net/tmwa/generalhandler.cpp:273
+#: src/net/eathena/generalhandler.cpp:255 src/net/tmwa/generalhandler.cpp:266
 msgid "Luck"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:267 src/net/tmwa/generalhandler.cpp:276
+#: src/net/eathena/generalhandler.cpp:258 src/net/tmwa/generalhandler.cpp:269
 msgid "Defense"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:277
+#: src/net/eathena/generalhandler.cpp:259 src/net/tmwa/generalhandler.cpp:270
 msgid "M.Attack"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:269 src/net/tmwa/generalhandler.cpp:278
+#: src/net/eathena/generalhandler.cpp:260 src/net/tmwa/generalhandler.cpp:271
 msgid "M.Defense"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:271 src/net/tmwa/generalhandler.cpp:280
+#: src/net/eathena/generalhandler.cpp:262 src/net/tmwa/generalhandler.cpp:273
 #, no-c-format
 msgid "% Accuracy"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:273 src/net/tmwa/generalhandler.cpp:282
+#: src/net/eathena/generalhandler.cpp:264 src/net/tmwa/generalhandler.cpp:275
 #, no-c-format
 msgid "% Evade"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:275 src/net/tmwa/generalhandler.cpp:284
+#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:277
 #, no-c-format
 msgid "% Critical"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:277 src/net/tmwa/generalhandler.cpp:286
+#: src/net/eathena/generalhandler.cpp:267 src/net/tmwa/generalhandler.cpp:278
 msgid "Attack Delay"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:279 src/net/tmwa/generalhandler.cpp:288
+#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:279
 msgid "Walk Delay"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:281 src/net/tmwa/generalhandler.cpp:290
+#: src/net/eathena/generalhandler.cpp:269 src/net/tmwa/generalhandler.cpp:280
 msgid "Attack Range"
 msgstr ""
 
-#: src/net/eathena/generalhandler.cpp:283 src/net/tmwa/generalhandler.cpp:292
+#: src/net/eathena/generalhandler.cpp:270 src/net/tmwa/generalhandler.cpp:281
 msgid "Damage per sec."
 msgstr ""
 
@@ -6011,19 +6014,19 @@ msgstr ""
 msgid "unknown pvp"
 msgstr ""
 
-#: src/playerrelations.cpp:476
+#: src/playerrelations.cpp:480
 msgid "Print '...'"
 msgstr ""
 
-#: src/playerrelations.cpp:498
+#: src/playerrelations.cpp:502
 msgid "Blink name"
 msgstr ""
 
-#: src/playerrelations.cpp:543
+#: src/playerrelations.cpp:547
 msgid "Floating '...' bubble"
 msgstr ""
 
-#: src/playerrelations.cpp:546
+#: src/playerrelations.cpp:550
 msgid "Floating bubble"
 msgstr ""
 
