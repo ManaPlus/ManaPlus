@@ -421,7 +421,9 @@ void Download::addProxy(CURL *const curl)
 #endif
             break;
         case 6: // SOCKS5
+#if CURLVERSION_ATLEAST(7, 18, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
+#endif
             break;
         case 7: // SOCKS5 hostname
 #if CURLVERSION_ATLEAST(7, 18, 0)
@@ -434,12 +436,18 @@ void Download::addProxy(CURL *const curl)
 
 void Download::secureCurl(CURL *const curl)
 {
+#if CURLVERSION_ATLEAST(7, 19, 4)
     curl_easy_setopt(curl, CURLOPT_PROTOCOLS,
         CURLPROTO_HTTP | CURLPROTO_HTTPS);
     curl_easy_setopt(curl, CURLOPT_REDIR_PROTOCOLS,
         CURLPROTO_HTTP | CURLPROTO_HTTPS);
+#endif
+#if CURLVERSION_ATLEAST(7, 21, 0)
     curl_easy_setopt(curl, CURLOPT_WILDCARDMATCH, 0);
+#endif
+#if CURLVERSION_ATLEAST(7, 15, 1)
     curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 3);
+#endif
 }
 
 } // namespace Net
