@@ -62,7 +62,7 @@ class Text
         /**
          * Allows the originator of the text to specify the ideal coordinates.
          */
-        void adviseXY(const int x, const int y);
+        void adviseXY(const int x, const int y, const bool move);
 
         /**
          * Draws the text.

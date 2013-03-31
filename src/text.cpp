@@ -118,10 +118,17 @@ void Text::setColor(const gcn::Color *const color)
     mColor = color;
 }
 
-void Text::adviseXY(const int x, const int y)
+void Text::adviseXY(const int x, const int y, const bool move)
 {
-    if (textManager)
+    if (textManager && move)
+    {
         textManager->moveText(this, x - mXOffset, y);
+    }
+    else
+    {
+        mX = x - mXOffset;
+        mY = y;
+    }
 }
 
 void Text::draw(Graphics *const graphics, const int xOff, const int yOff)

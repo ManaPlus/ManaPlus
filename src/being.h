@@ -999,6 +999,7 @@ class Being : public ActorSprite, public ConfigListener
         static bool mShowPlayersStatus;
         static bool mEnableReorderSprites;
         static bool mHideErased;
+        static bool mMoveNames;
         static int mAwayEffect;
 
         unsigned int mMoveTime;

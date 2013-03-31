@@ -189,6 +189,7 @@ bool Being::mShowLevel = false;
 bool Being::mShowPlayersStatus = false;
 bool Being::mEnableReorderSprites = true;
 bool Being::mHideErased = false;
+bool Being::mMoveNames = false;
 int Being::mAwayEffect = -1;
 
 std::list<BeingCacheEntry*> beingInfoCache;
@@ -362,7 +363,7 @@ void Being::setPosition(const Vector &pos)
     if (mText)
     {
         mText->adviseXY(static_cast<int>(pos.x), static_cast<int>(pos.y)
-            - getHeight() - mText->getHeight() - 6);
+            - getHeight() - mText->getHeight() - 6, mMoveNames);
     }
 }
 
@@ -1587,11 +1588,11 @@ void Being::updateCoords()
     if (mType == MONSTER)
     {
         mDispName->adviseXY(getPixelX(),
-            getPixelY() - getHeight() - mDispName->getHeight());
+            getPixelY() - getHeight() - mDispName->getHeight(), mMoveNames);
     }
     else
     {
-        mDispName->adviseXY(getPixelX(), getPixelY());
+        mDispName->adviseXY(getPixelX(), getPixelY(), mMoveNames);
     }
 }
 
@@ -1927,6 +1928,7 @@ void Being::reReadConfig()
         mShowPlayersStatus = config.getBoolValue("showPlayersStatus");
         mEnableReorderSprites = config.getBoolValue("enableReorderSprites");
         mHideErased = config.getBoolValue("hideErased");
+        mMoveNames = config.getBoolValue("moveNames");
 
         mUpdateConfigTime = cur_time;
     }

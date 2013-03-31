@@ -313,6 +313,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("weightMsg", true);
     AddDEF("enableLangTab", true);
     AddDEF("showAllLang", false);
+    AddDEF("moveNames", false);
     return configData;
 }
 

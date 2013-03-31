@@ -68,6 +68,9 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Visible names"), "",
         "visiblenames", this, "visiblenamesEvent");
 
+    new SetupItemCheckBox(_("Auto move names"), "",
+        "moveNames", this, "moveNamesEvent");
+
     new SetupItemCheckBox(_("Secure trades"), "",
         "securetrades", this, "securetradesEvent");
 
