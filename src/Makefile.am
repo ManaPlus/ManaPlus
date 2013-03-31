@@ -459,6 +459,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/sdlimagehelper.h \
 	      resources/sdlmusic.cpp \
 	      resources/sdlmusic.h \
+	      resources/sounddb.cpp \
+	      resources/sounddb.h \
 	      resources/soundeffect.cpp \
 	      resources/soundeffect.h \
 	      resources/spritedef.cpp \

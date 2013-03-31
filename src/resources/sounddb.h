@@ -1,5 +1,5 @@
 /*
- *  The ManaPlus Client
+ *  Color database
  *  Copyright (C) 2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -18,18 +18,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NOTIFYMANAGER_H
-#define NOTIFYMANAGER_H
+#ifndef SOUNDDB_H
+#define SOUNDDB_H
 
-#include "notifications.h"
-
+#include <map>
 #include <string>
 
-namespace NotifyManager
+#include "localconsts.h"
+
+namespace SoundDB
 {
-    void notify(const unsigned int message);
-    void notify(const unsigned int message, const int num);
-    void notify(const unsigned int message, const std::string &str);
-    int getIndexBySound(const std::string &sound);
+    void load();
+
+    void unload();
+
+    std::string &getSound(const int id);
 }
+
 #endif

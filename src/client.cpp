@@ -83,6 +83,7 @@
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 #include "resources/sdlimagehelper.h"
+#include "resources/sounddb.h"
 #include "resources/itemdb.h"
 #include "resources/mapdb.h"
 #include "resources/monsterdb.h"
@@ -734,6 +735,7 @@ void Client::gameClear()
     // Unload XML databases
     CharDB::unload();
     ColorDB::unload();
+    SoundDB::unload();
     EmoteDB::unload();
     ItemDB::unload();
     MonsterDB::unload();
@@ -1369,6 +1371,7 @@ int Client::gameExec()
                     // Load XML databases
                     CharDB::load();
                     ColorDB::load();
+                    SoundDB::load();
                     MapDB::load();
                     ItemDB::load();
                     Being::load();

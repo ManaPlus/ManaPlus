@@ -22,12 +22,15 @@
 
 #include "guildmanager.h"
 #include "localplayer.h"
+#include "soundmanager.h"
 
 #include "gui/widgets/chattab.h"
 
 #include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
+
+#include "resources/sounddb.h"
 
 namespace NotifyManager
 {
@@ -93,6 +96,7 @@ namespace NotifyManager
             default:
                 break;
         }
+        soundManager.playSfx(SoundDB::getSound(message));
     }
 
     void notify(const unsigned int message, const int num)
@@ -105,6 +109,7 @@ namespace NotifyManager
             localChatTab->chatLog(strprintf(gettext(info.text),
                 num), BY_SERVER);
         }
+        soundManager.playSfx(SoundDB::getSound(message));
     }
 
     void notify(const unsigned int message, const std::string &str)
@@ -140,5 +145,16 @@ namespace NotifyManager
             default:
                 break;
         }
+        soundManager.playSfx(SoundDB::getSound(message));
+    }
+
+    int getIndexBySound(const std::string &sound)
+    {
+        for (int f = 0; f < TYPE_END; f ++)
+        {
+            if (notifications[f].sound == sound)
+                return f;
+        }
+        return 0;
     }
 }
