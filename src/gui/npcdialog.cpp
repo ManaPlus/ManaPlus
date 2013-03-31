@@ -154,7 +154,7 @@ NpcDialog::NpcDialog(const int npcId) :
     setVisible(true);
     requestFocus();
     enableVisibleSound(true);
-    sound.playGuiSound(SOUND_SHOW_WINDOW);
+    soundManager.playGuiSound(SOUND_SHOW_WINDOW);
 
     if (actorSpriteManager)
     {

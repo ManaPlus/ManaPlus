@@ -99,12 +99,12 @@ int TestLauncher::testBackend() const
 
 int TestLauncher::testSound() const
 {
-    sound.playGuiSfx("system/newmessage.ogg");
+    soundManager.playGuiSfx("system/newmessage.ogg");
     sleep(1);
-    sound.playSfx("system/newmessage.ogg", 0, 0);
-    sound.playMusic("sfx/system/newmessage.ogg");
+    soundManager.playSfx("system/newmessage.ogg", 0, 0);
+    soundManager.playMusic("sfx/system/newmessage.ogg");
     sleep(3);
-    sound.stopMusic();
+    soundManager.stopMusic();
     return 0;
 }
 

@@ -202,7 +202,7 @@ LocalPlayer::~LocalPlayer()
 
     if (mAwayDialog)
     {
-        sound.volumeRestore();
+        soundManager.volumeRestore();
         delete mAwayDialog;
         mAwayDialog = nullptr;
     }
@@ -1307,11 +1307,12 @@ void LocalPlayer::attack(Being *const target, const bool keep,
             std::string soundFile = mEquippedWeapon->getSound(
                 EQUIP_EVENT_STRIKE);
             if (!soundFile.empty())
-                sound.playSfx(soundFile);
+                soundManager.playSfx(soundFile);
         }
         else
         {
-            sound.playSfx(paths.getValue("attackSfxFile", "fist-swish.ogg"));
+            soundManager.playSfx(paths.getValue(
+                "attackSfxFile", "fist-swish.ogg"));
         }
 */
         if (!Client::limitPackets(PACKET_ATTACK))
@@ -2160,13 +2161,13 @@ void LocalPlayer::changeAwayMode()
             config.getStringValue("afkMessage"),
             DIALOG_SILENCE, true, false);
         mAwayDialog->addActionListener(mAwayListener);
-        sound.volumeOff();
+        soundManager.volumeOff();
         addAfkEffect();
     }
     else
     {
         mAwayDialog = nullptr;
-        sound.volumeRestore();
+        soundManager.volumeRestore();
         if (chatWindow)
         {
             chatWindow->displayAwayLog();
@@ -3591,12 +3592,12 @@ void LocalPlayer::updateCoords()
                 MapItem::MUSIC);
             if (str.empty())
                 str = mMap->getMusicFile();
-            if (str != sound.getCurrentMusicFile())
+            if (str != soundManager.getCurrentMusicFile())
             {
                 if (str.empty())
-                    sound.fadeOutMusic();
+                    soundManager.fadeOutMusic();
                 else
-                    sound.fadeOutAndPlayMusic(str);
+                    soundManager.fadeOutAndPlayMusic(str);
             }
         }
     }
@@ -4129,7 +4130,7 @@ void LocalPlayer::checkNewName(Being *const being)
     if (!mWaitFor.empty() && mWaitFor == nick)
     {
         debugMsg(strprintf(_("You see %s"), mWaitFor.c_str()));
-        sound.playGuiSound(SOUND_INFO);
+        soundManager.playGuiSound(SOUND_INFO);
         mWaitFor.clear();
     }
 }

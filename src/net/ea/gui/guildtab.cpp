@@ -156,7 +156,7 @@ void GuildTab::saveToLogFile(std::string &msg)
 
 void GuildTab::playNewMessageSound()
 {
-    sound.playGuiSound(SOUND_GUILD);
+    soundManager.playGuiSound(SOUND_GUILD);
 }
 
 void GuildTab::optionChanged(const std::string &value)

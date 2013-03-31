@@ -77,9 +77,9 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
     okButton->requestFocus();
 
     if (soundEvent == DIALOG_OK)
-        sound.playGuiSound(SOUND_INFO);
+        soundManager.playGuiSound(SOUND_INFO);
     else if (soundEvent == DIALOG_ERROR)
-        sound.playGuiSound(SOUND_ERROR);
+        soundManager.playGuiSound(SOUND_ERROR);
 }
 
 void OkDialog::action(const gcn::ActionEvent &event)

@@ -565,7 +565,7 @@ impHandler0(changeGameModifier)
 
 impHandler0(changeAudio)
 {
-    sound.changeAudio();
+    soundManager.changeAudio();
     return true;
 }
 

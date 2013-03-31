@@ -578,7 +578,7 @@ void Window::setVisible(bool visible, bool forceSticky)
     if (visible)
     {
         if (mPlayVisibleSound)
-            sound.playGuiSound(SOUND_SHOW_WINDOW);
+            soundManager.playGuiSound(SOUND_SHOW_WINDOW);
         if (gui)
         {
             gcn::MouseEvent *event = reinterpret_cast<gcn::MouseEvent*>(
@@ -599,7 +599,7 @@ void Window::setVisible(bool visible, bool forceSticky)
     else
     {
         if (mPlayVisibleSound)
-            sound.playGuiSound(SOUND_HIDE_WINDOW);
+            soundManager.playGuiSound(SOUND_HIDE_WINDOW);
     }
 }
 

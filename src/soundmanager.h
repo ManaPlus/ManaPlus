@@ -174,6 +174,6 @@ class SoundManager final : public ConfigListener
         int mGuiChannel;
 };
 
-extern SoundManager sound;
+extern SoundManager soundManager;
 
 #endif

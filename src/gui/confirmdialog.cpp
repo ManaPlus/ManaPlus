@@ -99,7 +99,7 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
     }
     setVisible(true);
     yesButton->requestFocus();
-    sound.playGuiSound(SOUND_REQUEST);
+    soundManager.playGuiSound(SOUND_REQUEST);
 }
 
 void ConfirmDialog::action(const gcn::ActionEvent &event)

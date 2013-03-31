@@ -245,6 +245,6 @@ void PartyTab::saveToLogFile(std::string &msg)
 
 void PartyTab::playNewMessageSound()
 {
-    sound.playGuiSound(SOUND_GUILD);
+    soundManager.playGuiSound(SOUND_GUILD);
 }
 } // namespace Ea

@@ -51,7 +51,7 @@ StatusEffect::~StatusEffect()
 void StatusEffect::playSFX() const
 {
     if (!mSFXEffect.empty())
-        sound.playSfx(mSFXEffect);
+        soundManager.playSfx(mSFXEffect);
 }
 
 void StatusEffect::deliverMessage() const

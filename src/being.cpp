@@ -629,7 +629,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
         mDamageTaken += amount;
         if (mInfo)
         {
-            sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT),
+            soundManager.playSfx(mInfo->getSound(SOUND_EVENT_HURT),
                 getTileX(), getTileY());
 
             if (!mInfo->isStaticMaxHP())
@@ -798,11 +798,11 @@ void Being::handleAttack(Being *const victim, const int damage,
             }
             if (!soundFile.empty())
             {
-                sound.playSfx(soundFile, mX, mY);
+                soundManager.playSfx(soundFile, mX, mY);
             }
             else
             {
-                sound.playSfx(paths.getValue((damage > 0)
+                soundManager.playSfx(paths.getValue((damage > 0)
                     ? "attackSfxFile" : "missSfxFile",
                     "fist-swish.ogg"), mX, mY);
             }
@@ -810,7 +810,7 @@ void Being::handleAttack(Being *const victim, const int damage,
     }
     else
     {
-        sound.playSfx(mInfo->getSound((damage > 0) ?
+        soundManager.playSfx(mInfo->getSound((damage > 0) ?
             SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
     }
 }
@@ -851,13 +851,13 @@ void Being::handleSkill(Being *const victim, const int damage,
     if (data)
     {
         if (damage > 0)
-            sound.playSfx(data->soundHit, mX, mY);
+            soundManager.playSfx(data->soundHit, mX, mY);
         else
-            sound.playSfx(data->soundMiss, mX, mY);
+            soundManager.playSfx(data->soundMiss, mX, mY);
     }
     else
     {
-        sound.playSfx(mInfo->getSound((damage > 0) ?
+        soundManager.playSfx(mInfo->getSound((damage > 0) ?
             SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
     }
 }
@@ -1093,7 +1093,10 @@ void Being::setAction(const Action &action, const int attackId)
     {
         case MOVE:
             if (mInfo)
-                sound.playSfx(mInfo->getSound(SOUND_EVENT_MOVE), mX, mY);
+            {
+                soundManager.playSfx(mInfo->getSound(
+                    SOUND_EVENT_MOVE), mX, mY);
+            }
             currentAction = SpriteAction::MOVE;
             // Note: When adding a run action,
             // Differentiate walk and run with action name,
@@ -1108,7 +1111,7 @@ void Being::setAction(const Action &action, const int attackId)
                     event = SOUND_EVENT_SITTOP;
                 else
                     event = SOUND_EVENT_SIT;
-                sound.playSfx(mInfo->getSound(event), mX, mY);
+                soundManager.playSfx(mInfo->getSound(event), mX, mY);
             }
             break;
         case ATTACK:
@@ -1155,7 +1158,10 @@ void Being::setAction(const Action &action, const int attackId)
             break;
         case HURT:
             if (mInfo)
-                sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT), mX, mY);
+            {
+                soundManager.playSfx(mInfo->getSound(
+                    SOUND_EVENT_HURT), mX, mY);
+            }
             //currentAction = SpriteAction::HURT;// Buggy: makes the player stop
                                             // attacking and unable to attack
                                             // again until he moves.
@@ -1165,7 +1171,7 @@ void Being::setAction(const Action &action, const int attackId)
             currentAction = SpriteAction::DEAD;
             if (mInfo)
             {
-                sound.playSfx(mInfo->getSound(SOUND_EVENT_DIE), mX, mY);
+                soundManager.playSfx(mInfo->getSound(SOUND_EVENT_DIE), mX, mY);
                 if (mType == MONSTER || mType == NPC)
                     mYDiff = mInfo->getDeadSortOffsetY();
             }
@@ -1175,7 +1181,10 @@ void Being::setAction(const Action &action, const int attackId)
             break;
         case SPAWN:
             if (mInfo)
-                sound.playSfx(mInfo->getSound(SOUND_EVENT_SPAWN), mX, mY);
+            {
+                soundManager.playSfx(mInfo->getSound(
+                    SOUND_EVENT_SPAWN), mX, mY);
+            }
             currentAction = SpriteAction::SPAWN;
             break;
         default:

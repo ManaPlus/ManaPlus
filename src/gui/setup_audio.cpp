@@ -77,10 +77,10 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
         "playGuiSound", this, "playGuiSoundEvent");
 
     new SetupItemSlider(_("Sfx volume"), "", "sfxVolume",
-        this, "sfxVolumeEvent", 0, sound.getMaxVolume(), 150, true);
+        this, "sfxVolumeEvent", 0, soundManager.getMaxVolume(), 150, true);
 
     new SetupItemSlider(_("Music volume"), "", "musicVolume",
-        this, "musicVolumeEvent", 0, sound.getMaxVolume(), 150, true);
+        this, "musicVolumeEvent", 0, soundManager.getMaxVolume(), 150, true);
 
     new SetupItemCheckBox(_("Enable music fade out"), "",
         "fadeoutmusic", this, "fadeoutmusicEvent");
@@ -156,20 +156,20 @@ void Setup_Audio::apply()
     SetupTabScroll::apply();
     if (config.getBoolValue("sound"))
     {
-        sound.init();
+        soundManager.init();
         if (viewport && config.getBoolValue("playMusic"))
         {
             const Map *const map = viewport->getMap();
             if (map)
-                sound.playMusic(map->getMusicFile());
+                soundManager.playMusic(map->getMusicFile());
         }
         else
         {
-            sound.stopMusic();
+            soundManager.stopMusic();
         }
     }
     else
     {
-        sound.close();
+        soundManager.close();
     }
 }

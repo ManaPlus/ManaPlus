@@ -150,7 +150,7 @@ KeyboardConfig keyboard;
 UserPalette *userPalette = nullptr;
 Graphics *mainGraphics = nullptr;
 
-SoundManager sound;
+SoundManager soundManager;
 int openGLMode = 0;
 
 static uint32_t nextTick(uint32_t interval, void *param A_UNUSED);
@@ -594,10 +594,10 @@ void Client::gameInit()
     try
     {
         if (config.getBoolValue("sound"))
-            sound.init();
+            soundManager.init();
 
-        sound.setSfxVolume(config.getIntValue("sfxVolume"));
-        sound.setMusicVolume(config.getIntValue("musicVolume"));
+        soundManager.setSfxVolume(config.getIntValue("sfxVolume"));
+        soundManager.setMusicVolume(config.getIntValue("musicVolume"));
     }
     catch (const char *const err)
     {
@@ -618,7 +618,8 @@ void Client::gameInit()
     userPalette = new UserPalette;
     setupWindow = new Setup;
 
-    sound.playMusic(branding.getValue("loginMusic", "Magick - Real.ogg"));
+    soundManager.playMusic(branding.getValue(
+        "loginMusic", "Magick - Real.ogg"));
 
     // Initialize default server
     mCurrentServer.hostname = mOptions.serverName;
@@ -794,7 +795,7 @@ void Client::gameClear()
     BeingInfo::clear();
 
     // Shutdown sound
-    sound.close();
+    soundManager.close();
 
     if (logger)
         logger->log1("Quitting6");
@@ -823,7 +824,7 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting10");
 
-    sound.shutdown();
+    soundManager.shutdown();
     touchManager.shutdown();
 
 #ifdef DEBUG_CONFIG
@@ -1009,7 +1010,7 @@ int Client::gameExec()
             ++lastTickTime;
             k ++;
         }
-        sound.logic();
+        soundManager.logic();
 
         logic_count += k;
         if (gui)
@@ -1465,7 +1466,7 @@ int Client::gameExec()
 
                     // Fade out logon-music here too to give the desired effect
                     // of "flowing" into the game.
-                    sound.fadeOutMusic(1000);
+                    soundManager.fadeOutMusic(1000);
 
                     // Allow any alpha opacity
                     Theme::instance()->setMinimumOpacity(-1.0f);

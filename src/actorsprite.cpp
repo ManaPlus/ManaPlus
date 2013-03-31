@@ -282,7 +282,7 @@ void ActorSprite::internalTriggerEffect(const int effectId, const bool sfx,
         controlParticle(particleEngine->addEffect(ed->mGFXEffect, 0, 0));
 
     if (sfx && !ed->mSFXEffect.empty())
-        sound.playSfx(ed->mSFXEffect);
+        soundManager.playSfx(ed->mSFXEffect);
 }
 
 void ActorSprite::updateStunMode(const int oldMode, const int newMode)

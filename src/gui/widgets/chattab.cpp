@@ -289,7 +289,7 @@ void ChatTab::chatLog(std::string line, Own own,
                 if (chatWindow && chatWindow->findHighlight(tmp.text))
                 {
                     setFlash(2);
-                    sound.playGuiSound(SOUND_HIGHLIGHT);
+                    soundManager.playGuiSound(SOUND_HIGHLIGHT);
                 }
                 else
                 {
@@ -299,7 +299,7 @@ void ChatTab::chatLog(std::string line, Own own,
             else if (getFlash() == 2)
             {
                 if (chatWindow && chatWindow->findHighlight(tmp.text))
-                    sound.playGuiSound(SOUND_HIGHLIGHT);
+                    soundManager.playGuiSound(SOUND_HIGHLIGHT);
             }
         }
 
@@ -312,7 +312,7 @@ void ChatTab::chatLog(std::string line, Own own,
             {
                 if (chatWindow)
                     chatWindow->unHideWindow();
-                sound.playGuiSound(SOUND_GLOBAL);
+                soundManager.playGuiSound(SOUND_GLOBAL);
             }
             else if (own != BY_SERVER)
             {
@@ -510,7 +510,7 @@ void ChatTab::addNewRow(std::string &line)
 
 void ChatTab::playNewMessageSound()
 {
-    sound.playGuiSound(SOUND_WHISPER);
+    soundManager.playGuiSound(SOUND_WHISPER);
 }
 
 void ChatTab::showOnline(const std::string &nick,

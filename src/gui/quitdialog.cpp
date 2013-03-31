@@ -114,7 +114,7 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     reflowLayout(200, 0);
     setLocationRelativeTo(getParent());
     setVisible(true);
-    sound.playGuiSound(SOUND_SHOW_WINDOW);
+    soundManager.playGuiSound(SOUND_SHOW_WINDOW);
 //    enableVisibleSound(true);
     requestModalFocus();
     mOkButton->requestFocus();
@@ -144,7 +144,7 @@ void QuitDialog::placeOption(ContainerPlacer &placer,
 
 void QuitDialog::action(const gcn::ActionEvent &event)
 {
-    sound.playGuiSound(SOUND_HIDE_WINDOW);
+    soundManager.playGuiSound(SOUND_HIDE_WINDOW);
     if (event.getId() == "ok")
     {
         if (viewport)

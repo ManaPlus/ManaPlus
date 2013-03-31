@@ -79,7 +79,7 @@ bool EffectManager::trigger(const int id, Being *const being,
                 being->controlParticle(selfFX);
             }
             if (!(*i).SFX.empty())
-                sound.playSfx((*i).SFX);
+                soundManager.playSfx((*i).SFX);
             break;
         }
     }
@@ -104,7 +104,7 @@ Particle *EffectManager::triggerReturn(const int id, Being *const being,
                 being->controlParticle(rValue);
             }
             if (!(*i).SFX.empty())
-                sound.playSfx((*i).SFX);
+                soundManager.playSfx((*i).SFX);
             break;
         }
     }
@@ -126,7 +126,7 @@ bool EffectManager::trigger(const int id, const int x, const int y,
             if (!(*i).GFX.empty() && particleEngine)
                 particleEngine->addEffect((*i).GFX, x, y, rotation);
             if (!(*i).SFX.empty())
-                sound.playSfx((*i).SFX);
+                soundManager.playSfx((*i).SFX);
             break;
         }
     }
