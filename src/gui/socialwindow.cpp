@@ -1182,8 +1182,6 @@ public:
         mBrowserBox->setOpaque(false);
         mBrowserBox->setLinkHandler(this);
 
-        if (Net::getGuildHandler()->isSupported())
-            mBrowserBox->addRow(strprintf("@@guild|%s@@", _("Create Guild")));
         mBrowserBox->addRow(strprintf("@@party|%s@@", _("Create Party")));
         mBrowserBox->addRow("##3---");
         mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
@@ -1488,15 +1486,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "create")
     {
-        if (Net::getGuildHandler()->isSupported())
-        {
-            if (mCreatePopup)
-                mCreatePopup->show(mCreateButton);
-        }
-        else
-        {
-            showPartyCreate();
-        }
+        showPartyCreate();
     }
     else if (eventId == "invite" && mTabs->getSelectedTabIndex() > -1)
     {

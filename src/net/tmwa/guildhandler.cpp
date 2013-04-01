@@ -193,15 +193,15 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("GuildHandler::handleMessage")
 }
 
-void GuildHandler::create(const std::string &name)
+void GuildHandler::create(const std::string &name) const
 {
     MessageOut msg(CMSG_GUILD_CREATE);
     msg.writeInt32(0); // Unused
     msg.writeString(name, 24);
 }
 
-void GuildHandler::invite(int guildId A_UNUSED,
-                          const std::string &name A_UNUSED)
+void GuildHandler::invite(const int guildId A_UNUSED,
+                          const std::string &name A_UNUSED) const
 {
     if (!actorSpriteManager)
         return;
@@ -217,7 +217,8 @@ void GuildHandler::invite(int guildId A_UNUSED,
     }
 }
 
-void GuildHandler::invite(int guildId A_UNUSED, const Being *const being)
+void GuildHandler::invite(const int guildId A_UNUSED,
+                          const Being *const being) const
 {
     if (!being)
         return;
@@ -228,7 +229,7 @@ void GuildHandler::invite(int guildId A_UNUSED, const Being *const being)
     msg.writeInt32(0); // Unused
 }
 
-void GuildHandler::inviteResponse(int guildId, bool response)
+void GuildHandler::inviteResponse(const int guildId, const bool response) const
 {
     MessageOut msg(CMSG_GUILD_INVITE_REPLY);
     msg.writeInt32(guildId);
@@ -237,7 +238,7 @@ void GuildHandler::inviteResponse(int guildId, bool response)
     msg.writeInt16(0); // Unused
 }
 
-void GuildHandler::leave(int guildId)
+void GuildHandler::leave(const int guildId) const
 {
     if (!player_node)
         return;
@@ -249,7 +250,8 @@ void GuildHandler::leave(int guildId)
     msg.writeString("", 40); // Message
 }
 
-void GuildHandler::kick(GuildMember *member, std::string reason)
+void GuildHandler::kick(const GuildMember *const member,
+                        const std::string &reason) const
 {
     if (!member || !member->getGuild())
         return;
@@ -261,19 +263,20 @@ void GuildHandler::kick(GuildMember *member, std::string reason)
     msg.writeString(reason, 40); // Message
 }
 
-void GuildHandler::chat(int guildId A_UNUSED, const std::string &text)
+void GuildHandler::chat(const int guildId A_UNUSED,
+                        const std::string &text) const
 {
     if (!player_node)
         return;
 
-    std::string str = std::string(player_node->getName()).append(
+    const std::string str = std::string(player_node->getName()).append(
         " : ").append(text);
     MessageOut msg(CMSG_GUILD_MESSAGE);
     msg.writeInt16(static_cast<uint16_t>(str.size() + 4));
     msg.writeString(str, static_cast<int>(str.length()));
 }
 
-void GuildHandler::memberList(int guildId A_UNUSED)
+void GuildHandler::memberList(const int guildId A_UNUSED) const
 {
     // TODO four types of info requests:
     // 0 = basic info + alliance info
@@ -286,7 +289,7 @@ void GuildHandler::memberList(int guildId A_UNUSED)
     msg.writeInt32(1); // Request member list
 }
 
-void GuildHandler::info(int guildId A_UNUSED)
+void GuildHandler::info(const int guildId A_UNUSED)
 {
     // TODO four types of info requests:
     // 0 = basic info + alliance info
@@ -300,7 +303,8 @@ void GuildHandler::info(int guildId A_UNUSED)
     msg.writeInt32(0); // Request basic info
 }
 
-void GuildHandler::changeMemberPostion(GuildMember *member, int level)
+void GuildHandler::changeMemberPostion(const GuildMember *const member,
+                                       const int level) const
 {
     if (!member || !member->getGuild())
         return;
@@ -312,8 +316,8 @@ void GuildHandler::changeMemberPostion(GuildMember *member, int level)
     msg.writeInt32(level); // pos
 }
 
-void GuildHandler::changeNotice(int guildId, std::string msg1,
-                                std::string msg2)
+void GuildHandler::changeNotice(const int guildId, const std::string &msg1,
+                                const std::string &msg2) const
 {
     MessageOut msg(CMSG_GUILD_CHANGE_NOTICE);
     msg.writeInt32(guildId);

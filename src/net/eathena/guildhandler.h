@@ -40,29 +40,34 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
 
         ~GuildHandler();
 
-        void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg) override;
 
-        void create(const std::string &name);
+        void create(const std::string &name) const override;
 
-        void invite(int guildId, const std::string &name);
+        void invite(const int guildId, const std::string &name) const override;
 
-        void invite(int guildId, const Being *const being);
+        void invite(const int guildId,
+                    const Being *const being) const override;
 
-        void inviteResponse(int guildId, bool response);
+        void inviteResponse(const int guildId,
+                            const bool response) const override;
 
-        void leave(int guildId);
+        void leave(const int guildId) const override;
 
-        void kick(GuildMember *member, std::string reason = "");
+        void kick(const GuildMember *const member,
+                  const std::string &reason = "") const override;
 
-        void chat(int guildId, const std::string &text);
+        void chat(const int guildId, const std::string &text) const override;
 
-        void memberList(int guildId);
+        void memberList(const int guildId) const override;
 
-        void info(int guildId);
+        void info(const int guildId) override;
 
-        void changeMemberPostion(GuildMember *member, int level);
+        void changeMemberPostion(const GuildMember *const member,
+                                 const int level) const override;
 
-        void changeNotice(int guildId, std::string msg1, std::string msg2);
+        void changeNotice(const int guildId, const std::string &msg1,
+                          const std::string &msg2) const override;
 };
 
     extern Ea::GuildTab *guildTab;

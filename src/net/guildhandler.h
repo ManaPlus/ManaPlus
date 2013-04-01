@@ -40,42 +40,48 @@ class GuildHandler
         virtual ~GuildHandler()
         { }
 
-        virtual bool isSupported()
-        { return false; }
+        virtual void create(const std::string &name) const = 0;
 
-        virtual void create(const std::string &name) = 0;
+        virtual void invite(const int guildId,
+                            const std::string &name) const = 0;
 
-        virtual void invite(int guildId, const std::string &name) = 0;
+        virtual void invite(const int guildId,
+                            const Being *const being) const = 0;
 
-        virtual void invite(int guildId, const Being *const being) = 0;
+        virtual void inviteResponse(const int guildId,
+                                    const bool response) const = 0;
 
-        virtual void inviteResponse(int guildId, bool response) = 0;
+        virtual void leave(const int guildId) const = 0;
 
-        virtual void leave(int guildId) = 0;
+        virtual void kick(const GuildMember *const member,
+                          const std::string &reason = "") const = 0;
 
-        virtual void kick(GuildMember *member, std::string reason = "") = 0;
+        virtual void chat(const int guildId,
+                          const std::string &text) const = 0;
 
-        virtual void chat(int guildId, const std::string &text) = 0;
+        virtual void memberList(const int guildId) const = 0;
 
-        virtual void memberList(int guildId) = 0;
+        virtual void info(const int guildId) = 0;
 
-        virtual void info(int guildId) = 0;
+        virtual void changeMemberPostion(const GuildMember *const member,
+                                         const int level) const = 0;
 
-        virtual void changeMemberPostion(GuildMember *member, int level) = 0;
+        virtual void requestAlliance(const int guildId,
+                                     const int otherGuildId) const = 0;
 
-        virtual void requestAlliance(int guildId, int otherGuildId) = 0;
+        virtual void requestAllianceResponse(const int guildId,
+                                             int const otherGuildId,
+                                             const bool response) const = 0;
 
-        virtual void requestAllianceResponse(int guildId, int otherGuildId,
-                                             bool response) = 0;
+        virtual void endAlliance(const int guildId,
+                                 const int otherGuildId) const = 0;
 
-        virtual void endAlliance(int guildId, int otherGuildId) = 0;
+        virtual void changeNotice(const int guildId, const std::string &msg1,
+                                  const std::string &msg2) const = 0;
 
-        virtual void changeNotice(int guildId, std::string msg1,
-                                  std::string msg2) = 0;
+        virtual void clear() const = 0;
 
-        virtual void clear() = 0;
-
-        virtual ChatTab *getTab() = 0;
+        virtual ChatTab *getTab() const = 0;
 };
 
 }

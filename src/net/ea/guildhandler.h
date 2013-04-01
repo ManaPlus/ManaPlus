@@ -39,70 +39,70 @@ class GuildHandler : public Net::GuildHandler
 
         ~GuildHandler();
 
-        void requestAlliance(int guildId, int otherGuildId);
+        void requestAlliance(const int guildId,
+                             const int otherGuildId) const override;
 
-        void requestAllianceResponse(int guildId, int otherGuildId,
-                                     bool response);
+        void requestAllianceResponse(const int guildId, const int otherGuildId,
+                                     const bool response) const override;
 
-        void endAlliance(int guildId, int otherGuildId);
+        void endAlliance(const int guildId,
+                         const int otherGuildId) const override;
 
-        bool isSupported() A_WARN_UNUSED;
+        virtual void processGuildCreateResponse(Net::MessageIn &msg) const;
 
-        virtual void processGuildCreateResponse(Net::MessageIn &msg);
+        virtual void processGuildPositionInfo(Net::MessageIn &msg) const;
 
-        virtual void processGuildPositionInfo(Net::MessageIn &msg);
+        virtual void processGuildMemberLogin(Net::MessageIn &msg) const;
 
-        virtual void processGuildMemberLogin(Net::MessageIn &msg);
-
-        virtual void processGuildMasterOrMember(Net::MessageIn &msg);
+        virtual void processGuildMasterOrMember(Net::MessageIn &msg) const;
 
         virtual void processGuildBasicInfo(Net::MessageIn &msg);
 
-        virtual void processGuildAlianceInfo(Net::MessageIn &msg);
+        virtual void processGuildAlianceInfo(Net::MessageIn &msg) const;
 
-        virtual void processGuildMemberList(Net::MessageIn &msg);
+        virtual void processGuildMemberList(Net::MessageIn &msg) const;
 
-        virtual void processGuildPosNameList(Net::MessageIn &msg);
+        virtual void processGuildPosNameList(Net::MessageIn &msg) const;
 
-        virtual void processGuildPosInfoList(Net::MessageIn &msg);
+        virtual void processGuildPosInfoList(Net::MessageIn &msg) const;
 
-        virtual void processGuildPositionChanged(Net::MessageIn &msg);
+        virtual void processGuildPositionChanged(Net::MessageIn &msg) const;
 
-        virtual void processGuildMemberPosChange(Net::MessageIn &msg);
+        virtual void processGuildMemberPosChange(Net::MessageIn &msg) const;
 
-        virtual void processGuildEmblem(Net::MessageIn &msg);
+        virtual void processGuildEmblem(Net::MessageIn &msg) const;
 
-        virtual void processGuildSkillInfo(Net::MessageIn &msg);
+        virtual void processGuildSkillInfo(Net::MessageIn &msg) const;
 
-        virtual void processGuildNotice(Net::MessageIn &msg);
+        virtual void processGuildNotice(Net::MessageIn &msg) const;
 
-        virtual void processGuildInvite(Net::MessageIn &msg);
+        virtual void processGuildInvite(Net::MessageIn &msg) const;
 
-        virtual void processGuildInviteAck(Net::MessageIn &msg);
+        virtual void processGuildInviteAck(Net::MessageIn &msg) const;
 
-        virtual void processGuildLeave(Net::MessageIn &msg);
+        virtual void processGuildLeave(Net::MessageIn &msg) const;
 
-        virtual void processGuildExpulsion(Net::MessageIn &msg);
+        virtual void processGuildExpulsion(Net::MessageIn &msg) const;
 
-        virtual void processGuildExpulsionList(Net::MessageIn &msg);
+        virtual void processGuildExpulsionList(Net::MessageIn &msg) const;
 
-        virtual void processGuildMessage(Net::MessageIn &msg);
+        virtual void processGuildMessage(Net::MessageIn &msg) const;
 
-        virtual void processGuildSkillUp(Net::MessageIn &msg);
+        virtual void processGuildSkillUp(Net::MessageIn &msg) const;
 
-        virtual void processGuildReqAlliance(Net::MessageIn &msg);
+        virtual void processGuildReqAlliance(Net::MessageIn &msg) const;
 
-        virtual void processGuildReqAllianceAck(Net::MessageIn &msg);
+        virtual void processGuildReqAllianceAck(Net::MessageIn &msg) const;
 
-        virtual void processGuildDelAlliance(Net::MessageIn &msg);
+        virtual void processGuildDelAlliance(Net::MessageIn &msg) const;
 
-        virtual void processGuildOppositionAck(Net::MessageIn &msg);
+        virtual void processGuildOppositionAck(Net::MessageIn &msg) const;
 
-        virtual void processGuildBroken(Net::MessageIn &msg);
+        virtual void processGuildBroken(Net::MessageIn &msg) const;
 
-        void clear();
+        void clear() const override;
 
-        ChatTab *getTab();
+        ChatTab *getTab() const override;
 
     protected:
         bool showBasicInfo;
