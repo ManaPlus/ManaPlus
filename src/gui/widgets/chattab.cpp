@@ -460,17 +460,19 @@ int ChatTab::getType() const
 void ChatTab::addRow(std::string &line)
 {
     size_t idx = 0;
-
-    for (size_t f = 0; f < line.length(); f++)
+    if (line.find("[@@http") == std::string::npos)
     {
-        if (line.at(f) == ' ')
+        for (size_t f = 0; f < line.length(); f++)
         {
-            idx = f;
-        }
-        else if (f - idx > MAX_WORD_SIZE)
-        {
-            line.insert(f, " ");
-            idx = f;
+            if (line.at(f) == ' ')
+            {
+                idx = f;
+            }
+            else if (f - idx > MAX_WORD_SIZE)
+            {
+                line.insert(f, " ");
+                idx = f;
+            }
         }
     }
     mTextOutput->addRow(line);
