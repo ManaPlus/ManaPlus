@@ -36,33 +36,37 @@ class InventoryHandler
         virtual ~InventoryHandler()
         { }
 
-        virtual void equipItem(const Item *item) = 0;
+        virtual void equipItem(const Item *const item) const = 0;
 
-        virtual void unequipItem(const Item *item) = 0;
+        virtual void unequipItem(const Item *const item) const = 0;
 
-        virtual void useItem(const Item *item) = 0;
+        virtual void useItem(const Item *const item) const = 0;
 
-        virtual void dropItem(const Item *item, int amount) = 0;
+        virtual void dropItem(const Item *const item,
+                              const int amount) const = 0;
 
-        virtual bool canSplit(const Item *item) const = 0;
+        virtual bool canSplit(const Item *const item) const = 0;
 
-        virtual void splitItem(const Item *item, int amount) = 0;
+        virtual void splitItem(const Item *const item,
+                               const int amount) const = 0;
 
-        virtual void moveItem(int oldIndex, int newIndex) = 0;
+        virtual void moveItem(const int oldIndex,
+                              const int newIndex) const = 0;
 
-        virtual void openStorage(int type) = 0;
+        virtual void openStorage(const int type) const = 0;
 
-        virtual void closeStorage(int type) = 0;
+        virtual void closeStorage(const int type) const = 0;
 
         //void changeCart() = 0;
 
-        virtual void moveItem2(int source, int slot, int amount,
-                               int destination) = 0;
+        virtual void moveItem2(const int source, const int slot,
+                               const int amount,
+                               const int destination) const = 0;
 
         // TODO: fix/remove me
-        virtual size_t getSize(int type) const A_WARN_UNUSED = 0;
+        virtual size_t getSize(const int type) const A_WARN_UNUSED = 0;
 
-        virtual int convertFromServerSlot(int eAthenaSlot) const = 0;
+        virtual int convertFromServerSlot(const int eAthenaSlot) const = 0;
 };
 
 } // namespace Net

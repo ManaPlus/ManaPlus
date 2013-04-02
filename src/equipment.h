@@ -67,7 +67,8 @@ class Equipment
         class Backend
         {
             public:
-                virtual Item *getEquipment(int index) const A_WARN_UNUSED = 0;
+                virtual Item *getEquipment(const int index)
+                                           const A_WARN_UNUSED = 0;
 
                 virtual void clear() = 0;
 

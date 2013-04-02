@@ -48,21 +48,22 @@ class EquipBackend : public Equipment::Backend
 
         A_DELETE_COPY(EquipBackend)
 
-        Item *getEquipment(int index) const A_WARN_UNUSED
+        Item *getEquipment(const int index) const A_WARN_UNUSED
         {
             int invyIndex = mEquipment[index];
             if (invyIndex == -1)
                 return nullptr;
 
-            if (PlayerInfo::getInventory())
-                return PlayerInfo::getInventory()->getItem(invyIndex);
+            const Inventory *const inv = PlayerInfo::getInventory();
+            if (inv)
+                return inv->getItem(invyIndex);
             else
                 return nullptr;
         }
 
         void clear()
         {
-            Inventory *inv = PlayerInfo::getInventory();
+            Inventory *const inv = PlayerInfo::getInventory();
             if (!inv)
                 return;
             for (int i = 0; i < EQUIPMENT_SIZE; i++)
@@ -78,18 +79,19 @@ class EquipBackend : public Equipment::Backend
             }
         }
 
-        void setEquipment(int index, int inventoryIndex)
+        void setEquipment(const int index, const int inventoryIndex)
         {
-            Inventory *inv = PlayerInfo::getInventory();
+            Inventory *const inv = PlayerInfo::getInventory();
             if (!inv)
                 return;
 
             // Unequip existing item
-            Item* item = inv->getItem(mEquipment[index]);
+            Item *item = inv->getItem(mEquipment[index]);
 
             if (item)
                 item->setEquipped(false);
 
+            // not checking index because it must be safe
             mEquipment[index] = inventoryIndex;
 
             item = inv->getItem(inventoryIndex);
@@ -117,8 +119,9 @@ class InventoryItem
         unsigned char color;
         bool equip;
 
-        InventoryItem(int slot0, int id0, int quantity0, int refine0,
-                      unsigned char color0, bool equip0) :
+        InventoryItem(const int slot0, const int id0, const int quantity0,
+                      const int refine0, const unsigned char color0,
+                      const bool equip0) :
             slot(slot0),
             id(id0),
             quantity(quantity0),
@@ -146,34 +149,37 @@ class InventoryHandler : public Net::InventoryHandler
 
         ~InventoryHandler();
 
-        bool canSplit(const Item *item) const A_WARN_UNUSED;
+        bool canSplit(const Item *const item) const override A_WARN_UNUSED;
 
-        void splitItem(const Item *item, int amount);
+        void splitItem(const Item *const item,
+                       const int amount) const override;
 
-        void moveItem(int oldIndex, int newIndex);
+        void moveItem(const int oldIndex, const int newIndex) const override;
 
-        void openStorage(int type);
+        void openStorage(const int type) const override;
 
-        size_t getSize(int type) const A_WARN_UNUSED;
+        size_t getSize(const int type) const override A_WARN_UNUSED;
 
-        int convertFromServerSlot(int serverSlot) const A_WARN_UNUSED;
+        int convertFromServerSlot(const int serverSlot)
+                                  const override A_WARN_UNUSED;
 
-        void pushPickup(int floorId)
+        void pushPickup(const int floorId)
         { mSentPickups.push(floorId); }
 
-        int getSlot(int eAthenaSlot) A_WARN_UNUSED;
+        int getSlot(const int eAthenaSlot) const A_WARN_UNUSED;
 
-        void processPlayerInventory(Net::MessageIn &msg, bool playerInvintory);
+        void processPlayerInventory(Net::MessageIn &msg,
+                                    const bool playerInvintory);
 
         void processPlayerStorageEquip(Net::MessageIn &msg);
 
         void processPlayerInventoryAdd(Net::MessageIn &msg);
 
-        void processPlayerInventoryRemove(Net::MessageIn &msg);
+        void processPlayerInventoryRemove(Net::MessageIn &msg) const;
 
-        void processPlayerInventoryUse(Net::MessageIn &msg);
+        void processPlayerInventoryUse(Net::MessageIn &msg) const;
 
-        void processItemUseResponse(Net::MessageIn &msg);
+        void processItemUseResponse(Net::MessageIn &msg) const;
 
         void processPlayerStorageStatus(Net::MessageIn &msg);
 
@@ -189,7 +195,7 @@ class InventoryHandler : public Net::InventoryHandler
 
         void processPlayerUnEquip(Net::MessageIn &msg);
 
-        void processPlayerAttackRange(Net::MessageIn &msg);
+        void processPlayerAttackRange(Net::MessageIn &msg) const;
 
         void processPlayerArrowEquip(Net::MessageIn &msg);
 

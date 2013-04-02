@@ -44,19 +44,20 @@ class InventoryHandler final : public MessageHandler,
 
         ~InventoryHandler();
 
-        void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg) override;
 
-        void equipItem(const Item *item);
+        void equipItem(const Item *const item) const override;
 
-        void unequipItem(const Item *item);
+        void unequipItem(const Item *const item) const override;
 
-        void useItem(const Item *item);
+        void useItem(const Item *const item) const override;
 
-        void dropItem(const Item *item, int amount);
+        void dropItem(const Item *const item, const int amount) const override;
 
-        void closeStorage(int type);
+        void closeStorage(const int type) const override;
 
-        void moveItem2(int source, int slot, int amount, int destination);
+        void moveItem2(const int source, const int slot,
+                       const int amount, const int destination) const override;
 };
 
 } // namespace EAthena

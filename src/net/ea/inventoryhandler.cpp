@@ -53,21 +53,21 @@ const Equipment::Slot EQUIP_POINTS[Equipment::EQUIP_VECTOREND] =
 // missing EQUIP_RING1_SLOT
 const Equipment::Slot EQUIP_CONVERT[] =
 {
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 0
-    Equipment::EQUIP_FEET_SLOT,     // SPRITE_SHOE
-    Equipment::EQUIP_LEGS_SLOT,     // SPRITE_BOTTOMCLOTHES
-    Equipment::EQUIP_TORSO_SLOT,    // SPRITE_TOPCLOTHES
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 0
-    Equipment::EQUIP_NECK_SLOT,     // SPRITE_RING
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 0
-    Equipment::EQUIP_HEAD_SLOT,     // SPRITE_HAT
-    Equipment::EQUIP_RING2_SLOT,    // 0
-    Equipment::EQUIP_GLOVES_SLOT,   // SPRITE_GLOVES
-    Equipment::EQUIP_FIGHT1_SLOT,   // SPRITE_WEAPON
-    Equipment::EQUIP_FIGHT2_SLOT,   // SPRITE_SHIELD
-    Equipment::EQUIP_EVOL_RING1_SLOT,    // SPRITE_EVOL1
-    Equipment::EQUIP_EVOL_RING2_SLOT,    // SPRITE_EVOL2
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 0
+    Equipment::EQUIP_PROJECTILE_SLOT,   // 0
+    Equipment::EQUIP_FEET_SLOT,         // SPRITE_SHOE
+    Equipment::EQUIP_LEGS_SLOT,         // SPRITE_BOTTOMCLOTHES
+    Equipment::EQUIP_TORSO_SLOT,        // SPRITE_TOPCLOTHES
+    Equipment::EQUIP_PROJECTILE_SLOT,   // 0
+    Equipment::EQUIP_NECK_SLOT,         // SPRITE_RING
+    Equipment::EQUIP_PROJECTILE_SLOT,   // 0
+    Equipment::EQUIP_HEAD_SLOT,         // SPRITE_HAT
+    Equipment::EQUIP_RING2_SLOT,        // 0
+    Equipment::EQUIP_GLOVES_SLOT,       // SPRITE_GLOVES
+    Equipment::EQUIP_FIGHT1_SLOT,       // SPRITE_WEAPON
+    Equipment::EQUIP_FIGHT2_SLOT,       // SPRITE_SHIELD
+    Equipment::EQUIP_EVOL_RING1_SLOT,   // SPRITE_EVOL1
+    Equipment::EQUIP_EVOL_RING2_SLOT,   // SPRITE_EVOL2
+    Equipment::EQUIP_PROJECTILE_SLOT,   // 0
 };
 
 namespace Ea
@@ -92,28 +92,29 @@ InventoryHandler::~InventoryHandler()
     mStorage = nullptr;
 }
 
-bool InventoryHandler::canSplit(const Item *item A_UNUSED) const
+bool InventoryHandler::canSplit(const Item *const item A_UNUSED) const
 {
     return false;
 }
 
-void InventoryHandler::splitItem(const Item *item A_UNUSED,
-                                 int amount A_UNUSED)
+void InventoryHandler::splitItem(const Item *const item A_UNUSED,
+                                 const int amount A_UNUSED) const
 {
     // Not implemented for eAthena (possible?)
 }
 
-void InventoryHandler::moveItem(int oldIndex A_UNUSED, int newIndex A_UNUSED)
+void InventoryHandler::moveItem(const int oldIndex A_UNUSED,
+                                const int newIndex A_UNUSED) const
 {
     // Not implemented for eAthena (possible?)
 }
 
-void InventoryHandler::openStorage(int type A_UNUSED)
+void InventoryHandler::openStorage(const int type A_UNUSED) const
 {
     // Doesn't apply to eAthena, since opening happens through NPCs?
 }
 
-size_t InventoryHandler::getSize(int type) const
+size_t InventoryHandler::getSize(const int type) const
 {
     switch (type)
     {
@@ -129,7 +130,7 @@ size_t InventoryHandler::getSize(int type) const
             return 0;
     }
 }
-int InventoryHandler::convertFromServerSlot(int serverSlot) const
+int InventoryHandler::convertFromServerSlot(const int serverSlot) const
 {
     if (serverSlot < 0 || serverSlot > 13)
         return 0;
@@ -137,7 +138,7 @@ int InventoryHandler::convertFromServerSlot(int serverSlot) const
     return EQUIP_CONVERT[serverSlot];
 }
 
-int InventoryHandler::getSlot(int eAthenaSlot)
+int InventoryHandler::getSlot(const int eAthenaSlot) const
 {
     if (eAthenaSlot == 0)
         return Equipment::EQUIP_VECTOREND;
@@ -156,7 +157,7 @@ int InventoryHandler::getSlot(int eAthenaSlot)
 }
 
 void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
-                                              bool playerInvintory)
+                                              const bool playerInvintory)
 {
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
@@ -262,14 +263,8 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 {
-    int index, amount, itemId, equipType, refine;
-//    int cards[4], itemType;
-    unsigned char identified;
-    int floorId;
-
-    Inventory *inventory = nullptr;
-    if (player_node)
-        inventory = PlayerInfo::getInventory();
+    Inventory *const inventory = player_node
+        ? PlayerInfo::getInventory() : nullptr;
 
     if (PlayerInfo::getEquipment()
         && !PlayerInfo::getEquipment()->getBackend())
@@ -277,20 +272,20 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
         mEquips.clear();
         PlayerInfo::getEquipment()->setBackend(&mEquips);
     }
-    index = msg.readInt16() - INVENTORY_OFFSET;
-    amount = msg.readInt16();
-    itemId = msg.readInt16();
-    identified = msg.readInt8();
+    const int index = msg.readInt16() - INVENTORY_OFFSET;
+    int amount = msg.readInt16();
+    const int itemId = msg.readInt16();
+    unsigned char identified = msg.readInt8();
     msg.readInt8();  // attribute
-    refine = msg.readInt8();
+    const int refine = msg.readInt8();
     for (int i = 0; i < 4; i++)
         msg.readInt16(); // cards[i]
-    equipType = msg.readInt16();
+    const int equipType = msg.readInt16();
     msg.readInt8(); // itemType
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
-
     const unsigned char err = msg.readInt8();
+    int floorId;
     if (mSentPickups.empty())
     {
         floorId = 0;
@@ -330,15 +325,13 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     }
 }
 
-void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
+void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg) const
 {
-    int index, amount;
-    Inventory *inventory = nullptr;
-    if (player_node)
-        inventory = PlayerInfo::getInventory();
+    Inventory *const inventory = player_node
+        ? PlayerInfo::getInventory() : nullptr;
 
-    index = msg.readInt16() - INVENTORY_OFFSET;
-    amount = msg.readInt16();
+    const int index = msg.readInt16() - INVENTORY_OFFSET;
+    const int amount = msg.readInt16();
     if (inventory)
     {
         if (Item *const item = inventory->getItem(index))
@@ -352,17 +345,15 @@ void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
     }
 }
 
-void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
+void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg) const
 {
-    int index, amount;
-    Inventory *inventory = nullptr;
-    if (player_node)
-        inventory = PlayerInfo::getInventory();
+    Inventory *const inventory = player_node
+        ? PlayerInfo::getInventory() : nullptr;
 
-    index = msg.readInt16() - INVENTORY_OFFSET;
+    const int index = msg.readInt16() - INVENTORY_OFFSET;
     msg.readInt16(); // item id
     msg.readInt32();  // id
-    amount = msg.readInt16();
+    const int amount = msg.readInt16();
     msg.readInt8();  // type
 
     if (inventory)
@@ -377,15 +368,13 @@ void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
     }
 }
 
-void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
+void InventoryHandler::processItemUseResponse(Net::MessageIn &msg) const
 {
-    int index, amount;
-    Inventory *inventory = nullptr;
-    if (player_node)
-        inventory = PlayerInfo::getInventory();
+    Inventory *const inventory = player_node
+        ? PlayerInfo::getInventory() : nullptr;
 
-    index = msg.readInt16() - INVENTORY_OFFSET;
-    amount = msg.readInt16();
+    const int index = msg.readInt16() - INVENTORY_OFFSET;
+    const int amount = msg.readInt16();
 
     if (msg.readInt8() == 0)
     {
@@ -432,16 +421,13 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 {
-    int index, amount, itemId, refine;
-    unsigned char identified;
-
     // Move an item into storage
-    index = msg.readInt16() - STORAGE_OFFSET;
-    amount = msg.readInt32();
-    itemId = msg.readInt16();
-    identified = msg.readInt8();
+    const int index = msg.readInt16() - STORAGE_OFFSET;
+    const int amount = msg.readInt32();
+    const int itemId = msg.readInt16();
+    unsigned char identified = msg.readInt8();
     msg.readInt8();  // attribute
-    refine = msg.readInt8();
+    const int refine = msg.readInt8();
     for (int i = 0; i < 4; i++)
         msg.readInt16(); // card i
 
@@ -465,11 +451,9 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
 {
-    int index, amount;
-
     // Move an item out of storage
-    index = msg.readInt16() - STORAGE_OFFSET;
-    amount = msg.readInt16();
+    const int index = msg.readInt16() - STORAGE_OFFSET;
+    const int amount = msg.readInt16();
     if (mStorage)
     {
         if (Item *const item = mStorage->getItem(index))
@@ -496,16 +480,15 @@ void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
 
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 {
-    Inventory *inventory = nullptr;
-    if (player_node)
-        inventory = PlayerInfo::getInventory();
+    Inventory *const inventory = player_node
+        ? PlayerInfo::getInventory() : nullptr;
 
     msg.readInt16(); // length
-    if (PlayerInfo::getEquipment()
-        && !PlayerInfo::getEquipment()->getBackend())
+    Equipment *const equipment = PlayerInfo::getEquipment();
+    if (equipment && !equipment->getBackend())
     {   // look like SMSG_PLAYER_INVENTORY was not received
         mEquips.clear();
-        PlayerInfo::getEquipment()->setBackend(&mEquips);
+        equipment->setBackend(&mEquips);
     }
     const int number = (msg.getLength() - 4) / 20;
 
@@ -567,7 +550,7 @@ void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
         miniStatusWindow->updateArrows();
 }
 
-void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
+void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg) const
 {
     const int range = msg.readInt16();
     if (player_node)
@@ -579,7 +562,6 @@ void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
 void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)
 {
     int index = msg.readInt16();
-
     if (index <= 1)
         return;
 

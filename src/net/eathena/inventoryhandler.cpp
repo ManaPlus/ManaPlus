@@ -135,7 +135,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void InventoryHandler::equipItem(const Item *item)
+void InventoryHandler::equipItem(const Item *const item) const
 {
     if (!item)
         return;
@@ -146,7 +146,7 @@ void InventoryHandler::equipItem(const Item *item)
     outMsg.writeInt16(0);
 }
 
-void InventoryHandler::unequipItem(const Item *item)
+void InventoryHandler::unequipItem(const Item *const item) const
 {
     if (!item)
         return;
@@ -156,7 +156,7 @@ void InventoryHandler::unequipItem(const Item *item)
         item->getInvIndex() + INVENTORY_OFFSET));
 }
 
-void InventoryHandler::useItem(const Item *item)
+void InventoryHandler::useItem(const Item *const item) const
 {
     if (!item)
         return;
@@ -167,7 +167,7 @@ void InventoryHandler::useItem(const Item *item)
     outMsg.writeInt32(item->getId()); // unused
 }
 
-void InventoryHandler::dropItem(const Item *item, int amount)
+void InventoryHandler::dropItem(const Item *const item, const int amount) const
 {
     if (!item)
         return;
@@ -179,13 +179,13 @@ void InventoryHandler::dropItem(const Item *item, int amount)
     outMsg.writeInt16(static_cast<int16_t>(amount));
 }
 
-void InventoryHandler::closeStorage(int type A_UNUSED)
+void InventoryHandler::closeStorage(const int type A_UNUSED) const
 {
     MessageOut outMsg(CMSG_CLOSE_STORAGE);
 }
 
-void InventoryHandler::moveItem2(int source, int slot, int amount,
-                                 int destination)
+void InventoryHandler::moveItem2(const int source, const int slot,
+                                 const int amount, const int destination) const
 {
     if (source == Inventory::INVENTORY && destination == Inventory::STORAGE)
     {
