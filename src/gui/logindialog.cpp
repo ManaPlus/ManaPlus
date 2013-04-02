@@ -223,12 +223,11 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
 
     addKeyListener(this);
     if (mUpdateHostLabel)
-        setContentSize(300, 250);
+        setContentSize(310, 250);
     else
-        setContentSize(300, 200);
+        setContentSize(310, 200);
 
-    reflowLayout(300);
-
+    reflowLayout();
     center();
     setVisible(true);
 
