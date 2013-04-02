@@ -163,7 +163,12 @@ void Network::dispatchMessages()
         SDL_mutexV(mMutex);
 
         if (len == 0)
-            logger->safeError("Zero length packet received. Exiting.");
+        {
+            // need copy data for safty
+            std::string str = strprintf("Wrong packet %d ""received. Exiting.",
+                msgId);
+            logger->safeError(str);
+        }
 
         if (msgId >= 0 && msgId < messagesSize)
         {
