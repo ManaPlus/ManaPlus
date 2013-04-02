@@ -2656,7 +2656,7 @@ bool Client::isTmw()
     const std::string &name = getServerName();
     if (name == "server.themanaworld.org"
         || name == "themanaworld.org"
-        || name == "81.161.192.4")
+        || name == "192.31.187.185")
     {
         return true;
     }
