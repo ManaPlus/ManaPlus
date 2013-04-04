@@ -51,7 +51,8 @@ EffectManager::EffectManager()
             mEffects.push_back(EffectDescription(
                 XML::getProperty(node, "id", -1),
                 XML::getProperty(node, "particle", ""),
-                XML::getProperty(node, "audio", "")));
+                XML::getProperty(node, "audio", ""),
+                XML::getProperty(node, "sprite", "")));
         }
     }
 }
@@ -72,14 +73,14 @@ bool EffectManager::trigger(const int id, Being *const being,
         if ((*i).id == id)
         {
             rValue = true;
-            if (!(*i).GFX.empty())
+            if (!(*i).gfx.empty())
             {
                 Particle *const selfFX = particleEngine->addEffect(
-                    (*i).GFX, 0, 0, rotation);
+                    (*i).gfx, 0, 0, rotation);
                 being->controlParticle(selfFX);
             }
-            if (!(*i).SFX.empty())
-                soundManager.playSfx((*i).SFX);
+            if (!(*i).sfx.empty())
+                soundManager.playSfx((*i).sfx);
             break;
         }
     }
@@ -97,14 +98,14 @@ Particle *EffectManager::triggerReturn(const int id, Being *const being,
     {
         if ((*i).id == id)
         {
-            if (!(*i).GFX.empty())
+            if (!(*i).gfx.empty())
             {
                 rValue = particleEngine->addEffect(
-                    (*i).GFX, 0, 0, rotation);
+                    (*i).gfx, 0, 0, rotation);
                 being->controlParticle(rValue);
             }
-            if (!(*i).SFX.empty())
-                soundManager.playSfx((*i).SFX);
+            if (!(*i).sfx.empty())
+                soundManager.playSfx((*i).sfx);
             break;
         }
     }
@@ -123,10 +124,10 @@ bool EffectManager::trigger(const int id, const int x, const int y,
         if ((*i).id == id)
         {
             rValue = true;
-            if (!(*i).GFX.empty() && particleEngine)
-                particleEngine->addEffect((*i).GFX, x, y, rotation);
-            if (!(*i).SFX.empty())
-                soundManager.playSfx((*i).SFX);
+            if (!(*i).gfx.empty() && particleEngine)
+                particleEngine->addEffect((*i).gfx, x, y, rotation);
+            if (!(*i).sfx.empty())
+                soundManager.playSfx((*i).sfx);
             break;
         }
     }
