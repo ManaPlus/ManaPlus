@@ -205,6 +205,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mEmotionSprite(nullptr),
     mEmotionTime(0),
     mSpeechTime(0),
+    mAnimationEffect(nullptr),
     mAttackSpeed(350),
     mAction(STAND),
     mSubType(0xFFFF),
@@ -295,6 +296,9 @@ Being::~Being()
     mDispName = nullptr;
     delete mText;
     mText = nullptr;
+
+    delete mAnimationEffect;
+    mAnimationEffect = nullptr;
 }
 
 void Being::setSubtype(const uint16_t subtype)
@@ -1200,6 +1204,8 @@ void Being::setAction(const Action &action, const int attackId)
         play(currentAction);
         if (mEmotionSprite)
             mEmotionSprite->play(currentAction);
+        if (mAnimationEffect)
+            mAnimationEffect->play(currentAction);
         mAction = action;
     }
 
@@ -1253,6 +1259,8 @@ void Being::setDirection(const uint8_t direction)
     CompoundSprite::setSpriteDirection(dir);
     if (mEmotionSprite)
         mEmotionSprite->setSpriteDirection(dir);
+    if (mAnimationEffect)
+        mAnimationEffect->setSpriteDirection(dir);
     recalcSpritesOrder();
 }
 
@@ -1325,8 +1333,19 @@ void Being::logic()
         mText = nullptr;
     }
 
+    const int time = tick_time * MILLISECONDS_IN_A_TICK;
     if (mEmotionSprite)
-        mEmotionSprite->update(tick_time * MILLISECONDS_IN_A_TICK);
+        mEmotionSprite->update(time);
+
+    if (mAnimationEffect)
+    {
+        mAnimationEffect->update(time);
+        if (mAnimationEffect->isTerminated())
+        {
+            delete mAnimationEffect;
+            mAnimationEffect = nullptr;
+        }
+    }
 
     int frameCount = static_cast<int>(getFrameCount());
 #ifdef MANASERV_SUPPORT
@@ -1495,12 +1514,12 @@ void Being::logic()
 void Being::drawEmotion(Graphics *const graphics, const int offsetX,
                         const int offsetY)
 {
-    if (!mEmotionSprite)
-        return;
-
     const int px = getPixelX() - offsetX - 16;
     const int py = getPixelY() - offsetY - 64 - 32;
-    mEmotionSprite->draw(graphics, px, py);
+    if (mEmotionSprite)
+        mEmotionSprite->draw(graphics, px, py);
+    if (mAnimationEffect)
+        mAnimationEffect->draw(graphics, px, py);
 }
 
 void Being::drawSpeech(const int offsetX, const int offsetY)
@@ -2821,6 +2840,8 @@ void Being::removeSpecialEffect()
         mChildParticleEffects.removeLocally(mSpecialParticle);
         mSpecialParticle = nullptr;
     }
+    delete mAnimationEffect;
+    mAnimationEffect = nullptr;
 }
 
 void Being::updateAwayEffect()
@@ -2829,6 +2850,13 @@ void Being::updateAwayEffect()
         addAfkEffect();
     else
         removeAfkEffect();
+}
+
+void Being::addEffect(const std::string &name)
+{
+    delete mAnimationEffect;
+    mAnimationEffect = AnimatedSprite::load(
+        paths.getStringValue("sprites") + name);
 }
 
 BeingEquipBackend::BeingEquipBackend(Being *const being):

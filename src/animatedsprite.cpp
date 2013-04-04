@@ -46,7 +46,8 @@ AnimatedSprite::AnimatedSprite(SpriteDef *const sprite):
     mFrame(nullptr),
     mNumber(100),
     mNumber1(100),
-    mDelayLoad(nullptr)
+    mDelayLoad(nullptr),
+    mTerminated(false)
 {
     mAlpha = 1.0f;
 
@@ -174,6 +175,7 @@ bool AnimatedSprite::update(const int time)
     {
         // Animation finished, reset to default
         play(SpriteAction::STAND);
+        mTerminated = true;
     }
 
     // Make sure something actually changed

@@ -70,17 +70,20 @@ bool EffectManager::trigger(const int id, Being *const being,
     bool rValue = false;
     FOR_EACH (std::vector<EffectDescription>::const_iterator, i, mEffects)
     {
-        if ((*i).id == id)
+        const EffectDescription &effect = *i;
+        if (effect.id == id)
         {
             rValue = true;
-            if (!(*i).gfx.empty())
+            if (!effect.gfx.empty())
             {
                 Particle *const selfFX = particleEngine->addEffect(
-                    (*i).gfx, 0, 0, rotation);
+                    effect.gfx, 0, 0, rotation);
                 being->controlParticle(selfFX);
             }
-            if (!(*i).sfx.empty())
-                soundManager.playSfx((*i).sfx);
+            if (!effect.sfx.empty())
+                soundManager.playSfx(effect.sfx);
+            if (!effect.sprite.empty())
+                being->addEffect(effect.sprite);
             break;
         }
     }
@@ -96,16 +99,19 @@ Particle *EffectManager::triggerReturn(const int id, Being *const being,
     Particle *rValue = nullptr;
     FOR_EACH (std::vector<EffectDescription>::const_iterator, i, mEffects)
     {
-        if ((*i).id == id)
+        const EffectDescription &effect = *i;
+        if (effect.id == id)
         {
-            if (!(*i).gfx.empty())
+            if (!effect.gfx.empty())
             {
                 rValue = particleEngine->addEffect(
-                    (*i).gfx, 0, 0, rotation);
+                    effect.gfx, 0, 0, rotation);
                 being->controlParticle(rValue);
             }
-            if (!(*i).sfx.empty())
-                soundManager.playSfx((*i).sfx);
+            if (!effect.sfx.empty())
+                soundManager.playSfx(effect.sfx);
+            if (!effect.sprite.empty())
+                being->addEffect(effect.sprite);
             break;
         }
     }
@@ -121,13 +127,15 @@ bool EffectManager::trigger(const int id, const int x, const int y,
     bool rValue = false;
     FOR_EACH (std::vector<EffectDescription>::const_iterator, i, mEffects)
     {
-        if ((*i).id == id)
+        const EffectDescription &effect = *i;
+        if (effect.id == id)
         {
             rValue = true;
-            if (!(*i).gfx.empty() && particleEngine)
-                particleEngine->addEffect((*i).gfx, x, y, rotation);
-            if (!(*i).sfx.empty())
-                soundManager.playSfx((*i).sfx);
+            if (!effect.gfx.empty() && particleEngine)
+                particleEngine->addEffect(effect.gfx, x, y, rotation);
+            if (!effect.sfx.empty())
+                soundManager.playSfx(effect.sfx);
+            // TODO add sprite effect to position
             break;
         }
     }

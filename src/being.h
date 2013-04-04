@@ -861,6 +861,8 @@ class Being : public ActorSprite, public ConfigListener
 
         void removeSpecialEffect();
 
+        void addEffect(const std::string &name);
+
         static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
 
         static Gender intToGender(uint8_t sex) A_WARN_UNUSED;
@@ -889,6 +891,8 @@ class Being : public ActorSprite, public ConfigListener
 
         /** Time until the last speech sentence disappears */
         int mSpeechTime;
+
+        AnimatedSprite* mAnimationEffect;
 
         int mAttackSpeed;     /**< Attack speed */
 

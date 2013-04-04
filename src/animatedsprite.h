@@ -101,6 +101,9 @@ class AnimatedSprite final : public Sprite
         void setSprite(SpriteDef *const sprite)
         { mSprite = sprite; }
 
+        bool isTerminated() const
+        { return mTerminated; }
+
         static void setEnableCache(const bool b)
         { mEnableCache = b; }
 
@@ -122,6 +125,7 @@ class AnimatedSprite final : public Sprite
         unsigned mNumber;
         unsigned mNumber1;
         AnimationDelayLoad *mDelayLoad;
+        bool mTerminated;
         static bool mEnableCache;
 };
 
