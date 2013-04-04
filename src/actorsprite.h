@@ -133,15 +133,6 @@ public:
     { mUsedTargetCursor = nullptr; }
 
     /**
-     * Triggers a visual effect, such as `level up'. Only draws the visual
-     * effect, does not play sound effects.
-     *
-     * \param effectId ID of the effect to trigger
-     */
-    virtual void triggerEffect(const int effectId)
-    { internalTriggerEffect(effectId, false, true); }
-
-    /**
      * Sets the actor's stun mode. If zero, the being is `normal', otherwise it
      * is `stunned' in some fashion.
      */
@@ -189,16 +180,6 @@ public:
     void removeActorSpriteListener(ActorSpriteListener *const listener);
 
 protected:
-    /**
-     * Trigger visual effect, with components
-     *
-     * \param effectId ID of the effect to trigger
-     * \param sfx Whether to trigger sound effects
-     * \param gfx Whether to trigger graphical effects
-     */
-    void internalTriggerEffect(const int effectId, const bool sfx,
-                               const bool gfx);
-
     /**
      * Notify self that the stun mode has been updated. Invoked by
      * setStunMode if something changed.
