@@ -600,13 +600,6 @@ class Being : public ActorSprite, public ConfigListener
 
         void setState(const uint8_t state);
 
-        /**
-         * Get the current Emoticon type displayed above
-         * the being.
-         */
-        int getEmotion() const A_WARN_UNUSED
-        { return mEmotion; }
-
         virtual void drawSprites(Graphics *const  graphics,
                                  int posX, int posY) const override;
 
@@ -891,8 +884,9 @@ class Being : public ActorSprite, public ConfigListener
 
         int mActionTime;      /**< Time spent in current action */
 
-        int mEmotion;         /**< Currently showing emotion */
+        AnimatedSprite *mEmotionSprite;
         int mEmotionTime;     /**< Time until emotion disappears */
+
         /** Time until the last speech sentence disappears */
         int mSpeechTime;
 
@@ -905,6 +899,7 @@ class Being : public ActorSprite, public ConfigListener
         uint8_t mDirectionDelayed;        /**< Facing direction */
 
         uint8_t mSpriteDirection;         /**< Facing direction */
+        std::string mSpriteAction;
         std::string mName;              /**< Name of character */
         std::string mRaceName;
         std::string mPartyName;

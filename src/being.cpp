@@ -202,7 +202,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     ActorSprite(id),
     mInfo(BeingInfo::unknown),
     mActionTime(0),
-    mEmotion(0),
+    mEmotionSprite(nullptr),
     mEmotionTime(0),
     mSpeechTime(0),
     mAttackSpeed(350),
@@ -211,6 +211,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mDirection(DOWN),
     mDirectionDelayed(0),
     mSpriteDirection(DIRECTION_DOWN),
+    mSpriteAction(SpriteAction::STAND),
     mDispName(nullptr),
     mShowName(false),
     mEquippedWeapon(nullptr),
@@ -1195,7 +1196,10 @@ void Being::setAction(const Action &action, const int attackId)
 
     if (currentAction != SpriteAction::INVALID)
     {
+        mSpriteAction = currentAction;
         play(currentAction);
+        if (mEmotionSprite)
+            mEmotionSprite->play(currentAction);
         mAction = action;
     }
 
@@ -1247,6 +1251,8 @@ void Being::setDirection(const uint8_t direction)
     mSpriteDirection = static_cast<uint8_t>(dir);
 
     CompoundSprite::setSpriteDirection(dir);
+    if (mEmotionSprite)
+        mEmotionSprite->setSpriteDirection(dir);
     recalcSpritesOrder();
 }
 
@@ -1318,6 +1324,9 @@ void Being::logic()
         delete mText;
         mText = nullptr;
     }
+
+    if (mEmotionSprite)
+        mEmotionSprite->update(tick_time * MILLISECONDS_IN_A_TICK);
 
     int frameCount = static_cast<int>(getFrameCount());
 #ifdef MANASERV_SUPPORT
@@ -1457,11 +1466,14 @@ void Being::logic()
                     static_cast<float>(mY * 32 + 32 + getYOffset()));
     }
 
-    if (mEmotion != 0)
+    if (mEmotionSprite)
     {
         mEmotionTime--;
         if (mEmotionTime == 0)
-            mEmotion = 0;
+        {
+            delete mEmotionSprite;
+            mEmotionSprite = nullptr;
+        }
     }
 
     ActorSprite::logic();
@@ -1483,22 +1495,12 @@ void Being::logic()
 void Being::drawEmotion(Graphics *const graphics, const int offsetX,
                         const int offsetY)
 {
-    if (!mEmotion)
+    if (!mEmotionSprite)
         return;
 
     const int px = getPixelX() - offsetX - 16;
     const int py = getPixelY() - offsetY - 64 - 32;
-    const int emotionIndex = mEmotion - 1;
-
-    if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
-    {
-        const AnimatedSprite *const sprite = EmoteDB::getAnimation2(
-            emotionIndex, true);
-        if (sprite)
-            sprite->draw(graphics, px, py);
-        else
-            mEmotion = 0;
-    }
+    mEmotionSprite->draw(graphics, px, py);
 }
 
 void Being::drawSpeech(const int offsetX, const int offsetY)
@@ -2721,8 +2723,22 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
     }
     else
     {
-        mEmotion = emotion;
-        mEmotionTime = emote_time;
+        const int emotionIndex = emotion - 1;
+        if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
+            mEmotionSprite = EmoteDB::getClone(emotionIndex, true);
+
+        if (mEmotionSprite)
+        {
+            mEmotionTime = emote_time;
+            mEmotionSprite->play(mSpriteAction);
+            mEmotionSprite->setSpriteDirection(static_cast<SpriteDirection>(
+                mSpriteDirection));
+        }
+        else
+        {
+            mEmotionTime = 0;
+        }
+
     }
 }
 

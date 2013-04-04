@@ -237,6 +237,15 @@ const AnimatedSprite *EmoteDB::getAnimation2(int id, const bool allowNull)
     return getAnimation(id, allowNull);
 }
 
+AnimatedSprite *EmoteDB::getClone(int id, const bool allowNull)
+{
+    const AnimatedSprite *const sprite = getAnimation2(id, allowNull);
+    if (sprite)
+        return AnimatedSprite::clone(sprite);
+
+    return nullptr;
+}
+
 const EmoteSprite *EmoteDB::getSprite(const int id, const bool allowNull)
 {
     const EmoteInfo *const info = get(id, allowNull);

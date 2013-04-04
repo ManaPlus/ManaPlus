@@ -60,6 +60,8 @@ class AnimatedSprite final : public Sprite
                                            const int variant = 0)
                                            A_WARN_UNUSED;
 
+        static AnimatedSprite *clone(const AnimatedSprite *const anim);
+
         virtual ~AnimatedSprite();
 
         bool reset() override;

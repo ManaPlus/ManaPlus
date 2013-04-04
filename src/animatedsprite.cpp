@@ -88,6 +88,13 @@ AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &filename,
     return as;
 }
 
+AnimatedSprite *AnimatedSprite::clone(const AnimatedSprite *const anim)
+{
+    if (!anim)
+        return nullptr;
+    return new AnimatedSprite(anim->mSprite);
+}
+
 AnimatedSprite::~AnimatedSprite()
 {
     if (mSprite)
