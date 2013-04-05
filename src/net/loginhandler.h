@@ -57,7 +57,7 @@ class LoginHandler
 
         virtual void connect() = 0;
 
-        virtual bool isConnected() A_WARN_UNUSED = 0;
+        virtual bool isConnected() const A_WARN_UNUSED = 0;
 
         virtual void disconnect() = 0;
 
@@ -66,9 +66,9 @@ class LoginHandler
          */
         virtual int supportedOptionalActions() const A_WARN_UNUSED = 0;
 
-        virtual bool isRegistrationEnabled() A_WARN_UNUSED = 0;
+        virtual bool isRegistrationEnabled() const A_WARN_UNUSED = 0;
 
-        virtual void getRegistrationDetails() = 0;
+        virtual void getRegistrationDetails() const = 0;
 
         virtual unsigned int getMinUserNameLength() const A_WARN_UNUSED
         { return 4; }
@@ -82,22 +82,22 @@ class LoginHandler
         virtual unsigned int getMaxPasswordLength() const A_WARN_UNUSED
         { return 255; }
 
-        virtual void loginAccount(LoginData *loginData) = 0;
+        virtual void loginAccount(LoginData *const loginData) const = 0;
 
-        virtual void logout() = 0;
+        virtual void logout() const = 0;
 
-        virtual void changeEmail(const std::string &email) = 0;
+        virtual void changeEmail(const std::string &email) const = 0;
 
         virtual void changePassword(const std::string &username,
                                     const std::string &oldPassword,
-                                    const std::string &newPassword) = 0;
+                                    const std::string &newPassword) const = 0;
 
-        virtual void chooseServer(unsigned int server) = 0;
+        virtual void chooseServer(unsigned int server) const = 0;
 
-        virtual void registerAccount(LoginData *loginData) = 0;
+        virtual void registerAccount(LoginData *const loginData) const = 0;
 
         virtual void unregisterAccount(const std::string &username,
-                                       const std::string &password) = 0;
+                                       const std::string &password) const = 0;
 
         virtual Worlds getWorlds() const A_WARN_UNUSED = 0;
 

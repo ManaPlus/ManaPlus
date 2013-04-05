@@ -50,18 +50,18 @@ LoginHandler::~LoginHandler()
     delete_all(mWorlds);
 }
 
-bool LoginHandler::isRegistrationEnabled()
+bool LoginHandler::isRegistrationEnabled() const
 {
     return mRegistrationEnabled;
 }
 
-void LoginHandler::getRegistrationDetails()
+void LoginHandler::getRegistrationDetails() const
 {
     // Not supported, so move on
     Client::setState(STATE_REGISTER);
 }
 
-void LoginHandler::loginAccount(LoginData *loginData)
+void LoginHandler::loginAccount(LoginData *const loginData) const
 {
 
     if (loginData)
@@ -76,7 +76,7 @@ void LoginHandler::loginAccount(LoginData *loginData)
     }
 }
 
-void LoginHandler::chooseServer(unsigned int server)
+void LoginHandler::chooseServer(const unsigned int server) const
 {
     if (server >= mWorlds.size() || !mWorlds[server])
         return;
@@ -94,7 +94,7 @@ void LoginHandler::chooseServer(unsigned int server)
     Client::setState(STATE_UPDATE);
 }
 
-void LoginHandler::registerAccount(LoginData *loginData)
+void LoginHandler::registerAccount(LoginData *const loginData) const
 {
     if (!loginData)
         return;
@@ -130,7 +130,7 @@ void LoginHandler::clearWorlds()
     mWorlds.clear();
 }
 
-void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg)
+void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg) const
 {
     // 0: acc not found, 1: success, 2: password mismatch, 3: pass too short
     const int errMsg = msg.readInt8();
@@ -164,9 +164,7 @@ void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg)
 
 void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 {
-    int len;
-
-    len = msg.readInt16() - 4;
+    int len = msg.readInt16() - 4;
     mUpdateHost = msg.readString(len);
 
     if (!checkPath(mUpdateHost))
@@ -221,7 +219,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
     Client::setState(STATE_WORLD_SELECT);
 }
 
-void LoginHandler::processLoginError(Net::MessageIn &msg)
+void LoginHandler::processLoginError(Net::MessageIn &msg) const
 {
     const int code = msg.readInt8();
     logger->log("Login::error code: %i", code);
@@ -277,18 +275,19 @@ void LoginHandler::processLoginError(Net::MessageIn &msg)
     Client::setState(STATE_ERROR);
 }
 
-void LoginHandler::logout()
+void LoginHandler::logout() const
 {
     // TODO
 }
 
-void LoginHandler::changeEmail(const std::string &email A_UNUSED)
+void LoginHandler::changeEmail(const std::string &email A_UNUSED) const
 {
     // TODO
 }
 
 void LoginHandler::unregisterAccount(const std::string &username A_UNUSED,
-                                     const std::string &password A_UNUSED)
+                                     const std::string &password
+                                     A_UNUSED) const
 {
     // TODO
 }

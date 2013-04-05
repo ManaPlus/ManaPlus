@@ -45,54 +45,56 @@ class LoginHandler : public Net::LoginHandler
 
         ~LoginHandler();
 
-        int supportedOptionalActions() const A_WARN_UNUSED
+        int supportedOptionalActions() const override A_WARN_UNUSED
         { return SetGenderOnRegister; }
 
-        virtual bool isRegistrationEnabled() A_WARN_UNUSED;
+        virtual bool isRegistrationEnabled() const override A_WARN_UNUSED;
 
-        virtual void getRegistrationDetails();
+        virtual void getRegistrationDetails() const override;
 
-        virtual unsigned int getMaxPasswordLength() const A_WARN_UNUSED
+        virtual unsigned int getMaxPasswordLength() const
+            override A_WARN_UNUSED
         { return 25; }
 
-        virtual void loginAccount(LoginData *loginData);
+        virtual void loginAccount(LoginData *const loginData) const override;
 
-        virtual void chooseServer(unsigned int server);
+        virtual void chooseServer(const unsigned int server) const override;
 
-        virtual void registerAccount(LoginData *loginData);
+        virtual void registerAccount(LoginData *const loginData) const override;
 
-        virtual Worlds getWorlds() const A_WARN_UNUSED;
+        virtual Worlds getWorlds() const override A_WARN_UNUSED;
 
-        virtual void clearWorlds();
+        virtual void clearWorlds() override;
 
-        virtual ServerInfo *getCharServer() A_WARN_UNUSED = 0;
+        virtual ServerInfo *getCharServer() const A_WARN_UNUSED = 0;
 
         const Token &getToken() const A_WARN_UNUSED
         { return mToken; }
 
-        virtual void logout();
+        virtual void logout() const override;
 
-        virtual void changeEmail(const std::string &email);
+        virtual void changeEmail(const std::string &email) const override;
 
         virtual void unregisterAccount(const std::string &username,
-                                       const std::string &password);
+                                       const std::string &password)
+                                       const override;
 
-        virtual void procecessCharPasswordResponse(Net::MessageIn &msg);
+        virtual void procecessCharPasswordResponse(Net::MessageIn &msg) const;
 
         virtual void processUpdateHost(Net::MessageIn &msg);
 
-        virtual void processUpdateHost2(Net::MessageIn &msg) = 0;
+        virtual void processUpdateHost2(Net::MessageIn &msg) const = 0;
 
         virtual void processLoginData(Net::MessageIn &msg);
 
-        virtual void processLoginError(Net::MessageIn &msg);
+        virtual void processLoginError(Net::MessageIn &msg) const;
 
         virtual void processServerVersion(Net::MessageIn &msg) = 0;
 
     protected:
         virtual void sendLoginRegister(const std::string &username,
                                        const std::string &password,
-                                       const std::string &email) = 0;
+                                       const std::string &email) const = 0;
 
         bool mVersionResponse;
         bool mRegistrationEnabled;

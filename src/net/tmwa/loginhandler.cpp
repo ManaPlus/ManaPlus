@@ -107,7 +107,7 @@ void LoginHandler::connect()
     MessageOut outMsg(CMSG_SERVER_VERSION_REQUEST);
 }
 
-bool LoginHandler::isConnected()
+bool LoginHandler::isConnected() const
 {
     if (!mNetwork)
         return false;
@@ -123,7 +123,7 @@ void LoginHandler::disconnect()
 
 void LoginHandler::changePassword(const std::string &username A_UNUSED,
                                   const std::string &oldPassword,
-                                  const std::string &newPassword)
+                                  const std::string &newPassword) const
 {
     MessageOut outMsg(CMSG_CHAR_PASSWORD_CHANGE);
     outMsg.writeStringNoLog(oldPassword, 24);
@@ -132,7 +132,7 @@ void LoginHandler::changePassword(const std::string &username A_UNUSED,
 
 void LoginHandler::sendLoginRegister(const std::string &username,
                                      const std::string &password,
-                                     const std::string &email)
+                                     const std::string &email) const
 {
     if (email.empty())
     {
@@ -167,12 +167,12 @@ void LoginHandler::sendLoginRegister(const std::string &username,
     }
 }
 
-ServerInfo *LoginHandler::getCharServer()
+ServerInfo *LoginHandler::getCharServer() const
 {
     return &charServer;
 }
 
-void LoginHandler::requestUpdateHosts()
+void LoginHandler::requestUpdateHosts() const
 {
     MessageOut outMsg(CMSG_SEND_CLIENT_INFO);
     outMsg.writeInt8(CLIENT_PROTOCOL_VERSION);
@@ -211,12 +211,10 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     mVersionResponse = true;
 }
 
-void LoginHandler::processUpdateHost2(Net::MessageIn &msg)
+void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
 {
-    int len;
-
-    len = msg.readInt16() - 4;
-    std::string updateHost = msg.readString(len);
+    int len = msg.readInt16() - 4;
+    const std::string updateHost = msg.readString(len);
 
     splitToStringVector(loginData.updateHosts, updateHost, '|');
     FOR_EACH (StringVectIter, it, loginData.updateHosts)
