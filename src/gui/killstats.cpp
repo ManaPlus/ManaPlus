@@ -88,7 +88,8 @@ KillStats::KillStats():
     mJackoId(0),
     mIsJackoAlive(false),
     mIsJackoMustSpawn(true),
-    mIsJackoSpawnTimeUnknown(true)
+    mIsJackoSpawnTimeUnknown(true),
+    mUpdateTime(cur_time + 1)
 {
     setWindowName("Kill stats");
     setCloseButton(true);
@@ -302,6 +303,13 @@ void KillStats::recalcStats()
 void KillStats::update()
 {
     BLOCK_START("KillStats::update")
+
+    const int time = cur_time;
+    if (mUpdateTime > time)
+        return;
+
+    mUpdateTime = time + 1;
+
     mExpSpeed1Label->setCaption(strprintf(ngettext("Exp speed per %d min: %s",
         "Exp speed per %d min: %s", 1), 1, toString(m1minSpeed).c_str()));
 

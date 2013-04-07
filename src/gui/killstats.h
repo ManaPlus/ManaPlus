@@ -131,6 +131,7 @@ class KillStats final : public Window,
         bool mIsJackoAlive;
         bool mIsJackoMustSpawn;
         bool mIsJackoSpawnTimeUnknown;
+        int mUpdateTime;
 };
 
 extern KillStats *killStats;
