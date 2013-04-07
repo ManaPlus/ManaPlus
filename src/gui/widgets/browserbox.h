@@ -48,8 +48,8 @@ struct BROWSER_LINK final
 class LinePart final
 {
     public:
-        LinePart(const int x, const int y, const gcn::Color color,
-                 const gcn::Color color2, const std::string &text,
+        LinePart(const int x, const int y, const gcn::Color &color,
+                 const gcn::Color &color2, const std::string &text,
                  const bool bold) :
             mX(x),
             mY(y),
@@ -62,8 +62,8 @@ class LinePart final
         {
         }
 
-        LinePart(const int x, const int y, const gcn::Color color,
-                 const gcn::Color color2, Image *const image) :
+        LinePart(const int x, const int y, const gcn::Color &color,
+                 const gcn::Color &color2, Image *const image) :
             mX(x),
             mY(y),
             mColor(color),

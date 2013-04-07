@@ -304,7 +304,7 @@ class LocalPlayer final : public Being,
                          const int maxCost = 0) A_WARN_UNUSED;
 
         bool isReachable(const int x, const int y,
-                         const int allowCollision) const A_WARN_UNUSED;
+                         const bool allowCollision) const A_WARN_UNUSED;
 
         void setHome();
 

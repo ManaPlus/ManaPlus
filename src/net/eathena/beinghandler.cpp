@@ -596,13 +596,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
                 //need set stay state?
                 logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
                     + toString(id) + " " + toString(type));
-                if (dstBeing)
-                {
-                    logger->log("dstBeing id:"
-                        + toString(dstBeing->getId()));
-                    logger->log("dstBeing name:"
-                        + dstBeing->getName());
-                }
+                logger->log("dstBeing id:" + toString(dstBeing->getId()));
+                logger->log("dstBeing name:" + dstBeing->getName());
                 break;
 
         }

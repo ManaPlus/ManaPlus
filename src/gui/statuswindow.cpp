@@ -415,10 +415,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
             updateMPBar(mMpBar, true);
             const Attrs::const_iterator it = mAttrs.find(id);
             if (it != mAttrs.end() && it->second)
-            {
-                if (it->second)
-                    it->second->update();
-            }
+                it->second->update();
         }
     }
 }

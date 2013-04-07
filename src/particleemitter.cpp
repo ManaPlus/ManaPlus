@@ -549,12 +549,15 @@ std::list<Particle *> ParticleEmitter::createParticles(const int tick)
         newParticle->moveTo(position);
 
         const float angleH = mParticleAngleHorizontal.value(tick);
+        const float cosAngleH = cos(angleH);
+        const float sinAngleH = sin(angleH);
         const float angleV = mParticleAngleVertical.value(tick);
+        const float cosAngleV = cos(angleV);
+        const float sinAngleV = sin(angleV);
         const float power = mParticlePower.value(tick);
-        newParticle->setVelocity(
-            static_cast<float>(cos(angleH) * cos(angleV)) * power,
-            static_cast<float>(sin(angleH) * cos(angleV)) * power,
-            static_cast<float>(sin(angleV)) * power);
+        newParticle->setVelocity(cosAngleH * cosAngleV * power,
+            sinAngleH * cosAngleV * power,
+            sinAngleV * power);
 
         newParticle->setRandomness(mParticleRandomness.value(tick));
         newParticle->setGravity(mParticleGravity.value(tick));

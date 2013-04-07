@@ -883,7 +883,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         ChatTab *const tab = getFocused();
         if (tab && tab->hasRows())
         {
-            const size_t tabSize = tab->getRows().size();
+            const size_t &tabSize = tab->getRows().size();
             if (mChatHistoryIndex + 1 < tabSize)
             {
                 mChatHistoryIndex ++;

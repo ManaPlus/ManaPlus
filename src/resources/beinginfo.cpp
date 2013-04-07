@@ -122,9 +122,7 @@ void BeingInfo::addAttack(const int id, std::string action, const int effectId,
                           const int missEffectId,
                           const std::string &missileParticle)
 {
-    if (mAttacks[id])
-        delete mAttacks[id];
-
+    delete mAttacks[id];
     mAttacks[id] = new Attack(action, effectId, hitEffectId,
         criticalHitEffectId, missEffectId, missileParticle);
 }

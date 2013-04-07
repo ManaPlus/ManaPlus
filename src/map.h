@@ -426,7 +426,7 @@ class Map final : public Properties, public ConfigListener
         /**
          * Removes an actor from the map.
          */
-        void removeActor(const Actors::iterator iterator);
+        void removeActor(const Actors::iterator &iterator);
 
     private:
 

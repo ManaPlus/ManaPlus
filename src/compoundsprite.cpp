@@ -237,8 +237,7 @@ void CompoundSprite::setSprite(const int layer, Sprite *const sprite)
     if (mSprites.at(layer) == sprite)
         return;
 
-    if (mSprites.at(layer))
-        delete mSprites.at(layer);
+    delete mSprites.at(layer);
     mSprites[layer] = sprite;
     mNeedsRedraw = true;
 }

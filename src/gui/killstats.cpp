@@ -185,7 +185,8 @@ void KillStats::resetTimes()
 
 void KillStats::gainXp(int xp)
 {
-    if (xp == PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED))
+    const int expNeed = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
+    if (xp == expNeed)
         xp = 0;
     else if (!xp)
         return;
@@ -199,7 +200,7 @@ void KillStats::gainXp(int xp)
         mKillCounter = 1;
 
     const float AvgExp = static_cast<float>(mExpCounter / mKillCounter);
-    int xpNextLevel(PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED));
+    int xpNextLevel(expNeed);
 
     if (mKillTimer == 0)
         mKillTimer = cur_time;
@@ -212,14 +213,13 @@ void KillStats::gainXp(int xp)
     if (timeDiff <= 0.001)
         timeDiff = 1;
 
+    const int exp = PlayerInfo::getAttribute(PlayerInfo::EXP);
     mLine1->setCaption(strprintf(_("Level: %d at %f%%"),
-        player_node->getLevel(), static_cast<double>(
-        PlayerInfo::getAttribute(PlayerInfo::EXP)) / static_cast<double>(
+        player_node->getLevel(), static_cast<double>(exp) / static_cast<double>(
         xpNextLevel) * 100.0));
 
-    mLine2->setCaption(strprintf(_("Exp: %d/%d Left: %d"),
-        PlayerInfo::getAttribute(PlayerInfo::EXP), xpNextLevel,
-        xpNextLevel - PlayerInfo::getAttribute(PlayerInfo::EXP)));
+    mLine2->setCaption(strprintf(_("Exp: %d/%d Left: %d"), exp,
+        xpNextLevel, xpNextLevel - exp));
 
     if (AvgExp >= 0.001f && AvgExp <= 0.001f)
     {
@@ -242,8 +242,7 @@ void KillStats::gainXp(int xp)
             toString(AvgExp).c_str()));
 
         mLine6->setCaption(strprintf(_("No. of avg mob to next level: %s"),
-            toString(static_cast<float>(xpNextLevel
-            - PlayerInfo::getAttribute(PlayerInfo::EXP)) / AvgExp).c_str()));
+            toString(static_cast<float>(xpNextLevel - exp) / AvgExp).c_str()));
     }
     mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"),
         toString(mKillCounter).c_str(), toString(mExpCounter).c_str()));

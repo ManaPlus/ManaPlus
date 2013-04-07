@@ -47,7 +47,7 @@ const int buttonsCount = 4;
 
 struct TouchItem final
 {
-    TouchItem(const gcn::Rectangle rect0, const int type0,
+    TouchItem(const gcn::Rectangle &rect0, const int type0,
               const std::string &eventPressed0,
               const std::string &eventReleased0,
               ImageRect *const images0, Image *const icon0,

@@ -2979,7 +2979,7 @@ bool LocalPlayer::isReachable(Being *const being,
 }
 
 bool LocalPlayer::isReachable(const int x, const int y,
-                              const int allowCollision) const
+                              const bool allowCollision) const
 {
     const WalkLayer *const walk = mMap->getWalkLayer();
     if (!walk)

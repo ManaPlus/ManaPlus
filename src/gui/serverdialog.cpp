@@ -288,16 +288,15 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mServersList->addSelectionListener(this);
     usedScroll->setVerticalScrollAmount(0);
 
-    const int n = 0;
-    place(0, 0 + n, usedScroll, 7, 5).setPadding(3);
-    place(0, 5 + n, mDescription, 7);
-    place(0, 6 + n, mPersistentIPCheckBox, 7);
-    place(0, 7 + n, mAddEntryButton);
-    place(1, 7 + n, mEditEntryButton);
-    place(2, 7 + n, mLoadButton);
-    place(3, 7 + n, mDeleteButton);
-    place(5, 7 + n, mQuitButton);
-    place(6, 7 + n, mConnectButton);
+    place(0, 0, usedScroll, 7, 5).setPadding(3);
+    place(0, 5, mDescription, 7);
+    place(0, 6, mPersistentIPCheckBox, 7);
+    place(0, 7, mAddEntryButton);
+    place(1, 7, mEditEntryButton);
+    place(2, 7, mLoadButton);
+    place(3, 7, mDeleteButton);
+    place(5, 7, mQuitButton);
+    place(6, 7, mConnectButton);
 
     // Make sure the list has enough height
     getLayout().setRowHeight(0, 80);

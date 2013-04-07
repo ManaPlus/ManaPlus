@@ -25,10 +25,12 @@
 #include "graphics.h"
 #include "simpleanimation.h"
 
+#include <math.h>
+
 #include "debug.h"
 
-static const double PI = 3.14159265;
-static const float PI2 = 2 * 3.14159265;
+static const double PI = M_PI;
+static const float PI2 = 2 * M_PI;
 
 RotationalParticle::RotationalParticle(Map *const map,
                                        Animation *const animation) :

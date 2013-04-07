@@ -712,7 +712,7 @@ Actors::iterator Map::addActor(Actor *const actor)
     return mActors.begin();
 }
 
-void Map::removeActor(const Actors::iterator iterator)
+void Map::removeActor(const Actors::iterator &iterator)
 {
     mActors.erase(iterator);
 //    mSpritesUpdated = true;

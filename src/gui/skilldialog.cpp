@@ -579,10 +579,11 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
     {
         SkillInfo *const skill = new SkillInfo;
         skill->id = static_cast<unsigned int>(id);
-        skill->data->name = "Unknown skill Id: " + toString(id);
-        skill->data->dispName = "Unknown skill Id: " + toString(id);
-        skill->data->description.clear();
-        skill->data->setIcon("");
+        SkillData *const data = skill->data;
+        data->name = "Unknown skill Id: " + toString(id);
+        data->dispName = "Unknown skill Id: " + toString(id);
+        data->description.clear();
+        data->setIcon("");
         skill->modifiable = modifiable;
         skill->visible = false;
         skill->model = mDefaultModel;

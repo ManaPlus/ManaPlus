@@ -377,11 +377,8 @@ StringVect *PlayerRelationsManager::getPlayersByRelation(
 
 void PlayerRelationsManager::removePlayer(const std::string &name)
 {
-    if (mRelations[name])
-        delete mRelations[name];
-
+    delete mRelations[name];
     mRelations.erase(name);
-
     signalUpdate(name);
 }
 

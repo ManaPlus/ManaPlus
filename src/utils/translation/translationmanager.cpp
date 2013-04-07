@@ -37,15 +37,13 @@
 
 void TranslationManager::init()
 {
-    if (translator)
-        delete translator;
+    delete translator;
     translator = PoParser::getEmptyDict();
 }
 
 void TranslationManager::loadCurrentLang()
 {
-    if (translator)
-        delete translator;
+    delete translator;
     translator = loadLang(getLang(), "");
     translator = loadLang(getLang(), "help/", translator);
 }

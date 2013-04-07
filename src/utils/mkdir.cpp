@@ -113,7 +113,7 @@ int mkdir_r(const char *const pathname)
 /// Create a directory, making leading components first if necessary
 int mkdir_r(const char *const pathname)
 {
-    const size_t len = static_cast<int>(strlen(pathname));
+    const size_t len = static_cast<size_t>(strlen(pathname));
     char *tmp = new char[len + 2];
     char *p;
 
@@ -132,7 +132,7 @@ int mkdir_r(const char *const pathname)
         {
             *p = '\0';
             // ignore a slash at the beginning of a path
-            if (strlen(tmp) == 0)
+            if (tmp[0] == 0)
             {
                 *p = '/';
                 continue;

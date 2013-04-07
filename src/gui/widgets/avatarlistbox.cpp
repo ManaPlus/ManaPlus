@@ -399,7 +399,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
         {
             const WhisperTab *const tab = chatWindow->addWhisperTab(
                 model->getAvatarAt(selected)->getName(), true);
-            if (chatWindow && tab)
+            if (tab)
                 chatWindow->saveState();
         }
     }
