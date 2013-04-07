@@ -78,7 +78,7 @@ class Particle : public Actor
          *
          * @param map the map this particle will add itself to, may be nullptr
          */
-        Particle(Map *const map);
+        explicit Particle(Map *const map);
 
         A_DELETE_COPY(Particle)
 

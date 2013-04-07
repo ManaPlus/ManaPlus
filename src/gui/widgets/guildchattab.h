@@ -31,7 +31,7 @@
 class GuildChatTab final : public ChatTab, public ConfigListener
 {
     public:
-        GuildChatTab(const Widget2 *const widget);
+        explicit GuildChatTab(const Widget2 *const widget);
 
         A_DELETE_COPY(GuildChatTab)
 

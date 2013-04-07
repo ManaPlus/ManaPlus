@@ -35,7 +35,7 @@ enum AvatarType
 class Avatar
 {
 public:
-    Avatar(const std::string &name = "");
+    explicit Avatar(const std::string &name = "");
 
     A_DELETE_COPY(Avatar)
 

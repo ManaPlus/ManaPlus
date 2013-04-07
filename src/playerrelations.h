@@ -62,7 +62,7 @@ struct PlayerRelation final
         ENEMY2      = 6
     };
 
-    PlayerRelation(const Relation relation);
+    explicit PlayerRelation(const Relation relation);
 
     A_DELETE_COPY(PlayerRelation)
 

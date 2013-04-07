@@ -47,7 +47,7 @@ class VariableData
 class IntData final : public VariableData
 {
     public:
-        IntData(const int value) :
+        explicit IntData(const int value) :
             mData(value)
         { }
 
@@ -64,7 +64,7 @@ class IntData final : public VariableData
 class StringData final : public VariableData
 {
     public:
-        StringData(const std::string &value) :
+        explicit StringData(const std::string &value) :
             mData(value)
         { }
 
@@ -81,7 +81,7 @@ class StringData final : public VariableData
 class FloatData final : public VariableData
 {
     public:
-        FloatData(const double value) :
+        explicit FloatData(const double value) :
             mData(value)
         { }
 
@@ -98,7 +98,7 @@ class FloatData final : public VariableData
 class BoolData final : public VariableData
 {
     public:
-        BoolData(const bool value) :
+        explicit BoolData(const bool value) :
             mData(value)
         { }
 

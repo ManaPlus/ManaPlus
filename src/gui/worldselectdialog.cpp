@@ -49,8 +49,8 @@ extern WorldInfo **server_info;
 class WorldListModel final : public gcn::ListModel
 {
     public:
-        WorldListModel(Worlds worlds):
-                mWorlds(worlds)
+        explicit WorldListModel(Worlds worlds) :
+            mWorlds(worlds)
         {
         }
 

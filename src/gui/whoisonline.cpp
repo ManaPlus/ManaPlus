@@ -490,15 +490,12 @@ int WhoIsOnline::downloadThread(void *ptr)
 {
     int attempts = 0;
     WhoIsOnline *wio = reinterpret_cast<WhoIsOnline *>(ptr);
-    CURL *curl;
     CURLcode res;
-
     std::string url(Client::getServerName() + "/online.txt");
 
     while (attempts < 1 && !wio->mDownloadComplete)
     {
-        curl = curl_easy_init();
-
+        CURL *curl = curl_easy_init();
         if (curl)
         {
             if (!wio->mAllowUpdate)

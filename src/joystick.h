@@ -67,7 +67,7 @@ class Joystick final
          * Constructor, pass the number of the joystick the new object
          * should access.
          */
-        Joystick(const int no);
+        explicit Joystick(const int no);
 
         A_DELETE_COPY(Joystick)
 

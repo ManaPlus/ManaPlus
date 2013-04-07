@@ -68,7 +68,7 @@ public:
         NUM_TCT
     };
 
-    ActorSprite(const int id);
+    explicit ActorSprite(const int id);
 
     A_DELETE_COPY(ActorSprite)
 

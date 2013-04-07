@@ -459,9 +459,9 @@ int ChatTab::getType() const
 
 void ChatTab::addRow(std::string &line)
 {
-    size_t idx = 0;
     if (line.find("[@@http") == std::string::npos)
     {
+        size_t idx = 0;
         for (size_t f = 0; f < line.length(); f++)
         {
             if (line.at(f) == ' ')

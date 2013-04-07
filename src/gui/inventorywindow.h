@@ -62,7 +62,7 @@ class InventoryWindow final : public Window,
         /**
          * Constructor.
          */
-        InventoryWindow(Inventory *const inventory);
+        explicit InventoryWindow(Inventory *const inventory);
 
         A_DELETE_COPY(InventoryWindow)
 

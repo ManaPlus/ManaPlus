@@ -244,7 +244,7 @@ class MapItem final
 
         MapItem();
 
-        MapItem(const int type);
+        explicit MapItem(const int type);
 
         MapItem(const int type, std::string comment);
 

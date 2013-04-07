@@ -62,7 +62,7 @@ class UsersTableModel final : public TableModel,
                               public Widget2
 {
 public:
-    UsersTableModel(const Widget2 *const widget) :
+    explicit UsersTableModel(const Widget2 *const widget) :
         TableModel(),
         Widget2(widget),
         mPlayers(0)

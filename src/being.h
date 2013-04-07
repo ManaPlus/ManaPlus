@@ -75,7 +75,7 @@ enum Gender
 class BeingEquipBackend final : public Equipment::Backend
 {
     public:
-        BeingEquipBackend(Being *const being);
+        explicit BeingEquipBackend(Being *const being);
 
         A_DELETE_COPY(BeingEquipBackend)
 

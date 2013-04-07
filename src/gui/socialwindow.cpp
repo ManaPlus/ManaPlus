@@ -99,7 +99,7 @@ public:
 protected:
     friend class SocialWindow;
 
-    SocialTab(const Widget2 *const widget):
+    explicit SocialTab(const Widget2 *const widget):
         Tab(widget),
         mInviteDialog(nullptr),
         mConfirmDialog(nullptr),

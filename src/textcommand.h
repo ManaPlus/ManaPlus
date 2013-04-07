@@ -80,7 +80,7 @@ class TextCommand final
         /**
          * Constructor.
          */
-        TextCommand(const unsigned int id);
+        explicit TextCommand(const unsigned int id);
 
         A_DELETE_COPY(TextCommand)
 

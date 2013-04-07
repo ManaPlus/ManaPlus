@@ -52,7 +52,7 @@ class DepricatedEvent final
         // String passed can be retivered with getName()
         // and is to used to identify what type of event
         // this is.
-        DepricatedEvent(const DepricatedEvents name) :
+        explicit DepricatedEvent(const DepricatedEvents name) :
             mDepricatedEventName(name)
         { }
 

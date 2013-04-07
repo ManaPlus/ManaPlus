@@ -43,9 +43,9 @@ class BuySellDialog final : public Window, public gcn::ActionListener
          *
          * @see Window::Window
          */
-        BuySellDialog(const int npcId);
+        explicit BuySellDialog(const int npcId);
 
-        BuySellDialog(std::string nick);
+        explicit BuySellDialog(std::string nick);
 
         A_DELETE_COPY(BuySellDialog)
 

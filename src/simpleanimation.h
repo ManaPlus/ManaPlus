@@ -45,13 +45,13 @@ class SimpleAnimation final
          * Creates a simple animation with an already created \a animation.
          * Takes ownership over the given animation.
          */
-        SimpleAnimation(Animation *const animation);
+        explicit SimpleAnimation(Animation *const animation);
 
         /**
          * Creates a simple animation that creates its animation from XML Data.
          */
-        SimpleAnimation(const XmlNodePtr animationNode,
-                        const std::string& dyePalettes = std::string());
+        explicit SimpleAnimation(const XmlNodePtr animationNode,
+                                 const std::string& dyePalettes);
 
         A_DELETE_COPY(SimpleAnimation)
 

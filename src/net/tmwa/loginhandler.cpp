@@ -213,7 +213,7 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
 
 void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
 {
-    int len = msg.readInt16() - 4;
+    const int len = msg.readInt16() - 4;
     const std::string updateHost = msg.readString(len);
 
     splitToStringVector(loginData.updateHosts, updateHost, '|');

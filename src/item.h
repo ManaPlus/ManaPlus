@@ -40,9 +40,10 @@ class Item
         /**
          * Constructor.
          */
-        Item(const int id = -1, const int quantity = 0, const int refine = 0,
-             const unsigned char color = 1, const bool equipment = false,
-             const bool equipped = false);
+        explicit Item(const int id = -1, const int quantity = 0,
+                      const int refine = 0, const unsigned char color = 1,
+                      const bool equipment = false,
+                      const bool equipped = false);
 
         A_DELETE_COPY(Item)
 

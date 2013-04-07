@@ -39,7 +39,7 @@ class ItemShortcut final
         /**
          * Constructor.
          */
-        ItemShortcut(const int number);
+        explicit ItemShortcut(const int number);
 
         A_DELETE_COPY(ItemShortcut)
 

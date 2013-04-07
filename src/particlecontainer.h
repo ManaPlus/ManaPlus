@@ -44,8 +44,8 @@ public:
      *
      * delParent means that the destructor should also free the parent.
      */
-    ParticleContainer(ParticleContainer *const parent = nullptr,
-                      const bool delParent = true);
+    explicit ParticleContainer(ParticleContainer *const parent = nullptr,
+                               const bool delParent = true);
 
     A_DELETE_COPY(ParticleContainer)
 
@@ -78,8 +78,8 @@ protected:
 class ParticleList final : public ParticleContainer
 {
 public:
-    ParticleList(ParticleContainer *const parent = nullptr,
-                 const bool delParent = true);
+    explicit ParticleList(ParticleContainer *const parent = nullptr,
+                          const bool delParent = true);
 
     A_DELETE_COPY(ParticleList)
 
@@ -109,8 +109,8 @@ protected:
 class ParticleVector final : public ParticleContainer
 {
 public:
-    ParticleVector(ParticleContainer *const parent = nullptr,
-                   const bool delParent = true);
+    explicit ParticleVector(ParticleContainer *const parent = nullptr,
+                            const bool delParent = true);
 
     A_DELETE_COPY(ParticleVector)
 

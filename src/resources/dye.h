@@ -102,7 +102,7 @@ class Dye final
          * The parts of string are separated by semi-colons. Each part starts
          * by an uppercase letter, followed by a colon and then a palette name.
          */
-        Dye(const std::string &dye);
+        explicit Dye(const std::string &dye);
 
         A_DELETE_COPY(Dye)
 

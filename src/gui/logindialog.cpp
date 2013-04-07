@@ -98,7 +98,7 @@ class UpdateTypeModel final : public gcn::ListModel
 class UpdateListModel final : public gcn::ListModel
 {
     public:
-        UpdateListModel(LoginData *const data) :
+        explicit UpdateListModel(LoginData *const data) :
             gcn::ListModel(),
             mLoginData(data)
         {

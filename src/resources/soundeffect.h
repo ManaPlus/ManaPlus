@@ -69,7 +69,7 @@ class SoundEffect final : public Resource
         /**
          * Constructor.
          */
-        SoundEffect(Mix_Chunk *const soundEffect) :
+        explicit SoundEffect(Mix_Chunk *const soundEffect) :
             Resource(),
             mChunk(soundEffect)
         { }

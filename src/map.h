@@ -85,7 +85,7 @@ struct MetaTile final
 class TileAnimation final
 {
     public:
-        TileAnimation(Animation *const ani);
+        explicit TileAnimation(Animation *const ani);
 
         ~TileAnimation();
 

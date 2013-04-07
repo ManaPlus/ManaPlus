@@ -165,7 +165,7 @@ private:
     /**
      * Constructor with party id passed to it.
      */
-    Party(const short id);
+    explicit Party(const short id);
 
     virtual ~Party();
 

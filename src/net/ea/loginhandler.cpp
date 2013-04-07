@@ -164,7 +164,7 @@ void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg) const
 
 void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 {
-    int len = msg.readInt16() - 4;
+    const int len = msg.readInt16() - 4;
     mUpdateHost = msg.readString(len);
 
     if (!checkPath(mUpdateHost))

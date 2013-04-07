@@ -201,7 +201,7 @@ public:
         short serverPort;
     };
 
-    Client(const Options &options);
+    explicit Client(const Options &options);
 
     A_DELETE_COPY(Client)
 

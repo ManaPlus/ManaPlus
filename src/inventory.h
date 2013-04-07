@@ -66,7 +66,7 @@ class Inventory final
          *
          * @param size the number of items that fit in the inventory
          */
-        Inventory(const int type, const int size = -1);
+        explicit Inventory(const int type, const int size = -1);
 
         /**
          * Destructor.

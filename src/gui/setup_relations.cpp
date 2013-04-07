@@ -94,7 +94,7 @@ public:
 class PlayerTableModel final : public Widget2, public TableModel
 {
 public:
-    PlayerTableModel(const Widget2 *const widget) :
+    explicit PlayerTableModel(const Widget2 *const widget) :
         Widget2(widget),
         TableModel(),
         mPlayers(nullptr),

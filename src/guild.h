@@ -202,7 +202,7 @@ private:
     /**
      * Constructor with guild id passed to it.
      */
-    Guild(const short id);
+    explicit Guild(const short id);
 
     typedef std::vector<GuildMember*> MemberList;
     MemberList mMembers;

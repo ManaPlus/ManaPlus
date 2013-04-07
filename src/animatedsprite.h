@@ -42,7 +42,7 @@ class AnimatedSprite final : public Sprite
          * Constructor.
          * @param sprite the sprite to animate
          */
-        AnimatedSprite(SpriteDef *const sprite);
+        explicit AnimatedSprite(SpriteDef *const sprite);
 
         A_DELETE_COPY(AnimatedSprite)
 
