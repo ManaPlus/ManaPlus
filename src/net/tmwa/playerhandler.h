@@ -42,7 +42,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void handleMessage(Net::MessageIn &msg);
 
-        void attack(int id, bool keep = false);
+        void attack(int id, bool keep);
         void stopAttack();
         void emote(uint8_t emoteId);
 
@@ -51,7 +51,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void pickUp(const FloorItem *floorItem);
         void setDirection(unsigned char direction);
-        void setDestination(int x, int y, int direction = -1);
+        void setDestination(int x, int y, int direction);
         void changeAction(Being::Action action);
         void processOnlineList(Net::MessageIn &msg);
         void requestOnlineList();

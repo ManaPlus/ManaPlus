@@ -48,7 +48,7 @@ class PartyHandler
         virtual ~PartyHandler()
         { }
 
-        virtual void create(const std::string &name = "") = 0;
+        virtual void create(const std::string &name) = 0;
 
         virtual void join(int partyId) = 0;
 

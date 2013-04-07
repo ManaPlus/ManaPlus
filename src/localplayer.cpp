@@ -1163,7 +1163,7 @@ void LocalPlayer::stopWalking(const bool sendToServer)
         {
             Net::getPlayerHandler()->setDestination(
                     static_cast<int>(getPosition().x),
-                    static_cast<int>(getPosition().y));
+                    static_cast<int>(getPosition().y), -1);
         }
         setAction(STAND);
     }

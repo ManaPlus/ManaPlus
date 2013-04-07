@@ -126,7 +126,7 @@ RegisterDialog::RegisterDialog(LoginData *const data):
         placer(0, row, emailLabel);
         placer(1, row, mEmailField, 3).setPadding(2);
 
-        row++;
+//        row++;
     }
 
     placer = getPlacer(0, 2);

@@ -43,7 +43,7 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         void handleMessage(Net::MessageIn &msg);
 
-        void create(const std::string &name = "");
+        void create(const std::string &name);
 
         void invite(Being *being);
 

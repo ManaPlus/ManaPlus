@@ -36,7 +36,7 @@ class PlayerHandler
         virtual ~PlayerHandler()
         { }
 
-        virtual void attack(int id, bool keep = false) = 0;
+        virtual void attack(int id, bool keep) = 0;
 
         virtual void stopAttack() = 0;
 
@@ -52,7 +52,7 @@ class PlayerHandler
 
         virtual void setDirection(unsigned char direction) = 0;
 
-        virtual void setDestination(int x, int y, int direction = -1) = 0;
+        virtual void setDestination(int x, int y, int direction) = 0;
 
         virtual void changeAction(Being::Action action) = 0;
 
