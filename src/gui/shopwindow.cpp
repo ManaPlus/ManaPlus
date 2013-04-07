@@ -817,7 +817,7 @@ bool ShopWindow::findShopItem(const ShopItem *const shopItem, const int mode)
         if (!item)
             continue;
 
-        if (item && item->getId() == shopItem->getId()
+        if (item->getId() == shopItem->getId()
             && item->getPrice() == shopItem->getPrice()
             && item->getQuantity() >= shopItem->getQuantity())
         {

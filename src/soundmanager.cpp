@@ -415,11 +415,8 @@ void SoundManager::haltMusic()
         return;
 
     Mix_HaltMusic();
-    if (mMusic)
-    {
-        mMusic->decRef();
-        mMusic = nullptr;
-    }
+    mMusic->decRef();
+    mMusic = nullptr;
     mCurrentMusicFile.clear();
 }
 

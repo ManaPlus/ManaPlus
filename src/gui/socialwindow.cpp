@@ -876,7 +876,7 @@ public:
             if (!ava)
                 break;
 
-            if (ava && ava->getX() == x && ava->getY() == y)
+            if (ava->getX() == x && ava->getY() == y)
             {
                 delete ava;
                 avatars->erase(i);

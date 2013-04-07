@@ -330,7 +330,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
         Net::Character *const character = new Net::Character;
         readPlayerData(msg, character, version);
         mCharacters.push_back(character);
-        if (character && character->dummy)
+        if (character->dummy)
         {
             logger->log("CharServer: Player: %s (%d)",
                 character->dummy->getName().c_str(), character->slot);

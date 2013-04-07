@@ -194,7 +194,7 @@ void PartyHandler::processPartyInvited(Net::MessageIn &msg)
     {
         if ((being = actorSpriteManager->findBeing(id)))
         {
-            if (being && being->getType() == Being::PLAYER)
+            if (being->getType() == Being::PLAYER)
                 nick = being->getName();
         }
     }

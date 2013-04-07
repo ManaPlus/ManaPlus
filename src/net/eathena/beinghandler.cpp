@@ -377,11 +377,8 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
         default:
             logger->log("QQQ3 CHANGE_LOOKS: unsupported type: "
                     "%d, id: %d", type, id);
-            if (dstBeing)
-            {
-                logger->log("ID: " + toString(dstBeing->getId()));
-                logger->log("name: " + toString(dstBeing->getName()));
-            }
+            logger->log("ID: " + toString(dstBeing->getId()));
+            logger->log("name: " + toString(dstBeing->getName()));
             break;
     }
 }
