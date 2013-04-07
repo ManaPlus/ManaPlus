@@ -84,6 +84,8 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MAP_CHAR_ID:
             processMapCharId(msg);
+            break;
+
         default:
             break;
     }

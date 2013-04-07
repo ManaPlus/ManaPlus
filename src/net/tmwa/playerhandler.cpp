@@ -104,6 +104,7 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_ONLINE_LIST:
             processOnlineList(msg);
+            break;
 
         default:
             break;

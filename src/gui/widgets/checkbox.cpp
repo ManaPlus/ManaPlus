@@ -112,7 +112,7 @@ void CheckBox::updateAlpha()
         mAlpha = alpha;
         if (mSkin)
         {
-            ImageRect &rect = mSkin->getBorder();
+            const ImageRect &rect = mSkin->getBorder();
             for (int a = 0; a < 6; a ++)
             {
                 Image *const image = rect.grid[a];

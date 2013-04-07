@@ -264,7 +264,7 @@ void Button::updateAlpha()
                 Skin *skin = button[mode];
                 if (skin)
                 {
-                    ImageRect &rect = skin->getBorder();
+                    const ImageRect &rect = skin->getBorder();
                     Image *image = rect.grid[a];
                     if (image)
                         image->setAlpha(mAlpha);

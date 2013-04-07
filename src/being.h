@@ -275,7 +275,7 @@ class Being : public ActorSprite, public ConfigListener
          * @param damage the amount of damage dealt (0 means miss)
          * @param type the attack type
          */
-        virtual void handleAttack(Being *const victim, const int damage,
+        void handleAttack(Being *const victim, const int damage,
                                   const int attackId = 1);
 
         virtual void handleSkill(Being *const victim, const int damage,
@@ -373,7 +373,7 @@ class Being : public ActorSprite, public ConfigListener
 
         void updateGuild();
 
-        Party *getParty() const
+        Party *getParty() const A_WARN_UNUSED
         { return mParty; }
 
         int getSpritesCount() const A_WARN_UNUSED

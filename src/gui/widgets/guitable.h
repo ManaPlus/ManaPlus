@@ -66,7 +66,7 @@ public:
     /**
      * Retrieves the active table model
      */
-    TableModel *getModel() const A_WARN_UNUSED;
+    const TableModel *getModel() const A_WARN_UNUSED;
 
     /**
      * Sets the table model

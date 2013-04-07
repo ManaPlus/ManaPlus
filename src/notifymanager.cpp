@@ -87,6 +87,7 @@ namespace NotifyManager
             {
                 if (player_node)
                     player_node->setSpeech(gettext(info.text));
+                break;
             }
 
             case INT:

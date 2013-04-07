@@ -108,6 +108,7 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_IGNORE_ALL_RESPONSE:
             processIgnoreAllResponse(msg);
+            break;
 
         default:
             break;

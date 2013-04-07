@@ -99,7 +99,7 @@ bool GuildTab::handleCommand(const std::string &type, const std::string &args)
     }
     else if (type == "kick" && taGuild)
     {
-        Net::getGuildHandler()->kick(taGuild->getMember(args));
+        Net::getGuildHandler()->kick(taGuild->getMember(args), "");
     }
     else if (type == "notice" && taGuild)
     {

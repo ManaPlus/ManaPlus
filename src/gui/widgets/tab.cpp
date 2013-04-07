@@ -141,7 +141,7 @@ void Tab::updateAlpha()
                 Skin *skin = tabImg[t];
                 if (skin)
                 {
-                    ImageRect &rect = skin->getBorder();
+                    const ImageRect &rect = skin->getBorder();
                     Image *image = rect.grid[a];
                     if (image)
                         image->setAlpha(mAlpha);
@@ -205,7 +205,7 @@ void Tab::draw(gcn::Graphics *graphics)
     // draw tab
     if (openGLMode != 2)
     {
-        ImageRect &rect = skin->getBorder();
+        const ImageRect &rect = skin->getBorder();
         if (mRedraw || mode != mMode
             || static_cast<Graphics*>(graphics)->getRedraw())
         {

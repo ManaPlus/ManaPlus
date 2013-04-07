@@ -62,6 +62,8 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
                 NotifyManager::notify(NotifyManager::KICK_FAIL);
             else
                 NotifyManager::notify(NotifyManager::KICK_SUCCEED);
+            break;
+
         default:
             break;
     }

@@ -103,7 +103,7 @@ public:
 
     void prevTab();
 
-    Map* getMap() const A_WARN_UNUSED
+    const Map* getMap() const A_WARN_UNUSED
     { return mMap; }
 
     void setMap(Map *const map)

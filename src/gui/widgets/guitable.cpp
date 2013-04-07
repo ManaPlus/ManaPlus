@@ -121,7 +121,7 @@ GuiTable::~GuiTable()
     mModel = nullptr;
 }
 
-TableModel *GuiTable::getModel() const
+const TableModel *GuiTable::getModel() const
 {
     return mModel;
 }

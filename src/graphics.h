@@ -291,7 +291,7 @@ class Graphics : public gcn::SDLGraphics
                              const int x2, const int y2,
                              const int width, const int height);
 
-        gcn::Font *getFont() const A_WARN_UNUSED
+        const gcn::Font *getFont() const A_WARN_UNUSED
         { return mFont; }
 
         gcn::ClipRectangle &getTopClip() A_WARN_UNUSED

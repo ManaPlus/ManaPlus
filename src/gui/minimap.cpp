@@ -349,12 +349,12 @@ void Minimap::draw(gcn::Graphics *graphics)
 
     if (player_node->isInParty())
     {
-        Party *const party = player_node->getParty();
+        const Party *const party = player_node->getParty();
         if (party)
         {
             const PartyMember *const m = party->getMember(
                 player_node->getName());
-            Party::MemberList *const members = party->getMembers();
+            const Party::MemberList *const members = party->getMembers();
             if (m && members)
             {
                 const std::string curMap = m->getMap();

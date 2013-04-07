@@ -175,6 +175,7 @@ bool PartyTab::handleCommand(const std::string &type, const std::string &args)
                 break;
             case -1:
                 chatLog(strprintf(BOOLEAN_OPTIONS, "item"));
+                break;
             default:
                 break;
         }
@@ -214,6 +215,7 @@ bool PartyTab::handleCommand(const std::string &type, const std::string &args)
                 break;
             case -1:
                 chatLog(strprintf(BOOLEAN_OPTIONS, "exp"));
+                break;
             default:
                 break;
         }

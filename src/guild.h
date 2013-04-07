@@ -41,7 +41,7 @@ class GuildMember final : public Avatar
 public:
     A_DELETE_COPY(GuildMember)
 
-    Guild *getGuild() const A_WARN_UNUSED
+    const Guild *getGuild() const A_WARN_UNUSED
     { return mGuild; }
 
     int getPos() const A_WARN_UNUSED

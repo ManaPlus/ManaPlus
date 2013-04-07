@@ -215,8 +215,8 @@ void KillStats::gainXp(int xp)
 
     const int exp = PlayerInfo::getAttribute(PlayerInfo::EXP);
     mLine1->setCaption(strprintf(_("Level: %d at %f%%"),
-        player_node->getLevel(), static_cast<double>(exp) / static_cast<double>(
-        xpNextLevel) * 100.0));
+        player_node->getLevel(), static_cast<double>(exp)
+        / static_cast<double>(xpNextLevel) * 100.0));
 
     mLine2->setCaption(strprintf(_("Exp: %d/%d Left: %d"), exp,
         xpNextLevel, xpNextLevel - exp));

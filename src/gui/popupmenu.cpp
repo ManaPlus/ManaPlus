@@ -1217,7 +1217,7 @@ void PopupMenu::handleLink(const std::string &link,
             if (guild)
             {
                 if (guild->getServerGuild())
-                    Net::getGuildHandler()->kick(guild->getMember(mNick));
+                    Net::getGuildHandler()->kick(guild->getMember(mNick), "");
                 else if (guildManager)
                     guildManager->kick(mNick);
             }

@@ -663,7 +663,7 @@ public:
         if (!socialWindow || !player_node)
             return;
 
-        Map *const map = socialWindow->getMap();
+        const Map *const map = socialWindow->getMap();
         if (!map || map->empty())
             return;
 

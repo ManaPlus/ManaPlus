@@ -402,7 +402,7 @@ class LocalPlayer final : public Being,
 
         void respawn();
 
-        FloorItem *getPickUpTarget() const A_WARN_UNUSED
+        const FloorItem *getPickUpTarget() const A_WARN_UNUSED
         { return mPickUpTarget; }
 
         void unSetPickUpTarget()

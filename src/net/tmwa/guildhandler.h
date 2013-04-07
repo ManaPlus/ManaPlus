@@ -49,12 +49,13 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
         void invite(const int guildId,
                     const Being *const being) const override;
 
-        void inviteResponse(const int guildId, const bool response) const override;
+        void inviteResponse(const int guildId,
+                            const bool response) const override;
 
         void leave(const int guildId) const override;
 
         void kick(const GuildMember *const member,
-                  const std::string &reason = "") const override;
+                  const std::string &reason) const override;
 
         void chat(const int guildId, const std::string &text) const override;
 

@@ -76,19 +76,19 @@ class Skin final
         /**
          * Returns the background skin.
          */
-        ImageRect &getBorder() const A_WARN_UNUSED
+        const ImageRect &getBorder() const A_WARN_UNUSED
         { return *mBorder; }
 
         /**
          * Returns the image used by a close button for this skin.
          */
-        Image *getCloseImage(const bool state) const A_WARN_UNUSED
+        const Image *getCloseImage(const bool state) const A_WARN_UNUSED
         { return state ? mCloseImageHighlighted : mCloseImage; }
 
         /**
          * Returns the image used by a sticky button for this skin.
          */
-        Image *getStickyImage(const bool state) const A_WARN_UNUSED
+        const Image *getStickyImage(const bool state) const A_WARN_UNUSED
         { return state ? mStickyImageDown : mStickyImageUp; }
 
         /**

@@ -350,7 +350,7 @@ class Map final : public Properties, public ConfigListener
                               const int x, const int y,
                               const bool addNew = true);
 
-        std::vector<MapItem*> &getPortals() A_WARN_UNUSED
+        const std::vector<MapItem*> &getPortals() const A_WARN_UNUSED
         { return mMapPortals; }
 
         /**

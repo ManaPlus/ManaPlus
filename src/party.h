@@ -151,7 +151,7 @@ public:
 
     typedef std::vector<PartyMember*> MemberList;
 
-    MemberList *getMembers() A_WARN_UNUSED
+    const MemberList *getMembers() const A_WARN_UNUSED
     { return &mMembers; }
 
     static Party *getParty(const short id) A_WARN_UNUSED;

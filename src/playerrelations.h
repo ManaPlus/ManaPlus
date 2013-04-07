@@ -192,7 +192,8 @@ class PlayerRelationsManager final
          *
          * \return A player ignore strategy, or nullptr
          */
-        PlayerIgnoreStrategy *getPlayerIgnoreStrategy() const A_WARN_UNUSED
+        const PlayerIgnoreStrategy *getPlayerIgnoreStrategy() const
+                                                              A_WARN_UNUSED
         { return mIgnoreStrategy; }
 
         /**

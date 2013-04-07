@@ -76,7 +76,7 @@ class CharServerHandler
 
         virtual void requestCharacters() = 0;
 
-        virtual void chooseCharacter(Net::Character *character) = 0;
+        virtual void chooseCharacter(Net::Character *const character) = 0;
 
         virtual void newCharacter(const std::string &name, const int slot,
                                   const bool gender, const int hairstyle,
