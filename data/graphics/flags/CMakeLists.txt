@@ -15,7 +15,6 @@ SET(FILES
     pt.png
     ru.png
     tr.png
-    vls.png
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/graphics/flags)
