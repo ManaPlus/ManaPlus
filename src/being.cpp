@@ -297,6 +297,8 @@ Being::~Being()
     delete mText;
     mText = nullptr;
 
+    delete mEmotionSprite;
+    mEmotionSprite = nullptr;
     delete mAnimationEffect;
     mAnimationEffect = nullptr;
 }
@@ -2744,7 +2746,10 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
     {
         const int emotionIndex = emotion - 1;
         if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
+        {
+            delete mEmotionSprite;
             mEmotionSprite = EmoteDB::getClone(emotionIndex, true);
+        }
 
         if (mEmotionSprite)
         {
