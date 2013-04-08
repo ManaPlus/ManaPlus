@@ -46,25 +46,26 @@ class MessageOut final : public Net::MessageOut
         /**
          * Constructor.
          */
-        MessageOut(short id);
+        MessageOut(const short id);
 
         A_DELETE_COPY(MessageOut)
 
-        void writeInt16(int16_t value);        /**< Writes a short. */
+        void writeInt16(const int16_t value);        /**< Writes a short. */
 
-        void writeInt32(int32_t value);        /**< Writes a long. */
+        void writeInt32(const int32_t value);        /**< Writes a long. */
 
         /**
          * Encodes coordinates and direction in 3 bytes.
          */
-        void writeCoordinates(unsigned short x, unsigned short y,
+        void writeCoordinates(const unsigned short x,
+                              const unsigned short y,
                               unsigned char direction);
 
         void resetPos()
         { mPos = 0; }
 
     private:
-        void expand(size_t size);
+        void expand(const size_t size);
 
         Network *mNetwork;
 };

@@ -39,7 +39,7 @@
 namespace TmwAthena
 {
 
-MessageOut::MessageOut(short id):
+MessageOut::MessageOut(const short id):
     Net::MessageOut(id),
     mNetwork(TmwAthena::Network::instance())
 {
@@ -49,15 +49,15 @@ MessageOut::MessageOut(short id):
     writeInt16(id);
 }
 
-void MessageOut::expand(size_t bytes)
+void MessageOut::expand(const size_t bytes)
 {
     mNetwork->mOutSize += static_cast<unsigned>(bytes);
     PacketCounters::incOutBytes(static_cast<int>(bytes));
 }
 
-void MessageOut::writeInt16(int16_t value)
+void MessageOut::writeInt16(const int16_t value)
 {
-    DEBUGLOG("writeInt16: " + toString(static_cast<int>(value)));
+    DEBUGLOG("writeInt16: " + toStringPrint(static_cast<int>(value)));
     expand(2);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int16_t swap = SDL_Swap16(value);
@@ -69,9 +69,9 @@ void MessageOut::writeInt16(int16_t value)
     PacketCounters::incOutBytes(2);
 }
 
-void MessageOut::writeInt32(int32_t value)
+void MessageOut::writeInt32(const int32_t value)
 {
-    DEBUGLOG("writeInt32: " + toString(value));
+    DEBUGLOG("writeInt32: " + toStringPrint(value));
     expand(4);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int32_t swap = SDL_Swap32(value);
@@ -87,7 +87,8 @@ void MessageOut::writeInt32(int32_t value)
 #define HIBYTE(w)  (static_cast<unsigned char>(( \
 static_cast<unsigned short>(w)) >> 8))
 
-void MessageOut::writeCoordinates(unsigned short x, unsigned short y,
+void MessageOut::writeCoordinates(const unsigned short x,
+                                  const unsigned short y,
                                   unsigned char direction)
 {
     DEBUGLOG(strprintf("writeCoordinates: %u,%u %u",
@@ -97,8 +98,7 @@ void MessageOut::writeCoordinates(unsigned short x, unsigned short y,
     mNetwork->mOutSize += 3;
     mPos += 3;
 
-    short temp;
-    temp = x;
+    short temp = x;
     temp <<= 6;
     data[0] = 0;
     data[1] = 1;
