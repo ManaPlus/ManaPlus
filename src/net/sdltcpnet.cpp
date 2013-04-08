@@ -20,7 +20,22 @@
 
 #include "net/sdltcpnet.h"
 
+#if defined __linux__ || defined __linux
+#include <sys/socket.h>
+#include <linux/tcp.h>
+#include <netdb.h>
+#endif
+
 #include "debug.h"
+
+// because actual struct is hidden in SDL_net we reinroducing it here
+struct TCPsocketHack {
+    int ready;
+    int channel;
+    IPaddress remoteAddress;
+    IPaddress localAddress;
+    int sflag;
+};
 
 void TcpNet::init()
 {
@@ -52,9 +67,40 @@ int TcpNet::resolveHost(IPaddress *address, const char *host, Uint16 port)
     return SDLNet_ResolveHost(address, host, port);
 }
 
+#include "logger.h"
+
 TcpNet::Socket TcpNet::open(IPaddress *ip)
 {
-    return SDLNet_TCP_Open(ip);
+    TcpNet::Socket sock = SDLNet_TCP_Open(ip);
+    if (sock && ip)
+    {
+        TCPsocketHack *hack = reinterpret_cast<TCPsocketHack *>(sock);
+        // here we using some magic to compare TCPsocket and own padding
+        // because actual struct TCPsocket not in headers
+        if (hack)
+        {
+            const IPaddress &addr = hack->remoteAddress;
+            if (addr.host == ip->host && addr.port == ip->port)
+            {
+                const int val = 1;
+#ifdef TCP_THIN_LINEAR_TIMEOUTS
+                if (setsockopt(hack->channel, IPPROTO_TCP,
+                    TCP_THIN_LINEAR_TIMEOUTS, &val, sizeof(val)))
+                {
+                    logger->log1("error on set TCP_THIN_LINEAR_TIMEOUTS");
+                }
+#endif
+#ifdef TCP_THIN_DUPACK
+                if (setsockopt(hack->channel, IPPROTO_TCP,
+                    TCP_THIN_DUPACK, &val, sizeof(val)))
+                {
+                    logger->log1("error on set TCP_THIN_DUPACK");
+                }
+#endif
+            }
+        }
+    }
+    return sock;
 }
 
 TcpNet::SocketSet TcpNet::allocSocketSet(int maxsockets)
