@@ -44,7 +44,7 @@ class MessageIn final : public Net::MessageIn
         /**
          * Constructor.
          */
-        MessageIn(const char *data, unsigned int length);
+        MessageIn(const char *const data, const unsigned int length);
 
         A_DELETE_COPY(MessageIn)
 

@@ -79,6 +79,8 @@ template<typename T> std::string toString(const T &arg)
     return ss.str();
 }
 
+std::string toStringPrint(const unsigned int val);
+
 /**
  * Converts the given IP address to a string.
  *

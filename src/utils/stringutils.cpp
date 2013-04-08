@@ -676,3 +676,10 @@ std::string decodeLinkText(std::string data)
 {
     return replaceAll(data, "\342\235\230", "|");
 }
+
+std::string toStringPrint(const unsigned int val)
+{
+    static char str[100];
+    sprintf(str, "%u 0x%x", val, val);
+    return str;
+}

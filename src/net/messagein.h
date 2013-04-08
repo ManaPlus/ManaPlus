@@ -89,7 +89,7 @@ class MessageIn
         /**
          * Skips a given number of bytes.
          */
-        virtual void skip(unsigned int length);
+        virtual void skip(const unsigned int length);
 
         /**
          * Reads a string. If a length is not given (-1), it is assumed
@@ -105,7 +105,8 @@ class MessageIn
         virtual ~MessageIn()
         { }
 
-        static uint8_t fromServerDirection(uint8_t serverDir) A_WARN_UNUSED;
+        static uint8_t fromServerDirection(const uint8_t serverDir)
+                                           A_WARN_UNUSED;
 
     protected:
         /**

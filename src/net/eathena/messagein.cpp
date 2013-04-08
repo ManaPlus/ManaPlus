@@ -36,7 +36,7 @@
 namespace EAthena 
 {
 
-MessageIn::MessageIn(const char *data, unsigned int length):
+MessageIn::MessageIn(const char *const data, const unsigned int length) :
     Net::MessageIn(data, length)
 {
     // Read the message ID
@@ -58,7 +58,7 @@ int16_t MessageIn::readInt16()
     }
     mPos += 2;
     PacketCounters::incInBytes(2);
-    DEBUGLOG("readInt16: " + toString(static_cast<int>(value)));
+    DEBUGLOG("readInt16: " + toStringPrint(static_cast<int>(value)));
     return value;
 }
 
@@ -77,7 +77,7 @@ int32_t MessageIn::readInt32()
     }
     mPos += 4;
     PacketCounters::incInBytes(4);
-    DEBUGLOG(strprintf("readInt32: %u", value));
+    DEBUGLOG("readInt32: " + toStringPrint(value));
     return value;
 }
 
