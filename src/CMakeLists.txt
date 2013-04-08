@@ -401,6 +401,8 @@ SET(SRCS
     net/net.h
     net/partyhandler.h
     net/playerhandler.h
+    net/sdltcpnet.cpp
+    net/sdltcpnet.h
     net/serverinfo.h
     net/skillhandler.h
     net/tradehandler.h

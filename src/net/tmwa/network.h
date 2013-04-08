@@ -28,12 +28,6 @@
 #include "net/tmwa/messagehandler.h"
 #include "net/tmwa/messagein.h"
 
-#include <SDL_net.h>
-#include <SDL_thread.h>
-
-#include <map>
-#include <string>
-
 /**
  * Protocol version, reported to the eAthena char and mapserver who can adjust
  * the protocol accordingly.

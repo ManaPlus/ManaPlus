@@ -66,8 +66,7 @@ Network::Network() :
     mMutex(SDL_CreateMutex()),
     mSleep(config.getIntValue("networksleep"))
 {
-    SDLNet_Init();
-
+    TcpNet::init();
 }
 
 Network::~Network()
@@ -81,7 +80,7 @@ Network::~Network()
     delete []mInBuffer;
     delete []mOutBuffer;
 
-    SDLNet_Quit();
+    TcpNet::quit();
 }
 
 bool Network::connect(ServerInfo server)
@@ -133,8 +132,7 @@ void Network::disconnect()
 
     if (mSocket)
     {
-        // need call SDLNet_TCP_DelSocket?
-        SDLNet_TCP_Close(mSocket);
+        TcpNet::closeSocket(mSocket);
         mSocket = nullptr;
         if (mSleep > 0)
             SDL_Delay(mSleep);
@@ -149,12 +147,12 @@ void Network::flush()
     int ret;
 
     SDL_mutexP(mMutex);
-    ret = SDLNet_TCP_Send(mSocket, mOutBuffer, mOutSize);
+    ret = TcpNet::send(mSocket, mOutBuffer, mOutSize);
     DEBUGLOG(std::string("Send ").append(toString(mOutSize)).append(" bytes"));
     if (ret < static_cast<int>(mOutSize))
     {
-        setError("Error in SDLNet_TCP_Send(): " +
-            std::string(SDLNet_GetError()));
+        setError("Error in TcpNet::send(): " +
+            std::string(TcpNet::getError()));
     }
     mOutSize = 0;
     SDL_mutexV(mMutex);
@@ -188,23 +186,23 @@ bool Network::realConnect()
 {
     IPaddress ipAddress;
 
-    if (SDLNet_ResolveHost(&ipAddress, mServer.hostname.c_str(),
+    if (TcpNet::resolveHost(&ipAddress, mServer.hostname.c_str(),
         mServer.port) == -1)
     {
         std::string errorMessage = std::string(_("Unable to resolve host \""))
             .append(mServer.hostname).append("\"");
         setError(errorMessage);
-        logger->log("SDLNet_ResolveHost: %s", errorMessage.c_str());
+        logger->log("TcpNet::ResolveHost: %s", errorMessage.c_str());
         return false;
     }
 
     mState = CONNECTING;
 
-    mSocket = SDLNet_TCP_Open(&ipAddress);
+    mSocket = TcpNet::open(&ipAddress);
     if (!mSocket)
     {
-        logger->log("Error in SDLNet_TCP_Open(): %s", SDLNet_GetError());
-        setError(SDLNet_GetError());
+        logger->log("Error in TcpNet::open(): %s", TcpNet::getError());
+        setError(TcpNet::getError());
         return false;
     }
 
@@ -218,32 +216,32 @@ bool Network::realConnect()
 
 void Network::receive()
 {
-    SDLNet_SocketSet set;
+    TcpNet::SocketSet set;
 
-    if (!(set = SDLNet_AllocSocketSet(1)))
+    if (!(set = TcpNet::allocSocketSet(1)))
     {
-        setError("Error in SDLNet_AllocSocketSet(): " +
-            std::string(SDLNet_GetError()));
+        setError("Error in TcpNet::allocSocketSet(): " +
+            std::string(TcpNet::getError()));
         return;
     }
 
-    if (SDLNet_TCP_AddSocket(set, mSocket) == -1)
+    if (TcpNet::addSocket(set, mSocket) == -1)
     {
-        setError("Error in SDLNet_AddSocket(): " +
-            std::string(SDLNet_GetError()));
+        setError("Error in TcpNet::addSocket(): " +
+            std::string(TcpNet::getError()));
     }
 
     while (mState == CONNECTED)
     {
         // TODO Try to get this to block all the time while still being able
         // to escape the loop
-        const int numReady = SDLNet_CheckSockets(
+        const int numReady = TcpNet::checkSockets(
             set, (static_cast<uint32_t>(500)));
         int ret;
         switch (numReady)
         {
             case -1:
-                logger->log1("Error: SDLNet_CheckSockets");
+                logger->log1("Error: TcpNet::checkSockets");
                 // FALLTHROUGH
             case 0:
                 break;
@@ -258,8 +256,8 @@ void Network::receive()
                     continue;
                 }
 
-                ret = SDLNet_TCP_Recv(mSocket, mInBuffer + mInSize,
-                                      BUFFER_SIZE - mInSize);
+                ret = TcpNet::recv(mSocket, mInBuffer + mInSize,
+                                   BUFFER_SIZE - mInSize);
 
                 if (!ret)
                 {
@@ -270,7 +268,7 @@ void Network::receive()
                 else if (ret < 0)
                 {
                     setError(_("Connection to server terminated. ") +
-                             std::string(SDLNet_GetError()));
+                             std::string(TcpNet::getError()));
                 }
                 else
                 {
@@ -298,17 +296,17 @@ void Network::receive()
                 // more than one socket is ready..
                 // this should not happen since we only listen once socket.
                 std::stringstream errorStream;
-                errorStream << "Error in SDLNet_TCP_Recv(), " << numReady
-                            << " sockets are ready: " << SDLNet_GetError();
+                errorStream << "Error in TcpNet::recv(), " << numReady
+                            << " sockets are ready: " << TcpNet::getError();
                 setError(errorStream.str());
                 break;
         }
     }
 
-    if (SDLNet_TCP_DelSocket(set, mSocket) == -1)
-        logger->log("Error in SDLNet_DelSocket(): %s", SDLNet_GetError());
+    if (TcpNet::delSocket(set, mSocket) == -1)
+        logger->log("Error in TcpNet::delSocket(): %s", TcpNet::getError());
 
-    SDLNet_FreeSocketSet(set);
+    TcpNet::freeSocketSet(set);
 }
 
 void Network::setError(const std::string &error)

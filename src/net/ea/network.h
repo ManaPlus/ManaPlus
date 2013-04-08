@@ -28,7 +28,8 @@
 #include "net/messagein.h"
 #include "net/messageout.h"
 
-#include <SDL_net.h>
+#include "net/sdltcpnet.h"
+
 #include <SDL_thread.h>
 
 #include <map>
@@ -92,7 +93,7 @@ class Network
 
         void receive();
 
-        TCPsocket mSocket;
+        TcpNet::Socket mSocket;
 
         ServerInfo mServer;
 
