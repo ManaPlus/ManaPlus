@@ -1008,6 +1008,9 @@ void Game::changeMap(const std::string &mapPath)
 {
     resetAdjustLevel();
 
+    ResourceManager *const resman = ResourceManager::getInstance();
+    resman->cleanProtected();
+
     if (viewport)
         viewport->clearPopup();
 
@@ -1038,7 +1041,6 @@ void Game::changeMap(const std::string &mapPath)
     std::string realFullMap = paths.getValue("maps", "maps/").append(
         MapDB::getMapName(mMapName)).append(".tmx");
 
-    const ResourceManager *const resman = ResourceManager::getInstance();
     if (!resman->exists(realFullMap))
         realFullMap.append(".gz");
 

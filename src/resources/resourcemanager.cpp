@@ -63,7 +63,8 @@ ResourceManager::ResourceManager() :
     mOldestOrphan(0),
     mSelectedSkin(""),
     mSkinName(""),
-    mDestruction(0)
+    mDestruction(0),
+    mUseLongLiveSprites(config.getBoolValue("uselonglivesprites"))
 {
     logger->log1("Initializing resource manager...");
 }
@@ -186,6 +187,27 @@ void ResourceManager::cleanUp(Resource *const res)
 #ifdef DEBUG_LEAKS
     cleanOrpahns(true);
 #endif
+}
+
+void ResourceManager::cleanProtected()
+{
+    ResourceIterator iter = mResources.begin();
+    while (iter != mResources.end())
+    {
+        Resource *res = iter->second;
+        if (!res)
+        {
+            ++ iter;
+            continue;
+        }
+        if (res->isProtected())
+        {
+            res->setProtected(false);
+            res->decRef();
+        }
+
+        ++ iter;
+    }
 }
 
 bool ResourceManager::cleanOrphans(const bool always)
@@ -772,6 +794,7 @@ struct SpriteDefLoader
 {
     std::string path;
     int variant;
+    bool useLongLiveSprites;
     static Resource *load(const void *const v)
     {
         if (!v)
@@ -779,14 +802,14 @@ struct SpriteDefLoader
 
         const SpriteDefLoader *const
             rl = static_cast<const SpriteDefLoader *const>(v);
-        return SpriteDef::load(rl->path, rl->variant);
+        return SpriteDef::load(rl->path, rl->variant, rl->useLongLiveSprites);
     }
 };
 
 SpriteDef *ResourceManager::getSprite(const std::string &path,
                                       const int variant)
 {
-    SpriteDefLoader rl = { path, variant };
+    SpriteDefLoader rl = { path, variant, mUseLongLiveSprites };
     std::stringstream ss;
     ss << path << "[" << variant << "]";
     return static_cast<SpriteDef*>(get(ss.str(), SpriteDefLoader::load, &rl));
@@ -888,6 +911,7 @@ void ResourceManager::deleteInstance()
     if (instance)
     {
         logger->log("clean orphans start");
+        instance->cleanProtected();
         while (instance->cleanOrphans(true));
         logger->log("clean orphans end");
         ResourceIterator iter = instance->mResources.begin();

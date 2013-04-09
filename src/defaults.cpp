@@ -314,6 +314,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableLangTab", true);
     AddDEF("showAllLang", false);
     AddDEF("moveNames", false);
+    AddDEF("uselonglivesprites", false);
     return configData;
 }
 

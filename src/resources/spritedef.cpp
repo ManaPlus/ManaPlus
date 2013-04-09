@@ -73,7 +73,8 @@ unsigned SpriteDef::findNumber(const unsigned num) const
     return min;
 }
 
-SpriteDef *SpriteDef::load(const std::string &animationFile, const int variant)
+SpriteDef *SpriteDef::load(const std::string &animationFile,
+                           const int variant, bool prot)
 {
     const size_t pos = animationFile.find('|');
     std::string palettes;
@@ -90,7 +91,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, const int variant)
         std::string errorFile = paths.getStringValue("sprites").append(
             paths.getStringValue("spriteErrorFile"));
         if (animationFile != errorFile)
-            return load(errorFile, 0);
+            return load(errorFile, 0, prot);
         else
             return nullptr;
     }
@@ -101,6 +102,11 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, const int variant)
     def->substituteActions();
     if (serverVersion < 1)
         def->fixDeadAction();
+    if (prot)
+    {
+        def->incRef();
+        def->setProtected(true);
+    }
     return def;
 }
 

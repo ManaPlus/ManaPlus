@@ -129,6 +129,10 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable texture atlases (OpenGL)"), "",
         "useAtlases", this, "useAtlasesEvent");
 
+    new SetupItemCheckBox(_("Cache all sprites per map (can use "
+        "additinal memory)"), "", "uselonglivesprites", this,
+        "uselonglivespritesEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 

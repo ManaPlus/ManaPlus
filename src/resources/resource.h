@@ -43,6 +43,7 @@ class Resource
          */
         Resource() :
             mTimeStamp(0),
+            mProtected(false),
 #ifdef DEBUG_DUMP_LEAKS
             mRefCount(0),
             mDumped(false)
@@ -86,6 +87,12 @@ class Resource
         std::string getSource() const A_WARN_UNUSED
         { return mSource; }
 
+        void setProtected(bool b)
+        { mProtected = b; }
+
+        bool isProtected() const
+        { return mProtected; }
+
 #ifdef DEBUG_DUMP_LEAKS
         bool getDumped() const A_WARN_UNUSED
         { return mDumped; }
@@ -105,6 +112,7 @@ class Resource
 
     private:
         time_t mTimeStamp;   /**< Time at which the resource was orphaned. */
+        bool mProtected;
         unsigned mRefCount;  /**< Reference count. */
 #ifdef DEBUG_DUMP_LEAKS
         bool mDumped;

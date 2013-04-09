@@ -317,6 +317,8 @@ class ResourceManager final
 
         bool cleanOrphans(const bool always = false);
 
+        void cleanProtected();
+
         bool isInCache(const std::string &idPath) const A_WARN_UNUSED;
 
         Resource *getTempResource(const std::string &idPath) A_WARN_UNUSED;
@@ -346,6 +348,7 @@ class ResourceManager final
         std::string mSelectedSkin;
         std::string mSkinName;
         bool mDestruction;
+        bool mUseLongLiveSprites;
         static DelayedAnim mDelayedAnimations;
 };
 

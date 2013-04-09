@@ -118,7 +118,7 @@ class SpriteDef final : public Resource
          * Loads a sprite definition file.
          */
         static SpriteDef *load(const std::string &file,
-                               const int variant) A_WARN_UNUSED;
+                               const int variant, bool prot) A_WARN_UNUSED;
 
         /**
          * Returns the specified action.
