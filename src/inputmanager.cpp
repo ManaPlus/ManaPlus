@@ -443,7 +443,7 @@ void InputManager::unassignKey()
 
 bool InputManager::handleAssignKey(const SDL_Event &event, const int type)
 {
-    if (setupWindow && setupWindow->isVisible() &&
+    if (setupWindow && setupWindow->isWindowVisible() &&
         getNewKeyIndex() > Input::KEY_NO_VALUE)
     {
         setNewKey(event, type);
@@ -583,7 +583,7 @@ void InputManager::updateConditionMask()
     if (!player_node || !player_node->getAway())
         mMask |= COND_NOAWAY;
 
-    if (!setupWindow || !setupWindow->isVisible())
+    if (!setupWindow || !setupWindow->isWindowVisible())
         mMask |= COND_NOSETUP;
 
     if (Game::instance() && Game::instance()->getValidSpeed())

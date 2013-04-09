@@ -558,7 +558,7 @@ void Window::setVisible(bool visible)
 
 void Window::setVisible(bool visible, bool forceSticky)
 {
-    if (visible == isVisible())
+    if (visible == isWindowVisible())
         return; // Nothing to do
 
     // Check if the window is off screen...
@@ -886,7 +886,7 @@ void Window::saveWindowState()
         config.setValue(mWindowName + "WinY", mDimension.y);
 
         if (mSaveVisible)
-            config.setValue(mWindowName + "Visible", isVisible());
+            config.setValue(mWindowName + "Visible", isWindowVisible());
 
         if (mStickyButton)
             config.setValue(mWindowName + "Sticky", isSticky());

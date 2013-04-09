@@ -223,8 +223,8 @@ void Minimap::setMap(const Map *const map)
 
 void Minimap::toggle()
 {
-    setVisible(!isVisible(), isSticky());
-    mShow = isVisible();
+    setVisible(!isWindowVisible(), isSticky());
+    mShow = isWindowVisible();
 }
 
 void Minimap::draw(gcn::Graphics *graphics)

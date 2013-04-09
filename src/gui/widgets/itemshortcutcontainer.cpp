@@ -306,8 +306,8 @@ void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
     {
         // Stores the selected item if theirs one.
         if (selShortcut->isItemSelected() && inventoryWindow &&
-            (inventoryWindow->isVisible() || selShortcut->getSelectedItem()
-            >= SPELL_MIN_ID))
+            (inventoryWindow->isWindowVisible()
+            || selShortcut->getSelectedItem() >= SPELL_MIN_ID))
         {
             selShortcut->setItem(index);
             selShortcut->setItemSelected(-1);

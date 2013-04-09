@@ -117,7 +117,7 @@ void ItemLinkHandler::handleLink(const std::string &link,
             //+++ need add color to links?
             mItemPopup->setItem(itemInfo, 1, true);
 
-            if (mItemPopup->isVisible())
+            if (mItemPopup->isPopupVisible())
             {
                 mItemPopup->setVisible(false);
             }

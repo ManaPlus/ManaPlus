@@ -252,7 +252,7 @@ void MiniStatusWindow::processEvent(Channels channel A_UNUSED,
 void MiniStatusWindow::updateStatus()
 {
     StatusWindow::updateStatusBar(mStatusBar);
-    if (mStatusPopup && mStatusPopup->isVisible())
+    if (mStatusPopup && mStatusPopup->isPopupVisible())
         mStatusPopup->update();
 }
 

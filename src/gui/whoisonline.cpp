@@ -607,7 +607,7 @@ void WhoIsOnline::slowLogic()
         mUpdateTimer = cur_time;
 
     double timeDiff = difftime(cur_time, mUpdateTimer);
-    int timeLimit = isVisible() ? 20 : 120;
+    int timeLimit = isWindowVisible() ? 20 : 120;
 
     if (mUpdateOnlineList && timeDiff >= timeLimit
         && mDownloadStatus != UPDATE_LIST)

@@ -165,6 +165,6 @@ void DidYouKnowWindow::setVisible(bool visible)
 {
     Window::setVisible(visible);
 
-    if (visible || isVisible())
+    if (visible || isWindowVisible())
         loadData();
 }

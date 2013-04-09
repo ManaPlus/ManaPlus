@@ -983,7 +983,7 @@ void Game::handleInput()
     // If pressed outfits keys, stop processing keys.
     if (inputManager.isActionActive(Input::KEY_WEAR_OUTFIT)
         || inputManager.isActionActive(Input::KEY_COPY_OUTFIT)
-        || (setupWindow && setupWindow->isVisible()))
+        || (setupWindow && setupWindow->isWindowVisible()))
     {
         BLOCK_END("Game::handleInput 1")
         return;

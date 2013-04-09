@@ -88,8 +88,8 @@ void HelpWindow::action(const gcn::ActionEvent &event)
     {
         if (didYouKnowWindow)
         {
-            didYouKnowWindow->setVisible(!didYouKnowWindow->isVisible());
-            if (didYouKnowWindow->isVisible())
+            didYouKnowWindow->setVisible(!didYouKnowWindow->isWindowVisible());
+            if (didYouKnowWindow->isWindowVisible())
                 didYouKnowWindow->requestMoveToTop();
         }
     }

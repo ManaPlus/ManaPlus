@@ -205,13 +205,13 @@ impHandler0(mouseClick)
 impHandler0(ok)
 {
     // Close the Browser if opened
-    if (helpWindow && helpWindow->isVisible())
+    if (helpWindow && helpWindow->isWindowVisible())
     {
         helpWindow->setVisible(false);
         return true;
     }
     // Close the config window, cancelling changes if opened
-    else if (setupWindow && setupWindow->isVisible())
+    else if (setupWindow && setupWindow->isWindowVisible())
     {
         setupWindow->action(gcn::ActionEvent(nullptr, "cancel"));
         return true;
@@ -299,7 +299,7 @@ impHandler0(nextSocialTab)
 
 impHandler0(scrollChatUp)
 {
-    if (chatWindow && chatWindow->isVisible())
+    if (chatWindow && chatWindow->isWindowVisible())
     {
         chatWindow->scroll(-DEFAULT_CHAT_WINDOW_SCROLL);
         return true;
@@ -309,7 +309,7 @@ impHandler0(scrollChatUp)
 
 impHandler0(scrollChatDown)
 {
-    if (chatWindow && chatWindow->isVisible())
+    if (chatWindow && chatWindow->isWindowVisible())
     {
         chatWindow->scroll(DEFAULT_CHAT_WINDOW_SCROLL);
         return true;
@@ -598,7 +598,7 @@ impHandler0(setupWindowShow)
 {
     if (setupWindow)
     {
-        if (setupWindow->isVisible())
+        if (setupWindow->isWindowVisible())
         {
             setupWindow->doCancel();
         }
@@ -672,7 +672,7 @@ impHandler0(helpWindowShow)
 {
     if (helpWindow)
     {
-        if (helpWindow->isVisible())
+        if (helpWindow->isWindowVisible())
         {
             helpWindow->setVisible(false);
         }
@@ -690,8 +690,8 @@ static void showHideWindow(Window *const window)
 {
     if (window)
     {
-        window->setVisible(!window->isVisible());
-        if (window->isVisible())
+        window->setVisible(!window->isWindowVisible());
+        if (window->isWindowVisible())
             window->requestMoveToTop();
     }
 }

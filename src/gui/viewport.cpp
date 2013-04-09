@@ -468,7 +468,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     }
 
     // If a popup is active, just remove it
-    if (mPopupMenu->isVisible())
+    if (mPopupMenu->isPopupVisible())
     {
         mPlayerFollowMouse = false;
         mPopupMenu->setVisible(false);
@@ -895,7 +895,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
                 }
                 else
                 {
-                    if (mTextPopup->isVisible())
+                    if (mTextPopup->isPopupVisible())
                         mTextPopup->setVisible(false);
                 }
                 gui->setCursorType(Cursor::CURSOR_UP);
@@ -903,7 +903,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
             }
         }
     }
-    if (mTextPopup->isVisible())
+    if (mTextPopup->isPopupVisible())
         mTextPopup->setVisible(false);
 
     if (mHoverBeing)
@@ -998,7 +998,7 @@ void Viewport::moveCamera(const int dx, const int dy)
 
 bool Viewport::isPopupMenuVisible() const
 {
-    return mPopupMenu ? mPopupMenu->isVisible() : false;
+    return mPopupMenu ? mPopupMenu->isPopupVisible() : false;
 }
 
 void Viewport::moveCameraToActor(const int actorId, const int x, const int y)

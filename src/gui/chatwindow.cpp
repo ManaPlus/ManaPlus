@@ -575,7 +575,7 @@ void ChatWindow::action(const gcn::ActionEvent &event)
 bool ChatWindow::requestChatFocus()
 {
     // Make sure chatWindow is visible
-    if (!isVisible())
+    if (!isWindowVisible())
     {
         setVisible(true);
 
@@ -721,7 +721,7 @@ void ChatWindow::doPresent() const
 
 void ChatWindow::scroll(const int amount) const
 {
-    if (!isVisible())
+    if (!isWindowVisible())
         return;
 
     ChatTab *const tab = getFocused();

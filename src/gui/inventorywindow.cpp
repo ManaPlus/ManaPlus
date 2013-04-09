@@ -262,8 +262,8 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     {
         if (outfitWindow)
         {
-            outfitWindow->setVisible(!outfitWindow->isVisible());
-            if (outfitWindow->isVisible())
+            outfitWindow->setVisible(!outfitWindow->isWindowVisible());
+            if (outfitWindow->isWindowVisible())
                 outfitWindow->requestMoveToTop();
         }
     }
@@ -271,8 +271,8 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     {
         if (shopWindow)
         {
-            shopWindow->setVisible(!shopWindow->isVisible());
-            if (shopWindow->isVisible())
+            shopWindow->setVisible(!shopWindow->isWindowVisible());
+            if (shopWindow->isWindowVisible())
                 shopWindow->requestMoveToTop();
         }
     }
@@ -280,8 +280,8 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     {
         if (equipmentWindow)
         {
-            equipmentWindow->setVisible(!equipmentWindow->isVisible());
-            if (equipmentWindow->isVisible())
+            equipmentWindow->setVisible(!equipmentWindow->isWindowVisible());
+            if (equipmentWindow->isWindowVisible())
                 equipmentWindow->requestMoveToTop();
         }
     }
@@ -291,7 +291,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "store")
     {
-        if (!inventoryWindow || !inventoryWindow->isVisible())
+        if (!inventoryWindow || !inventoryWindow->isWindowVisible())
             return;
 
         Item *const item = inventoryWindow->getSelectedItem();
@@ -413,7 +413,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
     const bool mod = (isStorageActive() && inputManager.isActionActive(
         static_cast<int>(Input::KEY_MOD)));
 
-    const bool mod2 = (tradeWindow && tradeWindow->isVisible()
+    const bool mod2 = (tradeWindow && tradeWindow->isWindowVisible()
         && inputManager.isActionActive(static_cast<int>(Input::KEY_MOD)));
 
     if (!mod && !mod2 && event.getButton() == gcn::MouseEvent::RIGHT)
@@ -497,7 +497,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
                     ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
                         inventoryWindow, item);
                 }
-                else if (tradeWindow && tradeWindow->isVisible())
+                else if (tradeWindow && tradeWindow->isWindowVisible())
                 {
                     ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
                         tradeWindow, item);

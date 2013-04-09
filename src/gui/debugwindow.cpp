@@ -91,7 +91,7 @@ DebugWindow::~DebugWindow()
 void DebugWindow::slowLogic()
 {
     BLOCK_START("DebugWindow::slowLogic")
-    if (!isVisible() || !mTabs)
+    if (!isWindowVisible() || !mTabs)
     {
         BLOCK_END("DebugWindow::slowLogic")
         return;

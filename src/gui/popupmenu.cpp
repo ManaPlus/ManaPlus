@@ -1521,7 +1521,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (being == player_node)
         {
-            if (equipmentWindow && !equipmentWindow->isVisible())
+            if (equipmentWindow && !equipmentWindow->isWindowVisible())
                 equipmentWindow->setVisible(true);
         }
         else
@@ -1679,7 +1679,7 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
 
     if (isInventory)
     {
-        if (tradeWindow && tradeWindow->isVisible())
+        if (tradeWindow && tradeWindow->isWindowVisible())
         {
             mBrowserBox->addRow("addtrade", _("Add to trade"));
             if (cnt > 1)

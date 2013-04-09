@@ -168,6 +168,9 @@ class Popup : public Container, public gcn::MouseListener,
 
         void widgetMoved(const gcn::Event &event) override;
 
+        bool isPopupVisible() const
+        { return mVisible; }
+
     protected:
         int mPadding;                 /**< Holds the padding of the popup. */
         Skin *mSkin;                  /**< Skin in use by this popup */

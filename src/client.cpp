@@ -1754,8 +1754,8 @@ void Client::action(const gcn::ActionEvent &event)
 
     if (setupWindow)
     {
-        setupWindow->setVisible(!setupWindow->isVisible());
-        if (setupWindow->isVisible())
+        setupWindow->setVisible(!setupWindow->isWindowVisible());
+        if (setupWindow->isWindowVisible())
         {
             if (!tab.empty())
                 setupWindow->activateTab(tab);

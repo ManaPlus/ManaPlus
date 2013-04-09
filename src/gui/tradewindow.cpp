@@ -325,7 +325,7 @@ void TradeWindow::action(const gcn::ActionEvent &event)
         if (mStatus != PREPARING)
             return;
 
-        if (!inventoryWindow->isVisible())
+        if (!inventoryWindow->isWindowVisible())
         {
             inventoryWindow->setVisible(true);
             return;

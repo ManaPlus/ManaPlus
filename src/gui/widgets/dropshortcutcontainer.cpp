@@ -222,7 +222,8 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
         // Stores the selected item if theirs one.
-        if (dropShortcut->isItemSelected() && inventoryWindow->isVisible())
+        if (dropShortcut->isItemSelected()
+            && inventoryWindow->isWindowVisible())
         {
             dropShortcut->setItem(index);
             dropShortcut->setItemSelected(-1);

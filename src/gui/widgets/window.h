@@ -414,6 +414,9 @@ class Window : public gcn::Window,
         void enableVisibleSound(bool b)
         { mPlayVisibleSound = b; }
 
+        bool isWindowVisible() const A_WARN_UNUSED
+        { return mVisible; }
+
     protected:
         bool canMove() const A_WARN_UNUSED;
 
