@@ -140,6 +140,7 @@ class Game final
         int mLowerCounter;
         int mPing;
         bool mLogInput;
+        int mTime;
 
         static Game *mInstance;
 };

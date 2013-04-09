@@ -385,7 +385,8 @@ Game::Game():
     mAdjustPerfomance(config.getBoolValue("adjustPerfomance")),
     mLowerCounter(0),
     mPing(0),
-    mLogInput(config.getBoolValue("logInput"))
+    mLogInput(config.getBoolValue("logInput")),
+    mTime(cur_time + 1)
 {
     touchManager.setInGame(true);
     spellManager = new SpellManager;
@@ -571,20 +572,25 @@ void Game::slowLogic()
     BLOCK_START("Game::slowLogic")
     if (player_node)
         player_node->slowLogic();
-    if (botCheckerWindow)
-        botCheckerWindow->slowLogic();
-    if (debugWindow)
-        debugWindow->slowLogic();
-    if (killStats)
-        killStats->update();
-    if (socialWindow)
-        socialWindow->slowLogic();
-    if (whoIsOnline)
-        whoIsOnline->slowLogic();
+    const int time = cur_time;
+    if (mTime <= time)
+    {
+        mTime = time + 1;
+        if (botCheckerWindow)
+            botCheckerWindow->slowLogic();
+        if (debugWindow)
+            debugWindow->slowLogic();
+        if (killStats)
+            killStats->update();
+        if (socialWindow)
+            socialWindow->slowLogic();
+        if (whoIsOnline)
+            whoIsOnline->slowLogic();
+        Being::reReadConfig();
+        if (killStats)
+            killStats->recalcStats();
+    }
 
-    Being::reReadConfig();
-    if (killStats)
-        killStats->recalcStats();
     if (shopWindow)
         shopWindow->updateTimes();
     if (mainGraphics->getOpenGL())
