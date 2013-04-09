@@ -32,7 +32,7 @@
 
 #include "debug.h"
 
-BuySellDialog::DialogList BuySellDialog::instances;
+BuySellDialog::DialogList BuySellDialog::dialogInstances;
 
 BuySellDialog::BuySellDialog(const int npcId) :
     Window(_("Shop"), false, nullptr, "buysell.xml"),
@@ -86,13 +86,13 @@ void BuySellDialog::init()
     loadWindowState();
     enableVisibleSound(true);
 
-    instances.push_back(this);
+    dialogInstances.push_back(this);
     setVisible(true);
 }
 
 BuySellDialog::~BuySellDialog()
 {
-    instances.remove(this);
+    dialogInstances.remove(this);
 }
 
 void BuySellDialog::setVisible(bool visible)
@@ -133,7 +133,7 @@ void BuySellDialog::action(const gcn::ActionEvent &event)
 
 void BuySellDialog::closeAll()
 {
-    FOR_EACH (DialogList::const_iterator, it, instances)
+    FOR_EACH (DialogList::const_iterator, it, dialogInstances)
     {
         if (*it)
             (*it)->close();

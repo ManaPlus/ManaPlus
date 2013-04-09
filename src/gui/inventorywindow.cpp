@@ -86,7 +86,7 @@ public:
     }
 };
 
-InventoryWindow::WindowList InventoryWindow::instances;
+InventoryWindow::WindowList InventoryWindow::invInstances;
 
 InventoryWindow::InventoryWindow(Inventory *const inventory):
     Window("Inventory", false, nullptr, "inventory.xml"),
@@ -103,7 +103,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mEquipmentButton(nullptr),
     mStoreButton(nullptr),
     mRetrieveButton(nullptr),
-    mCloseButton(nullptr),
+    mInvCloseButton(nullptr),
     mWeightBar(nullptr),
     mSlotsBar(new ProgressBar(this, 0.0f, 100, 0, Theme::PROG_INVY_SLOTS)),
     mFilter(nullptr),
@@ -205,7 +205,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     {
         mStoreButton = new Button(this, _("Store"), "store", this);
         mRetrieveButton = new Button(this, _("Retrieve"), "retrieve", this);
-        mCloseButton = new Button(this, _("Close"), "close", this);
+        mInvCloseButton = new Button(this, _("Close"), "close", this);
 
         mSlotsBarCell = &place(0, 0, mSlotsBar, 6);
         mSortDropDownCell = &place(6, 0, mSortDropDown, 1);
@@ -216,7 +216,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
         place(0, 2, invenScroll, 7, 4);
         place(0, 6, mStoreButton);
         place(1, 6, mRetrieveButton);
-        place(6, 6, mCloseButton);
+        place(6, 6, mInvCloseButton);
     }
 
     Layout &layout = getLayout();
@@ -224,7 +224,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
 
     mInventory->addInventoyListener(this);
 
-    instances.push_back(this);
+    invInstances.push_back(this);
 
     if (inventory && inventory->isMainInventory())
     {
@@ -232,8 +232,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     }
     else
     {
-        if (!instances.empty())
-            instances.front()->updateDropButton();
+        if (!invInstances.empty())
+            invInstances.front()->updateDropButton();
     }
 
     loadWindowState();
@@ -247,10 +247,10 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
 
 InventoryWindow::~InventoryWindow()
 {
-    instances.remove(this);
+    invInstances.remove(this);
     mInventory->removeInventoyListener(this);
-    if (!instances.empty())
-        instances.front()->updateDropButton();
+    if (!invInstances.empty())
+        invInstances.front()->updateDropButton();
     delete mSortModel;
     mSortModel = nullptr;
 }
@@ -707,7 +707,7 @@ bool InventoryWindow::isInputFocused() const
 
 bool InventoryWindow::isAnyInputFocused()
 {
-    FOR_EACH (WindowList::const_iterator, it, instances)
+    FOR_EACH (WindowList::const_iterator, it, invInstances)
     {
         if ((*it) && (*it)->isInputFocused())
             return true;

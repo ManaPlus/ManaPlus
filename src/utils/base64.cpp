@@ -160,6 +160,7 @@ unsigned char *php3_base64_decode(const unsigned char *const string,
                 k++;
             case 3:
                 result[k++] = 0;
+                break;
             default:
                 break;
         }

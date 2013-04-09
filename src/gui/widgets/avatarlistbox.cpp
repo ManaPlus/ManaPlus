@@ -48,8 +48,7 @@ AvatarListBox::AvatarListBox(const Widget2 *const widget,
     ListBox(widget, model, "avatarlistbox.xml"),
     mShowGender(config.getBoolValue("showgender")),
     mShowLevel(config.getBoolValue("showlevel")),
-    mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
-    mHighlightColor(getThemeColor(Theme::HIGHLIGHT))
+    mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0)
 {
     instances++;
 
@@ -99,13 +98,10 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
     AvatarListModel *const model = static_cast<AvatarListModel *const>(
         mListModel);
-//    Guild *guild = dynamic_cast<Guild*>(model);
-
     updateAlpha();
-
     Graphics *const graphics = static_cast<Graphics *const>(gcnGraphics);
 
-    mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+//    mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
     gcn::Font *const font = getFont();
 
     const int fontHeight = getFont()->getHeight();

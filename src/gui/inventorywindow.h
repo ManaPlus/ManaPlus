@@ -131,7 +131,7 @@ class InventoryWindow final : public Window,
          * Returns true if any instances exist.
          */
         static bool isStorageActive() A_WARN_UNUSED
-        { return instances.size() > 1; }
+        { return invInstances.size() > 1; }
 
         void updateDropButton();
 
@@ -154,7 +154,7 @@ class InventoryWindow final : public Window,
 
 
         typedef std::list<InventoryWindow*> WindowList;
-        static WindowList instances;
+        static WindowList invInstances;
 
         Inventory *mInventory;
         ItemContainer *mItems;
@@ -169,7 +169,7 @@ class InventoryWindow final : public Window,
         Button *mEquipmentButton;
         Button *mStoreButton;
         Button *mRetrieveButton;
-        Button *mCloseButton;
+        Button *mInvCloseButton;
 
         ProgressBar *mWeightBar;
         ProgressBar *mSlotsBar;

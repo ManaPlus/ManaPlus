@@ -104,7 +104,6 @@ class FloorItem final : public ActorSprite
     private:
         int mItemId;
         int mX, mY;
-        Map *mMap;
         int mDropTime;
         int mAmount;
         unsigned mPickupCount;

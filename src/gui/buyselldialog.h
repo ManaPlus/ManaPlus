@@ -64,7 +64,7 @@ class BuySellDialog final : public Window, public gcn::ActionListener
          * Returns true if any instances exist.
          */
         static bool isActive() A_WARN_UNUSED
-        { return !instances.empty(); }
+        { return !dialogInstances.empty(); }
 
         /**
          * Closes all instances.
@@ -73,7 +73,7 @@ class BuySellDialog final : public Window, public gcn::ActionListener
 
     private:
         typedef std::list<BuySellDialog*> DialogList;
-        static DialogList instances;
+        static DialogList dialogInstances;
 
         int mNpcId;
         std::string mNick;
