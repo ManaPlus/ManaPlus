@@ -144,10 +144,8 @@ void Network::flush()
     if (!mOutSize || mState != CONNECTED)
         return;
 
-    int ret;
-
     SDL_mutexP(mMutex);
-    ret = TcpNet::send(mSocket, mOutBuffer, mOutSize);
+    int ret = TcpNet::send(mSocket, mOutBuffer, mOutSize);
     DEBUGLOG(std::string("Send ").append(toString(mOutSize)).append(" bytes"));
     if (ret < static_cast<int>(mOutSize))
     {
@@ -158,7 +156,7 @@ void Network::flush()
     SDL_mutexV(mMutex);
 }
 
-void Network::skip(int len)
+void Network::skip(const int len)
 {
     SDL_mutexP(mMutex);
     mToSkip += len;
@@ -189,8 +187,9 @@ bool Network::realConnect()
     if (TcpNet::resolveHost(&ipAddress, mServer.hostname.c_str(),
         mServer.port) == -1)
     {
-        std::string errorMessage = std::string(_("Unable to resolve host \""))
-            .append(mServer.hostname).append("\"");
+        const std::string errorMessage = std::string(
+            _("Unable to resolve host \"")).append(
+            mServer.hostname).append("\"");
         setError(errorMessage);
         logger->log("TcpNet::ResolveHost: %s", errorMessage.c_str());
         return false;
@@ -210,7 +209,6 @@ bool Network::realConnect()
         ipToString(ipAddress.host), ipAddress.port);
 
     mState = CONNECTED;
-
     return true;
 }
 
@@ -237,7 +235,6 @@ void Network::receive()
         // to escape the loop
         const int numReady = TcpNet::checkSockets(
             set, (static_cast<uint32_t>(500)));
-        int ret;
         switch (numReady)
         {
             case -1:
@@ -247,6 +244,7 @@ void Network::receive()
                 break;
 
             case 1:
+            {
                 // Receive data from the socket
                 SDL_mutexP(mMutex);
                 if (mInSize > BUFFER_LIMIT)
@@ -256,8 +254,8 @@ void Network::receive()
                     continue;
                 }
 
-                ret = TcpNet::recv(mSocket, mInBuffer + mInSize,
-                                   BUFFER_SIZE - mInSize);
+                int ret = TcpNet::recv(mSocket, mInBuffer + mInSize,
+                    BUFFER_SIZE - mInSize);
 
                 if (!ret)
                 {
@@ -291,6 +289,7 @@ void Network::receive()
                 }
                 SDL_mutexV(mMutex);
                 break;
+            }
 
             default:
                 // more than one socket is ready..

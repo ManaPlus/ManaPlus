@@ -66,7 +66,7 @@ class Network
         int getInSize() const A_WARN_UNUSED
         { return mInSize; }
 
-        void skip(int len);
+        void skip(const int len);
 
         void flush();
 
