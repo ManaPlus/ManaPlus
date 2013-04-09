@@ -1039,10 +1039,10 @@ int Client::gameExec()
             SDL_Delay(100);
         }
 
-        BLOCK_START("Client::SDL_framerateDelay")
+        BLOCK_START("~Client::SDL_framerateDelay")
         if (mLimitFps)
             SDL_framerateDelay(&mFpsManager);
-        BLOCK_END("Client::SDL_framerateDelay")
+        BLOCK_END("~Client::SDL_framerateDelay")
 
         BLOCK_START("Client::gameExec 6")
         // TODO: Add connect timeouts
