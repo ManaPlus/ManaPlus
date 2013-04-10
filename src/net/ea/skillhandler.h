@@ -37,15 +37,11 @@ class SkillHandler : public Net::SkillHandler
 
         A_DELETE_COPY(SkillHandler)
 
-        void handleMessage(Net::MessageIn &msg);
+        void processPlayerSkills(Net::MessageIn &msg) const;
 
-        void use(int id);
+        void processPlayerSkillUp(Net::MessageIn &msg) const;
 
-        void processPlayerSkills(Net::MessageIn &msg);
-
-        void processPlayerSkillUp(Net::MessageIn &msg);
-
-        void processSkillFailed(Net::MessageIn &msg);
+        void processSkillFailed(Net::MessageIn &msg) const;
 };
 
 } // namespace Ea

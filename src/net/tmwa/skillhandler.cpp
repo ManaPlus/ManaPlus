@@ -71,7 +71,7 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("SkillHandler::handleMessage")
 }
 
-void SkillHandler::useBeing(int id, int level, int beingId)
+void SkillHandler::useBeing(const int id, const int level, const int beingId) const
 {
     MessageOut outMsg(CMSG_SKILL_USE_BEING);
     outMsg.writeInt16(static_cast<int16_t>(id));
@@ -79,7 +79,8 @@ void SkillHandler::useBeing(int id, int level, int beingId)
     outMsg.writeInt32(beingId);
 }
 
-void SkillHandler::usePos(int id, int level, int x, int y)
+void SkillHandler::usePos(const int id, const int level,
+                          const int x, const int y) const
 {
     MessageOut outMsg(CMSG_SKILL_USE_POSITION);
     outMsg.writeInt16(static_cast<int16_t>(level));
@@ -88,7 +89,7 @@ void SkillHandler::usePos(int id, int level, int x, int y)
     outMsg.writeInt16(static_cast<int16_t>(y));
 }
 
-void SkillHandler::useMap(int id, const std::string &map)
+void SkillHandler::useMap(const int id, const std::string &map) const
 {
     MessageOut outMsg(CMSG_SKILL_USE_MAP);
     outMsg.writeInt16(static_cast<int16_t>(id));

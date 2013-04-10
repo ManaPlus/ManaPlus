@@ -33,13 +33,13 @@ class SkillHandler
         virtual ~SkillHandler ()
         { }
 
-        virtual void use(int id) = 0;
+        virtual void useBeing(const int id, const int level,
+                              const int beingId) const = 0;
 
-        virtual void useBeing(int id, int level, int beingId) = 0;
+        virtual void usePos(const int id, const int level,
+                            const int x, const int y) const = 0;
 
-        virtual void usePos(int id, int level, int x, int y) = 0;
-
-        virtual void useMap(int id, const std::string &map) = 0;
+        virtual void useMap(const int id, const std::string &map) const = 0;
 };
 }
 
