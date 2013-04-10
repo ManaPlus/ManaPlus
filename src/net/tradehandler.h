@@ -37,28 +37,30 @@ class TradeHandler
         virtual ~TradeHandler()
         { }
 
-        virtual void request(const Being *const being A_UNUSED)
+        virtual void request(const Being *const being A_UNUSED) const
         { }
 
-        virtual void respond(bool accept A_UNUSED)
+        virtual void respond(const bool accept A_UNUSED) const
         { }
 
-        virtual void addItem(Item *item A_UNUSED, int amount A_UNUSED)
+        virtual void addItem(const Item *const item A_UNUSED,
+                             const int amount A_UNUSED) const
         { }
 
-        virtual void removeItem(int slotNum A_UNUSED, int amount A_UNUSED)
+        virtual void removeItem(const int slotNum A_UNUSED,
+                                const int amount A_UNUSED) const
         { }
 
-        virtual void setMoney(int amount A_UNUSED)
+        virtual void setMoney(const int amount A_UNUSED) const
         { }
 
-        virtual void confirm()
+        virtual void confirm() const
         { }
 
-        virtual void finish()
+        virtual void finish() const
         { }
 
-        virtual void cancel()
+        virtual void cancel() const
         { }
 };
 }

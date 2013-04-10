@@ -67,7 +67,8 @@ TradeHandler::TradeHandler()
     confirmDlg = nullptr;
 }
 
-void TradeHandler::removeItem(int slotNum A_UNUSED, int amount A_UNUSED)
+void TradeHandler::removeItem(const int slotNum A_UNUSED,
+                              const int amount A_UNUSED) const
 {
     // TODO
 }
@@ -87,7 +88,7 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg)
     {
         if (PlayerInfo::isTrading() || confirmDlg)
         {
-            Net::getTradeHandler()->respond(false);
+            respond(false);
             return;
         }
 
@@ -106,13 +107,13 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg)
             }
             else
             {
-                Net::getTradeHandler()->respond(true);
+                respond(true);
             }
         }
     }
     else
     {
-        Net::getTradeHandler()->respond(false);
+        respond(false);
         return;
     }
 }
@@ -123,7 +124,7 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
         || !player_relations.hasPermission(tradePartnerName,
         PlayerRelation::TRADE))
     {
-        Net::getTradeHandler()->respond(false);
+        respond(false);
         return;
     }
 

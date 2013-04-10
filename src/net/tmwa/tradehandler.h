@@ -40,21 +40,21 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
 
         A_DELETE_COPY(TradeHandler)
 
-        void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg) override;
 
-        void request(const Being *const being);
+        void request(const Being *const being) const override;
 
-        void respond(bool accept);
+        void respond(const bool accept) const override;
 
-        void addItem(Item *item, int amount);
+        void addItem(const Item *const item, const int amount) const override;
 
-        void setMoney(int amount);
+        void setMoney(const int amount) const override;
 
-        void confirm();
+        void confirm() const override;
 
-        void finish();
+        void finish() const override;
 
-        void cancel();
+        void cancel() const override;
 };
 
 } // namespace TmwAthena
