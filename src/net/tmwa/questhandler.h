@@ -40,11 +40,11 @@ class QuestHandler final : public MessageHandler
 
         A_DELETE_COPY(QuestHandler)
 
-        void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg) override;
 
-        void processSetQuestVar(Net::MessageIn &msg);
+        void processSetQuestVar(Net::MessageIn &msg) const;
 
-        void processPlayerQuests(Net::MessageIn &msg);
+        void processPlayerQuests(Net::MessageIn &msg) const;
 };
 
 } // namespace TmwAthena
