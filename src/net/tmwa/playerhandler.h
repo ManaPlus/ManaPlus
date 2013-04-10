@@ -40,24 +40,25 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         A_DELETE_COPY(PlayerHandler)
 
-        void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg) override;
 
-        void attack(int id, bool keep);
-        void stopAttack();
-        void emote(uint8_t emoteId);
+        void attack(const int id, const bool keep) const override;
+        void stopAttack() const override;
+        void emote(const uint8_t emoteId) const override;
 
-        void increaseAttribute(int attr);
-        void increaseSkill(unsigned short skillId);
+        void increaseAttribute(const int attr) const override;
+        void increaseSkill(const unsigned short skillId) const override;
 
-        void pickUp(const FloorItem *floorItem);
-        void setDirection(unsigned char direction);
-        void setDestination(int x, int y, int direction);
-        void changeAction(Being::Action action);
-        void processOnlineList(Net::MessageIn &msg);
-        void requestOnlineList();
-        void updateStatus(uint8_t status);
+        void pickUp(const FloorItem *const floorItem) const override;
+        void setDirection(const unsigned char direction) const override;
+        void setDestination(const int x, const int y,
+                            const int direction) const override;
+        void changeAction(const Being::Action action) const override;
+        void processOnlineList(Net::MessageIn &msg) const;
+        void requestOnlineList() const override;
+        void updateStatus(const uint8_t status) const override;
 
-        void respawn();
+        void respawn() const override;
 };
 
 } // namespace TmwAthena

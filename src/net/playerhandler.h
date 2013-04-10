@@ -36,31 +36,33 @@ class PlayerHandler
         virtual ~PlayerHandler()
         { }
 
-        virtual void attack(int id, bool keep) = 0;
+        virtual void attack(const int id, const bool keep) const = 0;
 
-        virtual void stopAttack() = 0;
+        virtual void stopAttack() const = 0;
 
-        virtual void emote(uint8_t emoteId) = 0;
+        virtual void emote(const uint8_t emoteId) const = 0;
 
-        virtual void increaseAttribute(int attr) = 0;
+        virtual void increaseAttribute(const int attr) const = 0;
 
-        virtual void decreaseAttribute(int attr) = 0;
+        virtual void decreaseAttribute(const int attr) const = 0;
 
-        virtual void increaseSkill(unsigned short skillId) = 0;
+        virtual void increaseSkill(const unsigned short skillId) const = 0;
 
-        virtual void pickUp(const FloorItem *floorItem) = 0;
+        virtual void pickUp(const FloorItem *const floorItem) const = 0;
 
-        virtual void setDirection(unsigned char direction) = 0;
+        virtual void setDirection(const unsigned char direction) const = 0;
 
-        virtual void setDestination(int x, int y, int direction) = 0;
+        virtual void setDestination(const int x, const int y,
+                                    const int direction) const = 0;
 
-        virtual void changeAction(Being::Action action) = 0;
+        virtual void changeAction(const Being::Action action) const = 0;
 
-        virtual void respawn() = 0;
+        virtual void respawn() const = 0;
 
-        virtual void ignorePlayer(const std::string &player, bool ignore) = 0;
+        virtual void ignorePlayer(const std::string &player,
+                                  const bool ignore) const = 0;
 
-        virtual void ignoreAll(bool ignore) = 0;
+        virtual void ignoreAll(const bool ignore) const = 0;
 
         virtual bool canUseMagic() const = 0;
 
@@ -72,9 +74,9 @@ class PlayerHandler
 
         virtual Vector getDefaultWalkSpeed() const A_WARN_UNUSED = 0;
 
-        virtual void requestOnlineList() = 0;
+        virtual void requestOnlineList() const = 0;
 
-        virtual void updateStatus(uint8_t status) = 0;
+        virtual void updateStatus(const uint8_t status) const = 0;
 };
 
 } // namespace Net

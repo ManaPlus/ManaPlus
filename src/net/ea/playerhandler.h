@@ -37,39 +37,40 @@ class PlayerHandler : public Net::PlayerHandler
 
         A_DELETE_COPY(PlayerHandler)
 
-        void decreaseAttribute(int attr);
+        void decreaseAttribute(const int attr) const override;
 
-        void ignorePlayer(const std::string &player, bool ignore);
+        void ignorePlayer(const std::string &player,
+                          const bool ignore) const override;
 
-        void ignoreAll(bool ignore);
+        void ignoreAll(const bool ignore) const override;
 
-        bool canUseMagic() const;
+        bool canUseMagic() const override;
 
-        bool canCorrectAttributes() const;
+        bool canCorrectAttributes() const override;
 
-        Vector getDefaultWalkSpeed() const A_WARN_UNUSED;
+        Vector getDefaultWalkSpeed() const override A_WARN_UNUSED;
 
-        int getJobLocation() const A_WARN_UNUSED;
+        int getJobLocation() const override A_WARN_UNUSED;
 
-        int getAttackLocation() const A_WARN_UNUSED;
+        int getAttackLocation() const override A_WARN_UNUSED;
 
-        void processWalkResponse(Net::MessageIn &msg);
+        void processWalkResponse(Net::MessageIn &msg) const;
 
-        void processPlayerWarp(Net::MessageIn &msg);
+        void processPlayerWarp(Net::MessageIn &msg) const;
 
-        void processPlayerStatUpdate1(Net::MessageIn &msg);
+        void processPlayerStatUpdate1(Net::MessageIn &msg) const;
 
-        void processPlayerStatUpdate2(Net::MessageIn &msg);
+        void processPlayerStatUpdate2(Net::MessageIn &msg) const;
 
-        void processPlayerStatUpdate3(Net::MessageIn &msg);
+        void processPlayerStatUpdate3(Net::MessageIn &msg) const;
 
-        void processPlayerStatUpdate4(Net::MessageIn &msg);
+        void processPlayerStatUpdate4(Net::MessageIn &msg) const;
 
-        void processPlayerStatUpdate5(Net::MessageIn &msg);
+        void processPlayerStatUpdate5(Net::MessageIn &msg) const;
 
-        void processPlayerStatUpdate6(Net::MessageIn &msg);
+        void processPlayerStatUpdate6(Net::MessageIn &msg) const;
 
-        void processPlayerArrowMessage(Net::MessageIn &msg);
+        void processPlayerArrowMessage(Net::MessageIn &msg) const;
 };
 
 } // namespace Ea

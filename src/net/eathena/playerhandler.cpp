@@ -115,7 +115,7 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void PlayerHandler::attack(int id, bool keep)
+void PlayerHandler::attack(const int id, const bool keep) const
 {
     MessageOut outMsg(CMSG_PLAYER_ATTACK);
     outMsg.writeInt32(id);
@@ -125,18 +125,18 @@ void PlayerHandler::attack(int id, bool keep)
         outMsg.writeInt8(0);
 }
 
-void PlayerHandler::stopAttack()
+void PlayerHandler::stopAttack() const
 {
     MessageOut outMsg(CMSG_PLAYER_STOP_ATTACK);
 }
 
-void PlayerHandler::emote(uint8_t emoteId)
+void PlayerHandler::emote(const uint8_t emoteId) const
 {
     MessageOut outMsg(CMSG_PLAYER_EMOTE);
     outMsg.writeInt8(emoteId);
 }
 
-void PlayerHandler::increaseAttribute(int attr)
+void PlayerHandler::increaseAttribute(const int attr) const
 {
     if (attr >= STR && attr <= LUK)
     {
@@ -146,7 +146,7 @@ void PlayerHandler::increaseAttribute(int attr)
     }
 }
 
-void PlayerHandler::increaseSkill(unsigned short skillId)
+void PlayerHandler::increaseSkill(const unsigned short skillId) const
 {
     if (PlayerInfo::getAttribute(PlayerInfo::SKILL_POINTS) <= 0)
         return;
@@ -155,7 +155,7 @@ void PlayerHandler::increaseSkill(unsigned short skillId)
     outMsg.writeInt16(skillId);
 }
 
-void PlayerHandler::pickUp(const FloorItem *floorItem)
+void PlayerHandler::pickUp(const FloorItem *const floorItem) const
 {
     if (!floorItem)
         return;
@@ -168,14 +168,15 @@ void PlayerHandler::pickUp(const FloorItem *floorItem)
         handler->pushPickup(floorItem->getId());
 }
 
-void PlayerHandler::setDirection(unsigned char direction)
+void PlayerHandler::setDirection(const unsigned char direction) const
 {
     MessageOut outMsg(CMSG_PLAYER_CHANGE_DIR);
     outMsg.writeInt16(0);
     outMsg.writeInt8(direction);
 }
 
-void PlayerHandler::setDestination(int x, int y, int direction)
+void PlayerHandler::setDestination(const int x, const int y,
+                                   const int direction) const
 {
     MessageOut outMsg(CMSG_PLAYER_CHANGE_DEST);
     outMsg.writeCoordinates(static_cast<short unsigned int>(x),
@@ -183,7 +184,7 @@ void PlayerHandler::setDestination(int x, int y, int direction)
         static_cast<unsigned char>(direction));
 }
 
-void PlayerHandler::changeAction(Being::Action action)
+void PlayerHandler::changeAction(const Being::Action action) const
 {
     unsigned char type;
     switch (action)
@@ -208,24 +209,24 @@ void PlayerHandler::changeAction(Being::Action action)
     outMsg.writeInt8(type);
 }
 
-void PlayerHandler::respawn()
+void PlayerHandler::respawn() const
 {
     MessageOut outMsg(CMSG_PLAYER_RESTART);
     outMsg.writeInt8(0);
 }
 
-void PlayerHandler::requestOnlineList()
+void PlayerHandler::requestOnlineList() const
 {
 }
 
-void PlayerHandler::updateStatus(uint8_t status)
+void PlayerHandler::updateStatus(const uint8_t status) const
 {
     MessageOut outMsg(CMSG_SET_STATUS);
     outMsg.writeInt8(status);
     outMsg.writeInt8(0);
 }
 
-void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
+void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg) const
 {
     for (int f = 0; f < 27; f ++)
     {
@@ -235,7 +236,7 @@ void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
     }
 }
 
-void PlayerHandler::processPlayerShowEquip(Net::MessageIn &msg)
+void PlayerHandler::processPlayerShowEquip(Net::MessageIn &msg) const
 {
     msg.readInt8();     // show equip
 }

@@ -54,7 +54,7 @@ namespace
     /**
      * Listener used for handling the overweigth message.
      */
-    struct WeightListener : public gcn::ActionListener
+    struct WeightListener final : public gcn::ActionListener
     {
         void action(const gcn::ActionEvent &event A_UNUSED)
         {
@@ -65,7 +65,7 @@ namespace
     /**
      * Listener used for handling death message.
      */
-    struct DeathListener : public gcn::ActionListener
+    struct DeathListener final : public gcn::ActionListener
     {
         void action(const gcn::ActionEvent &event A_UNUSED)
         {
@@ -144,20 +144,17 @@ PlayerHandler::PlayerHandler()
 {
 }
 
-void PlayerHandler::decreaseAttribute(int attr A_UNUSED)
+void PlayerHandler::decreaseAttribute(const int attr A_UNUSED) const
 {
-    // Supported by eA?
 }
 
 void PlayerHandler::ignorePlayer(const std::string &player A_UNUSED,
-                                 bool ignore A_UNUSED)
+                                 const bool ignore A_UNUSED) const
 {
-    // TODO
 }
 
-void PlayerHandler::ignoreAll(bool ignore A_UNUSED)
+void PlayerHandler::ignoreAll(const bool ignore A_UNUSED) const
 {
-    // TODO
 }
 
 bool PlayerHandler::canCorrectAttributes() const
@@ -172,7 +169,7 @@ Vector PlayerHandler::getDefaultWalkSpeed() const
     return Vector(150, 150, 0);
 }
 
-void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
+void PlayerHandler::processWalkResponse(Net::MessageIn &msg) const
 {
     /*
       * This client assumes that all walk messages succeed,
@@ -186,7 +183,7 @@ void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
         player_node->setRealPos(dstX, dstY);
 }
 
-void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
+void PlayerHandler::processPlayerWarp(Net::MessageIn &msg) const
 {
     std::string mapPath = msg.readString(16);
     int x = msg.readInt16();
@@ -241,11 +238,11 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
                 scrollOffsetY = (y - player_node->getTileY())
                     * map->getTileHeight();
             }
+                scrollOffsetX = (x - player_node->getTileX())
+                    * map->getTileWidth();
+                scrollOffsetY = (y - player_node->getTileY())
+                    * map->getTileHeight();
         }
-
-        player_node->setAction(Being::STAND);
-        player_node->setTileCoords(x, y);
-        player_node->navigateClean();
     }
 
     logger->log("Adjust scrolling by %d:%d", scrollOffsetX, scrollOffsetY);
@@ -259,7 +256,7 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
     }
 }
 
-void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
 {
     const int type = msg.readInt16();
     const int value = msg.readInt32();
@@ -437,7 +434,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
     }
 }
 
-void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg) const
 {
     const int type = msg.readInt16();
     switch (type)
@@ -480,7 +477,7 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
     }
 }
 
-void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg) const
 {
     const int type = msg.readInt32();
     const int base = msg.readInt32();
@@ -492,7 +489,7 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
         PlayerInfo::updateAttrs();
 }
 
-void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg) const
 {
     const int type = msg.readInt16();
     const int ok = msg.readInt8();
@@ -501,8 +498,8 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
     if (ok != 1)
     {
         const int oldValue = PlayerInfo::getStatBase(type);
-        int points = PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS);
-        points += oldValue - value;
+        const int points = PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS)
+            + oldValue - value;
         PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, points);
         NotifyManager::notify(NotifyManager::SKILL_RAISE_ERROR);
     }
@@ -510,7 +507,7 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
     PlayerInfo::setStatBase(type, value);
 }
 
-void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg) const
 {
     PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, msg.readInt16());
 
@@ -582,7 +579,7 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     msg.readInt16();  // manner
 }
 
-void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg) const
 {
     const int type = msg.readInt16();
     if (statusWindow)
@@ -615,10 +612,9 @@ void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
     }
 }
 
-void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg)
+void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg) const
 {
     const int type = msg.readInt16();
-
     switch (type)
     {
         case 0:
