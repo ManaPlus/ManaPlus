@@ -48,36 +48,34 @@ class PartyHandler
         virtual ~PartyHandler()
         { }
 
-        virtual void create(const std::string &name) = 0;
+        virtual void create(const std::string &name) const = 0;
 
-        virtual void join(int partyId) = 0;
+        virtual void join(const int partyId) const = 0;
 
-        virtual void invite(Being *player) = 0;
+        virtual void invite(Being *const player) const = 0;
 
-        virtual void invite(const std::string &name) = 0;
+        virtual void invite(const std::string &name) const = 0;
 
         virtual void inviteResponse(const std::string &inviter,
-                                    bool accept) = 0;
+                                    const bool accept) const = 0;
 
-        virtual void leave() = 0;
+        virtual void leave() const = 0;
 
-        virtual void kick(Being *player) = 0;
+        virtual void kick(Being *const player) const = 0;
 
-        virtual void kick(const std::string &name) = 0;
+        virtual void kick(const std::string &name) const = 0;
 
-        virtual void chat(const std::string &text) = 0;
-
-        virtual void requestPartyMembers() const = 0;
+        virtual void chat(const std::string &text) const = 0;
 
         virtual PartyShare getShareExperience() const A_WARN_UNUSED = 0;
 
-        virtual void setShareExperience(PartyShare share) = 0;
+        virtual void setShareExperience(const PartyShare share) const = 0;
 
         virtual PartyShare getShareItems() const A_WARN_UNUSED = 0;
 
-        virtual void setShareItems(PartyShare share) = 0;
+        virtual void setShareItems(const PartyShare share) const = 0;
 
-        virtual void clear() = 0;
+        virtual void clear() const = 0;
 
         virtual ChatTab *getTab() = 0;
 };

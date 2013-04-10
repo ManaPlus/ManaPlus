@@ -104,13 +104,13 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("PartyHandler::handleMessage")
 }
 
-void PartyHandler::create(const std::string &name)
+void PartyHandler::create(const std::string &name) const
 {
     MessageOut outMsg(CMSG_PARTY_CREATE);
     outMsg.writeString(name.substr(0, 23), 24);
 }
 
-void PartyHandler::invite(Being *being)
+void PartyHandler::invite(Being *const being) const
 {
     if (being)
     {
@@ -119,7 +119,7 @@ void PartyHandler::invite(Being *being)
     }
 }
 
-void PartyHandler::invite(const std::string &name)
+void PartyHandler::invite(const std::string &name) const
 {
     if (!actorSpriteManager)
         return;
@@ -134,7 +134,7 @@ void PartyHandler::invite(const std::string &name)
 }
 
 void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
-                                  bool accept)
+                                  const bool accept) const
 {
     if (player_node)
     {
@@ -144,12 +144,12 @@ void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
     }
 }
 
-void PartyHandler::leave()
+void PartyHandler::leave() const
 {
     MessageOut outMsg(CMSG_PARTY_LEAVE);
 }
 
-void PartyHandler::kick(Being *being)
+void PartyHandler::kick(Being *const being) const
 {
     if (being)
     {
@@ -159,7 +159,7 @@ void PartyHandler::kick(Being *being)
     }
 }
 
-void PartyHandler::kick(const std::string &name)
+void PartyHandler::kick(const std::string &name) const
 {
     if (!Ea::taParty)
         return;
@@ -176,14 +176,14 @@ void PartyHandler::kick(const std::string &name)
     outMsg.writeString(name, 24); //Unused
 }
 
-void PartyHandler::chat(const std::string &text)
+void PartyHandler::chat(const std::string &text) const
 {
     MessageOut outMsg(CMSG_PARTY_MESSAGE);
     outMsg.writeInt16(static_cast<int16_t>(text.length() + 4));
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 
-void PartyHandler::setShareExperience(PartyShare share)
+void PartyHandler::setShareExperience(const PartyShare share) const
 {
     if (share == PARTY_SHARE_NOT_POSSIBLE)
         return;
@@ -193,7 +193,7 @@ void PartyHandler::setShareExperience(PartyShare share)
     outMsg.writeInt16(static_cast<int16_t>(mShareItems));
 }
 
-void PartyHandler::setShareItems(PartyShare share)
+void PartyHandler::setShareItems(const PartyShare share) const
 {
     if (share == PARTY_SHARE_NOT_POSSIBLE)
         return;

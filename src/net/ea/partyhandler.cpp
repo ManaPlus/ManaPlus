@@ -49,28 +49,21 @@ PartyHandler::~PartyHandler()
     partyTab = nullptr;
 }
 
-void PartyHandler::join(int partyId A_UNUSED)
+void PartyHandler::join(const int partyId A_UNUSED) const
 {
-    // TODO?
 }
 
-void PartyHandler::requestPartyMembers() const
-{
-    // Our eAthena doesn't have this message
-    // Not needed anyways
-}
-
-void PartyHandler::reload()
+void PartyHandler::reload() const
 {
     taParty = Party::getParty(1);
 }
 
-void PartyHandler::clear()
+void PartyHandler::clear() const
 {
     taParty = nullptr;
 }
 
-void PartyHandler::processPartyCreate(Net::MessageIn &msg)
+void PartyHandler::processPartyCreate(Net::MessageIn &msg) const
 {
     if (msg.readInt8())
         NotifyManager::notify(NotifyManager::PARTY_CREATE_FAILED);
@@ -78,7 +71,7 @@ void PartyHandler::processPartyCreate(Net::MessageIn &msg)
         NotifyManager::notify(NotifyManager::PARTY_CREATED);
 }
 
-void PartyHandler::processPartyInfo(Net::MessageIn &msg)
+void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
 {
     bool oldParty = false;
     std::set<std::string> names;
@@ -126,15 +119,13 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
         {
             if (oldParty)
             {
-                //member = Ea::taParty->getMember(id);
                 if (names.find(nick) == names.end())
                 {
                     NotifyManager::notify(NotifyManager::PARTY_USER_JOINED,
                         nick);
                 }
             }
-            PartyMember *member = Ea::taParty->addMember(id, nick);
-
+            PartyMember *const member = Ea::taParty->addMember(id, nick);
             if (member)
             {
                 member->setLeader(leader);
@@ -154,12 +145,12 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
     }
 }
 
-void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg)
+void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
 {
     if (!Ea::partyTab)
         return;
 
-    std::string nick = msg.readString(24);
+    const std::string nick = msg.readString(24);
 
     switch (msg.readInt8())
     {
@@ -183,16 +174,16 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg)
     }
 }
 
-void PartyHandler::processPartyInvited(Net::MessageIn &msg)
+void PartyHandler::processPartyInvited(Net::MessageIn &msg) const
 {
     const int id = msg.readInt32();
-    std::string partyName = msg.readString(24);
-    std::string nick("");
-    const Being *being;
+    const std::string partyName = msg.readString(24);
+    std::string nick;
 
     if (actorSpriteManager)
     {
-        if ((being = actorSpriteManager->findBeing(id)))
+        const Being *const being = actorSpriteManager->findBeing(id);
+        if (being)
         {
             if (being->getType() == Being::PLAYER)
                 nick = being->getName();
@@ -273,7 +264,7 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     }
 }
 
-void PartyHandler::processPartyMove(Net::MessageIn &msg)
+void PartyHandler::processPartyMove(Net::MessageIn &msg) const
 {
     const int id = msg.readInt32();    // id
     PartyMember *m = nullptr;
@@ -301,10 +292,10 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg)
     }
 }
 
-void PartyHandler::processPartyLeave(Net::MessageIn &msg)
+void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
 {
     const int id = msg.readInt32();
-    std::string nick = msg.readString(24);
+    const std::string nick = msg.readString(24);
     msg.readInt8();     // fail
     if (!player_node)
         return;
@@ -341,7 +332,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
     }
 }
 
-void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
+void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg) const
 {
     const int id = msg.readInt32();
     const int hp = msg.readInt16();
@@ -364,7 +355,7 @@ void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
     }
 }  
 
-void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg)
+void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg) const
 {
     const int id = msg.readInt32(); // id
     PartyMember *m = nullptr;
@@ -382,14 +373,14 @@ void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg)
     }
 }
 
-void PartyHandler::processPartyMessage(Net::MessageIn &msg)
+void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
 {
     const int msgLength = msg.readInt16() - 8;
     if (msgLength <= 0)
         return;
 
     const int id = msg.readInt32();
-    std::string chatMsg = msg.readString(msgLength);
+    const std::string chatMsg = msg.readString(msgLength);
 
     if (Ea::taParty && Ea::partyTab)
     {

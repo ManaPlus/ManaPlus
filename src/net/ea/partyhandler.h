@@ -42,41 +42,39 @@ class PartyHandler : public Net::PartyHandler
 
         ~PartyHandler();
 
-        void join(int partyId);
+        void join(const int partyId) const override;
 
-        void requestPartyMembers() const;
-
-        PartyShare getShareExperience() const A_WARN_UNUSED
+        PartyShare getShareExperience() const override A_WARN_UNUSED
         { return mShareExp; }
 
-        PartyShare getShareItems() const A_WARN_UNUSED
+        PartyShare getShareItems() const override A_WARN_UNUSED
         { return mShareItems; }
 
-        void reload();
+        void reload() const;
 
-        void clear();
+        void clear() const override;
 
-        ChatTab *getTab();
+        ChatTab *getTab() override;
 
-        virtual void processPartyCreate(Net::MessageIn &msg);
+        virtual void processPartyCreate(Net::MessageIn &msg) const;
 
-        virtual void processPartyInfo(Net::MessageIn &msg);
+        virtual void processPartyInfo(Net::MessageIn &msg) const;
 
-        virtual void processPartyInviteResponse(Net::MessageIn &msg);
+        virtual void processPartyInviteResponse(Net::MessageIn &msg) const;
 
-        virtual void processPartyInvited(Net::MessageIn &msg);
+        virtual void processPartyInvited(Net::MessageIn &msg) const;
 
         virtual void processPartySettings(Net::MessageIn &msg);
 
-        virtual void processPartyMove(Net::MessageIn &msg);
+        virtual void processPartyMove(Net::MessageIn &msg) const;
 
-        virtual void processPartyLeave(Net::MessageIn &msg);
+        virtual void processPartyLeave(Net::MessageIn &msg) const;
 
-        virtual void processPartyUpdateHp(Net::MessageIn &msg);
+        virtual void processPartyUpdateHp(Net::MessageIn &msg) const;
 
-        virtual void processPartyUpdateCoords(Net::MessageIn &msg);
+        virtual void processPartyUpdateCoords(Net::MessageIn &msg) const;
 
-        virtual void processPartyMessage(Net::MessageIn &msg);
+        virtual void processPartyMessage(Net::MessageIn &msg) const;
 
     protected:
         PartyShare mShareExp;
