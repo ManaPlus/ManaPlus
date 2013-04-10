@@ -34,33 +34,37 @@ class NpcHandler
         virtual ~NpcHandler()
         { }
 
-        virtual void talk(int npcId) = 0;
+        virtual void talk(const int npcId) const = 0;
 
-        virtual void nextDialog(int npcId) = 0;
+        virtual void nextDialog(const int npcId) const = 0;
 
-        virtual void closeDialog(int npcId) = 0;
+        virtual void closeDialog(const int npcId) = 0;
 
-        virtual void listInput(int npcId, unsigned char value) = 0;
+        virtual void listInput(const int npcId,
+                               const unsigned char value) const = 0;
 
-        virtual void integerInput(int npcId, int value) = 0;
+        virtual void integerInput(const int npcId, const int value) const = 0;
 
-        virtual void stringInput(int npcId, const std::string &value) = 0;
+        virtual void stringInput(const int npcId,
+                                 const std::string &value) const = 0;
 
-        virtual void sendLetter(int npcId, const std::string &recipient,
-                                const std::string &text) = 0;
+        virtual void sendLetter(const int npcId, const std::string &recipient,
+                                const std::string &text) const = 0;
 
-        virtual void startShopping(int beingId) = 0;
+        virtual void startShopping(const int beingId) const = 0;
 
-        virtual void buy(int beingId) = 0;
+        virtual void buy(const int beingId) const = 0;
 
-        virtual void sell(int beingId) = 0;
+        virtual void sell(const int beingId) const = 0;
 
-        virtual void buyItem(int beingId, int itemId, unsigned char color,
-                             int amount) = 0;
+        virtual void buyItem(const int beingId, const int itemId,
+                             const unsigned char color,
+                             const int amount) const = 0;
 
-        virtual void sellItem(int beingId, int itemId, int amount) = 0;
+        virtual void sellItem(const int beingId, const int itemId,
+                              const int amount) const = 0;
 
-        virtual void endShopping(int beingId) = 0;
+        virtual void endShopping(const int beingId) const = 0;
 
         virtual void clearDialogs() = 0;
 };

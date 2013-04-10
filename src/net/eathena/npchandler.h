@@ -44,33 +44,38 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         A_DELETE_COPY(NpcHandler)
 
-        void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg) override;
 
-        void talk(int npcId);
+        void talk(const int npcId) const override;
 
-        void nextDialog(int npcId);
+        void nextDialog(const int npcId) const override;
 
-        void closeDialog(int npcId);
+        void closeDialog(const int npcId) override;
 
-        void listInput(int npcId, unsigned char value);
+        void listInput(const int npcId,
+                       const unsigned char value) const override;
 
-        void integerInput(int npcId, int value);
+        void integerInput(const int npcId, const int value) const override;
 
-        void stringInput(int npcId, const std::string &value);
+        void stringInput(const int npcId,
+                         const std::string &value) const override;
 
-        void buy(int beingId);
+        void buy(const int beingId) const override;
 
-        void sell(int beingId);
+        void sell(const int beingId) const override;
 
-        void buyItem(int beingId, int itemId, unsigned char color, int amount);
+        void buyItem(const int beingId, const int itemId,
+                     const unsigned char color,
+                     const int amount) const override;
 
-        void sellItem(int beingId, int itemId, int amount);
+        void sellItem(const int beingId, const int itemId,
+                      const int amount) const override;
 
-        int getNpc(Net::MessageIn &msg, bool haveLength);
+        int getNpc(Net::MessageIn &msg, const bool haveLength) override;
 
-        void processNpcCutin(Net::MessageIn &msg, int npcId);
+        void processNpcCutin(Net::MessageIn &msg, const int npcId) const;
 
-        void processNpcViewPoint(Net::MessageIn &msg, int npcId);
+        void processNpcViewPoint(Net::MessageIn &msg, const int npcId) const;
 };
 
 } // namespace EAthena

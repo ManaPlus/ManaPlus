@@ -112,20 +112,20 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
     mDialog = nullptr;
 }
 
-void NpcHandler::talk(int npcId)
+void NpcHandler::talk(const int npcId) const
 {
     MessageOut outMsg(CMSG_NPC_TALK);
     outMsg.writeInt32(npcId);
     outMsg.writeInt8(0); // Unused
 }
 
-void NpcHandler::nextDialog(int npcId)
+void NpcHandler::nextDialog(const int npcId) const
 {
     MessageOut outMsg(CMSG_NPC_NEXT_REQUEST);
     outMsg.writeInt32(npcId);
 }
 
-void NpcHandler::closeDialog(int npcId)
+void NpcHandler::closeDialog(const int npcId)
 {
     MessageOut outMsg(CMSG_NPC_CLOSE);
     outMsg.writeInt32(npcId);
@@ -133,29 +133,30 @@ void NpcHandler::closeDialog(int npcId)
     const NpcDialogs::iterator it = mNpcDialogs.find(npcId);
     if (it != mNpcDialogs.end())
     {
-        if ((*it).second.dialog)
-            (*it).second.dialog->close();
-        if ((*it).second.dialog == mDialog)
+        NpcDialog *const dialog = (*it).second.dialog;
+        if (dialog)
+            dialog->close();
+        if (dialog == mDialog)
             mDialog = nullptr;
         mNpcDialogs.erase(it);
     }
 }
 
-void NpcHandler::listInput(int npcId, unsigned char value)
+void NpcHandler::listInput(const int npcId, const unsigned char value) const
 {
     MessageOut outMsg(CMSG_NPC_LIST_CHOICE);
     outMsg.writeInt32(npcId);
     outMsg.writeInt8(value);
 }
 
-void NpcHandler::integerInput(int npcId, int value)
+void NpcHandler::integerInput(const int npcId, const int value) const
 {
     MessageOut outMsg(CMSG_NPC_INT_RESPONSE);
     outMsg.writeInt32(npcId);
     outMsg.writeInt32(value);
 }
 
-void NpcHandler::stringInput(int npcId, const std::string &value)
+void NpcHandler::stringInput(const int npcId, const std::string &value) const
 {
     MessageOut outMsg(CMSG_NPC_STR_RESPONSE);
     outMsg.writeInt16(static_cast<int16_t>(value.length() + 9));
@@ -164,22 +165,23 @@ void NpcHandler::stringInput(int npcId, const std::string &value)
     outMsg.writeInt8(0); // Prevent problems with string reading
 }
 
-void NpcHandler::buy(int beingId)
+void NpcHandler::buy(const int beingId) const
 {
     MessageOut outMsg(CMSG_NPC_BUY_SELL_REQUEST);
     outMsg.writeInt32(beingId);
     outMsg.writeInt8(0); // Buy
 }
 
-void NpcHandler::sell(int beingId)
+void NpcHandler::sell(const int beingId) const
 {
     MessageOut outMsg(CMSG_NPC_BUY_SELL_REQUEST);
     outMsg.writeInt32(beingId);
     outMsg.writeInt8(1); // Sell
 }
 
-void NpcHandler::buyItem(int beingId A_UNUSED, int itemId,
-                         unsigned char color A_UNUSED, int amount)
+void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
+                         const unsigned char color A_UNUSED,
+                         const int amount) const
 {
     MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
     outMsg.writeInt16(8); // One item (length of packet)
@@ -187,7 +189,8 @@ void NpcHandler::buyItem(int beingId A_UNUSED, int itemId,
     outMsg.writeInt16(static_cast<int16_t>(itemId));
 }
 
-void NpcHandler::sellItem(int beingId A_UNUSED, int itemId, int amount)
+void NpcHandler::sellItem(const int beingId A_UNUSED,
+                          const int itemId, const int amount) const
 {
     MessageOut outMsg(CMSG_NPC_SELL_REQUEST);
     outMsg.writeInt16(8); // One item (length of packet)
@@ -195,7 +198,7 @@ void NpcHandler::sellItem(int beingId A_UNUSED, int itemId, int amount)
     outMsg.writeInt16(static_cast<int16_t>(amount));
 }
 
-int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
+int NpcHandler::getNpc(Net::MessageIn &msg, const bool haveLength)
 {
     if (haveLength)
         msg.readInt16();  // length
@@ -231,9 +234,10 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
     }
     else
     {
-        if (mDialog && mDialog != diag->second.dialog)
+        NpcDialog *const dialog = diag->second.dialog;
+        if (mDialog && mDialog != dialog)
             mDialog->restoreCamera();
-        mDialog = diag->second.dialog;
+        mDialog = dialog;
         if (mDialog)
             mDialog->saveCamera();
     }
@@ -241,14 +245,14 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
 }
 
 void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED,
-                                 int npcId A_UNUSED)
+                                 int npcId A_UNUSED) const
 {
     msg.readString(64); // image name
     msg.readInt8();     // type
 }
 
 void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED,
-                                     int npcId A_UNUSED)
+                                     int npcId A_UNUSED) const
 {
     msg.readInt32();    // type
     msg.readInt32();    // x

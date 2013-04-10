@@ -34,19 +34,19 @@ NpcHandler::NpcHandler() :
 {
 }
 
-void NpcHandler::sendLetter(int npcId A_UNUSED,
+void NpcHandler::sendLetter(const int npcId A_UNUSED,
                             const std::string &recipient A_UNUSED,
-                            const std::string &text A_UNUSED)
+                            const std::string &text A_UNUSED) const
 {
     // TODO
 }
 
-void NpcHandler::startShopping(int beingId A_UNUSED)
+void NpcHandler::startShopping(const int beingId A_UNUSED) const
 {
     // TODO
 }
 
-void NpcHandler::endShopping(int beingId A_UNUSED)
+void NpcHandler::endShopping(const int beingId A_UNUSED) const
 {
     // TODO
 }
