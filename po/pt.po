@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-04-05 01:58+0300\n"
-"PO-Revision-Date: 2013-04-04 23:00+0000\n"
+"POT-Creation-Date: 2013-04-12 02:13+0300\n"
+"PO-Revision-Date: 2013-04-11 23:23+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/manaplus/"
 "language/pt/)\n"
@@ -34,25 +34,25 @@ msgstr "Aceitando propostas de negócios"
 msgid "Visible on map"
 msgstr "Visivel no mapa"
 
-#: src/being.cpp:341
+#: src/being.cpp:343
 msgid "Human"
 msgstr "Humano"
 
-#: src/being.cpp:541
+#: src/being.cpp:543
 msgid "dodge"
 msgstr "desviou"
 
-#: src/being.cpp:541
+#: src/being.cpp:543
 msgid "miss"
 msgstr "errou"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1667 src/gui/whoisonline.cpp:831
+#: src/being.cpp:1669 src/gui/whoisonline.cpp:828
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1672 src/gui/whoisonline.cpp:836
+#: src/being.cpp:1674 src/gui/whoisonline.cpp:833
 msgid "I"
 msgstr "l"
 
@@ -164,8 +164,8 @@ msgstr "Erro: %s não existe e não pode se criado! Saindo."
 msgid "Unknown command."
 msgstr "Comando desconhecido."
 
-#: src/commands.cpp:134 src/commands.cpp:396 src/commands.cpp:470
-#: src/commands.cpp:510
+#: src/commands.cpp:134 src/commands.cpp:397 src/commands.cpp:471
+#: src/commands.cpp:511
 msgid "Please specify a name."
 msgstr "Por favor, especifique um nome."
 
@@ -197,143 +197,143 @@ msgstr ""
 "Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela "
 "já existe ou é você mesmo."
 
-#: src/commands.cpp:355 src/commands.cpp:363
+#: src/commands.cpp:356 src/commands.cpp:364
 msgid "Cache cleaned"
 msgstr ""
 
-#: src/commands.cpp:372 src/net/ea/gui/partytab.cpp:127
+#: src/commands.cpp:373 src/net/ea/gui/partytab.cpp:127
 msgid "Party name is missing."
 msgstr "Falta o nome do grupo."
 
-#: src/commands.cpp:383
+#: src/commands.cpp:384
 msgid "Guild name is missing."
 msgstr "Falta o nome da guilda."
 
-#: src/commands.cpp:411
+#: src/commands.cpp:412
 msgid "Return toggles chat."
 msgstr "Enter alterna para o chat."
 
-#: src/commands.cpp:411
+#: src/commands.cpp:412
 msgid "Message closes chat."
 msgstr "A mensagem fecha o chat."
 
-#: src/commands.cpp:420
+#: src/commands.cpp:421
 msgid "Return now toggles chat."
 msgstr "Agora Enter alterna para o chat."
 
-#: src/commands.cpp:426
+#: src/commands.cpp:427
 msgid "Message now closes chat."
 msgstr "Agora a mensagem fecha o chat."
 
-#: src/commands.cpp:452
+#: src/commands.cpp:453
 msgid "friend"
 msgstr "amigo(a)"
 
-#: src/commands.cpp:457
+#: src/commands.cpp:458
 msgid "disregarded"
 msgstr "ignorado"
 
-#: src/commands.cpp:462
+#: src/commands.cpp:463
 msgid "neutral"
 msgstr "neutro"
 
-#: src/commands.cpp:482
+#: src/commands.cpp:483
 msgid "Player wasn't ignored!"
 msgstr "O jogador não estava ignorado!"
 
-#: src/commands.cpp:489
+#: src/commands.cpp:490
 msgid "Player no longer ignored!"
 msgstr "O jogador não está mais ignorado!"
 
-#: src/commands.cpp:491
+#: src/commands.cpp:492
 msgid "Player could not be unignored!"
 msgstr "Não foi possível deixar de ignorar o jogador(a)!"
 
-#: src/commands.cpp:497
+#: src/commands.cpp:498
 msgid "blacklisted"
 msgstr "Na Lista Negra"
 
-#: src/commands.cpp:502
+#: src/commands.cpp:503
 msgid "enemy"
 msgstr "Inimigo"
 
-#: src/commands.cpp:517
+#: src/commands.cpp:518
 msgid "Player already erased!"
 msgstr "Jogador já apagado!"
 
-#: src/commands.cpp:528
+#: src/commands.cpp:529
 msgid "Player successfully erased!"
 msgstr "Jogador apagado com sucesso!"
 
-#: src/commands.cpp:530
+#: src/commands.cpp:531
 msgid "Player could not be erased!"
 msgstr "Jogador não pode ser apagado!"
 
-#: src/commands.cpp:810 src/commands.cpp:858
+#: src/commands.cpp:811 src/commands.cpp:859
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Uptime do cliente: %s"
 
-#: src/commands.cpp:820
+#: src/commands.cpp:821
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] "%d semana"
 msgstr[1] "%d semanas"
 
-#: src/commands.cpp:829
+#: src/commands.cpp:830
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d dia"
 msgstr[1] "%d dias"
 
-#: src/commands.cpp:837
+#: src/commands.cpp:838
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d hora"
 msgstr[1] "%d horas"
 
-#: src/commands.cpp:846
+#: src/commands.cpp:847
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d minuto"
 msgstr[1] "%d minutos"
 
-#: src/commands.cpp:855
+#: src/commands.cpp:856
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d segundo"
 msgstr[1] "%d segundos"
 
-#: src/commands.cpp:929
+#: src/commands.cpp:930
 msgid "font cache size"
 msgstr "Tamanho do cache de fonte"
 
-#: src/commands.cpp:941
+#: src/commands.cpp:942
 msgid "Cache size:"
 msgstr "Tamanho de Cache:"
 
-#: src/commands.cpp:945
+#: src/commands.cpp:946
 msgid "Created:"
 msgstr "Criado:"
 
-#: src/commands.cpp:947
+#: src/commands.cpp:948
 msgid "Deleted:"
 msgstr "Deletado:"
 
-#: src/commands.cpp:1008
+#: src/commands.cpp:1009
 msgid "Environment variables dumped"
 msgstr "Variáveis ​​de ambiente despejadas"
 
-#: src/commands.cpp:1119 src/commands.cpp:1126
+#: src/commands.cpp:1120 src/commands.cpp:1127
 msgid "Resource images:"
 msgstr "Recursos de imagens:"
 
-#: src/commands.cpp:1121 src/commands.cpp:1128
+#: src/commands.cpp:1122 src/commands.cpp:1129
 msgid "Resource orphaned images:"
 msgstr "Recursos de imagens orfãos:"
 
@@ -352,19 +352,19 @@ msgstr "Geral"
 msgid "Debug"
 msgstr "Depurador"
 
-#: src/game.cpp:532
+#: src/game.cpp:533
 msgid "Screenshot saved as "
 msgstr "Screenshot salva como "
 
-#: src/game.cpp:540
+#: src/game.cpp:541
 msgid "Saving screenshot failed!"
 msgstr "Falha ao salvar screenshot!"
 
-#: src/game.cpp:606
+#: src/game.cpp:612
 msgid "The connection to the server was lost."
 msgstr "A conexão com o servidor caiu."
 
-#: src/game.cpp:607
+#: src/game.cpp:613
 msgid "Network Error"
 msgstr "Erro de conexão"
 
@@ -469,7 +469,7 @@ msgid "Buy"
 msgstr "Comprar"
 
 #: src/gui/buydialog.cpp:230 src/gui/buydialog.cpp:504
-#: src/gui/selldialog.cpp:92 src/gui/selldialog.cpp:337
+#: src/gui/selldialog.cpp:92 src/gui/selldialog.cpp:334
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Preço: %s / Total: %s"
@@ -482,7 +482,7 @@ msgstr "Quantidade:"
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:243 src/gui/itemamountwindow.cpp:206
 #: src/gui/itemamountwindow.cpp:236 src/gui/npcdialog.cpp:82
-#: src/gui/selldialog.cpp:95 src/gui/statuswindow.cpp:814
+#: src/gui/selldialog.cpp:95 src/gui/statuswindow.cpp:811
 msgid "+"
 msgstr "+"
 
@@ -490,7 +490,7 @@ msgstr "+"
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:246 src/gui/itemamountwindow.cpp:205
 #: src/gui/itemamountwindow.cpp:234 src/gui/npcdialog.cpp:83
-#: src/gui/selldialog.cpp:96 src/gui/statuswindow.cpp:826
+#: src/gui/selldialog.cpp:96 src/gui/statuswindow.cpp:823
 msgid "-"
 msgstr "-"
 
@@ -502,8 +502,8 @@ msgid "Quit"
 msgstr "Sair"
 
 #: src/gui/buydialog.cpp:249 src/gui/selldialog.cpp:99
-#: src/gui/statuswindow.cpp:542 src/gui/statuswindow.cpp:598
-#: src/gui/statuswindow.cpp:812 src/gui/statuswindow.cpp:840
+#: src/gui/statuswindow.cpp:539 src/gui/statuswindow.cpp:595
+#: src/gui/statuswindow.cpp:809 src/gui/statuswindow.cpp:837
 msgid "Max"
 msgstr "Máximo"
 
@@ -1169,7 +1169,7 @@ msgid "Reset timer"
 msgstr "Resetar tempo"
 
 #: src/gui/killstats.cpp:51 src/gui/killstats.cpp:154
-#: src/gui/killstats.cpp:248 src/gui/killstats.cpp:474
+#: src/gui/killstats.cpp:247 src/gui/killstats.cpp:474
 #, c-format
 msgid "Kills: %s, total exp: %s"
 msgstr "Mortes: %s, total exp: %s"
@@ -1189,7 +1189,7 @@ msgid "No. of avg mob to next level: %s"
 msgstr "Nu. de mob para próximo level: %s"
 
 #: src/gui/killstats.cpp:56 src/gui/killstats.cpp:167
-#: src/gui/killstats.cpp:251 src/gui/killstats.cpp:479
+#: src/gui/killstats.cpp:250 src/gui/killstats.cpp:479
 #, c-format
 msgid "Kills/Min: %s, Exp/Min: %s"
 msgstr "Mortes/Min: %s Exp/Min: %s"
@@ -1210,7 +1210,7 @@ msgid_plural "Time for next level per %d min: %s"
 msgstr[0] "Tempo para próximo nível por %d min: %s"
 msgstr[1] "Tempo para próximo nível por %d mins: %s"
 
-#: src/gui/killstats.cpp:74 src/gui/killstats.cpp:255
+#: src/gui/killstats.cpp:74 src/gui/killstats.cpp:254
 msgid "Last kill exp:"
 msgstr "Exp de última morte:"
 
@@ -1220,12 +1220,12 @@ msgstr "Exp de última morte:"
 msgid "Time before jacko spawn:"
 msgstr "Tempo para próximo JackO:"
 
-#: src/gui/killstats.cpp:107 src/gui/killstats.cpp:215
+#: src/gui/killstats.cpp:107 src/gui/killstats.cpp:217
 #, c-format
 msgid "Level: %d at %f%%"
 msgstr "Nível: %d em %f%%"
 
-#: src/gui/killstats.cpp:111 src/gui/killstats.cpp:220
+#: src/gui/killstats.cpp:111 src/gui/killstats.cpp:221
 #, c-format
 msgid "Exp: %d/%d Left: %d"
 msgstr "Exp: %d%d faltando: %d"
@@ -1724,7 +1724,7 @@ msgid "Unignore"
 msgstr "Não ignorar"
 
 #: src/gui/popupmenu.cpp:2229 src/gui/popupmenu.cpp:2249
-#: src/playerrelations.cpp:464
+#: src/playerrelations.cpp:461
 msgid "Completely ignore"
 msgstr "Ignorar completamente"
 
@@ -1830,28 +1830,28 @@ msgstr "Escolha seu servidor    *** MODO SEGURO ***"
 msgid "Use same ip for game sub servers"
 msgstr "Usar o mesmo ip para os sub servidores do jogo"
 
-#: src/gui/serverdialog.cpp:505
+#: src/gui/serverdialog.cpp:504
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Baixando lista de servidores...%2.2f%%"
 
-#: src/gui/serverdialog.cpp:510
+#: src/gui/serverdialog.cpp:509
 msgid "Waiting for server..."
 msgstr "Aguardando servidor..."
 
-#: src/gui/serverdialog.cpp:514
+#: src/gui/serverdialog.cpp:513
 msgid "Preparing download"
 msgstr "Preparando download"
 
-#: src/gui/serverdialog.cpp:518
+#: src/gui/serverdialog.cpp:517
 msgid "Error retreiving server list!"
 msgstr "Erro ao recuperar lista!"
 
-#: src/gui/serverdialog.cpp:607
+#: src/gui/serverdialog.cpp:606
 msgid "requires a newer version"
 msgstr "requer uma versão mais nova"
 
-#: src/gui/serverdialog.cpp:609
+#: src/gui/serverdialog.cpp:608
 #, c-format
 msgid "requires v%s"
 msgstr "requer v%s"
@@ -3142,6 +3142,10 @@ msgstr "Utilizar nova textura de formato interno (OpenGL)"
 msgid "Enable texture atlases (OpenGL)"
 msgstr "Ativar atlas de textura (OpenGL)"
 
+#: src/gui/setup_perfomance.cpp:132
+msgid "Cache all sprites per map (can use additinal memory)"
+msgstr ""
+
 #: src/gui/setup_players.cpp:53
 msgid "Show gender"
 msgstr "Mostrar gênero"
@@ -3727,7 +3731,7 @@ msgstr "Mostrar links em anúncio"
 msgid "Auction"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:765 src/net/ea/tradehandler.cpp:102
+#: src/gui/shopwindow.cpp:765 src/net/ea/tradehandler.cpp:103
 msgid "Request for Trade"
 msgstr "Proposta de negociação"
 
@@ -3767,7 +3771,7 @@ msgstr "Habilidade %d"
 msgid "Skill %d"
 msgstr "Habilidade %d"
 
-#: src/gui/skilldialog.cpp:590 src/gui/skilldialog.cpp:725
+#: src/gui/skilldialog.cpp:591 src/gui/skilldialog.cpp:726
 #, c-format
 msgid "Lvl: %d"
 msgstr "Nível: %d"
@@ -4338,7 +4342,7 @@ msgstr "Borda do Lugar Inicial"
 msgid "Road Point"
 msgstr "Ponto de estrada"
 
-#: src/gui/whoisonline.cpp:78 src/gui/whoisonline.cpp:620
+#: src/gui/whoisonline.cpp:78 src/gui/whoisonline.cpp:617
 msgid "Who Is Online - Updating"
 msgstr "Quem está online - Atualizando"
 
@@ -4350,11 +4354,11 @@ msgstr "Atualizar"
 msgid "Who Is Online - "
 msgstr "Quem está online - "
 
-#: src/gui/whoisonline.cpp:634
+#: src/gui/whoisonline.cpp:631
 msgid "Who Is Online - error"
 msgstr "Quem está online - Erro"
 
-#: src/gui/whoisonline.cpp:675
+#: src/gui/whoisonline.cpp:672
 msgid "Who Is Online - Update"
 msgstr "Quem está online - Atualizado"
 
@@ -4431,7 +4435,7 @@ msgid "/kick > Kick some one from the guild you are in"
 msgstr "/kick > Expulsa alguém da guilda em que você está"
 
 #. TRANSLATORS: Text under equipped items (should be small)
-#: src/gui/widgets/itemcontainer.cpp:310
+#: src/gui/widgets/itemcontainer.cpp:313
 msgid "Eq."
 msgstr "Eq."
 
@@ -4626,7 +4630,7 @@ msgstr "Trocar Login"
 msgid "Choose World"
 msgstr "Escolher Mundo"
 
-#: src/inputmanager.cpp:323 src/inputmanager.cpp:362 src/keyboardconfig.cpp:87
+#: src/inputmanager.cpp:323 src/inputmanager.cpp:362 src/keyboardconfig.cpp:86
 #, c-format
 msgid "key_%d"
 msgstr "tecla_%d"
@@ -4648,7 +4652,7 @@ msgid "JB%d"
 msgstr "JB%d"
 
 #. TRANSLATORS: Unknown key short string. This string must be maximum 5 chars
-#: src/inputmanager.cpp:380 src/keyboardconfig.cpp:99
+#: src/inputmanager.cpp:380 src/keyboardconfig.cpp:98
 msgid "u key"
 msgstr "Tecla u"
 
@@ -5145,7 +5149,7 @@ msgstr "Erro desconhecido do char-server."
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr "Erro ao criar personagem. Provavelmente o nome já está sendo usado."
 
-#: src/net/ea/charserverhandler.cpp:159 src/net/ea/loginhandler.cpp:265
+#: src/net/ea/charserverhandler.cpp:159 src/net/ea/loginhandler.cpp:263
 msgid "Wrong name."
 msgstr "Nome errado."
 
@@ -5319,15 +5323,15 @@ msgid "This command displays the party's current experience sharing policy."
 msgstr ""
 "Este comando exibe a atual opção de compartilhamento de experiência do grupo."
 
-#: src/net/ea/gui/partytab.cpp:150 src/notifications.h:200
+#: src/net/ea/gui/partytab.cpp:150 src/notifications.h:201
 msgid "Item sharing enabled."
 msgstr "Compartilhamento de itens habilitado."
 
-#: src/net/ea/gui/partytab.cpp:153 src/notifications.h:202
+#: src/net/ea/gui/partytab.cpp:153 src/notifications.h:203
 msgid "Item sharing disabled."
 msgstr "Compartilhamento de itens desabilitado."
 
-#: src/net/ea/gui/partytab.cpp:156 src/notifications.h:204
+#: src/net/ea/gui/partytab.cpp:156 src/notifications.h:205
 msgid "Item sharing not possible."
 msgstr "Não é possível compartilhar itens."
 
@@ -5335,19 +5339,19 @@ msgstr "Não é possível compartilhar itens."
 msgid "Item sharing unknown."
 msgstr "Compartilhamento de itens desconhecido."
 
-#: src/net/ea/gui/partytab.cpp:189 src/notifications.h:194
+#: src/net/ea/gui/partytab.cpp:190 src/notifications.h:195
 msgid "Experience sharing enabled."
 msgstr "Compartilhamento de experiência habilitado."
 
-#: src/net/ea/gui/partytab.cpp:192 src/notifications.h:196
+#: src/net/ea/gui/partytab.cpp:193 src/notifications.h:197
 msgid "Experience sharing disabled."
 msgstr "Compartilhamento de experiência desabilitado."
 
-#: src/net/ea/gui/partytab.cpp:195 src/notifications.h:198
+#: src/net/ea/gui/partytab.cpp:196 src/notifications.h:199
 msgid "Experience sharing not possible."
 msgstr "Não é possível compartilhar experiência."
 
-#: src/net/ea/gui/partytab.cpp:198
+#: src/net/ea/gui/partytab.cpp:199
 msgid "Experience sharing unknown."
 msgstr "Compartilhamento de experiência desconhecido."
 
@@ -5363,38 +5367,38 @@ msgstr "Senha antiga incorreta."
 msgid "New password too short."
 msgstr "Nova senha é muito curta."
 
-#: src/net/ea/loginhandler.cpp:158 src/net/ea/loginhandler.cpp:274
+#: src/net/ea/loginhandler.cpp:158 src/net/ea/loginhandler.cpp:272
 msgid "Unknown error."
 msgstr "Erro desconhecido."
 
-#: src/net/ea/loginhandler.cpp:232
+#: src/net/ea/loginhandler.cpp:230
 msgid "Unregistered ID."
 msgstr "ID não registrado."
 
-#: src/net/ea/loginhandler.cpp:235
+#: src/net/ea/loginhandler.cpp:233
 msgid "Wrong password."
 msgstr "Senha incorreta."
 
-#: src/net/ea/loginhandler.cpp:239
+#: src/net/ea/loginhandler.cpp:237
 msgid "Account expired."
 msgstr "A conta expirou."
 
-#: src/net/ea/loginhandler.cpp:242
+#: src/net/ea/loginhandler.cpp:240
 msgid "Rejected from server."
 msgstr "Rejeitado pelo servidor."
 
-#: src/net/ea/loginhandler.cpp:245
+#: src/net/ea/loginhandler.cpp:243
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
 "Você foi permanentemente banido(a) do jogo. Por favor entre em contato com "
 "algum GM."
 
-#: src/net/ea/loginhandler.cpp:249
+#: src/net/ea/loginhandler.cpp:247
 msgid "Client too old."
 msgstr "Cliente muito antigo."
 
-#: src/net/ea/loginhandler.cpp:252
+#: src/net/ea/loginhandler.cpp:250
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -5403,31 +5407,31 @@ msgstr ""
 "Você banido(a) do jogo até %s.\n"
 "Por favor entre em contato com algum GM através do fórum."
 
-#: src/net/ea/loginhandler.cpp:259
+#: src/net/ea/loginhandler.cpp:257
 msgid "Server overpopulated."
 msgstr "Server lotado."
 
-#: src/net/ea/loginhandler.cpp:262
+#: src/net/ea/loginhandler.cpp:260
 msgid "This user name is already taken."
 msgstr "Este nome de usuário já está em uso."
 
-#: src/net/ea/loginhandler.cpp:268
+#: src/net/ea/loginhandler.cpp:266
 msgid "Incorrect email."
 msgstr "Email incorreto."
 
-#: src/net/ea/loginhandler.cpp:271
+#: src/net/ea/loginhandler.cpp:269
 msgid "Username permanently erased."
 msgstr "Usuário deletado."
 
-#: src/net/ea/network.cpp:98
+#: src/net/ea/network.cpp:97
 msgid "Empty address given to Network::connect()!"
 msgstr "Endereço vazio enviado para Network::connect()!"
 
-#: src/net/ea/network.cpp:194
+#: src/net/ea/network.cpp:191
 msgid "Unable to resolve host \""
 msgstr "Não foi possível determinar o host \""
 
-#: src/net/ea/network.cpp:272
+#: src/net/ea/network.cpp:268
 msgid "Connection to server terminated. "
 msgstr "Conexão com o servidor interrompida. "
 
@@ -5551,101 +5555,101 @@ msgstr "Você é um(a) ex-jogador(a)."
 msgid "You're pining for the fjords."
 msgstr "Você foi desta para melhor."
 
-#: src/net/ea/playerhandler.cpp:337 src/net/ea/playerhandler.cpp:347
-#: src/net/ea/playerhandler.cpp:429
+#: src/net/ea/playerhandler.cpp:334 src/net/ea/playerhandler.cpp:344
+#: src/net/ea/playerhandler.cpp:426
 msgid "Message"
 msgstr "Mensagem"
 
-#: src/net/ea/playerhandler.cpp:338
+#: src/net/ea/playerhandler.cpp:335
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 "Você está carregando mais que a metade de seu peso. Você não poderá mais "
 "recuperar HP."
 
-#: src/net/ea/playerhandler.cpp:348
+#: src/net/ea/playerhandler.cpp:345
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Você está carregando menos da metade de seu peso. Você vai recuperar-se "
 "novamente."
 
-#: src/net/ea/skillhandler.cpp:155
+#: src/net/ea/skillhandler.cpp:150
 msgid "Trade failed!"
 msgstr "Falha na negociação!"
 
-#: src/net/ea/skillhandler.cpp:158
+#: src/net/ea/skillhandler.cpp:153
 msgid "Emote failed!"
 msgstr "Falha no emoticon!"
 
-#: src/net/ea/skillhandler.cpp:161
+#: src/net/ea/skillhandler.cpp:156
 msgid "Sit failed!"
 msgstr "Falha ao sentar!"
 
-#: src/net/ea/skillhandler.cpp:164
+#: src/net/ea/skillhandler.cpp:159
 msgid "Chat creating failed!"
 msgstr "Falha ao criar Chat!"
 
-#: src/net/ea/skillhandler.cpp:167
+#: src/net/ea/skillhandler.cpp:162
 msgid "Could not join party!"
 msgstr "Impossivel entrar no grupo!"
 
-#: src/net/ea/skillhandler.cpp:170
+#: src/net/ea/skillhandler.cpp:165
 msgid "Cannot shout!"
 msgstr "Impossivel gritar!"
 
-#: src/net/ea/skillhandler.cpp:183
+#: src/net/ea/skillhandler.cpp:178
 msgid "You have not yet reached a high enough lvl!"
 msgstr "Você ainda não tem o nivel necessário!"
 
-#: src/net/ea/skillhandler.cpp:186
+#: src/net/ea/skillhandler.cpp:181
 msgid "Insufficient HP!"
 msgstr "HP insuficiente!"
 
-#: src/net/ea/skillhandler.cpp:189
+#: src/net/ea/skillhandler.cpp:184
 msgid "Insufficient SP!"
 msgstr "SP insuficiente!"
 
-#: src/net/ea/skillhandler.cpp:192
+#: src/net/ea/skillhandler.cpp:187
 msgid "You have no memos!"
 msgstr "Você não tem nenhuma nota armazenada!"
 
-#: src/net/ea/skillhandler.cpp:195
+#: src/net/ea/skillhandler.cpp:190
 msgid "You cannot do that right now!"
 msgstr "Você não pode fazer isso agora!"
 
-#: src/net/ea/skillhandler.cpp:198
+#: src/net/ea/skillhandler.cpp:193
 msgid "Seems you need more money... ;-)"
 msgstr "Parece que você precisa de mais dinheiro... ;-)"
 
-#: src/net/ea/skillhandler.cpp:201
+#: src/net/ea/skillhandler.cpp:196
 msgid "You cannot use this skill with that kind of weapon!"
 msgstr "Você não pode usar essa habilidade com esse tipo de arma!"
 
-#: src/net/ea/skillhandler.cpp:205
+#: src/net/ea/skillhandler.cpp:200
 msgid "You need another red gem!"
 msgstr "Você precisa de outra gema vermelha!"
 
-#: src/net/ea/skillhandler.cpp:208
+#: src/net/ea/skillhandler.cpp:203
 msgid "You need another blue gem!"
 msgstr "Você precisa de outra jóia azul!"
 
-#: src/net/ea/skillhandler.cpp:211
+#: src/net/ea/skillhandler.cpp:206
 msgid "You're carrying to much to do this!"
 msgstr "Você está com muita carga para fazer isso!"
 
-#: src/net/ea/skillhandler.cpp:214
+#: src/net/ea/skillhandler.cpp:209
 msgid "Huh? What's that?"
 msgstr "Hã? O que é isso?"
 
-#: src/net/ea/skillhandler.cpp:225
+#: src/net/ea/skillhandler.cpp:220
 msgid "Warp failed..."
 msgstr "Falha ao transportar..."
 
-#: src/net/ea/skillhandler.cpp:228
+#: src/net/ea/skillhandler.cpp:223
 msgid "Could not steal anything..."
 msgstr "Não foi possível roubar nada..."
 
-#: src/net/ea/skillhandler.cpp:231
+#: src/net/ea/skillhandler.cpp:226
 msgid "Poison had no effect..."
 msgstr "Veneno não surtiu efeito..."
 
@@ -5778,12 +5782,12 @@ msgstr "Atraso de alcance"
 msgid "Damage per sec."
 msgstr "Dano por seg."
 
-#: src/net/ea/tradehandler.cpp:103
+#: src/net/ea/tradehandler.cpp:104
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s quer negociar com você, você aceita?"
 
-#: src/net/ea/tradehandler.cpp:147
+#: src/net/ea/tradehandler.cpp:148
 #, c-format
 msgid "Trade: You and %s"
 msgstr "Negociação: Você e %s"
@@ -5920,155 +5924,155 @@ msgstr "%s agora é um membro do seu grupo."
 msgid "%s can't join your party because party is full."
 msgstr "%s não pode se juntar ao gupo cheio."
 
-#: src/notifications.h:192
+#: src/notifications.h:193
 #, c-format
 msgid "QQQ Unknown invite response for %s."
 msgstr "QQQ resposta de convite desconhecida por %s."
 
-#: src/notifications.h:206
+#: src/notifications.h:207
 #, c-format
 msgid "%s has left your party."
 msgstr "%s saiu do seu grupo."
 
-#: src/notifications.h:208
+#: src/notifications.h:209
 #, c-format
 msgid "An unknown member tried to say: %s"
 msgstr "Um membro desconhecido tentou dizer: %s"
 
-#: src/notifications.h:210
+#: src/notifications.h:211
 #, c-format
 msgid "%s is not in your party!"
 msgstr "%s não está em seu grupo!"
 
-#: src/notifications.h:212
+#: src/notifications.h:213
 #, c-format
 msgid "You picked up %s."
 msgstr "Você pegou %s."
 
-#: src/notifications.h:214
+#: src/notifications.h:215
 #, c-format
 msgid "You spent %s."
 msgstr "Você gastou %s"
 
-#: src/notifications.h:216
+#: src/notifications.h:217
 msgid "Cannot raise skill!"
 msgstr "Impossível aumentar o atributo!"
 
-#: src/notifications.h:218
+#: src/notifications.h:219
 msgid "Equip arrows first."
 msgstr "Equipe as flechas primeiro."
 
-#: src/notifications.h:220
+#: src/notifications.h:221
 #, c-format
 msgid "Trading with %s isn't possible. Trade partner is too far away."
 msgstr ""
 "Negociação com %s é impossível. O parceiro de negócios está muito longe."
 
-#: src/notifications.h:223
+#: src/notifications.h:224
 #, c-format
 msgid "Trading with %s isn't possible. Character doesn't exist."
 msgstr "Negociação com %s é impossível. O personagem não existe."
 
-#: src/notifications.h:226
+#: src/notifications.h:227
 msgid "Trade cancelled due to an unknown reason."
 msgstr "Negociação cancelada devido a uma razão desconhecida."
 
-#: src/notifications.h:228
+#: src/notifications.h:229
 #, c-format
 msgid "Trade with %s cancelled."
 msgstr "Negociação com %s cancelada."
 
-#: src/notifications.h:230
+#: src/notifications.h:231
 #, c-format
 msgid "Unhandled trade cancel packet with %s"
 msgstr "Troca injusta pacote cancelado com %s"
 
-#: src/notifications.h:232
+#: src/notifications.h:233
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr "Erro ao adicionar item. Parceiro de negócios carregando muito peso."
 
-#: src/notifications.h:234
+#: src/notifications.h:235
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr "Erro ao adicionar item. Parceiro de negócios não tem slots livres."
 
-#: src/notifications.h:236
+#: src/notifications.h:237
 msgid "Failed adding item. You can't trade this item."
 msgstr "Falha ao adicionar item. Você não pode trocar este item."
 
-#: src/notifications.h:238
+#: src/notifications.h:239
 msgid "Failed adding item for unknown reason."
 msgstr "Erro ao adicionar item devido a um motivo desconhecido."
 
-#: src/notifications.h:240
+#: src/notifications.h:241
 msgid "Trade canceled."
 msgstr "Negociação cancelada."
 
-#: src/notifications.h:242
+#: src/notifications.h:243
 msgid "Trade completed."
 msgstr "Negociação realizada."
 
-#: src/notifications.h:244
+#: src/notifications.h:245
 msgid "Kick failed!"
 msgstr "Erro na expulsão!"
 
-#: src/notifications.h:246
+#: src/notifications.h:247
 msgid "Kick succeeded!"
 msgstr "Expulsão bem sucedida!"
 
-#: src/notifications.h:248
+#: src/notifications.h:249
 #, c-format
 msgid "MVP player: %s"
 msgstr ""
 
-#: src/notifications.h:250
+#: src/notifications.h:251
 msgid "All whispers ignored."
 msgstr "Todos sussurros ignorados. "
 
-#: src/notifications.h:252
+#: src/notifications.h:253
 msgid "All whispers ignore failed."
 msgstr "Todos sussurros ignorados falharam. "
 
-#: src/notifications.h:254
+#: src/notifications.h:255
 msgid "All whispers unignored."
 msgstr "Todos sussurros não-ignorados. "
 
-#: src/notifications.h:256
+#: src/notifications.h:257
 msgid "All whispers unignore failed."
 msgstr "Todos sussurros não-ignorados falharam. "
 
-#: src/notifications.h:260
+#: src/notifications.h:261
 msgid "pvp off, gvg off"
 msgstr ""
 
-#: src/notifications.h:262
+#: src/notifications.h:263
 msgid "pvp on"
 msgstr ""
 
-#: src/notifications.h:264
+#: src/notifications.h:265
 msgid "gvg on"
 msgstr ""
 
-#: src/notifications.h:266
+#: src/notifications.h:267
 msgid "pvp on, gvg on"
 msgstr ""
 
-#: src/notifications.h:268
+#: src/notifications.h:269
 msgid "unknown pvp"
 msgstr ""
 
-#: src/playerrelations.cpp:480
+#: src/playerrelations.cpp:477
 msgid "Print '...'"
 msgstr "Imprimir '...'"
 
-#: src/playerrelations.cpp:502
+#: src/playerrelations.cpp:499
 msgid "Blink name"
 msgstr "Piscar nome"
 
-#: src/playerrelations.cpp:547
+#: src/playerrelations.cpp:544
 msgid "Floating '...' bubble"
 msgstr "Bolha '...' flutuante"
 
-#: src/playerrelations.cpp:550
+#: src/playerrelations.cpp:547
 msgid "Floating bubble"
 msgstr "Bolha Flutuante"
 
