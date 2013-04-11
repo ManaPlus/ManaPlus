@@ -41,6 +41,12 @@ TextBox::TextBox(const Widget2 *const widget) :
     setFrameSize(0);
 }
 
+TextBox::~TextBox()
+{
+    if (gui)
+        gui->removeDragged(this);
+}
+
 void TextBox::setTextWrapped(const std::string &text, const int minDimension)
 {
     // Make sure parent scroll area sets width of this widget

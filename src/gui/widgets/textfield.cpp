@@ -92,6 +92,9 @@ TextField::TextField(const Widget2 *const widget,
 
 TextField::~TextField()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     delete mPopupMenu;
     mPopupMenu = nullptr;
 

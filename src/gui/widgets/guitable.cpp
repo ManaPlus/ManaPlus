@@ -116,6 +116,9 @@ GuiTable::GuiTable(const Widget2 *const widget,
 
 GuiTable::~GuiTable()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     uninstallActionListeners();
     delete mModel;
     mModel = nullptr;

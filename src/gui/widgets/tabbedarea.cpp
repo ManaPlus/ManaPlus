@@ -70,6 +70,9 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
 
 TabbedArea::~TabbedArea()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     remove(mTabContainer);
     remove(mWidgetContainer);
 

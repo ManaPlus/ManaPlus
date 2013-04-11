@@ -52,6 +52,8 @@ class Icon final : public gcn::Widget,
 
         A_DELETE_COPY(Icon)
 
+        ~Icon();
+
         /** 
          * Gets the current Image.
          */

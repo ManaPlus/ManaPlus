@@ -65,6 +65,9 @@ TextPreview::TextPreview(const Widget2 *const widget,
 
 TextPreview::~TextPreview()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     instances--;
 
     if (instances == 0)

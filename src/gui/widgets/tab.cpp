@@ -83,6 +83,9 @@ Tab::Tab(const Widget2 *const widget) :
 
 Tab::~Tab()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     mInstances--;
     if (mInstances == 0 && Theme::instance())
     {

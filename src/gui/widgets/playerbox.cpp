@@ -60,6 +60,9 @@ PlayerBox::PlayerBox(std::string skin) :
 
 PlayerBox::~PlayerBox()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     Theme *const theme = Theme::instance();
     if (theme)
     {

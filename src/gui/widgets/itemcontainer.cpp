@@ -194,6 +194,9 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
 
 ItemContainer::~ItemContainer()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     if (mSelImg)
     {
         mSelImg->decRef();

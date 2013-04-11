@@ -307,6 +307,8 @@ void Gui::slowLogic()
         boldFont->slowLogic(4);
     if (mNpcFont)
         mNpcFont->slowLogic(5);
+    if (windowContainer)
+        windowContainer->slowLogic();
     BLOCK_END("Gui::slowLogic")
 }
 
@@ -731,4 +733,13 @@ void Gui::distributeGlobalFocusGainedEvent(const gcn::Event &focusEvent)
     {
         (*iter)->focusGained(focusEvent);
     }
+}
+
+void Gui::removeDragged(gcn::Widget *widget)
+{
+    if (!mFocusHandler)
+        return;
+
+    if (mFocusHandler->getDraggedWidget() == widget)
+        mFocusHandler->setDraggedWidget(nullptr);
 }

@@ -166,6 +166,9 @@ DropDown::DropDown(const Widget2 *const widget,
 
 DropDown::~DropDown()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     instances--;
     if (instances == 0)
     {

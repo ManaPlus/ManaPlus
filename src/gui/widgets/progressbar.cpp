@@ -78,6 +78,9 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
 
 ProgressBar::~ProgressBar()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     mInstances--;
     if (mSkin)
     {

@@ -281,6 +281,8 @@ void NpcDialog::action(const gcn::ActionEvent &event)
 
             if (mInputState == NPC_INPUT_LIST)
             {
+                if (gui)
+                    gui->resetClickCount();
                 const int selectedIndex = mItemList->getSelected();
 
                 if (selectedIndex >= static_cast<int>(mItems.size())

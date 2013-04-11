@@ -35,14 +35,10 @@ WindowContainer::WindowContainer(const Widget2 *const widget) :
 {
 }
 
-void WindowContainer::logic()
+void WindowContainer::slowLogic()
 {
-    BLOCK_START("WindowContainer::logic")
     delete_all(mDeathList);
     mDeathList.clear();
-
-    gcn::Container::logic();
-    BLOCK_END("WindowContainer::logic")
 }
 
 void WindowContainer::scheduleDelete(gcn::Widget *const widget)

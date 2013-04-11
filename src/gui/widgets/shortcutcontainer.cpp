@@ -51,6 +51,9 @@ ShortcutContainer::ShortcutContainer() :
 
 ShortcutContainer::~ShortcutContainer()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     delete mVertexes;
     mVertexes = nullptr;
 }

@@ -33,6 +33,9 @@ Container::Container(const Widget2 *const widget) :
 
 Container::~Container()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     while (!mWidgets.empty())
         delete mWidgets.front();
 }

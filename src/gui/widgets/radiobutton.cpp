@@ -73,6 +73,9 @@ RadioButton::RadioButton(const Widget2 *const widget,
 
 RadioButton::~RadioButton()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     instances--;
 
     if (instances == 0)

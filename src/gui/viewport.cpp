@@ -277,8 +277,6 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
 void Viewport::logic()
 {
     BLOCK_START("Viewport::logic")
-    WindowContainer::logic();
-
     // Make the player follow the mouse position
     // if the mouse is dragged elsewhere than in a window.
     _followMouse();

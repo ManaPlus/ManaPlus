@@ -92,6 +92,9 @@ ScrollArea::ScrollArea(gcn::Widget *const widget, const bool opaque,
 
 ScrollArea::~ScrollArea()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     // Garbage collection
     delete getContent();
 

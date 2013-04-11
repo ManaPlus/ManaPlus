@@ -45,6 +45,12 @@ Icon::Icon(const Widget2 *const widget, Image *const image) :
         setSize(mImage->mBounds.w, mImage->mBounds.h);
 }
 
+Icon::~Icon()
+{
+    if (gui)
+        gui->removeDragged(this);
+}
+
 void Icon::setImage(Image *const image)
 {
     mImage = image;

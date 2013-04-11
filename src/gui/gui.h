@@ -151,6 +151,8 @@ class Gui final : public gcn::Gui
 
         void distributeGlobalFocusGainedEvent(const gcn::Event &focusEvent);
 
+        void removeDragged(gcn::Widget *widget);
+
     protected:
         void handleMouseMoved(const gcn::MouseInput &mouseInput);
 

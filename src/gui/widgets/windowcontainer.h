@@ -38,11 +38,7 @@ class WindowContainer : public Container
     public:
         WindowContainer(const Widget2 *const widget);
 
-        /**
-         * Do GUI logic. This functions adds automatic deletion of objects that
-         * volunteered to be deleted.
-         */
-        void logic() override;
+        void slowLogic();
 
         /**
          * Schedule a widget for deletion. It will be deleted at the start of

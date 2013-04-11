@@ -46,6 +46,9 @@ Label::Label(const Widget2 *const widget, const std::string &caption) :
 
 Label::~Label()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     mInstances --;
     if (mInstances == 0 && Theme::instance())
         Theme::instance()->unload(mSkin);

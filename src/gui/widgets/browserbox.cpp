@@ -111,6 +111,9 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
 
 BrowserBox::~BrowserBox()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     mInstances --;
     if (mInstances == 0 && Theme::instance())
         Theme::instance()->unload(mSkin);

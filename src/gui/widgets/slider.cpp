@@ -58,6 +58,9 @@ Slider::Slider(const double scaleStart, const double scaleEnd) :
 
 Slider::~Slider()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     mInstances--;
     if (mInstances == 0 && Theme::instance())
     {

@@ -80,6 +80,9 @@ CheckBox::CheckBox(const Widget2 *const widget,
 
 CheckBox::~CheckBox()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     instances--;
 
     if (instances == 0)

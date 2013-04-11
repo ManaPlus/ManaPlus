@@ -202,6 +202,9 @@ void Button::init()
 
 Button::~Button()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     mInstances--;
 
     if (mInstances == 0 && Theme::instance())

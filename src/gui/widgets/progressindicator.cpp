@@ -51,6 +51,9 @@ ProgressIndicator::ProgressIndicator() :
 
 ProgressIndicator::~ProgressIndicator()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     delete mIndicator;
     mIndicator = nullptr;
 }

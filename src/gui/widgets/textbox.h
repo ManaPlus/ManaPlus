@@ -47,6 +47,8 @@ class TextBox final : public gcn::TextBox,
 
         A_DELETE_COPY(TextBox)
 
+        ~TextBox();
+
         /**
          * Sets the text after wrapping it to the current width of the widget.
          */

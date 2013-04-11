@@ -64,6 +64,9 @@ ListBox::ListBox(const Widget2 *const widget,
 
 ListBox::~ListBox()
 {
+    if (gui)
+        gui->removeDragged(this);
+
     if (Theme::instance())
         Theme::instance()->unload(mSkin);
 }

@@ -156,6 +156,9 @@ Window::~Window()
 {
     logger->log("Window::~Window(\"%s\")", getCaption().c_str());
 
+    if (gui)
+        gui->removeDragged(this);
+
     Client::windowRemoved(this);
 
     saveWindowState();
