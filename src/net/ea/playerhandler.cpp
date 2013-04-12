@@ -238,11 +238,11 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg) const
                 scrollOffsetY = (y - player_node->getTileY())
                     * map->getTileHeight();
             }
-                scrollOffsetX = (x - player_node->getTileX())
-                    * map->getTileWidth();
-                scrollOffsetY = (y - player_node->getTileY())
-                    * map->getTileHeight();
         }
+
+        player_node->setAction(Being::STAND);
+        player_node->setTileCoords(x, y);
+        player_node->navigateClean();
     }
 
     logger->log("Adjust scrolling by %d:%d", scrollOffsetX, scrollOffsetY);
