@@ -253,4 +253,4 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg,
     }
 }
 
-} // namespace Ea
+}  // namespace Ea

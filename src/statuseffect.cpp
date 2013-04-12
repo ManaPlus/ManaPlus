@@ -147,7 +147,6 @@ void StatusEffect::load()
 
             if (index >= 0 && block_index >= 0)
                 blockEffectIndexMap[block_index] = index;
-
         }
         else if (xmlNameEqual(node, "stun-effect"))
         {

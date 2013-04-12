@@ -53,7 +53,8 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
     if (getParent())
         getParent()->logic();
 
-    // Take the supplied minimum dimension as a starting point and try to beat it
+    // Take the supplied minimum dimension as a starting
+    // point and try to beat it
     mMinWidth = minDimension;
 
     std::stringstream wrappedStream;
@@ -104,7 +105,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
                 xpos = width;
                 wrappedStream << word;
             }
-            else if (xpos != 0 && xpos + getFont()->getWidth(" ") + width <= 
+            else if (xpos != 0 && xpos + getFont()->getWidth(" ") + width <=
                      mMinWidth)
             {
                 xpos += getFont()->getWidth(" ") + width;

@@ -196,7 +196,7 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
 void GuildHandler::create(const std::string &name) const
 {
     MessageOut msg(CMSG_GUILD_CREATE);
-    msg.writeInt32(0); // Unused
+    msg.writeInt32(0);  // unused
     msg.writeString(name, 24);
 }
 
@@ -212,8 +212,8 @@ void GuildHandler::invite(const int guildId A_UNUSED,
     {
         MessageOut msg(CMSG_GUILD_INVITE);
         msg.writeInt32(being->getId());
-        msg.writeInt32(0); // Unused
-        msg.writeInt32(0); // Unused
+        msg.writeInt32(0);  // unused
+        msg.writeInt32(0);  // unused
     }
 }
 
@@ -225,8 +225,8 @@ void GuildHandler::invite(const int guildId A_UNUSED,
 
     MessageOut msg(CMSG_GUILD_INVITE);
     msg.writeInt32(being->getId());
-    msg.writeInt32(0); // Unused
-    msg.writeInt32(0); // Unused
+    msg.writeInt32(0);  // unused
+    msg.writeInt32(0);  // unused
 }
 
 void GuildHandler::inviteResponse(const int guildId, const bool response) const
@@ -234,8 +234,8 @@ void GuildHandler::inviteResponse(const int guildId, const bool response) const
     MessageOut msg(CMSG_GUILD_INVITE_REPLY);
     msg.writeInt32(guildId);
     msg.writeInt8(response);
-    msg.writeInt8(0); // Unused
-    msg.writeInt16(0); // Unused
+    msg.writeInt8(0);   // unused
+    msg.writeInt16(0);  // unused
 }
 
 void GuildHandler::leave(const int guildId) const
@@ -245,9 +245,9 @@ void GuildHandler::leave(const int guildId) const
 
     MessageOut msg(CMSG_GUILD_LEAVE);
     msg.writeInt32(guildId);
-    msg.writeInt32(player_node->getId()); // Account ID
-    msg.writeInt32(PlayerInfo::getCharId()); // Char ID
-    msg.writeString("", 40); // Message
+    msg.writeInt32(player_node->getId());     // Account ID
+    msg.writeInt32(PlayerInfo::getCharId());  // Char ID
+    msg.writeString("", 40);                  // Message
 }
 
 void GuildHandler::kick(const GuildMember *const member,
@@ -258,9 +258,9 @@ void GuildHandler::kick(const GuildMember *const member,
 
     MessageOut msg(CMSG_GUILD_EXPULSION);
     msg.writeInt32(member->getGuild()->getId());
-    msg.writeInt32(member->getID()); // Account ID
-    msg.writeInt32(member->getCharId()); // Char ID
-    msg.writeString(reason, 40); // Message
+    msg.writeInt32(member->getID());      // Account ID
+    msg.writeInt32(member->getCharId());  // Char ID
+    msg.writeString(reason, 40);          // Message
 }
 
 void GuildHandler::chat(const int guildId A_UNUSED,
@@ -286,7 +286,7 @@ void GuildHandler::memberList(const int guildId A_UNUSED) const
     // 4 = expulsion list
 
     MessageOut msg(CMSG_GUILD_REQUEST_INFO);
-    msg.writeInt32(1); // Request member list
+    msg.writeInt32(1);  // Request member list
 }
 
 void GuildHandler::info(const int guildId A_UNUSED)
@@ -300,7 +300,7 @@ void GuildHandler::info(const int guildId A_UNUSED)
 
     showBasicInfo = true;
     MessageOut msg(CMSG_GUILD_REQUEST_INFO);
-    msg.writeInt32(0); // Request basic info
+    msg.writeInt32(0);  // Request basic info
 }
 
 void GuildHandler::changeMemberPostion(const GuildMember *const member,
@@ -310,10 +310,10 @@ void GuildHandler::changeMemberPostion(const GuildMember *const member,
         return;
 
     MessageOut msg(CMSG_GUILD_CHANGE_MEMBER_POS);
-    msg.writeInt16(16); // size less then 16 <= 4 + 12
-    msg.writeInt32(member->getID()); // Account ID
-    msg.writeInt32(member->getCharId()); // Char ID
-    msg.writeInt32(level); // pos
+    msg.writeInt16(16);                   // size less then 16 <= 4 + 12
+    msg.writeInt32(member->getID());      // Account ID
+    msg.writeInt32(member->getCharId());  // Char ID
+    msg.writeInt32(level);                // pos
 }
 
 void GuildHandler::changeNotice(const int guildId, const std::string &msg1,
@@ -321,8 +321,8 @@ void GuildHandler::changeNotice(const int guildId, const std::string &msg1,
 {
     MessageOut msg(CMSG_GUILD_CHANGE_NOTICE);
     msg.writeInt32(guildId);
-    msg.writeString(msg1, 60); // msg1
-    msg.writeString(msg2, 120); // msg2
+    msg.writeString(msg1, 60);   // msg1
+    msg.writeString(msg2, 120);  // msg2
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

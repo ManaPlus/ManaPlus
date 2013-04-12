@@ -65,7 +65,7 @@ TextCommand* SpellManager::getSpellByItem(const int itemId) const
 
 void SpellManager::fillSpells()
 {
-//id, std::string name, std::string symbol, ST type, int basicLvl,
+// id, std::string name, std::string symbol, ST type, int basicLvl,
 //    MagicSchool school, int schoolLvl, int mana)
 
     addSpell(new TextCommand(0, "lum", "#lum", "heal with lifestones",
@@ -115,7 +115,6 @@ bool SpellManager::addSpell(TextCommand *const spell)
 
 std::vector<TextCommand*> SpellManager::getAll() const
 {
-    //logger->log(("mSpellsVector = " + toString(mSpellsVector.size())).c_str());
     return mSpellsVector;
 }
 

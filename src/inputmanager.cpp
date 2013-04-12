@@ -60,7 +60,6 @@ static class KeyFunctor final
         }
 
         const KeyData *keys;
-
 } keyDataSorter;
 
 

@@ -432,10 +432,10 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus status,
                      static_cast<float>(dt);
 
     if (progress != progress)
-        progress = 0.0f; // check for NaN
+        progress = 0.0f;  // check for NaN
     if (progress < 0.0f)
-        progress = 0.0f; // no idea how this could ever happen,
-                         // but why not check for it anyway.
+        progress = 0.0f;  // no idea how this could ever happen,
+                          // but why not check for it anyway.
     if (progress > 1.0f)
         progress = 1.0f;
 
@@ -565,7 +565,7 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
-        UpdaterWindow::addUpdateFile(resman, dir, fixPath, 
+        UpdaterWindow::addUpdateFile(resman, dir, fixPath,
             updateFiles[updateIndex].name, false);
     }
     loadManaPlusUpdates(dir, resman);
@@ -666,7 +666,7 @@ void UpdaterWindow::logic()
                 mCurrentFile = xmlUpdateFile;
                 mStoreInMemory = false;
                 mDownloadStatus = UPDATE_LIST;
-                download(); // download() changes mDownloadComplete to false
+                download();  // download() changes mDownloadComplete to false
             }
             break;
         case UPDATE_PATCH:
@@ -769,8 +769,8 @@ void UpdaterWindow::logic()
                     mCurrentFile = "latest.txt";
                     mStoreInMemory = true;
                     mDownloadStatus = UPDATE_PATCH;
-                    download(); // download() changes
-                                // mDownloadComplete to false
+                    download();  // download() changes
+                                 // mDownloadComplete to false
                 }
             }
             break;

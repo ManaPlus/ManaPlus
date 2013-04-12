@@ -73,7 +73,7 @@ void ShopItems::addItem2(const int inventoryIndex, const int id,
 
     if (item)
     {
-        item->addDuplicate (inventoryIndex, quantity);
+        item->addDuplicate(inventoryIndex, quantity);
     }
     else
     {

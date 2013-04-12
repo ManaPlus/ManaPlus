@@ -102,7 +102,7 @@ BeingHandler::BeingHandler(bool enableSync) :
 void BeingHandler::requestNameById(const int id) const
 {
     MessageOut outMsg(0x0094);
-    outMsg.writeInt32(id); //readLong(2));
+    outMsg.writeInt32(id);  // readLong(2));
 }
 
 void BeingHandler::handleMessage(Net::MessageIn &msg)
@@ -434,10 +434,10 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     // An update about a player, potentially including movement.
     const int id = msg.readInt32();
     const short speed = msg.readInt16();
-    const uint16_t stunMode = msg.readInt16(); // opt1;
-    uint32_t statusEffects = msg.readInt16(); // opt2;
+    const uint16_t stunMode = msg.readInt16();  // opt1;
+    uint32_t statusEffects = msg.readInt16();   // opt2;
     statusEffects |= (static_cast<uint32_t>(msg.readInt16()))
-        << 16; // status.options; Aethyra uses this as misc2
+        << 16;  // status.options; Aethyra uses this as misc2
     const short job = msg.readInt16();
 
     Being *dstBeing = actorSpriteManager->findBeing(id);
@@ -475,7 +475,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     const uint16_t headBottom = msg.readInt16();
 
     if (msgType == 3)
-        msg.readInt32(); // server tick
+        msg.readInt32();  // server tick
 
     const uint16_t headTop = msg.readInt16();
     const uint16_t headMid = msg.readInt16();
@@ -486,9 +486,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     colors[1] = msg.readInt8();
     colors[2] = msg.readInt8();
 
-    msg.readInt8();     //unused
-//            shoes = msg.readInt16();
-//            gloves = msg.readInt16();       //sd->head_dir
+    msg.readInt8();  //unused
 
     const int guild = msg.readInt32();  // guild
 
@@ -512,7 +510,6 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     dstBeing->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
     if (!mHideShield)
         dstBeing->setSprite(SPRITE_SHIELD, shield);
-    //dstBeing->setSprite(SPRITE_SHOE, shoes);
     if (serverVersion > 0)
     {
         dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom,
@@ -526,10 +523,6 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid);
         dstBeing->setSprite(SPRITE_HAT, headTop);
     }
-    //dstBeing->setSprite(SPRITE_GLOVES, gloves);
-    //dstBeing->setSprite(SPRITE_CAPE, cape);
-    //dstBeing->setSprite(SPRITE_MISC1, misc1);
-    //dstBeing->setSprite(SPRITE_MISC2, misc2);
     dstBeing->setSprite(SPRITE_HAIR, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
     dstBeing->setHairColor(hairColor);
@@ -617,20 +610,19 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     }
     else if (msgType == 3)
     {
-        msg.readInt8(); // unknown
+        msg.readInt8();  // unknown
     }
 
     const int level = msg.readInt8();   // Lv
     if (level)
         dstBeing->setLevel(level);
 
-    msg.readInt8();   // unknown
+    msg.readInt8();  // unknown
 
     if (dstBeing->getType() != Being::PLAYER
         || msgType != 3)
     {
         dstBeing->setActionTime(tick_time);
-//                dstBeing->reset();
     }
 
     dstBeing->setStunMode(stunMode);
@@ -643,4 +635,4 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         dstBeing->setMoveTime();
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

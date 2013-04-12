@@ -324,7 +324,7 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
 
     loadServers(true);
 
-    mServersList->setSelected(0); // Do this after for the Delete button
+    mServersList->setSelected(0);  // Do this after for the Delete button
 
     if (needUpdateServers())
         downloadServerList();
@@ -530,7 +530,8 @@ void ServerDialog::downloadServerList()
     if (listFile.empty())
         listFile = config.getStringValue("onlineServerList");
 
-    // Fall back to manaplus.evolonline.org when neither branding nor config set it
+    // Fall back to manaplus.evolonline.org when neither branding
+    // nor config set it
     if (listFile.empty())
         listFile = "http://manaplus.evolonline.org/serverlist.xml";
 
@@ -780,12 +781,12 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
 
         if (progress != progress)
         {
-            progress = 0.0f; // check for NaN
+            progress = 0.0f;  // check for NaN
         }
         else if (progress < 0.0f)
         {
-            progress = 0.0f; // no idea how this could ever happen,
-                             // but why not check for it anyway.
+            progress = 0.0f;  // no idea how this could ever happen,
+                              // but why not check for it anyway.
         }
         else if (progress > 1.0f)
         {

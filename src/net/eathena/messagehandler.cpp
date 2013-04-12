@@ -48,4 +48,4 @@ void MessageHandler::setNetwork(Network *network)
     mNetwork = network;
 }
 
-} // namespace EAthena
+}  // namespace EAthena

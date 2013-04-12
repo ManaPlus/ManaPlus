@@ -120,7 +120,7 @@ namespace ActionManager
     decHandler(whoIsOnlineWindowShow);
     decHandler(didYouKnowWindowShow);
     decHandler(questsWindowShow);
-}
+}  // namespace ActionManager
 
 #undef decHandler
 

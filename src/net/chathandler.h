@@ -53,6 +53,7 @@ class ChatHandler
 
         virtual void unIgnoreAll() const = 0;
 };
+
 }
 
-#endif // CHATHANDLER_H
+#endif  // CHATHANDLER_H

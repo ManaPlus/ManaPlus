@@ -68,7 +68,7 @@ TradeWindow::TradeWindow():
     mPartnerItemContainer(new ItemContainer(this, mPartnerInventory.get())),
     mMoneyLabel(new Label(this, strprintf(_("You get %s"), ""))),
     mAddButton(new Button(this, _("Add"), "add", this)),
-    mOkButton(new Button(this, "", "", this)), // Will be filled in later
+    mOkButton(new Button(this, "", "", this)),  // Will be filled in later
     mMoneyChangeButton(new Button(this, _("Change"), "money", this)),
     mMoneyField(new TextField(this)),
     mStatus(PROPOSING),
@@ -246,11 +246,7 @@ void TradeWindow::receivedOk(const bool own)
         mOkOther = true;
 
     if (mOkMe && mOkOther)
-    {
-        //mOkMe = false;
-        //mOkOther = false;
         setStatus(ACCEPTING);
-    }
 }
 
 void TradeWindow::tradeItem(Item *const item, const int quantity,
@@ -371,7 +367,7 @@ void TradeWindow::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "money")
     {
-        if (mStatus != PREPARING) 
+        if (mStatus != PREPARING)
             return;
 
         int v = atoi(mMoneyField->getText().c_str());

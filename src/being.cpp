@@ -73,7 +73,7 @@ const unsigned int CACHE_SIZE = 50;
 class BeingCacheEntry final
 {
     public:
-        BeingCacheEntry(const int id):
+        explicit BeingCacheEntry(const int id):
             mId(id),
             mName(""),
             mPartyName(""),
@@ -1075,7 +1075,6 @@ void Being::fireMissile(Being *const victim, const std::string &particle) const
         missile->setDieDistance(8);
         missile->setLifetime(900);
     }
-
 }
 
 std::string Being::getSitAction() const
@@ -1122,7 +1121,6 @@ void Being::setAction(const Action &action, const int attackId)
             }
             break;
         case ATTACK:
-//            mAttackId = attackId;
             if (mEquippedWeapon)
             {
                 currentAction = mEquippedWeapon->getAttackAction();
@@ -1136,7 +1134,7 @@ void Being::setAction(const Action &action, const int attackId)
                 currentAction = mInfo->getAttack(attackId)->mAction;
                 reset();
 
-                //attack particle effect
+                // attack particle effect
                 if (Particle::enabled)
                 {
                     const int effectId = mInfo->getAttack(attackId)->mEffectId;
@@ -1169,10 +1167,6 @@ void Being::setAction(const Action &action, const int attackId)
                 soundManager.playSfx(mInfo->getSound(
                     SOUND_EVENT_HURT), mX, mY);
             }
-            //currentAction = SpriteAction::HURT;// Buggy: makes the player stop
-                                            // attacking and unable to attack
-                                            // again until he moves.
-                                            // TODO: fix this!
             break;
         case DEAD:
             currentAction = SpriteAction::DEAD;
@@ -2471,7 +2465,6 @@ void Being::recalcSpritesOrder()
             const int id2 = mSpriteIDs[info.mDrawAfter[dir]];
             if (itemSlotRemap.find(id2) != itemSlotRemap.end())
             {
-//                logger->log("found duplicate (after)");
                 const ItemInfo &info2 = ItemDB::get(id2);
                 if (info.mDrawPriority[dir] < info2.mDrawPriority[dir])
                 {
@@ -2486,7 +2479,7 @@ void Being::recalcSpritesOrder()
             }
 
             itemSlotRemap[id] = info.mDrawAfter[dir];
-//            logger->log("item slot->slot %d %d->%d", id, slot, itemSlotRemap[id]);
+//       logger->log("item slot->slot %d %d->%d", id, slot, itemSlotRemap[id]);
         }
     }
 //    logger->log("preparation end");
@@ -2762,7 +2755,6 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
         {
             mEmotionTime = 0;
         }
-
     }
 }
 

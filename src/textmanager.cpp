@@ -76,13 +76,13 @@ void TextManager::place(const Text *const textObj, const Text *const omit,
 {
     const int xLeft = textObj->mX;
     const int xRight1 = xLeft + textObj->mWidth;
-    const int TEST = 50; // Number of lines to test for text
+    const int TEST = 50;  // Number of lines to test for text
     const int nBeings = 30;
-    bool occupied[TEST]; // is some other text obscuring this line?
-    std::memset(&occupied, 0, sizeof(occupied)); // set all to false
-    const int wantedTop = (TEST - h) / 2; // Entry in occupied at top of text
-    const int occupiedTop = y - wantedTop; // Line in map representing
-                                           // to of occupied
+    bool occupied[TEST];  // is some other text obscuring this line?
+    std::memset(&occupied, 0, sizeof(occupied));  // set all to false
+    const int wantedTop = (TEST - h) / 2;   // Entry in occupied at top of text
+    const int occupiedTop = y - wantedTop;  // Line in map representing
+                                            // to of occupied
     int cnt = 0;
 
     for (TextList::const_iterator ptr = mTextList.begin(),
@@ -95,7 +95,7 @@ void TextManager::place(const Text *const textObj, const Text *const omit,
         {
             int from = text->mY - occupiedTop;
             int to = from + text->mHeight - 1;
-            if (to < 0 || from >= TEST) // out of range considered
+            if (to < 0 || from >= TEST)  // out of range considered
                 continue;
             if (from < 0)
                 from = 0;
@@ -121,7 +121,7 @@ void TextManager::place(const Text *const textObj, const Text *const omit,
 
     // Have to move it up or down, so find nearest spaces either side
     int consec = 0;
-    int upSlot = -1; // means not found
+    int upSlot = -1;  // means not found
     const int sz2 = wantedTop + h - 2;
     for (int seek = sz2; seek >= 0; --seek)
     {
@@ -155,21 +155,21 @@ void TextManager::place(const Text *const textObj, const Text *const omit,
             }
         }
     }
-    if (upSlot == -1 && downSlot == -1) // no good solution, so leave as is
+    if (upSlot == -1 && downSlot == -1)  // no good solution, so leave as is
     {
         return;
     }
-    if (upSlot == -1) // must go down
+    if (upSlot == -1)  // must go down
     {
         y += downSlot - wantedTop;
         return;
     }
-    if (downSlot == -1) // must go up
+    if (downSlot == -1)  // must go up
     {
         y -= wantedTop - upSlot;
         return;
     }
-    if (wantedTop - upSlot > downSlot - wantedTop) // down is better
+    if (wantedTop - upSlot > downSlot - wantedTop)  // down is better
     {
         y += downSlot - wantedTop;
     }

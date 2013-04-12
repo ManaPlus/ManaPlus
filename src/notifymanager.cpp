@@ -158,4 +158,4 @@ namespace NotifyManager
         }
         return 0;
     }
-}
+}  // namespace NotifyManager

@@ -276,7 +276,7 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                             g->drawImage(mSelImg, itemX, itemY);
                     }
                 }
-                image->setAlpha(1.0f); // ensure the image if fully drawn...
+                image->setAlpha(1.0f);  // ensure the image if fully drawn...
                 g->drawImage(image, itemX + mPaddingItemX,
                     itemY + mPaddingItemY);
             }

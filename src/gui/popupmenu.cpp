@@ -112,7 +112,7 @@ PopupMenu::PopupMenu():
     mPlayerListener.setDialog(nullptr);
     mPlayerListener.setType(static_cast<int>(Being::UNKNOWN));
     mScrollArea = new ScrollArea(mBrowserBox, false);
-    mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO); 
+    mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
 
     add(mScrollArea);
 }
@@ -1730,7 +1730,6 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
 
         if (Net::getInventoryHandler()->canSplit(item))
             mBrowserBox->addRow("split", _("Split"));
-
     }
     // Assume in storage for now
     // TODO: make this whole system more flexible, if needed

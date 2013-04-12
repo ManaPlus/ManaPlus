@@ -656,11 +656,10 @@ void ConfigurationObject::initFromXML(const XmlNodePtr parent_node)
                     && subnode->type == XML_ELEMENT_NODE)
                 {
                     ConfigurationObject *const cobj = new ConfigurationObject;
-                    cobj->initFromXML(subnode); // recurse
+                    cobj->initFromXML(subnode);  // recurse
                     mContainerOptions[name].push_back(cobj);
                 }
             }
-
         }
         else if (xmlNameEqual(node, "option"))
         {
@@ -672,7 +671,7 @@ void ConfigurationObject::initFromXML(const XmlNodePtr parent_node)
                 mOptions[name] = XML::getProperty(node,
                     "value", std::string());
             }
-        } // otherwise ignore
+        }  // otherwise ignore
     }
 }
 

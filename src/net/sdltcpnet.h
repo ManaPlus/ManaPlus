@@ -57,6 +57,6 @@ namespace TcpNet
     int delSocket(TcpNet::SocketSet set, TcpNet::Socket sock);
 
     void freeSocketSet(TcpNet::SocketSet set);
-}
+}  // namespace TcpNet
 
 #endif

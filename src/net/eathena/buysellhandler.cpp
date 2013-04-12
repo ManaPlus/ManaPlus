@@ -95,7 +95,6 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
-
 }
 
 void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
@@ -110,7 +109,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
     {
         const int value = msg.readInt32();
         msg.readInt32();  // DCvalue
-        msg.readInt8();  // type
+        msg.readInt8();   // type
         const int itemId = msg.readInt16();
         const unsigned char color = 1;
         mBuyDialog->addItem(itemId, color, 0, value);
@@ -137,4 +136,4 @@ void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg) const
     }
 }
 
-} // namespace EAthena
+}  // namespace EAthena

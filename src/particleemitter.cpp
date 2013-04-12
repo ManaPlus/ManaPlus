@@ -85,7 +85,6 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             }
             else if (name == "position-y")
             {
-
                 mParticlePosY = readParticleEmitterProp(propertyNode, 0.0f);
                 mParticlePosY.minVal *= SIN45;
                 mParticlePosY.maxVal *= SIN45;
@@ -141,7 +140,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             {
                 mParticleGravity = readParticleEmitterProp(propertyNode, 0.0f);
             }
-            else if (name == "randomnes" || name == "randomness") // legacy bug
+            else if (name == "randomnes" || name == "randomness")  // legacy bug
             {
                 mParticleRandomness = readParticleEmitterProp(propertyNode, 0);
             }
@@ -213,8 +212,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             ImageSet *const imageset = ResourceManager::getInstance()
                 ->getImageSet(XML::getProperty(propertyNode, "imageset", ""),
                 XML::getProperty(propertyNode, "width", 0),
-                XML::getProperty(propertyNode, "height", 0)
-            );
+                XML::getProperty(propertyNode, "height", 0));
 
             if (!imageset)
             {
@@ -285,15 +283,14 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
                 {
                     mParticleRotation.addTerminator(rand);
                 }
-            } // for frameNode
+            }  // for frameNode
         }
         else if (xmlNameEqual(propertyNode, "animation"))
         {
             ImageSet *const imageset = ResourceManager::getInstance()
                 ->getImageSet(XML::getProperty(propertyNode, "imageset", ""),
                 XML::getProperty(propertyNode, "width", 0),
-                XML::getProperty(propertyNode, "height", 0)
-            );
+                XML::getProperty(propertyNode, "height", 0));
 
             if (!imageset)
             {
@@ -364,7 +361,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
                 {
                     mParticleAnimation.addTerminator(rand);
                 }
-            } // for frameNode
+            }  // for frameNode
         }
         else if (xmlNameEqual(propertyNode, "deatheffect"))
         {
@@ -590,7 +587,7 @@ std::list<Particle *> ParticleEmitter::createParticles(const int tick)
 void ParticleEmitter::adjustSize(const int w, const int h)
 {
     if (w == 0 || h == 0)
-        return; // new dimensions are illegal
+        return;  // new dimensions are illegal
 
     // calculate the old rectangle
     const int oldArea = static_cast<int>(
@@ -598,8 +595,8 @@ void ParticleEmitter::adjustSize(const int w, const int h)
         mParticlePosX.maxVal - mParticlePosY.minVal);
     if (oldArea == 0)
     {
-        //when the effect has no dimension it is
-        //not designed to be resizeable
+        // when the effect has no dimension it is
+        // not designed to be resizeable
         return;
     }
 

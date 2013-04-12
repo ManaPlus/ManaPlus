@@ -69,6 +69,6 @@ class NpcHandler
         virtual void clearDialogs() = 0;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // NPCHANDLER_H
+#endif  // NPCHANDLER_H

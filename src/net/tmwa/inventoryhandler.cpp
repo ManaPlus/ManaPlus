@@ -166,7 +166,7 @@ void InventoryHandler::useItem(const Item *const item) const
     MessageOut outMsg(CMSG_PLAYER_INVENTORY_USE);
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));
-    outMsg.writeInt32(item->getId()); // unused
+    outMsg.writeInt32(item->getId());  // unused
 }
 
 void InventoryHandler::dropItem(const Item *const item, const int amount) const
@@ -204,4 +204,4 @@ void InventoryHandler::moveItem2(const int source, const int slot,
     }
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

@@ -68,7 +68,6 @@ EmoteShortcutContainer::EmoteShortcutContainer():
             mEmoteImg.push_back(sprite);
     }
 
-//    mMaxItems = EmoteDB::getLast() < MAX_ITEMS ? EmoteDB::getLast() : MAX_ITEMS;
     mMaxItems = MAX_ITEMS;
 
     if (mBackgroundImg)

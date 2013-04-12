@@ -51,6 +51,6 @@ class BuySellHandler
                                      const int amount) const = 0;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // BUYSELLHANDLER_H
+#endif  // BUYSELLHANDLER_H

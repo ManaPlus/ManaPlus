@@ -45,12 +45,12 @@
 
 #include "debug.h"
 
-const int COLUMNS_NR = 5; // name plus listbox
+const int COLUMNS_NR = 5;  // name plus listbox
 const int NAME_COLUMN  = 0;
 const int TIME_COLUMN  = 1;
 
 const int ROW_HEIGHT  = 12;
-// The following column widths really shouldn't be hardcoded but should 
+// The following column widths really shouldn't be hardcoded but should
 // scale with the size of the widget... excep
 // that, right now, the widget doesn't exactly scale either.
 const int NAME_COLUMN_WIDTH  = 185;
@@ -232,7 +232,6 @@ public:
 
             widget = new Label(this, str);
             mWidgets.push_back(widget);
-
         }
 
         signalAfterUpdate();
@@ -241,7 +240,6 @@ public:
     virtual void updateModelInRow(int row A_UNUSED)
     {
     }
-
 
     virtual gcn::Widget *getElementAt(const int row, const int column) const
     {

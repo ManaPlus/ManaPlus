@@ -83,9 +83,9 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg) const
         msg.readInt16();  // target type
         msg.skip(2);  // skill pool flags
         const int level = msg.readInt16();
-        msg.readInt16(); // sp
+        msg.readInt16();  // sp
         const int range = msg.readInt16();
-        msg.skip(24); // 0 unused
+        msg.skip(24);  // 0 unused
         const int up = msg.readInt8();
         const int oldLevel = PlayerInfo::getSkillLevel(skillId);
         if (oldLevel && oldLevel != level)
@@ -105,7 +105,7 @@ void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg) const
 {
     const int skillId = msg.readInt16();
     const int level = msg.readInt16();
-    msg.readInt16(); // sp
+    msg.readInt16();  // sp
     const int range = msg.readInt16();
     const int up = msg.readInt8();
 
@@ -125,7 +125,7 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg) const
     // right level)
     const int skillId   = msg.readInt16();
     const short bskill  = msg.readInt16();
-    msg.readInt16(); // btype
+    msg.readInt16();  // btype
     const signed char success = msg.readInt8();
     const signed char reason  = msg.readInt8();
     if (success != static_cast<int>(SKILL_FAILED)
@@ -234,4 +234,4 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg) const
 
     NotifyManager::notify(NotifyManager::SKILL_FAIL_MESSAGE, txt);
 }
-} // namespace Ea
+}  // namespace Ea

@@ -219,7 +219,7 @@ int Download::downloadThread(void *ptr)
 
         if (d->mOptions.cancel)
         {
-            //need terminate thread?
+            // need terminate thread?
             d->mThread = nullptr;
             return 0;
         }
@@ -233,7 +233,6 @@ int Download::downloadThread(void *ptr)
 
             curl_easy_setopt(d->mCurl, CURLOPT_FOLLOWLOCATION, 1);
             curl_easy_setopt(d->mCurl, CURLOPT_HTTPHEADER, d->mHeaders);
-//            curl_easy_setopt(d->mCurl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
 
             if (d->mOptions.memoryWrite)
             {
@@ -320,7 +319,7 @@ int Download::downloadThread(void *ptr)
                             d->mFileName.c_str(),
                             adler, d->mAdler);
                         attempts++;
-                        continue; // Bail out here to avoid the renaming
+                        continue;  // Bail out here to avoid the renaming
                     }
                 }
                 if (file)
@@ -362,7 +361,7 @@ int Download::downloadThread(void *ptr)
 
         if (d->mOptions.cancel)
         {
-            //need ternibate thread?
+            // need ternibate thread?
             d->mThread = nullptr;
             return 0;
         }
@@ -399,33 +398,33 @@ void Download::addProxy(CURL *const curl)
     }
     switch (mode)
     {
-        case 1: // direct connection
+        case 1:  // direct connection
         default:
             curl_easy_setopt(curl, CURLOPT_PROXY, "");
             break;
-        case 2: // HTTP
+        case 2:  // HTTP
             break;
-        case 3: // HTTP 1.0
+        case 3:  // HTTP 1.0
 #if CURLVERSION_ATLEAST(7, 19, 4)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP_1_0);
 #endif
             break;
-        case 4: // SOCKS4
+        case 4:  // SOCKS4
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
             break;
-        case 5: // SOCKS4A
+        case 5:  // SOCKS4A
 #if CURLVERSION_ATLEAST(7, 18, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4A);
 #else
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
 #endif
             break;
-        case 6: // SOCKS5
+        case 6:  // SOCKS5
 #if CURLVERSION_ATLEAST(7, 18, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
 #endif
             break;
-        case 7: // SOCKS5 hostname
+        case 7:  // SOCKS5 hostname
 #if CURLVERSION_ATLEAST(7, 18, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE,
                 CURLPROXY_SOCKS5_HOSTNAME);
@@ -450,4 +449,4 @@ void Download::secureCurl(CURL *const curl)
 #endif
 }
 
-} // namespace Net
+}  // namespace Net

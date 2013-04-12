@@ -285,4 +285,4 @@ void GeneralHandler::gameEnded() const
     Ea::partyTab = nullptr;
 }
 
-} // namespace EAthena
+}  // namespace EAthena

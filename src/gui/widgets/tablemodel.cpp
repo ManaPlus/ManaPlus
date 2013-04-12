@@ -127,7 +127,7 @@ void StaticTableModel::fixColumnWidth(const int column, const int width)
     if (width < 0 || column < 0 || column >= mColumns)
         return;
 
-    mWidths[column] = -width; // Negate to tag as fixed
+    mWidths[column] = -width;  // Negate to tag as fixed
 }
 
 void StaticTableModel::fixRowHeight(const int height)
@@ -145,7 +145,7 @@ int StaticTableModel::getRowHeight() const
 
 int StaticTableModel::getColumnWidth(int column) const
 {
-   if (column < 0 || column >= mColumns)
+    if (column < 0 || column >= mColumns)
         return 0;
 
     return abs(mWidths[column]);

@@ -55,7 +55,7 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData *const data):
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
-    Label *const accountLabel = new Label(this, 
+    Label *const accountLabel = new Label(this,
         strprintf(_("Account: %s"), mLoginData->username.c_str()));
 
     place(0, 0, accountLabel, 3);

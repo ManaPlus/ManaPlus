@@ -179,4 +179,4 @@ void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg) const
     }
 }
 
-} // namespace Ea
+}  // namespace Ea

@@ -63,7 +63,6 @@ void LoginHandler::getRegistrationDetails() const
 
 void LoginHandler::loginAccount(LoginData *const loginData) const
 {
-
     if (loginData)
     {
         // Since we're attempting to use the tAthena protocol,
@@ -277,19 +276,16 @@ void LoginHandler::processLoginError(Net::MessageIn &msg) const
 
 void LoginHandler::logout() const
 {
-    // TODO
 }
 
 void LoginHandler::changeEmail(const std::string &email A_UNUSED) const
 {
-    // TODO
 }
 
 void LoginHandler::unregisterAccount(const std::string &username A_UNUSED,
                                      const std::string &password
                                      A_UNUSED) const
 {
-    // TODO
 }
 
-} // namespace Ea
+}  // namespace Ea

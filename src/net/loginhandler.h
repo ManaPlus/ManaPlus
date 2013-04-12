@@ -110,6 +110,6 @@ class LoginHandler
         ServerInfo mServer;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // LOGINHANDLER_H
+#endif  // LOGINHANDLER_H

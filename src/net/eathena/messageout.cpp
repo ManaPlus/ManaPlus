@@ -143,4 +143,4 @@ void MessageOut::writeCoordinates(const unsigned short x,
     PacketCounters::incOutBytes(3);
 }
 
-} // namespace EAthena
+}  // namespace EAthena

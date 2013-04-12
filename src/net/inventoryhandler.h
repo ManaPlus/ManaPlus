@@ -69,6 +69,6 @@ class InventoryHandler
         virtual int convertFromServerSlot(const int eAthenaSlot) const = 0;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // INVENTORYHANDLER_H
+#endif  // INVENTORYHANDLER_H

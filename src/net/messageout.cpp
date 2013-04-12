@@ -120,4 +120,4 @@ unsigned int MessageOut::getDataSize() const
     return mDataSize;
 }
 
-}
+}  // namespace Net

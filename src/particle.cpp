@@ -85,7 +85,6 @@ Particle::~Particle()
 {
     // Delete child emitters and child particles
     clear();
-    //update particle count
     Particle::particleCount--;
 }
 
@@ -118,7 +117,7 @@ bool Particle::update()
 
     if (mAlive == ALIVE)
     {
-        //calculate particle movement
+        // calculate particle movement
         if (mMomentum != 1.0f)
             mVelocity *= mMomentum;
 
@@ -238,11 +237,11 @@ bool Particle::update()
          p2 = mChildParticles.end(); p != p2; )
     {
         Particle *const particle = *p;
-        //move particle with its parent if desired
+        // move particle with its parent if desired
         if (particle->doesFollow())
             particle->moveBy(change);
 
-        //update particle
+        // update particle
         if (particle->update())
         {
             ++p;
@@ -347,7 +346,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
             effectChildNode, "position-y", 0));
         const float offsetZ = static_cast<float>(XML::getFloatProperty(
             effectChildNode, "position-z", 0));
-        const Vector position (mPos.x + static_cast<float>(pixelX) + offsetX,
+        const Vector position(mPos.x + static_cast<float>(pixelX) + offsetX,
             mPos.y + static_cast<float>(pixelY) + offsetY,
             mPos.z + offsetZ);
         newParticle->moveTo(position);
@@ -420,9 +419,9 @@ Particle *Particle::addTextSplashEffect(const std::string &text,
         mMap, text, color, font, outline);
     newParticle->moveTo(static_cast<float>(x), static_cast<float>(y));
     newParticle->setVelocity(
-        static_cast<float>((rand() % 100) - 50) / 200.0f,    // X
-        static_cast<float>((rand() % 100) - 50) / 200.0f,    // Y
-        (static_cast<float>((rand() % 100)) / 200.0f) + 4.0f); // Z
+        static_cast<float>((rand() % 100) - 50) / 200.0f,       // X
+        static_cast<float>((rand() % 100) - 50) / 200.0f,       // Y
+        (static_cast<float>((rand() % 100)) / 200.0f) + 4.0f);  // Z
 
     newParticle->setGravity(0.1f);
     newParticle->setBounce(0.5f);

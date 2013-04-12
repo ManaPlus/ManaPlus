@@ -43,8 +43,6 @@
 #define sleep(seconds) Sleep((seconds) * 1000)
 #endif
 
-//#include <unistd.h>
-
 #include "debug.h"
 
 TestLauncher::TestLauncher(std::string test) :

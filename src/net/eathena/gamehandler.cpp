@@ -171,7 +171,7 @@ void GameHandler::disconnect2() const
 
 void GameHandler::processMapCharId(Net::MessageIn &msg)
 {
-    msg.readInt32();    // char id
+    msg.readInt32(); // char id
 }
 
-} // namespace EAthena
+}  // namespace EAthena

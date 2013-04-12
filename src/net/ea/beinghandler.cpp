@@ -201,13 +201,13 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     const uint16_t headBottom = msg.readInt16();
 
     if (!visible)
-        msg.readInt32(); // server tick
+        msg.readInt32();  // server tick
 
     const uint16_t shield = msg.readInt16();
     const uint16_t headTop = msg.readInt16();
     const uint16_t headMid = msg.readInt16();
     const int hairColor = msg.readInt16();
-    const uint16_t shoes = msg.readInt16(); //clothes color - "abused" as shoes
+    const uint16_t shoes = msg.readInt16();  // clothes color
 
     uint16_t gloves;
     if (dstBeing->getType() == ActorSprite::MONSTER)
@@ -444,29 +444,20 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg) const
     if (!actorSpriteManager)
         return;
 
-    const int id = msg.readInt16(); // Skill Id
+    const int id = msg.readInt16();  // Skill Id
     Being *const srcBeing = actorSpriteManager->findBeing(msg.readInt32());
     Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
-    msg.readInt32(); // Server tick
-    msg.readInt32(); // src speed
-    msg.readInt32(); // dst speed
-    const int param1 = msg.readInt32(); // Damage
-    const int level = msg.readInt16(); // Skill level
-    msg.readInt16(); // Div
-    msg.readInt8(); // Skill hit/type (?)
+    msg.readInt32();  // Server tick
+    msg.readInt32();  // src speed
+    msg.readInt32();  // dst speed
+    const int param1 = msg.readInt32();  // Damage
+    const int level = msg.readInt16();  // Skill level
+    msg.readInt16();  // Div
+    msg.readInt8();  // Skill hit/type (?)
     if (dstBeing)
-    {
-//                if (dstSpeed)
-//                    dstBeing->setAttackDelay(dstSpeed);
         dstBeing->takeDamage(srcBeing, param1, Being::SKILL, id);
-    }
     if (srcBeing)
-    {
-//                if (srcSpeed)
-//                    srcBeing->setAttackDelay(srcSpeed);
-//        srcBeing->handleAttack(dstBeing, param1, Being::HIT);
         srcBeing->handleSkill(dstBeing, param1, id, level);
-    }
 }
 
 void BeingHandler::processBeingAction(Net::MessageIn &msg) const
@@ -487,15 +478,13 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
 
     switch (type)
     {
-        case Being::HIT: // Damage
-        case Being::CRITICAL: // Critical Damage
-        case Being::MULTI: // Critical Damage
-        case Being::REFLECT: // Reflected Damage
-        case Being::FLEE: // Lucky Dodge
+        case Being::HIT:  // Damage
+        case Being::CRITICAL:  // Critical Damage
+        case Being::MULTI:  // Critical Damage
+        case Being::REFLECT:  // Reflected Damage
+        case Being::FLEE:  // Lucky Dodge
             if (dstBeing)
             {
-//                        if (dstSpeed)
-//                            dstBeing->setAttackDelay(dstSpeed);
                 dstBeing->takeDamage(srcBeing, param1,
                     static_cast<Being::AttackType>(type));
             }
@@ -510,13 +499,13 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
             }
             break;
 
-        case 0x01: // dead
+        case 0x01:  // dead
             break;
             // tmw server can send here garbage?
 //            if (srcBeing)
 //                srcBeing->setAction(Being::DEAD);
 
-        case 0x02: // Sit
+        case 0x02:  // Sit
             if (srcBeing)
             {
                 srcBeing->setAction(Being::SIT);
@@ -529,7 +518,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
             }
             break;
 
-        case 0x03: // Stand up
+        case 0x03:  // Stand up
             if (srcBeing)
             {
                 srcBeing->setAction(Being::STAND);
@@ -570,7 +559,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg) const
     //+++ need dehard code effectType == 3
     if (effectType == 3 && being->getType() == Being::PLAYER
         && socialWindow)
-    {   //reset received damage
+    {   // reset received damage
         socialWindow->resetDamage(being->getName());
     }
 }
@@ -667,7 +656,7 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
             msg.skip(48);
         }
         dstBeing->addToCache();
-        msg.readString(24); // Discard this
+        msg.readString(24);  // Discard this
     }
 }
 
@@ -681,7 +670,7 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
     if (!dstBeing)
         return;
 
-    msg.readInt16(); // unused
+    msg.readInt16();  // unused
 
     const unsigned char dir = msg.readInt8() & 0x0f;
     dstBeing->setDirection(dir);
@@ -741,7 +730,6 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
         return;
 
     // Change in players' flags
-
     const int id = msg.readInt32();
     Being *const dstBeing = actorSpriteManager->findBeing(id);
     if (!dstBeing)
@@ -750,7 +738,7 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
     const uint16_t stunMode = msg.readInt16();
     uint32_t statusEffects = msg.readInt16();
     statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;
-    msg.readInt8(); // Unused?
+    msg.readInt8();  // Unused?
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
@@ -767,7 +755,7 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
     // Status change
     const uint16_t status = msg.readInt16();
     const int id = msg.readInt32();
-    const int flag = msg.readInt8(); // 0: stop, 1: start
+    const int flag = msg.readInt8();  // 0: stop, 1: start
 
     Being *const dstBeing = actorSpriteManager->findBeing(id);
     if (dstBeing)

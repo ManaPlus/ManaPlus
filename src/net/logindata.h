@@ -107,4 +107,4 @@ class LoginData final
         }
 };
 
-#endif // LOGINDATA_H
+#endif  // LOGINDATA_H

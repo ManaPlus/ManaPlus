@@ -150,7 +150,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
                          - midTileY + mCameraRelativeY;
 
     if (mScrollLaziness < 1)
-        mScrollLaziness = 1; // Avoids division by zero
+        mScrollLaziness = 1;  // Avoids division by zero
 
     if (mEnableLazyScrolling)
     {

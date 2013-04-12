@@ -59,7 +59,7 @@ SDLFont *boldFont = nullptr;
 class GuiConfigListener final : public ConfigListener
 {
     public:
-        GuiConfigListener(Gui *const g):
+        explicit GuiConfigListener(Gui *const g):
             mGui(g)
         {}
 
@@ -405,7 +405,7 @@ bool Gui::handleKeyInput2()
                     mFocusHandler->tabNext();
             }
         }
-    } // end while
+    }  // end while
     BLOCK_END("Gui::handleKeyInput2")
     return consumed;
 }

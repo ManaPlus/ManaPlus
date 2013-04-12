@@ -155,7 +155,7 @@ void ChatTab::chatLog(std::string line, Own own,
             {
                 tmp.nick = strprintf(_("Global announcement from %s:"),
                                      tmp.nick.c_str()).append(" ");
-                lineColor = "##1"; // Equiv. to BrowserBox::RED
+                lineColor = "##1";  // Equiv. to BrowserBox::RED
             }
             break;
         case BY_PLAYER:
@@ -175,7 +175,7 @@ void ChatTab::chatLog(std::string line, Own own,
         case BY_CHANNEL:
             tmp.nick.clear();
             // TODO: Use a predefined color
-            lineColor = "##2"; // Equiv. to BrowserBox::GREEN
+            lineColor = "##2";  // Equiv. to BrowserBox::GREEN
             break;
         case ACT_WHISPER:
             tmp.nick = strprintf(_("%s whispers: %s"), tmp.nick.c_str(), "");
@@ -260,7 +260,6 @@ void ChatTab::chatLog(std::string line, Own own,
         addRow(line);
         mScrollArea->setVerticalScrollAmount(
             mScrollArea->getVerticalMaxScroll());
-
     }
     else
     {

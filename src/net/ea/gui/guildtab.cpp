@@ -165,4 +165,4 @@ void GuildTab::optionChanged(const std::string &value)
         mShowOnline = config.getBoolValue("showGuildOnline");
 }
 
-} // namespace Ea
+}  // namespace Ea

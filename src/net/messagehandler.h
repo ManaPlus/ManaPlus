@@ -46,6 +46,6 @@ class MessageHandler
         { }
 };
 
-}
+}  // namespace Net
 
-#endif // NET_MESSAGEHANDLER_H
+#endif  // NET_MESSAGEHANDLER_H

@@ -89,7 +89,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mPortField->setNumeric(true);
     mPortField->setRange(1, 65535);
 
-    mTypeField->setSelected(0); // TmwAthena by default for now.
+    mTypeField->setSelected(0);  // TmwAthena by default
 
     mServerAddressField->addActionListener(this);
     mPortField->addActionListener(this);
@@ -214,7 +214,7 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
             mServer.name = mNameField->getText();
             mServer.description = mDescriptionField->getText();
             mServer.hostname = mServerAddressField->getText();
-            mServer.port = static_cast<short>(atoi(
+            mServer.port = static_cast<int16_t>(atoi(
                 mPortField->getText().c_str()));
 
             if (mTypeField)
@@ -255,7 +255,7 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
             // Tell the server has to be saved
             mServer.save = true;
 
-            //Add server
+            // Add server
             mServerDialog->updateServer(mServer, mIndex);
             if (eventId == "connect")
                 mServerDialog->connectToSelectedServer();

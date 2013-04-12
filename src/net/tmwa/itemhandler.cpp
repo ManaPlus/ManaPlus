@@ -66,4 +66,4 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("ItemHandler::handleMessage")
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

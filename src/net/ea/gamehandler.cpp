@@ -92,4 +92,4 @@ void GameHandler::initEngines() const
         Game::instance()->changeMap(mMap);
 }
 
-} // namespace Ea
+}  // namespace Ea

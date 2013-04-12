@@ -154,8 +154,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     data.mAttributes[PlayerInfo::MP] = msg.readInt16();
     data.mAttributes[PlayerInfo::MAX_MP] = msg.readInt16();
 
-    msg.readInt16();                       // speed
-    tempPlayer->setSubtype(msg.readInt16()); // class (used for race)
+    msg.readInt16();                         // speed
+    tempPlayer->setSubtype(msg.readInt16());  // class (used for race)
     const int hairStyle = msg.readInt16();
     const uint16_t weapon = msg.readInt16();
 
@@ -163,11 +163,11 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     data.mAttributes[PlayerInfo::LEVEL] = msg.readInt16();
 
-    msg.readInt16();                       // skill point
+    msg.readInt16();  // skill point
     const int bottomClothes = msg.readInt16();
     const int shield = msg.readInt16();
 
-    const int hat = msg.readInt16(); // head option top
+    const int hat = msg.readInt16();  // head option top
     const int topClothes = msg.readInt16();
 
     tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
@@ -186,16 +186,16 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setSprite(SPRITE_CAPE, cape);
     tempPlayer->setSprite(SPRITE_MISC1, misc1);
     tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes);
-    //to avoid show error (error.xml) need remove this sprite
+    // to avoid show error (error.xml) need remove this sprite
     if (!config.getBoolValue("hideShield"))
         tempPlayer->setSprite(SPRITE_SHIELD, shield);
 
-    tempPlayer->setSprite(SPRITE_HAT, hat); // head option top
+    tempPlayer->setSprite(SPRITE_HAT, hat);  // head option top
     tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
     tempPlayer->setSprite(SPRITE_MISC2, misc2);
-    character->slot = msg.readInt8(); // character slot
+    character->slot = msg.readInt8();  // character slot
 
-    msg.readInt8();                        // unknown
+    msg.readInt8();  // unknown
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)
@@ -273,7 +273,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     if (slots > 0 && slots < 30)
         loginData.characterSlots = static_cast<short unsigned int>(slots);
 
-    msg.skip(18); // 0 Unused
+    msg.skip(18);  // 0 Unused
 
     delete_all(mCharacters);
     mCharacters.clear();
@@ -296,4 +296,4 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     Client::setState(STATE_CHAR_SELECT);
 }
 
-} // namespace EAthena
+}  // namespace EAthena

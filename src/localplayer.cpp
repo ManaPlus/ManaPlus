@@ -472,7 +472,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     return Position(tileX * 32 + 32 - radius,
                         tileY * 32 + getCollisionRadius());
                 }
-                else // Both straight direction are walkable
+                else  // Both straight direction are walkable
                 {
                     // Go right when below the corner
                     if (offsetY >= (offsetX / mMap->getTileHeight()
@@ -481,13 +481,13 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     {
                         dy = 0;
                     }
-                    else // Go up otherwise
+                    else  // Go up otherwise
                     {
                         dx = 0;
                     }
                 }
             }
-            else // The diagonal is walkable
+            else  // The diagonal is walkable
             {
                 return mMap->checkNodeOffsets(radius,
                     walkMask, Position(posX + 32, posY - 32));
@@ -513,7 +513,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     return Position(tileX * 32 + radius,
                                     tileY * 32 + radius);
                 }
-                else // Both straight direction are walkable
+                else  // Both straight direction are walkable
                 {
                     // Go left when below the corner
                     if (offsetY >= (offsetX / mMap->getTileWidth()
@@ -521,13 +521,13 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     {
                         dy = 0;
                     }
-                    else // Go up otherwise
+                    else  // Go up otherwise
                     {
                         dx = 0;
                     }
                 }
             }
-            else // The diagonal is walkable
+            else  // The diagonal is walkable
             {
                 return mMap->checkNodeOffsets(radius,
                     walkMask, Position(posX - 32, posY - 32));
@@ -553,7 +553,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     return Position(tileX * 32 + radius,
                                     tileY * 32 + 32 - radius);
                 }
-                else // Both straight direction are walkable
+                else  // Both straight direction are walkable
                 {
                     // Go down when below the corner
                     if (offsetY >= (offsetX / mMap->getTileHeight()
@@ -562,13 +562,13 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     {
                         dx = 0;
                     }
-                    else // Go left otherwise
+                    else  // Go left otherwise
                     {
                         dy = 0;
                     }
                 }
             }
-            else // The diagonal is walkable
+            else  // The diagonal is walkable
             {
                 return mMap->checkNodeOffsets(radius,
                     walkMask, Position(posX - 32, posY + 32));
@@ -594,7 +594,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     return Position(tileX * 32 + 32 - radius,
                                     tileY * 32 + 32 - radius);
                 }
-                else // Both straight direction are walkable
+                else  // Both straight direction are walkable
                 {
                     // Go down when below the corner
                     if (offsetY >= (offsetX / mMap->getTileWidth()
@@ -602,13 +602,13 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     {
                         dx = 0;
                     }
-                    else // Go right otherwise
+                    else  // Go right otherwise
                     {
                         dy = 0;
                     }
                 }
             }
-            else // The diagonal is walkable
+            else  // The diagonal is walkable
             {
                 return mMap->checkNodeOffsets(radius,
                     walkMask, Position(posX + 32, posY + 32));
@@ -1477,7 +1477,6 @@ bool LocalPlayer::withinAttackRange(const Being *const target,
         const Vector &pos = getPosition();
         dx = static_cast<int>(abs(static_cast<int>(targetPos.x - pos.x)));
         dy = static_cast<int>(abs(static_cast<int>(targetPos.y - pos.y)));
-
     }
     else
 #endif
@@ -2273,36 +2272,35 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
         if (!item)
             item = inv->findItem(758, 0);
 
-        //no swords
+        // no swords
         if (!item)
             return;
 
-        //if sword not equiped
+        // if sword not equiped
         if (!item->isEquipped())
             Net::getInventoryHandler()->equipItem(item);
 
-        //if need equip shield too
+        // if need equip shield too
         if (mAttackWeaponType == 3)
         {
-            //finding shield
+            // finding shield
             item = inv->findItem(601, 0);
             if (!item)
                 item = inv->findItem(602, 0);
             if (item && !item->isEquipped())
                 Net::getInventoryHandler()->equipItem(item);
         }
-
     }
-    //big distance. allowed only bow
+    // big distance. allowed only bow
     else
     {
-        //finding bow
+        // finding bow
         item = inv->findItem(545, 0);
 
         if (!item)
             item = inv->findItem(530, 0);
 
-        //no bow
+        // no bow
         if (!item)
             return;
 
@@ -3153,7 +3151,6 @@ void LocalPlayer::specialMove(const unsigned char direction)
     {
         setWalkingDir(direction);
     }
-
 }
 
 void LocalPlayer::debugMsg(const std::string &str) const
@@ -3234,7 +3231,6 @@ void LocalPlayer::loadHomes()
         ss >> pos.y;
         mHomes[buf] = pos;
     }
-
 }
 
 void LocalPlayer::setMap(Map *const map)
@@ -3747,7 +3743,6 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
                 pickUpItems(3);
             }
         }
-
     }
     else if (!mPickUpTarget)
     {

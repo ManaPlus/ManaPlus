@@ -81,11 +81,11 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
             processPlayerStatUpdate2(msg);
             break;
 
-        case SMSG_PLAYER_STAT_UPDATE_3: // Update a base attribute
+        case SMSG_PLAYER_STAT_UPDATE_3:  // Update a base attribute
             processPlayerStatUpdate3(msg);
             break;
 
-        case SMSG_PLAYER_STAT_UPDATE_4: // Attribute increase ack
+        case SMSG_PLAYER_STAT_UPDATE_4:  // Attribute increase ack
             processPlayerStatUpdate4(msg);
             break;
 
@@ -287,4 +287,4 @@ void PlayerHandler::updateStatus(const uint8_t status) const
     outMsg.writeInt8(0);
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

@@ -70,4 +70,4 @@ void AdminHandler::warp(const std::string &map, const int x, const int y) const
         "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);
 }
 
-} // namespace Ea
+}  // namespace Ea

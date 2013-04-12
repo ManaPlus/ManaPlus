@@ -50,4 +50,4 @@ PartyTab::~PartyTab()
 {
 }
 
-} // namespace EAthena
+}  // namespace EAthena

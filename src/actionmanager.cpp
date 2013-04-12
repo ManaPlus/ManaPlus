@@ -1107,4 +1107,4 @@ impHandler0(showWindows)
     return false;
 }
 
-}
+}  // namespace ActionManager

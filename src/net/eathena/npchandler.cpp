@@ -116,7 +116,7 @@ void NpcHandler::talk(const int npcId) const
 {
     MessageOut outMsg(CMSG_NPC_TALK);
     outMsg.writeInt32(npcId);
-    outMsg.writeInt8(0); // Unused
+    outMsg.writeInt8(0);  // unused
 }
 
 void NpcHandler::nextDialog(const int npcId) const
@@ -162,21 +162,21 @@ void NpcHandler::stringInput(const int npcId, const std::string &value) const
     outMsg.writeInt16(static_cast<int16_t>(value.length() + 9));
     outMsg.writeInt32(npcId);
     outMsg.writeString(value, static_cast<int>(value.length()));
-    outMsg.writeInt8(0); // Prevent problems with string reading
+    outMsg.writeInt8(0);  // Prevent problems with string reading
 }
 
 void NpcHandler::buy(const int beingId) const
 {
     MessageOut outMsg(CMSG_NPC_BUY_SELL_REQUEST);
     outMsg.writeInt32(beingId);
-    outMsg.writeInt8(0); // Buy
+    outMsg.writeInt8(0);  // Buy
 }
 
 void NpcHandler::sell(const int beingId) const
 {
     MessageOut outMsg(CMSG_NPC_BUY_SELL_REQUEST);
     outMsg.writeInt32(beingId);
-    outMsg.writeInt8(1); // Sell
+    outMsg.writeInt8(1);  // Sell
 }
 
 void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
@@ -184,7 +184,7 @@ void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
                          const int amount) const
 {
     MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
-    outMsg.writeInt16(8); // One item (length of packet)
+    outMsg.writeInt16(8);  // One item (length of packet)
     outMsg.writeInt16(static_cast<int16_t>(amount));
     outMsg.writeInt16(static_cast<int16_t>(itemId));
 }
@@ -193,7 +193,7 @@ void NpcHandler::sellItem(const int beingId A_UNUSED,
                           const int itemId, const int amount) const
 {
     MessageOut outMsg(CMSG_NPC_SELL_REQUEST);
-    outMsg.writeInt16(8); // One item (length of packet)
+    outMsg.writeInt16(8);  // One item (length of packet)
     outMsg.writeInt16(static_cast<int16_t>(itemId + INVENTORY_OFFSET));
     outMsg.writeInt16(static_cast<int16_t>(amount));
 }
@@ -247,18 +247,18 @@ int NpcHandler::getNpc(Net::MessageIn &msg, const bool haveLength)
 void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED,
                                  int npcId A_UNUSED) const
 {
-    msg.readString(64); // image name
-    msg.readInt8();     // type
+    msg.readString(64);  // image name
+    msg.readInt8();      // type
 }
 
 void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED,
                                      int npcId A_UNUSED) const
 {
-    msg.readInt32();    // type
-    msg.readInt32();    // x
-    msg.readInt32();    // y
-    msg.readInt8();     // byte
-    msg.readInt32();    // color
+    msg.readInt32();  // type
+    msg.readInt32();  // x
+    msg.readInt32();  // y
+    msg.readInt8();   // byte
+    msg.readInt32();  // color
 }
 
-} // namespace EAthena
+}  // namespace EAthena

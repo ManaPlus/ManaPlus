@@ -80,6 +80,6 @@ class PartyHandler
         virtual ChatTab *getTab() = 0;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // PARTYHANDLER_H
+#endif  // PARTYHANDLER_H

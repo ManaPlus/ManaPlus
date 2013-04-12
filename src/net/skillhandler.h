@@ -41,6 +41,7 @@ class SkillHandler
 
         virtual void useMap(const int id, const std::string &map) const = 0;
 };
-}
 
-#endif // SKILLHANDLER_H
+}  // namespace Net
+
+#endif  // SKILLHANDLER_H

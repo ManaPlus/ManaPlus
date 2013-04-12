@@ -105,4 +105,4 @@ namespace PhysFs
     {
         return PHYSFS_mkdir(dirname);
     }
-}
+}  // namespace PhysFs

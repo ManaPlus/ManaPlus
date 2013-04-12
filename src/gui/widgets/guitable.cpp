@@ -193,7 +193,7 @@ void GuiTable::setLinewiseSelection(const bool linewise)
 int GuiTable::getRowHeight() const
 {
     if (mModel)
-        return mModel->getRowHeight() + 1; // border
+        return mModel->getRowHeight() + 1;  // border
     else
         return 0;
 }
@@ -201,7 +201,7 @@ int GuiTable::getRowHeight() const
 int GuiTable::getColumnWidth(int i) const
 {
     if (mModel)
-        return mModel->getColumnWidth(i) + 1; // border
+        return mModel->getColumnWidth(i) + 1;  // border
     else
         return 0;
 }
@@ -287,7 +287,7 @@ void GuiTable::installActionListeners()
         }
     }
 
-    _setFocusHandler(_getFocusHandler()); // propagate focus handler to widgets
+    _setFocusHandler(_getFocusHandler());
 }
 
 // -- widget ops
@@ -307,20 +307,21 @@ void GuiTable::draw(gcn::Graphics* graphics)
         graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
     }
 
-    // First, determine how many rows we need to draw, and where we should start.
+    // First, determine how many rows we need to draw,
+    // and where we should start.
     int first_row = -(getY() / getRowHeight());
 
     if (first_row < 0)
         first_row = 0;
 
-    unsigned rows_nr = 1 + (getHeight() / getRowHeight()); // May overestimate
-                                                           // by one.
+    unsigned rows_nr = 1 + (getHeight() / getRowHeight());  // May overestimate
+                                                            // by one.
 
     unsigned max_rows_nr;
     if (mModel->getRows() < first_row)
         max_rows_nr = 0;
     else
-        max_rows_nr = mModel->getRows() - first_row; // clip if neccessary:
+        max_rows_nr = mModel->getRows() - first_row;  // clip if neccessary:
     if (max_rows_nr < rows_nr)
         rows_nr = max_rows_nr;
 
@@ -512,7 +513,6 @@ void GuiTable::mouseDragged(gcn::MouseEvent& mouseEvent)
     setSelectedColumn(getColumnForX(x));
 }
 
-// -- TableModelListener notifications
 void GuiTable::modelUpdated(bool completed)
 {
     if (completed)
@@ -521,8 +521,8 @@ void GuiTable::modelUpdated(bool completed)
         installActionListeners();
     }
     else
-    { // before the update?
-        mTopWidget = nullptr; // No longer valid in general
+    {   // before the update?
+        mTopWidget = nullptr;  // No longer valid in general
         uninstallActionListeners();
     }
 }
@@ -541,7 +541,7 @@ gcn::Widget *GuiTable::getWidgetAt(int x, int y)
         if (w && w->isFocusable())
             return w;
         else
-            return nullptr; // Grab the event locally
+            return nullptr;  // Grab the event locally
     }
     else
         return nullptr;
@@ -549,15 +549,15 @@ gcn::Widget *GuiTable::getWidgetAt(int x, int y)
 
 int GuiTable::getRowForY(int y) const
 {
-   int row = -1;
+    int row = -1;
 
-   if (getRowHeight() > 0)
+    if (getRowHeight() > 0)
        row = y / getRowHeight();
 
-   if (!mModel || row < 0 || row >= mModel->getRows())
-       return -1;
-   else
-       return row;
+    if (!mModel || row < 0 || row >= mModel->getRows())
+        return -1;
+    else
+        return row;
 }
 
 int GuiTable::getColumnForX(int x) const

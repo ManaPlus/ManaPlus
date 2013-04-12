@@ -61,7 +61,7 @@ namespace XML
             if (file.is_open())
             {
                 // Get length of file
-                file.seekg (0, std::ios::end);
+                file.seekg(0, std::ios::end);
                 size = static_cast<int>(file.tellg());
                 file.seekg(0, std::ios::beg);
 
@@ -218,4 +218,4 @@ namespace XML
         xmlCleanupParser();
     }
 
-} // namespace XML
+}  // namespace XML

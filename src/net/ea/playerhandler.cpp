@@ -86,7 +86,7 @@ namespace
         }
     } deathListener;
 
-} // anonymous namespace
+}  // anonymous namespace
 
 static const char *randomDeathMessage()
 {
@@ -177,7 +177,7 @@ void PlayerHandler::processWalkResponse(Net::MessageIn &msg) const
       * otherwise.
       */
     uint16_t srcX, srcY, dstX, dstY;
-    msg.readInt32();    //tick
+    msg.readInt32();  // tick
     msg.readCoordinatePair(srcX, srcY, dstX, dstY);
     if (player_node)
         player_node->setRealPos(dstX, dstY);
@@ -271,7 +271,8 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
             PlayerInfo::setStatBase(PlayerInfo::WALK_SPEED, value);
             PlayerInfo::setStatMod(PlayerInfo::WALK_SPEED, 0);
         break;
-        case 0x0004: break; // manner
+        case 0x0004:
+            break;  // manner
         case 0x0005:
             PlayerInfo::setAttribute(PlayerInfo::HP, value);
             if (player_node->isInParty() && Party::getParty(1))
@@ -644,4 +645,4 @@ int PlayerHandler::getAttackLocation() const
     return EA_ATK;
 }
 
-} // namespace Ea
+}  // namespace Ea

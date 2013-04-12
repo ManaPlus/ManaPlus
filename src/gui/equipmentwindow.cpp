@@ -212,8 +212,8 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
             Image *const image = item->getImage();
             if (image)
             {
-                image->setAlpha(1.0f); // Ensure the image is drawn
-                                       // with maximum opacity
+                image->setAlpha(1.0f);  // Ensure the image is drawn
+                                        // with maximum opacity
                 g->drawImage(image, box->x + mItemPadding,
                     box->y + mItemPadding);
                 if (i == EQUIP_PROJECTILE_SLOT)
@@ -536,19 +536,19 @@ void EquipmentWindow::fillDefault()
     mImageSet = Theme::getImageSetFromTheme(
         "equipmentbox.png", 32, 32);
 
-    addBox(0, 90, 40, 0);    // torso
-    addBox(1, 8, 78, 1);     // gloves
-    addBox(2, 70, 0, 2);     // hat
-    addBox(3, 50, 253, 3);   // pants
-    addBox(4, 90, 253, 4);   // boots
-    addBox(5, 8, 213, 5);    // FREE
-    addBox(6, 129, 213, 6);  // wings
-    addBox(7, 50, 40, 5);    // scarf
-    addBox(8, 8, 168, 7);    // weapon
-    addBox(9, 129, 168, 8);  // shield
-    addBox(10, 129, 78, 9);  // ammo
-    addBox(11, 8, 123, 5);   // amulet
-    addBox(12, 129, 123, 5); // ring
+    addBox(0, 90, 40, 0);     // torso
+    addBox(1, 8, 78, 1);      // gloves
+    addBox(2, 70, 0, 2);      // hat
+    addBox(3, 50, 253, 3);    // pants
+    addBox(4, 90, 253, 4);    // boots
+    addBox(5, 8, 213, 5);     // FREE
+    addBox(6, 129, 213, 6);   // wings
+    addBox(7, 50, 40, 5);     // scarf
+    addBox(8, 8, 168, 7);     // weapon
+    addBox(9, 129, 168, 8);   // shield
+    addBox(10, 129, 78, 9);   // ammo
+    addBox(11, 8, 123, 5);    // amulet
+    addBox(12, 129, 123, 5);  // ring
 }
 
 void EquipmentWindow::addBox(const int idx, int x, int y, const int imageIndex)

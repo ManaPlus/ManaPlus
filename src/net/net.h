@@ -77,6 +77,6 @@ void connectToServer(const ServerInfo &server);
 
 void unload();
 
-} // namespace Net
+}  // namespace Net
 
-#endif // NET_H
+#endif  // NET_H

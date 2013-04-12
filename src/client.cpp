@@ -466,7 +466,7 @@ void Client::gameInit()
         fprintf(stderr, "Can't find Resources directory\n");
     }
     CFRelease(resourcesURL);
-    //possible crash
+    // possible crash
     strncat(path, "/data", PATH_MAX - 1);
     resman->addToSearchPath(path, false);
 // possible this need for support run client from dmg images.
@@ -853,12 +853,7 @@ void Client::gameClear()
 
     delete chatLogger;
     chatLogger = nullptr;
-
-    //delete logger;
-    //logger = nullptr;
-
     TranslationManager::close();
-
     mInstance = nullptr;
 }
 
@@ -1507,7 +1502,7 @@ int Client::gameExec()
                     mCurrentDialog = new OkDialog(_("Error"),
                         errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&loginListener);
-                    mCurrentDialog = nullptr; // OkDialog deletes itself
+                    mCurrentDialog = nullptr;  // OkDialog deletes itself
                     BLOCK_END("Client::gameExec STATE_LOGIN_ERROR")
                     break;
 
@@ -1517,7 +1512,7 @@ int Client::gameExec()
                     mCurrentDialog = new OkDialog(_("Error"),
                         errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
-                    mCurrentDialog = nullptr; // OkDialog deletes itself
+                    mCurrentDialog = nullptr;  // OkDialog deletes itself
                     BLOCK_END("Client::gameExec STATE_ACCOUNTCHANGE_ERROR")
                     break;
 
@@ -1565,7 +1560,7 @@ int Client::gameExec()
                     mCurrentDialog = new OkDialog(_("Password Change"),
                         _("Password changed successfully!"), DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
-                    mCurrentDialog = nullptr; // OkDialog deletes itself
+                    mCurrentDialog = nullptr;  // OkDialog deletes itself
                     loginData.password = loginData.newPassword;
                     loginData.newPassword.clear();
                     BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD_SUCCESS")
@@ -1586,7 +1581,7 @@ int Client::gameExec()
                     mCurrentDialog = new OkDialog(_("Email Change"),
                         _("Email changed successfully!"), DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
-                    mCurrentDialog = nullptr; // OkDialog deletes itself
+                    mCurrentDialog = nullptr;  // OkDialog deletes itself
                     break;
 
                 case STATE_UNREGISTER:
@@ -1607,9 +1602,9 @@ int Client::gameExec()
                     mCurrentDialog = new OkDialog(_("Unregister Successful"),
                         _("Farewell, come back any time..."), DIALOG_ERROR);
                     loginData.clear();
-                    //The errorlistener sets the state to STATE_CHOOSE_SERVER
+                    // The errorlistener sets the state to STATE_CHOOSE_SERVER
                     mCurrentDialog->addActionListener(&errorListener);
-                    mCurrentDialog = nullptr; // OkDialog deletes itself
+                    mCurrentDialog = nullptr;  // OkDialog deletes itself
                     break;
 
                 case STATE_SWITCH_SERVER:
@@ -1677,7 +1672,7 @@ int Client::gameExec()
                     mCurrentDialog = new OkDialog(_("Error"),
                         errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&errorListener);
-                    mCurrentDialog = nullptr; // OkDialog deletes itself
+                    mCurrentDialog = nullptr;  // OkDialog deletes itself
                     Net::getGameHandler()->disconnect();
                     BLOCK_END("Client::gameExec STATE_ERROR")
                     break;
@@ -2152,7 +2147,7 @@ void Client::initScreenshotDir()
             mScreenshotDir = getDesktopDir();
 #endif
 
-        //config.setValue("screenshotDirectory", mScreenshotDir);
+//      config.setValue("screenshotDirectory", mScreenshotDir);
         logger->log("screenshotDirectory: " + mScreenshotDir);
 
         if (config.getBoolValue("useScreenshotDirectorySuffix"))
@@ -2382,19 +2377,19 @@ void Client::initPacketLimiter()
     mPacketLimits[PACKET_CHAT].cntLimit = 1;
     mPacketLimits[PACKET_CHAT].cnt = 0;
 
-    //10
+    // 10
     mPacketLimits[PACKET_PICKUP].timeLimit = 10 + 5;
     mPacketLimits[PACKET_PICKUP].lastTime = 0;
     mPacketLimits[PACKET_PICKUP].cntLimit = 1;
     mPacketLimits[PACKET_PICKUP].cnt = 0;
 
-    //10 5
+    // 10 5
     mPacketLimits[PACKET_DROP].timeLimit = 5;
     mPacketLimits[PACKET_DROP].lastTime = 0;
     mPacketLimits[PACKET_DROP].cntLimit = 1;
     mPacketLimits[PACKET_DROP].cnt = 0;
 
-    //100
+    // 100
     mPacketLimits[PACKET_NPC_NEXT].timeLimit = 0;
     mPacketLimits[PACKET_NPC_NEXT].lastTime = 0;
     mPacketLimits[PACKET_NPC_NEXT].cntLimit = 1;
@@ -2405,19 +2400,19 @@ void Client::initPacketLimiter()
     mPacketLimits[PACKET_NPC_INPUT].cntLimit = 1;
     mPacketLimits[PACKET_NPC_INPUT].cnt = 0;
 
-    //50
+    // 50
     mPacketLimits[PACKET_NPC_TALK].timeLimit = 60;
     mPacketLimits[PACKET_NPC_TALK].lastTime = 0;
     mPacketLimits[PACKET_NPC_TALK].cntLimit = 1;
     mPacketLimits[PACKET_NPC_TALK].cnt = 0;
 
-    //10
+    // 10
     mPacketLimits[PACKET_EMOTE].timeLimit = 10 + 5;
     mPacketLimits[PACKET_EMOTE].lastTime = 0;
     mPacketLimits[PACKET_EMOTE].cntLimit = 1;
     mPacketLimits[PACKET_EMOTE].cnt = 0;
 
-    //100
+    // 100
     mPacketLimits[PACKET_SIT].timeLimit = 100;
     mPacketLimits[PACKET_SIT].lastTime = 0;
     mPacketLimits[PACKET_SIT].cntLimit = 1;
@@ -2428,7 +2423,7 @@ void Client::initPacketLimiter()
     mPacketLimits[PACKET_DIRECTION].cntLimit = 1;
     mPacketLimits[PACKET_DIRECTION].cnt = 0;
 
-    //2+
+    // 2+
     mPacketLimits[PACKET_ATTACK].timeLimit = 2 + 10;
     mPacketLimits[PACKET_ATTACK].lastTime = 0;
     mPacketLimits[PACKET_ATTACK].cntLimit = 1;

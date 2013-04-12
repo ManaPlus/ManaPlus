@@ -115,7 +115,7 @@ void NpcHandler::talk(const int npcId) const
 {
     MessageOut outMsg(CMSG_NPC_TALK);
     outMsg.writeInt32(npcId);
-    outMsg.writeInt8(0); // Unused
+    outMsg.writeInt8(0);  // unused
 }
 
 void NpcHandler::nextDialog(const int npcId) const
@@ -161,21 +161,21 @@ void NpcHandler::stringInput(const int npcId, const std::string &value) const
     outMsg.writeInt16(static_cast<int16_t>(value.length() + 9));
     outMsg.writeInt32(npcId);
     outMsg.writeString(value, static_cast<int>(value.length()));
-    outMsg.writeInt8(0); // Prevent problems with string reading
+    outMsg.writeInt8(0);  // Prevent problems with string reading
 }
 
 void NpcHandler::buy(const int beingId) const
 {
     MessageOut outMsg(CMSG_NPC_BUY_SELL_REQUEST);
     outMsg.writeInt32(beingId);
-    outMsg.writeInt8(0); // Buy
+    outMsg.writeInt8(0);  // Buy
 }
 
 void NpcHandler::sell(const int beingId) const
 {
     MessageOut outMsg(CMSG_NPC_BUY_SELL_REQUEST);
     outMsg.writeInt32(beingId);
-    outMsg.writeInt8(1); // Sell
+    outMsg.writeInt8(1);  // Sell
 }
 
 void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
@@ -184,7 +184,7 @@ void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
     MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
     if (serverVersion > 0)
     {
-        outMsg.writeInt16(10); // One item (length of packet)
+        outMsg.writeInt16(10);  // One item (length of packet)
         outMsg.writeInt16(static_cast<int16_t>(amount));
         outMsg.writeInt16(static_cast<int16_t>(itemId));
         outMsg.writeInt8(color);
@@ -192,7 +192,7 @@ void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
     }
     else
     {
-        outMsg.writeInt16(8); // One item (length of packet)
+        outMsg.writeInt16(8);  // One item (length of packet)
         outMsg.writeInt16(static_cast<int16_t>(amount));
         outMsg.writeInt16(static_cast<int16_t>(itemId));
     }
@@ -202,7 +202,7 @@ void NpcHandler::sellItem(const int beingId A_UNUSED,
                           const int itemId, const int amount) const
 {
     MessageOut outMsg(CMSG_NPC_SELL_REQUEST);
-    outMsg.writeInt16(8); // One item (length of packet)
+    outMsg.writeInt16(8);  // One item (length of packet)
     outMsg.writeInt16(static_cast<int16_t>(itemId + INVENTORY_OFFSET));
     outMsg.writeInt16(static_cast<int16_t>(amount));
 }
@@ -288,35 +288,35 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg, const int npcId)
         case 4:
             if (viewport)
             {
-                msg.readInt32(); // id
+                msg.readInt32();  // id
                 const int x = msg.readInt16();
                 const int y = msg.readInt16();
                 viewport->moveCameraRelative(x, y);
             }
             break;
-        case 5: // close dialog
+        case 5:  // close dialog
             closeDialog(npcId);
             break;
-        case 6: // show avatar
+        case 6:  // show avatar
             if (mDialog)
             {
                 mDialog->showAvatar(static_cast<uint16_t>(
-                    msg.readInt32()));   // avatar id
+                    msg.readInt32()));  // avatar id
             }
             break;
-        case 7: // set avatar direction
+        case 7:  // set avatar direction
             if (mDialog)
             {
                 mDialog->setAvatarDirection(
                     Net::MessageIn::fromServerDirection(
-                    static_cast<uint8_t>(msg.readInt32()))); // direction
+                    static_cast<uint8_t>(msg.readInt32())));  // direction
             }
             break;
-        case 8: // set avatar action
+        case 8:  // set avatar action
             if (mDialog)
-                mDialog->setAvatarAction(msg.readInt32());   // direction
+                mDialog->setAvatarAction(msg.readInt32());  // direction
             break;
-        case 9: // clear npc dialog
+        case 9:  // clear npc dialog
             if (mDialog)
                 mDialog->clearRows();
             break;
@@ -334,4 +334,4 @@ void NpcHandler::processLangReuqest(Net::MessageIn &msg A_UNUSED,
     stringInput(npcId, getLangSimple());
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

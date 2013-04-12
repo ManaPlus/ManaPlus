@@ -47,4 +47,4 @@ GuildTab::~GuildTab()
 {
 }
 
-} // namespace EAthena
+}  // namespace EAthena

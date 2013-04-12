@@ -109,11 +109,11 @@ public:
     }
 };
 
-static PlayerConfSerialiser player_conf_serialiser; // stateless singleton
+static PlayerConfSerialiser player_conf_serialiser;  // stateless singleton
 
 const unsigned int PlayerRelation::RELATION_PERMISSIONS[RELATIONS_NR] =
 {
-    /* NEUTRAL */     0, // we always fall back to the defaults anyway
+    /* NEUTRAL */     0,  // we always fall back to the defaults anyway
     /* FRIEND  */     EMOTE | SPEECH_FLOAT | SPEECH_LOG | WHISPER | TRADE,
     /* DISREGARDED*/  EMOTE | SPEECH_FLOAT,
     /* IGNORED */     0,
@@ -209,8 +209,8 @@ void PlayerRelationsManager::init()
 
     if (!mPersistIgnores)
     {
-        clear(); // Yes, we still keep them around in the config file
-                 // until the next update.
+        clear();  // Yes, we still keep them around in the config file
+                  // until the next update.
     }
 
     FOR_EACH (PlayerRelationListenersCIter, it, mListeners)
@@ -272,7 +272,7 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
                 break;
 
             case PlayerRelation::FRIEND:
-                permissions |= mDefaultPermissions; // widen
+                permissions |= mDefaultPermissions;  // widen
                 break;
 
             case PlayerRelation::DISREGARDED:
@@ -281,7 +281,7 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
             case PlayerRelation::BLACKLISTED:
             case PlayerRelation::ENEMY2:
             default:
-                permissions &= mDefaultPermissions; // narrow
+                permissions &= mDefaultPermissions;  // narrow
         }
 
         return permissions & flags;

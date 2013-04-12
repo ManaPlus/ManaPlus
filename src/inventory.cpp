@@ -154,7 +154,7 @@ void Inventory::removeItemAt(const int index)
     delete mItems[index];
     mItems[index] = nullptr;
     mUsed--;
-    if (mUsed < 0) // Already at 0, no need to distribute event
+    if (mUsed < 0)  // Already at 0, no need to distribute event
         mUsed = 0;
     else
         distributeSlotsChangedEvent();
@@ -216,10 +216,8 @@ const Item *Inventory::findItemBySprite(std::string spritePath,
                                         const int race) const
 {
     spritePath = removeSpriteIndex(spritePath);
-//    logger->log1("Inventory::FindItemBySprite sprite: " + spritePath);
 
     const std::string spritePathShort = extractNameFromSprite(spritePath);
-//    logger->log1("Inventory::FindItemBySprite spriteShort: " + spritePathShort);
     int partialIndex = -1;
 
     for (unsigned i = 0; i < mSize; i++)
@@ -231,14 +229,10 @@ const Item *Inventory::findItemBySprite(std::string spritePath,
             if (!path.empty())
             {
                 path = removeSpriteIndex(path);
-
-//                logger->log("Inventory::FindItemBySprite normal: " + path);
-
                 if (spritePath == path)
                     return item;
 
                 path = extractNameFromSprite(path);
-//                logger->log("Inventory::FindItemBySprite short: " + path);
                 if (spritePathShort == path)
                     partialIndex = i;
             }

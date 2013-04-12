@@ -47,4 +47,4 @@ GuildTab::~GuildTab()
 {
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

@@ -87,7 +87,7 @@ void AdminHandler::localAnnounce(const std::string &text) const
 void AdminHandler::hide(const bool h A_UNUSED) const
 {
     MessageOut outMsg(CMSG_ADMIN_HIDE);
-    outMsg.writeInt32(0); //unused
+    outMsg.writeInt32(0);  // unused
 }
 
 void AdminHandler::kick(const int playerId) const
@@ -96,4 +96,4 @@ void AdminHandler::kick(const int playerId) const
     outMsg.writeInt32(playerId);
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

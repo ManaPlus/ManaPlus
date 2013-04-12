@@ -644,7 +644,7 @@ std::string getDateString()
     time_t rawtime;
     struct tm *timeinfo;
 
-    time (&rawtime);
+    time(&rawtime);
     timeinfo = localtime(&rawtime);
 
     strftime(buffer, 79, "%Y-%m-%d", timeinfo);

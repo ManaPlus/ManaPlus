@@ -145,8 +145,8 @@ static void parseOptions(const int argc, char *const argv[],
             case 'D':
                 options.chooseDefault = true;
                 break;
-            case '?': // Unknown option
-            case ':': // Missing argument
+            case '?':  // Unknown option
+            case ':':  // Missing argument
             case 'h':
                 options.printHelp = true;
                 break;

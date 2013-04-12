@@ -49,15 +49,15 @@ int execFileWait(std::string pathName, std::string name A_UNUSED,
     PROCESS_INFORMATION piProcessInfo;
     memset(&siStartupInfo, 0, sizeof(siStartupInfo));
     memset(&piProcessInfo, 0, sizeof(piProcessInfo));
-    siStartupInfo.cb = sizeof(siStartupInfo); 
+    siStartupInfo.cb = sizeof(siStartupInfo);
     DWORD ret = -1;
     std::string args(std::string(pathName).append(" ").append(arg1));
     if (!arg2.empty())
         args.append(" ").append(arg2);
 
-    if (CreateProcess(pathName.c_str(), (char*)args.c_str(), nullptr, nullptr,
-        false, CREATE_DEFAULT_ERROR_MODE, nullptr, nullptr, &siStartupInfo,
-        &piProcessInfo) != false)
+    if (CreateProcess(pathName.c_str(), static_cast<char*>(args.c_str()),
+        nullptr, nullptr, false, CREATE_DEFAULT_ERROR_MODE, nullptr, nullptr,
+        &siStartupInfo, &piProcessInfo) != false)
     {
         if (!WaitForSingleObject(piProcessInfo.hProcess, timeOut * 1000))
         {
@@ -83,7 +83,7 @@ bool execFile(std::string pathName, std::string name A_UNUSED,
     PROCESS_INFORMATION piProcessInfo;
     memset(&siStartupInfo, 0, sizeof(siStartupInfo));
     memset(&piProcessInfo, 0, sizeof(piProcessInfo));
-    siStartupInfo.cb = sizeof(siStartupInfo); 
+    siStartupInfo.cb = sizeof(siStartupInfo);
     std::string args(std::string(pathName).append(" ").append(arg1));
     if (!arg2.empty())
         args.append(" ").append(arg2);
@@ -149,8 +149,7 @@ int execFileWait(std::string pathName, std::string name,
         }
         else if (!sleep_pid)
         {   // sleep pid
-            sleep (waitTime);
-//            printf ("time out\n");
+            sleep(waitTime);
             execl("/bin/true", "/bin/true", static_cast<char *>(nullptr));
             _exit(-1);
         }
@@ -232,8 +231,9 @@ bool execFile(std::string pathName, std::string name,
 #ifdef WIN32
 bool openBrowser(std::string url)
 {
-    return (int)ShellExecute(nullptr, "open", replaceAll(url, " ", "").c_str(),
-        nullptr, nullptr, SW_SHOWNORMAL) > 32;
+    return static_cast<int>(ShellExecute(nullptr, "open",
+        replaceAll(url, " ", "").c_str(),
+        nullptr, nullptr, SW_SHOWNORMAL)) > 32;
 }
 #elif defined ANDROID
 #include <SDL_screenkeyboard.h>

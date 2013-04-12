@@ -64,4 +64,4 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-} // namespace EAthena
+}  // namespace EAthena

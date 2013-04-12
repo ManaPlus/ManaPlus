@@ -33,7 +33,7 @@
 
 #include "debug.h"
 
-namespace TmwAthena 
+namespace TmwAthena
 {
 
 MessageIn::MessageIn(const char *const data, const unsigned int length) :
@@ -81,4 +81,4 @@ int32_t MessageIn::readInt32()
     return value;
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

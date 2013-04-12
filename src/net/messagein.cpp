@@ -247,7 +247,7 @@ unsigned char *MessageIn::readBytes(int length)
 
     unsigned char *const buf = new unsigned char[length + 2];
 
-    memcpy (buf, mData + mPos, length);
+    memcpy(buf, mData + mPos, length);
     buf[length] = 0;
     buf[length + 1] = 0;
     mPos += length;
@@ -271,4 +271,4 @@ unsigned char *MessageIn::readBytes(int length)
     return buf;
 }
 
-}
+}  // namespace Net

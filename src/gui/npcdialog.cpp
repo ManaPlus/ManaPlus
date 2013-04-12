@@ -98,7 +98,6 @@ NpcDialog::NpcDialog(const int npcId) :
     // Basic Window Setup
     setWindowName("NpcText");
     setResizable(true);
-    //setupWindow->registerWindowForReset(this);
     setFocusable(true);
     setStickyButtonLock(true);
 

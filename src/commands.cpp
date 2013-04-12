@@ -350,7 +350,8 @@ impHandler0(cleanGraphics)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
     resman->cleanProtected();
-    while (resman->cleanOrphans(true));
+    while (resman->cleanOrphans(true))
+        continue;
 
     if (debugChatTab)
         debugChatTab->chatLog(_("Cache cleaned"));
@@ -961,7 +962,7 @@ impHandler0(serverUnIgnoreAll)
 
 impHandler2(dumpGraphics)
 {
-    std::string str = strprintf ("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,
+    std::string str = strprintf("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,
         mainGraphics->getWidth(), mainGraphics->getHeight(),
         mainGraphics->getBpp());
 
@@ -1225,4 +1226,4 @@ void replaceVars(std::string &str)
     }
 }
 
-}
+}  // namespace Commands

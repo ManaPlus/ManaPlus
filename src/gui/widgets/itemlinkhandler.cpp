@@ -77,7 +77,7 @@ void ItemLinkHandler::handleLink(const std::string &link,
         {
             ConfirmDialog *const confirmDlg = new ConfirmDialog(
                 _("Open url"), url, false, true);
-            confirmDlg->addActionListener(&listener); 
+            confirmDlg->addActionListener(&listener);
         }
         else if (button == gcn::MouseInput::RIGHT)
         {

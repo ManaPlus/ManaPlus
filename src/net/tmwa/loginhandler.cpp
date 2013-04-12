@@ -137,7 +137,7 @@ void LoginHandler::sendLoginRegister(const std::string &username,
     if (email.empty())
     {
         MessageOut outMsg(CMSG_LOGIN_REGISTER);
-        outMsg.writeInt32(0); // client version
+        outMsg.writeInt32(0);  // client version
         outMsg.writeString(username, 24);
         outMsg.writeStringNoLog(password, 24);
 
@@ -152,7 +152,7 @@ void LoginHandler::sendLoginRegister(const std::string &username,
     else
     {
         MessageOut outMsg(CMSG_LOGIN_REGISTER2);
-        outMsg.writeInt32(0); // client version
+        outMsg.writeInt32(0);  // client version
         outMsg.writeString(username, 24);
         outMsg.writeStringNoLog(password, 24);
 
@@ -181,15 +181,15 @@ void LoginHandler::requestUpdateHosts() const
 
 void LoginHandler::processServerVersion(Net::MessageIn &msg)
 {
-    const uint8_t b1 = msg.readInt8(); // -1
-    const uint8_t b2 = msg.readInt8(); // E
-    const uint8_t b3 = msg.readInt8(); // V
-    const uint8_t b4 = msg.readInt8(); // L
+    const uint8_t b1 = msg.readInt8();  // -1
+    const uint8_t b2 = msg.readInt8();  // E
+    const uint8_t b3 = msg.readInt8();  // V
+    const uint8_t b4 = msg.readInt8();  // L
     if (b1 == 255 && b2 == 'E' && b3 == 'V' && b4 == 'L')
     {
         const unsigned int options = msg.readInt8();
         mRegistrationEnabled = options;
-        msg.skip(2);    // 0 unused
+        msg.skip(2);  // 0 unused
         serverVersion = msg.readInt8();
         if (serverVersion >= 5)
             requestUpdateHosts();
@@ -240,4 +240,4 @@ int LoginHandler::supportedOptionalActions() const
         : SetGenderOnRegister;
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

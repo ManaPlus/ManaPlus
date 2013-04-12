@@ -95,4 +95,4 @@ void SkillHandler::useMap(const int id, const std::string &map) const
     outMsg.writeString(map, 16);
 }
 
-} // namespace EAthena
+}  // namespace EAthena

@@ -37,4 +37,4 @@ struct WorldInfo final
 
 typedef std::vector<WorldInfo*> Worlds;
 
-#endif // WORLD_INFO_H
+#endif  // WORLD_INFO_H

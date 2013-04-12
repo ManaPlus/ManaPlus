@@ -95,6 +95,6 @@ class MessageOut
         unsigned int mPos;                   /**< Position in the data. */
 };
 
-}
+}  // namespace Net
 
-#endif // NET_MESSAGEOUT_H
+#endif  // NET_MESSAGEOUT_H

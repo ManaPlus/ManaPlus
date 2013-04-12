@@ -726,23 +726,17 @@ void InventoryWindow::widgetResized(const gcn::Event &event)
     {
         if (!mCompactMode)
         {
-            //mSortDropDown->setVisible(false);
             mNameFilter->setVisible(false);
-            //mSortDropDownCell->setType(LayoutCell::NONE);
             mNameFilterCell->setType(LayoutCell::NONE);
             mFilterCell->setWidth(mFilterCell->getWidth() + 2);
-            //mSlotsBarCell->setWidth(mSlotsBarCell->getWidth() + 3);
             mCompactMode = true;
         }
     }
     else if (mCompactMode)
     {
-        //mSortDropDown->setVisible(true);
         mNameFilter->setVisible(true);
-        //mSortDropDownCell->setType(LayoutCell::WIDGET);
         mNameFilterCell->setType(LayoutCell::WIDGET);
         mFilterCell->setWidth(mFilterCell->getWidth() - 2);
-        //mSlotsBarCell->setWidth(mSlotsBarCell->getWidth() - 3);
         mCompactMode = false;
     }
 }

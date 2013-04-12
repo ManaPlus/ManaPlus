@@ -54,7 +54,7 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
         ignoreButton = new Button(this, _("Ignore"), "ignore", this);
 
     const int numRows = mTextBox->getNumberOfRows();
-    int inWidth = yesButton->getWidth() + noButton->getWidth() + 
+    int inWidth = yesButton->getWidth() + noButton->getWidth() +
         (2 * getPadding());
 
     if (ignoreButton)

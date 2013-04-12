@@ -112,4 +112,4 @@ void NpcHandler::processNpcStrInput(Net::MessageIn &msg A_UNUSED)
         mDialog->textRequest("");
 }
 
-} // namespace Ea
+}  // namespace Ea

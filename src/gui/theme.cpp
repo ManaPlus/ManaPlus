@@ -990,7 +990,7 @@ void Theme::loadColors(std::string file)
         if (xmlNameEqual(paletteNode, "progressbar"))
         {
             type = readProgressType(XML::getProperty(paletteNode, "id", ""));
-            if (type < 0) // invalid or no type given
+            if (type < 0)  // invalid or no type given
                 continue;
 
             mProgressColors[type] = new DyePalette(XML::getProperty(
@@ -1011,11 +1011,11 @@ void Theme::loadColors(std::string file)
             {
                 std::string id = XML::getProperty(node, "id", "");
                 type = readColorType(id);
-                if (type < 0) // invalid or no type given
+                if (type < 0)  // invalid or no type given
                     continue;
 
                 temp = XML::getProperty(node, "color", "");
-                if (temp.empty()) // no color set, so move on
+                if (temp.empty())  // no color set, so move on
                     continue;
 
                 color = readColor(temp);

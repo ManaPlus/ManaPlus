@@ -241,7 +241,6 @@ void Window::draw(gcn::Graphics *graphics)
 
             if (mGrip)
                 g->calcTile(mVertexes, mGrip, mGripRect.x, mGripRect.y);
-
         }
         else
         {
@@ -562,7 +561,7 @@ void Window::setVisible(bool visible)
 void Window::setVisible(bool visible, bool forceSticky)
 {
     if (visible == isWindowVisible())
-        return; // Nothing to do
+        return;
 
     // Check if the window is off screen...
     if (visible)

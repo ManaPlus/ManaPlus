@@ -214,4 +214,4 @@ ServerInfo::Type getNetworkType()
     return networkType;
 }
 
-} // namespace Net
+}  // namespace Net

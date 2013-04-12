@@ -48,7 +48,7 @@ std::string getRealPath(const std::string &str)
 {
     std::string path;
 #if defined(__OpenBSD__) || defined(__ANDROID__)
-    char *realPath = (char*)calloc(PATH_MAX, sizeof(char));
+    char *realPath = reinterpret_cast<char*>(calloc(PATH_MAX, sizeof(char)));
     realpath(str.c_str(), realPath);
 #else
     char *realPath = realpath(str.c_str(), nullptr);

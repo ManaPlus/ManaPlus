@@ -60,6 +60,6 @@ class AdminHandler
                           const int x, const int y) const = 0;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // ADMINHANDLER_H
+#endif  // ADMINHANDLER_H

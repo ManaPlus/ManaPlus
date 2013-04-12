@@ -53,8 +53,8 @@ ShopItem::ShopItem(const int inventoryIndex, const int id,
     addDuplicate(inventoryIndex, quantity);
 }
 
-ShopItem::ShopItem (const int id, const unsigned char color, const int price) :
-    Item (id, 0, 0, color),
+ShopItem::ShopItem(const int id, const unsigned char color, const int price) :
+    Item(id, 0, 0, color),
     mPrice(price),
     mShowQuantity(false)
 {

@@ -46,8 +46,6 @@ unsigned int MobileOpenGLGraphics::mDrawCalls = 0;
 unsigned int MobileOpenGLGraphics::mLastDrawCalls = 0;
 #endif
 
-//unsigned int vertexBufSize = 500;
-
 MobileOpenGLGraphics::MobileOpenGLGraphics():
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),

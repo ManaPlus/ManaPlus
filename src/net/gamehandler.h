@@ -63,6 +63,6 @@ class GameHandler
         virtual void clear() = 0;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // MAPHANDLER_H
+#endif  // MAPHANDLER_H

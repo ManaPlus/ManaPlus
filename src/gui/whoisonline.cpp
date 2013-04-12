@@ -196,10 +196,10 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
                                std::vector<OnlinePlayer*> enemy,
                                size_t numOnline)
 {
-    //Set window caption
+    // Set window caption
     setCaption(_("Who Is Online - ") + toString(numOnline));
 
-    //List the online people
+    // List the online people
     std::sort(friends.begin(), friends.end(), nameCompare);
     std::sort(neutral.begin(), neutral.end(), nameCompare);
     std::sort(disregard.begin(), disregard.end(), nameCompare);
@@ -298,7 +298,7 @@ void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
 
             case PlayerRelation::IGNORED:
             case PlayerRelation::ERASED:
-                //Ignore the ignored.
+                // Ignore the ignored.
                 break;
         }
     }
@@ -447,7 +447,7 @@ void WhoIsOnline::loadWebList()
 
                     case PlayerRelation::IGNORED:
                     case PlayerRelation::ERASED:
-                        //Ignore the ignored.
+                        // Ignore the ignored.
                         break;
                 }
             }

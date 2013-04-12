@@ -157,19 +157,19 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     data.mAttributes[PlayerInfo::MP] = msg.readInt16();
     data.mAttributes[PlayerInfo::MAX_MP] = msg.readInt16();
 
-    msg.readInt16();                       // speed
-    tempPlayer->setSubtype(msg.readInt16()); // class (used for race)
+    msg.readInt16();                          // speed
+    tempPlayer->setSubtype(msg.readInt16());  // class (used for race)
     const int hairStyle = msg.readInt16();
-    const uint16_t weapon = msg.readInt16();  // unused on server. need use?
+    const uint16_t weapon = msg.readInt16();   // unused on server. need use?
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
     data.mAttributes[PlayerInfo::LEVEL] = msg.readInt16();
 
-    msg.readInt16();                       // skill point
+    msg.readInt16();  // skill point
     const int bottomClothes = msg.readInt16();
     const int shield = msg.readInt16();
 
-    const int hat = msg.readInt16(); // head option top
+    const int hat = msg.readInt16();  // head option top
     const int topClothes = msg.readInt16();
 
     int hairColor = msg.readInt16();
@@ -195,19 +195,19 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         tempPlayer->setSprite(SPRITE_MISC1, misc1, "", msg.readInt8());
         tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes,
             "", msg.readInt8());
-        //to avoid show error (error.xml) need remove this sprite
+        // to avoid show error (error.xml) need remove this sprite
         if (!config.getBoolValue("hideShield"))
             tempPlayer->setSprite(SPRITE_SHIELD, shield, "", msg.readInt8());
         else
             msg.readInt8();
 
         tempPlayer->setSprite(SPRITE_HAT, hat, "",
-            msg.readInt8()); // head option top
+            msg.readInt8());  // head option top
         tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes, "",
             msg.readInt8());
         tempPlayer->setSprite(SPRITE_MISC2, misc2, "", msg.readInt8());
         msg.skip(5);
-        character->slot = msg.readInt8(); // character slot
+        character->slot = msg.readInt8();  // character slot
     }
     else
     {
@@ -216,17 +216,16 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         tempPlayer->setSprite(SPRITE_CAPE, cape);
         tempPlayer->setSprite(SPRITE_MISC1, misc1);
         tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes);
-        //to avoid show error (error.xml) need remove this sprite
+        // to avoid show error (error.xml) need remove this sprite
         if (!config.getBoolValue("hideShield"))
             tempPlayer->setSprite(SPRITE_SHIELD, shield);
 
-        tempPlayer->setSprite(SPRITE_HAT, hat); // head option top
+        tempPlayer->setSprite(SPRITE_HAT, hat);  // head option top
         tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
         tempPlayer->setSprite(SPRITE_MISC2, misc2);
-        character->slot = msg.readInt8(); // character slot
+        character->slot = msg.readInt8();  // character slot
     }
-
-    msg.readInt8();                        // unknown
+    msg.readInt8();  // unknown
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)
@@ -313,7 +312,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
         loginData.characterSlots = static_cast<short unsigned int>(slots);
 
     const bool version = msg.readInt8() == 1 && serverVersion > 0;
-    msg.skip(17); // 0 Unused
+    msg.skip(17);  // 0 Unused
 
     delete_all(mCharacters);
     mCharacters.clear();
@@ -340,4 +339,4 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     Client::setState(STATE_CHAR_SELECT);
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

@@ -41,6 +41,6 @@ class BeingHandler
         virtual void undress(Being *const being) const = 0;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // BEINGHANDLER_H
+#endif  // BEINGHANDLER_H

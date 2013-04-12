@@ -418,7 +418,8 @@ void BuyDialog::action(const gcn::ActionEvent &event)
             Net::getNpcHandler()->buyItem(mNpcId, item->getId(),
                 item->getColor(), mAmountItems);
 
-            // Update money and adjust the max number of items that can be bought
+            // Update money and adjust the max number of items
+            // that can be bought
             mMaxItems -= mAmountItems;
             setMoney(mMoney -
                      mAmountItems * mShopItems->at(selectedItem)->getPrice());

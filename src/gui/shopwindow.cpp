@@ -265,7 +265,6 @@ void ShopWindow::action(const gcn::ActionEvent &event)
                                          this, item, sumAmount(item));
         }
     }
-
 }
 
 void ShopWindow::startTrade()
@@ -614,7 +613,6 @@ void ShopWindow::sendMessage(const std::string &nick,
         Net::getChatHandler()->privateMessage(nick, data);
     else if (chatWindow)
         chatWindow->addWhisper(nick, data, BY_PLAYER);
-//here was true
 }
 
 void ShopWindow::showList(const std::string &nick, std::string data) const

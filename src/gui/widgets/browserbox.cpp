@@ -214,7 +214,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         mTextRowLinksCount.push_back(linksCount);
     }
 
-    //discard older rows when a row limit has been set
+    // discard older rows when a row limit has been set
     if (mMaxRows > 0 && !mTextRows.empty())
     {
         while (mTextRows.size() > mMaxRows)
@@ -281,7 +281,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                     if ((x + nextWordWidth + 10)
                         > static_cast<unsigned>(getWidth()))
                     {
-                        x = mNewLinePadding; // Ident in new line
+                        x = mNewLinePadding;  // Ident in new line
                         y += 1;
                         j ++;
                     }
@@ -290,7 +290,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                 else if ((x + 2 * hyphenWidth)
                          > static_cast<unsigned>(getWidth()))
                 {
-                    x = mNewLinePadding; // Ident in new line
+                    x = mNewLinePadding;  // Ident in new line
                     y += 1;
                 }
             }
@@ -401,8 +401,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
                 mLinks[mSelectedLink].x1,
                 mLinks[mSelectedLink].y1,
                 mLinks[mSelectedLink].x2 - mLinks[mSelectedLink].x1,
-                mLinks[mSelectedLink].y2 - mLinks[mSelectedLink].y1
-                ));
+                mLinks[mSelectedLink].y2 - mLinks[mSelectedLink].y1));
         }
 
         if ((mHighMode & UNDERLINE))
@@ -573,7 +572,6 @@ int BrowserBox::calcHeight()
                     }
                     else
                     {
-
                         switch (c)
                         {
                             case '1':
@@ -670,14 +668,14 @@ int BrowserBox::calcHeight()
                     {
                         forced = true;
                         end = row.size();
-                        x += hyphenWidth; // Account for the wrap-notifier
+                        x += hyphenWidth;  // Account for the wrap-notifier
                         continue;
                     }
 
                     // Skip to the start of the current character
                     while ((row[end] & 192) == 128)
                         end--;
-                    end--; // And then to the last byte of the previous one
+                    end--;  // And then to the last byte of the previous one
 
                     part = row.substr(start, end - start + 1);
                     if (bold)
@@ -689,14 +687,14 @@ int BrowserBox::calcHeight()
 
                 if (forced)
                 {
-                    x -= hyphenWidth; // Remove the wrap-notifier accounting
+                    x -= hyphenWidth;  // Remove the wrap-notifier accounting
                     mLineParts.push_back(LinePart(wWidth - hyphenWidth,
                         y, selColor[0], selColor[1], hyphen, bold));
-                    end++; // Skip to the next character
+                    end++;  // Skip to the next character
                 }
                 else
                 {
-                    end += 2; // Skip to after the space
+                    end += 2;  // Skip to after the space
                 }
 
                 wrapped = true;
@@ -747,13 +745,10 @@ std::string BrowserBox::getTextAtPos(const int x, const int y) const
 
     getAbsolutePosition(textX, textY);
     if (x < textX || y < textY)
-        return ""; // mouse position ourside of correct widget (outside of tab)
+        return "";
 
-//    textX = x - textX;
     textY = y - textY;
-
     std::string str;
-
     int lastY = 0;
 
     FOR_EACH (LinePartCIter, i, mLineParts)

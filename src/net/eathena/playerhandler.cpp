@@ -81,11 +81,11 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
             processPlayerStatUpdate2(msg);
             break;
 
-        case SMSG_PLAYER_STAT_UPDATE_3: // Update a base attribute
+        case SMSG_PLAYER_STAT_UPDATE_3:  // Update a base attribute
             processPlayerStatUpdate3(msg);
             break;
 
-        case SMSG_PLAYER_STAT_UPDATE_4: // Attribute increase ack
+        case SMSG_PLAYER_STAT_UPDATE_4:  // Attribute increase ack
             processPlayerStatUpdate4(msg);
             break;
 
@@ -230,15 +230,15 @@ void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg) const
 {
     for (int f = 0; f < 27; f ++)
     {
-        msg.readInt8();     // type 0: item, 1: skill
-        msg.readInt32();    // item or skill id
-        msg.readInt16();    // lvl
+        msg.readInt8();   // type 0: item, 1: skill
+        msg.readInt32();  // item or skill id
+        msg.readInt16();  // lvl
     }
 }
 
 void PlayerHandler::processPlayerShowEquip(Net::MessageIn &msg) const
 {
-    msg.readInt8();     // show equip
+    msg.readInt8();  // show equip
 }
 
-} // namespace EAthena
+}  // namespace EAthena

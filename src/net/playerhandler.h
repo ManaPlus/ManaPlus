@@ -79,6 +79,6 @@ class PlayerHandler
         virtual void updateStatus(const uint8_t status) const = 0;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // PLAYERHANDLER_H
+#endif  // PLAYERHANDLER_H

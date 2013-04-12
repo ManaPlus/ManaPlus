@@ -127,20 +127,7 @@ void ProgressBar::updateAlpha()
 {
     const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
-
-    if (mAlpha != alpha)
-    {
-        mAlpha = alpha;
-/*
-        ImageRect &rect = mSkin->getBorder();
-        for (int i = 0; i < 9; i++)
-        {
-            if (rect.grid[i])
-                rect.grid[i]->setAlpha(mAlpha);
-        }
-*/
-    }
-
+    mAlpha = alpha;
 }
 
 void ProgressBar::draw(gcn::Graphics *graphics)

@@ -87,7 +87,6 @@ SetupItem::SetupItem(std::string text, std::string description,
 
 SetupItem::~SetupItem()
 {
-
 }
 
 Configuration *SetupItem::getConfig() const

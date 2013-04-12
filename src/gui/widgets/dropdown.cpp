@@ -517,7 +517,7 @@ gcn::Rectangle DropDown::getChildrenArea()
     if (mDroppedDown)
     {
         // Calculate the children area (with the one pixel border in mind)
-        return gcn::Rectangle(1, mFoldedUpHeight + 1, 
+        return gcn::Rectangle(1, mFoldedUpHeight + 1,
             getWidth() - 2, getHeight() - mFoldedUpHeight - 2);
     }
 
@@ -549,7 +549,7 @@ void DropDown::removeSelectionListener(SelectionListener* listener)
 void DropDown::distributeValueChangedEvent()
 {
     for (SelectionListenerIterator iter = mSelectionListeners.begin();
-          iter != mSelectionListeners.end(); 
+          iter != mSelectionListeners.end();
           ++iter)
     {
         gcn::SelectionEvent event(this);

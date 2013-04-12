@@ -144,4 +144,4 @@ void TradeHandler::cancel() const
     MessageOut outMsg(CMSG_TRADE_CANCEL_REQUEST);
 }
 
-} // namespace EAthena
+}  // namespace EAthena

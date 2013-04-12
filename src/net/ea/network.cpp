@@ -318,7 +318,7 @@ void Network::setError(const std::string &error)
 uint16_t Network::readWord(const int pos) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    return SDL_Swap16((*(uint16_t*)(mInBuffer + (pos))));
+    return SDL_Swap16(*reinterpret_cast<uint16_t*>(mInBuffer + (pos)));
 #else
     return (*reinterpret_cast<uint16_t*>(mInBuffer + (pos)));
 #endif
@@ -335,4 +335,4 @@ void Network::fixSendBuffer()
     }
 }
 
-} // namespace EAthena
+}  // namespace Ea

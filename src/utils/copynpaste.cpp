@@ -146,10 +146,6 @@ bool getDataFromPasteboard(PasteboardRef inPasteboard,
     ItemCount           itemCount;
 
     syncFlags = PasteboardSynchronize(inPasteboard);
-
-    //require_action( syncFlags & kPasteboardModified, PasteboardOutOfSync,
-    //               err = badPasteboardSyncErr );
-
     OSStatus err = PasteboardGetItemCount(inPasteboard, &itemCount);
     require_noerr(err, CantGetPasteboardItemCount);
 
@@ -204,7 +200,7 @@ bool getDataFromPasteboard(PasteboardRef inPasteboard,
                 flavorText[flavorDataSize] = '\0';
                 flavorText[flavorDataSize + 1] = '\n';
 
-                CFRelease (flavorData);
+                CFRelease(flavorData);
                 return true;
             }
 
@@ -213,7 +209,7 @@ CantCopyFlavorData:
             fprintf(stderr, "Cannot copy clipboard, CantCopyFlavorData!\n");
         }
 
-        CFRelease (flavorTypeArray);
+        CFRelease(flavorTypeArray);
         continue;
 
 CantCopyPasteboardItemFlavors:
@@ -237,7 +233,7 @@ CantGetPasteboardItemCount:
 //      return false;
 }
 
-bool getClipBoard(char* text /* out */, const int bufSize)
+bool getClipBoard(char* text  /* out */, const int bufSize)
 {
     PasteboardRef theClipboard;
     OSStatus err = PasteboardCreate(kPasteboardClipboard, &theClipboard);
@@ -294,12 +290,9 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
     Window owner = XGetSelectionOwner(dpy, selection);
     int ret;
 
-    //printf("XConvertSelection on %s\n", XGetAtomName(dpy, selection));
     if (owner == None)
-    {
-        //printf("No owner\n");
         return nullptr;
-    }
+
     XConvertSelection(dpy, selection, request_target,
         XA_PRIMARY, us, CurrentTime);
     XFlush(dpy);
@@ -311,14 +304,8 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
         XNextEvent(dpy, &e);
         if (e.type == SelectionNotify)
         {
-//            printf("Received %s, %s, %s\n", XGetAtomName(dpy, selection),
-//                XGetAtomName(dpy, e.xselection.selection),
-//                XGetAtomName(dpy, request_target));
             if (e.xselection.property == None)
-            {
-                //printf("Couldn't convert\n");
                 return nullptr;
-            }
 
             long unsigned len, left, dummy;
             int format;
@@ -339,13 +326,8 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
                 &dummy, &data);
 
             if (ret != Success)
-            {
-                //printf("Failed to get property: %p on %lu\n", data, len);
                 return nullptr;
-            }
 
-            //printf(">>>  Got %s: len=%lu left=%lu (event %i)\n", data,
-            //    len, left, 50-max_events);
             return reinterpret_cast<char*>(data);
         }
     }
@@ -368,7 +350,6 @@ bool retrieveBuffer(std::string& text, size_t& pos)
 {
     SDL_SysWMinfo info;
 
-    //printf("Retrieving buffer...\n");
     SDL_VERSION(&info.version);
     if (SDL_GetWMInfo(&info))
     {
@@ -376,7 +357,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
         Window us = info.info.x11.window;
         char *data = nullptr;
 
-        requestAtom = XInternAtom (dpy, "UTF8_STRING", true);
+        requestAtom = XInternAtom(dpy, "UTF8_STRING", true);
 
         if (!data)
             data = getSelection(dpy, us, XA_PRIMARY);

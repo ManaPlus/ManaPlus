@@ -91,8 +91,8 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
             placeOption(placer, mSwitchCharacter);
     }
 
-//#ifdef ANDROID
 /*
+#ifdef ANDROID
     if (config.getBoolValue("rated") == false
         && config.getIntValue("gamecount") > 3)
     {
@@ -101,8 +101,8 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
         mOptions[mOptions.size() - 1]->setSelected(true);
     }
     else
+#endif
 */
-//#endif
     {
         mOptions[0]->setSelected(true);
     }

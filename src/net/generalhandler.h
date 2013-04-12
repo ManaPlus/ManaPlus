@@ -49,6 +49,6 @@ class GeneralHandler
         virtual void gameEnded() const = 0;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // GENERALHANDLER_H
+#endif  // GENERALHANDLER_H

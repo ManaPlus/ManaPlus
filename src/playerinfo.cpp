@@ -344,4 +344,4 @@ void stateChange(const int state)
     }
 }
 
-} // namespace PlayerInfo
+}  // namespace PlayerInfo

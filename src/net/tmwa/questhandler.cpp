@@ -33,8 +33,6 @@
 
 #include "debug.h"
 
-//extern Net::QuestHandler *questHandler;
-
 namespace TmwAthena
 {
 
@@ -48,7 +46,6 @@ QuestHandler::QuestHandler() :
         0
     };
     handledMessages = _messages;
-//    questHandler = this;
 }
 
 void QuestHandler::handleMessage(Net::MessageIn &msg)
@@ -102,4 +99,4 @@ void QuestHandler::processPlayerQuests(Net::MessageIn &msg A_UNUSED) const
         questsWindow->rebuild(false);
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

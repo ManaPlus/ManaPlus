@@ -145,7 +145,8 @@ void MumbleManager::init()
     //
     // 1 unit = 1 meter
 
-    // Unit vector pointing out of the avatars eyes (here Front looks into scene).
+    // Unit vector pointing out of the avatars eyes 
+    // (here Front looks into scene).
     /* no way to look "up", 2d */
     mLinkedMemCache.fAvatarFront[1] = 0.0f;
 

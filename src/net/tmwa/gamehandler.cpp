@@ -164,4 +164,4 @@ void GameHandler::disconnect2() const
     MessageOut outMsg(CMSG_CLIENT_DISCONNECT);
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

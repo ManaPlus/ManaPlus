@@ -199,7 +199,6 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     keyboard.setEnabled(false);
 
     setWindowName("TextCommandEditor");
-    //setCloseButton(true);
     setDefaultSize(w, h, ImageRect::CENTER);
 
     mAdvanced = false;

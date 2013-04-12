@@ -129,4 +129,4 @@ public:
 
 typedef std::vector<ServerInfo> ServerInfos;
 
-#endif // SERVERINFO_H
+#endif  // SERVERINFO_H

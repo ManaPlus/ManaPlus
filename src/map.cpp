@@ -257,7 +257,7 @@ void Map::initializeAmbientLayers()
         }
         else
         {
-            break; // the FOR loop
+            break;  // the FOR loop
         }
 
         Image *const img = resman->getImage(getProperty(name + "image"));
@@ -510,8 +510,8 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
             graphics->setColor(userPalette->getColorWithAlpha(\
                 UserPalette::color));\
             graphics->fillRectangle(gcn::Rectangle(\
-                x0 * mTileWidth - scrollX,\
-                y * mTileHeight - scrollY,\
+                x0 * mTileWidth - scrollX, \
+                y * mTileHeight - scrollY, \
                 width, 32));\
         }\
     }\
@@ -566,7 +566,7 @@ void Map::drawCollision(Graphics *const graphics,
 void Map::updateAmbientLayers(const float scrollX, const float scrollY)
 {
     BLOCK_START("Map::updateAmbientLayers")
-    static int lastTick = tick_time; // static = only initialized at first call
+    static int lastTick = tick_time;  // static = only initialized at first call
 
     if (mLastAScrollX == 0.0f && mLastAScrollY == 0.0f)
     {
@@ -1230,7 +1230,7 @@ void Map::saveExtraLayer() const
 
 std::string Map::getUserMapDirectory() const
 {
-    return Client::getServerConfigDirectory() + 
+    return Client::getServerConfigDirectory() +
         dirSeparator + getProperty("_realfilename");
 }
 

@@ -163,7 +163,6 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
 
         default:
             break;
-
     }
     BLOCK_END("GeneralHandler::handleMessage")
 }
@@ -296,4 +295,4 @@ void GeneralHandler::gameEnded() const
     Ea::partyTab = nullptr;
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

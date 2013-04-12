@@ -45,8 +45,6 @@ unsigned int NormalOpenGLGraphics::mDrawCalls = 0;
 unsigned int NormalOpenGLGraphics::mLastDrawCalls = 0;
 #endif
 
-//unsigned int vertexBufSize = 500;
-
 NormalOpenGLGraphics::NormalOpenGLGraphics():
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),
@@ -326,7 +324,7 @@ bool NormalOpenGLGraphics::drawRescaledImage(const Image *const image,
     drawRescaledQuad(image, srcX, srcY, dstX, dstY, width, height,
                      desiredWidth, desiredHeight);
 
-    if (smooth) // A basic smooth effect...
+    if (smooth)  // A basic smooth effect...
     {
         setColorAlpha(0.2f);
         drawRescaledQuad(image, srcX, srcY, dstX - 1, dstY - 1, width, height,
@@ -1031,7 +1029,7 @@ void NormalOpenGLGraphics::updateScreen()
 #endif
     SDL_GL_SwapBuffers();
 // may be need clear?
-//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+//  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     BLOCK_END("Graphics::updateScreen")
 }
 
@@ -1502,4 +1500,4 @@ void NormalOpenGLGraphics::debugBindTexture(const Image *const image A_UNUSED)
 }
 #endif
 
-#endif // USE_OPENGL
+#endif  // USE_OPENGL

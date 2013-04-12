@@ -160,8 +160,7 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
     ImageSet *const imageset = ResourceManager::getInstance()->getImageSet(
         XML::getProperty(animationNode, "imageset", ""),
         XML::getProperty(animationNode, "width", 0),
-        XML::getProperty(animationNode, "height", 0)
-    );
+        XML::getProperty(animationNode, "height", 0));
 
     if (!imageset)
         return;

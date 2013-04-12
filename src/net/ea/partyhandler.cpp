@@ -276,19 +276,19 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg) const
         m->setX(msg.readInt16());    // x
         m->setY(msg.readInt16());    // y
         m->setOnline(msg.readInt8());     // online (if 0)
-        msg.readString(24); // party
-        msg.readString(24); // nick
+        msg.readString(24);  // party
+        msg.readString(24);  // nick
         m->setMap(msg.readString(16)); // map
     }
     else
     {
-        msg.skip(4);        // 0
-        msg.readInt16();    // x
-        msg.readInt16();    // y
-        msg.readInt8();     // online (if 0)
-        msg.readString(24); // party
-        msg.readString(24); // nick
-        msg.readString(16); // map
+        msg.skip(4);         // 0
+        msg.readInt16();     // x
+        msg.readInt16();     // y
+        msg.readInt8();      // online (if 0)
+        msg.readString(24);  // party
+        msg.readString(24);  // nick
+        msg.readString(16);  // map
     }
 }
 
@@ -353,11 +353,11 @@ void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg) const
         if (Being *const b = actorSpriteManager->findBeing(id))
             b->setParty(Ea::taParty);
     }
-}  
+}
 
 void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg) const
 {
-    const int id = msg.readInt32(); // id
+    const int id = msg.readInt32();  // id
     PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
@@ -402,4 +402,4 @@ ChatTab *PartyHandler::getTab()
     return partyTab;
 }
 
-} // namespace Ea
+}  // namespace Ea

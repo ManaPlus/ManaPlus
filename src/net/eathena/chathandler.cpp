@@ -55,7 +55,7 @@ ChatHandler::ChatHandler() :
         SMSG_WHISPER,
         SMSG_WHISPER_RESPONSE,
         SMSG_GM_CHAT,
-        SMSG_MVP, // MVP
+        SMSG_MVP,  // MVP
         SMSG_IGNORE_ALL_RESPONSE,
         0
     };
@@ -261,4 +261,4 @@ void ChatHandler::unIgnoreAll() const
     outMsg.writeInt8(1);
 }
 
-} // namespace EAthena
+}  // namespace EAthena

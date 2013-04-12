@@ -81,4 +81,4 @@ void ItemHandler::processItemRemove(Net::MessageIn &msg)
     }
 }
 
-} // namespace Ea
+}  // namespace Ea

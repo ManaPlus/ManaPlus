@@ -50,4 +50,4 @@ PartyTab::~PartyTab()
 {
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

@@ -84,6 +84,6 @@ class GuildHandler
         virtual ChatTab *getTab() const = 0;
 };
 
-}
+}  // namespace Net
 
-#endif // GUILDHANDLER_H
+#endif  // GUILDHANDLER_H

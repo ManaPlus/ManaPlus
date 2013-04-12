@@ -121,11 +121,11 @@ size_t InventoryHandler::getSize(const int type) const
         case Inventory::INVENTORY:
             return 100;
         case Inventory::STORAGE:
-            return 0; // Comes from server after items
+            return 0;  // Comes from server after items
         case Inventory::TRADE:
             return 12;
         case GUILD_STORAGE:
-            return 0; // Comes from server after items
+            return 0;  // Comes from server after items
         default:
             return 0;
     }
@@ -279,9 +279,9 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     msg.readInt8();  // attribute
     const int refine = msg.readInt8();
     for (int i = 0; i < 4; i++)
-        msg.readInt16(); // cards[i]
+        msg.readInt16();  // cards[i]
     const int equipType = msg.readInt16();
-    msg.readInt8(); // itemType
+    msg.readInt8();  // itemType
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
     const unsigned char err = msg.readInt8();
@@ -351,7 +351,7 @@ void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg) const
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16() - INVENTORY_OFFSET;
-    msg.readInt16(); // item id
+    msg.readInt16();  // item id
     msg.readInt32();  // id
     const int amount = msg.readInt16();
     msg.readInt8();  // type
@@ -402,8 +402,8 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
       * server. It always comes after the two SMSG_PLAYER_STORAGE_...
       * packets that update storage contents.
       */
-    msg.readInt16(); // Used count
-    const int size = msg.readInt16(); // Max size
+    msg.readInt16();  // Used count
+    const int size = msg.readInt16();  // Max size
 
     if (!mStorage)
         mStorage = new Inventory(Inventory::STORAGE, size);
@@ -429,7 +429,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     msg.readInt8();  // attribute
     const int refine = msg.readInt8();
     for (int i = 0; i < 4; i++)
-        msg.readInt16(); // card i
+        msg.readInt16();  // card i
 
     if (Item *const item = mStorage->getItem(index))
     {
@@ -483,7 +483,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
 
-    msg.readInt16(); // length
+    msg.readInt16();  // length
     Equipment *const equipment = PlayerInfo::getEquipment();
     if (equipment && !equipment->getBackend())
     {   // look like SMSG_PLAYER_INVENTORY was not received
@@ -499,11 +499,11 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         const int itemType = msg.readInt8();  // type
         unsigned char identified = msg.readInt8();  // identify flag
 
-        msg.readInt16(); // equip type
+        msg.readInt16();  // equip type
         const int equipType = msg.readInt16();
         msg.readInt8();  // attribute
         const int refine = msg.readInt8();
-        msg.skip(8);     // card
+        msg.skip(8);  // card
 
         if (mDebugInventory)
         {
@@ -522,7 +522,6 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 
         if (equipType)
             mEquips.setEquipment(getSlot(equipType), index);
-
     }
 }
 
@@ -540,7 +539,7 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 {
-    msg.readInt16(); // inder val - INVENTORY_OFFSET;
+    msg.readInt16();  // inder val - INVENTORY_OFFSET;
     const int equipType = msg.readInt16();
     const int flag = msg.readInt8();
 
@@ -573,4 +572,4 @@ void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)
         miniStatusWindow->updateArrows();
 }
 
-} // namespace Ea
+}  // namespace Ea

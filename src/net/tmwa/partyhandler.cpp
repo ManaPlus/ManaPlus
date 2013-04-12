@@ -155,7 +155,7 @@ void PartyHandler::kick(Being *const being) const
     {
         MessageOut outMsg(CMSG_PARTY_KICK);
         outMsg.writeInt32(being->getId());
-        outMsg.writeString("", 24); //Unused
+        outMsg.writeString("", 24);  // unused
     }
 }
 
@@ -173,7 +173,7 @@ void PartyHandler::kick(const std::string &name) const
 
     MessageOut outMsg(CMSG_PARTY_KICK);
     outMsg.writeInt32(m->getID());
-    outMsg.writeString(name, 24); //Unused
+    outMsg.writeString(name, 24);  // unused
 }
 
 void PartyHandler::chat(const std::string &text) const
@@ -203,4 +203,4 @@ void PartyHandler::setShareItems(const PartyShare share) const
     outMsg.writeInt16(static_cast<int16_t>(share));
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

@@ -146,4 +146,4 @@ void TradeHandler::cancel() const
     MessageOut outMsg(CMSG_TRADE_CANCEL_REQUEST);
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

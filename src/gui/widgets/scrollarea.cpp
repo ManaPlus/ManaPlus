@@ -809,7 +809,7 @@ void ScrollArea::mouseDragged(gcn::MouseEvent &event)
     {
         const gcn::Rectangle barDim = getHorizontalBarDimension();
 
-        const int pos = event.getX() - barDim.x 
+        const int pos = event.getX() - barDim.x
             - mHorizontalMarkerDragOffset;
         const int length = getHorizontalMarkerDimension().width;
 

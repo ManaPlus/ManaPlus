@@ -241,4 +241,4 @@ Network *Network::instance()
     return mInstance;
 }
 
-} // namespace EAthena
+}  // namespace EAthena

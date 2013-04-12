@@ -57,7 +57,7 @@ namespace
             Net::getTradeHandler()->respond(eventId == "yes");
         }
     } listener;
-}
+}  // anonimous
 
 namespace Ea
 {
@@ -130,18 +130,18 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
 
     switch (msg.readInt8())
     {
-        case 0: // Too far away
+        case 0:  // Too far away
             NotifyManager::notify(NotifyManager::TRADE_FAIL_FAR_AWAY,
                 tradePartnerName);
             break;
-        case 1: // Character doesn't exist
+        case 1:  // Character doesn't exist
             NotifyManager::notify(NotifyManager::TRADE_FAIL_CHAR_NOT_EXISTS,
                 tradePartnerName);
             break;
-        case 2: // Invite request check failed...
+        case 2:  // Invite request check failed...
             NotifyManager::notify(NotifyManager::TRADE_CANCELLED_ERROR);
             break;
-        case 3: // Trade accepted
+        case 3:  // Trade accepted
             if (tradeWindow)
             {
                 tradeWindow->reset();
@@ -151,7 +151,7 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
                 tradeWindow->setVisible(true);
             }
             break;
-        case 4: // Trade cancelled
+        case 4:  // Trade cancelled
             if (player_relations.hasPermission(tradePartnerName,
                 PlayerRelation::SPEECH_LOG))
             {
@@ -167,7 +167,7 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
             }
             PlayerInfo::setTrading(false);
             break;
-        default: // Shouldn't happen as well, but to be sure
+        default:  // Shouldn't happen as well, but to be sure
             NotifyManager::notify(NotifyManager::TRADE_ERROR_UNKNOWN,
                 tradePartnerName);
             if (tradeWindow)
@@ -284,4 +284,4 @@ void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED)
     PlayerInfo::setTrading(false);
 }
 
-} // namespace Ea
+}  // namespace Ea

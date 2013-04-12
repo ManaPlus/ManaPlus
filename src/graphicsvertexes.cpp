@@ -26,7 +26,6 @@
 
 #ifdef USE_OPENGL
 unsigned int vertexBufSize = 500;
-//int GraphicsVertexes::mUseOpenGL = 0;
 #endif
 
 SDLGraphicsVertexes::SDLGraphicsVertexes()
@@ -216,13 +215,6 @@ GLint *NormalOpenGLGraphicsVertexes::continueIntTexArray()
 }
 #endif
 
-#ifdef USE_OPENGL
-//void GraphicsVertexes::setLoadAsOpenGL(int useOpenGL)
-//{
-//    mUseOpenGL = useOpenGL;
-//}
-#endif
-
 ImageVertexes::ImageVertexes() :
     image(nullptr)
 {
@@ -242,7 +234,6 @@ ImageCollection::ImageCollection() :
     currentImage(nullptr),
     currentVert(nullptr)
 {
-
 }
 
 ImageCollection::~ImageCollection()

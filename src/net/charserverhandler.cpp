@@ -40,4 +40,4 @@ void CharServerHandler::unlockCharSelectDialog()
         mCharSelectDialog->unlock();
 }
 
-}
+}  // namespace Net

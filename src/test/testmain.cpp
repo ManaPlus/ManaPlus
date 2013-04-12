@@ -105,11 +105,11 @@ int TestMain::exec(const bool testAudio)
     if (!softwareTest)
     {
         int softFpsTest = invokeSoftwareRenderTest("8");
-        info.append(strprintf ("%d", softFpsTest));
+        info.append(strprintf("%d", softFpsTest));
         if (!softFpsTest)
         {
             softFps = readValue2(8);
-            info.append(strprintf (",%d", softFps));
+            info.append(strprintf(",%d", softFps));
             if (!softFps)
             {
                 softwareTest = -1;
@@ -118,7 +118,7 @@ int TestMain::exec(const bool testAudio)
             else
             {
                 rescaleTest[0] = invokeSoftwareRenderTest("5");
-                info.append(strprintf (",%d", rescaleTest[0]));
+                info.append(strprintf(",%d", rescaleTest[0]));
             }
         }
         else
@@ -143,7 +143,7 @@ int TestMain::exec(const bool testAudio)
             else
             {
                 rescaleTest[1] = invokeFastOpenGLRenderTest("6");
-                info.append(strprintf (",%d", rescaleTest[1]));
+                info.append(strprintf(",%d", rescaleTest[1]));
             }
         }
         else

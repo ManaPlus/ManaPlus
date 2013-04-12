@@ -116,6 +116,6 @@ class CharServerHandler
         CharCreateDialog *mCharCreateDialog;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // CHARSERVERHANDLER_H
+#endif  // CHARSERVERHANDLER_H

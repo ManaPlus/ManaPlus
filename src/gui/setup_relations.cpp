@@ -40,7 +40,7 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
-static const int COLUMNS_NR = 2; // name plus listbox
+static const int COLUMNS_NR = 2;  // name plus listbox
 static const int NAME_COLUMN = 0;
 static const unsigned int RELATION_CHOICE_COLUMN = 1;
 
@@ -279,7 +279,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mIgnoreActionChoicesBox->setActionEventId(ACTION_STRATEGY);
     mIgnoreActionChoicesBox->addActionListener(this);
 
-    int ignore_strategy_index = 0; // safe default
+    int ignore_strategy_index = 0;  // safe default
 
     if (player_relations.getPlayerIgnoreStrategy())
     {
@@ -330,7 +330,6 @@ void Setup_Relations::reset()
         if ((*player_relations.getPlayerIgnoreStrategies())[i] ==
             player_relations.getPlayerIgnoreStrategy())
         {
-
             selection = static_cast<int>(i);
             break;
         }
@@ -377,7 +376,6 @@ void Setup_Relations::action(const gcn::ActionEvent &event)
             mPlayerTableModel->updateModelInRow(row);
 
         player_relations.addListener(this);
-
     }
     else if (eventId == ACTION_DELETE)
     {
@@ -417,7 +415,7 @@ void Setup_Relations::updateAll()
     mPlayerTable->setModel(model);
     delete mPlayerTableModel;
     mPlayerTableModel = model;
-    int ignore_strategy_index = 0; // safe default
+    int ignore_strategy_index = 0;  // safe default
 
     if (player_relations.getPlayerIgnoreStrategy())
     {

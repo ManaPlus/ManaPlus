@@ -42,11 +42,11 @@ float Button::mAlpha = 1.0;
 
 enum
 {
-    BUTTON_STANDARD = 0, // 0
-    BUTTON_HIGHLIGHTED,  // 1
-    BUTTON_PRESSED,      // 2
-    BUTTON_DISABLED,     // 3
-    BUTTON_COUNT         // 4 - Must be last.
+    BUTTON_STANDARD = 0,  // 0
+    BUTTON_HIGHLIGHTED,   // 1
+    BUTTON_PRESSED,       // 2
+    BUTTON_DISABLED,      // 3
+    BUTTON_COUNT          // 4 - Must be last.
 };
 
 static std::string const data[BUTTON_COUNT] =

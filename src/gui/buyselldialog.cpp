@@ -57,7 +57,6 @@ BuySellDialog::BuySellDialog(std::string nick) :
 void BuySellDialog::init()
 {
     setWindowName("BuySell");
-    //setupWindow->registerWindowForReset(this);
     setCloseButton(true);
 
     static const char *buttonNames[] =
@@ -72,7 +71,7 @@ void BuySellDialog::init()
     {
         Button *const btn = new Button(this, gettext(*curBtn), *curBtn, this);
         if (!mBuyButton)
-            mBuyButton = btn; // For focus request
+            mBuyButton = btn;  // For focus request
         btn->setPosition(x, y);
         add(btn);
         x += btn->getWidth() + buttonPadding;

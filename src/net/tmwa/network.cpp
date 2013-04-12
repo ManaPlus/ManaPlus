@@ -221,4 +221,4 @@ Network *Network::instance()
     return mInstance;
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

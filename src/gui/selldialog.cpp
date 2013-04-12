@@ -68,7 +68,6 @@ SellDialog::SellDialog(std::string nick):
 void SellDialog::init()
 {
     setWindowName("Sell");
-    //setupWindow->registerWindowForReset(this);
     setResizable(true);
     setCloseButton(true);
     setStickyButtonLock(true);
@@ -231,8 +230,8 @@ void SellDialog::action(const gcn::ActionEvent &event)
             mMaxItems -= mAmountItems;
             while (mAmountItems > 0)
             {
-                // This order is important, item->getCurrentInvIndex() would return
-                // the inventory index of the next Duplicate otherwise.
+                // This order is important, item->getCurrentInvIndex() would
+                // return the inventory index of the next Duplicate otherwise.
                 int itemIndex = item->getCurrentInvIndex();
                 const int sellCount = item->sellCurrentDuplicate(mAmountItems);
 #ifdef MANASERV_SUPPORT

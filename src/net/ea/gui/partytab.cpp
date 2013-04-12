@@ -249,4 +249,4 @@ void PartyTab::playNewMessageSound()
 {
     soundManager.playGuiSound(SOUND_GUILD);
 }
-} // namespace Ea
+}  // namespace Ea

@@ -124,6 +124,6 @@ class Download final
         bool mIgnoreError;
 };
 
-} // namespace Net
+}  // namespace Net
 
-#endif // NET_DOWNLOAD_H
+#endif  // NET_DOWNLOAD_H

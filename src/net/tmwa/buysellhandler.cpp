@@ -143,4 +143,4 @@ void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg) const
     }
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena

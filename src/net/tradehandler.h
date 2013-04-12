@@ -63,6 +63,7 @@ class TradeHandler
         virtual void cancel() const
         { }
 };
-}
 
-#endif // TRADEHANDLER_H
+}  // namespace Net
+
+#endif  // TRADEHANDLER_H

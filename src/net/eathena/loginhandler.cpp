@@ -133,7 +133,7 @@ void LoginHandler::sendLoginRegister(const std::string &username,
                                      const std::string &email A_UNUSED) const
 {
     MessageOut outMsg(0x0064);
-    outMsg.writeInt32(0); // client version
+    outMsg.writeInt32(0);  // client version
     outMsg.writeString(username, 24);
     outMsg.writeStringNoLog(password, 24);
 
@@ -197,4 +197,4 @@ void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
         Client::setState(STATE_LOGIN);
 }
 
-} // namespace EAthena
+}  // namespace EAthena

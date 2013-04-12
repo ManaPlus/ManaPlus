@@ -60,7 +60,7 @@
 
 #include "inputmanager.h"
 #include "keydata.h"
-#include "mouseinput.h" 
+#include "mouseinput.h"
 
 #include <guichan/exception.hpp>
 
@@ -242,8 +242,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 
         default:
             break;
-
-    } // end switch
+    }  // end switch
 }
 
 int SDLInput::convertMouseButton(const int button)

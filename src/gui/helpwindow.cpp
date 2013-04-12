@@ -93,7 +93,6 @@ void HelpWindow::action(const gcn::ActionEvent &event)
                 didYouKnowWindow->requestMoveToTop();
         }
     }
-
 }
 
 void HelpWindow::handleLink(const std::string &link,

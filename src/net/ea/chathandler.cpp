@@ -131,7 +131,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg) const
             if (player_relations.hasPermission(nick, PlayerRelation::TRADE))
             {
                 if (shopWindow)
-                {   //commands to shop from player
+                {   // commands to shop from player
                     if (chatMsg.find("!selllist ") == 0)
                     {
                         if (tradeBot)
@@ -336,7 +336,7 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
 void ChatHandler::processMVP(Net::MessageIn &msg) const
 {
     // Display MVP player
-    const int id = msg.readInt32(); // id
+    const int id = msg.readInt32();  // id
     if (localChatTab && actorSpriteManager && config.getBoolValue("showMVP"))
     {
         const Being *const being = actorSpriteManager->findBeing(id);
@@ -390,4 +390,4 @@ void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg) const
     }
 }
 
-} // namespace Ea
+}  // namespace Ea

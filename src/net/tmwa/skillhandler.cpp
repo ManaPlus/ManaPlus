@@ -71,7 +71,8 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("SkillHandler::handleMessage")
 }
 
-void SkillHandler::useBeing(const int id, const int level, const int beingId) const
+void SkillHandler::useBeing(const int id, const int level,
+                            const int beingId) const
 {
     MessageOut outMsg(CMSG_SKILL_USE_BEING);
     outMsg.writeInt16(static_cast<int16_t>(id));
@@ -96,4 +97,4 @@ void SkillHandler::useMap(const int id, const std::string &map) const
     outMsg.writeString(map, 16);
 }
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
