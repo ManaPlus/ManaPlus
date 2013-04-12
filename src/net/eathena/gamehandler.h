@@ -56,7 +56,7 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
 
         void mapLoadedEvent() const override;
 
-        void processMapCharId(Net::MessageIn &msg);
+        void processMapCharId(Net::MessageIn &msg) const;
 
         bool mustPing() const override A_WARN_UNUSED
         { return true; }

@@ -55,7 +55,7 @@ int execFileWait(std::string pathName, std::string name A_UNUSED,
     if (!arg2.empty())
         args.append(" ").append(arg2);
 
-    if (CreateProcess(pathName.c_str(), static_cast<char*>(args.c_str()),
+    if (CreateProcess(pathName.c_str(), const_cast<char*>(args.c_str()),
         nullptr, nullptr, false, CREATE_DEFAULT_ERROR_MODE, nullptr, nullptr,
         &siStartupInfo, &piProcessInfo) != false)
     {
@@ -231,7 +231,7 @@ bool execFile(std::string pathName, std::string name,
 #ifdef WIN32
 bool openBrowser(std::string url)
 {
-    return static_cast<int>(ShellExecute(nullptr, "open",
+    return reinterpret_cast<int>(ShellExecute(nullptr, "open",
         replaceAll(url, " ", "").c_str(),
         nullptr, nullptr, SW_SHOWNORMAL)) > 32;
 }

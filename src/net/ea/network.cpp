@@ -145,7 +145,7 @@ void Network::flush()
         return;
 
     SDL_mutexP(mMutex);
-    int ret = TcpNet::send(mSocket, mOutBuffer, mOutSize);
+    const int ret = TcpNet::send(mSocket, mOutBuffer, mOutSize);
     DEBUGLOG(std::string("Send ").append(toString(mOutSize)).append(" bytes"));
     if (ret < static_cast<int>(mOutSize))
     {
@@ -254,7 +254,7 @@ void Network::receive()
                     continue;
                 }
 
-                int ret = TcpNet::recv(mSocket, mInBuffer + mInSize,
+                const int ret = TcpNet::recv(mSocket, mInBuffer + mInSize,
                     BUFFER_SIZE - mInSize);
 
                 if (!ret)

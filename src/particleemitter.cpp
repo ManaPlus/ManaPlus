@@ -140,7 +140,8 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             {
                 mParticleGravity = readParticleEmitterProp(propertyNode, 0.0f);
             }
-            else if (name == "randomnes" || name == "randomness")  // legacy bug
+            else if (name == "randomnes"
+                     || name == "randomness")  // legacy bug
             {
                 mParticleRandomness = readParticleEmitterProp(propertyNode, 0);
             }

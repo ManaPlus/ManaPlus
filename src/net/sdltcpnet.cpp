@@ -24,14 +24,15 @@
 #include "logger.h"
 
 #include <sys/socket.h>
+
+#if defined(M_TCPOK) && !defined(ANDROID)
+#include <netinet/in.h>
+#include <netdb.h>
+#include <linux/tcp.h>
+#else
 #include <netinet/in.h>
 #include <netinet/tcp.h>
 #include <netdb.h>
-
-#if defined(M_TCPOK) && !defined(ANDROID)
-#include <linux/tcp.h>
-#else
-// using manual hack, because in this mode linux/tcp.h compiled with errors
 #include <netinet/tcp.h>
 // Use linear timeouts for thin streams
 #define TCP_THIN_LINEAR_TIMEOUTS 16
@@ -44,7 +45,8 @@
 #include "debug.h"
 
 // because actual struct is hidden in SDL_net we reinroducing it here
-struct TCPsocketHack {
+struct TCPsocketHack
+{
     int ready;
     int channel;
     IPaddress remoteAddress;
@@ -67,7 +69,7 @@ void TcpNet::closeSocket(TcpNet::Socket socket)
     SDLNet_TCP_Close(socket);
 }
 
-int TcpNet::send(TcpNet::Socket sock, const void *data, int len)
+int TcpNet::send(TcpNet::Socket sock, const void *const data, const int len)
 {
     return SDLNet_TCP_Send(sock, data, len);
 }
@@ -77,17 +79,19 @@ char *TcpNet::getError()
     return SDLNet_GetError();
 }
 
-int TcpNet::resolveHost(IPaddress *address, const char *host, Uint16 port)
+int TcpNet::resolveHost(IPaddress *const address, const char *host,
+                        const Uint16 port)
 {
     return SDLNet_ResolveHost(address, host, port);
 }
 
-TcpNet::Socket TcpNet::open(IPaddress *ip)
+TcpNet::Socket TcpNet::open(IPaddress *const ip)
 {
     TcpNet::Socket sock = SDLNet_TCP_Open(ip);
     if (sock && ip)
     {
-        TCPsocketHack *hack = reinterpret_cast<TCPsocketHack *>(sock);
+        const TCPsocketHack *const hack
+            = reinterpret_cast<const TCPsocketHack *const>(sock);
         // here we using some magic to compare TCPsocket and own padding
         // because actual struct TCPsocket not in headers
         if (hack)
@@ -116,7 +120,7 @@ TcpNet::Socket TcpNet::open(IPaddress *ip)
     return sock;
 }
 
-TcpNet::SocketSet TcpNet::allocSocketSet(int maxsockets)
+TcpNet::SocketSet TcpNet::allocSocketSet(const int maxsockets)
 {
     return SDLNet_AllocSocketSet(maxsockets);
 }
@@ -126,7 +130,7 @@ int TcpNet::addSocket(TcpNet::SocketSet set, TcpNet::Socket sock)
     return SDLNet_TCP_AddSocket(set, sock);
 }
 
-int TcpNet::checkSockets(TcpNet::SocketSet set, Uint32 timeout)
+int TcpNet::checkSockets(const TcpNet::SocketSet set, const Uint32 timeout)
 {
     return SDLNet_CheckSockets(set, timeout);
 }

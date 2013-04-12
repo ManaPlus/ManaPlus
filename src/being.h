@@ -276,7 +276,7 @@ class Being : public ActorSprite, public ConfigListener
          * @param type the attack type
          */
         void handleAttack(Being *const victim, const int damage,
-                                  const int attackId = 1);
+                          const int attackId = 1);
 
         virtual void handleSkill(Being *const victim, const int damage,
                                  const int skillId, const int skillLevel);

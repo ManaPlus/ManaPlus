@@ -783,7 +783,7 @@ struct WalkLayerLoader
 };
 
 WalkLayer *ResourceManager::getWalkLayer(const std::string &name,
-                                        Map *const map)
+                                         Map *const map)
 {
     WalkLayerLoader rl = {name, map};
     return static_cast<WalkLayer*>(get("map_" + name,

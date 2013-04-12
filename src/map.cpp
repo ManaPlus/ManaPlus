@@ -566,7 +566,7 @@ void Map::drawCollision(Graphics *const graphics,
 void Map::updateAmbientLayers(const float scrollX, const float scrollY)
 {
     BLOCK_START("Map::updateAmbientLayers")
-    static int lastTick = tick_time;  // static = only initialized at first call
+    static int lastTick = tick_time;
 
     if (mLastAScrollX == 0.0f && mLastAScrollY == 0.0f)
     {

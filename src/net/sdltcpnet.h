@@ -38,19 +38,20 @@ namespace TcpNet
 
     void closeSocket(TcpNet::Socket socket);
 
-    int send(TcpNet::Socket sock, const void *data, int len);
+    int send(TcpNet::Socket sock, const void *const data, const int len);
 
     char *getError();
 
-    int resolveHost(IPaddress *address, const char *host, Uint16 port);
+    int resolveHost(IPaddress *const address, const char *host,
+                    const Uint16 port);
 
-    TcpNet::Socket open(IPaddress *ip);
+    TcpNet::Socket open(IPaddress *const ip);
 
-    SocketSet allocSocketSet(int maxsockets);
+    SocketSet allocSocketSet(const int maxsockets);
 
     int addSocket(TcpNet::SocketSet set, TcpNet::Socket sock);
 
-    int checkSockets(TcpNet::SocketSet set, Uint32 timeout);
+    int checkSockets(const TcpNet::SocketSet set, const Uint32 timeout);
 
     int recv(TcpNet::Socket sock, void *data, int maxlen);
 

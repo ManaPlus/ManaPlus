@@ -87,7 +87,7 @@ class Resource
         std::string getSource() const A_WARN_UNUSED
         { return mSource; }
 
-        void setProtected(bool b)
+        void setProtected(const bool b)
         { mProtected = b; }
 
         bool isProtected() const
