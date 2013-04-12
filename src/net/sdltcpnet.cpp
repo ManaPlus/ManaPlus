@@ -21,9 +21,24 @@
 #include "net/sdltcpnet.h"
 
 #if defined __linux__ || defined __linux
+#include "logger.h"
+
 #include <sys/socket.h>
-#include <linux/tcp.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <netdb.h>
+
+#if defined(M_TCPOK) && !defined(ANDROID)
+#include <linux/tcp.h>
+#else
+// using manual hack, because in this mode linux/tcp.h compiled with errors
+#include <netinet/tcp.h>
+// Use linear timeouts for thin streams
+#define TCP_THIN_LINEAR_TIMEOUTS 16
+// Fast retrans. after 1 dupack
+#define TCP_THIN_DUPACK          17
+#endif
+
 #endif
 
 #include "debug.h"
@@ -66,8 +81,6 @@ int TcpNet::resolveHost(IPaddress *address, const char *host, Uint16 port)
 {
     return SDLNet_ResolveHost(address, host, port);
 }
-
-#include "logger.h"
 
 TcpNet::Socket TcpNet::open(IPaddress *ip)
 {
