@@ -1,3 +1,17 @@
+2013-04-14 New release 1.3.4.14
+fix: login dialog size with some localizations.
+fix: big http links in chat.
+fix: unstackable items sell.
+fix: random rare crashes in closing windows.
+add: option for mode players names in map.
+add: sound effects in notifications.
+add: animated emotes.
+add: animated effects for effects.xml.
+add: turkish language and translation.
+add: improve perfomance.
+add: improve latency in linux versions.
+add: option to left all per map sprites in memory.
+
 2013-03-31 New release 1.3.3.31
 fix: talking text position.
 fix: mumble configure parameter.
