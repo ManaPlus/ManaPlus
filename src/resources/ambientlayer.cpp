@@ -40,29 +40,28 @@ AmbientLayer::AmbientLayer(Image *const img, const float parallax,
     if (!mImage)
         return;
 
-    if (keepRatio && !imageHelper->useOpenGL()
-        /*&& defaultScreenWidth != 0
-        && defaultScreenHeight != 0*/
-        && mainGraphics->mWidth != defaultScreenWidth
-        && mainGraphics->mHeight != defaultScreenHeight)
+    if (keepRatio && !imageHelper->useOpenGL())
     {
-        // Rescale the overlay to keep the ratio as if we were on
-        // the default resolution...
-        Image *const rescaledOverlay = ResourceManager::getInstance()->
-            getRescaled(mImage, static_cast<int>(mImage->mBounds.w)
-            / defaultScreenWidth * mainGraphics->mWidth,
-            static_cast<int>(mImage->mBounds.h)
-            / defaultScreenHeight * mainGraphics->mHeight);
+        const int width = mainGraphics->mWidth;
+        const int height = mainGraphics->mHeight;
+        if (width != defaultScreenWidth && height != defaultScreenHeight)
+        {
+            // Rescale the overlay to keep the ratio as if we were on
+            // the default resolution...
+            Image *const rescaledOverlay = ResourceManager::getInstance()->
+                getRescaled(mImage, static_cast<int>(mImage->mBounds.w)
+                / defaultScreenWidth * width,
+                static_cast<int>(mImage->mBounds.h)
+                / defaultScreenHeight * height);
 
-        if (rescaledOverlay)
-            mImage = rescaledOverlay;
-        else
-            mImage->incRef();
+            if (rescaledOverlay)
+                mImage = rescaledOverlay;
+            else
+                mImage->incRef();
+            return;
+        }
     }
-    else
-    {
-        mImage->incRef();
-    }
+    mImage->incRef();
 }
 
 AmbientLayer::~AmbientLayer()
@@ -79,27 +78,28 @@ void AmbientLayer::update(const int timePassed, const float dx, const float dy)
     if (!mImage)
         return;
 
+    const float time = static_cast<float>(timePassed) / 10;
     // Self scrolling of the overlay
-    mPosX -= mSpeedX * static_cast<float>(timePassed) / 10;
-    mPosY -= mSpeedY * static_cast<float>(timePassed) / 10;
+    mPosX -= mSpeedX * time;
+    mPosY -= mSpeedY * time;
 
     // Parallax scrolling
     mPosX += dx * mParallax;
     mPosY += dy * mParallax;
 
-    const int imgW = mImage->mBounds.w;
-    const int imgH = mImage->mBounds.h;
+    const float imgW = mImage->mBounds.w;
+    const float imgH = mImage->mBounds.h;
 
     // Wrap values
     while (mPosX > imgW)
-        mPosX -= static_cast<float>(imgW);
+        mPosX -= imgW;
     while (mPosX < 0)
-        mPosX += static_cast<float>(imgW);
+        mPosX += imgW;
 
     while (mPosY > imgH)
-        mPosY -= static_cast<float>(imgH);
+        mPosY -= imgH;
     while (mPosY < 0)
-        mPosY += static_cast<float>(imgH);
+        mPosY += imgH;
 }
 
 void AmbientLayer::draw(Graphics *const graphics, const int x,
