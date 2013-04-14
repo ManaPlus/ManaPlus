@@ -120,7 +120,7 @@ void ColorDB::loadColorLists()
     {
         if (xmlNameEqual(node, "list"))
         {
-            std::string name = XML::getProperty(node, "name", "");
+            const std::string name = XML::getProperty(node, "name", "");
             if (name.empty())
                 continue;
 
@@ -185,7 +185,8 @@ int ColorDB::getHairSize()
     return mHairColorsSize;
 }
 
-std::map <int, ColorDB::ItemColor> *ColorDB::getColorsList(std::string name)
+const std::map <int, ColorDB::ItemColor>
+     *ColorDB::getColorsList(const std::string &name)
 {
     const ColorListsIterator it = mColorLists.find(name);
 

@@ -330,7 +330,7 @@ class ItemInfo final
         /** Stores the names of sounds to be played at certain event. */
         std::map <EquipmentSoundEvent, StringVect> mSounds;
         std::map <int, int> mTags;
-        std::map <int, ColorDB::ItemColor> *mColors;
+        const std::map <int, ColorDB::ItemColor> *mColors;
         std::string mColorList;
         int mHitEffectId;
         int mCriticalHitEffectId;

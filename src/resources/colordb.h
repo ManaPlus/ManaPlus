@@ -75,7 +75,8 @@ namespace ColorDB
 
     int getHairSize() A_WARN_UNUSED;
 
-    std::map <int, ItemColor> *getColorsList(std::string name) A_WARN_UNUSED;
+    const std::map <int, ItemColor> *getColorsList(const std::string
+                                                   &name) A_WARN_UNUSED;
 
     // Color DB
     typedef std::map<int, ItemColor> Colors;
