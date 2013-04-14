@@ -22,7 +22,7 @@
 
 namespace Cursor
 {
-    static StrToCursor hoverCursors[] =
+    static const StrToCursor hoverCursors[] =
     {
         {"select", CURSOR_POINTER},
         {"pointer", CURSOR_POINTER},
