@@ -42,7 +42,7 @@ class SpellShortcutContainer final : public ShortcutContainer
         /**
          * Constructor. Initializes the graphic.
          */
-        SpellShortcutContainer(const unsigned number);
+        explicit SpellShortcutContainer(const unsigned number);
 
         A_DELETE_COPY(SpellShortcutContainer)
 

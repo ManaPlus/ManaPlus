@@ -70,7 +70,7 @@ class RegisterDialog final : public Window, public gcn::ActionListener,
          *
          * @see Window::Window
          */
-        RegisterDialog(LoginData *const loginData);
+        explicit RegisterDialog(LoginData *const loginData);
 
         A_DELETE_COPY(RegisterDialog)
 

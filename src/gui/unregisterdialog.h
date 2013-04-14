@@ -46,7 +46,7 @@ class UnRegisterDialog final : public Window, public gcn::ActionListener
          *
          * @see Window::Window
          */
-        UnRegisterDialog(LoginData *const loginData);
+        explicit UnRegisterDialog(LoginData *const loginData);
 
         A_DELETE_COPY(UnRegisterDialog)
 

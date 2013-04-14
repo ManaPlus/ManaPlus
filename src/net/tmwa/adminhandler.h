@@ -53,4 +53,4 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_ADMINHANDLER_H
+#endif  // NET_TA_ADMINHANDLER_H

@@ -57,4 +57,4 @@ class AuctionManager final
 
 extern AuctionManager *auctionManager;
 
-#endif // AUCTIONMANAGER_H
+#endif  // AUCTIONMANAGER_H

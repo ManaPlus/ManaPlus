@@ -55,4 +55,4 @@ std::ostream& operator <<(std::ostream &os, const Position &p);
  */
 std::ostream& operator <<(std::ostream &os, const Path &path);
 
-#endif // POSITION_H
+#endif  // POSITION_H

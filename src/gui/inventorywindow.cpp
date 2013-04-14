@@ -240,7 +240,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     enableVisibleSound(true);
     slotsChanged(mInventory);
 
-    widgetResized(nullptr);
+    widgetResized(gcn::Event(nullptr));
     if (!isMainInventory())
         setVisible(true);
 }

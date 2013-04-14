@@ -46,7 +46,7 @@ class ChangeEmailDialog final : public Window, public gcn::ActionListener
          *
          * @see Window::Window
          */
-        ChangeEmailDialog(LoginData *const data);
+        explicit ChangeEmailDialog(LoginData *const data);
 
         A_DELETE_COPY(ChangeEmailDialog)
 
@@ -78,4 +78,4 @@ class ChangeEmailDialog final : public Window, public gcn::ActionListener
         LoginData *mLoginData;
 };
 
-#endif // GUI_CHANGEEMAIL_H
+#endif  // GUI_CHANGEEMAIL_H

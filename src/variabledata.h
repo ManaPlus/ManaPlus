@@ -39,7 +39,7 @@ class VariableData
         };
 
         virtual ~VariableData()
-        {};
+        {}
 
         virtual int getType() const A_WARN_UNUSED = 0;
 };

@@ -69,4 +69,4 @@ class Network final : public Ea::Network
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_NETWORK_H
+#endif  // NET_TA_NETWORK_H

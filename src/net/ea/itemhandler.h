@@ -45,4 +45,4 @@ class ItemHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_ITEMHANDLER_H
+#endif  // NET_EA_ITEMHANDLER_H

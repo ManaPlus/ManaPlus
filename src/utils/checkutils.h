@@ -29,4 +29,4 @@ bool reportFalseReal(const bool val, const char *const file,
 bool reportTrueReal(const bool val, const char *const file,
                     const unsigned line);
 
-#endif // UTILS_CHECKUTILS_H
+#endif  // UTILS_CHECKUTILS_H

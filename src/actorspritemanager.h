@@ -145,8 +145,8 @@ class ActorSpriteManager final: public ConfigListener
         Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxTileDist,
                                       const ActorSprite::Type
-                                      type = Being::UNKNOWN
-                                      ) const A_WARN_UNUSED;
+                                      type = Being::UNKNOWN)
+                                      const A_WARN_UNUSED;
 
         /**
          * Finds a being by name and (optionally) by type.
@@ -159,8 +159,8 @@ class ActorSpriteManager final: public ConfigListener
         * Finds a nearest being by name and (optionally) by type.
         */
         Being *findNearestByName(const std::string &name,
-                                 const Being::Type &type = Being::UNKNOWN
-                                 ) const A_WARN_UNUSED;
+                                 const Being::Type &type = Being::UNKNOWN)
+                                 const A_WARN_UNUSED;
 
        /**
         * Heal all players in distance.
@@ -289,7 +289,7 @@ class ActorSpriteManager final: public ConfigListener
 
         int getAttackMobIndex(const std::string &name) const A_WARN_UNUSED;
 
-        int getPriorityAttackMobIndex(const std::string &name) 
+        int getPriorityAttackMobIndex(const std::string &name)
                                       const A_WARN_UNUSED;
 
         int getPickupItemIndex(const std::string &name) const A_WARN_UNUSED;
@@ -352,4 +352,4 @@ class ActorSpriteManager final: public ConfigListener
 
 extern ActorSpriteManager *actorSpriteManager;
 
-#endif // ACTORSPRITEMANAGER_H
+#endif  // ACTORSPRITEMANAGER_H

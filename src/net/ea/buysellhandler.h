@@ -67,4 +67,4 @@ class BuySellHandler : public Net::BuySellHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_BUYSELLHANDLER_H
+#endif  // NET_EA_BUYSELLHANDLER_H

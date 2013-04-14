@@ -67,4 +67,4 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_PARTYHANDLER_H
+#endif  // NET_TA_PARTYHANDLER_H

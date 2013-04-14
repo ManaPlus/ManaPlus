@@ -61,7 +61,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC Rectangle
     {
     public:
-
         /**
          * Constructor. The default rectangle is an empty rectangle
          * at the coordinates (0,0).
@@ -138,6 +137,6 @@ namespace gcn
          */
         int height;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_RECTANGEL_HPP
+#endif  // end GCN_RECTANGEL_HPP

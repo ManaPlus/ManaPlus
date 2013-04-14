@@ -90,7 +90,7 @@ namespace SpriteAction
     static const std::string USE_ITEM = "item";
     static const std::string SPAWN = "spawn";
     static const std::string INVALID("");
-}
+}  // namespace SpriteAction
 
 enum SpriteDirection
 {
@@ -213,4 +213,4 @@ class SpriteDef final : public Resource
         std::set<std::string> mProcessedFiles;
 };
 
-#endif // SPRITEDEF_H
+#endif  // SPRITEDEF_H

@@ -45,7 +45,7 @@ class Container : public gcn::Container,
                   public Widget2
 {
     public:
-        Container(const Widget2 *const widget);
+        explicit Container(const Widget2 *const widget);
 
         ~Container();
 

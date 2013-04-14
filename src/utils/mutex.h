@@ -57,7 +57,7 @@ class Mutex
 class MutexLocker
 {
     public:
-        MutexLocker(Mutex *mutex);
+        explicit MutexLocker(Mutex *mutex);
 
         ~MutexLocker();
 
@@ -100,4 +100,4 @@ inline MutexLocker::~MutexLocker()
     mMutex->unlock();
 }
 
-#endif // MUTEX_H
+#endif  // MUTEX_H

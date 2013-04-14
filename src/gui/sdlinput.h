@@ -124,7 +124,7 @@ namespace Key
         UP,
         DOWN
     };
-}
+}  // namespace Key
 
 /**
  * SDL implementation of Input.
@@ -132,7 +132,6 @@ namespace Key
 class SDLInput final : public gcn::Input
 {
 public:
-
     /**
      * Constructor.
      */

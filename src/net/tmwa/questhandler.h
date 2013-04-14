@@ -49,4 +49,4 @@ class QuestHandler final : public MessageHandler
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_QUESTHANDLER_H
+#endif  // NET_TA_QUESTHANDLER_H

@@ -31,7 +31,7 @@
 class TradeTab final : public ChatTab
 {
     public:
-        TradeTab(const Widget2 *const widget);
+        explicit TradeTab(const Widget2 *const widget);
 
         A_DELETE_COPY(TradeTab)
 

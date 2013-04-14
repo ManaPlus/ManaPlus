@@ -66,7 +66,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC WidgetListener
     {
     public:
-
         /**
          * Destructor.
          */
@@ -121,6 +120,6 @@ namespace gcn
         WidgetListener()
         { }
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_WIDGETLISTENER_HPP
+#endif  // end GCN_WIDGETLISTENER_HPP

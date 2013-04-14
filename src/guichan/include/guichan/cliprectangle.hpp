@@ -61,7 +61,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC ClipRectangle final : public Rectangle
     {
     public:
-
         /**
          * Constructor.
          */
@@ -107,6 +106,6 @@ namespace gcn
          */
         int yOffset;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_CLIPRECTANGLE_HPP
+#endif  // end GCN_CLIPRECTANGLE_HPP

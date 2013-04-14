@@ -62,7 +62,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC MouseEvent: public InputEvent
     {
     public:
-
         /**
          * Constructor.
          *
@@ -145,7 +144,6 @@ namespace gcn
             ENTERED,
             EXITED,
             DRAGGED
-
         };
 
         /**
@@ -196,6 +194,6 @@ namespace gcn
          */
         friend class Gui;
     };
-}
+}  // namespace gcn
 
-#endif // GCN_MOUSEEVENT_HPP
+#endif  // GCN_MOUSEEVENT_HPP

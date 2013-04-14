@@ -83,4 +83,4 @@ class StatusPopup final : public Popup
         Label *mCameraMode;
 };
 
-#endif // StatusPopup_H
+#endif  // StatusPopup_H

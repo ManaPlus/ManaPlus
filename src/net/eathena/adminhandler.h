@@ -53,4 +53,4 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
 }  // namespace EAthena
 
-#endif // NET_EATHENA_ADMINHANDLER_H
+#endif  // NET_EATHENA_ADMINHANDLER_H

@@ -64,4 +64,4 @@ namespace Cursor
         }
         return CURSOR_POINTER;
     }
-}// namespace Cursor
+}  // namespace Cursor

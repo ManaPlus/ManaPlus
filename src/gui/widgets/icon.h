@@ -74,4 +74,4 @@ class Icon final : public gcn::Widget,
         Image *mImage;
 };
 
-#endif // ICON_H
+#endif  // ICON_H

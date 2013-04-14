@@ -52,7 +52,7 @@ class Button final : public gcn::Button,
         /**
          * Default constructor.
          */
-        Button(const Widget2 *const widget);
+        explicit Button(const Widget2 *const widget);
 
         /**
          * Constructor, sets the caption of the button to the given string and

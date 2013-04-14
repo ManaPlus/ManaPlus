@@ -34,7 +34,7 @@ namespace TmwAthena
 class PartyTab : public Ea::PartyTab
 {
     public:
-        PartyTab(const Widget2 *const widget);
+        explicit PartyTab(const Widget2 *const widget);
 
         A_DELETE_COPY(PartyTab)
 

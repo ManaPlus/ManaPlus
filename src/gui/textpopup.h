@@ -79,4 +79,4 @@ class TextPopup final : public Popup
         Label *mText3;
 };
 
-#endif // TEXTPOPUP_H
+#endif  // TEXTPOPUP_H

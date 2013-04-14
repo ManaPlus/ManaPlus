@@ -81,4 +81,4 @@ class SpellManager final
 
 extern SpellManager *spellManager;
 
-#endif // SPELLMANAGER_H
+#endif  // SPELLMANAGER_H

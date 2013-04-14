@@ -31,7 +31,7 @@ class TextField;
 class Setup_Touch final : public SetupTabScroll
 {
     public:
-        Setup_Touch(const Widget2 *const widget);
+        explicit Setup_Touch(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Touch)
 

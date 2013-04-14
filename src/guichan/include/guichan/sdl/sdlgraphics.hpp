@@ -62,7 +62,6 @@ namespace gcn
     class GCN_EXTENSION_DECLSPEC SDLGraphics : public Graphics
     {
     public:
-
         // Needed so that drawImage(gcn::Image *, int, int) is visible.
         using Graphics::drawImage;
 
@@ -154,6 +153,6 @@ namespace gcn
         Color mColor;
         bool mAlpha;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_SDLGRAPHICS_HPP
+#endif  // end GCN_SDLGRAPHICS_HPP

@@ -57,6 +57,6 @@ namespace Cursor
     };
 
     Cursor stringToCursor(const std::string &name) A_WARN_UNUSED;
-}
+}  // namespace Cursor
 
 #endif

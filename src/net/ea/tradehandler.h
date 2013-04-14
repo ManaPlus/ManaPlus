@@ -56,4 +56,4 @@ class TradeHandler : public Net::TradeHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_TRADEHANDLER_H
+#endif  // NET_EA_TRADEHANDLER_H

@@ -122,7 +122,7 @@ WhoIsOnline::WhoIsOnline():
 
     download();
 
-    widgetResized(nullptr);
+    widgetResized(gcn::Event(nullptr));
     config.addListener("updateOnlineList", this);
     config.addListener("groupFriends", this);
     mUpdateOnlineList = config.getBoolValue("updateOnlineList");

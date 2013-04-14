@@ -34,7 +34,7 @@
 class TestLauncher
 {
     public:
-        TestLauncher(std::string test);
+        explicit TestLauncher(std::string test);
 
         A_DELETE_COPY(TestLauncher)
 
@@ -66,4 +66,4 @@ class TestLauncher
 };
 
 #endif
-#endif // TEST_TESTLAUNCHER_H
+#endif  // TEST_TESTLAUNCHER_H

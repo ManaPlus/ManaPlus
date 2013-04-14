@@ -36,7 +36,7 @@
 class WindowContainer : public Container
 {
     public:
-        WindowContainer(const Widget2 *const widget);
+        explicit WindowContainer(const Widget2 *const widget);
 
         void slowLogic();
 

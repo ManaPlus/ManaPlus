@@ -36,7 +36,7 @@ public:
     /**
      * Constructor
      */
-    NpcPostDialog(const int npcId);
+    explicit NpcPostDialog(const int npcId);
 
     A_DELETE_COPY(NpcPostDialog)
 

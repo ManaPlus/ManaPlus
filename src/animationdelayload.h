@@ -51,4 +51,4 @@ class AnimationDelayLoad final
         std::string mAction;
 };
 
-#endif // ANIMATIONDELAYLOAD_H
+#endif  // ANIMATIONDELAYLOAD_H

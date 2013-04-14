@@ -80,4 +80,4 @@ class EffectManager final
 
 extern EffectManager *effectManager;
 
-#endif // EFFECT_MANAGER_H
+#endif  // EFFECT_MANAGER_H

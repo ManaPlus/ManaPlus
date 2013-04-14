@@ -82,7 +82,7 @@ class WindowMenu final : public Container,
                          public gcn::MouseListener
 {
     public:
-        WindowMenu(const Widget2 *const widget);
+        explicit WindowMenu(const Widget2 *const widget);
 
         A_DELETE_COPY(WindowMenu)
 

@@ -33,4 +33,4 @@ bool openBrowser(std::string url);
 
 void setPriority(const bool big);
 
-#endif // UTILS_PROCESS_H
+#endif  // UTILS_PROCESS_H

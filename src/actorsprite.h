@@ -247,4 +247,4 @@ private:
     ActorSpriteListeners mActorSpriteListeners;
 };
 
-#endif // ACTORSPRITE_H
+#endif  // ACTORSPRITE_H

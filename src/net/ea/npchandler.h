@@ -77,4 +77,4 @@ class NpcHandler : public Net::NpcHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_NPCHANDLER_H
+#endif  // NET_EA_NPCHANDLER_H

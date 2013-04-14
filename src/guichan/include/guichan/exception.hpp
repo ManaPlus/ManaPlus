@@ -88,7 +88,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC Exception final
     {
     public:
-
         /**
          * Constructor.
          */
@@ -99,7 +98,7 @@ namespace gcn
          *
          * @param message The error message of the exception.
          */
-        Exception(const std::string& message);
+        explicit Exception(const std::string& message);
 
         /**
          * Constructor.
@@ -169,9 +168,9 @@ namespace gcn
          */
         unsigned int mLine;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_EXCEPTION_HPP
+#endif  // end GCN_EXCEPTION_HPP
 
 /*
  * "Final Fantasy XI is the BEST!... It's even better then water!"

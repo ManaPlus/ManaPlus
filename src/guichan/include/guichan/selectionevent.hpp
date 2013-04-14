@@ -63,19 +63,18 @@ namespace gcn
     class GCN_CORE_DECLSPEC SelectionEvent final: public Event
     {
     public:
-
         /**
          * Constructor.
          *
          * @param source source The widget of the selection event.
          */
-        SelectionEvent(Widget *const source);
+        explicit SelectionEvent(Widget *const source);
 
         /**
          * Destructor.
          */
         virtual ~SelectionEvent();
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_SELECTIONEVENT_HPP
+#endif  // end GCN_SELECTIONEVENT_HPP

@@ -268,5 +268,5 @@ namespace NotifyManager
         {"unknown pvp",
             N_("unknown pvp"), SPEECH},
     };
-}
+}  // namespace NotifyManager
 #endif

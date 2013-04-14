@@ -139,9 +139,9 @@ namespace XML
     void initXML();
 
     void cleanupXML();
-}
+}  // namespace XML
 
 #define for_each_xml_child_node(var, parent) \
     for (XmlNodePtr var = parent->xmlChildrenNode; var; var = var->next)
 
-#endif // XML_H
+#endif  // XML_H

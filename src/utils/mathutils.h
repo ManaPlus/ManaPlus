@@ -132,4 +132,4 @@ inline int powerOfTwo(const int input)
     return value;
 }
 
-#endif // UTILS_MATHUTILS_H
+#endif  // UTILS_MATHUTILS_H

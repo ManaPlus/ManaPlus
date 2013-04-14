@@ -72,7 +72,7 @@ class ParticleEmitter final
          * Sets the target of the particles that are created
          */
         void setTarget(Particle *const target)
-        { mParticleTarget = target; };
+        { mParticleTarget = target; }
 
         /**
          * Changes the size of the emitter so that the effect fills a
@@ -123,23 +123,30 @@ class ParticleEmitter final
         ParticleEmitterProp<int> mParticleFadeOut;
         ParticleEmitterProp<int> mParticleFadeIn;
 
-        Map *mMap;             /**< Map the particles are spawned on */
+        // Map the particles are spawned on 
+        Map *mMap;
 
-        ParticleEmitterProp<int> mOutput;   /**< Number of particles spawned
-                                                 per update */
-        ParticleEmitterProp<int> mOutputPause; /**< Pause in frames between
-                                                    two spawns */
+        // Number of particles spawned per update 
+        ParticleEmitterProp<int> mOutput;  
+
+        // Pause in frames between two spawns 
+        ParticleEmitterProp<int> mOutputPause;  
         int mOutputPauseLeft;
 
         /*
          * Graphical representation of the particles
          */
-        Image *mParticleImage; /**< Particle image, if used */
-        Animation mParticleAnimation; /**< Filename of particle
-                                           animation file */
-        Animation mParticleRotation; /**< Filename of particle rotation file */
-        ParticleEmitterProp<float> mParticleAlpha; /**< Opacity of the
-                                   graphical representation of the particles */
+        // Particle image, if used 
+        Image *mParticleImage;
+
+        // Filename of particle animation file 
+        Animation mParticleAnimation;
+
+        // Filename of particle rotation file 
+        Animation mParticleRotation;
+
+        // Opacity of the graphical representation of the particles 
+        ParticleEmitterProp<float> mParticleAlpha;  
 
         /*
          * Death effect of the particles
@@ -147,7 +154,7 @@ class ParticleEmitter final
         std::string mDeathEffect;
         signed char mDeathEffectConditions;
 
-        /** List of emitters the spawned particles are equipped with */
+        // List of emitters the spawned particles are equipped with
         std::list<ParticleEmitter> mParticleChildEmitters;
 
         std::vector<ImageSet*> mTempSets;

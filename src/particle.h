@@ -63,15 +63,14 @@ class Particle : public Actor
             DEAD_OTHER = 16,
             DEAD_LONG_AGO = 128
         };
-        static const float PARTICLE_SKY; /**< Maximum Z position
-                                              of particles */
-        static int fastPhysics;          /**< Mode of squareroot calculation */
-        static int particleCount;        /**< Current number of particles */
-        static int maxCount;             /**< Maximum number of particles */
-        static int emitterSkip;          /**< Duration of pause between two
-                                              emitter updates in ticks */
-        static bool enabled;   /**< true when non-crucial particle effects
-                                    are disabled */
+        static const float PARTICLE_SKY;  // Maximum Z position of particles
+        static int fastPhysics;           // Mode of squareroot calculation
+        static int particleCount;         // Current number of particles
+        static int maxCount;              // Maximum number of particles
+        static int emitterSkip;           // Duration of pause between two
+                                          // emitter updates in ticks
+        static bool enabled;  // true when non-crucial particle effects
+                              // are disabled
 
         /**
          * Constructor.
@@ -157,14 +156,14 @@ class Particle : public Actor
         /**
          * Adds an emitter to the particle.
          */
-        void addEmitter (ParticleEmitter *const emitter)
+        void addEmitter(ParticleEmitter *const emitter)
         { mChildEmitters.push_back(emitter); }
 
         /**
          * Sets the position in 3 dimensional space in pixels relative to map.
          */
         void moveTo(const Vector &pos)
-        { moveBy (pos - mPos); }
+        { moveBy(pos - mPos); }
 
         /**
          * Sets the position in 2 dimensional space in pixels relative to map.
@@ -174,7 +173,7 @@ class Particle : public Actor
         /**
          * Changes the particle position relative
          */
-        void moveBy (const Vector &change);
+        void moveBy(const Vector &change);
 
         /**
          * Sets the time in game ticks until the particle is destroyed.
@@ -295,52 +294,74 @@ class Particle : public Actor
         { mDeathEffect = effectFile; mDeathEffectConditions = conditions; }
 
     protected:
-        float mAlpha;               /**< Opacity of the graphical
-                                         representation of the particle */
-        int mLifetimeLeft;          /**< Lifetime left in game ticks*/
-        int mLifetimePast;          /**< Age of the particle in game ticks*/
-        int mFadeOut;               /**< Lifetime in game ticks left where
-                                         fading out begins*/
-        int mFadeIn;                /**< Age in game ticks where fading in is
-                                         finished*/
-        Vector mVelocity;           /**< Speed in pixels per game-tick. */
+        // Opacity of the graphical representation of the particle
+        float mAlpha;
 
-        AliveStatus mAlive;         /**< Is the particle supposed to be
-                                         drawn and updated?*/
+        // Lifetime left in game ticks
+        int mLifetimeLeft;
+
+        // Age of the particle in game ticks
+        int mLifetimePast;
+
+        // Lifetime in game ticks left where fading out begins
+        int mFadeOut;
+
+        // Age in game ticks where fading in is finished
+        int mFadeIn;
+
+        // Speed in pixels per game-tick.
+        Vector mVelocity;
+
+        // Is the particle supposed to be drawn and updated?
+        AliveStatus mAlive;
     private:
         // generic properties
-        bool mAutoDelete;           /**< May the particle request its deletion
-                                         by the parent particle? */
-        Emitters mChildEmitters;    /**< List of child emitters. */
-        Particles mChildParticles;  /**< List of particles controlled by this
-                                         particle */
-        bool mAllowSizeAdjust;      /**< Can the effect size be adjusted by
-                                         the object props in the map file? */
-        std::string mDeathEffect;   /**< Particle effect file to be spawned
-                                         when the particle dies */
-        signed char mDeathEffectConditions; /**< Bitfield of death conditions
-                                          which trigger spawning of the death
-                                          particle */
+        // May the particle request its deletion by the parent particle? 
+        bool mAutoDelete;
+
+        // List of child emitters.
+        Emitters mChildEmitters;
+
+        // List of particles controlled by this particle
+        Particles mChildParticles;
+
+        // Can the effect size be adjusted by the object props in the map file?
+        bool mAllowSizeAdjust;
+
+        // Particle effect file to be spawned when the particle dies
+        std::string mDeathEffect;
+
+        // Bitfield of death conditions which trigger spawning
+        // of the death particle
+        signed char mDeathEffectConditions; 
 
         // dynamic particle
-        float mGravity;             /**< Downward acceleration in pixels per
-                                         game-tick. */
-        int mRandomness;            /**< Ammount of random vector change */
-        float mBounce;              /**< How much the particle bounces off when
-                                         hitting the ground */
-        bool mFollow;               /**< is this particle moved when its parent
-                                         particle moves? */
+        // Downward acceleration in pixels per game-tick.
+        float mGravity;
+
+        // Ammount of random vector change
+        int mRandomness;
+
+        // How much the particle bounces off when hitting the ground 
+        float mBounce;
+
+        // is this particle moved when its parent particle moves?
+        bool mFollow;
 
         // follow-point particles
-        Particle *mTarget;          /**< The particle that attracts
-                                         this particle*/
-        float mAcceleration;        /**< Acceleration towards the target
-                                         particle in pixels per game-tick*/
-        float mInvDieDistance;      /**< Distance in pixels from the target
-                                         particle that causes the destruction
-                                         of the particle*/
-        float mMomentum;            /**< How much speed the particle retains
-                                         after each game tick*/
+
+        // The particle that attracts this particle
+        Particle *mTarget;
+
+        // Acceleration towards the target particle in pixels per game-tick
+        float mAcceleration;
+
+        // Distance in pixels from the target particle that causes 
+        // the destruction of the particle
+        float mInvDieDistance;
+
+        // How much speed the particle retains after each game tick
+        float mMomentum;
 };
 
 extern Particle *particleEngine;

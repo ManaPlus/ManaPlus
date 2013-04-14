@@ -31,7 +31,7 @@
 class BattleTab final : public ChatTab
 {
     public:
-        BattleTab(const Widget2 *const widget);
+        explicit BattleTab(const Widget2 *const widget);
 
         A_DELETE_COPY(BattleTab)
 

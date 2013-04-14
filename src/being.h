@@ -943,7 +943,6 @@ class Being : public ActorSprite, public ConfigListener
         int mAttackRange;
 
     private:
-
         /**
          * Calculates the offset in the given directions.
          * If walking in direction 'neg' the value is negated.

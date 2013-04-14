@@ -144,7 +144,6 @@ class ItemShortcut final
         void unequipItem(const int index) const;
 
     private:
-
         int mItems[SHORTCUT_ITEMS];                /**< The items. */
         unsigned char mItemColors[SHORTCUT_ITEMS]; /**< The item colors. */
         int mItemSelected;

@@ -48,7 +48,7 @@ class TextCommandEditor final : public Window, public gcn::ActionListener
         /**
          * Constructor.
          */
-        TextCommandEditor(TextCommand *const command);
+        explicit TextCommandEditor(TextCommand *const command);
 
         A_DELETE_COPY(TextCommandEditor)
 

@@ -50,7 +50,7 @@ class ShopItems final : public gcn::ListModel
          * @param mergeDuplicates lets the Shop look for duplicate entries and
          *                        merges them to one item.
          */
-        ShopItems(const bool mergeDuplicates = false);
+        explicit ShopItems(const bool mergeDuplicates = false);
 
         A_DELETE_COPY(ShopItems)
 
@@ -138,4 +138,4 @@ class ShopItems final : public gcn::ListModel
         bool mMergeDuplicates;
 };
 
-#endif // SHOPITEMS_H
+#endif  // SHOPITEMS_H

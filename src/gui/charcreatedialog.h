@@ -154,4 +154,4 @@ class CharCreateDialog final : public Window,
         unsigned mDirection;
 };
 
-#endif // CHAR_CREATE_DIALOG_H
+#endif  // CHAR_CREATE_DIALOG_H

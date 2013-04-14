@@ -52,7 +52,7 @@ class WorldSelectDialog final : public Window, public gcn::ActionListener,
          *
          * @see Window::Window
          */
-        WorldSelectDialog(Worlds worlds);
+        explicit WorldSelectDialog(Worlds worlds);
 
         A_DELETE_COPY(WorldSelectDialog)
 
@@ -75,4 +75,4 @@ class WorldSelectDialog final : public Window, public gcn::ActionListener,
         Button *mChooseWorld;
 };
 
-#endif // WORLD_SELECT_DIALOG_H
+#endif  // WORLD_SELECT_DIALOG_H

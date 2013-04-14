@@ -126,7 +126,7 @@ class BrowserBox final : public gcn::Widget,
          * Sets the maximum numbers of rows in the browser box. 0 = no limit.
          */
         void setMaxRow(unsigned max)
-        { mMaxRows = max; };
+        { mMaxRows = max; }
 
         /**
          * Adds a text row to the browser.

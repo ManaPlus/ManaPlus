@@ -34,7 +34,7 @@ class NamesModel;
 class Setup_Perfomance final : public SetupTabScroll
 {
     public:
-        Setup_Perfomance(const Widget2 *const widget);
+        explicit Setup_Perfomance(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Perfomance)
 

@@ -63,7 +63,8 @@ enum EquipmentSlot
     EQUIP_FIGHT1_SLOT = 8,
     EQUIP_FIGHT2_SLOT = 9,
     // Projectile:
-    //   this item does not amount to one, it only indicates the chosen projectile.
+    //   this item does not amount to one, it only 
+    //   indicates the chosen projectile.
     EQUIP_PROJECTILE_SLOT = 10
 };
 
@@ -78,17 +79,17 @@ enum ItemType
     ITEM_EQUIPMENT_ONE_HAND_WEAPON,
     ITEM_EQUIPMENT_TWO_HANDS_WEAPON,
     ITEM_EQUIPMENT_TORSO,
-    ITEM_EQUIPMENT_ARMS, // 5
+    ITEM_EQUIPMENT_ARMS,  // 5
     ITEM_EQUIPMENT_HEAD,
     ITEM_EQUIPMENT_LEGS,
     ITEM_EQUIPMENT_SHIELD,
     ITEM_EQUIPMENT_RING,
-    ITEM_EQUIPMENT_NECKLACE, // 10
+    ITEM_EQUIPMENT_NECKLACE,  // 10
     ITEM_EQUIPMENT_FEET,
     ITEM_EQUIPMENT_AMMO,
     ITEM_EQUIPMENT_CHARM,
     ITEM_SPRITE_RACE,
-    ITEM_SPRITE_HAIR // 15
+    ITEM_SPRITE_HAIR  // 15
 };
 
 // sprite, <itemfrom, itemto>
@@ -179,7 +180,8 @@ class ItemInfo final
 
         void setAttackAction(std::string attackAction);
 
-        // Handlers for seting and getting the string used for particles when attacking
+        // Handlers for seting and getting the string 
+        // used for particles when attacking
         void setMissileParticleFile(const std::string &s)
         { mMissileParticleFile = s; }
 

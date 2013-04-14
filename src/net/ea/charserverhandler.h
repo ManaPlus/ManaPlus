@@ -94,4 +94,4 @@ class CharServerHandler : public Net::CharServerHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_CHARSERVERHANDLER_H
+#endif  // NET_EA_CHARSERVERHANDLER_H

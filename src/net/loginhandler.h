@@ -103,7 +103,7 @@ class LoginHandler
 
         virtual void clearWorlds() = 0;
 
-        virtual ~LoginHandler ()
+        virtual ~LoginHandler()
         { }
 
     protected:

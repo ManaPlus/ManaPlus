@@ -54,6 +54,6 @@ class ChatHandler
         virtual void unIgnoreAll() const = 0;
 };
 
-}
+}  // namespace Net
 
 #endif  // CHATHANDLER_H

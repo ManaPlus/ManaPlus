@@ -77,4 +77,4 @@ class SoundEffect final : public Resource
         Mix_Chunk *mChunk;
 };
 
-#endif // SOUND_EFFECT_H
+#endif  // SOUND_EFFECT_H

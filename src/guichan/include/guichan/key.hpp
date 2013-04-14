@@ -64,13 +64,12 @@ namespace gcn
     class GCN_CORE_DECLSPEC Key final
     {
     public:
-
         /**
          * Constructor.
          *
          * @param value The ascii or enum value for the key.
          */
-        Key(const int value = 0);
+        explicit Key(const int value = 0);
 
         /**
          * Checks if a key is a character.
@@ -180,6 +179,6 @@ namespace gcn
          */
         int mValue;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_KEY_HPP
+#endif  // end GCN_KEY_HPP

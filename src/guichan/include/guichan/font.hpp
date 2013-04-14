@@ -62,7 +62,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC Font
     {
     public:
-
         /**
          * Destructor.
          */
@@ -111,6 +110,6 @@ namespace gcn
         virtual void drawString(Graphics* graphics, const std::string& text,
                                 int x, int y) = 0;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_FONT_HPP
+#endif  // end GCN_FONT_HPP

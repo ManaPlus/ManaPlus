@@ -230,6 +230,4 @@ class NormalOpenGLGraphics final : public Graphics
 };
 #endif
 
-//extern unsigned int vertexBufSize;
-
 #endif

@@ -95,7 +95,6 @@ class DyePalette final
 class Dye final
 {
     public:
-
         /**
          * Creates a set of palettes based on the given string.
          *
@@ -140,7 +139,6 @@ class Dye final
         int getType() const A_WARN_UNUSED;
 
     private:
-
         /**
          * The order of the palettes, as well as their uppercase letter, is:
          *

@@ -72,7 +72,6 @@ class LayoutArray final
     friend class LayoutCell;
 
     public:
-
         LayoutArray();
 
         ~LayoutArray();
@@ -121,9 +120,8 @@ class LayoutArray final
         void reflow(const int nX, const int nY, const int nW, const int nH);
 
     private:
-
         // Copy not allowed, as the array owns all its cells.
-        LayoutArray(LayoutArray const &);
+        explicit LayoutArray(LayoutArray const &);
         LayoutArray &operator=(LayoutArray const &);
 
         /**
@@ -289,7 +287,7 @@ class LayoutCell
 
     private:
         // Copy not allowed, as the cell may own an array.
-        LayoutCell(LayoutCell const &);
+        explicit LayoutCell(LayoutCell const &);
         LayoutCell &operator=(LayoutCell const &);
 
         union
@@ -365,4 +363,4 @@ class Layout final : public LayoutCell
         bool mComputed;
 };
 
-#endif // WIDGET_LAYOUT_H
+#endif  // WIDGET_LAYOUT_H

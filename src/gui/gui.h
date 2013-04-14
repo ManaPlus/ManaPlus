@@ -58,7 +58,7 @@ class Gui final : public gcn::Gui
         /**
          * Constructor.
          */
-        Gui(Graphics *const screen);
+        explicit Gui(Graphics *const screen);
 
         A_DELETE_COPY(Gui)
 
@@ -188,4 +188,4 @@ extern SDLInput *guiInput;                  /**< GUI input */
  */
 extern SDLFont *boldFont;
 
-#endif // GUI_H
+#endif  // GUI_H

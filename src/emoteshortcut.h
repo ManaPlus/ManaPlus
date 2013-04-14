@@ -119,9 +119,8 @@ class EmoteShortcut final
          */
         void save() const;
 
-        unsigned char mEmotes[SHORTCUT_EMOTES];  /**< The emote stored. */
-        unsigned char mEmoteSelected;            /**< The emote held
-                                                      by cursor. */
+        unsigned char mEmotes[SHORTCUT_EMOTES];  // The emote stored.
+        unsigned char mEmoteSelected;            // The emote held by cursor.
 
 };
 

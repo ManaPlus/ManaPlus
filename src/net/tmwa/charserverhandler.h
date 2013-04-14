@@ -72,4 +72,4 @@ class CharServerHandler final : public MessageHandler,
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_CHARSERVERHANDLER_H
+#endif  // NET_TA_CHARSERVERHANDLER_H

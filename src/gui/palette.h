@@ -154,7 +154,7 @@ class Palette
         /**
          * Constructor
          */
-        Palette(const int size);
+        explicit Palette(const int size);
 
         /**
          * Destructor

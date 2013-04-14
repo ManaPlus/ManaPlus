@@ -61,7 +61,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC MouseListener
     {
     public:
-
         /**
          * Destructor.
          */
@@ -76,7 +75,6 @@ namespace gcn
          */
         virtual void mouseEntered(MouseEvent& mouseEvent A_UNUSED)
         {
-
         }
 
         /**
@@ -87,7 +85,6 @@ namespace gcn
          */
         virtual void mouseExited(MouseEvent& mouseEvent A_UNUSED)
         {
-
         }
 
         /**
@@ -101,7 +98,6 @@ namespace gcn
          */
         virtual void mousePressed(MouseEvent& mouseEvent A_UNUSED)
         {
-
         }
 
         /**
@@ -112,7 +108,6 @@ namespace gcn
          */
         virtual void mouseReleased(MouseEvent& mouseEvent A_UNUSED)
         {
-
         }
 
         /**
@@ -124,7 +119,6 @@ namespace gcn
          */
         virtual void mouseClicked(MouseEvent& mouseEvent A_UNUSED)
         {
-
         }
 
         /**
@@ -135,7 +129,6 @@ namespace gcn
          */
         virtual void mouseWheelMovedUp(MouseEvent& mouseEvent A_UNUSED)
         {
-
         }
 
         /**
@@ -146,7 +139,6 @@ namespace gcn
          */
         virtual void mouseWheelMovedDown(MouseEvent& mouseEvent A_UNUSED)
         {
-
         }
 
         /**
@@ -158,7 +150,6 @@ namespace gcn
          */
         virtual void mouseMoved(MouseEvent& mouseEvent A_UNUSED)
         {
-
         }
 
         /**
@@ -170,7 +161,6 @@ namespace gcn
          */
         virtual void mouseDragged(MouseEvent& mouseEvent A_UNUSED)
         {
-
         }
 
     protected:
@@ -183,6 +173,6 @@ namespace gcn
         MouseListener()
         { }
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_MOUSELISTENER_HPP
+#endif  // end GCN_MOUSELISTENER_HPP

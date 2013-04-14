@@ -102,4 +102,4 @@ class GuildManager final
 
 extern GuildManager *guildManager;
 
-#endif // GUILDMANAGER_H
+#endif  // GUILDMANAGER_H

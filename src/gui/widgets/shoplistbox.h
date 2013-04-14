@@ -106,4 +106,4 @@ class ShopListBox final : public ListBox
         static float mAlpha;
 };
 
-#endif // SHOPLISTBOX_H
+#endif  // SHOPLISTBOX_H

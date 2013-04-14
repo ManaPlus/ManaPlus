@@ -48,7 +48,7 @@ class TabbedArea final : public Widget2,
         /**
          * Constructor.
          */
-        TabbedArea(const Widget2 *const widget);
+        explicit TabbedArea(const Widget2 *const widget);
 
         A_DELETE_COPY(TabbedArea)
 

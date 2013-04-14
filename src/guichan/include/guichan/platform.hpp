@@ -73,4 +73,4 @@
 #define GCN_EXTENSION_DECLSPEC
 #endif
 
-#endif // end GCN_PLATFORM_HPP
+#endif  // end GCN_PLATFORM_HPP

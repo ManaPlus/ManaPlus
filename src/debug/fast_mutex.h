@@ -178,7 +178,7 @@
         fast_mutex(const fast_mutex&);
         fast_mutex& operator=(const fast_mutex&);
     };
-# endif // _PTHREADS
+# endif  // _PTHREADS
 
 # ifdef _WIN32THREADS
 #   include <windows.h>
@@ -247,7 +247,7 @@
         fast_mutex(const fast_mutex&);
         fast_mutex& operator=(const fast_mutex&);
     };
-# endif // _WIN32THREADS
+# endif  // _WIN32THREADS
 
 # ifdef _NOTHREADS
 /**
@@ -293,7 +293,7 @@
         fast_mutex(const fast_mutex&);
         fast_mutex& operator=(const fast_mutex&);
     };
-# endif // _NOTHREADS
+# endif  // _NOTHREADS
 
 /** An acquistion-on-initialization lock class based on fast_mutex. */
 class fast_mutex_autolock
@@ -313,4 +313,4 @@ private:
     fast_mutex_autolock& operator=(const fast_mutex_autolock&);
 };
 
-#endif // M_FAST_MUTEX_H
+#endif  // M_FAST_MUTEX_H

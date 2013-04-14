@@ -57,13 +57,10 @@ class InventoryHandler
 
         virtual void closeStorage(const int type) const = 0;
 
-        //void changeCart() = 0;
-
         virtual void moveItem2(const int source, const int slot,
                                const int amount,
                                const int destination) const = 0;
 
-        // TODO: fix/remove me
         virtual size_t getSize(const int type) const A_WARN_UNUSED = 0;
 
         virtual int convertFromServerSlot(const int eAthenaSlot) const = 0;

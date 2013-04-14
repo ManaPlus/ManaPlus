@@ -31,8 +31,6 @@
 
 #include <string>
 
-//#include "debug.h"
-
 struct SetupActionData final
 {
     std::string name;

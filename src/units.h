@@ -48,4 +48,4 @@ class Units final
         static std::string formatWeight(const int value) A_WARN_UNUSED;
 };
 
-#endif // UNITS_H
+#endif  // UNITS_H

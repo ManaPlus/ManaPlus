@@ -75,6 +75,6 @@ namespace ItemDB
     };
 
     void setStatsList(const std::vector<Stat> &stats);
-}
+}  // namespace ItemDB
 
 #endif

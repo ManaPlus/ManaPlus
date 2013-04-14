@@ -97,7 +97,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC Gui
     {
     public:
-
         /**
          * Constructor.
          */
@@ -501,9 +500,9 @@ namespace gcn
          */
         std::deque<Widget*> mWidgetWithMouseQueue;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_GUI_HPP
+#endif  // end GCN_GUI_HPP
 
 /* yakslem  - "Women, it's a constant struggle."
  * finalman - "Yes, but sometimes they succeed with their guesses."

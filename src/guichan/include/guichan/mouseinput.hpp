@@ -64,7 +64,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC MouseInput
     {
     public:
-
         /**
          * Constructor.
          */
@@ -74,7 +73,7 @@ namespace gcn
             mTimeStamp(0),
             mX(0),
             mY(0)
-        { };
+        { }
 
         /**
          * Constructor.
@@ -239,6 +238,6 @@ namespace gcn
          */
         int mY;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_MOUSEINPUT_HPP
+#endif  // end GCN_MOUSEINPUT_HPP

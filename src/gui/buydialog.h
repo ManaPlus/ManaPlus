@@ -54,12 +54,12 @@ class BuyDialog final : public Window,
          *
          * @see Window::Window
          */
-        BuyDialog(const int npcId);
+        explicit BuyDialog(const int npcId);
 
         /**
          * Constructor.
          */
-        BuyDialog(std::string nick);
+        explicit BuyDialog(std::string nick);
 
         A_DELETE_COPY(BuyDialog)
 

@@ -78,4 +78,4 @@ class TextManager final
 
 extern TextManager *textManager;
 
-#endif // TEXTMANAGER_H
+#endif  // TEXTMANAGER_H

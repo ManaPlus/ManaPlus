@@ -42,7 +42,7 @@ class Label final : public gcn::Label, public Widget2
         /**
          * Constructor.
          */
-        Label(const Widget2 *const widget);
+        explicit Label(const Widget2 *const widget);
 
         /**
          * Constructor. This version of the constructor sets the label with an

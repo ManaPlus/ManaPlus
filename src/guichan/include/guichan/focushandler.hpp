@@ -71,7 +71,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC FocusHandler
     {
     public:
-
         /**
          * Constructor.
          */
@@ -83,7 +82,7 @@ namespace gcn
          * Destructor.
          */
         virtual ~FocusHandler()
-        { };
+        { }
 
         /**
          * Requests focus for a widget. Focus will only be granted to a widget
@@ -395,6 +394,6 @@ namespace gcn
          */
         Widget* mLastWidgetPressed;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_FOCUSHANDLER_HPP
+#endif  // end GCN_FOCUSHANDLER_HPP

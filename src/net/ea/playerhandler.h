@@ -75,4 +75,4 @@ class PlayerHandler : public Net::PlayerHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_PLAYERHANDLER_H
+#endif  // NET_EA_PLAYERHANDLER_H

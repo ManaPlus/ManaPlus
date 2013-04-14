@@ -30,7 +30,7 @@ namespace Net
 class SkillHandler
 {
     public:
-        virtual ~SkillHandler ()
+        virtual ~SkillHandler()
         { }
 
         virtual void useBeing(const int id, const int level,

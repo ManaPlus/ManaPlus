@@ -341,8 +341,8 @@ void Client::gameInit()
     if (lang.empty())
         lang = std::string(_nl_locale_name_default());
 
-    putenv((char*)("LANG=" + lang).c_str());
-    putenv((char*)("LANGUAGE=" + lang).c_str());
+    putenv(const_cast<char*>(("LANG=" + lang).c_str()));
+    putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
     // mingw doesn't like LOCALEDIR to be defined for some reason
     if (lang != "C")
         bindTextDomain("manaplus", "translations/");
@@ -708,11 +708,14 @@ void Client::setEnv(const char *const name, const char *const value)
     if (!name || !value)
         return;
 #ifdef WIN32
-    if (putenv((char*)(std::string(name) + "=" + value).c_str()))
+    if (putenv(reinterpret_cast<char*>((std::string(name)
+        + "=" + value).c_str())))
 #else
     if (setenv(name, value, 1))
 #endif
+    {
         logger->log("setenv failed: %s=%s", name, value);
+    }
 }
 
 void Client::testsClear()

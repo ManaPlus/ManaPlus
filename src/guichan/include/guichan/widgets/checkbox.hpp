@@ -68,7 +68,6 @@ namespace gcn
         public KeyListener
     {
     public:
-
         /**
          * Contructor.
          */
@@ -158,6 +157,6 @@ namespace gcn
          */
         std::string mCaption;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_CHECKBOX_HPP
+#endif  // end GCN_CHECKBOX_HPP

@@ -115,7 +115,7 @@ namespace Commands
     decHandler(execute);
 
     void replaceVars(std::string &str);
-}
+}  // namespace Commands
 
 static const CommandInfo commands[] =
 {
@@ -195,4 +195,4 @@ static const CommandInfo commands[] =
 
 #undef decHandler
 
-#endif // COMMANDS_H
+#endif  // COMMANDS_H

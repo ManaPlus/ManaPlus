@@ -50,4 +50,4 @@ template <>     struct __nvwa_compile_time_error<true> {};
         (void)ERROR_##_Msg; \
     }
 
-#endif // STATIC_ASSERT
+#endif  // STATIC_ASSERT

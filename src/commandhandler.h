@@ -72,4 +72,4 @@ class CommandHandler final
 
 extern CommandHandler *commandHandler;
 
-#endif // COMMANDHANDLER_H
+#endif  // COMMANDHANDLER_H

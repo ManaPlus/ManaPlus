@@ -119,4 +119,4 @@ class FlashText final : public Text
         int mTime;             /**< Time left for flashing */
 };
 
-#endif // TEXT_H
+#endif  // TEXT_H

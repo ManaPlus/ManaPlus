@@ -86,4 +86,4 @@ extern Party *taParty;
 
 }  // namespace Ea
 
-#endif // NET_EA_PARTYHANDLER_H
+#endif  // NET_EA_PARTYHANDLER_H

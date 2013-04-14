@@ -66,6 +66,6 @@ namespace MapDB
     // atlas to files map
     typedef std::map<std::string, StringVect> Atlases;
     typedef Atlases::iterator AtlasIter;
-}
+}  // namespace MapDB
 
 #endif

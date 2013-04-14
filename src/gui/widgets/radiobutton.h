@@ -90,4 +90,4 @@ class RadioButton final : public gcn::RadioButton,
         int mSpacing;
 };
 
-#endif // RADIOBUTTON_H
+#endif  // RADIOBUTTON_H

@@ -172,4 +172,4 @@ class Joystick final
 
 extern Joystick *joystick;
 
-#endif // JOYSTICK_H
+#endif  // JOYSTICK_H

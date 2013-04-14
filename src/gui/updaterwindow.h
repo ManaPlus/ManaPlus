@@ -186,7 +186,8 @@ private:
     /** The new progress value to be set in the logic method. */
     float mDownloadProgress;
 
-    /** The mutex used to guard access to mNewLabelCaption and mDownloadProgress. */
+    // The mutex used to guard access to mNewLabelCaption
+    // and mDownloadProgress.
     Mutex mDownloadMutex;
 
     /** The Adler32 checksum of the file currently downloading. */

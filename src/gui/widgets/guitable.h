@@ -165,8 +165,8 @@ protected:
     virtual int getColumnWidth(int i) const A_WARN_UNUSED;
 
 private:
-    int getRowForY(int y) const A_WARN_UNUSED;    // -1 on error
-    int getColumnForX(int x) const A_WARN_UNUSED; // -1 on error
+    int getRowForY(int y) const A_WARN_UNUSED;     // -1 on error
+    int getColumnForX(int x) const A_WARN_UNUSED;  // -1 on error
     void recomputeDimensions();
     bool mLinewiseMode;
     bool mWrappingEnabled;
@@ -193,5 +193,4 @@ private:
     gcn::Color mHighlightColor;
 };
 
-
-#endif // TABLE_H
+#endif  // TABLE_H

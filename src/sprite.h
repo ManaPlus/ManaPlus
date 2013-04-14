@@ -120,4 +120,4 @@ class Sprite
         float mAlpha;                  /**< The alpha opacity used to draw */
 };
 
-#endif // SPRITE_H
+#endif  // SPRITE_H

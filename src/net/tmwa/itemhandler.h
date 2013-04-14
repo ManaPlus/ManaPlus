@@ -42,4 +42,4 @@ class ItemHandler final : public MessageHandler, public Ea::ItemHandler
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_ITEMHANDLER_H
+#endif  // NET_TA_ITEMHANDLER_H

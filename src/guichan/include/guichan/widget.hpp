@@ -904,7 +904,7 @@ namespace gcn
          * @since 0.1.0
          */
         virtual void moveToTop(Widget* widget A_UNUSED)
-        { };
+        { }
 
         /**
          * Moves a widget in this widget to the bottom of this widget.
@@ -915,7 +915,7 @@ namespace gcn
          * @since 0.1.0
          */
         virtual void moveToBottom(Widget* widget A_UNUSED)
-        { };
+        { }
 
         /**
          * Focuses the next widget in the widget.
@@ -924,7 +924,7 @@ namespace gcn
          * @since 0.1.0
          */
         virtual void focusNext()
-        { };
+        { }
 
         /**
          * Focuses the previous widget in the widget.
@@ -933,7 +933,7 @@ namespace gcn
          * @since 0.1.0
          */
         virtual void focusPrevious()
-        { };
+        { }
 
         /**
          * Tries to show a specific part of a widget by moving it. Used if the
@@ -945,7 +945,7 @@ namespace gcn
          */
         virtual void showWidgetPart(Widget* widget A_UNUSED,
                                     Rectangle area A_UNUSED)
-        { };
+        { }
 
         /**
          * Sets an id of a widget. An id can be useful if a widget needs to be
@@ -1208,6 +1208,6 @@ namespace gcn
 
         static std::set<Widget*> mWidgetsSet;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_WIDGET_HPP
+#endif  // end GCN_WIDGET_HPP

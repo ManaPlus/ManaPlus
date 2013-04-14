@@ -65,7 +65,7 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
     mArrowButton[0] = new Button(this, "<", "shift_left", this);
     mArrowButton[1] = new Button(this, ">", "shift_right", this);
 
-    widgetResized(nullptr);
+    widgetResized(gcn::Event(nullptr));
 }
 
 TabbedArea::~TabbedArea()
@@ -329,7 +329,7 @@ void TabbedArea::setSelectedTab(Tab *tab)
     if (newTab)
         newTab->setCurrent();
 
-    widgetResized(nullptr);
+    widgetResized(gcn::Event(nullptr));
 }
 
 int TabbedArea::getSelectedTabIndex() const

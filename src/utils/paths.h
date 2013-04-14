@@ -39,4 +39,4 @@ std::string getSelfName() A_WARN_UNUSED;
 
 std::string getDesktopDir() A_WARN_UNUSED;
 
-#endif // UTILS_PATHS_H
+#endif  // UTILS_PATHS_H

@@ -59,7 +59,6 @@ public:
 
 private:
     static void updateCounter(int &currentSec, int &calc, int &counter);
-
 };
 
 #endif

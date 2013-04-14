@@ -139,4 +139,4 @@ private:
     Actors::iterator mMapActor;
 };
 
-#endif // ACTOR_H
+#endif  // ACTOR_H

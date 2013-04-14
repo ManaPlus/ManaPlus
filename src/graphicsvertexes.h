@@ -175,4 +175,4 @@ class ImageCollection final
 extern unsigned int vertexBufSize;
 #endif
 
-#endif // GRAPHICSVERTEXES_H
+#endif  // GRAPHICSVERTEXES_H

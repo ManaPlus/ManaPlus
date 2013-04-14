@@ -50,7 +50,7 @@ namespace Perfomance
     class Func
     {
         public:
-            Func(const std::string &str) :
+            explicit Func(const std::string &str) :
                 name(str)
             {
                 blockStart(str);
@@ -63,14 +63,14 @@ namespace Perfomance
 
             std::string name;
     };
-}
+}  // namespace Perfomance
 
-#else // USE_PROFILER
+#else  // USE_PROFILER
 
 #define PROFILER_START()
 #define BLOCK_START(name)
 #define BLOCK_END(name)
 #define FUNC_BLOCK(name, id)
 
-#endif // USE_PROFILER
-#endif // UTILS_PEFOMANCE_H
+#endif  // USE_PROFILER
+#endif  // UTILS_PEFOMANCE_H

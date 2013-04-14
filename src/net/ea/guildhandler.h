@@ -110,6 +110,6 @@ class GuildHandler : public Net::GuildHandler
 
 extern Guild *taGuild;
 extern GuildTab *guildTab;
-}
+}  // namespace Ea
 
-#endif // NET_EA_GUILDHANDLER_H
+#endif  // NET_EA_GUILDHANDLER_H

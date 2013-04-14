@@ -70,11 +70,10 @@ class LoginData final
 
         Gender gender;
 
-        bool remember;            /**< Whether to store the username. */
-        bool registerLogin;       /**< Whether an account
-                                       is being registered. */
+        bool remember;       // Whether to store the username.
+        bool registerLogin;  // Whether an account is being registered.
 
-        unsigned short characterSlots; /**< The number of character slots */
+        unsigned short characterSlots;  // The number of character slots
 
         void clear()
         {

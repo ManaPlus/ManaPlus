@@ -110,7 +110,7 @@ template <typename T> struct ParticleEmitterProp final
                 break;
             case FUNC_NONE:
             default:
-                //nothing
+                // nothing
                 break;
         }
 

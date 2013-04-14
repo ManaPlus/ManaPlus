@@ -61,9 +61,9 @@ class GameHandler : public Net::GameHandler
 
     protected:
         std::string mMap;
-        int mCharID; /// < Saved for map-server switching
+        int mCharID;  // < Saved for map-server switching
 };
 
 }  // namespace Ea
 
-#endif // NET_EA_GAMEHANDLER_H
+#endif  // NET_EA_GAMEHANDLER_H

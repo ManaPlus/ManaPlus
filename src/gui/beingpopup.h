@@ -60,4 +60,4 @@ class BeingPopup final : public Popup
         Label *mBeingComment;
 };
 
-#endif // BEINGPOPUP_H
+#endif  // BEINGPOPUP_H

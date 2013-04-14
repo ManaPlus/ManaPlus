@@ -53,4 +53,4 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_SKILLHANDLER_H
+#endif  // NET_TA_SKILLHANDLER_H

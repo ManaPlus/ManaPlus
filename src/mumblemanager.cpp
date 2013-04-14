@@ -98,8 +98,8 @@ void MumbleManager::init()
         return;
     }
 
-    mLinkedMem = (LinkedMem *) MapViewOfFile(hMapObject,
-        FILE_MAP_ALL_ACCESS, 0, 0, sizeof(LinkedMem));
+    mLinkedMem = reinterpret_cast<LinkedMem *>(MapViewOfFile(hMapObject,
+        FILE_MAP_ALL_ACCESS, 0, 0, sizeof(LinkedMem)));
 
     if (!mLinkedMem)
     {

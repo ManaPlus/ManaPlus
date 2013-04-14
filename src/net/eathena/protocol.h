@@ -47,7 +47,7 @@ namespace EAthena
 //        KARMA,
 //        MANNER
     };
-}
+}  // namespace EAthena
 
 enum
 {
@@ -89,8 +89,8 @@ enum
 #define SMSG_CHAR_DELETE_SUCCEEDED   0x006f
 #define SMSG_CHAR_DELETE_FAILED      0x0070
 #define SMSG_CHAR_MAP_INFO           0x0071
-#define SMSG_CHAR_PASSWORD_RESPONSE  0x0062 /**< Custom packet reply \
-                                              to password change request */
+// Custom packet reply to password change request
+#define SMSG_CHAR_PASSWORD_RESPONSE  0x0062
 
 #define SMSG_CHAR_SWITCH_RESPONSE    0x00b3
 #define SMSG_CHANGE_MAP_SERVER       0x0092
@@ -134,8 +134,8 @@ enum
 #define SMSG_BEING_MOVE2             0x0086 /**< New eAthena being moves */
 #define SMSG_BEING_REMOVE            0x0080
 #define SMSG_BEING_CHANGE_LOOKS      0x00c3
-#define SMSG_BEING_CHANGE_LOOKS2     0x01d7 /**< Same as 0x00c3, \
-                                                 but 16 bit ID */
+// Same as 0x00c3, but 16 bit ID
+#define SMSG_BEING_CHANGE_LOOKS2     0x01d7
 #define SMSG_BEING_SELFEFFECT        0x019b
 #define SMSG_BEING_EMOTION           0x00c0
 #define SMSG_BEING_ACTION            0x008a /**< Attack, sit, stand up, ... */
@@ -166,8 +166,8 @@ enum
 #define SMSG_GM_CHAT                 0x009a /**< GM announce */
 #define SMSG_WALK_RESPONSE           0x0087
 
-#define SMSG_TRADE_REQUEST           0x00e5 /**< Receiving a request \
-                                                 to trade */
+// Receiving a request to trade
+#define SMSG_TRADE_REQUEST           0x00e5
 #define SMSG_TRADE_RESPONSE          0x00e7
 #define SMSG_TRADE_ITEM_ADD          0x00e9
 #define SMSG_TRADE_ITEM_ADD_RESPONSE 0x01b1 /**< Not standard eAthena! */
@@ -190,8 +190,8 @@ enum
 #define SMSG_PLAYER_STORAGE_EQUIP    0x00a6 /**< Equipment list for storage */
 #define SMSG_PLAYER_STORAGE_STATUS   0x00f2 /**< Slots used and total slots */
 #define SMSG_PLAYER_STORAGE_ADD      0x00f4 /**< Add item/equip to storage */
-#define SMSG_PLAYER_STORAGE_REMOVE   0x00f6 /**< Remove item/equip \
-                                                 from storage */
+// Remove item/equip from storage
+#define SMSG_PLAYER_STORAGE_REMOVE   0x00f6
 #define SMSG_PLAYER_STORAGE_CLOSE    0x00f8 /**< Storage access closed */
 
 #define SMSG_ADMIN_KICK_ACK          0x00cd
@@ -230,8 +230,8 @@ enum
  **********************************/
 #define CMSG_SERVER_VERSION_REQUEST  0x7530
 
-#define CMSG_CHAR_PASSWORD_CHANGE    0x0061 /**< Custom change \
-                                                 password packet */
+// Custom change password packet
+#define CMSG_CHAR_PASSWORD_CHANGE    0x0061
 #define CMSG_CHAR_SERVER_CONNECT     0x0065
 #define CMSG_CHAR_SELECT             0x0066
 #define CMSG_CHAR_CREATE             0x0067

@@ -45,4 +45,4 @@ class TranslationManager final
                                   StringVect &lines);
 };
 
-#endif // UTILS_TRANSLATION_MANAGER_H
+#endif  // UTILS_TRANSLATION_MANAGER_H

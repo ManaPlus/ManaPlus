@@ -83,7 +83,7 @@ namespace gcn
          *
          * @param caption The caption of the button.
          */
-        Button(const std::string& caption);
+        explicit Button(const std::string& caption);
 
         A_DELETE_COPY(Button)
 
@@ -197,6 +197,6 @@ namespace gcn
          */
         unsigned int mSpacing;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_BUTTON_HPP
+#endif  // end GCN_BUTTON_HPP

@@ -149,7 +149,6 @@ class DropShortcut final
         void clear(const bool isSave = true);
 
     private:
-
         /**
          * Drop item in cicle.
          */

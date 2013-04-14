@@ -163,4 +163,4 @@ protected:
 
 extern SocialWindow *socialWindow;
 
-#endif // SOCIALWINDOW_H
+#endif  // SOCIALWINDOW_H

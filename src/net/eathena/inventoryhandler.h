@@ -62,4 +62,4 @@ class InventoryHandler final : public MessageHandler,
 
 }  // namespace EAthena
 
-#endif // NET_EATHENA_INVENTORYHANDLER_H
+#endif  // NET_EATHENA_INVENTORYHANDLER_H

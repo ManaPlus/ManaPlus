@@ -59,4 +59,4 @@ class AdminHandler : public Net::AdminHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_ADMINHANDLER_H
+#endif  // NET_EA_ADMINHANDLER_H

@@ -219,4 +219,4 @@ class BeingInfo final
 typedef std::map<int, BeingInfo*> BeingInfos;
 typedef BeingInfos::iterator BeingInfoIterator;
 
-#endif // BEINGINFO_H
+#endif  // BEINGINFO_H

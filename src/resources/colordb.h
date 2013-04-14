@@ -82,6 +82,6 @@ namespace ColorDB
     typedef Colors::iterator ColorIterator;
     typedef std::map <std::string, std::map <int, ItemColor> > ColorLists;
     typedef ColorLists::iterator ColorListsIterator;
-}
+}  // namespace ColorDB
 
 #endif

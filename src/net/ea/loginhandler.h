@@ -106,4 +106,4 @@ class LoginHandler : public Net::LoginHandler
 
 }  // namespace Ea
 
-#endif // NET_TA_LOGINHANDLER_H
+#endif  // NET_TA_LOGINHANDLER_H

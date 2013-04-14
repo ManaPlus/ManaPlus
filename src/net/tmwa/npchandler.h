@@ -84,4 +84,4 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_NPCHANDLER_H
+#endif  // NET_TA_NPCHANDLER_H

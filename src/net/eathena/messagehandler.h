@@ -58,4 +58,4 @@ typedef const std::auto_ptr<MessageHandler> MessageHandlerPtr;
 
 }
 
-#endif // NET_EATHENA_MESSAGEHANDLER_H
+#endif  // namespace EAthena

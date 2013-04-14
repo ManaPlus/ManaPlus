@@ -541,27 +541,27 @@ class LocalPlayer final : public Being,
         int mTargetTime;      /** How long the being has been targeted **/
         int mGMLevel;
 
-        //move type
+        // move type
         unsigned int mInvertDirection;
-        //crazy move type
+        // crazy move type
         unsigned int mCrazyMoveType;
-        //crazy move state
+        // crazy move state
         unsigned int mCrazyMoveState;
-        //attack weapon type
+        // attack weapon type
         unsigned int mAttackWeaponType;
-        //quick drop counter
+        // quick drop counter
         unsigned int mQuickDropCounter;
-        //move state. used if mInvertDirection == 2
+        // move state. used if mInvertDirection == 2
         unsigned int mMoveState;
-        //temporary disable crazy moves in moves
+        // temporary disable crazy moves in moves
         bool mDisableCrazyMove;
-        //pick up type 1x1, normal aka 2x1, forward aka 2x3, 3x3, 3x3 + 1
+        // pick up type 1x1, normal aka 2x1, forward aka 2x3, 3x3, 3x3 + 1
         unsigned int mPickUpType;
-        //magic attack type
+        // magic attack type
         unsigned int mMagicAttackType;
-        //pvp attack type
+        // pvp attack type
         unsigned int mPvpAttackType;
-        //type how move to target
+        // type how move to target
         unsigned int mMoveToTargetType;
         unsigned int mAttackType;
         unsigned int mFollowMode;
@@ -585,16 +585,15 @@ class LocalPlayer final : public Being,
         FloorItem *mPickUpTarget;
 
         bool mGoingToTarget;
-        bool mKeepAttacking;  /** Whether or not to continue to attack */
-        int mLastAction;      /**< Time stamp of the last action, -1 if none.*/
-        unsigned char mWalkingDir; /**< The direction the player is
-                                        walking in. */
-        bool mPathSetByMouse; /**< Tells if the path was set using mouse */
+        bool mKeepAttacking;  // Whether or not to continue to attack
+        int mLastAction;      // Time stamp of the last action, -1 if none.
+        unsigned char mWalkingDir;  // The direction the player is walking in.
+        bool mPathSetByMouse;  // Tells if the path was set using mouse
 
         std::vector<int> mStatusEffectIcons;
 
-        int mLocalWalkTime;   /**< Timestamp used to control keyboard walk
-                                  messages flooding */
+        int mLocalWalkTime;  // Timestamp used to control keyboard walk 
+                             // messages flooding
 
         typedef std::pair<std::string, int> MessagePair;
         /** Queued messages*/

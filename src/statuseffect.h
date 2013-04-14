@@ -115,4 +115,4 @@ private:
     bool mPersistentParticleEffect;
 };
 
-#endif // !defined(STATUS_EFFECT_H)
+#endif  // !defined(STATUS_EFFECT_H)

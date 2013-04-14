@@ -48,7 +48,7 @@ class PlayerBox final : public Widget2,
          */
         PlayerBox(Being *const being, const std::string &skin = "");
 
-        PlayerBox(std::string skin = "");
+        explicit PlayerBox(std::string skin = "");
 
         A_DELETE_COPY(PlayerBox)
 

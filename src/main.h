@@ -82,12 +82,12 @@
 
 
 #define ENABLEDEBUGLOG 1
-//define DEBUG_LEAKS 1
-//define DEBUG_CONFIG 1
-//define DEBUG_FONT 1
-//define DEBUG_FONT_COUNTERS 1
-//define DEBUG_ALPHA_CACHE 1
-//define DEBUG_OPENGL_LEAKS 1
+// define DEBUG_LEAKS 1
+// define DEBUG_CONFIG 1
+// define DEBUG_FONT 1
+// define DEBUG_FONT_COUNTERS 1
+// define DEBUG_ALPHA_CACHE 1
+// define DEBUG_OPENGL_LEAKS 1
 
 #define PACKAGE_EXTENDED_VERSION "ManaPlus (" PACKAGE_OS \
 "; %s; 4144 v" SMALL_VERSION ")"

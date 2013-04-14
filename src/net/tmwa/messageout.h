@@ -46,7 +46,7 @@ class MessageOut final : public Net::MessageOut
         /**
          * Constructor.
          */
-        MessageOut(const short id);
+        explicit MessageOut(const short id);
 
         A_DELETE_COPY(MessageOut)
 
@@ -72,4 +72,4 @@ class MessageOut final : public Net::MessageOut
 
 }
 
-#endif // NET_TA_MESSAGEOUT_H
+#endif  // namespace TmwAthena

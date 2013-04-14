@@ -212,4 +212,4 @@ class InventoryHandler : public Net::InventoryHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_INVENTORYHANDLER_H
+#endif  // NET_EA_INVENTORYHANDLER_H

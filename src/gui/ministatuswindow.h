@@ -66,7 +66,7 @@ class MiniStatusWindow final : public Popup,
 
         void updateStatus();
 
-        void logic() override; // Updates icons
+        void logic() override;
 
         void draw(gcn::Graphics *graphics) override;
 

@@ -65,7 +65,6 @@ namespace gcn
         public KeyListener
     {
     public:
-
         /**
          * Draw orientations for the slider. A slider can be drawn vertically or
          * horizontally.
@@ -81,7 +80,7 @@ namespace gcn
          *
          * @param scaleEnd The end value of the slider scale.
          */
-        Slider(const double scaleEnd = 1.0);
+        explicit Slider(const double scaleEnd = 1.0);
 
         /**
          * Constructor.
@@ -224,7 +223,6 @@ namespace gcn
         virtual void keyPressed(KeyEvent& keyEvent) override;
 
     protected:
-
         /**
          * Converts a marker position to a value in the scale.
          *
@@ -287,6 +285,6 @@ namespace gcn
          */
         Orientation mOrientation;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_SLIDER_HPP
+#endif  // end GCN_SLIDER_HPP

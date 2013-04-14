@@ -193,4 +193,4 @@ protected:
     std::string mIp;
 };
 
-#endif // AVATAR_H
+#endif  // AVATAR_H

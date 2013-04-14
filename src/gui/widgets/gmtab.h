@@ -29,7 +29,7 @@
 class GmTab final : public ChatTab
 {
     public:
-        GmTab(const Widget2 *const widget);
+        explicit GmTab(const Widget2 *const widget);
 
         A_DELETE_COPY(GmTab)
 
@@ -50,4 +50,4 @@ class GmTab final : public ChatTab
 
 extern GmTab *gmChatTab;
 
-#endif // GMTAB_H
+#endif  // GMTAB_H

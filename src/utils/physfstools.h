@@ -41,8 +41,8 @@ namespace PhysFs
     bool removeFromSearchPath(const char *oldDir);
     const char *getRealDir(const char *filename);
     bool mkdir(const char *dirName);
-}
+}  // namespace PhysFs
 
 extern const char *dirSeparator;
 
-#endif // UTILS_PHYSFS_H
+#endif  // UTILS_PHYSFS_H

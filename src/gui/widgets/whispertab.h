@@ -73,4 +73,4 @@ class WhisperTab final : public ChatTab
         std::string mNick;
 };
 
-#endif // CHANNELTAB_H
+#endif  // CHANNELTAB_H

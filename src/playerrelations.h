@@ -66,7 +66,7 @@ struct PlayerRelation final
 
     A_DELETE_COPY(PlayerRelation)
 
-    Relation mRelation; // bitmask for all of the above
+    Relation mRelation;  // bitmask for all of the above
 };
 
 
@@ -257,8 +257,8 @@ class PlayerRelationsManager final
     private:
         void signalUpdate(const std::string &name);
 
-        bool mPersistIgnores; // If NOT set, we delete the
-                              // ignored data upon reloading
+        bool mPersistIgnores;  // If NOT set, we delete the
+                               // ignored data upon reloading
         unsigned int mDefaultPermissions;
 
         bool checkName(const std::string &name) const A_WARN_UNUSED;
@@ -270,8 +270,8 @@ class PlayerRelationsManager final
 };
 
 
-extern PlayerRelationsManager player_relations; // singleton representation
-                                                // of player relations
+extern PlayerRelationsManager player_relations;  // singleton representation
+                                                 // of player relations
 
 
-#endif // PLAYER_RELATIONS_H
+#endif  // PLAYER_RELATIONS_H

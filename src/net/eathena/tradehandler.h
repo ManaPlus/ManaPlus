@@ -59,4 +59,4 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
 
 }  // namespace EAthena
 
-#endif // NET_EATHENA_TRADEHANDLER_H
+#endif  // NET_EATHENA_TRADEHANDLER_H

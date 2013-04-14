@@ -68,7 +68,7 @@ namespace gcn
          *
          * @param source The source widget of the event.
          */
-        Event(Widget *const source);
+        explicit Event(Widget *const source);
 
         A_DELETE_COPY(Event)
 
@@ -91,6 +91,6 @@ namespace gcn
          */
         Widget* mSource;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_EVENT_HPP
+#endif  // end GCN_EVENT_HPP

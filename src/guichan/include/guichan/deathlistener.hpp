@@ -62,7 +62,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC DeathListener
     {
     public:
-
         /**
          * Destructor.
          */
@@ -76,7 +75,7 @@ namespace gcn
          * @param event The event of the death.
          */
         virtual void death(const Event& event) = 0;
-    
+
     protected:
         /**
          * Constructor.
@@ -87,6 +86,6 @@ namespace gcn
         DeathListener()
         { }
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_DEATHLISTENER_HPP
+#endif  // end GCN_DEATHLISTENER_HPP

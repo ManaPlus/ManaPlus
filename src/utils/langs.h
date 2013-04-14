@@ -38,4 +38,4 @@ std::string getLangSimple() A_WARN_UNUSED;
 
 std::string getLangShort() A_WARN_UNUSED;
 
-#endif // UTILS_LANGS_H
+#endif  // UTILS_LANGS_H

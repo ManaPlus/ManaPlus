@@ -84,7 +84,7 @@ namespace gcn
          *
          * @param listModel the list model to use.
          */
-        ListBox(ListModel *listModel);
+        explicit ListBox(ListModel *listModel);
 
         A_DELETE_COPY(ListBox)
 
@@ -252,6 +252,6 @@ namespace gcn
          */
         typedef SelectionListenerList::iterator SelectionListenerIterator;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_LISTBOX_HPP
+#endif  // end GCN_LISTBOX_HPP

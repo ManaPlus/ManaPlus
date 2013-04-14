@@ -43,7 +43,7 @@ class ItemShortcutContainer final : public ShortcutContainer
         /**
          * Constructor. Initializes the graphic.
          */
-        ItemShortcutContainer(const unsigned number);
+        explicit ItemShortcutContainer(const unsigned number);
 
         A_DELETE_COPY(ItemShortcutContainer)
 

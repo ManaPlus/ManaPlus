@@ -62,7 +62,6 @@ namespace gcn
      */
     class GCN_CORE_DECLSPEC ListModel
     {
-
     public:
         /**
          * Destructor.
@@ -85,6 +84,6 @@ namespace gcn
          */
         virtual std::string getElementAt(int i) A_WARN_UNUSED = 0;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_LISTMODEL_HPP
+#endif  // end GCN_LISTMODEL_HPP

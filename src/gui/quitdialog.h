@@ -47,7 +47,7 @@ class QuitDialog final : public Window, public gcn::ActionListener,
          *
          * @pointerToMe  will be set to NULL when the QuitDialog is destroyed
          */
-        QuitDialog(QuitDialog **const pointerToMe);
+        explicit QuitDialog(QuitDialog **const pointerToMe);
 
         A_DELETE_COPY(QuitDialog)
 

@@ -48,4 +48,4 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_BUYSELLHANDLER_H
+#endif  // NET_TA_BUYSELLHANDLER_H

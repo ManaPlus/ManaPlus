@@ -159,4 +159,4 @@ protected:
     std::vector<int> mWidths;
 };
 
-#endif // TABLE_MODEL_H
+#endif  // TABLE_MODEL_H

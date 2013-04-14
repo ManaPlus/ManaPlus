@@ -133,7 +133,7 @@ Setup::Setup():
 
     center();
 
-    widgetResized(nullptr);
+    widgetResized(gcn::Event(nullptr));
     setInGame(false);
     enableVisibleSound(true);
 }

@@ -342,6 +342,6 @@ namespace Input
         KEY_SHOW_WINDOWS,
         KEY_TOTAL
     };
-}
+}  // namespace Input
 
 #endif

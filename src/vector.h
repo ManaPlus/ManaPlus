@@ -199,4 +199,4 @@ class Vector final
  */
 std::ostream& operator <<(std::ostream &os, const Vector &v);
 
-#endif // VECTOR_H
+#endif  // VECTOR_H

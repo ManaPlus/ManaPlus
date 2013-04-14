@@ -104,14 +104,6 @@ std::string strprintf(const char *const format, ...) A_WARN_UNUSED
 ;
 
 /**
- * Removes bad characters from a string
- *
- * @param str the string to remove the bad chars from
- * @return a reference to the string without bad chars
- */
-//std::string &removeBadChars(std::string &str);
-
-/**
  * Removes colors from a string
  *
  * @param msg the string to remove the colors from
@@ -229,4 +221,4 @@ std::string encodeLinkText(std::string data);
 
 std::string decodeLinkText(std::string data);
 
-#endif // UTILS_STRINGUTILS_H
+#endif  // UTILS_STRINGUTILS_H

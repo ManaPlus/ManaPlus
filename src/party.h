@@ -175,4 +175,4 @@ private:
     bool mCanInviteUsers;
 };
 
-#endif // PARTY_H
+#endif  // PARTY_H

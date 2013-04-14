@@ -110,8 +110,8 @@ namespace gcn
     {
         BLOCK_START("Widget::drawFrame")
         const Color &faceColor = getBaseColor();
-        Color highlightColor = faceColor + 0x303030;
-        Color shadowColor = faceColor - 0x303030;
+        Color highlightColor = faceColor + Color(0x303030);
+        Color shadowColor = faceColor - Color(0x303030);
         const int alpha = getBaseColor().a;
         const int width = getWidth() + getFrameSize() * 2 - 1;
         const int height = getHeight() + getFrameSize() * 2 - 1;

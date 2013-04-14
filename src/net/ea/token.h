@@ -41,4 +41,4 @@ struct Token
     }
 };
 
-#endif // NET_EA_TOKEN_H
+#endif  // NET_EA_TOKEN_H

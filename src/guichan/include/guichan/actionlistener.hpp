@@ -63,7 +63,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC ActionListener
     {
     public:
-
         /**
          * Destructor.
          */
@@ -79,7 +78,7 @@ namespace gcn
          * @since 0.6.0
          */
         virtual void action(const ActionEvent& actionEvent) = 0;
-    
+
     protected:
         /**
          * Constructor.
@@ -90,6 +89,6 @@ namespace gcn
         ActionListener()
         { }
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_ACTIONLISTENER_HPP
+#endif  // end GCN_ACTIONLISTENER_HPP

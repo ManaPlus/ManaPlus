@@ -88,7 +88,7 @@ DidYouKnowWindow::DidYouKnowWindow():
 
     loadWindowState();
     enableVisibleSound(true);
-    widgetResized(nullptr);
+    widgetResized(gcn::Event(nullptr));
 }
 
 void DidYouKnowWindow::action(const gcn::ActionEvent &event)

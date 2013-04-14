@@ -46,4 +46,4 @@ class SkillHandler : public Net::SkillHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_SKILLHANDLER_H
+#endif  // NET_EA_SKILLHANDLER_H

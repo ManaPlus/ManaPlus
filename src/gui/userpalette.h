@@ -231,4 +231,4 @@ class UserPalette final : public Palette, public gcn::ListModel
 
 extern UserPalette *userPalette;
 
-#endif // USER_PALETTE_H
+#endif  // USER_PALETTE_H

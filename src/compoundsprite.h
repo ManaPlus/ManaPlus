@@ -159,4 +159,4 @@ private:
     static bool mEnableDelay;
 };
 
-#endif // COMPOUNDSPRITE_H
+#endif  // COMPOUNDSPRITE_H

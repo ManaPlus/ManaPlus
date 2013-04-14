@@ -57,7 +57,7 @@ extern Net::BeingHandler *beingHandler;
 namespace TmwAthena
 {
 
-BeingHandler::BeingHandler(bool enableSync) :
+BeingHandler::BeingHandler(const bool enableSync) :
     MessageHandler(),
     Ea::BeingHandler(enableSync)
 {

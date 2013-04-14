@@ -62,4 +62,4 @@ class InventoryHandler final : public MessageHandler,
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_INVENTORYHANDLER_H
+#endif  // NET_TA_INVENTORYHANDLER_H

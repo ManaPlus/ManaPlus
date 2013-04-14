@@ -295,7 +295,7 @@ void UserPalette::addColor(const unsigned type, const unsigned rgb,
         rgbValue = atox(rgbString);
     else
         rgbValue = atoi(rgbString.c_str());
-    const gcn::Color &trueCol = rgbValue;
+    const gcn::Color &trueCol = gcn::Color(rgbValue);
     grad = static_cast<GradientType>(config.getValue(configName + "Gradient",
                                      static_cast<int>(grad)));
     delay = config.getValueInt(configName + "Delay", delay);

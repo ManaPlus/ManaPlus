@@ -29,7 +29,7 @@ class NamesModel;
 class Setup_Visual final : public SetupTabScroll
 {
     public:
-        Setup_Visual(const Widget2 *const widget);
+        explicit Setup_Visual(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Visual)
 

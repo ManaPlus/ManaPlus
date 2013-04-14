@@ -41,4 +41,4 @@ class ActorSpriteListener
         virtual void actorSpriteDestroyed(const ActorSprite &actorSprite) = 0;
 };
 
-#endif // ACTORSPRITELISTENER_H
+#endif  // ACTORSPRITELISTENER_H

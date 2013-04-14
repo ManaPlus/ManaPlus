@@ -59,7 +59,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC InputEvent: public Event
     {
     public:
-
         /**
          * Constructor.
          *
@@ -155,6 +154,6 @@ namespace gcn
          */
         bool mIsConsumed;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_INPUTEVENT_HPP
+#endif  // end GCN_INPUTEVENT_HPP

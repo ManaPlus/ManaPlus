@@ -113,4 +113,4 @@ class EditServerDialog final : public Window,
         int mIndex;
 };
 
-#endif // EDITSERVERDIALOG_H
+#endif  // EDITSERVERDIALOG_H

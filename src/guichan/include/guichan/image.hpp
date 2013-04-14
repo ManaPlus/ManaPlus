@@ -72,7 +72,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC Image
     {
     public:
-
         /**
          * Constructor.
          */
@@ -141,6 +140,6 @@ namespace gcn
          */
         virtual void convertToDisplayFormat() = 0;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_IMAGE_HPP
+#endif  // end GCN_IMAGE_HPP

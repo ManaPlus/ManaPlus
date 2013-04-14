@@ -34,8 +34,8 @@
 #define final
 #define override
 #define constexpr
-//#define A_DELETE
-//#define A_DELETE_COPY
+// #define A_DELETE
+// #define A_DELETE_COPY
 #endif
 #undef Z_NULL
 #define Z_NULL nullptr
@@ -63,19 +63,19 @@
 #define FOR_EACHP(type, iter, array) for (type iter = array->begin(), \
     iter##_end = array->end(); iter != iter##_end; ++ iter)
 
-//#define DEBUG_CONFIG 1
-//#define DEBUG_BIND_TEXTURE 1
-//#define DISABLE_RESOURCE_CACHING 1
+// #define DEBUG_CONFIG 1
+// #define DEBUG_BIND_TEXTURE 1
+// #define DISABLE_RESOURCE_CACHING 1
 #define DUMP_LEAKED_RESOURCES 1
-//#define DEBUG_DUMP_LEAKS1 1
+// #define DEBUG_DUMP_LEAKS1 1
 
-//Android logging
-//#define ANDROID_LOG 1
+// Android logging
+// #define ANDROID_LOG 1
 
-//profiler
-//#define USE_PROFILER 1
+// profiler
+// #define USE_PROFILER 1
 
-//draw calls
-//#define DEBUG_DRAW_CALLS 1
+// draw calls
+// #define DEBUG_DRAW_CALLS 1
 
 #include "utils/perfomance.h"

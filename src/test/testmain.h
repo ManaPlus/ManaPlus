@@ -78,4 +78,4 @@ class TestMain
 };
 
 #endif
-#endif // TEST_TESTMAIN_H
+#endif  // TEST_TESTMAIN_H

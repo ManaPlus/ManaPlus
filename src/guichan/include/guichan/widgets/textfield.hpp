@@ -74,7 +74,7 @@ namespace gcn
          *
          * @param text The default text of the text field.
          */
-        TextField(const std::string& text);
+        explicit TextField(const std::string& text);
 
         A_DELETE_COPY(TextField)
 
@@ -167,6 +167,6 @@ namespace gcn
          */
         int mXScroll;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_TEXTFIELD_HPP
+#endif  // end GCN_TEXTFIELD_HPP

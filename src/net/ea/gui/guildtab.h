@@ -34,7 +34,7 @@ namespace Ea
 class GuildTab : public ChatTab, public ConfigListener
 {
     public:
-        GuildTab(const Widget2 *const widget);
+        explicit GuildTab(const Widget2 *const widget);
 
         A_DELETE_COPY(GuildTab)
 

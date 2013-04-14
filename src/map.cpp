@@ -954,7 +954,7 @@ Path Map::findPath(const int startX, const int startY,
                     const MetaTile *const t2 = &mMetaTiles[curr.x +
                         dx + curWidth];
 
-                    // +++ here need check block must depend 
+                    // +++ here need check block must depend
                     // on player abilities.
                     if (((t1->blockmask | t2->blockmask) & BLOCKMASK_WALL))
                         continue;

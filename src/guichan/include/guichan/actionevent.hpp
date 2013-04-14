@@ -81,7 +81,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC ActionEvent final : public Event
     {
     public:
-
         /**
          * Constructor.
          *
@@ -111,6 +110,6 @@ namespace gcn
          */
         std::string mId;
     };
-}
+}  // namespace gcn
 
-#endif // GCN_ACTIONEVENT_HPP
+#endif  // GCN_ACTIONEVENT_HPP

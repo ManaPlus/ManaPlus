@@ -79,7 +79,7 @@ class MessageOut
         /**
          * Constructor.
          */
-        MessageOut(short id);
+        explicit MessageOut(short id);
 
         /**
          * Expand the packet data to be able to hold more data.

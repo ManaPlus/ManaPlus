@@ -337,16 +337,16 @@ class ChatWindow final : public Window,
         TabMap mWhispers;
 
         typedef History::iterator HistoryIterator;
-        History mHistory;           /**< Command history. */
-        HistoryIterator mCurHist;   /**< History iterator. */
+        History mHistory;          /**< Command history. */
+        HistoryIterator mCurHist;  /**< History iterator. */
 
         typedef std::list<std::string> Commands;
         typedef Commands::iterator CommandsIterator;
-        History mCommands;           /**< Command list. */
+        History mCommands;         /**< Command list. */
         History mCustomWords;
 
-        bool mReturnToggles; /**< Marks whether <Return> toggles the chat log
-                                or not */
+        bool mReturnToggles; // Marks whether <Return> toggles the chat log
+                             // or not
 
         StringVect mTradeFilter;
 

@@ -59,4 +59,4 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_TRADEHANDLER_H
+#endif  // NET_TA_TRADEHANDLER_H

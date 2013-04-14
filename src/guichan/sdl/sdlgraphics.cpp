@@ -63,7 +63,6 @@
 
 namespace gcn
 {
-
     SDLGraphics::SDLGraphics() :
         Graphics(),
         mTarget(nullptr),

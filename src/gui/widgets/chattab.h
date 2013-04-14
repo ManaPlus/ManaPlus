@@ -209,4 +209,4 @@ class ChatTab : public Tab
 extern ChatTab *localChatTab;
 extern ChatTab *debugChatTab;
 
-#endif // CHATTAB_H
+#endif  // CHATTAB_H

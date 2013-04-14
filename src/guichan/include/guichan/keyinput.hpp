@@ -60,7 +60,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC KeyInput
     {
     public:
-
         /**
          * Constructor.
          */
@@ -71,7 +70,7 @@ namespace gcn
             mAltPressed(false),
             mMetaPressed(false),
             mNumericPad(false)
-        { };
+        { }
 
         /**
          * Constructor.
@@ -266,6 +265,6 @@ namespace gcn
          */ 
         bool mNumericPad;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_KEYINPUT_HPP
+#endif  // end GCN_KEYINPUT_HPP

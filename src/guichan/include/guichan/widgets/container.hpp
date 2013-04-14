@@ -64,7 +64,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC Container: public BasicContainer
     {
     public:
-
         /**
          * Constructor. A container is opauqe as default, if you want a
          * none opaque container call setQpaque(false).
@@ -158,6 +157,6 @@ namespace gcn
          */
         bool mOpaque;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_CONTAINER_HPP
+#endif  // end GCN_CONTAINER_HPP

@@ -122,4 +122,4 @@ class ItemAmountWindow final : public Window,
         int mPrice;
 };
 
-#endif // ITEM_AMOUNT_WINDOW_H
+#endif  // ITEM_AMOUNT_WINDOW_H

@@ -62,6 +62,6 @@ namespace CharDB
     unsigned getSumStat() A_WARN_UNUSED;
 
     const std::vector<int> &getDefaultItems() A_WARN_UNUSED;
-}
+}  // namespace CharDB
 
 #endif

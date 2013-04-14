@@ -63,4 +63,4 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_PLAYERHANDLER_H
+#endif  // NET_TA_PLAYERHANDLER_H

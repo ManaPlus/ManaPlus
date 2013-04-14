@@ -63,4 +63,4 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
 }  // namespace TmwAthena
 
-#endif // NET_TA_CHATHANDLER_H
+#endif  // NET_TA_CHATHANDLER_H

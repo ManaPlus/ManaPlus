@@ -78,4 +78,4 @@ class ItemPopup final : public Popup
         gcn::Color getColor(const ItemType type) const;
 };
 
-#endif // ITEMPOPUP_H
+#endif  // ITEMPOPUP_H

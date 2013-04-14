@@ -214,4 +214,4 @@ private:
     bool mServerGuild;
 };
 
-#endif // GUILD_H
+#endif  // GUILD_H

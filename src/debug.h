@@ -20,11 +20,11 @@
 
 #include "localconsts.h"
 
-//#define DEBUG_JOYSTICK 1
+// #define DEBUG_JOYSTICK 1
 
 #ifdef ENABLE_MEM_DEBUG
 
-//define _DEBUG_NEW_EMULATE_MALLOC 1
+// #define _DEBUG_NEW_EMULATE_MALLOC 1
 #include "debug/debug_new.h"
 
 #define reportFalse(val) reportFalse1(val, __FILE__, __LINE__)

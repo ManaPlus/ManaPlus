@@ -92,13 +92,13 @@ class QuestsWindow final : public Window, public gcn::ActionListener
         BrowserBox *mText;
         ScrollArea *mTextScrollArea;
         Button *mCloseButton;
-        //quest variables: var, value
+        // quest variables: var, value
         std::map<int, int> mVars;
-        //quests: var, quests
+        // quests: var, quests
         std::map<int, std::vector<QuestItem*> > mQuests;
         std::vector<QuestEffect*> mAllEffects;
         std::vector<const QuestEffect*> mMapEffects;
-        //npc effects for current map and values: npc, effect
+        // npc effects for current map and values: npc, effect
         NpcQuestEffectMap mNpcEffects;
         std::vector<QuestItem*> mQuestLinks;
         Image *mCompleteIcon;

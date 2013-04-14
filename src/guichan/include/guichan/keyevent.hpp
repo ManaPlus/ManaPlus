@@ -134,6 +134,6 @@ namespace gcn
          */
         Key mKey;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_KEYEVENT_HPP
+#endif  // end GCN_KEYEVENT_HPP

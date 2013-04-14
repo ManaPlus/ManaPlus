@@ -70,7 +70,7 @@ namespace gcn
          *
          * @param caption The caption of the label.
          */
-        Label(const std::string& caption);
+        explicit Label(const std::string& caption);
 
         A_DELETE_COPY(Label)
 
@@ -131,6 +131,6 @@ namespace gcn
          */
         Graphics::Alignment mAlignment;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_LABEL_HPP
+#endif  // end GCN_LABEL_HPP

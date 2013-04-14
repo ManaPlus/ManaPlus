@@ -63,7 +63,6 @@ namespace gcn
         public MouseListener
     {
     public:
-
         /**
          * Scrollpolicies for the horizontal and vertical scrollbar.
          * The policies are:
@@ -90,7 +89,7 @@ namespace gcn
          *
          * @param content The content of the scroll area.
          */
-        ScrollArea(Widget *const content);
+        explicit ScrollArea(Widget *const content);
 
         /**
          * Constructor.
@@ -101,8 +100,8 @@ namespace gcn
          * @param vPolicy The policy for the vertical scrollbar. See enum with
          *                policies.
          */
-        ScrollArea(Widget *content, 
-                   ScrollPolicy hPolicy, 
+        ScrollArea(Widget *content,
+                   ScrollPolicy hPolicy,
                    ScrollPolicy vPolicy);
 
         A_DELETE_COPY(ScrollArea)
@@ -325,8 +324,7 @@ namespace gcn
          * @return True if the scroll area is opaque, false otherwise.
          */
         bool isOpaque() const;
-        
-        
+
         // Inherited from BasicContainer
 
         virtual void showWidgetPart(Widget* widget, Rectangle area);
@@ -528,6 +526,6 @@ namespace gcn
          */
         bool mOpaque;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_SCROLLAREA_HPP
+#endif  // end GCN_SCROLLAREA_HPP

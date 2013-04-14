@@ -33,7 +33,7 @@ class Resource;
 
 struct AtlasItem final
 {
-    AtlasItem(Image *image0) :
+    explicit AtlasItem(Image *image0) :
         image(image0),
         x(0),
         y(0),

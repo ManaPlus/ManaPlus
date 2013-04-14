@@ -71,7 +71,6 @@ namespace gcn
         public KeyListener
     {
     public:
-
         /**
          * Constructor.
          */
@@ -204,6 +203,6 @@ namespace gcn
          */
         static GroupMap mGroupMap;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_RADIOBUTTON_HPP
+#endif  // end GCN_RADIOBUTTON_HPP

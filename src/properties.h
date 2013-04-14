@@ -125,7 +125,6 @@ class Properties
     private:
         typedef std::map<std::string, std::string> PropertyMap;
         PropertyMap mProperties;
-
 };
 
 #endif

@@ -51,4 +51,4 @@ class Wallpaper final
                                         const int height) A_WARN_UNUSED;
 };
 
-#endif // WALLPAPER_H
+#endif  // WALLPAPER_H

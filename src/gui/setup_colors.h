@@ -41,7 +41,7 @@ class Setup_Colors final : public SetupTab,
                            public gcn::SelectionListener
 {
     public:
-        Setup_Colors(const Widget2 *const widget);
+        explicit Setup_Colors(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Colors)
 
@@ -94,4 +94,4 @@ class Setup_Colors final : public SetupTab,
         void updateGradType();
 };
 
-#endif // SETUP_COLORS_H
+#endif  // SETUP_COLORS_H

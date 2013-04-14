@@ -31,7 +31,7 @@ class Graphics;
 class ImageSprite final : public Sprite
 {
 public:
-    ImageSprite(Image *const image);
+    explicit ImageSprite(Image *const image);
 
     A_DELETE_COPY(ImageSprite)
 
@@ -78,4 +78,4 @@ private:
     Image *mImage;
 };
 
-#endif // IMAGESPRITE_H
+#endif  // IMAGESPRITE_H

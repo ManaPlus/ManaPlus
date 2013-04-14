@@ -44,7 +44,7 @@ class Slider final : public gcn::Slider,
         /**
          * Constructor with scale start equal to 0.
          */
-        Slider(const double scaleEnd = 1.0);
+        explicit Slider(const double scaleEnd = 1.0);
 
         /**
          * Constructor.

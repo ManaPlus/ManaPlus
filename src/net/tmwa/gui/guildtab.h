@@ -34,7 +34,7 @@ namespace TmwAthena
 class GuildTab : public Ea::GuildTab
 {
     public:
-        GuildTab(const Widget2 *const widget);
+        explicit GuildTab(const Widget2 *const widget);
 
         A_DELETE_COPY(GuildTab)
 

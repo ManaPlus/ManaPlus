@@ -157,7 +157,6 @@ class DropDown final : public gcn::ActionListener,
         bool mDroppedDown;
         bool mPushed;
         int mFoldedUpHeight;
-//        gcn::FocusHandler mInternalFocusHandler;
         bool mIsDragged;
         typedef std::list<SelectionListener*> SelectionListenerList;
         SelectionListenerList mSelectionListeners;
@@ -171,4 +170,4 @@ class DropDown final : public gcn::ActionListener,
         static Skin *mSkin;
 };
 
-#endif // end DROPDOWN_H
+#endif  // end DROPDOWN_H

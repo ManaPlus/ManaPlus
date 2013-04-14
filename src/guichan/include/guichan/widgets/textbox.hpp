@@ -75,7 +75,7 @@ namespace gcn
          *
          * @param text The default text of the text box.
          */
-        TextBox(const std::string& text);
+        explicit TextBox(const std::string& text);
 
         A_DELETE_COPY(TextBox)
 
@@ -287,6 +287,6 @@ namespace gcn
          */
         bool mOpaque;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_TEXTBOX_HPP
+#endif  // end GCN_TEXTBOX_HPP

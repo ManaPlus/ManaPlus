@@ -59,7 +59,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC Color final
     {
     public:
-
         /**
          * Constructor. Initializes the color to black.
          */
@@ -77,7 +76,7 @@ namespace gcn
          *
          * @param color The color to initialise the object with.
          */
-        Color(const int color);
+        explicit Color(const int color);
 
         /**
          * Constructor. The default alpha value is 255.
@@ -171,6 +170,6 @@ namespace gcn
          */
         int a;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_COLOR_HPP
+#endif  // end GCN_COLOR_HPP

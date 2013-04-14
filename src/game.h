@@ -32,7 +32,6 @@
 static const int MAX_LASTKEYS = 10;
 
 extern volatile int cur_time;
-//extern std::string map_path;  // TODO: Get rid of this global
 
 class Map;
 class WindowMenu;

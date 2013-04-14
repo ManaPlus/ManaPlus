@@ -42,4 +42,4 @@
 
 #endif
 
-#endif // UTILS_GETTEXT_H
+#endif  // UTILS_GETTEXT_H

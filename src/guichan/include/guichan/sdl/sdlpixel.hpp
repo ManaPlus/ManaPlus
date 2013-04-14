@@ -237,8 +237,10 @@ namespace gcn
         Uint8 *p = static_cast<uint8_t*>(surface->pixels)
             + y * surface->pitch + x * bpp;
 
-        Uint32 pixel = SDL_MapRGB(surface->format, static_cast<uint8_t>(color.r),
-            static_cast<uint8_t>(color.g), static_cast<uint8_t>(color.b));
+        Uint32 pixel = SDL_MapRGB(surface->format,
+            static_cast<uint8_t>(color.r),
+            static_cast<uint8_t>(color.g),
+            static_cast<uint8_t>(color.b));
 
         switch (bpp)
         {
@@ -285,6 +287,6 @@ namespace gcn
 
         SDL_UnlockSurface(surface);
     }
-}
+}  // namespace gcn
 
-#endif // end GCN_SDLPIXEL_HPP
+#endif  // end GCN_SDLPIXEL_HPP

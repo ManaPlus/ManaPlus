@@ -69,4 +69,4 @@ class SpellPopup final : public Popup
         Label *mItemComment;
 };
 
-#endif // SPELLPOPUP_H
+#endif  // SPELLPOPUP_H

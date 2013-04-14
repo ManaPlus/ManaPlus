@@ -92,5 +92,5 @@ void FlowContainer::add(gcn::Widget *widget)
 
     Container::add(widget);
     widget->setSize(mBoxWidth, mBoxHeight);
-    widgetResized(nullptr);
+    widgetResized(gcn::Event(nullptr));
 }

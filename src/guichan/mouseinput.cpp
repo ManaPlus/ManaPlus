@@ -114,4 +114,4 @@ namespace gcn
     {
         return mY;
     }
-}
+}  // namespace gcn

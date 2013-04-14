@@ -83,4 +83,4 @@ class SliderList final : public Container,
         int mSelectedIndex;
 };
 
-#endif // end GUI_WIDGETS_SLIDERLIST_H
+#endif  // end GUI_WIDGETS_SLIDERLIST_H

@@ -52,4 +52,4 @@ class ProgressIndicator final : public gcn::Widget,
         SimpleAnimation *mIndicator;
 };
 
-#endif // PROGRESSINDICATOR_H
+#endif  // PROGRESSINDICATOR_H

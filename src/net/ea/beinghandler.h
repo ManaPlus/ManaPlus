@@ -32,7 +32,7 @@ namespace Ea
 class BeingHandler : public Net::BeingHandler
 {
     public:
-        BeingHandler(const bool enableSync);
+        explicit BeingHandler(const bool enableSync);
 
         A_DELETE_COPY(BeingHandler)
 
@@ -104,4 +104,4 @@ class BeingHandler : public Net::BeingHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_BEINGHANDLER_H
+#endif  // NET_EA_BEINGHANDLER_H

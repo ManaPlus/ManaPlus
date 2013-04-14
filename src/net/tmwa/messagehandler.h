@@ -58,4 +58,4 @@ typedef const std::auto_ptr<MessageHandler> MessageHandlerPtr;
 
 }
 
-#endif // NET_TA_MESSAGEHANDLER_H
+#endif  // namespace TmwAthena

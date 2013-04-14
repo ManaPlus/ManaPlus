@@ -114,4 +114,4 @@ class Network
 
 }  // namespace Ea
 
-#endif // NET_EA_NETWORK_H
+#endif  // NET_EA_NETWORK_H

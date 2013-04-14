@@ -136,13 +136,13 @@ class Map final : public Properties, public ConfigListener
 
         enum BlockMask
         {
-            BLOCKMASK_WALL      = 0x80, // 1000 0000
-            BLOCKMASK_CHARACTER = 0x01, // 0000 0001
-            BLOCKMASK_MONSTER   = 0x02, // 0000 0010
-            BLOCKMASK_AIR       = 0x04, // 0000 0100
-            BLOCKMASK_WATER     = 0x08, // 0000 1000
-            BLOCKMASK_GROUND    = 0x10, // 0001 0000
-            BLOCKMASK_GROUNDTOP = 0x20  // 0010 0000
+            BLOCKMASK_WALL      = 0x80,  // 1000 0000
+            BLOCKMASK_CHARACTER = 0x01,  // 0000 0001
+            BLOCKMASK_MONSTER   = 0x02,  // 0000 0010
+            BLOCKMASK_AIR       = 0x04,  // 0000 0100
+            BLOCKMASK_WATER     = 0x08,  // 0000 1000
+            BLOCKMASK_GROUND    = 0x10,  // 0001 0000
+            BLOCKMASK_GROUNDTOP = 0x20   // 0010 0000
         };
 
         enum DebugType
@@ -429,7 +429,6 @@ class Map final : public Properties, public ConfigListener
         void removeActor(const Actors::iterator &iterator);
 
     private:
-
         enum LayerType
         {
             FOREGROUND_LAYERS = 0,

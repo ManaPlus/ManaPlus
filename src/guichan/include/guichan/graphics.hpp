@@ -271,6 +271,6 @@ namespace gcn
          */
         Font* mFont;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_GRAPHICS_HPP
+#endif  // end GCN_GRAPHICS_HPP

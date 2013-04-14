@@ -44,7 +44,7 @@ class Setup_Input final : public SetupTab
         /**
          * Constructor
          */
-        Setup_Input(const Widget2 *const widget);
+        explicit Setup_Input(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Input)
 

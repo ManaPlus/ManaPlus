@@ -161,7 +161,7 @@ class ConfigurationObject
                 }
                 else
                 {
-                    nextobj->clear(); // you never know...
+                    nextobj->clear();  // you never know...
                 }
             }
 
@@ -346,9 +346,10 @@ class Configuration final : public ConfigurationObject
         typedef ListenerMap::iterator ListenerMapIterator;
         ListenerMap mListenerMap;
 
-        std::string mConfigPath;       /**< Location of config file */
-        DefaultsData *mDefaultsData;   /**< Defaults of value
-                                            for a given key */
+        // Location of config file
+        std::string mConfigPath;
+        /// Defaults of value for a given key
+        DefaultsData *mDefaultsData;
         std::string mDirectory;
         std::string mFilename;
         bool mUseResManager;

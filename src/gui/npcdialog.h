@@ -60,7 +60,7 @@ class NpcDialog final : public Window, public gcn::ActionListener,
          *
          * @see Window::Window
          */
-        NpcDialog(const int npcId);
+        explicit NpcDialog(const int npcId);
 
         A_DELETE_COPY(NpcDialog)
 
@@ -223,7 +223,6 @@ class NpcDialog final : public Window, public gcn::ActionListener,
         // Used for the main input area
         BrowserBox *mTextBox;
         ScrollArea *mScrollArea;
-        //TextBox *mTextBox;
         std::string mText;
         std::string mNewText;
 
@@ -275,4 +274,4 @@ class NpcDialog final : public Window, public gcn::ActionListener,
         bool mShowAvatar;
 };
 
-#endif // NPCDIALOG_H
+#endif  // NPCDIALOG_H

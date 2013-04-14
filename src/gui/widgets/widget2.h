@@ -33,7 +33,7 @@ class Widget2
         {
         }
 
-        Widget2(const Widget2 *const widget) :
+        explicit Widget2(const Widget2 *const widget) :
             mPaletteOffset(widget ? widget->mPaletteOffset : 0)
         {
             checkPalette();

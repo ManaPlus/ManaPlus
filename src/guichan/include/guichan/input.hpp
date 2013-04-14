@@ -69,7 +69,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC Input
     {
     public:
-
         /**
          * Destructor.
          */
@@ -113,6 +112,6 @@ namespace gcn
          */
         virtual void _pollInput() = 0;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_INPUT_HPP
+#endif  // end GCN_INPUT_HPP

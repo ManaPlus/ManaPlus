@@ -67,7 +67,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC SelectionListener
     {
     public:
-
         /**
          * Destructor.
          */
@@ -83,7 +82,7 @@ namespace gcn
          * @since 0.8.0
          */
         virtual void valueChanged(const SelectionEvent& event A_UNUSED)
-        { };
+        { }
 
     protected:
         /**
@@ -95,6 +94,6 @@ namespace gcn
         SelectionListener()
         { }
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_SELECTIONLISTENER_HPP
+#endif  // end GCN_SELECTIONLISTENER_HPP

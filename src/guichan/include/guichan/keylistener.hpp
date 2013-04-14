@@ -62,7 +62,6 @@ namespace gcn
     class GCN_CORE_DECLSPEC KeyListener
     {
     public:
-
         /**
          * Destructor.
          */
@@ -97,6 +96,6 @@ namespace gcn
         KeyListener()
         { }
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_KEYLISTENER_HPP
+#endif  // end GCN_KEYLISTENER_HPP

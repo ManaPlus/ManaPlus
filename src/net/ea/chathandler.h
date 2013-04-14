@@ -65,4 +65,4 @@ class ChatHandler : public Net::ChatHandler
 
 }  // namespace Ea
 
-#endif // NET_EA_CHATHANDLER_H
+#endif  // NET_EA_CHATHANDLER_H

@@ -71,7 +71,7 @@ namespace gcn
          *
          * @param caption the caption of the window.
          */
-        Window(const std::string& caption);
+        explicit Window(const std::string& caption);
 
         A_DELETE_COPY(Window)
 
@@ -246,6 +246,6 @@ namespace gcn
          */
         bool mMoved;
     };
-}
+}  // namespace gcn
 
-#endif // end GCN_WINDOW_HPP
+#endif  // end GCN_WINDOW_HPP

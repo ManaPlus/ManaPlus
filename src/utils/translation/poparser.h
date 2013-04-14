@@ -83,4 +83,4 @@ class PoParser final
         bool mReadingStr;
 };
 
-#endif // UTILS_TRANSLATION_POPARSER_H
+#endif  // UTILS_TRANSLATION_POPARSER_H

@@ -1272,8 +1272,7 @@ SocialWindow::SocialWindow() :
     place(2, 0, mLeaveButton);
     place(0, 1, mTabs, 4, 4);
 
-    widgetResized(nullptr);
-
+    widgetResized(gcn::Event(nullptr));
 
     loadWindowState();
 
