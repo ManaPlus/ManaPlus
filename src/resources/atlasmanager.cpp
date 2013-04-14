@@ -53,21 +53,19 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
     AtlasResource *resource = new AtlasResource;
 
     loadImages(files, images);
-    int maxSize = OpenGLImageHelper::getTextureSize();
-//    int maxSize = 1024;
+    const int maxSize = OpenGLImageHelper::getTextureSize();
 
     // sorting images on atlases.
     simpleSort(name, atlases, images, maxSize);
 
-//    int k = 0;
     FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
     {
-        TextureAtlas *atlas = *it;
+        TextureAtlas *const atlas = *it;
         if (!atlas)
             continue;
 
         // create atlas base on sorted images
-        SDL_Surface *surface = createSDLAtlas(atlas);
+        SDL_Surface *const surface = createSDLAtlas(atlas);
 
         if (!surface)
             continue;
@@ -116,10 +114,10 @@ void AtlasManager::loadImages(const StringVect &files,
             path = path.substr(0, p);
         }
 
-        SDL_RWops *rw = PHYSFSRWOPS_openRead(path.c_str());
+        SDL_RWops *const rw = PHYSFSRWOPS_openRead(path.c_str());
         if (rw)
         {
-            Image *image = d ? sdlImageHelper->load(rw, *d)
+            Image *const image = d ? sdlImageHelper->load(rw, *d)
                 : sdlImageHelper->load(rw);
 
             if (image)
@@ -144,7 +142,7 @@ void AtlasManager::simpleSort(const std::string &name,
     const std::vector<Image*>::const_iterator it_end = images.end();
     for (it = images.begin(); it != it_end; ++ it)
     {
-        Image *img = *it;
+        const Image *const img = *it;
         if (img)
         {
             atlas->name = std::string("atlas_").append(name).append(
@@ -155,10 +153,10 @@ void AtlasManager::simpleSort(const std::string &name,
 
     for (it = images.begin(); it != it_end; ++ it)
     {
-        Image *img = *it;
+        Image *const img = *it;
         if (img)
         {
-            AtlasItem *item = new AtlasItem(img);
+            AtlasItem *const item = new AtlasItem(img);
             item->name = img->getIdPath();
             // start next line
             if (x + img->mBounds.w > size)
@@ -182,8 +180,6 @@ void AtlasManager::simpleSort(const std::string &name,
             if (img->mBounds.h > tempHeight)
                 tempHeight = img->mBounds.h;
 
-//            logger->log("image draw position: %d,%d (%d,%d)",
-//                x, y, img->mBounds.w, img->mBounds.h);
             item->x = x;
             item->y = y;
             atlas->items.push_back(item);
@@ -202,7 +198,7 @@ void AtlasManager::simpleSort(const std::string &name,
         delete atlas;
 }
 
-SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *atlas)
+SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;
@@ -225,21 +221,21 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *atlas)
     atlas->height = powerOfTwo(atlas->height);
 
     // temp SDL surface for atlas
-    SDL_Surface *surface = SDL_CreateRGBSurface(SDL_SWSURFACE,
+    SDL_Surface *const surface = SDL_CreateRGBSurface(SDL_SWSURFACE,
         atlas->width, atlas->height, 32, rmask, gmask, bmask, amask);
 
     if (!surface)
         return nullptr;
 
-    Graphics *graphics = new Graphics();
+    Graphics *const graphics = new Graphics();
     graphics->setTarget(surface);
     graphics->_beginDraw();
 
     // drawing SDL images to surface
     FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
     {
-        AtlasItem *item = *it;
-        Image *image = item->image;
+        AtlasItem *const item = *it;
+        Image *const image = item->image;
 
         if (image)
         {
@@ -253,7 +249,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *atlas)
     return surface;
 }
 
-void AtlasManager::convertAtlas(TextureAtlas *atlas)
+void AtlasManager::convertAtlas(TextureAtlas *const atlas)
 {
     // no check for null pointer in atlas because it was in caller
     // convert surface to OpemGL image
@@ -282,7 +278,7 @@ void AtlasManager::convertAtlas(TextureAtlas *atlas)
     }
 }
 
-void AtlasManager::injectToResources(AtlasResource *resource)
+void AtlasManager::injectToResources(AtlasResource *const resource)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
     FOR_EACH (std::vector<TextureAtlas*>::iterator, it, resource->atlases)
@@ -306,7 +302,7 @@ void AtlasManager::injectToResources(AtlasResource *resource)
     }
 }
 
-void AtlasManager::moveToDeleted(AtlasResource *resource)
+void AtlasManager::moveToDeleted(AtlasResource *const resource)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
     FOR_EACH (std::vector<TextureAtlas*>::iterator, it, resource->atlases)

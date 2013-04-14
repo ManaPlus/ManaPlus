@@ -33,7 +33,7 @@ class Resource;
 
 struct AtlasItem final
 {
-    explicit AtlasItem(Image *image0) :
+    explicit AtlasItem(Image *const image0) :
         image(image0),
         x(0),
         y(0),
@@ -100,9 +100,9 @@ class AtlasManager final
                                                const StringVect &files)
                                                A_WARN_UNUSED;
 
-        static void injectToResources(AtlasResource *resource);
+        static void injectToResources(AtlasResource *const resource);
 
-        static void moveToDeleted(AtlasResource *resource);
+        static void moveToDeleted(AtlasResource *const resource);
 
     private:
         static void loadImages(const StringVect &files,
@@ -112,10 +112,11 @@ class AtlasManager final
                                std::vector<TextureAtlas*> &atlases,
                                std::vector<Image*> &images, int size);
 
-        static SDL_Surface *createSDLAtlas(TextureAtlas *atlas) A_WARN_UNUSED;
+        static SDL_Surface *createSDLAtlas(TextureAtlas *const atlas)
+                                           A_WARN_UNUSED;
 
 
-        static void convertAtlas(TextureAtlas *atlas);
+        static void convertAtlas(TextureAtlas *const atlas);
 };
 
 #endif
