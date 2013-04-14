@@ -92,9 +92,9 @@ namespace gcn
 
     Color Color::operator-(const Color& color) const
     {
-        Color result(r - color.r, 
-                     g - color.g, 
-                     b - color.b, 
+        Color result(r - color.r,
+                     g - color.g,
+                     b - color.b,
                      255);
 
         result.r = (result.r > 255 ? 255 : (result.r < 0 ? 0 : result.r));
@@ -143,4 +143,4 @@ namespace gcn
 
         return out;
     }
-}
+}  // namespace gcn

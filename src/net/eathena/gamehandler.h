@@ -62,6 +62,6 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
         { return true; }
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
-#endif // NET_EATHENA_MAPHANDLER_H
+#endif  // NET_EATHENA_MAPHANDLER_H

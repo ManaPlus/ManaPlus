@@ -370,4 +370,4 @@ namespace gcn
 
         return nullptr;
     }
-}
+}  // namespace gcn

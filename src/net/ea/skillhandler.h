@@ -44,6 +44,6 @@ class SkillHandler : public Net::SkillHandler
         void processSkillFailed(Net::MessageIn &msg) const;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_SKILLHANDLER_H

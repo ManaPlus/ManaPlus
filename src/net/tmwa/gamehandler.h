@@ -60,6 +60,6 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
         { return false; }
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_MAPHANDLER_H

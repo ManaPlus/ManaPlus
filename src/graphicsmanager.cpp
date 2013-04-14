@@ -419,7 +419,7 @@ void GraphicsManager::updatePlanformExtensions()
         HDC hdc = GetDC(info.window);
         if (hdc)
         {
-            const char *const extensions = mwglGetExtensionsString (hdc);
+            const char *const extensions = mwglGetExtensionsString(hdc);
             if (extensions)
             {
                 logger->log1("wGL extensions:");
@@ -966,7 +966,7 @@ static CALLBACK void debugCallback(GLenum source, GLenum type, GLuint id,
             break;
     }
     char *const buf = new char[length + 1];
-    memcpy (buf, text, length);
+    memcpy(buf, text, length);
     buf[length] = 0;
     message.append(" ").append(buf);
     delete [] buf;

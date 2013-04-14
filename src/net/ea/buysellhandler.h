@@ -65,6 +65,6 @@ class BuySellHandler : public Net::BuySellHandler
         BuyDialog *mBuyDialog;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_BUYSELLHANDLER_H

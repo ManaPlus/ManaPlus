@@ -1678,7 +1678,7 @@ int Client::gameExec()
                     break;
 
                 case STATE_AUTORECONNECT_SERVER:
-                    //++++++
+                    // ++++++
                     break;
 
                 case STATE_START:

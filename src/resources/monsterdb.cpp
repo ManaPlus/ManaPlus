@@ -69,7 +69,7 @@ void MonsterDB::load()
         "offset", OLD_TMWATHENA_OFFSET);
 #endif
 
-    //iterate <monster>s
+    // iterate <monster>s
     for_each_xml_child_node(monsterNode, rootNode)
     {
         if (!xmlNameEqual(monsterNode, "monster"))
@@ -124,7 +124,7 @@ void MonsterDB::load()
 
         SpriteDisplay display;
 
-        //iterate <sprite>s and <sound>s
+        // iterate <sprite>s and <sound>s
         for_each_xml_child_node(spriteNode, monsterNode)
         {
             if (xmlNameEqual(spriteNode, "sprite"))

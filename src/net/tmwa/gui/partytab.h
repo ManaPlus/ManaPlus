@@ -41,6 +41,6 @@ class PartyTab : public Ea::PartyTab
         ~PartyTab();
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
-#endif // TA_PARTYTAB_H
+#endif  // TA_PARTYTAB_H

@@ -228,9 +228,6 @@ CantGetPasteboardItemIdentifier:
 CantGetPasteboardItemCount:
     fprintf(stderr, "Cannot copy clipboard, CantGetPasteboardItemCount!\n");
     return false;
-//PasteboardOutOfSync:
-//    fprintf(stderr, "Cannot copy clipboard, PasteboardOutOfSync!\n");
-//      return false;
 }
 
 bool getClipBoard(char* text  /* out */, const int bufSize)

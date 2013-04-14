@@ -57,7 +57,7 @@
 
 #include "localconsts.h"
 
-//define DUMP_MEM_ADDRESSES 1
+// #define DUMP_MEM_ADDRESSES 1
 
 #if !_FAST_MUTEX_CHECK_INITIALIZATION && !defined(_NOTHREADS)
 #error "_FAST_MUTEX_CHECK_INITIALIZATION not set: check_leaks may not work"
@@ -163,9 +163,9 @@
  *
  * Value of the padding bytes at the end of a memory block.
  */
-//#ifndef M_DEBUG_NEW_TAILCHECK_CHAR
-//#define M_DEBUG_NEW_TAILCHECK_CHAR 0xCC
-//#endif
+// #ifndef M_DEBUG_NEW_TAILCHECK_CHAR
+// #define M_DEBUG_NEW_TAILCHECK_CHAR 0xCC
+// #endif
 
 /**
  * @def M_DEBUG_NEW_USE_ADDR2LINE
@@ -399,7 +399,7 @@ static bool print_position_from_addr(const void*)
 {
     return false;
 }
-#endif // M_DEBUG_NEW_USE_ADDR2LINE
+#endif  // M_DEBUG_NEW_USE_ADDR2LINE
 
 /**
  * Prints the position information of a memory operation point.  When \c
@@ -420,7 +420,7 @@ static void print_position(const void* ptr, int line)
     }
     else if (ptr != nullptr)   // Is caller address present?
     {
-        if (!print_position_from_addr(ptr)) // Fail to get source position?
+        if (!print_position_from_addr(ptr))  // Fail to get source position?
             fprintf(new_output_fp, "%p", ptr);
     }
     else                    // No information is present
@@ -778,13 +778,13 @@ void* operator new [](size_t size, const char* file, int line)
 #endif
 }
 
-void* operator new (size_t size) //throw(std::bad_alloc)
+void* operator new (size_t size)  // throw(std::bad_alloc)
 {
     return operator new (size, static_cast<char*>(
         M_DEBUG_NEW_CALLER_ADDRESS), 0);
 }
 
-void* operator new [](size_t size) //throw(std::bad_alloc)
+void* operator new [](size_t size)  // throw(std::bad_alloc)
 {
     return operator new [](size, static_cast<char*>(
         M_DEBUG_NEW_CALLER_ADDRESS), 0);
@@ -854,7 +854,7 @@ void operator delete [](void* pointer, const std::nothrow_t&) throw()
     operator delete [](pointer, static_cast<char*>(
         M_DEBUG_NEW_CALLER_ADDRESS), 0);
 }
-#endif // HAVE_PLACEMENT_DELETE
+#endif  // HAVE_PLACEMENT_DELETE
 
 int __debug_new_counter::_S_count = 0;
 

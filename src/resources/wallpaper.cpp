@@ -46,7 +46,7 @@ struct WallpaperData
 static bool wallpaperCompare(const WallpaperData &a, const WallpaperData &b);
 
 static std::vector<WallpaperData> wallpaperData;
-static bool haveBackup; // Is the backup (no size given) version available?
+static bool haveBackup;  // Is the backup (no size given) version available?
 
 static std::string wallpaperPath;
 static std::string wallpaperFile;
@@ -154,7 +154,7 @@ std::string Wallpaper::getWallpaper(const int width, const int height)
         // Return randomly a wallpaper between vector[0] and
         // vector[vector.size() - 1]
         srand(static_cast<unsigned>(time(nullptr)));
-        return wallPaperVector[int(static_cast<double>(
+        return wallPaperVector[static_cast<int>(static_cast<double>(
             wallPaperVector.size()) * rand() / (RAND_MAX + 1.0))];
     }
 

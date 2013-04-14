@@ -53,7 +53,7 @@ bool AnimationParticle::update()
 {
     if (mAnimation)
     {
-        mAnimation->update(10); // particle engine is updated every 10ms
+        mAnimation->update(10);  // particle engine is updated every 10ms
         mImage = mAnimation->getCurrentImage();
     }
     return Particle::update();

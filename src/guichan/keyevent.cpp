@@ -69,12 +69,10 @@ namespace gcn
         mIsNumericPad(numericPad),
         mKey(key)
     {
-
     }
 
     KeyEvent::~KeyEvent()
     {
-
     }
 
     unsigned int KeyEvent::getType() const
@@ -91,4 +89,4 @@ namespace gcn
     {
         return mKey;
     }
-}
+}  // namespace gcn

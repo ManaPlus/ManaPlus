@@ -134,4 +134,4 @@ namespace gcn
 
         return out;
     }
-}
+}  // namespace gcn

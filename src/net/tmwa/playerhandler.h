@@ -61,6 +61,6 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void respawn() const override;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_PLAYERHANDLER_H

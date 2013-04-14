@@ -270,4 +270,4 @@ namespace gcn
 
         mouseEvent.consume();
     }
-}
+}  // namespace gcn

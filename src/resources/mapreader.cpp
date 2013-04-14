@@ -60,12 +60,12 @@ static std::string resolveRelativePath(std::string base, std::string relative)
     while (relative.substr(0, 3) == "../")
     {
         relative.erase(0, 3);  // Remove "../"
-        if (!base.empty()) // If base is already empty, we can't trim anymore
+        if (!base.empty())  // If base is already empty, we can't trim anymore
         {
             i = base.find_last_of('/');
             if (i == std::string::npos)
                 i = 0;
-            base.erase(i, base.length()); // Remove deepest folder in base
+            base.erase(i, base.length());  // Remove deepest folder in base
         }
     }
 
@@ -142,7 +142,6 @@ int inflateMemory(unsigned char *const in, const unsigned int inLength,
         }
     }
     while (ret != Z_STREAM_END);
-//    assert(strm.avail_in == 0);
 
     outLength = bufferSize - strm.avail_out;
     (void) inflateEnd(&strm);
@@ -374,8 +373,8 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
                     }
                     else if (objType == "SPAWN")
                     {
-//                        map->addPortal(_("Spawn: ") + objName, MapItem::PORTAL,
-//                                       objX, objY, objW, objH);
+//                      map->addPortal(_("Spawn: ") + objName, MapItem::PORTAL,
+//                                     objX, objY, objW, objH);
                     }
                     else if (objType == "MUSIC")
                     {
@@ -693,7 +692,6 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
         // There can be only one data element
         break;
     }
-
 }
 
 Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,

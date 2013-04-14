@@ -112,7 +112,7 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
                 int v[3];
                 v[0] = (p) & 255;
                 v[1] = (p >> 8) & 255;
-                v[2] = (p >> 16 ) & 255;
+                v[2] = (p >> 16) & 255;
                 dye.update(v);
                 *pixels = (v[0]) | (v[1] << 8) | (v[2] << 16) | (alpha << 24);
             }

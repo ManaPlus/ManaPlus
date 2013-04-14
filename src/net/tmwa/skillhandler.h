@@ -51,6 +51,6 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
         void useMap(const int id, const std::string &map) const override;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_SKILLHANDLER_H

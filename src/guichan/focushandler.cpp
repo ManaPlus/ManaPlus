@@ -548,4 +548,4 @@ namespace gcn
     {
         mLastWidgetPressed = lastWidgetPressed;
     }
-}
+}  // namespace gcn

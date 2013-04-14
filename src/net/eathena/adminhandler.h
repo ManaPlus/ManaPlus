@@ -51,6 +51,6 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
         void kick(const int playerId) const override;
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
 #endif // NET_EATHENA_ADMINHANDLER_H

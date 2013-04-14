@@ -41,6 +41,6 @@ class GuildTab : public Ea::GuildTab
         ~GuildTab();
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
-#endif // EATHENA_GUILDTAB_H
+#endif  // EATHENA_GUILDTAB_H

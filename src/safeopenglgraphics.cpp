@@ -225,7 +225,7 @@ bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image, int srcX,
     drawRescaledQuad(image, srcX, srcY, dstX, dstY, width, height,
                      desiredWidth, desiredHeight);
 
-    if (smooth) // A basic smooth effect...
+    if (smooth)  // A basic smooth effect...
     {
         setColorAlpha(0.2f);
         drawRescaledQuad(image, srcX, srcY, dstX - 1, dstY - 1, width, height,
@@ -345,7 +345,6 @@ void SafeOpenGLGraphics::calcTile(ImageVertexes *const vert A_UNUSED,
 
 void SafeOpenGLGraphics::drawTile(const ImageVertexes *const vert A_UNUSED)
 {
-
 }
 
 void SafeOpenGLGraphics::updateScreen()
@@ -619,4 +618,4 @@ void SafeOpenGLGraphics::restoreColor()
     mByteColor = mColor;
 }
 
-#endif // USE_OPENGL
+#endif  // USE_OPENGL

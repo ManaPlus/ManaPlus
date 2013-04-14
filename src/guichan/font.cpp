@@ -65,4 +65,4 @@ namespace gcn
 
         return static_cast<int>(text.size());
     }
-}
+}  // namespace gcn

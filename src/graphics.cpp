@@ -46,11 +46,7 @@
 
 #ifdef USE_OPENGL
 #ifndef GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX
-//#define GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX 0x9047
-//#define GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX 0x9048
 #define GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX 0x9049
-//#define GPU_MEMORY_INFO_EVICTION_COUNT_NVX 0x904A
-//#define GPU_MEMORY_INFO_EVICTED_MEMORY_NVX 0x904B
 #endif
 #endif
 
@@ -473,13 +469,13 @@ void Graphics::drawImagePattern(const Image *const image,
     if (iw == 0 || ih == 0)
         return;
 
-    for (int py = 0; py < h; py += ih)     // Y position on pattern plane
+    for (int py = 0; py < h; py += ih)  // Y position on pattern plane
     {
         const int dh = (py + ih >= h) ? h - py : ih;
         const int srcY = image->mBounds.y;
         const int dstY = y + py + mClipStack.top().yOffset;
 
-        for (int px = 0; px < w; px += iw) // X position on pattern plane
+        for (int px = 0; px < w; px += iw)  // X position on pattern plane
         {
             const int dw = (px + iw >= w) ? w - px : iw;
             const int srcX = image->mBounds.x;
@@ -525,13 +521,13 @@ void Graphics::drawRescaledImagePattern(const Image *const image,
     if (iw == 0 || ih == 0)
         return;
 
-    for (int py = 0; py < h; py += ih)     // Y position on pattern plane
+    for (int py = 0; py < h; py += ih)  // Y position on pattern plane
     {
         const int dh = (py + ih >= h) ? h - py : ih;
         const int srcY = tmpImage->mBounds.y;
         const int dstY = y + py + mClipStack.top().yOffset;
 
-        for (int px = 0; px < w; px += iw) // X position on pattern plane
+        for (int px = 0; px < w; px += iw)  // X position on pattern plane
         {
             const int dw = (px + iw >= w) ? w - px : iw;
             const int srcX = tmpImage->mBounds.x;
@@ -689,13 +685,13 @@ void Graphics::calcImagePattern(ImageVertexes* const vert,
     if (iw == 0 || ih == 0)
         return;
 
-    for (int py = 0; py < h; py += ih)     // Y position on pattern plane
+    for (int py = 0; py < h; py += ih)  // Y position on pattern plane
     {
         const int dh = (py + ih >= h) ? h - py : ih;
         const int srcY = image->mBounds.y;
         const int dstY = y + py + mClipStack.top().yOffset;
 
-        for (int px = 0; px < w; px += iw) // X position on pattern plane
+        for (int px = 0; px < w; px += iw)  // X position on pattern plane
         {
             const int dw = (px + iw >= w) ? w - px : iw;
             const int srcX = image->mBounds.x;

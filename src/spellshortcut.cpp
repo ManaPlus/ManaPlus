@@ -62,7 +62,6 @@ void SpellShortcut::load()
     {
         mItems[k++] = (*i)->getId();
     }
-
 }
 
 unsigned int SpellShortcut::getSpellsCount() const

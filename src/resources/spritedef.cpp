@@ -327,7 +327,6 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
                 {
                     continue;
                 }
-
             }
             else
             {
@@ -386,7 +385,7 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
             if (!name.empty())
                 animation->addGoto(name, rand);
         }
-    } // for frameNode
+    }  // for frameNode
 }
 
 void SpriteDef::includeSprite(const XmlNodePtr includeNode)

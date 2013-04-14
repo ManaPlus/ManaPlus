@@ -486,7 +486,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     colors[1] = msg.readInt8();
     colors[2] = msg.readInt8();
 
-    msg.readInt8();  //unused
+    msg.readInt8();  // unused
 
     const int guild = msg.readInt32();  // guild
 
@@ -598,7 +598,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
                 break;
 
             default:
-                //need set stay state?
+                // need set stand state?
                 logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
                     + toString(id) + " " + toString(type));
                 logger->log("dstBeing id:"

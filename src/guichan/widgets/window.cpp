@@ -210,4 +210,4 @@ namespace gcn
 
         setSize(w + 2* getPadding(), h + getPadding() + getTitleBarHeight());
     }
-}
+}  // namespace gcn

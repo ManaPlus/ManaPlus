@@ -99,4 +99,4 @@ namespace gcn
     {
         return mType;
     }
-}
+}  // namespace gcn

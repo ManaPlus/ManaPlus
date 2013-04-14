@@ -82,6 +82,6 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
         bool mRequestLang;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_NPCHANDLER_H

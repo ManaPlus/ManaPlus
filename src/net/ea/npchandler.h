@@ -75,6 +75,6 @@ class NpcHandler : public Net::NpcHandler
         NpcDialog *mDialog;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_NPCHANDLER_H

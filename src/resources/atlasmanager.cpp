@@ -102,7 +102,6 @@ void AtlasManager::loadImages(const StringVect &files,
         Resource *const res = resman->getTempResource(str);
         if (res)
         {
-            //logger->log("Resource %s already in cache", str.c_str());
             // increase counter because in moveToDeleted it will be decreased.
             res->incRef();
             resman->moveToDeleted(res);

@@ -78,6 +78,6 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
         void processNpcViewPoint(Net::MessageIn &msg, const int npcId) const;
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
-#endif // NET_EATHENA_NPCHANDLER_H
+#endif  // NET_EATHENA_NPCHANDLER_H

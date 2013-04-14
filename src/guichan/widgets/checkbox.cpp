@@ -130,4 +130,4 @@ namespace gcn
         mSelected = !mSelected;
         distributeActionEvent();
     }
-}
+}  // namespace gcn

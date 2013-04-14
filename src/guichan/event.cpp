@@ -55,16 +55,14 @@ namespace gcn
     Event::Event(Widget *const source) :
         mSource(source)
     {
-
     }
 
     Event::~Event()
     {
-
     }
 
     Widget* Event::getSource() const
     {
         return mSource;
     }
-}
+}  // namespace gcn

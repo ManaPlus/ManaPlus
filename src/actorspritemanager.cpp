@@ -358,7 +358,6 @@ Being *ActorSpriteManager::findBeingByPixel(const int x, const int y,
                 || (targetDead && being->getType() == Being::PLAYER))
                 && (allPlayers ||  being != player_node))
             {
-
                 if ((being->getPixelX() - 16 <= x) &&
                     (being->getPixelX() + 16 > x) &&
                     (being->getPixelY() - 32 <= y) &&
@@ -446,7 +445,6 @@ void ActorSpriteManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
             && (allPlayers ||  being != player_node))
             || actor->getType() == ActorSprite::FLOOR_ITEM)
         {
-
             if ((actor->getPixelX() - xtol <= x) &&
                 (actor->getPixelX() + xtol > x) &&
                 (actor->getPixelY() - uptol <= y) &&
@@ -1030,8 +1028,6 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
             const bool valid = validateBeing(aroundBeing, being,
                                              type, excluded, 50);
             int d = being->getDistance();
-//            logger->log("dist: %d", dist);
-//            logger->log("name: %s, %d, %d", being->getName().c_str(), (int)valid, d);
             if (being->getType() != Being::MONSTER || !mTargetOnlyReachable)
             {   // if distance not calculated, use old distance
                 d = (being->getTileX() - x) * (being->getTileX() - x)

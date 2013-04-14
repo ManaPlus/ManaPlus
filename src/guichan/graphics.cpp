@@ -84,7 +84,7 @@ namespace gcn
             carea.xOffset = area.x;
             carea.yOffset = area.y;
             mClipStack.push(carea);
-            return true; 
+            return true;
         }
 
         const ClipRectangle &top = mClipStack.top();
@@ -127,7 +127,6 @@ namespace gcn
 
     void Graphics::popClipArea()
     {
-
         if (mClipStack.empty())
             throw GCN_EXCEPTION("Tried to pop clip area from empty stack.");
 
@@ -157,4 +156,4 @@ namespace gcn
     {
     }
 */
-}
+}  // namespace gcn

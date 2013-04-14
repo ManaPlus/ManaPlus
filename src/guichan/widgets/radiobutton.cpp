@@ -184,4 +184,4 @@ namespace gcn
     void RadioButton::adjustSize()
     {
     }
-}
+}  // namespace gcn

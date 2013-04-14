@@ -62,7 +62,7 @@ void EmoteDB::load()
         return;
     }
 
-    //iterate <emote>s
+    // iterate <emote>s
     for_each_xml_child_node(emoteNode, rootNode)
     {
         if (!xmlNameEqual(emoteNode, "emote"))
@@ -121,7 +121,7 @@ void EmoteDB::load()
         return;
     }
 
-    //iterate <emote>s
+    // iterate <emote>s
     for_each_xml_child_node(emoteNode, rootNode)
     {
         if (!xmlNameEqual(emoteNode, "emote"))

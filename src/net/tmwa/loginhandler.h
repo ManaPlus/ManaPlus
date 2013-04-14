@@ -76,6 +76,6 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
                                const std::string &email) const override;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_LOGINHANDLER_H

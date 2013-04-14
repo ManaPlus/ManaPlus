@@ -67,6 +67,6 @@ class Network final : public Ea::Network
         static Network *mInstance;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_NETWORK_H

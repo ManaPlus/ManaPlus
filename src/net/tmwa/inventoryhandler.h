@@ -60,6 +60,6 @@ class InventoryHandler final : public MessageHandler,
                        const int amount, const int destination) const override;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_INVENTORYHANDLER_H

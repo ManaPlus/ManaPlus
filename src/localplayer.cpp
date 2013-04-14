@@ -614,8 +614,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     walkMask, Position(posX + 32, posY + 32));
             }
         }
-
-    } // End of diagonal cases
+    }  // End of diagonal cases
 
     // Straight directions
     // Right direction
@@ -638,7 +637,6 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     // before going further
                     return Position(tileX * 32 + 32 - radius,
                                     tileY * 32 + radius);
-
                 }
             }
 
@@ -651,7 +649,6 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     // before going further
                     return Position(tileX * 32 + 32 - radius,
                                     tileY * 32 + 32 - radius);
-
                 }
             }
             // If the way is clear, step up one checked tile ahead.
@@ -680,7 +677,6 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     // before going further
                     return Position(tileX * 32 + radius,
                                     tileY * 32 + radius);
-
                 }
             }
 
@@ -693,7 +689,6 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     // before going further
                     return Position(tileX * 32 + radius,
                                     tileY * 32 + 32 - radius);
-
                 }
             }
             // If the way is clear, step up one checked tile ahead.
@@ -722,7 +717,6 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     // before going further
                     return Position(tileX * 32 + radius,
                                     tileY * 32 + radius);
-
                 }
             }
 
@@ -735,7 +729,6 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     // before going further
                     return Position(tileX * 32 + 32 - radius,
                                     tileY * 32 + radius);
-
                 }
             }
             // If the way is clear, step up one checked tile ahead.
@@ -776,7 +769,6 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                     // before going further
                     return Position(tileX * 32 + 32 - radius,
                                     tileY * 32 + 32 - radius);
-
                 }
             }
             // If the way is clear, step up one checked tile ahead.
@@ -1051,8 +1043,9 @@ void LocalPlayer::setWalkingDir(const unsigned char dir)
             return;
         }
 
-        // If the delay to send another walk message to the server hasn't expired,
-        // don't do anything or we could get disconnected for spamming the server
+        // If the delay to send another walk message to the server hasn't
+        // expired, don't do anything or we could get disconnected for
+        // spamming the server
         if (get_elapsed_time(mLocalWalkTime) < walkingKeyboardDelay)
             return;
     }
@@ -1445,14 +1438,13 @@ int LocalPlayer::getAttackRange() const
     }
     else
     {
-        // TODO: Fix this to be more generic
         const Item *const weapon = PlayerInfo::getEquipment(EQUIP_FIGHT1_SLOT);
         if (weapon)
         {
             const ItemInfo &info = weapon->getInfo();
             return info.getAttackRange();
         }
-        return 48; // unarmed range
+        return 48;  // unarmed range
     }
 }
 
@@ -1659,7 +1651,7 @@ void LocalPlayer::processEvent(Channels channel,
                         {
                             mMessages.pop_back();
                             // TRANSLATORS: this is job experience
-                            pair.first.append(strprintf (", %d %s",
+                            pair.first.append(strprintf(", %d %s",
                                 change, _("job")));
                             mMessages.push_back(pair);
                         }
@@ -2251,10 +2243,10 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
     if (!inv)
         return;
 
-    //if attack distance for sword
+    // if attack distance for sword
     if (allowSword)
     {
-        //finding sword
+        // finding sword
         item = inv->findItem(571, 0);
 
         if (!item)
@@ -2576,20 +2568,20 @@ void LocalPlayer::crazyMove8()
 //      up, ri,do,le
     static const int movesX[][4] =
     {
-        {-1,  0,  1,  0},   //move left
-        { 0,  1,  0, -1},   //move up
-        { 1,  0, -1,  0},   //move right
-        { 0, -1,  0,  1}    //move down
+        {-1,  0,  1,  0},   // move left
+        { 0,  1,  0, -1},   // move up
+        { 1,  0, -1,  0},   // move right
+        { 0, -1,  0,  1}    // move down
     };
 
 // look
 //      up, ri,do,le
     static const int movesY[][4] =
     {
-        { 0, -1,  0,  1},   //move left
-        {-1,  0,  1,  0},   //move up
-        { 0,  1,  0, -1},   //move right
-        { 1,  0, -1,  0}    //move down
+        { 0, -1,  0,  1},   // move left
+        {-1,  0,  1,  0},   // move up
+        { 0,  1,  0, -1},   // move right
+        { 1,  0, -1,  0}    // move down
     };
 
     if (mDirection == Being::UP)
@@ -3002,10 +2994,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
     FloorItem *item =
         actorSpriteManager->findItem(x, y);
     if (item)
-    {
         status = pickUp(item);
-        //status = true;
-    }
 
     if (pickUpType == 0)
         pickUpType = mPickUpType;
@@ -3172,23 +3161,23 @@ void LocalPlayer::magicAttack() const
 
     switch (mMagicAttackType)
     {
-        //flar W00
+        // flar W00
         case 0:
             tryMagic("#flar", 1, 0, 10);
             break;
-        //chiza W01
+        // chiza W01
         case 1:
             tryMagic("#chiza", 1, 0,  9);
             break;
-        //ingrav W10
+        // ingrav W10
         case 2:
             tryMagic("#ingrav", 2, 2,  20);
             break;
-        //frillyar W11
+        // frillyar W11
         case 3:
             tryMagic("#frillyar", 2, 2, 25);
             break;
-        //upmarmu W12
+        // upmarmu W12
         case 4:
             tryMagic("#upmarmu", 2, 2, 20);
             break;

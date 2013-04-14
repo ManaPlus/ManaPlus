@@ -102,6 +102,6 @@ class BeingHandler : public Net::BeingHandler
         bool mHideShield;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_BEINGHANDLER_H

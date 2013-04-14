@@ -77,6 +77,6 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
                                const std::string &email) const override;
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
-#endif // NET_EATHENA_LOGINHANDLER_H
+#endif  // NET_EATHENA_LOGINHANDLER_H

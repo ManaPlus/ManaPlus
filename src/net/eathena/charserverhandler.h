@@ -70,6 +70,6 @@ class CharServerHandler final : public MessageHandler,
                             const bool) const override;
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
-#endif // NET_EATHENA_CHARSERVERHANDLER_H
+#endif  // NET_EATHENA_CHARSERVERHANDLER_H

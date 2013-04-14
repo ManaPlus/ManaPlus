@@ -56,7 +56,7 @@ void NPCDB::load()
         return;
     }
 
-    //iterate <npc>s
+    // iterate <npc>s
     for_each_xml_child_node(npcNode, rootNode)
     {
         if (!xmlNameEqual(npcNode, "npc"))

@@ -407,7 +407,7 @@ void AnimatedSprite::setDelayLoad(const std::string &filename,
         delete mDelayLoad;
     }
     mDelayLoad = new AnimationDelayLoad(filename, variant, this);
-    ResourceManager::addDelayedAnimation(mDelayLoad); 
+    ResourceManager::addDelayedAnimation(mDelayLoad);
 }
 
 void AnimatedSprite::clearDelayLoad()

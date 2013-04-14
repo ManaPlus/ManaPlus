@@ -112,6 +112,6 @@ class Network
         int mSleep;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_NETWORK_H

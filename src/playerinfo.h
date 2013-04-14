@@ -245,6 +245,6 @@ namespace PlayerInfo
 
     void setEquipmentBackend(Equipment::Backend *const backend);
 
-} // namespace PlayerInfo
+}  // namespace PlayerInfo
 
 #endif

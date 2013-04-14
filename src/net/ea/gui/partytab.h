@@ -60,6 +60,6 @@ class PartyTab : public ChatTab
 
 extern PartyTab *partyTab;
 
-} // namespace Ea
+}  // namespace Ea
 
-#endif // EA_PARTYTAB_H
+#endif  // EA_PARTYTAB_H

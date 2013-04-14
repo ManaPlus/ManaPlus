@@ -113,7 +113,7 @@ bool CompoundSprite::draw(Graphics *const graphics,
     if (mNeedsRedraw)
         updateImages();
 
-    if (mSprites.empty()) // Nothing to draw
+    if (mSprites.empty())  // Nothing to draw
         return false;
 
     if (mAlpha == 1.0f && mImage)
@@ -310,7 +310,6 @@ unsigned int CompoundSprite::getFrameCount(unsigned int layer)
 
 void CompoundSprite::redraw() const
 {
-
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;
     const int gmask = 0x00ff0000;

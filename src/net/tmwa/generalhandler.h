@@ -80,6 +80,6 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mQuestHandler;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_GENERALHANDLER_H

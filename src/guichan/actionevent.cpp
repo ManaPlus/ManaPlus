@@ -56,16 +56,14 @@ namespace gcn
             :Event(source),
              mId(id)
     {
-
     }
 
     ActionEvent::~ActionEvent()
     {
-
     }
 
     const std::string& ActionEvent::getId() const
     {
         return mId;
     }
-}
+}  // namespace gcn

@@ -98,4 +98,4 @@ namespace gcn
     void Label::adjustSize()
     {
     }
-}
+}  // namespace gcn

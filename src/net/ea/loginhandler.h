@@ -104,6 +104,6 @@ class LoginHandler : public Net::LoginHandler
         Token mToken;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_TA_LOGINHANDLER_H

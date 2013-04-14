@@ -64,7 +64,6 @@ namespace gcn
 
     Container::~Container()
     {
-
     }
 
     void Container::draw(Graphics* graphics)
@@ -115,4 +114,4 @@ namespace gcn
     {
         return BasicContainer::findWidgetById(id);
     }
-}
+}  // namespace gcn

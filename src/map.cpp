@@ -936,7 +936,7 @@ Path Map::findPath(const int startX, const int startY,
 
                 // Skip if the tile is on the closed list or is not walkable
                 // unless its the destination tile
-                //+++ here need check block must depend on player abilities.
+                // +++ here need check block must depend on player abilities.
                 if (newTile->whichList == mOnClosedList ||
                     ((newTile->blockmask & walkmask)
                     && !(x == destX && y == destY))
@@ -954,7 +954,8 @@ Path Map::findPath(const int startX, const int startY,
                     const MetaTile *const t2 = &mMetaTiles[curr.x +
                         dx + curWidth];
 
-                    //+++ here need check block must depend on player abilities.
+                    // +++ here need check block must depend 
+                    // on player abilities.
                     if (((t1->blockmask | t2->blockmask) & BLOCKMASK_WALL))
                         continue;
                 }

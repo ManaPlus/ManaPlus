@@ -142,4 +142,4 @@ namespace gcn
     void TextField::fontChanged()
     {
     }
-}
+}  // namespace gcn

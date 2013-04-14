@@ -414,7 +414,7 @@ namespace gcn
                 {
                     mHBarVisible = (getContent()->getWidth() > w);
                 }
-                else // (mVPolicy == SHOW_ALWAYS)
+                else  // (mVPolicy == SHOW_ALWAYS)
                 {
                     mHBarVisible = (getContent()->getWidth()
                         > w - mScrollbarWidth);
@@ -440,7 +440,7 @@ namespace gcn
                 {
                     mVBarVisible = (getContent()->getHeight() > h);
                 }
-                else // (mHPolicy == SHOW_ALWAYS)
+                else  // (mHPolicy == SHOW_ALWAYS)
                 {
                     mVBarVisible = (getContent()->getHeight()
                         > h - mScrollbarWidth);
@@ -455,7 +455,7 @@ namespace gcn
     {
         const Rectangle area = Rectangle(0, 0,
             mVBarVisible ? (getWidth() - mScrollbarWidth) : getWidth(),
-            mHBarVisible ? (getHeight() - mScrollbarWidth) : getHeight()); 
+            mHBarVisible ? (getHeight() - mScrollbarWidth) : getHeight());
 
         if (area.width < 0 || area.height < 0)
             return Rectangle();
@@ -569,13 +569,8 @@ namespace gcn
         mOpaque = opaque;
     }
 
-    
     bool ScrollArea::isOpaque() const
     {
         return mOpaque;
     }
-}
-
-/*
- * Wow! This is a looooong source file.
- */
+}  // namespace gcn

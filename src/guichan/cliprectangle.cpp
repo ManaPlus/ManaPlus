@@ -85,4 +85,4 @@ namespace gcn
 
         return *this;
     }
-}
+}  // namespace gcn

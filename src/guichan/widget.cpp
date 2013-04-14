@@ -177,7 +177,7 @@ namespace gcn
     }
 
     void Widget::setDimension(const Rectangle& dimension)
-    { 
+    {
         const Rectangle oldDimension = mDimension;
         mDimension = dimension;
 
@@ -317,8 +317,8 @@ namespace gcn
     const Color& Widget::getSelectionColor() const
     {
         return mSelectionColor;
-    }    
-    
+    }
+
     void Widget::_setFocusHandler(FocusHandler* focusHandler)
     {
         if (mFocusHandler)
@@ -535,7 +535,7 @@ namespace gcn
 
         if (mParent)
         {
-            return (mFocusHandler->getModalFocused() == this) 
+            return (mFocusHandler->getModalFocused() == this)
                 || mParent->isModalFocused();
         }
 
@@ -552,7 +552,7 @@ namespace gcn
 
         if (mParent)
         {
-            return (mFocusHandler->getModalMouseInputFocused() == this) 
+            return (mFocusHandler->getModalMouseInputFocused() == this)
                 || mParent->isModalMouseInputFocused();
         }
 
@@ -664,4 +664,4 @@ namespace gcn
         if (mParent)
             mParent->showWidgetPart(this, rectangle);
     }
-}
+}  // namespace gcn

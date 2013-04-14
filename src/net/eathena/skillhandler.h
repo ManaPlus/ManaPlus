@@ -51,6 +51,6 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
         void useMap(const int id, const std::string &map) const override;
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
-#endif // NET_EATHENA_SKILLHANDLER_H
+#endif  // NET_EATHENA_SKILLHANDLER_H

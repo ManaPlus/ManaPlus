@@ -51,6 +51,6 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
         void kick(const int playerId) const override;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_ADMINHANDLER_H

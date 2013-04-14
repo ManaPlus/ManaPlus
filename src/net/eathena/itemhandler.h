@@ -40,6 +40,6 @@ class ItemHandler final : public MessageHandler, public Ea::ItemHandler
         virtual void handleMessage(Net::MessageIn &msg) override;
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
-#endif // NET_EATHENA_ITEMHANDLER_H
+#endif  // NET_EATHENA_ITEMHANDLER_H

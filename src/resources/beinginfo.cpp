@@ -112,7 +112,6 @@ const std::string &BeingInfo::getSound(const SoundEvent event) const
 
 const Attack *BeingInfo::getAttack(const int id) const
 {
-
     const Attacks::const_iterator i = mAttacks.find(id);
     return (i == mAttacks.end()) ? empty : (*i).second;
 }

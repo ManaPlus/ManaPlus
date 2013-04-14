@@ -92,6 +92,6 @@ class CharServerHandler : public Net::CharServerHandler
                                     const bool withColors) const = 0;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_CHARSERVERHANDLER_H

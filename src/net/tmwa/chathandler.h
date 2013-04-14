@@ -61,6 +61,6 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processRaw(MessageOut &outMsg, const std::string &line);
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_CHATHANDLER_H

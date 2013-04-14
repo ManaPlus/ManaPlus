@@ -55,11 +55,9 @@ namespace gcn
     SelectionEvent::SelectionEvent(Widget *const source) :
         Event(source)
     {
-
     }
 
     SelectionEvent::~SelectionEvent()
     {
-
     }
-}
+}  // namespace gcn

@@ -171,4 +171,4 @@ namespace gcn
         mMousePressed = false;
         mKeyPressed = false;
     }
-}
+}  // namespace gcn

@@ -114,7 +114,7 @@ void ItemLinkHandler::handleLink(const std::string &link,
         if (id > 0)
         {
             const ItemInfo &itemInfo = ItemDB::get(id);
-            //+++ need add color to links?
+            // +++ need add color to links?
             mItemPopup->setItem(itemInfo, 1, true);
 
             if (mItemPopup->isPopupVisible())

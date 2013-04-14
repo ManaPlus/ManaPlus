@@ -274,7 +274,7 @@ namespace gcn
             }
             default:
                 break;
-        } // end switch
+        }  // end switch
 
         SDL_UnlockSurface(mTarget);
     }
@@ -392,7 +392,7 @@ namespace gcn
 
             default:
                 break;
-        } // end switch
+        }  // end switch
 
         SDL_UnlockSurface(mTarget);
     }
@@ -598,4 +598,4 @@ namespace gcn
 
         SDL_BlitSurface(surface, &source, mTarget, &destination);
     }
-}
+}  // namespace gcn

@@ -210,6 +210,6 @@ class InventoryHandler : public Net::InventoryHandler
         PickupQueue mSentPickups;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_INVENTORYHANDLER_H

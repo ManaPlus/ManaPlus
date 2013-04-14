@@ -233,7 +233,7 @@ void GuildHandler::inviteResponse(const int guildId,
     MessageOut msg(CMSG_GUILD_INVITE_REPLY);
     msg.writeInt32(guildId);
     msg.writeInt8(response);
-    msg.writeInt8(0);  // unused
+    msg.writeInt8(0);   // unused
     msg.writeInt16(0);  // unused
 }
 
@@ -244,9 +244,9 @@ void GuildHandler::leave(const int guildId) const
 
     MessageOut msg(CMSG_GUILD_LEAVE);
     msg.writeInt32(guildId);
-    msg.writeInt32(player_node->getId());    // Account ID
-    msg.writeInt32(PlayerInfo::getCharId()); // Char ID
-    msg.writeString("", 40);  // Message
+    msg.writeInt32(player_node->getId());     // Account ID
+    msg.writeInt32(PlayerInfo::getCharId());  // Char ID
+    msg.writeString("", 40);                  // Message
 }
 
 void GuildHandler::kick(const GuildMember *const member,

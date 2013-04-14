@@ -57,6 +57,6 @@ class AdminHandler : public Net::AdminHandler
                           const int x, const int y) const override;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_ADMINHANDLER_H

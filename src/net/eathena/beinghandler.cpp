@@ -588,7 +588,6 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
                 logger->log("dstBeing id:" + toString(dstBeing->getId()));
                 logger->log("dstBeing name:" + dstBeing->getName());
                 break;
-
         }
     }
     else if (msgType == 3)
@@ -805,4 +804,4 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
 }
 
-} // namespace EAthena
+}  // namespace EAthena

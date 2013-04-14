@@ -99,7 +99,7 @@ const std::string &ItemInfo::getSprite(const Gender gender,
 void ItemInfo::setAttackAction(std::string attackAction)
 {
     if (attackAction.empty())
-        mAttackAction = SpriteAction::ATTACK; // (Equal to unarmed animation)
+        mAttackAction = SpriteAction::ATTACK;  // (Equal to unarmed animation)
     else
         mAttackAction = attackAction;
 }

@@ -331,7 +331,7 @@ static void destroyGuiWindows()
         guildManager->clear();
 
     del_0(windowMenu);
-    del_0(localChatTab) // Need to do this first, so it can remove itself
+    del_0(localChatTab)  // Need to do this first, so it can remove itself
     del_0(debugChatTab)
     del_0(tradeChatTab)
     del_0(battleChatTab)
@@ -603,7 +603,7 @@ void Game::slowLogic()
     if (!Net::getGameHandler()->isConnected())
     {
         if (Client::getState() == STATE_CHANGE_MAP)
-            return; // Not a problem here
+            return;  // Not a problem here
 
         if (Client::getState() != STATE_ERROR)
         {
@@ -956,7 +956,7 @@ void Game::handleInput()
         switch (event.type)
         {
             case SDL_VIDEORESIZE:
-                // Let the client deal with this one (it'll 
+                // Let the client deal with this one (it'll
                 // pass down from there)
                 Client::resize(event.resize.w, event.resize.h);
                 break;
@@ -977,7 +977,7 @@ void Game::handleInput()
                 break;
         }
         BLOCK_END("Game::handleInput 2")
-    } // End while
+    }  // End while
 
     // If the user is configuring the keys then don't respond.
     if (!player_node || !keyboard.isEnabled() || player_node->getAway())

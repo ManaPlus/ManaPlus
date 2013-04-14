@@ -2458,7 +2458,6 @@ void Being::recalcSpritesOrder()
             }
 
             itemSlotRemap[id] = -info.mDrawBefore[dir];
-//            logger->log("item slot->slot %d %d->%d", id, slot, itemSlotRemap[id]);
         }
         else if (info.mDrawAfter[dir] > 0)
         {

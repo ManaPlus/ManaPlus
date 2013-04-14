@@ -266,19 +266,19 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
 
 void PartyHandler::processPartyMove(Net::MessageIn &msg) const
 {
-    const int id = msg.readInt32();    // id
+    const int id = msg.readInt32();  // id
     PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
     if (m)
     {
-        msg.skip(4);        // 0
-        m->setX(msg.readInt16());    // x
-        m->setY(msg.readInt16());    // y
-        m->setOnline(msg.readInt8());     // online (if 0)
-        msg.readString(24);  // party
-        msg.readString(24);  // nick
-        m->setMap(msg.readString(16)); // map
+        msg.skip(4);                    // 0
+        m->setX(msg.readInt16());       // x
+        m->setY(msg.readInt16());       // y
+        m->setOnline(msg.readInt8());   // online (if 0)
+        msg.readString(24);             // party
+        msg.readString(24);             // nick
+        m->setMap(msg.readString(16));  // map
     }
     else
     {

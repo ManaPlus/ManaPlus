@@ -43,6 +43,6 @@ class ItemHandler
         void processItemDropped(Net::MessageIn &msg);
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_ITEMHANDLER_H

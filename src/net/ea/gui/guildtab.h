@@ -60,6 +60,6 @@ class GuildTab : public ChatTab, public ConfigListener
         void getAutoCompleteList(StringVect &names) const override;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
-#endif // EA_GUILDTAB_H
+#endif  // EA_GUILDTAB_H

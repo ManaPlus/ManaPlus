@@ -66,6 +66,6 @@ class Network final : public Ea::Network
         static Network *mInstance;
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
-#endif // NET_EATHENA_NETWORK_H
+#endif  // NET_EATHENA_NETWORK_H

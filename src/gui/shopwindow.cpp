@@ -250,7 +250,7 @@ void ShopWindow::action(const gcn::ActionEvent &event)
     if (!inv)
         return;
 
-    //+++ need support for colors
+    // +++ need support for colors
     Item *const item = inv->findItem(mSelectedItem, 0);
     if (item)
     {
@@ -377,7 +377,7 @@ void ShopWindow::loadList()
 
                 if (tokens.size() == 5 && tokens[0])
                 {
-                    //+++ need impliment colors?
+                    // +++ need impliment colors?
                     if (tokens[1] && tokens[2] && mBuyShopItems)
                     {
                         mBuyShopItems->addItem(
@@ -556,7 +556,7 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
 
         if (mode == SELL)
         {
-            //+++ need support for colors
+            // +++ need support for colors
             const Item *const item2 = inv->findItem(item->getId(), 0);
             if (item2)
             {
@@ -651,12 +651,12 @@ void ShopWindow::showList(const std::string &nick, std::string data) const
         const int id = decodeStr(data.substr(f, 2));
         const int price = decodeStr(data.substr(f + 2, 4));
         int amount = decodeStr(data.substr(f + 6, 3));
-        //+++ need impliment colors?
+        // +++ need impliment colors?
         if (buyDialog && amount > 0)
             buyDialog->addItem(id, 1, amount, price);
         if (sellDialog)
         {
-            //+++ need support for colors
+            // +++ need support for colors
             const Item *const item = inv->findItem(id, 0);
             if (item)
             {
@@ -723,12 +723,12 @@ void ShopWindow::processRequest(std::string nick, std::string data,
     amount = atoi(part3.c_str());
 
     delete mTradeItem;
-    //+++ need impliment colors?
+    // +++ need impliment colors?
     mTradeItem = new ShopItem(-1, id, 1, amount, price);
 
     if (mode == BUY)
     {
-        //+++ need support for colors
+        // +++ need support for colors
         const Item *const item2 = inv->findItem(mTradeItem->getId(), 0);
         if (!item2 || item2->getQuantity() < amount
             || !findShopItem(mTradeItem, SELL))

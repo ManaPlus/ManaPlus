@@ -37,7 +37,7 @@ namespace
     unsigned mMaxStat = 0;
     unsigned mSumStat = 0;
     std::vector<int> mDefaultItems;
-}
+}  // namespace
 
 void CharDB::load()
 {

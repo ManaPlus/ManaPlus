@@ -556,7 +556,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg) const
     if (Particle::enabled)
         effectManager->trigger(effectType, being);
 
-    //+++ need dehard code effectType == 3
+    // +++ need dehard code effectType == 3
     if (effectType == 3 && being->getType() == Being::PLAYER
         && socialWindow)
     {   // reset received damage
@@ -806,4 +806,4 @@ void BeingHandler::processPvpSet(Net::MessageIn &msg) const
     }
 }
 
-} // namespace Ea
+}  // namespace Ea

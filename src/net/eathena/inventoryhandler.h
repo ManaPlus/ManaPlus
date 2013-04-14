@@ -60,6 +60,6 @@ class InventoryHandler final : public MessageHandler,
                        const int amount, const int destination) const override;
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
 #endif // NET_EATHENA_INVENTORYHANDLER_H

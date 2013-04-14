@@ -64,6 +64,6 @@ class GameHandler : public Net::GameHandler
         int mCharID; /// < Saved for map-server switching
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_GAMEHANDLER_H

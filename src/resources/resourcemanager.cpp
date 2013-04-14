@@ -244,8 +244,8 @@ bool ResourceManager::cleanOrphans(const bool always)
             const ResourceIterator toErase = iter;
             ++iter;
             mOrphanedResources.erase(toErase);
-            delete res; // delete only after removal from list,
-                        // to avoid issues in recursion
+            delete res;  // delete only after removal from list,
+                         // to avoid issues in recursion
             status = true;
         }
     }
@@ -912,7 +912,8 @@ void ResourceManager::deleteInstance()
     {
         logger->log("clean orphans start");
         instance->cleanProtected();
-        while (instance->cleanOrphans(true));
+        while (instance->cleanOrphans(true))
+            continue;
         logger->log("clean orphans end");
         ResourceIterator iter = instance->mResources.begin();
 

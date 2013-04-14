@@ -40,6 +40,6 @@ class ItemHandler final : public MessageHandler, public Ea::ItemHandler
         virtual void handleMessage(Net::MessageIn &msg) override;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_ITEMHANDLER_H

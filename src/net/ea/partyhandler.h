@@ -84,6 +84,6 @@ class PartyHandler : public Net::PartyHandler
 extern PartyTab *partyTab;
 extern Party *taParty;
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_PARTYHANDLER_H

@@ -479,7 +479,7 @@ namespace gcn
     {
         Widget *const widget = getWidgetAt(x, y);
 
-        //+++ possible nullpointer
+        // +++ possible nullpointer
         if (mFocusHandler->getModalMouseInputFocused()
             && !widget->isModalMouseInputFocused())
         {
@@ -493,7 +493,7 @@ namespace gcn
     {
         Widget* widget = mFocusHandler->getFocused();
 
-        //+++ possible nullpointer
+        // +++ possible nullpointer
         while (widget->_getInternalFocusHandler()
                && widget->_getInternalFocusHandler()->getFocused())
         {
@@ -716,7 +716,7 @@ namespace gcn
     {
         BLOCK_START("Gui::handleModalMouseInputFocus")
         // Check if modal mouse input focus has been gained by a widget.
-        if ((mFocusHandler->getLastWidgetWithModalMouseInputFocus() 
+        if ((mFocusHandler->getLastWidgetWithModalMouseInputFocus()
             != mFocusHandler->getModalMouseInputFocused())
             && (!mFocusHandler->getLastWidgetWithModalMouseInputFocus()))
         {
@@ -739,7 +739,7 @@ namespace gcn
     {
         BLOCK_START("Gui::handleModalFocus")
         // Check if modal focus has been gained by a widget.
-        if ((mFocusHandler->getLastWidgetWithModalFocus() 
+        if ((mFocusHandler->getLastWidgetWithModalFocus()
             != mFocusHandler->getModalFocused())
             && (!mFocusHandler->getLastWidgetWithModalFocus()))
         {
@@ -827,4 +827,4 @@ namespace gcn
             parent = swap->getParent();
         }
     }
-}
+}  // namespace gcn

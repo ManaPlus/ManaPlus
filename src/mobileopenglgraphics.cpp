@@ -281,7 +281,7 @@ bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
     drawRescaledQuad(image, srcX, srcY, dstX, dstY, width, height,
                      desiredWidth, desiredHeight);
 
-    if (smooth) // A basic smooth effect...
+    if (smooth)  // A basic smooth effect...
     {
         setColorAlpha(0.2f);
         drawRescaledQuad(image, srcX, srcY, dstX - 1, dstY - 1, width, height,
@@ -347,22 +347,22 @@ void MobileOpenGLGraphics::drawImagePattern(const Image *const image,
 
                 const float texX2 = static_cast<float>(srcX + width) / tw;
 
-                mFloatTexArray[vp + 0] = texX1;     //1
+                mFloatTexArray[vp + 0] = texX1;     // 1
                 mFloatTexArray[vp + 1] = texY1;
 
-                mFloatTexArray[vp + 2] = texX2;     //2
+                mFloatTexArray[vp + 2] = texX2;     // 2
                 mFloatTexArray[vp + 3] = texY1;
 
-                mFloatTexArray[vp + 4] = texX2;     //3
+                mFloatTexArray[vp + 4] = texX2;     // 3
                 mFloatTexArray[vp + 5] = texY2;
 
-                mFloatTexArray[vp + 6] = texX1;     //1
+                mFloatTexArray[vp + 6] = texX1;     // 1
                 mFloatTexArray[vp + 7] = texY1;
 
-                mFloatTexArray[vp + 8] = texX1;     //4
+                mFloatTexArray[vp + 8] = texX1;     // 4
                 mFloatTexArray[vp + 9] = texY2;
 
-                mFloatTexArray[vp + 10] = texX2;    //3
+                mFloatTexArray[vp + 10] = texX2;    // 3
                 mFloatTexArray[vp + 11] = texY2;
 
                 mShortVertArray[vp + 0] = static_cast<GLshort>(dstX);
@@ -828,7 +828,7 @@ void MobileOpenGLGraphics::updateScreen()
 #endif
     SDL_GL_SwapBuffers();
 // may be need clear?
-//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+//  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     BLOCK_END("Graphics::updateScreen")
 }
 
@@ -1285,4 +1285,4 @@ void MobileOpenGLGraphics::debugBindTexture(const Image *const image A_UNUSED)
 }
 #endif
 
-#endif // USE_OPENGL
+#endif  // USE_OPENGL

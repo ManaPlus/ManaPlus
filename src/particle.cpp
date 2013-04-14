@@ -210,7 +210,7 @@ bool Particle::update()
                 {
                     Particle *const p = *it;
                     p->moveBy(mPos);
-                    mChildParticles.push_back (p);
+                    mChildParticles.push_back(p);
                 }
             }
         }

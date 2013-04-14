@@ -64,7 +64,6 @@ namespace gcn
              mMetaPressed(metaPressed),
              mIsConsumed(false)
     {
-
     }
 
     bool InputEvent::isShiftPressed() const
@@ -96,4 +95,4 @@ namespace gcn
     {
         return mIsConsumed;
     }
-}
+}  // namespace gcn

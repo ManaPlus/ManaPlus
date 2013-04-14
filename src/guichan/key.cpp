@@ -91,4 +91,4 @@ namespace gcn
     {
         return (mValue != key.mValue);
     }
-}
+}  // namespace gcn

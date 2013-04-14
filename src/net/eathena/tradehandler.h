@@ -57,6 +57,6 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
         void cancel() const override;
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
 #endif // NET_EATHENA_TRADEHANDLER_H

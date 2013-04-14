@@ -109,7 +109,7 @@ short packet_lengths[] =
 };
 
 static const int packet_lengths_size
-    = static_cast<int>(sizeof(packet_lengths) / sizeof (short));
+    = static_cast<int>(sizeof(packet_lengths) / sizeof(short));
 static const int messagesSize = 0xffff;
 Network *Network::mInstance = nullptr;
 

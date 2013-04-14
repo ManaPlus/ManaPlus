@@ -47,6 +47,6 @@ class QuestHandler final : public MessageHandler
         void processPlayerQuests(Net::MessageIn &msg) const;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_QUESTHANDLER_H

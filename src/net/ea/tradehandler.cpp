@@ -57,7 +57,7 @@ namespace
             Net::getTradeHandler()->respond(eventId == "yes");
         }
     } listener;
-}  // anonimous
+}  // namespace
 
 namespace Ea
 {

@@ -63,6 +63,6 @@ class ChatHandler : public Net::ChatHandler
         bool mShowAllLang;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_CHATHANDLER_H

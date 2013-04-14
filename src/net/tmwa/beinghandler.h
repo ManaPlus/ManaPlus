@@ -56,6 +56,6 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
                                              const int type) const;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_BEINGHANDLER_H

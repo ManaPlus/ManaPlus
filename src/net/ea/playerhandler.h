@@ -73,6 +73,6 @@ class PlayerHandler : public Net::PlayerHandler
         void processPlayerArrowMessage(Net::MessageIn &msg) const;
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_PLAYERHANDLER_H

@@ -142,7 +142,7 @@ void ActorSprite::setMap(Map *const map)
 
     // Clear particle effect list because child particles became invalid
     mChildParticleEffects.clear();
-    mMustResetParticles = true; // Reset status particles on next redraw
+    mMustResetParticles = true;  // Reset status particles on next redraw
 }
 
 void ActorSprite::controlParticle(Particle *const particle)
@@ -207,12 +207,6 @@ void ActorSprite::handleStatusEffect(StatusEffect *const effect,
 {
     if (!effect)
         return;
-
-    // TODO: Find out how this is meant to be used
-    // (SpriteAction != Being::Action)
-    //SpriteAction action = effect->getAction();
-    //if (action != ACTION_INVALID)
-    //    setAction(action);
 
     Particle *const particle = effect->getParticle();
 
@@ -286,7 +280,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
 
     mChildParticleEffects.clear();
 
-    //setup particle effects
+    // setup particle effects
     if (Particle::enabled && particleEngine)
     {
         FOR_EACH (StringVectCIter, itr, display.particles)

@@ -112,7 +112,6 @@ namespace gcn
             std::string sub = text.substr(lastPos, length);
             mTextRows.push_back(sub);
             lastPos = pos + 1;
-
         } while (pos != std::string::npos);
 
         adjustSize();
@@ -176,7 +175,7 @@ namespace gcn
             {
                 mCaretRow = row;
                 mCaretColumn = position;
-                return; // we are done
+                return;  // we are done
             }
             else
             {
@@ -319,4 +318,4 @@ namespace gcn
     {
         mOpaque = opaque;
     }
-}
+}  // namespace gcn

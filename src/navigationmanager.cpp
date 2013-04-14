@@ -39,7 +39,7 @@ namespace
         int x;
         int y;
     };
-}
+}  // namespace
 
 NavigationManager::NavigationManager()
 {

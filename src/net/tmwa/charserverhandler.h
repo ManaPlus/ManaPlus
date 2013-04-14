@@ -70,6 +70,6 @@ class CharServerHandler final : public MessageHandler,
                             const bool withColors) const override;
 };
 
-} // namespace TmwAthena
+}  // namespace TmwAthena
 
 #endif // NET_TA_CHARSERVERHANDLER_H

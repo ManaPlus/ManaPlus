@@ -54,6 +54,6 @@ class TradeHandler : public Net::TradeHandler
         void processTradeComplete(Net::MessageIn &msg);
 };
 
-} // namespace Ea
+}  // namespace Ea
 
 #endif // NET_EA_TRADEHANDLER_H

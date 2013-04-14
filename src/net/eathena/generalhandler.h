@@ -79,6 +79,6 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mTradeHandler;
 };
 
-} // namespace EAthena
+}  // namespace EAthena
 
-#endif // NET_EATHENA_GENERALHANDLER_H
+#endif  // NET_EATHENA_GENERALHANDLER_H

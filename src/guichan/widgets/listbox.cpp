@@ -196,7 +196,7 @@ namespace gcn
     {
         mSelectionListeners.push_back(selectionListener);
     }
-   
+
     void ListBox::removeSelectionListener(SelectionListener* selectionListener)
     {
         mSelectionListeners.remove(selectionListener);
@@ -217,4 +217,4 @@ namespace gcn
     {
         return getFont()->getHeight();
     }
-}
+}  // namespace gcn
