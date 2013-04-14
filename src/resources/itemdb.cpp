@@ -210,6 +210,7 @@ void ItemDB::load()
         std::string attackAction = XML::getProperty(node, "attack-action", "");
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
+        const int pet = XML::getProperty(node, "pet", 0);
         const int maxFloorOffset = XML::getIntProperty(
             node, "maxFloorOffset", 32, 0, 32);
         std::string colors;
@@ -261,6 +262,7 @@ void ItemDB::load()
         itemInfo->setDescription(description);
         itemInfo->setType(itemTypeFromString(typeStr));
         itemInfo->addTag(mTags["All"]);
+        itemInfo->setPet(pet);
         switch (itemInfo->getType())
         {
             case ITEM_USABLE:

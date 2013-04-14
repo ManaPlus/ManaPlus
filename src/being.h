@@ -863,6 +863,21 @@ class Being : public ActorSprite, public ConfigListener
 
         void addEffect(const std::string &name);
 
+        void addPet(const int id);
+
+        void removePet();
+
+        void updatePets();
+
+        Being *getPet()
+        { return mPet; }
+
+        void setPet(Being *const pet)
+        { mPet = pet; }
+
+        void setOwner(Being *const owner)
+        { mOwner = owner; }
+
         static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
 
         static Gender intToGender(uint8_t sex) A_WARN_UNUSED;
@@ -1023,6 +1038,9 @@ class Being : public ActorSprite, public ConfigListener
         bool mInactive;
         unsigned mNumber;
         unsigned char mHairColor;
+        Being *mPet;
+        int mPetId;
+        Being *mOwner;
         Particle *mSpecialParticle;
 };
 

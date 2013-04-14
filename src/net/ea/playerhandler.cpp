@@ -242,6 +242,7 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg) const
 
         player_node->setAction(Being::STAND);
         player_node->setTileCoords(x, y);
+        player_node->updatePets();
         player_node->navigateClean();
     }
 

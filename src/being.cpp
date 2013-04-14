@@ -57,6 +57,7 @@
 #include "resources/iteminfo.h"
 #include "resources/monsterdb.h"
 #include "resources/npcdb.h"
+#include "resources/petdb.h"
 #include "resources/resourcemanager.h"
 
 #include "gui/widgets/chattab.h"
@@ -251,6 +252,9 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mInactive(false),
     mNumber(100),
     mHairColor(0),
+    mPet(nullptr),
+    mPetId(0),
+    mOwner(nullptr),
     mSpecialParticle(nullptr)
 {
     for (int f = 0; f < 20; f ++)
@@ -301,6 +305,11 @@ Being::~Being()
     mEmotionSprite = nullptr;
     delete mAnimationEffect;
     mAnimationEffect = nullptr;
+
+    if (mOwner)
+        mOwner->setPet(nullptr);
+    if (mPet)
+        mPet->setOwner(nullptr);
 }
 
 void Being::setSubtype(const uint16_t subtype)
@@ -326,6 +335,15 @@ void Being::setSubtype(const uint16_t subtype)
     else if (mType == NPC)
     {
         mInfo = NPCDB::get(mSubType);
+        if (mInfo)
+        {
+            setupSpriteDisplay(mInfo->getDisplay(), false);
+            mYDiff = mInfo->getSortOffsetY();
+        }
+    }
+    else if (mType == PET)
+    {
+        mInfo = PETDB::get(mId);
         if (mInfo)
         {
             setupSpriteDisplay(mInfo->getDisplay(), false);
@@ -1826,12 +1844,26 @@ void Being::setSprite(const unsigned int slot, const int id,
 
         if (isWeapon)
             mEquippedWeapon = nullptr;
+        const ItemInfo &info = ItemDB::get(mSpriteIDs[slot]);
+        if (mMap)
+        {
+            const int pet = info.getPet();
+            if (pet)
+                removePet();
+        }
     }
     else
     {
         const ItemInfo &info = ItemDB::get(id);
         const std::string filename = info.getSprite(mGender, mSubType);
         AnimatedSprite *equipmentSprite = nullptr;
+
+        if (mType == PLAYER)
+        {
+            const int pet = info.getPet();
+            if (pet)
+                addPet(pet);
+        }
 
         if (!filename.empty())
         {
@@ -2853,6 +2885,52 @@ void Being::addEffect(const std::string &name)
     delete mAnimationEffect;
     mAnimationEffect = AnimatedSprite::load(
         paths.getStringValue("sprites") + name);
+}
+
+void Being::addPet(const int id)
+{
+    if (!actorSpriteManager)
+        return;
+
+    removePet();
+    Being *const being = actorSpriteManager->createBeing(
+        id, ActorSprite::PET, 0);
+    if (being)
+    {
+        being->setTileCoords(getTileX(), getTileY());
+        being->setOwner(this);
+        mPetId = id;
+        mPet = being;
+    }
+}
+
+void Being::removePet()
+{
+    if (!actorSpriteManager)
+        return;
+
+    mPetId = 0;
+    if (mPet)
+    {
+        mPet->setOwner(nullptr);
+        actorSpriteManager->destroy(mPet);
+        mPet = nullptr;
+    }
+}
+
+void Being::updatePets()
+{
+    removePet();
+    FOR_EACH (std::vector<int>::const_iterator, it, mSpriteIDs)
+    {
+        const ItemInfo &info = ItemDB::get(*it);
+        const int pet = info.getPet();
+        if (pet)
+        {
+            addPet(pet);
+            return;
+        }
+    }
 }
 
 BeingEquipBackend::BeingEquipBackend(Being *const being):

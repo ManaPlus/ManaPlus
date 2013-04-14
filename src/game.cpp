@@ -435,6 +435,9 @@ Game::Game():
 
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
+
+    if (player_node)
+        player_node->updatePets();
 }
 
 Game::~Game()

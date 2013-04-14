@@ -256,6 +256,12 @@ class ItemInfo final
 
         bool isRemoveItemId(int id) const A_WARN_UNUSED;
 
+        void setPet(const int pet)
+        { mPet = pet; }
+
+        int getPet() const
+        { return mPet; }
+
         /** Effects to be shown when weapon attacks - see also effects.xml */
         std::string mMissileParticleFile;
 
@@ -331,6 +337,7 @@ class ItemInfo final
         int mMissEffectId;
         int maxFloorOffset;
         Cursor::Cursor mPickupCursor;
+        int mPet;
 };
 
 #endif

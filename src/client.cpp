@@ -91,6 +91,7 @@
 #include "resources/specialdb.h"
 #endif
 #include "resources/npcdb.h"
+#include "resources/petdb.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
@@ -743,6 +744,7 @@ void Client::gameClear()
     ItemDB::unload();
     MonsterDB::unload();
     NPCDB::unload();
+    PETDB::unload();
     StatusEffect::unload();
 
     if (Net::getLoginHandler())
@@ -1378,6 +1380,7 @@ int Client::gameExec()
                     SpecialDB::load();
 #endif
                     NPCDB::load();
+                    PETDB::load();
                     EmoteDB::load();
                     StatusEffect::load();
                     Units::loadUnits();

@@ -452,6 +452,8 @@ SET(SRCS
     resources/npcdb.h
     resources/openglimagehelper.cpp
     resources/openglimagehelper.h
+    resources/petdb.cpp
+    resources/petdb.h
     resources/resource.cpp
     resources/resource.h
     resources/resourcemanager.cpp
