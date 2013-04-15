@@ -178,7 +178,7 @@ class ItemInfo final
         const std::string &getSprite(const Gender gender,
                                      const int race) const A_WARN_UNUSED;
 
-        void setAttackAction(std::string attackAction);
+        void setAttackAction(const std::string &attackAction);
 
         // Handlers for seting and getting the string 
         // used for particles when attacking
@@ -275,7 +275,7 @@ class ItemInfo final
 
         std::string getDyeColorsString(const int color) const A_WARN_UNUSED;
 
-        void setColorsList(std::string name);
+        void setColorsList(const std::string &name);
 
         bool isHaveColors() const A_WARN_UNUSED
         { return !mColorList.empty(); }

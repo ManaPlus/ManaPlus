@@ -84,7 +84,7 @@ const std::string &ItemInfo::getSprite(const Gender gender,
     }
     else
     {
-        static const std::string empty("");
+        static const std::string empty;
         std::map<int, std::string>::const_iterator i =
             mAnimationFiles.find(static_cast<int>(gender) + race * 4);
 
@@ -97,7 +97,7 @@ const std::string &ItemInfo::getSprite(const Gender gender,
     }
 }
 
-void ItemInfo::setAttackAction(std::string attackAction)
+void ItemInfo::setAttackAction(const std::string &attackAction)
 {
     if (attackAction.empty())
         mAttackAction = SpriteAction::ATTACK;  // (Equal to unarmed animation)
@@ -148,7 +148,7 @@ std::map<int, int> *ItemInfo::addReplaceSprite(const int sprite,
     return &it->second;
 }
 
-void ItemInfo::setColorsList(std::string name)
+void ItemInfo::setColorsList(const std::string &name)
 {
     if (name.empty())
     {
