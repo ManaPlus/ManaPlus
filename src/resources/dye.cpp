@@ -94,12 +94,13 @@ void DyePalette::getColor(const int intensity, int color[3]) const
         return;
     }
 
-    int last = static_cast<int>(mColors.size());
+    const int last = static_cast<int>(mColors.size());
     if (last == 0)
         return;
 
-    const int i = intensity * last / 255;
-    const int t = intensity * last % 255;
+    const int intLast = intensity * last;
+    const int i = intLast / 255;
+    const int t = intLast % 255;
 
     int j = t != 0 ? i : i - 1;
 
@@ -148,7 +149,7 @@ void DyePalette::getColor(double intensity, int color[3]) const
         intensity = 0.0;
 
     // Scale up
-    intensity = intensity * static_cast<double>(mColors.size() - 1);
+    intensity *= static_cast<double>(mColors.size() - 1);
 
     // Color indices
     const int i = static_cast<int>(floor(intensity));
