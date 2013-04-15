@@ -40,11 +40,13 @@ ImageSet::ImageSet(Image *const img, const int width, const int height,
 {
     if (img)
     {
+        const int hAdd = height + spacing;
+        const int wAdd = width + spacing;
         for (int y = margin; y + height <= img->getHeight() - margin;
-             y += height + spacing)
+             y += hAdd)
         {
             for (int x = margin; x + width <= img->getWidth() - margin;
-                 x += width + spacing)
+                 x += wAdd)
             {
                 mImages.push_back(img->getSubImage(x, y, width, height));
             }
@@ -55,16 +57,6 @@ ImageSet::ImageSet(Image *const img, const int width, const int height,
 ImageSet::~ImageSet()
 {
     delete_all(mImages);
-/*
-    for (std::vector<Image*>::iterator it = mImages.begin(),
-         it_end = mImages.end(); it != it_end; ++ it)
-    {
-        Image *image = *it;
-        if (image)
-            image->decRef();
-    }
-    mImages.clear();
-*/
 }
 
 Image* ImageSet::get(const size_type i) const
