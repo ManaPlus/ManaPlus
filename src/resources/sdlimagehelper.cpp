@@ -38,7 +38,7 @@
 
 bool SDLImageHelper::mEnableAlphaCache = false;
 
-Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
+Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
 {
     SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)
@@ -58,7 +58,8 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     rgba.Bmask = 0x0000FF00; rgba.Bloss = 0; rgba.Bshift = 8;
     rgba.Amask = 0x000000FF; rgba.Aloss = 0; rgba.Ashift = 0;
 
-    SDL_Surface *surf = SDL_ConvertSurface(tmpImage, &rgba, SDL_SWSURFACE);
+    SDL_Surface *const surf = SDL_ConvertSurface(
+        tmpImage, &rgba, SDL_SWSURFACE);
     SDL_FreeSurface(tmpImage);
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
@@ -122,15 +123,15 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     return image;
 }
 
-Image *SDLImageHelper::load(SDL_Surface *const tmpImage)
+Image *SDLImageHelper::load(SDL_Surface *const tmpImage) const
 {
     return _SDLload(tmpImage);
 }
 
 Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
-                                         int width A_UNUSED,
-                                         int height A_UNUSED,
-                                         const float alpha)
+                                         const int width A_UNUSED,
+                                         const int height A_UNUSED,
+                                         const float alpha) const
 {
     if (!tmpImage)
         return nullptr;
@@ -145,7 +146,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     // The alpha channel to be filled with alpha values
     uint8_t *alphaChannel = new uint8_t[sz];
 
-    const SDL_PixelFormat * const fmt = tmpImage->format;
+    const SDL_PixelFormat *const fmt = tmpImage->format;
     if (fmt->Amask)
     {
         for (int i = 0; i < sz; ++ i)
@@ -235,7 +236,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
     // Figure out whether the image uses its alpha layer
     if (!tmpImage->format->palette)
     {
-        const SDL_PixelFormat * const fmt = tmpImage->format;
+        const SDL_PixelFormat *const fmt = tmpImage->format;
         if (fmt->Amask)
         {
             for (int i = 0; i < sz; ++ i)
@@ -299,12 +300,12 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
     return new Image(image, hasAlpha, alphaChannel);
 }
 
-int SDLImageHelper::useOpenGL()
+int SDLImageHelper::useOpenGL() const
 {
     return 0;
 }
 
-SDL_Surface *SDLImageHelper::create32BitSurface(int width, int height)
+SDL_Surface *SDLImageHelper::create32BitSurface(int width,int height) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;

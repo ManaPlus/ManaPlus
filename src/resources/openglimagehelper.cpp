@@ -51,7 +51,7 @@ bool OpenGLImageHelper::mBlur = true;
 int OpenGLImageHelper::mUseOpenGL = 0;
 bool OpenGLImageHelper::mUseTextureSampler = false;
 
-Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
+Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
 {
     SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)
@@ -125,14 +125,14 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     return image;
 }
 
-Image *OpenGLImageHelper::load(SDL_Surface *const tmpImage)
+Image *OpenGLImageHelper::load(SDL_Surface *const tmpImage) const
 {
     return glLoad(tmpImage);
 }
 
 Image *OpenGLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
-                                            int width, int height,
-                                            const float alpha)
+                                            const int width, const int height,
+                                            const float alpha) const
 {
     if (!tmpImage)
         return nullptr;
@@ -143,7 +143,7 @@ Image *OpenGLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     return img;
 }
 
-int OpenGLImageHelper::powerOfTwo(int input) const
+int OpenGLImageHelper::powerOfTwo(const int input) const
 {
     int value;
     if (mTextureType == GL_TEXTURE_2D)
@@ -159,7 +159,8 @@ int OpenGLImageHelper::powerOfTwo(int input) const
     return value >= mTextureSize ? mTextureSize : value;
 }
 
-Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage, int width, int height)
+Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
+                                 int width, int height) const
 {
     if (!tmpImage)
         return nullptr;
@@ -297,17 +298,17 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage, int width, int height)
     return new Image(texture, width, height, realWidth, realHeight);
 }
 
-void OpenGLImageHelper::setLoadAsOpenGL(int useOpenGL)
+void OpenGLImageHelper::setLoadAsOpenGL(const int useOpenGL)
 {
     OpenGLImageHelper::mUseOpenGL = useOpenGL;
 }
 
-int OpenGLImageHelper::useOpenGL()
+int OpenGLImageHelper::useOpenGL() const
 {
     return mUseOpenGL;
 }
 
-void OpenGLImageHelper::initTextureSampler(GLint id)
+void OpenGLImageHelper::initTextureSampler(const GLint id)
 {
     if (mBlur)
     {
@@ -321,7 +322,7 @@ void OpenGLImageHelper::initTextureSampler(GLint id)
     }
 }
 
-SDL_Surface *OpenGLImageHelper::create32BitSurface(int width, int height)
+SDL_Surface *OpenGLImageHelper::create32BitSurface(int width, int height) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;

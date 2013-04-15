@@ -59,30 +59,31 @@ class ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Image *load(SDL_RWops *const rw) A_WARN_UNUSED;
+        Image *load(SDL_RWops *const rw) const A_WARN_UNUSED;
 
 #ifdef __GNUC__
-        virtual Image *load(SDL_RWops *rw, Dye const &dye) A_WARN_UNUSED = 0;
+        virtual Image *load(SDL_RWops *const rw, Dye
+                            const &dye) const A_WARN_UNUSED = 0;
 
-        virtual Image *load(SDL_Surface *) A_WARN_UNUSED = 0;
+        virtual Image *load(SDL_Surface *const) const A_WARN_UNUSED = 0;
 
-        virtual Image *createTextSurface(SDL_Surface *tmpImage,
-                                         int width, int height,
-                                         float alpha) A_WARN_UNUSED = 0;
+        virtual Image *createTextSurface(SDL_Surface *const tmpImage,
+                                         const int width, const int height,
+                                         float alpha) const A_WARN_UNUSED = 0;
 
-        virtual int useOpenGL() A_WARN_UNUSED = 0;
+        virtual int useOpenGL() const A_WARN_UNUSED = 0;
 #else
-        virtual Image *load(SDL_RWops *rw, Dye const &dye) A_WARN_UNUSED
+        virtual Image *load(SDL_RWops *rw, Dye const &dye) const A_WARN_UNUSED
         { return nullptr; }
 
-        virtual Image *load(SDL_Surface *) A_WARN_UNUSED
+        virtual Image *load(SDL_Surface *) const A_WARN_UNUSED
         { return nullptr; }
 
         virtual Image *createTextSurface(SDL_Surface *const tmpImage,
-                                         const float alpha) A_WARN_UNUSED
+                                         const float alpha) const A_WARN_UNUSED
         { return nullptr; }
 
-        virtual int useOpenGL() A_WARN_UNUSED
+        virtual int useOpenGL() const A_WARN_UNUSED
         { return 0; }
 #endif
 
@@ -92,7 +93,7 @@ class ImageHelper
         void dumpSurfaceFormat(const SDL_Surface *const image) const;
 
         virtual SDL_Surface *create32BitSurface(int width, int height)
-                                                A_WARN_UNUSED = 0;
+                                                const A_WARN_UNUSED = 0;
 
         static void setEnableAlpha(const bool n)
         { mEnableAlpha = n; }

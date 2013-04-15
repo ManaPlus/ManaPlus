@@ -41,7 +41,7 @@ ImageHelper *sdlImageHelper = nullptr;
 
 bool ImageHelper::mEnableAlpha = true;
 
-Image *ImageHelper::load(SDL_RWops *const rw)
+Image *ImageHelper::load(SDL_RWops *const rw) const
 {
     SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)

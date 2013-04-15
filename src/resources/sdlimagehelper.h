@@ -57,16 +57,18 @@ class SDLImageHelper final : public ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Image *load(SDL_RWops *const rw, Dye const &dye) A_WARN_UNUSED;
+        Image *load(SDL_RWops *const rw,
+                    Dye const &dye) const override A_WARN_UNUSED;
 
         /**
          * Loads an image from an SDL surface.
          */
-        Image *load(SDL_Surface *const tmpImage) A_WARN_UNUSED;
+        Image *load(SDL_Surface *const tmpImage) const override A_WARN_UNUSED;
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
-                                 int width, int height,
-                                 const float alpha) A_WARN_UNUSED;
+                                 const int width, const int height,
+                                 const float alpha)
+                                 const override A_WARN_UNUSED;
 
         static void SDLSetEnableAlphaCache(const bool n)
         { mEnableAlphaCache = n; }
@@ -78,12 +80,12 @@ class SDLImageHelper final : public ImageHelper
          * Tells if the image was loaded using OpenGL or SDL
          * @return true if OpenGL, false if SDL.
          */
-        int useOpenGL() A_WARN_UNUSED;
+        int useOpenGL() const override A_WARN_UNUSED;
 
         static SDL_Surface* SDLDuplicateSurface(SDL_Surface *const tmpImage)
                                                 A_WARN_UNUSED;
 
-        SDL_Surface *create32BitSurface(int width, int height);
+        SDL_Surface *create32BitSurface(int width, int height) const override;
 
     protected:
         /** SDL_Surface to SDL_Surface Image loader */

@@ -78,16 +78,18 @@ class OpenGLImageHelper final : public ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Image *load(SDL_RWops *const rw, Dye const &dye) A_WARN_UNUSED;
+        Image *load(SDL_RWops *const rw,
+                    Dye const &dye) const override A_WARN_UNUSED;
 
         /**
          * Loads an image from an SDL surface.
          */
-        Image *load(SDL_Surface *const tmpImage) A_WARN_UNUSED;
+        Image *load(SDL_Surface *const tmpImage) const override A_WARN_UNUSED;
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
-                                 int width, int height,
-                                 const float alpha) A_WARN_UNUSED;
+                                 const int width, const int height,
+                                 const float alpha)
+                                 const override A_WARN_UNUSED;
 
         // OpenGL only public functions
 
@@ -95,7 +97,7 @@ class OpenGLImageHelper final : public ImageHelper
          * Sets the target image format. Use <code>false</code> for SDL and
          * <code>true</code> for OpenGL.
          */
-        static void setLoadAsOpenGL(int useOpenGL);
+        static void setLoadAsOpenGL(const int useOpenGL);
 
         static int getTextureType() A_WARN_UNUSED
         { return mTextureType; }
@@ -117,26 +119,26 @@ class OpenGLImageHelper final : public ImageHelper
          * Tells if the image was loaded using OpenGL or SDL
          * @return true if OpenGL, false if SDL.
          */
-        int useOpenGL() A_WARN_UNUSED;
+        int useOpenGL() const override A_WARN_UNUSED;
 
         static int getTextureSize() A_WARN_UNUSED
         { return mTextureSize; }
 
-        static void initTextureSampler(GLint id);
+        static void initTextureSampler(const GLint id);
 
-        static void setUseTextureSampler(bool b)
+        static void setUseTextureSampler(const bool b)
         { mUseTextureSampler = b; }
 
-        SDL_Surface *create32BitSurface(int width, int height);
+        SDL_Surface *create32BitSurface(int width, int height) const override;
 
     protected:
         /**
          * Returns the first power of two equal or bigger than the input.
          */
-        int powerOfTwo(int input) const A_WARN_UNUSED;
+        int powerOfTwo(const int input) const A_WARN_UNUSED;
 
         Image *glLoad(SDL_Surface *tmpImage,
-                      int width = 0, int height = 0) A_WARN_UNUSED;
+                      int width = 0, int height = 0) const A_WARN_UNUSED;
 
         static int mUseOpenGL;
         static int mTextureSize;
