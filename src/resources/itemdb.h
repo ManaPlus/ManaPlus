@@ -60,7 +60,7 @@ namespace ItemDB
 
     const std::map<int, ItemInfo*> &getItemInfos();
 
-    int getTagId(std::string tagName) A_WARN_UNUSED;
+    int getTagId(const std::string &tagName) A_WARN_UNUSED;
 
     struct Stat
     {

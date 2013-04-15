@@ -53,8 +53,8 @@ static void loadReplaceSprite(ItemInfo *const itemInfo,
                               const XmlNodePtr replaceNode);
 static void loadOrderSprite(ItemInfo *const itemInfo, const XmlNodePtr node,
                             const bool drawAfter);
-static int parseSpriteName(std::string name);
-static int parseDirectionName(std::string name);
+static int parseSpriteName(const std::string &name);
+static int parseDirectionName(const std::string &name);
 
 static const char *const fields[][2] =
 {
@@ -199,7 +199,7 @@ void ItemDB::load()
             logger->log("ItemDB: Redefinition of item ID %d", id);
         }
 
-        std::string typeStr = XML::getProperty(node, "type", "other");
+        const std::string typeStr = XML::getProperty(node, "type", "other");
         const int weight = XML::getProperty(node, "weight", 0);
         const int view = XML::getProperty(node, "view", 0);
 
@@ -452,11 +452,6 @@ void ItemDB::load()
             CHECK_PARAM(description, "");
             CHECK_PARAM(image, "");
         }
-        // CHECK_PARAM(effect, "");
-        // CHECK_PARAM(type, 0);
-        // CHECK_PARAM(weight, 0);
-        // CHECK_PARAM(slot, 0);
-
 #undef CHECK_PARAM
     }
 
@@ -468,7 +463,7 @@ const StringVect &ItemDB::getTags()
     return mTagNames;
 }
 
-int ItemDB::getTagId(std::string tagName)
+int ItemDB::getTagId(const std::string &tagName)
 {
     return mTags[tagName];
 }
@@ -494,7 +489,6 @@ bool ItemDB::exists(const int id)
         return false;
 
     const ItemInfos::const_iterator i = mItemInfos.find(id);
-
     return i != mItemInfos.end();
 }
 
@@ -540,7 +534,7 @@ const std::map<int, ItemInfo*> &ItemDB::getItemInfos()
     return mItemInfos;
 }
 
-int parseSpriteName(std::string name)
+int parseSpriteName(const std::string &name)
 {
     int id = -1;
     if (name == "shoes" || name == "boot" || name == "boots")
@@ -600,7 +594,7 @@ int parseSpriteName(std::string name)
     return id;
 }
 
-int parseDirectionName(std::string name)
+int parseDirectionName(const std::string &name)
 {
     int id = -1;
     if (name == "down")
@@ -675,8 +669,8 @@ void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 
 void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 {
-    std::string event = XML::getProperty(node, "event", "");
-    std::string filename = reinterpret_cast<const char*>(
+    const std::string event = XML::getProperty(node, "event", "");
+    const std::string filename = reinterpret_cast<const char*>(
         node->xmlChildrenNode->content);
 
     if (event == "hit")
@@ -709,16 +703,16 @@ void loadFloorSprite(SpriteDisplay *const display, const XmlNodePtr floorNode)
         }
         else if (xmlNameEqual(spriteNode, "particlefx"))
         {
-            std::string particlefx = reinterpret_cast<const char*>(
-                spriteNode->xmlChildrenNode->content);
-            display->particles.push_back(particlefx);
+            display->particles.push_back(reinterpret_cast<const char*>(
+                spriteNode->xmlChildrenNode->content));
         }
     }
 }
 
 void loadReplaceSprite(ItemInfo *const itemInfo, const XmlNodePtr replaceNode)
 {
-    std::string removeSprite = XML::getProperty(replaceNode, "sprite", "");
+    const std::string removeSprite = XML::getProperty(
+        replaceNode, "sprite", "");
     const int direction = parseDirectionName(XML::getProperty(
         replaceNode, "direction", "all"));
 
