@@ -77,7 +77,7 @@ namespace EmoteDB
                                         const bool allowNull = false)
                                         A_WARN_UNUSED;
 
-    AnimatedSprite *getClone(int id, const bool allowNull);
+    AnimatedSprite *getClone(const int id, const bool allowNull);
 
     const EmoteSprite *getSprite(const int id, const bool allowNull = false)
                                  A_WARN_UNUSED;

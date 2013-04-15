@@ -90,10 +90,10 @@ void EmoteDB::load()
             if (xmlNameEqual(spriteNode, "sprite"))
             {
                 EmoteSprite *const currentSprite = new EmoteSprite;
-                std::string file = paths.getStringValue("sprites")
-                    .append(std::string(reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content)));
-                currentSprite->sprite = AnimatedSprite::load(file,
+                currentSprite->sprite = AnimatedSprite::load(
+                    paths.getStringValue("sprites").append(std::string(
+                    reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content))),
                     XML::getProperty(spriteNode, "variant", 0));
                 currentSprite->name = XML::langProperty(
                     spriteNode, "name", "");
@@ -101,9 +101,8 @@ void EmoteDB::load()
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
             {
-                std::string particlefx = reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content);
-                currentInfo->particles.push_back(particlefx);
+                currentInfo->particles.push_back(reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content));
             }
         }
         mEmoteInfos[id] = currentInfo;
@@ -146,20 +145,19 @@ void EmoteDB::load()
             if (xmlNameEqual(spriteNode, "sprite"))
             {
                 EmoteSprite *const currentSprite = new EmoteSprite;
-                std::string file = paths.getStringValue("sprites")
-                    .append(std::string(reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content)));
-                currentSprite->sprite = AnimatedSprite::load(file,
-                                XML::getProperty(spriteNode, "variant", 0));
+                currentSprite->sprite = AnimatedSprite::load(
+                    paths.getStringValue("sprites").append(std::string(
+                    reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content))),
+                    XML::getProperty(spriteNode, "variant", 0));
                 currentSprite->name = XML::langProperty(
                     spriteNode, "name", "");
                 currentInfo->sprites.push_back(currentSprite);
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
             {
-                std::string particlefx = reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content);
-                currentInfo->particles.push_back(particlefx);
+                currentInfo->particles.push_back(reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content));
             }
         }
         mEmoteInfos[id] = currentInfo;
@@ -237,7 +235,7 @@ const AnimatedSprite *EmoteDB::getAnimation2(int id, const bool allowNull)
     return getAnimation(id, allowNull);
 }
 
-AnimatedSprite *EmoteDB::getClone(int id, const bool allowNull)
+AnimatedSprite *EmoteDB::getClone(const int id, const bool allowNull)
 {
     const AnimatedSprite *const sprite = getAnimation2(id, allowNull);
     if (sprite)
