@@ -41,17 +41,11 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
     if (!surface)
         return false;
 
-    // TODO Maybe someone can make this look nice?
-
-    png_structp png_ptr;
-    png_infop info_ptr;
-    png_bytep *row_pointers;
-    int colortype;
 
     if (SDL_MUSTLOCK(surface))
         SDL_LockSurface(surface);
 
-    png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,
+    png_structp png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,
         nullptr, nullptr, nullptr);
     if (!png_ptr)
     {
@@ -59,7 +53,7 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
         return false;
     }
 
-    info_ptr = png_create_info_struct(png_ptr);
+    const png_infop info_ptr = png_create_info_struct(png_ptr);
     if (!info_ptr)
     {
         png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
@@ -74,7 +68,7 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
         return false;
     }
 
-    FILE *fp = fopen(filename.c_str(), "wb");
+    FILE *const fp = fopen(filename.c_str(), "wb");
     if (!fp)
     {
         logger->log("could not open file %s for writing", filename.c_str());
@@ -83,7 +77,7 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
 
     png_init_io(png_ptr, fp);
 
-    colortype = (surface->format->BitsPerPixel == 24) ?
+    const int colortype = (surface->format->BitsPerPixel == 24) ?
         PNG_COLOR_TYPE_RGB : PNG_COLOR_TYPE_RGB_ALPHA;
 
     png_set_IHDR(png_ptr, info_ptr, surface->w, surface->h, 8, colortype,
@@ -94,7 +88,7 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
 
     png_set_packing(png_ptr);
 
-    row_pointers = new png_bytep[surface->h];
+    png_bytep *const row_pointers = new png_bytep[surface->h];
     if (!row_pointers)
     {
         logger->log1("Had trouble converting surface to row pointers");
