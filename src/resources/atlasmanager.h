@@ -82,9 +82,9 @@ class AtlasResource final : public Resource
 
         ~AtlasResource();
 
-        void incRef();
+        void incRef() override;
 
-        void decRef();
+        void decRef() override;
 
         std::vector<TextureAtlas*> atlases;
 };
