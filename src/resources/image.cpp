@@ -183,7 +183,7 @@ SDL_Surface *Image::getByAlpha(const float alpha)
     return nullptr;
 }
 
-void Image::setAlpha(float alpha)
+void Image::setAlpha(const float alpha)
 {
     if (mAlpha == alpha || !ImageHelper::mEnableAlpha)
         return;
@@ -223,11 +223,8 @@ void Image::setAlpha(float alpha)
             surface = getByAlpha(alpha);
             if (surface)
             {
-//              logger->log("hit");
                 if (mSDLSurface == surface)
                     logger->log("bug");
-//                else
-//                    SDL_FreeSurface(mSDLSurface);
                 mAlphaCache.erase(alpha);
                 mSDLSurface = surface;
                 mAlpha = alpha;
@@ -237,7 +234,6 @@ void Image::setAlpha(float alpha)
             {
                 mSDLSurface = SDLImageHelper::SDLDuplicateSurface(mSDLSurface);
             }
-    //        logger->log("miss");
         }
 
         mAlpha = alpha;
