@@ -36,7 +36,7 @@ namespace MapDB
     struct MapInfo
     {
         std::string atlas;
-        StringVect *files;
+        const StringVect *files;
     };
 
     /**
@@ -53,9 +53,9 @@ namespace MapDB
      */
     void unload();
 
-    std::string getMapName(const std::string &name) A_WARN_UNUSED;
+    const std::string getMapName(const std::string &name) A_WARN_UNUSED;
 
-    MapInfo *getMapAtlas(const std::string &name) A_WARN_UNUSED;
+    const MapInfo *getMapAtlas(const std::string &name) A_WARN_UNUSED;
 
     // Maps DB
     typedef std::map<std::string, std::string> Maps;
@@ -66,6 +66,7 @@ namespace MapDB
     // atlas to files map
     typedef std::map<std::string, StringVect> Atlases;
     typedef Atlases::iterator AtlasIter;
+    typedef Atlases::const_iterator AtlasCIter;
 }  // namespace MapDB
 
 #endif

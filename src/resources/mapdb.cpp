@@ -53,7 +53,7 @@ void MapDB::load()
 
 void MapDB::loadRemap()
 {
-    XML::Document *doc = new XML::Document(
+    XML::Document *const doc = new XML::Document(
         paths.getStringValue("maps").append("remap.xml"));
 
     const XmlNodePtr root = doc->rootNode();
@@ -67,11 +67,11 @@ void MapDB::loadRemap()
     {
         if (xmlNameEqual(node, "map"))
         {
-            std::string name = XML::getProperty(node, "name", "");
+            const std::string name = XML::getProperty(node, "name", "");
             if (name.empty())
                 continue;
 
-            std::string value = XML::getProperty(node, "value", "");
+            const std::string value = XML::getProperty(node, "value", "");
             if (value.empty())
                 continue;
 
@@ -145,7 +145,7 @@ void MapDB::unload()
     mLoaded = false;
 }
 
-std::string MapDB::getMapName(const std::string &name)
+const std::string MapDB::getMapName(const std::string &name)
 {
     const MapIterator it = mMaps.find(name);
 
@@ -154,13 +154,13 @@ std::string MapDB::getMapName(const std::string &name)
     return name;
 }
 
-MapDB::MapInfo *MapDB::getMapAtlas(const std::string &name)
+const MapDB::MapInfo *MapDB::getMapAtlas(const std::string &name)
 {
-    MapInfoIter it = mInfos.find(name);
+    const MapInfoIter it = mInfos.find(name);
     if (it == mInfos.end())
         return nullptr;
     MapInfo *const info = &(*it).second;
-    AtlasIter it2 = mAtlases.find(info->atlas);
+    const AtlasCIter it2 = mAtlases.find(info->atlas);
     if (it2 == mAtlases.end())
         return nullptr;
     info->files = &((*it2).second);
