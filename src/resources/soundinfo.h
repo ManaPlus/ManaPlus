@@ -18,21 +18,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SOUNDDB_H
-#define SOUNDDB_H
+#ifndef SOUNDINFO_H
+#define SOUNDINFO_H
 
-#include <map>
 #include <string>
+#include <vector>
 
 #include "localconsts.h"
 
-namespace SoundDB
+struct SoundInfo final
 {
-    void load();
+    SoundInfo(const std::string &sound0, const int delay0) :
+        sound(sound0),
+        delay(delay0)
+    {
+    }
 
-    void unload();
+    std::string sound;
+    int delay;
+};
 
-    std::string &getSound(const int id);
-}
+typedef std::vector<SoundInfo> SoundInfoVect;
 
 #endif

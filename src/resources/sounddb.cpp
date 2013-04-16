@@ -1,5 +1,5 @@
 /*
- *  Color database
+ *  The ManaPlus Client
  *  Copyright (C) 2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.

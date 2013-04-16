@@ -672,14 +672,15 @@ void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
     const std::string event = XML::getProperty(node, "event", "");
     const std::string filename = reinterpret_cast<const char*>(
         node->xmlChildrenNode->content);
+    const int delay = XML::getProperty(node, "delay", 0);
 
     if (event == "hit")
     {
-        itemInfo->addSound(EQUIP_EVENT_HIT, filename);
+        itemInfo->addSound(SOUND_EVENT_HIT, filename, delay);
     }
     else if (event == "strike" || event == "miss")
     {
-        itemInfo->addSound(EQUIP_EVENT_STRIKE, filename);
+        itemInfo->addSound(SOUND_EVENT_MISS, filename, delay);
     }
     else
     {

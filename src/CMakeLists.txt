@@ -464,8 +464,9 @@ SET(SRCS
     resources/sdlmusic.h
     resources/sounddb.cpp
     resources/sounddb.h
-    resources/soundeffect.h
     resources/soundeffect.cpp
+    resources/soundeffect.h
+    resources/soundinfo.h
     resources/spritedef.h
     resources/spritedef.cpp
     resources/subimage.cpp

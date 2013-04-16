@@ -147,41 +147,43 @@ void MonsterDB::load()
 
                 const std::string event = XML::getProperty(
                     spriteNode, "event", "");
+                const int delay = XML::getProperty(
+                    spriteNode, "delay", 0);
                 const char *filename;
                 filename = reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);
 
                 if (event == "hit")
                 {
-                    currentInfo->addSound(SOUND_EVENT_HIT, filename);
+                    currentInfo->addSound(SOUND_EVENT_HIT, filename, delay);
                 }
                 else if (event == "miss")
                 {
-                    currentInfo->addSound(SOUND_EVENT_MISS, filename);
+                    currentInfo->addSound(SOUND_EVENT_MISS, filename, delay);
                 }
                 else if (event == "hurt")
                 {
-                    currentInfo->addSound(SOUND_EVENT_HURT, filename);
+                    currentInfo->addSound(SOUND_EVENT_HURT, filename, delay);
                 }
                 else if (event == "die")
                 {
-                    currentInfo->addSound(SOUND_EVENT_DIE, filename);
+                    currentInfo->addSound(SOUND_EVENT_DIE, filename, delay);
                 }
                 else if (event == "move")
                 {
-                    currentInfo->addSound(SOUND_EVENT_MOVE, filename);
+                    currentInfo->addSound(SOUND_EVENT_MOVE, filename, delay);
                 }
                 else if (event == "sit")
                 {
-                    currentInfo->addSound(SOUND_EVENT_SIT, filename);
+                    currentInfo->addSound(SOUND_EVENT_SIT, filename, delay);
                 }
                 else if (event == "sittop")
                 {
-                    currentInfo->addSound(SOUND_EVENT_SITTOP, filename);
+                    currentInfo->addSound(SOUND_EVENT_SITTOP, filename, delay);
                 }
                 else if (event == "spawn")
                 {
-                    currentInfo->addSound(SOUND_EVENT_SPAWN, filename);
+                    currentInfo->addSound(SOUND_EVENT_SPAWN, filename, delay);
                 }
                 else
                 {

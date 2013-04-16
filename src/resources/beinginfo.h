@@ -26,6 +26,7 @@
 #include "actorsprite.h"
 
 #include "resources/cursor.h"
+#include "resources/soundinfo.h"
 
 #include <list>
 #include <map>
@@ -68,7 +69,7 @@ enum SoundEvent
     SOUND_EVENT_SPAWN
 };
 
-typedef std::map<SoundEvent, StringVect*> SoundEvents;
+typedef std::map<SoundEvent, SoundInfoVect*> SoundEvents;
 
 /**
  * Holds information about a certain type of monster. This includes the name
@@ -118,10 +119,11 @@ class BeingInfo final
         ActorSprite::TargetCursorSize getTargetCursorSize() const A_WARN_UNUSED
         { return mTargetCursorSize; }
 
-        void addSound(const SoundEvent event, const std::string &filename);
+        void addSound(const SoundEvent event, const std::string &filename,
+                      const int delay);
 
-        const std::string &getSound(const SoundEvent event)
-                                    const A_WARN_UNUSED;
+        const SoundInfo &getSound(const SoundEvent event)
+                                  const A_WARN_UNUSED;
 
         void addAttack(const int id, std::string action, const int effectId,
                        const int hitEffectId, const int criticalHitEffectId,

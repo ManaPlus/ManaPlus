@@ -26,17 +26,10 @@
 #include "being.h"
 
 #include "resources/colordb.h"
+#include "resources/soundinfo.h"
 
 #include <map>
 #include <set>
-
-enum EquipmentSoundEvent
-{
-    // miss
-    EQUIP_EVENT_STRIKE = 0,
-    // hit
-    EQUIP_EVENT_HIT
-};
 
 enum EquipmentSlot
 {
@@ -215,11 +208,12 @@ class ItemInfo final
         void setAttackRange(const int r)
         { mAttackRange = r; }
 
-        void addSound(const EquipmentSoundEvent event,
-                      const std::string &filename);
+        void addSound(const SoundEvent event,
+                      const std::string &filename,
+                      const int delay);
 
-        const std::string &getSound(const EquipmentSoundEvent event)
-                                    const A_WARN_UNUSED;
+        const SoundInfo &getSound(const SoundEvent event)
+                                  const A_WARN_UNUSED;
 
         int getDrawBefore(const int direction) const A_WARN_UNUSED;
 
@@ -328,7 +322,7 @@ class ItemInfo final
         std::map <int, std::string> mAnimationFiles;
 
         /** Stores the names of sounds to be played at certain event. */
-        std::map <EquipmentSoundEvent, StringVect> mSounds;
+        std::map <SoundEvent, SoundInfoVect> mSounds;
         std::map <int, int> mTags;
         const std::map <int, ColorDB::ItemColor> *mColors;
         std::string mColorList;

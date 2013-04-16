@@ -878,6 +878,8 @@ class Being : public ActorSprite, public ConfigListener
         void setOwner(Being *const owner)
         { mOwner = owner; }
 
+        void playSfx(const SoundInfo &sound, const int x, const int y);
+
         static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
 
         static Gender intToGender(uint8_t sex) A_WARN_UNUSED;

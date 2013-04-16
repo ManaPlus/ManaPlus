@@ -525,10 +525,15 @@ void SkillDialog::loadSkills()
                         node, "description", "");
                     data->particle = XML::getProperty(
                         node, "particle", "");
-                    data->soundHit = XML::getProperty(
+
+                    data->soundHit.sound = XML::getProperty(
                         node, "soundHit", "");
-                    data->soundMiss = XML::getProperty(
+                    data->soundHit.delay = XML::getProperty(
+                        node, "soundHitDelay", 0);
+                    data->soundMiss.sound = XML::getProperty(
                         node, "soundMiss", "");
+                    data->soundMiss.delay = XML::getProperty(
+                        node, "soundMissDelay", 0);
 
                     skill->addData(level, data);
                 }
@@ -773,7 +778,9 @@ SkillData *SkillInfo::getData1(const int lev)
 }
 
 SkillData::SkillData() :
-    icon(nullptr)
+    icon(nullptr),
+    soundHit("", 0),
+    soundMiss("", 0)
 {
 }
 

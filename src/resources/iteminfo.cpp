@@ -23,6 +23,7 @@
 #include "resources/iteminfo.h"
 
 #include "resources/itemdb.h"
+
 #include "configuration.h"
 
 #include "utils/dtor.h"
@@ -105,22 +106,24 @@ void ItemInfo::setAttackAction(const std::string &attackAction)
         mAttackAction = attackAction;
 }
 
-void ItemInfo::addSound(const EquipmentSoundEvent event,
-                        const std::string &filename)
+void ItemInfo::addSound(const SoundEvent event,
+                        const std::string &filename, const int delay)
 {
-    mSounds[event].push_back(paths.getStringValue("sfx").append(filename));
+    mSounds[event].push_back(SoundInfo(
+        paths.getStringValue("sfx").append(filename), delay));
 }
 
-const std::string &ItemInfo::getSound(const EquipmentSoundEvent event) const
+const SoundInfo &ItemInfo::getSound(const SoundEvent event) const
 {
-    static const std::string empty;
-    std::map<EquipmentSoundEvent, StringVect>::const_iterator i;
+    static const SoundInfo empty("", 0);
+    std::map<SoundEvent, SoundInfoVect>::const_iterator i;
 
     i = mSounds.find(event);
 
     if (i == mSounds.end())
         return empty;
-    return (!i->second.empty()) ? i->second[rand() % i->second.size()] : empty;
+    return (!i->second.empty()) ? i->second[rand()
+        % i->second.size()] : empty;
 }
 
 std::map<int, int> *ItemInfo::addReplaceSprite(const int sprite,

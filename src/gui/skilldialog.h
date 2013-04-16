@@ -25,6 +25,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "resources/soundinfo.h"
+
 #include <guichan/actionlistener.hpp>
 #include <guichan/mouselistener.hpp>
 
@@ -50,8 +52,8 @@ struct SkillData final
     Image *icon;
 
     std::string particle;
-    std::string soundHit;
-    std::string soundMiss;
+    SoundInfo soundHit;
+    SoundInfo soundMiss;
 
     SkillData();
     A_DELETE_COPY(SkillData)
