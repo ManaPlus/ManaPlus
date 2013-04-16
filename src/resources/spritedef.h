@@ -118,7 +118,8 @@ class SpriteDef final : public Resource
          * Loads a sprite definition file.
          */
         static SpriteDef *load(const std::string &file,
-                               const int variant, bool prot) A_WARN_UNUSED;
+                               const int variant,
+                               const bool prot) A_WARN_UNUSED;
 
         /**
          * Returns the specified action.
@@ -199,7 +200,8 @@ class SpriteDef final : public Resource
          * When there are no animations defined for the action "complete", its
          * animations become a copy of those of the action "with".
          */
-        void substituteAction(std::string complete, std::string with);
+        void substituteAction(const std::string &complete,
+                              const std::string &with);
 
         typedef std::map<std::string, ImageSet*> ImageSets;
         typedef ImageSets::iterator ImageSetIterator;

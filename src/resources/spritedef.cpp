@@ -48,9 +48,12 @@ Action *SpriteDef::getAction(const std::string &action,
     if (i == mActions.end() || !(*i).second)
         return nullptr;
 
-    const ActionMap::const_iterator it = ((*i).second)->find(action);
+    const ActionMap *const actMap = (*i).second;
+    if (!actMap)
+        return nullptr;
+    const ActionMap::const_iterator it = actMap->find(action);
 
-    if (it == ((*i).second)->end())
+    if (it == actMap->end())
     {
         logger->log("Warning: no action \"%s\" defined!", action.c_str());
         return nullptr;
@@ -74,7 +77,7 @@ unsigned SpriteDef::findNumber(const unsigned num) const
 }
 
 SpriteDef *SpriteDef::load(const std::string &animationFile,
-                           const int variant, bool prot)
+                           const int variant, const bool prot)
 {
     const size_t pos = animationFile.find('|');
     std::string palettes;
@@ -88,7 +91,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
     {
         logger->log("Error, failed to parse %s", animationFile.c_str());
 
-        std::string errorFile = paths.getStringValue("sprites").append(
+        const std::string errorFile = paths.getStringValue("sprites").append(
             paths.getStringValue("spriteErrorFile"));
         if (animationFile != errorFile)
             return load(errorFile, 0, prot);
@@ -125,7 +128,8 @@ void SpriteDef::fixDeadAction()
     }
 }
 
-void SpriteDef::substituteAction(std::string complete, std::string with)
+void SpriteDef::substituteAction(const std::string &complete,
+                                 const std::string &with)
 {
     FOR_EACH (ActionsConstIter, it, mActions)
     {
@@ -277,14 +281,11 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
     {
         const int delay = XML::getIntProperty(
             frameNode, "delay", 0, 0, 100000);
-        int offsetX = XML::getProperty(frameNode, "offsetX", 0) +
-            imageSet->getOffsetX();
-        int offsetY = XML::getProperty(frameNode, "offsetY", 0) +
-            imageSet->getOffsetY();
+        const int offsetX = XML::getProperty(frameNode, "offsetX", 0) +
+            imageSet->getOffsetX() - imageSet->getHeight() + 32;
+        const int offsetY = XML::getProperty(frameNode, "offsetY", 0) +
+            imageSet->getOffsetY() - imageSet->getWidth() / 2 + 16;
         const int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
-
-        offsetY -= imageSet->getHeight() - 32;
-        offsetX -= imageSet->getWidth() / 2 - 16;
 
         if (xmlNameEqual(frameNode, "frame"))
         {
@@ -334,7 +335,7 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
                 splitToStringVector(vals, value, ',');
                 FOR_EACH (StringVectCIter, it, vals)
                 {
-                    std::string str = *it;
+                    const std::string str = *it;
                     const size_t idx = str.find("-");
                     if (str == "p")
                     {
@@ -375,13 +376,13 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
         }
         else if (xmlNameEqual(frameNode, "label"))
         {
-            std::string name = XML::getProperty(frameNode, "name", "");
+            const std::string name = XML::getProperty(frameNode, "name", "");
             if (!name.empty())
                 animation->addLabel(name);
         }
         else if (xmlNameEqual(frameNode, "goto"))
         {
-            std::string name = XML::getProperty(frameNode, "label", "");
+            const std::string name = XML::getProperty(frameNode, "label", "");
             if (!name.empty())
                 animation->addGoto(name, rand);
         }
@@ -484,6 +485,9 @@ bool SpriteDef::addSequence(const int start, const int end, const int delay,
                             ImageSet *const imageSet,
                             Animation *const animation) const
 {
+    if (!imageSet || !animation)
+        return true;
+
     if (start < 0 || end < 0)
     {
         logger->log1("No valid value for 'start' or 'end'");
