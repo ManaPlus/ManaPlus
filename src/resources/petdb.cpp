@@ -51,7 +51,7 @@ void PETDB::load()
 
     if (!rootNode || !xmlNameEqual(rootNode, "pets"))
     {
-        logger->log("PET Database: Error while loading pets.xml!");
+        logger->log1("PET Database: Error while loading pets.xml!");
         mLoaded = true;
         return;
     }
