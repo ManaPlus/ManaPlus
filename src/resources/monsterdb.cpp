@@ -55,7 +55,7 @@ void MonsterDB::load()
 
     if (!rootNode || !xmlNameEqual(rootNode, "monsters"))
     {
-        logger->log("Monster Database: Error while loading monster.xml!");
+        logger->log1("Monster Database: Error while loading monster.xml!");
         mLoaded = true;
         return;
     }
@@ -145,7 +145,8 @@ void MonsterDB::load()
                 if (!spriteNode->xmlChildrenNode)
                     continue;
 
-                std::string event = XML::getProperty(spriteNode, "event", "");
+                const std::string event = XML::getProperty(
+                    spriteNode, "event", "");
                 const char *filename;
                 filename = reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);
@@ -246,7 +247,7 @@ BeingInfo *MonsterDB::get(const int id)
 
     if (i == mMonsterInfos.end())
     {
-        i = mMonsterInfos.find(id + /*1002*/ OLD_TMWATHENA_OFFSET);
+        i = mMonsterInfos.find(id + OLD_TMWATHENA_OFFSET);
         if (i == mMonsterInfos.end())
         {
             logger->log("MonsterDB: Warning, unknown monster ID %d requested",
