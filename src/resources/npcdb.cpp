@@ -51,7 +51,7 @@ void NPCDB::load()
 
     if (!rootNode || !xmlNameEqual(rootNode, "npcs"))
     {
-        logger->log("NPC Database: Error while loading npcs.xml!");
+        logger->log1("NPC Database: Error while loading npcs.xml!");
         mLoaded = true;
         return;
     }
@@ -112,14 +112,12 @@ void NPCDB::load()
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
             {
-                std::string particlefx = reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content);
-                display.particles.push_back(particlefx);
+                display.particles.push_back(reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content));
             }
         }
 
         currentInfo->setDisplay(display);
-
         mNPCInfos[id] = currentInfo;
     }
 
