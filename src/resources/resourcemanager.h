@@ -237,7 +237,7 @@ class ResourceManager final
          */
         void release(Resource *const res);
 
-        void clearDeleted(bool full = true);
+        void clearDeleted(const bool full = true);
 
         static void logResource(const Resource *const res);
 
@@ -271,8 +271,8 @@ class ResourceManager final
         static StringVect loadTextFileLocal(const std::string &fileName)
                                             A_WARN_UNUSED;
 
-        void saveTextFile(std::string path, std::string name,
-                          std::string text) const;
+        void saveTextFile(std::string path, const std::string name,
+                          const std::string text) const;
 
         Image *getRescaled(Image *const image,
                            const int width, const int height) A_WARN_UNUSED;

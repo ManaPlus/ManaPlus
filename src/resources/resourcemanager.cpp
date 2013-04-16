@@ -73,7 +73,6 @@ ResourceManager::~ResourceManager()
 {
     mDestruction = true;
     mResources.insert(mOrphanedResources.begin(), mOrphanedResources.end());
-//    mResources.insert(mDeletedResources.begin(), mDeletedResources.end());
 
     // Release any remaining spritedefs first because they depend on image sets
     ResourceIterator iter = mResources.begin();
@@ -194,7 +193,7 @@ void ResourceManager::cleanProtected()
     ResourceIterator iter = mResources.begin();
     while (iter != mResources.end())
     {
-        Resource *res = iter->second;
+        Resource *const res = iter->second;
         if (!res)
         {
             ++ iter;
@@ -225,7 +224,7 @@ bool ResourceManager::cleanOrphans(const bool always)
     ResourceIterator iter = mOrphanedResources.begin();
     while (iter != mOrphanedResources.end())
     {
-        Resource *res = iter->second;
+        Resource *const res = iter->second;
         if (!res)
         {
             ++iter;
@@ -276,10 +275,10 @@ void ResourceManager::logResource(const Resource *const res)
 #endif
 }
 
-void ResourceManager::clearDeleted(bool full)
+void ResourceManager::clearDeleted(const bool full)
 {
     bool status(true);
-    logger->log("clear deleted");
+    logger->log1("clear deleted");
     while (status)
     {
         status = false;
@@ -300,7 +299,7 @@ void ResourceManager::clearDeleted(bool full)
     }
     if (full && !mDeletedResources.empty())
     {
-        logger->log("leaks in deleted");
+        logger->log1("leaks in deleted");
         std::set<Resource*>::iterator resDelIter = mDeletedResources.begin();
         while (resDelIter != mDeletedResources.end())
         {
@@ -356,12 +355,11 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
 
         if (len > ext.length() && !ext.compare((*i) + (len - ext.length())))
         {
-            std::string file, realPath, archive;
-
-            file = path + (*i);
-            realPath = std::string(PhysFs::getRealDir(file.c_str()));
-            archive = std::string(realPath).append(dirSep).append(file);
-            addToSearchPath(archive, append);
+            const std::string file = path + (*i);
+            const std::string realPath = std::string(
+                PhysFs::getRealDir(file.c_str()));
+            addToSearchPath(std::string(realPath).append(
+                dirSep).append(file), append);
         }
     }
 
@@ -377,15 +375,13 @@ void ResourceManager::searchAndRemoveArchives(const std::string &path,
     for (char **i = list; *i; i++)
     {
         const size_t len = strlen(*i);
-
         if (len > ext.length() && !ext.compare((*i) + (len - ext.length())))
         {
-            std::string file, realPath, archive;
-
-            file = path + (*i);
-            realPath = std::string(PhysFs::getRealDir(file.c_str()));
-            archive = std::string(realPath).append(dirSep).append(file);
-            removeFromSearchPath(archive);
+            const std::string file = path + (*i);
+            const std::string realPath = std::string(
+                PhysFs::getRealDir(file.c_str()));
+            removeFromSearchPath(std::string(realPath).append(
+                dirSep).append(file));
         }
     }
 
@@ -617,21 +613,6 @@ Image *ResourceManager::getImage(const std::string &idPath)
     return static_cast<Image*>(get(idPath, DyedImageLoader::load, &rl));
 }
 
-/*
-Image *ResourceManager::getSkinImage(const std::string &idPath)
-{
-    if (mSelectedSkin.empty())
-        return getImage(idPath);
-
-    DyedImageLoader rl = { this, mSelectedSkin + idPath };
-    void *ptr = get(idPath, DyedImageLoader::load, &rl);
-    if (ptr)
-        return static_cast<Image*>(ptr);
-    else
-        return getImage(idPath);
-}
-*/
-
 struct ImageSetLoader
 {
     ResourceManager *manager;
@@ -751,7 +732,6 @@ struct AtlasLoader
         const AtlasLoader *const rl = static_cast<const AtlasLoader *const>(v);
         AtlasResource *const resource = AtlasManager::loadTextureAtlas(
             rl->name, *rl->files);
-//        AtlasManager::injectToResources(resource);
         return resource;
     }
 };
@@ -845,9 +825,6 @@ void ResourceManager::release(Resource *const res)
         return;
     }
 
-    // The resource has to exist
-//    assert(resIter != mResources.end() && resIter->second == res);
-
     timeval tv;
     gettimeofday(&tv, nullptr);
     const time_t timestamp = tv.tv_sec;
@@ -910,11 +887,11 @@ void ResourceManager::deleteInstance()
 #ifdef DUMP_LEAKED_RESOURCES
     if (instance)
     {
-        logger->log("clean orphans start");
+        logger->log1("clean orphans start");
         instance->cleanProtected();
         while (instance->cleanOrphans(true))
             continue;
-        logger->log("clean orphans end");
+        logger->log1("clean orphans end");
         ResourceIterator iter = instance->mResources.begin();
 
         while (iter != instance->mResources.end())
@@ -942,7 +919,6 @@ void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
     // Attempt to open the specified file using PhysicsFS
     PHYSFS_file *const file = PhysFs::openRead(fileName.c_str());
 
-    // If the handler is an invalid pointer indicate failure
     if (!file)
     {
         logger->log("Warning: Failed to load %s: %s",
@@ -950,18 +926,13 @@ void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
         return nullptr;
     }
 
-    // Log the real dir of the file
     logger->log("Loaded %s/%s", PhysFs::getRealDir(fileName.c_str()),
                 fileName.c_str());
 
-    // Get the size of the file
     fileSize = static_cast<int>(PHYSFS_fileLength(file));
-
     // Allocate memory and load the file
     void *const buffer = calloc(fileSize, 1);
     PHYSFS_read(file, buffer, 1, fileSize);
-
-    // Close the file and let the user deallocate the memory
     PHYSFS_close(file);
 
     return buffer;
@@ -1039,8 +1010,8 @@ StringVect ResourceManager::loadTextFileLocal(
     return lines;
 }
 
-void ResourceManager::saveTextFile(std::string path, std::string name,
-                                   std::string text) const
+void ResourceManager::saveTextFile(std::string path, const std::string name,
+                                   const std::string text) const
 {
     if (!mkdir_r(path.c_str()))
     {
@@ -1054,7 +1025,6 @@ void ResourceManager::saveTextFile(std::string path, std::string name,
 
 SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename) const
 {
-    SDL_Surface *surface = nullptr;
     if (SDL_RWops *const rw = PHYSFSRWOPS_openRead(filename.c_str()))
     {
         if (!IMG_isPNG(rw))
@@ -1062,10 +1032,11 @@ SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename) const
             logger->log("Error, image is not png: " + filename);
             return nullptr;
         }
-        surface = IMG_LoadPNG_RW(rw);
+        SDL_Surface *const surface = IMG_LoadPNG_RW(rw);
         SDL_RWclose(rw);
+        return surface;
     }
-    return surface;
+    return nullptr;
 }
 
 void ResourceManager::scheduleDelete(SDL_Surface *const surface)
@@ -1128,7 +1099,7 @@ void ResourceManager::delayedLoad()
 
         int k = 0;
         DelayedAnimIter it = mDelayedAnimations.begin();
-        DelayedAnimIter it_end = mDelayedAnimations.end();
+        const DelayedAnimIter it_end = mDelayedAnimations.end();
         while (it != it_end && k < 1)
         {
             (*it)->load();
@@ -1163,14 +1134,13 @@ void ResourceManager::deleteFilesInDirectory(std::string path)
 {
     path += "/";
     struct dirent *next_file;
-    DIR *dir = opendir(path.c_str());
+    DIR *const dir = opendir(path.c_str());
 
     while ((next_file = readdir(dir)))
     {
         const std::string file = next_file->d_name;
-        const std::string name = path + file;
         if (file != "." && file != "..")
-            remove(name.c_str());
+            remove((path + file).c_str());
     }
     if (dir)
         closedir(dir);
