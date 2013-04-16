@@ -88,16 +88,11 @@ static bool wallpaperCompare(const WallpaperData &a, const WallpaperData &b)
 void Wallpaper::loadWallpapers()
 {
     wallpaperData.clear();
-
     initDefaultWallpaperPaths();
-
     char **imgs = PhysFs::enumerateFiles(wallpaperPath.c_str());
 
     for (char **i = imgs; *i; i++)
     {
-        int width;
-        int height;
-
         // If the backup file is found, we tell it.
         if (strncmp (*i, wallpaperFile.c_str(), strlen(*i)) == 0)
             haveBackup = true;
@@ -117,6 +112,8 @@ void Wallpaper::loadWallpapers()
             // Then, append the width and height search mask.
             filename.append("_%dx%d.png");
 
+            int width;
+            int height;
             if (sscanf(*i, filename.c_str(), &width, &height) == 2)
             {
                 WallpaperData wp;
@@ -130,7 +127,6 @@ void Wallpaper::loadWallpapers()
     }
 
     PhysFs::freeList(imgs);
-
     std::sort(wallpaperData.begin(), wallpaperData.end(), wallpaperCompare);
 }
 
