@@ -71,7 +71,9 @@ class SubImage final : public Image
          * @return <code>NULL</code> if creation failed and a valid
          *         image otherwise.
          */
-        Image *getSubImage(int x, int y, int width, int height) A_WARN_UNUSED;
+        Image *getSubImage(const int x, const int y,
+                           const int width,
+                           const int height) override A_WARN_UNUSED;
 
         SDL_Rect mInternalBounds;
 
