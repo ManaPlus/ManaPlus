@@ -1673,6 +1673,9 @@ int Client::gameExec()
 
                 case STATE_ERROR:
                     BLOCK_START("Client::gameExec STATE_ERROR")
+                    config.write();
+                    if (mOldState == STATE_GAME)
+                        serverConfig.write();
                     logger->log1("State: ERROR");
                     logger->log("Error: %s\n", errorMessage.c_str());
                     mCurrentDialog = new OkDialog(_("Error"),
