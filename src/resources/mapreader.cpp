@@ -84,11 +84,9 @@ int inflateMemory(unsigned char *const in, const unsigned int inLength,
                   unsigned char *&out, unsigned int &outLength)
 {
     int bufferSize = 256 * 1024;
-    int ret;
-    z_stream strm;
-
     out = static_cast<unsigned char*>(calloc(bufferSize, 1));
 
+    z_stream strm;
     strm.zalloc = Z_NULL;
     strm.zfree = Z_NULL;
     strm.opaque = Z_NULL;
@@ -97,8 +95,7 @@ int inflateMemory(unsigned char *const in, const unsigned int inLength,
     strm.next_out = out;
     strm.avail_out = bufferSize;
 
-    ret = inflateInit2(&strm, 15 + 32);
-
+    int ret = inflateInit2(&strm, 15 + 32);
     if (ret != Z_OK)
         return ret;
 
@@ -430,7 +427,6 @@ inline static void setTile(Map *const map, MapLayer *const layer,
     else
     {
         // Set collision tile
-//        if (set && (gid - set->getFirstGid() == 1))   buggy update
         if (set)
         {
             if (map->getVersion() >= 1)
@@ -463,6 +459,157 @@ inline static void setTile(Map *const map, MapLayer *const layer,
             }
         }
     }
+}
+
+bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
+                                MapLayer *const layer,
+                                const std::string &compression,
+                                int &x, int &y, const int w, const int h)
+{
+    if (!compression.empty() && compression != "gzip"
+        && compression != "zlib")
+    {
+        logger->log1("Warning: only gzip and zlib layer"
+            " compression supported!");
+        return false;
+    }
+
+    // Read base64 encoded map file
+    XmlNodePtr dataChild = childNode->xmlChildrenNode;
+    if (!dataChild)
+        return true;
+
+    const int len = static_cast<int>(strlen(
+        reinterpret_cast<const char*>(dataChild->content)) + 1);
+    unsigned char *charData = new unsigned char[len + 1];
+    xmlChar *const xmlChars = xmlNodeGetContent(dataChild);
+    const char *charStart = reinterpret_cast<const char*>(xmlChars);
+    if (!charStart)
+    {
+        delete [] charData;
+        return false;
+    }
+
+    unsigned char *charIndex = charData;
+
+    while (*charStart)
+    {
+        if (*charStart != ' ' && *charStart != '\t' &&
+            *charStart != '\n')
+        {
+            *charIndex = *charStart;
+            charIndex++;
+        }
+        charStart++;
+    }
+    *charIndex = '\0';
+
+    int binLen;
+    unsigned char *binData = php3_base64_decode(charData,
+        static_cast<int>(strlen(reinterpret_cast<char*>(
+        charData))), &binLen);
+
+    delete [] charData;
+    xmlFree(xmlChars);
+
+    if (binData)
+    {
+        if (compression == "gzip" || compression == "zlib")
+        {
+            // Inflate the gzipped layer data
+            unsigned char *inflated;
+            const unsigned int inflatedSize =
+                inflateMemory(binData, binLen, inflated);
+
+            free(binData);
+            binData = inflated;
+            binLen = inflatedSize;
+
+            if (!inflated)
+            {
+                logger->log1("Error: Could not decompress layer!");
+                return false;
+            }
+        }
+
+        std::map<int, TileAnimation*> &tileAnimations
+            = map->getTileAnimations();
+
+        const bool hasAnimations = !tileAnimations.empty();
+        for (int i = 0; i < binLen - 3; i += 4)
+        {
+            const int gid = binData[i] |
+                binData[i + 1] << 8 |
+                binData[i + 2] << 16 |
+                binData[i + 3] << 24;
+
+            setTile(map, layer, x, y, gid);
+
+            if (hasAnimations)
+            {
+                TileAnimationMapCIter it = tileAnimations.find(gid);
+                if (it != tileAnimations.end())
+                {
+                    TileAnimation *const ani = it->second;
+                    if (ani)
+                        ani->addAffectedTile(layer, x + y * w);
+                }
+            }
+            x++;
+            if (x == w)
+            {
+                x = 0; y++;
+
+                // When we're done, don't crash on too much data
+                if (y == h)
+                    break;
+            }
+        }
+        free(binData);
+    }
+    return true;
+}
+
+bool MapReader::readCsvLayer(const XmlNodePtr childNode, Map *const map,
+                             MapLayer *const layer,
+                             const std::string &compression,
+                             int &x, int &y, const int w, const int h)
+{
+    XmlNodePtr dataChild = childNode->xmlChildrenNode;
+    if (!dataChild)
+        return true;
+
+    xmlChar *const xmlChars = xmlNodeGetContent(dataChild);
+    const char *const data = reinterpret_cast<const char*>(xmlChars);
+    if (!data)
+        return false;
+
+    std::string csv(data);
+    size_t oldPos = 0;
+
+    while (oldPos != csv.npos)
+    {
+        const size_t pos = csv.find_first_of(",", oldPos);
+        if (pos == csv.npos)
+            return false;
+
+        const int gid = atoi(csv.substr(oldPos, pos - oldPos).c_str());
+        setTile(map, layer, x, y, gid);
+
+        x++;
+        if (x == w)
+        {
+            x = 0; y++;
+
+            // When we're done, don't crash on too much data
+            if (y == h)
+                return false;
+        }
+
+        oldPos = pos + 1;
+    }
+    xmlFree(xmlChars);
+    return true;
 }
 
 void MapReader::readLayer(const XmlNodePtr node, Map *const map)
@@ -523,145 +670,22 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 
         if (encoding == "base64")
         {
-            if (!compression.empty() && compression != "gzip"
-                && compression != "zlib")
+            if (readBase64Layer(childNode, map, layer,
+                compression, x, y, w, h))
             {
-                logger->log1("Warning: only gzip layer"
-                             " compression supported!");
-                return;
-            }
-
-            // Read base64 encoded map file
-            XmlNodePtr dataChild = childNode->xmlChildrenNode;
-            if (!dataChild)
                 continue;
-
-            const int len = static_cast<int>(strlen(
-                reinterpret_cast<const char*>(dataChild->content)) + 1);
-            unsigned char *charData = new unsigned char[len + 1];
-            xmlChar *const xmlChars = xmlNodeGetContent(dataChild);
-            const char *charStart = reinterpret_cast<const char*>(xmlChars);
-            if (!charStart)
+            }
+            else
             {
-                delete [] charData;
                 return;
-            }
-
-            unsigned char *charIndex = charData;
-
-            while (*charStart)
-            {
-                if (*charStart != ' ' && *charStart != '\t' &&
-                    *charStart != '\n')
-                {
-                    *charIndex = *charStart;
-                    charIndex++;
-                }
-                charStart++;
-            }
-            *charIndex = '\0';
-
-            int binLen;
-            unsigned char *binData = php3_base64_decode(charData,
-                static_cast<int>(strlen(reinterpret_cast<char*>(
-                charData))), &binLen);
-
-            delete [] charData;
-            xmlFree(xmlChars);
-
-            if (binData)
-            {
-                if (compression == "gzip" || compression == "zlib")
-                {
-                    // Inflate the gzipped layer data
-                    unsigned char *inflated;
-                    const unsigned int inflatedSize =
-                        inflateMemory(binData, binLen, inflated);
-
-                    free(binData);
-                    binData = inflated;
-                    binLen = inflatedSize;
-
-                    if (!inflated)
-                    {
-                        logger->log1("Error: Could not decompress layer!");
-                        return;
-                    }
-                }
-
-                std::map<int, TileAnimation*> &tileAnimations
-                    = map->getTileAnimations();
-
-                const bool hasAnimations = !tileAnimations.empty();
-                for (int i = 0; i < binLen - 3; i += 4)
-                {
-                    const int gid = binData[i] |
-                        binData[i + 1] << 8 |
-                        binData[i + 2] << 16 |
-                        binData[i + 3] << 24;
-
-                    setTile(map, layer, x, y, gid);
-
-                    if (hasAnimations)
-                    {
-                        TileAnimationMapCIter it = tileAnimations.find(gid);
-                        if (it != tileAnimations.end())
-                        {
-                            TileAnimation *const ani = it->second;
-                            if (ani)
-                                ani->addAffectedTile(layer, x + y * w);
-                        }
-                    }
-                    x++;
-                    if (x == w)
-                    {
-                        x = 0; y++;
-
-                        // When we're done, don't crash on too much data
-                        if (y == h)
-                            break;
-                    }
-                }
-                free(binData);
             }
         }
         else if (encoding == "csv")
         {
-            XmlNodePtr dataChild = childNode->xmlChildrenNode;
-            if (!dataChild)
+            if (readCsvLayer(childNode, map, layer, compression, x, y, w, h))
                 continue;
-
-            xmlChar *const xmlChars = xmlNodeGetContent(dataChild);
-            const char *const data = reinterpret_cast<const char*>(xmlChars);
-            if (!data)
+            else
                 return;
-
-            std::string csv(data);
-            size_t oldPos = 0;
-
-            while (oldPos != csv.npos)
-            {
-                const size_t pos = csv.find_first_of(",", oldPos);
-                if (pos == csv.npos)
-                    return;
-
-                const int gid = atoi(csv.substr(oldPos, pos - oldPos).c_str());
-
-                setTile(map, layer, x, y, gid);
-
-                x++;
-                if (x == w)
-                {
-                    x = 0; y++;
-
-                    // When we're done, don't crash on too much data
-                    if (y == h)
-                        break;
-                }
-
-                oldPos = pos + 1;
-            }
-            xmlFree(xmlChars);
         }
         else
         {
@@ -741,10 +765,9 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
 
             if (!source.empty())
             {
-                std::string sourceStr = resolveRelativePath(pathDir, source);
-
                 ResourceManager *const resman = ResourceManager::getInstance();
-                Image *const tilebmp = resman->getImage(sourceStr);
+                Image *const tilebmp = resman->getImage(
+                    resolveRelativePath(pathDir, source));
 
                 if (tilebmp)
                 {
@@ -765,11 +788,10 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
             {
                 if (!xmlNameEqual(propertyNode, "property"))
                     continue;
-                std::string name = XML::getProperty(propertyNode, "name", "");
-                std::string value = XML::getProperty(
-                    propertyNode, "value", "");
+                const std::string name = XML::getProperty(
+                    propertyNode, "name", "");
                 if (!name.empty())
-                    props[name] = value;
+                    props[name] = XML::getProperty(propertyNode, "value", "");
             }
         }
         else if (xmlNameEqual(childNode, "tile"))
@@ -788,7 +810,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                 {
                     if (!xmlNameEqual(propertyNode, "property"))
                         continue;
-                    std::string name = XML::getProperty(
+                    const std::string name = XML::getProperty(
                         propertyNode, "name", "");
                     const int value = XML::getProperty(
                         propertyNode, "value", 0);
@@ -807,11 +829,11 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                 Animation *ani = new Animation;
                 for (int i = 0; ; i++)
                 {
-                    std::map<std::string, int>::const_iterator iFrame, iDelay;
-                    iFrame = tileProperties.find(
-                        "animation-frame" + toString(i));
-                    iDelay = tileProperties.find(
-                        "animation-delay" + toString(i));
+                    const std::string iStr(toString(i));
+                    const std::map<std::string, int>::const_iterator iFrame
+                        = tileProperties.find("animation-frame" + iStr);
+                    const std::map<std::string, int>::const_iterator iDelay
+                        = tileProperties.find("animation-delay" + iStr);
                     // possible need add random attribute?
                     if (iFrame != tileProperties.end()
                         && iDelay != tileProperties.end())
@@ -828,7 +850,6 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                 if (ani->getLength() > 0)
                 {
                     map->addAnimation(tileGID, new TileAnimation(ani));
-//                    logger->log("Animation length: %d", ani->getLength());
                 }
                 else
                 {
@@ -849,7 +870,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
 Map *MapReader::createEmptyMap(const std::string &filename,
                                const std::string &realFilename)
 {
-    logger->log("Creating empty map");
+    logger->log1("Creating empty map");
     Map *const map = new Map(300, 300, 32, 32);
     map->setProperty("_filename", realFilename);
     map->setProperty("_realfilename", filename);

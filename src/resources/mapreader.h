@@ -28,6 +28,7 @@
 #include <string>
 
 class Map;
+class MapLayer;
 class Properties;
 class Resource;
 class Tileset;
@@ -70,6 +71,16 @@ class MapReader final
          * Reads a map layer and adds it to the given map.
          */
         static void readLayer(const XmlNodePtr node, Map *const map);
+
+        static bool readBase64Layer(const XmlNodePtr childNode, Map *const map,
+                                    MapLayer *const layer,
+                                    const std::string &compression,
+                                    int &x, int &y, const int w, const int h);
+
+        static bool readCsvLayer(const XmlNodePtr childNode, Map *const map,
+                                 MapLayer *const layer,
+                                 const std::string &compression,
+                                 int &x, int &y, const int w, const int h);
 
         /**
          * Reads a tile set.
