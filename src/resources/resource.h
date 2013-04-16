@@ -97,7 +97,7 @@ class Resource
         bool getDumped() const A_WARN_UNUSED
         { return mDumped; }
 
-        void setDumped(bool n)
+        void setDumped(const bool n)
         { mDumped = n; }
 #endif
 
