@@ -123,6 +123,7 @@
 
 #include <sys/stat.h>
 
+#include <climits>
 #include <iostream>
 #include <fstream>
 
@@ -134,7 +135,7 @@
  * Tells the max tick value,
  * setting it back to zero (and start again).
  */
-static const int MAX_TICK_VALUE = 10000;
+static const int MAX_TICK_VALUE = INT_MAX / 2;
 
 // TODO: Get rid fo these globals
 std::string errorMessage;

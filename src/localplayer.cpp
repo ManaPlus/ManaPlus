@@ -73,10 +73,12 @@
 
 #include "mumblemanager.h"
 
+#include <climits>
+
 #include "debug.h"
 
 static const short awayLimitTimer = 60;
-static const int MAX_TICK_VALUE = 10000;
+static const int MAX_TICK_VALUE = INT_MAX / 2;
 
 typedef std::map<int, Guild*>::const_iterator GuildMapCIter;
 
