@@ -31,8 +31,6 @@
 #include <cstdio>
 #include <fstream>
 #include <iostream>
-#include <string.h>
-#include <time.h>
 
 #include "debug.h"
 

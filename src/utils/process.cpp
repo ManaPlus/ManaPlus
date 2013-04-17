@@ -20,7 +20,6 @@
 
 #include "utils/process.h"
 
-#include <string.h>
 #include <cstdarg>
 #include <cstdio>
 

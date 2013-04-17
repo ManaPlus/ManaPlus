@@ -22,7 +22,6 @@
 
 #include "configuration.h"
 
-#include <string.h>
 #include <algorithm>
 #include <cstdarg>
 #include <cstdio>

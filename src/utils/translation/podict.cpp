@@ -20,8 +20,6 @@
 
 #include "utils/translation/podict.h"
 
-#include <string.h>
-
 #include "localconsts.h"
 #include "logger.h"
 

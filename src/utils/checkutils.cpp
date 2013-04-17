@@ -20,8 +20,6 @@
 
 #include "utils/checkutils.h"
 
-#include <string.h>
-
 #include "logger.h"
 
 #include "debug.h"

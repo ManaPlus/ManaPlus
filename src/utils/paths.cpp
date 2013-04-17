@@ -30,7 +30,6 @@
 
 #include "resources/resourcemanager.h"
 
-#include <string.h>
 #include <cstdarg>
 #include <cstdio>
 #include <stdlib.h>
