@@ -454,10 +454,10 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg) const
     const int level = msg.readInt16();  // Skill level
     msg.readInt16();  // Div
     msg.readInt8();  // Skill hit/type (?)
-    if (dstBeing)
-        dstBeing->takeDamage(srcBeing, param1, Being::SKILL, id);
     if (srcBeing)
         srcBeing->handleSkill(dstBeing, param1, id, level);
+    if (dstBeing)
+        dstBeing->takeDamage(srcBeing, param1, Being::SKILL, id);
 }
 
 void BeingHandler::processBeingAction(Net::MessageIn &msg) const
@@ -483,11 +483,6 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
         case Being::MULTI:  // Critical Damage
         case Being::REFLECT:  // Reflected Damage
         case Being::FLEE:  // Lucky Dodge
-            if (dstBeing)
-            {
-                dstBeing->takeDamage(srcBeing, param1,
-                    static_cast<Being::AttackType>(type));
-            }
             if (srcBeing)
             {
                 if (srcSpeed && srcBeing->getType() == Being::PLAYER)
@@ -496,6 +491,11 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
                 srcBeing->handleAttack(dstBeing, param1, 1);
                 if (srcBeing->getType() == Being::PLAYER)
                     srcBeing->setAttackTime();
+            }
+            if (dstBeing)
+            {
+                dstBeing->takeDamage(srcBeing, param1,
+                    static_cast<Being::AttackType>(type));
             }
             break;
 

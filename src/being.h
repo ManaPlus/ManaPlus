@@ -72,6 +72,22 @@ enum Gender
 };
 
 
+struct NextSoundInfo
+{
+    NextSoundInfo() :
+        sound(nullptr),
+        x(0),
+        y(0),
+        time(0)
+    {
+    }
+
+    const SoundInfo *sound;
+    int x;
+    int y;
+    int time;
+};
+
 class BeingEquipBackend final : public Equipment::Backend
 {
     public:
@@ -878,11 +894,14 @@ class Being : public ActorSprite, public ConfigListener
         void setOwner(Being *const owner)
         { mOwner = owner; }
 
-        void playSfx(const SoundInfo &sound, const int x, const int y);
+        void playSfx(const SoundInfo &sound, Being *const being,
+                     const bool main, const int x, const int y);
 
         static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
 
         static Gender intToGender(uint8_t sex) A_WARN_UNUSED;
+
+        NextSoundInfo mNextSound;
 
     protected:
         /**
