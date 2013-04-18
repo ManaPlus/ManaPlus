@@ -27,7 +27,7 @@
 #include <string>
 
 #include "localconsts.h"
-std::string getSpecialFolderLocation(int folderId) A_WARN_UNUSED;
+std::string getSpecialFolderLocation(const int folderId) A_WARN_UNUSED;
 #endif
 
 #endif

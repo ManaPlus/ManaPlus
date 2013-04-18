@@ -23,12 +23,6 @@
 #include "utils/specialfolder.h"
 #include <windows.h>
 
-#ifdef M_SPECIALFOLDERLOCATION_TEST_
-// compile with -D_SPECIALFOLDERLOCATION_TEST_ to get a standalone
-// binary for testing
-#include <iostream>
-#endif
-
 #include "debug.h"
 
 /*
@@ -37,7 +31,7 @@
  * See http://msdn.microsoft.com/en-us/library/bb762494(VS.85).aspx for
  * a list of folder ids
  */
-std::string getSpecialFolderLocation(int folderId)
+std::string getSpecialFolderLocation(const int folderId)
 {
     std::string ret;
     LPITEMIDLIST pItemIdList;
@@ -62,20 +56,4 @@ std::string getSpecialFolderLocation(int folderId)
     return ret;
 }
 
-#ifdef M_SPECIALFOLDERLOCATION_TEST_
-int main()
-{
-    std::cout << "APPDATA " << getSpecialFolderLocation(CSIDL_APPDATA)
-              << std::endl;
-    std::cout << "DESKTOP " << getSpecialFolderLocation(CSIDL_DESKTOP)
-              << std::endl;
-    std::cout << "LOCAL_APPDATA "
-              << getSpecialFolderLocation(CSIDL_LOCAL_APPDATA)
-              << std::endl;
-    std::cout << "MYPICTURES " << getSpecialFolderLocation(CSIDL_MYPICTURES)
-              << std::endl;
-    std::cout << "PERSONAL " << getSpecialFolderLocation(CSIDL_PERSONAL)
-              << std::endl;
-}
-#endif
 #endif
