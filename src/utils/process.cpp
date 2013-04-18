@@ -38,8 +38,9 @@ const int timeOut = 10;
 
 #include <windows.h>
 
-int execFileWait(std::string pathName, std::string name A_UNUSED,
-                 std::string arg1, std::string arg2, int waitTime A_UNUSED)
+int execFileWait(const std::string &pathName, const std::string &name A_UNUSED,
+                 const std::string &arg1, const std::string &arg2,
+                 const int waitTime A_UNUSED)
 {
 //    if (!waitTime)
 //        waitTime = timeOut;
@@ -75,8 +76,8 @@ int execFileWait(std::string pathName, std::string name A_UNUSED,
     return -1;
 }
 
-bool execFile(std::string pathName, std::string name A_UNUSED,
-              std::string arg1, std::string arg2)
+bool execFile(const std::string &pathName, const std::string &name A_UNUSED,
+              const std::string &arg1, const std::string &arg2)
 {
     STARTUPINFO siStartupInfo;
     PROCESS_INFORMATION piProcessInfo;
@@ -105,8 +106,9 @@ bool execFile(std::string pathName, std::string name A_UNUSED,
 #include <sys/wait.h>
 #include <signal.h>
 
-int execFileWait(std::string pathName, std::string name,
-                 std::string arg1, std::string arg2, int waitTime)
+int execFileWait(const std::string &pathName, const std::string &name,
+                 const std::string &arg1, const std::string &arg2,
+                 int waitTime)
 {
     pid_t mon_pid;
     int status;
@@ -180,8 +182,8 @@ int execFileWait(std::string pathName, std::string name,
     return -1;
 }
 
-bool execFile(std::string pathName, std::string name,
-              std::string arg1, std::string arg2)
+bool execFile(const std::string &pathName, const std::string &name,
+              const std::string &arg1, const std::string &arg2)
 {
     struct stat statbuf;
     // file not exists
@@ -213,14 +215,15 @@ bool execFile(std::string pathName, std::string name,
 
 #else
 
-int execFileWait(std::string pathName, std::string name,
-                 std::string arg1, std::string arg2, int waitTime)
+int execFileWait(const std::string &pathName, const std::string &name,
+                 const std::string &arg1, const std::string &arg2,
+                 int waitTime)
 {
     return -1;
 }
 
-bool execFile(std::string pathName, std::string name,
-              std::string arg1, std::string arg2)
+bool execFile(const std::string &pathName, const std::string &name,
+              const std::string &arg1, const std::string &arg2)
 {
     return false;
 }

@@ -23,11 +23,12 @@
 
 #include <string>
 
-int execFileWait(std::string pathName, std::string name,
-                 std::string arg1, std::string arg2, int waitTime = 0);
+int execFileWait(const std::string &pathName, const std::string &name,
+                 const std::string &arg1, const std::string &arg2,
+                 int waitTime = 0);
 
-bool execFile(std::string pathName, std::string name,
-              std::string arg1, std::string arg2);
+bool execFile(const std::string &pathName, const std::string &name,
+              const std::string &arg1, const std::string &arg2);
 
 bool openBrowser(std::string url);
 
