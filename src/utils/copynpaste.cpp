@@ -42,19 +42,19 @@
 #ifdef WIN32
 bool retrieveBuffer(std::string& text, size_t& pos)
 {
-    bool  ret = false;
+    bool ret = false;
 
     if (!OpenClipboard(nullptr))
         return false;
 
-    HANDLE  h = GetClipboardData(CF_UNICODETEXT);
+    HANDLE h = GetClipboardData(CF_UNICODETEXT);
     if (h)
     {
         LPCWSTR data = (LPCWSTR)GlobalLock(h);
 
         if (data)
         {
-            int len = WideCharToMultiByte(CP_UTF8, 0, data, -1,
+            const int len = WideCharToMultiByte(CP_UTF8, 0, data, -1,
                 nullptr, 0, nullptr, nullptr);
             if (len > 0)
             {
@@ -78,7 +78,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
 
         if (h)
         {
-            const char *data = (char*)GlobalLock(h);
+            const char *const data = (char*)GlobalLock(h);
             if (data)
             {
                 text.insert(pos, data);
@@ -95,15 +95,14 @@ bool retrieveBuffer(std::string& text, size_t& pos)
 
 bool sendBuffer(std::string& text)
 {
-    int wCharsLen = MultiByteToWideChar(CP_UTF8,
+    const int wCharsLen = MultiByteToWideChar(CP_UTF8,
         0, text.c_str(), -1, nullptr, 0);
     if (!wCharsLen)
         return false;
 
-    HANDLE h;
-    WCHAR *out;
-    h = GlobalAlloc(GMEM_MOVEABLE | GMEM_DDESHARE, wCharsLen * sizeof(WCHAR));
-    out = (WCHAR*)GlobalLock(h);
+    HANDLE h = GlobalAlloc(GMEM_MOVEABLE | GMEM_DDESHARE,
+        wCharsLen * sizeof(WCHAR));
+    WCHAR *const out = (WCHAR*)GlobalLock(h);
 
     MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, out, wCharsLen);
 
@@ -142,10 +141,8 @@ bool getDataFromPasteboard(PasteboardRef inPasteboard,
                            char* flavorText /* out */,
                            const int bufSize)
 {
-    PasteboardSyncFlags syncFlags;
-    ItemCount           itemCount;
-
-    syncFlags = PasteboardSynchronize(inPasteboard);
+    ItemCount itemCount;
+    PasteboardSyncFlags syncFlags = PasteboardSynchronize(inPasteboard);
     OSStatus err = PasteboardGetItemCount(inPasteboard, &itemCount);
     require_noerr(err, CantGetPasteboardItemCount);
 
@@ -167,19 +164,17 @@ bool getDataFromPasteboard(PasteboardRef inPasteboard,
         for (CFIndex flavorIndex = 0; flavorIndex < flavorCount;
              flavorIndex ++)
         {
-            CFStringRef             flavorType;
-            CFDataRef               flavorData;
-            CFIndex                 flavorDataSize;
-            flavorType = (CFStringRef)CFArrayGetValueAtIndex(
+            CFStringRef flavorType = (CFStringRef)CFArrayGetValueAtIndex(
                 flavorTypeArray, flavorIndex);
 
             // we're only interested by text...
             if (UTTypeConformsTo(flavorType, CFSTR("public.utf8-plain-text")))
             {
+                CFDataRef flavorData;
                 err = PasteboardCopyItemFlavorData(inPasteboard, itemID,
                                                    flavorType, &flavorData);
                 require_noerr(err, CantCopyFlavorData);
-                flavorDataSize = CFDataGetLength(flavorData);
+                CFIndex flavorDataSize = CFDataGetLength(flavorData);
                 flavorDataSize = (flavorDataSize<254) ? flavorDataSize : 254;
 
                 if (flavorDataSize + 2 > bufSize)
@@ -280,12 +275,11 @@ bool sendBuffer(std::string& text)
 
 #include <unistd.h>
 
-static char* getSelection2(Display *dpy, Window us, Atom selection,
+static char* getSelection2(Display *const dpy, Window us, Atom selection,
                            Atom request_target)
 {
     int max_events = 50;
     Window owner = XGetSelectionOwner(dpy, selection);
-    int ret;
 
     if (owner == None)
         return nullptr;
@@ -309,7 +303,7 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
             Atom type;
             unsigned char *data = nullptr;
 
-            ret = XGetWindowProperty(dpy, us, e.xselection.property, 0, 0,
+            int ret = XGetWindowProperty(dpy, us, e.xselection.property, 0, 0,
                 False, AnyPropertyType, &type, &format, &len, &left, &data);
             if (left < 1)
             {
@@ -333,7 +327,7 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
 
 static Atom requestAtom;
 
-static char* getSelection(Display *dpy, Window us, Atom selection)
+static char* getSelection(Display *const dpy, Window us, Atom selection)
 {
     char *data = nullptr;
     if (requestAtom != None)
@@ -350,7 +344,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     SDL_VERSION(&info.version);
     if (SDL_GetWMInfo(&info))
     {
-        Display *dpy = info.info.x11.display;
+        Display *const dpy = info.info.x11.display;
         Window us = info.info.x11.window;
         char *data = nullptr;
 
