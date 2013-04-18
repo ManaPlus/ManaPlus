@@ -41,7 +41,7 @@
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
-SDL_RWops *PHYSFSRWOPS_openRead(const char *fname) A_WARN_UNUSED;
+SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname) A_WARN_UNUSED;
 
 /**
  * Open a platform-independent filename for writing, and make it accessible
@@ -53,7 +53,7 @@ SDL_RWops *PHYSFSRWOPS_openRead(const char *fname) A_WARN_UNUSED;
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
-SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname) A_WARN_UNUSED;
+SDL_RWops *PHYSFSRWOPS_openWrite(const char *const fname) A_WARN_UNUSED;
 
 /**
  * Open a platform-independent filename for appending, and make it accessible
@@ -65,7 +65,7 @@ SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname) A_WARN_UNUSED;
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
-SDL_RWops *PHYSFSRWOPS_openAppend(const char *fname) A_WARN_UNUSED;
+SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname) A_WARN_UNUSED;
 
 /**
  * Make a SDL_RWops from an existing PhysicsFS file handle. You should
@@ -77,7 +77,7 @@ SDL_RWops *PHYSFSRWOPS_openAppend(const char *fname) A_WARN_UNUSED;
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
-SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *handle) A_WARN_UNUSED;
+SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *const handle) A_WARN_UNUSED;
 
 #endif /* include-once blocker */
 

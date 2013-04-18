@@ -28,7 +28,8 @@
 
 #include "debug.h"
 
-static int physfsrwops_seek(SDL_RWops *rw, int offset, int whence)
+static int physfsrwops_seek(SDL_RWops *const rw, const int offset,
+                            const int whence)
 {
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);
@@ -84,7 +85,7 @@ static int physfsrwops_seek(SDL_RWops *rw, int offset, int whence)
         return -1;
     } /* else */
 
-    if ( pos < 0 )
+    if (pos < 0)
     {
         SDL_SetError("Attempt to seek past start of file.");
         return -1;
@@ -99,7 +100,8 @@ static int physfsrwops_seek(SDL_RWops *rw, int offset, int whence)
     return pos;
 } /* physfsrwops_seek */
 
-static int physfsrwops_read(SDL_RWops *rw, void *ptr, int size, int maxnum)
+static int physfsrwops_read(SDL_RWops *const rw, void *ptr,
+                            const int size, const int maxnum)
 {
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);
@@ -113,7 +115,8 @@ static int physfsrwops_read(SDL_RWops *rw, void *ptr, int size, int maxnum)
     return static_cast<int>(rc);
 } /* physfsrwops_read */
 
-static int physfsrwops_write(SDL_RWops *rw, const void *ptr, int size, int num)
+static int physfsrwops_write(SDL_RWops *const rw, const void *ptr,
+                             const int size, const int num)
 {
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);
@@ -124,7 +127,7 @@ static int physfsrwops_write(SDL_RWops *rw, const void *ptr, int size, int num)
     return static_cast<int>(rc);
 } /* physfsrwops_write */
 
-static int physfsrwops_close(SDL_RWops *rw)
+static int physfsrwops_close(SDL_RWops *const rw)
 {
     PHYSFS_file *const handle = static_cast<PHYSFS_file*>(
         rw->hidden.unknown.data1);
@@ -138,7 +141,7 @@ static int physfsrwops_close(SDL_RWops *rw)
     return 0;
 } /* physfsrwops_close */
 
-static SDL_RWops *create_rwops(PHYSFS_file *handle)
+static SDL_RWops *create_rwops(PHYSFS_file *const handle)
 {
     SDL_RWops *retval = nullptr;
 
@@ -162,7 +165,7 @@ static SDL_RWops *create_rwops(PHYSFS_file *handle)
     return retval;
 } /* create_rwops */
 
-SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *handle)
+SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *const handle)
 {
     SDL_RWops *retval = nullptr;
     if (!handle)
@@ -174,7 +177,7 @@ SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *handle)
 } /* PHYSFSRWOPS_makeRWops */
 
 #ifdef __APPLE__
-static bool checkFilePath(const char *fname)
+static bool checkFilePath(const char *const fname)
 {
     if (!fname || !*fname)
         return false;
@@ -184,7 +187,7 @@ static bool checkFilePath(const char *fname)
 }
 #endif
 
-SDL_RWops *PHYSFSRWOPS_openRead(const char *fname)
+SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname)
 {
 #ifdef __APPLE__
     if (!checkFilePath(fname))
@@ -193,7 +196,7 @@ SDL_RWops *PHYSFSRWOPS_openRead(const char *fname)
     return create_rwops(PhysFs::openRead(fname));
 } /* PHYSFSRWOPS_openRead */
 
-SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname)
+SDL_RWops *PHYSFSRWOPS_openWrite(const char *const fname)
 {
 #ifdef __APPLE__
     if (!checkFilePath(fname))
@@ -202,7 +205,7 @@ SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname)
     return create_rwops(PhysFs::openWrite(fname));
 } /* PHYSFSRWOPS_openWrite */
 
-SDL_RWops *PHYSFSRWOPS_openAppend(const char *fname)
+SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname)
 {
 #ifdef __APPLE__
     if (!checkFilePath(fname))
