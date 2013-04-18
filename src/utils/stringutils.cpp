@@ -108,22 +108,6 @@ std::string strprintf(const char *const format, ...)
     return res;
 }
 
-/*
-std::string &removeBadChars(std::string &str)
-{
-    size_t pos;
-    do
-    {
-        pos = str.find_first_of("@#[]");
-        if (pos != std::string::npos)
-            str.erase(pos, 1);
-    }
-    while (pos != std::string::npos);
-
-    return str;
-}
-*/
-
 std::string removeColors(std::string msg)
 {
     for (unsigned int f = 0; f < msg.length() - 2 && msg.length() > 2; f++)
@@ -317,7 +301,7 @@ void getSafeUtf8String(std::string text, char *const buf)
     return;
 }
 
-std::string getFileName(std::string path)
+std::string getFileName(const std::string &path)
 {
     size_t pos1 = path.rfind("/");
     const size_t pos2 = path.rfind("\\");
@@ -331,7 +315,7 @@ std::string getFileName(std::string path)
     return path.substr(pos1 + 1);
 }
 
-std::string getFileDir(std::string path)
+std::string getFileDir(const std::string &path)
 {
     size_t pos1 = path.rfind("/");
     const size_t pos2 = path.rfind("\\");
@@ -434,7 +418,6 @@ std::list<int> splitToIntList(const std::string &text,
     return tokens;
 }
 
-
 std::list<std::string> splitToStringList(const std::string &text,
                                          const char separator)
 {
@@ -486,7 +469,7 @@ void splitToIntVector(std::vector<int> &tokens, const std::string &text,
     }
 }
 
-std::string combineDye(std::string file, std::string dye)
+std::string combineDye(std::string file, const std::string &dye)
 {
     if (dye.empty())
         return file;
@@ -496,7 +479,7 @@ std::string combineDye(std::string file, std::string dye)
     return file.append("|").append(dye);
 }
 
-std::string combineDye2(std::string file, std::string dye)
+std::string combineDye2(std::string file, const std::string &dye)
 {
     if (dye.empty())
         return file;
@@ -504,11 +487,11 @@ std::string combineDye2(std::string file, std::string dye)
     const size_t pos = file.find_last_of("|");
     if (pos != std::string::npos)
     {
-        std::string dye1 = file.substr(pos + 1);
-        std::string str("");
+        const std::string dye1 = file.substr(pos + 1);
+        std::string str;
         file = file.substr(0, pos);
-        std::list<std::string> list1 = splitToStringList(dye1, ';');
-        std::list<std::string> list2 = splitToStringList(dye, ';');
+        const std::list<std::string> list1 = splitToStringList(dye1, ';');
+        const std::list<std::string> list2 = splitToStringList(dye, ';');
         for (std::list<std::string>::const_iterator it1 = list1.begin(),
              it2 = list2.begin(), it1_end = list1.end(), it2_end = list2.end();
              it1 != it1_end && it2 != it2_end; ++it1, ++it2)
@@ -526,7 +509,7 @@ std::string combineDye2(std::string file, std::string dye)
 std::string packList(const std::list<std::string> &list)
 {
     std::list<std::string>::const_iterator i = list.begin();
-    std::string str("");
+    std::string str;
     while (i != list.end())
     {
         str.append(*i).append("|");
@@ -574,8 +557,7 @@ bool findLast(const std::string &str1, const std::string &str2)
     const size_t s2 = str2.size();
     if (s1 < s2)
         return false;
-    std::string tmp = str1.substr(s1 - s2);
-    if (tmp == str2)
+    if (str1.substr(s1 - s2) == str2)
         return true;
     return false;
 }
@@ -586,20 +568,18 @@ bool findFirst(const std::string &str1, const std::string &str2)
     const size_t s2 = str2.size();
     if (s1 < s2)
         return false;
-    std::string tmp = str1.substr(0, s2);
-    if (tmp == str2)
+    if (str1.substr(0, s2) == str2)
         return true;
     return false;
 }
 
-bool findCutLast(std::string &str1, std::string str2)
+bool findCutLast(std::string &str1, const std::string &str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
     if (s1 < s2)
         return false;
-    std::string tmp = str1.substr(s1 - s2);
-    if (tmp == str2)
+    if (str1.substr(s1 - s2) == str2)
     {
         str1 = str1.substr(0, s1 - s2);
         return true;
@@ -607,14 +587,13 @@ bool findCutLast(std::string &str1, std::string str2)
     return false;
 }
 
-bool findCutFirst(std::string &str1, std::string str2)
+bool findCutFirst(std::string &str1, const std::string &str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
     if (s1 < s2)
         return false;
-    std::string tmp = str1.substr(0, s2);
-    if (tmp == str2)
+    if (str1.substr(0, s2) == str2)
     {
         str1 = str1.substr(s2);
         return true;
@@ -630,7 +609,7 @@ std::string &removeProtocol(std::string &url)
     return url;
 }
 
-bool strStartWith(std::string str1, std::string str2)
+bool strStartWith(const std::string &str1, const std::string &str2)
 {
     if (str1.size() < str2.size())
         return false;
@@ -653,7 +632,7 @@ std::string getDateString()
 
 signed char parseBoolean(const std::string &value)
 {
-    std::string opt = value.substr(0, 1);
+    const std::string opt = value.substr(0, 1);
 
     if (opt == "1" ||
         opt == "y" || opt == "Y" ||

@@ -149,9 +149,9 @@ const char* getSafeUtf8String(std::string text) A_WARN_UNUSED;
 
 void getSafeUtf8String(std::string text, char *const buf);
 
-std::string getFileName(std::string path) A_WARN_UNUSED;
+std::string getFileName(const std::string &path) A_WARN_UNUSED;
 
-std::string getFileDir(std::string path) A_WARN_UNUSED;
+std::string getFileDir(const std::string &path) A_WARN_UNUSED;
 
 std::string& replaceAll(std::string& context, const std::string& from,
                         const std::string& to);
@@ -189,9 +189,10 @@ void splitToStringSet(std::set<std::string> &tokens,
 void splitToIntVector(std::vector<int> &tokens,
                       const std::string &text, const char separator);
 
-std::string combineDye(std::string file, std::string dye) A_WARN_UNUSED;
+std::string combineDye(std::string file, const std::string &dye) A_WARN_UNUSED;
 
-std::string combineDye2(std::string file, std::string dye) A_WARN_UNUSED;
+std::string combineDye2(std::string file,
+                        const std::string &dye) A_WARN_UNUSED;
 
 std::string packList(const std::list<std::string> &list) A_WARN_UNUSED;
 
@@ -205,13 +206,14 @@ bool findLast(const std::string &str1, const std::string &str2) A_WARN_UNUSED;
 
 bool findFirst(const std::string &str1, const std::string &str2) A_WARN_UNUSED;
 
-bool findCutLast(std::string &str1, std::string str2) A_WARN_UNUSED;
+bool findCutLast(std::string &str1, const std::string &str2) A_WARN_UNUSED;
 
-bool findCutFirst(std::string &str1, std::string str2) A_WARN_UNUSED;
+bool findCutFirst(std::string &str1, const std::string &str2) A_WARN_UNUSED;
 
 std::string &removeProtocol(std::string &url);
 
-bool strStartWith(std::string str, std::string start) A_WARN_UNUSED;
+bool strStartWith(const std::string &str,
+                  const std::string &start) A_WARN_UNUSED;
 
 std::string getDateString() A_WARN_UNUSED;
 
