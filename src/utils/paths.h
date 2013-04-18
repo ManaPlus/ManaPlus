@@ -29,11 +29,11 @@ std::string getRealPath(const std::string &str) A_WARN_UNUSED;
 
 bool isRealPath(const std::string &str) A_WARN_UNUSED;
 
-bool checkPath(std::string path) A_WARN_UNUSED;
+bool checkPath(const std::string &path) A_WARN_UNUSED;
 
 std::string &fixDirSeparators(std::string &str);
 
-std::string removeLast(std::string str) A_WARN_UNUSED;
+std::string removeLast(const std::string &str) A_WARN_UNUSED;
 
 std::string getSelfName() A_WARN_UNUSED;
 

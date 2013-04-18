@@ -45,7 +45,6 @@
 
 std::string getRealPath(const std::string &str)
 {
-    std::string path;
 #if defined(__OpenBSD__) || defined(__ANDROID__)
     char *realPath = reinterpret_cast<char*>(calloc(PATH_MAX, sizeof(char)));
     realpath(str.c_str(), realPath);
@@ -55,18 +54,17 @@ std::string getRealPath(const std::string &str)
 
     if (!realPath)
         return "";
-    path = realPath;
+    std::string path = realPath;
     free(realPath);
     return path;
 }
 
 bool isRealPath(const std::string &str)
 {
-    std::string path = getRealPath(str);
-    return str == path;
+    return str == getRealPath(str);
 }
 
-bool checkPath(std::string path)
+bool checkPath(const std::string &path)
 {
     if (path.empty())
         return true;
@@ -84,7 +82,7 @@ std::string &fixDirSeparators(std::string &str)
     return replaceAll(str, "/", "\\");
 }
 
-std::string removeLast(std::string str)
+std::string removeLast(const std::string &str)
 {
     size_t pos2 = str.rfind("/");
     const size_t pos3 = str.rfind("\\");
@@ -157,7 +155,7 @@ std::string getDesktopDir()
         file = std::string(xdg).append("/user-dirs.dirs");
     }
 
-    StringVect arr = ResourceManager::loadTextFileLocal(file);
+    const StringVect arr = ResourceManager::loadTextFileLocal(file);
     FOR_EACH (StringVectCIter, it, arr)
     {
         std::string str = *it;
