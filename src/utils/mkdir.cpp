@@ -52,7 +52,7 @@ int mkdir_r(const char *const pathname)
     strncpy(tmp, pathname, sizeof(tmp) - 1);
     tmp[PATH_MAX - 1] = '\0';
 
-    int len = static_cast<int>(strlen(tmp));
+    const int len = static_cast<int>(strlen(tmp));
 
     if (len < 1)
         return -1;
@@ -174,7 +174,8 @@ int mkdir_r(const char *const pathname)
 #ifdef M_MKDIR_TEST_
 int main(int argc, char** argv)
 {
-    if (argc < 2) exit(1);
+    if (argc < 2)
+        exit(1);
     mkdir_r(argv[1]);
 }
 #endif
