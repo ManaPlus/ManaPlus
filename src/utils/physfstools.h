@@ -29,18 +29,18 @@ namespace PhysFs
     const char *getDirSeparator();
     const char *getBaseDir();
     const char *getUserDir();
-    bool exists(const char *fname);
-    char **enumerateFiles(const char *dir);
-    bool isDirectory(const char *fname);
-    void freeList(void *listVar);
-    PHYSFS_file *openRead(const char *filename);
-    PHYSFS_file *openWrite(const char *filename);
-    PHYSFS_file *openAppend(const char *filename);
-    bool setWriteDir(const char *newDir);
-    bool addToSearchPath(const char *newDir, int appendToPath);
-    bool removeFromSearchPath(const char *oldDir);
-    const char *getRealDir(const char *filename);
-    bool mkdir(const char *dirName);
+    bool exists(const char *const fname);
+    char **enumerateFiles(const char *const dir);
+    bool isDirectory(const char *const fname);
+    void freeList(void *const listVar);
+    PHYSFS_file *openRead(const char *const filename);
+    PHYSFS_file *openWrite(const char *const filename);
+    PHYSFS_file *openAppend(const char *const filename);
+    bool setWriteDir(const char *const newDir);
+    bool addToSearchPath(const char *const newDir, const int appendToPath);
+    bool removeFromSearchPath(const char *const oldDir);
+    const char *getRealDir(const char *const filename);
+    bool mkdir(const char *const dirName);
 }  // namespace PhysFs
 
 extern const char *dirSeparator;

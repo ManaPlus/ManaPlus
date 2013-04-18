@@ -46,17 +46,17 @@ namespace PhysFs
         return PHYSFS_getUserDir();
     }
 
-    bool exists(const char *fname)
+    bool exists(const char *const fname)
     {
         return PHYSFS_exists(fname);
     }
 
-    char **enumerateFiles(const char *dir)
+    char **enumerateFiles(const char *const dir)
     {
         return PHYSFS_enumerateFiles(dir);
     }
 
-    bool isDirectory(const char *fname)
+    bool isDirectory(const char *const fname)
     {
         return PHYSFS_isDirectory(fname);
     }
@@ -66,42 +66,42 @@ namespace PhysFs
         PHYSFS_freeList(listVar);
     }
 
-    PHYSFS_file *openRead(const char *filename)
+    PHYSFS_file *openRead(const char *const filename)
     {
         return PHYSFS_openRead(filename);
     }
 
-    PHYSFS_file *openWrite(const char *filename)
+    PHYSFS_file *openWrite(const char *const filename)
     {
         return PHYSFS_openWrite(filename);
     }
 
-    PHYSFS_file *openAppend(const char *filename)
+    PHYSFS_file *openAppend(const char *const filename)
     {
         return PHYSFS_openAppend(filename);
     }
 
-    bool setWriteDir(const char *newDir)
+    bool setWriteDir(const char *const newDir)
     {
         return PHYSFS_setWriteDir(newDir);
     }
 
-    bool addToSearchPath(const char *newDir, int appendToPath)
+    bool addToSearchPath(const char *const newDir, const int appendToPath)
     {
         return PHYSFS_addToSearchPath(newDir, appendToPath);
     }
 
-    bool removeFromSearchPath(const char *oldDir)
+    bool removeFromSearchPath(const char *const oldDir)
     {
         return PHYSFS_removeFromSearchPath(oldDir);
     }
 
-    const char *getRealDir(const char *filename)
+    const char *getRealDir(const char *const filename)
     {
         return PHYSFS_getRealDir(filename);
     }
 
-    bool mkdir(const char *dirname)
+    bool mkdir(const char *const dirname)
     {
         return PHYSFS_mkdir(dirname);
     }
