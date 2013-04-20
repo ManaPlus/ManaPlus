@@ -1300,20 +1300,6 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     {
         setAction(ATTACK);
 
-/*
-        if (mEquippedWeapon)
-        {
-            std::string soundFile = mEquippedWeapon->getSound(
-                EQUIP_EVENT_STRIKE);
-            if (!soundFile.empty())
-                soundManager.playSfx(soundFile);
-        }
-        else
-        {
-            soundManager.playSfx(paths.getValue(
-                "attackSfxFile", "fist-swish.ogg"));
-        }
-*/
         if (!Client::limitPackets(PACKET_ATTACK))
             return;
 
