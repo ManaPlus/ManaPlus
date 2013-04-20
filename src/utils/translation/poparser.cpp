@@ -31,6 +31,11 @@
 #include "debug.h"
 
 PoParser::PoParser() :
+    mLang(),
+    mFile(),
+    mLine(),
+    mMsgId(),
+    mMsgStr(),
     mDict(nullptr),
     mReadingId(false),
     mReadingStr(false)

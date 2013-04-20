@@ -30,6 +30,7 @@ std::string empty;
 PoDict *translator = nullptr;
 
 PoDict::PoDict(std::string lang) :
+    mPoLines(),
     mLang(lang)
 {
 }
