@@ -43,7 +43,8 @@ struct Character final
 {
     Character() :
         slot(0),
-        dummy(nullptr)
+        dummy(nullptr),
+        data()
     {
     }
 
@@ -98,6 +99,7 @@ class CharServerHandler
 
     protected:
         CharServerHandler() :
+            mCharacters(),
             mSelectedCharacter(nullptr),
             mCharSelectDialog(nullptr),
             mCharCreateDialog(nullptr)

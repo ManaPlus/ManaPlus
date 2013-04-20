@@ -28,6 +28,15 @@
 
 struct WorldInfo final
 {
+    WorldInfo() :
+        address(0),
+        name(),
+        port(0),
+        online_users(0),
+        updateHost()
+    {
+    }
+
     int address;
     std::string name;
     short port;

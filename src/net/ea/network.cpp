@@ -56,12 +56,14 @@ int networkThread(void *data)
 
 Network::Network() :
     mSocket(nullptr),
+    mServer(),
     mInBuffer(new char[BUFFER_SIZE]),
     mOutBuffer(new char[BUFFER_SIZE]),
     mInSize(0),
     mOutSize(0),
     mToSkip(0),
     mState(IDLE),
+    mError(),
     mWorkerThread(nullptr),
     mMutex(SDL_CreateMutex()),
     mSleep(config.getIntValue("networksleep"))

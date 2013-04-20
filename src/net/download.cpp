@@ -56,6 +56,7 @@ Download::Download(void *const ptr, const std::string &url,
                    const bool ignoreError) :
     mPtr(ptr),
     mUrl(url),
+    mOptions(),
     mFileName(""),
     mWriteFunction(nullptr),
     mAdler(0),

@@ -43,6 +43,7 @@ namespace Ea
 {
 
 ChatHandler::ChatHandler() :
+    mSentWhispers(),
     mShowAllLang(serverConfig.getValue("showAllLang", 0))
 {
 }

@@ -42,6 +42,13 @@ class MessageHandler
 
         virtual void handleMessage(MessageIn &msg) = 0;
 
+        MessageHandler() :
+            handledMessages(nullptr)
+        {
+        }
+
+        A_DELETE_COPY(MessageHandler)
+
         virtual ~MessageHandler()
         { }
 };

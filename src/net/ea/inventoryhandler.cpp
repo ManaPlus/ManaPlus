@@ -74,9 +74,12 @@ namespace Ea
 {
 
 InventoryHandler::InventoryHandler() :
+    mEquips(),
+    mInventoryItems(),
     mStorage(nullptr),
     mStorageWindow(nullptr),
-    mDebugInventory(true)
+    mDebugInventory(true),
+    mSentPickups()
 {
 }
 

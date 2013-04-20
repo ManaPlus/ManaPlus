@@ -103,6 +103,11 @@ class LoginHandler
 
         virtual void clearWorlds() = 0;
 
+        LoginHandler() :
+            mServer()
+        {
+        }
+
         virtual ~LoginHandler()
         { }
 

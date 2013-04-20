@@ -57,7 +57,12 @@ public:
 
     ServerInfo() :
         type(TMWATHENA),
+        name(),
+        hostname(),
         port(6901),
+        description(),
+        registerUrl(),
+        version(),
         save(false)
     {
         version.first = 0;
@@ -70,6 +75,7 @@ public:
         port(info.port),
         description(info.description),
         registerUrl(info.registerUrl),
+        version(),
         save(info.save)
     {
         version.first = info.version.first;

@@ -45,7 +45,7 @@ class Network
 
         A_DELETE_COPY(Network)
 
-        ~Network();
+        virtual ~Network();
 
         bool connect(ServerInfo server);
 

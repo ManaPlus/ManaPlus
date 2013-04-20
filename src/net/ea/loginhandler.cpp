@@ -40,7 +40,10 @@ namespace Ea
 LoginHandler::LoginHandler() :
     Net::LoginHandler(),
     mVersionResponse(false),
-    mRegistrationEnabled(true)
+    mRegistrationEnabled(true),
+    mUpdateHost(),
+    mWorlds(),
+    mToken()
 {
     mToken.clear();
 }

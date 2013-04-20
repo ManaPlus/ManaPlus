@@ -33,6 +33,10 @@ ItemHandler::ItemHandler()
 {
 }
 
+ItemHandler::~ItemHandler()
+{
+}
+
 void ItemHandler::processItemVisible(Net::MessageIn &msg)
 {
     const int id = msg.readInt32();

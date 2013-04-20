@@ -35,15 +35,17 @@ class LoginData final
             password(""),
             newPassword(""),
             updateHost(""),
+            updateHosts(),
+            lastLogin(),
             updateType(0),
             email(""),
             captchaResponse(""),
             registerUrl(""),
             gender(GENDER_UNSPECIFIED),
             remember(false),
-            registerLogin(false)
+            registerLogin(false),
+            characterSlots(9)
         {
-            resetCharacterSlots();
         }
 
         A_DELETE_COPY(LoginData)

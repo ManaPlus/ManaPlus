@@ -35,6 +35,7 @@ namespace Ea
 {
 
 GameHandler::GameHandler() :
+    mMap(),
     mCharID(0)
 {
 }
