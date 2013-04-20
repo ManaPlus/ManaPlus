@@ -57,15 +57,15 @@ const std::string txtUpdateFile = "resources2.txt";
 const std::string updateServer2
     = "http://download.evolonline.org/manaplus/updates/";
 
-std::vector<updateFile> loadXMLFile(const std::string &fileName);
-std::vector<updateFile> loadTxtFile(const std::string &fileName);
+std::vector<UpdateFile> loadXMLFile(const std::string &fileName);
+std::vector<UpdateFile> loadTxtFile(const std::string &fileName);
 
 /**
  * Load the given file into a vector of updateFiles.
  */
-std::vector<updateFile> loadXMLFile(const std::string &fileName)
+std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
 {
-    std::vector<updateFile> files;
+    std::vector<UpdateFile> files;
     XML::Document doc(fileName, false);
     const XmlNodePtr rootNode = doc.rootNode();
 
@@ -81,7 +81,7 @@ std::vector<updateFile> loadXMLFile(const std::string &fileName)
         if (!xmlNameEqual(fileNode, "update"))
             continue;
 
-        updateFile file;
+        UpdateFile file;
         file.name = XML::getProperty(fileNode, "file", "");
         file.hash = XML::getProperty(fileNode, "hash", "");
         file.type = XML::getProperty(fileNode, "type", "data");
@@ -98,9 +98,9 @@ std::vector<updateFile> loadXMLFile(const std::string &fileName)
     return files;
 }
 
-std::vector<updateFile> loadTxtFile(const std::string &fileName)
+std::vector<UpdateFile> loadTxtFile(const std::string &fileName)
 {
-    std::vector<updateFile> files;
+    std::vector<UpdateFile> files;
     std::ifstream fileHandler;
     fileHandler.open(fileName.c_str(), std::ios::in);
 
@@ -112,7 +112,7 @@ std::vector<updateFile> loadTxtFile(const std::string &fileName)
             fileHandler.getline(name, 256, ' ');
             fileHandler.getline(hash, 50);
 
-            updateFile thisFile;
+            UpdateFile thisFile;
             thisFile.name = name;
             thisFile.hash = hash;
             thisFile.type = "data";
@@ -144,7 +144,9 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mUpdatesDir(updatesDir),
     mUpdatesDirReal(updatesDir),
     mCurrentFile("news.txt"),
+    mNewLabelCaption(),
     mDownloadProgress(0.0f),
+    mDownloadMutex(),
     mCurrentChecksum(0),
     mStoreInMemory(true),
     mDownloadComplete(true),
@@ -152,6 +154,8 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mDownloadedBytes(0),
     mMemoryBuffer(nullptr),
     mDownload(nullptr),
+    mUpdateFiles(),
+    mTempUpdateFiles(),
     mUpdateIndex(0),
     mUpdateIndexOffset(0),
     mLoadUpdates(applyUpdates),
@@ -549,7 +553,7 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
 
-    std::vector<updateFile> updateFiles
+    std::vector<UpdateFile> updateFiles
         = loadXMLFile(std::string(dir).append("/").append(xmlUpdateFile));
 
     if (updateFiles.empty())
@@ -575,7 +579,7 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
                                         const ResourceManager *const resman)
 {
     std::string fixPath = dir + "/fix";
-    std::vector<updateFile> updateFiles
+    std::vector<UpdateFile> updateFiles
         = loadXMLFile(std::string(fixPath).append("/").append(xmlUpdateFile));
 
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
@@ -722,7 +726,7 @@ void UpdaterWindow::logic()
             {
                 if (mUpdateIndex < mUpdateFiles.size())
                 {
-                    updateFile thisFile = mUpdateFiles[mUpdateIndex];
+                    UpdateFile thisFile = mUpdateFiles[mUpdateIndex];
                     if (!thisFile.required)
                     {
                         // This statement checks to see if the file type
@@ -794,7 +798,7 @@ void UpdaterWindow::logic()
             {
                 if (mUpdateIndex < mTempUpdateFiles.size())
                 {
-                    updateFile thisFile = mTempUpdateFiles[mUpdateIndex];
+                    UpdateFile thisFile = mTempUpdateFiles[mUpdateIndex];
                     mCurrentFile = thisFile.name;
                     std::string checksum;
                     checksum = thisFile.hash;

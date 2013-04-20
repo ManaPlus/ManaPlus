@@ -84,11 +84,18 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mPrevHairStyleButton(new Button(this, _("<"), "prevstyle", this)),
     mHairStyleLabel(new Label(this, _("Hair style:"))),
     mHairStyleNameLabel(new Label(this, "")),
+    mNextRaceButton(nullptr),
+    mPrevRaceButton(nullptr),
+    mRaceLabel(nullptr),
+    mRaceNameLabel(nullptr),
     mActionButton(new Button(this, _("^"), "action", this)),
     mRotateButton(new Button(this, _(">"), "rotate", this)),
     mMale(new RadioButton(this, _("Male"), "gender")),
     mFemale(new RadioButton(this, _("Female"), "gender")),
     mOther(new RadioButton(this, _("Other"), "gender")),
+    mAttributeSlider(),
+    mAttributeLabel(),
+    mAttributeValue(),
     mAttributesLeft(new Label(this,
         strprintf(_("Please distribute %d points"), 99))),
     mMaxPoints(0),
@@ -99,7 +106,13 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mPlayer(new Being(0, ActorSprite::PLAYER, static_cast<uint16_t>(mRace),
             nullptr)),
     mPlayerBox(new PlayerBox(mPlayer, "charcreate_playerbox.xml")),
+    mHairStyle(0),
+    mHairColor(0),
     mSlot(slot),
+    maxHairColor(CharDB::getMaxHairColor()),
+    minHairColor(CharDB::getMinHairColor()),
+    maxHairStyle(CharDB::getMaxHairStyle()),
+    minHairStyle(CharDB::getMinHairStyle()),
     mAction(0),
     mDirection(0)
 {
@@ -117,13 +130,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mPlayer->setSprite(i, *it);
     }
 
-    maxHairColor = CharDB::getMaxHairColor();
-    minHairColor = CharDB::getMinHairColor();
     if (!maxHairColor)
         maxHairColor = ColorDB::getHairSize();
-
-    maxHairStyle = CharDB::getMaxHairStyle();
-    minHairStyle = CharDB::getMinHairStyle();
     if (!maxHairStyle)
         maxHairStyle = mPlayer->getNumOfHairstyles();
 
@@ -138,13 +146,6 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mPrevRaceButton = new Button(this, _("<"), "prevrace", this);
         mRaceLabel = new Label(this, _("Race:"));
         mRaceNameLabel = new Label(this, "");
-    }
-    else
-    {
-        mNextRaceButton = nullptr;
-        mPrevRaceButton = nullptr;
-        mRaceLabel = nullptr;
-        mRaceNameLabel = nullptr;
     }
 
     // Default to a Male character

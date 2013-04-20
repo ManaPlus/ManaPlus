@@ -65,6 +65,8 @@
 #include <guichan/exception.hpp>
 
 SDLInput::SDLInput() :
+    mKeyInputQueue(),
+    mMouseInputQueue(),
     mMouseDown(false),
     mMouseInWindow(true)
 {

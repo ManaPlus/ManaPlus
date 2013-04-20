@@ -70,6 +70,15 @@ enum Own
 /** One item in the chat log */
 struct CHATLOG final
 {
+    CHATLOG() :
+        nick(),
+        text(),
+        own(BY_UNKNOWN)
+    {
+    }
+
+    A_DELETE_COPY(CHATLOG)
+
     std::string nick;
     std::string text;
     Own own;

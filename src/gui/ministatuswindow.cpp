@@ -53,6 +53,9 @@ typedef std::vector <ProgressBar*>::const_iterator ProgressBarVectorCIter;
 MiniStatusWindow::MiniStatusWindow() :
     Popup("MiniStatus", "ministatus.xml"),
     InventoryListener(),
+    mBars(),
+    mBarNames(),
+    mIcons(),
     mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
     mIconPadding(mSkin ? mSkin->getOption("iconPadding", 3) : 3),
     mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
@@ -64,6 +67,7 @@ MiniStatusWindow::MiniStatusWindow() :
            : nullptr),
     mXpBar(createBar(0, 100, 0, Theme::PROG_EXP,
            "xp bar", _("experience bar"))),
+    mJobBar(nullptr),
     mWeightBar(createBar(0, 140, 0, Theme::PROG_WEIGHT,
                "weight bar", _("weight bar"))),
     mInvSlotsBar(createBar(0, 45, 0, Theme::PROG_INVY_SLOTS,
@@ -94,10 +98,6 @@ MiniStatusWindow::MiniStatusWindow() :
         mJobBar = createBar(0, 100, 0, Theme::PROG_JOB, "job bar",
                             _("job bar"));
         StatusWindow::updateJobBar(mJobBar);
-    }
-    else
-    {
-        mJobBar = nullptr;
     }
 
     loadBars();

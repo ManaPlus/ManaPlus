@@ -69,6 +69,11 @@ struct QuestItem final
 {
     QuestItem() :
         var(0),
+        name(),
+        group(),
+        incomplete(),
+        complete(),
+        texts(),
         completeFlag(-1),
         broken(false)
     {
@@ -101,9 +106,11 @@ class QuestsModel final : public ExtendedNamesModel
 struct QuestEffect final
 {
     QuestEffect() :
+        map(),
         var(0),
         id(0),
-        effectId(0)
+        effectId(0),
+        values()
     {
     }
 
@@ -127,6 +134,12 @@ QuestsWindow::QuestsWindow() :
     mTextScrollArea(new ScrollArea(mText,
         getOptionBool("showtextbackground"), "quests_text_background.xml")),
     mCloseButton(new Button(this, _("Close"), "close", this)),
+    mVars(),
+    mQuests(),
+    mAllEffects(),
+    mMapEffects(),
+    mNpcEffects(),
+    mQuestLinks(),
     mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
     mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", "")),
     mNewQuestEffectId(paths.getIntValue("newQuestEffectId")),

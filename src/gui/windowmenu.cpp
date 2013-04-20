@@ -55,6 +55,9 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     mPadding(mSkin ? mSkin->getPadding() : 1),
     mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
     mTextPopup(new TextPopup),
+    mButtons(),
+    mButtonTexts(),
+    mButtonNames(),
     mHaveMouse(false),
     mAutoHide(1),
     mSmallWindow(mainGraphics->getWidth() < 600)

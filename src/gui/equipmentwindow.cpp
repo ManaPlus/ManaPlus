@@ -62,12 +62,16 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mForing(foring),
     mImageSet(nullptr),
     mBeing(being),
+    mBoxes(),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mBorderColor(getThemeColor(Theme::BORDER)),
     mLabelsColor(getThemeColor(Theme::LABEL)),
+    mSlotBackground(),
+    mSlotHighlightedBackground(),
     mVertexes(new ImageCollection),
     mItemPadding(getOption("itemPadding")),
     mBoxSize(getOption("boxSize")),
+    mButtonPadding(getOption("buttonPadding", 5)),
     mMinX(180),
     mMinY(345),
     mMaxX(0),
@@ -95,8 +99,6 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mBoxes.reserve(BOX_COUNT);
     for (int f = 0; f < BOX_COUNT; f ++)
         mBoxes.push_back(nullptr);
-
-    mButtonPadding = getOption("buttonPadding", 5);
 
     fillBoxes();
     recalcSize();

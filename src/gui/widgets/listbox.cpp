@@ -48,7 +48,8 @@ ListBox::ListBox(const Widget2 *const widget,
     mForegroundSelectedColor(getThemeColor(Theme::LISTBOX_SELECTED)),
     mDistributeMousePressed(true),
     mOldSelected(-1),
-    mPadding(0)
+    mPadding(0),
+    mSkin(nullptr)
 {
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 

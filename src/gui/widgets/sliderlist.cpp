@@ -47,12 +47,11 @@ SliderList::SliderList(const Widget2 *const widget,
     gcn::MouseListener(),
     mLabel(new Label(this)),
     mListModel(listModel),
+    mPrevEventId(eventId + "_prev"),
+    mNextEventId(eventId + "_next"),
     mOldWidth(0),
     mSelectedIndex(0)
 {
-    mPrevEventId = eventId + "_prev";
-    mNextEventId = eventId + "_next";
-
     setHeight(sliderHeight);
 
     mButtons[0] = new Button(this, "<", mPrevEventId, this);

@@ -65,7 +65,8 @@ public:
     explicit UsersTableModel(const Widget2 *const widget) :
         TableModel(),
         Widget2(widget),
-        mPlayers(0)
+        mPlayers(0),
+        mWidgets()
     {
         playersUpdated();
     }

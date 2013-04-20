@@ -49,6 +49,10 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     gcn::Widget(),
     Widget2(widget),
     gcn::MouseListener(),
+    mTextRows(),
+    mTextRowLinksCount(),
+    mLineParts(),
+    mLinks(),
     mLinkHandler(nullptr),
     mMode(mode),
     mHighMode(UNDERLINE | BACKGROUND),
@@ -148,7 +152,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
     // Use links and user defined colors
     if (mUseLinksAndUserColors)
     {
-        BROWSER_LINK bLink;
+        BrowserLink bLink;
 
         // Check for links in format "@@link|Caption@@"
         idx1 = tmp.find("@@");
@@ -340,7 +344,7 @@ struct MouseOverLink
         mX(x), mY(y)
     { }
 
-    bool operator() (const BROWSER_LINK &link) const
+    bool operator() (const BrowserLink &link) const
     {
         return (mX >= link.x1 && mX < link.x2 &&
                 mY >= link.y1 && mY < link.y2);

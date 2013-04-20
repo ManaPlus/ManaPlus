@@ -103,10 +103,11 @@ GuiTable::GuiTable(const Widget2 *const widget,
     mModel(nullptr),
     mSelectedRow(0),
     mSelectedColumn(0),
-    mTopWidget(nullptr)
+    mTopWidget(nullptr),
+    mActionListeners(),
+    mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
+    mHighlightColor(getThemeColor(Theme::HIGHLIGHT))
 {
-    mBackgroundColor = getThemeColor(Theme::BACKGROUND);
-    mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     setModel(initial_model);
     setFocusable(true);
 

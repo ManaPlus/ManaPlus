@@ -50,7 +50,8 @@
 class ItemsModal final : public gcn::ListModel
 {
 public:
-    ItemsModal()
+    ItemsModal() :
+        mStrings()
     {
         std::map<int, ItemInfo*> items = ItemDB::getItemInfos();
         std::list<std::string> tempStrings;

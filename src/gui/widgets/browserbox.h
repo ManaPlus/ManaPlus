@@ -38,9 +38,22 @@ class Image;
 class Resource;
 class LinkHandler;
 
-struct BROWSER_LINK final
+struct BrowserLink final
 {
-    int x1, x2, y1, y2;     /**< Where link is placed */
+    BrowserLink() :
+        x1(0),
+        x2(0),
+        y1(0),
+        y2(0),
+        link(),
+        caption()
+    {
+    }
+
+    int x1;
+    int x2;
+    int y1;
+    int y2;
     std::string link;
     std::string caption;
 };
@@ -68,8 +81,10 @@ class LinePart final
             mY(y),
             mColor(color),
             mColor2(color2),
+            mText(),
             mType(1),
-            mImage(image), mBold(false)
+            mImage(image),
+            mBold(false)
         {
         }
 
@@ -227,7 +242,7 @@ class BrowserBox final : public gcn::Widget,
         typedef LinePartList::const_iterator LinePartCIter;
         LinePartList mLineParts;
 
-        typedef std::vector<BROWSER_LINK> Links;
+        typedef std::vector<BrowserLink> Links;
         typedef Links::iterator LinkIterator;
         Links mLinks;
 

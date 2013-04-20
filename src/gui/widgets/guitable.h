@@ -174,11 +174,6 @@ private:
 
     static float mAlpha;
 
-    /**
-     * Holds the background color of the table.
-     */
-    gcn::Color mBackgroundColor;
-
     TableModel *mModel;
 
     int mSelectedRow;
@@ -189,6 +184,11 @@ private:
 
     /** Vector for compactness; used as a list in practice. */
     std::vector<GuiTableActionListener *> mActionListeners;
+
+    /**
+     * Holds the background color of the table.
+     */
+    gcn::Color mBackgroundColor;
 
     gcn::Color mHighlightColor;
 };

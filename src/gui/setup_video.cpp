@@ -132,7 +132,8 @@ static bool modeSorter(std::string mode1, std::string mode2)
 }
 #endif
 
-ModeListModel::ModeListModel()
+ModeListModel::ModeListModel() :
+    mVideoModes()
 {
     graphicsManager.getAllVideoModes(mVideoModes);
 #ifndef ANDROID
@@ -218,8 +219,10 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mEnableResize(config.getBoolValue("enableresize")),
     mNoFrame(config.getBoolValue("noframe")),
     mModeListModel(new ModeListModel),
+    mOpenGLListModel(new OpenGLListModel),
     mModeList(new ListBox(widget, mModeListModel, "")),
     mFsCheckBox(new CheckBox(this, _("Full screen"), mFullScreenEnabled)),
+    mOpenGLDropDown(new DropDown(widget, mOpenGLListModel)),
     mCustomCursorCheckBox(new CheckBox(this,
 #ifdef ANDROID
                           _("Show cursor"),
@@ -246,9 +249,6 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
         true, "setup_video_background.xml");
     scrollArea->setWidth(150);
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-
-    mOpenGLListModel = new OpenGLListModel;
-    mOpenGLDropDown = new DropDown(widget, mOpenGLListModel);
 
 #ifdef USE_OPENGL
 #ifdef ANDROID

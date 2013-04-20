@@ -46,6 +46,7 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
         _("Press the button to start calibration"))),
     mCalibrateButton(new Button(this, _("Calibrate"), "calibrate", this)),
     mDetectButton(new Button(this, _("Detect joysticks"), "detect", this)),
+    mOriginalJoystickEnabled(config.getBoolValue("joystickEnabled")),
     mJoystickEnabled(new CheckBox(this, _("Enable joystick"))),
     mNamesModel(new NamesModel),
     mNamesDropDown(new DropDown(this, mNamesModel)),
@@ -56,7 +57,6 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
 
     Joystick::getNames(mNamesModel->getNames());
 
-    mOriginalJoystickEnabled = config.getBoolValue("joystickEnabled");
     mJoystickEnabled->setSelected(mOriginalJoystickEnabled);
     mJoystickEnabled->setActionEventId("joystick");
     mJoystickEnabled->addActionListener(this);

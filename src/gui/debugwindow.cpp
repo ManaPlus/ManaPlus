@@ -160,7 +160,8 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
         _("Draw calls:"), "?"))),
 #endif
     mFPSLabel(new Label(this, strprintf(_("%d FPS"), 0))),
-    mLPSLabel(new Label(this, strprintf(_("%d LPS"), 0)))
+    mLPSLabel(new Label(this, strprintf(_("%d LPS"), 0))),
+    mFPSText()
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);

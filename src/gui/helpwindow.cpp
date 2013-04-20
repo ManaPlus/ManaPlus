@@ -50,7 +50,8 @@ HelpWindow::HelpWindow():
     gcn::ActionListener(),
     mDYKButton(new Button(this, _("Did you know..."), "DYK", this)),
     mBrowserBox(new BrowserBox(this)),
-    mScrollArea(new ScrollArea(mBrowserBox, true, "help_background.xml"))
+    mScrollArea(new ScrollArea(mBrowserBox, true, "help_background.xml")),
+    mTagFileMap()
 {
     setMinWidth(300);
     setMinHeight(220);

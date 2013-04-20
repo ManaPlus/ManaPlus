@@ -44,11 +44,15 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     gcn::Widget(),
     Widget2(widget),
     gcn::WidgetListener(),
+    mSkin(nullptr),
     mProgress(progress),
     mProgressToGo(progress),
     mSmoothProgress(true),
     mProgressPalette(color),
+    mColor(Theme::getProgressColor(color >= 0 ? color : 0, mProgress)),
+    mColorToGo(mColor),
     mSmoothColorChange(true),
+    mText(),
     mVertexes(new ImageCollection),
     mRedraw(true),
     mPadding(2),
@@ -60,8 +64,6 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
         mProgress = 1.0f;
 
     mForegroundColor = getThemeColor(Theme::PROGRESS_BAR);
-    mColor = Theme::getProgressColor(color >= 0 ? color : 0, mProgress);
-    mColorToGo = mColor;
     addWidgetListener(this);
     setSize(width, height);
 

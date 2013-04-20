@@ -420,7 +420,8 @@ class BeingsListModal final : public AvatarListModel
 {
 public:
     BeingsListModal() :
-        AvatarListModel()
+        AvatarListModel(),
+        mMembers()
     {
     }
 
@@ -1231,8 +1232,11 @@ SocialWindow::SocialWindow() :
     mGuildInvited(0),
     mGuildAcceptDialog(nullptr),
     mGuildCreateDialog(nullptr),
+    mPartyInviter(),
     mPartyAcceptDialog(nullptr),
     mPartyCreateDialog(nullptr),
+    mGuilds(),
+    mParties(),
     mAttackFilter(nullptr),
     mPickupFilter(nullptr),
     // TRANSLATORS: here P is title for visible players tab in social window

@@ -28,6 +28,7 @@ VertContainer::VertContainer(const Widget2 *const widget,
                              const int leftSpacing) :
     Container(widget),
     gcn::WidgetListener(),
+    mResizableWidgets(),
     mVerticalItemSize(verticalItemSize),
     mCount(0),
     mNextY(0),

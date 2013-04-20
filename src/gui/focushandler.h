@@ -37,7 +37,8 @@
 class FocusHandler final : public gcn::FocusHandler
 {
     public:
-        FocusHandler()
+        FocusHandler() :
+            mModalStack()
         { }
 
         A_DELETE_COPY(FocusHandler)

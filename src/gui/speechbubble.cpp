@@ -35,6 +35,7 @@
 
 SpeechBubble::SpeechBubble() :
     Popup("Speech", "speechbubble.xml"),
+    mText(),
     mCaption(new Label(this)),
     mSpeechBox(new TextBox(this))
 {

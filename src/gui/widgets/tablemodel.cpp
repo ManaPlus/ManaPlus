@@ -67,7 +67,9 @@ StaticTableModel::StaticTableModel(const int row, const int column) :
     TableModel(),
     mRows(row),
     mColumns(column),
-    mHeight(1)
+    mHeight(1),
+    mTableModel(),
+    mWidths()
 {
     mTableModel.resize(row * column, nullptr);
     mWidths.resize(column, 1);

@@ -169,7 +169,6 @@ class Gui final : public gcn::Gui
         SDLFont *mHelpFont;                 /**< Font for Help Window */
         SDLFont *mSecureFont;               /**< Font for secure labels */
         SDLFont *mNpcFont;                  /**< Font for npc text */
-        bool mCustomCursor;                 /**< Show custom cursor */
         ImageSet *mMouseCursors;            /**< Mouse cursor images */
         float mMouseCursorAlpha;
         int mMouseInactivityTimer;
@@ -178,6 +177,7 @@ class Gui final : public gcn::Gui
         typedef std::list<gcn::FocusListener*> FocusListenerList;
         typedef FocusListenerList::iterator FocusListenerIterator;
         FocusListenerList mFocusListeners;
+        bool mCustomCursor;                 /**< Show custom cursor */
 };
 
 extern Gui *gui;                            /**< The GUI system */

@@ -31,7 +31,8 @@
 WindowContainer *windowContainer = nullptr;
 
 WindowContainer::WindowContainer(const Widget2 *const widget) :
-    Container(widget)
+    Container(widget),
+    mDeathList()
 {
 }
 

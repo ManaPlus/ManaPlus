@@ -166,6 +166,8 @@ class CharacterScroller final : public Container,
             add(mNumber);
         }
 
+        A_DELETE_COPY(CharacterScroller)
+
         void show(const int i)
         {
             const int sz = static_cast<signed>(mCharacterEntries->size());

@@ -37,6 +37,7 @@ Desktop::Desktop(const Widget2 *const widget) :
     Container(widget),
     gcn::WidgetListener(),
     mWallpaper(nullptr),
+    mVersionLabel(nullptr),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND, 128)),
     mBackgroundGrayColor(getThemeColor(Theme::BACKGROUND_GRAY))
 {

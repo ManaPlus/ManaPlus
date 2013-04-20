@@ -98,6 +98,7 @@ public:
         Widget2(widget),
         TableModel(),
         mPlayers(nullptr),
+        mWidgets(),
         mListModel(new PlayerRelationListModel)
     {
         playerRelationsUpdated();
@@ -247,7 +248,9 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
                 player_relations.getDefault() & PlayerRelation::TRADE)),
     mDefaultWhisper(new CheckBox(this, _("Allow whispers"),
                 player_relations.getDefault() & PlayerRelation::WHISPER)),
-    mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE, this))
+    mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE, this)),
+    mIgnoreActionChoicesModel(new IgnoreChoicesListModel),
+    mIgnoreActionChoicesBox(new DropDown(widget, mIgnoreActionChoicesModel))
 {
     setName(_("Relations"));
 
@@ -258,8 +261,6 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
                                            RELATION_CHOICE_COLUMN_WIDTH);
     mPlayerTitleTable->setBackgroundColor(gcn::Color(0xbf, 0xbf, 0xbf));
 
-    mIgnoreActionChoicesModel = new IgnoreChoicesListModel;
-    mIgnoreActionChoicesBox = new DropDown(widget, mIgnoreActionChoicesModel);
 
     for (int i = 0; i < COLUMNS_NR; i++)
     {

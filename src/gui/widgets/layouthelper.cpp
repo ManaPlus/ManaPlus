@@ -26,6 +26,7 @@
 
 LayoutHelper::LayoutHelper(gcn::Container *const container) :
     gcn::WidgetListener(),
+    mLayout(),
     mContainer(container)
 {
     mContainer->addWidgetListener(this);

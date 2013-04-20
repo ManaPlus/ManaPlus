@@ -38,6 +38,8 @@ Popup::Popup(const std::string &name,
     Container(nullptr),
     gcn::MouseListener(),
     gcn::WidgetListener(),
+    mPadding(3),
+    mSkin(nullptr),
     mPopupName(name),
     mMinWidth(100),
     mMinHeight(40),
@@ -53,8 +55,6 @@ Popup::Popup(const std::string &name,
 
     addWidgetListener(this);
 
-    setPadding(3);
-
     if (skin == "")
         skin = "popup.xml";
 
@@ -67,10 +67,6 @@ Popup::Popup(const std::string &name,
             setPadding(mSkin->getPadding());
             setPalette(mSkin->getOption("palette"));
         }
-    }
-    else
-    {
-        mSkin = nullptr;
     }
 
     // Add this window to the window container

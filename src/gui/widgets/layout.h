@@ -189,7 +189,7 @@ class LayoutCell
             mSize[1] = 0;
         }
 
-        ~LayoutCell();
+        virtual ~LayoutCell();
 
         /**
          * Sets the padding around the cell content.

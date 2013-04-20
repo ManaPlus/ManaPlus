@@ -37,11 +37,10 @@ EditDialog::EditDialog(const std::string &title, const std::string &msg,
                        Window *const parent, const bool modal):
     Window(title, modal, parent, "edit.xml"),
     gcn::ActionListener(),
+    mEventOk(eventOk),
     mTextField(new TextField(this))
 {
     mTextField->setText(msg);
-    mEventOk = eventOk;
-
     Button *const okButton = new Button(this, _("OK"), mEventOk, this);
 
     const int numRows = 1;

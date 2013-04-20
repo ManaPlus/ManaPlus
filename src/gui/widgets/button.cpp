@@ -70,6 +70,10 @@ Button::Button(const Widget2 *const widget) :
     mMode(0),
     mXOffset(0),
     mYOffset(0),
+    mEnabledColor(getThemeColor(Theme::BUTTON)),
+    mDisabledColor(getThemeColor(Theme::BUTTON_DISABLED)),
+    mHighlightedColor(getThemeColor(Theme::BUTTON_HIGHLIGHTED)),
+    mPressedColor(getThemeColor(Theme::BUTTON_PRESSED)),
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(0),
@@ -95,6 +99,10 @@ Button::Button(const Widget2 *const widget,
     mMode(0),
     mXOffset(0),
     mYOffset(0),
+    mEnabledColor(getThemeColor(Theme::BUTTON)),
+    mDisabledColor(getThemeColor(Theme::BUTTON_DISABLED)),
+    mHighlightedColor(getThemeColor(Theme::BUTTON_HIGHLIGHTED)),
+    mPressedColor(getThemeColor(Theme::BUTTON_PRESSED)),
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(0),
@@ -126,6 +134,10 @@ Button::Button(const Widget2 *const widget,
     mMode(0),
     mXOffset(0),
     mYOffset(0),
+    mEnabledColor(getThemeColor(Theme::BUTTON)),
+    mDisabledColor(getThemeColor(Theme::BUTTON_DISABLED)),
+    mHighlightedColor(getThemeColor(Theme::BUTTON_HIGHLIGHTED)),
+    mPressedColor(getThemeColor(Theme::BUTTON_PRESSED)),
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(imageWidth),
@@ -157,6 +169,10 @@ Button::Button(const Widget2 *const widget, const std::string &imageName,
     mMode(0),
     mXOffset(0),
     mYOffset(0),
+    mEnabledColor(getThemeColor(Theme::BUTTON)),
+    mDisabledColor(getThemeColor(Theme::BUTTON_DISABLED)),
+    mHighlightedColor(getThemeColor(Theme::BUTTON_HIGHLIGHTED)),
+    mPressedColor(getThemeColor(Theme::BUTTON_PRESSED)),
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(imageWidth),
@@ -192,10 +208,6 @@ void Button::init()
 
         updateAlpha();
     }
-    mEnabledColor = getThemeColor(Theme::BUTTON);
-    mDisabledColor = getThemeColor(Theme::BUTTON_DISABLED);
-    mHighlightedColor = getThemeColor(Theme::BUTTON_HIGHLIGHTED);
-    mPressedColor = getThemeColor(Theme::BUTTON_PRESSED);
 
     mInstances++;
 }

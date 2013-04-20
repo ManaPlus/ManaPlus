@@ -53,6 +53,7 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     Window(_("Quit"), true, nullptr, "quit.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
+    mOptions(),
     mLogoutQuit(new RadioButton(this, _("Quit"), "quitdialog")),
     mForceQuit(new RadioButton(this, _("Quit"), "quitdialog")),
     mSwitchAccountServer(new RadioButton(this,
@@ -62,7 +63,8 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     mRate(nullptr),
     mOkButton(new Button(this, _("OK"), "ok", this)),
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
-    mMyPointer(pointerToMe)
+    mMyPointer(pointerToMe),
+    mNeedForceQuit(false)
 {
     addKeyListener(this);
 

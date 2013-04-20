@@ -29,12 +29,14 @@ class Widget2
 {
     public:
         Widget2() :
-            mPaletteOffset(0)
+            mPaletteOffset(0),
+            mForegroundColor2()
         {
         }
 
         explicit Widget2(const Widget2 *const widget) :
-            mPaletteOffset(widget ? widget->mPaletteOffset : 0)
+            mPaletteOffset(widget ? widget->mPaletteOffset : 0),
+            mForegroundColor2()
         {
             checkPalette();
         }

@@ -59,7 +59,8 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     Window("Window", false, nullptr, skinFile),
     mItems(content),
     mScrollArea(new ScrollArea(mItems, false)),
-    mTabs(nullptr)
+    mTabs(nullptr),
+    mPages()
 {
     setWindowName(title);
     setTitleBarHeight(getPadding() + getTitlePadding());
@@ -108,7 +109,8 @@ ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
     Window("Window", false, nullptr, skinFile),
     mItems(nullptr),
     mScrollArea(nullptr),
-    mTabs(new TabbedArea(this))
+    mTabs(new TabbedArea(this)),
+    mPages()
 {
     setWindowName(title);
     setTitleBarHeight(getPadding() + getTitlePadding());

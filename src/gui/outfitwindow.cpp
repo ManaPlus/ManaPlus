@@ -78,7 +78,9 @@ OutfitWindow::OutfitWindow():
     mItemMoved(nullptr),
     mItemSelected(-1),
     mItemColorSelected(1),
-    mAwayOutfit(0)
+    mAwayOutfit(0),
+    mBorderColor(getThemeColor(Theme::BORDER, 64)),
+    mBackgroundColor(getThemeColor(Theme::BACKGROUND, 32))
 {
     setWindowName("Outfits");
     setResizable(true);
@@ -88,9 +90,6 @@ OutfitWindow::OutfitWindow():
     setDefaultSize(250, 400, 150, 290);
     setMinWidth(145);
     setMinHeight(220);
-
-    mBorderColor = getThemeColor(Theme::BORDER, 64);
-    mBackgroundColor = getThemeColor(Theme::BACKGROUND, 32);
 
     mCurrentLabel->setAlignment(gcn::Graphics::CENTER);
     mKeyLabel->setAlignment(gcn::Graphics::CENTER);

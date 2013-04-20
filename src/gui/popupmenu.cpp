@@ -86,6 +86,7 @@ std::string tradePartnerName("");
 PopupMenu::PopupMenu():
     Popup("PopupMenu", "popupmenu.xml"),
     mBrowserBox(new BrowserBox(this)),
+    mScrollArea(nullptr),
     mBeingId(0),
     mFloorItemId(0),
     mItem(nullptr),
@@ -95,6 +96,8 @@ PopupMenu::PopupMenu():
     mTab(nullptr),
     mSpell(nullptr),
     mWindow(nullptr),
+    mRenameListener(),
+    mPlayerListener(),
     mDialog(nullptr),
     mButton(nullptr),
     mNick(""),

@@ -102,7 +102,6 @@ class Setup_Theme final : public SetupTab
 
         Button *mInfoButton;
         std::string mThemeInfo;
-//        EditDialog *mEditDialog;
 };
 
 #endif

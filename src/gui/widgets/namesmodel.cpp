@@ -29,7 +29,8 @@
 
 #include "debug.h"
 
-NamesModel::NamesModel()
+NamesModel::NamesModel() :
+    mNames()
 {
 }
 

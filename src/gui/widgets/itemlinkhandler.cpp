@@ -42,6 +42,13 @@
 
 struct OpenUrlListener : public gcn::ActionListener
 {
+    OpenUrlListener() :
+        url()
+    {
+    }
+
+    A_DELETE_COPY(OpenUrlListener)
+
     void action(const gcn::ActionEvent &event)
     {
         if (event.getId() == "yes")

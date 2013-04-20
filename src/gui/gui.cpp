@@ -80,11 +80,17 @@ class GuiConfigListener final : public ConfigListener
 Gui::Gui(Graphics *const graphics) :
     gcn::Gui(),
     mConfigListener(new GuiConfigListener(this)),
-    mCustomCursor(false),
+    mGuiFont(),
+    mInfoParticleFont(),
+    mHelpFont(),
+    mSecureFont(),
+    mNpcFont(),
     mMouseCursors(nullptr),
     mMouseCursorAlpha(1.0f),
     mMouseInactivityTimer(0),
-    mCursorType(Cursor::CURSOR_POINTER)
+    mCursorType(Cursor::CURSOR_POINTER),
+    mFocusListeners(),
+    mCustomCursor(false)
 {
     logger->log1("Initializing GUI...");
     // Set graphics

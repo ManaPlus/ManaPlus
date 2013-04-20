@@ -76,7 +76,10 @@ TradeWindow::TradeWindow():
     mAutoAddToNick(""),
     mGotMoney(0),
     mGotMaxMoney(0),
-    mAutoMoney(0)
+    mAutoMoney(0),
+    mAutoAddAmount(0),
+    mOkOther(false),
+    mOkMe(false)
 {
     logger->log1("TradeWindow::TradeWindow nick");
 

@@ -108,7 +108,9 @@ void LayoutCell::computeSizes()
     mSize[1] = mArray->getSize(1);
 }
 
-LayoutArray::LayoutArray(): mSpacing(4)
+LayoutArray::LayoutArray():
+    mCells(),
+    mSpacing(4)
 {
 }
 

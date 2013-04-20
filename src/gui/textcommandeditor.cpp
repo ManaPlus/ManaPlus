@@ -54,7 +54,8 @@
 class IconsModal final : public gcn::ListModel
 {
 public:
-    IconsModal()
+    IconsModal() :
+        mStrings()
     {
         std::map<int, ItemInfo*> items = ItemDB::getItemInfos();
         std::list<std::string> tempStrings;
@@ -165,6 +166,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     gcn::ActionListener(),
     mIsMagicCommand(command->getCommandType() == TEXT_COMMAND_MAGIC),
     mCommand(command),
+    mAdvanced(false),
     mIsMagic(new RadioButton(this, _("magic"), "magic", mIsMagicCommand)),
     mIsOther(new RadioButton(this, _("other"), "magic", !mIsMagicCommand)),
     mSymbolLabel(new Label(this, _("Symbol:"))),
@@ -200,8 +202,6 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 
     setWindowName("TextCommandEditor");
     setDefaultSize(w, h, ImageRect::CENTER);
-
-    mAdvanced = false;
 
     mIsMagic->setActionEventId("magic");
     mIsMagic->addActionListener(this);

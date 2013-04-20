@@ -42,6 +42,8 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
     mSelectedTab(nullptr),
     mTabContainer(new gcn::Container()),
     mWidgetContainer(new gcn::Container()),
+    mTabsToDelete(),
+    mTabs(),
     mOpaque(false),
     mTabsWidth(0),
     mVisibleTabsWidth(0),

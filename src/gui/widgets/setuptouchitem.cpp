@@ -40,7 +40,9 @@ static class SortTouchActionFunctor final
 } touchActionSorter;
 
 TouchActionsModel::TouchActionsModel() :
-    NamesModel()
+    NamesModel(),
+    mActionId(),
+    mActionToSelection()
 {
     std::vector<SetupActionData*> data;
 

@@ -82,8 +82,16 @@ WhoIsOnline::WhoIsOnline():
     mDownloadedBytes(0),
     mMemoryBuffer(nullptr),
     mCurlError(new char[CURL_ERROR_SIZE]),
+    mBrowserBox(new BrowserBox(this)),
+    mScrollArea(new ScrollArea(mBrowserBox, false)),
+    mUpdateTimer(0),
+    mOnlinePlayers(),
+    mOnlineNicks(),
+    mUpdateButton(new Button(this, _("Update"), "update", this)),
     mAllowUpdate(true),
     mShowLevel(false),
+    mUpdateOnlineList(config.getBoolValue("updateOnlineList")),
+
     mGroupFriends(true)
 {
     mCurlError[0] = 0;
@@ -92,19 +100,15 @@ WhoIsOnline::WhoIsOnline():
     const int h = 350;
     const int w = 200;
     setDefaultSize(w, h, ImageRect::CENTER);
-//    setContentSize(w, h);
     setVisible(false);
     setCloseButton(true);
     setResizable(true);
     setStickyButtonLock(true);
     setSaveVisible(true);
 
-    mUpdateButton = new Button(this, _("Update"), "update", this);
     mUpdateButton->setEnabled(false);
     mUpdateButton->setDimension(gcn::Rectangle(5, 5, w - 10, 20 + 5));
 
-    mBrowserBox = new BrowserBox(this);
-    mScrollArea = new ScrollArea(mBrowserBox, false);
     mBrowserBox->setOpaque(false);
     mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);
     mScrollArea->setDimension(gcn::Rectangle(5, 20 + 10, w - 10, h - 10 - 30));
@@ -114,7 +118,6 @@ WhoIsOnline::WhoIsOnline():
     add(mUpdateButton);
     add(mScrollArea);
 
-    mUpdateTimer = 0;
     setLocationRelativeTo(getParent());
 
     loadWindowState();
@@ -125,7 +128,6 @@ WhoIsOnline::WhoIsOnline():
     widgetResized(gcn::Event(nullptr));
     config.addListener("updateOnlineList", this);
     config.addListener("groupFriends", this);
-    mUpdateOnlineList = config.getBoolValue("updateOnlineList");
     mGroupFriends = config.getBoolValue("groupFriends");
 }
 

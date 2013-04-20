@@ -74,6 +74,7 @@ Tab::Tab(const Widget2 *const widget) :
     mFlashOutlineColor(&getThemeColor(Theme::TAB_FLASH_OUTLINE)),
     mPlayerFlashColor(&getThemeColor(Theme::TAB_PLAYER_FLASH)),
     mPlayerFlashOutlineColor(&getThemeColor(Theme::TAB_PLAYER_FLASH_OUTLINE)),
+    mFlash(0),
     mVertexes(new ImageCollection),
     mRedraw(true),
     mMode(0)

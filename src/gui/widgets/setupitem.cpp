@@ -61,6 +61,7 @@ SetupItem::SetupItem(std::string text, std::string description,
     mValue(""),
     mDefault(""),
     mWidget(nullptr),
+    mTempWidgets(),
     mValueType(VBOOL)
 {
 }
@@ -81,6 +82,7 @@ SetupItem::SetupItem(std::string text, std::string description,
     mValue(""),
     mDefault(def),
     mWidget(nullptr),
+    mTempWidgets(),
     mValueType(VBOOL)
 {
 }
@@ -190,7 +192,8 @@ SetupItemCheckBox::SetupItemCheckBox(std::string text, std::string description,
                                      SetupTabScroll *const parent,
                                      std::string eventName,
                                      const bool mainConfig) :
-    SetupItem(text, description, keyName, parent, eventName, mainConfig)
+    SetupItem(text, description, keyName, parent, eventName, mainConfig),
+    mCheckBox(nullptr)
 {
     createControls();
 }
@@ -200,7 +203,8 @@ SetupItemCheckBox::SetupItemCheckBox(std::string text, std::string description,
                                      SetupTabScroll *const parent,
                                      std::string eventName, std::string def,
                                      const bool mainConfig) :
-    SetupItem(text, description, keyName, parent, eventName, def, mainConfig)
+    SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
+    mCheckBox(nullptr)
 {
     createControls();
 }

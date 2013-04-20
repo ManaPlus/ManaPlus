@@ -182,16 +182,26 @@ ChatWindow::ChatWindow():
     mItemLinkHandler(new ItemLinkHandler),
     mChatTabs(new TabbedArea(this)),
     mChatInput(new ChatInput(this, mChatTabs)),
+    mRainbowColor(0),
     mTmpVisible(false),
+    mWhispers(),
+    mHistory(),
+    mCurHist(),
+    mCommands(),
+    mCustomWords(),
     mReturnToggles(config.getBoolValue("ReturnToggles")),
+    mTradeFilter(),
     mColorListModel(new ColorListModel),
     mColorPicker(new DropDown(this, mColorListModel)),
     mChatColor(config.getIntValue("chatColor")),
     mChatHistoryIndex(0),
+    mAwayLog(),
+    mHighlights(),
     mGMLoaded(false),
     mHaveMouse(false),
-    mAutoHide(false),
-    mShowBattleEvents(false)
+    mAutoHide(config.getBoolValue("autohideChat")),
+    mShowBattleEvents(config.getBoolValue("showBattleEvents")),
+    mShowAllLang(serverConfig.getValue("showAllLang", 0))
 {
     listen(CHANNEL_ATTRIBUTES);
 
@@ -250,8 +260,6 @@ ChatWindow::ChatWindow():
     // Add key listener to chat input to be able to respond to up/down
     mChatInput->addKeyListener(this);
     mCurHist = mHistory.end();
-
-    mRainbowColor = 0;
     mColorPicker->setVisible(config.getBoolValue("showChatColorsList"));
 
     fillCommands();
@@ -264,9 +272,6 @@ ChatWindow::ChatWindow():
     config.addListener("autohideChat", this);
     config.addListener("showBattleEvents", this);
 
-    mAutoHide = config.getBoolValue("autohideChat");
-    mShowBattleEvents = config.getBoolValue("showBattleEvents");
-    mShowAllLang = serverConfig.getValue("showAllLang", 0);
     enableVisibleSound(true);
 }
 

@@ -172,13 +172,14 @@ class TradeWindow final : public Window,
         TextField *mMoneyField;
 
         Status mStatus;
-        bool mOkOther, mOkMe;
         Item* mAutoAddItem;
         std::string mAutoAddToNick;
         int mGotMoney;
         int mGotMaxMoney;
         int mAutoMoney;
         int mAutoAddAmount;
+        bool mOkOther;
+        bool mOkMe;
 };
 
 extern TradeWindow *tradeWindow;

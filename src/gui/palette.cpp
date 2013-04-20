@@ -54,7 +54,9 @@ const int Palette::RAINBOW_COLOR_COUNT = 7;
 
 Palette::Palette(const int size) :
     mRainbowTime(tick_time),
-    mColors(Colors(size))
+    mColors(Colors(size)),
+    mCharColors(),
+    mGradVector()
 {
     mInstances.insert(this);
 }

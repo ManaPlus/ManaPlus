@@ -154,7 +154,8 @@ StatusWindow::StatusWindow() :
     mDAttrScroll(new ScrollArea(mDAttrCont, false)),
     mCharacterPointsLabel(new Label(this, "C")),
     mCorrectionPointsLabel(nullptr),
-    mCopyButton(new Button(this, _("Copy to chat"), "copy", this))
+    mCopyButton(new Button(this, _("Copy to chat"), "copy", this)),
+    mAttrs()
 {
     listen(CHANNEL_ATTRIBUTES);
 

@@ -26,7 +26,9 @@
 
 #include "debug.h"
 
-ExtendedNamesModel::ExtendedNamesModel()
+ExtendedNamesModel::ExtendedNamesModel() :
+    mNames(),
+    mImages()
 {
 }
 

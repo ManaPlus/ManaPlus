@@ -152,14 +152,14 @@ class InventoryWindow final : public Window,
          */
         void updateWeight();
 
-
         typedef std::list<InventoryWindow*> WindowList;
         static WindowList invInstances;
 
         Inventory *mInventory;
         ItemContainer *mItems;
 
-        std::string mWeight, mSlots;
+        std::string mWeight;
+        std::string mSlots;
 
         Button *mUseButton;
         Button *mDropButton;

@@ -159,7 +159,7 @@ class Palette
         /**
          * Destructor
          */
-        ~Palette();
+        virtual ~Palette();
 
         void advanceGradient();
 

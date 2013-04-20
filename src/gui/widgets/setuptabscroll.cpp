@@ -31,6 +31,8 @@ SetupTabScroll::SetupTabScroll(const Widget2 *const widget) :
     SetupTab(widget),
     mContainer(new VertContainer(this, 25, false, 8)),
     mScroll(new ScrollArea(mContainer, false)),
+    mItems(),
+    mAllItems(),
     mPreferredFirstItemSize(200)
 {
     mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);

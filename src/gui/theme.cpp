@@ -169,8 +169,9 @@ int Skin::getMinHeight() const
            mBorder->grid[ImageRect::LOWER_LEFT]->getHeight();
 }
 
-Theme::Theme():
+Theme::Theme() :
     Palette(THEME_COLORS_END * THEME_PALETTES),
+    mSkins(),
     mMinimumOpacity(-1.0f),
     mProgressColors(ProgressColors(THEME_PROG_END))
 {
@@ -406,6 +407,21 @@ static const SkinParameter imageParam[] =
 
 struct SkinHelper final
 {
+    SkinHelper() :
+        partType(),
+        xPos(),
+        yPos(),
+        width(),
+        height(),
+        rect(),
+        node(),
+        image(),
+        resman()
+    {
+    }
+
+    A_DELETE_COPY(SkinHelper)
+
     std::string partType;
     int xPos;
     int yPos;

@@ -55,6 +55,7 @@ class SDLTextChunk final
         {
         }
 
+
         ~SDLTextChunk()
         {
             delete img;
@@ -159,6 +160,7 @@ typedef std::list<SDLTextChunk>::iterator CacheIterator;
 static int fontCounter;
 
 SDLFont::SDLFont(std::string filename, const int size, const int style) :
+    mFont(nullptr),
     mCreateCounter(0),
     mDeleteCounter(0),
     mCleanTime(cur_time + CLEAN_TIME)

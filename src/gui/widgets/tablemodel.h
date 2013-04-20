@@ -57,6 +57,10 @@ public:
 class TableModel
 {
 public:
+    TableModel() :
+        listeners()
+    {
+    }
     virtual ~TableModel()
     { }
 

@@ -43,14 +43,22 @@ class ProgressBar;
 class ResourceManager;
 class ScrollArea;
 
-struct updateFile final
+struct UpdateFile final
 {
     public:
+        UpdateFile() :
+            name(),
+            hash(),
+            type(),
+            desc(),
+            required(false)
+        {
+        }
         std::string name;
         std::string hash;
         std::string type;
-        bool required;
         std::string desc;
+        bool required;
 };
 
 /**
@@ -126,8 +134,6 @@ class UpdaterWindow final : public Window,
 
     static void loadManaPlusUpdates(const std::string &dir,
                                     const ResourceManager *const resman);
-
-    int updateState;
 
 private:
     void download();
@@ -212,10 +218,10 @@ private:
     Net::Download *mDownload;
 
     /** List of files to download. */
-    std::vector<updateFile> mUpdateFiles;
+    std::vector<UpdateFile> mUpdateFiles;
 
     /** List of temp files to download. */
-    std::vector<updateFile> mTempUpdateFiles;
+    std::vector<UpdateFile> mTempUpdateFiles;
 
     /** Index of the file to be downloaded. */
     unsigned int mUpdateIndex;

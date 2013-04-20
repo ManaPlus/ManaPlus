@@ -76,10 +76,12 @@ DropDown::DropDown(const Widget2 *const widget,
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mPadding(1),
     mImagePadding(2),
+    mSpacing(0),
     mDroppedDown(false),
     mPushed(false),
     mFoldedUpHeight(0),
-    mIsDragged(false)
+    mIsDragged(false),
+    mSelectionListeners()
 {
     mFrameSize = 2;
 
@@ -156,10 +158,10 @@ DropDown::DropDown(const Widget2 *const widget,
 
     if (mSkin)
     {
+        mSpacing = mSkin->getOption("spacing");
         mFrameSize = mSkin->getOption("frameSize");
         mPadding = mSkin->getPadding();
         mImagePadding = mSkin->getOption("imagePadding");
-        mSpacing = mSkin->getOption("spacing");
     }
     adjustHeight();
 }

@@ -156,6 +156,8 @@ public:
         }
     }
 
+    A_DELETE_COPY(LangListModel)
+
     virtual ~LangListModel()
     {
         for (int f = 0; f < langs_count; f ++)
@@ -225,7 +227,8 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     mNpcFontSize(config.getIntValue("npcfontSize")),
     mNpcFontSizeDropDown(new DropDown(this, mNpcFontSizeListModel)),
     // TRANSLATORS: button name with information about selected theme
-    mInfoButton(new Button(this, _("i"), ACTION_INFO, this))
+    mInfoButton(new Button(this, _("i"), ACTION_INFO, this)),
+    mThemeInfo()
 {
     setName(_("Theme"));
 

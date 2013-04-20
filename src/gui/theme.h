@@ -43,6 +43,11 @@ const int THEME_PALETTES = 5;
 
 struct ThemeInfo final
 {
+    ThemeInfo() :
+        name(),
+        copyright()
+    {
+    }
     std::string name;
     std::string copyright;
 };

@@ -63,6 +63,12 @@ class SkillEntry;
 class SkillModel final : public gcn::ListModel
 {
     public:
+        SkillModel() :
+            mSkills(),
+            mVisibleSkills()
+        {
+        }
+
         int getNumberOfElements()
         { return static_cast<int>(mVisibleSkills.size()); }
 
@@ -101,10 +107,9 @@ class SkillListBox final : public ListBox
             mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
             mTextColor(getThemeColor(Theme::TEXT)),
             mTextPadding(mSkin ? mSkin->getOption("textPadding", 34) : 34),
-            mSpacing(mSkin ? mSkin->getOption("spacing", 0) : 0)
+            mSpacing(mSkin ? mSkin->getOption("spacing", 0) : 0),
+            mRowHeight(getFont()->getHeight() * 2 + mSpacing + 2 * mPadding)
         {
-            mRowHeight = getFont()->getHeight() * 2
-                + mSpacing + 2 * mPadding;
             if (mRowHeight < 34)
                 mRowHeight = 34;
         }
@@ -263,7 +268,9 @@ class SkillTab final : public Tab
 SkillDialog::SkillDialog() :
     Window(_("Skills"), false, nullptr, "skills.xml"),
     gcn::ActionListener(),
+    mSkills(),
     mTabs(new TabbedArea(this)),
+    mDeleteTabs(),
     mPointsLabel(new Label(this, "0")),
     mUseButton(new Button(this, _("Use"), "use", this)),
     mIncreaseButton(new Button(this, _("Up"), "inc", this)),
@@ -692,8 +699,19 @@ void SkillDialog::playUpdateEffect(const int id)
 }
 
 SkillInfo::SkillInfo() :
-    level(0), skillLevelWidth(0), id(0), modifiable(false),
-    visible(false), model(nullptr), progress(0.0f), range(0)
+    level(0),
+    skillLevel(),
+    skillLevelWidth(0),
+    id(0),
+    modifiable(false),
+    visible(false),
+    model(nullptr),
+    skillExp(),
+    progress(0.0f),
+    range(0),
+    color(),
+    data(nullptr),
+    dataMap()
 {
     dataMap[0] = new SkillData();
     data = dataMap[0];
@@ -778,7 +796,12 @@ SkillData *SkillInfo::getData1(const int lev)
 }
 
 SkillData::SkillData() :
+    name(),
+    shortName(),
+    dispName(),
+    description(),
     icon(nullptr),
+    particle(),
     soundHit("", 0),
     soundMiss("", 0)
 {
