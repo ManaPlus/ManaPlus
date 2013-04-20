@@ -60,6 +60,7 @@ namespace gcn
     Window::Window() :
         Container(),
         gcn::MouseListener(),
+        mCaption(),
         mAlignment(Graphics::CENTER),
         mPadding(2),
         mTitleBarHeight(16),

@@ -64,8 +64,8 @@ namespace gcn
         gcn::MouseListener(),
         gcn::KeyListener(),
         mSelected(false),
-        mCaption(""),
-        mGroup("")
+        mCaption(),
+        mGroup()
     {
         setSelected(false);
 
@@ -81,7 +81,8 @@ namespace gcn
         gcn::MouseListener(),
         gcn::KeyListener(),
         mSelected(false),
-        mGroup("")
+        mCaption(),
+        mGroup()
     {
         setCaption(caption);
         setGroup(group);

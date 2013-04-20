@@ -66,7 +66,8 @@ namespace gcn
                                              public DeathListener
     {
     public:
-        BasicContainer()
+        BasicContainer() :
+            mWidgets()
         { }
 
         A_DELETE_COPY(BasicContainer)

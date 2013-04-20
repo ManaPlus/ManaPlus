@@ -71,6 +71,12 @@ namespace gcn
     std::set<Widget*> Widget::mWidgetsSet;
 
     Widget::Widget() :
+        mMouseListeners(),
+        mKeyListeners(),
+        mActionListeners(),
+        mDeathListeners(),
+        mFocusListeners(),
+        mWidgetListeners(),
         mForegroundColor(0x000000),
         mBackgroundColor(0xffffff),
         mBaseColor(0x808090),
@@ -78,12 +84,15 @@ namespace gcn
         mFocusHandler(nullptr),
         mInternalFocusHandler(nullptr),
         mParent(nullptr),
+        mDimension(),
         mFrameSize(0),
+        mActionEventId(),
         mFocusable(false),
         mVisible(true),
         mTabIn(true),
         mTabOut(true),
         mEnabled(true),
+        mId(),
         mCurrentFont(nullptr)
     {
         mWidgets.push_back(this);

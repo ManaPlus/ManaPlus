@@ -61,15 +61,15 @@ namespace gcn
         gcn::MouseListener(),
         gcn::KeyListener(),
         mDragged(false),
+        mValue(0),
+        mStepLength(scaleEnd / 10),
+        mMarkerLength(10),
         mScaleStart(0),
-        mScaleEnd(scaleEnd)
+        mScaleEnd(scaleEnd),
+        mOrientation(HORIZONTAL)
     {
         setFocusable(true);
         setFrameSize(1);
-        setOrientation(HORIZONTAL);
-        setValue(0);
-        setStepLength(scaleEnd / 10);
-        setMarkerLength(10);
 
         addMouseListener(this);
         addKeyListener(this);
@@ -80,15 +80,15 @@ namespace gcn
         gcn::MouseListener(),
         gcn::KeyListener(),
         mDragged(false),
+        mValue(scaleStart),
+        mStepLength((scaleEnd - scaleStart) / 10),
+        mMarkerLength(10),
         mScaleStart(scaleStart),
-        mScaleEnd(scaleEnd)
+        mScaleEnd(scaleEnd),
+        mOrientation(HORIZONTAL)
     {
         setFocusable(true);
         setFrameSize(1);
-        setOrientation(HORIZONTAL);
-        setValue(scaleStart);
-        setStepLength((scaleEnd  - scaleStart) / 10);
-        setMarkerLength(10);
 
         addMouseListener(this);
         addKeyListener(this);

@@ -58,6 +58,7 @@ namespace gcn
 {
 
     Graphics::Graphics() :
+        mClipStack(),
         mFont(nullptr)
     {
     }

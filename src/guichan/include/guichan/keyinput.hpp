@@ -64,6 +64,7 @@ namespace gcn
          * Constructor.
          */
         KeyInput() :
+            mKey(0),
             mType(0),
             mShiftPressed(false),
             mControlPressed(false),

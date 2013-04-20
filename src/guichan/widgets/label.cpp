@@ -58,6 +58,7 @@ namespace gcn
 {
     Label::Label() :
         gcn::Widget(),
+        mCaption(),
         mAlignment(Graphics::LEFT)
     {
     }

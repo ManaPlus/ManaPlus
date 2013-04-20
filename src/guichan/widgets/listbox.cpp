@@ -66,7 +66,8 @@ namespace gcn
         gcn::KeyListener(),
         mSelected(-1),
         mListModel(nullptr),
-        mWrappingEnabled(false)
+        mWrappingEnabled(false),
+        mSelectionListeners()
     {
         setWidth(100);
         setFocusable(true);
@@ -81,7 +82,8 @@ namespace gcn
         gcn::KeyListener(),
         mSelected(-1),
         mListModel(listModel),
-        mWrappingEnabled(false)
+        mWrappingEnabled(false),
+        mSelectionListeners()
     {
         setWidth(100);
         adjustSize();

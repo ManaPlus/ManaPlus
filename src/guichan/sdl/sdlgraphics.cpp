@@ -66,6 +66,7 @@ namespace gcn
     SDLGraphics::SDLGraphics() :
         Graphics(),
         mTarget(nullptr),
+        mColor(),
         mAlpha(false)
     {
     }

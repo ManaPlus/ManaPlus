@@ -69,6 +69,7 @@ namespace gcn
         mInput(nullptr),
         mFocusHandler(new FocusHandler),
         mTabbing(true),
+        mKeyListeners(),
         mShiftPressed(false),
         mMetaPressed(false),
         mControlPressed(false),
@@ -78,7 +79,8 @@ namespace gcn
         mLastMouseX(0),
         mLastMouseY(0),
         mClickCount(1),
-        mLastMouseDragButton(0)
+        mLastMouseDragButton(0),
+        mWidgetWithMouseQueue()
     {
     }
 

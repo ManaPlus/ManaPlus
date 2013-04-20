@@ -61,6 +61,7 @@ namespace gcn
         gcn::Widget(),
         gcn::MouseListener(),
         gcn::KeyListener(),
+        mText(),
         mCaretPosition(0),
         mXScroll(0)
     {

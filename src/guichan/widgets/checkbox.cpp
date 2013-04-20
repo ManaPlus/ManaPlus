@@ -62,7 +62,8 @@ namespace gcn
         gcn::Widget(),
         gcn::MouseListener(),
         gcn::KeyListener(),
-        mSelected(false)
+        mSelected(false),
+        mCaption()
     {
         setFocusable(true);
         addMouseListener(this);
@@ -73,7 +74,8 @@ namespace gcn
         gcn::Widget(),
         gcn::MouseListener(),
         gcn::KeyListener(),
-        mSelected(selected)
+        mSelected(selected),
+        mCaption()
     {
         setCaption(caption);
 

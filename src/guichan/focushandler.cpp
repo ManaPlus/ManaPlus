@@ -57,6 +57,7 @@
 namespace gcn
 {
     FocusHandler::FocusHandler() :
+        mWidgets(),
         mFocusedWidget(nullptr),
         mModalFocusedWidget(nullptr),
         mModalMouseInputFocusedWidget(nullptr),

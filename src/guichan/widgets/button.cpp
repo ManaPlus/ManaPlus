@@ -64,6 +64,7 @@ namespace gcn
         gcn::MouseListener(),
         gcn::KeyListener(),
         gcn::FocusListener(),
+        mCaption(),
         mHasMouse(false),
         mKeyPressed(false),
         mMousePressed(false),
