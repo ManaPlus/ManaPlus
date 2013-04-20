@@ -79,7 +79,6 @@ class MapReader final
 
         static bool readCsvLayer(const XmlNodePtr childNode, Map *const map,
                                  MapLayer *const layer,
-                                 const std::string &compression,
                                  int &x, int &y, const int w, const int h);
 
         /**

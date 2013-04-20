@@ -36,6 +36,7 @@ SubImage::SubImage(Image *const parent, SDL_Surface *const image,
                    const int x, const int y,
                    const int width, const int height) :
     Image(image),
+    mInternalBounds(),
     mParent(parent)
 {
     if (mParent)
@@ -84,6 +85,7 @@ SubImage::SubImage(Image *const parent, const GLuint image,
                    const int x, const int y, const int width, const int height,
                    const int texWidth, const int texHeight):
     Image(image, width, height, texWidth, texHeight),
+    mInternalBounds(),
     mParent(parent)
 {
     if (mParent)

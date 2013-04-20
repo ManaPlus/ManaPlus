@@ -35,6 +35,7 @@ struct AtlasItem final
 {
     explicit AtlasItem(Image *const image0) :
         image(image0),
+        name(),
         x(0),
         y(0),
         width(image0->mBounds.w),
@@ -55,10 +56,12 @@ struct AtlasItem final
 struct TextureAtlas final
 {
     TextureAtlas() :
+        name(),
         atlasImage(nullptr),
         surface(nullptr),
         width(0),
-        height(0)
+        height(0),
+        items()
     {
     }
 
@@ -75,7 +78,8 @@ struct TextureAtlas final
 class AtlasResource final : public Resource
 {
     public:
-        AtlasResource()
+        AtlasResource() :
+            atlases()
         { }
 
         A_DELETE_COPY(AtlasResource)

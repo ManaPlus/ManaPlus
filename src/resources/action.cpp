@@ -30,6 +30,7 @@
 #include "debug.h"
 
 Action::Action() :
+    mAnimations(),
     mNumber(100)
 {
 }

@@ -42,6 +42,8 @@ class Resource
          * Constructor
          */
         Resource() :
+            mIdPath(),
+            mSource(),
             mTimeStamp(0),
             mProtected(false),
 #ifdef DEBUG_DUMP_LEAKS

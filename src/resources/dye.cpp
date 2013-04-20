@@ -29,7 +29,9 @@
 
 #include "debug.h"
 
-DyePalette::DyePalette(const std::string &description, const int8_t blockSize)
+DyePalette::DyePalette(const std::string &description,
+                       const int8_t blockSize) :
+    mColors()
 {
     const int size = static_cast<int>(description.length());
     if (size == 0)

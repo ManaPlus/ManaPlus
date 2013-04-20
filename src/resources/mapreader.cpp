@@ -572,7 +572,6 @@ bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
 
 bool MapReader::readCsvLayer(const XmlNodePtr childNode, Map *const map,
                              MapLayer *const layer,
-                             const std::string &compression,
                              int &x, int &y, const int w, const int h)
 {
     XmlNodePtr dataChild = childNode->xmlChildrenNode;
@@ -682,7 +681,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
         }
         else if (encoding == "csv")
         {
-            if (readCsvLayer(childNode, map, layer, compression, x, y, w, h))
+            if (readCsvLayer(childNode, map, layer, x, y, w, h))
                 continue;
             else
                 return;

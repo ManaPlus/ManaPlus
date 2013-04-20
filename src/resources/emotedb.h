@@ -34,7 +34,8 @@ class AnimatedSprite;
 struct EmoteSprite final
 {
     EmoteSprite() :
-        sprite(nullptr)
+        sprite(nullptr),
+        name()
     { }
 
     A_DELETE_COPY(EmoteSprite)
@@ -45,7 +46,9 @@ struct EmoteSprite final
 
 struct EmoteInfo final
 {
-    EmoteInfo()
+    EmoteInfo() :
+        sprites(),
+        particles()
     { }
 
     A_DELETE_COPY(EmoteInfo)

@@ -57,6 +57,14 @@ struct SpriteReference final
 
 struct SpriteDisplay final
 {
+    SpriteDisplay() :
+        image(),
+        floor(),
+        sprites(),
+        particles()
+    {
+    }
+
     std::string image;
     std::string floor;
     std::vector<SpriteReference*> sprites;
@@ -150,7 +158,10 @@ class SpriteDef final : public Resource
          * Constructor.
          */
         SpriteDef() :
-            Resource()
+            Resource(),
+            mImageSets(),
+            mActions(),
+            mProcessedFiles()
         { }
 
         /**

@@ -35,6 +35,12 @@ namespace MapDB
 {
     struct MapInfo
     {
+        MapInfo() :
+            atlas(),
+            files(nullptr)
+        {
+        }
+
         std::string atlas;
         const StringVect *files;
     };

@@ -60,9 +60,13 @@ ResourceManager *ResourceManager::instance = nullptr;
 DelayedAnim ResourceManager::mDelayedAnimations;
 
 ResourceManager::ResourceManager() :
+    deletedSurfaces(),
+    mResources(),
+    mOrphanedResources(),
+    mDeletedResources(),
     mOldestOrphan(0),
-    mSelectedSkin(""),
-    mSkinName(""),
+    mSelectedSkin(),
+    mSkinName(),
     mDestruction(0),
     mUseLongLiveSprites(config.getBoolValue("uselonglivesprites"))
 {

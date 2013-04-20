@@ -28,7 +28,8 @@
 
 #include "debug.h"
 
-Animation::Animation():
+Animation::Animation() :
+    mFrames(),
     mDuration(0)
 {
 }

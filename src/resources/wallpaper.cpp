@@ -38,6 +38,12 @@
 
 struct WallpaperData
 {
+    WallpaperData() :
+        filename(),
+        width(0),
+        height(0)
+    {
+    }
     std::string filename;
     int width;
     int height;
