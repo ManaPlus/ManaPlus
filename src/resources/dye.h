@@ -23,10 +23,10 @@
 #ifndef DYE_H
 #define DYE_H
 
+#include "resources/dyecolor.h"
+
 #include <string>
 #include <vector>
-
-#include <SDL_stdinc.h>
 
 #include "localconsts.h"
 
@@ -83,10 +83,7 @@ class DyePalette final
         static int hexDecode(const signed char c) A_WARN_UNUSED;
 
     private:
-        struct Color
-        { unsigned char value[4]; };
-
-        std::vector<Color> mColors;
+        std::vector<DyeColor> mColors;
 };
 
 /**

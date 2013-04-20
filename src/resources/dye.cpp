@@ -24,6 +24,8 @@
 
 #include "logger.h"
 
+#include "resources/palettedb.h"
+
 #include <math.h>
 #include <sstream>
 
@@ -33,42 +35,52 @@ DyePalette::DyePalette(const std::string &description,
                        const int8_t blockSize) :
     mColors()
 {
-    const int size = static_cast<int>(description.length());
+    const size_t size = static_cast<int>(description.length());
     if (size == 0)
         return;
-    if (description[0] != '#')
+
+    if (description[0] == '#')
     {
-        // TODO: load palette from file.
-        return;
-    }
-
-    int pos = 1;
-    for ( ; ; )
-    {
-        if (pos + blockSize > size)
-            break;
-
-        Color color =
+        size_t pos = 1;
+        for ( ; ; )
         {
-            {0, 0, 0, 0}
-        };
+            if (pos + blockSize > size)
+                break;
 
-        for (int i = 0, colorIdx = 0; i < blockSize && colorIdx < 4;
-             i += 2, colorIdx ++)
-        {
-            color.value[colorIdx] = static_cast<unsigned char>((
-                hexDecode(description[pos + i]) << 4)
-                + hexDecode(description[pos + i + 1]));
+            DyeColor color(0, 0, 0, 0);
+
+            for (int i = 0, colorIdx = 0; i < blockSize && colorIdx < 4;
+                 i += 2, colorIdx ++)
+            {
+                color.value[colorIdx] = static_cast<unsigned char>((
+                    hexDecode(description[pos + i]) << 4)
+                    + hexDecode(description[pos + i + 1]));
+            }
+            mColors.push_back(color);
+            pos += blockSize;
+
+            if (pos == size)
+                return;
+            if (description[pos] != ',')
+                break;
+
+            ++pos;
         }
-        mColors.push_back(color);
-        pos += blockSize;
-
-        if (pos == size)
-            return;
-        if (description[pos] != ',')
-            break;
-
-        ++pos;
+    }
+    else if (description[0] == '@')
+    {
+        size_t pos = 1;
+        for ( ; pos < size ; )
+        {
+            const size_t idx = description.find(',', pos);
+            if (idx == std::string::npos)
+                return;
+            if (idx == pos)
+                break;
+            mColors.push_back(PaletteDB::getColor(
+                description.substr(pos, idx - pos)));
+            pos = idx + 1;
+        }
     }
 
     logger->log("Error, invalid embedded palette: %s", description.c_str());
@@ -185,15 +197,15 @@ void DyePalette::getColor(double intensity, int color[3]) const
 
 void DyePalette::replaceSColor(uint8_t *const color) const
 {
-    std::vector<Color>::const_iterator it = mColors.begin();
-    const std::vector<Color>::const_iterator it_end = mColors.end();
+    std::vector<DyeColor>::const_iterator it = mColors.begin();
+    const std::vector<DyeColor>::const_iterator it_end = mColors.end();
     while (it != it_end)
     {
-        const Color &col = *it;
+        const DyeColor &col = *it;
         ++ it;
         if (it == it_end)
             return;
-        const Color &col2 = *it;
+        const DyeColor &col2 = *it;
         if (color[0] == col.value[0] && color[1] == col.value[1]
             && color[2] == col.value[2])
         {
@@ -208,15 +220,15 @@ void DyePalette::replaceSColor(uint8_t *const color) const
 
 void DyePalette::replaceAColor(uint8_t *const color) const
 {
-    std::vector<Color>::const_iterator it = mColors.begin();
-    const std::vector<Color>::const_iterator it_end = mColors.end();
+    std::vector<DyeColor>::const_iterator it = mColors.begin();
+    const std::vector<DyeColor>::const_iterator it_end = mColors.end();
     while (it != it_end)
     {
-        const Color &col = *it;
+        const DyeColor &col = *it;
         ++ it;
         if (it == it_end)
             return;
-        const Color &col2 = *it;
+        const DyeColor &col2 = *it;
         if (color[1] == col.value[0] && color[2] == col.value[1]
             && color[3] == col.value[2] && color[0] == col.value[3])
         {
@@ -232,15 +244,15 @@ void DyePalette::replaceAColor(uint8_t *const color) const
 
 void DyePalette::replaceSOGLColor(uint8_t *const color) const
 {
-    std::vector<Color>::const_iterator it = mColors.begin();
-    const std::vector<Color>::const_iterator it_end = mColors.end();
+    std::vector<DyeColor>::const_iterator it = mColors.begin();
+    const std::vector<DyeColor>::const_iterator it_end = mColors.end();
     while (it != it_end)
     {
-        const Color &col = *it;
+        const DyeColor &col = *it;
         ++ it;
         if (it == it_end)
             return;
-        const Color &col2 = *it;
+        const DyeColor &col2 = *it;
         if (color[2] == col.value[0] && color[1] == col.value[1]
             && color[0] == col.value[2])
         {
@@ -255,15 +267,15 @@ void DyePalette::replaceSOGLColor(uint8_t *const color) const
 
 void DyePalette::replaceAOGLColor(uint8_t *const color) const
 {
-    std::vector<Color>::const_iterator it = mColors.begin();
-    const std::vector<Color>::const_iterator it_end = mColors.end();
+    std::vector<DyeColor>::const_iterator it = mColors.begin();
+    const std::vector<DyeColor>::const_iterator it_end = mColors.end();
     while (it != it_end)
     {
-        const Color &col = *it;
+        const DyeColor &col = *it;
         ++ it;
         if (it == it_end)
             return;
-        const Color &col2 = *it;
+        const DyeColor &col2 = *it;
         if (color[2] == col.value[0] && color[1] == col.value[1]
             && color[0] == col.value[2] && color[3] == col.value[3])
         {

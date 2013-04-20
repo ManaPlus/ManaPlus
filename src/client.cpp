@@ -82,6 +82,7 @@
 #include "resources/emotedb.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
+#include "resources/palettedb.h"
 #include "resources/sdlimagehelper.h"
 #include "resources/sounddb.h"
 #include "resources/itemdb.h"
@@ -756,6 +757,7 @@ void Client::gameClear()
     ItemDB::unload();
     MonsterDB::unload();
     NPCDB::unload();
+    PaletteDB::unload();
     PETDB::unload();
     StatusEffect::unload();
 
@@ -1382,6 +1384,7 @@ int Client::gameExec()
 
                     // Load XML databases
                     CharDB::load();
+                    PaletteDB::load();
                     ColorDB::load();
                     SoundDB::load();
                     MapDB::load();

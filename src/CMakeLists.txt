@@ -427,6 +427,7 @@ SET(SRCS
     resources/cursor.h
     resources/dye.cpp
     resources/dye.h
+    resources/dyecolor.h
     resources/emotedb.cpp
     resources/emotedb.h
     resources/fboinfo.h
@@ -452,6 +453,8 @@ SET(SRCS
     resources/npcdb.h
     resources/openglimagehelper.cpp
     resources/openglimagehelper.h
+    resources/palettedb.cpp
+    resources/palettedb.h
     resources/petdb.cpp
     resources/petdb.h
     resources/resource.cpp
