@@ -55,6 +55,7 @@ struct EmoteInfo final
 
     std::list<EmoteSprite*> sprites;
     StringVect particles;
+    int time;
 };
 
 typedef std::map<int, EmoteInfo*> EmoteInfos;
@@ -72,15 +73,7 @@ namespace EmoteDB
     const EmoteInfo *get(const int id,
                          const bool allowNull = false) A_WARN_UNUSED;
 
-    const AnimatedSprite *getAnimation(const int id,
-                                       const bool allowNull = false)
-                                       A_WARN_UNUSED;
-
-    const AnimatedSprite *getAnimation2(int id,
-                                        const bool allowNull = false)
-                                        A_WARN_UNUSED;
-
-    AnimatedSprite *getClone(const int id, const bool allowNull);
+    const EmoteInfo *get2(int id, const bool allowNull = false) A_WARN_UNUSED;
 
     const EmoteSprite *getSprite(const int id, const bool allowNull = false)
                                  A_WARN_UNUSED;

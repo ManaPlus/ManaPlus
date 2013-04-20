@@ -2785,12 +2785,21 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
         if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
         {
             delete mEmotionSprite;
-            mEmotionSprite = EmoteDB::getClone(emotionIndex, true);
+            const EmoteInfo *const info = EmoteDB::get2(emotionIndex, true);
+            if (info)
+            {
+                const EmoteSprite *const sprite = info->sprites.front();
+                if (sprite)
+                {
+                    mEmotionSprite = AnimatedSprite::clone(sprite->sprite);
+                    if (mEmotionSprite)
+                        mEmotionTime = info->time;
+                }
+            }
         }
 
         if (mEmotionSprite)
         {
-            mEmotionTime = emote_time;
             mEmotionSprite->play(mSpriteAction);
             mEmotionSprite->setSpriteDirection(static_cast<SpriteDirection>(
                 mSpriteDirection));

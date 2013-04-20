@@ -81,6 +81,7 @@ void EmoteDB::load()
         }
 
         EmoteInfo *const currentInfo = new EmoteInfo;
+        currentInfo->time = XML::getProperty(emoteNode, "time", 500);
 
         for_each_xml_child_node(spriteNode, emoteNode)
         {
@@ -136,6 +137,7 @@ void EmoteDB::load()
         const int altId = XML::getProperty(emoteNode, "altid", -1);
 
         EmoteInfo *const currentInfo = new EmoteInfo;
+        currentInfo->time = XML::getProperty(emoteNode, "time", 500);
 
         for_each_xml_child_node(spriteNode, emoteNode)
         {
@@ -218,30 +220,25 @@ const EmoteInfo *EmoteDB::get(const int id, const bool allowNull)
     }
 }
 
-const AnimatedSprite *EmoteDB::getAnimation(const int id, const bool allowNull)
-{
-    const EmoteInfo *const info = get(id, allowNull);
-    if (!info)
-        return nullptr;
-
-    return info->sprites.front()->sprite;
-}
-
-const AnimatedSprite *EmoteDB::getAnimation2(int id, const bool allowNull)
+const EmoteInfo *EmoteDB::get2(int id, const bool allowNull)
 {
     const EmoteToEmote::const_iterator it = mEmotesAlt.find(id);
     if (it != mEmotesAlt.end())
         id = (*it).second;
-    return getAnimation(id, allowNull);
-}
 
-AnimatedSprite *EmoteDB::getClone(const int id, const bool allowNull)
-{
-    const AnimatedSprite *const sprite = getAnimation2(id, allowNull);
-    if (sprite)
-        return AnimatedSprite::clone(sprite);
+    const EmoteInfos::const_iterator i = mEmoteInfos.find(id);
 
-    return nullptr;
+    if (i == mEmoteInfos.end())
+    {
+        if (allowNull)
+            return nullptr;
+        logger->log("EmoteDB: Warning, unknown emote ID %d requested", id);
+        return &mUnknown;
+    }
+    else
+    {
+        return i->second;
+    }
 }
 
 const EmoteSprite *EmoteDB::getSprite(const int id, const bool allowNull)

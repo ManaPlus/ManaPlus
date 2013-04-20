@@ -58,8 +58,6 @@
 
 namespace Ea
 {
-const int EMOTION_TIME = 500;    /**< Duration of emotion icon */
-
 BeingHandler::BeingHandler(const bool enableSync) :
     mSync(enableSync),
     mSpawnId(0),
@@ -578,7 +576,7 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
         const unsigned char emote = msg.readInt8();
         if (emote)
         {
-            dstBeing->setEmote(emote, EMOTION_TIME);
+            dstBeing->setEmote(emote, 0);
             player_node->imitateEmote(dstBeing, emote);
         }
     }

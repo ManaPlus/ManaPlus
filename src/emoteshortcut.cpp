@@ -48,7 +48,7 @@ void EmoteShortcut::load()
          i <= sz && j < SHORTCUT_EMOTES;
          i++)
     {
-        const AnimatedSprite *const sprite = EmoteDB::getAnimation(i, true);
+        const EmoteSprite *const sprite = EmoteDB::getSprite(i, true);
         if (sprite)
         {
             mEmotes[j] = static_cast<unsigned char>(i + 1);
