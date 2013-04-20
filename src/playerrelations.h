@@ -79,6 +79,14 @@ class PlayerIgnoreStrategy
         std::string mDescription;
         std::string mShortName;
 
+        PlayerIgnoreStrategy() :
+            mDescription(),
+            mShortName()
+        {
+        }
+
+        A_DELETE_COPY(PlayerIgnoreStrategy)
+
         virtual ~PlayerIgnoreStrategy()
         { }
 

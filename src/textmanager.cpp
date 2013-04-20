@@ -29,7 +29,8 @@
 
 TextManager *textManager = nullptr;
 
-TextManager::TextManager()
+TextManager::TextManager() :
+    mTextList()
 {
 }
 

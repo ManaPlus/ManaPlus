@@ -32,6 +32,11 @@ class Image;
 class Sprite
 {
     public:
+        Sprite() :
+            mAlpha()
+        {
+        }
+
         virtual ~Sprite()
         { }
 

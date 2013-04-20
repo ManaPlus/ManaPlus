@@ -47,6 +47,7 @@ struct SlotUsed final : public std::unary_function<Item*, bool>
 };
 
 Inventory::Inventory(const int type, const int size) :
+    mInventoryListeners(),
     mType(type),
     mSize(size == -1 ? static_cast<unsigned>(
           Net::getInventoryHandler()->getSize(type))

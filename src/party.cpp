@@ -60,6 +60,8 @@ PartyMember::PartyMember(Party *const party, const int id,
 Party::PartyMap Party::parties;
 
 Party::Party(const short id) :
+    mMembers(),
+    mName(),
     mId(id),
     mCanInviteUsers(false)
 {

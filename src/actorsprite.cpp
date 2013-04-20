@@ -51,10 +51,13 @@ ActorSprite::ActorSprite(const int id) :
     Actor(),
     mId(id),
     mStunMode(0),
+    mStatusEffects(),
+    mStunParticleEffects(),
     mStatusParticleEffects(&mStunParticleEffects, false),
     mChildParticleEffects(&mStatusParticleEffects, false),
     mMustResetParticles(false),
-    mUsedTargetCursor(nullptr)
+    mUsedTargetCursor(nullptr),
+    mActorSpriteListeners()
 {
 }
 

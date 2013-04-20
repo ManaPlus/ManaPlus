@@ -46,7 +46,8 @@
 #include "debug.h"
 
 TestLauncher::TestLauncher(std::string test) :
-    mTest(test)
+    mTest(test),
+    file()
 {
     file.open((Client::getLocalDataDirectory()
         + std::string("/test.log")).c_str(), std::ios::out);

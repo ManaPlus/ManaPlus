@@ -84,6 +84,8 @@ class ConfigurationObject
     friend class Configuration;
 
     public:
+        ConfigurationObject();
+
         virtual ~ConfigurationObject();
 
         /**

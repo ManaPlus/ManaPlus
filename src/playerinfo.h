@@ -47,6 +47,13 @@ typedef std::map<int, Stat> StatMap;
  */
 struct PlayerInfoBackend final
 {
+    PlayerInfoBackend() :
+        mAttributes(),
+        mStats(),
+        mSkills()
+    {
+    }
+
     IntMap mAttributes;
     StatMap mStats;
     IntMap mSkills;

@@ -44,10 +44,11 @@
 #include "debug.h"
 
 ChatLogger::ChatLogger() :
-    mLogDir(""),
-    mBaseLogDir(""),
-    mServerName(""),
-    mLogFileName("")
+    mLogFile(),
+    mLogDir(),
+    mBaseLogDir(),
+    mServerName(),
+    mLogFileName()
 {
 }
 

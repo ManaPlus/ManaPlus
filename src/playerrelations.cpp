@@ -130,7 +130,10 @@ PlayerRelation::PlayerRelation(const Relation relation) :
 PlayerRelationsManager::PlayerRelationsManager() :
     mPersistIgnores(false),
     mDefaultPermissions(PlayerRelation::DEFAULT),
-    mIgnoreStrategy(nullptr)
+    mIgnoreStrategy(nullptr),
+    mRelations(),
+    mListeners(),
+    mIgnoreStrategies()
 {
 }
 

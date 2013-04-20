@@ -315,6 +315,12 @@ void ConfigurationObject::clear()
     mContainerOptions.clear();
 }
 
+ConfigurationObject::ConfigurationObject() :
+    mOptions(),
+    mContainerOptions()
+{
+}
+
 ConfigurationObject::~ConfigurationObject()
 {
     clear();
@@ -322,9 +328,11 @@ ConfigurationObject::~ConfigurationObject()
 
 Configuration::Configuration() :
     ConfigurationObject(),
+    mListenerMap(),
     mConfigPath(),
     mDefaultsData(nullptr),
     mDirectory(),
+    mFilename(),
     mUseResManager(false)
 {
 #ifdef DEBUG_CONFIG

@@ -41,7 +41,8 @@ typedef std::vector<ImageVertexes*> MepRowImages;
 class MapRowVertexes final
 {
     public:
-        MapRowVertexes()
+        MapRowVertexes() :
+            images()
         {
             images.reserve(30);
         }
@@ -68,8 +69,10 @@ class MapObject final
 class MapObjectList final
 {
     public:
-        MapObjectList()
-        { }
+        MapObjectList() :
+            objects()
+        {
+        }
 
         A_DELETE_COPY(MapObjectList)
 

@@ -62,7 +62,8 @@ void ParticleContainer::moveTo(const float x, const float y)
 
 ParticleList::ParticleList(ParticleContainer *const parent,
                            const bool delParent) :
-    ParticleContainer(parent, delParent)
+    ParticleContainer(parent, delParent),
+    mElements()
 {}
 
 ParticleList::~ParticleList()
@@ -129,7 +130,8 @@ void ParticleList::moveTo(const float x, const float y)
 
 ParticleVector::ParticleVector(ParticleContainer *const parent,
                                const bool delParent) :
-    ParticleContainer(parent, delParent)
+    ParticleContainer(parent, delParent),
+    mIndexedElements()
 {}
 
 ParticleVector::~ParticleVector()

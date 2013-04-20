@@ -1039,8 +1039,8 @@ class Being : public ActorSprite, public ConfigListener
         unsigned int mMoveTime;
         unsigned int mAttackTime;
         unsigned int mTalkTime;
-        unsigned int mTestTime;
         unsigned int mOtherTime;
+        unsigned int mTestTime;
         bool mErased;
         bool mEnemy;
         std::string mIp;

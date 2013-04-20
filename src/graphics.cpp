@@ -70,6 +70,7 @@ Graphics::Graphics() :
     mBlitMode(BLIT_NORMAL),
     mRedraw(false),
     mDoubleBuffer(false),
+    mRect(),
     mSecure(false),
     mOpenGL(0),
     mEnableResize(false),
@@ -78,7 +79,8 @@ Graphics::Graphics() :
     mOldAlpha(0),
     mName("Software"),
     mStartFreeMem(0),
-    mSync(false)
+    mSync(false),
+    mColor2()
 {
     mRect.x = 0;
     mRect.y = 0;

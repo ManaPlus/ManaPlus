@@ -30,7 +30,9 @@
 
 Actor::Actor():
     mMap(nullptr),
-    mYDiff(0)
+    mPos(),
+    mYDiff(0),
+    mMapActor()
 {
 }
 

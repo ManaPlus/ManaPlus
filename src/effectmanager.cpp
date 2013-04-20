@@ -29,7 +29,8 @@
 
 #include "debug.h"
 
-EffectManager::EffectManager()
+EffectManager::EffectManager() :
+    mEffects()
 {
     XML::Document doc("effects.xml");
     const XmlNodePtr root = doc.rootNode();

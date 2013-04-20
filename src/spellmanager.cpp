@@ -35,7 +35,9 @@
 
 #include "debug.h"
 
-SpellManager::SpellManager()
+SpellManager::SpellManager() :
+    mSpells(),
+    mSpellsVector()
 {
     load();
 }

@@ -77,6 +77,11 @@
 GraphicsManager graphicsManager;
 
 GraphicsManager::GraphicsManager() :
+    mExtensions(),
+    mPlatformExtensions(),
+    mGlVersionString(),
+    mGlVendor(),
+    mGlRenderer(),
     mMinor(0),
     mMajor(0),
     mPlatformMinor(0),

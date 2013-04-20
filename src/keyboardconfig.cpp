@@ -38,7 +38,10 @@ KeyboardConfig::KeyboardConfig() :
     mEnabled(true),
     mActiveKeys(nullptr),
     mActiveKeys2(nullptr),
-    mRepeatTime(0)
+    mRepeatTime(0),
+    mKeyToAction(),
+    mKeyToId(),
+    mKeyTimeMap()
 {
 }
 

@@ -29,7 +29,8 @@
 
 #include "debug.h"
 
-CommandHandler::CommandHandler()
+CommandHandler::CommandHandler() :
+    mCommands()
 {
     const int sz = sizeof(commands) / sizeof(CommandInfo);
     for (int f = 0; f < sz; f ++)

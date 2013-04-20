@@ -38,7 +38,8 @@ std::string fileName;
 extern char *selfName;
 
 TestMain::TestMain() :
-    log(new Logger)
+    log(new Logger),
+    mConfig()
 {
     fileName = getSelfName();
     log->setLogFile(Client::getLocalDataDirectory()

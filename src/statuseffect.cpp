@@ -40,6 +40,11 @@ static void unloadMap(std::map<int, StatusEffect *> &map);
 bool StatusEffect::mLoaded = false;
 
 StatusEffect::StatusEffect() :
+    mMessage(),
+    mSFXEffect(),
+    mParticleEffect(),
+    mIcon(),
+    mAction(),
     mPersistentParticleEffect(false)
 {
 }

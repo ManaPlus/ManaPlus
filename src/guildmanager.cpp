@@ -46,6 +46,7 @@ GuildManager::GuildManager() :
     mSentInfoRequest(false),
     mSentNameRequest(false),
     mHavePower(false),
+    mTempList(),
     mTab(nullptr),
     mRequest(false),
     mRequestTime(cur_time + 3),

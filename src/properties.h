@@ -35,6 +35,11 @@
 class Properties
 {
     public:
+        Properties() :
+            mProperties()
+        {
+        }
+
         /**
          * Destructor.
          */

@@ -35,7 +35,8 @@
 #include "debug.h"
 
 MumbleManager::MumbleManager() :
-    mLinkedMem(nullptr)
+    mLinkedMem(nullptr),
+    mLinkedMemCache()
 {
     mMapBase[0] = mMapBase[1] = mMapBase[2] = 0.;
     init();

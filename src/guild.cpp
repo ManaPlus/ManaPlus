@@ -77,9 +77,12 @@ std::string GuildMember::getAdditionString() const
 Guild::GuildMap Guild::guilds;
 
 Guild::Guild(const short id):
+    mMembers(),
+    mName(),
     mId(id),
     mCanInviteUsers(false),
     mEmblemId(0),
+    mPositions(),
     mServerGuild(true)
 {
     guilds[id] = this;

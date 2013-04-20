@@ -49,7 +49,8 @@ MapLayer::MapLayer(const int x, const int y, const int width, const int height,
     mHighlightAttackRange(config.getBoolValue("highlightAttackRange")),
     mTiles(new Image*[mWidth * mHeight]),
     mSpecialLayer(nullptr),
-    mTempLayer(nullptr)
+    mTempLayer(nullptr),
+    mTempRows()
 {
     std::fill_n(mTiles, mWidth * mHeight, static_cast<Image*>(nullptr));
 
@@ -555,12 +556,12 @@ int MapLayer::getTileDrawWidth(const Image *img,
 
 SpecialLayer::SpecialLayer(const int width, const int height,
                            const bool drawSprites) :
-    mWidth(width), mHeight(height),
-    mDrawSprites(drawSprites)
+    mWidth(width),
+    mHeight(height),
+    mDrawSprites(drawSprites),
+    mTiles(new MapItem*[mWidth * mHeight])
 {
-    const int size = mWidth * mHeight;
-    mTiles = new MapItem*[size];
-    std::fill_n(mTiles, size, static_cast<MapItem*>(nullptr));
+    std::fill_n(mTiles, mWidth * mHeight, static_cast<MapItem*>(nullptr));
 }
 
 SpecialLayer::~SpecialLayer()
@@ -675,26 +676,26 @@ void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
 }
 
 MapItem::MapItem():
-    mImage(nullptr), mComment(""), mName(""), mX(-1), mY(-1)
+    mType(EMPTY), mImage(nullptr), mComment(""), mName(""), mX(-1), mY(-1)
 {
     setType(EMPTY);
 }
 
 MapItem::MapItem(const int type):
-    mImage(nullptr), mComment(""), mName(""), mX(-1), mY(-1)
+    mType(type), mImage(nullptr), mComment(""), mName(""), mX(-1), mY(-1)
 {
     setType(type);
 }
 
 MapItem::MapItem(const int type, std::string comment):
-    mImage(nullptr), mComment(comment), mName(""), mX(-1), mY(-1)
+    mType(type), mImage(nullptr), mComment(comment), mName(""), mX(-1), mY(-1)
 {
     setType(type);
 }
 
 MapItem::MapItem(const int type, std::string comment,
                  const int x, const int y):
-    mImage(nullptr), mComment(comment), mName(""), mX(x), mY(y)
+    mType(type), mImage(nullptr), mComment(comment), mName(""), mX(x), mY(y)
 {
     setType(type);
 }
@@ -792,11 +793,11 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
 }
 
 ObjectsLayer::ObjectsLayer(const unsigned width, const unsigned height) :
-    mWidth(width), mHeight(height)
+    mTiles(new MapObjectList*[width * height]),
+    mWidth(width),
+    mHeight(height)
 {
-    const unsigned size = width * height;
-    mTiles = new MapObjectList*[size];
-    std::fill_n(mTiles, size, static_cast<MapObjectList*>(nullptr));
+    std::fill_n(mTiles, width * height, static_cast<MapObjectList*>(nullptr));
 }
 
 ObjectsLayer::~ObjectsLayer()

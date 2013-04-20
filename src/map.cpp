@@ -86,6 +86,7 @@ class ActorFunctuator final
 } actorCompare;
 
 TileAnimation::TileAnimation(Animation *const ani):
+    mAffected(),
     mAnimation(new SimpleAnimation(ani)),
     mLastImage(nullptr)
 {
@@ -128,10 +129,20 @@ Map::Map(const int width, const int height,
     mMaxTileHeight(height),
     mMetaTiles(new MetaTile[mWidth * mHeight]),
     mWalkLayer(nullptr),
+    mLayers(),
+    mTilesets(),
+    mActors(),
     mHasWarps(false),
     mDebugFlags(MAP_NORMAL),
-    mOnClosedList(1), mOnOpenList(2),
-    mLastAScrollX(0.0f), mLastAScrollY(0.0f),
+    mOnClosedList(1),
+    mOnOpenList(2),
+    mBackgrounds(),
+    mForegrounds(),
+    mLastAScrollX(0.0f),
+    mLastAScrollY(0.0f),
+    particleEffects(),
+    mMapPortals(),
+    mTileAnimations(),
     mOverlayDetail(config.getIntValue("OverlayDetail")),
     mOpacity(config.getFloatValue("guialpha")),
 #ifdef USE_OPENGL

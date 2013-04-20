@@ -222,11 +222,11 @@ class NormalOpenGLGraphics final : public Graphics
         float mFloatColor;
         int mMaxVertices;
         bool mColorAlpha;
-        FBOInfo mFbo;
 #ifdef DEBUG_BIND_TEXTURE
         std::string mOldTexture;
         unsigned mOldTextureId;
 #endif
+        FBOInfo mFbo;
 };
 #endif
 

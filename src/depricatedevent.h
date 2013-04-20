@@ -53,7 +53,8 @@ class DepricatedEvent final
         // and is to used to identify what type of event
         // this is.
         explicit DepricatedEvent(const DepricatedEvents name) :
-            mDepricatedEventName(name)
+            mDepricatedEventName(name),
+            mData()
         { }
 
         ~DepricatedEvent();

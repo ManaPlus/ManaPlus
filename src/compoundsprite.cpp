@@ -49,6 +49,7 @@ static const unsigned cache_clean_part = 3;
 bool CompoundSprite::mEnableDelay = true;
 
 CompoundSprite::CompoundSprite() :
+    imagesCache(),
     mCacheItem(nullptr),
     mImage(nullptr),
     mAlphaImage(nullptr),
@@ -58,6 +59,7 @@ CompoundSprite::CompoundSprite() :
     mEnableAlphaFix(config.getBoolValue("enableAlphaFix")),
     mDisableAdvBeingCaching(config.getBoolValue("disableAdvBeingCaching")),
     mDisableBeingCaching(config.getBoolValue("disableBeingCaching")),
+    mSprites(),
     mNextRedrawTime(0)
 {
     mAlpha = 1.0f;
@@ -538,7 +540,7 @@ bool CompoundSprite::updateNumber(unsigned num)
 }
 
 CompoundItem::CompoundItem() :
-//    alpha(1.0f),
+    data(),
     image(nullptr),
     alphaImage(nullptr)
 {

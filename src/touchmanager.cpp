@@ -38,6 +38,7 @@ extern int openGLMode;
 TouchManager::TouchManager() :
     mKeyboard(nullptr),
     mPad(nullptr),
+    mObjects(),
     mVertexes(new ImageCollection),
     mRedraw(true),
     mShowJoystick(false),

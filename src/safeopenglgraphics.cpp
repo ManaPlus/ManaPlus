@@ -43,8 +43,10 @@ SafeOpenGLGraphics::SafeOpenGLGraphics():
     mAlpha(false),
     mTexture(false),
     mIsByteColor(false),
+    mByteColor(),
     mFloatColor(1.0f),
-    mColorAlpha(false)
+    mColorAlpha(false),
+    mFbo()
 {
     mOpenGL = 2;
     mName = "safe OpenGL";

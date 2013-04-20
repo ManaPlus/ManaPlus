@@ -181,6 +181,9 @@ class SortBeingFunctor final
 } beingActorSorter;
 
 ActorSpriteManager::ActorSpriteManager() :
+    mActors(),
+    mDeleteActors(),
+    mBlockedBeings(),
     mMap(nullptr),
     mSpellHeal1(serverConfig.getValue("spellHeal1", "#lum")),
     mSpellHeal2(serverConfig.getValue("spellHeal2", "#inma")),

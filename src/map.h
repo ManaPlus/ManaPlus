@@ -470,18 +470,27 @@ class Map final : public Properties, public ConfigListener
         int mDebugFlags;
 
         // Pathfinding members
-        unsigned mOnClosedList, mOnOpenList;
+        unsigned int mOnClosedList;
+        unsigned int mOnOpenList;
 
         // Overlay data
         AmbientLayerVector mBackgrounds;
         AmbientLayerVector mForegrounds;
         float mLastAScrollX;
         float mLastAScrollY;
-//        bool mSpritesUpdated;
 
         // Particle effect data
         struct ParticleEffectData
         {
+            ParticleEffectData() :
+                file(),
+                x(0),
+                y(0),
+                w(0),
+                h(0)
+            {
+            }
+
             std::string file;
             int x;
             int y;

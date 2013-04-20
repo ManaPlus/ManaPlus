@@ -163,22 +163,31 @@ public:
      */
     struct Options
     {
-        Options():
+        Options() :
+            username(),
+            password(),
+            character(),
+            brandingPath(),
+            updateHost(),
+            dataPath(),
+            homeDir(),
+            logFileName(),
+            chatLogDir(),
+            configDir(),
+            localDataDir(),
+            screenshotDir(),
+            test(),
+            serverName(),
+            serverPort(0),
             printHelp(false),
             printVersion(false),
             skipUpdate(false),
             chooseDefault(false),
             noOpenGL(false),
             safeMode(false),
-            testMode(false),
-            serverPort(0)
+            testMode(false)
         {}
 
-        bool printHelp;
-        bool printVersion;
-        bool skipUpdate;
-        bool chooseDefault;
-        bool noOpenGL;
         std::string username;
         std::string password;
         std::string character;
@@ -191,12 +200,16 @@ public:
         std::string configDir;
         std::string localDataDir;
         std::string screenshotDir;
-        bool safeMode;
-        bool testMode;
         std::string test;
-
         std::string serverName;
         short serverPort;
+        bool printHelp;
+        bool printVersion;
+        bool skipUpdate;
+        bool chooseDefault;
+        bool noOpenGL;
+        bool safeMode;
+        bool testMode;
     };
 
     explicit Client(const Options &options);
@@ -360,12 +373,12 @@ private:
 
     std::string mPackageDir;
     std::string mConfigDir;
+    std::string mServerConfigDir;
     std::string mLocalDataDir;
     std::string mTempDir;
     std::string mUpdateHost;
     std::string mUpdatesDir;
     std::string mScreenshotDir;
-    std::string mServerConfigDir;
     std::string mUsersDir;
     std::string mNpcsDir;
     std::string mRootDir;

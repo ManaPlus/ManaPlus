@@ -28,7 +28,8 @@
 unsigned int vertexBufSize = 500;
 #endif
 
-SDLGraphicsVertexes::SDLGraphicsVertexes()
+SDLGraphicsVertexes::SDLGraphicsVertexes() :
+    mList()
 {
     mList.reserve(30);
 }
@@ -44,7 +45,12 @@ NormalOpenGLGraphicsVertexes::NormalOpenGLGraphicsVertexes() :
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),
     mIntVertArray(nullptr),
-    mShortVertArray(nullptr)
+    mShortVertArray(nullptr),
+    mVp(),
+    mFloatTexPool(),
+    mIntVertPool(),
+    mShortVertPool(),
+    mIntTexPool()
 {
     mFloatTexPool.reserve(30);
     mIntVertPool.reserve(30);
@@ -216,7 +222,11 @@ GLint *NormalOpenGLGraphicsVertexes::continueIntTexArray()
 #endif
 
 ImageVertexes::ImageVertexes() :
-    image(nullptr)
+    image(nullptr),
+#ifdef USE_OPENGL
+    ogl(),
+#endif
+    sdl()
 {
     sdl.reserve(30);
 }
@@ -232,7 +242,8 @@ ImageCollection::ImageCollection() :
     currentGLImage(0),
 #endif
     currentImage(nullptr),
-    currentVert(nullptr)
+    currentVert(nullptr),
+    draws()
 {
 }
 

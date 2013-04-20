@@ -142,11 +142,11 @@ class ImageVertexes final
         ~ImageVertexes();
 
         const Image *image;
-        DoubleRects sdl;
-
 #ifdef USE_OPENGL
         NormalOpenGLGraphicsVertexes ogl;
 #endif
+        DoubleRects sdl;
+
 };
 
 typedef std::vector<ImageVertexes*> ImageVertexesVector;
@@ -156,6 +156,8 @@ class ImageCollection final
 {
     public:
         ImageCollection();
+
+        A_DELETE_COPY(ImageCollection)
 
         ~ImageCollection();
 

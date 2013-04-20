@@ -44,7 +44,10 @@ Joystick::Joystick(const int no):
     mCalibrated(false),
     mButtonsNumber(MAX_BUTTONS),
     mUseInactive(false),
-    mHaveHats(false)
+    mHaveHats(false),
+    mKeyToAction(),
+    mKeyToId(),
+    mKeyTimeMap()
 {
     for (int i = 0; i < MAX_BUTTONS; i++)
         mActiveButtons[i] = false;

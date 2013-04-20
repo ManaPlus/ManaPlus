@@ -52,14 +52,15 @@ NormalOpenGLGraphics::NormalOpenGLGraphics():
     mAlpha(false),
     mTexture(false),
     mIsByteColor(false),
+    mByteColor(),
     mFloatColor(1.0f),
     mMaxVertices(500),
-#ifdef DEBUG_BIND_TEXTURE
     mColorAlpha(false),
-    mOldTextureId(0)
-#else
-    mColorAlpha(false)
+#ifdef DEBUG_BIND_TEXTURE
+    mOldTexture(),
+    mOldTextureId(0),
 #endif
+    mFbo()
 {
     mOpenGL = 1;
     mName = "fast OpenGL";
