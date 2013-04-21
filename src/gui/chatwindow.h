@@ -354,8 +354,8 @@ class ChatWindow final : public Window,
         History mCommands;         /**< Command list. */
         History mCustomWords;
 
-        bool mReturnToggles; // Marks whether <Return> toggles the chat log
-                             // or not
+        bool mReturnToggles;  // Marks whether <Return> toggles the chat log
+                              // or not
 
         StringVect mTradeFilter;
 

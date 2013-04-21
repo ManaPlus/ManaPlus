@@ -72,6 +72,6 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
 
     extern Ea::GuildTab *guildTab;
     extern Guild *taGuild;
-}
+}  // namespace EAthena
 
-#endif  // namespace EAthena
+#endif

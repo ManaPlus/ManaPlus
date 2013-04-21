@@ -377,8 +377,8 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Get number of guilds the being belongs to.
          */
-        short getNumberOfGuilds() const A_WARN_UNUSED
-        { return static_cast<short>(mGuilds.size()); }
+        int16_t getNumberOfGuilds() const A_WARN_UNUSED
+        { return static_cast<int16_t>(mGuilds.size()); }
 
         bool isInParty() const A_WARN_UNUSED
         { return mParty; }

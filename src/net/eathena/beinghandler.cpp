@@ -432,12 +432,12 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     // An update about a player, potentially including movement.
     const int id = msg.readInt32();
-    const short speed = msg.readInt16();
+    const int16_t speed = msg.readInt16();
     const uint16_t stunMode = msg.readInt16();  // opt1
     uint32_t statusEffects = msg.readInt16();   // opt2
     statusEffects |= (static_cast<uint32_t>(msg.readInt16()))
         << 16;  // status.options; Aethyra uses this as misc2
-    const short job = msg.readInt16();
+    const int16_t job = msg.readInt16();
 
     Being *dstBeing = actorSpriteManager->findBeing(id);
 
@@ -492,7 +492,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         if (guild == 0)
             dstBeing->clearGuilds();
         else
-            dstBeing->setGuild(Guild::getGuild(static_cast<short>(guild)));
+            dstBeing->setGuild(Guild::getGuild(static_cast<int16_t>(guild)));
     }
 
     msg.readInt16();  // emblem
@@ -634,11 +634,11 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     else
         spawnId = 0;
     mSpawnId = 0;
-    short speed = msg.readInt16();
+    int16_t speed = msg.readInt16();
     const uint16_t stunMode = msg.readInt16();  // opt1
     uint32_t statusEffects = msg.readInt16();   // opt2
     statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;  // option
-    const short job = msg.readInt16();  // class
+    const int16_t job = msg.readInt16();  // class
 
     Being *dstBeing = actorSpriteManager->findBeing(id);
 
@@ -725,7 +725,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     msg.readInt16();  // manner
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
     msg.readInt8();   // karma
-    short gender = msg.readInt8();
+    int16_t gender = msg.readInt8();
 
     if (dstBeing->getType() == ActorSprite::PLAYER)
     {

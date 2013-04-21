@@ -1137,7 +1137,7 @@ bool MobileOpenGLGraphics::drawNet(const int x1, const int y1,
     const GLshort ys1 = static_cast<GLshort>(y1);
     const GLshort ys2 = static_cast<GLshort>(y2);
 
-    for (short y = y1; y < y2; y += height)
+    for (int16_t y = y1; y < y2; y += height)
     {
         mShortVertArray[vp + 0] = xs1;
         mShortVertArray[vp + 1] = y;
@@ -1153,7 +1153,7 @@ bool MobileOpenGLGraphics::drawNet(const int x1, const int y1,
         }
     }
 
-    for (short x = x1; x < x2; x += width)
+    for (int16_t x = x1; x < x2; x += width)
     {
         mShortVertArray[vp + 0] = x;
         mShortVertArray[vp + 1] = ys1;

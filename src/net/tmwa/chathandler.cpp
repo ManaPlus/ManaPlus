@@ -129,7 +129,7 @@ void ChatHandler::talk(const std::string &text,
     {
         MessageOut outMsg(CMSG_CHAT_MESSAGE2);
         // Added + 1 in order to let eAthena parse admin commands correctly
-        outMsg.writeInt16(static_cast<short>(mes.length() + 4 + 3 + 1));
+        outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 3 + 1));
         outMsg.writeInt8(channel[0]);
         outMsg.writeInt8(channel[1]);
         outMsg.writeInt8(channel[2]);
@@ -139,7 +139,7 @@ void ChatHandler::talk(const std::string &text,
     {
         MessageOut outMsg(CMSG_CHAT_MESSAGE);
         // Added + 1 in order to let eAthena parse admin commands correctly
-        outMsg.writeInt16(static_cast<short>(mes.length() + 4 + 1));
+        outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1));
         outMsg.writeString(mes, static_cast<int>(mes.length() + 1));
     }
 }
@@ -148,7 +148,7 @@ void ChatHandler::talkRaw(const std::string &mes) const
 {
     MessageOut outMsg(CMSG_CHAT_MESSAGE);
     // Added + 1 in order to let eAthena parse admin commands correctly
-    outMsg.writeInt16(static_cast<short>(mes.length() + 4 + 1));
+    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1));
     outMsg.writeString(mes, static_cast<int>(mes.length() + 1));
 }
 
@@ -156,7 +156,7 @@ void ChatHandler::privateMessage(const std::string &recipient,
                                  const std::string &text)
 {
     MessageOut outMsg(CMSG_CHAT_WHISPER);
-    outMsg.writeInt16(static_cast<short>(text.length() + 28));
+    outMsg.writeInt16(static_cast<int16_t>(text.length() + 28));
     outMsg.writeString(recipient, 24);
     outMsg.writeString(text, static_cast<int>(text.length()));
     mSentWhispers.push(recipient);
@@ -180,13 +180,13 @@ void ChatHandler::sendRaw(const std::string &args) const
     if (pos != std::string::npos)
     {
         str = line.substr(0, pos);
-        outMsg = new MessageOut(static_cast<short>(atoi(str.c_str())));
+        outMsg = new MessageOut(static_cast<int16_t>(atoi(str.c_str())));
         line = line.substr(pos + 1);
         pos = line.find(" ");
     }
     else
     {
-        outMsg = new MessageOut(static_cast<short>(atoi(line.c_str())));
+        outMsg = new MessageOut(static_cast<int16_t>(atoi(line.c_str())));
         delete outMsg;
         return;
     }
@@ -212,7 +212,7 @@ void ChatHandler::processRaw(MessageOut &outMsg, const std::string &line)
         if (line.length() <= 3)
             outMsg.writeInt8(static_cast<unsigned char>(i));
         else if (line.length() <= 5)
-            outMsg.writeInt16(static_cast<short>(i));
+            outMsg.writeInt16(static_cast<int16_t>(i));
         else
             outMsg.writeInt32(i);
     }
@@ -241,7 +241,7 @@ void ChatHandler::processRaw(MessageOut &outMsg, const std::string &line)
                 outMsg.writeInt8(static_cast<unsigned char>(i));
                 break;
             case '2':
-                outMsg.writeInt16(static_cast<short>(i));
+                outMsg.writeInt16(static_cast<int16_t>(i));
                 break;
             case '4':
                 outMsg.writeInt32(i);
@@ -251,14 +251,14 @@ void ChatHandler::processRaw(MessageOut &outMsg, const std::string &line)
                 pos = line.find(",");
                 if (pos != std::string::npos)
                 {
-                    const unsigned short x = static_cast<const unsigned short>(
+                    const uint16_t x = static_cast<const uint16_t>(
                         atoi(data.substr(0, pos).c_str()));
                     data = data.substr(pos + 1);
                     pos = line.find(",");
                     if (pos == std::string::npos)
                         break;
 
-                    const unsigned short y = static_cast<const unsigned short>(
+                    const uint16_t y = static_cast<const uint16_t>(
                         atoi(data.substr(0, pos).c_str()));
                     const int dir = atoi(data.substr(pos + 1).c_str());
                     outMsg.writeCoordinates(x, y,

@@ -474,7 +474,7 @@ void Client::gameInit()
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
     char path[PATH_MAX];
-    if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path,
+    if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (uint8_t*)path,
         PATH_MAX))
     {
         fprintf(stderr, "Can't find Resources directory\n");
@@ -654,7 +654,7 @@ void Client::gameInit()
 
     if (mCurrentServer.port == 0)
     {
-        mCurrentServer.port = static_cast<short>(branding.getValue(
+        mCurrentServer.port = static_cast<uint16_t>(branding.getValue(
             "defaultPort", DEFAULT_PORT));
         mCurrentServer.type = ServerInfo::parseType(
             branding.getValue("defaultServerType", "tmwathena"));

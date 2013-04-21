@@ -146,7 +146,6 @@ class ImageVertexes final
         NormalOpenGLGraphicsVertexes ogl;
 #endif
         DoubleRects sdl;
-
 };
 
 typedef std::vector<ImageVertexes*> ImageVertexesVector;

@@ -39,7 +39,7 @@ struct WorldInfo final
 
     int address;
     std::string name;
-    short port;
+    uint16_t port;
     int online_users;
     std::string updateHost;
 };

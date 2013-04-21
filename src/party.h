@@ -96,7 +96,7 @@ public:
      * Get the id of the party.
      * @return Returns the id of the party
      */
-    short getId() const A_WARN_UNUSED
+    int16_t getId() const A_WARN_UNUSED
     { return mId; }
 
     /**
@@ -135,7 +135,7 @@ public:
     bool getInviteRights() const A_WARN_UNUSED
     { return mCanInviteUsers; }
 
-    void setRights(const short rights);
+    void setRights(const int16_t rights);
 
     bool isMember(const PartyMember *const member) const A_WARN_UNUSED;
 
@@ -154,7 +154,7 @@ public:
     const MemberList *getMembers() const A_WARN_UNUSED
     { return &mMembers; }
 
-    static Party *getParty(const short id) A_WARN_UNUSED;
+    static Party *getParty(const int16_t id) A_WARN_UNUSED;
 
     static void clearParties();
 
@@ -165,13 +165,13 @@ private:
     /**
      * Constructor with party id passed to it.
      */
-    explicit Party(const short id);
+    explicit Party(const int16_t id);
 
     virtual ~Party();
 
     MemberList mMembers;
     std::string mName;
-    short mId;
+    int16_t mId;
     bool mCanInviteUsers;
 };
 

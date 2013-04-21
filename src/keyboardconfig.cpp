@@ -97,7 +97,8 @@ std::string KeyboardConfig::getKeyShortString(const std::string &key)
     }
     else if (key == "unknown key")
     {
-        // TRANSLATORS: Unknown key short string. This string must be maximum 5 chars
+        // TRANSLATORS: Unknown key short string.
+        // TRANSLATORS: This string must be maximum 5 chars
         return _("u key");
     }
     return key;

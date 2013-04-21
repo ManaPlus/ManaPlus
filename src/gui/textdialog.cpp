@@ -70,11 +70,11 @@ TextDialog::TextDialog(const std::string &title, const std::string &msg,
         int width = font->getWidth(title);
         if (width < textLabel->getWidth())
             width = textLabel->getWidth();
-        reflowLayout(static_cast<short>(width + 20));
+        reflowLayout(static_cast<int>(width + 20));
     }
     else
     {
-        reflowLayout(static_cast<short>(textLabel->getWidth() + 20));
+        reflowLayout(static_cast<int>(textLabel->getWidth() + 20));
     }
 
     if (getParent())

@@ -36,7 +36,7 @@
 namespace Net
 {
 
-MessageOut::MessageOut(short id A_UNUSED):
+MessageOut::MessageOut(int16_t id A_UNUSED):
     mData(nullptr),
     mDataSize(0),
     mPos(0)
@@ -60,7 +60,7 @@ void MessageOut::writeString(const std::string &string, int length)
     if (length < 0)
     {
         // Write the length at the start if not fixed
-        writeInt16(static_cast<short>(stringLength));
+        writeInt16(static_cast<int16_t>(stringLength));
         length = stringLength;
     }
     else if (length < stringLength)
@@ -88,7 +88,7 @@ void MessageOut::writeStringNoLog(const std::string &string, int length)
     if (length < 0)
     {
         // Write the length at the start if not fixed
-        writeInt16(static_cast<short>(stringLength));
+        writeInt16(static_cast<int16_t>(stringLength));
         length = stringLength;
     }
     else if (length < stringLength)

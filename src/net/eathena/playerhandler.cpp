@@ -146,7 +146,7 @@ void PlayerHandler::increaseAttribute(const int attr) const
     }
 }
 
-void PlayerHandler::increaseSkill(const unsigned short skillId) const
+void PlayerHandler::increaseSkill(const uint16_t skillId) const
 {
     if (PlayerInfo::getAttribute(PlayerInfo::SKILL_POINTS) <= 0)
         return;
@@ -179,8 +179,8 @@ void PlayerHandler::setDestination(const int x, const int y,
                                    const int direction) const
 {
     MessageOut outMsg(CMSG_PLAYER_CHANGE_DEST);
-    outMsg.writeCoordinates(static_cast<short unsigned int>(x),
-        static_cast<short unsigned int>(y),
+    outMsg.writeCoordinates(static_cast<uint16_t>(x),
+        static_cast<uint16_t>(y),
         static_cast<unsigned char>(direction));
 }
 

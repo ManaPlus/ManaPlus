@@ -316,7 +316,7 @@ class Particle : public Actor
         AliveStatus mAlive;
     private:
         // generic properties
-        // May the particle request its deletion by the parent particle? 
+        // May the particle request its deletion by the parent particle?
         bool mAutoDelete;
 
         // List of child emitters.
@@ -333,7 +333,7 @@ class Particle : public Actor
 
         // Bitfield of death conditions which trigger spawning
         // of the death particle
-        signed char mDeathEffectConditions; 
+        signed char mDeathEffectConditions;
 
         // dynamic particle
         // Downward acceleration in pixels per game-tick.
@@ -342,7 +342,7 @@ class Particle : public Actor
         // Ammount of random vector change
         int mRandomness;
 
-        // How much the particle bounces off when hitting the ground 
+        // How much the particle bounces off when hitting the ground
         float mBounce;
 
         // is this particle moved when its parent particle moves?
@@ -356,7 +356,7 @@ class Particle : public Actor
         // Acceleration towards the target particle in pixels per game-tick
         float mAcceleration;
 
-        // Distance in pixels from the target particle that causes 
+        // Distance in pixels from the target particle that causes
         // the destruction of the particle
         float mInvDieDistance;
 

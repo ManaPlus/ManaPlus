@@ -65,7 +65,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
 {
 }
 
-Being *BeingHandler::createBeing(const int id, const short job) const
+Being *BeingHandler::createBeing(const int id, const int16_t job) const
 {
     if (!actorSpriteManager)
         return nullptr;
@@ -130,11 +130,11 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     else
         spawnId = 0;
     mSpawnId = 0;
-    short speed = msg.readInt16();
+    int16_t speed = msg.readInt16();
     const uint16_t stunMode = msg.readInt16();  // opt1
     uint32_t statusEffects = msg.readInt16();  // opt2
     statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;  // option
-    const short job = msg.readInt16();  // class
+    const int16_t job = msg.readInt16();  // class
 
     Being *dstBeing = actorSpriteManager->findBeing(id);
 

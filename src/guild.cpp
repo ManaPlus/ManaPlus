@@ -76,7 +76,7 @@ std::string GuildMember::getAdditionString() const
 
 Guild::GuildMap Guild::guilds;
 
-Guild::Guild(const short id):
+Guild::Guild(const int16_t id):
     mMembers(),
     mName(),
     mId(id),
@@ -253,7 +253,7 @@ Avatar *Guild::getAvatarAt(const int index)
     return mMembers[index];
 }
 
-void Guild::setRights(const short rights)
+void Guild::setRights(const int16_t rights)
 {
     // to invite, rights must be greater than 0
     if (rights > 0)
@@ -330,7 +330,7 @@ void Guild::addPos(const int id, const std::string &name)
     mPositions[id] = name;
 }
 
-Guild *Guild::getGuild(const short id)
+Guild *Guild::getGuild(const int16_t id)
 {
     const GuildMap::const_iterator it = guilds.find(id);
     if (it != guilds.end())

@@ -77,7 +77,7 @@
 
 #include "debug.h"
 
-static const short awayLimitTimer = 60;
+static const int16_t awayLimitTimer = 60;
 static const int MAX_TICK_VALUE = INT_MAX / 2;
 
 typedef std::map<int, Guild*>::const_iterator GuildMapCIter;

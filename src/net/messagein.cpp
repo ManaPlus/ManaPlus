@@ -30,8 +30,8 @@
 #include "debug.h"
 
 #define MAKEWORD(low, high) \
-    (static_cast<unsigned short>((static_cast<unsigned char>(low)) | \
-    (static_cast<unsigned short>(static_cast<unsigned char>(high))) << 8))
+    (static_cast<uint16_t>((static_cast<unsigned char>(low)) | \
+    (static_cast<uint16_t>(static_cast<unsigned char>(high))) << 8))
 
 namespace Net
 {
@@ -64,8 +64,8 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y)
     {
         const unsigned char *const p
             = reinterpret_cast<unsigned char const *const>(mData + mPos);
-        x = static_cast<short unsigned>(p[0] | ((p[1] & 0x07) << 8));
-        y = static_cast<short unsigned>((p[1] >> 3) | ((p[2] & 0x3F) << 5));
+        x = static_cast<uint16_t>(p[0] | ((p[1] & 0x07) << 8));
+        y = static_cast<uint16_t>((p[1] >> 3) | ((p[2] & 0x3F) << 5));
     }
     mPos += 3;
     PacketCounters::incInBytes(3);
@@ -114,9 +114,9 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction)
     {
         const char *const data = mData + mPos;
         int16_t temp = MAKEWORD(data[1] & 0x00c0, data[0] & 0x00ff);
-        x = static_cast<unsigned short>(temp >> 6);
+        x = static_cast<uint16_t>(temp >> 6);
         temp = MAKEWORD(data[2] & 0x00f0, data[1] & 0x003f);
-        y = static_cast<unsigned short>(temp >> 4);
+        y = static_cast<uint16_t>(temp >> 4);
 
         serverDir = static_cast<uint8_t>(data[2] & 0x000f);
         direction = fromServerDirection(serverDir);
@@ -136,15 +136,15 @@ void MessageIn::readCoordinatePair(uint16_t &srcX, uint16_t &srcY,
     {
         const char *const data = mData + mPos;
         int16_t temp = MAKEWORD(data[3], data[2] & 0x000f);
-        dstX = static_cast<unsigned short>(temp >> 2);
+        dstX = static_cast<uint16_t>(temp >> 2);
 
         dstY = MAKEWORD(data[4], data[3] & 0x0003);
 
         temp = MAKEWORD(data[1], data[0]);
-        srcX = static_cast<unsigned short>(temp >> 6);
+        srcX = static_cast<uint16_t>(temp >> 6);
 
         temp = MAKEWORD(data[2], data[1] & 0x003f);
-        srcY = static_cast<unsigned short>(temp >> 4);
+        srcY = static_cast<uint16_t>(temp >> 4);
     }
     mPos += 5;
     DEBUGLOG(std::string("readCoordinatePair: ").append(toString(
@@ -215,7 +215,7 @@ std::string MessageIn::readRawString(int length)
 
     if (stringEnd)
     {
-        const long len2 = length - (stringEnd - stringBeg) - 1;
+        const size_t len2 = length - (stringEnd - stringBeg) - 1;
         const char *const stringBeg2 = stringEnd + 1;
         const char *const stringEnd2
             = static_cast<const char *const>(memchr(stringBeg2, '\0', len2));

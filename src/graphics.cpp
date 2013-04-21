@@ -403,10 +403,10 @@ bool Graphics::drawRescaledImage(const Image *const image, int srcX, int srcY,
 
     SDL_Rect dstRect;
     SDL_Rect srcRect;
-    dstRect.x = static_cast<short>(dstX);
-    dstRect.y = static_cast<short>(dstY);
-    srcRect.x = static_cast<short>(srcX);
-    srcRect.y = static_cast<short>(srcY);
+    dstRect.x = static_cast<int16_t>(dstX);
+    dstRect.y = static_cast<int16_t>(dstY);
+    srcRect.x = static_cast<int16_t>(srcX);
+    srcRect.y = static_cast<int16_t>(srcY);
     srcRect.w = static_cast<uint16_t>(width);
     srcRect.h = static_cast<uint16_t>(height);
 
@@ -435,10 +435,10 @@ bool Graphics::drawImage2(const Image *const image, int srcX, int srcY,
 
     SDL_Rect dstRect;
     SDL_Rect srcRect;
-    dstRect.x = static_cast<short>(dstX);
-    dstRect.y = static_cast<short>(dstY);
-    srcRect.x = static_cast<short>(srcX);
-    srcRect.y = static_cast<short>(srcY);
+    dstRect.x = static_cast<int16_t>(dstX);
+    dstRect.y = static_cast<int16_t>(dstY);
+    srcRect.x = static_cast<int16_t>(srcX);
+    srcRect.y = static_cast<int16_t>(srcY);
     srcRect.w = static_cast<uint16_t>(width);
     srcRect.h = static_cast<uint16_t>(height);
 
@@ -485,10 +485,10 @@ void Graphics::drawImagePattern(const Image *const image,
 
             SDL_Rect dstRect;
             SDL_Rect srcRect;
-            dstRect.x = static_cast<short>(dstX);
-            dstRect.y = static_cast<short>(dstY);
-            srcRect.x = static_cast<short>(srcX);
-            srcRect.y = static_cast<short>(srcY);
+            dstRect.x = static_cast<int16_t>(dstX);
+            dstRect.y = static_cast<int16_t>(dstY);
+            srcRect.x = static_cast<int16_t>(srcX);
+            srcRect.y = static_cast<int16_t>(srcY);
             srcRect.w = static_cast<uint16_t>(dw);
             srcRect.h = static_cast<uint16_t>(dh);
 
@@ -537,10 +537,10 @@ void Graphics::drawRescaledImagePattern(const Image *const image,
 
             SDL_Rect dstRect;
             SDL_Rect srcRect;
-            dstRect.x = static_cast<short>(dstX);
-            dstRect.y = static_cast<short>(dstY);
-            srcRect.x = static_cast<short>(srcX);
-            srcRect.y = static_cast<short>(srcY);
+            dstRect.x = static_cast<int16_t>(dstX);
+            dstRect.y = static_cast<int16_t>(dstY);
+            srcRect.x = static_cast<int16_t>(srcX);
+            srcRect.y = static_cast<int16_t>(srcY);
             srcRect.w = static_cast<uint16_t>(dw);
             srcRect.h = static_cast<uint16_t>(dh);
 
@@ -702,10 +702,10 @@ void Graphics::calcImagePattern(ImageVertexes* const vert,
             DoubleRect *const r = new DoubleRect();
             SDL_Rect &dstRect = r->dst;
             SDL_Rect &srcRect = r->src;
-            dstRect.x = static_cast<short>(dstX);
-            dstRect.y = static_cast<short>(dstY);
-            srcRect.x = static_cast<short>(srcX);
-            srcRect.y = static_cast<short>(srcY);
+            dstRect.x = static_cast<int16_t>(dstX);
+            dstRect.y = static_cast<int16_t>(dstY);
+            srcRect.x = static_cast<int16_t>(srcX);
+            srcRect.y = static_cast<int16_t>(srcY);
             srcRect.w = static_cast<uint16_t>(dw);
             srcRect.h = static_cast<uint16_t>(dh);
 
@@ -804,10 +804,10 @@ void Graphics::calcTile(ImageVertexes *const vert, int x, int y) const
 
     DoubleRect *rect = new DoubleRect();
 
-    rect->dst.x = static_cast<short>(x);
-    rect->dst.y = static_cast<short>(y);
-    rect->src.x = static_cast<short>(image->mBounds.x);
-    rect->src.y = static_cast<short>(image->mBounds.y);
+    rect->dst.x = static_cast<int16_t>(x);
+    rect->dst.y = static_cast<int16_t>(y);
+    rect->src.x = static_cast<int16_t>(image->mBounds.x);
+    rect->src.y = static_cast<int16_t>(image->mBounds.y);
     rect->src.w = static_cast<uint16_t>(image->mBounds.w);
     rect->src.h = static_cast<uint16_t>(image->mBounds.h);
     if (SDL_FakeUpperBlit(image->mSDLSurface, &rect->src,

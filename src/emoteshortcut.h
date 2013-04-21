@@ -121,7 +121,6 @@ class EmoteShortcut final
 
         unsigned char mEmotes[SHORTCUT_EMOTES];  // The emote stored.
         unsigned char mEmoteSelected;            // The emote held by cursor.
-
 };
 
 extern EmoteShortcut *emoteShortcut;

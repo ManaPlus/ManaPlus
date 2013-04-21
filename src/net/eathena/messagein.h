@@ -52,6 +52,6 @@ class MessageIn final : public Net::MessageIn
         int32_t readInt32();            /**< Reads a long. */
 };
 
-}
+}  // namespace EAthena
 
-#endif  // namespace EAthena
+#endif

@@ -166,7 +166,7 @@ static void parseOptions(const int argc, char *const argv[],
                 options.serverName = optarg;
                 break;
             case 'p':
-                options.serverPort = static_cast<short>(atoi(optarg));
+                options.serverPort = static_cast<uint16_t>(atoi(optarg));
                 break;
             case 'u':
                 options.skipUpdate = true;

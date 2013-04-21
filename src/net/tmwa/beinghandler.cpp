@@ -433,12 +433,12 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     // An update about a player, potentially including movement.
     const int id = msg.readInt32();
-    const short speed = msg.readInt16();
+    const int16_t speed = msg.readInt16();
     const uint16_t stunMode = msg.readInt16();  // opt1;
     uint32_t statusEffects = msg.readInt16();   // opt2;
     statusEffects |= (static_cast<uint32_t>(msg.readInt16()))
         << 16;  // status.options; Aethyra uses this as misc2
-    const short job = msg.readInt16();
+    const int16_t job = msg.readInt16();
 
     Being *dstBeing = actorSpriteManager->findBeing(id);
 
@@ -495,7 +495,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         if (guild == 0)
             dstBeing->clearGuilds();
         else
-            dstBeing->setGuild(Guild::getGuild(static_cast<short>(guild)));
+            dstBeing->setGuild(Guild::getGuild(static_cast<int16_t>(guild)));
     }
 
     msg.readInt16();  // emblem

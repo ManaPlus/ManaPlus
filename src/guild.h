@@ -121,7 +121,7 @@ public:
      * Get the id of the guild.
      * @return Returns the id of the guild
      */
-    short getId() const A_WARN_UNUSED
+    int16_t getId() const A_WARN_UNUSED
     { return mId; }
 
     /**
@@ -160,7 +160,7 @@ public:
     bool getInviteRights() const A_WARN_UNUSED
     { return mCanInviteUsers; }
 
-    void setRights(const short rights);
+    void setRights(const int16_t rights);
 
     bool isMember(const GuildMember *const member) const A_WARN_UNUSED;
 
@@ -176,7 +176,7 @@ public:
 
     std::string getPos(int id) const A_WARN_UNUSED;
 
-    static Guild *getGuild(const short id) A_WARN_UNUSED;
+    static Guild *getGuild(const int16_t id) A_WARN_UNUSED;
 
     const PositionsMap &getPositions() const A_WARN_UNUSED
     { return mPositions; }
@@ -202,12 +202,12 @@ private:
     /**
      * Constructor with guild id passed to it.
      */
-    explicit Guild(const short id);
+    explicit Guild(const int16_t id);
 
     typedef std::vector<GuildMember*> MemberList;
     MemberList mMembers;
     std::string mName;
-    short mId;
+    int16_t mId;
     bool mCanInviteUsers;
     int mEmblemId;
     PositionsMap mPositions;

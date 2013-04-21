@@ -56,6 +56,6 @@ class MessageHandler : public Net::MessageHandler
 
 typedef const std::auto_ptr<MessageHandler> MessageHandlerPtr;
 
-}
+}  // namespace EAthena
 
-#endif  // namespace EAthena
+#endif

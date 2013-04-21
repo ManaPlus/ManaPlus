@@ -47,7 +47,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void emote(const uint8_t emoteId) const override;
 
         void increaseAttribute(const int attr) const override;
-        void increaseSkill(const unsigned short skillId) const override;
+        void increaseSkill(const uint16_t skillId) const override;
 
         void pickUp(const FloorItem *const floorItem) const override;
         void setDirection(const unsigned char direction) const override;

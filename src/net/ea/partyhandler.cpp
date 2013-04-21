@@ -207,8 +207,8 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     }
 
     // These seem to indicate the sharing mode for exp and items
-    const short exp = msg.readInt16();
-    const short item = msg.readInt16();
+    const int16_t exp = msg.readInt16();
+    const int16_t item = msg.readInt16();
 
     if (!Ea::partyTab)
         return;

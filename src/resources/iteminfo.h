@@ -56,7 +56,7 @@ enum EquipmentSlot
     EQUIP_FIGHT1_SLOT = 8,
     EQUIP_FIGHT2_SLOT = 9,
     // Projectile:
-    //   this item does not amount to one, it only 
+    //   this item does not amount to one, it only
     //   indicates the chosen projectile.
     EQUIP_PROJECTILE_SLOT = 10
 };
@@ -173,7 +173,7 @@ class ItemInfo final
 
         void setAttackAction(const std::string &attackAction);
 
-        // Handlers for seting and getting the string 
+        // Handlers for seting and getting the string
         // used for particles when attacking
         void setMissileParticleFile(const std::string &s)
         { mMissileParticleFile = s; }

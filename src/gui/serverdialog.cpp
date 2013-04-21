@@ -86,7 +86,7 @@ static std::string serverTypeToString(const ServerInfo::Type type)
     }
 }
 
-static unsigned short defaultPortForServerType(const ServerInfo::Type type)
+static uint16_t defaultPortForServerType(const ServerInfo::Type type)
 {
     switch (type)
     {
@@ -616,7 +616,7 @@ void ServerDialog::loadServers(const bool addNew)
             if (xmlNameEqual(subNode, "connection"))
             {
                 server.hostname = XML::getProperty(subNode, "hostname", "");
-                server.port = static_cast<short unsigned>(
+                server.port = static_cast<uint16_t>(
                     XML::getProperty(subNode, "port", 0));
 
                 if (server.port == 0)
@@ -685,7 +685,7 @@ void ServerDialog::loadCustomServers()
         server.type = ServerInfo::parseType(config.getValue(typeKey, ""));
 
         const int defaultPort = defaultPortForServerType(server.type);
-        server.port = static_cast<unsigned short>(
+        server.port = static_cast<uint16_t>(
             config.getValue(portKey, defaultPort));
 
         // skip invalid server

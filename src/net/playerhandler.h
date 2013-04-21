@@ -46,7 +46,7 @@ class PlayerHandler
 
         virtual void decreaseAttribute(const int attr) const = 0;
 
-        virtual void increaseSkill(const unsigned short skillId) const = 0;
+        virtual void increaseSkill(const uint16_t skillId) const = 0;
 
         virtual void pickUp(const FloorItem *const floorItem) const = 0;
 

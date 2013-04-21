@@ -37,7 +37,7 @@ class BeingHandler : public Net::BeingHandler
         A_DELETE_COPY(BeingHandler)
 
     protected:
-        virtual Being *createBeing(int id, short job) const A_WARN_UNUSED;
+        virtual Being *createBeing(int id, int16_t job) const A_WARN_UNUSED;
 
         virtual void setSprite(Being *const being, const unsigned int slot,
                                const int id,

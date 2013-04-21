@@ -108,7 +108,7 @@ void Wallpaper::loadWallpapers()
 
         // First, get the base filename of the image:
         std::string filename = *i;
-        unsigned long separator = filename.rfind("_");
+        size_t separator = filename.rfind("_");
         filename = filename.substr(0, separator);
 
         // Check that the base filename doesn't have any '%' markers.

@@ -31,16 +31,16 @@ class LoginData final
 {
     public:
         LoginData() :
-            username(""),
-            password(""),
-            newPassword(""),
-            updateHost(""),
+            username(),
+            password(),
+            newPassword(),
+            updateHost(),
             updateHosts(),
             lastLogin(),
             updateType(0),
-            email(""),
-            captchaResponse(""),
-            registerUrl(""),
+            email(),
+            captchaResponse(),
+            registerUrl(),
             gender(GENDER_UNSPECIFIED),
             remember(false),
             registerLogin(false),
@@ -75,7 +75,7 @@ class LoginData final
         bool remember;       // Whether to store the username.
         bool registerLogin;  // Whether an account is being registered.
 
-        unsigned short characterSlots;  // The number of character slots
+        uint16_t characterSlots;  // The number of character slots
 
         void clear()
         {
@@ -104,7 +104,7 @@ class LoginData final
          */
         void resetCharacterSlots()
         {
-            characterSlots = 9; // Default value, used for TmwAthena.
+            characterSlots = 9;  // Default value, used for TmwAthena.
         }
 };
 

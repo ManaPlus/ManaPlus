@@ -253,8 +253,8 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
         outMsg.writeInt8(static_cast<unsigned char>(stats[i]));
 
     outMsg.writeInt8(static_cast<unsigned char>(slot));
-    outMsg.writeInt16(static_cast<short>(hairColor));
-    outMsg.writeInt16(static_cast<short>(hairstyle));
+    outMsg.writeInt16(static_cast<int16_t>(hairColor));
+    outMsg.writeInt16(static_cast<int16_t>(hairstyle));
     if (serverVersion >= 2)
         outMsg.writeInt8(race);
 }
@@ -309,7 +309,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     msg.skip(2);  // Length word
     const int slots = msg.readInt16();
     if (slots > 0 && slots < 30)
-        loginData.characterSlots = static_cast<short unsigned int>(slots);
+        loginData.characterSlots = static_cast<uint16_t>(slots);
 
     const bool version = msg.readInt8() == 1 && serverVersion > 0;
     msg.skip(17);  // 0 Unused

@@ -39,7 +39,7 @@ namespace TmwAthena
 /** Warning: buffers and other variables are shared,
     so there can be only one connection active at a time */
 
-short packet_lengths[] =
+int16_t packet_lengths[] =
 {
  10,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
@@ -87,7 +87,7 @@ short packet_lengths[] =
 };
 
 static const int packet_lengths_size
-    = static_cast<int>(sizeof(packet_lengths) / sizeof(short));
+    = static_cast<int>(sizeof(packet_lengths) / sizeof(int16_t));
 static const int messagesSize = 0xffff;
 Network *Network::mInstance = nullptr;
 

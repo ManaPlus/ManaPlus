@@ -245,8 +245,7 @@ void SDLFont::loadFont(std::string filename, const int size, const int style)
 
 void SDLFont::clear()
 {
-    for (unsigned short f = 0; f < static_cast<unsigned short>(
-        CACHES_NUMBER); f ++)
+    for (size_t f = 0; f < CACHES_NUMBER; f ++)
     {
         mCache[f].clear();
     }

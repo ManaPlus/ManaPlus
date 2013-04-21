@@ -33,8 +33,8 @@
 
 struct BOTCHK final
 {
-    short id;      /**< Index into "botchecker_db" array */
-    short lv, sp;
+    int16_t id;      /**< Index into "botchecker_db" array */
+    int16_t lv, sp;
 };
 
 class Button;

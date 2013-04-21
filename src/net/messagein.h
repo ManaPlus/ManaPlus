@@ -114,9 +114,9 @@ class MessageIn
          */
         MessageIn(const char *data, unsigned int length);
 
-        const char *mData;             /**< The message data. */
-        unsigned int mLength;          /**< The length of the data. */
-        unsigned short mId;            /**< The message ID. */
+        const char *mData;     /**< The message data. */
+        unsigned int mLength;  /**< The length of the data. */
+        uint16_t mId;          /**< The message ID. */
 
         /**
          * Actual position in the packet. From 0 to packet->length.

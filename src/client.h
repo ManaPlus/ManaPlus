@@ -51,7 +51,7 @@ class QuitDialog;
  */
 static const int MILLISECONDS_IN_A_TICK = 10;
 
-static const short DEFAULT_PORT = 6901;
+static const uint16_t DEFAULT_PORT = 6901;
 
 extern volatile int fps;
 extern volatile int lps;
@@ -202,7 +202,7 @@ public:
         std::string screenshotDir;
         std::string test;
         std::string serverName;
-        short serverPort;
+        uint16_t serverPort;
         bool printHelp;
         bool printVersion;
         bool skipUpdate;

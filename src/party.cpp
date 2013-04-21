@@ -59,7 +59,7 @@ PartyMember::PartyMember(Party *const party, const int id,
 
 Party::PartyMap Party::parties;
 
-Party::Party(const short id) :
+Party::Party(const int16_t id) :
     mMembers(),
     mName(),
     mId(id),
@@ -210,7 +210,7 @@ Avatar *Party::getAvatarAt(const int index)
     return mMembers[index];
 }
 
-void Party::setRights(const short rights)
+void Party::setRights(const int16_t rights)
 {
     // to invite, rights must be greater than 0
     if (rights > 0)
@@ -296,7 +296,7 @@ void Party::getNamesSet(std::set<std::string> &names) const
     }
 }
 
-Party *Party::getParty(const short id)
+Party *Party::getParty(const int16_t id)
 {
     const PartyMap::const_iterator it = parties.find(id);
     if (it != parties.end())

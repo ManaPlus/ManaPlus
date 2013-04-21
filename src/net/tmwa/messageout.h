@@ -46,7 +46,7 @@ class MessageOut final : public Net::MessageOut
         /**
          * Constructor.
          */
-        explicit MessageOut(const short id);
+        explicit MessageOut(const int16_t id);
 
         A_DELETE_COPY(MessageOut)
 
@@ -57,8 +57,8 @@ class MessageOut final : public Net::MessageOut
         /**
          * Encodes coordinates and direction in 3 bytes.
          */
-        void writeCoordinates(const unsigned short x,
-                              const unsigned short y,
+        void writeCoordinates(const uint16_t x,
+                              const uint16_t y,
                               unsigned char direction);
 
         void resetPos()
@@ -70,6 +70,6 @@ class MessageOut final : public Net::MessageOut
         Network *mNetwork;
 };
 
-}
+}  // namespace TmwAthena
 
-#endif  // namespace TmwAthena
+#endif

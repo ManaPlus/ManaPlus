@@ -47,7 +47,7 @@ public:
     Type type;
     std::string name;
     std::string hostname;
-    unsigned short port;
+    uint16_t port;
 
     std::string description;
     std::string registerUrl;

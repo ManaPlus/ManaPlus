@@ -39,7 +39,7 @@
 namespace EAthena
 {
 
-MessageOut::MessageOut(const short id):
+MessageOut::MessageOut(const int16_t id):
     Net::MessageOut(id),
     mNetwork(EAthena::Network::instance())
 {
@@ -85,10 +85,10 @@ void MessageOut::writeInt32(const int32_t value)
 
 #define LOBYTE(w)  (static_cast<unsigned char>(w))
 #define HIBYTE(w)  (static_cast<unsigned char>(( \
-static_cast<unsigned short>(w)) >> 8))
+static_cast<uint16_t>(w)) >> 8))
 
-void MessageOut::writeCoordinates(const unsigned short x,
-                                  const unsigned short y,
+void MessageOut::writeCoordinates(const uint16_t x,
+                                  const uint16_t y,
                                   unsigned char direction)
 {
     DEBUGLOG(strprintf("writeCoordinates: %u,%u %u", x, y, direction));
@@ -96,7 +96,7 @@ void MessageOut::writeCoordinates(const unsigned short x,
     mNetwork->mOutSize += 3;
     mPos += 3;
 
-    short temp = x;
+    int16_t temp = x;
     temp <<= 6;
     data[0] = 0;
     data[1] = 1;

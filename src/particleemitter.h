@@ -123,30 +123,30 @@ class ParticleEmitter final
         ParticleEmitterProp<int> mParticleFadeOut;
         ParticleEmitterProp<int> mParticleFadeIn;
 
-        // Map the particles are spawned on 
+        // Map the particles are spawned on
         Map *mMap;
 
-        // Number of particles spawned per update 
-        ParticleEmitterProp<int> mOutput;  
+        // Number of particles spawned per update
+        ParticleEmitterProp<int> mOutput;
 
-        // Pause in frames between two spawns 
-        ParticleEmitterProp<int> mOutputPause;  
+        // Pause in frames between two spawns
+        ParticleEmitterProp<int> mOutputPause;
         int mOutputPauseLeft;
 
         /*
          * Graphical representation of the particles
          */
-        // Particle image, if used 
+        // Particle image, if used
         Image *mParticleImage;
 
-        // Filename of particle animation file 
+        // Filename of particle animation file
         Animation mParticleAnimation;
 
-        // Filename of particle rotation file 
+        // Filename of particle rotation file
         Animation mParticleRotation;
 
-        // Opacity of the graphical representation of the particles 
-        ParticleEmitterProp<float> mParticleAlpha;  
+        // Opacity of the graphical representation of the particles
+        ParticleEmitterProp<float> mParticleAlpha;
 
         /*
          * Death effect of the particles

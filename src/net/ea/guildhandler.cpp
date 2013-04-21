@@ -104,7 +104,7 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
     msg.readInt8();  // Unused
     std::string guildName = msg.readString(24);
 
-    Guild *const g = Guild::getGuild(static_cast<short int>(guildId));
+    Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
     if (!g)
         return;
 
@@ -190,7 +190,7 @@ void GuildHandler::processGuildBasicInfo(Net::MessageIn &msg)
             castle.c_str()), BY_SERVER);
     }
 
-    Guild *const g = Guild::getGuild(static_cast<short int>(guildId));
+    Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
     if (!g)
         return;
     g->setName(name);
