@@ -392,11 +392,15 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
         {
             mPrice++;
             price = static_cast<int>(pow(10.0, mPrice));
+            mItemPriceTextField->setValue(price);
+            mItemPriceSlide->setValue(price);
         }
         else if (eventId == "decPrice")
         {
             mPrice--;
             price = static_cast<int>(pow(10.0, mPrice));
+            mItemPriceTextField->setValue(price);
+            mItemPriceSlide->setValue(price);
         }
         else if (eventId == "slidePrice")
         {
@@ -405,9 +409,9 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
                 mPrice = static_cast<int>(log(static_cast<float>(price)));
             else
                 mPrice = 0;
+            mItemPriceTextField->setValue(price);
+            mItemPriceSlide->setValue(price);
         }
-        mItemPriceTextField->setValue(price);
-        mItemPriceSlide->setValue(price);
     }
 }
 
