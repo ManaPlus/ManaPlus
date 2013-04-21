@@ -135,19 +135,45 @@ class CharacterDisplay final : public Container
         Button *mDelete;
 };
 
-class CharacterScroller final : public Container,
-                                public gcn::ActionListener
+class CharacterViewBase : public Container,
+                          public gcn::ActionListener
 {
     public:
-        CharacterScroller(CharSelectDialog *const widget,
-                          std::vector<CharacterDisplay*> *const entries) :
+        CharacterViewBase(CharSelectDialog *const widget) :
             Container(widget),
             gcn::ActionListener(),
+            mSelected(0)
+        {
+        }
+
+        A_DELETE_COPY(CharacterViewBase)
+
+        virtual ~CharacterViewBase()
+        { }
+
+        virtual void show(const int i) = 0;
+
+        virtual void resize() = 0;
+
+        int getSelected()
+        {
+            return mSelected;
+        }
+
+    protected:
+        int mSelected;
+};
+
+class CharacterViewSmall final : public CharacterViewBase
+{
+    public:
+        CharacterViewSmall(CharSelectDialog *const widget,
+                           std::vector<CharacterDisplay*> *const entries) :
+            CharacterViewBase(widget),
             mSelectedEntry(nullptr),
             mPrevious(new Button(this, "<", "prev", this)),
             mNext(new Button(this, ">", "next", this)),
             mNumber(new Label(this, "??")),
-            mSelected(0),
             mCharacterEntries(entries)
         {
             addKeyListener(widget);
@@ -164,9 +190,11 @@ class CharacterScroller final : public Container,
             add(mPrevious);
             add(mNext);
             add(mNumber);
+
+            setHeight(200);
         }
 
-        A_DELETE_COPY(CharacterScroller)
+        A_DELETE_COPY(CharacterViewSmall)
 
         void show(const int i)
         {
@@ -217,17 +245,11 @@ class CharacterScroller final : public Container,
             }
         }
 
-        int getSelected() const
-        {
-            return mSelected;
-        }
-
     private:
         CharacterDisplay *mSelectedEntry;
         Button *mPrevious;
         Button *mNext;
         Label *mNumber;
-        int mSelected;
         std::vector<CharacterDisplay*> *mCharacterEntries;
 };
 
@@ -244,7 +266,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
                           "change_password", this)),
     mUnregisterButton(nullptr),
     mChangeEmailButton(nullptr),
-    mCharacterScroller(nullptr),
+    mCharacterView(nullptr),
     mCharacterEntries(0),
     mCharServerHandler(Net::getCharServerHandler()),
     mDeleteDialog(nullptr),
@@ -303,11 +325,10 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
             character->setVisible(false);
             mCharacterEntries.push_back(character);
         }
-        mCharacterScroller = new CharacterScroller(this, &mCharacterEntries);
-        mCharacterScroller->setWidth(mainGraphics->getWidth()
+        mCharacterView = new CharacterViewSmall(this, &mCharacterEntries);
+        mCharacterView->setWidth(mainGraphics->getWidth()
             - 2 * getPadding());
-        mCharacterScroller->setHeight(200);
-        placer(0, 0, mCharacterScroller);
+        placer(0, 0, mCharacterView);
     }
 
     reflowLayout();
@@ -328,9 +349,9 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     // Check if a button of a character was pressed
     const gcn::Widget *const sourceParent = event.getSource()->getParent();
     int selected = -1;
-    if (mCharacterScroller)
+    if (mCharacterView)
     {
-        selected = mCharacterScroller->getSelected();
+        selected = mCharacterView->getSelected();
     }
     else
     {
@@ -418,7 +439,7 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Input::KEY_GUI_RIGHT:
         {
-            if (mCharacterScroller)
+            if (mCharacterView)
                 return;
             keyEvent.consume();
             int idx;
@@ -435,7 +456,7 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Input::KEY_GUI_LEFT:
         {
-            if (mCharacterScroller)
+            if (mCharacterView)
                 return;
             keyEvent.consume();
             int idx;
@@ -463,7 +484,7 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
                 {
                     idx2 = 0;
                 }
-                else if (!mCharacterScroller)
+                else if (!mCharacterView)
                 {
                     idx -= SLOTS_PER_ROW;
                     if (mCharacterEntries[idx]->getCharacter())
@@ -490,7 +511,7 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
                     idx += SLOTS_PER_ROW;
                     idx2 = 0;
                 }
-                else if (!mCharacterScroller)
+                else if (!mCharacterView)
                 {
                     if (mCharacterEntries[idx]->getCharacter())
                         idx2 = 1;
@@ -696,15 +717,15 @@ void CharSelectDialog::focusCharacter(const int i)
 {
     if (mCharacterEntries[i])
         mCharacterEntries[i]->requestFocus();
-    if (mCharacterScroller)
-        mCharacterScroller->show(i);
+    if (mCharacterView)
+        mCharacterView->show(i);
 }
 
 void CharSelectDialog::widgetResized(const gcn::Event &event)
 {
     Window::widgetResized(event);
-    if (mCharacterScroller)
-        mCharacterScroller->resize();
+    if (mCharacterView)
+        mCharacterView->resize();
 }
 
 CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
@@ -736,15 +757,6 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
     // Setting the width so that the largest label fits.
     mName->adjustSize();
     mMoney->adjustSize();
-/*
-    int width = 74;
-    if (width - 20 < mName->getWidth())
-        width = 20 + mName->getWidth();
-    if (width - 20 < mMoney->getWidth())
-        width = 20 + mMoney->getWidth();
-    h.reflowLayout(width, 112 + mName->getHeight() + mLevel->getHeight() +
-            mMoney->getHeight() + mButton->getHeight() + mDelete->getHeight());
-*/
 
     setWidth(110);
     setHeight(200);

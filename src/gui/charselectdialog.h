@@ -35,7 +35,7 @@
 
 class Button;
 class CharacterDisplay;
-class CharacterScroller;
+class CharacterViewBase;
 class Label;
 class LocalPlayer;
 class LoginData;
@@ -124,7 +124,7 @@ class CharSelectDialog final : public Window,
         Button *mChangePasswordButton;
         Button *mUnregisterButton;
         Button *mChangeEmailButton;
-        CharacterScroller *mCharacterScroller;
+        CharacterViewBase *mCharacterView;
 
         /** The player boxes */
         std::vector<CharacterDisplay*> mCharacterEntries;
