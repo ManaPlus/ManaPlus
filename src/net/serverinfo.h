@@ -25,6 +25,8 @@
 
 #include "utils/stringutils.h"
 
+#include <SDL_stdinc.h>
+
 #include <string>
 #include <vector>
 
