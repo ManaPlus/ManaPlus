@@ -317,7 +317,13 @@ void ConfigurationObject::clear()
 
 ConfigurationObject::ConfigurationObject() :
     mOptions(),
+#ifdef DEBUG_CONFIG
+    mContainerOptions(),
+    mLogKeys(false),
+    mIsMain(false)
+#else
     mContainerOptions()
+#endif
 {
 }
 

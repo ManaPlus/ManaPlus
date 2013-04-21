@@ -325,6 +325,7 @@ void Minimap::draw(gcn::Graphics *graphics)
                 case ActorSprite::PLAYER:
                 case ActorSprite::FLOOR_ITEM:
                 case ActorSprite::PORTAL:
+                case ActorSprite::PET:
                 default:
                     continue;
             }

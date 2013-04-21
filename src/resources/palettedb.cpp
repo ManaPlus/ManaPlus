@@ -25,8 +25,6 @@
 #include "resources/dyecolor.h"
 #include "resources/resourcemanager.h"
 
-#include "utils/stringvector.h"
-
 #include <map>
 
 #include "debug.h"
@@ -87,8 +85,11 @@ void PaletteDB::loadPalette()
         unsigned int g;
         unsigned int b;
 
-        if (sscanf(line.c_str(), "%u %u %u\t%s", &r, &g, &b, name) == 4)
+        if (sscanf(line.c_str(), "%10u %10u %10u\t%100s",
+            &r, &g, &b, name) == 4)
+        {
             mColors[name] = DyeColor(r, g, b);
+        }
     }
 }
 

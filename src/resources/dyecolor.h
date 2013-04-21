@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2013  The ManaPlus Developers
+ *  Copyright (C) 2013  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,33 +18,38 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/tmwa/messagehandler.h"
+#ifndef DYECOLOR_H
+#define DYECOLOR_H
 
-#include "net/tmwa/network.h"
+#include <SDL_stdinc.h>
 
-#include <cassert>
+#include "localconsts.h"
 
-#include "debug.h"
-
-namespace TmwAthena
+struct DyeColor
 {
+    DyeColor()
+    {
+        value[3] = 255;
+    }
 
-MessageHandler::MessageHandler() :
-    Net::MessageHandler(),
-    mNetwork(nullptr)
-{
-}
+    DyeColor(const uint8_t r, const uint8_t g, const uint8_t b)
+    {
+        value[0] = r;
+        value[1] = g;
+        value[2] = b;
+        value[3] = 255;
+    }
 
-MessageHandler::~MessageHandler()
-{
-    if (mNetwork)
-        mNetwork->unregisterHandler(this);
-}
+    DyeColor(const uint8_t r, const uint8_t g, const uint8_t b,
+             const uint8_t a)
+    {
+        value[0] = r;
+        value[1] = g;
+        value[2] = b;
+        value[3] = a;
+    }
 
-void MessageHandler::setNetwork(Network *network)
-{
-    assert(!(network && mNetwork));
-    mNetwork = network;
-}
+    uint8_t value[4];
+};
 
-}  // namespace TmwAthena
+#endif

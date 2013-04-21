@@ -925,6 +925,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
             case ActorSprite::FLOOR_ITEM:
             case ActorSprite::UNKNOWN:
             case ActorSprite::PLAYER:
+            case ActorSprite::PET:
             default:
                 gui->setCursorType(Cursor::CURSOR_POINTER);
                 break;

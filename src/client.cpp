@@ -655,7 +655,7 @@ void Client::gameInit()
     if (mCurrentServer.port == 0)
     {
         mCurrentServer.port = static_cast<uint16_t>(branding.getValue(
-            "defaultPort", DEFAULT_PORT));
+            "defaultPort", static_cast<int>(DEFAULT_PORT)));
         mCurrentServer.type = ServerInfo::parseType(
             branding.getValue("defaultServerType", "tmwathena"));
     }
@@ -722,7 +722,7 @@ void Client::setEnv(const char *const name, const char *const value)
     if (!name || !value)
         return;
 #ifdef WIN32
-    if (putenv(reinterpret_cast<char*>((std::string(name)
+    if (putenv(const_cast<char*>((std::string(name)
         + "=" + value).c_str())))
 #else
     if (setenv(name, value, 1))

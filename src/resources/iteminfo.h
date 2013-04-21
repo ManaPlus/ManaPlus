@@ -26,7 +26,6 @@
 #include "being.h"
 
 #include "resources/colordb.h"
-#include "resources/soundinfo.h"
 
 #include <map>
 #include <set>

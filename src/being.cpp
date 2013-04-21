@@ -2794,6 +2794,8 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
                     mEmotionSprite = AnimatedSprite::clone(sprite->sprite);
                     if (mEmotionSprite)
                         mEmotionTime = info->time;
+                    else
+                        mEmotionTime = emote_time;
                 }
             }
         }

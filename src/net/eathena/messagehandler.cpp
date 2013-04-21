@@ -31,8 +31,9 @@
 namespace EAthena
 {
 
-MessageHandler::MessageHandler()
-    : mNetwork(nullptr)
+MessageHandler::MessageHandler() :
+    Net::MessageHandler(),
+    mNetwork(nullptr)
 {
 }
 

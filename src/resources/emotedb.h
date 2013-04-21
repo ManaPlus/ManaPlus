@@ -48,7 +48,8 @@ struct EmoteInfo final
 {
     EmoteInfo() :
         sprites(),
-        particles()
+        particles(),
+        time(400)
     { }
 
     A_DELETE_COPY(EmoteInfo)

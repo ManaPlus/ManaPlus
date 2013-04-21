@@ -254,6 +254,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
         case ActorSprite::UNKNOWN:
         case ActorSprite::FLOOR_ITEM:
         case ActorSprite::PORTAL:
+        case ActorSprite::PET:
         default:
             /* Other beings aren't interesting... */
             return;
