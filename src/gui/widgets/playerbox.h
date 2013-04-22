@@ -46,9 +46,11 @@ class PlayerBox final : public Widget2,
          * Constructor. Takes the initial player character that this box should
          * display, which defaults to <code>NULL</code>.
          */
-        PlayerBox(Being *const being, const std::string &skin = "");
+        PlayerBox(Being *const being, const std::string &skin = "",
+                  const std::string &selectedSkin = "");
 
-        explicit PlayerBox(std::string skin = "");
+        PlayerBox(const std::string &skin = "",
+                  const std::string &selectedSkin = "");
 
         A_DELETE_COPY(PlayerBox)
 
@@ -57,7 +59,7 @@ class PlayerBox final : public Widget2,
          */
         ~PlayerBox();
 
-        void init(std::string skin);
+        void init(std::string name, std::string selectedName);
 
         /**
          * Sets a new player character to be displayed by this box. Setting the
@@ -80,6 +82,9 @@ class PlayerBox final : public Widget2,
         Being *getBeing() A_WARN_UNUSED
         { return mBeing; }
 
+        void setSelected(bool b)
+        { mSelected = b; }
+
         void mouseReleased(gcn::MouseEvent& event);
 
     private:
@@ -87,10 +92,13 @@ class PlayerBox final : public Widget2,
 
         float mAlpha;
         ImageRect mBackground;
+        ImageRect mSelectedBackground;
         Skin *mSkin;
-        bool mDrawBackground;
+        Skin *mSelectedSkin;
         int mOffsetX;
         int mOffsetY;
+        bool mDrawBackground;
+        bool mSelected;
 };
 
 #endif

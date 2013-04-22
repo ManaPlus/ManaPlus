@@ -42,6 +42,7 @@ gui_DATA =				\
 	mouse.png			\
 	ok.xml			\
 	playerbox.xml	\
+	playerboxselected.xml	\
 	popup.xml			\
 	progress-indicator.png		\
 	progressbar.xml			\

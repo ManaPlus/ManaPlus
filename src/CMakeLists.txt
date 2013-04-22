@@ -114,6 +114,13 @@ SET(SRCS
     gui/widgets/browserbox.h
     gui/widgets/button.cpp
     gui/widgets/button.h
+    gui/widgets/characterdisplay.cpp
+    gui/widgets/characterdisplay.h
+    gui/widgets/charviewbase.h
+    gui/widgets/characterviewnormal.cpp
+    gui/widgets/characterviewnormal.h
+    gui/widgets/characterviewsmall.cpp
+    gui/widgets/characterviewsmall.h
     gui/widgets/chattab.cpp
     gui/widgets/chattab.h
     gui/widgets/checkbox.cpp

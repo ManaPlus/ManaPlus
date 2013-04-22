@@ -94,9 +94,9 @@ class CharSelectDialog final : public Window,
 
         void close() override;
 
-        void focusCharacter(int i);
-
         void widgetResized(const gcn::Event &event) override;
+
+        void updateState();
 
     private:
         void attemptCharacterDelete(const int index);
@@ -105,28 +105,25 @@ class CharSelectDialog final : public Window,
 
         void setCharacters(const Net::Characters &characters);
 
+        void use(const int selected);
+
         void lock();
         void unlock();
         void setLocked(const bool locked);
-
-        bool getFocusedContainer(int &container, int &idx) A_WARN_UNUSED;
-
-        void setFocusedContainer(const int i, const int button);
 
         bool mLocked;
 
         LoginData *mLoginData;
 
-        Label *mAccountNameLabel;
-        Label *mLastLoginLabel;
-
         Button *mSwitchLoginButton;
         Button *mChangePasswordButton;
         Button *mUnregisterButton;
         Button *mChangeEmailButton;
+        Button *mPlayButton;
+        Button *mInfoButton;
+        Button *mDeleteButton;
         CharacterViewBase *mCharacterView;
 
-        /** The player boxes */
         std::vector<CharacterDisplay*> mCharacterEntries;
 
         Net::CharServerHandler *mCharServerHandler;

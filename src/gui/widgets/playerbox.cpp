@@ -33,31 +33,39 @@
 
 #include "debug.h"
 
-PlayerBox::PlayerBox(Being *const being, const std::string &skin) :
+PlayerBox::PlayerBox(Being *const being, const std::string &skin,
+                     const std::string &selectedSkin) :
     Widget2(),
     ScrollArea(),
     mBeing(being),
     mAlpha(1.0),
     mBackground(),
+    mSelectedBackground(),
     mSkin(nullptr),
-    mDrawBackground(false),
+    mSelectedSkin(nullptr),
     mOffsetX(-16),
-    mOffsetY(-32)
+    mOffsetY(-32),
+    mDrawBackground(false),
+    mSelected(false)
 {
-    init(skin);
+    init(skin, selectedSkin);
 }
 
-PlayerBox::PlayerBox(std::string skin) :
+PlayerBox::PlayerBox(const std::string &skin,
+                     const std::string &selectedSkin) :
     ScrollArea(),
     mBeing(nullptr),
     mAlpha(1.0),
     mBackground(),
+    mSelectedBackground(),
     mSkin(nullptr),
-    mDrawBackground(false),
+    mSelectedSkin(nullptr),
     mOffsetX(-16),
-    mOffsetY(-32)
+    mOffsetY(-32),
+    mDrawBackground(false),
+    mSelected(false)
 {
-    init(skin);
+    init(skin, selectedSkin);
 }
 
 PlayerBox::~PlayerBox()
@@ -68,23 +76,23 @@ PlayerBox::~PlayerBox()
     Theme *const theme = Theme::instance();
     if (theme)
     {
-        theme->unload(mSkin);
         theme->unloadRect(mBackground);
+        theme->unloadRect(mSelectedBackground);
     }
 
     mBeing = nullptr;
 }
 
-void PlayerBox::init(std::string skin)
+void PlayerBox::init(std::string name, std::string selectedName)
 {
     setFrameSize(2);
 
     if (Theme::instance())
     {
-        if (skin.empty())
-            skin = "playerbox.xml";
+        if (name.empty())
+            name = "playerbox.xml";
         mSkin = Theme::instance()->loadSkinRect(mBackground,
-            skin, "playerbox_background.xml");
+            name, "playerbox_background.xml");
         if (mSkin)
         {
             mDrawBackground = (mSkin->getOption("drawbackground") != 0);
@@ -92,11 +100,17 @@ void PlayerBox::init(std::string skin)
             mOffsetY = mSkin->getOption("offsetY", -32);
             mFrameSize = mSkin->getOption("frameSize", 2);
         }
+        if (selectedName.empty())
+            selectedName = "playerboxselected.xml";
+        mSelectedSkin = Theme::instance()->loadSkinRect(mSelectedBackground,
+            selectedName, "playerbox_background.xml");
     }
     else
     {
         for (int f = 0; f < 9; f ++)
             mBackground.grid[f] = nullptr;
+        for (int f = 0; f < 9; f ++)
+            mSelectedBackground.grid[f] = nullptr;
     }
 }
 
@@ -133,8 +147,16 @@ void PlayerBox::drawFrame(gcn::Graphics *graphics)
         w = getWidth() + bs * 2;
         h = getHeight() + bs * 2;
 
-        static_cast<Graphics*>(graphics)->drawImageRect(
-            0, 0, w, h, mBackground);
+        if (!mSelected)
+        {
+            static_cast<Graphics*>(graphics)->drawImageRect(
+                0, 0, w, h, mBackground);
+        }
+        else
+        {
+            static_cast<Graphics*>(graphics)->drawImageRect(
+                0, 0, w, h, mSelectedBackground);
+        }
     }
     BLOCK_END("PlayerBox::drawFrame")
 }
