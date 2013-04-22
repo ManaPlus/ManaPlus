@@ -46,116 +46,220 @@ const int OUTLINE_SIZE = 1;
 
 char *strBuf;
 
-class SDLTextChunk final
+const unsigned int CACHES_NUMBER = 256;
+
+#ifdef UNITTESTS
+int sdlTextChunkCnt = 0;
+#endif
+
+SDLTextChunk::SDLTextChunk(const std::string &text0, const gcn::Color &color0,
+              const gcn::Color &color1) :
+    img(nullptr),
+    text(text0),
+    color(color0),
+    color2(color1),
+    next(nullptr)
 {
-    public:
-        SDLTextChunk(const std::string &text0, const gcn::Color &color0,
-                     const gcn::Color &color1) :
-            img(nullptr), text(text0), color(color0), color2(color1)
-        {
-        }
+#ifdef UNITTESTS
+    sdlTextChunkCnt ++;
+#endif
+}
 
+SDLTextChunk::~SDLTextChunk()
+{
+    delete img;
+    img = nullptr;
+#ifdef UNITTESTS
+    sdlTextChunkCnt --;
+#endif
+}
 
-        ~SDLTextChunk()
+bool SDLTextChunk::operator==(const SDLTextChunk &chunk) const
+{
+    return (chunk.text == text && chunk.color == color
+            && chunk.color2 == color2);
+}
+
+void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
+{
+    BLOCK_START("SDLTextChunk::generate")
+    SDL_Color sdlCol;
+    sdlCol.b = static_cast<uint8_t>(color.b);
+    sdlCol.r = static_cast<uint8_t>(color.r);
+    sdlCol.g = static_cast<uint8_t>(color.g);
+    sdlCol.unused = 0;
+
+    getSafeUtf8String(text, strBuf);
+
+    SDL_Surface *surface = TTF_RenderUTF8_Blended(
+        font, strBuf, sdlCol);
+
+    if (!surface)
+    {
+        img = nullptr;
+        BLOCK_END("SDLTextChunk::generate")
+        return;
+    }
+
+    const int width = surface->w;
+    const int height = surface->h;
+
+    if (color.r != color2.r || color.g != color2.g
+        || color.b != color2.b)
+    {   // outlining
+        SDL_Color sdlCol2;
+        SDL_Surface *background = imageHelper->create32BitSurface(
+            width, height);
+        if (!background)
         {
-            delete img;
             img = nullptr;
-        }
-
-        bool operator==(const SDLTextChunk &chunk) const
-        {
-            return (chunk.text == text && chunk.color == color
-                    && chunk.color2 == color2);
-        }
-
-        void generate(TTF_Font *const font, const float alpha)
-        {
-            BLOCK_START("SDLTextChunk::generate")
-            SDL_Color sdlCol;
-            sdlCol.b = static_cast<uint8_t>(color.b);
-            sdlCol.r = static_cast<uint8_t>(color.r);
-            sdlCol.g = static_cast<uint8_t>(color.g);
-            sdlCol.unused = 0;
-
-            getSafeUtf8String(text, strBuf);
-
-            SDL_Surface *surface = TTF_RenderUTF8_Blended(
-                font, strBuf, sdlCol);
-
-            if (!surface)
-            {
-                img = nullptr;
-                BLOCK_END("SDLTextChunk::generate")
-                return;
-            }
-
-            const int width = surface->w;
-            const int height = surface->h;
-
-            if (color.r != color2.r || color.g != color2.g
-                || color.b != color2.b)
-            {   // outlining
-                SDL_Color sdlCol2;
-                SDL_Surface *background = imageHelper->create32BitSurface(
-                    width, height);
-                if (!background)
-                {
-                    img = nullptr;
-                    SDL_FreeSurface(surface);
-                    BLOCK_END("SDLTextChunk::generate")
-                    return;
-                }
-                sdlCol2.b = static_cast<uint8_t>(color2.b);
-                sdlCol2.r = static_cast<uint8_t>(color2.r);
-                sdlCol2.g = static_cast<uint8_t>(color2.g);
-                sdlCol2.unused = 0;
-                SDL_Surface *const surface2 = TTF_RenderUTF8_Blended(
-                    font, strBuf, sdlCol2);
-                if (!surface2)
-                {
-                    img = nullptr;
-                    SDL_FreeSurface(surface);
-                    BLOCK_END("SDLTextChunk::generate")
-                    return;
-                }
-                SDL_Rect rect =
-                {
-                    OUTLINE_SIZE,
-                    0,
-                    static_cast<Uint16>(surface->w),
-                    static_cast<Uint16>(surface->h)
-                };
-//                SDL_SetAlpha(surface2, 0, SDL_ALPHA_OPAQUE);
-                MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
-                rect.x = -OUTLINE_SIZE;
-                MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
-                rect.x = 0;
-                rect.y = -OUTLINE_SIZE;
-                MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
-                rect.y = OUTLINE_SIZE;
-                MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
-                rect.x = 0;
-                rect.y = 0;
-//                SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
-                MSDL_gfxBlitRGBA(surface, nullptr, background, &rect);
-                SDL_FreeSurface(surface);
-                SDL_FreeSurface(surface2);
-                surface = background;
-            }
-            img = imageHelper->createTextSurface(
-                surface, width, height, alpha);
             SDL_FreeSurface(surface);
-
             BLOCK_END("SDLTextChunk::generate")
+            return;
         }
+        sdlCol2.b = static_cast<uint8_t>(color2.b);
+        sdlCol2.r = static_cast<uint8_t>(color2.r);
+        sdlCol2.g = static_cast<uint8_t>(color2.g);
+        sdlCol2.unused = 0;
+        SDL_Surface *const surface2 = TTF_RenderUTF8_Blended(
+            font, strBuf, sdlCol2);
+        if (!surface2)
+        {
+            img = nullptr;
+            SDL_FreeSurface(surface);
+            BLOCK_END("SDLTextChunk::generate")
+            return;
+        }
+        SDL_Rect rect =
+        {
+            OUTLINE_SIZE,
+            0,
+            static_cast<Uint16>(surface->w),
+            static_cast<Uint16>(surface->h)
+        };
+//                SDL_SetAlpha(surface2, 0, SDL_ALPHA_OPAQUE);
+        MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+        rect.x = -OUTLINE_SIZE;
+        MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+        rect.x = 0;
+        rect.y = -OUTLINE_SIZE;
+        MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+        rect.y = OUTLINE_SIZE;
+        MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
+        rect.x = 0;
+        rect.y = 0;
+//                SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
+        MSDL_gfxBlitRGBA(surface, nullptr, background, &rect);
+        SDL_FreeSurface(surface);
+        SDL_FreeSurface(surface2);
+        surface = background;
+    }
+    img = imageHelper->createTextSurface(
+        surface, width, height, alpha);
+    SDL_FreeSurface(surface);
 
-        Image *img;
-        std::string text;
-        gcn::Color color;
-        gcn::Color color2;
-};
+    BLOCK_END("SDLTextChunk::generate")
+}
 
-typedef std::list<SDLTextChunk>::iterator CacheIterator;
+
+TextChunkList::TextChunkList() :
+    start(nullptr),
+    end(nullptr),
+    size(0)
+{
+}
+
+void TextChunkList::insertFirst(SDLTextChunk *const item)
+{
+    SDLTextChunk *const oldFirst = start;
+    if (start)
+        start->prev = item;
+    item->prev = nullptr;
+    if (oldFirst)
+        item->next = oldFirst;
+    else
+        end = item;
+    start = item;
+    size ++;
+}
+
+void TextChunkList::moveToFirst(SDLTextChunk *item)
+{
+    if (item == start)
+        return;
+
+    SDLTextChunk *oldPrev = item->prev;
+    if (oldPrev)
+        oldPrev->next = item->next;
+    SDLTextChunk *oldNext = item->next;
+    if (oldNext)
+        oldNext->prev = item->prev;
+    else
+        end = oldPrev;
+    SDLTextChunk *const oldFirst = start;
+    if (start)
+        start->prev = item;
+    item->prev = nullptr;
+    item->next = oldFirst;
+    start = item;
+}
+
+void TextChunkList::removeBack()
+{
+    SDLTextChunk *oldEnd = end;
+    if (oldEnd)
+    {
+        end = oldEnd->prev;
+        if (end)
+            end->next = nullptr;
+        else
+            start = nullptr;
+        delete oldEnd;
+        size --;
+    }
+}
+
+void TextChunkList::removeBack(int n)
+{
+    SDLTextChunk *item = end;
+    while (n && item)
+    {
+        n --;
+        SDLTextChunk *oldEnd = item;
+        item = item->prev;
+        delete oldEnd;
+        size --;
+    }
+    if (item)
+    {
+        item->next = nullptr;
+        end = item;
+    }
+    else
+    {
+        start = nullptr;
+        end = nullptr;
+    }
+}
+
+void TextChunkList::clear()
+{
+    SDLTextChunk *item = start;
+    while (item)
+    {
+        SDLTextChunk *item2 = item->next;
+        delete item;
+        item = item2;
+    }
+    start = nullptr;
+    end = nullptr;
+    size = 0;
+}
+
+namespace
+{
+    TextChunkList mCache[CACHES_NUMBER];
+}  // namespace
 
 static int fontCounter;
 
@@ -205,6 +309,7 @@ SDLFont::~SDLFont()
     TTF_CloseFont(mFont);
     mFont = nullptr;
     --fontCounter;
+    clear();
 
     if (fontCounter == 0)
     {
@@ -246,9 +351,7 @@ void SDLFont::loadFont(std::string filename, const int size, const int style)
 void SDLFont::clear()
 {
     for (size_t f = 0; f < CACHES_NUMBER; f ++)
-    {
         mCache[f].clear();
-    }
 }
 
 void SDLFont::drawString(gcn::Graphics *const graphics,
@@ -278,7 +381,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
     SDLTextChunk chunk(text, col, col2);
 
     const unsigned char chr = text[0];
-    std::list<SDLTextChunk> *const cache = &mCache[chr];
+    TextChunkList *const cache = &mCache[chr];
 
     bool found = false;
 
@@ -286,19 +389,22 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
     int cnt = 0;
 #endif
 
-    FOR_EACHP (CacheIterator, i, cache)
+    SDLTextChunk *i = cache->start;
+    while (i)
     {
-        if (chunk == (*i))
+        if (*i == chunk)
         {
             // Raise priority: move it to front
-            cache->splice(cache->begin(), *cache, i);
+            cache->moveToFirst(i);
             found = true;
             break;
         }
+        i = i->next;
 #ifdef DEBUG_FONT
         cnt ++;
 #endif
     }
+
 #ifdef DEBUG_FONT
     logger->log(std::string("drawString: ").append(text).append(
         ", iterations: ").append(toString(cnt)));
@@ -307,28 +413,33 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
     // Surface not found
     if (!found)
     {
-        if (cache->size() >= CACHE_SIZE)
+        if (cache->size >= CACHE_SIZE)
         {
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter ++;
 #endif
-            cache->pop_back();
+            cache->removeBack();
         }
 #ifdef DEBUG_FONT_COUNTERS
         mCreateCounter ++;
 #endif
-        cache->push_front(chunk);
-        SDLTextChunk &data = cache->front();
-        data.generate(mFont, alpha);
+        SDLTextChunk *chunk2 = new SDLTextChunk(text, col, col2);
 
-        if (data.img)
-            g->drawImage(data.img, x, y);
+        chunk2->generate(mFont, alpha);
+        cache->insertFirst(chunk2);
+
+        const Image *const image = chunk2->img;
+        if (image)
+            g->drawImage(image, x, y);
     }
-    else if (cache->front().img)
+    else
     {
-        Image *const image = cache->front().img;
-        image->setAlpha(alpha);
-        g->drawImage(image, x, y);
+        Image *const image = cache->start->img;
+        if (image)
+        {
+            image->setAlpha(alpha);
+            g->drawImage(image, x, y);
+        }
     }
     BLOCK_END("SDLFont::drawString")
 }
@@ -348,40 +459,33 @@ void SDLFont::slowLogic(const int rnd)
     BLOCK_END("SDLFont::slowLogic")
 }
 
-void SDLFont::createSDLTextChunk(SDLTextChunk *const chunk)
-{
-    if (!chunk || chunk->text.empty())
-        return;
-
-    const float alpha = static_cast<float>(chunk->color.a) / 255.0f;
-    chunk->color.a = 255;
-    chunk->generate(mFont, alpha);
-}
-
 int SDLFont::getWidth(const std::string &text) const
 {
     if (text.empty())
         return 0;
 
     const unsigned char chr = text[0];
-    std::list<SDLTextChunk> *const cache = &mCache[chr];
+    TextChunkList *const cache = &mCache[chr];
 
 #ifdef DEBUG_FONT
     int cnt = 0;
 #endif
 
-    FOR_EACHP (CacheIterator, i, cache)
+    SDLTextChunk *i = cache->start;
+    while (i)
     {
         if (i->text == text)
         {
             // Raise priority: move it to front
             // Assumption is that TTF::draw will be called next
-            cache->splice(cache->begin(), *cache, i);
-            if (i->img)
-                return i->img->getWidth();
+            cache->moveToFirst(i);
+            const Image *const image = i->img;
+            if (image)
+                return image->getWidth();
             else
                 return 0;
         }
+        i = i->next;
 #ifdef DEBUG_FONT
         cnt ++;
 #endif
@@ -407,8 +511,8 @@ void SDLFont::doClean()
 {
     for (unsigned int f = 0; f < CACHES_NUMBER; f ++)
     {
-        std::list<SDLTextChunk> *const cache = &mCache[f];
-        const size_t size = cache->size();
+        TextChunkList *const cache = &mCache[f];
+        const size_t size = cache->size;
 #ifdef DEBUG_FONT_COUNTERS
         logger->log("ptr: %d, size: %d", f, size);
 #endif
@@ -417,10 +521,7 @@ void SDLFont::doClean()
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter += 100;
 #endif
-            const std::list<SDLTextChunk>::iterator it_end = cache->end();
-            std::list<SDLTextChunk>::iterator it = cache->begin();
-            std::advance(it, -100);
-            cache->erase(it, it_end);
+            cache->removeBack(100);
 #ifdef DEBUG_FONT_COUNTERS
             logger->log("delete3");
 #endif
@@ -430,10 +531,7 @@ void SDLFont::doClean()
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter += 20;
 #endif
-            const std::list<SDLTextChunk>::iterator it_end = cache->end();
-            std::list<SDLTextChunk>::iterator it = cache->begin();
-            std::advance(it, -20);
-            cache->erase(it, it_end);
+            cache->removeBack(20);
 #ifdef DEBUG_FONT_COUNTERS
             logger->log("delete2");
 #endif
@@ -443,10 +541,15 @@ void SDLFont::doClean()
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter ++;
 #endif
-            cache->pop_back();
+            cache->removeBack();
 #ifdef DEBUG_FONT_COUNTERS
             logger->log("delete1");
 #endif
         }
     }
+}
+
+TextChunkList *SDLFont::getCache()
+{
+    return mCache;
 }

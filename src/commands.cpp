@@ -920,11 +920,12 @@ impHandler0(cacheInfo)
     if (!chatWindow || !debugChatTab)
         return;
 
+/*
     SDLFont *const font = dynamic_cast<SDLFont *const>(chatWindow->getFont());
     if (!font)
         return;
 
-    const std::list<SDLTextChunk> *const cache = font->getCache();
+    const TextChunkList *const cache = font->getCache();
     if (!cache)
         return;
 
@@ -933,9 +934,9 @@ impHandler0(cacheInfo)
     std::string str;
     for (int f = 0; f < 256; f ++)
     {
-        if (!cache[f].empty())
+        if (!cache[f].size)
         {
-            const unsigned int sz = static_cast<int>(cache[f].size());
+            const unsigned int sz = static_cast<int>(cache[f].size);
             all += sz;
             str.append(strprintf("%d: %u, ", f, sz));
         }
@@ -949,6 +950,7 @@ impHandler0(cacheInfo)
     debugChatTab->chatLog(strprintf("%s %d",
         _("Deleted:"), font->getDeleteCounter()));
 #endif
+*/
 }
 
 impHandler0(serverIgnoreAll)

@@ -24,6 +24,7 @@
 #ifndef SDLFONT_H
 #define SDLFONT_H
 
+#include <guichan/color.hpp>
 #include <guichan/font.hpp>
 
 #ifdef __WIN32__
@@ -37,9 +38,48 @@
 
 #include "localconsts.h"
 
-const unsigned int CACHES_NUMBER = 256;
+class Image;
 
-class SDLTextChunk;
+class SDLTextChunk final
+{
+    public:
+        SDLTextChunk(const std::string &text0, const gcn::Color &color0,
+                     const gcn::Color &color1);
+
+        ~SDLTextChunk();
+
+        bool operator==(const SDLTextChunk &chunk) const;
+
+        void generate(TTF_Font *const font, const float alpha);
+
+        Image *img;
+        std::string text;
+        gcn::Color color;
+        gcn::Color color2;
+        SDLTextChunk *prev;
+        SDLTextChunk *next;
+};
+
+
+class TextChunkList final
+{
+    public:
+        TextChunkList();
+
+        void insertFirst(SDLTextChunk *const item);
+
+        void moveToFirst(SDLTextChunk *item);
+
+        void removeBack();
+
+        void removeBack(int n);
+
+        void clear();
+
+        SDLTextChunk *start;
+        SDLTextChunk *end;
+        uint32_t size;
+};
 
 /**
  * A wrapper around SDL_ttf for allowing the use of TrueType fonts.
@@ -67,14 +107,11 @@ class SDLFont final : public gcn::Font
         void loadFont(std::string filename, const int size,
                       const int style = 0);
 
-        void createSDLTextChunk(SDLTextChunk *const chunk);
-
         virtual int getWidth(const std::string &text) const A_WARN_UNUSED;
 
         virtual int getHeight() const A_WARN_UNUSED;
 
-        std::list<SDLTextChunk> *getCache() A_WARN_UNUSED
-        { return mCache; }
+        TextChunkList *getCache() A_WARN_UNUSED;
 
         /**
          * @see Font::drawString
@@ -101,8 +138,11 @@ class SDLFont final : public gcn::Font
         unsigned mDeleteCounter;
 
         // Word surfaces cache
-        mutable std::list<SDLTextChunk> mCache[CACHES_NUMBER];
         int mCleanTime;
 };
+
+#ifdef UNITTESTS
+extern int sdlTextChunkCnt;
+#endif
 
 #endif
