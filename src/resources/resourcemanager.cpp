@@ -207,6 +207,8 @@ void ResourceManager::cleanProtected()
         {
             res->setProtected(false);
             res->decRef();
+            iter = mResources.begin();
+            continue;
         }
 
         ++ iter;
