@@ -2785,6 +2785,7 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
         if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
         {
             delete mEmotionSprite;
+            mEmotionSprite = nullptr;
             const EmoteInfo *const info = EmoteDB::get2(emotionIndex, true);
             if (info)
             {
