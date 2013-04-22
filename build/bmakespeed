@@ -1,0 +1,30 @@
+#!/bin/sh
+
+cd ..
+
+dir=`pwd`
+
+export CC=gcc-4.7
+export CXX=g++-4.7
+
+export LANG=C
+
+export CXXFLAGS="-ggdb3 -O5 -pipe -ffast-math \
+-funswitch-loops -pedantic -Wall \
+-D_FORTIFY_SOURCE=2 -Wc++11-compat -std=c++0x \
+-funsafe-loop-optimizations -flto -fwhole-program \
+-march=native"
+
+autoreconf -i
+./configure --prefix=$dir/run \
+--datadir=$dir/run/share/games \
+--bindir=$dir/run/bin \
+--mandir=$dir/run/share/man \
+--with-internalguichan=yes \
+--enable-eathena=yes
+
+cd po
+make -j5 update-gmo 2>../build/make1.log
+cd ..
+make -j5 2>build/make2.log
+
