@@ -20,6 +20,9 @@
 
 #include "logger.h"
 
+#include "client.h"
+
+#include "gui/sdlfont.h"
 #include "gui/theme.h"
 
 #include "gui/widgets/browserbox.h"
@@ -34,11 +37,19 @@
 
 #include "debug.h"
 
+extern const char *dirSeparator;
+
 TEST(browserbox, test1)
 {
     PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    Client::Options options;
+    Client client(options);
+
     logger = new Logger();
     Theme *theme = Theme::instance();
+    gcn::Widget::setGlobalFont(new SDLFont("/usr/share/fonts/truetype/"
+        "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));
     BrowserBox *box = new BrowserBox(nullptr, BrowserBox::AUTO_WRAP);
     box->setWidth(100);
     std::string row = "test";
