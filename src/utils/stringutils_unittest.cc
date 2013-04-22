@@ -515,3 +515,25 @@ TEST(stringuntils, strStartWith1)
     EXPECT_TRUE(strStartWith("test line", "test line"));
     EXPECT_TRUE(!strStartWith("test line", "est"));
 }
+
+TEST(stringuntils, encodeLinkText)
+{
+    std::string str;
+
+    str = encodeLinkText("test line");
+    EXPECT_EQ(str, "test line");
+    str = encodeLinkText("test|line");
+    EXPECT_EQ(str, "test\342\235\230line");
+    str = encodeLinkText("test||line");
+    EXPECT_EQ(str, "test\342\235\230\342\235\230line");
+}
+
+TEST(stringuntils, decodeLinkText)
+{
+    std::string str;
+
+    str = encodeLinkText("test|line");
+    EXPECT_EQ(str, "test\342\235\230line");
+    str = decodeLinkText(str);
+    EXPECT_EQ(str, "test|line");
+}
