@@ -30,6 +30,7 @@
 #include "guildmanager.h"
 #include "localplayer.h"
 #include "main.h"
+#include "nullopenglgraphics.h"
 #include "party.h"
 
 #include "gui/chatwindow.h"
@@ -1063,6 +1064,47 @@ impHandler1(execute)
         params = args.substr(idx + 1);
     }
     execFile(name, name, params, "");
+}
+
+impHandler0(testsdlfont)
+{
+#if defined USE_OPENGL && defined DEBUG_SDLFONT
+    SDLFont *font = new SDLFont("fonts/dejavusans.ttf", 18);
+    timespec time1;
+    timespec time2;
+    NullOpenGLGraphics *nullGraphics = new NullOpenGLGraphics;
+    std::vector<std::string> data;
+    int width = 0;
+
+    for (int f = 0; f < 300; f ++)
+        data.push_back("test " + toString(f) + "string");
+    nullGraphics->_beginDraw();
+
+    clock_gettime(CLOCK_MONOTONIC, &time1);
+    for (int f = 0; f < 500; f ++)
+    {
+        FOR_EACH (std::vector<std::string>::const_iterator, it, data)
+        {
+            width += font->getWidth(*it);
+            font->drawString(nullGraphics, *it, 10, 10);
+        }
+        FOR_EACH (std::vector<std::string>::const_iterator, it, data)
+            font->drawString(nullGraphics, *it, 10, 10);
+    }
+
+    clock_gettime(CLOCK_MONOTONIC, &time2);
+
+    delete nullGraphics;
+    delete font;
+
+    long int diff = (static_cast<long long int>(
+        time2.tv_sec) * 1000000000LL + static_cast<long long int>(
+        time2.tv_nsec)) / 100000 - (static_cast<long long int>(
+        time1.tv_sec) * 1000000000LL + static_cast<long long int>(
+        time1.tv_nsec)) / 100000;
+    if (debugChatTab)
+        debugChatTab->chatLog("sdlfont time: " + toString(diff));
+#endif
 }
 
 #ifdef DEBUG_DUMP_LEAKS1
