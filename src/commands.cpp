@@ -1090,6 +1090,8 @@ impHandler0(testsdlfont)
         }
         FOR_EACH (std::vector<std::string>::const_iterator, it, data)
             font->drawString(nullGraphics, *it, 10, 10);
+
+        font->doClean();
     }
 
     clock_gettime(CLOCK_MONOTONIC, &time2);
