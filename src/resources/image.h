@@ -60,6 +60,7 @@ class Image : public Resource
     friend class AtlasManager;
     friend class MobileOpenGLGraphics;
     friend class NormalOpenGLGraphics;
+    friend class NullOpenGLGraphics;
     friend class SafeOpenGLGraphics;
 #endif
 

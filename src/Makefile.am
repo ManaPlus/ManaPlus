@@ -634,6 +634,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      notifications.h \
 	      notifymanager.cpp \
 	      notifymanager.h \
+	      nullopenglgraphics.cpp \
+	      nullopenglgraphics.h \
 	      particle.cpp \
 	      particle.h \
 	      particlecontainer.cpp \

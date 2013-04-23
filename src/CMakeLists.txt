@@ -633,6 +633,8 @@ SET(SRCS
     notifications.h
     notifymanager.cpp
     notifymanager.h
+    nullopenglgraphics.cpp
+    nullopenglgraphics.h
     particle.cpp
     particle.h
     particlecontainer.cpp
