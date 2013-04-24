@@ -34,11 +34,30 @@
 #endif
 
 #include <list>
+#include <map>
 #include <string>
 
 #include "localconsts.h"
 
 class Image;
+
+const unsigned int CACHES_NUMBER = 256;
+
+class SDLTextChunkSmall
+{
+    public:
+        SDLTextChunkSmall(const std::string &text0, const gcn::Color &color0,
+                          const gcn::Color &color1);
+
+        SDLTextChunkSmall(const SDLTextChunkSmall &old);
+
+        bool operator==(const SDLTextChunkSmall &chunk) const;
+        bool operator<(const SDLTextChunkSmall &chunk) const;
+
+        std::string text;
+        gcn::Color color;
+        gcn::Color color2;
+};
 
 class SDLTextChunk final
 {
@@ -79,6 +98,7 @@ class TextChunkList final
         SDLTextChunk *start;
         SDLTextChunk *end;
         uint32_t size;
+        std::map<SDLTextChunkSmall, SDLTextChunk*> search;
 };
 
 /**
@@ -139,6 +159,7 @@ class SDLFont final : public gcn::Font
 
         // Word surfaces cache
         int mCleanTime;
+        mutable TextChunkList mCache[CACHES_NUMBER];
 };
 
 #ifdef UNITTESTS

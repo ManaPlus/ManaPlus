@@ -46,11 +46,54 @@ const int OUTLINE_SIZE = 1;
 
 char *strBuf;
 
-const unsigned int CACHES_NUMBER = 256;
-
 #ifdef UNITTESTS
 int sdlTextChunkCnt = 0;
 #endif
+
+SDLTextChunkSmall::SDLTextChunkSmall(const std::string &text0,
+                                     const gcn::Color &color0,
+                                     const gcn::Color &color1) :
+    text(text0),
+    color(color0),
+    color2(color1)
+{
+}
+
+SDLTextChunkSmall::SDLTextChunkSmall(const SDLTextChunkSmall &old)
+{
+    text = old.text;
+    color = old.color;
+    color2 = old.color2;
+}
+
+bool SDLTextChunkSmall::operator==(const SDLTextChunkSmall &chunk) const
+{
+    return (chunk.text == text && chunk.color == color
+            && chunk.color2 == color2);
+}
+
+bool SDLTextChunkSmall::operator<(const SDLTextChunkSmall &chunk) const
+{
+    if (chunk.text != text)
+        return chunk.text > text;
+
+    const gcn::Color &c = chunk.color;
+    if (c.r != color.r)
+        return c.r > color.r;
+    if (c.g != color.g)
+        return c.g > color.g;
+    if (c.b != color.b)
+        return c.b > color.b;
+
+    const gcn::Color &c2 = chunk.color2;
+    if (c2.r != color2.r)
+        return c2.r > color2.r;
+    if (c2.g != color2.g)
+        return c2.g > color2.g;
+    if (c2.b != color2.b)
+        return c2.b > color2.b;
+    return false;
+}
 
 SDLTextChunk::SDLTextChunk(const std::string &text0, const gcn::Color &color0,
               const gcn::Color &color1) :
@@ -58,6 +101,7 @@ SDLTextChunk::SDLTextChunk(const std::string &text0, const gcn::Color &color0,
     text(text0),
     color(color0),
     color2(color1),
+    prev(nullptr),
     next(nullptr)
 {
 #ifdef UNITTESTS
@@ -181,6 +225,7 @@ void TextChunkList::insertFirst(SDLTextChunk *const item)
         end = item;
     start = item;
     size ++;
+    search[SDLTextChunkSmall(item->text, item->color, item->color2)] = item;
 }
 
 void TextChunkList::moveToFirst(SDLTextChunk *item)
@@ -214,6 +259,8 @@ void TextChunkList::removeBack()
             end->next = nullptr;
         else
             start = nullptr;
+        search.erase(SDLTextChunkSmall(oldEnd->text,
+            oldEnd->color, oldEnd->color2));
         delete oldEnd;
         size --;
     }
@@ -227,6 +274,8 @@ void TextChunkList::removeBack(int n)
         n --;
         SDLTextChunk *oldEnd = item;
         item = item->prev;
+        search.erase(SDLTextChunkSmall(oldEnd->text,
+            oldEnd->color, oldEnd->color2));
         delete oldEnd;
         size --;
     }
@@ -244,6 +293,7 @@ void TextChunkList::removeBack(int n)
 
 void TextChunkList::clear()
 {
+    search.clear();
     SDLTextChunk *item = start;
     while (item)
     {
@@ -255,11 +305,6 @@ void TextChunkList::clear()
     end = nullptr;
     size = 0;
 }
-
-namespace
-{
-    TextChunkList mCache[CACHES_NUMBER];
-}  // namespace
 
 static int fontCounter;
 
@@ -378,40 +423,24 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
      */
     col.a = 255;
 
-    SDLTextChunk chunk(text, col, col2);
-
     const unsigned char chr = text[0];
     TextChunkList *const cache = &mCache[chr];
 
-    bool found = false;
-
-#ifdef DEBUG_FONT
-    int cnt = 0;
-#endif
-
-    SDLTextChunk *i = cache->start;
-    while (i)
+    std::map<SDLTextChunkSmall, SDLTextChunk*> &search = cache->search;
+    std::map<SDLTextChunkSmall, SDLTextChunk*>::iterator i
+        = search.find(SDLTextChunkSmall(text, col, col2));
+    if (i != search.end())
     {
-        if (*i == chunk)
+        SDLTextChunk *const chunk2 = (*i).second;
+        cache->moveToFirst(chunk2);
+        Image *const image = chunk2->img;
+        if (image)
         {
-            // Raise priority: move it to front
-            cache->moveToFirst(i);
-            found = true;
-            break;
+            image->setAlpha(alpha);
+            g->drawImage(image, x, y);
         }
-        i = i->next;
-#ifdef DEBUG_FONT
-        cnt ++;
-#endif
     }
-
-#ifdef DEBUG_FONT
-    logger->log(std::string("drawString: ").append(text).append(
-        ", iterations: ").append(toString(cnt)));
-#endif
-
-    // Surface not found
-    if (!found)
+    else
     {
         if (cache->size >= CACHE_SIZE)
         {
@@ -431,15 +460,6 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
         const Image *const image = chunk2->img;
         if (image)
             g->drawImage(image, x, y);
-    }
-    else
-    {
-        Image *const image = cache->start->img;
-        if (image)
-        {
-            image->setAlpha(alpha);
-            g->drawImage(image, x, y);
-        }
     }
     BLOCK_END("SDLFont::drawString")
 }
