@@ -746,9 +746,19 @@ void ChatWindow::mousePressed(gcn::MouseEvent &event)
             Tab *const tab = mChatTabs->getSelectedTab();
             if (tab)
             {
-                ChatTab *const cTab = dynamic_cast<ChatTab*>(tab);
-                if (cTab)
-                    viewport->showChatPopup(cTab);
+                if (inputManager.isActionActive(static_cast<int>(
+                    Input::KEY_CHAT_MOD)))
+                {
+                    ChatTab *const wTab = dynamic_cast<WhisperTab*>(tab);
+                    if (wTab)
+                        wTab->handleCommand("close", "");
+                }
+                else
+                {
+                    ChatTab *const cTab = dynamic_cast<ChatTab*>(tab);
+                    if (cTab)
+                        viewport->showChatPopup(cTab);
+                }
             }
         }
     }

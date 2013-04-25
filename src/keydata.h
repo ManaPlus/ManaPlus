@@ -340,6 +340,7 @@ namespace Input
         KEY_STOP_SIT,
         KEY_SHOW_KEYBOARD,
         KEY_SHOW_WINDOWS,
+        KEY_CHAT_MOD,
         KEY_TOTAL
     };
 }  // namespace Input

@@ -1943,6 +1943,13 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         Input::GRP_DEFAULT,
         &ActionManager::showWindows,
         Input::KEY_NO_VALUE, 50,
+        COND_DEFAULT},
+    {"keyChatMod",
+        INPUT_KEYBOARD, SDLK_LSHIFT,
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        Input::GRP_CHAT,
+        nullptr,
+        Input::KEY_NO_VALUE, 50,
         COND_DEFAULT}
 };
 

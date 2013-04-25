@@ -1011,6 +1011,11 @@ static SetupActionData setupActionData5[] =
         "",
     },
     {
+        N_("Chat modifier key"),
+        Input::KEY_CHAT_MOD,
+        "",
+    },
+    {
         "",
         Input::KEY_NO_VALUE,
         ""
