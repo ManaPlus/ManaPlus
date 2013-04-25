@@ -78,11 +78,12 @@ const char *ipToString(const int address)
 {
     static char asciiIP[18];
 
-    sprintf(asciiIP, "%i.%i.%i.%i",
+    snprintf(asciiIP, sizeof(asciiIP), "%i.%i.%i.%i",
             static_cast<unsigned char>(address),
             static_cast<unsigned char>(address >> 8),
             static_cast<unsigned char>(address >> 16),
             static_cast<unsigned char>(address >> 24));
+    asciiIP[17] = 0;
 
     return asciiIP;
 }
@@ -93,6 +94,7 @@ std::string strprintf(const char *const format, ...)
     va_list(args);
     va_start(args, format);
     int nb = vsnprintf(buf, 256, format, args);
+    buf[256] = 0;
     va_end(args);
     if (nb < 256)
         return buf;
@@ -659,6 +661,7 @@ std::string decodeLinkText(std::string data)
 std::string toStringPrint(const unsigned int val)
 {
     static char str[100];
-    sprintf(str, "%u 0x%x", val, val);
+    snprintf(str, sizeof(str), "%u 0x%x", val, val);
+    str[99] = 0;
     return str;
 }

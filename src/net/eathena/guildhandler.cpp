@@ -277,7 +277,6 @@ void GuildHandler::chat(const int guildId A_UNUSED,
 
 void GuildHandler::memberList(const int guildId A_UNUSED) const
 {
-    // TODO four types of info requests:
     // 0 = basic info + alliance info
     // 1 = position name list + member list
     // 2 = position name list + position info list
@@ -290,7 +289,6 @@ void GuildHandler::memberList(const int guildId A_UNUSED) const
 
 void GuildHandler::info(const int guildId A_UNUSED)
 {
-    // TODO four types of info requests:
     // 0 = basic info + alliance info
     // 1 = position name list + member list
     // 2 = position name list + position info list

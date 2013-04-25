@@ -48,7 +48,6 @@ extern int weightNoticeTime;
 // everything beyond will reset the port hard.
 static const int MAP_TELEPORT_SCROLL_DISTANCE = 8;
 
-// TODO Move somewhere else
 namespace
 {
     /**

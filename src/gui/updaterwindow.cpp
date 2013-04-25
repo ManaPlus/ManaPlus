@@ -517,7 +517,6 @@ void UpdaterWindow::download()
     setLabel(mCurrentFile + " (0%)");
     mDownloadComplete = false;
 
-    // TODO: check return
     mDownload->start();
 }
 
@@ -648,7 +647,6 @@ void UpdaterWindow::logic()
     switch (mDownloadStatus)
     {
         case UPDATE_ERROR:
-            // TODO: Only send complete sentences to gettext
             mBrowserBox->addRow("");
             mBrowserBox->addRow(_("##1  The update process is incomplete."));
             // TRANSLATORS: Continues "you try again later.".

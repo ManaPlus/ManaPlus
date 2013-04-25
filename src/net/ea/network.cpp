@@ -233,8 +233,6 @@ void Network::receive()
 
     while (mState == CONNECTED)
     {
-        // TODO Try to get this to block all the time while still being able
-        // to escape the loop
         const int numReady = TcpNet::checkSockets(
             set, (static_cast<uint32_t>(500)));
         switch (numReady)

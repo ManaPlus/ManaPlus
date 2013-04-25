@@ -90,7 +90,6 @@ bool Joystick::open()
 
     mJoystick = SDL_JoystickOpen(mNumber);
 
-    // TODO Bail out!
     if (!mJoystick)
     {
         logger->log("Couldn't open joystick: %s", SDL_GetError());

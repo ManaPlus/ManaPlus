@@ -39,17 +39,14 @@ void NpcHandler::sendLetter(const int npcId A_UNUSED,
                             const std::string &recipient A_UNUSED,
                             const std::string &text A_UNUSED) const
 {
-    // TODO
 }
 
 void NpcHandler::startShopping(const int beingId A_UNUSED) const
 {
-    // TODO
 }
 
 void NpcHandler::endShopping(const int beingId A_UNUSED) const
 {
-    // TODO
 }
 
 void NpcHandler::clearDialogs()

@@ -83,7 +83,7 @@ extern int serverVersion;
 
 std::string tradePartnerName("");
 
-PopupMenu::PopupMenu():
+PopupMenu::PopupMenu() :
     Popup("PopupMenu", "popupmenu.xml"),
     mBrowserBox(new BrowserBox(this)),
     mScrollArea(nullptr),
@@ -1736,7 +1736,6 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
             mBrowserBox->addRow("split", _("Split"));
     }
     // Assume in storage for now
-    // TODO: make this whole system more flexible, if needed
     else
     {
         mBrowserBox->addRow("retrieve", _("Retrieve"));

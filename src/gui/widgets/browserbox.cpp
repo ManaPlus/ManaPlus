@@ -516,8 +516,6 @@ int BrowserBox::calcHeight()
         prevColor[1] = selColor[1];
         bold = false;
 
-        // TODO: Check if we must take texture size limits into account here
-        // TODO: Check if some of the O(n) calls can be removed
         for (size_t start = 0, end = std::string::npos;
              start != std::string::npos;
              start = end, end = std::string::npos)

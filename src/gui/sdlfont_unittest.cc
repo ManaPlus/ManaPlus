@@ -256,9 +256,12 @@ TEST(TextChunkList, moveToFirst4)
 {
     TextChunkList list;
 
-    SDLTextChunk *chunk1 = new SDLTextChunk("test", gcn::Color(), gcn::Color());
-    SDLTextChunk *chunk2 = new SDLTextChunk("test2", gcn::Color(), gcn::Color());
-    SDLTextChunk *chunk3 = new SDLTextChunk("test3", gcn::Color(), gcn::Color());
+    SDLTextChunk *chunk1 = new SDLTextChunk("test",
+        gcn::Color(), gcn::Color());
+    SDLTextChunk *chunk2 = new SDLTextChunk("test2",
+        gcn::Color(), gcn::Color());
+    SDLTextChunk *chunk3 = new SDLTextChunk("test3",
+        gcn::Color(), gcn::Color());
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk3);

@@ -82,9 +82,6 @@ bool ActorSprite::draw(Graphics *const graphics,
                        const int offsetX, const int offsetY) const
 {
     FUNC_BLOCK("ActorSprite::draw", 1)
-    // TODO: Eventually, we probably should fix all sprite offsets so that
-    //       these translations aren't necessary anymore. The sprites know
-    //       best where their base point should be.
     const int px = getPixelX() + offsetX - 16;
     // Temporary fix to the Y offset.
 #ifdef MANASERV_SUPPORT

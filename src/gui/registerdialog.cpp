@@ -229,8 +229,6 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
             error = 2;
         }
 
-        // TODO: Check if a valid email address was given
-
         if (error > 0)
         {
             if (error == 1)

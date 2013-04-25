@@ -50,8 +50,6 @@ class BeingPopup final : public Popup
          */
         void show(const int x, const int y, Being *const b);
 
-        // TODO: Add a version for monsters, NPCs, etc?
-
     private:
         Label *mBeingName;
         Label *mBeingParty;

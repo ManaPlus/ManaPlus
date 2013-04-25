@@ -149,12 +149,6 @@ ServerInfo::Type networkType = ServerInfo::UNKNOWN;
 
 void connectToServer(const ServerInfo &server)
 {
-    if (server.type == ServerInfo::UNKNOWN)
-    {
-        // TODO: Query the server about itself and choose the netcode based on
-        // that
-    }
-
     if (networkType == server.type && getGeneralHandler())
     {
         getGeneralHandler()->reload();

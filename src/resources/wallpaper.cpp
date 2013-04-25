@@ -116,7 +116,7 @@ void Wallpaper::loadWallpapers()
         if (separator == std::string::npos)
         {
             // Then, append the width and height search mask.
-            filename.append("_%dx%d.png");
+            filename.append("_%10dx%10d.png");
 
             int width;
             int height;

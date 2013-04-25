@@ -532,8 +532,8 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     if (success)
     {
         std::stringstream chatlogentry;
-        // TODO: Make it one complete gettext string below
-        chatlogentry << _("Screenshot saved as ") << filenameSuffix.str();
+        chatlogentry << strprintf(_("Screenshot saved as %s"),
+            filenameSuffix.str().c_str());
         if (localChatTab)
             localChatTab->chatLog(chatlogentry.str(), BY_SERVER);
     }

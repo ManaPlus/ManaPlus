@@ -219,7 +219,6 @@ public:
 
     void invite()
     {
-        // TODO - Give feedback on whether the invite succeeded
         mInviteDialog = new TextDialog(_("Member Invite to Guild"),
                      strprintf(_("Who would you like to invite to guild %s?"),
                                mGuild->getName().c_str()),
@@ -393,7 +392,6 @@ public:
 
     void invite()
     {
-        // TODO - Give feedback on whether the invite succeeded
         mInviteDialog = new TextDialog(_("Member Invite to Party"),
                       strprintf(_("Who would you like to invite to party %s?"),
                                 mParty->getName().c_str()),
@@ -1506,10 +1504,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
         std::string name = mGuildCreateDialog->getText();
 
         if (name.size() > 16)
-        {
-            // TODO : State too many characters in input.
             return;
-        }
 
         Net::getGuildHandler()->create(name);
         if (localChatTab)
@@ -1529,10 +1524,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
         std::string name = mPartyCreateDialog->getText();
 
         if (name.size() > 16)
-        {
-            // TODO : State too many characters in input.
             return;
-        }
 
         Net::getPartyHandler()->create(name);
         if (localChatTab)

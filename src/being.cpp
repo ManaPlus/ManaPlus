@@ -197,7 +197,6 @@ std::list<BeingCacheEntry*> beingInfoCache;
 typedef std::map<int, Guild*>::const_iterator GuildsMapCIter;
 typedef std::map<int, int>::const_iterator IntMapCIter;
 
-// TODO: mWalkTime used by eAthena only
 Being::Being(const int id, const Type type, const uint16_t subtype,
              Map *const map) :
     ActorSprite(id),

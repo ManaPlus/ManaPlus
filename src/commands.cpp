@@ -1101,7 +1101,7 @@ impHandler0(testsdlfont)
     delete nullGraphics;
     delete font;
 
-    long int diff = (static_cast<long long int>(
+    int64_t diff = (static_cast<long long int>(
         time2.tv_sec) * 1000000000LL + static_cast<long long int>(
         time2.tv_nsec)) / 100000 - (static_cast<long long int>(
         time1.tv_sec) * 1000000000LL + static_cast<long long int>(

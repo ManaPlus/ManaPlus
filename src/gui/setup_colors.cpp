@@ -343,11 +343,7 @@ void Setup_Colors::setEntry(Slider *const s, TextField *const t,
     if (s)
         s->setValue(value);
     if (t)
-    {
-        char buffer[100];
-        sprintf(buffer, "%d", value);
-        t->setText(buffer);
-    }
+        t->setText(toString(value));
 }
 
 void Setup_Colors::apply()

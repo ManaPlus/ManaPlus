@@ -172,7 +172,6 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
     if (!item)
         return;
 
-    // TODO: Fix wrong coordinates of drops, serverside? (what's wrong here?)
     MessageOut outMsg(CMSG_PLAYER_INVENTORY_DROP);
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));

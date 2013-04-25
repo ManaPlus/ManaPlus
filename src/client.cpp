@@ -138,7 +138,6 @@
  */
 static const int MAX_TICK_VALUE = INT_MAX / 2;
 
-// TODO: Get rid fo these globals
 std::string errorMessage;
 ErrorListener errorListener;
 LoginData loginData;
@@ -1059,7 +1058,6 @@ int Client::gameExec()
         BLOCK_END("~Client::SDL_framerateDelay")
 
         BLOCK_START("Client::gameExec 6")
-        // TODO: Add connect timeouts
         if (mState == STATE_CONNECT_GAME &&
             Net::getGameHandler()->isConnected())
         {
@@ -1663,7 +1661,6 @@ int Client::gameExec()
 
                 case STATE_LOGOUT_ATTEMPT:
                     logger->log1("State: LOGOUT ATTEMPT");
-                    // TODO
                     break;
 
                 case STATE_WAIT:

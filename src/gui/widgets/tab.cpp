@@ -133,8 +133,6 @@ void Tab::updateAlpha()
     const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
-    // TODO We don't need to do this for every tab on every draw
-    // Maybe use a config listener to do it as the value changes.
     if (alpha != mAlpha)
     {
         mAlpha = alpha;

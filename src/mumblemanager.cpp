@@ -111,7 +111,7 @@ void MumbleManager::init()
 #elif defined BSD4_4
 #else
     char memName[256];
-    snprintf(memName, 256, "/MumbleLink.%u", getuid());
+    snprintf(memName, sizeof(memName), "/MumbleLink.%u", getuid());
 
     const int shmfd = shm_open(memName, O_RDWR, S_IRUSR | S_IWUSR);
 

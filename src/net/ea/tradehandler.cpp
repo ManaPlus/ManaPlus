@@ -70,7 +70,6 @@ TradeHandler::TradeHandler()
 void TradeHandler::removeItem(const int slotNum A_UNUSED,
                               const int amount A_UNUSED) const
 {
-    // TODO
 }
 
 void TradeHandler::processTradeRequest(Net::MessageIn &msg)
@@ -185,7 +184,6 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
     const int refine = msg.readInt8();  // refine
     msg.skip(8);     // card (4 shorts)
 
-    // TODO: handle also identified, etc
     if (tradeWindow)
     {
         if (type == 0)

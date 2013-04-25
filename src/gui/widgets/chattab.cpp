@@ -174,7 +174,6 @@ void ChatTab::chatLog(std::string line, Own own,
             break;
         case BY_CHANNEL:
             tmp.nick.clear();
-            // TODO: Use a predefined color
             lineColor = "##2";  // Equiv. to BrowserBox::GREEN
             break;
         case ACT_WHISPER:
