@@ -99,6 +99,7 @@ class TextChunkList final
         SDLTextChunk *end;
         uint32_t size;
         std::map<SDLTextChunkSmall, SDLTextChunk*> search;
+        std::map<std::string, SDLTextChunk*> searchWidth;
 };
 
 /**

@@ -226,6 +226,7 @@ void TextChunkList::insertFirst(SDLTextChunk *const item)
     start = item;
     size ++;
     search[SDLTextChunkSmall(item->text, item->color, item->color2)] = item;
+    searchWidth[item->text] = item;
 }
 
 void TextChunkList::moveToFirst(SDLTextChunk *item)
@@ -261,6 +262,7 @@ void TextChunkList::removeBack()
             start = nullptr;
         search.erase(SDLTextChunkSmall(oldEnd->text,
             oldEnd->color, oldEnd->color2));
+        searchWidth.erase(oldEnd->text);
         delete oldEnd;
         size --;
     }
@@ -276,6 +278,7 @@ void TextChunkList::removeBack(int n)
         item = item->prev;
         search.erase(SDLTextChunkSmall(oldEnd->text,
             oldEnd->color, oldEnd->color2));
+        searchWidth.erase(oldEnd->text);
         delete oldEnd;
         size --;
     }
@@ -294,6 +297,7 @@ void TextChunkList::removeBack(int n)
 void TextChunkList::clear()
 {
     search.clear();
+    searchWidth.clear();
     SDLTextChunk *item = start;
     while (item)
     {
@@ -487,6 +491,20 @@ int SDLFont::getWidth(const std::string &text) const
     const unsigned char chr = text[0];
     TextChunkList *const cache = &mCache[chr];
 
+    std::map<std::string, SDLTextChunk*> &search = cache->searchWidth;
+    std::map<std::string, SDLTextChunk*>::iterator i = search.find(text);
+    if (i != search.end())
+    {
+        SDLTextChunk *const chunk = (*i).second;
+        cache->moveToFirst(chunk);
+        const Image *const image = chunk->img;
+        if (image)
+            return image->getWidth();
+        else
+            return 0;
+    }
+
+/*
 #ifdef DEBUG_FONT
     int cnt = 0;
 #endif
@@ -515,7 +533,9 @@ int SDLFont::getWidth(const std::string &text) const
     logger->log(std::string("getWidth: ").append(text).append(
         ", iterations: ").append(toString(cnt)));
 #endif
+*/
 
+    // if string was not drawed
     int w, h;
     getSafeUtf8String(text, strBuf);
     TTF_SizeUTF8(mFont, strBuf, &w, &h);
