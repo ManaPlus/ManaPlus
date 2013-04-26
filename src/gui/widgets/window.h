@@ -101,7 +101,7 @@ class Window : public gcn::Window,
         /**
          * Sets the location relative to the given enumerated position.
          */
-        void setLocationRelativeTo(const ImageRect::ImagePosition position,
+        void setLocationRelativeTo(const ImageRect::ImagePosition &position,
                                    int offsetX = 0, int offsetY = 0);
 
         /**
@@ -329,7 +329,7 @@ class Window : public gcn::Window,
          * on a relative enumerated position, rather than a coordinate position.
          */
         void setDefaultSize(int defaultWidth, int defaultHeight,
-                            const ImageRect::ImagePosition position,
+                            const ImageRect::ImagePosition &position,
                             const int offsetx = 0, const int offsetY = 0);
 
         /**

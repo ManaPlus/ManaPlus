@@ -305,7 +305,7 @@ class ActorSpriteManager final: public ConfigListener
     protected:
         bool validateBeing(const Being *const aroundBeing,
                            Being *const being,
-                           const Being::Type type,
+                           const Being::Type &type,
                            const Being *const excluded = nullptr,
                            const int maxCost = 20) const A_WARN_UNUSED;
 

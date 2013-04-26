@@ -381,7 +381,7 @@ void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
         {
             if (mFollowDownScroll && height != 0)
             {
-                const gcn::Rectangle rect = w->getDimension();
+                const gcn::Rectangle &rect = w->getDimension();
                 if (rect.height != 0 && rect.height > height + 2)
                 {
                     if (scr->getVerticalScrollAmount()

@@ -53,7 +53,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void setDirection(const unsigned char direction) const override;
         void setDestination(const int x, const int y,
                             const int direction) const override;
-        void changeAction(const Being::Action action) const override;
+        void changeAction(const Being::Action &action) const override;
         void updateStatus(const uint8_t status) const override;
 
         void processPlayerShortcuts(Net::MessageIn &msg) const;

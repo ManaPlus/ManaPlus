@@ -1016,8 +1016,8 @@ StringVect ResourceManager::loadTextFileLocal(
     return lines;
 }
 
-void ResourceManager::saveTextFile(std::string path, const std::string name,
-                                   const std::string text) const
+void ResourceManager::saveTextFile(std::string path, const std::string &name,
+                                   const std::string &text) const
 {
     if (!mkdir_r(path.c_str()))
     {

@@ -360,7 +360,7 @@ void Window::setLocationHorisontallyRelativeTo(const gcn::Widget *const widget)
         - mDimension.width) / 2 - x), 0);
 }
 
-void Window::setLocationRelativeTo(const ImageRect::ImagePosition position,
+void Window::setLocationRelativeTo(const ImageRect::ImagePosition &position,
                                    int offsetX, int offsetY)
 {
     if (position == ImageRect::UPPER_LEFT)
@@ -940,7 +940,7 @@ void Window::setDefaultSize()
 }
 
 void Window::setDefaultSize(int defaultWidth, int defaultHeight,
-                            const ImageRect::ImagePosition position,
+                            const ImageRect::ImagePosition &position,
                             const int offsetX, const int offsetY)
 {
     int x = 0, y = 0;

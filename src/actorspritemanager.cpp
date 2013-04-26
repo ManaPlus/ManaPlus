@@ -1100,7 +1100,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
 
 bool ActorSpriteManager::validateBeing(const Being *const aroundBeing,
                                        Being *const being,
-                                       const Being::Type type,
+                                       const Being::Type &type,
                                        const Being* const excluded,
                                        const int maxCost) const
 {

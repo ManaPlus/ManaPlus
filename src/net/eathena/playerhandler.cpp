@@ -184,7 +184,7 @@ void PlayerHandler::setDestination(const int x, const int y,
         static_cast<unsigned char>(direction));
 }
 
-void PlayerHandler::changeAction(const Being::Action action) const
+void PlayerHandler::changeAction(const Being::Action &action) const
 {
     unsigned char type;
     switch (action)

@@ -55,7 +55,7 @@ class PlayerHandler
         virtual void setDestination(const int x, const int y,
                                     const int direction) const = 0;
 
-        virtual void changeAction(const Being::Action action) const = 0;
+        virtual void changeAction(const Being::Action &action) const = 0;
 
         virtual void respawn() const = 0;
 
