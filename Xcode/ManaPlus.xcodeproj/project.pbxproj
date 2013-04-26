@@ -208,6 +208,7 @@
 		2B17125F1686A98C002E9493 /* keyboardconfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF490E166D5B680054E77F /* keyboardconfig.cpp */; };
 		2B1712601686A98C002E9493 /* keyevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4912166D5B680054E77F /* keyevent.cpp */; };
 		2B1712611686A98C002E9493 /* keyinput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4914166D5B680054E77F /* keyinput.cpp */; };
+		2B1712621686A98C002E9493 /* listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4916166D5B680054E77F /* listener.cpp */; };
 		2B1712631686A98C002E9493 /* localplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4919166D5B680054E77F /* localplayer.cpp */; };
 		2B1712641686A98C002E9493 /* logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF491B166D5B680054E77F /* logger.cpp */; };
 		2B1712651686A98C002E9493 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF491D166D5B680054E77F /* main.cpp */; };
@@ -393,26 +394,6 @@
 		2B43647A16AB8BE40034DAC2 /* setuptouchitem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B43647816AB8BE40034DAC2 /* setuptouchitem.cpp */; };
 		2B65B45716EFC75D00AAD717 /* notifymanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B65B45516EFC75D00AAD717 /* notifymanager.cpp */; };
 		2B65B45816EFC75D00AAD717 /* notifymanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B65B45516EFC75D00AAD717 /* notifymanager.cpp */; };
-		2B6B0E51176BDD3000930985 /* cpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E4F176BDD3000930985 /* cpu.cpp */; };
-		2B6B0E52176BDD3000930985 /* cpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E4F176BDD3000930985 /* cpu.cpp */; };
-		2B6B0E56176BDD7B00930985 /* avatardb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E54176BDD7B00930985 /* avatardb.cpp */; };
-		2B6B0E57176BDD7B00930985 /* avatardb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E54176BDD7B00930985 /* avatardb.cpp */; };
-		2B6B0E5E176BDDC100930985 /* skilldata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E58176BDDC100930985 /* skilldata.cpp */; };
-		2B6B0E5F176BDDC100930985 /* skilldata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E58176BDDC100930985 /* skilldata.cpp */; };
-		2B6B0E60176BDDC100930985 /* skillinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E5A176BDDC100930985 /* skillinfo.cpp */; };
-		2B6B0E61176BDDC100930985 /* skillinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E5A176BDDC100930985 /* skillinfo.cpp */; };
-		2B6B0E62176BDDC100930985 /* skillmodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E5C176BDDC100930985 /* skillmodel.cpp */; };
-		2B6B0E63176BDDC100930985 /* skillmodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E5C176BDDC100930985 /* skillmodel.cpp */; };
-		2B6B0E66176BDDE100930985 /* depricatedlistener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E64176BDDE100930985 /* depricatedlistener.cpp */; };
-		2B6B0E67176BDDE100930985 /* depricatedlistener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E64176BDDE100930985 /* depricatedlistener.cpp */; };
-		2B6B0E6B176BDE0400930985 /* beingequipbackend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E69176BDE0400930985 /* beingequipbackend.cpp */; };
-		2B6B0E6C176BDE0400930985 /* beingequipbackend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E69176BDE0400930985 /* beingequipbackend.cpp */; };
-		2B6B0E74176BDE2A00930985 /* characterdisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E6D176BDE2A00930985 /* characterdisplay.cpp */; };
-		2B6B0E75176BDE2A00930985 /* characterdisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E6D176BDE2A00930985 /* characterdisplay.cpp */; };
-		2B6B0E76176BDE2A00930985 /* characterviewnormal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E70176BDE2A00930985 /* characterviewnormal.cpp */; };
-		2B6B0E77176BDE2A00930985 /* characterviewnormal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E70176BDE2A00930985 /* characterviewnormal.cpp */; };
-		2B6B0E78176BDE2A00930985 /* characterviewsmall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E72176BDE2A00930985 /* characterviewsmall.cpp */; };
-		2B6B0E79176BDE2A00930985 /* characterviewsmall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B0E72176BDE2A00930985 /* characterviewsmall.cpp */; };
 		2B7A5E5D16D82A3E0020A1C1 /* physfstools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */; };
 		2B7A5E5E16D82A3E0020A1C1 /* physfstools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */; };
 		2B7A5E6116D82C010020A1C1 /* gmtab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */; };
@@ -420,10 +401,6 @@
 		2B8B70CB167EBCB3003A8440 /* popuplist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B70C9167EBCB3003A8440 /* popuplist.cpp */; };
 		2B8B70CE167EBE3A003A8440 /* setup_touch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B70CC167EBE3A003A8440 /* setup_touch.cpp */; };
 		2BAC2B44166DB4B300874178 /* manaplus.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC2B43166DB4B300874178 /* manaplus.icns */; };
-		2BB28FB2172B43860046599B /* palettedb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BB28FB0172B43860046599B /* palettedb.cpp */; };
-		2BB28FB3172B43860046599B /* palettedb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BB28FB0172B43860046599B /* palettedb.cpp */; };
-		2BB28FB6172B4CEF0046599B /* nullopenglgraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BB28FB4172B4CEF0046599B /* nullopenglgraphics.cpp */; };
-		2BB28FB7172B4CEF0046599B /* nullopenglgraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BB28FB4172B4CEF0046599B /* nullopenglgraphics.cpp */; };
 		2BDF45C4166D5AEC0054E77F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF45C3166D5AEC0054E77F /* Cocoa.framework */; };
 		2BDF45CE166D5AEC0054E77F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF45CC166D5AEC0054E77F /* InfoPlist.strings */; };
 		2BDF45D4166D5AEC0054E77F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF45D2166D5AEC0054E77F /* Credits.rtf */; };
@@ -833,6 +810,8 @@
 		2BDF4C15166D5B690054E77F /* keyevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4912166D5B680054E77F /* keyevent.cpp */; };
 		2BDF4C16166D5B690054E77F /* keyinput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4914166D5B680054E77F /* keyinput.cpp */; };
 		2BDF4C17166D5B690054E77F /* keyinput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4914166D5B680054E77F /* keyinput.cpp */; };
+		2BDF4C18166D5B690054E77F /* listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4916166D5B680054E77F /* listener.cpp */; };
+		2BDF4C19166D5B690054E77F /* listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4916166D5B680054E77F /* listener.cpp */; };
 		2BDF4C1A166D5B690054E77F /* localplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4919166D5B680054E77F /* localplayer.cpp */; };
 		2BDF4C1B166D5B690054E77F /* localplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4919166D5B680054E77F /* localplayer.cpp */; };
 		2BDF4C1C166D5B690054E77F /* logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF491B166D5B680054E77F /* logger.cpp */; };
@@ -1169,6 +1148,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2B1713181686A98C002E9493 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 12;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2BDF4D77166D7EA00054E77F /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1223,30 +1211,6 @@
 		2B65B45416EFC75D00AAD717 /* notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = notifications.h; path = ../../src/notifications.h; sourceTree = "<group>"; };
 		2B65B45516EFC75D00AAD717 /* notifymanager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = notifymanager.cpp; path = ../../src/notifymanager.cpp; sourceTree = "<group>"; };
 		2B65B45616EFC75D00AAD717 /* notifymanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = notifymanager.h; path = ../../src/notifymanager.h; sourceTree = "<group>"; };
-		2B6B0E4F176BDD3000930985 /* cpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cpu.cpp; sourceTree = "<group>"; };
-		2B6B0E50176BDD3000930985 /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpu.h; sourceTree = "<group>"; };
-		2B6B0E53176BDD5500930985 /* dragdrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dragdrop.h; path = ../../src/dragdrop.h; sourceTree = "<group>"; };
-		2B6B0E54176BDD7B00930985 /* avatardb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avatardb.cpp; sourceTree = "<group>"; };
-		2B6B0E55176BDD7B00930985 /* avatardb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avatardb.h; sourceTree = "<group>"; };
-		2B6B0E58176BDDC100930985 /* skilldata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skilldata.cpp; sourceTree = "<group>"; };
-		2B6B0E59176BDDC100930985 /* skilldata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skilldata.h; sourceTree = "<group>"; };
-		2B6B0E5A176BDDC100930985 /* skillinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skillinfo.cpp; sourceTree = "<group>"; };
-		2B6B0E5B176BDDC100930985 /* skillinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skillinfo.h; sourceTree = "<group>"; };
-		2B6B0E5C176BDDC100930985 /* skillmodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skillmodel.cpp; sourceTree = "<group>"; };
-		2B6B0E5D176BDDC100930985 /* skillmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skillmodel.h; sourceTree = "<group>"; };
-		2B6B0E64176BDDE100930985 /* depricatedlistener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = depricatedlistener.cpp; path = ../../src/depricatedlistener.cpp; sourceTree = "<group>"; };
-		2B6B0E65176BDDE100930985 /* depricatedlistener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = depricatedlistener.h; path = ../../src/depricatedlistener.h; sourceTree = "<group>"; };
-		2B6B0E68176BDE0400930985 /* beingcacheentry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = beingcacheentry.h; path = ../../src/beingcacheentry.h; sourceTree = "<group>"; };
-		2B6B0E69176BDE0400930985 /* beingequipbackend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = beingequipbackend.cpp; path = ../../src/beingequipbackend.cpp; sourceTree = "<group>"; };
-		2B6B0E6A176BDE0400930985 /* beingequipbackend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = beingequipbackend.h; path = ../../src/beingequipbackend.h; sourceTree = "<group>"; };
-		2B6B0E6D176BDE2A00930985 /* characterdisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = characterdisplay.cpp; sourceTree = "<group>"; };
-		2B6B0E6E176BDE2A00930985 /* characterdisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = characterdisplay.h; sourceTree = "<group>"; };
-		2B6B0E6F176BDE2A00930985 /* characterviewbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = characterviewbase.h; sourceTree = "<group>"; };
-		2B6B0E70176BDE2A00930985 /* characterviewnormal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = characterviewnormal.cpp; sourceTree = "<group>"; };
-		2B6B0E71176BDE2A00930985 /* characterviewnormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = characterviewnormal.h; sourceTree = "<group>"; };
-		2B6B0E72176BDE2A00930985 /* characterviewsmall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = characterviewsmall.cpp; sourceTree = "<group>"; };
-		2B6B0E73176BDE2A00930985 /* characterviewsmall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = characterviewsmall.h; sourceTree = "<group>"; };
-		2B6B0E7A176BDEBE00930985 /* soundinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundinfo.h; sourceTree = "<group>"; };
 		2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = physfstools.cpp; sourceTree = "<group>"; };
 		2B7A5E5C16D82A3E0020A1C1 /* physfstools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = physfstools.h; sourceTree = "<group>"; };
 		2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gmtab.cpp; sourceTree = "<group>"; };
@@ -1256,10 +1220,6 @@
 		2B8B70CC167EBE3A003A8440 /* setup_touch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = setup_touch.cpp; sourceTree = "<group>"; };
 		2B8B70CD167EBE3A003A8440 /* setup_touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setup_touch.h; sourceTree = "<group>"; };
 		2BAC2B43166DB4B300874178 /* manaplus.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = manaplus.icns; sourceTree = "<group>"; };
-		2BB28FB0172B43860046599B /* palettedb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = palettedb.cpp; sourceTree = "<group>"; };
-		2BB28FB1172B43860046599B /* palettedb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = palettedb.h; sourceTree = "<group>"; };
-		2BB28FB4172B4CEF0046599B /* nullopenglgraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nullopenglgraphics.cpp; path = ../../src/nullopenglgraphics.cpp; sourceTree = "<group>"; };
-		2BB28FB5172B4CEF0046599B /* nullopenglgraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nullopenglgraphics.h; path = ../../src/nullopenglgraphics.h; sourceTree = "<group>"; };
 		2BC90AA916855F8000FE7AD3 /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = libs/libintl.a; sourceTree = "<group>"; };
 		2BDF45BF166D5AEC0054E77F /* ManaPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManaPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDF45C3166D5AEC0054E77F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -1706,6 +1666,8 @@
 		2BDF4913166D5B680054E77F /* keyevent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = keyevent.h; path = ../../src/keyevent.h; sourceTree = "<group>"; };
 		2BDF4914166D5B680054E77F /* keyinput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = keyinput.cpp; path = ../../src/keyinput.cpp; sourceTree = "<group>"; };
 		2BDF4915166D5B680054E77F /* keyinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = keyinput.h; path = ../../src/keyinput.h; sourceTree = "<group>"; };
+		2BDF4916166D5B680054E77F /* listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = listener.cpp; path = ../../src/listener.cpp; sourceTree = "<group>"; };
+		2BDF4917166D5B680054E77F /* listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = listener.h; path = ../../src/listener.h; sourceTree = "<group>"; };
 		2BDF4918166D5B680054E77F /* localconsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = localconsts.h; path = ../../src/localconsts.h; sourceTree = "<group>"; };
 		2BDF4919166D5B680054E77F /* localplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = localplayer.cpp; path = ../../src/localplayer.cpp; sourceTree = "<group>"; };
 		2BDF491A166D5B680054E77F /* localplayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = localplayer.h; path = ../../src/localplayer.h; sourceTree = "<group>"; };
@@ -2013,6 +1975,8 @@
 		2BDF4A5E166D5B680054E77F /* physfsrwops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = physfsrwops.h; sourceTree = "<group>"; };
 		2BDF4A5F166D5B680054E77F /* process.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = process.cpp; sourceTree = "<group>"; };
 		2BDF4A60166D5B680054E77F /* process.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = process.h; sourceTree = "<group>"; };
+		2BDF4A61166D5B680054E77F /* sha256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha256.cpp; sourceTree = "<group>"; };
+		2BDF4A62166D5B680054E77F /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
 		2BDF4A63166D5B680054E77F /* specialfolder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = specialfolder.cpp; sourceTree = "<group>"; };
 		2BDF4A64166D5B680054E77F /* specialfolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = specialfolder.h; sourceTree = "<group>"; };
 		2BDF4A65166D5B680054E77F /* stringutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stringutils.cpp; sourceTree = "<group>"; };
@@ -2155,14 +2119,6 @@
 		2BDF45C9166D5AEC0054E77F /* ManaPlus */ = {
 			isa = PBXGroup;
 			children = (
-				2B6B0E68176BDE0400930985 /* beingcacheentry.h */,
-				2B6B0E69176BDE0400930985 /* beingequipbackend.cpp */,
-				2B6B0E6A176BDE0400930985 /* beingequipbackend.h */,
-				2B6B0E64176BDDE100930985 /* depricatedlistener.cpp */,
-				2B6B0E65176BDDE100930985 /* depricatedlistener.h */,
-				2B6B0E53176BDD5500930985 /* dragdrop.h */,
-				2BB28FB4172B4CEF0046599B /* nullopenglgraphics.cpp */,
-				2BB28FB5172B4CEF0046599B /* nullopenglgraphics.h */,
 				2B1E2220172AFA2100B7230A /* navigationmanager.cpp */,
 				2B1E2221172AFA2100B7230A /* navigationmanager.h */,
 				2B1E2214172AF96000B7230A /* auctionmanager.cpp */,
@@ -2260,6 +2216,8 @@
 				2BDF4913166D5B680054E77F /* keyevent.h */,
 				2BDF4914166D5B680054E77F /* keyinput.cpp */,
 				2BDF4915166D5B680054E77F /* keyinput.h */,
+				2BDF4916166D5B680054E77F /* listener.cpp */,
+				2BDF4917166D5B680054E77F /* listener.h */,
 				2BDF4918166D5B680054E77F /* localconsts.h */,
 				2BDF4919166D5B680054E77F /* localplayer.cpp */,
 				2BDF491A166D5B680054E77F /* localplayer.h */,
@@ -2546,19 +2504,6 @@
 		2BDF4828166D5B680054E77F /* widgets */ = {
 			isa = PBXGroup;
 			children = (
-				2B6B0E6D176BDE2A00930985 /* characterdisplay.cpp */,
-				2B6B0E6E176BDE2A00930985 /* characterdisplay.h */,
-				2B6B0E6F176BDE2A00930985 /* characterviewbase.h */,
-				2B6B0E70176BDE2A00930985 /* characterviewnormal.cpp */,
-				2B6B0E71176BDE2A00930985 /* characterviewnormal.h */,
-				2B6B0E72176BDE2A00930985 /* characterviewsmall.cpp */,
-				2B6B0E73176BDE2A00930985 /* characterviewsmall.h */,
-				2B6B0E58176BDDC100930985 /* skilldata.cpp */,
-				2B6B0E59176BDDC100930985 /* skilldata.h */,
-				2B6B0E5A176BDDC100930985 /* skillinfo.cpp */,
-				2B6B0E5B176BDDC100930985 /* skillinfo.h */,
-				2B6B0E5C176BDDC100930985 /* skillmodel.cpp */,
-				2B6B0E5D176BDDC100930985 /* skillmodel.h */,
 				2B1E221C172AF9E800B7230A /* langtab.cpp */,
 				2B1E221D172AF9E800B7230A /* langtab.h */,
 				2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */,
@@ -3044,11 +2989,6 @@
 		2BDF49E4166D5B680054E77F /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				2B6B0E7A176BDEBE00930985 /* soundinfo.h */,
-				2B6B0E54176BDD7B00930985 /* avatardb.cpp */,
-				2B6B0E55176BDD7B00930985 /* avatardb.h */,
-				2BB28FB0172B43860046599B /* palettedb.cpp */,
-				2BB28FB1172B43860046599B /* palettedb.h */,
 				2B1E2224172AFBB500B7230A /* petdb.cpp */,
 				2B1E2225172AFBB500B7230A /* petdb.h */,
 				2B1E2210172AF91A00B7230A /* sounddb.cpp */,
@@ -3132,8 +3072,6 @@
 		2BDF4A4A166D5B680054E77F /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				2B6B0E4F176BDD3000930985 /* cpu.cpp */,
-				2B6B0E50176BDD3000930985 /* cpu.h */,
 				2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */,
 				2B7A5E5C16D82A3E0020A1C1 /* physfstools.h */,
 				2BDF4A4B166D5B680054E77F /* base64.cpp */,
@@ -3158,6 +3096,8 @@
 				2BDF4A5E166D5B680054E77F /* physfsrwops.h */,
 				2BDF4A5F166D5B680054E77F /* process.cpp */,
 				2BDF4A60166D5B680054E77F /* process.h */,
+				2BDF4A61166D5B680054E77F /* sha256.cpp */,
+				2BDF4A62166D5B680054E77F /* sha256.h */,
 				2BDF4A63166D5B680054E77F /* specialfolder.cpp */,
 				2BDF4A64166D5B680054E77F /* specialfolder.h */,
 				2BDF4A65166D5B680054E77F /* stringutils.cpp */,
@@ -3196,6 +3136,8 @@
 				2B1712FB1686A98C002E9493 /* Frameworks */,
 				2B17130B1686A98C002E9493 /* Resources */,
 				2B1713121686A98C002E9493 /* CopyFiles */,
+				2B1713181686A98C002E9493 /* CopyFiles */,
+				2B17132B1686A98C002E9493 /* Dylib Script */,
 				2BDB77BB16870F00006DDD51 /* Version Script */,
 				2B9D5589168A6458006F8F06 /* Localization Script */,
 			);
@@ -3311,6 +3253,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2B17132B1686A98C002E9493 /* Dylib Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Dylib Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -change /usr/lib/libcurl.4.dylib @executable_path/../SharedSupport/libcurl.4.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libSDL_gfx.14.dylib @executable_path/../SharedSupport/libSDL_gfx.14.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\n# install_name_tool -change /opt/local/lib/libpng15.15.dylib @executable_path/../SharedSupport/libpng15.15.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libphysfs.1.dylib @executable_path/../SharedSupport/libphysfs.2.0.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\n#install_name_tool -change /opt/local/lib/libintl.8.dylib @executable_path/../SharedSupport/libintl.8.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libiconv.2.dylib @executable_path/../SharedSupport/libiconv.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libfreetype.6.dylib @executable_path/../SharedSupport/libfreetype.6.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libxml2.2.dylib @executable_path/../SharedSupport/libxml2.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libz.1.dylib @executable_path/../SharedSupport/libz.1.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\n";
+		};
 		2B514F87168A49F900AAF381 /* Localization Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3588,6 +3544,7 @@
 				2B17125F1686A98C002E9493 /* keyboardconfig.cpp in Sources */,
 				2B1712601686A98C002E9493 /* keyevent.cpp in Sources */,
 				2B1712611686A98C002E9493 /* keyinput.cpp in Sources */,
+				2B1712621686A98C002E9493 /* listener.cpp in Sources */,
 				2B1712631686A98C002E9493 /* localplayer.cpp in Sources */,
 				2B1712641686A98C002E9493 /* logger.cpp in Sources */,
 				2B1712651686A98C002E9493 /* main.cpp in Sources */,
@@ -3750,18 +3707,6 @@
 				2B1E2227172AFBB500B7230A /* petdb.cpp in Sources */,
 				2B1E222D172AFC4C00B7230A /* charserverhandler.cpp in Sources */,
 				2B1E222F172AFC4C00B7230A /* sdltcpnet.cpp in Sources */,
-				2BB28FB3172B43860046599B /* palettedb.cpp in Sources */,
-				2BB28FB7172B4CEF0046599B /* nullopenglgraphics.cpp in Sources */,
-				2B6B0E52176BDD3000930985 /* cpu.cpp in Sources */,
-				2B6B0E57176BDD7B00930985 /* avatardb.cpp in Sources */,
-				2B6B0E5F176BDDC100930985 /* skilldata.cpp in Sources */,
-				2B6B0E61176BDDC100930985 /* skillinfo.cpp in Sources */,
-				2B6B0E63176BDDC100930985 /* skillmodel.cpp in Sources */,
-				2B6B0E67176BDDE100930985 /* depricatedlistener.cpp in Sources */,
-				2B6B0E6C176BDE0400930985 /* beingequipbackend.cpp in Sources */,
-				2B6B0E75176BDE2A00930985 /* characterdisplay.cpp in Sources */,
-				2B6B0E77176BDE2A00930985 /* characterviewnormal.cpp in Sources */,
-				2B6B0E79176BDE2A00930985 /* characterviewsmall.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3970,6 +3915,7 @@
 				2BDF4C12166D5B690054E77F /* keyboardconfig.cpp in Sources */,
 				2BDF4C14166D5B690054E77F /* keyevent.cpp in Sources */,
 				2BDF4C16166D5B690054E77F /* keyinput.cpp in Sources */,
+				2BDF4C18166D5B690054E77F /* listener.cpp in Sources */,
 				2BDF4C1A166D5B690054E77F /* localplayer.cpp in Sources */,
 				2BDF4C1C166D5B690054E77F /* logger.cpp in Sources */,
 				2BDF4C1E166D5B690054E77F /* main.cpp in Sources */,
@@ -4132,18 +4078,6 @@
 				2B1E2226172AFBB500B7230A /* petdb.cpp in Sources */,
 				2B1E222C172AFC4C00B7230A /* charserverhandler.cpp in Sources */,
 				2B1E222E172AFC4C00B7230A /* sdltcpnet.cpp in Sources */,
-				2BB28FB2172B43860046599B /* palettedb.cpp in Sources */,
-				2BB28FB6172B4CEF0046599B /* nullopenglgraphics.cpp in Sources */,
-				2B6B0E51176BDD3000930985 /* cpu.cpp in Sources */,
-				2B6B0E56176BDD7B00930985 /* avatardb.cpp in Sources */,
-				2B6B0E5E176BDDC100930985 /* skilldata.cpp in Sources */,
-				2B6B0E60176BDDC100930985 /* skillinfo.cpp in Sources */,
-				2B6B0E62176BDDC100930985 /* skillmodel.cpp in Sources */,
-				2B6B0E66176BDDE100930985 /* depricatedlistener.cpp in Sources */,
-				2B6B0E6B176BDE0400930985 /* beingequipbackend.cpp in Sources */,
-				2B6B0E74176BDE2A00930985 /* characterdisplay.cpp in Sources */,
-				2B6B0E76176BDE2A00930985 /* characterviewnormal.cpp in Sources */,
-				2B6B0E78176BDE2A00930985 /* characterviewsmall.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4352,6 +4286,7 @@
 				2BDF4C13166D5B690054E77F /* keyboardconfig.cpp in Sources */,
 				2BDF4C15166D5B690054E77F /* keyevent.cpp in Sources */,
 				2BDF4C17166D5B690054E77F /* keyinput.cpp in Sources */,
+				2BDF4C19166D5B690054E77F /* listener.cpp in Sources */,
 				2BDF4C1B166D5B690054E77F /* localplayer.cpp in Sources */,
 				2BDF4C1D166D5B690054E77F /* logger.cpp in Sources */,
 				2BDF4C1F166D5B690054E77F /* main.cpp in Sources */,
@@ -4574,7 +4509,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ManaPlus-10.6-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs\"";
+				LIBRARY_SEARCH_PATHS = (
+					/opt/local/lib,
+					"\"$(SRCROOT)/libs\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
@@ -4635,7 +4573,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ManaPlus-10.6-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs\"";
+				LIBRARY_SEARCH_PATHS = (
+					/opt/local/lib,
+					"\"$(SRCROOT)/libs\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
