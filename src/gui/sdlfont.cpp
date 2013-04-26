@@ -59,11 +59,11 @@ SDLTextChunkSmall::SDLTextChunkSmall(const std::string &text0,
 {
 }
 
-SDLTextChunkSmall::SDLTextChunkSmall(const SDLTextChunkSmall &old)
+SDLTextChunkSmall::SDLTextChunkSmall(const SDLTextChunkSmall &old) :
+    text(old.text),
+    color(old.color),
+    color2(old.color2)
 {
-    text = old.text;
-    color = old.color;
-    color2 = old.color2;
 }
 
 bool SDLTextChunkSmall::operator==(const SDLTextChunkSmall &chunk) const
@@ -96,7 +96,7 @@ bool SDLTextChunkSmall::operator<(const SDLTextChunkSmall &chunk) const
 }
 
 SDLTextChunk::SDLTextChunk(const std::string &text0, const gcn::Color &color0,
-              const gcn::Color &color1) :
+                           const gcn::Color &color1) :
     img(nullptr),
     text(text0),
     color(color0),
@@ -209,7 +209,9 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
 TextChunkList::TextChunkList() :
     start(nullptr),
     end(nullptr),
-    size(0)
+    size(0),
+    search(),
+    searchWidth()
 {
 }
 

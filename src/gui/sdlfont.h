@@ -65,6 +65,8 @@ class SDLTextChunk final
         SDLTextChunk(const std::string &text0, const gcn::Color &color0,
                      const gcn::Color &color1);
 
+        A_DELETE_COPY(SDLTextChunk)
+
         ~SDLTextChunk();
 
         bool operator==(const SDLTextChunk &chunk) const;
@@ -84,6 +86,8 @@ class TextChunkList final
 {
     public:
         TextChunkList();
+
+        A_DELETE_COPY(TextChunkList)
 
         void insertFirst(SDLTextChunk *const item);
 
