@@ -70,6 +70,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mPortField(new TextField(this, std::string())),
     mNameField(new TextField(this, std::string())),
     mDescriptionField(new TextField(this, std::string())),
+    mOnlineListUrlField(new TextField(this, std::string())),
     mConnectButton(new Button(this, _("Connect"), "connect", this)),
     mOkButton(new Button(this, _("OK"), "addServer", this)),
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
@@ -86,6 +87,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     Label *const portLabel = new Label(this, _("Port:"));
     Label *const typeLabel = new Label(this, _("Server type:"));
     Label *const descriptionLabel = new Label(this, _("Description:"));
+    Label *const onlineListUrlLabel = new Label(this, _("Online list url:"));
     mPortField->setNumeric(true);
     mPortField->setRange(1, 65535);
 
@@ -104,9 +106,11 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     place(1, 3, mTypeField).setPadding(3);
     place(0, 4, descriptionLabel);
     place(1, 4, mDescriptionField, 4).setPadding(3);
-    place(0, 5, mConnectButton);
-    place(4, 5, mOkButton);
-    place(3, 5, mCancelButton);
+    place(0, 5, onlineListUrlLabel);
+    place(1, 5, mOnlineListUrlField, 4).setPadding(3);
+    place(0, 6, mConnectButton);
+    place(4, 6, mOkButton);
+    place(3, 6, mCancelButton);
 
     // Do this manually instead of calling reflowLayout so we can enforce a
     // minimum width.
@@ -136,6 +140,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
 
     mNameField->setText(mServer.name);
     mDescriptionField->setText(mServer.description);
+    mOnlineListUrlField->setText(mServer.onlineListUrl);
     mServerAddressField->setText(mServer.hostname);
     mPortField->setText(toString(mServer.port));
 
@@ -213,6 +218,7 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
 
             mServer.name = mNameField->getText();
             mServer.description = mDescriptionField->getText();
+            mServer.onlineListUrl = mOnlineListUrlField->getText();
             mServer.hostname = mServerAddressField->getText();
             mServer.port = static_cast<int16_t>(atoi(
                 mPortField->getText().c_str()));

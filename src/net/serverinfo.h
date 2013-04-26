@@ -53,6 +53,7 @@ public:
 
     std::string description;
     std::string registerUrl;
+    std::string onlineListUrl;
     VersionString version;
 
     bool save;
@@ -64,6 +65,7 @@ public:
         port(6901),
         description(),
         registerUrl(),
+        onlineListUrl(),
         version(),
         save(false)
     {
@@ -77,6 +79,7 @@ public:
         port(info.port),
         description(info.description),
         registerUrl(info.registerUrl),
+        onlineListUrl(info.onlineListUrl),
         version(),
         save(info.save)
     {
@@ -97,6 +100,7 @@ public:
         port = 0;
         description.clear();
         registerUrl.clear();
+        onlineListUrl.clear();
         version.first = 0;
         version.second.clear();
         save = false;

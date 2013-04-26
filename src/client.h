@@ -284,6 +284,9 @@ public:
     static std::string getServerName() A_WARN_UNUSED
     { return instance()->mServerName; }
 
+    static std::string getOnlineUrl() A_WARN_UNUSED
+    { return instance()->mOnlineListUrl; }
+
     static void resize(const int width, const int height,
                        const bool always = false)
     { instance()->resizeVideo(width, height, always); }
@@ -383,6 +386,7 @@ private:
     std::string mNpcsDir;
     std::string mRootDir;
     std::string mServerName;
+    std::string mOnlineListUrl;
 
     ServerInfo mCurrentServer;
 

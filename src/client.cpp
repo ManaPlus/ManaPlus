@@ -270,6 +270,7 @@ Client::Client(const Options &options) :
     mNpcsDir(),
     mRootDir(),
     mServerName(),
+    mOnlineListUrl(),
     mCurrentServer(),
     mGame(nullptr),
     mCurrentDialog(nullptr),
@@ -1069,6 +1070,11 @@ int Client::gameExec()
             mServerName = mCurrentServer.hostname;
             initServerConfig(mCurrentServer.hostname);
             loginData.registerUrl = mCurrentServer.registerUrl;
+            if (!mCurrentServer.onlineListUrl.empty())
+                mOnlineListUrl = mCurrentServer.onlineListUrl;
+            else
+                mOnlineListUrl = mServerName;
+
             if (mOptions.username.empty())
             {
                 if (loginData.remember)

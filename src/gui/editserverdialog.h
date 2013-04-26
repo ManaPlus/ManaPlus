@@ -101,6 +101,7 @@ class EditServerDialog final : public Window,
         TextField *mPortField;
         TextField *mNameField;
         TextField *mDescriptionField;
+        TextField *mOnlineListUrlField;
         Button *mConnectButton;
         Button *mOkButton;
         Button *mCancelButton;
