@@ -401,6 +401,10 @@
 		2B8B70CB167EBCB3003A8440 /* popuplist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B70C9167EBCB3003A8440 /* popuplist.cpp */; };
 		2B8B70CE167EBE3A003A8440 /* setup_touch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B70CC167EBE3A003A8440 /* setup_touch.cpp */; };
 		2BAC2B44166DB4B300874178 /* manaplus.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC2B43166DB4B300874178 /* manaplus.icns */; };
+		2BB28FB2172B43860046599B /* palettedb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BB28FB0172B43860046599B /* palettedb.cpp */; };
+		2BB28FB3172B43860046599B /* palettedb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BB28FB0172B43860046599B /* palettedb.cpp */; };
+		2BB28FB6172B4CEF0046599B /* nullopenglgraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BB28FB4172B4CEF0046599B /* nullopenglgraphics.cpp */; };
+		2BB28FB7172B4CEF0046599B /* nullopenglgraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BB28FB4172B4CEF0046599B /* nullopenglgraphics.cpp */; };
 		2BDF45C4166D5AEC0054E77F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF45C3166D5AEC0054E77F /* Cocoa.framework */; };
 		2BDF45CE166D5AEC0054E77F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF45CC166D5AEC0054E77F /* InfoPlist.strings */; };
 		2BDF45D4166D5AEC0054E77F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF45D2166D5AEC0054E77F /* Credits.rtf */; };
@@ -1148,15 +1152,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2B1713181686A98C002E9493 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 12;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2BDF4D77166D7EA00054E77F /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1220,6 +1215,10 @@
 		2B8B70CC167EBE3A003A8440 /* setup_touch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = setup_touch.cpp; sourceTree = "<group>"; };
 		2B8B70CD167EBE3A003A8440 /* setup_touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setup_touch.h; sourceTree = "<group>"; };
 		2BAC2B43166DB4B300874178 /* manaplus.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = manaplus.icns; sourceTree = "<group>"; };
+		2BB28FB0172B43860046599B /* palettedb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = palettedb.cpp; sourceTree = "<group>"; };
+		2BB28FB1172B43860046599B /* palettedb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = palettedb.h; sourceTree = "<group>"; };
+		2BB28FB4172B4CEF0046599B /* nullopenglgraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nullopenglgraphics.cpp; path = ../../src/nullopenglgraphics.cpp; sourceTree = "<group>"; };
+		2BB28FB5172B4CEF0046599B /* nullopenglgraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nullopenglgraphics.h; path = ../../src/nullopenglgraphics.h; sourceTree = "<group>"; };
 		2BC90AA916855F8000FE7AD3 /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = libs/libintl.a; sourceTree = "<group>"; };
 		2BDF45BF166D5AEC0054E77F /* ManaPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManaPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDF45C3166D5AEC0054E77F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -2119,6 +2118,8 @@
 		2BDF45C9166D5AEC0054E77F /* ManaPlus */ = {
 			isa = PBXGroup;
 			children = (
+				2BB28FB4172B4CEF0046599B /* nullopenglgraphics.cpp */,
+				2BB28FB5172B4CEF0046599B /* nullopenglgraphics.h */,
 				2B1E2220172AFA2100B7230A /* navigationmanager.cpp */,
 				2B1E2221172AFA2100B7230A /* navigationmanager.h */,
 				2B1E2214172AF96000B7230A /* auctionmanager.cpp */,
@@ -2989,6 +2990,8 @@
 		2BDF49E4166D5B680054E77F /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				2BB28FB0172B43860046599B /* palettedb.cpp */,
+				2BB28FB1172B43860046599B /* palettedb.h */,
 				2B1E2224172AFBB500B7230A /* petdb.cpp */,
 				2B1E2225172AFBB500B7230A /* petdb.h */,
 				2B1E2210172AF91A00B7230A /* sounddb.cpp */,
@@ -3136,8 +3139,6 @@
 				2B1712FB1686A98C002E9493 /* Frameworks */,
 				2B17130B1686A98C002E9493 /* Resources */,
 				2B1713121686A98C002E9493 /* CopyFiles */,
-				2B1713181686A98C002E9493 /* CopyFiles */,
-				2B17132B1686A98C002E9493 /* Dylib Script */,
 				2BDB77BB16870F00006DDD51 /* Version Script */,
 				2B9D5589168A6458006F8F06 /* Localization Script */,
 			);
@@ -3253,20 +3254,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2B17132B1686A98C002E9493 /* Dylib Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Dylib Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "install_name_tool -change /usr/lib/libcurl.4.dylib @executable_path/../SharedSupport/libcurl.4.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libSDL_gfx.14.dylib @executable_path/../SharedSupport/libSDL_gfx.14.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\n# install_name_tool -change /opt/local/lib/libpng15.15.dylib @executable_path/../SharedSupport/libpng15.15.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libphysfs.1.dylib @executable_path/../SharedSupport/libphysfs.2.0.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\n#install_name_tool -change /opt/local/lib/libintl.8.dylib @executable_path/../SharedSupport/libintl.8.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libiconv.2.dylib @executable_path/../SharedSupport/libiconv.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libfreetype.6.dylib @executable_path/../SharedSupport/libfreetype.6.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libxml2.2.dylib @executable_path/../SharedSupport/libxml2.2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -change /opt/local/lib/libz.1.dylib @executable_path/../SharedSupport/libz.1.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\n";
-		};
 		2B514F87168A49F900AAF381 /* Localization Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3707,6 +3694,8 @@
 				2B1E2227172AFBB500B7230A /* petdb.cpp in Sources */,
 				2B1E222D172AFC4C00B7230A /* charserverhandler.cpp in Sources */,
 				2B1E222F172AFC4C00B7230A /* sdltcpnet.cpp in Sources */,
+				2BB28FB3172B43860046599B /* palettedb.cpp in Sources */,
+				2BB28FB7172B4CEF0046599B /* nullopenglgraphics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4078,6 +4067,8 @@
 				2B1E2226172AFBB500B7230A /* petdb.cpp in Sources */,
 				2B1E222C172AFC4C00B7230A /* charserverhandler.cpp in Sources */,
 				2B1E222E172AFC4C00B7230A /* sdltcpnet.cpp in Sources */,
+				2BB28FB2172B43860046599B /* palettedb.cpp in Sources */,
+				2BB28FB6172B4CEF0046599B /* nullopenglgraphics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4509,10 +4500,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ManaPlus-10.6-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					/opt/local/lib,
-					"\"$(SRCROOT)/libs\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
@@ -4573,10 +4561,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ManaPlus-10.6-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					/opt/local/lib,
-					"\"$(SRCROOT)/libs\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
