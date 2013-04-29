@@ -68,6 +68,7 @@ void CharacterViewNormal::show(const int i)
 
 void CharacterViewNormal::resize()
 {
+    const int sz = static_cast<signed>(mCharacterEntries->size());
     const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
     int y = 0;
     const int width = firtChar->getWidth();
@@ -76,7 +77,7 @@ void CharacterViewNormal::resize()
         (*mCharacterEntries)[f]->setPosition(f * width, y);
     y += height;
 
-    for (int f = 5; f < 10; f ++)
+    for (int f = 5; f < sz; f ++)
         (*mCharacterEntries)[f]->setPosition((f - 5) * width, y);
 }
 
