@@ -88,26 +88,6 @@ struct NextSoundInfo
     int time;
 };
 
-class BeingEquipBackend final : public Equipment::Backend
-{
-    public:
-        explicit BeingEquipBackend(Being *const being);
-
-        A_DELETE_COPY(BeingEquipBackend)
-
-        virtual ~BeingEquipBackend();
-
-        Item *getEquipment(const int index) const A_WARN_UNUSED;
-
-        void clear();
-
-        void setEquipment(const int index, Item *const item);
-
-    private:
-        Item *mEquipment[EQUIPMENT_SIZE];
-        Being *mBeing;
-};
-
 class Being : public ActorSprite, public ConfigListener
 {
     public:

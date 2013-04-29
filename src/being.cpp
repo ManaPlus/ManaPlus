@@ -24,22 +24,18 @@
 
 #include "actorspritemanager.h"
 #include "animatedsprite.h"
+#include "beingcacheentry.h"
+#include "beingequipbackend.h"
 #include "client.h"
-#include "configuration.h"
 #include "effectmanager.h"
-#include "graphics.h"
 #include "guild.h"
-#include "item.h"
-#include "localplayer.h"
 #include "particle.h"
 #include "party.h"
 #include "playerrelations.h"
-#include "simpleanimation.h"
 #include "soundmanager.h"
 #include "text.h"
 
 #include "gui/equipmentwindow.h"
-#include "gui/gui.h"
 #include "gui/socialwindow.h"
 #include "gui/speechbubble.h"
 #include "gui/sdlfont.h"
@@ -52,7 +48,6 @@
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
 
-#include "resources/colordb.h"
 #include "resources/emotedb.h"
 #include "resources/iteminfo.h"
 #include "resources/monsterdb.h"
@@ -60,7 +55,6 @@
 #include "resources/petdb.h"
 #include "resources/resourcemanager.h"
 
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/langtab.h"
 
 #include "utils/gettext.h"
@@ -70,107 +64,6 @@
 #include "debug.h"
 
 const unsigned int CACHE_SIZE = 50;
-
-class BeingCacheEntry final
-{
-    public:
-        explicit BeingCacheEntry(const int id):
-            mId(id),
-            mName(""),
-            mPartyName(""),
-            mGuildName(""),
-            mLevel(0),
-            mPvpRank(0),
-            mTime(0),
-            mIp(""),
-            mIsAdvanced(false),
-            mFlags(0)
-        {
-        }
-
-        A_DELETE_COPY(BeingCacheEntry)
-
-        int getId() const
-        { return mId; }
-
-        /**
-         * Returns the name of the being.
-         */
-        const std::string &getName() const
-        { return mName; }
-
-        /**
-         * Sets the name for the being.
-         *
-         * @param name The name that should appear.
-         */
-        void setName(const std::string &name)
-        { mName = name; }
-
-        /**
-         * Following are set from the server (mainly for players)
-         */
-        void setPartyName(const std::string &name)
-        { mPartyName = name; }
-
-        void setGuildName(const std::string &name)
-        { mGuildName = name; }
-
-        const std::string &getPartyName() const
-        { return mPartyName; }
-
-        const std::string &getGuildName() const
-        { return mGuildName; }
-
-        void setLevel(const int n)
-        { mLevel = n; }
-
-        int getLevel() const
-        { return mLevel; }
-
-        void setTime(const int n)
-        { mTime = n; }
-
-        int getTime() const
-        { return mTime; }
-
-        unsigned getPvpRank() const
-        { return mPvpRank; }
-
-        void setPvpRank(const int r)
-        { mPvpRank = r; }
-
-        std::string getIp() const
-        { return mIp; }
-
-        void setIp(std::string ip)
-        { mIp = ip; }
-
-        bool isAdvanced() const
-        { return mIsAdvanced; }
-
-        void setAdvanced(const bool a)
-        { mIsAdvanced = a; }
-
-        int getFlags() const
-        { return mFlags; }
-
-        void setFlags(const int flags)
-        { mFlags = flags; }
-
-    protected:
-        int mId;                        /**< Unique sprite id */
-        std::string mName;              /**< Name of character */
-        std::string mPartyName;
-        std::string mGuildName;
-        int mLevel;
-        unsigned int mPvpRank;
-        int mTime;
-        std::string mIp;
-        bool mIsAdvanced;
-        int mFlags;
-};
-
 
 int Being::mNumberOfHairstyles = 1;
 int Being::mNumberOfRaces = 1;
@@ -2989,52 +2882,4 @@ void Being::playSfx(const SoundInfo &sound, Being *const being,
     {
         soundManager.playSfx(sound.sound, x, y);
     }
-}
-
-BeingEquipBackend::BeingEquipBackend(Being *const being):
-    mBeing(being)
-{
-    memset(mEquipment, 0, sizeof(mEquipment));
-    if (being)
-    {
-        const size_t sz = being->mSpriteIDs.size();
-
-        for (unsigned f = 0; f < sz; f ++)
-        {
-            const int idx = Net::getInventoryHandler()->
-                convertFromServerSlot(f);
-            const int id = being->mSpriteIDs[f];
-            if (id > 0 && idx >= 0 && idx < EQUIPMENT_SIZE)
-            {
-                mEquipment[idx] = new Item(id, 1, 0,
-                    being->mSpriteColorsIds[f], true, true);
-            }
-        }
-    }
-}
-
-BeingEquipBackend::~BeingEquipBackend()
-{
-    clear();
-}
-
-void BeingEquipBackend::clear()
-{
-    for (int i = 0; i < EQUIPMENT_SIZE; i++)
-    {
-        delete mEquipment[i];
-        mEquipment[i] = nullptr;
-    }
-}
-
-void BeingEquipBackend::setEquipment(const int index, Item *const item)
-{
-    mEquipment[index] = item;
-}
-
-Item *BeingEquipBackend::getEquipment(const int index) const
-{
-    if (index < 0 || index >= EQUIPMENT_SIZE)
-        return nullptr;
-    return mEquipment[index];
 }

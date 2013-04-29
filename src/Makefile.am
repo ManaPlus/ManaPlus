@@ -546,6 +546,9 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      avatar.h \
 	      being.cpp \
 	      being.h \
+	      beingcacheentry.h \
+	      beingequipbackend.cpp \
+	      beingequipbackend.h \
 	      spellmanager.cpp \
 	      spellmanager.h \
 	      chatlogger.cpp \

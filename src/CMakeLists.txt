@@ -543,6 +543,9 @@ SET(SRCS
     avatar.h
     being.cpp
     being.h
+    beingcacheentry.h
+    beingequipbackend.cpp
+    beingequipbackend.h
     spellmanager.cpp
     spellmanager.h
     chatlogger.cpp
