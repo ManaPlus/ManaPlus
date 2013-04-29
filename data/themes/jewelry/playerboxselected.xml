@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window" xpos="404" ypos="0">
+        <option name="drawbackground" value="1" />
+        <option name="offsetX" value="-16" />
+        <option name="offsetY" value="-32" />
+        <option name="frameSize" value="4" />
+
+        <!-- Top Row -->
+        <part type="top-left-corner" xpos="0" ypos="0" width="10" height="10" />
+        <part type="top-edge" xpos="10" ypos="0" width="12" height="10" />
+        <part type="top-right-corner" xpos="22" ypos="0" width="10" height="10" />
+
+        <!-- Middle Row -->
+        <part type="left-edge" xpos="0" ypos="10" width="10" height="12" />
+        <part type="bg-quad" xpos="10" ypos="10" width="12" height="12" />
+        <part type="right-edge" xpos="22" ypos="10" width="10" height="12" />
+
+        <!-- Bottom Row -->
+        <part type="bottom-left-corner" xpos="0" ypos="22" width="10" height="10" />
+        <part type="bottom-edge" xpos="10" ypos="22" width="12" height="10" />
+        <part type="bottom-right-corner" xpos="22" ypos="22" width="10" height="10" />
+    </widget>
+</skinset>

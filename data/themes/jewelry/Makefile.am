@@ -47,6 +47,7 @@ gui_DATA =				\
 	npc.xml		\
 	ok.xml		\
 	playerbox.xml		\
+	playerboxselected.xml		\
 	popup.xml		\
 	popuplist.xml		\
 	progressbar.xml		\
