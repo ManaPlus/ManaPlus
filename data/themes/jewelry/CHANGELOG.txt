@@ -2,9 +2,18 @@
 Francesco Miglietta (Hal9000)
 
 
+Version 1.0.4 (29.04.2013)
+
+	- New character selection graphic implemented	
+	- New scrollbar graphic implemented +100% usability on mobile
+	- New graphic for horizonal scrollbar background added
+	- Fix horizontal scrollbar issue
+	- Increase contrast with highlighted handle in new scrollbar graphic
+
+
 Version 1.0.3 (12.02.2013)
 
-	- Fix Login window minor graphic artifacts
+	- Fix login window minor graphic artifacts
 	- Improved listboxes menu layout
 	- Fix language selection menus in Setup window and NPC dialogue
 	- Fix height in popuplist for language selection in Setup window
