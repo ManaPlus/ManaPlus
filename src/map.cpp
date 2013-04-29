@@ -140,7 +140,7 @@ Map::Map(const int width, const int height,
     mForegrounds(),
     mLastAScrollX(0.0f),
     mLastAScrollY(0.0f),
-    particleEffects(),
+    mParticleEffects(),
     mMapPortals(),
     mTileAnimations(),
     mOverlayDetail(config.getIntValue("OverlayDetail")),
@@ -1102,7 +1102,7 @@ void Map::addParticleEffect(const std::string &effectFile,
     newEffect.y = y;
     newEffect.w = w;
     newEffect.h = h;
-    particleEffects.push_back(newEffect);
+    mParticleEffects.push_back(newEffect);
 }
 
 void Map::initializeParticleEffects(Particle *const engine)
@@ -1113,8 +1113,8 @@ void Map::initializeParticleEffects(Particle *const engine)
     if (config.getBoolValue("particleeffects"))
     {
         for (std::vector<ParticleEffectData>::const_iterator
-             i = particleEffects.begin();
-             i != particleEffects.end(); ++i)
+             i = mParticleEffects.begin();
+             i != mParticleEffects.end(); ++i)
         {
             Particle *const p = engine->addEffect(i->file, i->x, i->y);
             if (p && i->w > 0 && i->h > 0)

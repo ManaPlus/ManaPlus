@@ -456,7 +456,8 @@ class Map final : public Properties, public ConfigListener
          */
         unsigned *mOccupation[NB_BLOCKTYPES];
 
-        int mWidth, mHeight;
+        int mWidth;
+        int mHeight;
         int mTileWidth, mTileHeight;
         int mMaxTileHeight;
         MetaTile *mMetaTiles;
@@ -497,7 +498,7 @@ class Map final : public Properties, public ConfigListener
             int w;
             int h;
         };
-        std::vector<ParticleEffectData> particleEffects;
+        std::vector<ParticleEffectData> mParticleEffects;
 
         std::vector<MapItem*> mMapPortals;
 
