@@ -62,9 +62,11 @@ class GraphicsManager final
 
         void setVideoMode();
 
-        Graphics *createGraphics() A_WARN_UNUSED;
-
         bool getAllVideoModes(StringVect &modeList);
+
+        void detectPixelSize();
+
+        std::string getDensityString() const;
 
 #ifdef USE_OPENGL
         TestMain *startDetection() A_WARN_UNUSED;
@@ -146,6 +148,16 @@ class GraphicsManager final
         int mMaxVertices;
 
         int mMaxFboSize;
+
+        uint32_t mMaxWidth;
+
+        uint32_t mMaxHeight;
+
+        uint32_t mWidthMM;
+
+        uint32_t mHeightMM;
+
+        int32_t mDensity;
 
 #ifdef USE_OPENGL
         bool mUseTextureSampler;

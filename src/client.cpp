@@ -585,6 +585,7 @@ void Client::gameInit()
 #endif
     logVars();
     graphicsManager.initGraphics(mOptions.noOpenGL);
+    graphicsManager.detectPixelSize();
     runCounters = config.getBoolValue("packetcounters");
     applyVSync();
     graphicsManager.setVideoMode();

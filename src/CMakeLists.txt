@@ -116,7 +116,7 @@ SET(SRCS
     gui/widgets/button.h
     gui/widgets/characterdisplay.cpp
     gui/widgets/characterdisplay.h
-    gui/widgets/charviewbase.h
+    gui/widgets/characterviewbase.h
     gui/widgets/characterviewnormal.cpp
     gui/widgets/characterviewnormal.h
     gui/widgets/characterviewsmall.cpp

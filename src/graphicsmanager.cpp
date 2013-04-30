@@ -27,9 +27,12 @@
 #include <GLES2/gl2.h>
 #include <GLES/glext.h>
 #include <EGL/egl.h>
+#include <SDL_android.h>
 #else
 #include "GL/glx.h"
 #endif
+#else
+//#include <winuser.h>
 #endif
 
 #endif
@@ -76,6 +79,18 @@
 
 GraphicsManager graphicsManager;
 
+const int densitySize = 6;
+
+const std::string densityNames[] =
+{
+    "low",
+    "medium",
+    "tv",
+    "high",
+    "xhigh",
+    "xxhigh"
+};
+
 GraphicsManager::GraphicsManager() :
     mExtensions(),
     mPlatformExtensions(),
@@ -88,6 +103,11 @@ GraphicsManager::GraphicsManager() :
     mPlatformMajor(0),
     mMaxVertices(500),
     mMaxFboSize(0),
+    mMaxWidth(0),
+    mMaxHeight(0),
+    mWidthMM(0),
+    mHeightMM(0),
+    mDensity(-1),
 #ifdef USE_OPENGL
     mUseTextureSampler(true),
     mTextureSampler(0),
@@ -243,28 +263,6 @@ void GraphicsManager::initGraphics(const bool noOpenGL A_UNUSED)
     imageHelper = new SDLImageHelper;
     sdlImageHelper = imageHelper;
     mainGraphics = new Graphics;
-#endif
-}
-
-Graphics *GraphicsManager::createGraphics()
-{
-#ifdef USE_OPENGL
-    switch (config.getIntValue("opengl"))
-    {
-        case 0:
-            return new Graphics;
-        case 1:
-        default:
-#ifndef ANDROID
-            return new NormalOpenGLGraphics;
-        case 2:
-            return new SafeOpenGLGraphics;
-#endif
-        case 3:
-            return new MobileOpenGLGraphics;
-    };
-#else
-    return new Graphics;
 #endif
 }
 
@@ -484,6 +482,7 @@ void GraphicsManager::updatePlanformExtensions()
                     logger->log1(extensions2);
                 }
             }
+            logger->log("width=%d", DisplayWidth(display, screenNum));
         }
 #endif
     }
@@ -992,3 +991,51 @@ void GraphicsManager::updateDebugLog() const
     }
 }
 #endif
+
+void GraphicsManager::detectPixelSize()
+{
+    SDL_SysWMinfo info;
+    SDL_VERSION(&info.version);
+    if (SDL_GetWMInfo(&info))
+    {
+#ifdef WIN32
+        HDC hdc = GetDC(info.window);
+        if (hdc)
+        {
+//            SetProcessDPIAware();
+            mMaxWidth = GetDeviceCaps(hdc, HORZRES);
+            mMaxHeight = GetDeviceCaps(hdc, VERTRES);
+            mWidthMM = GetDeviceCaps(hdc, HORZSIZE);
+            mHeightMM = GetDeviceCaps(hdc, VERTSIZE);
+        }
+#elif defined USE_X11
+        Display *const display = info.info.x11.display;
+        if (display)
+        {
+            Screen *const screen = XDefaultScreenOfDisplay(display);
+            if (!screen)
+                return;
+
+            const int screenNum = XScreenNumberOfScreen(screen);
+            mMaxWidth = DisplayWidth(display, screenNum);
+            mMaxHeight = DisplayHeight(display, screenNum);
+            mWidthMM = DisplayWidthMM(display, screenNum);
+            mHeightMM = DisplayHeightMM(display, screenNum);
+        }
+#endif
+    }
+#if defined ANDROID
+    SDL_ANDROID_GetMetrics(&mMaxWidth, &mMaxHeight,
+        &mWidthMM, &mHeightMM, &mDensity);
+#endif
+    logger->log("screen size in pixels: %dx%d", mMaxWidth, mMaxHeight);
+    logger->log("screen size in millimeters: %dx%d", mWidthMM, mHeightMM);
+    logger->log("screen density: %d", mDensity);
+}
+
+std::string GraphicsManager::getDensityString() const
+{
+    if (mDensity >= 0 && mDensity < densitySize)
+        return densityNames[mDensity];
+    return "";
+}
