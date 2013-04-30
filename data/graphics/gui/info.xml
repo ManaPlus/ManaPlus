@@ -2,4 +2,13 @@
 <info>
     <name>(default)</name>
     <copyright>2004-2009 The Mana World Development Team\n2009-2010 The Mana Developers\n2011-2013 ManaPlus Developers</copyright>
+    <font>dejavusans.ttf</font>
+    <boldFont>dejavusans-bold.ttf</boldFont>
+    <particleFont>dejavusans.ttf</particleFont>
+    <helpFont>dejavusansmono.ttf</helpFont>
+    <secureFont>dejavusansmono.ttf</secureFont>
+    <npcFont>dejavusans.ttf</npcFont>
+    <japanFont>mplus-1p-regular.ttf</japanFont>
+    <fontSize>12</fontSize>
+    <npcfontSize>13</npcfontSize>
 </info>

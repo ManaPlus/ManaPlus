@@ -157,7 +157,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showownname", true);
     AddDEF("showpickupparticle", true);
     AddDEF("showpickupchat", true);
-    AddDEF("fontSize", 11);
+    AddDEF("fontSize", 12);
     AddDEF("ReturnToggles", false);
     AddDEF("ScrollLaziness", 16);
     AddDEF("ScrollRadius", 0);

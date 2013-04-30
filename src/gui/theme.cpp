@@ -1147,6 +1147,14 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
     return nullptr;
 }
 
+#define readValue(name) \
+        info->name = reinterpret_cast<const char*>(\
+            xmlNodeGetContent(infoNode))
+
+#define readIntValue(name) \
+        info->name = atoi(reinterpret_cast<const char*>(\
+            xmlNodeGetContent(infoNode)))
+
 ThemeInfo *Theme::loadInfo(const std::string &themeName)
 {
     std::string path;
@@ -1171,15 +1179,25 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
     for_each_xml_child_node(infoNode, rootNode)
     {
         if (xmlNameEqual(infoNode, "name"))
-        {
-            info->name = reinterpret_cast<const char*>(
-                xmlNodeGetContent(infoNode));
-        }
+            readValue(name);
         else if (xmlNameEqual(infoNode, "copyright"))
-        {
-            info->copyright = reinterpret_cast<const char*>(
-            xmlNodeGetContent(infoNode));
-        }
+            readValue(copyright);
+        else if (xmlNameEqual(infoNode, "font"))
+            readValue(font);
+        else if (xmlNameEqual(infoNode, "boldFont"))
+            readValue(boldFont);
+        else if (xmlNameEqual(infoNode, "particleFont"))
+            readValue(particleFont);
+        else if (xmlNameEqual(infoNode, "helpFont"))
+            readValue(helpFont);
+        else if (xmlNameEqual(infoNode, "secureFont"))
+            readValue(secureFont);
+        else if (xmlNameEqual(infoNode, "japanFont"))
+            readValue(japanFont);
+        else if (xmlNameEqual(infoNode, "fontSize"))
+            readIntValue(fontSize);
+        else if (xmlNameEqual(infoNode, "npcfontSize"))
+            readIntValue(npcfontSize);
     }
     return info;
 }

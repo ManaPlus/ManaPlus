@@ -45,11 +45,27 @@ struct ThemeInfo final
 {
     ThemeInfo() :
         name(),
-        copyright()
+        copyright(),
+        font(),
+        boldFont(),
+        particleFont(),
+        helpFont(),
+        secureFont(),
+        japanFont(),
+        fontSize(0),
+        npcfontSize(0)
     {
     }
     std::string name;
     std::string copyright;
+    std::string font;
+    std::string boldFont;
+    std::string particleFont;
+    std::string helpFont;
+    std::string secureFont;
+    std::string japanFont;
+    int fontSize;
+    int npcfontSize;
 };
 
 class Skin final

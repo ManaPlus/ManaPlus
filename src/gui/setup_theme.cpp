@@ -195,6 +195,7 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     mThemesModel(new ThemesModel),
     mThemeDropDown(new DropDown(this, mThemesModel)),
     mTheme(config.getStringValue("theme")),
+    mInfo(Theme::loadInfo(mTheme)),
     mFontsModel(new FontsModel),
     mFontLabel(new Label(this, _("Main Font"))),
     mFontDropDown(new DropDown(this, mFontsModel)),
@@ -318,6 +319,9 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
 
 Setup_Theme::~Setup_Theme()
 {
+    delete mInfo;
+    mInfo = nullptr;
+
     delete mThemesModel;
     mThemesModel = nullptr;
 
@@ -336,11 +340,11 @@ Setup_Theme::~Setup_Theme()
 
 void Setup_Theme::updateInfo()
 {
-    ThemeInfo *info = Theme::loadInfo(mTheme);
-    if (info)
+    mInfo = Theme::loadInfo(mTheme);
+    if (mInfo)
     {
-        mThemeInfo = std::string("Name: ").append(info->name)
-            .append("\nCopyright:\n").append(info->copyright);
+        mThemeInfo = std::string("Name: ").append(mInfo->name)
+            .append("\nCopyright:\n").append(mInfo->copyright);
     }
     else
     {
@@ -348,7 +352,6 @@ void Setup_Theme::updateInfo()
     }
     replaceAll(mThemeInfo, "\\n", "\n");
     mInfoButton->setEnabled(!mThemeInfo.empty());
-    delete info;
 }
 
 void Setup_Theme::action(const gcn::ActionEvent &event)
@@ -413,6 +416,9 @@ void Setup_Theme::cancel()
     mJapanFont = getFileName(config.getStringValue("japanFont"));
 }
 
+#define updateField(name1, name2) if (!mInfo->name1.empty()) \
+    name2 = mInfo->name1;
+
 void Setup_Theme::apply()
 {
     if (config.getStringValue("theme") != mTheme)
@@ -422,6 +428,27 @@ void Setup_Theme::apply()
     }
 
     config.setValue("selectedSkin", "");
+    if (config.getStringValue("theme") != mTheme)
+    {
+        updateField(font, mFont);
+        updateField(boldFont, mBoldFont);
+        updateField(particleFont, mParticleFont);
+        updateField(helpFont, mHelpFont);
+        updateField(secureFont, mSecureFont);
+        updateField(japanFont, mJapanFont);
+        if (mInfo->fontSize)
+        {
+            const int size = mInfo->fontSize - 9;
+            if (size >= 0)
+                mFontSizeDropDown->setSelected(size);
+        }
+        if (mInfo->npcfontSize)
+        {
+            const int size = mInfo->npcfontSize - 9;
+            if (size >= 0)
+                mNpcFontSizeDropDown->setSelected(size);
+        }
+    }
     config.setValue("theme", mTheme);
     config.setValue("lang", mLang);
     if (config.getValue("font", "dejavusans.ttf") != mFont
@@ -447,3 +474,5 @@ void Setup_Theme::apply()
         gui->updateFonts();
     }
 }
+
+#undef updateField

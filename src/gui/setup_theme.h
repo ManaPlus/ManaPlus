@@ -58,6 +58,7 @@ class Setup_Theme final : public SetupTab
         ThemesModel *mThemesModel;
         DropDown *mThemeDropDown;
         std::string mTheme;
+        ThemeInfo *mInfo;
 
         FontsModel *mFontsModel;
         Label *mFontLabel;
