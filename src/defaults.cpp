@@ -315,6 +315,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showAllLang", false);
     AddDEF("moveNames", false);
     AddDEF("uselonglivesprites", false);
+    AddDEF("screenDensity", 0);
     return configData;
 }
 

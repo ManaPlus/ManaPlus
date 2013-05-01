@@ -58,10 +58,24 @@ static const char *const proxyTypeList[] =
     N_("SOCKS5 hostname")
 };
 
+static const int densityListSize = 7;
+
+static const char *const densityList[] =
+{
+    N_("default"),
+    N_("low"),
+    N_("medium"),
+    N_("tv"),
+    N_("high"),
+    N_("xhigh"),
+    N_("xxhigh")
+};
+
 Setup_Other::Setup_Other(const Widget2 *const widget) :
     SetupTabScroll(widget),
     mProxyTypeList(new NamesModel),
-    mShortcutsList(new NamesModel)
+    mShortcutsList(new NamesModel),
+    mDensityList(new NamesModel)
 {
     setName(_("Misc"));
 
@@ -274,6 +288,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
 
     new SetupItemCheckBox(_("Show background"), "", "showBackground",
         this, "showBackgroundEvent");
+
+    mDensityList->fillFromArray(&densityList[0], densityListSize);
+    new SetupItemDropDown(_("Screen density override"), "",
+        "screenDensity", this, "screenDensityEvent", mDensityList, 100);
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
