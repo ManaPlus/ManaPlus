@@ -1030,7 +1030,8 @@ void GraphicsManager::detectPixelSize()
 #endif
     logger->log("screen size in pixels: %dx%d", mMaxWidth, mMaxHeight);
     logger->log("screen size in millimeters: %dx%d", mWidthMM, mHeightMM);
-    logger->log("screen density: %d", mDensity);
+    logger->log("screen density: \"%s\" = %d",
+        getDensityString().c_str(), mDensity);
 }
 
 std::string GraphicsManager::getDensityString() const
