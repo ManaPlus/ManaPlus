@@ -117,8 +117,11 @@
         <color id="RADIOBUTTON" color="#000000" />
         <color id="POPUP" color="#f9eabc" />
         <color id="TAB" color="#efd7a7" />
-        <color id="TAB_HIGHLIGHTED" color="#fffbed" />
-        <color id="TAB_SELECTED" color="#f9eabc" />
+        <color id="TAB_OUTLINE" color="#000000" />
+        <color id="TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
+        <color id="TAB_SELECTED" color="#f8eacf" />
+        <color id="TAB_SELECTED_OUTLINE" color="#000000" />
         <color id="TEXTBOX" color="#000000" />
         <color id="TEXTFIELD" color="#000000" />
         <color id="WINDOW" color="#f1d9a9" />
@@ -142,8 +145,9 @@
         <color id="SCROLLBAR_GRAY" color="#000000" />
         <color id="DROPDOWN_SHADOW" color="#c0c0c0" />
         <color id="HIGHLIGHT" color="#ebc873" />
-        <color id="TAB_FLASH" color="#ff96f6" effect="pulse" />
-        <color id="TAB_PLAYER_FLASH" color="#ff96f6" effect="pulse" />
+        <color id="TAB_FLASH" color="#a7ff2a" />
+        <color id="TAB_FLASH_OUTLINE" color="#1a2c00" />
+        <color id="TAB_PLAYER_FLASH" color="#ff96f6" />
         <color id="SHOP_WARNING" color="#e07a7a" />
         <color id="ITEM_EQUIPPED" color="#000091" />
         <color id="ITEM_NOT_EQUIPPED" color="#000000" />
