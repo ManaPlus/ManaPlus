@@ -39,6 +39,8 @@
 
 #include "utils/stringvector.h"
 
+#include <SDL_stdinc.h>
+
 #include <set>
 #include <string>
 
