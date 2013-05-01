@@ -157,7 +157,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("showownname", true);
     AddDEF("showpickupparticle", true);
     AddDEF("showpickupchat", true);
-    AddDEF("fontSize", 12);
     AddDEF("ReturnToggles", false);
     AddDEF("ScrollLaziness", 16);
     AddDEF("ScrollRadius", 0);
@@ -282,7 +281,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("hideErased", false);
     AddDEF("enableDelayedAnimations", true);
     AddDEF("enableCompoundSpriteDelay", true);
-    AddDEF("npcfontSize", 13);
     AddDEF("useAtlases", true);
     AddDEF("useTextureSampler", false);
     AddDEF("ministatussaved", 0);
@@ -333,6 +331,24 @@ void getConfigDefaults2(DefaultsData *const configData)
         AddDEF("screenButtonsSize", 1);
         AddDEF("screenJoystickSize", 1);
     }
+    const int density = graphicsManager.getDensity();
+    int size = 12;
+    switch (density)
+    {
+        case DENSITY_HIGH:
+            size = 13;
+            break;
+        case DENSITY_XHIGH:
+            size = 15;
+            break;
+        case DENSITY_XXHIGH:
+            size = 17;
+            break;
+        default:
+            break;
+    }
+    AddDEF("fontSize", size);
+    AddDEF("npcfontSize", size + 1);
 }
 
 DefaultsData* getBrandingDefaults()

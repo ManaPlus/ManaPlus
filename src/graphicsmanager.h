@@ -51,6 +51,17 @@ class TestMain;
 
 struct FBOInfo;
 
+enum ScreenDensity
+{
+    DENSITY_UNKNOWN = -1,
+    DENSITY_LOW = 0,
+    DENSITY_MEDIUM = 1,
+    DENSITY_TV = 2,
+    DENSITY_HIGH = 3,
+    DENSITY_XHIGH = 4,
+    DENSITY_XXHIGH = 5
+};
+
 class GraphicsManager final
 {
     public:
@@ -69,6 +80,9 @@ class GraphicsManager final
         void detectPixelSize();
 
         std::string getDensityString() const;
+
+        int getDensity()
+        { return mDensity; }
 
 #ifdef USE_OPENGL
         TestMain *startDetection() A_WARN_UNUSED;
