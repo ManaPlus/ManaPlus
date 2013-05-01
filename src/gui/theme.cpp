@@ -1205,6 +1205,8 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
 
     ThemeInfo *info = new ThemeInfo();
 
+    const std::string fontSize2 = "fontSize_" + mScreenDensity;
+    const std::string npcfontSize2 = "npcfontSize_" + mScreenDensity;
     for_each_xml_child_node(infoNode, rootNode)
     {
         if (xmlNameEqual(infoNode, "name"))
@@ -1226,6 +1228,10 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
         else if (xmlNameEqual(infoNode, "fontSize"))
             readIntValue(fontSize);
         else if (xmlNameEqual(infoNode, "npcfontSize"))
+            readIntValue(npcfontSize);
+        else if (xmlNameEqual(infoNode, fontSize2.c_str()))
+            readIntValue(fontSize);
+        else if (xmlNameEqual(infoNode, npcfontSize2.c_str()))
             readIntValue(npcfontSize);
     }
     return info;

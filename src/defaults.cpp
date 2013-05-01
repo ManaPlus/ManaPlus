@@ -21,12 +21,14 @@
 
 #include "defaults.h"
 
-#include "utils/stringutils.h"
-
 #include "being.h"
 #include "client.h"
 #include "graphics.h"
+#include "graphicsmanager.h"
 #include "keydata.h"
+
+#include "utils/stringutils.h"
+
 
 #include <stdlib.h>
 
