@@ -450,6 +450,7 @@ class Theme final : public Palette, public ConfigListener
 
         static std::string mThemePath;
         static std::string mThemeName;
+        static std::string mScreenDensity;
         static Theme *mInstance;
 
         static bool tryThemePath(std::string themePath) A_WARN_UNUSED;

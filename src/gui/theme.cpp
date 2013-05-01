@@ -26,6 +26,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "graphicsmanager.h"
 
 #include "resources/dye.h"
 #include "resources/image.h"
@@ -43,6 +44,8 @@ static std::string defaultThemePath;
 
 std::string Theme::mThemePath;
 std::string Theme::mThemeName;
+std::string Theme::mScreenDensity;
+
 Theme *Theme::mInstance = nullptr;
 
 // Set the theme path...
@@ -273,13 +276,38 @@ Skin *Theme::load(const std::string &filename, const std::string &filename2,
         return skinIterator->second;
     }
 
-    Skin *skin = readSkin(filename, full);
-
-    if (!skin && !filename2.empty() && filename2 != filename)
-        skin = readSkin(filename2, full);
-
-    if (!skin && filename2 != "window.xml")
-        skin = readSkin("window.xml", full);
+    Skin *skin = nullptr;
+    if (mScreenDensity.empty())
+    {   // if no density detected
+        skin = readSkin(filename, full);
+        if (!skin && !filename2.empty() && filename2 != filename)
+            skin = readSkin(filename2, full);
+        if (!skin && filename2 != "window.xml")
+            skin = readSkin("window.xml", full);
+    }
+    else
+    {   // first use correct density images
+        const std::string endStr = "_" + mScreenDensity + ".xml";
+        std::string name = filename;
+        if (findCutLast(name, ".xml"))
+            skin = readSkin(name + endStr, full);
+        if (!skin)
+            skin = readSkin(filename, full);
+        if (!skin && !filename2.empty() && filename2 != filename)
+        {
+            name = filename2;
+            if (findCutLast(name, ".xml"))
+                skin = readSkin(name + endStr, full);
+            if (!skin)
+                skin = readSkin(filename2, full);
+        }
+        if (!skin && filename2 != "window.xml")
+        {
+            skin = readSkin("window" + endStr, full);
+            if (!skin)
+                skin = readSkin("window.xml", full);
+        }
+    }
 
     if (!skin)
     {
@@ -663,6 +691,7 @@ void Theme::fillSoundsList(StringVect &list)
 void Theme::selectSkin()
 {
     prepareThemePath();
+    mScreenDensity = graphicsManager.getDensityString();
 }
 
 void Theme::prepareThemePath()
