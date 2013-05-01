@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-04-26 12:41+0300\n"
-"PO-Revision-Date: 2013-04-26 09:43+0000\n"
+"POT-Creation-Date: 2013-05-01 20:56+0300\n"
+"PO-Revision-Date: 2013-05-01 18:02+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
@@ -39,128 +39,128 @@ msgstr "Accepter les requêtes d'échanges entrantes"
 msgid "Visible on map"
 msgstr "Visible sur la carte"
 
-#: src/being.cpp:378
+#: src/being.cpp:271
 msgid "Human"
 msgstr "Humain"
 
-#: src/being.cpp:578
+#: src/being.cpp:471
 msgid "dodge"
 msgstr "esquive"
 
-#: src/being.cpp:578
+#: src/being.cpp:471
 msgid "miss"
 msgstr "raté"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1693 src/gui/whoisonline.cpp:830
+#: src/being.cpp:1586 src/gui/whoisonline.cpp:830
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1698 src/gui/whoisonline.cpp:835
+#: src/being.cpp:1591 src/gui/whoisonline.cpp:835
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:1134 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:158
+#: src/client.cpp:1135 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:158
 msgid "Setup"
 msgstr "Configuration"
 
-#: src/client.cpp:1137 src/gui/setup_perfomance.cpp:59
+#: src/client.cpp:1138 src/gui/setup_perfomance.cpp:59
 msgid "Perfomance"
 msgstr "Performance"
 
-#: src/client.cpp:1139 src/gui/setup_video.cpp:246
+#: src/client.cpp:1140 src/gui/setup_video.cpp:246
 msgid "Video"
 msgstr "Vidéo"
 
-#: src/client.cpp:1141
+#: src/client.cpp:1142
 msgid "Themes"
 msgstr "Thèmes"
 
-#: src/client.cpp:1144 src/gui/didyouknowwindow.cpp:73
+#: src/client.cpp:1145 src/gui/didyouknowwindow.cpp:73
 #: src/gui/inventorywindow.cpp:210 src/gui/npcdialog.cpp:60
 #: src/gui/npcdialog.cpp:91 src/gui/popupmenu.cpp:512
 #: src/gui/questswindow.cpp:136 src/gui/shopwindow.cpp:78
 msgid "Close"
 msgstr "Fermer"
 
-#: src/client.cpp:1231
+#: src/client.cpp:1232
 msgid "Connecting to server"
 msgstr "Connexion au serveur"
 
-#: src/client.cpp:1273
+#: src/client.cpp:1274
 msgid "Logging in"
 msgstr "Connexion"
 
-#: src/client.cpp:1311
+#: src/client.cpp:1312
 msgid "Entering game world"
 msgstr "Entrée dans le monde de jeu"
 
-#: src/client.cpp:1421
+#: src/client.cpp:1422
 msgid "Requesting characters"
 msgstr "Téléchargement des personnages"
 
-#: src/client.cpp:1459
+#: src/client.cpp:1460
 msgid "Connecting to the game server"
 msgstr "Connexion au serveur de jeu"
 
-#: src/client.cpp:1471
+#: src/client.cpp:1472
 msgid "Changing game servers"
 msgstr "Changement de serveur de jeu"
 
-#: src/client.cpp:1527 src/client.cpp:1537 src/client.cpp:1699
+#: src/client.cpp:1528 src/client.cpp:1538 src/client.cpp:1700
 #: src/gui/changeemaildialog.cpp:159 src/gui/changepassworddialog.cpp:147
-#: src/gui/charcreatedialog.cpp:295 src/gui/charselectdialog.cpp:402
+#: src/gui/charcreatedialog.cpp:296 src/gui/charselectdialog.cpp:275
 #: src/gui/editserverdialog.cpp:209 src/gui/registerdialog.cpp:248
 #: src/gui/unregisterdialog.cpp:138 src/net/ea/charserverhandler.cpp:174
 #: src/net/ea/charserverhandler.cpp:192
 msgid "Error"
 msgstr "Erreur"
 
-#: src/client.cpp:1549
+#: src/client.cpp:1550
 msgid "Requesting registration details"
 msgstr "Demande des paramètres d'inscription"
 
-#: src/client.cpp:1585
+#: src/client.cpp:1586
 msgid "Password Change"
 msgstr "Changement de mot de passe"
 
-#: src/client.cpp:1586
+#: src/client.cpp:1587
 msgid "Password changed successfully!"
 msgstr "Le mot de passe a été changé avec succès !"
 
-#: src/client.cpp:1606
+#: src/client.cpp:1607
 msgid "Email Change"
 msgstr "Changer d'e-mail"
 
-#: src/client.cpp:1607
+#: src/client.cpp:1608
 msgid "Email changed successfully!"
 msgstr "L'adresse e-mail a été changée avec succès !"
 
-#: src/client.cpp:1627
+#: src/client.cpp:1628
 msgid "Unregister Successful"
 msgstr "Désinscription réussie"
 
-#: src/client.cpp:1628
+#: src/client.cpp:1629
 msgid "Farewell, come back any time..."
 msgstr "À bientôt, Revenez quand vous voulez..."
 
-#: src/client.cpp:1879 src/client.cpp:1893 src/client.cpp:1935
-#: src/client.cpp:1950 src/client.cpp:2385 src/client.cpp:2392
+#: src/client.cpp:1880 src/client.cpp:1894 src/client.cpp:1936
+#: src/client.cpp:1951 src/client.cpp:2386 src/client.cpp:2393
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s n'existe pas et ne peut pas être créé ! Fermeture du programme."
 
-#: src/client.cpp:2086
+#: src/client.cpp:2087
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Site de mise à jour invalide : %s"
 
-#: src/client.cpp:2126 src/client.cpp:2132
+#: src/client.cpp:2127 src/client.cpp:2133
 msgid "Error creating updates directory!"
 msgstr "Impossible de créer le dossier de mise à jour !"
 
-#: src/client.cpp:2153 src/client.cpp:2165
+#: src/client.cpp:2154 src/client.cpp:2166
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -346,7 +346,7 @@ msgstr "Débogage"
 #: src/game.cpp:535
 #, c-format
 msgid "Screenshot saved as %s"
-msgstr ""
+msgstr "Capture d'écran sauvegardée sous %s"
 
 #: src/game.cpp:544
 msgid "Saving screenshot failed!"
@@ -501,7 +501,7 @@ msgid "Max"
 msgstr "Max."
 
 #: src/gui/buyselldialog.cpp:38 src/gui/buyselldialog.cpp:48
-#: src/gui/inventorywindow.cpp:185 src/gui/setup_other.cpp:184
+#: src/gui/inventorywindow.cpp:185 src/gui/setup_other.cpp:198
 #: src/gui/windowmenu.cpp:141
 msgid "Shop"
 msgstr "Boutique"
@@ -563,7 +563,7 @@ msgid "The email address entries mismatch."
 msgstr "Les deux adresses e-mail ne correspondent pas."
 
 #: src/gui/changepassworddialog.cpp:47 src/gui/changepassworddialog.cpp:52
-#: src/gui/charselectdialog.cpp:243
+#: src/gui/charselectdialog.cpp:91
 msgid "Change Password"
 msgstr "Changer le mot de passe"
 
@@ -606,7 +606,7 @@ msgstr "Nom :"
 #. TRANSLATORS: This is a narrow symbol used to denote 'next'.
 #. You may change this symbol if your language uses another.
 #: src/gui/charcreatedialog.cpp:77 src/gui/charcreatedialog.cpp:83
-#: src/gui/charcreatedialog.cpp:92 src/gui/charcreatedialog.cpp:145
+#: src/gui/charcreatedialog.cpp:92 src/gui/charcreatedialog.cpp:146
 #: src/gui/outfitwindow.cpp:61
 msgid ">"
 msgstr ">"
@@ -614,7 +614,7 @@ msgstr ">"
 #. TRANSLATORS: This is a narrow symbol used to denote 'previous'.
 #. You may change this symbol if your language uses another.
 #: src/gui/charcreatedialog.cpp:80 src/gui/charcreatedialog.cpp:84
-#: src/gui/charcreatedialog.cpp:146 src/gui/outfitwindow.cpp:60
+#: src/gui/charcreatedialog.cpp:147 src/gui/outfitwindow.cpp:60
 msgid "<"
 msgstr "<"
 
@@ -641,96 +641,108 @@ msgstr "Féminin"
 #: src/gui/charcreatedialog.cpp:95 src/gui/registerdialog.cpp:108
 #: src/gui/setupactiondata.h:1501 src/gui/setupactiondata.h:1574
 #: src/gui/setup_audio.cpp:132 src/gui/setup_chat.cpp:145
-#: src/gui/setup_other.cpp:240 src/gui/setup_visual.cpp:142
+#: src/gui/setup_other.cpp:254 src/gui/setup_visual.cpp:142
 msgid "Other"
 msgstr "Autre"
 
-#: src/gui/charcreatedialog.cpp:100 src/gui/charcreatedialog.cpp:391
+#: src/gui/charcreatedialog.cpp:100 src/gui/charcreatedialog.cpp:392
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Distribues %d points"
 
-#: src/gui/charcreatedialog.cpp:103 src/gui/charselectdialog.cpp:791
+#: src/gui/charcreatedialog.cpp:103 src/gui/charselectdialog.cpp:551
 #: src/gui/socialwindow.cpp:1249
 msgid "Create"
 msgstr "Créer"
 
-#: src/gui/charcreatedialog.cpp:147
+#: src/gui/charcreatedialog.cpp:148
 msgid "Race:"
 msgstr "Race :"
 
-#: src/gui/charcreatedialog.cpp:296
+#: src/gui/charcreatedialog.cpp:297
 msgid "Your name needs to be at least 4 characters."
 msgstr "Ton nom doit comporter un minimum de 4 caractères."
 
-#: src/gui/charcreatedialog.cpp:382
+#: src/gui/charcreatedialog.cpp:383
 msgid "Character stats OK"
 msgstr "Caractéristiques du personnage Ok"
 
-#: src/gui/charcreatedialog.cpp:396
+#: src/gui/charcreatedialog.cpp:397
 #, c-format
 msgid "Please remove %d points"
 msgstr "Retires %d points"
 
-#: src/gui/charselectdialog.cpp:73
+#: src/gui/charselectdialog.cpp:59
 msgid "Confirm Character Delete"
 msgstr "Confirmer la suppression du personnage"
 
-#: src/gui/charselectdialog.cpp:74
+#: src/gui/charselectdialog.cpp:60
 msgid "Are you sure you want to delete this character?"
 msgstr "Etes-vous certain de vouloir supprimer ce personnage ?"
 
-#: src/gui/charselectdialog.cpp:235
-msgid "Account and Character Management"
-msgstr "Gestion du compte et des personnages"
+#: src/gui/charselectdialog.cpp:83
+#, c-format
+msgid "Account %s (last login time %s)"
+msgstr ""
 
-#: src/gui/charselectdialog.cpp:242
+#: src/gui/charselectdialog.cpp:90
 msgid "Switch Login"
 msgstr "Changer de compte"
 
-#: src/gui/charselectdialog.cpp:270 src/gui/unregisterdialog.cpp:47
-#: src/gui/unregisterdialog.cpp:51
-msgid "Unregister"
-msgstr "Se désinscrire"
+#: src/gui/charselectdialog.cpp:95 src/gui/charselectdialog.cpp:549
+#: src/gui/updaterwindow.cpp:165
+msgid "Play"
+msgstr "Jouer"
 
-#: src/gui/charselectdialog.cpp:281
-msgid "Change Email"
-msgstr "Modifier l'adresse e-mail"
+#: src/gui/charselectdialog.cpp:96 src/net/ea/charserverhandler.cpp:186
+msgid "Info"
+msgstr "Informations"
 
-#: src/gui/charselectdialog.cpp:402
-msgid "Incorrect password"
-msgstr "Mot de passe incorrect"
-
-#: src/gui/charselectdialog.cpp:572
-msgid "Enter password for deleting character"
-msgstr "Entrer le mot de passe pour effacer le personnage"
-
-#: src/gui/charselectdialog.cpp:572
-msgid "Enter password:"
-msgstr "Entrer le mot de passe :"
-
-#: src/gui/charselectdialog.cpp:719 src/gui/serverdialog.cpp:257
+#: src/gui/charselectdialog.cpp:97 src/gui/serverdialog.cpp:257
 #: src/gui/setupactiondata.h:1521 src/gui/setup_relations.cpp:251
 #: src/gui/shopwindow.cpp:90 src/gui/shopwindow.cpp:94
 #: src/gui/textcommandeditor.cpp:195
 msgid "Delete"
 msgstr "Supprimer"
 
-#: src/gui/charselectdialog.cpp:779
-msgid "Choose"
-msgstr "Choisir"
+#: src/gui/charselectdialog.cpp:120 src/gui/unregisterdialog.cpp:47
+#: src/gui/unregisterdialog.cpp:51
+msgid "Unregister"
+msgstr "Se désinscrire"
 
-#: src/gui/charselectdialog.cpp:782
+#: src/gui/charselectdialog.cpp:131
+msgid "Change Email"
+msgstr "Modifier l'adresse e-mail"
+
+#: src/gui/charselectdialog.cpp:161
 #, c-format
-msgid "Level %d"
-msgstr "Niveau %d"
+msgid "Account %s"
+msgstr ""
 
-#: src/gui/charselectdialog.cpp:793 src/gui/charselectdialog.cpp:794
-msgid "(empty)"
-msgstr "(vide)"
+#: src/gui/charselectdialog.cpp:234
+#, c-format
+msgid ""
+"Hp: %u/%u\n"
+"Mp: %u/%u\n"
+"Level: %u\n"
+"Experience: %u\n"
+"Money: %s"
+msgstr ""
+
+#: src/gui/charselectdialog.cpp:275
+msgid "Incorrect password"
+msgstr "Mot de passe incorrect"
+
+#: src/gui/charselectdialog.cpp:403
+msgid "Enter password for deleting character"
+msgstr "Entrer le mot de passe pour effacer le personnage"
+
+#: src/gui/charselectdialog.cpp:403
+msgid "Enter password:"
+msgstr "Entrer le mot de passe :"
 
 #: src/gui/chatwindow.cpp:139 src/gui/inventorywindow.cpp:63
-#: src/gui/setup_visual.cpp:66
+#: src/gui/setup_other.cpp:65 src/gui/setup_visual.cpp:66
 msgid "default"
 msgstr "défaut"
 
@@ -816,7 +828,7 @@ msgid "Ignore"
 msgstr "Ignorer"
 
 #: src/gui/debugwindow.cpp:67 src/gui/minimap.cpp:48 src/gui/minimap.cpp:106
-#: src/gui/setup_other.cpp:91 src/gui/windowmenu.cpp:106
+#: src/gui/setup_other.cpp:105 src/gui/windowmenu.cpp:106
 msgid "Map"
 msgstr "Carte"
 
@@ -1032,7 +1044,7 @@ msgstr "Description :"
 
 #: src/gui/editserverdialog.cpp:90
 msgid "Online list url:"
-msgstr ""
+msgstr "URL de la liste en ligne"
 
 #: src/gui/editserverdialog.cpp:210
 msgid "Please at least type both the address and the port of the server."
@@ -1043,7 +1055,7 @@ msgstr "Entres au moins l'adresse et le port du serveur."
 msgid "Equipment"
 msgstr "Équipement"
 
-#: src/gui/equipmentwindow.cpp:60 src/gui/inventorywindow.cpp:170
+#: src/gui/equipmentwindow.cpp:61 src/gui/inventorywindow.cpp:170
 #: src/gui/inventorywindow.cpp:599 src/gui/popupmenu.cpp:1716
 #: src/gui/popupmenu.cpp:1816 src/gui/popupmenu.cpp:1872
 msgid "Unequip"
@@ -1363,7 +1375,7 @@ msgid "Submit"
 msgstr "Soumettre"
 
 #: src/gui/npcdialog.cpp:68 src/gui/npcpostdialog.cpp:42
-#: src/gui/setup_other.cpp:193
+#: src/gui/setup_other.cpp:207
 msgid "NPC"
 msgstr "PNJ"
 
@@ -2189,7 +2201,7 @@ msgstr "Ligne de conversation suivante"
 
 #: src/gui/setupactiondata.h:1014
 msgid "Chat modifier key"
-msgstr ""
+msgstr "Touche de modification du chat"
 
 #: src/gui/setupactiondata.h:1028
 msgid "Ignore input 1"
@@ -2407,7 +2419,7 @@ msgstr "Basique"
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
-#: src/gui/setupactiondata.h:1570 src/gui/setup_other.cpp:223
+#: src/gui/setupactiondata.h:1570 src/gui/setup_other.cpp:237
 #: src/gui/windowmenu.cpp:155
 msgid "Windows"
 msgstr "Fenêtres"
@@ -2811,258 +2823,288 @@ msgstr "Connexion directe"
 msgid "SOCKS5 hostname"
 msgstr "Nom d'hôte SOCKS5"
 
-#: src/gui/setup_other.cpp:66
+#: src/gui/setup_other.cpp:66 src/gui/setup_visual.cpp:49
+#: src/gui/setup_visual.cpp:119
+msgid "low"
+msgstr "bas"
+
+#: src/gui/setup_other.cpp:67 src/gui/setup_visual.cpp:120
+msgid "medium"
+msgstr "moyen"
+
+#: src/gui/setup_other.cpp:68
+msgid "tv"
+msgstr ""
+
+#: src/gui/setup_other.cpp:69 src/gui/setup_visual.cpp:50
+#: src/gui/setup_visual.cpp:121
+msgid "high"
+msgstr "élevés"
+
+#: src/gui/setup_other.cpp:70
+msgid "xhigh"
+msgstr ""
+
+#: src/gui/setup_other.cpp:71
+msgid "xxhigh"
+msgstr ""
+
+#: src/gui/setup_other.cpp:80
 msgid "Misc"
 msgstr "Divers"
 
-#: src/gui/setup_other.cpp:72 src/gui/userpalette.cpp:124
+#: src/gui/setup_other.cpp:86 src/gui/userpalette.cpp:124
 msgid "Monsters"
 msgstr "Monstres"
 
-#: src/gui/setup_other.cpp:74
+#: src/gui/setup_other.cpp:88
 msgid "Show damage inflicted to monsters"
 msgstr "Montrer les dégâts infligés aux monstres"
 
-#: src/gui/setup_other.cpp:77
+#: src/gui/setup_other.cpp:91
 msgid "Auto target only reachable monsters"
 msgstr "Ne viser en auto que les monstres à portée de tir "
 
-#: src/gui/setup_other.cpp:80
+#: src/gui/setup_other.cpp:94
 msgid "Highlight monster attack range"
 msgstr "Afficher la portée d'attaque des monstres"
 
-#: src/gui/setup_other.cpp:84
+#: src/gui/setup_other.cpp:98
 msgid "Show monster hp bar"
 msgstr "Afficher la barre de vie des monstres"
 
-#: src/gui/setup_other.cpp:87
+#: src/gui/setup_other.cpp:101
 msgid "Cycle monster targets"
 msgstr "Sélectionner les monstres par ordre de distance"
 
-#: src/gui/setup_other.cpp:93
+#: src/gui/setup_other.cpp:107
 msgid "Show warps particles"
 msgstr "Montrer les effets de déplacement"
 
-#: src/gui/setup_other.cpp:96
+#: src/gui/setup_other.cpp:110
 msgid "Highlight map portals"
 msgstr "Afficher les portails de changement de carte"
 
-#: src/gui/setup_other.cpp:99
+#: src/gui/setup_other.cpp:113
 msgid "Highlight floor items"
 msgstr "Mettre en évidence les objets sur le sol"
 
-#: src/gui/setup_other.cpp:102
+#: src/gui/setup_other.cpp:116
 msgid "Highlight player attack range"
 msgstr "Afficher la portée d'attaque du joueur"
 
-#: src/gui/setup_other.cpp:105
+#: src/gui/setup_other.cpp:119
 msgid "Show extended minimaps"
 msgstr "Afficher les mini-cartes avancées"
 
-#: src/gui/setup_other.cpp:108
+#: src/gui/setup_other.cpp:122
 msgid "Draw path"
 msgstr "Afficher le chemin"
 
-#: src/gui/setup_other.cpp:111
+#: src/gui/setup_other.cpp:125
 msgid "Draw hotkeys on map"
 msgstr "Afficher les touches-raccourcis sur la carte"
 
-#: src/gui/setup_other.cpp:114
+#: src/gui/setup_other.cpp:128
 msgid "Enable lazy scrolling"
 msgstr "Activer le défilement paresseux"
 
-#: src/gui/setup_other.cpp:117
+#: src/gui/setup_other.cpp:131
 msgid "Scroll laziness"
 msgstr "Paresse de défilement"
 
-#: src/gui/setup_other.cpp:120
+#: src/gui/setup_other.cpp:134
 msgid "Scroll radius"
 msgstr "Rayon de défilement"
 
-#: src/gui/setup_other.cpp:123
+#: src/gui/setup_other.cpp:137
 msgid "Auto resize minimaps"
 msgstr "redimensionnement automatique des mini-cartes"
 
-#: src/gui/setup_other.cpp:127
+#: src/gui/setup_other.cpp:141
 msgid "Moving"
 msgstr "En mouvement"
 
-#: src/gui/setup_other.cpp:129
+#: src/gui/setup_other.cpp:143
 msgid "Auto fix position"
 msgstr "Auto-correction de position"
 
-#: src/gui/setup_other.cpp:132
+#: src/gui/setup_other.cpp:146
 msgid "Attack while moving"
 msgstr "Attaquer en bougeant"
 
-#: src/gui/setup_other.cpp:135
+#: src/gui/setup_other.cpp:149
 msgid "Attack next target"
 msgstr "Attaquer la prochaine cible"
 
-#: src/gui/setup_other.cpp:138
+#: src/gui/setup_other.cpp:152
 msgid "Sync player move"
 msgstr "Synchroniser les mouvements du joueur"
 
-#: src/gui/setup_other.cpp:141
+#: src/gui/setup_other.cpp:155
 msgid "Crazy move A program"
 msgstr "Programme de mouvement de fou A"
 
-#: src/gui/setup_other.cpp:144
+#: src/gui/setup_other.cpp:158
 msgid "Mouse relative moves (good for touch interfaces)"
 msgstr "Mouvements relatifs à la souris (bon pour les interfaces tactiles)"
 
-#: src/gui/setup_other.cpp:148
+#: src/gui/setup_other.cpp:162
 msgid "Player"
 msgstr "Joueur"
 
-#: src/gui/setup_other.cpp:150
+#: src/gui/setup_other.cpp:164
 msgid "Show own hp bar"
 msgstr "Afficher ta propre barre de vie "
 
-#: src/gui/setup_other.cpp:153
+#: src/gui/setup_other.cpp:167
 msgid "Enable quick stats"
 msgstr "Activer les statistiques instantanées"
 
-#: src/gui/setup_other.cpp:156
+#: src/gui/setup_other.cpp:170
 msgid "Cycle player targets"
 msgstr "Sélectionner les joueurs par ordre de distance"
 
-#: src/gui/setup_other.cpp:159
+#: src/gui/setup_other.cpp:173
 msgid "Show job exp messages"
 msgstr "Afficher les expériences de compétences"
 
-#: src/gui/setup_other.cpp:162
+#: src/gui/setup_other.cpp:176
 msgid "Show players popups"
 msgstr "Afficher les pop-ups des joueurs"
 
-#: src/gui/setup_other.cpp:165
+#: src/gui/setup_other.cpp:179
 msgid "Afk message"
 msgstr "Message d'absence"
 
-#: src/gui/setup_other.cpp:168
+#: src/gui/setup_other.cpp:182
 msgid "Show job"
 msgstr "Afficher les compétences"
 
-#: src/gui/setup_other.cpp:171
+#: src/gui/setup_other.cpp:185
 msgid "Enable attack filter"
 msgstr "Activer le mode attaque"
 
-#: src/gui/setup_other.cpp:174
+#: src/gui/setup_other.cpp:188
 msgid "Enable pickup filter"
 msgstr "Activer le filtre de ramassage"
 
-#: src/gui/setup_other.cpp:177
+#: src/gui/setup_other.cpp:191
 msgid "Enable advert protocol"
 msgstr "Lancer le protocole d'avertissements"
 
-#: src/gui/setup_other.cpp:180
+#: src/gui/setup_other.cpp:194
 msgid "Enable weight notifications"
 msgstr "Activer les notifications de poids"
 
-#: src/gui/setup_other.cpp:186
+#: src/gui/setup_other.cpp:200
 msgid "Accept sell/buy requests"
 msgstr "Accepter les requêtes d'achat / de vente"
 
-#: src/gui/setup_other.cpp:189
+#: src/gui/setup_other.cpp:203
 msgid "Enable shop mode"
 msgstr "Activer le mode boutique"
 
-#: src/gui/setup_other.cpp:195
+#: src/gui/setup_other.cpp:209
 msgid "Cycle npc targets"
 msgstr "Boucler les cibles PNJ"
 
-#: src/gui/setup_other.cpp:198
+#: src/gui/setup_other.cpp:212
 msgid "Log NPC dialogue"
 msgstr "Enregistrer les conversations des PNJ"
 
-#: src/gui/setup_other.cpp:202
+#: src/gui/setup_other.cpp:216
 msgid "Bots support"
 msgstr "Support des bots"
 
-#: src/gui/setup_other.cpp:204
+#: src/gui/setup_other.cpp:218
 msgid "Enable auction bot support"
 msgstr "Activer support pour le Bot aux Enchères"
 
-#: src/gui/setup_other.cpp:207
+#: src/gui/setup_other.cpp:221
 msgid "Enable guild bot support and disable native guild support"
 msgstr ""
 "Activer le support du bot de guilde et désactiver le support par défault"
 
-#: src/gui/setup_other.cpp:212
+#: src/gui/setup_other.cpp:226
 msgid "Keyboard"
 msgstr "Clavier"
 
-#: src/gui/setup_other.cpp:214
+#: src/gui/setup_other.cpp:228
 msgid "Repeat delay"
 msgstr "Délai de répétition"
 
-#: src/gui/setup_other.cpp:217
+#: src/gui/setup_other.cpp:231
 msgid "Repeat interval"
 msgstr "Intervalle de répétition"
 
-#: src/gui/setup_other.cpp:220
+#: src/gui/setup_other.cpp:234
 msgid "Custom repeat interval"
 msgstr "Intervalle de répétition personnalisé"
 
-#: src/gui/setup_other.cpp:226
+#: src/gui/setup_other.cpp:240
 msgid "Shortcut buttons"
 msgstr "Boutons de raccourcis"
 
-#: src/gui/setup_other.cpp:230
+#: src/gui/setup_other.cpp:244
 msgid "Proxy server"
 msgstr "Serveur proxy"
 
-#: src/gui/setup_other.cpp:233
+#: src/gui/setup_other.cpp:247
 msgid "Proxy type"
 msgstr "Type de proxy"
 
-#: src/gui/setup_other.cpp:236
+#: src/gui/setup_other.cpp:250
 msgid "Proxy address:port"
 msgstr "Adresse du proxy:port"
 
-#: src/gui/setup_other.cpp:242
+#: src/gui/setup_other.cpp:256
 msgid "Enable server side attack"
 msgstr "Activer l'attaque de la part du serveur"
 
-#: src/gui/setup_other.cpp:245
+#: src/gui/setup_other.cpp:259
 msgid "Enable bot checker"
 msgstr "Activer le testeur de robots"
 
-#: src/gui/setup_other.cpp:248
+#: src/gui/setup_other.cpp:262
 msgid "Enable buggy servers protection (do not disable)"
 msgstr "Activer la protection pour serveurs defaillant (ne pas désactiver)"
 
-#: src/gui/setup_other.cpp:252
+#: src/gui/setup_other.cpp:266
 msgid "Enable debug log"
 msgstr "Activer l'enregistrement des informations de débogage"
 
-#: src/gui/setup_other.cpp:255
+#: src/gui/setup_other.cpp:269
 msgid "Enable OpenGL log"
 msgstr "Activer historique OpenGL"
 
-#: src/gui/setup_other.cpp:258
+#: src/gui/setup_other.cpp:272
 msgid "Enable input log"
 msgstr "Activer l'historique d'entrées"
 
-#: src/gui/setup_other.cpp:261
+#: src/gui/setup_other.cpp:275
 msgid "Low traffic mode"
 msgstr "Mode traffic faible"
 
-#: src/gui/setup_other.cpp:264
+#: src/gui/setup_other.cpp:278
 msgid "Hide shield sprite"
 msgstr "Cacher le bouclier"
 
-#: src/gui/setup_other.cpp:268
+#: src/gui/setup_other.cpp:282
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr "Utiliser FBO pour les captures d'écran (seulement pour OpenGL)"
 
-#: src/gui/setup_other.cpp:272
+#: src/gui/setup_other.cpp:286
 msgid "Network delay between sub servers"
 msgstr "Retard du réseau entre les sous-serveurs"
 
-#: src/gui/setup_other.cpp:275
+#: src/gui/setup_other.cpp:289
 msgid "Show background"
 msgstr "Montrer le fond"
+
+#: src/gui/setup_other.cpp:293
+msgid "Screen density override"
+msgstr ""
 
 #: src/gui/setup_perfomance.cpp:66
 msgid "Better perfomance (enable for better perfomance)"
@@ -3367,60 +3409,60 @@ msgstr "Turc"
 msgid "Gui theme"
 msgstr "Thème de l'interface"
 
-#: src/gui/setup_theme.cpp:199
+#: src/gui/setup_theme.cpp:200
 msgid "Main Font"
 msgstr "Police principale"
 
-#: src/gui/setup_theme.cpp:203
+#: src/gui/setup_theme.cpp:204
 msgid "Language"
 msgstr "Langue"
 
-#: src/gui/setup_theme.cpp:206
+#: src/gui/setup_theme.cpp:207
 msgid "Bold font"
 msgstr "Police grasse"
 
-#: src/gui/setup_theme.cpp:209
+#: src/gui/setup_theme.cpp:210
 msgid "Particle font"
 msgstr "Taille des effets de particules"
 
-#: src/gui/setup_theme.cpp:212
+#: src/gui/setup_theme.cpp:213
 msgid "Help font"
 msgstr "Police d'aide"
 
-#: src/gui/setup_theme.cpp:215
+#: src/gui/setup_theme.cpp:216
 msgid "Secure font"
 msgstr "Police sécurisée"
 
-#: src/gui/setup_theme.cpp:218
+#: src/gui/setup_theme.cpp:219
 msgid "Japanese font"
 msgstr "Police japonaise"
 
-#: src/gui/setup_theme.cpp:222
+#: src/gui/setup_theme.cpp:223
 msgid "Font size"
 msgstr "Taille de police"
 
-#: src/gui/setup_theme.cpp:226
+#: src/gui/setup_theme.cpp:227
 msgid "Npc font size"
 msgstr "Taille de police des PNJ"
 
 #. TRANSLATORS: button name with information about selected theme
-#: src/gui/setup_theme.cpp:230
+#: src/gui/setup_theme.cpp:231
 msgid "i"
 msgstr "i"
 
-#: src/gui/setup_theme.cpp:233
+#: src/gui/setup_theme.cpp:234
 msgid "Theme"
 msgstr "Thème"
 
-#: src/gui/setup_theme.cpp:399
+#: src/gui/setup_theme.cpp:402
 msgid "Theme info"
 msgstr "Info thème"
 
-#: src/gui/setup_theme.cpp:420
+#: src/gui/setup_theme.cpp:426
 msgid "Theme Changed"
 msgstr "Thème changé"
 
-#: src/gui/setup_theme.cpp:420 src/gui/setup_video.cpp:511
+#: src/gui/setup_theme.cpp:426 src/gui/setup_video.cpp:511
 #: src/gui/setup_video.cpp:518
 msgid "Restart your client for the change to take effect."
 msgstr "Redémarres le jeu pour que les changements soient appliqués."
@@ -3612,14 +3654,6 @@ msgstr "Bulles avec noms"
 msgid "off"
 msgstr "aucun"
 
-#: src/gui/setup_visual.cpp:49 src/gui/setup_visual.cpp:119
-msgid "low"
-msgstr "bas"
-
-#: src/gui/setup_visual.cpp:50 src/gui/setup_visual.cpp:121
-msgid "high"
-msgstr "élevés"
-
 #: src/gui/setup_visual.cpp:57
 msgid "best quality"
 msgstr "meilleure qualité"
@@ -3679,10 +3713,6 @@ msgstr "Effets ambiants"
 #: src/gui/setup_visual.cpp:116
 msgid "Particle effects"
 msgstr "Effets de particules"
-
-#: src/gui/setup_visual.cpp:120
-msgid "medium"
-msgstr "moyen"
 
 #: src/gui/setup_visual.cpp:122
 msgid "max"
@@ -4181,10 +4211,6 @@ msgstr "Mise à jour en cours..."
 #: src/gui/updaterwindow.cpp:163
 msgid "Connecting..."
 msgstr "Connexion..."
-
-#: src/gui/updaterwindow.cpp:165
-msgid "Play"
-msgstr "Jouer"
 
 #: src/gui/updaterwindow.cpp:651
 msgid "##1  The update process is incomplete."
@@ -5189,10 +5215,6 @@ msgstr "Case incorrecte."
 #: src/net/ea/charserverhandler.cpp:171
 msgid "Incorrect race."
 msgstr "Race incorrecte."
-
-#: src/net/ea/charserverhandler.cpp:186
-msgid "Info"
-msgstr "Informations"
 
 #: src/net/ea/charserverhandler.cpp:186
 msgid "Character deleted."
