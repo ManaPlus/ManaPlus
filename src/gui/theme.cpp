@@ -506,6 +506,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     int padding = 3;
     int titlePadding = 4;
     int titlebarHeight = 0;
+    int titlebarHeightRelative = 0;
     int closePadding = 3;
     int stickySpacing = 3;
     int stickyPadding = 3;
@@ -579,6 +580,11 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
                         titlebarHeight = XML::getProperty(
                             partNode, "value", 0);
                     }
+                    else if (name == "titlebarHeightRelative")
+                    {
+                        titlebarHeightRelative = XML::getProperty(
+                            partNode, "value", 0);
+                    }
                     else if (name == "resizePadding")
                     {
                         resizePadding = XML::getProperty(
@@ -606,6 +612,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     (*mOptions)["stickyPadding"] = stickyPadding;
     (*mOptions)["stickySpacing"] = stickySpacing;
     (*mOptions)["titlebarHeight"] = titlebarHeight;
+    (*mOptions)["titlebarHeightRelative"] = titlebarHeightRelative;
     (*mOptions)["resizePadding"] = resizePadding;
 
     Skin *const skin = new Skin(border, images, filename, "", padding,
