@@ -505,7 +505,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     memset(images, 0, sizeof(ImageRect));
     int padding = 3;
     int titlePadding = 4;
-    int titlebarHeight = 20;
+    int titlebarHeight = 0;
     int closePadding = 3;
     int stickySpacing = 3;
     int stickyPadding = 3;
@@ -577,7 +577,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
                     else if (name == "titlebarHeight")
                     {
                         titlebarHeight = XML::getProperty(
-                            partNode, "value", 16);
+                            partNode, "value", 0);
                     }
                     else if (name == "resizePadding")
                     {

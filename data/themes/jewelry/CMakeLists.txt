@@ -43,6 +43,7 @@ SET (FILES
     mouse.png
     npc.xml
     ok.xml
+    outfits.xml
     playerbox.xml
     playerboxselected.xml
     popup.xml

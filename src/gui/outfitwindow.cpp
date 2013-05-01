@@ -313,8 +313,9 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
 
     for (unsigned int i = 0; i < OUTFIT_ITEM_COUNT; i++)
     {
-        const int itemX = 10 + ((i % mGridWidth) * mBoxWidth);
-        const int itemY = 25 + ((i / mGridWidth) * mBoxHeight);
+        const int itemX = mPadding + ((i % mGridWidth) * mBoxWidth);
+        const int itemY = mPadding + getTitleBarHeight()
+            + ((i / mGridWidth) * mBoxHeight);
 
         graphics->setColor(mBorderColor);
         graphics->drawRectangle(gcn::Rectangle(itemX, itemY, 32, 32));

@@ -116,8 +116,7 @@ Window::Window(const std::string &caption, const bool modal,
             setPadding(mSkin->getPadding());
             if (getOptionBool("titlebarBold"))
                 mCaptionFont = reinterpret_cast<gcn::Font*>(boldFont);
-            setTitlePadding(mSkin->getTitlePadding());
-            setTitleBarHeight(getOption("titlebarHeight"));
+            mTitlePadding = mSkin->getTitlePadding();
             mGripPadding = getOption("resizePadding");
             mCaptionOffsetX = getOption("captionoffsetx");
             if (!mCaptionOffsetX)
@@ -131,6 +130,10 @@ Window::Window(const std::string &caption, const bool modal,
             {
                 mCaptionAlign = gcn::Graphics::LEFT;
             }
+            setTitleBarHeight(getOption("titlebarHeight"));
+            if (!mTitleBarHeight)
+                mTitleBarHeight = mCaptionFont->getHeight();
+
             setPalette(getOption("palette"));
             childPalette = getOption("childPalette");
         }

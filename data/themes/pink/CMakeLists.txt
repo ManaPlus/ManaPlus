@@ -6,6 +6,7 @@ SET (FILES
     info.xml
     inventory.xml
     ok.xml
+    outfits.xml
     popup.xml
     progress-indicator.png
     progressbar.xml

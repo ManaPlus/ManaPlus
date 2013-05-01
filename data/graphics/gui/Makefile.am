@@ -41,6 +41,7 @@ gui_DATA =				\
 	ministatus.xml			\
 	mouse.png			\
 	ok.xml			\
+	outfits.xml			\
 	playerbox.xml	\
 	playerboxselected.xml	\
 	popup.xml			\

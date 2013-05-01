@@ -10,6 +10,7 @@ gui_DATA =				\
 	item_shortcut_bgr.png		\
 	mouse.png			\
 	ok.xml			\
+	outfits.xml			\
 	popup.xml			\
 	progressbar.xml			\
 	quests.xml			\

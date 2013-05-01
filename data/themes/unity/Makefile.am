@@ -10,6 +10,7 @@ gui_DATA =				\
 	inventory.xml		\
 	npc.xml		\
 	ok.xml		\
+	outfits.xml		\
 	popup.xml		\
 	progressbar.xml		\
 	quests.xml		\
