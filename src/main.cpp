@@ -53,38 +53,62 @@ char *selfName = nullptr;
 static void printHelp()
 {
     std::cout
+        // TRANSLATORS: command line help
         << _("manaplus [options] [manaplus-file]") << std::endl << std::endl
+        // TRANSLATORS: command line help
         << _("[manaplus-file] : The manaplus file is an XML file (.manaplus)")
         << std::endl
+        // TRANSLATORS: command line help
         << _("                  used to set custom parameters") << std::endl
+        // TRANSLATORS: command line help
         << _("                  to the manaplus client.")
         << std::endl << std::endl
+        // TRANSLATORS: command line help
         << _("Options:") << std::endl
+        // TRANSLATORS: command line help
         << _("  -l --log-file       : Log file to use") << std::endl
+        // TRANSLATORS: command line help
         << _("  -a --chat-log-dir   : Chat log dir to use") << std::endl
+        // TRANSLATORS: command line help
         << _("  -v --version        : Display the version") << std::endl
+        // TRANSLATORS: command line help
         << _("  -h --help           : Display this help") << std::endl
+        // TRANSLATORS: command line help
         << _("  -C --config-dir     : Configuration directory to use")
         << std::endl
+        // TRANSLATORS: command line help
         << _("  -U --username       : Login with this username") << std::endl
+        // TRANSLATORS: command line help
         << _("  -P --password       : Login with this password") << std::endl
+        // TRANSLATORS: command line help
         << _("  -c --character      : Login with this character") << std::endl
+        // TRANSLATORS: command line help
         << _("  -s --server         : Login server name or IP") << std::endl
+        // TRANSLATORS: command line help
         << _("  -p --port           : Login server port") << std::endl
+        // TRANSLATORS: command line help
         << _("  -H --update-host    : Use this update host") << std::endl
+        // TRANSLATORS: command line help
         << _("  -D --default        : Choose default character server and "
                                      "character") << std::endl
+        // TRANSLATORS: command line help
         << _("  -u --skip-update    : Skip the update downloads") << std::endl
+        // TRANSLATORS: command line help
         << _("  -d --data           : Directory to load game "
              "data from") << std::endl
+        // TRANSLATORS: command line help
         << _("  -L --localdata-dir  : Directory to use as local data"
              " directory") << std::endl
+        // TRANSLATORS: command line help
         << _("     --screenshot-dir : Directory to store screenshots")
         << std::endl
+        // TRANSLATORS: command line help
         << _("     --safemode       : Start game in safe mode") << std::endl
+        // TRANSLATORS: command line help
         << _("  -T --tests          : Start testing drivers and "
                                      "auto configuring") << std::endl
 #ifdef USE_OPENGL
+        // TRANSLATORS: command line help
         << _("  -O --no-opengl      : Disable OpenGL for this session")
         << std::endl
 #endif

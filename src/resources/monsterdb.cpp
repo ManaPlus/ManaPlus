@@ -82,6 +82,7 @@ void MonsterDB::load()
         currentInfo->setBlockType(Map::BLOCKTYPE_MONSTER);
 
         currentInfo->setName(XML::langProperty(
+            // TRANSLATORS: unknown info name
             monsterNode, "name", _("unnamed")));
 
         currentInfo->setTargetCursorSize(XML::getProperty(monsterNode,

@@ -317,13 +317,18 @@ std::string InputManager::getKeyStringLong(const int index) const
         if (key.type == INPUT_KEYBOARD)
         {
             if (key.value >= 0)
+            {
                 str = keyboard.getKeyName(key.value);
+            }
             else if (key.value < -1)
+            {
+                // TRANSLATORS: long key name. must be short.
                 str = strprintf(_("key_%d"), -key.value);
+            }
         }
         else if (key.type == INPUT_JOYSTICK)
         {
-            // TRANSLATORS: this is long joystick button name
+            // TRANSLATORS: long joystick button name. must be short.
             str = strprintf(_("JButton%d"), key.value + 1);
         }
         if (!str.empty())
@@ -336,7 +341,10 @@ std::string InputManager::getKeyStringLong(const int index) const
     }
 
     if (keyStr.empty())
+    {
+        // TRANSLATORS: unknown long key type
         return _("unknown key");
+    }
     return keyStr;
 }
 
@@ -358,12 +366,13 @@ std::string InputManager::getKeyValueString(const int index) const
             }
             else if (key.value < -1)
             {
+                // TRANSLATORS: short key name. must be very short.
                 str = strprintf(_("key_%d"), -key.value);
             }
         }
         else if (key.type == INPUT_JOYSTICK)
         {
-            // TRANSLATORS: this is short joystick button name
+            // TRANSLATORS: short joystick button name. muse be very short
             str = strprintf(_("JB%d"), key.value + 1);
         }
         if (!str.empty())
@@ -376,7 +385,10 @@ std::string InputManager::getKeyValueString(const int index) const
     }
 
     if (keyStr.empty())
+    {
+        // TRANSLATORS: unknown short key type. must be short
         return _("u key");
+    }
     return keyStr;
 }
 

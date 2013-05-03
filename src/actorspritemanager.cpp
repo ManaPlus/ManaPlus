@@ -1243,6 +1243,7 @@ bool ActorSpriteManager::isBlocked(const uint32_t id) const
 
 void ActorSpriteManager::printAllToChat() const
 {
+    // TRANSLATORS: visible beings on map
     printBeingsToChat(getAll(), _("Visible on map"));
 }
 

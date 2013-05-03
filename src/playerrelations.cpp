@@ -461,6 +461,7 @@ public:
     PIS_nothing() :
         PlayerIgnoreStrategy()
     {
+        // TRANSLATORS: ignore/unignore action
         mDescription = _("Completely ignore");
         mShortName = PLAYER_IGNORE_STRATEGY_NOP;
     }
@@ -477,6 +478,7 @@ public:
     PIS_dotdotdot() :
         PlayerIgnoreStrategy()
     {
+        // TRANSLATORS: ignore/unignore action
         mDescription = _("Print '...'");
         mShortName = "dotdotdot";
     }
@@ -499,6 +501,7 @@ public:
     PIS_blinkname() :
         PlayerIgnoreStrategy()
     {
+        // TRANSLATORS: ignore/unignore action
         mDescription = _("Blink name");
         mShortName = "blinkname";
     }
@@ -544,9 +547,11 @@ PlayerRelationsManager::getPlayerIgnoreStrategies()
     {
         // not initialised yet?
         mIgnoreStrategies.push_back(new PIS_emote(FIRST_IGNORE_EMOTE,
+                                    // TRANSLATORS: ignore strategi
                                     _("Floating '...' bubble"),
                                     PLAYER_IGNORE_STRATEGY_EMOTE0));
         mIgnoreStrategies.push_back(new PIS_emote(FIRST_IGNORE_EMOTE + 1,
+                                    // TRANSLATORS: ignore strategi
                                     _("Floating bubble"),
                                     "emote1"));
         mIgnoreStrategies.push_back(new PIS_nothing);

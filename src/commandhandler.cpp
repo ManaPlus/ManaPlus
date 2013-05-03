@@ -55,7 +55,12 @@ void CommandHandler::handleCommand(const std::string &command,
     args = trim(args);
     const CommandsMapIter it = mCommands.find(type);
     if (it != mCommands.end())
+    {
         ((*it).second)(args, tab);
+    }
     else if (!tab->handleCommand(type, args))
+    {
+        // TRANSLATORS: chat commands handling message
         tab->chatLog(_("Unknown command."));
+    }
 }

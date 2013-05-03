@@ -58,9 +58,13 @@ static int parseDirectionName(const std::string &name);
 
 static const char *const fields[][2] =
 {
+    // TRANSLATORS: item info label
     { "attack",    N_("Attack %+d")    },
+    // TRANSLATORS: item info label
     { "defense",   N_("Defense %+d")   },
+    // TRANSLATORS: item info label
     { "hp",        N_("HP %+d")        },
+    // TRANSLATORS: item info label
     { "mp",        N_("MP %+d")        }
 };
 
@@ -164,6 +168,7 @@ void ItemDB::load()
     mTags["Equipment"] = tagNum ++;
 
     mUnknown = new ItemInfo;
+    // TRANSLATORS: item name
     mUnknown->setName(_("Unknown item"));
     mUnknown->setDisplay(SpriteDisplay());
     std::string errFile = paths.getStringValue("spriteErrorFile");
@@ -258,6 +263,7 @@ void ItemDB::load()
 
         ItemInfo *const itemInfo = new ItemInfo;
         itemInfo->setId(id);
+        // TRANSLATORS: item info name
         itemInfo->setName(name.empty() ? _("unnamed") : name);
         itemInfo->setDescription(description);
         itemInfo->setType(itemTypeFromString(typeStr));

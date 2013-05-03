@@ -132,12 +132,16 @@ static void changeRelation(const std::string &args,
     if (args.empty())
     {
         if (tab)
+        {
+            // TRANSLATORS: change relation
             tab->chatLog(_("Please specify a name."), BY_SERVER);
+        }
         return;
     }
 
     if (player_relations.getRelation(args) == relation)
     {
+        // TRANSLATORS: change relation
         tab->chatLog(strprintf(_("Player already %s!"),
                      relationText.c_str()), BY_SERVER);
         return;
@@ -149,11 +153,13 @@ static void changeRelation(const std::string &args,
 
     if (player_relations.getRelation(args) == relation)
     {
+        // TRANSLATORS: change relation
         tab->chatLog(strprintf(_("Player successfully %s!"),
                      relationText.c_str()), BY_SERVER);
     }
     else
     {
+        // TRANSLATORS: change relation
         tab->chatLog(strprintf(_("Player could not be %s!"),
                      relationText.c_str()), BY_SERVER);
     }
@@ -319,7 +325,10 @@ impHandler(msg)
         chatWindow->addWhisper(recvnick, msg, BY_PLAYER);
     }
     else
+    {
+        // TRANSLATORS: whisper send
         tab->chatLog(_("Cannot send empty whispers!"), BY_SERVER);
+    }
 }
 
 impHandler(query)
@@ -335,6 +344,7 @@ impHandler(query)
 
     if (tab)
     {
+        // TRANSLATORS: new whisper query
         tab->chatLog(strprintf(_("Cannot create a whisper tab for nick "
             "\"%s\"! It either already exists, or is you."),
             args.c_str()), BY_SERVER);
@@ -355,7 +365,10 @@ impHandler0(cleanGraphics)
         continue;
 
     if (debugChatTab)
+    {
+        // TRANSLATORS: clear graphics command message
         debugChatTab->chatLog(_("Cache cleaned"));
+    }
 }
 
 impHandler0(cleanFonts)
@@ -363,7 +376,10 @@ impHandler0(cleanFonts)
     if (gui)
         gui->clearFonts();
     if (debugChatTab)
+    {
+        // TRANSLATORS: clear fonts cache message
         debugChatTab->chatLog(_("Cache cleaned"));
+    }
 }
 
 impHandler(createParty)
@@ -372,9 +388,14 @@ impHandler(createParty)
         return;
 
     if (args.empty())
+    {
+        // TRANSLATORS: create party message
         tab->chatLog(_("Party name is missing."), BY_SERVER);
+    }
     else
+    {
         Net::getPartyHandler()->create(args);
+    }
 }
 
 impHandler(createGuild)
@@ -383,9 +404,14 @@ impHandler(createGuild)
         return;
 
     if (args.empty())
+    {
+        // TRANSLATORS: create guild message
         tab->chatLog(_("Guild name is missing."), BY_SERVER);
+    }
     else
+    {
         Net::getGuildHandler()->create(args);
+    }
 }
 
 impHandler(party)
@@ -393,10 +419,15 @@ impHandler(party)
     if (!tab)
         return;
 
-    if (args != "")
+    if (!args.empty())
+    {
         Net::getPartyHandler()->invite(args);
+    }
     else
+    {
+        // TRANSLATORS: party invite message
         tab->chatLog(_("Please specify a name."), BY_SERVER);
+    }
 }
 
 impHandler(me)
@@ -410,6 +441,7 @@ impHandler(toggle)
     {
         if (chatWindow && tab)
         {
+            // TRANSLATORS: message from toggle chat command
             tab->chatLog(chatWindow->getReturnTogglesChat() ?
                 _("Return toggles chat.") : _("Message closes chat."));
         }
@@ -420,13 +452,19 @@ impHandler(toggle)
     {
         case 1:
             if (tab)
+            {
+                // TRANSLATORS: message from toggle chat command
                 tab->chatLog(_("Return now toggles chat."));
+            }
             if (chatWindow)
                 chatWindow->setReturnTogglesChat(true);
             return;
         case 0:
             if (tab)
+            {
+                // TRANSLATORS: message from toggle chat command
                 tab->chatLog(_("Message now closes chat."));
+            }
             if (chatWindow)
                 chatWindow->setReturnTogglesChat(false);
             return;
@@ -452,16 +490,19 @@ impHandler1(ignore)
 
 impHandler(beFriend)
 {
+    // TRANSLATORS: adding friend command
     changeRelation(args, PlayerRelation::FRIEND, _("friend"), tab);
 }
 
 impHandler(disregard)
 {
+    // TRANSLATORS: disregard command
     changeRelation(args, PlayerRelation::DISREGARDED, _("disregarded"), tab);
 }
 
 impHandler(neutral)
 {
+    // TRANSLATORS: neutral command
     changeRelation(args, PlayerRelation::NEUTRAL, _("neutral"), tab);
 }
 
@@ -470,7 +511,10 @@ impHandler(unignore)
     if (args.empty())
     {
         if (tab)
+        {
+            // TRANSLATORS: unignore command
             tab->chatLog(_("Please specify a name."), BY_SERVER);
+        }
         return;
     }
 
@@ -482,26 +526,37 @@ impHandler(unignore)
     else
     {
         if (tab)
+        {
+            // TRANSLATORS: unignore command
             tab->chatLog(_("Player wasn't ignored!"), BY_SERVER);
+        }
         return;
     }
 
     if (tab)
     {
         if (player_relations.getRelation(args) == PlayerRelation::NEUTRAL)
+        {
+            // TRANSLATORS: unignore command
             tab->chatLog(_("Player no longer ignored!"), BY_SERVER);
+        }
         else
+        {
+            // TRANSLATORS: unignore command
             tab->chatLog(_("Player could not be unignored!"), BY_SERVER);
+        }
     }
 }
 
 impHandler(blackList)
 {
+    // TRANSLATORS: blacklist command
     changeRelation(args, PlayerRelation::BLACKLISTED, _("blacklisted"), tab);
 }
 
 impHandler(enemy)
 {
+    // TRANSLATORS: enemy command
     changeRelation(args, PlayerRelation::ENEMY2, _("enemy"), tab);
 }
 
@@ -510,14 +565,20 @@ impHandler(erase)
     if (args.empty())
     {
         if (tab)
+        {
+            // TRANSLATORS: erase command
             tab->chatLog(_("Please specify a name."), BY_SERVER);
+        }
         return;
     }
 
     if (player_relations.getRelation(args) == PlayerRelation::ERASED)
     {
         if (tab)
+        {
+            // TRANSLATORS: erase command
             tab->chatLog(_("Player already erased!"), BY_SERVER);
+        }
         return;
     }
     else
@@ -528,9 +589,15 @@ impHandler(erase)
     if (tab)
     {
         if (player_relations.getRelation(args) == PlayerRelation::ERASED)
+        {
+            // TRANSLATORS: erase command
             tab->chatLog(_("Player successfully erased!"), BY_SERVER);
+        }
         else
+        {
+            // TRANSLATORS: erase command
             tab->chatLog(_("Player could not be erased!"), BY_SERVER);
+        }
     }
 }
 
@@ -810,6 +877,7 @@ impHandler0(uptime)
 
     if (cur_time < start_time)
     {
+        // TRANSLATORS: uptime command
         debugChatTab->chatLog(strprintf(_("Client uptime: %s"), "unknown"));
     }
     else
@@ -820,7 +888,9 @@ impHandler0(uptime)
         const int weeks = timeDiff / 60 / 60 / 24 / 7;
         if (weeks > 0)
         {
-            str = strprintf(ngettext("%d week", "%d weeks", weeks), weeks);
+            // TRANSLATORS: uptime command
+            str = strprintf(ngettext(N_("%d week"), N_("%d weeks"),
+                weeks), weeks);
             timeDiff -= weeks * 60 * 60 * 24 * 7;
         }
 
@@ -829,7 +899,9 @@ impHandler0(uptime)
         {
             if (!str.empty())
                 str.append(", ");
-            str.append(strprintf(ngettext("%d day", "%d days", days), days));
+            // TRANSLATORS: uptime command
+            str.append(strprintf(ngettext(N_("%d day"), N_("%d days"),
+                days), days));
             timeDiff -= days * 60 * 60 * 24;
         }
         const int hours = timeDiff / 60 / 60;
@@ -837,7 +909,8 @@ impHandler0(uptime)
         {
             if (!str.empty())
                 str.append(", ");
-            str.append(strprintf(ngettext("%d hour", "%d hours",
+            // TRANSLATORS: uptime command
+            str.append(strprintf(ngettext(N_("%d hour"), N_("%d hours"),
                 hours), hours));
             timeDiff -= hours * 60 * 60;
         }
@@ -846,7 +919,8 @@ impHandler0(uptime)
         {
             if (!str.empty())
                 str.append(", ");
-            str.append(strprintf(ngettext("%d minute", "%d minutes",
+            // TRANSLATORS: uptime command
+            str.append(strprintf(ngettext(N_("%d minute"), N_("%d minutes"),
                 min), min));
             timeDiff -= min * 60;
         }
@@ -855,9 +929,11 @@ impHandler0(uptime)
         {
             if (!str.empty())
                 str.append(", ");
-            str.append(strprintf(ngettext("%d second", "%d seconds",
+            // TRANSLATORS: uptime command
+            str.append(strprintf(ngettext(N_("%d second"), N_("%d seconds"),
                 timeDiff), timeDiff));
         }
+        // TRANSLATORS: uptime command
         debugChatTab->chatLog(strprintf(_("Client uptime: %s"), str.c_str()));
     }
 }
@@ -1010,7 +1086,10 @@ impHandler0(dumpEnvironment)
         logger->log1(*env);
     logger->log1("End environment variables");
     if (debugChatTab)
+    {
+        // TRANSLATORS: dump environment command
         debugChatTab->chatLog(_("Environment variables dumped"));
+    }
 }
 
 impHandler2(dumpTests)
@@ -1164,15 +1243,19 @@ impHandler1(dump)
     if (!args.empty())
     {
         ResourceManager::Resources *res = resman->getResources();
+        // TRANSLATORS: dump command
         showRes(_("Resource images:"), res);
         res = resman->getOrphanedResources();
+        // TRANSLATORS: dump command
         showRes(_("Resource orphaned images:"), res);
     }
     else
     {
         ResourceManager::Resources *res = resman->getResources();
+        // TRANSLATORS: dump command
         debugChatTab->chatLog(_("Resource images:") + toString(res->size()));
         res = resman->getOrphanedResources();
+        // TRANSLATORS: dump command
         debugChatTab->chatLog(_("Resource orphaned images:")
             + toString(res->size()));
     }

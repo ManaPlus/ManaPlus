@@ -268,6 +268,7 @@ void Being::setSubtype(const uint16_t subtype)
         if (!ItemDB::exists(id))
         {
             id = -100;
+            // TRANSLATORS: default race name
             setRaceName(_("Human"));
         }
         else
@@ -467,6 +468,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
         return;
 
     gcn::Font *font = nullptr;
+    // TRANSLATORS: hit or miss message in attacks
     const std::string damage = amount ? toString(amount) : type == FLEE ?
             _("dodge") : _("miss");
     const gcn::Color *color;

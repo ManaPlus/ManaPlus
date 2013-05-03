@@ -252,6 +252,7 @@ static void createGuiWindows()
     if (serverVersion >= 6)
         questsWindow = new QuestsWindow;
 
+    // TRANSLATORS: chat tab header
     localChatTab = new ChatTab(chatWindow, _("General"), GENERAL_CHANNEL);
     localChatTab->setAllowHighlight(false);
     if (config.getBoolValue("showChatHistory"))
@@ -267,6 +268,7 @@ static void createGuiWindows()
         }
     }
 
+    // TRANSLATORS: chat tab header
     debugChatTab = new ChatTab(chatWindow, _("Debug"), "");
     debugChatTab->setAllowHighlight(false);
 
@@ -532,6 +534,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     if (success)
     {
         std::stringstream chatlogentry;
+        // TRANSLATORS: save file message
         chatlogentry << strprintf(_("Screenshot saved as %s"),
             filenameSuffix.str().c_str());
         if (localChatTab)
@@ -541,6 +544,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     {
         if (localChatTab)
         {
+            // TRANSLATORS: save file message
             localChatTab->chatLog(_("Saving screenshot failed!"),
                                   BY_SERVER);
         }
@@ -612,7 +616,9 @@ void Game::slowLogic()
         {
             if (!disconnectedDialog)
             {
+                // TRANSLATORS: error message text
                 errorMessage = _("The connection to the server was lost.");
+                // TRANSLATORS: error message header
                 disconnectedDialog = new OkDialog(_("Network Error"),
                     errorMessage, DIALOG_ERROR, false);
                 disconnectedDialog->addActionListener(&errorListener);

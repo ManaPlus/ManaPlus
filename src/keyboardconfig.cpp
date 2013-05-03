@@ -86,6 +86,7 @@ std::string KeyboardConfig::getKeyName(const int key)
     if (key >= 0)
         return SDL_GetKeyName(static_cast<SDLKey>(key));
 
+    // TRANSLATORS: long key name, should be short
     return strprintf(_("key_%d"), key);
 }
 

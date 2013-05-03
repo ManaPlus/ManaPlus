@@ -1132,16 +1132,21 @@ int Client::gameExec()
             top->add(mDesktop);
             int x = top->getWidth() - mButtonPadding;
             ADDBUTTON(mSetupButton, new Button(mDesktop,
+                // TRANSLATORS: setup tab quick button
                 _("Setup"), "Setup", this))
 #ifndef WIN32
             ADDBUTTON(mPerfomanceButton, new Button(mDesktop,
+                // TRANSLATORS: perfoamance tab quick button
                 _("Perfomance"), "Perfomance", this))
             ADDBUTTON(mVideoButton, new Button(mDesktop,
+                // TRANSLATORS: video tab quick button
                 _("Video"), "Video", this))
             ADDBUTTON(mThemesButton, new Button(mDesktop,
-                _("Themes"), "Themes", this))
+                // TRANSLATORS: theme tab quick button
+                _("Theme"), "Themes", this))
 #ifdef ANDROID
             ADDBUTTON(mCloseButton, new Button(mDesktop,
+                // TRANSLATORS: close quick button
                 _("Close"), "close", this))
 #endif
 #endif
@@ -1229,7 +1234,8 @@ int Client::gameExec()
                     logger->log1("State: CONNECT SERVER");
                     loginData.updateHosts.clear();
                     mCurrentDialog = new ConnectionDialog(
-                            _("Connecting to server"), STATE_SWITCH_SERVER);
+                        // TRANSLATORS: connection dialog header
+                        _("Connecting to server"), STATE_SWITCH_SERVER);
                     TranslationManager::loadCurrentLang();
                     BLOCK_END("Client::gameExec STATE_CONNECT_SERVER")
                     break;
@@ -1271,7 +1277,8 @@ int Client::gameExec()
                     logger->log1("State: LOGIN ATTEMPT");
                     accountLogin(&loginData);
                     mCurrentDialog = new ConnectionDialog(
-                            _("Logging in"), STATE_SWITCH_SERVER);
+                        // TRANSLATORS: connection dialog header
+                        _("Logging in"), STATE_SWITCH_SERVER);
                     BLOCK_END("Client::gameExec STATE_LOGIN_ATTEMPT")
                     break;
 
@@ -1309,7 +1316,8 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_WORLD_SELECT_ATTEMPT")
                     logger->log1("State: WORLD SELECT ATTEMPT");
                     mCurrentDialog = new ConnectionDialog(
-                            _("Entering game world"), STATE_WORLD_SELECT);
+                        // TRANSLATORS: connection dialog header
+                        _("Entering game world"), STATE_WORLD_SELECT);
                     BLOCK_END("Client::gameExec STATE_WORLD_SELECT_ATTEMPT")
                     break;
 
@@ -1419,8 +1427,9 @@ int Client::gameExec()
                     logger->log1("State: GET CHARACTERS");
                     Net::getCharServerHandler()->requestCharacters();
                     mCurrentDialog = new ConnectionDialog(
-                            _("Requesting characters"),
-                            STATE_SWITCH_SERVER);
+                        // TRANSLATORS: connection dialog header
+                        _("Requesting characters"),
+                        STATE_SWITCH_SERVER);
                     BLOCK_END("Client::gameExec STATE_GET_CHARACTERS")
                     break;
 
@@ -1457,9 +1466,10 @@ int Client::gameExec()
 
                     Net::getGameHandler()->connect();
                     mCurrentDialog = new ConnectionDialog(
-                            _("Connecting to the game server"),
-                            Net::getNetworkType() != ServerInfo::MANASERV ?
-                            STATE_CHOOSE_SERVER : STATE_SWITCH_CHARACTER);
+                        // TRANSLATORS: connection dialog header
+                        _("Connecting to the game server"),
+                        Net::getNetworkType() != ServerInfo::MANASERV ?
+                        STATE_CHOOSE_SERVER : STATE_SWITCH_CHARACTER);
                     BLOCK_END("Client::gameExec STATE_CONNECT_GAME")
                     break;
 
@@ -1469,8 +1479,9 @@ int Client::gameExec()
 
                     Net::getGameHandler()->connect();
                     mCurrentDialog = new ConnectionDialog(
-                            _("Changing game servers"),
-                            STATE_SWITCH_CHARACTER);
+                        // TRANSLATORS: connection dialog header
+                        _("Changing game servers"),
+                        STATE_SWITCH_CHARACTER);
                     BLOCK_END("Client::gameExec STATE_CHANGE_MAP")
                     break;
 
@@ -1525,6 +1536,7 @@ int Client::gameExec()
                 case STATE_LOGIN_ERROR:
                     BLOCK_START("Client::gameExec STATE_LOGIN_ERROR")
                     logger->log1("State: LOGIN ERROR");
+                    // TRANSLATORS: error dialog header
                     mCurrentDialog = new OkDialog(_("Error"),
                         errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&loginListener);
@@ -1535,6 +1547,7 @@ int Client::gameExec()
                 case STATE_ACCOUNTCHANGE_ERROR:
                     BLOCK_START("Client::gameExec STATE_ACCOUNTCHANGE_ERROR")
                     logger->log1("State: ACCOUNT CHANGE ERROR");
+                    // TRANSLATORS: error dialog header
                     mCurrentDialog = new OkDialog(_("Error"),
                         errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
@@ -1547,7 +1560,8 @@ int Client::gameExec()
                     logger->log1("State: REGISTER_PREP");
                     Net::getLoginHandler()->getRegistrationDetails();
                     mCurrentDialog = new ConnectionDialog(
-                            _("Requesting registration details"), STATE_LOGIN);
+                        // TRANSLATORS: connection dialog header
+                        _("Requesting registration details"), STATE_LOGIN);
                     BLOCK_END("Client::gameExec STATE_REGISTER_PREP")
                     break;
 
@@ -1583,7 +1597,9 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec "
                         "STATE_CHANGEPASSWORD_SUCCESS")
                     logger->log1("State: CHANGE PASSWORD SUCCESS");
+                    // TRANSLATORS: password change message header
                     mCurrentDialog = new OkDialog(_("Password Change"),
+                        // TRANSLATORS: password change message text
                         _("Password changed successfully!"), DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
@@ -1604,7 +1620,9 @@ int Client::gameExec()
 
                 case STATE_CHANGEEMAIL_SUCCESS:
                     logger->log1("State: CHANGE EMAIL SUCCESS");
+                    // TRANSLATORS: email change message header
                     mCurrentDialog = new OkDialog(_("Email Change"),
+                        // TRANSLATORS: email change message text
                         _("Email changed successfully!"), DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
@@ -1625,7 +1643,9 @@ int Client::gameExec()
                     logger->log1("State: UNREGISTER SUCCESS");
                     Net::getLoginHandler()->disconnect();
 
+                    // TRANSLATORS: unregister message header
                     mCurrentDialog = new OkDialog(_("Unregister Successful"),
+                        // TRANSLATORS: unregister message text
                         _("Farewell, come back any time..."), DIALOG_ERROR);
                     loginData.clear();
                     // The errorlistener sets the state to STATE_CHOOSE_SERVER
@@ -1697,6 +1717,7 @@ int Client::gameExec()
                         serverConfig.write();
                     logger->log1("State: ERROR");
                     logger->log("Error: %s\n", errorMessage.c_str());
+                    // TRANSLATORS: error message header
                     mCurrentDialog = new OkDialog(_("Error"),
                         errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&errorListener);
@@ -1877,6 +1898,7 @@ void Client::initLocalDataDir()
 
     if (mkdir_r(mLocalDataDir.c_str()))
     {
+        // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
             "Exiting."), mLocalDataDir.c_str()));
     }
@@ -1891,6 +1913,7 @@ void Client::initTempDir()
 
     if (mkdir_r(mTempDir.c_str()))
     {
+        // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
             "Exiting."), mTempDir.c_str()));
     }
@@ -1933,6 +1956,7 @@ void Client::initConfigDir()
 
     if (mkdir_r(mConfigDir.c_str()))
     {
+        // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mConfigDir.c_str()));
     }
@@ -1948,6 +1972,7 @@ void Client::initServerConfig(std::string serverName)
 
     if (mkdir_r(mServerConfigDir.c_str()))
     {
+        // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mServerConfigDir.c_str()));
     }
@@ -2084,6 +2109,7 @@ void Client::initUpdatesDir()
         else
         {
             logger->log("Error: Invalid update host: %s", mUpdateHost.c_str());
+            // TRANSLATORS: update server initialisation error
             errorMessage = strprintf(_("Invalid update host: %s"),
                                      mUpdateHost.c_str());
             mState = STATE_ERROR;
@@ -2124,12 +2150,14 @@ void Client::initUpdatesDir()
             {
                 logger->log("Error: %s can't be made, but doesn't exist!",
                             newDir.c_str());
+                // TRANSLATORS: update server initialisation error
                 errorMessage = _("Error creating updates directory!");
                 mState = STATE_ERROR;
             }
 #else
             logger->log("Error: %s/%s can't be made, but doesn't exist!",
                         mLocalDataDir.c_str(), mUpdatesDir.c_str());
+            // TRANSLATORS: update server initialisation error
             errorMessage = _("Error creating updates directory!");
             mState = STATE_ERROR;
 #endif
@@ -2150,6 +2178,7 @@ void Client::initScreenshotDir()
         mScreenshotDir = mOptions.screenshotDir;
         if (mkdir_r(mScreenshotDir.c_str()))
         {
+            // TRANSLATORS: directory creation error
             logger->log(strprintf(
                 _("Error: %s doesn't exist and can't be created! "
                 "Exiting."), mScreenshotDir.c_str()));
@@ -2162,6 +2191,7 @@ void Client::initScreenshotDir()
 
         if (mkdir_r(mScreenshotDir.c_str()))
         {
+            // TRANSLATORS: directory creation error
             logger->log(strprintf(
                 _("Error: %s doesn't exist and can't be created! "
                 "Exiting."), mScreenshotDir.c_str()));
@@ -2383,6 +2413,7 @@ void Client::initUsersDir()
     mUsersDir = Client::getServerConfigDirectory() + "/users/";
     if (mkdir_r(mUsersDir.c_str()))
     {
+        // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
             "Exiting."), mUsersDir.c_str()));
     }
@@ -2390,6 +2421,7 @@ void Client::initUsersDir()
     mNpcsDir = Client::getServerConfigDirectory() + "/npcs/";
     if (mkdir_r(mNpcsDir.c_str()))
     {
+        // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
             "Exiting."), mNpcsDir.c_str()));
     }

@@ -367,6 +367,7 @@ void LocalPlayer::setAction(const Action &action, const int attackType)
     {
         if (!mLastHitFrom.empty())
         {
+            // TRANSLATORS: chat message after death
             debugMsg(strprintf(_("You were killed by %s"),
                 mLastHitFrom.c_str()));
             mLastHitFrom.clear();
@@ -1359,24 +1360,31 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
         switch (fail)
         {
             case PICKUP_BAD_ITEM:
+                // TRANSLATORS: pickup error message
                 msg = N_("Tried to pick up nonexistent item.");
                 break;
             case PICKUP_TOO_HEAVY:
+                // TRANSLATORS: pickup error message
                 msg = N_("Item is too heavy.");
                 break;
             case PICKUP_TOO_FAR:
+                // TRANSLATORS: pickup error message
                 msg = N_("Item is too far away.");
                 break;
             case PICKUP_INV_FULL:
+                // TRANSLATORS: pickup error message
                 msg = N_("Inventory is full.");
                 break;
             case PICKUP_STACK_FULL:
+                // TRANSLATORS: pickup error message
                 msg = N_("Stack is too big.");
                 break;
             case PICKUP_DROP_STEAL:
+                // TRANSLATORS: pickup error message
                 msg = N_("Item belongs to someone else.");
                 break;
             default:
+                // TRANSLATORS: pickup error message
                 msg = N_("Unknown problem picking up item.");
                 break;
         }
@@ -1386,7 +1394,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
         if (mMap && config.getBoolValue("showpickupparticle"))
         {
             // Show pickup notification
-            addMessageToQueue(_(msg), UserPalette::PICKUP_INFO);
+            addMessageToQueue(gettext(msg), UserPalette::PICKUP_INFO);
         }
     }
     else
@@ -1604,7 +1612,10 @@ void LocalPlayer::processEvent(Channels channel,
                         - event.getInt("oldValue");
 
                     if (change != 0)
+                    {
+                        // TRANSLATORS: get xp message
                         addMessageToQueue(strprintf("%d %s", change, _("xp")));
+                    }
                     break;
                 }
                 case PlayerInfo::LEVEL:
@@ -1840,11 +1851,17 @@ void LocalPlayer::invertDirection()
 
 static const char *const invertDirectionStrings[] =
 {
+    // TRANSLATORS: move type in status bar
     N_("(D) default moves"),
+    // TRANSLATORS: move type in status bar
     N_("(I) invert moves"),
+    // TRANSLATORS: move type in status bar
     N_("(c) moves with some crazy moves"),
+    // TRANSLATORS: move type in status bar
     N_("(C) moves with crazy moves"),
+    // TRANSLATORS: move type in status bar
     N_("(d) double normal + crazy"),
+    // TRANSLATORS: move type in status bar
     N_("(?) unknown move")
 };
 
@@ -1867,15 +1884,18 @@ std::string LocalPlayer::getCrazyMoveTypeString()
 {
     if (mCrazyMoveType < crazyMoveTypeSize - 1)
     {
+        // TRANSLATORS: crazy move type in status bar
         return strprintf(_("(%u) crazy move number %u"),
             mCrazyMoveType, mCrazyMoveType);
     }
     else if (mCrazyMoveType == crazyMoveTypeSize - 1)
     {
+        // TRANSLATORS: crazy move type in status bar
         return _("(a) custom crazy move");
     }
     else
     {
+        // TRANSLATORS: crazy move type in status bar
         return _("(?) crazy move");
     }
 }
@@ -1890,15 +1910,25 @@ void LocalPlayer::changeMoveToTargetType()
 
 static const char *const moveToTargetTypeStrings[] =
 {
+    // TRANSLATORS: move to target type in status bar
     N_("(0) default moves to target"),
+    // TRANSLATORS: move to target type in status bar
     N_("(1) moves to target in distance 1"),
+    // TRANSLATORS: move to target type in status bar
     N_("(2) moves to target in distance 2"),
+    // TRANSLATORS: move to target type in status bar
     N_("(3) moves to target in distance 3"),
+    // TRANSLATORS: move to target type in status bar
     N_("(5) moves to target in distance 5"),
+    // TRANSLATORS: move to target type in status bar
     N_("(7) moves to target in distance 7"),
+    // TRANSLATORS: move to target type in status bar
     N_("(A) moves to target in attack range"),
+    // TRANSLATORS: move to target type in status bar
     N_("(a) archer attack range"),
+    // TRANSLATORS: move to target type in status bar
     N_("(B) moves to target in attack range - 1"),
+    // TRANSLATORS: move to target type in status bar
     N_("(?) move to target")
 };
 
@@ -1918,10 +1948,15 @@ void LocalPlayer::changeFollowMode()
 
 static const char *const followModeStrings[] =
 {
+    // TRANSLATORS: folow mode in status bar
     N_("(D) default follow"),
+    // TRANSLATORS: folow mode in status bar
     N_("(R) relative follow"),
+    // TRANSLATORS: folow mode in status bar
     N_("(M) mirror follow"),
+    // TRANSLATORS: folow mode in status bar
     N_("(P) pet follow"),
+    // TRANSLATORS: folow mode in status bar
     N_("(?) unknown follow")
 };
 
@@ -1941,10 +1976,15 @@ void LocalPlayer::changeAttackWeaponType()
 
 static const char *attackWeaponTypeStrings[] =
 {
+    // TRANSLATORS: switch attack type in status bar
     N_("(?) attack"),
+    // TRANSLATORS: switch attack type in status bar
     N_("(D) default attack"),
+    // TRANSLATORS: switch attack type in status bar
     N_("(s) switch attack without shield"),
+    // TRANSLATORS: switch attack type in status bar
     N_("(S) switch attack with shield"),
+    // TRANSLATORS: switch attack type in status bar
     N_("(?) attack")
 };
 
@@ -1964,10 +2004,15 @@ void LocalPlayer::changeAttackType()
 
 static const char *const attackTypeStrings[] =
 {
+    // TRANSLATORS: attack type in status bar
     N_("(D) default attack"),
+    // TRANSLATORS: attack type in status bar
     N_("(G) go and attack"),
+    // TRANSLATORS: attack type in status bar
     N_("(A) go, attack, pickup"),
+    // TRANSLATORS: attack type in status bar
     N_("(d) without auto attack"),
+    // TRANSLATORS: attack type in status bar
     N_("(?) attack")
 };
 
@@ -2019,13 +2064,21 @@ void LocalPlayer::changePickUpType()
 
 static const char *const pickUpTypeStrings[] =
 {
+    // TRANSLATORS: pickup size in status bar
     N_("(S) small pick up 1x1 cells"),
+    // TRANSLATORS: pickup size in status bar
     N_("(D) default pick up 2x1 cells"),
+    // TRANSLATORS: pickup size in status bar
     N_("(F) forward pick up 2x3 cells"),
+    // TRANSLATORS: pickup size in status bar
     N_("(3) pick up 3x3 cells"),
+    // TRANSLATORS: pickup size in status bar
     N_("(g) go and pick up in distance 4"),
+    // TRANSLATORS: pickup size in status bar
     N_("(G) go and pick up in distance 8"),
+    // TRANSLATORS: pickup size in status bar
     N_("(A) go and pick up in max distance"),
+    // TRANSLATORS: pickup size in status bar
     N_("(?) pick up")
 };
 
@@ -2039,11 +2092,17 @@ const unsigned debugPathSize = 5;
 
 static const char *const debugPathStrings[] =
 {
+    // TRANSLATORS: map view type in status bar
     N_("(N) normal map view"),
+    // TRANSLATORS: map view type in status bar
     N_("(D) debug map view"),
+    // TRANSLATORS: map view type in status bar
     N_("(u) ultra map view"),
+    // TRANSLATORS: map view type in status bar
     N_("(U) ultra map view 2"),
+    // TRANSLATORS: map view type in status bar
     N_("(e) empty map view"),
+    // TRANSLATORS: map view type in status bar
     N_("(b) black & white map view")
 };
 
@@ -2063,11 +2122,17 @@ void LocalPlayer::switchMagicAttack()
 
 static const char *const magicAttackStrings[] =
 {
+    // TRANSLATORS: magic attack in status bar
     N_("(f) use #flar for magic attack"),
+    // TRANSLATORS: magic attack in status bar
     N_("(c) use #chiza for magic attack"),
+    // TRANSLATORS: magic attack in status bar
     N_("(I) use #ingrav for magic attack"),
+    // TRANSLATORS: magic attack in status bar
     N_("(F) use #frillyar for magic attack"),
+    // TRANSLATORS: magic attack in status bar
     N_("(U) use #upmarmu for magic attack"),
+    // TRANSLATORS: magic attack in status bar
     N_("(?) magic attack")
 };
 
@@ -2087,10 +2152,15 @@ void LocalPlayer::switchPvpAttack()
 
 static const char *const pvpAttackStrings[] =
 {
+    // TRANSLATORS: player attack type in status bar
     N_("(a) attack all players"),
+    // TRANSLATORS: player attack type in status bar
     N_("(f) attack all except friends"),
+    // TRANSLATORS: player attack type in status bar
     N_("(b) attack bad relations"),
+    // TRANSLATORS: player attack type in status bar
     N_("(d) don't attack players"),
+    // TRANSLATORS: player attack type in status bar
     N_("(?) pvp attack")
 };
 
@@ -2110,8 +2180,11 @@ void LocalPlayer::changeImitationMode()
 
 static const char *const imitationModeStrings[] =
 {
+    // TRANSLATORS: imitation type in status bar
     N_("(D) default imitation"),
+    // TRANSLATORS: imitation type in status bar
     N_("(O) outfits imitation"),
+    // TRANSLATORS: imitation type in status bar
     N_("(?) imitation")
 };
 
@@ -2140,6 +2213,7 @@ void LocalPlayer::changeAwayMode()
         navigateClean();
         if (outfitWindow)
             outfitWindow->wearAwayOutfit();
+        // TRANSLATORS: away message box header
         mAwayDialog = new OkDialog(_("Away"),
             config.getStringValue("afkMessage"),
             DIALOG_SILENCE, true, false);
@@ -2162,8 +2236,11 @@ void LocalPlayer::changeAwayMode()
 
 static const char *awayModeStrings[] =
 {
+    // TRANSLATORS: away type in status bar
     N_("(O) on keyboard"),
+    // TRANSLATORS: away type in status bar
     N_("(A) away"),
+    // TRANSLATORS: away type in status bar
     N_("(?) away")
 };
 
@@ -2177,8 +2254,11 @@ const unsigned cameraModeSize = 2;
 
 static const char *cameraModeStrings[] =
 {
+    // TRANSLATORS: camera mode in status bar
     N_("(G) game camera mode"),
+    // TRANSLATORS: camera mode in status bar
     N_("(F) free camera mode"),
+    // TRANSLATORS: camera mode in status bar
     N_("(?) away")
 };
 
@@ -2203,9 +2283,12 @@ void LocalPlayer::switchGameModifiers()
 
 static const char *const gameModifiersStrings[] =
 {
-    _("Game modifiers are enabled"),
-    _("Game modifiers are disabled"),
-    _("Game modifiers are unknown")
+    // TRANSLATORS: game modifiers state in status bar
+    N_("Game modifiers are enabled"),
+    // TRANSLATORS: game modifiers state in status bar
+    N_("Game modifiers are disabled"),
+    // TRANSLATORS: game modifiers state in status bar
+    N_("Game modifiers are unknown")
 };
 
 std::string LocalPlayer::getGameModifiersString()
@@ -3745,26 +3828,46 @@ void LocalPlayer::setFollow(const std::string &player)
 {
     mPlayerFollowed = player;
     if (!mPlayerFollowed.empty())
-        debugMsg(_("Follow: ") + player);
+    {
+        // TRANSLATORS: follow command message
+        std::string msg = strprintf(_("Follow: %s"), player.c_str());
+        debugMsg(msg);
+    }
     else
+    {
+        // TRANSLATORS: follow command message
         debugMsg(_("Follow canceled"));
+    }
 }
 
 void LocalPlayer::setImitate(const std::string &player)
 {
     mPlayerImitated = player;
     if (!mPlayerImitated.empty())
-        debugMsg(_("Imitation: ") + player);
+    {
+        // TRANSLATORS: imitate command message
+        std::string msg = strprintf(_("Imitation: %s"), player.c_str());
+        debugMsg(msg);
+    }
     else
+    {
+        // TRANSLATORS: imitate command message
         debugMsg(_("Imitation canceled"));
+    }
 }
 
 void LocalPlayer::cancelFollow()
 {
     if (!mPlayerFollowed.empty())
+    {
+        // TRANSLATORS: cancel follow message
         debugMsg(_("Follow canceled"));
+    }
     if (!mPlayerImitated.empty())
+    {
+        // TRANSLATORS: cancel follow message
         debugMsg(_("Imitation canceled"));
+    }
     mPlayerFollowed.clear();
     mPlayerImitated.clear();
 }
@@ -4105,6 +4208,7 @@ void LocalPlayer::checkNewName(Being *const being)
 
     if (!mWaitFor.empty() && mWaitFor == nick)
     {
+        // TRANSLATORS: wait player/monster message
         debugMsg(strprintf(_("You see %s"), mWaitFor.c_str()));
         soundManager.playGuiSound(SOUND_INFO);
         mWaitFor.clear();

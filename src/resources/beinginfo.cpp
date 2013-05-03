@@ -36,6 +36,7 @@ Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK,
 
 BeingInfo::BeingInfo() :
     mDisplay(),
+    // TRANSLATORS: being info default name
     mName(_("unnamed")),
     mTargetCursorSize(ActorSprite::TC_MEDIUM),
     mHoverCursor(Cursor::CURSOR_POINTER),

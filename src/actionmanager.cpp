@@ -835,6 +835,7 @@ impHandler0(changeTrade)
     {
         if (localChatTab)
         {
+            // TRANSLATORS: disable trades message
             localChatTab->chatLog(_("Ignoring incoming trade requests"),
                 BY_SERVER);
         }
@@ -844,6 +845,7 @@ impHandler0(changeTrade)
     {
         if (localChatTab)
         {
+            // TRANSLATORS: enable trades message
             localChatTab->chatLog(_("Accepting incoming trade requests"),
                 BY_SERVER);
         }
