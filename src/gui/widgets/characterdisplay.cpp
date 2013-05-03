@@ -51,7 +51,7 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
     mName->adjustSize();
 
     setWidth(80);
-    setHeight(100);
+    setHeight(120);
 }
 
 void CharacterDisplay::setCharacter(Net::Character *const character)

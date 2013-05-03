@@ -23,6 +23,7 @@
 #include "gui/charselectdialog.h"
 
 #include "client.h"
+#include "configuration.h"
 #include "units.h"
 #include "keyevent.h"
 
@@ -164,7 +165,10 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
         mCharacterView = new CharacterViewNormal(
             this, &mCharacterEntries, mPadding);
         placer(0, 1, mCharacterView, 10);
-        reflowLayout(410 + 2 * mPadding);
+        if (config.getIntValue("fontSize") > 18)
+            reflowLayout(500 + 2 * mPadding);
+        else
+            reflowLayout(410 + 2 * mPadding);
     }
     else
     {

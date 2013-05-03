@@ -20,6 +20,8 @@
 
 #include "gui/widgets/characterviewnormal.h"
 
+#include "configuration.h"
+
 #include "gui/widgets/characterdisplay.h"
 #include "gui/widgets/characterviewsmall.h"
 
@@ -46,7 +48,10 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
     }
     const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
     setWidth(firtChar->getWidth() * 5 + mPadding * 2);
-    setHeight(200);
+    if (config.getIntValue("fontSize") > 16)
+        setHeight(250);
+    else
+        setHeight(220);
 }
 
 CharacterViewNormal::~CharacterViewNormal()

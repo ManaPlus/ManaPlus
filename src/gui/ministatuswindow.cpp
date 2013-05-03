@@ -83,7 +83,8 @@ MiniStatusWindow::MiniStatusWindow() :
     mArrowsBar(createBar(0, 50, 0, Theme::PROG_INVY_SLOTS,
         // TRANSLATORS: status bar name
         "arrows bar", _("arrows bar"))),
-    mStatusBar(createBar(100, 165, 0, Theme::PROG_EXP,
+    mStatusBar(createBar(100, (config.getIntValue("fontSize") > 16
+        ? 250 : 165), 0, Theme::PROG_EXP,
         // TRANSLATORS: status bar name
         "status bar", _("status bar"))),
     mTextPopup(new TextPopup),
