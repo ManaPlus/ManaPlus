@@ -166,14 +166,14 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
 
     if (serverVersion > 0)
     {
-        mItemName->setCaption(std::string(item.getName(color)).append(
-            _(", ")).append(toString(id)));
+        mItemName->setCaption(strprintf("%s, %d",
+            item.getName(color).c_str(), id));
         mItemDesc->setTextWrapped(item.getDescription(color), 196);
     }
     else
     {
-        mItemName->setCaption(std::string(item.getName()).append(
-            _(", ")).append(toString(id)));
+        mItemName->setCaption(strprintf("%s, %d",
+            item.getName().c_str(), id));
         mItemDesc->setTextWrapped(item.getDescription(), 196);
     }
 
@@ -182,9 +182,9 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
     mItemName->setPosition(space, 0);
 
     mItemEffect->setTextWrapped(item.getEffect(), 196);
+    // TRANSLATORS: popup label
     mItemWeight->setTextWrapped(strprintf(_("Weight: %s"),
-                                Units::formatWeight(item.getWeight()).c_str()),
-                                196);
+        Units::formatWeight(item.getWeight()).c_str()), 196);
 
     int minWidth = mItemName->getWidth() + space;
 

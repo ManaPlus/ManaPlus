@@ -46,6 +46,7 @@ static const int texturesListSize = 4;
 
 static const char *const texturesList[] =
 {
+    // TRANSLATORS: texture compression type
     N_("No"),
     "s3tc",
     "fxt1",
@@ -56,6 +57,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     SetupTabScroll(widget),
     mTexturesList(new NamesModel)
 {
+    // TRANSLATORS: settings tab name
     setName(_("Perfomance"));
 
     // Do the layout
@@ -63,72 +65,93 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
+    // TRANSLATORS: settings option
     new SetupItemLabel(_("Better perfomance (enable for better perfomance)"),
         "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto adjust perfomance"), "",
         "adjustPerfomance", this, "adjustPerfomanceEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Hw acceleration"), "",
         "hwaccel", this, "hwaccelEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable opacity cache (Software, can "
         "use many memory)"), "", "alphaCache", this, "alphaCacheEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable map reduce (Software)"), "",
         "enableMapReduce", this, "enableMapReduceEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable compound sprite delay (Software)"), "",
         "enableCompoundSpriteDelay", this, "enableCompoundSpriteDelayEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable delayed images load (OpenGL)"), "",
         "enableDelayedAnimations", this, "enableDelayedAnimationsEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable texture sampler (OpenGL)"), "",
         "useTextureSampler", this, "useTextureSamplerEvent");
 
 
+    // TRANSLATORS: settings option
     new SetupItemLabel(_("Better quality (disable for better perfomance)"),
         "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable alpha channel fix (Software, can "
         "be very slow)"), "Can slow down drawing", "enableAlphaFix",
         this, "enableAlphaFixEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show beings transparency"), "",
         "beingopacity", this, "beingopacityEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable reorder sprites."), "",
         "enableReorderSprites", this, "enableReorderSpritesEvent");
 
 
+    // TRANSLATORS: settings option
     new SetupItemLabel(_("Small memory (enable for lower memory usage)"),
          "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Disable advanced beings caching (Software)"), "",
         "disableAdvBeingCaching", this, "disableAdvBeingCachingEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Disable beings caching (Software)"), "",
         "disableBeingCaching", this, "disableBeingCachingEvent");
 
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Different options (enable or disable can "
         "improve perfomance)"), "", this);
 
 
     mTexturesList->fillFromArray(&texturesList[0], texturesListSize);
+    // TRANSLATORS: settings option
     new SetupItemDropDown(_("Enable texture compression (fast OpenGL)"), "",
         "compresstextures", this, "compresstexturesEvent", mTexturesList, 100);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable rectangular texture extension (OpenGL)"),
         "", "rectangulartextures", this, "rectangulartexturesEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use new texture internal format (OpenGL)"),
         "", "newtextures", this, "newtexturesEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable texture atlases (OpenGL)"), "",
         "useAtlases", this, "useAtlasesEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Cache all sprites per map (can use "
         "additinal memory)"), "", "uselonglivesprites", this,
         "uselonglivespritesEvent");

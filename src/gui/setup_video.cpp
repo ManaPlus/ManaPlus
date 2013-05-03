@@ -178,11 +178,15 @@ int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
 
 const char *OPENGL_NAME[4] =
 {
+    // TRANSLATORS: draw backend
     N_("Software"),
 #ifndef ANDROID
+    // TRANSLATORS: draw backend
     N_("Fast OpenGL"),
+    // TRANSLATORS: draw backend
     N_("Safe OpenGL"),
 #endif
+    // TRANSLATORS: draw backend
     N_("Mobile OpenGL"),
 };
 
@@ -202,8 +206,7 @@ public:
     virtual std::string getElementAt(int i)
     {
         if (i >= getNumberOfElements() || i < 0)
-            return _("???");
-
+            return "???";
         return gettext(OPENGL_NAME[i]);
     }
 };
@@ -221,28 +224,37 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mModeListModel(new ModeListModel),
     mOpenGLListModel(new OpenGLListModel),
     mModeList(new ListBox(widget, mModeListModel, "")),
+    // TRANSLATORS: video settings checkbox
     mFsCheckBox(new CheckBox(this, _("Full screen"), mFullScreenEnabled)),
     mOpenGLDropDown(new DropDown(widget, mOpenGLListModel)),
     mCustomCursorCheckBox(new CheckBox(this,
 #ifdef ANDROID
-                          _("Show cursor"),
+        // TRANSLATORS: video settings checkbox
+        _("Show cursor"),
 #else
-                          _("Custom cursor"),
+        // TRANSLATORS: video settings checkbox
+        _("Custom cursor"),
 #endif
                           mCustomCursorEnabled)),
+    // TRANSLATORS: video settings checkbox
     mEnableResizeCheckBox(new CheckBox(this, _("Enable resize"),
                           mEnableResize)),
+    // TRANSLATORS: video settings checkbox
     mNoFrameCheckBox(new CheckBox(this, _("No frame"), mNoFrame)),
+    // TRANSLATORS: video settings checkbox
     mFpsCheckBox(new CheckBox(this, _("FPS limit:"))),
     mFpsSlider(new Slider(2, 160)),
     mFpsLabel(new Label(this)),
     mAltFpsSlider(new Slider(2, 160)),
+    // TRANSLATORS: video settings label
     mAltFpsLabel(new Label(this, _("Alt FPS limit: "))),
 #if !defined(ANDROID) && !defined(__APPLE__)
+    // TRANSLATORS: video settings button
     mDetectButton(new Button(this, _("Detect best mode"), "detect", this)),
 #endif
     mDialog(nullptr)
 {
+    // TRANSLATORS: video settings tab name
     setName(_("Video"));
 
     ScrollArea *const scrollArea = new ScrollArea(mModeList,
@@ -262,8 +274,10 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
 
     mModeList->setEnabled(true);
 
+    // TRANSLATORS: video settings label
     mFpsLabel->setCaption(mFps > 0 ? toString(mFps) : _("None"));
     mFpsLabel->setWidth(60);
+    // TRANSLATORS: video settings label
     mAltFpsLabel->setCaption(_("Alt FPS limit: ") + (mAltFps > 0
                              ? toString(mAltFps) : _("None")));
     mAltFpsLabel->setWidth(150);
@@ -371,12 +385,14 @@ void Setup_Video::apply()
                     std::stringstream errorMsg;
                     if (fullscreen)
                     {
+                        // TRANSLATORS: video error message
                         errorMsg << _("Failed to switch to windowed mode "
                             "and restoration of old mode also "
                             "failed!") << std::endl;
                     }
                     else
                     {
+                        // TRANSLATORS: video error message
                         errorMsg << _("Failed to switch to fullscreen mode"
                             " and restoration of old mode also "
                             "failed!") << std::endl;
@@ -388,7 +404,9 @@ void Setup_Video::apply()
         }
         else
         {
+            // TRANSLATORS: video settings warning
             new OkDialog(_("Switching to Full Screen"),
+                // TRANSLATORS: video settings warning
                 _("Restart needed for changes to take effect."));
         }
 #endif
@@ -407,7 +425,9 @@ void Setup_Video::apply()
         config.setValue("opengl", mode);
 
         // OpenGL can currently only be changed by restarting, notify user.
+        // TRANSLATORS: video settings warning
         new OkDialog(_("Changing to OpenGL"),
+            // TRANSLATORS: video settings warning
             _("Applying change to OpenGL requires restart."));
     }
 
@@ -444,7 +464,9 @@ void Setup_Video::cancel()
     mAltFpsSlider->setValue(mAltFps);
     mAltFpsSlider->setEnabled(mAltFps > 0);
     mFpsLabel->setCaption(mFpsCheckBox->isSelected()
+    // TRANSLATORS: video settings label
                           ? toString(mFps) : _("None"));
+    // TRANSLATORS: video settings label
     mAltFpsLabel->setCaption(_("Alt FPS limit: ") + toString(mAltFps));
     mEnableResizeCheckBox->setSelected(mEnableResize);
     mNoFrameCheckBox->setSelected(mNoFrame);
@@ -483,7 +505,9 @@ void Setup_Video::action(const gcn::ActionEvent &event)
             else
             {
                 mDialog = new TextDialog(
+                    // TRANSLATORS: resolution question dialog
                     _("Custom resolution (example: 1024x768)"),
+                    // TRANSLATORS: resolution question dialog
                     _("Enter new resolution:                "));
                 mDialog->setActionEventId("videomode");
                 mDialog->addActionListener(this);
@@ -507,14 +531,18 @@ void Setup_Video::action(const gcn::ActionEvent &event)
                 if (width < mainGraphics->mWidth
                     || height < mainGraphics->mHeight)
                 {
+                    // TRANSLATORS: video settings warning
                     new OkDialog(_("Screen Resolution Changed"),
+                        // TRANSLATORS: video settings warning
                        _("Restart your client for the change to take effect.")
                        + std::string("\n") + _("Some windows may be moved to "
                         "fit the lowered resolution."));
                 }
                 else
                 {
+                    // TRANSLATORS: video settings warning
                     new OkDialog(_("Screen Resolution Changed"),
+                        // TRANSLATORS: video settings warning
                         _("Restart your client for the change"
                         " to take effect."));
                 }
@@ -546,6 +574,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         else
             tempFps = tempFps > 0 ? tempFps : 60;
         mFps = mFpsCheckBox->isSelected() ? tempFps : 0;
+        // TRANSLATORS: video settings label
         const std::string text = mFps > 0 ? toString(mFps) : _("None");
 
         mFpsLabel->setCaption(text);
@@ -558,8 +587,10 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         tempFps = tempFps > 0 ? tempFps : static_cast<int>(
             mAltFpsSlider->getScaleStart());
         mAltFps = tempFps;
+        // TRANSLATORS: video settings label
         const std::string text = mAltFps > 0 ? toString(mAltFps) : _("None");
 
+        // TRANSLATORS: video settings label
         mAltFpsLabel->setCaption(_("Alt FPS limit: ") + text);
         mAltFpsSlider->setValue(mAltFps);
         mAltFpsSlider->setEnabled(mAltFps > 0);

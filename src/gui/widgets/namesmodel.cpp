@@ -46,8 +46,7 @@ int NamesModel::getNumberOfElements()
 std::string NamesModel::getElementAt(int i)
 {
     if (i >= getNumberOfElements() || i < 0)
-        return _("???");
-
+        return "???";
     return mNames[i];
 }
 

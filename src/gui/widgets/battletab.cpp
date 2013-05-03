@@ -38,6 +38,7 @@
 #include "debug.h"
 
 BattleTab::BattleTab(const Widget2 *const widget) :
+    // TRANSLATORS: battle chat tab name
     ChatTab(widget, _("Battle"), "")
 {
     if (config.getBoolValue("showChatHistory"))

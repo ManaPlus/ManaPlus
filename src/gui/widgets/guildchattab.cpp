@@ -37,6 +37,7 @@
 #include "debug.h"
 
 GuildChatTab::GuildChatTab(const Widget2 *const widget) :
+    // TRANSLATORS: guild chat tab name
     ChatTab(widget, _("Guild"), "")
 {
     setTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB),
@@ -61,18 +62,25 @@ bool GuildChatTab::handleCommand(const std::string &type,
     {
         if (args == "invite")
         {
+            // TRANSLATORS: guild chat tab help
             chatLog(_("Command: /invite <nick>"));
+            // TRANSLATORS: guild chat tab help
             chatLog(_("This command invites <nick> to the guild you're in."));
+            // TRANSLATORS: guild chat tab help
             chatLog(_("If the <nick> has spaces in it, enclose it in "
                             "double quotes (\")."));
         }
         else if (args == "leave")
         {
+            // TRANSLATORS: guild chat tab help
             chatLog(_("Command: /leave"));
+            // TRANSLATORS: guild chat tab help
             chatLog(_("This command causes the player to leave the guild."));
         }
         else
+        {
             return false;
+        }
     }
     else if (type == "invite" && guildManager)
     {
@@ -111,9 +119,13 @@ void GuildChatTab::handleInput(const std::string &msg)
 
 void GuildChatTab::showHelp()
 {
+    // TRANSLATORS: guild chat tab help
     chatLog(_("/help > Display this help."));
+    // TRANSLATORS: guild chat tab help
     chatLog(_("/invite > Invite a player to your guild"));
+    // TRANSLATORS: guild chat tab help
     chatLog(_("/leave > Leave the guild you are in"));
+    // TRANSLATORS: guild chat tab help
     chatLog(_("/kick > Kick some one from the guild you are in"));
 }
 

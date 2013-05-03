@@ -45,8 +45,7 @@ int ExtendedNamesModel::getNumberOfElements()
 std::string ExtendedNamesModel::getElementAt(int i)
 {
     if (i >= getNumberOfElements() || i < 0)
-        return _("???");
-
+        return "???";
     return mNames[i];
 }
 

@@ -41,6 +41,7 @@ EditDialog::EditDialog(const std::string &title, const std::string &msg,
     mTextField(new TextField(this))
 {
     mTextField->setText(msg);
+    // TRANSLATORS: edit dialog label
     Button *const okButton = new Button(this, _("OK"), mEventOk, this);
 
     const int numRows = 1;

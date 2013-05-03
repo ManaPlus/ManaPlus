@@ -35,6 +35,7 @@
 BuySellDialog::DialogList BuySellDialog::dialogInstances;
 
 BuySellDialog::BuySellDialog(const int npcId) :
+    // TRANSLATORS: shop window name
     Window(_("Shop"), false, nullptr, "buysell.xml"),
     gcn::ActionListener(),
     mNpcId(npcId),
@@ -45,6 +46,7 @@ BuySellDialog::BuySellDialog(const int npcId) :
 }
 
 BuySellDialog::BuySellDialog(std::string nick) :
+    // TRANSLATORS: shop window name
     Window(_("Shop"), false, nullptr, "buysell.xml"),
     gcn::ActionListener(),
     mNpcId(-1),
@@ -61,7 +63,13 @@ void BuySellDialog::init()
 
     static const char *buttonNames[] =
     {
-        N_("Buy"), N_("Sell"), N_("Cancel"), nullptr
+        // TRANSLATORS: shop window button
+        N_("Buy"),
+        // TRANSLATORS: shop window button
+        N_("Sell"),
+        // TRANSLATORS: shop window button
+        N_("Cancel"),
+        nullptr
     };
     const int buttonPadding = getOption("buttonpadding", 10);
     int x = buttonPadding;

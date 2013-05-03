@@ -56,7 +56,9 @@ class CharDeleteConfirm final : public ConfirmDialog
 {
     public:
         CharDeleteConfirm(CharSelectDialog *const m, const int index) :
+            // TRANSLATORS: char deletion message
             ConfirmDialog(_("Confirm Character Delete"),
+                          // TRANSLATORS: char deletion message
                           _("Are you sure you want to delete this character?"),
                           false, false, m),
             mMaster(m),
@@ -80,6 +82,7 @@ class CharDeleteConfirm final : public ConfirmDialog
 };
 
 CharSelectDialog::CharSelectDialog(LoginData *const data):
+    // TRANSLATORS: char select dialog name
     Window(strprintf(_("Account %s (last login time %s)"),
         data->username.c_str(), data->lastLogin.c_str()),
         false, nullptr, "char.xml"),
@@ -87,13 +90,18 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     gcn::KeyListener(),
     mLocked(false),
     mLoginData(data),
+    // TRANSLATORS: char select dialog. button.
     mSwitchLoginButton(new Button(this, _("Switch Login"), "switch", this)),
+    // TRANSLATORS: char select dialog. button.
     mChangePasswordButton(new Button(this, _("Change Password"),
                           "change_password", this)),
     mUnregisterButton(nullptr),
     mChangeEmailButton(nullptr),
+    // TRANSLATORS: char select dialog. button.
     mPlayButton(new Button(this, _("Play"), "use", this)),
+    // TRANSLATORS: char select dialog. button.
     mInfoButton(new Button(this, _("Info"), "info", this)),
+    // TRANSLATORS: char select dialog. button.
     mDeleteButton(new Button(this, _("Delete"), "delete", this)),
     mCharacterView(nullptr),
     mCharacterEntries(0),
@@ -117,6 +125,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     int n = 1;
     if (optionalActions & Net::LoginHandler::Unregister)
     {
+        // TRANSLATORS: char select dialog. button.
         mUnregisterButton = new Button(this, _("Unregister"),
                                        "unregister", this);
         placer(n, 0, mUnregisterButton);
@@ -128,6 +137,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
 
     if (optionalActions & Net::LoginHandler::ChangeEmail)
     {
+        // TRANSLATORS: char select dialog. button.
         mChangeEmailButton = new Button(this, _("Change Email"),
                                         "change_email", this);
         placer(n, 0, mChangeEmailButton);
@@ -158,6 +168,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     }
     else
     {
+        // TRANSLATORS: char select dialog name
         setCaption(strprintf(_("Account %s"), mLoginData->username.c_str()));
         mCharacterView = new CharacterViewSmall(
             this, &mCharacterEntries, mPadding);
@@ -231,6 +242,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
                 return;
 
             const std::string msg = strprintf(
+                // TRANSLATORS: char select dialog. player info message.
                 _("Hp: %u/%u\nMp: %u/%u\nLevel: %u\n"
                 "Experience: %u\nMoney: %s"),
                 character->data.mAttributes[PlayerInfo::HP],
@@ -272,6 +284,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
         }
         else
         {
+            // TRANSLATORS: error message
             new OkDialog(_("Error"), _("Incorrect password"), DIALOG_ERROR);
         }
         mDeleteIndex = -1;
@@ -400,6 +413,7 @@ void CharSelectDialog::askPasswordForDeletion(const int index)
 {
     mDeleteIndex = index;
     mDeleteDialog = new TextDialog(
+        // TRANSLATORS: char deletion question.
         _("Enter password for deleting character"), _("Enter password:"),
         this, true);
     mDeleteDialog->setActionEventId("try delete character");
@@ -546,7 +560,13 @@ void CharSelectDialog::updateState()
     mPlayButton->setEnabled(true);
 
     if (mCharacterEntries[idx]->getCharacter())
+    {
+        // TRANSLATORS: char select dialog. button.
         mPlayButton->setCaption(_("Play"));
+    }
     else
+    {
+        // TRANSLATORS: char select dialog. button.
         mPlayButton->setCaption(_("Create"));
+    }
 }

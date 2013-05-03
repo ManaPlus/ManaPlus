@@ -72,9 +72,11 @@ extern std::string tradePartnerName;
 ShopWindow::DialogList ShopWindow::instances;
 
 ShopWindow::ShopWindow():
+    // TRANSLATORS: shop window name
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
+    // TRANSLATORS: shop window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mBuyShopItems(new ShopItems),
     mSellShopItems(new ShopItems),
@@ -84,17 +86,26 @@ ShopWindow::ShopWindow():
         getOptionBool("showbuybackground"), "shop_buy_background.xml")),
     mSellScrollArea(new ScrollArea(mSellShopItemList,
         getOptionBool("showsellbackground"), "shop_sell_background.xml")),
+    // TRANSLATORS: shop window label
     mBuyLabel(new Label(this, _("Buy items"))),
+    // TRANSLATORS: shop window label
     mSellLabel(new Label(this, _("Sell items"))),
+    // TRANSLATORS: shop window label
     mBuyAddButton(new Button(this, _("Add"), "add buy", this)),
+    // TRANSLATORS: shop window label
     mBuyDeleteButton(new Button(this, _("Delete"), "delete buy", this)),
+    // TRANSLATORS: shop window label
     mBuyAnnounceButton(new Button(this, _("Announce"), "announce buy", this)),
     mBuyAuctionButton(nullptr),
+    // TRANSLATORS: shop window button
     mSellAddButton(new Button(this, _("Add"), "add sell", this)),
+    // TRANSLATORS: shop window button
     mSellDeleteButton(new Button(this, _("Delete"), "delete sell", this)),
+    // TRANSLATORS: shop window button
     mSellAnnounceButton(new Button(this, _("Announce"),
         "announce sell", this)),
     mSellAuctionButton(nullptr),
+    // TRANSLATORS: shop window checkbox
     mAnnounceLinks(new CheckBox(this, _("Show links in announce"), false,
         this, "link announce")),
     mSelectedItem(-1),
@@ -148,8 +159,10 @@ ShopWindow::ShopWindow():
     if (auctionManager && auctionManager->getEnableAuctionBot())
     {
         mBuyAuctionButton = new Button(this,
+            // TRANSLATORS: shop window button
             _("Auction"), "auction buy", this);
         mSellAuctionButton = new Button(this,
+            // TRANSLATORS: shop window button
             _("Auction"), "auction sell", this);
         placer(4, 6, mBuyAuctionButton);
         placer(12, 6, mSellAuctionButton);
@@ -760,6 +773,7 @@ void ShopWindow::processRequest(std::string nick, std::string data,
     else
     {
         ConfirmDialog *const confirmDlg = new ConfirmDialog
+            // TRANSLATORS: shop window dialog
             (_("Request for Trade"), strprintf(_("%s wants to %s %s do you "
             "accept?"), nick.c_str(), msg.c_str(),
             mTradeItem->getInfo().getName().c_str()), true);

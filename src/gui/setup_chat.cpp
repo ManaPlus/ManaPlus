@@ -46,6 +46,7 @@ extern int serverVersion;
 Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     SetupTabScroll(widget)
 {
+    // TRANSLATORS: settings tab name
     setName(_("Chat"));
 
     // Do the layout
@@ -53,100 +54,133 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Window"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto hide chat window."), "",
         "autohideChat", this, "autohideChatEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Protect chat focus."), "",
         "protectChatFocus", this, "protectChatFocusEvent");
 
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Colors"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Remove colors from received chat messages"), "",
         "removeColors", this, "removeColorsEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show chat colors list"), "",
         "showChatColorsList", this, "showChatColorsListEvent");
 
 
+    // TRANSLATORS: settings option
     new SetupItemLabel(_("Commands"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Allow magic and GM commands in all chat tabs"),
         "", "allowCommandsInChatTabs", this, "allowCommandsInChatTabsEvent");
 
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Limits"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Limit max chars in chat line"), "",
         "chatMaxCharLimit", this, "chatMaxCharLimitEvent", 0, 500);
 
+    // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Limit max lines in chat"), "",
         "chatMaxLinesLimit", this, "chatMaxLinesLimitEvent", 0, 500);
 
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Logs"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable chat Log"), "",
         "enableChatLog", this, "enableChatLogEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show chat history"), "",
         "showChatHistory", this, "showChatHistoryEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show guild online messages"), "",
         "showGuildOnline", this, "showGuildOnlineEvent");
 
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Messages"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Hide shop messages"), "",
         "hideShopMessages", this, "hideShopMessagesEvent");
 
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Tabs"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Put all whispers in tabs"), "",
         "whispertab", this, "whispertabEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Log magic messages in debug tab"), "",
         "showMagicInDebug", this, "showMagicInDebugEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show server messages in debug tab"), "",
         "serverMsgInDebug", this, "serverMsgInDebugEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable trade tab"), "",
         "enableTradeTab", this, "enableTradeTabEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable gm tab"), "",
         "enableGmTab", this, "enableGmTabEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable language tab"), "",
         "enableLangTab", this, "enableLangTabEvent", false);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show all languages messages"), "",
         "showAllLang", this, "showAllLangEvent", false);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable battle tab"), "",
         "enableBattleTab", this, "enableBattleTabEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show battle events"), "",
         "showBattleEvents", this, "showBattleEventsEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Resize chat tabs if need"), "",
         "hideChatInput", this, "hideChatInputEvent");
 
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Time"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use local time"), "",
         "useLocalTime", this, "useLocalTimeEvent");
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Other"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemTextField(_("Highlight words (separated by comma)"), "",
         "highlightWords", this, "highlightWordsEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show MVP messages"), "",
         "showMVP", this, "showMVPEvent");
 

@@ -266,13 +266,16 @@ class SkillTab final : public Tab
 };
 
 SkillDialog::SkillDialog() :
+    // TRANSLATORS: skills dialog name
     Window(_("Skills"), false, nullptr, "skills.xml"),
     gcn::ActionListener(),
     mSkills(),
     mTabs(new TabbedArea(this)),
     mDeleteTabs(),
     mPointsLabel(new Label(this, "0")),
+    // TRANSLATORS: skills dialog button
     mUseButton(new Button(this, _("Use"), "use", this)),
+    // TRANSLATORS: skills dialog button
     mIncreaseButton(new Button(this, _("Up"), "inc", this)),
     mDefaultModel(nullptr)
 {
@@ -384,6 +387,7 @@ std::string SkillDialog::update(const int id)
 
 void SkillDialog::update()
 {
+    // TRANSLATORS: skills dialog label
     mPointsLabel->setCaption(strprintf(_("Skill points available: %d"),
         PlayerInfo::getAttribute(PlayerInfo::SKILL_POINTS)));
     mPointsLabel->adjustSize();
@@ -436,8 +440,10 @@ void SkillDialog::loadSkills()
 
             SkillInfo *const skill = new SkillInfo;
             skill->id = 1;
+            // TRANSLATORS: skills dialog default skills tab
             skill->data->name = _("basic");
             skill->data->description.clear();
+            // TRANSLATORS: skills dialog default skill name
             skill->data->dispName = _("basic, 1");
             skill->data->shortName = "bas";
             skill->data->setIcon("");
@@ -474,6 +480,7 @@ void SkillDialog::loadSkills()
         {
             setCount++;
             setName = XML::getProperty(set, "name",
+                // TRANSLATORS: skills dialog default skill tab
                 strprintf(_("Skill Set %d"), setCount));
 
             SkillModel *const model = new SkillModel();
@@ -507,6 +514,7 @@ void SkillDialog::loadSkills()
                     }
 
                     std::string name = XML::langProperty(node, "name",
+                        // TRANSLATORS: skills dialog. skill id
                         strprintf(_("Skill %d"), id));
                     std::string icon = XML::getProperty(node, "icon", "");
                     const int level = XML::getProperty(node, "level", 0);
@@ -600,6 +608,7 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
         skill->visible = false;
         skill->model = mDefaultModel;
         skill->level = level;
+        // TRANSLATORS: skills dialog. skill level
         skill->skillLevel = strprintf(_("Lvl: %d"), level);
         skill->range = range;
         skill->update();
@@ -744,9 +753,14 @@ void SkillInfo::update()
     visible = true;
 
     if (baseLevel == 0)
+    {
         skillLevel.clear();
+    }
     else
+    {
+        // TRANSLATORS: skills dialog. skill level
         skillLevel = strprintf(_("Lvl: %d"), baseLevel);
+    }
 
     level = baseLevel;
     skillLevelWidth = -1;

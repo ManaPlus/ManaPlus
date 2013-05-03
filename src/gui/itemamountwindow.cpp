@@ -89,8 +89,7 @@ public:
     virtual std::string getElementAt(int i)
     {
         if (i < 0 || i >= getNumberOfElements())
-            return _("???");
-
+            return "???";
         return mStrings.at(i);
     }
 private:
@@ -203,10 +202,15 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
 
 
     // Buttons
+    // TRANSLATORS: item amount window button
     Button *const minusAmountButton = new Button(this, _("-"), "dec", this);
+    // TRANSLATORS: item amount window button
     Button *const plusAmountButton = new Button(this, _("+"), "inc", this);
+    // TRANSLATORS: item amount window button
     Button *const okButton = new Button(this, _("OK"), "ok", this);
+    // TRANSLATORS: item amount window button
     Button *const cancelButton = new Button(this, _("Cancel"), "cancel", this);
+    // TRANSLATORS: item amount window button
     Button *const addAllButton = new Button(this, _("All"), "all", this);
 
     minusAmountButton->adjustSize();
@@ -232,8 +236,10 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     if (mUsage == ShopBuyAdd || mUsage == ShopSellAdd)
     {
         Button *const minusPriceButton = new Button(
+            // TRANSLATORS: item amount window button
             this, _("-"), "decPrice", this);
         Button *const plusPriceButton = new Button(
+            // TRANSLATORS: item amount window button
             this, _("+"), "incPrice", this);
         minusPriceButton->adjustSize();
         minusPriceButton->setWidth(plusPriceButton->getWidth());
@@ -260,27 +266,35 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     switch (usage)
     {
         case TradeAdd:
+            // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to trade."));
             break;
         case ItemDrop:
+            // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to drop."));
             break;
         case StoreAdd:
+            // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to store."));
             break;
         case StoreRemove:
+            // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to retrieve."));
             break;
         case ItemSplit:
+            // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to split."));
             break;
         case ShopBuyAdd:
+            // TRANSLATORS: amount window message
             setCaption(_("Add to buy shop."));
             break;
         case ShopSellAdd:
+            // TRANSLATORS: amount window message
             setCaption(_("Add to sell shop."));
             break;
         default:
+            // TRANSLATORS: amount window message
             setCaption(_("Unknown."));
             break;
     }

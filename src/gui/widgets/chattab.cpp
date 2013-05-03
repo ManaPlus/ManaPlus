@@ -148,11 +148,13 @@ void ChatTab::chatLog(std::string line, Own own,
         case BY_GM:
             if (tmp.nick.empty())
             {
+                // TRANSLATORS: chat message
                 tmp.nick = std::string(_("Global announcement:")).append(" ");
                 lineColor = "##G";
             }
             else
             {
+                // TRANSLATORS: chat message
                 tmp.nick = strprintf(_("Global announcement from %s:"),
                                      tmp.nick.c_str()).append(" ");
                 lineColor = "##1";  // Equiv. to BrowserBox::RED
@@ -168,6 +170,7 @@ void ChatTab::chatLog(std::string line, Own own,
             lineColor = "##C";
             break;
         case BY_SERVER:
+            // TRANSLATORS: chat message
             tmp.nick = std::string(_("Server:")).append(" ");
             tmp.text = line;
             lineColor = "##S";
@@ -177,6 +180,7 @@ void ChatTab::chatLog(std::string line, Own own,
             lineColor = "##2";  // Equiv. to BrowserBox::GREEN
             break;
         case ACT_WHISPER:
+            // TRANSLATORS: chat message
             tmp.nick = strprintf(_("%s whispers: %s"), tmp.nick.c_str(), "");
             lineColor = "##W";
             break;
@@ -520,7 +524,13 @@ void ChatTab::showOnline(const std::string &nick,
         return;
 
     if (isOnline)
+    {
+        // TRANSLATORS: chat message
         chatLog(strprintf(_("%s is now Online."), nick.c_str()));
+    }
     else
+    {
+        // TRANSLATORS: chat message
         chatLog(strprintf(_("%s is now Offline."), nick.c_str()));
+    }
 }

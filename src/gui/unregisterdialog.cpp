@@ -43,17 +43,22 @@
 
 #include "debug.h"
 
-UnRegisterDialog::UnRegisterDialog(LoginData *const data):
+UnRegisterDialog::UnRegisterDialog(LoginData *const data) :
+    // TRANSLATORS: unregister dialog name
     Window(_("Unregister"), true, nullptr, "unregister.xml"),
     gcn::ActionListener(),
     mLoginData(data),
     mPasswordField(new PasswordField(this, mLoginData->password)),
+    // TRANSLATORS: unregister dialog. button.
     mUnRegisterButton(new Button(this, _("Unregister"), "unregister", this)),
+    // TRANSLATORS: unregister dialog. button.
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener)
 {
+    // TRANSLATORS: unregister dialog. label.
     Label *const userLabel = new Label(this, strprintf(_("Name: %s"),
         mLoginData->username.c_str()));
+    // TRANSLATORS: unregister dialog. label.
     Label *const passwordLabel = new Label(this, _("Password:"));
 
     const int width = 210;
@@ -115,17 +120,16 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
         const unsigned int max = Net::getLoginHandler()
             ->getMaxPasswordLength();
 
-        // Check password
         if (password.length() < min)
         {
-            // Pass too short
+            // TRANSLATORS: unregister dialog. error message.
             errorMsg << strprintf(_("The password needs to be at least %u "
                 "characters long."), min);
             error = true;
         }
         else if (password.length() > max - 1)
         {
-            // Pass too long
+            // TRANSLATORS: unregister dialog. error message.
             errorMsg << strprintf(_("The password needs to be less than "
                 "%u characters long."), max);
             error = true;
@@ -135,6 +139,7 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
         {
             mWrongDataNoticeListener->setTarget(this->mPasswordField);
 
+            // TRANSLATORS: unregister dialog. error message.
             OkDialog *const dlg = new OkDialog(_("Error"),
                 errorMsg.str(), DIALOG_ERROR);
             dlg->addActionListener(mWrongDataNoticeListener);

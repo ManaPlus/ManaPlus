@@ -48,6 +48,7 @@
 SellDialog::DialogList SellDialog::instances;
 
 SellDialog::SellDialog(const int npcId) :
+    // TRANSLATORS: sell dialog name
     Window(_("Sell"), false, nullptr, "sell.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
@@ -57,6 +58,7 @@ SellDialog::SellDialog(const int npcId) :
 }
 
 SellDialog::SellDialog(std::string nick):
+    // TRANSLATORS: sell dialog name
     Window(_("Sell"), false, nullptr, "sell.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
@@ -88,13 +90,19 @@ void SellDialog::init()
     mQuantityLabel = new Label(this, strprintf(
         "%d / %d", mAmountItems, mMaxItems));
     mQuantityLabel->setAlignment(gcn::Graphics::CENTER);
+    // TRANSLATORS: sell dialog label
     mMoneyLabel = new Label(this, strprintf(_("Price: %s / Total: %s"),
                                       "", ""));
 
+    // TRANSLATORS: sell dialog button
     mIncreaseButton = new Button(this, _("+"), "inc", this);
+    // TRANSLATORS: sell dialog button
     mDecreaseButton = new Button(this, _("-"), "dec", this);
+    // TRANSLATORS: sell dialog button
     mSellButton = new Button(this, _("Sell"), "sell", this);
+    // TRANSLATORS: sell dialog button
     mQuitButton = new Button(this, _("Quit"), "quit", this);
+    // TRANSLATORS: sell dialog button
     mAddMaxButton = new Button(this, _("Max"), "max", this);
 
     mDecreaseButton->adjustSize();
@@ -330,6 +338,7 @@ void SellDialog::updateButtonsAndLabels()
 
     // Update the quantity and money labels
     mQuantityLabel->setCaption(strprintf("%d / %d", mAmountItems, mMaxItems));
+    // TRANSLATORS: sell dialog label
     mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
                     Units::formatCurrency(income).c_str(),
                     Units::formatCurrency(mPlayerMoney + income).c_str()));

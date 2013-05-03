@@ -44,6 +44,7 @@
 
 #include "debug.h"
 
+// TRANSLATORS: color selection preview message
 const std::string Setup_Colors::rawmsg =
     _("This is what the color looks like");
 
@@ -57,25 +58,31 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mPreviewBox(new ScrollArea(mPreview, true,
         "setup_colors_preview_background.xml")),
     mSelected(-1),
+    // TRANSLATORS: colors tab. label.
     mGradTypeLabel(new Label(this, _("Type:"))),
     mGradTypeSlider(new Slider(0, 3)),
     mGradTypeText(new Label(this)),
+    // TRANSLATORS: colors tab. label.
     mGradDelayLabel(new Label(this, _("Delay:"))),
     mGradDelaySlider(new Slider(20, 100)),
     mGradDelayText(new TextField(this)),
+    // TRANSLATORS: colors tab. label.
     mRedLabel(new Label(this, _("Red:"))),
     mRedSlider(new Slider(0, 255)),
     mRedText(new TextField(this)),
     mRedValue(0),
+    // TRANSLATORS: colors tab. label.
     mGreenLabel(new Label(this, _("Green:"))),
     mGreenSlider(new Slider(0, 255)),
     mGreenText(new TextField(this)),
     mGreenValue(0),
+    // TRANSLATORS: colors tab. label.
     mBlueLabel(new Label(this, _("Blue:"))),
     mBlueSlider(new Slider(0, 255)),
     mBlueText(new TextField(this)),
     mBlueValue(0)
 {
+    // TRANSLATORS: settings colors tab name
     setName(_("Colors"));
     mColorBox->addSelectionListener(this);
     mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
@@ -94,14 +101,24 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mGradTypeSlider->addActionListener(this);
     mGradTypeSlider->setEnabled(false);
 
+    // TRANSLATORS: color type
     std::string longText = _("Static");
 
     if (getFont()->getWidth(_("Pulse")) > getFont()->getWidth(longText))
+    {
+        // TRANSLATORS: color type
         longText = _("Pulse");
+    }
     if (getFont()->getWidth(_("Rainbow")) > getFont()->getWidth(longText))
+    {
+        // TRANSLATORS: color type
         longText = _("Rainbow");
+    }
     if (getFont()->getWidth(_("Spectrum")) > getFont()->getWidth(longText))
+    {
+        // TRANSLATORS: color type
         longText = _("Spectrum");
+    }
 
     mGradTypeText->setCaption(longText);
 
@@ -307,11 +324,13 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
         case UserPalette::MONSTER_HP2:
         case UserPalette::PLAYER_HP:
         case UserPalette::PLAYER_HP2:
+            // TRANSLATORS: colors tab. label.
             mGradDelayLabel->setCaption(_("Alpha:"));
             mGradDelayText->setRange(0, 255);
             mGradDelaySlider->setScale(0, 255);
             break;
         default:
+            // TRANSLATORS: colors tab. label.
             mGradDelayLabel->setCaption(_("Delay:"));
             mGradDelayText->setRange(20, 100);
             mGradDelaySlider->setScale(20, 100);
@@ -397,12 +416,14 @@ void Setup_Colors::updateGradType()
     const Palette::GradientType grad = userPalette->getGradientType(type);
 
     mGradTypeText->setCaption(
+            // TRANSLATORS: color type
             (grad == Palette::STATIC) ? _("Static") :
+            // TRANSLATORS: color type
             (grad == Palette::PULSE) ? _("Pulse") :
+            // TRANSLATORS: color type
             (grad == Palette::RAINBOW) ? _("Rainbow") : _("Spectrum"));
 
     const bool enable = (grad == Palette::STATIC || grad == Palette::PULSE);
-//    const bool delayEnable = (grad != Palette::STATIC);
     const bool delayEnable = true;
 
     mGradDelayText->setEnabled(delayEnable);

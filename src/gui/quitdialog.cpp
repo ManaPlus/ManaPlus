@@ -50,18 +50,25 @@
 #include "debug.h"
 
 QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
+    // TRANSLATORS: quit dialog name
     Window(_("Quit"), true, nullptr, "quit.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
     mOptions(),
+    // TRANSLATORS: quit dialog button
     mLogoutQuit(new RadioButton(this, _("Quit"), "quitdialog")),
+    // TRANSLATORS: quit dialog button
     mForceQuit(new RadioButton(this, _("Quit"), "quitdialog")),
     mSwitchAccountServer(new RadioButton(this,
+        // TRANSLATORS: quit dialog button
         _("Switch server"), "quitdialog")),
     mSwitchCharacter(new RadioButton(this,
+        // TRANSLATORS: quit dialog button
         _("Switch character"), "quitdialog")),
     mRate(nullptr),
+    // TRANSLATORS: quit dialog button
     mOkButton(new Button(this, _("OK"), "ok", this)),
+    // TRANSLATORS: quit dialog button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mMyPointer(pointerToMe),
     mNeedForceQuit(false)

@@ -53,12 +53,17 @@
 
 #include "debug.h"
 
+// TRANSLATORS: trade window button
 #define CAPTION_PROPOSE _("Propose trade")
+// TRANSLATORS: trade window button
 #define CAPTION_CONFIRMED _("Confirmed. Waiting...")
+// TRANSLATORS: trade window button
 #define CAPTION_ACCEPT _("Agree trade")
+// TRANSLATORS: trade window button
 #define CAPTION_ACCEPTED _("Agreed. Waiting...")
 
 TradeWindow::TradeWindow():
+    // TRANSLATORS: trade window caption
     Window(_("Trade: You"), false, nullptr, "trade.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
@@ -66,9 +71,12 @@ TradeWindow::TradeWindow():
     mPartnerInventory(new Inventory(Inventory::TRADE)),
     mMyItemContainer(new ItemContainer(this, mMyInventory.get())),
     mPartnerItemContainer(new ItemContainer(this, mPartnerInventory.get())),
+    // TRANSLATORS: trade window money label
     mMoneyLabel(new Label(this, strprintf(_("You get %s"), ""))),
+    // TRANSLATORS: trade window button
     mAddButton(new Button(this, _("Add"), "add", this)),
     mOkButton(new Button(this, "", "", this)),  // Will be filled in later
+    // TRANSLATORS: trade window money change button
     mMoneyChangeButton(new Button(this, _("Change"), "money", this)),
     mMoneyField(new TextField(this)),
     mStatus(PROPOSING),
@@ -114,6 +122,7 @@ TradeWindow::TradeWindow():
         true, "trade_background.xml");
     partnerScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
+    // TRANSLATORS: trade window money label
     Label *const moneyLabel2 = new Label(this, _("You give:"));
 
     mMoneyField->setWidth(40);
@@ -169,6 +178,7 @@ void TradeWindow::setMoney(const int amount)
     }
 
     mGotMoney = amount;
+    // TRANSLATORS: trade window money label
     mMoneyLabel->setCaption(strprintf(_("You get %s"),
                             Units::formatCurrency(amount).c_str()));
     mMoneyLabel->adjustSize();
@@ -379,6 +389,7 @@ void TradeWindow::action(const gcn::ActionEvent &event)
         {
             if (localChatTab)
             {
+                // TRANSLATORS: trade error
                 localChatTab->chatLog(_("You don't have enough money."),
                                       BY_SERVER);
             }
@@ -460,6 +471,7 @@ bool TradeWindow::checkItem(const Item *const item) const
     {
         if (localChatTab)
         {
+            // TRANSLATORS: trade error
             localChatTab->chatLog(_("Failed adding item. You can not "
                 "overlap one kind of item on the window."), BY_SERVER);
         }

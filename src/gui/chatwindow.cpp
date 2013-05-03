@@ -136,19 +136,33 @@ class ChatInput final : public TextField, public gcn::FocusListener
 
 const char *COLOR_NAME[14] =
 {
+    // TRANSLATORS: chat color
     N_("default"),
+    // TRANSLATORS: chat color
     N_("black"),
+    // TRANSLATORS: chat color
     N_("red"),
+    // TRANSLATORS: chat color
     N_("green"),
+    // TRANSLATORS: chat color
     N_("blue"),
+    // TRANSLATORS: chat color
     N_("gold"),
+    // TRANSLATORS: chat color
     N_("yellow"),
+    // TRANSLATORS: chat color
     N_("pink"),
+    // TRANSLATORS: chat color
     N_("purple"),
+    // TRANSLATORS: chat color
     N_("grey"),
+    // TRANSLATORS: chat color
     N_("brown"),
+    // TRANSLATORS: chat color
     N_("rainbow 1"),
+    // TRANSLATORS: chat color
     N_("rainbow 2"),
+    // TRANSLATORS: chat color
     N_("rainbow 3"),
 };
 
@@ -167,8 +181,7 @@ public:
     virtual std::string getElementAt(int i)
     {
         if (i >= getNumberOfElements() || i < 0)
-            return _("???");
-
+            return "???";
         return gettext(COLOR_NAME[i]);
     }
 };
@@ -176,6 +189,7 @@ public:
 static const char *const ACTION_COLOR_PICKER = "color picker";
 
 ChatWindow::ChatWindow():
+    // TRANSLATORS: chat window name
     Window(_("Chat"), false, nullptr, "chat.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
@@ -717,6 +731,7 @@ void ChatWindow::doPresent() const
         }
     }
 
+    // TRANSLATORS: chat message
     std::string log = strprintf(_("Present: %s; %d players are present."),
                                 response.c_str(), playercount);
 
@@ -1146,6 +1161,7 @@ void ChatWindow::addWhisper(const std::string &nick,
         {
             Net::getChatHandler()->privateMessage(nick, mes);
 
+            // TRANSLATORS: chat message
             localChatTab->chatLog(strprintf(_("Whispering to %s: %s"),
                 nick.c_str(), mes.c_str()), BY_PLAYER);
         }

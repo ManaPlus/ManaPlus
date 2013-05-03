@@ -43,16 +43,22 @@ extern Joystick *joystick;
 Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     SetupTab(widget),
     mCalibrateLabel(new Label(this,
+        // TRANSLATORS: joystick settings tab label
         _("Press the button to start calibration"))),
+    // TRANSLATORS: joystick settings tab button
     mCalibrateButton(new Button(this, _("Calibrate"), "calibrate", this)),
+    // TRANSLATORS: joystick settings tab button
     mDetectButton(new Button(this, _("Detect joysticks"), "detect", this)),
     mOriginalJoystickEnabled(config.getBoolValue("joystickEnabled")),
+    // TRANSLATORS: joystick settings tab checkbox
     mJoystickEnabled(new CheckBox(this, _("Enable joystick"))),
     mNamesModel(new NamesModel),
     mNamesDropDown(new DropDown(this, mNamesModel)),
+    // TRANSLATORS: joystick settings tab checkbox
     mUseInactiveCheckBox(new CheckBox(this, _("Use joystick if client "
         "window inactive"), config.getBoolValue("useInactiveJoystick")))
 {
+    // TRANSLATORS: joystick settings tab name
     setName(_("Joystick"));
 
     Joystick::getNames(mNamesModel->getNames());
@@ -125,15 +131,19 @@ void Setup_Joystick::action(const gcn::ActionEvent &event)
 
         if (joystick->isCalibrating())
         {
+            // TRANSLATORS: joystick settings tab button
             mCalibrateButton->setCaption(_("Calibrate"));
             mCalibrateLabel->setCaption
+                // TRANSLATORS: joystick settings tab label
                 (_("Press the button to start calibration"));
             joystick->finishCalibration();
         }
         else
         {
+            // TRANSLATORS: joystick settings tab button
             mCalibrateButton->setCaption(_("Stop"));
             mCalibrateLabel->setCaption(
+                // TRANSLATORS: joystick settings tab label
                 _("Rotate the stick and don't press buttons"));
             joystick->startCalibration();
         }

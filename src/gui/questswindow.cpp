@@ -122,6 +122,7 @@ struct QuestEffect final
 };
 
 QuestsWindow::QuestsWindow() :
+    // TRANSLATORS: quests window name
     Window(_("Quests"), false, nullptr, "quests.xml"),
     gcn::ActionListener(),
     mQuestsModel(new QuestsModel),
@@ -133,6 +134,7 @@ QuestsWindow::QuestsWindow() :
     mText(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
     mTextScrollArea(new ScrollArea(mText,
         getOptionBool("showtextbackground"), "quests_text_background.xml")),
+    // TRANSLATORS: quests window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mVars(),
     mQuests(),
@@ -246,6 +248,7 @@ void QuestsWindow::loadXml()
 void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
 {
     QuestItem *quest = new QuestItem();
+    // TRANSLATORS: quests window quest name
     quest->name = XML::langProperty(node, "name", _("unknown"));
     quest->group = XML::getProperty(node, "group", "");
     std::string incompleteStr = XML::getProperty(node, "incomplete", "");

@@ -44,51 +44,66 @@
 Setup_Players::Setup_Players(const Widget2 *const widget) :
     SetupTabScroll(widget)
 {
+    // TRANSLATORS: settings tab name
     setName(_("Players"));
 
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show gender"), "",
         "showgender", this, "showgenderEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show level"), "",
         "showlevel", this, "showlevelEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show own name"), "",
         "showownname", this, "showownnameEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable extended mouse targeting"), "",
         "extMouseTargeting", this, "extMouseTargetingEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Target dead players"), "",
         "targetDeadPlayers", this, "targetDeadPlayersEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Visible names"), "",
         "visiblenames", this, "visiblenamesEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto move names"), "",
         "moveNames", this, "moveNamesEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Secure trades"), "",
         "securetrades", this, "securetradesEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemTextField(_("Unsecure chars in names"), "",
         "unsecureChars", this, "unsecureCharsEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show statuses"), "",
         "showPlayersStatus", this, "showPlayersStatusEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show ip addresses on screenshots"), "",
         "showip", this, "showipEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Allow self heal with mouse click"), "",
         "selfMouseHeal", this, "selfMouseHealEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Group friends in who is online window"), "",
         "groupFriends", this, "groupFriendsEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Hide erased players nicks"), "",
         "hideErased", this, "hideErasedEvent");
 

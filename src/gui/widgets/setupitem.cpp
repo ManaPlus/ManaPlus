@@ -295,6 +295,7 @@ void SetupItemTextField::createControls()
 
     mLabel = new Label(this, mText);
     mTextField = new TextField(this, mValue, true, mParent, mEventName);
+    // TRANSLATORS: setup item button
     mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
     mTextField->setWidth(200);
@@ -421,6 +422,7 @@ void SetupItemIntTextField::createControls()
     mTextField->setActionEventId(mEventName);
     mTextField->addActionListener(mParent);
 
+    // TRANSLATORS: setup item button
     mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
     mTextField->setWidth(50);

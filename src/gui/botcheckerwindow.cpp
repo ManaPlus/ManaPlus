@@ -265,6 +265,7 @@ protected:
 
 
 BotCheckerWindow::BotCheckerWindow():
+    // TRANSLATORS: bot checker window header
     Window(_("Bot Checker"), false, nullptr, "botchecker.xml"),
     gcn::ActionListener(),
     mTableModel(new UsersTableModel(this)),
@@ -273,6 +274,7 @@ BotCheckerWindow::BotCheckerWindow():
         "bochecker_background.xml")),
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
     mPlayerTitleTable(new GuiTable(this, mPlayerTableTitleModel)),
+    // TRANSLATORS: bot checker window button
     mIncButton(new Button(this, _("Reset"), "reset", this)),
     mLastUpdateTime(0),
     mNeedUpdate(false),
@@ -299,10 +301,15 @@ BotCheckerWindow::BotCheckerWindow():
 
     mPlayerTitleTable->setHeight(1);
 
+    // TRANSLATORS: bot checker window table header
     mPlayerTableTitleModel->set(0, 0, new Label(this, _("Name")));
+    // TRANSLATORS: bot checker window table header
     mPlayerTableTitleModel->set(0, 1, new Label(this, _("Attack")));
+    // TRANSLATORS: bot checker window table header
     mPlayerTableTitleModel->set(0, 2, new Label(this, _("Talk")));
+    // TRANSLATORS: bot checker window table header
     mPlayerTableTitleModel->set(0, 3, new Label(this, _("Move")));
+    // TRANSLATORS: bot checker window table header
     mPlayerTableTitleModel->set(0, 4, new Label(this, _("Result")));
 
     mPlayerTitleTable->setLinewiseSelection(true);

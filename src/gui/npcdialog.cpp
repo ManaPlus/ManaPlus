@@ -55,9 +55,13 @@
 
 #include "debug.h"
 
+// TRANSLATORS: npc dialog button
 #define CAPTION_WAITING _("Stop waiting")
+// TRANSLATORS: npc dialog button
 #define CAPTION_NEXT _("Next")
+// TRANSLATORS: npc dialog button
 #define CAPTION_CLOSE _("Close")
+// TRANSLATORS: npc dialog button
 #define CAPTION_SUBMIT _("Submit")
 
 NpcDialog::DialogList NpcDialog::instances;
@@ -65,6 +69,7 @@ NpcDialog::DialogList NpcDialog::instances;
 typedef std::vector<Image *>::iterator ImageVectorIter;
 
 NpcDialog::NpcDialog(const int npcId) :
+    // TRANSLATORS: npc dialog name
     Window(_("NPC"), false, nullptr, "npc.xml"),
     gcn::ActionListener(),
     mNpcId(npcId),
@@ -84,11 +89,16 @@ NpcDialog::NpcDialog(const int npcId) :
     mItemLinkHandler(new ItemLinkHandler),
     mTextField(new TextField(this, "")),
     mIntField(new IntTextField(this)),
+    // TRANSLATORS: npc dialog button
     mPlusButton(new Button(this, _("+"), "inc", this)),
+    // TRANSLATORS: npc dialog button
     mMinusButton(new Button(this, _("-"), "dec", this)),
+    // TRANSLATORS: npc dialog button
     mClearButton(new Button(this, _("Clear"), "clear", this)),
     mButton(new Button(this, "", "ok", this)),
+    // TRANSLATORS: npc dialog button
     mButton2(new Button(this, _("Close"), "close", this)),
+    // TRANSLATORS: npc dialog button
     mResetButton(new Button(this, _("Reset"), "reset", this)),
     mInputState(NPC_INPUT_NONE),
     mActionState(NPC_ACTION_WAIT),

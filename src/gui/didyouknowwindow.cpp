@@ -47,14 +47,18 @@
 static const int minTip = 1;
 static const int maxTip = 18;
 
-DidYouKnowWindow::DidYouKnowWindow():
+DidYouKnowWindow::DidYouKnowWindow() :
+    // TRANSLATORS: did you know window name
     Window(_("Did You Know?"), false, nullptr, "didyouknow.xml"),
     gcn::ActionListener(),
     mBrowserBox(new BrowserBox(this)),
     mScrollArea(new ScrollArea(mBrowserBox,
         true, "didyouknow_background.xml")),
+    // TRANSLATORS: did you know window button
     mButtonPrev(new Button(this, _("< Previous"), "prev", this)),
+    // TRANSLATORS: did you know window button
     mButtonNext(new Button(this, _("Next >"), "next", this)),
+    // TRANSLATORS: did you know window checkbox
     mOpenAgainCheckBox(new CheckBox(this, _("Auto open this window"),
         config.getBoolValue("showDidYouKnow"), this, "openagain"))
 {
@@ -70,6 +74,7 @@ DidYouKnowWindow::DidYouKnowWindow():
     setDefaultSize(500, 400, ImageRect::CENTER);
 
     mBrowserBox->setOpaque(false);
+    // TRANSLATORS: did you know window button
     Button *const okButton = new Button(this, _("Close"), "close", this);
 
     mBrowserBox->setLinkHandler(this);

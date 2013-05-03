@@ -57,18 +57,27 @@ static const unsigned int RELATION_CHOICE_COLUMN_WIDTH = 80;
 
 static const char *const table_titles[COLUMNS_NR] =
 {
+    // TRANSLATORS: relations table header
     N_("Name"),
+    // TRANSLATORS: relations table header
     N_("Relation")
 };
 
 static const char *const RELATION_NAMES[PlayerRelation::RELATIONS_NR] =
 {
+    // TRANSLATORS: relation type
     N_("Neutral"),
+    // TRANSLATORS: relation type
     N_("Friend"),
+    // TRANSLATORS: relation type
     N_("Disregarded"),
+    // TRANSLATORS: relation type
     N_("Ignored"),
+    // TRANSLATORS: relation type
     N_("Erased"),
+    // TRANSLATORS: relation type
     N_("Blacklisted"),
+    // TRANSLATORS: relation type
     N_("Enemy")
 };
 
@@ -225,7 +234,7 @@ public:
     virtual std::string getElementAt(int i)
     {
         if (i >= getNumberOfElements() || i < 0)
-            return _("???");
+            return "???";
 
         return (*player_relations.getPlayerIgnoreStrategies())
             [i]->mDescription;
@@ -244,14 +253,17 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mPlayerTable(new GuiTable(mPlayerTableModel)),
     mPlayerTitleTable(new GuiTable(this, mPlayerTableTitleModel)),
     mPlayerScrollArea(new ScrollArea(mPlayerTable)),
+    // TRANSLATORS: relation dialog button
     mDefaultTrading(new CheckBox(this, _("Allow trading"),
-                player_relations.getDefault() & PlayerRelation::TRADE)),
+        player_relations.getDefault() & PlayerRelation::TRADE)),
+    // TRANSLATORS: relation dialog button
     mDefaultWhisper(new CheckBox(this, _("Allow whispers"),
-                player_relations.getDefault() & PlayerRelation::WHISPER)),
+       player_relations.getDefault() & PlayerRelation::WHISPER)),
     mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE, this)),
     mIgnoreActionChoicesModel(new IgnoreChoicesListModel),
     mIgnoreActionChoicesBox(new DropDown(widget, mIgnoreActionChoicesModel))
 {
+    // TRANSLATORS: relation dialog name
     setName(_("Relations"));
 
     mPlayerTable->setOpaque(false);
@@ -275,6 +287,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mPlayerTable->setLinewiseSelection(true);
     mPlayerTable->addActionListener(this);
 
+    // TRANSLATORS: relation dialog label
     Label *const ignore_action_label = new Label(this, _("When ignoring:"));
 
     mIgnoreActionChoicesBox->setActionEventId(ACTION_STRATEGY);

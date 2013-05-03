@@ -95,15 +95,20 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     SetupTab(widget),
     mKeyListModel(new KeyListModel),
     mKeyList(new ListBox(this, mKeyListModel, "")),
+    // TRANSLATORS: button in input settings tab
     mAssignKeyButton(new Button(this, _("Assign"), "assign", this)),
+    // TRANSLATORS: button in input settings tab
     mUnassignKeyButton(new Button(this, _("Unassign"), "unassign", this)),
+    // TRANSLATORS: button in input settings tab
     mDefaultButton(new Button(this, _("Default"), "default", this)),
+    // TRANSLATORS: button in input settings tab
     mResetKeysButton(new Button(this, _("Reset all keys"), "resetkeys", this)),
     mTabs(new TabStrip(this, config.getIntValue("fontSize") + 10)),
     mKeySetting(false),
     mActionDataSize(new int [9])
 {
     inputManager.setSetupInput(this);
+    // TRANSLATORS: setting tab name
     setName(_("Input"));
 
     selectedData = 0;
@@ -192,7 +197,9 @@ void Setup_Input::apply()
         std::string str1 = keyToString(key1);
         std::string str2 = keyToString(key2);
 
+        // TRANSLATORS: input settings error header
         new OkDialog(_("Key Conflict(s) Detected."),
+            // TRANSLATORS: input settings error
             strprintf(_("Conflict \"%s\" and \"%s\" keys. "
             "Resolve them, or gameplay may result in strange behaviour."),
             gettext(str1.c_str()), gettext(str2.c_str())), DIALOG_ERROR);
@@ -351,6 +358,7 @@ std::string Setup_Input::keyToString(const int index) const
                 return key.name;
         }
     }
+    // TRANSLATORS: unknown key name
     return _("unknown");
 }
 

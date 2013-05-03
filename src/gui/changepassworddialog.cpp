@@ -44,23 +44,29 @@
 #include "debug.h"
 
 ChangePasswordDialog::ChangePasswordDialog(LoginData *const data):
+    // TRANSLATORS: change password window name
     Window(_("Change Password"), true, nullptr, "changepassword.xml"),
     gcn::ActionListener(),
     mOldPassField(new PasswordField(this)),
     mFirstPassField(new PasswordField(this)),
     mSecondPassField(new PasswordField(this)),
+    // TRANSLATORS: change password dialog button
     mChangePassButton(new Button(this, _("Change Password"),
         "change_password", this)),
+    // TRANSLATORS: change password dialog button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
     Label *const accountLabel = new Label(this,
+        // TRANSLATORS: change password dialog label
         strprintf(_("Account: %s"), mLoginData->username.c_str()));
 
     place(0, 0, accountLabel, 3);
+    // TRANSLATORS: change password dialog label
     place(0, 1, new Label(this, _("Password:")), 3);
     place(0, 2, mOldPassField, 3).setPadding(1);
+    // TRANSLATORS: change password dialog label
     place(0, 3, new Label(this, _("Type new password twice:")), 3);
     place(0, 4, mFirstPassField, 3).setPadding(1);
     place(0, 5, mSecondPassField, 3).setPadding(1);
@@ -111,12 +117,14 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
         if (oldPassword.empty())
         {
             // No old password
+            // TRANSLATORS: change password error
             errorMsg << _("Enter the old password first.");
             error = 1;
         }
         else if (newFirstPass.length() < min)
         {
             // First password too short
+            // TRANSLATORS: change password error
             errorMsg << strprintf(_("The new password needs to be at least"
                 " %u characters long."), min);
             error = 2;
@@ -124,6 +132,7 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
         else if (newFirstPass.length() > max - 1 )
         {
             // First password too long
+            // TRANSLATORS: change password error
             errorMsg << strprintf(_("The new password needs to be less "
                 "than %u characters long."), max);
             error = 2;
@@ -131,6 +140,7 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
         else if (newFirstPass != newSecondPass)
         {
             // Second Pass mismatch
+            // TRANSLATORS: change password error
             errorMsg << _("The new password entries mismatch.");
             error = 3;
         }
@@ -144,6 +154,7 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
             else if (error == 3)
                 mWrongDataNoticeListener->setTarget(this->mSecondPassField);
 
+            // TRANSLATORS: change password error header
             OkDialog *const dlg = new OkDialog(_("Error"),
                 errorMsg.str(), DIALOG_ERROR);
             dlg->addActionListener(mWrongDataNoticeListener);

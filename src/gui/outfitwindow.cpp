@@ -55,17 +55,25 @@
 float OutfitWindow::mAlpha = 1.0;
 
 OutfitWindow::OutfitWindow():
+    // TRANSLATORS: outfits window name
     Window(_("Outfits"), false, nullptr, "outfits.xml"),
     gcn::ActionListener(),
+    // TRANSLATORS: outfits window button
     mPreviousButton(new Button(this, _("<"), "previous", this)),
+    // TRANSLATORS: outfits window button
     mNextButton(new Button(this, _(">"), "next", this)),
+    // TRANSLATORS: outfits window button
     mEquipButtom(new Button(this, _("Equip"), "equip", this)),
+    // TRANSLATORS: outfits window label
     mCurrentLabel(new Label(this, strprintf(_("Outfit: %d"), 1))),
+    // TRANSLATORS: outfits window checkbox
     mUnequipCheck(new CheckBox(this, _("Unequip first"),
         serverConfig.getValueBool("OutfitUnequip0", true))),
+    // TRANSLATORS: outfits window checkbox
     mAwayOutfitCheck(new CheckBox(this, _("Away outfit"),
         serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1))),
     mCurrentOutfit(0),
+    // TRANSLATORS: outfits window label
     mKeyLabel(new Label(this, strprintf(_("Key: %s"),
         keyName(mCurrentOutfit).c_str()))),
     mBoxWidth(33),
@@ -542,11 +550,13 @@ void OutfitWindow::previous()
 
 void OutfitWindow::showCurrentOutfit()
 {
+    // TRANSLATORS: outfits window label
     mCurrentLabel->setCaption(strprintf(_("Outfit: %d"), mCurrentOutfit + 1));
     if (mCurrentOutfit < static_cast<int>(OUTFITS_COUNT))
         mUnequipCheck->setSelected(mItemsUnequip[mCurrentOutfit]);
     else
         mUnequipCheck->setSelected(false);
+    // TRANSLATORS: outfits window label
     mKeyLabel->setCaption(strprintf(_("Key: %s"),
         keyName(mCurrentOutfit).c_str()));
     mAwayOutfitCheck->setSelected(mAwayOutfit == mCurrentOutfit);

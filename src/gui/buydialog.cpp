@@ -51,12 +51,19 @@
 
 static const char *SORT_NAME_BUY[7] =
 {
+    // TRANSLATORS: buy dialog sort type.
     N_("unsorted"),
+    // TRANSLATORS: buy dialog sort type.
     N_("by price"),
+    // TRANSLATORS: buy dialog sort type.
     N_("by name"),
+    // TRANSLATORS: buy dialog sort type.
     N_("by id"),
+    // TRANSLATORS: buy dialog sort type.
     N_("by weight"),
+    // TRANSLATORS: buy dialog sort type.
     N_("by amount"),
+    // TRANSLATORS: buy dialog sort type.
     N_("by type")
 };
 
@@ -72,8 +79,7 @@ public:
     virtual std::string getElementAt(int i)
     {
         if (i >= getNumberOfElements() || i < 0)
-            return _("???");
-
+            return "???";
         return gettext(SORT_NAME_BUY[i]);
     }
 };
@@ -183,6 +189,7 @@ class SortItemTypeFunctor final
 BuyDialog::DialogList BuyDialog::instances;
 
 BuyDialog::BuyDialog(const int npcId) :
+    // TRANSLATORS: buy dialog name
     Window(_("Buy"), false, nullptr, "buy.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
@@ -194,6 +201,7 @@ BuyDialog::BuyDialog(const int npcId) :
 }
 
 BuyDialog::BuyDialog(std::string nick) :
+    // TRANSLATORS: buy dialog name
     Window(_("Buy"), false, nullptr, "buy.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
@@ -226,6 +234,7 @@ void BuyDialog::init()
     mQuantityLabel = new Label(this, strprintf(
         "%d / %d", mAmountItems, mMaxItems));
     mQuantityLabel->setAlignment(gcn::Graphics::CENTER);
+    // TRANSLATORS: buy dialog label
     mMoneyLabel = new Label(this, strprintf(
         _("Price: %s / Total: %s"), "", ""));
 
@@ -235,6 +244,7 @@ void BuyDialog::init()
     mAmountField->setSendAlwaysEvents(true);
     mAmountField->setEnabled(false);
 
+    // TRANSLATORS: buy dialog label
     mAmountLabel = new Label(this, _("Amount:"));
     mAmountLabel->adjustSize();
 
@@ -244,8 +254,11 @@ void BuyDialog::init()
     // TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
     // You may change this symbol if your language uses another.
     mDecreaseButton = new Button(this, _("-"), "dec", this);
+    // TRANSLATORS: buy dialog button
     mBuyButton = new Button(this, _("Buy"), "buy", this);
+    // TRANSLATORS: buy dialog button
     mQuitButton = new Button(this, _("Quit"), "quit", this);
+    // TRANSLATORS: buy dialog button
     mAddMaxButton = new Button(this, _("Max"), "max", this);
 
     mDecreaseButton->adjustSize();
@@ -499,6 +512,7 @@ void BuyDialog::updateButtonsAndLabels()
 
     // Update quantity and money labels
     mQuantityLabel->setCaption(strprintf("%d / %d", mAmountItems, mMaxItems));
+    // TRANSLATORS: buy dialog label
     mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
         Units::formatCurrency(price).c_str(),
         Units::formatCurrency(mMoney - price).c_str()));

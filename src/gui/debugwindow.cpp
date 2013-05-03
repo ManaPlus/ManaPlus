@@ -47,6 +47,7 @@
 #include "debug.h"
 
 DebugWindow::DebugWindow():
+    // TRANSLATORS: debug window name
     Window(_("Debug"), false, nullptr, "debug.xml"),
     mTabs(new TabbedArea(this)),
     mMapWidget(new MapDebugTab(this)),
@@ -64,8 +65,11 @@ DebugWindow::DebugWindow():
 
     setDefaultSize(400, 300, ImageRect::CENTER);
 
+    // TRANSLATORS: debug window tab
     mTabs->addTab(std::string(_("Map")), mMapWidget);
+    // TRANSLATORS: debug window tab
     mTabs->addTab(std::string(_("Target")), mTargetWidget);
+    // TRANSLATORS: debug window tab
     mTabs->addTab(std::string(_("Net")), mNetWidget);
 
     mTabs->setDimension(gcn::Rectangle(0, 0, 600, 300));
@@ -143,23 +147,33 @@ void DebugWindow::widgetResized(const gcn::Event &event)
 
 MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     DebugTab(widget),
+    // TRANSLATORS: debug window label
     mMusicFileLabel(new Label(this, strprintf(_("Music:")))),
+    // TRANSLATORS: debug window label
     mMapLabel(new Label(this, strprintf(_("Map:")))),
+    // TRANSLATORS: debug window label
     mMinimapLabel(new Label(this, strprintf(_("Minimap:")))),
     mTileMouseLabel(new Label(this, strprintf("%s (%d, %d)",
+        // TRANSLATORS: debug window label
         _("Cursor:"), 0, 0))),
     mParticleCountLabel(new Label(this, strprintf("%s %d",
+        // TRANSLATORS: debug window label
         _("Particle count:"), 88888))),
     mMapActorCountLabel(new Label(this, strprintf("%s %d",
+        // TRANSLATORS: debug window label
         _("Map actors count:"), 88888))),
+    // TRANSLATORS: debug window label
     mXYLabel(new Label(this, strprintf("%s (?,?)", _("Player Position:")))),
     mTexturesLabel(nullptr),
     mUpdateTime(0),
 #ifdef DEBUG_DRAW_CALLS
     mDrawCallsLabel(new Label(this, strprintf("%s %s",
+        // TRANSLATORS: debug window label
         _("Draw calls:"), "?"))),
 #endif
+    // TRANSLATORS: debug window label
     mFPSLabel(new Label(this, strprintf(_("%d FPS"), 0))),
+    // TRANSLATORS: debug window label
     mLPSLabel(new Label(this, strprintf(_("%d LPS"), 0))),
     mFPSText()
 {
@@ -170,20 +184,25 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     switch (imageHelper->useOpenGL())
     {
         case 0:
+            // TRANSLATORS: debug window label
             mFPSText = _("%d FPS (Software)");
             break;
         case 1:
         default:
+            // TRANSLATORS: debug window label
             mFPSText = _("%d FPS (fast OpenGL)");
             break;
         case 2:
+            // TRANSLATORS: debug window label
             mFPSText = _("%d FPS (old OpenGL)");
             break;
         case 3:
+            // TRANSLATORS: debug window label
             mFPSText = _("%d FPS (mobile OpenGL)");
             break;
     };
 #else
+    // TRANSLATORS: debug window label
     mFPSText = _("%d FPS (Software)");
 #endif
 
@@ -202,6 +221,7 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
 #endif
 #ifdef DEBUG_OPENGL_LEAKS
     mTexturesLabel = new Label(this, strprintf("%s %s",
+        // TRANSLATORS: debug window label
         _("Textures count:"), "?"));
     place(0, n, mTexturesLabel, 2);
     n ++;
@@ -219,11 +239,13 @@ void MapDebugTab::logic()
 {
     if (player_node)
     {
+        // TRANSLATORS: debug window label
         mXYLabel->setCaption(strprintf("%s (%d, %d)", _("Player Position:"),
             player_node->getTileX(), player_node->getTileY()));
     }
     else
     {
+        // TRANSLATORS: debug window label
         mXYLabel->setCaption(strprintf("%s (?, ?)", _("Player Position:")));
     }
 
@@ -236,12 +258,16 @@ void MapDebugTab::logic()
         const int mouseTileY = (viewport->getMouseY() + viewport->getCameraY())
                          / map->getTileHeight();
         mTileMouseLabel->setCaption(strprintf("%s (%d, %d)",
+            // TRANSLATORS: debug window label
             _("Cursor:"), mouseTileX, mouseTileY));
 
+        // TRANSLATORS: debug window label
         mMusicFileLabel->setCaption(strprintf("%s %s", _("Music:"),
             map->getProperty("music").c_str()));
+        // TRANSLATORS: debug window label
         mMinimapLabel->setCaption(strprintf("%s %s", _("Minimap:"),
             map->getProperty("minimap").c_str()));
+        // TRANSLATORS: debug window label
         mMapLabel->setCaption(strprintf("%s %s", _("Map:"),
             map->getProperty("_realfilename").c_str()));
 
@@ -249,21 +275,25 @@ void MapDebugTab::logic()
         if (mUpdateTime != cur_time)
         {
             mUpdateTime = cur_time;
+            // TRANSLATORS: debug window label
             mParticleCountLabel->setCaption(strprintf(_("Particle count: %d"),
-                                            Particle::particleCount));
+                Particle::particleCount));
 
             mMapActorCountLabel->setCaption(
+                // TRANSLATORS: debug window label
                 strprintf("%s %d", _("Map actors count:"),
                 map->getActorsCount()));
 #ifdef USE_OPENGL
 #ifdef DEBUG_OPENGL_LEAKS
             mTexturesLabel->setCaption(strprintf("%s %d",
+                // TRANSLATORS: debug window label
                 _("Textures count:"), textures_count));
 #endif
 #ifdef DEBUG_DRAW_CALLS
             if (mainGraphics)
             {
                 mDrawCallsLabel->setCaption(strprintf("%s %d",
+                    // TRANSLATORS: debug window label
                     _("Draw calls:"), mainGraphics->getDrawCalls()));
             }
 #endif
@@ -272,13 +302,17 @@ void MapDebugTab::logic()
     }
     else
     {
+        // TRANSLATORS: debug window label
         mTileMouseLabel->setCaption(strprintf("%s (?, ?)", _("Cursor:")));
-
+        // TRANSLATORS: debug window label
         mMusicFileLabel->setCaption(strprintf("%s ?", _("Music:")));
+        // TRANSLATORS: debug window label
         mMinimapLabel->setCaption(strprintf("%s ?", _("Minimap:")));
+        // TRANSLATORS: debug window label
         mMapLabel->setCaption(strprintf("%s ?", _("Map:")));
 
         mMapActorCountLabel->setCaption(
+            // TRANSLATORS: debug window label
             strprintf("%s ?", _("Map actors count:")));
     }
 
@@ -286,22 +320,34 @@ void MapDebugTab::logic()
     mParticleCountLabel->adjustSize();
 
     mFPSLabel->setCaption(strprintf(mFPSText.c_str(), fps));
+    // TRANSLATORS: debug window label
     mLPSLabel->setCaption(strprintf(_("%d LPS"), lps));
 }
 
 TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
     DebugTab(widget),
+    // TRANSLATORS: debug window label
     mTargetLabel(new Label(this, strprintf("%s ?", _("Target:")))),
+    // TRANSLATORS: debug window label
     mTargetIdLabel(new Label(this, strprintf("%s ?     ", _("Target Id:")))),
     mTargetTypeLabel(new Label(this, strprintf(
+        // TRANSLATORS: debug window label
         "%s ?     ", _("Target type:")))),
+    // TRANSLATORS: debug window label
     mTargetLevelLabel(new Label(this, strprintf("%s ?", _("Target level:")))),
+    // TRANSLATORS: debug window label
     mTargetRaceLabel(new Label(this, strprintf("%s ?", _("Target race:")))),
+    // TRANSLATORS: debug window label
     mTargetPartyLabel(new Label(this, strprintf("%s ?", _("Target party:")))),
+    // TRANSLATORS: debug window label
     mTargetGuildLabel(new Label(this, strprintf("%s ?", _("Target guild:")))),
+    // TRANSLATORS: debug window label
     mAttackDelayLabel(new Label(this, strprintf("%s ?", _("Attack delay:")))),
+    // TRANSLATORS: debug window label
     mMinHitLabel(new Label(this, strprintf("%s ?", _("Minimal hit:")))),
+    // TRANSLATORS: debug window label
     mMaxHitLabel(new Label(this, strprintf("%s ?", _("Maximum hit:")))),
+    // TRANSLATORS: debug window label
     mCriticalHitLabel(new Label(this, strprintf("%s ?", _("Critical hit:"))))
 {
     LayoutHelper h(this);
@@ -330,64 +376,87 @@ void TargetDebugTab::logic()
     {
         const Being *const target = player_node->getTarget();
 
+        // TRANSLATORS: debug window label
         mTargetLabel->setCaption(strprintf("%s %s (%d, %d)", _("Target:"),
             target->getName().c_str(), target->getTileX(),
             target->getTileY()));
 
         mTargetIdLabel->setCaption(strprintf("%s %d",
+            // TRANSLATORS: debug window label
             _("Target Id:"), target->getId()));
         mTargetTypeLabel->setCaption(strprintf("%s %d",
+            // TRANSLATORS: debug window label
             _("Target type:"), target->getSubType()));
         if (target->getLevel())
         {
             mTargetLevelLabel->setCaption(strprintf("%s %d",
+                // TRANSLATORS: debug window label
                 _("Target Level:"), target->getLevel()));
         }
         else
         {
             mTargetLevelLabel->setCaption(strprintf("%s ?",
+                // TRANSLATORS: debug window label
                 _("Target Level:")));
         }
 
         mTargetRaceLabel->setCaption(strprintf("%s %s",
+            // TRANSLATORS: debug window label
             _("Target race:"), target->getRaceName().c_str()));
 
+        // TRANSLATORS: debug window label
         mTargetPartyLabel->setCaption(strprintf("%s %s", _("Target Party:"),
             target->getPartyName().c_str()));
 
+        // TRANSLATORS: debug window label
         mTargetGuildLabel->setCaption(strprintf("%s %s", _("Target Guild:"),
             target->getGuildName().c_str()));
 
         mMinHitLabel->setCaption(strprintf("%s %d",
+            // TRANSLATORS: debug window label
             _("Minimal hit:"), target->getMinHit()));
         mMaxHitLabel->setCaption(strprintf("%s %d",
+            // TRANSLATORS: debug window label
             _("Maximum hit:"), target->getMaxHit()));
         mCriticalHitLabel->setCaption(strprintf("%s %d",
+            // TRANSLATORS: debug window label
             _("Critical hit:"), target->getCriticalHit()));
 
         const int delay = target->getAttackDelay();
         if (delay)
         {
             mAttackDelayLabel->setCaption(strprintf("%s %d",
+                // TRANSLATORS: debug window label
                 _("Attack delay:"), delay));
         }
         else
         {
             mAttackDelayLabel->setCaption(strprintf(
+                // TRANSLATORS: debug window label
                 "%s ?", _("Attack delay:")));
         }
     }
     else
     {
+        // TRANSLATORS: debug window label
         mTargetLabel->setCaption(strprintf("%s ?", _("Target:")));
+        // TRANSLATORS: debug window label
         mTargetIdLabel->setCaption(strprintf("%s ?", _("Target Id:")));
+        // TRANSLATORS: debug window label
         mTargetTypeLabel->setCaption(strprintf("%s ?", _("Target type:")));
+        // TRANSLATORS: debug window label
         mTargetLevelLabel->setCaption(strprintf("%s ?", _("Target Level:")));
+        // TRANSLATORS: debug window label
         mTargetPartyLabel->setCaption(strprintf("%s ?", _("Target Party:")));
+        // TRANSLATORS: debug window label
         mTargetGuildLabel->setCaption(strprintf("%s ?", _("Target Guild:")));
+        // TRANSLATORS: debug window label
         mAttackDelayLabel->setCaption(strprintf("%s ?", _("Attack delay:")));
+        // TRANSLATORS: debug window label
         mMinHitLabel->setCaption(strprintf("%s ?", _("Minimal hit:")));
+        // TRANSLATORS: debug window label
         mMaxHitLabel->setCaption(strprintf("%s ?", _("Maximum hit:")));
+        // TRANSLATORS: debug window label
         mCriticalHitLabel->setCaption(strprintf("%s ?", _("Critical hit:")));
     }
 
@@ -420,10 +489,13 @@ NetDebugTab::NetDebugTab(const Widget2 *const widget) :
 
 void NetDebugTab::logic()
 {
+    // TRANSLATORS: debug window label
     mPingLabel->setCaption(strprintf(_("Ping: %s ms"),
         player_node->getPingTime().c_str()));
+    // TRANSLATORS: debug window label
     mInPackets1Label->setCaption(strprintf(_("In: %d bytes/s"),
         PacketCounters::getInBytes()));
+    // TRANSLATORS: debug window label
     mOutPackets1Label->setCaption(strprintf(_("Out: %d bytes/s"),
         PacketCounters::getOutBytes()));
 }

@@ -38,7 +38,8 @@
 
 #include "debug.h"
 
-KillStats::KillStats():
+KillStats::KillStats() :
+    // TRANSLATORS: kill stats window name
     Window(_("Kill stats"), false, nullptr, "killstats.xml"),
     gcn::ActionListener(),
     mKillCounter(0),
@@ -46,19 +47,26 @@ KillStats::KillStats():
     mKillTCounter(0),
     mExpTCounter(0),
     mKillTimer(0),
+    // TRANSLATORS: kill stats window button
     mResetButton(new Button(this, _("Reset stats"), "reset", this)),
+    // TRANSLATORS: kill stats window button
     mTimerButton(new Button(this, _("Reset timer"), "timer", this)),
     mLine1(nullptr),
     mLine2(nullptr),
     mLine3(nullptr),
+    // TRANSLATORS: kill stats window label
     mLine4(new Label(this, strprintf(_("Kills: %s, total exp: %s"),
         "?", "?"))),
+    // TRANSLATORS: kill stats window label
     mLine5(new Label(this, strprintf(_("Avg Exp: %s"), "?"))),
+    // TRANSLATORS: kill stats window label
     mLine6(new Label(this, strprintf(_("No. of avg mob to next level: %s"),
         "?"))),
+    // TRANSLATORS: kill stats window label
     mLine7(new Label(this, strprintf(_("Kills/Min: %s, Exp/Min: %s"),
         "?", "?"))),
     mExpSpeed1Label(new Label(this, strprintf(ngettext(
+        // TRANSLATORS: kill stats window label
         "Exp speed per %d min: %s", "Exp speed per %d min: %s", 1), 1, "?"))),
     mExpTime1Label(new Label(this, strprintf(ngettext(
         "Time for next level per %d min: %s",
@@ -74,8 +82,10 @@ KillStats::KillStats():
     mExpTime15Label(new Label(this, strprintf(ngettext(
         "Time for next level per %d min: %s",
         "Time for next level per %d min: %s", 15), 15, "?"))),
+    // TRANSLATORS: kill stats window label
     mLastKillExpLabel(new Label(this, strprintf("%s ?", _("Last kill exp:")))),
     mTimeBeforeJackoLabel(new Label(this, strprintf(
+        // TRANSLATORS: kill stats window label
         "%s ?", _("Time before jacko spawn:")))),
     m1minExpTime(0),
     m1minExpNum(0),
@@ -107,13 +117,16 @@ KillStats::KillStats():
     if (!xpNextLevel)
         xpNextLevel = 1;
 
+    // TRANSLATORS: kill stats window label
     mLine1 = new Label(this, strprintf(_("Level: %d at %f%%"),
         player_node->getLevel(), static_cast<double>(xp)
         / static_cast<double>(xpNextLevel) * 100.0));
 
+    // TRANSLATORS: kill stats window label
     mLine2 = new Label(this, strprintf(_("Exp: %d/%d Left: %d"),
         xp, xpNextLevel, xpNextLevel - xp));
 
+    // TRANSLATORS: kill stats window label
     mLine3 = new Label(this, strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
         xpNextLevel / 100, "?"));
 
@@ -154,9 +167,12 @@ void KillStats::action(const gcn::ActionEvent &event)
         mExpCounter = 0;
         mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
             PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED) / 100, "?"));
+        // TRANSLATORS: kill stats window label
         mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"), "?", "?"));
+        // TRANSLATORS: kill stats window label
         mLine5->setCaption(strprintf(_("Avg Exp: %s"), "?"));
         mLine6->setCaption(strprintf(
+            // TRANSLATORS: kill stats window label
             _("No. of avg mob to next level: %s"), "?"));
 
         resetTimes();
@@ -167,6 +183,7 @@ void KillStats::action(const gcn::ActionEvent &event)
         mKillTCounter = 0;
         mExpTCounter = 0;
         mLine7->setCaption(strprintf(
+            // TRANSLATORS: kill stats window label
             _("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
 
         resetTimes();
@@ -217,43 +234,54 @@ void KillStats::gainXp(int xp)
         timeDiff = 1;
 
     const int exp = PlayerInfo::getAttribute(PlayerInfo::EXP);
+    // TRANSLATORS: kill stats window label
     mLine1->setCaption(strprintf(_("Level: %d at %f%%"),
         player_node->getLevel(), static_cast<double>(exp)
         / static_cast<double>(xpNextLevel) * 100.0));
 
+    // TRANSLATORS: kill stats window label
     mLine2->setCaption(strprintf(_("Exp: %d/%d Left: %d"), exp,
         xpNextLevel, xpNextLevel - exp));
 
     if (AvgExp >= 0.001f && AvgExp <= 0.001f)
     {
+        // TRANSLATORS: kill stats window label
         mLine3->setCaption(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
             xpNextLevel / 100, "?"));
 
+        // TRANSLATORS: kill stats window label
         mLine5->setCaption(strprintf(_("Avg Exp: %s"),
             toString(AvgExp).c_str()));
 
         mLine6->setCaption(strprintf(
+            // TRANSLATORS: kill stats window label
             _("No. of avg mob to next level: %s"), "?"));
     }
     else
     {
+        // TRANSLATORS: kill stats window label
         mLine3->setCaption(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
             xpNextLevel / 100, toString((static_cast<float>(
             xpNextLevel) / 100) / AvgExp).c_str()));
 
+        // TRANSLATORS: kill stats window label
         mLine5->setCaption(strprintf(_("Avg Exp: %s"),
             toString(AvgExp).c_str()));
 
+        // TRANSLATORS: kill stats window label
         mLine6->setCaption(strprintf(_("No. of avg mob to next level: %s"),
             toString(static_cast<float>(xpNextLevel - exp) / AvgExp).c_str()));
     }
+    // TRANSLATORS: kill stats window label
     mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"),
         toString(mKillCounter).c_str(), toString(mExpCounter).c_str()));
 
+    // TRANSLATORS: kill stats window label
     mLine7->setCaption(strprintf(_("Kills/Min: %s, Exp/Min: %s"),
         toString(mKillTCounter / timeDiff).c_str(),
         toString(mExpTCounter / timeDiff).c_str()));
 
+    // TRANSLATORS: kill stats window label
     mLastKillExpLabel->setCaption(strprintf("%s %d", _("Last kill exp:"), xp));
 
     recalcStats();
@@ -311,6 +339,7 @@ void KillStats::update()
 
     if (m1minSpeed != 0)
     {
+        // TRANSLATORS: kill stats window label
         mExpTime1Label->setCaption(strprintf(_("  Time for next level: %s"),
             toString(static_cast<float>((PlayerInfo::getAttribute(
             PlayerInfo::EXP_NEEDED) - PlayerInfo::getAttribute(
@@ -319,6 +348,7 @@ void KillStats::update()
     else
     {
         mExpTime1Label->setCaption(strprintf(
+            // TRANSLATORS: kill stats window label
             _("  Time for next level: %s"), "?"));
     }
     mExpTime1Label->adjustSize();
@@ -329,6 +359,7 @@ void KillStats::update()
 
     if (m5minSpeed != 0)
     {
+        // TRANSLATORS: kill stats window label
         mExpTime5Label->setCaption(strprintf(_("  Time for next level: %s"),
             toString(static_cast<float>((PlayerInfo::getAttribute(
             PlayerInfo::EXP_NEEDED) - PlayerInfo::getAttribute(
@@ -337,6 +368,7 @@ void KillStats::update()
     else
     {
         mExpTime5Label->setCaption(strprintf(
+            // TRANSLATORS: kill stats window label
             _("  Time for next level: %s"), "?"));
     }
     mExpTime5Label->adjustSize();
@@ -349,6 +381,7 @@ void KillStats::update()
 
     if (m15minSpeed != 0)
     {
+        // TRANSLATORS: kill stats window label
         mExpTime15Label->setCaption(strprintf(_("  Time for next level: %s"),
             toString(static_cast<float>((PlayerInfo::getAttribute(
             PlayerInfo::EXP_NEEDED) - PlayerInfo::getAttribute(
@@ -357,6 +390,7 @@ void KillStats::update()
     else
     {
         mExpTime15Label->setCaption(strprintf(
+            // TRANSLATORS: kill stats window label
             _("  Time for next level: %s"), "?"));
     }
 
@@ -376,23 +410,27 @@ void KillStats::updateJackoLabel()
     if (mIsJackoAlive)
     {
         mTimeBeforeJackoLabel->setCaption(strprintf("%s jacko alive",
+            // TRANSLATORS: kill stats window label
             _("Time before jacko spawn:")));
     }
     else if (mIsJackoSpawnTimeUnknown && mJackoSpawnTime != 0)
     {
-        // TRANSLATORS: Example: Time before jacko spawn: 10?
+        // TRANSLATORS: kill stats window label
         mTimeBeforeJackoLabel->setCaption(strprintf(
+            // TRANSLATORS: kill stats window label
             _("%s %d?"), _("Time before jacko spawn:"),
             mJackoSpawnTime - cur_time));
     }
     else if (mIsJackoMustSpawn)
     {
         mTimeBeforeJackoLabel->setCaption(strprintf("%s %s",
+            // TRANSLATORS: kill stats window label
             _("Time before jacko spawn:"), _("jacko spawning")));
     }
     else
     {
         mTimeBeforeJackoLabel->setCaption(strprintf("%s %d",
+            // TRANSLATORS: kill stats window label
             _("Time before jacko spawn:"), mJackoSpawnTime - cur_time));
     }
 }
@@ -473,12 +511,16 @@ void KillStats::processEvent(Channels channel A_UNUSED,
             mExpTCounter = 0;
             mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
                 PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED) / 100, "?"));
-            mLine4->setCaption(strprintf(_(
-                "Kills: %s, total exp: %s"), "?", "?"));
+            mLine4->setCaption(strprintf(
+                // TRANSLATORS: kill stats window label
+                _("Kills: %s, total exp: %s"), "?", "?"));
+                // TRANSLATORS: kill stats window label
             mLine5->setCaption(strprintf(_("Avg Exp: %s"), "?"));
             mLine6->setCaption(strprintf(
+                // TRANSLATORS: kill stats window label
                 _("No. of avg mob to next level: %s"), "?"));
             mLine7->setCaption(strprintf(
+                // TRANSLATORS: kill stats window label
                 _("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
 
             resetTimes();

@@ -60,24 +60,32 @@ MiniStatusWindow::MiniStatusWindow() :
     mIconPadding(mSkin ? mSkin->getOption("iconPadding", 3) : 3),
     mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
     mMaxX(0),
+    // TRANSLATORS: status bar name
     mHpBar(createBar(0, 100, 0, Theme::PROG_HP, "hp bar", _("health bar"))),
     mMpBar(Net::getGameHandler()->canUseMagicBar()
-           ? createBar(0, 100, 0, Net::getPlayerHandler()->canUseMagic()
-           ? Theme::PROG_MP : Theme::PROG_NO_MP, "mp bar", _("mana bar"))
-           : nullptr),
+        ? createBar(0, 100, 0, Net::getPlayerHandler()->canUseMagic()
+        // TRANSLATORS: status bar name
+        ? Theme::PROG_MP : Theme::PROG_NO_MP, "mp bar", _("mana bar"))
+        : nullptr),
     mXpBar(createBar(0, 100, 0, Theme::PROG_EXP,
-           "xp bar", _("experience bar"))),
+        // TRANSLATORS: status bar name
+        "xp bar", _("experience bar"))),
     mJobBar(nullptr),
     mWeightBar(createBar(0, 140, 0, Theme::PROG_WEIGHT,
-               "weight bar", _("weight bar"))),
+        // TRANSLATORS: status bar name
+        "weight bar", _("weight bar"))),
     mInvSlotsBar(createBar(0, 45, 0, Theme::PROG_INVY_SLOTS,
-                 "inventory slots bar", _("inventory slots bar"))),
+        // TRANSLATORS: status bar name
+        "inventory slots bar", _("inventory slots bar"))),
     mMoneyBar(createBar(0, 130, 0, Theme::PROG_INVY_SLOTS,
-              "money bar", _("money bar"))),
+        // TRANSLATORS: status bar name
+        "money bar", _("money bar"))),
     mArrowsBar(createBar(0, 50, 0, Theme::PROG_INVY_SLOTS,
-               "arrows bar", _("arrows bar"))),
+        // TRANSLATORS: status bar name
+        "arrows bar", _("arrows bar"))),
     mStatusBar(createBar(100, 165, 0, Theme::PROG_EXP,
-               "status bar", _("status bar"))),
+        // TRANSLATORS: status bar name
+        "status bar", _("status bar"))),
     mTextPopup(new TextPopup),
     mStatusPopup(new StatusPopup)
 {
@@ -96,7 +104,8 @@ MiniStatusWindow::MiniStatusWindow() :
     if (job)
     {
         mJobBar = createBar(0, 100, 0, Theme::PROG_JOB, "job bar",
-                            _("job bar"));
+            // TRANSLATORS: status bar name
+            _("job bar"));
         StatusWindow::updateJobBar(mJobBar);
     }
 
@@ -293,12 +302,14 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
         std::string level;
         if (player_node && player_node->isGM())
         {
+            // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d (GM %d)"),
                 PlayerInfo::getAttribute(PlayerInfo::LEVEL),
                 player_node->getGMLevel());
         }
         else
         {
+            // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d"),
                 PlayerInfo::getAttribute(PlayerInfo::LEVEL));
         }
@@ -315,6 +326,7 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
             mTextPopup->show(x + getX(), y + getY(), level, strprintf("%d/%d",
                 PlayerInfo::getAttribute(PlayerInfo::EXP),
                 PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)),
+                // TRANSLATORS: status bar label
                 strprintf("%s: %d", _("Need"),
                 PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)
                 - PlayerInfo::getAttribute(PlayerInfo::EXP)));
@@ -351,6 +363,7 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
             mTextPopup->show(x + getX(), y + getY(),
                 event.getSource()->getId(),
                 strprintf("%d/%d", exp.first, exp.second),
+                // TRANSLATORS: status bar label
                 strprintf("%s: %d", _("Need"), exp.second - exp.first));
         }
         mStatusPopup->hide();

@@ -62,7 +62,8 @@ void WrongDataNoticeListener::action(const gcn::ActionEvent &event)
         mTarget->requestFocus();
 }
 
-RegisterDialog::RegisterDialog(LoginData *const data):
+RegisterDialog::RegisterDialog(LoginData *const data) :
+    // TRANSLATORS: register dialog name
     Window(_("Register"), false, nullptr, "register.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
@@ -71,7 +72,9 @@ RegisterDialog::RegisterDialog(LoginData *const data):
     mPasswordField(new PasswordField(this, mLoginData->password)),
     mConfirmField(new PasswordField(this)),
     mEmailField(nullptr),
+    // TRANSLATORS: register dialog. button.
     mRegisterButton(new Button(this, _("Register"), "register", this)),
+    // TRANSLATORS: register dialog. button.
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mMaleButton(nullptr),
     mFemaleButton(nullptr),
@@ -83,8 +86,11 @@ RegisterDialog::RegisterDialog(LoginData *const data):
     const int optionalActions = Net::getLoginHandler()->
         supportedOptionalActions();
 
+    // TRANSLATORS: register dialog. label.
     Label *const userLabel = new Label(this, _("Name:"));
+    // TRANSLATORS: register dialog. label.
     Label *const passwordLabel = new Label(this, _("Password:"));
+    // TRANSLATORS: register dialog. label.
     Label *const confirmLabel = new Label(this, _("Confirm:"));
 
     ContainerPlacer placer;
@@ -101,10 +107,13 @@ RegisterDialog::RegisterDialog(LoginData *const data):
 
     if (optionalActions & Net::LoginHandler::SetGenderOnRegister)
     {
+        // TRANSLATORS: register dialog. button.
         mMaleButton = new RadioButton(this, _("Male"), "sex", true);
+        // TRANSLATORS: register dialog. button.
         mFemaleButton = new RadioButton(this, _("Female"), "sex", false);
         if (serverVersion >= 5)
         {
+            // TRANSLATORS: register dialog. button.
             mOtherButton = new RadioButton(this, _("Other"), "sex", false);
             placer(0, row, mMaleButton);
             placer(1, row, mFemaleButton);
@@ -121,11 +130,11 @@ RegisterDialog::RegisterDialog(LoginData *const data):
 
     if (optionalActions & Net::LoginHandler::SetEmailOnRegister)
     {
+        // TRANSLATORS: register dialog. label.
         Label *const emailLabel = new Label(this, _("Email:"));
         mEmailField = new TextField(this);
         placer(0, row, emailLabel);
         placer(1, row, mEmailField, 3).setPadding(2);
-
 //        row++;
     }
 
@@ -194,6 +203,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         {
             // Name too short
             errorMsg = strprintf
+                // TRANSLATORS: error message
                 (_("The username needs to be at least %u characters long."),
                  minUser);
             error = 1;
@@ -202,6 +212,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         {
             // Name too long
             errorMsg = strprintf
+                // TRANSLATORS: error message
                 (_("The username needs to be less than %u characters long."),
                  maxUser);
             error = 1;
@@ -210,6 +221,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         {
             // Pass too short
             errorMsg = strprintf
+                // TRANSLATORS: error message
                 (_("The password needs to be at least %u characters long."),
                  minPass);
             error = 2;
@@ -218,6 +230,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         {
             // Pass too long
             errorMsg = strprintf
+                // TRANSLATORS: error message
                 (_("The password needs to be less than %u characters long."),
                  maxPass);
             error = 2;
@@ -225,6 +238,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         else if (mPasswordField->getText() != mConfirmField->getText())
         {
             // Password does not match with the confirmation one
+            // TRANSLATORS: error message
             errorMsg = _("Passwords do not match.");
             error = 2;
         }
@@ -245,6 +259,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
             }
 
             OkDialog *const dlg = new OkDialog(
+                // TRANSLATORS: error message
                 _("Error"), errorMsg, DIALOG_ERROR);
             dlg->addActionListener(mWrongDataNoticeListener);
         }

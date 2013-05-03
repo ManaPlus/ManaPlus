@@ -72,8 +72,11 @@ struct OpenUrlListener : public gcn::ActionListener
 
 const char *UPDATE_TYPE_TEXT[3] =
 {
+    // TRANSLATORS: update type
     N_("Normal"),
+    // TRANSLATORS: update type
     N_("Auto Close"),
+    // TRANSLATORS: update type
     N_("Skip"),
 };
 
@@ -96,8 +99,7 @@ class UpdateTypeModel final : public gcn::ListModel
         virtual std::string getElementAt(int i)
         {
             if (i >= getNumberOfElements() || i < 0)
-                return _("???");
-
+                return "???";
             return gettext(UPDATE_TYPE_TEXT[i]);
         }
 };
@@ -126,31 +128,38 @@ class UpdateListModel final : public gcn::ListModel
         virtual std::string getElementAt(int i)
         {
             if (!mLoginData || i >= getNumberOfElements() || i < 0)
-                return _("???");
-
+                return "???";
             return mLoginData->updateHosts[i];
         }
+
     protected:
         LoginData *mLoginData;
 };
 
 LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
                          std::string *const updateHost):
+    // TRANSLATORS: login dialog name
     Window(_("Login"), false, nullptr, "login.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
     mLoginData(data),
     mUserField(new TextField(this, mLoginData->username)),
     mPassField(new PasswordField(this, mLoginData->password)),
+    // TRANSLATORS: login dialog label
     mKeepCheck(new CheckBox(this, _("Remember username"),
         mLoginData->remember)),
+    // TRANSLATORS: login dialog label
     mUpdateTypeLabel(new Label(this, _("Update:"))),
     mUpdateHostLabel(nullptr),
     mUpdateTypeModel(new UpdateTypeModel),
     mUpdateTypeDropDown(new DropDown(this, mUpdateTypeModel)),
+    // TRANSLATORS: login dialog button
     mServerButton(new Button(this, _("Change Server"), "server", this)),
+    // TRANSLATORS: login dialog button
     mLoginButton(new Button(this, _("Login"), "login", this)),
+    // TRANSLATORS: login dialog button
     mRegisterButton(new Button(this, _("Register"), "register", this)),
+    // TRANSLATORS: login dialog checkbox
     mCustomUpdateHost(new CheckBox(this, _("Custom update host"),
         mLoginData->updateType & LoginData::Upd_Custom, this, "customhost")),
     mUpdateHostText(new TextField(this, serverConfig.getValue(
@@ -164,13 +173,17 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
 
     Net::getCharServerHandler()->clear();
 
+    // TRANSLATORS: login dialog label
     Label *const serverLabel1 = new Label(this, _("Server:"));
     Label *const serverLabel2 = new Label(this, serverName);
     serverLabel2->adjustSize();
+    // TRANSLATORS: login dialog label
     Label *const userLabel = new Label(this, _("Name:"));
+    // TRANSLATORS: login dialog label
     Label *const passLabel = new Label(this, _("Password:"));
     if (mLoginData && mLoginData->updateHosts.size() > 1)
     {
+        // TRANSLATORS: login dialog label
         mUpdateHostLabel = new Label(this, strprintf(_("Update host: %s"),
             mLoginData->updateHost.c_str()));
         mUpdateListModel = new UpdateListModel(mLoginData);
@@ -280,6 +293,7 @@ void LoginDialog::action(const gcn::ActionEvent &event)
         {
             const std::string &url = mLoginData->registerUrl;
             urlListener.url = url;
+            // TRANSLATORS: question dialog
             ConfirmDialog *const confirmDlg = new ConfirmDialog(
                 _("Open register url"), url, false, true);
             confirmDlg->addActionListener(&urlListener);

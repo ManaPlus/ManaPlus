@@ -74,7 +74,8 @@ class NameFunctuator final
         }
 } nameCompare;
 
-WhoIsOnline::WhoIsOnline():
+WhoIsOnline::WhoIsOnline() :
+    // TRANSLATORS: who is online window name
     Window(_("Who Is Online - Updating"), false, nullptr, "whoisonline.xml"),
     mThread(nullptr),
     mDownloadStatus(UPDATE_LIST),
@@ -87,6 +88,7 @@ WhoIsOnline::WhoIsOnline():
     mUpdateTimer(0),
     mOnlinePlayers(),
     mOnlineNicks(),
+    // TRANSLATORS: who is online. button.
     mUpdateButton(new Button(this, _("Update"), "update", this)),
     mAllowUpdate(true),
     mShowLevel(false),
@@ -199,6 +201,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
                                size_t numOnline)
 {
     // Set window caption
+    // TRANSLATORS: who is online window name
     setCaption(_("Who Is Online - ") + toString(numOnline));
 
     // List the online people
@@ -616,6 +619,7 @@ void WhoIsOnline::slowLogic()
     {
         if (mDownloadComplete == true)
         {
+            // TRANSLATORS: who is online window name
             setCaption(_("Who Is Online - Updating"));
             mUpdateTimer = 0;
             mDownloadStatus = UPDATE_LIST;
@@ -630,6 +634,7 @@ void WhoIsOnline::slowLogic()
             mBrowserBox->addRow("##1Failed to fetch the online list!");
             mBrowserBox->addRow(mCurlError);
             mDownloadStatus = UPDATE_COMPLETE;
+            // TRANSLATORS: who is online window name
             setCaption(_("Who Is Online - error"));
             mUpdateButton->setEnabled(true);
             mUpdateTimer = cur_time + 240;
@@ -671,6 +676,7 @@ void WhoIsOnline::action(const gcn::ActionEvent &event)
                 mUpdateTimer = cur_time - 20;
                 if (mUpdateButton)
                     mUpdateButton->setEnabled(false);
+                // TRANSLATORS: who is online window name
                 setCaption(_("Who Is Online - Update"));
                 if (mThread && SDL_GetThreadID(mThread))
                 {

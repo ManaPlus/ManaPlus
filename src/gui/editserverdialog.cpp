@@ -63,6 +63,7 @@ std::string TypeListModel::getElementAt(int elementIndex)
 EditServerDialog::EditServerDialog(ServerDialog *const parent,
                                    ServerInfo server,
                                    const int index) :
+    // TRANSLATORS: edit server dialog name
     Window(_("Edit Server"), true, parent),
     gcn::ActionListener(),
     gcn::KeyListener(),
@@ -71,8 +72,11 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mNameField(new TextField(this, std::string())),
     mDescriptionField(new TextField(this, std::string())),
     mOnlineListUrlField(new TextField(this, std::string())),
+    // TRANSLATORS: edit server dialog button
     mConnectButton(new Button(this, _("Connect"), "connect", this)),
+    // TRANSLATORS: edit server dialog button
     mOkButton(new Button(this, _("OK"), "addServer", this)),
+    // TRANSLATORS: edit server dialog button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mTypeListModel(new TypeListModel),
     mTypeField(new DropDown(this, mTypeListModel, false, true)),
@@ -82,11 +86,17 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
 {
     setWindowName("EditServerDialog");
 
+    // TRANSLATORS: edit server dialog label
     Label *const nameLabel = new Label(this, _("Name:"));
+    // TRANSLATORS: edit server dialog label
     Label *const serverAdressLabel = new Label(this, _("Address:"));
+    // TRANSLATORS: edit server dialog label
     Label *const portLabel = new Label(this, _("Port:"));
+    // TRANSLATORS: edit server dialog label
     Label *const typeLabel = new Label(this, _("Server type:"));
+    // TRANSLATORS: edit server dialog label
     Label *const descriptionLabel = new Label(this, _("Description:"));
+    // TRANSLATORS: edit server dialog label
     Label *const onlineListUrlLabel = new Label(this, _("Online list url:"));
     mPortField->setNumeric(true);
     mPortField->setRange(1, 65535);
@@ -206,7 +216,9 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
         if (mServerAddressField->getText().empty()
             || mPortField->getText().empty())
         {
+            // TRANSLATORS: edit server dialog error header
             OkDialog *const dlg = new OkDialog(_("Error"),
+                // TRANSLATORS: edit server dialog error message
                 _("Please at least type both the address and the port "
                   "of the server."), DIALOG_ERROR);
             dlg->addActionListener(this);

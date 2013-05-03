@@ -48,12 +48,6 @@ WhisperTab::~WhisperTab()
 
 void WhisperTab::handleInput(const std::string &msg)
 {
-//    if (msg.empty())
-//    {
-//        chatLog(_("Cannot send empty chat!"), BY_SERVER, false);
-//        return;
-//    }
-
     if (chatWindow)
     {
         Net::getChatHandler()->privateMessage(mNick,
@@ -100,8 +94,11 @@ void WhisperTab::handleCommand(const std::string &msg)
 
 void WhisperTab::showHelp()
 {
+    // TRANSLATORS: whisper tab help
     chatLog(_("/ignore > Ignore the other player"));
+    // TRANSLATORS: whisper tab help
     chatLog(_("/unignore > Stop ignoring the other player"));
+    // TRANSLATORS: whisper tab help
     chatLog(_("/close > Close the whisper tab"));
 }
 
@@ -112,18 +109,24 @@ bool WhisperTab::handleCommand(const std::string &type,
     {
         if (args == "close")
         {
+            // TRANSLATORS: whisper tab help
             chatLog(_("Command: /close"));
+            // TRANSLATORS: whisper tab help
             chatLog(_("This command closes the current whisper tab."));
         }
         else if (args == "ignore")
         {
+            // TRANSLATORS: whisper tab help
             chatLog(_("Command: /ignore"));
+            // TRANSLATORS: whisper tab help
             chatLog(_("This command ignores the other player regardless of "
                       "current relations."));
         }
         else if (args == "unignore")
         {
+            // TRANSLATORS: whisper tab help
             chatLog(_("Command: /unignore <player>"));
+            // TRANSLATORS: whisper tab help
             chatLog(_("This command stops ignoring the other player if they "
                       "are being ignored."));
         }

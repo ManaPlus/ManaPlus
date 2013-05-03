@@ -42,12 +42,14 @@ TextDialog::TextDialog(const std::string &title, const std::string &msg,
     gcn::ActionListener(),
     mTextField(nullptr),
     mPasswordField(nullptr),
+    // TRANSLATORS: text dialog button
     mOkButton(new Button(this, _("OK"), "OK", this)),
     mEnabledKeyboard(keyboard.isEnabled())
 {
     keyboard.setEnabled(false);
 
     Label *const textLabel = new Label(this, msg);
+    // TRANSLATORS: text dialog button
     Button *const cancelButton = new Button(this, _("Cancel"), "CANCEL", this);
 
     place(0, 0, textLabel, 4);

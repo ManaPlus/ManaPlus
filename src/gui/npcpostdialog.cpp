@@ -39,6 +39,7 @@
 NpcPostDialog::DialogList NpcPostDialog::instances;
 
 NpcPostDialog::NpcPostDialog(const int npcId):
+    // TRANSLATORS: npc post dialog caption
     Window(_("NPC"), false, nullptr, "npcpost.xml"),
     gcn::ActionListener(),
     mNpcId(npcId),
@@ -48,15 +49,18 @@ NpcPostDialog::NpcPostDialog(const int npcId):
     setContentSize(400, 180);
 
     // create text field for receiver
+    // TRANSLATORS: label in npc post dialog
     Label *const senderText = new Label(this, _("To:"));
     senderText->setPosition(5, 5);
     mSender->setPosition(senderText->getWidth() + 5, 5);
     mSender->setWidth(65);
 
     // create button for sending
+    // TRANSLATORS: button in npc post dialog
     Button *const sendButton = new Button(this, _("Send"), "send", this);
     sendButton->setPosition(400 - sendButton->getWidth(),
                             170 - sendButton->getHeight());
+    // TRANSLATORS: button in npc post dialog
     Button *const cancelButton = new Button(this, _("Cancel"), "cancel", this);
     cancelButton->setPosition(sendButton->getX()
         - (cancelButton->getWidth() + 2), sendButton->getY());
@@ -99,6 +103,7 @@ void NpcPostDialog::action(const gcn::ActionEvent &event)
         {
             if (localChatTab)
             {
+                // TRANSLATORS: npc post message error
                 localChatTab->chatLog(_("Failed to send as sender or letter "
                     "invalid."));
             }

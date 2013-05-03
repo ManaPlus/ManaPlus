@@ -60,11 +60,17 @@
 
 static const char *SORT_NAME_INVENTORY[6] =
 {
+    // TRANSLATORS: inventory sort mode
     N_("default"),
+    // TRANSLATORS: inventory sort mode
     N_("by name"),
+    // TRANSLATORS: inventory sort mode
     N_("by id"),
+    // TRANSLATORS: inventory sort mode
     N_("by weight"),
+    // TRANSLATORS: inventory sort mode
     N_("by amount"),
+    // TRANSLATORS: inventory sort mode
     N_("by type")
 };
 
@@ -80,7 +86,7 @@ public:
     virtual std::string getElementAt(int i)
     {
         if (i >= getNumberOfElements() || i < 0)
-            return _("???");
+            return "???";
 
         return gettext(SORT_NAME_INVENTORY[i]);
     }
@@ -127,6 +133,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     }
     else
     {
+        // TRANSLATORS: inventory window name
         setCaption(_("Inventory"));
         setWindowName("Inventory");
     }
@@ -165,8 +172,11 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
 
     if (isMainInventory())
     {
+        // TRANSLATORS: inventory button
         std::string equip = _("Equip");
+        // TRANSLATORS: inventory button
         std::string use = _("Use");
+        // TRANSLATORS: inventory button
         std::string unequip = _("Unequip");
 
         std::string longestUseString = getFont()->getWidth(equip) >
@@ -179,10 +189,15 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
         }
 
         mUseButton = new Button(this, longestUseString, "use", this);
+        // TRANSLATORS: inventory button
         mDropButton = new Button(this, _("Drop..."), "drop", this);
+        // TRANSLATORS: inventory button
         mSplitButton = new Button(this, _("Split"), "split", this);
+        // TRANSLATORS: inventory button
         mOutfitButton = new Button(this, _("Outfits"), "outfit", this);
+        // TRANSLATORS: inventory button
         mShopButton = new Button(this, _("Shop"), "shop", this);
+        // TRANSLATORS: inventory button
         mEquipmentButton = new Button(this, _("Equipment"), "equipment", this);
         mWeightBar = new ProgressBar(this, 0.0f, 100, 0, Theme::PROG_WEIGHT);
 
@@ -205,8 +220,11 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     }
     else
     {
+        // TRANSLATORS: storage button
         mStoreButton = new Button(this, _("Store"), "store", this);
+        // TRANSLATORS: storage button
         mRetrieveButton = new Button(this, _("Retrieve"), "retrieve", this);
+        // TRANSLATORS: storage button
         mInvCloseButton = new Button(this, _("Close"), "close", this);
 
         mSlotsBarCell = &place(0, 0, mSlotsBar, 6);
@@ -596,12 +614,19 @@ void InventoryWindow::updateButtons(const Item *item)
         if (item && item->isEquipment())
         {
             if (item->isEquipped())
+            {
+                // TRANSLATORS: inventory button
                 mUseButton->setCaption(_("Unequip"));
+            }
             else
+            {
+                // TRANSLATORS: inventory button
                 mUseButton->setCaption(_("Equip"));
+            }
         }
         else
         {
+            // TRANSLATORS: inventory button
             mUseButton->setCaption(_("Use"));
         }
     }
@@ -689,6 +714,7 @@ void InventoryWindow::updateDropButton()
 
     if (isStorageActive())
     {
+        // TRANSLATORS: inventory button
         mDropButton->setCaption(_("Store"));
     }
     else
@@ -696,9 +722,15 @@ void InventoryWindow::updateDropButton()
         const Item *const item = mItems->getSelectedItem();
 
         if (item && item->getQuantity() > 1)
+        {
+            // TRANSLATORS: inventory button
             mDropButton->setCaption(_("Drop..."));
+        }
         else
+        {
+            // TRANSLATORS: inventory button
             mDropButton->setCaption(_("Drop"));
+        }
     }
 }
 

@@ -46,12 +46,17 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
     mTextBox->setOpaque(false);
     mTextBox->setTextWrapped(msg, 260);
 
+    // TRANSLATORS: confirm dialog button
     Button *const yesButton = new Button(this, _("Yes"), "yes", this);
+    // TRANSLATORS: confirm dialog button
     Button *const noButton = new Button(this, _("No"), "no", this);
     Button *ignoreButton = nullptr;
 
     if (ignore)
+    {
+        // TRANSLATORS: confirm dialog button
         ignoreButton = new Button(this, _("Ignore"), "ignore", this);
+    }
 
     const int numRows = mTextBox->getNumberOfRows();
     int inWidth = yesButton->getWidth() + noButton->getWidth() +

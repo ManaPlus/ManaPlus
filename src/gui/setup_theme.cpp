@@ -82,16 +82,27 @@ const int maxFontSizes = 11;
 
 const char *SIZE_NAME[maxFontSizes] =
 {
+    // TRANSLATORS: font size
     N_("Very small (9)"),
+    // TRANSLATORS: font size
     N_("Tiny (10)"),
+    // TRANSLATORS: font size
     N_("Small (11)"),
+    // TRANSLATORS: font size
     N_("Medium (12)"),
+    // TRANSLATORS: font size
     N_("Normal (13)"),
+    // TRANSLATORS: font size
     N_("Large (14)"),
+    // TRANSLATORS: font size
     N_("Very large (15)"),
+    // TRANSLATORS: font size
     N_("Big (16)"),
+    // TRANSLATORS: font size
     N_("Very big (17)"),
+    // TRANSLATORS: font size
     N_("Huge (18)"),
+    // TRANSLATORS: font size
     N_("Very huge (19)"),
 };
 
@@ -107,7 +118,7 @@ public:
     virtual std::string getElementAt(int i)
     {
         if (i >= getNumberOfElements() || i < 0)
-            return _("???");
+            return "???";
 
         return gettext(SIZE_NAME[i]);
     }
@@ -124,22 +135,39 @@ const int langs_count = 17;
 
 const Language LANG_NAME[langs_count] =
 {
+    // TRANSLATORS: language
     {N_("(default)"), "", ""},
+    // TRANSLATORS: language
     {N_("Chinese (China)"), "zh_CN", "cn.png"},
+    // TRANSLATORS: language
     {N_("Czech"), "cs_CZ", "cz.png"},
+    // TRANSLATORS: language
     {N_("English"), "C", "en.png"},
+    // TRANSLATORS: language
     {N_("Finnish"), "fi_FI", "fi.png"},
+    // TRANSLATORS: language
     {N_("French"), "fr_FR", "fr.png"},
+    // TRANSLATORS: language
     {N_("German"), "de_DE", "de.png"},
+    // TRANSLATORS: language
     {N_("Indonesian"), "id_ID", "id.png"},
+    // TRANSLATORS: language
     {N_("Italian"), "it_IT", "it.png"},
+    // TRANSLATORS: language
     {N_("Polish"), "pl_PL", "pl.png"},
+    // TRANSLATORS: language
     {N_("Japanese"), "ja_JP", "jp.png"},
+    // TRANSLATORS: language
     {N_("Dutch (Belgium/Flemish)"), "nl_BE", "nl_BE.png"},
+    // TRANSLATORS: language
     {N_("Portuguese"), "pt_PT", "pt.png"},
+    // TRANSLATORS: language
     {N_("Portuguese (Brazilian)"), "pt_BR", "pt_BR.png"},
+    // TRANSLATORS: language
     {N_("Russian"), "ru_RU", "ru.png"},
+    // TRANSLATORS: language
     {N_("Spanish (Castilian)"), "es_ES", "es.png"},
+    // TRANSLATORS: language
     {N_("Turkish"), "tr_TR", "tr.png"}
 };
 
@@ -174,7 +202,7 @@ public:
     std::string getElementAt(int i) override A_WARN_UNUSED
     {
         if (i >= getNumberOfElements() || i < 0)
-            return _("???");
+            return "???";
 
         return gettext(LANG_NAME[i].name.c_str());
     }
@@ -191,39 +219,49 @@ public:
 
 Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     SetupTab(widget),
+    // TRANSLATORS: theme settings label
     mThemeLabel(new Label(this, _("Gui theme"))),
     mThemesModel(new ThemesModel),
     mThemeDropDown(new DropDown(this, mThemesModel)),
     mTheme(config.getStringValue("theme")),
     mInfo(Theme::loadInfo(mTheme)),
     mFontsModel(new FontsModel),
+    // TRANSLATORS: theme settings label
     mFontLabel(new Label(this, _("Main Font"))),
     mFontDropDown(new DropDown(this, mFontsModel)),
     mFont(config.getStringValue("font")),
     mLangListModel(new LangListModel),
+    // TRANSLATORS: theme settings label
     mLangLabel(new Label(this, _("Language"))),
     mLangDropDown(new DropDown(this, mLangListModel, true)),
     mLang(config.getStringValue("lang")),
+    // TRANSLATORS: theme settings label
     mBoldFontLabel(new Label(this, _("Bold font"))),
     mBoldFontDropDown(new DropDown(this, mFontsModel)),
     mBoldFont(config.getStringValue("boldFont")),
+    // TRANSLATORS: theme settings label
     mParticleFontLabel(new Label(this, _("Particle font"))),
     mParticleFontDropDown(new DropDown(this, mFontsModel)),
     mParticleFont(config.getStringValue("particleFont")),
+    // TRANSLATORS: theme settings label
     mHelpFontLabel(new Label(this, _("Help font"))),
     mHelpFontDropDown(new DropDown(this, mFontsModel)),
     mHelpFont(config.getStringValue("helpFont")),
+    // TRANSLATORS: theme settings label
     mSecureFontLabel(new Label(this, _("Secure font"))),
     mSecureFontDropDown(new DropDown(this, mFontsModel)),
     mSecureFont(config.getStringValue("secureFont")),
+    // TRANSLATORS: theme settings label
     mJapanFontLabel(new Label(this, _("Japanese font"))),
     mJapanFontDropDown(new DropDown(this, mFontsModel)),
     mJapanFont(config.getStringValue("japanFont")),
     mFontSizeListModel(new FontSizeChoiceListModel),
+    // TRANSLATORS: theme settings label
     mFontSizeLabel(new Label(this, _("Font size"))),
     mFontSize(config.getIntValue("fontSize")),
     mFontSizeDropDown(new DropDown(this, mFontSizeListModel)),
     mNpcFontSizeListModel(new FontSizeChoiceListModel),
+    // TRANSLATORS: theme settings label
     mNpcFontSizeLabel(new Label(this, _("Npc font size"))),
     mNpcFontSize(config.getIntValue("npcfontSize")),
     mNpcFontSizeDropDown(new DropDown(this, mNpcFontSizeListModel)),
@@ -231,6 +269,7 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     mInfoButton(new Button(this, _("i"), ACTION_INFO, this)),
     mThemeInfo()
 {
+    // TRANSLATORS: theme settings tab name
     setName(_("Theme"));
 
     mThemeDropDown->setActionEventId(ACTION_THEME);
@@ -399,6 +438,7 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
     }
     else if (eventId == ACTION_INFO)
     {
+        // TRANSLATORS: theme info dialog header
         new OkDialog(_("Theme info"), mThemeInfo, DIALOG_OK,
             false, true, nullptr, 600);
     }
@@ -423,6 +463,7 @@ void Setup_Theme::apply()
 {
     if (config.getStringValue("theme") != mTheme)
     {
+        // TRANSLATORS: theme message dialog
         new OkDialog(_("Theme Changed"), _("Restart your client for "
             "the change to take effect."));
     }

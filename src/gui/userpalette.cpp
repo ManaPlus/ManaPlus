@@ -112,62 +112,104 @@ UserPalette::UserPalette():
     mColors[NPC] = ColorElem();
     mColors[MONSTER] = ColorElem();
 
+    // TRANSLATORS: palette color
     addColor(BEING, 0xffffff, STATIC, _("Being"));
+    // TRANSLATORS: palette color
     addColor(FRIEND, 0xb0ffb0, STATIC, _("Friend Names"));
+    // TRANSLATORS: palette color
     addColor(DISREGARDED, 0xa00000, STATIC, _("Disregarded Names"));
+    // TRANSLATORS: palette color
     addColor(IGNORED, 0xff0000, STATIC, _("Ignored Names"));
+    // TRANSLATORS: palette color
     addColor(ERASED, 0xff0000, STATIC, _("Erased Names"));
+    // TRANSLATORS: palette color
     addColor(PC, 0xffffff, STATIC, _("Other Players' Names"));
+    // TRANSLATORS: palette color
     addColor(SELF, 0xff8040, STATIC, _("Own Name"));
+    // TRANSLATORS: palette color
     addColor(GM, 0x00ff00, STATIC, _("GM Names"));
+    // TRANSLATORS: palette color
     addColor(NPC, 0xc8c8ff, STATIC, _("NPCs"));
+    // TRANSLATORS: palette color
     addColor(MONSTER, 0xff4040, STATIC, _("Monsters"));
+    // TRANSLATORS: palette color
     addColor(MONSTER_HP, 0x00ff00, STATIC, _("Monster HP bar"), 50);
     addColor(MONSTER_HP2, 0xff0000, STATIC,
+        // TRANSLATORS: palette color
         _("Monster HP bar (second color)"), 50);
+    // TRANSLATORS: palette color
     addColor(PARTY, 0xff00d8, STATIC, _("Party Members"));
+    // TRANSLATORS: palette color
     addColor(GUILD, 0xff00d8, STATIC, _("Guild Members"));
+    // TRANSLATORS: palette color
     addColor(PARTICLE, 0xffffff, STATIC, _("Particle Effects"));
+    // TRANSLATORS: palette color
     addColor(PICKUP_INFO, 0x28dc28, STATIC, _("Pickup Notification"));
+    // TRANSLATORS: palette color
     addColor(EXP_INFO, 0xffff00, STATIC, _("Exp Notification"));
+    // TRANSLATORS: palette color
     addColor(PLAYER_HP, 0x00ff00, STATIC, _("Player HP bar"), 50);
+    // TRANSLATORS: palette color
     addColor(PLAYER_HP2, 0xff0000, STATIC,
+        // TRANSLATORS: palette color
         _("Player HP bar (second color)"), 50);
+    // TRANSLATORS: palette color
     addColor(HIT_PLAYER_MONSTER, 0x0064ff, STATIC, _("Player Hits Monster"));
+    // TRANSLATORS: palette color
     addColor(HIT_MONSTER_PLAYER, 0xff3232, STATIC, _("Monster Hits Player"));
+    // TRANSLATORS: palette color
     addColor(HIT_PLAYER_PLAYER, 0xff5050, STATIC,
-             _("Other Player Hits Local Player"));
+       // TRANSLATORS: palette color
+       _("Other Player Hits Local Player"));
+    // TRANSLATORS: palette color
     addColor(HIT_CRITICAL, 0xff0000, RAINBOW, _("Critical Hit"));
+    // TRANSLATORS: palette color
     addColor(HIT_LOCAL_PLAYER_MONSTER, 0x00ff00, STATIC,
-             _("Local Player Hits Monster"));
+        // TRANSLATORS: palette color
+        _("Local Player Hits Monster"));
     addColor(HIT_LOCAL_PLAYER_CRITICAL, 0xff0000, RAINBOW,
-             _("Local Player Critical Hit"));
+        // TRANSLATORS: palette color
+        _("Local Player Critical Hit"));
     addColor(HIT_LOCAL_PLAYER_MISS, 0x00ffa6, STATIC,
-             _("Local Player Miss"));
+    // TRANSLATORS: palette color
+        _("Local Player Miss"));
+    // TRANSLATORS: palette color
     addColor(MISS, 0xffff00, STATIC, _("Misses"));
+    // TRANSLATORS: palette color
     addColor(PORTAL_HIGHLIGHT, 0xC80000, STATIC, _("Portal Highlight"));
     addColor(COLLISION_HIGHLIGHT, 0x0000C8, STATIC,
-             _("Default collision Highlight"), 64);
+        // TRANSLATORS: palette color
+        _("Default collision Highlight"), 64);
     addColor(AIR_COLLISION_HIGHLIGHT, 0xe0e0ff, STATIC,
-             _("Air collision Highlight"), 64);
+        // TRANSLATORS: palette color
+        _("Air collision Highlight"), 64);
     addColor(WATER_COLLISION_HIGHLIGHT, 0x2050e0, STATIC,
-             _("Water collision Highlight"), 64);
+        // TRANSLATORS: palette color
+        _("Water collision Highlight"), 64);
     addColor(GROUNDTOP_COLLISION_HIGHLIGHT, 0xffff00, STATIC,
-             _("Special ground collision Highlight"), 20);
+        // TRANSLATORS: palette color
+        _("Special ground collision Highlight"), 20);
     addColor(WALKABLE_HIGHLIGHT, 0x00D000, STATIC,
-             _("Walkable Highlight"), 255);
+        // TRANSLATORS: palette color
+        _("Walkable Highlight"), 255);
     addColor(ATTACK_RANGE, 0xffffff, STATIC,
-             _("Local Player Attack Range"), 5);
+        // TRANSLATORS: palette color
+        _("Local Player Attack Range"), 5);
     addColor(ATTACK_RANGE_BORDER, 0x0, STATIC,
-             _("Local Player Attack Range Border"), 76);
+        // TRANSLATORS: palette color
+        _("Local Player Attack Range Border"), 76);
     addColor(MONSTER_ATTACK_RANGE, 0xff0000, STATIC,
-             _("Monster Attack Range"), 20);
+        // TRANSLATORS: palette color
+        _("Monster Attack Range"), 20);
     addColor(HOME_PLACE, 0xffffff, STATIC,
-             _("Home Place"), 20);
+        // TRANSLATORS: palette color
+        _("Home Place"), 20);
     addColor(HOME_PLACE_BORDER, 0xffff00, STATIC,
-             _("Home Place Border"), 200);
+        // TRANSLATORS: palette color
+        _("Home Place Border"), 200);
     addColor(ROAD_POINT, 0x000000, STATIC,
-             _("Road Point"), 100);
+        // TRANSLATORS: palette color
+        _("Road Point"), 100);
     commit(true);
 }
 

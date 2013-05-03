@@ -244,17 +244,24 @@ private:
 
 ServerDialog::ServerDialog(ServerInfo *const serverInfo,
                            const std::string &dir) :
+    // TRANSLATORS: servers dialog name
     Window(_("Choose Your Server"), false, nullptr, "server.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
     gcn::SelectionListener(),
     mMutex(),
     mDescription(new Label(this, std::string())),
+    // TRANSLATORS: servers dialog button
     mQuitButton(new Button(this, _("Quit"), "quit", this)),
+    // TRANSLATORS: servers dialog button
     mConnectButton(new Button(this, _("Connect"), "connect", this)),
+    // TRANSLATORS: servers dialog button
     mAddEntryButton(new Button(this, _("Add"), "addEntry", this)),
+    // TRANSLATORS: servers dialog button
     mEditEntryButton(new Button(this, _("Edit"), "editEntry", this)),
+    // TRANSLATORS: servers dialog button
     mDeleteButton(new Button(this, _("Delete"), "remove", this)),
+    // TRANSLATORS: servers dialog button
     mLoadButton(new Button(this, _("Load"), "load", this)),
     mServers(ServerInfos()),
     mServersListModel(new ServersListModel(&mServers, this)),
@@ -267,13 +274,17 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mPersistentIPCheckBox(nullptr)
 {
     if (isSafeMode)
+    {
+        // TRANSLATORS: servers dialog name
         setCaption(_("Choose Your Server  *** SAFE MODE ***"));
+    }
 
     setWindowName("ServerDialog");
 
     setCloseButton(true);
 
     mPersistentIPCheckBox = new CheckBox(this,
+        // TRANSLATORS: servers dialog checkbox
         _("Use same ip for game sub servers"),
         config.getBoolValue("usePersistentIP"),
         this, "persitent ip");
@@ -503,19 +514,23 @@ void ServerDialog::logic()
         }
         else if (mDownloadStatus == DOWNLOADING_IN_PROGRESS)
         {
+            // TRANSLATORS: servers dialog label
             mDescription->setCaption(strprintf(_("Downloading server list..."
                 "%2.2f%%"), static_cast<double>(mDownloadProgress * 100)));
         }
         else if (mDownloadStatus == DOWNLOADING_IDLE)
         {
+            // TRANSLATORS: servers dialog label
             mDescription->setCaption(_("Waiting for server..."));
         }
         else if (mDownloadStatus == DOWNLOADING_PREPARING)
         {
+            // TRANSLATORS: servers dialog label
             mDescription->setCaption(_("Preparing download"));
         }
         else if (mDownloadStatus == DOWNLOADING_ERROR)
         {
+            // TRANSLATORS: servers dialog label
             mDescription->setCaption(_("Error retreiving server list!"));
         }
     }
@@ -606,9 +621,15 @@ void ServerDialog::loadServers(const bool addNew)
         if (meetsMinimumVersion)
             version.clear();
         else if (version.empty())
+        {
+            // TRANSLATORS: servers dialog label
             version = _("requires a newer version");
+        }
         else
+        {
+            // TRANSLATORS: servers dialog label
             version = strprintf(_("requires v%s"), version.c_str());
+        }
 
         gcn::Font *font = gui->getFont();
 

@@ -66,41 +66,57 @@ static const uint8_t directions[] =
 
 CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
                                    const int slot) :
+    // TRANSLATORS: char create dialog name
     Window(_("New Character"), true, parent, "charcreate.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
     mCharSelectDialog(parent),
     mNameField(new TextField(this, "")),
+    // TRANSLATORS: char create dialog label
     mNameLabel(new Label(this, _("Name:"))),
     // TRANSLATORS: This is a narrow symbol used to denote 'next'.
     // You may change this symbol if your language uses another.
+    // TRANSLATORS: char create dialog button
     mNextHairColorButton(new Button(this, _(">"), "nextcolor", this)),
     // TRANSLATORS: This is a narrow symbol used to denote 'previous'.
     // You may change this symbol if your language uses another.
+    // TRANSLATORS: char create dialog button
     mPrevHairColorButton(new Button(this, _("<"), "prevcolor", this)),
+    // TRANSLATORS: char create dialog label
     mHairColorLabel(new Label(this, _("Hair color:"))),
     mHairColorNameLabel(new Label(this, "")),
+    // TRANSLATORS: char create dialog button
     mNextHairStyleButton(new Button(this, _(">"), "nextstyle", this)),
+    // TRANSLATORS: char create dialog button
     mPrevHairStyleButton(new Button(this, _("<"), "prevstyle", this)),
+    // TRANSLATORS: char create dialog label
     mHairStyleLabel(new Label(this, _("Hair style:"))),
     mHairStyleNameLabel(new Label(this, "")),
     mNextRaceButton(nullptr),
     mPrevRaceButton(nullptr),
     mRaceLabel(nullptr),
     mRaceNameLabel(nullptr),
+    // TRANSLATORS: char create dialog button
     mActionButton(new Button(this, _("^"), "action", this)),
+    // TRANSLATORS: char create dialog button
     mRotateButton(new Button(this, _(">"), "rotate", this)),
+    // TRANSLATORS: char create dialog button
     mMale(new RadioButton(this, _("Male"), "gender")),
+    // TRANSLATORS: char create dialog button
     mFemale(new RadioButton(this, _("Female"), "gender")),
+    // TRANSLATORS: char create dialog button
     mOther(new RadioButton(this, _("Other"), "gender")),
     mAttributeSlider(),
     mAttributeLabel(),
     mAttributeValue(),
     mAttributesLeft(new Label(this,
+        // TRANSLATORS: char create dialog label
         strprintf(_("Please distribute %d points"), 99))),
     mMaxPoints(0),
     mUsedPoints(0),
+    // TRANSLATORS: char create dialog button
     mCreateButton(new Button(this, _("Create"), "create", this)),
+    // TRANSLATORS: char create dialog button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mRace(0),
     mPlayer(new Being(0, ActorSprite::PLAYER, static_cast<uint16_t>(mRace),
@@ -143,8 +159,11 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     if (serverVersion >= 2)
     {
+        // TRANSLATORS: char create dialog button
         mNextRaceButton = new Button(this, _(">"), "nextrace", this);
+        // TRANSLATORS: char create dialog button
         mPrevRaceButton = new Button(this, _("<"), "prevrace", this);
+        // TRANSLATORS: char create dialog label
         mRaceLabel = new Label(this, _("Race:"));
         mRaceNameLabel = new Label(this, "");
     }
@@ -293,7 +312,9 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
         }
         else
         {
+            // TRANSLATORS: char creation error
             new OkDialog(_("Error"),
+                // TRANSLATORS: char creation error
                 _("Your name needs to be at least 4 characters."),
                 DIALOG_ERROR, true,  this);
         }
@@ -380,6 +401,7 @@ void CharCreateDialog::updateSliders()
     const int pointsLeft = mMaxPoints - getDistributedPoints();
     if (pointsLeft == 0)
     {
+        // TRANSLATORS: char create dialog label
         mAttributesLeft->setCaption(_("Character stats OK"));
         mCreateButton->setEnabled(true);
     }
@@ -389,12 +411,14 @@ void CharCreateDialog::updateSliders()
         if (pointsLeft > 0)
         {
             mAttributesLeft->setCaption(
-                    strprintf(_("Please distribute %d points"), pointsLeft));
+                // TRANSLATORS: char create dialog label
+                strprintf(_("Please distribute %d points"), pointsLeft));
         }
         else
         {
             mAttributesLeft->setCaption(
-                    strprintf(_("Please remove %d points"), -pointsLeft));
+                // TRANSLATORS: char create dialog label
+                strprintf(_("Please remove %d points"), -pointsLeft));
         }
     }
 

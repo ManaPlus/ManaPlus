@@ -137,10 +137,14 @@ StatusWindow::StatusWindow() :
     Window(player_node ? player_node->getName() :
         "?", false, nullptr, "status.xml"),
     gcn::ActionListener(),
+    // TRANSLATORS: status window label
     mLvlLabel(new Label(this, strprintf(_("Level: %d"), 0))),
+    // TRANSLATORS: status window label
     mMoneyLabel(new Label(this, strprintf(_("Money: %s"), ""))),
+    // TRANSLATORS: status window label
     mHpLabel(new Label(this, _("HP:"))),
     mMpLabel(nullptr),
+    // TRANSLATORS: status window label
     mXpLabel(new Label(this, _("Exp:"))),
     mHpBar(nullptr),
     mMpBar(nullptr),
@@ -154,6 +158,7 @@ StatusWindow::StatusWindow() :
     mDAttrScroll(new ScrollArea(mDAttrCont, false)),
     mCharacterPointsLabel(new Label(this, "C")),
     mCorrectionPointsLabel(nullptr),
+    // TRANSLATORS: status window button
     mCopyButton(new Button(this, _("Copy to chat"), "copy", this)),
     mAttrs()
 {
@@ -194,6 +199,7 @@ StatusWindow::StatusWindow() :
     if (magicBar)
     {
         max = PlayerInfo::getAttribute(PlayerInfo::MAX_MP);
+        // TRANSLATORS: status window label
         mMpLabel = new Label(this, _("MP:"));
         mMpBar = new ProgressBar(this, max ? static_cast<float>(
             PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
@@ -226,7 +232,9 @@ StatusWindow::StatusWindow() :
 
     if (job)
     {
+        // TRANSLATORS: status window label
         mJobLvlLabel = new Label(this, strprintf(_("Job: %d"), 0));
+        // TRANSLATORS: status window label
         mJobLabel = new Label(this, _("Job:"));
         mJobBar = new ProgressBar(this, 0.0f, 80, 0, Theme::PROG_JOB);
 
@@ -275,21 +283,25 @@ StatusWindow::StatusWindow() :
         updateMPBar(mMpBar, true);
     updateXPBar(mXpBar, false);
 
+    // TRANSLATORS: status window label
     mMoneyLabel->setCaption(strprintf(_("Money: %s"), Units::formatCurrency(
         PlayerInfo::getAttribute(PlayerInfo::MONEY)).c_str()));
     mMoneyLabel->adjustSize();
+    // TRANSLATORS: status window label
     mCharacterPointsLabel->setCaption(strprintf(_("Character points: %d"),
         PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS)));
     mCharacterPointsLabel->adjustSize();
 
     if (player_node && player_node->isGM())
     {
+        // TRANSLATORS: status window label
         mLvlLabel->setCaption(strprintf(_("Level: %d (GM %d)"),
             PlayerInfo::getAttribute(PlayerInfo::LEVEL),
             player_node->getGMLevel()));
     }
     else
     {
+        // TRANSLATORS: status window label
         mLvlLabel->setCaption(strprintf(_("Level: %d"),
             PlayerInfo::getAttribute(PlayerInfo::LEVEL)));
     }
@@ -323,6 +335,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
                 break;
 
             case PlayerInfo::MONEY:
+                // TRANSLATORS: status window label
                 mMoneyLabel->setCaption(strprintf(_("Money: %s"),
                     Units::formatCurrency(event.getInt("newValue")).c_str()));
                 mMoneyLabel->adjustSize();
@@ -330,6 +343,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
 
             case PlayerInfo::CHAR_POINTS:
                 mCharacterPointsLabel->setCaption(strprintf(
+                    // TRANSLATORS: status window label
                     _("Character points: %d"), event.getInt("newValue")));
 
                 mCharacterPointsLabel->adjustSize();
@@ -344,6 +358,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
 
             case PlayerInfo::CORR_POINTS:
                 mCorrectionPointsLabel->setCaption(strprintf(
+                    // TRANSLATORS: status window label
                     _("Correction points: %d"), event.getInt("newValue")));
                 mCorrectionPointsLabel->adjustSize();
                 // Update all attributes
@@ -356,8 +371,9 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
             break;
 
             case PlayerInfo::LEVEL:
+                // TRANSLATORS: status window label
                 mLvlLabel->setCaption(strprintf(_("Level: %d"),
-                                      event.getInt("newValue")));
+                    event.getInt("newValue")));
                 mLvlLabel->adjustSize();
             break;
 
@@ -405,6 +421,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
                     blocked = false;
                 }
 
+                // TRANSLATORS: status window label
                 mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));
                 mJobLvlLabel->adjustSize();
 
@@ -537,6 +554,7 @@ void StatusWindow::updateProgressBar(ProgressBar *const bar, const int value,
 
     if (max == 0)
     {
+        // TRANSLATORS: status bar label
         bar->setText(_("Max"));
         bar->setProgress(1);
         bar->setText(toString(value));
@@ -593,6 +611,7 @@ void StatusWindow::updateWeightBar(ProgressBar *const bar)
 
     if (PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT) == 0)
     {
+        // TRANSLATORS: status bar label
         bar->setText(_("Max"));
         bar->setProgress(1.0);
     }
@@ -807,8 +826,10 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
     AttrDisplay(widget, id, name, shortName),
     gcn::ActionListener(),
     mNeeded(1),
+    // TRANSLATORS: status window label
     mPoints(new Label(this, _("Max"))),
     mDec(nullptr),
+    // TRANSLATORS: status window label (plus sign)
     mInc(new Button(this, _("+"), "inc", this))
 {
     // Do the layout
@@ -821,6 +842,7 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
 
     if (Net::getPlayerHandler()->canCorrectAttributes())
     {
+        // TRANSLATORS: status window label (minus sign)
         mDec = new Button(this, _("-"), "dec", this);
         mDec->setWidth(mInc->getWidth());
 
@@ -833,9 +855,14 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
 std::string ChangeDisplay::update()
 {
     if (mNeeded > 0)
+    {
         mPoints->setCaption(toString(mNeeded));
+    }
     else
+    {
+        // TRANSLATORS: status bar label
         mPoints->setCaption(_("Max"));
+    }
 
     if (mDec)
         mDec->setEnabled(PlayerInfo::getAttribute(PlayerInfo::CORR_POINTS));

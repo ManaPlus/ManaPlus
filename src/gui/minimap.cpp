@@ -44,7 +44,8 @@
 
 bool Minimap::mShow = true;
 
-Minimap::Minimap():
+Minimap::Minimap() :
+    // TRANSLATORS: mini map window name
     Window(_("Map"), false, nullptr, "map.xml"),
     mMapImage(nullptr),
     mWidthProportion(0.5),
@@ -103,7 +104,10 @@ void Minimap::setMap(const Map *const map)
         caption = map->getName();
 
     if (caption.empty())
+    {
+        // TRANSLATORS: mini map window name
         caption = _("Map");
+    }
 
     setCaption(caption);
 

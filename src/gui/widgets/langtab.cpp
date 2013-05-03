@@ -27,6 +27,7 @@
 #include "debug.h"
 
 LangTab::LangTab(const Widget2 *const widget, const std::string &lang) :
+    // TRANSLATORS: lang chat tab name
     ChatTab(widget, _("Lang"), lang + " ")
 {
 }

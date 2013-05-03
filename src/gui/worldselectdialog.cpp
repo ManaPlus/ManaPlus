@@ -82,12 +82,15 @@ class WorldListModel final : public gcn::ListModel
 };
 
 WorldSelectDialog::WorldSelectDialog(Worlds worlds):
+    // TRANSLATORS: world select dialog name
     Window(_("Select World"), false, nullptr, "world.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
     mWorldListModel(new WorldListModel(worlds)),
     mWorldList(new ListBox(this, mWorldListModel, "")),
+    // TRANSLATORS: world dialog button
     mChangeLoginButton(new Button(this, _("Change Login"), "login", this)),
+    // TRANSLATORS: world dialog button
     mChooseWorld(new Button(this, _("Choose World"), "world", this))
 {
     ScrollArea *const worldsScroll = new ScrollArea(mWorldList,

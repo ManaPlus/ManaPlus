@@ -51,7 +51,8 @@
 
 extern Window *statusWindow;
 
-Setup::Setup():
+Setup::Setup() :
+    // TRANSLATORS: setup window name
     Window(_("Setup"), false, nullptr, "setup.xml"),
     gcn::ActionListener(),
     mTabs(),
@@ -77,9 +78,13 @@ Setup::Setup():
 
     static const char *buttonNames[] =
     {
+        // TRANSLATORS: setup button
         N_("Apply"),
+        // TRANSLATORS: setup button
         N_("Cancel"),
+        // TRANSLATORS: setup button
         N_("Store"),
+        // TRANSLATORS: setup button
         N_("Reset Windows"),
         nullptr
     };

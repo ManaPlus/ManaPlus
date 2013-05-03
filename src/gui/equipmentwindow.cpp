@@ -52,12 +52,14 @@ static const int BOX_COUNT = 13;
 EquipmentWindow::EquipmentWindow(Equipment *const equipment,
                                  Being *const being,
                                  const bool foring):
+    // TRANSLATORS: equipment window name
     Window(_("Equipment"), false, nullptr, "equipment.xml"),
     gcn::ActionListener(),
     mEquipment(equipment),
     mItemPopup(new ItemPopup),
     mPlayerBox(new PlayerBox("equipment_playerbox.xml",
         "equipment_selectedplayerbox.xml")),
+    // TRANSLATORS: equipment window button
     mUnequip(new Button(this, _("Unequip"), "unequip", this)),
     mSelected(-1),
     mForing(foring),

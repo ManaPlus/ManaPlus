@@ -136,6 +136,7 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
                              const std::string &updatesDir,
                              const bool applyUpdates,
                              const int updateType):
+    // TRANSLATORS: updater window name
     Window(_("Updating..."), false, nullptr, "update.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
@@ -160,8 +161,11 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mUpdateIndexOffset(0),
     mLoadUpdates(applyUpdates),
     mUpdateType(updateType),
+    // TRANSLATORS: updater window label
     mLabel(new Label(this, _("Connecting..."))),
+    // TRANSLATORS: updater window button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    // TRANSLATORS: updater window button
     mPlayButton(new Button(this, _("Play"), "play", this)),
     mProgressBar(new ProgressBar(this, 0.0, 310, 0)),
     mBrowserBox(new BrowserBox(this)),
@@ -648,8 +652,9 @@ void UpdaterWindow::logic()
     {
         case UPDATE_ERROR:
             mBrowserBox->addRow("");
+            // TRANSLATORS: update message
             mBrowserBox->addRow(_("##1  The update process is incomplete."));
-            // TRANSLATORS: Continues "you try again later.".
+            // TRANSLATORS: Continues "The update process is incomplete.".
             mBrowserBox->addRow(_("##1  It is strongly recommended that"));
             // TRANSLATORS: Begins "It is strongly recommended that".
             mBrowserBox->addRow(_("##1  you try again later."));
@@ -830,6 +835,7 @@ void UpdaterWindow::logic()
         case UPDATE_COMPLETE:
             mUpdatesDir = mUpdatesDirReal;
             enable();
+            // TRANSLATORS: updater window label
             setLabel(_("Completed"));
             break;
         case UPDATE_IDLE:

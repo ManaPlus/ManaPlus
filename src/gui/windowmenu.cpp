@@ -123,27 +123,35 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 
     // TRANSLATORS: short button name for social window.
     addButton(N_("SOC"),
+    // TRANSLATORS: full button name
         _("Social"), x, h, Input::KEY_WINDOW_SOCIAL);
     // TRANSLATORS: short button name for shortcuts window.
     addButton(N_("SH"),
+        // TRANSLATORS: full button name
         _("Shortcuts"), x, h, Input::KEY_WINDOW_SHORTCUT);
     // TRANSLATORS: short button name for spells window.
     addButton(N_("SP"),
+        // TRANSLATORS: full button name
         _("Spells"), x, h, Input::KEY_WINDOW_SPELLS);
     // TRANSLATORS: short button name for drops window.
     addButton(N_("DR"),
+        // TRANSLATORS: full button name
         _("Drop"), x, h, Input::KEY_WINDOW_DROP, false);
     // TRANSLATORS: short button name for did you know window.
     addButton(N_("YK"),
+        // TRANSLATORS: full button name
         _("Did you know"), x, h, Input::KEY_WINDOW_DIDYOUKNOW, false);
     // TRANSLATORS: short button name for shop window.
     addButton(N_("SHP"),
+        // TRANSLATORS: full button name
         _("Shop"), x, h, Input::KEY_WINDOW_SHOP, false);
     // TRANSLATORS: short button name for outfits window.
     addButton(N_("OU"),
+        // TRANSLATORS: full button name
         _("Outfits"), x, h, Input::KEY_WINDOW_OUTFIT, false);
     // TRANSLATORS: short button name for debug window.
     addButton(N_("DBG"),
+        // TRANSLATORS: full button name
         _("Debug"), x, h, Input::KEY_WINDOW_DEBUG,
 #ifdef ANDROID
         true);
@@ -152,9 +160,11 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 #endif
     // TRANSLATORS: short button name for windows list menu.
     addButton(N_("WIN"),
+        // TRANSLATORS: full button name
         _("Windows"), x, h, Input::KEY_SHOW_WINDOWS, false);
     // TRANSLATORS: short button name for setup window.
     addButton(N_("SET"),
+        // TRANSLATORS: full button name
         _("Setup"), x, h, Input::KEY_WINDOW_SETUP);
 
     x += mPadding - mSpacing;
@@ -279,6 +289,7 @@ void WindowMenu::mouseMoved(gcn::MouseEvent &event)
     if (key != Input::KEY_NO_VALUE)
     {
         mTextPopup->show(x + getX(), y + getY(), btn->getDescription(),
+            // TRANSLATORS: short key name
             strprintf(_("Key: %s"), inputManager.getKeyValueString(
             key).c_str()));
     }

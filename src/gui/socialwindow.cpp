@@ -141,6 +141,7 @@ public:
         gcn::ActionListener(),
         mGuild(guild)
     {
+        // TRANSLATORS: tab in social window
         setCaption(_("Guild"));
 
         setTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB),
@@ -180,6 +181,7 @@ public:
             if (localChatTab)
             {
                 localChatTab->chatLog(strprintf(
+                    // TRANSLATORS: chat message
                     _("Invited user %s to guild %s."),
                     name.c_str(), mGuild->getName().c_str()), BY_SERVER);
             }
@@ -194,8 +196,9 @@ public:
             Net::getGuildHandler()->leave(mGuild->getId());
             if (localChatTab)
             {
+                // TRANSLATORS: chat message
                 localChatTab->chatLog(strprintf(_("Guild %s quit requested."),
-                                      mGuild->getName().c_str()), BY_SERVER);
+                    mGuild->getName().c_str()), BY_SERVER);
             }
             mConfirmDialog = nullptr;
         }
@@ -219,20 +222,22 @@ public:
 
     void invite()
     {
+        // TRANSLATORS: guild invite message
         mInviteDialog = new TextDialog(_("Member Invite to Guild"),
-                     strprintf(_("Who would you like to invite to guild %s?"),
-                               mGuild->getName().c_str()),
-                     socialWindow);
+            // TRANSLATORS: guild invite message
+            strprintf(_("Who would you like to invite to guild %s?"),
+            mGuild->getName().c_str()), socialWindow);
         mInviteDialog->setActionEventId("do invite");
         mInviteDialog->addActionListener(this);
     }
 
     void leave()
     {
+        // TRANSLATORS: guild leave message
         mConfirmDialog = new ConfirmDialog(_("Leave Guild?"),
-                       strprintf(_("Are you sure you want to leave guild %s?"),
-                                 mGuild->getName().c_str()),
-                       socialWindow);
+            // TRANSLATORS: guild leave message
+            strprintf(_("Are you sure you want to leave guild %s?"),
+            mGuild->getName().c_str()), socialWindow);
 
         mConfirmDialog->addActionListener(this);
     }
@@ -250,6 +255,7 @@ public:
         gcn::ActionListener(),
         mGuild(guild)
     {
+        // TRANSLATORS: tab in social window
         setCaption(_("Guild"));
 
         setTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB),
@@ -315,6 +321,7 @@ public:
         gcn::ActionListener(),
         mParty(party)
     {
+        // TRANSLATORS: tab in social window
         setCaption(_("Party"));
 
         setTabColor(&getThemeColor(Theme::PARTY_SOCIAL_TAB),
@@ -353,8 +360,9 @@ public:
 
             if (localChatTab)
             {
+                // TRANSLATORS: chat message
                 localChatTab->chatLog(strprintf(_("Invited user %s to party."),
-                                      name.c_str()), BY_SERVER);
+                    name.c_str()), BY_SERVER);
             }
             mInviteDialog = nullptr;
         }
@@ -367,8 +375,9 @@ public:
             Net::getPartyHandler()->leave();
             if (localChatTab)
             {
+                // TRANSLATORS: tab in social window
                 localChatTab->chatLog(strprintf(_("Party %s quit requested."),
-                                      mParty->getName().c_str()), BY_SERVER);
+                    mParty->getName().c_str()), BY_SERVER);
             }
             mConfirmDialog = nullptr;
         }
@@ -392,20 +401,22 @@ public:
 
     void invite()
     {
+        // TRANSLATORS: party invite message
         mInviteDialog = new TextDialog(_("Member Invite to Party"),
-                      strprintf(_("Who would you like to invite to party %s?"),
-                                mParty->getName().c_str()),
-                      socialWindow);
+            // TRANSLATORS: party invite message
+            strprintf(_("Who would you like to invite to party %s?"),
+            mParty->getName().c_str()), socialWindow);
         mInviteDialog->setActionEventId("do invite");
         mInviteDialog->addActionListener(this);
     }
 
     void leave()
     {
+        // TRANSLATORS: party leave message
         mConfirmDialog = new ConfirmDialog(_("Leave Party?"),
-                       strprintf(_("Are you sure you want to leave party %s?"),
-                                 mParty->getName().c_str()),
-                       socialWindow);
+            // TRANSLATORS: party leave message
+            strprintf(_("Are you sure you want to leave party %s?"),
+            mParty->getName().c_str()), socialWindow);
 
         mConfirmDialog->addActionListener(this);
     }
@@ -996,8 +1007,11 @@ public:
     void updateList()
     {
         updateAtkListStart();
+        // TRANSLATORS: mobs group name in social window
         addAvatars(PriorityAttackMob, _("Priority mobs"), PRIORITY);
+        // TRANSLATORS: mobs group name in social window
         addAvatars(AttackMob, _("Attack mobs"), ATTACK);
+        // TRANSLATORS: mobs group name in social window
         addAvatars(IgnoreAttackMob, _("Ignore mobs"), IGNORE_);
     }
 
@@ -1055,7 +1069,9 @@ public:
     void updateList()
     {
         updateAtkListStart();
+        // TRANSLATORS: items group name in social window
         addAvatars(PickupItem, _("Pickup items"), PICKUP);
+        // TRANSLATORS: items group name in social window
         addAvatars(IgnorePickupItem, _("Ignore items"), NOPICKUP);
     }
 
@@ -1181,8 +1197,10 @@ public:
         mBrowserBox->setOpaque(false);
         mBrowserBox->setLinkHandler(this);
 
+        // TRANSLATORS: party popup item
         mBrowserBox->addRow(strprintf("@@party|%s@@", _("Create Party")));
         mBrowserBox->addRow("##3---");
+        // TRANSLATORS: party popup item
         mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
         add(mBrowserBox);
@@ -1225,6 +1243,7 @@ private:
 };
 
 SocialWindow::SocialWindow() :
+    // TRANSLATORS: social window name
     Window(_("Social"), false, nullptr, "social.xml"),
     gcn::ActionListener(),
     mGuildInvited(0),
@@ -1246,8 +1265,11 @@ SocialWindow::SocialWindow() :
     mFriends(new SocialFriendsTab(this, _("F"),
         getOptionBool("showtabbackground"))),
     mCreatePopup(new CreatePopup),
+    // TRANSLATORS: social window button
     mCreateButton(new Button(this, _("Create"), "create", this)),
+    // TRANSLATORS: social window button
     mInviteButton(new Button(this, _("Invite"), "invite", this)),
+    // TRANSLATORS: social window button
     mLeaveButton(new Button(this, _("Leave"), "leave", this)),
     mTabs(new TabbedArea(this)),
     mMap(nullptr),
@@ -1433,6 +1455,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
             if (localChatTab)
             {
                 localChatTab->chatLog(
+                    // TRANSLATORS: chat message
                     strprintf(_("Accepted party invite from %s."),
                     mPartyInviter.c_str()));
             }
@@ -1443,6 +1466,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
             if (localChatTab)
             {
                 localChatTab->chatLog(
+                    // TRANSLATORS: chat message
                     strprintf(_("Rejected party invite from %s."),
                     mPartyInviter.c_str()));
             }
@@ -1460,6 +1484,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
             if (localChatTab)
             {
                 localChatTab->chatLog(
+                    // TRANSLATORS: chat message
                     strprintf(_("Accepted guild invite from %s."),
                     mPartyInviter.c_str()));
             }
@@ -1473,6 +1498,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
             if (localChatTab)
             {
                 localChatTab->chatLog(
+                    // TRANSLATORS: chat message
                     strprintf(_("Rejected guild invite from %s."),
                     mPartyInviter.c_str()));
             }
@@ -1509,8 +1535,9 @@ void SocialWindow::action(const gcn::ActionEvent &event)
         Net::getGuildHandler()->create(name);
         if (localChatTab)
         {
+            // TRANSLATORS: chat message
             localChatTab->chatLog(strprintf(_("Creating guild called %s."),
-                                  name.c_str()), BY_SERVER);
+                name.c_str()), BY_SERVER);
         }
 
         mGuildCreateDialog = nullptr;
@@ -1529,8 +1556,9 @@ void SocialWindow::action(const gcn::ActionEvent &event)
         Net::getPartyHandler()->create(name);
         if (localChatTab)
         {
+            // TRANSLATORS: chat message
             localChatTab->chatLog(strprintf(_("Creating party called %s."),
-                                  name.c_str()), BY_SERVER);
+                name.c_str()), BY_SERVER);
         }
 
         mPartyCreateDialog = nullptr;
@@ -1543,8 +1571,10 @@ void SocialWindow::action(const gcn::ActionEvent &event)
 
 void SocialWindow::showGuildCreate()
 {
+    // TRANSLATORS: guild creation message
     mGuildCreateDialog = new TextDialog(_("Guild Name"),
-                                        _("Choose your guild's name."), this);
+        // TRANSLATORS: guild creation message
+        _("Choose your guild's name."), this);
     mGuildCreateDialog->setActionEventId("create guild");
     mGuildCreateDialog->addActionListener(this);
 }
@@ -1558,18 +1588,21 @@ void SocialWindow::showGuildInvite(const std::string &guildName,
     {
         if (localChatTab)
         {
+            // TRANSLATORS: chat message
             localChatTab->chatLog(_("Received guild request, but one already "
                 "exists."), BY_SERVER);
         }
         return;
     }
 
+    // TRANSLATORS: chat message
     std::string msg = strprintf(_("%s has invited you to join the guild %s."),
                                 inviterName.c_str(), guildName.c_str());
     if (localChatTab)
         localChatTab->chatLog(msg, BY_SERVER);
 
     // show invite
+    // TRANSLATORS: guild invite message
     mGuildAcceptDialog = new ConfirmDialog(_("Accept Guild Invite"),
                                            msg, false, false, this);
     mGuildAcceptDialog->addActionListener(this);
@@ -1585,6 +1618,7 @@ void SocialWindow::showPartyInvite(const std::string &partyName,
     {
         if (localChatTab)
         {
+            // TRANSLATORS: chat message
             localChatTab->chatLog(_("Received party request, but one already "
                 "exists."), BY_SERVER);
         }
@@ -1596,10 +1630,12 @@ void SocialWindow::showPartyInvite(const std::string &partyName,
     {
         if (partyName.empty())
         {
+            // TRANSLATORS: party invite message
             msg = _("You have been invited you to join a party.");
         }
         else
         {
+            // TRANSLATORS: party invite message
             msg = strprintf(_("You have been invited to join the %s party."),
                             partyName.c_str());
         }
@@ -1608,11 +1644,13 @@ void SocialWindow::showPartyInvite(const std::string &partyName,
     {
         if (partyName.empty())
         {
+            // TRANSLATORS: party invite message
             msg = strprintf(_("%s has invited you to join their party."),
                             inviter.c_str());
         }
         else
         {
+            // TRANSLATORS: party invite message
             msg = strprintf(_("%s has invited you to join the %s party."),
                             inviter.c_str(), partyName.c_str());
         }
@@ -1622,6 +1660,7 @@ void SocialWindow::showPartyInvite(const std::string &partyName,
         localChatTab->chatLog(msg, BY_SERVER);
 
     // show invite
+    // TRANSLATORS: party invite message
     mPartyAcceptDialog = new ConfirmDialog(_("Accept Party Invite"),
                                            msg, false, false, this);
     mPartyAcceptDialog->addActionListener(this);
@@ -1636,13 +1675,16 @@ void SocialWindow::showPartyCreate()
 
     if (player_node->getParty())
     {
+        // TRANSLATORS: party creation message
         new OkDialog(_("Create Party"),
             _("Cannot create party. You are already in a party"),
             DIALOG_ERROR, true, true, this);
         return;
     }
 
+    // TRANSLATORS: party creation message
     mPartyCreateDialog = new TextDialog(_("Party Name"),
+        // TRANSLATORS: party creation message
         _("Choose your party's name."), this);
     mPartyCreateDialog->setActionEventId("create party");
     mPartyCreateDialog->addActionListener(this);

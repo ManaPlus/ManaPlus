@@ -35,9 +35,13 @@ static const int speachListSize = 4;
 
 static const char *const speachList[] =
 {
+    // TRANSLATORS: speach type
     N_("No text"),
+    // TRANSLATORS: speach type
     N_("Text"),
+    // TRANSLATORS: speach type
     N_("Bubbles, no names"),
+    // TRANSLATORS: speach type
     N_("Bubbles with names")
 };
 
@@ -45,8 +49,11 @@ static const int ambientFxListSize = 3;
 
 static const char *const ambientFxList[] =
 {
+    // TRANSLATORS: ambient effect type
     N_("off"),
+    // TRANSLATORS: ambient effect type
     N_("low"),
+    // TRANSLATORS: ambient effect type
     N_("high")
 };
 
@@ -54,8 +61,11 @@ static const int particleTypeListSize = 3;
 
 static const char *const particleTypeList[] =
 {
+    // TRANSLATORS: patricle effects type
     N_("best quality"),
+    // TRANSLATORS: patricle effects type
     N_("normal"),
+    // TRANSLATORS: patricle effects type
     N_("best perfomance")
 };
 
@@ -63,8 +73,11 @@ static const int vSyncListSize = 3;
 
 static const char *const vSyncList[] =
 {
+    // TRANSLATORS: vsync type
     N_("default"),
+    // TRANSLATORS: vsync type
     N_("off"),
+    // TRANSLATORS: vsync type
     N_("on")
 };
 
@@ -76,6 +89,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     mParticleTypeList(new NamesModel),
     mVSyncList(new NamesModel)
 {
+    // TRANSLATORS: settings tab name
     setName(_("Visual"));
     // Do the layout
     LayoutHelper h(this);
@@ -84,41 +98,55 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
     mPreferredFirstItemSize = 150;
 
+    // TRANSLATORS: settings option
     new SetupItemLabel(_("Notifications"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show pickup notifications in chat"), "",
         "showpickupchat", this, "showpickupchatEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show pickup notifications as particle effects"),
         "", "showpickupparticle", this, "showpickupparticleEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemLabel(_("Effects"), "", this);
 
 #ifndef ANDROID
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Grab mouse and keyboard input"),
         "", "grabinput", this, "grabinputEvent");
 #endif
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Blurring textures (OpenGL)"),
         "", "blur", this, "blurEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemSlider(_("Gui opacity"), "", "guialpha",
         this, "guialphaEvent", 0.1, 1.0, 150, true);
 
     mSpeachList->fillFromArray(&speachList[0], speachListSize);
+    // TRANSLATORS: settings option
     new SetupItemDropDown(_("Overhead text"), "", "speech", this,
         "speechEvent", mSpeachList, 200);
 
     mAmbientFxList->fillFromArray(&ambientFxList[0], ambientFxListSize);
+    // TRANSLATORS: settings option
     new SetupItemDropDown(_("Ambient FX"), "", "OverlayDetail", this,
         "OverlayDetailEvent", mAmbientFxList, 100);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Particle effects"), "",
         "particleeffects", this, "particleeffectsEvent");
 
+    // TRANSLATORS: particle details
     mParticleList->push_back(_("low"));
+    // TRANSLATORS: particle details
     mParticleList->push_back(_("medium"));
+    // TRANSLATORS: particle details
     mParticleList->push_back(_("high"));
+    // TRANSLATORS: particle details
     mParticleList->push_back(_("max"));
     (new SetupItemSlider2(_("Particle detail"), "", "particleEmitterSkip",
         this, "particleEmitterSkipEvent", 0, 3,
@@ -126,30 +154,38 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
     mParticleTypeList->fillFromArray(&particleTypeList[0],
         particleTypeListSize);
+    // TRANSLATORS: settings option
     new SetupItemDropDown(_("Particle physics"), "", "particleFastPhysics",
         this, "particleFastPhysicsEvent", mParticleTypeList, 200);
 
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Gamma"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable gamma control"),
         "", "enableGamma", this, "enableGammaEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemSlider(_("Gamma"), "", "gamma",
         this, "gammeEvent", 1, 20, 350, true);
 
 
+    // TRANSLATORS: settings group
     new SetupItemLabel(_("Other"), "", this);
 
     mVSyncList->fillFromArray(&vSyncList[0], vSyncListSize);
+    // TRANSLATORS: settings option
     new SetupItemDropDown(_("Vsync"), "", "vsync", this,
         "vsyncEvent", mVSyncList, 100);
 
 #if defined(WIN32) || defined(__APPLE__)
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Center game window"),
         "", "centerwindow", this, "centerwindowEvent");
 #endif
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Allow screensaver to run"),
         "", "allowscreensaver", this, "allowscreensaverEvent");
 

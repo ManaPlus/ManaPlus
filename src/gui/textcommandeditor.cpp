@@ -94,8 +94,7 @@ public:
     virtual std::string getElementAt(int i)
     {
         if (i < 0 || i >= getNumberOfElements())
-            return _("???");
-
+            return "???";
         return mStrings.at(i);
     }
 private:
@@ -105,18 +104,27 @@ private:
 
 const char *TARGET_TYPE_TEXT[3] =
 {
+    // TRANSLATORS: target type
     N_("No Target"),
+    // TRANSLATORS: target type
     N_("Allow Target"),
+    // TRANSLATORS: target type
     N_("Need Target"),
 };
 
 const char *MAGIC_SCHOOL_TEXT[6] =
 {
+    // TRANSLATORS: magic school
     N_("General Magic"),
+    // TRANSLATORS: magic school
     N_("Life Magic"),
+    // TRANSLATORS: magic school
     N_("War Magic"),
+    // TRANSLATORS: magic school
     N_("Transmute Magic"),
+    // TRANSLATORS: magic school
     N_("Nature Magic"),
+    // TRANSLATORS: magic school
     N_("Astral Magic")
 };
 
@@ -134,8 +142,7 @@ public:
     virtual std::string getElementAt(int i)
     {
         if (i >= getNumberOfElements() || i < 0)
-            return _("???");
-
+            return "???";
         return TARGET_TYPE_TEXT[i];
     }
 };
@@ -154,44 +161,58 @@ public:
     virtual std::string getElementAt(int i)
     {
         if (i >= getNumberOfElements() || i < 0)
-            return _("???");
-
+            return "???";
         return MAGIC_SCHOOL_TEXT[i];
     }
 };
 
 
 TextCommandEditor::TextCommandEditor(TextCommand *const command) :
+    // TRANSLATORS: command editor name
     Window(_("Command Editor"), false, nullptr, "commandeditor.xml"),
     gcn::ActionListener(),
     mIsMagicCommand(command->getCommandType() == TEXT_COMMAND_MAGIC),
     mCommand(command),
     mAdvanced(false),
+    // TRANSLATORS: command editor button
     mIsMagic(new RadioButton(this, _("magic"), "magic", mIsMagicCommand)),
+    // TRANSLATORS: command editor button
     mIsOther(new RadioButton(this, _("other"), "magic", !mIsMagicCommand)),
+    // TRANSLATORS: command editor label
     mSymbolLabel(new Label(this, _("Symbol:"))),
     mSymbolTextField(new TextField(this)),
+    // TRANSLATORS: command editor label
     mCommandLabel(new Label(this, _("Command:"))),
     mCommandTextField(new TextField(this)),
+    // TRANSLATORS: command editor label
     mCommentLabel(new Label(this, _("Comment:"))),
     mCommentTextField(new TextField(this)),
     mTargetTypeModel(new TargetTypeModel),
+    // TRANSLATORS: command editor label
     mTypeLabel(new Label(this, _("Target Type:"))),
     mTypeDropDown(new DropDown(this, mTargetTypeModel)),
     mIconsModal(new IconsModal),
+    // TRANSLATORS: command editor label
     mIconLabel(new Label(this, _("Icon:"))),
     mIconDropDown(new DropDown(this, mIconsModal)),
+    // TRANSLATORS: command editor label
     mManaLabel(new Label(this, _("Mana:"))),
     mManaField(new IntTextField(this, 0)),
+    // TRANSLATORS: command editor label
     mMagicLvlLabel(new Label(this, _("Magic level:"))),
     mMagicLvlField(new IntTextField(this, 0)),
     mMagicSchoolModel(new MagicSchoolModel),
+    // TRANSLATORS: command editor label
     mSchoolLabel(new Label(this, _("Magic School:"))),
     mSchoolDropDown(new DropDown(this, mMagicSchoolModel)),
+    // TRANSLATORS: command editor label
     mSchoolLvlLabel(new Label(this, _("School level:"))),
     mSchoolLvlField(new IntTextField(this, 0)),
+    // TRANSLATORS: command editor button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    // TRANSLATORS: command editor button
     mSaveButton(new Button(this, _("Save"), "save", this)),
+    // TRANSLATORS: command editor button
     mDeleteButton(new Button(this, _("Delete"), "delete", this)),
     mEnabledKeyboard(keyboard.isEnabled())
 {

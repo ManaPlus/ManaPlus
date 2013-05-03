@@ -124,6 +124,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
 
     if (!(b->getPartyName().empty()))
     {
+        // TRANSLATORS: being popup label
         label1->setCaption(strprintf(_("Party: %s"),
                            b->getPartyName().c_str()));
         label1->adjustSize();
@@ -138,6 +139,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
 
     if (!(b->getGuildName().empty()))
     {
+        // TRANSLATORS: being popup label
         label2->setCaption(strprintf(_("Guild: %s"),
                            b->getGuildName().c_str()));
         label2->adjustSize();
@@ -151,6 +153,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
 
     if (b->getPvpRank() > 0)
     {
+        // TRANSLATORS: being popup label
         label3->setCaption(strprintf(_("Pvp rank: %u"), b->getPvpRank()));
         label3->adjustSize();
     }
@@ -162,6 +165,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
 
     if (!b->getComment().empty())
     {
+        // TRANSLATORS: being popup label
         label4->setCaption(strprintf(_("Comment: %s"),
             b->getComment().c_str()));
         label4->adjustSize();
