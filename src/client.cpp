@@ -589,6 +589,7 @@ void Client::gameInit()
     runCounters = config.getBoolValue("packetcounters");
     applyVSync();
     graphicsManager.setVideoMode();
+    checkConfigVersion();
     getConfigDefaults2(config.getDefaultValues());
     applyGrabMode();
     applyGamma();
@@ -2928,4 +2929,18 @@ void Client::windowRemoved(const Window *const window)
 void Client::updateScreenKeyboard(int height A_UNUSED)
 {
 //    logger->log("keyboard height: %d", height);
+}
+
+void Client::checkConfigVersion()
+{
+    const int version = config.getIntValue("cfgver");
+    if (version < 1)
+    {
+        if (config.getIntValue("fontSize") == 11)
+            config.deleteKey("fontSize");
+        if (config.getIntValue("npcfontSize") == 13)
+            config.deleteKey("npcfontSize");
+    }
+
+    config.setValue("cfgver", 1);
 }

@@ -366,6 +366,8 @@ private:
 
     void logVars();
 
+    void checkConfigVersion();
+
     static Client *mInstance;
 
     static void bindTextDomain(const char *const name, const char *const path);
