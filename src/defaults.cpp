@@ -338,14 +338,17 @@ void getConfigDefaults2(DefaultsData *const configData)
     int size = 12;
     switch (density)
     {
+        case DENSITY_TV:
+            size = 14;
+            break;
         case DENSITY_HIGH:
-            size = 13;
+            size = 16;
             break;
         case DENSITY_XHIGH:
-            size = 15;
+            size = 18;
             break;
         case DENSITY_XXHIGH:
-            size = 17;
+            size = 20;
             break;
         default:
             break;
