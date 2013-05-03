@@ -147,21 +147,27 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg) const
         switch (bskill)
         {
             case BSKILL_TRADE:
+                // TRANSLATORS: error message
                 txt = _("Trade failed!");
                 break;
             case BSKILL_EMOTE:
+                // TRANSLATORS: error message
                 txt = _("Emote failed!");
                 break;
             case BSKILL_SIT:
+                // TRANSLATORS: error message
                 txt = _("Sit failed!");
                 break;
             case BSKILL_CREATECHAT:
+                // TRANSLATORS: error message
                 txt = _("Chat creating failed!");
                 break;
             case BSKILL_JOINPARTY:
+                // TRANSLATORS: error message
                 txt = _("Could not join party!");
                 break;
             case BSKILL_SHOUT:
+                // TRANSLATORS: error message
                 txt = _("Cannot shout!");
                 break;
             default:
@@ -175,37 +181,48 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg) const
         switch (reason)
         {
             case RFAIL_SKILLDEP:
+                // TRANSLATORS: error message
                 txt.append(_("You have not yet reached a high enough lvl!"));
                 break;
             case RFAIL_INSUFHP:
+                // TRANSLATORS: error message
                 txt.append(_("Insufficient HP!"));
                 break;
             case RFAIL_INSUFSP:
+                // TRANSLATORS: error message
                 txt.append(_("Insufficient SP!"));
                 break;
             case RFAIL_NOMEMO:
+                // TRANSLATORS: error message
                 txt.append(_("You have no memos!"));
                 break;
             case RFAIL_SKILLDELAY:
+                // TRANSLATORS: error message
                 txt.append(_("You cannot do that right now!"));
                 break;
             case RFAIL_ZENY:
+                // TRANSLATORS: error message
                 txt.append(_("Seems you need more money... ;-)"));
                 break;
             case RFAIL_WEAPON:
+                // TRANSLATORS: error message
                 txt.append(_("You cannot use this skill with that "
                     "kind of weapon!"));
                 break;
             case RFAIL_REDGEM:
+                // TRANSLATORS: error message
                 txt.append(_("You need another red gem!"));
                 break;
             case RFAIL_BLUEGEM:
+                // TRANSLATORS: error message
                 txt.append(_("You need another blue gem!"));
                 break;
             case RFAIL_OVERWEIGHT:
+                // TRANSLATORS: error message
                 txt.append(_("You're carrying to much to do this!"));
                 break;
             default:
+                // TRANSLATORS: error message
                 txt.append(_("Huh? What's that?"));
                 logger->log("QQQ SMSG_SKILL_FAILED: reason "
                             + toString(reason));
@@ -217,12 +234,15 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg) const
         switch (skillId)
         {
             case SKILL_WARP :
+                // TRANSLATORS: error message
                 txt = _("Warp failed...");
                 break;
             case SKILL_STEAL :
+                // TRANSLATORS: error message
                 txt = _("Could not steal anything...");
                 break;
             case SKILL_ENVENOM :
+                // TRANSLATORS: error message
                 txt = _("Poison had no effect...");
                 break;
             default:

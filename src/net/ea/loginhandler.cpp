@@ -148,15 +148,19 @@ void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg) const
         {
             case 0:
                 errorMessage =
+                    // TRANSLATORS: error message
                     _("Account was not found. Please re-login.");
                 break;
             case 2:
+                // TRANSLATORS: error message
                 errorMessage = _("Old password incorrect.");
                 break;
             case 3:
+                // TRANSLATORS: error message
                 errorMessage = _("New password too short.");
                 break;
             default:
+                // TRANSLATORS: error message
                 errorMessage = _("Unknown error.");
                 break;
         }
@@ -229,26 +233,33 @@ void LoginHandler::processLoginError(Net::MessageIn &msg) const
     switch (code)
     {
         case 0:
+            // TRANSLATORS: error message
             errorMessage = _("Unregistered ID.");
             break;
         case 1:
+            // TRANSLATORS: error message
             errorMessage = _("Wrong password.");
             LoginDialog::savedPassword.clear();
             break;
         case 2:
+            // TRANSLATORS: error message
             errorMessage = _("Account expired.");
             break;
         case 3:
+            // TRANSLATORS: error message
             errorMessage = _("Rejected from server.");
             break;
         case 4:
+            // TRANSLATORS: error message
             errorMessage = _("You have been permanently banned from "
                               "the game. Please contact the GM team.");
             break;
         case 5:
+            // TRANSLATORS: error message
             errorMessage = _("Client too old.");
             break;
         case 6:
+            // TRANSLATORS: error message
             errorMessage = strprintf(_("You have been temporarily "
                                         "banned from the game until "
                                         "%s.\nPlease contact the GM "
@@ -256,21 +267,27 @@ void LoginHandler::processLoginError(Net::MessageIn &msg) const
                                         msg.readString(20).c_str());
             break;
         case 7:
+            // TRANSLATORS: error message
             errorMessage = _("Server overpopulated.");
             break;
         case 9:
+            // TRANSLATORS: error message
             errorMessage = _("This user name is already taken.");
             break;
         case 10:
+            // TRANSLATORS: error message
             errorMessage = _("Wrong name.");
             break;
         case 11:
+            // TRANSLATORS: error message
             errorMessage = _("Incorrect email.");
             break;
         case 99:
+            // TRANSLATORS: error message
             errorMessage = _("Username permanently erased.");
             break;
         default:
+            // TRANSLATORS: error message
             errorMessage = _("Unknown error.");
             break;
     }

@@ -172,20 +172,29 @@ void GuildHandler::processGuildBasicInfo(Net::MessageIn &msg)
     if (guildTab && showBasicInfo)
     {
         showBasicInfo = false;
+        // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild name: %s"),
             name.c_str()), BY_SERVER);
+        // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild master: %s"),
             master.c_str()), BY_SERVER);
+        // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild level: %d"), level), BY_SERVER);
+        // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Online members: %d"),
             members), BY_SERVER);
+        // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Max members: %d"),
             maxMembers), BY_SERVER);
+        // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Average level: %d"),
             avgLevel), BY_SERVER);
+        // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild exp: %d"), exp), BY_SERVER);
+        // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild next exp: %d"),
             nextExp), BY_SERVER);
+        // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild castle: %s"),
             castle.c_str()), BY_SERVER);
     }

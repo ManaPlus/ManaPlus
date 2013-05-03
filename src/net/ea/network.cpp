@@ -96,6 +96,7 @@ bool Network::connect(ServerInfo server)
 
     if (server.hostname.empty())
     {
+        // TRANSLATORS: error message
         setError(_("Empty address given to Network::connect()!"));
         return false;
     }
@@ -190,6 +191,7 @@ bool Network::realConnect()
         mServer.port) == -1)
     {
         const std::string errorMessage = std::string(
+            // TRANSLATORS: error message
             _("Unable to resolve host \"")).append(
             mServer.hostname).append("\"");
         setError(errorMessage);
@@ -265,6 +267,7 @@ void Network::receive()
                 }
                 else if (ret < 0)
                 {
+                    // TRANSLATORS: error message
                     setError(_("Connection to server terminated. ") +
                              std::string(TcpNet::getError()));
                 }

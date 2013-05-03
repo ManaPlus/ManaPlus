@@ -99,7 +99,9 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg)
                 != tradePartnerName)
             {
                 tradeWindow->clear();
+                // TRANSLATORS: trade message
                 confirmDlg = new ConfirmDialog(_("Request for Trade"),
+                    // TRANSLATORS: trade message
                     strprintf(_("%s wants to trade with you, do"
                     " you accept?"), tradePartnerName.c_str()), true);
                 confirmDlg->addActionListener(&listener);
@@ -144,6 +146,7 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
             if (tradeWindow)
             {
                 tradeWindow->reset();
+                // TRANSLATORS: trade header
                 tradeWindow->setCaption(strprintf(_("Trade: You and %s"),
                     tradePartnerName.c_str()));
                 tradeWindow->initTrade(tradePartnerName);

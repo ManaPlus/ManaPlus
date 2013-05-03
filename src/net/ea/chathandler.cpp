@@ -79,6 +79,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
             if (chatWindow)
             {
                 chatWindow->addWhisper(nick,
+                    // TRANSLATORS: chat message
                     strprintf(_("Whisper could not be "
                     "sent, %s is offline."), nick.c_str()), BY_SERVER);
             }
@@ -87,6 +88,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
             if (chatWindow)
             {
                 chatWindow->addWhisper(nick,
+                    // TRANSLATORS: chat message
                     strprintf(_("Whisper could not "
                     "be sent, ignored by %s."), nick.c_str()),
                     BY_SERVER);

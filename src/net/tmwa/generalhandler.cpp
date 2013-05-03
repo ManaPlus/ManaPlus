@@ -101,11 +101,17 @@ GeneralHandler::GeneralHandler() :
     generalHandler = this;
 
     std::vector<ItemDB::Stat> stats;
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("str", _("Strength %+d")));
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("agi", _("Agility %+d")));
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("vit", _("Vitality %+d")));
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("int", _("Intelligence %+d")));
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("dex", _("Dexterity %+d")));
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("luck", _("Luck %+d")));
 
     ItemDB::setStatsList(stats);
@@ -131,29 +137,36 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
             switch (code)
             {
                 case 0:
+                    // TRANSLATORS: error message
                     errorMessage = _("Authentication failed.");
                     break;
                 case 1:
+                    // TRANSLATORS: error message
                     errorMessage = _("No servers available.");
                     break;
                 case 2:
                     if (Client::getState() == STATE_GAME)
                     {
+                        // TRANSLATORS: error message
                         errorMessage = _("Someone else is trying to use this "
                                          "account.");
                     }
                     else
                     {
+                        // TRANSLATORS: error message
                         errorMessage = _("This account is already logged in.");
                     }
                     break;
                 case 3:
+                    // TRANSLATORS: error message
                     errorMessage = _("Speed hack detected.");
                     break;
                 case 8:
+                    // TRANSLATORS: error message
                     errorMessage = _("Duplicated login.");
                     break;
                 default:
+                    // TRANSLATORS: error message
                     errorMessage = _("Unknown connection error.");
                     break;
             }
@@ -229,9 +242,14 @@ void GeneralHandler::flushNetwork()
     if (mNetwork->getState() == Network::NET_ERROR)
     {
         if (!mNetwork->getError().empty())
+        {
             errorMessage = mNetwork->getError();
+        }
         else
+        {
+            // TRANSLATORS: error message
             errorMessage = _("Got disconnected from server!");
+        }
 
         Client::setState(STATE_ERROR);
     }
@@ -257,26 +275,43 @@ void GeneralHandler::gameStarted() const
     // protection against double addition attributes.
     statusWindow->clearAttributes();
 
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(STR, _("Strength"), "str", true, "");
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(AGI, _("Agility"), "agi", true, "");
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(VIT, _("Vitality"), "vit", true, "");
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(INT, _("Intelligence"), "int", true, "");
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(DEX, _("Dexterity"), "dex", true, "");
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(LUK, _("Luck"), "luk", true, "");
 
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(ATK, _("Attack"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(DEF, _("Defense"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(MATK, _("M.Attack"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(MDEF, _("M.Defense"));
+    // TRANSLATORS: player stat
     // xgettext:no-c-format
     statusWindow->addAttribute(HIT, _("% Accuracy"));
+    // TRANSLATORS: player stat
     // xgettext:no-c-format
     statusWindow->addAttribute(FLEE, _("% Evade"));
+    // TRANSLATORS: player stat
     // xgettext:no-c-format
     statusWindow->addAttribute(CRIT, _("% Critical"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(PlayerInfo::ATTACK_DELAY, _("Attack Delay"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(PlayerInfo::WALK_SPEED, _("Walk Delay"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(PlayerInfo::ATTACK_RANGE, _("Attack Range"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(PlayerInfo::ATTACK_SPEED, _("Damage per sec."));
 }
 

@@ -66,11 +66,17 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
         return;
 
     StringVect attributes;
+    // TRANSLATORS: playe stat
     attributes.push_back(_("Strength:"));
+    // TRANSLATORS: playe stat
     attributes.push_back(_("Agility:"));
+    // TRANSLATORS: playe stat
     attributes.push_back(_("Vitality:"));
+    // TRANSLATORS: playe stat
     attributes.push_back(_("Intelligence:"));
+    // TRANSLATORS: playe stat
     attributes.push_back(_("Dexterity:"));
+    // TRANSLATORS: playe stat
     attributes.push_back(_("Luck:"));
 
     const Token &token =
@@ -115,13 +121,16 @@ void CharServerHandler::processCharLoginError(Net::MessageIn &msg) const
     switch (msg.readInt8())
     {
         case 0:
+            // TRANSLATORS: error message
             errorMessage = _("Access denied. Most likely, there are "
                              "too many players on this server.");
             break;
         case 1:
+            // TRANSLATORS: error message
             errorMessage = _("Cannot use this ID.");
             break;
         default:
+            // TRANSLATORS: error message
             errorMessage = _("Unknown char-server failure.");
             break;
     }
@@ -152,25 +161,32 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
         case 1:
         case 0:
         default:
+            // TRANSLATORS: error message
             errorMessage = _("Failed to create character. Most "
                 "likely the name is already taken.");
             break;
         case 2:
+            // TRANSLATORS: error message
             errorMessage = _("Wrong name.");
             break;
         case 3:
+            // TRANSLATORS: error message
             errorMessage = _("Incorrect stats.");
             break;
         case 4:
+            // TRANSLATORS: error message
             errorMessage = _("Incorrect hair.");
             break;
         case 5:
+            // TRANSLATORS: error message
             errorMessage = _("Incorrect slot.");
             break;
         case 6:
+            // TRANSLATORS: error message
             errorMessage = _("Incorrect race.");
             break;
     }
+    // TRANSLATORS: error message header
     new OkDialog(_("Error"), errorMessage, DIALOG_ERROR);
     if (mCharCreateDialog)
         mCharCreateDialog->unlock();
@@ -183,12 +199,14 @@ void CharServerHandler::processCharDelete(Net::MessageIn &msg A_UNUSED)
     mSelectedCharacter = nullptr;
     updateCharSelectDialog();
     unlockCharSelectDialog();
+    // TRANSLATORS: info message
     new OkDialog(_("Info"), _("Character deleted."));
 }
 
 void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
 {
     unlockCharSelectDialog();
+    // TRANSLATORS: error message
     new OkDialog(_("Error"), _("Failed to delete character."), DIALOG_ERROR);
 }
 
