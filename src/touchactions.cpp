@@ -30,14 +30,14 @@
 #include "debug.h"
 
 bool padClicked(false);
-int haldJoyPad = 50;
+int halfJoyPad = 50;
 
 #define impHandler(name) void name(const MouseInput &mouseInput)
 #define impHandler0(name) void name(const MouseInput &mouseInput A_UNUSED)
 
 void setHalfJoyPad(const int s)
 {
-    haldJoyPad = s;
+    halfJoyPad = s;
 }
 
 static void moveChar(int x, int y)
@@ -46,8 +46,8 @@ static void moveChar(int x, int y)
     static const int diff = 20;
 
     // set center at (0,0)
-    x -= haldJoyPad;
-    y -= haldJoyPad;
+    x -= halfJoyPad;
+    y -= halfJoyPad;
 
     // some magic for checking at what sector was click
     if (abs(x) < lim1)
@@ -104,7 +104,7 @@ static void moveChar(int x, int y)
 
 impHandler(padClick)
 {
-    moveChar(mouseInput.getX(), mouseInput.getY());
+    moveChar(mouseInput.getTouchX(), mouseInput.getTouchY());
     padClicked = true;
 }
 
@@ -113,18 +113,18 @@ impHandler(padEvents)
     if (mouseInput.getType() == gcn::MouseInput::MOVED)
     {
         if (padClicked)
-            moveChar(mouseInput.getX(), mouseInput.getY());
+            moveChar(mouseInput.getTouchX(), mouseInput.getTouchY());
     }
 }
 
 impHandler0(padOut)
 {
     padClicked = false;
-    moveChar(haldJoyPad, haldJoyPad);
+    moveChar(halfJoyPad, halfJoyPad);
 }
 
 impHandler0(padUp)
 {
     padClicked = false;
-    moveChar(haldJoyPad, haldJoyPad);
+    moveChar(halfJoyPad, halfJoyPad);
 }
