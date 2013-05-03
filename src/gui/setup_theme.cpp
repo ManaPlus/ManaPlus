@@ -78,10 +78,12 @@ public:
     { }
 };
 
-const int maxFontSizes = 11;
+const int maxFontSizes = 16;
 
 const char *SIZE_NAME[maxFontSizes] =
 {
+    // TRANSLATORS: font size
+    N_("Very small (8)"),
     // TRANSLATORS: font size
     N_("Very small (9)"),
     // TRANSLATORS: font size
@@ -95,15 +97,23 @@ const char *SIZE_NAME[maxFontSizes] =
     // TRANSLATORS: font size
     N_("Large (14)"),
     // TRANSLATORS: font size
-    N_("Very large (15)"),
+    N_("Large (15)"),
     // TRANSLATORS: font size
-    N_("Big (16)"),
+    N_("Large (16)"),
     // TRANSLATORS: font size
-    N_("Very big (17)"),
+    N_("Big (17)"),
     // TRANSLATORS: font size
-    N_("Huge (18)"),
+    N_("Big (18)"),
     // TRANSLATORS: font size
-    N_("Very huge (19)"),
+    N_("Big (19)"),
+    // TRANSLATORS: font size
+    N_("Very big (20)"),
+    // TRANSLATORS: font size
+    N_("Very big (21)"),
+    // TRANSLATORS: font size
+    N_("Very big (22)"),
+    // TRANSLATORS: font size
+    N_("Huge (23)"),
 };
 
 class FontSizeChoiceListModel final : public gcn::ListModel
