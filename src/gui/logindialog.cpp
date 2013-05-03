@@ -367,9 +367,18 @@ void LoginDialog::prepareUpdate()
             (*mUpdateHost).clear();
         }
     }
-    else if (mUpdateHostDropDown)
+    else
     {
-        const std::string str = mUpdateHostDropDown->getSelectedString();
+        std::string str = "";
+        if (mUpdateHostDropDown)
+        {
+            str = mUpdateHostDropDown->getSelectedString();
+        }
+        else if (mLoginData->updateHost.empty()
+                 && !mLoginData->updateHosts.empty())
+        {
+            str = mLoginData->updateHosts[0];
+        }
         serverConfig.setValue("updateHost2", str);
         if (!str.empty() && checkPath(str))
         {
