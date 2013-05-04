@@ -35,6 +35,10 @@ SET (FILES
     itempopup.xml
     items.xml
     keyboard_icon.xml
+    keyboard_icon_high.xml
+    keyboard_icon_medium.xml
+    keyboard_icon_xhigh.xml
+    keyboard_icon_xxhigh.xml
     LICENSE.txt
     listbox.xml
     login.xml
