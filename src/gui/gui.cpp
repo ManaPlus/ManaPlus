@@ -89,6 +89,10 @@ Gui::Gui(Graphics *const graphics) :
     mMouseCursorAlpha(1.0f),
     mMouseInactivityTimer(0),
     mCursorType(Cursor::CURSOR_POINTER),
+#ifdef ANDROID
+    mLastMouseRealX(0),
+    mLastMouseRealY(0),
+#endif
     mFocusListeners(),
     mCustomCursor(false)
 {
@@ -687,6 +691,10 @@ void Gui::handleMouseInput()
 
         if (touchManager.processEvent(mouseInput))
         {
+#ifdef ANDROID
+            SDL_WarpMouse(mLastMouseX, mLastMouseY,
+                mLastMouseRealX, mLastMouseRealY);
+#endif
             mMouseInactivityTimer = 0;
             continue;
         }
@@ -695,7 +703,10 @@ void Gui::handleMouseInput()
         // changes or modal mouse input focus changes.
         mLastMouseX = mouseInput.getX();
         mLastMouseY = mouseInput.getY();
-
+#ifdef ANDROID
+        mLastMouseRealX = mouseInput.getRealX();
+        mLastMouseRealY = mouseInput.getRealY();
+#endif
         switch (mouseInput.getType())
         {
             case gcn::MouseInput::PRESSED:

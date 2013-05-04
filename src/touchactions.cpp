@@ -104,7 +104,7 @@ static void moveChar(int x, int y)
 
 impHandler(padClick)
 {
-    moveChar(mouseInput.getTouchX(), mouseInput.getTouchY());
+    moveChar(mouseInput.getX(), mouseInput.getY());
     padClicked = true;
 }
 
@@ -113,7 +113,7 @@ impHandler(padEvents)
     if (mouseInput.getType() == gcn::MouseInput::MOVED)
     {
         if (padClicked)
-            moveChar(mouseInput.getTouchX(), mouseInput.getTouchY());
+            moveChar(mouseInput.getX(), mouseInput.getY());
     }
 }
 

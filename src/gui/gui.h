@@ -173,7 +173,10 @@ class Gui final : public gcn::Gui
         float mMouseCursorAlpha;
         int mMouseInactivityTimer;
         int mCursorType;
-
+#ifdef ANDROID
+        uint16_t mLastMouseRealX;
+        uint16_t mLastMouseRealY;
+#endif
         typedef std::list<gcn::FocusListener*> FocusListenerList;
         typedef FocusListenerList::iterator FocusListenerIterator;
         FocusListenerList mFocusListeners;
