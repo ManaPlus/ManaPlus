@@ -104,9 +104,6 @@ Tab::~Tab()
 
 void Tab::init()
 {
-    mLabel->setPosition(4, 4);
-    add(mLabel);
-
     addMouseListener(this);
     setFocusable(false);
     setFrameSize(0);
@@ -126,6 +123,15 @@ void Tab::init()
         updateAlpha();
     }
     mInstances++;
+
+    add(mLabel);
+
+    const Skin *const skin = tabImg[TAB_STANDARD];
+    if (!skin)
+        return;
+    const int padding = skin->getPadding();
+
+    mLabel->setPosition(padding, padding);
 }
 
 void Tab::updateAlpha()
