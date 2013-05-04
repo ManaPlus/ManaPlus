@@ -69,6 +69,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mBorderColor(getThemeColor(Theme::BORDER)),
     mLabelsColor(getThemeColor(Theme::LABEL)),
+    mLabelsColor2(getThemeColor(Theme::LABEL_OUTLINE)),
     mSlotBackground(),
     mSlotHighlightedBackground(),
     mVertexes(new ImageCollection),
@@ -224,6 +225,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
                 if (i == EQUIP_PROJECTILE_SLOT)
                 {
                     g->setColor(mLabelsColor);
+                    g->setColor2(mLabelsColor2);
                     const std::string str = toString(item->getQuantity());
                     font->drawString(g, str,
                         box->x + (mBoxSize - font->getWidth(str)) / 2,

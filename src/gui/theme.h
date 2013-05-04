@@ -226,6 +226,7 @@ class Theme final : public Palette, public ConfigListener
             CHECKBOX,
             DROPDOWN,
             LABEL,
+            LABEL_OUTLINE,
             LISTBOX,
             LISTBOX_SELECTED,
             RADIOBUTTON,
