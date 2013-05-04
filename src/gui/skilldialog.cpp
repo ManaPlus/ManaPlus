@@ -106,6 +106,7 @@ class SkillListBox final : public ListBox
             mPopup(new TextPopup),
             mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
             mTextColor(getThemeColor(Theme::TEXT)),
+            mTextColor2(getThemeColor(Theme::TEXT_OUTLINE)),
             mTextPadding(mSkin ? mSkin->getOption("textPadding", 34) : 34),
             mSpacing(mSkin ? mSkin->getOption("spacing", 0) : 0),
             mRowHeight(getFont()->getHeight() * 2 + mSpacing + 2 * mPadding)
@@ -159,6 +160,7 @@ class SkillListBox final : public ListBox
 
             // Draw the list elements
             graphics->setColor(mTextColor);
+            graphics->setColor2(mTextColor2);
             gcn::Font *const font = getFont();
             const int space = font->getHeight() + mSpacing;
             const int width2 = getWidth() - mPadding;
@@ -222,6 +224,7 @@ class SkillListBox final : public ListBox
         TextPopup *mPopup;
         gcn::Color mHighlightColor;
         gcn::Color mTextColor;
+        gcn::Color mTextColor2;
         int mTextPadding;
         int mSpacing;
         int mRowHeight;

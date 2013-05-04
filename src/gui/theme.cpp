@@ -774,6 +774,7 @@ static int readColorType(const std::string &type)
         "SELFNICK",
         "SELFNICK_OUTLINE",
         "TEXT",
+        "TEXT_OUTLINE",
         "CARET",
         "SHADOW",
         "OUTLINE",

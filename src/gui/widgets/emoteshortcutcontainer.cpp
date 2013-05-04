@@ -48,9 +48,9 @@ static const int MAX_ITEMS = 48;
 EmoteShortcutContainer::EmoteShortcutContainer():
     ShortcutContainer(),
     mEmoteImg(),
+    mEmotePopup(new TextPopup),
     mEmoteClicked(false),
-    mEmoteMoved(0),
-    mEmotePopup(new TextPopup)
+    mEmoteMoved(0)
 {
     addMouseListener(this);
     addWidgetListener(this);
@@ -82,6 +82,7 @@ EmoteShortcutContainer::EmoteShortcutContainer():
         mBoxWidth = 1;
     }
     mForegroundColor = getThemeColor(Theme::TEXT);
+    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 }
 
 EmoteShortcutContainer::~EmoteShortcutContainer()
@@ -99,6 +100,7 @@ void EmoteShortcutContainer::setWidget2(const Widget2 *const widget)
 {
     Widget2::setWidget2(widget);
     mForegroundColor = getThemeColor(Theme::TEXT);
+    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 }
 
 void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
@@ -115,7 +117,8 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
     gcn::Font *const font = getFont();
     drawBackground(g);
 
-    graphics->setColor(mForegroundColor);
+    g->setColor(mForegroundColor);
+    g->setColor2(mForegroundColor2);
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int emoteX = (i % mGridWidth) * mBoxWidth;

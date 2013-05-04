@@ -41,6 +41,7 @@ TextPreview::TextPreview(const Widget2 *const widget,
     mFont(gui->getFont()),
     mText(text),
     mTextColor(&getThemeColor(Theme::TEXT)),
+    mTextColor2(&getThemeColor(Theme::TEXT_OUTLINE)),
     mBGColor(&getThemeColor(Theme::BACKGROUND)),
     mTextBGColor(nullptr),
     mTextAlpha(false),
@@ -83,16 +84,17 @@ void TextPreview::draw(gcn::Graphics* graphics)
     BLOCK_START("TextPreview::draw")
     if (Client::getGuiAlpha() != mAlpha)
         mAlpha = Client::getGuiAlpha();
+    Graphics *const g = static_cast<Graphics*>(graphics);
 
     const int alpha = mTextAlpha ? static_cast<int>(mAlpha * 255.0f) : 255;
 
     if (mOpaque)
     {
-        graphics->setColor(gcn::Color(static_cast<int>(mBGColor->r),
-                                      static_cast<int>(mBGColor->g),
-                                      static_cast<int>(mBGColor->b),
-                                      static_cast<int>(mAlpha * 255.0f)));
-        graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
+        g->setColor(gcn::Color(static_cast<int>(mBGColor->r),
+                    static_cast<int>(mBGColor->g),
+                    static_cast<int>(mBGColor->b),
+                    static_cast<int>(mAlpha * 255.0f)));
+        g->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
     }
 
     if (mTextBGColor)
@@ -104,18 +106,20 @@ void TextPreview::draw(gcn::Graphics* graphics)
                 + 2 * ((mOutline || mShadow) ? 1 :0);
             const int y = font->getHeight() + 1
                 + 2 * ((mOutline || mShadow) ? 1 : 0);
-            graphics->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),
-                                          static_cast<int>(mTextBGColor->g),
-                                          static_cast<int>(mTextBGColor->b),
-                                          static_cast<int>(mAlpha * 255.0f)));
-            graphics->fillRectangle(gcn::Rectangle(mPadding, mPadding, x, y));
+            g->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),
+                static_cast<int>(mTextBGColor->g),
+                static_cast<int>(mTextBGColor->b),
+                static_cast<int>(mAlpha * 255.0f)));
+            g->fillRectangle(gcn::Rectangle(mPadding, mPadding, x, y));
         }
     }
 
-    graphics->setColor(gcn::Color(mTextColor->r, mTextColor->g,
+    g->setColor(gcn::Color(mTextColor->r, mTextColor->g,
         mTextColor->b, alpha));
+    g->setColor2(gcn::Color(mTextColor2->r, mTextColor2->g,
+        mTextColor2->b, alpha));
 
-    if (mOutline)
+    if (mOutline && mTextColor != mTextColor2)
     {
         Graphics *const g = static_cast<Graphics *const>(graphics);
         g->setColor2(Theme::getThemeColor(Theme::OUTLINE));

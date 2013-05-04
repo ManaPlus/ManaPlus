@@ -46,10 +46,10 @@
 
 SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
     ShortcutContainer(),
-    mSpellClicked(false),
     mSpellMoved(nullptr),
     mSpellPopup(new SpellPopup),
-    mNumber(number)
+    mNumber(number),
+    mSpellClicked(false)
 {
     addMouseListener(this);
     addWidgetListener(this);
@@ -73,6 +73,7 @@ SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
         mBoxWidth = 1;
     }
     mForegroundColor = getThemeColor(Theme::TEXT);
+    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 }
 
 SpellShortcutContainer::~SpellShortcutContainer()
@@ -88,6 +89,7 @@ void SpellShortcutContainer::setWidget2(const Widget2 *const widget)
 {
     Widget2::setWidget2(widget);
     mForegroundColor = getThemeColor(Theme::TEXT);
+    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 }
 
 void SpellShortcutContainer::draw(gcn::Graphics *graphics)
@@ -108,6 +110,7 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
 
     const int selectedId = spellShortcut->getSelectedItem();
     g->setColor(mForegroundColor);
+    g->setColor2(mForegroundColor2);
     drawBackground(g);
 
     for (unsigned i = 0; i < mMaxItems; i++)

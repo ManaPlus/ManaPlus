@@ -80,10 +80,11 @@ class SpellShortcutContainer final : public ShortcutContainer
         void setWidget2(const Widget2 *const widget);
 
     private:
-        bool mSpellClicked;
         TextCommand *mSpellMoved;
         SpellPopup *mSpellPopup;
-        unsigned mNumber;
+        unsigned int mNumber;
+        gcn::Color mForegroundColor2;
+        bool mSpellClicked;
 };
 
 #endif

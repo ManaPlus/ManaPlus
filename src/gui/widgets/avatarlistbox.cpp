@@ -64,6 +64,7 @@ AvatarListBox::AvatarListBox(const Widget2 *const widget,
     config.addListener("showlevel", this);
 
     mForegroundColor = getThemeColor(Theme::TEXT);
+    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 }
 
 AvatarListBox::~AvatarListBox()
@@ -110,6 +111,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
     // Draw the list elements
     graphics->setColor(mForegroundColor);
+    graphics->setColor2(mForegroundColor2);
     for (int i = 0, y = 0;
          i < model->getNumberOfElements();
          ++i, y += fontHeight)
@@ -259,6 +261,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
         }
 
         graphics->setColor(mForegroundColor);
+        graphics->setColor2(mForegroundColor2);
 
         // Draw Name
         if (a->getDisplayBold())

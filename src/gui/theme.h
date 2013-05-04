@@ -214,6 +214,7 @@ class Theme final : public Palette, public ConfigListener
             SELFNICK,
             SELFNICK_OUTLINE,
             TEXT,
+            TEXT_OUTLINE,
             CARET,
             SHADOW,
             OUTLINE,

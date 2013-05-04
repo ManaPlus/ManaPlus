@@ -44,13 +44,11 @@ class TextPreview final : public gcn::Widget,
 
         ~TextPreview();
 
-        /**
-         * Sets the color the text is printed in.
-         *
-         * @param color the color to set
-         */
         inline void setTextColor(const gcn::Color *color)
         { mTextColor = color; adjustSize(); }
+
+        inline void setTextColor2(const gcn::Color *color)
+        { mTextColor2 = color; adjustSize(); }
 
         /**
          * Sets the text to use the set alpha value.
@@ -130,6 +128,7 @@ class TextPreview final : public gcn::Widget,
         gcn::Font *mFont;
         std::string mText;
         const gcn::Color *mTextColor;
+        const gcn::Color *mTextColor2;
         const gcn::Color *mBGColor;
         const gcn::Color *mTextBGColor;
         bool mTextAlpha;
