@@ -114,16 +114,12 @@ void TextPreview::draw(gcn::Graphics* graphics)
         }
     }
 
-    g->setColor(gcn::Color(mTextColor->r, mTextColor->g,
-        mTextColor->b, alpha));
-    g->setColor2(gcn::Color(mTextColor2->r, mTextColor2->g,
-        mTextColor2->b, alpha));
+    g->setColorAll(gcn::Color(mTextColor->r, mTextColor->g, mTextColor->b,
+        alpha), gcn::Color(mTextColor2->r, mTextColor2->g, mTextColor2->b,
+        alpha));
 
     if (mOutline && mTextColor != mTextColor2)
-    {
-        Graphics *const g = static_cast<Graphics *const>(graphics);
         g->setColor2(Theme::getThemeColor(Theme::OUTLINE));
-    }
 
     mFont->drawString(graphics, mText, mPadding + 1, mPadding + 1);
     BLOCK_END("TextPreview::draw")

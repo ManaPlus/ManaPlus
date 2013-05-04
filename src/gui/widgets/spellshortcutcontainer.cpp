@@ -109,8 +109,7 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
     gcn::Font *const font = getFont();
 
     const int selectedId = spellShortcut->getSelectedItem();
-    g->setColor(mForegroundColor);
-    g->setColor2(mForegroundColor2);
+    g->setColorAll(mForegroundColor, mForegroundColor2);
     drawBackground(g);
 
     for (unsigned i = 0; i < mMaxItems; i++)

@@ -108,6 +108,13 @@ class SafeOpenGLGraphics final : public Graphics
             mColorAlpha = (color.a != 255);
         }
 
+        void setColorAll(const gcn::Color &color, const gcn::Color &color2)
+        {
+            mColor = color;
+            mColor2 = color2;
+            mColorAlpha = (color.a != 255);
+        }
+
         void drawPoint(int x, int y);
 
         void drawLine(int x1, int y1, int x2, int y2);

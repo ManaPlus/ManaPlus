@@ -159,8 +159,7 @@ class SkillListBox final : public ListBox
             }
 
             // Draw the list elements
-            graphics->setColor(mTextColor);
-            graphics->setColor2(mTextColor2);
+            graphics->setColorAll(mTextColor, mTextColor2);
             gcn::Font *const font = getFont();
             const int space = font->getHeight() + mSpacing;
             const int width2 = getWidth() - mPadding;

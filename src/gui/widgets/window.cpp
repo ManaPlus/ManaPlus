@@ -283,8 +283,7 @@ void Window::draw(gcn::Graphics *graphics)
     // Draw title
     if (mShowTitle)
     {
-        g->setColor(mForegroundColor);
-        g->setColor2(mForegroundColor2);
+        g->setColorAll(mForegroundColor, mForegroundColor2);
         int x;
         switch (static_cast<gcn::Graphics::Alignment>(mCaptionAlign))
         {

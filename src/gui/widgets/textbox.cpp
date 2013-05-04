@@ -362,8 +362,8 @@ void TextBox::draw(gcn::Graphics* graphics)
             mCaretRow * getFont()->getHeight());
     }
 
-    graphics->setColor(mForegroundColor);
-    static_cast<Graphics*>(graphics)->setColor2(mForegroundColor2);
+    static_cast<Graphics*>(graphics)->setColorAll(
+        mForegroundColor, mForegroundColor2);
     gcn::Font *const font = getFont();
     const int fontHeight = font->getHeight();
 

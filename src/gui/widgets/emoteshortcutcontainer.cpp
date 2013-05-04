@@ -117,8 +117,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
     gcn::Font *const font = getFont();
     drawBackground(g);
 
-    g->setColor(mForegroundColor);
-    g->setColor2(mForegroundColor2);
+    g->setColorAll(mForegroundColor, mForegroundColor2);
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int emoteX = (i % mGridWidth) * mBoxWidth;

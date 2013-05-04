@@ -343,6 +343,13 @@ class Graphics : public gcn::SDLGraphics
         void setColor2(const gcn::Color &color)
         { mColor2 = color; }
 
+        void setColorAll(const gcn::Color &color, const gcn::Color &color2)
+        {
+            mColor = color;
+            mColor2 = color2;
+            mAlpha = (color.a != 255);
+        }
+
         const gcn::Color &getColor2() const
         { return mColor2; }
 

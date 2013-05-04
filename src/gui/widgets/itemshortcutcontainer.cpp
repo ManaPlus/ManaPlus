@@ -138,8 +138,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         // Draw item keyboard shortcut.
         std::string key = inputManager.getKeyValueString(
             Input::KEY_SHORTCUT_1 + i);
-        g->setColor(mForegroundColor);
-        g->setColor2(mForegroundColor);
+        g->setColorAll(mForegroundColor, mForegroundColor);
 
         font->drawString(g, key, itemX + 2, itemY + 2);
 

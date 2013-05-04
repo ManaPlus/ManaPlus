@@ -110,8 +110,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
     const std::string name = player_node->getName();
 
     // Draw the list elements
-    graphics->setColor(mForegroundColor);
-    graphics->setColor2(mForegroundColor2);
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     for (int i = 0, y = 0;
          i < model->getNumberOfElements();
          ++i, y += fontHeight)
@@ -260,8 +259,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             }
         }
 
-        graphics->setColor(mForegroundColor);
-        graphics->setColor2(mForegroundColor2);
+        graphics->setColorAll(mForegroundColor, mForegroundColor2);
 
         // Draw Name
         if (a->getDisplayBold())

@@ -224,8 +224,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
                     box->y + mItemPadding);
                 if (i == EQUIP_PROJECTILE_SLOT)
                 {
-                    g->setColor(mLabelsColor);
-                    g->setColor2(mLabelsColor2);
+                    g->setColorAll(mLabelsColor, mLabelsColor2);
                     const std::string str = toString(item->getQuantity());
                     font->drawString(g, str,
                         box->x + (mBoxSize - font->getWidth(str)) / 2,

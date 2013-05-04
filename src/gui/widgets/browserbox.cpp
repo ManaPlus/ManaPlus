@@ -430,8 +430,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
             break;
         if (!part.mType)
         {
-            graphics2->setColor(part.mColor);
-            graphics2->setColor2(part.mColor2);
+            graphics2->setColorAll(part.mColor, part.mColor2);
             if (part.mBold)
                 boldFont->drawString(graphics, part.mText, part.mX, part.mY);
             else
