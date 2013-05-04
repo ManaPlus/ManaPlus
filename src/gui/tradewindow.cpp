@@ -168,6 +168,8 @@ void TradeWindow::setMoney(const int amount)
         {
             mMoneyLabel->setForegroundColor(getThemeColor(
                 static_cast<int>(Theme::WARNING)));
+            mMoneyLabel->setForegroundColor2(getThemeColor(
+                static_cast<int>(Theme::WARNING_OUTLINE)));
         }
     }
     else

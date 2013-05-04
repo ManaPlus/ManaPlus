@@ -327,6 +327,7 @@ class Theme final : public Palette, public ConfigListener
             AMMO,
             SERVER_VERSION_NOT_SUPPORTED,
             WARNING,
+            WARNING_OUTLINE,
             CHARM,
             PLAYER_ADVANCED,
             BUBBLE_NAME,

@@ -887,6 +887,7 @@ static int readColorType(const std::string &type)
         "AMMO",
         "SERVER_VERSION_NOT_SUPPORTED",
         "WARNING",
+        "WARNING_OUTLINE",
         "CHARM",
         "PLAYER_ADVANCED",
         "BUBBLE_NAME",
