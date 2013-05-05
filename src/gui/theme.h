@@ -229,6 +229,7 @@ class Theme final : public Palette, public ConfigListener
             BUTTON_PRESSED,
             BUTTON_PRESSED_OUTLINE,
             CHECKBOX,
+            CHECKBOX_OUTLINE,
             DROPDOWN,
             LABEL,
             LABEL_OUTLINE,

@@ -91,6 +91,7 @@ class CheckBox final : public gcn::CheckBox,
         int mImagePadding;
         int mImageSize;
         int mSpacing;
+        gcn::Color mForegroundColor;
 
         static int instances;
         static Skin *mSkin;

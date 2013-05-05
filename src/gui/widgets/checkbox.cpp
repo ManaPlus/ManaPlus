@@ -68,6 +68,7 @@ CheckBox::CheckBox(const Widget2 *const widget,
         addActionListener(listener);
 
     mForegroundColor = getThemeColor(Theme::CHECKBOX);
+    mForegroundColor2 = getThemeColor(Theme::CHECKBOX_OUTLINE);
     if (mSkin)
     {
         mPadding = mSkin->getPadding();
@@ -98,7 +99,8 @@ void CheckBox::draw(gcn::Graphics* graphics)
     drawBox(graphics);
 
     gcn::Font *const font = getFont();
-    graphics->setColor(mForegroundColor);
+    static_cast<Graphics *const>(graphics)->setColorAll(
+        mForegroundColor, mForegroundColor2);
 
     font->drawString(graphics, mCaption, mPadding + mImageSize + mSpacing,
         mPadding);

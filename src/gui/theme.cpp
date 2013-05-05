@@ -789,6 +789,7 @@ static int readColorType(const std::string &type)
         "BUTTON_PRESSED",
         "BUTTON_PRESSED_OUTLINE",
         "CHECKBOX",
+        "CHECKBOX_OUTLINE",
         "DROPDOWN",
         "LABEL",
         "LABEL_OUTLINE",
