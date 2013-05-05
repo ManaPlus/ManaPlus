@@ -89,7 +89,7 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     }
 
     // Draw the list elements
-    graphics->setColor(mForegroundColor);
+    g->setColorAll(mForegroundColor, mForegroundColor2);
     for (int i = 0, y = 0; i < mListModel->getNumberOfElements();
          ++i, y += height)
     {
@@ -123,7 +123,8 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
             const int y = mSelected * height;
             g->drawImage(image, mImagePadding, y + (height
                 - image->getHeight()) / 2 + mPadding);
-            graphics->setColor(mForegroundSelectedColor);
+            g->setColorAll(mForegroundSelectedColor,
+                mForegroundSelectedColor2);
             font->drawString(graphics, mListModel->getElementAt(mSelected),
                 image->getWidth() + mImagePadding + mSpacing, y + textPos);
         }
