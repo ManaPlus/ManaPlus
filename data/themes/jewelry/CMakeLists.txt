@@ -51,7 +51,15 @@ SET (FILES
     playerbox.xml
     playerboxselected.xml
     popup.xml
+    popup_high.xml
+    popup_xhigh.xml
+    popup_xxhigh.xml
     popuplist.xml
+    popupmenu.xml
+    popupmenu_high.xml
+    popupmenu_medium.xml
+    popupmenu_xhigh.xml
+    popupmenu_xxhigh.xml
     progressbar.xml
     quests.xml
     radio.xml
