@@ -243,6 +243,7 @@ class Theme final : public Palette, public ConfigListener
             TAB_SELECTED_OUTLINE,
             TEXTBOX,
             TEXTFIELD,
+            TEXTFIELD_OUTLINE,
             WINDOW,
             WINDOW_OUTLINE,
             PARTY_CHAT_TAB,

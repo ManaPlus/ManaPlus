@@ -60,6 +60,7 @@ TextField::TextField(const Widget2 *const widget,
     mLastEventPaste(false),
     mPadding(1),
     mCaretColor(&getThemeColor(Theme::CARET)),
+    mForegroundColor2(getThemeColor(Theme::TEXTFIELD_OUTLINE)),
     mPopupMenu(nullptr)
 {
     setFrameSize(2);
@@ -138,7 +139,8 @@ void TextField::draw(gcn::Graphics *graphics)
                   mXScroll);
     }
 
-    graphics->setColor(mForegroundColor);
+    static_cast<Graphics*>(graphics)->setColorAll(
+        mForegroundColor, mForegroundColor2);
     gcn::Font *const font = getFont();
     font->drawString(graphics, mText, mPadding - mXScroll, mPadding);
     BLOCK_END("TextField::draw")

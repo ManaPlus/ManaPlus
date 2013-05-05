@@ -144,6 +144,7 @@ class TextField : public gcn::TextField,
         int mLastEventPaste;
         int mPadding;
         const gcn::Color *mCaretColor;
+        gcn::Color mForegroundColor2;
         PopupMenu *mPopupMenu;
 };
 
