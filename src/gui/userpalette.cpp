@@ -72,6 +72,7 @@ const std::string ColorTypeNames[] =
     "ColorAttackRange",
     "ColorAttackRangeBorder",
     "ColorMonsterAttackRange",
+    "ColorFloorItemText",
     "ColorHomePlace",
     "ColorHomePlaceBorder",
     "ColorRoadPoint"
@@ -201,6 +202,10 @@ UserPalette::UserPalette():
     addColor(MONSTER_ATTACK_RANGE, 0xff0000, STATIC,
         // TRANSLATORS: palette color
         _("Monster Attack Range"), 20);
+
+    addColor(FLOOR_ITEM_TEXT, 0xffffff, STATIC,
+        // TRANSLATORS: palette color
+        _("Floor item amount color"), 100);
     addColor(HOME_PLACE, 0xffffff, STATIC,
         // TRANSLATORS: palette color
         _("Home Place"), 20);

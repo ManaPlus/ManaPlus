@@ -300,6 +300,7 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
         case UserPalette::HIT_LOCAL_PLAYER_MISS:
         case UserPalette::ATTACK_RANGE:
         case UserPalette::MONSTER_ATTACK_RANGE:
+        case UserPalette::FLOOR_ITEM_TEXT:
             mTextPreview->setShadow(false);
             break;
         default:
@@ -324,6 +325,7 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
         case UserPalette::MONSTER_HP2:
         case UserPalette::PLAYER_HP:
         case UserPalette::PLAYER_HP2:
+        case UserPalette::FLOOR_ITEM_TEXT:
             // TRANSLATORS: colors tab. label.
             mGradDelayLabel->setCaption(_("Alpha:"));
             mGradDelayText->setRange(0, 255);

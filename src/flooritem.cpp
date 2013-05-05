@@ -29,6 +29,7 @@
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
+#include "gui/userpalette.h"
 
 #include "resources/iteminfo.h"
 
@@ -142,7 +143,9 @@ bool FloorItem::draw(Graphics *const graphics,
     {
         if (font && mAmount > 1)
         {
-            graphics->setColor(gcn::Color(255, 255, 255, 100));
+//            graphics->setColor(gcn::Color(255, 255, 255, 100));
+            graphics->setColor(userPalette->getColor(
+                UserPalette::FLOOR_ITEM_TEXT));
             font->drawString(graphics, toString(mAmount), x, y);
         }
     }

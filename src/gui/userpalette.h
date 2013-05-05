@@ -73,6 +73,7 @@ class UserPalette final : public Palette, public gcn::ListModel
             ATTACK_RANGE,
             ATTACK_RANGE_BORDER,
             MONSTER_ATTACK_RANGE,
+            FLOOR_ITEM_TEXT,
             HOME_PLACE,
             HOME_PLACE_BORDER,
             ROAD_POINT,
