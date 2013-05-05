@@ -71,9 +71,13 @@ Button::Button(const Widget2 *const widget) :
     mXOffset(0),
     mYOffset(0),
     mEnabledColor(getThemeColor(Theme::BUTTON)),
+    mEnabledColor2(getThemeColor(Theme::BUTTON_OUTLINE)),
     mDisabledColor(getThemeColor(Theme::BUTTON_DISABLED)),
+    mDisabledColor2(getThemeColor(Theme::BUTTON_DISABLED_OUTLINE)),
     mHighlightedColor(getThemeColor(Theme::BUTTON_HIGHLIGHTED)),
+    mHighlightedColor2(getThemeColor(Theme::BUTTON_HIGHLIGHTED_OUTLINE)),
     mPressedColor(getThemeColor(Theme::BUTTON_PRESSED)),
+    mPressedColor2(getThemeColor(Theme::BUTTON_PRESSED_OUTLINE)),
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(0),
@@ -100,9 +104,13 @@ Button::Button(const Widget2 *const widget,
     mXOffset(0),
     mYOffset(0),
     mEnabledColor(getThemeColor(Theme::BUTTON)),
+    mEnabledColor2(getThemeColor(Theme::BUTTON_OUTLINE)),
     mDisabledColor(getThemeColor(Theme::BUTTON_DISABLED)),
+    mDisabledColor2(getThemeColor(Theme::BUTTON_DISABLED_OUTLINE)),
     mHighlightedColor(getThemeColor(Theme::BUTTON_HIGHLIGHTED)),
+    mHighlightedColor2(getThemeColor(Theme::BUTTON_HIGHLIGHTED_OUTLINE)),
     mPressedColor(getThemeColor(Theme::BUTTON_PRESSED)),
+    mPressedColor2(getThemeColor(Theme::BUTTON_PRESSED_OUTLINE)),
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(0),
@@ -135,9 +143,13 @@ Button::Button(const Widget2 *const widget,
     mXOffset(0),
     mYOffset(0),
     mEnabledColor(getThemeColor(Theme::BUTTON)),
+    mEnabledColor2(getThemeColor(Theme::BUTTON_OUTLINE)),
     mDisabledColor(getThemeColor(Theme::BUTTON_DISABLED)),
+    mDisabledColor2(getThemeColor(Theme::BUTTON_DISABLED_OUTLINE)),
     mHighlightedColor(getThemeColor(Theme::BUTTON_HIGHLIGHTED)),
+    mHighlightedColor2(getThemeColor(Theme::BUTTON_HIGHLIGHTED_OUTLINE)),
     mPressedColor(getThemeColor(Theme::BUTTON_PRESSED)),
+    mPressedColor2(getThemeColor(Theme::BUTTON_PRESSED_OUTLINE)),
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(imageWidth),
@@ -170,9 +182,13 @@ Button::Button(const Widget2 *const widget, const std::string &imageName,
     mXOffset(0),
     mYOffset(0),
     mEnabledColor(getThemeColor(Theme::BUTTON)),
+    mEnabledColor2(getThemeColor(Theme::BUTTON_OUTLINE)),
     mDisabledColor(getThemeColor(Theme::BUTTON_DISABLED)),
+    mDisabledColor2(getThemeColor(Theme::BUTTON_DISABLED_OUTLINE)),
     mHighlightedColor(getThemeColor(Theme::BUTTON_HIGHLIGHTED)),
+    mHighlightedColor2(getThemeColor(Theme::BUTTON_HIGHLIGHTED_OUTLINE)),
     mPressedColor(getThemeColor(Theme::BUTTON_PRESSED)),
+    mPressedColor2(getThemeColor(Theme::BUTTON_PRESSED_OUTLINE)),
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(imageWidth),
@@ -347,16 +363,16 @@ void Button::draw(gcn::Graphics *graphics)
     switch (mode)
     {
         case BUTTON_DISABLED:
-            graphics->setColor(mDisabledColor);
+            g2->setColorAll(mDisabledColor, mDisabledColor2);
             break;
         case BUTTON_PRESSED:
-            graphics->setColor(mPressedColor);
+            g2->setColorAll(mPressedColor, mPressedColor2);
             break;
         case BUTTON_HIGHLIGHTED:
-            graphics->setColor(mHighlightedColor);
+            g2->setColorAll(mHighlightedColor, mHighlightedColor2);
             break;
         default:
-            graphics->setColor(mEnabledColor);
+            g2->setColorAll(mEnabledColor, mEnabledColor2);
             break;
     }
 

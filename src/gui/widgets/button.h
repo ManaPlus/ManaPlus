@@ -153,9 +153,13 @@ class Button final : public gcn::Button,
         int mXOffset;
         int mYOffset;
         gcn::Color mEnabledColor;
+        gcn::Color mEnabledColor2;
         gcn::Color mDisabledColor;
+        gcn::Color mDisabledColor2;
         gcn::Color mHighlightedColor;
+        gcn::Color mHighlightedColor2;
         gcn::Color mPressedColor;
+        gcn::Color mPressedColor2;
         Image **mImages;
         ImageSet *mImageSet;
         int mImageWidth;
