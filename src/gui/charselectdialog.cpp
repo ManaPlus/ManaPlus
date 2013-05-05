@@ -109,8 +109,8 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     mCharServerHandler(Net::getCharServerHandler()),
     mDeleteDialog(nullptr),
     mDeleteIndex(-1),
-    mSmallScreen(mainGraphics->getWidth() < 485
-                 || mainGraphics->getHeight() < 485)
+    mSmallScreen(mainGraphics->getWidth() < 470
+                 || mainGraphics->getHeight() < 370)
 {
     setCloseButton(true);
     setFocusable(true);
@@ -181,7 +181,6 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
         placer(0, 1, mCharacterView, 10);
         reflowLayout();
     }
-
     addKeyListener(this);
     center();
     setVisible(true);

@@ -48,10 +48,7 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
     }
     const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
     setWidth(firtChar->getWidth() * 5 + mPadding * 2);
-    if (config.getIntValue("fontSize") > 16)
-        setHeight(250);
-    else
-        setHeight(220);
+    setHeight(210 + config.getIntValue("fontSize") * 2);
 }
 
 CharacterViewNormal::~CharacterViewNormal()
