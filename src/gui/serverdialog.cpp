@@ -171,6 +171,7 @@ public:
 
         ServersListModel *const model = static_cast<ServersListModel *const>(
             mListModel);
+        Graphics *const g = static_cast<Graphics*>(graphics);
 
         updateAlpha();
 
@@ -201,9 +202,14 @@ public:
             ServerInfo info = model->getServer(i);
 
             if (mSelected == i)
-                graphics->setColor(mForegroundSelectedColor);
+            {
+                g->setColorAll(mForegroundSelectedColor,
+                    mForegroundSelectedColor2);
+            }
             else
-                graphics->setColor(mForegroundColor);
+            {
+                g->setColorAll(mForegroundColor, mForegroundColor2);
+            }
 
             int top;
             int x = mPadding;
