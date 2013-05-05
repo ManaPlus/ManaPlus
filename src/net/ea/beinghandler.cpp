@@ -166,9 +166,12 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     }
     else
     {
-        // undeleting marked for deletion being
         if (dstBeing->getType() == Being::NPC)
+        {
             actorSpriteManager->undelete(dstBeing);
+            if (serverVersion < 1)
+                requestNameById(id);
+        }
     }
 
     if (dstBeing->getType() == Being::PLAYER)
