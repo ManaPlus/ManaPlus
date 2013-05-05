@@ -45,7 +45,9 @@ DropShortcutContainer::DropShortcutContainer():
     mItemMoved(nullptr),
     mItemPopup(new ItemPopup),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
-    mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED))
+    mEquipedColor2(getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE)),
+    mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED)),
+    mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE))
 {
     addMouseListener(this);
     addWidgetListener(this);
@@ -85,7 +87,9 @@ void DropShortcutContainer::setWidget2(const Widget2 *const widget)
 {
     Widget2::setWidget2(widget);
     mEquipedColor = getThemeColor(Theme::ITEM_EQUIPPED);
+    mEquipedColor2 = getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE);
     mUnEquipedColor = getThemeColor(Theme::ITEM_NOT_EQUIPPED);
+    mUnEquipedColor2 = getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE);
 }
 
 void DropShortcutContainer::draw(gcn::Graphics *graphics)
@@ -140,9 +144,9 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
                 image->setAlpha(1.0f);
                 g->drawImage(image, itemX, itemY);
                 if (item->isEquipped())
-                    g->setColor(mEquipedColor);
+                    g->setColorAll(mEquipedColor, mEquipedColor2);
                 else
-                    g->setColor(mUnEquipedColor);
+                    g->setColorAll(mUnEquipedColor, mUnEquipedColor2);
                 font->drawString(g, caption,
                     itemX + (mBoxWidth - font->getWidth(caption)) / 2,
                     itemY + mBoxHeight - 14);

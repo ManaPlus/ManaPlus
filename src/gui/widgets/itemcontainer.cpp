@@ -186,7 +186,9 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mPaddingItemY(mSkin ? mSkin->getOption("paddingItemY", 0) : 0),
     mSelectionListeners(),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
-    mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED))
+    mEquipedColor2(getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE)),
+    mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED)),
+    mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE))
 {
     setFocusable(true);
     addKeyListener(this);
@@ -316,9 +318,9 @@ void ItemContainer::draw(gcn::Graphics *graphics)
             }
 
             if (item->isEquipped())
-                g->setColor(mEquipedColor);
+                g->setColorAll(mEquipedColor, mEquipedColor2);
             else
-                g->setColor(mUnEquipedColor);
+                g->setColorAll(mUnEquipedColor, mUnEquipedColor2);
 
             font->drawString(g, caption,
                 itemX + (mBoxWidth - font->getWidth(caption)) / 2,

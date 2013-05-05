@@ -85,7 +85,9 @@ class DropShortcutContainer final : public ShortcutContainer
 
         ItemPopup *mItemPopup;
         gcn::Color mEquipedColor;
+        gcn::Color mEquipedColor2;
         gcn::Color mUnEquipedColor;
+        gcn::Color mUnEquipedColor2;
 };
 
 #endif

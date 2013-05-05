@@ -222,7 +222,9 @@ class ItemContainer final : public gcn::Widget,
 
         SelectionListenerList mSelectionListeners;
         gcn::Color mEquipedColor;
+        gcn::Color mEquipedColor2;
         gcn::Color mUnEquipedColor;
+        gcn::Color mUnEquipedColor2;
 };
 
 #endif

@@ -233,7 +233,7 @@ public:
 
             if (info.version.first > 0)
             {
-                graphics->setColorAll(mNotSupportedColor, mNotSupportedColor2);
+                g->setColorAll(mNotSupportedColor, mNotSupportedColor2);
                 font2->drawString(graphics, info.version.second,
                     width - info.version.first - mPadding, top);
             }

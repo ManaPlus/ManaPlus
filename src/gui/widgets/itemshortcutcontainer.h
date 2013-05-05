@@ -88,7 +88,9 @@ class ItemShortcutContainer final : public ShortcutContainer
         ItemPopup *mItemPopup;
         SpellPopup *mSpellPopup;
         gcn::Color mEquipedColor;
+        gcn::Color mEquipedColor2;
         gcn::Color mUnEquipedColor;
+        gcn::Color mUnEquipedColor2;
         gcn::Color mForegroundColor2;
 };
 
