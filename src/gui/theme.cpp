@@ -910,7 +910,9 @@ static int readColorType(const std::string &type)
         "GRAY",
         "GRAY_OUTLINE",
         "BROWN",
-        "BROWN_OUTLINE"
+        "BROWN_OUTLINE",
+        "STATUSBAR_ON",
+        "STATUSBAR_OFF"
     };
 
     if (type.empty())

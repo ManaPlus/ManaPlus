@@ -83,6 +83,8 @@
         <color id="ITEM_NOT_EQUIPPED" color="#E0E0E0" />
         <color id="BUBBLE_NAME" color="#ffffff" />
         <color id="BUBBLE_TEXT" color="#ffffff" />
+        <color id="STATUSBAR_ON" color="#646464" />
+        <color id="STATUSBAR_OFF" color="#ffff00" />
 
         <color id="RED" color="#FFA8A8" />
         <color id="GREEN" color="#59FF6C" />

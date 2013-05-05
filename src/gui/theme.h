@@ -351,6 +351,8 @@ class Theme final : public Palette, public ConfigListener
             GRAY_OUTLINE,
             BROWN,
             BROWN_OUTLINE,
+            STATUSBAR_ON,
+            STATUSBAR_OFF,
             THEME_COLORS_END
         };
 

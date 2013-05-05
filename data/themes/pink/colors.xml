@@ -84,6 +84,8 @@
         <color id="PLAYER_ADVANCED" color="#005000" />
         <color id="BUBBLE_NAME" color="#000000" />
         <color id="BUBBLE_TEXT" color="#000000" />
+        <color id="STATUSBAR_ON" color="#646464" />
+        <color id="STATUSBAR_OFF" color="#ffff00" />
 
         <color id="RED" color="#ff0000" />
         <color id="GREEN" color="#009000" />

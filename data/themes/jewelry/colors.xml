@@ -76,6 +76,8 @@
         <color id="PURPLE" color="#8415e2" />
         <color id="GRAY" color="#919191" />
         <color id="BROWN" color="#774217" />
+        <color id="STATUSBAR_ON" color="#646464" />
+        <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
 
     <palette id="1">
