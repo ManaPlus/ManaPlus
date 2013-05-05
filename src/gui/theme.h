@@ -329,6 +329,7 @@ class Theme final : public Palette, public ConfigListener
             ARMS,
             AMMO,
             SERVER_VERSION_NOT_SUPPORTED,
+            SERVER_VERSION_NOT_SUPPORTED_OUTLINE,
             WARNING,
             WARNING_OUTLINE,
             CHARM,

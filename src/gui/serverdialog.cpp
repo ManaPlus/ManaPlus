@@ -160,7 +160,9 @@ public:
                    ServersListModel *const model) :
         ListBox(widget, model, "serverslistbox.xml"),
         mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
-        mNotSupportedColor(getThemeColor(Theme::SERVER_VERSION_NOT_SUPPORTED))
+        mNotSupportedColor(getThemeColor(Theme::SERVER_VERSION_NOT_SUPPORTED)),
+        mNotSupportedColor2(getThemeColor(
+            Theme::SERVER_VERSION_NOT_SUPPORTED_OUTLINE))
     {
     }
 
@@ -231,7 +233,7 @@ public:
 
             if (info.version.first > 0)
             {
-                graphics->setColor(mNotSupportedColor);
+                graphics->setColorAll(mNotSupportedColor, mNotSupportedColor2);
                 font2->drawString(graphics, info.version.second,
                     width - info.version.first - mPadding, top);
             }
@@ -245,6 +247,7 @@ public:
 private:
     gcn::Color mHighlightColor;
     gcn::Color mNotSupportedColor;
+    gcn::Color mNotSupportedColor2;
 };
 
 
