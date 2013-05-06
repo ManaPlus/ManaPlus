@@ -185,15 +185,16 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     if (label4 && label4->getWidth() > minWidth)
         minWidth = label4->getWidth();
 
-    int height = getFont()->getHeight();
+    const int height1 = getFont()->getHeight();
+    int height = height1;
     if (label1)
-        height += getFont()->getHeight();
+        height += height1;
     if (label2)
-        height += getFont()->getHeight();
+        height += height1;
     if (label3)
-        height += getFont()->getHeight();
+        height += height1;
     if (label4)
-        height += getFont()->getHeight();
+        height += height1;
 
     setContentSize(minWidth, height);
     position(x, y);
