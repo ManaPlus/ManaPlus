@@ -193,7 +193,7 @@ BuyDialog::BuyDialog(const int npcId) :
     Window(_("Buy"), false, nullptr, "buy.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
-    mNpcId(npcId), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(""),
+    mNpcId(npcId), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(),
     mSortModel(nullptr),
     mSortDropDown(nullptr)
 {
@@ -277,9 +277,7 @@ void BuyDialog::init()
     mShopItemList->addActionListener(this);
     mShopItemList->addSelectionListener(this);
 
-    ContainerPlacer placer;
-    placer = getPlacer(0, 0);
-
+    ContainerPlacer placer = getPlacer(0, 0);
     placer(0, 0, mScrollArea, 9, 5).setPadding(3);
     placer(0, 5, mDecreaseButton);
     placer(1, 5, mSlider, 4);
@@ -493,7 +491,6 @@ void BuyDialog::updateButtonsAndLabels()
             if (mAmountItems > mMaxItems)
                 mAmountItems = mMaxItems;
 
-            // Calculate price of pending purchase
             price = mAmountItems * itemPrice;
         }
     }
@@ -503,14 +500,12 @@ void BuyDialog::updateButtonsAndLabels()
         mAmountItems = 0;
     }
 
-    // Enable or disable buttons and slider
     mIncreaseButton->setEnabled(mAmountItems < mMaxItems);
     mDecreaseButton->setEnabled(mAmountItems > 1);
     mBuyButton->setEnabled(mAmountItems > 0);
     mSlider->setEnabled(mMaxItems > 1);
     mAmountField->setEnabled(mAmountItems > 0);
 
-    // Update quantity and money labels
     mQuantityLabel->setCaption(strprintf("%d / %d", mAmountItems, mMaxItems));
     // TRANSLATORS: buy dialog label
     mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
