@@ -272,8 +272,8 @@ CharCreateDialog::~CharCreateDialog()
     delete mPlayer;
     mPlayer = nullptr;
 
-    // Make sure the char server handler knows that we're gone
-    Net::getCharServerHandler()->setCharCreateDialog(nullptr);
+    if (Net::getCharServerHandler())
+        Net::getCharServerHandler()->setCharCreateDialog(nullptr);
 }
 
 void CharCreateDialog::action(const gcn::ActionEvent &event)
@@ -556,15 +556,13 @@ void CharCreateDialog::updateHair()
 
 void CharCreateDialog::updateRace()
 {
-    int id;
     if (mRace < 0)
         mRace = Being::getNumOfRaces() - 1;
     else if (mRace >= Being::getNumOfRaces())
         mRace = 0;
-    id = -100 - mRace;
 
     mPlayer->setSubtype(static_cast<uint16_t>(mRace));
-    const ItemInfo &item = ItemDB::get(id);
+    const ItemInfo &item = ItemDB::get(-100 - mRace);
     mRaceNameLabel->setCaption(item.getName());
     mRaceNameLabel->adjustSize();
 }
