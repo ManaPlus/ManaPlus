@@ -324,6 +324,36 @@ void getConfigDefaults2(DefaultsData *const configData)
 {
     if (!configData)
         return;
+    const int density = graphicsManager.getDensity();
+    int size = 12;
+    int buttonSize = 1;
+    switch (density)
+    {
+        case DENSITY_LOW:
+        case DENSITY_MEDIUM:
+            buttonSize = 1;
+            break;
+        case DENSITY_TV:
+            size = 14;
+            buttonSize = 1;
+            break;
+        case DENSITY_HIGH:
+            size = 16;
+            buttonSize = 2;
+            break;
+        case DENSITY_XHIGH:
+            size = 18;
+            buttonSize = 3;
+            break;
+        case DENSITY_XXHIGH:
+            size = 20;
+            buttonSize = 3;
+            break;
+        default:
+            break;
+    }
+    AddDEF("fontSize", size);
+    AddDEF("npcfontSize", size + 1);
     if (mainGraphics->getHeight() < 480)
     {
         AddDEF("screenButtonsSize", 0);
@@ -331,30 +361,9 @@ void getConfigDefaults2(DefaultsData *const configData)
     }
     else
     {
-        AddDEF("screenButtonsSize", 1);
-        AddDEF("screenJoystickSize", 1);
+        AddDEF("screenButtonsSize", buttonSize);
+        AddDEF("screenJoystickSize", buttonSize);
     }
-    const int density = graphicsManager.getDensity();
-    int size = 12;
-    switch (density)
-    {
-        case DENSITY_TV:
-            size = 14;
-            break;
-        case DENSITY_HIGH:
-            size = 16;
-            break;
-        case DENSITY_XHIGH:
-            size = 18;
-            break;
-        case DENSITY_XXHIGH:
-            size = 20;
-            break;
-        default:
-            break;
-    }
-    AddDEF("fontSize", size);
-    AddDEF("npcfontSize", size + 1);
 }
 
 DefaultsData* getBrandingDefaults()

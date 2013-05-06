@@ -2941,6 +2941,13 @@ void Client::checkConfigVersion()
         if (config.getIntValue("npcfontSize") == 13)
             config.deleteKey("npcfontSize");
     }
+    if (version < 2)
+    {
+        if (config.getIntValue("screenButtonsSize") == 1)
+            config.deleteKey("screenButtonsSize");
+        if (config.getIntValue("screenJoystickSize") == 1)
+            config.deleteKey("screenJoystickSize");
+    }
 
-    config.setValue("cfgver", 1);
+    config.setValue("cfgver", 2);
 }
