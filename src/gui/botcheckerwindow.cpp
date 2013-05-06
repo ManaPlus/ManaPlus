@@ -131,8 +131,7 @@ public:
                 continue;
 
             const Being *const player = mPlayers.at(r);
-            std::string name = player->getName();
-            gcn::Widget *widget = new Label(this, name);
+            gcn::Widget *widget = new Label(this, player->getName());
 
             mWidgets.push_back(widget);
 
@@ -295,8 +294,8 @@ BotCheckerWindow::BotCheckerWindow():
 
     for (int f = 0; f < 4; f++)
     {
-        mPlayerTableTitleModel->fixColumnWidth(TIME_COLUMN + f,
-                                               TIME_COLUMN_WIDTH);
+        mPlayerTableTitleModel->fixColumnWidth(
+            TIME_COLUMN + f, TIME_COLUMN_WIDTH);
     }
 
     mPlayerTitleTable->setHeight(1);
@@ -319,18 +318,17 @@ BotCheckerWindow::BotCheckerWindow():
     setStickyButtonLock(true);
     setDefaultSize(w, h, ImageRect::CENTER);
 
-
     playersScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
-    mPlayerTitleTable->setPosition(getPadding(), getPadding());
+    mPlayerTitleTable->setPosition(mPadding, mPadding);
     mPlayerTitleTable->setWidth(w - 10);
     mPlayerTitleTable->setHeight(20);
 
-    playersScrollArea->setPosition(getPadding(), 20 + 2*getPadding());
+    playersScrollArea->setPosition(mPadding, 20 + 2 * mPadding);
     playersScrollArea->setWidth(w - 15);
     playersScrollArea->setHeight(h - 80);
 
-    mIncButton->setPosition(getPadding(), 190 + 3*getPadding());
+    mIncButton->setPosition(mPadding, 190 + 3 * mPadding);
     mIncButton->setWidth(80);
     mIncButton->setHeight(20);
 

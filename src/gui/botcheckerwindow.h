@@ -34,7 +34,8 @@
 struct BOTCHK final
 {
     int16_t id;      /**< Index into "botchecker_db" array */
-    int16_t lv, sp;
+    int16_t lv;
+    int16_t sp;
 };
 
 class Button;
