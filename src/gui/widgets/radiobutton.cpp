@@ -46,7 +46,8 @@ RadioButton::RadioButton(const Widget2 *const widget,
     mPadding(0),
     mImagePadding(0),
     mImageSize(9),
-    mSpacing(2)
+    mSpacing(2),
+    mForegroundColor2(getThemeColor(Theme::RADIOBUTTON_OUTLINE))
 {
     mForegroundColor = getThemeColor(Theme::RADIOBUTTON);
     if (instances == 0)
@@ -156,7 +157,8 @@ void RadioButton::draw(gcn::Graphics* graphics)
     drawBox(graphics);
 
     gcn::Font *const font = getFont();
-    graphics->setColor(mForegroundColor);
+    static_cast<Graphics *const>(graphics)->setColorAll(
+        mForegroundColor, mForegroundColor2);
 
     font->drawString(graphics, mCaption, mPadding + mImageSize + mSpacing,
         mPadding);

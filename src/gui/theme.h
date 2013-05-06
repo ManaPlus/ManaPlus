@@ -238,6 +238,7 @@ class Theme final : public Palette, public ConfigListener
             LISTBOX_SELECTED,
             LISTBOX_SELECTED_OUTLINE,
             RADIOBUTTON,
+            RADIOBUTTON_OUTLINE,
             POPUP,
             POPUP_OUTLINE,
             TAB,
