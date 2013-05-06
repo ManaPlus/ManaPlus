@@ -45,7 +45,7 @@ BuySellDialog::BuySellDialog(const int npcId) :
     init();
 }
 
-BuySellDialog::BuySellDialog(std::string nick) :
+BuySellDialog::BuySellDialog(const std::string &nick) :
     // TRANSLATORS: shop window name
     Window(_("Shop"), false, nullptr, "buysell.xml"),
     gcn::ActionListener(),
@@ -84,9 +84,11 @@ void BuySellDialog::init()
         add(btn);
         x += btn->getWidth() + buttonPadding;
     }
-    mBuyButton->requestFocus();
-
-    setContentSize(x, 2 * y + mBuyButton->getHeight());
+    if (mBuyButton)
+    {
+        mBuyButton->requestFocus();
+        setContentSize(x, 2 * y + mBuyButton->getHeight());
+    }
 
     center();
     setDefaultSize();
