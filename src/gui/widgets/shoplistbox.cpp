@@ -150,9 +150,14 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
             }
         }
         if (mSelected == i)
-            graphics->setColor(mForegroundSelectedColor);
+        {
+            graphics->setColorAll(mForegroundSelectedColor,
+                mForegroundSelectedColor2);
+        }
         else
-            graphics->setColor(mForegroundColor);
+        {
+            graphics->setColorAll(mForegroundColor, mForegroundColor2);
+        }
         font->drawString(graphics, mListModel->getElementAt(i),
             ITEM_ICON_SIZE + mPadding,
             y + (ITEM_ICON_SIZE - getFont()->getHeight()) / 2 + mPadding);
