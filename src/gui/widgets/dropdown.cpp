@@ -148,7 +148,8 @@ DropDown::DropDown(const Widget2 *const widget,
     adjustHeight();
 //    mPopup->setForegroundColorAll(getThemeColor(Theme::DROPDOWN),
 //        getThemeColor(Theme::DROPDOWN_OUTLINE));
-    setForegroundColor(getThemeColor(Theme::DROPDOWN));
+    mForegroundColor = getThemeColor(Theme::DROPDOWN);
+    mForegroundColor2 = getThemeColor(Theme::DROPDOWN_OUTLINE);
 
     if (!eventId.empty())
         setActionEventId(eventId);
