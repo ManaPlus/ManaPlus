@@ -153,6 +153,7 @@ class DropDown final : public gcn::ActionListener,
         int mPadding;
         int mImagePadding;
         int mSpacing;
+        gcn::Color mForegroundColor2;
 
         bool mDroppedDown;
         bool mPushed;

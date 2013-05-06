@@ -77,6 +77,7 @@ DropDown::DropDown(const Widget2 *const widget,
     mPadding(1),
     mImagePadding(2),
     mSpacing(0),
+    mForegroundColor2(getThemeColor(Theme::DROPDOWN_OUTLINE)),
     mDroppedDown(false),
     mPushed(false),
     mFoldedUpHeight(0),
@@ -145,7 +146,8 @@ DropDown::DropDown(const Widget2 *const widget,
     addFocusListener(this);
 
     adjustHeight();
-    mPopup->setForegroundColor(getThemeColor(Theme::DROPDOWN));
+//    mPopup->setForegroundColorAll(getThemeColor(Theme::DROPDOWN),
+//        getThemeColor(Theme::DROPDOWN_OUTLINE));
     setForegroundColor(getThemeColor(Theme::DROPDOWN));
 
     if (!eventId.empty())
@@ -238,7 +240,8 @@ void DropDown::draw(gcn::Graphics* graphics)
     if (model && mPopup->getSelected() >= 0)
     {
         gcn::Font *const font = getFont();
-        graphics->setColor(mForegroundColor);
+        static_cast<Graphics *const>(graphics)->setColorAll(
+            mForegroundColor, mForegroundColor2);
         if (mExtended)
         {
             const int sel = mPopup->getSelected();
@@ -277,7 +280,6 @@ void DropDown::draw(gcn::Graphics* graphics)
 
     if (mDroppedDown)
     {
-//        drawChildren(graphics);
         // Draw two lines separating the ListBox with selected
         // element view.
         graphics->setColor(mHighlightColor);

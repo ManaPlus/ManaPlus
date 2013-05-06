@@ -791,6 +791,7 @@ static int readColorType(const std::string &type)
         "CHECKBOX",
         "CHECKBOX_OUTLINE",
         "DROPDOWN",
+        "DROPDOWN_OUTLINE",
         "LABEL",
         "LABEL_OUTLINE",
         "LISTBOX",
