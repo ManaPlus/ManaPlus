@@ -111,8 +111,6 @@ class CharSelectDialog final : public Window,
         void unlock();
         void setLocked(const bool locked);
 
-        bool mLocked;
-
         LoginData *mLoginData;
 
         Button *mSwitchLoginButton;
@@ -129,6 +127,7 @@ class CharSelectDialog final : public Window,
         Net::CharServerHandler *mCharServerHandler;
         TextDialog *mDeleteDialog;
         int mDeleteIndex;
+        bool mLocked;
         bool mSmallScreen;
 };
 

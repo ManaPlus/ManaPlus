@@ -89,7 +89,6 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
         false, nullptr, "char.xml"),
     gcn::ActionListener(),
     gcn::KeyListener(),
-    mLocked(false),
     mLoginData(data),
     // TRANSLATORS: char select dialog. button.
     mSwitchLoginButton(new Button(this, _("Switch Login"), "switch", this)),
@@ -109,6 +108,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     mCharServerHandler(Net::getCharServerHandler()),
     mDeleteDialog(nullptr),
     mDeleteIndex(-1),
+    mLocked(false),
     mSmallScreen(mainGraphics->getWidth() < 470
                  || mainGraphics->getHeight() < 370)
 {
@@ -152,8 +152,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
 
     for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
     {
-        CharacterDisplay *const character
-            = new CharacterDisplay(this, this);
+        CharacterDisplay *const character = new CharacterDisplay(this, this);
         character->setVisible(false);
         mCharacterEntries.push_back(character);
     }
@@ -296,7 +295,8 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
 
 void CharSelectDialog::use(const int selected)
 {
-    if (mCharacterEntries[selected]->getCharacter())
+    if (mCharacterEntries[selected]
+        && mCharacterEntries[selected]->getCharacter())
     {
         attemptCharacterSelect(selected);
     }
@@ -383,8 +383,11 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
         {
             keyEvent.consume();
             int idx = mCharacterView->getSelected();
-            if (idx >= 0 && mCharacterEntries[idx]->getCharacter())
+            if (idx >= 0 && mCharacterEntries[idx]
+                && mCharacterEntries[idx]->getCharacter())
+            {
                 new CharDeleteConfirm(this, idx);
+            }
             break;
         }
 
@@ -407,8 +410,11 @@ void CharSelectDialog::attemptCharacterDelete(const int index)
     if (mLocked)
         return;
 
-    mCharServerHandler->deleteCharacter(
-        mCharacterEntries[index]->getCharacter());
+    if (mCharacterEntries[index])
+    {
+        mCharServerHandler->deleteCharacter(
+            mCharacterEntries[index]->getCharacter());
+    }
     lock();
 }
 
@@ -432,7 +438,7 @@ void CharSelectDialog::attemptCharacterSelect(const int index)
         return;
 
     setVisible(false);
-    if (mCharServerHandler && mCharacterEntries[index])
+    if (mCharServerHandler)
     {
         mCharServerHandler->chooseCharacter(
             mCharacterEntries[index]->getCharacter());
@@ -446,7 +452,8 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
     FOR_EACH (std::vector<CharacterDisplay*>::const_iterator,
               iter, mCharacterEntries)
     {
-        (*iter)->setCharacter(nullptr);
+        if (*iter)
+            (*iter)->setCharacter(nullptr);
     }
 
     FOR_EACH (Net::Characters::const_iterator, i, characters)
@@ -471,7 +478,8 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
             continue;
         }
 
-        mCharacterEntries[characterSlot]->setCharacter(character);
+        if (mCharacterEntries[characterSlot])
+            mCharacterEntries[characterSlot]->setCharacter(character);
     }
 }
 
@@ -562,7 +570,7 @@ void CharSelectDialog::updateState()
     }
     mPlayButton->setEnabled(true);
 
-    if (mCharacterEntries[idx]->getCharacter())
+    if (mCharacterEntries[idx] && mCharacterEntries[idx]->getCharacter())
     {
         // TRANSLATORS: char select dialog. button.
         mPlayButton->setCaption(_("Play"));
