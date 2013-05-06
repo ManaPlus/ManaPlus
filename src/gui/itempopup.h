@@ -75,7 +75,7 @@ class ItemPopup final : public Popup
         std::string mLastName;
         unsigned char mLastColor;
 
-        gcn::Color getColor(const ItemType type) const;
+        void setLabelColor(Label *label, const ItemType type) const;
 };
 
 #endif  // ITEMPOPUP_H

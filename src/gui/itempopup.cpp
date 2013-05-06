@@ -178,7 +178,7 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
     }
 
     mItemName->adjustSize();
-    mItemName->setForegroundColor(getColor(mItemType));
+    setLabelColor(mItemName, mItemType);
     mItemName->setPosition(space, 0);
 
     mItemEffect->setTextWrapped(item.getEffect(), 196);
@@ -219,44 +219,41 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
     mItemDesc->setPosition(0, 2 * height);
 }
 
-gcn::Color ItemPopup::getColor(const ItemType type) const
+#define caseSetColor(name1, name2) \
+    case name1: \
+    { \
+        return label->setForegroundColorAll(getThemeColor(name2), \
+        getThemeColor(name2##_OUTLINE)); \
+    }
+void ItemPopup::setLabelColor(Label *label, const ItemType type) const
 {
     switch (type)
     {
-        case ITEM_UNUSABLE:
-            return getThemeColor(Theme::GENERIC);
-        case ITEM_USABLE:
-            return getThemeColor(Theme::USABLE);
-        case ITEM_EQUIPMENT_ONE_HAND_WEAPON:
-            return getThemeColor(Theme::ONEHAND);
-        case ITEM_EQUIPMENT_TWO_HANDS_WEAPON:
-            return getThemeColor(Theme::TWOHAND);
-        case ITEM_EQUIPMENT_TORSO:
-            return getThemeColor(Theme::TORSO);
-        case ITEM_EQUIPMENT_ARMS:
-            return getThemeColor(Theme::ARMS);
-        case ITEM_EQUIPMENT_HEAD:
-            return getThemeColor(Theme::HEAD);
-        case ITEM_EQUIPMENT_LEGS:
-            return getThemeColor(Theme::LEGS);
-        case ITEM_EQUIPMENT_SHIELD:
-            return getThemeColor(Theme::SHIELD);
-        case ITEM_EQUIPMENT_RING:
-            return getThemeColor(Theme::RING);
-        case ITEM_EQUIPMENT_NECKLACE:
-            return getThemeColor(Theme::NECKLACE);
-        case ITEM_EQUIPMENT_FEET:
-            return getThemeColor(Theme::FEET);
-        case ITEM_EQUIPMENT_AMMO:
-            return getThemeColor(Theme::AMMO);
-        case ITEM_EQUIPMENT_CHARM:
-            return getThemeColor(Theme::CHARM);
-        case ITEM_SPRITE_RACE:
-        case ITEM_SPRITE_HAIR:
+        caseSetColor(ITEM_UNUSABLE, Theme::GENERIC)
+        caseSetColor(ITEM_USABLE, Theme::USABLE)
+        caseSetColor(ITEM_EQUIPMENT_ONE_HAND_WEAPON, Theme::ONEHAND)
+        caseSetColor(ITEM_EQUIPMENT_TWO_HANDS_WEAPON, Theme::TWOHAND)
+        caseSetColor(ITEM_EQUIPMENT_TORSO, Theme::TORSO)
+        caseSetColor(ITEM_EQUIPMENT_ARMS, Theme::ARMS)
+        caseSetColor(ITEM_EQUIPMENT_HEAD, Theme::HEAD)
+        caseSetColor(ITEM_EQUIPMENT_LEGS, Theme::LEGS)
+        caseSetColor(ITEM_EQUIPMENT_SHIELD, Theme::SHIELD)
+        caseSetColor(ITEM_EQUIPMENT_RING, Theme::RING)
+        caseSetColor(ITEM_EQUIPMENT_NECKLACE, Theme::NECKLACE)
+        caseSetColor(ITEM_EQUIPMENT_FEET, Theme::FEET)
+        caseSetColor(ITEM_EQUIPMENT_AMMO, Theme::AMMO)
+        caseSetColor(ITEM_EQUIPMENT_CHARM, Theme::CHARM)
+        caseSetColor(ITEM_SPRITE_RACE, Theme::UNKNOWN_ITEM)
+        caseSetColor(ITEM_SPRITE_HAIR, Theme::UNKNOWN_ITEM)
         default:
-            return getThemeColor(Theme::UNKNOWN_ITEM);
+        {
+            return label->setForegroundColorAll(getThemeColor(
+                Theme::UNKNOWN_ITEM), getThemeColor(
+                Theme::UNKNOWN_ITEM_OUTLINE));
+        }
     }
 }
+#undef caseSetColor
 
 void ItemPopup::mouseMoved(gcn::MouseEvent &event)
 {
