@@ -118,8 +118,9 @@ class ItemAmountWindow final : public Window,
 
         ItemsModal *mItemsModal;
 
-        bool mEnabledKeyboard;
         int mPrice;
+
+        bool mEnabledKeyboard;
 };
 
 #endif  // ITEM_AMOUNT_WINDOW_H

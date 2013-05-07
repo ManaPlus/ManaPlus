@@ -63,8 +63,8 @@ public:
             if (i->first < 0)
                 continue;
 
-            const ItemInfo &info = (*i->second);
-            std::string name = info.getName();
+            const ItemInfo &info = *i->second;
+            const std::string name = info.getName();
             if (name != "unnamed" && !info.getName().empty()
                 && info.getName() != "unnamed")
             {
@@ -81,12 +81,12 @@ public:
     virtual ~ItemsModal()
     { }
 
-    virtual int getNumberOfElements()
+    virtual int getNumberOfElements() override
     {
         return static_cast<int>(mStrings.size());
     }
 
-    virtual std::string getElementAt(int i)
+    virtual std::string getElementAt(int i) override
     {
         if (i < 0 || i >= getNumberOfElements())
             return "???";
@@ -149,8 +149,8 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     mItemPriceSlide(nullptr),
     mItemDropDown(nullptr),
     mItemsModal(nullptr),
-    mEnabledKeyboard(keyboard.isEnabled()),
-    mPrice(0)
+    mPrice(0),
+    mEnabledKeyboard(keyboard.isEnabled())
 {
     if (!mItem)
     {
@@ -162,28 +162,23 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     else if (!mMax)
         mMax = mItem->getQuantity();
 
-    // Save keyboard state
     keyboard.setEnabled(false);
 
-    // Integer field
     mItemAmountTextField->setRange(1, mMax);
     mItemAmountTextField->setWidth(35);
     mItemAmountTextField->addKeyListener(this);
 
-    // Slider
     mItemAmountSlide->setHeight(10);
     mItemAmountSlide->setActionEventId("slide");
     mItemAmountSlide->addActionListener(this);
 
     if (mUsage == ShopBuyAdd || mUsage == ShopSellAdd)
     {
-        // Integer field
         mItemPriceTextField = new IntTextField(this, 1);
         mItemPriceTextField->setRange(1, 10000000);
         mItemPriceTextField->setWidth(35);
         mItemPriceTextField->addKeyListener(this);
 
-        // Slider
         mItemPriceSlide = new Slider(1.0, 10000000);
         mItemPriceSlide->setHeight(10);
         mItemPriceSlide->setActionEventId("slidePrice");
@@ -199,7 +194,6 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
         mItemDropDown->setActionEventId("itemType");
         mItemDropDown->addActionListener(this);
     }
-
 
     // Buttons
     // TRANSLATORS: item amount window button
@@ -366,9 +360,8 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
         if (!mItemDropDown || !mItemsModal)
             return;
 
-        std::string str = mItemsModal->getElementAt(
-                mItemDropDown->getSelected());
-        const int id = ItemDB::get(str).getId();
+        const int id = ItemDB::get(mItemsModal->getElementAt(
+            mItemDropDown->getSelected())).getId();
 
         mItem = new Item(id, 10000);
 
@@ -395,12 +388,12 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
 
     if (mItemPriceTextField && mItemPriceSlide)
     {
-        int price = 0;
-
         if (mPrice > 7)
             mPrice = 7;
         else if (mPrice < 0)
             mPrice = 0;
+
+        int price = 0;
 
         if (eventId == "incPrice")
         {
