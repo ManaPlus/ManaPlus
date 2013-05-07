@@ -479,7 +479,7 @@ void Setup_Theme::apply()
     }
 
     config.setValue("selectedSkin", "");
-    if (config.getStringValue("theme") != mTheme)
+    if (config.getStringValue("theme") != mTheme && mInfo)
     {
         updateField(font, mFont);
         updateField(boldFont, mBoldFont);
