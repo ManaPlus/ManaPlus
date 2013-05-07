@@ -540,7 +540,6 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
     if (!source || !mFocusHandler)
         return;
 
-    gcn::Widget* parent = source;
     gcn::Widget* widget = source;
 
     if (!force && mFocusHandler->getModalFocused() != nullptr
@@ -559,6 +558,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
         mAltPressed, mMetaPressed, type, button,
         x, y, mClickCount);
 
+    gcn::Widget* parent = source;
     while (parent)
     {
         // If the widget has been removed due to input
@@ -615,7 +615,6 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
                         break;
                     default:
                         break;
-//                        throw GCN_EXCEPTION("Unknown mouse event type.");
                 }
             }
 
@@ -651,7 +650,7 @@ void Gui::resetClickCount()
     mLastMousePressTimeStamp = 0;
 }
 
-MouseEvent *Gui::createMouseEvent(Window *widget)
+MouseEvent *Gui::createMouseEvent(Window *const widget)
 {
     if (!viewport || !widget)
         return nullptr;
@@ -664,10 +663,9 @@ MouseEvent *Gui::createMouseEvent(Window *widget)
     getAbsolutePosition(widget, x, y);
     SDL_GetMouseState(&mouseX, &mouseY);
 
-    MouseEvent *mouseEvent = new MouseEvent(widget, mShiftPressed,
+    return new MouseEvent(widget, mShiftPressed,
         mControlPressed, mAltPressed, mMetaPressed, 0, 0,
         mouseX - x, mouseY - y, mClickCount);
-    return mouseEvent;
 }
 
 void Gui::getAbsolutePosition(gcn::Widget *widget, int &x, int &y)

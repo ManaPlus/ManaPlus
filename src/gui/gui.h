@@ -141,7 +141,7 @@ class Gui final : public gcn::Gui
 
         void resetClickCount();
 
-        MouseEvent *createMouseEvent(Window *widget) A_WARN_UNUSED;
+        MouseEvent *createMouseEvent(Window *const widget) A_WARN_UNUSED;
 
         void getAbsolutePosition(gcn::Widget *widget, int &x, int &y);
 
