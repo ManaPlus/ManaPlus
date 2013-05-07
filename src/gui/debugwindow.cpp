@@ -46,7 +46,7 @@
 
 #include "debug.h"
 
-DebugWindow::DebugWindow():
+DebugWindow::DebugWindow() :
     // TRANSLATORS: debug window name
     Window(_("Debug"), false, nullptr, "debug.xml"),
     mTabs(new TabbedArea(this)),
@@ -75,9 +75,11 @@ DebugWindow::DebugWindow():
     mTabs->setDimension(gcn::Rectangle(0, 0, 600, 300));
     add(mTabs);
 
-    mMapWidget->resize(getWidth(), getHeight());
-    mTargetWidget->resize(getWidth(), getHeight());
-    mNetWidget->resize(getWidth(), getHeight());
+    const int w = mDimension.width;
+    const int h = mDimension.height;
+    mMapWidget->resize(w, h);
+    mTargetWidget->resize(w, h);
+    mNetWidget->resize(w, h);
     loadWindowState();
     enableVisibleSound(true);
 }
@@ -131,8 +133,8 @@ void DebugWindow::draw(gcn::Graphics *g)
         if (target)
         {
             Graphics *const g2 = static_cast<Graphics*>(g);
-            target->draw(g2, -target->getPixelX() + 16 + getWidth() / 2,
-                         -target->getPixelY() + 32 + getHeight() / 2);
+            target->draw(g2, -target->getPixelX() + 16 + mDimension.width / 2,
+                -target->getPixelY() + 32 + mDimension.height / 2);
         }
     }
     BLOCK_END("DebugWindow::draw")
@@ -142,7 +144,8 @@ void DebugWindow::widgetResized(const gcn::Event &event)
 {
     Window::widgetResized(event);
 
-    mTabs->setDimension(gcn::Rectangle(0, 0, getWidth(), getHeight()));
+    mTabs->setDimension(gcn::Rectangle(0, 0,
+        mDimension.width, mDimension.height));
 }
 
 MapDebugTab::MapDebugTab(const Widget2 *const widget) :
@@ -171,9 +174,9 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
         // TRANSLATORS: debug window label
         _("Draw calls:"), "?"))),
 #endif
-    // TRANSLATORS: debug window label
+    // TRANSLATORS: debug window label, frames per second
     mFPSLabel(new Label(this, strprintf(_("%d FPS"), 0))),
-    // TRANSLATORS: debug window label
+    // TRANSLATORS: debug window label, logic per second
     mLPSLabel(new Label(this, strprintf(_("%d LPS"), 0))),
     mFPSText()
 {
@@ -320,7 +323,7 @@ void MapDebugTab::logic()
     mParticleCountLabel->adjustSize();
 
     mFPSLabel->setCaption(strprintf(mFPSText.c_str(), fps));
-    // TRANSLATORS: debug window label
+    // TRANSLATORS: debug window label, logic per second
     mLPSLabel->setCaption(strprintf(_("%d LPS"), lps));
 }
 
