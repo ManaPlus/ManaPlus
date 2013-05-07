@@ -109,11 +109,6 @@ class ChatWindow final : public Window,
         ~ChatWindow();
 
         /**
-         * Reset the chat window to default positions.
-         */
-        void resetToDefaultSize();
-
-        /**
          * Gets the focused tab.
          */
         ChatTab *getFocused() const A_WARN_UNUSED;
@@ -126,7 +121,7 @@ class ChatWindow final : public Window,
         /**
          * Clear the current tab.
          */
-        void clearTab();
+        void clearTab() const;
 
         /**
          * Switch to the previous tab in order
@@ -249,15 +244,15 @@ class ChatWindow final : public Window,
                            const bool ignoreRecord,
                            const bool tryRemoveColors);
 
-        void battleChatLog(std::string line, Own own = BY_UNKNOWN,
+        static void battleChatLog(const std::string &line, Own own = BY_UNKNOWN,
                            const bool ignoreRecord = false,
-                           const bool tryRemoveColors = true) const;
+                           const bool tryRemoveColors = true);
 
-        void updateOnline(std::set<std::string> &onlinePlayers);
+        void updateOnline(std::set<std::string> &onlinePlayers) const;
 
         void loadState();
 
-        void saveState();
+        void saveState() const;
 
         void loadCustomList();
 
@@ -267,9 +262,9 @@ class ChatWindow final : public Window,
 
         void adjustTabSize();
 
-        void addToAwayLog(std::string line);
+        void addToAwayLog(const std::string &line);
 
-        void displayAwayLog();
+        void displayAwayLog() const;
 
         void clearAwayLog()
         { mAwayLog.clear(); }
@@ -315,9 +310,9 @@ class ChatWindow final : public Window,
 
         std::string addColors(std::string &msg);
 
-        std::string autoCompleteHistory(std::string partName);
+        std::string autoCompleteHistory(const std::string &partName) const;
 
-        std::string autoComplete(std::string partName,
+        std::string autoComplete(const std::string &partName,
                                  History *const words) const;
 
         std::string autoComplete(StringVect &names,
@@ -339,7 +334,8 @@ class ChatWindow final : public Window,
     private:
         void fillCommands();
 
-        bool mTmpVisible;
+        void loadCommandsFile(const std::string &name);
+
 
         typedef std::map<const std::string, WhisperTab*> TabMap;
         /** Manage whisper tabs */
@@ -370,6 +366,7 @@ class ChatWindow final : public Window,
         bool mAutoHide;
         bool mShowBattleEvents;
         bool mShowAllLang;
+        bool mTmpVisible;
 };
 
 extern ChatWindow *chatWindow;

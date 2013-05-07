@@ -1,5 +1,6 @@
 SET (FILES
     charcreation.xml
+    chatcommands.txt
     gmcommands.txt
     )
 

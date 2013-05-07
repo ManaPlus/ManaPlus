@@ -197,7 +197,6 @@ ChatWindow::ChatWindow():
     mChatTabs(new TabbedArea(this)),
     mChatInput(new ChatInput(this, mChatTabs)),
     mRainbowColor(0),
-    mTmpVisible(false),
     mWhispers(),
     mHistory(),
     mCurHist(),
@@ -215,7 +214,8 @@ ChatWindow::ChatWindow():
     mHaveMouse(false),
     mAutoHide(config.getBoolValue("autohideChat")),
     mShowBattleEvents(config.getBoolValue("showBattleEvents")),
-    mShowAllLang(serverConfig.getValue("showAllLang", 0))
+    mShowAllLang(serverConfig.getValue("showAllLang", 0)),
+    mTmpVisible(false)
 {
     listen(CHANNEL_ATTRIBUTES);
 
@@ -269,7 +269,7 @@ ChatWindow::ChatWindow():
     loadWindowState();
 
     mColorPicker->setPosition(this->getWidth() - mColorPicker->getWidth()
-                              - 2*getPadding() - 8 - 16, getPadding());
+        - 2 * mPadding - 8 - 16, mPadding);
 
     // Add key listener to chat input to be able to respond to up/down
     mChatInput->addKeyListener(this);
@@ -303,100 +303,10 @@ ChatWindow::~ChatWindow()
     mColorListModel = nullptr;
 }
 
-void ChatWindow::fillCommands()
+void ChatWindow::loadCommandsFile(const std::string &name)
 {
-    mCommands.push_back("/all");
-    mCommands.push_back("/away ");
-    mCommands.push_back("/closeall");
-    mCommands.push_back("/clear");
-    mCommands.push_back("/cleangraphics");
-    mCommands.push_back("/cleanfonts");
-    mCommands.push_back("/create ");
-    mCommands.push_back("/close");
-    mCommands.push_back("/cacheinfo");
-    mCommands.push_back("/erase ");
-    mCommands.push_back("/execute ");
-    mCommands.push_back("/follow ");
-    mCommands.push_back("/heal ");
-    mCommands.push_back("/ignoreall");
-    mCommands.push_back("/help");
-    mCommands.push_back("/announce ");
-    mCommands.push_back("/where");
-    mCommands.push_back("/who");
-    mCommands.push_back("/msg ");
-    mCommands.push_back("/mail ");
-    mCommands.push_back("/whisper ");
-    mCommands.push_back("/w ");
-    mCommands.push_back("/query ");
-    mCommands.push_back("/ignore ");
-    mCommands.push_back("/unignore ");
-    mCommands.push_back("/join ");
-    mCommands.push_back("/list");
-    mCommands.push_back("/party");
-    mCommands.push_back("/createparty ");
-    mCommands.push_back("/createguild ");
-    mCommands.push_back("/me ");
-    mCommands.push_back("/toggle");
-    mCommands.push_back("/present");
-    mCommands.push_back("/quit");
-    mCommands.push_back("/move ");
-    mCommands.push_back("/target ");
-    mCommands.push_back("/invite ");
-    mCommands.push_back("/leave");
-    mCommands.push_back("/kick ");
-    mCommands.push_back("/item");
-    mCommands.push_back("/imitation");
-    mCommands.push_back("/exp");
-    mCommands.push_back("/ping");
-    mCommands.push_back("/outfit ");
-    mCommands.push_back("/emote ");
-    mCommands.push_back("/navigate ");
-    mCommands.push_back("/priceload");
-    mCommands.push_back("/pricesave");
-    mCommands.push_back("/trade ");
-    mCommands.push_back("/friend ");
-    mCommands.push_back("/befriend ");
-    mCommands.push_back("/disregard ");
-    mCommands.push_back("/neutral ");
-    mCommands.push_back("/raw ");
-    mCommands.push_back("/disconnect");
-    mCommands.push_back("/undress ");
-    mCommands.push_back("/attack");
-    mCommands.push_back("/dirs");
-    mCommands.push_back("/info");
-    mCommands.push_back("/wait");
-    mCommands.push_back("/uptime");
-    mCommands.push_back("/addattack ");
-    mCommands.push_back("/addpriorityattack ");
-    mCommands.push_back("/removeattack ");
-    mCommands.push_back("/addignoreattack ");
-    mCommands.push_back("/blacklist ");
-    mCommands.push_back("/enemy ");
-    mCommands.push_back("/serverignoreall");
-    mCommands.push_back("/serverunignoreall");
-    mCommands.push_back("/dumpg");
-    mCommands.push_back("/dumpt");
-    mCommands.push_back("/dumpe");
-    mCommands.push_back("/dumpogl");
-    mCommands.push_back("/pseudoaway ");
-    mCommands.push_back("<PLAYER>");
-    mCommands.push_back("<MONSTER>");
-    mCommands.push_back("<PEOPLE>");
-    mCommands.push_back("<PARTY>");
-    mCommands.push_back("/setdrop ");
-    mCommands.push_back("/url ");
-    mCommands.push_back("/open ");
-}
-
-void ChatWindow::loadGMCommands()
-{
-    if (mGMLoaded)
-        return;
-
-    const char *const fileName = "gmcommands.txt";
-    const ResourceManager *const resman = ResourceManager::getInstance();
     StringVect list;
-    resman->loadTextFile(fileName, list);
+    ResourceManager::loadTextFile(name, list);
     StringVectCIter it = list.begin();
     const StringVectCIter it_end = list.end();
 
@@ -405,33 +315,42 @@ void ChatWindow::loadGMCommands()
         const std::string str = *it;
         if (!str.empty())
             mCommands.push_back(str);
-
         ++ it;
     }
-    mGMLoaded = true;
 }
 
-void ChatWindow::resetToDefaultSize()
+void ChatWindow::fillCommands()
 {
-    Window::resetToDefaultSize();
+    loadCommandsFile("chatcommands.txt");
+}
+
+void ChatWindow::loadGMCommands()
+{
+    if (mGMLoaded)
+        return;
+
+    loadCommandsFile("gmcommands.txt");
+    mGMLoaded = true;
 }
 
 void ChatWindow::adjustTabSize()
 {
     const gcn::Rectangle area = getChildrenArea();
 
-    mChatInput->setPosition(mChatInput->getFrameSize(),
-                            area.height - mChatInput->getHeight() -
-                            mChatInput->getFrameSize());
-    mChatInput->setWidth(area.width - 2 * mChatInput->getFrameSize());
-
-    mChatTabs->setWidth(area.width - 2 * mChatTabs->getFrameSize());
-    const int height = area.height - 2 * mChatTabs->getFrameSize() -
-        (mChatInput->getHeight() + mChatInput->getFrameSize() * 2);
+    const int aw = area.width;
+    const int ah = area.height;
+    const int frame = mChatInput->getFrameSize();
+    const int inputHeight = mChatInput->getHeight();
+    const int frame2 = 2 * frame;
+    const int awFrame2 = aw - frame2;
+    mChatInput->setPosition(frame, ah - inputHeight - frame);
+    mChatInput->setWidth(awFrame2);
+    mChatTabs->setWidth(awFrame2);
+    const int height = ah - frame2 - (inputHeight + frame2);
     if (mChatInput->isVisible() || !config.getBoolValue("hideChatInput"))
         mChatTabs->setHeight(height);
     else
-        mChatTabs->setHeight(height + mChatInput->getHeight());
+        mChatTabs->setHeight(height + inputHeight);
 
     const ChatTab *const tab = getFocused();
     if (tab)
@@ -439,19 +358,15 @@ void ChatWindow::adjustTabSize()
         gcn::Widget *const content = tab->mScrollArea;
         if (content)
         {
-            content->setSize(mChatTabs->getWidth()
-                - 2 * content->getFrameSize(),
-                mChatTabs->getContainerHeight()
-                - 2 * content->getFrameSize());
+            const int contentFrame2 = 2 * content->getFrameSize();
+            content->setSize(mChatTabs->getWidth() - contentFrame2,
+                mChatTabs->getContainerHeight() - contentFrame2);
             content->logic();
         }
     }
 
     mColorPicker->setPosition(this->getWidth() - mColorPicker->getWidth()
-        - 2*getPadding() - 8 - 16, getPadding());
-
-//    if (mColorPicker->isVisible())
-//        mChatTabs->setRightMargin(mColorPicker->getWidth() - 8);
+        - 2 * mPadding - 8 - 16, mPadding);
 }
 
 void ChatWindow::widgetResized(const gcn::Event &event)
@@ -460,17 +375,6 @@ void ChatWindow::widgetResized(const gcn::Event &event)
 
     adjustTabSize();
 }
-
-/*
-void ChatWindow::logic()
-{
-    Window::logic();
-
-    Tab *tab = getFocused();
-    if (tab != mCurrentTab)
-        mCurrentTab = tab;
-}
-*/
 
 ChatTab *ChatWindow::getFocused() const
 {
@@ -483,7 +387,7 @@ void ChatWindow::clearTab(ChatTab *const tab) const
         tab->clearText();
 }
 
-void ChatWindow::clearTab()
+void ChatWindow::clearTab() const
 {
     clearTab(getFocused());
 }
@@ -521,8 +425,8 @@ void ChatWindow::closeTab() const
     if (!mChatTabs)
         return;
 
-    const int idx = mChatTabs->getSelectedTabIndex();
-    Tab *const tab = mChatTabs->getTabByIndex(idx);
+    Tab *const tab = mChatTabs->getTabByIndex(
+        mChatTabs->getSelectedTabIndex());
     if (!tab)
         return;
     WhisperTab *const whisper = dynamic_cast<WhisperTab* const>(tab);
@@ -633,8 +537,6 @@ void ChatWindow::addTab(ChatTab *const tab)
         return;
 
     mChatTabs->addTab(tab, tab->mScrollArea);
-
-    // Update UI
     logic();
 }
 
@@ -727,13 +629,14 @@ void ChatWindow::doPresent() const
             if (!response.empty())
                 response.append(", ");
             response.append(static_cast<Being*>(*it)->getName());
-            ++playercount;
+            playercount ++;
         }
     }
 
-    // TRANSLATORS: chat message
-    std::string log = strprintf(_("Present: %s; %d players are present."),
-                                response.c_str(), playercount);
+    const std::string log = strprintf(
+        // TRANSLATORS: chat message
+        _("Present: %s; %d players are present."),
+        response.c_str(), playercount);
 
     if (getFocused())
         getFocused()->chatLog(log, BY_SERVER);
@@ -811,12 +714,9 @@ void ChatWindow::mouseDragged(gcn::MouseEvent &event)
     }
 }
 
-/*
-void ChatWindow::mouseReleased(gcn::MouseEvent &event A_UNUSED)
-{
-
-}
-*/
+#define caseKey(key,str) case key:\
+    temp = str; \
+    break
 
 void ChatWindow::keyPressed(gcn::KeyEvent &event)
 {
@@ -865,7 +765,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         mChatInput->setText("");
     }
     else if (actionId == static_cast<int>(Input::KEY_GUI_TAB) &&
-             mChatInput->getText() != "")
+             !mChatInput->getText().empty())
     {
         autoComplete();
         return;
@@ -946,44 +846,22 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
     std::string temp;
     switch (key)
     {
-        case Key::F2:
-            temp = "\u2318";
-            break;
-        case Key::F3:
-            temp = "\u263A";
-            break;
-        case Key::F4:
-            temp = "\u2665";
-            break;
-        case Key::F5:
-            temp = "\u266A";
-            break;
-        case Key::F6:
-            temp = "\u266B";
-            break;
-        case Key::F7:
-            temp = "\u26A0";
-            break;
-        case Key::F8:
-            temp = "\u2622";
-            break;
-        case Key::F9:
-            temp = "\u262E";
-            break;
-        case Key::F10:
-            temp = "\u2605";
-            break;
-        case Key::F11:
-            temp = "\u2618";
-            break;
-        case Key::F12:
-            temp = "\u2592";
-            break;
+        caseKey(Key::F2, "\u2318");
+        caseKey(Key::F3, "\u263A");
+        caseKey(Key::F4, "\u2665");
+        caseKey(Key::F5, "\u266A");
+        caseKey(Key::F6, "\u266B");
+        caseKey(Key::F7, "\u26A0");
+        caseKey(Key::F8, "\u2622");
+        caseKey(Key::F9, "\u262E");
+        caseKey(Key::F10, "\u2605");
+        caseKey(Key::F11, "\u2618");
+        caseKey(Key::F12, "\u2592");
         default:
             break;
     }
 
-    if (temp != "")
+    if (!temp.empty())
         addInputText(temp, false);
 }
 
@@ -1059,7 +937,6 @@ void ChatWindow::addInputText(const std::string &text, const bool space)
         ss << " ";
 
     ss << inputText.substr(caretPos);
-
     mChatInput->setText(ss.str());
     mChatInput->setCaretPosition(caretPos + static_cast<int>(
         text.length()) + static_cast<int>(space));
@@ -1128,11 +1005,10 @@ void ChatWindow::addWhisper(const std::string &nick,
             if (tab->getRemoveNames())
             {
                 std::string msg = mes;
-                std::string nick2;
                 const size_t idx = mes.find(":");
                 if (idx != std::string::npos && idx > 0)
                 {
-                    nick2 = msg.substr(0, idx);
+                    std::string nick2 = msg.substr(0, idx);
                     msg = msg.substr(idx + 1);
                     nick2 = removeColors(nick2);
                     nick2 = trim(nick2);
@@ -1293,7 +1169,6 @@ void ChatWindow::autoComplete()
     const std::string inputText = mChatInput->getText();
     bool needSecure(false);
     std::string name = inputText.substr(0, caretPos);
-    std::string newName("");
 
     for (int f = caretPos - 1; f > -1; f --)
     {
@@ -1314,7 +1189,7 @@ void ChatWindow::autoComplete()
 
     if (cTab)
         cTab->getAutoCompleteList(nameList);
-    newName = autoComplete(nameList, name);
+    std::string newName = autoComplete(nameList, name);
     if (!newName.empty())
         needSecure = true;
 
@@ -1366,7 +1241,7 @@ std::string ChatWindow::autoComplete(StringVect &names,
     StringVectCIter i = names.begin();
     const StringVectCIter i_end = names.end();
     toLower(partName);
-    std::string newName("");
+    std::string newName;
 
     while (i != i_end)
     {
@@ -1378,14 +1253,10 @@ std::string ChatWindow::autoComplete(StringVect &names,
             const size_t pos = name.find(partName, 0);
             if (pos == 0)
             {
-                if (newName != "")
-                {
+                if (!newName.empty())
                     newName = findSameSubstringI(*i, newName);
-                }
                 else
-                {
                     newName = *i;
-                }
             }
         }
         ++i;
@@ -1394,7 +1265,7 @@ std::string ChatWindow::autoComplete(StringVect &names,
     return newName;
 }
 
-std::string ChatWindow::autoComplete(std::string partName,
+std::string ChatWindow::autoComplete(const std::string &partName,
                                      History *const words) const
 {
     if (!words)
@@ -1406,7 +1277,7 @@ std::string ChatWindow::autoComplete(std::string partName,
 
     while (i != i_end)
     {
-        std::string line = *i;
+        const std::string line = *i;
         if (line.find(partName, 0) == 0)
             nameList.push_back(line);
         ++i;
@@ -1426,7 +1297,7 @@ void ChatWindow::moveTabRight(ChatTab *tab)
 }
 */
 
-std::string ChatWindow::autoCompleteHistory(std::string partName)
+std::string ChatWindow::autoCompleteHistory(const std::string &partName) const
 {
     History::const_iterator i = mHistory.begin();
     const History::const_iterator i_end = mHistory.end();
@@ -1531,9 +1402,9 @@ void ChatWindow::resortChatLog(std::string line, Own own,
     }
 }
 
-void ChatWindow::battleChatLog(std::string line, Own own,
+void ChatWindow::battleChatLog(const std::string &line, Own own,
                                const bool ignoreRecord,
-                               const bool tryRemoveColors) const
+                               const bool tryRemoveColors)
 {
     if (own == -1)
         own = BY_SERVER;
@@ -1545,8 +1416,8 @@ void ChatWindow::battleChatLog(std::string line, Own own,
 
 void ChatWindow::initTradeFilter()
 {
-    std::string tradeListName = Client::getServerConfigDirectory()
-                                + "/tradefilter.txt";
+    const std::string tradeListName = Client::getServerConfigDirectory()
+        + "/tradefilter.txt";
 
     std::ifstream tradeFile;
     struct stat statbuf;
@@ -1559,7 +1430,7 @@ void ChatWindow::initTradeFilter()
             char line[100];
             while (tradeFile.getline(line, 100))
             {
-                std::string str = line;
+                const std::string str = line;
                 if (!str.empty())
                     mTradeFilter.push_back(str);
             }
@@ -1568,7 +1439,7 @@ void ChatWindow::initTradeFilter()
     }
 }
 
-void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
+void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers) const
 {
     const Party *party = nullptr;
     const Guild *guild = nullptr;
@@ -1583,7 +1454,6 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
             return;
 
         WhisperTab *const tab = static_cast<WhisperTab*>(iter->second);
-
         if (!tab)
             continue;
 
@@ -1632,7 +1502,7 @@ void ChatWindow::loadState()
     int num = 0;
     while (num < 50)
     {
-        std::string nick = serverConfig.getValue(
+        const std::string nick = serverConfig.getValue(
             "chatWhisper" + toString(num), "");
 
         if (nick.empty())
@@ -1651,7 +1521,7 @@ void ChatWindow::loadState()
     }
 }
 
-void ChatWindow::saveState()
+void ChatWindow::saveState() const
 {
     int num = 0;
     for (TabMap::const_iterator iter = mWhispers.begin(),
@@ -1716,7 +1586,7 @@ void ChatWindow::loadCustomList()
     }
 }
 
-void ChatWindow::addToAwayLog(std::string line)
+void ChatWindow::addToAwayLog(const std::string &line)
 {
     if (!player_node || !player_node->getAway())
         return;
@@ -1728,17 +1598,18 @@ void ChatWindow::addToAwayLog(std::string line)
         mAwayLog.push_back("##9away:" + line);
 }
 
-void ChatWindow::displayAwayLog()
+void ChatWindow::displayAwayLog() const
 {
     if (!localChatTab)
         return;
 
-    std::list<std::string>::iterator i = mAwayLog.begin();
-    const std::list<std::string>::iterator i_end = mAwayLog.end();
+    std::list<std::string>::const_iterator i = mAwayLog.begin();
+    const std::list<std::string>::const_iterator i_end = mAwayLog.end();
 
     while (i != i_end)
     {
-        localChatTab->addNewRow(*i);
+        std::string str = *i;
+        localChatTab->addNewRow(str);
         ++i;
     }
 }
