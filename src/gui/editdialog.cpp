@@ -33,7 +33,7 @@
 #include "debug.h"
 
 EditDialog::EditDialog(const std::string &title, const std::string &msg,
-                       std::string eventOk, const int width,
+                       const std::string &eventOk, const int width,
                        Window *const parent, const bool modal):
     Window(title, modal, parent, "edit.xml"),
     gcn::ActionListener(),
