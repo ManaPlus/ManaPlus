@@ -80,10 +80,10 @@ public:
     virtual ~SortListModelInv()
     { }
 
-    virtual int getNumberOfElements()
+    virtual int getNumberOfElements() override
     { return 6; }
 
-    virtual std::string getElementAt(int i)
+    virtual std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -173,14 +173,14 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     if (isMainInventory())
     {
         // TRANSLATORS: inventory button
-        std::string equip = _("Equip");
+        const std::string equip = _("Equip");
         // TRANSLATORS: inventory button
-        std::string use = _("Use");
+        const std::string use = _("Use");
         // TRANSLATORS: inventory button
-        std::string unequip = _("Unequip");
+        const std::string unequip = _("Unequip");
 
         std::string longestUseString = getFont()->getWidth(equip) >
-                                       getFont()->getWidth(use) ? equip : use;
+            getFont()->getWidth(use) ? equip : use;
 
         if (getFont()->getWidth(longestUseString) <
             getFont()->getWidth(unequip))
@@ -577,8 +577,8 @@ void InventoryWindow::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
     if (mSplit && item && Net::getInventoryHandler()->
         canSplit(mItems->getSelectedItem()))
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit, this, item,
-                                     (item->getQuantity() - 1));
+        ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit,
+            this, item, item->getQuantity() - 1);
     }
     updateButtons(item);
 }
@@ -655,7 +655,8 @@ void InventoryWindow::close()
     }
     else
     {
-        Net::getInventoryHandler()->closeStorage(Inventory::STORAGE);
+        if (Net::getInventoryHandler())
+            Net::getInventoryHandler()->closeStorage(Inventory::STORAGE);
         scheduleDelete();
     }
 }
@@ -720,7 +721,6 @@ void InventoryWindow::updateDropButton()
     else
     {
         const Item *const item = mItems->getSelectedItem();
-
         if (item && item->getQuantity() > 1)
         {
             // TRANSLATORS: inventory button
