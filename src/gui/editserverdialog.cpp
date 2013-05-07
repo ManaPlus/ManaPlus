@@ -124,7 +124,8 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
 
     // Do this manually instead of calling reflowLayout so we can enforce a
     // minimum width.
-    int width = 0, height = 0;
+    int width = 0;
+    int height = 0;
     getLayout().reflow(width, height);
     if (width < 300)
     {
@@ -194,11 +195,6 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
 EditServerDialog::~EditServerDialog()
 {
     delete mTypeListModel;
-}
-
-void EditServerDialog::logic()
-{
-    Window::logic();
 }
 
 void EditServerDialog::action(const gcn::ActionEvent &event)

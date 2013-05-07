@@ -94,8 +94,6 @@ class EditServerDialog final : public Window,
 
         void keyPressed(gcn::KeyEvent &keyEvent) override;
 
-        void logic() override;
-
     private:
         TextField *mServerAddressField;
         TextField *mPortField;
