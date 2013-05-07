@@ -132,7 +132,7 @@ Window::Window(const std::string &caption, const bool modal,
             }
             setTitleBarHeight(getOption("titlebarHeight"));
             if (!mTitleBarHeight)
-                mTitleBarHeight = mCaptionFont->getHeight();
+                mTitleBarHeight = mCaptionFont->getHeight() + mPadding;
 
             mTitleBarHeight += getOption("titlebarHeightRelative");
             setPalette(getOption("palette"));
