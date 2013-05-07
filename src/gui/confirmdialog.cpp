@@ -50,17 +50,13 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
     Button *const yesButton = new Button(this, _("Yes"), "yes", this);
     // TRANSLATORS: confirm dialog button
     Button *const noButton = new Button(this, _("No"), "no", this);
-    Button *ignoreButton = nullptr;
-
-    if (ignore)
-    {
+    Button *const ignoreButton = ignore ? new Button(
         // TRANSLATORS: confirm dialog button
-        ignoreButton = new Button(this, _("Ignore"), "ignore", this);
-    }
+        this, _("Ignore"), "ignore", this) : nullptr;
 
     const int numRows = mTextBox->getNumberOfRows();
     int inWidth = yesButton->getWidth() + noButton->getWidth() +
-        (2 * getPadding());
+        (2 * mPadding);
 
     if (ignoreButton)
         inWidth += ignoreButton->getWidth();
@@ -76,18 +72,18 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
 
     setContentSize(mTextBox->getMinWidth() + fontHeight, height + fontHeight +
                    noButton->getHeight());
-    mTextBox->setPosition(getPadding(), getPadding());
+    mTextBox->setPosition(mPadding, mPadding);
 
     // 8 is the padding that GUIChan adds to button widgets
     // (top and bottom combined)
     const int buttonPadding = getOption("buttonPadding", 8);
     yesButton->setPosition((width - inWidth) / 2, height + buttonPadding);
     noButton->setPosition(yesButton->getX() + yesButton->getWidth()
-        + (2 * getPadding()), height + buttonPadding);
+        + (2 * mPadding), height + buttonPadding);
     if (ignoreButton)
     {
         ignoreButton->setPosition(noButton->getX() + noButton->getWidth()
-            + (2 * getPadding()), height + buttonPadding);
+            + (2 * mPadding), height + buttonPadding);
     }
 
     add(mTextBox);
