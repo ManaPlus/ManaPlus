@@ -62,11 +62,6 @@ class KillStats final : public Window,
         void recalcStats();
 
         /**
-         * Draw this window
-         */
-        void draw(gcn::Graphics *graphics) override;
-
-        /**
          * Updates this dialog
          */
         void update();

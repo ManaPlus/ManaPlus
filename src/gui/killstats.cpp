@@ -398,12 +398,6 @@ void KillStats::update()
     updateJackoLabel();
     BLOCK_END("KillStats::update")
 }
-void KillStats::draw(gcn::Graphics *g)
-{
-//    update();
-
-    Window::draw(g);
-}
 
 void KillStats::updateJackoLabel()
 {
@@ -501,7 +495,6 @@ void KillStats::processEvent(Channels channel A_UNUSED,
         if (id == PlayerInfo::EXP || id == PlayerInfo::EXP_NEEDED)
         {
             gainXp(event.getInt("newValue") - event.getInt("oldValue"));
-//            update();
         }
         else if (id == PlayerInfo::LEVEL)
         {
