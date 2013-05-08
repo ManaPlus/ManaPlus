@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skinset name="Default" image="window.png">
     <widget type="Window" xpos="41" ypos="0">
-        <option name="padding" value="5" />
+        <option name="padding" value="7" />
 
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="10" height="10" />
