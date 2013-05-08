@@ -80,6 +80,8 @@
         <color id="PURPLE" color="#8415e2" />
         <color id="GRAY" color="#919191" />
         <color id="BROWN" color="#774217" />
+        <color id="STATUSBAR_ON" color="#646464" />
+        <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
 
     <palette id="1">
@@ -205,6 +207,8 @@
         <color id="PURPLE" color="#ddb1ff" />
         <color id="GRAY" color="#d7d7d7" />
         <color id="BROWN" color="#f1edd4" />
+        <color id="STATUSBAR_ON" color="#646464" />
+        <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
 
     <palette id="2">
@@ -286,6 +290,8 @@
         <color id="PURPLE" color="#870082" />
         <color id="GRAY" color="#d7d7d7" />
         <color id="BROWN" color="#4e361f" />
+        <color id="STATUSBAR_ON" color="#646464" />
+        <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
 
     <progressbar id="DEFAULT" color="#969696" />
