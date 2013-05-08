@@ -61,7 +61,7 @@ struct OpenUrlListener : public gcn::ActionListener
 
     A_DELETE_COPY(OpenUrlListener)
 
-    void action(const gcn::ActionEvent &event)
+    void action(const gcn::ActionEvent &event) override
     {
         if (event.getId() == "yes")
             openBrowser(url);
@@ -91,12 +91,12 @@ class UpdateTypeModel final : public gcn::ListModel
         virtual ~UpdateTypeModel()
         { }
 
-        virtual int getNumberOfElements()
+        virtual int getNumberOfElements() override
         {
             return 3;
         }
 
-        virtual std::string getElementAt(int i)
+        virtual std::string getElementAt(int i) override
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";
@@ -118,14 +118,14 @@ class UpdateListModel final : public gcn::ListModel
         virtual ~UpdateListModel()
         { }
 
-        virtual int getNumberOfElements()
+        virtual int getNumberOfElements() override
         {
             if (!mLoginData)
                 return 0;
             return static_cast<int>(mLoginData->updateHosts.size());
         }
 
-        virtual std::string getElementAt(int i)
+        virtual std::string getElementAt(int i) override
         {
             if (!mLoginData || i >= getNumberOfElements() || i < 0)
                 return "???";
