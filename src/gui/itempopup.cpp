@@ -51,7 +51,7 @@ ItemPopup::ItemPopup() :
     mItemWeight(new TextBox(this)),
     mItemType(ITEM_UNUSABLE),
     mIcon(new Icon(this, nullptr)),
-    mLastName(""),
+    mLastName(),
     mLastColor(1)
 {
     // Item Name
