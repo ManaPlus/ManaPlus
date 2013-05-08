@@ -97,8 +97,7 @@ Minimap::~Minimap()
 
 void Minimap::setMap(const Map *const map)
 {
-    std::string caption("");
-    std::string minimapName;
+    std::string caption;
 
     if (map)
         caption = map->getName();
@@ -164,7 +163,7 @@ void Minimap::setMap(const Map *const map)
                 map->getFilename()).append(".png");
             ResourceManager *const resman = ResourceManager::getInstance();
 
-            minimapName = map->getProperty("minimap");
+            std::string minimapName = map->getProperty("minimap");
 
             if (minimapName.empty() && resman->exists(tempname))
                 minimapName = tempname;
@@ -189,12 +188,8 @@ void Minimap::setMap(const Map *const map)
             + getTitleBarHeight() + getPadding();
         const int mapWidth = mMapImage->mBounds.w < 100 ? width : 100;
         const int mapHeight = mMapImage->mBounds.h < 100 ? height : 100;
-        int minWidth = mapWidth;
-        int minHeight = mapHeight;
-        if (mapWidth > 310)
-            minWidth = 310;
-        if (mapHeight > 220)
-            minHeight = 220;
+        const int minWidth = mapWidth > 310 ? 310 : mapWidth;
+        const int minHeight = mapHeight > 220 ? 220 : mapHeight;
 
         setMinWidth(minWidth);
         setMinHeight(minHeight);
@@ -212,7 +207,8 @@ void Minimap::setMap(const Map *const map)
             setHeight(height);
         }
 
-        setDefaultSize(getX(), getY(), getWidth(), getHeight());
+        const gcn::Rectangle &rect = mDimension;
+        setDefaultSize(rect.x, rect.y, rect.width, rect.height);
         resetToDefaultSize();
 
         if (mShow)
@@ -259,8 +255,10 @@ void Minimap::draw(gcn::Graphics *graphics)
 
     if (mMapImage)
     {
-        if (mMapImage->mBounds.w > a.width ||
-            mMapImage->mBounds.h > a.height)
+        const SDL_Rect &rect = mMapImage->mBounds;
+        const int w = rect.w;
+        const int h = rect.h;
+        if (w > a.width || h > a.height)
         {
             const Vector &p = player_node->getPosition();
             mMapOriginX = (a.width / 2) - (p.x + static_cast<float>(
@@ -269,8 +267,8 @@ void Minimap::draw(gcn::Graphics *graphics)
             mMapOriginY = (a.height / 2) - (p.y + static_cast<float>(
                 viewport->getCameraRelativeY()) * mHeightProportion) / 32;
 
-            const int minOriginX = a.width - mMapImage->mBounds.w;
-            const int minOriginY = a.height - mMapImage->mBounds.h;
+            const int minOriginX = a.width - w;
+            const int minOriginY = a.height - h;
 
             if (mMapOriginX < minOriginX)
                 mMapOriginX = minOriginX;
@@ -296,7 +294,6 @@ void Minimap::draw(gcn::Graphics *graphics)
             continue;
 
         int dotSize = 2;
-
         int type = UserPalette::PC;
 
         if (being == player_node)
@@ -345,11 +342,10 @@ void Minimap::draw(gcn::Graphics *graphics)
         const Vector &pos = being->getPosition();
 
         graphics->fillRectangle(gcn::Rectangle(
-                static_cast<float>(pos.x * mWidthProportion) / 32
-                + mMapOriginX - offsetWidth,
-                static_cast<float>(pos.y * mHeightProportion) / 32
-                + mMapOriginY - offsetHeight,
-                dotSize, dotSize));
+            static_cast<float>(pos.x * mWidthProportion) / 32
+            + mMapOriginX - offsetWidth,
+            static_cast<float>(pos.y * mHeightProportion) / 32
+            + mMapOriginY - offsetHeight, dotSize, dotSize));
     }
 
     if (player_node->isInParty())
@@ -397,19 +393,20 @@ void Minimap::draw(gcn::Graphics *graphics)
     }
 
     const Vector &pos = player_node->getPosition();
-//    logger->log("width:" + toString(graph->getWidth()));
 
-    int x = static_cast<float>((pos.x - (graph->getWidth() / 2)
+    const int gw = graph->getWidth();
+    const int gh = graph->getHeight();
+    int x = static_cast<float>((pos.x - (gw / 2)
         + viewport->getCameraRelativeX())
         * mWidthProportion) / 32 + mMapOriginX;
-    int y = static_cast<float>((pos.y - (graph->getHeight() / 2)
+    int y = static_cast<float>((pos.y - (gh / 2)
         + viewport->getCameraRelativeY())
         * mHeightProportion) / 32 + mMapOriginY;
 
     const int w = static_cast<int>(static_cast<float>(
-        graph->getWidth()) * mWidthProportion / 32);
+        gw) * mWidthProportion / 32);
     const int h = static_cast<int>(static_cast<float>(
-        graph->getHeight()) * mHeightProportion / 32);
+        gh) * mHeightProportion / 32);
 
     if (w <= a.width)
     {
@@ -461,7 +458,8 @@ void Minimap::mouseMoved(gcn::MouseEvent &event)
     Window::mouseMoved(event);
     const int x = event.getX();
     const int y = event.getY();
-    mTextPopup->show(x + getX(), y + getY(), mCaption);
+    const gcn::Rectangle &rect = mDimension;
+    mTextPopup->show(x + rect.x, y + rect.y, mCaption);
 }
 
 void Minimap::mouseExited(gcn::MouseEvent &event)
