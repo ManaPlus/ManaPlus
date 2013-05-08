@@ -86,6 +86,20 @@ std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
         file.hash = XML::getProperty(fileNode, "hash", "");
         file.type = XML::getProperty(fileNode, "type", "data");
         file.desc = XML::getProperty(fileNode, "description", "");
+        const std::string version = XML::getProperty(
+            fileNode, "version", "");
+        if (!version.empty())
+        {
+            if (version > CHECK_VERSION)
+                continue;
+        }
+        const std::string notVersion = XML::getProperty(
+            fileNode, "notVersion", "");
+        if (!notVersion.empty())
+        {
+            if (notVersion <= CHECK_VERSION)
+                continue;
+        }
         if (XML::getProperty(fileNode, "required", "yes") == "yes")
             file.required = true;
         else
