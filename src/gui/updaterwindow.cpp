@@ -77,8 +77,10 @@ std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
 
     for_each_xml_child_node(fileNode, rootNode)
     {
-        // Ignore all tags except for the "update" tags
         if (!xmlNameEqual(fileNode, "update"))
+            continue;
+
+        if (XML::getProperty(fileNode, "group", "default") != "default")
             continue;
 
         UpdateFile file;
