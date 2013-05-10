@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd ..
+
+dir=`pwd`
+
+cd packaging/windows
+./make-translations.sh
+makensis -DDLLDIR=$dir/../libs/dll/ \
+    -DPRODUCT_VERSION="1.3.4.28" \
+    -DEXESUFFIX=/src \
+    -DUPX=true \
+    tmw.nsi

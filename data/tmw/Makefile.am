@@ -11,7 +11,9 @@ tmw:
 	     cp icons/tmw.png "$(DESTDIR)$(datarootdir)/icons"
 	     cp -r images "$(DESTDIR)$(pkgdatadir)/data/tmw"
 
-EXTRA_DIST = tmw.desktop \
+EXTRA_DIST = setup_finish.bmp \
+	    setup_welcome.bmp \
+	    tmw.desktop \
 	    tmw.manaplus \
 	    icons/tmw.ico \
 	    icons/tmw.png \
