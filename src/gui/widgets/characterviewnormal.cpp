@@ -28,8 +28,9 @@
 #include "debug.h"
 
 CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
-                    std::vector<CharacterDisplay*> *const entries,
-                    const int padding) :
+                                         std::vector<CharacterDisplay*>
+                                         *const entries,
+                                         const int padding) :
     CharacterViewBase(widget, padding),
     mSelectedEntry(nullptr),
     mCharacterEntries(entries)

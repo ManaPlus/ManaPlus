@@ -48,7 +48,8 @@ CheckBox::CheckBox(const Widget2 *const widget,
     mPadding(0),
     mImagePadding(0),
     mImageSize(9),
-    mSpacing(2)
+    mSpacing(2),
+    mForegroundColor(getThemeColor(Theme::CHECKBOX_OUTLINE))
 {
     if (instances == 0)
     {
@@ -68,7 +69,6 @@ CheckBox::CheckBox(const Widget2 *const widget,
         addActionListener(listener);
 
     mForegroundColor = getThemeColor(Theme::CHECKBOX);
-    mForegroundColor2 = getThemeColor(Theme::CHECKBOX_OUTLINE);
     if (mSkin)
     {
         mPadding = mSkin->getPadding();

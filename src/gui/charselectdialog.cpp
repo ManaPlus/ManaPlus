@@ -255,7 +255,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
                 character->data.mAttributes[PlayerInfo::EXP],
                 Units::formatCurrency(
                 character->data.mAttributes[PlayerInfo::MONEY]).c_str());
-            new OkDialog(data->getName().c_str(), msg.c_str(), DIALOG_SILENCE);
+            new OkDialog(data->getName(), msg, DIALOG_SILENCE);
         }
     }
     if (eventId == "switch")

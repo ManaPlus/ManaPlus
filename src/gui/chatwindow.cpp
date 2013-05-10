@@ -714,7 +714,7 @@ void ChatWindow::mouseDragged(gcn::MouseEvent &event)
     }
 }
 
-#define caseKey(key,str) case key:\
+#define caseKey(key, str) case key:\
     temp = str; \
     break
 

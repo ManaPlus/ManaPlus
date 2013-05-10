@@ -1155,7 +1155,7 @@ impHandler0(testsdlfont)
     timespec time2;
     NullOpenGLGraphics *nullGraphics = new NullOpenGLGraphics;
     std::vector<std::string> data;
-    int width = 0;
+    volatile int width = 0;
 
     for (int f = 0; f < 300; f ++)
         data.push_back("test " + toString(f) + "string");

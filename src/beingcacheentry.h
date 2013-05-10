@@ -23,6 +23,8 @@
 
 #include "localconsts.h"
 
+#include <string>
+
 class BeingCacheEntry final
 {
     public:

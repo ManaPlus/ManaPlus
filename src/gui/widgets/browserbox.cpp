@@ -719,7 +719,7 @@ int BrowserBox::calcHeight()
     }
     if (static_cast<signed>(wWidth) != maxWidth)
     {
-        wWidth = maxWidth;
+//        wWidth = maxWidth;
         setWidth(maxWidth);
     }
 

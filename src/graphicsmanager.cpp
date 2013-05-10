@@ -32,7 +32,6 @@
 #include "GL/glx.h"
 #endif
 #else
-//#include <winuser.h>
 #endif
 
 #endif

@@ -244,9 +244,10 @@ class ChatWindow final : public Window,
                            const bool ignoreRecord,
                            const bool tryRemoveColors);
 
-        static void battleChatLog(const std::string &line, Own own = BY_UNKNOWN,
-                           const bool ignoreRecord = false,
-                           const bool tryRemoveColors = true);
+        static void battleChatLog(const std::string &line,
+                                  Own own = BY_UNKNOWN,
+                                  const bool ignoreRecord = false,
+                                  const bool tryRemoveColors = true);
 
         void updateOnline(std::set<std::string> &onlinePlayers) const;
 

@@ -49,6 +49,7 @@ EmoteShortcutContainer::EmoteShortcutContainer():
     ShortcutContainer(),
     mEmoteImg(),
     mEmotePopup(new TextPopup),
+    mForegroundColor2(getThemeColor(Theme::TEXT_OUTLINE)),
     mEmoteClicked(false),
     mEmoteMoved(0)
 {
@@ -82,7 +83,6 @@ EmoteShortcutContainer::EmoteShortcutContainer():
         mBoxWidth = 1;
     }
     mForegroundColor = getThemeColor(Theme::TEXT);
-    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 }
 
 EmoteShortcutContainer::~EmoteShortcutContainer()

@@ -49,6 +49,7 @@ SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
     mSpellMoved(nullptr),
     mSpellPopup(new SpellPopup),
     mNumber(number),
+    mForegroundColor2(getThemeColor(Theme::TEXT_OUTLINE)),
     mSpellClicked(false)
 {
     addMouseListener(this);
@@ -73,7 +74,6 @@ SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
         mBoxWidth = 1;
     }
     mForegroundColor = getThemeColor(Theme::TEXT);
-    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 }
 
 SpellShortcutContainer::~SpellShortcutContainer()
