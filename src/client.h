@@ -291,6 +291,9 @@ public:
                        const bool always = false)
     { instance()->resizeVideo(width, height, always); }
 
+    static bool isKeyboardVisible()
+    { return instance()->mKeyboardHeight > 1; }
+
     static void setGuiAlpha(const float n);
 
     static float getGuiAlpha() A_WARN_UNUSED;
@@ -422,6 +425,7 @@ private:
     Skin *mSkin;
     int mButtonPadding;
     int mButtonSpacing;
+    int mKeyboardHeight;
 };
 
 #endif  // CLIENT_H

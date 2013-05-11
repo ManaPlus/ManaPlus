@@ -25,6 +25,7 @@
 
 #include "gui/widgets/widget2.h"
 
+#include <guichan/focuslistener.hpp>
 #include <guichan/widgets/textfield.hpp>
 
 #include "localconsts.h"
@@ -39,6 +40,7 @@ class TextField;
  * \ingroup GUI
  */
 class TextField : public gcn::TextField,
+                  public gcn::FocusListener,
                   public Widget2
 {
     public:
@@ -121,6 +123,10 @@ class TextField : public gcn::TextField,
         void handlePaste();
 
         void handleCopy() const;
+
+        void focusGained(const gcn::Event &event);
+
+        void focusLost(const gcn::Event &event);
 
     protected:
         void drawCaret(gcn::Graphics* graphics, int x) override;

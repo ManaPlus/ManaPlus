@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "inputmanager.h"
 #include "keyevent.h"
 
 #include "gui/popupmenu.h"
@@ -51,6 +52,7 @@ TextField::TextField(const Widget2 *const widget,
                      gcn::ActionListener *const listener, std::string eventId,
                      const bool sendAlwaysEvents):
     gcn::TextField(text),
+    gcn::FocusListener(),
     Widget2(widget),
     mSendAlwaysEvents(sendAlwaysEvents),
     mNumeric(false),
@@ -65,6 +67,8 @@ TextField::TextField(const Widget2 *const widget,
 {
     setFrameSize(2);
     mForegroundColor = getThemeColor(Theme::TEXTFIELD);
+
+    addFocusListener(this);
 
     if (instances == 0)
     {
@@ -529,6 +533,10 @@ void TextField::fontChanged()
 
 void TextField::mousePressed(gcn::MouseEvent &mouseEvent)
 {
+#ifdef ANDROID
+    if (!Client::isKeyboardVisible())
+        inputManager.executeAction(Input::KEY_SHOW_KEYBOARD);
+#endif
     if (mouseEvent.getButton() == gcn::MouseEvent::RIGHT)
     {
         if (viewport)
@@ -549,4 +557,16 @@ void TextField::mousePressed(gcn::MouseEvent &mouseEvent)
     {
         gcn::TextField::mousePressed(mouseEvent);
     }
+}
+
+void TextField::focusGained(const gcn::Event &event A_UNUSED)
+{
+#ifdef ANDROID
+    if (!Client::isKeyboardVisible())
+        inputManager.executeAction(Input::KEY_SHOW_KEYBOARD);
+#endif
+}
+
+void TextField::focusLost(const gcn::Event &event A_UNUSED)
+{
 }

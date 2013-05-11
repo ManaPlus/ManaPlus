@@ -25,7 +25,7 @@
 #include "gui/widgets/popup.h"
 
 #include <guichan/actionlistener.hpp>
-#include "guichan/focuslistener.hpp"
+#include <guichan/focuslistener.hpp>
 #include <guichan/listmodel.hpp>
 
 #include "localconsts.h"

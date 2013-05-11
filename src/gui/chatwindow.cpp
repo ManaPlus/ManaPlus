@@ -73,12 +73,11 @@
 /**
  * The chat input hides when it loses focus. It is also invisible by default.
  */
-class ChatInput final : public TextField, public gcn::FocusListener
+class ChatInput final : public TextField
 {
     public:
         ChatInput(ChatWindow *const window, TabbedArea *const tabs):
             TextField(window, "", false),
-            gcn::FocusListener(),
             mWindow(window),
             mChatTabs(tabs),
             mFocusGaining(false)
@@ -93,8 +92,9 @@ class ChatInput final : public TextField, public gcn::FocusListener
          * Called if the chat input loses focus. It will set itself to
          * invisible as result.
          */
-        void focusLost(const gcn::Event &event A_UNUSED)
+        void focusLost(const gcn::Event &event)
         {
+            TextField::focusLost(event);
             if (mFocusGaining || !config.getBoolValue("protectChatFocus"))
             {
                 processVisible(false);

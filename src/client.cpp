@@ -298,7 +298,8 @@ Client::Client(const Options &options) :
     mFpsManager(),
     mSkin(nullptr),
     mButtonPadding(1),
-    mButtonSpacing(3)
+    mButtonSpacing(3),
+    mKeyboardHeight(0)
 {
     mInstance = this;
 
@@ -2931,7 +2932,7 @@ void Client::windowRemoved(const Window *const window)
 
 void Client::updateScreenKeyboard(int height A_UNUSED)
 {
-//    logger->log("keyboard height: %d", height);
+    instance()->mKeyboardHeight = height;
 }
 
 void Client::checkConfigVersion()
