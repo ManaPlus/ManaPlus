@@ -33,6 +33,7 @@
 #include "gui/widgets/window.h"
 
 #include "configuration.h"
+#include "dragdrop.h"
 #include "keydata.h"
 #include "keyevent.h"
 #include "keyinput.h"
@@ -433,14 +434,24 @@ void Gui::draw()
     if ((SDL_GetAppState() & SDL_APPMOUSEFOCUS || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0f)
     {
+        Graphics *g2 = static_cast<Graphics*>(mGraphics);
+        Item *const item = dragDrop.getItem();
+        if (item)
+        {
+            const Image *const image = item->getImage();
+            if (image)
+            {
+                const int tPosX = mouseX - (image->mBounds.w / 2);
+                const int tPosY = mouseY - (image->mBounds.h / 2);
+                g2->drawImage(image, tPosX, tPosY);
+            }
+        }
+
         Image *const mouseCursor = mMouseCursors->get(mCursorType);
         if (mouseCursor)
         {
             mouseCursor->setAlpha(mMouseCursorAlpha);
-            static_cast<Graphics*>(mGraphics)->drawImage(
-                    mouseCursor,
-                    mouseX - 15,
-                    mouseY - 17);
+            g2->drawImage(mouseCursor, mouseX - 15, mouseY - 17);
         }
     }
 
@@ -598,6 +609,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
                         (*it)->mousePressed(mouseEvent);
                         break;
                     case gcn::MouseEvent::RELEASED:
+                    case 100:  // manual hack for release on target after drag
                         (*it)->mouseReleased(mouseEvent);
                         break;
                     case gcn::MouseEvent::WHEEL_MOVED_UP:
@@ -624,6 +636,9 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
         const gcn::Widget *const swap = widget;
         widget = parent;
         parent = swap->getParent();
+
+        if (type == gcn::MouseEvent::RELEASED)
+            dragDrop.clear();
 
         // If a non modal focused widget has been reach
         // and we have modal focus cancel the distribution.
@@ -734,17 +749,27 @@ void Gui::handleMouseReleased(const gcn::MouseInput &mouseInput)
     gcn::Widget *sourceWidget = getMouseEventSource(
         mouseInput.getX(), mouseInput.getY());
 
+    int sourceWidgetX, sourceWidgetY;
     if (mFocusHandler->getDraggedWidget())
     {
         if (sourceWidget != mFocusHandler->getLastWidgetPressed())
             mFocusHandler->setLastWidgetPressed(nullptr);
 
+        gcn::Widget *oldWidget = sourceWidget;
         sourceWidget = mFocusHandler->getDraggedWidget();
+        if (oldWidget != sourceWidget)
+        {
+            oldWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
+            distributeMouseEvent(oldWidget,
+                100,
+                mouseInput.getButton(),
+                mouseInput.getX(),
+                mouseInput.getY());
+
+        }
     }
 
-    int sourceWidgetX, sourceWidgetY;
     sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
-
     distributeMouseEvent(sourceWidget,
                          MouseEvent::RELEASED,
                          mouseInput.getButton(),

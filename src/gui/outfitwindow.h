@@ -64,14 +64,6 @@ class OutfitWindow final : public Window,
 
         void load(const bool oldConfig = false);
 
-        void setItemSelected(const int itemId)
-        { mItemSelected = itemId; }
-
-        void setItemSelected(const Item *const item);
-
-        bool isItemSelected() const A_WARN_UNUSED
-        { return mItemSelected > 0; }
-
         void wearOutfit(const int outfit, const bool unwearEmpty = true,
                         const bool select = false);
 
@@ -123,10 +115,8 @@ class OutfitWindow final : public Window,
         int mCursorPosY;
         int mGridWidth;
         int mGridHeight;
-        Item *mItemMoved;
 
         int mItems[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
-        int mItemSelected;
         int mAwayOutfit;
 
         gcn::Color mBorderColor;

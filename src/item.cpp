@@ -22,6 +22,8 @@
 
 #include "item.h"
 
+#include "dragdrop.h"
+
 #include "gui/theme.h"
 
 #include "resources/image.h"
@@ -32,6 +34,8 @@
 #include "debug.h"
 
 extern int serverVersion;
+
+DragDrop dragDrop(nullptr, DRAGDROP_SOURCE_EMPTY);
 
 Item::Item(const int id, const int quantity, const int refine,
            const unsigned char color, const bool equipment,

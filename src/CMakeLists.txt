@@ -576,6 +576,7 @@ SET(SRCS
     depricatedevent.h
     depricatedlistener.cpp
     depricatedlistener.h
+    dragdrop.h
     effectmanager.cpp
     effectmanager.h
     emoteshortcut.cpp

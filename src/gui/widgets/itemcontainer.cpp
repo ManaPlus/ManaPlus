@@ -22,6 +22,7 @@
 
 #include "gui/widgets/itemcontainer.h"
 
+#include "dragdrop.h"
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
@@ -267,18 +268,8 @@ void ItemContainer::draw(gcn::Graphics *graphics)
             {
                 if (mShowMatrix[itemIndex] == mSelectedIndex)
                 {
-                    if (mSelectionStatus == SEL_DRAGGING)
-                    {
-                        // Reposition the coords to that of the cursor.
-                        itemX = mDragPosX - (mBoxWidth / 2);
-                        itemY = mDragPosY - (mBoxHeight / 2);
-                    }
-                    else
-                    {
-                        // Draw selection border image.
-                        if (mSelImg)
-                            g->drawImage(mSelImg, itemX, itemY);
-                    }
+                    if (mSelImg)
+                        g->drawImage(mSelImg, itemX, itemY);
                 }
                 image->setAlpha(1.0f);  // ensure the image if fully drawn...
                 g->drawImage(image, itemX + mPaddingItemX,
@@ -332,14 +323,16 @@ void ItemContainer::draw(gcn::Graphics *graphics)
 
 void ItemContainer::selectNone()
 {
+    dragDrop.clear();
+
     setSelectedIndex(-1);
     mSelectionStatus = SEL_NONE;
+/*
     if (outfitWindow)
         outfitWindow->setItemSelected(-1);
     if (shopWindow)
         shopWindow->setItemSelected(-1);
-//    if (skillDialog)
-//        skillDialog->setItemSelected(-1);
+*/
 }
 
 void ItemContainer::setSelectedIndex(const int newIndex)
@@ -407,10 +400,12 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
 
         if (mSelectedIndex == index && mClicks != 2)
         {
+            dragDrop.dragItem(item, DragDropSource::DRAGDROP_SOURCE_INVENTORY);
             mSelectionStatus = SEL_DESELECTING;
         }
         else if (item && item->getId())
         {
+            dragDrop.dragItem(item, DragDropSource::DRAGDROP_SOURCE_INVENTORY);
             setSelectedIndex(index);
             mSelectionStatus = SEL_SELECTING;
 
@@ -422,8 +417,6 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
             }
             if (dropShortcut)
                 dropShortcut->setItemSelected(item);
-            if (item->isEquipment() && outfitWindow)
-                outfitWindow->setItemSelected(item);
             if (shopWindow)
                 shopWindow->setItemSelected(item->getId());
         }

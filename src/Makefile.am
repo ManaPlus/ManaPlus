@@ -579,6 +579,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      depricatedevent.h \
 	      depricatedlistener.cpp \
 	      depricatedlistener.h \
+	      dragdrop.h \
 	      effectmanager.cpp \
 	      effectmanager.h \
 	      emoteshortcut.cpp \

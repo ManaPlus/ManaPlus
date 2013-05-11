@@ -23,6 +23,7 @@
 #include "gui/outfitwindow.h"
 
 #include "configuration.h"
+#include "dragdrop.h"
 #include "emoteshortcut.h"
 #include "equipment.h"
 #include "game.h"
@@ -78,13 +79,9 @@ OutfitWindow::OutfitWindow():
         keyName(mCurrentOutfit).c_str()))),
     mBoxWidth(33),
     mBoxHeight(33),
-    mCursorPosX(0),
-    mCursorPosY(0),
     mGridWidth(4),
     mGridHeight(4),
-    mItemMoved(nullptr),
     mItems(),
-    mItemSelected(-1),
     mAwayOutfit(0),
     mBorderColor(getThemeColor(Theme::BORDER, 64)),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND, 32)),
@@ -374,6 +371,7 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
             }
         }
     }
+/*
     if (mItemMoved)
     {
         // Draw the item image being dragged by the cursor.
@@ -386,6 +384,7 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
             g->drawImage(image, tPosX, tPosY);
         }
     }
+*/
     BLOCK_END("OutfitWindow::draw")
 }
 
@@ -394,7 +393,7 @@ void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
 {
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-        if (!mItemMoved && mItemClicked)
+        if (dragDrop.isEmpty() && mItemClicked)
         {
             if (mCurrentOutfit < 0 || mCurrentOutfit
                 >= static_cast<signed int>(OUTFITS_COUNT))
@@ -423,16 +422,11 @@ void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
             {
                 Item *const item = inv->findItem(itemId, itemColor);
                 if (item)
-                    mItemMoved = item;
+                    dragDrop.dragItem(item, DragDropSource::DRAGDROP_SOURCE_OUTFIT);
                 else
-                    mItemMoved = nullptr;
+                    dragDrop.clear();
                 mItems[mCurrentOutfit][index] = -1;
             }
-        }
-        if (mItemMoved)
-        {
-            mCursorPosX = event.getX();
-            mCursorPosY = event.getY();
         }
     }
     Window::mouseDragged(event);
@@ -457,19 +451,9 @@ void OutfitWindow::mousePressed(gcn::MouseEvent &event)
     mMoved = false;
     event.consume();
 
-    // Stores the selected item if there is one.
-    if (isItemSelected())
-    {
-        mItems[mCurrentOutfit][index] = mItemSelected;
-        mItemColors[mCurrentOutfit][index] = mItemColorSelected;
-
-        if (inventoryWindow)
-            inventoryWindow->unselectItem();
-    }
-    else if (mItems[mCurrentOutfit][index])
-    {
+    if (mItems[mCurrentOutfit][index])
         mItemClicked = true;
-    }
+
     Window::mousePressed(event);
 }
 
@@ -485,17 +469,21 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
         const int index = getIndexFromGrid(event.getX(), event.getY());
         if (index == -1)
         {
-            mItemMoved = nullptr;
+            dragDrop.clear();
             Window::mouseReleased(event);
             return;
         }
         mMoved = false;
         event.consume();
-        if (mItemMoved)
+        if (!dragDrop.isEmpty())
         {
-            mItems[mCurrentOutfit][index] = mItemMoved->getId();
-            mItemColors[mCurrentOutfit][index] = mItemMoved->getColor();
-            mItemMoved = nullptr;
+            Item *const item = dragDrop.getItem();
+            if (item)
+            {
+                mItems[mCurrentOutfit][index] = item->getId();
+                mItemColors[mCurrentOutfit][index] = item->getColor();
+                dragDrop.clear();
+            }
         }
         if (mItemClicked)
             mItemClicked = false;
@@ -663,20 +651,6 @@ void OutfitWindow::wearAwayOutfit()
 void OutfitWindow::unwearAwayOutfit()
 {
     wearOutfit(OUTFITS_COUNT);
-}
-
-void OutfitWindow::setItemSelected(const Item *const item)
-{
-    if (item)
-    {
-        mItemSelected = item->getId();
-        mItemColorSelected = item->getColor();
-    }
-    else
-    {
-        mItemSelected = -1;
-        mItemColorSelected = 1;
-    }
 }
 
 void OutfitWindow::clearCurrentOutfit()
