@@ -9,7 +9,7 @@ Terminal=false
 Type=Application
 Icon=manaplus
 Categories=Game;AdventureGame;
-Keywords=MMORPG,game,RPG,adventure,multiplayer,online
+Keywords=MMORPG;game;RPG;adventure;multiplayer;online
 
 # Translations
 Comment[vls]=Nen 2D MMORPG client
