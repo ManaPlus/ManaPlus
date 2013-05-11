@@ -77,6 +77,7 @@
 #include "net/npchandler.h"
 #include "net/partyhandler.h"
 
+#include "resources/avatardb.h"
 #include "resources/chardb.h"
 #include "resources/colordb.h"
 #include "resources/emotedb.h"
@@ -759,6 +760,7 @@ void Client::gameClear()
     ItemDB::unload();
     MonsterDB::unload();
     NPCDB::unload();
+    AvatarDB::unload();
     PaletteDB::unload();
     PETDB::unload();
     StatusEffect::unload();
@@ -1408,6 +1410,7 @@ int Client::gameExec()
 #ifdef MANASERV_SUPPORT
                     SpecialDB::load();
 #endif
+                    AvatarDB::load();
                     NPCDB::load();
                     PETDB::load();
                     EmoteDB::load();

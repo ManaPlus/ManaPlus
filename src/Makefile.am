@@ -425,6 +425,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/animation.h \
 	      resources/atlasmanager.cpp \
 	      resources/atlasmanager.h \
+	      resources/avatardb.cpp \
+	      resources/avatardb.h \
 	      resources/beinginfo.cpp \
 	      resources/beinginfo.h \
 	      resources/chardb.cpp \

@@ -48,6 +48,7 @@
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
 
+#include "resources/avatardb.h"
 #include "resources/emotedb.h"
 #include "resources/iteminfo.h"
 #include "resources/monsterdb.h"
@@ -250,6 +251,12 @@ void Being::setSubtype(const uint16_t subtype)
             setupSpriteDisplay(mInfo->getDisplay(), false);
             mYDiff = mInfo->getSortOffsetY();
         }
+    }
+    else if (mType == AVATAR)
+    {
+        mInfo = AvatarDB::get(mSubType);
+        if (mInfo)
+            setupSpriteDisplay(mInfo->getDisplay(), false);
     }
     else if (mType == PET)
     {
