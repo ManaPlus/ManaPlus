@@ -1,3 +1,16 @@
+2013-05-12 New release 1.3.5.12
+fix: update host issue after registering on evol server.
+fix: outline colors in pink theme.
+add: improve character selection window
+add: default different font sizes in different screen density.
+add: different options depend on screen density.
+add: option for override screen density.
+add: small and big font sizes from 8 to 23
+add: extend outlining to all controls.
+add: some new colors in themes.
+add: themes update.
+add: installer script for tmw windows build.
+
 2013-04-28 New release 1.3.4.28
 add: delay for hurt sound.
 add: support for GIMP palettes.
