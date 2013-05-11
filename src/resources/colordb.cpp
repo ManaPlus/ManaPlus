@@ -1,5 +1,5 @@
 /*
- *  Color database
+ *  The ManaPlus Client
  *  Copyright (C) 2008  Aethyra Development Team
  *  Copyright (C) 2011-2013  The ManaPlus Developers
  *
