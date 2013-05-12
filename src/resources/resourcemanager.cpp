@@ -1151,3 +1151,10 @@ void ResourceManager::deleteFilesInDirectory(std::string path)
     if (dir)
         closedir(dir);
 }
+
+void ResourceManager::clearCache()
+{
+    cleanProtected();
+    while (cleanOrphans(true))
+        continue;
+}

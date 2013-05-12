@@ -1209,7 +1209,7 @@ int Client::gameExec()
                 {
                     BLOCK_START("Client::gameExec STATE_CHOOSE_SERVER")
                     logger->log1("State: CHOOSE SERVER");
-                    const ResourceManager *const resman
+                    ResourceManager *const resman
                         = ResourceManager::getInstance();
                     if (mOptions.dataPath.empty())
                     {
@@ -1234,6 +1234,8 @@ int Client::gameExec()
                         resman->removeFromSearchPath(mLocalDataDir + dirSeparator
                             + mUpdatesDir + "/local/");
                     }
+
+                    resman->clearCache();
 
                     loginData.clearUpdateHost();
                     serverVersion = 0;

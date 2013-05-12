@@ -322,6 +322,8 @@ class ResourceManager final
 
         Resource *getTempResource(const std::string &idPath) A_WARN_UNUSED;
 
+        void clearCache();
+
         static void addDelayedAnimation(AnimationDelayLoad *const animation)
         { mDelayedAnimations.push_back(animation); }
 
