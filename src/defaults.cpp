@@ -71,7 +71,6 @@ VariableData* createData(const bool defData)
 DefaultsData* getConfigDefaults()
 {
     DefaultsData *const configData = new DefaultsData;
-    // Init main config defaults
     AddDEF("OverlayDetail", 2);
     AddDEF("speechBubbleAlpha", 1.0f);
     AddDEF("MostUsedServerName0", "server.themanaworld.org");
@@ -369,7 +368,6 @@ void getConfigDefaults2(DefaultsData *const configData)
 DefaultsData* getBrandingDefaults()
 {
     DefaultsData *const configData = new DefaultsData;
-    // Init config defaults
     AddDEF("wallpapersPath", "");
     AddDEF("wallpapersFile", "");
     AddDEF("appName", "ManaPlus");
@@ -384,7 +382,6 @@ DefaultsData* getBrandingDefaults()
     AddDEF("appShort", "mana");
     AddDEF("defaultUpdateHost", "");
     AddDEF("helpPath", "");
-//    AddDEF("onlineServerList", "");
     AddDEF("theme", "");
     AddDEF("font", "fonts/dejavusans.ttf");
     AddDEF("boldFont", "fonts/dejavusans-bold.ttf");
@@ -408,7 +405,6 @@ DefaultsData* getBrandingDefaults()
 DefaultsData* getPathsDefaults()
 {
     DefaultsData *const configData = new DefaultsData;
-    // Init paths.xml defaults
     AddDEF("itemIcons", "graphics/items/");
     AddDEF("unknownItemFile", "unknown-item.png");
     AddDEF("sprites", "graphics/sprites/");
@@ -438,6 +434,12 @@ DefaultsData* getPathsDefaults()
     AddDEF("help", "help/");
 
     return configData;
+}
+
+DefaultsData* getFeaturesDefaults()
+{
+    DefaultsData *const configData = new DefaultsData;
+    AddDEF("languageTab", false);
 }
 
 #undef AddDEF

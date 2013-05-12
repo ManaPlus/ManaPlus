@@ -359,6 +359,8 @@ private:
 
     void initServerConfig(std::string serverName);
 
+    void initFeatures() const;
+
     void accountLogin(LoginData *const data) const;
 
     void storeSafeParameters() const;

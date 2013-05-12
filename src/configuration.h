@@ -361,5 +361,6 @@ extern Configuration branding;
 extern Configuration config;
 extern Configuration serverConfig;
 extern Configuration paths;
+extern Configuration features;
 
 #endif

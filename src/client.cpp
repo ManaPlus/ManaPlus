@@ -143,12 +143,13 @@ std::string errorMessage;
 ErrorListener errorListener;
 LoginData loginData;
 
-Configuration config;             /**< XML file configuration reader */
-Configuration serverConfig;       /**< XML file server configuration reader */
-Configuration branding;           /**< XML branding information reader */
-Configuration paths;              /**< XML default paths information reader */
-Logger *logger = nullptr;         /**< Log object */
-ChatLogger *chatLogger = nullptr; /**< Chat log object */
+Configuration config;              // XML file configuration reader
+Configuration serverConfig;        // XML file server configuration reader
+Configuration features;            // XML file features
+Configuration branding;            // XML branding information reader
+Configuration paths;               // XML default paths information reader
+Logger *logger = nullptr;          // Log object
+ChatLogger *chatLogger = nullptr;  // Chat log object
 KeyboardConfig keyboard;
 UserPalette *userPalette = nullptr;
 Graphics *mainGraphics = nullptr;
@@ -344,6 +345,7 @@ void Client::gameInit()
         logger->setLogFile(mLocalDataDir + "/manaplus.log");
 
     initConfiguration();
+    initFeatures();
     logger->log("init 4");
     logger->setDebugLog(config.getBoolValue("debugLog"));
 
@@ -1074,6 +1076,7 @@ int Client::gameExec()
         {
             mServerName = mCurrentServer.hostname;
             initServerConfig(mCurrentServer.hostname);
+            initFeatures();
             loginData.registerUrl = mCurrentServer.registerUrl;
             if (!mCurrentServer.onlineListUrl.empty())
                 mOnlineListUrl = mCurrentServer.onlineListUrl;
@@ -2014,9 +2017,12 @@ void Client::initServerConfig(std::string serverName)
     dropShortcut = new DropShortcut;
 }
 
-/**
- * Initialize configuration.
- */
+void Client::initFeatures() const
+{
+    features.init("features.xml", true);
+    paths.setDefaultValues(getFeaturesDefaults());
+}
+
 void Client::initConfiguration() const
 {
 #ifdef DEBUG_CONFIG
