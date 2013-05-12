@@ -79,6 +79,8 @@ class CharacterDisplay final : public Container,
 
         void mouseMoved(gcn::MouseEvent &event) override;
 
+        void mousePressed(gcn::MouseEvent &event);
+
     private:
         void update();
 

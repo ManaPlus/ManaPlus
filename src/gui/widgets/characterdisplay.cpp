@@ -42,6 +42,8 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
 {
     mPlayerBox->setActionEventId("select");
     mPlayerBox->addActionListener(charSelectDialog);
+    setActionEventId("use");
+    addActionListener(charSelectDialog);
 
     LayoutHelper h(this);
     ContainerPlacer placer = h.getPlacer(0, 0);
@@ -113,4 +115,10 @@ void CharacterDisplay::mouseMoved(gcn::MouseEvent &event)
     int mouseY = 0;
     SDL_GetMouseState(&mouseX, &mouseY);
     mPopup->show(mouseX, mouseY, mName->getCaption());
+}
+
+void CharacterDisplay::mousePressed(gcn::MouseEvent &event)
+{
+    if (event.getClickCount() == 2)
+        distributeActionEvent();
 }

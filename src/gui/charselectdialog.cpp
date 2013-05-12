@@ -222,11 +222,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
 
     if (selected >= 0)
     {
-        if (eventId == "select")
-        {
-            logger->log("select");
-        }
-        else if (eventId == "use")
+        if (eventId == "use")
         {
             use(selected);
             return;
