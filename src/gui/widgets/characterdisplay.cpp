@@ -23,6 +23,7 @@
 #include "gui/widgets/characterdisplay.h"
 
 #include "gui/charselectdialog.h"
+#include "gui/textpopup.h"
 
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
@@ -32,9 +33,12 @@
 CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
                                    CharSelectDialog *const charSelectDialog) :
     Container(widget),
+    gcn::MouseListener(),
+    gcn::WidgetListener(),
     mCharacter(nullptr),
     mPlayerBox(new PlayerBox(nullptr)),
-    mName(new Label(this, "wwwwwwwwwwwwwwwwwwwwwwww"))
+    mName(new Label(this, "wwwwwwwwwwwwwwwwwwwwwwww")),
+    mPopup(new TextPopup)
 {
     mPlayerBox->setActionEventId("select");
     mPlayerBox->addActionListener(charSelectDialog);
@@ -55,6 +59,14 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
     else
         setWidth(80);
     setHeight(120);
+    addMouseListener(this);
+    addWidgetListener(this);
+}
+
+CharacterDisplay::~CharacterDisplay()
+{
+    delete mPopup;
+    mPopup = nullptr;
 }
 
 void CharacterDisplay::setCharacter(Net::Character *const character)
@@ -83,4 +95,22 @@ void CharacterDisplay::update()
         mName->setCaption("");
 
     distributeResizedEvent();
+}
+
+void CharacterDisplay::widgetHidden(const gcn::Event &event)
+{
+    mPopup->setVisible(false);
+}
+
+void CharacterDisplay::mouseExited(gcn::MouseEvent &event)
+{
+    mPopup->setVisible(false);
+}
+
+void CharacterDisplay::mouseMoved(gcn::MouseEvent &event)
+{
+    int mouseX = 0;
+    int mouseY = 0;
+    SDL_GetMouseState(&mouseX, &mouseY);
+    mPopup->show(mouseX, mouseY, mName->getCaption());
 }

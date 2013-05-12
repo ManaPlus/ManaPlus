@@ -29,18 +29,25 @@
 #include "net/charserverhandler.h"
 #include "net/net.h"
 
+#include <guichan/widgetlistener.hpp>
+
 class Button;
 class CharSelectDialog;
 class Label;
 class PlayerBox;
+class TextPopup;
 
-class CharacterDisplay final : public Container
+class CharacterDisplay final : public Container,
+                               public gcn::MouseListener,
+                               public gcn::WidgetListener
 {
     public:
         CharacterDisplay(const Widget2 *const widget,
                          CharSelectDialog *const charSelectDialog);
 
         A_DELETE_COPY(CharacterDisplay)
+
+        virtual ~CharacterDisplay();
 
         void setCharacter(Net::Character *const character);
 
@@ -58,15 +65,19 @@ class CharacterDisplay final : public Container
         { return false; }
 
         void focusSelect()
-        {  }
+        { }
 
         void focusDelete()
-        {  }
+        { }
 
         void setSelect(bool b)
-        {
-            mPlayerBox->setSelected(b);
-        }
+        { mPlayerBox->setSelected(b); }
+
+        void widgetHidden(const gcn::Event &event) override;
+
+        void mouseExited(gcn::MouseEvent &event) override;
+
+        void mouseMoved(gcn::MouseEvent &event) override;
 
     private:
         void update();
@@ -74,6 +85,7 @@ class CharacterDisplay final : public Container
         Net::Character *mCharacter;
         PlayerBox *mPlayerBox;
         Label *mName;
+        TextPopup *mPopup;
 };
 
 #endif
