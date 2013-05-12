@@ -50,7 +50,10 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
     mName->setAlignment(Graphics::CENTER);
     mName->adjustSize();
 
-    setWidth(80);
+    if (mainGraphics->getWidth() > 800)
+        setWidth(120);
+    else
+        setWidth(80);
     setHeight(120);
 }
 

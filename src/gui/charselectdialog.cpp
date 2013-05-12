@@ -164,10 +164,15 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
         mCharacterView = new CharacterViewNormal(
             this, &mCharacterEntries, mPadding);
         placer(0, 1, mCharacterView, 10);
+        int sz = 410 + 2 * mPadding;
         if (config.getIntValue("fontSize") > 18)
-            reflowLayout(500 + 2 * mPadding);
-        else
-            reflowLayout(410 + 2 * mPadding);
+            sz = 500 + 2 * mPadding;
+        const int width = mCharacterView->getWidth() + 2 * mPadding;
+        if (sz < width)
+            sz = width;
+        if (sz > mainGraphics->getWidth())
+            sz = mainGraphics->getWidth();
+        reflowLayout(sz);
     }
     else
     {
