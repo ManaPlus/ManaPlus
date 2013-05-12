@@ -300,7 +300,8 @@ Client::Client(const Options &options) :
     mSkin(nullptr),
     mButtonPadding(1),
     mButtonSpacing(3),
-    mKeyboardHeight(0)
+    mKeyboardHeight(0),
+    mOldUpdates()
 {
     mInstance = this;
 
@@ -1205,8 +1206,34 @@ int Client::gameExec()
             switch (mState)
             {
                 case STATE_CHOOSE_SERVER:
+                {
                     BLOCK_START("Client::gameExec STATE_CHOOSE_SERVER")
                     logger->log1("State: CHOOSE SERVER");
+                    const ResourceManager *const resman
+                        = ResourceManager::getInstance();
+                    if (mOptions.dataPath.empty())
+                    {
+                        // Add customdata directory
+                        resman->searchAndRemoveArchives(
+                            "customdata/",
+                            "zip");
+                    }
+
+                    if (!mOldUpdates.empty())
+                    {
+                        UpdaterWindow::unloadUpdates(mOldUpdates);
+                        mOldUpdates.clear();
+                    }
+
+                    if (!mOptions.skipUpdate)
+                    {
+                        resman->searchAndRemoveArchives(
+                            mUpdatesDir + "/local/",
+                            "zip");
+
+                        resman->removeFromSearchPath(mLocalDataDir + dirSeparator
+                            + mUpdatesDir + "/local/");
+                    }
 
                     loginData.clearUpdateHost();
                     serverVersion = 0;
@@ -1235,6 +1262,7 @@ int Client::gameExec()
                     }
                     BLOCK_END("Client::gameExec STATE_CHOOSE_SERVER")
                     break;
+                }
 
                 case STATE_CONNECT_SERVER:
                     BLOCK_START("Client::gameExec STATE_CONNECT_SERVER")
@@ -1330,6 +1358,7 @@ int Client::gameExec()
 
                 case STATE_UPDATE:
                     BLOCK_START("Client::gameExec STATE_UPDATE")
+                    logger->log1("State: UPDATE");
                     // Determine which source to use for the update host
                     if (!mOptions.updateHost.empty())
                         mUpdateHost = mOptions.updateHost;
@@ -1337,22 +1366,29 @@ int Client::gameExec()
                         mUpdateHost = loginData.updateHost;
                     initUpdatesDir();
 
+                    if (!mOldUpdates.empty())
+                        UpdaterWindow::unloadUpdates(mOldUpdates);
+
                     if (mOptions.skipUpdate)
                     {
                         mState = STATE_LOAD_DATA;
+                        mOldUpdates = "";
                     }
                     else if (loginData.updateType & LoginData::Upd_Skip)
                     {
-                        UpdaterWindow::loadLocalUpdates(mLocalDataDir
-                            + dirSeparator + mUpdatesDir);
+                        mOldUpdates = mLocalDataDir
+                            + dirSeparator + mUpdatesDir;
+                        UpdaterWindow::loadLocalUpdates(mOldUpdates);
                         mState = STATE_LOAD_DATA;
                     }
                     else
                     {
-                        logger->log1("State: UPDATE");
+                        mOldUpdates = mLocalDataDir
+                            + dirSeparator + mUpdatesDir;
                         mCurrentDialog = new UpdaterWindow(mUpdateHost,
-                            mLocalDataDir + dirSeparator + mUpdatesDir,
-                            mOptions.dataPath.empty(), loginData.updateType);
+                            mOldUpdates,
+                            mOptions.dataPath.empty(),
+                            loginData.updateType);
                     }
                     BLOCK_END("Client::gameExec STATE_UPDATE")
                     break;

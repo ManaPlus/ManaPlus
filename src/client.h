@@ -428,6 +428,7 @@ private:
     int mButtonPadding;
     int mButtonSpacing;
     int mKeyboardHeight;
+    std::string mOldUpdates;
 };
 
 #endif  // CLIENT_H

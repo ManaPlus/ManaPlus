@@ -126,14 +126,24 @@ class UpdaterWindow final : public Window,
 
     static void loadLocalUpdates(const std::string &dir);
 
+    static void unloadUpdates(const std::string &dir);
+
     static void addUpdateFile(const ResourceManager *const resman,
                               const std::string &path,
                               const std::string &fixPath,
                               const std::string &file,
                               const bool append);
 
+    static void removeUpdateFile(const ResourceManager *const resman,
+                                 const std::string &path,
+                                 const std::string &fixPath,
+                                 const std::string &file);
+
     static void loadManaPlusUpdates(const std::string &dir,
                                     const ResourceManager *const resman);
+
+    static void unloadManaPlusUpdates(const std::string &dir,
+                                      const ResourceManager *const resman);
 
 private:
     void download();

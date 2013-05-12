@@ -594,6 +594,29 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
     loadManaPlusUpdates(dir, resman);
 }
 
+void UpdaterWindow::unloadUpdates(const std::string &dir)
+{
+    const ResourceManager *const resman = ResourceManager::getInstance();
+
+    std::vector<UpdateFile> updateFiles
+        = loadXMLFile(std::string(dir).append("/").append(xmlUpdateFile));
+
+    if (updateFiles.empty())
+    {
+        updateFiles = loadTxtFile(std::string(dir).append(
+            "/").append(txtUpdateFile));
+    }
+
+    std::string fixPath = dir + "/fix";
+    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+         updateFiles.size()); updateIndex < sz; updateIndex ++)
+    {
+        UpdaterWindow::removeUpdateFile(resman, dir, fixPath,
+            updateFiles[updateIndex].name);
+    }
+    unloadManaPlusUpdates(dir, resman);
+}
+
 void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
                                         const ResourceManager *const resman)
 {
@@ -615,6 +638,27 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
     }
 }
 
+void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir,
+                                          const ResourceManager *const resman)
+{
+    std::string fixPath = dir + "/fix";
+    std::vector<UpdateFile> updateFiles
+        = loadXMLFile(std::string(fixPath).append("/").append(xmlUpdateFile));
+
+    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+         updateFiles.size()); updateIndex < sz; updateIndex ++)
+    {
+        std::string name = updateFiles[updateIndex].name;
+        if (strStartWith(name, "manaplus_"))
+        {
+            struct stat statbuf;
+            std::string file = std::string(fixPath).append("/").append(name);
+            if (!stat(file.c_str(), &statbuf))
+                resman->removeFromSearchPath(file);
+        }
+    }
+}
+
 void UpdaterWindow::addUpdateFile(const ResourceManager *const resman,
                                   const std::string &path,
                                   const std::string &fixPath,
@@ -632,6 +676,18 @@ void UpdaterWindow::addUpdateFile(const ResourceManager *const resman,
 
     if (append)
         resman->addToSearchPath(tmpPath, append);
+}
+
+void UpdaterWindow::removeUpdateFile(const ResourceManager *const resman,
+                                     const std::string &path,
+                                     const std::string &fixPath,
+                                     const std::string &file)
+{
+    resman->removeFromSearchPath(std::string(path).append("/").append(file));
+    const std::string fixFile = std::string(fixPath).append("/").append(file);
+    struct stat statbuf;
+    if (!stat(fixFile.c_str(), &statbuf))
+        resman->removeFromSearchPath(fixFile);
 }
 
 void UpdaterWindow::logic()
