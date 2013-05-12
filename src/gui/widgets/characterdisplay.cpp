@@ -114,7 +114,11 @@ void CharacterDisplay::mouseMoved(gcn::MouseEvent &event)
     int mouseX = 0;
     int mouseY = 0;
     SDL_GetMouseState(&mouseX, &mouseY);
-    mPopup->show(mouseX, mouseY, mName->getCaption());
+    const std::string &name = mName->getCaption();
+    if (!name.empty())
+        mPopup->show(mouseX, mouseY, name);
+    else
+        mPopup->setVisible(false);
 }
 
 void CharacterDisplay::mousePressed(gcn::MouseEvent &event)
