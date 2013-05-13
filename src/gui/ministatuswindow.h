@@ -82,12 +82,12 @@ class MiniStatusWindow final : public Popup,
 
         void updateArrows();
 
-        void slotsChanged(Inventory *const inventory);
+        void slotsChanged(Inventory *const inventory) override;
 
         std::vector <ProgressBar*> &getBars() A_WARN_UNUSED
         { return mBars; }
 
-        gcn::Rectangle getChildrenArea() A_WARN_UNUSED;
+        gcn::Rectangle getChildrenArea() override A_WARN_UNUSED;
 
     private:
         bool isInBar(ProgressBar *bar, int x, int y) const;
@@ -99,7 +99,7 @@ class MiniStatusWindow final : public Popup,
 
         void loadBars();
 
-        void saveBars();
+        void saveBars() const;
 
         std::vector <ProgressBar*> mBars;
         std::map <std::string, ProgressBar*> mBarNames;

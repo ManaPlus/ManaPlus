@@ -145,6 +145,7 @@ MiniStatusWindow::~MiniStatusWindow()
         if (!bar->isVisible())
             delete bar;
     }
+    mBars.clear();
 }
 
 ProgressBar *MiniStatusWindow::createBar(const float progress,
@@ -197,7 +198,6 @@ void MiniStatusWindow::setIcon(const int index, AnimatedSprite *const sprite)
         mIcons.resize(index + 1, nullptr);
 
     delete mIcons[index];
-
     mIcons[index] = sprite;
 }
 
@@ -216,10 +216,11 @@ void MiniStatusWindow::drawIcons(Graphics *const graphics)
     int icon_x = mMaxX + mIconPadding;
     for (size_t i = 0, sz = mIcons.size(); i < sz; i ++)
     {
-        if (mIcons[i])
+        AnimatedSprite *const icon = mIcons[i];
+        if (icon)
         {
-            mIcons[i]->draw(graphics, icon_x, mIconPadding);
-            icon_x += mIconSpacing + mIcons[i]->getWidth();
+            icon->draw(graphics, icon_x, mIconPadding);
+            icon_x += mIconSpacing + icon->getWidth();
         }
     }
 }
@@ -273,8 +274,9 @@ void MiniStatusWindow::logic()
 
     for (size_t i = 0, sz = mIcons.size(); i < sz; i++)
     {
-        if (mIcons[i])
-            mIcons[i]->update(tick_time * 10);
+        AnimatedSprite *const icon = mIcons[i];
+        if (icon)
+            icon->update(tick_time * 10);
     }
     BLOCK_END("MiniStatusWindow::logic")
 }
@@ -293,9 +295,10 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     const int x = event.getX();
     const int y = event.getY();
 
+    const gcn::Rectangle &rect = mDimension;
     if (event.getSource() == mStatusBar)
     {
-        mStatusPopup->view(x + getX(), y + getY());
+        mStatusPopup->view(x + rect.x, y + rect.y);
         mTextPopup->hide();
     }
     else if (event.getSource() == mXpBar)
@@ -315,35 +318,32 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
                 PlayerInfo::getAttribute(PlayerInfo::LEVEL));
         }
 
-        if (PlayerInfo::getAttribute(PlayerInfo::EXP)
-            > PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED))
+        const int exp = PlayerInfo::getAttribute(PlayerInfo::EXP);
+        const int expNeed = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
+        if (exp > expNeed)
         {
-            mTextPopup->show(x + getX(), y + getY(), level, strprintf("%d/%d",
-                PlayerInfo::getAttribute(PlayerInfo::EXP),
-                PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)));
+            mTextPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",
+                exp, expNeed));
         }
         else
         {
-            mTextPopup->show(x + getX(), y + getY(), level, strprintf("%d/%d",
-                PlayerInfo::getAttribute(PlayerInfo::EXP),
-                PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)),
+            mTextPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",
+                exp, expNeed),
                 // TRANSLATORS: status bar label
-                strprintf("%s: %d", _("Need"),
-                PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)
-                - PlayerInfo::getAttribute(PlayerInfo::EXP)));
+                strprintf("%s: %d", _("Need"), expNeed - exp));
         }
         mStatusPopup->hide();
     }
     else if (event.getSource() == mHpBar)
     {
-        mTextPopup->show(x + getX(), y + getY(), event.getSource()->getId(),
+        mTextPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
             strprintf("%d/%d", PlayerInfo::getAttribute(PlayerInfo::HP),
             PlayerInfo::getAttribute(PlayerInfo::MAX_HP)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mMpBar)
     {
-        mTextPopup->show(x + getX(), y + getY(), event.getSource()->getId(),
+        mTextPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
             strprintf("%d/%d", PlayerInfo::getAttribute(PlayerInfo::MP),
             PlayerInfo::getAttribute(PlayerInfo::MAX_MP)));
         mStatusPopup->hide();
@@ -355,13 +355,13 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
 
         if (exp.first > exp.second)
         {
-            mTextPopup->show(x + getX(), y + getY(),
+            mTextPopup->show(x + rect.x, y + rect.y,
                 event.getSource()->getId(),
                 strprintf("%d/%d", exp.first, exp.second));
         }
         else
         {
-            mTextPopup->show(x + getX(), y + getY(),
+            mTextPopup->show(x + rect.x, y + rect.y,
                 event.getSource()->getId(),
                 strprintf("%d/%d", exp.first, exp.second),
                 // TRANSLATORS: status bar label
@@ -371,7 +371,7 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     }
     else if (event.getSource() == mWeightBar)
     {
-        mTextPopup->show(x + getX(), y + getY(), event.getSource()->getId(),
+        mTextPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
             strprintf("%d/%d", PlayerInfo::getAttribute(
             PlayerInfo::TOTAL_WEIGHT),
             PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT)));
@@ -384,8 +384,7 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
         {
             const int usedSlots = inv->getNumberOfSlotsUsed();
             const int maxSlots = inv->getSize();
-
-            mTextPopup->show(x + getX(), y + getY(),
+            mTextPopup->show(x + rect.x, y + rect.y,
                 event.getSource()->getId(),
                 strprintf("%d/%d", usedSlots, maxSlots));
         }
@@ -393,7 +392,7 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     }
     else if (event.getSource() == mMoneyBar)
     {
-        mTextPopup->show(x + getX(), y + getY(),
+        mTextPopup->show(x + rect.x, y + rect.y,
             event.getSource()->getId(),
             toString(PlayerInfo::getAttribute(PlayerInfo::MONEY)));
     }
@@ -461,7 +460,8 @@ void MiniStatusWindow::loadBars()
 
     for (int f = 0; f < 10; f ++)
     {
-        std::string str = config.getValue("ministatus" + toString(f), "");
+        const std::string str = config.getValue(
+            "ministatus" + toString(f), "");
         if (str == "")
             continue;
         ProgressBar *const bar = mBarNames[str];
@@ -471,7 +471,7 @@ void MiniStatusWindow::loadBars()
     }
 }
 
-void MiniStatusWindow::saveBars()
+void MiniStatusWindow::saveBars() const
 {
     int i = 0;
     FOR_EACH (ProgressBarVectorCIter, it, mBars)
@@ -506,7 +506,10 @@ void MiniStatusWindow::updateArrows()
 
 gcn::Rectangle MiniStatusWindow::getChildrenArea()
 {
-    return gcn::Rectangle(getPadding(), getPadding(),
-        getWidth() - getPadding() * 2,
-        getHeight() - getPadding() * 2);
+    const int padding = mPadding;
+    const int padding2 = padding * 2;
+    const gcn::Rectangle &rect = mDimension;
+    return gcn::Rectangle(padding, padding,
+        rect.width - padding2,
+        rect.height - padding2);
 }
