@@ -99,17 +99,17 @@ void CharacterDisplay::update()
     distributeResizedEvent();
 }
 
-void CharacterDisplay::widgetHidden(const gcn::Event &event)
+void CharacterDisplay::widgetHidden(const gcn::Event &event A_UNUSED)
 {
     mPopup->setVisible(false);
 }
 
-void CharacterDisplay::mouseExited(gcn::MouseEvent &event)
+void CharacterDisplay::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     mPopup->setVisible(false);
 }
 
-void CharacterDisplay::mouseMoved(gcn::MouseEvent &event)
+void CharacterDisplay::mouseMoved(gcn::MouseEvent &event A_UNUSED)
 {
     int mouseX = 0;
     int mouseY = 0;

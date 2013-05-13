@@ -47,13 +47,13 @@ bool Minimap::mShow = true;
 Minimap::Minimap() :
     // TRANSLATORS: mini map window name
     Window(_("Map"), false, nullptr, "map.xml"),
-    mMapImage(nullptr),
     mWidthProportion(0.5),
     mHeightProportion(0.5),
-    mCustomMapImage(false),
+    mMapImage(nullptr),
     mMapOriginX(0),
     mMapOriginY(0),
     mTextPopup(new TextPopup),
+    mCustomMapImage(false),
     mAutoResize(config.getBoolValue("autoresizeminimaps"))
 {
     setWindowName("Minimap");

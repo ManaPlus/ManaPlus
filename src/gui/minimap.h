@@ -73,15 +73,15 @@ class Minimap final : public Window, public ConfigListener
         void optionChanged(const std::string &name);
 
     private:
-        Image *mMapImage;
         float mWidthProportion;
         float mHeightProportion;
-        static bool mShow;
-        bool mCustomMapImage;
+        Image *mMapImage;
         int mMapOriginX;
         int mMapOriginY;
         TextPopup *mTextPopup;
+        bool mCustomMapImage;
         bool mAutoResize;
+        static bool mShow;
 };
 
 extern Minimap *minimap;

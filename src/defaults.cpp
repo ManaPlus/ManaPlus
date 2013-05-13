@@ -440,6 +440,7 @@ DefaultsData* getFeaturesDefaults()
 {
     DefaultsData *const configData = new DefaultsData;
     AddDEF("languageTab", false);
+    return configData;
 }
 
 #undef AddDEF

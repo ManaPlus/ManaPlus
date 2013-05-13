@@ -415,20 +415,20 @@ private:
     SDL_TimerID mLogicCounterId;
     SDL_TimerID mSecondsCounterId;
 
-    bool mLimitFps;
-    bool mConfigAutoSaved;
-    bool mIsMinimized;
-    bool mInputFocused;
-    bool mMouseFocused;
-    float mGuiAlpha;
     std::string mCaption;
-    bool mNewMessageFlag;
     FPSmanager mFpsManager;
     Skin *mSkin;
     int mButtonPadding;
     int mButtonSpacing;
     int mKeyboardHeight;
     std::string mOldUpdates;
+    float mGuiAlpha;
+    bool mLimitFps;
+    bool mConfigAutoSaved;
+    bool mIsMinimized;
+    bool mInputFocused;
+    bool mMouseFocused;
+    bool mNewMessageFlag;
 };
 
 #endif  // CLIENT_H

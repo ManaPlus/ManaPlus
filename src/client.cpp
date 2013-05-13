@@ -288,20 +288,20 @@ Client::Client(const Options &options) :
     mIcon(nullptr),
     mLogicCounterId(nullptr),
     mSecondsCounterId(nullptr),
-    mLimitFps(false),
-    mConfigAutoSaved(false),
-    mIsMinimized(false),
-    mInputFocused(true),
-    mMouseFocused(true),
-    mGuiAlpha(1.0f),
     mCaption(),
-    mNewMessageFlag(false),
     mFpsManager(),
     mSkin(nullptr),
     mButtonPadding(1),
     mButtonSpacing(3),
     mKeyboardHeight(0),
-    mOldUpdates()
+    mOldUpdates(),
+    mGuiAlpha(1.0f),
+    mLimitFps(false),
+    mConfigAutoSaved(false),
+    mIsMinimized(false),
+    mInputFocused(true),
+    mMouseFocused(true),
+    mNewMessageFlag(false)
 {
     mInstance = this;
 
