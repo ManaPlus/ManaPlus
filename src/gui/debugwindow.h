@@ -75,6 +75,9 @@ class MapDebugTab final : public DebugTab
 #ifdef DEBUG_DRAW_CALLS
         Label *mDrawCallsLabel;
 #endif
+#ifdef DEBUG_BIND_TEXTURE
+        Label *mBindsLabel;
+#endif
         Label *mFPSLabel;
         Label *mLPSLabel;
         std::string mFPSText;

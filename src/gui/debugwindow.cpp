@@ -174,6 +174,11 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
         // TRANSLATORS: debug window label
         _("Draw calls:"), "?"))),
 #endif
+#ifdef DEBUG_BIND_TEXTURE
+    mBindsLabel(new Label(this, strprintf("%s %s",
+        // TRANSLATORS: debug window label
+        _("Texture binds:"), "?"))),
+#endif
     // TRANSLATORS: debug window label, frames per second
     mFPSLabel(new Label(this, strprintf(_("%d FPS"), 0))),
     // TRANSLATORS: debug window label, logic per second
@@ -219,7 +224,8 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     place(0, 7, mParticleCountLabel, 2);
     place(0, 8, mMapActorCountLabel, 2);
 #ifdef USE_OPENGL
-#if defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS)
+#if defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS) \
+    || defined(DEBUG_BIND_TEXTURE)
     int n = 9;
 #endif
 #ifdef DEBUG_OPENGL_LEAKS
@@ -231,6 +237,10 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
 #endif
 #ifdef DEBUG_DRAW_CALLS
     place(0, n, mDrawCallsLabel, 2);
+    n ++;
+#endif
+#ifdef DEBUG_BIND_TEXTURE
+    place(0, n, mBindsLabel, 2);
 #endif
 #endif
     place.getCell().matchColWidth(0, 0);
@@ -298,6 +308,14 @@ void MapDebugTab::logic()
                 mDrawCallsLabel->setCaption(strprintf("%s %d",
                     // TRANSLATORS: debug window label
                     _("Draw calls:"), mainGraphics->getDrawCalls()));
+            }
+#endif
+#ifdef DEBUG_BIND_TEXTURE
+            if (mainGraphics)
+            {
+                mBindsLabel->setCaption(strprintf("%s %d",
+                    // TRANSLATORS: debug window label
+                    _("Texture binds:"), mainGraphics->getBinds()));
             }
 #endif
 #endif

@@ -44,6 +44,10 @@ GLuint NormalOpenGLGraphics::mLastImage = 0;
 unsigned int NormalOpenGLGraphics::mDrawCalls = 0;
 unsigned int NormalOpenGLGraphics::mLastDrawCalls = 0;
 #endif
+#ifdef DEBUG_BIND_TEXTURE
+unsigned int NormalOpenGLGraphics::mBinds = 0;
+unsigned int NormalOpenGLGraphics::mLastBinds = 0;
+#endif
 
 NormalOpenGLGraphics::NormalOpenGLGraphics():
     mFloatTexArray(nullptr),
@@ -1028,6 +1032,10 @@ void NormalOpenGLGraphics::updateScreen()
     mLastDrawCalls = mDrawCalls;
     mDrawCalls = 0;
 #endif
+#ifdef DEBUG_BIND_TEXTURE
+    mLastBinds = mBinds;
+    mBinds = 0;
+#endif
     SDL_GL_SwapBuffers();
 // may be need clear?
 //  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -1361,6 +1369,9 @@ void NormalOpenGLGraphics::bindTexture(const GLenum target,
     {
         mLastImage = texture;
         glBindTexture(target, texture);
+#ifdef DEBUG_BIND_TEXTURE
+        mBinds ++;
+#endif
     }
 }
 

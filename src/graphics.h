@@ -357,6 +357,10 @@ class Graphics : public gcn::SDLGraphics
         virtual unsigned int getDrawCalls() const
         { return 0; }
 #endif
+#ifdef DEBUG_BIND_TEXTURE
+        virtual unsigned int getBinds() const
+        { return 0; }
+#endif
         int mWidth;
         int mHeight;
 

@@ -195,7 +195,10 @@ class NormalOpenGLGraphics final : public Graphics
 
         static unsigned int mLastDrawCalls;
 #endif
-
+#ifdef DEBUG_BIND_TEXTURE
+        virtual unsigned int getBinds() const
+        { return mLastBinds; }
+#endif
         static void bindTexture(const GLenum target, const GLuint texture);
 
         static GLuint mLastImage;
@@ -231,7 +234,9 @@ class NormalOpenGLGraphics final : public Graphics
         bool mColorAlpha;
 #ifdef DEBUG_BIND_TEXTURE
         std::string mOldTexture;
-        unsigned mOldTextureId;
+        unsigned int mOldTextureId;
+        static unsigned int mBinds;
+        static unsigned int mLastBinds;
 #endif
         FBOInfo mFbo;
 };
