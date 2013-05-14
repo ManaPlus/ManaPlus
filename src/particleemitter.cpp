@@ -112,6 +112,34 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
                     mParticleImage = resman->getImage(image);
                 }
             }
+            else if (name == "subimage")
+            {
+                std::string image = XML::getProperty(
+                    propertyNode, "value", "");
+                // Don't leak when multiple images are defined
+                if (!image.empty() && !mParticleImage)
+                {
+                    if (!dyePalettes.empty())
+                        Dye::instantiate(image, dyePalettes);
+
+                    ResourceManager *const resman
+                        = ResourceManager::getInstance();
+                    Image *img = resman->getImage(image);
+                    if (img)
+                    {
+                        mParticleImage = resman->getSubImage(img,
+                            XML::getProperty(propertyNode, "x", 0),
+                            XML::getProperty(propertyNode, "y", 0),
+                            XML::getProperty(propertyNode, "width", 0),
+                            XML::getProperty(propertyNode, "height", 0));
+                        img->decRef();
+                    }
+                    else
+                    {
+                        mParticleImage = nullptr;
+                    }
+                }
+            }
             else if (name == "horizontal-angle")
             {
                 mParticleAngleHorizontal =
@@ -210,11 +238,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
         }
         else if (xmlNameEqual(propertyNode, "rotation"))
         {
-            ImageSet *const imageset = ResourceManager::getInstance()
-                ->getImageSet(XML::getProperty(propertyNode, "imageset", ""),
-                XML::getProperty(propertyNode, "width", 0),
-                XML::getProperty(propertyNode, "height", 0));
-
+            ImageSet *const imageset = getImageSet(propertyNode);
             if (!imageset)
             {
                 logger->log1("Error: no valid imageset");
@@ -288,11 +312,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
         }
         else if (xmlNameEqual(propertyNode, "animation"))
         {
-            ImageSet *const imageset = ResourceManager::getInstance()
-                ->getImageSet(XML::getProperty(propertyNode, "imageset", ""),
-                XML::getProperty(propertyNode, "width", 0),
-                XML::getProperty(propertyNode, "height", 0));
-
+            ImageSet *const imageset = getImageSet(propertyNode);
             if (!imageset)
             {
                 logger->log1("Error: no valid imageset");
@@ -401,6 +421,44 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
 ParticleEmitter::ParticleEmitter(const ParticleEmitter &o)
 {
     *this = o;
+}
+
+ImageSet *ParticleEmitter::getImageSet(XmlNodePtr node)
+{
+    ResourceManager *const resman = ResourceManager::getInstance();
+    ImageSet *imageset = nullptr;
+    const int subX = XML::getProperty(node, "subX", -1);
+    if (subX != -1)
+    {
+        Image *const img = resman->getImage(XML::getProperty(
+            node, "imageset", ""));
+        if (!img)
+            return nullptr;
+
+        Image *const img2 = resman->getSubImage(img, subX,
+            XML::getProperty(node, "subY", 0),
+            XML::getProperty(node, "subWidth", 0),
+            XML::getProperty(node, "subHeight", 0));
+        if (!img2)
+        {
+            img->decRef();
+            return nullptr;
+        }
+
+        imageset = resman->getSubImageSet(img2,
+            XML::getProperty(node, "width", 0),
+            XML::getProperty(node, "height", 0));
+        img2->decRef();
+        img->decRef();
+    }
+    else
+    {
+        imageset = resman->getImageSet(
+            XML::getProperty(node, "imageset", ""),
+            XML::getProperty(node, "width", 0),
+            XML::getProperty(node, "height", 0));
+    }
+    return imageset;
 }
 
 ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
