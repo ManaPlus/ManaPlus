@@ -22,11 +22,15 @@
 
 #include "gui/widgets/characterdisplay.h"
 
+#include "units.h"
+
 #include "gui/charselectdialog.h"
 #include "gui/textpopup.h"
 
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
+
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -116,9 +120,16 @@ void CharacterDisplay::mouseMoved(gcn::MouseEvent &event A_UNUSED)
     SDL_GetMouseState(&mouseX, &mouseY);
     const std::string &name = mName->getCaption();
     if (!name.empty())
-        mPopup->show(mouseX, mouseY, name);
+    {
+        mPopup->show(mouseX, mouseY, name, strprintf(_("Level: %u"),
+            mCharacter->data.mAttributes[PlayerInfo::LEVEL]),
+            strprintf(_("Money: %s"), Units::formatCurrency(
+            mCharacter->data.mAttributes[PlayerInfo::MONEY]).c_str()));
+    }
     else
+    {
         mPopup->setVisible(false);
+    }
 }
 
 void CharacterDisplay::mousePressed(gcn::MouseEvent &event)
