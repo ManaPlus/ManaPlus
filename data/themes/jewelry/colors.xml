@@ -107,73 +107,70 @@
         <color id="LISTBOX_SELECTED" color="#000000" />
         <color id="RADIOBUTTON" color="#000000" />
         <color id="POPUP" color="#f9eabc" />
+        <color id="TEXTBOX" color="#000000" />
+        <color id="TEXTFIELD" color="#000000" />
+        <color id="WINDOW" color="#f1d9a9" />
         <color id="TAB" color="#efd7a7" />
         <color id="TAB_OUTLINE" color="#000000" />
+        <color id="TAB_FLASH" color="#a7ff2a" />
+        <color id="TAB_FLASH_OUTLINE" color="#1a2c00" />
+        <color id="TAB_PLAYER_FLASH" color="#ff96f6" />
         <color id="TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
         <color id="TAB_SELECTED" color="#f8eacf" />
         <color id="TAB_SELECTED_OUTLINE" color="#000000" />
-        <color id="TEXTBOX" color="#000000" />
-        <color id="TEXTFIELD" color="#000000" />
-        <color id="WINDOW" color="#f1d9a9" />
         <color id="PARTY_CHAT_TAB" color="#efd7a7" />
         <color id="PARTY_CHAT_TAB_OUTLINE" color="#000000" />
+        <color id="PARTY_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="PARTY_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
+        <color id="PARTY_CHAT_TAB_SELECTED" color="#f8eacf" />
+        <color id="PARTY_CHAT_TAB_SELECTED_OUTLINE" color="#000000" />
         <color id="PARTY_SOCIAL_TAB" color="#efd7a7" />
         <color id="PARTY_SOCIAL_TAB_OUTLINE" color="#000000" />
+        <color id="PARTY_SOCIAL_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="PARTY_SOCIAL_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
+        <color id="PARTY_SOCIAL_TAB_SELECTED" color="#f8eacf" />
+        <color id="PARTY_SOCIAL_TAB_SELECTED_OUTLINE" color="#000000" />
         <color id="GUILD_CHAT_TAB" color="#efd7a7" />
         <color id="GUILD_CHAT_TAB_OUTLINE" color="#000000" />
+        <color id="GUILD_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="GUILD_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
+        <color id="GUILD_CHAT_TAB_SELECTED" color="#f8eacf" />
+        <color id="GUILD_CHAT_TAB_SELECTED_OUTLINE" color="#000000" />
         <color id="GUILD_SOCIAL_TAB" color="#efd7a7" />
         <color id="GUILD_SOCIAL_TAB_OUTLINE" color="#000000" />
+        <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
+        <color id="GUILD_SOCIAL_TAB_SELECTED" color="#f8eacf" />
+        <color id="GUILD_SOCIAL_TAB_SELECTED_OUTLINE" color="#000000" />
         <color id="GM_CHAT_TAB" color="#efd7a7" />
         <color id="GM_CHAT_TAB_OUTLINE" color="#000000" />
-        <color id="PARTY_CHAT_TAB_HIGHLIGHTED" color="#fffbed" />
-        <color id="PARTY_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
-        <color id="PARTY_SOCIAL_TAB_HIGHLIGHTED" color="#fffbed" />
-        <color id="PARTY_SOCIAL_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
-        <color id="GUILD_CHAT_TAB_HIGHLIGHTED" color="#fffbed" />
-        <color id="GUILD_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
-        <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED" color="#fffbed" />
-        <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
-        <color id="GM_CHAT_TAB_HIGHLIGHTED" color="#fffbed" />
+        <color id="GM_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="GM_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
-        <color id="PARTY_CHAT_TAB_SELECTED" color="#f9eabc" />
-        <color id="PARTY_CHAT_TAB_SELECTED_OUTLINE" color="#000000" />
-        <color id="PARTY_SOCIAL_TAB_SELECTED" color="#f9eabc" />
-        <color id="PARTY_SOCIAL_TAB_SELECTED_OUTLINE" color="#000000" />
-        <color id="GUILD_CHAT_TAB_SELECTED" color="#f9eabc" />
-        <color id="GUILD_CHAT_TAB_SELECTED_OUTLINE" color="#000000" />
-        <color id="GUILD_SOCIAL_TAB_SELECTED" color="#f9eabc" />
-        <color id="GUILD_SOCIAL_TAB_SELECTED_OUTLINE" color="#000000" />
-        <color id="GM_CHAT_TAB_SELECTED" color="#f9eabc" />
+        <color id="GM_CHAT_TAB_SELECTED" color="#f8eacf" />
         <color id="GM_CHAT_TAB_SELECTED_OUTLINE" color="#000000" />
+        <color id="WHISPER_TAB" color="#efd7a7" />
+        <color id="WHISPER_TAB_OUTLINE" color="#000000" />
+        <color id="WHISPER_TAB_OFFLINE" color="#444444" />
+        <color id="WHISPER_TAB_OFFLINE_OUTLINE" color="#000000" />
+        <color id="WHISPER_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="WHISPER_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
+        <color id="WHISPER_TAB_OFFLINE_HIGHLIGHTED" color="#fffbed" />
+        <color id="WHISPER_TAB_OFFLINE_HIGHLIGHTED_OUTLINE" color="#000000" />
+        <color id="WHISPER_TAB_SELECTED" color="#f8eacf" />
+        <color id="WHISPER_TAB_SELECTED_OUTLINE" color="#000000" />
+        <color id="WHISPER_TAB_OFFLINE_SELECTED" color="#444444" />
+        <color id="WHISPER_TAB_OFFLINE_SELECTED_OUTLINE" color="#000000" />
         <color id="BACKGROUND" color="#ffffff" />
         <color id="BACKGROUND_GRAY" color="#404040" />
         <color id="SCROLLBAR_GRAY" color="#000000" />
         <color id="DROPDOWN_SHADOW" color="#c0c0c0" />
         <color id="HIGHLIGHT" color="#ebc873" />
-        <color id="TAB_FLASH" color="#a7ff2a" />
-        <color id="TAB_FLASH_OUTLINE" color="#1a2c00" />
-        <color id="TAB_PLAYER_FLASH" color="#ff96f6" />
         <color id="SHOP_WARNING" color="#e07a7a" />
         <color id="ITEM_EQUIPPED" color="#000091" />
         <color id="ITEM_NOT_EQUIPPED" color="#000000" />
         <color id="BUBBLE_NAME" color="#cccccc" />
         <color id="BUBBLE_TEXT" color="#ffffff" />
-        <color id="CHAT" color="#f1d9a9" />
-        <color id="GM" color="#fec4ff" />
-        <color id="GM_OUTLINE" color="#000000" />
-        <color id="WHISPER_TAB" color="#efd7a7" />
-        <color id="WHISPER_TAB_OUTLINE" color="#000000" />
-        <color id="WHISPER_TAB_OFFLINE" color="#444444" />
-        <color id="WHISPER_TAB_OFFLINE_OUTLINE" color="#000000" />
-        <color id="WHISPER_TAB_HIGHLIGHTED" color="#fffbed" />
-        <color id="WHISPER_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
-        <color id="WHISPER_TAB_OFFLINE_HIGHLIGHTED" color="#fffbed" />
-        <color id="WHISPER_TAB_OFFLINE_HIGHLIGHTED_OUTLINE" color="#000000" />
-        <color id="WHISPER_TAB_SELECTED" color="#f9eabc" />
-        <color id="WHISPER_TAB_SELECTED_OUTLINE" color="#000000" />
-        <color id="WHISPER_TAB_OFFLINE_SELECTED" color="#444444" />
-        <color id="WHISPER_TAB_OFFLINE_SELECTED_OUTLINE" color="#000000" />
         <color id="LOGGER" color="#919191" />
         <color id="HYPERLINK" color="#d2cbf9" />
         <color id="HYPERLINK_OUTLINE" color="#000000" />
@@ -194,6 +191,10 @@
         <color id="AMMO" color="#b4d7ec" />
         <color id="SERVER_VERSION_NOT_SUPPORTED" color="#DC0000" />
         <color id="WARNING" color="#FF0000" />
+        <color id="CHAT" color="#ffffff" />
+        <color id="CHAT_OUTLINE" color="#000000" />
+        <color id="GM" color="#fec4ff" />
+        <color id="GM_OUTLINE" color="#000000" />
         <color id="PLAYER" color="#ffffff" />
         <color id="PLAYER_OUTLINE" color="#000000" />
         <color id="PLAYER_ADVANCED" color="#f9eabc" />
@@ -204,7 +205,7 @@
         <color id="SERVER_OUTLINE" color="#000000" />
         <color id="BROWSERBOX" color="#b2b2b2" />
         <color id="BROWSERBOX_OUTLINE" color="#000000" />
-        <color id="RED" color="#ff4242" />
+        <color id="RED" color="#ff6565" />
         <color id="RED_OUTLINE" color="#000000" />
         <color id="GREEN" color="#67ec67" />
         <color id="GREEN_OUTLINE" color="#000000" />
