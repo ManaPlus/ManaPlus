@@ -25,6 +25,7 @@
 #include "shopitem.h"
 #include "units.h"
 
+#include "gui/confirmdialog.h"
 #include "gui/setup.h"
 #include "gui/tradewindow.h"
 
@@ -99,7 +100,7 @@ void SellDialog::init()
     // TRANSLATORS: sell dialog button
     mDecreaseButton = new Button(this, _("-"), "dec", this);
     // TRANSLATORS: sell dialog button
-    mSellButton = new Button(this, _("Sell"), "sell", this);
+    mSellButton = new Button(this, _("Sell"), "presell", this);
     // TRANSLATORS: sell dialog button
     mQuitButton = new Button(this, _("Quit"), "quit", this);
     // TRANSLATORS: sell dialog button
@@ -226,11 +227,26 @@ void SellDialog::action(const gcn::ActionEvent &event)
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (eventId == "sell" && mAmountItems > 0
-             && mAmountItems <= mMaxItems)
+    else if ((eventId == "presell" || eventId == "sell" || eventId == "yes")
+             && mAmountItems > 0 && mAmountItems <= mMaxItems)
     {
         if (mNpcId != -1)
         {
+            if (eventId == "presell")
+            {
+                ShopItem *const item = mShopItems->at(selectedItem);
+                const ItemInfo &info = ItemDB::get(item->getId());
+                if (info.isProtected())
+                {
+                    // TRANSLATORS: sell confirmation header
+                    ConfirmDialog *dialog = new ConfirmDialog(_("sell item"),
+                        // TRANSLATORS: sell confirmation message
+                        strprintf(_("Do you really want to sell %s?"),
+                        info.getName().c_str()), false, true);
+                    dialog->addActionListener(this);
+                    return;
+                }
+            }
             // Attempt sell
             ShopItem *const item = mShopItems->at(selectedItem);
             mPlayerMoney +=

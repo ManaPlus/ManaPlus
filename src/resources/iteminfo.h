@@ -286,6 +286,12 @@ class ItemInfo final
         Cursor::Cursor getPickupCursor() const A_WARN_UNUSED
         { return mPickupCursor; }
 
+        void setProtected(bool b)
+        { mProtected = b; }
+
+        bool isProtected() const
+        { return mProtected; }
+
         int mDrawBefore[10];
         int mDrawAfter[10];
         int mDrawPriority[10];
@@ -331,6 +337,7 @@ class ItemInfo final
         int maxFloorOffset;
         Cursor::Cursor mPickupCursor;
         int mPet;
+        bool mProtected;
 };
 
 #endif

@@ -269,6 +269,9 @@ void ItemDB::load()
         itemInfo->setType(itemTypeFromString(typeStr));
         itemInfo->addTag(mTags["All"]);
         itemInfo->setPet(pet);
+        itemInfo->setProtected(XML::getBoolProperty(
+            node, "sellProtected", false));
+
         switch (itemInfo->getType())
         {
             case ITEM_USABLE:
