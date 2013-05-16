@@ -73,6 +73,11 @@ void AvatarDB::load()
         currentInfo->setTargetOffsetY(XML::getProperty(avatarNode,
             "targetOffsetY", 0));
 
+        currentInfo->setWidth(XML::getProperty(avatarNode,
+            "width", 0));
+        currentInfo->setHeight(XML::getProperty(avatarNode,
+            "height", 0));
+
         SpriteDisplay display;
 
         // iterate <sprite>s and <sound>s

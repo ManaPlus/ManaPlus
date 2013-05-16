@@ -43,6 +43,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textbox.h"
 
+#include "resources/avatardb.h"
 #include "resources/npcdb.h"
 #include "resources/resourcemanager.h"
 
@@ -73,7 +74,6 @@ NpcDialog::NpcDialog(const int npcId) :
     Window(_("NPC"), false, nullptr, "npc.xml"),
     gcn::ActionListener(),
     mNpcId(npcId),
-    mLogInteraction(config.getBoolValue("logNpcInGui")),
     mDefaultInt(0),
     mDefaultString(),
     mTextBox(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
@@ -108,7 +108,8 @@ NpcDialog::NpcDialog(const int npcId) :
     mCameraY(0),
     mPlayerBox(new PlayerBox(nullptr)),
     mAvatarBeing(nullptr),
-    mShowAvatar(false)
+    mShowAvatar(false),
+    mLogInteraction(config.getBoolValue("logNpcInGui"))
 {
     // Basic Window Setup
     setWindowName("NpcText");
@@ -155,7 +156,6 @@ NpcDialog::NpcDialog(const int npcId) :
         fnt->getWidth(CAPTION_NEXT));
     width = std::max(width, fnt->getWidth(CAPTION_CLOSE));
     width = std::max(width, fnt->getWidth(CAPTION_SUBMIT));
-
     mButton->setWidth(8 + width);
 
     // Place widgets
@@ -182,8 +182,7 @@ NpcDialog::NpcDialog(const int npcId) :
 
 NpcDialog::~NpcDialog()
 {
-    config.removeListener("logNpcInGui", this);
-
+    config.removeListeners(this);
     clearLayout();
 
     if (mPlayerBox)
@@ -233,15 +232,6 @@ NpcDialog::~NpcDialog()
     instances.remove(this);
 }
 
-/*
-void NpcDialog::setText(const std::string &text)
-{
-    mText = text;
-
-    mTextBox->setTextWrapped(mText, mScrollArea->getWidth() - 15);
-}
-*/
-
 void NpcDialog::addText(const std::string &text, const bool save)
 {
     if (save || mLogInteraction)
@@ -251,7 +241,6 @@ void NpcDialog::addText(const std::string &text, const bool save)
 
         mNewText.append(text);
         mTextBox->addRow(text);
-//        setText(mText + text + "\n");
     }
     mScrollArea->setVerticalScrollAmount(mScrollArea->getVerticalMaxScroll());
     mActionState = NPC_ACTION_WAIT;
@@ -290,8 +279,8 @@ void NpcDialog::action(const gcn::ActionEvent &event)
         }
         else if (mActionState == NPC_ACTION_INPUT)
         {
-            std::string printText("");  // Text that will get printed
-                                        // in the textbox
+            std::string printText;  // Text that will get printed
+                                    // in the textbox
 
             if (mInputState == NPC_INPUT_LIST)
             {
@@ -328,7 +317,6 @@ void NpcDialog::action(const gcn::ActionEvent &event)
             }
             // addText will auto remove the input layout
             addText(strprintf("> \"%s\"", printText.c_str()), false);
-
             mNewText.clear();
         }
 
@@ -416,6 +404,7 @@ void NpcDialog::parseListItems(const std::string &itemString)
     ResourceManager *const resman = ResourceManager::getInstance();
 
     std::string tmp;
+    const std::string path = paths.getStringValue("guiIcons");
     while (getline(iss, tmp, ':'))
     {
         const size_t pos = tmp.find("|");
@@ -427,9 +416,8 @@ void NpcDialog::parseListItems(const std::string &itemString)
         else
         {
             mItems.push_back(tmp.substr(pos + 1));
-            Image *const img = resman->getImage(
-                paths.getStringValue("guiIcons")
-                .append(tmp.substr(0, pos)).append(".png"));
+            Image *const img = resman->getImage(std::string(
+                path).append(tmp.substr(0, pos)).append(".png"));
             mImages.push_back(img);
         }
     }
@@ -668,9 +656,7 @@ void NpcDialog::buildLayout()
 
     Layout &layout = getLayout();
     layout.setRowHeight(1, Layout::AUTO_SET);
-
     redraw();
-
     mScrollArea->setVerticalScrollAmount(mScrollArea->getVerticalMaxScroll());
 }
 
@@ -715,11 +701,20 @@ void NpcDialog::showAvatar(const uint16_t avatarId)
         if (!mAvatarBeing->empty())
         {
             mAvatarBeing->logic();
-            const Sprite *const sprite = mAvatarBeing->getSprite(0);
-            if (sprite)
+            const BeingInfo *const info = AvatarDB::get(avatarId);
+            const int pad2 = 2 * mPadding;
+            int width = 0;
+            if (info)
             {
-                mPlayerBox->setWidth(sprite->getWidth() + 2 * getPadding());
-                mPlayerBox->setHeight(sprite->getHeight() + 2 * getPadding());
+                width = info->getWidth();
+                mPlayerBox->setWidth(width + pad2);
+                mPlayerBox->setHeight(info->getHeight() + pad2);
+            }
+            const Sprite *const sprite = mAvatarBeing->getSprite(0);
+            if (sprite && !width)
+            {
+                mPlayerBox->setWidth(sprite->getWidth() + pad2);
+                mPlayerBox->setHeight(sprite->getHeight() + pad2);
             }
         }
     }

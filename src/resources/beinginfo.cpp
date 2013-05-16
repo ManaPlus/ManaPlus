@@ -49,11 +49,13 @@ BeingInfo::BeingInfo() :
     mTargetOffsetX(0),
     mTargetOffsetY(0),
     mMaxHP(0),
-    mStaticMaxHP(false),
-    mTargetSelection(true),
     mSortOffsetY(0),
     mDeadSortOffsetY(31),
-    mAvatarId(0)
+    mAvatarId(0),
+    mWidth(0),
+    mHeight(0),
+    mStaticMaxHP(false),
+    mTargetSelection(true)
 {
     SpriteDisplay display;
     display.sprites.push_back(SpriteReference::Empty);

@@ -51,8 +51,10 @@ class TextField;
  *
  * \ingroup Interface
  */
-class NpcDialog final : public Window, public gcn::ActionListener,
-                        public ExtendedListModel, public ConfigListener
+class NpcDialog final : public Window,
+                        public gcn::ActionListener,
+                        public ExtendedListModel,
+                        public ConfigListener
 {
     public:
         /**
@@ -158,7 +160,7 @@ class NpcDialog final : public Window, public gcn::ActionListener,
 
         void move(const int amount);
 
-        void setVisible(bool visible);
+        void setVisible(bool visible) override;
 
         void optionChanged(const std::string &name) override;
 
@@ -215,7 +217,6 @@ class NpcDialog final : public Window, public gcn::ActionListener,
         void placeIntInputControls();
 
         int mNpcId;
-        bool mLogInteraction;
 
         int mDefaultInt;
         std::string mDefaultString;
@@ -272,6 +273,7 @@ class NpcDialog final : public Window, public gcn::ActionListener,
         PlayerBox *mPlayerBox;
         Being *mAvatarBeing;
         bool mShowAvatar;
+        bool mLogInteraction;
 };
 
 #endif  // NPCDIALOG_H

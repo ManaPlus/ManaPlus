@@ -195,6 +195,18 @@ class BeingInfo final
         void setAvatarId(const uint16_t id)
         { mAvatarId = id; }
 
+        int getWidth() const
+        { return mWidth; }
+
+        int getHeight() const
+        { return mHeight; }
+
+        void setWidth(const int n)
+        { mWidth = n; }
+
+        void setHeight(const int n)
+        { mHeight = n; }
+
         static void init();
 
         static void clear();
@@ -211,11 +223,13 @@ class BeingInfo final
         int mTargetOffsetX;
         int mTargetOffsetY;
         int mMaxHP;
-        bool mStaticMaxHP;
-        bool mTargetSelection;
         int mSortOffsetY;
         int mDeadSortOffsetY;
         uint16_t mAvatarId;
+        int mWidth;
+        int mHeight;
+        bool mStaticMaxHP;
+        bool mTargetSelection;
 };
 
 typedef std::map<int, BeingInfo*> BeingInfos;
