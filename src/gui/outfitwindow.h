@@ -28,12 +28,6 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/mouselistener.hpp>
 
-#ifdef __GNUC__
-#define A_PURE  __attribute__ ((pure))
-#else
-#define A_PURE
-#endif
-
 const unsigned int OUTFITS_COUNT = 100;
 const unsigned int OUTFIT_ITEM_COUNT = 16;
 
@@ -42,7 +36,8 @@ class CheckBox;
 class Item;
 class Label;
 
-class OutfitWindow final : public Window, private gcn::ActionListener
+class OutfitWindow final : public Window,
+                           private gcn::ActionListener
 {
     public:
         /**
@@ -120,6 +115,7 @@ class OutfitWindow final : public Window, private gcn::ActionListener
 
         int getIndexFromGrid(const int pointX,
                              const int pointY) const A_WARN_UNUSED;
+        void save() const;
 
         int mBoxWidth;
         int mBoxHeight;
@@ -127,21 +123,18 @@ class OutfitWindow final : public Window, private gcn::ActionListener
         int mCursorPosY;
         int mGridWidth;
         int mGridHeight;
-        bool mItemClicked;
         Item *mItemMoved;
 
-        void save();
-
         int mItems[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
-        unsigned char mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
-        bool mItemsUnequip[OUTFITS_COUNT];
         int mItemSelected;
-        unsigned char mItemColorSelected;
-
         int mAwayOutfit;
 
         gcn::Color mBorderColor;
         gcn::Color mBackgroundColor;
+        unsigned char mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
+        unsigned char mItemColorSelected;
+        bool mItemClicked;
+        bool mItemsUnequip[OUTFITS_COUNT];
 
         static float mAlpha;
 };

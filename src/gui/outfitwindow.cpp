@@ -82,13 +82,16 @@ OutfitWindow::OutfitWindow():
     mCursorPosY(0),
     mGridWidth(4),
     mGridHeight(4),
-    mItemClicked(false),
     mItemMoved(nullptr),
+    mItems(),
     mItemSelected(-1),
-    mItemColorSelected(1),
     mAwayOutfit(0),
     mBorderColor(getThemeColor(Theme::BORDER, 64)),
-    mBackgroundColor(getThemeColor(Theme::BACKGROUND, 32))
+    mBackgroundColor(getThemeColor(Theme::BACKGROUND, 32)),
+    mItemColors(),
+    mItemColorSelected(1),
+    mItemClicked(false),
+    mItemsUnequip()
 {
     setWindowName("Outfits");
     setResizable(true);
@@ -185,7 +188,7 @@ void OutfitWindow::load(const bool oldConfig)
         mAwayOutfitCheck->setSelected(mAwayOutfit == mCurrentOutfit);
 }
 
-void OutfitWindow::save()
+void OutfitWindow::save() const
 {
     std::string outfitStr;
     std::string outfitColorsStr;
@@ -194,7 +197,8 @@ void OutfitWindow::save()
         bool good = false;
         for (unsigned i = 0; i < OUTFIT_ITEM_COUNT; i++)
         {
-            const int res = mItems[o][i] ? mItems[o][i] : -1;
+            const int val = mItems[o][i];
+            const int res = val ? val : -1;
             if (res != -1)
                 good = true;
             outfitStr.append(toString(res));
@@ -245,8 +249,11 @@ void OutfitWindow::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "unequip")
     {
-        if (mCurrentOutfit < static_cast<int>(OUTFITS_COUNT))
+        if (mCurrentOutfit >= 0 && mCurrentOutfit < static_cast<int>(
+            OUTFITS_COUNT))
+        {
             mItemsUnequip[mCurrentOutfit] = mUnequipCheck->isSelected();
+        }
     }
     else if (eventId == "equip")
     {
@@ -319,10 +326,16 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
     Window::draw(graphics);
     Graphics *const g = static_cast<Graphics*>(graphics);
 
+    if (mCurrentOutfit < 0 || mCurrentOutfit
+        >= static_cast<signed int>(OUTFITS_COUNT))
+    {
+        return;
+    }
+
     for (unsigned int i = 0; i < OUTFIT_ITEM_COUNT; i++)
     {
         const int itemX = mPadding + ((i % mGridWidth) * mBoxWidth);
-        const int itemY = mPadding + getTitleBarHeight()
+        const int itemY = mPadding + mTitleBarHeight
             + ((i / mGridWidth) * mBoxHeight);
 
         graphics->setColor(mBorderColor);
@@ -383,6 +396,13 @@ void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
     {
         if (!mItemMoved && mItemClicked)
         {
+            if (mCurrentOutfit < 0 || mCurrentOutfit
+                >= static_cast<signed int>(OUTFITS_COUNT))
+            {
+                Window::mouseDragged(event);
+                return;
+            }
+
             const int index = getIndexFromGrid(event.getX(), event.getY());
             if (index == -1)
             {
@@ -457,9 +477,11 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
 {
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-//        if (isItemSelected())
-//            mItemSelected = -1;
-
+        if (mCurrentOutfit < 0 || mCurrentOutfit
+            >= static_cast<signed int>(OUTFITS_COUNT))
+        {
+            return;
+        }
         const int index = getIndexFromGrid(event.getX(), event.getY());
         if (index == -1)
         {
@@ -502,7 +524,8 @@ void OutfitWindow::unequipNotInOutfit(const int outfit) const
     if (!inventory)
         return;
 
-    for (unsigned i = 0; i < inventory->getSize(); i++)
+    const unsigned int invSize = inventory->getSize();
+    for (unsigned i = 0; i < invSize; i++)
     {
         const Item *const item = inventory->getItem(i);
         if (item && item->isEquipped())
@@ -565,7 +588,8 @@ void OutfitWindow::showCurrentOutfit()
 void OutfitWindow::wearNextOutfit(const bool all)
 {
     next();
-    if (!all && mCurrentOutfit < static_cast<int>(OUTFITS_COUNT))
+    if (!all && mCurrentOutfit >= 0 && mCurrentOutfit
+        < static_cast<int>(OUTFITS_COUNT))
     {
         bool fromStart = false;
         while (!mItemsUnequip[mCurrentOutfit])
@@ -586,7 +610,8 @@ void OutfitWindow::wearNextOutfit(const bool all)
 void OutfitWindow::wearPreviousOutfit(const bool all)
 {
     previous();
-    if (!all && mCurrentOutfit < static_cast<int>(OUTFITS_COUNT))
+    if (!all && mCurrentOutfit >= 0 && mCurrentOutfit
+        < static_cast<int>(OUTFITS_COUNT))
     {
         bool fromStart = false;
         while (!mItemsUnequip[mCurrentOutfit])
@@ -616,7 +641,6 @@ void OutfitWindow::copyFromEquiped(const int dst)
         return;
 
     int outfitCell = 0;
-
     for (unsigned i = 0, sz = inventory->getSize(); i < sz; i++)
     {
         const Item *const item = inventory->getItem(i);
@@ -657,6 +681,11 @@ void OutfitWindow::setItemSelected(const Item *const item)
 
 void OutfitWindow::clearCurrentOutfit()
 {
+    if (mCurrentOutfit < 0 || mCurrentOutfit
+        >= static_cast<signed int>(OUTFITS_COUNT))
+    {
+        return;
+    }
     for (unsigned f = 0; f < OUTFIT_ITEM_COUNT; f++)
     {
         mItems[mCurrentOutfit][f] = -1;
