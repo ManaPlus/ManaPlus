@@ -51,7 +51,6 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
     Button *const okButton = new Button(this, _("OK"), "ok", this);
 
     int width = getFont()->getWidth(title);
-
     if (width < mTextBox->getMinWidth())
         width = mTextBox->getMinWidth();
     if (width < okButton->getWidth())
