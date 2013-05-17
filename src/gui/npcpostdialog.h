@@ -30,44 +30,45 @@
 class TextBox;
 class TextField;
 
-class NpcPostDialog final : public Window, public gcn::ActionListener
+class NpcPostDialog final : public Window,
+                            public gcn::ActionListener
 {
-public:
-    /**
-     * Constructor
-     */
-    explicit NpcPostDialog(const int npcId);
+    public:
+        /**
+         * Constructor
+         */
+        explicit NpcPostDialog(const int npcId);
 
-    A_DELETE_COPY(NpcPostDialog)
+        A_DELETE_COPY(NpcPostDialog)
 
-    ~NpcPostDialog();
+        ~NpcPostDialog();
 
-    /**
-     * Called when receiving actions from the widgets.
-     */
-    void action(const gcn::ActionEvent &event) override;
+        /**
+         * Called when receiving actions from the widgets.
+         */
+        void action(const gcn::ActionEvent &event) override;
 
-    void setVisible(bool visible);
+        void setVisible(bool visible) override;
 
-    /**
-     * Returns true if any instances exist.
-     */
-    static bool isActive() A_WARN_UNUSED
-    { return !instances.empty(); }
+        /**
+         * Returns true if any instances exist.
+         */
+        static bool isActive() A_WARN_UNUSED
+        { return !instances.empty(); }
 
-    /**
-     * Closes all instances.
-     */
-    static void closeAll();
+        /**
+         * Closes all instances.
+         */
+        static void closeAll();
 
-private:
-    typedef std::list<NpcPostDialog*> DialogList;
-    static DialogList instances;
+    private:
+        typedef std::list<NpcPostDialog*> DialogList;
+        static DialogList instances;
 
-    int mNpcId;
+        int mNpcId;
 
-    TextBox *mText;
-    TextField *mSender;
+        TextBox *mText;
+        TextField *mSender;
 };
 
 #endif
