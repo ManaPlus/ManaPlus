@@ -68,9 +68,9 @@ class Palette
          * @return the requested color or Palette::BLACK
          */
         const gcn::Color &getCharColor(const signed char c,
-                                       bool &valid) A_WARN_UNUSED;
+                                       bool &valid) const A_WARN_UNUSED;
 
-        int getIdByChar(const signed char c, bool &valid) A_WARN_UNUSED;
+        int getIdByChar(const signed char c, bool &valid) const A_WARN_UNUSED;
 
         /**
          * Gets the color associated with the type. Sets the alpha channel
@@ -82,7 +82,7 @@ class Palette
          * @return the requested color
          */
         inline const gcn::Color &getColor(int type,
-                                          int alpha = 255) A_WARN_UNUSED
+                                          const int alpha = 255) A_WARN_UNUSED
         {
             if (type >= static_cast<signed>(mColors.size()) || type < 0)
             {
@@ -95,7 +95,8 @@ class Palette
             return *col;
         }
 
-        inline const gcn::Color &getColorWithAlpha(int type) A_WARN_UNUSED
+        inline const gcn::Color &getColorWithAlpha(const int type)
+                                                   A_WARN_UNUSED
         {
             gcn::Color* col = &mColors[type].color;
             col->a = mColors[type].delay;
@@ -119,7 +120,7 @@ class Palette
          *
          * @return the color char of the color with the given index
          */
-        inline char getColorChar(int type) const A_WARN_UNUSED
+        inline char getColorChar(const int type) const A_WARN_UNUSED
         { return mColors[type].ch; }
 
         /**
@@ -129,16 +130,13 @@ class Palette
          *
          * @return the gradient delay of the color with the given index
          */
-        inline int getGradientDelay(int type) const A_WARN_UNUSED
+        inline int getGradientDelay(const int type) const A_WARN_UNUSED
         { return mColors[type].delay; }
 
         /**
          * Updates all colors, that are non-static.
          */
         static void advanceGradients();
-
-        static gcn::Color produceHPColor(int hp, int maxHp,
-                                         int alpha = 255) A_WARN_UNUSED;
 
     protected:
         /** Colors used for the rainbow gradient */
@@ -211,7 +209,6 @@ class Palette
         };
         typedef std::vector<ColorElem> Colors;
         typedef std::map<unsigned char, int> CharColors;
-        /** Vector containing the colors. */
         Colors mColors;
         CharColors mCharColors;
         std::vector<ColorElem*> mGradVector;

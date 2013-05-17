@@ -49,7 +49,6 @@ const gcn::Color Palette::RAINBOW_COLORS[7] =
     gcn::Color(153, 0, 153)
 };
 
-/** Number of Elemets of RAINBOW_COLORS */
 const int Palette::RAINBOW_COLOR_COUNT = 7;
 
 Palette::Palette(const int size) :
@@ -66,7 +65,7 @@ Palette::~Palette()
     mInstances.erase(this);
 }
 
-const gcn::Color& Palette::getCharColor(const signed char c, bool &valid)
+const gcn::Color& Palette::getCharColor(const signed char c, bool &valid) const
 {
     const CharColors::const_iterator it = mCharColors.find(c);
     if (it != mCharColors.end())
@@ -79,7 +78,7 @@ const gcn::Color& Palette::getCharColor(const signed char c, bool &valid)
     return BLACK;
 }
 
-int Palette::getIdByChar(const signed char c, bool &valid)
+int Palette::getIdByChar(const signed char c, bool &valid) const
 {
     const CharColors::const_iterator it = mCharColors.find(c);
     if (it != mCharColors.end())
@@ -102,7 +101,6 @@ void Palette::advanceGradient()
 {
     if (get_elapsed_time(mRainbowTime) > 5)
     {
-        int pos, colIndex, colVal, delay, numOfColors;
         // For slower systems, advance can be greater than one (advance > 1
         // skips advance-1 steps). Should make gradient look the same
         // independent of the framerate.
@@ -111,30 +109,32 @@ void Palette::advanceGradient()
 
         for (size_t i = 0, sz = mGradVector.size(); i < sz; i++)
         {
-            if (!mGradVector[i])
+            ColorElem *const elem = mGradVector[i];
+            if (!elem)
                 continue;
 
-            delay = mGradVector[i]->delay;
+            int delay = elem->delay;
 
-            if (mGradVector[i]->grad == PULSE)
+            if (elem->grad == PULSE)
                 delay = delay / 20;
 
-            numOfColors = (mGradVector[i]->grad == SPECTRUM ? 6 :
-                           mGradVector[i]->grad == PULSE ? 127 :
-                           RAINBOW_COLOR_COUNT);
+            const int numOfColors = (elem->grad == SPECTRUM ? 6 :
+                elem->grad == PULSE ? 127 :
+                RAINBOW_COLOR_COUNT);
 
-            mGradVector[i]->gradientIndex =
-                                    (mGradVector[i]->gradientIndex + advance) %
-                                    (delay * numOfColors);
+            elem->gradientIndex = (elem->gradientIndex + advance)
+                % (delay * numOfColors);
 
-            pos = mGradVector[i]->gradientIndex % delay;
+            const int gradIndex = elem->gradientIndex;
+            const int pos = gradIndex % delay;
+            int colIndex;
             if (delay)
-                colIndex = mGradVector[i]->gradientIndex / delay;
+                colIndex = gradIndex / delay;
             else
-                colIndex = mGradVector[i]->gradientIndex;
+                colIndex = gradIndex;
 
-            ColorElem *const elem = mGradVector[i];
             gcn::Color &color = elem->color;
+            int colVal;
 
             if (elem->grad == PULSE)
             {
