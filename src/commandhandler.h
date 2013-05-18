@@ -55,6 +55,8 @@ class CommandHandler final
         ~CommandHandler()
         { }
 
+        static void addChatCommands(std::list<std::string> &arr);
+
         /**
          * Parse and handle the given command.
          */

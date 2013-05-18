@@ -43,6 +43,23 @@ CommandHandler::CommandHandler() :
     }
 }
 
+void CommandHandler::addChatCommands(std::list<std::string> &arr)
+{
+    const int sz = sizeof(commands) / sizeof(CommandInfo);
+    for (int f = 0; f < sz; f ++)
+    {
+        const CommandInfo &info = commands[f];
+        const std::string name = info.name;
+        if (!name.empty())
+        {
+            std::string cmd = std::string("/").append(name);
+            if (info.useArgs)
+                cmd.append(" ");
+            arr.push_back(cmd);
+        }
+    }
+}
+
 void CommandHandler::handleCommands(const std::string &command,
                                     ChatTab *const tab)
 {

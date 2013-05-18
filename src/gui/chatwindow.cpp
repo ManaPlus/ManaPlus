@@ -24,6 +24,7 @@
 
 #include "actorspritemanager.h"
 #include "client.h"
+#include "commandhandler.h"
 #include "commands.h"
 #include "configuration.h"
 #include "game.h"
@@ -322,6 +323,7 @@ void ChatWindow::loadCommandsFile(const std::string &name)
 void ChatWindow::fillCommands()
 {
     loadCommandsFile("chatcommands.txt");
+    CommandHandler::addChatCommands(mCommands);
 }
 
 void ChatWindow::loadGMCommands()
