@@ -556,10 +556,10 @@ void ServerDialog::downloadServerList()
     if (listFile.empty())
         listFile = config.getStringValue("onlineServerList");
 
-    // Fall back to manaplus.evolonline.org when neither branding
+    // Fall back to manaplus.org when neither branding
     // nor config set it
     if (listFile.empty())
-        listFile = "http://manaplus.evolonline.org/serverlist.xml";
+        listFile = "http://manaplus.org/serverlist.xml";
 
     if (mDownload)
     {

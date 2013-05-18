@@ -402,8 +402,8 @@ void UpdaterWindow::loadPatch()
                 "manaplus/download/manaplus-win32.exe|download here@@]", true);
 #else
             mBrowserBox->addRow("", true);
-            mBrowserBox->addRow("  ##1@@http://manaplus.evolonline.org/|"
-                "http://manaplus.evolonline.org/@@", true);
+            mBrowserBox->addRow("  ##1@@http://manaplus.org/|"
+                "http://manaplus.org/@@", true);
             mBrowserBox->addRow("##1You can download it from", true);
             mBrowserBox->addRow("##1ManaPlus updated.", true);
 #endif
@@ -504,7 +504,7 @@ void UpdaterWindow::download()
     if (mDownloadStatus == UPDATE_PATCH)
     {
         mDownload = new Net::Download(this,
-            "http://manaplus.evolonline.org/update/" + mCurrentFile,
+            "http://manaplus.org/update/" + mCurrentFile,
             updateProgress, true);
     }
     else
