@@ -147,11 +147,6 @@ RegisterDialog::RegisterDialog(LoginData *const data) :
     mPasswordField->addKeyListener(this);
     mConfirmField->addKeyListener(this);
 
-    /* TODO:
-     * This is a quick and dirty way to respond to the ENTER key, regardless of
-     * which text field is selected. There may be a better way now with the new
-     * input system of Guichan 0.6.0. See also the login dialog.
-     */
     mUserField->setActionEventId("register");
     mPasswordField->setActionEventId("register");
     mConfirmField->setActionEventId("register");
@@ -208,7 +203,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
                  minUser);
             error = 1;
         }
-        else if (user.length() > maxUser - 1 )
+        else if (user.length() > maxUser - 1)
         {
             // Name too long
             errorMsg = strprintf
@@ -254,7 +249,6 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
                 // Reset password confirmation
                 mPasswordField->setText("");
                 mConfirmField->setText("");
-
                 mWrongDataNoticeListener->setTarget(this->mPasswordField);
             }
 
@@ -267,7 +261,6 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         {
             // No errors detected, register the new user.
             mRegisterButton->setEnabled(false);
-
             mLoginData->username = mUserField->getText();
             mLoginData->password = mPasswordField->getText();
             if (mFemaleButton && mFemaleButton->isSelected())

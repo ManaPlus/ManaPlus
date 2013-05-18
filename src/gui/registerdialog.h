@@ -60,7 +60,8 @@ class WrongDataNoticeListener final : public gcn::ActionListener
  *
  * \ingroup Interface
  */
-class RegisterDialog final : public Window, public gcn::ActionListener,
+class RegisterDialog final : public Window,
+                             public gcn::ActionListener,
                              public gcn::KeyListener
 {
     public:
@@ -99,7 +100,6 @@ class RegisterDialog final : public Window, public gcn::ActionListener,
         bool canSubmit() const;
 
         LoginData *mLoginData;
-
         TextField *mUserField;
         TextField *mPasswordField;
         TextField *mConfirmField;
@@ -109,7 +109,6 @@ class RegisterDialog final : public Window, public gcn::ActionListener,
         RadioButton *mMaleButton;
         RadioButton *mFemaleButton;
         RadioButton *mOtherButton;
-
         WrongDataNoticeListener *mWrongDataNoticeListener;
 };
 
