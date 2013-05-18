@@ -114,6 +114,8 @@ namespace Commands
     decHandler(cacheInfo);
     decHandler(execute);
     decHandler(testsdlfont);
+    decHandler(enableHighlight);
+    decHandler(disableHighlight);
 
     void replaceVars(std::string &str);
 }  // namespace Commands
@@ -192,6 +194,8 @@ static const CommandInfo commands[] =
     {"open", &Commands::open},
     {"execute", &Commands::execute},
     {"testsdlfont", &Commands::testsdlfont},
+    {"enablehighlight", &Commands::enableHighlight},
+    {"disablehighlight", &Commands::disableHighlight},
     {"hack", &Commands::hack}
 };
 

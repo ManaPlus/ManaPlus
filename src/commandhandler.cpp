@@ -53,6 +53,14 @@ void CommandHandler::handleCommand(const std::string &command,
                      ? command.size() : pos + 1);
 
     args = trim(args);
+    invokeCommand(type, args, tab, true);
+}
+
+void CommandHandler::invokeCommand(const std::string &type,
+                                   const std::string &args,
+                                   ChatTab *const tab,
+                                   const bool warn)
+{
     const CommandsMapIter it = mCommands.find(type);
     if (it != mCommands.end())
     {
@@ -60,7 +68,10 @@ void CommandHandler::handleCommand(const std::string &command,
     }
     else if (!tab->handleCommand(type, args))
     {
-        // TRANSLATORS: chat commands handling message
-        tab->chatLog(_("Unknown command."));
+        if (warn)
+        {
+            // TRANSLATORS: chat commands handling message
+            tab->chatLog(_("Unknown command."));
+        }
     }
 }

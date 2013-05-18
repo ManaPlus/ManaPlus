@@ -23,6 +23,7 @@
 #include "gui/popupmenu.h"
 
 #include "actorspritemanager.h"
+#include "commandhandler.h"
 #include "dropshortcut.h"
 #include "game.h"
 #include "guild.h"
@@ -1198,7 +1199,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "chat close" && mTab)
     {
-        mTab->handleCommand("close", "");
+        if (commandHandler)
+            commandHandler->invokeCommand("close", "", mTab);
     }
     else if (link == "leave party" && mTab)
     {
@@ -1316,15 +1318,13 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "enable highlight" && mTab)
     {
-        mTab->setAllowHighlight(true);
-        if (chatWindow)
-            chatWindow->saveState();
+        if (commandHandler)
+            commandHandler->invokeCommand("enablehighlight", "", mTab);
     }
     else if (link == "disable highlight" && mTab)
     {
-        mTab->setAllowHighlight(false);
-        if (chatWindow)
-            chatWindow->saveState();
+        if (commandHandler)
+            commandHandler->invokeCommand("disablehighlight", "", mTab);
     }
     else if (link == "dont remove name" && mTab)
     {

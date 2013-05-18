@@ -1144,6 +1144,26 @@ impHandler1(execute)
     execFile(name, name, params, "");
 }
 
+impHandler1(enableHighlight)
+{
+    if (tab)
+    {
+        tab->setAllowHighlight(true);
+        if (chatWindow)
+            chatWindow->saveState();
+    }
+}
+
+impHandler1(disableHighlight)
+{
+    if (tab)
+    {
+        tab->setAllowHighlight(false);
+        if (chatWindow)
+            chatWindow->saveState();
+    }
+}
+
 impHandler0(testsdlfont)
 {
 #if defined USE_OPENGL && defined DEBUG_SDLFONT

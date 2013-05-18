@@ -61,6 +61,11 @@ class CommandHandler final
         void handleCommand(const std::string &command,
                            ChatTab *const tab = localChatTab);
 
+        void invokeCommand(const std::string &type,
+                           const std::string &args,
+                           ChatTab *const tab,
+                           const bool warn = false);
+
         void handleCommands(const std::string &command,
                             ChatTab *const tab = localChatTab);
 
