@@ -76,9 +76,7 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     addKeyListener(this);
 
     ContainerPlacer placer = getPlacer(0, 0);
-
     const State state = Client::getState();
-
     mNeedForceQuit = (state == STATE_CHOOSE_SERVER
         || state == STATE_CONNECT_SERVER || state == STATE_LOGIN
         || state == STATE_PRE_LOGIN || state == STATE_LOGIN_ATTEMPT
@@ -124,7 +122,6 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     setLocationRelativeTo(getParent());
     setVisible(true);
     soundManager.playGuiSound(SOUND_SHOW_WINDOW);
-//    enableVisibleSound(true);
     requestModalFocus();
     mOkButton->requestFocus();
 }
@@ -133,7 +130,6 @@ QuitDialog::~QuitDialog()
 {
     if (mMyPointer)
         *mMyPointer = nullptr;
-    // Optional widgets, so delete them by hand.
     delete mForceQuit;
     mForceQuit = nullptr;
     delete mLogoutQuit;
@@ -233,7 +229,8 @@ void QuitDialog::keyPressed(gcn::KeyEvent &keyEvent)
     if (dir != 0)
     {
         std::vector<RadioButton*>::const_iterator it = mOptions.begin();
-        std::vector<RadioButton*>::const_iterator it_end = mOptions.end();
+        const std::vector<RadioButton*>::const_iterator
+            it_end = mOptions.end();
 
         for (; it < it_end; ++it)
         {
