@@ -56,7 +56,7 @@ enum QuestType
 
 struct QuestItemText final
 {
-    QuestItemText(std::string text0, const int type0) :
+    QuestItemText(const std::string &text0, const int type0) :
         text(text0), type(type0)
     {
     }
@@ -247,7 +247,7 @@ void QuestsWindow::loadXml()
 
 void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
 {
-    QuestItem *quest = new QuestItem();
+    QuestItem *const quest = new QuestItem();
     // TRANSLATORS: quests window quest name
     quest->name = XML::langProperty(node, "name", _("unknown"));
     quest->group = XML::getProperty(node, "group", "");
@@ -293,7 +293,6 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
 void QuestsWindow::loadEffect(const int var, const XmlNodePtr node)
 {
     QuestEffect *const effect = new QuestEffect;
-
     effect->map = XML::getProperty(node, "map", "");
     effect->id = XML::getProperty(node, "npc", -1);
     effect->effectId = XML::getProperty(node, "effect", -1);
@@ -416,33 +415,27 @@ void QuestsWindow::rebuild(const bool playSound)
     }
 
     FOR_EACH (std::vector<QuestItem*>::const_iterator, it, hidden)
-    {
-        QuestItem *const quest = *it;
-        quest->completeFlag = -1;
-    }
+        (*it)->completeFlag = -1;
 
-    if (updatedQuest == -1)
+    if (updatedQuest == -1 || updatedQuest >= static_cast<int>(
+        mQuestLinks.size()))
+    {
         updatedQuest = static_cast<int>(mQuestLinks.size() - 1);
-    else if (updatedQuest >= static_cast<int>(mQuestLinks.size()))
-        updatedQuest = static_cast<int>(mQuestLinks.size() - 1);
+    }
     if (updatedQuest >= 0)
     {
         mQuestsListBox->setSelected(updatedQuest);
         showQuest(mQuestLinks[updatedQuest]);
-        if (playSound)
+        if (playSound && effectManager)
         {
             switch (newCompleteStatus)
             {
                 case 0:
-                    if (effectManager)
-                        effectManager->trigger(mNewQuestEffectId, player_node);
+                    effectManager->trigger(mNewQuestEffectId, player_node);
                     break;
                 case 1:
-                    if (effectManager)
-                    {
-                        effectManager->trigger(mCompleteQuestEffectId,
-                            player_node);
-                    }
+                    effectManager->trigger(mCompleteQuestEffectId,
+                        player_node);
                     break;
                 default:
                     break;
@@ -487,7 +480,6 @@ void QuestsWindow::setMap(const Map *const map)
             return;
 
         const std::string name = mMap->getProperty("shortName");
-        logger->log("current map: " + name);
         FOR_EACH (std::vector<QuestEffect*>::const_iterator, it,  mAllEffects)
         {
             const QuestEffect *const effect = *it;

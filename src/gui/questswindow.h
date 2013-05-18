@@ -47,23 +47,16 @@ struct QuestItem;
 typedef std::map<int, const QuestEffect*> NpcQuestEffectMap;
 typedef NpcQuestEffectMap::const_iterator NpcQuestEffectMapCIter;
 
-class QuestsWindow final : public Window, public gcn::ActionListener
+class QuestsWindow final : public Window,
+                           public gcn::ActionListener
 {
     public:
-        /**
-         * Constructor.
-         *
-         * @see Window::Window
-         */
         QuestsWindow();
 
         A_DELETE_COPY(QuestsWindow)
 
         ~QuestsWindow();
 
-        /**
-         * Called when receiving actions from the widgets.
-         */
         void action(const gcn::ActionEvent &event) override;
 
         void updateQuest(const int var, const int val);
