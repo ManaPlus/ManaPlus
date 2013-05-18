@@ -1164,6 +1164,34 @@ impHandler1(disableHighlight)
     }
 }
 
+impHandler1(dontRemoveName)
+{
+    tab->setRemoveNames(false);
+    if (chatWindow)
+        chatWindow->saveState();
+}
+
+impHandler1(removeName)
+{
+    tab->setRemoveNames(true);
+    if (chatWindow)
+        chatWindow->saveState();
+}
+
+impHandler1(disableAway)
+{
+    tab->setNoAway(true);
+    if (chatWindow)
+        chatWindow->saveState();
+}
+
+impHandler1(enableAway)
+{
+    tab->setNoAway(false);
+    if (chatWindow)
+        chatWindow->saveState();
+}
+
 impHandler0(testsdlfont)
 {
 #if defined USE_OPENGL && defined DEBUG_SDLFONT

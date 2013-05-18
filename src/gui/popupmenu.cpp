@@ -1328,27 +1328,23 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "dont remove name" && mTab)
     {
-        mTab->setRemoveNames(false);
-        if (chatWindow)
-            chatWindow->saveState();
+        if (commandHandler)
+            commandHandler->invokeCommand(COMMAND_DONTREMOVENAME, mTab);
     }
     else if (link == "remove name" && mTab)
     {
-        mTab->setRemoveNames(true);
-        if (chatWindow)
-            chatWindow->saveState();
+        if (commandHandler)
+            commandHandler->invokeCommand(COMMAND_REMOVENAME, mTab);
     }
     else if (link == "disable away" && mTab)
     {
-        mTab->setNoAway(true);
-        if (chatWindow)
-            chatWindow->saveState();
+        if (commandHandler)
+            commandHandler->invokeCommand(COMMAND_DISABLEAWAY, mTab);
     }
     else if (link == "enable away" && mTab)
     {
-        mTab->setNoAway(false);
-        if (chatWindow)
-            chatWindow->saveState();
+        if (commandHandler)
+            commandHandler->invokeCommand(COMMAND_ENABLEAWAY, mTab);
     }
     else if (link == "chat clipboard" && mTab)
     {

@@ -116,6 +116,10 @@ namespace Commands
     decHandler(testsdlfont);
     decHandler(enableHighlight);
     decHandler(disableHighlight);
+    decHandler(dontRemoveName);
+    decHandler(removeName);
+    decHandler(disableAway);
+    decHandler(enableAway);
 
     void replaceVars(std::string &str);
 }  // namespace Commands
@@ -196,6 +200,10 @@ enum
     COMMAND_TESTSDLFONT,
     COMMAND_ENABLEHIGHLIGHT,
     COMMAND_DISABLEHIGHLIGHT,
+    COMMAND_DONTREMOVENAME,
+    COMMAND_REMOVENAME,
+    COMMAND_DISABLEAWAY,
+    COMMAND_ENABLEAWAY,
     COMMAND_HACK,
     END_COMMANDS,
 };
@@ -276,6 +284,10 @@ static const CommandInfo commands[] =
     {"testsdlfont", &Commands::testsdlfont},
     {"enablehighlight", &Commands::enableHighlight},
     {"disablehighlight", &Commands::disableHighlight},
+    {"", &Commands::dontRemoveName},
+    {"", &Commands::removeName},
+    {"disableaway", &Commands::disableAway},
+    {"enableaway", &Commands::enableAway},
     {"hack", &Commands::hack}
 };
 
