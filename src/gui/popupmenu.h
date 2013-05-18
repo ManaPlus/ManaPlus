@@ -116,7 +116,8 @@ class PopupMenu final : public Popup, public LinkHandler
         void showPopup(const int x, const int y,
                        std::vector<ActorSprite*> &beings);
 
-        void showPlayerPopup(const int x, const int y, std::string nick);
+        void showPlayerPopup(const int x, const int y,
+                             const std::string &nick);
 
         /**
          * Shows the floor item related popup menu at the specified
@@ -149,7 +150,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showSpellPopup(const int x, const int y, TextCommand *const cmd);
 
-        void showAttackMonsterPopup(int x, int y, std::string name, int type);
+        void showAttackMonsterPopup(int x, int y, const std::string &name,
+                                    int type);
 
         void showPickupItemPopup(int x, int y, std::string name);
 
@@ -168,9 +170,9 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showChangePos(const int x, const int y);
 
-        void showPopup(const int x, const int y, gcn::ListModel *model);
+        void showPopup(const int x, const int y, gcn::ListModel *const model);
 
-        void showTextFieldPopup(int x, int y, TextField *input);
+        void showTextFieldPopup(int x, int y, TextField *const input);
 
         void showLinkPopup(const int x, const int y, const std::string &link);
 
@@ -185,7 +187,7 @@ class PopupMenu final : public Popup, public LinkHandler
         void clear();
 
     private:
-        void addPlayerRelation(std::string name);
+        void addPlayerRelation(const std::string &name);
 
         void addFollow();
 

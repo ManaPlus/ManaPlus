@@ -81,7 +81,7 @@
 
 extern int serverVersion;
 
-std::string tradePartnerName("");
+std::string tradePartnerName;
 
 PopupMenu::PopupMenu() :
     Popup("PopupMenu", "popupmenu.xml"),
@@ -100,7 +100,7 @@ PopupMenu::PopupMenu() :
     mPlayerListener(),
     mDialog(nullptr),
     mButton(nullptr),
-    mNick(""),
+    mNick(),
     mTextField(nullptr),
     mType(static_cast<int>(Being::UNKNOWN)),
     mX(0),
@@ -116,7 +116,6 @@ PopupMenu::PopupMenu() :
     mPlayerListener.setType(static_cast<int>(Being::UNKNOWN));
     mScrollArea = new ScrollArea(mBrowserBox, false);
     mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
-
     add(mScrollArea);
 }
 
@@ -138,48 +137,33 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     switch (being->getType())
     {
         case ActorSprite::PLAYER:
+        {
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("trade", _("Trade"));
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("attack", _("Attack"));
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("whisper", _("Whisper"));
+
+            mBrowserBox->addRow("##3---");
+
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("heal", _("Heal"));
+            mBrowserBox->addRow("##3---");
+
+            addPlayerRelation(name);
+            mBrowserBox->addRow("##3---");
+
+            addFollow();
+            addParty(being->getPartyName());
+
+            const Guild *const guild1 = being->getGuild();
+            const Guild *const guild2 = player_node->getGuild();
+            if (guild2)
             {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("trade", _("Trade"));
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("attack", _("Attack"));
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("whisper", _("Whisper"));
-
-                mBrowserBox->addRow("##3---");
-
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("heal", _("Heal"));
-                mBrowserBox->addRow("##3---");
-
-                addPlayerRelation(name);
-
-                mBrowserBox->addRow("##3---");
-                addFollow();
-
-                addParty(being->getPartyName());
-
-                const Guild *const guild1 = being->getGuild();
-                const Guild *const guild2 = player_node->getGuild();
-                if (guild2)
+                if (guild1)
                 {
-                    if (guild1)
-                    {
-                        if (guild1->getId() == guild2->getId())
-                        {
-                            mBrowserBox->addRow("guild-kick",
-                                // TRANSLATORS: popup menu item
-                                _("Kick from guild"));
-                            if (guild2->getServerGuild())
-                            {
-                                mBrowserBox->addRow(strprintf(
-                                    "@@guild-pos|%s >@@",
-                                    // TRANSLATORS: popup menu item
-                                    _("Change pos in guild")));
-                            }
-                        }
-                    }
-                    else if (guild2->getMember(mNick))
+                    if (guild1->getId() == guild2->getId())
                     {
                         mBrowserBox->addRow("guild-kick",
                             // TRANSLATORS: popup menu item
@@ -192,31 +176,45 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                                 _("Change pos in guild")));
                         }
                     }
-                    else
+                }
+                else if (guild2->getMember(mNick))
+                {
+                    mBrowserBox->addRow("guild-kick",
+                        // TRANSLATORS: popup menu item
+                        _("Kick from guild"));
+                    if (guild2->getServerGuild())
                     {
-                        if (guild2->getServerGuild()
-                            || (guildManager && guildManager->havePower()))
-                        {
+                        mBrowserBox->addRow(strprintf(
+                            "@@guild-pos|%s >@@",
                             // TRANSLATORS: popup menu item
-                            mBrowserBox->addRow("guild", _("Invite to guild"));
-                        }
+                            _("Change pos in guild")));
                     }
                 }
-
-                if (player_node->isGM())
+                else
                 {
-                    mBrowserBox->addRow("##3---");
-                    // TRANSLATORS: popup menu item
-                    mBrowserBox->addRow("admin-kick", _("Kick player"));
+                    if (guild2->getServerGuild()
+                        || (guildManager && guildManager->havePower()))
+                    {
+                        // TRANSLATORS: popup menu item
+                        mBrowserBox->addRow("guild", _("Invite to guild"));
+                    }
                 }
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("nuke", _("Nuke"));
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("move", _("Move"));
-                addPlayerMisc();
-                addBuySell(being);
             }
+
+            if (player_node->isGM())
+            {
+                mBrowserBox->addRow("##3---");
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("admin-kick", _("Kick player"));
+            }
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("nuke", _("Nuke"));
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("move", _("Move"));
+            addPlayerMisc();
+            addBuySell(being);
             break;
+        }
 
         case ActorSprite::NPC:
             // NPCs can be talked to (single option, candidate for removal
@@ -235,44 +233,44 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             break;
 
         case ActorSprite::MONSTER:
+        {
+            // Monsters can be attacked
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("attack", _("Attack"));
+
+            if (player_node->isGM())
             {
-                // Monsters can be attacked
+                mBrowserBox->addRow("##3---");
                 // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("attack", _("Attack"));
+                mBrowserBox->addRow("admin-kick", _("Kick"));
+            }
 
-                if (player_node->isGM())
+            if (config.getBoolValue("enableAttackFilter"))
+            {
+                mBrowserBox->addRow("##3---");
+                if (actorSpriteManager->isInAttackList(name)
+                    || actorSpriteManager->isInIgnoreAttackList(name)
+                    || actorSpriteManager->isInPriorityAttackList(name))
                 {
-                    mBrowserBox->addRow("##3---");
-                    // TRANSLATORS: popup menu item
-                    mBrowserBox->addRow("admin-kick", _("Kick"));
+                    mBrowserBox->addRow("remove attack",
+                        // TRANSLATORS: popup menu item
+                        _("Remove from attack list"));
                 }
-
-                if (config.getBoolValue("enableAttackFilter"))
+                else
                 {
-                    mBrowserBox->addRow("##3---");
-                    if (actorSpriteManager->isInAttackList(name)
-                        || actorSpriteManager->isInIgnoreAttackList(name)
-                        || actorSpriteManager->isInPriorityAttackList(name))
-                    {
-                        mBrowserBox->addRow("remove attack",
-                            // TRANSLATORS: popup menu item
-                            _("Remove from attack list"));
-                    }
-                    else
-                    {
-                        mBrowserBox->addRow("add attack priority",
-                            // TRANSLATORS: popup menu item
-                            _("Add to priority attack list"));
-                        mBrowserBox->addRow("add attack",
-                            // TRANSLATORS: popup menu item
-                            _("Add to attack list"));
-                        mBrowserBox->addRow("add attack ignore",
-                            // TRANSLATORS: popup menu item
-                            _("Add to ignore list"));
-                    }
+                    mBrowserBox->addRow("add attack priority",
+                        // TRANSLATORS: popup menu item
+                        _("Add to priority attack list"));
+                    mBrowserBox->addRow("add attack",
+                        // TRANSLATORS: popup menu item
+                        _("Add to attack list"));
+                    mBrowserBox->addRow("add attack ignore",
+                        // TRANSLATORS: popup menu item
+                        _("Add to ignore list"));
                 }
             }
-            break;
+        break;
+        }
 
         case ActorSprite::UNKNOWN:
         case ActorSprite::FLOOR_ITEM:
@@ -284,8 +282,8 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     }
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("name", _("Add name to chat"));
-
     mBrowserBox->addRow("##3---");
+
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("cancel", _("Cancel"));
 
@@ -325,7 +323,8 @@ void PopupMenu::showPopup(const int x, const int y,
     showPopup(x, y);
 }
 
-void PopupMenu::showPlayerPopup(const int x, const int y, std::string nick)
+void PopupMenu::showPlayerPopup(const int x, const int y,
+                                const std::string &nick)
 {
     if (nick.empty() || !player_node)
         return;
@@ -346,8 +345,8 @@ void PopupMenu::showPlayerPopup(const int x, const int y, std::string nick)
     mBrowserBox->addRow("##3---");
 
     addPlayerRelation(name);
-
     mBrowserBox->addRow("##3---");
+
     addFollow();
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("addcomment", _("Add comment"));
@@ -424,7 +423,7 @@ void PopupMenu::showPopup(const int x, const int y,
     mY = y;
     mType = static_cast<int>(Being::FLOOR_ITEM);
     mBrowserBox->clearRows();
-    std::string name = floorItem->getName();
+    const std::string name = floorItem->getName();
     mNick = name;
 
     mBrowserBox->addRow(name);
@@ -448,7 +447,6 @@ void PopupMenu::showPopup(const int x, const int y,
     }
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("chat", _("Add to chat"));
-
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -525,7 +523,6 @@ void PopupMenu::showOutfitsPopup(const int x, const int y)
     mBrowserBox->addRow(_("Outfits"));
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("clear outfit", _("Clear outfit"));
-
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -549,7 +546,6 @@ void PopupMenu::showSpellPopup(const int x, const int y,
     mBrowserBox->addRow(_("Spells"));
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("edit spell", _("Edit spell"));
-
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -609,7 +605,6 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         mBrowserBox->addRow("disable away", _("Disable away"));
     }
     mBrowserBox->addRow("##3---");
-
     if (tab->getType() == static_cast<int>(ChatTab::TAB_PARTY))
     {
         // TRANSLATORS: popup menu item
@@ -638,15 +633,11 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             mBrowserBox->addRow("trade", _("Trade"));
             // TRANSLATORS: popup menu item
             mBrowserBox->addRow("attack", _("Attack"));
-
             mBrowserBox->addRow("##3---");
-
             // TRANSLATORS: popup menu item
             mBrowserBox->addRow("heal", _("Heal"));
             mBrowserBox->addRow("##3---");
-
             addPlayerRelation(name);
-
             mBrowserBox->addRow("##3---");
             addFollow();
             // TRANSLATORS: popup menu item
@@ -657,9 +648,10 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 
             if (player_node->isInParty())
             {
-                if (player_node->getParty())
+                const Party *const party = player_node->getParty();
+                if (party)
                 {
-                    if (!player_node->getParty()->isMember(wTab->getNick()))
+                    if (!party->isMember(wTab->getNick()))
                     {
                         // TRANSLATORS: popup menu item
                         mBrowserBox->addRow("party", _("Invite to party"));
@@ -753,7 +745,7 @@ void PopupMenu::showChangePos(const int x, const int y)
     const Guild *const guild = player_node->getGuild();
     if (guild)
     {
-        PositionsMap map = guild->getPositions();
+        const PositionsMap map = guild->getPositions();
         FOR_EACH (PositionsMap::const_iterator, itr, map)
         {
             // TRANSLATORS: popup menu item
@@ -822,7 +814,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         Net::getBuySellHandler()->requestBuyList(mNick);
     }
-    // Attack action
     else if (link == "attack" && being)
     {
         if (player_node)
@@ -837,7 +828,7 @@ void PopupMenu::handleLink(const std::string &link,
              being->getType() == ActorSprite::PLAYER)
     {
         player_relations.setRelation(being->getName(),
-                                     PlayerRelation::NEUTRAL);
+            PlayerRelation::NEUTRAL);
     }
     else if (link == "unignore" && !mNick.empty())
     {
@@ -948,10 +939,6 @@ void PopupMenu::handleLink(const std::string &link,
             if (item)
                 player_node->pickUp(item);
         }
-    }
-    // Look To action
-    else if (link == "look")
-    {
     }
     else if (link == "use" && mItemId)
     {
@@ -1086,7 +1073,7 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "store" && mItem)
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
-                             inventoryWindow, mItem);
+            inventoryWindow, mItem);
     }
     else if (link == "store 10" && mItem)
     {
@@ -1118,7 +1105,7 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "addtrade" && mItem)
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
-                             tradeWindow, mItem);
+            tradeWindow, mItem);
     }
     else if (link == "addtrade 10" && mItem)
     {
@@ -1147,8 +1134,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "retrieve" && mItem)
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove, mWindow,
-                                     mItem);
+        ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
+            mWindow, mItem);
     }
     else if (link == "retrieve 10" && mItem)
     {
@@ -1271,7 +1258,7 @@ void PopupMenu::handleLink(const std::string &link,
         // TRANSLATORS: number of chars in string should be near original
         mDialog = new TextDialog(_("Rename map sign          "),
         // TRANSLATORS: number of chars in string should be near original
-                                 _("Name:                    "));
+            _("Name:                    "));
         mRenameListener.setDialog(mDialog);
         mDialog->setText(mMapItem->getComment());
         mDialog->setActionEventId("ok");
@@ -2191,7 +2178,7 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
 }
 
 void PopupMenu::showAttackMonsterPopup(const int x, const int y,
-                                       std::string name, const int type)
+                                       const std::string &name, const int type)
 {
     if (!player_node || !actorSpriteManager)
         return;
@@ -2310,7 +2297,6 @@ void PopupMenu::showUndressPopup(const int x, const int y,
 
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("undress item", _("Undress"));
-
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2318,7 +2304,7 @@ void PopupMenu::showUndressPopup(const int x, const int y,
     showPopup(x, y);
 }
 
-void PopupMenu::showTextFieldPopup(int x, int y, TextField *input)
+void PopupMenu::showTextFieldPopup(int x, int y, TextField *const input)
 {
     mX = x;
     mY = y;
@@ -2416,7 +2402,7 @@ void PopupMenu::showPopup(int x, int y)
     requestMoveToTop();
 }
 
-void PopupMenu::addPlayerRelation(std::string name)
+void PopupMenu::addPlayerRelation(const std::string &name)
 {
     switch (player_relations.getRelation(name))
     {
@@ -2462,8 +2448,11 @@ void PopupMenu::addPlayerRelation(std::string name)
             break;
 
         case PlayerRelation::DISREGARDED:
+            // TRANSLATORS: popup menu item
             mBrowserBox->addRow("unignore", _("Unignore"));
+            // TRANSLATORS: popup menu item
             mBrowserBox->addRow("ignore", _("Completely ignore"));
+            // TRANSLATORS: popup menu item
             mBrowserBox->addRow("erase", _("Erase"));
             break;
 
@@ -2596,7 +2585,8 @@ void PopupMenu::addPickupFilter(const std::string &name)
     }
 }
 
-void PopupMenu::showPopup(const int x, const int y, gcn::ListModel *model)
+void PopupMenu::showPopup(const int x, const int y,
+                          gcn::ListModel *const model)
 {
     if (!model)
         return;
@@ -2668,7 +2658,7 @@ void RenameListener::action(const gcn::ActionEvent &event)
 
 PlayerListener::PlayerListener() :
     ActionListener(),
-    mNick(""),
+    mNick(),
     mDialog(nullptr),
     mType(static_cast<int>(Being::UNKNOWN))
 {
