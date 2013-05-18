@@ -1144,7 +1144,7 @@ impHandler1(execute)
     execFile(name, name, params, "");
 }
 
-impHandler1(enableHighlight)
+impHandler2(enableHighlight)
 {
     if (tab)
     {
@@ -1154,7 +1154,7 @@ impHandler1(enableHighlight)
     }
 }
 
-impHandler1(disableHighlight)
+impHandler2(disableHighlight)
 {
     if (tab)
     {
@@ -1164,28 +1164,28 @@ impHandler1(disableHighlight)
     }
 }
 
-impHandler1(dontRemoveName)
+impHandler2(dontRemoveName)
 {
     tab->setRemoveNames(false);
     if (chatWindow)
         chatWindow->saveState();
 }
 
-impHandler1(removeName)
+impHandler2(removeName)
 {
     tab->setRemoveNames(true);
     if (chatWindow)
         chatWindow->saveState();
 }
 
-impHandler1(disableAway)
+impHandler2(disableAway)
 {
     tab->setNoAway(true);
     if (chatWindow)
         chatWindow->saveState();
 }
 
-impHandler1(enableAway)
+impHandler2(enableAway)
 {
     tab->setNoAway(false);
     if (chatWindow)

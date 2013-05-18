@@ -71,21 +71,17 @@ class CommandHandler final
                            ChatTab *const tab,
                            const bool warn = false);
 
-        void invokeCommand(const int type,
-                           const bool warn = false);
+        void invokeCommand(const int type);
 
         void invokeCommand(const int type,
                            const std::string &args,
-                           ChatTab *const tab,
-                           const bool warn = false);
+                           ChatTab *const tab);
 
         void invokeCommand(const int type,
-                           const std::string &args,
-                           const bool warn = false);
+                           const std::string &args);
 
         void invokeCommand(const int type,
-                           ChatTab *const tab,
-                           const bool warn = false);
+                           ChatTab *const tab);
 
     protected:
         friend class ChatTab;

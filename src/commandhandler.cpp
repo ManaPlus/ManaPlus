@@ -110,8 +110,7 @@ void CommandHandler::callFunc(const CommandInfo &info,
         inputManager.executeAction(info.actionId);
 }
 
-void CommandHandler::invokeCommand(const int type,
-                                   const bool warn)
+void CommandHandler::invokeCommand(const int type)
 {
     if (type < 0 || type >= END_COMMANDS)
         return;
@@ -119,8 +118,7 @@ void CommandHandler::invokeCommand(const int type,
 }
 
 void CommandHandler::invokeCommand(const int type,
-                                   ChatTab *const tab,
-                                   const bool warn)
+                                   ChatTab *const tab)
 {
     if (type < 0 || type >= END_COMMANDS)
         return;
@@ -128,8 +126,7 @@ void CommandHandler::invokeCommand(const int type,
 }
 
 void CommandHandler::invokeCommand(const int type,
-                                   const std::string &args,
-                                   const bool warn)
+                                   const std::string &args)
 {
     if (type < 0 || type >= END_COMMANDS)
         return;
@@ -138,8 +135,7 @@ void CommandHandler::invokeCommand(const int type,
 
 void CommandHandler::invokeCommand(const int type,
                                    const std::string &args,
-                                   ChatTab *const tab,
-                                   const bool warn)
+                                   ChatTab *const tab)
 {
     if (type < 0 || type >= END_COMMANDS)
         return;
