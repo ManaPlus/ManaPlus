@@ -1319,12 +1319,12 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "enable highlight" && mTab)
     {
         if (commandHandler)
-            commandHandler->invokeCommand("enablehighlight", "", mTab);
+            commandHandler->invokeCommand(COMMAND_ENABLEHIGHLIGHT, mTab);
     }
     else if (link == "disable highlight" && mTab)
     {
         if (commandHandler)
-            commandHandler->invokeCommand("disablehighlight", "", mTab);
+            commandHandler->invokeCommand(COMMAND_DISABLEHIGHLIGHT, mTab);
     }
     else if (link == "dont remove name" && mTab)
     {

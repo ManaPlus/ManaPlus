@@ -34,7 +34,11 @@ CommandHandler::CommandHandler() :
 {
     const int sz = sizeof(commands) / sizeof(CommandInfo);
     for (int f = 0; f < sz; f ++)
-        mCommands[commands[f].name] = commands[f].func;
+    {
+        const std::string name = commands[f].name;
+        if (!name.empty())
+            mCommands[name] = commands[f].func;
+    }
 }
 
 void CommandHandler::handleCommands(const std::string &command,
@@ -74,4 +78,40 @@ void CommandHandler::invokeCommand(const std::string &type,
             tab->chatLog(_("Unknown command."));
         }
     }
+}
+
+void CommandHandler::invokeCommand(const int type,
+                                   const bool warn)
+{
+    if (type < 0 || type >= END_COMMANDS)
+        return;
+    (commands[type].func)("", nullptr);
+}
+
+void CommandHandler::invokeCommand(const int type,
+                                   ChatTab *const tab,
+                                   const bool warn)
+{
+    if (type < 0 || type >= END_COMMANDS)
+        return;
+    (commands[type].func)("", tab);
+}
+
+void CommandHandler::invokeCommand(const int type,
+                                   const std::string &args,
+                                   const bool warn)
+{
+    if (type < 0 || type >= END_COMMANDS)
+        return;
+    (commands[type].func)(args, nullptr);
+}
+
+void CommandHandler::invokeCommand(const int type,
+                                   const std::string &args,
+                                   ChatTab *const tab,
+                                   const bool warn)
+{
+    if (type < 0 || type >= END_COMMANDS)
+        return;
+    (commands[type].func)(args, tab);
 }
