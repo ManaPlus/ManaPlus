@@ -22,6 +22,8 @@
 
 #include "commandhandler.h"
 
+#include "inputmanager.h"
+
 #include "gui/widgets/chattab.h"
 
 #include "utils/gettext.h"
@@ -37,7 +39,7 @@ CommandHandler::CommandHandler() :
     {
         const std::string name = commands[f].name;
         if (!name.empty())
-            mCommands[name] = commands[f].func;
+            mCommands[name] = &commands[f];
     }
 }
 
@@ -68,7 +70,7 @@ void CommandHandler::invokeCommand(const std::string &type,
     const CommandsMapIter it = mCommands.find(type);
     if (it != mCommands.end())
     {
-        ((*it).second)(args, tab);
+        callFunc(*(*it).second, args, tab);
     }
     else if (!tab->handleCommand(type, args))
     {
@@ -80,12 +82,23 @@ void CommandHandler::invokeCommand(const std::string &type,
     }
 }
 
+void CommandHandler::callFunc(const CommandInfo &info,
+                              const std::string &args,
+                              ChatTab *const tab)
+{
+    CommandFuncPtr func = info.func;
+    if (func)
+        func(args, tab);
+    else
+        inputManager.executeAction(info.actionId);
+}
+
 void CommandHandler::invokeCommand(const int type,
                                    const bool warn)
 {
     if (type < 0 || type >= END_COMMANDS)
         return;
-    (commands[type].func)("", nullptr);
+    callFunc(commands[type], "", nullptr);
 }
 
 void CommandHandler::invokeCommand(const int type,
@@ -94,7 +107,7 @@ void CommandHandler::invokeCommand(const int type,
 {
     if (type < 0 || type >= END_COMMANDS)
         return;
-    (commands[type].func)("", tab);
+    callFunc(commands[type], "", tab);
 }
 
 void CommandHandler::invokeCommand(const int type,
@@ -103,7 +116,7 @@ void CommandHandler::invokeCommand(const int type,
 {
     if (type < 0 || type >= END_COMMANDS)
         return;
-    (commands[type].func)(args, nullptr);
+    callFunc(commands[type], args, nullptr);
 }
 
 void CommandHandler::invokeCommand(const int type,
@@ -113,5 +126,5 @@ void CommandHandler::invokeCommand(const int type,
 {
     if (type < 0 || type >= END_COMMANDS)
         return;
-    (commands[type].func)(args, tab);
+    callFunc(commands[type], args, tab);
 }

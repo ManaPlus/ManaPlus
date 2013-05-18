@@ -33,7 +33,7 @@ class ChatTab;
 
 extern ChatTab *localChatTab;
 
-typedef std::map<std::string, CommandFuncPtr> CommandsMap;
+typedef std::map<std::string, const CommandInfo*> CommandsMap;
 typedef CommandsMap::const_iterator CommandsMapIter;
 
 /**
@@ -89,6 +89,12 @@ class CommandHandler final
         friend class ChatTab;
         friend class WhisperTab;
         CommandsMap mCommands;
+
+    private:
+        void callFunc(const CommandInfo &info,
+                      const std::string &args,
+                      ChatTab *const tab);
+
 };
 
 extern CommandHandler *commandHandler;
