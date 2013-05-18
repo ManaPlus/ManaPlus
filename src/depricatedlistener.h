@@ -19,17 +19,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LISTENER_H
-#define LISTENER_H
+#ifndef DEPRICATEDLISTENER_H
+#define DEPRICATEDLISTENER_H
 
 #include "depricatedevent.h"
 
 #include <string>
 
-class Listener
+class DepricatedListener
 {
     public:
-        virtual ~Listener();
+        virtual ~DepricatedListener();
 
         void listen(Channels channel);
 

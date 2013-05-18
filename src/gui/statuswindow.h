@@ -23,7 +23,7 @@
 #ifndef STATUS_H
 #define STATUS_H
 
-#include "listener.h"
+#include "depricatedlistener.h"
 
 #include "gui/widgets/window.h"
 
@@ -45,7 +45,7 @@ class VertContainer;
  */
 class StatusWindow final : public Window,
                            public gcn::ActionListener,
-                           public Listener
+                           public DepricatedListener
 {
     public:
         /**

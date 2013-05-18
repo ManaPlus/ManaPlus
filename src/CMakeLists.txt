@@ -568,6 +568,8 @@ SET(SRCS
     defaults.h
     depricatedevent.cpp
     depricatedevent.h
+    depricatedlistener.cpp
+    depricatedlistener.h
     effectmanager.cpp
     effectmanager.h
     emoteshortcut.cpp
@@ -617,8 +619,6 @@ SET(SRCS
     keyevent.h
     keyinput.cpp
     keyinput.h
-    listener.cpp
-    listener.h
     localconsts.h
     localplayer.cpp
     localplayer.h

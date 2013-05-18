@@ -25,7 +25,7 @@
 
 #include <guichan/actionlistener.hpp>
 
-#include "listener.h"
+#include "depricatedlistener.h"
 
 #include "gui/widgets/window.h"
 
@@ -34,7 +34,7 @@ class Button;
 
 class KillStats final : public Window,
                         private gcn::ActionListener,
-                        public Listener
+                        public DepricatedListener
 {
     public:
         /**

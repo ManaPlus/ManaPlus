@@ -24,7 +24,7 @@
 #define INVENTORYWINDOW_H
 
 #include "inventory.h"
-#include "listener.h"
+#include "depricatedlistener.h"
 
 #include "gui/widgets/window.h"
 
@@ -56,7 +56,7 @@ class InventoryWindow final : public Window,
                               public gcn::KeyListener,
                               public gcn::SelectionListener,
                               public InventoryListener,
-                              public Listener
+                              public DepricatedListener
 {
     public:
         /**

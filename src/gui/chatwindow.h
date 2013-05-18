@@ -23,7 +23,7 @@
 #ifndef CHATWINDOW_H
 #define CHATWINDOW_H
 
-#include "listener.h"
+#include "depricatedlistener.h"
 
 #include "configlistener.h"
 
@@ -92,7 +92,7 @@ struct CHATLOG final
 class ChatWindow final : public Window,
                          public gcn::ActionListener,
                          public gcn::KeyListener,
-                         public Listener,
+                         public DepricatedListener,
                          public ConfigListener
 {
     public:

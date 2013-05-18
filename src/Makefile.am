@@ -571,6 +571,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      defaults.h \
 	      depricatedevent.cpp \
 	      depricatedevent.h \
+	      depricatedlistener.cpp \
+	      depricatedlistener.h \
 	      effectmanager.cpp \
 	      effectmanager.h \
 	      emoteshortcut.cpp \
@@ -620,8 +622,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      keyevent.h \
 	      keyinput.cpp \
 	      keyinput.h \
-	      listener.cpp \
-	      listener.h \
 	      localconsts.h \
 	      localplayer.cpp \
 	      localplayer.h \

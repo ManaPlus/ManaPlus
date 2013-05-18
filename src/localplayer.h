@@ -25,7 +25,7 @@
 
 #include "actorspritelistener.h"
 #include "being.h"
-#include "listener.h"
+#include "depricatedlistener.h"
 #include "localconsts.h"
 
 #include "gui/userpalette.h"
@@ -68,7 +68,7 @@ enum
  */
 class LocalPlayer final : public Being,
                           public ActorSpriteListener,
-                          public Listener
+                          public DepricatedListener
 {
     public:
         /**

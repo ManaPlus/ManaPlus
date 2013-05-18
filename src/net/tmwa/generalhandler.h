@@ -23,8 +23,6 @@
 #ifndef NET_TMWA_GENERALHANDLER_H
 #define NET_TMWA_GENERALHANDLER_H
 
-#include "listener.h"
-
 #include "net/generalhandler.h"
 #include "net/net.h"
 

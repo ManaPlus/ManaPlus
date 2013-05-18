@@ -24,7 +24,7 @@
 #define MINISTATUSWINDOW_H
 
 #include "inventory.h"
-#include "listener.h"
+#include "depricatedlistener.h"
 
 #include "gui/widgets/popup.h"
 
@@ -43,7 +43,7 @@ class TextPopup;
  */
 class MiniStatusWindow final : public Popup,
                                public InventoryListener,
-                               public Listener
+                               public DepricatedListener
 {
     public:
         MiniStatusWindow();

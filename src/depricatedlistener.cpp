@@ -19,21 +19,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "listener.h"
+#include "depricatedlistener.h"
 
 #include "debug.h"
 
-Listener::~Listener()
+DepricatedListener::~DepricatedListener()
 {
     DepricatedEvent::remove(this);
 }
 
-void Listener::listen(Channels channel)
+void DepricatedListener::listen(Channels channel)
 {
     DepricatedEvent::bind(this, channel);
 }
 
-void Listener::ignore(Channels channel)
+void DepricatedListener::ignore(Channels channel)
 {
     DepricatedEvent::unbind(this, channel);
 }

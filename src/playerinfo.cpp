@@ -24,7 +24,7 @@
 #include "client.h"
 #include "depricatedevent.h"
 #include "inventory.h"
-#include "listener.h"
+#include "depricatedlistener.h"
 #include "logger.h"
 
 #include "gui/inventorywindow.h"

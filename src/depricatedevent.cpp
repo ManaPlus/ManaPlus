@@ -21,12 +21,12 @@
 
 #include "depricatedevent.h"
 
-#include "listener.h"
+#include "depricatedlistener.h"
 #include "variabledata.h"
 
 #include "debug.h"
 
-ListenMap DepricatedEvent::mBindings;
+DepricatedListenMap DepricatedEvent::mBindings;
 
 DepricatedEvent::~DepricatedEvent()
 {
@@ -107,15 +107,15 @@ double DepricatedEvent::getFloat(const std::string &key) const
 void DepricatedEvent::trigger(const Channels channel,
                               const DepricatedEvent &event)
 {
-    const ListenMap::const_iterator it = mBindings.find(channel);
+    const DepricatedListenMap::const_iterator it = mBindings.find(channel);
 
     // Make sure something is listening
     if (it == mBindings.end())
         return;
 
     // Loop though all listeners
-    ListenerSet::const_iterator lit = it->second.begin();
-    const ListenerSet::const_iterator lit_end = it->second.end();
+    DepricatedListenerSet::const_iterator lit = it->second.begin();
+    const DepricatedListenerSet::const_iterator lit_end = it->second.end();
     while (lit != lit_end)
     {
         if (*lit)
@@ -124,9 +124,9 @@ void DepricatedEvent::trigger(const Channels channel,
     }
 }
 
-void DepricatedEvent::remove(Listener *const listener)
+void DepricatedEvent::remove(DepricatedListener *const listener)
 {
-    ListenMap::iterator it = mBindings.begin();
+    DepricatedListenMap::iterator it = mBindings.begin();
     while (it != mBindings.end())
     {
         it->second.erase(listener);
@@ -134,12 +134,14 @@ void DepricatedEvent::remove(Listener *const listener)
     }
 }
 
-void DepricatedEvent::bind(Listener *const listener, const Channels channel)
+void DepricatedEvent::bind(DepricatedListener *const listener,
+                           const Channels channel)
 {
     mBindings[channel].insert(listener);
 }
 
-void DepricatedEvent::unbind(Listener *const listener, const Channels channel)
+void DepricatedEvent::unbind(DepricatedListener *const listener,
+                             const Channels channel)
 {
     mBindings[channel].erase(listener);
 }

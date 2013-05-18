@@ -39,12 +39,12 @@ enum DepricatedEvents
     EVENT_UPDATESTAT
 };
 
-class Listener;
+class DepricatedListener;
 class VariableData;
 typedef std::map<std::string, VariableData *> VariableMap;
 
-typedef std::set<Listener *> ListenerSet;
-typedef std::map<Channels, ListenerSet > ListenMap;
+typedef std::set<DepricatedListener *> DepricatedListenerSet;
+typedef std::map<Channels, DepricatedListenerSet > DepricatedListenMap;
 
 class DepricatedEvent final
 {
@@ -84,17 +84,19 @@ class DepricatedEvent final
                             const DepricatedEvent &event);
 
         // Removes a listener from all channels
-        static void remove(Listener *const listener);
+        static void remove(DepricatedListener *const listener);
 
         // Adds or removes a listener to a channel.
-        static void bind(Listener *const listener, const Channels channel);
+        static void bind(DepricatedListener *const listener,
+                         const Channels channel);
 
-        static void unbind(Listener *const listener, const Channels channel);
+        static void unbind(DepricatedListener *const listener,
+                           const Channels channel);
 
     private:
         DepricatedEvents mDepricatedEventName;
 
-        static ListenMap mBindings;
+        static DepricatedListenMap mBindings;
 
         VariableMap mData;
 };
