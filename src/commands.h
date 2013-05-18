@@ -211,6 +211,7 @@ enum
     COMMAND_MOVETOTARGET,
     COMMAND_MOVETOHOME,
     COMMAND_SETHOME,
+    COMMAND_MAGICATTACK,
     COMMAND_HACK,
     END_COMMANDS,
 };
@@ -300,6 +301,7 @@ static const CommandInfo commands[] =
     {"movetotarget", nullptr, Input::KEY_MOVE_TO_TARGET},
     {"movetohome", nullptr, Input::KEY_MOVE_TO_HOME},
     {"sethome", nullptr, Input::KEY_SET_HOME},
+    {"magicattack", nullptr, Input::KEY_MAGIC_ATTACK},
     {"hack", &Commands::hack, -1}
 };
 
