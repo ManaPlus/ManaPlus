@@ -152,7 +152,7 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
         || color.b != color2.b)
     {   // outlining
         SDL_Color sdlCol2;
-        SDL_Surface *background = imageHelper->create32BitSurface(
+        SDL_Surface *const background = imageHelper->create32BitSurface(
             width, height);
         if (!background)
         {
@@ -314,7 +314,9 @@ void TextChunkList::clear()
 
 static int fontCounter;
 
-SDLFont::SDLFont(std::string filename, const int size, const int style) :
+SDLFont::SDLFont(std::string filename,
+                 const int size,
+                 const int style) :
     mFont(nullptr),
     mCreateCounter(0),
     mDeleteCounter(0),
@@ -369,7 +371,9 @@ SDLFont::~SDLFont()
     }
 }
 
-void SDLFont::loadFont(std::string filename, const int size, const int style)
+void SDLFont::loadFont(std::string filename,
+                       const int size,
+                       const int style)
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
 
@@ -421,7 +425,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
         return;
 
     gcn::Color col = g->getColor();
-    gcn::Color col2 = g->getColor2();
+    const gcn::Color col2 = g->getColor2();
     const float alpha = static_cast<float>(col.a) / 255.0f;
 
     /* The alpha value is ignored at string generation so avoid caching the
@@ -506,37 +510,6 @@ int SDLFont::getWidth(const std::string &text) const
             return 0;
     }
 
-/*
-#ifdef DEBUG_FONT
-    int cnt = 0;
-#endif
-
-    SDLTextChunk *i = cache->start;
-    while (i)
-    {
-        if (i->text == text)
-        {
-            // Raise priority: move it to front
-            // Assumption is that TTF::draw will be called next
-            cache->moveToFirst(i);
-            const Image *const image = i->img;
-            if (image)
-                return image->getWidth();
-            else
-                return 0;
-        }
-        i = i->next;
-#ifdef DEBUG_FONT
-        cnt ++;
-#endif
-    }
-
-#ifdef DEBUG_FONT
-    logger->log(std::string("getWidth: ").append(text).append(
-        ", iterations: ").append(toString(cnt)));
-#endif
-*/
-
     // if string was not drawed
     int w, h;
     getSafeUtf8String(text, strBuf);
@@ -591,7 +564,7 @@ void SDLFont::doClean()
     }
 }
 
-TextChunkList *SDLFont::getCache()
+TextChunkList *SDLFont::getCache() const
 {
     return mCache;
 }

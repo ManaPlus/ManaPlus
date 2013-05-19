@@ -114,36 +114,30 @@ class TextChunkList final
 class SDLFont final : public gcn::Font
 {
     public:
-        /**
-         * Constructor.
-         *
-         * @param filename  Font filename.
-         * @param size      Font size.
-         */
-        SDLFont(std::string filename, const int size, const int style = 0);
+        SDLFont(std::string filename,
+                const int size,
+                const int style = 0);
 
         A_DELETE_COPY(SDLFont)
 
-        /**
-         * Destructor.
-         */
         ~SDLFont();
 
-        void loadFont(std::string filename, const int size,
+        void loadFont(std::string filename,
+                      const int size,
                       const int style = 0);
 
-        virtual int getWidth(const std::string &text) const A_WARN_UNUSED;
+        int getWidth(const std::string &text) const override A_WARN_UNUSED;
 
-        virtual int getHeight() const A_WARN_UNUSED;
+        int getHeight() const override  A_WARN_UNUSED;
 
-        TextChunkList *getCache() A_WARN_UNUSED;
+        TextChunkList *getCache() const A_WARN_UNUSED;
 
         /**
          * @see Font::drawString
          */
         void drawString(gcn::Graphics *const graphics,
                         const std::string &text,
-                        const int x, const int y);
+                        const int x, const int y) override;
 
         void clear();
 
