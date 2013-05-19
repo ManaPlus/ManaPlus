@@ -131,15 +131,13 @@ std::string ServersListModel::getElementAt(int elementIndex)
     const ServerInfo &server = mServers->at(elementIndex);
     std::string myServer;
     myServer.append(server.hostname);
-//    myServer += ":";
-//    myServer += toString(server.port);
     return myServer;
 }
 
 void ServersListModel::setVersionString(const int index,
                                         const std::string &version)
 {
-    if (index >= static_cast<int>(mVersionStrings.size()))
+    if (index < 0 || index >= static_cast<int>(mVersionStrings.size()))
         return;
 
     if (version.empty())
@@ -166,7 +164,7 @@ public:
     {
     }
 
-    void draw(gcn::Graphics *graphics)
+    void draw(gcn::Graphics *graphics) override
     {
         if (!mListModel)
             return;
@@ -201,7 +199,7 @@ public:
         for (int i = 0, y = 0; i < model->getNumberOfElements();
              ++i, y += height)
         {
-            ServerInfo info = model->getServer(i);
+            const ServerInfo &info = model->getServer(i);
 
             if (mSelected == i)
             {
@@ -240,7 +238,7 @@ public:
         }
     }
 
-    unsigned int getRowHeight() const
+    unsigned int getRowHeight() const override
     {
         return 2 * getFont()->getHeight() + 5;
     }
@@ -518,7 +516,6 @@ void ServerDialog::logic()
         if (mDownloadStatus == DOWNLOADING_COMPLETE)
         {
             mDownloadStatus = DOWNLOADING_OVER;
-
             mDescription->setCaption(std::string());
         }
         else if (mDownloadStatus == DOWNLOADING_IN_PROGRESS)
@@ -604,10 +601,8 @@ void ServerDialog::loadServers(const bool addNew)
         if (!xmlNameEqual(serverNode, "server"))
             continue;
 
+        const std::string type = XML::getProperty(serverNode, "type", "unknown");
         ServerInfo server;
-
-        std::string type = XML::getProperty(serverNode, "type", "unknown");
-
         server.type = ServerInfo::parseType(type);
 
         // Ignore unknown server types
@@ -619,7 +614,6 @@ void ServerDialog::loadServers(const bool addNew)
         }
 
         server.name = XML::getProperty(serverNode, "name", std::string());
-
         std::string version = XML::getProperty(serverNode, "minimumVersion",
                                                std::string());
 
@@ -640,7 +634,7 @@ void ServerDialog::loadServers(const bool addNew)
             version = strprintf(_("requires v%s"), version.c_str());
         }
 
-        gcn::Font *font = gui->getFont();
+        gcn::Font *const font = gui->getFont();
 
         for_each_xml_child_node(subNode, serverNode)
         {
@@ -823,19 +817,10 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
         if (total)
             progress /= static_cast<float>(total);
 
-        if (progress != progress)
-        {
-            progress = 0.0f;  // check for NaN
-        }
-        else if (progress < 0.0f)
-        {
-            progress = 0.0f;  // no idea how this could ever happen,
-                              // but why not check for it anyway.
-        }
+        if (progress != progress || progress < 0.0f)
+            progress = 0.0f;
         else if (progress > 1.0f)
-        {
             progress = 1.0f;
-        }
 
         MutexLocker lock(&sd->mMutex);
         sd->mDownloadStatus = DOWNLOADING_IN_PROGRESS;
@@ -845,7 +830,6 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
     if (finished)
     {
         sd->loadServers();
-
         MutexLocker lock(&sd->mMutex);
         sd->mDownloadStatus = DOWNLOADING_COMPLETE;
     }

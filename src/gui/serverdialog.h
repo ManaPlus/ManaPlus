@@ -188,11 +188,8 @@ class ServerDialog : public Window,
 
         /** Status of the current download. */
         ServerDialogDownloadStatus mDownloadStatus;
-
         Net::Download *mDownload;
-
         float mDownloadProgress;
-
         ServerInfo *mServerInfo;
         CheckBox *mPersistentIPCheckBox;
 };
