@@ -145,30 +145,30 @@ public:
      *
      * @param event an event from SDL.
      */
-    virtual void pushInput(const SDL_Event &event);
+    void pushInput(const SDL_Event &event);
 
     /**
      * Polls all input. It exists for input driver compatibility. If you
      * only use SDL and plan sticking with SDL you can safely ignore this
      * function as it in the SDL case does nothing.
      */
-    virtual void _pollInput()
+    void _pollInput() override
     { }
 
-    virtual KeyInput dequeueKeyInput2() A_WARN_UNUSED;
+    KeyInput dequeueKeyInput2() A_WARN_UNUSED;
 
-    virtual gcn::KeyInput dequeueKeyInput() A_WARN_UNUSED
+    gcn::KeyInput dequeueKeyInput() override A_WARN_UNUSED
     { return gcn::KeyInput(); }
 
     // Inherited from Input
 
-    virtual bool isKeyQueueEmpty() A_WARN_UNUSED;
+    bool isKeyQueueEmpty() override A_WARN_UNUSED;
 
-    virtual bool isMouseQueueEmpty() A_WARN_UNUSED;
+    bool isMouseQueueEmpty() override A_WARN_UNUSED;
 
-    virtual gcn::MouseInput dequeueMouseInput() A_WARN_UNUSED;
+    gcn::MouseInput dequeueMouseInput() override A_WARN_UNUSED;
 
-    virtual MouseInput dequeueMouseInput2() A_WARN_UNUSED;
+    MouseInput dequeueMouseInput2() A_WARN_UNUSED;
 
 protected:
     /**

@@ -100,9 +100,7 @@ gcn::MouseInput SDLInput::dequeueMouseInput()
     gcn::MouseInput mouseInput;
 
     if (mMouseInputQueue.empty())
-    {
         throw GCN_EXCEPTION("The queue is empty.");
-    }
 
     mouseInput = mMouseInputQueue.front();
     mMouseInputQueue.pop();
@@ -115,9 +113,7 @@ MouseInput SDLInput::dequeueMouseInput2()
     MouseInput mouseInput;
 
     if (mMouseInputQueue.empty())
-    {
         throw GCN_EXCEPTION("The queue is empty.");
-    }
 
     mouseInput = mMouseInputQueue.front();
     mMouseInputQueue.pop();
@@ -266,7 +262,6 @@ int SDLInput::convertMouseButton(const int button)
 int SDLInput::convertKeyCharacter(const SDL_Event &event)
 {
     const SDL_keysym keysym = event.key.keysym;
-
     int value = keysym.unicode;
 
     switch (keysym.sym)
@@ -462,6 +457,5 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
               break;
         }
     }
-
     return value;
 }
