@@ -65,13 +65,13 @@ class KeyListModel final : public gcn::ListModel
         /**
          * Returns the number of elements in container.
          */
-        int getNumberOfElements()
+        int getNumberOfElements() override
         { return mSize; }
 
         /**
          * Returns element from container.
          */
-        std::string getElementAt(int i)
+        std::string getElementAt(int i) override
         { return setupActionData[selectedData][i].text; }
 
         /**
@@ -122,9 +122,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     }
 
     mKeyListModel->setSize(mActionDataSize[0]);
-
     refreshKeys();
-
     mKeyList->addActionListener(this);
 
     ScrollArea *const scrollArea = new ScrollArea(mKeyList,
@@ -133,12 +131,9 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
 
     mAssignKeyButton->addActionListener(this);
     mAssignKeyButton->setEnabled(false);
-
     mUnassignKeyButton->addActionListener(this);
     mUnassignKeyButton->setEnabled(false);
-
     mResetKeysButton->addActionListener(this);
-
     mDefaultButton->addActionListener(this);
 
     mTabs->addActionListener(this);
@@ -194,8 +189,8 @@ void Setup_Input::apply()
 
     if (inputManager.hasConflicts(key1, key2))
     {
-        std::string str1 = keyToString(key1);
-        std::string str2 = keyToString(key2);
+        const std::string str1 = keyToString(key1);
+        const std::string str2 = keyToString(key2);
 
         // TRANSLATORS: input settings error header
         new OkDialog(_("Key Conflict(s) Detected."),
@@ -211,10 +206,8 @@ void Setup_Input::apply()
 void Setup_Input::cancel()
 {
     keyUnresolved();
-
     inputManager.retrieve();
     keyboard.setEnabled(true);
-
     refreshKeys();
 }
 

@@ -53,9 +53,9 @@ class Setup_Input final : public SetupTab
          */
         ~Setup_Input();
 
-        void apply();
+        void apply() override;
 
-        void cancel();
+        void cancel() override;
 
         void action(const gcn::ActionEvent &event) override;
 
@@ -98,9 +98,7 @@ class Setup_Input final : public SetupTab
         Button *mDefaultButton;
         Button *mResetKeysButton;
         TabStrip *mTabs;
-
         bool mKeySetting; /**< flag to check if key being set. */
-
         int *mActionDataSize;
 };
 
