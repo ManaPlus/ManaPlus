@@ -38,13 +38,6 @@ class SetupTab;
  * The setup dialog. Displays several tabs for configuring different aspects
  * of the game.
  *
- * @see Setup_Audio
- * @see Setup_Colors
- * @see Setup_Joystick
- * @see Setup_Input
- * @see Setup_Players
- * @see Setup_Video
- *
  * \ingroup GUI
  */
 class Setup final : public Window, public gcn::ActionListener
@@ -56,14 +49,8 @@ class Setup final : public Window, public gcn::ActionListener
 
         ~Setup();
 
-        /**
-         * Event handling method.
-         */
         void action(const gcn::ActionEvent &event) override;
 
-        /**
-         * Enables the reset button when in game.
-         */
         void setInGame(const bool inGame);
 
         void externalUpdate();

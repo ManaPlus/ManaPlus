@@ -50,6 +50,7 @@
 #include "debug.h"
 
 extern Window *statusWindow;
+Setup *setupWindow;
 
 Setup::Setup() :
     // TRANSLATORS: setup window name
@@ -125,7 +126,6 @@ Setup::Setup() :
         SetupTab *const tab = *i;
         mPanel->addTab(tab->getName(), tab);
     }
-
     add(mPanel);
 
     if (mResetWindows)
@@ -252,5 +252,3 @@ void Setup::widgetResized(const gcn::Event &event)
         mVersion->setPosition(9, height - mVersion->getHeight() - 30);
     }
 }
-
-Setup *setupWindow;
