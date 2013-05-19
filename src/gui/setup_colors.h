@@ -47,9 +47,9 @@ class Setup_Colors final : public SetupTab,
 
         ~Setup_Colors();
 
-        void apply();
+        void apply() override;
 
-        void cancel();
+        void cancel() override;
 
         void action(const gcn::ActionEvent &event) override;
 

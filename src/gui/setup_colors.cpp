@@ -104,17 +104,18 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     // TRANSLATORS: color type
     std::string longText = _("Static");
 
-    if (getFont()->getWidth(_("Pulse")) > getFont()->getWidth(longText))
+    gcn::Font *const font = getFont();
+    if (getFont()->getWidth(_("Pulse")) > font->getWidth(longText))
     {
         // TRANSLATORS: color type
         longText = _("Pulse");
     }
-    if (getFont()->getWidth(_("Rainbow")) > getFont()->getWidth(longText))
+    if (getFont()->getWidth(_("Rainbow")) > font->getWidth(longText))
     {
         // TRANSLATORS: color type
         longText = _("Rainbow");
     }
-    if (getFont()->getWidth(_("Spectrum")) > getFont()->getWidth(longText))
+    if (getFont()->getWidth(_("Spectrum")) > font->getWidth(longText))
     {
         // TRANSLATORS: color type
         longText = _("Spectrum");
@@ -389,25 +390,6 @@ void Setup_Colors::cancel()
     setEntry(mBlueSlider, mBlueText, col->b);
 }
 
-#if 0
-void Setup_Colors::listen(const TextField *tf)
-{
-    if (!tf)
-        return;
-
-    if (tf == mGradDelayText)
-        mGradDelaySlider->setValue(tf->getValue());
-    else if (tf == mRedText)
-        mRedSlider->setValue(tf->getValue());
-    else if (tf == mGreenText)
-        mGreenSlider->setValue(tf->getValue());
-    else if (tf == mBlueText)
-        mBlueSlider->setValue(tf->getValue());
-
-    updateColor();
-}
-#endif
-
 void Setup_Colors::updateGradType()
 {
     if (mSelected == -1 || !userPalette)
@@ -418,12 +400,12 @@ void Setup_Colors::updateGradType()
     const Palette::GradientType grad = userPalette->getGradientType(type);
 
     mGradTypeText->setCaption(
-            // TRANSLATORS: color type
-            (grad == Palette::STATIC) ? _("Static") :
-            // TRANSLATORS: color type
-            (grad == Palette::PULSE) ? _("Pulse") :
-            // TRANSLATORS: color type
-            (grad == Palette::RAINBOW) ? _("Rainbow") : _("Spectrum"));
+        // TRANSLATORS: color type
+        (grad == Palette::STATIC) ? _("Static") :
+        // TRANSLATORS: color type
+        (grad == Palette::PULSE) ? _("Pulse") :
+        // TRANSLATORS: color type
+        (grad == Palette::RAINBOW) ? _("Rainbow") : _("Spectrum"));
 
     const bool enable = (grad == Palette::STATIC || grad == Palette::PULSE);
     const bool delayEnable = true;
