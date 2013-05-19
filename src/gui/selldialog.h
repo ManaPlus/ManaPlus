@@ -99,7 +99,7 @@ class SellDialog final : public Window,
         /**
          * Sets the visibility of this window.
          */
-        void setVisible(bool visible);
+        void setVisible(bool visible) override;
 
         void addItem(const int id, const unsigned char color,
                      const int amount, const int price);

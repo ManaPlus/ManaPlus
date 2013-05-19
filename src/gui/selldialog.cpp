@@ -151,7 +151,6 @@ SellDialog::~SellDialog()
 {
     delete mShopItems;
     mShopItems = nullptr;
-
     instances.remove(this);
 }
 
@@ -159,10 +158,7 @@ void SellDialog::reset()
 {
     mShopItems->clear();
     mSlider->setValue(0);
-
-    // Reset previous selected item to prevent failing asserts
     mShopItemList->setSelected(-1);
-
     updateButtonsAndLabels();
 }
 
@@ -234,12 +230,13 @@ void SellDialog::action(const gcn::ActionEvent &event)
         {
             if (eventId == "presell")
             {
-                ShopItem *const item = mShopItems->at(selectedItem);
+                const ShopItem *const item = mShopItems->at(selectedItem);
                 const ItemInfo &info = ItemDB::get(item->getId());
                 if (info.isProtected())
                 {
-                    // TRANSLATORS: sell confirmation header
-                    ConfirmDialog *dialog = new ConfirmDialog(_("sell item"),
+                    ConfirmDialog *const dialog = new ConfirmDialog(
+                        // TRANSLATORS: sell confirmation header
+                        _("sell item"),
                         // TRANSLATORS: sell confirmation message
                         strprintf(_("Do you really want to sell %s?"),
                         info.getName().c_str()), false, true);
@@ -292,7 +289,6 @@ void SellDialog::action(const gcn::ActionEvent &event)
         else
         {
             ShopItem *const item = mShopItems->at(selectedItem);
-
             Net::getBuySellHandler()->sendSellRequest(mNick,
                     item, mAmountItems);
 
