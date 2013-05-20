@@ -42,9 +42,9 @@ class Setup_Joystick final : public SetupTab
 
         ~Setup_Joystick();
 
-        void apply();
+        void apply() override;
 
-        void cancel();
+        void cancel() override;
 
         void action(const gcn::ActionEvent &event) override;
 
