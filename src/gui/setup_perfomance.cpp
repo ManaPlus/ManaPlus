@@ -164,8 +164,3 @@ Setup_Perfomance::~Setup_Perfomance()
     delete mTexturesList;
     mTexturesList = nullptr;
 }
-
-void Setup_Perfomance::apply()
-{
-    SetupTabScroll::apply();
-}

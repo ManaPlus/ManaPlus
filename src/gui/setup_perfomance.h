@@ -40,8 +40,6 @@ class Setup_Perfomance final : public SetupTabScroll
 
         ~Setup_Perfomance();
 
-        void apply();
-
     private:
         NamesModel *mTexturesList;
 };
