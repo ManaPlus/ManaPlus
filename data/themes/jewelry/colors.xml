@@ -113,7 +113,7 @@
         <color id="TAB" color="#efd7a7" />
         <color id="TAB_OUTLINE" color="#000000" />
         <color id="TAB_FLASH" color="#a7ff2a" />
-        <color id="TAB_FLASH_OUTLINE" color="#1a2c00" />
+        <color id="TAB_FLASH_OUTLINE" color="#142200" />
         <color id="TAB_PLAYER_FLASH" color="#ff96f6" />
         <color id="TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
@@ -193,36 +193,36 @@
         <color id="WARNING" color="#FF0000" />
         <color id="CHAT" color="#ffffff" />
         <color id="CHAT_OUTLINE" color="#000000" />
-        <color id="GM" color="#fec4ff" />
-        <color id="GM_OUTLINE" color="#000000" />
+        <color id="GM" color="#ff45fd" />
+        <color id="GM_OUTLINE" color="#44033a" />
         <color id="PLAYER" color="#ffffff" />
-        <color id="PLAYER_OUTLINE" color="#000000" />
+        <color id="PLAYER_OUTLINE" color="#3f3f3f" />
         <color id="PLAYER_ADVANCED" color="#f9eabc" />
         <color id="PLAYER_ADVANCED_OUTLINE" color="#000000" />
         <color id="IS" color="#77deff" />
-        <color id="IS_OUTLINE" color="#000000" />
+        <color id="IS_OUTLINE" color="#02232e" />
         <color id="SERVER" color="#a7ff2a" />
-        <color id="SERVER_OUTLINE" color="#000000" />
-        <color id="BROWSERBOX" color="#b2b2b2" />
+        <color id="SERVER_OUTLINE" color="#142200" />
+        <color id="BROWSERBOX" color="#999999" />
         <color id="BROWSERBOX_OUTLINE" color="#000000" />
         <color id="RED" color="#ff6565" />
-        <color id="RED_OUTLINE" color="#000000" />
-        <color id="GREEN" color="#67ec67" />
-        <color id="GREEN_OUTLINE" color="#000000" />
-        <color id="BLUE" color="#9f9fff" />
-        <color id="BLUE_OUTLINE" color="#000000" />
+        <color id="RED_OUTLINE" color="#470303" />
+        <color id="GREEN" color="#57cb21" />
+        <color id="GREEN_OUTLINE" color="#0b3102" />
+        <color id="BLUE" color="#8080ff" />
+        <color id="BLUE_OUTLINE" color="#060646" />
         <color id="ORANGE" color="#f1c777" />
-        <color id="ORANGE_OUTLINE" color="#000000" />
+        <color id="ORANGE_OUTLINE" color="#3d2201" />
         <color id="YELLOW" color="#f8eb7c" />
-        <color id="YELLOW_OUTLINE" color="#000000" />
-        <color id="PINK" color="#ff9ff0" />
-        <color id="PINK_OUTLINE" color="#000000" />
-        <color id="PURPLE" color="#ddb1ff" />
-        <color id="PURPLE_OUTLINE" color="#000000" />
+        <color id="YELLOW_OUTLINE" color="#382a01" />
+        <color id="PINK" color="#ff90ee" />
+        <color id="PINK_OUTLINE" color="#44033a" />
+        <color id="PURPLE" color="#cd8cff" />
+        <color id="PURPLE_OUTLINE" color="#260341" />
         <color id="GRAY" color="#dbdbdb" />
-        <color id="GRAY_OUTLINE" color="#000000" />
+        <color id="GRAY_OUTLINE" color="#333333" />
         <color id="BROWN" color="#dbdbdb" />
-        <color id="BROWN_OUTLINE" color="#000000" />        
+        <color id="BROWN_OUTLINE" color="#333333" />        
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
