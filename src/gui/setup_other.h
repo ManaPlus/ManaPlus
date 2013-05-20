@@ -39,8 +39,10 @@ class Setup_Other final : public SetupTabScroll
         A_DELETE_COPY(Setup_Other)
 
         ~Setup_Other();
-        void apply();
-        void externalUpdated();
+
+        void apply() override;
+
+        void externalUpdated() override;
 
     protected:
         NamesModel *mProxyTypeList;
