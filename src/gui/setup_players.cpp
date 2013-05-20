@@ -109,8 +109,3 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
-
-void Setup_Players::apply()
-{
-    SetupTabScroll::apply();
-}

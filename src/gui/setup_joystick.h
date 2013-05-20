@@ -25,8 +25,6 @@
 
 #include "gui/widgets/setuptab.h"
 
-#include <guichan/actionlistener.hpp>
-
 class Button;
 class CheckBox;
 class DropDown;

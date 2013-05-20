@@ -25,8 +25,6 @@
 
 #include "gui/widgets/setuptabscroll.h"
 
-#include <guichan/actionlistener.hpp>
-
 class IntTextField;
 class EditDialog;
 
@@ -36,8 +34,6 @@ class Setup_Players final : public SetupTabScroll
         explicit Setup_Players(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Players)
-
-        void apply();
 };
 
 #endif

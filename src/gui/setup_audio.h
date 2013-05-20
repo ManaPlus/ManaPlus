@@ -27,8 +27,6 @@
 
 #include "gui/widgets/setupitem.h"
 
-#include <guichan/actionlistener.hpp>
-
 class Setup_Audio final : public SetupTabScroll
 {
     public:

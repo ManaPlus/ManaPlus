@@ -23,8 +23,6 @@
 
 #include "gui/widgets/setuptouchitem.h"
 
-#include <guichan/actionlistener.hpp>
-
 class EditDialog;
 class TextField;
 

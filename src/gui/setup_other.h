@@ -25,8 +25,6 @@
 
 #include "gui/widgets/setupitem.h"
 
-#include <guichan/actionlistener.hpp>
-
 class EditDialog;
 class NamesModel;
 class TextField;

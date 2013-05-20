@@ -25,8 +25,6 @@
 
 #include "gui/widgets/setuptabscroll.h"
 
-#include <guichan/actionlistener.hpp>
-
 class EditDialog;
 class IntTextField;
 class NamesModel;

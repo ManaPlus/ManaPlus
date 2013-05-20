@@ -27,7 +27,6 @@
 
 #include "gui/widgets/setuptab.h"
 
-#include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
 
 class Button;
