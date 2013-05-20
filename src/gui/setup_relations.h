@@ -51,9 +51,9 @@ public:
 
     virtual ~Setup_Relations();
 
-    void apply();
+    void apply() override;
 
-    void cancel();
+    void cancel() override;
 
     void reset();
 
@@ -63,7 +63,7 @@ public:
 
     virtual void updateAll();
 
-    virtual void externalUpdated();
+    virtual void externalUpdated() override;
 
 private:
     StaticTableModel *mPlayerTableTitleModel;

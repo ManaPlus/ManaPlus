@@ -87,12 +87,12 @@ public:
     virtual ~PlayerRelationListModel()
     { }
 
-    virtual int getNumberOfElements()
+    virtual int getNumberOfElements() override
     {
         return PlayerRelation::RELATIONS_NR;
     }
 
-    virtual std::string getElementAt(int i)
+    virtual std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return "";
@@ -124,7 +124,7 @@ public:
         mPlayers = nullptr;
     }
 
-    virtual int getRows() const
+    virtual int getRows() const override
     {
         if (mPlayers)
             return static_cast<int>(mPlayers->size());
@@ -132,17 +132,17 @@ public:
             return 0;
     }
 
-    virtual int getColumns() const
+    virtual int getColumns() const override
     {
         return COLUMNS_NR;
     }
 
-    virtual int getRowHeight() const
+    virtual int getRowHeight() const override
     {
         return ROW_HEIGHT;
     }
 
-    virtual int getColumnWidth(int index) const
+    virtual int getColumnWidth(int index) const override
     {
         if (index == NAME_COLUMN)
             return NAME_COLUMN_WIDTH;
@@ -167,7 +167,7 @@ public:
         for (unsigned int r = 0, sz = static_cast<unsigned int>(
              player_names->size()); r < sz; ++r)
         {
-            std::string name = (*player_names)[r];
+            const std::string name = (*player_names)[r];
             gcn::Widget *const widget = new Label(this, name);
             mWidgets.push_back(widget);
 
@@ -184,12 +184,12 @@ public:
         const DropDown *const choicebox = static_cast<DropDown *>(
             getElementAt(row, RELATION_CHOICE_COLUMN));
         player_relations.setRelation(getPlayerAt(row),
-                                   static_cast<PlayerRelation::Relation>(
-                                   choicebox->getSelected()));
+            static_cast<PlayerRelation::Relation>(
+            choicebox->getSelected()));
     }
 
 
-    virtual gcn::Widget *getElementAt(int row, int column) const
+    virtual gcn::Widget *getElementAt(int row, int column) const override
     {
         return mWidgets[WIDGET_AT(row, column)];
     }
@@ -225,13 +225,13 @@ public:
     virtual ~IgnoreChoicesListModel()
     { }
 
-    virtual int getNumberOfElements()
+    virtual int getNumberOfElements() override
     {
         return static_cast<int>(player_relations.getPlayerIgnoreStrategies()
                                 ->size());
     }
 
-    virtual std::string getElementAt(int i)
+    virtual std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -358,10 +358,8 @@ void Setup_Relations::apply()
     const unsigned int old_default_relations = player_relations.getDefault() &
         ~(PlayerRelation::TRADE | PlayerRelation::WHISPER);
     player_relations.setDefault(old_default_relations
-                                | (mDefaultTrading->isSelected() ?
-                                       PlayerRelation::TRADE : 0)
-                                | (mDefaultWhisper->isSelected() ?
-                                       PlayerRelation::WHISPER : 0));
+        | (mDefaultTrading->isSelected() ? PlayerRelation::TRADE : 0)
+        | (mDefaultWhisper->isSelected() ? PlayerRelation::WHISPER : 0));
 
     if (actorSpriteManager)
         actorSpriteManager->updatePlayerNames();
@@ -398,9 +396,8 @@ void Setup_Relations::action(const gcn::ActionEvent &event)
         if (player_index < 0)
             return;
 
-        std::string name = mPlayerTableModel->getPlayerAt(player_index);
-
-        player_relations.removePlayer(name);
+        player_relations.removePlayer(mPlayerTableModel->getPlayerAt(
+            player_index));
     }
     else if (eventId == ACTION_STRATEGY)
     {
