@@ -43,9 +43,9 @@ class Setup_Theme final : public SetupTab
 
         ~Setup_Theme();
 
-        void apply();
+        void apply() override;
 
-        void cancel();
+        void cancel() override;
 
         void action(const gcn::ActionEvent &event) override;
 

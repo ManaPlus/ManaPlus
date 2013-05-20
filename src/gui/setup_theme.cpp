@@ -122,10 +122,10 @@ public:
     virtual ~FontSizeChoiceListModel()
     { }
 
-    virtual int getNumberOfElements()
+    virtual int getNumberOfElements() override A_WARN_UNUSED
     { return maxFontSizes; }
 
-    virtual std::string getElementAt(int i)
+    virtual std::string getElementAt(int i) override A_WARN_UNUSED
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -303,14 +303,13 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     mNpcFontSizeDropDown->setSelected(mNpcFontSize - 9);
     mNpcFontSizeDropDown->adjustHeight();
 
-    std::string skin = Theme::getThemeName();
+    const std::string skin = Theme::getThemeName();
     if (!skin.empty())
         mThemeDropDown->setSelectedString(skin);
     else
         mThemeDropDown->setSelected(0);
 
     const std::string str = config.getStringValue("lang");
-
     for (int f = 0; f < langs_count; f ++)
     {
         if (LANG_NAME[f].value == str)
@@ -392,8 +391,10 @@ void Setup_Theme::updateInfo()
     mInfo = Theme::loadInfo(mTheme);
     if (mInfo)
     {
-        mThemeInfo = std::string("Name: ").append(mInfo->name)
-            .append("\nCopyright:\n").append(mInfo->copyright);
+        // TRANSLATORS: theme info dialog
+        mThemeInfo = std::string(_("Name: ")).append(mInfo->name)
+            .append("\n").append(_("Copyright:")).append("\n")
+            .append(mInfo->copyright);
     }
     else
     {
