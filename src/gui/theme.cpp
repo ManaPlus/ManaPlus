@@ -1226,6 +1226,10 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
         info->name = atoi(reinterpret_cast<const char*>(\
             xmlNodeGetContent(infoNode)))
 
+#define readFloatValue(name) \
+        info->name = atof(reinterpret_cast<const char*>(\
+            xmlNodeGetContent(infoNode)))
+
 ThemeInfo *Theme::loadInfo(const std::string &themeName)
 {
     std::string path;
@@ -1271,6 +1275,8 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
             readIntValue(fontSize);
         else if (xmlNameEqual(infoNode, "npcfontSize"))
             readIntValue(npcfontSize);
+        else if (xmlNameEqual(infoNode, "guialpha"))
+            readFloatValue(guiAlpha);
         else if (xmlNameEqual(infoNode, fontSize2.c_str()))
             readIntValue(fontSize);
         else if (xmlNameEqual(infoNode, npcfontSize2.c_str()))

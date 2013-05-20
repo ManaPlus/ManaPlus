@@ -53,7 +53,8 @@ struct ThemeInfo final
         secureFont(),
         japanFont(),
         fontSize(0),
-        npcfontSize(0)
+        npcfontSize(0),
+        guiAlpha(0.0f)
     {
     }
     std::string name;
@@ -66,6 +67,7 @@ struct ThemeInfo final
     std::string japanFont;
     int fontSize;
     int npcfontSize;
+    float guiAlpha;
 };
 
 class Skin final
