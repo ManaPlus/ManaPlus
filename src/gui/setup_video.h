@@ -48,45 +48,37 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
 
         ~Setup_Video();
 
-        void apply();
+        void apply() override;
 
-        void cancel();
+        void cancel() override;
 
         void action(const gcn::ActionEvent &event) override;
-
-        virtual void externalUpdated();
 
     private:
         bool mFullScreenEnabled;
         int mOpenGLEnabled;
-        bool mCustomCursorEnabled;
         int mFps;
         int mAltFps;
-        bool mEnableResize;
-        bool mNoFrame;
-
         ModeListModel *mModeListModel;
-
         OpenGLListModel *mOpenGLListModel;
-
         ListBox *mModeList;
         CheckBox *mFsCheckBox;
         DropDown *mOpenGLDropDown;
         CheckBox *mCustomCursorCheckBox;
-
         CheckBox *mEnableResizeCheckBox;
         CheckBox *mNoFrameCheckBox;
-
         CheckBox *mFpsCheckBox;
         Slider *mFpsSlider;
         Label *mFpsLabel;
         Slider *mAltFpsSlider;
         Label *mAltFpsLabel;
-
 #if !defined(ANDROID) && !defined(__APPLE__)
         Button *mDetectButton;
 #endif
         TextDialog *mDialog;
+        bool mCustomCursorEnabled;
+        bool mEnableResize;
+        bool mNoFrame;
 };
 
 #endif

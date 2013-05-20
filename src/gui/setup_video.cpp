@@ -62,31 +62,20 @@
 
 extern Graphics *mainGraphics;
 
-/**
- * The list model for mode list.
- *
- * \ingroup Interface
- */
 class ModeListModel final : public gcn::ListModel
 {
     public:
-        /**
-         * Constructor.
-         */
         ModeListModel();
 
         A_DELETE_COPY(ModeListModel)
 
-        /**
-         * Destructor.
-         */
         virtual ~ModeListModel()
         { }
 
         /**
          * Returns the number of elements in container.
          */
-        int getNumberOfElements()
+        int getNumberOfElements() override
         { return static_cast<int>(mVideoModes.size()); }
 
         /**
@@ -103,15 +92,13 @@ class ModeListModel final : public gcn::ListModel
         int getIndexOf(const std::string &widthXHeightMode);
 
     private:
-        void addCustomMode(std::string mode);
+        void addCustomMode(const std::string &mode);
 
         StringVect mVideoModes;
 };
 
 #ifndef ANDROID
-static bool modeSorter(std::string mode1, std::string mode2);
-
-static bool modeSorter(std::string mode1, std::string mode2)
+static bool modeSorter(const std::string &mode1, const std::string &mode2)
 {
     const int width1 = atoi(mode1.substr(0, mode1.find("x")).c_str());
     const int height1 = atoi(mode1.substr(mode1.find("x") + 1).c_str());
@@ -151,7 +138,7 @@ ModeListModel::ModeListModel() :
 #endif
 }
 
-void ModeListModel::addCustomMode(std::string mode)
+void ModeListModel::addCustomMode(const std::string &mode)
 {
     StringVectCIter it = mVideoModes.begin();
     const StringVectCIter it_end = mVideoModes.end();
@@ -196,14 +183,14 @@ public:
     virtual ~OpenGLListModel()
     { }
 
-    virtual int getNumberOfElements()
+    virtual int getNumberOfElements() override
 #ifdef ANDROID
     { return 2; }
 #else
     { return 4; }
 #endif
 
-    virtual std::string getElementAt(int i)
+    virtual std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -216,11 +203,8 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     gcn::KeyListener(),
     mFullScreenEnabled(config.getBoolValue("screen")),
     mOpenGLEnabled(config.getIntValue("opengl")),
-    mCustomCursorEnabled(config.getBoolValue("customcursor")),
     mFps(config.getIntValue("fpslimit")),
     mAltFps(config.getIntValue("altfpslimit")),
-    mEnableResize(config.getBoolValue("enableresize")),
-    mNoFrame(config.getBoolValue("noframe")),
     mModeListModel(new ModeListModel),
     mOpenGLListModel(new OpenGLListModel),
     mModeList(new ListBox(widget, mModeListModel, "")),
@@ -252,7 +236,10 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     // TRANSLATORS: video settings button
     mDetectButton(new Button(this, _("Detect best mode"), "detect", this)),
 #endif
-    mDialog(nullptr)
+    mDialog(nullptr),
+    mCustomCursorEnabled(config.getBoolValue("customcursor")),
+    mEnableResize(config.getBoolValue("enableresize")),
+    mNoFrame(config.getBoolValue("noframe"))
 {
     // TRANSLATORS: video settings tab name
     setName(_("Video"));
@@ -288,7 +275,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mFpsCheckBox->setSelected(mFps > 0);
 
     // Pre-select the current video mode.
-    std::string videoMode = toString(mainGraphics->mWidth).append("x")
+    const std::string videoMode = toString(mainGraphics->mWidth).append("x")
         .append(toString(mainGraphics->mHeight));
     mModeList->setSelected(mModeListModel->getIndexOf(videoMode));
 
@@ -616,8 +603,4 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         }
     }
 #endif
-}
-
-void Setup_Video::externalUpdated()
-{
 }
