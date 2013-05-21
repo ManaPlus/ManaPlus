@@ -57,6 +57,7 @@
 #include "resources/resourcemanager.h"
 
 #include "gui/widgets/langtab.h"
+#include "gui/widgets/skillinfo.h"
 
 #include "utils/gettext.h"
 

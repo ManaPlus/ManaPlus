@@ -41,7 +41,7 @@ class ImageSet;
 class Item;
 class Map;
 class OkDialog;
-struct SkillInfo;
+//struct SkillInfo;
 
 class AwayListener final : public gcn::ActionListener
 {

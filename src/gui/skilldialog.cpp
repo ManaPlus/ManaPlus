@@ -22,80 +22,11 @@
 
 #include "gui/skilldialog.h"
 
-#include "configuration.h"
-#include "effectmanager.h"
-#include "itemshortcut.h"
-#include "localplayer.h"
-#include "playerinfo.h"
-
-#include "gui/setup.h"
-#include "gui/shortcutwindow.h"
-#include "gui/textpopup.h"
-#include "gui/viewport.h"
-
-#include "gui/widgets/label.h"
-#include "gui/widgets/layouthelper.h"
-#include "gui/widgets/listbox.h"
-#include "gui/widgets/progressbar.h"
-#include "gui/widgets/scrollarea.h"
-#include "gui/widgets/tab.h"
-
-#include "net/net.h"
-#include "net/playerhandler.h"
-#include "net/skillhandler.h"
-
-#include "resources/image.h"
-#include "resources/resourcemanager.h"
-
-#include "utils/dtor.h"
-#include "utils/gettext.h"
-
-#include <guichan/font.hpp>
-
-#include <set>
-#include <string>
+#include "gui/widgets/skillmodel.h"
 
 #include "debug.h"
 
-class SkillModel;
 class SkillEntry;
-
-class SkillModel final : public gcn::ListModel
-{
-    public:
-        SkillModel() :
-            mSkills(),
-            mVisibleSkills()
-        {
-        }
-
-        int getNumberOfElements()
-        { return static_cast<int>(mVisibleSkills.size()); }
-
-        SkillInfo *getSkillAt(const int i) const
-        {
-            if (i < 0 || i >= static_cast<int>(mVisibleSkills.size()))
-                return nullptr;
-            return mVisibleSkills.at(i);
-        }
-
-        std::string getElementAt(int i)
-        {
-            if (getSkillAt(i))
-                return getSkillAt(i)->data->name;
-            else
-                return "";
-        }
-
-        void updateVisibilities();
-
-        void addSkill(SkillInfo *const info)
-        { mSkills.push_back(info); }
-
-    private:
-        SkillList mSkills;
-        SkillList mVisibleSkills;
-};
 
 class SkillListBox final : public ListBox
 {
@@ -137,7 +68,7 @@ class SkillListBox final : public ListBox
             return static_cast<SkillModel*>(mListModel)->getSkillAt(selected);
         }
 
-        void draw(gcn::Graphics *gcnGraphics)
+        void draw(gcn::Graphics *gcnGraphics) override
         {
             if (!mListModel)
                 return;
@@ -193,10 +124,10 @@ class SkillListBox final : public ListBox
             }
         }
 
-        unsigned int getRowHeight() const
+        unsigned int getRowHeight() const override
         { return mRowHeight; }
 
-        void mouseMoved(gcn::MouseEvent &event)
+        void mouseMoved(gcn::MouseEvent &event) override
         {
             ListBox::mouseMoved(event);
             if (!viewport)
@@ -213,7 +144,7 @@ class SkillListBox final : public ListBox
                 skill->data->dispName, skill->data->description);
         }
 
-        void mouseExited(gcn::MouseEvent &event A_UNUSED)
+        void mouseExited(gcn::MouseEvent &event A_UNUSED) override
         {
             mPopup->hide();
         }
@@ -257,7 +188,7 @@ class SkillTab final : public Tab
         }
 
     protected:
-        void setCurrent()
+        void setCurrent() override
         {
             if (skillDialog)
                 skillDialog->updateTabSelection();
@@ -304,7 +235,6 @@ SkillDialog::SkillDialog() :
 
 SkillDialog::~SkillDialog()
 {
-    // Clear gui
     clearSkills();
 }
 
@@ -622,19 +552,7 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
     }
 }
 
-void SkillModel::updateVisibilities()
-{
-    mVisibleSkills.clear();
-
-    FOR_EACH (SkillList::const_iterator, it, mSkills)
-    {
-        if ((*it) && (*it)->visible)
-            mVisibleSkills.push_back((*it));
-    }
-}
-
-
-SkillInfo* SkillDialog::getSkill(int id)
+SkillInfo* SkillDialog::getSkill(const int id)
 {
     return mSkills[id];
 }
@@ -647,9 +565,14 @@ void SkillDialog::widgetResized(const gcn::Event &event)
         mTabs->fixSize();
 }
 
-void SkillDialog::useItem(const int itemId)
+void SkillDialog::useItem(const int itemId) const
 {
-    const SkillInfo *const info = mSkills[itemId - SKILL_MIN_ID];
+    const std::map<int, SkillInfo*>::const_iterator
+        it = mSkills.find(itemId - SKILL_MIN_ID);
+    if (it == mSkills.end())
+        return;
+
+    const SkillInfo *const info = (*it).second;
     if (info && player_node && player_node->getTarget())
     {
         const Being *const being = player_node->getTarget();
@@ -696,7 +619,7 @@ void SkillDialog::updateQuest(const int var, const int val)
     }
 }
 
-void SkillDialog::playUpdateEffect(const int id)
+void SkillDialog::playUpdateEffect(const int id) const
 {
     const int effectId = paths.getIntValue("skillLevelUpEffectId");
     if (!effectManager || effectId == -1)
@@ -706,141 +629,5 @@ void SkillDialog::playUpdateEffect(const int id)
     {
         if (it->second)
             effectManager->trigger(effectId, player_node);
-    }
-}
-
-SkillInfo::SkillInfo() :
-    level(0),
-    skillLevel(),
-    skillLevelWidth(0),
-    id(0),
-    modifiable(false),
-    visible(false),
-    model(nullptr),
-    skillExp(),
-    progress(0.0f),
-    range(0),
-    color(),
-    data(nullptr),
-    dataMap()
-{
-    dataMap[0] = new SkillData();
-    data = dataMap[0];
-}
-
-SkillInfo::~SkillInfo()
-{
-    FOR_EACH (SkillDataMapIter, it, dataMap)
-        delete (*it).second;
-    dataMap.clear();
-}
-
-void SkillInfo::update()
-{
-    const int baseLevel = PlayerInfo::getSkillLevel(id);
-    const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
-
-    if (!modifiable && baseLevel == 0 && exp.second == 0)
-    {
-        if (visible)
-        {
-            visible = false;
-            if (model)
-                model->updateVisibilities();
-        }
-        return;
-    }
-
-    const bool updateVisibility = !visible;
-    visible = true;
-
-    if (baseLevel == 0)
-    {
-        skillLevel.clear();
-    }
-    else
-    {
-        // TRANSLATORS: skills dialog. skill level
-        skillLevel = strprintf(_("Lvl: %d"), baseLevel);
-    }
-
-    level = baseLevel;
-    skillLevelWidth = -1;
-
-    if (exp.second)
-    {
-        skillExp = strprintf("%d / %d", exp.first, exp.second);
-        progress = static_cast<float>(exp.first)
-                   / static_cast<float>(exp.second);
-    }
-    else
-    {
-        skillExp.clear();
-        progress = 0.0f;
-    }
-
-    color = Theme::getProgressColor(Theme::PROG_EXP, progress);
-
-    if (updateVisibility && model)
-        model->updateVisibilities();
-
-    data = getData(level);
-    if (!data)
-        data = dataMap[0];
-}
-
-
-void SkillInfo::addData(const int level1, SkillData *const data1)
-{
-    dataMap[level1] = data1;
-}
-
-SkillData *SkillInfo::getData(const int level1)
-{
-    SkillDataMapIter it = dataMap.find(level1);
-    if (it == dataMap.end())
-        return nullptr;
-    return (*it).second;
-}
-
-SkillData *SkillInfo::getData1(const int lev)
-{
-    SkillDataMapIter it = dataMap.find(lev);
-    if (it == dataMap.end())
-        return dataMap[0];
-    return (*it).second;
-}
-
-SkillData::SkillData() :
-    name(),
-    shortName(),
-    dispName(),
-    description(),
-    icon(nullptr),
-    particle(),
-    soundHit("", 0),
-    soundMiss("", 0)
-{
-}
-
-SkillData::~SkillData()
-{
-    if (icon)
-    {
-        icon->decRef();
-        icon = nullptr;
-    }
-}
-
-void SkillData::setIcon(const std::string &iconPath)
-{
-    ResourceManager *const res = ResourceManager::getInstance();
-    if (!iconPath.empty())
-        icon = res->getImage(iconPath);
-
-    if (!icon)
-    {
-        icon = Theme::getImageFromTheme(
-            paths.getStringValue("unknownItemFile"));
     }
 }

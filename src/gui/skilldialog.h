@@ -25,13 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "resources/soundinfo.h"
-
 #include <guichan/actionlistener.hpp>
-#include <guichan/mouselistener.hpp>
-
-#include <map>
-#include <vector>
 
 const int SKILL_MIN_ID = 200000;
 const unsigned int SKILL_VAR_MIN_ID = 1000000;
@@ -43,61 +37,7 @@ class SkillModel;
 class Tab;
 class TabbedArea;
 
-struct SkillData final
-{
-    std::string name;
-    std::string shortName;
-    std::string dispName;
-    std::string description;
-    Image *icon;
-
-    std::string particle;
-    SoundInfo soundHit;
-    SoundInfo soundMiss;
-
-    SkillData();
-    A_DELETE_COPY(SkillData)
-    ~SkillData();
-
-    void setIcon(const std::string &iconPath);
-};
-
-typedef std::map<int, SkillData*> SkillDataMap;
-typedef SkillDataMap::iterator SkillDataMapIter;
-typedef SkillDataMap::const_iterator SkillDataMapCIter;
-
-struct SkillInfo final
-{
-    int level;
-    std::string skillLevel;
-    int skillLevelWidth;
-    unsigned int id;
-    bool modifiable;
-    bool visible;
-    SkillModel *model;
-    std::string skillExp;
-    float progress;
-    int range;
-    gcn::Color color;
-
-    SkillData *data;
-    SkillDataMap dataMap;
-
-    SkillInfo();
-    A_DELETE_COPY(SkillInfo)
-    ~SkillInfo();
-
-    void update();
-
-    SkillData *getData(const int level);
-
-    SkillData *getData1(const int level);
-
-    void addData(const int level, SkillData *const data);
-};
-
-typedef std::vector<SkillInfo*> SkillList;
-typedef SkillList::iterator SkillListIter;
+struct SkillInfo;
 
 /**
  * The skill dialog.
@@ -137,20 +77,20 @@ class SkillDialog final : public Window, public gcn::ActionListener
         void addSkill(const int id, const int level, const int range,
                       const bool modifiable);
 
-        SkillInfo* getSkill(int id) A_WARN_UNUSED;
+        SkillInfo* getSkill(const int id) A_WARN_UNUSED;
 
         bool hasSkills() const A_WARN_UNUSED
         { return !mSkills.empty(); }
 
         void widgetResized(const gcn::Event &event) override;
 
-        void useItem(const int itemId);
+        void useItem(const int itemId) const;
 
         void updateTabSelection();
 
         void updateQuest(const int var, const int val);
 
-        void playUpdateEffect(const int id);
+        void playUpdateEffect(const int id) const;
 
     private:
         typedef std::map<int, SkillInfo*> SkillMap;

@@ -39,6 +39,8 @@
 #include "gui/spellpopup.h"
 #include "gui/viewport.h"
 
+#include "gui/widgets/skillinfo.h"
+
 #include "resources/image.h"
 
 #include <guichan/font.hpp>
