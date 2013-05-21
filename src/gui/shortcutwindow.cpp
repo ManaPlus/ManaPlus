@@ -54,7 +54,7 @@ class ShortcutTab final : public Tab
 
 ShortcutWindow::ShortcutWindow(const std::string &title,
                                ShortcutContainer *const content,
-                               std::string skinFile,
+                               const std::string &skinFile,
                                int width, int height) :
     Window("Window", false, nullptr, skinFile),
     mItems(content),
@@ -104,7 +104,8 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     enableVisibleSound(true);
 }
 
-ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
+ShortcutWindow::ShortcutWindow(const std::string &title,
+                               const std::string &skinFile,
                                const int width, const int height) :
     Window("Window", false, nullptr, skinFile),
     mItems(nullptr),
@@ -152,7 +153,8 @@ ShortcutWindow::~ShortcutWindow()
     mItems = nullptr;
 }
 
-void ShortcutWindow::addTab(std::string name, ShortcutContainer *const content)
+void ShortcutWindow::addTab(const std::string &name,
+                            ShortcutContainer *const content)
 {
     ScrollArea *const scroll = new ScrollArea(content, false);
     scroll->setPosition(SCROLL_PADDING, SCROLL_PADDING);

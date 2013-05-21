@@ -42,10 +42,11 @@ class ShortcutWindow final : public Window
          */
         ShortcutWindow(const std::string &title,
                        ShortcutContainer *const content,
-                       std::string skinFile = "",
+                       const std::string &skinFile = "",
                        int width = 0, int height = 0);
 
-        ShortcutWindow(const std::string &title, std::string skinFile = "",
+        ShortcutWindow(const std::string &title,
+                       const std::string &skinFile = "",
                        const int width = 0, const int height = 0);
 
         A_DELETE_COPY(ShortcutWindow)
@@ -55,7 +56,7 @@ class ShortcutWindow final : public Window
          */
         ~ShortcutWindow();
 
-        void addTab(std::string name, ShortcutContainer *const content);
+        void addTab(const std::string &name, ShortcutContainer *const content);
 
         int getTabIndex() const A_WARN_UNUSED;
 
