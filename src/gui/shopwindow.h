@@ -85,7 +85,7 @@ class ShopWindow final : public Window, public gcn::ActionListener,
         /**
          * Sets the visibility of this window.
          */
-        void setVisible(bool visible);
+        void setVisible(bool visible) override;
 
         /**
          * Returns true if any instances exist.
@@ -104,13 +104,13 @@ class ShopWindow final : public Window, public gcn::ActionListener,
 
         void loadList();
 
-        void saveList();
+        void saveList() const;
 
         void announce(ShopItems *const list, const int mode);
 
         void giveList(const std::string &nick, const int mode);
 
-        void setAcceptPlayer(std::string name)
+        void setAcceptPlayer(const std::string &name)
         { mAcceptPlayer = name; }
 
         const std::string &getAcceptPlayer() const A_WARN_UNUSED
@@ -121,17 +121,17 @@ class ShopWindow final : public Window, public gcn::ActionListener,
 
         void showList(const std::string &nick, std::string data) const;
 
-        void processRequest(std::string nick, std::string data,
+        void processRequest(const std::string &nick, std::string data,
                             const int mode);
 
         bool findShopItem(const ShopItem *const shopItem,
-                          const int mode) A_WARN_UNUSED;
+                          const int mode) const A_WARN_UNUSED;
 
         static int sumAmount(const Item *const shopItem) A_WARN_UNUSED;
 
         void updateTimes();
 
-        bool checkFloodCounter(int &counterTime) const A_WARN_UNUSED;
+        static bool checkFloodCounter(int &counterTime) A_WARN_UNUSED;
 
         bool isShopEmpty() const A_WARN_UNUSED;
 

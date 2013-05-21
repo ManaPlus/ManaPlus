@@ -207,8 +207,7 @@ void ShopWindow::action(const gcn::ActionEvent &event)
         close();
         return;
     }
-
-    if (eventId == "yes")
+    else if (eventId == "yes")
     {
         startTrade();
     }
@@ -285,7 +284,7 @@ void ShopWindow::startTrade()
     if (!actorSpriteManager || !tradeWindow)
         return;
 
-    Being *const being = actorSpriteManager->findBeingByName(
+    const Being *const being = actorSpriteManager->findBeingByName(
         mTradeNick, Being::PLAYER);
     tradeWindow->clear();
     if (mTradeMoney)
@@ -363,7 +362,7 @@ void ShopWindow::loadList()
     mBuyShopItems->clear();
     mSellShopItems->clear();
 
-    std::string shopListName = Client::getServerConfigDirectory()
+    const std::string shopListName = Client::getServerConfigDirectory()
         + "/shoplist.txt";
 
     if (!stat(shopListName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
@@ -378,11 +377,10 @@ void ShopWindow::loadList()
         while (shopFile.getline(line, 100))
         {
             std::string buf;
-            std::string str = line;
+            const std::string str = line;
             if (!str.empty())
             {
                 std::vector<int> tokens;
-
                 std::stringstream ss(str);
 
                 while (ss >> buf)
@@ -408,13 +406,13 @@ void ShopWindow::loadList()
     }
 }
 
-void ShopWindow::saveList()
+void ShopWindow::saveList() const
 {
     if (!mBuyShopItems || !mSellShopItems)
         return;
 
     std::ofstream shopFile;
-    std::string shopListName = Client::getServerConfigDirectory()
+    const std::string shopListName = Client::getServerConfigDirectory()
         + "/shoplist.txt";
     std::map<int, ShopItem*> mapItems;
 
@@ -684,7 +682,7 @@ void ShopWindow::showList(const std::string &nick, std::string data) const
     }
 }
 
-void ShopWindow::processRequest(std::string nick, std::string data,
+void ShopWindow::processRequest(const std::string &nick, std::string data,
                                 const int mode)
 {
     if (!player_node || !mTradeNick.empty() || PlayerInfo::isTrading()
@@ -793,7 +791,7 @@ void ShopWindow::updateTimes()
     BLOCK_END("ShopWindow::updateTimes")
 }
 
-bool ShopWindow::checkFloodCounter(int &counterTime) const
+bool ShopWindow::checkFloodCounter(int &counterTime)
 {
     if (!counterTime || counterTime > cur_time)
         counterTime = cur_time;
@@ -804,7 +802,8 @@ bool ShopWindow::checkFloodCounter(int &counterTime) const
     return true;
 }
 
-bool ShopWindow::findShopItem(const ShopItem *const shopItem, const int mode)
+bool ShopWindow::findShopItem(const ShopItem *const shopItem,
+                              const int mode) const
 {
     if (!shopItem)
         return false;
