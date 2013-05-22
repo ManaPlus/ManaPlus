@@ -66,9 +66,6 @@ public:
 
     bool removeTab(Party *const party);
 
-    /**
-     * Handle events.
-     */
     void action(const gcn::ActionEvent &event) override;
 
     void showGuildInvite(const std::string &guildName, const int guildId,
@@ -83,9 +80,9 @@ public:
 
     void updateActiveList();
 
-    void updateAvatar(std::string name);
+    void updateAvatar(const std::string &name);
 
-    void resetDamage(std::string name);
+    void resetDamage(const std::string &name);
 
     void slowLogic();
 

@@ -54,44 +54,57 @@
 
 #include "debug.h"
 
-static class SortFriendsFunctor final
+namespace
 {
-    public:
-        bool operator() (const Avatar *const m1, const Avatar *const m2) const
-        {
-            if (!m1 || !m2)
-                return false;
-
-            if (m1->getOnline() != m2->getOnline())
-                return m1->getOnline() > m2->getOnline();
-
-            if (m1->getName() != m2->getName())
+    static class SortFriendsFunctor final
+    {
+        public:
+            bool operator() (const Avatar *const m1,
+                             const Avatar *const m2) const
             {
-                std::string s1 = m1->getName();
-                std::string s2 = m2->getName();
-                toLower(s1);
-                toLower(s2);
-                return s1 < s2;
-            }
-            return false;
-        }
-} friendSorter;
+                if (!m1 || !m2)
+                    return false;
 
+                if (m1->getOnline() != m2->getOnline())
+                    return m1->getOnline() > m2->getOnline();
+
+                if (m1->getName() != m2->getName())
+                {
+                    std::string s1 = m1->getName();
+                    std::string s2 = m2->getName();
+                    toLower(s1);
+                    toLower(s2);
+                    return s1 < s2;
+                }
+                return false;
+            }
+    } friendSorter;
+}  // namespace
 
 class SocialTab : public Tab
 {
 public:
     A_DELETE_COPY(SocialTab)
 
-    virtual void invite() = 0;
+    virtual void invite()
+    {
+    }
 
-    virtual void leave() = 0;
+    virtual void leave()
+    {
+    }
 
-    virtual void updateList() = 0;
+    virtual void updateList()
+    {
+    }
 
-    virtual void updateAvatar(std::string name) = 0;
+    virtual void updateAvatar(const std::string &name A_UNUSED)
+    {
+    }
 
-    virtual void resetDamage(std::string name) = 0;
+    virtual void resetDamage(const std::string &name A_UNUSED)
+    {
+    }
 
     virtual void selectIndex(const unsigned num A_UNUSED)
     { }
@@ -170,12 +183,12 @@ public:
         mScroll = nullptr;
     }
 
-    void action(const gcn::ActionEvent &event)
+    void action(const gcn::ActionEvent &event) override
     {
         const std::string &eventId = event.getId();
         if (eventId == "do invite")
         {
-            std::string name = mInviteDialog->getText();
+            const std::string name = mInviteDialog->getText();
             Net::getGuildHandler()->invite(mGuild->getId(), name);
 
             if (localChatTab)
@@ -208,19 +221,7 @@ public:
         }
     }
 
-    void updateList()
-    {
-    }
-
-    void updateAvatar(std::string name A_UNUSED)
-    {
-    }
-
-    void resetDamage(std::string name A_UNUSED)
-    {
-    }
-
-    void invite()
+    void invite() override
     {
         // TRANSLATORS: guild invite message
         mInviteDialog = new TextDialog(_("Member Invite to Guild"),
@@ -231,7 +232,7 @@ public:
         mInviteDialog->addActionListener(this);
     }
 
-    void leave()
+    void leave() override
     {
         // TRANSLATORS: guild leave message
         mConfirmDialog = new ConfirmDialog(_("Leave Guild?"),
@@ -284,27 +285,7 @@ public:
         mScroll = nullptr;
     }
 
-    void action(const gcn::ActionEvent &event A_UNUSED)
-    {
-    }
-
-    void updateList()
-    {
-    }
-
-    void updateAvatar(std::string name A_UNUSED)
-    {
-    }
-
-    void resetDamage(std::string name A_UNUSED)
-    {
-    }
-
-    void invite()
-    {
-    }
-
-    void leave()
+    void action(const gcn::ActionEvent &event A_UNUSED) override
     {
     }
 
@@ -350,12 +331,12 @@ public:
         mScroll = nullptr;
     }
 
-    void action(const gcn::ActionEvent &event)
+    void action(const gcn::ActionEvent &event) override
     {
         const std::string &eventId = event.getId();
         if (eventId == "do invite")
         {
-            std::string name = mInviteDialog->getText();
+            const std::string name = mInviteDialog->getText();
             Net::getPartyHandler()->invite(name);
 
             if (localChatTab)
@@ -387,19 +368,7 @@ public:
         }
     }
 
-    void updateList()
-    {
-    }
-
-    void updateAvatar(std::string name A_UNUSED)
-    {
-    }
-
-    void resetDamage(std::string name A_UNUSED)
-    {
-    }
-
-    void invite()
+    void invite() override
     {
         // TRANSLATORS: party invite message
         mInviteDialog = new TextDialog(_("Member Invite to Party"),
@@ -410,7 +379,7 @@ public:
         mInviteDialog->addActionListener(this);
     }
 
-    void leave()
+    void leave() override
     {
         // TRANSLATORS: party leave message
         mConfirmDialog = new ConfirmDialog(_("Leave Party?"),
@@ -447,12 +416,12 @@ public:
         return &mMembers;
     }
 
-    virtual Avatar *getAvatarAt(int index)
+    virtual Avatar *getAvatarAt(int index) override
     {
         return mMembers[index];
     }
 
-    int getNumberOfElements()
+    int getNumberOfElements() override
     {
         return static_cast<int>(mMembers.size());
     }
@@ -491,12 +460,12 @@ public:
         mBeings = nullptr;
     }
 
-    void updateList()
+    void updateList() override
     {
         getPlayersAvatars();
     }
 
-    void updateAvatar(std::string name)
+    void updateAvatar(const std::string &name) override
     {
         if (!actorSpriteManager)
             return;
@@ -524,7 +493,7 @@ public:
         }
     }
 
-    void resetDamage(std::string name)
+    void resetDamage(const std::string &name) override
     {
         if (!actorSpriteManager)
             return;
@@ -616,14 +585,6 @@ public:
         }
     }
 
-    void invite()
-    {
-    }
-
-    void leave()
-    {
-    }
-
 private:
     BeingsListModal *mBeings;
 };
@@ -660,15 +621,7 @@ public:
         mBeings = nullptr;
     }
 
-    void invite()
-    {
-    }
-
-    void leave()
-    {
-    }
-
-    void updateList()
+    void updateList() override
     {
         if (!socialWindow || !player_node)
             return;
@@ -706,7 +659,7 @@ public:
             const int x = portal->getX();
             const int y = portal->getY();
 
-            std::string name = strprintf("%s [%d %d]",
+            const std::string name = strprintf("%s [%d %d]",
                 portal->getComment().c_str(), x, y);
 
             Avatar *const ava = new Avatar(name);
@@ -749,7 +702,7 @@ public:
     }
 
 
-    virtual void selectIndex(const unsigned num)
+    void selectIndex(const unsigned num) override
     {
         if (!player_node)
             return;
@@ -788,7 +741,7 @@ public:
                 ava->getX(), ava->getY());
             if (item)
             {
-                std::string name = strprintf("%s [%d %d]",
+                const std::string name = strprintf("%s [%d %d]",
                     item->getComment().c_str(), item->getX(), item->getY());
                 ava->setName(name);
                 ava->setOriginalName(name);
@@ -847,7 +800,7 @@ public:
         if (!portal)
             return;
 
-        std::string name = strprintf("%s [%d %d]",
+        const std::string name = strprintf("%s [%d %d]",
             portal->getComment().c_str(), x, y);
 
         Avatar *const ava = new Avatar(name);
@@ -897,19 +850,8 @@ public:
         }
     }
 
-    void updateAvatar(std::string)
-    {
-    }
-
-    void resetDamage(std::string)
-    {
-    }
-
 private:
     BeingsListModal *mBeings;
-
-protected:
-//    friend class SocialWindow;
 };
 
 
@@ -996,15 +938,7 @@ public:
         mBeings = nullptr;
     }
 
-    void invite()
-    {
-    }
-
-    void leave()
-    {
-    }
-
-    void updateList()
+    void updateList() override
     {
         updateAtkListStart();
         // TRANSLATORS: mobs group name in social window
@@ -1013,14 +947,6 @@ public:
         addAvatars(AttackMob, _("Attack mobs"), ATTACK);
         // TRANSLATORS: mobs group name in social window
         addAvatars(IgnoreAttackMob, _("Ignore mobs"), IGNORE_);
-    }
-
-    void updateAvatar(std::string name A_UNUSED)
-    {
-    }
-
-    void resetDamage(std::string name A_UNUSED)
-    {
     }
 
 private:
@@ -1058,29 +984,13 @@ public:
         mBeings = nullptr;
     }
 
-    void invite()
-    {
-    }
-
-    void leave()
-    {
-    }
-
-    void updateList()
+    void updateList() override
     {
         updateAtkListStart();
         // TRANSLATORS: items group name in social window
         addAvatars(PickupItem, _("Pickup items"), PICKUP);
         // TRANSLATORS: items group name in social window
         addAvatars(IgnorePickupItem, _("Ignore items"), NOPICKUP);
-    }
-
-    void updateAvatar(std::string name A_UNUSED)
-    {
-    }
-
-    void resetDamage(std::string name A_UNUSED)
-    {
     }
 
 private:
@@ -1119,17 +1029,9 @@ public:
         mBeings = nullptr;
     }
 
-    void updateList()
+    void updateList() override
     {
         getPlayersAvatars();
-    }
-
-    void updateAvatar(std::string name A_UNUSED)
-    {
-    }
-
-    void resetDamage(std::string name A_UNUSED)
-    {
     }
 
     void getPlayersAvatars()
@@ -1149,7 +1051,7 @@ public:
         }
         avatars->clear();
 
-        StringVect *players
+        const StringVect *const players
             = player_relations.getPlayersByRelation(PlayerRelation::FRIEND);
 
         const std::set<std::string> &players2 = whoIsOnline->getOnlineNicks();
@@ -1169,14 +1071,6 @@ public:
         }
         std::sort(avatars->begin(), avatars->end(), friendSorter);
         delete players;
-    }
-
-    void invite()
-    {
-    }
-
-    void leave()
-    {
     }
 
 private:
@@ -1211,7 +1105,8 @@ public:
 
     A_DELETE_COPY(CreatePopup)
 
-    void handleLink(const std::string &link, gcn::MouseEvent *event A_UNUSED)
+    void handleLink(const std::string &link,
+                    gcn::MouseEvent *event A_UNUSED) override
     {
         if (link == "guild" && socialWindow)
         {
@@ -1290,7 +1185,6 @@ SocialWindow::SocialWindow() :
     setDefaultSize(590, 200, 180, 300);
     setupWindow->registerWindowForReset(this);
 
-
     place(0, 0, mCreateButton);
     place(1, 0, mInviteButton);
     place(2, 0, mLeaveButton);
@@ -1301,9 +1195,7 @@ SocialWindow::SocialWindow() :
     loadWindowState();
 
     mTabs->addTab(mPlayers, mPlayers->mScroll);
-
     mTabs->addTab(mFriends, mFriends->mScroll);
-
     mTabs->addTab(mNavigation, mNavigation->mScroll);
 
     if (config.getBoolValue("enableAttackFilter"))
@@ -1340,7 +1232,6 @@ SocialWindow::SocialWindow() :
 
 SocialWindow::~SocialWindow()
 {
-    // Cleanup invites
     if (mGuildAcceptDialog)
     {
         mGuildAcceptDialog->close();
@@ -1449,7 +1340,6 @@ void SocialWindow::action(const gcn::ActionEvent &event)
 
     if (event.getSource() == mPartyAcceptDialog)
     {
-        // check if they accepted the invite
         if (eventId == "yes")
         {
             if (localChatTab)
@@ -1478,7 +1368,6 @@ void SocialWindow::action(const gcn::ActionEvent &event)
     }
     else if (event.getSource() == mGuildAcceptDialog)
     {
-        // check if they accepted the invite
         if (eventId == "yes")
         {
             if (localChatTab)
@@ -1595,18 +1484,18 @@ void SocialWindow::showGuildInvite(const std::string &guildName,
         return;
     }
 
-    // TRANSLATORS: chat message
-    std::string msg = strprintf(_("%s has invited you to join the guild %s."),
-                                inviterName.c_str(), guildName.c_str());
+    const std::string msg = strprintf(
+        // TRANSLATORS: chat message
+        _("%s has invited you to join the guild %s."),
+        inviterName.c_str(), guildName.c_str());
+
     if (localChatTab)
         localChatTab->chatLog(msg, BY_SERVER);
 
-    // show invite
     // TRANSLATORS: guild invite message
     mGuildAcceptDialog = new ConfirmDialog(_("Accept Guild Invite"),
                                            msg, false, false, this);
     mGuildAcceptDialog->addActionListener(this);
-
     mGuildInvited = guildId;
 }
 
@@ -1614,7 +1503,7 @@ void SocialWindow::showPartyInvite(const std::string &partyName,
                                    const std::string &inviter)
 {
     // check there isnt already an invite showing
-    if (mPartyInviter != "")
+    if (!mPartyInviter.empty())
     {
         if (localChatTab)
         {
@@ -1637,7 +1526,7 @@ void SocialWindow::showPartyInvite(const std::string &partyName,
         {
             // TRANSLATORS: party invite message
             msg = strprintf(_("You have been invited to join the %s party."),
-                            partyName.c_str());
+                partyName.c_str());
         }
     }
     else
@@ -1646,13 +1535,13 @@ void SocialWindow::showPartyInvite(const std::string &partyName,
         {
             // TRANSLATORS: party invite message
             msg = strprintf(_("%s has invited you to join their party."),
-                            inviter.c_str());
+                inviter.c_str());
         }
         else
         {
             // TRANSLATORS: party invite message
             msg = strprintf(_("%s has invited you to join the %s party."),
-                            inviter.c_str(), partyName.c_str());
+                inviter.c_str(), partyName.c_str());
         }
     }
 
@@ -1662,9 +1551,8 @@ void SocialWindow::showPartyInvite(const std::string &partyName,
     // show invite
     // TRANSLATORS: party invite message
     mPartyAcceptDialog = new ConfirmDialog(_("Accept Party Invite"),
-                                           msg, false, false, this);
+        msg, false, false, this);
     mPartyAcceptDialog->addActionListener(this);
-
     mPartyInviter = inviter;
 }
 
@@ -1715,12 +1603,12 @@ void SocialWindow::slowLogic()
     BLOCK_END("SocialWindow::slowLogic")
 }
 
-void SocialWindow::updateAvatar(std::string name)
+void SocialWindow::updateAvatar(const std::string &name)
 {
     mPlayers->updateAvatar(name);
 }
 
-void SocialWindow::resetDamage(std::string name)
+void SocialWindow::resetDamage(const std::string &name)
 {
     mPlayers->resetDamage(name);
 }
@@ -1821,7 +1709,6 @@ void SocialWindow::updatePickupFilter()
 void SocialWindow::widgetResized(const gcn::Event &event)
 {
     Window::widgetResized(event);
-
     if (mTabs)
         mTabs->fixSize();
 }
