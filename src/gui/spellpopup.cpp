@@ -77,12 +77,12 @@ void SpellPopup::setItem(const TextCommand *const spell)
         minWidth = mItemComment->getWidth();
 
     mItemName->setPosition(0, 0);
-    mItemComment->setPosition(0, mItemName->getHeight());
-
-    if (mItemComment->getCaption() != "")
-        setContentSize(minWidth, 2 * getFont()->getHeight());
+    const int fontHeight = mItemName->getHeight();
+    mItemComment->setPosition(0, fontHeight);
+    if (!mItemComment->getCaption().empty())
+        setContentSize(minWidth, 2 * fontHeight);
     else
-        setContentSize(minWidth, getFont()->getHeight());
+        setContentSize(minWidth, fontHeight);
 }
 
 void SpellPopup::view(const int x, const int y)
@@ -92,17 +92,20 @@ void SpellPopup::view(const int x, const int y)
     int posX = std::max(0, x - getWidth() / 2);
     int posY = y + distance;
 
-    if (posX + getWidth() > mainGraphics->mWidth)
+    const gcn::Rectangle &rect = mDimension;
+    const int w = rect.width;
+    const int h = rect.height;
+    if (posX + w > mainGraphics->mWidth)
     {
-        if (mainGraphics->mWidth > getWidth())
-            posX = mainGraphics->mWidth - getWidth();
+        if (mainGraphics->mWidth > w)
+            posX = mainGraphics->mWidth - w;
         else
             posX = 0;
     }
-    if (posY + getHeight() > mainGraphics->mHeight)
+    if (posY + h > mainGraphics->mHeight)
     {
-        if (y > getHeight() + distance)
-            posY = y - getHeight() - distance;
+        if (y > h + distance)
+            posY = y - h - distance;
     }
 
     setPosition(posX, posY);
