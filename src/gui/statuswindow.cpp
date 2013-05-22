@@ -103,7 +103,7 @@ class DerDisplay final : public AttrDisplay
 
         A_DELETE_COPY(DerDisplay)
 
-        virtual Type getType() const
+        virtual Type getType() const override
         { return DERIVED; }
 };
 
@@ -116,14 +116,14 @@ class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
 
         A_DELETE_COPY(ChangeDisplay)
 
-        std::string update();
+        std::string update() override;
 
-        virtual Type getType() const
+        virtual Type getType() const override
         { return CHANGEABLE; }
 
         void setPointsNeeded(int needed);
 
-        void action(const gcn::ActionEvent &event);
+        void action(const gcn::ActionEvent &event) override;
 
     private:
         int mNeeded;
@@ -214,7 +214,6 @@ StatusWindow::StatusWindow() :
     }
 
     place(0, 0, mLvlLabel, 3);
-    // 5, 0 Job Level
     place(8, 0, mMoneyLabel, 3);
     place(0, 1, mHpLabel).setPadding(3);
     place(1, 1, mHpBar, 4);
@@ -264,8 +263,6 @@ StatusWindow::StatusWindow() :
     getLayout().setRowHeight(3, Layout::AUTO_SET);
 
     place(0, 6, mCharacterPointsLabel, 5);
-
-
     place(0, 5, mCopyButton);
 
     if (Net::getPlayerHandler()->canCorrectAttributes())
@@ -315,7 +312,8 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
     if (blocked)
         return;
 
-    if (event.getName() == EVENT_UPDATEATTRIBUTE)
+    const DepricatedEvents &eventName = event.getName();
+    if (eventName == EVENT_UPDATEATTRIBUTE)
     {
         switch (event.getInt("id"))
         {
@@ -381,7 +379,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
                 break;
         }
     }
-    else if (event.getName() == EVENT_UPDATESTAT)
+    else if (eventName == EVENT_UPDATESTAT)
     {
         const int id = event.getInt("id");
         if (id == Net::getPlayerHandler()->getJobLocation())
@@ -484,24 +482,16 @@ void StatusWindow::updateHPBar(ProgressBar *const bar, const bool showMax)
     if (!bar)
         return;
 
+    const int hp = PlayerInfo::getAttribute(PlayerInfo::HP);
+    const int maxHp = PlayerInfo::getAttribute(PlayerInfo::MAX_HP);
     if (showMax)
-    {
-        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::HP)).append(
-            "/").append(toString(PlayerInfo::getAttribute(
-            PlayerInfo::MAX_HP))));
-    }
+        bar->setText(toString(hp).append("/").append(toString(maxHp)));
     else
-    {
-        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::HP)));
-    }
+        bar->setText(toString(hp));
 
     float prog = 1.0;
-
-    if (PlayerInfo::getAttribute(PlayerInfo::MAX_HP) > 0)
-    {
-        prog = static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::HP))
-            / static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::MAX_HP));
-    }
+    if (maxHp > 0)
+        prog = static_cast<float>(hp) / static_cast<float>(maxHp);
     bar->setProgress(prog);
 }
 
@@ -510,33 +500,16 @@ void StatusWindow::updateMPBar(ProgressBar *const bar, const bool showMax)
     if (!bar)
         return;
 
+    const int mp = PlayerInfo::getAttribute(PlayerInfo::MP);
+    const int maxMp = PlayerInfo::getAttribute(PlayerInfo::MAX_MP);
     if (showMax)
-    {
-        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::MP)).append(
-            "/").append(toString(PlayerInfo::getAttribute(
-            PlayerInfo::MAX_MP))));
-    }
+        bar->setText(toString(mp).append("/").append(toString(maxMp)));
     else
-    {
-        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::MP)));
-    }
+        bar->setText(toString(mp));
 
     float prog = 1.0f;
-
-    if (PlayerInfo::getAttribute(PlayerInfo::MAX_MP) > 0)
-    {
-        if (PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
-        {
-            prog = static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::MP))
-                / static_cast<float>(PlayerInfo::getAttribute(
-                PlayerInfo::MAX_MP));
-        }
-        else
-        {
-            prog = static_cast<float>(PlayerInfo::getAttribute(
-                PlayerInfo::MP));
-        }
-    }
+    if (maxMp > 0)
+        prog = static_cast<float>(mp) / static_cast<float>(maxMp);
 
     if (Net::getPlayerHandler()->canUseMagic())
         bar->setProgressPalette(Theme::PROG_MP);
@@ -563,7 +536,6 @@ void StatusWindow::updateProgressBar(ProgressBar *const bar, const int value,
     {
         const float progress = static_cast<float>(value)
             / static_cast<float>(max);
-
         if (percent)
         {
             bar->setText(strprintf("%2.5f%%",
@@ -573,7 +545,6 @@ void StatusWindow::updateProgressBar(ProgressBar *const bar, const int value,
         {
             bar->setText(toString(value).append("/").append(toString(max)));
         }
-
         bar->setProgress(progress);
     }
 }
@@ -617,15 +588,13 @@ void StatusWindow::updateWeightBar(ProgressBar *const bar)
     }
     else
     {
-        const float progress = static_cast<float>(PlayerInfo::getAttribute(
-            PlayerInfo::TOTAL_WEIGHT)) / static_cast<float>(
-            PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT));
-
+        const int totalWeight = PlayerInfo::getAttribute(
+            PlayerInfo::TOTAL_WEIGHT);
+        const int maxWeight = PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT);
+        const float progress = static_cast<float>(totalWeight)
+            / static_cast<float>(maxWeight);
         bar->setText(strprintf("%s/%s", Units::formatWeight(
-            PlayerInfo::getAttribute(PlayerInfo::TOTAL_WEIGHT)).c_str(),
-            Units::formatWeight(PlayerInfo::getAttribute(
-            PlayerInfo::MAX_WEIGHT)).c_str()));
-
+            totalWeight).c_str(), Units::formatWeight(maxWeight).c_str()));
         bar->setProgress(progress);
     }
 }
@@ -864,7 +833,6 @@ std::string ChangeDisplay::update()
 void ChangeDisplay::setPointsNeeded(const int needed)
 {
     mNeeded = needed;
-
     update();
 }
 
@@ -873,9 +841,9 @@ void ChangeDisplay::action(const gcn::ActionEvent &event)
     if (Net::getPlayerHandler()->canCorrectAttributes() &&
         event.getSource() == mDec)
     {
-        const int newcorpoints = PlayerInfo::getAttribute(
-            PlayerInfo::CORR_POINTS) - 1;
-        PlayerInfo::setAttribute(PlayerInfo::CORR_POINTS, newcorpoints);
+        const int newcorrpoints = PlayerInfo::getAttribute(
+            PlayerInfo::CORR_POINTS);
+        PlayerInfo::setAttribute(PlayerInfo::CORR_POINTS, newcorrpoints - 1);
 
         const int newpoints = PlayerInfo::getAttribute(
             PlayerInfo::CHAR_POINTS) + 1;

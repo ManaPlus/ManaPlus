@@ -89,7 +89,6 @@ class StatusWindow final : public Window,
 
     private:
         static std::string translateLetter(const char *const letters);
-
         static std::string translateLetter2(std::string letters);
 
         /**
