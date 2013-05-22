@@ -59,13 +59,7 @@ class TextCommandEditor final : public Window, public gcn::ActionListener
 
         void action(const gcn::ActionEvent &event) override;
 
-        void update();
-
-        void updateList();
-
-        void reset();
-
-        void scheduleDelete();
+        void scheduleDelete() override;
 
     private:
         void showControls(const bool show);

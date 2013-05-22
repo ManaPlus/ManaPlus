@@ -248,7 +248,7 @@ class Window : public gcn::Window,
          * Schedule this window for deletion. It will be deleted at the start
          * of the next logic update.
          */
-        void scheduleDelete();
+        virtual void scheduleDelete();
 
         /**
          * Starts window resizing when appropriate.

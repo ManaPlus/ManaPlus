@@ -22,9 +22,12 @@
 
 #include "gui/textcommandeditor.h"
 
-#include <SDL.h>
-#include <SDL_thread.h>
-#include <algorithm>
+#include "configuration.h"
+#include "item.h"
+#include "localplayer.h"
+#include "main.h"
+#include "keyboardconfig.h"
+#include "spellmanager.h"
 
 #include "gui/chatwindow.h"
 
@@ -38,16 +41,13 @@
 #include "gui/widgets/radiobutton.h"
 #include "gui/widgets/guitable.h"
 
-#include "configuration.h"
-#include "item.h"
-#include "localplayer.h"
-#include "main.h"
-#include "keyboardconfig.h"
-#include "spellmanager.h"
-
 #include "utils/gettext.h"
 
 #include "resources/iteminfo.h"
+
+#include <SDL.h>
+#include <SDL_thread.h>
+#include <algorithm>
 
 #include "debug.h"
 
@@ -68,7 +68,7 @@ public:
                 continue;
 
             const ItemInfo &info = (*i->second);
-            std::string name = info.getName();
+            const std::string name = info.getName();
             if (name != "unnamed" && !info.getName().empty()
                 && info.getName() != "unnamed")
             {
@@ -86,12 +86,12 @@ public:
     virtual ~IconsModal()
     { }
 
-    virtual int getNumberOfElements()
+    virtual int getNumberOfElements() override
     {
         return static_cast<int>(mStrings.size());
     }
 
-    virtual std::string getElementAt(int i)
+    virtual std::string getElementAt(int i) override
     {
         if (i < 0 || i >= getNumberOfElements())
             return "???";
@@ -134,12 +134,12 @@ public:
     virtual ~TargetTypeModel()
     { }
 
-    virtual int getNumberOfElements()
+    virtual int getNumberOfElements() override
     {
         return 3;
     }
 
-    virtual std::string getElementAt(int i)
+    virtual std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -153,12 +153,12 @@ public:
     virtual ~MagicSchoolModel()
     { }
 
-    virtual int getNumberOfElements()
+    virtual int getNumberOfElements() override
     {
         return 6;
     }
 
-    virtual std::string getElementAt(int i)
+    virtual std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -325,7 +325,6 @@ TextCommandEditor::~TextCommandEditor()
 void TextCommandEditor::action(const gcn::ActionEvent &event)
 {
     const std::string &eventId = event.getId();
-
     if (eventId == "magic")
     {
         mIsMagicCommand = true;
@@ -350,18 +349,6 @@ void TextCommandEditor::action(const gcn::ActionEvent &event)
         deleteCommand();
         scheduleDelete();
     }
-}
-
-void TextCommandEditor::update()
-{
-}
-
-void TextCommandEditor::updateList()
-{
-}
-
-void TextCommandEditor::reset()
-{
 }
 
 void TextCommandEditor::showControls(const bool show)
