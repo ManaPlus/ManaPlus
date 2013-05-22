@@ -35,6 +35,8 @@
 class Label;
 class TextBox;
 
+const int STATUSPOPUP_NUM_LABELS = 15;
+
 /**
  * A popup that displays information about an item.
  */
@@ -63,24 +65,10 @@ class StatusPopup final : public Popup
     private:
         void updateLabels();
 
-        void setLabelText(Label *const label, const std::string &text,
+        void setLabelText(const int num, const std::string &text,
                           const Input::KeyAction key) const;
 
-        Label *mMoveType;
-        Label *mCrazyMoveType;
-        Label *mMoveToTargetType;
-        Label *mFollowMode;
-        Label *mAttackType;
-        Label *mAttackWeaponType;
-        Label *mDropCounter;
-        Label *mPickUpType;
-        Label *mMapType;
-        Label *mMagicAttackType;
-        Label *mPvpAttackType;
-        Label *mDisableGameModifiers;
-        Label *mImitationMode;
-        Label *mAwayMode;
-        Label *mCameraMode;
+        Label *mLabels[STATUSPOPUP_NUM_LABELS];
 };
 
 #endif  // StatusPopup_H

@@ -39,88 +39,45 @@
 
 #include "debug.h"
 
+#define addLabel(num) \
+    { \
+        Label *const label = mLabels[num]; \
+        label->setPosition(0, y); \
+        label->setForegroundColorAll(getThemeColor(Theme::POPUP), \
+            getThemeColor(Theme::POPUP_OUTLINE)); \
+        add(label); \
+        y += fontHeight; \
+    }
+
 StatusPopup::StatusPopup() :
-    Popup("StatusPopup", "statuspopup.xml"),
-    mMoveType(new Label(this)),
-    mCrazyMoveType(new Label(this)),
-    mMoveToTargetType(new Label(this)),
-    mFollowMode(new Label(this)),
-    mAttackType(new Label(this)),
-    mAttackWeaponType(new Label(this)),
-    mDropCounter(new Label(this)),
-    mPickUpType(new Label(this)),
-    mMapType(new Label(this)),
-    mMagicAttackType(new Label(this)),
-    mPvpAttackType(new Label(this)),
-    mDisableGameModifiers(new Label(this)),
-    mImitationMode(new Label(this)),
-    mAwayMode(new Label(this)),
-    mCameraMode(new Label(this))
+    Popup("StatusPopup", "statuspopup.xml")
 {
     const int fontHeight = getFont()->getHeight();
 
-    mMoveType->setPosition(0, 0);
-    mCrazyMoveType->setPosition(0, fontHeight);
-    mMoveToTargetType->setPosition(0, 2 * fontHeight);
-    mFollowMode->setPosition(0,  3 * fontHeight);
-    mAttackWeaponType->setPosition(0, 4 + 4 * fontHeight);
-    mAttackType->setPosition(0, 4 + 5 * fontHeight);
-    mMagicAttackType->setPosition(0, 4 + 6 * fontHeight);
-    mPvpAttackType->setPosition(0, 4 + 7 * fontHeight);
-    mDropCounter->setPosition(0, 8 + 8 * fontHeight);
-    mPickUpType->setPosition(0, 8 + 9 * fontHeight);
-    mMapType->setPosition(0, 12 + 10 * fontHeight);
-    mImitationMode->setPosition(0, 16 + 11 * fontHeight);
-    mAwayMode->setPosition(0, 16 + 12 * fontHeight);
-    mCameraMode->setPosition(0, 16 + 13 * fontHeight);
-    mDisableGameModifiers->setPosition(0, 20 + 14 * fontHeight);
+    for (int f = 0; f < STATUSPOPUP_NUM_LABELS; f ++)
+        mLabels[f] = new Label(this);
+    int y = 0;
 
-    mMoveType->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mCrazyMoveType->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mMoveToTargetType->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mFollowMode->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mAttackWeaponType->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mAttackType->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mMagicAttackType->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mPvpAttackType->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mDropCounter->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mPickUpType->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mMapType->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mImitationMode->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mAwayMode->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mCameraMode->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mDisableGameModifiers->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-
-    add(mMoveType);
-    add(mCrazyMoveType);
-    add(mMoveToTargetType);
-    add(mFollowMode);
-    add(mAttackWeaponType);
-    add(mAttackType);
-    add(mDropCounter);
-    add(mPickUpType);
-    add(mMapType);
-    add(mMagicAttackType);
-    add(mPvpAttackType);
-    add(mDisableGameModifiers);
-    add(mImitationMode);
-    add(mAwayMode);
-    add(mCameraMode);
+    addLabel(0);
+    addLabel(1);
+    addLabel(2);
+    addLabel(3);
+    y += 4;
+    addLabel(4);
+    addLabel(5);
+    addLabel(9);
+    addLabel(10);
+    y += 4;
+    addLabel(6);
+    addLabel(7);
+    y += 4;
+    addLabel(8);
+    y += 4;
+    addLabel(12);
+    addLabel(13);
+    addLabel(14);
+    y += 4;
+    addLabel(11);
 }
 
 StatusPopup::~StatusPopup()
@@ -131,42 +88,20 @@ void StatusPopup::update()
 {
     updateLabels();
 
-    int maxWidth = mMoveType->getWidth();
+    int maxWidth = mLabels[0]->getWidth();
 
-    if (mCrazyMoveType->getWidth() > maxWidth)
-        maxWidth = mCrazyMoveType->getWidth();
-    if (mMoveToTargetType->getWidth() > maxWidth)
-        maxWidth = mMoveToTargetType->getWidth();
-    if (mFollowMode->getWidth() > maxWidth)
-        maxWidth = mFollowMode->getWidth();
-    if (mAttackWeaponType->getWidth() > maxWidth)
-        maxWidth = mAttackWeaponType->getWidth();
-    if (mAttackType->getWidth() > maxWidth)
-        maxWidth = mAttackType->getWidth();
-    if (mDropCounter->getWidth() > maxWidth)
-        maxWidth = mDropCounter->getWidth();
-    if (mPickUpType->getWidth() > maxWidth)
-        maxWidth = mPickUpType->getWidth();
-    if (mMapType->getWidth() > maxWidth)
-        maxWidth = mMapType->getWidth();
-    if (mMagicAttackType->getWidth() > maxWidth)
-        maxWidth = mMagicAttackType->getWidth();
-    if (mPvpAttackType->getWidth() > maxWidth)
-        maxWidth = mPvpAttackType->getWidth();
-    if (mDisableGameModifiers->getWidth() > maxWidth)
-        maxWidth = mDisableGameModifiers->getWidth();
-    if (mImitationMode->getWidth() > maxWidth)
-        maxWidth = mImitationMode->getWidth();
-    if (mAwayMode->getWidth() > maxWidth)
-        maxWidth = mAwayMode->getWidth();
-    if (mCameraMode->getWidth() > maxWidth)
-        maxWidth = mCameraMode->getWidth();
+    for (int f = 0; f < STATUSPOPUP_NUM_LABELS; f ++)
+    {
+        const int width = mLabels[f]->getWidth();
+        if (width > maxWidth)
+            maxWidth = width;
+    }
 
-    maxWidth += 2 * getPadding();
+    const int pad2 = 2 * mPadding;
+    maxWidth += pad2;
     setWidth(maxWidth);
-
-    setHeight(mDisableGameModifiers->getY()
-        + mDisableGameModifiers->getHeight() + 2 * getPadding());
+    setHeight(mLabels[11]->getY()
+        + mLabels[11]->getHeight() + pad2);
 }
 
 void StatusPopup::view(const int x, const int y)
@@ -188,10 +123,11 @@ void StatusPopup::view(const int x, const int y)
     requestMoveToTop();
 }
 
-void StatusPopup::setLabelText(Label *const label,
+void StatusPopup::setLabelText(const int num,
                                const std::string &text,
                                const Input::KeyAction key) const
 {
+    Label *const label = mLabels[num];
     label->setCaption(strprintf("%s  %s", text.c_str(),
         inputManager.getKeyValueString(static_cast<int>(key)).c_str()));
     label->adjustSize();
@@ -202,34 +138,34 @@ void StatusPopup::updateLabels()
     if (!player_node || !viewport)
         return;
 
-    setLabelText(mMoveType, player_node->getInvertDirectionString(),
+    setLabelText(0, player_node->getInvertDirectionString(),
         Input::KEY_INVERT_DIRECTION);
-    setLabelText(mCrazyMoveType, player_node->getCrazyMoveTypeString(),
+    setLabelText(1, player_node->getCrazyMoveTypeString(),
         Input::KEY_CHANGE_CRAZY_MOVES_TYPE);
-    setLabelText(mMoveToTargetType, player_node->getMoveToTargetTypeString(),
+    setLabelText(2, player_node->getMoveToTargetTypeString(),
         Input::KEY_CHANGE_MOVE_TO_TARGET);
-    setLabelText(mFollowMode, player_node->getFollowModeString(),
+    setLabelText(3, player_node->getFollowModeString(),
         Input::KEY_CHANGE_FOLLOW_MODE);
-    setLabelText(mAttackWeaponType, player_node->getAttackWeaponTypeString(),
+    setLabelText(4, player_node->getAttackWeaponTypeString(),
         Input::KEY_CHANGE_ATTACK_WEAPON_TYPE);
-    setLabelText(mAttackType, player_node->getAttackTypeString(),
+    setLabelText(5, player_node->getAttackTypeString(),
         Input::KEY_CHANGE_ATTACK_TYPE);
-    setLabelText(mDropCounter, player_node->getQuickDropCounterString(),
+    setLabelText(6, player_node->getQuickDropCounterString(),
         Input::KEY_SWITCH_QUICK_DROP);
-    setLabelText(mPickUpType, player_node->getPickUpTypeString(),
+    setLabelText(7, player_node->getPickUpTypeString(),
         Input::KEY_CHANGE_PICKUP_TYPE);
-    setLabelText(mMapType, player_node->getDebugPathString(),
+    setLabelText(8, player_node->getDebugPathString(),
         Input::KEY_PATHFIND);
-    setLabelText(mMagicAttackType, player_node->getMagicAttackString(),
+    setLabelText(9, player_node->getMagicAttackString(),
         Input::KEY_SWITCH_MAGIC_ATTACK);
-    setLabelText(mPvpAttackType, player_node->getPvpAttackString(),
+    setLabelText(10, player_node->getPvpAttackString(),
         Input::KEY_SWITCH_PVP_ATTACK);
-    setLabelText(mImitationMode, player_node->getImitationModeString(),
-        Input::KEY_CHANGE_IMITATION_MODE);
-    setLabelText(mAwayMode, player_node->getAwayModeString(),
-        Input::KEY_AWAY);
-    setLabelText(mCameraMode, player_node->getCameraModeString(),
-        Input::KEY_CAMERA);
-    setLabelText(mDisableGameModifiers, player_node->getGameModifiersString(),
+    setLabelText(11, player_node->getGameModifiersString(),
         Input::KEY_DISABLE_GAME_MODIFIERS);
+    setLabelText(12, player_node->getImitationModeString(),
+        Input::KEY_CHANGE_IMITATION_MODE);
+    setLabelText(13, player_node->getAwayModeString(),
+        Input::KEY_AWAY);
+    setLabelText(14, player_node->getCameraModeString(),
+        Input::KEY_CAMERA);
 }
