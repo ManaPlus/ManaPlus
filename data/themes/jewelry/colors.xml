@@ -71,7 +71,6 @@
         <color id="PLAYER_ADVANCED" color="#005000" />
         <color id="BUBBLE_NAME" color="#cccccc" />
         <color id="BUBBLE_TEXT" color="#ffffff" />
-        <color id="BLACK" color="#402600" />
         <color id="RED" color="#ff0000" />
         <color id="GREEN" color="#009000" />
         <color id="BLUE" color="#0000ff" />
@@ -206,8 +205,6 @@
         <color id="SERVER_OUTLINE" color="#142200" />
         <color id="BROWSERBOX" color="#999999" />
         <color id="BROWSERBOX_OUTLINE" color="#000000" />
-        <color id="BLACK" color="#202020" />
-        <color id="BLACK_OUTLINE" color="#606060" />
         <color id="RED" color="#ff6565" />
         <color id="RED_OUTLINE" color="#470303" />
         <color id="GREEN" color="#57cb21" />
@@ -225,13 +222,12 @@
         <color id="GRAY" color="#dbdbdb" />
         <color id="GRAY_OUTLINE" color="#333333" />
         <color id="BROWN" color="#dbdbdb" />
-        <color id="BROWN_OUTLINE" color="#333333" />
+        <color id="BROWN_OUTLINE" color="#333333" />        
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
 
     <palette id="2">
-        <color id="BROWSERBOX" color="#402600" />
         <color id="SELFNICK" color="#402600" />
         <color id="TEXT" color="#402600" />
         <color id="CARET" color="#80561f" />
@@ -279,7 +275,7 @@
         <color id="IS" color="#edbedb" />
         <color id="SERVER" color="#edbedb" />
         <color id="LOGGER" color="#919191" />
-        <color id="HYPERLINK" color="#870082" />
+        <color id="HYPERLINK" color="#2e1904" />
         <color id="UNKNOWN_ITEM" color="#ffffff" />
         <color id="CHARM" color="#ffffff" />
         <color id="GENERIC" color="#eeeeee" />
@@ -300,16 +296,16 @@
         <color id="PLAYER_ADVANCED" color="#005000" />
         <color id="BUBBLE_NAME" color="#cccccc" />
         <color id="BUBBLE_TEXT" color="#ffffff" />
-        <color id="BLACK" color="#000000" />
-        <color id="RED" color="#bf0000" />
-        <color id="GREEN" color="#000000" />
-        <color id="BLUE" color="#bf0000" />
+        <color id="BROWSERBOX" color="#999999" />
+        <color id="RED" color="#b71313" />
+        <color id="GREEN" color="#307200" />
+        <color id="BLUE" color="#174b96" />
         <color id="ORANGE" color="#f1c777" />
         <color id="YELLOW" color="#f8eb7c" />
-        <color id="PINK" color="#000000" />
-        <color id="PURPLE" color="#870082" />
-        <color id="GRAY" color="#d7d7d7" />
-        <color id="BROWN" color="#4e361f" />
+        <color id="PINK" color="#91105f" />
+        <color id="PURPLE" color="#5e1298" />
+        <color id="GRAY" color="#dbdbdb" />
+        <color id="BROWN" color="#dbdbdb" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
