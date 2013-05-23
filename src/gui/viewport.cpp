@@ -908,12 +908,10 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
     {
         switch (mHoverBeing->getType())
         {
-            // NPCs
             case ActorSprite::NPC:
                 gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 
-            // Monsters
             case ActorSprite::MONSTER:
                 gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
@@ -922,6 +920,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
                 gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 
+            case ActorSprite::AVATAR:
             case ActorSprite::FLOOR_ITEM:
             case ActorSprite::UNKNOWN:
             case ActorSprite::PLAYER:

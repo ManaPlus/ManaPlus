@@ -129,7 +129,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_CLOSEALL,
+    COMMAND_CLOSEALL = 0,
     COMMAND_IGNOREALL,
     COMMAND_HELP,
     COMMAND_ANNOUNCE,

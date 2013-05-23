@@ -270,9 +270,10 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                         _("Add to ignore list"));
                 }
             }
-        break;
+            break;
         }
 
+        case ActorSprite::AVATAR:
         case ActorSprite::UNKNOWN:
         case ActorSprite::FLOOR_ITEM:
         case ActorSprite::PORTAL:

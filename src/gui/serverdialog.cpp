@@ -601,7 +601,8 @@ void ServerDialog::loadServers(const bool addNew)
         if (!xmlNameEqual(serverNode, "server"))
             continue;
 
-        const std::string type = XML::getProperty(serverNode, "type", "unknown");
+        const std::string type = XML::getProperty(
+            serverNode, "type", "unknown");
         ServerInfo server;
         server.type = ServerInfo::parseType(type);
 

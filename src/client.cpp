@@ -1231,8 +1231,8 @@ int Client::gameExec()
                             mUpdatesDir + "/local/",
                             "zip");
 
-                        resman->removeFromSearchPath(mLocalDataDir + dirSeparator
-                            + mUpdatesDir + "/local/");
+                        resman->removeFromSearchPath(mLocalDataDir
+                            + dirSeparator + mUpdatesDir + "/local/");
                     }
 
                     resman->clearCache();

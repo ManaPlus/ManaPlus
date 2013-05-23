@@ -92,7 +92,6 @@ class CommandHandler final
         void callFunc(const CommandInfo &info,
                       const std::string &args,
                       ChatTab *const tab);
-
 };
 
 extern CommandHandler *commandHandler;

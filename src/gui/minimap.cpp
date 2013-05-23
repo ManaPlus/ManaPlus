@@ -322,6 +322,7 @@ void Minimap::draw(gcn::Graphics *graphics)
                     type = UserPalette::NPC;
                     break;
 
+                case ActorSprite::AVATAR:
                 case ActorSprite::UNKNOWN:
                 case ActorSprite::PLAYER:
                 case ActorSprite::FLOOR_ITEM:
