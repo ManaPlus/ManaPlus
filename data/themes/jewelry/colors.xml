@@ -206,8 +206,8 @@
         <color id="SERVER_OUTLINE" color="#142200" />
         <color id="BROWSERBOX" color="#999999" />
         <color id="BROWSERBOX_OUTLINE" color="#000000" />
-        <color id="BLACK" color="#999999" />
-        <color id="BLACK_OUTLINE" color="#000000" />
+        <color id="BLACK" color="#606060" />
+        <color id="BLACK_OUTLINE" color="#202020" />
         <color id="RED" color="#ff6565" />
         <color id="RED_OUTLINE" color="#470303" />
         <color id="GREEN" color="#57cb21" />
@@ -222,10 +222,10 @@
         <color id="PINK_OUTLINE" color="#44033a" />
         <color id="PURPLE" color="#cd8cff" />
         <color id="PURPLE_OUTLINE" color="#260341" />
-        <color id="GRAY" color="#dbdbdb" />
+        <color id="GRAY" color="#d0d0d0" />
         <color id="GRAY_OUTLINE" color="#333333" />
-        <color id="BROWN" color="#dbdbdb" />
-        <color id="BROWN_OUTLINE" color="#333333" />
+        <color id="BROWN" color="#93511c" />
+        <color id="BROWN_OUTLINE" color="#403320" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
