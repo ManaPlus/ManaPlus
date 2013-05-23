@@ -205,7 +205,7 @@
         <color id="SERVER" color="#a7ff2a" />
         <color id="SERVER_OUTLINE" color="#142200" />
         <color id="BROWSERBOX" color="#999999" />
-        <color id="BROWSERBOX_OUTLINE" color="#000000" />
+        <color id="BROWSERBOX_OUTLINE" color="#707070" />
         <color id="BLACK" color="#606060" />
         <color id="BLACK_OUTLINE" color="#202020" />
         <color id="RED" color="#ff6565" />
@@ -224,7 +224,7 @@
         <color id="PURPLE_OUTLINE" color="#260341" />
         <color id="GRAY" color="#d0d0d0" />
         <color id="GRAY_OUTLINE" color="#333333" />
-        <color id="BROWN" color="#93511c" />
+        <color id="BROWN" color="#a3612c" />
         <color id="BROWN_OUTLINE" color="#403320" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
@@ -278,7 +278,7 @@
         <color id="IS" color="#edbedb" />
         <color id="SERVER" color="#edbedb" />
         <color id="LOGGER" color="#919191" />
-        <color id="HYPERLINK" color="#2e1904" />
+        <color id="HYPERLINK" color="#9e1904" />
         <color id="UNKNOWN_ITEM" color="#ffffff" />
         <color id="CHARM" color="#ffffff" />
         <color id="GENERIC" color="#eeeeee" />
@@ -309,7 +309,7 @@
         <color id="PINK" color="#91105f" />
         <color id="PURPLE" color="#5e1298" />
         <color id="GRAY" color="#dbdbdb" />
-        <color id="BROWN" color="#dbdbdb" />
+        <color id="BROWN" color="#8e4c17" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
