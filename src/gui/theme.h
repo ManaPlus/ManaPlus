@@ -365,6 +365,8 @@ class Theme final : public Palette, public ConfigListener
             BUBBLE_NAME_OUTLINE,
             BUBBLE_TEXT,
             BUBBLE_TEXT_OUTLINE,
+            BLACK,
+            BLACK_OUTLINE,
             RED,
             RED_OUTLINE,
             GREEN,

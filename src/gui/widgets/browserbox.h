@@ -186,15 +186,16 @@ class BrowserBox final : public gcn::Widget,
         enum
         {
             RED = 0,
-            GREEN = 1,
-            BLUE = 2,
-            ORANGE = 3,
-            YELLOW = 4,
-            PINK = 5,
-            PURPLE = 6,
-            GRAY = 7,
-            BROWN = 8,
-            COLORS_MAX = 9
+            BLACK,
+            GREEN,
+            BLUE,
+            ORANGE,
+            YELLOW,
+            PINK,
+            PURPLE,
+            GRAY,
+            BROWN,
+            COLORS_MAX
         };
 
         /**

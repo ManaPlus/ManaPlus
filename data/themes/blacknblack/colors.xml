@@ -87,6 +87,7 @@
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
 
+        <color id="BLACK" color="#ffffff" />
         <color id="RED" color="#ffffff" />
         <color id="GREEN" color="#ffffff" />
         <color id="BLUE" color="#ffffff" />

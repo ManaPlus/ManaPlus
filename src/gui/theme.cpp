@@ -923,6 +923,8 @@ static int readColorType(const std::string &type)
         "BUBBLE_NAME_OUTLINE",
         "BUBBLE_TEXT",
         "BUBBLE_TEXT_OUTLINE",
+        "BLACK",
+        "BLACK_OUTLINE",
         "RED",
         "RED_OUTLINE",
         "GREEN",

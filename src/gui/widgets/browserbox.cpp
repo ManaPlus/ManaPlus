@@ -89,6 +89,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
         mNewLinePadding = mSkin->getOption("newLinePadding", 15);
     }
 
+    mColors[0][BLACK] = getThemeColor(Theme::BLACK);
     mColors[0][RED] = getThemeColor(Theme::RED);
     mColors[0][GREEN] = getThemeColor(Theme::GREEN);
     mColors[0][BLUE] = getThemeColor(Theme::BLUE);
@@ -99,6 +100,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     mColors[0][GRAY] = getThemeColor(Theme::GRAY);
     mColors[0][BROWN] = getThemeColor(Theme::BROWN);
 
+    mColors[1][BLACK] = getThemeColor(Theme::BLACK_OUTLINE);
     mColors[1][RED] = getThemeColor(Theme::RED_OUTLINE);
     mColors[1][GREEN] = getThemeColor(Theme::GREEN_OUTLINE);
     mColors[1][BLUE] = getThemeColor(Theme::BLUE_OUTLINE);
@@ -575,6 +577,10 @@ int BrowserBox::calcHeight()
                     {
                         switch (c)
                         {
+                            case '0':
+                                selColor[0] = mColors[0][BLACK];
+                                selColor[1] = mColors[1][BLACK];
+                                break;
                             case '1':
                                 selColor[0] = mColors[0][RED];
                                 selColor[1] = mColors[1][RED];
@@ -611,7 +617,6 @@ int BrowserBox::calcHeight()
                                 selColor[0] = mColors[0][BROWN];
                                 selColor[1] = mColors[1][BROWN];
                                 break;
-                            case '0':
                             default:
                                 selColor[0] = textColor[0];
                                 selColor[1] = textColor[1];
