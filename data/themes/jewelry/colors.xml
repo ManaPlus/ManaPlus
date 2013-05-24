@@ -193,7 +193,7 @@
         <color id="SERVER_VERSION_NOT_SUPPORTED" color="#DC0000" />
         <color id="WARNING" color="#FF0000" />
         <color id="CHAT" color="#ffffff" />
-        <color id="CHAT_OUTLINE" color="#000000" />
+        <color id="CHAT_OUTLINE" color="#707070" />
         <color id="GM" color="#ff45fd" />
         <color id="GM_OUTLINE" color="#44033a" />
         <color id="PLAYER" color="#ffffff" />
