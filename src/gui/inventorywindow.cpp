@@ -34,6 +34,7 @@
 #include "gui/outfitwindow.h"
 #include "gui/setup.h"
 #include "gui/shopwindow.h"
+#include "gui/textpopup.h"
 #include "gui/tradewindow.h"
 #include "gui/viewport.h"
 
@@ -123,6 +124,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mNameFilterCell(nullptr),
     mFilterCell(nullptr),
     mSlotsBarCell(nullptr),
+    mTextPopup(new TextPopup),
     mSplit(false),
     mCompactMode(false)
 {
@@ -273,6 +275,8 @@ InventoryWindow::~InventoryWindow()
         invInstances.front()->updateDropButton();
     delete mSortModel;
     mSortModel = nullptr;
+    delete mTextPopup;
+    mTextPopup = nullptr;
 }
 
 void InventoryWindow::action(const gcn::ActionEvent &event)
@@ -547,6 +551,30 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
             }
         }
     }
+}
+
+void InventoryWindow::mouseMoved(gcn::MouseEvent &event)
+{
+    Window::mouseMoved(event);
+    gcn::Widget *const src = event.getSource();
+    if (src == mSlotsBar || src == mWeightBar)
+    {
+        const int x = event.getX();
+        const int y = event.getY();
+        const gcn::Rectangle &rect = mDimension;
+        mTextPopup->show(rect.x + x, rect.y + y, strprintf(_("Money: %s"),
+            Units::formatCurrency(PlayerInfo::getAttribute(
+            PlayerInfo::MONEY)).c_str()));
+    }
+    else
+    {
+        mTextPopup->hide();
+    }
+}
+
+void InventoryWindow::mouseExited(gcn::MouseEvent &event)
+{
+    mTextPopup->hide();
 }
 
 void InventoryWindow::keyPressed(gcn::KeyEvent &event)

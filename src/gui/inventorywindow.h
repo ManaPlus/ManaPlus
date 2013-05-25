@@ -45,6 +45,7 @@ class ProgressBar;
 class SortListModelInv;
 class TabStrip;
 class TextField;
+class TextPopup;
 
 /**
  * Inventory dialog.
@@ -144,6 +145,10 @@ class InventoryWindow final : public Window,
 
         void widgetResized(const gcn::Event &event) override;
 
+        void mouseMoved(gcn::MouseEvent &event) override;
+
+        void mouseExited(gcn::MouseEvent &event) override;
+
         static bool isAnyInputFocused();
 
     private:
@@ -181,6 +186,7 @@ class InventoryWindow final : public Window,
         LayoutCell *mNameFilterCell;
         LayoutCell *mFilterCell;
         LayoutCell *mSlotsBarCell;
+        TextPopup *mTextPopup;
 
         bool mSplit;
         bool mCompactMode;
