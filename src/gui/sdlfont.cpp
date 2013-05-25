@@ -181,7 +181,6 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
             static_cast<Uint16>(surface->w),
             static_cast<Uint16>(surface->h)
         };
-//                SDL_SetAlpha(surface2, 0, SDL_ALPHA_OPAQUE);
         MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
         rect.x = -OUTLINE_SIZE;
         MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
@@ -192,7 +191,6 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
         MSDL_gfxBlitRGBA(surface2, nullptr, background, &rect);
         rect.x = 0;
         rect.y = 0;
-//                SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
         MSDL_gfxBlitRGBA(surface, nullptr, background, &rect);
         SDL_FreeSurface(surface);
         SDL_FreeSurface(surface2);
@@ -320,6 +318,7 @@ SDLFont::SDLFont(std::string filename,
     mFont(nullptr),
     mCreateCounter(0),
     mDeleteCounter(0),
+    mOpengl(imageHelper->useOpenGL()),
     mCleanTime(cur_time + CLEAN_TIME)
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
@@ -436,21 +435,55 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
     const unsigned char chr = text[0];
     TextChunkList *const cache = &mCache[chr];
 
-    std::map<SDLTextChunkSmall, SDLTextChunk*> &search = cache->search;
-    std::map<SDLTextChunkSmall, SDLTextChunk*>::iterator i
-        = search.find(SDLTextChunkSmall(text, col, col2));
-    if (i != search.end())
+    if (!mOpengl)
     {
-        SDLTextChunk *const chunk2 = (*i).second;
-        cache->moveToFirst(chunk2);
-        Image *const image = chunk2->img;
-        if (image)
+        bool found(false);
+        SDLTextChunk chunk(text, col, col2);
+        SDLTextChunk *i1 = cache->start;
+        while (i1)
         {
-            image->setAlpha(alpha);
-            g->drawImage(image, x, y);
+            if (*i1 == chunk)
+            {
+                cache->moveToFirst(i1);
+                found = true;
+                break;
+            }
+            i1 = i1->next;
+        }
+
+        if (found)
+        {
+            Image *const image = cache->start->img;
+            if (image)
+            {
+                image->setAlpha(alpha);
+                g->drawImage(image, x, y);
+            }
+            BLOCK_END("SDLFont::drawString")
+            return;
         }
     }
     else
+    {
+        std::map<SDLTextChunkSmall, SDLTextChunk*> &search = cache->search;
+        std::map<SDLTextChunkSmall, SDLTextChunk*>::iterator i
+            = search.find(SDLTextChunkSmall(text, col, col2));
+        if (i != search.end())
+        {
+            SDLTextChunk *const chunk2 = (*i).second;
+
+            cache->moveToFirst(chunk2);
+            Image *const image = chunk2->img;
+            if (image)
+            {
+                image->setAlpha(alpha);
+                g->drawImage(image, x, y);
+            }
+            BLOCK_END("SDLFont::drawString")
+            return;
+        }
+    }
+//    else
     {
         if (cache->size >= CACHE_SIZE)
         {

@@ -155,6 +155,7 @@ class SDLFont final : public gcn::Font
         TTF_Font *mFont;
         unsigned mCreateCounter;
         unsigned mDeleteCounter;
+        bool mOpengl;
 
         // Word surfaces cache
         int mCleanTime;
