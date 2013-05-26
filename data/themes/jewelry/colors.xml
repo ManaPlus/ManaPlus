@@ -107,7 +107,8 @@
         <color id="LISTBOX" color="#000000" />
         <color id="LISTBOX_SELECTED" color="#000000" />
         <color id="RADIOBUTTON" color="#000000" />
-        <color id="POPUP" color="#f9eabc" />
+        <color id="POPUP" color="#fbf4c4" />
+        <color id="POPUP_OUTLINE" color="#42403a" />
         <color id="TEXTBOX" color="#000000" />
         <color id="TEXTFIELD" color="#000000" />
         <color id="WINDOW" color="#f1d9a9" />
@@ -177,23 +178,36 @@
         <color id="HYPERLINK_OUTLINE" color="#0c4566" />
         <color id="UNKNOWN_ITEM" color="#ffffff" />
         <color id="CHARM" color="#ffffff" />
-        <color id="GENERIC" color="#eeeeee" />
-        <color id="HEAD" color="#b4d7ec" />
-        <color id="USABLE" color="#ece9b4" />
-        <color id="TORSO" color="#b4d7ec" />
-        <color id="ONEHAND" color="#b4d7ec" />
-        <color id="LEGS" color="#b4d7ec" />
-        <color id="FEET" color="#b4d7ec" />
-        <color id="TWOHAND" color="#b4d7ec" />
-        <color id="SHIELD" color="#b4d7ec" />
-        <color id="RING" color="#b4d7ec" />
-        <color id="NECKLACE" color="#b4d7ec" />
-        <color id="ARMS" color="#b4d7ec" />
-        <color id="AMMO" color="#b4d7ec" />
+        <color id="GENERIC" color="#dbdbdb" />
+        <color id="GENERIC_OUTLINE" color="#333333" />        
+        <color id="HEAD" color="#f8eb7c" />
+        <color id="HEAD_OUTLINE" color="#382a01" />
+        <color id="USABLE" color="#b4d7ec" />
+        <color id="USABLE_OUTLINE" color="#052f47" />
+        <color id="TORSO" color="#f8eb7c" />
+        <color id="TORSO_OUTLINE" color="#382a01" />
+        <color id="ONEHAND" color="#f8eb7c" />
+        <color id="ONEHAND_OUTLINE" color="#382a01" />
+        <color id="LEGS" color="#f8eb7c" />
+        <color id="LEGS_OUTLINE" color="#382a01" />
+        <color id="FEET" color="#f8eb7c" />
+        <color id="FEET_OUTLINE" color="#382a01" />
+        <color id="TWOHAND" color="#f8eb7c" />
+        <color id="TWOHAND_OUTLINE" color="#382a01" />
+        <color id="SHIELD" color="#f8eb7c" />
+        <color id="SHIELD_OUTLINE" color="#382a01" />
+        <color id="RING" color="#f8eb7c" />
+        <color id="RING_OUTLINE" color="#382a01" />
+        <color id="NECKLACE" color="#f8eb7c" />
+        <color id="NECKLACE_OUTLINE" color="#382a01" />
+        <color id="ARMS" color="#f8eb7c" />
+        <color id="ARMS_OUTLINE" color="#382a01" />
+        <color id="AMMO" color="#f8eb7c" />
+        <color id="AMMO_OUTLINE" color="#382a01" />
         <color id="SERVER_VERSION_NOT_SUPPORTED" color="#DC0000" />
         <color id="WARNING" color="#FF0000" />
         <color id="CHAT" color="#ffffff" />
-        <color id="CHAT_OUTLINE" color="#707070" />
+        <color id="CHAT_OUTLINE" color="#000000" />
         <color id="GM" color="#ff45fd" />
         <color id="GM_OUTLINE" color="#44033a" />
         <color id="PLAYER" color="#ffffff" />
@@ -204,10 +218,10 @@
         <color id="IS_OUTLINE" color="#02232e" />
         <color id="SERVER" color="#a7ff2a" />
         <color id="SERVER_OUTLINE" color="#142200" />
-        <color id="BROWSERBOX" color="#999999" />
-        <color id="BROWSERBOX_OUTLINE" color="#707070" />
-        <color id="BLACK" color="#606060" />
-        <color id="BLACK_OUTLINE" color="#202020" />
+        <color id="BROWSERBOX" color="#dbdbdb" />
+        <color id="BROWSERBOX_OUTLINE" color="#333333" />
+        <color id="BLACK" color="#999999" />
+        <color id="BLACK_OUTLINE" color="#000000" />
         <color id="RED" color="#ff6565" />
         <color id="RED_OUTLINE" color="#470303" />
         <color id="GREEN" color="#57cb21" />
@@ -222,10 +236,10 @@
         <color id="PINK_OUTLINE" color="#44033a" />
         <color id="PURPLE" color="#cd8cff" />
         <color id="PURPLE_OUTLINE" color="#260341" />
-        <color id="GRAY" color="#d0d0d0" />
+        <color id="GRAY" color="#dbdbdb" />
         <color id="GRAY_OUTLINE" color="#333333" />
-        <color id="BROWN" color="#a3612c" />
-        <color id="BROWN_OUTLINE" color="#403320" />
+        <color id="BROWN" color="#cb884c" />
+        <color id="BROWN_OUTLINE" color="#311e04" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
