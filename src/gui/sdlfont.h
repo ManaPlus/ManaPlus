@@ -151,11 +151,12 @@ class SDLFont final : public gcn::Font
         int getDeleteCounter() const A_WARN_UNUSED
         { return mDeleteCounter; }
 
+        static bool mOpengl;
+
     private:
         TTF_Font *mFont;
         unsigned mCreateCounter;
         unsigned mDeleteCounter;
-        bool mOpengl;
 
         // Word surfaces cache
         int mCleanTime;
