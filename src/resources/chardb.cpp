@@ -22,6 +22,7 @@
 #include "resources/chardb.h"
 
 #include "client.h"
+#include "configuration.h"
 #include "logger.h"
 
 #include "debug.h"
@@ -44,13 +45,14 @@ void CharDB::load()
     if (mLoaded)
         unload();
 
-    XML::Document *doc = new XML::Document("charcreation.xml");
+    XML::Document *doc = new XML::Document(
+        paths.getStringValue("charCreationFile"));
     const XmlNodePtr root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "chars"))
     {
-        logger->log1("CharDB: Failed to parse charcreation.xml.");
-
+        logger->log("CharDB: Failed to parse %s.",
+            paths.getStringValue("charCreationFile").c_str());
         delete doc;
         return;
     }

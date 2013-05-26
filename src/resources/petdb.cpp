@@ -46,12 +46,13 @@ void PETDB::load()
 
     logger->log1("Initializing PET database...");
 
-    XML::Document doc("pets.xml");
+    XML::Document doc(paths.getStringValue("petsFile"));
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "pets"))
     {
-        logger->log1("PET Database: Error while loading pets.xml!");
+        logger->log("PET Database: Error while loading %s!",
+            paths.getStringValue("petsFile").c_str());
         mLoaded = true;
         return;
     }
@@ -65,7 +66,8 @@ void PETDB::load()
         const int id = XML::getProperty(petNode, "id", 0);
         if (id == 0)
         {
-            logger->log1("PET Database: PET with missing ID in pets.xml!");
+            logger->log("PET Database: PET with missing ID in %s!",
+                paths.getStringValue("petsFile").c_str());
             continue;
         }
 

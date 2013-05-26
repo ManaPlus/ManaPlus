@@ -46,12 +46,13 @@ void AvatarDB::load()
     if (mLoaded)
         unload();
 
-    XML::Document doc("avatars.xml");
+    XML::Document doc(paths.getStringValue("avatarsFile"));
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "avatars"))
     {
-        logger->log1("Avatars Database: Error while loading avatars.xml!");
+        logger->log("Avatars Database: Error while loading %s!",
+            paths.getStringValue("avatarsFile").c_str());
         mLoaded = true;
         return;
     }

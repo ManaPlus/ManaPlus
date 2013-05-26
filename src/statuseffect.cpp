@@ -33,8 +33,6 @@
 
 #include "debug.h"
 
-static const char *const STATUS_EFFECTS_FILE = "status-effects.xml";
-
 static void unloadMap(std::map<int, StatusEffect *> &map);
 
 bool StatusEffect::mLoaded = false;
@@ -129,7 +127,7 @@ void StatusEffect::load()
     if (mLoaded)
         unload();
 
-    XML::Document doc(STATUS_EFFECTS_FILE);
+    XML::Document doc(paths.getStringValue("statusEffectsFile"));
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "status-effects"))

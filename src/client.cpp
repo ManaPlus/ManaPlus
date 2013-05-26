@@ -1425,7 +1425,7 @@ int Client::gameExec()
                             + mUpdatesDir + "/local/", false);
                     }
 
-                    // Read default paths file 'data/paths.xml'
+                    logger->log("Init paths");
                     paths.init("paths.xml", true);
                     paths.setDefaultValues(getPathsDefaults());
                     if (!SpriteReference::Empty)
@@ -2057,7 +2057,7 @@ void Client::initServerConfig(std::string serverName)
 
 void Client::initFeatures() const
 {
-    features.init("features.xml", true);
+    features.init(paths.getStringValue("featuresFile"), true);
     paths.setDefaultValues(getFeaturesDefaults());
 }
 

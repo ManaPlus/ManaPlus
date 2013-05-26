@@ -23,6 +23,7 @@
 #include "effectmanager.h"
 
 #include "being.h"
+#include "configuration.h"
 #include "logger.h"
 #include "particle.h"
 #include "soundmanager.h"
@@ -32,12 +33,13 @@
 EffectManager::EffectManager() :
     mEffects()
 {
-    XML::Document doc("effects.xml");
+    XML::Document doc(paths.getStringValue("effectsFile"));
     const XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "being-effects"))
     {
-        logger->log1("Error loading being effects file: effects.xml");
+        logger->log("Error loading being effects file: "
+            + paths.getStringValue("effectsFile"));
         return;
     }
     else

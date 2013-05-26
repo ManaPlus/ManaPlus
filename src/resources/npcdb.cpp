@@ -46,12 +46,13 @@ void NPCDB::load()
 
     logger->log1("Initializing NPC database...");
 
-    XML::Document doc("npcs.xml");
+    XML::Document doc(paths.getStringValue("npcsFile"));
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "npcs"))
     {
-        logger->log1("NPC Database: Error while loading npcs.xml!");
+        logger->log("NPC Database: Error while loading %s!",
+            paths.getStringValue("npcsFile").c_str());
         mLoaded = true;
         return;
     }
@@ -65,7 +66,8 @@ void NPCDB::load()
         const int id = XML::getProperty(npcNode, "id", 0);
         if (id == 0)
         {
-            logger->log1("NPC Database: NPC with missing ID in npcs.xml!");
+            logger->log("NPC Database: NPC with missing ID in %s!",
+                paths.getStringValue("npcsFile").c_str());
             continue;
         }
 

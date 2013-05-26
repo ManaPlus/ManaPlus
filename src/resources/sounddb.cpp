@@ -21,6 +21,7 @@
 #include "resources/sounddb.h"
 
 #include "client.h"
+#include "configuration.h"
 #include "logger.h"
 #include "notifymanager.h"
 
@@ -38,7 +39,7 @@ void SoundDB::load()
 {
     unload();
 
-    XML::Document *doc = new XML::Document("sounds.xml");
+    XML::Document *doc = new XML::Document(paths.getStringValue("soundsFile"));
     XmlNodePtr root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "sounds"))

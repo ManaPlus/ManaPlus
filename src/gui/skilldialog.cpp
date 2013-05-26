@@ -345,8 +345,8 @@ void SkillDialog::loadSkills()
 {
     clearSkills();
 
-    XML::Document doc("ea-skills.xml");
-    XML::Document doc2("skills.xml");
+    XML::Document doc(paths.getStringValue("skillsFile"));
+    XML::Document doc2(paths.getStringValue("skillsFile2"));
     XmlNodePtr root = doc.rootNode();
 
     int setCount = 0;

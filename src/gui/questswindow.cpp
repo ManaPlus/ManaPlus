@@ -222,7 +222,7 @@ QuestsWindow::~QuestsWindow()
 
 void QuestsWindow::loadXml()
 {
-    XML::Document doc("quests.xml");
+    XML::Document doc(paths.getStringValue("questsFile"));
     const XmlNodePtr root = doc.rootNode();
     if (!root)
         return;

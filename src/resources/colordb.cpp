@@ -22,6 +22,7 @@
 #include "resources/colordb.h"
 
 #include "client.h"
+#include "configuration.h"
 #include "logger.h"
 
 #include "utils/xml.h"
@@ -60,18 +61,20 @@ void ColorDB::loadHair()
     if (it != mColorLists.end())
         colors = it->second;
 
-    XML::Document *doc = new XML::Document("hair.xml");
+    XML::Document *doc = new XML::Document(
+        paths.getStringValue("hairColorFile"));
     XmlNodePtr root = doc->rootNode();
     bool hairXml = true;
 
     if (!root || !xmlNameEqual(root, "colors"))
     {
-        logger->log1("Trying to fall back on colors.xml");
+        logger->log("Trying to fall back on "
+            + paths.getStringValue("hairColorFile2"));
 
         hairXml = false;
 
         delete doc;
-        doc = new XML::Document("colors.xml");
+        doc = new XML::Document(paths.getStringValue("hairColorFile2"));
         root = doc->rootNode();
 
         if (!root || !xmlNameEqual(root, "colors"))
@@ -108,7 +111,8 @@ void ColorDB::loadHair()
 
 void ColorDB::loadColorLists()
 {
-    XML::Document *doc = new XML::Document("itemcolors.xml");
+    XML::Document *doc = new XML::Document(
+        paths.getStringValue("itemColorsFile"));
     const XmlNodePtr root = doc->rootNode();
     if (!root)
     {

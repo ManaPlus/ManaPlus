@@ -54,7 +54,7 @@ void MapDB::load()
 void MapDB::loadRemap()
 {
     XML::Document *const doc = new XML::Document(
-        paths.getStringValue("maps").append("remap.xml"));
+        paths.getStringValue("mapsRemapFile"));
 
     const XmlNodePtr root = doc->rootNode();
     if (!root)
@@ -119,7 +119,7 @@ void MapDB::readAtlas(XmlNodePtr node)
 
 void MapDB::loadInfo()
 {
-    XML::Document *doc = new XML::Document("maps.xml");
+    XML::Document *doc = new XML::Document(paths.getStringValue("mapsFile"));
     const XmlNodePtr root = doc->rootNode();
     if (!root)
     {

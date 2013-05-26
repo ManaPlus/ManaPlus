@@ -53,12 +53,13 @@ void EmoteDB::load()
 
     logger->log1("Initializing emote database...");
 
-    XML::Document doc("emotes.xml");
+    XML::Document doc(paths.getStringValue("emotesFile"));
     XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "emotes"))
     {
-        logger->log1("Emote Database: Error while loading emotes.xml!");
+        logger->log("Emote Database: Error while loading %s!",
+            paths.getStringValue("emotesFile").c_str());
         return;
     }
 
@@ -75,8 +76,8 @@ void EmoteDB::load()
 
         if (id == -1)
         {
-            logger->log1("Emote Database: Emote with missing ID in "
-                         "emotes.xml!");
+            logger->log("Emote Database: Emote with missing ID in %s!",
+                paths.getStringValue("emotesFile").c_str());
             continue;
         }
 

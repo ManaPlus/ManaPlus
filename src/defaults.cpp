@@ -424,7 +424,6 @@ DefaultsData* getPathsDefaults()
 
     AddDEF("minimaps", "graphics/minimaps/");
     AddDEF("maps", "maps/");
-
     AddDEF("sfx", "sfx/");
     AddDEF("music", "music/");
 
@@ -432,6 +431,28 @@ DefaultsData* getPathsDefaults()
     AddDEF("wallpaperFile", "login_wallpaper.png");
 
     AddDEF("help", "help/");
+
+    AddDEF("statusEffectsFile", "status-effects.xml");
+    AddDEF("effectsFile", "effects.xml");
+    AddDEF("unitsFile", "units.xml");
+    AddDEF("featuresFile", "features.xml");
+    AddDEF("questsFile", "quests.xml");
+    AddDEF("skillsFile", "ea-skills.xml");
+    AddDEF("skillsFile2", "skills.xml");
+    AddDEF("equipmentWindowFile", "equipmentwindow.xml");
+    AddDEF("emotesFile", "emotes.xml");
+    AddDEF("hairColorFile", "hair.xml");
+    AddDEF("hairColorFile2", "colors.xml");
+    AddDEF("itemColorsFile", "itemcolors.xml");
+    AddDEF("charCreationFile", "charcreation.xml");
+    AddDEF("soundsFile", "sounds.xml");
+    AddDEF("itemsFile", "items.xml");
+    AddDEF("avatarsFile", "avatars.xml");
+    AddDEF("npcsFile", "npcs.xml");
+    AddDEF("petsFile", "pets.xml");
+    AddDEF("monstersFile", "monsters.xml");
+    AddDEF("mapsRemapFile", "maps/remap.xml");
+    AddDEF("mapsFile", "maps.xml");
 
     return configData;
 }

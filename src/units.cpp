@@ -22,6 +22,7 @@
 
 #include "units.h"
 
+#include "configuration.h"
 #include "logger.h"
 
 #include "utils/stringutils.h"
@@ -102,12 +103,13 @@ void Units::loadUnits()
         units[UNIT_CURRENCY] = ud;
     }
 
-    XML::Document doc("units.xml");
+    XML::Document doc(paths.getStringValue("unitsFile"));
     const XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "units"))
     {
-        logger->log1("Error loading unit definition file: units.xml");
+        logger->log("Error loading unit definition file: "
+            + paths.getStringValue("unitsFile"));
         return;
     }
 

@@ -176,7 +176,7 @@ void ItemDB::load()
     mUnknown->setSprite(errFile, GENDER_FEMALE, 0);
     mUnknown->setSprite(errFile, GENDER_OTHER, 0);
     mUnknown->addTag(mTags["All"]);
-    loadXmlFile("items.xml", tagNum);
+    loadXmlFile(paths.getStringValue("itemsFile"), tagNum);
 }
 
 void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
@@ -186,7 +186,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
 
     if (!rootNode || !xmlNameEqual(rootNode, "items"))
     {
-        logger->log("ItemDB: Error while loading items.xml!");
+        logger->log("ItemDB: Error while loading %s!", fileName.c_str());
         mLoaded = true;
         return;
     }
@@ -207,7 +207,8 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
 
         if (id == 0)
         {
-            logger->log1("ItemDB: Invalid or missing item ID in items.xml!");
+            logger->log("ItemDB: Invalid or missing item ID in %s!",
+                fileName.c_str());
             continue;
         }
         else if (mItemInfos.find(id) != mItemInfos.end())
