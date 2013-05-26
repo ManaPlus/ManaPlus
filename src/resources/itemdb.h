@@ -37,15 +37,11 @@ class ItemInfo;
  */
 namespace ItemDB
 {
-    /**
-     * Loads the item data from <code>items.xml</code>.
-     */
     void load();
 
-    /**
-     * Frees item data.
-     */
     void unload();
+
+    void loadXmlFile(const std::string &fileName, int &tagNum);
 
     const StringVect &getTags();
 

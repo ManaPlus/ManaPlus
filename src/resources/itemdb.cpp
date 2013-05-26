@@ -176,8 +176,12 @@ void ItemDB::load()
     mUnknown->setSprite(errFile, GENDER_FEMALE, 0);
     mUnknown->setSprite(errFile, GENDER_OTHER, 0);
     mUnknown->addTag(mTags["All"]);
+    loadXmlFile("items.xml", tagNum);
+}
 
-    XML::Document doc("items.xml");
+void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
+{
+    XML::Document doc(fileName);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "items"))
@@ -189,6 +193,13 @@ void ItemDB::load()
 
     for_each_xml_child_node(node, rootNode)
     {
+        if (xmlNameEqual(node, "include"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            if (!name.empty())
+                loadXmlFile(name, tagNum);
+            continue;
+        }
         if (!xmlNameEqual(node, "item"))
             continue;
 
