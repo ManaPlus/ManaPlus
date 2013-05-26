@@ -361,6 +361,7 @@ class Theme final : public Palette, public ConfigListener
             CHARM,
             CHARM_OUTLINE,
             PLAYER_ADVANCED,
+            PLAYER_ADVANCED_OUTLINE,
             BUBBLE_NAME,
             BUBBLE_NAME_OUTLINE,
             BUBBLE_TEXT,

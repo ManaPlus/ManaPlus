@@ -108,12 +108,14 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
     if (b->isAdvanced())
     {
-        mBeingName->setForegroundColor(getThemeColor(
-            Theme::PLAYER_ADVANCED));
+        mBeingName->setForegroundColorAll(getThemeColor(
+            Theme::PLAYER_ADVANCED), getThemeColor(
+            Theme::PLAYER_ADVANCED_OUTLINE));
     }
     else
     {
-        mBeingName->setForegroundColor(getThemeColor(Theme::POPUP));
+        mBeingName->setForegroundColorAll(getThemeColor(Theme::POPUP),
+            getThemeColor(Theme::POPUP_OUTLINE));
     }
 
     mBeingName->adjustSize();
