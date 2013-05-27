@@ -81,7 +81,6 @@ const std::string ColorTypeNames[] =
 std::string UserPalette::getConfigName(const std::string &typeName)
 {
     std::string res = "Color" + typeName;
-
     size_t pos = 5;
     for (size_t i = 0; i < typeName.length(); i++)
     {
@@ -99,7 +98,6 @@ std::string UserPalette::getConfigName(const std::string &typeName)
         pos ++;
     }
     res.erase(pos, res.length() - pos);
-
     return res;
 }
 
@@ -252,7 +250,8 @@ void UserPalette::setGradient(const int type, const GradientType grad)
 
     if (elem->grad != STATIC && grad == STATIC)
     {
-        for (size_t i = 0; i < mGradVector.size(); i++)
+        const int sz = mGradVector.size();
+        for (size_t i = 0; i < sz; i++)
         {
             if (mGradVector[i] == elem)
             {
@@ -337,8 +336,8 @@ void UserPalette::addColor(const unsigned type, const unsigned rgb,
     snprintf(buffer, sizeof(buffer), "0x%06x", rgb);
     buffer[19] = 0;
 
-    const std::string rgbString = config.getValue(configName,
-                                                  std::string(buffer));
+    const std::string rgbString = config.getValue(
+        configName, std::string(buffer));
     unsigned int rgbValue = 0;
     if (rgbString.length() == 8 && rgbString[0] == '0' && rgbString[1] == 'x')
         rgbValue = atox(rgbString);
