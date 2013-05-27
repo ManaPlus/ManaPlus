@@ -572,7 +572,7 @@ void InventoryWindow::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void InventoryWindow::mouseExited(gcn::MouseEvent &event)
+void InventoryWindow::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     mTextPopup->hide();
 }

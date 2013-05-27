@@ -250,7 +250,7 @@ void UserPalette::setGradient(const int type, const GradientType grad)
 
     if (elem->grad != STATIC && grad == STATIC)
     {
-        const int sz = mGradVector.size();
+        const size_t sz = mGradVector.size();
         for (size_t i = 0; i < sz; i++)
         {
             if (mGradVector[i] == elem)
