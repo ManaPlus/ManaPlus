@@ -87,7 +87,6 @@ Skin::Skin(ImageRect *skin, const ImageRect *images,
 
 Skin::~Skin()
 {
-    // Clean up static resources
     for (int i = 0; i < 9; i++)
     {
         if (mBorder->grid[i])
@@ -122,8 +121,9 @@ Skin::~Skin()
     }
 
     delete mOptions;
-    delete mBorder;
     mOptions = nullptr;
+    delete mBorder;
+    mBorder = nullptr;
 }
 
 void Skin::updateAlpha(const float minimumOpacityAllowed)
@@ -328,9 +328,7 @@ Skin *Theme::load(const std::string &filename, const std::string &filename2,
         }
     }
 
-    // Add the skin to the loaded skins
     mSkins[filename] = skin;
-
     return skin;
 }
 
@@ -339,7 +337,6 @@ void Theme::unload(Skin *const skin)
     if (!skin)
         return;
     skin->instances --;
-    // unload theme if no instances
     if (!skin->instances)
     {
         SkinIterator it = mSkins.begin();
@@ -466,8 +463,6 @@ struct SkinHelper final
         {
             if (partType == params[f].name)
             {
-//                rect->grid[params[f].index] = image->getSubImage(
-//                    xPos, yPos, width, height);
                 rect->grid[params[f].index] = resman->getSubImage(
                     image, xPos, yPos, width, height);
                 return true;
@@ -499,8 +494,8 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     }
 
     Image *const dBorders = Theme::getImageFromTheme(skinSetImage);
-    ImageRect *border = new ImageRect;
-    ImageRect *images = new ImageRect;
+    ImageRect *const border = new ImageRect;
+    ImageRect *const images = new ImageRect;
     memset(border, 0, sizeof(ImageRect));
     memset(images, 0, sizeof(ImageRect));
     int padding = 3;
@@ -622,11 +617,11 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     return skin;
 }
 
-bool Theme::tryThemePath(std::string themeName)
+bool Theme::tryThemePath(const std::string &themeName)
 {
     if (!themeName.empty())
     {
-        std::string path = defaultThemePath + themeName;
+        const std::string path = defaultThemePath + themeName;
         if (PhysFs::exists(path.c_str()))
         {
             mThemePath = path;
@@ -1051,9 +1046,6 @@ static int readProgressType(const std::string &type)
 
 void Theme::loadColors(std::string file)
 {
-//    if (file == mThemePath)
-//        return; // No need to reload
-
     if (file == "")
         file = "colors.xml";
     else
@@ -1080,7 +1072,7 @@ void Theme::loadColors(std::string file)
         if (xmlNameEqual(paletteNode, "progressbar"))
         {
             type = readProgressType(XML::getProperty(paletteNode, "id", ""));
-            if (type < 0)  // invalid or no type given
+            if (type < 0)
                 continue;
 
             mProgressColors[type] = new DyePalette(XML::getProperty(
@@ -1099,13 +1091,13 @@ void Theme::loadColors(std::string file)
         {
             if (xmlNameEqual(node, "color"))
             {
-                std::string id = XML::getProperty(node, "id", "");
+                const std::string id = XML::getProperty(node, "id", "");
                 type = readColorType(id);
-                if (type < 0)  // invalid or no type given
+                if (type < 0)
                     continue;
 
                 temp = XML::getProperty(node, "color", "");
-                if (temp.empty())  // no color set, so move on
+                if (temp.empty())
                     continue;
 
                 color = readColor(temp);
@@ -1198,7 +1190,7 @@ Image *Theme::getImageFromThemeXml(const std::string &name,
 
 ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
                                          const std::string &name2,
-                                         const int w, const int h) const
+                                         const int w, const int h)
 {
     Theme *const theme = Theme::instance();
     Skin *const skin = theme->load(name, name2, false);
@@ -1211,8 +1203,6 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
 
             ResourceManager *const resman = ResourceManager::getInstance();
             ImageSet *const imageSet = resman->getSubImageSet(image, w, h);
-
-//            image->incRef();
             theme->unload(skin);
             return imageSet;
         }

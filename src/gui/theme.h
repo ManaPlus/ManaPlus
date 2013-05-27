@@ -22,8 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SKIN_H
-#define SKIN_H
+#ifndef THEME_H
+#define THEME_H
 
 #include "configlistener.h"
 #include "graphics.h"
@@ -205,10 +205,10 @@ class Theme final : public Palette, public ConfigListener
                                               const int w,
                                               const int h) A_WARN_UNUSED;
 
-        ImageSet *getImageSetFromThemeXml(const std::string &name,
+        static ImageSet *getImageSetFromThemeXml(const std::string &name,
                                           const std::string &name2,
                                           const int w,
-                                          const int h) const A_WARN_UNUSED;
+                                          const int h)A_WARN_UNUSED;
         enum ThemePalette
         {
             BROWSERBOX = 0,
@@ -493,7 +493,7 @@ class Theme final : public Palette, public ConfigListener
         static std::string mScreenDensity;
         static Theme *mInstance;
 
-        static bool tryThemePath(std::string themePath) A_WARN_UNUSED;
+        static bool tryThemePath(const std::string &themePath) A_WARN_UNUSED;
 
         void loadColors(std::string file = "");
 
