@@ -32,31 +32,27 @@
 
 #include "utils/gettext.h"
 
+//#include <guichan/rectangle.hpp>
 #include <guichan/font.hpp>
 
 #include "debug.h"
 
 TextPopup::TextPopup():
     Popup("TextPopup", "textpopup.xml"),
-    mText1(new Label(this)),
-    mText2(new Label(this)),
-    mText3(new Label(this))
+    mText()
 {
     const int fontHeight = getFont()->getHeight();
-
-    mText1->setPosition(0, 0);
-    mText2->setPosition(0, fontHeight);
-    mText3->setPosition(0, 2 * fontHeight);
-    mText1->setForegroundColorAll(getThemeColor(Theme::POPUP),
+    int y = 0;
+    for (int f = 0; f < TEXTPOPUPCOUNT; f ++)
+    {
+        Label *const label = new Label(this);
+        mText[f] = label;
+        label->setPosition(0, y);
+        label->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
-    mText2->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mText3->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-
-    add(mText1);
-    add(mText2);
-    add(mText3);
+        add(label);
+        y += fontHeight;
+    }
     addMouseListener(this);
 }
 
@@ -67,20 +63,22 @@ TextPopup::~TextPopup()
 void TextPopup::show(const int x, const int y, const std::string &str1,
                      const std::string &str2, const std::string &str3)
 {
-    mText1->setCaption(str1);
-    mText1->adjustSize();
-    mText2->setCaption(str2);
-    mText2->adjustSize();
-    mText3->setCaption(str3);
-    mText3->adjustSize();
+    mText[0]->setCaption(str1);
+    mText[1]->setCaption(str2);
+    mText[2]->setCaption(str3);
 
-    int minWidth = mText1->getWidth();
-    if (mText2->getWidth() > minWidth)
-        minWidth = mText2->getWidth();
-    if (mText3->getWidth() > minWidth)
-        minWidth = mText3->getWidth();
+    int minWidth = 0;
+    for (int f = 0; f < TEXTPOPUPCOUNT; f ++)
+    {
+        Label *const label = mText[f];
+        label->adjustSize();
+        const int width = label->getWidth();
+        if (width > minWidth)
+            minWidth = width;
+    }
 
-    minWidth += 2 * getPadding();
+    const int pad2 = 2 * mPadding;
+    minWidth += pad2;
     setWidth(minWidth);
 
     int cnt = 1;
@@ -89,16 +87,17 @@ void TextPopup::show(const int x, const int y, const std::string &str1,
     if (!str3.empty())
         cnt ++;
 
-    setHeight(2 * getPadding() + mText1->getFont()->getHeight() * cnt);
+    setHeight(pad2 + mText[0]->getFont()->getHeight() * cnt);
     const int distance = 20;
 
-    int posX = std::max(0, x - getWidth() / 2);
+    const gcn::Rectangle &rect = mDimension;
+    int posX = std::max(0, x - rect.width / 2);
     int posY = y + distance;
 
-    if (posX + getWidth() > mainGraphics->mWidth)
-        posX = mainGraphics->mWidth - getWidth();
-    if (posY + getHeight() > mainGraphics->mHeight)
-        posY = y - getHeight() - distance;
+    if (posX + rect.width > mainGraphics->mWidth)
+        posX = mainGraphics->mWidth - rect.width;
+    if (posY + rect.height > mainGraphics->mHeight)
+        posY = y - rect.height - distance;
 
     setPosition(posX, posY);
     setVisible(true);

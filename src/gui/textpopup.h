@@ -31,6 +31,8 @@
 class Label;
 class TextBox;
 
+const int TEXTPOPUPCOUNT = 3;
+
 /**
  * A popup that displays information about an item.
  */
@@ -74,9 +76,7 @@ class TextPopup final : public Popup
         void mouseMoved(gcn::MouseEvent &mouseEvent) override;
 
     private:
-        Label *mText1;
-        Label *mText2;
-        Label *mText3;
+        Label *mText[TEXTPOPUPCOUNT];
 };
 
 #endif  // TEXTPOPUP_H
