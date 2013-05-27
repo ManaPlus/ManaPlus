@@ -439,9 +439,11 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     statusEffects |= (static_cast<uint32_t>(msg.readInt16()))
         << 16;  // status.options; Aethyra uses this as misc2
     const int16_t job = msg.readInt16();
+    int disguiseId = 0;
+    if (id < 110000000 && job >= 1000)
+        disguiseId = job;
 
     Being *dstBeing = actorSpriteManager->findBeing(id);
-
     if (!dstBeing)
     {
         if (actorSpriteManager->isBlocked(id) == true)
@@ -451,6 +453,12 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
         if (!dstBeing)
             return;
+    }
+    else if (disguiseId)
+    {
+        actorSpriteManager->undelete(dstBeing);
+        if (serverVersion < 1)
+            requestNameById(id);
     }
 
     uint8_t dir = dstBeing->getDirectionDelayed();
@@ -506,27 +514,29 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     dstBeing->setGender(Being::intToGender(
         static_cast<uint8_t>(msg.readInt8() & 3)));
 
-    // Set these after the gender, as the sprites may be gender-specific
-    dstBeing->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
-    if (!mHideShield)
-        dstBeing->setSprite(SPRITE_SHIELD, shield);
-    if (serverVersion > 0)
+    if (!disguiseId)
     {
-        dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom,
-            "", colors[0]);
-        dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid, "", colors[2]);
-        dstBeing->setSprite(SPRITE_HAT, headTop, "", colors[1]);
+        // Set these after the gender, as the sprites may be gender-specific
+        dstBeing->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
+        if (!mHideShield)
+            dstBeing->setSprite(SPRITE_SHIELD, shield);
+        if (serverVersion > 0)
+        {
+            dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom,
+                "", colors[0]);
+            dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid, "", colors[2]);
+            dstBeing->setSprite(SPRITE_HAT, headTop, "", colors[1]);
+        }
+        else
+        {
+            dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom);
+            dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid);
+            dstBeing->setSprite(SPRITE_HAT, headTop);
+        }
+        dstBeing->setSprite(SPRITE_HAIR, hairStyle * -1,
+            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        dstBeing->setHairColor(hairColor);
     }
-    else
-    {
-        dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom);
-        dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid);
-        dstBeing->setSprite(SPRITE_HAT, headTop);
-    }
-    dstBeing->setSprite(SPRITE_HAIR, hairStyle * -1,
-        ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
-    dstBeing->setHairColor(hairColor);
-
     player_node->imitateOutfit(dstBeing);
 
     if (msgType == 3)
