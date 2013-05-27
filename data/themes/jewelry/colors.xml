@@ -175,11 +175,11 @@
         <color id="BUBBLE_TEXT" color="#ffffff" />
         <color id="LOGGER" color="#919191" />
         <color id="HYPERLINK" color="#bcdff4" />
-        <color id="HYPERLINK_OUTLINE" color="#0c4566" />
+        <color id="HYPERLINK_OUTLINE" color="#052f47" />
         <color id="UNKNOWN_ITEM" color="#ffffff" />
         <color id="CHARM" color="#ffffff" />
         <color id="GENERIC" color="#dbdbdb" />
-        <color id="GENERIC_OUTLINE" color="#333333" />        
+        <color id="GENERIC_OUTLINE" color="#333333" />
         <color id="HEAD" color="#f8eb7c" />
         <color id="HEAD_OUTLINE" color="#382a01" />
         <color id="USABLE" color="#b4d7ec" />
@@ -207,13 +207,13 @@
         <color id="SERVER_VERSION_NOT_SUPPORTED" color="#DC0000" />
         <color id="WARNING" color="#FF0000" />
         <color id="CHAT" color="#ffffff" />
-        <color id="CHAT_OUTLINE" color="#000000" />
+        <color id="CHAT_OUTLINE" color="#3f3f3f" />
         <color id="GM" color="#ff45fd" />
         <color id="GM_OUTLINE" color="#44033a" />
-        <color id="PLAYER" color="#ffffff" />
-        <color id="PLAYER_OUTLINE" color="#3f3f3f" />
+        <color id="PLAYER" color="#bcdff4" />
+        <color id="PLAYER_OUTLINE" color="#052f47" />
         <color id="PLAYER_ADVANCED" color="#f9eabc" />
-        <color id="PLAYER_ADVANCED_OUTLINE" color="#000000" />
+        <color id="PLAYER_ADVANCED_OUTLINE" color="#3b2b04" />
         <color id="IS" color="#77deff" />
         <color id="IS_OUTLINE" color="#02232e" />
         <color id="SERVER" color="#a7ff2a" />
@@ -239,7 +239,7 @@
         <color id="GRAY" color="#dbdbdb" />
         <color id="GRAY_OUTLINE" color="#333333" />
         <color id="BROWN" color="#cb884c" />
-        <color id="BROWN_OUTLINE" color="#311e04" />
+        <color id="BROWN_OUTLINE" color="#271802" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
