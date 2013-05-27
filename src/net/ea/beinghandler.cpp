@@ -135,6 +135,9 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     uint32_t statusEffects = msg.readInt16();  // opt2
     statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;  // option
     const int16_t job = msg.readInt16();  // class
+    int disguiseId = 0;
+    if (id == player_node->getId() && job >= 1000)
+        disguiseId = job;
 
     Being *dstBeing = actorSpriteManager->findBeing(id);
 
@@ -255,7 +258,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
     // reserving bits for future usage
 
-    if (dstBeing->getType() == ActorSprite::PLAYER)
+    if (!disguiseId && dstBeing->getType() == ActorSprite::PLAYER)
     {
         gender &= 3;
         dstBeing->setGender(Being::intToGender(gender));
@@ -295,9 +298,12 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     {
         uint16_t srcX, srcY, dstX, dstY;
         msg.readCoordinatePair(srcX, srcY, dstX, dstY);
-        dstBeing->setAction(Being::STAND);
-        dstBeing->setTileCoords(srcX, srcY);
-        dstBeing->setDestination(dstX, dstY);
+        if (!disguiseId)
+        {
+            dstBeing->setAction(Being::STAND);
+            dstBeing->setTileCoords(srcX, srcY);
+            dstBeing->setDestination(dstX, dstY);
+        }
     }
     else
     {
