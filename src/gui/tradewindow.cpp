@@ -89,8 +89,6 @@ TradeWindow::TradeWindow():
     mOkOther(false),
     mOkMe(false)
 {
-    logger->log1("TradeWindow::TradeWindow nick");
-
     setWindowName("Trade");
     setResizable(true);
     setCloseButton(true);
@@ -182,7 +180,7 @@ void TradeWindow::setMoney(const int amount)
     mGotMoney = amount;
     // TRANSLATORS: trade window money label
     mMoneyLabel->setCaption(strprintf(_("You get %s"),
-                            Units::formatCurrency(amount).c_str()));
+        Units::formatCurrency(amount).c_str()));
     mMoneyLabel->adjustSize();
 }
 
@@ -208,31 +206,24 @@ void TradeWindow::addItem2(const int id, const bool own, const int quantity,
 void TradeWindow::changeQuantity(const int index, const bool own,
                                  const int quantity) const
 {
+    Item *item;
     if (own)
-    {
-        if (mMyInventory->getItem(index))
-            mMyInventory->getItem(index)->setQuantity(quantity);
-    }
+        item = mMyInventory->getItem(index);
     else
-    {
-        if (mPartnerInventory->getItem(index))
-            mPartnerInventory->getItem(index)->setQuantity(quantity);
-    }
+        item = mPartnerInventory->getItem(index);
+    if (item)
+        item->setQuantity(quantity);
 }
 
 void TradeWindow::increaseQuantity(const int index, const bool own,
                                    const int quantity) const
 {
+    Item *item;
     if (own)
-    {
-        if (mMyInventory->getItem(index))
-            mMyInventory->getItem(index)->increaseQuantity(quantity);
-    }
+        item = mMyInventory->getItem(index);
     else
-    {
-        if (mPartnerInventory->getItem(index))
-            mPartnerInventory->getItem(index)->increaseQuantity(quantity);
-    }
+        item = mPartnerInventory->getItem(index);
+    item->increaseQuantity(quantity);
 }
 
 void TradeWindow::reset()
@@ -363,7 +354,6 @@ void TradeWindow::action(const gcn::ActionEvent &event)
         setVisible(false);
         reset();
         PlayerInfo::setTrading(false);
-
         Net::getTradeHandler()->cancel();
     }
     else if (eventId == "ok")
@@ -436,7 +426,7 @@ void TradeWindow::addAutoMoney(const std::string &nick, const int money)
     mAutoMoney = money;
 }
 
-void TradeWindow::initTrade(std::string nick)
+void TradeWindow::initTrade(const std::string &nick)
 {
     if (!player_node)
         return;

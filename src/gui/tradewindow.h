@@ -92,7 +92,8 @@ class TradeWindow final : public Window,
         /**
          * Increase quantity of an item.
          */
-        void increaseQuantity(int index, bool own, int quantity) const;
+        void increaseQuantity(const int index, const bool own,
+                              const int quantity) const;
 
         /**
          * Player received ok message from server
@@ -120,7 +121,7 @@ class TradeWindow final : public Window,
          * Closes the Trade Window, as well as telling the server that the
          * window has been closed.
          */
-        void close();
+        void close() override;
 
         /**
          * Clear auto trade items.
@@ -135,7 +136,7 @@ class TradeWindow final : public Window,
 
         void addAutoMoney(const std::string &nick, const int money);
 
-        void initTrade(std::string nick);
+        void initTrade(const std::string &nick);
 
         std::string getAutoTradeNick() const A_WARN_UNUSED
         { return mAutoAddToNick; }
