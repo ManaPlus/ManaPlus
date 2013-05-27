@@ -116,7 +116,7 @@ const std::string &TextDialog::getText() const
         return mPasswordField->getText();
 }
 
-void TextDialog::setText(std::string text)
+void TextDialog::setText(const std::string &text)
 {
     if (mTextField)
         mTextField->setText(text);

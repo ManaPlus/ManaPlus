@@ -61,12 +61,12 @@ public:
      */
     const std::string &getText() const A_WARN_UNUSED;
 
-    void setText(std::string text);
+    void setText(const std::string &text);
 
     static bool isActive() A_WARN_UNUSED
     { return instances; }
 
-    void close();
+    void close() override;
 
 private:
     static int instances;
