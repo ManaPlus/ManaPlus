@@ -57,13 +57,10 @@ const std::string txtUpdateFile = "resources2.txt";
 const std::string updateServer2
     = "http://download.evolonline.org/manaplus/updates/";
 
-std::vector<UpdateFile> loadXMLFile(const std::string &fileName);
-std::vector<UpdateFile> loadTxtFile(const std::string &fileName);
-
 /**
  * Load the given file into a vector of updateFiles.
  */
-std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
+static std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
 {
     std::vector<UpdateFile> files;
     XML::Document doc(fileName, false);
@@ -114,7 +111,7 @@ std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
     return files;
 }
 
-std::vector<UpdateFile> loadTxtFile(const std::string &fileName)
+static std::vector<UpdateFile> loadTxtFile(const std::string &fileName)
 {
     std::vector<UpdateFile> files;
     std::ifstream fileHandler;
@@ -124,7 +121,8 @@ std::vector<UpdateFile> loadTxtFile(const std::string &fileName)
     {
         while (fileHandler.good())
         {
-            char name[256], hash[50];
+            char name[256];
+            char hash[50];
             fileHandler.getline(name, 256, ' ');
             fileHandler.getline(hash, 50);
 
@@ -216,10 +214,8 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     loadWindowState();
     setVisible(true);
     mCancelButton->requestFocus();
-
     removeProtocol(mUpdateServerPath);
 
-    // Try to download the updates list
     download();
 }
 
@@ -285,7 +281,6 @@ void UpdaterWindow::action(const gcn::ActionEvent &event)
 void UpdaterWindow::keyPressed(gcn::KeyEvent &keyEvent)
 {
     const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
-
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
         action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
@@ -543,7 +538,6 @@ void UpdaterWindow::download()
 void UpdaterWindow::loadUpdates()
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
-
     if (mUpdateFiles.empty())
     {   // updates not downloaded
         mUpdateFiles = loadXMLFile(std::string(mUpdatesDir).append(
@@ -584,7 +578,7 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
             "/").append(txtUpdateFile));
     }
 
-    std::string fixPath = dir + "/fix";
+    const std::string fixPath = dir + "/fix";
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
@@ -597,7 +591,6 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 void UpdaterWindow::unloadUpdates(const std::string &dir)
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
-
     std::vector<UpdateFile> updateFiles
         = loadXMLFile(std::string(dir).append("/").append(xmlUpdateFile));
 
@@ -607,7 +600,7 @@ void UpdaterWindow::unloadUpdates(const std::string &dir)
             "/").append(txtUpdateFile));
     }
 
-    std::string fixPath = dir + "/fix";
+    const std::string fixPath = dir + "/fix";
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
@@ -641,8 +634,8 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
 void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir,
                                           const ResourceManager *const resman)
 {
-    std::string fixPath = dir + "/fix";
-    std::vector<UpdateFile> updateFiles
+    const std::string fixPath = dir + "/fix";
+    const std::vector<UpdateFile> updateFiles
         = loadXMLFile(std::string(fixPath).append("/").append(xmlUpdateFile));
 
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
@@ -652,7 +645,8 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir,
         if (strStartWith(name, "manaplus_"))
         {
             struct stat statbuf;
-            std::string file = std::string(fixPath).append("/").append(name);
+            const std::string file = std::string(
+                fixPath).append("/").append(name);
             if (!stat(file.c_str(), &statbuf))
                 resman->removeFromSearchPath(file);
         }
@@ -844,7 +838,6 @@ void UpdaterWindow::logic()
                 else
                 {
                     // Download of updates completed
-//                    mDownloadStatus = UPDATE_COMPLETE;
                     mCurrentFile = "latest.txt";
                     mStoreInMemory = true;
                     mDownloadStatus = UPDATE_PATCH;
@@ -873,7 +866,7 @@ void UpdaterWindow::logic()
             {
                 if (mUpdateIndex < mTempUpdateFiles.size())
                 {
-                    UpdateFile thisFile = mTempUpdateFiles[mUpdateIndex];
+                    const UpdateFile thisFile = mTempUpdateFiles[mUpdateIndex];
                     mCurrentFile = thisFile.name;
                     std::string checksum;
                     checksum = thisFile.hash;
@@ -923,7 +916,7 @@ void UpdaterWindow::logic()
 bool UpdaterWindow::validateFile(const std::string &filePath,
                                  const unsigned long hash)
 {
-    FILE *file = fopen(filePath.c_str(), "rb");
+    FILE *const file = fopen(filePath.c_str(), "rb");
     if (!file)
         return false;
 
