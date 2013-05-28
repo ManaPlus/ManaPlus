@@ -91,7 +91,7 @@ class Viewport final : public WindowContainer,
         /**
          * Implements player to keep following mouse.
          */
-        void logic();
+        void logic() override;
 
         /**
          * Toggles whether the path debug graphics are shown. normal,
@@ -155,7 +155,7 @@ class Viewport final : public WindowContainer,
 
         void showPopup(const Being *const being);
 
-        void showPlayerPopup(std::string nick);
+        void showPlayerPopup(const std::string &nick);
 
         void showOutfitsPopup(const int x, const int y);
 
@@ -165,7 +165,7 @@ class Viewport final : public WindowContainer,
 
         void showAttackMonsterPopup(const std::string &name, const int type);
 
-        void showPickupItemPopup(std::string name);
+        void showPickupItemPopup(const std::string &name);
 
         /**
          * Shows the related popup menu when right click on the chat
@@ -183,7 +183,7 @@ class Viewport final : public WindowContainer,
 
         void showMapPopup(const int x, const int y);
 
-        void showTextFieldPopup(TextField *input);
+        void showTextFieldPopup(TextField *const input);
 
         void showLinkPopup(const std::string &link);
 

@@ -55,6 +55,7 @@
 #include "debug.h"
 
 extern volatile int tick_time;
+extern MiniStatusWindow *miniStatusWindow;
 
 Viewport::Viewport() :
     WindowContainer(nullptr),
@@ -101,7 +102,6 @@ Viewport::Viewport() :
 Viewport::~Viewport()
 {
     config.removeListeners(this);
-
     delete mPopupMenu;
     mPopupMenu = nullptr;
     delete mBeingPopup;
@@ -116,8 +116,6 @@ void Viewport::setMap(Map *const map)
         map->setDebugFlags(mMap->getDebugFlags());
     mMap = map;
 }
-
-extern MiniStatusWindow *miniStatusWindow;
 
 void Viewport::draw(gcn::Graphics *gcnGraphics)
 {
@@ -196,8 +194,6 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         {
             if (player_x <= 0 || player_y <= 0)
             {
-//                if (debugChatTab)
-//                    debugChatTab->chatLog("incorrect player position!");
                 logger->log("incorrect player position: %d, %d, %d, %d",
                     player_x, player_y, mPixelViewX, mPixelViewY);
                 if (player_node)
@@ -250,9 +246,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
 
     // Draw text
     if (textManager)
-    {
         textManager->draw(graphics, mPixelViewX, mPixelViewY);
-    }
 
     // Draw player names, speech, and emotion sprite as needed
     const ActorSprites &actors = actorSpriteManager->getAll();
@@ -261,7 +255,6 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
             continue;
         Being *const b = static_cast<Being*>(*it);
-
         b->drawSpeech(mPixelViewX, mPixelViewY);
         b->drawEmotion(graphics, mPixelViewX, mPixelViewY);
     }
@@ -292,15 +285,15 @@ void Viewport::_followMouse()
         // We create a mouse event and send it to mouseDragged.
         const uint8_t *const keys = SDL_GetKeyState(nullptr);
         gcn::MouseEvent mouseEvent(nullptr,
-                      (keys[SDLK_LSHIFT] || keys[SDLK_RSHIFT]),
-                      false,
-                      false,
-                      false,
-                      gcn::MouseEvent::DRAGGED,
-                      gcn::MouseEvent::LEFT,
-                      mMouseX,
-                      mMouseY,
-                      0);
+            (keys[SDLK_LSHIFT] || keys[SDLK_RSHIFT]),
+            false,
+            false,
+            false,
+            gcn::MouseEvent::DRAGGED,
+            gcn::MouseEvent::LEFT,
+            mMouseX,
+            mMouseY,
+            0);
 
         mouseDragged(mouseEvent);
     }
@@ -311,7 +304,6 @@ void Viewport::_drawDebugPath(Graphics *const graphics)
     if (!player_node || !userPalette || !actorSpriteManager || !mMap)
         return;
 
-    // Get the current mouse position
     SDL_GetMouseState(&mMouseX, &mMouseY);
 
     static Path debugPath;
@@ -328,24 +320,21 @@ void Viewport::_drawDebugPath(Graphics *const graphics)
         debugPath = mMap->findPath(
             static_cast<int>(playerPos.x - 16) / 32,
             static_cast<int>(playerPos.y - 32) / 32,
-            mousePosX / 32, mousePosY / 32, player_node->getWalkMask(), 500);
-
+            mousePosX / 32, mousePosY / 32,
+            player_node->getWalkMask(),
+            500);
         lastMouseDestination = mouseDestination;
     }
     _drawPath(graphics, debugPath, userPalette->getColorWithAlpha(
         UserPalette::ROAD_POINT));
 
-    // We draw the path proposed by mouse
-
-    // Draw the path debug information for every beings.
     const ActorSprites &actors = actorSpriteManager->getAll();
     FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
         const Being *const being = dynamic_cast<Being*>(*it);
         if (being && being != player_node)
         {
-            Path beingPath = being->getPath();
-
+            const Path &beingPath = being->getPath();
             _drawPath(graphics, beingPath, userPalette->getColorWithAlpha(
                 UserPalette::ROAD_POINT));
         }
@@ -356,7 +345,6 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
                          const gcn::Color &color) const
 {
     graphics->setColor(color);
-
     gcn::Font *const font = getFont();
 
 #ifdef MANASERV_SUPPORT
@@ -384,8 +372,8 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
     {
         FOR_EACH (Path::const_iterator, i, path)
         {
-            int squareX = i->x - mPixelViewX;
-            int squareY = i->y - mPixelViewY;
+            const int squareX = i->x - mPixelViewX;
+            const int squareY = i->y - mPixelViewY;
 
             graphics->fillRectangle(gcn::Rectangle(squareX - 4, squareY - 4,
                                                    8, 8));
@@ -415,11 +403,14 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     if (PlayerInfo::isTalking())
         return;
 
-    const int pixelX = event.getX() + mPixelViewX;
-    const int pixelY = event.getY() + mPixelViewY;
+    const int eventX = event.getX();
+    const int eventY = event.getY();
+    const unsigned int eventButton = event.getButton();
+    const int pixelX = eventX + mPixelViewX;
+    const int pixelY = eventY + mPixelViewY;
 
     // Right click might open a popup
-    if (event.getButton() == gcn::MouseEvent::RIGHT)
+    if (eventButton == gcn::MouseEvent::RIGHT)
     {
         mPlayerFollowMouse = false;
         if (mHoverBeing)
@@ -428,18 +419,17 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
             if (actorSpriteManager)
             {
                 std::vector<ActorSprite*> beings;
-                const int x = getMouseX() + mPixelViewX;
-                const int y = getMouseY() + mPixelViewY;
+                const int x = mMouseX + mPixelViewX;
+                const int y = mMouseY + mPixelViewY;
                 actorSpriteManager->findBeingsByPixel(beings, x, y, true);
                 if (beings.size() > 1)
                 {
-                    mPopupMenu->showPopup(event.getX(), event.getY(), beings);
+                    mPopupMenu->showPopup(eventX, eventY, beings);
                     return;
                 }
                 else
                 {
-                    mPopupMenu->showPopup(event.getX(), event.getY(),
-                                          mHoverBeing);
+                    mPopupMenu->showPopup(eventX, eventY, mHoverBeing);
                     return;
                 }
             }
@@ -447,20 +437,20 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         else if (mHoverItem)
         {
             validateSpeed();
-            mPopupMenu->showPopup(event.getX(), event.getY(), mHoverItem);
+            mPopupMenu->showPopup(eventX, eventY, mHoverItem);
             return;
         }
         else if (mHoverSign)
         {
             validateSpeed();
-            mPopupMenu->showPopup(event.getX(), event.getY(), mHoverSign);
+            mPopupMenu->showPopup(eventX, eventY, mHoverSign);
             return;
         }
         else if (mCameraMode)
         {
-            mPopupMenu->showMapPopup(event.getX(), event.getY(),
-                (getMouseX() + getCameraX()) / mMap->getTileWidth(),
-                (getMouseY() + getCameraY()) / mMap->getTileHeight());
+            mPopupMenu->showMapPopup(eventX, eventY,
+                (mMouseX + mPixelViewX) / mMap->getTileWidth(),
+                (mMouseY + mPixelViewY) / mMap->getTileHeight());
             return;
         }
     }
@@ -474,7 +464,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     }
 
     // Left click can cause different actions
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (eventButton == gcn::MouseEvent::LEFT)
     {
         // Interact with some being
         if (mHoverBeing)
@@ -546,7 +536,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
             _followMouse();
         }
     }
-    else if (event.getButton() == gcn::MouseEvent::MIDDLE)
+    else if (eventButton == gcn::MouseEvent::MIDDLE)
     {
         mPlayerFollowMouse = false;
         validateSpeed();
@@ -700,7 +690,6 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
 void Viewport::mouseReleased(gcn::MouseEvent &event A_UNUSED)
 {
     mPlayerFollowMouse = false;
-
     // Only useful for eAthena but doesn't hurt under ManaServ
     mLocalWalkTime = -1;
 }
@@ -713,28 +702,28 @@ void Viewport::showPopup(Window *const parent, const int x, const int y,
 
 void Viewport::showPopup(MapItem *const item)
 {
-    mPopupMenu->showPopup(getMouseX(), getMouseY(), item);
+    mPopupMenu->showPopup(mMouseX, mMouseY, item);
 }
 
 void Viewport::showPopup(Window *const parent, Item *const item,
                          const bool isInventory)
 {
-    mPopupMenu->showPopup(parent, getMouseX(), getMouseY(), item, isInventory);
+    mPopupMenu->showPopup(parent, mMouseX, mMouseY, item, isInventory);
 }
 
 void Viewport::showItemPopup(Item *const item)
 {
-    mPopupMenu->showItemPopup(getMouseX(), getMouseY(), item);
+    mPopupMenu->showItemPopup(mMouseX, mMouseY, item);
 }
 
 void Viewport::showItemPopup(const int itemId, const unsigned char color)
 {
-    mPopupMenu->showItemPopup(getMouseX(), getMouseY(), itemId, color);
+    mPopupMenu->showItemPopup(mMouseX, mMouseY, itemId, color);
 }
 
 void Viewport::showDropPopup(Item *const item)
 {
-    mPopupMenu->showDropPopup(getMouseX(), getMouseY(), item);
+    mPopupMenu->showDropPopup(mMouseX, mMouseY, item);
 }
 
 void Viewport::showOutfitsPopup(const int x, const int y)
@@ -744,12 +733,12 @@ void Viewport::showOutfitsPopup(const int x, const int y)
 
 void Viewport::showOutfitsPopup()
 {
-    mPopupMenu->showOutfitsPopup(getMouseX(), getMouseY());
+    mPopupMenu->showOutfitsPopup(mMouseX, mMouseY);
 }
 
 void Viewport::showSpellPopup(TextCommand *const cmd)
 {
-    mPopupMenu->showSpellPopup(getMouseX(), getMouseY(), cmd);
+    mPopupMenu->showSpellPopup(mMouseX, mMouseY, cmd);
 }
 
 void Viewport::showChatPopup(const int x, const int y, ChatTab *const tab)
@@ -759,7 +748,7 @@ void Viewport::showChatPopup(const int x, const int y, ChatTab *const tab)
 
 void Viewport::showChatPopup(ChatTab *const tab)
 {
-    mPopupMenu->showChatPopup(getMouseX(), getMouseY(), tab);
+    mPopupMenu->showChatPopup(mMouseX, mMouseY, tab);
 }
 
 void Viewport::showPopup(const int x, const int y, const Being *const being)
@@ -769,12 +758,12 @@ void Viewport::showPopup(const int x, const int y, const Being *const being)
 
 void Viewport::showPopup(const Being *const being)
 {
-    mPopupMenu->showPopup(getMouseX(), getMouseY(), being);
+    mPopupMenu->showPopup(mMouseX, mMouseY, being);
 }
 
-void Viewport::showPlayerPopup(std::string nick)
+void Viewport::showPlayerPopup(const std::string &nick)
 {
-    mPopupMenu->showPlayerPopup(getMouseX(), getMouseY(), nick);
+    mPopupMenu->showPlayerPopup(mMouseX, mMouseY, nick);
 }
 
 void Viewport::showPopup(const int x, const int y, Button *const button)
@@ -790,13 +779,12 @@ void Viewport::showPopup(const int x, const int y,
 
 void Viewport::showAttackMonsterPopup(const std::string &name, const int type)
 {
-    mPopupMenu->showAttackMonsterPopup(getMouseX(), getMouseY(),
-        name, type);
+    mPopupMenu->showAttackMonsterPopup(mMouseX, mMouseY, name, type);
 }
 
-void Viewport::showPickupItemPopup(std::string name)
+void Viewport::showPickupItemPopup(const std::string &name)
 {
-    mPopupMenu->showPickupItemPopup(getMouseX(), getMouseY(), name);
+    mPopupMenu->showPickupItemPopup(mMouseX, mMouseY, name);
 }
 
 void Viewport::showUndressPopup(const int x, const int y,
@@ -807,22 +795,22 @@ void Viewport::showUndressPopup(const int x, const int y,
 
 void Viewport::showMapPopup(const int x, const int y)
 {
-    mPopupMenu->showMapPopup(getMouseX(), getMouseY(), x, y);
+    mPopupMenu->showMapPopup(mMouseX, mMouseY, x, y);
 }
 
-void Viewport::showTextFieldPopup(TextField *input)
+void Viewport::showTextFieldPopup(TextField *const input)
 {
-    mPopupMenu->showTextFieldPopup(getMouseX(), getMouseY(), input);
+    mPopupMenu->showTextFieldPopup(mMouseX, mMouseY, input);
 }
 
 void Viewport::showLinkPopup(const std::string &link)
 {
-    mPopupMenu->showLinkPopup(getMouseX(), getMouseY(), link);
+    mPopupMenu->showLinkPopup(mMouseX, mMouseY, link);
 }
 
 void Viewport::showWindowsPopup()
 {
-    mPopupMenu->showWindowsPopup(getMouseX(), getMouseY());
+    mPopupMenu->showWindowsPopup(mMouseX, mMouseY);
 }
 
 void Viewport::closePopupMenu()
@@ -853,8 +841,8 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
     if (!mMap || !player_node || !actorSpriteManager)
         return;
 
-    const int x = getMouseX() + mPixelViewX;
-    const int y = getMouseY() + mPixelViewY;
+    const int x = mMouseX + mPixelViewX;
+    const int y = mMouseY + mPixelViewY;
 
     mHoverBeing = actorSpriteManager->findBeingByPixel(x, y, true);
     if (mHoverBeing && (mHoverBeing->getType() == Being::PLAYER
@@ -862,7 +850,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
     {
         mTextPopup->setVisible(false);
         if (mShowBeingPopup)
-            mBeingPopup->show(getMouseX(), getMouseY(), mHoverBeing);
+            mBeingPopup->show(mMouseX, mMouseY, mHoverBeing);
     }
     else
     {
@@ -877,9 +865,9 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
         const SpecialLayer *const specialLayer = mMap->getSpecialLayer();
         if (specialLayer)
         {
-            const int mouseTileX = (getMouseX() + getCameraX())
+            const int mouseTileX = (mMouseX + mPixelViewX)
                 / mMap->getTileWidth();
-            const int mouseTileY = (getMouseY() + getCameraY())
+            const int mouseTileY = (mMouseY + mPixelViewY)
                 / mMap->getTileHeight();
 
             mHoverSign = specialLayer->getTile(mouseTileX, mouseTileY);
@@ -888,7 +876,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
                 if (!mHoverSign->getComment().empty())
                 {
                     mBeingPopup->setVisible(false);
-                    mTextPopup->show(getMouseX(), getMouseY(),
+                    mTextPopup->show(mMouseX, mMouseY,
                         mHoverSign->getComment());
                 }
                 else
