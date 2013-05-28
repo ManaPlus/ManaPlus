@@ -66,7 +66,6 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     int h = 0;
 
     setFocusable(false);
-
     // TRANSLATORS: short button name for who is online window.
     addButton(N_("ONL"),
         _("Who is online"), x, h, Input::KEY_WINDOW_ONLINE);
@@ -196,7 +195,7 @@ WindowMenu::~WindowMenu()
     for (std::vector <Button*>::iterator it = mButtons.begin(),
          it_end = mButtons.end(); it != it_end; ++it)
     {
-        Button *btn = dynamic_cast<Button*>(*it);
+        Button *const btn = dynamic_cast<Button*>(*it);
         if (!btn)
             continue;
         if (!btn->isVisible())
@@ -286,16 +285,17 @@ void WindowMenu::mouseMoved(gcn::MouseEvent &event)
     const int x = event.getX();
     const int y = event.getY();
     const int key = btn->getTag();
+    const gcn::Rectangle &rect = mDimension;
     if (key != Input::KEY_NO_VALUE)
     {
-        mTextPopup->show(x + getX(), y + getY(), btn->getDescription(),
+        mTextPopup->show(x + rect.x, y + rect.y, btn->getDescription(),
             // TRANSLATORS: short key name
             strprintf(_("Key: %s"), inputManager.getKeyValueString(
             key).c_str()));
     }
     else
     {
-        mTextPopup->show(x + getX(), y + getY(), btn->getDescription());
+        mTextPopup->show(x + rect.x, y + rect.y, btn->getDescription());
     }
 }
 
@@ -322,7 +322,8 @@ void WindowMenu::showButton(const std::string &name, const bool visible)
 
 void WindowMenu::updateButtons()
 {
-    int x = mPadding, h = 0;
+    int x = mPadding;
+    int h = 0;
     FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
         safeRemove(*it);
     const int pad2 = 2 * mPadding;
@@ -365,8 +366,9 @@ void WindowMenu::loadButtons()
 
         for (int f = 0; f < 30; f ++)
         {
-            std::string str = config.getValue("windowmenu" + toString(f), "");
-            if (str == "" || str == "SET")
+            const std::string str = config.getValue(
+                "windowmenu" + toString(f), "");
+            if (str.empty() || str == "SET")
                 continue;
             const ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
                 mButtonNames[str]);
@@ -392,10 +394,10 @@ void WindowMenu::loadButtons()
     updateButtons();
 }
 
-void WindowMenu::saveButtons()
+void WindowMenu::saveButtons() const
 {
     int i = 0;
-    for (std::vector <Button*>::iterator it = mButtons.begin(),
+    for (std::vector <Button*>::const_iterator it = mButtons.begin(),
          it_end = mButtons.end();
          it != it_end; ++it)
     {

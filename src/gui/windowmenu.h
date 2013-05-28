@@ -109,12 +109,12 @@ class WindowMenu final : public Container,
 
         void loadButtons();
 
-        void saveButtons();
+        void saveButtons() const;
 
         void optionChanged(const std::string &name) override;
 
     protected:
-        void drawChildren(gcn::Graphics* graphics);
+        void drawChildren(gcn::Graphics* graphics) override;
 
     private:
         inline void addButton(const char *const text,
