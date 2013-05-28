@@ -41,6 +41,8 @@ namespace MapDB
         {
         }
 
+        A_DELETE_COPY(MapInfo)
+
         std::string atlas;
         const StringVect *files;
     };
