@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EFFECT_MANAGER_H
-#define EFFECT_MANAGER_H
+#ifndef EFFECTMANAGER_H
+#define EFFECTMANAGER_H
 
 #include <list>
 #include <string>
@@ -80,4 +80,4 @@ class EffectManager final
 
 extern EffectManager *effectManager;
 
-#endif  // EFFECT_MANAGER_H
+#endif  // EFFECTMANAGER_H

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ATLASMANAGER_H
-#define ATLASMANAGER_H
+#ifndef RESOURCES_ATLASMANAGER_H
+#define RESOURCES_ATLASMANAGER_H
 
 #ifdef USE_OPENGL
 
@@ -123,5 +123,5 @@ class AtlasManager final
         static void convertAtlas(TextureAtlas *const atlas);
 };
 
-#endif
-#endif
+#endif  // USE_OPENGL
+#endif  // RESOURCES_ATLASMANAGER_H

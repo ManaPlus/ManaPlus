@@ -132,4 +132,4 @@ class Properties
         PropertyMap mProperties;
 };
 
-#endif
+#endif  // PROPERTIES_H

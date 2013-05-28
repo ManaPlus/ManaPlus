@@ -43,4 +43,4 @@ DefaultsData* getBrandingDefaults() A_WARN_UNUSED;
 DefaultsData* getPathsDefaults() A_WARN_UNUSED;
 DefaultsData* getFeaturesDefaults() A_WARN_UNUSED;
 
-#endif
+#endif  // DEFAULTS_H

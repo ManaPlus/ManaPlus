@@ -45,4 +45,4 @@ class WalkLayer final : public Resource
         int *mTiles;
 };
 
-#endif
+#endif  // WALKLAYER_H

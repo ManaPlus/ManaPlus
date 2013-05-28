@@ -641,4 +641,4 @@ class LocalPlayer final : public Being,
 
 extern LocalPlayer *player_node;
 
-#endif
+#endif  // LOCALPLAYER_H

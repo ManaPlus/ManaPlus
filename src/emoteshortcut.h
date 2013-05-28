@@ -125,4 +125,4 @@ class EmoteShortcut final
 
 extern EmoteShortcut *emoteShortcut;
 
-#endif
+#endif  // EMOTESHORTCUT_H

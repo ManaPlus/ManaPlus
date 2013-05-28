@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef STATUS_EFFECT_H
-#define STATUS_EFFECT_H
+#ifndef STATUSEFFECT_H
+#define STATUSEFFECT_H
 
 #include "particle.h"
 #include "animatedsprite.h"
@@ -115,4 +115,4 @@ private:
     bool mPersistentParticleEffect;
 };
 
-#endif  // !defined(STATUS_EFFECT_H)
+#endif  // STATUSEFFECT_H

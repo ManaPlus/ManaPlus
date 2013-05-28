@@ -47,4 +47,4 @@ class ConfigListener
         virtual void optionChanged(const std::string &name) = 0;
 };
 
-#endif
+#endif  // CONFIGLISTENER_H

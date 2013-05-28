@@ -124,4 +124,4 @@ namespace ActionManager
 
 #undef decHandler
 
-#endif
+#endif  // ACTIONMANAGER_H

@@ -19,9 +19,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef M_MKDIR_H
-#define M_MKDIR_H
+#ifndef UTILS_MKDIR_H
+#define UTILS_MKDIR_H
 
 int mkdir_r(const char *const pathname);
 
-#endif
+#endif  // UTILS_MKDIR_H

@@ -113,4 +113,4 @@ class FloorItem final : public ActorSprite
         Cursor::Cursor mCursor;
 };
 
-#endif
+#endif  // FLOORITEM_H

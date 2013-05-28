@@ -161,4 +161,4 @@ class ParticleEmitter final
 
         std::vector<ImageSet*> mTempSets;
 };
-#endif
+#endif  // PARTICLEEMITTER_H

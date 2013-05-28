@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef COLOR_MANAGER_H
-#define COLOR_MANAGER_H
+#ifndef RESOURCES_COLORDB_H
+#define RESOURCES_COLORDB_H
 
 #include <map>
 #include <string>
@@ -85,4 +85,4 @@ namespace ColorDB
     typedef ColorLists::iterator ColorListsIterator;
 }  // namespace ColorDB
 
-#endif
+#endif  // RESOURCES_COLORDB_H

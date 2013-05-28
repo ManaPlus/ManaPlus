@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_PHYSFS_H
-#define UTILS_PHYSFS_H
+#ifndef UTILS_PHYSFSTOOLS_H
+#define UTILS_PHYSFSTOOLS_H
 
 #include <physfs.h>
 
@@ -45,4 +45,4 @@ namespace PhysFs
 
 extern const char *dirSeparator;
 
-#endif  // UTILS_PHYSFS_H
+#endif  // UTILS_PHYSFSTOOLS_H

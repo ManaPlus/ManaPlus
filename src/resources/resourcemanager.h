@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCE_MANAGER_H
-#define RESOURCE_MANAGER_H
+#ifndef RESOURCES_RESOURCEMANAGER_H
+#define RESOURCES_RESOURCEMANAGER_H
 
 #include "main.h"
 
@@ -353,4 +353,4 @@ class ResourceManager final
         static DelayedAnim mDelayedAnimations;
 };
 
-#endif
+#endif  // RESOURCES_RESOURCEMANAGER_H

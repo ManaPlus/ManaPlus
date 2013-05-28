@@ -32,4 +32,5 @@ namespace NotifyManager
     void notify(const unsigned int message, const std::string &str);
     int getIndexBySound(const std::string &sound);
 }  // namespace NotifyManager
-#endif
+
+#endif  // NOTIFYMANAGER_H

@@ -153,4 +153,4 @@ class ItemShortcut final
 
 extern ItemShortcut *itemShortcut[SHORTCUT_TABS];
 
-#endif
+#endif  // ITEMSHORTCUT_H

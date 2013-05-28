@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEINGINFO_H
-#define BEINGINFO_H
+#ifndef RESOURCES_BEINGINFO_H
+#define RESOURCES_BEINGINFO_H
 
 #include "actorsprite.h"
 
@@ -235,4 +235,4 @@ class BeingInfo final
 typedef std::map<int, BeingInfo*> BeingInfos;
 typedef BeingInfos::iterator BeingInfoIterator;
 
-#endif  // BEINGINFO_H
+#endif  // RESOURCES_BEINGINFO_H

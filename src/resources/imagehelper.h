@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGEHELPER_H
-#define IMAGEHELPER_H
+#ifndef RESOURCES_IMAGEHELPER_H
+#define RESOURCES_IMAGEHELPER_H
 
 #include "localconsts.h"
 
@@ -106,4 +106,4 @@ class ImageHelper
 
 extern ImageHelper *imageHelper;
 extern ImageHelper *sdlImageHelper;
-#endif
+#endif  // RESOURCES_IMAGEHELPER_H

@@ -47,4 +47,4 @@ class BeingEquipBackend final : public Equipment::Backend
         Being *mBeing;
 };
 
-#endif
+#endif  // BEINGEQUIPBACKEND_H

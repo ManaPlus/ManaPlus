@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NOTIFYCATIONS_H
-#define NOTIFYCATIONS_H
+#ifndef NOTIFICATIONS_H
+#define NOTIFICATIONS_H
 
 #include "localconsts.h"
 
@@ -337,4 +337,4 @@ namespace NotifyManager
             N_("unknown pvp"), SPEECH},
     };
 }  // namespace NotifyManager
-#endif
+#endif  // NOTIFICATIONS_H

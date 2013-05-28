@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ACTION_H
-#define ACTION_H
+#ifndef RESOURCES_ACTION_H
+#define RESOURCES_ACTION_H
 
 #include <map>
 
@@ -61,4 +61,4 @@ class Action final
         unsigned mNumber;
 };
 
-#endif
+#endif  // RESOURCES_ACTION_H

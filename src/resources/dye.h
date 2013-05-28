@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DYE_H
-#define DYE_H
+#ifndef RESOURCES_DYE_H
+#define RESOURCES_DYE_H
 
 #include "resources/dyecolor.h"
 
@@ -144,4 +144,4 @@ class Dye final
         DyePalette *mDyePalettes[dyePalateSize];
 };
 
-#endif
+#endif  // RESOURCES_DYE_H

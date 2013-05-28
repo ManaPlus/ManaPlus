@@ -144,4 +144,4 @@ class Game final
         static Game *mInstance;
 };
 
-#endif
+#endif  // GAME_H

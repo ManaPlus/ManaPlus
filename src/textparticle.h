@@ -59,4 +59,4 @@ class TextParticle final : public Particle
         int mTextWidth;
 };
 
-#endif
+#endif  // TEXTPARTICLE_H

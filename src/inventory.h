@@ -171,4 +171,4 @@ class Inventory final
         int mUsed;      /**< THe number of slots in use */
 };
 
-#endif
+#endif  // INVENTORY_H

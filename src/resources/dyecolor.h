@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DYECOLOR_H
-#define DYECOLOR_H
+#ifndef RESOURCES_DYECOLOR_H
+#define RESOURCES_DYECOLOR_H
 
 #include <SDL_stdinc.h>
 
@@ -52,4 +52,4 @@ struct DyeColor
     uint8_t value[4];
 };
 
-#endif
+#endif  // RESOURCES_DYECOLOR_H

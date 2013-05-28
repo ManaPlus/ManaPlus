@@ -366,4 +366,4 @@ class Particle : public Actor
 
 extern Particle *particleEngine;
 
-#endif
+#endif  // PARTICLE_H

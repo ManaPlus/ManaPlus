@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_TRANSLATION_MANAGER_H
-#define UTILS_TRANSLATION_MANAGER_H
+#ifndef UTILS_TRANSLATION_TRANSLATIONMANAGER_H
+#define UTILS_TRANSLATION_TRANSLATIONMANAGER_H
 
 #include "localconsts.h"
 
@@ -45,4 +45,4 @@ class TranslationManager final
                                   StringVect &lines);
 };
 
-#endif  // UTILS_TRANSLATION_MANAGER_H
+#endif  // UTILS_TRANSLATION_TRANSLATIONMANAGER_H

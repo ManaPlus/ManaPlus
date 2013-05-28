@@ -48,4 +48,4 @@ struct InputEvent final
     int mask;
 };
 
-#endif
+#endif  // INPUTEVENT_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCE_H
-#define RESOURCE_H
+#ifndef RESOURCES_RESOURCE_H
+#define RESOURCES_RESOURCE_H
 
 #include "main.h"
 
@@ -121,4 +121,4 @@ class Resource
 #endif
 };
 
-#endif
+#endif  // RESOURCES_RESOURCE_H

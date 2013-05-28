@@ -254,4 +254,4 @@ namespace PlayerInfo
 
 }  // namespace PlayerInfo
 
-#endif
+#endif  // PLAYERINFO_H

@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEPRICATED_EVENT_H
-#define DEPRICATED_EVENT_H
+#ifndef DEPRICATEDEVENT_H
+#define DEPRICATEDEVENT_H
 
 #include <map>
 #include <set>
@@ -101,4 +101,4 @@ class DepricatedEvent final
         VariableMap mData;
 };
 
-#endif
+#endif  // DEPRICATEDEVENT_H

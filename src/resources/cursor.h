@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CURSOR_H
-#define CURSOR_H
+#ifndef RESOURCES_CURSOR_H
+#define RESOURCES_CURSOR_H
 
 #include <string>
 
@@ -59,4 +59,4 @@ namespace Cursor
     Cursor stringToCursor(const std::string &name) A_WARN_UNUSED;
 }  // namespace Cursor
 
-#endif
+#endif  // RESOURCES_CURSOR_H

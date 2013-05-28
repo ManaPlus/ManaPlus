@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGE_H
-#define IMAGE_H
+#ifndef RESOURCES_IMAGE_H
+#define RESOURCES_IMAGE_H
 
 #include "localconsts.h"
 #include "main.h"
@@ -220,4 +220,4 @@ class Image : public Resource
 #endif
 };
 
-#endif
+#endif  // RESOURCES_IMAGE_H

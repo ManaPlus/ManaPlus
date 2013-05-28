@@ -315,4 +315,4 @@ class ObjectsLayer final
         unsigned mHeight;
 };
 
-#endif
+#endif  // MAPLAYER_H

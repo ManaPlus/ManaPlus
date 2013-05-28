@@ -535,4 +535,4 @@ class Map final : public Properties, public ConfigListener
         Resource *mAtlas;
 };
 
-#endif
+#endif  // MAP_H

@@ -182,4 +182,4 @@ class TextCommand final
         Image *mImage;
 };
 
-#endif
+#endif  // TEXTCOMMAND_H

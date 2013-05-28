@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef FBOINFO_H
-#define FBOINFO_H
+#ifndef RESOURCES_FBOINFO_H
+#define RESOURCES_FBOINFO_H
 
 #include "main.h"
 #ifdef USE_OPENGL
@@ -48,5 +48,5 @@ struct FBOInfo final
     GLuint rboId;
 };
 
-#endif
-#endif
+#endif  // USE_OPENGL
+#endif  // RESOURCES_FBOINFO_H

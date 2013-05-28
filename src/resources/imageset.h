@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGESET_H
-#define IMAGESET_H
+#ifndef RESOURCES_IMAGESET_H
+#define RESOURCES_IMAGESET_H
 
 #include "resources/resource.h"
 
@@ -90,4 +90,4 @@ class ImageSet : public Resource
         int mOffsetY;
 };
 
-#endif
+#endif  // RESOURCES_IMAGESET_H

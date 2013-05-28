@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAPREADER_H
-#define MAPREADER_H
+#ifndef RESOURCES_MAPREADER_H
+#define RESOURCES_MAPREADER_H
 
 #include "utils/xml.h"
 
@@ -90,4 +90,4 @@ class MapReader final
         static void updateMusic(Map *const map);
 };
 
-#endif
+#endif  // RESOURCES_MAPREADER_H

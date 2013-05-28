@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XML_H
-#define XML_H
+#ifndef UTILS_XML_H
+#define UTILS_XML_H
 
 #include <libxml/encoding.h>
 #include <libxml/xmlwriter.h>
@@ -144,4 +144,4 @@ namespace XML
 #define for_each_xml_child_node(var, parent) \
     for (XmlNodePtr var = parent->xmlChildrenNode; var; var = var->next)
 
-#endif  // XML_H
+#endif  // UTILS_XML_H

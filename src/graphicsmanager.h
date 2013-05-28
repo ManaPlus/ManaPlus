@@ -187,4 +187,4 @@ class GraphicsManager final
 
 extern GraphicsManager graphicsManager;
 
-#endif
+#endif  // GRAPHICSMANAGER_H

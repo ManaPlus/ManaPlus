@@ -53,4 +53,4 @@ class KeyEvent final : public gcn::KeyEvent
         int mActionId;
 };
 
-#endif
+#endif  // KEYEVENT_H

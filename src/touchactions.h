@@ -38,4 +38,4 @@ void setHalfJoyPad(const int s);
 
 #undef decHandler
 
-#endif
+#endif  // TOUCHACTIONS_H

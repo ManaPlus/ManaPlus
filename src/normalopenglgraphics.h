@@ -242,4 +242,4 @@ class NormalOpenGLGraphics final : public Graphics
 };
 #endif
 
-#endif
+#endif  // NORMALOPENGLGRAPHICS_H

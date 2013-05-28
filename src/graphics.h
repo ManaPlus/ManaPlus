@@ -417,4 +417,4 @@ class Graphics : public gcn::SDLGraphics
 
 extern Graphics *mainGraphics;
 
-#endif
+#endif  // GRAPHICS_H

@@ -69,5 +69,5 @@ class MumbleManager final
 
 extern MumbleManager *mumbleManager;
 
-#endif
-#endif
+#endif  // USE_MUMBLE
+#endif  // MUMBLEMANAGER_H

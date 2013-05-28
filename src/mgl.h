@@ -131,4 +131,4 @@ defNameE(wglGetExtensionsString);
 #endif
 
 #endif
-#endif
+#endif  // MGL_H

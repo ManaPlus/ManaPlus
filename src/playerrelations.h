@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PLAYER_RELATIONS_H
-#define PLAYER_RELATIONS_H
+#ifndef PLAYERRELATIONS_H
+#define PLAYERRELATIONS_H
 
 #include "utils/stringvector.h"
 
@@ -282,4 +282,4 @@ extern PlayerRelationsManager player_relations;  // singleton representation
                                                  // of player relations
 
 
-#endif  // PLAYER_RELATIONS_H
+#endif  // PLAYERRELATIONS_H

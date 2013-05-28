@@ -39,4 +39,4 @@ class DepricatedListener
                                   const DepricatedEvent &event) = 0;
 };
 
-#endif
+#endif  // DEPRICATEDLISTENER_H

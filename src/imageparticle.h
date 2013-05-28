@@ -65,4 +65,4 @@ class ImageParticle : public Particle
         Image *mImage;   /**< The image used for this particle. */
 };
 
-#endif
+#endif  // IMAGEPARTICLE_H

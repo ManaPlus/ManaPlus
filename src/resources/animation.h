@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ANIMATION_H
-#define ANIMATION_H
+#ifndef RESOURCES_ANIMATION_H
+#define RESOURCES_ANIMATION_H
 
 #include <vector>
 #include <string>
@@ -109,4 +109,4 @@ class Animation final
         int mDuration;
 };
 
-#endif
+#endif  // RESOURCES_ANIMATION_H

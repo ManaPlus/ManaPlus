@@ -1953,4 +1953,4 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         COND_DEFAULT}
 };
 
-#endif
+#endif  // KEYBOARDDATA_H

@@ -188,4 +188,4 @@ class Item
         std::map <int, int> mTags;
 };
 
-#endif
+#endif  // ITEM_H

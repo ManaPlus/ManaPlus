@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SDLMUSIC_H
-#define SDLMUSIC_H
+#ifndef RESOURCES_SDLMUSIC_H
+#define RESOURCES_SDLMUSIC_H
 
 #include "resources/resource.h"
 
@@ -78,4 +78,4 @@ class SDLMusic final : public Resource
         Mix_Music *mMusic;
 };
 
-#endif
+#endif  // RESOURCES_SDLMUSIC_H

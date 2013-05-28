@@ -90,4 +90,4 @@ class SpellShortcut final
 extern SpellShortcut *spellShortcut;
 extern SpellManager *spellManager;
 
-#endif
+#endif  // SPELLSHORTCUT_H

@@ -176,4 +176,4 @@ class SoundManager final : public ConfigListener
 
 extern SoundManager soundManager;
 
-#endif
+#endif  // SOUNDMANAGER_H

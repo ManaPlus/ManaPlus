@@ -44,4 +44,4 @@ class KeyInput final : public gcn::KeyInput
         int mActionId;
 };
 
-#endif
+#endif  // KEYINPUT_H

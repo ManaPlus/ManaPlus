@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SOUND_EFFECT_H
-#define SOUND_EFFECT_H
+#ifndef RESOURCES_SOUNDEFFECT_H
+#define RESOURCES_SOUNDEFFECT_H
 
 #include "resources/resource.h"
 
@@ -77,4 +77,4 @@ class SoundEffect final : public Resource
         Mix_Chunk *mChunk;
 };
 
-#endif  // SOUND_EFFECT_H
+#endif  // RESOURCES_SOUNDEFFECT_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MUTEX_H
-#define MUTEX_H
+#ifndef UTILS_MUTEX_H
+#define UTILS_MUTEX_H
 
 #include "logger.h"
 
@@ -100,4 +100,4 @@ inline MutexLocker::~MutexLocker()
     mMutex->unlock();
 }
 
-#endif  // MUTEX_H
+#endif  // UTILS_MUTEX_H

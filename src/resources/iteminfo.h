@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ITEMINFO_H
-#define ITEMINFO_H
+#ifndef RESOURCES_ITEMINFO_H
+#define RESOURCES_ITEMINFO_H
 
 #include "being.h"
 
@@ -340,4 +340,4 @@ class ItemInfo final
         bool mProtected;
 };
 
-#endif
+#endif  // RESOURCES_ITEMINFO_H

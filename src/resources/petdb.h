@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PET_DB_H
-#define PET_DB_H
+#ifndef RESOURCES_PETDB_H
+#define RESOURCES_PETDB_H
 
 #include <stdint.h>
 
@@ -38,4 +38,4 @@ namespace PETDB
     BeingInfo *get(const int id) A_WARN_UNUSED;
 }
 
-#endif
+#endif  // RESOURCES_PETDB_H

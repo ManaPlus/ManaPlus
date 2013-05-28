@@ -1047,4 +1047,4 @@ class Being : public ActorSprite, public ConfigListener
 
 extern std::list<BeingCacheEntry*> beingInfoCache;
 
-#endif
+#endif  // BEING_H

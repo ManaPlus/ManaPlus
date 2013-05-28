@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef OPENGLIMAGEHELPER_H
-#define OPENGLIMAGEHELPER_H
+#ifndef RESOURCES_OPENGLIMAGEHELPER_H
+#define RESOURCES_OPENGLIMAGEHELPER_H
 
 #include "localconsts.h"
 #include "main.h"
@@ -147,4 +147,4 @@ class OpenGLImageHelper final : public ImageHelper
 };
 
 #endif
-#endif
+#endif  // RESOURCES_OPENGLIMAGEHELPER_H

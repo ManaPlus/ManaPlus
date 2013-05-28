@@ -62,4 +62,4 @@ class MouseInput final : public gcn::MouseInput
         int mRealY;
 };
 
-#endif
+#endif  // MOUSEINPUT_H

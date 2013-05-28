@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SDLIMAGEHELPER_H
-#define SDLIMAGEHELPER_H
+#ifndef RESOURCES_SDLIMAGEHELPER_H
+#define RESOURCES_SDLIMAGEHELPER_H
 
 #include "localconsts.h"
 
@@ -94,4 +94,4 @@ class SDLImageHelper final : public ImageHelper
         static bool mEnableAlphaCache;
 };
 
-#endif
+#endif  // RESOURCES_SDLIMAGEHELPER_H

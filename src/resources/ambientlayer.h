@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_AMBIENTOVERLAY_H
-#define RESOURCES_AMBIENTOVERLAY_H
+#ifndef RESOURCES_AMBIENTLAYER_H
+#define RESOURCES_AMBIENTLAYER_H
 
 #include "localconsts.h"
 
@@ -62,4 +62,4 @@ class AmbientLayer final
         bool mKeepRatio;         /**< Keep overlay ratio on every resolution */
 };
 
-#endif
+#endif  // RESOURCES_AMBIENTLAYER_H

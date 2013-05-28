@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SOUNDINFO_H
-#define SOUNDINFO_H
+#ifndef RESOURCES_SOUNDINFO_H
+#define RESOURCES_SOUNDINFO_H
 
 #include <string>
 #include <vector>
@@ -40,4 +40,4 @@ struct SoundInfo final
 
 typedef std::vector<SoundInfo> SoundInfoVect;
 
-#endif
+#endif  // RESOURCES_SOUNDINFO_H

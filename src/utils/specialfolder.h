@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef M_SPECIALFOLDER_H
-#define M_SPECIALFOLDER_H
+#ifndef UTILS_SPECIALFOLDER_H
+#define UTILS_SPECIALFOLDER_H
 
 #ifdef WIN32
 #include <shlobj.h>
@@ -30,4 +30,4 @@
 std::string getSpecialFolderLocation(const int folderId) A_WARN_UNUSED;
 #endif
 
-#endif
+#endif  // UTILS_SPECIALFOLDER_H

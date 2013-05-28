@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_VECTORSTRING_H
-#define UTILS_VECTORSTRING_H
+#ifndef UTILS_STRINGVECTOR_H
+#define UTILS_STRINGVECTOR_H
 
 #include <string>
 #include <vector>
@@ -28,4 +28,4 @@ typedef std::vector<std::string> StringVect;
 typedef StringVect::iterator StringVectIter;
 typedef StringVect::const_iterator StringVectCIter;
 
-#endif
+#endif  // UTILS_STRINGVECTOR_H

@@ -181,4 +181,4 @@ class InputManager final
 
 extern InputManager inputManager;
 
-#endif
+#endif  // INPUTMANAGER_H

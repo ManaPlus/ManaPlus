@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef AVATAR_DB_H
-#define AVATAR_DB_H
+#ifndef RESOURCES_AVATARDB_H
+#define RESOURCES_AVATARDB_H
 
 #include "localconsts.h"
 
@@ -36,4 +36,4 @@ namespace AvatarDB
     BeingInfo *get(const int id) A_WARN_UNUSED;
 }
 
-#endif
+#endif  // RESOURCES_AVATARDB_H

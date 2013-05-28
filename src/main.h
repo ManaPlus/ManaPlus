@@ -109,4 +109,4 @@
 #define PKG_DATADIR ""
 #endif
 
-#endif
+#endif  // MAIN_H

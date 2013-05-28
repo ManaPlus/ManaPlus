@@ -164,4 +164,4 @@ class DropShortcut final
 
 extern DropShortcut *dropShortcut;
 
-#endif
+#endif  // DROPSHORTCUT_H

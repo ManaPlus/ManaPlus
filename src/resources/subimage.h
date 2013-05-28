@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SUBIMAGE_H
-#define SUBIMAGE_H
+#ifndef RESOURCES_SUBIMAGE_H
+#define RESOURCES_SUBIMAGE_H
 
 #include "localconsts.h"
 #include "main.h"
@@ -81,4 +81,4 @@ class SubImage final : public Image
         Image *mParent;
 };
 
-#endif
+#endif  // RESOURCES_SUBIMAGE_H

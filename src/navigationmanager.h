@@ -50,4 +50,4 @@ class NavigationManager final
                             int *const data);
 };
 
-#endif
+#endif  // NAVIGATIONMANAGER_H

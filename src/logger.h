@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef M_LOGGER_H
-#define M_LOGGER_H
+#ifndef LOGGER_H
+#define LOGGER_H
 
 #include "main.h"
 #include <fstream>
@@ -120,4 +120,4 @@ class Logger final
 
 extern Logger *logger;
 
-#endif
+#endif  // LOGGER_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ANIMATION_PARTICLE_H
-#define ANIMATION_PARTICLE_H
+#ifndef ANIMATIONPARTICLE_H
+#define ANIMATIONPARTICLE_H
 
 #include "imageparticle.h"
 
@@ -49,4 +49,4 @@ class AnimationParticle final : public ImageParticle
         SimpleAnimation *mAnimation; /**< Used animation for this particle */
 };
 
-#endif
+#endif  // ANIMATIONPARTICLE_H

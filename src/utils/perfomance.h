@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_PEFOMANCE_H
-#define UTILS_PEFOMANCE_H
+#ifndef UTILS_PERFOMANCE_H
+#define UTILS_PERFOMANCE_H
 
 #ifdef USE_PROFILER
 #include <string>
@@ -73,4 +73,4 @@ namespace Perfomance
 #define FUNC_BLOCK(name, id)
 
 #endif  // USE_PROFILER
-#endif  // UTILS_PEFOMANCE_H
+#endif  // UTILS_PERFOMANCE_H

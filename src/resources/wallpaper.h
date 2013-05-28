@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WALLPAPER_H
-#define WALLPAPER_H
+#ifndef RESOURCES_WALLPAPER_H
+#define RESOURCES_WALLPAPER_H
 
 #include <string>
 
@@ -51,4 +51,4 @@ class Wallpaper final
                                         const int height) A_WARN_UNUSED;
 };
 
-#endif  // WALLPAPER_H
+#endif  // RESOURCES_WALLPAPER_H

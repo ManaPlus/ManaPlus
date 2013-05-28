@@ -76,4 +76,4 @@ class Tileset final : public ImageSet
         std::map<std::string, std::string> mProperties;
 };
 
-#endif
+#endif  // TILESET_H

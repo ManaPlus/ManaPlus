@@ -230,4 +230,4 @@ class MobileOpenGLGraphics final : public Graphics
 };
 #endif
 
-#endif
+#endif  // MOBILEOPENGLGRAPHICS_H

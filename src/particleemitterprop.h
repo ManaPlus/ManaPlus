@@ -20,6 +20,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef PARTICLEEMITTERPROP_H
+#define PARTICLEEMITTERPROP_H
+
 #include <cmath>
 #include <cstdlib>
 
@@ -125,3 +128,5 @@ template <typename T> struct ParticleEmitterProp final
     int changePeriod;
     int changePhase;
 };
+
+#endif  // PARTICLEEMITTERPROP_H

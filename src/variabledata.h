@@ -112,4 +112,4 @@ class BoolData final : public VariableData
         bool mData;
 };
 
-#endif
+#endif  // VARIABLEDATA_H

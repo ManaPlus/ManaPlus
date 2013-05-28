@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef M_CHATLOGGER_H
-#define M_CHATLOGGER_H
+#ifndef CHATLOGGER_H
+#define CHATLOGGER_H
 
 #include <fstream>
 #include <list>
@@ -83,4 +83,4 @@ class ChatLogger final
 
 extern ChatLogger *chatLogger;
 
-#endif
+#endif  // CHATLOGGER_H

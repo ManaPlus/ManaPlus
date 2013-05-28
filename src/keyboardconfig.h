@@ -120,4 +120,4 @@ class KeyboardConfig final
 
 extern KeyboardConfig keyboard;
 
-#endif
+#endif  // KEYBOARDCONFIG_H

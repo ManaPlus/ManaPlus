@@ -162,4 +162,4 @@ class SafeOpenGLGraphics final : public Graphics
 };
 #endif
 
-#endif
+#endif  // SAFEOPENGLGRAPHICS_H

@@ -237,4 +237,4 @@ class NullOpenGLGraphics final : public Graphics
 };
 #endif
 
-#endif
+#endif  // NULLOPENGLGRAPHICS_H

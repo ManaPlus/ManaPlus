@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PALETTEDB_H
-#define PALETTEDB_H
+#ifndef RESOURCES_PALETTEDB_H
+#define RESOURCES_PALETTEDB_H
 
 #include "localconsts.h"
 
@@ -36,4 +36,4 @@ namespace PaletteDB
 
 }  // namespace PaletteDB
 
-#endif
+#endif  // RESOURCES_PALETTEDB_H

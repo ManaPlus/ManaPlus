@@ -125,4 +125,4 @@ class BeingCacheEntry final
         int mFlags;
 };
 
-#endif
+#endif  // BEINGCACHEENTRY_H

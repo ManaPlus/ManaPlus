@@ -129,4 +129,4 @@ class AnimatedSprite final : public Sprite
         static bool mEnableCache;
 };
 
-#endif
+#endif  // ANIMATEDSPRITE_H

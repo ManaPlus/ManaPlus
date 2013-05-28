@@ -19,6 +19,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef UTILS_COPYNPASTE_H
+#define UTILS_COPYNPASTE_H
+
 #include <string>
 
 #include "localconsts.h"
@@ -35,3 +38,5 @@
 bool retrieveBuffer(std::string& text, size_t& pos) A_WARN_UNUSED;
 
 bool sendBuffer(std::string& text);
+
+#endif  // UTILS_COPYNPASTE_H

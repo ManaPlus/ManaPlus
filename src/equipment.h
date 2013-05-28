@@ -103,4 +103,4 @@ class Equipment
         Backend *mBackend;
 };
 
-#endif
+#endif  // EQUIPMENT_H
