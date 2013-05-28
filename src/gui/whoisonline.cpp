@@ -529,7 +529,8 @@ int WhoIsOnline::downloadThread(void *ptr)
 
             // Make sure the resources2.txt and news.txt aren't cached,
             // in order to always get the latest version.
-            struct curl_slist *pHeaders = curl_slist_append(
+            struct curl_slist *pHeaders = nullptr;
+            pHeaders = curl_slist_append(
                 pHeaders, "pragma: no-cache");
             pHeaders = curl_slist_append(pHeaders,
                 "Cache-Control: no-cache");
