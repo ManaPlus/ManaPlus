@@ -49,8 +49,13 @@ void MonsterDB::load()
         unload();
 
     logger->log1("Initializing monster database...");
+    loadXmlFile(paths.getStringValue("monstersFile"));
+    mLoaded = true;
+}
 
-    XML::Document doc(paths.getStringValue("monstersFile"));
+void MonsterDB::loadXmlFile(const std::string &fileName)
+{
+    XML::Document doc(fileName);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "monsters"))
@@ -73,6 +78,13 @@ void MonsterDB::load()
     // iterate <monster>s
     for_each_xml_child_node(monsterNode, rootNode)
     {
+        if (xmlNameEqual(monsterNode, "include"))
+        {
+            const std::string name = XML::getProperty(monsterNode, "name", "");
+            if (!name.empty())
+                loadXmlFile(name);
+            continue;
+        }
         if (!xmlNameEqual(monsterNode, "monster"))
             continue;
 
@@ -233,7 +245,6 @@ void MonsterDB::load()
             monsterNode, "id", 0) + offset] = currentInfo;
     }
 
-    mLoaded = true;
 }
 
 void MonsterDB::unload()

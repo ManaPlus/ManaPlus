@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+#include <string>
+
 class BeingInfo;
 
 /**
@@ -35,6 +37,8 @@ namespace MonsterDB
     void load();
 
     void unload();
+
+    void loadXmlFile(const std::string &fileName);
 
     BeingInfo *get(const int id) A_WARN_UNUSED;
 }
