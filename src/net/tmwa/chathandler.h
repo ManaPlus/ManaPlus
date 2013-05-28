@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_CHATHANDLER_H
-#define NET_TA_CHATHANDLER_H
+#ifndef NET_TMWA_CHATHANDLER_H
+#define NET_TMWA_CHATHANDLER_H
 
 #include "net/chathandler.h"
 #include "net/net.h"
@@ -63,4 +63,4 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
 }  // namespace TmwAthena
 
-#endif  // NET_TA_CHATHANDLER_H
+#endif  // NET_TMWA_CHATHANDLER_H

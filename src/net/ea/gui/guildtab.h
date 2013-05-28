@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EA_GUILDTAB_H
-#define EA_GUILDTAB_H
+#ifndef NET_EA_GUI_GUILDTAB_H
+#define NET_EA_GUI_GUILDTAB_H
 
 #include "gui/widgets/chattab.h"
 
@@ -62,4 +62,4 @@ class GuildTab : public ChatTab, public ConfigListener
 
 }  // namespace Ea
 
-#endif  // EA_GUILDTAB_H
+#endif  // NET_EA_GUI_GUILDTAB_H

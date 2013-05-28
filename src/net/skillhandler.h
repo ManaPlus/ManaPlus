@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SKILLHANDLER_H
-#define SKILLHANDLER_H
+#ifndef NET_SKILLHANDLER_H
+#define NET_SKILLHANDLER_H
 
 #include <iosfwd>
 
@@ -44,4 +44,4 @@ class SkillHandler
 
 }  // namespace Net
 
-#endif  // SKILLHANDLER_H
+#endif  // NET_SKILLHANDLER_H

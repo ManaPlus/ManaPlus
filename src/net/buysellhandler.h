@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUYSELLHANDLER_H
-#define BUYSELLHANDLER_H
+#ifndef NET_BUYSELLHANDLER_H
+#define NET_BUYSELLHANDLER_H
 
 #include "net/messagein.h"
 
@@ -53,4 +53,4 @@ class BuySellHandler
 
 }  // namespace Net
 
-#endif  // BUYSELLHANDLER_H
+#endif  // NET_BUYSELLHANDLER_H

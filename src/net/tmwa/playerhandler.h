@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_PLAYERHANDLER_H
-#define NET_TA_PLAYERHANDLER_H
+#ifndef NET_TMWA_PLAYERHANDLER_H
+#define NET_TMWA_PLAYERHANDLER_H
 
 #include "net/net.h"
 #include "net/playerhandler.h"
@@ -63,4 +63,4 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
 }  // namespace TmwAthena
 
-#endif  // NET_TA_PLAYERHANDLER_H
+#endif  // NET_TMWA_PLAYERHANDLER_H

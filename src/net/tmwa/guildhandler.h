@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_GUILDHANDLER_H
-#define NET_TA_GUILDHANDLER_H
+#ifndef NET_TMWA_GUILDHANDLER_H
+#define NET_TMWA_GUILDHANDLER_H
 
 #include "net/guildhandler.h"
 
@@ -74,4 +74,4 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
     extern Guild *taGuild;
 }  // namespace TmwAthena
 
-#endif
+#endif  // NET_TMWA_GUILDHANDLER_H

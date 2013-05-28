@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EA_EA_PROTOCOL_H
-#define EA_EA_PROTOCOL_H
+#ifndef NET_EA_EAPROTOCOL_H
+#define NET_EA_EAPROTOCOL_H
 
 enum
 {
@@ -68,4 +68,4 @@ enum
 static const int INVENTORY_OFFSET = 2;
 static const int STORAGE_OFFSET = 1;
 
-#endif
+#endif  // NET_EA_EAPROTOCOL_H

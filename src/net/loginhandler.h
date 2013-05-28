@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LOGINHANDLER_H
-#define LOGINHANDLER_H
+#ifndef NET_LOGINHANDLER_H
+#define NET_LOGINHANDLER_H
 
 #include "net/logindata.h"
 #include "net/serverinfo.h"
@@ -117,4 +117,4 @@ class LoginHandler
 
 }  // namespace Net
 
-#endif  // LOGINHANDLER_H
+#endif  // NET_LOGINHANDLER_H

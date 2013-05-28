@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GENERALHANDLER_H
-#define GENERALHANDLER_H
+#ifndef NET_GENERALHANDLER_H
+#define NET_GENERALHANDLER_H
 
 namespace Net
 {
@@ -51,4 +51,4 @@ class GeneralHandler
 
 }  // namespace Net
 
-#endif  // GENERALHANDLER_H
+#endif  // NET_GENERALHANDLER_H

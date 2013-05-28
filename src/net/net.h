@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_H
-#define NET_H
+#ifndef NET_NET_H
+#define NET_NET_H
 
 /**
  * \namespace Net
@@ -79,4 +79,4 @@ void unload();
 
 }  // namespace Net
 
-#endif  // NET_H
+#endif  // NET_NET_H

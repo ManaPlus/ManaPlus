@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_NETWORK_H
-#define NET_TA_NETWORK_H
+#ifndef NET_TMWA_NETWORK_H
+#define NET_TMWA_NETWORK_H
 
 #include "net/ea/network.h"
 
@@ -69,4 +69,4 @@ class Network final : public Ea::Network
 
 }  // namespace TmwAthena
 
-#endif  // NET_TA_NETWORK_H
+#endif  // NET_TMWA_NETWORK_H

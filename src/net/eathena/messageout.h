@@ -72,4 +72,4 @@ class MessageOut final : public Net::MessageOut
 
 }  // namespace EAthena
 
-#endif
+#endif  // NET_EATHENA_MESSAGEOUT_H

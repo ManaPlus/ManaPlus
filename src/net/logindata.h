@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LOGINDATA_H
-#define LOGINDATA_H
+#ifndef NET_LOGINDATA_H
+#define NET_LOGINDATA_H
 
 #include "being.h"
 
@@ -108,4 +108,4 @@ class LoginData final
         }
 };
 
-#endif  // LOGINDATA_H
+#endif  // NET_LOGINDATA_H

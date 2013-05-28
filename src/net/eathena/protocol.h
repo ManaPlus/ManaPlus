@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EATHENA_PROTOCOL_H
-#define EATHENA_PROTOCOL_H
+#ifndef NET_EATHENA_PROTOCOL_H
+#define NET_EATHENA_PROTOCOL_H
 
 namespace EAthena
 {
@@ -350,4 +350,4 @@ enum
 #define SMSG_NPC_CUTIN               0x01b3
 #define SMSG_NPC_VIEWPOINT           0x0144
 
-#endif
+#endif  // NET_EATHENA_PROTOCOL_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_MAPHANDLER_H
-#define NET_EATHENA_MAPHANDLER_H
+#ifndef NET_EATHENA_GAMEHANDLER_H
+#define NET_EATHENA_GAMEHANDLER_H
 
 #include "net/gamehandler.h"
 #include "net/net.h"
@@ -64,4 +64,4 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
 
 }  // namespace EAthena
 
-#endif  // NET_EATHENA_MAPHANDLER_H
+#endif  // NET_EATHENA_GAMEHANDLER_H

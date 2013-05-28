@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_MESSAGEHANDLER_H
-#define NET_TA_MESSAGEHANDLER_H
+#ifndef NET_TMWA_MESSAGEHANDLER_H
+#define NET_TMWA_MESSAGEHANDLER_H
 
 #include "net/messagehandler.h"
 
@@ -58,4 +58,4 @@ typedef const std::auto_ptr<MessageHandler> MessageHandlerPtr;
 
 }  // namespace TmwAthena
 
-#endif
+#endif  // NET_TMWA_MESSAGEHANDLER_H

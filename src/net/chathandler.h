@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CHATHANDLER_H
-#define CHATHANDLER_H
+#ifndef NET_CHATHANDLER_H
+#define NET_CHATHANDLER_H
 
 #include <iosfwd>
 #include <string>
@@ -56,4 +56,4 @@ class ChatHandler
 
 }  // namespace Net
 
-#endif  // CHATHANDLER_H
+#endif  // NET_CHATHANDLER_H

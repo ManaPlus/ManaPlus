@@ -78,4 +78,4 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
 }  // namespace TmwAthena
 
-#endif  // NET_TA_LOGINHANDLER_H
+#endif  // NET_TMWA_LOGINHANDLER_H

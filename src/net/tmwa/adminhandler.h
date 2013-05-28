@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_ADMINHANDLER_H
-#define NET_TA_ADMINHANDLER_H
+#ifndef NET_TMWA_ADMINHANDLER_H
+#define NET_TMWA_ADMINHANDLER_H
 
 #include "net/adminhandler.h"
 #include "net/net.h"
@@ -53,4 +53,4 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
 }  // namespace TmwAthena
 
-#endif  // NET_TA_ADMINHANDLER_H
+#endif  // NET_TMWA_ADMINHANDLER_H

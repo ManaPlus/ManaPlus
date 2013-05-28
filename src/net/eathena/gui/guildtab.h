@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EATHENA_GUILDTAB_H
-#define EATHENA_GUILDTAB_H
+#ifndef NET_EATHENA_GUI_GUILDTAB_H
+#define NET_EATHENA_GUI_GUILDTAB_H
 
 #include "net/ea/gui/guildtab.h"
 
@@ -43,4 +43,4 @@ class GuildTab : public Ea::GuildTab
 
 }  // namespace EAthena
 
-#endif  // EATHENA_GUILDTAB_H
+#endif  // NET_EATHENA_GUI_GUILDTAB_H

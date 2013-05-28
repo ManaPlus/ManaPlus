@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_MAPHANDLER_H
-#define NET_TA_MAPHANDLER_H
+#ifndef NET_TMWA_GAMEHANDLER_H
+#define NET_TMWA_GAMEHANDLER_H
 
 #include "net/gamehandler.h"
 #include "net/net.h"
@@ -62,4 +62,4 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
 
 }  // namespace TmwAthena
 
-#endif  // NET_TA_MAPHANDLER_H
+#endif  // NET_TMWA_GAMEHANDLER_H

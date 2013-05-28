@@ -74,4 +74,4 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
     extern Guild *taGuild;
 }  // namespace EAthena
 
-#endif
+#endif  // NET_EATHENA_GUILDHANDLER_H

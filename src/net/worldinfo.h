@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WORLD_INFO_H
-#define WORLD_INFO_H
+#ifndef NET_WORLDINFO_H
+#define NET_WORLDINFO_H
 
 #include <string>
 #include <vector>
@@ -46,4 +46,4 @@ struct WorldInfo final
 
 typedef std::vector<WorldInfo*> Worlds;
 
-#endif  // WORLD_INFO_H
+#endif  // NET_WORLDINFO_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TA_PROTOCOL_H
-#define TA_PROTOCOL_H
+#ifndef NET_TMWA_PROTOCOL_H
+#define NET_TMWA_PROTOCOL_H
 
 namespace TmwAthena
 {
@@ -353,4 +353,4 @@ enum
 #define CMSG_SEND_CLIENT_INFO        0x7533
 #define SMSG_UPDATE_HOST2            0x7534
 
-#endif
+#endif  // NET_TMWA_PROTOCOL_H

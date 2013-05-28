@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TA_PARTYTAB_H
-#define TA_PARTYTAB_H
+#ifndef NET_TMWA_GUI_PARTYTAB_H
+#define NET_TMWA_GUI_PARTYTAB_H
 
 #include "net/ea/gui/partytab.h"
 
@@ -43,4 +43,4 @@ class PartyTab : public Ea::PartyTab
 
 }  // namespace TmwAthena
 
-#endif  // TA_PARTYTAB_H
+#endif  // NET_TMWA_GUI_PARTYTAB_H

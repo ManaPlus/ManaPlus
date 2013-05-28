@@ -60,4 +60,4 @@ namespace TcpNet
     void freeSocketSet(TcpNet::SocketSet set);
 }  // namespace TcpNet
 
-#endif
+#endif  // NET_SDLTCPNET_H

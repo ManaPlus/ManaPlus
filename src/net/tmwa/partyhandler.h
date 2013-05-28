@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_PARTYHANDLER_H
-#define NET_TA_PARTYHANDLER_H
+#ifndef NET_TMWA_PARTYHANDLER_H
+#define NET_TMWA_PARTYHANDLER_H
 
 #include "net/net.h"
 #include "net/partyhandler.h"
@@ -67,4 +67,4 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
 }  // namespace TmwAthena
 
-#endif  // NET_TA_PARTYHANDLER_H
+#endif  // NET_TMWA_PARTYHANDLER_H

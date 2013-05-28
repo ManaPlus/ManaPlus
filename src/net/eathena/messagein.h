@@ -54,4 +54,4 @@ class MessageIn final : public Net::MessageIn
 
 }  // namespace EAthena
 
-#endif
+#endif  // NET_EATHENA_MESSAGEIN_H

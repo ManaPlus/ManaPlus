@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PLAYERHANDLER_H
-#define PLAYERHANDLER_H
+#ifndef NET_PLAYERHANDLER_H
+#define NET_PLAYERHANDLER_H
 
 #include "being.h"
 #include "flooritem.h"
@@ -81,4 +81,4 @@ class PlayerHandler
 
 }  // namespace Net
 
-#endif  // PLAYERHANDLER_H
+#endif  // NET_PLAYERHANDLER_H

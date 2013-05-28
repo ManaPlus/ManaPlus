@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PACKETCOUNTERS_H
-#define PACKETCOUNTERS_H
+#ifndef NET_PACKETCOUNTERS_H
+#define NET_PACKETCOUNTERS_H
 
 #include "localconsts.h"
 
@@ -61,4 +61,4 @@ private:
     static void updateCounter(int &currentSec, int &calc, int &counter);
 };
 
-#endif
+#endif  // NET_PACKETCOUNTERS_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CHARSERVERHANDLER_H
-#define CHARSERVERHANDLER_H
+#ifndef NET_CHARSERVERHANDLER_H
+#define NET_CHARSERVERHANDLER_H
 
 #include "localplayer.h"
 #include "playerinfo.h"
@@ -120,4 +120,4 @@ class CharServerHandler
 
 }  // namespace Net
 
-#endif  // CHARSERVERHANDLER_H
+#endif  // NET_CHARSERVERHANDLER_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SERVERINFO_H
-#define SERVERINFO_H
+#ifndef NET_SERVERINFO_H
+#define NET_SERVERINFO_H
 
 #include "utils/stringutils.h"
 
@@ -141,4 +141,4 @@ public:
 
 typedef std::vector<ServerInfo> ServerInfos;
 
-#endif  // SERVERINFO_H
+#endif  // NET_SERVERINFO_H

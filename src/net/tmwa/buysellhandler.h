@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_BUYSELLHANDLER_H
-#define NET_TA_BUYSELLHANDLER_H
+#ifndef NET_TMWA_BUYSELLHANDLER_H
+#define NET_TMWA_BUYSELLHANDLER_H
 
 #include "net/buysellhandler.h"
 
@@ -48,4 +48,4 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
 
 }  // namespace TmwAthena
 
-#endif  // NET_TA_BUYSELLHANDLER_H
+#endif  // NET_TMWA_BUYSELLHANDLER_H

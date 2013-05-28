@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEINGHANDLER_H
-#define BEINGHANDLER_H
+#ifndef NET_BEINGHANDLER_H
+#define NET_BEINGHANDLER_H
 
 #include "being.h"
 #include "net/messagein.h"
@@ -43,4 +43,4 @@ class BeingHandler
 
 }  // namespace Net
 
-#endif  // BEINGHANDLER_H
+#endif  // NET_BEINGHANDLER_H

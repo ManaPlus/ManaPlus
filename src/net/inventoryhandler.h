@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INVENTORYHANDLER_H
-#define INVENTORYHANDLER_H
+#ifndef NET_INVENTORYHANDLER_H
+#define NET_INVENTORYHANDLER_H
 
 #include "item.h"
 
@@ -68,4 +68,4 @@ class InventoryHandler
 
 }  // namespace Net
 
-#endif  // INVENTORYHANDLER_H
+#endif  // NET_INVENTORYHANDLER_H

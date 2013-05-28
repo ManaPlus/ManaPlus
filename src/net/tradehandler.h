@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TRADEHANDLER_H
-#define TRADEHANDLER_H
+#ifndef NET_TRADEHANDLER_H
+#define NET_TRADEHANDLER_H
 
 #include "being.h"
 
@@ -66,4 +66,4 @@ class TradeHandler
 
 }  // namespace Net
 
-#endif  // TRADEHANDLER_H
+#endif  // NET_TRADEHANDLER_H

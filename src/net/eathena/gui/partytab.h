@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EATHENA_PARTYTAB_H
-#define EATHENA_PARTYTAB_H
+#ifndef NET_EATHENA_GUI_PARTYTAB_H
+#define NET_EATHENA_GUI_PARTYTAB_H
 
 #include "net/ea/gui/partytab.h"
 
@@ -43,4 +43,4 @@ class PartyTab : public Ea::PartyTab
 
 }  // namespace EAthena
 
-#endif  // EATHENA_PARTYTAB_H
+#endif  // NET_EATHENA_GUI_PARTYTAB_H

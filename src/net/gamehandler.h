@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAPHANDLER_H
-#define MAPHANDLER_H
+#ifndef NET_GAMEHANDLER_H
+#define NET_GAMEHANDLER_H
 
 #include "net/logindata.h"
 
@@ -65,4 +65,4 @@ class GameHandler
 
 }  // namespace Net
 
-#endif  // MAPHANDLER_H
+#endif  // NET_GAMEHANDLER_H

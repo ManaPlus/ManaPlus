@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUILDHANDLER_H
-#define GUILDHANDLER_H
+#ifndef NET_GUILDHANDLER_H
+#define NET_GUILDHANDLER_H
 
 #include "guild.h"
 
@@ -86,4 +86,4 @@ class GuildHandler
 
 }  // namespace Net
 
-#endif  // GUILDHANDLER_H
+#endif  // NET_GUILDHANDLER_H

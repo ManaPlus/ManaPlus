@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PARTYHANDLER_H
-#define PARTYHANDLER_H
+#ifndef NET_PARTYHANDLER_H
+#define NET_PARTYHANDLER_H
 
 #include "localconsts.h"
 
@@ -82,4 +82,4 @@ class PartyHandler
 
 }  // namespace Net
 
-#endif  // PARTYHANDLER_H
+#endif  // NET_PARTYHANDLER_H

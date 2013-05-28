@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EA_PARTYTAB_H
-#define EA_PARTYTAB_H
+#ifndef NET_EA_GUI_PARTYTAB_H
+#define NET_EA_GUI_PARTYTAB_H
 
 #include "gui/widgets/chattab.h"
 
@@ -62,4 +62,4 @@ extern PartyTab *partyTab;
 
 }  // namespace Ea
 
-#endif  // EA_PARTYTAB_H
+#endif  // NET_EA_GUI_PARTYTAB_H
