@@ -170,8 +170,8 @@ private:
     static size_t memoryWrite(void *ptr, size_t size, size_t nmemb,
                               FILE *stream);
 
-    const std::string prepareNick(std::string nick, int level,
-                                  std::string color) const A_WARN_UNUSED;
+    const std::string prepareNick(const std::string &nick, const int level,
+                                  const std::string &color) const A_WARN_UNUSED;
 
     void updateWindow(std::vector<OnlinePlayer*> &friends,
                       std::vector<OnlinePlayer*> &neutral,

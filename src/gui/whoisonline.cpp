@@ -158,7 +158,7 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
     {
         if (chatWindow)
         {
-            std::string text = decodeLinkText(link);
+            const std::string text = decodeLinkText(link);
             if (config.getBoolValue("whispertab"))
             {
                 chatWindow->localChatInput("/q " + text);
@@ -179,8 +179,8 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
         {
             if (actorSpriteManager)
             {
-                std::string text = decodeLinkText(link);
-                Being* being = actorSpriteManager->findBeingByName(
+                const std::string text = decodeLinkText(link);
+                Being *const being = actorSpriteManager->findBeingByName(
                     text, Being::PLAYER);
 
                 if (being && viewport)
@@ -267,7 +267,7 @@ void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
     FOR_EACH (std::vector<OnlinePlayer*>::const_iterator, it, list)
     {
         OnlinePlayer *player = *it;
-        std::string nick = player->getNick();
+        const std::string nick = player->getNick();
         mOnlinePlayers.insert(player);
         mOnlineNicks.insert(nick);
 
@@ -359,8 +359,6 @@ void WhoIsOnline::loadWebList()
         {
             if (lineStr.find(" users are online.") == std::string::npos)
             {
-                int level = 0;
-
                 if (lineStr.length() > 24)
                 {
                     nick = lineStr.substr(0, 24);
@@ -387,12 +385,13 @@ void WhoIsOnline::loadWebList()
                 if (pos != std::string::npos)
                     lineStr = lineStr.substr(0, pos);
 
+                int level = 0;
                 if (!lineStr.empty())
                     level = atoi(lineStr.c_str());
 
                 if (actorSpriteManager)
                 {
-                    Being *being = actorSpriteManager->findBeingByName(
+                    Being *const being = actorSpriteManager->findBeingByName(
                         nick, Being::PLAYER);
                     if (being)
                     {
@@ -409,11 +408,10 @@ void WhoIsOnline::loadWebList()
                     }
                 }
 
-
                 if (!mShowLevel)
                     level = 0;
 
-                OnlinePlayer *player = new OnlinePlayer(nick,
+                OnlinePlayer *const player = new OnlinePlayer(nick,
                     static_cast<signed char>(255), level,
                     GENDER_UNSPECIFIED, -1);
                 mOnlinePlayers.insert(player);
@@ -478,7 +476,7 @@ size_t WhoIsOnline::memoryWrite(void *ptr, size_t size,
     if (!stream)
         return 0;
 
-    WhoIsOnline *wio = reinterpret_cast<WhoIsOnline *>(stream);
+    WhoIsOnline *const wio = reinterpret_cast<WhoIsOnline *>(stream);
     const size_t totalMem = size * nmemb;
     wio->mMemoryBuffer = static_cast<char*>(realloc(wio->mMemoryBuffer,
         wio->mDownloadedBytes + totalMem));
@@ -494,9 +492,9 @@ size_t WhoIsOnline::memoryWrite(void *ptr, size_t size,
 int WhoIsOnline::downloadThread(void *ptr)
 {
     int attempts = 0;
-    WhoIsOnline *wio = reinterpret_cast<WhoIsOnline *>(ptr);
+    WhoIsOnline *const wio = reinterpret_cast<WhoIsOnline *>(ptr);
     CURLcode res;
-    std::string url(Client::getOnlineUrl() + "/online.txt");
+    const std::string url(Client::getOnlineUrl() + "/online.txt");
 
     while (attempts < 1 && !wio->mDownloadComplete)
     {
@@ -529,12 +527,12 @@ int WhoIsOnline::downloadThread(void *ptr)
             Net::Download::addProxy(curl);
             Net::Download::secureCurl(curl);
 
-            struct curl_slist *pHeaders = nullptr;
             // Make sure the resources2.txt and news.txt aren't cached,
             // in order to always get the latest version.
-            pHeaders = curl_slist_append(pHeaders, "pragma: no-cache");
-            pHeaders =
-                curl_slist_append(pHeaders, "Cache-Control: no-cache");
+            struct curl_slist *pHeaders = curl_slist_append(
+                pHeaders, "pragma: no-cache");
+            pHeaders = curl_slist_append(pHeaders,
+                "Cache-Control: no-cache");
             curl_easy_setopt(curl, CURLOPT_HTTPHEADER, pHeaders);
 
             if ((res = curl_easy_perform(curl)) != 0)
@@ -570,8 +568,6 @@ int WhoIsOnline::downloadThread(void *ptr)
 
     if (!wio->mDownloadComplete)
         wio->mDownloadStatus = UPDATE_ERROR;
-
-//    wio->mThread = 0;
     return 0;
 }
 
@@ -598,7 +594,6 @@ void WhoIsOnline::download()
 
 void WhoIsOnline::logic()
 {
-    // Update Scroll logic
     mScrollArea->logic();
 }
 
@@ -611,8 +606,8 @@ void WhoIsOnline::slowLogic()
     if (mUpdateTimer == 0)
         mUpdateTimer = cur_time;
 
-    double timeDiff = difftime(cur_time, mUpdateTimer);
-    int timeLimit = isWindowVisible() ? 20 : 120;
+    const double timeDiff = difftime(cur_time, mUpdateTimer);
+    const int timeLimit = isWindowVisible() ? 20 : 120;
 
     if (mUpdateOnlineList && timeDiff >= timeLimit
         && mDownloadStatus != UPDATE_LIST)
@@ -715,8 +710,8 @@ void WhoIsOnline::updateSize()
         mBrowserBox->setWidth(area.width - 10);
 }
 
-const std::string WhoIsOnline::prepareNick(std::string nick, int level,
-                                           std::string color) const
+const std::string WhoIsOnline::prepareNick(const std::string &nick, const int level,
+                                           const std::string &color) const
 {
     const std::string text = encodeLinkText(nick);
     if (mShowLevel && level > 1)
@@ -804,7 +799,7 @@ void OnlinePlayer::setText(std::string color)
 
     if (mStatus != 255 && actorSpriteManager)
     {
-        Being *being = actorSpriteManager->findBeingByName(
+        Being *const being = actorSpriteManager->findBeingByName(
             mNick, Being::PLAYER);
         if (being)
         {
