@@ -22,8 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef THEME_H
-#define THEME_H
+#ifndef GUI_THEME_H
+#define GUI_THEME_H
 
 #include "configlistener.h"
 #include "graphics.h"
@@ -507,4 +507,4 @@ class Theme final : public Palette, public ConfigListener
         ProgressColors mProgressColors;
 };
 
-#endif
+#endif  // GUI_THEME_H

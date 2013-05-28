@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TABLE_H
-#define TABLE_H
+#ifndef GUI_WIDGETS_GUITABLE_H
+#define GUI_WIDGETS_GUITABLE_H
 
 #include "localconsts.h"
 
@@ -193,4 +193,4 @@ private:
     gcn::Color mHighlightColor;
 };
 
-#endif  // TABLE_H
+#endif  // GUI_WIDGETS_GUITABLE_H

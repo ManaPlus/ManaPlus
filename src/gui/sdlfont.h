@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SDLFONT_H
-#define SDLFONT_H
+#ifndef GUI_SDLFONT_H
+#define GUI_SDLFONT_H
 
 #include <guichan/color.hpp>
 #include <guichan/font.hpp>
@@ -167,4 +167,4 @@ class SDLFont final : public gcn::Font
 extern int sdlTextChunkCnt;
 #endif
 
-#endif
+#endif  // GUI_SDLFONT_H

@@ -36,4 +36,4 @@ class Setup_Players final : public SetupTabScroll
         A_DELETE_COPY(Setup_Players)
 };
 
-#endif
+#endif  // GUI_SETUP_PLAYERS_H

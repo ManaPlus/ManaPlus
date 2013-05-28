@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LANGTAB_H
-#define LANGTAB_H
+#ifndef GUI_WIDGETS_LANGTAB_H
+#define GUI_WIDGETS_LANGTAB_H
 
 #include "gui/widgets/chattab.h"
 
@@ -39,4 +39,5 @@ class LangTab final : public ChatTab
 };
 
 extern LangTab *langChatTab;
-#endif
+
+#endif  // GUI_WIDGETS_LANGTAB_H

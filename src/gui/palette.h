@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PALETTE_H
-#define PALETTE_H
+#ifndef GUI_PALETTE_H
+#define GUI_PALETTE_H
 
 #include "logger.h"
 #include "utils/stringutils.h"
@@ -214,4 +214,4 @@ class Palette
         std::vector<ColorElem*> mGradVector;
 };
 
-#endif
+#endif  // GUI_PALETTE_H

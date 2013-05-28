@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_AVATARLISTBOX_H
-#define GUI_AVATARLISTBOX_H
+#ifndef GUI_WIDGETS_AVATARLISTBOX_H
+#define GUI_WIDGETS_AVATARLISTBOX_H
 
 #include "avatar.h"
 
@@ -71,4 +71,4 @@ private:
     static Image *offlineIcon;
 };
 
-#endif
+#endif  // GUI_WIDGETS_AVATARLISTBOX_H

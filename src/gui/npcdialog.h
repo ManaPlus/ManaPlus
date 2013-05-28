@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NPCDIALOG_H
-#define NPCDIALOG_H
+#ifndef GUI_NPCDIALOG_H
+#define GUI_NPCDIALOG_H
 
 #include "configlistener.h"
 
@@ -276,4 +276,4 @@ class NpcDialog final : public Window,
         bool mLogInteraction;
 };
 
-#endif  // NPCDIALOG_H
+#endif  // GUI_NPCDIALOG_H

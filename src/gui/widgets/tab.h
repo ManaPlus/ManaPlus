@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TAB_H
-#define TAB_H
+#ifndef GUI_WIDGETS_TAB_H
+#define GUI_WIDGETS_TAB_H
 
 #include "gui/widgets/widget2.h"
 
@@ -181,4 +181,4 @@ class Tab : public gcn::BasicContainer,
         int mMode;
 };
 
-#endif
+#endif  // GUI_WIDGETS_TAB_H

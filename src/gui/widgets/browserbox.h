@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BROWSERBOX_H
-#define BROWSERBOX_H
+#ifndef GUI_WIDGETS_BROWSERBOX_H
+#define GUI_WIDGETS_BROWSERBOX_H
 
 #include "gui/widgets/widget2.h"
 
@@ -273,4 +273,4 @@ class BrowserBox final : public gcn::Widget,
         static int mInstances;
 };
 
-#endif
+#endif  // GUI_WIDGETS_BROWSERBOX_H

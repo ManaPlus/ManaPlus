@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CHANGEPASSWORDDIALOG_H
-#define CHANGEPASSWORDDIALOG_H
+#ifndef GUI_CHANGEPASSWORDDIALOG_H
+#define GUI_CHANGEPASSWORDDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -73,4 +73,4 @@ class ChangePasswordDialog final : public Window, public gcn::ActionListener
         LoginData *mLoginData;
 };
 
-#endif
+#endif  // GUI_CHANGEPASSWORDDIALOG_H

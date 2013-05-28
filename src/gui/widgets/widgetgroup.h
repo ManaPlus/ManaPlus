@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETGROUP_H
-#define GUI_WIDGETGROUP_H
+#ifndef GUI_WIDGETS_WIDGETGROUP_H
+#define GUI_WIDGETS_WIDGETGROUP_H
 
 #include "gui/widgets/container.h"
 
@@ -64,4 +64,4 @@ class WidgetGroup : public Container,
         int mLastX;
 };
 
-#endif
+#endif  // GUI_WIDGETS_WIDGETGROUP_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UNREGISTERDIALOG_H
-#define UNREGISTERDIALOG_H
+#ifndef GUI_UNREGISTERDIALOG_H
+#define GUI_UNREGISTERDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -68,4 +68,4 @@ class UnRegisterDialog final : public Window, public gcn::ActionListener
         WrongDataNoticeListener *mWrongDataNoticeListener;
 };
 
-#endif
+#endif  // GUI_UNREGISTERDIALOG_H

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_RADIOGROUP_H
-#define GUI_RADIOGROUP_H
+#ifndef GUI_WIDGETS_RADIOGROUP_H
+#define GUI_WIDGETS_RADIOGROUP_H
 
 #include "gui/widgets/widgetgroup.h"
 
@@ -38,4 +38,4 @@ class RadioGroup final : public WidgetGroup
                                   override A_WARN_UNUSED;
 };
 
-#endif
+#endif  // GUI_WIDGETS_RADIOGROUP_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUYSELLDIALOG_H
-#define BUYSELLDIALOG_H
+#ifndef GUI_BUYSELLDIALOG_H
+#define GUI_BUYSELLDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -80,4 +80,4 @@ class BuySellDialog final : public Window, public gcn::ActionListener
         Button *mBuyButton;
 };
 
-#endif
+#endif  // GUI_BUYSELLDIALOG_H

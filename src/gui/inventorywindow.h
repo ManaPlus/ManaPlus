@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INVENTORYWINDOW_H
-#define INVENTORYWINDOW_H
+#ifndef GUI_INVENTORYWINDOW_H
+#define GUI_INVENTORYWINDOW_H
 
 #include "inventory.h"
 #include "depricatedlistener.h"
@@ -194,4 +194,4 @@ class InventoryWindow final : public Window,
 
 extern InventoryWindow *inventoryWindow;
 
-#endif
+#endif  // GUI_INVENTORYWINDOW_H

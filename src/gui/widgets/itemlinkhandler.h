@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ITEM_LINK_HANDLER_H
-#define ITEM_LINK_HANDLER_H
+#ifndef GUI_WIDGETS_ITEMLINKHANDLER_H
+#define GUI_WIDGETS_ITEMLINKHANDLER_H
 
 #include "gui/widgets/linkhandler.h"
 
@@ -45,4 +45,4 @@ class ItemLinkHandler final : public LinkHandler
         ItemPopup *mItemPopup;
 };
 
-#endif
+#endif  // GUI_WIDGETS_ITEMLINKHANDLER_H

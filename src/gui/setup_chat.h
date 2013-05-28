@@ -40,4 +40,4 @@ class Setup_Chat final : public SetupTabScroll
         void externalUpdated() override;
 };
 
-#endif
+#endif  // GUI_SETUP_CHAT_H

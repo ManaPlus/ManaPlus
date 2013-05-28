@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_TABSTRIP_H
-#define GUI_TABSTRIP_H
+#ifndef GUI_WIDGETS_TABSTRIP_H
+#define GUI_WIDGETS_TABSTRIP_H
 
 #include "gui/widgets/widgetgroup.h"
 
@@ -44,4 +44,4 @@ class TabStrip final : public WidgetGroup
         void action(const gcn::ActionEvent &event) override;
 };
 
-#endif
+#endif  // GUI_WIDGETS_TABSTRIP_H

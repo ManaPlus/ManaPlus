@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MINISTATUSWINDOW_H
-#define MINISTATUSWINDOW_H
+#ifndef GUI_MINISTATUSWINDOW_H
+#define GUI_MINISTATUSWINDOW_H
 
 #include "inventory.h"
 #include "depricatedlistener.h"
@@ -128,4 +128,4 @@ class MiniStatusWindow final : public Popup,
 
 extern MiniStatusWindow *miniStatusWindow;
 
-#endif
+#endif  // GUI_MINISTATUSWINDOW_H

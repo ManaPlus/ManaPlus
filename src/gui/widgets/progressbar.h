@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PROGRESSBAR_H
-#define PROGRESSBAR_H
+#ifndef GUI_WIDGETS_PROGRESSBAR_H
+#define GUI_WIDGETS_PROGRESSBAR_H
 
 #include "gui/widgets/widget2.h"
 
@@ -161,4 +161,4 @@ class ProgressBar final : public gcn::Widget,
         static const gcn::Color TEXT_COLOR;
 };
 
-#endif
+#endif  // GUI_WIDGETS_PROGRESSBAR_H

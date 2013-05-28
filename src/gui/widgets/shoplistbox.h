@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SHOPLISTBOX_H
-#define SHOPLISTBOX_H
+#ifndef GUI_WIDGETS_SHOPLISTBOX_H
+#define GUI_WIDGETS_SHOPLISTBOX_H
 
 #include "gui/widgets/listbox.h"
 
@@ -106,4 +106,4 @@ class ShopListBox final : public ListBox
         static float mAlpha;
 };
 
-#endif  // SHOPLISTBOX_H
+#endif  // GUI_WIDGETS_SHOPLISTBOX_H

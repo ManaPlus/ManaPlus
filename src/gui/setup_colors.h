@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SETUP_COLORS_H
-#define SETUP_COLORS_H
+#ifndef GUI_SETUP_COLORS_H
+#define GUI_SETUP_COLORS_H
 
 #include "gui/widgets/setuptab.h"
 
@@ -93,4 +93,4 @@ class Setup_Colors final : public SetupTab,
         void updateGradType();
 };
 
-#endif  // SETUP_COLORS_H
+#endif  // GUI_SETUP_COLORS_H

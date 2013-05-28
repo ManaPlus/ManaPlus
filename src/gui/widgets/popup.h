@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef POPUP_H
-#define POPUP_H
+#ifndef GUI_WIDGETS_POPUP_H
+#define GUI_WIDGETS_POPUP_H
 
 #include "configuration.h"
 #include "gui/widgets/container.h"
@@ -186,4 +186,4 @@ class Popup : public Container, public gcn::MouseListener,
         bool mRedraw;
 };
 
-#endif
+#endif  // GUI_WIDGETS_POPUP_H

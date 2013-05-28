@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TABLE_MODEL_H
-#define TABLE_MODEL_H
+#ifndef GUI_WIDGETS_TABLEMODEL_H
+#define GUI_WIDGETS_TABLEMODEL_H
 
 #include <set>
 #include <vector>
@@ -163,4 +163,4 @@ protected:
     std::vector<int> mWidths;
 };
 
-#endif  // TABLE_MODEL_H
+#endif  // GUI_WIDGETS_TABLEMODEL_H

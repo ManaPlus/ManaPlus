@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PLAYERBOX_H
-#define PLAYERBOX_H
+#ifndef GUI_WIDGETS_PLAYERBOX_H
+#define GUI_WIDGETS_PLAYERBOX_H
 
 #include "gui/widgets/widget2.h"
 
@@ -101,4 +101,4 @@ class PlayerBox final : public Widget2,
         bool mSelected;
 };
 
-#endif
+#endif  // GUI_WIDGETS_PLAYERBOX_H

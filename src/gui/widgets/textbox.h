@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TEXTBOX_H
-#define TEXTBOX_H
+#ifndef GUI_WIDGETS_TEXTBOX_H
+#define GUI_WIDGETS_TEXTBOX_H
 
 #include "gui/widgets/widget2.h"
 
@@ -73,4 +73,4 @@ class TextBox final : public gcn::TextBox,
         int mMinWidth;
 };
 
-#endif
+#endif  // GUI_WIDGETS_TEXTBOX_H

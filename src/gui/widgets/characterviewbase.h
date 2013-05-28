@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WIDGETS_CHARACTERVIEWBASE_H
-#define WIDGETS_CHARACTERVIEWBASE_H
+#ifndef GUI_WIDGETS_CHARACTERVIEWBASE_H
+#define GUI_WIDGETS_CHARACTERVIEWBASE_H
 
 #include "gui/charselectdialog.h"
 
@@ -62,4 +62,4 @@ class CharacterViewBase : public Container,
         int mSelected;
 };
 
-#endif
+#endif  // GUI_WIDGETS_CHARACTERVIEWBASE_H

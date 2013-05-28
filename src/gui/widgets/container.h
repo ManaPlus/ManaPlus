@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_CONTAINER_H
-#define GUI_CONTAINER_H
+#ifndef GUI_WIDGETS_CONTAINER_H
+#define GUI_WIDGETS_CONTAINER_H
 
 #include "gui/widgets/widget2.h"
 
@@ -52,4 +52,4 @@ class Container : public gcn::Container,
         bool safeRemove(gcn::Widget *const widget);
 };
 
-#endif
+#endif  // GUI_WIDGETS_CONTAINER_H

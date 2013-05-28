@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PROGRESSINDICATOR_H
-#define PROGRESSINDICATOR_H
+#ifndef GUI_WIDGETS_PROGRESSINDICATOR_H
+#define GUI_WIDGETS_PROGRESSINDICATOR_H
 
 #include "gui/widgets/widget2.h"
 
@@ -52,4 +52,4 @@ class ProgressIndicator final : public gcn::Widget,
         SimpleAnimation *mIndicator;
 };
 
-#endif  // PROGRESSINDICATOR_H
+#endif  // GUI_WIDGETS_PROGRESSINDICATOR_H

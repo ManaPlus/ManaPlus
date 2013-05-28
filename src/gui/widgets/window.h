@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef GUI_WIDGETS_WINDOW_H
+#define GUI_WIDGETS_WINDOW_H
 
 #include "graphics.h"
 #include "localconsts.h"
@@ -507,4 +507,4 @@ class Window : public gcn::Window,
         gcn::Font *mCaptionFont;
 };
 
-#endif
+#endif  // GUI_WIDGETS_WINDOW_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ICON_H
-#define ICON_H
+#ifndef GUI_WIDGETS_ICON_H
+#define GUI_WIDGETS_ICON_H
 
 #include "gui/widgets/widget2.h"
 
@@ -74,4 +74,4 @@ class Icon final : public gcn::Widget,
         Image *mImage;
 };
 
-#endif  // ICON_H
+#endif  // GUI_WIDGETS_ICON_H

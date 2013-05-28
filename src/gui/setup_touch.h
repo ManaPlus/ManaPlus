@@ -41,4 +41,4 @@ class Setup_Touch final : public SetupTabScroll
         TouchActionsModel *mActionsList;
 };
 
-#endif
+#endif  // GUI_SETUP_TOUCH_H

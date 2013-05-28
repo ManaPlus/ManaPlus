@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LOGINDIALOG_H
-#define LOGINDIALOG_H
+#ifndef GUI_LOGINDIALOG_H
+#define GUI_LOGINDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -107,4 +107,4 @@ class LoginDialog final : public Window, public gcn::ActionListener,
         std::string mServerName;
 };
 
-#endif
+#endif  // GUI_LOGINDIALOG_H

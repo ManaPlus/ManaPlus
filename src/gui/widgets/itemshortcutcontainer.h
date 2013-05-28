@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ITEMSHORTCUTCONTAINER_H
-#define ITEMSHORTCUTCONTAINER_H
+#ifndef GUI_WIDGETS_ITEMSHORTCUTCONTAINER_H
+#define GUI_WIDGETS_ITEMSHORTCUTCONTAINER_H
 
 #include "gui/widgets/shortcutcontainer.h"
 
@@ -94,4 +94,4 @@ class ItemShortcutContainer final : public ShortcutContainer
         gcn::Color mForegroundColor2;
 };
 
-#endif
+#endif  // GUI_WIDGETS_ITEMSHORTCUTCONTAINER_H

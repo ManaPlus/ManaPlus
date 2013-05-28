@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SPEECHBUBBLE_H
-#define SPEECHBUBBLE_H
+#ifndef GUI_SPEECHBUBBLE_H
+#define GUI_SPEECHBUBBLE_H
 
 #include "gui/theme.h"
 
@@ -61,4 +61,4 @@ class SpeechBubble final : public Popup
         TextBox *mSpeechBox;
 };
 
-#endif
+#endif  // GUI_SPEECHBUBBLE_H

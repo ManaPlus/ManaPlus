@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LINK_HANDLER_H
-#define LINK_HANDLER_H
+#ifndef GUI_WIDGETS_LINKHANDLER_H
+#define GUI_WIDGETS_LINKHANDLER_H
 
 #include <string>
 
@@ -41,4 +41,4 @@ class LinkHandler
                                 gcn::MouseEvent *event) = 0;
 };
 
-#endif
+#endif  // GUI_WIDGETS_LINKHANDLER_H

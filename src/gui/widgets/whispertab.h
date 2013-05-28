@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WHISPERTAB_H
-#define WHISPERTAB_H
+#ifndef GUI_WIDGETS_WHISPERTAB_H
+#define GUI_WIDGETS_WHISPERTAB_H
 
 #include "gui/widgets/chattab.h"
 
@@ -73,4 +73,4 @@ class WhisperTab final : public ChatTab
         std::string mNick;
 };
 
-#endif  // CHANNELTAB_H
+#endif  // GUI_WIDGETS_WHISPERTAB_H

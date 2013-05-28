@@ -81,4 +81,4 @@ private:
     DropDown *mIgnoreActionChoicesBox;
 };
 
-#endif
+#endif  // GUI_SETUP_RELATIONS_H

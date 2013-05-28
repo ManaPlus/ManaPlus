@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef POPUP_LIST_H
-#define POPUP_LIST_H
+#ifndef GUI_WIDGETS_POPUPLIST_H
+#define GUI_WIDGETS_POPUPLIST_H
 
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
@@ -75,4 +75,4 @@ class PopupList final : public Popup,
         bool mModal;
 };
 
-#endif
+#endif  // GUI_WIDGETS_POPUPLIST_H

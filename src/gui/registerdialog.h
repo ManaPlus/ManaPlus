@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef REGISTERDIALOG_H
-#define REGISTERDIALOG_H
+#ifndef GUI_REGISTERDIALOG_H
+#define GUI_REGISTERDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -112,4 +112,4 @@ class RegisterDialog final : public Window,
         WrongDataNoticeListener *mWrongDataNoticeListener;
 };
 
-#endif
+#endif  // GUI_REGISTERDIALOG_H

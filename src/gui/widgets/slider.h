@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SLIDER_H
-#define SLIDER_H
+#ifndef GUI_WIDGETS_SLIDER_H
+#define GUI_WIDGETS_SLIDER_H
 
 #include "gui/widgets/widget2.h"
 
@@ -110,4 +110,4 @@ class Slider final : public gcn::Slider,
         static int mInstances;
 };
 
-#endif
+#endif  // GUI_WIDGETS_SLIDER_H

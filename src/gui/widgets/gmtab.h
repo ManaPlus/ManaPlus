@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GMTAB_H
-#define GMTAB_H
+#ifndef GUI_WIDGETS_GMTAB_H
+#define GUI_WIDGETS_GMTAB_H
 
 #include "gui/widgets/chattab.h"
 
@@ -50,4 +50,4 @@ class GmTab final : public ChatTab
 
 extern GmTab *gmChatTab;
 
-#endif  // GMTAB_H
+#endif  // GUI_WIDGETS_GMTAB_H

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SETUPITEM_H
-#define SETUPITEM_H
+#ifndef GUI_WIDGETS_SETUPITEM_H
+#define GUI_WIDGETS_SETUPITEM_H
 
 #include "gui/widgets/tabbedarea.h"
 
@@ -456,4 +456,4 @@ class SetupItemSound final : public SetupItemSliderList
         Button *mButton;
 };
 
-#endif
+#endif  // GUI_WIDGETS_SETUPITEM_H

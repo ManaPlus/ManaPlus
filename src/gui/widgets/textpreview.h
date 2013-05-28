@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TEXTPREVIEW_H
-#define TEXTPREVIEW_H
+#ifndef GUI_WIDGETS_TEXTPREVIEW_H
+#define GUI_WIDGETS_TEXTPREVIEW_H
 
 #include "gui/widgets/widget2.h"
 
@@ -141,4 +141,4 @@ class TextPreview final : public gcn::Widget,
         static Skin *mSkin;
 };
 
-#endif
+#endif  // GUI_WIDGETS_TEXTPREVIEW_H

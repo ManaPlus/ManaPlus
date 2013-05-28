@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef OPTION_DIALOG_H
-#define OPTION_DIALOG_H
+#ifndef GUI_CONFIRMDIALOG_H
+#define GUI_CONFIRMDIALOG_H
 
 #include "localconsts.h"
 
@@ -59,4 +59,4 @@ class ConfirmDialog : public Window, public gcn::ActionListener
         TextBox *mTextBox;
 };
 
-#endif
+#endif  // GUI_CONFIRMDIALOG_H

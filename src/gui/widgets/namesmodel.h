@@ -55,4 +55,4 @@ class NamesModel : public gcn::ListModel
         StringVect mNames;
 };
 
-#endif
+#endif  // GUI_WIDGETS_NAMESMODEL_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SKILLINFO_H
-#define SKILLINFO_H
+#ifndef GUI_WIDGETS_SKILLINFO_H
+#define GUI_WIDGETS_SKILLINFO_H
 
 #include "gui/widgets/skilldata.h"
 
@@ -65,4 +65,4 @@ struct SkillInfo final
 typedef std::vector<SkillInfo*> SkillList;
 typedef SkillList::iterator SkillListIter;
 
-#endif
+#endif  // GUI_WIDGETS_SKILLINFO_H

@@ -44,4 +44,4 @@ class Setup_Audio final : public SetupTabScroll
         SetupItemNames *mChannelsList;
 };
 
-#endif
+#endif  // GUI_SETUP_AUDIO_H

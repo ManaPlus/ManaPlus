@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGET2_H
-#define GUI_WIDGET2_H
+#ifndef GUI_WIDGETS_WIDGET2_H
+#define GUI_WIDGETS_WIDGET2_H
 
 #include "gui/theme.h"
 
@@ -95,4 +95,5 @@ class Widget2
 };
 
 extern int openGLMode;
-#endif
+
+#endif  // GUI_WIDGETS_WIDGET2_H

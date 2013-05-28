@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_VERTCONTAINER_H
-#define GUI_VERTCONTAINER_H
+#ifndef GUI_WIDGETS_VERTCONTAINER_H
+#define GUI_WIDGETS_VERTCONTAINER_H
 
 #include "gui/widgets/container.h"
 
@@ -63,4 +63,4 @@ class VertContainer final : public Container, public gcn::WidgetListener
         bool mResizable;
 };
 
-#endif
+#endif  // GUI_WIDGETS_VERTCONTAINER_H

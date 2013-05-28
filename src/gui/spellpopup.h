@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SPELLPOPUP_H
-#define SPELLPOPUP_H
+#ifndef GUI_SPELLPOPUP_H
+#define GUI_SPELLPOPUP_H
 
 #include "gui/widgets/popup.h"
 
@@ -69,4 +69,4 @@ class SpellPopup final : public Popup
         Label *mItemComment;
 };
 
-#endif  // SPELLPOPUP_H
+#endif  // GUI_SPELLPOPUP_H

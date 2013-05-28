@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BATTLETAB_H
-#define BATTLETAB_H
+#ifndef GUI_WIDGETS_BATTLETAB_H
+#define GUI_WIDGETS_BATTLETAB_H
 
 #include "gui/widgets/chattab.h"
 
@@ -44,4 +44,5 @@ class BattleTab final : public ChatTab
 };
 
 extern BattleTab *battleChatTab;
-#endif
+
+#endif  // GUI_WIDGETS_BATTLETAB_H

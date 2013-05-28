@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EXTENDEDLISTMODEL_H
-#define EXTENDEDLISTMODEL_H
+#ifndef GUI_WIDGETS_EXTENDEDLISTMODEL_H
+#define GUI_WIDGETS_EXTENDEDLISTMODEL_H
 
 #include "resources/image.h"
 
@@ -31,4 +31,4 @@ class ExtendedListModel : public gcn::ListModel
         virtual const Image *getImageAt(int i) A_WARN_UNUSED = 0;
 };
 
-#endif
+#endif  // GUI_WIDGETS_EXTENDEDLISTMODEL_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RADIOBUTTON_H
-#define RADIOBUTTON_H
+#ifndef GUI_WIDGETS_RADIOBUTTON_H
+#define GUI_WIDGETS_RADIOBUTTON_H
 
 #include "gui/widgets/widget2.h"
 
@@ -91,4 +91,4 @@ class RadioButton final : public gcn::RadioButton,
         gcn::Color mForegroundColor2;
 };
 
-#endif  // RADIOBUTTON_H
+#endif  // GUI_WIDGETS_RADIOBUTTON_H

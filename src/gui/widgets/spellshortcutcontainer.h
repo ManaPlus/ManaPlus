@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SPELLSHORTCUTCONTAINER_H
-#define SPELLSHORTCUTCONTAINER_H
+#ifndef GUI_WIDGETS_SPELLSHORTCUTCONTAINER_H
+#define GUI_WIDGETS_SPELLSHORTCUTCONTAINER_H
 
 #include <guichan/mouselistener.hpp>
 
@@ -87,4 +87,4 @@ class SpellShortcutContainer final : public ShortcutContainer
         bool mSpellClicked;
 };
 
-#endif
+#endif  // GUI_WIDGETS_SPELLSHORTCUTCONTAINER_H

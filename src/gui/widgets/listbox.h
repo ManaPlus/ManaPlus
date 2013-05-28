@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LISTBOX_H
-#define LISTBOX_H
+#ifndef GUI_WIDGETS_LISTBOX_H
+#define GUI_WIDGETS_LISTBOX_H
 
 #include "gui/widgets/widget2.h"
 
@@ -101,4 +101,4 @@ class ListBox : public gcn::ListBox,
         Skin *mSkin;
 };
 
-#endif
+#endif  // GUI_WIDGETS_LISTBOX_H

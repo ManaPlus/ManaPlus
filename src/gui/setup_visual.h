@@ -45,4 +45,4 @@ class Setup_Visual final : public SetupTabScroll
         NamesModel *mVSyncList;
 };
 
-#endif
+#endif  // GUI_SETUP_VISUAL_H

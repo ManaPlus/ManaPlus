@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LAYOUTHELPER_H
-#define LAYOUTHELPER_H
+#ifndef GUI_WIDGETS_LAYOUTHELPER_H
+#define GUI_WIDGETS_LAYOUTHELPER_H
 
 #include "gui/widgets/layout.h"
 
@@ -85,4 +85,4 @@ class LayoutHelper final : public gcn::WidgetListener
         gcn::Container *mContainer;  /**< Managed container */
 };
 
-#endif  // LAYOUTHELPER_H
+#endif  // GUI_WIDGETS_LAYOUTHELPER_H

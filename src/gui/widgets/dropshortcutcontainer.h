@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DROPSHORTCUTCONTAINER_H
-#define DROPSHORTCUTCONTAINER_H
+#ifndef GUI_WIDGETS_DROPSHORTCUTCONTAINER_H
+#define GUI_WIDGETS_DROPSHORTCUTCONTAINER_H
 
 #include <guichan/mouselistener.hpp>
 
@@ -90,4 +90,4 @@ class DropShortcutContainer final : public ShortcutContainer
         gcn::Color mUnEquipedColor2;
 };
 
-#endif
+#endif  // GUI_WIDGETS_DROPSHORTCUTCONTAINER_H

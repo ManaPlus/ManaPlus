@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SHOPITEMS_H
-#define SHOPITEMS_H
+#ifndef GUI_WIDGETS_SHOPITEMS_H
+#define GUI_WIDGETS_SHOPITEMS_H
 
 #include <guichan/listmodel.hpp>
 
@@ -138,4 +138,4 @@ class ShopItems final : public gcn::ListModel
         bool mMergeDuplicates;
 };
 
-#endif  // SHOPITEMS_H
+#endif  // GUI_WIDGETS_SHOPITEMS_H

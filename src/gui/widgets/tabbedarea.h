@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TABBEDAREA_H
-#define TABBEDAREA_H
+#ifndef GUI_WIDGETS_TABBEDAREA_H
+#define GUI_WIDGETS_TABBEDAREA_H
 
 #include "gui/widgets/widget2.h"
 
@@ -239,4 +239,4 @@ class TabbedArea final : public Widget2,
         bool mBlockSwitching;
 };
 
-#endif
+#endif  // GUI_WIDGETS_TABBEDAREA_H

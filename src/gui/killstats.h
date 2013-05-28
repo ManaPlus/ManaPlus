@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KILLSTATS_H
-#define KILLSTATS_H
+#ifndef GUI_KILLSTATS_H
+#define GUI_KILLSTATS_H
 
 #include <guichan/actionlistener.hpp>
 
@@ -130,4 +130,4 @@ class KillStats final : public Window,
 
 extern KillStats *killStats;
 
-#endif
+#endif  // GUI_KILLSTATS_H

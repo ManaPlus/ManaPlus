@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EXTENDEDLISTBOX_H
-#define EXTENDEDLISTBOX_H
+#ifndef GUI_WIDGETS_EXTENDEDLISTBOX_H
+#define GUI_WIDGETS_EXTENDEDLISTBOX_H
 
 #include "gui/widgets/listbox.h"
 
@@ -56,4 +56,4 @@ class ExtendedListBox final : public ListBox
         int mItemPadding;
 };
 
-#endif
+#endif  // GUI_WIDGETS_EXTENDEDLISTBOX_H

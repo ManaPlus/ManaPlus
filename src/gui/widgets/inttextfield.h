@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INTTEXTFIELD_H
-#define INTTEXTFIELD_H
+#ifndef GUI_WIDGETS_INTTEXTFIELD_H
+#define GUI_WIDGETS_INTTEXTFIELD_H
 
 #include "gui/widgets/textfield.h"
 
@@ -77,4 +77,4 @@ class IntTextField final : public TextField
         int mValue;          /**< Current value */
 };
 
-#endif
+#endif  // GUI_WIDGETS_INTTEXTFIELD_H

@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_MOUSEEVENT_H
-#define GUI_MOUSEEVENT_H
+#ifndef GUI_WIDGETS_MOUSEEVENT_H
+#define GUI_WIDGETS_MOUSEEVENT_H
 
 #include <guichan/mouseevent.hpp>
 #include <guichan/widget.hpp>
@@ -45,4 +45,4 @@ class MouseEvent final : public gcn::MouseEvent
         { mY = n; }
 };
 
-#endif
+#endif  // GUI_WIDGETS_MOUSEEVENT_H

@@ -71,4 +71,4 @@ class NpcPostDialog final : public Window,
         TextField *mSender;
 };
 
-#endif
+#endif  // GUI_NPCPOSTDIALOG_H

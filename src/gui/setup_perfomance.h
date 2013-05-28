@@ -42,4 +42,4 @@ class Setup_Perfomance final : public SetupTabScroll
         NamesModel *mTexturesList;
 };
 
-#endif
+#endif  // GUI_SETUP_PERFOMANCE_H

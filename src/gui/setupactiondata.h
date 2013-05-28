@@ -1881,4 +1881,4 @@ static SetupActionData *const touchActionData[] =
     setupActionData6
 };
 
-#endif
+#endif  // GUI_SETUPACTIONDATA_H

@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EDITSERVERDIALOG_H
-#define EDITSERVERDIALOG_H
+#ifndef GUI_EDITSERVERDIALOG_H
+#define GUI_EDITSERVERDIALOG_H
 
 class Button;
 class Label;
@@ -112,4 +112,4 @@ class EditServerDialog final : public Window,
         int mIndex;
 };
 
-#endif  // EDITSERVERDIALOG_H
+#endif  // GUI_EDITSERVERDIALOG_H

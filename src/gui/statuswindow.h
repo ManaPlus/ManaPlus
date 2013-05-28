@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef STATUS_H
-#define STATUS_H
+#ifndef GUI_STATUSWINDOW_H
+#define GUI_STATUSWINDOW_H
 
 #include "depricatedlistener.h"
 
@@ -122,4 +122,4 @@ class StatusWindow final : public Window,
 
 extern StatusWindow *statusWindow;
 
-#endif
+#endif  // GUI_STATUSWINDOW_H

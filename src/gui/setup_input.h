@@ -100,4 +100,4 @@ class Setup_Input final : public SetupTab
         int *mActionDataSize;
 };
 
-#endif
+#endif  // GUI_SETUP_INPUT_H

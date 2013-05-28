@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WIDGET_LAYOUT_H
-#define WIDGET_LAYOUT_H
+#ifndef GUI_WIDGETS_LAYOUT_H
+#define GUI_WIDGETS_LAYOUT_H
 
 #include "localconsts.h"
 
@@ -363,4 +363,4 @@ class Layout final : public LayoutCell
         bool mComputed;
 };
 
-#endif  // WIDGET_LAYOUT_H
+#endif  // GUI_WIDGETS_LAYOUT_H

@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_HORIZONTCONTAINER_H
-#define GUI_HORIZONTCONTAINER_H
+#ifndef GUI_WIDGETS_HORIZONTCONTAINER_H
+#define GUI_WIDGETS_HORIZONTCONTAINER_H
 
 #include "gui/widgets/container.h"
 
@@ -55,4 +55,4 @@ class HorizontContainer final : public Container, public gcn::WidgetListener
         int mLastX;
 };
 
-#endif
+#endif  // GUI_WIDGETS_HORIZONTCONTAINER_H

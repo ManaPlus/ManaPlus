@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETUPTABSCROLL_H
-#define GUI_SETUPTABSCROLL_H
+#ifndef GUI_WIDGETS_SETUPTABSCROLL_H
+#define GUI_WIDGETS_SETUPTABSCROLL_H
 
 #include "gui/widgets/setuptab.h"
 
@@ -72,4 +72,4 @@ class SetupTabScroll : public SetupTab
         int mPreferredFirstItemSize;
 };
 
-#endif
+#endif  // GUI_WIDGETS_SETUPTABSCROLL_H

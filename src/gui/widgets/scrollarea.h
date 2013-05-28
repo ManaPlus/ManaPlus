@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SCROLLAREA_H
-#define SCROLLAREA_H
+#ifndef GUI_WIDGETS_SCROLLAREA_H
+#define GUI_WIDGETS_SCROLLAREA_H
 
 #include "gui/widgets/widget2.h"
 
@@ -196,4 +196,4 @@ class ScrollArea final : public gcn::ScrollArea,
         int mDrawHeight;
 };
 
-#endif
+#endif  // GUI_WIDGETS_SCROLLAREA_H

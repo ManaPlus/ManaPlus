@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TEXTFIELD_H
-#define TEXTFIELD_H
+#ifndef GUI_WIDGETS_TEXTFIELD_H
+#define GUI_WIDGETS_TEXTFIELD_H
 
 #include "gui/widgets/widget2.h"
 
@@ -154,4 +154,4 @@ class TextField : public gcn::TextField,
         PopupMenu *mPopupMenu;
 };
 
-#endif
+#endif  // GUI_WIDGETS_TEXTFIELD_H

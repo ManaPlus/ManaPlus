@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SKILLMODEL_H
-#define SKILLMODEL_H
+#ifndef GUI_WIDGETS_SKILLMODEL_H
+#define GUI_WIDGETS_SKILLMODEL_H
 
 #include "configuration.h"
 #include "effectmanager.h"
@@ -83,4 +83,4 @@ class SkillModel final : public gcn::ListModel
         SkillList mVisibleSkills;
 };
 
-#endif
+#endif  // GUI_WIDGETS_SKILLMODEL_H

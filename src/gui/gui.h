@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_H
-#define GUI_H
+#ifndef GUI_GUI_H
+#define GUI_GUI_H
 
 #include "resources/cursor.h"
 #include "resources/image.h"
@@ -191,4 +191,4 @@ extern SDLInput *guiInput;                  /**< GUI input */
  */
 extern SDLFont *boldFont;
 
-#endif  // GUI_H
+#endif  // GUI_GUI_H

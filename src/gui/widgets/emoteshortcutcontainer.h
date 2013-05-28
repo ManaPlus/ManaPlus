@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EMOTESHORTCUTCONTAINER_H
-#define EMOTESHORTCUTCONTAINER_H
+#ifndef GUI_WIDGETS_EMOTESHORTCUTCONTAINER_H
+#define GUI_WIDGETS_EMOTESHORTCUTCONTAINER_H
 
 #include "gui/widgets/shortcutcontainer.h"
 
@@ -89,4 +89,4 @@ class EmoteShortcutContainer final : public ShortcutContainer
         unsigned char mEmoteMoved;
 };
 
-#endif
+#endif  // GUI_WIDGETS_EMOTESHORTCUTCONTAINER_H

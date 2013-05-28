@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEINGPOPUP_H
-#define BEINGPOPUP_H
+#ifndef GUI_BEINGPOPUP_H
+#define GUI_BEINGPOPUP_H
 
 #include "gui/widgets/popup.h"
 
@@ -58,4 +58,4 @@ class BeingPopup final : public Popup
         Label *mBeingComment;
 };
 
-#endif  // BEINGPOPUP_H
+#endif  // GUI_BEINGPOPUP_H

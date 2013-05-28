@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SHORTCUTCONTAINER_H
-#define SHORTCUTCONTAINER_H
+#ifndef GUI_WIDGETS_SHORTCUTCONTAINER_H
+#define GUI_WIDGETS_SHORTCUTCONTAINER_H
 
 #include "gui/widgets/tab.h"
 
@@ -120,4 +120,4 @@ class ShortcutContainer : public gcn::Widget,
         bool mRedraw;
 };
 
-#endif
+#endif  // GUI_WIDGETS_SHORTCUTCONTAINER_H

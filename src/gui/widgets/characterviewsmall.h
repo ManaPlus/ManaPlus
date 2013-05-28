@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WIDGETS_CHARACTERVIEWSMALL_H
-#define WIDGETS_CHARACTERVIEWSMALL_H
+#ifndef GUI_WIDGETS_CHARACTERVIEWSMALL_H
+#define GUI_WIDGETS_CHARACTERVIEWSMALL_H
 
 #include "gui/widgets/characterviewbase.h"
 
@@ -51,4 +51,4 @@ class CharacterViewSmall final : public CharacterViewBase
         std::vector<CharacterDisplay*> *mCharacterEntries;
 };
 
-#endif
+#endif  // GUI_WIDGETS_CHARACTERVIEWSMALL_H

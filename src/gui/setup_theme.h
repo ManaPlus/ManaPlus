@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_Setup_Theme_H
-#define GUI_Setup_Theme_H
+#ifndef GUI_SETUP_THEME_H
+#define GUI_SETUP_THEME_H
 
 #include "gui/widgets/setuptab.h"
 
@@ -103,4 +103,4 @@ class Setup_Theme final : public SetupTab
         std::string mThemeInfo;
 };
 
-#endif
+#endif  // GUI_SETUP_THEME_H

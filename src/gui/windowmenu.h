@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WINDOWMENU_H
-#define WINDOWMENU_H
+#ifndef GUI_WINDOWMENU_H
+#define GUI_WINDOWMENU_H
 
 #include "configlistener.h"
 
@@ -138,4 +138,4 @@ class WindowMenu final : public Container,
 
 extern WindowMenu *windowMenu;
 
-#endif
+#endif  // GUI_WINDOWMENU_H

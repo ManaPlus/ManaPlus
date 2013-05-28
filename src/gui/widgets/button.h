@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUTTON_H
-#define BUTTON_H
+#ifndef GUI_WIDGETS_BUTTON_H
+#define GUI_WIDGETS_BUTTON_H
 
 #include "gui/widgets/widget2.h"
 
@@ -168,4 +168,4 @@ class Button final : public gcn::Button,
         bool mPressed;
 };
 
-#endif
+#endif  // GUI_WIDGETS_BUTTON_H

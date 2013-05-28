@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef VIEWPORT_H
-#define VIEWPORT_H
+#ifndef GUI_VIEWPORT_H
+#define GUI_VIEWPORT_H
 
 #include "configlistener.h"
 #include "maplayer.h"
@@ -345,4 +345,4 @@ class Viewport final : public WindowContainer,
 
 extern Viewport *viewport;           /**< The viewport. */
 
-#endif
+#endif  // GUI_VIEWPORT_H

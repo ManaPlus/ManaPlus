@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DESKTOP_H
-#define DESKTOP_H
+#ifndef GUI_WIDGETS_DESKTOP_H
+#define GUI_WIDGETS_DESKTOP_H
 
 #include "gui/widgets/container.h"
 
@@ -71,4 +71,4 @@ class Desktop final : public Container, private gcn::WidgetListener
         gcn::Color mBackgroundGrayColor;
 };
 
-#endif  // DESKTOP_H
+#endif  // GUI_WIDGETS_DESKTOP_H

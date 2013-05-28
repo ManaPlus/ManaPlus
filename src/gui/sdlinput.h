@@ -56,8 +56,8 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SDLINPUT_H
-#define SDLINPUT_H
+#ifndef GUI_SDLINPUT_H
+#define GUI_SDLINPUT_H
 
 #include "keyinput.h"
 
@@ -196,4 +196,4 @@ protected:
     bool mMouseInWindow;
 };
 
-#endif
+#endif  // GUI_SDLINPUT_H

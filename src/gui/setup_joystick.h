@@ -59,4 +59,4 @@ class Setup_Joystick final : public SetupTab
         CheckBox *mUseInactiveCheckBox;
 };
 
-#endif
+#endif  // GUI_SETUP_JOYSTICK_H

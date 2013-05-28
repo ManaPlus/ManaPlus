@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef StatusPopup_H
-#define StatusPopup_H
+#ifndef GUI_STATUSPOPUP_H
+#define GUI_STATUSPOPUP_H
 
 #include "keydata.h"
 
@@ -71,4 +71,4 @@ class StatusPopup final : public Popup
         Label *mLabels[STATUSPOPUP_NUM_LABELS];
 };
 
-#endif  // StatusPopup_H
+#endif  // GUI_STATUSPOPUP_H

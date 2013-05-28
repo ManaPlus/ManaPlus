@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef OUTFITWINDOW_H
-#define OUTFITWINDOW_H
+#ifndef GUI_OUTFITWINDOW_H
+#define GUI_OUTFITWINDOW_H
 
 #include "gui/widgets/window.h"
 
@@ -141,4 +141,4 @@ class OutfitWindow final : public Window,
 
 extern OutfitWindow *outfitWindow;
 
-#endif
+#endif  // GUI_OUTFITWINDOW_H

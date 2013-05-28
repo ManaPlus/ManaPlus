@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TEXTPOPUP_H
-#define TEXTPOPUP_H
+#ifndef GUI_TEXTPOPUP_H
+#define GUI_TEXTPOPUP_H
 
 #include "gui/widgets/popup.h"
 
@@ -79,4 +79,4 @@ class TextPopup final : public Popup
         Label *mText[TEXTPOPUPCOUNT];
 };
 
-#endif  // TEXTPOPUP_H
+#endif  // GUI_TEXTPOPUP_H

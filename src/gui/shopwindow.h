@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SHOP_H
-#define SHOP_H
+#ifndef GUI_SHOPWINDOW_H
+#define GUI_SHOPWINDOW_H
 
 #include "gui/widgets/window.h"
 
@@ -176,4 +176,4 @@ class ShopWindow final : public Window, public gcn::ActionListener,
 
 extern ShopWindow *shopWindow;
 
-#endif
+#endif  // GUI_SHOPWINDOW_H

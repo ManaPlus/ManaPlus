@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CHECKBOX_H
-#define CHECKBOX_H
+#ifndef GUI_WIDGETS_CHECKBOX_H
+#define GUI_WIDGETS_CHECKBOX_H
 
 #include "gui/widgets/widget2.h"
 
@@ -98,4 +98,4 @@ class CheckBox final : public gcn::CheckBox,
         static float mAlpha;
 };
 
-#endif
+#endif  // GUI_WIDGETS_CHECKBOX_H

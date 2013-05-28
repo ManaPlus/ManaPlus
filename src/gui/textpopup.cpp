@@ -32,7 +32,6 @@
 
 #include "utils/gettext.h"
 
-//#include <guichan/rectangle.hpp>
 #include <guichan/font.hpp>
 
 #include "debug.h"

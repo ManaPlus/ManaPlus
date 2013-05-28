@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UPDATERWINDOW_H
-#define UPDATERWINDOW_H
+#ifndef GUI_UPDATERWINDOW_H
+#define GUI_UPDATERWINDOW_H
 
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
@@ -253,4 +253,4 @@ private:
     std::string mUpdateServerPath;
 };
 
-#endif
+#endif  // GUI_UPDATERWINDOW_H

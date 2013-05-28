@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PASSWORDFIELD_H
-#define PASSWORDFIELD_H
+#ifndef GUI_WIDGETS_PASSWORDFIELD_H
+#define GUI_WIDGETS_PASSWORDFIELD_H
 
 #include "gui/widgets/textfield.h"
 
@@ -50,4 +50,4 @@ class PasswordField final : public TextField
         int mPasswordChar;
 };
 
-#endif
+#endif  // GUI_WIDGETS_PASSWORDFIELD_H

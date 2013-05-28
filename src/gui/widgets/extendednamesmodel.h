@@ -58,4 +58,4 @@ class ExtendedNamesModel : public ExtendedListModel
         std::vector<Image*> mImages;
 };
 
-#endif
+#endif  // GUI_WIDGETS_EXTENDEDNAMESMODEL_H

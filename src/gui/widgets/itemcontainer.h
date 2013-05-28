@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ITEMCONTAINER_H
-#define ITEMCONTAINER_H
+#ifndef GUI_WIDGETS_ITEMCONTAINER_H
+#define GUI_WIDGETS_ITEMCONTAINER_H
 
 #include "gui/widgets/widget2.h"
 
@@ -227,4 +227,4 @@ class ItemContainer final : public gcn::Widget,
         gcn::Color mUnEquipedColor2;
 };
 
-#endif
+#endif  // GUI_WIDGETS_ITEMCONTAINER_H

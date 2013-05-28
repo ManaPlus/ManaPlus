@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef FLOWCONTAINER_H
-#define FLOWCONTAINER_H
+#ifndef GUI_WIDGETS_FLOWCONTAINER_H
+#define GUI_WIDGETS_FLOWCONTAINER_H
 
 #include "gui/widgets/container.h"
 
@@ -71,4 +71,4 @@ class FlowContainer final : public Container,
         int mGridWidth, mGridHeight;
 };
 
-#endif
+#endif  // GUI_WIDGETS_FLOWCONTAINER_H

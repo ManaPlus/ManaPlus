@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CHAR_SELECT_H
-#define CHAR_SELECT_H
+#ifndef GUI_CHARSELECTDIALOG_H
+#define GUI_CHARSELECTDIALOG_H
 
 #include "being.h"
 #include "main.h"
@@ -131,4 +131,4 @@ class CharSelectDialog final : public Window,
         bool mSmallScreen;
 };
 
-#endif
+#endif  // GUI_CHARSELECTDIALOG_H

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SETUPTOUCHITEM_H
-#define SETUPTOUCHITEM_H
+#ifndef GUI_WIDGETS_SETUPTOUCHITEM_H
+#define GUI_WIDGETS_SETUPTOUCHITEM_H
 
 #include "gui/setupactiondata.h"
 
@@ -81,4 +81,4 @@ class SetupActionDropDown final : public SetupItem
         int mWidth;
 };
 
-#endif
+#endif  // GUI_WIDGETS_SETUPTOUCHITEM_H

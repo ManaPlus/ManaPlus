@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SKILLDATA_H
-#define SKILLDATA_H
+#ifndef GUI_WIDGETS_SKILLDATA_H
+#define GUI_WIDGETS_SKILLDATA_H
 
 #include "gui/theme.h"
 
@@ -47,4 +47,4 @@ struct SkillData final
     void setIcon(const std::string &iconPath);
 };
 
-#endif
+#endif  // GUI_WIDGETS_SKILLDATA_H

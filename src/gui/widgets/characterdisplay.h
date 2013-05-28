@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WIDGETS_CHARACTER_DISPLAY_H
-#define WIDGETS_CHARACTER_DISPLAY_H
+#ifndef GUI_WIDGETS_CHARACTERDISPLAY_H
+#define GUI_WIDGETS_CHARACTERDISPLAY_H
 
 #include "gui/widgets/container.h"
 #include "gui/widgets/playerbox.h"
@@ -90,4 +90,4 @@ class CharacterDisplay final : public Container,
         TextPopup *mPopup;
 };
 
-#endif
+#endif  // GUI_WIDGETS_CHARACTERDISPLAY_H

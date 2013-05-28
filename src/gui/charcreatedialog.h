@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CHAR_CREATE_DIALOG_H
-#define CHAR_CREATE_DIALOG_H
+#ifndef GUI_CHARCREATEDIALOG_H
+#define GUI_CHARCREATEDIALOG_H
 
 #include "being.h"
 
@@ -154,4 +154,4 @@ class CharCreateDialog final : public Window,
         unsigned mDirection;
 };
 
-#endif  // CHAR_CREATE_DIALOG_H
+#endif  // GUI_CHARCREATEDIALOG_H

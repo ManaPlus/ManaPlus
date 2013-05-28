@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DROPDOWN_H
-#define DROPDOWN_H
+#ifndef GUI_WIDGETS_DROPDOWN_H
+#define GUI_WIDGETS_DROPDOWN_H
 
 #include "gui/widgets/widget2.h"
 
@@ -171,4 +171,4 @@ class DropDown final : public gcn::ActionListener,
         static Skin *mSkin;
 };
 
-#endif  // end DROPDOWN_H
+#endif  // GUI_WIDGETS_DROPDOWN_H

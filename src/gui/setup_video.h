@@ -81,4 +81,4 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
         bool mNoFrame;
 };
 
-#endif
+#endif  // GUI_SETUP_VIDEO_H

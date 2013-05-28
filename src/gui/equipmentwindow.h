@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EQUIPMENTWINDOW_H
-#define EQUIPMENTWINDOW_H
+#ifndef GUI_EQUIPMENTWINDOW_H
+#define GUI_EQUIPMENTWINDOW_H
 
 #include "equipment.h"
 #include "localconsts.h"
@@ -153,4 +153,4 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
 extern EquipmentWindow *equipmentWindow;
 extern EquipmentWindow *beingEquipmentWindow;
 
-#endif
+#endif  // GUI_EQUIPMENTWINDOW_H
