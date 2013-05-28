@@ -46,7 +46,13 @@ void NPCDB::load()
 
     logger->log1("Initializing NPC database...");
 
-    XML::Document doc(paths.getStringValue("npcsFile"));
+    loadXmlFile(paths.getStringValue("npcsFile"));
+    mLoaded = true;
+}
+
+void NPCDB::loadXmlFile(const std::string &fileName)
+{
+    XML::Document doc(fileName);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "npcs"))
@@ -60,6 +66,14 @@ void NPCDB::load()
     // iterate <npc>s
     for_each_xml_child_node(npcNode, rootNode)
     {
+        if (xmlNameEqual(npcNode, "include"))
+        {
+            const std::string name = XML::getProperty(npcNode, "name", "");
+            if (!name.empty())
+                loadXmlFile(name);
+            continue;
+        }
+
         if (!xmlNameEqual(npcNode, "npc"))
             continue;
 
@@ -123,7 +137,6 @@ void NPCDB::load()
         mNPCInfos[id] = currentInfo;
     }
 
-    mLoaded = true;
 }
 
 void NPCDB::unload()

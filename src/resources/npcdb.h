@@ -25,6 +25,8 @@
 
 #include <stdint.h>
 
+#include <string>
+
 #include "localconsts.h"
 
 class BeingInfo;
@@ -41,6 +43,8 @@ namespace NPCDB
     BeingInfo *get(const int id) A_WARN_UNUSED;
 
     uint16_t getAvatarFor(const int id);
+
+    void loadXmlFile(const std::string &fileName);
 }
 
 #endif  // RESOURCES_NPCDB_H
