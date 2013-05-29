@@ -200,7 +200,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     if (dstBeing->getType() == ActorSprite::MONSTER && player_node)
         player_node->checkNewName(dstBeing);
 
-    const int hairStyle = msg.readInt16();
+    const int hairStyle = msg.readInt8();
+    msg.readInt8();  // free
     const uint16_t weapon = msg.readInt16();
     const uint16_t headBottom = msg.readInt16();
 
@@ -210,7 +211,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     const uint16_t shield = msg.readInt16();
     const uint16_t headTop = msg.readInt16();
     const uint16_t headMid = msg.readInt16();
-    const int hairColor = msg.readInt16();
+    const int hairColor = msg.readInt8();
+    msg.readInt8();  // free
     const uint16_t shoes = msg.readInt16();  // clothes color
 
     uint16_t gloves;

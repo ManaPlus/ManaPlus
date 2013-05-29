@@ -159,7 +159,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     msg.readInt16();                          // speed
     tempPlayer->setSubtype(msg.readInt16());  // class (used for race)
-    const int hairStyle = msg.readInt16();
+    const int hairStyle = msg.readInt8();
+    msg.readInt8();  // free
     const uint16_t weapon = msg.readInt16();   // unused on server. need use?
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
@@ -172,9 +173,10 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const int hat = msg.readInt16();  // head option top
     const int topClothes = msg.readInt16();
 
-    int hairColor = msg.readInt16();
+    int hairColor = msg.readInt8();
     if (hairColor > 255)
         hairColor = 255;
+    msg.readInt8();  // free
     tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
     tempPlayer->setHairColor(static_cast<unsigned char>(hairColor));
@@ -253,8 +255,10 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
         outMsg.writeInt8(static_cast<unsigned char>(stats[i]));
 
     outMsg.writeInt8(static_cast<unsigned char>(slot));
-    outMsg.writeInt16(static_cast<int16_t>(hairColor));
-    outMsg.writeInt16(static_cast<int16_t>(hairstyle));
+    outMsg.writeInt8(static_cast<int8_t>(hairColor));
+    outMsg.writeInt8(0);  // unused
+    outMsg.writeInt8(static_cast<int8_t>(hairstyle));
+    outMsg.writeInt8(0);  // unused
     if (serverVersion >= 2)
         outMsg.writeInt8(race);
 }

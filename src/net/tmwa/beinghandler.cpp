@@ -477,7 +477,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     dstBeing->setSubtype(job);
 
-    const int hairStyle = msg.readInt16();
+    const int hairStyle = msg.readInt8();
+    msg.readInt8();  // free
     const uint16_t weapon = msg.readInt16();
     const uint16_t shield = msg.readInt16();
     const uint16_t headBottom = msg.readInt16();
@@ -487,7 +488,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     const uint16_t headTop = msg.readInt16();
     const uint16_t headMid = msg.readInt16();
-    const int hairColor = msg.readInt16();
+    const int hairColor = msg.readInt8();
+    msg.readInt8();  // free
 
     unsigned char colors[9];
     colors[0] = msg.readInt8();
