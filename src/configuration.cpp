@@ -367,6 +367,16 @@ Configuration::~Configuration()
     cleanDefaults();
 }
 
+void Configuration::unload()
+{
+    cleanDefaults();
+    mConfigPath.clear();
+    mDirectory.clear();
+    mFilename.clear();
+    mUseResManager = false;
+    ConfigurationObject::clear();
+}
+
 void Configuration::setDefaultValues(DefaultsData *const defaultsData)
 {
     cleanDefaults();

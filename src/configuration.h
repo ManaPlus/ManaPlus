@@ -251,6 +251,8 @@ class Configuration final : public ConfigurationObject
 
         void reInit();
 
+        void unload();
+
         /**
          * Set the default values for each keys.
          *
