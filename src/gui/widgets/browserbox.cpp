@@ -254,6 +254,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             setWidth(w);
     }
 
+    const int fontHeight = font->getHeight();
     if (mMode == AUTO_WRAP)
     {
         unsigned int y = 0;
@@ -268,7 +269,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             for (unsigned int j = 0, sz = static_cast<unsigned int>(
                  tempRow.size()); j < sz; j++)
             {
-                std::string character = tempRow.substr(j, 1);
+                const std::string character = tempRow.substr(j, 1);
                 x += font->getWidth(character);
                 nextChar = j + 1;
 
@@ -302,12 +303,11 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             }
         }
 
-        setHeight(font->getHeight() * (static_cast<int>(
-            mTextRows.size()) + y));
+        setHeight(fontHeight * (static_cast<int>(mTextRows.size()) + y));
     }
     else
     {
-        setHeight(font->getHeight() * static_cast<int>(mTextRows.size()));
+        setHeight(fontHeight * static_cast<int>(mTextRows.size()));
     }
     mUpdateTime = 0;
     updateHeight();
@@ -461,7 +461,6 @@ int BrowserBox::calcHeight()
         return 1;
 
     const gcn::Font *const font = getFont();
-
     const int fontHeight = font->getHeight();
     const int fontWidthMinus = font->getWidth("-");
     const char *const hyphen = "~";
@@ -647,7 +646,6 @@ int BrowserBox::calcHeight()
                 break;
 
             std::string part = row.substr(start, len);
-
             int width = 0;
             if (bold)
                 width = boldFont->getWidth(part);
@@ -723,10 +721,7 @@ int BrowserBox::calcHeight()
         y += fontHeight;
     }
     if (static_cast<signed>(wWidth) != maxWidth)
-    {
-//        wWidth = maxWidth;
         setWidth(maxWidth);
-    }
 
     return (static_cast<int>(mTextRows.size()) + wrappedLines)
         * fontHeight + moreHeight + 2 * mPadding;
@@ -751,7 +746,7 @@ std::string BrowserBox::getTextAtPos(const int x, const int y) const
 
     getAbsolutePosition(textX, textY);
     if (x < textX || y < textY)
-        return "";
+        return std::string();
 
     textY = y - textY;
     std::string str;
