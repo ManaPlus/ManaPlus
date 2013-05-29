@@ -2261,7 +2261,7 @@ void Client::initScreenshotDir()
         if (config.getBoolValue("useScreenshotDirectorySuffix"))
         {
             const std::string configScreenshotSuffix =
-                branding.getValue("appShort", "mana");
+                branding.getValue("screenshots", "ManaPlus");
 
             if (!configScreenshotSuffix.empty())
             {

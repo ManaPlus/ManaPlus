@@ -380,6 +380,7 @@ DefaultsData* getBrandingDefaults()
            "http://manaplus.org/serverlist.xml");
     AddDEF("onlineServerFile", "serverlistplus.xml");
     AddDEF("appShort", "mana");
+    AddDEF("screenshots", "ManaPlus");
     AddDEF("defaultUpdateHost", "");
     AddDEF("helpPath", "");
     AddDEF("theme", "");

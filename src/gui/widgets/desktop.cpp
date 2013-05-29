@@ -45,7 +45,7 @@ Desktop::Desktop(const Widget2 *const widget) :
 
     Wallpaper::loadWallpapers();
 
-    std::string appName = branding.getValue("appName", std::string(""));
+    std::string appName = branding.getValue("appName", std::string());
 
     if (appName.empty())
     {

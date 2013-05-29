@@ -3,6 +3,7 @@
     <option name="appName" value="The Mana World"/>
     <option name="appShort" value="mana"/>
     <option name="appIcon" value="tmw/icons/tmw.png"/>
+    <option name="screenshots" value="TheManaWorld"/>
     <option name="loginMusic" value="Magick - Real.ogg"/>
     <option name="onlineServerList" value="http://manaplus.evolonline.org/serverlist.xml"/>
     <option name="defaultServer" value="server.themanaworld.org"/>
