@@ -292,11 +292,11 @@ void Button::updateAlpha()
         {
             for (int a = 0; a < 9; a ++)
             {
-                Skin *skin = button[mode];
+                Skin *const skin = button[mode];
                 if (skin)
                 {
                     const ImageRect &rect = skin->getBorder();
-                    Image *image = rect.grid[a];
+                    Image *const image = rect.grid[a];
                     if (image)
                         image->setAlpha(mAlpha);
                 }
@@ -379,13 +379,15 @@ void Button::draw(gcn::Graphics *graphics)
     int imageX = 0;
     int imageY = 0;
     int textX = 0;
-    int textY = getHeight() / 2 - getFont()->getHeight() / 2;
+    const gcn::Rectangle &rect = mDimension;
+    const int width = rect.width;
+    const int height = rect.height;
+    gcn::Font *const font = getFont();
+    int textY = height / 2 - font->getHeight() / 2;
     if (mImages)
-        imageY = getHeight() / 2 - mImageHeight / 2;
+        imageY = height / 2 - mImageHeight / 2;
 
 // need move calculation from draw!!!
-
-    gcn::Font *const font = getFont();
 
     switch (mAlignment)
     {
@@ -405,24 +407,24 @@ void Button::draw(gcn::Graphics *graphics)
         }
         case gcn::Graphics::CENTER:
         {
-            const int width = font->getWidth(mCaption);
+            const int width1 = font->getWidth(mCaption);
             if (mImages)
             {
-                const int w = width + mImageWidth + spacing;
-                imageX = (getWidth() - w) / 2;
-                textX = imageX + mImageWidth + spacing - width / 2;
+                const int w = width1 + mImageWidth + spacing;
+                imageX = (width - w) / 2;
+                textX = imageX + mImageWidth + spacing - width1 / 2;
             }
             else
             {
-                textX = (getWidth() - width) / 2;
+                textX = (width - width1) / 2;
             }
             break;
         }
         case gcn::Graphics::RIGHT:
         {
-            const int width = font->getWidth(mCaption);
-            textX = getWidth() - width - padding;
-            imageX = textX - width - spacing;
+            const int width1 = font->getWidth(mCaption);
+            textX = width - width1 - padding;
+            imageX = textX - width1 - spacing;
             break;
         }
     }
@@ -434,7 +436,7 @@ void Button::draw(gcn::Graphics *graphics)
             mRedraw = false;
             mMode = mode;
             mVertexes2->clear();
-            g2->calcWindow(mVertexes2, 0, 0, getWidth(), getHeight(),
+            g2->calcWindow(mVertexes2, 0, 0, width, height,
                 skin->getBorder());
 
             if (mImages)
@@ -454,7 +456,7 @@ void Button::draw(gcn::Graphics *graphics)
     }
     else
     {
-        g2->drawImageRect(0, 0, getWidth(), getHeight(), skin->getBorder());
+        g2->drawImageRect(0, 0, width, height, skin->getBorder());
         if (mImages)
         {
             if (isPressed())
