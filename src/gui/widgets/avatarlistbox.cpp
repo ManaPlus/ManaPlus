@@ -102,7 +102,6 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
     updateAlpha();
     Graphics *const graphics = static_cast<Graphics *const>(gcnGraphics);
 
-//    mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
     gcn::Font *const font = getFont();
 
     const int fontHeight = getFont()->getHeight();
@@ -318,7 +317,8 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
     if (!ava)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    const unsigned int eventButton = event.getButton();
+    if (eventButton == gcn::MouseEvent::LEFT)
     {
         if (ava->getType() == AVATAR_PLAYER)
         {
@@ -332,7 +332,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             player_node->navigateTo(ava->getX(), ava->getY());
         }
     }
-    else if (event.getButton() == gcn::MouseEvent::RIGHT)
+    else if (eventButton == gcn::MouseEvent::RIGHT)
     {
         switch (ava->getType())
         {
@@ -390,7 +390,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             }
         }
     }
-    else if (event.getButton() == gcn::MouseEvent::MIDDLE)
+    else if (eventButton == gcn::MouseEvent::MIDDLE)
     {
         if (ava->getType() == AVATAR_PLAYER && chatWindow)
         {
