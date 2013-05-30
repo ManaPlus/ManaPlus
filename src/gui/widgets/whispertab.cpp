@@ -157,7 +157,7 @@ bool WhisperTab::handleCommand(const std::string &type,
     return true;
 }
 
-void WhisperTab::saveToLogFile(std::string &msg)
+void WhisperTab::saveToLogFile(const std::string &msg)
 {
     if (chatLogger)
         chatLogger->log(getNick(), msg);

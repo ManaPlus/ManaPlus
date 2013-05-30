@@ -49,7 +49,7 @@ BattleTab::~BattleTab()
 {
 }
 
-void BattleTab::saveToLogFile(std::string &msg)
+void BattleTab::saveToLogFile(const std::string &msg)
 {
     if (chatLogger)
         chatLogger->log(std::string("#Battle"), std::string(msg));

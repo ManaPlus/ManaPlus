@@ -141,7 +141,7 @@ class ChatTab : public Tab
          */
         virtual int getType() const A_WARN_UNUSED;
 
-        virtual void saveToLogFile(std::string &msg);
+        virtual void saveToLogFile(const std::string &msg);
 
         std::list<std::string> &getRows() const A_WARN_UNUSED
         { return mTextOutput->getRows(); }
@@ -149,7 +149,7 @@ class ChatTab : public Tab
         bool hasRows() const A_WARN_UNUSED
         { return mTextOutput->hasRows(); }
 
-        void loadFromLogFile(std::string name);
+        void loadFromLogFile(const std::string &name);
 
         bool getAllowHighlight() const A_WARN_UNUSED
         { return mAllowHightlight; }
@@ -174,7 +174,7 @@ class ChatTab : public Tab
         void showOnline(const std::string &nick,
                         const bool isOnline);
 
-        virtual void playNewMessageSound();
+        virtual void playNewMessageSound() const;
 
         const std::string &getChannelName() const
         { return mChannelName; }

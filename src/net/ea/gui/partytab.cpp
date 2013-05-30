@@ -274,13 +274,13 @@ void PartyTab::getAutoCompleteList(StringVect &names) const
         p->getNames(names);
 }
 
-void PartyTab::saveToLogFile(std::string &msg)
+void PartyTab::saveToLogFile(const std::string &msg)
 {
     if (chatLogger)
         chatLogger->log("#Party", msg);
 }
 
-void PartyTab::playNewMessageSound()
+void PartyTab::playNewMessageSound() const
 {
     soundManager.playGuiSound(SOUND_GUILD);
 }

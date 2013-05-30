@@ -46,7 +46,7 @@ class WhisperTab final : public ChatTab
         int getType() const override A_WARN_UNUSED
         { return ChatTab::TAB_WHISPER; }
 
-        void saveToLogFile(std::string &msg) override;
+        void saveToLogFile(const std::string &msg) override;
 
         void setWhisperTabColors();
 

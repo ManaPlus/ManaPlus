@@ -51,7 +51,7 @@ void TradeTab::handleInput(const std::string &msg)
     ChatTab::handleInput(str);
 }
 
-void TradeTab::saveToLogFile(std::string &msg)
+void TradeTab::saveToLogFile(const std::string &msg)
 {
     if (chatLogger)
         chatLogger->log(std::string("#Trade"), std::string(msg));

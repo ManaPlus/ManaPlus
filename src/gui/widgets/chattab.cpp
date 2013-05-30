@@ -281,10 +281,11 @@ void ChatTab::chatLog(std::string line, Own own,
             return;
         }
 
-        if (!getTabbedArea())
+        TabbedArea *const tabArea = getTabbedArea();
+        if (!tabArea)
             return;
 
-        if (this != getTabbedArea()->getSelectedTab())
+        if (this != tabArea->getSelectedTab())
         {
             if (getFlash() == 0)
             {
@@ -306,7 +307,7 @@ void ChatTab::chatLog(std::string line, Own own,
         }
 
         if ((getAllowHighlight() || own == BY_GM)
-            && (this != getTabbedArea()->getSelectedTab()
+            && (this != tabArea->getSelectedTab()
             || (Client::getIsMinimized() || (!Client::getMouseFocused()
             && !Client::getInputFocused()))))
         {
@@ -443,7 +444,7 @@ bool ChatTab::handleCommands(const std::string &type, const std::string &args)
     return handleCommand(type, args);
 }
 
-void ChatTab::saveToLogFile(std::string &msg)
+void ChatTab::saveToLogFile(const std::string &msg)
 {
     if (getType() == TAB_INPUT && chatLogger)
         chatLogger->log(msg);
@@ -480,7 +481,7 @@ void ChatTab::addRow(std::string &line)
     mTextOutput->addRow(line);
 }
 
-void ChatTab::loadFromLogFile(std::string name)
+void ChatTab::loadFromLogFile(const std::string &name)
 {
     if (chatLogger)
     {
@@ -512,7 +513,7 @@ void ChatTab::addNewRow(std::string &line)
     mScrollArea->logic();
 }
 
-void ChatTab::playNewMessageSound()
+void ChatTab::playNewMessageSound() const
 {
     soundManager.playGuiSound(SOUND_WHISPER);
 }

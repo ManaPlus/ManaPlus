@@ -158,13 +158,13 @@ void GuildTab::getAutoCompleteList(StringVect &names) const
     names.push_back("/notice ");
 }
 
-void GuildTab::saveToLogFile(std::string &msg)
+void GuildTab::saveToLogFile(const std::string &msg)
 {
     if (chatLogger)
         chatLogger->log("#Guild", msg);
 }
 
-void GuildTab::playNewMessageSound()
+void GuildTab::playNewMessageSound() const
 {
     soundManager.playGuiSound(SOUND_GUILD);
 }
