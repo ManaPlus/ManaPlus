@@ -43,8 +43,7 @@ CharacterViewSmall::CharacterViewSmall(CharSelectDialog *const widget,
         FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
                    it, entries)
         {
-            CharacterDisplay *character = *it;
-            add(character);
+            add(*it);
         }
         show(0);
     }
