@@ -304,6 +304,8 @@ class Theme final : public Palette, public ConfigListener
             CHAT_OUTLINE,
             GM,
             GM_OUTLINE,
+            GLOBAL,
+            GLOBAL_OUTLINE,
             PLAYER,
             PLAYER_OUTLINE,
             WHISPER_TAB,

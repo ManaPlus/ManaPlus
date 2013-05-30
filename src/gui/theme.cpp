@@ -185,6 +185,7 @@ Theme::Theme() :
     mColors[HIGHLIGHT].ch = 'H';
     mColors[CHAT].ch = 'C';
     mColors[GM].ch = 'G';
+    mColors[GLOBAL].ch = 'g';
     mColors[PLAYER].ch = 'Y';
     mColors[WHISPER_TAB].ch = 'W';
     mColors[WHISPER_TAB_OFFLINE].ch = 'w';
@@ -198,6 +199,7 @@ Theme::Theme() :
     mCharColors['H'] = HIGHLIGHT;
     mCharColors['C'] = CHAT;
     mCharColors['G'] = GM;
+    mCharColors['g'] = GLOBAL;
     mCharColors['Y'] = PLAYER;
     mCharColors['W'] = WHISPER_TAB;
     mCharColors['w'] = WHISPER_TAB_OFFLINE;
@@ -213,6 +215,7 @@ Theme::Theme() :
     mCharColors['H' | 0x80] = HIGHLIGHT_OUTLINE;
     mCharColors['C' | 0x80] = CHAT_OUTLINE;
     mCharColors['G' | 0x80] = GM_OUTLINE;
+    mCharColors['g' | 0x80] = GLOBAL_OUTLINE;
     mCharColors['Y' | 0x80] = PLAYER_OUTLINE;
     mCharColors['W' | 0x80] = WHISPER_TAB_OUTLINE;
     mCharColors['w' | 0x80] = WHISPER_TAB_OFFLINE_OUTLINE;
@@ -857,6 +860,8 @@ static int readColorType(const std::string &type)
         "CHAT_OUTLINE",
         "GM",
         "GM_OUTLINE",
+        "GLOBAL",
+        "GLOBAL_OUTLINE",
         "PLAYER",
         "PLAYER_OUTLINE",
         "WHISPER_TAB",

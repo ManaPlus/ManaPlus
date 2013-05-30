@@ -46,6 +46,7 @@
         <color id="ITEM_NOT_EQUIPPED" color="#000000" />
         <color id="CHAT" color="#f1d9a9" />
         <color id="GM" color="#fec4ff" />
+        <color id="GLOBAL" color="#fec4ff" />
         <color id="PLAYER" color="#eeeeee" />
         <color id="IS" color="#edbedb" />
         <color id="SERVER" color="#edbedb" />
@@ -210,6 +211,8 @@
         <color id="CHAT_OUTLINE" color="#3f3f3f" />
         <color id="GM" color="#ff45fd" />
         <color id="GM_OUTLINE" color="#44033a" />
+        <color id="GLOBAL" color="#ff45fd" />
+        <color id="GLOBAL_OUTLINE" color="#44033a" />
         <color id="PLAYER" color="#bcdff4" />
         <color id="PLAYER_OUTLINE" color="#052f47" />
         <color id="PLAYER_ADVANCED" color="#f9eabc" />
@@ -288,6 +291,7 @@
         <color id="ITEM_NOT_EQUIPPED" color="#000000" />
         <color id="CHAT" color="#f1d9a9" />
         <color id="GM" color="#fec4ff" />
+        <color id="GLOBAL" color="#fec4ff" />
         <color id="PLAYER" color="#eeeeee" />
         <color id="IS" color="#edbedb" />
         <color id="SERVER" color="#edbedb" />

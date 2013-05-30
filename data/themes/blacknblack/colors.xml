@@ -53,6 +53,7 @@
         <color id="ITEM_NOT_EQUIPPED" color="#ffffff" />
         <color id="CHAT" color="#ffffff" />
         <color id="GM" color="#ffff00" />
+        <color id="GLOBAL" color="#ffff00" />
         <color id="PLAYER" color="#ffffff" />
         <color id="WHISPER_TAB" color="#55ffff" />
         <color id="WHISPER_TAB_OFFLINE" color="#ff5044" />
