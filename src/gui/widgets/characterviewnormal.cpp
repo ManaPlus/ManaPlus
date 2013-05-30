@@ -41,7 +41,7 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
         FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
                     it, entries)
         {
-            CharacterDisplay *character = *it;
+            CharacterDisplay *const character = *it;
             add(character);
             character->setVisible(true);
         }

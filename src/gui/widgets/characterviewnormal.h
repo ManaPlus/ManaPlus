@@ -23,7 +23,7 @@
 
 #include "gui/widgets/characterviewbase.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
 class CharacterViewNormal final : public CharacterViewBase
 {
@@ -36,9 +36,9 @@ class CharacterViewNormal final : public CharacterViewBase
 
         ~CharacterViewNormal();
 
-        void show(const int i);
+        void show(const int i) override;
 
-        void resize();
+        void resize() override;
 
         void action(const gcn::ActionEvent &event A_UNUSED) override;
 
