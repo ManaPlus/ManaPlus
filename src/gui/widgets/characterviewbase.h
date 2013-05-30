@@ -27,7 +27,7 @@
 
 #include <guichan/actionlistener.hpp>
 
-#include "debug.h"
+#include "localconsts.h"
 
 class CharacterViewBase : public Container,
                           public gcn::ActionListener
