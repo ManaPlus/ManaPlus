@@ -31,6 +31,8 @@
 
 #include <guichan/widgetlistener.hpp>
 
+#include "localconsts.h"
+
 class Button;
 class CharSelectDialog;
 class Label;
@@ -54,7 +56,7 @@ class CharacterDisplay final : public Container,
         Net::Character *getCharacter() const
         { return mCharacter; }
 
-        void requestFocus();
+        void requestFocus() override;
 
         void setActive(const bool active);
 
