@@ -290,14 +290,6 @@ namespace gcn
         virtual void handleMouseWheelMovedUp(const MouseInput& mouseInput);
 
         /**
-         * Handles mouse released input.
-         *
-         * @param mouseInput The mouse input to handle.
-         * @since 0.6.0
-         */
-        virtual void handleMouseReleased(const MouseInput& mouseInput);
-
-        /**
          * Handles modal focus. Modal focus needs to be checked at 
          * each logic iteration as it might be necessary to distribute
          * mouse entered or mouse exited events.

@@ -437,7 +437,6 @@ void Gui::draw()
         if (mouseCursor)
         {
             mouseCursor->setAlpha(mMouseCursorAlpha);
-
             static_cast<Graphics*>(mGraphics)->drawImage(
                     mouseCursor,
                     mouseX - 15,
@@ -728,6 +727,49 @@ void Gui::handleMouseInput()
         }
     }
     BLOCK_END("Gui::handleMouseInput")
+}
+
+void Gui::handleMouseReleased(const gcn::MouseInput &mouseInput)
+{
+    gcn::Widget *sourceWidget = getMouseEventSource(
+        mouseInput.getX(), mouseInput.getY());
+
+    if (mFocusHandler->getDraggedWidget())
+    {
+        if (sourceWidget != mFocusHandler->getLastWidgetPressed())
+            mFocusHandler->setLastWidgetPressed(nullptr);
+
+        sourceWidget = mFocusHandler->getDraggedWidget();
+    }
+
+    int sourceWidgetX, sourceWidgetY;
+    sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
+
+    distributeMouseEvent(sourceWidget,
+                         MouseEvent::RELEASED,
+                         mouseInput.getButton(),
+                         mouseInput.getX(),
+                         mouseInput.getY());
+
+    if (mouseInput.getButton() == mLastMousePressButton
+        && mFocusHandler->getLastWidgetPressed() == sourceWidget)
+    {
+        distributeMouseEvent(sourceWidget,
+                             MouseEvent::CLICKED,
+                             mouseInput.getButton(),
+                             mouseInput.getX(),
+                             mouseInput.getY());
+
+        mFocusHandler->setLastWidgetPressed(nullptr);
+    }
+    else
+    {
+        mLastMousePressButton = 0;
+        mClickCount = 0;
+    }
+
+    if (mFocusHandler->getDraggedWidget())
+        mFocusHandler->setDraggedWidget(nullptr);
 }
 
 void Gui::addGlobalFocusListener(gcn::FocusListener* focusListener)

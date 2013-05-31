@@ -416,49 +416,6 @@ namespace gcn
                              mouseInput.getY());
     }
 
-    void Gui::handleMouseReleased(const MouseInput& mouseInput)
-    {
-        Widget* sourceWidget = getMouseEventSource(
-            mouseInput.getX(), mouseInput.getY());
-
-        if (mFocusHandler->getDraggedWidget())
-        {
-            if (sourceWidget != mFocusHandler->getLastWidgetPressed())
-                mFocusHandler->setLastWidgetPressed(nullptr);
-
-            sourceWidget = mFocusHandler->getDraggedWidget();
-        }
-
-        int sourceWidgetX, sourceWidgetY;
-        sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
-
-        distributeMouseEvent(sourceWidget,
-                             MouseEvent::RELEASED,
-                             mouseInput.getButton(),
-                             mouseInput.getX(),
-                             mouseInput.getY());
-
-        if (mouseInput.getButton() == mLastMousePressButton
-            && mFocusHandler->getLastWidgetPressed() == sourceWidget)
-        {
-            distributeMouseEvent(sourceWidget,
-                                 MouseEvent::CLICKED,
-                                 mouseInput.getButton(),
-                                 mouseInput.getX(),
-                                 mouseInput.getY());
-
-            mFocusHandler->setLastWidgetPressed(nullptr);
-        }
-        else
-        {
-            mLastMousePressButton = 0;
-            mClickCount = 0;
-        }
-
-        if (mFocusHandler->getDraggedWidget())
-            mFocusHandler->setDraggedWidget(nullptr);
-    }
-
     Widget* Gui::getWidgetAt(int x, int y)
     {
         // If the widget's parent has no child then we have found the widget..
