@@ -70,7 +70,6 @@ DropDown::DropDown(const Widget2 *const widget,
     gcn::FocusListener(),
     gcn::SelectionListener(),
     Widget2(widget),
-    mExtended(extended),
     mPopup(new PopupList(this, listModel, extended, modal)),
     mShadowColor(getThemeColor(Theme::DROPDOWN_SHADOW)),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
@@ -78,11 +77,12 @@ DropDown::DropDown(const Widget2 *const widget,
     mImagePadding(2),
     mSpacing(0),
     mForegroundColor2(getThemeColor(Theme::DROPDOWN_OUTLINE)),
+    mFoldedUpHeight(0),
+    mSelectionListeners(),
+    mExtended(extended),
     mDroppedDown(false),
     mPushed(false),
-    mFoldedUpHeight(0),
-    mIsDragged(false),
-    mSelectionListeners()
+    mIsDragged(false)
 {
     mFrameSize = 2;
 
@@ -94,7 +94,7 @@ DropDown::DropDown(const Widget2 *const widget,
         // Load the background skin
         for (int i = 0; i < 2; i ++)
         {
-            Skin *skin = Theme::instance()->load(
+            Skin *const skin = Theme::instance()->load(
                 dropdownFiles[i], "dropdown.xml");
             if (skin)
             {
@@ -228,7 +228,7 @@ void DropDown::draw(gcn::Graphics* graphics)
     if (mDroppedDown)
         h = mFoldedUpHeight;
     else
-        h = getHeight();
+        h = mDimension.height;
 
     updateAlpha();
 
@@ -257,7 +257,7 @@ void DropDown::draw(gcn::Graphics* graphics)
             else
             {
                 static_cast<Graphics*>(graphics)->drawImage(
-                    image, mImagePadding, (getHeight()
+                    image, mImagePadding, (mDimension.height
                     - image->getHeight()) / 2 + mPadding);
                 font->drawString(graphics, model->getElementAt(sel),
                     image->getWidth() + mImagePadding + mSpacing, mPadding);
@@ -274,7 +274,7 @@ void DropDown::draw(gcn::Graphics* graphics)
     {
         graphics->setColor(mHighlightColor);
         graphics->drawRectangle(gcn::Rectangle(mPadding, mPadding,
-            getWidth() - h - pad, h - pad));
+            mDimension.width - h - pad, h - pad));
     }
 
     drawButton(graphics);
@@ -283,10 +283,11 @@ void DropDown::draw(gcn::Graphics* graphics)
     {
         // Draw two lines separating the ListBox with selected
         // element view.
+        const int w = mDimension.width;
         graphics->setColor(mHighlightColor);
-        graphics->drawLine(0, h, getWidth(), h);
+        graphics->drawLine(0, h, w, h);
         graphics->setColor(mShadowColor);
-        graphics->drawLine(0, h + 1, getWidth(), h + 1);
+        graphics->drawLine(0, h + 1, w, h + 1);
     }
     BLOCK_END("DropDown::draw")
 }
@@ -294,23 +295,22 @@ void DropDown::draw(gcn::Graphics* graphics)
 void DropDown::drawFrame(gcn::Graphics *graphics)
 {
     BLOCK_START("DropDown::drawFrame")
-    const int bs = getFrameSize();
-    const int w = getWidth() + bs * 2;
-    const int h = getHeight() + bs * 2;
-
-    static_cast<Graphics*>(graphics)->drawImageRect(0, 0, w, h, skinRect);
+    const int bs2 = getFrameSize();
+    const gcn::Rectangle &rect = mDimension;
+    static_cast<Graphics*>(graphics)->drawImageRect(
+        0, 0, rect.width + bs2, rect.height + bs2, skinRect);
     BLOCK_END("DropDown::drawFrame")
 }
 
 void DropDown::drawButton(gcn::Graphics *graphics)
 {
-    const int height = mDroppedDown ? mFoldedUpHeight : getHeight();
+    const int height = mDroppedDown ? mFoldedUpHeight : mDimension.height;
 
     Image *image = buttons[mDroppedDown][mPushed];
     if (image)
     {
         static_cast<Graphics*>(graphics)->drawImage(image,
-            getWidth() - image->getWidth() - mImagePadding,
+            mDimension.width - image->getWidth() - mImagePadding,
             (height - image->getHeight()) / 2);
     }
 }
@@ -321,7 +321,6 @@ void DropDown::keyPressed(gcn::KeyEvent& keyEvent)
         return;
 
     const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
-
     switch (actionId)
     {
         case Input::KEY_GUI_SELECT:
@@ -384,18 +383,18 @@ void DropDown::mouseReleased(gcn::MouseEvent &mouseEvent)
     if (mIsDragged)
         mPushed = false;
 
+    const int button = mouseEvent.getButton();
+    const int x = mouseEvent.getX();
+    const int y = mouseEvent.getY();
     // Released outside of widget. Can happen when we have modal
     // input focus.
-    if ((0 > mouseEvent.getY()
-        || mouseEvent.getY() >= getHeight()
-        || mouseEvent.getX() < 0
-        || mouseEvent.getX() >= getWidth())
-        && mouseEvent.getButton() == gcn::MouseEvent::LEFT)
+    if ((0 > y || y >= mDimension.height || x < 0 || x >= mDimension.width)
+        && button == gcn::MouseEvent::LEFT)
     {
         if (mIsDragged)
             foldUp();
     }
-    else if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
+    else if (button == gcn::MouseEvent::LEFT)
     {
         mPushed = false;
     }
@@ -421,7 +420,7 @@ void DropDown::mouseWheelMovedDown(gcn::MouseEvent& mouseEvent)
     mouseEvent.consume();
 }
 
-void DropDown::setSelectedString(std::string str)
+void DropDown::setSelectedString(const std::string &str)
 {
     gcn::ListModel *const listModel = mPopup->getListModel();
     if (!listModel)
@@ -459,8 +458,6 @@ void DropDown::dropDown()
         mFoldedUpHeight = getHeight();
         adjustHeight();
 
-//        if (getParent())
-//            getParent()->moveToTop(this);
         int x = 0;
         int y = 0;
         getAbsolutePosition(x, y);
@@ -469,8 +466,8 @@ void DropDown::dropDown()
         const int pad2 = pad * 2;
 
         // here width should be adjusted on some other parameters
-        mPopup->setWidth(getWidth() - pad2 + 8);
-        mPopup->show(x - mPadding - frame - 1, y + getHeight());
+        mPopup->setWidth(mDimension.width - pad2 + 8);
+        mPopup->show(x - mPadding - frame - 1, y + mDimension.height);
         mPopup->requestMoveToTop();
         mPopup->requestFocus();
     }
@@ -496,7 +493,7 @@ void DropDown::setSelected(int selected)
         mPopup->setSelected(selected);
 }
 
-void DropDown::setListModel(gcn::ListModel *listModel)
+void DropDown::setListModel(gcn::ListModel *const listModel)
 {
     mPopup->setListModel(listModel);
 
@@ -523,7 +520,7 @@ gcn::Rectangle DropDown::getChildrenArea()
     {
         // Calculate the children area (with the one pixel border in mind)
         return gcn::Rectangle(1, mFoldedUpHeight + 1,
-            getWidth() - 2, getHeight() - mFoldedUpHeight - 2);
+            mDimension.width - 2, mDimension.height - mFoldedUpHeight - 2);
     }
 
     return gcn::Rectangle();

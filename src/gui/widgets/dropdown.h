@@ -104,11 +104,11 @@ class DropDown final : public gcn::ActionListener,
 
         void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override;
 
-        void setSelectedString(std::string str);
+        void setSelectedString(const std::string &str);
 
         std::string getSelectedString() const A_WARN_UNUSED;
 
-        void valueChanged(const gcn::SelectionEvent& event);
+        void valueChanged(const gcn::SelectionEvent& event) override;
 
         void updateSelection();
 
@@ -124,7 +124,7 @@ class DropDown final : public gcn::ActionListener,
 
         void setSelected(int selected);
 
-        void setListModel(gcn::ListModel *listModel);
+        void setListModel(gcn::ListModel *const listModel);
 
         gcn::ListModel *getListModel();
 
@@ -132,9 +132,9 @@ class DropDown final : public gcn::ActionListener,
 
         void removeSelectionListener(SelectionListener* selectionListener);
 
-        gcn::Rectangle getChildrenArea();
+        gcn::Rectangle getChildrenArea() override;
 
-        void action(const gcn::ActionEvent &actionEvent);
+        void action(const gcn::ActionEvent &actionEvent) override;
 
         void distributeValueChangedEvent();
 
@@ -146,7 +146,6 @@ class DropDown final : public gcn::ActionListener,
          */
         void drawButton(gcn::Graphics *graphics);
 
-        bool mExtended;
         PopupList *mPopup;
         gcn::Color mShadowColor;
         gcn::Color mHighlightColor;
@@ -154,14 +153,16 @@ class DropDown final : public gcn::ActionListener,
         int mImagePadding;
         int mSpacing;
         gcn::Color mForegroundColor2;
-
-        bool mDroppedDown;
-        bool mPushed;
         int mFoldedUpHeight;
-        bool mIsDragged;
+
         typedef std::list<SelectionListener*> SelectionListenerList;
         SelectionListenerList mSelectionListeners;
         typedef SelectionListenerList::iterator SelectionListenerIterator;
+
+        bool mExtended;
+        bool mDroppedDown;
+        bool mPushed;
+        bool mIsDragged;
 
         // Add own Images.
         static int instances;
