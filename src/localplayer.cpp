@@ -3231,9 +3231,6 @@ void LocalPlayer::magicAttack() const
         return;
     }
 
-    if (!Client::limitPackets(PACKET_CHAT))
-        return;
-
     switch (mMagicAttackType)
     {
         // flar W00
