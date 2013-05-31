@@ -45,8 +45,7 @@ Desktop::Desktop(const Widget2 *const widget) :
 
     Wallpaper::loadWallpapers();
 
-    std::string appName = branding.getValue("appName", std::string());
-
+    const std::string appName = branding.getValue("appName", std::string());
     if (appName.empty())
     {
         mVersionLabel = new Label(this, FULL_VERSION);
@@ -86,11 +85,16 @@ void Desktop::draw(gcn::Graphics *graphics)
     BLOCK_START("Desktop::draw")
     Graphics *const g = static_cast<Graphics *const>(graphics);
 
-    if (!mWallpaper || (getWidth() > mWallpaper->getWidth() ||
-        getHeight() > mWallpaper->getHeight()))
+    const gcn::Rectangle &rect = mDimension;
+    const int width = rect.width;
+    const int height = rect.height;
+    const int wallpWidth = mWallpaper->getWidth();
+    const int wallpHeight = mWallpaper->getHeight();
+
+    if (!mWallpaper || (width > wallpWidth || height > wallpHeight))
     {
         g->setColor(mBackgroundGrayColor);
-        g->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
+        g->fillRectangle(gcn::Rectangle(0, 0, width, height));
     }
 
     if (mWallpaper)
@@ -98,14 +102,14 @@ void Desktop::draw(gcn::Graphics *graphics)
         if (!imageHelper->useOpenGL())
         {
             g->drawImage(mWallpaper,
-                (getWidth() - mWallpaper->getWidth()) / 2,
-                (getHeight() - mWallpaper->getHeight()) / 2);
+                (width - wallpWidth) / 2,
+                (height - wallpHeight) / 2);
         }
         else
         {
             g->drawRescaledImage(mWallpaper, 0, 0, 0, 0,
-                mWallpaper->getWidth(), mWallpaper->getHeight(),
-                getWidth(), getHeight(), false);
+                wallpWidth, wallpHeight,
+                width, height, false);
         }
     }
 
@@ -132,13 +136,17 @@ void Desktop::setBestFittingWallpaper()
         if (mWallpaper)
             mWallpaper->decRef();
 
+        const gcn::Rectangle &rect = mDimension;
+        const int width = rect.width;
+        const int height = rect.height;
+
         if (!imageHelper->useOpenGL()
-            && (nWallPaper->getWidth() != getWidth()
-            || nWallPaper->getHeight() != getHeight()))
+            && (nWallPaper->getWidth() != width
+            || nWallPaper->getHeight() != height))
         {
             // We rescale to obtain a fullscreen wallpaper...
             Image *const newRsclWlPpr = ResourceManager::getInstance()
-                ->getRescaled(nWallPaper, getWidth(), getHeight());
+                ->getRescaled(nWallPaper, width, height);
 
             // We replace the resource in the resource manager
             nWallPaper->decRef();
