@@ -145,6 +145,8 @@ class UpdaterWindow final : public Window,
     static void unloadManaPlusUpdates(const std::string &dir,
                                       const ResourceManager *const resman);
 
+    static unsigned long getFileHash(const std::string &filePath);
+
 private:
     void download();
 

@@ -100,6 +100,8 @@ class Download final
 
         static void secureCurl(CURL *const curl);
 
+        static unsigned long adlerBuffer(char *buffer, int size);
+
     private:
         static int downloadThread(void *ptr);
         static int downloadProgress(void *clientp, double dltotal,

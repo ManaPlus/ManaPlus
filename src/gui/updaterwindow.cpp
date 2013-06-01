@@ -925,6 +925,15 @@ bool UpdaterWindow::validateFile(const std::string &filePath,
     return adler == hash;
 }
 
+unsigned long UpdaterWindow::getFileHash(const std::string &filePath)
+{
+    int size = 0;
+    char *buf = static_cast<char*>(ResourceManager::loadFile(filePath, size));
+    if (!buf)
+        return 0;
+    return Net::Download::adlerBuffer(buf, size);
+}
+
 void UpdaterWindow::handleLink(const std::string &link,
                                gcn::MouseEvent *event A_UNUSED)
 {

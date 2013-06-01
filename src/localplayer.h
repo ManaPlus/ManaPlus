@@ -468,6 +468,9 @@ class LocalPlayer final : public Being,
 
         void updateStatus() const;
 
+        void setTestParticle(const std::string &fileName,
+                             bool updateHash = true);
+
         std::string getInvertDirectionString();
 
         std::string getCrazyMoveTypeString();
@@ -632,6 +635,10 @@ class LocalPlayer final : public Being,
         std::string mLastHitFrom;
         std::string mWaitFor;
         int mAdvertTime;
+        Particle *mTestParticle;
+        std::string mTestParticleName;
+        int mTestParticleTime;
+        unsigned long mTestParticleHash;
         bool mBlockAdvert;
         bool mEnableAdvert;
         bool mTradebot;

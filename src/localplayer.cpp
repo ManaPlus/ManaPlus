@@ -50,6 +50,7 @@
 #include "gui/sdlfont.h"
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
+#include "gui/updaterwindow.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/gmtab.h"
@@ -114,8 +115,8 @@ LocalPlayer::LocalPlayer(const int id, const int subtype) :
     mLastTargetY(0),
     mHomes(),
     mTarget(nullptr),
-    mPlayerFollowed(""),
-    mPlayerImitated(""),
+    mPlayerFollowed(),
+    mPlayerImitated(),
     mNextDestX(0),
     mNextDestY(0),
     mPickUpTarget(nullptr),
@@ -156,9 +157,13 @@ LocalPlayer::LocalPlayer(const int id, const int subtype) :
     mNavigatePath(),
     mTargetDeadPlayers(config.getBoolValue("targetDeadPlayers")),
     mServerAttack(config.getBoolValue("serverAttack")),
-    mLastHitFrom(""),
-    mWaitFor(""),
+    mLastHitFrom(),
+    mWaitFor(),
     mAdvertTime(0),
+    mTestParticle(nullptr),
+    mTestParticleName(),
+    mTestParticleTime(0),
+    mTestParticleHash(0l),
     mBlockAdvert(false),
     mEnableAdvert(config.getBoolValue("enableAdvert")),
     mTradebot(config.getBoolValue("tradebot")),
@@ -358,6 +363,18 @@ void LocalPlayer::slowLogic()
         else
             mAdvertTime = time + 30;
     }
+
+    if (mTestParticleTime != time && !mTestParticleName.empty())
+    {
+        unsigned long hash = UpdaterWindow::getFileHash(mTestParticleName);
+        if (hash != mTestParticleHash)
+        {
+            setTestParticle(mTestParticleName, false);
+            mTestParticleHash = hash;
+        }
+        mTestParticleTime = time;
+    }
+
     BLOCK_END("LocalPlayer::slowLogic")
 }
 
@@ -4307,6 +4324,24 @@ void LocalPlayer::updateStatus() const
             status |= FLAG_INACTIVE;
 
         Net::getPlayerHandler()->updateStatus(status);
+    }
+}
+
+void LocalPlayer::setTestParticle(const std::string &fileName, bool updateHash)
+{
+    mTestParticleName = fileName;
+    mTestParticleTime = cur_time;
+    if (mTestParticle)
+    {
+        mChildParticleEffects.removeLocally(mTestParticle);
+        mTestParticle = nullptr;
+    }
+    if (!fileName.empty())
+    {
+        mTestParticle = particleEngine->addEffect(fileName, 0, 0, false);
+        controlParticle(mTestParticle);
+        if (updateHash)
+            mTestParticleHash = UpdaterWindow::getFileHash(mTestParticleName);
     }
 }
 

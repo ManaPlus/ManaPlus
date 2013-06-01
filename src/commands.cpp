@@ -1192,6 +1192,12 @@ impHandler2(enableAway)
         chatWindow->saveState();
 }
 
+impHandler1(testParticle)
+{
+    if (player_node)
+        player_node->setTestParticle(args);
+}
+
 impHandler0(testsdlfont)
 {
 #if defined USE_OPENGL && defined DEBUG_SDLFONT
