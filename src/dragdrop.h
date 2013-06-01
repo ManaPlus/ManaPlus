@@ -80,6 +80,14 @@ class DragDrop
         Item *getSelected()
         { return mSelItem; }
 
+        void clearItem(const Item *const item)
+        {
+            if (mItem == item)
+                clear();
+            if (mSelItem == item)
+                mSelItem = nullptr;
+        }
+
     private:
         Item *mItem;
         Item *mSelItem;

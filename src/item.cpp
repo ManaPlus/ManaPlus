@@ -68,6 +68,7 @@ Item::~Item()
         mDrawImage->decRef();
         mDrawImage = nullptr;
     }
+    dragDrop.clearItem(this);
 }
 
 void Item::setId(const int id, const unsigned char color)
