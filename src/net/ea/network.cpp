@@ -105,6 +105,7 @@ bool Network::connect(ServerInfo server)
         server.hostname.c_str(), server.port);
 
     mServer.hostname = server.hostname;
+    mServer.althostname = server.althostname;
     mServer.port = server.port;
 
     // Reset to sane values
@@ -190,13 +191,18 @@ bool Network::realConnect()
     if (TcpNet::resolveHost(&ipAddress, mServer.hostname.c_str(),
         mServer.port) == -1)
     {
-        const std::string errorMessage = std::string(
-            // TRANSLATORS: error message
-            _("Unable to resolve host \"")).append(
-            mServer.hostname).append("\"");
-        setError(errorMessage);
-        logger->log("TcpNet::ResolveHost: %s", errorMessage.c_str());
-        return false;
+        if (mServer.althostname.empty() || TcpNet::resolveHost(&ipAddress,
+            mServer.althostname.c_str(), mServer.port) == -1)
+        {
+            const std::string errorMessage = std::string(
+                // TRANSLATORS: error message
+                _("Unable to resolve host \"")).append(
+                mServer.hostname).append("\"");
+            setError(errorMessage);
+            logger->log("TcpNet::ResolveHost: %s", errorMessage.c_str());
+            return false;
+        }
+        logger->log("using alt host name: %s", mServer.althostname.c_str());
     }
 
     mState = CONNECTING;

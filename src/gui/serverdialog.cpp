@@ -379,6 +379,7 @@ void ServerDialog::connectToSelectedServer()
 
     ServerInfo server = mServers.at(index);
     mServerInfo->hostname = server.hostname;
+    mServerInfo->althostname = server.althostname;
     mServerInfo->port = server.port;
     mServerInfo->type = server.type;
     mServerInfo->name = server.name;
@@ -642,6 +643,8 @@ void ServerDialog::loadServers(const bool addNew)
             if (xmlNameEqual(subNode, "connection"))
             {
                 server.hostname = XML::getProperty(subNode, "hostname", "");
+                server.althostname = XML::getProperty(
+                    subNode, "althostname", "");
                 server.port = static_cast<uint16_t>(
                     XML::getProperty(subNode, "port", 0));
 
@@ -687,6 +690,7 @@ void ServerDialog::loadServers(const bool addNew)
                 mServers[i].description = server.description;
                 mServers[i].registerUrl = server.registerUrl;
                 mServers[i].onlineListUrl = server.onlineListUrl;
+                mServers[i].althostname = server.althostname;
                 mServersListModel->setVersionString(i, version);
                 found = true;
                 break;

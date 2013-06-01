@@ -49,6 +49,7 @@ public:
     Type type;
     std::string name;
     std::string hostname;
+    std::string althostname;
     uint16_t port;
 
     std::string description;
@@ -62,6 +63,7 @@ public:
         type(TMWATHENA),
         name(),
         hostname(),
+        althostname(),
         port(6901),
         description(),
         registerUrl(),
@@ -76,6 +78,7 @@ public:
         type(info.type),
         name(info.name),
         hostname(info.hostname),
+        althostname(info.althostname),
         port(info.port),
         description(info.description),
         registerUrl(info.registerUrl),
@@ -97,6 +100,7 @@ public:
         type = UNKNOWN;
         name.clear();
         hostname.clear();
+        althostname.clear();
         port = 0;
         description.clear();
         registerUrl.clear();
