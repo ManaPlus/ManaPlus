@@ -81,7 +81,6 @@ class DropShortcutContainer final : public ShortcutContainer
 
     private:
         bool mItemClicked;
-        Item *mItemMoved;
 
         ItemPopup *mItemPopup;
         gcn::Color mEquipedColor;

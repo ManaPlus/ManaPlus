@@ -415,8 +415,6 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
                 if (itemShortcut[num])
                     itemShortcut[num]->setItemSelected(item);
             }
-            if (dropShortcut)
-                dropShortcut->setItemSelected(item);
             if (shopWindow)
                 shopWindow->setItemSelected(item->getId());
         }

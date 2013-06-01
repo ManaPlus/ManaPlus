@@ -22,15 +22,16 @@
 
 #include "gui/widgets/dropshortcutcontainer.h"
 
-#include "gui/inventorywindow.h"
-#include "gui/itempopup.h"
-#include "gui/viewport.h"
-
 #include "client.h"
+#include "dragdrop.h"
 #include "dropshortcut.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "playerinfo.h"
+
+#include "gui/inventorywindow.h"
+#include "gui/itempopup.h"
+#include "gui/viewport.h"
 
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
@@ -42,7 +43,6 @@
 DropShortcutContainer::DropShortcutContainer():
     ShortcutContainer(),
     mItemClicked(false),
-    mItemMoved(nullptr),
     mItemPopup(new ItemPopup),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
     mEquipedColor2(getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE)),
@@ -153,23 +153,6 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
             }
         }
     }
-
-    if (mItemMoved)
-    {
-        // Draw the item image being dragged by the cursor.
-        const Image *const image = mItemMoved->getImage();
-        if (image)
-        {
-            const int tPosX = mCursorPosX - (image->mBounds.w / 2);
-            const int tPosY = mCursorPosY - (image->mBounds.h / 2);
-            const std::string str = toString(mItemMoved->getQuantity());
-
-            g->drawImage(image, tPosX, tPosY);
-            font->drawString(g, str,
-                tPosX + (mBoxWidth / 2 - font->getWidth(str)) / 2,
-                tPosY + mBoxHeight - 14);
-        }
-    }
     BLOCK_END("DropShortcutContainer::draw")
 }
 
@@ -180,7 +163,7 @@ void DropShortcutContainer::mouseDragged(gcn::MouseEvent &event)
 
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-        if (!mItemMoved && mItemClicked)
+        if (dragDrop.isEmpty() && mItemClicked)
         {
             const int index = getIndexFromGrid(event.getX(), event.getY());
 
@@ -201,14 +184,13 @@ void DropShortcutContainer::mouseDragged(gcn::MouseEvent &event)
 
             if (item)
             {
-                mItemMoved = item;
+                dragDrop.dragItem(item, DragDropSource::DRAGDROP_SOURCE_DROP);
                 dropShortcut->removeItem(index);
             }
-        }
-        if (mItemMoved)
-        {
-            mCursorPosX = event.getX();
-            mCursorPosY = event.getY();
+            else
+            {
+                dragDrop.clear();
+            }
         }
     }
 }
@@ -225,18 +207,7 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
 
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-        // Stores the selected item if theirs one.
-        if (dropShortcut->isItemSelected()
-            && inventoryWindow->isWindowVisible())
-        {
-            dropShortcut->setItem(index);
-            dropShortcut->setItemSelected(-1);
-            inventoryWindow->unselectItem();
-        }
-        else if (dropShortcut->getItem(index))
-        {
-            mItemClicked = true;
-        }
+        mItemClicked = true;
     }
     else if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
@@ -265,18 +236,20 @@ void DropShortcutContainer::mouseReleased(gcn::MouseEvent &event)
         const int index = getIndexFromGrid(event.getX(), event.getY());
         if (index == -1)
         {
-            mItemMoved = nullptr;
+            dragDrop.clear();
             return;
         }
-        if (mItemMoved)
+        if (!dragDrop.isEmpty())
         {
-            dropShortcut->setItems(index, mItemMoved->getId(),
-                mItemMoved->getColor());
-            mItemMoved = nullptr;
+            Item *const item = dragDrop.getItem();
+            if (item)
+            {
+                dropShortcut->setItems(index, item->getId(), item->getColor());
+                dragDrop.clear();
+            }
         }
 
-        if (mItemClicked)
-            mItemClicked = false;
+        mItemClicked = false;
     }
 }
 
