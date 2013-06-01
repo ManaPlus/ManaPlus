@@ -45,6 +45,7 @@ class DragDrop
     public:
         DragDrop(Item *const item, const DragDropSource source) :
             mItem(item),
+            mSelItem(nullptr),
             mSource(source)
         {
         }
@@ -70,8 +71,18 @@ class DragDrop
         bool isEmpty() const
         { return mSource == DRAGDROP_SOURCE_EMPTY; }
 
+        void select(Item *const item)
+        { mSelItem = item; }
+
+        void deselect()
+        { mSelItem = nullptr; }
+
+        Item *getSelected()
+        { return mSelItem; }
+
     private:
         Item *mItem;
+        Item *mSelItem;
         DragDropSource mSource;
 };
 

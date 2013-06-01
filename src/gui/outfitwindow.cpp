@@ -371,20 +371,6 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
             }
         }
     }
-/*
-    if (mItemMoved)
-    {
-        // Draw the item image being dragged by the cursor.
-        const Image *const image = mItemMoved->getImage();
-        if (image)
-        {
-            const int tPosX = mCursorPosX - (image->mBounds.w / 2);
-            const int tPosY = mCursorPosY - (image->mBounds.h / 2);
-
-            g->drawImage(image, tPosX, tPosY);
-        }
-    }
-*/
     BLOCK_END("OutfitWindow::draw")
 }
 
@@ -451,8 +437,20 @@ void OutfitWindow::mousePressed(gcn::MouseEvent &event)
     mMoved = false;
     event.consume();
 
-    if (mItems[mCurrentOutfit][index])
+    if (mItems[mCurrentOutfit][index] > 0)
+    {
         mItemClicked = true;
+    }
+    else
+    {
+        Item *const selected = dragDrop.getSelected();
+        if (selected)
+        {
+            mItems[mCurrentOutfit][index] = selected->getId();
+            mItemColors[mCurrentOutfit][index] = selected->getColor();
+            dragDrop.deselect();
+        }
+    }
 
     Window::mousePressed(event);
 }
@@ -483,6 +481,7 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
                 mItems[mCurrentOutfit][index] = item->getId();
                 mItemColors[mCurrentOutfit][index] = item->getColor();
                 dragDrop.clear();
+                dragDrop.deselect();
             }
         }
         if (mItemClicked)

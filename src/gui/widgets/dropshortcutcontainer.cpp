@@ -207,7 +207,20 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
 
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-        mItemClicked = true;
+        if (dropShortcut->getItem(index) > 0)
+        {
+            mItemClicked = true;
+        }
+        else
+        {
+            Item *const selected = dragDrop.getSelected();
+            if (selected)
+            {
+                dropShortcut->setItems(index, selected->getId(),
+                    selected->getColor());
+                dragDrop.deselect();
+            }
+        }
     }
     else if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
@@ -246,6 +259,7 @@ void DropShortcutContainer::mouseReleased(gcn::MouseEvent &event)
             {
                 dropShortcut->setItems(index, item->getId(), item->getColor());
                 dragDrop.clear();
+                dragDrop.deselect();
             }
         }
 
