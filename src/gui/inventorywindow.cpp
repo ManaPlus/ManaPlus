@@ -273,6 +273,8 @@ InventoryWindow::~InventoryWindow()
     mInventory->removeInventoyListener(this);
     if (!invInstances.empty())
         invInstances.front()->updateDropButton();
+
+    mSortDropDown->hideDrop();
     delete mSortModel;
     mSortModel = nullptr;
     delete mTextPopup;
