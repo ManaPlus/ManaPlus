@@ -205,7 +205,8 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
     if (index == -1)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    const int eventButton = event.getButton();
+    if (eventButton == gcn::MouseEvent::LEFT)
     {
         if (dropShortcut->getItem(index) > 0)
         {
@@ -222,7 +223,7 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
             }
         }
     }
-    else if (event.getButton() == gcn::MouseEvent::RIGHT)
+    else if (eventButton == gcn::MouseEvent::RIGHT)
     {
         const Inventory *const inv = PlayerInfo::getInventory();
         if (!inv)
@@ -301,7 +302,6 @@ void DropShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-// Hide ItemTooltip
 void DropShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     if (mItemPopup)
