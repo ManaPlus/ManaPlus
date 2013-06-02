@@ -214,11 +214,10 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
         }
         else
         {
-            Item *const selected = dragDrop.getSelected();
-            if (selected)
+            if (dragDrop.isSelected())
             {
-                dropShortcut->setItems(index, selected->getId(),
-                    selected->getColor());
+                dropShortcut->setItems(index, dragDrop.getSelected(),
+                    dragDrop.getSelectedColor());
                 dragDrop.deselect();
             }
         }
@@ -255,13 +254,10 @@ void DropShortcutContainer::mouseReleased(gcn::MouseEvent &event)
         }
         if (!dragDrop.isEmpty())
         {
-            Item *const item = dragDrop.getItem();
-            if (item)
-            {
-                dropShortcut->setItems(index, item->getId(), item->getColor());
-                dragDrop.clear();
-                dragDrop.deselect();
-            }
+            dropShortcut->setItems(index, dragDrop.getItem(),
+                dragDrop.getItemColor());
+            dragDrop.clear();
+            dragDrop.deselect();
         }
 
         mItemClicked = false;

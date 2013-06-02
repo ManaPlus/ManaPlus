@@ -435,16 +435,12 @@ void Gui::draw()
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0f)
     {
         Graphics *g2 = static_cast<Graphics*>(mGraphics);
-        Item *const item = dragDrop.getItem();
-        if (item)
+        const Image *const image = dragDrop.getItemImage();
+        if (image)
         {
-            const Image *const image = item->getImage();
-            if (image)
-            {
-                const int tPosX = mouseX - (image->mBounds.w / 2);
-                const int tPosY = mouseY - (image->mBounds.h / 2);
-                g2->drawImage(image, tPosX, tPosY);
-            }
+            const int tPosX = mouseX - (image->mBounds.w / 2);
+            const int tPosY = mouseY - (image->mBounds.h / 2);
+            g2->drawImage(image, tPosX, tPosY);
         }
 
         Image *const mouseCursor = mMouseCursors->get(mCursorType);

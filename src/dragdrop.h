@@ -23,6 +23,8 @@
 
 #include "item.h"
 
+#include "resources/image.h"
+
 #include "localconsts.h"
 
 enum DragDropSource
@@ -44,27 +46,64 @@ class DragDrop
 {
     public:
         DragDrop(Item *const item, const DragDropSource source) :
-            mItem(item),
-            mSelItem(nullptr),
+            mItem(item ? item->getId() : 0),
+            mItemColor(item ? item->getColor() : 1),
+            mItemImage(item ? item->getImage() : nullptr),
+            mSelItem(0),
+            mSelItemColor(1),
             mSource(source)
         {
+            if (mItemImage)
+                mItemImage->incRef();
         }
 
-        Item *getItem()
+        ~DragDrop()
+        {
+            if (mItemImage)
+                mItemImage->decRef();
+        }
+
+        int getItem()
         { return mItem; }
+
+        int getItemColor()
+        { return mItemColor; }
+
+        Image *getItemImage()
+        { return mItemImage; }
 
         DragDropSource getSource() const
         { return mSource; }
 
         void dragItem(Item *const item, const DragDropSource source)
         {
-            mItem = item;
+            if (mItemImage)
+                mItemImage->decRef();
+
+            if (item)
+            {
+                mItem = item->getId();
+                mItemColor = item->getColor();
+                mItemImage = item->getImage();
+                if (mItemImage)
+                    mItemImage->incRef();
+            }
+            else
+            {
+                mItem = 0;
+                mItemColor = 1;
+                mItemImage = nullptr;
+            }
             mSource = source;
         }
 
         void clear()
         {
-            mItem = nullptr;
+            if (mItemImage)
+                mItemImage->decRef();
+            mItem = 0;
+            mItemColor = 1;
+            mItemImage = nullptr;
             mSource = DRAGDROP_SOURCE_EMPTY;
         }
 
@@ -72,25 +111,44 @@ class DragDrop
         { return mSource == DRAGDROP_SOURCE_EMPTY; }
 
         void select(Item *const item)
-        { mSelItem = item; }
+        {
+            if (item)
+            {
+                mSelItem = item->getId();
+                mSelItemColor = item->getColor();
+            }
+            else
+            {
+                mSelItem = 0;
+                mSelItemColor = 1;
+            }
+        }
 
         void deselect()
-        { mSelItem = nullptr; }
+        {
+            mSelItem = 0;
+            mSelItemColor = 1;
+        }
 
-        Item *getSelected()
+        int getSelected()
         { return mSelItem; }
 
-        void clearItem(const Item *const item)
+        int getSelectedColor()
+        { return mSelItemColor; }
+
+        bool isSelected()
+        { return mSelItem > 0; }
+
+        void clearItem(const Item *const item A_UNUSED)
         {
-            if (mItem == item)
-                clear();
-            if (mSelItem == item)
-                mSelItem = nullptr;
         }
 
     private:
-        Item *mItem;
-        Item *mSelItem;
+        int mItem;
+        uint8_t mItemColor;
+        Image *mItemImage;
+        int mSelItem;
+        uint8_t mSelItemColor;
         DragDropSource mSource;
 };
 

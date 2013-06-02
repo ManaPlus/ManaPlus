@@ -443,11 +443,10 @@ void OutfitWindow::mousePressed(gcn::MouseEvent &event)
     }
     else
     {
-        Item *const selected = dragDrop.getSelected();
-        if (selected)
+        if (dragDrop.isSelected())
         {
-            mItems[mCurrentOutfit][index] = selected->getId();
-            mItemColors[mCurrentOutfit][index] = selected->getColor();
+            mItems[mCurrentOutfit][index] = dragDrop.getSelected();
+            mItemColors[mCurrentOutfit][index] = dragDrop.getSelectedColor();
             dragDrop.deselect();
         }
     }
@@ -475,14 +474,10 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
         event.consume();
         if (!dragDrop.isEmpty())
         {
-            Item *const item = dragDrop.getItem();
-            if (item)
-            {
-                mItems[mCurrentOutfit][index] = item->getId();
-                mItemColors[mCurrentOutfit][index] = item->getColor();
-                dragDrop.clear();
-                dragDrop.deselect();
-            }
+            mItems[mCurrentOutfit][index] = dragDrop.getItem();
+            mItemColors[mCurrentOutfit][index] = dragDrop.getItemColor();
+            dragDrop.clear();
+            dragDrop.deselect();
         }
         if (mItemClicked)
             mItemClicked = false;
