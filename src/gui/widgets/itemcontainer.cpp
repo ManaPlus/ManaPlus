@@ -400,13 +400,13 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
 
         if (mSelectedIndex == index && mClicks != 2)
         {
-            dragDrop.dragItem(item, DragDropSource::DRAGDROP_SOURCE_INVENTORY);
+            dragDrop.dragItem(item, DRAGDROP_SOURCE_INVENTORY);
             dragDrop.select(item);
             mSelectionStatus = SEL_DESELECTING;
         }
         else if (item && item->getId())
         {
-            dragDrop.dragItem(item, DragDropSource::DRAGDROP_SOURCE_INVENTORY);
+            dragDrop.dragItem(item, DRAGDROP_SOURCE_INVENTORY);
             dragDrop.select(item);
             setSelectedIndex(index);
             mSelectionStatus = SEL_SELECTING;

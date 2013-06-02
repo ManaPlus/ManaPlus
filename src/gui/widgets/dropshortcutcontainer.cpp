@@ -184,7 +184,7 @@ void DropShortcutContainer::mouseDragged(gcn::MouseEvent &event)
 
             if (item)
             {
-                dragDrop.dragItem(item, DragDropSource::DRAGDROP_SOURCE_DROP);
+                dragDrop.dragItem(item, DRAGDROP_SOURCE_DROP);
                 dropShortcut->removeItem(index);
             }
             else
