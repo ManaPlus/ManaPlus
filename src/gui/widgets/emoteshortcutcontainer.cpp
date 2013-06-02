@@ -158,36 +158,6 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
 
 void EmoteShortcutContainer::mouseDragged(gcn::MouseEvent &event A_UNUSED)
 {
-/*
-    if (!emoteShortcut)
-        return;
-
-    if (event.getButton() == gcn::MouseEvent::LEFT)
-    {
-        if (!mEmoteMoved && mEmoteClicked)
-        {
-            const int index = getIndexFromGrid(event.getX(), event.getY());
-
-            if (index == -1)
-                return;
-
-//            const unsigned char emoteId = emoteShortcut->getEmote(index);
-            const unsigned char emoteId
-                = static_cast<unsigned char>(index + 1);
-
-            if (emoteId)
-            {
-                mEmoteMoved = emoteId;
-                emoteShortcut->removeEmote(index);
-            }
-        }
-        if (mEmoteMoved)
-        {
-            mCursorPosX = event.getX();
-            mCursorPosY = event.getY();
-        }
-    }
-*/
 }
 
 void EmoteShortcutContainer::mousePressed(gcn::MouseEvent &event)
@@ -240,8 +210,7 @@ void EmoteShortcutContainer::mouseReleased(gcn::MouseEvent &event)
             emoteShortcut->useEmote(index + 1);
         }
 
-        if (mEmoteClicked)
-            mEmoteClicked = false;
+        mEmoteClicked = false;
     }
 }
 
