@@ -608,8 +608,11 @@ int ItemContainer::getSlotIndex(const int x, const int y) const
     if (x < getWidth() && y < getHeight())
     {
         const int idx = (y / mBoxHeight) * mGridColumns + (x / mBoxWidth);
-        if (idx < mGridRows * mGridColumns && mShowMatrix[idx] >= 0)
+        if (idx >= 0 && idx < mGridRows * mGridColumns
+            && mShowMatrix[idx] >= 0)
+        {
             return mShowMatrix[idx];
+        }
     }
 
     return Inventory::NO_SLOT_INDEX;
