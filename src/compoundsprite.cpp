@@ -37,7 +37,7 @@
 
 #include "utils/dtor.h"
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #include "debug.h"
 

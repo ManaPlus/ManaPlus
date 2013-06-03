@@ -25,7 +25,7 @@
 #ifndef UTILS_PHYSFSRWOPS_H
 #define UTILS_PHYSFSRWOPS_H
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #include "utils/physfstools.h"
 

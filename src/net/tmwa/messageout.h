@@ -26,7 +26,7 @@
 #include "net/messageout.h"
 
 #include <iosfwd>
-#include <SDL/SDL_types.h>
+#include <SDL_types.h>
 
 #include "localconsts.h"
 

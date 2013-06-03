@@ -27,11 +27,7 @@
 #include <guichan/color.hpp>
 #include <guichan/font.hpp>
 
-#ifdef __WIN32__
-#include <SDL/SDL_ttf.h>
-#else
-#include <SDL/SDL_ttf.h>
-#endif
+#include <SDL_ttf.h>
 
 #include <list>
 #include <map>

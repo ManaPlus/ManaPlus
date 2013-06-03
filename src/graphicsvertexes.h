@@ -31,10 +31,10 @@
 #include <GLES/gl.h>
 #else
 #define GL_GLEXT_PROTOTYPES 1
-#include <SDL/SDL_opengl.h>
+#include <SDL_opengl.h>
 #endif
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #include "mobileopenglgraphics.h"
 #include "normalopenglgraphics.h"

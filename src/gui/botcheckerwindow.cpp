@@ -22,8 +22,8 @@
 
 #include "gui/botcheckerwindow.h"
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_thread.h>
+#include <SDL.h>
+#include <SDL_thread.h>
 #include <vector>
 #include <algorithm>
 

@@ -238,7 +238,7 @@ bool openBrowser(std::string url)
         nullptr, nullptr, SW_SHOWNORMAL)) > 32;
 }
 #elif defined ANDROID
-#include <SDL/SDL_screenkeyboard.h>
+#include <SDL_screenkeyboard.h>
 bool openBrowser(std::string url)
 {
     SDL_ANDROID_OpenBrowser(replaceAll(url, " ", "").c_str());

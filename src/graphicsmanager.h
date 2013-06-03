@@ -29,7 +29,7 @@
 #include <GLES/gl.h>
 #else
 #define GL_GLEXT_PROTOTYPES 1
-#include <SDL/SDL_opengl.h>
+#include <SDL_opengl.h>
 // hack to hide warnings
 #undef GL_GLEXT_VERSION
 #undef GL_GLEXT_PROTOTYPES
@@ -39,7 +39,7 @@
 
 #include "utils/stringvector.h"
 
-#include <SDL/SDL_stdinc.h>
+#include <SDL_stdinc.h>
 
 #include <set>
 #include <string>

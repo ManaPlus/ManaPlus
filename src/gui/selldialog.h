@@ -28,7 +28,7 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/selectionlistener.hpp>
 
-#include <SDL/SDL_types.h>
+#include <SDL_types.h>
 
 class Button;
 class Item;

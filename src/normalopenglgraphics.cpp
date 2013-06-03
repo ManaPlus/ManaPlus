@@ -35,7 +35,7 @@
 
 #include "utils/stringutils.h"
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #include "debug.h"
 

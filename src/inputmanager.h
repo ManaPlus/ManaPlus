@@ -27,7 +27,7 @@
 #include <string>
 #include <map>
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 const unsigned int KeyFunctionSize = 3;
 

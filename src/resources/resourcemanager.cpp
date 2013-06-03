@@ -43,7 +43,7 @@
 #include "utils/mkdir.h"
 #include "utils/physfsrwops.h"
 
-#include <SDL/SDL_image.h>
+#include <SDL_image.h>
 #include <cassert>
 #include <dirent.h>
 #include <fstream>

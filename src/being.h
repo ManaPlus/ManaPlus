@@ -29,7 +29,7 @@
 
 #include <guichan/color.hpp>
 
-#include <SDL/SDL_types.h>
+#include <SDL_types.h>
 
 #include <map>
 #include <set>

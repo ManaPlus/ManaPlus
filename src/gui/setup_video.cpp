@@ -54,7 +54,7 @@
 #include <guichan/key.hpp>
 #include <guichan/listmodel.hpp>
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #include <algorithm>
 

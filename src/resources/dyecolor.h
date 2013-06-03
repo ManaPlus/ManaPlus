@@ -21,7 +21,7 @@
 #ifndef RESOURCES_DYECOLOR_H
 #define RESOURCES_DYECOLOR_H
 
-#include <SDL/SDL_stdinc.h>
+#include <SDL_stdinc.h>
 
 #include "localconsts.h"
 

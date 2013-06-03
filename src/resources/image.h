@@ -28,7 +28,7 @@
 
 #include "resources/resource.h"
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #ifdef USE_OPENGL
 
@@ -36,7 +36,7 @@
 #include <GLES/gl.h>
 #else
 #define GL_GLEXT_PROTOTYPES 1
-#include <SDL/SDL_opengl.h>
+#include <SDL_opengl.h>
 #endif
 #endif
 

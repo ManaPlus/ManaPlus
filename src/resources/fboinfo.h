@@ -32,7 +32,7 @@
 #include <GLES/gl.h>
 #include <GLES/glext.h>
 #else
-#include <SDL/SDL_opengl.h>
+#include <SDL_opengl.h>
 #include <GL/glext.h>
 #endif
 

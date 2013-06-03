@@ -23,8 +23,8 @@
 #ifndef KEYBOARDCONFIG_H
 #define KEYBOARDCONFIG_H
 
-#include <SDL/SDL_types.h>
-#include <SDL/SDL_keyboard.h>
+#include <SDL_types.h>
+#include <SDL_keyboard.h>
 
 #include "inputevent.h"
 

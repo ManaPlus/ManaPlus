@@ -29,7 +29,7 @@
 #include "resources/resourcemanager.h"
 #include "resources/soundeffect.h"
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #include "debug.h"
 

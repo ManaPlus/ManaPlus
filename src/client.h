@@ -29,8 +29,8 @@
 
 #include <guichan/actionlistener.hpp>
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_framerate.h>
+#include <SDL.h>
+#include <SDL_framerate.h>
 
 #include <string>
 

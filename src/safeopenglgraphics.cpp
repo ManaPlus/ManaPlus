@@ -33,7 +33,7 @@
 #include "resources/image.h"
 #include "resources/openglimagehelper.h"
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #include "debug.h"
 

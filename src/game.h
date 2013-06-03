@@ -27,7 +27,7 @@
 
 #include "localconsts.h"
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 static const int MAX_LASTKEYS = 10;
 

@@ -27,7 +27,7 @@
 
 #include "resources/resource.h"
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 class Dye;
 class Image;

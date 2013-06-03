@@ -25,7 +25,7 @@
 #include "logger.h"
 
 #include <png.h>
-#include <SDL/SDL.h>
+#include <SDL.h>
 #include <string>
 
 #include "debug.h"
