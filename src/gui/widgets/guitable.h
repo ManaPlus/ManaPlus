@@ -78,15 +78,15 @@ public:
      */
     void setModel(TableModel *const m);
 
-    void setSelected(int row, int column);
+    void setSelected(const int row, const int column);
 
     int getSelectedRow() const A_WARN_UNUSED;
 
     int getSelectedColumn() const A_WARN_UNUSED;
 
-    void setSelectedRow(int selected);
+    void setSelectedRow(const int selected);
 
-    void setSelectedColumn(int selected);
+    void setSelectedColumn(const int selected);
 
     bool isWrappingEnabled() const A_WARN_UNUSED
     { return mWrappingEnabled; }
@@ -110,18 +110,18 @@ public:
     void setLinewiseSelection(bool linewise);
 
     // Inherited from Widget
-    virtual void draw(gcn::Graphics* graphics) override;
+    void draw(gcn::Graphics* graphics) override;
 
-    virtual gcn::Widget *getWidgetAt(int x, int y) override A_WARN_UNUSED;
+    gcn::Widget *getWidgetAt(int x, int y) override A_WARN_UNUSED;
 
-    virtual void moveToTop(gcn::Widget *child) override;
+    void moveToTop(gcn::Widget *child) override;
 
-    virtual void moveToBottom(gcn::Widget *child) override;
+    void moveToBottom(gcn::Widget *child) override;
 
-    virtual void _setFocusHandler(gcn::FocusHandler* focusHandler) override;
+    void _setFocusHandler(gcn::FocusHandler* focusHandler) override;
 
     // Inherited from KeyListener
-    virtual void keyPressed(gcn::KeyEvent& keyEvent) override;
+    void keyPressed(gcn::KeyEvent& keyEvent) override;
 
     /**
      * Sets the table to be opaque, that is sets the table
@@ -129,7 +129,7 @@ public:
      *
      * @param opaque True if the table should be opaque, false otherwise.
      */
-    virtual void setOpaque(bool opaque)
+    void setOpaque(bool opaque)
     { mOpaque = opaque; }
 
     /**
@@ -138,31 +138,32 @@ public:
      *
      * @return True if the table is opaque, false otherwise.
      */
-    virtual bool isOpaque() const A_WARN_UNUSED
+    bool isOpaque() const A_WARN_UNUSED
     { return mOpaque; }
 
     // Inherited from MouseListener
-    virtual void mousePressed(gcn::MouseEvent& mouseEvent) override;
+    void mousePressed(gcn::MouseEvent& mouseEvent) override;
 
-    virtual void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override;
+    void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override;
 
-    virtual void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override;
+    void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override;
 
-    virtual void mouseDragged(gcn::MouseEvent& mouseEvent) override;
+    void mouseDragged(gcn::MouseEvent& mouseEvent) override;
 
     // Constraints inherited from TableModelListener
-    virtual void modelUpdated(bool) override;
+    void modelUpdated(bool) override;
 
     void requestFocus();
 
 protected:
     /** Frees all action listeners on inner widgets. */
-    virtual void uninstallActionListeners();
+    void uninstallActionListeners();
     /** Installs all action listeners on inner widgets. */
-    virtual void installActionListeners();
+    void installActionListeners();
 
-    virtual int getRowHeight() const A_WARN_UNUSED;
-    virtual int getColumnWidth(int i) const A_WARN_UNUSED;
+    int getRowHeight() const A_WARN_UNUSED;
+
+    int getColumnWidth(int i) const A_WARN_UNUSED;
 
 private:
     int getRowForY(int y) const A_WARN_UNUSED;     // -1 on error

@@ -48,7 +48,7 @@ public:
 
     virtual ~GuiTableActionListener();
 
-    virtual void action(const gcn::ActionEvent& actionEvent);
+    virtual void action(const gcn::ActionEvent& actionEvent) override;
 
 protected:
     GuiTable *mTable;
@@ -170,7 +170,7 @@ void GuiTable::recomputeDimensions()
     setHeight(getRowHeight() * rows_nr);
 }
 
-void GuiTable::setSelected(int row, int column)
+void GuiTable::setSelected(const int row, const int column)
 {
     mSelectedColumn = column;
     mSelectedRow = row;
@@ -207,7 +207,7 @@ int GuiTable::getColumnWidth(int i) const
         return 0;
 }
 
-void GuiTable::setSelectedRow(int selected)
+void GuiTable::setSelectedRow(const int selected)
 {
     if (!mModel)
     {
@@ -215,18 +215,19 @@ void GuiTable::setSelectedRow(int selected)
     }
     else
     {
+        const int rows = mModel->getRows();
         if (selected < 0 && !mWrappingEnabled)
         {
             mSelectedRow = -1;
         }
-        else if (selected >= mModel->getRows() && mWrappingEnabled)
+        else if (selected >= rows && mWrappingEnabled)
         {
             mSelectedRow = 0;
         }
-        else if ((selected >= mModel->getRows() && !mWrappingEnabled) ||
+        else if ((selected >= rows && !mWrappingEnabled) ||
                  (selected < 0 && mWrappingEnabled))
         {
-            mSelectedRow = mModel->getRows() - 1;
+            mSelectedRow = rows - 1;
         }
         else
         {
@@ -235,7 +236,7 @@ void GuiTable::setSelectedRow(int selected)
     }
 }
 
-void GuiTable::setSelectedColumn(int selected)
+void GuiTable::setSelectedColumn(const int selected)
 {
     if (!mModel)
     {
@@ -301,23 +302,26 @@ void GuiTable::draw(gcn::Graphics* graphics)
     if (Client::getGuiAlpha() != mAlpha)
         mAlpha = Client::getGuiAlpha();
 
+    const gcn::Rectangle &rect = mDimension;
+    const int width = rect.width;
+    const int height = rect.height;
+    const int y = rect.y;
     if (mOpaque)
     {
         mBackgroundColor.a = static_cast<int>(mAlpha * 255.0f);
         graphics->setColor(mBackgroundColor);
-        graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
+        graphics->fillRectangle(gcn::Rectangle(0, 0, width, height));
     }
 
     // First, determine how many rows we need to draw,
     // and where we should start.
-    int first_row = -(getY() / getRowHeight());
+    const int rHeight = getRowHeight();
+    int first_row = -(y / rHeight);
 
     if (first_row < 0)
         first_row = 0;
 
-    unsigned rows_nr = 1 + (getHeight() / getRowHeight());  // May overestimate
-                                                            // by one.
-
+    unsigned rows_nr = 1 + (height / rHeight);  // May overestimate by one.
     unsigned max_rows_nr;
     if (mModel->getRows() < first_row)
         max_rows_nr = 0;
@@ -331,9 +335,7 @@ void GuiTable::draw(gcn::Graphics* graphics)
     const unsigned first_column = 0;
     const unsigned last_column1 = mModel->getColumns();
 
-    // Set up everything for drawing
-    const int height = getRowHeight();
-    int y_offset = first_row * height;
+    int y_offset = first_row * rHeight;
 
     for (unsigned r = first_row; r < first_row + rows_nr; ++r)
     {
@@ -342,10 +344,10 @@ void GuiTable::draw(gcn::Graphics* graphics)
         for (unsigned c = first_column; c + 1 <= last_column1; ++c)
         {
             gcn::Widget *const widget = mModel->getElementAt(r, c);
-            const int width = getColumnWidth(c);
+            const int cWidth = getColumnWidth(c);
             if (widget)
             {
-                gcn::Rectangle bounds(x_offset, y_offset, width, height);
+                gcn::Rectangle bounds(x_offset, y_offset, cWidth, rHeight);
 
                 if (widget == mTopWidget)
                 {
@@ -364,14 +366,14 @@ void GuiTable::draw(gcn::Graphics* graphics)
                         mSelectedRow) && c == 0)
                     {
                         graphics->fillRectangle(gcn::Rectangle(0, y_offset,
-                            getWidth(), height));
+                            width, rHeight));
                     }
                     else if (!mLinewiseMode && mSelectedColumn > 0
                              && c == static_cast<unsigned>(mSelectedColumn)
                              && r == static_cast<unsigned>(mSelectedRow))
                     {
                         graphics->fillRectangle(gcn::Rectangle(
-                            x_offset, y_offset, width, height));
+                            x_offset, y_offset, cWidth, rHeight));
                     }
                 }
                 graphics->pushClipArea(bounds);
@@ -379,10 +381,10 @@ void GuiTable::draw(gcn::Graphics* graphics)
                 graphics->popClipArea();
             }
 
-            x_offset += width;
+            x_offset += cWidth;
         }
 
-        y_offset += height;
+        y_offset += rHeight;
     }
 
     if (mTopWidget)
@@ -410,7 +412,7 @@ void GuiTable::moveToBottom(gcn::Widget *widget)
 
 gcn::Rectangle GuiTable::getChildrenArea()
 {
-    return gcn::Rectangle(0, 0, getWidth(), getHeight());
+    return gcn::Rectangle(0, 0, mDimension.width, mDimension.height);
 }
 
 // -- KeyListener notifications
@@ -483,11 +485,9 @@ void GuiTable::mouseWheelMovedUp(gcn::MouseEvent& mouseEvent)
 {
     if (isFocused())
     {
-        if (getSelectedRow() > 0 || (getSelectedRow() == 0
-            && mWrappingEnabled))
-        {
-            setSelectedRow(getSelectedRow() - 1);
-        }
+        const int selRow = getSelectedRow();
+        if (selRow > 0 || (selRow == 0 && mWrappingEnabled))
+            setSelectedRow(selRow - 1);
         mouseEvent.consume();
     }
 }
@@ -552,8 +552,9 @@ int GuiTable::getRowForY(int y) const
 {
     int row = -1;
 
-    if (getRowHeight() > 0)
-       row = y / getRowHeight();
+    const int rowHeight = getRowHeight();
+    if (rowHeight > 0)
+       row = y / rowHeight;
 
     if (!mModel || row < 0 || row >= mModel->getRows())
         return -1;
@@ -592,9 +593,11 @@ void GuiTable::_setFocusHandler(gcn::FocusHandler* focusHandler)
 
     gcn::Widget::_setFocusHandler(focusHandler);
 
-    for (int r = 0; r < mModel->getRows(); ++r)
+    const int rows = mModel->getRows();
+    const int cols = mModel->getColumns();
+    for (int r = 0; r < rows; ++r)
     {
-        for (int c = 0; c < mModel->getColumns(); ++c)
+        for (int c = 0; c < cols ; ++c)
         {
             gcn::Widget *const w = mModel->getElementAt(r, c);
             if (w)
