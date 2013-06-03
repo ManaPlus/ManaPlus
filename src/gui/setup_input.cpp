@@ -39,7 +39,7 @@
 
 #include <guichan/listmodel.hpp>
 
-#include <SDL_keyboard.h>
+#include <SDL/SDL_keyboard.h>
 
 #include "debug.h"
 

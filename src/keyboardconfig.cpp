@@ -28,7 +28,7 @@
 
 #include "utils/gettext.h"
 
-#include <SDL_events.h>
+#include <SDL/SDL_events.h>
 
 #include "debug.h"
 

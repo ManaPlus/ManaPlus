@@ -110,17 +110,17 @@
 #include <CoreFoundation/CFBundle.h>
 #endif
 
-#include <SDL_image.h>
+#include <SDL/SDL_image.h>
 
 #ifdef WIN32
-#include <SDL_syswm.h>
+#include <SDL/SDL_syswm.h>
 #include "utils/specialfolder.h"
 #else
 #include <cerrno>
 #endif
 
 #ifdef ANDROID
-#include <SDL_screenkeyboard.h>
+#include <SDL/SDL_screenkeyboard.h>
 #endif
 
 #include <sys/stat.h>

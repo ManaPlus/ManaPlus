@@ -28,7 +28,7 @@
 #include "map.h"
 #include "particlecontainer.h"
 
-#include <SDL_types.h>
+#include <SDL/SDL_types.h>
 
 #include <set>
 #include <list>

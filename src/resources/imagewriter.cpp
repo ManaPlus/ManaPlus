@@ -25,11 +25,7 @@
 #include "logger.h"
 
 #include <png.h>
-#if defined __OpenBSD__
 #include <SDL/SDL.h>
-#else
-#include <SDL.h>
-#endif
 #include <string>
 
 #include "debug.h"

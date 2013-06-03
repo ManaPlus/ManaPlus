@@ -27,7 +27,7 @@
 #include <GLES2/gl2.h>
 #include <GLES/glext.h>
 #include <EGL/egl.h>
-#include <SDL_android.h>
+#include <SDL/SDL_android.h>
 #else
 #include "GL/glx.h"
 #endif
@@ -52,7 +52,7 @@
 
 #include "test/testmain.h"
 
-#include <SDL_syswm.h>
+#include <SDL/SDL_syswm.h>
 
 #include "debug.h"
 

@@ -40,7 +40,7 @@
 #endif
 #endif
 
-#include <SDL_gfxBlitFunc.h>
+#include <SDL/SDL_gfxBlitFunc.h>
 
 #include "debug.h"
 

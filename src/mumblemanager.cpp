@@ -26,7 +26,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 
-#include <SDL_syswm.h>
+#include <SDL/SDL_syswm.h>
 
 #ifndef WIN32
 #include <sys/mman.h>

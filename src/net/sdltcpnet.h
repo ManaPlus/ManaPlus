@@ -21,7 +21,7 @@
 #ifndef NET_SDLTCPNET_H
 #define NET_SDLTCPNET_H
 
-#include <SDL_net.h>
+#include <SDL/SDL_net.h>
 
 #include <string>
 

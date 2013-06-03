@@ -27,7 +27,7 @@
 
 #include "net/eathena/messageout.h"
 
-#include <SDL_types.h>
+#include <SDL/SDL_types.h>
 
 #include <memory>
 

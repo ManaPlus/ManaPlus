@@ -23,7 +23,7 @@
 #ifndef SOUNDMANAGER_H
 #define SOUNDMANAGER_H
 
-#include <SDL_mixer.h>
+#include <SDL/SDL_mixer.h>
 
 #include "configlistener.h"
 

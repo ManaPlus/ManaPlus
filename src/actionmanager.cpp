@@ -66,7 +66,7 @@
 #include <guichan/actionlistener.hpp>
 
 #ifdef ANDROID
-#include <SDL_screenkeyboard.h>
+#include <SDL/SDL_screenkeyboard.h>
 #endif
 
 #include "debug.h"

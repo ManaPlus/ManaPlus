@@ -35,7 +35,7 @@
 
 #include "utils/copynpaste.h"
 
-#include <SDL_syswm.h>
+#include <SDL/SDL_syswm.h>
 
 #include "debug.h"
 

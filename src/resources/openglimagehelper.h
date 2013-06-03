@@ -37,14 +37,14 @@
 
 #include "resources/imagehelper.h"
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 #ifdef ANDROID
 #include <GLES/gl.h>
 #define GL_RGBA8 GL_RGBA8_OES
 #else
 #define GL_GLEXT_PROTOTYPES 1
-#include <SDL_opengl.h>
+#include <SDL/SDL_opengl.h>
 #endif
 
 class Dye;

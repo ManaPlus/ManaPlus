@@ -23,7 +23,7 @@
 #ifndef NET_MESSAGEOUT_H
 #define NET_MESSAGEOUT_H
 
-#include <SDL_types.h>
+#include <SDL/SDL_types.h>
 
 #include <iosfwd>
 #include <string>
