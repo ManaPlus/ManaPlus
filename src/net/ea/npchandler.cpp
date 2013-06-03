@@ -76,10 +76,12 @@ void NpcHandler::processNpcChoice(Net::MessageIn &msg)
 
 void NpcHandler::processNpcMessage(Net::MessageIn &msg)
 {
+    const std::string message = msg.readString(msg.getLength() - 8);
+    // ignore future legacy npc commands.
+    if (message.size() > 3 && message.substr(0, 3) == "###")
+        return;
     if (mDialog)
-        mDialog->addText(msg.readString(msg.getLength() - 8));
-    else
-        msg.readString(msg.getLength() - 8);
+        mDialog->addText(message);
 }
 
 void NpcHandler::processNpcClose(Net::MessageIn &msg A_UNUSED)
