@@ -39,7 +39,7 @@
 ExtendedListBox::ExtendedListBox(const Widget2 *const widget,
                                  gcn::ListModel *const listModel,
                                  const std::string &skin,
-                                 int rowHeight) :
+                                 const int rowHeight) :
     ListBox(widget, listModel, skin),
     mRowHeight(rowHeight),
     mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
@@ -74,7 +74,8 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     gcn::Font *const font = getFont();
 
     const int height = getRowHeight();
-    int textPos = (height - font->getHeight()) / 2 + mPadding;
+    const int pad2 = 2 + mPadding;
+    int textPos = (height - font->getHeight()) / pad2;
     if (textPos < 0)
         textPos = 0;
 
@@ -85,13 +86,24 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
         graphics->setColor(mHighlightColor);
         graphics->fillRectangle(gcn::Rectangle(mPadding,
             height * mSelected + mPadding,
-            getWidth() - 2 * mPadding, height));
+            getWidth() - pad2, height));
     }
 
-    // Draw the list elements
+    const int sz = mListModel->getNumberOfElements();
+    for (int i = 0, y = 0; i < sz; ++i, y += height)
+    {
+        if (i != mSelected)
+        {
+            const Image *const image = model->getImageAt(i);
+            if (image)
+            {
+                g->drawImage(image, mImagePadding, y + (height
+                    - image->getHeight()) / 2 + mPadding);
+            }
+        }
+    }
     g->setColorAll(mForegroundColor, mForegroundColor2);
-    for (int i = 0, y = 0; i < mListModel->getNumberOfElements();
-         ++i, y += height)
+    for (int i = 0, y = 0; i < sz; ++i, y += height)
     {
         if (i != mSelected)
         {
@@ -103,8 +115,6 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
             }
             else
             {
-                g->drawImage(image, mImagePadding, y + (height
-                    - image->getHeight()) / 2 + mPadding);
                 font->drawString(graphics, mListModel->getElementAt(i),
                     image->getWidth() + mImagePadding + mSpacing, y + textPos);
             }
