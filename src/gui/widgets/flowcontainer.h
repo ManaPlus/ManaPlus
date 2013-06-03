@@ -63,7 +63,7 @@ class FlowContainer final : public Container,
         int getBoxHeight() const A_WARN_UNUSED
         { return mBoxHeight; }
 
-        void add(gcn::Widget *widget);
+        void add(gcn::Widget *widget) override;
 
     private:
         int mBoxWidth;
