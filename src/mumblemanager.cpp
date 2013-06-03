@@ -16,6 +16,9 @@
 
 #include "utils/mathutils.h"
 
+#ifdef __OpenBSD__
+#include <sys/param.h>
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <wchar.h>

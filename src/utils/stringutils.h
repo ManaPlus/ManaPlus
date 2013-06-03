@@ -99,7 +99,11 @@ std::string strprintf(const char *const format, ...) A_WARN_UNUSED
 #ifdef __GNUC__
     /* This attribute is nice: it even works through gettext invokation. For
        example, gcc will complain that strprintf(_("%s"), 42) is ill-formed. */
+#ifdef __OpenBSD__
+    __attribute__((__format__(printf, 1, 2)))
+#else
     __attribute__((__format__(gnu_printf, 1, 2)))
+#endif
 #endif
 ;
 

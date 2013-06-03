@@ -76,7 +76,11 @@ class Logger final
          */
         void log(const char *const log_text, ...)
 #ifdef __GNUC__
+#ifdef __OpenBSD__
+            __attribute__((__format__(printf, 2, 3)))
+#else
             __attribute__((__format__(gnu_printf, 2, 3)))
+#endif
 #endif
             ;
 
