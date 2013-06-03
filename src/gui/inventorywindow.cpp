@@ -804,3 +804,10 @@ void InventoryWindow::widgetResized(const gcn::Event &event)
         mCompactMode = false;
     }
 }
+
+void InventoryWindow::setVisible(bool visible)
+{
+    if (!visible)
+        mSortDropDown->hideDrop();
+    Window::setVisible(visible);
+}

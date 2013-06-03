@@ -149,6 +149,8 @@ class InventoryWindow final : public Window,
 
         void mouseExited(gcn::MouseEvent &event) override;
 
+        void setVisible(bool visible) override;
+
         static bool isAnyInputFocused();
 
     private:
