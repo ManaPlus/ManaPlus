@@ -24,11 +24,10 @@
 
 #include "logger.h"
 
+#include <png.h>
 #if defined __OpenBSD__
-#include <libpng/png.h>
 #include <SDL/SDL.h>
 #else
-#include <png.h>
 #include <SDL.h>
 #endif
 #include <string>
