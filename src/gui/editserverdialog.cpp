@@ -284,6 +284,9 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
 
 void EditServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
+    if (keyEvent.isConsumed())
+        return;
+
     const int actionId = static_cast<KeyEvent*>(
         &keyEvent)->getActionId();
 
