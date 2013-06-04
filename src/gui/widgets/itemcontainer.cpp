@@ -51,104 +51,107 @@
 #include "debug.h"
 
 
-class ItemIdPair final
+namespace
 {
-    public:
-        ItemIdPair(const int id, Item *const item) :
-            mId(id), mItem(item)
-        {
-        }
-
-        int mId;
-        Item* mItem;
-};
-
-class SortItemAlphaFunctor final
-{
-    public:
-        bool operator() (const ItemIdPair *const pair1,
-                         const ItemIdPair *const pair2) const
-        {
-            if (!pair1 || !pair2)
-                return false;
-
-            return (pair1->mItem->getInfo().getName()
-                    < pair2->mItem->getInfo().getName());
-        }
-} itemAlphaInvSorter;
-
-class SortItemIdFunctor final
-{
-    public:
-        bool operator() (const ItemIdPair *const pair1,
-                         const ItemIdPair *const pair2) const
-        {
-            if (!pair1 || !pair2)
-                return false;
-
-            return pair1->mItem->getId() < pair2->mItem->getId();
-        }
-} itemIdInvSorter;
-
-class SortItemWeightFunctor final
-{
-    public:
-        bool operator() (const ItemIdPair *const pair1,
-                         const ItemIdPair *const pair2) const
-        {
-            if (!pair1 || !pair2)
-                return false;
-
-            const int w1 = pair1->mItem->getInfo().getWeight();
-            const int w2 = pair2->mItem->getInfo().getWeight();
-            if (w1 == w2)
+    class ItemIdPair final
+    {
+        public:
+            ItemIdPair(const int id, Item *const item) :
+                mId(id), mItem(item)
             {
+            }
+
+            int mId;
+            Item* mItem;
+    };
+
+    class SortItemAlphaFunctor final
+    {
+        public:
+            bool operator() (const ItemIdPair *const pair1,
+                             const ItemIdPair *const pair2) const
+            {
+                if (!pair1 || !pair2)
+                    return false;
+
                 return (pair1->mItem->getInfo().getName()
                         < pair2->mItem->getInfo().getName());
             }
-            return w1 < w2;
-        }
-} itemWeightInvSorter;
+    } itemAlphaInvSorter;
 
-class SortItemAmountFunctor final
-{
-    public:
-        bool operator() (const ItemIdPair *const pair1,
-                         const ItemIdPair *const pair2) const
-        {
-            if (!pair1 || !pair2)
-                return false;
-
-            const int c1 = pair1->mItem->getQuantity();
-            const int c2 = pair2->mItem->getQuantity();
-            if (c1 == c2)
+    class SortItemIdFunctor final
+    {
+        public:
+            bool operator() (const ItemIdPair *const pair1,
+                             const ItemIdPair *const pair2) const
             {
-                return (pair1->mItem->getInfo().getName()
-                        < pair2->mItem->getInfo().getName());
+                if (!pair1 || !pair2)
+                    return false;
+
+                return pair1->mItem->getId() < pair2->mItem->getId();
             }
-            return c1 < c2;
-        }
-} itemAmountInvSorter;
+    } itemIdInvSorter;
 
-class SortItemTypeFunctor final
-{
-    public:
-        bool operator() (const ItemIdPair *const pair1,
-                         const ItemIdPair *const pair2) const
-        {
-            if (!pair1 || !pair2)
-                return false;
-
-            const int t1 = pair1->mItem->getInfo().getType();
-            const int t2 = pair2->mItem->getInfo().getType();
-            if (t1 == t2)
+    class SortItemWeightFunctor final
+    {
+        public:
+            bool operator() (const ItemIdPair *const pair1,
+                             const ItemIdPair *const pair2) const
             {
-                return (pair1->mItem->getInfo().getName()
-                        < pair2->mItem->getInfo().getName());
+                if (!pair1 || !pair2)
+                    return false;
+
+                const int w1 = pair1->mItem->getInfo().getWeight();
+                const int w2 = pair2->mItem->getInfo().getWeight();
+                if (w1 == w2)
+                {
+                    return (pair1->mItem->getInfo().getName()
+                            < pair2->mItem->getInfo().getName());
+                }
+                return w1 < w2;
             }
-            return t1 < t2;
-        }
-} itemTypeInvSorter;
+    } itemWeightInvSorter;
+
+    class SortItemAmountFunctor final
+    {
+        public:
+            bool operator() (const ItemIdPair *const pair1,
+                             const ItemIdPair *const pair2) const
+            {
+                if (!pair1 || !pair2)
+                    return false;
+
+                const int c1 = pair1->mItem->getQuantity();
+                const int c2 = pair2->mItem->getQuantity();
+                if (c1 == c2)
+                {
+                    return (pair1->mItem->getInfo().getName()
+                            < pair2->mItem->getInfo().getName());
+                }
+                return c1 < c2;
+            }
+    } itemAmountInvSorter;
+
+    class SortItemTypeFunctor final
+    {
+        public:
+            bool operator() (const ItemIdPair *const pair1,
+                             const ItemIdPair *const pair2) const
+            {
+                if (!pair1 || !pair2)
+                    return false;
+
+                const int t1 = pair1->mItem->getInfo().getType();
+                const int t2 = pair2->mItem->getInfo().getType();
+                if (t1 == t2)
+                {
+                    return (pair1->mItem->getInfo().getName()
+                            < pair2->mItem->getInfo().getName());
+                }
+                return t1 < t2;
+            }
+    } itemTypeInvSorter;
+}  // namespace
 
 ItemContainer::ItemContainer(const Widget2 *const widget,
                              Inventory *const inventory,
@@ -411,11 +414,14 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
             setSelectedIndex(index);
             mSelectionStatus = SEL_SELECTING;
 
-            const int num = itemShortcutWindow->getTabIndex();
-            if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
+            if (itemShortcutWindow)
             {
-                if (itemShortcut[num])
-                    itemShortcut[num]->setItemSelected(item);
+                const int num = itemShortcutWindow->getTabIndex();
+                if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
+                {
+                    if (itemShortcut[num])
+                        itemShortcut[num]->setItemSelected(item);
+                }
             }
             if (shopWindow)
                 shopWindow->setItemSelected(item->getId());
@@ -469,8 +475,6 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
     selectNone();
 }
 
-
-// Show ItemTooltip
 void ItemContainer::mouseMoved(gcn::MouseEvent &event)
 {
     if (!mInventory)
@@ -490,7 +494,6 @@ void ItemContainer::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-// Hide ItemTooltip
 void ItemContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     mItemPopup->setVisible(false);
@@ -498,7 +501,7 @@ void ItemContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
 
 void ItemContainer::widgetResized(const gcn::Event &event A_UNUSED)
 {
-    mGridColumns = std::max(1, getWidth() / mBoxWidth);
+    mGridColumns = std::max(1, mDimension.width / mBoxWidth);
     adjustHeight();
 }
 
@@ -531,7 +534,8 @@ void ItemContainer::updateMatrix()
     std::string temp = mName;
     toLower(temp);
 
-    for (unsigned idx = 0; idx < mInventory->getSize(); idx ++)
+    const int invSize = mInventory->getSize();
+    for (unsigned idx = 0; idx < invSize; idx ++)
     {
         Item *const item = mInventory->getItem(idx);
 
@@ -605,7 +609,7 @@ int ItemContainer::getSlotIndex(const int x, const int y) const
     if (!mShowMatrix)
         return Inventory::NO_SLOT_INDEX;
 
-    if (x < getWidth() && y < getHeight())
+    if (x < mDimension.width && y < mDimension.height && x >= 0 && y >= 0)
     {
         const int idx = (y / mBoxHeight) * mGridColumns + (x / mBoxWidth);
         if (idx >= 0 && idx < mGridRows * mGridColumns
