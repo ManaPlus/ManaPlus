@@ -49,7 +49,7 @@ struct OpenUrlListener : public gcn::ActionListener
 
     A_DELETE_COPY(OpenUrlListener)
 
-    void action(const gcn::ActionEvent &event)
+    void action(const gcn::ActionEvent &event) override
     {
         if (event.getId() == "yes")
             openBrowser(url);
@@ -111,20 +111,25 @@ void ItemLinkHandler::handleLink(const std::string &link,
     }
     else
     {
-        if (!mItemPopup)
+        if (!mItemPopup || link.empty())
             return;
 
-        int id = 0;
-        std::stringstream stream;
-        stream << link;
-        stream >> id;
+        char ch = link[0];
+        if (ch < '0' || ch > '9')
+            return;
 
+        std::vector<int> str;
+        splitToIntVector(str, link, ',');
+        if (str.empty())
+            return;
+        int color = 1;
+        if (str.size() > 1)
+            color = str[1];
+        int id = str[0];
         if (id > 0)
         {
             const ItemInfo &itemInfo = ItemDB::get(id);
-            // +++ need add color to links?
-            mItemPopup->setItem(itemInfo, 1, true);
-
+            mItemPopup->setItem(itemInfo, color, true);
             if (mItemPopup->isPopupVisible())
             {
                 mItemPopup->setVisible(false);
