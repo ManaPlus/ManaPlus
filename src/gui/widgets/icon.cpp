@@ -33,7 +33,10 @@ Icon::Icon(const Widget2 *const widget, const std::string &file) :
     mImage(ResourceManager::getInstance()->getImage(file))
 {
     if (mImage)
-        setSize(mImage->mBounds.w, mImage->mBounds.h);
+    {
+        const SDL_Rect &bounds = mImage->mBounds;
+        setSize(bounds.w, bounds.h);
+    }
 }
 
 Icon::Icon(const Widget2 *const widget, Image *const image) :
@@ -42,7 +45,10 @@ Icon::Icon(const Widget2 *const widget, Image *const image) :
     mImage(image)
 {
     if (mImage)
-        setSize(mImage->mBounds.w, mImage->mBounds.h);
+    {
+        const SDL_Rect &bounds = mImage->mBounds;
+        setSize(bounds.w, bounds.h);
+    }
 }
 
 Icon::~Icon()
@@ -55,7 +61,10 @@ void Icon::setImage(Image *const image)
 {
     mImage = image;
     if (mImage)
-        setSize(mImage->mBounds.w, mImage->mBounds.h);
+    {
+        const SDL_Rect &bounds = mImage->mBounds;
+        setSize(bounds.w, bounds.h);
+    }
 }
 
 void Icon::draw(gcn::Graphics *g)
@@ -64,8 +73,8 @@ void Icon::draw(gcn::Graphics *g)
     if (mImage)
     {
         Graphics *const graphics = static_cast<Graphics*>(g);
-        graphics->drawImage(mImage, (getWidth() - mImage->mBounds.w) / 2,
-            (getHeight() - mImage->mBounds.h) / 2);
+        graphics->drawImage(mImage, (mDimension.width - mImage->mBounds.w) / 2,
+            (mDimension.height - mImage->mBounds.h) / 2);
     }
     BLOCK_END("Icon::draw")
 }
