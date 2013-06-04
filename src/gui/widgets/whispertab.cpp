@@ -29,6 +29,8 @@
 #include "net/chathandler.h"
 #include "net/net.h"
 
+#include "gui/widgets/windowcontainer.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -137,7 +139,10 @@ bool WhisperTab::handleCommand(const std::string &type,
     }
     else if (type == "close")
     {
-        delete this;
+        if (windowContainer)
+            windowContainer->scheduleDelete(this);
+        else
+            delete this;
         if (chatWindow)
             chatWindow->defaultTab();
     }
