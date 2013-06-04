@@ -136,16 +136,16 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         return;
     }
 
+    // +++ for future usage need reorder drawing images before text or back
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int itemX = (i % mGridWidth) * mBoxWidth;
         const int itemY = (i / mGridWidth) * mBoxHeight;
 
         // Draw item keyboard shortcut.
-        std::string key = inputManager.getKeyValueString(
+        const std::string key = inputManager.getKeyValueString(
             Input::KEY_SHORTCUT_1 + i);
         g->setColorAll(mForegroundColor, mForegroundColor);
-
         font->drawString(g, key, itemX + 2, itemY + 2);
 
         const int itemId = selShortcut->getItem(i);
@@ -158,12 +158,10 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         if (itemId < SPELL_MIN_ID)
         {
             const Item *const item = inv->findItem(itemId, itemColor);
-
             if (item)
             {
                 // Draw item icon.
                 Image *const image = item->getImage();
-
                 if (image)
                 {
                     std::string caption;
@@ -255,7 +253,6 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
         if (!mItemMoved && mItemClicked)
         {
             const int index = getIndexFromGrid(event.getX(), event.getY());
-
             if (index == -1)
                 return;
 
@@ -371,7 +368,6 @@ void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
     }
 }
 
-// Show ItemTooltip
 void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
 {
     const ItemShortcut *const selShortcut = itemShortcut[mNumber];
@@ -393,12 +389,11 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     {
         mSpellPopup->setVisible(false);
 
-        if (!PlayerInfo::getInventory())
+        Inventory *const inv = PlayerInfo::getInventory();
+        if (!inv)
             return;
 
-        const Item *const item = PlayerInfo::getInventory()->findItem(
-            itemId, itemColor);
-
+        const Item *const item = inv->findItem(itemId, itemColor);
         if (item && viewport)
         {
             mItemPopup->setItem(item);
