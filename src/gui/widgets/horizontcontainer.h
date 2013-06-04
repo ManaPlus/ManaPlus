@@ -41,11 +41,11 @@ class HorizontContainer final : public Container, public gcn::WidgetListener
 
         A_DELETE_COPY(HorizontContainer)
 
-        virtual void add(gcn::Widget *widget);
+        void add(gcn::Widget *widget) override;
 
-        virtual void add(gcn::Widget *widget, int spacing);
+        void add(gcn::Widget *widget, int spacing);
 
-        virtual void clear();
+        void clear() override;
 
         void widgetResized(const gcn::Event &event) override;
 
