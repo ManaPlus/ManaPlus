@@ -194,7 +194,7 @@ void GuiTable::setLinewiseSelection(const bool linewise)
 int GuiTable::getRowHeight() const
 {
     if (mModel)
-        return mModel->getRowHeight() + 1;  // border
+        return mModel->getRowHeight() + 4;  // border
     else
         return 0;
 }
@@ -202,7 +202,7 @@ int GuiTable::getRowHeight() const
 int GuiTable::getColumnWidth(int i) const
 {
     if (mModel)
-        return mModel->getColumnWidth(i) + 1;  // border
+        return mModel->getColumnWidth(i) + 4;  // border
     else
         return 0;
 }
