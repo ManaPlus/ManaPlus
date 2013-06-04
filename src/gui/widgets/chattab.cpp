@@ -171,7 +171,7 @@ void ChatTab::chatLog(std::string line, Own own,
             break;
         case BY_SERVER:
             // TRANSLATORS: chat message
-            tmp.nick = std::string(_("Server:")).append(" ");
+            tmp.nick.clear();
             tmp.text = line;
             lineColor = "##S";
             break;
