@@ -50,8 +50,12 @@ Label::~Label()
         gui->removeDragged(this);
 
     mInstances --;
-    if (mInstances == 0 && Theme::instance())
-        Theme::instance()->unload(mSkin);
+    if (mInstances == 0)
+    {
+        Theme *const theme = Theme::instance();
+        if (theme)
+            theme->unload(mSkin);
+    }
 }
 
 void Label::init()
@@ -60,8 +64,9 @@ void Label::init()
     mForegroundColor2 = getThemeColor(Theme::LABEL_OUTLINE);
     if (mInstances == 0)
     {
-        if (Theme::instance())
-            mSkin = Theme::instance()->load("label.xml", "");
+        Theme *const theme = Theme::instance();
+        if (theme)
+            mSkin = theme->load("label.xml", "");
     }
     mInstances ++;
 
@@ -75,7 +80,8 @@ void Label::draw(gcn::Graphics* graphics)
 {
     BLOCK_START("Label::draw")
     int textX;
-    const int textY = getHeight() / 2 - getFont()->getHeight() / 2;
+    const gcn::Rectangle &rect = mDimension;
+    const int textY = rect.height / 2 - getFont()->getHeight() / 2;
     gcn::Font *const font = getFont();
 
     switch (mAlignment)
@@ -85,11 +91,11 @@ void Label::draw(gcn::Graphics* graphics)
             textX = mPadding;
             break;
         case Graphics::CENTER:
-            textX = (getWidth() - font->getWidth(mCaption)) / 2;
+            textX = (rect.width - font->getWidth(mCaption)) / 2;
             break;
         case Graphics::RIGHT:
-            if (getWidth() > mPadding)
-                textX = getWidth() - mPadding - font->getWidth(mCaption);
+            if (rect.width > mPadding)
+                textX = rect.width - mPadding - font->getWidth(mCaption);
             else
                 textX = 0;
             break;
@@ -103,8 +109,10 @@ void Label::draw(gcn::Graphics* graphics)
 
 void Label::adjustSize()
 {
-    setWidth(getFont()->getWidth(getCaption()) + 2 * mPadding);
-    setHeight(getFont()->getHeight() + 2 * mPadding);
+    gcn::Font *const font = getFont();
+    const int pad2 = 2 * mPadding;
+    setWidth(font->getWidth(mCaption) + pad2);
+    setHeight(font->getHeight() + pad2);
 }
 
 void Label::setForegroundColor(const gcn::Color &color)
