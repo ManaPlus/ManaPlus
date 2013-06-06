@@ -88,17 +88,17 @@ void Desktop::draw(gcn::Graphics *graphics)
     const gcn::Rectangle &rect = mDimension;
     const int width = rect.width;
     const int height = rect.height;
-    const int wallpWidth = mWallpaper->getWidth();
-    const int wallpHeight = mWallpaper->getHeight();
-
-    if (!mWallpaper || (width > wallpWidth || height > wallpHeight))
-    {
-        g->setColor(mBackgroundGrayColor);
-        g->fillRectangle(gcn::Rectangle(0, 0, width, height));
-    }
-
     if (mWallpaper)
     {
+        const int wallpWidth = mWallpaper->getWidth();
+        const int wallpHeight = mWallpaper->getHeight();
+
+        if (width > wallpWidth || height > wallpHeight)
+        {
+            g->setColor(mBackgroundGrayColor);
+            g->fillRectangle(gcn::Rectangle(0, 0, width, height));
+        }
+
         if (!imageHelper->useOpenGL())
         {
             g->drawImage(mWallpaper,
@@ -111,6 +111,11 @@ void Desktop::draw(gcn::Graphics *graphics)
                 wallpWidth, wallpHeight,
                 width, height, false);
         }
+    }
+    else
+    {
+        g->setColor(mBackgroundGrayColor);
+        g->fillRectangle(gcn::Rectangle(0, 0, width, height));
     }
 
     // Draw a thin border under the application version...
