@@ -205,10 +205,14 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
             mFrameIndex = 0;
 
         mFrame = &mAnimation->mFrames[mFrameIndex];
-        if (!mFrame || (mFrame->type == Frame::LABEL
-            && !mFrame->nextAction.empty()))
+        if (!mFrame)
         {
             fail = true;
+        }
+        if ((mFrame->type == Frame::LABEL
+            && !mFrame->nextAction.empty()))
+        {
+            fail = false;
         }
         else if (mFrame->type == Frame::GOTO && !mFrame->nextAction.empty())
         {
@@ -220,17 +224,21 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
                     if (frame->type == Frame::LABEL
                         && mFrame->nextAction == frame->nextAction)
                     {
-                        mFrameTime = 0;
+//                        mFrameTime = 0;
                         mFrameIndex = i;
                         if (mFrameIndex >= mAnimation->getLength())
                             mFrameIndex = 0;
 
                         mFrame = &mAnimation->mFrames[mFrameIndex];
 
-                        fail = true;
+                        fail = false;
                         break;
                     }
                 }
+            }
+            else
+            {
+                fail = false;
             }
         }
         else if (mFrame->type == Frame::JUMP && !mFrame->nextAction.empty())
