@@ -298,6 +298,7 @@ static const CommandInfo commands[] =
     {"", &Commands::dontRemoveName, -1, false},
     {"", &Commands::removeName, -1, false},
     {"disableaway", &Commands::disableAway, -1, false},
+    {"enableaway", &Commands::enableAway, -1, false},
     {"drop", nullptr, Input::KEY_QUICK_DROP, false},
     {"dropn", nullptr, Input::KEY_QUICK_DROPN, false},
     {"movetotarget", nullptr, Input::KEY_MOVE_TO_TARGET, false},

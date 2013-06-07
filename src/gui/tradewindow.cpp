@@ -223,7 +223,8 @@ void TradeWindow::increaseQuantity(const int index, const bool own,
         item = mMyInventory->getItem(index);
     else
         item = mPartnerInventory->getItem(index);
-    item->increaseQuantity(quantity);
+    if (item)
+        item->increaseQuantity(quantity);
 }
 
 void TradeWindow::reset()
