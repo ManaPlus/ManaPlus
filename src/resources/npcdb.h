@@ -45,6 +45,6 @@ namespace NPCDB
     uint16_t getAvatarFor(const int id);
 
     void loadXmlFile(const std::string &fileName);
-}
+}  // namespace NPCDB
 
 #endif  // RESOURCES_NPCDB_H

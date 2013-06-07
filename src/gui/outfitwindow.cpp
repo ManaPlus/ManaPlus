@@ -487,12 +487,12 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
 
 int OutfitWindow::getIndexFromGrid(const int pointX, const int pointY) const
 {
-    const gcn::Rectangle tRect = gcn::Rectangle(
-        mPadding, mTitleBarHeight, mGridWidth * mBoxWidth, mGridHeight * mBoxHeight);
+    const gcn::Rectangle tRect = gcn::Rectangle(mPadding, mTitleBarHeight,
+        mGridWidth * mBoxWidth, mGridHeight * mBoxHeight);
     if (!tRect.isPointInRect(pointX, pointY))
         return -1;
-    const int index = (((pointY - mTitleBarHeight) / mBoxHeight) * mGridWidth) +
-        (pointX - mPadding) / mBoxWidth;
+    const int index = (((pointY - mTitleBarHeight) / mBoxHeight) * mGridWidth)
+        + (pointX - mPadding) / mBoxWidth;
     if (index >= static_cast<int>(OUTFIT_ITEM_COUNT) || index < 0)
         return -1;
     return index;

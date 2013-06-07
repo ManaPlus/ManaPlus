@@ -171,7 +171,8 @@ private:
                               FILE *stream);
 
     const std::string prepareNick(const std::string &nick, const int level,
-                                  const std::string &color) const A_WARN_UNUSED;
+                                  const std::string &color)
+                                  const A_WARN_UNUSED;
 
     void updateWindow(std::vector<OnlinePlayer*> &friends,
                       std::vector<OnlinePlayer*> &neutral,

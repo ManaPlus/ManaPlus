@@ -27,6 +27,8 @@
 
 #include "gui/widgets/browserbox.h"
 
+#include "resources/sdlimagehelper.h"
+
 #include "gtest/gtest.h"
 
 #include <physfs.h>
@@ -47,6 +49,7 @@ TEST(browserbox, test1)
     Client client(options);
 
     logger = new Logger();
+    imageHelper = new SDLImageHelper();
     Theme *theme = Theme::instance();
     gcn::Widget::setGlobalFont(new SDLFont("/usr/share/fonts/truetype/"
         "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));

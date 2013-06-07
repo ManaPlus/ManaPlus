@@ -136,7 +136,6 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         currentInfo->setDisplay(display);
         mNPCInfos[id] = currentInfo;
     }
-
 }
 
 void NPCDB::unload()

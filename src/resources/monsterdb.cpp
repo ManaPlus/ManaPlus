@@ -244,7 +244,6 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
         mMonsterInfos[XML::getProperty(
             monsterNode, "id", 0) + offset] = currentInfo;
     }
-
 }
 
 void MonsterDB::unload()

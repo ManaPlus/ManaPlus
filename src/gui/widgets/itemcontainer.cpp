@@ -534,8 +534,8 @@ void ItemContainer::updateMatrix()
     std::string temp = mName;
     toLower(temp);
 
-    const int invSize = mInventory->getSize();
-    for (unsigned idx = 0; idx < invSize; idx ++)
+    const unsigned int invSize = mInventory->getSize();
+    for (unsigned int idx = 0; idx < invSize; idx ++)
     {
         Item *const item = mInventory->getItem(idx);
 

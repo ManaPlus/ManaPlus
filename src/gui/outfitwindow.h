@@ -111,8 +111,6 @@ class OutfitWindow final : public Window,
 
         int mBoxWidth;
         int mBoxHeight;
-        int mCursorPosX;
-        int mCursorPosY;
         int mGridWidth;
         int mGridHeight;
 

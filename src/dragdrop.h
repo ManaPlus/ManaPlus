@@ -57,6 +57,8 @@ class DragDrop
                 mItemImage->incRef();
         }
 
+        A_DELETE_COPY(DragDrop)
+
         ~DragDrop()
         {
             if (mItemImage)

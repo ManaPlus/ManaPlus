@@ -761,7 +761,6 @@ void Gui::handleMouseReleased(const gcn::MouseInput &mouseInput)
                 mouseInput.getButton(),
                 mouseInput.getX(),
                 mouseInput.getY());
-
         }
     }
 

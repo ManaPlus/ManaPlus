@@ -711,7 +711,8 @@ void WhoIsOnline::updateSize()
         mBrowserBox->setWidth(area.width - 10);
 }
 
-const std::string WhoIsOnline::prepareNick(const std::string &nick, const int level,
+const std::string WhoIsOnline::prepareNick(const std::string &nick,
+                                           const int level,
                                            const std::string &color) const
 {
     const std::string text = encodeLinkText(nick);
