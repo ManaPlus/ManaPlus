@@ -96,6 +96,7 @@
 #include "resources/petdb.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/cpu.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
@@ -589,6 +590,7 @@ void Client::gameInit()
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
 #endif
     logVars();
+    Cpu::detect();
     graphicsManager.initGraphics(mOptions.noOpenGL);
     graphicsManager.detectPixelSize();
     runCounters = config.getBoolValue("packetcounters");
