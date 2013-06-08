@@ -1,3 +1,18 @@
+2013-06-09 New release 1.3.6.9
+fix: colors in jewelry theme.
+fix: player sprite in disguise mode.
+fix: spell attack key.
+fix: some inventory crashes.
+fix: space button in edit server dialog.
+fix: wrong animation time with goto and label.
+add: money popup in inventory.
+add: include tags in most configs.
+add: drag and drop between inventory and other windows.
+add: chat command for testing particle effects: /testparticle
+add: alternate server name in servers list.
+add: improve windows version speed.
+add: remove "server:" from chat notifications.
+
 2013-05-26 New release 1.3.5.26
 fix: char selection dialog if screen is big.
 fix: resources reloading if switching servers.
