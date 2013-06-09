@@ -8,6 +8,7 @@ SET(FILES
     manaplus_emotions.png
     manaplus_emote.xml
     manaplus_emotes.xml
+    test.xml
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/graphics/sprites)

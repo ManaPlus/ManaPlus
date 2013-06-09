@@ -95,16 +95,21 @@ class Animation final
 
         void setLastFrameDelay(const int delay);
 
+        typedef std::vector<Frame> Frames;
+        typedef Frames::iterator FramesIter;
+        typedef Frames::reverse_iterator FramesRevIter;
+
+#ifdef UNITTESTS
+        Frames &getFrames()
+        { return mFrames; }
+#endif
+
         /**
          * Determines whether the given animation frame is a terminator.
          */
         static bool isTerminator(const Frame &phase) A_WARN_UNUSED;
 
     protected:
-        typedef std::vector<Frame> Frames;
-        typedef Frames::iterator FramesIter;
-        typedef Frames::reverse_iterator FramesRevIter;
-
         Frames mFrames;
         int mDuration;
 };

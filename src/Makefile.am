@@ -849,6 +849,7 @@ manaplus_SOURCES += \
 if ENABLE_UNITTESTS
 manaplus_CXXFLAGS += -DUNITTESTS
 manaplus_SOURCES += \
+	      animatedsprite_unittest.cc \
 	      gui/sdlfont_unittest.cc \
 	      gui/widgets/browserbox_unittest.cc \
 	      utils/stringutils_unittest.cc

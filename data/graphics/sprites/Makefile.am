@@ -9,7 +9,8 @@ sprites_DATA =				\
 	error.xml			\
 	manaplus_emotions.png\
 	manaplus_emote.xml	\
-	manaplus_emotes.xml
+	manaplus_emotes.xml	\
+	test.xml
 
 EXTRA_DIST =				\
 	$(sprites_DATA)			\

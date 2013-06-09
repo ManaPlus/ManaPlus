@@ -107,6 +107,23 @@ class AnimatedSprite final : public Sprite
         static void setEnableCache(const bool b)
         { mEnableCache = b; }
 
+#ifdef UNITTESTS
+        SpriteDef *getSprite()
+        { return mSprite; }
+
+        Frame *getFrame()
+        { return mFrame; }
+
+        Animation *getAnimation()
+        { return mAnimation; }
+
+        unsigned int getFrameIndex()
+        { return mFrameIndex; }
+
+        unsigned int getFrameTime()
+        { return mFrameTime; }
+#endif
+
     private:
         bool updateCurrentAnimation(const unsigned int dt);
 
