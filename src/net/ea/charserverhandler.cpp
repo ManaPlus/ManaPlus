@@ -185,6 +185,10 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
             // TRANSLATORS: error message
             errorMessage = _("Incorrect race.");
             break;
+        case 7:
+            // TRANSLATORS: error message
+            errorMessage = _("Incorrect look.");
+            break;
     }
     // TRANSLATORS: error message header
     new OkDialog(_("Error"), errorMessage, DIALOG_ERROR);
