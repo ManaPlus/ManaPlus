@@ -119,6 +119,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     // TRANSLATORS: char create dialog button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mRace(0),
+    mLook(0),
     mPlayer(new Being(0, ActorSprite::PLAYER, static_cast<uint16_t>(mRace),
             nullptr)),
     mPlayerBox(new PlayerBox(mPlayer, "charcreate_playerbox.xml",
@@ -561,7 +562,7 @@ void CharCreateDialog::updateRace()
     else if (mRace >= Being::getNumOfRaces())
         mRace = 0;
 
-    mPlayer->setSubtype(static_cast<uint16_t>(mRace));
+    mPlayer->setSubtype(static_cast<uint16_t>(mRace), mLook);
     const ItemInfo &item = ItemDB::get(-100 - mRace);
     mRaceNameLabel->setCaption(item.getName());
     mRaceNameLabel->adjustSize();

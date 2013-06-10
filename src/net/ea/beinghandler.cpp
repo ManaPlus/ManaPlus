@@ -195,13 +195,12 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     if (speed == 0)
         speed = 150;
 
-    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
-    dstBeing->setSubtype(job);
+    const int hairStyle = msg.readInt8();
+    const int look = msg.readInt8();
+    dstBeing->setSubtype(job, look);
     if (dstBeing->getType() == ActorSprite::MONSTER && player_node)
         player_node->checkNewName(dstBeing);
-
-    const int hairStyle = msg.readInt8();
-    msg.readInt8();  // free
+    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     const uint16_t weapon = msg.readInt16();
     const uint16_t headBottom = msg.readInt16();
 

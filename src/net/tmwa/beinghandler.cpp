@@ -299,11 +299,17 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
     switch (type)
     {
         case 0:     // change race
-            dstBeing->setSubtype(static_cast<uint16_t>(id));
+            dstBeing->setSubtype(static_cast<uint16_t>(id),
+                dstBeing->getLook());
             break;
         case 1:     // eAthena LOOK_HAIR
-            dstBeing->setHairStyle(SPRITE_HAIR, id * -1);
+        {
+            const int look = id / 256;
+            const int hair = id % 256;
+            dstBeing->setHairStyle(SPRITE_HAIR, hair * -1);
+            dstBeing->setLook(look);
             break;
+        }
         case 2:     // Weapon ID in id, Shield ID in id2
             dstBeing->setSprite(SPRITE_WEAPON, id, "", 1, true);
             if (!mHideShield)
@@ -475,10 +481,10 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     }
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
-    dstBeing->setSubtype(job);
 
     const int hairStyle = msg.readInt8();
-    msg.readInt8();  // free
+    const int look = msg.readInt8();
+    dstBeing->setSubtype(job, look);
     const uint16_t weapon = msg.readInt16();
     const uint16_t shield = msg.readInt16();
     const uint16_t headBottom = msg.readInt16();

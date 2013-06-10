@@ -298,7 +298,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
     switch (type)
     {
         case 0:     // change race
-            dstBeing->setSubtype(static_cast<uint16_t>(id));
+            dstBeing->setSubtype(static_cast<uint16_t>(id), 0);
             break;
         case 1:     // eAthena LOOK_HAIR
             dstBeing->setSpriteID(SPRITE_HAIR, id *-1);
@@ -475,7 +475,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     }
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
-    dstBeing->setSubtype(job);
+    dstBeing->setSubtype(job, 0);
 
     const int hairStyle = msg.readInt16();
     const uint16_t weapon = msg.readInt16();
@@ -705,7 +705,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         speed = 150;
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
-    dstBeing->setSubtype(job);
+    dstBeing->setSubtype(job, 0);
     if (dstBeing->getType() == ActorSprite::MONSTER && player_node)
         player_node->checkNewName(dstBeing);
 

@@ -157,11 +157,12 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     data.mAttributes[PlayerInfo::MP] = msg.readInt16();
     data.mAttributes[PlayerInfo::MAX_MP] = msg.readInt16();
 
-    msg.readInt16();                          // speed
-    tempPlayer->setSubtype(msg.readInt16());  // class (used for race)
+    msg.readInt16();                           // speed
+    const int race = msg.readInt16();          // class (used for race)
     const int hairStyle = msg.readInt8();
-    msg.readInt8();  // free
-    const uint16_t weapon = msg.readInt16();   // unused on server. need use?
+    const int look = msg.readInt8();
+    tempPlayer->setSubtype(race, look);
+    const uint16_t weapon = msg.readInt16();  // unused on server. need use?
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
     data.mAttributes[PlayerInfo::LEVEL] = msg.readInt16();
@@ -258,7 +259,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
     outMsg.writeInt8(static_cast<int8_t>(hairColor));
     outMsg.writeInt8(0);  // unused
     outMsg.writeInt8(static_cast<int8_t>(hairstyle));
-    outMsg.writeInt8(0);  // unused
+    outMsg.writeInt8(123);  // look
     if (serverVersion >= 2)
         outMsg.writeInt8(race);
 }

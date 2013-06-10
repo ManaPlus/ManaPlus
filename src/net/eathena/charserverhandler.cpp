@@ -154,8 +154,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     data.mAttributes[PlayerInfo::MP] = msg.readInt16();
     data.mAttributes[PlayerInfo::MAX_MP] = msg.readInt16();
 
-    msg.readInt16();                         // speed
-    tempPlayer->setSubtype(msg.readInt16());  // class (used for race)
+    msg.readInt16();                             // speed
+    tempPlayer->setSubtype(msg.readInt16(), 0);  // class (used for race)
     const int hairStyle = msg.readInt16();
     const uint16_t weapon = msg.readInt16();
 

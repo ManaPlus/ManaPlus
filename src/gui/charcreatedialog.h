@@ -136,6 +136,7 @@ class CharCreateDialog final : public Window,
         Button *mCancelButton;
 
         int mRace;
+        int mLook;
 
         Being *mPlayer;
         PlayerBox *mPlayerBox;

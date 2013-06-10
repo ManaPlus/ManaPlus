@@ -167,6 +167,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mHairColor(0),
     mPet(nullptr),
     mPetId(0),
+    mLook(0),
     mOwner(nullptr),
     mSpecialParticle(nullptr)
 {
@@ -177,7 +178,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     }
 
     setMap(map);
-    setSubtype(subtype);
+    setSubtype(subtype, 0);
 
     if (mType == PLAYER)
         mShowName = config.getBoolValue("visiblenames");
@@ -224,15 +225,16 @@ Being::~Being()
         mPet->setOwner(nullptr);
 }
 
-void Being::setSubtype(const uint16_t subtype)
+void Being::setSubtype(const uint16_t subtype, const uint8_t look)
 {
     if (!mInfo)
         return;
 
-    if (subtype == mSubType)
+    if (subtype == mSubType && mLook == look)
         return;
 
     mSubType = subtype;
+    mLook = look;
 
     if (mType == MONSTER)
     {
@@ -2892,4 +2894,10 @@ void Being::playSfx(const SoundInfo &sound, Being *const being,
     {
         soundManager.playSfx(sound.sound, x, y);
     }
+}
+
+void Being::setLook(const int look)
+{
+    if (mType == PLAYER)
+        setSubtype(mSubType, look);
 }

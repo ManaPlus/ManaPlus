@@ -429,7 +429,7 @@ class Being : public ActorSprite, public ConfigListener
          /**
           * Set Being's subtype (mostly for view for monsters and NPCs)
           */
-        void setSubtype(const uint16_t subtype);
+        void setSubtype(const uint16_t subtype, const uint8_t look);
 
         const BeingInfo *getInfo() const A_WARN_UNUSED
         { return mInfo; }
@@ -877,6 +877,11 @@ class Being : public ActorSprite, public ConfigListener
         void playSfx(const SoundInfo &sound, Being *const being,
                      const bool main, const int x, const int y);
 
+        int getLook()
+        { return mLook; }
+
+        void setLook(const int look);
+
         static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
 
         static Gender intToGender(uint8_t sex) A_WARN_UNUSED;
@@ -1041,6 +1046,7 @@ class Being : public ActorSprite, public ConfigListener
         unsigned char mHairColor;
         Being *mPet;
         int mPetId;
+        int mLook;
         Being *mOwner;
         Particle *mSpecialParticle;
 };
