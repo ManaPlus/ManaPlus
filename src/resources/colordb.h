@@ -37,8 +37,8 @@ namespace ColorDB
         public:
             ItemColor():
                 id(0),
-                name(""),
-                color("")
+                name(),
+                color()
             { }
 
             ItemColor(const int id0, const std::string &name0,

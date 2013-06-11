@@ -309,3 +309,15 @@ void ItemInfo::setSprite(const std::string &animationFile,
 {
     mAnimationFiles[static_cast<int>(gender) + race * 4] = animationFile;
 }
+
+std::string ItemInfo::getColorName(const int idx) const
+{
+    if (!mColors)
+        return std::string();
+
+    const std::map <int, ColorDB::ItemColor>::const_iterator
+        it = mColors->find(idx);
+    if (it == mColors->end())
+        return std::string();
+    return it->second.name;
+}

@@ -100,6 +100,8 @@ class CharCreateDialog final : public Window,
 
         void updateRace();
 
+        void updateLook();
+
         CharSelectDialog *mCharSelectDialog;
 
         TextField *mNameField;
@@ -116,6 +118,10 @@ class CharCreateDialog final : public Window,
         Button *mPrevRaceButton;
         Label *mRaceLabel;
         Label *mRaceNameLabel;
+        Button *mNextLookButton;
+        Button *mPrevLookButton;
+        Label *mLookLabel;
+        Label *mLookNameLabel;
 
         Button *mActionButton;
         Button *mRotateButton;
@@ -137,6 +143,8 @@ class CharCreateDialog final : public Window,
 
         int mRace;
         int mLook;
+        int mMinLook;
+        int mMaxLook;
 
         Being *mPlayer;
         PlayerBox *mPlayerBox;

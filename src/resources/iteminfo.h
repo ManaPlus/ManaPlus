@@ -292,6 +292,11 @@ class ItemInfo final
         bool isProtected() const
         { return mProtected; }
 
+        int getColorsSize() const
+        { return mColors ? mColors->size() : 0; }
+
+        std::string getColorName(const int idx) const;
+
         int mDrawBefore[10];
         int mDrawAfter[10];
         int mDrawPriority[10];

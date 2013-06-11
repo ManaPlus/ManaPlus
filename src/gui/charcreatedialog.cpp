@@ -96,6 +96,10 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mPrevRaceButton(nullptr),
     mRaceLabel(nullptr),
     mRaceNameLabel(nullptr),
+    mNextLookButton(nullptr),
+    mPrevLookButton(nullptr),
+    mLookLabel(nullptr),
+    mLookNameLabel(nullptr),
     // TRANSLATORS: char create dialog button
     mActionButton(new Button(this, _("^"), "action", this)),
     // TRANSLATORS: char create dialog button
@@ -120,6 +124,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mRace(0),
     mLook(0),
+    mMinLook(CharDB::getMinLook()),
+    mMaxLook(CharDB::getMaxLook()),
     mPlayer(new Being(0, ActorSprite::PLAYER, static_cast<uint16_t>(mRace),
             nullptr)),
     mPlayerBox(new PlayerBox(mPlayer, "charcreate_playerbox.xml",
@@ -168,6 +174,16 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mRaceLabel = new Label(this, _("Race:"));
         mRaceNameLabel = new Label(this, "");
     }
+    if (mMinLook < mMaxLook)
+    {
+        // TRANSLATORS: char create dialog button
+        mNextLookButton = new Button(this, _(">"), "nextlook", this);
+        // TRANSLATORS: char create dialog button
+        mPrevLookButton = new Button(this, _("<"), "prevlook", this);
+        // TRANSLATORS: char create dialog label
+        mLookLabel = new Label(this, _("Look:"));
+        mLookNameLabel = new Label(this, "");
+    }
 
     // Default to a Male character
     mMale->setSelected(true);
@@ -201,21 +217,36 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     const int rightX = 300;
     const int labelX = 5;
     const int nameX = 145;
-    mPrevHairColorButton->setPosition(leftX, 30);
-    mNextHairColorButton->setPosition(rightX, 30);
-    mHairColorLabel->setPosition(labelX, 35);
-    mHairColorNameLabel->setPosition(nameX, 35);
-    mPrevHairStyleButton->setPosition(leftX, 59);
-    mNextHairStyleButton->setPosition(rightX, 59);
-    mHairStyleLabel->setPosition(labelX, 64);
-    mHairStyleNameLabel->setPosition(nameX, 64);
+    int y = 30;
+    mPrevHairColorButton->setPosition(leftX, y);
+    mNextHairColorButton->setPosition(rightX, y);
+    y += 5;
+    mHairColorLabel->setPosition(labelX, y);
+    mHairColorNameLabel->setPosition(nameX, y);
+    y += 24;
+    mPrevHairStyleButton->setPosition(leftX, y);
+    mNextHairStyleButton->setPosition(rightX, y);
+    y += 5;
+    mHairStyleLabel->setPosition(labelX, y);
+    mHairStyleNameLabel->setPosition(nameX, y);
 
+    if (mMinLook < mMaxLook)
+    {
+        y += 24;
+        mPrevLookButton->setPosition(leftX, y);
+        mNextLookButton->setPosition(rightX, y);
+        y += 5;
+        mLookLabel->setPosition(labelX, y);
+        mLookNameLabel->setPosition(nameX, y);  // 93
+    }
     if (serverVersion >= 2)
     {
-        mPrevRaceButton->setPosition(leftX, 88);
-        mNextRaceButton->setPosition(rightX, 88);
-        mRaceLabel->setPosition(labelX, 93);
-        mRaceNameLabel->setPosition(nameX, 93);
+        y += 24;
+        mPrevRaceButton->setPosition(leftX, y);
+        mNextRaceButton->setPosition(rightX, y);
+        y += 5;
+        mRaceLabel->setPosition(labelX, y);
+        mRaceNameLabel->setPosition(nameX, y);
     }
 
     updateSliders();
@@ -238,6 +269,14 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     add(mHairStyleNameLabel);
     add(mActionButton);
     add(mRotateButton);
+
+    if (mMinLook < mMaxLook)
+    {
+        add(mNextLookButton);
+        add(mPrevLookButton);
+        add(mLookLabel);
+        add(mLookNameLabel);
+    }
 
     if (serverVersion >= 2)
     {
@@ -262,7 +301,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     updateHair();
     if (serverVersion >= 2)
         updateRace();
-
+    if (mMinLook < mMaxLook)
+        updateLook();
     updatePlayer();
 
     addKeyListener(this);
@@ -353,6 +393,16 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
     {
         mRace --;
         updateRace();
+    }
+    else if (id == "nextlook")
+    {
+        mLook ++;
+        updateLook();
+    }
+    else if (id == "prevlook")
+    {
+        mLook --;
+        updateLook();
     }
     else if (id == "statslider")
     {
@@ -465,25 +515,26 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
 
     const int w = 480;
     const int h = 350;
+    const int y = 118 + 29;
 
     for (unsigned i = 0, sz = static_cast<unsigned>(labels.size());
          i < sz; i++)
     {
         mAttributeLabel[i] = new Label(this, labels[i]);
         mAttributeLabel[i]->setWidth(70);
-        mAttributeLabel[i]->setPosition(5, 118 + i * 24);
+        mAttributeLabel[i]->setPosition(5, y + i * 24);
         mAttributeLabel[i]->adjustSize();
         add(mAttributeLabel[i]);
 
         mAttributeSlider[i] = new Slider(min, max);
-        mAttributeSlider[i]->setDimension(gcn::Rectangle(140, 118 + i * 24,
+        mAttributeSlider[i]->setDimension(gcn::Rectangle(140, y + i * 24,
                                                          150, 12));
         mAttributeSlider[i]->setActionEventId("statslider");
         mAttributeSlider[i]->addActionListener(this);
         add(mAttributeSlider[i]);
 
         mAttributeValue[i] = new Label(this, toString(min));
-        mAttributeValue[i]->setPosition(295, 118 + i * 24);
+        mAttributeValue[i]->setPosition(295, y + i * 24);
         add(mAttributeValue[i]);
     }
 
@@ -568,6 +619,28 @@ void CharCreateDialog::updateRace()
     mRaceNameLabel->adjustSize();
 }
 
+void CharCreateDialog::updateLook()
+{
+    const ItemInfo &item = ItemDB::get(-100 - mRace);
+    const int sz = item.getColorsSize();
+    if (sz > 0)
+    {
+        if (mLook < 0)
+            mLook = sz - 1;
+        if (mLook > mMaxLook)
+            mLook = mMaxLook;
+        if (mLook >= sz)
+            mLook = 0;
+    }
+    else
+    {
+        mLook = 0;
+    }
+    mPlayer->setSubtype(static_cast<uint16_t>(mRace), mLook);
+    mLookNameLabel->setCaption(item.getColorName(mLook));
+    mLookNameLabel->adjustSize();
+}
+
 void CharCreateDialog::logic()
 {
     if (mPlayer)
@@ -615,5 +688,5 @@ void CharCreateDialog::setButtonsPosition(const int w, const int h)
             mCancelButton->getX() - 5 - mCreateButton->getWidth(),
             h - 5 - mCancelButton->getHeight());
     }
-    mAttributesLeft->setPosition(15, 260);
+    mAttributesLeft->setPosition(15, 260 + 29);
 }

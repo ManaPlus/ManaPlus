@@ -37,6 +37,8 @@ namespace
     unsigned mMinStat = 0;
     unsigned mMaxStat = 0;
     unsigned mSumStat = 0;
+    unsigned mMinLook = 0;
+    unsigned mMaxLook = 0;
     std::vector<int> mDefaultItems;
 }  // namespace
 
@@ -66,6 +68,10 @@ void CharDB::load()
         else if (xmlNameEqual(node, "hairstyle"))
         {
             loadMinMax(node, &mMinHairStyle, &mMaxHairStyle);
+        }
+        else if (xmlNameEqual(node, "look"))
+        {
+            loadMinMax(node, &mMinLook, &mMaxLook);
         }
         else if (xmlNameEqual(node, "stat"))
         {
@@ -132,6 +138,16 @@ unsigned CharDB::getMaxStat()
 unsigned CharDB::getSumStat()
 {
     return mSumStat;
+}
+
+unsigned CharDB::getMinLook()
+{
+    return mMinLook;
+}
+
+unsigned CharDB::getMaxLook()
+{
+    return mMaxLook;
 }
 
 const std::vector<int> &CharDB::getDefaultItems()
