@@ -206,8 +206,8 @@ void DyePalette::replaceSColor(uint8_t *const color) const
         if (it == it_end)
             return;
         const DyeColor &col2 = *it;
-        if (color[0] == col.value[0] && color[1] == col.value[1]
-            && color[2] == col.value[2])
+        if (color[2] == col.value[0] && color[1] == col.value[1]
+            && color[0] == col.value[2])
         {
             color[2] = col2.value[0];
             color[1] = col2.value[1];
@@ -229,8 +229,8 @@ void DyePalette::replaceAColor(uint8_t *const color) const
         if (it == it_end)
             return;
         const DyeColor &col2 = *it;
-        if (color[1] == col.value[0] && color[2] == col.value[1]
-            && color[3] == col.value[2] && color[0] == col.value[3])
+        if (color[3] == col.value[0] && color[2] == col.value[1]
+            && color[1] == col.value[2] && color[0] == col.value[3])
         {
             color[3] = col2.value[0];
             color[2] = col2.value[1];
@@ -253,8 +253,8 @@ void DyePalette::replaceSOGLColor(uint8_t *const color) const
         if (it == it_end)
             return;
         const DyeColor &col2 = *it;
-        if (color[2] == col.value[0] && color[1] == col.value[1]
-            && color[0] == col.value[2])
+        if (color[0] == col.value[0] && color[1] == col.value[1]
+            && color[2] == col.value[2])
         {
             color[0] = col2.value[0];
             color[1] = col2.value[1];
@@ -276,8 +276,8 @@ void DyePalette::replaceAOGLColor(uint8_t *const color) const
         if (it == it_end)
             return;
         const DyeColor &col2 = *it;
-        if (color[2] == col.value[0] && color[1] == col.value[1]
-            && color[0] == col.value[2] && color[3] == col.value[3])
+        if (color[0] == col.value[0] && color[1] == col.value[1]
+            && color[2] == col.value[2] && color[3] == col.value[3])
         {
             color[0] = col2.value[0];
             color[1] = col2.value[1];
