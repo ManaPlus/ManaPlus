@@ -321,3 +321,15 @@ std::string ItemInfo::getColorName(const int idx) const
         return std::string();
     return it->second.name;
 }
+
+std::string ItemInfo::getColor(const int idx) const
+{
+    if (!mColors)
+        return std::string();
+
+    const std::map <int, ColorDB::ItemColor>::const_iterator
+        it = mColors->find(idx);
+    if (it == mColors->end())
+        return std::string();
+    return it->second.color;
+}

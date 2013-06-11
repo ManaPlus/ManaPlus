@@ -248,6 +248,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
                                      const int hairstyle,
                                      const int hairColor,
                                      const unsigned char race,
+                                     const unsigned char look,
                                      const std::vector<int> &stats) const
 {
     MessageOut outMsg(CMSG_CHAR_CREATE);
@@ -259,7 +260,10 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
     outMsg.writeInt8(static_cast<int8_t>(hairColor));
     outMsg.writeInt8(0);  // unused
     outMsg.writeInt8(static_cast<int8_t>(hairstyle));
-    outMsg.writeInt8(123);  // look
+    if (serverVersion >= 9)
+        outMsg.writeInt8(look);
+    else
+        outMsg.writeInt8(0);
     if (serverVersion >= 2)
         outMsg.writeInt8(race);
 }

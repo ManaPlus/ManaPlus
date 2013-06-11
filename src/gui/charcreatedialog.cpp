@@ -174,7 +174,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mRaceLabel = new Label(this, _("Race:"));
         mRaceNameLabel = new Label(this, "");
     }
-    if (mMinLook < mMaxLook)
+    if (serverVersion >= 9 && mMinLook < mMaxLook)
     {
         // TRANSLATORS: char create dialog button
         mNextLookButton = new Button(this, _(">"), "nextlook", this);
@@ -230,7 +230,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mHairStyleLabel->setPosition(labelX, y);
     mHairStyleNameLabel->setPosition(nameX, y);
 
-    if (mMinLook < mMaxLook)
+    if (serverVersion >= 9 && mMinLook < mMaxLook)
     {
         y += 24;
         mPrevLookButton->setPosition(leftX, y);
@@ -270,7 +270,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     add(mActionButton);
     add(mRotateButton);
 
-    if (mMinLook < mMaxLook)
+    if (serverVersion >= 9 && mMinLook < mMaxLook)
     {
         add(mNextLookButton);
         add(mPrevLookButton);
@@ -301,7 +301,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     updateHair();
     if (serverVersion >= 2)
         updateRace();
-    if (mMinLook < mMaxLook)
+    if (serverVersion >= 9 && mMinLook < mMaxLook)
         updateLook();
     updatePlayer();
 
@@ -349,7 +349,7 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
 
             Net::getCharServerHandler()->newCharacter(getName(), characterSlot,
                 mFemale->isSelected(), mHairStyle, mHairColor,
-                static_cast<unsigned char>(mRace), atts);
+                static_cast<unsigned char>(mRace), mLook, atts);
         }
         else
         {
@@ -613,32 +613,37 @@ void CharCreateDialog::updateRace()
     else if (mRace >= Being::getNumOfRaces())
         mRace = 0;
 
-    mPlayer->setSubtype(static_cast<uint16_t>(mRace), mLook);
-    const ItemInfo &item = ItemDB::get(-100 - mRace);
-    mRaceNameLabel->setCaption(item.getName());
-    mRaceNameLabel->adjustSize();
+    updateLook();
 }
 
 void CharCreateDialog::updateLook()
 {
     const ItemInfo &item = ItemDB::get(-100 - mRace);
     const int sz = item.getColorsSize();
-    if (sz > 0)
+    if (sz > 0 && serverVersion >= 9)
     {
         if (mLook < 0)
             mLook = sz - 1;
         if (mLook > mMaxLook)
-            mLook = mMaxLook;
+            mLook = mMinLook;
         if (mLook >= sz)
-            mLook = 0;
+            mLook = mMinLook;
     }
     else
     {
         mLook = 0;
     }
     mPlayer->setSubtype(static_cast<uint16_t>(mRace), mLook);
-    mLookNameLabel->setCaption(item.getColorName(mLook));
-    mLookNameLabel->adjustSize();
+    if (mRaceNameLabel)
+    {
+        mRaceNameLabel->setCaption(item.getName());
+        mRaceNameLabel->adjustSize();
+    }
+    if (mLookNameLabel)
+    {
+        mLookNameLabel->setCaption(item.getColorName(mLook));
+        mLookNameLabel->adjustSize();
+    }
 }
 
 void CharCreateDialog::logic()

@@ -280,15 +280,20 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
             id = -100;
             // TRANSLATORS: default race name
             setRaceName(_("Human"));
+            if (Net::getCharServerHandler())
+                setSprite(Net::getCharServerHandler()->baseSprite(), id);
         }
         else
         {
             const ItemInfo &info = ItemDB::get(id);
             setRaceName(info.getName());
+            if (Net::getCharServerHandler())
+            {
+                setSprite(Net::getCharServerHandler()->baseSprite(),
+                    id, info.getColor(mLook));
+            }
         }
 
-        if (Net::getCharServerHandler())
-            setSprite(Net::getCharServerHandler()->baseSprite(), id);
     }
 }
 

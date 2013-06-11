@@ -54,6 +54,7 @@ class CharServerHandler final : public MessageHandler,
         void newCharacter(const std::string &name, const int slot,
                           const bool gender, const int hairstyle,
                           const int hairColor, const unsigned char race,
+                          const unsigned char look,
                           const std::vector<int> &stats) const override;
 
         void deleteCharacter(Net::Character *const character) override;

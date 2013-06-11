@@ -297,6 +297,8 @@ class ItemInfo final
 
         std::string getColorName(const int idx) const;
 
+        std::string getColor(const int idx) const;
+
         int mDrawBefore[10];
         int mDrawAfter[10];
         int mDrawPriority[10];

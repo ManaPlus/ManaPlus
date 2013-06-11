@@ -380,6 +380,9 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
                 static_cast<unsigned char>(id2));
             player_node->imitateOutfit(dstBeing, SPRITE_EVOL2);
             break;
+        case 16:
+            dstBeing->setLook(id);
+            break;
         default:
             logger->log("QQQ3 CHANGE_LOOKS: unsupported type: "
                     "%d, id: %d", type, id);

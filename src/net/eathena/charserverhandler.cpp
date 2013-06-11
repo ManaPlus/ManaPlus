@@ -214,6 +214,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
                                      const bool gender A_UNUSED,
                                      const int hairstyle, const int hairColor,
                                      const unsigned char race A_UNUSED,
+                                     const unsigned char look A_UNUSED,
                                      const std::vector<int> &stats) const
 {
     MessageOut outMsg(CMSG_CHAR_CREATE);
