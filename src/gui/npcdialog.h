@@ -205,6 +205,10 @@ class NpcDialog final : public Window,
 
         void clearRows();
 
+        void mousePressed(gcn::MouseEvent &event);
+
+        static void copyToClipboard(const int npcId, const int x, const int y);
+
         static NpcDialogs mNpcDialogs;
 
         static void clearDialogs();

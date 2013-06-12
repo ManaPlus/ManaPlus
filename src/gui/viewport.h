@@ -35,6 +35,7 @@ class ActorSprite;
 class Button;
 class Being;
 class BeingPopup;
+class BrowserBox;
 class ChatTab;
 class FloorItem;
 class Graphics;
@@ -188,6 +189,8 @@ class Viewport final : public WindowContainer,
         void showLinkPopup(const std::string &link);
 
         void showWindowsPopup();
+
+        void showNpcDialogPopup(const int npcId);
 
         /**
          * Closes the popup menu. Needed for when the player dies or switching

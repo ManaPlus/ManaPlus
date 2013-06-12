@@ -44,6 +44,7 @@
 #include "gui/inventorywindow.h"
 #include "gui/itemamountwindow.h"
 #include "gui/ministatuswindow.h"
+#include "gui/npcdialog.h"
 #include "gui/outfitwindow.h"
 #include "gui/selldialog.h"
 #include "gui/skilldialog.h"
@@ -1352,6 +1353,10 @@ void PopupMenu::handleLink(const std::string &link,
         if (chatWindow)
             chatWindow->copyToClipboard(mX, mY);
     }
+    else if (link == "npc clipboard" && mBeingId)
+    {
+        NpcDialog::copyToClipboard(mBeingId, mX, mY);
+    }
     else if (link == "remove attack" && being)
     {
         if (actorSpriteManager && being->getType() == Being::MONSTER)
@@ -2359,6 +2364,21 @@ void PopupMenu::showWindowsPopup(const int x, const int y)
         mBrowserBox->addRow(strprintf("show window_%d", btn->key),
             btn->text.c_str());
     }
+    mBrowserBox->addRow("##3---");
+    // TRANSLATORS: popup menu item
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(x, y);
+}
+
+void PopupMenu::showNpcDialogPopup(const int npcId, const int x, const int y)
+{
+    mBeingId = npcId;
+    mX = x;
+    mY = y;
+    mBrowserBox->clearRows();
+    // TRANSLATORS: popup menu item
+    mBrowserBox->addRow("npc clipboard", _("Copy to clipboard"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("cancel", _("Cancel"));

@@ -50,6 +50,7 @@
 #include "net/net.h"
 #include "net/npchandler.h"
 
+#include "utils/copynpaste.h"
 #include "utils/gettext.h"
 
 #include <guichan/font.hpp>
@@ -786,4 +787,29 @@ void NpcDialog::clearDialogs()
         ++ it;
     }
     mNpcDialogs.clear();
+}
+
+void NpcDialog::mousePressed(gcn::MouseEvent &event)
+{
+    Window::mousePressed(event);
+    if (event.getButton() == gcn::MouseEvent::RIGHT
+        && event.getSource() == mTextBox)
+    {
+        if (viewport)
+            viewport->showNpcDialogPopup(mNpcId);
+    }
+}
+
+void NpcDialog::copyToClipboard(const int npcId, const int x, const int y)
+{
+    NpcDialogs::iterator it = mNpcDialogs.find(npcId);
+    if (it != mNpcDialogs.end())
+    {
+        const BrowserBox *const text = (*it).second->mTextBox;
+        if (!text)
+            return;
+
+        std::string str = text->getTextAtPos(x, y);
+        sendBuffer(str);
+    }
 }

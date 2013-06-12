@@ -178,6 +178,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showWindowsPopup(const int x, const int y);
 
+        void showNpcDialogPopup(const int npcId, const int x, const int y);
+
         /**
          * Handles link action.
          */
