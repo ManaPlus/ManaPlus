@@ -49,8 +49,6 @@ PopupList::PopupList(DropDown *const widget,
     mScrollArea->setPosition(mPadding, mPadding);
     add(mScrollArea);
 
-//    if (getParent())
-//        getParent()->addFocusListener(this);
     if (gui)
         gui->addGlobalFocusListener(this);
 
@@ -74,10 +72,12 @@ void PopupList::show(int x, int y)
     if (len > 250)
         len = 250;
     setContentSize(mListBox->getWidth() + 8, len);
-    if (mainGraphics->mWidth < (x + getWidth() + 5))
-        x = mainGraphics->mWidth - getWidth();
-    if (mainGraphics->mHeight < (y + getHeight() + 5))
-        y = mainGraphics->mHeight - getHeight();
+    const int width = mDimension.width;
+    const int height = mDimension.height;
+    if (mainGraphics->mWidth < (x + width + 5))
+        x = mainGraphics->mWidth - width;
+    if (mainGraphics->mHeight < (y + height + 5))
+        y = mainGraphics->mHeight - height;
     setPosition(x, y);
     setVisible(true);
     requestMoveToTop();
@@ -117,10 +117,11 @@ void PopupList::setListModel(gcn::ListModel *model)
 void PopupList::adjustSize()
 {
     const int pad2 = 2 * mPadding;
-    mScrollArea->setWidth(getWidth() - pad2);
-    mScrollArea->setHeight(getHeight() - pad2);
+    const int width = mDimension.width - pad2;
+    mScrollArea->setWidth(width);
+    mScrollArea->setHeight(mDimension.height - pad2);
     mListBox->adjustSize();
-    mListBox->setWidth(getWidth() - pad2);
+    mListBox->setWidth(width);
 }
 
 void PopupList::mousePressed(gcn::MouseEvent& mouseEvent)
