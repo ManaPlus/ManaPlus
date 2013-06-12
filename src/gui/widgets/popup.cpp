@@ -58,10 +58,10 @@ Popup::Popup(const std::string &name,
     if (skin == "")
         skin = "popup.xml";
 
-    // Loads the skin
-    if (Theme::instance())
+    Theme *const theme = Theme::instance();
+    if (theme)
     {
-        mSkin = Theme::instance()->load(skin, "popup.xml");
+        mSkin = theme->load(skin, "popup.xml");
         if (mSkin)
         {
             setPadding(mSkin->getPadding());
@@ -69,7 +69,6 @@ Popup::Popup(const std::string &name,
         }
     }
 
-    // Add this window to the window container
     windowContainer->add(this);
 
     // Popups are invisible by default
@@ -85,8 +84,9 @@ Popup::~Popup()
 
     if (mSkin)
     {
-        if (Theme::instance())
-            Theme::instance()->unload(mSkin);
+        Theme *const theme = Theme::instance();
+        if (theme)
+            theme->unload(mSkin);
         mSkin = nullptr;
     }
 }
@@ -107,15 +107,17 @@ void Popup::draw(gcn::Graphics *graphics)
         {
             mRedraw = false;
             mVertexes->clear();
-            g->calcWindow(mVertexes, 0, 0, getWidth(),
-                getHeight(), mSkin->getBorder());
+            g->calcWindow(mVertexes, 0, 0,
+                mDimension.width, mDimension.height,
+                mSkin->getBorder());
         }
 
         g->drawTile(mVertexes);
     }
     else
     {
-        g->drawImageRect(0, 0, getWidth(), getHeight(), mSkin->getBorder());
+        g->drawImageRect(0, 0, mDimension.width, mDimension.height,
+            mSkin->getBorder());
     }
 
     drawChildren(graphics);
@@ -124,23 +126,25 @@ void Popup::draw(gcn::Graphics *graphics)
 
 gcn::Rectangle Popup::getChildrenArea()
 {
-    return gcn::Rectangle(getPadding(), getPadding(),
-        getWidth() - getPadding() * 2, getHeight() - getPadding() * 2);
+    const int pad2 = mPadding * 2;
+    return gcn::Rectangle(mPadding, mPadding,
+        mDimension.width - pad2, mDimension.height - pad2);
 }
 
 void Popup::setContentSize(int width, int height)
 {
-    width += 2 * getPadding();
-    height += 2 * getPadding();
+    const int pad2 = mPadding * 2;
+    width += pad2;
+    height += pad2;
 
-    if (getMinWidth() > width)
-        width = getMinWidth();
-    else if (getMaxWidth() < width)
-        width = getMaxWidth();
-    if (getMinHeight() > height)
-        height = getMinHeight();
-    else if (getMaxHeight() < height)
-        height = getMaxHeight();
+    if (mMinWidth > width)
+        width = mMinWidth;
+    else if (mMaxWidth < width)
+        width = mMaxWidth;
+    if (mMinHeight > height)
+        height = mMinHeight;
+    else if (mMaxHeight < height)
+        height = mMaxHeight;
 
     setSize(width, height);
     mRedraw = true;
@@ -157,8 +161,10 @@ void Popup::setLocationRelativeTo(const gcn::Widget *const widget)
     widget->getAbsolutePosition(wx, wy);
     getAbsolutePosition(x, y);
 
-    setPosition(getX() + (wx + (widget->getWidth() - getWidth()) / 2 - x),
-                getY() + (wy + (widget->getHeight() - getHeight()) / 2 - y));
+    setPosition(mDimension.x + (wx + (widget->getWidth()
+        - mDimension.width) / 2 - x),
+        mDimension.y + (wy + (widget->getHeight()
+        - mDimension.height) / 2 - y));
     mRedraw = true;
 }
 
@@ -207,13 +213,15 @@ void Popup::position(const int x, const int y)
 {
     const int distance = 20;
 
-    int posX = std::max(0, x - getWidth() / 2);
+    const int width = mDimension.width;
+    const int height = mDimension.height;
+    int posX = std::max(0, x - width / 2);
     int posY = y + distance;
 
-    if (posX + getWidth() > mainGraphics->mWidth)
-        posX = mainGraphics->mWidth - getWidth();
-    if (posY + getHeight() > mainGraphics->mHeight)
-        posY = y - getHeight() - distance;
+    if (posX + width > mainGraphics->mWidth)
+        posX = mainGraphics->mWidth - width;
+    if (posY + height > mainGraphics->mHeight)
+        posY = y - height - distance;
 
     setPosition(posX, posY);
     setVisible(true);
