@@ -87,11 +87,12 @@ void PlayerBox::init(std::string name, std::string selectedName)
 {
     setFrameSize(2);
 
-    if (Theme::instance())
+    Theme *const theme = Theme::instance();
+    if (theme)
     {
         if (name.empty())
             name = "playerbox.xml";
-        mSkin = Theme::instance()->loadSkinRect(mBackground,
+        mSkin = theme->loadSkinRect(mBackground,
             name, "playerbox_background.xml");
         if (mSkin)
         {
@@ -102,7 +103,7 @@ void PlayerBox::init(std::string name, std::string selectedName)
         }
         if (selectedName.empty())
             selectedName = "playerboxselected.xml";
-        mSelectedSkin = Theme::instance()->loadSkinRect(mSelectedBackground,
+        mSelectedSkin = theme->loadSkinRect(mSelectedBackground,
             selectedName, "playerbox_background.xml");
     }
     else
@@ -119,19 +120,19 @@ void PlayerBox::draw(gcn::Graphics *graphics)
     BLOCK_START("PlayerBox::draw")
     if (mBeing)
     {
-        // Draw character
-        const int bs = getFrameSize();
-        const int x = getWidth() / 2 + bs + mOffsetX;
-        const int y = getHeight() - bs + mOffsetY;
+        const int bs = mFrameSize;
+        const int x = mDimension.width / 2 + bs + mOffsetX;
+        const int y = mDimension.height - bs + mOffsetY;
         mBeing->drawSpriteAt(static_cast<Graphics*>(graphics), x, y);
     }
 
     if (Client::getGuiAlpha() != mAlpha)
     {
+        const float alpha = Client::getGuiAlpha();
         for (int a = 0; a < 9; a++)
         {
             if (mBackground.grid[a])
-                mBackground.grid[a]->setAlpha(Client::getGuiAlpha());
+                mBackground.grid[a]->setAlpha(alpha);
         }
     }
     BLOCK_END("PlayerBox::draw")
@@ -142,10 +143,9 @@ void PlayerBox::drawFrame(gcn::Graphics *graphics)
     BLOCK_START("PlayerBox::drawFrame")
     if (mDrawBackground)
     {
-        int w, h, bs;
-        bs = getFrameSize();
-        w = getWidth() + bs * 2;
-        h = getHeight() + bs * 2;
+        const int bs = mFrameSize * 2;
+        const int w = mDimension.width + bs;
+        const int h = mDimension.height + bs;
 
         if (!mSelected)
         {

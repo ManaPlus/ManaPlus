@@ -85,11 +85,10 @@ class PlayerBox final : public Widget2,
         void setSelected(bool b)
         { mSelected = b; }
 
-        void mouseReleased(gcn::MouseEvent& event);
+        void mouseReleased(gcn::MouseEvent& event) override;
 
     private:
-        Being *mBeing; /**< The character used for display */
-
+        Being *mBeing;
         float mAlpha;
         ImageRect mBackground;
         ImageRect mSelectedBackground;
