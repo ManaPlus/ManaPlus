@@ -75,7 +75,7 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
 
     const int height = getRowHeight();
     const int pad2 = 2 + mPadding;
-    int textPos = (height - font->getHeight()) / pad2;
+    int textPos = (height - font->getHeight()) / 2 + mPadding;
     if (textPos < 0)
         textPos = 0;
 
