@@ -94,11 +94,11 @@ class ListBox : public gcn::ListBox,
         gcn::Color mForegroundColor2;
         gcn::Color mForegroundSelectedColor;
         gcn::Color mForegroundSelectedColor2;
-        bool mDistributeMousePressed;
         int mOldSelected;
         int mPadding;
-        static float mAlpha;
         Skin *mSkin;
+        static float mAlpha;
+        bool mDistributeMousePressed;
 };
 
 #endif  // GUI_WIDGETS_LISTBOX_H

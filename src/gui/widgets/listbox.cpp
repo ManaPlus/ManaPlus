@@ -48,10 +48,10 @@ ListBox::ListBox(const Widget2 *const widget,
     mForegroundColor2(getThemeColor(Theme::LISTBOX_OUTLINE)),
     mForegroundSelectedColor(getThemeColor(Theme::LISTBOX_SELECTED)),
     mForegroundSelectedColor2(getThemeColor(Theme::LISTBOX_SELECTED_OUTLINE)),
-    mDistributeMousePressed(true),
     mOldSelected(-1),
     mPadding(0),
-    mSkin(nullptr)
+    mSkin(nullptr),
+    mDistributeMousePressed(true)
 {
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 
@@ -95,14 +95,14 @@ void ListBox::draw(gcn::Graphics *graphics)
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
     graphics->setColor(mHighlightColor);
     gcn::Font *const font = getFont();
-
-    const int height = getRowHeight();
+    const int rowHeight = getRowHeight();
 
     // Draw filled rectangle around the selected list element
     if (mSelected >= 0)
     {
         graphics->fillRectangle(gcn::Rectangle(mPadding,
-            height * mSelected + mPadding, getWidth() - 2 * mPadding, height));
+            rowHeight * mSelected + mPadding,
+            mDimension.width - 2 * mPadding, rowHeight));
     }
 
     const int sel = getSelected();
@@ -111,17 +111,17 @@ void ListBox::draw(gcn::Graphics *graphics)
         g->setColorAll(mForegroundSelectedColor,
             mForegroundSelectedColor2);
         font->drawString(graphics, mListModel->getElementAt(sel),
-            mPadding, sel * height + mPadding);
+            mPadding, sel * rowHeight + mPadding);
     }
     // Draw the list elements
     g->setColorAll(mForegroundColor, mForegroundColor2);
-    for (int i = 0, y = 0; i < mListModel->getNumberOfElements();
-         ++i, y += height)
+    const int sz = mListModel->getNumberOfElements();
+    for (int i = 0, y = mPadding; i < sz; ++i, y += rowHeight)
     {
         if (i != sel)
         {
             font->drawString(graphics, mListModel->getElementAt(i),
-                mPadding, y + mPadding);
+                mPadding, y);
         }
     }
     BLOCK_END("ListBox::draw")
@@ -130,7 +130,6 @@ void ListBox::draw(gcn::Graphics *graphics)
 void ListBox::keyPressed(gcn::KeyEvent &keyEvent)
 {
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
-
     if (action == Input::KEY_GUI_SELECT)
     {
         distributeActionEvent();
@@ -138,23 +137,19 @@ void ListBox::keyPressed(gcn::KeyEvent &keyEvent)
     }
     else if (action == Input::KEY_GUI_UP)
     {
-        if (getSelected() > 0)
+        if (mSelected > 0)
             setSelected(mSelected - 1);
-        else if (getSelected() == 0 && mWrappingEnabled && getListModel())
+        else if (mSelected == 0 && mWrappingEnabled && getListModel())
             setSelected(getListModel()->getNumberOfElements() - 1);
         keyEvent.consume();
     }
     else if (action == Input::KEY_GUI_DOWN)
     {
-        if (getSelected() < (getListModel()->getNumberOfElements() - 1))
-        {
+        const int num = getListModel()->getNumberOfElements() - 1;
+        if (mSelected < num)
             setSelected(mSelected + 1);
-        }
-        else if (getSelected() == (getListModel()->getNumberOfElements() - 1)
-                 && mWrappingEnabled)
-        {
+        else if (mSelected == num && mWrappingEnabled)
             setSelected(0);
-        }
         keyEvent.consume();
     }
     else if (action == Input::KEY_GUI_HOME)
