@@ -66,11 +66,7 @@ class NpcHandler : public Net::NpcHandler
         void processNpcStrInput(Net::MessageIn &msg);
 
     protected:
-        typedef struct
-        {
-            NpcDialog* dialog;
-        } Wrapper;
-        typedef std::map<int, Wrapper> NpcDialogs;
+        typedef std::map<int, NpcDialog*> NpcDialogs;
         NpcDialogs mNpcDialogs;
         NpcDialog *mDialog;
 };

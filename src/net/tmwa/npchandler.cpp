@@ -132,7 +132,7 @@ void NpcHandler::closeDialog(const int npcId)
     const NpcDialogs::iterator it = mNpcDialogs.find(npcId);
     if (it != mNpcDialogs.end())
     {
-        NpcDialog *const dialog = (*it).second.dialog;
+        NpcDialog *const dialog = (*it).second;
         if (dialog)
             dialog->close();
         if (dialog == mDialog)
@@ -236,14 +236,12 @@ int NpcHandler::getNpc(Net::MessageIn &msg, const bool haveLength)
             mDialog->saveCamera();
             if (player_node)
                 player_node->stopWalking(false);
-            Wrapper wrap;
-            wrap.dialog = mDialog;
-            mNpcDialogs[npcId] = wrap;
+            mNpcDialogs[npcId] = mDialog;
         }
     }
     else
     {
-        NpcDialog *const dialog = diag->second.dialog;
+        NpcDialog *const dialog = diag->second;
         if (mDialog && mDialog != dialog)
             mDialog->restoreCamera();
         mDialog = dialog;

@@ -55,7 +55,7 @@ void NpcHandler::clearDialogs()
     const NpcDialogs::iterator it_end = mNpcDialogs.end();
     while (it != it_end)
     {
-        delete (*it).second.dialog;
+        delete (*it).second;
         ++ it;
     }
     mNpcDialogs.clear();
