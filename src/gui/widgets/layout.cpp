@@ -236,6 +236,8 @@ void LayoutArray::align(int &pos, int &size, const int dim,
                         LayoutCell const &cell, const int *const sizes,
                         const int sizeCount) const
 {
+    if (dim < 0 || dim >= 2)
+        return;
     int size_max = sizes[0];
     int cnt = cell.mExtent[dim];
     if (sizeCount && cell.mExtent[dim] > sizeCount)
@@ -266,6 +268,9 @@ void LayoutArray::align(int &pos, int &size, const int dim,
 
 std::vector<int> LayoutArray::getSizes(const int dim, int upp) const
 {
+    if (dim < 0 || dim >= 2)
+        return mSizes[1];
+
     const int gridW = static_cast<int>(mSizes[0].size());
     const int gridH = static_cast<int>(mSizes[1].size());
     std::vector<int> sizes = mSizes[dim];
