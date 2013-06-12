@@ -41,10 +41,13 @@ class BrowserBox;
 class ExtendedListBox;
 class ItemLinkHandler;
 class IntTextField;
+class NpcDialog;
 class PlayerBox;
 class ScrollArea;
 class TextBox;
 class TextField;
+
+typedef std::map<int, NpcDialog*> NpcDialogs;
 
 /**
  * The npc dialog.
@@ -201,6 +204,10 @@ class NpcDialog final : public Window,
         void logic() override;
 
         void clearRows();
+
+        static NpcDialogs mNpcDialogs;
+
+        static void clearDialogs();
 
     private:
         typedef std::list<NpcDialog*> DialogList;

@@ -65,8 +65,6 @@ class NpcHandler
                               const int amount) const = 0;
 
         virtual void endShopping(const int beingId) const = 0;
-
-        virtual void clearDialogs() = 0;
 };
 
 }  // namespace Net

@@ -1183,7 +1183,7 @@ int Client::gameExec()
                     resman->cleanOrphans();
                 Party::clearParties();
                 Guild::clearGuilds();
-                Net::getNpcHandler()->clearDialogs();
+                NpcDialog::clearDialogs();
                 Net::getGuildHandler()->clear();
                 Net::getPartyHandler()->clear();
                 if (chatLogger)
@@ -2752,7 +2752,7 @@ int Client::getFramerate()
 
 void Client::closeDialogs()
 {
-    Net::getNpcHandler()->clearDialogs();
+    NpcDialog::clearDialogs();
     BuyDialog::closeAll();
     BuySellDialog::closeAll();
     NpcDialog::closeAll();

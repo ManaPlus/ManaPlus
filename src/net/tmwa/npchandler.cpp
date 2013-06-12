@@ -129,15 +129,15 @@ void NpcHandler::closeDialog(const int npcId)
     MessageOut outMsg(CMSG_NPC_CLOSE);
     outMsg.writeInt32(npcId);
 
-    const NpcDialogs::iterator it = mNpcDialogs.find(npcId);
-    if (it != mNpcDialogs.end())
+    const NpcDialogs::iterator it = NpcDialog::mNpcDialogs.find(npcId);
+    if (it != NpcDialog::mNpcDialogs.end())
     {
         NpcDialog *const dialog = (*it).second;
         if (dialog)
             dialog->close();
         if (dialog == mDialog)
             mDialog = nullptr;
-        mNpcDialogs.erase(it);
+        NpcDialog::mNpcDialogs.erase(it);
     }
 }
 
@@ -214,10 +214,10 @@ int NpcHandler::getNpc(Net::MessageIn &msg, const bool haveLength)
 
     const int npcId = msg.readInt32();
 
-    const NpcDialogs::const_iterator diag = mNpcDialogs.find(npcId);
+    const NpcDialogs::const_iterator diag = NpcDialog::mNpcDialogs.find(npcId);
     mDialog = nullptr;
 
-    if (diag == mNpcDialogs.end())
+    if (diag == NpcDialog::mNpcDialogs.end())
     {
         // Empty dialogs don't help
         if (msg.getId() == SMSG_NPC_CLOSE)
@@ -236,7 +236,7 @@ int NpcHandler::getNpc(Net::MessageIn &msg, const bool haveLength)
             mDialog->saveCamera();
             if (player_node)
                 player_node->stopWalking(false);
-            mNpcDialogs[npcId] = mDialog;
+            NpcDialog::mNpcDialogs[npcId] = mDialog;
         }
     }
     else

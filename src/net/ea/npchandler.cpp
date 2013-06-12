@@ -30,7 +30,6 @@ namespace Ea
 {
 
 NpcHandler::NpcHandler() :
-    mNpcDialogs(),
     mDialog(nullptr)
 {
 }
@@ -47,18 +46,6 @@ void NpcHandler::startShopping(const int beingId A_UNUSED) const
 
 void NpcHandler::endShopping(const int beingId A_UNUSED) const
 {
-}
-
-void NpcHandler::clearDialogs()
-{
-    NpcDialogs::iterator it = mNpcDialogs.begin();
-    const NpcDialogs::iterator it_end = mNpcDialogs.end();
-    while (it != it_end)
-    {
-        delete (*it).second;
-        ++ it;
-    }
-    mNpcDialogs.clear();
 }
 
 void NpcHandler::processNpcChoice(Net::MessageIn &msg)

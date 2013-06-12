@@ -66,6 +66,7 @@
 #define CAPTION_SUBMIT _("Submit")
 
 NpcDialog::DialogList NpcDialog::instances;
+NpcDialogs NpcDialog::mNpcDialogs;
 
 typedef std::vector<Image *>::iterator ImageVectorIter;
 
@@ -773,4 +774,16 @@ void NpcDialog::logic()
 void NpcDialog::clearRows()
 {
     mTextBox->clearRows();
+}
+
+void NpcDialog::clearDialogs()
+{
+    NpcDialogs::iterator it = mNpcDialogs.begin();
+    const NpcDialogs::iterator it_end = mNpcDialogs.end();
+    while (it != it_end)
+    {
+        delete (*it).second;
+        ++ it;
+    }
+    mNpcDialogs.clear();
 }

@@ -30,6 +30,7 @@
 
 #include "gui/ministatuswindow.h"
 #include "gui/okdialog.h"
+#include "gui/npcdialog.h"
 #include "gui/skilldialog.h"
 #include "gui/statuswindow.h"
 #include "gui/viewport.h"
@@ -77,9 +78,7 @@ namespace
             if (viewport)
                 viewport->closePopupMenu();
 
-            Net::NpcHandler *const handler = Net::getNpcHandler();
-            if (handler)
-                handler->clearDialogs();
+            NpcDialog::clearDialogs();
             if (player_node)
                 player_node->respawn();
         }

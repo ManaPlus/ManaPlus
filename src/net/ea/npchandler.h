@@ -48,8 +48,6 @@ class NpcHandler : public Net::NpcHandler
 
         void endShopping(int beingId) const override;
 
-        void clearDialogs() override;
-
         virtual int getNpc(Net::MessageIn &msg,
                            bool haveLength) A_WARN_UNUSED = 0;
 
@@ -66,8 +64,6 @@ class NpcHandler : public Net::NpcHandler
         void processNpcStrInput(Net::MessageIn &msg);
 
     protected:
-        typedef std::map<int, NpcDialog*> NpcDialogs;
-        NpcDialogs mNpcDialogs;
         NpcDialog *mDialog;
 };
 
