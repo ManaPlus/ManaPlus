@@ -384,10 +384,15 @@ Setup_Theme::~Setup_Theme()
 
     delete mLangListModel;
     mLangListModel = nullptr;
+
+    delete mInfo;
+    mInfo = nullptr;
+
 }
 
 void Setup_Theme::updateInfo()
 {
+    delete mInfo;
     mInfo = Theme::loadInfo(mTheme);
     if (mInfo)
     {

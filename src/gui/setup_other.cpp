@@ -379,6 +379,8 @@ Setup_Other::~Setup_Other()
     mProxyTypeList = nullptr;
     delete mShortcutsList;
     mShortcutsList = nullptr;
+    delete mDensityList;
+    mDensityList = nullptr;
 }
 
 void Setup_Other::apply()
