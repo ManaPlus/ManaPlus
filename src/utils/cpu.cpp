@@ -32,7 +32,7 @@ int mCpuFlags = 0;
 
 void Cpu::detect()
 {
-#ifdef __GNUC__
+#if defined(__GNUC__) && (GCC_VERSION >= 40800)
     __builtin_cpu_init();
     if (__builtin_cpu_supports ("mmx"))
         mCpuFlags |= FEATURE_MMX;
