@@ -67,9 +67,10 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     addWidgetListener(this);
     setSize(width, height);
 
-    if (Theme::instance())
+    Theme *const theme = Theme::instance();
+    if (theme)
     {
-        mSkin = Theme::instance()->load("progressbar.xml", "");
+        mSkin = theme->load("progressbar.xml", "");
         setPadding(mSkin->getPadding());
         mFillPadding = mSkin->getOption("fillPadding");
         setHeight(2 * mPadding + getFont()->getHeight() + 2);
@@ -86,8 +87,9 @@ ProgressBar::~ProgressBar()
     mInstances--;
     if (mSkin)
     {
-        if (Theme::instance())
-            Theme::instance()->unload(mSkin);
+        Theme *const theme = Theme::instance();
+        if (theme)
+            theme->unload(mSkin);
         mSkin = nullptr;
     }
     delete mVertexes;
