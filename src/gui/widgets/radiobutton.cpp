@@ -42,19 +42,20 @@ RadioButton::RadioButton(const Widget2 *const widget,
                          const bool marked):
     gcn::RadioButton(caption, group, marked),
     Widget2(widget),
-    mHasMouse(false),
     mPadding(0),
     mImagePadding(0),
     mImageSize(9),
     mSpacing(2),
-    mForegroundColor2(getThemeColor(Theme::RADIOBUTTON_OUTLINE))
+    mForegroundColor2(getThemeColor(Theme::RADIOBUTTON_OUTLINE)),
+    mHasMouse(false)
 {
     mForegroundColor = getThemeColor(Theme::RADIOBUTTON);
     if (instances == 0)
     {
-        if (Theme::instance())
+        Theme *const theme = Theme::instance();
+        if (theme)
         {
-            mSkin = Theme::instance()->load("radio.xml", "");
+            mSkin = theme->load("radio.xml", "");
             updateAlpha();
         }
     }
@@ -81,8 +82,9 @@ RadioButton::~RadioButton()
 
     if (instances == 0)
     {
-        if (Theme::instance())
-            Theme::instance()->unload(mSkin);
+        Theme *const theme = Theme::instance();
+        if (theme)
+            theme->unload(mSkin);
     }
 }
 
@@ -178,7 +180,6 @@ void RadioButton::mouseExited(gcn::MouseEvent& event A_UNUSED)
 void RadioButton::keyPressed(gcn::KeyEvent& keyEvent)
 {
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
-
     if (action == Input::KEY_GUI_SELECT)
     {
         setSelected(true);
@@ -189,7 +190,8 @@ void RadioButton::keyPressed(gcn::KeyEvent& keyEvent)
 
 void RadioButton::adjustSize()
 {
-    setHeight(getFont()->getHeight() + 2 * mPadding);
+    gcn::Font *const font = getFont();
+    setHeight(font->getHeight() + 2 * mPadding);
     setWidth(mImagePadding + mImageSize + mSpacing
-        + getFont()->getWidth(mCaption) + mPadding);
+        + font->getWidth(mCaption) + mPadding);
 }

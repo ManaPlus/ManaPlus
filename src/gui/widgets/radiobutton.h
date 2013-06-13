@@ -83,12 +83,12 @@ class RadioButton final : public gcn::RadioButton,
         static int instances;
         static Skin *mSkin;
         static float mAlpha;
-        bool mHasMouse;
         int mPadding;
         int mImagePadding;
         int mImageSize;
         int mSpacing;
         gcn::Color mForegroundColor2;
+        bool mHasMouse;
 };
 
 #endif  // GUI_WIDGETS_RADIOBUTTON_H
