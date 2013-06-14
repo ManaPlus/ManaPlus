@@ -94,17 +94,21 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
     Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
     gcn::Font *const font = getFont();
 
+    const int sz = mListModel->getNumberOfElements();
+    const int fontHeigh = getFont()->getHeight();
+    const int width = mDimension.width - 2 * mPadding;
     // Draw the list elements
     for (int i = 0, y = 0;
-         i < mListModel->getNumberOfElements();
+         i < sz;
          ++i, y += mRowHeight)
     {
         bool needDraw(false);
         gcn::Color temp;
         gcn::Color* backgroundColor = &mBackgroundColor;
 
-        if (mShopItems && mShopItems->at(i) &&
-            mPlayerMoney < mShopItems->at(i)->getPrice() && mPriceCheck)
+        ShopItem *const item = mShopItems->at(i);
+        if (mShopItems && item &&
+            mPlayerMoney < item->getPrice() && mPriceCheck)
         {
             if (i != mSelected)
             {
@@ -137,12 +141,12 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         {
             graphics->setColor(*backgroundColor);
             graphics->fillRectangle(gcn::Rectangle(mPadding, y + mPadding,
-                getWidth() - 2 * mPadding, mRowHeight));
+                width, mRowHeight));
         }
 
         if (mShopItems)
         {
-            Image *const icon = mShopItems->at(i)->getImage();
+            Image *const icon = item->getImage();
             if (icon)
             {
                 icon->setAlpha(1.0f);
@@ -160,7 +164,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         }
         font->drawString(graphics, mListModel->getElementAt(i),
             ITEM_ICON_SIZE + mPadding,
-            y + (ITEM_ICON_SIZE - getFont()->getHeight()) / 2 + mPadding);
+            y + (ITEM_ICON_SIZE - fontHeigh) / 2 + mPadding);
     }
     BLOCK_END("ShopListBox::draw")
 }
