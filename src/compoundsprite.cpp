@@ -60,6 +60,7 @@ CompoundSprite::CompoundSprite() :
     mDisableAdvBeingCaching(config.getBoolValue("disableAdvBeingCaching")),
     mDisableBeingCaching(config.getBoolValue("disableBeingCaching")),
     mSprites(),
+    mTempFramesCount(0),
     mNextRedrawTime(0)
 {
     mAlpha = 1.0f;
@@ -217,7 +218,7 @@ unsigned int CompoundSprite::getCurrentFrame() const
     return 0;
 }
 
-unsigned int CompoundSprite::getFrameCount() const
+unsigned int CompoundSprite::getActualFrameCount() const
 {
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
@@ -406,6 +407,7 @@ void CompoundSprite::setAlpha(float alpha)
 
 void CompoundSprite::updateImages() const
 {
+    mTempFramesCount = getActualFrameCount();
 #ifdef USE_OPENGL
     if (imageHelper->useOpenGL())
         return;

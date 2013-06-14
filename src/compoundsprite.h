@@ -86,7 +86,10 @@ public:
 
     unsigned int getCurrentFrame() const override A_WARN_UNUSED;
 
-    unsigned int getFrameCount() const override A_WARN_UNUSED;
+    unsigned int getActualFrameCount() const A_WARN_UNUSED;
+
+    unsigned int getFrameCount() const override A_WARN_UNUSED
+    { return mTempFramesCount; }
 
     size_t size() const A_WARN_UNUSED
     { return mSprites.size(); }
@@ -155,6 +158,7 @@ private:
     bool mDisableAdvBeingCaching;
     bool mDisableBeingCaching;
     std::vector<Sprite*> mSprites;
+    mutable int mTempFramesCount;
     mutable int mNextRedrawTime;
     static bool mEnableDelay;
 };
