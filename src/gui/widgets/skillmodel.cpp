@@ -75,7 +75,7 @@ std::string SkillModel::getElementAt(int i)
     if (getSkillAt(i))
         return getSkillAt(i)->data->name;
     else
-        return "";
+        return std::string();
 }
 
 void SkillModel::updateVisibilities()
