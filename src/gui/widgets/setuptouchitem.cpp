@@ -85,13 +85,13 @@ int TouchActionsModel::getSelectionFromAction(const int action) const
 }
 
 
-SetupActionDropDown::SetupActionDropDown(std::string text,
-                                         std::string description,
-                                         std::string keyName,
+SetupActionDropDown::SetupActionDropDown(const std::string &text,
+                                         const std::string &description,
+                                         const std::string &keyName,
                                          SetupTabScroll *const parent,
-                                         std::string eventName,
+                                         const std::string &eventName,
                                          TouchActionsModel *const model,
-                                         int width,
+                                         const int width,
                                          const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
@@ -104,14 +104,14 @@ SetupActionDropDown::SetupActionDropDown(std::string text,
     createControls();
 }
 
-SetupActionDropDown::SetupActionDropDown(std::string text,
-                                         std::string description,
-                                         std::string keyName,
+SetupActionDropDown::SetupActionDropDown(const std::string &text,
+                                         const std::string &description,
+                                         const std::string &keyName,
                                          SetupTabScroll *const parent,
-                                         std::string eventName,
+                                         const std::string &eventName,
                                          TouchActionsModel *const model,
-                                         int width,
-                                         std::string def,
+                                         const int width,
+                                         const std::string &def,
                                          const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
@@ -135,6 +135,9 @@ SetupActionDropDown::~SetupActionDropDown()
 
 void SetupActionDropDown::createControls()
 {
+    if (!mModel)
+        return;
+
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
 
@@ -159,7 +162,7 @@ void SetupActionDropDown::createControls()
 
 void SetupActionDropDown::fromWidget()
 {
-    if (!mDropDown)
+    if (!mDropDown || !mModel)
         return;
 
     mValue = toString(mModel->getActionFromSelection(
@@ -168,7 +171,7 @@ void SetupActionDropDown::fromWidget()
 
 void SetupActionDropDown::toWidget()
 {
-    if (!mDropDown)
+    if (!mDropDown || !mModel)
         return;
 
     mDropDown->setSelected(mModel->getSelectionFromAction(

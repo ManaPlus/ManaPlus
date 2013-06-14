@@ -50,17 +50,21 @@ class TouchActionsModel final : public NamesModel
 class SetupActionDropDown final : public SetupItem
 {
     public:
-        SetupActionDropDown(std::string text, std::string description,
-                            std::string keyName, SetupTabScroll *const parent,
-                            std::string eventName,
+        SetupActionDropDown(const std::string &text,
+                            const std::string &description,
+                            const std::string &keyName,
+                            SetupTabScroll *const parent,
+                            const std::string &eventName,
                             TouchActionsModel *const model,
-                            int width, const bool mainConfig = true);
+                            const int width, const bool mainConfig = true);
 
-        SetupActionDropDown(std::string text, std::string description,
-                            std::string keyName, SetupTabScroll *const parent,
-                            std::string eventName,
+        SetupActionDropDown(const std::string &text,
+                            const std::string &description,
+                            const std::string &keyName,
+                            SetupTabScroll *const parent,
+                            const std::string &eventName,
                             TouchActionsModel *const model,
-                            int width, std::string def,
+                            const int width, const std::string &def,
                             const bool mainConfig = true);
 
         A_DELETE_COPY(SetupActionDropDown)
