@@ -61,13 +61,13 @@ class SetupItem : public gcn::ActionListener,
             VNONE
         };
 
-        SetupItem(std::string text, std::string description,
-                  std::string keyName, SetupTabScroll *const parent,
-                  std::string eventName, const bool mainConfig);
+        SetupItem(const std::string &text, const std::string &description,
+                  const std::string &keyName, SetupTabScroll *const parent,
+                  const std::string &eventName, const bool mainConfig);
 
-        SetupItem(std::string text, std::string description,
-                  std::string keyName, SetupTabScroll *const parent,
-                  std::string eventName, std::string def,
+        SetupItem(const std::string &text, const std::string &description,
+                  const std::string &keyName, SetupTabScroll *const parent,
+                  const std::string &eventName, const std::string &def,
                   const bool mainConfig);
 
         A_DELETE_COPY(SetupItem)
@@ -96,11 +96,11 @@ class SetupItem : public gcn::ActionListener,
 
         virtual void action();
 
-        virtual void apply(std::string eventName);
+        virtual void apply(const std::string &eventName);
 
-        virtual void cancel(std::string eventName);
+        virtual void cancel(const std::string &eventName);
 
-        virtual void externalUpdated(std::string eventName);
+        virtual void externalUpdated(const std::string &eventName);
 
         bool isMainConfig() const A_WARN_UNUSED
         { return mMainConfig; }
@@ -138,13 +138,19 @@ class SetupItem : public gcn::ActionListener,
 class SetupItemCheckBox final : public SetupItem
 {
     public:
-        SetupItemCheckBox(std::string text, std::string description,
-                          std::string keyName, SetupTabScroll *const parent,
-                          std::string eventName, const bool mainConfig = true);
+        SetupItemCheckBox(const std::string &text,
+                          const std::string &description,
+                          const std::string &keyName,
+                          SetupTabScroll *const parent,
+                          const std::string &eventName,
+                          const bool mainConfig = true);
 
-        SetupItemCheckBox(std::string text, std::string description,
-                          std::string keyName, SetupTabScroll *const parent,
-                          std::string eventName, std::string def,
+        SetupItemCheckBox(const std::string &text,
+                          const std::string &description,
+                          const std::string &keyName,
+                          SetupTabScroll *const parent,
+                          const std::string &eventName,
+                          const std::string &def,
                           const bool mainConfig = true);
 
         A_DELETE_COPY(SetupItemCheckBox)
@@ -164,14 +170,19 @@ class SetupItemCheckBox final : public SetupItem
 class SetupItemTextField final : public SetupItem
 {
     public:
-        SetupItemTextField(std::string text, std::string description,
-                           std::string keyName, SetupTabScroll *const parent,
-                           std::string eventName,
+        SetupItemTextField(const std::string &text,
+                           const std::string &description,
+                           const std::string &keyName,
+                           SetupTabScroll *const parent,
+                           const std::string &eventName,
                            const bool mainConfig = true);
 
-        SetupItemTextField(std::string text, std::string description,
-                           std::string keyName, SetupTabScroll *const parent,
-                           std::string eventName, std::string def,
+        SetupItemTextField(const std::string &text,
+                           const std::string &description,
+                           const std::string &keyName,
+                           SetupTabScroll *const parent,
+                           const std::string &eventName,
+                           const std::string &def,
                            const bool mainConfig = true);
 
         A_DELETE_COPY(SetupItemTextField)
@@ -186,7 +197,7 @@ class SetupItemTextField final : public SetupItem
 
         void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName) override;
+        void apply(const std::string &eventName) override;
 
     protected:
         HorizontContainer *mHorizont;
@@ -199,19 +210,22 @@ class SetupItemTextField final : public SetupItem
 class SetupItemIntTextField final : public SetupItem
 {
     public:
-        SetupItemIntTextField(std::string text, std::string description,
-                              std::string keyName,
+        SetupItemIntTextField(const std::string &text,
+                              const std::string &description,
+                              const std::string &keyName,
                               SetupTabScroll *const parent,
-                              std::string eventName,
+                              const std::string &eventName,
                               const int min, const int max,
                               const bool mainConfig = true);
 
-        SetupItemIntTextField(std::string text, std::string description,
-                              std::string keyName,
+        SetupItemIntTextField(const std::string &text,
+                              const std::string &description,
+                              const std::string &keyName,
                               SetupTabScroll *const parent,
-                              std::string eventName,
+                              const std::string &eventName,
                               const int min, const int max,
-                              std::string def, const bool mainConfig = true);
+                              const std::string &def,
+                              const bool mainConfig = true);
 
         A_DELETE_COPY(SetupItemIntTextField)
 
@@ -225,7 +239,7 @@ class SetupItemIntTextField final : public SetupItem
 
         void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName) override;
+        void apply(const std::string &eventName) override;
 
     protected:
         HorizontContainer *mHorizont;
@@ -240,7 +254,8 @@ class SetupItemIntTextField final : public SetupItem
 class SetupItemLabel final : public SetupItem
 {
     public:
-        SetupItemLabel(std::string text, std::string description,
+        SetupItemLabel(const std::string &text,
+                       const std::string &description,
                        SetupTabScroll *const parent,
                        const bool separator = true);
 
@@ -256,7 +271,7 @@ class SetupItemLabel final : public SetupItem
 
         void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName) override;
+        void apply(const std::string &eventName) override;
 
     protected:
         Label *mLabel;
@@ -266,15 +281,21 @@ class SetupItemLabel final : public SetupItem
 class SetupItemDropDown final : public SetupItem
 {
     public:
-        SetupItemDropDown(std::string text, std::string description,
-                          std::string keyName, SetupTabScroll *const parent,
-                          std::string eventName, gcn::ListModel *const model,
-                          int width, const bool mainConfig = true);
+        SetupItemDropDown(const std::string &text,
+                          const std::string &description,
+                          const std::string &keyName,
+                          SetupTabScroll *const parent,
+                          const std::string &eventName,
+                          gcn::ListModel *const model,
+                          const int width, const bool mainConfig = true);
 
-        SetupItemDropDown(std::string text, std::string description,
-                          std::string keyName, SetupTabScroll *const parent,
-                          std::string eventName, gcn::ListModel *const model,
-                          int width, std::string def,
+        SetupItemDropDown(const std::string &text,
+                          const std::string &description,
+                          const std::string &keyName,
+                          SetupTabScroll *const parent,
+                          const std::string &eventName,
+                          gcn::ListModel *const model,
+                          const int width, const std::string &def,
                           const bool mainConfig = true);
 
         A_DELETE_COPY(SetupItemDropDown)
@@ -298,18 +319,22 @@ class SetupItemDropDown final : public SetupItem
 class SetupItemSlider final : public SetupItem
 {
     public:
-        SetupItemSlider(std::string text, std::string description,
-                        std::string keyName, SetupTabScroll *const parent,
-                        std::string eventName,
+        SetupItemSlider(const std::string &text,
+                        const std::string &description,
+                        const std::string &keyName,
+                        SetupTabScroll *const parent,
+                        const std::string &eventName,
                         const double min, const double max,
                         const int width = 150, const bool onTheFly = false,
                         const bool mainConfig = true);
 
-        SetupItemSlider(std::string text, std::string description,
-                        std::string keyName, SetupTabScroll *const parent,
-                        std::string eventName,
+        SetupItemSlider(const std::string &text,
+                        const std::string &description,
+                        const std::string &keyName,
+                        SetupTabScroll *const parent,
+                        const std::string &eventName,
                         const double min, const double max,
-                        std::string def, const int width = 150,
+                        const std::string &def, const int width = 150,
                         const bool onTheFly = false,
                         const bool mainConfig = true);
 
@@ -325,7 +350,7 @@ class SetupItemSlider final : public SetupItem
 
         void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName);
+        void apply(const std::string &eventName) override;
 
         void updateLabel();
 
@@ -346,18 +371,25 @@ typedef SetupItemNames::const_iterator SetupItemNamesConstIter;
 class SetupItemSlider2 final : public SetupItem
 {
     public:
-        SetupItemSlider2(std::string text, std::string description,
-                         std::string keyName, SetupTabScroll *const parent,
-                         std::string eventName, const int min, const int max,
+        SetupItemSlider2(const std::string &text,
+                         const std::string &description,
+                         const std::string &keyName,
+                         SetupTabScroll *const parent,
+                         const std::string &eventName,
+                         const int min, const int max,
                          SetupItemNames *const values,
                          const bool onTheFly = false,
                          const bool mainConfig = true,
                          const bool doNotAlign = false);
 
-        SetupItemSlider2(std::string text, std::string description,
-                         std::string keyName, SetupTabScroll *const parent,
-                         std::string eventName, const int min, const int max,
-                         SetupItemNames *const values, std::string def,
+        SetupItemSlider2(const std::string &text,
+                         const std::string &description,
+                         const std::string &keyName,
+                         SetupTabScroll *const parent,
+                         const std::string &eventName,
+                         const int min, const int max,
+                         SetupItemNames *const values,
+                         const std::string &def,
                          const bool onTheFly = false,
                          const bool mainConfig = true,
                          const bool doNotAlign = false);
@@ -374,7 +406,7 @@ class SetupItemSlider2 final : public SetupItem
 
         void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName) override;
+        void apply(const std::string &eventName) override;
 
         void setInvertValue(const int v);
 
@@ -399,16 +431,22 @@ class SetupItemSlider2 final : public SetupItem
 class SetupItemSliderList : public SetupItem
 {
     public:
-        SetupItemSliderList(std::string text, std::string description,
-                            std::string keyName, SetupTabScroll *const parent,
-                            std::string eventName, gcn::ListModel *const model,
+        SetupItemSliderList(const std::string &text,
+                            const std::string &description,
+                            const std::string &keyName,
+                            SetupTabScroll *const parent,
+                            const std::string &eventName,
+                            gcn::ListModel *const model,
                             const int width = 150, const bool onTheFly = false,
                             const bool mainConfig = true);
 
-        SetupItemSliderList(std::string text, std::string description,
-                            std::string keyName, SetupTabScroll *const parent,
-                            std::string eventName, gcn::ListModel *const model,
-                            std::string def, const int width = 150,
+        SetupItemSliderList(const std::string &text,
+                            const std::string &description,
+                            const std::string &keyName,
+                            SetupTabScroll *const parent,
+                            const std::string &eventName,
+                            gcn::ListModel *const model,
+                            const std::string &def, const int width = 150,
                             const bool onTheFly = false,
                             const bool mainConfig = true);
 
@@ -424,7 +462,7 @@ class SetupItemSliderList : public SetupItem
 
         virtual void action(const gcn::ActionEvent &event) override;
 
-        void apply(std::string eventName) override;
+        void apply(const std::string &eventName) override;
 
         virtual void addMoreControls() = 0;
 
@@ -440,10 +478,14 @@ class SetupItemSliderList : public SetupItem
 class SetupItemSound final : public SetupItemSliderList
 {
     public:
-        SetupItemSound(std::string text, std::string description,
-                       std::string keyName, SetupTabScroll *const parent,
-                       std::string eventName, gcn::ListModel *const model,
-                       const int width = 150, const bool onTheFly = false,
+        SetupItemSound(const std::string &text,
+                       const std::string &description,
+                       const std::string &keyName,
+                       SetupTabScroll *const parent,
+                       const std::string &eventName,
+                       gcn::ListModel *const model,
+                       const int width = 150,
+                       const bool onTheFly = false,
                        const bool mainConfig = true);
 
         A_DELETE_COPY(SetupItemSound)
