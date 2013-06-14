@@ -114,8 +114,10 @@ class ShortcutContainer : public gcn::Widget,
         unsigned mMaxItems;
         int mBoxWidth;
         int mBoxHeight;
-        int mCursorPosX, mCursorPosY;
-        int mGridWidth, mGridHeight;
+        int mCursorPosX;
+        int mCursorPosY;
+        int mGridWidth;
+        int mGridHeight;
         ImageCollection *mVertexes;
         bool mRedraw;
 };

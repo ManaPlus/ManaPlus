@@ -60,7 +60,7 @@ ShortcutContainer::~ShortcutContainer()
 
 void ShortcutContainer::widgetResized(const gcn::Event &event A_UNUSED)
 {
-    mGridWidth = getWidth() / mBoxWidth;
+    mGridWidth = mDimension.width / mBoxWidth;
 
     if (mGridWidth < 1)
         mGridWidth = 1;
