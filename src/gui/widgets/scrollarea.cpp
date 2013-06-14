@@ -55,15 +55,15 @@ ScrollArea::ScrollArea(const bool opaque, const std::string &skin) :
     mY(0),
     mClickX(0),
     mClickY(0),
-    mHasMouse(false),
-    mOpaque(opaque),
     mVertexes(new ImageCollection),
     mVertexes2(new ImageCollection),
-    mRedraw(true),
     mXOffset(0),
     mYOffset(0),
     mDrawWidth(0),
-    mDrawHeight(0)
+    mDrawHeight(0),
+    mHasMouse(false),
+    mOpaque(opaque),
+    mRedraw(true)
 {
     addWidgetListener(this);
     init(skin);
@@ -77,15 +77,15 @@ ScrollArea::ScrollArea(gcn::Widget *const widget, const bool opaque,
     mY(0),
     mClickX(0),
     mClickY(0),
-    mHasMouse(false),
-    mOpaque(opaque),
     mVertexes(new ImageCollection),
     mVertexes2(new ImageCollection),
-    mRedraw(true),
     mXOffset(0),
     mYOffset(0),
     mDrawWidth(0),
-    mDrawHeight(0)
+    mDrawHeight(0),
+    mHasMouse(false),
+    mOpaque(opaque),
+    mRedraw(true)
 {
     init(skin);
 }
@@ -356,9 +356,9 @@ void ScrollArea::drawFrame(gcn::Graphics *graphics)
     BLOCK_START("ScrollArea::drawFrame")
     if (mOpaque)
     {
-        const int bs = mFrameSize;
-        const int w = mDimension.width + bs * 2;
-        const int h = mDimension.height + bs * 2;
+        const int bs = mFrameSize * 2;
+        const int w = mDimension.width + bs;
+        const int h = mDimension.height + bs;
 
         updateCalcFlag(graphics);
 
@@ -671,13 +671,13 @@ void ScrollArea::mousePressed(gcn::MouseEvent& event)
     }
     else if (getLeftButtonDimension().isPointInRect(x, y))
     {
-        setHorizontalScrollAmount(getHorizontalScrollAmount()
+        setHorizontalScrollAmount(mHScroll
                                   - mLeftButtonScrollAmount);
         mLeftButtonPressed = true;
     }
     else if (getRightButtonDimension().isPointInRect(x, y))
     {
-        setHorizontalScrollAmount(getHorizontalScrollAmount()
+        setHorizontalScrollAmount(mHScroll
                                   + mRightButtonScrollAmount);
         mRightButtonPressed = true;
     }
@@ -712,12 +712,12 @@ void ScrollArea::mousePressed(gcn::MouseEvent& event)
     {
         if (x < getHorizontalMarkerDimension().x)
         {
-            setHorizontalScrollAmount(getHorizontalScrollAmount()
+            setHorizontalScrollAmount(mHScroll
                 - static_cast<int>(getChildrenArea().width * 0.95));
         }
         else
         {
-            setHorizontalScrollAmount(getHorizontalScrollAmount()
+            setHorizontalScrollAmount(mHScroll
                 + static_cast<int>(getChildrenArea().width * 0.95));
         }
     }
@@ -952,7 +952,7 @@ gcn::Rectangle ScrollArea::getHorizontalMarkerDimension()
     const int maxH = getHorizontalMaxScroll();
     if (mMarkerSize && maxH)
     {
-        pos = (getHorizontalScrollAmount() * width / maxH - mMarkerSize / 2);
+        pos = (mHScroll * width / maxH - mMarkerSize / 2);
         length = mMarkerSize;
     }
     else
@@ -978,7 +978,7 @@ gcn::Rectangle ScrollArea::getHorizontalMarkerDimension()
 
         if (getHorizontalMaxScroll() != 0)
         {
-            pos = ((width - length) * getHorizontalScrollAmount())
+            pos = ((width - length) * mHScroll)
                 / getHorizontalMaxScroll();
         }
         else

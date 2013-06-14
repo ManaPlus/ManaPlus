@@ -120,7 +120,7 @@ class ScrollArea final : public gcn::ScrollArea,
 
         void mouseReleased(gcn::MouseEvent& event) override;
 
-        void mouseDragged(gcn::MouseEvent &event);
+        void mouseDragged(gcn::MouseEvent &event) override;
 
         void widgetResized(const gcn::Event &event) override;
 
@@ -185,15 +185,15 @@ class ScrollArea final : public gcn::ScrollArea,
 
         int mX, mY;
         int mClickX, mClickY;
-        bool mHasMouse;
-        bool mOpaque;
         ImageCollection *mVertexes;
         ImageCollection *mVertexes2;
-        bool mRedraw;
         int mXOffset;
         int mYOffset;
         int mDrawWidth;
         int mDrawHeight;
+        bool mHasMouse;
+        bool mOpaque;
+        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_SCROLLAREA_H
