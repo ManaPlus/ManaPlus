@@ -10,7 +10,7 @@ export CXX=g++-4.7
 export LANG=C
 
 export CXXFLAGS="-pg -fno-inline -Wvariadic-macros -Wvla -Wredundant-decls \
--Wpacked-bitfield-compat -Wtrampolines \
+-fno-omit-frame-pointer -Wpacked-bitfield-compat -Wtrampolines \
 -Wsuggest-attribute=noreturn -Wunused -Wstrict-aliasing=2 \
 -fstrict-aliasing -Wunreachable-code -Wabi -Wdisabled-optimization \
 -Wvolatile-register-var -Winvalid-pch -Wredundant-decls \
