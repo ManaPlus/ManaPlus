@@ -77,13 +77,11 @@ void Slider::init()
     // Load resources
     if (mInstances == 0)
     {
-        if (Theme::instance())
+        Theme *const theme = Theme::instance();
+        if (theme)
         {
             for (int mode = 0; mode < 2; mode ++)
-            {
-                Theme::instance()->loadRect(buttons[mode],
-                    data[mode], "slider.xml", 0, 8);
-            }
+                theme->loadRect(buttons[mode], data[mode], "slider.xml", 0, 8);
         }
         updateAlpha();
     }
@@ -190,7 +188,7 @@ void Slider::drawMarker(gcn::Graphics *const graphics) const
         return;
 
     static_cast<Graphics*>(graphics)->drawImage(img, getMarkerPosition(),
-       (getHeight() - img->getHeight()) / 2);
+       (mDimension.height - img->getHeight()) / 2);
 }
 
 void Slider::mouseEntered(gcn::MouseEvent& event A_UNUSED)

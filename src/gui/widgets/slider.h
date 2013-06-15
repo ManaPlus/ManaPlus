@@ -105,9 +105,9 @@ class Slider final : public gcn::Slider,
         void init();
 
         static ImageRect buttons[2];
-        bool mHasMouse;
         static float mAlpha;
         static int mInstances;
+        bool mHasMouse;
 };
 
 #endif  // GUI_WIDGETS_SLIDER_H
