@@ -242,7 +242,8 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
         if (mInfo)
         {
             setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay());
+            setupSpriteDisplay(mInfo->getDisplay(), true, 0,
+                mInfo->getColor(mLook));
             mYDiff = mInfo->getSortOffsetY();
         }
     }

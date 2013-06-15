@@ -234,7 +234,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
         if (!*it)
             continue;
         const std::string file = paths.getStringValue("sprites").append(
-            combineDye2((*it)->sprite, color));
+            combineDye3((*it)->sprite, color));
 
         const int variant = (*it)->variant;
         addSprite(AnimatedSprite::delayedLoad(file, variant));

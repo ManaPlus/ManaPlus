@@ -25,6 +25,7 @@
 
 #include "actorsprite.h"
 
+#include "resources/colordb.h"
 #include "resources/cursor.h"
 #include "resources/soundinfo.h"
 
@@ -207,6 +208,10 @@ class BeingInfo final
         void setHeight(const int n)
         { mHeight = n; }
 
+        void setColorsList(const std::string &name);
+
+        std::string getColor(const int idx) const;
+
         static void init();
 
         static void clear();
@@ -220,6 +225,7 @@ class BeingInfo final
         Attacks mAttacks;
         unsigned char mWalkMask;
         Map::BlockType mBlockType;
+        const std::map <int, ColorDB::ItemColor> *mColors;
         int mTargetOffsetX;
         int mTargetOffsetY;
         int mMaxHP;

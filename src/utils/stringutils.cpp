@@ -508,6 +508,36 @@ std::string combineDye2(std::string file, const std::string &dye)
     }
 }
 
+std::string combineDye3(std::string file, const std::string &dye)
+{
+    if (dye.empty())
+        return file;
+
+    const size_t pos = file.find_last_of("|");
+    if (pos != std::string::npos)
+    {
+        const std::string dye1 = file.substr(pos + 1);
+        std::string str;
+        file = file.substr(0, pos);
+        const std::list<std::string> list1 = splitToStringList(dye1, ';');
+        const std::list<std::string> list2 = splitToStringList(dye, ';');
+        for (std::list<std::string>::const_iterator it1 = list1.begin(),
+             it2 = list2.begin(), it1_end = list1.end(), it2_end = list2.end();
+             it1 != it1_end && it2 != it2_end; ++it1, ++it2)
+        {
+            str.append(*it1).append(":").append(*it2).append(";");
+        }
+        return file.append("|").append(str);
+    }
+    else
+    {
+        if (dye.empty() || file.empty())
+            return file;
+        else
+            return file.append("|").append(dye);
+    }
+}
+
 std::string packList(const std::list<std::string> &list)
 {
     std::list<std::string>::const_iterator i = list.begin();

@@ -46,6 +46,7 @@ BeingInfo::BeingInfo() :
               | Map::BLOCKMASK_MONSTER | Map::BLOCKMASK_AIR
               | Map::BLOCKMASK_WATER),
     mBlockType(Map::BLOCKTYPE_CHARACTER),
+    mColors(nullptr),
     mTargetOffsetX(0),
     mTargetOffsetY(0),
     mMaxHP(0),
@@ -150,4 +151,24 @@ void BeingInfo::init()
         empty->mCriticalHitEffectId = paths.getIntValue("criticalHitEffectId");
         empty->mMissEffectId = paths.getIntValue("missEffectId");
     }
+}
+
+void BeingInfo::setColorsList(const std::string &name)
+{
+    if (name.empty())
+        mColors = nullptr;
+    else
+        mColors = ColorDB::getColorsList(name);
+}
+
+std::string BeingInfo::getColor(const int idx) const
+{
+    if (!mColors)
+        return std::string();
+
+    const std::map <int, ColorDB::ItemColor>::const_iterator
+        it = mColors->find(idx);
+    if (it == mColors->end())
+        return std::string();
+    return it->second.color;
 }

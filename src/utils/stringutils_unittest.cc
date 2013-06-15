@@ -372,6 +372,20 @@ TEST(stringuntils, combineDye2)
         combineDye2("test.xml|#43413d,59544f,7a706c;#123456", "W;B"));
 }
 
+TEST(stringuntils, combineDye3)
+{
+    EXPECT_EQ("", combineDye3("", ""));
+    EXPECT_EQ("test", combineDye3("test", ""));
+    EXPECT_EQ("", combineDye3("", "line"));
+    EXPECT_EQ("test.xml|123", combineDye3("test.xml", "123"));
+    EXPECT_EQ("test.xml|#43413d,59544f,7a706c",
+        combineDye3("test.xml|#43413d,59544f,7a706c", ""));
+    EXPECT_EQ("test.xml|#43413d,59544f,7a706c:W;",
+        combineDye3("test.xml|#43413d,59544f,7a706c", "W"));
+    EXPECT_EQ("test.xml|#43413d,59544f,7a706c:W;#123456:B;",
+        combineDye3("test.xml|#43413d,59544f,7a706c;#123456", "W;B"));
+}
+
 TEST(stringuntils, packList1)
 {
     std::list <std::string> list;

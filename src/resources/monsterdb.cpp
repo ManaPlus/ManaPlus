@@ -112,11 +112,15 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
 
         currentInfo->setMaxHP(XML::getProperty(monsterNode, "maxHP", 0));
 
+
         currentInfo->setSortOffsetY(XML::getProperty(
             monsterNode, "sortOffsetY", 0));
 
         currentInfo->setDeadSortOffsetY(XML::getProperty(
             monsterNode, "deadSortOffsetY", 31));
+
+        currentInfo->setColorsList(XML::getProperty(monsterNode,
+            "colors", ""));
 
         unsigned char block = 0;
         std::string walkStr = XML::getProperty(
