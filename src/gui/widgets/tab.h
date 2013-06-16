@@ -135,7 +135,7 @@ class Tab : public gcn::BasicContainer,
 
         void setTabbedArea(TabbedArea* tabbedArea);
 
-        TabbedArea* getTabbedArea() A_WARN_UNUSED;
+        TabbedArea* getTabbedArea() const A_WARN_UNUSED;
 
         void setCaption(const std::string& caption);
 
@@ -153,7 +153,6 @@ class Tab : public gcn::BasicContainer,
 
         Label* mLabel;
 
-        bool mHasMouse;
 
         TabbedArea* mTabbedArea;
 
@@ -177,8 +176,11 @@ class Tab : public gcn::BasicContainer,
         const gcn::Color *mPlayerFlashOutlineColor;
         int mFlash;
         ImageCollection *mVertexes;
-        bool mRedraw;
         int mMode;
+        bool mRedraw;
+
+    protected:
+        bool mHasMouse;
 };
 
 #endif  // GUI_WIDGETS_TAB_H

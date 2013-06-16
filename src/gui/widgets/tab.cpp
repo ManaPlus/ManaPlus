@@ -61,7 +61,6 @@ Tab::Tab(const Widget2 *const widget) :
     gcn::MouseListener(),
     gcn::WidgetListener(),
     mLabel(new Label(this)),
-    mHasMouse(false),
     mTabbedArea(nullptr),
     mTabColor(&getThemeColor(Theme::TAB)),
     mTabOutlineColor(&getThemeColor(Theme::TAB_OUTLINE)),
@@ -76,8 +75,9 @@ Tab::Tab(const Widget2 *const widget) :
     mPlayerFlashOutlineColor(&getThemeColor(Theme::TAB_PLAYER_FLASH_OUTLINE)),
     mFlash(0),
     mVertexes(new ImageCollection),
+    mMode(0),
     mRedraw(true),
-    mMode(0)
+    mHasMouse(false)
 {
     init();
 }
@@ -146,11 +146,11 @@ void Tab::updateAlpha()
         {
             for (int t = 0; t < TAB_COUNT; t++)
             {
-                Skin *skin = tabImg[t];
+                Skin *const skin = tabImg[t];
                 if (skin)
                 {
                     const ImageRect &rect = skin->getBorder();
-                    Image *image = rect.grid[a];
+                    Image *const image = rect.grid[a];
                     if (image)
                         image->setAlpha(mAlpha);
                 }
@@ -221,21 +221,17 @@ void Tab::draw(gcn::Graphics *graphics)
             mRedraw = false;
             mVertexes->clear();
             static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0,
-                getWidth(), getHeight(), rect);
+                mDimension.width, mDimension.height, rect);
         }
 
         static_cast<Graphics*>(graphics)->drawTile(mVertexes);
     }
     else
     {
-        static_cast<Graphics*>(graphics)->
-            drawImageRect(0, 0, getWidth(), getHeight(), skin->getBorder());
+        static_cast<Graphics*>(graphics)->drawImageRect(
+            0, 0, mDimension.width, mDimension.height, skin->getBorder());
     }
 
-//    static_cast<Graphics*>(graphics)->
-//        drawImageRect(0, 0, getWidth(), getHeight(), tabImg[mode]);
-
-    // draw label
     drawChildren(graphics);
     BLOCK_END("Tab::draw")
 }
@@ -280,7 +276,7 @@ void Tab::setTabbedArea(TabbedArea* tabbedArea)
     mTabbedArea = tabbedArea;
 }
 
-TabbedArea* Tab::getTabbedArea()
+TabbedArea* Tab::getTabbedArea() const
 {
     return mTabbedArea;
 }
