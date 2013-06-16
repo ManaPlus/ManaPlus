@@ -147,10 +147,6 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
         }
     }
 
-    if (mSpellMoved)
-    {
-        // Draw the item image being dragged by the cursor.
-    }
     BLOCK_END("SpellShortcutContainer::draw")
 }
 
@@ -186,14 +182,14 @@ void SpellShortcutContainer::mousePressed(gcn::MouseEvent &event)
     if (index == -1)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
-    {
-        // Stores the selected item if theirs one.
-    }
-    else if (event.getButton() == gcn::MouseEvent::RIGHT)
+    const unsigned int eventButton = event.getButton();
+    if (eventButton == gcn::MouseEvent::LEFT)
     {
     }
-    else if (event.getButton() == gcn::MouseEvent::MIDDLE)
+    else if (eventButton == gcn::MouseEvent::RIGHT)
+    {
+    }
+    else if (eventButton == gcn::MouseEvent::MIDDLE)
     {
         if (!spellShortcut || !spellManager)
             return;
@@ -216,8 +212,9 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
 
     const int itemId = spellShortcut->getItem(
         (mNumber * SPELL_SHORTCUT_ITEMS) + index);
+    const unsigned int eventButton = event.getButton();
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (eventButton == gcn::MouseEvent::LEFT)
     {
         if (itemId < 0)
             return;
@@ -250,7 +247,7 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
             spellShortcut->setItemSelected(-1);
         }
     }
-    else if (event.getButton() == gcn::MouseEvent::RIGHT)
+    else if (eventButton == gcn::MouseEvent::RIGHT)
     {
         TextCommand *spell = nullptr;
         if (itemId >= 0)
@@ -288,7 +285,6 @@ void SpellShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-// Hide SpellTooltip
 void SpellShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     if (mSpellPopup)
