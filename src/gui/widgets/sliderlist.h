@@ -40,7 +40,7 @@ class SliderList final : public Container,
         SliderList(const Widget2 *const widget,
                    gcn::ListModel *const listModel = nullptr,
                    gcn::ActionListener *const listener = nullptr,
-                   std::string eventId = "");
+                   const std::string &eventId = "");
 
         A_DELETE_COPY(SliderList)
 
@@ -58,11 +58,11 @@ class SliderList final : public Container,
 
         void action(const gcn::ActionEvent &event) override;
 
-        void setSelectedString(std::string str);
+        void setSelectedString(const std::string &str);
 
         std::string getSelectedString() const A_WARN_UNUSED;
 
-        void setSelected(int idx);
+        void setSelected(const int idx);
 
         void adjustSize();
 
@@ -72,7 +72,7 @@ class SliderList final : public Container,
     protected:
         void updateLabel();
 
-        int getMaxLabelWidth() A_WARN_UNUSED;
+        int getMaxLabelWidth() const A_WARN_UNUSED;
 
         Button *mButtons[2];
         Label *mLabel;

@@ -41,7 +41,7 @@ static const int sliderHeight = 30;
 SliderList::SliderList(const Widget2 *const widget,
                        gcn::ListModel *const listModel,
                        gcn::ActionListener *const listener,
-                       std::string eventId) :
+                       const std::string &eventId) :
     Container(widget),
     gcn::ActionListener(),
     gcn::MouseListener(),
@@ -98,7 +98,6 @@ void SliderList::resize()
     const int width = getWidth();
 
     mButtons[0]->setWidth(buttonWidth);
-//    mLabel->setPosition(buttonSpace, 0);
     mLabel->setWidth(width - buttonSpace * 2);
     mButtons[1]->setPosition(width - buttonSpace + 3, 0);
     mButtons[1]->setWidth(buttonWidth);
@@ -108,10 +107,11 @@ void SliderList::resize()
 void SliderList::draw(gcn::Graphics *graphics)
 {
     BLOCK_START("SliderList::draw")
-    if (mOldWidth != getWidth())
+    const int width = mDimension.width;
+    if (mOldWidth != width)
     {
         resize();
-        mOldWidth = getWidth();
+        mOldWidth = width;
     }
     Container::draw(graphics);
     BLOCK_END("SliderList::draw")
@@ -127,9 +127,9 @@ void SliderList::updateLabel()
 
     mLabel->setCaption(mListModel->getElementAt(mSelectedIndex));
     mLabel->adjustSize();
-    const int space = getWidth() - buttonSpace * 2;
+    const int space = mDimension.width - buttonSpace * 2;
     const int labelWidth = mLabel->getWidth();
-    int labelY = (getHeight() - mLabel->getHeight()) / 2;
+    int labelY = (mDimension.height - mLabel->getHeight()) / 2;
     if (labelY < 0)
         labelY = 0;
 
@@ -161,7 +161,7 @@ void SliderList::action(const gcn::ActionEvent &event)
     distributeActionEvent();
 }
 
-void SliderList::setSelectedString(std::string str)
+void SliderList::setSelectedString(const std::string &str)
 {
     if (!mListModel)
         return;
@@ -179,12 +179,12 @@ void SliderList::setSelectedString(std::string str)
 std::string SliderList::getSelectedString() const
 {
     if (!mListModel)
-        return "";
+        return std::string();
 
     return mListModel->getElementAt(mSelectedIndex);
 }
 
-void SliderList::setSelected(int idx)
+void SliderList::setSelected(const int idx)
 {
     if (!mListModel)
         return;
@@ -204,7 +204,7 @@ void SliderList::adjustSize()
     updateLabel();
 }
 
-int SliderList::getMaxLabelWidth()
+int SliderList::getMaxLabelWidth() const
 {
     if (!mListModel || !gui)
         return 1;
