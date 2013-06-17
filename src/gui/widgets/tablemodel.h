@@ -45,7 +45,7 @@ public:
      *
      * \param completed whether we are signalling the end of the update
      */
-    virtual void modelUpdated(bool completed) = 0;
+    virtual void modelUpdated(const bool completed) = 0;
 
     virtual ~TableModelListener()
     { }
@@ -82,12 +82,12 @@ public:
     /**
      * Determines the width of each individual column
      */
-    virtual int getColumnWidth(int index) const A_WARN_UNUSED = 0;
+    virtual int getColumnWidth(const int index) const A_WARN_UNUSED = 0;
 
     /**
      * Retrieves the widget stored at the specified location within the table.
      */
-    virtual gcn::Widget *getElementAt(int row, int column)
+    virtual gcn::Widget *getElementAt(const int row, const int column)
                                       const A_WARN_UNUSED = 0;
 
     virtual void installListener(TableModelListener *const listener);
@@ -147,13 +147,13 @@ public:
      */
     virtual void resize();
 
-    virtual int getRows() const A_WARN_UNUSED;
-    virtual int getColumns() const A_WARN_UNUSED;
+    virtual int getRows() const override A_WARN_UNUSED;
+    virtual int getColumns() const override A_WARN_UNUSED;
     virtual int getRowHeight() const override A_WARN_UNUSED;
     virtual int getWidth() const A_WARN_UNUSED;
     virtual int getHeight() const A_WARN_UNUSED;
-    virtual int getColumnWidth(int index) const A_WARN_UNUSED;
-    virtual gcn::Widget *getElementAt(int row, int column)
+    virtual int getColumnWidth(const int index) const override A_WARN_UNUSED;
+    virtual gcn::Widget *getElementAt(const int row, const int column)
                                       const override A_WARN_UNUSED;
 
 protected:

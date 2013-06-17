@@ -119,7 +119,8 @@ void StaticTableModel::set(const int row, const int column,
     signalAfterUpdate();
 }
 
-gcn::Widget *StaticTableModel::getElementAt(int row, int column) const
+gcn::Widget *StaticTableModel::getElementAt(const int row,
+                                            const int column) const
 {
     return mTableModel[WIDGET_AT(row, column)];
 }
@@ -145,7 +146,7 @@ int StaticTableModel::getRowHeight() const
     return abs(mHeight);
 }
 
-int StaticTableModel::getColumnWidth(int column) const
+int StaticTableModel::getColumnWidth(const int column) const
 {
     if (column < 0 || column >= mColumns)
         return 0;

@@ -151,7 +151,7 @@ public:
     void mouseDragged(gcn::MouseEvent& mouseEvent) override;
 
     // Constraints inherited from TableModelListener
-    void modelUpdated(bool) override;
+    void modelUpdated(const bool completed) override;
 
     void requestFocus();
 
@@ -163,7 +163,7 @@ protected:
 
     int getRowHeight() const A_WARN_UNUSED;
 
-    int getColumnWidth(int i) const A_WARN_UNUSED;
+    int getColumnWidth(const int i) const A_WARN_UNUSED;
 
 private:
     int getRowForY(int y) const A_WARN_UNUSED;     // -1 on error

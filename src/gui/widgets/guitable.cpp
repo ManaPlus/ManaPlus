@@ -199,7 +199,7 @@ int GuiTable::getRowHeight() const
         return 0;
 }
 
-int GuiTable::getColumnWidth(int i) const
+int GuiTable::getColumnWidth(const int i) const
 {
     if (mModel)
         return mModel->getColumnWidth(i) + 4;  // border
@@ -514,7 +514,7 @@ void GuiTable::mouseDragged(gcn::MouseEvent& mouseEvent)
     setSelectedColumn(getColumnForX(x));
 }
 
-void GuiTable::modelUpdated(bool completed)
+void GuiTable::modelUpdated(const bool completed)
 {
     if (completed)
     {

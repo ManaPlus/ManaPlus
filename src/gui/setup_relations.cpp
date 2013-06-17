@@ -142,7 +142,7 @@ public:
         return ROW_HEIGHT;
     }
 
-    virtual int getColumnWidth(int index) const override
+    virtual int getColumnWidth(const int index) const override
     {
         if (index == NAME_COLUMN)
             return NAME_COLUMN_WIDTH;
