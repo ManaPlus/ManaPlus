@@ -62,7 +62,7 @@ class TextBox final : public gcn::TextBox,
 
         void keyPressed(gcn::KeyEvent& keyEvent) override;
 
-        void draw(gcn::Graphics* graphics);
+        void draw(gcn::Graphics* graphics) override;
 
         void setForegroundColor(const gcn::Color &color);
 

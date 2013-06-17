@@ -57,12 +57,6 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
     // point and try to beat it
     mMinWidth = minDimension;
 
-    std::stringstream wrappedStream;
-    size_t newlinePos;
-    size_t lastNewlinePos = 0;
-    int minWidth = 0;
-    int xpos;
-
     size_t spacePos = text.rfind(" ", text.size());
 
     if (spacePos != std::string::npos)
@@ -73,6 +67,12 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
         if (length > mMinWidth)
             mMinWidth = length;
     }
+
+    std::stringstream wrappedStream;
+    size_t newlinePos;
+    size_t lastNewlinePos = 0;
+    int minWidth = 0;
+    int xpos;
 
     do
     {
@@ -86,6 +86,8 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
             text.substr(lastNewlinePos, newlinePos - lastNewlinePos);
         size_t lastSpacePos = 0;
         xpos = 0;
+        gcn::Font *const font = getFont();
+        const int spaceWidth = font->getWidth(" ");
 
         do
         {
@@ -94,10 +96,10 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
             if (spacePos == std::string::npos)
                 spacePos = line.size();
 
-            std::string word =
+            const std::string word =
                 line.substr(lastSpacePos, spacePos - lastSpacePos);
 
-            const int width = getFont()->getWidth(word);
+            const int width = font->getWidth(word);
 
             if (xpos == 0 && width > mMinWidth)
             {
@@ -105,10 +107,10 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
                 xpos = width;
                 wrappedStream << word;
             }
-            else if (xpos != 0 && xpos + getFont()->getWidth(" ") + width <=
+            else if (xpos != 0 && xpos + spaceWidth + width <=
                      mMinWidth)
             {
-                xpos += getFont()->getWidth(" ") + width;
+                xpos += spaceWidth + width;
                 wrappedStream << " " << word;
             }
             else if (lastSpacePos == 0)
@@ -355,16 +357,16 @@ void TextBox::draw(gcn::Graphics* graphics)
         graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
     }
 
+    gcn::Font *const font = getFont();
     if (isFocused() && isEditable())
     {
-        drawCaret(graphics, getFont()->getWidth(
+        drawCaret(graphics, font->getWidth(
             mTextRows[mCaretRow].substr(0, mCaretColumn)),
-            mCaretRow * getFont()->getHeight());
+            mCaretRow * font->getHeight());
     }
 
     static_cast<Graphics*>(graphics)->setColorAll(
         mForegroundColor, mForegroundColor2);
-    gcn::Font *const font = getFont();
     const int fontHeight = font->getHeight();
 
     for (size_t i = 0, sz = mTextRows.size(); i < sz; i++)
