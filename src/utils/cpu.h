@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILD_CPU_H
-#define UTILD_CPU_H
+#ifndef UTILS_CPU_H
+#define UTILS_CPU_H
 
 #include "localconsts.h"
 
@@ -41,4 +41,4 @@ namespace Cpu
     void printFlags();
 }  // namespace CPU
 
-#endif  // UTILD_CPU_H
+#endif  // UTILS_CPU_H

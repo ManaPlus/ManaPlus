@@ -387,7 +387,6 @@ Setup_Theme::~Setup_Theme()
 
     delete mInfo;
     mInfo = nullptr;
-
 }
 
 void Setup_Theme::updateInfo()

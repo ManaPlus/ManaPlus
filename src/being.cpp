@@ -294,7 +294,6 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
                     id, info.getColor(mLook));
             }
         }
-
     }
 }
 
