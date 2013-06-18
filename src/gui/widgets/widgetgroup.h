@@ -39,9 +39,10 @@ class WidgetGroup : public Container,
 
         A_DELETE_COPY(WidgetGroup)
 
-        virtual void addButton(std::string tag);
+        virtual void addButton(const std::string &tag);
 
-        virtual void addButton(std::string text, std::string tag);
+        virtual void addButton(const std::string &text,
+                               const std::string &tag);
 
         void action(const gcn::ActionEvent &event) override;
 

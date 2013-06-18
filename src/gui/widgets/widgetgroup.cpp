@@ -37,12 +37,12 @@ WidgetGroup::WidgetGroup(const Widget2 *const widget,
     addWidgetListener(this);
 }
 
-void WidgetGroup::addButton(std::string tag)
+void WidgetGroup::addButton(const std::string &tag)
 {
     addButton(tag, tag);
 }
 
-void WidgetGroup::addButton(std::string text, std::string tag)
+void WidgetGroup::addButton(const std::string &text, const std::string &tag)
 {
     if (text.empty() || tag.empty())
         return;
