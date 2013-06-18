@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "dragdrop.h"
 #include "graphicsvertexes.h"
 #include "soundmanager.h"
 
@@ -688,6 +689,9 @@ void Window::mouseExited(gcn::MouseEvent &event A_UNUSED)
 void Window::updateResizeHandler(gcn::MouseEvent &event)
 {
     if (!gui)
+        return;
+
+    if (!dragDrop.isEmpty())
         return;
 
     mResizeHandles = getResizeHandles(event);
