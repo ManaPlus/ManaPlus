@@ -55,7 +55,7 @@ class TextPreview final : public gcn::Widget,
          *
          * @param alpha whether to use alpha values for the text or not
          */
-        inline void useTextAlpha(bool alpha)
+        inline void useTextAlpha(const bool alpha)
         { mTextAlpha = alpha; }
 
         /**
@@ -80,7 +80,7 @@ class TextPreview final : public gcn::Widget,
          *
          * @param font the font to use.
          */
-        inline void setFont(gcn::Font *font)
+        inline void setFont(gcn::Font *const font)
         { mFont = font; }
 
         /**
@@ -88,7 +88,7 @@ class TextPreview final : public gcn::Widget,
          *
          * @param shadow true, if a shadow is wanted, false else
          */
-        inline void setShadow(bool shadow)
+        inline void setShadow(const bool shadow)
         { mShadow = shadow; }
 
         /**
@@ -96,7 +96,7 @@ class TextPreview final : public gcn::Widget,
          *
          * @param outline true, if an outline is wanted, false else
          */
-        inline void setOutline(bool outline)
+        inline void setOutline(const bool outline)
         { mOutline = outline; }
 
         /**
@@ -112,7 +112,7 @@ class TextPreview final : public gcn::Widget,
          *
          * @param opaque Whether the widget should be opaque or not
          */
-        void setOpaque(bool opaque)
+        void setOpaque(const bool opaque)
         { mOpaque = opaque; }
 
         /**
@@ -131,14 +131,14 @@ class TextPreview final : public gcn::Widget,
         const gcn::Color *mTextColor2;
         const gcn::Color *mBGColor;
         const gcn::Color *mTextBGColor;
-        bool mTextAlpha;
-        bool mOpaque;
-        bool mShadow;
-        bool mOutline;
         int mPadding;
         static int instances;
         static float mAlpha;
         static Skin *mSkin;
+        bool mTextAlpha;
+        bool mOpaque;
+        bool mShadow;
+        bool mOutline;
 };
 
 #endif  // GUI_WIDGETS_TEXTPREVIEW_H

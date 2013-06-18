@@ -44,16 +44,17 @@ TextPreview::TextPreview(const Widget2 *const widget,
     mTextColor2(&getThemeColor(Theme::TEXT_OUTLINE)),
     mBGColor(&getThemeColor(Theme::BACKGROUND)),
     mTextBGColor(nullptr),
+    mPadding(0),
     mTextAlpha(false),
     mOpaque(false),
     mShadow(false),
-    mOutline(false),
-    mPadding(0)
+    mOutline(false)
 {
     if (instances == 0)
     {
-        if (Theme::instance())
-            mSkin = Theme::instance()->load("textpreview.xml", "");
+        Theme *const theme = Theme::instance();
+        if (theme)
+            mSkin = theme->load("textpreview.xml", "");
     }
 
     instances++;
@@ -86,7 +87,8 @@ void TextPreview::draw(gcn::Graphics* graphics)
         mAlpha = Client::getGuiAlpha();
     Graphics *const g = static_cast<Graphics*>(graphics);
 
-    const int alpha = mTextAlpha ? static_cast<int>(mAlpha * 255.0f) : 255;
+    const int intAlpha = static_cast<int>(mAlpha * 255.0f);
+    const int alpha = mTextAlpha ? intAlpha : 255;
 
     if (mOpaque)
     {
@@ -94,7 +96,8 @@ void TextPreview::draw(gcn::Graphics* graphics)
                     static_cast<int>(mBGColor->g),
                     static_cast<int>(mBGColor->b),
                     static_cast<int>(mAlpha * 255.0f)));
-        g->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
+        g->fillRectangle(gcn::Rectangle(0, 0,
+            mDimension.width, mDimension.height));
     }
 
     if (mTextBGColor)
@@ -109,7 +112,7 @@ void TextPreview::draw(gcn::Graphics* graphics)
             g->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),
                 static_cast<int>(mTextBGColor->g),
                 static_cast<int>(mTextBGColor->b),
-                static_cast<int>(mAlpha * 255.0f)));
+                intAlpha));
             g->fillRectangle(gcn::Rectangle(mPadding, mPadding, x, y));
         }
     }
