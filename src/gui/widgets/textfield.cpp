@@ -49,7 +49,8 @@ ImageRect TextField::skin;
 
 TextField::TextField(const Widget2 *const widget,
                      const std::string &text, const bool loseFocusOnTab,
-                     gcn::ActionListener *const listener, std::string eventId,
+                     gcn::ActionListener *const listener,
+                     const std::string &eventId,
                      const bool sendAlwaysEvents):
     gcn::TextField(text),
     gcn::FocusListener(),
@@ -72,9 +73,10 @@ TextField::TextField(const Widget2 *const widget,
 
     if (instances == 0)
     {
-        if (Theme::instance())
+        Theme *const theme = Theme::instance();
+        if (theme)
         {
-            mSkin = Theme::instance()->loadSkinRect(skin, "textfield.xml",
+            mSkin = theme->loadSkinRect(skin, "textfield.xml",
                 "textfield_background.xml");
         }
     }
@@ -136,16 +138,15 @@ void TextField::draw(gcn::Graphics *graphics)
     BLOCK_START("TextField::draw")
     updateAlpha();
 
+    gcn::Font *const font = getFont();
     if (isFocused())
     {
         drawCaret(graphics,
-                  getFont()->getWidth(mText.substr(0, mCaretPosition)) -
-                  mXScroll);
+            font->getWidth(mText.substr(0, mCaretPosition)) - mXScroll);
     }
 
     static_cast<Graphics*>(graphics)->setColorAll(
         mForegroundColor, mForegroundColor2);
-    gcn::Font *const font = getFont();
     font->drawString(graphics, mText, mPadding - mXScroll, mPadding);
     BLOCK_END("TextField::draw")
 }
@@ -153,9 +154,9 @@ void TextField::draw(gcn::Graphics *graphics)
 void TextField::drawFrame(gcn::Graphics *graphics)
 {
     BLOCK_START("TextField::drawFrame")
-    const int bs = 2 * getFrameSize();
+    const int bs = 2 * mFrameSize;
     static_cast<Graphics*>(graphics)->drawImageRect(0, 0,
-        getWidth() + bs, getHeight() + bs, skin);
+        mDimension.width + bs, mDimension.height + bs, skin);
     BLOCK_END("TextField::drawFrame")
 }
 
@@ -367,7 +368,6 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
     }
 
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
-
     switch (action)
     {
         case Input::KEY_GUI_LEFT:
@@ -501,14 +501,15 @@ void TextField::fixScroll()
         const int caretX = getFont()->getWidth(
             mText.substr(0, mCaretPosition));
 
+        const int width = mDimension.width;
         const int pad = 2 * mPadding;
-        if (caretX - mXScroll >= getWidth() - pad)
+        if (caretX - mXScroll >= width - pad)
         {
-            mXScroll = caretX - getWidth() + pad;
+            mXScroll = caretX - width + pad;
         }
         else if (caretX - mXScroll <= 0)
         {
-            mXScroll = caretX - getWidth() / 2;
+            mXScroll = caretX - width / 2;
 
             if (mXScroll < 0)
                 mXScroll = 0;

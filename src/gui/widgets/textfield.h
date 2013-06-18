@@ -51,7 +51,7 @@ class TextField : public gcn::TextField,
                   const std::string &text = "",
                   const bool loseFocusOnTab = true,
                   gcn::ActionListener *const listener = nullptr,
-                  std::string eventId = "",
+                  const std::string &eventId = "",
                   const bool sendAlwaysEvents = false);
 
         A_DELETE_COPY(TextField)
@@ -81,7 +81,7 @@ class TextField : public gcn::TextField,
         /**
          * Set the range on the field if it is numeric
          */
-        void setRange(int min, int max)
+        void setRange(const int min, const int max)
         {
             mMinimum = min;
             mMaximum = max;
@@ -95,13 +95,13 @@ class TextField : public gcn::TextField,
         /**
          * Set the minimum value for a range
          */
-        void setMinimum(int min)
+        void setMinimum(const int min)
         { mMinimum = min; }
 
         /**
          * Set the maximum value for a range
          */
-        void setMaximum(int max)
+        void setMaximum(const int max)
         { mMaximum = max; }
 
         /**
@@ -109,7 +109,7 @@ class TextField : public gcn::TextField,
          */
         int getValue() const A_WARN_UNUSED;
 
-        void setSendAlwaysEvents(bool b)
+        void setSendAlwaysEvents(const bool b)
         { mSendAlwaysEvents = b; }
 
         void adjustSize();
@@ -124,9 +124,9 @@ class TextField : public gcn::TextField,
 
         void handleCopy() const;
 
-        void focusGained(const gcn::Event &event);
+        void focusGained(const gcn::Event &event) override;
 
-        void focusLost(const gcn::Event &event);
+        void focusLost(const gcn::Event &event) override;
 
     protected:
         void drawCaret(gcn::Graphics* graphics, int x) override;
