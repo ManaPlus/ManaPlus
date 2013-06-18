@@ -64,14 +64,6 @@ Window::Window(const std::string &caption, const bool modal,
     mStickyRect(),
     mGripRect(),
     mWindowName("window"),
-    mShowTitle(true),
-    mModal(modal),
-    mCloseButton(false),
-    mDefaultVisible(false),
-    mSaveVisible(false),
-    mStickyButton(false),
-    mSticky(false),
-    mStickyButtonLock(false),
     mMinWinWidth(100),
     mMinWinHeight(40),
     mMaxWinWidth(mainGraphics->mWidth),
@@ -84,8 +76,16 @@ Window::Window(const std::string &caption, const bool modal,
     mGripPadding(2),
     mResizeHandles(-1),
     mOldResizeHandles(-1),
-    mPlayVisibleSound(false),
-    mCaptionFont(getFont())
+    mCaptionFont(getFont()),
+    mShowTitle(true),
+    mModal(modal),
+    mCloseButton(false),
+    mDefaultVisible(false),
+    mSaveVisible(false),
+    mStickyButton(false),
+    mSticky(false),
+    mStickyButtonLock(false),
+    mPlayVisibleSound(false)
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
 
@@ -108,9 +108,10 @@ Window::Window(const std::string &caption, const bool modal,
 
     int childPalette = 1;
     // Loads the skin
-    if (Theme::instance())
+    Theme *const theme = Theme::instance();
+    if (theme)
     {
-        mSkin = Theme::instance()->load(skin, "window.xml");
+        mSkin = theme->load(skin, "window.xml");
         if (mSkin)
         {
             setPadding(mSkin->getPadding());
@@ -139,7 +140,6 @@ Window::Window(const std::string &caption, const bool modal,
             childPalette = getOption("childPalette");
         }
     }
-
 
     // Add this window to the window container
     windowContainer->add(this);
@@ -186,8 +186,9 @@ Window::~Window()
 
     if (mSkin)
     {
-        if (Theme::instance())
-            Theme::instance()->unload(mSkin);
+        Theme *const theme = Theme::instance();
+        if (theme)
+            theme->unload(mSkin);
         mSkin = nullptr;
     }
     if (mGrip)
@@ -197,7 +198,7 @@ Window::~Window()
     }
 }
 
-void Window::setWindowContainer(WindowContainer *wc)
+void Window::setWindowContainer(WindowContainer *const wc)
 {
     windowContainer = wc;
 }
@@ -317,16 +318,16 @@ void Window::draw(gcn::Graphics *graphics)
 void Window::setContentSize(int width, int height)
 {
     width = width + 2 * mPadding;
-    height = height + mPadding + getTitleBarHeight();
+    height = height + mPadding + mTitleBarHeight;
 
-    if (getMinWidth() > width)
-        width = getMinWidth();
-    else if (getMaxWidth() < width)
-        width = getMaxWidth();
-    if (getMinHeight() > height)
-        height = getMinHeight();
-    else if (getMaxHeight() < height)
-        height = getMaxHeight();
+    if (mMinWinWidth > width)
+        width = mMinWinWidth;
+    else if (mMaxWinWidth < width)
+        width = mMaxWinWidth;
+    if (mMinWinHeight > height)
+        height = mMinWinHeight;
+    else if (mMaxWinHeight < height)
+        height = mMaxWinHeight;
 
     setSize(width, height);
 }
@@ -409,7 +410,7 @@ void Window::setLocationRelativeTo(const ImageRect::ImagePosition &position,
     setPosition(offsetX, offsetY);
 }
 
-void Window::setMinWidth(int width)
+void Window::setMinWidth(const int width)
 {
     if (mSkin)
     {
@@ -422,12 +423,12 @@ void Window::setMinWidth(int width)
     }
 }
 
-void Window::setMinHeight(int height)
+void Window::setMinHeight(const int height)
 {
     if (mSkin)
     {
-        mMinWinHeight = height > mSkin->getMinHeight() ?
-                        height : mSkin->getMinHeight();
+        mMinWinHeight = height > mSkin->getMinHeight()
+            ? height : mSkin->getMinHeight();
     }
     else
     {
@@ -485,10 +486,10 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
     if (showClose)
     {
         const Image *const button = mSkin->getCloseImage(false);
-        const int x = mDimension.width - button->getWidth() - closePadding;
-        mCloseRect.x = x;
+        const int buttonWidth = button->getWidth();
+        mCloseRect.x = mDimension.width - buttonWidth - closePadding;
         mCloseRect.y = closePadding;
-        mCloseRect.width = button->getWidth();
+        mCloseRect.width = buttonWidth;
         mCloseRect.height = button->getHeight();
     }
     if (mStickyButton)
@@ -496,7 +497,8 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
         const Image *const button = mSkin->getStickyImage(mSticky);
         if (button)
         {
-            int x = mDimension.width - button->getWidth()
+            const int buttonWidth = button->getWidth();
+            int x = mDimension.width - buttonWidth
                 - getOption("stickySpacing") - closePadding;
 
             if (showClose)
@@ -504,7 +506,7 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
 
             mStickyRect.x = x;
             mStickyRect.y = getOption("stickyPadding");
-            mStickyRect.width = button->getWidth();
+            mStickyRect.width = buttonWidth;
             mStickyRect.height = button->getHeight();
         }
     }
@@ -564,9 +566,9 @@ void Window::setVisible(bool visible)
     setVisible(visible, false);
 }
 
-void Window::setVisible(bool visible, bool forceSticky)
+void Window::setVisible(const bool visible, const bool forceSticky)
 {
-    if (visible == isWindowVisible())
+    if (visible == mVisible)
         return;
 
     // Check if the window is off screen...
@@ -579,17 +581,17 @@ void Window::setVisible(bool visible, bool forceSticky)
         mResizeHandles = 0;
     }
 
-    if (isStickyButtonLock())
+    if (mStickyButtonLock)
         gcn::Window::setVisible(visible);
     else
-        gcn::Window::setVisible((!forceSticky && isSticky()) || visible);
+        gcn::Window::setVisible((!forceSticky && mSticky) || visible);
     if (visible)
     {
         if (mPlayVisibleSound)
             soundManager.playGuiSound(SOUND_SHOW_WINDOW);
         if (gui)
         {
-            gcn::MouseEvent *event = reinterpret_cast<gcn::MouseEvent*>(
+            gcn::MouseEvent *const event = reinterpret_cast<gcn::MouseEvent*>(
                 gui->createMouseEvent(this));
             if (event)
             {
@@ -711,6 +713,7 @@ void Window::updateResizeHandler(gcn::MouseEvent &event)
             break;
         default:
             gui->setCursorType(Cursor::CURSOR_POINTER);
+            break;
     }
 }
 
@@ -760,7 +763,7 @@ void Window::mouseDragged(gcn::MouseEvent &event)
             const int newHeight = newDim.height
                 + ((mouseResize & TOP) ? -dy : dy);
             newDim.height = std::min(mMaxWinHeight,
-                                     std::max(mMinWinHeight, newHeight));
+                std::max(mMinWinHeight, newHeight));
 
             if (mouseResize & TOP)
                 newDim.y -= newDim.height - getHeight();
@@ -771,7 +774,7 @@ void Window::mouseDragged(gcn::MouseEvent &event)
             const int newWidth = newDim.width
                 + ((mouseResize & LEFT) ? -dx : dx);
             newDim.width = std::min(mMaxWinWidth,
-                                    std::max(mMinWinWidth, newWidth));
+                std::max(mMinWinWidth, newWidth));
 
             if (mouseResize & LEFT)
                 newDim.x -= newDim.width - mDimension.width;
@@ -805,7 +808,7 @@ void Window::mouseDragged(gcn::MouseEvent &event)
     }
 }
 
-void Window::setModal(bool modal)
+void Window::setModal(const bool modal)
 {
     if (mModal != modal)
     {
@@ -916,17 +919,17 @@ void Window::saveWindowState()
     }
 }
 
-void Window::setDefaultSize(int defaultX, int defaultY,
+void Window::setDefaultSize(const int defaultX, const int defaultY,
                             int defaultWidth, int defaultHeight)
 {
-    if (getMinWidth() > defaultWidth)
-        defaultWidth = getMinWidth();
-    else if (getMaxWidth() < defaultWidth)
-        defaultWidth = getMaxWidth();
-    if (getMinHeight() > defaultHeight)
-        defaultHeight = getMinHeight();
-    else if (getMaxHeight() < defaultHeight)
-        defaultHeight = getMaxHeight();
+    if (mMinWinWidth > defaultWidth)
+        defaultWidth = mMinWinWidth;
+    else if (mMaxWinWidth < defaultWidth)
+        defaultWidth = mMaxWinWidth;
+    if (mMinWinHeight > defaultHeight)
+        defaultHeight = mMinWinHeight;
+    else if (mMaxWinHeight < defaultHeight)
+        defaultHeight = mMaxWinHeight;
 
     mDefaultX = defaultX;
     mDefaultY = defaultY;
@@ -942,11 +945,12 @@ void Window::setDefaultSize()
     mDefaultHeight = mDimension.height;
 }
 
-void Window::setDefaultSize(int defaultWidth, int defaultHeight,
+void Window::setDefaultSize(const int defaultWidth, const int defaultHeight,
                             const ImageRect::ImagePosition &position,
                             const int offsetX, const int offsetY)
 {
-    int x = 0, y = 0;
+    int x = 0;
+    int y = 0;
 
     if (position == ImageRect::UPPER_LEFT)
     {
@@ -1004,18 +1008,15 @@ void Window::resetToDefaultSize()
 void Window::adjustPositionAfterResize(const int oldScreenWidth,
                                        const int oldScreenHeight)
 {
-    gcn::Rectangle dimension = getDimension();
-
     // If window was aligned to the right or bottom, keep it there
     const int rightMargin = oldScreenWidth - (mDimension.x + mDimension.width);
     const int bottomMargin = oldScreenHeight
         - (mDimension.y + mDimension.height);
     if (mDimension.x > 0 && mDimension.x > rightMargin)
-        dimension.x = mainGraphics->mWidth - rightMargin - mDimension.width;
+        mDimension.x = mainGraphics->mWidth - rightMargin - mDimension.width;
     if (mDimension.y > 0 && mDimension.y > bottomMargin)
-        dimension.y = mainGraphics->mHeight - bottomMargin - mDimension.height;
+        mDimension.y = mainGraphics->mHeight - bottomMargin - mDimension.height;
 
-    setDimension(dimension);
     ensureOnScreen();
 }
 
@@ -1075,7 +1076,7 @@ bool Window::isResizeAllowed(const gcn::MouseEvent &event) const
     return false;
 }
 
-int Window::getGuiAlpha()
+int Window::getGuiAlpha() const
 {
     const float alpha = std::max(Client::getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
@@ -1151,21 +1152,17 @@ void Window::ensureOnScreen()
     if (mDimension.width == 0 && mDimension.height == 0)
         return;
 
-    gcn::Rectangle dimension = getDimension();
-
     // Check the left and bottom screen boundaries
-    if (dimension.x + dimension.width > mainGraphics->mWidth)
-        dimension.x = mainGraphics->mWidth - dimension.width;
-    if (dimension.y + dimension.height > mainGraphics->mHeight)
-        dimension.y = mainGraphics->mHeight - dimension.height;
+    if (mDimension.x + mDimension.width > mainGraphics->mWidth)
+        mDimension.x = mainGraphics->mWidth - mDimension.width;
+    if (mDimension.y + mDimension.height > mainGraphics->mHeight)
+        mDimension.y = mainGraphics->mHeight - mDimension.height;
 
     // But never allow the windows to disappear in to the right and top
-    if (dimension.x < 0)
-        dimension.x = 0;
-    if (dimension.y < 0)
-        dimension.y = 0;
-
-    setDimension(dimension);
+    if (mDimension.x < 0)
+        mDimension.x = 0;
+    if (mDimension.y < 0)
+        mDimension.y = 0;
 }
 
 gcn::Rectangle Window::getWindowArea() const
@@ -1188,7 +1185,7 @@ int Window::getOption(const std::string &name, const int def) const
     return def;
 }
 
-bool Window::getOptionBool(std::string name)
+bool Window::getOptionBool(const std::string &name) const
 {
     if (mSkin)
         return mSkin->getOption(name) != 0;

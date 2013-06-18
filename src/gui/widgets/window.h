@@ -75,7 +75,7 @@ class Window : public gcn::Window,
         /**
          * Sets the window container to be used by new windows.
          */
-        static void setWindowContainer(WindowContainer *windowContainer);
+        static void setWindowContainer(WindowContainer *const windowContainer);
 
         /**
          * Draws the window.
@@ -136,7 +136,7 @@ class Window : public gcn::Window,
         /**
          * Sets the minimum width of the window.
          */
-        void setMinWidth(int width);
+        void setMinWidth(const int width);
 
         int getMinWidth() const A_WARN_UNUSED
         { return mMinWinWidth; }
@@ -144,7 +144,7 @@ class Window : public gcn::Window,
         /**
          * Sets the minimum height of the window.
          */
-        void setMinHeight(int height);
+        void setMinHeight(const int height);
 
         int getMinHeight() const A_WARN_UNUSED
         { return mMinWinHeight; }
@@ -210,7 +210,7 @@ class Window : public gcn::Window,
          * Overloads window setVisible by Guichan to allow sticky window
          * handling, or not, if you force the sticky state.
          */
-        void setVisible(bool visible, bool forceSticky);
+        void setVisible(const bool visible, const bool forceSticky);
 
         /**
          * Returns whether the window is visible by default.
@@ -221,7 +221,7 @@ class Window : public gcn::Window,
         /**
          * Sets whether the window is visible by default.
          */
-        void setDefaultVisible(bool save)
+        void setDefaultVisible(const bool save)
         { mDefaultVisible = save; }
 
         /**
@@ -233,7 +233,7 @@ class Window : public gcn::Window,
         /**
          * Sets whether the window will save it's visibility.
          */
-        void setSaveVisible(bool save)
+        void setSaveVisible(const bool save)
         { mSaveVisible = save; }
 
         /**
@@ -314,7 +314,7 @@ class Window : public gcn::Window,
          * Set the default win pos and size.
          * (which can be different of the actual ones.)
          */
-        void setDefaultSize(int defaultX, int defaultY,
+        void setDefaultSize(const int defaultX, const int defaultY,
                             int defaultWidth, int defaultHeight);
 
         /**
@@ -328,7 +328,7 @@ class Window : public gcn::Window,
          * This version of setDefaultSize sets the window's position based
          * on a relative enumerated position, rather than a coordinate position.
          */
-        void setDefaultSize(int defaultWidth, int defaultHeight,
+        void setDefaultSize(const int defaultWidth, const int defaultHeight,
                             const ImageRect::ImagePosition &position,
                             const int offsetx = 0, const int offsetY = 0);
 
@@ -397,12 +397,12 @@ class Window : public gcn::Window,
          /**
          * Allows the windows modal status to change
          */
-        void setModal(bool modal);
+        void setModal(const bool modal);
 
         /**
          * Gets the alpha value used by the window, in a GUIChan usable format.
          */
-        int getGuiAlpha() A_WARN_UNUSED;
+        int getGuiAlpha() const A_WARN_UNUSED;
 
         gcn::Rectangle getWindowArea() const A_WARN_UNUSED;
 
@@ -423,7 +423,7 @@ class Window : public gcn::Window,
         int getOption(const std::string &name,
                       const int def = 0) const A_WARN_UNUSED;
 
-        bool getOptionBool(std::string name) A_WARN_UNUSED;
+        bool getOptionBool(const std::string &name) const A_WARN_UNUSED;
 
         void setTitlePadding(int p)
         { mTitlePadding = p; }
@@ -472,14 +472,6 @@ class Window : public gcn::Window,
         gcn::Rectangle mStickyRect;   /**< Sticky button rectangle */
         gcn::Rectangle mGripRect;     /**< Resize grip rectangle */
         std::string mWindowName;      /**< Name of the window */
-        bool mShowTitle;              /**< Window has a title bar */
-        bool mModal;                  /**< Window is modal */
-        bool mCloseButton;            /**< Window has a close button */
-        bool mDefaultVisible;         /**< Window's default visibility */
-        bool mSaveVisible;            /**< Window will save visibility */
-        bool mStickyButton;           /**< Window has a sticky button */
-        bool mSticky;                 /**< Window resists hiding*/
-        bool mStickyButtonLock;       /**< Window locked if sticky enabled*/
         int mMinWinWidth;             /**< Minimum window width */
         int mMinWinHeight;            /**< Minimum window height */
         int mMaxWinWidth;             /**< Maximum window width */
@@ -503,8 +495,16 @@ class Window : public gcn::Window,
         int mGripPadding;
         int mResizeHandles;
         int mOldResizeHandles;
-        bool mPlayVisibleSound;
         gcn::Font *mCaptionFont;
+        bool mShowTitle;              /**< Window has a title bar */
+        bool mModal;                  /**< Window is modal */
+        bool mCloseButton;            /**< Window has a close button */
+        bool mDefaultVisible;         /**< Window's default visibility */
+        bool mSaveVisible;            /**< Window will save visibility */
+        bool mStickyButton;           /**< Window has a sticky button */
+        bool mSticky;                 /**< Window resists hiding*/
+        bool mStickyButtonLock;       /**< Window locked if sticky enabled*/
+        bool mPlayVisibleSound;
 };
 
 #endif  // GUI_WIDGETS_WINDOW_H
