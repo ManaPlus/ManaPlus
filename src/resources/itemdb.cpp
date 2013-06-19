@@ -65,7 +65,9 @@ static const char *const fields[][2] =
     // TRANSLATORS: item info label
     { "hp",        N_("HP %+d")        },
     // TRANSLATORS: item info label
-    { "mp",        N_("MP %+d")        }
+    { "mp",        N_("MP %+d")        },
+    // TRANSLATORS: item info label
+    { "level",     N_("Level %+d")     }
 };
 
 static std::vector<ItemDB::Stat> extraStats;
