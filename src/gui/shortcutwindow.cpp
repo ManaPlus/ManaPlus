@@ -230,3 +230,12 @@ void ShortcutWindow::widgetMoved(const gcn::Event& event)
     FOR_EACH (std::vector<ShortcutContainer*>::iterator, it, mPages)
         (*it)->setRedraw(true);
 }
+
+#ifdef USE_PROFILER
+void ShortcutWindow::logicChildren()
+{
+    BLOCK_START("ShortcutWindow::logicChildren")
+    BasicContainer::logicChildren();
+    BLOCK_END("ShortcutWindow::logicChildren")
+}
+#endif

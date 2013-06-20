@@ -75,6 +75,10 @@ class BotCheckerWindow final : public Window,
 
         void optionChanged(const std::string &name) override;
 
+#ifdef USE_PROFILER
+        void logicChildren();
+#endif
+
     private:
         UsersTableModel *mTableModel;
         GuiTable *mTable;

@@ -60,8 +60,10 @@ ProgressIndicator::~ProgressIndicator()
 
 void ProgressIndicator::logic()
 {
+    BLOCK_START("ProgressIndicator::logic")
     if (mIndicator)
         mIndicator->update(10);
+    BLOCK_END("ProgressIndicator::logic")
 }
 
 void ProgressIndicator::draw(gcn::Graphics *graphics)

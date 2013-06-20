@@ -57,8 +57,9 @@ void ChatHandler::me(const std::string &text, const std::string &channel) const
 
 void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
 {
-    std::string nick;
+    BLOCK_START("ChatHandler::processWhisperResponse")
 
+    std::string nick;
     if (mSentWhispers.empty())
     {
         nick = "user";
@@ -101,20 +102,28 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
                             + toString(type));
             }
     }
+    BLOCK_END("ChatHandler::processWhisperResponse")
 }
 
 void ChatHandler::processWhisper(Net::MessageIn &msg) const
 {
+    BLOCK_START("ChatHandler::processWhisper")
     const int chatMsgLength = msg.readInt16() - 28;
     std::string nick = msg.readString(24);
 
     if (chatMsgLength <= 0)
+    {
+        BLOCK_END("ChatHandler::processWhisper")
         return;
+    }
 
     std::string chatMsg = msg.readString(chatMsgLength);
     // ignoring future whisper messages
     if (chatMsg.find("\302\202G") == 0 || chatMsg.find("\302\202A") == 0)
+    {
+        BLOCK_END("ChatHandler::processWhisper")
         return;
+    }
     // remove first unicode space if this is may be whisper command.
     if (chatMsg.find("\302\202!") == 0)
         chatMsg = chatMsg.substr(2);
@@ -124,6 +133,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg) const
         if (guildManager && GuildManager::getEnableGuildBot()
             && nick == "guild" && guildManager->processGuildMessage(chatMsg))
         {
+            BLOCK_END("ChatHandler::processWhisper")
             return;
         }
 
@@ -223,6 +233,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg) const
             localChatTab->chatLog(chatMsg, BY_SERVER);
         }
     }
+    BLOCK_END("ChatHandler::processWhisper")
 }
 
 void ChatHandler::processBeingChat(Net::MessageIn &msg,
@@ -231,10 +242,14 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg,
     if (!actorSpriteManager)
         return;
 
+    BLOCK_START("ChatHandler::processBeingChat")
     int chatMsgLength = msg.readInt16() - 8;
     Being *const being = actorSpriteManager->findBeing(msg.readInt32());
     if (!being)
+    {
+        BLOCK_END("ChatHandler::processBeingChat")
         return;
+    }
 
     std::string channel;
     if (channels)
@@ -246,7 +261,10 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg,
     }
 
     if (chatMsgLength <= 0)
+    {
+        BLOCK_END("ChatHandler::processBeingChat")
         return;
+    }
 
     std::string chatMsg = msg.readRawString(chatMsgLength);
 
@@ -284,11 +302,13 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg,
     {
         being->setSpeech(chatMsg, channel);
     }
+    BLOCK_END("ChatHandler::processBeingChat")
 }
 
 void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
                               const bool channels) const
 {
+    BLOCK_START("ChatHandler::processChat")
     int chatMsgLength = msg.readInt16() - 4;
     std::string channel;
     if (channels)
@@ -299,7 +319,10 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
         channel += msg.readInt8();
     }
     if (chatMsgLength <= 0)
+    {
+        BLOCK_END("ChatHandler::processChat")
         return;
+    }
 
     std::string chatMsg = msg.readRawString(chatMsgLength);
     const size_t pos = chatMsg.find(" : ", 0);
@@ -334,10 +357,12 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
     {
         localChatTab->chatLog(chatMsg, BY_GM);
     }
+    BLOCK_END("ChatHandler::processChat")
 }
 
 void ChatHandler::processMVP(Net::MessageIn &msg) const
 {
+    BLOCK_START("ChatHandler::processMVP")
     // Display MVP player
     const int id = msg.readInt32();  // id
     if (localChatTab && actorSpriteManager && config.getBoolValue("showMVP"))
@@ -348,14 +373,19 @@ void ChatHandler::processMVP(Net::MessageIn &msg) const
         else
             NotifyManager::notify(NotifyManager::MVP_PLAYER, being->getName());
     }
+    BLOCK_END("ChatHandler::processMVP")
 }
 
 void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg) const
 {
+    BLOCK_START("ChatHandler::processIgnoreAllResponse")
     const int action = msg.readInt8();
     const int fail = msg.readInt8();
     if (!localChatTab)
+    {
+        BLOCK_END("ChatHandler::processIgnoreAllResponse")
         return;
+    }
 
     switch (action)
     {
@@ -391,6 +421,7 @@ void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg) const
             // unknown result
             break;
     }
+    BLOCK_END("ChatHandler::processIgnoreAllResponse")
 }
 
 }  // namespace Ea

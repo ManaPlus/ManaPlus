@@ -1195,3 +1195,10 @@ bool Window::getOptionBool(const std::string &name) const
         return mSkin->getOption(name) != 0;
     return 0;
 }
+
+#ifdef USE_PROFILER
+void Window::logic()
+{
+    logicChildren();
+}
+#endif

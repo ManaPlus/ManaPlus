@@ -181,6 +181,7 @@ int inflateMemory(unsigned char *const in, const unsigned int inLength,
 Map *MapReader::readMap(const std::string &filename,
                         const std::string &realFilename)
 {
+    BLOCK_START("MapReader::readMap")
     logger->log("Attempting to read map %s", realFilename.c_str());
     // Load the file through resource manager
     const ResourceManager *const resman = ResourceManager::getInstance();
@@ -189,7 +190,10 @@ Map *MapReader::readMap(const std::string &filename,
     Map *map = nullptr;
 
     if (!buffer)
+    {
+        BLOCK_END("MapReader::readMap")
         return createEmptyMap(filename, realFilename);
+    }
 
     unsigned char *inflated;
     unsigned int inflatedSize;
@@ -206,6 +210,7 @@ Map *MapReader::readMap(const std::string &filename,
         {
             logger->log("Could not decompress map file (%s)",
                         realFilename.c_str());
+            BLOCK_END("MapReader::readMap")
             return nullptr;
         }
     }
@@ -243,6 +248,7 @@ Map *MapReader::readMap(const std::string &filename,
             updateMusic(map);
     }
 
+    BLOCK_END("MapReader::readMap")
     return map;
 }
 

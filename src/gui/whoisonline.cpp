@@ -595,7 +595,9 @@ void WhoIsOnline::download()
 
 void WhoIsOnline::logic()
 {
+    BLOCK_START("WhoIsOnline::logic")
     mScrollArea->logic();
+    BLOCK_END("WhoIsOnline::logic")
 }
 
 void WhoIsOnline::slowLogic()

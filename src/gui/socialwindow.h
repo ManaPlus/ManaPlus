@@ -120,6 +120,10 @@ public:
 
     void widgetResized(const gcn::Event &event) override;
 
+#ifdef USE_PROFILER
+    void logicChildren();
+#endif
+
 protected:
     friend class SocialTab;
 

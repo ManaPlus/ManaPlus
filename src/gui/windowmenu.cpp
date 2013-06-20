@@ -427,3 +427,12 @@ void WindowMenu::optionChanged(const std::string &name)
     if (name == "autohideButtons")
         mAutoHide = config.getIntValue("autohideButtons");
 }
+
+#ifdef USE_PROFILER
+void WindowMenu::logicChildren()
+{
+    BLOCK_START("WindowMenu::logicChildren")
+    BasicContainer::logicChildren();
+    BLOCK_END("WindowMenu::logicChildren")
+}
+#endif

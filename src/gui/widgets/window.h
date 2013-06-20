@@ -417,6 +417,10 @@ class Window : public gcn::Window,
         bool isWindowVisible() const A_WARN_UNUSED
         { return mVisible; }
 
+#ifdef USE_PROFILER
+        virtual void logic();
+#endif
+
     protected:
         bool canMove() const A_WARN_UNUSED;
 

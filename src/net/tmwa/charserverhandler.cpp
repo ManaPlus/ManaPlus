@@ -315,6 +315,8 @@ void CharServerHandler::connect()
 
 void CharServerHandler::processCharLogin(Net::MessageIn &msg)
 {
+    BLOCK_START("CharServerHandler::processCharLogin")
+
     msg.skip(2);  // Length word
     const int slots = msg.readInt16();
     if (slots > 0 && slots < 30)
@@ -346,6 +348,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     }
 
     Client::setState(STATE_CHAR_SELECT);
+    BLOCK_END("CharServerHandler::processCharLogin")
 }
 
 }  // namespace TmwAthena

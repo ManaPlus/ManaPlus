@@ -1015,8 +1015,9 @@ void Game::handleInput()
  */
 void Game::changeMap(const std::string &mapPath)
 {
-    resetAdjustLevel();
+    BLOCK_START("Game::changeMap")
 
+    resetAdjustLevel();
     ResourceManager *const resman = ResourceManager::getInstance();
     resman->cleanProtected();
 
@@ -1105,6 +1106,7 @@ void Game::changeMap(const std::string &mapPath)
         mumbleManager->setMap(mapPath);
 #endif
     Net::getGameHandler()->mapLoadedEvent();
+    BLOCK_END("Game::changeMap")
 }
 
 void Game::updateHistory(const SDL_Event &event)

@@ -1712,3 +1712,12 @@ void SocialWindow::widgetResized(const gcn::Event &event)
     if (mTabs)
         mTabs->fixSize();
 }
+
+#ifdef USE_PROFILER
+void SocialWindow::logicChildren()
+{
+    BLOCK_START("SocialWindow::logicChildren")
+    BasicContainer::logicChildren();
+    BLOCK_END("SocialWindow::logicChildren")
+}
+#endif

@@ -153,6 +153,10 @@ class DebugWindow final : public Window
 
         void widgetResized(const gcn::Event &event) override;
 
+#ifdef USE_PROFILER
+        void logicChildren();
+#endif
+
     private:
         TabbedArea *mTabs;
         MapDebugTab *mMapWidget;

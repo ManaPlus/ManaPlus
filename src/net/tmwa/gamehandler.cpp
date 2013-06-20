@@ -98,6 +98,7 @@ void GameHandler::connect()
     if (!mNetwork)
         return;
 
+    BLOCK_START("GameHandler::connect")
     mNetwork->connect(mapServer);
     const Token &token = static_cast<LoginHandler*>(
         Net::getLoginHandler())->getToken();
@@ -133,6 +134,7 @@ void GameHandler::connect()
 */
     // We get 4 useless bytes before the real answer comes in (what are these?)
     mNetwork->skip(4);
+    BLOCK_END("GameHandler::connect")
 }
 
 bool GameHandler::isConnected() const
@@ -144,8 +146,10 @@ bool GameHandler::isConnected() const
 
 void GameHandler::disconnect()
 {
+    BLOCK_START("GameHandler::disconnect")
     if (mNetwork)
         mNetwork->disconnect();
+    BLOCK_END("GameHandler::disconnect")
 }
 
 void GameHandler::quit() const

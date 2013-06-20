@@ -89,6 +89,10 @@ class MiniStatusWindow final : public Popup,
 
         gcn::Rectangle getChildrenArea() override A_WARN_UNUSED;
 
+#ifdef USE_PROFILER
+        void logicChildren();
+#endif
+
     private:
         bool isInBar(ProgressBar *bar, int x, int y) const;
 

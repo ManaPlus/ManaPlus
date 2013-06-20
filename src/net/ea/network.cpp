@@ -126,6 +126,7 @@ bool Network::connect(ServerInfo server)
 
 void Network::disconnect()
 {
+    BLOCK_START("Network::disconnect")
     mState = IDLE;
 
     if (mWorkerThread && SDL_GetThreadID(mWorkerThread))
@@ -141,6 +142,7 @@ void Network::disconnect()
         if (mSleep > 0)
             SDL_Delay(mSleep);
     }
+    BLOCK_END("Network::disconnect")
 }
 
 void Network::flush()

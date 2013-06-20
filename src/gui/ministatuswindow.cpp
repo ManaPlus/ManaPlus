@@ -513,3 +513,12 @@ gcn::Rectangle MiniStatusWindow::getChildrenArea()
         rect.width - padding2,
         rect.height - padding2);
 }
+
+#ifdef USE_PROFILER
+void MiniStatusWindow::logicChildren()
+{
+    BLOCK_START("MiniStatusWindow::logicChildren")
+    BasicContainer::logicChildren();
+    BLOCK_END("MiniStatusWindow::logicChildren")
+}
+#endif

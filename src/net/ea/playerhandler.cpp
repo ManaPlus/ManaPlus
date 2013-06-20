@@ -196,6 +196,7 @@ Vector PlayerHandler::getDefaultWalkSpeed() const
 
 void PlayerHandler::processWalkResponse(Net::MessageIn &msg) const
 {
+    BLOCK_START("PlayerHandler::processWalkResponse")
     /*
       * This client assumes that all walk messages succeed,
       * and that the server will send a correction notice
@@ -206,10 +207,12 @@ void PlayerHandler::processWalkResponse(Net::MessageIn &msg) const
     msg.readCoordinatePair(srcX, srcY, dstX, dstY);
     if (player_node)
         player_node->setRealPos(dstX, dstY);
+    BLOCK_END("PlayerHandler::processWalkResponse")
 }
 
 void PlayerHandler::processPlayerWarp(Net::MessageIn &msg) const
 {
+    BLOCK_START("PlayerHandler::processPlayerWarp")
     std::string mapPath = msg.readString(16);
     int x = msg.readInt16();
     int y = msg.readInt16();
@@ -280,14 +283,19 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg) const
             miniStatusWindow->updateStatus();
         viewport->scrollBy(scrollOffsetX, scrollOffsetY);
     }
+    BLOCK_END("PlayerHandler::processPlayerWarp")
 }
 
 void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
 {
+    BLOCK_START("PlayerHandler::processPlayerStatUpdate1")
     const int type = msg.readInt16();
     const int value = msg.readInt32();
     if (!player_node)
+    {
+        BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
         return;
+    }
 
     switch (type)
     {
@@ -464,10 +472,12 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
             player_node->recalcSpritesOrder();
         }
     }
+    BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
 }
 
 void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg) const
 {
+    BLOCK_START("PlayerHandler::processPlayerStatUpdate2")
     const int type = msg.readInt16();
     switch (type)
     {
@@ -507,10 +517,12 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg) const
             logger->log("QQQQ PLAYER_STAT_UPDATE_2 " + toString(type));
             break;
     }
+    BLOCK_END("PlayerHandler::processPlayerStatUpdate2")
 }
 
 void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg) const
 {
+    BLOCK_START("PlayerHandler::processPlayerStatUpdate3")
     const int type = msg.readInt32();
     const int base = msg.readInt32();
     const int bonus = msg.readInt32();
@@ -519,10 +531,12 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg) const
     PlayerInfo::setStatMod(type, bonus);
     if (type == EA_ATK || type == PlayerInfo::ATTACK_DELAY)
         PlayerInfo::updateAttrs();
+    BLOCK_END("PlayerHandler::processPlayerStatUpdate3")
 }
 
 void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg) const
 {
+    BLOCK_START("PlayerHandler::processPlayerStatUpdate4")
     const int type = msg.readInt16();
     const int ok = msg.readInt8();
     const int value = msg.readInt8();
@@ -537,10 +551,12 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg) const
     }
 
     PlayerInfo::setStatBase(type, value);
+    BLOCK_END("PlayerHandler::processPlayerStatUpdate4")
 }
 
 void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg) const
 {
+    BLOCK_START("PlayerHandler::processPlayerStatUpdate5")
     PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, msg.readInt16());
 
     int val = msg.readInt8();
@@ -609,10 +625,12 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg) const
     PlayerInfo::setStatBase(EA_CRIT, msg.readInt16());
 
     msg.readInt16();  // manner
+    BLOCK_END("PlayerHandler::processPlayerStatUpdate5")
 }
 
 void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg) const
 {
+    BLOCK_START("PlayerHandler::processPlayerStatUpdate6")
     const int type = msg.readInt16();
     if (statusWindow)
     {
@@ -642,10 +660,12 @@ void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg) const
                 break;
         }
     }
+    BLOCK_END("PlayerHandler::processPlayerStatUpdate6")
 }
 
 void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg) const
 {
+    BLOCK_START("PlayerHandler::processPlayerArrowMessage")
     const int type = msg.readInt16();
     switch (type)
     {
@@ -659,6 +679,7 @@ void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg) const
             logger->log("QQQQ 0x013b: Unhandled message %i", type);
             break;
     }
+    BLOCK_END("PlayerHandler::processPlayerArrowMessage")
 }
 
 bool PlayerHandler::canUseMagic() const

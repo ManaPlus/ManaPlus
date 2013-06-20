@@ -68,6 +68,10 @@ class ShortcutWindow final : public Window
 
         void mouseDragged(gcn::MouseEvent &event) override;
 
+#ifdef USE_PROFILER
+        void logicChildren();
+#endif
+
     private:
         ShortcutWindow();
         ShortcutContainer *mItems;

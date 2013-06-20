@@ -1704,3 +1704,12 @@ void ChatWindow::unHideWindow()
 {
     mHaveMouse = true;
 }
+
+#ifdef USE_PROFILER
+void ChatWindow::logicChildren()
+{
+    BLOCK_START("ChatWindow::logicChildren")
+    BasicContainer::logicChildren();
+    BLOCK_END("ChatWindow::logicChildren")
+}
+#endif

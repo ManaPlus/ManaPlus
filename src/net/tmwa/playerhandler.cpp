@@ -222,6 +222,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg) const
     if (!whoIsOnline)
         return;
 
+    BLOCK_START("PlayerHandler::processOnlineList")
     const int size = msg.readInt16() - 4;
     std::vector<OnlinePlayer*> arr;
 
@@ -229,12 +230,16 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg) const
     {
         if (whoIsOnline)
             whoIsOnline->loadList(arr);
+        BLOCK_END("PlayerHandler::processOnlineList")
         return;
     }
 
     char *const start = reinterpret_cast<char*>(msg.readBytes(size));
     if (!start)
+    {
+        BLOCK_END("PlayerHandler::processOnlineList")
         return;
+    }
 
     const char *buf = start;
 
@@ -278,6 +283,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg) const
     if (whoIsOnline)
         whoIsOnline->loadList(arr);
     delete [] start;
+    BLOCK_END("PlayerHandler::processOnlineList")
 }
 
 void PlayerHandler::updateStatus(const uint8_t status) const

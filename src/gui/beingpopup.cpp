@@ -202,3 +202,10 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     position(x, y);
     return;
 }
+
+#ifdef USE_PROFILER
+void BeingPopup::logic()
+{
+    logicChildren();
+}
+#endif

@@ -50,6 +50,10 @@ class BeingPopup final : public Popup
          */
         void show(const int x, const int y, Being *const b);
 
+#ifdef USE_PROFILER
+        void logic();
+#endif
+
     private:
         Label *mBeingName;
         Label *mBeingParty;

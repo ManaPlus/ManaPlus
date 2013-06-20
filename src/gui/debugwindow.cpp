@@ -148,6 +148,15 @@ void DebugWindow::widgetResized(const gcn::Event &event)
         mDimension.width, mDimension.height));
 }
 
+#ifdef USE_PROFILER
+void DebugWindow::logicChildren()
+{
+    BLOCK_START("DebugWindow::logicChildren")
+    BasicContainer::logicChildren();
+    BLOCK_END("DebugWindow::logicChildren")
+}
+#endif
+
 MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     DebugTab(widget),
     // TRANSLATORS: debug window label

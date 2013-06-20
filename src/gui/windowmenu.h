@@ -113,6 +113,10 @@ class WindowMenu final : public Container,
 
         void optionChanged(const std::string &name) override;
 
+#ifdef USE_PROFILER
+        void logicChildren();
+#endif
+
     protected:
         void drawChildren(gcn::Graphics* graphics) override;
 

@@ -416,3 +416,12 @@ void BotCheckerWindow::optionChanged(const std::string &name)
     if (name == "enableBotCheker")
         mEnabled = config.getBoolValue("enableBotCheker");
 }
+
+#ifdef USE_PROFILER
+void BotCheckerWindow::logicChildren()
+{
+    BLOCK_START("BotCheckerWindow::logicChildren")
+    BasicContainer::logicChildren();
+    BLOCK_END("BotCheckerWindow::logicChildren")
+}
+#endif

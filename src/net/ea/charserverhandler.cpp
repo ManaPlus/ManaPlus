@@ -118,6 +118,7 @@ unsigned int CharServerHandler::maxSprite() const
 
 void CharServerHandler::processCharLoginError(Net::MessageIn &msg) const
 {
+    BLOCK_START("CharServerHandler::processCharLoginError")
     switch (msg.readInt8())
     {
         case 0:
@@ -135,11 +136,13 @@ void CharServerHandler::processCharLoginError(Net::MessageIn &msg) const
             break;
     }
     Client::setState(STATE_ERROR);
+    BLOCK_END("CharServerHandler::processCharLoginError")
 }
 
 void CharServerHandler::processCharCreate(Net::MessageIn &msg,
                                           const bool withColors)
 {
+    BLOCK_START("CharServerHandler::processCharCreate")
     Net::Character *const character = new Net::Character;
     readPlayerData(msg, character, withColors);
     mCharacters.push_back(character);
@@ -152,10 +155,12 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg,
         mCharCreateDialog->scheduleDelete();
         mCharCreateDialog = nullptr;
     }
+    BLOCK_END("CharServerHandler::processCharCreate")
 }
 
 void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
 {
+    BLOCK_START("CharServerHandler::processCharCreateFailed")
     switch (msg.readInt8())
     {
         case 1:
@@ -194,10 +199,12 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
     new OkDialog(_("Error"), errorMessage, DIALOG_ERROR);
     if (mCharCreateDialog)
         mCharCreateDialog->unlock();
+    BLOCK_END("CharServerHandler::processCharCreateFailed")
 }
 
 void CharServerHandler::processCharDelete(Net::MessageIn &msg A_UNUSED)
 {
+    BLOCK_START("CharServerHandler::processCharDelete")
     delete mSelectedCharacter;
     mCharacters.remove(mSelectedCharacter);
     mSelectedCharacter = nullptr;
@@ -205,13 +212,16 @@ void CharServerHandler::processCharDelete(Net::MessageIn &msg A_UNUSED)
     unlockCharSelectDialog();
     // TRANSLATORS: info message
     new OkDialog(_("Info"), _("Character deleted."));
+    BLOCK_END("CharServerHandler::processCharDelete")
 }
 
 void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
 {
+    BLOCK_START("CharServerHandler::processCharDeleteFailed")
     unlockCharSelectDialog();
     // TRANSLATORS: error message
     new OkDialog(_("Error"), _("Failed to delete character."), DIALOG_ERROR);
+    BLOCK_END("CharServerHandler::processCharDeleteFailed")
 }
 
 void CharServerHandler::clear()
@@ -224,6 +234,7 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &msg,
                                            Network *const network,
                                            ServerInfo &server)
 {
+    BLOCK_START("CharServerHandler::processCharMapInfo")
 //    msg.skip(4); // CharID, must be the same as player_node->charID
     PlayerInfo::setCharId(msg.readInt32());
     GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
@@ -251,15 +262,20 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &msg,
     if (network)
         network->disconnect();
     Client::setState(STATE_CONNECT_GAME);
+    BLOCK_END("CharServerHandler::processCharMapInfo")
 }
 
 void CharServerHandler::processChangeMapServer(Net::MessageIn &msg,
                                                Network *const network,
                                                ServerInfo &server) const
 {
+    BLOCK_START("CharServerHandler::processChangeMapServer")
     GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
     if (!gh || !network)
+    {
+        BLOCK_END("CharServerHandler::processChangeMapServer")
         return;
+    }
     gh->setMap(msg.readString(16));
     const int x = msg.readInt16();
     const int y = msg.readInt16();
@@ -273,6 +289,7 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg,
         player_node->setTileCoords(x, y);
         player_node->setMap(nullptr);
     }
+    BLOCK_END("CharServerHandler::processChangeMapServer")
 }
 
 }  // namespace Ea
