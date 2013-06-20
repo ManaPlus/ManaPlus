@@ -99,13 +99,13 @@ void Palette::advanceGradients()
 
 void Palette::advanceGradient()
 {
-    if (get_elapsed_time(mRainbowTime) > 5)
+    const int time = get_elapsed_time(mRainbowTime);
+    if (time > 5)
     {
         // For slower systems, advance can be greater than one (advance > 1
         // skips advance-1 steps). Should make gradient look the same
         // independent of the framerate.
-        const int advance = get_elapsed_time(mRainbowTime) / 5;
-        double startColVal, destColVal;
+        const int advance = time / 5;
 
         for (size_t i = 0, sz = mGradVector.size(); i < sz; i++)
         {
@@ -114,12 +114,13 @@ void Palette::advanceGradient()
                 continue;
 
             int delay = elem->delay;
+            const GradientType &grad = elem->grad;
 
-            if (elem->grad == PULSE)
+            if (grad == PULSE)
                 delay = delay / 20;
 
             const int numOfColors = (elem->grad == SPECTRUM ? 6 :
-                elem->grad == PULSE ? 127 :
+                grad == PULSE ? 127 :
                 RAINBOW_COLOR_COUNT);
 
             elem->gradientIndex = (elem->gradientIndex + advance)
@@ -136,7 +137,7 @@ void Palette::advanceGradient()
             gcn::Color &color = elem->color;
             int colVal;
 
-            if (elem->grad == PULSE)
+            if (grad == PULSE)
             {
                 colVal = static_cast<int>(255.0 *
                         sin(M_PI * colIndex / numOfColors));
@@ -147,7 +148,7 @@ void Palette::advanceGradient()
                 color.g = ((colVal * col.g) / 255) % (col.g + 1);
                 color.b = ((colVal * col.b) / 255) % (col.b + 1);
             }
-            if (elem->grad == SPECTRUM)
+            else if (grad == SPECTRUM)
             {
                 if (colIndex % 2)
                 { // falling curve
@@ -188,6 +189,8 @@ void Palette::advanceGradient()
                 const gcn::Color &startCol = RAINBOW_COLORS[colIndex];
                 const gcn::Color &destCol =
                         RAINBOW_COLORS[(colIndex + 1) % numOfColors];
+                double startColVal;
+                double destColVal;
 
                 if (delay)
                     startColVal = (cos(M_PI * pos / delay) + 1) / 2;
