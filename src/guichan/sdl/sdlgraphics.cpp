@@ -232,26 +232,23 @@ namespace gcn
             }
 
             case 3:
-                if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+                for (; x1 <= x2; ++x1)
                 {
-                    for (; x1 <= x2; ++x1)
-                    {
-                        p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
-                        p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-                        p[2] = static_cast<uint8_t>(pixel & 0xff);
-                        p += 3;
-                    }
+                    p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                    p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                    p[2] = static_cast<uint8_t>(pixel & 0xff);
+                    p += 3;
                 }
-                else
+#else
+                for (; x1 <= x2; ++x1)
                 {
-                    for (; x1 <= x2; ++x1)
-                    {
-                        p[0] = static_cast<uint8_t>(pixel & 0xff);
-                        p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-                        p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
-                        p += 3;
-                    }
+                    p[0] = static_cast<uint8_t>(pixel & 0xff);
+                    p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                    p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                    p += 3;
                 }
+#endif
                 break;
 
             case 4:
@@ -351,26 +348,23 @@ namespace gcn
                 break;
 
             case 3:
-                if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+                for (; y1 <= y2; ++y1)
                 {
-                    for (; y1 <= y2; ++y1)
-                    {
-                        p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
-                        p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-                        p[2] = static_cast<uint8_t>(pixel & 0xff);
-                        p += mTarget->pitch;
-                    }
+                    p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                    p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                    p[2] = static_cast<uint8_t>(pixel & 0xff);
+                    p += mTarget->pitch;
                 }
-                else
+#else
+                for (; y1 <= y2; ++y1)
                 {
-                    for (; y1 <= y2; ++y1)
-                    {
-                        p[0] = static_cast<uint8_t>(pixel & 0xff);
-                        p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-                        p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
-                        p += mTarget->pitch;
-                    }
+                    p[0] = static_cast<uint8_t>(pixel & 0xff);
+                    p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                    p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                    p += mTarget->pitch;
                 }
+#endif
                 break;
 
             case 4:

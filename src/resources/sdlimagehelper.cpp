@@ -137,10 +137,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
         return nullptr;
 
     Image *img;
-
     bool hasAlpha = false;
-    const bool converted = false;
-
     const int sz = tmpImage->w * tmpImage->h;
 
     // The alpha channel to be filled with alpha values
@@ -194,9 +191,6 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
         delete [] alphaChannel;
         return nullptr;
     }
-
-    if (converted)
-        SDL_FreeSurface(tmpImage);
 
     img = new Image(image, hasAlpha, alphaChannel);
     img->mAlpha = alpha;

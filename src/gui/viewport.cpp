@@ -824,7 +824,7 @@ void Viewport::closePopupMenu()
         mPopupMenu->handleLink("cancel", nullptr);
 }
 
-void Viewport::optionChanged(const std::string &name A_UNUSED)
+void Viewport::optionChanged(const std::string &name)
 {
     if (name == "ScrollLaziness")
         mScrollLaziness = config.getIntValue("ScrollLaziness");

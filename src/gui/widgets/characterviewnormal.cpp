@@ -32,7 +32,6 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
                                          *const entries,
                                          const int padding) :
     CharacterViewBase(widget, padding),
-    mSelectedEntry(nullptr),
     mCharacterEntries(entries)
 {
     addKeyListener(widget);

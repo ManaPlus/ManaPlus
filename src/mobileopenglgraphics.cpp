@@ -528,8 +528,7 @@ inline void MobileOpenGLGraphics::drawVertexes(const
 
         for (iv = shortVertPool.begin(), ft = floatTexPool.begin(),
              ivp = vp.begin();
-             iv != iv_end, ft != ft_end,
-             ivp != ivp_end;
+             iv != iv_end && ft != ft_end && ivp != ivp_end;
              ++ iv, ++ ft, ++ ivp)
         {
             drawTriangleArrayfs(*iv, *ft, *ivp);

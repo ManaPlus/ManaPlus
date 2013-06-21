@@ -97,7 +97,6 @@ KillStats::KillStats() :
     m15minExpNum(0),
     m15minSpeed(0),
     mJackoSpawnTime(0),
-    mValidateJackoTime(0),
     mJackoId(0),
     mIsJackoAlive(false),
     mIsJackoMustSpawn(true),

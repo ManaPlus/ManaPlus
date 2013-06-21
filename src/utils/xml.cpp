@@ -44,7 +44,7 @@ namespace XML
     Document::Document(const std::string &filename, const bool useResman) :
         mDoc(nullptr)
     {
-        int size;
+        int size = 0;
         char *data = nullptr;
         if (useResman)
         {

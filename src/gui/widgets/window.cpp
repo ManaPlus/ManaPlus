@@ -1019,7 +1019,10 @@ void Window::adjustPositionAfterResize(const int oldScreenWidth,
     if (mDimension.x > 0 && mDimension.x > rightMargin)
         mDimension.x = mainGraphics->mWidth - rightMargin - mDimension.width;
     if (mDimension.y > 0 && mDimension.y > bottomMargin)
-        mDimension.y = mainGraphics->mHeight - bottomMargin - mDimension.height;
+    {
+        mDimension.y = mainGraphics->mHeight
+            - bottomMargin - mDimension.height;
+    }
 
     ensureOnScreen();
 }

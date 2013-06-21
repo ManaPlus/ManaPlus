@@ -193,7 +193,6 @@ void ChatTab::chatLog(std::string line, Own own,
             lineColor = "##L";
             break;
         default:
-            logger->log1("ChatTab::chatLog incorrect value in switch");
             break;
     }
 

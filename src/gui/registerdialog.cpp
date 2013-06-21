@@ -279,7 +279,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
     }
 }
 
-void RegisterDialog::keyPressed(gcn::KeyEvent &keyEvent A_UNUSED)
+void RegisterDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
     if (keyEvent.isConsumed())
     {

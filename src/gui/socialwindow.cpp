@@ -250,11 +250,10 @@ private:
 class SocialGuildTab2 final : public SocialTab, public gcn::ActionListener
 {
 public:
-    SocialGuildTab2(const Widget2 *const widget,
-                    Guild *const guild, const bool showBackground) :
+    SocialGuildTab2(const Widget2 *const widget, Guild *const guild,
+                    const bool showBackground) :
         SocialTab(widget),
-        gcn::ActionListener(),
-        mGuild(guild)
+        gcn::ActionListener()
     {
         // TRANSLATORS: tab in social window
         setCaption(_("Guild"));
@@ -288,9 +287,6 @@ public:
     void action(const gcn::ActionEvent &event A_UNUSED) override
     {
     }
-
-private:
-    Guild *mGuild;
 };
 
 class SocialPartyTab final : public SocialTab, public gcn::ActionListener

@@ -135,7 +135,7 @@ void PopupList::mousePressed(gcn::MouseEvent& mouseEvent)
         releaseModalFocus();
 }
 
-void PopupList::focusGained(const gcn::Event& event A_UNUSED)
+void PopupList::focusGained(const gcn::Event& event)
 {
     const gcn::Widget *const source = event.getSource();
     if (!mVisible || source == this || source == mListBox

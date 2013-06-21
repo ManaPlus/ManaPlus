@@ -77,10 +77,9 @@
 class ChatInput final : public TextField
 {
     public:
-        ChatInput(ChatWindow *const window, TabbedArea *const tabs):
+        explicit ChatInput(ChatWindow *const window):
             TextField(window, "", false),
             mWindow(window),
-            mChatTabs(tabs),
             mFocusGaining(false)
         {
             setVisible(false);
@@ -131,7 +130,6 @@ class ChatInput final : public TextField
 
     private:
         ChatWindow *mWindow;
-        TabbedArea *mChatTabs;
         bool mFocusGaining;
 };
 
@@ -196,7 +194,7 @@ ChatWindow::ChatWindow():
     gcn::KeyListener(),
     mItemLinkHandler(new ItemLinkHandler),
     mChatTabs(new TabbedArea(this)),
-    mChatInput(new ChatInput(this, mChatTabs)),
+    mChatInput(new ChatInput(this)),
     mRainbowColor(0),
     mWhispers(),
     mHistory(),

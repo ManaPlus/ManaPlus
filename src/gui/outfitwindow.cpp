@@ -86,7 +86,6 @@ OutfitWindow::OutfitWindow():
     mBorderColor(getThemeColor(Theme::BORDER, 64)),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND, 32)),
     mItemColors(),
-    mItemColorSelected(1),
     mItemClicked(false),
     mItemsUnequip()
 {

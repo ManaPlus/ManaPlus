@@ -44,7 +44,6 @@ class BeingEquipBackend final : public Equipment::Backend
 
     private:
         Item *mEquipment[EQUIPMENT_SIZE];
-        Being *mBeing;
 };
 
 #endif  // BEINGEQUIPBACKEND_H

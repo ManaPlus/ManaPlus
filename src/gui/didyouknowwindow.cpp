@@ -122,7 +122,7 @@ void DidYouKnowWindow::action(const gcn::ActionEvent &event)
     }
 }
 
-void DidYouKnowWindow::handleLink(const std::string &link A_UNUSED,
+void DidYouKnowWindow::handleLink(const std::string &link,
                                   gcn::MouseEvent *event A_UNUSED)
 {
     if (strStartWith(link, "http://") || strStartWith(link, "https://"))

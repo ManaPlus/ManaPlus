@@ -43,7 +43,6 @@ class CharacterViewNormal final : public CharacterViewBase
         void action(const gcn::ActionEvent &event A_UNUSED) override;
 
     private:
-        CharacterDisplay *mSelectedEntry;
         std::vector<CharacterDisplay*> *mCharacterEntries;
 };
 

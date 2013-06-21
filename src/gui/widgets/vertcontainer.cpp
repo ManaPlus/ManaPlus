@@ -54,7 +54,8 @@ void VertContainer::add2(gcn::Widget *const widget, const bool resizable,
     widget->setPosition(mLeftSpacing, mNextY);
     if (resizable)
     {
-        widget->setSize(mDimension.width - mLeftSpacing, mVerticalItemSize * 5);
+        widget->setSize(mDimension.width - mLeftSpacing,
+            mVerticalItemSize * 5);
         mResizableWidgets.push_back(widget);
     }
     else if (widget->getHeight() > mVerticalItemSize)

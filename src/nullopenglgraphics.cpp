@@ -553,8 +553,7 @@ inline void NullOpenGLGraphics::drawVertexes(const
 
         for (iv = intVertPool.begin(), ft = floatTexPool.begin(),
              ivp = vp.begin();
-             iv != iv_end, ft != ft_end,
-             ivp != ivp_end;
+             iv != iv_end && ft != ft_end && ivp != ivp_end;
              ++ iv, ++ ft, ++ ivp)
         {
             drawQuadArrayfi(*iv, *ft, *ivp);
@@ -568,8 +567,7 @@ inline void NullOpenGLGraphics::drawVertexes(const
 
         for (iv = intVertPool.begin(), it = intTexPool.begin(),
              ivp = vp.begin();
-             iv != iv_end, it != it_end,
-             ivp != ivp_end;
+             iv != iv_end && it != it_end && ivp != ivp_end;
              ++ iv, ++ it, ++ ivp)
         {
             drawQuadArrayii(*iv, *it, *ivp);
@@ -989,8 +987,8 @@ void NullOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED)
     restoreColor();
 }
 
-void NullOpenGLGraphics::drawLine(int x1 A_UNUSED, int y1 A_UNUSED,
-                                  int x2 A_UNUSED, int y2 A_UNUSED)
+void NullOpenGLGraphics::drawLine(int x1, int y1,
+                                  int x2, int y2)
 {
     setTexturingAndBlending(false);
     restoreColor();

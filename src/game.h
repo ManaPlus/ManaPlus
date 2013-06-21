@@ -126,12 +126,9 @@ class Game final
 
         void clearKeysArray();
 
-        int mLastTarget;
-
         Map *mCurrentMap;
         std::string mMapName;
         bool mValidSpeed;
-        int mLastAction;
         LastKey mLastKeys[MAX_LASTKEYS];
         unsigned mNextAdjustTime;
         int mAdjustLevel;

@@ -695,8 +695,6 @@ void ItemContainer::moveHighlight(const Direction direction)
             mHighlightedIndex += mGridColumns;
             break;
         default:
-            logger->log("warning moveHighlight unknown direction:"
-                        + toString(static_cast<unsigned>(direction)));
             break;
     }
 }

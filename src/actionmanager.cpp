@@ -80,7 +80,7 @@ extern QuitDialog *quitDialog;
 namespace ActionManager
 {
 
-impHandler0(moveUp)
+impHandler(moveUp)
 {
     if (NpcDialog *const dialog = NpcDialog::getActive())
     {
@@ -92,7 +92,7 @@ impHandler0(moveUp)
     return false;
 }
 
-impHandler0(moveDown)
+impHandler(moveDown)
 {
     if (NpcDialog *const dialog = NpcDialog::getActive())
     {
@@ -104,7 +104,7 @@ impHandler0(moveDown)
     return false;
 }
 
-impHandler0(moveLeft)
+impHandler(moveLeft)
 {
     if (outfitWindow && inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
     {
@@ -118,7 +118,7 @@ impHandler0(moveLeft)
     return false;
 }
 
-impHandler0(moveRight)
+impHandler(moveRight)
 {
     if (outfitWindow && inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
     {

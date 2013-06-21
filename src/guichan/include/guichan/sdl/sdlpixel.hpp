@@ -84,10 +84,11 @@ namespace gcn
                 break;
 
             case 3:
-                if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
                     color = p[0] << 16 | p[1] << 8 | p[2];
-                else
+#else
                     color = p[0] | p[1] << 8 | p[2] << 16;
+#endif
                 break;
 
           case 4:
@@ -142,18 +143,15 @@ namespace gcn
                 break;
 
             case 3:
-                if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
-                {
-                    p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
-                    p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-                    p[2] = static_cast<uint8_t>((pixel) & 0xff);
-                }
-                else
-                {
-                    p[0] = static_cast<uint8_t>((pixel) & 0xff);
-                    p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-                    p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
-                }
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+                p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                p[2] = static_cast<uint8_t>((pixel) & 0xff);
+#else
+                p[0] = static_cast<uint8_t>((pixel) & 0xff);
+                p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+#endif
                 break;
 
             case 4:
@@ -256,24 +254,21 @@ namespace gcn
                 break;
 
             case 3:
-                if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
-                {
-                    p[2] = static_cast<uint8_t>((p[2] * (255 - color.a)
-                        + color.b * color.a) >> 8);
-                    p[1] = static_cast<uint8_t>((p[1] * (255 - color.a)
-                        + color.g * color.a) >> 8);
-                    p[0] = static_cast<uint8_t>((p[0] * (255 - color.a)
-                        + color.r * color.a) >> 8);
-                }
-                else
-                {
-                    p[0] = static_cast<uint8_t>((p[0] * (255 - color.a)
-                        + color.b * color.a) >> 8);
-                    p[1] = static_cast<uint8_t>((p[1] * (255 - color.a)
-                        + color.g * color.a) >> 8);
-                    p[2] = static_cast<uint8_t>((p[2] * (255 - color.a)
-                        + color.r * color.a) >> 8);
-                }
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+                p[2] = static_cast<uint8_t>((p[2] * (255 - color.a)
+                    + color.b * color.a) >> 8);
+                p[1] = static_cast<uint8_t>((p[1] * (255 - color.a)
+                    + color.g * color.a) >> 8);
+                p[0] = static_cast<uint8_t>((p[0] * (255 - color.a)
+                    + color.r * color.a) >> 8);
+#else
+                p[0] = static_cast<uint8_t>((p[0] * (255 - color.a)
+                    + color.b * color.a) >> 8);
+                p[1] = static_cast<uint8_t>((p[1] * (255 - color.a)
+                    + color.g * color.a) >> 8);
+                p[2] = static_cast<uint8_t>((p[2] * (255 - color.a)
+                    + color.r * color.a) >> 8);
+#endif
                 break;
 
             case 4:

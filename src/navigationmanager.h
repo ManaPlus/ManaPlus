@@ -23,9 +23,10 @@
 
 #include "localconsts.h"
 
-class MetaTile;
 class Map;
 class Resource;
+
+struct MetaTile;
 
 class NavigationManager final
 {

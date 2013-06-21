@@ -173,7 +173,6 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     gcn::ActionListener(),
     mIsMagicCommand(command->getCommandType() == TEXT_COMMAND_MAGIC),
     mCommand(command),
-    mAdvanced(false),
     // TRANSLATORS: command editor button
     mIsMagic(new RadioButton(this, _("magic"), "magic", mIsMagicCommand)),
     // TRANSLATORS: command editor button

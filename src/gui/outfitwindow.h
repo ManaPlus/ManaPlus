@@ -120,7 +120,6 @@ class OutfitWindow final : public Window,
         gcn::Color mBorderColor;
         gcn::Color mBackgroundColor;
         unsigned char mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
-        unsigned char mItemColorSelected;
         bool mItemClicked;
         bool mItemsUnequip[OUTFITS_COUNT];
 

@@ -377,11 +377,9 @@ static void destroyGuiWindows()
 Game *Game::mInstance = nullptr;
 
 Game::Game():
-    mLastTarget(ActorSprite::UNKNOWN),
     mCurrentMap(nullptr),
     mMapName(""),
     mValidSpeed(true),
-    mLastAction(0),
     mNextAdjustTime(cur_time + adjustDelay),
     mAdjustLevel(0),
     mAdjustPerfomance(config.getBoolValue("adjustPerfomance")),

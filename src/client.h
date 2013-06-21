@@ -405,7 +405,9 @@ private:
     Button *mVideoButton;
     Button *mThemesButton;
     Button *mPerfomanceButton;
+#ifdef ANDROID
     Button *mCloseButton;
+#endif
 
     State mState;
     State mOldState;

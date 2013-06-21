@@ -75,17 +75,14 @@ class Setup_Colors final : public SetupTab,
         Label *mRedLabel;
         Slider *mRedSlider;
         TextField *mRedText;
-        int mRedValue;
 
         Label *mGreenLabel;
         Slider *mGreenSlider;
         TextField *mGreenText;
-        int mGreenValue;
 
         Label *mBlueLabel;
         Slider *mBlueSlider;
         TextField *mBlueText;
-        int mBlueValue;
 
         static void setEntry(Slider *const s, TextField *const t,
                              const int value);

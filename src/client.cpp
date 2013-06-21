@@ -283,7 +283,9 @@ Client::Client(const Options &options) :
     mVideoButton(nullptr),
     mThemesButton(nullptr),
     mPerfomanceButton(nullptr),
+#ifdef ANDROID
     mCloseButton(nullptr),
+#endif
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
     mIcon(nullptr),
@@ -2978,7 +2980,7 @@ void Client::windowRemoved(const Window *const window)
         inst->mCurrentDialog = nullptr;
 }
 
-void Client::updateScreenKeyboard(int height A_UNUSED)
+void Client::updateScreenKeyboard(int height)
 {
     instance()->mKeyboardHeight = height;
 }

@@ -70,7 +70,6 @@ class TextCommandEditor final : public Window, public gcn::ActionListener
 
         bool mIsMagicCommand;
         TextCommand *mCommand;
-        bool mAdvanced;
 
         RadioButton *mIsMagic;
         RadioButton *mIsOther;

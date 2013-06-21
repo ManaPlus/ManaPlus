@@ -27,8 +27,7 @@
 
 #include "debug.h"
 
-BeingEquipBackend::BeingEquipBackend(Being *const being):
-    mBeing(being)
+BeingEquipBackend::BeingEquipBackend(Being *const being)
 {
     memset(mEquipment, 0, sizeof(mEquipment));
     if (being)

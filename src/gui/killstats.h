@@ -121,7 +121,6 @@ class KillStats final : public Window,
         int m15minSpeed;
 
         int mJackoSpawnTime;
-        int mValidateJackoTime;
         int mJackoId;
         bool mIsJackoAlive;
         bool mIsJackoMustSpawn;

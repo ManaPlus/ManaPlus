@@ -156,7 +156,7 @@ class Graphics : public gcn::SDLGraphics
                                      width, height,
                                      desiredWidth, desiredHeight,
                                      false);
-        };
+        }
 
         /**
          * Draws a resclaled version of the image

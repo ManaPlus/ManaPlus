@@ -39,9 +39,9 @@ class ExtendedListBox;
 class ItemLinkHandler;
 class Map;
 class ScrollArea;
-class QuestEffect;
 class QuestsModel;
 
+struct QuestEffect;
 struct QuestItem;
 
 typedef std::map<int, const QuestEffect*> NpcQuestEffectMap;

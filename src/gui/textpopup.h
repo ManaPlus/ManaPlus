@@ -58,7 +58,7 @@ class TextPopup final : public Popup
         {
             show(x, y, str1, static_cast<const char*>(""),
                 static_cast<const char*>(""));
-        };
+        }
 
         /**
          * Sets the text to be displayed.

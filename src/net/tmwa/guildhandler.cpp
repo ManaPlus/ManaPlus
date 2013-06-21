@@ -201,7 +201,7 @@ void GuildHandler::create(const std::string &name) const
 }
 
 void GuildHandler::invite(const int guildId A_UNUSED,
-                          const std::string &name A_UNUSED) const
+                          const std::string &name) const
 {
     if (!actorSpriteManager)
         return;

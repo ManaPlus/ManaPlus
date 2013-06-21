@@ -651,8 +651,7 @@ inline void NormalOpenGLGraphics::drawVertexes(const
 
         for (iv = intVertPool.begin(), ft = floatTexPool.begin(),
              ivp = vp.begin();
-             iv != iv_end, ft != ft_end,
-             ivp != ivp_end;
+             iv != iv_end && ft != ft_end && ivp != ivp_end;
              ++ iv, ++ ft, ++ ivp)
         {
             drawQuadArrayfi(*iv, *ft, *ivp);
@@ -666,8 +665,7 @@ inline void NormalOpenGLGraphics::drawVertexes(const
 
         for (iv = intVertPool.begin(), it = intTexPool.begin(),
              ivp = vp.begin();
-             iv != iv_end, it != it_end,
-             ivp != ivp_end;
+             iv != iv_end && it != it_end && ivp != ivp_end;
              ++ iv, ++ it, ++ ivp)
         {
             drawQuadArrayii(*iv, *it, *ivp);

@@ -233,7 +233,7 @@ impHandler1(announce)
     Net::getAdminHandler()->announce(args);
 }
 
-impHandler0(help)
+impHandler2(help)
 {
     if (!helpWindow)
         return;
@@ -480,7 +480,7 @@ impHandler0(present)
         chatWindow->doPresent();
 }
 
-impHandler1(ignore)
+impHandler(ignore)
 {
     changeRelation(args, PlayerRelation::IGNORED, "ignored", tab);
 }

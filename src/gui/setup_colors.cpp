@@ -70,17 +70,14 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mRedLabel(new Label(this, _("Red:"))),
     mRedSlider(new Slider(0, 255)),
     mRedText(new TextField(this)),
-    mRedValue(0),
     // TRANSLATORS: colors tab. label.
     mGreenLabel(new Label(this, _("Green:"))),
     mGreenSlider(new Slider(0, 255)),
     mGreenText(new TextField(this)),
-    mGreenValue(0),
     // TRANSLATORS: colors tab. label.
     mBlueLabel(new Label(this, _("Blue:"))),
     mBlueSlider(new Slider(0, 255)),
-    mBlueText(new TextField(this)),
-    mBlueValue(0)
+    mBlueText(new TextField(this))
 {
     // TRANSLATORS: settings colors tab name
     setName(_("Colors"));
