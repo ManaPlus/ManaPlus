@@ -259,8 +259,8 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
         delete quest;
         return;
     }
-    quest->incomplete = splitToIntSet(incompleteStr, ',');
-    quest->complete = splitToIntSet(completeStr, ',');
+    splitToIntSet(quest->incomplete, incompleteStr, ',');
+    splitToIntSet(quest->complete, completeStr, ',');
     if (quest->incomplete.empty() && quest->complete.empty())
     {
         logger->log("complete flags incorrect");
@@ -297,7 +297,7 @@ void QuestsWindow::loadEffect(const int var, const XmlNodePtr node)
     effect->id = XML::getProperty(node, "npc", -1);
     effect->effectId = XML::getProperty(node, "effect", -1);
     const std::string values = XML::getProperty(node, "value", "");
-    effect->values = splitToIntSet(values, ',');
+    splitToIntSet(effect->values, values, ',');
 
     if (effect->map.empty() || effect->id == -1
         || effect->effectId == -1 || values.empty())

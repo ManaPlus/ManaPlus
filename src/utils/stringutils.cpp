@@ -396,16 +396,14 @@ std::string normalize(const std::string &name)
     return toLower(trim(normalized));
 }
 
-std::set<int> splitToIntSet(const std::string &text,
-                            const char separator)
+void splitToIntSet(std::set<int> &tokens,
+                   const std::string &text,
+                   const char separator)
 {
-    std::set<int> tokens;
     std::stringstream ss(text);
     std::string item;
     while (std::getline(ss, item, separator))
         tokens.insert(atoi(item.c_str()));
-
-    return tokens;
 }
 
 std::list<int> splitToIntList(const std::string &text,
