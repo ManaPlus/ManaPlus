@@ -1,3 +1,12 @@
+2013-06-23 New release 1.3.6.23
+fix: S and A dye channels order.
+fix: padding in listbox.
+add: support for player look (evol only).
+add: support for monster look (evol only).
+add: copy to clipboard in npc dialog.
+add: level attribute in items.xml.
+add: update mplus fonts.
+
 2013-06-09 New release 1.3.6.9
 fix: colors in jewelry theme.
 fix: player sprite in disguise mode.
