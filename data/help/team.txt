@@ -68,8 +68,8 @@
 
 ##3Italian
 ##9Alessandro Camplese (Alel) <ale camplese gmail com>
-##9Hal9000 <miglietta francesco gmail com>
-##9WildX <gwx480 gmail com>
+##9Francesco Miglietta (Hal9000) <miglietta francesco gmail com>
+##9Guglielmo Pini (WildX) <gwx480 gmail com>
 
 ##3Japanese
 ##9Candy
@@ -94,7 +94,7 @@
 ##9Alexandr Uspensky <AlexandrUSP yandex com>
 ##9Andrei Karas (4144) <akaras inbox ru>
 ##9Danil Sagunov (Vasily_Makarov) <danilka.pro gmail com>
-##9Kenny690 <bio_editor mail ru>
+##9Saidullin Il'shat (Kenny690) <bio_editor mail ru>
 ##9Mihail Barer (Necromonger)
 ##9Victor <ratrex mail ru>
 ##9Yummie <reslayer mail ru>
