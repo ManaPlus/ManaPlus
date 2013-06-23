@@ -235,6 +235,8 @@ namespace PlayerInfo
 
     void deinit();
 
+    void loadData();
+
     bool isTalking();
 
     void gameDestroyed();
@@ -251,6 +253,12 @@ namespace PlayerInfo
                      const int old1, const int old2 = 0);
 
     void setEquipmentBackend(Equipment::Backend *const backend);
+
+    void protectItem(const int id);
+
+    void unprotectItem(const int id);
+
+    bool isItemProtected(const int id);
 
 }  // namespace PlayerInfo
 

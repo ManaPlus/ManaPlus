@@ -458,8 +458,11 @@ void TradeWindow::initTrade(const std::string &nick)
 
 bool TradeWindow::checkItem(const Item *const item) const
 {
+    const int itemId = item->getId();
+    if (PlayerInfo::isItemProtected(itemId))
+        return false;
     const Item *const tItem = mMyInventory->findItem(
-        item->getId(), item->getColor());
+        itemId, item->getColor());
 
     if (tItem && (tItem->getQuantity() > 1
         || item->getQuantity() > 1))

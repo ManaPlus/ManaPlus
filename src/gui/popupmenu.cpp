@@ -448,6 +448,7 @@ void PopupMenu::showPopup(const int x, const int y,
         // TRANSLATORS: popup menu item
         mBrowserBox->addRow("pickup", _("Pick up"));
     }
+    addProtection();
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("chat", _("Add to chat"));
     mBrowserBox->addRow("##3---");
@@ -962,7 +963,8 @@ void PopupMenu::handleLink(const std::string &link,
                     }
                     else
                     {
-                        Net::getInventoryHandler()->useItem(item);
+                        if (!PlayerInfo::isItemProtected(item->getId()))
+                            Net::getInventoryHandler()->useItem(item);
                     }
                 }
             }
@@ -1066,12 +1068,16 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "drop" && mItem)
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
-                             inventoryWindow, mItem);
+        if (!PlayerInfo::isItemProtected(mItem->getId()))
+        {
+            ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
+                inventoryWindow, mItem);
+        }
     }
     else if (link == "drop all" && mItem)
     {
-        Net::getInventoryHandler()->dropItem(mItem, mItem->getQuantity());
+        if (!PlayerInfo::isItemProtected(mItem->getId()))
+            Net::getInventoryHandler()->dropItem(mItem, mItem->getQuantity());
     }
     else if (link == "store" && mItem)
     {
@@ -1107,12 +1113,15 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "addtrade" && mItem)
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
-            tradeWindow, mItem);
+        if (!PlayerInfo::isItemProtected(mItem->getId()))
+        {
+            ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
+                tradeWindow, mItem);
+        }
     }
     else if (link == "addtrade 10" && mItem)
     {
-        if (tradeWindow)
+        if (tradeWindow && !PlayerInfo::isItemProtected(mItem->getId()))
         {
             int cnt = 10;
             if (cnt > mItem->getQuantity())
@@ -1122,17 +1131,17 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "addtrade half" && mItem)
     {
-        if (tradeWindow)
+        if (tradeWindow && !PlayerInfo::isItemProtected(mItem->getId()))
             tradeWindow->tradeItem(mItem, mItem->getQuantity() / 2, true);
     }
     else if (link == "addtrade all-1" && mItem)
     {
-        if (tradeWindow)
+        if (tradeWindow && !PlayerInfo::isItemProtected(mItem->getId()))
             tradeWindow->tradeItem(mItem, mItem->getQuantity() - 1, true);
     }
     else if (link == "addtrade all" && mItem)
     {
-        if (tradeWindow)
+        if (tradeWindow && !PlayerInfo::isItemProtected(mItem->getId()))
             tradeWindow->tradeItem(mItem, mItem->getQuantity(), true);
     }
     else if (link == "retrieve" && mItem)
@@ -1166,6 +1175,14 @@ void PopupMenu::handleLink(const std::string &link,
         Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
             mItem->getInvIndex(), mItem->getQuantity(),
             Inventory::INVENTORY);
+    }
+    else if (link == "protect item" && mItemId)
+    {
+        PlayerInfo::protectItem(mItemId);
+    }
+    else if (link == "unprotect item" && mItemId)
+    {
+        PlayerInfo::unprotectItem(mItemId);
     }
     else if (link == "party" && being &&
              being->getType() == ActorSprite::PLAYER)
@@ -1769,10 +1786,11 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
     mBrowserBox->clearRows();
 
     const int cnt = item->getQuantity();
+    const bool isProtected = PlayerInfo::isItemProtected(mItemId);
 
     if (isInventory)
     {
-        if (tradeWindow && tradeWindow->isWindowVisible())
+        if (tradeWindow && tradeWindow->isWindowVisible() && !isProtected)
         {
             // TRANSLATORS: popup menu item
             mBrowserBox->addRow("addtrade", _("Add to trade"));
@@ -1828,21 +1846,27 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
         }
         else
         {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("use", _("Use"));
+            if (!isProtected)
+            {
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("use", _("Use"));
+            }
         }
 
-        if (cnt > 1)
+        if (!isProtected)
         {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("drop", _("Drop..."));
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("drop all", _("Drop all"));
-        }
-        else
-        {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("drop", _("Drop"));
+            if (cnt > 1)
+            {
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("drop", _("Drop..."));
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("drop all", _("Drop all"));
+            }
+            else
+            {
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("drop", _("Drop"));
+            }
         }
 
         if (Net::getInventoryHandler()->canSplit(item))
@@ -1871,6 +1895,7 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
             mBrowserBox->addRow("retrieve all", _("Retrieve all"));
         }
     }
+    addProtection();
     if (config.getBoolValue("enablePickupFilter"))
     {
         mNick = item->getName();
@@ -1907,8 +1932,12 @@ void PopupMenu::showItemPopup(const int x, const int y, const int itemId,
         mY = y;
         mBrowserBox->clearRows();
 
-        // TRANSLATORS: popup menu item
-        mBrowserBox->addRow("use", _("Use"));
+        if (!PlayerInfo::isItemProtected(mItemId))
+        {
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("use", _("Use"));
+        }
+        addProtection();
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
         mBrowserBox->addRow("cancel", _("Cancel"));
@@ -1937,6 +1966,7 @@ void PopupMenu::showItemPopup(const int x, const int y, Item *const item)
 
     if (item)
     {
+        const bool isProtected = PlayerInfo::isItemProtected(mItemId);
         if (item->isEquipment())
         {
             if (item->isEquipped())
@@ -1952,21 +1982,27 @@ void PopupMenu::showItemPopup(const int x, const int y, Item *const item)
         }
         else
         {
+            if (!isProtected)
+            {
                 // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("use", _("Use"));
+                mBrowserBox->addRow("use", _("Use"));
+            }
         }
 
-        if (item->getQuantity() > 1)
+        if (!isProtected)
         {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("drop", _("Drop..."));
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("drop all", _("Drop all"));
-        }
-        else
-        {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("drop", _("Drop"));
+            if (item->getQuantity() > 1)
+            {
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("drop", _("Drop..."));
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("drop all", _("Drop all"));
+            }
+            else
+            {
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("drop", _("Drop"));
+            }
         }
 
         if (Net::getInventoryHandler()->canSplit(item))
@@ -1991,6 +2027,7 @@ void PopupMenu::showItemPopup(const int x, const int y, Item *const item)
             addPickupFilter(mNick);
         }
     }
+    addProtection();
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2010,6 +2047,7 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
     {
         mItemId = item->getId();
         mItemColor = item->getColor();
+        const bool isProtected = PlayerInfo::isItemProtected(mItemId);
 
         if (item->isEquipment())
         {
@@ -2026,21 +2064,27 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
         }
         else
         {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("use", _("Use"));
+            if (!isProtected)
+            {
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("use", _("Use"));
+            }
         }
 
-        if (item->getQuantity() > 1)
+        if (!isProtected)
         {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("drop", _("Drop..."));
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("drop all", _("Drop all"));
-        }
-        else
-        {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("drop", _("Drop"));
+            if (item->getQuantity() > 1)
+            {
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("drop", _("Drop..."));
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("drop all", _("Drop all"));
+            }
+            else
+            {
+                // TRANSLATORS: popup menu item
+                mBrowserBox->addRow("drop", _("Drop"));
+            }
         }
 
         if (Net::getInventoryHandler()->canSplit(item))
@@ -2054,6 +2098,7 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
             // TRANSLATORS: popup menu item
             mBrowserBox->addRow("store", _("Store"));
         }
+        addProtection();
         // TRANSLATORS: popup menu item
         mBrowserBox->addRow("chat", _("Add to chat"));
         if (config.getBoolValue("enablePickupFilter"))
@@ -2633,6 +2678,20 @@ void PopupMenu::clear()
     mWindow = nullptr;
     mButton = nullptr;
     mTextField = nullptr;
+}
+
+void PopupMenu::addProtection()
+{
+    if (PlayerInfo::isItemProtected(mItemId))
+    {
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("unprotect item", _("Unprotect item"));
+    }
+    else
+    {
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("protect item", _("Protect item"));
+    }
 }
 
 RenameListener::RenameListener() :

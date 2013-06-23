@@ -360,6 +360,8 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
         }
         else
         {
+            if (PlayerInfo::isItemProtected(item->getId()))
+                return;
             Net::getInventoryHandler()->useItem(item);
         }
     }
@@ -374,11 +376,16 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
         }
         else
         {
+            if (PlayerInfo::isItemProtected(item->getId()))
+                return;
             Net::getInventoryHandler()->useItem(item);
         }
     }
     else if (eventId == "drop")
     {
+        if (PlayerInfo::isItemProtected(item->getId()))
+            return;
+
         if (isStorageActive())
         {
             Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
@@ -503,6 +510,8 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
         }
         else if (mod2 && mInventory->isMainInventory())
         {
+            if (PlayerInfo::isItemProtected(item->getId()))
+                return;
             if (event.getButton() == gcn::MouseEvent::RIGHT)
             {
                 ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
@@ -525,6 +534,8 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
                 }
                 else if (tradeWindow && tradeWindow->isWindowVisible())
                 {
+                    if (PlayerInfo::isItemProtected(item->getId()))
+                        return;
                     ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
                         tradeWindow, item);
                 }
@@ -539,6 +550,8 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
                     }
                     else
                     {
+                        if (PlayerInfo::isItemProtected(item->getId()))
+                            return;
                         Net::getInventoryHandler()->useItem(item);
                     }
                 }

@@ -1082,6 +1082,7 @@ int Client::gameExec()
             mServerName = mCurrentServer.hostname;
             initServerConfig(mCurrentServer.hostname);
             initFeatures();
+            PlayerInfo::loadData();
             loginData.registerUrl = mCurrentServer.registerUrl;
             if (!mCurrentServer.onlineListUrl.empty())
                 mOnlineListUrl = mCurrentServer.onlineListUrl;

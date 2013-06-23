@@ -22,6 +22,7 @@
 
 #include "gui/selldialog.h"
 
+#include "playerinfo.h"
 #include "shopitem.h"
 #include "units.h"
 
@@ -228,9 +229,11 @@ void SellDialog::action(const gcn::ActionEvent &event)
     {
         if (mNpcId != -1)
         {
+            ShopItem *const item = mShopItems->at(selectedItem);
+            if (PlayerInfo::isItemProtected(item->getId()))
+                return;
             if (eventId == "presell")
             {
-                const ShopItem *const item = mShopItems->at(selectedItem);
                 const ItemInfo &info = ItemDB::get(item->getId());
                 if (info.isProtected())
                 {
@@ -245,7 +248,6 @@ void SellDialog::action(const gcn::ActionEvent &event)
                 }
             }
             // Attempt sell
-            ShopItem *const item = mShopItems->at(selectedItem);
             mPlayerMoney +=
                 mAmountItems * mShopItems->at(selectedItem)->getPrice();
             mMaxItems -= mAmountItems;

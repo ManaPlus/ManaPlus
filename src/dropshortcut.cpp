@@ -103,6 +103,8 @@ void DropShortcut::dropFirst() const
 
     const int itemId = getItem(0);
     const unsigned char itemColor = getItemColor(0);
+    if (PlayerInfo::isItemProtected(itemId))
+        return;
 
     if (itemId > 0)
     {
@@ -161,10 +163,14 @@ bool DropShortcut::dropItem(const int cnt)
     unsigned char itemColor = 1;
     while (mLastDropIndex < DROP_SHORTCUT_ITEMS && itemId < 1)
     {
-        itemId = getItem(mLastDropIndex);
-        itemColor = getItemColor(mLastDropIndex);
+        if (!PlayerInfo::isItemProtected(itemId))
+        {
+            itemId = getItem(mLastDropIndex);
+            itemColor = getItemColor(mLastDropIndex);
+        }
         mLastDropIndex ++;
     }
+
     if (itemId > 0)
     {
         const Item *const item = inv->findItem(itemId, itemColor);
@@ -181,8 +187,11 @@ bool DropShortcut::dropItem(const int cnt)
     {
         while (mLastDropIndex < DROP_SHORTCUT_ITEMS && itemId < 1)
         {
-            itemId = getItem(mLastDropIndex);
-            itemColor = getItemColor(mLastDropIndex);
+            if (!PlayerInfo::isItemProtected(itemId))
+            {
+                itemId = getItem(mLastDropIndex);
+                itemColor = getItemColor(mLastDropIndex);
+            }
             mLastDropIndex++;
         }
         if (itemId > 0)

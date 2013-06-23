@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "playerinfo.h"
 #include "shopitem.h"
 
 #include "gui/itempopup.h"
@@ -107,8 +108,8 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         gcn::Color* backgroundColor = &mBackgroundColor;
 
         ShopItem *const item = mShopItems->at(i);
-        if (mShopItems && item &&
-            mPlayerMoney < item->getPrice() && mPriceCheck)
+        if ((mShopItems && item && mPlayerMoney < item->getPrice()
+            && mPriceCheck) || PlayerInfo::isItemProtected(item->getId()))
         {
             if (i != mSelected)
             {

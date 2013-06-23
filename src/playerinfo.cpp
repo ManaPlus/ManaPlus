@@ -22,6 +22,7 @@
 #include "playerinfo.h"
 
 #include "client.h"
+#include "configuration.h"
 #include "depricatedevent.h"
 #include "inventory.h"
 #include "depricatedlistener.h"
@@ -53,6 +54,7 @@ signed char mSpecialRechargeUpdateNeeded = 0;
 
 bool mTrading = false;
 int mLevelProgress = 0;
+std::set<int> mProtectedItems;
 
 // --- Triggers ---------------------------------------------------------------
 
@@ -313,6 +315,13 @@ void deinit()
     clearInventory();
 }
 
+void loadData()
+{
+    mProtectedItems.clear();
+    splitToIntSet(mProtectedItems,
+        serverConfig.getStringValue("protectedItems"), ',');
+}
+
 void clear()
 {
     mData.mSkills.clear();
@@ -342,6 +351,40 @@ void stateChange(const int state)
             mEquipment = new Equipment();
         }
     }
+}
+
+static void saveProtectedItems()
+{
+    std::string str;
+    std::set<int>::const_iterator it = mProtectedItems.begin();
+    std::set<int>::const_iterator it_end = mProtectedItems.end();
+    if (it != it_end)
+        str.append(toString(*it));
+    ++ it;
+    while (it != it_end)
+    {
+        str.append(",").append(toString(*it));
+        ++ it;
+    }
+    serverConfig.setValue("protectedItems", str);
+    serverConfig.write();
+}
+
+void protectItem(const int id)
+{
+    mProtectedItems.insert(id);
+    saveProtectedItems();
+}
+
+void unprotectItem(const int id)
+{
+    mProtectedItems.erase(id);
+    saveProtectedItems();
+}
+
+bool isItemProtected(const int id)
+{
+    return mProtectedItems.find(id) != mProtectedItems.end();
 }
 
 }  // namespace PlayerInfo

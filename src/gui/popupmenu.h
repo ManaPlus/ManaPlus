@@ -203,6 +203,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addPickupFilter(const std::string &name);
 
+        void addProtection();
+
         BrowserBox *mBrowserBox;
         ScrollArea *mScrollArea;
 
