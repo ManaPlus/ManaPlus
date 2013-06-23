@@ -349,6 +349,7 @@ void Client::gameInit()
         logger->setLogFile(mLocalDataDir + "/manaplus.log");
 
     initConfiguration();
+    paths.setDefaultValues(getPathsDefaults());
     initFeatures();
     logger->log("init 4");
     logger->setDebugLog(config.getBoolValue("debugLog"));
@@ -2065,7 +2066,7 @@ void Client::initServerConfig(std::string serverName)
 void Client::initFeatures() const
 {
     features.init(paths.getStringValue("featuresFile"), true);
-    paths.setDefaultValues(getFeaturesDefaults());
+    features.setDefaultValues(getFeaturesDefaults());
 }
 
 void Client::initConfiguration() const
