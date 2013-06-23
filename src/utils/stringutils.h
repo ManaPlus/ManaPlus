@@ -176,7 +176,7 @@ void replaceSpecialChars(std::string &text);
 std::string normalize(const std::string &name) A_WARN_UNUSED;
 
 void splitToIntSet(std::set<int> &tokens, const std::string &text,
-                   const char separator) A_WARN_UNUSED;
+                   const char separator);
 
 std::list<int> splitToIntList(const std::string &text,
                               const char separator) A_WARN_UNUSED;
