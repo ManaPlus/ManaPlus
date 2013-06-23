@@ -205,6 +205,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addProtection();
 
+        void addUseDrop(const Item *const item, const bool isProtected);
+
         BrowserBox *mBrowserBox;
         ScrollArea *mScrollArea;
 

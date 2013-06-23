@@ -1831,49 +1831,7 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
             mBrowserBox->addRow("##3---");
         }
 
-        if (item->isEquipment())
-        {
-            if (item->isEquipped())
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("use", _("Unequip"));
-            }
-            else
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("use", _("Equip"));
-            }
-        }
-        else
-        {
-            if (!isProtected)
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("use", _("Use"));
-            }
-        }
-
-        if (!isProtected)
-        {
-            if (cnt > 1)
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("drop", _("Drop..."));
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("drop all", _("Drop all"));
-            }
-            else
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("drop", _("Drop"));
-            }
-        }
-
-        if (Net::getInventoryHandler()->canSplit(item))
-        {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("split", _("Split"));
-        }
+        addUseDrop(item, isProtected);
     }
     // Assume in storage for now
     else
@@ -1967,50 +1925,7 @@ void PopupMenu::showItemPopup(const int x, const int y, Item *const item)
     if (item)
     {
         const bool isProtected = PlayerInfo::isItemProtected(mItemId);
-        if (item->isEquipment())
-        {
-            if (item->isEquipped())
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("use", _("Unequip"));
-            }
-            else
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("use", _("Equip"));
-            }
-        }
-        else
-        {
-            if (!isProtected)
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("use", _("Use"));
-            }
-        }
-
-        if (!isProtected)
-        {
-            if (item->getQuantity() > 1)
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("drop", _("Drop..."));
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("drop all", _("Drop all"));
-            }
-            else
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("drop", _("Drop"));
-            }
-        }
-
-        if (Net::getInventoryHandler()->canSplit(item))
-        {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("split", _("Split"));
-        }
-
+        addUseDrop(item, isProtected);
         if (InventoryWindow::isStorageActive())
         {
             // TRANSLATORS: popup menu item
@@ -2048,51 +1963,7 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
         mItemId = item->getId();
         mItemColor = item->getColor();
         const bool isProtected = PlayerInfo::isItemProtected(mItemId);
-
-        if (item->isEquipment())
-        {
-            if (item->isEquipped())
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("use", _("Unequip"));
-            }
-            else
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("use", _("Equip"));
-            }
-        }
-        else
-        {
-            if (!isProtected)
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("use", _("Use"));
-            }
-        }
-
-        if (!isProtected)
-        {
-            if (item->getQuantity() > 1)
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("drop", _("Drop..."));
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("drop all", _("Drop all"));
-            }
-            else
-            {
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("drop", _("Drop"));
-            }
-        }
-
-        if (Net::getInventoryHandler()->canSplit(item))
-        {
-            // TRANSLATORS: popup menu item
-            mBrowserBox->addRow("split", _("Split"));
-        }
-
+        addUseDrop(item, isProtected);
         if (InventoryWindow::isStorageActive())
         {
             // TRANSLATORS: popup menu item
@@ -2691,6 +2562,53 @@ void PopupMenu::addProtection()
     {
         // TRANSLATORS: popup menu item
         mBrowserBox->addRow("protect item", _("Protect item"));
+    }
+}
+
+void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
+{
+    if (item->isEquipment())
+    {
+        if (item->isEquipped())
+        {
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("use", _("Unequip"));
+        }
+        else
+        {
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("use", _("Equip"));
+        }
+    }
+    else
+    {
+        if (!isProtected)
+        {
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("use", _("Use"));
+        }
+    }
+
+    if (!isProtected)
+    {
+        if (item->getQuantity() > 1)
+        {
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("drop", _("Drop..."));
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("drop all", _("Drop all"));
+        }
+        else
+        {
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("drop", _("Drop"));
+        }
+    }
+
+    if (Net::getInventoryHandler()->canSplit(item))
+    {
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("split", _("Split"));
     }
 }
 
