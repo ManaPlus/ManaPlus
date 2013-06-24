@@ -409,22 +409,25 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
         }
         else if (item && item->getId())
         {
-            dragDrop.dragItem(item, DRAGDROP_SOURCE_INVENTORY);
-            dragDrop.select(item);
-            setSelectedIndex(index);
-            mSelectionStatus = SEL_SELECTING;
-
-            if (itemShortcutWindow)
+            if (index >= 0)
             {
-                const int num = itemShortcutWindow->getTabIndex();
-                if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
+                dragDrop.dragItem(item, DRAGDROP_SOURCE_INVENTORY);
+                dragDrop.select(item);
+                setSelectedIndex(index);
+                mSelectionStatus = SEL_SELECTING;
+
+                if (itemShortcutWindow)
                 {
-                    if (itemShortcut[num])
-                        itemShortcut[num]->setItemSelected(item);
+                    const int num = itemShortcutWindow->getTabIndex();
+                    if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
+                    {
+                        if (itemShortcut[num])
+                            itemShortcut[num]->setItemSelected(item);
+                    }
                 }
+                if (shopWindow)
+                    shopWindow->setItemSelected(item->getId());
             }
-            if (shopWindow)
-                shopWindow->setItemSelected(item->getId());
         }
         else
         {
