@@ -482,6 +482,8 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
         if (mCharacterEntries[characterSlot])
             mCharacterEntries[characterSlot]->setCharacter(character);
     }
+
+    updateState();
 }
 
 void CharSelectDialog::lock()
