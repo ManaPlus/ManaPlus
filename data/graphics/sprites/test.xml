@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sprite>
+    <imageset name="base" src="graphics/sprites/manaplus_emotions.png" width="30" height="32" />
+
+    <action name="default" imageset="base">
+        <animation direction="default">
+            <frame index="0" />
+        </animation>
+    </action>
+
+    <action name="stand" imageset="base">
+        <animation direction="default">
+            <frame index="0" delay="10"/>
+            <frame index="7" delay="20"/>
+            <frame index="7" delay="10"/>
+            <label name="test1"/>
+            <frame index="5" delay="25"/>
+            <goto label="test1" rand="0"/>
+            <frame index="5" delay="10"/>
+            <frame index="2" delay="10" rand="0"/>
+            <frame index="6" delay="10"/>
+            <goto label="test1" rand="100"/>
+        </animation>
+    </action>
+    <action name="sit" imageset="base">
+        <animation direction="default">
+            <frame index="0" delay="85"/>
+            <frame index="1" delay="10"/>
+        </animation>
+    </action>
+</sprite>
