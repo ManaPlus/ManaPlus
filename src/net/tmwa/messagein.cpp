@@ -77,7 +77,7 @@ int32_t MessageIn::readInt32()
     }
     mPos += 4;
     PacketCounters::incInBytes(4);
-    DEBUGLOG("readInt32:" + toStringPrint(value));
+    DEBUGLOG("readInt32: " + toStringPrint(value));
     return value;
 }
 
