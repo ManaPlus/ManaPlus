@@ -1724,6 +1724,9 @@ int Client::gameExec()
                     logger->log1("State: SWITCH LOGIN");
 
                     Net::getLoginHandler()->logout();
+                    Net::getLoginHandler()->disconnect();
+                    Net::getGameHandler()->disconnect();
+                    Net::getLoginHandler()->connect();
 
                     mState = STATE_LOGIN;
                     BLOCK_END("Client::gameExec STATE_SWITCH_LOGIN")
