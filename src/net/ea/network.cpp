@@ -272,6 +272,7 @@ void Network::receive()
                     // We got disconnected
                     mState = IDLE;
                     logger->log1("Disconnected.");
+                    setError("Disconnected");
                 }
                 else if (ret < 0)
                 {
