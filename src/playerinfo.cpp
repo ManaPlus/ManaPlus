@@ -359,8 +359,10 @@ static void saveProtectedItems()
     std::set<int>::const_iterator it = mProtectedItems.begin();
     std::set<int>::const_iterator it_end = mProtectedItems.end();
     if (it != it_end)
+    {
         str.append(toString(*it));
-    ++ it;
+        ++ it;
+    }
     while (it != it_end)
     {
         str.append(",").append(toString(*it));

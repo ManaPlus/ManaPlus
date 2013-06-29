@@ -108,8 +108,8 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         gcn::Color* backgroundColor = &mBackgroundColor;
 
         ShopItem *const item = mShopItems->at(i);
-        if ((mShopItems && item && mPlayerMoney < item->getPrice()
-            && mPriceCheck) || PlayerInfo::isItemProtected(item->getId()))
+        if (item && ((mShopItems && mPlayerMoney < item->getPrice()
+            && mPriceCheck) || PlayerInfo::isItemProtected(item->getId())))
         {
             if (i != mSelected)
             {
