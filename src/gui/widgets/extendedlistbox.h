@@ -23,6 +23,24 @@
 
 #include "gui/widgets/listbox.h"
 
+struct ExtendedListBoxItem
+{
+    ExtendedListBoxItem(const int row0,
+                        const std::string &text0,
+                        const bool image0,
+                        const int y0) :
+        row(row0),
+        text(text0),
+        image(image0),
+        y(y0)
+    {
+    }
+    int row;
+    std::string text;
+    bool image;
+    int y;
+};
+
 class ExtendedListBox final : public ListBox
 {
     public:
@@ -49,11 +67,18 @@ class ExtendedListBox final : public ListBox
         void setRowHeight(unsigned int n)
         { mRowHeight = n; }
 
+        void adjustSize() override;
+
+        int getSelectionByMouse(const int y) const override;
+
     protected:
         unsigned int mRowHeight;
         int mImagePadding;
         int mSpacing;
         int mItemPadding;
+        int mHeight;
+        std::vector<ExtendedListBoxItem> mListItems;
+        std::vector<ExtendedListBoxItem> mSelectedItems;
 };
 
 #endif  // GUI_WIDGETS_EXTENDEDLISTBOX_H

@@ -44,7 +44,10 @@ ExtendedListBox::ExtendedListBox(const Widget2 *const widget,
     mRowHeight(rowHeight),
     mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
     mSpacing(mSkin ? mSkin->getOption("spacing") : 0),
-    mItemPadding(mSkin ? mSkin->getOption("itemPadding") : 1)
+    mItemPadding(mSkin ? mSkin->getOption("itemPadding") : 1),
+    mHeight(0),
+    mListItems(),
+    mSelectedItems()
 {
     if (!mRowHeight)
     {
@@ -73,71 +76,172 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
     updateAlpha();
     gcn::Font *const font = getFont();
 
-    const int height = getRowHeight();
+    const int height = mRowHeight;
     const int pad2 = 2 + mPadding;
+    const int width = mDimension.width;
     int textPos = (height - font->getHeight()) / 2 + mPadding;
     if (textPos < 0)
         textPos = 0;
 
-    // Draw filled rectangle around the selected list element
-    if (mSelected >= 0)
+    const int sz = mListModel->getNumberOfElements();
+    mListItems.clear();
+    mSelectedItems.clear();
+    int y = 0;
+    const int insideWidth = width - pad2;
+    for (int f = 0; f < sz; f ++)
+    {
+        int row = f;
+        bool useImage = true;
+        std::string str = mListModel->getElementAt(f);
+        int strWidth = font->getWidth(str) + 8;
+
+        const Image *const image = model->getImageAt(row);
+        if (image)
+            strWidth += image->getWidth() + mImagePadding;
+
+        std::vector<ExtendedListBoxItem> &list =
+            row == mSelected ? mSelectedItems : mListItems;
+
+        if (insideWidth < strWidth)
+        {
+            const int strSize = str.size();
+            list.push_back(ExtendedListBoxItem(row,
+                str.substr(0, strSize / 2), useImage, y));
+            str = str.substr(strSize / 2);
+            y += height;
+            useImage = false;
+        }
+        list.push_back(ExtendedListBoxItem(row, str, useImage, y));
+
+        y += height;
+    }
+    mHeight = y + height;
+
+    const int itemsSz = mListItems.size();
+    const int selSz = mSelectedItems.size();
+    int minY = -1;
+    int maxY = -1;
+    for (int f = 0; f < selSz; f ++)
+    {
+        const ExtendedListBoxItem &item = mSelectedItems[f];
+        const int y1 = item.y;
+        if (minY == -1)
+            minY = y1;
+        if (maxY < y1)
+            maxY = y1;
+    }
+
+    if (minY != -1)
     {
         mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
         graphics->setColor(mHighlightColor);
-        graphics->fillRectangle(gcn::Rectangle(mPadding,
-            height * mSelected + mPadding,
-            getWidth() - pad2, height));
+        graphics->fillRectangle(gcn::Rectangle(mPadding, minY + mPadding,
+            width - pad2, maxY - minY + height));
     }
 
-    const int sz = mListModel->getNumberOfElements();
-    for (int i = 0, y = 0; i < sz; ++i, y += height)
+    for (int f = 0; f < itemsSz; ++f)
     {
-        if (i != mSelected)
+        const ExtendedListBoxItem &item = mListItems[f];
+        const int row1 = item.row;
+        if (item.image)
         {
-            const Image *const image = model->getImageAt(i);
+            const Image *const image = model->getImageAt(row1);
             if (image)
             {
-                g->drawImage(image, mImagePadding, y + (height
+                g->drawImage(image, mImagePadding, item.y + (height
                     - image->getHeight()) / 2 + mPadding);
             }
         }
     }
+
     g->setColorAll(mForegroundColor, mForegroundColor2);
-    for (int i = 0, y = 0; i < sz; ++i, y += height)
+
+    for (int f = 0; f < itemsSz; ++f)
     {
-        if (i != mSelected)
+        const ExtendedListBoxItem &item = mListItems[f];
+        const int row1 = item.row;
+        const int y1 = item.y;
+        const Image *const image = model->getImageAt(row1);
+        if (!image || !item.image)
         {
-            const Image *const image = model->getImageAt(i);
-            if (!image)
-            {
-                font->drawString(graphics, mListModel->getElementAt(i),
-                    mPadding, y + textPos);
-            }
-            else
-            {
-                font->drawString(graphics, mListModel->getElementAt(i),
-                    image->getWidth() + mImagePadding + mSpacing, y + textPos);
-            }
-        }
-    }
-    if (mSelected >= 0)
-    {
-        const Image *const image = model->getImageAt(mSelected);
-        if (!image)
-        {
-            font->drawString(graphics, mListModel->getElementAt(mSelected),
-                mPadding, mSelected * height + textPos);
+            font->drawString(graphics, item.text, mPadding, y1 + textPos);
         }
         else
         {
-            const int y = mSelected * height;
-            g->drawImage(image, mImagePadding, y + (height
-                - image->getHeight()) / 2 + mPadding);
-            g->setColorAll(mForegroundSelectedColor,
-                mForegroundSelectedColor2);
-            font->drawString(graphics, mListModel->getElementAt(mSelected),
-                image->getWidth() + mImagePadding + mSpacing, y + textPos);
+            font->drawString(graphics, item.text,
+                image->getWidth() + mImagePadding + mSpacing, y1 + textPos);
         }
     }
+
+
+
+    for (int f = 0; f < selSz; ++f)
+    {
+        const ExtendedListBoxItem &item = mSelectedItems[f];
+        const int row1 = item.row;
+        if (item.image)
+        {
+            const Image *const image = model->getImageAt(row1);
+            if (image)
+            {
+                g->drawImage(image, mImagePadding, item.y + (height
+                    - image->getHeight()) / 2 + mPadding);
+            }
+        }
+    }
+
+    g->setColorAll(mForegroundSelectedColor, mForegroundSelectedColor2);
+
+    for (int f = 0; f < selSz; ++f)
+    {
+        const ExtendedListBoxItem &item = mSelectedItems[f];
+        const int row1 = item.row;
+        const int y1 = item.y;
+        const Image *const image = model->getImageAt(row1);
+        if (!image || !item.image)
+        {
+            font->drawString(graphics, item.text, mPadding, y1 + textPos);
+        }
+        else
+        {
+            font->drawString(graphics, item.text,
+                image->getWidth() + mImagePadding + mSpacing, y1 + textPos);
+        }
+    }
+
     BLOCK_END("ExtendedListBox::draw")
+}
+
+void ExtendedListBox::adjustSize()
+{
+    if (mHeight)
+        setHeight(mHeight + 2 * mPadding);
+    else
+        ListBox::adjustSize();
+}
+
+int ExtendedListBox::getSelectionByMouse(const int y) const
+{
+    if (mListItems.empty() && mSelectedItems.empty())
+        return ListBox::getSelectionByMouse(y);
+
+    const int height = mRowHeight;
+    const int itemsSz = mListItems.size();
+    for (int f = 0; f < itemsSz; f ++)
+    {
+        const ExtendedListBoxItem &item = mListItems[f];
+        const int y2 = item.y;
+        if (y2 <= y && y2 + height > y)
+            return item.row;
+    }
+
+    const int selSz = mSelectedItems.size();
+    for (int f = 0; f < selSz; f ++)
+    {
+        const ExtendedListBoxItem &item = mSelectedItems[f];
+        const int y2 = item.y;
+        if (y2 <= y && y2 + height > y)
+            return item.row;
+    }
+    return 0;
 }

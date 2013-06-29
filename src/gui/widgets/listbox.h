@@ -85,9 +85,11 @@ class ListBox : public gcn::ListBox,
         void setDistributeMousePressed(bool b)
         { mDistributeMousePressed = b; }
 
-        void adjustSize();
+        virtual void adjustSize();
 
         void logic() override;
+
+        virtual int getSelectionByMouse(const int y) const;
 
     protected:
         gcn::Color mHighlightColor;

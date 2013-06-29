@@ -209,8 +209,7 @@ void ListBox::mousePressed1(gcn::MouseEvent &mouseEvent)
 {
     if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
     {
-        setSelected(std::max(0, mouseEvent.getY() - mPadding)
-            / getRowHeight());
+        setSelected(std::max(0, getSelectionByMouse(mouseEvent.getY())));
         distributeActionEvent();
     }
 }
@@ -222,7 +221,7 @@ void ListBox::mouseDragged(gcn::MouseEvent &event)
 
     // Make list selection update on drag, but guard against negative y
     if (getRowHeight())
-        setSelected(std::max(0, event.getY() - mPadding) / getRowHeight());
+        setSelected(std::max(0, getSelectionByMouse(event.getY())));
 }
 
 void ListBox::refocus()
@@ -248,4 +247,9 @@ void ListBox::adjustSize()
 void ListBox::logic()
 {
     adjustSize();
+}
+
+int ListBox::getSelectionByMouse(const int y) const
+{
+    return (y - mPadding) / getRowHeight();
 }
