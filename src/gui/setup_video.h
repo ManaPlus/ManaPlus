@@ -64,9 +64,6 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
         ListBox *mModeList;
         CheckBox *mFsCheckBox;
         DropDown *mOpenGLDropDown;
-        CheckBox *mCustomCursorCheckBox;
-        CheckBox *mEnableResizeCheckBox;
-        CheckBox *mNoFrameCheckBox;
         CheckBox *mFpsCheckBox;
         Slider *mFpsSlider;
         Label *mFpsLabel;
@@ -79,6 +76,9 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
         bool mCustomCursorEnabled;
         bool mEnableResize;
         bool mNoFrame;
+        CheckBox *mCustomCursorCheckBox;
+        CheckBox *mEnableResizeCheckBox;
+        CheckBox *mNoFrameCheckBox;
 };
 
 #endif  // GUI_SETUP_VIDEO_H

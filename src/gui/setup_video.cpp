@@ -211,20 +211,6 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     // TRANSLATORS: video settings checkbox
     mFsCheckBox(new CheckBox(this, _("Full screen"), mFullScreenEnabled)),
     mOpenGLDropDown(new DropDown(widget, mOpenGLListModel)),
-    mCustomCursorCheckBox(new CheckBox(this,
-#ifdef ANDROID
-        // TRANSLATORS: video settings checkbox
-        _("Show cursor"),
-#else
-        // TRANSLATORS: video settings checkbox
-        _("Custom cursor"),
-#endif
-                          mCustomCursorEnabled)),
-    // TRANSLATORS: video settings checkbox
-    mEnableResizeCheckBox(new CheckBox(this, _("Enable resize"),
-                          mEnableResize)),
-    // TRANSLATORS: video settings checkbox
-    mNoFrameCheckBox(new CheckBox(this, _("No frame"), mNoFrame)),
     // TRANSLATORS: video settings checkbox
     mFpsCheckBox(new CheckBox(this, _("FPS limit:"))),
     mFpsSlider(new Slider(2, 160)),
@@ -239,7 +225,21 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mDialog(nullptr),
     mCustomCursorEnabled(config.getBoolValue("customcursor")),
     mEnableResize(config.getBoolValue("enableresize")),
-    mNoFrame(config.getBoolValue("noframe"))
+    mNoFrame(config.getBoolValue("noframe")),
+    mCustomCursorCheckBox(new CheckBox(this,
+#ifdef ANDROID
+        // TRANSLATORS: video settings checkbox
+        _("Show cursor"),
+#else
+        // TRANSLATORS: video settings checkbox
+        _("Custom cursor"),
+#endif
+                          mCustomCursorEnabled)),
+    // TRANSLATORS: video settings checkbox
+    mEnableResizeCheckBox(new CheckBox(this, _("Enable resize"),
+                          mEnableResize)),
+    // TRANSLATORS: video settings checkbox
+    mNoFrameCheckBox(new CheckBox(this, _("No frame"), mNoFrame))
 {
     // TRANSLATORS: video settings tab name
     setName(_("Video"));
