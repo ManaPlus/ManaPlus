@@ -362,7 +362,14 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
 
     place(17, 0, mInfoButton, 1);
 
-    setDimension(gcn::Rectangle(0, 0, 365, 500));
+    int size = mainGraphics->mWidth - 10;
+    const int maxWidth = mFontSize * 30 + 290;
+    if (size < 465)
+        size = 465;
+    else if (size > maxWidth)
+        size = maxWidth;
+
+    setDimension(gcn::Rectangle(0, 0, size, 500));
 }
 
 Setup_Theme::~Setup_Theme()
