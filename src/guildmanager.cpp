@@ -179,11 +179,12 @@ void GuildManager::updateList()
         while (it != it_end)
         {
             std::string name = *it;
-            if (name.size() > 1)
+            const size_t sz = name.size();
+            if (sz > 1)
             {
-                const int status = atoi(name.substr(name.size() - 1).c_str());
+                const int status = atoi(name.substr(sz - 1).c_str());
 
-                name = name.substr(0, name.size() - 1);
+                name = name.substr(0, sz - 1);
                 GuildMember *const m = guild->addMember(i, 0, name);
                 if (m)
                 {
