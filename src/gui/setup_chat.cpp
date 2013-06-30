@@ -106,6 +106,10 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "enableChatLog", this, "enableChatLogEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable debug chat Log"), "",
+        "enableDebugLog", this, "enableDebugLogEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show chat history"), "",
         "showChatHistory", this, "showChatHistoryEvent");
 

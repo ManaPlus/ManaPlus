@@ -445,8 +445,18 @@ bool ChatTab::handleCommands(const std::string &type, const std::string &args)
 
 void ChatTab::saveToLogFile(const std::string &msg)
 {
-    if (getType() == TAB_INPUT && chatLogger)
-        chatLogger->log(msg);
+    if (chatLogger)
+    {
+        if (getType() == TAB_INPUT)
+        {
+            chatLogger->log(msg);
+        }
+        else if (getType() == TAB_DEBUG
+                 && config.getBoolValue("enableDebugLog"))
+        {
+            chatLogger->log("#Debug", msg);
+        }
+    }
 }
 
 int ChatTab::getType() const
