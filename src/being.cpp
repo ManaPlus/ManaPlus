@@ -2295,11 +2295,12 @@ void Being::recalcSpritesOrder()
         mSpriteHide[slot] = 0;
     }
 
+    const size_t spriteIdSize = mSpriteIDs.size();
     for (unsigned slot = 0; slot < sz; slot ++)
     {
         slotRemap.push_back(slot);
 
-        if (mSpriteIDs.size() <= slot)
+        if (spriteIdSize <= slot)
             continue;
 
         const int id = mSpriteIDs[slot];
@@ -2452,7 +2453,7 @@ void Being::recalcSpritesOrder()
             const int val = slotRemap.at(slot);
             int id = 0;
 
-            if (static_cast<int>(mSpriteIDs.size()) > val)
+            if (static_cast<int>(spriteIdSize) > val)
                 id = mSpriteIDs[val];
 
             int idx = -1;
@@ -2529,7 +2530,8 @@ void Being::recalcSpritesOrder()
 int Being::searchSlotValue(const std::vector<int> &slotRemap,
                            const int val) const
 {
-    for (unsigned slot = 0; slot < size(); slot ++)
+    const size_t sz = size();
+    for (size_t slot = 0; slot < sz; slot ++)
     {
         if (slotRemap[slot] == val)
             return slot;
