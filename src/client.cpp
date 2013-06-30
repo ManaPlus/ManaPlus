@@ -2158,9 +2158,10 @@ void Client::initUpdatesDir()
     if (mUpdateHost.length() < 2)
         return;
 
+    const int sz = mUpdateHost.size();
     // Remove any trailing slash at the end of the update host
-    if (mUpdateHost.at(mUpdateHost.size() - 1) == '/')
-        mUpdateHost.resize(mUpdateHost.size() - 1);
+    if (mUpdateHost.at(sz - 1) == '/')
+        mUpdateHost.resize(sz - 1);
 
     // Parse out any "http://" or "https://", and set the updates directory
     const size_t pos = mUpdateHost.find("://");
