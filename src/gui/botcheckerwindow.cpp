@@ -124,8 +124,9 @@ public:
         }
 
         const unsigned int curTime = cur_time;
+        const unsigned int sz = mPlayers.size();
         // set up widgets
-        for (unsigned int r = 0; r < mPlayers.size(); ++r)
+        for (unsigned int r = 0; r < sz; ++r)
         {
             if (!mPlayers.at(r))
                 continue;
