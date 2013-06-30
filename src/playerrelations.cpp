@@ -167,7 +167,8 @@ int PlayerRelationsManager::getPlayerIgnoreStrategyIndex(
     if (!strategies)
         return -1;
 
-    for (unsigned int i = 0; i < strategies->size(); i++)
+    const size_t sz = strategies->size();
+    for (size_t i = 0; i < sz; i++)
     {
         if ((*strategies)[i]->mShortName == name)
             return i;
