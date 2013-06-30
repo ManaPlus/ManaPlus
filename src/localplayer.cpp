@@ -1553,8 +1553,8 @@ void LocalPlayer::handleStatusEffect(StatusEffect *const effect,
         {
             // replace sprite or append
             bool found = false;
-
-            for (unsigned int i = 0; i < mStatusEffectIcons.size(); i++)
+            const unsigned int sz = mStatusEffectIcons.size();
+            for (unsigned int i = 0; i < sz; i++)
             {
                 if (mStatusEffectIcons[i] == effectId)
                 {
@@ -1767,9 +1767,10 @@ void LocalPlayer::moveToTarget(int dist)
                 mTarget->getTileX(), mTarget->getTileY(), getWalkMask(), 0);
         }
 
-        if (debugPath.size() < static_cast<unsigned>(dist))
+        const unsigned int sz = debugPath.size();
+        if (sz < static_cast<unsigned int>(dist))
             return;
-        limit = static_cast<int>(debugPath.size()) - dist;
+        limit = static_cast<int>(sz) - dist;
         gotPos = true;
     }
     else if (mNavigateX || mNavigateY)
