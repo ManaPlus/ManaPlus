@@ -169,7 +169,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mSortDropDown->setSelected(0);
 
     StringVect tags = ItemDB::getTags();
-    for (unsigned f = 0; f < tags.size(); f ++)
+    const size_t sz = tags.size();
+    for (size_t f = 0; f < sz; f ++)
         mFilter->addButton(tags[f]);
 
     if (isMainInventory())
