@@ -405,7 +405,8 @@ void ActorSprite::loadTargetCursor(const std::string &filename,
 
     Animation *const anim = new Animation;
 
-    for (size_t i = 0; i < currentImageSet->size(); ++i)
+    const size_t sz = currentImageSet->size();
+    for (size_t i = 0; i < sz; ++i)
     {
         anim->addFrame(currentImageSet->get(i), 75,
             (16 - (currentImageSet->getWidth() / 2)),
