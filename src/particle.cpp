@@ -449,8 +449,8 @@ Particle *Particle::addTextRiseFadeOutEffect(const std::string &text,
     newParticle->setVelocity(0.0f, 0.0f, 0.5f);
     newParticle->setGravity(0.0015f);
     newParticle->setLifetime(300);
-    newParticle->setFadeOut(50);
-    newParticle->setFadeIn(200);
+    newParticle->setFadeOut(100);
+    newParticle->setFadeIn(0);
 
     mChildParticles.push_back(newParticle);
 
