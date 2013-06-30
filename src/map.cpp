@@ -1377,12 +1377,15 @@ void Map::indexTilesets()
     mTilesetsIndexed = true;
 
     const Tileset *s = nullptr;
+    size_t sSz = 0;
     FOR_EACH (Tilesets::const_iterator, it, mTilesets)
     {
-        if (!s || s->getFirstGid() + s->size()
-            < (*it)->getFirstGid() + (*it)->size())
+        const size_t sz = (*it)->size();
+        if (!s || s->getFirstGid() + sSz
+            < (*it)->getFirstGid() + sz)
         {
             s = *it;
+            sSz = sz;
         }
     }
     if (!s)
