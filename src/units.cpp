@@ -180,7 +180,7 @@ void Units::loadUnits()
 
 static std::string formatUnit(const int value, const int type)
 {
-    UnitDescription ud = units[type];
+    const UnitDescription ud = units[type];
     UnitLevel ul;
 
     // Shortcut for 0; do the same for values less than 0  (for now)
@@ -192,6 +192,7 @@ static std::string formatUnit(const int value, const int type)
     else
     {
         double amount = ud.conversion * value;
+        const unsigned int sz = ud.levels.size();
 
         // If only the first level is needed, act like mix if false
         if (ud.mix && !ud.levels.empty() && ud.levels[1].count < amount)
@@ -213,7 +214,7 @@ static std::string formatUnit(const int value, const int type)
                     amount), pl.separator).append(pl.symbol);
             }
 
-            for (unsigned int i = 2; i < ud.levels.size(); i++)
+            for (unsigned int i = 2; i < sz; i++)
             {
                 pl = ul;
                 ul = ud.levels[i];
@@ -240,7 +241,7 @@ static std::string formatUnit(const int value, const int type)
         else
         {
             ul.round = 0;
-            for (unsigned int i = 0; i < ud.levels.size(); i++)
+            for (unsigned int i = 0; i < sz; i++)
             {
                 ul = ud.levels[i];
                 if (amount < ul.count && ul.count > 0)
@@ -281,18 +282,20 @@ static std::string splitNumber(std::string str, const std::string &separator)
 
     if (!str.empty())
     {
-        while (str.size() >= 3)
+        size_t sz = str.size();
+        while (sz >= 3)
         {
-            if (str.size() >= 6)
+            if (sz >= 6)
             {
                 result = std::string(separator).append(str.substr(
-                    str.size() - 3)).append(result);
+                    sz - 3)).append(result);
             }
             else
             {
-                result = str.substr(str.size() - 3).append(result);
+                result = str.substr(sz - 3).append(result);
             }
             str = str.substr(0, str.size() - 3);
+            sz = str.size();
         }
         if (!str.empty())
         {
