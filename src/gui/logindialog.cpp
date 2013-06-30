@@ -295,7 +295,7 @@ void LoginDialog::action(const gcn::ActionEvent &event)
             urlListener.url = url;
             // TRANSLATORS: question dialog
             ConfirmDialog *const confirmDlg = new ConfirmDialog(
-                _("Open register url"), url, false, true);
+                _("Open register url"), url, SOUND_REQUEST, false, true);
             confirmDlg->addActionListener(&urlListener);
         }
     }

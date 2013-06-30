@@ -61,7 +61,7 @@ class CharDeleteConfirm final : public ConfirmDialog
             ConfirmDialog(_("Confirm Character Delete"),
                           // TRANSLATORS: char deletion message
                           _("Are you sure you want to delete this character?"),
-                          false, false, m),
+                          SOUND_REQUEST, false, false, m),
             mMaster(m),
             mIndex(index)
         {

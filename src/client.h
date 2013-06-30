@@ -287,6 +287,9 @@ public:
     static std::string getOnlineUrl() A_WARN_UNUSED
     { return instance()->mOnlineListUrl; }
 
+    static std::string getSupportUrl() A_WARN_UNUSED
+    { return instance()->mCurrentServer.supportUrl; }
+
     static void resize(const int width, const int height,
                        const bool always = false)
     { instance()->resizeVideo(width, height, always); }
@@ -339,6 +342,10 @@ public:
     static void windowRemoved(const Window *const window);
 
     static void updateScreenKeyboard(int height);
+
+    static Window *openErrorDialog(const std::string &header,
+                                   const std::string &message,
+                                   const bool modal);
 
 private:
     void initRootDir();

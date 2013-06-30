@@ -199,7 +199,7 @@ bool Network::realConnect()
             const std::string errorMessage = std::string(
                 // TRANSLATORS: error message
                 _("Unable to resolve host \"")).append(
-                mServer.hostname).append("\"");
+                mServer.hostname).append("\".");
             setError(errorMessage);
             logger->log("TcpNet::ResolveHost: %s", errorMessage.c_str());
             return false;

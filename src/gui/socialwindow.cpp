@@ -238,7 +238,7 @@ public:
         mConfirmDialog = new ConfirmDialog(_("Leave Guild?"),
             // TRANSLATORS: guild leave message
             strprintf(_("Are you sure you want to leave guild %s?"),
-            mGuild->getName().c_str()), socialWindow);
+            mGuild->getName().c_str()), SOUND_REQUEST, socialWindow);
 
         mConfirmDialog->addActionListener(this);
     }
@@ -381,7 +381,7 @@ public:
         mConfirmDialog = new ConfirmDialog(_("Leave Party?"),
             // TRANSLATORS: party leave message
             strprintf(_("Are you sure you want to leave party %s?"),
-            mParty->getName().c_str()), socialWindow);
+            mParty->getName().c_str()), SOUND_REQUEST, socialWindow);
 
         mConfirmDialog->addActionListener(this);
     }
@@ -1490,7 +1490,7 @@ void SocialWindow::showGuildInvite(const std::string &guildName,
 
     // TRANSLATORS: guild invite message
     mGuildAcceptDialog = new ConfirmDialog(_("Accept Guild Invite"),
-                                           msg, false, false, this);
+        msg, SOUND_REQUEST, false, false, this);
     mGuildAcceptDialog->addActionListener(this);
     mGuildInvited = guildId;
 }
@@ -1547,7 +1547,7 @@ void SocialWindow::showPartyInvite(const std::string &partyName,
     // show invite
     // TRANSLATORS: party invite message
     mPartyAcceptDialog = new ConfirmDialog(_("Accept Party Invite"),
-        msg, false, false, this);
+        msg, SOUND_REQUEST, false, false, this);
     mPartyAcceptDialog->addActionListener(this);
     mPartyInviter = inviter;
 }

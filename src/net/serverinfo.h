@@ -55,6 +55,7 @@ public:
     std::string description;
     std::string registerUrl;
     std::string onlineListUrl;
+    std::string supportUrl;
     VersionString version;
 
     bool save;
@@ -68,6 +69,7 @@ public:
         description(),
         registerUrl(),
         onlineListUrl(),
+        supportUrl(),
         version(),
         save(false)
     {
@@ -83,6 +85,7 @@ public:
         description(info.description),
         registerUrl(info.registerUrl),
         onlineListUrl(info.onlineListUrl),
+        supportUrl(info.supportUrl),
         version(),
         save(info.save)
     {
@@ -105,6 +108,7 @@ public:
         description.clear();
         registerUrl.clear();
         onlineListUrl.clear();
+        supportUrl.clear();
         version.first = 0;
         version.second.clear();
         save = false;

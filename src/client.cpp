@@ -51,6 +51,7 @@
 #include "gui/changeemaildialog.h"
 #include "gui/changepassworddialog.h"
 #include "gui/charselectdialog.h"
+#include "gui/confirmdialog.h"
 #include "gui/connectiondialog.h"
 #include "gui/gui.h"
 #include "gui/logindialog.h"
@@ -101,6 +102,7 @@
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/physfstools.h"
+#include "utils/process.h"
 
 #include "utils/translation/translationmanager.h"
 
@@ -161,8 +163,10 @@ int openGLMode = 0;
 static uint32_t nextTick(uint32_t interval, void *param A_UNUSED);
 static uint32_t nextSecond(uint32_t interval, void *param A_UNUSED);
 
-void ErrorListener::action(const gcn::ActionEvent &)
+void ErrorListener::action(const gcn::ActionEvent &event)
 {
+    if (event.getId() == "yes")
+        openBrowser(Client::getSupportUrl());
     Client::setState(STATE_CHOOSE_SERVER);
 }
 
@@ -1215,6 +1219,7 @@ int Client::gameExec()
                 {
                     BLOCK_START("Client::gameExec STATE_CHOOSE_SERVER")
                     logger->log1("State: CHOOSE SERVER");
+                    mCurrentServer.supportUrl.clear();
                     ResourceManager *const resman
                         = ResourceManager::getInstance();
                     if (mOptions.dataPath.empty())
@@ -1696,9 +1701,9 @@ int Client::gameExec()
                     Net::getLoginHandler()->disconnect();
 
                     // TRANSLATORS: unregister message header
-                    mCurrentDialog = new OkDialog(_("Unregister Successful"),
+                    mCurrentDialog = openErrorDialog(_("Unregister Successful"),
                         // TRANSLATORS: unregister message text
-                        _("Farewell, come back any time..."), DIALOG_ERROR);
+                        _("Farewell, come back any time..."), true);
                     loginData.clear();
                     // The errorlistener sets the state to STATE_CHOOSE_SERVER
                     mCurrentDialog->addActionListener(&errorListener);
@@ -1775,8 +1780,8 @@ int Client::gameExec()
                     logger->log1("State: ERROR");
                     logger->log("Error: %s\n", errorMessage.c_str());
                     // TRANSLATORS: error message header
-                    mCurrentDialog = new OkDialog(_("Error"),
-                        errorMessage, DIALOG_ERROR);
+                    mCurrentDialog = openErrorDialog(_("Error"),
+                        errorMessage, true);
                     mCurrentDialog->addActionListener(&errorListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     Net::getGameHandler()->disconnect();
@@ -2170,7 +2175,7 @@ void Client::initUpdatesDir()
         {
             logger->log("Error: Invalid update host: %s", mUpdateHost.c_str());
             // TRANSLATORS: update server initialisation error
-            errorMessage = strprintf(_("Invalid update host: %s"),
+            errorMessage = strprintf(_("Invalid update host: %s."),
                                      mUpdateHost.c_str());
             mState = STATE_ERROR;
         }
@@ -3009,4 +3014,21 @@ void Client::checkConfigVersion()
     }
 
     config.setValue("cfgver", 2);
+}
+
+Window *Client::openErrorDialog(const std::string &header,
+                                const std::string &message,
+                                const bool modal)
+{
+    if (getSupportUrl().empty())
+    {
+        return new OkDialog(header, message, DIALOG_ERROR, modal);
+    }
+    else
+    {
+        return new ConfirmDialog(header, strprintf("%s %s", message.c_str(),
+            // TRANSLATORS: error message question
+            _("Do you want to open support page?")),
+            SOUND_ERROR, false, modal);
+    }
 }

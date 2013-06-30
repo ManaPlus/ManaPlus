@@ -22,8 +22,6 @@
 
 #include "gui/confirmdialog.h"
 
-#include "soundmanager.h"
-
 #include "gui/gui.h"
 
 #include "gui/widgets/button.h"
@@ -36,8 +34,8 @@
 #include "debug.h"
 
 ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
-                             const bool ignore, const bool modal,
-                             Window *const parent):
+                             const std::string &soundEvent, const bool ignore,
+                             const bool modal, Window *const parent):
     Window(title, modal, parent, "confirm.xml"),
     gcn::ActionListener(),
     mTextBox(new TextBox(this))
@@ -100,7 +98,7 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
     }
     setVisible(true);
     yesButton->requestFocus();
-    soundManager.playGuiSound(SOUND_REQUEST);
+    soundManager.playGuiSound(soundEvent);
 }
 
 void ConfirmDialog::action(const gcn::ActionEvent &event)

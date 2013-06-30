@@ -242,7 +242,7 @@ void SellDialog::action(const gcn::ActionEvent &event)
                         _("sell item"),
                         // TRANSLATORS: sell confirmation message
                         strprintf(_("Do you really want to sell %s?"),
-                        info.getName().c_str()), false, true);
+                        info.getName().c_str()), SOUND_REQUEST, false, true);
                     dialog->addActionListener(this);
                     return;
                 }

@@ -386,6 +386,7 @@ void ServerDialog::connectToSelectedServer()
     mServerInfo->description = server.description;
     mServerInfo->registerUrl = server.registerUrl;
     mServerInfo->onlineListUrl = server.onlineListUrl;
+    mServerInfo->supportUrl = server.supportUrl;
     mServerInfo->save = true;
 
     if (chatLogger)
@@ -671,6 +672,11 @@ void ServerDialog::loadServers(const bool addNew)
                 server.onlineListUrl = reinterpret_cast<const char*>(
                     subNode->xmlChildrenNode->content);
             }
+            else if (xmlNameEqual(subNode, "support"))
+            {
+                server.supportUrl = reinterpret_cast<const char*>(
+                    subNode->xmlChildrenNode->content);
+            }
         }
 
         server.version.first = font->getWidth(version);
@@ -690,6 +696,7 @@ void ServerDialog::loadServers(const bool addNew)
                 mServers[i].description = server.description;
                 mServers[i].registerUrl = server.registerUrl;
                 mServers[i].onlineListUrl = server.onlineListUrl;
+                mServers[i].supportUrl = server.supportUrl;
                 mServers[i].althostname = server.althostname;
                 mServersListModel->setVersionString(i, version);
                 found = true;

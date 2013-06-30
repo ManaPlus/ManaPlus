@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+#include "soundmanager.h"
+
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
@@ -45,6 +47,7 @@ class ConfirmDialog : public Window, public gcn::ActionListener
          * @see Window::Window
          */
         ConfirmDialog(const std::string &title, const std::string &msg,
+                      const std::string &soundEvent = SOUND_REQUEST,
                       const bool ignore = false, const bool modal = false,
                       Window *const parent = nullptr);
 

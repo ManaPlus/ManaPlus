@@ -113,7 +113,7 @@ OkDialog *weightNotice = nullptr;
 int weightNoticeTime = 0;
 OkDialog *deathNotice = nullptr;
 QuitDialog *quitDialog = nullptr;
-OkDialog *disconnectedDialog = nullptr;
+Window *disconnectedDialog = nullptr;
 
 ChatWindow *chatWindow = nullptr;
 StatusWindow *statusWindow = nullptr;
@@ -614,11 +614,12 @@ void Game::slowLogic()
         {
             if (!disconnectedDialog)
             {
+
                 // TRANSLATORS: error message text
                 errorMessage = _("The connection to the server was lost.");
-                // TRANSLATORS: error message header
-                disconnectedDialog = new OkDialog(_("Network Error"),
-                    errorMessage, DIALOG_ERROR, false);
+                disconnectedDialog = Client::openErrorDialog(
+                    // TRANSLATORS: error message header
+                    _("Network Error"), errorMessage, false);
                 disconnectedDialog->addActionListener(&errorListener);
                 disconnectedDialog->requestMoveToTop();
             }
