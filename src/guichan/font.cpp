@@ -56,13 +56,13 @@ namespace gcn
 {
     int Font::getStringIndexAt(const std::string& text, const int x) const
     {
-        for (unsigned int i = 0, sz = static_cast<unsigned int>(text.size());
-             i < sz; ++i)
+        const size_t sz = text.size();
+        for (size_t i = 0; i < sz; ++i)
         {
             if (getWidth(text.substr(0, i)) > x)
                 return i;
         }
 
-        return static_cast<int>(text.size());
+        return static_cast<int>(sz);
     }
 }  // namespace gcn
