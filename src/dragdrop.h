@@ -22,6 +22,7 @@
 #define DRAGDROP_H
 
 #include "item.h"
+#include "textcommand.h"
 
 #include "resources/image.h"
 
@@ -51,7 +52,9 @@ class DragDrop
             mItemImage(item ? item->getImage() : nullptr),
             mSelItem(0),
             mSelItemColor(1),
-            mSource(source)
+            mSource(source),
+            mText(),
+            mTag()
         {
             if (mItemImage)
                 mItemImage->incRef();
@@ -77,11 +80,14 @@ class DragDrop
         DragDropSource getSource() const
         { return mSource; }
 
-        void dragItem(Item *const item, const DragDropSource source)
+        void dragItem(Item *const item,
+                      const DragDropSource source,
+                      const int tag = 0)
         {
             if (mItemImage)
                 mItemImage->decRef();
 
+            mText.clear();
             if (item)
             {
                 mItem = item->getId();
@@ -89,14 +95,50 @@ class DragDrop
                 mItemImage = item->getImage();
                 if (mItemImage)
                     mItemImage->incRef();
+                mSource = source;
+                mTag = tag;
             }
             else
             {
                 mItem = 0;
                 mItemColor = 1;
                 mItemImage = nullptr;
+                mSource = DRAGDROP_SOURCE_EMPTY;
+                mTag = 0;
+            }
+        }
+
+        void dragCommand(TextCommand *const command,
+                         const DragDropSource source,
+                         const int tag = 0)
+        {
+            if (mItemImage)
+                mItemImage->decRef();
+            mItem = 0;
+            mItemColor = 1;
+
+            if (command)
+            {
+                mText = command->getSymbol();
+                mItemImage = command->getImage();
+                if (mItemImage)
+                {
+                    mItemImage->incRef();
+                }
+                else if (mText.empty())
+                {
+                    mSource = DRAGDROP_SOURCE_EMPTY;
+                    mTag = 0;
+                    return;
+                }
+            }
+            else
+            {
+                mText.clear();
+                mItemImage = nullptr;
             }
             mSource = source;
+            mTag = tag;
         }
 
         void clear()
@@ -107,6 +149,7 @@ class DragDrop
             mItemColor = 1;
             mItemImage = nullptr;
             mSource = DRAGDROP_SOURCE_EMPTY;
+            mText.clear();
         }
 
         bool isEmpty() const
@@ -145,6 +188,12 @@ class DragDrop
         {
         }
 
+        const std::string &getText()
+        { return mText; }
+
+        int getTag()
+        { return mTag; }
+
     private:
         int mItem;
         uint8_t mItemColor;
@@ -152,6 +201,8 @@ class DragDrop
         int mSelItem;
         uint8_t mSelItemColor;
         DragDropSource mSource;
+        std::string mText;
+        int mTag;
 };
 
 extern DragDrop dragDrop;

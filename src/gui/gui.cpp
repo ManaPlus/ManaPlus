@@ -438,9 +438,19 @@ void Gui::draw()
         const Image *const image = dragDrop.getItemImage();
         if (image)
         {
-            const int tPosX = mouseX - (image->mBounds.w / 2);
-            const int tPosY = mouseY - (image->mBounds.h / 2);
-            g2->drawImage(image, tPosX, tPosY);
+            const int posX = mouseX - (image->mBounds.w / 2);
+            const int posY = mouseY - (image->mBounds.h / 2);
+            g2->drawImage(image, posX, posY);
+        }
+        if (mGuiFont)
+        {
+            const std::string &str = dragDrop.getText();
+            if (!str.empty())
+            {
+                const int posX = mouseX - mGuiFont->getWidth(str) / 2;
+                const int posY = mouseY + (image ? image->mBounds.h / 2 : 0);
+                mGuiFont->drawString(g2, str, posX, posY);
+            }
         }
 
         Image *const mouseCursor = mMouseCursors->get(mCursorType);

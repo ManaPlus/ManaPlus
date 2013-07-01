@@ -63,6 +63,8 @@ class SpellManager final
         std::string autoComplete(const std::string &partName)
                                  const A_WARN_UNUSED;
 
+        void swap(const int id1, const int id2);
+
     private:
         void fillSpells();
 

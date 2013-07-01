@@ -22,18 +22,19 @@
 
 #include "gui/widgets/spellshortcutcontainer.h"
 
+#include "client.h"
+#include "dragdrop.h"
+#include "itemshortcut.h"
+#include "keyboardconfig.h"
+#include "localplayer.h"
+#include "spellshortcut.h"
+
 #include "gui/inventorywindow.h"
 #include "gui/okdialog.h"
 #include "gui/shortcutwindow.h"
 #include "gui/spellpopup.h"
 #include "gui/viewport.h"
 #include "gui/textcommandeditor.h"
-
-#include "client.h"
-#include "spellshortcut.h"
-#include "itemshortcut.h"
-#include "keyboardconfig.h"
-#include "localplayer.h"
 
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
@@ -117,8 +118,7 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
         const int itemX = (i % mGridWidth) * mBoxWidth;
         const int itemY = (i / mGridWidth) * mBoxHeight;
 
-        const int itemId = spellShortcut->getItem(
-            (mNumber * SPELL_SHORTCUT_ITEMS) + i);
+        const int itemId = getItemByIndex(i);
         if (selectedId >= 0 && itemId == selectedId)
         {
             g->drawRectangle(gcn::Rectangle(itemX + 1, itemY + 1,
@@ -154,23 +154,28 @@ void SpellShortcutContainer::mouseDragged(gcn::MouseEvent &event)
 {
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-        if (!mSpellMoved && mSpellClicked)
+        if (dragDrop.isEmpty() && mSpellClicked)
         {
+            mSpellClicked = false;
             const int index = getIndexFromGrid(event.getX(), event.getY());
 
             if (index == -1)
                 return;
 
-            const int itemId = spellShortcut->getItem(
-                (mNumber * SPELL_SHORTCUT_ITEMS) + index);
-
+            const int itemId = getItemByIndex(index);
             if (itemId < 0)
                 return;
-        }
-        if (mSpellMoved)
-        {
-            mCursorPosX = event.getX();
-            mCursorPosY = event.getY();
+            event.consume();
+            TextCommand *const spell = spellManager->getSpell(itemId);
+            if (spell)
+            {
+                dragDrop.dragCommand(spell, DRAGDROP_SOURCE_SPELLS, index);
+            }
+            else
+            {
+                dragDrop.clear();
+                mSpellClicked = false;
+            }
         }
     }
 }
@@ -185,6 +190,9 @@ void SpellShortcutContainer::mousePressed(gcn::MouseEvent &event)
     const unsigned int eventButton = event.getButton();
     if (eventButton == gcn::MouseEvent::LEFT)
     {
+        const int itemId = getItemByIndex(index);
+        if (itemId > 0)
+            mSpellClicked = true;
     }
     else if (eventButton == gcn::MouseEvent::RIGHT)
     {
@@ -194,8 +202,7 @@ void SpellShortcutContainer::mousePressed(gcn::MouseEvent &event)
         if (!spellShortcut || !spellManager)
             return;
 
-        const int itemId = spellShortcut->getItem(
-            (mNumber * SPELL_SHORTCUT_ITEMS) + index);
+        const int itemId = getItemByIndex(index);
         spellManager->invoke(itemId);
     }
 }
@@ -208,43 +215,66 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
     const int index = getIndexFromGrid(event.getX(), event.getY());
 
     if (index == -1)
+    {
+        dragDrop.clear();
         return;
+    }
 
-    const int itemId = spellShortcut->getItem(
-        (mNumber * SPELL_SHORTCUT_ITEMS) + index);
+    const int itemId = getItemByIndex(index);
     const unsigned int eventButton = event.getButton();
 
     if (eventButton == gcn::MouseEvent::LEFT)
     {
+        mSpellClicked = false;
+
         if (itemId < 0)
             return;
 
         const int selectedId = spellShortcut->getSelectedItem();
+        event.consume();
 
-        if (selectedId != itemId)
+        if (!dragDrop.isEmpty())
         {
-            const TextCommand *const spell = spellManager->getSpell(itemId);
-            if (spell && !spell->isEmpty())
+            if (dragDrop.getSource() == DRAGDROP_SOURCE_SPELLS)
+            {
+                const int oldIndex = dragDrop.getTag();
+                const int oldItemId = getItemByIndex(oldIndex);
+                const int idx = mNumber * SPELL_SHORTCUT_ITEMS;
+                if (spellManager)
+                {
+                    spellManager->swap(idx + index, idx + oldIndex);
+                    spellManager->save();
+                }
+            }
+        }
+        else
+        {
+            if (selectedId != itemId)
+            {
+                const TextCommand *const
+                    spell = spellManager->getSpell(itemId);
+                if (spell && !spell->isEmpty())
+                {
+                    const int num = itemShortcutWindow->getTabIndex();
+                    if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
+                        && itemShortcut[num])
+                    {
+                        itemShortcut[num]->setItemSelected(
+                            spell->getId() + SPELL_MIN_ID);
+                    }
+                    spellShortcut->setItemSelected(spell->getId());
+                }
+            }
+            else
             {
                 const int num = itemShortcutWindow->getTabIndex();
                 if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
                     && itemShortcut[num])
                 {
-                    itemShortcut[num]->setItemSelected(
-                        spell->getId() + SPELL_MIN_ID);
+                    itemShortcut[num]->setItemSelected(-1);
                 }
-                spellShortcut->setItemSelected(spell->getId());
+                spellShortcut->setItemSelected(-1);
             }
-        }
-        else
-        {
-            const int num = itemShortcutWindow->getTabIndex();
-            if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
-                && itemShortcut[num])
-            {
-                itemShortcut[num]->setItemSelected(-1);
-            }
-            spellShortcut->setItemSelected(-1);
         }
     }
     else if (eventButton == gcn::MouseEvent::RIGHT)
@@ -269,9 +299,7 @@ void SpellShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     if (index == -1)
         return;
 
-    const int itemId = spellShortcut->getItem(
-        (mNumber * SPELL_SHORTCUT_ITEMS) + index);
-
+    const int itemId = getItemByIndex(index);
     mSpellPopup->setVisible(false);
     const TextCommand *const spell = spellManager->getSpell(itemId);
     if (spell && !spell->isEmpty())
@@ -295,4 +323,10 @@ void SpellShortcutContainer::widgetHidden(const gcn::Event &event A_UNUSED)
 {
     if (mSpellPopup)
         mSpellPopup->setVisible(false);
+}
+
+int SpellShortcutContainer::getItemByIndex(const int index)
+{
+    return spellShortcut->getItem(
+        (mNumber * SPELL_SHORTCUT_ITEMS) + index);
 }

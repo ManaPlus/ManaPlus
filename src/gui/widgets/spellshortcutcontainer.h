@@ -79,6 +79,8 @@ class SpellShortcutContainer final : public ShortcutContainer
 
         void setWidget2(const Widget2 *const widget) override;
 
+        int getItemByIndex(const int index);
+
     private:
         TextCommand *mSpellMoved;
         SpellPopup *mSpellPopup;

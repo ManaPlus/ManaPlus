@@ -393,3 +393,37 @@ std::string SpellManager::autoComplete(const std::string &partName) const
     }
     return newName;
 }
+
+void SpellManager::swap(const int id1, const int id2)
+{
+    TextCommand *const spell1 = mSpells[id1];
+    TextCommand *const spell2 = mSpells[id2];
+    // swap in map
+    mSpells[id1] = spell2;
+    mSpells[id2] = spell1;
+
+    // swap id
+    int tmp = spell1->getId();
+    spell1->setId(spell2->getId());
+    spell2->setId(tmp);
+
+    // swap in vector
+    const int sz = SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS;
+    for (unsigned f = 0; f < sz; f++)
+    {
+        const TextCommand *const spellA = mSpellsVector[f];
+        if (spellA == spell1)
+        {
+            for (unsigned d = 0; d < sz; d++)
+            {
+                const TextCommand *const spellB = mSpellsVector[d];
+                if (spellB == spell2)
+                {
+                    mSpellsVector[f] = spell2;
+                    mSpellsVector[d] = spell1;
+                    return;
+                }
+            }
+        }
+    }
+}
