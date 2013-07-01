@@ -495,8 +495,9 @@ int BrowserBox::calcHeight()
         else if (mEnableImages && row.find("~~~", 0) == 0)
         {
             std::string str = row.substr(3);
-            if (str.size() > 2 && str.substr(str.size() - 1) == "~")
-                str = str.substr(0, str.size() - 1);
+            const size_t sz = str.size();
+            if (sz > 2 && str.substr(sz - 1) == "~")
+                str = str.substr(0, sz - 1);
             Image *const img = resman->getImage(str);
             if (img)
             {
