@@ -316,6 +316,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("uselonglivesprites", false);
     AddDEF("screenDensity", 0);
     AddDEF("cfgver", 0);
+    AddDEF("enableDebugLog", false);
     return configData;
 }
 
