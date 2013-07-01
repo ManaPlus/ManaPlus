@@ -338,10 +338,12 @@ std::string& replaceAll(std::string& context, const std::string& from,
         return context;
     size_t lookHere = 0;
     size_t foundHere;
+    const size_t fromSize = from.size();
+    const size_t toSize = to.size();
     while ((foundHere = context.find(from, lookHere)) != std::string::npos)
     {
-        context.replace(foundHere, from.size(), to);
-        lookHere = foundHere + to.size();
+        context.replace(foundHere, fromSize, to);
+        lookHere = foundHere + toSize;
     }
     return context;
 }
@@ -545,8 +547,9 @@ std::string packList(const std::list<std::string> &list)
         str.append(*i).append("|");
         ++ i;
     }
-    if (str.size() > 1)
-        str = str.substr(0, str.size() - 1);
+    const size_t sz = str.size();
+    if (sz > 1)
+        str = str.substr(0, sz - 1);
     return str;
 }
 
@@ -641,9 +644,10 @@ std::string &removeProtocol(std::string &url)
 
 bool strStartWith(const std::string &str1, const std::string &str2)
 {
-    if (str1.size() < str2.size())
+    const size_t sz2 = str2.size();
+    if (str1.size() < sz2)
         return false;
-    return str1.substr(0, str2.size()) == str2;
+    return str1.substr(0, sz2) == str2;
 }
 
 std::string getDateString()
