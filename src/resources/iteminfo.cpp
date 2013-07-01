@@ -239,14 +239,33 @@ SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(const int direction) const
 void ItemInfo::setSpriteOrder(int *const ptr, const int direction,
                               const int n, const int def) const
 {
-    if (direction == -1)
+    switch (direction)
     {
-        for (int f = 0; f < 10; f ++)
+        case -1:
         {
-            if (ptr[f] == def)
-                ptr[f] = n;
+            for (int f = 0; f < 10; f ++)
+            {
+                if (ptr[f] == def)
+                    ptr[f] = n;
+            }
+            return;
         }
-        return;
+        case -2:
+        {
+            ptr[DIRECTION_DOWN] = n;
+            ptr[DIRECTION_DOWNLEFT] = n;
+            ptr[DIRECTION_DOWNRIGHT] = n;
+            return;
+        }
+        case -3:
+        {
+            ptr[DIRECTION_UP] = n;
+            ptr[DIRECTION_UPLEFT] = n;
+            ptr[DIRECTION_UPRIGHT] = n;
+            return;
+        }
+        default:
+            break;
     }
     if (direction < 0 || direction >= 9)
         return;
