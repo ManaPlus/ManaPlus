@@ -519,8 +519,9 @@ void TextField::fixScroll()
 
 void TextField::setCaretPosition(unsigned int position)
 {
-    if (position > mText.size())
-        mCaretPosition = static_cast<int>(mText.size());
+    const unsigned int sz = mText.size();
+    if (position > sz)
+        mCaretPosition = static_cast<int>(sz);
     else
         mCaretPosition = position;
 
