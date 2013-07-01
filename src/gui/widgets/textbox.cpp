@@ -57,7 +57,8 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
     // point and try to beat it
     mMinWidth = minDimension;
 
-    size_t spacePos = text.rfind(" ", text.size());
+    const size_t textSize = text.size();
+    size_t spacePos = text.rfind(" ", textSize);
 
     if (spacePos != std::string::npos)
     {
@@ -80,7 +81,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
         newlinePos = text.find("\n", lastNewlinePos);
 
         if (newlinePos == std::string::npos)
-            newlinePos = text.size();
+            newlinePos = textSize;
 
         std::string line =
             text.substr(lastNewlinePos, newlinePos - lastNewlinePos);
@@ -133,7 +134,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
                     lastNewlinePos = 0;
                     newlinePos = text.find("\n", lastNewlinePos);
                     if (newlinePos == std::string::npos)
-                        newlinePos = text.size();
+                        newlinePos = textSize;
                     line = text.substr(lastNewlinePos, newlinePos -
                                        lastNewlinePos);
 //                    width = 0;
@@ -314,8 +315,9 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
                     / getFont()->getHeight();
                 mCaretRow += rowsPerPage;
 
-                if (mCaretRow >= static_cast<int>(mTextRows.size()))
-                    mCaretRow = static_cast<int>(mTextRows.size()) - 1;
+                const int sz = static_cast<int>(mTextRows.size());
+                if (mCaretRow >= sz)
+                    mCaretRow = sz - 1;
             }
             break;
         }
