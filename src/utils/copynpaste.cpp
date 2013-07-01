@@ -365,8 +365,9 @@ bool retrieveBuffer(std::string& text, size_t& pos)
         if (data)
         {
             // check cursor position
-            if (pos > text.size())
-                pos = text.size();
+            const size_t sz = text.size();
+            if (pos > sz)
+                pos = sz;
 
             text.insert(pos, data);
             pos += strlen(data);
