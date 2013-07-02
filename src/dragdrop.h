@@ -24,6 +24,8 @@
 #include "item.h"
 #include "textcommand.h"
 
+#include "gui/widgets/skillinfo.h"
+
 #include "resources/image.h"
 
 #include "localconsts.h"
@@ -37,6 +39,7 @@ enum DragDropSource
     DRAGDROP_SOURCE_TRADE,
     DRAGDROP_SOURCE_OUTFIT,
     DRAGDROP_SOURCE_SPELLS,
+    DRAGDROP_SOURCE_SKILLS,
     DRAGDROP_SOURCE_GROUND,
     DRAGDROP_SOURCE_DROP,
     DRAGDROP_SOURCE_SHORTCUTS,
@@ -127,7 +130,7 @@ class DragDrop
                 }
                 else if (mText.empty())
                 {
-                    mSource = DRAGDROP_SOURCE_EMPTY;
+                    mSource = source;
                     mTag = 0;
                     return;
                 }
@@ -139,6 +142,33 @@ class DragDrop
             }
             mSource = source;
             mTag = tag;
+        }
+
+        void dragSkill(const SkillInfo *const info,
+                       const DragDropSource source,
+                       const int tag = 0)
+        {
+            if (mItemImage)
+                mItemImage->decRef();
+            mItem = 0;
+            mItemColor = 1;
+            mText.clear();
+            mItemImage = nullptr;
+            mSource = DRAGDROP_SOURCE_EMPTY;
+            mTag = 0;
+            if (info)
+            {
+                const SkillData *const data = info->data;
+                if (data)
+                {
+                    mText = data->name;
+                    mItemImage = data->icon;
+                    if (mItemImage)
+                        mItemImage->incRef();
+                    mSource = source;
+                    mTag = tag;
+                }
+            }
         }
 
         void clear()

@@ -22,6 +22,8 @@
 
 #include "gui/skilldialog.h"
 
+#include "dragdrop.h"
+
 #include "gui/widgets/skillmodel.h"
 
 #include "debug.h"
@@ -40,7 +42,8 @@ class SkillListBox final : public ListBox
             mTextColor2(getThemeColor(Theme::TEXT_OUTLINE)),
             mTextPadding(mSkin ? mSkin->getOption("textPadding", 34) : 34),
             mSpacing(mSkin ? mSkin->getOption("spacing", 0) : 0),
-            mRowHeight(getFont()->getHeight() * 2 + mSpacing + 2 * mPadding)
+            mRowHeight(getFont()->getHeight() * 2 + mSpacing + 2 * mPadding),
+            mSkillClicked(false)
         {
             if (mRowHeight < 34)
                 mRowHeight = 34;
@@ -127,21 +130,69 @@ class SkillListBox final : public ListBox
         unsigned int getRowHeight() const override
         { return mRowHeight; }
 
+        const SkillInfo *getSkillByEvent(const gcn::MouseEvent &event) const
+        {
+            const int y = (event.getY() + mPadding) / getRowHeight();
+            if (!mModel || y >= mModel->getNumberOfElements())
+                return nullptr;
+            const SkillInfo *const skill = mModel->getSkillAt(y);
+            if (!skill)
+                return nullptr;
+            return skill;
+        }
+
         void mouseMoved(gcn::MouseEvent &event) override
         {
             ListBox::mouseMoved(event);
-            if (!viewport)
+            if (!viewport || !dragDrop.isEmpty())
                 return;
 
-            const int y = (event.getY() + mPadding) / getRowHeight();
-            if (!mModel || y >= mModel->getNumberOfElements())
-                return;
-            const SkillInfo *const skill = mModel->getSkillAt(y);
+            const SkillInfo *const skill = getSkillByEvent(event);
             if (!skill)
                 return;
 
             mPopup->show(viewport->getMouseX(), viewport->getMouseY(),
                 skill->data->dispName, skill->data->description);
+        }
+
+        void mouseDragged(gcn::MouseEvent &event)
+        {
+            if (event.getButton() == gcn::MouseEvent::LEFT)
+            {
+                if (dragDrop.isEmpty())
+                {
+                    if (mSkillClicked)
+                    {
+                        mSkillClicked = false;
+                        const SkillInfo *const skill = getSkillByEvent(event);
+                        if (!skill)
+                            return;
+                        dragDrop.dragSkill(skill, DRAGDROP_SOURCE_SKILLS);
+                    }
+                    ListBox::mouseDragged(event);
+                }
+            }
+            else
+            {
+                ListBox::mouseDragged(event);
+            }
+        }
+
+        void mousePressed(gcn::MouseEvent &event)
+        {
+            ListBox::mousePressed(event);
+            if (event.getButton() == gcn::MouseEvent::LEFT)
+            {
+                const SkillInfo *const skill = getSkillByEvent(event);
+                if (!skill)
+                    return;
+                mSkillClicked = true;
+            }
+        }
+
+        void mouseReleased(gcn::MouseEvent &event)
+        {
+            ListBox::mouseReleased(event);
         }
 
         void mouseExited(gcn::MouseEvent &event A_UNUSED) override
@@ -158,6 +209,7 @@ class SkillListBox final : public ListBox
         int mTextPadding;
         int mSpacing;
         int mRowHeight;
+        bool mSkillClicked;
 };
 
 class SkillTab final : public Tab

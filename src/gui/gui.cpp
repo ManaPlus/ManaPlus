@@ -95,6 +95,8 @@ Gui::Gui(Graphics *const graphics) :
     mLastMouseRealY(0),
 #endif
     mFocusListeners(),
+    mForegroundColor(Theme::getThemeColor(Theme::TEXT)),
+    mForegroundColor2(Theme::getThemeColor(Theme::TEXT_OUTLINE)),
     mCustomCursor(false)
 {
     logger->log1("Initializing GUI...");
@@ -449,6 +451,7 @@ void Gui::draw()
             {
                 const int posX = mouseX - mGuiFont->getWidth(str) / 2;
                 const int posY = mouseY + (image ? image->mBounds.h / 2 : 0);
+                g2->setColorAll(mForegroundColor, mForegroundColor2);
                 mGuiFont->drawString(g2, str, posX, posY);
             }
         }

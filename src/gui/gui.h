@@ -26,6 +26,7 @@
 #include "resources/cursor.h"
 #include "resources/image.h"
 
+#include <guichan/color.hpp>
 #include <guichan/focuslistener.hpp>
 #include <guichan/gui.hpp>
 
@@ -182,6 +183,8 @@ class Gui final : public gcn::Gui
         typedef std::list<gcn::FocusListener*> FocusListenerList;
         typedef FocusListenerList::iterator FocusListenerIterator;
         FocusListenerList mFocusListeners;
+        gcn::Color mForegroundColor;
+        gcn::Color mForegroundColor2;
         bool mCustomCursor;                 /**< Show custom cursor */
 };
 
