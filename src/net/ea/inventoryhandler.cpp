@@ -95,6 +95,12 @@ InventoryHandler::~InventoryHandler()
     mStorage = nullptr;
 }
 
+void InventoryHandler::clear()
+{
+    delete mStorage;
+    mStorage = nullptr;
+}
+
 bool InventoryHandler::canSplit(const Item *const item A_UNUSED) const
 {
     return false;

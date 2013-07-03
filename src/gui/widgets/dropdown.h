@@ -118,7 +118,7 @@ class DropDown final : public gcn::ActionListener,
 
         void foldUp();
 
-        void hideDrop();
+        void hideDrop(bool event = true);
 
         int getSelected() const;
 

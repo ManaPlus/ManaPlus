@@ -355,9 +355,10 @@ void DropDown::keyPressed(gcn::KeyEvent& keyEvent)
     keyEvent.consume();
 }
 
-void DropDown::hideDrop()
+void DropDown::hideDrop(bool event)
 {
-    distributeActionEvent();
+    if (event)
+        distributeActionEvent();
     mPopup->setVisible(false);
 }
 

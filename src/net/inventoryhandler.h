@@ -36,6 +36,8 @@ class InventoryHandler
         virtual ~InventoryHandler()
         { }
 
+        virtual void clear() = 0;
+
         virtual void equipItem(const Item *const item) const = 0;
 
         virtual void unequipItem(const Item *const item) const = 0;

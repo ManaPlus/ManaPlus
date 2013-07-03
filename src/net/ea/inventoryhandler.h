@@ -149,6 +149,8 @@ class InventoryHandler : public Net::InventoryHandler
 
         ~InventoryHandler();
 
+        void clear();
+
         bool canSplit(const Item *const item) const override A_WARN_UNUSED;
 
         void splitItem(const Item *const item,

@@ -275,7 +275,7 @@ InventoryWindow::~InventoryWindow()
     if (!invInstances.empty())
         invInstances.front()->updateDropButton();
 
-    mSortDropDown->hideDrop();
+    mSortDropDown->hideDrop(false);
     delete mSortModel;
     mSortModel = nullptr;
     //delete mTextPopup;

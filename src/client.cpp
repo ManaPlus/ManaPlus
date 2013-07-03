@@ -73,6 +73,7 @@
 #include "net/gamehandler.h"
 #include "net/generalhandler.h"
 #include "net/guildhandler.h"
+#include "net/inventoryhandler.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
@@ -764,6 +765,9 @@ void Client::gameClear()
 
     SDL_RemoveTimer(mLogicCounterId);
     SDL_RemoveTimer(mSecondsCounterId);
+
+    if (Net::getInventoryHandler())
+        Net::getInventoryHandler()->clear();
 
     // Unload XML databases
     CharDB::unload();
