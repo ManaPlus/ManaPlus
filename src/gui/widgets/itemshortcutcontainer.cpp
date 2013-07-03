@@ -386,6 +386,8 @@ void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
                 selShortcut->setItem(index, dragDrop.getItem(),
                     dragDrop.getItemColor());
             }
+            dragDrop.clear();
+            dragDrop.deselect();
         }
 
         mItemClicked = false;

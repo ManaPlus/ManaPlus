@@ -252,13 +252,18 @@ void DropShortcutContainer::mouseReleased(gcn::MouseEvent &event)
             dragDrop.clear();
             return;
         }
-        if (!dragDrop.isEmpty() && dragDrop.getSource()
-            == DRAGDROP_SOURCE_INVENTORY)
+        if (!dragDrop.isEmpty())
         {
-            dropShortcut->setItems(index, dragDrop.getItem(),
-                dragDrop.getItemColor());
-            dragDrop.clear();
-            dragDrop.deselect();
+            DragDropSource src = dragDrop.getSource();
+            if (src == DRAGDROP_SOURCE_INVENTORY
+                || src == DRAGDROP_SOURCE_OUTFIT
+                || src == DRAGDROP_SOURCE_DROP)
+            {
+                dropShortcut->setItems(index, dragDrop.getItem(),
+                    dragDrop.getItemColor());
+                dragDrop.clear();
+                dragDrop.deselect();
+            }
         }
 
         mItemClicked = false;

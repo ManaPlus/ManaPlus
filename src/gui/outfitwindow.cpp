@@ -471,13 +471,18 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
         }
         mMoved = false;
         event.consume();
-        if (!dragDrop.isEmpty() && dragDrop.getSource()
-            == DRAGDROP_SOURCE_INVENTORY)
+        if (!dragDrop.isEmpty())
         {
-            mItems[mCurrentOutfit][index] = dragDrop.getItem();
-            mItemColors[mCurrentOutfit][index] = dragDrop.getItemColor();
-            dragDrop.clear();
-            dragDrop.deselect();
+            DragDropSource src = dragDrop.getSource();
+            if (src == DRAGDROP_SOURCE_INVENTORY
+                || src == DRAGDROP_SOURCE_OUTFIT
+                || src == DRAGDROP_SOURCE_DROP)
+            {
+                mItems[mCurrentOutfit][index] = dragDrop.getItem();
+                mItemColors[mCurrentOutfit][index] = dragDrop.getItemColor();
+                dragDrop.clear();
+                dragDrop.deselect();
+            }
         }
         if (mItemClicked)
             mItemClicked = false;

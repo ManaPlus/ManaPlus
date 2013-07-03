@@ -245,6 +245,8 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
                 {
                     spellManager->swap(idx + index, idx + oldIndex);
                     spellManager->save();
+                    dragDrop.clear();
+                    dragDrop.deselect();
                 }
             }
         }
