@@ -766,9 +766,6 @@ void Client::gameClear()
     SDL_RemoveTimer(mLogicCounterId);
     SDL_RemoveTimer(mSecondsCounterId);
 
-    if (Net::getInventoryHandler())
-        Net::getInventoryHandler()->clear();
-
     // Unload XML databases
     CharDB::unload();
     ColorDB::unload();
@@ -813,6 +810,9 @@ void Client::gameClear()
 
     delete gui;
     gui = nullptr;
+
+    if (Net::getInventoryHandler())
+        Net::getInventoryHandler()->clear();
 
     if (logger)
         logger->log1("Quitting3");
