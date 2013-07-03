@@ -40,6 +40,7 @@
 
 #include "net/net.h"
 #include "net/inventoryhandler.h"
+#include "net/tradehandler.h"
 
 #include "utils/gettext.h"
 
@@ -400,8 +401,21 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
         if (item && mDescItems && chatWindow)
             chatWindow->addItemText(item->getInfo().getName());
 
-        const DragDropSource src = mInventory->isMainInventory()
-            ? DRAGDROP_SOURCE_INVENTORY : DRAGDROP_SOURCE_STORAGE;
+        DragDropSource src = DRAGDROP_SOURCE_EMPTY;
+        switch (mInventory->getType())
+        {
+            case Inventory::INVENTORY:
+                src = DRAGDROP_SOURCE_INVENTORY;
+                break;
+            case Inventory::STORAGE:
+                src = DRAGDROP_SOURCE_STORAGE;
+                break;
+            case Inventory::TRADE:
+                src = DRAGDROP_SOURCE_TRADE;
+                break;
+            default:
+                break;
+        }
         if (mSelectedIndex == index && mClicks != 2)
         {
             dragDrop.dragItem(item, src, index);
@@ -478,8 +492,21 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
     else
     {
         const DragDropSource src = dragDrop.getSource();
-        const DragDropSource dst = mInventory->isMainInventory()
-            ? DRAGDROP_SOURCE_INVENTORY : DRAGDROP_SOURCE_STORAGE;
+        DragDropSource dst = DRAGDROP_SOURCE_EMPTY;
+        switch (mInventory->getType())
+        {
+            case Inventory::INVENTORY:
+                dst = DRAGDROP_SOURCE_INVENTORY;
+                break;
+            case Inventory::STORAGE:
+                dst = DRAGDROP_SOURCE_STORAGE;
+                break;
+            case Inventory::TRADE:
+                dst = DRAGDROP_SOURCE_TRADE;
+                break;
+            default:
+                break;
+        }
         int srcContainer = -1;
         int dstContainer = -1;
         Inventory *inventory = nullptr;
@@ -497,13 +524,27 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
             dstContainer = Inventory::INVENTORY;
             inventory = PlayerInfo::getStorageInventory();
         }
-        if (srcContainer != -1 && inventory)
+        if (src == DRAGDROP_SOURCE_INVENTORY
+            && dst == DRAGDROP_SOURCE_TRADE)
+        {
+            inventory = PlayerInfo::getInventory();
+        }
+
+        if (inventory)
         {
             const Item *const item = inventory->getItem(dragDrop.getTag());
             if (item)
             {
-                Net::getInventoryHandler()->moveItem2(srcContainer,
-                    item->getInvIndex(), item->getQuantity(), dstContainer);
+                if (srcContainer != -1)
+                {   // inventory <--> storage
+                    Net::getInventoryHandler()->moveItem2(srcContainer,
+                        item->getInvIndex(), item->getQuantity(),
+                        dstContainer);
+                }
+                else
+                {   // inventory --> trade
+                    Net::getTradeHandler()->addItem(item, item->getQuantity());
+                }
             }
         }
     }
