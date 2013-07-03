@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-06-24 12:53+0300\n"
-"PO-Revision-Date: 2013-06-24 10:23+0000\n"
+"POT-Creation-Date: 2013-07-03 18:01+0300\n"
+"PO-Revision-Date: 2013-07-03 15:07+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Hebrew (http://www.transifex.com/projects/p/manaplus/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -59,25 +59,25 @@ msgstr ""
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: full button name
-#: src/client.cpp:1150 src/gui/setup.cpp:57 src/gui/windowmenu.cpp:167
+#: src/client.cpp:1154 src/gui/setup.cpp:57 src/gui/windowmenu.cpp:167
 msgid "Setup"
 msgstr "הגדרות"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1154 src/gui/setup_perfomance.cpp:61
+#: src/client.cpp:1158 src/gui/setup_perfomance.cpp:61
 msgid "Perfomance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1157 src/gui/setup_video.cpp:245
+#: src/client.cpp:1161 src/gui/setup_video.cpp:245
 msgid "Video"
 msgstr "וידאו"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1160 src/gui/setup_theme.cpp:283
+#: src/client.cpp:1164 src/gui/setup_theme.cpp:283
 msgid "Theme"
 msgstr ""
 
@@ -88,40 +88,40 @@ msgstr ""
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1164 src/gui/didyouknowwindow.cpp:78
-#: src/gui/inventorywindow.cpp:230 src/gui/npcdialog.cpp:65
+#: src/client.cpp:1168 src/gui/didyouknowwindow.cpp:78
+#: src/gui/inventorywindow.cpp:231 src/gui/npcdialog.cpp:65
 #: src/gui/npcdialog.cpp:102 src/gui/popupmenu.cpp:574
 #: src/gui/questswindow.cpp:138 src/gui/shopwindow.cpp:80
 msgid "Close"
 msgstr "סגור"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1281
+#: src/client.cpp:1286
 msgid "Connecting to server"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1324
+#: src/client.cpp:1329
 msgid "Logging in"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1363
+#: src/client.cpp:1368
 msgid "Entering game world"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1483
+#: src/client.cpp:1488
 msgid "Requesting characters"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1522
+#: src/client.cpp:1527
 msgid "Connecting to the game server"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1535
+#: src/client.cpp:1540
 msgid "Changing game servers"
 msgstr ""
 
@@ -136,7 +136,7 @@ msgstr ""
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1592 src/client.cpp:1603 src/client.cpp:1775
+#: src/client.cpp:1597 src/client.cpp:1608 src/client.cpp:1783
 #: src/gui/changeemaildialog.cpp:168 src/gui/changepassworddialog.cpp:158
 #: src/gui/charcreatedialog.cpp:357 src/gui/charselectdialog.cpp:291
 #: src/gui/editserverdialog.cpp:216 src/gui/registerdialog.cpp:257
@@ -146,61 +146,66 @@ msgid "Error"
 msgstr "שגיאה"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1616
+#: src/client.cpp:1621
 msgid "Requesting registration details"
 msgstr ""
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1653
+#: src/client.cpp:1658
 msgid "Password Change"
 msgstr ""
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1655
+#: src/client.cpp:1660
 msgid "Password changed successfully!"
 msgstr ""
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1676
+#: src/client.cpp:1681
 msgid "Email Change"
 msgstr ""
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1678
+#: src/client.cpp:1683
 msgid "Email changed successfully!"
 msgstr ""
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1699
+#: src/client.cpp:1704
 msgid "Unregister Successful"
 msgstr ""
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1701
+#: src/client.cpp:1706
 msgid "Farewell, come back any time..."
 msgstr ""
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1956 src/client.cpp:1971 src/client.cpp:2014
-#: src/client.cpp:2030 src/client.cpp:2474 src/client.cpp:2482
+#: src/client.cpp:1964 src/client.cpp:1979 src/client.cpp:2022
+#: src/client.cpp:2038 src/client.cpp:2483 src/client.cpp:2491
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2170
+#: src/client.cpp:2179
 #, c-format
-msgid "Invalid update host: %s"
+msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2211 src/client.cpp:2218
+#: src/client.cpp:2220 src/client.cpp:2227
 msgid "Error creating updates directory!"
 msgstr "שגיאה ביצירת ספריית העדכונים!"
 
-#: src/client.cpp:2240 src/client.cpp:2253
+#: src/client.cpp:2249 src/client.cpp:2262
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
+msgstr ""
+
+#. TRANSLATORS: error message question
+#: src/client.cpp:3032
+msgid "Do you want to open support page?"
 msgstr ""
 
 #. TRANSLATORS: chat commands handling message
@@ -420,14 +425,14 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr "האפשרויות עבור /%s הינם \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:256 src/gui/widgets/chattab.cpp:454
+#: src/game.cpp:256 src/gui/widgets/chattab.cpp:464
 msgid "General"
 msgstr "כללי"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: debug window name
 #. TRANSLATORS: full button name
-#: src/game.cpp:272 src/gui/debugwindow.cpp:51 src/gui/widgets/chattab.cpp:456
+#: src/game.cpp:272 src/gui/debugwindow.cpp:51 src/gui/widgets/chattab.cpp:466
 #: src/gui/windowmenu.cpp:154
 msgid "Debug"
 msgstr ""
@@ -444,12 +449,12 @@ msgid "Saving screenshot failed!"
 msgstr "שמירת תמונת־מסך נכשלה"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:618
+#: src/game.cpp:619
 msgid "The connection to the server was lost."
 msgstr ""
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:620
+#: src/game.cpp:622
 msgid "Network Error"
 msgstr "שגיאת רשת"
 
@@ -478,19 +483,19 @@ msgid "Comment: %s"
 msgstr ""
 
 #. TRANSLATORS: bot checker window header
-#: src/gui/botcheckerwindow.cpp:268
+#: src/gui/botcheckerwindow.cpp:269
 msgid "Bot Checker"
 msgstr ""
 
 #. TRANSLATORS: bot checker window button
 #. TRANSLATORS: npc dialog button
-#: src/gui/botcheckerwindow.cpp:277 src/gui/npcdialog.cpp:104
+#: src/gui/botcheckerwindow.cpp:278 src/gui/npcdialog.cpp:104
 msgid "Reset"
 msgstr "אפס"
 
 #. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: relations table header
-#: src/gui/botcheckerwindow.cpp:304 src/gui/setup_relations.cpp:61
+#: src/gui/botcheckerwindow.cpp:305 src/gui/setup_relations.cpp:61
 msgid "Name"
 msgstr "שם"
 
@@ -498,7 +503,7 @@ msgstr "שם"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: input action name
 #. TRANSLATORS: player stat
-#: src/gui/botcheckerwindow.cpp:306 src/gui/popupmenu.cpp:146
+#: src/gui/botcheckerwindow.cpp:307 src/gui/popupmenu.cpp:146
 #: src/gui/popupmenu.cpp:241 src/gui/popupmenu.cpp:639
 #: src/gui/setupactiondata.h:51 src/net/eathena/generalhandler.cpp:257
 #: src/net/tmwa/generalhandler.cpp:292
@@ -508,7 +513,7 @@ msgstr "תקוף"
 #. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: input action name
-#: src/gui/botcheckerwindow.cpp:308 src/gui/popupmenu.cpp:225
+#: src/gui/botcheckerwindow.cpp:309 src/gui/popupmenu.cpp:225
 #: src/gui/setupactiondata.h:93
 msgid "Talk"
 msgstr "דבר"
@@ -516,7 +521,7 @@ msgstr "דבר"
 #. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/botcheckerwindow.cpp:310 src/gui/popupmenu.cpp:215
+#: src/gui/botcheckerwindow.cpp:311 src/gui/popupmenu.cpp:215
 #: src/gui/popupmenu.cpp:232 src/gui/popupmenu.cpp:373
 #: src/gui/popupmenu.cpp:509 src/gui/popupmenu.cpp:648
 #: src/gui/popupmenu.cpp:723 src/gui/setupactiondata.h:1856
@@ -524,7 +529,7 @@ msgid "Move"
 msgstr ""
 
 #. TRANSLATORS: bot checker window table header
-#: src/gui/botcheckerwindow.cpp:312
+#: src/gui/botcheckerwindow.cpp:313
 msgid "Result"
 msgstr ""
 
@@ -644,7 +649,7 @@ msgstr "מקסימום"
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
 #: src/gui/buyselldialog.cpp:39 src/gui/buyselldialog.cpp:50
-#: src/gui/inventorywindow.cpp:201 src/gui/setup_other.cpp:245
+#: src/gui/inventorywindow.cpp:202 src/gui/setup_other.cpp:245
 #: src/gui/windowmenu.cpp:146
 msgid "Shop"
 msgstr "חנות"
@@ -848,7 +853,7 @@ msgstr "נקבה"
 #. TRANSLATORS: settings group
 #: src/gui/charcreatedialog.cpp:112 src/gui/registerdialog.cpp:117
 #: src/gui/setupactiondata.h:1779 src/gui/setupactiondata.h:1868
-#: src/gui/setup_audio.cpp:158 src/gui/setup_chat.cpp:177
+#: src/gui/setup_audio.cpp:158 src/gui/setup_chat.cpp:181
 #: src/gui/setup_other.cpp:319 src/gui/setup_visual.cpp:175
 msgid "Other"
 msgstr ""
@@ -862,7 +867,7 @@ msgstr "אנא חלק %d נקודות"
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
-#: src/gui/charcreatedialog.cpp:122 src/gui/charselectdialog.cpp:582
+#: src/gui/charcreatedialog.cpp:122 src/gui/charselectdialog.cpp:584
 #: src/gui/socialwindow.cpp:1160
 msgid "Create"
 msgstr "צור"
@@ -916,7 +921,7 @@ msgstr ""
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: updater window button
-#: src/gui/charselectdialog.cpp:101 src/gui/charselectdialog.cpp:577
+#: src/gui/charselectdialog.cpp:101 src/gui/charselectdialog.cpp:579
 #: src/gui/updaterwindow.cpp:183
 msgid "Play"
 msgstr "שחק"
@@ -1078,19 +1083,19 @@ msgid "Whispering to %s: %s"
 msgstr "לוחש אל %s: %s"
 
 #. TRANSLATORS: confirm dialog button
-#: src/gui/confirmdialog.cpp:50
+#: src/gui/confirmdialog.cpp:48
 msgid "Yes"
 msgstr "כן"
 
 #. TRANSLATORS: confirm dialog button
 #. TRANSLATORS: texture compression type
-#: src/gui/confirmdialog.cpp:52 src/gui/setup_perfomance.cpp:50
+#: src/gui/confirmdialog.cpp:50 src/gui/setup_perfomance.cpp:50
 msgid "No"
 msgstr "לא"
 
 #. TRANSLATORS: confirm dialog button
 #. TRANSLATORS: popup menu item
-#: src/gui/confirmdialog.cpp:55 src/gui/popupmenu.cpp:2348
+#: src/gui/confirmdialog.cpp:53 src/gui/popupmenu.cpp:2348
 #: src/gui/popupmenu.cpp:2361 src/gui/popupmenu.cpp:2376
 #: src/gui/popupmenu.cpp:2405
 msgid "Ignore"
@@ -1383,7 +1388,7 @@ msgstr ""
 
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: inventory button
-#: src/gui/equipmentwindow.cpp:56 src/gui/inventorywindow.cpp:203
+#: src/gui/equipmentwindow.cpp:56 src/gui/inventorywindow.cpp:204
 #: src/gui/windowmenu.cpp:99
 msgid "Equipment"
 msgstr "לבוש"
@@ -1391,8 +1396,8 @@ msgstr "לבוש"
 #. TRANSLATORS: equipment window button
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
-#: src/gui/equipmentwindow.cpp:63 src/gui/inventorywindow.cpp:182
-#: src/gui/inventorywindow.cpp:662 src/gui/popupmenu.cpp:2575
+#: src/gui/equipmentwindow.cpp:63 src/gui/inventorywindow.cpp:183
+#: src/gui/inventorywindow.cpp:663 src/gui/popupmenu.cpp:2575
 msgid "Unequip"
 msgstr "הורד"
 
@@ -1416,7 +1421,7 @@ msgstr "ציוד"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
 #. TRANSLATORS: popup menu item
-#: src/gui/inventorywindow.cpp:178 src/gui/inventorywindow.cpp:667
+#: src/gui/inventorywindow.cpp:179 src/gui/inventorywindow.cpp:668
 #: src/gui/outfitwindow.cpp:67 src/gui/popupmenu.cpp:2580
 msgid "Equip"
 msgstr "השתמש"
@@ -1424,22 +1429,22 @@ msgstr "השתמש"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: skills dialog button
-#: src/gui/inventorywindow.cpp:180 src/gui/inventorywindow.cpp:673
+#: src/gui/inventorywindow.cpp:181 src/gui/inventorywindow.cpp:674
 #: src/gui/popupmenu.cpp:1896 src/gui/popupmenu.cpp:2588
-#: src/gui/skilldialog.cpp:210
+#: src/gui/skilldialog.cpp:263
 msgid "Use"
 msgstr "השתמש"
 
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
-#: src/gui/inventorywindow.cpp:195 src/gui/inventorywindow.cpp:770
+#: src/gui/inventorywindow.cpp:196 src/gui/inventorywindow.cpp:771
 #: src/gui/popupmenu.cpp:2597
 msgid "Drop..."
 msgstr ""
 
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
-#: src/gui/inventorywindow.cpp:197 src/gui/popupmenu.cpp:2611
+#: src/gui/inventorywindow.cpp:198 src/gui/popupmenu.cpp:2611
 msgid "Split"
 msgstr "פצל"
 
@@ -1448,7 +1453,7 @@ msgstr "פצל"
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: full button name
-#: src/gui/inventorywindow.cpp:199 src/gui/outfitwindow.cpp:60
+#: src/gui/inventorywindow.cpp:200 src/gui/outfitwindow.cpp:60
 #: src/gui/popupmenu.cpp:527 src/gui/setupactiondata.h:1864
 #: src/gui/windowmenu.cpp:150
 msgid "Outfits"
@@ -1458,7 +1463,7 @@ msgstr ""
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: setup button
-#: src/gui/inventorywindow.cpp:226 src/gui/inventorywindow.cpp:762
+#: src/gui/inventorywindow.cpp:227 src/gui/inventorywindow.cpp:763
 #: src/gui/popupmenu.cpp:1816 src/gui/popupmenu.cpp:1932
 #: src/gui/popupmenu.cpp:1970 src/gui/setup.cpp:87
 msgid "Store"
@@ -1466,12 +1471,12 @@ msgstr "אחסן"
 
 #. TRANSLATORS: storage button
 #. TRANSLATORS: popup menu item
-#: src/gui/inventorywindow.cpp:228 src/gui/popupmenu.cpp:1840
+#: src/gui/inventorywindow.cpp:229 src/gui/popupmenu.cpp:1840
 msgid "Retrieve"
 msgstr "החזר"
 
 #. TRANSLATORS: status window label
-#: src/gui/inventorywindow.cpp:580 src/gui/statuswindow.cpp:143
+#: src/gui/inventorywindow.cpp:581 src/gui/statuswindow.cpp:143
 #: src/gui/statuswindow.cpp:284 src/gui/statuswindow.cpp:337
 #: src/gui/widgets/characterdisplay.cpp:126
 #, c-format
@@ -1481,7 +1486,7 @@ msgstr "כסף: %s"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: full button name
-#: src/gui/inventorywindow.cpp:775 src/gui/popupmenu.cpp:2604
+#: src/gui/inventorywindow.cpp:776 src/gui/popupmenu.cpp:2604
 #: src/gui/windowmenu.cpp:138
 msgid "Drop"
 msgstr "השלך"
@@ -1823,7 +1828,7 @@ msgid "Failed to send as sender or letter invalid."
 msgstr "נכשלה השליחה מכיוון והשולח או המכתב בעלי שגיאה."
 
 #. TRANSLATORS: outfits window label
-#: src/gui/outfitwindow.cpp:69 src/gui/outfitwindow.cpp:558
+#: src/gui/outfitwindow.cpp:69 src/gui/outfitwindow.cpp:564
 #, c-format
 msgid "Outfit: %d"
 msgstr ""
@@ -1840,7 +1845,7 @@ msgstr ""
 
 #. TRANSLATORS: outfits window label
 #. TRANSLATORS: short key name
-#: src/gui/outfitwindow.cpp:78 src/gui/outfitwindow.cpp:564
+#: src/gui/outfitwindow.cpp:78 src/gui/outfitwindow.cpp:570
 #: src/gui/windowmenu.cpp:293
 #, c-format
 msgid "Key: %s"
@@ -2238,7 +2243,7 @@ msgstr ""
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: ignore/unignore action
 #: src/gui/popupmenu.cpp:2387 src/gui/popupmenu.cpp:2418
-#: src/playerrelations.cpp:465
+#: src/playerrelations.cpp:466
 msgid "Completely ignore"
 msgstr ""
 
@@ -2402,33 +2407,33 @@ msgid "Use same ip for game sub servers"
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/serverdialog.cpp:525
+#: src/gui/serverdialog.cpp:526
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/serverdialog.cpp:531
+#: src/gui/serverdialog.cpp:532
 msgid "Waiting for server..."
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/serverdialog.cpp:536
+#: src/gui/serverdialog.cpp:537
 msgid "Preparing download"
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/serverdialog.cpp:541
+#: src/gui/serverdialog.cpp:542
 msgid "Error retreiving server list!"
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/serverdialog.cpp:631
+#: src/gui/serverdialog.cpp:632
 msgid "requires a newer version"
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/serverdialog.cpp:636
+#: src/gui/serverdialog.cpp:637
 #, c-format
 msgid "requires v%s"
 msgstr ""
@@ -3336,96 +3341,101 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/setup_chat.cpp:109
-msgid "Show chat history"
+msgid "Enable debug chat Log"
 msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/setup_chat.cpp:113
+msgid "Show chat history"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/setup_chat.cpp:117
 msgid "Show guild online messages"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/setup_chat.cpp:118
+#: src/gui/setup_chat.cpp:122
 msgid "Messages"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:121
+#: src/gui/setup_chat.cpp:125
 msgid "Hide shop messages"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/setup_chat.cpp:126
+#: src/gui/setup_chat.cpp:130
 msgid "Tabs"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:129
+#: src/gui/setup_chat.cpp:133
 msgid "Put all whispers in tabs"
 msgstr "הכנס את כל הלחישות ללשוניות"
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:133
+#: src/gui/setup_chat.cpp:137
 msgid "Log magic messages in debug tab"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:137
+#: src/gui/setup_chat.cpp:141
 msgid "Show server messages in debug tab"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:141
+#: src/gui/setup_chat.cpp:145
 msgid "Enable trade tab"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:145
+#: src/gui/setup_chat.cpp:149
 msgid "Enable gm tab"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:149
+#: src/gui/setup_chat.cpp:153
 msgid "Enable language tab"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:153
+#: src/gui/setup_chat.cpp:157
 msgid "Show all languages messages"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:157
+#: src/gui/setup_chat.cpp:161
 msgid "Enable battle tab"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:161
+#: src/gui/setup_chat.cpp:165
 msgid "Show battle events"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:165
+#: src/gui/setup_chat.cpp:169
 msgid "Resize chat tabs if need"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/setup_chat.cpp:170
+#: src/gui/setup_chat.cpp:174
 msgid "Time"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:173
+#: src/gui/setup_chat.cpp:177
 msgid "Use local time"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:180
+#: src/gui/setup_chat.cpp:184
 msgid "Highlight words (separated by comma)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/setup_chat.cpp:184
+#: src/gui/setup_chat.cpp:188
 msgid "Show MVP messages"
 msgstr ""
 
@@ -4411,26 +4421,26 @@ msgid "i"
 msgstr ""
 
 #. TRANSLATORS: theme info dialog
-#: src/gui/setup_theme.cpp:399
+#: src/gui/setup_theme.cpp:406
 msgid "Name: "
 msgstr ""
 
-#: src/gui/setup_theme.cpp:400
+#: src/gui/setup_theme.cpp:407
 msgid "Copyright:"
 msgstr ""
 
 #. TRANSLATORS: theme info dialog header
-#: src/gui/setup_theme.cpp:457
+#: src/gui/setup_theme.cpp:464
 msgid "Theme info"
 msgstr ""
 
 #. TRANSLATORS: theme message dialog
-#: src/gui/setup_theme.cpp:482
+#: src/gui/setup_theme.cpp:489
 msgid "Theme Changed"
 msgstr ""
 
 #. TRANSLATORS: video settings warning
-#: src/gui/setup_theme.cpp:482 src/gui/setup_video.cpp:524
+#: src/gui/setup_theme.cpp:489 src/gui/setup_video.cpp:524
 #: src/gui/setup_video.cpp:533
 msgid "Restart your client for the change to take effect."
 msgstr "טען מחדש כדי שהשינוי יחול."
@@ -4538,39 +4548,39 @@ msgid "Full screen"
 msgstr "מסך מלא"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/setup_video.cpp:217
-msgid "Show cursor"
-msgstr ""
-
-#. TRANSLATORS: video settings checkbox
-#: src/gui/setup_video.cpp:220
-msgid "Custom cursor"
-msgstr "סמן-עכבר מותאם"
-
-#. TRANSLATORS: video settings checkbox
-#: src/gui/setup_video.cpp:224
-msgid "Enable resize"
-msgstr ""
-
-#. TRANSLATORS: video settings checkbox
-#: src/gui/setup_video.cpp:227
-msgid "No frame"
-msgstr ""
-
-#. TRANSLATORS: video settings checkbox
-#: src/gui/setup_video.cpp:229
+#: src/gui/setup_video.cpp:215
 msgid "FPS limit:"
 msgstr ""
 
 #. TRANSLATORS: video settings label
-#: src/gui/setup_video.cpp:234 src/gui/setup_video.cpp:268
+#: src/gui/setup_video.cpp:220 src/gui/setup_video.cpp:268
 #: src/gui/setup_video.cpp:457 src/gui/setup_video.cpp:581
 msgid "Alt FPS limit: "
 msgstr ""
 
 #. TRANSLATORS: video settings button
-#: src/gui/setup_video.cpp:237
+#: src/gui/setup_video.cpp:223
 msgid "Detect best mode"
+msgstr ""
+
+#. TRANSLATORS: video settings checkbox
+#: src/gui/setup_video.cpp:232
+msgid "Show cursor"
+msgstr ""
+
+#. TRANSLATORS: video settings checkbox
+#: src/gui/setup_video.cpp:235
+msgid "Custom cursor"
+msgstr "סמן-עכבר מותאם"
+
+#. TRANSLATORS: video settings checkbox
+#: src/gui/setup_video.cpp:239
+msgid "Enable resize"
+msgstr ""
+
+#. TRANSLATORS: video settings checkbox
+#: src/gui/setup_video.cpp:242
+msgid "No frame"
 msgstr ""
 
 #. TRANSLATORS: video settings label
@@ -4816,45 +4826,45 @@ msgid "%s wants to %s %s do you accept?"
 msgstr ""
 
 #. TRANSLATORS: skills dialog name
-#: src/gui/skilldialog.cpp:203 src/gui/windowmenu.cpp:111
+#: src/gui/skilldialog.cpp:256 src/gui/windowmenu.cpp:111
 msgid "Skills"
 msgstr "כישורים"
 
 #. TRANSLATORS: skills dialog button
-#: src/gui/skilldialog.cpp:212
+#: src/gui/skilldialog.cpp:265
 msgid "Up"
 msgstr "למעלה"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/skilldialog.cpp:323
+#: src/gui/skilldialog.cpp:376
 #, c-format
 msgid "Skill points available: %d"
 msgstr ""
 
 #. TRANSLATORS: skills dialog default skills tab
-#: src/gui/skilldialog.cpp:376
+#: src/gui/skilldialog.cpp:429
 msgid "basic"
 msgstr ""
 
 #. TRANSLATORS: skills dialog default skill name
-#: src/gui/skilldialog.cpp:379
+#: src/gui/skilldialog.cpp:432
 msgid "basic, 1"
 msgstr ""
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/skilldialog.cpp:416
+#: src/gui/skilldialog.cpp:469
 #, c-format
 msgid "Skill Set %d"
 msgstr ""
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/skilldialog.cpp:450
+#: src/gui/skilldialog.cpp:503
 #, c-format
 msgid "Skill %d"
 msgstr ""
 
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/skilldialog.cpp:544 src/gui/widgets/skillinfo.cpp:83
+#: src/gui/skilldialog.cpp:597 src/gui/widgets/skillinfo.cpp:83
 #, c-format
 msgid "Lvl: %d"
 msgstr ""
@@ -5595,13 +5605,13 @@ msgid "%s whispers: %s"
 msgstr ""
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/chattab.cpp:529
+#: src/gui/widgets/chattab.cpp:539
 #, c-format
 msgid "%s is now Online."
 msgstr ""
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/chattab.cpp:534
+#: src/gui/widgets/chattab.cpp:544
 #, c-format
 msgid "%s is now Offline."
 msgstr ""
@@ -5986,375 +5996,375 @@ msgid "job"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1872
+#: src/localplayer.cpp:1873
 msgid "(D) default moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1874
+#: src/localplayer.cpp:1875
 msgid "(I) invert moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1876
+#: src/localplayer.cpp:1877
 msgid "(c) moves with some crazy moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1878
+#: src/localplayer.cpp:1879
 msgid "(C) moves with crazy moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1880
+#: src/localplayer.cpp:1881
 msgid "(d) double normal + crazy"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1882
+#: src/localplayer.cpp:1883
 msgid "(?) unknown move"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/localplayer.cpp:1905
+#: src/localplayer.cpp:1906
 #, c-format
 msgid "(%u) crazy move number %u"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/localplayer.cpp:1911
+#: src/localplayer.cpp:1912
 msgid "(a) custom crazy move"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/localplayer.cpp:1916
+#: src/localplayer.cpp:1917
 msgid "(?) crazy move"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1931
+#: src/localplayer.cpp:1932
 msgid "(0) default moves to target"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1933
+#: src/localplayer.cpp:1934
 msgid "(1) moves to target in distance 1"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1935
+#: src/localplayer.cpp:1936
 msgid "(2) moves to target in distance 2"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1937
+#: src/localplayer.cpp:1938
 msgid "(3) moves to target in distance 3"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1939
+#: src/localplayer.cpp:1940
 msgid "(5) moves to target in distance 5"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1941
+#: src/localplayer.cpp:1942
 msgid "(7) moves to target in distance 7"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1943
+#: src/localplayer.cpp:1944
 msgid "(A) moves to target in attack range"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1945
+#: src/localplayer.cpp:1946
 msgid "(a) archer attack range"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1947
+#: src/localplayer.cpp:1948
 msgid "(B) moves to target in attack range - 1"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1949
+#: src/localplayer.cpp:1950
 msgid "(?) move to target"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/localplayer.cpp:1969
+#: src/localplayer.cpp:1970
 msgid "(D) default follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/localplayer.cpp:1971
+#: src/localplayer.cpp:1972
 msgid "(R) relative follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/localplayer.cpp:1973
+#: src/localplayer.cpp:1974
 msgid "(M) mirror follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/localplayer.cpp:1975
+#: src/localplayer.cpp:1976
 msgid "(P) pet follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/localplayer.cpp:1977
+#: src/localplayer.cpp:1978
 msgid "(?) unknown follow"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/localplayer.cpp:1997 src/localplayer.cpp:2005 src/localplayer.cpp:2033
+#: src/localplayer.cpp:1998 src/localplayer.cpp:2006 src/localplayer.cpp:2034
 msgid "(?) attack"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/localplayer.cpp:1999 src/localplayer.cpp:2025
+#: src/localplayer.cpp:2000 src/localplayer.cpp:2026
 msgid "(D) default attack"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/localplayer.cpp:2001
+#: src/localplayer.cpp:2002
 msgid "(s) switch attack without shield"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/localplayer.cpp:2003
+#: src/localplayer.cpp:2004
 msgid "(S) switch attack with shield"
 msgstr ""
 
 #. TRANSLATORS: attack type in status bar
-#: src/localplayer.cpp:2027
+#: src/localplayer.cpp:2028
 msgid "(G) go and attack"
 msgstr ""
 
 #. TRANSLATORS: attack type in status bar
-#: src/localplayer.cpp:2029
+#: src/localplayer.cpp:2030
 msgid "(A) go, attack, pickup"
 msgstr ""
 
 #. TRANSLATORS: attack type in status bar
-#: src/localplayer.cpp:2031
+#: src/localplayer.cpp:2032
 msgid "(d) without auto attack"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2085
+#: src/localplayer.cpp:2086
 msgid "(S) small pick up 1x1 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2087
+#: src/localplayer.cpp:2088
 msgid "(D) default pick up 2x1 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2089
+#: src/localplayer.cpp:2090
 msgid "(F) forward pick up 2x3 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2091
+#: src/localplayer.cpp:2092
 msgid "(3) pick up 3x3 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2093
+#: src/localplayer.cpp:2094
 msgid "(g) go and pick up in distance 4"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2095
+#: src/localplayer.cpp:2096
 msgid "(G) go and pick up in distance 8"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2097
+#: src/localplayer.cpp:2098
 msgid "(A) go and pick up in max distance"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2099
+#: src/localplayer.cpp:2100
 msgid "(?) pick up"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2113
+#: src/localplayer.cpp:2114
 msgid "(N) normal map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2115
+#: src/localplayer.cpp:2116
 msgid "(D) debug map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2117
+#: src/localplayer.cpp:2118
 msgid "(u) ultra map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2119
+#: src/localplayer.cpp:2120
 msgid "(U) ultra map view 2"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2121
+#: src/localplayer.cpp:2122
 msgid "(e) empty map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2123
+#: src/localplayer.cpp:2124
 msgid "(b) black & white map view"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2143
+#: src/localplayer.cpp:2144
 msgid "(f) use #flar for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2145
+#: src/localplayer.cpp:2146
 msgid "(c) use #chiza for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2147
+#: src/localplayer.cpp:2148
 msgid "(I) use #ingrav for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2149
+#: src/localplayer.cpp:2150
 msgid "(F) use #frillyar for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2151
+#: src/localplayer.cpp:2152
 msgid "(U) use #upmarmu for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2153
+#: src/localplayer.cpp:2154
 msgid "(?) magic attack"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/localplayer.cpp:2173
+#: src/localplayer.cpp:2174
 msgid "(a) attack all players"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/localplayer.cpp:2175
+#: src/localplayer.cpp:2176
 msgid "(f) attack all except friends"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/localplayer.cpp:2177
+#: src/localplayer.cpp:2178
 msgid "(b) attack bad relations"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/localplayer.cpp:2179
+#: src/localplayer.cpp:2180
 msgid "(d) don't attack players"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/localplayer.cpp:2181
+#: src/localplayer.cpp:2182
 msgid "(?) pvp attack"
 msgstr ""
 
 #. TRANSLATORS: imitation type in status bar
-#: src/localplayer.cpp:2201
+#: src/localplayer.cpp:2202
 msgid "(D) default imitation"
 msgstr ""
 
 #. TRANSLATORS: imitation type in status bar
-#: src/localplayer.cpp:2203
+#: src/localplayer.cpp:2204
 msgid "(O) outfits imitation"
 msgstr ""
 
 #. TRANSLATORS: imitation type in status bar
-#: src/localplayer.cpp:2205
+#: src/localplayer.cpp:2206
 msgid "(?) imitation"
 msgstr ""
 
 #. TRANSLATORS: away message box header
-#: src/localplayer.cpp:2234
+#: src/localplayer.cpp:2235
 msgid "Away"
 msgstr ""
 
 #. TRANSLATORS: away type in status bar
-#: src/localplayer.cpp:2257
+#: src/localplayer.cpp:2258
 msgid "(O) on keyboard"
 msgstr ""
 
 #. TRANSLATORS: away type in status bar
-#: src/localplayer.cpp:2259
+#: src/localplayer.cpp:2260
 msgid "(A) away"
 msgstr ""
 
 #. TRANSLATORS: away type in status bar
 #. TRANSLATORS: camera mode in status bar
-#: src/localplayer.cpp:2261 src/localplayer.cpp:2279
+#: src/localplayer.cpp:2262 src/localplayer.cpp:2280
 msgid "(?) away"
 msgstr ""
 
 #. TRANSLATORS: camera mode in status bar
-#: src/localplayer.cpp:2275
+#: src/localplayer.cpp:2276
 msgid "(G) game camera mode"
 msgstr ""
 
 #. TRANSLATORS: camera mode in status bar
-#: src/localplayer.cpp:2277
+#: src/localplayer.cpp:2278
 msgid "(F) free camera mode"
 msgstr ""
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/localplayer.cpp:2304
+#: src/localplayer.cpp:2305
 msgid "Game modifiers are enabled"
 msgstr ""
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/localplayer.cpp:2306
+#: src/localplayer.cpp:2307
 msgid "Game modifiers are disabled"
 msgstr ""
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/localplayer.cpp:2308
+#: src/localplayer.cpp:2309
 msgid "Game modifiers are unknown"
 msgstr ""
 
 #. TRANSLATORS: follow command message
-#: src/localplayer.cpp:3847
+#: src/localplayer.cpp:3848
 #, c-format
 msgid "Follow: %s"
 msgstr ""
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/localplayer.cpp:3853 src/localplayer.cpp:3878
+#: src/localplayer.cpp:3854 src/localplayer.cpp:3879
 msgid "Follow canceled"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
-#: src/localplayer.cpp:3863
+#: src/localplayer.cpp:3864
 #, c-format
 msgid "Imitation: %s"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/localplayer.cpp:3869 src/localplayer.cpp:3883
+#: src/localplayer.cpp:3870 src/localplayer.cpp:3884
 msgid "Imitation canceled"
 msgstr ""
 
 #. TRANSLATORS: wait player/monster message
-#: src/localplayer.cpp:4226
+#: src/localplayer.cpp:4227
 #, c-format
 msgid "You see %s"
 msgstr ""
@@ -7295,7 +7305,7 @@ msgid "%s wants to trade with you, do you accept?"
 msgstr "%s מעוניין לסחור עימך, האם אתה מסכים?"
 
 #. TRANSLATORS: trade header
-#: src/net/ea/tradehandler.cpp:150
+#: src/net/ea/tradehandler.cpp:151
 #, c-format
 msgid "Trade: You and %s"
 msgstr ""
@@ -7630,22 +7640,22 @@ msgid "unknown pvp"
 msgstr ""
 
 #. TRANSLATORS: ignore/unignore action
-#: src/playerrelations.cpp:482
+#: src/playerrelations.cpp:483
 msgid "Print '...'"
 msgstr ""
 
 #. TRANSLATORS: ignore/unignore action
-#: src/playerrelations.cpp:505
+#: src/playerrelations.cpp:506
 msgid "Blink name"
 msgstr ""
 
 #. TRANSLATORS: ignore strategi
-#: src/playerrelations.cpp:551
+#: src/playerrelations.cpp:552
 msgid "Floating '...' bubble"
 msgstr ""
 
 #. TRANSLATORS: ignore strategi
-#: src/playerrelations.cpp:555
+#: src/playerrelations.cpp:556
 msgid "Floating bubble"
 msgstr ""
 
