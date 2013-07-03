@@ -170,6 +170,7 @@ void SpellShortcutContainer::mouseDragged(gcn::MouseEvent &event)
             if (spell)
             {
                 dragDrop.dragCommand(spell, DRAGDROP_SOURCE_SPELLS, index);
+                dragDrop.setItem(spell->getId() + SPELL_MIN_ID);
             }
             else
             {

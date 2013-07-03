@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "dragdrop.h"
 #include "inventory.h"
 #include "inputmanager.h"
 #include "item.h"
@@ -50,7 +51,6 @@
 ItemShortcutContainer::ItemShortcutContainer(const unsigned number) :
     ShortcutContainer(),
     mItemClicked(false),
-    mItemMoved(nullptr),
     mNumber(number),
     mItemPopup(new ItemPopup),
     mSpellPopup(new SpellPopup),
@@ -222,23 +222,6 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
             }
         }
     }
-
-    if (mItemMoved)
-    {
-        // Draw the item image being dragged by the cursor.
-        const Image *const image = mItemMoved->getImage();
-        if (image)
-        {
-            const int tPosX = mCursorPosX - (image->mBounds.w / 2);
-            const int tPosY = mCursorPosY - (image->mBounds.h / 2);
-            const std::string str = toString(mItemMoved->getQuantity());
-
-            g->drawImage(image, tPosX, tPosY);
-            font->drawString(g, str,
-                tPosX + (mBoxWidth - font->getWidth(str)) / 2,
-                tPosY + mBoxHeight - 14);
-        }
-    }
     BLOCK_END("ItemShortcutContainer::draw")
 }
 
@@ -250,8 +233,10 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
 
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-        if (!mItemMoved && mItemClicked)
+        if (dragDrop.isEmpty() && mItemClicked)
         {
+            mItemClicked = false;
+
             const int index = getIndexFromGrid(event.getX(), event.getY());
             if (index == -1)
                 return;
@@ -262,36 +247,68 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
             if (itemId < 0)
                 return;
 
+            event.consume();
             if (itemId < SPELL_MIN_ID)
-            {
+            {   // items
                 if (!PlayerInfo::getInventory())
                     return;
 
-                Item *const item = PlayerInfo::getInventory()->findItem(
+                const Item *const item = PlayerInfo::getInventory()->findItem(
                     itemId, itemColor);
 
                 if (item)
                 {
-                    mItemMoved = item;
                     selShortcut->removeItem(index);
+                    dragDrop.dragItem(item, DRAGDROP_SOURCE_SHORTCUTS, index);
+                }
+                else
+                {
+                    dragDrop.clear();
                 }
             }
-            else if (itemId < SKILL_MIN_ID && spellManager)
-            {
+            else if (itemId < SKILL_MIN_ID)
+            {   // spells/commands
+                if (!spellManager)
+                {
+                    dragDrop.clear();
+                    return;
+                }
+
                 const TextCommand *const spell = spellManager->getSpellByItem(
                     itemId);
                 if (spell)
+                {
                     selShortcut->removeItem(index);
+                    dragDrop.dragCommand(spell,
+                        DRAGDROP_SOURCE_SHORTCUTS, index);
+                    dragDrop.setItem(itemId);
+                }
+                else
+                {
+                    dragDrop.clear();
+                }
             }
             else
-            {
-                selShortcut->removeItem(index);
+            {   // skills
+                if (!skillDialog)
+                {
+                    dragDrop.clear();
+                    return;
+                }
+                const SkillInfo *const skill
+                    = skillDialog->getSkillByItem(itemId);
+                if (skill)
+                {
+                    selShortcut->removeItem(index);
+                    dragDrop.dragSkill(skill,
+                        DRAGDROP_SOURCE_SHORTCUTS, index);
+                    dragDrop.setItem(itemId);
+                }
+                else
+                {
+                    dragDrop.clear();
+                }
             }
-        }
-        if (mItemMoved)
-        {
-            mCursorPosX = event.getX();
-            mCursorPosY = event.getY();
         }
     }
 }
@@ -348,23 +365,30 @@ void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
 
         const int index = getIndexFromGrid(event.getX(), event.getY());
         if (index == -1)
-        {
-            mItemMoved = nullptr;
             return;
-        }
-        if (mItemMoved)
+
+        if (dragDrop.isEmpty())
         {
-            selShortcut->setItems(index, mItemMoved->getId(),
-                mItemMoved->getColor());
-            mItemMoved = nullptr;
+            if (selShortcut->getItem(index) && mItemClicked)
+                selShortcut->useItem(index);
         }
-        else if (selShortcut->getItem(index) && mItemClicked)
+        else
         {
-            selShortcut->useItem(index);
+            if (dragDrop.getSource() == DRAGDROP_SOURCE_SHORTCUTS)
+            {
+                const int oldIndex = dragDrop.getTag();
+                selShortcut->setItem(oldIndex, dragDrop.getItem(),
+                    dragDrop.getItemColor());
+                selShortcut->swap(oldIndex, index);
+            }
+            else
+            {
+                selShortcut->setItem(index, dragDrop.getItem(),
+                    dragDrop.getItemColor());
+            }
         }
 
-        if (mItemClicked)
-            mItemClicked = false;
+        mItemClicked = false;
     }
 }
 

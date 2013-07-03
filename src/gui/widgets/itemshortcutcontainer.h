@@ -82,7 +82,6 @@ class ItemShortcutContainer final : public ShortcutContainer
 
     private:
         bool mItemClicked;
-        Item *mItemMoved;
         unsigned mNumber;
 
         ItemPopup *mItemPopup;

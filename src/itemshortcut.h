@@ -88,6 +88,9 @@ class ItemShortcut final
          */
         void setItem(const int index);
 
+        void setItem(const int index, const int item,
+                     const unsigned char color);
+
         /**
          * Adds an item to the items store specified by the index.
          *
@@ -142,6 +145,8 @@ class ItemShortcut final
          * UnEquip a item from the shortcut.
          */
         void unequipItem(const int index) const;
+
+        void swap(const int index1, const int index2);
 
     private:
         int mItems[SHORTCUT_ITEMS];                /**< The items. */

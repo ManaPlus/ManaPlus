@@ -168,6 +168,7 @@ class SkillListBox final : public ListBox
                         if (!skill)
                             return;
                         dragDrop.dragSkill(skill, DRAGDROP_SOURCE_SKILLS);
+                        dragDrop.setItem(skill->id + SKILL_MIN_ID);
                     }
                     ListBox::mouseDragged(event);
                 }
@@ -607,6 +608,11 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
 SkillInfo* SkillDialog::getSkill(const int id)
 {
     return mSkills[id];
+}
+
+SkillInfo* SkillDialog::getSkillByItem(const int itemId)
+{
+    return mSkills[itemId - SKILL_MIN_ID];
 }
 
 void SkillDialog::widgetResized(const gcn::Event &event)

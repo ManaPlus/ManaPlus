@@ -79,6 +79,8 @@ class SkillDialog final : public Window, public gcn::ActionListener
 
         SkillInfo* getSkill(const int id) A_WARN_UNUSED;
 
+        SkillInfo* getSkillByItem(const int itemId) A_WARN_UNUSED;
+
         bool hasSkills() const A_WARN_UNUSED
         { return !mSkills.empty(); }
 

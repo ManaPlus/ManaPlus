@@ -202,8 +202,6 @@ void ItemShortcut::setItemSelected(const Item *const item)
 {
     if (item)
     {
-//        logger->log("set selected id: %d", item->getId());
-//        logger->log("set selected color: %d", item->getColor());
         mItemSelected = item->getId();
         mItemColorSelected = item->getColor();
     }
@@ -218,5 +216,30 @@ void ItemShortcut::setItem(const int index)
 {
     mItems[index] = mItemSelected;
     mItemColors[index] = mItemColorSelected;
+    save();
+}
+
+void ItemShortcut::setItem(const int index, const int item,
+                           const unsigned char color)
+{
+    mItems[index] = item;
+    mItemColors[index] = color;
+    save();
+}
+
+void ItemShortcut::swap(const int index1, const int index2)
+{
+    if (index1 < 0 || index2 < 0 || (unsigned int)index1 >= SHORTCUT_ITEMS
+        || (unsigned int)index2 >= SHORTCUT_ITEMS)
+    {
+        return;
+    }
+
+    const int tmpItem = mItems[index1];
+    mItems[index1] = mItems[index2];
+    mItems[index2] = tmpItem;
+    const unsigned char tmpColor = mItemColors[index1];
+    mItemColors[index1] = mItemColors[index2];
+    mItemColors[index2] = tmpColor;
     save();
 }

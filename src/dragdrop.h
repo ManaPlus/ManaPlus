@@ -83,7 +83,7 @@ class DragDrop
         DragDropSource getSource() const
         { return mSource; }
 
-        void dragItem(Item *const item,
+        void dragItem(const Item *const item,
                       const DragDropSource source,
                       const int tag = 0)
         {
@@ -111,7 +111,7 @@ class DragDrop
             }
         }
 
-        void dragCommand(TextCommand *const command,
+        void dragCommand(const TextCommand *const command,
                          const DragDropSource source,
                          const int tag = 0)
         {
@@ -134,6 +134,7 @@ class DragDrop
                     mTag = 0;
                     return;
                 }
+                mItem = command->getId();
             }
             else
             {
@@ -165,6 +166,7 @@ class DragDrop
                     mItemImage = data->icon;
                     if (mItemImage)
                         mItemImage->incRef();
+                    mItem = info->id;
                     mSource = source;
                     mTag = tag;
                 }
@@ -223,6 +225,9 @@ class DragDrop
 
         int getTag()
         { return mTag; }
+
+        void setItem(const int item)
+        { mItem = item; }
 
     private:
         int mItem;
