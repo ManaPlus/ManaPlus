@@ -254,10 +254,7 @@ void DropShortcutContainer::mouseReleased(gcn::MouseEvent &event)
         }
         if (!dragDrop.isEmpty())
         {
-            DragDropSource src = dragDrop.getSource();
-            if (src == DRAGDROP_SOURCE_INVENTORY
-                || src == DRAGDROP_SOURCE_OUTFIT
-                || src == DRAGDROP_SOURCE_DROP)
+            if (dragDrop.isSourceItemContainer())
             {
                 dropShortcut->setItems(index, dragDrop.getItem(),
                     dragDrop.getItemColor());

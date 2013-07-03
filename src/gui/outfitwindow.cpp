@@ -473,10 +473,7 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
         event.consume();
         if (!dragDrop.isEmpty())
         {
-            DragDropSource src = dragDrop.getSource();
-            if (src == DRAGDROP_SOURCE_INVENTORY
-                || src == DRAGDROP_SOURCE_OUTFIT
-                || src == DRAGDROP_SOURCE_DROP)
+            if (dragDrop.isSourceItemContainer())
             {
                 mItems[mCurrentOutfit][index] = dragDrop.getItem();
                 mItemColors[mCurrentOutfit][index] = dragDrop.getItemColor();

@@ -207,27 +207,39 @@ class DragDrop
             mSelItemColor = 1;
         }
 
-        int getSelected()
+        int getSelected() const
         { return mSelItem; }
 
-        int getSelectedColor()
+        int getSelectedColor() const
         { return mSelItemColor; }
 
-        bool isSelected()
+        bool isSelected() const
         { return mSelItem > 0; }
 
         void clearItem(const Item *const item A_UNUSED)
         {
         }
 
-        const std::string &getText()
+        const std::string &getText() const
         { return mText; }
 
-        int getTag()
+        int getTag() const
         { return mTag; }
 
         void setItem(const int item)
         { mItem = item; }
+
+        bool isSourceItemContainer() const
+        {
+            return mSource == DRAGDROP_SOURCE_INVENTORY
+                || mSource == DRAGDROP_SOURCE_STORAGE
+                || mSource == DRAGDROP_SOURCE_CART
+                || mSource == DRAGDROP_SOURCE_TRADE
+                || mSource == DRAGDROP_SOURCE_OUTFIT
+                || mSource == DRAGDROP_SOURCE_GROUND
+                || mSource == DRAGDROP_SOURCE_DROP
+                || mSource == DRAGDROP_SOURCE_CRAFT;
+        }
 
     private:
         int mItem;
