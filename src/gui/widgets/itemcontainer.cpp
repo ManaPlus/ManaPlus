@@ -23,10 +23,11 @@
 #include "gui/widgets/itemcontainer.h"
 
 #include "dragdrop.h"
+#include "dropshortcut.h"
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
-#include "dropshortcut.h"
+#include "playerinfo.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"
@@ -172,8 +173,6 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mForceQuantity(forceQuantity),
     mSwapItems(false),
     mDescItems(false),
-    mDragPosX(0),
-    mDragPosY(0),
     mTag(0),
     mSortType(0),
     mName(),
@@ -401,9 +400,11 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
         if (item && mDescItems && chatWindow)
             chatWindow->addItemText(item->getInfo().getName());
 
+        const DragDropSource src = mInventory->isMainInventory()
+            ? DRAGDROP_SOURCE_INVENTORY : DRAGDROP_SOURCE_STORAGE;
         if (mSelectedIndex == index && mClicks != 2)
         {
-            dragDrop.dragItem(item, DRAGDROP_SOURCE_INVENTORY);
+            dragDrop.dragItem(item, src, index);
             dragDrop.select(item);
             mSelectionStatus = SEL_DESELECTING;
         }
@@ -411,7 +412,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
         {
             if (index >= 0)
             {
-                dragDrop.dragItem(item, DRAGDROP_SOURCE_INVENTORY);
+                dragDrop.dragItem(item, src, index);
                 dragDrop.select(item);
                 setSelectedIndex(index);
                 mSelectionStatus = SEL_SELECTING;
@@ -440,11 +441,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
 void ItemContainer::mouseDragged(gcn::MouseEvent &event)
 {
     if (mSelectionStatus != SEL_NONE)
-    {
         mSelectionStatus = SEL_DRAGGING;
-        mDragPosX = event.getX();
-        mDragPosY = event.getY();
-    }
 }
 
 void ItemContainer::mouseReleased(gcn::MouseEvent &event)
@@ -456,25 +453,61 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
     {
         case SEL_SELECTING:
             mSelectionStatus = SEL_SELECTED;
-            return;
+            break;
         case SEL_DESELECTING:
             selectNone();
-            return;
+            break;
         case SEL_DRAGGING:
             mSelectionStatus = SEL_SELECTED;
             break;
         case SEL_NONE:
         case SEL_SELECTED:
         default:
-            return;
+            break;
     };
 
-    const int index = getSlotIndex(event.getX(), event.getY());
-    if (index == Inventory::NO_SLOT_INDEX)
-        return;
-    if (index == mSelectedIndex || mSelectedIndex == -1)
-        return;
-    Net::getInventoryHandler()->moveItem(mSelectedIndex, index);
+    if (dragDrop.isEmpty())
+    {
+        const int index = getSlotIndex(event.getX(), event.getY());
+        if (index == Inventory::NO_SLOT_INDEX)
+            return;
+        if (index == mSelectedIndex || mSelectedIndex == -1)
+            return;
+        Net::getInventoryHandler()->moveItem(mSelectedIndex, index);
+    }
+    else
+    {
+        const DragDropSource src = dragDrop.getSource();
+        const DragDropSource dst = mInventory->isMainInventory()
+            ? DRAGDROP_SOURCE_INVENTORY : DRAGDROP_SOURCE_STORAGE;
+        int srcContainer = -1;
+        int dstContainer = -1;
+        Inventory *inventory = nullptr;
+        if (src == DRAGDROP_SOURCE_INVENTORY
+            && dst == DRAGDROP_SOURCE_STORAGE)
+        {
+            srcContainer = Inventory::INVENTORY;
+            dstContainer = Inventory::STORAGE;
+            inventory = PlayerInfo::getInventory();
+        }
+        else if (src == DRAGDROP_SOURCE_STORAGE
+                 && dst == DRAGDROP_SOURCE_INVENTORY)
+        {
+            srcContainer = Inventory::STORAGE;
+            dstContainer = Inventory::INVENTORY;
+            inventory = PlayerInfo::getStorageInventory();
+        }
+        if (srcContainer != -1 && inventory)
+        {
+            const Item *const item = inventory->getItem(dragDrop.getTag());
+            if (item)
+            {
+                Net::getInventoryHandler()->moveItem2(srcContainer,
+                    item->getInvIndex(), item->getQuantity(), dstContainer);
+            }
+        }
+    }
+
     selectNone();
 }
 

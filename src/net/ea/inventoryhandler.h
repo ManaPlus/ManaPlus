@@ -201,6 +201,9 @@ class InventoryHandler : public Net::InventoryHandler
 
         void processPlayerArrowEquip(Net::MessageIn &msg);
 
+        Inventory *getStorage() const
+        { return mStorage; }
+
     protected:
         EquipBackend mEquips;
         InventoryItems mInventoryItems;

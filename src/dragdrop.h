@@ -57,7 +57,7 @@ class DragDrop
             mSelItemColor(1),
             mSource(source),
             mText(),
-            mTag()
+            mTag(-1)
         {
             if (mItemImage)
                 mItemImage->incRef();
@@ -107,7 +107,7 @@ class DragDrop
                 mItemColor = 1;
                 mItemImage = nullptr;
                 mSource = DRAGDROP_SOURCE_EMPTY;
-                mTag = 0;
+                mTag = -1;
             }
         }
 
@@ -131,7 +131,7 @@ class DragDrop
                 else if (mText.empty())
                 {
                     mSource = source;
-                    mTag = 0;
+                    mTag = -1;
                     return;
                 }
                 mItem = command->getId();
@@ -156,7 +156,7 @@ class DragDrop
             mText.clear();
             mItemImage = nullptr;
             mSource = DRAGDROP_SOURCE_EMPTY;
-            mTag = 0;
+            mTag = -1;
             if (info)
             {
                 const SkillData *const data = info->data;
@@ -182,6 +182,7 @@ class DragDrop
             mItemImage = nullptr;
             mSource = DRAGDROP_SOURCE_EMPTY;
             mText.clear();
+            mTag = -1;
         }
 
         bool isEmpty() const

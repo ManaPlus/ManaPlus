@@ -176,6 +176,8 @@ namespace PlayerInfo
      */
     Inventory *getInventory() A_WARN_UNUSED;
 
+    Inventory *getStorageInventory() A_WARN_UNUSED;
+
     /**
      * Clears the player's inventory and equipment.
      */

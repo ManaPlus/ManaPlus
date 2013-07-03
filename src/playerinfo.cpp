@@ -34,6 +34,7 @@
 
 #include "resources/iteminfo.h"
 
+#include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
 
 #include "debug.h"
@@ -200,6 +201,11 @@ void setStatExperience(const int id, const int have,
 Inventory *getInventory()
 {
     return mInventory;
+}
+
+Inventory *getStorageInventory()
+{
+    return Net::getInventoryHandler()->getStorage();
 }
 
 void clearInventory()

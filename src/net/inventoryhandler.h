@@ -65,6 +65,8 @@ class InventoryHandler
 
         virtual size_t getSize(const int type) const A_WARN_UNUSED = 0;
 
+        virtual Inventory *getStorage() const = 0;
+
         virtual int convertFromServerSlot(const int eAthenaSlot) const = 0;
 };
 
