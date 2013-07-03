@@ -139,20 +139,6 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         }
     }
 
-    if (mEmoteMoved && mEmoteMoved < static_cast<unsigned>(sz) + 1
-        && mEmoteMoved > 0)
-    {
-        // Draw the emote image being dragged by the cursor.
-        const EmoteSprite *const sprite = mEmoteImg[mEmoteMoved - 1];
-        if (sprite && sprite->sprite)
-        {
-            const AnimatedSprite *const spr = sprite->sprite;
-            const int tPosX = mCursorPosX - (spr->getWidth() / 2);
-            const int tPosY = mCursorPosY - (spr->getHeight() / 2);
-
-            spr->draw(g, tPosX, tPosY);
-        }
-    }
     BLOCK_END("EmoteShortcutContainer::draw")
 }
 

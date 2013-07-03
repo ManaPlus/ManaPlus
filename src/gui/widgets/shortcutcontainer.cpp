@@ -40,8 +40,6 @@ ShortcutContainer::ShortcutContainer() :
     mMaxItems(0),
     mBoxWidth(1),
     mBoxHeight(1),
-    mCursorPosX(0),
-    mCursorPosY(0),
     mGridWidth(1),
     mGridHeight(1),
     mVertexes(new ImageCollection),
