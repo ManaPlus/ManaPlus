@@ -142,7 +142,8 @@ void ItemShortcut::useItem(const int index) const
                 }
                 else
                 {
-                    Net::getInventoryHandler()->useItem(item);
+                    if (!PlayerInfo::isItemProtected(item->getId()))
+                        Net::getInventoryHandler()->useItem(item);
                 }
             }
         }
