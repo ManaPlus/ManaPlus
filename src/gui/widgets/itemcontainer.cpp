@@ -488,6 +488,7 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
         if (index == mSelectedIndex || mSelectedIndex == -1)
             return;
         Net::getInventoryHandler()->moveItem(mSelectedIndex, index);
+        selectNone();
     }
     else
     {
@@ -548,8 +549,6 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
             }
         }
     }
-
-    selectNone();
 }
 
 void ItemContainer::mouseMoved(gcn::MouseEvent &event)
