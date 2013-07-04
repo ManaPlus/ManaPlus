@@ -2560,8 +2560,11 @@ void PopupMenu::addProtection()
     }
     else
     {
-        // TRANSLATORS: popup menu item
-        mBrowserBox->addRow("protect item", _("Protect item"));
+        if (mItemId < SPELL_MIN_ID)
+        {
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("protect item", _("Protect item"));
+        }
     }
 }
 
