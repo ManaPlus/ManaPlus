@@ -205,7 +205,8 @@ bool Particle::update()
         }
 
         // Update child emitters
-        if ((mLifetimePast - 1) % Particle::emitterSkip == 0)
+        if (Particle::emitterSkip && (mLifetimePast - 1)
+            % Particle::emitterSkip == 0)
         {
             FOR_EACH (EmitterConstIterator, e, mChildEmitters)
             {

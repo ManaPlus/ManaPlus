@@ -159,8 +159,14 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     if (!maxHairStyle)
         maxHairStyle = mPlayer->getNumOfHairstyles();
 
-    mHairStyle = (rand() % maxHairStyle) + minHairStyle;
-    mHairColor = (rand() % maxHairColor) + minHairColor;
+    if (maxHairStyle)
+        mHairStyle = (rand() % maxHairStyle) + minHairStyle;
+    else
+        mHairStyle = 0;
+    if (maxHairColor)
+        mHairColor = (rand() % maxHairColor) + minHairColor;
+    else
+        mHairColor = 0;
 
     mNameField->setMaximum(24);
 

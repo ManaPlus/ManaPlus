@@ -127,7 +127,7 @@ void Palette::advanceGradient()
                 % (delay * numOfColors);
 
             const int gradIndex = elem->gradientIndex;
-            const int pos = gradIndex % delay;
+            const int pos = delay ? (gradIndex % delay) : gradIndex;
             int colIndex;
             if (delay)
                 colIndex = gradIndex / delay;

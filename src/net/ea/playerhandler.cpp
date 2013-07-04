@@ -157,7 +157,11 @@ static const char *randomDeathMessage()
         N_("You're pining for the fjords.")
     };
 
-    const int random = static_cast<int>(rand() % (sizeof(deadMsg)
+    const int sz = sizeof(deadMsg);
+    if (!sz)
+        return gettext(deadMsg[0]);
+
+    const int random = static_cast<int>(rand() % (sz
         / sizeof(deadMsg[0])));
     return gettext(deadMsg[random]);
 }

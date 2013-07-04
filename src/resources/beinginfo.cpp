@@ -114,8 +114,8 @@ const SoundInfo &BeingInfo::getSound(const SoundEvent event) const
     static SoundInfo emptySound("", 0);
 
     const SoundEvents::const_iterator i = mSounds.find(event);
-    return (i == mSounds.end() || !i->second) ? emptySound :
-            i->second->at(rand() % i->second->size());
+    return (i == mSounds.end() || !i->second || i->second->empty())
+        ? emptySound : i->second->at(rand() % i->second->size());
 }
 
 const Attack *BeingInfo::getAttack(const int id) const
