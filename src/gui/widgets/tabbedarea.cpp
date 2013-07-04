@@ -471,18 +471,15 @@ void TabbedArea::adjustSize()
 
     mWidgetContainer->setPosition(0, maxTabHeight);
     mWidgetContainer->setSize(width, height - maxTabHeight);
-    if (!mFollowDownScroll)
+    gcn::Widget *const w = getCurrentWidget();
+    if (w)
     {
-        gcn::Widget *const w = getCurrentWidget();
-        if (w)
-        {
-            const int wFrameSize = w->getFrameSize();
-            const int frame2 = 2 * wFrameSize;
+        const int wFrameSize = w->getFrameSize();
+        const int frame2 = 2 * wFrameSize;
 
-            w->setPosition(wFrameSize, wFrameSize);
-            w->setSize(mWidgetContainer->getWidth() - frame2,
-                mWidgetContainer->getHeight() - frame2);
-        }
+        w->setPosition(wFrameSize, wFrameSize);
+        w->setSize(mWidgetContainer->getWidth() - frame2,
+            mWidgetContainer->getHeight() - frame2);
     }
 }
 
