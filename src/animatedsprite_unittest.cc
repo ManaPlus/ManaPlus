@@ -47,7 +47,6 @@ static void init()
 
     imageHelper = new SDLImageHelper();
     SDL_SetVideoMode(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
-    Theme *theme = Theme::instance();
 }
 
 TEST(AnimatedSprite, basic)

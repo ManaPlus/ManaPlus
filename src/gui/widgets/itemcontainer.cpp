@@ -452,7 +452,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void ItemContainer::mouseDragged(gcn::MouseEvent &event)
+void ItemContainer::mouseDragged(gcn::MouseEvent &event A_UNUSED)
 {
     if (mSelectionStatus != SEL_NONE)
         mSelectionStatus = SEL_DRAGGING;

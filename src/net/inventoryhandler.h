@@ -25,6 +25,8 @@
 
 #include "item.h"
 
+#include "inventory.h"
+
 #include <iosfwd>
 
 namespace Net

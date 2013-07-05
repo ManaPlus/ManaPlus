@@ -278,7 +278,6 @@ InventoryWindow::~InventoryWindow()
     mSortDropDown->hideDrop(false);
     delete mSortModel;
     mSortModel = nullptr;
-    //delete mTextPopup;
     mTextPopup = nullptr;
 }
 

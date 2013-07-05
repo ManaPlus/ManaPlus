@@ -408,13 +408,13 @@ void SpellManager::swap(const int id1, const int id2)
     spell2->setId(tmp);
 
     // swap in vector
-    const int sz = SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS;
-    for (unsigned f = 0; f < sz; f++)
+    const size_t sz = SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS;
+    for (size_t f = 0; f < sz; f++)
     {
         const TextCommand *const spellA = mSpellsVector[f];
         if (spellA == spell1)
         {
-            for (unsigned d = 0; d < sz; d++)
+            for (size_t d = 0; d < sz; d++)
             {
                 const TextCommand *const spellB = mSpellsVector[d];
                 if (spellB == spell2)

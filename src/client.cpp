@@ -1704,8 +1704,9 @@ int Client::gameExec()
                     logger->log1("State: UNREGISTER SUCCESS");
                     Net::getLoginHandler()->disconnect();
 
-                    // TRANSLATORS: unregister message header
-                    mCurrentDialog = openErrorDialog(_("Unregister Successful"),
+                    mCurrentDialog = openErrorDialog(
+                        // TRANSLATORS: unregister message header
+                        _("Unregister Successful"),
                         // TRANSLATORS: unregister message text
                         _("Farewell, come back any time..."), true);
                     loginData.clear();

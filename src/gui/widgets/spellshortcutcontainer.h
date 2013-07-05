@@ -82,7 +82,6 @@ class SpellShortcutContainer final : public ShortcutContainer
         int getItemByIndex(const int index);
 
     private:
-        TextCommand *mSpellMoved;
         SpellPopup *mSpellPopup;
         unsigned int mNumber;
         gcn::Color mForegroundColor2;

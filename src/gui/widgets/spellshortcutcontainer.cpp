@@ -47,7 +47,6 @@
 
 SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
     ShortcutContainer(),
-    mSpellMoved(nullptr),
     mSpellPopup(new SpellPopup),
     mNumber(number),
     mForegroundColor2(getThemeColor(Theme::TEXT_OUTLINE)),
@@ -239,7 +238,6 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
             if (dragDrop.getSource() == DRAGDROP_SOURCE_SPELLS)
             {
                 const int oldIndex = dragDrop.getTag();
-                const int oldItemId = getItemByIndex(oldIndex);
                 const int idx = mNumber * SPELL_SHORTCUT_ITEMS;
                 if (spellManager)
                 {

@@ -145,7 +145,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
                 width, mRowHeight));
         }
 
-        if (mShopItems)
+        if (mShopItems && item)
         {
             Image *const icon = item->getImage();
             if (icon)
