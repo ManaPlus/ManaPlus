@@ -1,3 +1,17 @@
+2013-07-07 New release 1.3.7.7
+fix: buttons in character selection dialog.
+fix: switch login button.
+fix: some checkboxes visualisation in video setting tab.
+fix: drawbefore/drawafter options in items.xml for non evol servers.
+fix: crash in close with opened storage window.
+fix: crash with broken default files and client data.
+fix: resize issue in chat tabs.
+add: protected items.
+add: multi lines in menu in npc dialog.
+add: logging debug chat tab (disabled).
+add: support page link if server error happend.
+add: drag and drop in almost all existing windows.
+
 2013-06-23 New release 1.3.6.23
 fix: S and A dye channels order.
 fix: padding in listbox.
