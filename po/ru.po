@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-07-03 18:01+0300\n"
+"POT-Creation-Date: 2013-07-06 13:14+0300\n"
 "PO-Revision-Date: 2013-07-03 15:09+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
@@ -67,25 +67,25 @@ msgstr "Б"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: full button name
-#: src/client.cpp:1154 src/gui/setup.cpp:57 src/gui/windowmenu.cpp:167
+#: src/client.cpp:1158 src/gui/setup.cpp:57 src/gui/windowmenu.cpp:167
 msgid "Setup"
 msgstr "Настройка"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1158 src/gui/setup_perfomance.cpp:61
+#: src/client.cpp:1162 src/gui/setup_perfomance.cpp:61
 msgid "Perfomance"
 msgstr "Производительность"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1161 src/gui/setup_video.cpp:245
+#: src/client.cpp:1165 src/gui/setup_video.cpp:245
 msgid "Video"
 msgstr "Видео"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1164 src/gui/setup_theme.cpp:283
+#: src/client.cpp:1168 src/gui/setup_theme.cpp:283
 msgid "Theme"
 msgstr "Тема"
 
@@ -96,7 +96,7 @@ msgstr "Тема"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1168 src/gui/didyouknowwindow.cpp:78
+#: src/client.cpp:1172 src/gui/didyouknowwindow.cpp:78
 #: src/gui/inventorywindow.cpp:231 src/gui/npcdialog.cpp:65
 #: src/gui/npcdialog.cpp:102 src/gui/popupmenu.cpp:574
 #: src/gui/questswindow.cpp:138 src/gui/shopwindow.cpp:80
@@ -104,32 +104,32 @@ msgid "Close"
 msgstr "Закрыть"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1286
+#: src/client.cpp:1290
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1329
+#: src/client.cpp:1333
 msgid "Logging in"
 msgstr "Авторизация"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1368
+#: src/client.cpp:1372
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1488
+#: src/client.cpp:1492
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1527
+#: src/client.cpp:1531
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1540
+#: src/client.cpp:1544
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
@@ -144,9 +144,9 @@ msgstr "Смена игрового сервера"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1597 src/client.cpp:1608 src/client.cpp:1783
+#: src/client.cpp:1601 src/client.cpp:1612 src/client.cpp:1788
 #: src/gui/changeemaildialog.cpp:168 src/gui/changepassworddialog.cpp:158
-#: src/gui/charcreatedialog.cpp:357 src/gui/charselectdialog.cpp:291
+#: src/gui/charcreatedialog.cpp:363 src/gui/charselectdialog.cpp:291
 #: src/gui/editserverdialog.cpp:216 src/gui/registerdialog.cpp:257
 #: src/gui/unregisterdialog.cpp:143 src/net/ea/charserverhandler.cpp:199
 #: src/net/ea/charserverhandler.cpp:223
@@ -154,65 +154,65 @@ msgid "Error"
 msgstr "Ошибка"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1621
+#: src/client.cpp:1625
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1658
+#: src/client.cpp:1662
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1660
+#: src/client.cpp:1664
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1681
+#: src/client.cpp:1685
 msgid "Email Change"
 msgstr "Сменить Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1683
+#: src/client.cpp:1687
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1704
+#: src/client.cpp:1709
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1706
+#: src/client.cpp:1711
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1964 src/client.cpp:1979 src/client.cpp:2022
-#: src/client.cpp:2038 src/client.cpp:2483 src/client.cpp:2491
+#: src/client.cpp:1969 src/client.cpp:1984 src/client.cpp:2027
+#: src/client.cpp:2043 src/client.cpp:2488 src/client.cpp:2496
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2179
+#: src/client.cpp:2184
 #, c-format
 msgid "Invalid update host: %s."
 msgstr "Некорректный сервер обновленмй: %s."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2220 src/client.cpp:2227
+#: src/client.cpp:2225 src/client.cpp:2232
 msgid "Error creating updates directory!"
 msgstr "Ошибка создания директории для обновлений!"
 
-#: src/client.cpp:2249 src/client.cpp:2262
+#: src/client.cpp:2254 src/client.cpp:2267
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:3032
+#: src/client.cpp:3037
 msgid "Do you want to open support page?"
 msgstr "Открыть страницу поддержки?"
 
@@ -461,12 +461,12 @@ msgid "Saving screenshot failed!"
 msgstr "Ошибка при сохранении снимка экрана!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:619
+#: src/game.cpp:618
 msgid "The connection to the server was lost."
 msgstr "Соединение с сервером потеряно."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:622
+#: src/game.cpp:621
 msgid "Network Error"
 msgstr "Ошибка сети"
 
@@ -816,8 +816,8 @@ msgstr "Имя:"
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
 #: src/gui/charcreatedialog.cpp:80 src/gui/charcreatedialog.cpp:89
-#: src/gui/charcreatedialog.cpp:106 src/gui/charcreatedialog.cpp:170
-#: src/gui/charcreatedialog.cpp:180 src/gui/outfitwindow.cpp:65
+#: src/gui/charcreatedialog.cpp:106 src/gui/charcreatedialog.cpp:176
+#: src/gui/charcreatedialog.cpp:186 src/gui/outfitwindow.cpp:65
 msgid ">"
 msgstr ">"
 
@@ -826,7 +826,7 @@ msgstr ">"
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
 #: src/gui/charcreatedialog.cpp:84 src/gui/charcreatedialog.cpp:91
-#: src/gui/charcreatedialog.cpp:172 src/gui/charcreatedialog.cpp:182
+#: src/gui/charcreatedialog.cpp:178 src/gui/charcreatedialog.cpp:188
 #: src/gui/outfitwindow.cpp:63
 msgid "<"
 msgstr "<"
@@ -871,7 +871,7 @@ msgid "Other"
 msgstr "Другое"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/charcreatedialog.cpp:118 src/gui/charcreatedialog.cpp:466
+#: src/gui/charcreatedialog.cpp:118 src/gui/charcreatedialog.cpp:472
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Распределите очки (%d)"
@@ -885,27 +885,27 @@ msgid "Create"
 msgstr "Создать"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/charcreatedialog.cpp:174
+#: src/gui/charcreatedialog.cpp:180
 msgid "Race:"
 msgstr "Раса:"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/charcreatedialog.cpp:184
+#: src/gui/charcreatedialog.cpp:190
 msgid "Look:"
 msgstr "Внешность:"
 
 #. TRANSLATORS: char creation error
-#: src/gui/charcreatedialog.cpp:359
+#: src/gui/charcreatedialog.cpp:365
 msgid "Your name needs to be at least 4 characters."
 msgstr "Имя должно содержать не менее четырех символов."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/charcreatedialog.cpp:456
+#: src/gui/charcreatedialog.cpp:462
 msgid "Character stats OK"
 msgstr "Данные персонажа в порядке"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/charcreatedialog.cpp:472
+#: src/gui/charcreatedialog.cpp:478
 #, c-format
 msgid "Please remove %d points"
 msgstr "Снимите очки (%d)"
@@ -1414,7 +1414,7 @@ msgstr "Снаряжение"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #: src/gui/equipmentwindow.cpp:63 src/gui/inventorywindow.cpp:183
-#: src/gui/inventorywindow.cpp:663 src/gui/popupmenu.cpp:2575
+#: src/gui/inventorywindow.cpp:662 src/gui/popupmenu.cpp:2578
 msgid "Unequip"
 msgstr "Снять"
 
@@ -1438,30 +1438,30 @@ msgstr "Инвентарь"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
 #. TRANSLATORS: popup menu item
-#: src/gui/inventorywindow.cpp:179 src/gui/inventorywindow.cpp:668
-#: src/gui/outfitwindow.cpp:67 src/gui/popupmenu.cpp:2580
+#: src/gui/inventorywindow.cpp:179 src/gui/inventorywindow.cpp:667
+#: src/gui/outfitwindow.cpp:67 src/gui/popupmenu.cpp:2583
 msgid "Equip"
 msgstr "Надеть"
 
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: skills dialog button
-#: src/gui/inventorywindow.cpp:181 src/gui/inventorywindow.cpp:674
-#: src/gui/popupmenu.cpp:1896 src/gui/popupmenu.cpp:2588
+#: src/gui/inventorywindow.cpp:181 src/gui/inventorywindow.cpp:673
+#: src/gui/popupmenu.cpp:1896 src/gui/popupmenu.cpp:2591
 #: src/gui/skilldialog.cpp:263
 msgid "Use"
 msgstr "Использовать"
 
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
-#: src/gui/inventorywindow.cpp:196 src/gui/inventorywindow.cpp:771
-#: src/gui/popupmenu.cpp:2597
+#: src/gui/inventorywindow.cpp:196 src/gui/inventorywindow.cpp:770
+#: src/gui/popupmenu.cpp:2600
 msgid "Drop..."
 msgstr "Бросить..."
 
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
-#: src/gui/inventorywindow.cpp:198 src/gui/popupmenu.cpp:2611
+#: src/gui/inventorywindow.cpp:198 src/gui/popupmenu.cpp:2614
 msgid "Split"
 msgstr "Разделить"
 
@@ -1480,7 +1480,7 @@ msgstr "Наряды"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: setup button
-#: src/gui/inventorywindow.cpp:227 src/gui/inventorywindow.cpp:763
+#: src/gui/inventorywindow.cpp:227 src/gui/inventorywindow.cpp:762
 #: src/gui/popupmenu.cpp:1816 src/gui/popupmenu.cpp:1932
 #: src/gui/popupmenu.cpp:1970 src/gui/setup.cpp:87
 msgid "Store"
@@ -1493,7 +1493,7 @@ msgid "Retrieve"
 msgstr "Получить"
 
 #. TRANSLATORS: status window label
-#: src/gui/inventorywindow.cpp:581 src/gui/statuswindow.cpp:143
+#: src/gui/inventorywindow.cpp:580 src/gui/statuswindow.cpp:143
 #: src/gui/statuswindow.cpp:284 src/gui/statuswindow.cpp:337
 #: src/gui/widgets/characterdisplay.cpp:126
 #, c-format
@@ -1503,7 +1503,7 @@ msgstr "Деньги: %s"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: full button name
-#: src/gui/inventorywindow.cpp:776 src/gui/popupmenu.cpp:2604
+#: src/gui/inventorywindow.cpp:775 src/gui/popupmenu.cpp:2607
 #: src/gui/windowmenu.cpp:138
 msgid "Drop"
 msgstr "Бросить"
@@ -1847,7 +1847,7 @@ msgid "Failed to send as sender or letter invalid."
 msgstr "Невозможно послать ибо отправитель либо сообщение неверны."
 
 #. TRANSLATORS: outfits window label
-#: src/gui/outfitwindow.cpp:69 src/gui/outfitwindow.cpp:564
+#: src/gui/outfitwindow.cpp:69 src/gui/outfitwindow.cpp:561
 #, c-format
 msgid "Outfit: %d"
 msgstr "Наряд: %d"
@@ -1864,7 +1864,7 @@ msgstr "наряд отсутствия"
 
 #. TRANSLATORS: outfits window label
 #. TRANSLATORS: short key name
-#: src/gui/outfitwindow.cpp:78 src/gui/outfitwindow.cpp:570
+#: src/gui/outfitwindow.cpp:78 src/gui/outfitwindow.cpp:567
 #: src/gui/windowmenu.cpp:293
 #, c-format
 msgid "Key: %s"
@@ -2307,12 +2307,12 @@ msgid "Unprotect item"
 msgstr "Снять защиту"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popupmenu.cpp:2564
+#: src/gui/popupmenu.cpp:2566
 msgid "Protect item"
 msgstr "Поставить защиту"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popupmenu.cpp:2599
+#: src/gui/popupmenu.cpp:2602
 msgid "Drop all"
 msgstr "Бросить все"
 
@@ -7072,13 +7072,13 @@ msgid "You're pining for the fjords."
 msgstr "Вас пришпиливают к фьордам."
 
 #. TRANSLATORS: message header
-#: src/net/ea/playerhandler.cpp:370 src/net/ea/playerhandler.cpp:382
-#: src/net/ea/playerhandler.cpp:466
+#: src/net/ea/playerhandler.cpp:374 src/net/ea/playerhandler.cpp:386
+#: src/net/ea/playerhandler.cpp:470
 msgid "Message"
 msgstr "Сообщение"
 
 #. TRANSLATORS: weight message
-#: src/net/ea/playerhandler.cpp:372
+#: src/net/ea/playerhandler.cpp:376
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
@@ -7086,7 +7086,7 @@ msgstr ""
 "восстанавливаться не будет."
 
 #. TRANSLATORS: weight message
-#: src/net/ea/playerhandler.cpp:384
+#: src/net/ea/playerhandler.cpp:388
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Вес предметов составляет менее половины допустимого. Теперь Вы можете "

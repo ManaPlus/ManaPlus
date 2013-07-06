@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-07-03 18:01+0300\n"
+"POT-Creation-Date: 2013-07-06 13:14+0300\n"
 "PO-Revision-Date: 2013-07-03 15:07+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/manaplus/"
@@ -62,25 +62,25 @@ msgstr "l"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: full button name
-#: src/client.cpp:1154 src/gui/setup.cpp:57 src/gui/windowmenu.cpp:167
+#: src/client.cpp:1158 src/gui/setup.cpp:57 src/gui/windowmenu.cpp:167
 msgid "Setup"
 msgstr "Pengaturan"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1158 src/gui/setup_perfomance.cpp:61
+#: src/client.cpp:1162 src/gui/setup_perfomance.cpp:61
 msgid "Perfomance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1161 src/gui/setup_video.cpp:245
+#: src/client.cpp:1165 src/gui/setup_video.cpp:245
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1164 src/gui/setup_theme.cpp:283
+#: src/client.cpp:1168 src/gui/setup_theme.cpp:283
 msgid "Theme"
 msgstr "Tema"
 
@@ -91,7 +91,7 @@ msgstr "Tema"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1168 src/gui/didyouknowwindow.cpp:78
+#: src/client.cpp:1172 src/gui/didyouknowwindow.cpp:78
 #: src/gui/inventorywindow.cpp:231 src/gui/npcdialog.cpp:65
 #: src/gui/npcdialog.cpp:102 src/gui/popupmenu.cpp:574
 #: src/gui/questswindow.cpp:138 src/gui/shopwindow.cpp:80
@@ -99,32 +99,32 @@ msgid "Close"
 msgstr "Tutup"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1286
+#: src/client.cpp:1290
 msgid "Connecting to server"
 msgstr "Terhubung dengan server"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1329
+#: src/client.cpp:1333
 msgid "Logging in"
 msgstr "Masuk"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1368
+#: src/client.cpp:1372
 msgid "Entering game world"
 msgstr "Memasuki arena permainan"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1488
+#: src/client.cpp:1492
 msgid "Requesting characters"
 msgstr "Pemilihan karakter"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1527
+#: src/client.cpp:1531
 msgid "Connecting to the game server"
 msgstr "terhubung dengan server"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1540
+#: src/client.cpp:1544
 msgid "Changing game servers"
 msgstr "Pergantian server"
 
@@ -139,9 +139,9 @@ msgstr "Pergantian server"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1597 src/client.cpp:1608 src/client.cpp:1783
+#: src/client.cpp:1601 src/client.cpp:1612 src/client.cpp:1788
 #: src/gui/changeemaildialog.cpp:168 src/gui/changepassworddialog.cpp:158
-#: src/gui/charcreatedialog.cpp:357 src/gui/charselectdialog.cpp:291
+#: src/gui/charcreatedialog.cpp:363 src/gui/charselectdialog.cpp:291
 #: src/gui/editserverdialog.cpp:216 src/gui/registerdialog.cpp:257
 #: src/gui/unregisterdialog.cpp:143 src/net/ea/charserverhandler.cpp:199
 #: src/net/ea/charserverhandler.cpp:223
@@ -149,65 +149,65 @@ msgid "Error"
 msgstr "Kesalahan"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1621
+#: src/client.cpp:1625
 msgid "Requesting registration details"
 msgstr "Meminta detail registrasi"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1658
+#: src/client.cpp:1662
 msgid "Password Change"
 msgstr "Ubah sandi"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1660
+#: src/client.cpp:1664
 msgid "Password changed successfully!"
 msgstr "Perubahan sandi berhasil"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1681
+#: src/client.cpp:1685
 msgid "Email Change"
 msgstr "Perubahan email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1683
+#: src/client.cpp:1687
 msgid "Email changed successfully!"
 msgstr "Perubahan email berhasil"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1704
+#: src/client.cpp:1709
 msgid "Unregister Successful"
 msgstr "Telah tidak terdaftar"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1706
+#: src/client.cpp:1711
 msgid "Farewell, come back any time..."
 msgstr "Selamat tinggal, datang kembali setiap saat"
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1964 src/client.cpp:1979 src/client.cpp:2022
-#: src/client.cpp:2038 src/client.cpp:2483 src/client.cpp:2491
+#: src/client.cpp:1969 src/client.cpp:1984 src/client.cpp:2027
+#: src/client.cpp:2043 src/client.cpp:2488 src/client.cpp:2496
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s tidak ada dan tidak dapat dibuat!keluar."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2179
+#: src/client.cpp:2184
 #, c-format
 msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2220 src/client.cpp:2227
+#: src/client.cpp:2225 src/client.cpp:2232
 msgid "Error creating updates directory!"
 msgstr "Gagal membuat direktori update!"
 
-#: src/client.cpp:2249 src/client.cpp:2262
+#: src/client.cpp:2254 src/client.cpp:2267
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "kesalahan %s tidak ada dan tidak dapat dibuat!keluar."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:3032
+#: src/client.cpp:3037
 msgid "Do you want to open support page?"
 msgstr ""
 
@@ -455,12 +455,12 @@ msgid "Saving screenshot failed!"
 msgstr "Gagal menyimpan screenshot!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:619
+#: src/game.cpp:618
 msgid "The connection to the server was lost."
 msgstr "Koneksi ke server terputus"
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:622
+#: src/game.cpp:621
 msgid "Network Error"
 msgstr "Kesalahan jaringan"
 
@@ -810,8 +810,8 @@ msgstr "Nama:"
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
 #: src/gui/charcreatedialog.cpp:80 src/gui/charcreatedialog.cpp:89
-#: src/gui/charcreatedialog.cpp:106 src/gui/charcreatedialog.cpp:170
-#: src/gui/charcreatedialog.cpp:180 src/gui/outfitwindow.cpp:65
+#: src/gui/charcreatedialog.cpp:106 src/gui/charcreatedialog.cpp:176
+#: src/gui/charcreatedialog.cpp:186 src/gui/outfitwindow.cpp:65
 msgid ">"
 msgstr ">"
 
@@ -820,7 +820,7 @@ msgstr ">"
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
 #: src/gui/charcreatedialog.cpp:84 src/gui/charcreatedialog.cpp:91
-#: src/gui/charcreatedialog.cpp:172 src/gui/charcreatedialog.cpp:182
+#: src/gui/charcreatedialog.cpp:178 src/gui/charcreatedialog.cpp:188
 #: src/gui/outfitwindow.cpp:63
 msgid "<"
 msgstr "<"
@@ -865,7 +865,7 @@ msgid "Other"
 msgstr "Lainnya"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/charcreatedialog.cpp:118 src/gui/charcreatedialog.cpp:466
+#: src/gui/charcreatedialog.cpp:118 src/gui/charcreatedialog.cpp:472
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Tolong distribusikan %d point"
@@ -879,27 +879,27 @@ msgid "Create"
 msgstr "Buat"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/charcreatedialog.cpp:174
+#: src/gui/charcreatedialog.cpp:180
 msgid "Race:"
 msgstr "Ras:"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/charcreatedialog.cpp:184
+#: src/gui/charcreatedialog.cpp:190
 msgid "Look:"
 msgstr ""
 
 #. TRANSLATORS: char creation error
-#: src/gui/charcreatedialog.cpp:359
+#: src/gui/charcreatedialog.cpp:365
 msgid "Your name needs to be at least 4 characters."
 msgstr "Nama anda paling sedikit harus mengandung 4 karakter"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/charcreatedialog.cpp:456
+#: src/gui/charcreatedialog.cpp:462
 msgid "Character stats OK"
 msgstr "Stats Karakter OK"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/charcreatedialog.cpp:472
+#: src/gui/charcreatedialog.cpp:478
 #, c-format
 msgid "Please remove %d points"
 msgstr "Tolong hilangkan %d poin"
@@ -1403,7 +1403,7 @@ msgstr "Perlengkapan"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #: src/gui/equipmentwindow.cpp:63 src/gui/inventorywindow.cpp:183
-#: src/gui/inventorywindow.cpp:663 src/gui/popupmenu.cpp:2575
+#: src/gui/inventorywindow.cpp:662 src/gui/popupmenu.cpp:2578
 msgid "Unequip"
 msgstr "Lepaskan"
 
@@ -1427,30 +1427,30 @@ msgstr "Perbekalan"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
 #. TRANSLATORS: popup menu item
-#: src/gui/inventorywindow.cpp:179 src/gui/inventorywindow.cpp:668
-#: src/gui/outfitwindow.cpp:67 src/gui/popupmenu.cpp:2580
+#: src/gui/inventorywindow.cpp:179 src/gui/inventorywindow.cpp:667
+#: src/gui/outfitwindow.cpp:67 src/gui/popupmenu.cpp:2583
 msgid "Equip"
 msgstr "Pakai"
 
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: skills dialog button
-#: src/gui/inventorywindow.cpp:181 src/gui/inventorywindow.cpp:674
-#: src/gui/popupmenu.cpp:1896 src/gui/popupmenu.cpp:2588
+#: src/gui/inventorywindow.cpp:181 src/gui/inventorywindow.cpp:673
+#: src/gui/popupmenu.cpp:1896 src/gui/popupmenu.cpp:2591
 #: src/gui/skilldialog.cpp:263
 msgid "Use"
 msgstr "Gunakan"
 
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
-#: src/gui/inventorywindow.cpp:196 src/gui/inventorywindow.cpp:771
-#: src/gui/popupmenu.cpp:2597
+#: src/gui/inventorywindow.cpp:196 src/gui/inventorywindow.cpp:770
+#: src/gui/popupmenu.cpp:2600
 msgid "Drop..."
 msgstr "Buang..."
 
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
-#: src/gui/inventorywindow.cpp:198 src/gui/popupmenu.cpp:2611
+#: src/gui/inventorywindow.cpp:198 src/gui/popupmenu.cpp:2614
 msgid "Split"
 msgstr "Pecah"
 
@@ -1469,7 +1469,7 @@ msgstr "Setelan"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: setup button
-#: src/gui/inventorywindow.cpp:227 src/gui/inventorywindow.cpp:763
+#: src/gui/inventorywindow.cpp:227 src/gui/inventorywindow.cpp:762
 #: src/gui/popupmenu.cpp:1816 src/gui/popupmenu.cpp:1932
 #: src/gui/popupmenu.cpp:1970 src/gui/setup.cpp:87
 msgid "Store"
@@ -1482,7 +1482,7 @@ msgid "Retrieve"
 msgstr "Kembalikan"
 
 #. TRANSLATORS: status window label
-#: src/gui/inventorywindow.cpp:581 src/gui/statuswindow.cpp:143
+#: src/gui/inventorywindow.cpp:580 src/gui/statuswindow.cpp:143
 #: src/gui/statuswindow.cpp:284 src/gui/statuswindow.cpp:337
 #: src/gui/widgets/characterdisplay.cpp:126
 #, c-format
@@ -1492,7 +1492,7 @@ msgstr ""
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: full button name
-#: src/gui/inventorywindow.cpp:776 src/gui/popupmenu.cpp:2604
+#: src/gui/inventorywindow.cpp:775 src/gui/popupmenu.cpp:2607
 #: src/gui/windowmenu.cpp:138
 msgid "Drop"
 msgstr "Buang"
@@ -1832,7 +1832,7 @@ msgid "Failed to send as sender or letter invalid."
 msgstr "Gagal untuk mengirim sebagai pengirim atau surat tidak valid."
 
 #. TRANSLATORS: outfits window label
-#: src/gui/outfitwindow.cpp:69 src/gui/outfitwindow.cpp:564
+#: src/gui/outfitwindow.cpp:69 src/gui/outfitwindow.cpp:561
 #, c-format
 msgid "Outfit: %d"
 msgstr "Setelan: %d"
@@ -1849,7 +1849,7 @@ msgstr "Setelan saat bepergian"
 
 #. TRANSLATORS: outfits window label
 #. TRANSLATORS: short key name
-#: src/gui/outfitwindow.cpp:78 src/gui/outfitwindow.cpp:570
+#: src/gui/outfitwindow.cpp:78 src/gui/outfitwindow.cpp:567
 #: src/gui/windowmenu.cpp:293
 #, c-format
 msgid "Key: %s"
@@ -2292,12 +2292,12 @@ msgid "Unprotect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popupmenu.cpp:2564
+#: src/gui/popupmenu.cpp:2566
 msgid "Protect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popupmenu.cpp:2599
+#: src/gui/popupmenu.cpp:2602
 msgid "Drop all"
 msgstr "Buang semuanya"
 
@@ -7023,19 +7023,19 @@ msgid "You're pining for the fjords."
 msgstr ""
 
 #. TRANSLATORS: message header
-#: src/net/ea/playerhandler.cpp:370 src/net/ea/playerhandler.cpp:382
-#: src/net/ea/playerhandler.cpp:466
+#: src/net/ea/playerhandler.cpp:374 src/net/ea/playerhandler.cpp:386
+#: src/net/ea/playerhandler.cpp:470
 msgid "Message"
 msgstr ""
 
 #. TRANSLATORS: weight message
-#: src/net/ea/playerhandler.cpp:372
+#: src/net/ea/playerhandler.cpp:376
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 
 #. TRANSLATORS: weight message
-#: src/net/ea/playerhandler.cpp:384
+#: src/net/ea/playerhandler.cpp:388
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Kamu membawa kurang dari setengah jumlah berat maksimal. Darah dapat "
