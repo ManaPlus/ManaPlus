@@ -253,6 +253,7 @@ ChatWindow::ChatWindow():
 
     mChatTabs->enableScrollButtons(true);
     mChatTabs->setFollowDownScroll(true);
+    mChatTabs->setResizeHeight(false);
 
     mChatInput->setActionEventId("chatinput");
     mChatInput->addActionListener(this);

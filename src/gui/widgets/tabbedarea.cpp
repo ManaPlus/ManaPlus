@@ -51,7 +51,8 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
     mEnableScrollButtons(false),
     mRightMargin(0),
     mFollowDownScroll(false),
-    mBlockSwitching(true)
+    mBlockSwitching(true),
+    mResizeHeight(true)
 {
     setFocusable(true);
     addKeyListener(this);
@@ -478,8 +479,16 @@ void TabbedArea::adjustSize()
         const int frame2 = 2 * wFrameSize;
 
         w->setPosition(wFrameSize, wFrameSize);
-        w->setSize(mWidgetContainer->getWidth() - frame2,
-            mWidgetContainer->getHeight() - frame2);
+        if (mResizeHeight)
+        {
+            w->setSize(mWidgetContainer->getWidth() - frame2,
+                mWidgetContainer->getHeight() - frame2);
+        }
+        else
+        {
+            w->setSize(mWidgetContainer->getWidth() - frame2,
+                w->getHeight());
+        }
     }
 }
 

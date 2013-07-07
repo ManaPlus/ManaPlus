@@ -182,6 +182,9 @@ class TabbedArea final : public Widget2,
 
         void death(const gcn::Event &event);
 
+        void setResizeHeight(bool b)
+        { mResizeHeight = b; }
+
     private:
         typedef std::vector <std::pair<Tab*, gcn::Widget*> > TabContainer;
 
@@ -237,6 +240,7 @@ class TabbedArea final : public Widget2,
         int mRightMargin;
         bool mFollowDownScroll;
         bool mBlockSwitching;
+        bool mResizeHeight;
 };
 
 #endif  // GUI_WIDGETS_TABBEDAREA_H
