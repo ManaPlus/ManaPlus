@@ -367,6 +367,8 @@ void ChatWindow::adjustTabSize()
 
     mColorPicker->setPosition(this->getWidth() - mColorPicker->getWidth()
         - 2 * mPadding - 8 - 16, mPadding);
+
+    mChatTabs->adjustSize();
 }
 
 void ChatWindow::widgetResized(const gcn::Event &event)

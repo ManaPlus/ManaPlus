@@ -479,7 +479,7 @@ void TabbedArea::adjustSize()
 
         w->setPosition(wFrameSize, wFrameSize);
         w->setSize(mWidgetContainer->getWidth() - frame2,
-            w->getHeight());
+            mWidgetContainer->getHeight() - frame2);
     }
 }
 
