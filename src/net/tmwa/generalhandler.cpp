@@ -102,17 +102,17 @@ GeneralHandler::GeneralHandler() :
 
     std::vector<ItemDB::Stat> stats;
     // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("str", _("Strength %+d")));
+    stats.push_back(ItemDB::Stat("str", _("Strength %s")));
     // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("agi", _("Agility %+d")));
+    stats.push_back(ItemDB::Stat("agi", _("Agility %s")));
     // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("vit", _("Vitality %+d")));
+    stats.push_back(ItemDB::Stat("vit", _("Vitality %s")));
     // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("int", _("Intelligence %+d")));
+    stats.push_back(ItemDB::Stat("int", _("Intelligence %s")));
     // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("dex", _("Dexterity %+d")));
+    stats.push_back(ItemDB::Stat("dex", _("Dexterity %s")));
     // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("luck", _("Luck %+d")));
+    stats.push_back(ItemDB::Stat("luck", _("Luck %s")));
 
     ItemDB::setStatsList(stats);
 }

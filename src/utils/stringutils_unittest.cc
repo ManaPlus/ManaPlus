@@ -551,3 +551,16 @@ TEST(stringuntils, decodeLinkText)
     str = decodeLinkText(str);
     EXPECT_EQ(str, "test|line");
 }
+
+TEST(stringuntils, isDigit)
+{
+    std::string str;
+
+    EXPECT_FALSE(isDigit(""));
+    EXPECT_TRUE(isDigit("1"));
+    EXPECT_TRUE(isDigit("123"));
+    EXPECT_FALSE(isDigit("+123"));
+    EXPECT_FALSE(isDigit("-123"));
+    EXPECT_FALSE(isDigit("1.23"));
+    EXPECT_FALSE(isDigit("12-34"));
+}

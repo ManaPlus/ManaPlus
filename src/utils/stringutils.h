@@ -230,4 +230,6 @@ std::string encodeLinkText(std::string data);
 
 std::string decodeLinkText(std::string data);
 
+bool isDigit(const std::string &str);
+
 #endif  // UTILS_STRINGUTILS_H

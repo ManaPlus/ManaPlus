@@ -59,15 +59,15 @@ static int parseDirectionName(const std::string &name);
 static const char *const fields[][2] =
 {
     // TRANSLATORS: item info label
-    { "attack",    N_("Attack %+d")    },
+    { "attack",    N_("Attack %s")    },
     // TRANSLATORS: item info label
-    { "defense",   N_("Defense %+d")   },
+    { "defense",   N_("Defense %s")   },
     // TRANSLATORS: item info label
-    { "hp",        N_("HP %+d")        },
+    { "hp",        N_("HP %s")        },
     // TRANSLATORS: item info label
-    { "mp",        N_("MP %+d")        },
+    { "mp",        N_("MP %s")        },
     // TRANSLATORS: item info label
-    { "level",     N_("Level %+d")     }
+    { "level",     N_("Level %s")     }
 };
 
 static std::vector<ItemDB::Stat> extraStats;
@@ -344,21 +344,26 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         std::string effect;
         for (size_t i = 0; i < sizeof(fields) / sizeof(fields[0]); ++ i)
         {
-            const int value = XML::getProperty(node, fields[i][0], 0);
-            if (!value)
+            std::string value = XML::getProperty(node, fields[i][0], "");
+            if (value.empty())
                 continue;
             if (!effect.empty())
                 effect.append(" / ");
-            effect.append(strprintf(gettext(fields[i][1]), value));
+            if (isDigit(value))
+                value = "+" + value;
+            effect.append(strprintf(gettext(fields[i][1]), value.c_str()));
         }
         FOR_EACH (std::vector<Stat>::const_iterator, it, extraStats)
         {
-            const int value = XML::getProperty(node, it->tag.c_str(), 0);
-            if (!value)
+            std::string value = XML::getProperty(
+                node, it->tag.c_str(), "");
+            if (value.empty())
                 continue;
             if (!effect.empty())
                 effect.append(" / ");
-            effect.append(strprintf(it->format.c_str(), value));
+            if (isDigit(value))
+                value = "+" + value;
+            effect.append(strprintf(it->format.c_str(), value.c_str()));
         }
         std::string temp = XML::langProperty(node, "effect", "");
         if (!effect.empty() && !temp.empty())

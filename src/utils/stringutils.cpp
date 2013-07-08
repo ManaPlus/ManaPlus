@@ -697,3 +697,17 @@ std::string toStringPrint(const unsigned int val)
     str[99] = 0;
     return str;
 }
+
+bool isDigit(const std::string &str)
+{
+    if (str.empty())
+        return false;
+    const size_t sz = str.size();
+    for (size_t f = 0; f < sz; f ++)
+    {
+        const char &chr = str[f];
+        if (chr < '0' || chr > '9')
+            return false;
+    }
+    return true;
+}

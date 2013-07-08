@@ -99,12 +99,12 @@ GeneralHandler::GeneralHandler() :
     generalHandler = this;
 
     std::vector<ItemDB::Stat> stats;
-    stats.push_back(ItemDB::Stat("str", _("Strength %+d")));
-    stats.push_back(ItemDB::Stat("agi", _("Agility %+d")));
-    stats.push_back(ItemDB::Stat("vit", _("Vitality %+d")));
-    stats.push_back(ItemDB::Stat("int", _("Intelligence %+d")));
-    stats.push_back(ItemDB::Stat("dex", _("Dexterity %+d")));
-    stats.push_back(ItemDB::Stat("luck", _("Luck %+d")));
+    stats.push_back(ItemDB::Stat("str", _("Strength %s")));
+    stats.push_back(ItemDB::Stat("agi", _("Agility %s")));
+    stats.push_back(ItemDB::Stat("vit", _("Vitality %s")));
+    stats.push_back(ItemDB::Stat("int", _("Intelligence %s")));
+    stats.push_back(ItemDB::Stat("dex", _("Dexterity %s")));
+    stats.push_back(ItemDB::Stat("luck", _("Luck %s")));
 
     ItemDB::setStatsList(stats);
 }
