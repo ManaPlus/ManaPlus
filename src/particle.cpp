@@ -127,7 +127,7 @@ bool Particle::update()
 
         if (mTarget && mAcceleration != 0.0f)
         {
-            Vector dist = mPos - mTarget->getPosition();
+            Vector dist = mPos - mTarget->mPos;
             dist.x *= SIN45;
             float invHypotenuse;
 
@@ -243,7 +243,7 @@ bool Particle::update()
     {
         Particle *const particle = *p;
         // move particle with its parent if desired
-        if (particle->doesFollow())
+        if (particle->mFollow)
             particle->moveBy(change);
 
         // update particle
@@ -269,7 +269,7 @@ void Particle::moveBy(const Vector &change)
     FOR_EACH (ParticleConstIterator, p, mChildParticles)
     {
         Particle *const particle = *p;
-        if (particle->doesFollow())
+        if (particle->mFollow)
             particle->moveBy(change);
     }
 }
