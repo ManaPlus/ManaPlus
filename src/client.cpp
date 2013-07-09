@@ -483,6 +483,7 @@ void Client::gameInit()
     }
 
     resman->addToSearchPath(PKG_DATADIR "data/perserver/default", false);
+    resman->addToSearchPath("data/perserver/default", false);
 
 #if defined __APPLE__
     CFBundleRef mainBundle = CFBundleGetMainBundle();
