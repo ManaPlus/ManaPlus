@@ -9,7 +9,7 @@
 
         <!-- Middle Row -->
         <part type="left-edge" xpos="0" ypos="4" width="4" height="216" />
-        <part type="bg-quad" xpos="4" ypos="4" width="32" height="216" />
+        <part type="bg-quad" xpos="4" ypos="86" width="32" height="57" />
         <part type="right-edge" xpos="36" ypos="4" width="4" height="216" />
 
         <!-- Bottom Row -->
