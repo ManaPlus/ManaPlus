@@ -56,19 +56,29 @@ static void loadOrderSprite(ItemInfo *const itemInfo, const XmlNodePtr node,
 static int parseSpriteName(const std::string &name);
 static int parseDirectionName(const std::string &name);
 
-static const char *const fields[][2] =
+namespace
 {
-    // TRANSLATORS: item info label
-    { "attack",    N_("Attack %s")    },
-    // TRANSLATORS: item info label
-    { "defense",   N_("Defense %s")   },
-    // TRANSLATORS: item info label
-    { "hp",        N_("HP %s")        },
-    // TRANSLATORS: item info label
-    { "mp",        N_("MP %s")        },
-    // TRANSLATORS: item info label
-    { "level",     N_("Level %s")     }
-};
+    struct FieldType
+    {
+        const char *name;
+        const char *description;
+        const bool sign;
+    };
+
+    static const FieldType fields[] =
+    {
+        // TRANSLATORS: item info label
+        { "attack",  N_("Attack %s"),  true },
+        // TRANSLATORS: item info label
+        { "defense", N_("Defense %s"), true },
+        // TRANSLATORS: item info label
+        { "hp",      N_("HP %s"),      true },
+        // TRANSLATORS: item info label
+        { "mp",      N_("MP %s"),      true },
+        // TRANSLATORS: item info label
+        { "level",   N_("Level %s"),   false }
+    };
+}  // namespace
 
 static std::vector<ItemDB::Stat> extraStats;
 
@@ -344,14 +354,15 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         std::string effect;
         for (size_t i = 0; i < sizeof(fields) / sizeof(fields[0]); ++ i)
         {
-            std::string value = XML::getProperty(node, fields[i][0], "");
+            std::string value = XML::getProperty(node, fields[i].name, "");
             if (value.empty())
                 continue;
             if (!effect.empty())
                 effect.append(" / ");
-            if (isDigit(value))
+            if (fields[i].sign && isDigit(value))
                 value = "+" + value;
-            effect.append(strprintf(gettext(fields[i][1]), value.c_str()));
+            effect.append(strprintf(gettext(fields[i].description),
+                value.c_str()));
         }
         FOR_EACH (std::vector<Stat>::const_iterator, it, extraStats)
         {
