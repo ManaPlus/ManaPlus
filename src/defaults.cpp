@@ -99,7 +99,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("crazyMoveProgram", "mumrsonmdmlon");
     AddDEF("disableGameModifiers", false);
     AddDEF("targetDeadPlayers", false);
-    AddDEF("afkMessage", "I am away from keyboard");
+    AddDEF("afkMessage", "I am away from keyboard.");
     AddDEF("particleMaxCount", 3000);
     AddDEF("particleFastPhysics", 1);
     AddDEF("particleEmitterSkip", 1);
