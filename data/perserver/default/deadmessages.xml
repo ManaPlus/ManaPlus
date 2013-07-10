@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Author : 4144
+(C) ManaPlus Developers 2013. -->
+<messages>
+    <its:rules xmlns:its="http://www.w3.org/2005/11/its" version="1.0">
+        <its:translateRule selector="//message" translate="yes"/>
+    </its:rules>
+
+    <message>You are dead.</message>
+    <message>We regret to inform you that your character was killed in battle.</message>
+    <message>You are not that alive anymore.</message>
+    <message>The cold hands of the grim reaper are grabbing for your soul.</message>
+    <message>Game Over!</message>
+    <message>Insert coin to continue.</message>
+    <message>No, kids. Your character did not really die. It... err... went to a better place.</message>
+    <message>Your plan of breaking your enemies weapon by bashing it with your throat failed.</message>
+    <message>I guess this did not run too well.</message>
+    // NetHack reference:
+    <message>Do you want your possessions identified?</message>
+    // Secret of Mana reference:
+    <message>Sadly, no trace of you was ever found...</message>
+    // Final Fantasy VI reference:
+    <message>Annihilated.</message>
+    // Earthbound reference:
+    <message>Looks like you got your head handed to you.</message>
+    // Leisure Suit Larry 1 reference:
+    <message>You screwed up again, dump your body down the tubes and get you another one.</message>
+    // Monty Python references (Dead Parrot sketch mostly):
+    <message>You're not dead yet. You're just resting.</message>
+    <message>You are no more.</message>
+    <message>You have ceased to be.</message>
+    <message>You've expired and gone to meet your maker.</message>
+    <message>You're a stiff.</message>
+    <message>Bereft of life, you rest in peace.</message>
+    <message>If you weren't so animated, you'd be pushing up the daisies.</message>
+    <message>Your metabolic processes are now history.</message>
+    <message>You're off the twig.</message>
+    <message>You've kicked the bucket.</message>
+    <message>You've shuffled off your mortal coil, run down the curtain and joined the bleedin' choir invisibile.</message>
+    <message>You are an ex-player.</message>
+    <message>You're pining for the fjords.</message>
+</messages>

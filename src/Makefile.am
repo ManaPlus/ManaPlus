@@ -441,6 +441,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/colordb.h \
 	      resources/cursor.cpp \
 	      resources/cursor.h \
+	      resources/deaddb.cpp \
+	      resources/deaddb.h \
 	      resources/dye.cpp \
 	      resources/dye.h \
 	      resources/dyecolor.h \

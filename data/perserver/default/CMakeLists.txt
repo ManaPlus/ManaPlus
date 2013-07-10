@@ -1,6 +1,7 @@
 SET (FILES
     charcreation.xml
     chatcommands.txt
+    deadmessages.xml
     features.xml
     gmcommands.txt
     )

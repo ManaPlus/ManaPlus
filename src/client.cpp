@@ -82,6 +82,7 @@
 #include "resources/avatardb.h"
 #include "resources/chardb.h"
 #include "resources/colordb.h"
+#include "resources/deaddb.h"
 #include "resources/emotedb.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
@@ -769,6 +770,7 @@ void Client::gameClear()
 
     // Unload XML databases
     CharDB::unload();
+    DeadDB::unload();
     ColorDB::unload();
     SoundDB::unload();
     EmoteDB::unload();
@@ -1458,6 +1460,7 @@ int Client::gameExec()
 
                     // Load XML databases
                     CharDB::load();
+                    DeadDB::load();
                     PaletteDB::load();
                     ColorDB::load();
                     SoundDB::load();

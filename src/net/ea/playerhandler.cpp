@@ -35,6 +35,8 @@
 #include "gui/statuswindow.h"
 #include "gui/viewport.h"
 
+#include "resources/deaddb.h"
+
 #include "net/npchandler.h"
 
 #include "net/ea/eaprotocol.h"
@@ -85,86 +87,6 @@ namespace
     } deathListener;
 
 }  // anonymous namespace
-
-static const char *randomDeathMessage()
-{
-    static const char *const deadMsg[] =
-    {
-        // TRANSLATORS: death message
-        N_("You are dead."),
-        // TRANSLATORS: death message
-        N_("We regret to inform you that your character was killed in "
-           "battle."),
-        // TRANSLATORS: death message
-        N_("You are not that alive anymore."),
-        // TRANSLATORS: death message
-        N_("The cold hands of the grim reaper are grabbing for your soul."),
-        // TRANSLATORS: death message
-        N_("Game Over!"),
-        // TRANSLATORS: death message
-        N_("Insert coin to continue."),
-        // TRANSLATORS: death message
-        N_("No, kids. Your character did not really die. It... "
-           "err... went to a better place."),
-        // TRANSLATORS: death message
-        N_("Your plan of breaking your enemies weapon by "
-           "bashing it with your throat failed."),
-        // TRANSLATORS: death message
-        N_("I guess this did not run too well."),
-        // NetHack reference:
-        // TRANSLATORS: death message
-        N_("Do you want your possessions identified?"),
-        // Secret of Mana reference:
-        // TRANSLATORS: death message
-        N_("Sadly, no trace of you was ever found..."),
-        // Final Fantasy VI reference:
-        // TRANSLATORS: death message
-        N_("Annihilated."),
-        // Earthbound reference:
-        // TRANSLATORS: death message
-        N_("Looks like you got your head handed to you."),
-        // Leisure Suit Larry 1 reference:
-        // TRANSLATORS: death message
-        N_("You screwed up again, dump your body down the tubes "
-           "and get you another one."),
-        // Monty Python references (Dead Parrot sketch mostly):
-        // TRANSLATORS: death message
-        N_("You're not dead yet. You're just resting."),
-        // TRANSLATORS: death message
-        N_("You are no more."),
-        // TRANSLATORS: death message
-        N_("You have ceased to be."),
-        // TRANSLATORS: death message
-        N_("You've expired and gone to meet your maker."),
-        // TRANSLATORS: death message
-        N_("You're a stiff."),
-        // TRANSLATORS: death message
-        N_("Bereft of life, you rest in peace."),
-        // TRANSLATORS: death message
-        N_("If you weren't so animated, you'd be pushing up the daisies."),
-        // TRANSLATORS: death message
-        N_("Your metabolic processes are now history."),
-        // TRANSLATORS: death message
-        N_("You're off the twig."),
-        // TRANSLATORS: death message
-        N_("You've kicked the bucket."),
-        // TRANSLATORS: death message
-        N_("You've shuffled off your mortal coil, run down the "
-           "curtain and joined the bleedin' choir invisibile."),
-        // TRANSLATORS: death message
-        N_("You are an ex-player."),
-        // TRANSLATORS: death message
-        N_("You're pining for the fjords.")
-    };
-
-    const int sz = sizeof(deadMsg);
-    if (!sz)
-        return gettext(deadMsg[0]);
-
-    const int random = static_cast<int>(rand() % (sz
-        / sizeof(deadMsg[0])));
-    return gettext(deadMsg[random]);
-}
 
 namespace Ea
 {
@@ -468,7 +390,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
     {
         // TRANSLATORS: message header
         deathNotice = new OkDialog(_("Message"),
-            randomDeathMessage(), DIALOG_OK, false);
+            DeadDB::getRandomString(), DIALOG_OK, false);
         deathNotice->addActionListener(&deathListener);
         if (player_node->getCurrentAction() != Being::DEAD)
         {

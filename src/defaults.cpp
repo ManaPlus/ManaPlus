@@ -455,6 +455,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("monstersFile", "monsters.xml");
     AddDEF("mapsRemapFile", "maps/remap.xml");
     AddDEF("mapsFile", "maps.xml");
+    AddDEF("deadMessagesFile", "deadmessages.xml");
 
     return configData;
 }
