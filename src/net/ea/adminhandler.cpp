@@ -72,6 +72,26 @@ void AdminHandler::warp(const std::string &map, const int x, const int y) const
         "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);
 }
 
+void AdminHandler::gotoName(const std::string &name) const
+{
+    Net::getChatHandler()->talk("@goto " + name, GENERAL_CHANNEL);
+}
+
+void AdminHandler::recallName(const std::string &name) const
+{
+    Net::getChatHandler()->talk("@recall " + name, GENERAL_CHANNEL);
+}
+
+void AdminHandler::reviveName(const std::string &name) const
+{
+    Net::getChatHandler()->talk("@revive " + name, GENERAL_CHANNEL);
+}
+
+void AdminHandler::ipcheckName(const std::string &name) const
+{
+    Net::getChatHandler()->talk("@ipcheck " + name, GENERAL_CHANNEL);
+}
+
 void AdminHandler::createItems(const int id, const int color, const int amount)
 {
     if (serverVersion < 1)

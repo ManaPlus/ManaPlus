@@ -1665,23 +1665,19 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "goto" && !mNick.empty())
     {
-        if (chatWindow)
-            chatWindow->localChatInput("@goto " + mNick);
+        Net::getAdminHandler()->gotoName(mNick);
     }
     else if (link == "recall" && !mNick.empty())
     {
-        if (chatWindow)
-            chatWindow->localChatInput("@recall " + mNick);
+        Net::getAdminHandler()->recallName(mNick);
     }
     else if (link == "revive" && !mNick.empty())
     {
-        if (chatWindow)
-            chatWindow->localChatInput("@revive " + mNick);
+        Net::getAdminHandler()->reviveName(mNick);
     }
     else if (link == "ipcheck" && !mNick.empty())
     {
-        if (chatWindow)
-            chatWindow->localChatInput("@ipcheck " + mNick);
+        Net::getAdminHandler()->ipcheckName(mNick);
     }
     else if (link == "gm" && !mNick.empty())
     {

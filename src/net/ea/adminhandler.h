@@ -56,6 +56,14 @@ class AdminHandler : public Net::AdminHandler
         virtual void warp(const std::string &map,
                           const int x, const int y) const override;
 
+        void gotoName(const std::string &name) const;
+
+        void recallName(const std::string &name) const;
+
+        void reviveName(const std::string &name) const;
+
+        void ipcheckName(const std::string &name) const;
+
         void createItems(const int id, const int color,
                          const int amount);
 };

@@ -61,6 +61,14 @@ class AdminHandler
 
         virtual void createItems(const int id, const int color,
                                  const int amount) = 0;
+
+        virtual void gotoName(const std::string &name) const = 0;
+
+        virtual void recallName(const std::string &name) const = 0;
+
+        virtual void reviveName(const std::string &name) const = 0;
+
+        virtual void ipcheckName(const std::string &name) const = 0;
 };
 
 }  // namespace Net
