@@ -54,10 +54,19 @@ class BuyDialog final : public Window,
          *
          * @see Window::Window
          */
+        BuyDialog();
+
+        /**
+         * Constructor.
+         *
+         * @see Window::Window
+         */
         explicit BuyDialog(const int npcId);
 
         /**
          * Constructor.
+         *
+         * @see Window::Window
          */
         explicit BuyDialog(std::string nick);
 

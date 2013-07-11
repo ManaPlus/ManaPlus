@@ -37,6 +37,7 @@
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
 
+#include "net/adminhandler.h"
 #include "net/buysellhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
@@ -188,6 +189,18 @@ class SortItemTypeFunctor final
 
 BuyDialog::DialogList BuyDialog::instances;
 
+BuyDialog::BuyDialog() :
+    // TRANSLATORS: buy dialog name
+    Window(_("Create items"), false, nullptr, "buy.xml"),
+    gcn::ActionListener(),
+    gcn::SelectionListener(),
+    mNpcId(0), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(),
+    mSortModel(nullptr),
+    mSortDropDown(nullptr)
+{
+    init();
+}
+
 BuyDialog::BuyDialog(const int npcId) :
     // TRANSLATORS: buy dialog name
     Window(_("Buy"), false, nullptr, "buy.xml"),
@@ -210,7 +223,6 @@ BuyDialog::BuyDialog(std::string nick) :
     mSortDropDown(new DropDown(this, mSortModel, false, false, this, "sort"))
 {
     init();
-    logger->log("BuyDialog::BuyDialog nick:" + mNick);
 }
 
 void BuyDialog::init()
@@ -255,7 +267,8 @@ void BuyDialog::init()
     // You may change this symbol if your language uses another.
     mDecreaseButton = new Button(this, _("-"), "dec", this);
     // TRANSLATORS: buy dialog button
-    mBuyButton = new Button(this, _("Buy"), "buy", this);
+    mBuyButton = new Button(this, mNpcId == 0
+        ? _("Create") :_("Buy"), "buy", this);
     // TRANSLATORS: buy dialog button
     mQuitButton = new Button(this, _("Quit"), "quit", this);
     // TRANSLATORS: buy dialog button
@@ -420,7 +433,13 @@ void BuyDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "buy" && mAmountItems > 0 && mAmountItems <= mMaxItems)
     {
-        if (mNpcId != -1)
+        if (!mNpcId)
+        {
+            const ShopItem *const item = mShopItems->at(selectedItem);
+            Net::getAdminHandler()->createItems(item->getId(),
+                mAmountItems, item->getColor());
+        }
+        else if (mNpcId != -1)
         {
             const ShopItem *const item = mShopItems->at(selectedItem);
             Net::getNpcHandler()->buyItem(mNpcId, item->getId(),
@@ -444,7 +463,6 @@ void BuyDialog::action(const gcn::ActionEvent &event)
             {
                 Net::getBuySellHandler()->sendBuyRequest(mNick,
                     item, mAmountItems);
-//                logger->log("buy button mNick:" + mNick);
                 if (tradeWindow)
                 {
                     tradeWindow->addAutoMoney(mNick,
@@ -480,7 +498,9 @@ void BuyDialog::updateButtonsAndLabels()
             const int itemPrice = item->getPrice();
 
             // Calculate how many the player can afford
-            if (itemPrice)
+            if (!mNpcId)
+                mMaxItems = 100;
+            else if (itemPrice)
                 mMaxItems = mMoney / itemPrice;
             else
                 mMaxItems = 1;

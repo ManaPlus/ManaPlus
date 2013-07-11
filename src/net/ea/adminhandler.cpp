@@ -28,6 +28,8 @@
 
 #include "debug.h"
 
+extern int serverVersion;
+
 namespace Ea
 {
 
@@ -68,6 +70,20 @@ void AdminHandler::warp(const std::string &map, const int x, const int y) const
 {
     Net::getChatHandler()->talk(strprintf(
         "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);
+}
+
+void AdminHandler::createItems(const int id, const int color, const int amount)
+{
+    if (serverVersion < 1)
+    {
+        Net::getChatHandler()->talk(strprintf("@item %d %d",
+            id, amount), GENERAL_CHANNEL);
+    }
+    else
+    {
+        Net::getChatHandler()->talk(strprintf("@item %d %d %d",
+            id, color, amount), GENERAL_CHANNEL);
+    }
 }
 
 }  // namespace Ea

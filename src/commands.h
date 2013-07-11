@@ -124,6 +124,7 @@ namespace Commands
     decHandler(disableAway);
     decHandler(enableAway);
     decHandler(testParticle);
+    decHandler(createItems);
 
     void replaceVars(std::string &str);
 }  // namespace Commands
@@ -215,6 +216,7 @@ enum
     COMMAND_SETHOME,
     COMMAND_MAGICATTACK,
     COMMAND_TEST_PARTICLE,
+    COMMAND_CREATEITEMS,
     COMMAND_HACK,
     END_COMMANDS
 };
@@ -306,6 +308,7 @@ static const CommandInfo commands[] =
     {"sethome", nullptr, Input::KEY_SET_HOME, false},
     {"magicattack", nullptr, Input::KEY_MAGIC_ATTACK, false},
     {"testparticle", &Commands::testParticle, -1, true},
+    {"createitems", &Commands::createItems, -1, false},
     {"hack", &Commands::hack, -1, true}
 };
 

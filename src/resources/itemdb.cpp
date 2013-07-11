@@ -568,7 +568,7 @@ const ItemInfo &ItemDB::get(const std::string &name)
     return *(i->second);
 }
 
-const std::map<int, ItemInfo*> &ItemDB::getItemInfos()
+const ItemDB::ItemInfos &ItemDB::getItemInfos()
 {
     return mItemInfos;
 }

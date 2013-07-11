@@ -58,6 +58,9 @@ class AdminHandler
 
         virtual void warp(const std::string &map,
                           const int x, const int y) const = 0;
+
+        virtual void createItems(const int id, const int color,
+                                 const int amount) = 0;
 };
 
 }  // namespace Net

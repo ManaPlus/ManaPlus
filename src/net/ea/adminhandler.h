@@ -55,6 +55,9 @@ class AdminHandler : public Net::AdminHandler
 
         virtual void warp(const std::string &map,
                           const int x, const int y) const override;
+
+        void createItems(const int id, const int color,
+                         const int amount);
 };
 
 }  // namespace Ea

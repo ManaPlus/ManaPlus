@@ -33,6 +33,7 @@
 #include "nullopenglgraphics.h"
 #include "party.h"
 
+#include "gui/buydialog.h"
 #include "gui/chatwindow.h"
 #include "gui/helpwindow.h"
 #include "gui/gui.h"
@@ -64,6 +65,8 @@
 #include "resources/subimage.h"
 #endif
 
+#include "resources/itemdb.h"
+#include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
@@ -1196,6 +1199,33 @@ impHandler1(testParticle)
 {
     if (player_node)
         player_node->setTestParticle(args);
+}
+
+impHandler0(createItems)
+{
+    BuyDialog *const dialog = new BuyDialog();
+    const ItemDB::ItemInfos &items = ItemDB::getItemInfos();
+    FOR_EACH (ItemDB::ItemInfos::const_iterator, it, items)
+    {
+        const ItemInfo *const info = (*it).second;
+        const int id = info->getId();
+        if (id <= 0)
+            continue;
+
+        const int colors = info->getColorsSize();
+        if (!colors || serverVersion < 1)
+        {
+            dialog->addItem(id, 1, 100, 0);
+        }
+        else
+        {
+            for (int f = 0; f < colors; f ++)
+            {
+                if (!info->getColor(f).empty())
+                    dialog->addItem(id, f, 100, 0);
+            }
+        }
+    }
 }
 
 impHandler0(testsdlfont)

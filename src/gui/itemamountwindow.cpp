@@ -53,7 +53,7 @@ public:
     ItemsModal() :
         mStrings()
     {
-        std::map<int, ItemInfo*> items = ItemDB::getItemInfos();
+        const std::map<int, ItemInfo*> &items = ItemDB::getItemInfos();
         std::list<std::string> tempStrings;
 
         for (std::map<int, ItemInfo*>::const_iterator
