@@ -207,6 +207,10 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addUseDrop(const Item *const item, const bool isProtected);
 
+        void addGmCommands();
+
+        void showGMPopup();
+
         BrowserBox *mBrowserBox;
         ScrollArea *mScrollArea;
 

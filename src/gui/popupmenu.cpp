@@ -146,7 +146,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("attack", _("Attack"));
             // TRANSLATORS: popup menu item
             mBrowserBox->addRow("whisper", _("Whisper"));
-
+            addGmCommands();
             mBrowserBox->addRow("##3---");
 
             // TRANSLATORS: popup menu item
@@ -203,12 +203,6 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 }
             }
 
-            if (player_node->isGM())
-            {
-                mBrowserBox->addRow("##3---");
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("admin-kick", _("Kick player"));
-            }
             // TRANSLATORS: popup menu item
             mBrowserBox->addRow("nuke", _("Nuke"));
             // TRANSLATORS: popup menu item
@@ -239,13 +233,6 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // Monsters can be attacked
             // TRANSLATORS: popup menu item
             mBrowserBox->addRow("attack", _("Attack"));
-
-            if (player_node->isGM())
-            {
-                mBrowserBox->addRow("##3---");
-                // TRANSLATORS: popup menu item
-                mBrowserBox->addRow("admin-kick", _("Kick"));
-            }
 
             if (config.getBoolValue("enableAttackFilter"))
             {
@@ -345,6 +332,7 @@ void PopupMenu::showPlayerPopup(const int x, const int y,
 
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("whisper", _("Whisper"));
+    addGmCommands();
     mBrowserBox->addRow("##3---");
 
     addPlayerRelation(name);
@@ -1675,6 +1663,31 @@ void PopupMenu::handleLink(const std::string &link,
     {
         sendBuffer(mNick);
     }
+    else if (link == "goto" && !mNick.empty())
+    {
+        if (chatWindow)
+            chatWindow->localChatInput("@goto " + mNick);
+    }
+    else if (link == "recall" && !mNick.empty())
+    {
+        if (chatWindow)
+            chatWindow->localChatInput("@recall " + mNick);
+    }
+    else if (link == "revive" && !mNick.empty())
+    {
+        if (chatWindow)
+            chatWindow->localChatInput("@revive " + mNick);
+    }
+    else if (link == "ipcheck" && !mNick.empty())
+    {
+        if (chatWindow)
+            chatWindow->localChatInput("@ipcheck " + mNick);
+    }
+    else if (link == "gm" && !mNick.empty())
+    {
+        showGMPopup();
+        return;
+    }
     else if (!link.compare(0, 10, "guild-pos-"))
     {
         if (player_node)
@@ -2613,6 +2626,44 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
         // TRANSLATORS: popup menu item
         mBrowserBox->addRow("split", _("Split"));
     }
+}
+
+void PopupMenu::addGmCommands()
+{
+    if (player_node->isGM())
+    {
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("gm", _("GM..."));
+    }
+}
+
+void PopupMenu::showGMPopup()
+{
+    mBrowserBox->clearRows();
+    // TRANSLATORS: popup menu header
+    mBrowserBox->addRow(_("GM commands"));
+    if (player_node->isGM())
+    {
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("ipcheck", _("Check ip"));
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("goto", _("Goto"));
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("recall", _("Recall"));
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("revive", _("Revive"));
+        if (mBeingId)
+        {
+            // TRANSLATORS: popup menu item
+            mBrowserBox->addRow("admin-kick", _("Kick"));
+        }
+    }
+
+    mBrowserBox->addRow("##3---");
+    // TRANSLATORS: popup menu item
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(getX(), getY());
 }
 
 RenameListener::RenameListener() :
