@@ -70,12 +70,6 @@ class Item
         { return mImage; }
 
         /**
-         * Returns the item image.
-         */
-        Image *getDrawImage() const A_WARN_UNUSED
-        { return mDrawImage; }
-
-        /**
          * Sets the number of items.
          */
         void setQuantity(const int quantity)
@@ -178,7 +172,6 @@ class Item
 
     protected:
         Image *mImage;        /**< Item image. */
-        Image *mDrawImage;    /**< Draw image. */
         bool mEquipment;      /**< Item is equipment. */
         bool mEquipped;       /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */

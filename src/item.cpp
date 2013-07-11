@@ -44,7 +44,6 @@ Item::Item(const int id, const int quantity, const int refine,
     mColor(0),
     mQuantity(quantity),
     mImage(nullptr),
-    mDrawImage(nullptr),
     mEquipment(equipment),
     mEquipped(equipped),
     mInEquipment(false),
@@ -63,11 +62,6 @@ Item::~Item()
         mImage->decRef();
         mImage = nullptr;
     }
-    if (mDrawImage)
-    {
-        mDrawImage->decRef();
-        mDrawImage = nullptr;
-    }
     dragDrop.clearItem(this);
 }
 
@@ -82,9 +76,6 @@ void Item::setId(const int id, const unsigned char color)
     if (mImage)
         mImage->decRef();
 
-    if (mDrawImage)
-        mDrawImage->decRef();
-
     ResourceManager *const resman = ResourceManager::getInstance();
     const ItemInfo &info = getInfo();
     mTags = info.getTags();
@@ -93,18 +84,11 @@ void Item::setId(const int id, const unsigned char color)
         "itemIcons").append(info.getDisplay().image),
         info.getDyeColorsString(color));
     mImage = resman->getImage(dye);
-    mDrawImage = resman->getImage(dye);
 
     if (!mImage)
     {
         mImage = Theme::getImageFromTheme(paths.getValue("unknownItemFile",
                                           "unknown-item.png"));
-    }
-
-    if (!mDrawImage)
-    {
-        mDrawImage = Theme::getImageFromTheme(
-            paths.getValue("unknownItemFile", "unknown-item.png"));
     }
 }
 
