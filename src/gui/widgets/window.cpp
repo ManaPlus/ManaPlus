@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "dragdrop.h"
 #include "graphicsvertexes.h"
+#include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "gui/gui.h"

@@ -22,6 +22,8 @@
 
 #include "gui/confirmdialog.h"
 
+#include "soundmanager.h"
+
 #include "gui/gui.h"
 
 #include "gui/widgets/button.h"

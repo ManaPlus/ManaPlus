@@ -27,6 +27,7 @@
 #include "guild.h"
 #include "guildmanager.h"
 #include "localplayer.h"
+#include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "resources/iteminfo.h"

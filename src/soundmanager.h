@@ -33,17 +33,6 @@
 
 class SDLMusic;
 
-static const std::string SOUND_INFO = "soundinfo";
-static const std::string SOUND_ERROR = "sounderror";
-static const std::string SOUND_REQUEST = "soundrequest";
-static const std::string SOUND_TRADE = "soundtrade";
-static const std::string SOUND_WHISPER = "soundwhisper";
-static const std::string SOUND_HIGHLIGHT = "soundhighlight";
-static const std::string SOUND_GLOBAL = "soundglobal";
-static const std::string SOUND_GUILD = "soundguild";
-static const std::string SOUND_SHOW_WINDOW = "soundshowwindow";
-static const std::string SOUND_HIDE_WINDOW = "soundhidewindow";
-
 /** SoundManager
  *
  * \ingroup CORE

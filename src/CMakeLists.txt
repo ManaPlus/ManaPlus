@@ -682,6 +682,7 @@ SET(SRCS
     shopitem.h
     simpleanimation.cpp
     simpleanimation.h
+    soundconsts.h
     soundmanager.cpp
     soundmanager.h
     sprite.h

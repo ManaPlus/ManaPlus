@@ -41,6 +41,7 @@
 #include "keyboardconfig.h"
 #include "party.h"
 #include "playerrelations.h"
+#include "soundconsts.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
 #include "units.h"

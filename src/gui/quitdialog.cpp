@@ -27,6 +27,7 @@
 #include "game.h"
 #include "keydata.h"
 #include "keyevent.h"
+#include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "gui/chatwindow.h"

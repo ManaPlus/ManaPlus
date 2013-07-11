@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-#include "soundmanager.h"
+#include "soundconsts.h"
 
 #include "gui/widgets/window.h"
 

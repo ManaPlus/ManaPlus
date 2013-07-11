@@ -49,6 +49,7 @@
 #include "playerinfo.h"
 #include "playerrelations.h"
 #include "shopitem.h"
+#include "soundconsts.h"
 #include "soundmanager.h"
 #include "units.h"
 

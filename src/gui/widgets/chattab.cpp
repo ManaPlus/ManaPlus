@@ -28,6 +28,7 @@
 #include "commandhandler.h"
 #include "configuration.h"
 #include "localplayer.h"
+#include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "gui/helpwindow.h"

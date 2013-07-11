@@ -26,6 +26,7 @@
 #include "being.h"
 #include "configuration.h"
 #include "client.h"
+#include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "gui/gui.h"

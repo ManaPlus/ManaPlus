@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "guild.h"
 #include "localplayer.h"
+#include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "net/net.h"

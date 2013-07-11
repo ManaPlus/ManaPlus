@@ -26,6 +26,7 @@
 #include "commandhandler.h"
 #include "localplayer.h"
 #include "party.h"
+#include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "net/net.h"

@@ -37,6 +37,7 @@
 #include "playerinfo.h"
 #include "playerrelations.h"
 #include "simpleanimation.h"
+#include "soundconsts.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
 #include "walklayer.h"
