@@ -134,6 +134,9 @@ class Gui final : public gcn::Gui
         void setCursorType(const int index)
         { mCursorType = index; }
 
+        void setDoubleClick(const bool b)
+        { mDoubleClick = b; }
+
         void updateFonts();
 
         bool handleInput();
@@ -158,6 +161,8 @@ class Gui final : public gcn::Gui
         void handleMouseMoved(const gcn::MouseInput &mouseInput);
 
         void handleMouseReleased(const gcn::MouseInput &mouseInput);
+
+        void handleMousePressed(const gcn::MouseInput &mouseInput);
 
         void handleMouseInput();
 
@@ -186,6 +191,7 @@ class Gui final : public gcn::Gui
         gcn::Color mForegroundColor;
         gcn::Color mForegroundColor2;
         bool mCustomCursor;                 /**< Show custom cursor */
+        bool mDoubleClick;
 };
 
 extern Gui *gui;                            /**< The GUI system */

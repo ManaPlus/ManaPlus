@@ -68,11 +68,12 @@ class GuiConfigListener final : public ConfigListener
 
         void optionChanged(const std::string &name)
         {
-            if (name == "customcursor" && mGui)
-            {
-                const bool bCustomCursor = config.getBoolValue("customcursor");
-                mGui->setUseCustomCursor(bCustomCursor);
-            }
+            if (!mGui)
+                return;
+            if (name == "customcursor")
+                mGui->setUseCustomCursor(config.getBoolValue("customcursor"));
+            else if (name == "doubleClick")
+                mGui->setDoubleClick(config.getBoolValue("doubleClick"));
         }
     private:
         Gui *mGui;
@@ -97,7 +98,8 @@ Gui::Gui(Graphics *const graphics) :
     mFocusListeners(),
     mForegroundColor(Theme::getThemeColor(Theme::TEXT)),
     mForegroundColor2(Theme::getThemeColor(Theme::TEXT_OUTLINE)),
-    mCustomCursor(false)
+    mCustomCursor(false),
+    mDoubleClick(true)
 {
     logger->log1("Initializing GUI...");
     // Set graphics
@@ -236,12 +238,14 @@ Gui::Gui(Graphics *const graphics) :
 
     // Initialize mouse cursor and listen for changes to the option
     setUseCustomCursor(config.getBoolValue("customcursor"));
+    setDoubleClick(config.getBoolValue("doubleClick"));
     config.addListener("customcursor", mConfigListener);
+    config.addListener("doubleClick", mConfigListener);
 }
 
 Gui::~Gui()
 {
-    config.removeListener("customcursor", mConfigListener);
+    config.removeListeners(mConfigListener);
     delete mConfigListener;
     mConfigListener = nullptr;
 
@@ -520,6 +524,46 @@ void Gui::handleMouseMoved(const gcn::MouseInput &mouseInput)
 {
     gcn::Gui::handleMouseMoved(mouseInput);
     mMouseInactivityTimer = 0;
+}
+
+void Gui::handleMousePressed(const gcn::MouseInput &mouseInput)
+{
+    const int x = mouseInput.getX();
+    const int y = mouseInput.getY();
+    const unsigned int button = mouseInput.getButton();
+    const int timeStamp = mouseInput.getTimeStamp();
+
+    gcn::Widget *sourceWidget = getMouseEventSource(x, y);
+
+    if (mFocusHandler->getDraggedWidget())
+        sourceWidget = mFocusHandler->getDraggedWidget();
+
+    int sourceWidgetX, sourceWidgetY;
+    sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
+
+    if ((mFocusHandler->getModalFocused()
+        && sourceWidget->isModalFocused())
+        || !mFocusHandler->getModalFocused())
+    {
+        sourceWidget->requestFocus();
+    }
+
+    if (mDoubleClick && timeStamp - mLastMousePressTimeStamp < 250
+        && mLastMousePressButton == button)
+    {
+        mClickCount ++;
+    }
+    else
+    {
+        mClickCount = 1;
+    }
+
+    distributeMouseEvent(sourceWidget, MouseEvent::PRESSED, button, x, y);
+    mFocusHandler->setLastWidgetPressed(sourceWidget);
+    mFocusHandler->setDraggedWidget(sourceWidget);
+    mLastMouseDragButton = button;
+    mLastMousePressButton = button;
+    mLastMousePressTimeStamp = timeStamp;
 }
 
 void Gui::updateFonts()

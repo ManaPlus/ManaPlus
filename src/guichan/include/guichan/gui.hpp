@@ -265,14 +265,6 @@ namespace gcn
         virtual void handleMouseMoved(const MouseInput& mouseInput);
 
         /**
-         * Handles mouse pressed input.
-         *
-         * @param mouseInput The mouse input to handle.
-         * @since 0.6.0
-         */
-        virtual void handleMousePressed(const MouseInput& mouseInput);
-
-        /**
          *
          * Handles mouse wheel moved down input.
          *

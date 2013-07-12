@@ -317,6 +317,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("screenDensity", 0);
     AddDEF("cfgver", 0);
     AddDEF("enableDebugLog", false);
+    AddDEF("doubleClick", true);
     return configData;
 }
 

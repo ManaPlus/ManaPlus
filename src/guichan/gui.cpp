@@ -337,49 +337,6 @@ namespace gcn
         }
     }
 
-    void Gui::handleMousePressed(const MouseInput& mouseInput)
-    {
-        Widget* sourceWidget = getMouseEventSource(
-            mouseInput.getX(), mouseInput.getY());
-
-        if (mFocusHandler->getDraggedWidget())
-            sourceWidget = mFocusHandler->getDraggedWidget();
-
-        int sourceWidgetX, sourceWidgetY;
-        sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
-
-        if ((mFocusHandler->getModalFocused()
-            && sourceWidget->isModalFocused())
-            || !mFocusHandler->getModalFocused())
-        {
-            sourceWidget->requestFocus();
-        }
-
-        if (mouseInput.getTimeStamp() - mLastMousePressTimeStamp < 250
-            && mLastMousePressButton == mouseInput.getButton())
-        {
-            mClickCount++;
-        }
-        else
-        {
-            mClickCount = 1;
-        }
-
-        distributeMouseEvent(sourceWidget,
-                             MouseEvent::PRESSED,
-                             mouseInput.getButton(),
-                             mouseInput.getX(),
-                             mouseInput.getY());
-
-        mFocusHandler->setLastWidgetPressed(sourceWidget);
-
-        mFocusHandler->setDraggedWidget(sourceWidget);
-        mLastMouseDragButton = mouseInput.getButton();
-
-        mLastMousePressButton = mouseInput.getButton();
-        mLastMousePressTimeStamp = mouseInput.getTimeStamp();
-    }
-
     void Gui::handleMouseWheelMovedDown(const MouseInput& mouseInput)
     {
         Widget* sourceWidget = getMouseEventSource(

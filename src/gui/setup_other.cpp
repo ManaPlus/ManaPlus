@@ -323,6 +323,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "serverAttack", this, "serverAttackEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable double clicks"), "",
+        "doubleClick", this, "doubleClickEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable bot checker"), "",
         "enableBotCheker", this, "enableBotChekerEvent");
 
