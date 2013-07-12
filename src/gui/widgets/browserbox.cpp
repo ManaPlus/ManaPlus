@@ -24,6 +24,7 @@
 #include "gui/widgets/browserbox.h"
 
 #include "client.h"
+#include "inputmanager.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
@@ -67,6 +68,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     mAlwaysUpdate(true),
     mProcessVersion(false),
     mEnableImages(false),
+    mEnableKeys(false),
     mPadding(0),
     mNewLinePadding(15),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
@@ -157,8 +159,26 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         BrowserLink bLink;
 
         // Check for links in format "@@link|Caption@@"
-        idx1 = tmp.find("@@");
         const int sz = static_cast<int>(mTextRows.size());
+
+        if (mEnableKeys)
+        {
+            idx1 = tmp.find("###");
+            while (idx1 != std::string::npos)
+            {
+                const size_t idx2 = tmp.find(";", idx1);
+                if (idx2 == std::string::npos)
+                    break;
+
+                const std::string str = inputManager.getKeyValueByName(
+                    "key" + tmp.substr(idx1 + 3, idx2 - idx1 - 3));
+                tmp.replace(idx1, idx2 - idx1 + 1, str);
+
+                idx1 = tmp.find("###");
+            }
+        }
+
+        idx1 = tmp.find("@@");
         while (idx1 != std::string::npos)
         {
             const size_t idx2 = tmp.find("|", idx1);

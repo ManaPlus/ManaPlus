@@ -195,6 +195,7 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mProgressBar->setSmoothProgress(false);
     mBrowserBox->setOpaque(false);
     mBrowserBox->setLinkHandler(this);
+    mBrowserBox->setEnableKeys(true);
     mPlayButton->setEnabled(false);
 
     ContainerPlacer placer;

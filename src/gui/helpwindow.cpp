@@ -73,6 +73,7 @@ HelpWindow::HelpWindow() :
     mBrowserBox->setFont(gui->getHelpFont());
     mBrowserBox->setProcessVersion(true);
     mBrowserBox->setEnableImages(true);
+    mBrowserBox->setEnableKeys(true);
 
     place(4, 3, mDYKButton);
     place(0, 0, mScrollArea, 5, 3).setPadding(3);

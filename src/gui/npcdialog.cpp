@@ -133,6 +133,7 @@ NpcDialog::NpcDialog(const int npcId) :
     mTextBox->setMaxRow(config.getIntValue("ChatLogLength"));
     mTextBox->setLinkHandler(mItemLinkHandler);
     mTextBox->setFont(gui->getNpcFont());
+    mTextBox->setEnableKeys(true);
 
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     mScrollArea->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);

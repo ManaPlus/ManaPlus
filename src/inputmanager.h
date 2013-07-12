@@ -120,6 +120,8 @@ class InputManager final
 
         std::string getKeyStringLong(const int index) const A_WARN_UNUSED;
 
+        std::string getKeyValueByName(const std::string &keyName);
+
         void addActionKey(const int action, const int type, const int val);
 
         void setNewKey(const SDL_Event &event, const int type);
@@ -175,6 +177,8 @@ class InputManager final
         int mNewKeyIndex;              /**< Index of new key to be assigned */
 
         int mMask;
+
+        std::map<std::string, int> mNameMap;
 
         KeyFunction mKey[Input::KEY_TOTAL]; /**< Pointer to all the key data */
 };

@@ -66,7 +66,8 @@ static class KeyFunctor final
 InputManager::InputManager() :
     mSetupInput(nullptr),
     mNewKeyIndex(Input::KEY_NO_VALUE),
-    mMask(1)
+    mMask(1),
+    mNameMap()
 {
 }
 
@@ -104,6 +105,7 @@ void InputManager::retrieve()
         const char *const cf = keyData[i].configField;
         if (*cf)
         {
+            mNameMap[cf] = i;
             KeyFunction &kf = mKey[i];
             const std::string keyStr = config.getValue(cf, "");
             if (keyStr.empty())
@@ -390,6 +392,16 @@ std::string InputManager::getKeyValueString(const int index) const
         return _("u key");
     }
     return keyStr;
+}
+
+std::string InputManager::getKeyValueByName(const std::string &keyName)
+{
+    const std::map<std::string, int>::const_iterator
+        it = mNameMap.find(keyName);
+
+    if (it == mNameMap.end())
+        return std::string();
+    return getKeyValueString((*it).second);
 }
 
 void InputManager::addActionKey(const int action, const int type,
