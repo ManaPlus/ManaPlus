@@ -1,1 +1,1 @@
-<<To type chat message, press enter>>
+<<To type chat message, press ###keyChat;>>

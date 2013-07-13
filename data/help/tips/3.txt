@@ -1,2 +1,2 @@
 <<You can disable yellow bar,
-by pressing key 8 on numeric keyboard.>>
+by pressing ###keyDisableGameModifiers;.>>

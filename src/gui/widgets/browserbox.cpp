@@ -171,7 +171,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                     break;
 
                 const std::string str = inputManager.getKeyValueByName(
-                    "key" + tmp.substr(idx1 + 3, idx2 - idx1 - 3));
+                    tmp.substr(idx1 + 3, idx2 - idx1 - 3));
                 tmp.replace(idx1, idx2 - idx1 + 1, str);
 
                 idx1 = tmp.find("###");

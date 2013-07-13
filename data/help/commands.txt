@@ -5,116 +5,138 @@
 
 ##2<<KEYBOARD:>>
 
-     <<##2UP##P                       "Move Up">>
-     <<##2DOWN##P                     "Move Down">>
-     <<##2LEFT##P                     "Move Left">>
-     <<##2RIGHT##P                    "Move Right">>
-     <<##2LeftControl##P              "Attack">>
-     <<##2x##P                        "Target & Attack">>
-     <<##2v##P                        "Move to Target">>
-     <<##2Period(.)##P                "Change Move to Target type">>
-     <<##2d##P                        "Move to Home location">>
-     <<##2KeyPad[5]##P                "Set home location/Set arrow">>
-     <<##2RightShift + key##P         "Move to navigation point">>
-     <<##2LeftAlt + EmoteKey##P       "Smilie">>
-     <<##2t##P                        "Talk">>
-     <<##2LeftShift##P                "Stop Attack">>
-     <<##2a##P                        "Target Closest">>
-     <<##2n##P                        "Target NPC">>
-     <<##2q##P                        "Target Player">>
-     <<##2z##P                        "Pickup">>
-     <<##2o##P                        "Change Pickup Type">>
-     <<##2h##P                        "Hide Windows">>
-     <<##2s##P                        "Sit">>
-     <<##2p##P                        "Screenshot">>
-     <<##2r##P                        "Enable/Disable Trading">>
-     <<##2f##P                        "Change Map View Mode">>
-     <<##2MenuKey##P                  "Item Shortcuts Key">>
-     <<##21##P                        "Item Shortcut 1">>
-     <<##22##P                        "Item Shortcut 2">>
-     <<##23##P                        "Item Shortcut 3">>
-     <<##24##P                        "Item Shortcut 4">>
-     <<##25##P                        "Item Shortcut 5">>
-     <<##26##P                        "Item Shortcut 6">>
-     <<##27##P                        "Item Shortcut 7">>
-     <<##28##P                        "Item Shortcut 8">>
-     <<##29##P                        "Item Shortcut 9">>
-     <<##20##P                        "Item Shortcut 10">>
-     <<##2Minus(-)##P                 "Item Shortcut 11">>
-     <<##2Equals(=)##P                "Item Shortcut 12">>
-     <<##2Backspace##P                "Item Shortcut 13">>
-     <<##2Insert##P                   "Item Shortcut 14">>
-     <<##2Home##P                     "Item Shortcut 15">>
-     <<##2F1##P                       "Help Window">>
-     <<##2F2##P                       "Status Window">>
-     <<##2F3##P                       "Inventory Window">>
-     <<##2F4##P                       "Equipment Window">>
-     <<##2F5##P                       "Skill Window">>
-     <<##2F6##P                       "Minimap Window">>
-     <<##2F7##P                       "Chat Window">>
-     <<##2F8##P                       "Item Shortcut Window">>
-     <<##2F9##P                       "Setup Window">>
-     <<##2F10##P                      "Debug Window">>
-     <<##2F11##P                      "Social Window">>
-     <<##2F12##P                      "Emote Shortcut Window">>
-     <<##2BackQuote(`)##P             "Outfits Window">>
-     <<##2w##P                        "Quick drop Window">>
-     <<##2e##P                        "Kills Stats Window">>
-     <<##2j##P                        "Commands Window">>
-     <<##2LeftBracket([)##P           "Bot Checker Window">>
-     <<##2LeftAlt + 1##P              "Emote Shortcut 1">>
-     <<##2LeftAlt + 2##P              "Emote Shortcut 2">>
-     <<##2LeftAlt + 3##P              "Emote Shortcut 3">>
-     <<##2LeftAlt + 4##P              "Emote Shortcut 4">>
-     <<##2LeftAlt + 5##P              "Emote Shortcut 5">>
-     <<##2LeftAlt + 6##P              "Emote Shortcut 6">>
-     <<##2LeftAlt + 7##P              "Emote Shortcut 7">>
-     <<##2LeftAlt + 8##P              "Emote Shortcut 8">>
-     <<##2LeftAlt + 9##P              "Emote Shortcut 9">>
-     <<##2LeftAlt + 0##P              "Emote Shortcut 10">>
-     <<##2LeftAlt + Minus(-)##P       "Emote Shortcut 11">>
-     <<##2LeftAlt + Equals(=)##P      "Emote Shortcut 12">>
-     <<##2LeftAlt + Backspace##P      "Emote Shortcut 13">>
-     <<##2LeftAlt + Insert##P         "Emote Shortcut 14">>
-     <<##2RightControl##P             "Wear Outfit">>
-     <<##2RightAlt##P                 "Copy Outfit">>
-     <<##2RightBracket(])##P          "Copy Equiped to Outfit">>
-     <<##2Enter##P                    "Toggle Chat">>
-     <<##2PageUP##P                   "Scroll Chat Up">>
-     <<##2PageDOWN##P                 "Scroll Chat Down">>
-     <<##2KeyPad[7]##P                "Previous Chat Tab">>
-     <<##2KeyPad[9]##P                "Next Chat Tab">>
-     <<##2KeyPad[7]##P                "Previous chat tab line">>
-     <<##2KeyPad[9]##P                "Next chat tab line">>
-     <<##2Tab##P                      "Chat Auto Complete">>
-     <<##2Esc##P                      "Deactivate Chat Input">>
-     <<##2SpaceBar##P                 "Select OK">>
-     <<##2Esc##P                      "Quit">>
-     <<##2LeftWinKey##P               "Ignore input 1">>
-     <<##2RightWinKey##P              "Ignore input 2">>
-     <<##2l##P                        "Set Direction Up">>
-     <<##2Semicolon(;)##P             "Set Direction Down">>
-     <<##2k##P                        "Set Direction Left">>
-     <<##2Quote(')##P                 "Set Direction Right">>
-     <<##2Slash(\)##P                 "Crazy moves">>
-     <<##2Backslash(/)##P             "Change Crazy Move mode">>
-     <<##2y##P                        "Quick Drop N Items from 0 slot">>
-     <<##2u##P                        "Quick Drop N Items">>
-     <<##2i##P                        "Switch Quick Drop Counter">>
-     <<##2c##P                        "Quick heal target or self">>
-     <<##2m##P                        "Use #itenplz spell">>
-     <<##2b##P                        "Use magic attack">>
-     <<##2Comma(,)##P                 "Switch magic attack">>
-     <<##2KeyPad0##P                  "Change move type">>
-     <<##2g##P                        "Change Attack Weapon Type">>
-     <<##2End##P                      "Change Attack Type">>
-     <<##2KeyPad[1]##P                "Change Follow mode">>
-     <<##2KeyPad[4]##P                "Change Imitation mode">>
-     <<##2KeyPad[8]##P                "Disable / Enable Game modifier keys">>
-     <<##2KeyPad[3]##P                "On / Off audio">>
-     <<##2KeyPad[2]##P                "Enable / Disable away mode">>
-     <<##2Tab##P                      "Emulate right click from keyboard">>
-     <<##2KeyPad[+]##P                "Toggle camera mode">>
+     ##2###keyMoveUp;##P                       <<"Move up">>
+     ##2###keyMoveDown;##P                     <<"Move down">>
+     ##2###keyMoveLeft;##P                     <<"Move left">>
+     ##2###keyMoveRight;##P                    <<"Move right">>
+     ##2###keyAttack;##P              <<"Attack">>
+     ##2###keyTargetAttack;##P                        <<"Target & attack">>
+     ##2###keyMoveToTarget;##P                        <<"Move to target">>
+     ##2###keyChangeMoveToTarget;##P                <<"Change move to target type">>
+     ##2###keyMoveToHome;##P                        <<"Move to home location">>
+     ##2###keySetHome;##P                <<"Set home location/set arrow">>
+     ##2###keyMoveToPoint; + <<move key>>##P         <<"Move to navigation point">>
+     ##2###keySmilie; + <<emote key>>##P       <<"Smilie">>
+     ##2###keyTalk;##P                        <<"Talk">>
+     ##2###keyTarget;##P                <<"Stop Attack">>
+     ##2###keyTargetMonster;##P                        <<"Target closest monster">>
+     ##2###keyTargetNPC;##P                        <<"Target NPC">>
+     ##2###keyTargetPlayer;##P                        <<"Target player">>
+     ##2###keyPickup;##P                        <<"Pickup">>
+     ##2###keyChangePickupType;##P                        <<"Change pickup type">>
+     ##2###keyHideWindows;##P                        <<"Hide windows">>
+     ##2###keyBeingSit;##P                        <<"Sit">>
+     ##2###keyScreenshot;##P                        <<"Screenshot">>
+     ##2###keyTrade;##P                        <<"Enable/disable trading">>
+     ##2###keyPathfind;##P                        <<"Change map view mode">>
+     ##2###keyShortcutsKey;##P                  <<"Item shortcuts Key">>
+     ##2###keyShortcut1;##P                        <<"Item shortcut 1">>
+     ##2###keyShortcut2;##P                        <<"Item shortcut 2">>
+     ##2###keyShortcut3;##P                        <<"Item shortcut 3">>
+     ##2###keyShortcut4;##P                        <<"Item shortcut 4">>
+     ##2###keyShortcut5;##P                        <<"Item shortcut 5">>
+     ##2###keyShortcut6;##P                        <<"Item shortcut 6">>
+     ##2###keyShortcut7;##P                        <<"Item shortcut 7">>
+     ##2###keyShortcut8;##P                        <<"Item shortcut 8">>
+     ##2###keyShortcut9;##P                        <<"Item shortcut 9">>
+     ##2###keyShortcut0;##P                        <<"Item shortcut 10">>
+     ##2###keyShortcut10;##P                 <<"Item shortcut 11">>
+     ##2###keyShortcut11;##P                <<"Item shortcut 12">>
+     ##2###keyShortcut12;##P                <<"Item shortcut 13">>
+     ##2###keyShortcut13;##P                   <<"Item shortcut 14">>
+     ##2###keyShortcut14;##P                     <<"Item shortcut 15">>
+     ##2###keyWindowHelp;##P                       <<"Help window">>
+     ##2###keyWindowStatus;##P                       <<"Status window">>
+     ##2###keyWindowInventory;##P                       <<"Inventory window">>
+     ##2###keyWindowEquipment;##P                       <<"Equipment window">>
+     ##2###keyWindowSkill;##P                       <<"Skill window">>
+     ##2###keyWindowMinimap;##P                       <<"Minimap window">>
+     ##2###keyWindowChat;##P                       <<"Chat window">>
+     ##2###keyWindowShortcut;##P                       <<"Item shortcut window">>
+     ##2###keyWindowSetup;##P                       <<"Setup window">>
+     ##2###keyWindowDebug;##P                      <<"Debug window">>
+     ##2###keyWindowSocial;##P                      <<"Social window">>
+     ##2###keyWindowEmoteBar;##P                      <<"Emote shortcut window">>
+     ##2###keyWindowOutfit;##P             <<"Outfits window">>
+     ##2###keyWindowShop;##P                        <<"Shop window">>
+     ##2###keyWindowDrop;##P                        <<"Quick drop window">>
+     ##2###keyWindowKills;##P                        <<"Kills stats window">>
+     ##2###keyWindowSpells;##P                        <<"Commands window">>
+     ##2###keyWindowBotChecker;##P           <<"Bot checker window">>
+     ##2###keyWindowOnline;##P           <<"Who is online window">>
+     ##2###keyWindowDidYouKnow;##P           <<"Did you know window">>
+     ##2###keyWindowQuests;##P           <<"Quests window">>
+     ##2###keySmilie; + ###keyEmoteShortcut1;##P              <<"Emote shortcut 1">>
+     ##2###keySmilie; + ###keyEmoteShortcut2;##P              <<"Emote shortcut 2">>
+     ##2###keySmilie; + ###keyEmoteShortcut3;##P              <<"Emote shortcut 3">>
+     ##2###keySmilie; + ###keyEmoteShortcut4;##P              <<"Emote shortcut 4">>
+     ##2###keySmilie; + ###keyEmoteShortcut5;##P              <<"Emote shortcut 5">>
+     ##2###keySmilie; + ###keyEmoteShortcut6;##P              <<"Emote shortcut 6">>
+     ##2###keySmilie; + ###keyEmoteShortcut7;##P              <<"Emote shortcut 7">>
+     ##2###keySmilie; + ###keyEmoteShortcut8;##P              <<"Emote shortcut 8">>
+     ##2###keySmilie; + ###keyEmoteShortcut9;##P              <<"Emote shortcut 9">>
+     ##2###keySmilie; + ###keyEmoteShortcut10;##P              <<"Emote shortcut 10">>
+     ##2###keySmilie; + ###keyEmoteShortcut11;##P       <<"Emote shortcut 11">>
+     ##2###keySmilie; + ###keyEmoteShortcut12;##P      <<"Emote shortcut 12">>
+     ##2###keySmilie; + ###keyEmoteShortcut13;##P      <<"Emote shortcut 13">>
+     ##2###keySmilie; + ###keyEmoteShortcut14;##P         <<"Emote shortcut 14">>
+     ##2###keyWearOutfit;##P             <<"Wear outfit">>
+     ##2###keyCopyOutfit;##P                 <<"Copy outfit">>
+     ##2###keyCopyEquipedOutfit;##P          <<"Copy equiped to Outfit">>
+     ##2###keyOutfitShortcut1;##P                        <<"Outfit shortcut 1">>
+     ##2###keyOutfitShortcut2;##P                        <<"Outfit shortcut 2">>
+     ##2###keyOutfitShortcut3;##P                        <<"Outfit shortcut 3">>
+     ##2###keyOutfitShortcut4;##P                        <<"Outfit shortcut 4">>
+     ##2###keyOutfitShortcut5;##P                        <<"Outfit shortcut 5">>
+     ##2###keyOutfitShortcut6;##P                        <<"Outfit shortcut 6">>
+     ##2###keyOutfitShortcut7;##P                        <<"Outfit shortcut 7">>
+     ##2###keyOutfitShortcut8;##P                        <<"Outfit shortcut 8">>
+     ##2###keyOutfitShortcut9;##P                        <<"Outfit shortcut 9">>
+     ##2###keyOutfitShortcut0;##P                        <<"Outfit shortcut 10">>
+     ##2###keyOutfitShortcut10;##P                 <<"Outfit shortcut 11">>
+     ##2###keyOutfitShortcut11;##P                <<"Outfit shortcut 12">>
+     ##2###keyOutfitShortcut12;##P                <<"Outfit shortcut 13">>
+     ##2###keyOutfitShortcut13;##P                   <<"Outfit shortcut 14">>
+     ##2###keyOutfitShortcut14;##P                     <<"Outfit shortcut 15">>
+     ##2###keyChat;##P                    <<"Toggle chat">>
+     ##2###keyChatScrollUp;##P                   <<"Scroll chat up">>
+     ##2###keyChatScrollDown;##P                 <<"Scroll chat down">>
+     ##2###keyChatPrevTab;##P                <<"Previous chat tab">>
+     ##2###keyChatNextTab;##P                <<"Next chat tab">>
+     ##2###keyChatCloseTab;##P                <<"Close chat tab">>
+     ##2###keyChatPrevHistory;##P                <<"Previous chat tab line">>
+     ##2###keyChatNextHistory;##P                <<"Next chat tab line">>
+     ##2###keyGUITab;##P                      <<"Chat auto complete">>
+     ##2###keyGUICancel;##P                      <<"Deactivate chat input">>
+     ##2###keyOK;##P                 <<"Select OK">>
+     ##2###keyQuit;##P                      <<"Quit">>
+     ##2###keyIgnoreInput1;##P               <<"Ignore input 1">>
+     ##2###keyIgnoreInput2;##P              <<"Ignore input 2">>
+     ##2###keyDirectUp;##P                        <<"Set direction up">>
+     ##2###keyDirectDown;##P             <<"Set direction down">>
+     ##2###keyDirectLeft;##P                        <<"Set direction left">>
+     ##2###keyDirectRight;##P                 <<"Set direction right">>
+     ##2###keyCrazyMoves;##P                 <<"Crazy moves">>
+     ##2###keyChangeCrazyMoveType;##P             <<"Change crazy Move mode">>
+     ##2###keyQuickDrop;##P                        <<"Quick drop N items from 0 slot">>
+     ##2###keyQuickDropN;##P                        <<"Quick drop N items">>
+     ##2###keySwitchQuickDrop;##P                        <<"Switch quick drop counter">>
+     ##2###keyMagicInma1;##P                        <<"Quick heal target or self">>
+     ##2###keyMagicItenplz;##P                        <<"Use #itenplz spell">>
+     ##2###keyMagicAttack;##P                        <<"Use magic attack">>
+     ##2###keySwitchMagicAttack;##P                 <<"Switch magic attack">>
+     ##2###keySwitchPvpAttack;##P                 <<"Switch pvp attack">>
+     ##2###keyInvertDirection;##P                  <<"Change move type">>
+     ##2###keyChangeAttackWeaponType;##P                        <<"Change attack weapon type">>
+     ##2###keyChangeAttackType;##P                      <<"Change attack type">>
+     ##2###keyChangeFollowMode;##P                <<"Change follow mode">>
+     ##2###keyChangeImitationMode;##P                <<"Change imitation mode">>
+     ##2###keyDisableGameModifiers;##P                <<"Disable / enable game modifier keys">>
+     ##2###keyChangeAudio;##P                <<"On / off audio">>
+     ##2###keyAway;##P                <<"Enable / disable away mode">>
+     ##2###keyRightClick;##P                      <<"Emulate right click from keyboard">>
+     ##2###keyCameraMode;##P                <<"Toggle camera mode">>
+     ##2###keySafeVideo;##P                <<"Reset video mode to safe value">>
 
 
 ##2<<MOUSE:>>
