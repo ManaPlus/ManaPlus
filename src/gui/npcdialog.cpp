@@ -134,6 +134,7 @@ NpcDialog::NpcDialog(const int npcId) :
     mTextBox->setLinkHandler(mItemLinkHandler);
     mTextBox->setFont(gui->getNpcFont());
     mTextBox->setEnableKeys(true);
+    mTextBox->setEnableTabs(true);
 
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     mScrollArea->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);

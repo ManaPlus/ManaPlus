@@ -228,6 +228,9 @@ class BrowserBox final : public gcn::Widget,
         void setEnableKeys(bool n)
         { mEnableKeys = n; }
 
+        void setEnableTabs(bool n)
+        { mEnableTabs = n; }
+
         std::string getTextAtPos(const int x, const int y) const A_WARN_UNUSED;
 
         int getPadding() const A_WARN_UNUSED
@@ -265,6 +268,7 @@ class BrowserBox final : public gcn::Widget,
         bool mProcessVersion;
         bool mEnableImages;
         bool mEnableKeys;
+        bool mEnableTabs;
         int mPadding;
         int mNewLinePadding;
 

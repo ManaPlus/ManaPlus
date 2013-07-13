@@ -82,6 +82,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     mBrowserBox->setProcessVersion(true);
     mBrowserBox->setEnableImages(true);
     mBrowserBox->setEnableKeys(true);
+    mBrowserBox->setEnableTabs(true);
 
     place(0, 0, mScrollArea, 5, 3).setPadding(3);
     place(0, 3, mOpenAgainCheckBox, 5);

@@ -74,6 +74,7 @@ HelpWindow::HelpWindow() :
     mBrowserBox->setProcessVersion(true);
     mBrowserBox->setEnableImages(true);
     mBrowserBox->setEnableKeys(true);
+    mBrowserBox->setEnableTabs(true);
 
     place(4, 3, mDYKButton);
     place(0, 0, mScrollArea, 5, 3).setPadding(3);
