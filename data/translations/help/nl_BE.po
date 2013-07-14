@@ -1,11 +1,11 @@
 # en#
 # Translators:
-# Elvano Miok <prd.studio@gmail.com>, 2013.
-#   <prd.studio@gmail.com>, 2012.
+# elvano <prd.studio@gmail.com>, 2013
+# elvano <prd.studio@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-03-01 15:18+0000\n"
+"PO-Revision-Date: 2013-07-14 11:23+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/language/nl_BE/)\n"
 "MIME-Version: 1.0\n"
@@ -14,17 +14,19 @@ msgstr ""
 "Language: nl_BE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "##2End##P                      \"Change Attack Type\""
-msgstr "##2End##P \"Verander het soort aanval\""
+msgid "\"Outfit shortcut 12\""
+msgstr ""
 
-msgid "/serverunignoreall - unignore all whispers on server side."
-msgstr "/serverunignoreall - Stop met het negeren van alle persoonlijke berichten op de server."
+msgid ""
+" - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
+"   players?"
+msgstr ""
 
 msgid "To read about whispering and other chat commands, look here:"
 msgstr "Om over persoonlijke berichten en andere commandos te lezen, kijk hier!"
 
-msgid "##2UP##P                       \"Move Up\""
-msgstr "##2UP##P \"Beweeg Omhoog\""
+msgid "/away, /away MSG - set away mode."
+msgstr ""
 
 msgid ""
 "You can select other themes.\n"
@@ -32,11 +34,8 @@ msgid ""
 "and change \"gui theme\""
 msgstr ""
 
-msgid "Translators"
-msgstr "Vertalers"
-
-msgid "##2Esc##P                      \"Quit\""
-msgstr "##2Esc##P \"Sluiten\""
+msgid "\"Target & attack\""
+msgstr ""
 
 msgid ""
 "Most commands working in whispers.\n"
@@ -44,8 +43,8 @@ msgid ""
 " similar to command /imitation nick1."
 msgstr ""
 
-msgid "##2KeyPad[3]##P                \"On / Off audio\""
-msgstr "##2KeyPad[3]##P \"Aan/Uit Geluid\""
+msgid "\"Emote shortcut 11\""
+msgstr ""
 
 msgid ""
 " To add an item to the shortcut bar click on the item in the inventory window,\n"
@@ -55,14 +54,14 @@ msgid ""
 " window and drop them."
 msgstr ""
 
-msgid "##2F2##P                       \"Status Window\""
-msgstr "##2F2##P \"Staat Venster\""
+msgid "\"Ignore input 1\""
+msgstr ""
 
 msgid "/cacheinfo - show text cache info."
 msgstr "/cacheinfo - toon tekst cache info."
 
-msgid "##2LeftAlt + Minus(-)##P       \"Emote Shortcut 11\""
-msgstr "##2LeftAlt + Minus(-)##P \"Emote Sneltoets 11\""
+msgid "\"Outfits window\""
+msgstr ""
 
 msgid ""
 "You can imitate other players by selecting \"imitation\" in player context menu\n"
@@ -75,117 +74,43 @@ msgid ""
 " Bugs/Support section of the forum:"
 msgstr ""
 
-msgid "ManaPlus Contributors"
-msgstr "Manaplus Bijdragers"
+msgid "\"Emote shortcut 9\""
+msgstr ""
 
-msgid "MOUSE:"
-msgstr "MUIS:"
+msgid "\"Set direction down\""
+msgstr ""
+
+msgid "\"Target NPC\""
+msgstr ""
+
+msgid ""
+"You can walk to warps automatically.\n"
+"Open Social Window (###keyWindowSocial;) and selecy Nav tab,\n"
+"then click on warp what you want."
+msgstr ""
+
+msgid "\"Chat window\""
+msgstr ""
 
 msgid "/neutral NICK - add nick to neutral relation list."
 msgstr "/neutral NICK - voeg nick toe aan neutrale relatielijst."
 
-msgid "/addpriorityattack NAME - add monster to priority attack list."
+msgid "\"Outfit shortcut 7\""
 msgstr ""
 
-msgid "##2Enter##P                    \"Toggle Chat\""
+msgid "/addpriorityattack NAME - add monster to priority attack list."
 msgstr ""
 
 msgid "Back to Index"
 msgstr "Terug naar de Opgavetabel"
 
-msgid "##2LeftControl##P              \"Attack\""
-msgstr "##2LeftControl##P \"Val Aan\""
+msgid "THE PLAYER LIST"
+msgstr ""
 
 msgid "/priceload - load shop price from disc."
 msgstr ""
 
-msgid "Search string not found."
-msgstr ""
-
-msgid "##2s##P                        \"Sit\""
-msgstr ""
-
-msgid "##2e##P                        \"Kills Stats Window\""
-msgstr ""
-
-msgid "##2KeyPad[8]##P                \"Disable / Enable Game modifier keys\""
-msgstr ""
-
-msgid ""
-" - ##2allow whispers##P: Do you wish to allow arbitrary players to send\n"
-"   private messages to you in-game?"
-msgstr ""
-
-msgid "##PMagic skills can be obtain by doing quests and missions in game."
-msgstr ""
-
-msgid "Support"
-msgstr ""
-
-msgid "##2z##P                        \"Pickup\""
-msgstr ""
-
-msgid "##2m##P                        \"Use #itenplz spell\""
-msgstr "##2m##P \"Gebruik de #itenplz spreuk\""
-
-msgid ""
-"Communication is often essential to success in this game. You can communicate\n"
-" in several ways:  By chatting and showing emotions (see above), by trading\n"
-" (with the right-click context menu), and by whispering."
-msgstr ""
-
-msgid "##2a##P                        \"Target Closest\""
-msgstr ""
-
-msgid "##2Party level2:##P enables a char to create a party."
-msgstr ""
-
-msgid ""
-"Website: @@http://manaplus.evolonline.org/|http://manaplus.evolonline.org/@@"
-msgstr ""
-
-msgid "##2y##P                        \"Quick Drop N Items from 0 slot\""
-msgstr ""
-
-msgid "##2Backspace##P                \"Item Shortcut 13\""
-msgstr ""
-
-msgid ""
-" You can improve your skills by increasing job level. Each job level\n"
-" gives you 1 point to spend on basic skills."
-msgstr ""
-
-msgid "##25##P                        \"Item Shortcut 5\""
-msgstr ""
-
-msgid "/me text - send text to chat as /me command in irc."
-msgstr ""
-
-msgid "##2q##P                        \"Target Player\""
-msgstr ""
-
-msgid "Mana Contributors"
-msgstr ""
-
-msgid "/query NICK, /q NICK - open new whisper tab for nick."
-msgstr ""
-
-msgid "##2Slash(\\)##P                 \"Crazy moves\""
-msgstr ""
-
-msgid "/all - show visible beings list in debug tab."
-msgstr ""
-
-msgid "For other server look servers pages for support."
-msgstr ""
-
-msgid "Debug"
-msgstr ""
-
-msgid "##2LeftWinKey##P               \"Ignore input 1\""
-msgstr ""
-
-msgid "/addattack NAME - add monster to attack list."
+msgid "\"Quests window\""
 msgstr ""
 
 msgid ""
@@ -194,24 +119,90 @@ msgid ""
 msgstr ""
 
 msgid ""
-"You can walk to warps automatically.\n"
-"Open Social Window (f11) and selecy Nav tab,\n"
-"then click on warp what you want."
+" - ##2allow whispers##P: Do you wish to allow arbitrary players to send\n"
+"   private messages to you in-game?"
 msgstr ""
 
-msgid "##2LeftAlt + 7##P              \"Emote Shortcut 7\""
+msgid ""
+"You can disable yellow bar,\n"
+"by pressing ###keyDisableGameModifiers;."
 msgstr ""
 
-msgid "##2LeftShift##P                \"Stop Attack\""
+msgid "Support"
+msgstr ""
+
+msgid "\"Quick drop window\""
+msgstr ""
+
+msgid "\"Screenshot\""
+msgstr ""
+
+msgid "##PMagic skills can be obtain by doing quests and missions in game."
+msgstr ""
+
+msgid "\"Emote shortcut 1\""
+msgstr ""
+
+msgid "\"Outfit shortcut 13\""
+msgstr ""
+
+msgid "##2Party level2:##P enables a char to create a party."
+msgstr ""
+
+msgid ""
+" You can improve your skills by increasing job level. Each job level\n"
+" gives you 1 point to spend on basic skills."
+msgstr ""
+
+msgid "/me text - send text to chat as /me command in irc."
+msgstr ""
+
+msgid "\"Emote shortcut 10\""
+msgstr ""
+
+msgid "\"Item shortcut 14\""
+msgstr ""
+
+msgid "Mana Contributors"
+msgstr ""
+
+msgid "\"Change map view mode\""
+msgstr ""
+
+msgid "/query NICK, /q NICK - open new whisper tab for nick."
+msgstr ""
+
+msgid "\"Item shortcut 5\""
+msgstr ""
+
+msgid "/all - show visible beings list in debug tab."
+msgstr ""
+
+msgid "\"Emote shortcut 7\""
+msgstr ""
+
+msgid "Debug"
+msgstr ""
+
+msgid "/addattack NAME - add monster to attack list."
+msgstr ""
+
+msgid "For other server look servers pages for support."
+msgstr ""
+
+msgid "\"Target closest monster\""
+msgstr ""
+
+msgid "\"Emote shortcut 2\""
+msgstr ""
+
+msgid "\"Outfit shortcut 6\""
 msgstr ""
 
 msgid "/setdrop N - set drop counter to requested value."
 msgstr ""
 
-msgid "##2LeftAlt + 8##P              \"Emote Shortcut 8\""
-msgstr ""
-
-msgid "##2RightWinKey##P              \"Ignore input 2\""
+msgid "\"Quit\""
 msgstr ""
 
 msgid "/outfit N - wear outfit number N."
@@ -220,13 +211,13 @@ msgstr ""
 msgid "Visit IRC channel:"
 msgstr ""
 
-msgid "##2LeftAlt + Equals(=)##P      \"Emote Shortcut 12\""
+msgid "\"Shop window\""
 msgstr ""
 
 msgid "/createparty NAME - create party with selected name."
 msgstr ""
 
-msgid "##2t##P                        \"Talk\""
+msgid "\"Move down\""
 msgstr ""
 
 msgid "/heal NICK - heal nick."
@@ -235,7 +226,13 @@ msgstr ""
 msgid "Contributors to client development"
 msgstr ""
 
+msgid "\"Setup window\""
+msgstr ""
+
 msgid "/removeattack NAME - remove monster from attack list."
+msgstr ""
+
+msgid "\"Set direction up\""
 msgstr ""
 
 msgid "/where - print current player position to chat."
@@ -246,7 +243,15 @@ msgid ""
 "   even see floating text for him or her anymore, nor emotions."
 msgstr ""
 
-msgid "##2RightShift + key##P         \"Move to navigation point\""
+msgid ""
+"If client working very slow, you can improve speed\n"
+"by reading this: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
+msgstr ""
+
+msgid ""
+" - ##2save player list##P: Should your acquaintance list be saved when you\n"
+"   quit the game?  If you enable this option, your list will survive when you\n"
+"   quit and re-start."
 msgstr ""
 
 msgid ""
@@ -254,16 +259,21 @@ msgid ""
 "##2?text"
 msgstr ""
 
-msgid "##24##P                        \"Item Shortcut 4\""
+msgid ""
+"You can buy or sell items from players shops.\n"
+"Right click on player and select \"Buy\" or \"Sell\""
 msgstr ""
 
-msgid "##2PageUP##P                   \"Scroll Chat Up\""
+msgid "##2Trade:##P enables the ability to trade with others."
+msgstr ""
+
+msgid "\"Enable/disable trading\""
+msgstr ""
+
+msgid "\"Toggle camera mode\""
 msgstr ""
 
 msgid "/unignore NICK - Remove nick from ignore list."
-msgstr ""
-
-msgid "##2LeftAlt + 6##P              \"Emote Shortcut 6\""
 msgstr ""
 
 msgid "IGNORING COMMUNICATION"
@@ -275,22 +285,19 @@ msgstr ""
 msgid "SUPPORT"
 msgstr ""
 
-msgid "##2LEFT##P                     \"Move Left\""
-msgstr ""
-
-msgid "##2LeftAlt + 9##P              \"Emote Shortcut 9\""
+msgid "\"Outfit shortcut 10\""
 msgstr ""
 
 msgid "Look this page for help and downloads:"
 msgstr ""
 
+msgid "COMMUNICATION:"
+msgstr ""
+
 msgid "Other skills:"
 msgstr ""
 
-msgid "##2MenuKey##P                  \"Item Shortcuts Key\""
-msgstr ""
-
-msgid "##28##P                        \"Item Shortcut 8\""
+msgid "Powered By"
 msgstr ""
 
 msgid ""
@@ -298,13 +305,19 @@ msgid ""
 "Start mumble before client start and enable mumble in settings."
 msgstr ""
 
-msgid "##2RightAlt##P                 \"Copy Outfit\""
+msgid "\"Move up\""
 msgstr ""
 
-msgid "##21##P                        \"Item Shortcut 1\""
-msgstr "##21##P \"Voorwerp Sneltoets 1\""
+msgid "Here contributors from parent projects"
+msgstr ""
 
-msgid "##20##P                        \"Item Shortcut 10\""
+msgid "\"Item shortcut 4\""
+msgstr ""
+
+msgid ""
+" - ##2disregarded##P:  You wish to disregard this player, meaning that his or\n"
+"   her chat messages are not logged and trade requests and whispers are\n"
+"   ignored."
 msgstr ""
 
 msgid ""
@@ -315,16 +328,19 @@ msgstr ""
 msgid "/who - print online players number to chat."
 msgstr ""
 
-msgid "##2r##P                        \"Enable/Disable Trading\""
+msgid "/uptime - show client uptime."
 msgstr ""
 
-msgid "/uptime - show client uptime."
+msgid "\"Who is online window\""
+msgstr ""
+
+msgid "\"Sit\""
 msgstr ""
 
 msgid "/dumpg - dump graphics and some other settings to chat."
 msgstr ""
 
-msgid "Manaplus Developers"
+msgid "\"Deactivate chat input\""
 msgstr ""
 
 msgid "/trade NICK - start trade with nick."
@@ -333,83 +349,94 @@ msgstr ""
 msgid "/imitation NICK - start imitation mode."
 msgstr ""
 
-msgid "##2LeftAlt + EmoteKey##P       \"Smilie\""
-msgstr ""
-
-msgid "##22##P                        \"Item Shortcut 2\""
+msgid "\"Outfit shortcut 5\""
 msgstr ""
 
 msgid "KEYBOARD:"
 msgstr "TOETSENBORD:"
 
-msgid "##2Semicolon(;)##P             \"Set Direction Down\""
-msgstr ""
-
 msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
 msgstr ""
 
-msgid "Windows"
+msgid "\"Scroll chat down\""
 msgstr ""
 
 msgid "Server news"
 msgstr ""
 
-msgid "##2LeftAlt + 4##P              \"Emote Shortcut 4\""
+msgid "\"Outfit shortcut 11\""
 msgstr ""
 
-msgid "##2F3##P                       \"Inventory Window\""
+msgid "\"Item shortcut 11\""
+msgstr ""
+
+msgid "\"Item shortcut 10\""
 msgstr ""
 
 msgid "ABOUT MANAPLUS"
 msgstr "OVER MANAPLUS"
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr ""
-
-msgid "##2KeyPad0##P                  \"Change move type\""
+msgid "\"Select OK\""
 msgstr ""
 
 msgid "MacOSX porting"
 msgstr ""
 
+msgid ""
+"About yellow bar you can read here:\n"
+"@@http://manaplus.org/yellowbar|http://manaplus.org/yellowbar@@"
+msgstr ""
+
+msgid "\"Move to target\""
+msgstr ""
+
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
+msgstr ""
+
+msgid "\"Enable / disable away mode\""
 msgstr ""
 
 msgid "INDEX"
 msgstr ""
 
-msgid ""
-"You can disable yellow bar,\n"
-"by pressing key 8 on numeric keyboard."
+msgid "\"Chat auto complete\""
+msgstr ""
+
+msgid "\"Commands window\""
 msgstr ""
 
 msgid "/ignoreall - add all whispers to ignore list."
 msgstr ""
 
-msgid "Other contributors"
+msgid "\"Copy outfit\""
 msgstr ""
 
 msgid "/ignore NICK - add nick to ignore list."
 msgstr ""
 
-msgid "##23##P                        \"Item Shortcut 3\""
+msgid "\"Item shortcuts Key\""
 msgstr ""
 
-msgid "##29##P                        \"Item Shortcut 9\""
+msgid "\"Disable / enable game modifier keys\""
+msgstr ""
+
+msgid "Other contributors"
+msgstr ""
+
+msgid ""
+"Communication is often essential to success in this game. You can communicate\n"
+" in several ways:  By chatting and showing emotions (see above), by trading\n"
+" (with the right-click context menu), and by whispering."
+msgstr ""
+
+msgid "\"Attack\""
 msgstr ""
 
 msgid "/outfit next - wear next outfit."
 msgstr ""
 
-msgid "About The Mana World"
+msgid "\"Move right\""
 msgstr ""
 
 msgid ""
@@ -420,7 +447,10 @@ msgstr ""
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr ""
 
-msgid "Themes:"
+msgid "\"Item shortcut 3\""
+msgstr ""
+
+msgid "\"Change move type\""
 msgstr ""
 
 msgid "Magic skills:"
@@ -429,19 +459,25 @@ msgstr ""
 msgid "/addignoreattack NAME - add monster to ignore attack list."
 msgstr ""
 
-msgid "##2KeyPad[+]##P                \"Toggle camera mode\""
-msgstr ""
-
-msgid "##2Home##P                     \"Item Shortcut 15\""
+msgid "Android porting"
 msgstr ""
 
 msgid "/clear - clear current chat tab."
 msgstr ""
 
-msgid "##2KeyPad[9]##P                \"Next chat tab line\""
+msgid "\"Social window\""
+msgstr ""
+
+msgid "\"Hide windows\""
+msgstr ""
+
+msgid "\"Outfit shortcut 4\""
 msgstr ""
 
 msgid "Chat commands"
+msgstr ""
+
+msgid "\"Did you know window\""
 msgstr ""
 
 msgid "Trade"
@@ -450,48 +486,34 @@ msgstr ""
 msgid "/blacklist NICK - add nick to blacklist relation list."
 msgstr ""
 
-msgid "##2Comma(,)##P                 \"Switch magic attack\""
+msgid "\"Close chat tab\""
 msgstr ""
 
-msgid "##2Tab##P                      \"Chat Auto Complete\""
+msgid "\"Item shortcut 6\""
 msgstr ""
 
-msgid "##2LeftAlt + 5##P              \"Emote Shortcut 5\""
+msgid "Art or images contributors"
 msgstr ""
 
-msgid ""
-" - ##2save player list##P: Should your acquaintance list be saved when you\n"
-"   quit the game?  If you enable this option, your list will survive when you\n"
-"   quit and re-start."
+msgid "\"Target player\""
 msgstr ""
 
-msgid "##2PageDOWN##P                 \"Scroll Chat Down\""
+msgid "\"Debug window\""
 msgstr ""
 
-msgid "##2KeyPad[2]##P                \"Enable / Disable away mode\""
+msgid "\"Next chat tab\""
 msgstr ""
 
-msgid "Here contributors from parent projects"
-msgstr ""
+msgid "ManaPlus Contributors"
+msgstr "Manaplus Bijdragers"
 
-msgid "##2j##P                        \"Commands Window\""
-msgstr ""
-
-msgid "THE PLAYER LIST"
+msgid "\"Copy equiped to Outfit\""
 msgstr ""
 
 msgid "Basic skills:"
 msgstr ""
 
-msgid "##POther skills can be obtain by doing quests and missions in game."
-msgstr ""
-
-msgid "##2RightControl##P             \"Wear Outfit\""
-msgstr ""
-
-msgid ""
-"You can buy or sell items from players shops.\n"
-"Right click on player and select \"Buy\" or \"Sell\""
+msgid "\"Change move to target type\""
 msgstr ""
 
 msgid "/erase NICK - add nick to erased list."
@@ -500,10 +522,13 @@ msgstr ""
 msgid "/pricesave - save shop price to disc."
 msgstr ""
 
-msgid "COMMUNICATION:"
+msgid "\"Pickup\""
 msgstr ""
 
-msgid "##2SpaceBar##P                 \"Select OK\""
+msgid "\"Status window\""
+msgstr ""
+
+msgid "\"Item shortcut 2\""
 msgstr ""
 
 msgid "##2Emote:##P enables the ability to express emotions."
@@ -512,7 +537,10 @@ msgstr ""
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr ""
 
-msgid "##2i##P                        \"Switch Quick Drop Counter\""
+msgid "\"Change follow mode\""
+msgstr ""
+
+msgid "\"Scroll chat up\""
 msgstr ""
 
 msgid ""
@@ -527,22 +555,31 @@ msgid ""
 " sure this game can't ever run away from you."
 msgstr ""
 
-msgid "##2LeftAlt + 2##P              \"Emote Shortcut 2\""
-msgstr ""
-
-msgid "##2F7##P                       \"Chat Window\""
-msgstr ""
-
-msgid "##2LeftAlt + 1##P              \"Emote Shortcut 1\""
-msgstr ""
-
-msgid "##2F11##P                      \"Social Window\""
-msgstr ""
-
 msgid ""
 " - ##2neutral##P:  As far as the game is concerned, this is the same as not\n"
 "   having the player listed:  the player may chat with you, but may only trade\n"
 "   or whisper if you have this option allowed for everyone."
+msgstr ""
+
+msgid "\"Inventory window\""
+msgstr ""
+
+msgid "Contributors to client/server development"
+msgstr ""
+
+msgid "\"Quick heal target or self\""
+msgstr ""
+
+msgid "\"Change pickup type\""
+msgstr ""
+
+msgid "\"Use #itenplz spell\""
+msgstr ""
+
+msgid "move key"
+msgstr ""
+
+msgid "\"Item shortcut 13\""
 msgstr ""
 
 msgid "Skills"
@@ -551,12 +588,16 @@ msgstr ""
 msgid "##2Party Level1:##P enables a char to join a party."
 msgstr ""
 
-msgid ""
-" There you will find a list of all players you are acquainted with, as well as\n"
-" several configuration options:"
+msgid "##2Version:##6%VER%"
+msgstr "##2versie:##6%VER%"
+
+msgid "\"Outfit shortcut 3\""
 msgstr ""
 
-msgid "Search error"
+msgid "\"Quick drop N items\""
+msgstr ""
+
+msgid "Themes:"
 msgstr ""
 
 msgid ""
@@ -564,15 +605,22 @@ msgid ""
 "nick."
 msgstr ""
 
-msgid "##2F1##P                       \"Help Window\""
+msgid "\"Emote shortcut 14\""
 msgstr ""
 
-msgid "##2g##P                        \"Change Attack Weapon Type\""
+msgid "\"Item shortcut 1\""
 msgstr ""
 
-msgid ""
-"If client working very slow, you can improve speed\n"
-"by reading this: @@http://manaplus.evolonline.org/slowpc|http://manaplus.evolonline.org/slowpc@@"
+msgid "Commands"
+msgstr ""
+
+msgid "\"Outfit shortcut 9\""
+msgstr ""
+
+msgid "\"Emote shortcut 4\""
+msgstr ""
+
+msgid "\"Stop Attack\""
 msgstr ""
 
 msgid ""
@@ -580,18 +628,13 @@ msgid ""
 " of the following:"
 msgstr ""
 
+msgid "\"Change attack weapon type\""
+msgstr ""
+
 msgid "/outfit prev - wear previous outfit."
 msgstr ""
 
-msgid ""
-"##P This file lists all contributors up to the current release. Check the wiki\n"
-"##P for the currently active development team."
-msgstr ""
-
-msgid "Contributors to client/server development"
-msgstr ""
-
-msgid "##2KeyPad[1]##P                \"Change Follow mode\""
+msgid "\"Crazy moves\""
 msgstr ""
 
 msgid "SHORTCUTS:"
@@ -600,16 +643,28 @@ msgstr ""
 msgid "/target NICK - select nick as target. Can be monster or player nick."
 msgstr ""
 
-msgid "/emote N - use emotion number N."
+msgid "To type chat message, press ###keyChat;"
 msgstr ""
 
-msgid "##2Minus(-)##P                 \"Item Shortcut 11\""
+msgid "Translators"
+msgstr "Vertalers"
+
+msgid "MOUSE:"
+msgstr "MUIS:"
+
+msgid "\"Next chat tab line\""
 msgstr ""
 
-msgid "##2Esc##P                      \"Deactivate Chat Input\""
+msgid "\"Set direction right\""
+msgstr ""
+
+msgid "\"Move to home location\""
 msgstr ""
 
 msgid "Player relations"
+msgstr ""
+
+msgid "Search error"
 msgstr ""
 
 msgid ""
@@ -623,39 +678,37 @@ msgstr ""
 msgid "COMMANDS"
 msgstr ""
 
-msgid "##2RIGHT##P                    \"Move Right\""
+msgid "\"Previous chat tab\""
 msgstr ""
 
-msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
+msgid "/serverunignoreall - unignore all whispers on server side."
+msgstr "/serverunignoreall - Stop met het negeren van alle persoonlijke berichten op de server."
+
+msgid "\"Skill window\""
 msgstr ""
 
-msgid "To type chat message, press enter"
+msgid "\"Kills stats window\""
 msgstr ""
 
-msgid "##2DOWN##P                     \"Move Down\""
+msgid "\"Toggle chat\""
 msgstr ""
 
-msgid "##2n##P                        \"Target NPC\""
+msgid "##POther skills can be obtain by doing quests and missions in game."
 msgstr ""
 
-msgid ""
-"About yellow bar you can read here:\n"
-"@@http://manaplus.evolonline.org/yellowbar|http://manaplus.evolonline.org/yellowbar@@"
+msgid "\"Change attack type\""
 msgstr ""
 
-msgid "##2LeftAlt + 3##P              \"Emote Shortcut 3\""
+msgid "Manaplus Developers"
 msgstr ""
 
-msgid "##2Backslash(/)##P             \"Change Crazy Move mode\""
+msgid "\"On / off audio\""
 msgstr ""
 
-msgid "##2F8##P                       \"Item Shortcut Window\""
+msgid "\"Emote shortcut 6\""
 msgstr ""
 
-msgid "##2w##P                        \"Quick drop Window\""
-msgstr ""
-
-msgid "##2u##P                        \"Quick Drop N Items\""
+msgid "\"Outfit shortcut 2\""
 msgstr ""
 
 msgid "You can change any key in keyboard settings."
@@ -664,22 +717,34 @@ msgstr ""
 msgid "/dirs - show client dirs in debug chat tab."
 msgstr ""
 
-msgid "Powered By"
+msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
 msgstr ""
 
 msgid "/disconnect - quick disconnect from server."
 msgstr ""
 
+msgid "\"Switch quick drop counter\""
+msgstr ""
+
+msgid "\"Previous chat tab line\""
+msgstr ""
+
+msgid "\"Emote shortcut 13\""
+msgstr ""
+
 msgid "/disregard NICK - add nick to disregarded list."
 msgstr ""
 
-msgid "##2F9##P                       \"Setup Window\""
+msgid "\"Change crazy Move mode\""
 msgstr ""
 
-msgid "##2F5##P                       \"Skill Window\""
+msgid "\"Outfit shortcut 8\""
 msgstr ""
 
-msgid "Commands"
+msgid "\"Change imitation mode\""
+msgstr ""
+
+msgid "\"Reset video mode to safe value\""
 msgstr ""
 
 msgid "/undress NICK - remove all clothes from nick. Local effect only."
@@ -690,55 +755,46 @@ msgid ""
 " developers and how to contact them."
 msgstr ""
 
-msgid "##2Quote(')##P                 \"Set Direction Right\""
+msgid "\"Outfit shortcut 14\""
 msgstr ""
 
-msgid "##2F4##P                       \"Equipment Window\""
+msgid "\"Quick drop N items from 0 slot\""
 msgstr ""
 
-msgid "/away, /away MSG - set away mode."
+msgid "\"Switch pvp attack\""
+msgstr ""
+
+msgid "\"Emote shortcut window\""
+msgstr ""
+
+msgid "\"Bot checker window\""
 msgstr ""
 
 msgid ""
 "/mail NICK MSG - send offline message to NICK. Working only in tmw server."
 msgstr ""
 
-msgid "##2k##P                        \"Set Direction Left\""
+msgid "\"Item shortcut 15\""
 msgstr ""
 
-msgid ""
-" - ##2disregarded##P:  You wish to disregard this player, meaning that his or\n"
-"   her chat messages are not logged and trade requests and whispers are\n"
-"   ignored."
+msgid "About The Mana World"
 msgstr ""
 
-msgid "##2o##P                        \"Change Pickup Type\""
+msgid "\"Emote shortcut 5\""
 msgstr ""
 
-msgid "##2BackQuote(`)##P             \"Outfits Window\""
-msgstr ""
-
-msgid "##2Period(.)##P                \"Change Move to Target type\""
-msgstr ""
-
-msgid "##2F10##P                      \"Debug Window\""
-msgstr ""
-
-msgid ""
-" - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
-"   players?"
+msgid "\"Smilie\""
 msgstr ""
 
 msgid "Whispers commands"
 msgstr ""
 
-msgid "##2LeftAlt + Insert##P         \"Emote Shortcut 14\""
+msgid ""
+" There you will find a list of all players you are acquainted with, as well as\n"
+" several configuration options:"
 msgstr ""
 
-msgid ""
-" Left click to execute default action: walk, pick up an item, attack a monster\n"
-" and talk to NPCs (be sure to click on their feet). Right click to show up a\n"
-" context menu. Holding [Left Shift] prevents from walking when attacking."
+msgid "\"Use magic attack\""
 msgstr ""
 
 msgid ""
@@ -746,19 +802,25 @@ msgid ""
 "by right click on player and select in context menu \"Show Items\"."
 msgstr ""
 
-msgid "##2d##P                        \"Move to Home location\""
-msgstr ""
-
 msgid "Whispers"
 msgstr ""
 
-msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
+msgid "Search string not found."
+msgstr ""
+
+msgid "\"Wear outfit\""
+msgstr ""
+
+msgid "emote key"
 msgstr ""
 
 msgid "Search results"
 msgstr ""
 
 msgid "/help - show small help about chat commands. "
+msgstr ""
+
+msgid "\"Item shortcut 9\""
 msgstr ""
 
 msgid ""
@@ -769,10 +831,13 @@ msgstr ""
 msgid "Main development"
 msgstr ""
 
+msgid "\"Help window\""
+msgstr ""
+
 msgid "/attack - attack target."
 msgstr ""
 
-msgid "##2f##P                        \"Change Map View Mode\""
+msgid "\"Outfit shortcut 1\""
 msgstr ""
 
 msgid ""
@@ -784,58 +849,59 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-msgid "##2KeyPad[9]##P                \"Next Chat Tab\""
+msgid "\"Emote shortcut 12\""
 msgstr ""
 
-msgid "##2KeyPad[7]##P                \"Previous chat tab line\""
+msgid "\"Outfit shortcut 15\""
 msgstr ""
 
-msgid "##2Trade:##P enables the ability to trade with others."
+msgid "Windows"
 msgstr ""
 
-msgid "##2LeftAlt + Backspace##P      \"Emote Shortcut 13\""
+msgid "\"Ignore input 2\""
 msgstr ""
 
-msgid "##2p##P                        \"Screenshot\""
+msgid "\"Emulate right click from keyboard\""
 msgstr ""
 
-msgid "##2x##P                        \"Target & Attack\""
+msgid "\"Set home location/set arrow\""
 msgstr ""
 
-msgid "##2b##P                        \"Use magic attack\""
+msgid "\"Set direction left\""
 msgstr ""
 
-msgid "##2KeyPad[4]##P                \"Change Imitation mode\""
+msgid "\"Move left\""
 msgstr ""
 
-msgid "##2Tab##P                      \"Emulate right click from keyboard\""
+msgid "\"Item shortcut window\""
 msgstr ""
 
-msgid "##2LeftBracket([)##P           \"Bot Checker Window\""
+msgid "\"Item shortcut 7\""
 msgstr ""
 
-msgid "##2l##P                        \"Set Direction Up\""
+msgid "\"Emote shortcut 8\""
+msgstr ""
+
+msgid "\"Minimap window\""
+msgstr ""
+
+msgid "\"Equipment window\""
 msgstr ""
 
 msgid "/serverignoreall - ignore all whispers on server side."
 msgstr ""
 
-msgid "##2v##P                        \"Move to Target\""
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
 msgstr ""
 
-msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
-msgstr ""
-
-msgid "Android porting"
-msgstr ""
-
-msgid "##2h##P                        \"Hide Windows\""
-msgstr ""
-
-msgid "##2Version:##6%VER%"
-msgstr "##2versie:##6%VER%"
-
-msgid "##2Equals(=)##P                \"Item Shortcut 12\""
+msgid "\"Emote shortcut 3\""
 msgstr ""
 
 msgid ""
@@ -846,10 +912,15 @@ msgid ""
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
 msgstr ""
 
-msgid "##2KeyPad[5]##P                \"Set home location/Set arrow\""
+msgid ""
+"##P This file lists all contributors up to the current release. Check the wiki\n"
+"##P for the currently active development team."
 msgstr ""
 
 msgid "Different patches"
+msgstr ""
+
+msgid "\"Switch magic attack\""
 msgstr ""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
@@ -858,32 +929,32 @@ msgstr ""
 msgid "SKILLS"
 msgstr ""
 
-msgid "Art or images contributors"
-msgstr ""
-
-msgid "##27##P                        \"Item Shortcut 7\""
-msgstr ""
-
-msgid "##2F12##P                      \"Emote Shortcut Window\""
-msgstr ""
-
 msgid "Actions"
 msgstr ""
 
-msgid "##2Insert##P                   \"Item Shortcut 14\""
+msgid "\"Item shortcut 12\""
+msgstr ""
+
+msgid "\"Move to navigation point\""
 msgstr ""
 
 msgid "Sound effects"
 msgstr ""
 
-msgid "##2F6##P                       \"Minimap Window\""
+msgid "\"Talk\""
 msgstr ""
 
-msgid "##2c##P                        \"Quick heal target or self\""
+msgid ""
+" Left click to execute default action: walk, pick up an item, attack a monster\n"
+" and talk to NPCs (be sure to click on their feet). Right click to show up a\n"
+" context menu. Holding [Left Shift] prevents from walking when attacking."
 msgstr ""
 
 msgid "/follow NICK - start follow mode."
 msgstr ""
 
-msgid "##26##P                        \"Item Shortcut 6\""
+msgid "\"Item shortcut 8\""
+msgstr ""
+
+msgid "/emote N - use emotion number N."
 msgstr ""
