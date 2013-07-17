@@ -540,7 +540,6 @@ class LocalPlayer final : public Being,
 
         void loadHomes();
 
-        int mTargetTime;      /** How long the being has been targeted **/
         int mGMLevel;
 
         // move type

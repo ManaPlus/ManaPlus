@@ -95,7 +95,6 @@ extern SkillDialog *skillDialog;
 LocalPlayer::LocalPlayer(const int id, const int subtype) :
     Being(id, PLAYER, subtype, nullptr),
     mUpdateName(true),
-    mTargetTime(-1),
     mGMLevel(0),
     mInvertDirection(0),
     mCrazyMoveType(config.getIntValue("crazyMoveType")),
@@ -283,9 +282,6 @@ void LocalPlayer::logic()
 #ifdef MANASERV_SUPPORT
     PlayerInfo::logic();
 #endif
-
-    if (get_elapsed_time(mTargetTime) >= 60000)
-        mTargetTime = tick_time;
 
     if (mTarget)
     {
@@ -958,11 +954,6 @@ void LocalPlayer::setTarget(Being *const target)
     if (target == mTarget)
         return;
 
-    if (target || mAction == ATTACK)
-        mTargetTime = tick_time;
-    else
-        mTargetTime = -1;
-
     Being *oldTarget = nullptr;
     if (mTarget)
     {
@@ -1312,7 +1303,6 @@ void LocalPlayer::attack(Being *const target, const bool keep,
         }
 
         mActionTime = tick_time;
-        mTargetTime = tick_time;
     }
 
     if (target->getType() != Being::PLAYER || checAttackPermissions(target))
