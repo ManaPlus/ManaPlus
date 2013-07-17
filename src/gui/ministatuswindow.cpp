@@ -353,16 +353,19 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
         const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
             Net::getPlayerHandler()->getJobLocation());
 
+        // TRANSLATORS: job bar label
+        const std::string level = strprintf(_("Job level: %d"),
+            PlayerInfo::getStatBase(
+            Net::getPlayerHandler()->getJobLocation()));
+
         if (exp.first > exp.second)
         {
-            mTextPopup->show(x + rect.x, y + rect.y,
-                event.getSource()->getId(),
+            mTextPopup->show(x + rect.x, y + rect.y, level,
                 strprintf("%d/%d", exp.first, exp.second));
         }
         else
         {
-            mTextPopup->show(x + rect.x, y + rect.y,
-                event.getSource()->getId(),
+            mTextPopup->show(x + rect.x, y + rect.y, level,
                 strprintf("%d/%d", exp.first, exp.second),
                 // TRANSLATORS: status bar label
                 strprintf("%s: %d", _("Need"), exp.second - exp.first));
