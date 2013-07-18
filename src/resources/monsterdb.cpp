@@ -110,8 +110,13 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
         currentInfo->setTargetOffsetY(XML::getProperty(monsterNode,
             "targetOffsetY", 0));
 
-        currentInfo->setMaxHP(XML::getProperty(monsterNode, "maxHP", 0));
+        currentInfo->setNameOffsetX(XML::getProperty(monsterNode,
+            "nameOffsetX", 0));
 
+        currentInfo->setNameOffsetY(XML::getProperty(monsterNode,
+            "nameOffsetY", 0));
+
+        currentInfo->setMaxHP(XML::getProperty(monsterNode, "maxHP", 0));
 
         currentInfo->setSortOffsetY(XML::getProperty(
             monsterNode, "sortOffsetY", 0));

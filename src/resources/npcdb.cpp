@@ -102,6 +102,12 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         currentInfo->setTargetOffsetY(XML::getProperty(npcNode,
             "targetOffsetY", 0));
 
+        currentInfo->setNameOffsetX(XML::getProperty(npcNode,
+            "nameOffsetX", 0));
+
+        currentInfo->setNameOffsetY(XML::getProperty(npcNode,
+            "nameOffsetY", 0));
+
         currentInfo->setSortOffsetY(XML::getProperty(npcNode,
             "sortOffsetY", 0));
 

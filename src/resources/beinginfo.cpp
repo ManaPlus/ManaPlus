@@ -49,6 +49,8 @@ BeingInfo::BeingInfo() :
     mColors(nullptr),
     mTargetOffsetX(0),
     mTargetOffsetY(0),
+    mNameOffsetX(0),
+    mNameOffsetY(0),
     mMaxHP(0),
     mSortOffsetY(0),
     mDeadSortOffsetY(31),

@@ -160,6 +160,18 @@ class BeingInfo final
         int getTargetOffsetY() const A_WARN_UNUSED
         { return mTargetOffsetY; }
 
+        void setNameOffsetX(const int n)
+        { mNameOffsetX = n; }
+
+        int getNameOffsetX() const A_WARN_UNUSED
+        { return mNameOffsetX; }
+
+        void setNameOffsetY(const int n)
+        { mNameOffsetY = n; }
+
+        int getNameOffsetY() const A_WARN_UNUSED
+        { return mNameOffsetY; }
+
         void setMaxHP(const int n)
         { mMaxHP = n; }
 
@@ -228,6 +240,8 @@ class BeingInfo final
         const std::map <int, ColorDB::ItemColor> *mColors;
         int mTargetOffsetX;
         int mTargetOffsetY;
+        int mNameOffsetX;
+        int mNameOffsetY;
         int mMaxHP;
         int mSortOffsetY;
         int mDeadSortOffsetY;

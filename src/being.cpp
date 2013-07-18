@@ -1551,16 +1551,18 @@ void Being::updateCoords()
     if (!mDispName)
         return;
 
+    int offsetX = getPixelX();
+    int offsetY = getPixelY();
+    if (mInfo)
+    {
+        offsetX += mInfo->getNameOffsetX();
+        offsetY += mInfo->getNameOffsetY();
+    }
     // Monster names show above the sprite instead of below it
     if (mType == MONSTER)
-    {
-        mDispName->adviseXY(getPixelX(),
-            getPixelY() - getHeight() - mDispName->getHeight(), mMoveNames);
-    }
-    else
-    {
-        mDispName->adviseXY(getPixelX(), getPixelY(), mMoveNames);
-    }
+        offsetY += - getHeight() - mDispName->getHeight();
+
+    mDispName->adviseXY(offsetX, offsetY, mMoveNames);
 }
 
 void Being::optionChanged(const std::string &value)
@@ -1654,8 +1656,18 @@ void Being::showName()
         font = gui->getSecureFont();
     }
 
-    mDispName = new FlashText(displayName, getPixelX(), getPixelY(),
-                              gcn::Graphics::CENTER, mNameColor, font);
+    if (mInfo)
+    {
+        mDispName = new FlashText(displayName,
+            getPixelX() + mInfo->getNameOffsetX(),
+            getPixelY() + mInfo->getNameOffsetY(),
+            gcn::Graphics::CENTER, mNameColor, font);
+    }
+    else
+    {
+        mDispName = new FlashText(displayName, getPixelX(), getPixelY(),
+            gcn::Graphics::CENTER, mNameColor, font);
+    }
 
     updateCoords();
 }
