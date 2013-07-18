@@ -433,6 +433,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/atlasmanager.h \
 	      resources/avatardb.cpp \
 	      resources/avatardb.h \
+	      resources/beingcommon.cpp \
+	      resources/beingcommon.h \
 	      resources/beinginfo.cpp \
 	      resources/beinginfo.h \
 	      resources/chardb.cpp \

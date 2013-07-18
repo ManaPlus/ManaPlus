@@ -24,6 +24,7 @@
 
 #include "logger.h"
 
+#include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
 #include "utils/dtor.h"
@@ -90,26 +91,7 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         currentInfo->setTargetSelection(XML::getBoolProperty(npcNode,
             "targetSelection", true));
 
-        currentInfo->setTargetCursorSize(XML::getProperty(npcNode,
-            "targetCursor", "medium"));
-
-        currentInfo->setHoverCursor(XML::getProperty(npcNode,
-            "hoverCursor", "talk"));
-
-        currentInfo->setTargetOffsetX(XML::getProperty(npcNode,
-            "targetOffsetX", 0));
-
-        currentInfo->setTargetOffsetY(XML::getProperty(npcNode,
-            "targetOffsetY", 0));
-
-        currentInfo->setNameOffsetX(XML::getProperty(npcNode,
-            "nameOffsetX", 0));
-
-        currentInfo->setNameOffsetY(XML::getProperty(npcNode,
-            "nameOffsetY", 0));
-
-        currentInfo->setSortOffsetY(XML::getProperty(npcNode,
-            "sortOffsetY", 0));
+        BeingCommon::readBasicAttributes(currentInfo, npcNode, "talk");
 
         currentInfo->setDeadSortOffsetY(XML::getProperty(npcNode,
             "deadSortOffsetY", 31));

@@ -24,6 +24,7 @@
 
 #include "logger.h"
 
+#include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
 #include "utils/dtor.h"
@@ -76,20 +77,7 @@ void PETDB::load()
         currentInfo->setTargetSelection(XML::getBoolProperty(petNode,
             "targetSelection", false));
 
-        currentInfo->setTargetCursorSize(XML::getProperty(petNode,
-            "targetCursor", "medium"));
-
-        currentInfo->setHoverCursor(XML::getProperty(petNode,
-            "hoverCursor", "talk"));
-
-        currentInfo->setTargetOffsetX(XML::getProperty(petNode,
-            "targetOffsetX", 0));
-
-        currentInfo->setTargetOffsetY(XML::getProperty(petNode,
-            "targetOffsetY", 0));
-
-        currentInfo->setSortOffsetY(XML::getProperty(petNode,
-            "sortOffsetY", 0));
+        BeingCommon::readBasicAttributes(currentInfo, petNode, "talk");
 
         currentInfo->setDeadSortOffsetY(XML::getProperty(petNode,
             "deadSortOffsetY", 31));

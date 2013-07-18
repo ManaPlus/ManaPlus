@@ -26,6 +26,7 @@
 
 #include "net/net.h"
 
+#include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
 #include "utils/dtor.h"
@@ -98,28 +99,9 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
             // TRANSLATORS: unknown info name
             monsterNode, "name", _("unnamed")));
 
-        currentInfo->setTargetCursorSize(XML::getProperty(monsterNode,
-            "targetCursor", "medium"));
-
-        currentInfo->setHoverCursor(XML::getProperty(monsterNode,
-            "hoverCursor", "attack"));
-
-        currentInfo->setTargetOffsetX(XML::getProperty(monsterNode,
-            "targetOffsetX", 0));
-
-        currentInfo->setTargetOffsetY(XML::getProperty(monsterNode,
-            "targetOffsetY", 0));
-
-        currentInfo->setNameOffsetX(XML::getProperty(monsterNode,
-            "nameOffsetX", 0));
-
-        currentInfo->setNameOffsetY(XML::getProperty(monsterNode,
-            "nameOffsetY", 0));
+        BeingCommon::readBasicAttributes(currentInfo, monsterNode, "attack");
 
         currentInfo->setMaxHP(XML::getProperty(monsterNode, "maxHP", 0));
-
-        currentInfo->setSortOffsetY(XML::getProperty(
-            monsterNode, "sortOffsetY", 0));
 
         currentInfo->setDeadSortOffsetY(XML::getProperty(
             monsterNode, "deadSortOffsetY", 31));
