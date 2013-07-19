@@ -239,7 +239,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             if (idx2 == std::string::npos)
                 break;
 
-            const int newSize = atoi(newRow.substr(
+            const unsigned int newSize = atoi(newRow.substr(
                 idx1 + 2, idx2 - idx1 - 2).c_str());
             std::string str = newRow.substr(0, idx1);
             while (str.size() < newSize)
