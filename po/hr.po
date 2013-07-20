@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-07-14 14:18+0300\n"
-"PO-Revision-Date: 2013-07-14 11:24+0000\n"
+"POT-Creation-Date: 2013-07-19 22:23+0300\n"
+"PO-Revision-Date: 2013-07-19 19:52+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/manaplus/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -47,12 +47,12 @@ msgid "miss"
 msgstr ""
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1604 src/gui/whoisonline.cpp:835
+#: src/being.cpp:1606 src/gui/whoisonline.cpp:835
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1609 src/gui/whoisonline.cpp:840
+#: src/being.cpp:1611 src/gui/whoisonline.cpp:840
 msgid "I"
 msgstr ""
 
@@ -1785,8 +1785,14 @@ msgid "Level: %d"
 msgstr "Nivo: %d"
 
 #. TRANSLATORS: status bar label
-#: src/gui/ministatuswindow.cpp:333 src/gui/ministatuswindow.cpp:368
+#: src/gui/ministatuswindow.cpp:333 src/gui/ministatuswindow.cpp:371
 msgid "Need"
+msgstr ""
+
+#. TRANSLATORS: job bar label
+#: src/gui/ministatuswindow.cpp:357
+#, c-format
+msgid "Job level: %d"
 msgstr ""
 
 #. TRANSLATORS: npc dialog button
@@ -5973,49 +5979,49 @@ msgid "Cart"
 msgstr ""
 
 #. TRANSLATORS: chat message after death
-#: src/localplayer.cpp:389
+#: src/localplayer.cpp:385
 #, c-format
 msgid "You were killed by %s"
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/localplayer.cpp:1382
+#: src/localplayer.cpp:1372
 msgid "Tried to pick up nonexistent item."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/localplayer.cpp:1386
+#: src/localplayer.cpp:1376
 msgid "Item is too heavy."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/localplayer.cpp:1390
+#: src/localplayer.cpp:1380
 msgid "Item is too far away."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/localplayer.cpp:1394
+#: src/localplayer.cpp:1384
 msgid "Inventory is full."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/localplayer.cpp:1398
+#: src/localplayer.cpp:1388
 msgid "Stack is too big."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/localplayer.cpp:1402
+#: src/localplayer.cpp:1392
 msgid "Item belongs to someone else."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/localplayer.cpp:1406
+#: src/localplayer.cpp:1396
 msgid "Unknown problem picking up item."
 msgstr ""
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1430
+#: src/localplayer.cpp:1420
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -6024,384 +6030,384 @@ msgstr[1] ""
 msgstr[2] ""
 
 #. TRANSLATORS: get xp message
-#: src/localplayer.cpp:1635 src/localplayer.cpp:1670 src/localplayer.cpp:1671
+#: src/localplayer.cpp:1625 src/localplayer.cpp:1660 src/localplayer.cpp:1661
 msgid "xp"
 msgstr ""
 
-#: src/localplayer.cpp:1676 src/localplayer.cpp:1683 src/localplayer.cpp:1690
+#: src/localplayer.cpp:1666 src/localplayer.cpp:1673 src/localplayer.cpp:1680
 msgid "job"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1874
+#: src/localplayer.cpp:1864
 msgid "(D) default moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1876
+#: src/localplayer.cpp:1866
 msgid "(I) invert moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1878
+#: src/localplayer.cpp:1868
 msgid "(c) moves with some crazy moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1880
+#: src/localplayer.cpp:1870
 msgid "(C) moves with crazy moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1882
+#: src/localplayer.cpp:1872
 msgid "(d) double normal + crazy"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/localplayer.cpp:1884
+#: src/localplayer.cpp:1874
 msgid "(?) unknown move"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/localplayer.cpp:1907
+#: src/localplayer.cpp:1897
 #, c-format
 msgid "(%u) crazy move number %u"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/localplayer.cpp:1913
+#: src/localplayer.cpp:1903
 msgid "(a) custom crazy move"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/localplayer.cpp:1918
+#: src/localplayer.cpp:1908
 msgid "(?) crazy move"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1933
+#: src/localplayer.cpp:1923
 msgid "(0) default moves to target"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1935
+#: src/localplayer.cpp:1925
 msgid "(1) moves to target in distance 1"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1937
+#: src/localplayer.cpp:1927
 msgid "(2) moves to target in distance 2"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1939
+#: src/localplayer.cpp:1929
 msgid "(3) moves to target in distance 3"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1941
+#: src/localplayer.cpp:1931
 msgid "(5) moves to target in distance 5"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1943
+#: src/localplayer.cpp:1933
 msgid "(7) moves to target in distance 7"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1945
+#: src/localplayer.cpp:1935
 msgid "(A) moves to target in attack range"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1947
+#: src/localplayer.cpp:1937
 msgid "(a) archer attack range"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1949
+#: src/localplayer.cpp:1939
 msgid "(B) moves to target in attack range - 1"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/localplayer.cpp:1951
+#: src/localplayer.cpp:1941
 msgid "(?) move to target"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/localplayer.cpp:1971
+#: src/localplayer.cpp:1961
 msgid "(D) default follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/localplayer.cpp:1973
+#: src/localplayer.cpp:1963
 msgid "(R) relative follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/localplayer.cpp:1975
+#: src/localplayer.cpp:1965
 msgid "(M) mirror follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/localplayer.cpp:1977
+#: src/localplayer.cpp:1967
 msgid "(P) pet follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/localplayer.cpp:1979
+#: src/localplayer.cpp:1969
 msgid "(?) unknown follow"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/localplayer.cpp:1999 src/localplayer.cpp:2007 src/localplayer.cpp:2035
+#: src/localplayer.cpp:1989 src/localplayer.cpp:1997 src/localplayer.cpp:2025
 msgid "(?) attack"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/localplayer.cpp:2001 src/localplayer.cpp:2027
+#: src/localplayer.cpp:1991 src/localplayer.cpp:2017
 msgid "(D) default attack"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/localplayer.cpp:2003
+#: src/localplayer.cpp:1993
 msgid "(s) switch attack without shield"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/localplayer.cpp:2005
+#: src/localplayer.cpp:1995
 msgid "(S) switch attack with shield"
 msgstr ""
 
 #. TRANSLATORS: attack type in status bar
-#: src/localplayer.cpp:2029
+#: src/localplayer.cpp:2019
 msgid "(G) go and attack"
 msgstr ""
 
 #. TRANSLATORS: attack type in status bar
-#: src/localplayer.cpp:2031
+#: src/localplayer.cpp:2021
 msgid "(A) go, attack, pickup"
 msgstr ""
 
 #. TRANSLATORS: attack type in status bar
-#: src/localplayer.cpp:2033
+#: src/localplayer.cpp:2023
 msgid "(d) without auto attack"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2087
+#: src/localplayer.cpp:2077
 msgid "(S) small pick up 1x1 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2089
+#: src/localplayer.cpp:2079
 msgid "(D) default pick up 2x1 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2091
+#: src/localplayer.cpp:2081
 msgid "(F) forward pick up 2x3 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2093
+#: src/localplayer.cpp:2083
 msgid "(3) pick up 3x3 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2095
+#: src/localplayer.cpp:2085
 msgid "(g) go and pick up in distance 4"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2097
+#: src/localplayer.cpp:2087
 msgid "(G) go and pick up in distance 8"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2099
+#: src/localplayer.cpp:2089
 msgid "(A) go and pick up in max distance"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/localplayer.cpp:2101
+#: src/localplayer.cpp:2091
 msgid "(?) pick up"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2115
+#: src/localplayer.cpp:2105
 msgid "(N) normal map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2117
+#: src/localplayer.cpp:2107
 msgid "(D) debug map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2119
+#: src/localplayer.cpp:2109
 msgid "(u) ultra map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2121
+#: src/localplayer.cpp:2111
 msgid "(U) ultra map view 2"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2123
+#: src/localplayer.cpp:2113
 msgid "(e) empty map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/localplayer.cpp:2125
+#: src/localplayer.cpp:2115
 msgid "(b) black & white map view"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2145
+#: src/localplayer.cpp:2135
 msgid "(f) use #flar for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2147
+#: src/localplayer.cpp:2137
 msgid "(c) use #chiza for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2149
+#: src/localplayer.cpp:2139
 msgid "(I) use #ingrav for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2151
+#: src/localplayer.cpp:2141
 msgid "(F) use #frillyar for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2153
+#: src/localplayer.cpp:2143
 msgid "(U) use #upmarmu for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/localplayer.cpp:2155
+#: src/localplayer.cpp:2145
 msgid "(?) magic attack"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/localplayer.cpp:2175
+#: src/localplayer.cpp:2165
 msgid "(a) attack all players"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/localplayer.cpp:2177
+#: src/localplayer.cpp:2167
 msgid "(f) attack all except friends"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/localplayer.cpp:2179
+#: src/localplayer.cpp:2169
 msgid "(b) attack bad relations"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/localplayer.cpp:2181
+#: src/localplayer.cpp:2171
 msgid "(d) don't attack players"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/localplayer.cpp:2183
+#: src/localplayer.cpp:2173
 msgid "(?) pvp attack"
 msgstr ""
 
 #. TRANSLATORS: imitation type in status bar
-#: src/localplayer.cpp:2203
+#: src/localplayer.cpp:2193
 msgid "(D) default imitation"
 msgstr ""
 
 #. TRANSLATORS: imitation type in status bar
-#: src/localplayer.cpp:2205
+#: src/localplayer.cpp:2195
 msgid "(O) outfits imitation"
 msgstr ""
 
 #. TRANSLATORS: imitation type in status bar
-#: src/localplayer.cpp:2207
+#: src/localplayer.cpp:2197
 msgid "(?) imitation"
 msgstr ""
 
 #. TRANSLATORS: away message box header
-#: src/localplayer.cpp:2236
+#: src/localplayer.cpp:2226
 msgid "Away"
 msgstr ""
 
 #. TRANSLATORS: away type in status bar
-#: src/localplayer.cpp:2259
+#: src/localplayer.cpp:2249
 msgid "(O) on keyboard"
 msgstr ""
 
 #. TRANSLATORS: away type in status bar
-#: src/localplayer.cpp:2261
+#: src/localplayer.cpp:2251
 msgid "(A) away"
 msgstr ""
 
 #. TRANSLATORS: away type in status bar
 #. TRANSLATORS: camera mode in status bar
-#: src/localplayer.cpp:2263 src/localplayer.cpp:2281
+#: src/localplayer.cpp:2253 src/localplayer.cpp:2271
 msgid "(?) away"
 msgstr ""
 
 #. TRANSLATORS: camera mode in status bar
-#: src/localplayer.cpp:2277
+#: src/localplayer.cpp:2267
 msgid "(G) game camera mode"
 msgstr ""
 
 #. TRANSLATORS: camera mode in status bar
-#: src/localplayer.cpp:2279
+#: src/localplayer.cpp:2269
 msgid "(F) free camera mode"
 msgstr ""
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/localplayer.cpp:2306
+#: src/localplayer.cpp:2296
 msgid "Game modifiers are enabled"
 msgstr ""
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/localplayer.cpp:2308
+#: src/localplayer.cpp:2298
 msgid "Game modifiers are disabled"
 msgstr ""
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/localplayer.cpp:2310
+#: src/localplayer.cpp:2300
 msgid "Game modifiers are unknown"
 msgstr ""
 
 #. TRANSLATORS: follow command message
-#: src/localplayer.cpp:3849
+#: src/localplayer.cpp:3839
 #, c-format
 msgid "Follow: %s"
 msgstr ""
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/localplayer.cpp:3855 src/localplayer.cpp:3880
+#: src/localplayer.cpp:3845 src/localplayer.cpp:3870
 msgid "Follow canceled"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
-#: src/localplayer.cpp:3865
+#: src/localplayer.cpp:3855
 #, c-format
 msgid "Imitation: %s"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/localplayer.cpp:3871 src/localplayer.cpp:3885
+#: src/localplayer.cpp:3861 src/localplayer.cpp:3875
 msgid "Imitation canceled"
 msgstr ""
 
 #. TRANSLATORS: wait player/monster message
-#: src/localplayer.cpp:4228
+#: src/localplayer.cpp:4218
 #, c-format
 msgid "You see %s"
 msgstr ""
@@ -7559,7 +7565,7 @@ msgstr ""
 #. TRANSLATORS: item info name
 #. TRANSLATORS: unknown info name
 #: src/resources/avatardb.cpp:69 src/resources/beinginfo.cpp:40
-#: src/resources/itemdb.cpp:291 src/resources/monsterdb.cpp:99
+#: src/resources/itemdb.cpp:291 src/resources/monsterdb.cpp:100
 msgid "unnamed"
 msgstr "neimenovano"
 
