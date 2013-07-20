@@ -1209,7 +1209,7 @@ impHandler0(createItems)
     {
         const ItemInfo *const info = (*it).second;
         const int id = info->getId();
-        if (id <= 0)
+        if (id <= 500)
             continue;
 
         const int colors = info->getColorsSize();

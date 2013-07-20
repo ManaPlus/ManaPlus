@@ -194,7 +194,7 @@ BuyDialog::BuyDialog() :
     Window(_("Create items"), false, nullptr, "buy.xml"),
     gcn::ActionListener(),
     gcn::SelectionListener(),
-    mNpcId(0), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(),
+    mNpcId(-2), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(),
     mSortModel(nullptr),
     mSortDropDown(nullptr)
 {
@@ -267,7 +267,7 @@ void BuyDialog::init()
     // You may change this symbol if your language uses another.
     mDecreaseButton = new Button(this, _("-"), "dec", this);
     // TRANSLATORS: buy dialog button
-    mBuyButton = new Button(this, mNpcId == 0
+    mBuyButton = new Button(this, mNpcId == -2
         ? _("Create") :_("Buy"), "buy", this);
     // TRANSLATORS: buy dialog button
     mQuitButton = new Button(this, _("Quit"), "quit", this);
@@ -433,7 +433,7 @@ void BuyDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "buy" && mAmountItems > 0 && mAmountItems <= mMaxItems)
     {
-        if (!mNpcId)
+        if (mNpcId == -2)
         {
             const ShopItem *const item = mShopItems->at(selectedItem);
             Net::getAdminHandler()->createItems(item->getId(),
@@ -498,7 +498,7 @@ void BuyDialog::updateButtonsAndLabels()
             const int itemPrice = item->getPrice();
 
             // Calculate how many the player can afford
-            if (!mNpcId)
+            if (mNpcId == -2)
                 mMaxItems = 100;
             else if (itemPrice)
                 mMaxItems = mMoney / itemPrice;
