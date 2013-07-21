@@ -51,6 +51,8 @@ BeingInfo::BeingInfo() :
     mTargetOffsetY(0),
     mNameOffsetX(0),
     mNameOffsetY(0),
+    mHpBarOffsetX(0),
+    mHpBarOffsetY(0),
     mMaxHP(0),
     mSortOffsetY(0),
     mDeadSortOffsetY(31),

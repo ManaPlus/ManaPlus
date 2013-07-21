@@ -41,4 +41,7 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info, XmlNodePtr node,
     info->setNameOffsetX(XML::getProperty(node, "nameOffsetX", 0));
     info->setNameOffsetY(XML::getProperty(node, "nameOffsetY", 0));
     info->setSortOffsetY(XML::getProperty(node, "sortOffsetY", 0));
+
+    info->setHpBarOffsetX(XML::getProperty(node, "hpBarOffsetX", 0));
+    info->setHpBarOffsetY(XML::getProperty(node, "hpBarOffsetY", 0));
 }

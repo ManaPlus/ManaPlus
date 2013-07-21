@@ -172,6 +172,18 @@ class BeingInfo final
         int getNameOffsetY() const A_WARN_UNUSED
         { return mNameOffsetY; }
 
+        void setHpBarOffsetX(const int n)
+        { mHpBarOffsetX = n; }
+
+        int getHpBarOffsetX() const A_WARN_UNUSED
+        { return mHpBarOffsetX; }
+
+        void setHpBarOffsetY(const int n)
+        { mHpBarOffsetY = n; }
+
+        int getHpBarOffsetY() const A_WARN_UNUSED
+        { return mHpBarOffsetY; }
+
         void setMaxHP(const int n)
         { mMaxHP = n; }
 
@@ -242,6 +254,8 @@ class BeingInfo final
         int mTargetOffsetY;
         int mNameOffsetX;
         int mNameOffsetY;
+        int mHpBarOffsetX;
+        int mHpBarOffsetY;
         int mMaxHP;
         int mSortOffsetY;
         int mDeadSortOffsetY;

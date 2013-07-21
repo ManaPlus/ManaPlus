@@ -2167,14 +2167,18 @@ bool Being::drawSpriteAt(Graphics *const graphics,
 
         drawHpBar(graphics, maxHP, mHP, mDamageTaken,
                   UserPalette::MONSTER_HP, UserPalette::MONSTER_HP2,
-                  x - 50 + 16, y + 32 - 6, 2 * 50, 4);
+                  x - 50 + 16 + mInfo->getHpBarOffsetX(),
+                  y + 32 - 6 + mInfo->getHpBarOffsetY(),
+                  2 * 50, 4);
     }
-    if (mShowOwnHP && player_node == this && mAction != DEAD)
+    if (mShowOwnHP && mInfo && player_node == this && mAction != DEAD)
     {
         drawHpBar(graphics, PlayerInfo::getAttribute(PlayerInfo::MAX_HP),
                   PlayerInfo::getAttribute(PlayerInfo::HP), 0,
                   UserPalette::PLAYER_HP, UserPalette::PLAYER_HP2,
-                  x - 50 + 16, y + 32 - 6, 2 * 50, 4);
+                  x - 50 + 16 + mInfo->getHpBarOffsetX(),
+                  y + 32 - 6 + mInfo->getHpBarOffsetY(),
+                  2 * 50, 4);
     }
     return res;
 }
