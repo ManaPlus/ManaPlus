@@ -231,6 +231,8 @@ class Map final : public Properties, public ConfigListener
 
         void setWalk(const int x, const int y, const bool walkable);
 
+        unsigned char getBlockMask(const int x, const int y);
+
         /**
          * Returns the width of this map in tiles.
          */

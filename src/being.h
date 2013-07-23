@@ -654,6 +654,14 @@ class Being : public ActorSprite, public ConfigListener
          */
         std::string getSitAction() const A_WARN_UNUSED;
 
+        std::string getMoveAction() const A_WARN_UNUSED;
+
+        std::string getDeadAction() const A_WARN_UNUSED;
+
+        std::string getStandAction() const A_WARN_UNUSED;
+
+        std::string getSpawnAction() const A_WARN_UNUSED;
+
         /**
          * Whether or not this player is a GM.
          */

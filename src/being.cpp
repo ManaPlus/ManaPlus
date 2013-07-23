@@ -1012,11 +1012,65 @@ std::string Being::getSitAction() const
     }
     else
     {
-        if (mMap && !mMap->getWalk(mX, mY, Map::BLOCKMASK_GROUNDTOP))
-            return SpriteAction::SITTOP;
+        if (mMap)
+        {
+            const unsigned char mask = mMap->getBlockMask(mX, mY);
+            if (mask & Map::BLOCKMASK_GROUNDTOP)
+                return SpriteAction::SITTOP;
+            else if (mask & Map::BLOCKMASK_AIR)
+                return SpriteAction::SITSKY;
+            else if (mask & Map::BLOCKMASK_WATER)
+                return SpriteAction::SITWATER;
+        }
         return SpriteAction::SIT;
     }
 }
+
+
+std::string Being::getMoveAction() const
+{
+    if (serverVersion < 0)
+    {
+        return SpriteAction::MOVE;
+    }
+    else
+    {
+        if (mMap)
+        {
+            const unsigned char mask = mMap->getBlockMask(mX, mY);
+            if (mask & Map::BLOCKMASK_AIR)
+                return SpriteAction::FLY;
+            else if (mask & Map::BLOCKMASK_WATER)
+                return SpriteAction::SWIM;
+        }
+        return SpriteAction::MOVE;
+    }
+}
+
+#define getSpriteAction(func, action) \
+    std::string Being::get##func##Action() const \
+{ \
+    if (serverVersion < 0) \
+    { \
+        return SpriteAction::action; \
+    } \
+    else \
+    { \
+        if (mMap) \
+        { \
+            const unsigned char mask = mMap->getBlockMask(mX, mY); \
+            if (mask & Map::BLOCKMASK_AIR) \
+                return SpriteAction::action##SKY; \
+            else if (mask & Map::BLOCKMASK_WATER) \
+                return SpriteAction::action##WATER; \
+        } \
+        return SpriteAction::action; \
+    } \
+}
+
+getSpriteAction(Dead, DEAD)
+getSpriteAction(Stand, STAND)
+getSpriteAction(Spawn, SPAWN)
 
 void Being::setAction(const Action &action, const int attackId)
 {
@@ -1030,7 +1084,7 @@ void Being::setAction(const Action &action, const int attackId)
                 playSfx(mInfo->getSound(
                     SOUND_EVENT_MOVE), nullptr, true, mX, mY);
             }
-            currentAction = SpriteAction::MOVE;
+            currentAction = getMoveAction();
             // Note: When adding a run action,
             // Differentiate walk and run with action name,
             // while using only the ACTION_MOVE.
@@ -1050,6 +1104,7 @@ void Being::setAction(const Action &action, const int attackId)
         case ATTACK:
             if (mEquippedWeapon)
             {
+                //  +++ for attack need 3 actions: normal, water, air
                 currentAction = mEquippedWeapon->getAttackAction();
                 reset();
             }
@@ -1058,6 +1113,7 @@ void Being::setAction(const Action &action, const int attackId)
                 if (!mInfo || !mInfo->getAttack(attackId))
                     break;
 
+                //  +++ for attack need 3 actions: normal, water, air
                 currentAction = mInfo->getAttack(attackId)->mAction;
                 reset();
 
@@ -1096,7 +1152,7 @@ void Being::setAction(const Action &action, const int attackId)
             }
             break;
         case DEAD:
-            currentAction = SpriteAction::DEAD;
+            currentAction = getDeadAction();
             if (mInfo)
             {
                 playSfx(mInfo->getSound(SOUND_EVENT_DIE), this, true, mX, mY);
@@ -1105,7 +1161,7 @@ void Being::setAction(const Action &action, const int attackId)
             }
             break;
         case STAND:
-            currentAction = SpriteAction::STAND;
+            currentAction = getStandAction();
             break;
         case SPAWN:
             if (mInfo)
@@ -1113,7 +1169,7 @@ void Being::setAction(const Action &action, const int attackId)
                 playSfx(mInfo->getSound(SOUND_EVENT_SPAWN),
                     nullptr, true, mX, mY);
             }
-            currentAction = SpriteAction::SPAWN;
+            currentAction = getSpawnAction();
             break;
         default:
             logger->log("Being::setAction unknown action: "
@@ -1132,8 +1188,12 @@ void Being::setAction(const Action &action, const int attackId)
         mAction = action;
     }
 
-    if (currentAction != SpriteAction::MOVE)
+    if (currentAction != SpriteAction::MOVE
+        && currentAction != SpriteAction::FLY
+        && currentAction != SpriteAction::SWIM)
+    {
         mActionTime = tick_time;
+    }
 }
 
 void Being::setDirection(const uint8_t direction)

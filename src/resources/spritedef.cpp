@@ -158,6 +158,18 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::HURT, SpriteAction::STAND);
     substituteAction(SpriteAction::DEAD, SpriteAction::HURT);
     substituteAction(SpriteAction::SPAWN, SpriteAction::STAND);
+    substituteAction(SpriteAction::FLY, SpriteAction::MOVE);
+    substituteAction(SpriteAction::SWIM, SpriteAction::MOVE);
+    substituteAction(SpriteAction::STANDSKY, SpriteAction::STAND);
+    substituteAction(SpriteAction::STANDWATER, SpriteAction::STAND);
+    substituteAction(SpriteAction::SITSKY, SpriteAction::SIT);
+    substituteAction(SpriteAction::SITWATER, SpriteAction::SIT);
+    substituteAction(SpriteAction::ATTACKSKY, SpriteAction::ATTACK);
+    substituteAction(SpriteAction::ATTACKWATER, SpriteAction::ATTACK);
+    substituteAction(SpriteAction::SPAWNSKY, SpriteAction::SPAWN);
+    substituteAction(SpriteAction::SPAWNWATER, SpriteAction::SPAWN);
+    substituteAction(SpriteAction::DEADSKY, SpriteAction::DEAD);
+    substituteAction(SpriteAction::DEADWATER, SpriteAction::DEAD);
 }
 
 void SpriteDef::loadSprite(const XmlNodePtr spriteNode, const int variant,

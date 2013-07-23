@@ -84,19 +84,32 @@ typedef std::vector<SpriteReference*>::const_iterator SpriteRefs;
  */
 namespace SpriteAction
 {
-    static const std::string DEFAULT = "stand";
-    static const std::string STAND = "stand";
-    static const std::string SIT = "sit";
-    static const std::string SITTOP = "sittop";
-    static const std::string SLEEP = "sleep";
-    static const std::string DEAD = "dead";
-    static const std::string MOVE = "walk";
-    static const std::string ATTACK = "attack";
-    static const std::string HURT = "hurt";
-    static const std::string USE_SPECIAL = "special";
-    static const std::string CAST_MAGIC = "magic";
-    static const std::string USE_ITEM = "item";
-    static const std::string SPAWN = "spawn";
+    static const std::string DEFAULT("stand");
+    static const std::string STAND("stand");
+    static const std::string SIT("sit");
+    static const std::string SITTOP("sittop");
+    static const std::string SLEEP("sleep");
+    static const std::string DEAD("dead");
+    static const std::string MOVE("walk");
+    static const std::string ATTACK("attack");
+    static const std::string HURT("hurt");
+    static const std::string USE_SPECIAL("special");
+    static const std::string CAST_MAGIC("magic");
+    static const std::string USE_ITEM("item");
+    static const std::string SPAWN("spawn");
+    static const std::string FLY("fly");
+    static const std::string SWIM("swim");
+    static const std::string STANDSKY("standsky");
+    static const std::string STANDWATER("standwater");
+    static const std::string SITSKY("sitsky");
+    static const std::string SITWATER("sitwater");
+    static const std::string ATTACKSKY("attacksky");
+    static const std::string ATTACKWATER("attackwater");
+    static const std::string SPAWNSKY("spawnsky");
+    static const std::string SPAWNWATER("spawnwater");
+    static const std::string DEADSKY("deadsky");
+    static const std::string DEADWATER("deadwater");
+
     static const std::string INVALID("");
 }  // namespace SpriteAction
 

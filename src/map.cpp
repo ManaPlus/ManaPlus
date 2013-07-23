@@ -701,6 +701,16 @@ bool Map::getWalk(const int x, const int y, const unsigned char walkmask) const
     return !(mMetaTiles[x + y * mWidth].blockmask & walkmask);
 }
 
+unsigned char Map::getBlockMask(const int x, const int y)
+{
+    // You can't walk outside of the map
+    if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)
+        return 0;
+
+    // Check if the tile is walkable
+    return mMetaTiles[x + y * mWidth].blockmask;
+}
+
 void Map::setWalk(const int x, const int y, const bool walkable A_UNUSED)
 {
     blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
