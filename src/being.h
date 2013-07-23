@@ -662,6 +662,10 @@ class Being : public ActorSprite, public ConfigListener
 
         std::string getSpawnAction() const A_WARN_UNUSED;
 
+        std::string getWeaponAttackAction(const ItemInfo *const weapon) const;
+
+        std::string getAttackAction(const Attack *const attack) const;
+
         /**
          * Whether or not this player is a GM.
          */

@@ -1047,6 +1047,52 @@ std::string Being::getMoveAction() const
     }
 }
 
+std::string Being::getWeaponAttackAction(const ItemInfo *const weapon) const
+{
+    if (!weapon)
+        return SpriteAction::ATTACK;
+
+    if (serverVersion < 0 || !weapon)
+    {
+        return weapon->getAttackAction();
+    }
+    else
+    {
+        if (mMap)
+        {
+            const unsigned char mask = mMap->getBlockMask(mX, mY);
+            if (mask & Map::BLOCKMASK_AIR)
+                return weapon->getSkyAttackAction();
+            else if (mask & Map::BLOCKMASK_WATER)
+                return weapon->getWaterAttackAction();
+        }
+        return weapon->getAttackAction();
+    }
+}
+
+std::string Being::getAttackAction(const Attack *const attack1) const
+{
+    if (!attack1)
+        return SpriteAction::ATTACK;
+
+    if (serverVersion < 0 || !attack1)
+    {
+        return attack1->mAction;
+    }
+    else
+    {
+        if (mMap)
+        {
+            const unsigned char mask = mMap->getBlockMask(mX, mY);
+            if (mask & Map::BLOCKMASK_AIR)
+                return attack1->mSkyAction;
+            else if (mask & Map::BLOCKMASK_WATER)
+                return attack1->mWaterAction;
+        }
+        return attack1->mAction;
+    }
+}
+
 #define getSpriteAction(func, action) \
     std::string Being::get##func##Action() const \
 { \
@@ -1104,8 +1150,7 @@ void Being::setAction(const Action &action, const int attackId)
         case ATTACK:
             if (mEquippedWeapon)
             {
-                //  +++ for attack need 3 actions: normal, water, air
-                currentAction = mEquippedWeapon->getAttackAction();
+                currentAction = getWeaponAttackAction(mEquippedWeapon);
                 reset();
             }
             else
@@ -1113,8 +1158,7 @@ void Being::setAction(const Action &action, const int attackId)
                 if (!mInfo || !mInfo->getAttack(attackId))
                     break;
 
-                //  +++ for attack need 3 actions: normal, water, air
-                currentAction = mInfo->getAttack(attackId)->mAction;
+                currentAction = getAttackAction(mInfo->getAttack(attackId));
                 reset();
 
                 // attack particle effect

@@ -172,6 +172,10 @@ class ItemInfo final
 
         void setAttackAction(const std::string &attackAction);
 
+        void setSkyAttackAction(const std::string &attackAction);
+
+        void setWaterAttackAction(const std::string &attackAction);
+
         // Handlers for seting and getting the string
         // used for particles when attacking
         void setMissileParticleFile(const std::string &s)
@@ -200,6 +204,12 @@ class ItemInfo final
 
         const std::string &getAttackAction() const
         { return mAttackAction; }
+
+        const std::string &getSkyAttackAction() const
+        { return mSkyAttackAction; }
+
+        const std::string &getWaterAttackAction() const
+        { return mWaterAttackAction; }
 
         int getAttackRange() const A_WARN_UNUSED
         { return mAttackRange; }
@@ -325,6 +335,8 @@ class ItemInfo final
          * Attack action sub-types (bow, sword, ...) are defined in items.xml.
          */
         std::string mAttackAction;
+        std::string mSkyAttackAction;
+        std::string mWaterAttackAction;
         int mAttackRange;     /**< Attack range, will be zero if non weapon. */
 
         // Particle to be shown when weapon attacks

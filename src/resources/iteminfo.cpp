@@ -49,6 +49,8 @@ ItemInfo::ItemInfo() :
     mIsRemoveSprites(false),
     mSpriteToItemReplaceList(),
     mAttackAction(SpriteAction::INVALID),
+    mSkyAttackAction(SpriteAction::INVALID),
+    mWaterAttackAction(SpriteAction::INVALID),
     mAttackRange(0),
     mMissileParticle(),
     mAnimationFiles(),
@@ -110,6 +112,22 @@ void ItemInfo::setAttackAction(const std::string &attackAction)
         mAttackAction = SpriteAction::ATTACK;  // (Equal to unarmed animation)
     else
         mAttackAction = attackAction;
+}
+
+void ItemInfo::setSkyAttackAction(const std::string &attackAction)
+{
+    if (attackAction.empty())
+        mSkyAttackAction = SpriteAction::ATTACKSKY;
+    else
+        mSkyAttackAction = attackAction;
+}
+
+void ItemInfo::setWaterAttackAction(const std::string &attackAction)
+{
+    if (attackAction.empty())
+        mWaterAttackAction = SpriteAction::ATTACKWATER;
+    else
+        mWaterAttackAction = attackAction;
 }
 
 void ItemInfo::addSound(const SoundEvent event,

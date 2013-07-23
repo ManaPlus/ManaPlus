@@ -32,6 +32,7 @@
 
 BeingInfo *BeingInfo::unknown = nullptr;
 Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK,
+    SpriteAction::ATTACKSKY, SpriteAction::ATTACKWATER,
     -1, -1, -1, -1, std::string());
 
 BeingInfo::BeingInfo() :
@@ -128,14 +129,16 @@ const Attack *BeingInfo::getAttack(const int id) const
     return (i == mAttacks.end()) ? empty : (*i).second;
 }
 
-void BeingInfo::addAttack(const int id, std::string action, const int effectId,
-                          const int hitEffectId, const int criticalHitEffectId,
+void BeingInfo::addAttack(const int id, std::string action,
+                          std::string skyAction, std::string waterAction,
+                          const int effectId, const int hitEffectId,
+                          const int criticalHitEffectId,
                           const int missEffectId,
                           const std::string &missileParticle)
 {
     delete mAttacks[id];
-    mAttacks[id] = new Attack(action, effectId, hitEffectId,
-        criticalHitEffectId, missEffectId, missileParticle);
+    mAttacks[id] = new Attack(action, skyAction, waterAction, effectId,
+        hitEffectId, criticalHitEffectId, missEffectId, missileParticle);
 }
 
 void BeingInfo::clear()

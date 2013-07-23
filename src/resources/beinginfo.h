@@ -35,16 +35,21 @@
 struct Attack final
 {
     std::string mAction;
+    std::string mSkyAction;
+    std::string mWaterAction;
     int mEffectId;
     int mHitEffectId;
     int mCriticalHitEffectId;
     int mMissEffectId;
     std::string mMissileParticle;
 
-    Attack(const std::string &action, const int effectId,
+    Attack(const std::string &action, const std::string &skyAction,
+           const std::string &waterAction, const int effectId,
            const int hitEffectId, const int criticalHitEffectId,
            const int missEffectId, const std::string &missileParticle) :
         mAction(action),
+        mSkyAction(skyAction),
+        mWaterAction(waterAction),
         mEffectId(effectId),
         mHitEffectId(hitEffectId),
         mCriticalHitEffectId(criticalHitEffectId),
@@ -126,7 +131,8 @@ class BeingInfo final
         const SoundInfo &getSound(const SoundEvent event)
                                   const A_WARN_UNUSED;
 
-        void addAttack(const int id, std::string action, const int effectId,
+        void addAttack(const int id, std::string action, std::string skyAttack,
+                       std::string waterAttack, const int effectId,
                        const int hitEffectId, const int criticalHitEffectId,
                        const int missEffectId,
                        const std::string &missileParticle);

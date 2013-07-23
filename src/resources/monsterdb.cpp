@@ -213,13 +213,17 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
 
                 const std::string spriteAction = XML::getProperty(
                     spriteNode, "action", "attack");
+                const std::string skySpriteAction = XML::getProperty(
+                    spriteNode, "skyaction", "skyattack");
+                const std::string waterSpriteAction = XML::getProperty(
+                    spriteNode, "wateraction", "waterattack");
 
                 const std::string missileParticle = XML::getProperty(
                         spriteNode, "missile-particle", "");
 
-                currentInfo->addAttack(id, spriteAction, effectId,
-                    hitEffectId, criticalHitEffectId, missEffectId,
-                    missileParticle);
+                currentInfo->addAttack(id, spriteAction, skySpriteAction,
+                    waterSpriteAction, effectId, hitEffectId,
+                    criticalHitEffectId, missEffectId, missileParticle);
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
             {
