@@ -1883,12 +1883,16 @@ void Being::setSprite(const unsigned int slot, const int id,
 
         if (isWeapon)
             mEquippedWeapon = nullptr;
-        const ItemInfo &info = ItemDB::get(mSpriteIDs[slot]);
-        if (mMap)
+        const int id1 = mSpriteIDs[slot];
+        if (id1)
         {
-            const int pet = info.getPet();
-            if (pet)
-                removePet();
+            const ItemInfo &info = ItemDB::get(id1);
+            if (mMap)
+            {
+                const int pet = info.getPet();
+                if (pet)
+                    removePet();
+            }
         }
     }
     else
@@ -2980,7 +2984,10 @@ void Being::updatePets()
     removePet();
     FOR_EACH (std::vector<int>::const_iterator, it, mSpriteIDs)
     {
-        const ItemInfo &info = ItemDB::get(*it);
+        const int id = *it;
+        if (!id)
+            continue;
+        const ItemInfo &info = ItemDB::get(id);
         const int pet = info.getPet();
         if (pet)
         {
