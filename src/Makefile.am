@@ -857,7 +857,8 @@ manaplus_SOURCES += \
 	      animatedsprite_unittest.cc \
 	      gui/sdlfont_unittest.cc \
 	      gui/widgets/browserbox_unittest.cc \
-	      utils/stringutils_unittest.cc
+	      utils/stringutils_unittest.cc \
+	      resources/dye_unittest.cc
 endif
 
 EXTRA_DIST = CMakeLists.txt \
