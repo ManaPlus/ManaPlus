@@ -73,13 +73,13 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
             if (pal)
             {
                 for (uint32_t *p_end = pixels + surf->w * surf->h;
-                      pixels != p_end; ++pixels)
+                     pixels != p_end; ++pixels)
                 {
                     uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
                     const int alpha = *p & 255;
                     if (!alpha)
                         continue;
-                    pal->replaceSColor(p + 1);
+                    pal->replaceSColor(p);
                 }
             }
             break;
@@ -90,7 +90,7 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
             if (pal)
             {
                 for (uint32_t *p_end = pixels + surf->w * surf->h;
-                    pixels != p_end; ++pixels)
+                     pixels != p_end; ++pixels)
                 {
                     pal->replaceAColor(reinterpret_cast<uint8_t *>(pixels));
                 }
@@ -101,7 +101,7 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
         default:
         {
             for (uint32_t *p_end = pixels + surf->w * surf->h;
-                pixels != p_end; ++pixels)
+                 pixels != p_end; ++pixels)
             {
                 const uint32_t p = *pixels;
                 const int alpha = p & 255;
