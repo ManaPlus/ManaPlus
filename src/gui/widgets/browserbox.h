@@ -258,6 +258,7 @@ class BrowserBox final : public gcn::Widget,
         unsigned int mHighMode;
         bool mOpaque;
         bool mUseLinksAndUserColors;
+        bool mUseEmotes;
         int mSelectedLink;
         unsigned int mMaxRows;
         int mHeight;
@@ -278,6 +279,7 @@ class BrowserBox final : public gcn::Widget,
         gcn::Color mColors[2][COLORS_MAX];
 
         static Skin *mSkin;
+        static ImageSet *mEmotes;
         static int mInstances;
 };
 

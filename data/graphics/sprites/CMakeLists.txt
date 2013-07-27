@@ -1,8 +1,9 @@
 SET(FILES
-    arrow_up.png
     arrow_down.png
     arrow_left.png
     arrow_right.png
+    arrow_up.png
+    chatemotes.png
     error.png
     error.xml
     manaplus_emotions.png

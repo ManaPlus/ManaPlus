@@ -32,6 +32,7 @@
 #include "gui/widgets/linkhandler.h"
 
 #include "resources/image.h"
+#include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
 #include <guichan/graphics.hpp>
@@ -43,6 +44,7 @@
 #include "debug.h"
 
 Skin *BrowserBox::mSkin = nullptr;
+ImageSet *BrowserBox::mEmotes = nullptr;
 int BrowserBox::mInstances = 0;
 
 BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
@@ -59,6 +61,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     mHighMode(UNDERLINE | BACKGROUND),
     mOpaque(opaque),
     mUseLinksAndUserColors(true),
+    mUseEmotes(true),
     mSelectedLink(-1),
     mMaxRows(0),
     mHeight(0),
@@ -83,6 +86,8 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     {
         if (Theme::instance())
             mSkin = Theme::instance()->load("browserbox.xml", "");
+        mEmotes = ResourceManager::getInstance()->getImageSet(
+            "graphics/sprites/chatemotes.png", 17, 18);
     }
     mInstances ++;
 
@@ -124,8 +129,16 @@ BrowserBox::~BrowserBox()
         gui->removeDragged(this);
 
     mInstances --;
-    if (mInstances == 0 && Theme::instance())
-        Theme::instance()->unload(mSkin);
+    if (mInstances == 0)
+    {
+        if (Theme::instance())
+            Theme::instance()->unload(mSkin);
+        if (mEmotes)
+        {
+            mEmotes->decRef();
+            mEmotes = nullptr;
+        }
+    }
 }
 
 void BrowserBox::setLinkHandler(LinkHandler* linkHandler)
@@ -518,6 +531,7 @@ int BrowserBox::calcHeight()
         unsigned int x = mPadding;
         const std::string row = *(i);
         bool wrapped = false;
+        int objects = 0;
 
         // Check for separator lines
         if (row.find("---", 0) == 0)
@@ -562,6 +576,8 @@ int BrowserBox::calcHeight()
              start != std::string::npos;
              start = end, end = std::string::npos)
         {
+            bool processed(false);
+
             // Wrapped line continuation shall be indented
             if (wrapped)
             {
@@ -570,9 +586,18 @@ int BrowserBox::calcHeight()
                 wrapped = false;
             }
 
+            size_t idx1 = end;
+            size_t idx2 = end;
+
             // "Tokenize" the string at control sequences
             if (mUseLinksAndUserColors)
-                end = row.find("##", start + 1);
+                idx1 = row.find("##", start + 1);
+            if (mUseEmotes)
+                idx2 = row.find("%%", start + 1);
+            if (idx1 < idx2)
+                end = idx1;
+            else
+                end = idx2;
 
             if (mUseLinksAndUserColors ||
                 (!mUseLinksAndUserColors && (start == 0)))
@@ -675,13 +700,47 @@ int BrowserBox::calcHeight()
                         mLinks[link].y2 = y + fontHeight - 1;
                         link++;
                     }
-                    start += 3;
 
+                    processed = true;
+                    start += 3;
                     if (start == row.size())
                         break;
                 }
             }
+            if (mUseEmotes)
+            {
+                // check for emote icons
+                if (row.size() > start + 2 && row.substr(start, 2) == "%%")
+                {
+                    if (objects < 5)
+                    {
+                        const int cid = row.at(start + 2) - '0';
+                        if (cid >= 0)
+                        {
+                            if (mEmotes)
+                            {
+                                const size_t sz = mEmotes->size();
+                                if (cid < sz)
+                                {
+                                    Image *const img = mEmotes->get(cid);
+                                    if (img)
+                                    {
+                                        mLineParts.push_back(LinePart(x, y,
+                                            selColor[0], selColor[1], img));
+                                        x += 18;
+                                    }
+                                }
+                            }
+                        }
+                        objects ++;
+                        processed = true;
+                    }
 
+                    start += 3;
+                    if (start == row.size())
+                        break;
+                }
+            }
             const size_t len = (end == std::string::npos) ? end : end - start;
 
             if (start >= row.length())
@@ -755,7 +814,7 @@ int BrowserBox::calcHeight()
             else
                 width = font->getWidth(part);
 
-            if (mMode == AUTO_WRAP && width == 0)
+            if (mMode == AUTO_WRAP && (width == 0 && !processed))
                 break;
 
             x += width;
