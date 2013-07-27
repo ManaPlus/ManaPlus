@@ -4581,6 +4581,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"-DUSE_INTERNALGUICHAN",
 					"-DUSE_OPENGL",
+					"-DDEBUG_LEAKS",
 				);
 				OTHER_LDFLAGS = (
 					"$(SRCROOT)/libs/libidn.a",
@@ -4642,6 +4643,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"-DUSE_INTERNALGUICHAN",
 					"-DUSE_OPENGL",
+					"-DDEBUG_LEAKS",
 				);
 				OTHER_LDFLAGS = (
 					"$(SRCROOT)/libs/libidn.a",

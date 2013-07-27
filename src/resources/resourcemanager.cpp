@@ -182,7 +182,7 @@ void ResourceManager::cleanUp(Resource *const res)
 
     delete res;
 #ifdef DEBUG_LEAKS
-    cleanOrpahns(true);
+    cleanOrphans(true);
 #endif
 }
 
