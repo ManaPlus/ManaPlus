@@ -84,6 +84,9 @@ class ShopListBox final : public ListBox
 
         void mouseExited(gcn::MouseEvent& mouseEvent) override;
 
+        void setProtectItems(bool p)
+        { mProtectItems = p; }
+
     private:
         int mPlayerMoney;
 
@@ -97,11 +100,12 @@ class ShopListBox final : public ListBox
 
         unsigned int mRowHeight; /**< Row Height */
 
-        bool mPriceCheck;
-
         gcn::Color mHighlightColor;
         gcn::Color mBackgroundColor;
         gcn::Color mWarningColor;
+
+        bool mPriceCheck;
+        bool mProtectItems;
 
         static float mAlpha;
 };

@@ -50,10 +50,11 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     mShopItems(nullptr),
     mItemPopup(new ItemPopup),
     mRowHeight(getFont()->getHeight()),
-    mPriceCheck(true),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
-    mWarningColor(getThemeColor(Theme::SHOP_WARNING))
+    mWarningColor(getThemeColor(Theme::SHOP_WARNING)),
+    mPriceCheck(true),
+    mProtectItems(false)
 {
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 }
@@ -66,10 +67,11 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     mShopItems(shopListModel),
     mItemPopup(new ItemPopup),
     mRowHeight(std::max(getFont()->getHeight(), ITEM_ICON_SIZE)),
-    mPriceCheck(true),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
-    mWarningColor(getThemeColor(Theme::SHOP_WARNING))
+    mWarningColor(getThemeColor(Theme::SHOP_WARNING)),
+    mPriceCheck(true),
+    mProtectItems(false)
 {
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 }
@@ -109,7 +111,8 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
 
         ShopItem *const item = mShopItems->at(i);
         if (item && ((mShopItems && mPlayerMoney < item->getPrice()
-            && mPriceCheck) || PlayerInfo::isItemProtected(item->getId())))
+            && mPriceCheck)
+            || (mProtectItems && PlayerInfo::isItemProtected(item->getId()))))
         {
             if (i != mSelected)
             {
