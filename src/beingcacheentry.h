@@ -29,16 +29,16 @@ class BeingCacheEntry final
 {
     public:
         explicit BeingCacheEntry(const int id):
-            mId(id),
             mName(),
             mPartyName(),
             mGuildName(),
+            mIp(),
+            mId(id),
             mLevel(0),
             mPvpRank(0),
             mTime(0),
-            mIp(),
-            mIsAdvanced(false),
-            mFlags(0)
+            mFlags(0),
+            mIsAdvanced(false)
         {
         }
 
@@ -113,16 +113,16 @@ class BeingCacheEntry final
         { mFlags = flags; }
 
     protected:
-        int mId;                        /**< Unique sprite id */
         std::string mName;              /**< Name of character */
         std::string mPartyName;
         std::string mGuildName;
+        std::string mIp;
+        int mId;                        /**< Unique sprite id */
         int mLevel;
         unsigned int mPvpRank;
         int mTime;
-        std::string mIp;
-        bool mIsAdvanced;
         int mFlags;
+        bool mIsAdvanced;
 };
 
 #endif  // BEINGCACHEENTRY_H
