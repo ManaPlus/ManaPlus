@@ -30,8 +30,8 @@ typedef std::list<Particle *>::const_iterator ParticleListCIter;
 
 ParticleContainer::ParticleContainer(ParticleContainer *const parent,
                                      const bool delParent):
-    mDelParent(delParent),
-    mNext(parent)
+    mNext(parent),
+    mDelParent(delParent)
 {
 }
 

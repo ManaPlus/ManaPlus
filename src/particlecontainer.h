@@ -68,8 +68,8 @@ public:
     virtual void moveTo(const float x, const float y);
 
 protected:
-    bool mDelParent;                    /**< Delete mNext in destructor */
     ParticleContainer *mNext;           /**< Contained container, if any */
+    bool mDelParent;                    /**< Delete mNext in destructor */
 };
 
 /**
