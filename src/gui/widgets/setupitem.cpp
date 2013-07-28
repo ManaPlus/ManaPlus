@@ -56,13 +56,13 @@ SetupItem::SetupItem(const std::string &text, const std::string &description,
     mKeyName(keyName),
     mParent(parent),
     mEventName(eventName),
-    mMainConfig(mainConfig),
-    mUseDefault(false),
     mValue(),
     mDefault(),
     mWidget(nullptr),
     mTempWidgets(),
-    mValueType(VBOOL)
+    mValueType(VBOOL),
+    mMainConfig(mainConfig),
+    mUseDefault(false)
 {
 }
 
@@ -77,13 +77,13 @@ SetupItem::SetupItem(const std::string &text, const std::string &description,
     mKeyName(keyName),
     mParent(parent),
     mEventName(eventName),
-    mMainConfig(mainConfig),
-    mUseDefault(true),
     mValue(),
     mDefault(def),
     mWidget(nullptr),
     mTempWidgets(),
-    mValueType(VBOOL)
+    mValueType(VBOOL),
+    mMainConfig(mainConfig),
+    mUseDefault(true)
 {
 }
 
@@ -377,9 +377,9 @@ SetupItemIntTextField::SetupItemIntTextField(const std::string &text,
     mLabel(nullptr),
     mTextField(nullptr),
     mButton(nullptr),
+    mEditDialog(nullptr),
     mMin(min),
-    mMax(max),
-    mEditDialog(nullptr)
+    mMax(max)
 {
     mValueType = VSTR;
     createControls();
@@ -398,9 +398,9 @@ SetupItemIntTextField::SetupItemIntTextField(const std::string &text,
     mLabel(nullptr),
     mTextField(nullptr),
     mButton(nullptr),
+    mEditDialog(nullptr),
     mMin(min),
-    mMax(max),
-    mEditDialog(nullptr)
+    mMax(max)
 {
     mValueType = VSTR;
     createControls();
@@ -763,8 +763,8 @@ SetupItemSlider2::SetupItemSlider2(const std::string &text,
     mValues(values),
     mMin(min),
     mMax(max),
-    mInvert(false),
     mInvertValue(0),
+    mInvert(false),
     mOnTheFly(onTheFly),
     mDoNotAlign(doNotAlign)
 {
@@ -790,8 +790,8 @@ SetupItemSlider2::SetupItemSlider2(const std::string &text,
     mValues(values),
     mMin(min),
     mMax(max),
-    mInvert(false),
     mInvertValue(0),
+    mInvert(false),
     mOnTheFly(onTheFly),
     mDoNotAlign(doNotAlign)
 {

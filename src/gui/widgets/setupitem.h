@@ -120,10 +120,6 @@ class SetupItem : public gcn::ActionListener,
 
         std::string mEventName;
 
-        bool mMainConfig;
-
-        bool mUseDefault;
-
         std::string mValue;
 
         std::string mDefault;
@@ -133,6 +129,10 @@ class SetupItem : public gcn::ActionListener,
         std::list<gcn::Widget*> mTempWidgets;
 
         int mValueType;
+
+        bool mMainConfig;
+
+        bool mUseDefault;
 };
 
 class SetupItemCheckBox final : public SetupItem
@@ -246,9 +246,9 @@ class SetupItemIntTextField final : public SetupItem
         Label *mLabel;
         IntTextField *mTextField;
         Button *mButton;
+        EditDialog *mEditDialog;
         int mMin;
         int mMax;
-        EditDialog *mEditDialog;
 };
 
 class SetupItemLabel final : public SetupItem
@@ -422,8 +422,8 @@ class SetupItemSlider2 final : public SetupItem
         SetupItemNames *mValues;
         int mMin;
         int mMax;
-        bool mInvert;
         int mInvertValue;
+        bool mInvert;
         bool mOnTheFly;
         bool mDoNotAlign;
 };
