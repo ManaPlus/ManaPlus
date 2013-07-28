@@ -183,9 +183,7 @@ class Image : public Resource
         // Generic protected members
         // -----------------------
 
-        bool mLoaded;
         float mAlpha;
-        bool mHasAlphaChannel;
 
         // -----------------------
         // SDL protected members
@@ -204,6 +202,8 @@ class Image : public Resource
 
         std::map<float, SDL_Surface*> mAlphaCache;
 
+        bool mLoaded;
+        bool mHasAlphaChannel;
         bool mUseAlphaCache;
         bool mIsAlphaVisible;
         bool mIsAlphaCalculated;
