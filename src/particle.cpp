@@ -66,20 +66,20 @@ Particle::Particle(Map *const map) :
     mFadeIn(0),
     mVelocity(),
     mAlive(ALIVE),
-    mAutoDelete(true),
     mChildEmitters(),
     mChildParticles(),
-    mAllowSizeAdjust(false),
     mDeathEffect(),
-    mDeathEffectConditions(0x00),
     mGravity(0.0f),
-    mRandomness(0),
     mBounce(0.0f),
-    mFollow(false),
-    mTarget(nullptr),
     mAcceleration(0.0f),
     mInvDieDistance(-1.0f),
-    mMomentum(1.0f)
+    mMomentum(1.0f),
+    mTarget(nullptr),
+    mRandomness(0),
+    mDeathEffectConditions(0x00),
+    mAutoDelete(true),
+    mAllowSizeAdjust(false),
+    mFollow(false)
 {
     setMap(map);
     Particle::particleCount++;

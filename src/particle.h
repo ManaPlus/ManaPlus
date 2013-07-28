@@ -315,43 +315,21 @@ class Particle : public Actor
         // Is the particle supposed to be drawn and updated?
         AliveStatus mAlive;
     private:
-        // generic properties
-        // May the particle request its deletion by the parent particle?
-        bool mAutoDelete;
-
         // List of child emitters.
         Emitters mChildEmitters;
 
         // List of particles controlled by this particle
         Particles mChildParticles;
 
-        // Can the effect size be adjusted by the object props in the map file?
-        bool mAllowSizeAdjust;
-
         // Particle effect file to be spawned when the particle dies
         std::string mDeathEffect;
-
-        // Bitfield of death conditions which trigger spawning
-        // of the death particle
-        signed char mDeathEffectConditions;
 
         // dynamic particle
         // Downward acceleration in pixels per game-tick.
         float mGravity;
 
-        // Ammount of random vector change
-        int mRandomness;
-
         // How much the particle bounces off when hitting the ground
         float mBounce;
-
-        // is this particle moved when its parent particle moves?
-        bool mFollow;
-
-        // follow-point particles
-
-        // The particle that attracts this particle
-        Particle *mTarget;
 
         // Acceleration towards the target particle in pixels per game-tick
         float mAcceleration;
@@ -362,6 +340,25 @@ class Particle : public Actor
 
         // How much speed the particle retains after each game tick
         float mMomentum;
+
+        // The particle that attracts this particle
+        Particle *mTarget;
+
+        // Ammount of random vector change
+        int mRandomness;
+
+        // Bitfield of death conditions which trigger spawning
+        // of the death particle
+        signed char mDeathEffectConditions;
+
+        // May the particle request its deletion by the parent particle?
+        bool mAutoDelete;
+
+        // Can the effect size be adjusted by the object props in the map file?
+        bool mAllowSizeAdjust;
+
+        // is this particle moved when its parent particle moves?
+        bool mFollow;
 };
 
 extern Particle *particleEngine;
