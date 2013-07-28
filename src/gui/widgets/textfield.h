@@ -140,18 +140,18 @@ class TextField : public gcn::TextField,
         static Skin *mSkin;
 
     private:
-        static int instances;
-        static float mAlpha;
-        static ImageRect skin;
-        bool mNumeric;
-        int mMinimum;
-        unsigned mMaximum;
-        bool mLoseFocusOnTab;
-        int mLastEventPaste;
-        int mPadding;
         const gcn::Color *mCaretColor;
         gcn::Color mForegroundColor2;
         PopupMenu *mPopupMenu;
+        static int instances;
+        static float mAlpha;
+        static ImageRect skin;
+        int mMinimum;
+        unsigned int mMaximum;
+        int mLastEventPaste;
+        int mPadding;
+        bool mNumeric;
+        bool mLoseFocusOnTab;
 };
 
 #endif  // GUI_WIDGETS_TEXTFIELD_H

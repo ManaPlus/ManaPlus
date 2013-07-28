@@ -56,15 +56,15 @@ TextField::TextField(const Widget2 *const widget,
     gcn::FocusListener(),
     Widget2(widget),
     mSendAlwaysEvents(sendAlwaysEvents),
-    mNumeric(false),
-    mMinimum(0),
-    mMaximum(0),
-    mLoseFocusOnTab(loseFocusOnTab),
-    mLastEventPaste(false),
-    mPadding(1),
     mCaretColor(&getThemeColor(Theme::CARET)),
     mForegroundColor2(getThemeColor(Theme::TEXTFIELD_OUTLINE)),
-    mPopupMenu(nullptr)
+    mPopupMenu(nullptr),
+    mMinimum(0),
+    mMaximum(0),
+    mLastEventPaste(false),
+    mPadding(1),
+    mNumeric(false),
+    mLoseFocusOnTab(loseFocusOnTab)
 {
     setFrameSize(2);
     mForegroundColor = getThemeColor(Theme::TEXTFIELD);
