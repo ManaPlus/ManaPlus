@@ -720,7 +720,7 @@ int BrowserBox::calcHeight()
                             if (mEmotes)
                             {
                                 const size_t sz = mEmotes->size();
-                                if (cid < sz)
+                                if (static_cast<unsigned>(cid) < sz)
                                 {
                                     Image *const img = mEmotes->get(cid);
                                     if (img)
