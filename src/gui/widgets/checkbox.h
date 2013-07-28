@@ -86,12 +86,12 @@ class CheckBox final : public gcn::CheckBox,
         void adjustSize();
 
     private:
-        bool mHasMouse;
+        gcn::Color mForegroundColor;
         int mPadding;
         int mImagePadding;
         int mImageSize;
         int mSpacing;
-        gcn::Color mForegroundColor;
+        bool mHasMouse;
 
         static int instances;
         static Skin *mSkin;
