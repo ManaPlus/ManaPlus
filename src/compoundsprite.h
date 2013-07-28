@@ -147,16 +147,15 @@ private:
     mutable Image *mImage;
     mutable Image *mAlphaImage;
 
-    mutable int mOffsetX, mOffsetY;
-
-    mutable bool mNeedsRedraw;
-
-    bool mEnableAlphaFix;
-    bool mDisableAdvBeingCaching;
-    bool mDisableBeingCaching;
+    mutable int mOffsetX;
+    mutable int mOffsetY;
     std::vector<Sprite*> mSprites;
     mutable int mNextRedrawTime;
     static bool mEnableDelay;
+    mutable bool mNeedsRedraw;
+    bool mEnableAlphaFix;
+    bool mDisableAdvBeingCaching;
+    bool mDisableBeingCaching;
 };
 
 #endif  // COMPOUNDSPRITE_H
