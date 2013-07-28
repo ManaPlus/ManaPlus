@@ -181,8 +181,6 @@ protected:
     int mMaxHp;
     int mDamageHp;
     int mLevel;
-    bool mOnline;
-    bool mDisplayBold;
     std::string mMap;
     int mX;
     int mY;
@@ -191,6 +189,8 @@ protected:
     int mGender;
     int mRace;
     std::string mIp;
+    bool mOnline;
+    bool mDisplayBold;
 };
 
 #endif  // AVATAR_H

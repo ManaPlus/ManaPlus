@@ -33,19 +33,20 @@ Avatar::Avatar(const std::string &name):
         mCharId(0),
         mName(name),
         mOriginalName(name),
-        mHp(0), mMaxHp(0),
+        mHp(0),
+        mMaxHp(0),
         mDamageHp(0),
         mLevel(1),
-        mOnline(false),
-        mDisplayBold(false),
-        mMap(""),
+        mMap(),
         mX(-1),
         mY(-1),
         mType(AVATAR_PLAYER),
         mExp(0),
         mGender(GENDER_UNSPECIFIED),
         mRace(-1),
-        mIp("")
+        mIp(),
+        mOnline(false),
+        mDisplayBold(false)
 {
 }
 
