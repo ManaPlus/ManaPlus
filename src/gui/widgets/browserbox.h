@@ -256,20 +256,12 @@ class BrowserBox final : public gcn::Widget,
         LinkHandler *mLinkHandler;
         unsigned int mMode;
         unsigned int mHighMode;
-        bool mOpaque;
-        bool mUseLinksAndUserColors;
-        bool mUseEmotes;
         int mSelectedLink;
         unsigned int mMaxRows;
         int mHeight;
         int mWidth;
         int mYStart;
         int mUpdateTime;
-        bool mAlwaysUpdate;
-        bool mProcessVersion;
-        bool mEnableImages;
-        bool mEnableKeys;
-        bool mEnableTabs;
         int mPadding;
         int mNewLinePadding;
 
@@ -277,6 +269,15 @@ class BrowserBox final : public gcn::Widget,
         gcn::Color mHighlightColor;
         gcn::Color mHyperLinkColor;
         gcn::Color mColors[2][COLORS_MAX];
+
+        bool mOpaque;
+        bool mUseLinksAndUserColors;
+        bool mUseEmotes;
+        bool mAlwaysUpdate;
+        bool mProcessVersion;
+        bool mEnableImages;
+        bool mEnableKeys;
+        bool mEnableTabs;
 
         static Skin *mSkin;
         static ImageSet *mEmotes;
