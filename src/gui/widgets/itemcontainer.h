@@ -193,36 +193,36 @@ class ItemContainer final : public gcn::Widget,
         int getSlotIndex(const int x, const int y) const;
 
         Inventory *mInventory;
-        int mGridColumns, mGridRows;
         Image *mSelImg;
-        int mSelectedIndex, mHighlightedIndex;
-        int mLastUsedSlot;
-        SelectionState mSelectionStatus;
-        bool mForceQuantity;
-        bool mSwapItems;
-        bool mDescItems;
-        int mTag;
-        int mSortType;
         std::string mName;
 
         ItemPopup *mItemPopup;
         int *mShowMatrix;
-        int mClicks;
         Skin *mSkin;
+        gcn::Color mEquipedColor;
+        gcn::Color mEquipedColor2;
+        gcn::Color mUnEquipedColor;
+        gcn::Color mUnEquipedColor2;
+        typedef std::list<gcn::SelectionListener*> SelectionListenerList;
+        typedef SelectionListenerList::iterator SelectionListenerIterator;
+        SelectionListenerList mSelectionListeners;
+        int mGridColumns;
+        int mGridRows;
+        int mSelectedIndex;
+        int mHighlightedIndex;
+        int mLastUsedSlot;
+        int mTag;
+        int mSortType;
+        int mClicks;
         int mBoxWidth;
         int mBoxHeight;
         int mEquippedTextPadding;
         int mPaddingItemX;
         int mPaddingItemY;
-
-        typedef std::list<gcn::SelectionListener*> SelectionListenerList;
-        typedef SelectionListenerList::iterator SelectionListenerIterator;
-
-        SelectionListenerList mSelectionListeners;
-        gcn::Color mEquipedColor;
-        gcn::Color mEquipedColor2;
-        gcn::Color mUnEquipedColor;
-        gcn::Color mUnEquipedColor2;
+        SelectionState mSelectionStatus;
+        bool mForceQuantity;
+        bool mSwapItems;
+        bool mDescItems;
 };
 
 #endif  // GUI_WIDGETS_ITEMCONTAINER_H
