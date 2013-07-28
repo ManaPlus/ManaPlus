@@ -46,10 +46,10 @@ FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
     mDropTime(cur_time),
     mAmount(amount),
     mPickupCount(0),
+    mCursor(Cursor::CURSOR_PICKUP),
     mColor(color),
     mShowMsg(true),
-    mHighlight(config.getBoolValue("floorItemsHighlight")),
-    mCursor(Cursor::CURSOR_PICKUP)
+    mHighlight(config.getBoolValue("floorItemsHighlight"))
 {
     setMap(map);
     const ItemInfo &info = ItemDB::get(itemId);
