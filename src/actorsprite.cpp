@@ -49,15 +49,15 @@ bool ActorSprite::loaded = false;
 ActorSprite::ActorSprite(const int id) :
     CompoundSprite(),
     Actor(),
-    mId(id),
-    mStunMode(0),
     mStatusEffects(),
     mStunParticleEffects(),
     mStatusParticleEffects(&mStunParticleEffects, false),
     mChildParticleEffects(&mStatusParticleEffects, false),
-    mMustResetParticles(false),
+    mId(id),
+    mStunMode(0),
     mUsedTargetCursor(nullptr),
-    mActorSpriteListeners()
+    mActorSpriteListeners(),
+    mMustResetParticles(false)
 {
 }
 

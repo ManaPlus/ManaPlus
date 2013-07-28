@@ -208,18 +208,15 @@ protected:
                             const int imageType = 0,
                             const std::string &color = "");
 
-    int mId;
-    uint16_t mStunMode;               /**< Stun mode; zero if not stunned */
     std::set<int> mStatusEffects;   /**< set of active status effects */
 
     ParticleList mStunParticleEffects;
     ParticleVector mStatusParticleEffects;
     ParticleList mChildParticleEffects;
+    int mId;
+    uint16_t mStunMode;               /**< Stun mode; zero if not stunned */
 
 private:
-    /** Reset particle status effects on next redraw? */
-    bool mMustResetParticles;
-
     /** Load the target cursors into memory */
     static void initTargetCursor();
 
@@ -247,6 +244,9 @@ private:
     typedef std::list<ActorSpriteListener*> ActorSpriteListeners;
     typedef ActorSpriteListeners::iterator ActorSpriteListenerIterator;
     ActorSpriteListeners mActorSpriteListeners;
+
+    /** Reset particle status effects on next redraw? */
+    bool mMustResetParticles;
 };
 
 #endif  // ACTORSPRITE_H
