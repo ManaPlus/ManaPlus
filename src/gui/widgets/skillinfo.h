@@ -35,20 +35,19 @@ typedef SkillDataMap::const_iterator SkillDataMapCIter;
 
 struct SkillInfo final
 {
-    int level;
     std::string skillLevel;
-    int skillLevelWidth;
-    unsigned int id;
-    bool modifiable;
-    bool visible;
-    SkillModel *model;
     std::string skillExp;
     float progress;
-    int range;
     gcn::Color color;
-
-    SkillData *data;
     SkillDataMap dataMap;
+    SkillModel *model;
+    SkillData *data;
+    int level;
+    int skillLevelWidth;
+    unsigned int id;
+    int range;
+    bool modifiable;
+    bool visible;
 
     SkillInfo();
     A_DELETE_COPY(SkillInfo)

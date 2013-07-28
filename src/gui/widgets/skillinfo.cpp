@@ -29,19 +29,19 @@
 #include "debug.h"
 
 SkillInfo::SkillInfo() :
-    level(0),
     skillLevel(),
-    skillLevelWidth(0),
-    id(0),
-    modifiable(false),
-    visible(false),
-    model(nullptr),
     skillExp(),
     progress(0.0f),
-    range(0),
     color(),
+    dataMap(),
+    model(nullptr),
     data(nullptr),
-    dataMap()
+    level(0),
+    skillLevelWidth(0),
+    id(0),
+    range(0),
+    modifiable(false),
+    visible(false)
 {
     dataMap[0] = new SkillData();
     data = dataMap[0];
