@@ -916,38 +916,21 @@ class Being : public ActorSprite, public ConfigListener
         static int getDefaultEffectId(const int type);
 
         BeingInfo *mInfo;
-
-        int mActionTime;      /**< Time spent in current action */
-
         AnimatedSprite *mEmotionSprite;
-        int mEmotionTime;     /**< Time until emotion disappears */
-
-        /** Time until the last speech sentence disappears */
-        int mSpeechTime;
-
         AnimatedSprite* mAnimationEffect;
 
-        int mAttackSpeed;     /**< Attack speed */
-
-        Action mAction;       /**< Action the being is performing */
-        uint16_t mSubType;      /**< Subtype (graphical view, basically) */
-
-        uint8_t mDirection;               /**< Facing direction */
-        uint8_t mDirectionDelayed;        /**< Facing direction */
-
-        uint8_t mSpriteDirection;         /**< Facing direction */
         std::string mSpriteAction;
         std::string mName;              /**< Name of character */
         std::string mRaceName;
         std::string mPartyName;
         std::string mGuildName;
+        std::string mSpeech;
 
         /**
          * Holds a text object when the being displays it's name, 0 otherwise
          */
         FlashText *mDispName;
         const gcn::Color *mNameColor;
-        bool mShowName;
 
         /** Engine-related infos about weapon. */
         const ItemInfo *mEquippedWeapon;
@@ -956,24 +939,36 @@ class Being : public ActorSprite, public ConfigListener
         static int mNumberOfRaces; /** Number of races in use */
 
         Path mPath;
-        std::string mSpeech;
         Text *mText;
         const gcn::Color *mTextColor;
 
-        int mLevel;
         Vector mDest;  /**< destination coordinates. */
 
-        std::vector<int> mSpriteIDs;
         StringVect mSpriteColors;
+        std::vector<int> mSpriteIDs;
         std::vector<int> mSpriteColorsIds;
-        Gender mGender;
 
         // Character guild information
         std::map<int, Guild*> mGuilds;
         Party *mParty;
 
-        bool mIsGM;
+        int mActionTime;      /**< Time spent in current action */
+        int mEmotionTime;     /**< Time until emotion disappears */
+
+        /** Time until the last speech sentence disappears */
+        int mSpeechTime;
+        int mAttackSpeed;     /**< Attack speed */
+
+        int mLevel;
         int mAttackRange;
+        Gender mGender;
+        Action mAction;       /**< Action the being is performing */
+        uint16_t mSubType;      /**< Subtype (graphical view, basically) */
+        uint8_t mDirection;               /**< Facing direction */
+        uint8_t mDirectionDelayed;        /**< Facing direction */
+        uint8_t mSpriteDirection;         /**< Facing direction */
+        bool mShowName;
+        bool mIsGM;
 
     private:
         /**
@@ -1005,6 +1000,13 @@ class Being : public ActorSprite, public ConfigListener
          * @see MILLISECONDS_IN_A_TICK
          */
         Vector mWalkSpeed;
+        std::string mIp;
+        int *mSpriteRemap;
+        int *mSpriteHide;
+        std::string mComment;
+        Being *mPet;
+        Being *mOwner;
+        Particle *mSpecialParticle;
 
         int mX, mY;   /**< Position in tile */
 
@@ -1038,29 +1040,22 @@ class Being : public ActorSprite, public ConfigListener
         unsigned int mTalkTime;
         unsigned int mOtherTime;
         unsigned int mTestTime;
-        bool mErased;
-        bool mEnemy;
-        std::string mIp;
         int mAttackDelay;
         int mMinHit;
         int mMaxHit;
         int mCriticalHit;
         unsigned int mPvpRank;
-        int *mSpriteRemap;
-        int *mSpriteHide;
-        std::string mComment;
+        unsigned int mNumber;
+        int mPetId;
+        int mLook;
+        unsigned char mHairColor;
+        bool mErased;
+        bool mEnemy;
         bool mGotComment;
         bool mAdvanced;
         bool mShop;
         bool mAway;
         bool mInactive;
-        unsigned mNumber;
-        unsigned char mHairColor;
-        Being *mPet;
-        int mPetId;
-        int mLook;
-        Being *mOwner;
-        Particle *mSpecialParticle;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;
