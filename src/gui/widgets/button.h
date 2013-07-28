@@ -145,13 +145,7 @@ class Button final : public gcn::Button,
         static float mAlpha;
 
         std::string mDescription;
-        unsigned mClickCount;
-        int mTag;
         ImageCollection *mVertexes2;
-        bool mRedraw;
-        int mMode;
-        int mXOffset;
-        int mYOffset;
         gcn::Color mEnabledColor;
         gcn::Color mEnabledColor2;
         gcn::Color mDisabledColor;
@@ -162,8 +156,14 @@ class Button final : public gcn::Button,
         gcn::Color mPressedColor2;
         Image **mImages;
         ImageSet *mImageSet;
+        unsigned mClickCount;
+        int mTag;
+        int mMode;
+        int mXOffset;
+        int mYOffset;
         int mImageWidth;
         int mImageHeight;
+        bool mRedraw;
         bool mStick;
         bool mPressed;
 };
