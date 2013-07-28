@@ -504,8 +504,6 @@ class LocalPlayer final : public Being,
     protected:
         void updateCoords() override;
 
-        /** Whether or not the name settings have changed */
-        bool mUpdateName;
 
         virtual void handleStatusEffect(StatusEffect *const effect,
                                         const int effectId);
@@ -554,8 +552,6 @@ class LocalPlayer final : public Being,
         unsigned int mQuickDropCounter;
         // move state. used if mInvertDirection == 2
         unsigned int mMoveState;
-        // temporary disable crazy moves in moves
-        bool mDisableCrazyMove;
         // pick up type 1x1, normal aka 2x1, forward aka 2x3, 3x3, 3x3 + 1
         unsigned int mPickUpType;
         // magic attack type
@@ -567,8 +563,6 @@ class LocalPlayer final : public Being,
         unsigned int mAttackType;
         unsigned int mFollowMode;
         unsigned int mImitationMode;
-
-        bool mDisableGameModifiers;
 
         int mLastTargetX;
         int mLastTargetY;
@@ -585,11 +579,7 @@ class LocalPlayer final : public Being,
 
         FloorItem *mPickUpTarget;
 
-        bool mGoingToTarget;
-        bool mKeepAttacking;  // Whether or not to continue to attack
         int mLastAction;      // Time stamp of the last action, -1 if none.
-        unsigned char mWalkingDir;  // The direction the player is walking in.
-        bool mPathSetByMouse;  // Tells if the path was set using mouse
 
         std::vector<int> mStatusEffectIcons;
 
@@ -604,19 +594,8 @@ class LocalPlayer final : public Being,
         OkDialog *mAwayDialog;
 
         int mPingSendTick;
-        bool mWaitPing;
         int mPingTime;
         int mAfkTime;
-        bool mAwayMode;
-        bool mPseudoAwayMode;
-
-        bool mShowNavigePath;
-        bool mIsServerBuggy;
-        bool mSyncPlayerMove;
-        bool mDrawPath;
-        bool mAttackMoving;
-        bool mAttackNext;
-        bool mShowJobExp;
         int mActivityTime;
         int mNavigateX;
         int mNavigateY;
@@ -629,8 +608,6 @@ class LocalPlayer final : public Being,
         int mOldTileY;
         Path mNavigatePath;
 
-        bool mTargetDeadPlayers;
-        bool mServerAttack;
         std::string mLastHitFrom;
         std::string mWaitFor;
         int mAdvertTime;
@@ -638,11 +615,34 @@ class LocalPlayer final : public Being,
         std::string mTestParticleName;
         int mTestParticleTime;
         unsigned long mTestParticleHash;
+        unsigned char mWalkingDir;  // The direction the player is walking in.
+        /** Whether or not the name settings have changed */
+        bool mUpdateName;
         bool mBlockAdvert;
+        bool mTargetDeadPlayers;
+        bool mServerAttack;
         bool mEnableAdvert;
         bool mTradebot;
         bool mTargetOnlyReachable;
+        bool mDisableGameModifiers;
+        bool mIsServerBuggy;
+        bool mSyncPlayerMove;
+        bool mDrawPath;
+        bool mAttackMoving;
+        bool mAttackNext;
+        bool mShowJobExp;
         bool mNextStep;
+        // temporary disable crazy moves in moves
+        bool mDisableCrazyMove;
+        bool mGoingToTarget;
+        // Whether or not to continue to attack
+        bool mKeepAttacking;
+        // Tells if the path was set using mouse
+        bool mPathSetByMouse;
+        bool mWaitPing;
+        bool mAwayMode;
+        bool mPseudoAwayMode;
+        bool mShowNavigePath;
 };
 
 extern LocalPlayer *player_node;
