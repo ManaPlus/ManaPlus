@@ -38,8 +38,8 @@ TextParticle::TextParticle(Map *const map, const std::string &text,
     mText(text),
     mTextFont(font),
     mColor(color),
-    mOutline(outline),
-    mTextWidth(mTextFont ? mTextFont->getWidth(mText) / 2 : 1)
+    mTextWidth(mTextFont ? mTextFont->getWidth(mText) / 2 : 1),
+    mOutline(outline)
 {
 }
 
