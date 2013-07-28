@@ -97,16 +97,16 @@ GuiTable::GuiTable(const Widget2 *const widget,
     Widget2(widget),
     gcn::MouseListener(),
     gcn::KeyListener(),
-    mLinewiseMode(false),
-    mWrappingEnabled(false),
-    mOpaque(opacity),
     mModel(nullptr),
-    mSelectedRow(0),
-    mSelectedColumn(0),
     mTopWidget(nullptr),
     mActionListeners(),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
-    mHighlightColor(getThemeColor(Theme::HIGHLIGHT))
+    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
+    mSelectedRow(0),
+    mSelectedColumn(0),
+    mLinewiseMode(false),
+    mWrappingEnabled(false),
+    mOpaque(opacity)
 {
     setModel(initial_model);
     setFocusable(true);

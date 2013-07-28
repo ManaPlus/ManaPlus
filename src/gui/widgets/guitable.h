@@ -169,16 +169,10 @@ private:
     int getRowForY(int y) const A_WARN_UNUSED;     // -1 on error
     int getColumnForX(int x) const A_WARN_UNUSED;  // -1 on error
     void recomputeDimensions();
-    bool mLinewiseMode;
-    bool mWrappingEnabled;
-    bool mOpaque;
 
     static float mAlpha;
 
     TableModel *mModel;
-
-    int mSelectedRow;
-    int mSelectedColumn;
 
     /** If someone moves a fresh widget to the top, we must display it. */
     gcn::Widget *mTopWidget;
@@ -190,8 +184,14 @@ private:
      * Holds the background color of the table.
      */
     gcn::Color mBackgroundColor;
-
     gcn::Color mHighlightColor;
+
+    int mSelectedRow;
+    int mSelectedColumn;
+
+    bool mLinewiseMode;
+    bool mWrappingEnabled;
+    bool mOpaque;
 };
 
 #endif  // GUI_WIDGETS_GUITABLE_H
