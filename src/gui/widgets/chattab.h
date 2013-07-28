@@ -199,11 +199,11 @@ class ChatTab : public Tab
 
         BrowserBox *mTextOutput;
         ScrollArea *mScrollArea;
+        std::string mChannelName;
         bool mAllowHightlight;
         bool mRemoveNames;
         bool mNoAway;
         bool mShowOnline;
-        std::string mChannelName;
 };
 
 extern ChatTab *localChatTab;
