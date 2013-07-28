@@ -45,12 +45,12 @@ class Resource
             mIdPath(),
             mSource(),
             mTimeStamp(0),
-            mProtected(false),
-#ifdef DEBUG_DUMP_LEAKS
             mRefCount(0),
+#ifdef DEBUG_DUMP_LEAKS
+            mProtected(false),
             mDumped(false)
 #else
-            mRefCount(0)
+            mProtected(false)
 #endif
         {
         }
@@ -114,8 +114,8 @@ class Resource
 
     private:
         time_t mTimeStamp;   /**< Time at which the resource was orphaned. */
+        unsigned int mRefCount;  /**< Reference count. */
         bool mProtected;
-        unsigned mRefCount;  /**< Reference count. */
 #ifdef DEBUG_DUMP_LEAKS
         bool mDumped;
 #endif
