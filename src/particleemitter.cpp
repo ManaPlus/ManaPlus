@@ -45,12 +45,12 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
                                  Particle *const target,
                                  Map *const map, const int rotation,
                                  const std::string& dyePalettes) :
-    mParticleFollow(false),
     mParticleTarget(target),
     mMap(map),
-    mOutputPauseLeft(0),
     mParticleImage(nullptr),
-    mDeathEffectConditions(0)
+    mOutputPauseLeft(0),
+    mDeathEffectConditions(0),
+    mParticleFollow(false)
 {
     // Initializing default values
     mParticlePosX.set(0.0f);

@@ -108,7 +108,6 @@ class ParticleEmitter final
         ParticleEmitterProp<float> mParticleGravity;
         ParticleEmitterProp<int> mParticleRandomness;
         ParticleEmitterProp<float> mParticleBounce;
-        bool mParticleFollow;
 
         /*
          * Properties of targeting particles:
@@ -133,7 +132,6 @@ class ParticleEmitter final
 
         // Pause in frames between two spawns
         ParticleEmitterProp<int> mOutputPause;
-        int mOutputPauseLeft;
 
         /*
          * Graphical representation of the particles
@@ -154,11 +152,16 @@ class ParticleEmitter final
          * Death effect of the particles
          */
         std::string mDeathEffect;
-        signed char mDeathEffectConditions;
 
         // List of emitters the spawned particles are equipped with
         std::list<ParticleEmitter> mParticleChildEmitters;
 
         std::vector<ImageSet*> mTempSets;
+
+        int mOutputPauseLeft;
+
+        signed char mDeathEffectConditions;
+
+        bool mParticleFollow;
 };
 #endif  // PARTICLEEMITTER_H
