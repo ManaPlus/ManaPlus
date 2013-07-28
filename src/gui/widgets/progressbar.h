@@ -141,24 +141,24 @@ class ProgressBar final : public gcn::Widget,
         Skin *mSkin;
         float mProgress;
         float mProgressToGo;
-        bool mSmoothProgress;
 
-        int mProgressPalette; /** < Entry in ProgressPalette or -1 for none. */
         gcn::Color mColor;
         gcn::Color mColorToGo;
-        bool mSmoothColorChange;
+        gcn::Color mOutlineColor;
 
         std::string mText;
         ImageCollection *mVertexes;
-        bool mRedraw;
+        int mProgressPalette; /** < Entry in ProgressPalette or -1 for none. */
         unsigned int mPadding;
         unsigned int mFillPadding;
-        gcn::Color mOutlineColor;
 
         static int mInstances;
         static float mAlpha;
-
         static const gcn::Color TEXT_COLOR;
+
+        bool mSmoothProgress;
+        bool mSmoothColorChange;
+        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_PROGRESSBAR_H
