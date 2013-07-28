@@ -201,16 +201,10 @@ class TabbedArea final : public Widget2,
         void updateTabsWidth();
 
         Tab* mSelectedTab;
-
         gcn::Container* mTabContainer;
-
         gcn::Container* mWidgetContainer;
-
         std::vector<Tab*> mTabsToDelete;
-
         std::vector<std::pair<Tab*, gcn::Widget*> > mTabs;
-
-        bool mOpaque;
 
         /**
          * The overall width of all tab.
@@ -234,10 +228,11 @@ class TabbedArea final : public Widget2,
          * So the first tab displayed may not be the first in the list.
          * @note the index must start at 0.
          */
-        unsigned mTabScrollIndex;
-
-        bool mEnableScrollButtons;
+        unsigned int mTabScrollIndex;
         int mRightMargin;
+
+        bool mOpaque;
+        bool mEnableScrollButtons;
         bool mFollowDownScroll;
         bool mBlockSwitching;
         bool mResizeHeight;
