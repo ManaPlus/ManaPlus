@@ -173,17 +173,17 @@ class MapLayer final: public ConfigListener
                              const int endX, int &width) const A_WARN_UNUSED;
 
     private:
-        int mX, mY;
-        int mWidth, mHeight;
-        bool mIsFringeLayer;    /**< Whether the actors are drawn. */
-        bool mHighlightAttackRange;
+        int mX;
+        int mY;
+        int mWidth;
+        int mHeight;
         Image **mTiles;
-//        int *mTilesWidth;
-//        int *mTilesCount;
         SpecialLayer *mSpecialLayer;
         SpecialLayer *mTempLayer;
         typedef std::vector<MapRowVertexes*> MapRows;
         MapRows mTempRows;
+        bool mIsFringeLayer;    /**< Whether the actors are drawn. */
+        bool mHighlightAttackRange;
 };
 
 class SpecialLayer final
@@ -214,9 +214,10 @@ class SpecialLayer final
         void clean() const;
 
     private:
-        int mWidth, mHeight;
-        bool mDrawSprites;
+        int mWidth;
+        int mHeight;
         MapItem **mTiles;
+        bool mDrawSprites;
 };
 
 class MapItem final
@@ -286,10 +287,10 @@ class MapItem final
                   const int dx, const int dy) const;
 
     private:
-        int mType;
         Image *mImage;
         std::string mComment;
         std::string mName;
+        int mType;
         int mX;
         int mY;
 };

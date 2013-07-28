@@ -45,12 +45,12 @@ MapLayer::MapLayer(const int x, const int y, const int width, const int height,
     mY(y),
     mWidth(width),
     mHeight(height),
-    mIsFringeLayer(fringeLayer),
-    mHighlightAttackRange(config.getBoolValue("highlightAttackRange")),
     mTiles(new Image*[mWidth * mHeight]),
     mSpecialLayer(nullptr),
     mTempLayer(nullptr),
-    mTempRows()
+    mTempRows(),
+    mIsFringeLayer(fringeLayer),
+    mHighlightAttackRange(config.getBoolValue("highlightAttackRange"))
 {
     std::fill_n(mTiles, mWidth * mHeight, static_cast<Image*>(nullptr));
 
@@ -558,8 +558,8 @@ SpecialLayer::SpecialLayer(const int width, const int height,
                            const bool drawSprites) :
     mWidth(width),
     mHeight(height),
-    mDrawSprites(drawSprites),
-    mTiles(new MapItem*[mWidth * mHeight])
+    mTiles(new MapItem*[mWidth * mHeight]),
+    mDrawSprites(drawSprites)
 {
     std::fill_n(mTiles, mWidth * mHeight, static_cast<MapItem*>(nullptr));
 }
@@ -676,26 +676,46 @@ void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
 }
 
 MapItem::MapItem():
-    mType(EMPTY), mImage(nullptr), mComment(""), mName(""), mX(-1), mY(-1)
+    mImage(nullptr),
+    mComment(),
+    mName(),
+    mType(EMPTY),
+    mX(-1),
+    mY(-1)
 {
     setType(EMPTY);
 }
 
 MapItem::MapItem(const int type):
-    mType(type), mImage(nullptr), mComment(""), mName(""), mX(-1), mY(-1)
+    mImage(nullptr),
+    mComment(),
+    mName(),
+    mType(type),
+    mX(-1),
+    mY(-1)
 {
     setType(type);
 }
 
 MapItem::MapItem(const int type, std::string comment):
-    mType(type), mImage(nullptr), mComment(comment), mName(""), mX(-1), mY(-1)
+    mImage(nullptr),
+    mComment(comment),
+    mName(),
+    mType(type),
+    mX(-1),
+    mY(-1)
 {
     setType(type);
 }
 
 MapItem::MapItem(const int type, std::string comment,
                  const int x, const int y):
-    mType(type), mImage(nullptr), mComment(comment), mName(""), mX(x), mY(y)
+    mImage(nullptr),
+    mComment(comment),
+    mName(),
+    mType(type),
+    mX(x),
+    mY(y)
 {
     setType(type);
 }
