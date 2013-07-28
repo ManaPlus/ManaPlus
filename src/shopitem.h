@@ -132,9 +132,7 @@ class ShopItem final : public Item
         { return mDisplayName; }
 
     protected:
-        int mPrice;
         std::string mDisplayName;
-        bool mShowQuantity;
 
         /**
          * Struct to keep track of duplicates.
@@ -145,6 +143,8 @@ class ShopItem final : public Item
             int quantity;
         } DuplicateItem;
         std::stack<DuplicateItem*> mDuplicates; /** <-- Stores duplicates */
+        int mPrice;
+        bool mShowQuantity;
 };
 
 #endif  // SHOPITEM_H

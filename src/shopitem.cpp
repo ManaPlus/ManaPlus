@@ -33,10 +33,10 @@ ShopItem::ShopItem(const int inventoryIndex, const int id,
                    const unsigned char color,
                    const int quantity, const int price) :
     Item(id, 0, 0, color),
-    mPrice(price),
     mDisplayName(),
-    mShowQuantity(true),
-    mDuplicates()
+    mDuplicates(),
+    mPrice(price),
+    mShowQuantity(true)
 {
     if (serverVersion > 0)
     {
@@ -57,10 +57,10 @@ ShopItem::ShopItem(const int inventoryIndex, const int id,
 
 ShopItem::ShopItem(const int id, const unsigned char color, const int price) :
     Item(id, 0, 0, color),
-    mPrice(price),
     mDisplayName(),
-    mShowQuantity(false),
-    mDuplicates()
+    mDuplicates(),
+    mPrice(price),
+    mShowQuantity(false)
 {
     if (serverVersion > 0)
     {
