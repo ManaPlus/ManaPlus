@@ -44,13 +44,13 @@ Item::Item(const int id, const int quantity, const int refine,
     mColor(0),
     mQuantity(quantity),
     mImage(nullptr),
-    mEquipment(equipment),
-    mEquipped(equipped),
-    mInEquipment(false),
+    mDescription(),
+    mTags(),
     mRefine(refine),
     mInvIndex(0),
-    mDescription(),
-    mTags()
+    mEquipment(equipment),
+    mEquipped(equipped),
+    mInEquipment(false)
 {
     setId(id, color);
 }

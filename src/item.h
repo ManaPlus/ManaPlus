@@ -172,13 +172,13 @@ class Item
 
     protected:
         Image *mImage;        /**< Item image. */
+        std::string mDescription;
+        std::map <int, int> mTags;
+        int mRefine;          /**< Item refine level. */
+        int mInvIndex;        /**< Inventory index. */
         bool mEquipment;      /**< Item is equipment. */
         bool mEquipped;       /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */
-        int mRefine;          /**< Item refine level. */
-        int mInvIndex;        /**< Inventory index. */
-        std::string mDescription;
-        std::map <int, int> mTags;
 };
 
 #endif  // ITEM_H
