@@ -46,9 +46,9 @@ Image *AvatarListBox::offlineIcon = nullptr;
 AvatarListBox::AvatarListBox(const Widget2 *const widget,
                              AvatarListModel *const model) :
     ListBox(widget, model, "avatarlistbox.xml"),
+    mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
     mShowGender(config.getBoolValue("showgender")),
-    mShowLevel(config.getBoolValue("showlevel")),
-    mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0)
+    mShowLevel(config.getBoolValue("showlevel"))
 {
     instances++;
 

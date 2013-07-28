@@ -62,9 +62,9 @@ public:
     void optionChanged(const std::string &value) override;
 
 private:
+    int mImagePadding;
     bool mShowGender;
     bool mShowLevel;
-    int mImagePadding;
 
     static int instances;
     static Image *onlineIcon;
