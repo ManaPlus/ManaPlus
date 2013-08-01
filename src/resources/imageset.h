@@ -81,6 +81,9 @@ class ImageSet : public Resource
         void setOffsetY(const int n)
         { mOffsetY = n; }
 
+        const std::vector<Image*> &getImages() const
+        { return mImages; }
+
     private:
         std::vector<Image*> mImages;
 

@@ -46,6 +46,7 @@
 #include "gui/botcheckerwindow.h"
 #include "gui/debugwindow.h"
 #include "gui/didyouknowwindow.h"
+#include "gui/emotewindow.h"
 #include "gui/equipmentwindow.h"
 #include "gui/gui.h"
 #include "gui/helpwindow.h"
@@ -116,6 +117,7 @@ QuitDialog *quitDialog = nullptr;
 Window *disconnectedDialog = nullptr;
 
 ChatWindow *chatWindow = nullptr;
+EmoteWindow *emoteWindow = nullptr;
 StatusWindow *statusWindow = nullptr;
 MiniStatusWindow *miniStatusWindow = nullptr;
 InventoryWindow *inventoryWindow = nullptr;
@@ -198,6 +200,7 @@ static void createGuiWindows()
         emoteShortcut->load();
 
     // Create dialogs
+    emoteWindow = new EmoteWindow;
     chatWindow = new ChatWindow;
     chatWindow->updateVisibility();
     tradeWindow = new TradeWindow;
@@ -339,6 +342,7 @@ static void destroyGuiWindows()
     del_0(battleChatTab)
     del_0(gmChatTab);
     logger->log("start deleting");
+    del_0(emoteWindow);
     del_0(chatWindow)
     logger->log("end deleting");
     del_0(statusWindow)

@@ -46,6 +46,7 @@ class Channel;
 class ChatInput;
 class ColorListModel;
 class DropDown;
+class EmoteWindow;
 class ScrollArea;
 class TabbedArea;
 class ItemLinkHandler;

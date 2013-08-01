@@ -157,6 +157,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/itemlinkhandler.h \
 	      gui/widgets/dropshortcutcontainer.cpp \
 	      gui/widgets/dropshortcutcontainer.h \
+	      gui/widgets/emotepage.cpp \
+	      gui/widgets/emotepage.h \
 	      gui/widgets/itemshortcutcontainer.cpp \
 	      gui/widgets/itemshortcutcontainer.h \
 	      gui/widgets/spellshortcutcontainer.cpp \
@@ -270,6 +272,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/didyouknowwindow.h \
 	      gui/editserverdialog.cpp \
 	      gui/editserverdialog.h \
+	      gui/emotewindow.cpp \
+	      gui/emotewindow.h \
 	      gui/equipmentwindow.cpp \
 	      gui/equipmentwindow.h \
 	      gui/focushandler.cpp \

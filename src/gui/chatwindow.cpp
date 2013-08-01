@@ -37,6 +37,7 @@
 #include "spellshortcut.h"
 #include "soundmanager.h"
 
+#include "gui/emotewindow.h"
 #include "gui/gui.h"
 #include "gui/setup.h"
 #include "gui/sdlfont.h"
@@ -250,6 +251,9 @@ ChatWindow::ChatWindow():
     setMinHeight(90);
 
     setTitleBarHeight(getPadding() + getTitlePadding());
+
+    if (emoteWindow)
+        emoteWindow->addListeners(this);
 
     mChatTabs->enableScrollButtons(true);
     mChatTabs->setFollowDownScroll(true);
@@ -479,6 +483,18 @@ void ChatWindow::action(const gcn::ActionEvent &event)
             // It should hide now
             if (mTmpVisible)
                 setVisible(false);
+        }
+    }
+    else if (eventId == "emote")
+    {
+        if (emoteWindow)
+        {
+            const std::string str = emoteWindow->getSelectedEmote();
+            if (!str.empty())
+            {
+                addInputText(str, false);
+                emoteWindow->clearEmote();
+            }
         }
     }
     else if (eventId == ACTION_COLOR_PICKER)
@@ -849,6 +865,10 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
     std::string temp;
     switch (key)
     {
+        case Key::F1:
+            if (emoteWindow)
+                emoteWindow->show();
+            break;
         caseKey(Key::F2, "\u2318");
         caseKey(Key::F3, "\u263A");
         caseKey(Key::F4, "\u2665");
