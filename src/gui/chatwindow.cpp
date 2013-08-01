@@ -119,6 +119,8 @@ class ChatInput final : public TextField
             setVisible(n);
             if (config.getBoolValue("hideChatInput"))
                 mWindow->adjustTabSize();
+            if (emoteWindow)
+                emoteWindow->hide();
         }
 
         void unprotectFocus()
