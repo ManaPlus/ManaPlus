@@ -33,7 +33,7 @@ class EmotePage final : public gcn::Widget,
                         public gcn::MouseListener
 {
     public:
-        EmotePage(const Widget2 *const widget);
+        explicit EmotePage(const Widget2 *const widget);
 
         A_DELETE_COPY(EmotePage)
 

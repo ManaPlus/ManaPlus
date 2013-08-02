@@ -116,7 +116,6 @@ TEST(Dye, replaceAOGLColor3)
 }
 
 
-
 TEST(Dye, replaceSColor1)
 {
     DyePalette palette("#00ff00,000011", 6);
@@ -161,7 +160,6 @@ TEST(Dye, replaceSColor3)
     EXPECT_EQ(0x60, data[2]);
     EXPECT_EQ(0x70, data[3]);
 }
-
 
 
 TEST(Dye, replaceAColor1)

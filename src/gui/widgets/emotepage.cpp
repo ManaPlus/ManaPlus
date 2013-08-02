@@ -64,7 +64,7 @@ void EmotePage::draw(gcn::Graphics *graphics)
     unsigned int x = 0;
     unsigned int y = 0;
 
-    FOR_EACH(std::vector<Image*>::const_iterator, it, images)
+    FOR_EACH (std::vector<Image*>::const_iterator, it, images)
     {
         const Image *const image = *it;
         if (image)
