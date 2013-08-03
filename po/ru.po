@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-07-20 13:25+0300\n"
+"POT-Creation-Date: 2013-08-03 13:52+0300\n"
 "PO-Revision-Date: 2013-07-19 19:53+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
@@ -55,12 +55,12 @@ msgid "miss"
 msgstr "промах"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1606 src/gui/whoisonline.cpp:835
+#: src/being.cpp:1710 src/gui/whoisonline.cpp:835
 msgid "A"
 msgstr "О"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1611 src/gui/whoisonline.cpp:840
+#: src/being.cpp:1715 src/gui/whoisonline.cpp:840
 msgid "I"
 msgstr "Б"
 
@@ -437,36 +437,36 @@ msgstr ""
 "\"0\"."
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:256 src/gui/widgets/chattab.cpp:465
+#: src/game.cpp:259 src/gui/widgets/chattab.cpp:465
 msgid "General"
 msgstr "Общие"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: debug window name
 #. TRANSLATORS: full button name
-#: src/game.cpp:272 src/gui/debugwindow.cpp:51 src/gui/widgets/chattab.cpp:467
+#: src/game.cpp:275 src/gui/debugwindow.cpp:51 src/gui/widgets/chattab.cpp:467
 #: src/gui/windowmenu.cpp:154
 msgid "Debug"
 msgstr "Отладка"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:536
+#: src/game.cpp:540
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr "Снимок экрана сохранен как %s"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:546
+#: src/game.cpp:550
 msgid "Saving screenshot failed!"
 msgstr "Ошибка при сохранении снимка экрана!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:618
+#: src/game.cpp:622
 msgid "The connection to the server was lost."
 msgstr "Соединение с сервером потеряно."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:621
+#: src/game.cpp:625
 msgid "Network Error"
 msgstr "Ошибка сети"
 
@@ -602,7 +602,7 @@ msgstr "Купить"
 #. TRANSLATORS: buy dialog label
 #. TRANSLATORS: sell dialog label
 #: src/gui/buydialog.cpp:251 src/gui/buydialog.cpp:531
-#: src/gui/selldialog.cpp:96 src/gui/selldialog.cpp:356
+#: src/gui/selldialog.cpp:97 src/gui/selldialog.cpp:357
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Цена: %s / Всего: %s"
@@ -620,7 +620,7 @@ msgstr "Количество:"
 #. TRANSLATORS: status window label (plus sign)
 #: src/gui/buydialog.cpp:265 src/gui/itemamountwindow.cpp:202
 #: src/gui/itemamountwindow.cpp:237 src/gui/npcdialog.cpp:96
-#: src/gui/selldialog.cpp:100 src/gui/statuswindow.cpp:790
+#: src/gui/selldialog.cpp:101 src/gui/statuswindow.cpp:790
 msgid "+"
 msgstr "+"
 
@@ -632,7 +632,7 @@ msgstr "+"
 #. TRANSLATORS: status window label (minus sign)
 #: src/gui/buydialog.cpp:268 src/gui/itemamountwindow.cpp:200
 #: src/gui/itemamountwindow.cpp:234 src/gui/npcdialog.cpp:98
-#: src/gui/selldialog.cpp:102 src/gui/statuswindow.cpp:803
+#: src/gui/selldialog.cpp:103 src/gui/statuswindow.cpp:803
 msgid "-"
 msgstr "-"
 
@@ -652,7 +652,7 @@ msgstr "Создать"
 #. TRANSLATORS: input action name
 #: src/gui/buydialog.cpp:273 src/gui/quitdialog.cpp:55
 #: src/gui/quitdialog.cpp:60 src/gui/quitdialog.cpp:62
-#: src/gui/selldialog.cpp:106 src/gui/serverdialog.cpp:262
+#: src/gui/selldialog.cpp:107 src/gui/serverdialog.cpp:262
 #: src/gui/setupactiondata.h:177
 msgid "Quit"
 msgstr "Выход"
@@ -662,7 +662,7 @@ msgstr "Выход"
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
 #. TRANSLATORS: status bar label
-#: src/gui/buydialog.cpp:275 src/gui/selldialog.cpp:108
+#: src/gui/buydialog.cpp:275 src/gui/selldialog.cpp:109
 #: src/gui/statuswindow.cpp:531 src/gui/statuswindow.cpp:586
 #: src/gui/statuswindow.cpp:787 src/gui/statuswindow.cpp:821
 msgid "Max"
@@ -684,7 +684,7 @@ msgstr "Магазин"
 #. TRANSLATORS: sell dialog button
 #: src/gui/buyselldialog.cpp:69 src/gui/popupmenu.cpp:223
 #: src/gui/popupmenu.cpp:2455 src/gui/selldialog.cpp:54
-#: src/gui/selldialog.cpp:64 src/gui/selldialog.cpp:104
+#: src/gui/selldialog.cpp:64 src/gui/selldialog.cpp:105
 msgid "Sell"
 msgstr "Продать"
 
@@ -1013,92 +1013,92 @@ msgstr "Введите пароль:"
 #. TRANSLATORS: inventory sort mode
 #. TRANSLATORS: screen density type
 #. TRANSLATORS: vsync type
-#: src/gui/chatwindow.cpp:139 src/gui/inventorywindow.cpp:65
+#: src/gui/chatwindow.cpp:142 src/gui/inventorywindow.cpp:65
 #: src/gui/setup_other.cpp:69 src/gui/setup_visual.cpp:77
 msgid "default"
 msgstr "По умолчанию"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:141
+#: src/gui/chatwindow.cpp:144
 msgid "black"
 msgstr "черный"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:143
+#: src/gui/chatwindow.cpp:146
 msgid "red"
 msgstr "красный"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:145
+#: src/gui/chatwindow.cpp:148
 msgid "green"
 msgstr "зеленый"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:147
+#: src/gui/chatwindow.cpp:150
 msgid "blue"
 msgstr "синий"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:149
+#: src/gui/chatwindow.cpp:152
 msgid "gold"
 msgstr "золотой"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:151
+#: src/gui/chatwindow.cpp:154
 msgid "yellow"
 msgstr "желтый"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:153
+#: src/gui/chatwindow.cpp:156
 msgid "pink"
 msgstr "розовый"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:155
+#: src/gui/chatwindow.cpp:158
 msgid "purple"
 msgstr "фиолетовый"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:157
+#: src/gui/chatwindow.cpp:160
 msgid "grey"
 msgstr "серый"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:159
+#: src/gui/chatwindow.cpp:162
 msgid "brown"
 msgstr "коричневый"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:161
+#: src/gui/chatwindow.cpp:164
 msgid "rainbow 1"
 msgstr "радуга 1"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:163
+#: src/gui/chatwindow.cpp:166
 msgid "rainbow 2"
 msgstr "радуга 2"
 
 #. TRANSLATORS: chat color
-#: src/gui/chatwindow.cpp:165
+#: src/gui/chatwindow.cpp:168
 msgid "rainbow 3"
 msgstr "радуга 3"
 
 #. TRANSLATORS: chat window name
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings tab name
-#: src/gui/chatwindow.cpp:192 src/gui/setupactiondata.h:1866
+#: src/gui/chatwindow.cpp:195 src/gui/setupactiondata.h:1866
 #: src/gui/setup_chat.cpp:50 src/gui/windowmenu.cpp:88
 msgid "Chat"
 msgstr "Чат"
 
 #. TRANSLATORS: chat message
-#: src/gui/chatwindow.cpp:641
+#: src/gui/chatwindow.cpp:659
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Присутствуют: %s; Всего %d игроков."
 
 #. TRANSLATORS: chat message
-#: src/gui/chatwindow.cpp:1044
+#: src/gui/chatwindow.cpp:1066
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Вы прошептали %s: %s"
@@ -1406,6 +1406,14 @@ msgstr "URL онлайн списка:"
 #: src/gui/editserverdialog.cpp:218
 msgid "Please at least type both the address and the port of the server."
 msgstr "Пожалуйста введите хотя бы адрес и порт сервера"
+
+#. TRANSLATORS: emotes window name
+#. TRANSLATORS: emotes tab name
+#. TRANSLATORS: input tab sub tab name
+#: src/gui/emotewindow.cpp:41 src/gui/emotewindow.cpp:61
+#: src/gui/setupactiondata.h:1862
+msgid "Emotes"
+msgstr "Смайлы"
 
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: inventory button
@@ -2414,12 +2422,12 @@ msgid "Passwords do not match."
 msgstr "Пароли не совпадают."
 
 #. TRANSLATORS: sell confirmation header
-#: src/gui/selldialog.cpp:242
+#: src/gui/selldialog.cpp:243
 msgid "sell item"
 msgstr "продажа предмета"
 
 #. TRANSLATORS: sell confirmation message
-#: src/gui/selldialog.cpp:244
+#: src/gui/selldialog.cpp:245
 #, c-format
 msgid "Do you really want to sell %s?"
 msgstr "Вы действительно хотите продать %s?"
@@ -3172,11 +3180,6 @@ msgstr "Горячие клавиши"
 #: src/gui/windowmenu.cpp:163
 msgid "Windows"
 msgstr "Окна"
-
-#. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1862
-msgid "Emotes"
-msgstr "Смайлы"
 
 #. TRANSLATORS: input tab sub tab name
 #: src/gui/setupactiondata.h:1870
@@ -7610,8 +7613,8 @@ msgstr "Плавающий пузырек"
 #. TRANSLATORS: being info default name
 #. TRANSLATORS: item info name
 #. TRANSLATORS: unknown info name
-#: src/resources/avatardb.cpp:69 src/resources/beinginfo.cpp:40
-#: src/resources/itemdb.cpp:291 src/resources/monsterdb.cpp:100
+#: src/resources/avatardb.cpp:69 src/resources/beinginfo.cpp:41
+#: src/resources/itemdb.cpp:295 src/resources/monsterdb.cpp:100
 msgid "unnamed"
 msgstr "безымянный"
 
