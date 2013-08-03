@@ -63,12 +63,12 @@ class DyePalette final
         /**
          * replace colors for SDL for S dye.
          */
-        void replaceSColor(uint8_t *const color) const;
+        void replaceSColor(uint32_t *pixels, const int bufSize) const;
 
         /**
          * replace colors for SDL for S dye.
          */
-        void replaceAColor(uint8_t *const color) const;
+        void replaceAColor(uint32_t *pixels, const int bufSize) const;
 
         /**
          * replace colors for OpenGL for S dye.

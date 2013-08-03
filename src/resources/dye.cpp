@@ -195,50 +195,80 @@ void DyePalette::getColor(double intensity, int color[3]) const
     color[2] = static_cast<int>(rest * b1 + intensity * b2);
 }
 
-void DyePalette::replaceSColor(uint8_t *const color) const
+void DyePalette::replaceSColor(uint32_t *pixels, const int bufSize) const
 {
-    std::vector<DyeColor>::const_iterator it = mColors.begin();
-    const std::vector<DyeColor>::const_iterator it_end = mColors.end();
-    while (it != it_end)
+    std::vector<DyeColor>::const_iterator it_end = mColors.end();
+    const int sz = mColors.size();
+    if (!sz)
+        return;
+    if (sz % 2)
+        -- it_end;
+
+    for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
     {
-        const DyeColor &col = *it;
-        ++ it;
-        if (it == it_end)
-            return;
-        const DyeColor &col2 = *it;
-        if (color[3] == col.value[0] && color[2] == col.value[1]
-            && color[1] == col.value[2])
+        uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
+        const int alpha = *p & 255;
+        if (!alpha)
+            continue;
+
+        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        while (it != it_end)
         {
-            color[3] = col2.value[0];
-            color[2] = col2.value[1];
-            color[1] = col2.value[2];
-            return;
+            const DyeColor &col = *it;
+            ++ it;
+            const DyeColor &col2 = *it;
+            const unsigned int data = (*pixels) & 0xffffff00;
+            const unsigned int coldata = (col.value[2] << 8)
+                | (col.value[1] << 16) | (col.value[0] << 24);
+
+            if (data == coldata)
+            {
+                p[3] = col2.value[0];
+                p[2] = col2.value[1];
+                p[1] = col2.value[2];
+                break;
+            }
+
+            ++ it;
         }
-        ++ it;
     }
 }
 
-void DyePalette::replaceAColor(uint8_t *const color) const
+void DyePalette::replaceAColor(uint32_t *pixels, const int bufSize) const
 {
-    std::vector<DyeColor>::const_iterator it = mColors.begin();
-    const std::vector<DyeColor>::const_iterator it_end = mColors.end();
-    while (it != it_end)
+    std::vector<DyeColor>::const_iterator it_end = mColors.end();
+    const int sz = mColors.size();
+    if (!sz)
+        return;
+    if (sz % 2)
+        -- it_end;
+
+    for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
     {
-        const DyeColor &col = *it;
-        ++ it;
-        if (it == it_end)
-            return;
-        const DyeColor &col2 = *it;
-        if (color[3] == col.value[0] && color[2] == col.value[1]
-            && color[1] == col.value[2] && color[0] == col.value[3])
+        uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
+
+        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        while (it != it_end)
         {
-            color[3] = col2.value[0];
-            color[2] = col2.value[1];
-            color[1] = col2.value[2];
-            color[0] = col2.value[3];
-            return;
+            const DyeColor &col = *it;
+            ++ it;
+            const DyeColor &col2 = *it;
+
+            const unsigned int data = *pixels;
+            const unsigned int coldata = (col.value[3]) | (col.value[2] << 8)
+                | (col.value[1] << 16) | (col.value[0] << 24);
+
+            if (data == coldata)
+            {
+                p[3] = col2.value[0];
+                p[2] = col2.value[1];
+                p[1] = col2.value[2];
+                p[0] = col2.value[3];
+                break;
+            }
+
+            ++ it;
         }
-        ++ it;
     }
 }
 

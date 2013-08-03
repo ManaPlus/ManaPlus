@@ -71,30 +71,14 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
         {
             const DyePalette *const pal = dye.getSPalete();
             if (pal)
-            {
-                for (uint32_t *p_end = pixels + surf->w * surf->h;
-                     pixels != p_end; ++pixels)
-                {
-                    uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
-                    const int alpha = *p & 255;
-                    if (!alpha)
-                        continue;
-                    pal->replaceSColor(p);
-                }
-            }
+                pal->replaceSColor(pixels, surf->w * surf->h);
             break;
         }
         case 2:
         {
             const DyePalette *const pal = dye.getAPalete();
             if (pal)
-            {
-                for (uint32_t *p_end = pixels + surf->w * surf->h;
-                     pixels != p_end; ++pixels)
-                {
-                    pal->replaceAColor(reinterpret_cast<uint8_t *>(pixels));
-                }
-            }
+                pal->replaceAColor(pixels, surf->w * surf->h);
             break;
         }
         case 0:

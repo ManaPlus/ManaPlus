@@ -124,7 +124,7 @@ TEST(Dye, replaceSColor1)
     data[1] = 0x02;
     data[2] = 0x03;
     data[3] = 0x10;
-    palette.replaceSColor(&data[0]);
+    palette.replaceSColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0x01, data[0]);
     EXPECT_EQ(0x02, data[1]);
     EXPECT_EQ(0x03, data[2]);
@@ -139,7 +139,7 @@ TEST(Dye, replaceSColor2)
     data[1] = 0x20;
     data[2] = 0x30;
     data[3] = 0x40;
-    palette.replaceSColor(&data[0]);
+    palette.replaceSColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0x10, data[0]);
     EXPECT_EQ(0x50, data[1]);
     EXPECT_EQ(0x60, data[2]);
@@ -154,7 +154,7 @@ TEST(Dye, replaceSColor3)
     data[1] = 0x20;
     data[2] = 0x30;
     data[3] = 0xff;
-    palette.replaceSColor(&data[0]);
+    palette.replaceSColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0x10, data[0]);
     EXPECT_EQ(0x50, data[1]);
     EXPECT_EQ(0x60, data[2]);
@@ -170,7 +170,7 @@ TEST(Dye, replaceAColor1)
     data[1] = 0x02;
     data[2] = 0x03;
     data[3] = 0x10;
-    palette.replaceAColor(&data[0]);
+    palette.replaceAColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0x01, data[0]);
     EXPECT_EQ(0x02, data[1]);
     EXPECT_EQ(0x03, data[2]);
@@ -185,7 +185,7 @@ TEST(Dye, replaceAColor2)
     data[1] = 0x00;
     data[2] = 0xff;
     data[3] = 0x00;
-    palette.replaceAColor(&data[0]);
+    palette.replaceAColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0xff, data[0]);
     EXPECT_EQ(0x11, data[1]);
     EXPECT_EQ(0x00, data[2]);
@@ -200,7 +200,7 @@ TEST(Dye, replaceAColor3)
     data[1] = 0xee;
     data[2] = 0x00;
     data[3] = 0x01;
-    palette.replaceAColor(&data[0]);
+    palette.replaceAColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0xff, data[0]);
     EXPECT_EQ(0x30, data[1]);
     EXPECT_EQ(0x20, data[2]);
