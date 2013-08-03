@@ -32,7 +32,7 @@ TEST(Dye, replaceSOGLColor1)
     data[1] = 0x02;
     data[2] = 0x03;
     data[3] = 0x10;
-    palette.replaceSOGLColor(&data[0]);
+    palette.replaceSOGLColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0x01, data[0]);
     EXPECT_EQ(0x02, data[1]);
     EXPECT_EQ(0x03, data[2]);
@@ -47,7 +47,7 @@ TEST(Dye, replaceSOGLColor2)
     data[1] = 0xff;
     data[2] = 0x00;
     data[3] = 0x20;
-    palette.replaceSOGLColor(&data[0]);
+    palette.replaceSOGLColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0x00, data[0]);
     EXPECT_EQ(0x00, data[1]);
     EXPECT_EQ(0x11, data[2]);
@@ -62,7 +62,7 @@ TEST(Dye, replaceSOGLColor3)
     data[1] = 0x00;
     data[2] = 0xee;
     data[3] = 0x40;
-    palette.replaceSOGLColor(&data[0]);
+    palette.replaceSOGLColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0x10, data[0]);
     EXPECT_EQ(0x20, data[1]);
     EXPECT_EQ(0x30, data[2]);
@@ -78,7 +78,7 @@ TEST(Dye, replaceAOGLColor1)
     data[1] = 0x02;
     data[2] = 0x03;
     data[3] = 0x10;
-    palette.replaceAOGLColor(&data[0]);
+    palette.replaceAOGLColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0x01, data[0]);
     EXPECT_EQ(0x02, data[1]);
     EXPECT_EQ(0x03, data[2]);
@@ -93,7 +93,7 @@ TEST(Dye, replaceAOGLColor2)
     data[1] = 0xff;
     data[2] = 0x00;
     data[3] = 0x20;
-    palette.replaceAOGLColor(&data[0]);
+    palette.replaceAOGLColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0x00, data[0]);
     EXPECT_EQ(0x00, data[1]);
     EXPECT_EQ(0x11, data[2]);
@@ -108,7 +108,7 @@ TEST(Dye, replaceAOGLColor3)
     data[1] = 0x00;
     data[2] = 0xee;
     data[3] = 0x40;
-    palette.replaceAOGLColor(&data[0]);
+    palette.replaceAOGLColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0x10, data[0]);
     EXPECT_EQ(0x20, data[1]);
     EXPECT_EQ(0x30, data[2]);

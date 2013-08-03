@@ -73,12 +73,12 @@ class DyePalette final
         /**
          * replace colors for OpenGL for S dye.
          */
-        void replaceSOGLColor(uint8_t *const color) const;
+        void replaceSOGLColor(uint32_t *pixels, const int bufSize) const;
 
         /**
          * replace colors for OpenGL for A dye.
          */
-        void replaceAOGLColor(uint8_t *const color) const;
+        void replaceAOGLColor(uint32_t *pixels, const int bufSize) const;
 
         static int hexDecode(const signed char c) A_WARN_UNUSED;
 

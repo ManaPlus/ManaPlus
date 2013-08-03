@@ -71,32 +71,15 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
         case 1:
         {
             DyePalette *const pal = dye.getSPalete();
-
             if (pal)
-            {
-                for (uint32_t *p_end = pixels + surf->w * surf->h;
-                     pixels != p_end; ++pixels)
-                {
-                    uint8_t *p = reinterpret_cast<uint8_t *>(pixels);
-                    const int alpha = *p & 255;
-                    if (!alpha)
-                        continue;
-                    pal->replaceSOGLColor(p);
-                }
-            }
+                pal->replaceSOGLColor(pixels, surf->w * surf->h);
             break;
         }
         case 2:
         {
             DyePalette *const pal = dye.getAPalete();
             if (pal)
-            {
-                for (uint32_t *p_end = pixels + surf->w * surf->h;
-                     pixels != p_end; ++pixels)
-                {
-                    pal->replaceAOGLColor(reinterpret_cast<uint8_t *>(pixels));
-                }
-            }
+                pal->replaceAOGLColor(pixels, surf->w * surf->h);
             break;
         }
         case 0:
