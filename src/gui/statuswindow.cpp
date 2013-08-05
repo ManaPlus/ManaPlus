@@ -214,7 +214,6 @@ StatusWindow::StatusWindow() :
     }
 
     place(0, 0, mLvlLabel, 3);
-    place(8, 0, mMoneyLabel, 3);
     place(0, 1, mHpLabel).setPadding(3);
     place(1, 1, mHpBar, 4);
     place(5, 1, mXpLabel).setPadding(3);
@@ -237,15 +236,17 @@ StatusWindow::StatusWindow() :
         mJobLabel = new Label(this, _("Job:"));
         mJobBar = new ProgressBar(this, 0.0f, 80, 0, Theme::PROG_JOB);
 
-        place(5, 0, mJobLvlLabel, 3);
+        place(3, 0, mJobLvlLabel, 3);
         place(5, 2, mJobLabel).setPadding(3);
         place(6, 2, mJobBar, 5);
+        place(6, 0, mMoneyLabel, 3);
     }
     else
     {
         mJobLvlLabel = nullptr;
         mJobLabel = nullptr;
         mJobBar = nullptr;
+        place(3, 0, mMoneyLabel, 3);
     }
 
     // ----------------------
