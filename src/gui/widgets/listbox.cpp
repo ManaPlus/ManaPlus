@@ -103,22 +103,18 @@ void ListBox::draw(gcn::Graphics *graphics)
         graphics->fillRectangle(gcn::Rectangle(mPadding,
             rowHeight * mSelected + mPadding,
             mDimension.width - 2 * mPadding, rowHeight));
-    }
 
-    const int sel = getSelected();
-    if (sel >= 0)
-    {
         g->setColorAll(mForegroundSelectedColor,
             mForegroundSelectedColor2);
-        font->drawString(graphics, mListModel->getElementAt(sel),
-            mPadding, sel * rowHeight + mPadding);
+        font->drawString(graphics, mListModel->getElementAt(mSelected),
+            mPadding, mSelected * rowHeight + mPadding);
     }
     // Draw the list elements
     g->setColorAll(mForegroundColor, mForegroundColor2);
     const int sz = mListModel->getNumberOfElements();
     for (int i = 0, y = mPadding; i < sz; ++i, y += rowHeight)
     {
-        if (i != sel)
+        if (i != mSelected)
         {
             font->drawString(graphics, mListModel->getElementAt(i),
                 mPadding, y);

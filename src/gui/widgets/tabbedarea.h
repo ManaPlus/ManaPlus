@@ -104,7 +104,7 @@ class TabbedArea final : public Widget2,
          */
         void removeTab(Tab *const tab);
 
-        void removeAll();
+        void removeAll(bool del = true);
 
         /**
          * Overload the logic function since it's broken in guichan 0.8.

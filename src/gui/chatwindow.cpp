@@ -499,6 +499,18 @@ void ChatWindow::action(const gcn::ActionEvent &event)
             }
         }
     }
+    else if (eventId == "color")
+    {
+        if (emoteWindow)
+        {
+            const std::string str = emoteWindow->getSelectedColor();
+            if (!str.empty())
+            {
+                addInputText(str, false);
+                emoteWindow->clearColor();
+            }
+        }
+    }
     else if (eventId == ACTION_COLOR_PICKER)
     {
         if (mColorPicker)

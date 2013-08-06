@@ -23,6 +23,8 @@
 #include "gui/chatwindow.h"
 #include "gui/gui.h"
 
+#include "gui/widgets/colormodel.h"
+#include "gui/widgets/colorpage.h"
 #include "gui/widgets/emotepage.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
@@ -41,7 +43,9 @@ EmoteWindow::EmoteWindow() :
     Window(_("Emotes"), false, nullptr, "emotes.xml"),
     mTabs(new TabbedArea(this)),
     mEmotePage(new EmotePage(this)),
-    mScrollEmotePage(new ScrollArea(mEmotePage, false, "emotepage.xml"))
+    mColorModel(ColorModel::createDefault(this)),
+    mColorPage(new ColorPage(this, mColorModel, "colorpage.xml")),
+    mScrollColorPage(new ScrollArea(mColorPage, false, "emotepage.xml"))
 {
     setShowTitle(false);
 
@@ -57,17 +61,28 @@ EmoteWindow::EmoteWindow() :
     center();
 
     setTitleBarHeight(getPadding() + getTitlePadding());
+    mScrollColorPage->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
     // TRANSLATORS: emotes tab name
     mTabs->addTab(_("Emotes"), mEmotePage);
+    // TRANSLATORS: emotes tab name
+    mTabs->addTab(_("Colors"), mScrollColorPage);
 
     mEmotePage->setActionEventId("emote");
+    mColorPage->setActionEventId("color");
 }
 
 EmoteWindow::~EmoteWindow()
 {
+    mTabs->removeAll(false);
     mTabs->removeTab(mTabs->getTabByIndex(0));
-    delete mScrollEmotePage;
-    mScrollEmotePage = nullptr;
+    delete mEmotePage;
+    mEmotePage = nullptr;
+    delete mColorPage;
+    mColorPage = nullptr;
+    delete mColorModel;
+    mColorModel = nullptr;
+    delete mScrollColorPage;
+    mScrollColorPage = nullptr;
 }
 
 void EmoteWindow::show()
@@ -100,7 +115,26 @@ void EmoteWindow::clearEmote()
         setVisible(false);
 }
 
+std::string EmoteWindow::getSelectedColor() const
+{
+    const int index = mColorPage->getSelected();
+    if (index < 0)
+        return std::string();
+
+    char chr[2];
+    chr[0] = '0' + index;
+    chr[1] = 0;
+    return std::string("##").append(&chr[0]);
+}
+
+void EmoteWindow::clearColor()
+{
+    mColorPage->resetAction();
+    setVisible(false);
+}
+
 void EmoteWindow::addListeners(gcn::ActionListener *const listener)
 {
     mEmotePage->addActionListener(listener);
+    mColorPage->addActionListener(listener);
 }

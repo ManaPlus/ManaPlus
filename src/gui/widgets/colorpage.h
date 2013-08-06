@@ -18,50 +18,37 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_EMOTEWINDOW_H
-#define GUI_EMOTEWINDOW_H
+#ifndef GUI_WIDGETS_COLORPAGE_H
+#define GUI_WIDGETS_COLORPAGE_H
 
-#include "gui/widgets/window.h"
+#include "gui/widgets/widget2.h"
 
-#include <guichan/mouselistener.hpp>
+#include "gui/widgets/listbox.h"
 
-class ColorModel;
-class ColorPage;
-class EmotePage;
-class ScrollArea;
-class TabbedArea;
+#include <guichan/widget.hpp>
 
-class EmoteWindow final : public Window
+#include "localconsts.h"
+
+class ColorPage final : public ListBox
 {
     public:
-        EmoteWindow();
+        ColorPage(const Widget2 *const widget,
+                  gcn::ListModel *const listModel,
+                  const std::string &skin);
 
-        A_DELETE_COPY(EmoteWindow)
+        A_DELETE_COPY(ColorPage)
 
-        ~EmoteWindow();
+        ~ColorPage();
 
-        void show();
+        void draw(gcn::Graphics *graphics) override;
 
-        void hide();
+        void resetAction();
 
-        std::string getSelectedEmote() const;
-
-        void clearEmote();
-
-        std::string getSelectedColor() const;
-
-        void clearColor();
-
-        void addListeners(gcn::ActionListener *const listener);
+        void adjustSize() override;
 
     private:
-        TabbedArea *mTabs;
-        EmotePage *mEmotePage;
-        ColorModel *mColorModel;
-        ColorPage *mColorPage;
-        ScrollArea *mScrollColorPage;
+        int mItemPadding;
+        unsigned int mRowHeight;
 };
 
-extern EmoteWindow *emoteWindow;
-
-#endif  // GUI_EMOTEWINDOW_H
+#endif  // GUI_WIDGETS_COLORPAGE_H

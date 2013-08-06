@@ -610,7 +610,7 @@ gcn::Widget *TabbedArea::getWidgetByIndex(const int index) const
     return mTabs[index].second;
 }
 
-void TabbedArea::removeAll()
+void TabbedArea::removeAll(bool del)
 {
     if (getSelectedTabIndex() != -1)
     {
@@ -622,8 +622,11 @@ void TabbedArea::removeAll()
         Tab *tab = mTabs[idx].first;
         gcn::Widget *widget = mTabs[idx].second;
         removeTab(tab);
-        delete tab;
-        delete widget;
+        if (del)
+        {
+            delete tab;
+            delete widget;
+        }
     }
 }
 
