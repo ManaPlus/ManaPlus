@@ -620,7 +620,7 @@ void SkillDialog::widgetResized(const gcn::Event &event)
     Window::widgetResized(event);
 
     if (mTabs)
-        mTabs->fixSize();
+        mTabs->adjustSize();
 }
 
 void SkillDialog::useItem(const int itemId) const

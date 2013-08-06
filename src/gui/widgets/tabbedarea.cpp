@@ -196,6 +196,13 @@ void TabbedArea::addTab(Tab *const tab, gcn::Widget *const widget)
     updateArrowEnableState();
 }
 
+void TabbedArea::adjustWidget(gcn::Widget *const widget) const
+{
+    const int frameSize = 2 * mFrameSize;
+    widget->setSize(getWidth() - frameSize,
+        getHeight() - frameSize - mTabContainer->getHeight());
+}
+
 void TabbedArea::addTab(const std::string &caption, gcn::Widget *const widget)
 {
     Tab *const tab = new Tab(this);

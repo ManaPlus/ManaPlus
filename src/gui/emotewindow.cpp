@@ -48,6 +48,7 @@ EmoteWindow::EmoteWindow() :
     mScrollColorPage(new ScrollArea(mColorPage, false, "emotepage.xml"))
 {
     setShowTitle(false);
+    setResizable(true);
 
     addMouseListener(this);
     const int pad2 = mPadding * 2;
@@ -62,6 +63,7 @@ EmoteWindow::EmoteWindow() :
 
     setTitleBarHeight(getPadding() + getTitlePadding());
     mScrollColorPage->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+    mScrollColorPage->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     // TRANSLATORS: emotes tab name
     mTabs->addTab(_("Emotes"), mEmotePage);
     // TRANSLATORS: emotes tab name
@@ -137,4 +139,18 @@ void EmoteWindow::addListeners(gcn::ActionListener *const listener)
 {
     mEmotePage->addActionListener(listener);
     mColorPage->addActionListener(listener);
+}
+
+void EmoteWindow::widgetResized(const gcn::Event &event)
+{
+    Window::widgetResized(event);
+    const int pad2 = mPadding * 2;
+    const int width = mDimension.width;
+    const int height = mDimension.height;
+
+    mTabs->setSize(width - pad2, height - pad2);
+    mTabs->adjustWidget(mEmotePage);
+    mTabs->adjustWidget(mScrollColorPage);
+    mColorPage->setSize(mScrollColorPage->getWidth(),
+        mScrollColorPage->getHeight());
 }

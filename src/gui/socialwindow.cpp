@@ -1706,7 +1706,7 @@ void SocialWindow::widgetResized(const gcn::Event &event)
 {
     Window::widgetResized(event);
     if (mTabs)
-        mTabs->fixSize();
+        mTabs->adjustSize();
 }
 
 #ifdef USE_PROFILER

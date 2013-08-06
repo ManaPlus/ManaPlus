@@ -164,9 +164,6 @@ class TabbedArea final : public Widget2,
         bool getFollowDownScroll() const A_WARN_UNUSED
         { return mFollowDownScroll; }
 
-        void fixSize()
-        { adjustSize(); }
-
         void keyPressed(gcn::KeyEvent& keyEvent) override;
 
         void setBlockSwitching(const bool b)
@@ -184,6 +181,8 @@ class TabbedArea final : public Widget2,
 
         void setResizeHeight(bool b)
         { mResizeHeight = b; }
+
+        void adjustWidget(gcn::Widget *const widget) const;
 
     private:
         typedef std::vector <std::pair<Tab*, gcn::Widget*> > TabContainer;
