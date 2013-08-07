@@ -82,7 +82,7 @@ class ListBox : public gcn::ListBox,
 
         void refocus();
 
-        void setDistributeMousePressed(bool b)
+        void setDistributeMousePressed(const bool b)
         { mDistributeMousePressed = b; }
 
         virtual void adjustSize();
@@ -90,6 +90,9 @@ class ListBox : public gcn::ListBox,
         void logic() override;
 
         virtual int getSelectionByMouse(const int y) const;
+
+        void setCenter(const bool b)
+        { mCenterText = b; }
 
     protected:
         gcn::Color mHighlightColor;
@@ -101,6 +104,7 @@ class ListBox : public gcn::ListBox,
         Skin *mSkin;
         static float mAlpha;
         bool mDistributeMousePressed;
+        bool mCenterText;
 };
 
 #endif  // GUI_WIDGETS_LISTBOX_H

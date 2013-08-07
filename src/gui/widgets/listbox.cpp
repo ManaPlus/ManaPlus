@@ -51,7 +51,8 @@ ListBox::ListBox(const Widget2 *const widget,
     mOldSelected(-1),
     mPadding(0),
     mSkin(nullptr),
-    mDistributeMousePressed(true)
+    mDistributeMousePressed(true),
+    mCenterText(false)
 {
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 
@@ -96,28 +97,62 @@ void ListBox::draw(gcn::Graphics *graphics)
     graphics->setColor(mHighlightColor);
     gcn::Font *const font = getFont();
     const int rowHeight = getRowHeight();
+    const int width = mDimension.width;
 
-    // Draw filled rectangle around the selected list element
-    if (mSelected >= 0)
+    if (mCenterText)
     {
-        graphics->fillRectangle(gcn::Rectangle(mPadding,
-            rowHeight * mSelected + mPadding,
-            mDimension.width - 2 * mPadding, rowHeight));
-
-        g->setColorAll(mForegroundSelectedColor,
-            mForegroundSelectedColor2);
-        font->drawString(graphics, mListModel->getElementAt(mSelected),
-            mPadding, mSelected * rowHeight + mPadding);
-    }
-    // Draw the list elements
-    g->setColorAll(mForegroundColor, mForegroundColor2);
-    const int sz = mListModel->getNumberOfElements();
-    for (int i = 0, y = mPadding; i < sz; ++i, y += rowHeight)
-    {
-        if (i != mSelected)
+        // Draw filled rectangle around the selected list element
+        if (mSelected >= 0)
         {
-            font->drawString(graphics, mListModel->getElementAt(i),
-                mPadding, y);
+            graphics->fillRectangle(gcn::Rectangle(mPadding,
+                rowHeight * mSelected + mPadding,
+                mDimension.width - 2 * mPadding, rowHeight));
+
+            g->setColorAll(mForegroundSelectedColor,
+                mForegroundSelectedColor2);
+            const std::string str = mListModel->getElementAt(mSelected);
+            font->drawString(graphics, str,
+                (width - font->getWidth(str)) / 2,
+                mSelected * rowHeight + mPadding);
+        }
+        // Draw the list elements
+        g->setColorAll(mForegroundColor, mForegroundColor2);
+        const int sz = mListModel->getNumberOfElements();
+        for (int i = 0, y = mPadding; i < sz; ++i, y += rowHeight)
+        {
+            if (i != mSelected)
+            {
+                const std::string str = mListModel->getElementAt(i);
+                font->drawString(graphics, str,
+                    (width - font->getWidth(str)) / 2, y);
+            }
+        }
+    }
+    else
+    {
+        // Draw filled rectangle around the selected list element
+        if (mSelected >= 0)
+        {
+            graphics->fillRectangle(gcn::Rectangle(mPadding,
+                rowHeight * mSelected + mPadding,
+                mDimension.width - 2 * mPadding, rowHeight));
+
+            g->setColorAll(mForegroundSelectedColor,
+                mForegroundSelectedColor2);
+            const std::string str = mListModel->getElementAt(mSelected);
+            font->drawString(graphics, str, mPadding,
+                mSelected * rowHeight + mPadding);
+        }
+        // Draw the list elements
+        g->setColorAll(mForegroundColor, mForegroundColor2);
+        const int sz = mListModel->getNumberOfElements();
+        for (int i = 0, y = mPadding; i < sz; ++i, y += rowHeight)
+        {
+            if (i != mSelected)
+            {
+                const std::string str = mListModel->getElementAt(i);
+                font->drawString(graphics, str, mPadding, y);
+            }
         }
     }
     BLOCK_END("ListBox::draw")
