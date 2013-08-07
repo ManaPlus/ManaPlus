@@ -511,6 +511,18 @@ void ChatWindow::action(const gcn::ActionEvent &event)
             }
         }
     }
+    else if (eventId == "font")
+    {
+        if (emoteWindow)
+        {
+            const std::string str = emoteWindow->getSelectedFont();
+            if (!str.empty())
+            {
+                addInputText(str, false);
+                emoteWindow->clearFont();
+            }
+        }
+    }
     else if (eventId == ACTION_COLOR_PICKER)
     {
         if (mColorPicker)

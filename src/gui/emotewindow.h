@@ -28,6 +28,8 @@
 class ColorModel;
 class ColorPage;
 class EmotePage;
+class ListBox;
+class NamesModel;
 class ScrollArea;
 class TabbedArea;
 
@@ -52,6 +54,10 @@ class EmoteWindow final : public Window
 
         void clearColor();
 
+        std::string getSelectedFont() const;
+
+        void clearFont();
+
         void addListeners(gcn::ActionListener *const listener);
 
         void widgetResized(const gcn::Event &event) override;
@@ -62,6 +68,9 @@ class EmoteWindow final : public Window
         ColorModel *mColorModel;
         ColorPage *mColorPage;
         ScrollArea *mScrollColorPage;
+        NamesModel *mFontModel;
+        ListBox *mFontPage;
+        ScrollArea *mScrollFontPage;
 };
 
 extern EmoteWindow *emoteWindow;

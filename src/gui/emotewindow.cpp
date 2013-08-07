@@ -27,6 +27,7 @@
 #include "gui/widgets/colorpage.h"
 #include "gui/widgets/emotepage.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
 
@@ -38,6 +39,16 @@
 
 #include "debug.h"
 
+static const int fontSizeListSize = 2;
+
+static const char *const fontSizeList[] =
+{
+    // TRANSLATORS: font size
+    N_("Normal font"),
+    // TRANSLATORS: font size
+    N_("Bold font"),
+};
+
 EmoteWindow::EmoteWindow() :
     // TRANSLATORS: emotes window name
     Window(_("Emotes"), false, nullptr, "emotes.xml"),
@@ -45,32 +56,45 @@ EmoteWindow::EmoteWindow() :
     mEmotePage(new EmotePage(this)),
     mColorModel(ColorModel::createDefault(this)),
     mColorPage(new ColorPage(this, mColorModel, "colorpage.xml")),
-    mScrollColorPage(new ScrollArea(mColorPage, false, "emotepage.xml"))
+    mScrollColorPage(new ScrollArea(mColorPage, false, "emotepage.xml")),
+    mFontModel(new NamesModel),
+    mFontPage(new ListBox(this, mFontModel, "")),
+    mScrollFontPage(new ScrollArea(mFontPage, false, "fontpage.xml"))
 {
     setShowTitle(false);
     setResizable(true);
 
     addMouseListener(this);
     const int pad2 = mPadding * 2;
-    const int sz = 150;
-    setWidth(sz + pad2);
-    setHeight(sz + pad2);
+    const int width = 200;
+    const int height = 150;
+    setWidth(width + pad2);
+    setHeight(height + pad2);
     add(mTabs);
     mTabs->setPosition(mPadding, mPadding);
-    mTabs->setWidth(sz);
-    mTabs->setHeight(sz);
+    mTabs->setWidth(width);
+    mTabs->setHeight(height);
     center();
 
     setTitleBarHeight(getPadding() + getTitlePadding());
     mScrollColorPage->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
     mScrollColorPage->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mScrollFontPage->setVerticalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mScrollFontPage->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+
+    mFontModel->fillFromArray(&fontSizeList[0], fontSizeListSize);
+    mFontPage->setCenter(true);
+
     // TRANSLATORS: emotes tab name
     mTabs->addTab(_("Emotes"), mEmotePage);
     // TRANSLATORS: emotes tab name
     mTabs->addTab(_("Colors"), mScrollColorPage);
+    // TRANSLATORS: emotes tab name
+    mTabs->addTab(_("Fonts"), mScrollFontPage);
 
     mEmotePage->setActionEventId("emote");
     mColorPage->setActionEventId("color");
+    mFontPage->setActionEventId("font");
 }
 
 EmoteWindow::~EmoteWindow()
@@ -85,6 +109,12 @@ EmoteWindow::~EmoteWindow()
     mColorModel = nullptr;
     delete mScrollColorPage;
     mScrollColorPage = nullptr;
+    delete mFontPage;
+    mFontPage = nullptr;
+    delete mFontModel;
+    mFontModel = nullptr;
+    delete mFontPage;
+    mScrollFontPage = nullptr;
 }
 
 void EmoteWindow::show()
@@ -135,10 +165,29 @@ void EmoteWindow::clearColor()
     setVisible(false);
 }
 
+std::string EmoteWindow::getSelectedFont() const
+{
+    const int index = mFontPage->getSelected();
+    if (index < 0)
+        return std::string();
+
+    if (!index)
+        return "##b";
+    else
+        return "##B";
+}
+
+void EmoteWindow::clearFont()
+{
+    mFontPage->setSelected(-1);
+    setVisible(false);
+}
+
 void EmoteWindow::addListeners(gcn::ActionListener *const listener)
 {
     mEmotePage->addActionListener(listener);
     mColorPage->addActionListener(listener);
+    mFontPage->addActionListener(listener);
 }
 
 void EmoteWindow::widgetResized(const gcn::Event &event)
