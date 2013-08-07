@@ -41,6 +41,11 @@ namespace TmwAthena
 
 extern ServerInfo charServer;
 
+enum ServerFlags
+{
+    FLAG_REGISTRATION = 1
+};
+
 LoginHandler::LoginHandler() :
     MessageHandler(),
     Ea::LoginHandler()
@@ -188,7 +193,7 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     if (b1 == 255 && b2 == 'E' && b3 == 'V' && b4 == 'L')
     {
         const unsigned int options = msg.readInt8();
-        mRegistrationEnabled = options;
+        mRegistrationEnabled = options & FLAG_REGISTRATION;
         msg.skip(2);  // 0 unused
         serverVersion = msg.readInt8();
         if (serverVersion >= 5)
@@ -197,7 +202,7 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     else
     {
         const unsigned int options = msg.readInt32();
-        mRegistrationEnabled = options;
+        mRegistrationEnabled = options & FLAG_REGISTRATION;
         serverVersion = 0;
     }
     logger->log("Server version: %d", serverVersion);
