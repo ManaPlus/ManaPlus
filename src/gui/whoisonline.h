@@ -154,6 +154,8 @@ public:
 
     void setNeutralColor(OnlinePlayer *const player);
 
+    void getPlayerNames(StringVect &names);
+
 private:
     void download();
 

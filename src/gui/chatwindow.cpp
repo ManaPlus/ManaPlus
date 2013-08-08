@@ -43,6 +43,7 @@
 #include "gui/sdlfont.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
+#include "gui/whoisonline.h"
 
 #include "gui/widgets/battletab.h"
 #include "gui/widgets/dropdown.h"
@@ -1262,6 +1263,11 @@ void ChatWindow::autoComplete()
     }
     if (newName.empty())
         newName = autoComplete(name, &mCustomWords);
+    if (newName.empty())
+    {
+        whoIsOnline->getPlayerNames(nameList);
+        newName = autoComplete(nameList, name);
+    }
 
     if (!newName.empty())
     {

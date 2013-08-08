@@ -797,6 +797,13 @@ void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
     player->setText("0");
 }
 
+void WhoIsOnline::getPlayerNames(StringVect &names)
+{
+    names.clear();
+    FOR_EACH (std::set<std::string>::const_iterator, it, mOnlineNicks)
+        names.push_back(*it);
+}
+
 void OnlinePlayer::setText(std::string color)
 {
     mText.clear();
