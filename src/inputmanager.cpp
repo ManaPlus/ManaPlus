@@ -108,6 +108,7 @@ void InputManager::retrieve()
             mNameMap[cf] = i;
             KeyFunction &kf = mKey[i];
             const std::string keyStr = config.getValue(cf, "");
+            const int keyStrSize = keyStr.size();
             if (keyStr.empty())
                 continue;
 
@@ -118,7 +119,7 @@ void InputManager::retrieve()
                  it != it_end && i2 < KeyFunctionSize; ++ it)
             {
                 std::string keyStr2 = *it;
-                if (keyStr.size() < 2)
+                if (keyStrSize < 2)
                     continue;
                 int type = INPUT_KEYBOARD;
                 if ((keyStr2[0] < '0' || keyStr2[0] > '9')

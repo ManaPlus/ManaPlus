@@ -89,13 +89,14 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
         xpos = 0;
         gcn::Font *const font = getFont();
         const int spaceWidth = font->getWidth(" ");
+        size_t sz = line.size();
 
         do
         {
             spacePos = line.find(" ", lastSpacePos);
 
             if (spacePos == std::string::npos)
-                spacePos = line.size();
+                spacePos = sz;
 
             const std::string word =
                 line.substr(lastSpacePos, spacePos - lastSpacePos);
@@ -130,14 +131,13 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
                     mMinWidth = minWidth;
                     wrappedStream.clear();
                     wrappedStream.str("");
-//                    spacePos = 0;
                     lastNewlinePos = 0;
                     newlinePos = text.find("\n", lastNewlinePos);
                     if (newlinePos == std::string::npos)
                         newlinePos = textSize;
                     line = text.substr(lastNewlinePos, newlinePos -
                                        lastNewlinePos);
-//                    width = 0;
+                    sz = line.size();
                     break;
                 }
                 else
@@ -148,14 +148,14 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
             }
             lastSpacePos = spacePos + 1;
         }
-        while (spacePos != line.size());
+        while (spacePos != sz);
 
         if (text.find("\n", lastNewlinePos) != std::string::npos)
             wrappedStream << "\n";
 
         lastNewlinePos = newlinePos + 1;
     }
-    while (newlinePos != text.size());
+    while (newlinePos != textSize);
 
     if (xpos > minWidth)
         minWidth = xpos;

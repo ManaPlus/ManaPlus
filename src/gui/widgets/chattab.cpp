@@ -346,7 +346,8 @@ void ChatTab::chatInput(const std::string &message)
 
     // Check for item link
     size_t start = msg.find('[');
-    while (start + 1 < msg.size() && start != std::string::npos
+    size_t sz = msg.size();
+    while (start + 1 < sz && start != std::string::npos
            && msg[start + 1] != '@')
     {
         const size_t end = msg.find(']', start);
@@ -360,9 +361,8 @@ void ChatTab::chatInput(const std::string &message)
                 start = msg.find('[', start + 1);
             }
 
-            std::string temp("");
-            if (start + 1 < msg.length() && end < msg.length()
-                && end > start + 1)
+            std::string temp;
+            if (start + 1 < sz && end < sz && end > start + 1)
             {
                 temp = msg.substr(start + 1, end - start - 1);
 
@@ -373,6 +373,7 @@ void ChatTab::chatInput(const std::string &message)
                     msg.insert(start + 1, "|");
                     msg.insert(start + 1, toString(itemInfo.getId()));
                     msg.insert(start + 1, "@@");
+                    sz = msg.size();
                 }
             }
         }

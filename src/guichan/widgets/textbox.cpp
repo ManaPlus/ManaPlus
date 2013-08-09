@@ -137,8 +137,9 @@ namespace gcn
         {
             mCaretRow = mouseEvent.getY() / getFont()->getHeight();
 
-            if (mCaretRow >= static_cast<int>(mTextRows.size()))
-                mCaretRow = static_cast<int>(mTextRows.size() - 1);
+            const int sz = static_cast<int>(mTextRows.size());
+            if (mCaretRow >= sz)
+                mCaretRow = sz - 1;
 
             mCaretColumn = getFont()->getStringIndexAt(
                 mTextRows[mCaretRow], mouseEvent.getX());
@@ -210,8 +211,9 @@ namespace gcn
     {
         mCaretRow = row;
 
-        if (mCaretRow >= static_cast<int>(mTextRows.size()))
-            mCaretRow = static_cast<int>(mTextRows.size() - 1);
+        const int sz = static_cast<int>(mTextRows.size());
+        if (mCaretRow >= sz)
+            mCaretRow = sz - 1;
 
         if (mCaretRow < 0)
             mCaretRow = 0;
@@ -228,8 +230,9 @@ namespace gcn
     {
         mCaretColumn = column;
 
-        if (mCaretColumn > static_cast<int>(mTextRows[mCaretRow].size()))
-            mCaretColumn = static_cast<int>(mTextRows[mCaretRow].size());
+        const int sz = static_cast<int>(mTextRows[mCaretRow].size());
+        if (mCaretColumn > sz)
+            mCaretColumn = sz;
 
         if (mCaretColumn < 0)
             mCaretColumn = 0;

@@ -89,9 +89,9 @@ namespace gcn
 
     void TextField::setText(const std::string& text)
     {
-        if (text.size() < mCaretPosition)
-            mCaretPosition = static_cast<int>(text.size());
-
+        const size_t sz = text.size();
+        if (sz < mCaretPosition)
+            mCaretPosition = sz;
         mText = text;
     }
 

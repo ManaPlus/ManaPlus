@@ -67,7 +67,7 @@ void CharacterViewSmall::show(const int i)
     if (i >= sz)
         mSelected = 0;
     else if (i < 0)
-        mSelected = mCharacterEntries->size() - 1;
+        mSelected = sz - 1;
     else
         mSelected = i;
     mSelectedEntry = (*mCharacterEntries)[mSelected];

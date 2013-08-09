@@ -420,9 +420,12 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
     if (mSpeech.empty())
         return;
 
-    const size_t sz = mSpeech.size();
-    if (!time && sz < 200)
-        time = static_cast<int>(SPEECH_TIME - 300 + (3 * sz));
+    if (!time)
+    {
+        const size_t sz = mSpeech.size();
+        if (sz < 200)
+            time = static_cast<int>(SPEECH_TIME - 300 + (3 * sz));
+    }
 
     if (time < static_cast<int>(SPEECH_MIN_TIME))
         time = static_cast<int>(SPEECH_MIN_TIME);

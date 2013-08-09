@@ -286,20 +286,30 @@ std::string removeSpriteIndex(std::string str)
 
 const char* getSafeUtf8String(std::string text)
 {
-    const int size = static_cast<int>(text.size()) + UTF8_MAX_SIZE;
+    const size_t sz = text.size();
+    const size_t size = sz + UTF8_MAX_SIZE;
     char *const buf = new char[size];
-    memcpy(buf, text.c_str(), text.size());
-    memset(buf + text.size(), 0, UTF8_MAX_SIZE);
+    memcpy(buf, text.c_str(), sz);
+    memset(buf + sz, 0, UTF8_MAX_SIZE);
     return buf;
 }
 
 void getSafeUtf8String(std::string text, char *const buf)
 {
-    const int size = static_cast<int>(text.size()) + UTF8_MAX_SIZE;
+    const size_t sz = text.size();
+    const size_t size = sz + UTF8_MAX_SIZE;
     if (size > 65500)
+    {
         text = text.substr(0, 65500);
-    memcpy(buf, text.c_str(), text.size());
-    memset(buf + text.size(), 0, UTF8_MAX_SIZE);
+        const size_t sz1 = text.size();
+        memcpy(buf, text.c_str(), sz1);
+        memset(buf + sz1, 0, UTF8_MAX_SIZE);
+    }
+    else
+    {
+        memcpy(buf, text.c_str(), sz);
+        memset(buf + sz, 0, UTF8_MAX_SIZE);
+    }
     return;
 }
 
@@ -366,11 +376,12 @@ void replaceSpecialChars(std::string &text)
     while (pos1 != std::string::npos)
     {
         const size_t idx = pos1 + 1;
-        if (idx >= text.size())
+        const size_t sz = text.size();
+        if (idx >= sz)
             break;
 
         size_t f;
-        for (f = idx; f < text.size(); f ++)
+        for (f = idx; f < sz; f ++)
         {
             if (text[f] < '0' || text[f] > '9')
                 break;

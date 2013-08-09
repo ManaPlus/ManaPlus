@@ -161,9 +161,10 @@ bool PoParser::readMsgId()
         if (strStartWith(mLine, msgId1))
         {
             mReadingId = true;
+            const size_t msgId1Size = msgId1.size();
             // reading text from: msgid "text"
-            mMsgId.append(mLine.substr(msgId1.size(),
-                mLine.size() - 1 - msgId1.size()));
+            mMsgId.append(mLine.substr(msgId1Size,
+                mLine.size() - 1 - msgId1Size));
             mLine.clear();
             return true;
         }
@@ -201,9 +202,10 @@ bool PoParser::readMsgStr()
         if (strStartWith(mLine, msgStr1))
         {
             mReadingStr = true;
+            const size_t msgStr1Size = msgStr1.size();
             // reading text from: msgid "text"
-            mMsgStr.append(mLine.substr(msgStr1.size(),
-                mLine.size() - 1 - msgStr1.size()));
+            mMsgStr.append(mLine.substr(msgStr1Size,
+                mLine.size() - 1 - msgStr1Size));
             mLine.clear();
             return true;
         }
@@ -215,9 +217,9 @@ bool PoParser::readMsgStr()
 
 bool PoParser::checkLine()
 {
+    const size_t sz = mLine.size();
     // check is line in format: "text"
-    return mLine.size() > 2 && mLine[0] == '\"'
-        && mLine[mLine.size() - 1] == '\"';
+    return sz > 2 && mLine[0] == '\"' && mLine[sz - 1] == '\"';
 }
 
 PoDict *PoParser::getEmptyDict()
