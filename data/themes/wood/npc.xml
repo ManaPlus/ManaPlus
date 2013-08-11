@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skinset name="Default" image="window.png">
     <widget type="Window" xpos="260" ypos="0">
-        <option name="showlistbackground" value="1" />
-        <option name="showtextbackground" value="1" />
+        <option name="padding" value="6" />
         <option name="showitemsbackground" value="1" />
 
-        <option name="padding" value="10" />
         <!-- Top Row -->
-        <part type="top-left-corner" xpos="0" ypos="0" width="10" height="10" />
+        <part type="top-left-corner" width="10" height="10" />
         <part type="top-edge" xpos="11" ypos="0" width="127" height="10" />
         <part type="top-right-corner" xpos="139" ypos="0" width="12" height="10" />
 

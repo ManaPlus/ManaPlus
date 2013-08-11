@@ -8,6 +8,7 @@ gui_DATA =				\
 	equipment.xml		\
 	info.xml		\
 	inventory.xml		\
+	npc.xml		\
 	ok.xml		\
 	outfits.xml		\
 	popup.xml		\

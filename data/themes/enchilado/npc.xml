@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skinset name="Default" image="window.png">
-    <widget type="Window" xpos="260" ypos="0">
-        <option name="showlistbackground" value="1" />
-        <option name="showtextbackground" value="1" />
+    <widget type="Window" xpos="190" ypos="30">
         <option name="showitemsbackground" value="1" />
 
-        <option name="padding" value="10" />
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="10" height="10" />
         <part type="top-edge" xpos="11" ypos="0" width="127" height="10" />
@@ -21,8 +18,8 @@
         <part type="bottom-edge" xpos="11" ypos="93" width="127" height="12" />
         <part type="bottom-right-corner" xpos="139" ypos="93" width="12" height="12" />
 
-        <part type="closeImage" xpos="-130" ypos="0" width="15" height="15" />
-        <part type="stickyImageUp" xpos="-130" ypos="51" width="15" height="15" />
-        <part type="stickyImageDown" xpos="-115" ypos="51" width="15" height="15" />
+        <part type="closeImage" xpos="-60" ypos="-30" width="15" height="15" />
+        <part type="stickyImageUp" xpos="-60" ypos="21" width="15" height="15" />
+        <part type="stickyImageDown" xpos="-45" ypos="21" width="15" height="15" />
     </widget>
 </skinset>

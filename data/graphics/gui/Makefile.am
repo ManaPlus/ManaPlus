@@ -40,6 +40,7 @@ gui_DATA =				\
 	listbox.xml			\
 	ministatus.xml			\
 	mouse.png			\
+	npc.xml			\
 	ok.xml			\
 	outfits.xml			\
 	playerbox.xml	\

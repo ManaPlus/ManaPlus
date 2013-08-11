@@ -6,6 +6,7 @@ SET (FILES
     inventory.xml
     item_shortcut_bgr.png
     mouse.png
+    npc.xml
     ok.xml
     outfits.xml
     popup.xml
