@@ -113,7 +113,7 @@ EmoteWindow::~EmoteWindow()
     mFontPage = nullptr;
     delete mFontModel;
     mFontModel = nullptr;
-    delete mFontPage;
+    delete mScrollFontPage;
     mScrollFontPage = nullptr;
 }
 
