@@ -350,7 +350,6 @@ void NpcDialog::action(const gcn::ActionEvent &event)
 
                     const Item *const item = mInventory->getItem(0);
                     std::string str;
-                    int color = 1;
                     if (item)
                     {
                         str = strprintf("%d,%d", item->getId(),
@@ -370,8 +369,11 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                 default:
                     break;
             }
-            // addText will auto remove the input layout
-            addText(strprintf("> \"%s\"", printText.c_str()), false);
+            if (mInputState != NPC_INPUT_ITEM)
+            {
+                // addText will auto remove the input layout
+                addText(strprintf("> \"%s\"", printText.c_str()), false);
+            }
             mNewText.clear();
         }
 
