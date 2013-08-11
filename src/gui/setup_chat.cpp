@@ -58,11 +58,11 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     new SetupItemLabel(_("Window"), "", this);
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Auto hide chat window."), "",
+    new SetupItemCheckBox(_("Auto hide chat window"), "",
         "autohideChat", this, "autohideChatEvent");
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Protect chat focus."), "",
+    new SetupItemCheckBox(_("Protect chat focus"), "",
         "protectChatFocus", this, "protectChatFocusEvent");
 
 
