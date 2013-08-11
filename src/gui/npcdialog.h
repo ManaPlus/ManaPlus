@@ -40,7 +40,9 @@ class Button;
 class BrowserBox;
 class ExtendedListBox;
 class ItemLinkHandler;
+class Inventory;
 class IntTextField;
+class ItemContainer;
 class NpcDialog;
 class PlayerBox;
 class ScrollArea;
@@ -161,6 +163,8 @@ class NpcDialog final : public Window,
         void integerRequest(const int defaultValue = 0, const int min = 0,
                             const int max = 2147483647);
 
+        void itemRequest();
+
         void move(const int amount);
 
         void setVisible(bool visible) override;
@@ -227,6 +231,8 @@ class NpcDialog final : public Window,
 
         void placeIntInputControls();
 
+        void placeItemInputControls();
+
         int mNpcId;
 
         int mDefaultInt;
@@ -255,16 +261,22 @@ class NpcDialog final : public Window,
         // Used for the button
         Button *mButton;
         Button *mButton2;
+        Button *mButton3;
 
         // Will reset the text and integer input to the provided default
         Button *mResetButton;
+
+        Inventory *mInventory;
+        ItemContainer *mItemContainer;
+        ScrollArea *mItemScrollArea;
 
         enum NpcInputState
         {
             NPC_INPUT_NONE = 0,
             NPC_INPUT_LIST,
             NPC_INPUT_STRING,
-            NPC_INPUT_INTEGER
+            NPC_INPUT_INTEGER,
+            NPC_INPUT_ITEM
         };
 
         enum NpcActionState

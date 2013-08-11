@@ -413,6 +413,8 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
             case Inventory::TRADE:
                 src = DRAGDROP_SOURCE_TRADE;
                 break;
+            case Inventory::NPC:
+                src = DRAGDROP_SOURCE_NPC;
             default:
                 break;
         }
@@ -505,6 +507,9 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
             case Inventory::TRADE:
                 dst = DRAGDROP_SOURCE_TRADE;
                 break;
+            case Inventory::NPC:
+                dst = DRAGDROP_SOURCE_NPC;
+                break;
             default:
                 break;
         }
@@ -529,6 +534,23 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
             && dst == DRAGDROP_SOURCE_TRADE)
         {
             inventory = PlayerInfo::getInventory();
+        }
+        else if (src == DRAGDROP_SOURCE_INVENTORY
+                 && dst == DRAGDROP_SOURCE_NPC)
+        {
+            inventory = PlayerInfo::getInventory();
+            const Item *const item = inventory->getItem(dragDrop.getTag());
+            if (item)
+                mInventory->addItem(item->getId(), 1, 1, item->getColor());
+            return;
+        }
+        else if (src == DRAGDROP_SOURCE_NPC)
+        {
+            inventory = PlayerInfo::getInventory();
+            const Item *const item = inventory->getItem(dragDrop.getTag());
+            if (item)
+                mInventory->removeItemAt(dragDrop.getTag());
+            return;
         }
 
         if (inventory)

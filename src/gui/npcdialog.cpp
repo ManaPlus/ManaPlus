@@ -26,10 +26,13 @@
 #include "being.h"
 #include "configuration.h"
 #include "client.h"
+#include "inventory.h"
+#include "item.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "gui/gui.h"
+#include "gui/inventorywindow.h"
 #include "gui/sdlfont.h"
 #include "gui/setup.h"
 #include "gui/viewport.h"
@@ -37,6 +40,7 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/inttextfield.h"
+#include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/extendedlistbox.h"
@@ -102,7 +106,13 @@ NpcDialog::NpcDialog(const int npcId) :
     // TRANSLATORS: npc dialog button
     mButton2(new Button(this, _("Close"), "close", this)),
     // TRANSLATORS: npc dialog button
+    mButton3(new Button(this, _("Add"), "add", this)),
+    // TRANSLATORS: npc dialog button
     mResetButton(new Button(this, _("Reset"), "reset", this)),
+    mInventory(new Inventory(Inventory::NPC, 1)),
+    mItemContainer(new ItemContainer(this, mInventory)),
+    mItemScrollArea(new ScrollArea(mItemContainer,
+        getOptionBool("showitemsbackground"), "npc_listbackground.xml")),
     mInputState(NPC_INPUT_NONE),
     mActionState(NPC_ACTION_WAIT),
     mLastNextTime(0),
@@ -152,6 +162,7 @@ NpcDialog::NpcDialog(const int npcId) :
 
     setContentSize(260, 175);
     mListScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    mItemScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     mItemList->setVisible(true);
     mTextField->setVisible(true);
     mIntField->setVisible(true);
@@ -204,6 +215,8 @@ NpcDialog::~NpcDialog()
     mButton = nullptr;
     delete mButton2;
     mButton2 = nullptr;
+    delete mButton3;
+    mButton3 = nullptr;
 
     // These might not actually be in the layout, so lets be safe
     delete mScrollArea;
@@ -222,6 +235,13 @@ NpcDialog::~NpcDialog()
     mMinusButton = nullptr;
     delete mItemLinkHandler;
     mItemLinkHandler = nullptr;
+
+    delete mItemContainer;
+    mItemContainer = nullptr;
+    delete mInventory;
+    mInventory = nullptr;
+    delete mItemScrollArea;
+    mItemScrollArea = nullptr;
 
     delete mListScrollArea;
     mListScrollArea = nullptr;
@@ -287,38 +307,68 @@ void NpcDialog::action(const gcn::ActionEvent &event)
             std::string printText;  // Text that will get printed
                                     // in the textbox
 
-            if (mInputState == NPC_INPUT_LIST)
+            switch(mInputState)
             {
-                if (gui)
-                    gui->resetClickCount();
-                const int selectedIndex = mItemList->getSelected();
-
-                if (selectedIndex >= static_cast<int>(mItems.size())
-                    || selectedIndex < 0
-                    || !Client::limitPackets(PACKET_NPC_INPUT))
+                case NPC_INPUT_LIST:
                 {
-                    return;
-                }
-                unsigned char choice = static_cast<unsigned char>(
-                    selectedIndex + 1);
-                printText = mItems[selectedIndex];
+                    if (gui)
+                        gui->resetClickCount();
+                    const int selectedIndex = mItemList->getSelected();
 
-                Net::getNpcHandler()->listInput(mNpcId, choice);
-            }
-            else if (mInputState == NPC_INPUT_STRING)
-            {
-                if (!Client::limitPackets(PACKET_NPC_INPUT))
-                    return;
-                printText = mTextField->getText();
-                Net::getNpcHandler()->stringInput(mNpcId, printText);
-            }
-            else if (mInputState == NPC_INPUT_INTEGER)
-            {
-                if (!Client::limitPackets(PACKET_NPC_INPUT))
-                    return;
-                printText = strprintf("%d", mIntField->getValue());
-                Net::getNpcHandler()->integerInput(
-                    mNpcId, mIntField->getValue());
+                    if (selectedIndex >= static_cast<int>(mItems.size())
+                        || selectedIndex < 0
+                        || !Client::limitPackets(PACKET_NPC_INPUT))
+                    {
+                        return;
+                    }
+                    unsigned char choice = static_cast<unsigned char>(
+                        selectedIndex + 1);
+                    printText = mItems[selectedIndex];
+
+                    Net::getNpcHandler()->listInput(mNpcId, choice);
+                    break;
+                }
+                case NPC_INPUT_STRING:
+                {
+                    if (!Client::limitPackets(PACKET_NPC_INPUT))
+                        return;
+                    printText = mTextField->getText();
+                    Net::getNpcHandler()->stringInput(mNpcId, printText);
+                }
+                case NPC_INPUT_INTEGER:
+                {
+                    if (!Client::limitPackets(PACKET_NPC_INPUT))
+                        return;
+                    printText = strprintf("%d", mIntField->getValue());
+                    Net::getNpcHandler()->integerInput(
+                        mNpcId, mIntField->getValue());
+                }
+                case NPC_INPUT_ITEM:
+                {
+                    if (!Client::limitPackets(PACKET_NPC_INPUT))
+                        return;
+
+                    const Item *const item = mInventory->getItem(0);
+                    std::string str;
+                    int color = 1;
+                    if (item)
+                    {
+                        str = strprintf("%d,%d", item->getId(),
+                            item->getColor());
+                    }
+                    else
+                    {
+                        str = "0,0";
+                    }
+
+                    // need send selected item
+                    Net::getNpcHandler()->stringInput(mNpcId, str);
+                    mInventory->clear();
+                    break;
+                }
+
+                default:
+                    break;
             }
             // addText will auto remove the input layout
             addText(strprintf("> \"%s\"", printText.c_str()), false);
@@ -330,10 +380,20 @@ void NpcDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "reset")
     {
-        if (mInputState == NPC_INPUT_STRING)
-            mTextField->setText(mDefaultString);
-        else if (mInputState == NPC_INPUT_INTEGER)
-            mIntField->setValue(mDefaultInt);
+        switch (mInputState)
+        {
+            case NPC_INPUT_STRING:
+                mTextField->setText(mDefaultString);
+                break;
+            case NPC_INPUT_INTEGER:
+                mIntField->setValue(mDefaultInt);
+                break;
+            case NPC_INPUT_ITEM:
+                mInventory->clear();
+                break;
+            default:
+                break;
+        }
     }
     else if (eventId == "inc")
     {
@@ -345,14 +405,43 @@ void NpcDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "clear")
     {
-        clearRows();
+        switch (mInputState)
+        {
+            case NPC_INPUT_ITEM:
+                mInventory->clear();
+                break;
+            case NPC_INPUT_STRING:
+            case NPC_INPUT_INTEGER:
+            default:
+                clearRows();
+                break;
+        }
     }
     else if (eventId == "close")
     {
         if (mActionState == NPC_ACTION_INPUT)
         {
-            Net::getNpcHandler()->listInput(mNpcId, 255);
+            switch (mInputState)
+            {
+                case NPC_INPUT_ITEM:
+                    Net::getNpcHandler()->stringInput(mNpcId, "0,0");
+                    break;
+                case NPC_INPUT_STRING:
+                case NPC_INPUT_INTEGER:
+                default:
+                    Net::getNpcHandler()->listInput(mNpcId, 255);
+                    break;
+            }
             closeDialog();
+        }
+    }
+    else if (eventId == "add")
+    {
+        if (inventoryWindow)
+        {
+            const Item *const item = inventoryWindow->getSelectedItem();
+            if (item)
+                mInventory->addItem(item->getId(), 1, 1, item->getColor());
         }
     }
 }
@@ -450,6 +539,7 @@ void NpcDialog::textRequest(const std::string &defaultText)
     mInputState = NPC_INPUT_STRING;
     mDefaultString = defaultText;
     mTextField->setText(defaultText);
+
     buildLayout();
 }
 
@@ -486,6 +576,14 @@ void NpcDialog::integerRequest(const int defaultValue, const int min,
     buildLayout();
 }
 
+void NpcDialog::itemRequest()
+{
+    mActionState = NPC_ACTION_INPUT;
+    mInputState = NPC_INPUT_ITEM;
+
+    buildLayout();
+}
+
 void NpcDialog::move(const int amount)
 {
     if (mActionState != NPC_ACTION_INPUT)
@@ -501,6 +599,7 @@ void NpcDialog::move(const int amount)
             break;
         case NPC_INPUT_NONE:
         case NPC_INPUT_STRING:
+        case NPC_INPUT_ITEM:
         default:
             break;
     }
@@ -627,6 +726,27 @@ void NpcDialog::placeIntInputControls()
     }
 }
 
+void NpcDialog::placeItemInputControls()
+{
+    if (mShowAvatar)
+    {
+        place(0, 0, mPlayerBox);
+        place(1, 0, mScrollArea, 6, 3);
+        place(0, 3, mItemScrollArea, 7, 3);
+        place(1, 6, mButton3, 2);
+        place(3, 6, mClearButton, 2);
+        place(5, 6, mButton, 2);
+    }
+    else
+    {
+        place(0, 0, mScrollArea, 6, 3);
+        place(0, 3, mItemScrollArea, 6, 3);
+        place(0, 6, mButton3, 2);
+        place(2, 6, mClearButton, 2);
+        place(4, 6, mButton, 2);
+    }
+}
+
 void NpcDialog::buildLayout()
 {
     clearLayout();
@@ -644,18 +764,27 @@ void NpcDialog::buildLayout()
     else if (mInputState != NPC_INPUT_NONE)
     {
         mButton->setCaption(CAPTION_SUBMIT);
-        if (mInputState == NPC_INPUT_LIST)
+        switch (mInputState)
         {
-            placeMenuControls();
-            mItemList->setSelected(-1);
-        }
-        else if (mInputState == NPC_INPUT_STRING)
-        {
-            placeTextInputControls();
-        }
-        else if (mInputState == NPC_INPUT_INTEGER)
-        {
-            placeIntInputControls();
+            case NPC_INPUT_LIST:
+                placeMenuControls();
+                mItemList->setSelected(-1);
+                break;
+
+            case NPC_INPUT_STRING:
+                placeTextInputControls();
+                break;
+
+            case NPC_INPUT_INTEGER:
+                placeIntInputControls();
+                break;
+
+            case NPC_INPUT_ITEM:
+                placeItemInputControls();
+                break;
+
+            default:
+                break;
         }
     }
 

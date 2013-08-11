@@ -57,6 +57,7 @@ class Inventory final
             STORAGE,
             CART,
             TRADE,
+            NPC,
             TYPE_END
         };
 
