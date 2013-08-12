@@ -93,10 +93,41 @@ std::string KeyboardConfig::getKeyName(const int key)
 std::string KeyboardConfig::getKeyShortString(const std::string &key)
 {
     if (key == "backspace")
-    {
         return "bksp";
-    }
-    else if (key == "unknown key")
+    else if (key == "numlock")
+        return "numlock";
+    else if (key == "caps lock")
+        return "caplock";
+    else if (key == "scroll lock")
+        return "scrlock";
+    else if (key == "right shift")
+        return "rshift";
+    else if (key == "left shift")
+        return "lshift";
+    else if (key == "right ctrl")
+        return "rctrl";
+    else if (key == "left ctrl")
+        return "lctrl";
+    else if (key == "right alt")
+        return "ralt";
+    else if (key == "left alt")
+        return "lalt";
+    else if (key == "right meta")
+        return "rmeta";
+    else if (key == "left meta")
+        return "lmeta";
+    else if (key == "right super")
+        return "rsuper";
+    else if (key == "left super")
+        return "lsuper";
+    else if (key == "print screen")
+        return "print screen";
+    else if (key == "page up")
+        return "pg up";
+    else if (key == "page down")
+        return "pg down";
+
+    if (key == "unknown key")
     {
         // TRANSLATORS: Unknown key short string.
         // TRANSLATORS: This string must be maximum 5 chars
