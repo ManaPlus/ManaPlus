@@ -145,6 +145,8 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
             m->setOnline(online);
             if (guildTab)
                 guildTab->showOnline(m->getName(), online);
+            if (socialWindow)
+                socialWindow->updateGuildCounter();
         }
     }
 }
@@ -234,6 +236,8 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg) const
 
     taGuild->clearMembers();
 
+    int onlineNum = 0;
+    int totalNum = 0;
     for (int i = 0; i < count; i++)
     {
         const int id = msg.readInt32();      // Account ID
@@ -274,6 +278,9 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg) const
                     }
                 }
             }
+            if (online)
+                onlineNum ++;
+            totalNum ++;
         }
     }
     taGuild->sort();
@@ -282,6 +289,8 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg) const
         actorSpriteManager->updatePlayerGuild();
         actorSpriteManager->updatePlayerColors();
     }
+    if (socialWindow)
+        socialWindow->updateGuildCounter(onlineNum, totalNum);
 }
 
 void GuildHandler::processGuildPosNameList(Net::MessageIn &msg) const

@@ -35,6 +35,7 @@ class Button;
 class ConfirmDialog;
 class CreatePopup;
 class Guild;
+class Label;
 class Map;
 class NavigateTab;
 class Party;
@@ -90,6 +91,8 @@ public:
 
     void updatePortalNames();
 
+    void updateParty();
+
     int getPortalIndex(const int x, const int y) A_WARN_UNUSED;
 
     void addPortal(const int x, const int y);
@@ -119,6 +122,10 @@ public:
     void updatePickupFilter();
 
     void widgetResized(const gcn::Event &event) override;
+
+    void setCounter(const SocialTab *const tab, const std::string &str);
+
+    void updateGuildCounter(const int online = 0, const int total = 0);
 
 #ifdef USE_PROFILER
     void logicChildren();
@@ -154,6 +161,7 @@ protected:
     Button *mCreateButton;
     Button *mInviteButton;
     Button *mLeaveButton;
+    Label *mCountLabel;
     TabbedArea *mTabs;
     Map *mMap;
 

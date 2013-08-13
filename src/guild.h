@@ -195,6 +195,11 @@ public:
     bool getServerGuild() const A_WARN_UNUSED
     { return mServerGuild; }
 
+    typedef std::vector<GuildMember*> MemberList;
+
+    const MemberList *getMembers() const A_WARN_UNUSED
+    { return &mMembers; }
+
 private:
     typedef std::map<int, Guild*> GuildMap;
     static GuildMap guilds;
@@ -204,7 +209,6 @@ private:
      */
     explicit Guild(const int16_t id);
 
-    typedef std::vector<GuildMember*> MemberList;
     MemberList mMembers;
     std::string mName;
     int16_t mId;

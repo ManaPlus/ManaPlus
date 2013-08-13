@@ -211,6 +211,8 @@ void GuildManager::updateList()
             actorSpriteManager->updatePlayerGuild();
             actorSpriteManager->updatePlayerColors();
         }
+        if (socialWindow)
+            socialWindow->updateGuildCounter();
     }
     mTempList.clear();
     mSentInfoRequest = false;
@@ -273,6 +275,8 @@ bool GuildManager::process(std::string msg)
         mRequest = false;
         if (mTab)
             mTab->showOnline(msg, false);
+        if (socialWindow)
+            socialWindow->updateGuildCounter();
         return true;
     }
     else if (!haveNick && findCutLast(msg, " is now Online."))
@@ -291,6 +295,8 @@ bool GuildManager::process(std::string msg)
         mRequest = false;
         if (mTab)
             mTab->showOnline(msg, true);
+        if (socialWindow)
+            socialWindow->updateGuildCounter();
         return true;
     }
     else if (findCutFirst(msg, "Welcome to the "))

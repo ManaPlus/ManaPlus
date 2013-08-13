@@ -117,7 +117,8 @@ protected:
         mInviteDialog(nullptr),
         mConfirmDialog(nullptr),
         mScroll(nullptr),
-        mList(nullptr)
+        mList(nullptr),
+        mCounterString()
     {
     }
 
@@ -139,10 +140,27 @@ protected:
         }
     }
 
+    void setCurrent() override
+    {
+        updateCounter();
+    }
+
+    void updateCounter()
+    {
+        if (socialWindow)
+            socialWindow->setCounter(this, mCounterString);
+    }
+
+    virtual void buildCounter(const int online A_UNUSED = 0,
+                              const int total A_UNUSED = 0)
+    {
+    }
+
     TextDialog *mInviteDialog;
     ConfirmDialog *mConfirmDialog;
     ScrollArea *mScroll;
     AvatarListBox *mList;
+    std::string mCounterString;
 };
 
 class SocialGuildTab final : public SocialTab, public gcn::ActionListener
@@ -243,6 +261,38 @@ public:
         mConfirmDialog->addActionListener(this);
     }
 
+    void buildCounter(const int online0, const int total0)
+    {
+        if (online0 || total0)
+        {
+            // TRANSLATORS: social window label
+            mCounterString = strprintf(_("Members: %u/%u"), online0, total0);
+        }
+        else
+        {
+            if (!player_node)
+                return;
+
+            const Guild *const guild = player_node->getGuild();
+            if (!guild)
+                return;
+
+            const Guild::MemberList *const members = guild->getMembers();
+            int online = 0;
+            int total = 0;
+            FOR_EACHP (Guild::MemberList::const_iterator, it, members)
+            {
+                if ((*it)->getOnline())
+                    online ++;
+                total ++;
+            }
+
+            // TRANSLATORS: social window label
+            mCounterString = strprintf(_("Players: %u/%u"), online, total);
+        }
+        updateCounter();
+    }
+
 private:
     Guild *mGuild;
 };
@@ -286,6 +336,30 @@ public:
 
     void action(const gcn::ActionEvent &event A_UNUSED) override
     {
+    }
+
+    void buildCounter(const int online0, const int total0)
+    {
+        if (!player_node)
+            return;
+
+        const Guild *const guild = player_node->getGuild();
+        if (!guild)
+            return;
+
+        const Guild::MemberList *const members = guild->getMembers();
+        int online = 0;
+        int total = 0;
+        FOR_EACHP (Guild::MemberList::const_iterator, it, members)
+        {
+            if ((*it)->getOnline())
+                online ++;
+            total ++;
+        }
+
+        // TRANSLATORS: social window label
+        mCounterString = strprintf(_("Players: %u/%u"), online, total);
+        updateCounter();
     }
 };
 
@@ -384,6 +458,30 @@ public:
             mParty->getName().c_str()), SOUND_REQUEST, socialWindow);
 
         mConfirmDialog->addActionListener(this);
+    }
+
+    void buildCounter(const int online0 A_UNUSED, const int total0 A_UNUSED)
+    {
+        if (!player_node)
+            return;
+
+        const Party *const party = player_node->getParty();
+        if (!party)
+            return;
+
+        const Party::MemberList *const members = party->getMembers();
+        int online = 0;
+        int total = 0;
+        FOR_EACHP (Party::MemberList::const_iterator, it, members)
+        {
+            if ((*it)->getOnline())
+                online ++;
+            total ++;
+        }
+
+        // TRANSLATORS: social window label
+        mCounterString = strprintf(_("Players: %u/%u"), online, total);
+        updateCounter();
     }
 
 private:
@@ -579,6 +677,10 @@ public:
                 ++i;
             }
         }
+        // TRANSLATORS: social window label
+        mCounterString = strprintf(_("Visible players: %d"),
+            static_cast<int>(avatars->size()));
+        updateCounter();
     }
 
 private:
@@ -645,6 +747,9 @@ public:
 
         avatars->clear();
 
+        int online = 0;
+        int total = 0;
+
         int idx = 0;
         while (i != portals.end())
         {
@@ -668,6 +773,10 @@ public:
             ava->setX(x);
             ava->setY(y);
             avatars->push_back(ava);
+
+            if (ava->getOnline())
+                online ++;
+            total ++;
 
             if (config.getBoolValue("drawHotKeys") && idx < 80 && outfitWindow)
             {
@@ -695,6 +804,10 @@ public:
         }
         if (socialWindow)
             socialWindow->setProcessedPortals(true);
+
+        // TRANSLATORS: social window label
+        mCounterString = strprintf(_("Portals: %u/%u"), online, total);
+        updateCounter();
     }
 
 
@@ -1055,6 +1168,9 @@ public:
         if (!players)
             return;
 
+        int online = 0;
+        int total = 0;
+
         FOR_EACHP (StringVectCIter, it, players)
         {
             Avatar *const ava = new Avatar(*it);
@@ -1062,11 +1178,17 @@ public:
                 || players2.find(*it) != players2.end())
             {
                 ava->setOnline(true);
+                online ++;
             }
+            total ++;
             avatars->push_back(ava);
         }
         std::sort(avatars->begin(), avatars->end(), friendSorter);
         delete players;
+
+        // TRANSLATORS: social window label
+        mCounterString = strprintf(_("Friends: %u/%u"), online, total);
+        updateCounter();
     }
 
 private:
@@ -1162,6 +1284,7 @@ SocialWindow::SocialWindow() :
     mInviteButton(new Button(this, _("Invite"), "invite", this)),
     // TRANSLATORS: social window button
     mLeaveButton(new Button(this, _("Leave"), "leave", this)),
+    mCountLabel(new Label(this, "1000 / 1000")),
     mTabs(new TabbedArea(this)),
     mMap(nullptr),
     mLastUpdateTime(0),
@@ -1184,7 +1307,8 @@ SocialWindow::SocialWindow() :
     place(0, 0, mCreateButton);
     place(1, 0, mInviteButton);
     place(2, 0, mLeaveButton);
-    place(0, 1, mTabs, 4, 4);
+    place(0, 1, mCountLabel);
+    place(0, 2, mTabs, 4, 4);
 
     widgetResized(gcn::Event(nullptr));
 
@@ -1702,11 +1826,49 @@ void SocialWindow::updatePickupFilter()
         mPickupFilter->updateList();
 }
 
+void SocialWindow::updateParty()
+{
+    if (!player_node)
+        return;
+
+    Party *const party = player_node->getParty();
+    PartyMap::iterator it = mParties.find(party);
+    if (it != mParties.end())
+    {
+        SocialTab *const tab = (*it).second;
+        tab->buildCounter();
+    }
+}
+
 void SocialWindow::widgetResized(const gcn::Event &event)
 {
     Window::widgetResized(event);
     if (mTabs)
         mTabs->adjustSize();
+}
+
+void SocialWindow::setCounter(const SocialTab *const tab,
+                              const std::string &str)
+{
+    if (mTabs->getSelectedTab() == tab)
+    {
+        mCountLabel->setCaption(str);
+        mCountLabel->adjustSize();
+    }
+}
+
+void SocialWindow::updateGuildCounter(const int online, const int total)
+{
+    if (!player_node)
+        return;
+
+    Guild *const guild = player_node->getGuild();
+    GuildMap::iterator it = mGuilds.find(guild);
+    if (it != mGuilds.end())
+    {
+        SocialTab *const tab = (*it).second;
+        tab->buildCounter(online, total);
+    }
 }
 
 #ifdef USE_PROFILER

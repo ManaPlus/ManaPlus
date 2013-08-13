@@ -142,6 +142,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
     {
         player_node->setParty(Ea::taParty);
         player_node->setPartyName(Ea::taParty->getName());
+        socialWindow->updateParty();
     }
 }
 
