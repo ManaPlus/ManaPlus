@@ -86,7 +86,7 @@ class CheckBox final : public gcn::CheckBox,
         void adjustSize();
 
     private:
-        gcn::Color mForegroundColor;
+        gcn::Color mForegroundColor2;
         int mPadding;
         int mImagePadding;
         int mImageSize;

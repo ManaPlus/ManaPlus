@@ -48,10 +48,12 @@
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
+#define DEPRECATED __attribute__ ((deprecated))
 #else
 #define A_UNUSED
 #define A_WARN_UNUSED
 #define gnu_printf printf
+#define DEPRECATED
 #endif
 #ifdef __clang__
 #define gnu_printf printf
