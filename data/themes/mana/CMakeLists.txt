@@ -1,5 +1,6 @@
 SET (FILES
     colors.xml
+    emotetabs.xml
     info.xml
     mouse.png
     npc.xml

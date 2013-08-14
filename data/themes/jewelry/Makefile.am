@@ -25,6 +25,7 @@ gui_DATA =				\
 	dropdown_pressed.xml		\
 	drops.xml		\
 	emotes.xml		\
+	emotetabs.xml		\
 	equipment.xml		\
 	equipment_background.xml		\
 	equipmentbox.png		\

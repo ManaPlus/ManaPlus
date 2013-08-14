@@ -1,6 +1,7 @@
 SET (FILES
     bubble.png
     colors.xml
+    emotetabs.xml
     info.xml
     mouse.png
     window.png
