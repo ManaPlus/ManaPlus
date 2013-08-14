@@ -41,15 +41,15 @@ TEST(Dye, replaceSOGLColor1)
 
 TEST(Dye, replaceSOGLColor2)
 {
-    DyePalette palette("#00ff00,000011", 6);
+    DyePalette palette("#01ff02,030411", 6);
     uint8_t data[4];
-    data[0] = 0x00;
+    data[0] = 0x01;
     data[1] = 0xff;
-    data[2] = 0x00;
+    data[2] = 0x02;
     data[3] = 0x20;
     palette.replaceSOGLColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
-    EXPECT_EQ(0x00, data[0]);
-    EXPECT_EQ(0x00, data[1]);
+    EXPECT_EQ(0x03, data[0]);
+    EXPECT_EQ(0x04, data[1]);
     EXPECT_EQ(0x11, data[2]);
     EXPECT_EQ(0x20, data[3]);
 }
@@ -87,15 +87,15 @@ TEST(Dye, replaceAOGLColor1)
 
 TEST(Dye, replaceAOGLColor2)
 {
-    DyePalette palette("#00ff0020,000011ff", 8);
+    DyePalette palette("#00ff0120,020311ff", 8);
     uint8_t data[4];
     data[0] = 0x00;
     data[1] = 0xff;
-    data[2] = 0x00;
+    data[2] = 0x01;
     data[3] = 0x20;
     palette.replaceAOGLColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
-    EXPECT_EQ(0x00, data[0]);
-    EXPECT_EQ(0x00, data[1]);
+    EXPECT_EQ(0x02, data[0]);
+    EXPECT_EQ(0x03, data[1]);
     EXPECT_EQ(0x11, data[2]);
     EXPECT_EQ(0xff, data[3]);
 }
@@ -179,17 +179,17 @@ TEST(Dye, replaceAColor1)
 
 TEST(Dye, replaceAColor2)
 {
-    DyePalette palette("#00ff0020,000011ff", 8);
+    DyePalette palette("#02ff0120,040311ff", 8);
     uint8_t data[4];
     data[0] = 0x20;
-    data[1] = 0x00;
+    data[1] = 0x01;
     data[2] = 0xff;
-    data[3] = 0x00;
+    data[3] = 0x02;
     palette.replaceAColor(reinterpret_cast<uint32_t*>(&data[0]), 1);
     EXPECT_EQ(0xff, data[0]);
     EXPECT_EQ(0x11, data[1]);
-    EXPECT_EQ(0x00, data[2]);
-    EXPECT_EQ(0x00, data[3]);
+    EXPECT_EQ(0x03, data[2]);
+    EXPECT_EQ(0x04, data[3]);
 }
 
 TEST(Dye, replaceAColor3)

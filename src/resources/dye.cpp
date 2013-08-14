@@ -29,6 +29,8 @@
 #include <math.h>
 #include <sstream>
 
+#include <SDL/SDL_endian.h>
+
 #include "debug.h"
 
 DyePalette::DyePalette(const std::string &description,
@@ -217,10 +219,16 @@ void DyePalette::replaceSColor(uint32_t *pixels, const int bufSize) const
             const DyeColor &col = *it;
             ++ it;
             const DyeColor &col2 = *it;
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            const unsigned int data = (*pixels) & 0x00ffffff;
+            const unsigned int coldata = (col.value[2] << 16)
+                | (col.value[1] << 8) | (col.value[0]);
+#else
             const unsigned int data = (*pixels) & 0xffffff00;
             const unsigned int coldata = (col.value[2] << 8)
                 | (col.value[1] << 16) | (col.value[0] << 24);
-
+#endif
             if (data == coldata)
             {
                 p[3] = col2.value[0];
@@ -254,9 +262,15 @@ void DyePalette::replaceAColor(uint32_t *pixels, const int bufSize) const
             ++ it;
             const DyeColor &col2 = *it;
 
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            const unsigned int data = *pixels;
+            const unsigned int coldata = (col.value[3] << 24)
+                | (col.value[2] << 16) | (col.value[1] << 8) | (col.value[0]);
+#else
             const unsigned int data = *pixels;
             const unsigned int coldata = (col.value[3]) | (col.value[2] << 8)
                 | (col.value[1] << 16) | (col.value[0] << 24);
+#endif
 
             if (data == coldata)
             {
@@ -294,10 +308,15 @@ void DyePalette::replaceSOGLColor(uint32_t *pixels, const int bufSize) const
             ++ it;
             const DyeColor &col2 = *it;
 
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            const unsigned int data = (*pixels) & 0xffffff00;
+            const unsigned int coldata = (col.value[0] << 24)
+                | (col.value[1] << 16) | (col.value[2] << 8);
+#else
             const unsigned int data = (*pixels) & 0x00ffffff;
             const unsigned int coldata = (col.value[0])
                 | (col.value[1] << 8) | (col.value[2] << 16);
-
+#endif
             if (data == coldata)
             {
                 p[0] = col2.value[0];
@@ -331,10 +350,15 @@ void DyePalette::replaceAOGLColor(uint32_t *pixels, const int bufSize) const
             ++ it;
             const DyeColor &col2 = *it;
 
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            const unsigned int data = *pixels;
+            const unsigned int coldata = (col.value[0] << 24)
+                | (col.value[1] << 16) | (col.value[2] << 8) | col.value[3];
+#else
             const unsigned int data = *pixels;
             const unsigned int coldata = (col.value[0]) | (col.value[1] << 8)
                 | (col.value[2] << 16) | (col.value[3] << 24);
-
+#endif
             if (data == coldata)
             {
                 p[0] = col2.value[0];
