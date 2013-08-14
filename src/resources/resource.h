@@ -46,11 +46,12 @@ class Resource
             mSource(),
             mTimeStamp(0),
             mRefCount(0),
-#ifdef DEBUG_DUMP_LEAKS
             mProtected(false),
+#ifdef DEBUG_DUMP_LEAKS
+            mNotCount(false),
             mDumped(false)
 #else
-            mProtected(false)
+            mNotCount(false)
 #endif
         {
         }
@@ -95,6 +96,9 @@ class Resource
         bool isProtected() const
         { return mProtected; }
 
+        void setNotCount(bool b)
+        { mNotCount = b; }
+
 #ifdef DEBUG_DUMP_LEAKS
         bool getDumped() const A_WARN_UNUSED
         { return mDumped; }
@@ -116,6 +120,7 @@ class Resource
         time_t mTimeStamp;   /**< Time at which the resource was orphaned. */
         unsigned int mRefCount;  /**< Reference count. */
         bool mProtected;
+        bool mNotCount;
 #ifdef DEBUG_DUMP_LEAKS
         bool mDumped;
 #endif

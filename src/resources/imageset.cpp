@@ -49,7 +49,9 @@ ImageSet::ImageSet(Image *const img, const int width, const int height,
             for (int x = margin; x + width <= img->getWidth() - margin;
                  x += wAdd)
             {
-                mImages.push_back(img->getSubImage(x, y, width, height));
+                Image *const image = img->getSubImage(x, y, width, height);
+                image->setNotCount(true);
+                mImages.push_back(image);
             }
         }
     }
