@@ -75,6 +75,7 @@ Tab::Tab(const Widget2 *const widget) :
     mPlayerFlashOutlineColor(&getThemeColor(Theme::TAB_PLAYER_FLASH_OUTLINE)),
     mFlash(0),
     mVertexes(new ImageCollection),
+    mImage(nullptr),
     mMode(0),
     mRedraw(true),
     mHasMouse(false)
@@ -98,6 +99,11 @@ Tab::~Tab()
     delete mLabel;
     mLabel = nullptr;
 
+    if (mImage)
+    {
+        mImage->decRef();
+        mImage = nullptr;
+    }
     delete mVertexes;
     mVertexes = nullptr;
 }
@@ -210,26 +216,37 @@ void Tab::draw(gcn::Graphics *graphics)
 
     updateAlpha();
 
+    Graphics *const g = static_cast<Graphics*>(graphics);
+
     // draw tab
     if (openGLMode != 2)
     {
         const ImageRect &rect = skin->getBorder();
-        if (mRedraw || mode != mMode
-            || static_cast<Graphics*>(graphics)->getRedraw())
+        if (mRedraw || mode != mMode || g->getRedraw())
         {
             mMode = mode;
             mRedraw = false;
             mVertexes->clear();
-            static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0,
+            g->calcWindow(mVertexes, 0, 0,
                 mDimension.width, mDimension.height, rect);
         }
 
-        static_cast<Graphics*>(graphics)->drawTile(mVertexes);
+        g->drawTile(mVertexes);
     }
     else
     {
-        static_cast<Graphics*>(graphics)->drawImageRect(
-            0, 0, mDimension.width, mDimension.height, skin->getBorder());
+        g->drawImageRect(0, 0,
+            mDimension.width, mDimension.height, skin->getBorder());
+    }
+
+    if (mImage)
+    {
+        const Skin *const skin1 = tabImg[TAB_STANDARD];
+        if (skin1)
+        {
+            const int padding = skin1->getPadding();
+            g->drawImage(mImage, padding, padding);
+        }
     }
 
     drawChildren(graphics);
@@ -262,10 +279,18 @@ void Tab::adjustSize()
     const Skin *const skin = tabImg[TAB_STANDARD];
     if (!skin)
         return;
-    const int padding = skin->getPadding();
+    const int pad2 = skin->getPadding() * 2;
 
-    setSize(mLabel->getWidth() + 2 * padding,
-            mLabel->getHeight() + 2 * padding);
+    if (mImage)
+    {
+        const SDL_Rect &rect = mImage->mBounds;
+        setSize(rect.w + pad2, rect.h + pad2);
+    }
+    else
+    {
+        setSize(mLabel->getWidth() + pad2,
+                mLabel->getHeight() + pad2);
+    }
 
     if (mTabbedArea)
         mTabbedArea->adjustTabPositions();
@@ -285,6 +310,14 @@ void Tab::setCaption(const std::string &caption)
 {
     mLabel->setCaption(caption);
     mLabel->adjustSize();
+    adjustSize();
+}
+
+void Tab::setImage(Image *const image)
+{
+    if (mImage)
+        mImage->decRef();
+    mImage = image;
     adjustSize();
 }
 

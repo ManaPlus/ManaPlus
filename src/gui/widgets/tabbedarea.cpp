@@ -212,6 +212,15 @@ void TabbedArea::addTab(const std::string &caption, gcn::Widget *const widget)
     addTab(tab, widget);
 }
 
+void TabbedArea::addTab(Image *const image, gcn::Widget *const widget)
+{
+    Tab *const tab = new Tab(this);
+    tab->setImage(image);
+    mTabsToDelete.push_back(tab);
+
+    addTab(tab, widget);
+}
+
 bool TabbedArea::isTabSelected(const unsigned int index) const
 {
     if (index >= mTabs.size())

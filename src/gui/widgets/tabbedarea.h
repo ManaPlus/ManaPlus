@@ -32,6 +32,7 @@
 
 #include "gui/widgets/button.h"
 
+class Image;
 class Tab;
 
 /**
@@ -94,6 +95,8 @@ class TabbedArea final : public Widget2,
         void addTab(Tab *const tab, gcn::Widget *const widget);
 
         void addTab(const std::string &caption, gcn::Widget *const widget);
+
+        void addTab(Image *const image, gcn::Widget *const widget);
 
         bool isTabSelected(const unsigned int index) const A_WARN_UNUSED;
 

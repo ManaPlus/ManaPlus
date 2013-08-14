@@ -145,6 +145,8 @@ class Tab : public gcn::BasicContainer,
 
         void mouseExited(gcn::MouseEvent &mouseEvent) override;
 
+        void setImage(Image *const image);
+
     protected:
         friend class TabbedArea;
 
@@ -176,6 +178,7 @@ class Tab : public gcn::BasicContainer,
         const gcn::Color *mPlayerFlashOutlineColor;
         int mFlash;
         ImageCollection *mVertexes;
+        Image *mImage;
         int mMode;
         bool mRedraw;
 
