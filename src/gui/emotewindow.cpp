@@ -98,8 +98,8 @@ EmoteWindow::EmoteWindow() :
         }
 
         mTabs->addTab(mImageSet->get(0), mEmotePage);
-        mTabs->addTab(mImageSet->get(1), mScrollColorPage);
-        mTabs->addTab(mImageSet->get(2), mScrollFontPage);
+        mTabs->addTab(mImageSet->get(2), mScrollColorPage);
+        mTabs->addTab(mImageSet->get(1), mScrollFontPage);
     }
     else
     {
