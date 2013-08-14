@@ -261,7 +261,7 @@ public:
         mConfirmDialog->addActionListener(this);
     }
 
-    void buildCounter(const int online0, const int total0)
+    void buildCounter(const int online0 A_UNUSED, const int total0 A_UNUSED)
     {
         if (online0 || total0)
         {
@@ -338,7 +338,7 @@ public:
     {
     }
 
-    void buildCounter(const int online0, const int total0)
+    void buildCounter(const int online0 A_UNUSED, const int total0 A_UNUSED)
     {
         if (!player_node)
             return;

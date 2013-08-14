@@ -1205,8 +1205,8 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
         if (rect.grid[0])
         {
             Image *const image = rect.grid[0];
-            const SDL_Rect &rect = image->mBounds;
-            if (rect.w && rect.h)
+            const SDL_Rect &rect2 = image->mBounds;
+            if (rect2.w && rect2.h)
             {
                 ResourceManager *const resman = ResourceManager::getInstance();
                 ImageSet *const imageSet = resman->getSubImageSet(image, w, h);
