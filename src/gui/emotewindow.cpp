@@ -35,6 +35,8 @@
 
 #include "utils/gettext.h"
 
+#include "resources/imageset.h"
+
 #include <guichan/font.hpp>
 
 #include "debug.h"
@@ -59,7 +61,8 @@ EmoteWindow::EmoteWindow() :
     mScrollColorPage(new ScrollArea(mColorPage, false, "emotepage.xml")),
     mFontModel(new NamesModel),
     mFontPage(new ListBox(this, mFontModel, "")),
-    mScrollFontPage(new ScrollArea(mFontPage, false, "fontpage.xml"))
+    mScrollFontPage(new ScrollArea(mFontPage, false, "fontpage.xml")),
+    mImageSet(Theme::getImageSetFromThemeXml("emotetabs.xml", "", 17, 16))
 {
     setShowTitle(false);
     setResizable(true);
@@ -85,12 +88,28 @@ EmoteWindow::EmoteWindow() :
     mFontModel->fillFromArray(&fontSizeList[0], fontSizeListSize);
     mFontPage->setCenter(true);
 
-    // TRANSLATORS: emotes tab name
-    mTabs->addTab(_("Emotes"), mEmotePage);
-    // TRANSLATORS: emotes tab name
-    mTabs->addTab(_("Colors"), mScrollColorPage);
-    // TRANSLATORS: emotes tab name
-    mTabs->addTab(_("Fonts"), mScrollFontPage);
+    if (mImageSet && mImageSet->size() >= 3)
+    {
+        for (int f = 0; f < 3; f ++)
+        {
+            Image *const image = mImageSet->get(f);
+            if (image)
+                image->incRef();
+        }
+
+        mTabs->addTab(mImageSet->get(0), mEmotePage);
+        mTabs->addTab(mImageSet->get(1), mScrollColorPage);
+        mTabs->addTab(mImageSet->get(2), mScrollFontPage);
+    }
+    else
+    {
+        // TRANSLATORS: emotes tab name
+        mTabs->addTab(_("Emotes"), mEmotePage);
+        // TRANSLATORS: emotes tab name
+        mTabs->addTab(_("Colors"), mScrollColorPage);
+        // TRANSLATORS: emotes tab name
+        mTabs->addTab(_("Fonts"), mScrollFontPage);
+    }
 
     mEmotePage->setActionEventId("emote");
     mColorPage->setActionEventId("color");
@@ -115,6 +134,11 @@ EmoteWindow::~EmoteWindow()
     mFontModel = nullptr;
     delete mScrollFontPage;
     mScrollFontPage = nullptr;
+    if (mImageSet)
+    {
+        mImageSet->decRef();
+        mImageSet = nullptr;
+    }
 }
 
 void EmoteWindow::show()

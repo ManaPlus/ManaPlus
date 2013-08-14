@@ -28,6 +28,7 @@
 class ColorModel;
 class ColorPage;
 class EmotePage;
+class ImageSet;
 class ListBox;
 class NamesModel;
 class ScrollArea;
@@ -71,6 +72,7 @@ class EmoteWindow final : public Window
         NamesModel *mFontModel;
         ListBox *mFontPage;
         ScrollArea *mScrollFontPage;
+        ImageSet *mImageSet;
 };
 
 extern EmoteWindow *emoteWindow;

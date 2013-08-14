@@ -1205,11 +1205,14 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
         if (rect.grid[0])
         {
             Image *const image = rect.grid[0];
-
-            ResourceManager *const resman = ResourceManager::getInstance();
-            ImageSet *const imageSet = resman->getSubImageSet(image, w, h);
-            theme->unload(skin);
-            return imageSet;
+            const SDL_Rect &rect = image->mBounds;
+            if (rect.w && rect.h)
+            {
+                ResourceManager *const resman = ResourceManager::getInstance();
+                ImageSet *const imageSet = resman->getSubImageSet(image, w, h);
+                theme->unload(skin);
+                return imageSet;
+            }
         }
         theme->unload(skin);
     }
