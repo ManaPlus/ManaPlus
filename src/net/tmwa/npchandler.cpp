@@ -318,7 +318,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg, const int npcId)
             if (mDialog)
                 mDialog->clearRows();
             break;
-        case 10: // send selected item id
+        case 10:  // send selected item id
             if (mDialog)
                 mDialog->itemRequest();
             break;

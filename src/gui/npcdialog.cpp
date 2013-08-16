@@ -306,8 +306,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
         {
             std::string printText;  // Text that will get printed
                                     // in the textbox
-
-            switch(mInputState)
+            switch (mInputState)
             {
                 case NPC_INPUT_LIST:
                 {
@@ -366,6 +365,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                     break;
                 }
 
+                case NPC_INPUT_NONE:
                 default:
                     break;
             }
@@ -393,6 +393,8 @@ void NpcDialog::action(const gcn::ActionEvent &event)
             case NPC_INPUT_ITEM:
                 mInventory->clear();
                 break;
+            case NPC_INPUT_NONE:
+            case NPC_INPUT_LIST:
             default:
                 break;
         }
@@ -414,6 +416,8 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                 break;
             case NPC_INPUT_STRING:
             case NPC_INPUT_INTEGER:
+            case NPC_INPUT_LIST:
+            case NPC_INPUT_NONE:
             default:
                 clearRows();
                 break;
@@ -430,6 +434,8 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                     break;
                 case NPC_INPUT_STRING:
                 case NPC_INPUT_INTEGER:
+                case NPC_INPUT_NONE:
+                case NPC_INPUT_LIST:
                 default:
                     Net::getNpcHandler()->listInput(mNpcId, 255);
                     break;
@@ -785,6 +791,7 @@ void NpcDialog::buildLayout()
                 placeItemInputControls();
                 break;
 
+            case NPC_INPUT_NONE:
             default:
                 break;
         }
