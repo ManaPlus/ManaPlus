@@ -1832,11 +1832,14 @@ void SocialWindow::updateParty()
         return;
 
     Party *const party = player_node->getParty();
-    PartyMap::iterator it = mParties.find(party);
-    if (it != mParties.end())
+    if (party)
     {
-        SocialTab *const tab = (*it).second;
-        tab->buildCounter();
+        PartyMap::iterator it = mParties.find(party);
+        if (it != mParties.end())
+        {
+            SocialTab *const tab = (*it).second;
+            tab->buildCounter();
+        }
     }
 }
 
@@ -1863,11 +1866,14 @@ void SocialWindow::updateGuildCounter(const int online, const int total)
         return;
 
     Guild *const guild = player_node->getGuild();
-    GuildMap::iterator it = mGuilds.find(guild);
-    if (it != mGuilds.end())
+    if (guild)
     {
-        SocialTab *const tab = (*it).second;
-        tab->buildCounter(online, total);
+        GuildMap::iterator it = mGuilds.find(guild);
+        if (it != mGuilds.end())
+        {
+            SocialTab *const tab = (*it).second;
+            tab->buildCounter(online, total);
+        }
     }
 }
 
