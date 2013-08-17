@@ -21,16 +21,16 @@
 
 #include "compoundsprite.h"
 
+#include "client.h"
 #include "configuration.h"
 #include "game.h"
-#include "graphics.h"
 
 #ifdef USE_OPENGL
 #include "main.h"
 #endif
 
-#include "client.h"
 #include "map.h"
+#include "sdlgraphics.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
@@ -330,8 +330,8 @@ void CompoundSprite::redraw() const
     if (!surface)
         return;
 
-    Graphics *graphics = new Graphics();
-    graphics->setBlitMode(Graphics::BLIT_GFX);
+    SDLGraphics *graphics = new SDLGraphics();
+    graphics->setBlitMode(SDLGraphics::BLIT_GFX);
     graphics->setTarget(surface);
     graphics->_beginDraw();
 

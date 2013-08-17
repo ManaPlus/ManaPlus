@@ -227,7 +227,7 @@ void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
                         row->images.push_back(imgVert);
                         lastImage = img;
                     }
-                    graphics->calcTile(imgVert, px, py);
+                    graphics->calcTileSDL(imgVert, px, py);
                 }
             }
         }

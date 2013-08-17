@@ -689,6 +689,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      rotationalparticle.h \
 	      safeopenglgraphics.cpp\
 	      safeopenglgraphics.h \
+	      sdlgraphics.cpp \
+	      sdlgraphics.h \
 	      shopitem.cpp \
 	      shopitem.h \
 	      simpleanimation.cpp \

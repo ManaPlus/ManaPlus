@@ -89,9 +89,26 @@ class SafeOpenGLGraphics final : public Graphics
         void calcTile(ImageCollection *const vertCol,
                       const Image *const image, int x, int y) override;
 
+        void calcImagePattern(ImageVertexes *const vert,
+                              const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h) const;
+
+        void calcImagePattern(ImageCollection *const vert,
+                              const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h) const;
+
         void drawTile(const ImageVertexes *const vert) override;
 
+        void drawTile(const ImageCollection *const vertCol) override;
+
         void updateScreen() override;
+
+        bool calcWindow(ImageCollection *const vertCol,
+                        const int x, const int y,
+                        const int w, const int h,
+                        const ImageRect &imgRect);
 
         void _beginDraw();
 

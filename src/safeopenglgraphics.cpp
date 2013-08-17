@@ -345,7 +345,25 @@ void SafeOpenGLGraphics::calcTile(ImageVertexes *const vert A_UNUSED,
 {
 }
 
+void SafeOpenGLGraphics::calcImagePattern(ImageVertexes *const vert,
+                                          const Image *const image,
+                                          const int x, const int y,
+                                          const int w, const int h) const
+{
+}
+
+void SafeOpenGLGraphics::calcImagePattern(ImageCollection *const vert,
+                                          const Image *const image,
+                                          const int x, const int y,
+                                          const int w, const int h) const
+{
+}
+
 void SafeOpenGLGraphics::drawTile(const ImageVertexes *const vert A_UNUSED)
+{
+}
+
+void SafeOpenGLGraphics::drawTile(const ImageCollection *const vertCol)
 {
 }
 
@@ -356,6 +374,13 @@ void SafeOpenGLGraphics::updateScreen()
     glFinish();
     SDL_GL_SwapBuffers();
     BLOCK_END("Graphics::updateScreen")
+}
+
+bool SafeOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
+                                    const int x, const int y,
+                                    const int w, const int h,
+                                    const ImageRect &imgRect)
+{
 }
 
 void SafeOpenGLGraphics::_beginDraw()

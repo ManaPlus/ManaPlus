@@ -41,6 +41,7 @@
 #include "graphicsvertexes.h"
 #include "logger.h"
 #include "mgl.h"
+#include "sdlgraphics.h"
 
 #include "resources/fboinfo.h"
 #include "resources/imagehelper.h"
@@ -228,7 +229,7 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
         case 0:
             imageHelper = new SDLImageHelper;
             sdlImageHelper = imageHelper;
-            mainGraphics = new Graphics;
+            mainGraphics = new SDLGraphics;
             mUseTextureSampler = false;
             break;
         case 1:
@@ -261,7 +262,7 @@ void GraphicsManager::initGraphics(const bool noOpenGL A_UNUSED)
     // Create the graphics context
     imageHelper = new SDLImageHelper;
     sdlImageHelper = imageHelper;
-    mainGraphics = new Graphics;
+    mainGraphics = new SDLGraphics;
 #endif
 }
 

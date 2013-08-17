@@ -209,8 +209,6 @@ class NullOpenGLGraphics final : public Graphics
 
         void setTexturingAndBlending(const bool enable);
 
-        void updateMemoryInfo();
-
         void debugBindTexture(const Image *const image);
 
     private:

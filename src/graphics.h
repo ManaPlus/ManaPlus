@@ -90,12 +90,6 @@ class ImageRect final
 class Graphics : public gcn::SDLGraphics
 {
     public:
-        enum BlitMode
-        {
-            BLIT_NORMAL = 0,
-            BLIT_GFX
-        };
-
         /**
          * Constructor.
          */
@@ -145,33 +139,16 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Draws a resclaled version of the image
          */
-        bool drawRescaledImage(const Image *const image,
-                               const int srcX, const int srcY,
-                               const int dstX, const int dstY,
-                               const int width, const int height,
-                               const int desiredWidth, const int desiredHeight)
-        {
-            return drawRescaledImage(image, srcX, srcY,
-                                     dstX, dstY,
-                                     width, height,
-                                     desiredWidth, desiredHeight,
-                                     false);
-        }
-
-        /**
-         * Draws a resclaled version of the image
-         */
         virtual bool drawRescaledImage(const Image *const image, int srcX,
                                        int srcY, int dstX, int dstY,
                                        const int width, const int height,
                                        const int desiredWidth,
                                        const int desiredHeight,
-                                       const bool useColor = false);
-
+                                       const bool useColor = false) = 0;
 
         virtual void drawImagePattern(const Image *const image,
                                       const int x, const int y,
-                                      const int w, const int h);
+                                      const int w, const int h) = 0;
 
         /**
          * Draw a pattern based on a rescaled version of the given image...
@@ -180,7 +157,7 @@ class Graphics : public gcn::SDLGraphics
                                               const int x, const int y,
                                               const int w, const int h,
                                               const int scaledWidth,
-                                              const int scaledHeight);
+                                              const int scaledHeight) = 0;
 
         /**
          * Draws a rectangle using images. 4 corner images, 4 side images and 1
@@ -204,46 +181,50 @@ class Graphics : public gcn::SDLGraphics
         void drawImageRect(int x, int y, int w, int h,
                            const ImageRect &imgRect);
 
-        virtual bool calcImageRect(ImageVertexes *const vert,
-                                   const int x, const int y,
-                                   const int w, const int h,
-                                   const Image *const topLeft,
-                                   const Image *const topRight,
-                                   const Image *const bottomLeft,
-                                   const Image *const bottomRight,
-                                   const Image *const top,
-                                   const Image *const right,
-                                   const Image *const bottom,
-                                   const Image *const left,
-                                   const Image *const center);
+        bool calcImageRect(ImageVertexes *const vert,
+                           const int x, const int y,
+                           const int w, const int h,
+                           const Image *const topLeft,
+                           const Image *const topRight,
+                           const Image *const bottomLeft,
+                           const Image *const bottomRight,
+                           const Image *const top,
+                           const Image *const right,
+                           const Image *const bottom,
+                           const Image *const left,
+                           const Image *const center);
 
         virtual void calcImagePattern(ImageVertexes *const vert,
                                       const Image *const image,
                                       const int x, const int y,
-                                      const int w, const int h) const;
+                                      const int w, const int h) const = 0;
 
         virtual void calcImagePattern(ImageCollection *const vert,
                                       const Image *const image,
                                       const int x, const int y,
-                                      const int w, const int h) const;
+                                      const int w, const int h) const = 0;
 
         virtual void calcTile(ImageVertexes *const vert,
-                              const Image *const image, int x, int y) const;
+                              const Image *const image,
+                              int x, int y) const = 0;
 
-        virtual void calcTile(ImageVertexes *const vert, int x, int y) const;
+        virtual void calcTileSDL(ImageVertexes *const vert A_UNUSED,
+                                 int x A_UNUSED, int y A_UNUSED) const
+        {
+        }
 
-        virtual void drawTile(const ImageVertexes *const vert);
+        virtual void drawTile(const ImageVertexes *const vert) = 0;
 
-        virtual void drawTile(const ImageCollection *const vertCol);
+        virtual void drawTile(const ImageCollection *const vertCol) = 0;
 
         virtual void calcTile(ImageCollection *const vertCol,
                               const Image *const image,
-                              int x, int y);
+                              int x, int y) = 0;
 
         virtual bool calcWindow(ImageCollection *const vertCol,
                                 const int x, const int y,
                                 const int w, const int h,
-                                const ImageRect &imgRect);
+                                const ImageRect &imgRect) = 0;
 
         /**
          * Draws a rectangle using images. 4 corner images, 4 side images and 1
@@ -253,19 +234,14 @@ class Graphics : public gcn::SDLGraphics
                                   const ImageRect &imgRect)
         { drawImageRect(area.x, area.y, area.width, area.height, imgRect); }
 
-        void setBlitMode(const BlitMode mode)
-        { mBlitMode = mode; }
-
-        BlitMode getBlitMode() const A_WARN_UNUSED
-        { return mBlitMode; }
-
-        void fillRectangle(const gcn::Rectangle& rectangle) override;
+        virtual void fillRectangle(const gcn::Rectangle& rectangle)
+                                   override = 0;
 
         /**
          * Updates the screen. This is done by either copying the buffer to the
          * screen or swapping pages.
          */
-        virtual void updateScreen();
+        virtual void updateScreen() = 0;
 
         /**
          * Returns the width of the screen.
@@ -280,7 +256,7 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Takes a screenshot and returns it as SDL surface.
          */
-        virtual SDL_Surface *getScreenshot() A_WARN_UNUSED;
+        virtual SDL_Surface *getScreenshot() A_WARN_UNUSED = 0;
 
         virtual void prepareScreenshot()
         { }
@@ -375,7 +351,7 @@ class Graphics : public gcn::SDLGraphics
                                 int srcX, int srcY,
                                 int dstX, int dstY,
                                 const int width, const int height,
-                                const bool useColor);
+                                const bool useColor) = 0;
 
 
         void setMainFlags(int w, int h, int bpp, bool fs,
@@ -391,15 +367,9 @@ class Graphics : public gcn::SDLGraphics
 
         bool videoInfo();
 
-        int SDL_FakeUpperBlit(const SDL_Surface *const src,
-                              SDL_Rect *const srcrect,
-                              const SDL_Surface *const dst,
-                              SDL_Rect *dstrect) const;
-
         int mBpp;
         bool mFullscreen;
         bool mHWAccel;
-        BlitMode mBlitMode;
         bool mRedraw;
         bool mDoubleBuffer;
         SDL_Rect mRect;
@@ -407,8 +377,6 @@ class Graphics : public gcn::SDLGraphics
         int mOpenGL;
         bool mEnableResize;
         bool mNoFrame;
-        uint32_t mOldPixel;
-        int mOldAlpha;
         std::string mName;
         int mStartFreeMem;
         bool mSync;

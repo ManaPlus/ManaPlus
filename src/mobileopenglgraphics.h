@@ -201,8 +201,6 @@ class MobileOpenGLGraphics final : public Graphics
 
         void setTexturingAndBlending(const bool enable);
 
-        void updateMemoryInfo();
-
         void debugBindTexture(const Image *image);
 
     private:
