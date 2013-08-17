@@ -72,6 +72,7 @@ src/gui/whoisonline.cpp
 src/gui/widgets/battletab.cpp
 src/gui/widgets/characterdisplay.cpp
 src/gui/widgets/chattab.cpp
+src/gui/widgets/colormodel.cpp
 src/gui/widgets/gmtab.cpp
 src/gui/widgets/guildchattab.cpp
 src/gui/widgets/itemcontainer.cpp

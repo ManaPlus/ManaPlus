@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-07-31 10:06+0000\n"
+"PO-Revision-Date: 2013-08-07 19:50+0000\n"
 "Last-Translator: foobo <lukasz.antoni.komorowski@poczta.fm>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/manaplus/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgid "\"Emote shortcut 9\""
 msgstr "\"Skrót Emotki 9\""
 
 msgid "\"Set direction down\""
-msgstr ""
+msgstr "\"Ustaw w dolny kierunek\""
 
 msgid "\"Target NPC\""
 msgstr "\"Namierz NPC\""
@@ -112,7 +112,7 @@ msgid "/priceload - load shop price from disc."
 msgstr "/priceload - wczytaj ceny sklepu z dysku."
 
 msgid "\"Quests window\""
-msgstr ""
+msgstr "\"Okno Misji\""
 
 msgid ""
 " - ##2friend##P:  You consider this player a friend.  The player may chat,\n"
@@ -219,7 +219,7 @@ msgid "/createparty NAME - create party with selected name."
 msgstr "/createparty NAZWA - utwórz grupę o podanej nazwie."
 
 msgid "\"Move down\""
-msgstr ""
+msgstr "\"Idź w dół\""
 
 msgid "/heal NICK - heal nick."
 msgstr "/heal NICK - uzdrów nick."
@@ -234,7 +234,7 @@ msgid "/removeattack NAME - remove monster from attack list."
 msgstr "/removeattack NAZWA - usuń potwora z listy ataku."
 
 msgid "\"Set direction up\""
-msgstr ""
+msgstr "\"Ustaw w górny kierunek\""
 
 msgid "/where - print current player position to chat."
 msgstr "/where - napisz w czacie obecną pozycję gracza."
@@ -290,7 +290,7 @@ msgid "\"Outfit shortcut 10\""
 msgstr "\"Skrót ubioru 10\""
 
 msgid "Look this page for help and downloads:"
-msgstr ""
+msgstr "Sprawdź tę stronę by uzyskać pomoc jak i by uzyskać dostęp do pobierania."
 
 msgid "COMMUNICATION:"
 msgstr "KOMUNIKACJA:"
@@ -299,7 +299,7 @@ msgid "Other skills:"
 msgstr "Inne zdolności:"
 
 msgid "Powered By"
-msgstr ""
+msgstr "Wspierane przez"
 
 msgid ""
 "You can use mumble voice chat for talking with other players.\n"
@@ -307,10 +307,10 @@ msgid ""
 msgstr "Możesz skorzystać z czatu głosowego mumble do rozmów z innymi graczami.\nUruchom mumble przed uruchomieniem klienta gry i aktywuj mumble w ustawieniach."
 
 msgid "\"Move up\""
-msgstr ""
+msgstr "\"Idź w górę\""
 
 msgid "Here contributors from parent projects"
-msgstr ""
+msgstr "Deweloperzy z matczynych projektów"
 
 msgid "\"Item shortcut 4\""
 msgstr "\"Skrót przedmiotu 4\""
@@ -382,7 +382,7 @@ msgid "\"Select OK\""
 msgstr "\"Wybierz OK\""
 
 msgid "MacOSX porting"
-msgstr ""
+msgstr "Portowanie na MaxOSX"
 
 msgid ""
 "About yellow bar you can read here:\n"
@@ -411,7 +411,7 @@ msgid "/ignoreall - add all whispers to ignore list."
 msgstr "/ignoreall - umieść wszystkie szepty na liście ignorowanych."
 
 msgid "\"Copy outfit\""
-msgstr ""
+msgstr "\"Kopiuj strój\""
 
 msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore NICK - dodaj nick'a do listy ignorowanych."
@@ -420,7 +420,7 @@ msgid "\"Item shortcuts Key\""
 msgstr "\"Klawisz skrótów do przedmiotów\""
 
 msgid "\"Disable / enable game modifier keys\""
-msgstr ""
+msgstr "\"Włącz/ wyłącz klawisze modyfikatorów gry\""
 
 msgid "Other contributors"
 msgstr "Pozostali kontrybutorzy."
@@ -438,7 +438,7 @@ msgid "/outfit next - wear next outfit."
 msgstr "/outfit next - załóż następny strój."
 
 msgid "\"Move right\""
-msgstr ""
+msgstr "\"Idź w prawo\""
 
 msgid ""
 "You can set away mode,\n"
@@ -461,7 +461,7 @@ msgid "/addignoreattack NAME - add monster to ignore attack list."
 msgstr "/addignoreattack NAME - dodaj potwora do listy ignorowanych celów."
 
 msgid "Android porting"
-msgstr ""
+msgstr "Portowanie na Androida"
 
 msgid "/clear - clear current chat tab."
 msgstr "/clear - wyczyść obecną zakładkę czatu."
@@ -494,7 +494,7 @@ msgid "\"Item shortcut 6\""
 msgstr "\"Skrót przedmiotu 6\""
 
 msgid "Art or images contributors"
-msgstr ""
+msgstr "Deweloperzy zasobów graficznych"
 
 msgid "\"Target player\""
 msgstr "\"Namierz Gracza\""
@@ -560,13 +560,13 @@ msgid ""
 " - ##2neutral##P:  As far as the game is concerned, this is the same as not\n"
 "   having the player listed:  the player may chat with you, but may only trade\n"
 "   or whisper if you have this option allowed for everyone."
-msgstr ""
+msgstr " - ##2neutral##P:  to tak jakby nie mieć gracza na liście: może on rozmawiać z tobą, ale handel lub szept odbywa się, tylko gdy pozwoliłeś na tę opcję dla wszystkich."
 
 msgid "\"Inventory window\""
 msgstr "\"Okno Inwentarza\""
 
 msgid "Contributors to client/server development"
-msgstr ""
+msgstr "Deweloperzy klienta/serwera"
 
 msgid "\"Quick heal target or self\""
 msgstr "\"Szybkie uleczenie celu lub siebie\""
@@ -578,7 +578,7 @@ msgid "\"Use #itenplz spell\""
 msgstr "\"Użyj zaklęcia #itenplz\""
 
 msgid "move key"
-msgstr ""
+msgstr "klawisz automatycznego przemieszczania się"
 
 msgid "\"Item shortcut 13\""
 msgstr "\"Skrót przedmiotu 13\""
@@ -587,7 +587,7 @@ msgid "Skills"
 msgstr "Zdolności"
 
 msgid "##2Party Level1:##P enables a char to join a party."
-msgstr ""
+msgstr "##2Grupa Poziom1:##P pozwala postaci na dołączenie do grupy."
 
 msgid "##2Version:##6%VER%"
 msgstr "##2Wersja:##6%VER%"
@@ -627,7 +627,7 @@ msgstr "\"Przerwij atak\""
 msgid ""
 " The player list lists all of your acquaintances.  They are categorised as one\n"
 " of the following:"
-msgstr ""
+msgstr "Lista graczy zawiera twych znajomych. Skategoryzowani są jako jedni z następujących:"
 
 msgid "\"Change attack weapon type\""
 msgstr "\"Zmień rodzaj broni\""
@@ -657,10 +657,10 @@ msgid "\"Next chat tab line\""
 msgstr "\"Następny wiersz czatu\""
 
 msgid "\"Set direction right\""
-msgstr ""
+msgstr "\"Ustaw w prawy kierunek\""
 
 msgid "\"Move to home location\""
-msgstr ""
+msgstr "\"Podejdź do lokacji domowej\""
 
 msgid "Player relations"
 msgstr "Relacje z graczami"
@@ -671,7 +671,7 @@ msgstr "Błąd wyszukiwania"
 msgid ""
 "You can copy value from any bar,\n"
 "by right click on it and select in context menu \"Copy to chat\"."
-msgstr ""
+msgstr "Możesz skopiować wartość z któregokolwiek paska,\nklikając na nim prawym przyciskiem myszy i wybierając z menu kontekstowego opcję \"Kopiuj do czatu\"."
 
 msgid "/closeall - close all whispers."
 msgstr "/closeall - zamknij wszystkie zakładki z szeptami."
@@ -695,7 +695,7 @@ msgid "\"Toggle chat\""
 msgstr "\"Przełącznik Czatu\""
 
 msgid "##POther skills can be obtain by doing quests and missions in game."
-msgstr ""
+msgstr "##Inne umiejętności mogą być zdobyte wykonując zadania i misje w grze."
 
 msgid "\"Change attack type\""
 msgstr "\"Zmień rodzaj ataku\""
@@ -719,13 +719,13 @@ msgid "/dirs - show client dirs in debug chat tab."
 msgstr "/dirs - pokaż foldery klienta w zakładce czatu debug."
 
 msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
-msgstr ""
+msgstr "Strona: @@http://manaplus.org/|http://manaplus.org/@@"
 
 msgid "/disconnect - quick disconnect from server."
 msgstr "/disconnect - szybkie rozłączenie się z serwerem."
 
 msgid "\"Switch quick drop counter\""
-msgstr ""
+msgstr "\"Zmień licznik szybkiego upuszczania\""
 
 msgid "\"Previous chat tab line\""
 msgstr ""
@@ -760,7 +760,7 @@ msgid "\"Outfit shortcut 14\""
 msgstr "\"Skrót ubioru 14\""
 
 msgid "\"Quick drop N items from 0 slot\""
-msgstr ""
+msgstr "\"Szybkie upuszczenie N przedmiotów z pozycji 0\""
 
 msgid "\"Switch pvp attack\""
 msgstr "\"Przełącz atak PvP\""
@@ -793,7 +793,7 @@ msgstr "Komendy szeptu"
 msgid ""
 " There you will find a list of all players you are acquainted with, as well as\n"
 " several configuration options:"
-msgstr ""
+msgstr "Znajdziesz tu listę graczy z którymi jesteś zaznajomiony oraz różne opcje:"
 
 msgid "\"Use magic attack\""
 msgstr "\"Użyj magicznego ataku\""
@@ -807,13 +807,13 @@ msgid "Whispers"
 msgstr "Szepty"
 
 msgid "Search string not found."
-msgstr ""
+msgstr "Nie znaleziono poszukiwanego ciągu."
 
 msgid "\"Wear outfit\""
 msgstr "\"Nałóż strój\""
 
 msgid "emote key"
-msgstr ""
+msgstr "klawisz emotki"
 
 msgid "Search results"
 msgstr "Wyniki wyszukiwania"
@@ -866,13 +866,13 @@ msgid "\"Emulate right click from keyboard\""
 msgstr "\"Emuluj prawe kliknięcie z klawiatury\""
 
 msgid "\"Set home location/set arrow\""
-msgstr ""
+msgstr "\"Ustaw lokację domową/ustaw wskaźnik\""
 
 msgid "\"Set direction left\""
-msgstr ""
+msgstr "\"Ustaw w prawy kierunek\""
 
 msgid "\"Move left\""
-msgstr ""
+msgstr "\"Idź w lewo\""
 
 msgid "\"Item shortcut window\""
 msgstr "\"Okno Skrótów do przedmiotów\""
@@ -916,10 +916,10 @@ msgstr ""
 msgid ""
 "##P This file lists all contributors up to the current release. Check the wiki\n"
 "##P for the currently active development team."
-msgstr ""
+msgstr "##P Lista ta zawiera wszystkich deweloperów obecnego wydania. Sprawdź \n##P wiki by poznać obecnie aktywną ekipę dewelopingu."
 
 msgid "Different patches"
-msgstr ""
+msgstr "Rozmaite łatki"
 
 msgid "\"Switch magic attack\""
 msgstr "\"Zmień magiczny atak\""
@@ -931,7 +931,7 @@ msgid "SKILLS"
 msgstr "ZDOLNOŚCI"
 
 msgid "Actions"
-msgstr ""
+msgstr "Działania"
 
 msgid "\"Item shortcut 12\""
 msgstr "\"Skrót przedmiotu 12\""
