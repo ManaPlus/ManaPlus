@@ -345,17 +345,21 @@ void SafeOpenGLGraphics::calcTile(ImageVertexes *const vert A_UNUSED,
 {
 }
 
-void SafeOpenGLGraphics::calcImagePattern(ImageVertexes *const vert,
-                                          const Image *const image,
-                                          const int x, const int y,
-                                          const int w, const int h) const
+void SafeOpenGLGraphics::calcImagePattern(ImageVertexes *const vert A_UNUSED,
+                                          const Image *const image A_UNUSED,
+                                          const int x A_UNUSED,
+                                          const int y A_UNUSED,
+                                          const int w A_UNUSED,
+                                          const int h A_UNUSED) const
 {
 }
 
-void SafeOpenGLGraphics::calcImagePattern(ImageCollection *const vert,
-                                          const Image *const image,
-                                          const int x, const int y,
-                                          const int w, const int h) const
+void SafeOpenGLGraphics::calcImagePattern(ImageCollection *const vert A_UNUSED,
+                                          const Image *const image A_UNUSED,
+                                          const int x A_UNUSED,
+                                          const int y A_UNUSED,
+                                          const int w A_UNUSED,
+                                          const int h A_UNUSED) const
 {
 }
 
@@ -363,7 +367,8 @@ void SafeOpenGLGraphics::drawTile(const ImageVertexes *const vert A_UNUSED)
 {
 }
 
-void SafeOpenGLGraphics::drawTile(const ImageCollection *const vertCol)
+void SafeOpenGLGraphics::drawTile(const ImageCollection *const
+                                  vertCol A_UNUSED)
 {
 }
 
@@ -376,11 +381,12 @@ void SafeOpenGLGraphics::updateScreen()
     BLOCK_END("Graphics::updateScreen")
 }
 
-bool SafeOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
-                                    const int x, const int y,
-                                    const int w, const int h,
-                                    const ImageRect &imgRect)
+bool SafeOpenGLGraphics::calcWindow(ImageCollection *const vertCol A_UNUSED,
+                                    const int x A_UNUSED, const int y A_UNUSED,
+                                    const int w A_UNUSED, const int h A_UNUSED,
+                                    const ImageRect &imgRect A_UNUSED)
 {
+    return false;
 }
 
 void SafeOpenGLGraphics::_beginDraw()
