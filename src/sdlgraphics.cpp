@@ -671,7 +671,7 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *p0 = static_cast<uint8_t *>(mTarget->pixels)
+                    uint8_t *const p0 = static_cast<uint8_t *>(mTarget->pixels)
                         + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                     {
@@ -840,11 +840,13 @@ void SDLGraphics::drawHLine(int x1, int y, int x2)
 
     const gcn::ClipRectangle& top = mClipStack.top();
 
-    x1 += top.xOffset;
+    const int xOffset = top.xOffset;
+    x1 += xOffset;
     y += top.yOffset;
-    x2 += top.xOffset;
+    x2 += xOffset;
 
-    if (y < top.y || y >= top.y + top.height)
+    const int topY = top.y;
+    if (y < topY || y >= topY + top.height)
         return;
 
     if (x1 > x2)
@@ -854,20 +856,22 @@ void SDLGraphics::drawHLine(int x1, int y, int x2)
         x1 ^= x2;
     }
 
-    if (top.x > x1)
+    const int topX = top.x;
+    if (topX > x1)
     {
-        if (top.x > x2)
+        if (topX > x2)
             return;
 
-        x1 = top.x;
+        x1 = topX;
     }
 
-    if (top.x + top.width <= x2)
+    const int sumX = topX + top.width;
+    if (sumX <= x2)
     {
-        if (top.x + top.width <= x1)
+        if (sumX <= x1)
             return;
 
-        x2 = top.x + top.width -1;
+        x2 = sumX -1;
     }
 
     const int bpp = mTarget->format->BytesPerPixel;
@@ -897,40 +901,54 @@ void SDLGraphics::drawHLine(int x1, int y, int x2)
         }
 
         case 3:
+        {
+            const uint8_t b0 = static_cast<uint8_t>((pixel >> 16) & 0xff);
+            const uint8_t b1 = static_cast<uint8_t>((pixel >> 8) & 0xff);
+            const uint8_t b2 = static_cast<uint8_t>(pixel & 0xff);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
             for (; x1 <= x2; ++x1)
             {
-                p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
-                p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-                p[2] = static_cast<uint8_t>(pixel & 0xff);
+                p[0] = b0;
+                p[1] = b1;
+                p[2] = b2;
                 p += 3;
             }
 #else
             for (; x1 <= x2; ++x1)
             {
-                p[0] = static_cast<uint8_t>(pixel & 0xff);
-                p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-                p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                p[0] = b2;
+                p[1] = b1;
+                p[2] = b0;
                 p += 3;
             }
 #endif
             break;
+        }
 
         case 4:
         {
             uint32_t *q = reinterpret_cast<uint32_t*>(p);
-            for (; x1 <= x2; ++x1)
+            if (mAlpha)
             {
-                if (mAlpha)
+                unsigned char a = static_cast<unsigned char>(mColor.a);
+                unsigned char a1 = 255 - a;
+                const int b0 = (pixel & 0xff) * a;
+                const int g0 = (pixel & 0xff00) * a;
+                const int r0 = (pixel & 0xff0000) * a;
+                for (; x1 <= x2; ++x1)
                 {
-                    *q = gcn::SDLAlpha32(pixel, *q,
-                        static_cast<unsigned char>(mColor.a));
+                    const unsigned int b = (b0 + (*q & 0xff) * a1) >> 8;
+                    const unsigned int g = (g0 + (*q & 0xff00) * a1) >> 8;
+                    const unsigned int r = (r0 + (*q & 0xff0000) * a1) >> 8;
+                    *q = (b & 0xff) | (g & 0xff00) | (r & 0xff0000);
+
                     q++;
                 }
-                else
-                {
+            }
+            else
+            {
+                for (; x1 <= x2; ++x1)
                     *(q++) = pixel;
-                }
             }
             break;
         }
@@ -948,9 +966,10 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
 
     const gcn::ClipRectangle& top = mClipStack.top();
 
+    const int yOffset = top.yOffset;
     x += top.xOffset;
-    y1 += top.yOffset;
-    y2 += top.yOffset;
+    y1 += yOffset;
+    y2 += yOffset;
 
     if (x < top.x || x >= top.x + top.width)
         return;
@@ -970,12 +989,13 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
         y1 = top.y;
     }
 
-    if (top.y + top.height <= y2)
+    const int sumY = top.y + top.height;
+    if (sumY <= y2)
     {
-        if (top.y + top.height <= y1)
+        if (sumY <= y1)
             return;
 
-        y2 = top.y + top.height - 1;
+        y2 = sumY - 1;
     }
 
     const int bpp = mTarget->format->BytesPerPixel;
@@ -990,13 +1010,14 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
         static_cast<uint8_t>(mColor.g),
         static_cast<uint8_t>(mColor.b));
 
+    const int pitch = mTarget->pitch;
     switch (bpp)
     {
         case 1:
             for (; y1 <= y2; ++y1)
             {
                 *p = static_cast<uint8_t>(pixel);
-                p += mTarget->pitch;
+                p += pitch;
             }
             break;
 
@@ -1005,46 +1026,66 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
             {
                 *reinterpret_cast<uint16_t*>(p)
                     = static_cast<uint16_t>(pixel);
-                p += mTarget->pitch;
+                p += pitch;
             }
             break;
 
         case 3:
+        {
+            const uint8_t b0 = static_cast<uint8_t>((pixel >> 16) & 0xff);
+            const uint8_t b1 = static_cast<uint8_t>((pixel >> 8) & 0xff);
+            const uint8_t b2 = static_cast<uint8_t>(pixel & 0xff);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
             for (; y1 <= y2; ++y1)
             {
-                p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
-                p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-                p[2] = static_cast<uint8_t>(pixel & 0xff);
-                p += mTarget->pitch;
+                p[0] = b0
+                p[1] = b1;
+                p[2] = b2;
+                p += pitch;
             }
 #else
             for (; y1 <= y2; ++y1)
             {
-                p[0] = static_cast<uint8_t>(pixel & 0xff);
-                p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-                p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
-                p += mTarget->pitch;
+                p[0] = b2;
+                p[1] = b1;
+                p[2] = b0;
+                p += pitch;
             }
 #endif
             break;
+        }
 
         case 4:
-            for (; y1 <= y2; ++y1)
+        {
+            if (mAlpha)
             {
-                if (mAlpha)
+                unsigned char a = static_cast<unsigned char>(mColor.a);
+                unsigned char a1 = 255 - a;
+                const int b0 = (pixel & 0xff) * a;
+                const int g0 = (pixel & 0xff00) * a;
+                const int r0 = (pixel & 0xff0000) * a;
+                for (; y1 <= y2; ++y1)
                 {
-                    *reinterpret_cast<uint32_t*>(p) = gcn::SDLAlpha32(pixel,
-                        *reinterpret_cast<uint32_t*>(p),
-                        static_cast<unsigned char>(mColor.a));
+                    const unsigned int dst = *reinterpret_cast<uint32_t*>(p);
+                    const unsigned int b = (b0 + (dst & 0xff) * a1) >> 8;
+                    const unsigned int g = (g0 + (dst & 0xff00) * a1) >> 8;
+                    const unsigned int r = (r0 + (dst & 0xff0000) * a1) >> 8;
+                    *reinterpret_cast<uint32_t*>(p) =
+                        (b & 0xff) | (g & 0xff00) | (r & 0xff0000);
+
+                    p += pitch;
                 }
-                else
+            }
+            else
+            {
+                for (; y1 <= y2; ++y1)
                 {
                     *reinterpret_cast<uint32_t*>(p) = pixel;
+                    p += pitch;
                 }
-                p += mTarget->pitch;
             }
             break;
+        }
 
         default:
             break;
@@ -1056,9 +1097,9 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
 void SDLGraphics::drawRectangle(const gcn::Rectangle &rectangle)
 {
     const int x1 = rectangle.x;
-    const int x2 = rectangle.x + rectangle.width - 1;
+    const int x2 = x1 + rectangle.width - 1;
     const int y1 = rectangle.y;
-    const int y2 = rectangle.y + rectangle.height - 1;
+    const int y2 = y1 + rectangle.height - 1;
 
     drawHLine(x1, y1, x2);
     drawHLine(x1, y2, x2);
