@@ -1038,7 +1038,7 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
             for (; y1 <= y2; ++y1)
             {
-                p[0] = b0
+                p[0] = b0;
                 p[1] = b1;
                 p[2] = b2;
                 p += pitch;
