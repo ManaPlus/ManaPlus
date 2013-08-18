@@ -55,6 +55,8 @@ class TestLauncher
 
         int testInternal();
 
+        int testDye();
+
         int testVideoDetection();
 
         int testBatches();
