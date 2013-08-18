@@ -749,7 +749,6 @@ SET(SRCS_GUICHAN
     guichan/include/guichan/rectangle.hpp
     guichan/include/guichan/selectionevent.hpp
     guichan/include/guichan/selectionlistener.hpp
-    guichan/include/guichan/sdl/sdlgraphics.hpp
     guichan/include/guichan/sdl/sdlpixel.hpp
     guichan/include/guichan/widget.hpp
     guichan/include/guichan/widgetlistener.hpp
@@ -784,7 +783,6 @@ SET(SRCS_GUICHAN
     guichan/rectangle.cpp
     guichan/selectionevent.cpp
     guichan/widget.cpp
-    guichan/sdl/sdlgraphics.cpp
     guichan/widgets/button.cpp
     guichan/widgets/checkbox.cpp
     guichan/widgets/container.cpp

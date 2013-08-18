@@ -58,6 +58,14 @@ class SDLGraphics : public Graphics
          */
         virtual ~SDLGraphics();
 
+        void _beginDraw();
+
+        void _endDraw();
+
+        bool pushClipArea(gcn::Rectangle rect);
+
+        void popClipArea();
+
         virtual bool drawRescaledImage(const Image *const image, int srcX,
                                        int srcY, int dstX, int dstY,
                                        const int width, const int height,
@@ -118,7 +126,13 @@ class SDLGraphics : public Graphics
         BlitMode getBlitMode() const A_WARN_UNUSED
         { return mBlitMode; }
 
-        void fillRectangle(const gcn::Rectangle& rectangle) override;
+        void fillRectangle(const gcn::Rectangle &rect) override;
+
+        void drawRectangle(const gcn::Rectangle &rect) override;
+
+        void drawPoint(int x, int y) override;
+
+        void drawLine(int x1, int y1, int x2, int y2) override;
 
     protected:
         virtual bool drawImage2(const Image *const image,
@@ -131,6 +145,10 @@ class SDLGraphics : public Graphics
                               SDL_Rect *const srcrect,
                               const SDL_Surface *const dst,
                               SDL_Rect *dstrect) const;
+
+        void drawHLine(int x1, int y, int x2);
+
+        void drawVLine(int x, int y1, int y2);
 
         BlitMode mBlitMode;
         uint32_t mOldPixel;

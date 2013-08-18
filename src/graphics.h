@@ -23,7 +23,10 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include <guichan/sdl/sdlgraphics.hpp>
+#include "SDL.h"
+
+#include <guichan/color.hpp>
+#include <guichan/graphics.hpp>
 
 #include "localconsts.h"
 
@@ -87,7 +90,7 @@ class ImageRect final
 /**
  * A central point of control for graphics.
  */
-class Graphics : public gcn::SDLGraphics
+class Graphics : public gcn::Graphics
 {
     public:
         /**
@@ -101,6 +104,12 @@ class Graphics : public gcn::SDLGraphics
          * Destructor.
          */
         virtual ~Graphics();
+
+        void setTarget(SDL_Surface *const target)
+        { mTarget = target; }
+
+        SDL_Surface *getTarget() const
+        { return mTarget; }
 
         /**
          * Sets whether vertical refresh syncing is enabled. Takes effect after
@@ -135,6 +144,14 @@ class Graphics : public gcn::SDLGraphics
          *         <code>false</code> otherwise.
          */
         bool drawImage(const Image *image, int x, int y);
+
+        //  override unused abstract function
+        void drawImage(const gcn::Image* image A_UNUSED,
+                       int srcX A_UNUSED, int srcY A_UNUSED,
+                       int dstX A_UNUSED, int dstY A_UNUSED,
+                       int width A_UNUSED, int height A_UNUSED) override
+        {
+        }
 
         /**
          * Draws a resclaled version of the image
@@ -326,6 +343,9 @@ class Graphics : public gcn::SDLGraphics
             mAlpha = (color.a != 255);
         }
 
+        const gcn::Color &getColor() const override
+        { return mColor; }
+
         const gcn::Color &getColor2() const
         { return mColor2; }
 
@@ -367,7 +387,9 @@ class Graphics : public gcn::SDLGraphics
 
         bool videoInfo();
 
+        SDL_Surface* mTarget;
         int mBpp;
+        bool mAlpha;
         bool mFullscreen;
         bool mHWAccel;
         bool mRedraw;
@@ -380,6 +402,7 @@ class Graphics : public gcn::SDLGraphics
         std::string mName;
         int mStartFreeMem;
         bool mSync;
+        gcn::Color mColor;
         gcn::Color mColor2;
 };
 

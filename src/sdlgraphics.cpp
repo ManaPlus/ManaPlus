@@ -771,3 +771,314 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
         SDL_FillRect(mTarget, &rect, color);
     }
 }
+
+void SDLGraphics::_beginDraw()
+{
+    pushClipArea(gcn::Rectangle(0, 0, mTarget->w, mTarget->h));
+}
+
+void SDLGraphics::_endDraw()
+{
+    popClipArea();
+}
+
+bool SDLGraphics::pushClipArea(gcn::Rectangle area)
+{
+    SDL_Rect rect;
+    const bool result = gcn::Graphics::pushClipArea(area);
+
+    const gcn::ClipRectangle &carea = mClipStack.top();
+    rect.x = static_cast<int16_t>(carea.x);
+    rect.y = static_cast<int16_t>(carea.y);
+    rect.w = static_cast<int16_t>(carea.width);
+    rect.h = static_cast<int16_t>(carea.height);
+    SDL_SetClipRect(mTarget, &rect);
+
+    return result;
+}
+
+void SDLGraphics::popClipArea()
+{
+    gcn::Graphics::popClipArea();
+
+    if (mClipStack.empty())
+        return;
+
+    const gcn::ClipRectangle &carea = mClipStack.top();
+    SDL_Rect rect;
+    rect.x = static_cast<int16_t>(carea.x);
+    rect.y = static_cast<int16_t>(carea.y);
+    rect.w = static_cast<int16_t>(carea.width);
+    rect.h = static_cast<int16_t>(carea.height);
+
+    SDL_SetClipRect(mTarget, &rect);
+}
+
+void SDLGraphics::drawPoint(int x, int y)
+{
+    if (mClipStack.empty())
+        return;
+
+    const gcn::ClipRectangle& top = mClipStack.top();
+
+    x += top.xOffset;
+    y += top.yOffset;
+
+    if (!top.isPointInRect(x, y))
+        return;
+
+    if (mAlpha)
+        SDLputPixelAlpha(mTarget, x, y, mColor);
+    else
+        SDLputPixel(mTarget, x, y, mColor);
+}
+
+void SDLGraphics::drawHLine(int x1, int y, int x2)
+{
+    if (mClipStack.empty())
+        return;
+
+    const gcn::ClipRectangle& top = mClipStack.top();
+
+    x1 += top.xOffset;
+    y += top.yOffset;
+    x2 += top.xOffset;
+
+    if (y < top.y || y >= top.y + top.height)
+        return;
+
+    if (x1 > x2)
+    {
+        x1 ^= x2;
+        x2 ^= x1;
+        x1 ^= x2;
+    }
+
+    if (top.x > x1)
+    {
+        if (top.x > x2)
+            return;
+
+        x1 = top.x;
+    }
+
+    if (top.x + top.width <= x2)
+    {
+        if (top.x + top.width <= x1)
+            return;
+
+        x2 = top.x + top.width -1;
+    }
+
+    const int bpp = mTarget->format->BytesPerPixel;
+
+    SDL_LockSurface(mTarget);
+
+    uint8_t *p = static_cast<uint8_t*>(mTarget->pixels)
+        + y * mTarget->pitch + x1 * bpp;
+
+    const uint32_t pixel = SDL_MapRGB(mTarget->format,
+        static_cast<uint8_t>(mColor.r),
+        static_cast<uint8_t>(mColor.g),
+        static_cast<uint8_t>(mColor.b));
+    switch (bpp)
+    {
+        case 1:
+            for (; x1 <= x2; ++x1)
+                *(p++) = static_cast<uint8_t>(pixel);
+            break;
+
+        case 2:
+        {
+            uint16_t* q = reinterpret_cast<uint16_t*>(p);
+            for (; x1 <= x2; ++x1)
+                *(q++) = pixel;
+            break;
+        }
+
+        case 3:
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            for (; x1 <= x2; ++x1)
+            {
+                p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                p[2] = static_cast<uint8_t>(pixel & 0xff);
+                p += 3;
+            }
+#else
+            for (; x1 <= x2; ++x1)
+            {
+                p[0] = static_cast<uint8_t>(pixel & 0xff);
+                p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                p += 3;
+            }
+#endif
+            break;
+
+        case 4:
+        {
+            uint32_t *q = reinterpret_cast<uint32_t*>(p);
+            for (; x1 <= x2; ++x1)
+            {
+                if (mAlpha)
+                {
+                    *q = gcn::SDLAlpha32(pixel, *q,
+                        static_cast<unsigned char>(mColor.a));
+                    q++;
+                }
+                else
+                {
+                    *(q++) = pixel;
+                }
+            }
+            break;
+        }
+        default:
+            break;
+    }  // end switch
+
+    SDL_UnlockSurface(mTarget);
+}
+
+void SDLGraphics::drawVLine(int x, int y1, int y2)
+{
+    if (mClipStack.empty())
+        return;
+
+    const gcn::ClipRectangle& top = mClipStack.top();
+
+    x += top.xOffset;
+    y1 += top.yOffset;
+    y2 += top.yOffset;
+
+    if (x < top.x || x >= top.x + top.width)
+        return;
+
+    if (y1 > y2)
+    {
+        y1 ^= y2;
+        y2 ^= y1;
+        y1 ^= y2;
+    }
+
+    if (top.y > y1)
+    {
+        if (top.y > y2)
+            return;
+
+        y1 = top.y;
+    }
+
+    if (top.y + top.height <= y2)
+    {
+        if (top.y + top.height <= y1)
+            return;
+
+        y2 = top.y + top.height - 1;
+    }
+
+    const int bpp = mTarget->format->BytesPerPixel;
+
+    SDL_LockSurface(mTarget);
+
+    uint8_t *p = static_cast<uint8_t*>(mTarget->pixels)
+        + y1 * mTarget->pitch + x * bpp;
+
+    const uint32_t pixel = SDL_MapRGB(mTarget->format,
+        static_cast<uint8_t>(mColor.r),
+        static_cast<uint8_t>(mColor.g),
+        static_cast<uint8_t>(mColor.b));
+
+    switch (bpp)
+    {
+        case 1:
+            for (; y1 <= y2; ++y1)
+            {
+                *p = static_cast<uint8_t>(pixel);
+                p += mTarget->pitch;
+            }
+            break;
+
+        case 2:
+            for (; y1 <= y2; ++ y1)
+            {
+                *reinterpret_cast<uint16_t*>(p)
+                    = static_cast<uint16_t>(pixel);
+                p += mTarget->pitch;
+            }
+            break;
+
+        case 3:
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            for (; y1 <= y2; ++y1)
+            {
+                p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                p[2] = static_cast<uint8_t>(pixel & 0xff);
+                p += mTarget->pitch;
+            }
+#else
+            for (; y1 <= y2; ++y1)
+            {
+                p[0] = static_cast<uint8_t>(pixel & 0xff);
+                p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                p += mTarget->pitch;
+            }
+#endif
+            break;
+
+        case 4:
+            for (; y1 <= y2; ++y1)
+            {
+                if (mAlpha)
+                {
+                    *reinterpret_cast<uint32_t*>(p) = gcn::SDLAlpha32(pixel,
+                        *reinterpret_cast<uint32_t*>(p),
+                        static_cast<unsigned char>(mColor.a));
+                }
+                else
+                {
+                    *reinterpret_cast<uint32_t*>(p) = pixel;
+                }
+                p += mTarget->pitch;
+            }
+            break;
+
+        default:
+            break;
+    }  // end switch
+
+    SDL_UnlockSurface(mTarget);
+}
+
+void SDLGraphics::drawRectangle(const gcn::Rectangle &rectangle)
+{
+    const int x1 = rectangle.x;
+    const int x2 = rectangle.x + rectangle.width - 1;
+    const int y1 = rectangle.y;
+    const int y2 = rectangle.y + rectangle.height - 1;
+
+    drawHLine(x1, y1, x2);
+    drawHLine(x1, y2, x2);
+
+    drawVLine(x1, y1, y2);
+    drawVLine(x2, y1, y2);
+}
+
+void SDLGraphics::drawLine(int x1, int y1, int x2, int y2)
+{
+    if (x1 == x2)
+    {
+        drawVLine(x1, y1, y2);
+        return;
+    }
+    if (y1 == y2)
+    {
+        drawHLine(x1, y1, x2);
+        return;
+    }
+
+    //  other cases not implimented
+}

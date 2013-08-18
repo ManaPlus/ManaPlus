@@ -57,10 +57,12 @@ int MSDL_gfxBlitRGBA(SDL_Surface *src, SDL_Rect *srcrect,
 }
 
 Graphics::Graphics() :
-    SDLGraphics(),
+    gcn::Graphics(),
     mWidth(0),
     mHeight(0),
+    mTarget(nullptr),
     mBpp(0),
+    mAlpha(false),
     mFullscreen(false),
     mHWAccel(false),
     mRedraw(false),
@@ -73,6 +75,7 @@ Graphics::Graphics() :
     mName("Software"),
     mStartFreeMem(0),
     mSync(false),
+    mColor(),
     mColor2()
 {
     mRect.x = 0;
