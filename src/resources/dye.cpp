@@ -206,12 +206,25 @@ void DyePalette::replaceSColor(uint32_t *pixels, const int bufSize) const
     if (sz % 2)
         -- it_end;
 
+    int c = 0;
     for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
     {
+        c ++;
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
-        const int alpha = *p & 255;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        const int alpha = *pixels & 0xff000000;
+        const unsigned int data = (*pixels) & 0x00ffffff;
+#else
+        const int alpha = *p & 0xff;
+        const unsigned int data = (*pixels) & 0xffffff00;
+#endif
+//        logger->log("c:%04d   %08x", c, *pixels);
+//        logger->log("data:    %08x", data);
         if (!alpha)
+        {
+//            logger->log("skip:    %08x", *pixels);
             continue;
+        }
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
@@ -221,16 +234,16 @@ void DyePalette::replaceSColor(uint32_t *pixels, const int bufSize) const
             const DyeColor &col2 = *it;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int data = (*pixels) & 0x00ffffff;
             const unsigned int coldata = (col.value[2] << 16)
                 | (col.value[1] << 8) | (col.value[0]);
 #else
-            const unsigned int data = (*pixels) & 0xffffff00;
             const unsigned int coldata = (col.value[2] << 8)
                 | (col.value[1] << 16) | (col.value[0] << 24);
 #endif
+//            logger->log("coldata: %08x", coldata);
             if (data == coldata)
             {
+//                logger->log("correct");
                 p[3] = col2.value[0];
                 p[2] = col2.value[1];
                 p[1] = col2.value[2];
@@ -254,6 +267,7 @@ void DyePalette::replaceAColor(uint32_t *pixels, const int bufSize) const
     for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
+        const unsigned int data = *pixels;
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
@@ -263,11 +277,9 @@ void DyePalette::replaceAColor(uint32_t *pixels, const int bufSize) const
             const DyeColor &col2 = *it;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int data = *pixels;
             const unsigned int coldata = (col.value[3] << 24)
                 | (col.value[2] << 16) | (col.value[1] << 8) | (col.value[0]);
 #else
-            const unsigned int data = *pixels;
             const unsigned int coldata = (col.value[3]) | (col.value[2] << 8)
                 | (col.value[1] << 16) | (col.value[0] << 24);
 #endif
@@ -298,7 +310,14 @@ void DyePalette::replaceSOGLColor(uint32_t *pixels, const int bufSize) const
     for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
-        if (!(*pixels & 0xff000000))
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        const int alpha = *p & 0xff;
+        const unsigned int data = (*pixels) & 0xffffff00;
+#else
+        const int alpha = *pixels & 0xff000000;
+        const unsigned int data = (*pixels) & 0x00ffffff;
+#endif
+        if (!alpha)
             continue;
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
@@ -309,11 +328,9 @@ void DyePalette::replaceSOGLColor(uint32_t *pixels, const int bufSize) const
             const DyeColor &col2 = *it;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int data = (*pixels) & 0xffffff00;
             const unsigned int coldata = (col.value[0] << 24)
                 | (col.value[1] << 16) | (col.value[2] << 8);
 #else
-            const unsigned int data = (*pixels) & 0x00ffffff;
             const unsigned int coldata = (col.value[0])
                 | (col.value[1] << 8) | (col.value[2] << 16);
 #endif
@@ -342,6 +359,7 @@ void DyePalette::replaceAOGLColor(uint32_t *pixels, const int bufSize) const
     for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
+        const unsigned int data = *pixels;
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
@@ -351,11 +369,9 @@ void DyePalette::replaceAOGLColor(uint32_t *pixels, const int bufSize) const
             const DyeColor &col2 = *it;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int data = *pixels;
             const unsigned int coldata = (col.value[0] << 24)
                 | (col.value[1] << 16) | (col.value[2] << 8) | col.value[3];
 #else
-            const unsigned int data = *pixels;
             const unsigned int coldata = (col.value[0]) | (col.value[1] << 8)
                 | (col.value[2] << 16) | (col.value[3] << 24);
 #endif

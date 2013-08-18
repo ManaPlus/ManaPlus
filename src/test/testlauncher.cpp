@@ -240,21 +240,17 @@ int TestLauncher::testDye()
         "graphics/sprites/arrow_up.png");
     Dye *d = nullptr;
 
-    logger->log("test1");
     if (rw)
     {
-        logger->log("test2");
         Image *image = d ? sdlImageHelper->load(rw, *d)
             : sdlImageHelper->load(rw);
         if (image)
         {
-            logger->log("test3");
             const SDL_Rect &rect = image->mBounds;
             SDL_Surface *surface = sdlImageHelper->create32BitSurface(
                 rect.w, rect.h);
             if (surface)
             {
-                logger->log("test4");
                 SDL_gfxBlitRGBA(image->mSDLSurface, nullptr, surface, nullptr);
                 ImageWriter::writePNG(image->mSDLSurface,
                     Client::getTempDirectory() + "/testimage1.png");
@@ -262,7 +258,6 @@ int TestLauncher::testDye()
                     Client::getTempDirectory() + "/testimage2.png");
             }
 
-            logger->log("test5");
             rw = PHYSFSRWOPS_openRead(
                 "graphics/sprites/arrow_up.png");
             d = new Dye("S:#0000ff,00ff00,5c5cff,ff0000");
@@ -270,12 +265,10 @@ int TestLauncher::testDye()
                 : sdlImageHelper->load(rw);
             if (image)
             {
-                logger->log("test6");
                 surface = sdlImageHelper->create32BitSurface(
                     rect.w, rect.h);
                 if (surface)
                 {
-                    logger->log("test7");
                     SDL_gfxBlitRGBA(image->mSDLSurface, nullptr,
                         surface, nullptr);
                     ImageWriter::writePNG(image->mSDLSurface,

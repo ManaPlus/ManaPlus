@@ -53,10 +53,18 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
     rgba.BytesPerPixel = 4;
     rgba.colorkey = 0;
     rgba.alpha = 255;
-    rgba.Rmask = 0xFF000000; rgba.Rloss = 0; rgba.Rshift = 24;
-    rgba.Gmask = 0x00FF0000; rgba.Gloss = 0; rgba.Gshift = 16;
-    rgba.Bmask = 0x0000FF00; rgba.Bloss = 0; rgba.Bshift = 8;
-    rgba.Amask = 0x000000FF; rgba.Aloss = 0; rgba.Ashift = 0;
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+    rgba.Rmask = 0x000000FF;
+    rgba.Gmask = 0x0000FF00;
+    rgba.Bmask = 0x00FF0000;
+    rgba.Amask = 0xFF000000;
+#else
+    rgba.Rmask = 0xFF000000;
+    rgba.Gmask = 0x00FF0000;
+    rgba.Bmask = 0x0000FF00;
+    rgba.Amask = 0x000000FF;
+#endif
 
     SDL_Surface *const surf = SDL_ConvertSurface(
         tmpImage, &rgba, SDL_SWSURFACE);
