@@ -24,9 +24,9 @@
 #include "gui/sdlfont.h"
 
 #include "client.h"
-#include "graphics.h"
 #include "logger.h"
 #include "main.h"
+#include "sdlgraphics.h"
 #include "utils/paths.h"
 
 #include "resources/image.h"

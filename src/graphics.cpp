@@ -40,8 +40,6 @@
 #endif
 #endif
 
-#include <SDL_gfxBlitFunc.h>
-
 #include "debug.h"
 
 #ifdef USE_OPENGL
@@ -49,12 +47,6 @@
 #define GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX 0x9049
 #endif
 #endif
-
-int MSDL_gfxBlitRGBA(SDL_Surface *src, SDL_Rect *srcrect,
-                     SDL_Surface *dst, SDL_Rect *dstrect)
-{
-    return SDL_gfxBlitRGBA(src, srcrect, dst, dstrect);
-}
 
 Graphics::Graphics() :
     gcn::Graphics(),

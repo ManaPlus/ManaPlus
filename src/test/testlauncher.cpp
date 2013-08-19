@@ -24,8 +24,8 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "graphics.h"
 #include "graphicsmanager.h"
+#include "sdlgraphics.h"
 #include "soundmanager.h"
 
 #include "gui/theme.h"
@@ -41,8 +41,6 @@
 #include "resources/wallpaper.h"
 
 #include <unistd.h>
-
-#include <SDL_gfxBlitFunc.h>
 
 #ifdef WIN32
 #include <windows.h>
@@ -251,7 +249,8 @@ int TestLauncher::testDye()
                 rect.w, rect.h);
             if (surface)
             {
-                SDL_gfxBlitRGBA(image->mSDLSurface, nullptr, surface, nullptr);
+                MSDL_gfxBlitRGBA(image->mSDLSurface, nullptr,
+                    surface, nullptr);
                 ImageWriter::writePNG(image->mSDLSurface,
                     Client::getTempDirectory() + "/testimage1.png");
                 ImageWriter::writePNG(surface,
@@ -269,7 +268,7 @@ int TestLauncher::testDye()
                     rect.w, rect.h);
                 if (surface)
                 {
-                    SDL_gfxBlitRGBA(image->mSDLSurface, nullptr,
+                    MSDL_gfxBlitRGBA(image->mSDLSurface, nullptr,
                         surface, nullptr);
                     ImageWriter::writePNG(image->mSDLSurface,
                         Client::getTempDirectory() + "/testimage3.png");

@@ -40,9 +40,6 @@ struct SDL_Surface;
 static const int defaultScreenWidth = 800;
 static const int defaultScreenHeight = 600;
 
-int MSDL_gfxBlitRGBA(SDL_Surface *src, SDL_Rect *srcrect,
-                     SDL_Surface *dst, SDL_Rect *dstrect);
-
 /**
  * 9 images defining a rectangle. 4 corners, 4 sides and a middle area. The
  * topology is as follows:
