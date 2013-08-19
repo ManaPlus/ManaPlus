@@ -510,13 +510,23 @@ void Dye::normalDye(uint32_t *pixels, const int bufSize) const
     for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++ pixels)
     {
         const uint32_t p = *pixels;
-        const int alpha = p & 255;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        const int alpha = p & 0xff000000;
+#else
+        const int alpha = p & 0xff;
+#endif
         if (!alpha)
             continue;
         int color[3];
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        color[0] = (p) & 255;
+        color[1] = (p >> 8) & 255;
+        color[2] = (p >> 16) & 255;
+#else
         color[0] = (p >> 24) & 255;
         color[1] = (p >> 16) & 255;
         color[2] = (p >> 8) & 255;
+#endif
 
         const int cmax = std::max(color[0], std::max(color[1], color[2]));
         if (cmax == 0)
@@ -538,8 +548,13 @@ void Dye::normalDye(uint32_t *pixels, const int bufSize) const
         if (mDyePalettes[i - 1])
             mDyePalettes[i - 1]->getColor(cmax, color);
 
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        *pixels = (color[0]) | (color[1] << 8)
+            | (color[2] << 16) | alpha;
+#else
         *pixels = (color[0] << 24) | (color[1] << 16)
             | (color[2] << 8) | alpha;
+#endif
     }
 }
 
@@ -548,13 +563,23 @@ void Dye::normalOGLDye(uint32_t *pixels, const int bufSize) const
     for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++ pixels)
     {
         const uint32_t p = *pixels;
-        const int alpha = (p >> 24) & 255;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        const int alpha = p & 255;
+#else
+        const int alpha = p & 0xff000000;
+#endif
         if (!alpha)
             continue;
         int color[3];
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        color[0] = (p >> 24) & 255;
+        color[1] = (p >> 16) & 255;
+        color[2] = (p >> 8) & 255;
+#else
         color[0] = (p) & 255;
         color[1] = (p >> 8) & 255;
         color[2] = (p >> 16) & 255;
+#endif
 
         const int cmax = std::max(color[0], std::max(color[1], color[2]));
         if (cmax == 0)
@@ -576,7 +601,12 @@ void Dye::normalOGLDye(uint32_t *pixels, const int bufSize) const
         if (mDyePalettes[i - 1])
             mDyePalettes[i - 1]->getColor(cmax, color);
 
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        *pixels = (color[0] << 24) | (color[1] << 16)
+            | (color[2] << 8) | alpha;
+#else
         *pixels = (color[0]) | (color[1] << 8)
-            | (color[2] << 16) | (alpha << 24);
+            | (color[2] << 16) | alpha;
+#endif
     }
 }
