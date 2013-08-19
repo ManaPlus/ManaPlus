@@ -206,3 +206,49 @@ TEST(Dye, replaceAColor3)
     EXPECT_EQ(0x20, data[2]);
     EXPECT_EQ(0x10, data[3]);
 }
+
+TEST(Dye, normalDye1)
+{
+    Dye dye("R:#203040,506070");
+    uint8_t data[4];
+    data[0] = 0x55;
+    data[1] = 0x00;
+    data[2] = 0x00;
+    data[3] = 0x50;
+    dye.normalDye(reinterpret_cast<uint32_t*>(&data[0]), 1);
+    EXPECT_EQ(0x55, data[0]);
+    EXPECT_EQ(0x28, data[1]);
+    EXPECT_EQ(0x1e, data[2]);
+    EXPECT_EQ(0x14, data[3]);
+}
+
+TEST(Dye, normalDye2)
+{
+    Dye dye("G:#203040,506070");
+    uint8_t data[4];
+    data[0] = 0x60;
+    data[1] = 0x00;
+    data[2] = 0x50;
+    data[3] = 0x00;
+    dye.normalDye(reinterpret_cast<uint32_t*>(&data[0]), 1);
+    EXPECT_EQ(0x60, data[0]);
+    EXPECT_EQ(0x28, data[1]);
+    EXPECT_EQ(0x1e, data[2]);
+    EXPECT_EQ(0x14, data[3]);
+}
+
+TEST(Dye, normalOGLDye1)
+{
+    Dye dye("R:#203040,506070");
+    uint8_t data[4];
+    data[0] = 0x55;
+    data[1] = 0x00;
+    data[2] = 0x00;
+    data[3] = 0x50;
+    dye.normalOGLDye(reinterpret_cast<uint32_t*>(&data[0]), 1);
+    EXPECT_EQ(0x15, data[0]);
+    EXPECT_EQ(0x20, data[1]);
+    EXPECT_EQ(0x2a, data[2]);
+    EXPECT_EQ(0x50, data[3]);
+}
+
