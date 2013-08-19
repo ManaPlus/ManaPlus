@@ -92,20 +92,7 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
         case 0:
         default:
         {
-            for (uint32_t *p_end = pixels + surf->w * surf->h;
-                 pixels != p_end; ++pixels)
-            {
-                const uint32_t p = *pixels;
-                const int alpha = p & 255;
-                if (!alpha)
-                    continue;
-                int v[3];
-                v[0] = (p >> 24) & 255;
-                v[1] = (p >> 16) & 255;
-                v[2] = (p >> 8) & 255;
-                dye.update(v);
-                *pixels = (v[0] << 24) | (v[1] << 16) | (v[2] << 8) | alpha;
-            }
+            dye.normalDye(pixels, surf->w * surf->h);
             break;
         }
     }

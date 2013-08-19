@@ -85,20 +85,7 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
         case 0:
         default:
         {
-            for (uint32_t *p_end = pixels + surf->w * surf->h;
-                 pixels != p_end; ++pixels)
-            {
-                const uint32_t p = *pixels;
-                const int alpha = (p >> 24) & 255;
-                if (!alpha)
-                    continue;
-                int v[3];
-                v[0] = (p) & 255;
-                v[1] = (p >> 8) & 255;
-                v[2] = (p >> 16) & 255;
-                dye.update(v);
-                *pixels = (v[0]) | (v[1] << 8) | (v[2] << 16) | (alpha << 24);
-            }
+            dye.normalOGLDye(pixels, surf->w * surf->h);
             break;
         }
     }

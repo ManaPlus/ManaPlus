@@ -446,29 +446,6 @@ Dye::~Dye()
     }
 }
 
-void Dye::update(int color[3]) const
-{
-    const int cmax = std::max(color[0], std::max(color[1], color[2]));
-    if (cmax == 0)
-        return;
-
-    const int cmin = std::min(color[0], std::min(color[1], color[2]));
-    const int intensity = color[0] + color[1] + color[2];
-
-    if (cmin != cmax && (cmin != 0 || (intensity != cmax
-        && intensity != 2 * cmax)))
-    {
-        // not pure
-        return;
-    }
-
-    const int i = (color[0] != 0) | ((color[1] != 0) << 1)
-        | ((color[2] != 0) << 2);
-
-    if (mDyePalettes[i - 1])
-        mDyePalettes[i - 1]->getColor(cmax, color);
-}
-
 void Dye::instantiate(std::string &target, const std::string &palettes)
 {
     size_t next_pos = target.find('|');
@@ -526,4 +503,80 @@ int Dye::getType() const
     if (mDyePalettes[aPaleteIndex])
         return 2;
     return 0;
+}
+
+void Dye::normalDye(uint32_t *pixels, const int bufSize) const
+{
+    for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++ pixels)
+    {
+        const uint32_t p = *pixels;
+        const int alpha = p & 255;
+        if (!alpha)
+            continue;
+        int color[3];
+        color[0] = (p >> 24) & 255;
+        color[1] = (p >> 16) & 255;
+        color[2] = (p >> 8) & 255;
+
+        const int cmax = std::max(color[0], std::max(color[1], color[2]));
+        if (cmax == 0)
+            continue;
+
+        const int cmin = std::min(color[0], std::min(color[1], color[2]));
+        const int intensity = color[0] + color[1] + color[2];
+
+        if (cmin != cmax && (cmin != 0 || (intensity != cmax
+            && intensity != 2 * cmax)))
+        {
+            // not pure
+            continue;
+        }
+
+        const int i = (color[0] != 0) | ((color[1] != 0) << 1)
+            | ((color[2] != 0) << 2);
+
+        if (mDyePalettes[i - 1])
+            mDyePalettes[i - 1]->getColor(cmax, color);
+
+        *pixels = (color[0] << 24) | (color[1] << 16)
+            | (color[2] << 8) | alpha;
+    }
+}
+
+void Dye::normalOGLDye(uint32_t *pixels, const int bufSize) const
+{
+    for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++ pixels)
+    {
+        const uint32_t p = *pixels;
+        const int alpha = (p >> 24) & 255;
+        if (!alpha)
+            continue;
+        int color[3];
+        color[0] = (p) & 255;
+        color[1] = (p >> 8) & 255;
+        color[2] = (p >> 16) & 255;
+
+        const int cmax = std::max(color[0], std::max(color[1], color[2]));
+        if (cmax == 0)
+            continue;
+
+        const int cmin = std::min(color[0], std::min(color[1], color[2]));
+        const int intensity = color[0] + color[1] + color[2];
+
+        if (cmin != cmax && (cmin != 0 || (intensity != cmax
+            && intensity != 2 * cmax)))
+        {
+            // not pure
+            continue;
+        }
+
+        const int i = (color[0] != 0) | ((color[1] != 0) << 1)
+            | ((color[2] != 0) << 2);
+
+        if (mDyePalettes[i - 1])
+            mDyePalettes[i - 1]->getColor(cmax, color);
+
+        *pixels = (color[0]) | (color[1] << 8)
+            | (color[2] << 16) | (alpha << 24);
+    }
 }

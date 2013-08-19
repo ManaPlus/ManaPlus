@@ -108,11 +108,6 @@ class Dye final
         ~Dye();
 
         /**
-         * Modifies a pixel color.
-         */
-        void update(int color[3]) const;
-
-        /**
          * Fills the blank in a dye placeholder with some palette names.
          */
         static void instantiate(std::string &target,
@@ -134,6 +129,10 @@ class Dye final
          * Return dye type for S - 1, for A - 2, 0 for other
          */
         int getType() const A_WARN_UNUSED;
+
+        void normalDye(uint32_t *pixels, const int bufSize) const;
+
+        void normalOGLDye(uint32_t *pixels, const int bufSize) const;
 
     private:
         /**
