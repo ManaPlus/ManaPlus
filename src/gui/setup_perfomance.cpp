@@ -79,7 +79,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable opacity cache (Software, can "
-        "use many memory)"), "", "alphaCache", this, "alphaCacheEvent");
+        "use much memory)"), "", "alphaCache", this, "alphaCacheEvent");
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable map reduce (Software)"), "",
