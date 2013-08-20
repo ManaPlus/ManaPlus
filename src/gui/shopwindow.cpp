@@ -125,7 +125,10 @@ ShopWindow::ShopWindow():
     setStickyButtonLock(true);
     setMinWidth(260);
     setMinHeight(220);
-    setDefaultSize(380, 300, ImageRect::CENTER);
+    if (mainGraphics->mWidth > 600)
+        setDefaultSize(500, 300, ImageRect::CENTER);
+    else
+        setDefaultSize(380, 300, ImageRect::CENTER);
 
     mAnnounceCounter[BUY] = 0;
     mAnnounceCounter[SELL] = 0;
