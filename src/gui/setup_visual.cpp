@@ -66,7 +66,7 @@ static const char *const particleTypeList[] =
     // TRANSLATORS: patricle effects type
     N_("normal"),
     // TRANSLATORS: patricle effects type
-    N_("best perfomance")
+    N_("best performance")
 };
 
 static const int vSyncListSize = 3;

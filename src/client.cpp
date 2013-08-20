@@ -1163,7 +1163,7 @@ int Client::gameExec()
 #ifndef WIN32
             ADDBUTTON(mPerfomanceButton, new Button(mDesktop,
                 // TRANSLATORS: perfoamance tab quick button
-                _("Perfomance"), "Perfomance", this))
+                _("Performance"), "Perfomance", this))
             ADDBUTTON(mVideoButton, new Button(mDesktop,
                 // TRANSLATORS: video tab quick button
                 _("Video"), "Video", this))

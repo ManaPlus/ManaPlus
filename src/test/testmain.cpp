@@ -225,7 +225,7 @@ void TestMain::writeConfig(const int openGLMode, const int rescale,
     mConfig.setValue("showBackground", !rescale);
     mConfig.setValue("sound", !sound);
 
-    // better perfomance
+    // better performance
     mConfig.setValue("hwaccel", true);
     mConfig.setValue("fpslimit", 60);
     mConfig.setValue("altfpslimit", 2);

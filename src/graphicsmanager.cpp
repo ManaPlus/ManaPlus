@@ -938,7 +938,7 @@ static CALLBACK void debugCallback(GLenum source, GLenum type, GLuint id,
             message.append(" PORTABILITY");
             break;
         case GL_DEBUG_TYPE_PERFORMANCE:
-            message.append(" PERFOMANCE");
+            message.append(" PERFORMANCE");
             break;
         case GL_DEBUG_TYPE_OTHER:
             message.append(" OTHER");

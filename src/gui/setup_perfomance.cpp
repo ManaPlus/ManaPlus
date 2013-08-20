@@ -58,7 +58,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     mTexturesList(new NamesModel)
 {
     // TRANSLATORS: settings tab name
-    setName(_("Perfomance"));
+    setName(_("Performance"));
 
     // Do the layout
     LayoutHelper h(this);
@@ -66,11 +66,11 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     place(0, 0, mScroll, 10, 10);
 
     // TRANSLATORS: settings option
-    new SetupItemLabel(_("Better perfomance (enable for better perfomance)"),
+    new SetupItemLabel(_("Better performance (enable for better performance)"),
         "", this);
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Auto adjust perfomance"), "",
+    new SetupItemCheckBox(_("Auto adjust performance"), "",
         "adjustPerfomance", this, "adjustPerfomanceEvent");
 
     // TRANSLATORS: settings option
@@ -99,7 +99,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
 
 
     // TRANSLATORS: settings option
-    new SetupItemLabel(_("Better quality (disable for better perfomance)"),
+    new SetupItemLabel(_("Better quality (disable for better performance)"),
         "", this);
 
     // TRANSLATORS: settings option
@@ -131,7 +131,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Different options (enable or disable can "
-        "improve perfomance)"), "", this);
+        "improve performance)"), "", this);
 
 
     mTexturesList->fillFromArray(&texturesList[0], texturesListSize);
