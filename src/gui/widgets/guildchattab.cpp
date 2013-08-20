@@ -127,7 +127,7 @@ void GuildChatTab::showHelp()
     // TRANSLATORS: guild chat tab help
     chatLog(_("/leave > Leave the guild you are in"));
     // TRANSLATORS: guild chat tab help
-    chatLog(_("/kick > Kick some one from the guild you are in"));
+    chatLog(_("/kick > Kick someone from the guild you are in"));
 }
 
 void GuildChatTab::getAutoCompleteList(StringVect &names) const

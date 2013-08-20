@@ -77,7 +77,7 @@ void PartyTab::showHelp()
     // TRANSLATORS: party help message
     chatLog(_("/leave > Leave the party you are in"));
     // TRANSLATORS: party help message
-    chatLog(_("/kick > Kick some one from the party you are in"));
+    chatLog(_("/kick > Kick someone from the party you are in"));
     // TRANSLATORS: party help message
     chatLog(_("/item > Show/change party item sharing options"));
     // TRANSLATORS: party help message
