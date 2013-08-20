@@ -40,8 +40,59 @@ AC_CHECK_FUNCS([atexit floor getcwd gethostbyname memset mkdir select socket])
 AM_GNU_GETTEXT([external],[need-ngettext])
 AM_GNU_GETTEXT_VERSION([0.16.1])
 
+# Enable sdl2
+AC_ARG_WITH(sdl2,[  --with-sdl        enable experimental SDL 2 support] )
+if test "x$with_sdl2" == "xyes"; then
+    AC_PATH_PROG(SDL_CONFIG, sdl2-config)
+    AC_CHECK_LIB([SDL2], [SDL_Init], ,
+    AC_MSG_ERROR([ *** Unable to find SDL2 library (http://www.libsdl.org/)]))
+
+    AC_CHECK_LIB(SDL2_image, IMG_LoadPNG_RW, ,
+    AC_MSG_ERROR([ *** Unable to find SDL2_image library with PNG support
+    (http://www.libsdl.org/projects/SDL_image/)]))
+
+    AC_CHECK_LIB(SDL2_ttf, TTF_Quit, ,
+    AC_MSG_ERROR([ *** Unable to find SDL2_ttf library (http://www.libsdl.org/projects/SDL_ttf/)]))
+
+    AC_CHECK_LIB([SDL2_mixer], [Mix_OpenAudio], ,
+    AC_MSG_ERROR([ *** Unable to find SDL2_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
+
+
+#    disabled for now
+#    AC_CHECK_LIB(SDL2_gfx, rotozoomSurfaceXY, ,
+#    AC_MSG_ERROR([ *** Unable to find SDL2_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
+#    AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
+
+#   using embedded sdl2gfx
+    CPPFLAGS="$CPPFLAGS -I./sdl2gfx"
+
+    with_sdl2=yes
+else
+    AC_PATH_PROG(SDL_CONFIG, sdl-config)
+    AC_CHECK_LIB([SDL], [SDL_Init], ,
+    AC_MSG_ERROR([ *** Unable to find SDL library (http://www.libsdl.org/)]))
+
+    AC_CHECK_LIB(SDL_image, IMG_LoadPNG_RW, ,
+    AC_MSG_ERROR([ *** Unable to find SDL_image library with PNG support
+    (http://www.libsdl.org/projects/SDL_image/)]))
+
+    AC_CHECK_LIB(SDL_ttf, TTF_Quit, ,
+    AC_MSG_ERROR([ *** Unable to find SDL_ttf library (http://www.libsdl.org/projects/SDL_ttf/)]))
+
+    AC_CHECK_LIB([SDL_mixer], [Mix_OpenAudio], ,
+    AC_MSG_ERROR([ *** Unable to find SDL_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
+
+
+    AC_CHECK_LIB(SDL_gfx, rotozoomSurfaceXY, ,
+    AC_MSG_ERROR([ *** Unable to find SDL_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
+    AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
+
+    with_sdl2=no
+fi
+
+AM_CONDITIONAL(USE_SDL2, test x$with_sdl2 = xyes)
+
 # Search for *-config
-AC_PATH_PROG(SDL_CONFIG, sdl-config)
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
 AC_PATH_PROG(CURL_CONFIG, curl-config)
 
@@ -62,8 +113,6 @@ if test -n "$SDL_CONFIG"; then
     LIBS="$LIBS `$SDL_CONFIG --libs`"
     CPPFLAGS="$CPPFLAGS `$SDL_CONFIG --cflags`"
 fi
-AC_CHECK_LIB([SDL], [SDL_Init], ,
-AC_MSG_ERROR([ *** Unable to find SDL library (http://www.libsdl.org/)]))
 AC_CHECK_HEADERS([SDL.h], ,
 AC_MSG_ERROR([ *** SDL library found but cannot find headers (http://www.libsdl.org/)]))
 
@@ -96,20 +145,6 @@ AC_MSG_ERROR([ *** libxml2 library found but cannot find headers (http://xmlsoft
 AC_CHECK_LIB(png, png_write_info, ,
 AC_MSG_ERROR([ *** Unable to find png library]))
 
-AC_CHECK_LIB(SDL_image, IMG_LoadPNG_RW, ,
-AC_MSG_ERROR([ *** Unable to find SDL_image library with PNG support
-(http://www.libsdl.org/projects/SDL_image/)]))
-
-AC_CHECK_LIB(SDL_ttf, TTF_Quit, ,
-AC_MSG_ERROR([ *** Unable to find SDL_ttf library (http://www.libsdl.org/projects/SDL_ttf/)]))
-
-AC_CHECK_LIB([SDL_mixer], [Mix_OpenAudio], ,
-AC_MSG_ERROR([ *** Unable to find SDL_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
-
-
-AC_CHECK_LIB(SDL_gfx, rotozoomSurfaceXY, ,
-AC_MSG_ERROR([ *** Unable to find SDL_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
-AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
 
 # === Check for X11 (check borrowed from Wormux) ========================
 # Deactivated on purpose under OSX (in case X11 SDK is installed)

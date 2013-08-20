@@ -25,6 +25,10 @@ if USE_MUMBLE
 manaplus_CXXFLAGS += -DUSE_MUMBLE
 endif
 
+if USE_SDL2
+manaplus_CXXFLAGS += -DUSE_SDL2
+endif
+
 if USE_INTERNALGUICHAN
 manaplus_CXXFLAGS += -DUSE_INTERNALGUICHAN
 manaplus_SOURCES += guichan/include/guichan/actionevent.hpp \
