@@ -61,6 +61,9 @@
 #include "inputmanager.h"
 #include "keydata.h"
 #include "mouseinput.h"
+#include "sdlshared.h"
+
+#include <SDL_keyboard.h>
 
 #include <guichan/exception.hpp>
 
@@ -176,11 +179,13 @@ void SDLInput::pushInput(const SDL_Event &event)
 #endif
             mouseInput.setButton(convertMouseButton(event.button.button));
 
+#ifndef USE_SDL2
             if (event.button.button == SDL_BUTTON_WHEELDOWN)
                 mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_DOWN);
             else if (event.button.button == SDL_BUTTON_WHEELUP)
                 mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_UP);
             else
+#endif
                 mouseInput.setType(gcn::MouseInput::PRESSED);
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
@@ -211,6 +216,7 @@ void SDLInput::pushInput(const SDL_Event &event)
             mMouseInputQueue.push(mouseInput);
             break;
 
+#ifndef USE_SDL2
         case SDL_ACTIVEEVENT:
             /*
              * This occurs when the mouse leaves the window and the Gui-chan
@@ -237,7 +243,7 @@ void SDLInput::pushInput(const SDL_Event &event)
                 mMouseInWindow = true;
             }
             break;
-
+#endif
         default:
             break;
     }  // end switch
@@ -262,7 +268,11 @@ int SDLInput::convertMouseButton(const int button)
 int SDLInput::convertKeyCharacter(const SDL_Event &event)
 {
     const SDL_keysym keysym = event.key.keysym;
+#ifdef USE_SDL2
+    int value = keysym.scancode;
+#else
     int value = keysym.unicode;
+#endif
 
     switch (keysym.sym)
     {
@@ -298,7 +308,9 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
           // with the keysym.sym SDLK_SPACE which
           // without this check would be lost. The check
           // is only valid on key down events in SDL.
+#ifndef USE_SDL2
           if (event.type == SDL_KEYUP || keysym.unicode == ' ')
+#endif
           {
               value = Key::SPACE;
           }
@@ -387,12 +399,14 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
       case SDLK_LMETA:
           value = Key::LEFT_META;
           break;
+#ifndef USE_SDL2
       case SDLK_LSUPER:
           value = Key::LEFT_SUPER;
           break;
       case SDLK_RSUPER:
           value = Key::RIGHT_SUPER;
           break;
+#endif
       case SDLK_MODE:
           value = Key::ALT_GR;
           break;

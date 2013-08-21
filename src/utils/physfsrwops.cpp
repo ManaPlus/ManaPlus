@@ -28,12 +28,20 @@
 
 #include "debug.h"
 
-static int physfsrwops_seek(SDL_RWops *const rw, const int offset,
-                            const int whence)
+#ifdef USE_SDL2
+#define PHYSFSINT int64_t
+#define PHYSFSSIZE size_t
+#else
+#define PHYSFSINT int32_t
+#define PHYSFSSIZE int
+#endif
+
+static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
+                                  const int whence)
 {
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);
-    int pos = 0;
+    PHYSFSINT pos = 0;
 
     if (whence == SEEK_SET)
     {
@@ -70,7 +78,7 @@ static int physfsrwops_seek(SDL_RWops *const rw, const int offset,
             return -1;
         } /* if */
 
-        pos = static_cast<int>(len);
+        pos = static_cast<PHYSFSINT>(len);
         if (static_cast<PHYSFS_sint64>(pos) != len)
         {
             SDL_SetError("Can't fit end-of-file position in an int!");
@@ -100,8 +108,9 @@ static int physfsrwops_seek(SDL_RWops *const rw, const int offset,
     return pos;
 } /* physfsrwops_seek */
 
-static int physfsrwops_read(SDL_RWops *const rw, void *ptr,
-                            const int size, const int maxnum)
+static PHYSFSSIZE physfsrwops_read(SDL_RWops *const rw, void *ptr,
+                                   const PHYSFSSIZE size,
+                                   const PHYSFSSIZE maxnum)
 {
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);
@@ -115,8 +124,9 @@ static int physfsrwops_read(SDL_RWops *const rw, void *ptr,
     return static_cast<int>(rc);
 } /* physfsrwops_read */
 
-static int physfsrwops_write(SDL_RWops *const rw, const void *ptr,
-                             const int size, const int num)
+static PHYSFSSIZE physfsrwops_write(SDL_RWops *const rw, const void *ptr,
+                                    const PHYSFSSIZE size,
+                                    const PHYSFSSIZE num)
 {
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);

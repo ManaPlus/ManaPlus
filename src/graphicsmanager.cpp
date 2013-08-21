@@ -413,7 +413,12 @@ void GraphicsManager::updatePlanformExtensions()
 {
     SDL_SysWMinfo info;
     SDL_VERSION(&info.version);
+#ifdef USE_SDL2
+    // +++ need use SDL_GetWindowWMInfo
+    if (false)
+#else
     if (SDL_GetWMInfo(&info))
+#endif
     {
 #ifdef WIN32
         if (!mwglGetExtensionsString)
@@ -996,7 +1001,12 @@ void GraphicsManager::detectPixelSize()
 {
     SDL_SysWMinfo info;
     SDL_VERSION(&info.version);
+#ifdef USE_SDL2
+    // +++ need use SDL_GetWindowWMInfo
+    if (false)
+#else
     if (SDL_GetWMInfo(&info))
+#endif
     {
 #ifdef WIN32
         HDC hdc = GetDC(info.window);

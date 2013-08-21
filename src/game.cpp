@@ -880,6 +880,8 @@ void Game::handleActive(const SDL_Event &event)
 //    logger->log("state: %d", (int)event.active.state);
 //    logger->log("gain: %d", (int)event.active.gain);
 
+    // +++ need use window events
+#ifndef USE_SDL2
     int fpsLimit = 0;
     if (event.active.state & SDL_APPACTIVE)
     {
@@ -935,6 +937,7 @@ void Game::handleActive(const SDL_Event &event)
     }
     Client::setFramerate(fpsLimit);
     mNextAdjustTime = cur_time + adjustDelay;
+#endif
 }
 
 /**
@@ -966,6 +969,22 @@ void Game::handleInput()
 
         switch (event.type)
         {
+#ifdef USE_SDL2
+            case SDL_WINDOWEVENT:
+            {
+                switch (event.window.event)
+                {
+                    // +++ need add other window events
+                    case SDL_WINDOWEVENT_RESIZED:
+                        Client::resize(event.window.data1,
+                            event.window.data2, false);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            }
+#else
             case SDL_VIDEORESIZE:
                 // Let the client deal with this one (it'll
                 // pass down from there)
@@ -975,6 +994,7 @@ void Game::handleInput()
             case SDL_ACTIVEEVENT:
                 handleActive(event);
                 break;
+#endif
             // Quit event
             case SDL_QUIT:
                 Client::setState(STATE_EXIT);

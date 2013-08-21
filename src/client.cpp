@@ -483,7 +483,11 @@ void Client::gameInit()
             SMALL_VERSION);
     }
 
+#ifdef USE_SDL2
+    //  +++ need use SDL_SetWindowTitle
+#else
     SDL_WM_SetCaption(mCaption.c_str(), nullptr);
+#endif
 
     const ResourceManager *const resman = ResourceManager::getInstance();
 
@@ -589,7 +593,11 @@ void Client::gameInit()
 #else
         SDL_SetAlpha(mIcon, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
 #endif
+#ifdef USE_SDL2
+        // +++ need use SDL_SetWindowIcon
+#else
         SDL_WM_SetIcon(mIcon, nullptr);
+#endif
     }
 #endif
 
@@ -1026,9 +1034,26 @@ int Client::gameExec()
 //                        logger->log("unknown event: %d", event.type);
                         break;
 
+#ifdef USE_SDL2
+                    case SDL_WINDOWEVENT:
+                    {
+                        switch (event.window.event)
+                        {
+                            // +++ need add other window events
+                            case SDL_WINDOWEVENT_RESIZED:
+                                resizeVideo(event.window.data1,
+                                    event.window.data2, false);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    }
+#else
                     case SDL_VIDEORESIZE:
                         resizeVideo(event.resize.w, event.resize.h, false);
                         break;
+#endif
                 }
 
                 guiInput->pushInput(event);
@@ -1076,6 +1101,9 @@ int Client::gameExec()
         // This is done because at some point tick_time will wrap.
         lastTickTime = tick_time;
 
+#ifdef USE_SDL2
+        mainGraphics->updateScreen();
+#else
         // Update the screen when application is active, delay otherwise.
         if (SDL_GetAppState() & SDL_APPACTIVE)
         {
@@ -1083,13 +1111,12 @@ int Client::gameExec()
             if (gui)
                 gui->draw();
             mainGraphics->updateScreen();
-//            logger->log("active");
         }
         else
         {
-//            logger->log("inactive");
             SDL_Delay(100);
         }
+#endif
 
         BLOCK_START("~Client::SDL_framerateDelay")
         if (mLimitFps)
@@ -2865,8 +2892,12 @@ void Client::resizeVideo(int width, int height, const bool always)
 
 void Client::applyGrabMode()
 {
+#ifdef USE_SDL2
+    // +++ need use SDL_SetWindowGrab
+#else
     SDL_WM_GrabInput(config.getBoolValue("grabinput")
         ? SDL_GRAB_ON : SDL_GRAB_OFF);
+#endif
 }
 
 void Client::applyGamma()
@@ -2874,15 +2905,21 @@ void Client::applyGamma()
     if (config.getFloatValue("enableGamma"))
     {
         const float val = config.getFloatValue("gamma");
+#ifdef USE_SDL2
+        // +++ need use SDL_SetWindowBrightness
+#else
         SDL_SetGamma(val, val, val);
+#endif
     }
 }
 
 void Client::applyVSync()
 {
+#ifndef USE_SDL2
     const int val = config.getIntValue("vsync");
     if (val > 0 && val < 2)
         SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, val);
+#endif
 }
 
 void Client::applyKeyRepeat()
@@ -2903,7 +2940,11 @@ void Client::setIsMinimized(const bool n)
     if (!n && client->mNewMessageFlag)
     {
         client->mNewMessageFlag = false;
+#ifdef USE_SDL2
+        //  +++ need use SDL_SetWindowTitle
+#else
         SDL_WM_SetCaption(client->mCaption.c_str(), nullptr);
+#endif
     }
 }
 
@@ -2916,7 +2957,11 @@ void Client::newChatMessage()
     if (!client->mNewMessageFlag && client->mIsMinimized)
     {
         // show * on window caption
+#ifdef USE_SDL2
+        //  +++ need use SDL_SetWindowTitle
+#else
         SDL_WM_SetCaption(("*" + client->mCaption).c_str(), nullptr);
+#endif
         client->mNewMessageFlag = true;
     }
 }
@@ -2938,6 +2983,16 @@ void Client::logEvent(const SDL_Event &event)
             logger->log("event: SDL_MOUSEMOTION: %d,%d,%d",
                 event.motion.state, event.motion.x, event.motion.y);
             break;
+#ifdef USE_SDL2
+        case SDL_KEYDOWN:
+            logger->log("event: SDL_KEYDOWN: %d,%d", event.key.state,
+                event.key.keysym.scancode);
+            break;
+        case SDL_KEYUP:
+            logger->log("event: SDL_KEYUP: %d,%d", event.key.state,
+                event.key.keysym.scancode);
+            break;
+#else
         case SDL_KEYDOWN:
             logger->log("event: SDL_KEYDOWN: %d,%d,%d", event.key.state,
                 event.key.keysym.scancode, event.key.keysym.unicode);
@@ -2946,6 +3001,17 @@ void Client::logEvent(const SDL_Event &event)
             logger->log("event: SDL_KEYUP: %d,%d,%d", event.key.state,
                 event.key.keysym.scancode, event.key.keysym.unicode);
             break;
+        case SDL_VIDEORESIZE:
+            logger->log("event: SDL_VIDEORESIZE");
+            break;
+        case SDL_VIDEOEXPOSE:
+            logger->log("event: SDL_VIDEOEXPOSE");
+            break;
+        case SDL_ACTIVEEVENT:
+            logger->log("event: SDL_ACTIVEEVENT: %d %d",
+                event.active.state, event.active.gain);
+            break;
+#endif
         case SDL_MOUSEBUTTONDOWN:
             logger->log("event: SDL_MOUSEBUTTONDOWN: %d,%d,%d,%d",
                 event.button.button, event.button.state,
@@ -2985,18 +3051,8 @@ void Client::logEvent(const SDL_Event &event)
         case SDL_SYSWMEVENT:
             logger->log("event: SDL_SYSWMEVENT");
             break;
-        case SDL_VIDEORESIZE:
-            logger->log("event: SDL_VIDEORESIZE");
-            break;
-        case SDL_VIDEOEXPOSE:
-            logger->log("event: SDL_VIDEOEXPOSE");
-            break;
         case SDL_USEREVENT:
             logger->log("event: SDL_USEREVENT");
-            break;
-        case SDL_ACTIVEEVENT:
-            logger->log("event: SDL_ACTIVEEVENT: %d %d",
-                event.active.state, event.active.gain);
             break;
 #ifdef ANDROID
         case SDL_ACCELEROMETER:
