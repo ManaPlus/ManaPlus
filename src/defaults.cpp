@@ -271,9 +271,11 @@ DefaultsData* getConfigDefaults()
 #endif
     AddDEF("audioFrequency", 22010);
     AddDEF("audioChannels", 2);
+#ifndef USE_SDL2
     AddDEF("repeateDelay", SDL_DEFAULT_REPEAT_DELAY);
     AddDEF("repeateInterval", SDL_DEFAULT_REPEAT_INTERVAL);
     AddDEF("repeateInterval2", SDL_DEFAULT_REPEAT_DELAY);
+#endif
     AddDEF("compresstextures", 0);
     AddDEF("rectangulartextures", true);
     AddDEF("networksleep", 0);

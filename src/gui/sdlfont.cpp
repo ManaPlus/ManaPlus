@@ -137,7 +137,11 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
     sdlCol.b = static_cast<uint8_t>(color.b);
     sdlCol.r = static_cast<uint8_t>(color.r);
     sdlCol.g = static_cast<uint8_t>(color.g);
+#ifdef USE_SDL2
+    sdlCol.a = 0;
+#else
     sdlCol.unused = 0;
+#endif
 
     getSafeUtf8String(text, strBuf);
 
@@ -170,7 +174,11 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
         sdlCol2.b = static_cast<uint8_t>(color2.b);
         sdlCol2.r = static_cast<uint8_t>(color2.r);
         sdlCol2.g = static_cast<uint8_t>(color2.g);
+#ifdef USE_SDL2
+        sdlCol2.a = 0;
+#else
         sdlCol2.unused = 0;
+#endif
         SDL_Surface *const surface2 = TTF_RenderUTF8_Blended(
             font, strBuf, sdlCol2);
         if (!surface2)

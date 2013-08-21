@@ -245,8 +245,13 @@ void Image::setAlpha(const float alpha)
         if (!mHasAlphaChannel)
         {
             // Set the alpha value this image is drawn at
+#ifdef USE_SDL2
+            SDL_SetSurfaceAlphaMod(mSDLSurface,
+                static_cast<unsigned char>(255 * mAlpha));
+#else
             SDL_SetAlpha(mSDLSurface, SDL_SRCALPHA,
-                         static_cast<unsigned char>(255 * mAlpha));
+                static_cast<unsigned char>(255 * mAlpha));
+#endif
         }
         else
         {

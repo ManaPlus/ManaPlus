@@ -106,6 +106,11 @@ void Graphics::setMainFlags(const int w, const int h, const int bpp,
 int Graphics::getOpenGLFlags() const
 {
 #ifdef USE_OPENGL
+#ifdef USE_SDL2
+    int displayFlags = SDL_WINDOW_OPENGL;
+    if (mFullscreen)
+        displayFlags |= SDL_WINDOW_FULLSCREEN;
+#else
     int displayFlags = SDL_ANYFORMAT | SDL_OPENGL;
 
     if (mFullscreen)
@@ -126,6 +131,7 @@ int Graphics::getOpenGLFlags() const
         displayFlags |= SDL_NOFRAME;
 
     return displayFlags;
+#endif
 #else
     return 0;
 #endif
@@ -193,6 +199,12 @@ bool Graphics::setOpenGLMode()
 
 int Graphics::getSoftwareFlags() const
 {
+#ifdef USE_SDL2
+    int displayFlags = 0;
+
+    if (mFullscreen)
+        displayFlags |= SDL_FULLSCREEN;
+#else
     int displayFlags = SDL_ANYFORMAT;
 
     if (mFullscreen)
@@ -207,7 +219,7 @@ int Graphics::getSoftwareFlags() const
 
     if (mNoFrame)
         displayFlags |= SDL_NOFRAME;
-
+#endif
     return displayFlags;
 }
 

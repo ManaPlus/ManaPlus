@@ -437,8 +437,13 @@ void Gui::draw()
     int mouseX, mouseY;
     const uint8_t button = SDL_GetMouseState(&mouseX, &mouseY);
 
+#ifdef USE_SDL2
+    if (button & SDL_BUTTON(1) && mMouseCursors && mCustomCursor
+        && mMouseCursorAlpha > 0.0f)
+#else
     if ((SDL_GetAppState() & SDL_APPMOUSEFOCUS || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0f)
+#endif
     {
         Graphics *g2 = static_cast<Graphics*>(mGraphics);
         const Image *const image = dragDrop.getItemImage();

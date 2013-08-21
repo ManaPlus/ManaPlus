@@ -75,7 +75,7 @@ int TcpNet::send(const TcpNet::Socket sock, const void *const data,
     return SDLNet_TCP_Send(sock, data, len);
 }
 
-char *TcpNet::getError()
+const char *TcpNet::getError()
 {
     return SDLNet_GetError();
 }

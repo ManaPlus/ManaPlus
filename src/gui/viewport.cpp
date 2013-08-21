@@ -31,6 +31,7 @@
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "playerinfo.h"
+#include "sdlshared.h"
 #include "textmanager.h"
 
 #include "gui/beingpopup.h"

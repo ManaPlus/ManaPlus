@@ -339,6 +339,8 @@ static char* getSelection(Display *const dpy, Window us, Atom selection)
 
 bool retrieveBuffer(std::string& text, size_t& pos)
 {
+// +++ need use SDL_GetWindowWMInfo
+#ifndef USE_SDL2
     SDL_SysWMinfo info;
 
     SDL_VERSION(&info.version);
@@ -376,6 +378,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
             return true;
         }
     }
+#endif
     return false;
 }
 

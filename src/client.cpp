@@ -296,8 +296,13 @@ Client::Client(const Options &options) :
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
     mIcon(nullptr),
+#ifdef USE_SDL2
+    mLogicCounterId(0),
+    mSecondsCounterId(0),
+#else
     mLogicCounterId(nullptr),
     mSecondsCounterId(nullptr),
+#endif
     mCaption(),
     mFpsManager(),
     mSkin(nullptr),
@@ -452,11 +457,15 @@ void Client::gameInit()
     atexit(SDL_Quit);
 
     initPacketLimiter();
+#ifndef USE_SDL2
     SDL_EnableUNICODE(1);
+#endif
     applyKeyRepeat();
 
     // disable unused SDL events
+#ifndef USE_SDL2
     SDL_EventState(SDL_VIDEOEXPOSE, SDL_IGNORE);
+#endif
     SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
     SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
 
@@ -575,7 +584,11 @@ void Client::gameInit()
     mIcon = IMG_Load(iconFile.c_str());
     if (mIcon)
     {
+#ifdef USE_SDL2
+        SDL_SetSurfaceAlphaMod(mIcon, 255);
+#else
         SDL_SetAlpha(mIcon, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
+#endif
         SDL_WM_SetIcon(mIcon, nullptr);
     }
 #endif
@@ -2874,8 +2887,10 @@ void Client::applyVSync()
 
 void Client::applyKeyRepeat()
 {
+#ifndef USE_SDL2
     SDL_EnableKeyRepeat(config.getIntValue("repeateDelay"),
         config.getIntValue("repeateInterval"));
+#endif
 }
 
 void Client::setIsMinimized(const bool n)

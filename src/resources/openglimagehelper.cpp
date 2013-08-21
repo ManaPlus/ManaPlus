@@ -151,8 +151,12 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
                     tmpImage->w, tmpImage->h);
     }
 
+#ifdef USE_SDL2
+    SDL_SetSurfaceAlphaMod(tmpImage, 255);
+#else
     // Make sure the alpha channel is not used, but copied to destination
     SDL_SetAlpha(tmpImage, 0, SDL_ALPHA_OPAQUE);
+#endif
 
     // Determine 32-bit masks based on byte order
     uint32_t rmask, gmask, bmask, amask;

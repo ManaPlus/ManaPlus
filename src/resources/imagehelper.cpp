@@ -62,8 +62,10 @@ SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface *const tmpImage)
         return nullptr;
     SDL_PixelFormat RGBAFormat;
     RGBAFormat.palette = nullptr;
+#ifndef USE_SDL2
     RGBAFormat.colorkey = 0;
     RGBAFormat.alpha = 0;
+#endif
     RGBAFormat.BitsPerPixel = 32;
     RGBAFormat.BytesPerPixel = 4;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -102,7 +104,9 @@ void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image) const
     {
         const SDL_PixelFormat * const format = image->format;
         logger->log("Bytes per pixel: %d", format->BytesPerPixel);
+#ifndef USE_SDL2
         logger->log("Alpha: %d", format->alpha);
+#endif
         logger->log("Loss: %02x, %02x, %02x, %02x",
             static_cast<int>(format->Rloss), static_cast<int>(format->Gloss),
             static_cast<int>(format->Bloss), static_cast<int>(format->Aloss));

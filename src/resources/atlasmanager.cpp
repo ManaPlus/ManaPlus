@@ -239,7 +239,11 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 
         if (image)
         {
+#ifdef USE_SDL2
+            SDL_SetSurfaceAlphaMod(image->mSDLSurface, 255);
+#else
             SDL_SetAlpha(image->mSDLSurface, 0, SDL_ALPHA_OPAQUE);
+#endif
             graphics->drawImage(image, item->x, item->y);
         }
     }

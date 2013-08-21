@@ -40,7 +40,7 @@ namespace TcpNet
 
     int send(const TcpNet::Socket sock, const void *const data, const int len);
 
-    char *getError();
+    const char *getError();
 
     int resolveHost(IPaddress *const address, const char *const host,
                     const Uint16 port);

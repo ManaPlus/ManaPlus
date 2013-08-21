@@ -31,6 +31,7 @@
 
 #include "map.h"
 #include "sdlgraphics.h"
+#include "sdlshared.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
@@ -363,7 +364,11 @@ void CompoundSprite::redraw() const
     SDL_Surface *const surfaceA = SDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
 
+#ifdef USE_SDL2
+    SDL_SetSurfaceAlphaMod(surface, 255);
+#else
     SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
+#endif
     SDL_BlitSurface(surface, nullptr, surfaceA, nullptr);
 
     delete mImage;

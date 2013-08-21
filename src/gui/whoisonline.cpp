@@ -581,7 +581,12 @@ void WhoIsOnline::download()
             SDL_WaitThread(mThread, nullptr);
 
         mDownloadComplete = false;
+#ifdef USE_SDL2
+        mThread = SDL_CreateThread(WhoIsOnline::downloadThread,
+            "whoisonline", this);
+#else
         mThread = SDL_CreateThread(WhoIsOnline::downloadThread, this);
+#endif
 
         if (mThread == nullptr)
             mDownloadStatus = UPDATE_ERROR;

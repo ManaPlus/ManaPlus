@@ -51,8 +51,10 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
     rgba.palette = nullptr;
     rgba.BitsPerPixel = 32;
     rgba.BytesPerPixel = 4;
+#ifndef USE_SDL2
     rgba.colorkey = 0;
     rgba.alpha = 255;
+#endif
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     rgba.Rmask = 0x000000FF;
@@ -117,6 +119,10 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
 
     Image *img;
     bool hasAlpha = false;
+#ifdef USE_SDL2
+    uint8_t *alphaChannel = nullptr;
+    SDL_Surface *image = SDLDuplicateSurface(tmpImage);
+#else
     const int sz = tmpImage->w * tmpImage->h;
 
     // The alpha channel to be filled with alpha values
@@ -170,6 +176,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
         delete [] alphaChannel;
         return nullptr;
     }
+#endif
 
     img = new Image(image, hasAlpha, alphaChannel);
     img->mAlpha = alpha;
@@ -190,6 +197,10 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
         return nullptr;
 
     bool hasAlpha = false;
+#ifdef USE_SDL2
+    uint8_t *alphaChannel = nullptr;
+    SDL_Surface *image = tmpImage;
+#else
     bool converted = false;
 
     if (tmpImage->format->BitsPerPixel != 32)
@@ -269,7 +280,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
 
     if (converted)
         SDL_FreeSurface(tmpImage);
-
+#endif
     return new Image(image, hasAlpha, alphaChannel);
 }
 
