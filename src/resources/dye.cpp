@@ -29,7 +29,7 @@
 #include <math.h>
 #include <sstream>
 
-#include <SDL/SDL_endian.h>
+#include <SDL_endian.h>
 
 #include "debug.h"
 
