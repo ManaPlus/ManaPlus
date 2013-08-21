@@ -49,6 +49,7 @@
 #include "resources/sdlimagehelper.h"
 
 #include "utils/paths.h"
+#include "utils/sdlhelper.h"
 #include "utils/stringutils.h"
 
 #include "test/testmain.h"
@@ -278,7 +279,7 @@ void GraphicsManager::setVideoMode()
     int width = config.getValue("screenwidth", 0);
     int height = config.getValue("screenheight", 0);
     StringVect videoModes;
-    getAllVideoModes(videoModes);
+    SDL::getAllVideoModes(videoModes);
     if (!videoModes.empty())
     {
         bool found(false);
@@ -345,37 +346,6 @@ void GraphicsManager::setVideoMode()
                     SDL_GetError()));
             }
         }
-    }
-}
-
-bool GraphicsManager::getAllVideoModes(StringVect &modeList)
-{
-    /* Get available fullscreen/hardware modes */
-    SDL_Rect **const modes = SDL_ListModes(nullptr,
-        SDL_FULLSCREEN | SDL_HWSURFACE);
-
-    /* Check which modes are available */
-    if (modes == static_cast<SDL_Rect **>(nullptr))
-    {
-        logger->log1("No modes available");
-        return false;
-    }
-    else if (modes == reinterpret_cast<SDL_Rect **>(-1))
-    {
-        logger->log1("All resolutions available");
-        return true;
-    }
-    else
-    {
-        for (int i = 0; modes[i]; ++ i)
-        {
-            const std::string modeString =
-                toString(static_cast<int>(modes[i]->w)).append("x")
-                .append(toString(static_cast<int>(modes[i]->h)));
-            logger->log("support mode: " + modeString);
-            modeList.push_back(modeString);
-        }
-        return true;
     }
 }
 

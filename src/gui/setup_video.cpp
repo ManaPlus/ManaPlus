@@ -48,6 +48,7 @@
 #include "resources/image.h"
 
 #include "utils/gettext.h"
+#include "utils/sdlhelper.h"
 
 #include "test/testmain.h"
 
@@ -122,7 +123,7 @@ static bool modeSorter(const std::string &mode1, const std::string &mode2)
 ModeListModel::ModeListModel() :
     mVideoModes()
 {
-    graphicsManager.getAllVideoModes(mVideoModes);
+    SDL::getAllVideoModes(mVideoModes);
 #ifndef ANDROID
     addCustomMode("640x480");
     addCustomMode("800x600");

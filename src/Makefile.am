@@ -546,6 +546,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/physfstools.h \
 	      utils/process.cpp \
 	      utils/process.h \
+	      utils/sdl2helper.cpp \
+	      utils/sdl2helper.h \
+	      utils/sdlhelper.cpp \
+	      utils/sdlhelper.h \
 	      utils/specialfolder.cpp \
 	      utils/specialfolder.h \
 	      utils/stringutils.cpp \
