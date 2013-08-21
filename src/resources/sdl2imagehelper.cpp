@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef USE_SDL2
+#ifdef USE_SDL2
 
 #include "resources/sdlimagehelper.h"
 
@@ -53,8 +53,6 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
     rgba.palette = nullptr;
     rgba.BitsPerPixel = 32;
     rgba.BytesPerPixel = 4;
-    rgba.colorkey = 0;
-    rgba.alpha = 255;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     rgba.Rmask = 0x000000FF;
@@ -119,59 +117,8 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
 
     Image *img;
     bool hasAlpha = false;
-    const int sz = tmpImage->w * tmpImage->h;
-
-    // The alpha channel to be filled with alpha values
-    uint8_t *alphaChannel = new uint8_t[sz];
-
-    const SDL_PixelFormat *const fmt = tmpImage->format;
-    if (fmt->Amask)
-    {
-        for (int i = 0; i < sz; ++ i)
-        {
-            uint32_t c = (static_cast<uint32_t*>(tmpImage->pixels))[i];
-
-            const unsigned v = (c & fmt->Amask) >> fmt->Ashift;
-            const uint8_t a = static_cast<const uint8_t>((v << fmt->Aloss)
-                + (v >> (8 - (fmt->Aloss << 1))));
-
-            const uint8_t a2 = static_cast<uint8_t>(
-                static_cast<float>(a) * alpha);
-
-            c &= ~fmt->Amask;
-            c |= ((a2 >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
-            (static_cast<uint32_t*>(tmpImage->pixels))[i] = c;
-
-            if (a != 255)
-                hasAlpha = true;
-
-            alphaChannel[i] = a;
-        }
-    }
-
-    SDL_Surface *image;
-
-    // Convert the surface to the current display format
-    if (hasAlpha)
-    {
-        image = SDL_DisplayFormatAlpha(tmpImage);
-    }
-    else
-    {
-        image = SDL_DisplayFormat(tmpImage);
-
-        // We also delete the alpha channel since
-        // it's not used.
-        delete [] alphaChannel;
-        alphaChannel = nullptr;
-    }
-
-    if (!image)
-    {
-        logger->log1("Error: Image convert failed.");
-        delete [] alphaChannel;
-        return nullptr;
-    }
+    uint8_t *alphaChannel = nullptr;
+    SDL_Surface *image = SDLDuplicateSurface(tmpImage);
 
     img = new Image(image, hasAlpha, alphaChannel);
     img->mAlpha = alpha;
@@ -191,87 +138,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
     if (!tmpImage)
         return nullptr;
 
-    bool hasAlpha = false;
-    bool converted = false;
-
-    if (tmpImage->format->BitsPerPixel != 32)
-    {
-        tmpImage = convertTo32Bit(tmpImage);
-
-        if (!tmpImage)
-            return nullptr;
-        converted = true;
-    }
-
-    const int sz = tmpImage->w * tmpImage->h;
-
-    // The alpha channel to be filled with alpha values
-    uint8_t *alphaChannel = new uint8_t[sz];
-
-    // Figure out whether the image uses its alpha layer
-    if (!tmpImage->format->palette)
-    {
-        const SDL_PixelFormat *const fmt = tmpImage->format;
-        if (fmt->Amask)
-        {
-            for (int i = 0; i < sz; ++ i)
-            {
-                const unsigned v = ((static_cast<uint32_t*>(
-                    tmpImage->pixels))[i] & fmt->Amask) >> fmt->Ashift;
-                const uint8_t a = static_cast<const uint8_t>((v << fmt->Aloss)
-                    + (v >> (8 - (fmt->Aloss << 1))));
-
-                if (a != 255)
-                    hasAlpha = true;
-
-                alphaChannel[i] = a;
-            }
-        }
-        else
-        {
-            if (SDL_ALPHA_OPAQUE != 255)
-            {
-                hasAlpha = true;
-                memset(alphaChannel, SDL_ALPHA_OPAQUE, sz);
-            }
-        }
-    }
-    else
-    {
-        if (SDL_ALPHA_OPAQUE != 255)
-        {
-            hasAlpha = true;
-            memset(alphaChannel, SDL_ALPHA_OPAQUE, sz);
-        }
-    }
-
-    SDL_Surface *image;
-
-    // Convert the surface to the current display format
-    if (hasAlpha)
-    {
-        image = SDL_DisplayFormatAlpha(tmpImage);
-    }
-    else
-    {
-        image = SDL_DisplayFormat(tmpImage);
-
-        // We also delete the alpha channel since
-        // it's not used.
-        delete [] alphaChannel;
-        alphaChannel = nullptr;
-    }
-
-    if (!image)
-    {
-        logger->log1("Error: Image convert failed.");
-        delete [] alphaChannel;
-        return nullptr;
-    }
-
-    if (converted)
-        SDL_FreeSurface(tmpImage);
-    return new Image(image, hasAlpha, alphaChannel);
+    return new Image(tmpImage, false, nullptr);
 }
 
 int SDLImageHelper::useOpenGL() const
@@ -296,4 +163,5 @@ SDL_Surface *SDLImageHelper::create32BitSurface(int width, int height) const
     return SDL_CreateRGBSurface(SDL_SWSURFACE,
         width, height, 32, rmask, gmask, bmask, amask);
 }
+
 #endif  // USE_SDL2

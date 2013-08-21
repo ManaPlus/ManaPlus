@@ -20,13 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SDLIMAGEHELPER_H
-#define RESOURCES_SDLIMAGEHELPER_H
+#ifndef RESOURCES_SDL2IMAGEHELPER_H
+#define RESOURCES_SDL2IMAGEHELPER_H
 
 #ifdef USE_SDL2
-#include "sdl2imagehelper.h"
-
-#else
 
 #include "localconsts.h"
 
@@ -100,4 +97,4 @@ class SDLImageHelper final : public ImageHelper
 };
 
 #endif  // USE_SDL2
-#endif  // RESOURCES_SDLIMAGEHELPER_H
+#endif  // RESOURCES_SDL2IMAGEHELPER_H

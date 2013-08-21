@@ -498,6 +498,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/resource.h \
 	      resources/resourcemanager.cpp \
 	      resources/resourcemanager.h \
+	      resources/sdl2imagehelper.cpp \
+	      resources/sdl2imagehelper.h \
 	      resources/sdlimagehelper.cpp \
 	      resources/sdlimagehelper.h \
 	      resources/sdlmusic.cpp \
@@ -698,6 +700,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      rotationalparticle.h \
 	      safeopenglgraphics.cpp\
 	      safeopenglgraphics.h \
+	      sdl2graphics.cpp \
+	      sdl2graphics.h \
 	      sdlgraphics.cpp \
 	      sdlgraphics.h \
 	      shopitem.cpp \

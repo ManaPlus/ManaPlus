@@ -20,9 +20,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef USE_SDL2
+#ifdef USE_SDL2
 
-#include "sdlgraphics.h"
+#include "sdl2graphics.h"
 
 #include "main.h"
 
