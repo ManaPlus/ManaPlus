@@ -106,12 +106,14 @@ void Graphics::setMainFlags(const int w, const int h, const int bpp,
 int Graphics::getOpenGLFlags() const
 {
 #ifdef USE_OPENGL
+
 #ifdef USE_SDL2
-    int displayFlags = SDL_WINDOW_OPENGL;
+    int displayFlags = SDL_WINDOW_OPENGL | SDL_WINDOW_OPENGL;
     if (mFullscreen)
         displayFlags |= SDL_WINDOW_FULLSCREEN;
 #else
     int displayFlags = SDL_ANYFORMAT | SDL_OPENGL;
+#endif  // USE_SDL2
 
     if (mFullscreen)
     {
@@ -131,10 +133,12 @@ int Graphics::getOpenGLFlags() const
         displayFlags |= SDL_NOFRAME;
 
     return displayFlags;
-#endif
-#else
+
+#else  // USE_OPENGL
+
     return 0;
-#endif
+#endif  // USE_OPENGL
+
 }
 
 bool Graphics::setOpenGLMode()
@@ -203,26 +207,23 @@ bool Graphics::setOpenGLMode()
 int Graphics::getSoftwareFlags() const
 {
 #ifdef USE_SDL2
-    int displayFlags = 0;
-
-    if (mFullscreen)
-        displayFlags |= SDL_FULLSCREEN;
+    int displayFlags = SDL_WINDOW_SHOWN;
 #else
     int displayFlags = SDL_ANYFORMAT;
+
+    if (mHWAccel)
+        displayFlags |= SDL_HWSURFACE | SDL_DOUBLEBUF;
+    else
+        displayFlags |= SDL_SWSURFACE;
+#endif
 
     if (mFullscreen)
         displayFlags |= SDL_FULLSCREEN;
     else if (mEnableResize)
         displayFlags |= SDL_RESIZABLE;
 
-    if (mHWAccel)
-        displayFlags |= SDL_HWSURFACE | SDL_DOUBLEBUF;
-    else
-        displayFlags |= SDL_SWSURFACE;
-
     if (mNoFrame)
         displayFlags |= SDL_NOFRAME;
-#endif
     return displayFlags;
 }
 
@@ -261,16 +262,19 @@ int Graphics::getMemoryUsage() const
 
 bool Graphics::videoInfo()
 {
-    char videoDriverName[65];
 
     logger->log("SDL video info");
+#ifdef USE_SDL2
+    logger->log("Using video driver: %s", SDL_GetCurrentVideoDriver());
+#else
+    char videoDriverName[65];
     if (SDL_VideoDriverName(videoDriverName, 64))
         logger->log("Using video driver: %s", videoDriverName);
     else
         logger->log1("Using video driver: unknown");
-
     mDoubleBuffer = ((mWindow->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
     logger->log("Double buffer mode: %s", mDoubleBuffer ? "yes" : "no");
+#endif
 
     imageHelper->dumpSurfaceFormat(mWindow);
 

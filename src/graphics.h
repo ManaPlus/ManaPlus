@@ -38,6 +38,7 @@ class ImageVertexes;
 class MapLayer;
 
 struct SDL_Surface;
+struct SDL_Window;
 
 static const int defaultScreenWidth = 800;
 static const int defaultScreenHeight = 600;

@@ -382,7 +382,12 @@ bool GraphicsManager::getAllVideoModes(StringVect &modeList)
 SDL_Window *GraphicsManager::createWindow(const int w, const int h,
                                           const int bpp, const int flags)
 {
+#ifdef USE_SDL2
+    return SDL_CreateWindow("ManaPlus", SDL_WINDOWPOS_UNDEFINED,
+        SDL_WINDOWPOS_UNDEFINED, w, h, flags);
+#else
     return SDL_SetVideoMode(w, h, bpp, flags);
+#endif
 }
 
 #ifdef USE_OPENGL

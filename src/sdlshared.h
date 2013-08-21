@@ -23,10 +23,16 @@
 
 #ifdef USE_SDL2
 
-#define SDLKey SDL_Keycode
 #define SDL_GetKeyState SDL_GetKeyboardState
-#define SDL_HWSURFACE 0
+#define SDLKey SDL_Keycode
 #define SDL_keysym SDL_Keysym
+
+#define SDL_ANYFORMAT 0
+#define SDL_HWSURFACE 0
+#define SDL_NOFRAME SDL_WINDOW_BORDERLESS
+#define SDL_RESIZABLE SDL_WINDOW_RESIZABLE
+#define SDL_FULLSCREEN SDL_WINDOW_FULLSCREEN
+#define SDL_OPENGL SDL_WINDOW_OPENGL
 
 #define KMOD_META KMOD_GUI
 #define SDLK_RMETA SDLK_RGUI
