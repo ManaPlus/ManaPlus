@@ -137,6 +137,10 @@ class SDLGraphics : public Graphics
 
         void drawLine(int x1, int y1, int x2, int y2) override;
 
+        bool setVideoMode(const int w, const int h, const int bpp,
+                          const bool fs, const bool hwaccel,
+                          const bool resize, const bool noFrame);
+
     protected:
         virtual bool drawImage2(const Image *const image,
                                 int srcX, int srcY,

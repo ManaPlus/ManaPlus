@@ -122,7 +122,7 @@ class Graphics : public gcn::Graphics
          */
         virtual bool setVideoMode(const int w, const int h, const int bpp,
                                   const bool fs, const bool hwaccel,
-                                  const bool resize, const bool noFrame);
+                                  const bool resize, const bool noFrame) = 0;
 
         /**
          * Set fullscreen mode.

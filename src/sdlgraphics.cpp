@@ -1129,3 +1129,18 @@ void SDLGraphics::drawLine(int x1, int y1, int x2, int y2)
 
     //  other cases not implimented
 }
+
+bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
+                               const bool fs, const bool hwaccel,
+                               const bool resize, const bool noFrame)
+{
+    setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
+
+    if (!(mTarget = SDL_SetVideoMode(w, h, bpp, getSoftwareFlags())))
+        return false;
+
+    mRect.w = static_cast<uint16_t>(mTarget->w);
+    mRect.h = static_cast<uint16_t>(mTarget->h);
+
+    return videoInfo();
+}
