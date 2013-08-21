@@ -228,7 +228,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
         return nullptr;
 
     SDLGraphics *const graphics = new SDLGraphics();
-    graphics->setTarget(surface);
+    graphics->setWindow(surface);
     graphics->_beginDraw();
 
     // drawing SDL images to surface

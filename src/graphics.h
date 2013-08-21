@@ -25,6 +25,8 @@
 
 #include "SDL.h"
 
+#include "sdlshared.h"
+
 #include <guichan/color.hpp>
 #include <guichan/graphics.hpp>
 
@@ -102,11 +104,11 @@ class Graphics : public gcn::Graphics
          */
         virtual ~Graphics();
 
-        void setTarget(SDL_Surface *const target)
-        { mTarget = target; }
+        void setWindow(SDL_Window *const window)
+        { mWindow = window; }
 
-        SDL_Surface *getTarget() const
-        { return mTarget; }
+        SDL_Window *getWindow() const
+        { return mWindow; }
 
         /**
          * Sets whether vertical refresh syncing is enabled. Takes effect after
@@ -384,7 +386,7 @@ class Graphics : public gcn::Graphics
 
         bool videoInfo();
 
-        SDL_Surface* mTarget;
+        SDL_Window* mWindow;
         int mBpp;
         bool mAlpha;
         bool mFullscreen;

@@ -72,7 +72,7 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     // Check that preconditions for blitting are met.
-    if (!mTarget || !image)
+    if (!mWindow || !image)
         return false;
     if (!image->mSDLSurface)
         return false;
@@ -101,7 +101,7 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
     srcRect.h = static_cast<uint16_t>(height);
 
     const bool returnValue = !(SDL_BlitSurface(tmpImage->mSDLSurface,
-        &srcRect, mTarget, &dstRect) < 0);
+        &srcRect, mWindow, &dstRect) < 0);
 
     delete tmpImage;
 
@@ -114,7 +114,7 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
 {
     FUNC_BLOCK("Graphics::drawImage2", 1)
     // Check that preconditions for blitting are met.
-    if (!mTarget || !image || !image->mSDLSurface)
+    if (!mWindow || !image || !image->mSDLSurface)
         return false;
 
     dstX += mClipStack.top().xOffset;
@@ -135,12 +135,12 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     if (mBlitMode == BLIT_NORMAL)
     {
         return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
-                                 mTarget, &dstRect) < 0);
+                                 mWindow, &dstRect) < 0);
     }
     else
     {
         return !(SDL_gfxBlitRGBA(image->mSDLSurface, &srcRect,
-                                 mTarget, &dstRect) < 0);
+                                 mWindow, &dstRect) < 0);
     }
 }
 
@@ -150,7 +150,7 @@ void SDLGraphics::drawImagePattern(const Image *const image,
 {
     FUNC_BLOCK("Graphics::drawImagePattern", 1)
     // Check that preconditions for blitting are met.
-    if (!mTarget || !image)
+    if (!mWindow || !image)
         return;
     if (!image->mSDLSurface)
         return;
@@ -182,7 +182,7 @@ void SDLGraphics::drawImagePattern(const Image *const image,
             srcRect.w = static_cast<uint16_t>(dw);
             srcRect.h = static_cast<uint16_t>(dh);
 
-            SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
+            SDL_BlitSurface(image->mSDLSurface, &srcRect, mWindow, &dstRect);
         }
     }
 }
@@ -194,7 +194,7 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
                                            const int scaledHeight)
 {
     // Check that preconditions for blitting are met.
-    if (!mTarget || !image)
+    if (!mWindow || !image)
         return;
     if (!image->mSDLSurface)
         return;
@@ -235,7 +235,7 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
             srcRect.h = static_cast<uint16_t>(dh);
 
             SDL_BlitSurface(tmpImage->mSDLSurface, &srcRect,
-                            mTarget, &dstRect);
+                            mWindow, &dstRect);
         }
     }
 
@@ -248,7 +248,7 @@ void SDLGraphics::calcImagePattern(ImageVertexes* const vert,
                                    const int w, const int h) const
 {
     // Check that preconditions for blitting are met.
-    if (!vert || !mTarget || !image || !image->mSDLSurface)
+    if (!vert || !mWindow || !image || !image->mSDLSurface)
         return;
 
     const int iw = image->mBounds.w;
@@ -280,7 +280,7 @@ void SDLGraphics::calcImagePattern(ImageVertexes* const vert,
             srcRect.h = static_cast<uint16_t>(dh);
 
             if (SDL_FakeUpperBlit(image->mSDLSurface, &srcRect,
-                mTarget, &dstRect) == 1)
+                mWindow, &dstRect) == 1)
             {
                 vert->sdl.push_back(r);
             }
@@ -342,7 +342,7 @@ void SDLGraphics::calcTileSDL(ImageVertexes *const vert, int x, int y) const
     rect->src.w = static_cast<uint16_t>(image->mBounds.w);
     rect->src.h = static_cast<uint16_t>(image->mBounds.h);
     if (SDL_FakeUpperBlit(image->mSDLSurface, &rect->src,
-        mTarget, &rect->dst) == 1)
+        mWindow, &rect->dst) == 1)
     {
         vert->sdl.push_back(rect);
     }
@@ -385,7 +385,7 @@ void SDLGraphics::drawTile(const ImageCollection *const vertCol)
         while (it2 != it2_end)
         {
             SDL_LowerBlit(img->mSDLSurface, &(*it2)->src,
-                mTarget, &(*it2)->dst);
+                mWindow, &(*it2)->dst);
             ++ it2;
         }
     }
@@ -400,7 +400,7 @@ void SDLGraphics::drawTile(const ImageVertexes *const vert)
     const DoubleRects::const_iterator it_end = rects->end();
     while (it != it_end)
     {
-        SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
+        SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mWindow, &(*it)->dst);
         ++ it;
     }
 }
@@ -410,12 +410,12 @@ void SDLGraphics::updateScreen()
     BLOCK_START("Graphics::updateScreen")
     if (mDoubleBuffer)
     {
-        SDL_Flip(mTarget);
+        SDL_Flip(mWindow);
     }
     else
     {
-        SDL_UpdateRects(mTarget, 1, &mRect);
-//        SDL_UpdateRect(mTarget, 0, 0, 0, 0);
+        SDL_UpdateRects(mWindow, 1, &mRect);
+//        SDL_UpdateRect(mWindow, 0, 0, 0, 0);
     }
     BLOCK_END("Graphics::updateScreen")
 }
@@ -434,10 +434,10 @@ SDL_Surface *SDLGraphics::getScreenshot()
     const int amask = 0x00000000;
 
     SDL_Surface *const screenshot = SDL_CreateRGBSurface(SDL_SWSURFACE,
-        mTarget->w, mTarget->h, 24, rmask, gmask, bmask, amask);
+        mWindow->w, mWindow->h, 24, rmask, gmask, bmask, amask);
 
     if (screenshot)
-        SDL_BlitSurface(mTarget, nullptr, screenshot, nullptr);
+        SDL_BlitSurface(mWindow, nullptr, screenshot, nullptr);
 
     return screenshot;
 }
@@ -609,10 +609,10 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
             area.y + area.height : top.y + top.height;
         int x, y;
 
-        SDL_LockSurface(mTarget);
+        SDL_LockSurface(mWindow);
 
-        const int bpp = mTarget->format->BytesPerPixel;
-        const uint32_t pixel = SDL_MapRGB(mTarget->format,
+        const int bpp = mWindow->format->BytesPerPixel;
+        const uint32_t pixel = SDL_MapRGB(mWindow->format,
             static_cast<uint8_t>(mColor.r), static_cast<uint8_t>(mColor.g),
             static_cast<uint8_t>(mColor.b));
 
@@ -621,8 +621,8 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
             case 1:
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *const p = static_cast<uint8_t *>(mTarget->pixels)
-                        + y * mTarget->pitch;
+                    uint8_t *const p = static_cast<uint8_t *>(mWindow->pixels)
+                        + y * mWindow->pitch;
                     for (x = x1; x < x2; x++)
                         *(p + x) = static_cast<uint8_t>(pixel);
                 }
@@ -630,15 +630,15 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
             case 2:
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *const p0 = static_cast<uint8_t *>(mTarget->pixels)
-                        + y * mTarget->pitch;
+                    uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
+                        + y * mWindow->pitch;
                     for (x = x1; x < x2; x++)
                     {
                         uint8_t *const p = p0 + x * 2;
                         *reinterpret_cast<uint16_t *>(p) = gcn::SDLAlpha16(
                             static_cast<uint16_t>(pixel),
                             *reinterpret_cast<uint16_t *>(p),
-                            static_cast<uint8_t>(mColor.a), mTarget->format);
+                            static_cast<uint8_t>(mColor.a), mWindow->format);
                     }
                 }
                 break;
@@ -651,8 +651,8 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *const p0 = static_cast<uint8_t *>(mTarget->pixels)
-                        + y * mTarget->pitch;
+                    uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
+                        + y * mWindow->pitch;
                     for (x = x1; x < x2; x++)
                     {
                         uint8_t *const p = p0 + x * 3;
@@ -679,8 +679,8 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *const p0 = static_cast<uint8_t *>(mTarget->pixels)
-                        + y * mTarget->pitch;
+                    uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
+                        + y * mWindow->pitch;
                     for (x = x1; x < x2; x++)
                     {
                         uint8_t *p = p0 + x * 4;
@@ -704,7 +704,7 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
                     mOldAlpha = mColor.a;
                 }
 
-                const SDL_PixelFormat * const format = mTarget->format;
+                const SDL_PixelFormat * const format = mWindow->format;
                 const unsigned rMask = format->Rmask;
                 const unsigned gMask = format->Gmask;
                 const unsigned bMask = format->Bmask;
@@ -743,8 +743,8 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
                 for (y = y1; y < y2; y++)
                 {
                     uint32_t *const p0 = reinterpret_cast<uint32_t*>(
-                        static_cast<uint8_t*>(mTarget->pixels)
-                        + y * mTarget->pitch);
+                        static_cast<uint8_t*>(mWindow->pixels)
+                        + y * mWindow->pitch);
                     for (x = x1; x < x2; x++)
                     {
                         uint32_t *const p = p0 + x;
@@ -761,7 +761,7 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
                 break;
         }
 
-        SDL_UnlockSurface(mTarget);
+        SDL_UnlockSurface(mWindow);
     }
     else
     {
@@ -771,18 +771,18 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
         rect.w = static_cast<uint16_t>(area.width);
         rect.h = static_cast<uint16_t>(area.height);
 
-        const uint32_t color = SDL_MapRGBA(mTarget->format,
+        const uint32_t color = SDL_MapRGBA(mWindow->format,
             static_cast<int8_t>(mColor.r),
             static_cast<int8_t>(mColor.g),
             static_cast<int8_t>(mColor.b),
             static_cast<int8_t>(mColor.a));
-        SDL_FillRect(mTarget, &rect, color);
+        SDL_FillRect(mWindow, &rect, color);
     }
 }
 
 void SDLGraphics::_beginDraw()
 {
-    pushClipArea(gcn::Rectangle(0, 0, mTarget->w, mTarget->h));
+    pushClipArea(gcn::Rectangle(0, 0, mWindow->w, mWindow->h));
 }
 
 void SDLGraphics::_endDraw()
@@ -800,7 +800,7 @@ bool SDLGraphics::pushClipArea(gcn::Rectangle area)
     rect.y = static_cast<int16_t>(carea.y);
     rect.w = static_cast<int16_t>(carea.width);
     rect.h = static_cast<int16_t>(carea.height);
-    SDL_SetClipRect(mTarget, &rect);
+    SDL_SetClipRect(mWindow, &rect);
 
     return result;
 }
@@ -819,7 +819,7 @@ void SDLGraphics::popClipArea()
     rect.w = static_cast<int16_t>(carea.width);
     rect.h = static_cast<int16_t>(carea.height);
 
-    SDL_SetClipRect(mTarget, &rect);
+    SDL_SetClipRect(mWindow, &rect);
 }
 
 void SDLGraphics::drawPoint(int x, int y)
@@ -836,9 +836,9 @@ void SDLGraphics::drawPoint(int x, int y)
         return;
 
     if (mAlpha)
-        SDLputPixelAlpha(mTarget, x, y, mColor);
+        SDLputPixelAlpha(mWindow, x, y, mColor);
     else
-        SDLputPixel(mTarget, x, y, mColor);
+        SDLputPixel(mWindow, x, y, mColor);
 }
 
 void SDLGraphics::drawHLine(int x1, int y, int x2)
@@ -882,14 +882,14 @@ void SDLGraphics::drawHLine(int x1, int y, int x2)
         x2 = sumX -1;
     }
 
-    const int bpp = mTarget->format->BytesPerPixel;
+    const int bpp = mWindow->format->BytesPerPixel;
 
-    SDL_LockSurface(mTarget);
+    SDL_LockSurface(mWindow);
 
-    uint8_t *p = static_cast<uint8_t*>(mTarget->pixels)
-        + y * mTarget->pitch + x1 * bpp;
+    uint8_t *p = static_cast<uint8_t*>(mWindow->pixels)
+        + y * mWindow->pitch + x1 * bpp;
 
-    const uint32_t pixel = SDL_MapRGB(mTarget->format,
+    const uint32_t pixel = SDL_MapRGB(mWindow->format,
         static_cast<uint8_t>(mColor.r),
         static_cast<uint8_t>(mColor.g),
         static_cast<uint8_t>(mColor.b));
@@ -964,7 +964,7 @@ void SDLGraphics::drawHLine(int x1, int y, int x2)
             break;
     }  // end switch
 
-    SDL_UnlockSurface(mTarget);
+    SDL_UnlockSurface(mWindow);
 }
 
 void SDLGraphics::drawVLine(int x, int y1, int y2)
@@ -1006,19 +1006,19 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
         y2 = sumY - 1;
     }
 
-    const int bpp = mTarget->format->BytesPerPixel;
+    const int bpp = mWindow->format->BytesPerPixel;
 
-    SDL_LockSurface(mTarget);
+    SDL_LockSurface(mWindow);
 
-    uint8_t *p = static_cast<uint8_t*>(mTarget->pixels)
-        + y1 * mTarget->pitch + x * bpp;
+    uint8_t *p = static_cast<uint8_t*>(mWindow->pixels)
+        + y1 * mWindow->pitch + x * bpp;
 
-    const uint32_t pixel = SDL_MapRGB(mTarget->format,
+    const uint32_t pixel = SDL_MapRGB(mWindow->format,
         static_cast<uint8_t>(mColor.r),
         static_cast<uint8_t>(mColor.g),
         static_cast<uint8_t>(mColor.b));
 
-    const int pitch = mTarget->pitch;
+    const int pitch = mWindow->pitch;
     switch (bpp)
     {
         case 1:
@@ -1099,7 +1099,7 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
             break;
     }  // end switch
 
-    SDL_UnlockSurface(mTarget);
+    SDL_UnlockSurface(mWindow);
 }
 
 void SDLGraphics::drawRectangle(const gcn::Rectangle &rectangle)
@@ -1138,11 +1138,11 @@ bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
 {
     setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
 
-    if (!(mTarget = SDL_SetVideoMode(w, h, bpp, getSoftwareFlags())))
+    if (!(mWindow = SDL_SetVideoMode(w, h, bpp, getSoftwareFlags())))
         return false;
 
-    mRect.w = static_cast<uint16_t>(mTarget->w);
-    mRect.h = static_cast<uint16_t>(mTarget->h);
+    mRect.w = static_cast<uint16_t>(mWindow->w);
+    mRect.h = static_cast<uint16_t>(mWindow->h);
 
     return videoInfo();
 }

@@ -1049,11 +1049,11 @@ void NormalOpenGLGraphics::_beginDraw()
     glLoadIdentity();
 
 #ifdef ANDROID
-    glOrthof(0.0, static_cast<float>(mTarget->w),
-        static_cast<float>(mTarget->h), 0.0, -1.0, 1.0);
+    glOrthof(0.0, static_cast<float>(mWindow->w),
+        static_cast<float>(mWindow->h), 0.0, -1.0, 1.0);
 #else
-    glOrtho(0.0, static_cast<double>(mTarget->w),
-        static_cast<double>(mTarget->h), 0.0, -1.0, 1.0);
+    glOrtho(0.0, static_cast<double>(mWindow->w),
+        static_cast<double>(mWindow->h), 0.0, -1.0, 1.0);
 #endif
 
     glMatrixMode(GL_MODELVIEW);
@@ -1088,7 +1088,7 @@ void NormalOpenGLGraphics::_beginDraw()
 
 //    glScalef(0.5f, 0.5f, 0.5f);
 
-    pushClipArea(gcn::Rectangle(0, 0, mTarget->w, mTarget->h));
+    pushClipArea(gcn::Rectangle(0, 0, mWindow->w, mWindow->h));
 }
 
 void NormalOpenGLGraphics::_endDraw()
@@ -1099,13 +1099,13 @@ void NormalOpenGLGraphics::_endDraw()
 void NormalOpenGLGraphics::prepareScreenshot()
 {
     if (config.getBoolValue("usefbo"))
-        graphicsManager.createFBO(mTarget->w, mTarget->h, &mFbo);
+        graphicsManager.createFBO(mWindow->w, mWindow->h, &mFbo);
 }
 
 SDL_Surface* NormalOpenGLGraphics::getScreenshot()
 {
-    const int h = mTarget->h;
-    const int w = mTarget->w - (mTarget->w % 4);
+    const int h = mWindow->h;
+    const int w = mWindow->w - (mWindow->w % 4);
     GLint pack = 1;
 
     SDL_Surface *const screenshot = SDL_CreateRGBSurface(
@@ -1177,7 +1177,7 @@ bool NormalOpenGLGraphics::pushClipArea(gcn::Rectangle area)
         glTranslatef(static_cast<GLfloat>(transX),
                      static_cast<GLfloat>(transY), 0);
     }
-    glScissor(clipArea.x, mTarget->h - clipArea.y - clipArea.height,
+    glScissor(clipArea.x, mWindow->h - clipArea.y - clipArea.height,
         clipArea.width, clipArea.height);
 
     return result;
@@ -1192,7 +1192,7 @@ void NormalOpenGLGraphics::popClipArea()
 
     glPopMatrix();
     const gcn::ClipRectangle &clipArea = mClipStack.top();
-    glScissor(clipArea.x, mTarget->h - clipArea.y - clipArea.height,
+    glScissor(clipArea.x, mWindow->h - clipArea.y - clipArea.height,
         clipArea.width, clipArea.height);
 }
 

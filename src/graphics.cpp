@@ -52,7 +52,7 @@ Graphics::Graphics() :
     gcn::Graphics(),
     mWidth(0),
     mHeight(0),
-    mTarget(nullptr),
+    mWindow(nullptr),
     mBpp(0),
     mAlpha(false),
     mFullscreen(false),
@@ -141,7 +141,7 @@ bool Graphics::setOpenGLMode()
 {
 #ifdef USE_OPENGL
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    if (!(mTarget = SDL_SetVideoMode(mWidth, mHeight, mBpp, getOpenGLFlags())))
+    if (!(mWindow = SDL_SetVideoMode(mWidth, mHeight, mBpp, getOpenGLFlags())))
         return false;
 
 #ifdef __APPLE__
@@ -266,10 +266,10 @@ bool Graphics::videoInfo()
     else
         logger->log1("Using video driver: unknown");
 
-    mDoubleBuffer = ((mTarget->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
+    mDoubleBuffer = ((mWindow->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
     logger->log("Double buffer mode: %s", mDoubleBuffer ? "yes" : "no");
 
-    imageHelper->dumpSurfaceFormat(mTarget);
+    imageHelper->dumpSurfaceFormat(mWindow);
 
     const SDL_VideoInfo *const vi = SDL_GetVideoInfo();
     if (!vi)

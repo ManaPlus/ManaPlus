@@ -397,8 +397,8 @@ void SafeOpenGLGraphics::_beginDraw()
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    glOrtho(0.0, static_cast<double>(mTarget->w),
-        static_cast<double>(mTarget->h), 0.0, -1.0, 1.0);
+    glOrtho(0.0, static_cast<double>(mWindow->w),
+        static_cast<double>(mWindow->h), 0.0, -1.0, 1.0);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -416,7 +416,7 @@ void SafeOpenGLGraphics::_beginDraw()
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    pushClipArea(gcn::Rectangle(0, 0, mTarget->w, mTarget->h));
+    pushClipArea(gcn::Rectangle(0, 0, mWindow->w, mWindow->h));
 }
 
 void SafeOpenGLGraphics::_endDraw()
@@ -427,13 +427,13 @@ void SafeOpenGLGraphics::_endDraw()
 void SafeOpenGLGraphics::prepareScreenshot()
 {
     if (config.getBoolValue("usefbo"))
-        graphicsManager.createFBO(mTarget->w, mTarget->h, &mFbo);
+        graphicsManager.createFBO(mWindow->w, mWindow->h, &mFbo);
 }
 
 SDL_Surface* SafeOpenGLGraphics::getScreenshot()
 {
-    const int h = mTarget->h;
-    const int w = mTarget->w - (mTarget->w % 4);
+    const int h = mWindow->h;
+    const int w = mWindow->w - (mWindow->w % 4);
     GLint pack = 1;
 
     SDL_Surface *const screenshot = SDL_CreateRGBSurface(
@@ -500,7 +500,7 @@ bool SafeOpenGLGraphics::pushClipArea(gcn::Rectangle area)
     glPushMatrix();
     glTranslatef(static_cast<GLfloat>(transX),
                  static_cast<GLfloat>(transY), 0);
-    glScissor(clipArea.x, mTarget->h - clipArea.y - clipArea.height,
+    glScissor(clipArea.x, mWindow->h - clipArea.y - clipArea.height,
         clipArea.width, clipArea.height);
 
     return result;
@@ -515,7 +515,7 @@ void SafeOpenGLGraphics::popClipArea()
 
     glPopMatrix();
     const gcn::ClipRectangle &clipArea = mClipStack.top();
-    glScissor(clipArea.x, mTarget->h - clipArea.y - clipArea.height,
+    glScissor(clipArea.x, mWindow->h - clipArea.y - clipArea.height,
         clipArea.width, clipArea.height);
 }
 
