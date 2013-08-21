@@ -1138,8 +1138,11 @@ bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
 {
     setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
 
-    if (!(mWindow = SDL_SetVideoMode(w, h, bpp, getSoftwareFlags())))
+    if (!(mWindow = graphicsManager.createWindow(w, h, bpp,
+        getSoftwareFlags())))
+    {
         return false;
+    }
 
     mRect.w = static_cast<uint16_t>(mWindow->w);
     mRect.h = static_cast<uint16_t>(mWindow->h);

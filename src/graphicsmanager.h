@@ -37,6 +37,8 @@
 
 #endif
 
+#include "sdlshared.h"
+
 #include "utils/stringvector.h"
 
 #include <SDL_stdinc.h>
@@ -50,6 +52,7 @@ class Graphics;
 class TestMain;
 
 struct FBOInfo;
+struct SDL_Window;
 
 enum ScreenDensity
 {
@@ -74,6 +77,9 @@ class GraphicsManager final
         void initGraphics(const bool noOpenGL);
 
         void setVideoMode();
+
+        SDL_Window *createWindow(const int w, const int h,
+                                 const int bpp, const int flags);
 
         bool getAllVideoModes(StringVect &modeList);
 

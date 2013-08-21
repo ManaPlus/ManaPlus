@@ -139,7 +139,7 @@ int GraphicsManager::detectGraphics()
     logger->log1("enable opengl mode");
     int textureSampler = 0;
     int compressTextures = 0;
-    SDL_SetVideoMode(100, 100, 0, SDL_ANYFORMAT | SDL_OPENGL);
+    createWindow(100, 100, 0, SDL_ANYFORMAT | SDL_OPENGL);
 
     initOpenGL();
     logVersion();
@@ -377,6 +377,12 @@ bool GraphicsManager::getAllVideoModes(StringVect &modeList)
         }
         return true;
     }
+}
+
+SDL_Window *GraphicsManager::createWindow(const int w, const int h,
+                                          const int bpp, const int flags)
+{
+    return SDL_SetVideoMode(w, h, bpp, flags);
 }
 
 #ifdef USE_OPENGL

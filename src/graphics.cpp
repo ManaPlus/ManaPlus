@@ -141,8 +141,11 @@ bool Graphics::setOpenGLMode()
 {
 #ifdef USE_OPENGL
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    if (!(mWindow = SDL_SetVideoMode(mWidth, mHeight, mBpp, getOpenGLFlags())))
+    if (!(mWindow = graphicsManager.createWindow(mWidth, mHeight,
+        mBpp, getOpenGLFlags())))
+    {
         return false;
+    }
 
 #ifdef __APPLE__
     if (mSync)
