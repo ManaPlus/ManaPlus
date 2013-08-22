@@ -266,6 +266,8 @@ bool Graphics::videoInfo()
     logger->log("SDL video info");
 #ifdef USE_SDL2
     logger->log("Using video driver: %s", SDL_GetCurrentVideoDriver());
+
+    // +++ probably SDL_GetRendererInfo can be used for info
 #else
     char videoDriverName[65];
     if (SDL_VideoDriverName(videoDriverName, 64))
@@ -274,7 +276,6 @@ bool Graphics::videoInfo()
         logger->log1("Using video driver: unknown");
     mDoubleBuffer = ((mWindow->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
     logger->log("Double buffer mode: %s", mDoubleBuffer ? "yes" : "no");
-#endif
 
     imageHelper->dumpSurfaceFormat(mWindow);
 
@@ -300,6 +301,7 @@ bool Graphics::videoInfo()
             ((vi->blit_sw_A) ? "yes" : "no"));
     logger->log("Accelerated color fills: %s",
             ((vi->blit_fill) ? "yes" : "no"));
+#endif
 
     return true;
 }

@@ -1034,7 +1034,11 @@ void NormalOpenGLGraphics::updateScreen()
     mLastBinds = mBinds;
     mBinds = 0;
 #endif
+#ifdef USE_SDL2
+    SDL_GL_SwapWindow(mWindow);
+#else
     SDL_GL_SwapBuffers();
+#endif
 // may be need clear?
 //  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     BLOCK_END("Graphics::updateScreen")

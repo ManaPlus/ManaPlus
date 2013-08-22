@@ -1616,14 +1616,22 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         Input::KEY_NO_VALUE, 50,
         COND_DEFAULT},
     {"keyIgnoreInput1",
+#ifdef USE_SDL2
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+#else
         INPUT_KEYBOARD, SDLK_LSUPER,
+#endif
         INPUT_UNKNOWN, Input::KEY_NO_VALUE,
         Input::GRP_DEFAULT,
         &ActionManager::ignoreInput,
         Input::KEY_NO_VALUE, 500,
         COND_DEFAULT},
     {"keyIgnoreInput2",
+#ifdef USE_SDL2
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+#else
         INPUT_KEYBOARD, SDLK_RSUPER,
+#endif
         INPUT_UNKNOWN, Input::KEY_NO_VALUE,
         Input::GRP_DEFAULT,
         &ActionManager::ignoreInput,

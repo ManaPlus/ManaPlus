@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "inputmanager.h"
 #include "logger.h"
+#include "sdlshared.h"
 
 #include "debug.h"
 
@@ -65,7 +66,7 @@ void Joystick::init()
     joystickCount = SDL_NumJoysticks();
     logger->log("%i joysticks/gamepads found", joystickCount);
     for (int i = 0; i < joystickCount; i++)
-        logger->log("- %s", SDL_JoystickName(i));
+        logger->log("- %s", SDL_JoystickNameForIndex(i));
 
     mEnabled = config.getBoolValue("joystickEnabled");
 
@@ -268,7 +269,7 @@ void Joystick::getNames(std::vector <std::string> &names)
 {
     names.clear();
     for (int i = 0; i < joystickCount; i++)
-        names.push_back(SDL_JoystickName(i));
+        names.push_back(SDL_JoystickNameForIndex(i));
 }
 
 void Joystick::update()

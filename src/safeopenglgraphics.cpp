@@ -377,7 +377,11 @@ void SafeOpenGLGraphics::updateScreen()
     BLOCK_START("Graphics::updateScreen")
     glFlush();
     glFinish();
+#ifdef USE_SDL2
+    SDL_GL_SwapWindow(mWindow);
+#else
     SDL_GL_SwapBuffers();
+#endif
     BLOCK_END("Graphics::updateScreen")
 }
 

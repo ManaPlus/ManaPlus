@@ -2906,7 +2906,7 @@ void Client::applyGamma()
     {
         const float val = config.getFloatValue("gamma");
 #ifdef USE_SDL2
-        // +++ need use SDL_SetWindowBrightness
+        SDL_SetWindowBrightness(mWindow, val);
 #else
         SDL_SetGamma(val, val, val);
 #endif
@@ -2915,9 +2915,11 @@ void Client::applyGamma()
 
 void Client::applyVSync()
 {
-#ifndef USE_SDL2
     const int val = config.getIntValue("vsync");
     if (val > 0 && val < 2)
+#ifdef USE_SDL2
+        SDL_GL_SetSwapInterval(val);
+#else
         SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, val);
 #endif
 }

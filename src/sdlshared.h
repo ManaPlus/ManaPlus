@@ -50,11 +50,15 @@
 #define SDLK_PRINT SDLK_PRINTSCREEN
 #define SDLK_NUMLOCK SDLK_NUMLOCKCLEAR
 #define SDLK_SCROLLOCK SDLK_SCROLLLOCK
+#define SDLK_LAST SDL_NUM_SCANCODES
 
-#else
+#define SDL_DEFAULT_REPEAT_DELAY 500
+
+#else  // USE_SDL2
 
 #define SDL_Window SDL_Surface
+#define SDL_JoystickNameForIndex SDL_JoystickName
 
-#endif
+#endif  // USE_SDL2
 
-#endif
+#endif  // SDLSHARED_H

@@ -104,9 +104,9 @@ class KeyboardConfig final
         void resetRepeat(const int key);
 
     private:
-        bool mEnabled;                 /**< Flag to respond to key input */
+        bool mEnabled;                   /**< Flag to respond to key input */
 
-        uint8_t *mActiveKeys;            /**< Stores a list of all the keys */
+        const uint8_t *mActiveKeys;      /**< Stores a list of all the keys */
 
         uint8_t *mActiveKeys2;           /**< Stores a list of all the keys */
 
