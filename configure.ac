@@ -66,6 +66,9 @@ if test "x$with_sdl2" == "xyes"; then
 #   using embedded sdl2gfx
     CPPFLAGS="$CPPFLAGS -I./sdl2gfx"
 
+    AC_CHECK_LIB(SDL2_net, SDLNet_Init, ,
+    AC_MSG_ERROR([ *** Unable to find SDL2_net library]))
+
     with_sdl2=yes
 else
     AC_PATH_PROG(SDL_CONFIG, sdl-config)
@@ -86,6 +89,9 @@ else
     AC_CHECK_LIB(SDL_gfx, rotozoomSurfaceXY, ,
     AC_MSG_ERROR([ *** Unable to find SDL_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
     AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
+
+    AC_CHECK_LIB(SDL_net, SDLNet_Init, ,
+    AC_MSG_ERROR([ *** Unable to find SDL_net library]))
 
     with_sdl2=no
 fi
@@ -238,9 +244,6 @@ else
 fi
 AM_CONDITIONAL(USE_MUMBLE, test x$with_mumble = xyes)
 
-
-AC_CHECK_LIB(SDL_net, SDLNet_Init, ,
-AC_MSG_ERROR([ *** Unable to find SDL_net library]))
 
 AC_ARG_WITH(librt,[  --without-librt        don't link to librt ] )
 if test "x$with_librt" == "xno"; then

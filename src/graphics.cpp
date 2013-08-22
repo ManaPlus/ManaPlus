@@ -53,6 +53,9 @@ Graphics::Graphics() :
     mWidth(0),
     mHeight(0),
     mWindow(nullptr),
+#ifdef USE_SDL2
+    mRenderer(nullptr),
+#endif
     mBpp(0),
     mAlpha(false),
     mFullscreen(false),
@@ -153,8 +156,18 @@ bool Graphics::setOpenGLMode()
         return false;
     }
 
+#ifdef USE_SDL2
+    int w1 = 0;
+    int h1 = 0;
+    SDL_GetWindowSize(mWindow, &w1, &h1);
+    mRect.w = w1;
+    mRect.h = h1;
+
+    mRenderer = graphicsManager.createRenderer(mWindow, 0);
+#else
     mRect.w = static_cast<uint16_t>(mWindow->w);
     mRect.h = static_cast<uint16_t>(mWindow->h);
+#endif
 
 #ifdef __APPLE__
     if (mSync)

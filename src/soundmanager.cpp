@@ -165,7 +165,6 @@ void SoundManager::init()
 void SoundManager::info() const
 {
     SDL_version compiledVersion;
-    char driver[40] = "Unknown";
     const char *format = "Unknown";
     int rate = 0;
     uint16_t audioFormat = 0;
@@ -174,7 +173,12 @@ void SoundManager::info() const
     MIX_VERSION(&compiledVersion);
     const SDL_version *const linkedVersion = Mix_Linked_Version();
 
+#ifdef USE_SDL2
+    const char *driver = SDL_GetCurrentAudioDriver();
+#else
+    char driver[40] = "Unknown";
     SDL_AudioDriverName(driver, 40);
+#endif
 
     Mix_QuerySpec(&rate, &audioFormat, &channels);
     switch (audioFormat)

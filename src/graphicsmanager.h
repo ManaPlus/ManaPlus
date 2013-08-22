@@ -52,6 +52,7 @@ class Graphics;
 class TestMain;
 
 struct FBOInfo;
+struct SDL_Renderer;
 struct SDL_Window;
 
 enum ScreenDensity
@@ -80,6 +81,11 @@ class GraphicsManager final
 
         SDL_Window *createWindow(const int w, const int h,
                                  const int bpp, const int flags);
+
+#ifdef USE_SDL2
+        SDL_Renderer *createRenderer(SDL_Window *const window,
+                                     const int flags);
+#endif
 
         bool getAllVideoModes(StringVect &modeList);
 

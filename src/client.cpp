@@ -2906,7 +2906,8 @@ void Client::applyGamma()
     {
         const float val = config.getFloatValue("gamma");
 #ifdef USE_SDL2
-        SDL_SetWindowBrightness(mWindow, val);
+        if (mainGraphics)
+            SDL_SetWindowBrightness(mainGraphics->getWindow(), val);
 #else
         SDL_SetGamma(val, val, val);
 #endif

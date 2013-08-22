@@ -360,6 +360,15 @@ SDL_Window *GraphicsManager::createWindow(const int w, const int h,
 #endif
 }
 
+#ifdef USE_SDL2
+SDL_Renderer *GraphicsManager::createRenderer(SDL_Window *const window,
+                                              const int flags)
+{
+    // +++ need use different drivers and different flags
+    return SDL_CreateRenderer(window, -1, flags);
+}
+#endif
+
 #ifdef USE_OPENGL
 void GraphicsManager::updateExtensions()
 {

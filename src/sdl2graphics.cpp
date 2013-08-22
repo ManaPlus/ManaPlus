@@ -35,14 +35,17 @@
 
 #include <guichan/sdl/sdlpixel.hpp>
 
-#include <SDL_gfxBlitFunc.h>
+#include <SDL.h>
+
+//#include <SDL_gfxBlitFunc.h>
 
 #include "debug.h"
 
 int MSDL_gfxBlitRGBA(SDL_Surface *src, SDL_Rect *srcrect,
                      SDL_Surface *dst, SDL_Rect *dstrect)
 {
-    return SDL_gfxBlitRGBA(src, srcrect, dst, dstrect);
+    return 0;
+//    return SDL_gfxBlitRGBA(src, srcrect, dst, dstrect);
 }
 
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN
@@ -100,8 +103,9 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
     srcRect.w = static_cast<uint16_t>(width);
     srcRect.h = static_cast<uint16_t>(height);
 
-    const bool returnValue = !(SDL_BlitSurface(tmpImage->mSDLSurface,
-        &srcRect, mWindow, &dstRect) < 0);
+    const bool returnValue(true);
+//    const bool returnValue = !(SDL_BlitSurface(tmpImage->mSDLSurface,
+//        &srcRect, mWindow, &dstRect) < 0);
 
     delete tmpImage;
 
@@ -132,6 +136,8 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     srcRect.w = static_cast<uint16_t>(width);
     srcRect.h = static_cast<uint16_t>(height);
 
+    return true;
+/*
     if (mBlitMode == BLIT_NORMAL)
     {
         return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
@@ -142,6 +148,7 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
         return !(SDL_gfxBlitRGBA(image->mSDLSurface, &srcRect,
                                  mWindow, &dstRect) < 0);
     }
+*/
 }
 
 void SDLGraphics::drawImagePattern(const Image *const image,
@@ -182,7 +189,7 @@ void SDLGraphics::drawImagePattern(const Image *const image,
             srcRect.w = static_cast<uint16_t>(dw);
             srcRect.h = static_cast<uint16_t>(dh);
 
-            SDL_BlitSurface(image->mSDLSurface, &srcRect, mWindow, &dstRect);
+//            SDL_BlitSurface(image->mSDLSurface, &srcRect, mWindow, &dstRect);
         }
     }
 }
@@ -234,8 +241,8 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
             srcRect.w = static_cast<uint16_t>(dw);
             srcRect.h = static_cast<uint16_t>(dh);
 
-            SDL_BlitSurface(tmpImage->mSDLSurface, &srcRect,
-                            mWindow, &dstRect);
+//            SDL_BlitSurface(tmpImage->mSDLSurface, &srcRect,
+//                            mWindow, &dstRect);
         }
     }
 
@@ -279,12 +286,14 @@ void SDLGraphics::calcImagePattern(ImageVertexes* const vert,
             srcRect.w = static_cast<uint16_t>(dw);
             srcRect.h = static_cast<uint16_t>(dh);
 
+/*
             if (SDL_FakeUpperBlit(image->mSDLSurface, &srcRect,
                 mWindow, &dstRect) == 1)
             {
                 vert->sdl.push_back(r);
             }
             else
+*/
             {
                 delete r;
             }
@@ -341,12 +350,14 @@ void SDLGraphics::calcTileSDL(ImageVertexes *const vert, int x, int y) const
     rect->src.y = static_cast<int16_t>(image->mBounds.y);
     rect->src.w = static_cast<uint16_t>(image->mBounds.w);
     rect->src.h = static_cast<uint16_t>(image->mBounds.h);
+/*
     if (SDL_FakeUpperBlit(image->mSDLSurface, &rect->src,
         mWindow, &rect->dst) == 1)
     {
         vert->sdl.push_back(rect);
     }
     else
+*/
     {
         delete rect;
     }
@@ -384,8 +395,8 @@ void SDLGraphics::drawTile(const ImageCollection *const vertCol)
         const DoubleRects::const_iterator it2_end = rects->end();
         while (it2 != it2_end)
         {
-            SDL_LowerBlit(img->mSDLSurface, &(*it2)->src,
-                mWindow, &(*it2)->dst);
+//            SDL_LowerBlit(img->mSDLSurface, &(*it2)->src,
+//                mWindow, &(*it2)->dst);
             ++ it2;
         }
     }
@@ -400,7 +411,7 @@ void SDLGraphics::drawTile(const ImageVertexes *const vert)
     const DoubleRects::const_iterator it_end = rects->end();
     while (it != it_end)
     {
-        SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mWindow, &(*it)->dst);
+//        SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mWindow, &(*it)->dst);
         ++ it;
     }
 }
@@ -408,15 +419,7 @@ void SDLGraphics::drawTile(const ImageVertexes *const vert)
 void SDLGraphics::updateScreen()
 {
     BLOCK_START("Graphics::updateScreen")
-    if (mDoubleBuffer)
-    {
-        SDL_Flip(mWindow);
-    }
-    else
-    {
-        SDL_UpdateRects(mWindow, 1, &mRect);
-//        SDL_UpdateRect(mWindow, 0, 0, 0, 0);
-    }
+    SDL_RenderPresent(mRenderer);
     BLOCK_END("Graphics::updateScreen")
 }
 
@@ -436,8 +439,8 @@ SDL_Surface *SDLGraphics::getScreenshot()
     SDL_Surface *const screenshot = SDL_CreateRGBSurface(SDL_SWSURFACE,
         mRect.w, mRect.h, 24, rmask, gmask, bmask, amask);
 
-    if (screenshot)
-        SDL_BlitSurface(mWindow, nullptr, screenshot, nullptr);
+//    if (screenshot)
+//        SDL_BlitSurface(mWindow, nullptr, screenshot, nullptr);
 
     return screenshot;
 }
@@ -482,9 +485,9 @@ bool SDLGraphics::calcWindow(ImageCollection *const vertCol,
 }
 
 int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
-                                SDL_Rect *const srcrect,
-                                const SDL_Surface *const dst,
-                                SDL_Rect *dstrect) const
+                                   SDL_Rect *const srcrect,
+                                   const SDL_Surface *const dst,
+                                   SDL_Rect *dstrect) const
 {
     SDL_Rect fulldst;
     int srcx, srcy, w, h;
@@ -578,7 +581,6 @@ int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
         dstrect->h = static_cast<int16_t>(h);
 
         return 1;
-//        return SDL_LowerBlit(src, &sr, dst, dstrect);
     }
     dstrect->w = dstrect->h = 0;
     return 0;
@@ -586,6 +588,7 @@ int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
 
 void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
 {
+/*
     FUNC_BLOCK("Graphics::fillRectangle", 1)
     if (mClipStack.empty())
         return;
@@ -778,6 +781,7 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
             static_cast<int8_t>(mColor.a));
         SDL_FillRect(mWindow, &rect, color);
     }
+*/
 }
 
 void SDLGraphics::_beginDraw()
@@ -800,7 +804,7 @@ bool SDLGraphics::pushClipArea(gcn::Rectangle area)
     rect.y = static_cast<int16_t>(carea.y);
     rect.w = static_cast<int16_t>(carea.width);
     rect.h = static_cast<int16_t>(carea.height);
-    SDL_SetClipRect(mWindow, &rect);
+//    SDL_SetClipRect(mWindow, &rect);
 
     return result;
 }
@@ -819,7 +823,7 @@ void SDLGraphics::popClipArea()
     rect.w = static_cast<int16_t>(carea.width);
     rect.h = static_cast<int16_t>(carea.height);
 
-    SDL_SetClipRect(mWindow, &rect);
+//    SDL_SetClipRect(mWindow, &rect);
 }
 
 void SDLGraphics::drawPoint(int x, int y)
@@ -835,14 +839,17 @@ void SDLGraphics::drawPoint(int x, int y)
     if (!top.isPointInRect(x, y))
         return;
 
+/*
     if (mAlpha)
         SDLputPixelAlpha(mWindow, x, y, mColor);
     else
         SDLputPixel(mWindow, x, y, mColor);
+*/
 }
 
 void SDLGraphics::drawHLine(int x1, int y, int x2)
 {
+/*
     if (mClipStack.empty())
         return;
 
@@ -965,10 +972,12 @@ void SDLGraphics::drawHLine(int x1, int y, int x2)
     }  // end switch
 
     SDL_UnlockSurface(mWindow);
+*/
 }
 
 void SDLGraphics::drawVLine(int x, int y1, int y2)
 {
+/*
     if (mClipStack.empty())
         return;
 
@@ -1100,6 +1109,7 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
     }  // end switch
 
     SDL_UnlockSurface(mWindow);
+*/
 }
 
 void SDLGraphics::drawRectangle(const gcn::Rectangle &rectangle)
@@ -1146,9 +1156,13 @@ bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
         return false;
     }
 
-    mRect.w = static_cast<uint16_t>(mWindow->w);
-    mRect.h = static_cast<uint16_t>(mWindow->h);
+    int w1 = 0;
+    int h1 = 0;
+    SDL_GetWindowSize(mWindow, &w1, &h1);
+    mRect.w = w1;
+    mRect.h = h1;
 
+    mRenderer = graphicsManager.createRenderer(mWindow, 0);
     return videoInfo();
 }
 

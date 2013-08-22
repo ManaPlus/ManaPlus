@@ -392,7 +392,10 @@ class Graphics : public gcn::Graphics
 
         bool videoInfo();
 
-        SDL_Window* mWindow;
+        SDL_Window *mWindow;
+#ifdef USE_SDL2
+        SDL_Renderer *mRenderer;
+#endif
         int mBpp;
         bool mAlpha;
         bool mFullscreen;
