@@ -151,6 +151,15 @@ static int physfsrwops_close(SDL_RWops *const rw)
     return 0;
 } /* physfsrwops_close */
 
+#ifdef USE_SDL2
+static PHYSFSINT physfsrwops_size(SDL_RWops *const rw)
+{
+    PHYSFS_file *const handle = static_cast<PHYSFS_file*>(
+        rw->hidden.unknown.data1);
+    return PHYSFS_fileLength(handle);
+} /* physfsrwops_size */
+#endif
+
 static SDL_RWops *create_rwops(PHYSFS_file *const handle)
 {
     SDL_RWops *retval = nullptr;
@@ -164,6 +173,9 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
         retval = SDL_AllocRW();
         if (retval)
         {
+#ifdef USE_SDL2
+            retval->size  = physfsrwops_size;
+#endif
             retval->seek  = physfsrwops_seek;
             retval->read  = physfsrwops_read;
             retval->write = physfsrwops_write;
