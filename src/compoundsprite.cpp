@@ -338,7 +338,7 @@ void CompoundSprite::redraw() const
 
     SDLGraphics *graphics = new SDLGraphics();
     graphics->setBlitMode(SDLGraphics::BLIT_GFX);
-    graphics->setWindow(surface);
+    graphics->setWindow(surface, BUFFER_WIDTH, BUFFER_HEIGHT);
     graphics->_beginDraw();
 
     int tileX = 32 / 2;

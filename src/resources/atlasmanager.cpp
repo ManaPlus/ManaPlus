@@ -224,14 +224,16 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     atlas->width = powerOfTwo(atlas->width);
     atlas->height = powerOfTwo(atlas->height);
 
+    const int width = atlas->width;
+    const int height = atlas->height;
     // temp SDL surface for atlas
     SDL_Surface *const surface = SDL_CreateRGBSurface(SDL_SWSURFACE,
-        atlas->width, atlas->height, 32, rmask, gmask, bmask, amask);
+        width, height, 32, rmask, gmask, bmask, amask);
     if (!surface)
         return nullptr;
 
     SDLGraphics *const graphics = new SDLGraphics();
-    graphics->setWindow(surface);
+    graphics->setWindow(surface, width, height);
     graphics->_beginDraw();
 
     // drawing SDL images to surface

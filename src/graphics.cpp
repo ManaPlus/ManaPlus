@@ -148,8 +148,13 @@ bool Graphics::setOpenGLMode()
     if (!(mWindow = graphicsManager.createWindow(mWidth, mHeight,
         mBpp, getOpenGLFlags())))
     {
+        mRect.w = 0;
+        mRect.h = 0;
         return false;
     }
+
+    mRect.w = static_cast<uint16_t>(mWindow->w);
+    mRect.h = static_cast<uint16_t>(mWindow->h);
 
 #ifdef __APPLE__
     if (mSync)

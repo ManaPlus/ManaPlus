@@ -434,7 +434,7 @@ SDL_Surface *SDLGraphics::getScreenshot()
     const int amask = 0x00000000;
 
     SDL_Surface *const screenshot = SDL_CreateRGBSurface(SDL_SWSURFACE,
-        mWindow->w, mWindow->h, 24, rmask, gmask, bmask, amask);
+        mRect.w, mRect.h, 24, rmask, gmask, bmask, amask);
 
     if (screenshot)
         SDL_BlitSurface(mWindow, nullptr, screenshot, nullptr);
@@ -782,7 +782,7 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
 
 void SDLGraphics::_beginDraw()
 {
-    pushClipArea(gcn::Rectangle(0, 0, mWindow->w, mWindow->h));
+    pushClipArea(gcn::Rectangle(0, 0, mRect.w, mRect.h));
 }
 
 void SDLGraphics::_endDraw()
@@ -1141,6 +1141,8 @@ bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
     if (!(mWindow = graphicsManager.createWindow(w, h, bpp,
         getSoftwareFlags())))
     {
+        mRect.w = 0;
+        mRect.h = 0;
         return false;
     }
 

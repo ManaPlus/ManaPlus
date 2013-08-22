@@ -105,8 +105,13 @@ class Graphics : public gcn::Graphics
          */
         virtual ~Graphics();
 
-        void setWindow(SDL_Window *const window)
-        { mWindow = window; }
+        void setWindow(SDL_Window *const window,
+                       const int width, const int height)
+        {
+            mWindow = window;
+            mRect.w = width;
+            mRect.h = height;
+        }
 
         SDL_Window *getWindow() const
         { return mWindow; }
