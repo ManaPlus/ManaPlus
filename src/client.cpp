@@ -1065,6 +1065,8 @@ int Client::gameExec()
         lastTickTime = tick_time;
 
 #ifdef USE_SDL2
+        // +++ need check active state
+        frame_count++;
         if (gui)
             gui->draw();
         mainGraphics->updateScreen();
