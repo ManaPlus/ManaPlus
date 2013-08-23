@@ -138,7 +138,7 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
     sdlCol.r = static_cast<uint8_t>(color.r);
     sdlCol.g = static_cast<uint8_t>(color.g);
 #ifdef USE_SDL2
-    sdlCol.a = 0;
+    sdlCol.a = 255;
 #else
     sdlCol.unused = 0;
 #endif
@@ -175,7 +175,7 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
         sdlCol2.r = static_cast<uint8_t>(color2.r);
         sdlCol2.g = static_cast<uint8_t>(color2.g);
 #ifdef USE_SDL2
-        sdlCol2.a = 0;
+        sdlCol2.a = 255;
 #else
         sdlCol2.unused = 0;
 #endif

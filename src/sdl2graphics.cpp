@@ -44,8 +44,9 @@
 int MSDL_gfxBlitRGBA(SDL_Surface *src, SDL_Rect *srcrect,
                      SDL_Surface *dst, SDL_Rect *dstrect)
 {
-    return 0;
-//    return SDL_gfxBlitRGBA(src, srcrect, dst, dstrect);
+    SDL_SetSurfaceBlendMode (src, SDL_BLENDMODE_BLEND);
+    SDL_BlitSurface(src, srcrect, dst, dstrect);
+    return 1;
 }
 
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN
