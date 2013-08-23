@@ -40,7 +40,9 @@
 #include "resources/subimage.h"
 
 #include <SDL_image.h>
+#ifndef USE_SDL2
 #include <SDL_rotozoom.h>
+#endif
 
 #include "debug.h"
 
@@ -307,6 +309,7 @@ Image* Image::SDLgetScaledImage(const int width, const int height) const
 
     Image* scaledImage = nullptr;
 
+#ifndef USE_SDL2
     if (mSDLSurface)
     {
         SDL_Surface *const scaledSurface = zoomSurface(mSDLSurface,
@@ -322,6 +325,7 @@ Image* Image::SDLgetScaledImage(const int width, const int height) const
             SDL_FreeSurface(scaledSurface);
         }
     }
+#endif
     return scaledImage;
 }
 

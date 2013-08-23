@@ -32,12 +32,7 @@ endif
 if USE_SDL2
 manaplus_CXXFLAGS += -DUSE_SDL2
 manaplus_SOURCES += sdl2gfx/SDL_framerate.c \
-	      sdl2gfx/SDL_framerate.h \
-	      sdl2gfx/SDL_gfxPrimitives.c \
-	      sdl2gfx/SDL_gfxPrimitives.h \
-	      sdl2gfx/SDL_gfxPrimitives_font.h \
-	      sdl2gfx/SDL_rotozoom.c \
-	      sdl2gfx/SDL_rotozoom.h
+	      sdl2gfx/SDL_framerate.h
 endif
 
 if USE_INTERNALGUICHAN

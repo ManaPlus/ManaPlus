@@ -32,7 +32,6 @@
 #include "resources/image.h"
 
 #include <SDL_image.h>
-#include <SDL_rotozoom.h>
 
 #include "debug.h"
 
