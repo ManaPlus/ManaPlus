@@ -50,7 +50,7 @@ void AuctionManager::init()
     int val = serverConfig.getValue("enableAuctionBot", -1);
     if (val == -1)
     {
-        if (Client::isTmw())
+        if (client->isTmw())
             val = 1;
         else
             val = 0;

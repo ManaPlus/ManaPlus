@@ -242,7 +242,7 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &msg,
     if (config.getBoolValue("usePersistentIP"))
     {
         msg.readInt32();
-        server.hostname = Client::getServerName();
+        server.hostname = client->getServerName();
     }
     else
     {

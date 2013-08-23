@@ -77,7 +77,7 @@ ListBox::~ListBox()
 
 void ListBox::updateAlpha()
 {
-    const float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(client->getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     if (mAlpha != alpha)

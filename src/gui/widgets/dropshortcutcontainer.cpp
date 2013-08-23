@@ -61,7 +61,7 @@ DropShortcutContainer::DropShortcutContainer():
 
     if (mBackgroundImg)
     {
-        mBackgroundImg->setAlpha(Client::getGuiAlpha());
+        mBackgroundImg->setAlpha(client->getGuiAlpha());
         mBoxHeight = mBackgroundImg->getHeight();
         mBoxWidth = mBackgroundImg->getWidth();
     }
@@ -98,9 +98,9 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
         return;
 
     BLOCK_START("DropShortcutContainer::draw")
-    if (Client::getGuiAlpha() != mAlpha)
+    if (client->getGuiAlpha() != mAlpha)
     {
-        mAlpha = Client::getGuiAlpha();
+        mAlpha = client->getGuiAlpha();
         if (mBackgroundImg)
             mBackgroundImg->setAlpha(mAlpha);
     }

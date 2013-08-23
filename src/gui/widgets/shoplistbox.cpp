@@ -90,8 +90,8 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         return;
     }
 
-    if (Client::getGuiAlpha() != mAlpha)
-        mAlpha = Client::getGuiAlpha();
+    if (client->getGuiAlpha() != mAlpha)
+        mAlpha = client->getGuiAlpha();
 
     const int alpha = static_cast<int>(mAlpha * 255.0f);
     Graphics *graphics = static_cast<Graphics*>(gcnGraphics);

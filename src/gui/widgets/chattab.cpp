@@ -308,8 +308,8 @@ void ChatTab::chatLog(std::string line, Own own,
 
         if ((getAllowHighlight() || own == BY_GM)
             && (this != tabArea->getSelectedTab()
-            || (Client::getIsMinimized() || (!Client::getMouseFocused()
-            && !Client::getInputFocused()))))
+            || (client->getIsMinimized() || (!client->getMouseFocused()
+            && !client->getInputFocused()))))
         {
             if (own == BY_GM)
             {
@@ -323,7 +323,7 @@ void ChatTab::chatLog(std::string line, Own own,
                     chatWindow->unHideWindow();
                 playNewMessageSound();
             }
-            Client::newChatMessage();
+            client->newChatMessage();
         }
     }
 }

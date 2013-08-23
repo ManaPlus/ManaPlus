@@ -73,7 +73,7 @@ Download::Download(void *const ptr, const std::string &url,
     mOptions.cancel = 0;
     mOptions.memoryWrite = 0;
     mOptions.checkAdler = true;
-    const std::string serverName = Client::getServerName();
+    const std::string serverName = client->getServerName();
     if (!serverName.empty())
     {
         if (mUrl.find("?") == std::string::npos)

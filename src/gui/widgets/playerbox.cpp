@@ -126,9 +126,9 @@ void PlayerBox::draw(gcn::Graphics *graphics)
         mBeing->drawSpriteAt(static_cast<Graphics*>(graphics), x, y);
     }
 
-    if (Client::getGuiAlpha() != mAlpha)
+    if (client->getGuiAlpha() != mAlpha)
     {
-        const float alpha = Client::getGuiAlpha();
+        const float alpha = client->getGuiAlpha();
         for (int a = 0; a < 9; a++)
         {
             if (mBackground.grid[a])

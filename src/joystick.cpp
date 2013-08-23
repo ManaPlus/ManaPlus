@@ -164,7 +164,7 @@ void Joystick::logic()
 
     mDirection = 0;
 
-    if (mUseInactive || Client::getInputFocused())
+    if (mUseInactive || client->getInputFocused())
     {
         // X-Axis
         int position = SDL_JoystickGetAxis(mJoystick, 0);
@@ -333,7 +333,7 @@ bool Joystick::validate() const
     if (mCalibrating || !mEnabled || !mCalibrated)
         return false;
 
-    return (mUseInactive || Client::getInputFocused());
+    return (mUseInactive || client->getInputFocused());
 }
 
 void Joystick::handleRepeat(const int time)

@@ -620,7 +620,7 @@ void Game::slowLogic()
             {
                 // TRANSLATORS: error message text
                 errorMessage = _("The connection to the server was lost.");
-                disconnectedDialog = Client::openErrorDialog(
+                disconnectedDialog = client->openErrorDialog(
                     // TRANSLATORS: error message header
                     _("Network Error"), errorMessage, false);
                 disconnectedDialog->addActionListener(&errorListener);
@@ -917,7 +917,7 @@ void Game::handleActive(const SDL_Event &event)
         player_node->updateName();
 
     if (event.active.state & SDL_APPINPUTFOCUS)
-        Client::setInputFocused(event.active.gain);
+        client->setInputFocused(event.active.gain);
     if (event.active.state & SDL_APPMOUSEFOCUS)
         Client::setMouseFocused(event.active.gain);
 
@@ -925,7 +925,7 @@ void Game::handleActive(const SDL_Event &event)
     {
         if (player_node && player_node->getAway())
         {
-            if (Client::getInputFocused() || Client::getMouseFocused())
+            if (client->getInputFocused() || client->getMouseFocused())
                 fpsLimit = config.getIntValue("fpslimit");
             else
                 fpsLimit = config.getIntValue("altfpslimit");
@@ -979,7 +979,7 @@ void Game::handleInput()
             case SDL_VIDEORESIZE:
                 // Let the client deal with this one (it'll
                 // pass down from there)
-                Client::resize(event.resize.w, event.resize.h);
+                client->resizeVideo(event.resize.w, event.resize.h);
                 break;
             // Active event
             case SDL_ACTIVEEVENT:

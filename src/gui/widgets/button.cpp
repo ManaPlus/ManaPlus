@@ -283,7 +283,7 @@ void Button::loadImage(const std::string &imageName)
 
 void Button::updateAlpha()
 {
-    const float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(client->getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     if (mAlpha != alpha)

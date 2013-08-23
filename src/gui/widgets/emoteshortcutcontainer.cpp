@@ -60,7 +60,7 @@ EmoteShortcutContainer::EmoteShortcutContainer():
         "item_shortcut_background.xml", "background.xml");
 
     if (mBackgroundImg)
-        mBackgroundImg->setAlpha(Client::getGuiAlpha());
+        mBackgroundImg->setAlpha(client->getGuiAlpha());
 
     // Setup emote sprites
     for (int i = 0; i <= EmoteDB::getLast(); i++)
@@ -109,8 +109,8 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         return;
 
     BLOCK_START("EmoteShortcutContainer::draw")
-    mAlpha = Client::getGuiAlpha();
-    if (Client::getGuiAlpha() != mAlpha && mBackgroundImg)
+    mAlpha = client->getGuiAlpha();
+    if (client->getGuiAlpha() != mAlpha && mBackgroundImg)
         mBackgroundImg->setAlpha(mAlpha);
 
     Graphics *const g = static_cast<Graphics *const>(graphics);

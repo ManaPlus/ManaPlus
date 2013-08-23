@@ -72,7 +72,7 @@ ItemShortcutContainer::ItemShortcutContainer(const unsigned number) :
 
     if (mBackgroundImg)
     {
-        mBackgroundImg->setAlpha(Client::getGuiAlpha());
+        mBackgroundImg->setAlpha(client->getGuiAlpha());
         mBoxHeight = mBackgroundImg->getHeight();
         mBoxWidth = mBackgroundImg->getWidth();
     }
@@ -118,8 +118,8 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         return;
     }
 
-    mAlpha = Client::getGuiAlpha();
-    if (Client::getGuiAlpha() != mAlpha)
+    mAlpha = client->getGuiAlpha();
+    if (client->getGuiAlpha() != mAlpha)
     {
         if (mBackgroundImg)
             mBackgroundImg->setAlpha(mAlpha);

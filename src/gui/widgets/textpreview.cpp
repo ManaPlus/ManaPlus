@@ -83,8 +83,8 @@ TextPreview::~TextPreview()
 void TextPreview::draw(gcn::Graphics* graphics)
 {
     BLOCK_START("TextPreview::draw")
-    if (Client::getGuiAlpha() != mAlpha)
-        mAlpha = Client::getGuiAlpha();
+    if (client->getGuiAlpha() != mAlpha)
+        mAlpha = client->getGuiAlpha();
     Graphics *const g = static_cast<Graphics*>(graphics);
 
     const int intAlpha = static_cast<int>(mAlpha * 255.0f);

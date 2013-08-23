@@ -87,7 +87,7 @@ void LoginHandler::chooseServer(const unsigned int server) const
     if (charServer)
     {
         if (config.getBoolValue("usePersistentIP"))
-            charServer->hostname = Client::getServerName();
+            charServer->hostname = client->getServerName();
         else
             charServer->hostname = ipToString(mWorlds[server]->address);
         charServer->port = mWorlds[server]->port;

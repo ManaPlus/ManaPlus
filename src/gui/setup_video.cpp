@@ -512,7 +512,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
 #if defined(WIN32) || defined(__APPLE__) || defined(ANDROID)
             if (!config.getIntValue("opengl"))
             {
-                Client::resize(width, height);
+                client->resizeVideo(width, height);
             }
             else
             {
@@ -536,7 +536,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
                 }
             }
 #else
-            Client::resize(width, height);
+            client->resizeVideo(width, height);
 #endif
         }
 

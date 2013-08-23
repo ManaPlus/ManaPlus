@@ -119,7 +119,7 @@ TextField::~TextField()
 
 void TextField::updateAlpha()
 {
-    const float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(client->getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     if (alpha != mAlpha)
@@ -550,7 +550,7 @@ void TextField::fontChanged()
 void TextField::mousePressed(gcn::MouseEvent &mouseEvent)
 {
 #ifdef ANDROID
-    if (!Client::isKeyboardVisible())
+    if (!client->isKeyboardVisible())
         inputManager.executeAction(Input::KEY_SHOW_KEYBOARD);
 #endif
     if (mouseEvent.getButton() == gcn::MouseEvent::RIGHT)
@@ -578,7 +578,7 @@ void TextField::mousePressed(gcn::MouseEvent &mouseEvent)
 void TextField::focusGained(const gcn::Event &event A_UNUSED)
 {
 #ifdef ANDROID
-    if (!Client::isKeyboardVisible())
+    if (!client->isKeyboardVisible())
         inputManager.executeAction(Input::KEY_SHOW_KEYBOARD);
 #endif
 }

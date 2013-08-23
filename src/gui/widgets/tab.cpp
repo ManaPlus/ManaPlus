@@ -142,7 +142,7 @@ void Tab::init()
 
 void Tab::updateAlpha()
 {
-    const float alpha = std::max(Client::getGuiAlpha(),
+    const float alpha = std::max(client->getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
 
     if (alpha != mAlpha)

@@ -299,8 +299,8 @@ void GuiTable::draw(gcn::Graphics* graphics)
         return;
 
     BLOCK_START("GuiTable::draw")
-    if (Client::getGuiAlpha() != mAlpha)
-        mAlpha = Client::getGuiAlpha();
+    if (client->getGuiAlpha() != mAlpha)
+        mAlpha = client->getGuiAlpha();
 
     const gcn::Rectangle &rect = mDimension;
     const int width = rect.width;

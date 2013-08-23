@@ -262,47 +262,45 @@ public:
     const std::string getNpcsDirectory() const A_WARN_UNUSED
     { return mNpcsDir; }
 
-    static bool getIsMinimized() A_WARN_UNUSED
-    { return instance()->mIsMinimized; }
+    bool getIsMinimized() const A_WARN_UNUSED
+    { return mIsMinimized; }
 
-    static void setIsMinimized(const bool n);
+    void setIsMinimized(const bool n);
 
-    static void newChatMessage();
+    void newChatMessage();
 
-    static bool getInputFocused() A_WARN_UNUSED
-    { return instance()->mInputFocused; }
+    bool getInputFocused() const A_WARN_UNUSED
+    { return mInputFocused; }
 
-    static void setInputFocused(const bool n)
-    { instance()->mInputFocused = n; }
+    void setInputFocused(const bool n)
+    { mInputFocused = n; }
 
-    static bool getMouseFocused() A_WARN_UNUSED
-    { return instance()->mMouseFocused; }
+    bool getMouseFocused() const A_WARN_UNUSED
+    { return mMouseFocused; }
 
-    static void setMouseFocused(const bool n)
-    { instance()->mMouseFocused = n; }
+    void setMouseFocused(const bool n)
+    { mMouseFocused = n; }
 
-    static std::string getUpdatesDir() A_WARN_UNUSED
-    { return instance()->mUpdatesDir; }
+    std::string getUpdatesDir() const A_WARN_UNUSED
+    { return mUpdatesDir; }
 
-    static std::string getServerName() A_WARN_UNUSED
-    { return instance()->mServerName; }
+    std::string getServerName() const A_WARN_UNUSED
+    { return mServerName; }
 
-    static std::string getOnlineUrl() A_WARN_UNUSED
-    { return instance()->mOnlineListUrl; }
+    std::string getOnlineUrl() const A_WARN_UNUSED
+    { return mOnlineListUrl; }
 
-    static std::string getSupportUrl() A_WARN_UNUSED
-    { return instance()->mCurrentServer.supportUrl; }
+    std::string getSupportUrl() const A_WARN_UNUSED
+    { return mCurrentServer.supportUrl; }
 
-    static void resize(const int width, const int height,
-                       const bool always = false)
-    { instance()->resizeVideo(width, height, always); }
+    bool isKeyboardVisible() const
+    { return mKeyboardHeight > 1; }
 
-    static bool isKeyboardVisible()
-    { return instance()->mKeyboardHeight > 1; }
+    void setGuiAlpha(const float n)
+    { mGuiAlpha = n; }
 
-    static void setGuiAlpha(const float n);
-
-    static float getGuiAlpha() A_WARN_UNUSED;
+    float getGuiAlpha() const A_WARN_UNUSED
+    { return mGuiAlpha; }
 
     static void closeDialogs();
 
@@ -310,7 +308,7 @@ public:
 
     static int getFramerate() A_WARN_UNUSED;
 
-    static bool isTmw() A_WARN_UNUSED;
+    bool isTmw() A_WARN_UNUSED;
 
     static void applyGrabMode();
 
@@ -336,7 +334,7 @@ public:
 
     void writePacketLimits(const std::string &packetLimitsName) const;
 
-    void resizeVideo(int width, int height, const bool always);
+    void resizeVideo(int width, int height, const bool always = false);
 
     static bool limitPackets(const int type) A_WARN_UNUSED;
 
@@ -350,9 +348,9 @@ public:
 
     static void updateScreenKeyboard(int height);
 
-    static Window *openErrorDialog(const std::string &header,
-                                   const std::string &message,
-                                   const bool modal);
+    Window *openErrorDialog(const std::string &header,
+                            const std::string &message,
+                            const bool modal);
 
 private:
     void initRootDir();

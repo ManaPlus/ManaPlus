@@ -1065,7 +1065,7 @@ impHandler2(dumpGraphics)
     str.append(",0");
 #endif
 
-    str.append(strprintf(",%f,", static_cast<double>(Client::getGuiAlpha())))
+    str.append(strprintf(",%f,", static_cast<double>(client->getGuiAlpha())))
     .append(config.getBoolValue("adjustPerfomance") ? "1" : "0")
     .append(config.getBoolValue("alphaCache") ? "1" : "0")
     .append(config.getBoolValue("enableMapReduce") ? "1" : "0")

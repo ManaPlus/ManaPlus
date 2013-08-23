@@ -171,7 +171,7 @@ static uint32_t nextSecond(uint32_t interval, void *param A_UNUSED);
 void ErrorListener::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "yes")
-        openBrowser(Client::getSupportUrl());
+        openBrowser(client->getSupportUrl());
     client->setState(STATE_CHOOSE_SERVER);
 }
 
@@ -2730,16 +2730,6 @@ bool Client::limitPackets(const int type)
     return true;
 }
 
-void Client::setGuiAlpha(const float n)
-{
-    instance()->mGuiAlpha = n;
-}
-
-float Client::getGuiAlpha()
-{
-    return instance()->mGuiAlpha;
-}
-
 void Client::setFramerate(const int fpsLimit)
 {
     if (!fpsLimit)
@@ -2898,16 +2888,12 @@ void Client::setIsMinimized(const bool n)
 
 void Client::newChatMessage()
 {
-    Client *const client = instance();
-    if (!client)
-        return;
-
-    if (!client->mNewMessageFlag && client->mIsMinimized)
+    if (!mNewMessageFlag && mIsMinimized)
     {
         // show * on window caption
         SDL::SetWindowTitle(mainGraphics->getWindow(),
             ("*" + client->mCaption).c_str());
-        client->mNewMessageFlag = true;
+        mNewMessageFlag = true;
     }
 }
 

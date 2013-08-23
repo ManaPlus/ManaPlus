@@ -130,7 +130,7 @@ void Skin::updateAlpha(const float minimumOpacityAllowed)
 {
     const float alpha = static_cast<float>(
         std::max(static_cast<double>(minimumOpacityAllowed),
-        static_cast<double>(Client::getGuiAlpha())));
+        static_cast<double>(client->getGuiAlpha())));
 
     for (int i = 0; i < 9; i++)
     {
