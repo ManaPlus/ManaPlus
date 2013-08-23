@@ -49,8 +49,19 @@ class KeyEvent final : public gcn::KeyEvent
         int getActionId() const A_WARN_UNUSED
         { return mActionId; }
 
+#ifdef USE_SDL2
+        void setText(const std::string &text)
+        { mText = text; }
+
+        std::string getText() const
+        { return mText; }
+#endif
+
     protected:
         int mActionId;
+#ifdef USE_SDL2
+        std::string mText;
+#endif
 };
 
 #endif  // KEYEVENT_H

@@ -24,7 +24,12 @@
 
 KeyInput::KeyInput() :
     gcn::KeyInput(),
+#ifdef USE_SDL2
+    mActionId(-2),
+    mText()
+#else
     mActionId(-2)
+#endif
 {
 }
 

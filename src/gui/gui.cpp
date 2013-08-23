@@ -376,6 +376,9 @@ bool Gui::handleKeyInput2()
             keyInput.getType(), keyInput.isNumericPad(),
             keyInput.getActionId(), keyInput.getKey());
 
+        if (!keyInput.getText().empty())
+            keyEventToGlobalKeyListeners.setText(keyInput.getText());
+
         distributeKeyEventToGlobalKeyListeners(
             keyEventToGlobalKeyListeners);
 
@@ -398,6 +401,8 @@ bool Gui::handleKeyInput2()
                     mShiftPressed, mControlPressed, mAltPressed, mMetaPressed,
                     keyInput.getType(), keyInput.isNumericPad(),
                     keyInput.getActionId(), keyInput.getKey());
+                if (!keyInput.getText().empty())
+                    keyEvent.setText(keyInput.getText());
 
                 if (!mFocusHandler->getFocused()->isFocusable())
                     mFocusHandler->focusNone();

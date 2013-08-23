@@ -195,7 +195,20 @@ int TextField::getValue() const
 void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 {
     const int val = keyEvent.getKey().getValue();
-
+#ifdef USE_SDL2
+    if (val == Key::TEXTINPUT)
+    {
+        std::string str = static_cast<KeyEvent*>(&keyEvent)->getText();
+        mText.insert(mCaretPosition, str);
+        mCaretPosition += str.size();
+        keyEvent.consume();
+        fixScroll();
+        if (mSendAlwaysEvents)
+            distributeActionEvent();
+        return;
+    }
+    bool consumed(false);
+#else
     if (val >= 32)
     {
         if (mNumeric)
@@ -366,6 +379,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
         fixScroll();
         return;
     }
+#endif
 
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     switch (action)

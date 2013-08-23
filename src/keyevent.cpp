@@ -33,7 +33,12 @@ KeyEvent::KeyEvent(gcn::Widget *const source,
                    const gcn::Key& key) :
     gcn::KeyEvent(source, shiftPressed, controlPressed, altPressed,
                   metaPressed, type, numericPad, key),
+#ifdef USE_SDL2
+    mActionId(actionId),
+    mText()
+#else
     mActionId(actionId)
+#endif
 {
 }
 

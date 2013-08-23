@@ -148,6 +148,15 @@ void SDLInput::pushInput(const SDL_Event &event)
             break;
         }
 
+#ifdef USE_SDL2
+        case SDL_TEXTINPUT:
+            keyInput.setType(gcn::KeyInput::PRESSED);
+            keyInput.setKey(gcn::Key(Key::TEXTINPUT));
+            keyInput.setText(event.text.text);
+            mKeyInputQueue.push(keyInput);
+            break;
+#endif
+
 #ifdef ANDROID
         case SDL_ACCELEROMETER:
             break;

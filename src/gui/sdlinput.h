@@ -122,7 +122,8 @@ namespace Key
         LEFT,
         RIGHT,
         UP,
-        DOWN
+        DOWN,
+        TEXTINPUT
     };
 }  // namespace Key
 

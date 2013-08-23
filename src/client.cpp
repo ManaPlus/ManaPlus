@@ -3001,6 +3001,9 @@ void Client::logEvent(const SDL_Event &event)
                 str.c_str(), data1, data2);
             break;
         }
+        case SDL_TEXTINPUT:
+            logger->log("event: SDL_TEXTINPUT: %s", event.text.text);
+            break;
 #else
         case SDL_KEYDOWN:
             logger->log("event: SDL_KEYDOWN: %d,%d,%d", event.key.state,
