@@ -1471,7 +1471,7 @@ void ChatWindow::battleChatLog(const std::string &line, Own own,
 
 void ChatWindow::initTradeFilter()
 {
-    const std::string tradeListName = Client::getServerConfigDirectory()
+    const std::string tradeListName = client->getServerConfigDirectory()
         + "/tradefilter.txt";
 
     std::ifstream tradeFile;
@@ -1621,7 +1621,7 @@ void ChatWindow::loadCustomList()
     std::ifstream listFile;
     struct stat statbuf;
 
-    std::string listName = Client::getServerConfigDirectory()
+    std::string listName = client->getServerConfigDirectory()
         + "/customwords.txt";
 
     if (!stat(listName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))

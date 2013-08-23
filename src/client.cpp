@@ -2457,7 +2457,7 @@ void Client::storeSafeParameters() const
 void Client::initTradeFilter() const
 {
     const std::string tradeListName =
-        Client::getServerConfigDirectory() + "/tradefilter.txt";
+        getServerConfigDirectory() + "/tradefilter.txt";
 
     std::ofstream tradeFile;
     struct stat statbuf;
@@ -2489,7 +2489,7 @@ void Client::initTradeFilter() const
 
 void Client::initUsersDir()
 {
-    mUsersDir = Client::getServerConfigDirectory() + "/users/";
+    mUsersDir = getServerConfigDirectory() + "/users/";
     if (mkdir_r(mUsersDir.c_str()))
     {
         // TRANSLATORS: directory creation error
@@ -2497,7 +2497,7 @@ void Client::initUsersDir()
             "Exiting."), mUsersDir.c_str()));
     }
 
-    mNpcsDir = Client::getServerConfigDirectory() + "/npcs/";
+    mNpcsDir = getServerConfigDirectory() + "/npcs/";
     if (mkdir_r(mNpcsDir.c_str()))
     {
         // TRANSLATORS: directory creation error
@@ -2586,8 +2586,8 @@ void Client::initPacketLimiter()
 
     if (!mServerConfigDir.empty())
     {
-        const std::string packetLimitsName =
-            Client::getServerConfigDirectory() + "/packetlimiter.txt";
+        const std::string packetLimitsName = getServerConfigDirectory()
+            + "/packetlimiter.txt";
 
         std::ifstream inPacketFile;
         struct stat statbuf;
@@ -2728,21 +2728,6 @@ bool Client::limitPackets(const int type)
     pack.lastTime = time;
     pack.cnt = 1;
     return true;
-}
-
-const std::string Client::getServerConfigDirectory()
-{
-    return instance()->mServerConfigDir;
-}
-
-const std::string Client::getUsersDirectory()
-{
-    return instance()->mUsersDir;
-}
-
-const std::string Client::getNpcsDirectory()
-{
-    return instance()->mNpcsDir;
 }
 
 void Client::setGuiAlpha(const float n)

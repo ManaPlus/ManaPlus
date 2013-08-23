@@ -2745,10 +2745,10 @@ std::string Being::loadComment(const std::string &name, const int type)
     switch (type)
     {
         case PLAYER:
-            str = Client::getUsersDirectory();
+            str = client->getUsersDirectory();
             break;
         case NPC:
-            str = Client::getNpcsDirectory();
+            str = client->getNpcsDirectory();
             break;
         default:
             return "";
@@ -2775,10 +2775,10 @@ void Being::saveComment(const std::string &name,
     switch (type)
     {
         case PLAYER:
-            dir = Client::getUsersDirectory();
+            dir = client->getUsersDirectory();
             break;
         case NPC:
-            dir = Client::getNpcsDirectory();
+            dir = client->getNpcsDirectory();
             break;
         default:
             return;

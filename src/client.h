@@ -235,29 +235,32 @@ public:
     void setState(const State state)
     { mState = state; }
 
-    State getState() A_WARN_UNUSED
+    State getState() const A_WARN_UNUSED
     { return mState; }
 
-    static const std::string &getPackageDirectory() A_WARN_UNUSED
-    { return instance()->mPackageDir; }
+    const std::string &getPackageDirectory() const A_WARN_UNUSED
+    { return mPackageDir; }
 
-    static const std::string &getConfigDirectory() A_WARN_UNUSED
-    { return instance()->mConfigDir; }
+    const std::string &getConfigDirectory() const A_WARN_UNUSED
+    { return mConfigDir; }
 
-    static const std::string &getLocalDataDirectory() A_WARN_UNUSED
-    { return instance()->mLocalDataDir; }
+    const std::string &getLocalDataDirectory() const A_WARN_UNUSED
+    { return mLocalDataDir; }
 
-    static const std::string &getTempDirectory() A_WARN_UNUSED
-    { return instance()->mTempDir; }
+    const std::string &getTempDirectory() const A_WARN_UNUSED
+    { return mTempDir; }
 
-    static const std::string &getScreenshotDirectory() A_WARN_UNUSED
-    { return instance()->mScreenshotDir; }
+    const std::string &getScreenshotDirectory() const A_WARN_UNUSED
+    { return mScreenshotDir; }
 
-    static const std::string getServerConfigDirectory() A_WARN_UNUSED;
+    const std::string getServerConfigDirectory() const A_WARN_UNUSED
+    { return mServerConfigDir; }
 
-    static const std::string getUsersDirectory() A_WARN_UNUSED;
+    const std::string getUsersDirectory() const A_WARN_UNUSED
+    { return mUsersDir; }
 
-    static const std::string getNpcsDirectory() A_WARN_UNUSED;
+    const std::string getNpcsDirectory() const A_WARN_UNUSED
+    { return mNpcsDir; }
 
     static bool getIsMinimized() A_WARN_UNUSED
     { return instance()->mIsMinimized; }

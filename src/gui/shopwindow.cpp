@@ -366,7 +366,7 @@ void ShopWindow::loadList()
     mBuyShopItems->clear();
     mSellShopItems->clear();
 
-    const std::string shopListName = Client::getServerConfigDirectory()
+    const std::string shopListName = client->getServerConfigDirectory()
         + "/shoplist.txt";
 
     if (!stat(shopListName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
@@ -416,7 +416,7 @@ void ShopWindow::saveList() const
         return;
 
     std::ofstream shopFile;
-    const std::string shopListName = Client::getServerConfigDirectory()
+    const std::string shopListName = client->getServerConfigDirectory()
         + "/shoplist.txt";
     std::map<int, ShopItem*> mapItems;
 

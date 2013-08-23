@@ -434,7 +434,7 @@ std::string ResourceManager::getPath(const std::string &file) const
     else
     {
         // if not found in search path return the default path
-        path = std::string(Client::getPackageDirectory()).append(
+        path = std::string(client->getPackageDirectory()).append(
             dirSeparator).append(file);
     }
 

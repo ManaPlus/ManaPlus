@@ -42,7 +42,7 @@ TestMain::TestMain() :
     mConfig()
 {
     fileName = getSelfName();
-    log->setLogFile(Client::getLocalDataDirectory()
+    log->setLogFile(client->getLocalDataDirectory()
         + std::string("/manaplustest.log"));
 }
 
@@ -54,7 +54,7 @@ TestMain::~TestMain()
 
 void TestMain::initConfig()
 {
-    mConfig.init(Client::getConfigDirectory() + "/test.xml");
+    mConfig.init(client->getConfigDirectory() + "/test.xml");
 //    mConfig.setDefaultValues(getConfigDefaults());
 
     mConfig.setValue("hwaccel", false);
@@ -216,7 +216,7 @@ void TestMain::writeConfig(const int openGLMode, const int rescale,
                            const int sound, const std::string &info,
                            const int batchSize A_UNUSED, const int detectMode)
 {
-    mConfig.init(Client::getConfigDirectory() + "/config.xml");
+    mConfig.init(client->getConfigDirectory() + "/config.xml");
 
     log->log("set mode to %d", openGLMode);
 
@@ -259,7 +259,7 @@ int TestMain::readValue(const int ver, int def)
     std::string tmp;
     int var;
     std::ifstream file;
-    file.open((Client::getLocalDataDirectory()
+    file.open((client->getLocalDataDirectory()
         + std::string("/test.log")).c_str(), std::ios::in);
     if (!getline(file, tmp))
     {

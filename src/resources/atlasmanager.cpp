@@ -71,7 +71,7 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
             continue;
 
         // debug save
-//        ImageWriter::writePNG(surface, Client::getTempDirectory()
+//        ImageWriter::writePNG(surface, client->getTempDirectory()
 //            + "/atlas" + name + toString(k) + ".png");
 //        k ++;
 

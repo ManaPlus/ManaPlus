@@ -500,7 +500,7 @@ bool Game::createScreenshot()
 
 bool Game::saveScreenshot(SDL_Surface *const screenshot)
 {
-    std::string screenshotDirectory = Client::getScreenshotDirectory();
+    std::string screenshotDirectory = client->getScreenshotDirectory();
 
     if (mkdir_r(screenshotDirectory.c_str()) != 0)
     {

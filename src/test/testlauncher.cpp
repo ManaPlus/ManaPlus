@@ -53,7 +53,7 @@ TestLauncher::TestLauncher(std::string test) :
     mTest(test),
     file()
 {
-    file.open((Client::getLocalDataDirectory()
+    file.open((client->getLocalDataDirectory()
         + std::string("/test.log")).c_str(), std::ios::out);
 }
 
@@ -252,9 +252,9 @@ int TestLauncher::testDye()
                 MSDL_gfxBlitRGBA(image->mSDLSurface, nullptr,
                     surface, nullptr);
                 ImageWriter::writePNG(image->mSDLSurface,
-                    Client::getTempDirectory() + "/testimage1.png");
+                    client->getTempDirectory() + "/testimage1.png");
                 ImageWriter::writePNG(surface,
-                    Client::getTempDirectory() + "/testimage2.png");
+                    client->getTempDirectory() + "/testimage2.png");
             }
 
             rw = PHYSFSRWOPS_openRead(
@@ -271,9 +271,9 @@ int TestLauncher::testDye()
                     MSDL_gfxBlitRGBA(image->mSDLSurface, nullptr,
                         surface, nullptr);
                     ImageWriter::writePNG(image->mSDLSurface,
-                        Client::getTempDirectory() + "/testimage3.png");
+                        client->getTempDirectory() + "/testimage3.png");
                     ImageWriter::writePNG(surface,
-                        Client::getTempDirectory() + "/testimage4.png");
+                        client->getTempDirectory() + "/testimage4.png");
                 }
             }
         }

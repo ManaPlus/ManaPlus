@@ -836,13 +836,13 @@ impHandler0(dirs)
         return;
 
     debugChatTab->chatLog("config directory: "
-        + Client::getConfigDirectory());
+        + client->getConfigDirectory());
     debugChatTab->chatLog("logs directory: "
-        + Client::getLocalDataDirectory());
+        + client->getLocalDataDirectory());
     debugChatTab->chatLog("screenshots directory: "
-        + Client::getScreenshotDirectory());
+        + client->getScreenshotDirectory());
     debugChatTab->chatLog("temp directory: "
-        + Client::getTempDirectory());
+        + client->getTempDirectory());
 }
 
 impHandler2(info)
