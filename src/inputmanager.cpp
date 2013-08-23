@@ -212,10 +212,21 @@ void InputManager::resetKeys()
         const KeyData &kd = keyData[i];
         KeyItem &val0 = key.values[0];
         val0.type = kd.defaultType1;
-        val0.value = kd.defaultValue1;
         KeyItem &val1 = key.values[1];
         val1.type = kd.defaultType2;
+#ifdef USE_SDL2
+        if (kd.defaultType1 == INPUT_KEYBOARD)
+            val0.value = SDL_GetScancodeFromKey(kd.defaultValue1);
+        else
+            val0.value = kd.defaultValue1;
+        if (kd.defaultType2 == INPUT_KEYBOARD)
+            val1.value = SDL_GetScancodeFromKey(kd.defaultValue2);
+        else
+            val1.value = kd.defaultValue2;
+#else
+        val0.value = kd.defaultValue1;
         val1.value = kd.defaultValue2;
+#endif
     }
 }
 
@@ -233,10 +244,22 @@ void InputManager::makeDefault(const int i)
         const KeyData &kd = keyData[i];
         KeyItem &val0 = key.values[0];
         val0.type = kd.defaultType1;
-        val0.value = kd.defaultValue1;
         KeyItem &val1 = key.values[1];
         val1.type = kd.defaultType2;
+
+#ifdef USE_SDL2
+        if (kd.defaultType1 == INPUT_KEYBOARD)
+            val0.value = SDL_GetScancodeFromKey(kd.defaultValue1);
+        else
+            val0.value = kd.defaultValue1;
+        if (kd.defaultType2 == INPUT_KEYBOARD)
+            val1.value = SDL_GetScancodeFromKey(kd.defaultValue2);
+        else
+            val1.value = kd.defaultValue2;
+#else
+        val0.value = kd.defaultValue1;
         val1.value = kd.defaultValue2;
+#endif
 
         update();
     }

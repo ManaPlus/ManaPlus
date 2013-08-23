@@ -24,7 +24,7 @@
 #ifdef USE_SDL2
 
 #define SDL_GetKeyState SDL_GetKeyboardState
-#define SDLKey SDL_Keycode
+#define SDLKey SDL_Scancode
 #define SDL_keysym SDL_Keysym
 
 #define SDL_ANYFORMAT 0

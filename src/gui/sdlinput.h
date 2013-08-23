@@ -189,6 +189,9 @@ protected:
      */
     static int convertKeyCharacter(const SDL_Event &event) A_WARN_UNUSED;
 
+    static void convertKeyEventToKey(const SDL_Event &event,
+                                     KeyInput &keyInput);
+
     std::queue<KeyInput> mKeyInputQueue;
     std::queue<MouseInput> mMouseInputQueue;
 
