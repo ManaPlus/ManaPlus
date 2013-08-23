@@ -37,4 +37,14 @@ bool SDL::getAllVideoModes(StringVect &modeList)
     return true;
 }
 
+void SDL::SetWindowTitle(SDL_Window *const window, const char *const title)
+{
+    SDL_SetWindowTitle(window, title);
+}
+
+void SDL::SetWindowIcon(SDL_Window *const window, SDL_Surface *const icon)
+{
+    SDL_SetWindowIcon(window, icon);
+}
+
 #endif  // USE_SDL2

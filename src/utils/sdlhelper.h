@@ -29,9 +29,18 @@
 
 #include "localconsts.h"
 
+struct SDL_Surface;
+
 namespace SDL
 {
     bool getAllVideoModes(StringVect &modeList);
+
+    void SetWindowTitle(SDL_Surface *const window,
+                        const char *const title);
+
+    void SetWindowIcon(SDL_Surface *const window A_UNUSED,
+                       SDL_Surface *const icon);
+
 }  // namespace SDL
 
 #endif  // USE_SDL2

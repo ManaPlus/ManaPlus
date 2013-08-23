@@ -106,6 +106,7 @@
 #include "utils/paths.h"
 #include "utils/physfstools.h"
 #include "utils/process.h"
+#include "utils/sdlhelper.h"
 
 #include "utils/translation/translationmanager.h"
 
@@ -483,14 +484,7 @@ void Client::gameInit()
             SMALL_VERSION);
     }
 
-#ifdef USE_SDL2
-    //  +++ need use SDL_SetWindowTitle
-#else
-    SDL_WM_SetCaption(mCaption.c_str(), nullptr);
-#endif
-
     const ResourceManager *const resman = ResourceManager::getInstance();
-
     if (!resman->setWriteDir(mLocalDataDir))
     {
         logger->error(strprintf("%s couldn't be set as home directory! "
@@ -563,44 +557,6 @@ void Client::gameInit()
     resman->addToSearchPath(mLocalDataDir, false);
     TranslationManager::loadCurrentLang();
 
-    std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
-#ifdef WIN32
-    iconFile.append(".ico");
-#else
-    iconFile.append(".png");
-#endif
-    iconFile = resman->getPath(iconFile);
-    logger->log("Loading icon from file: %s", iconFile.c_str());
-
-#ifdef WIN32
-    static SDL_SysWMinfo pInfo;
-    SDL_GetWMInfo(&pInfo);
-    // Attempt to load icon from .ico file
-    HICON icon = (HICON) LoadImage(nullptr, iconFile.c_str(),
-        IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
-    // If it's failing, we load the default resource file.
-    if (!icon)
-        icon = LoadIcon(GetModuleHandle(nullptr), "A");
-
-    if (icon)
-        SetClassLong(pInfo.window, GCL_HICON, reinterpret_cast<LONG>(icon));
-#else
-    mIcon = IMG_Load(iconFile.c_str());
-    if (mIcon)
-    {
-#ifdef USE_SDL2
-        SDL_SetSurfaceAlphaMod(mIcon, 255);
-#else
-        SDL_SetAlpha(mIcon, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-#endif
-#ifdef USE_SDL2
-        // +++ need use SDL_SetWindowIcon
-#else
-        SDL_WM_SetIcon(mIcon, nullptr);
-#endif
-    }
-#endif
-
 #if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__APPLE__)
     if (!mOptions.safeMode && mOptions.test.empty()
         && !config.getBoolValue("videodetected"))
@@ -632,6 +588,9 @@ void Client::gameInit()
     getConfigDefaults2(config.getDefaultValues());
     applyGrabMode();
     applyGamma();
+
+    SDL::SetWindowTitle(mainGraphics->getWindow(), mCaption.c_str());
+    setIcon();
 
     mainGraphics->_beginDraw();
 
@@ -2945,11 +2904,8 @@ void Client::setIsMinimized(const bool n)
     if (!n && client->mNewMessageFlag)
     {
         client->mNewMessageFlag = false;
-#ifdef USE_SDL2
-        //  +++ need use SDL_SetWindowTitle
-#else
-        SDL_WM_SetCaption(client->mCaption.c_str(), nullptr);
-#endif
+        SDL::SetWindowTitle(mainGraphics->getWindow(),
+            client->mCaption.c_str());
     }
 }
 
@@ -2962,11 +2918,8 @@ void Client::newChatMessage()
     if (!client->mNewMessageFlag && client->mIsMinimized)
     {
         // show * on window caption
-#ifdef USE_SDL2
-        //  +++ need use SDL_SetWindowTitle
-#else
-        SDL_WM_SetCaption(("*" + client->mCaption).c_str(), nullptr);
-#endif
+        SDL::SetWindowTitle(mainGraphics->getWindow(),
+            ("*" + client->mCaption).c_str());
         client->mNewMessageFlag = true;
     }
 }
@@ -3118,4 +3071,41 @@ Window *Client::openErrorDialog(const std::string &header,
             _("Do you want to open support page?")),
             SOUND_ERROR, false, modal);
     }
+}
+
+void Client::setIcon()
+{
+    std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
+#ifdef WIN32
+    iconFile.append(".ico");
+#else
+    iconFile.append(".png");
+#endif
+    iconFile = ResourceManager::getInstance()->getPath(iconFile);
+    logger->log("Loading icon from file: %s", iconFile.c_str());
+
+#ifdef WIN32
+    static SDL_SysWMinfo pInfo;
+    SDL_GetWMInfo(&pInfo);
+    // Attempt to load icon from .ico file
+    HICON icon = (HICON) LoadImage(nullptr, iconFile.c_str(),
+        IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
+    // If it's failing, we load the default resource file.
+    if (!icon)
+        icon = LoadIcon(GetModuleHandle(nullptr), "A");
+
+    if (icon)
+        SetClassLong(pInfo.window, GCL_HICON, reinterpret_cast<LONG>(icon));
+#else
+    mIcon = IMG_Load(iconFile.c_str());
+    if (mIcon)
+    {
+#ifdef USE_SDL2
+        SDL_SetSurfaceAlphaMod(mIcon, SDL_ALPHA_OPAQUE);
+#else
+        SDL_SetAlpha(mIcon, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
+#endif
+        SDL::SetWindowIcon(mainGraphics->getWindow(), mIcon);
+    }
+#endif
 }

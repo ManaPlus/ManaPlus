@@ -380,6 +380,8 @@ private:
 
     void checkConfigVersion();
 
+    void setIcon();
+
     static Client *mInstance;
 
     static void bindTextDomain(const char *const name, const char *const path);
