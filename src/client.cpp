@@ -317,7 +317,8 @@ Client::Client(const Options &options) :
     mIsMinimized(false),
     mInputFocused(true),
     mMouseFocused(true),
-    mNewMessageFlag(false)
+    mNewMessageFlag(false),
+    mLogInput(false)
 {
     mInstance = this;
 
@@ -677,7 +678,6 @@ void Client::gameInit()
     const int fpsLimit = config.getIntValue("fpslimit");
     mLimitFps = fpsLimit > 0;
 
-
     SDL_initFramerate(&mFpsManager);
     setFramerate(fpsLimit);
     config.addListener("fpslimit", this);
@@ -688,7 +688,9 @@ void Client::gameInit()
     config.addListener("vsync", this);
     config.addListener("repeateDelay", this);
     config.addListener("repeateInterval", this);
+    config.addListener("logInput", this);
     setGuiAlpha(config.getFloatValue("guialpha"));
+    mLogInput = config.getBoolValue("logInput");
     optionChanged("fpslimit");
 
     start_time = static_cast<int>(time(nullptr));
@@ -939,6 +941,8 @@ int Client::gameExec()
             // Handle SDL events
             while (SDL_PollEvent(&event))
             {
+                if (mLogInput)
+                    logEvent(event);
                 switch (event.type)
                 {
                     case SDL_QUIT:
@@ -1845,6 +1849,10 @@ void Client::optionChanged(const std::string &name)
     else if (name == "repeateInterval" || name == "repeateDelay")
     {
         applyKeyRepeat();
+    }
+    else if (name == "logInput")
+    {
+        mLogInput = config.getBoolValue("logInput");
     }
 }
 
@@ -2942,6 +2950,11 @@ void Client::logEvent(const SDL_Event &event)
                 event.motion.state, event.motion.x, event.motion.y);
             break;
 #ifdef USE_SDL2
+#define winEventLog(name, name2) \
+    case name: \
+        str = name2; \
+        break
+
         case SDL_KEYDOWN:
             logger->log("event: SDL_KEYDOWN: %d,%d", event.key.state,
                 event.key.keysym.scancode);
@@ -2950,6 +2963,44 @@ void Client::logEvent(const SDL_Event &event)
             logger->log("event: SDL_KEYUP: %d,%d", event.key.state,
                 event.key.keysym.scancode);
             break;
+        case SDL_WINDOWEVENT:
+        {
+            const int data1 = event.window.data1;
+            const int data2 = event.window.data2;
+            std::string str;
+            switch (event.window.event)
+            {
+                winEventLog(SDL_WINDOWEVENT_NONE, "SDL_WINDOWEVENT_NONE");
+                winEventLog(SDL_WINDOWEVENT_SHOWN, "SDL_WINDOWEVENT_SHOWN");
+                winEventLog(SDL_WINDOWEVENT_HIDDEN, "SDL_WINDOWEVENT_HIDDEN");
+                winEventLog(SDL_WINDOWEVENT_EXPOSED,
+                    "SDL_WINDOWEVENT_EXPOSED");
+                winEventLog(SDL_WINDOWEVENT_MOVED, "SDL_WINDOWEVENT_MOVED");
+                winEventLog(SDL_WINDOWEVENT_RESIZED,
+                    "SDL_WINDOWEVENT_RESIZED");
+                winEventLog(SDL_WINDOWEVENT_SIZE_CHANGED,
+                    "SDL_WINDOWEVENT_SIZE_CHANGED");
+                winEventLog(SDL_WINDOWEVENT_MINIMIZED,
+                    "SDL_WINDOWEVENT_MINIMIZED");
+                winEventLog(SDL_WINDOWEVENT_MAXIMIZED,
+                    "SDL_WINDOWEVENT_MAXIMIZED");
+                winEventLog(SDL_WINDOWEVENT_RESTORED,
+                    "SDL_WINDOWEVENT_RESTORED");
+                winEventLog(SDL_WINDOWEVENT_ENTER, "SDL_WINDOWEVENT_ENTER");
+                winEventLog(SDL_WINDOWEVENT_LEAVE, "SDL_WINDOWEVENT_LEAVE");
+                winEventLog(SDL_WINDOWEVENT_FOCUS_GAINED,
+                    "SDL_WINDOWEVENT_FOCUS_GAINED");
+                winEventLog(SDL_WINDOWEVENT_FOCUS_LOST,
+                    "SDL_WINDOWEVENT_FOCUS_LOST");
+                winEventLog(SDL_WINDOWEVENT_CLOSE, "SDL_WINDOWEVENT_CLOSE");
+                default:
+                    str = "unknown";
+                    break;
+            }
+            logger->log("event: SDL_WINDOWEVENT: %s: %d,%d",
+                str.c_str(), data1, data2);
+            break;
+        }
 #else
         case SDL_KEYDOWN:
             logger->log("event: SDL_KEYDOWN: %d,%d,%d", event.key.state,

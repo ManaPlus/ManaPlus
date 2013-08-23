@@ -440,6 +440,7 @@ private:
     bool mInputFocused;
     bool mMouseFocused;
     bool mNewMessageFlag;
+    bool mLogInput;
 };
 
 #endif  // CLIENT_H
