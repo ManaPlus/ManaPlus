@@ -172,7 +172,7 @@ void ErrorListener::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "yes")
         openBrowser(Client::getSupportUrl());
-    Client::setState(STATE_CHOOSE_SERVER);
+    client->setState(STATE_CHOOSE_SERVER);
 }
 
 volatile int tick_time;       /**< Tick counter */
@@ -251,7 +251,7 @@ class AccountListener final : public gcn::ActionListener
     public:
         void action(const gcn::ActionEvent &)
         {
-            Client::setState(STATE_CHAR_SELECT);
+            client->setState(STATE_CHAR_SELECT);
         }
 } accountListener;
 
@@ -260,7 +260,7 @@ class LoginListener final : public gcn::ActionListener
     public:
         void action(const gcn::ActionEvent &)
         {
-            Client::setState(STATE_PRE_LOGIN);
+            client->setState(STATE_PRE_LOGIN);
         }
 } loginListener;
 

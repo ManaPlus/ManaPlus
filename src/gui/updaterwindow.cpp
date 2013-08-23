@@ -257,7 +257,7 @@ void UpdaterWindow::enable()
     mPlayButton->requestFocus();
 
     if (mUpdateType & LoginData::Upd_Close)
-        Client::setState(STATE_LOAD_DATA);
+        client->setState(STATE_LOAD_DATA);
 }
 
 void UpdaterWindow::action(const gcn::ActionEvent &event)
@@ -276,7 +276,7 @@ void UpdaterWindow::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "play")
     {
-        Client::setState(STATE_LOAD_DATA);
+        client->setState(STATE_LOAD_DATA);
     }
 }
 
@@ -286,7 +286,7 @@ void UpdaterWindow::keyPressed(gcn::KeyEvent &keyEvent)
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
         action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
-        Client::setState(STATE_LOGIN);
+        client->setState(STATE_LOGIN);
     }
     else if (actionId == static_cast<int>(Input::KEY_GUI_SELECT)
              || actionId == static_cast<int>(Input::KEY_GUI_SELECT2))
@@ -465,7 +465,7 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus status,
 
     uw->setProgress(progress);
 
-    if (Client::getState() != STATE_UPDATE
+    if (client->getState() != STATE_UPDATE
         || uw->mDownloadStatus == UPDATE_ERROR)
     {
         // If the action was canceled return an error code to stop the mThread

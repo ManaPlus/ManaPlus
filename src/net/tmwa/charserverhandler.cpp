@@ -347,7 +347,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
         }
     }
 
-    Client::setState(STATE_CHAR_SELECT);
+    client->setState(STATE_CHAR_SELECT);
     BLOCK_END("CharServerHandler::processCharLogin")
 }
 

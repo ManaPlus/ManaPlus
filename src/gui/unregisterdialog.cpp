@@ -103,7 +103,7 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "cancel")
     {
-        Client::setState(STATE_CHAR_SELECT);
+        client->setState(STATE_CHAR_SELECT);
     }
     else if (eventId == "unregister")
     {
@@ -149,7 +149,7 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
             // No errors detected, unregister the new user.
             mUnRegisterButton->setEnabled(false);
             mLoginData->password = password;
-            Client::setState(STATE_UNREGISTER_ATTEMPT);
+            client->setState(STATE_UNREGISTER_ATTEMPT);
         }
     }
 }

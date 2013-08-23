@@ -94,7 +94,7 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "cancel")
     {
-        Client::setState(STATE_CHAR_SELECT);
+        client->setState(STATE_CHAR_SELECT);
     }
     else if (eventId == "change_password")
     {
@@ -166,7 +166,7 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
             // Set the new password
             mLoginData->password = oldPassword;
             mLoginData->newPassword = newFirstPass;
-            Client::setState(STATE_CHANGEPASSWORD_ATTEMPT);
+            client->setState(STATE_CHANGEPASSWORD_ATTEMPT);
         }
     }
 }

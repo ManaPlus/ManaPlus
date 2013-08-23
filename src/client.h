@@ -232,11 +232,11 @@ public:
 
     int testsExec() const;
 
-    static void setState(const State state)
-    { instance()->mState = state; }
+    void setState(const State state)
+    { mState = state; }
 
-    static State getState() A_WARN_UNUSED
-    { return instance()->mState; }
+    State getState() A_WARN_UNUSED
+    { return mState; }
 
     static const std::string &getPackageDirectory() A_WARN_UNUSED
     { return instance()->mPackageDir; }

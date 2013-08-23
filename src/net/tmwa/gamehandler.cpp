@@ -103,7 +103,7 @@ void GameHandler::connect()
     const Token &token = static_cast<LoginHandler*>(
         Net::getLoginHandler())->getToken();
 
-    if (Client::getState() == STATE_CONNECT_GAME)
+    if (client->getState() == STATE_CONNECT_GAME)
     {
         // Change the player's ID to the account ID to match what eAthena uses
         if (player_node)

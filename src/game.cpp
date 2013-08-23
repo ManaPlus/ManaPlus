@@ -455,7 +455,7 @@ Game::~Game()
     AnimatedSprite::setEnableCache(false);
 
     del_0(actorSpriteManager)
-    if (Client::getState() != STATE_CHANGE_MAP)
+    if (client->getState() != STATE_CHANGE_MAP)
         del_0(player_node)
     del_0(commandHandler)
     del_0(effectManager)
@@ -611,10 +611,10 @@ void Game::slowLogic()
     // Handle network stuff
     if (!Net::getGameHandler()->isConnected())
     {
-        if (Client::getState() == STATE_CHANGE_MAP)
+        if (client->getState() == STATE_CHANGE_MAP)
             return;  // Not a problem here
 
-        if (Client::getState() != STATE_ERROR)
+        if (client->getState() != STATE_ERROR)
         {
             if (!disconnectedDialog)
             {
@@ -633,14 +633,14 @@ void Game::slowLogic()
             const Map *const map = viewport->getCurrentMap();
             if (map)
             {
-                logger->log("state: %d", Client::getState());
+                logger->log("state: %d", client->getState());
                 map->saveExtraLayer();
             }
         }
         closeDialogs();
         Client::setFramerate(config.getIntValue("fpslimit"));
         mNextAdjustTime = cur_time + adjustDelay;
-        if (Client::getState() != STATE_ERROR)
+        if (client->getState() != STATE_ERROR)
             errorMessage.clear();
     }
     else
@@ -899,7 +899,7 @@ void Game::handleActive(const SDL_Event &event)
         else
         {   // window minimization
 #ifdef ANDROID
-            Client::setState(STATE_EXIT);
+            client->setState(STATE_EXIT);
 #else
             Client::setIsMinimized(true);
             if (player_node && !player_node->getAway())
@@ -988,7 +988,7 @@ void Game::handleInput()
 #endif
             // Quit event
             case SDL_QUIT:
-                Client::setState(STATE_EXIT);
+                client->setState(STATE_EXIT);
                 break;
 #ifdef ANDROID
             case SDL_KEYBOARDSHOW:

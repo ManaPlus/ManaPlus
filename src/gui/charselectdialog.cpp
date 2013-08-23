@@ -266,16 +266,16 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "change_password")
     {
-        Client::setState(STATE_CHANGEPASSWORD);
+        client->setState(STATE_CHANGEPASSWORD);
     }
     else if (eventId == "change_email")
     {
-        Client::setState(STATE_CHANGEEMAIL);
+        client->setState(STATE_CHANGEEMAIL);
     }
     else if (eventId == "unregister")
     {
         Net::getCharServerHandler()->clear();
-        Client::setState(STATE_UNREGISTER);
+        client->setState(STATE_UNREGISTER);
     }
     else if (eventId == "try delete character")
     {
@@ -552,7 +552,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
 
 void CharSelectDialog::close()
 {
-    Client::setState(STATE_SWITCH_LOGIN);
+    client->setState(STATE_SWITCH_LOGIN);
     Window::close();
 }
 

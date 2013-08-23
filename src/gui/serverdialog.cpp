@@ -363,7 +363,7 @@ ServerDialog::~ServerDialog()
 
 void ServerDialog::connectToSelectedServer()
 {
-    if (Client::getState() == STATE_CONNECT_SERVER)
+    if (client->getState() == STATE_CONNECT_SERVER)
         return;
 
     const int index = mServersList->getSelected();
@@ -402,7 +402,7 @@ void ServerDialog::connectToSelectedServer()
 
     config.setValue("usePersistentIP",
         mPersistentIPCheckBox->isSelected());
-    Client::setState(STATE_CONNECT_SERVER);
+    client->setState(STATE_CONNECT_SERVER);
 }
 
 void ServerDialog::action(const gcn::ActionEvent &event)
@@ -448,7 +448,7 @@ void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
     {
         case Input::KEY_GUI_CANCEL:
             keyEvent.consume();
-            Client::setState(STATE_EXIT);
+            client->setState(STATE_EXIT);
             return;
 
         case Input::KEY_GUI_SELECT:
@@ -869,6 +869,6 @@ void ServerDialog::close()
 {
     if (mDownload)
         mDownload->cancel();
-    Client::setState(STATE_FORCE_QUIT);
+    client->setState(STATE_FORCE_QUIT);
     Window::close();
 }

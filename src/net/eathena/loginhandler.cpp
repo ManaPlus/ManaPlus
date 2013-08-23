@@ -167,8 +167,8 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     msg.readInt32();
     mRegistrationEnabled = true;
     serverVersion = 0;
-    if (Client::getState() != STATE_LOGIN)
-        Client::setState(STATE_LOGIN);
+    if (client->getState() != STATE_LOGIN)
+        client->setState(STATE_LOGIN);
 
     // Leave this last
     mVersionResponse = true;
@@ -193,8 +193,8 @@ void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
     logger->log("Received update hosts \"%s\" from login server.",
         updateHost.c_str());
 
-    if (Client::getState() == STATE_PRE_LOGIN)
-        Client::setState(STATE_LOGIN);
+    if (client->getState() == STATE_PRE_LOGIN)
+        client->setState(STATE_LOGIN);
 }
 
 }  // namespace EAthena

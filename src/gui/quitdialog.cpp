@@ -77,7 +77,7 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     addKeyListener(this);
 
     ContainerPlacer placer = getPlacer(0, 0);
-    const State state = Client::getState();
+    const State state = client->getState();
     mNeedForceQuit = (state == STATE_CHOOSE_SERVER
         || state == STATE_CONNECT_SERVER || state == STATE_LOGIN
         || state == STATE_PRE_LOGIN || state == STATE_LOGIN_ATTEMPT
@@ -162,12 +162,12 @@ void QuitDialog::action(const gcn::ActionEvent &event)
 
         if (mForceQuit->isSelected())
         {
-            Client::setState(STATE_FORCE_QUIT);
+            client->setState(STATE_FORCE_QUIT);
         }
         else if (mLogoutQuit->isSelected())
         {
             Game::closeDialogs();
-            Client::setState(STATE_EXIT);
+            client->setState(STATE_EXIT);
         }
         else if (mRate && mRate->isSelected())
         {
@@ -176,23 +176,23 @@ void QuitDialog::action(const gcn::ActionEvent &event)
             config.setValue("rated", true);
             if (mNeedForceQuit)
             {
-                Client::setState(STATE_FORCE_QUIT);
+                client->setState(STATE_FORCE_QUIT);
             }
             else
             {
                 Game::closeDialogs();
-                Client::setState(STATE_EXIT);
+                client->setState(STATE_EXIT);
             }
         }
         else if (Net::getGameHandler()->isConnected()
                  && mSwitchAccountServer->isSelected())
         {
             Game::closeDialogs();
-            Client::setState(STATE_SWITCH_SERVER);
+            client->setState(STATE_SWITCH_SERVER);
         }
         else if (mSwitchCharacter->isSelected())
         {
-            if (Client::getState() == STATE_GAME)
+            if (client->getState() == STATE_GAME)
             {
                 Net::getCharServerHandler()->switchCharacter();
                 Game::closeDialogs();

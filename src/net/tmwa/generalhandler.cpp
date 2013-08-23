@@ -145,7 +145,7 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
                     errorMessage = _("No servers available.");
                     break;
                 case 2:
-                    if (Client::getState() == STATE_GAME)
+                    if (client->getState() == STATE_GAME)
                     {
                         // TRANSLATORS: error message
                         errorMessage = _("Someone else is trying to use this "
@@ -170,7 +170,7 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
                     errorMessage = _("Unknown connection error.");
                     break;
             }
-            Client::setState(STATE_ERROR);
+            client->setState(STATE_ERROR);
             break;
         }
 
@@ -251,7 +251,7 @@ void GeneralHandler::flushNetwork()
             errorMessage = _("Got disconnected from server!");
         }
 
-        Client::setState(STATE_ERROR);
+        client->setState(STATE_ERROR);
     }
     BLOCK_END("GeneralHandler::flushNetwork 3")
 }

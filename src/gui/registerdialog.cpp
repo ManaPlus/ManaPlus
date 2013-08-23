@@ -274,7 +274,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
                 mLoginData->email = mEmailField->getText();
             mLoginData->registerLogin = true;
 
-            Client::setState(STATE_REGISTER_ATTEMPT);
+            client->setState(STATE_REGISTER_ATTEMPT);
         }
     }
 }
@@ -308,11 +308,11 @@ bool RegisterDialog::canSubmit() const
     return !mUserField->getText().empty() &&
            !mPasswordField->getText().empty() &&
            !mConfirmField->getText().empty() &&
-           Client::getState() == STATE_REGISTER;
+           client->getState() == STATE_REGISTER;
 }
 
 void RegisterDialog::close()
 {
-    Client::setState(STATE_LOGIN);
+    client->setState(STATE_LOGIN);
     Window::close();
 }

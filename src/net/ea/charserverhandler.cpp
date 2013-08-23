@@ -135,7 +135,7 @@ void CharServerHandler::processCharLoginError(Net::MessageIn &msg) const
             errorMessage = _("Unknown char-server failure.");
             break;
     }
-    Client::setState(STATE_ERROR);
+    client->setState(STATE_ERROR);
     BLOCK_END("CharServerHandler::processCharLoginError")
 }
 
@@ -261,7 +261,7 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &msg,
 
     if (network)
         network->disconnect();
-    Client::setState(STATE_CONNECT_GAME);
+    client->setState(STATE_CONNECT_GAME);
     BLOCK_END("CharServerHandler::processCharMapInfo")
 }
 
@@ -283,7 +283,7 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg,
     server.port = msg.readInt16();
 
     network->disconnect();
-    Client::setState(STATE_CHANGE_MAP);
+    client->setState(STATE_CHANGE_MAP);
     if (player_node)
     {
         player_node->setTileCoords(x, y);

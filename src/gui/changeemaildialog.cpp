@@ -115,7 +115,7 @@ void ChangeEmailDialog::action(const gcn::ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "cancel")
     {
-        Client::setState(STATE_CHAR_SELECT);
+        client->setState(STATE_CHAR_SELECT);
     }
     else if (eventId == "change_email")
     {
@@ -175,7 +175,7 @@ void ChangeEmailDialog::action(const gcn::ActionEvent &event)
             mChangeEmailButton->setEnabled(false);
             // Set the new email address
             mLoginData->email = newFirstEmail;
-            Client::setState(STATE_CHANGEEMAIL_ATTEMPT);
+            client->setState(STATE_CHANGEEMAIL_ATTEMPT);
         }
     }
 }

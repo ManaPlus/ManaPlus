@@ -61,7 +61,7 @@ bool LoginHandler::isRegistrationEnabled() const
 void LoginHandler::getRegistrationDetails() const
 {
     // Not supported, so move on
-    Client::setState(STATE_REGISTER);
+    client->setState(STATE_REGISTER);
 }
 
 void LoginHandler::loginAccount(LoginData *const loginData) const
@@ -93,7 +93,7 @@ void LoginHandler::chooseServer(const unsigned int server) const
         charServer->port = mWorlds[server]->port;
     }
 
-    Client::setState(STATE_UPDATE);
+    client->setState(STATE_UPDATE);
 }
 
 void LoginHandler::registerAccount(LoginData *const loginData) const
@@ -139,7 +139,7 @@ void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg) const
     // Successful pass change
     if (errMsg == 1)
     {
-        Client::setState(STATE_CHANGEPASSWORD_SUCCESS);
+        client->setState(STATE_CHANGEPASSWORD_SUCCESS);
     }
     // pass change failed
     else
@@ -164,7 +164,7 @@ void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg) const
                 errorMessage = _("Unknown error.");
                 break;
         }
-        Client::setState(STATE_ACCOUNTCHANGE_ERROR);
+        client->setState(STATE_ACCOUNTCHANGE_ERROR);
     }
 }
 
@@ -222,7 +222,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
 
         mWorlds.push_back(world);
     }
-    Client::setState(STATE_WORLD_SELECT);
+    client->setState(STATE_WORLD_SELECT);
 }
 
 void LoginHandler::processLoginError(Net::MessageIn &msg) const
@@ -291,7 +291,7 @@ void LoginHandler::processLoginError(Net::MessageIn &msg) const
             errorMessage = _("Unknown error.");
             break;
     }
-    Client::setState(STATE_ERROR);
+    client->setState(STATE_ERROR);
 }
 
 void LoginHandler::logout() const

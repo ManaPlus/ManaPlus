@@ -59,7 +59,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
     logger->log("Protocol: Player start position: (%d, %d),"
                 " Direction: %d", x, y, direction);
     // Switch now or we'll have problems
-    Client::setState(STATE_GAME);
+    client->setState(STATE_GAME);
     if (player_node)
         player_node->setTileCoords(x, y);
 }
@@ -72,7 +72,7 @@ void GameHandler::processWhoAnswer(Net::MessageIn &msg) const
 void GameHandler::processCharSwitchResponse(Net::MessageIn &msg) const
 {
     if (msg.readInt8())
-        Client::setState(STATE_SWITCH_CHARACTER);
+        client->setState(STATE_SWITCH_CHARACTER);
 }
 
 void GameHandler::processMapQuitResponse(Net::MessageIn &msg) const

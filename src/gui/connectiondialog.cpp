@@ -59,7 +59,7 @@ ConnectionDialog::ConnectionDialog(const std::string &text,
 void ConnectionDialog::action(const gcn::ActionEvent &)
 {
     logger->log1("Cancel pressed");
-    Client::setState(mCancelState);
+    client->setState(mCancelState);
 }
 
 void ConnectionDialog::draw(gcn::Graphics *graphics)
