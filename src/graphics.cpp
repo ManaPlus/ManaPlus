@@ -361,6 +361,25 @@ bool Graphics::resizeScreen(const int width, const int height)
 
     _endDraw();
 
+#ifdef USE_SDL2
+    mRect.w = width;
+    mRect.h = height;
+    mWidth = width;
+    mHeight = height;
+
+#ifdef USE_OPENGL
+    // +++ probably this way will not work in windows/mac
+    // Setup OpenGL
+    glViewport(0, 0, mWidth, mHeight);
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
+#else
+    // +++ need impliment resize in soft mode
+#endif
+
+    _beginDraw();
+    return true;
+
+#else
     const bool success = setVideoMode(width, height, mBpp,
         mFullscreen, mHWAccel, mEnableResize, mNoFrame);
 
@@ -378,6 +397,7 @@ bool Graphics::resizeScreen(const int width, const int height)
     _beginDraw();
 
     return success;
+#endif
 }
 
 int Graphics::getWidth() const
