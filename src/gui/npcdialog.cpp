@@ -291,7 +291,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
     {
         if (mActionState == NPC_ACTION_NEXT)
         {
-            if (!Client::limitPackets(PACKET_NPC_NEXT))
+            if (!client->limitPackets(PACKET_NPC_NEXT))
                 return;
 
             nextDialog();
@@ -316,7 +316,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
 
                     if (selectedIndex >= static_cast<int>(mItems.size())
                         || selectedIndex < 0
-                        || !Client::limitPackets(PACKET_NPC_INPUT))
+                        || !client->limitPackets(PACKET_NPC_INPUT))
                     {
                         return;
                     }
@@ -329,14 +329,14 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                 }
                 case NPC_INPUT_STRING:
                 {
-                    if (!Client::limitPackets(PACKET_NPC_INPUT))
+                    if (!client->limitPackets(PACKET_NPC_INPUT))
                         return;
                     printText = mTextField->getText();
                     Net::getNpcHandler()->stringInput(mNpcId, printText);
                 }
                 case NPC_INPUT_INTEGER:
                 {
-                    if (!Client::limitPackets(PACKET_NPC_INPUT))
+                    if (!client->limitPackets(PACKET_NPC_INPUT))
                         return;
                     printText = strprintf("%d", mIntField->getValue());
                     Net::getNpcHandler()->integerInput(
@@ -344,7 +344,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                 }
                 case NPC_INPUT_ITEM:
                 {
-                    if (!Client::limitPackets(PACKET_NPC_INPUT))
+                    if (!client->limitPackets(PACKET_NPC_INPUT))
                         return;
 
                     const Item *const item = mInventory->getItem(0);

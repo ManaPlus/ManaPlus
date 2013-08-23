@@ -2171,7 +2171,7 @@ void Being::setGM(const bool gm)
 
 void Being::talkTo() const
 {
-    if (!Client::limitPackets(PACKET_NPC_TALK))
+    if (!client->limitPackets(PACKET_NPC_TALK))
         return;
 
     Net::getNpcHandler()->talk(mId);

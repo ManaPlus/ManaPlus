@@ -557,7 +557,7 @@ bool ActorSpriteManager::pickUpAll(const int x1, const int y1,
             }
         }
     }
-    else if (Client::checkPackets(PACKET_PICKUP))
+    else if (client->checkPackets(PACKET_PICKUP))
     {
         FloorItem *item = nullptr;
         unsigned cnt = 65535;
@@ -1137,7 +1137,7 @@ void ActorSpriteManager::heal(const Being *const target) const
             && PlayerInfo::getAttribute(PlayerInfo::HP)
             != PlayerInfo::getAttribute(PlayerInfo::MAX_HP))
         {
-            if (!Client::limitPackets(PACKET_CHAT))
+            if (!client->limitPackets(PACKET_CHAT))
                 return;
             chatWindow->localChatInput(mSpellHeal1);
         }
@@ -1150,7 +1150,7 @@ void ActorSpriteManager::heal(const Being *const target) const
         {
             if (target && target->getType() != Being::MONSTER)
             {
-                if (!Client::limitPackets(PACKET_CHAT))
+                if (!client->limitPackets(PACKET_CHAT))
                     return;
                 chatWindow->localChatInput(mSpellHeal1 + " "
                                            + target->getName());
@@ -1158,7 +1158,7 @@ void ActorSpriteManager::heal(const Being *const target) const
             else if (PlayerInfo::getAttribute(PlayerInfo::HP)
                      != PlayerInfo::getAttribute(PlayerInfo::MAX_HP))
             {
-                if (!Client::limitPackets(PACKET_CHAT))
+                if (!client->limitPackets(PACKET_CHAT))
                     return;
                 chatWindow->localChatInput(mSpellHeal1);
             }
@@ -1175,7 +1175,7 @@ void ActorSpriteManager::heal(const Being *const target) const
             if (player_relations.getRelation(target->getName()) !=
                 PlayerRelation::ENEMY2)
             {
-                if (!Client::limitPackets(PACKET_CHAT))
+                if (!client->limitPackets(PACKET_CHAT))
                     return;
                 chatWindow->localChatInput(mSpellHeal2 + " "
                     + target->getName());
@@ -1183,7 +1183,7 @@ void ActorSpriteManager::heal(const Being *const target) const
             // target enemy
             else
             {
-                if (!Client::limitPackets(PACKET_CHAT))
+                if (!client->limitPackets(PACKET_CHAT))
                     return;
                 chatWindow->localChatInput(mSpellHeal1);
             }
@@ -1194,7 +1194,7 @@ void ActorSpriteManager::heal(const Being *const target) const
                  && PlayerInfo::getAttribute(PlayerInfo::HP)
                  != PlayerInfo::getAttribute(PlayerInfo::MAX_HP))
         {
-            if (!Client::limitPackets(PACKET_CHAT))
+            if (!client->limitPackets(PACKET_CHAT))
                 return;
             chatWindow->localChatInput(mSpellHeal1);
         }
@@ -1209,7 +1209,7 @@ void ActorSpriteManager::itenplz() const
         return;
     }
 
-    if (!Client::limitPackets(PACKET_CHAT))
+    if (!client->limitPackets(PACKET_CHAT))
         return;
 
     chatWindow->localChatInput(mSpellItenplz);

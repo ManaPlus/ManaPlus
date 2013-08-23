@@ -168,7 +168,7 @@ Window::~Window()
     if (gui)
         gui->removeDragged(this);
 
-    Client::windowRemoved(this);
+    client->windowRemoved(this);
 
     saveWindowState();
 

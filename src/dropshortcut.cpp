@@ -98,7 +98,7 @@ void DropShortcut::dropFirst() const
     if (!player_node)
         return;
 
-    if (!Client::limitPackets(PACKET_DROP))
+    if (!client->limitPackets(PACKET_DROP))
         return;
 
     const int itemId = getItem(0);
@@ -143,7 +143,7 @@ void DropShortcut::dropItems(const int cnt)
     {
         for (int i = 0; i < sz; i++)
         {
-            if (!Client::limitPackets(PACKET_DROP))
+            if (!client->limitPackets(PACKET_DROP))
                 return;
             if (dropItem())
                 n++;

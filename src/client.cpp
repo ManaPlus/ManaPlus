@@ -264,9 +264,6 @@ class LoginListener final : public gcn::ActionListener
         }
 } loginListener;
 
-
-Client *Client::mInstance = nullptr;
-
 Client::Client(const Options &options) :
     gcn::ActionListener(),
     mOptions(options),
@@ -321,8 +318,6 @@ Client::Client(const Options &options) :
     mNewMessageFlag(false),
     mLogInput(false)
 {
-    mInstance = this;
-
     // Initialize frame limiting
     mFpsManager.framecount = 0;
     mFpsManager.rateticks = 0;
@@ -881,7 +876,6 @@ void Client::gameClear()
     delete chatLogger;
     chatLogger = nullptr;
     TranslationManager::close();
-    mInstance = nullptr;
 }
 
 int Client::testsExec() const
@@ -2645,7 +2639,7 @@ void Client::writePacketLimits(const std::string &packetLimitsName) const
     outPacketFile.close();
 }
 
-bool Client::checkPackets(const int type)
+bool Client::checkPackets(const int type) const
 {
     if (type > PACKET_SIZE)
         return false;
@@ -2653,7 +2647,7 @@ bool Client::checkPackets(const int type)
     if (!serverConfig.getValueBool("enableBuggyServers", true))
         return true;
 
-    const PacketLimit &limit = instance()->mPacketLimits[type];
+    const PacketLimit &limit = mPacketLimits[type];
     const int timeLimit = limit.timeLimit;
 
     if (!timeLimit)
@@ -2696,7 +2690,7 @@ bool Client::limitPackets(const int type)
     if (!serverConfig.getValueBool("enableBuggyServers", true))
         return true;
 
-    PacketLimit &pack = instance()->mPacketLimits[type];
+    PacketLimit &pack = mPacketLimits[type];
     const int timeLimit = pack.timeLimit;
 
     if (!timeLimit)
@@ -2735,17 +2729,15 @@ void Client::setFramerate(const int fpsLimit)
     if (!fpsLimit)
         return;
 
-    Client *const client = instance();
-    if (!client->mLimitFps)
+    if (!mLimitFps)
         return;
 
     SDL_setFramerate(&client->mFpsManager, fpsLimit);
 }
 
-int Client::getFramerate()
+int Client::getFramerate() const
 {
-    Client *const client = instance();
-    if (!client->mLimitFps)
+    if (!mLimitFps)
         return 0;
 
     return SDL_getFramerate(&client->mFpsManager);
@@ -2760,7 +2752,7 @@ void Client::closeDialogs()
     SellDialog::closeAll();
 }
 
-bool Client::isTmw()
+bool Client::isTmw() const
 {
     const std::string &name = getServerName();
     if (name == "server.themanaworld.org"
@@ -2873,16 +2865,11 @@ void Client::applyKeyRepeat()
 
 void Client::setIsMinimized(const bool n)
 {
-    Client *const client = instance();
-    if (!client)
-        return;
-
-    client->mIsMinimized = n;
+    mIsMinimized = n;
     if (!n && client->mNewMessageFlag)
     {
-        client->mNewMessageFlag = false;
-        SDL::SetWindowTitle(mainGraphics->getWindow(),
-            client->mCaption.c_str());
+        mNewMessageFlag = false;
+        SDL::SetWindowTitle(mainGraphics->getWindow(), mCaption.c_str());
     }
 }
 
@@ -3044,14 +3031,8 @@ void Client::logEvent(const SDL_Event &event)
 
 void Client::windowRemoved(const Window *const window)
 {
-    Client *const inst = instance();
-    if (inst->mCurrentDialog == window)
-        inst->mCurrentDialog = nullptr;
-}
-
-void Client::updateScreenKeyboard(int height)
-{
-    instance()->mKeyboardHeight = height;
+    if (mCurrentDialog == window)
+        mCurrentDialog = nullptr;
 }
 
 void Client::checkConfigVersion()

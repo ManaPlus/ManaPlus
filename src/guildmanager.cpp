@@ -136,7 +136,7 @@ void GuildManager::requestGuildInfo()
 
     if (!mGotName && !mSentNameRequest)
     {
-        if (!Client::limitPackets(PACKET_WHISPER))
+        if (!client->limitPackets(PACKET_WHISPER))
             return;
         send("!info " + toString(tick_time));
         mRequest = true;
@@ -145,7 +145,7 @@ void GuildManager::requestGuildInfo()
     }
     else if (!mGotInfo && !mSentInfoRequest && !mSentNameRequest)
     {
-        if (!Client::limitPackets(PACKET_WHISPER))
+        if (!client->limitPackets(PACKET_WHISPER))
             return;
         send("!getonlineinfo " + toString(tick_time));
         mRequest = true;
@@ -158,7 +158,7 @@ void GuildManager::slowLogic()
 {
     if (!mGotOnlineInfo && mGotName && mRequestTime < cur_time)
     {
-        if (!Client::limitPackets(PACKET_WHISPER))
+        if (!client->limitPackets(PACKET_WHISPER))
             return;
         send("!getonlineinfo " + toString(tick_time));
         mRequest = true;

@@ -218,12 +218,6 @@ public:
 
     ~Client();
 
-    /**
-     * Provides access to the client instance.
-     */
-    static Client *instance() A_WARN_UNUSED
-    { return mInstance; }
-
     void gameInit();
 
     void testsInit();
@@ -304,11 +298,11 @@ public:
 
     static void closeDialogs();
 
-    static void setFramerate(const int fpsLimit);
+    void setFramerate(const int fpsLimit);
 
-    static int getFramerate() A_WARN_UNUSED;
+    int getFramerate() const A_WARN_UNUSED;
 
-    bool isTmw() A_WARN_UNUSED;
+    bool isTmw() const A_WARN_UNUSED;
 
     static void applyGrabMode();
 
@@ -336,17 +330,18 @@ public:
 
     void resizeVideo(int width, int height, const bool always = false);
 
-    static bool limitPackets(const int type) A_WARN_UNUSED;
+    bool limitPackets(const int type) A_WARN_UNUSED;
 
-    static bool checkPackets(const int type) A_WARN_UNUSED;
+    bool checkPackets(const int type) const A_WARN_UNUSED;
 
     static void logEvent(const SDL_Event &event);
 
     PacketLimit mPacketLimits[PACKET_SIZE + 1];
 
-    static void windowRemoved(const Window *const window);
+    void windowRemoved(const Window *const window);
 
-    static void updateScreenKeyboard(int height);
+    void updateScreenKeyboard(const int height)
+    { mKeyboardHeight = height; }
 
     Window *openErrorDialog(const std::string &header,
                             const std::string &message,

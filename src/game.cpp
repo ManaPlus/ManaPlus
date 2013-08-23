@@ -638,7 +638,7 @@ void Game::slowLogic()
             }
         }
         closeDialogs();
-        Client::setFramerate(config.getIntValue("fpslimit"));
+        client->setFramerate(config.getIntValue("fpslimit"));
         mNextAdjustTime = cur_time + adjustDelay;
         if (client->getState() != STATE_ERROR)
             errorMessage.clear();
@@ -681,7 +681,7 @@ void Game::adjustPerfomance()
             return;
         }
 
-        int maxFps = Client::getFramerate();
+        int maxFps = client->getFramerate();
         if (maxFps != config.getIntValue("fpslimit"))
             return;
 
@@ -935,7 +935,7 @@ void Game::handleActive(const SDL_Event &event)
             fpsLimit = config.getIntValue("fpslimit");
         }
     }
-    Client::setFramerate(fpsLimit);
+    client->setFramerate(fpsLimit);
     mNextAdjustTime = cur_time + adjustDelay;
 #endif
 }
@@ -992,7 +992,7 @@ void Game::handleInput()
                 break;
 #ifdef ANDROID
             case SDL_KEYBOARDSHOW:
-                Client::updateScreenKeyboard(event.user.code);
+                client->updateScreenKeyboard(event.user.code);
                 break;
 #endif
             default:
