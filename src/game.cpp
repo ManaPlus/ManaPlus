@@ -972,16 +972,7 @@ void Game::handleInput()
 #ifdef USE_SDL2
             case SDL_WINDOWEVENT:
             {
-                switch (event.window.event)
-                {
-                    // +++ need add other window events
-                    case SDL_WINDOWEVENT_RESIZED:
-                        Client::resize(event.window.data1,
-                            event.window.data2, false);
-                        break;
-                    default:
-                        break;
-                }
+                client->handleSDL2WindowEvent(event);
                 break;
             }
 #else

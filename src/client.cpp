@@ -155,6 +155,7 @@ Configuration serverConfig;        // XML file server configuration reader
 Configuration features;            // XML file features
 Configuration branding;            // XML branding information reader
 Configuration paths;               // XML default paths information reader
+Client *client = nullptr;
 Logger *logger = nullptr;          // Log object
 ChatLogger *chatLogger = nullptr;  // Chat log object
 KeyboardConfig keyboard;
@@ -1000,16 +1001,7 @@ int Client::gameExec()
 #ifdef USE_SDL2
                     case SDL_WINDOWEVENT:
                     {
-                        switch (event.window.event)
-                        {
-                            // +++ need add other window events
-                            case SDL_WINDOWEVENT_RESIZED:
-                                resizeVideo(event.window.data1,
-                                    event.window.data2, false);
-                                break;
-                            default:
-                                break;
-                        }
+                        handleSDL2WindowEvent(event);
                         break;
                     }
 #else
@@ -3165,3 +3157,18 @@ void Client::setIcon()
     }
 #endif
 }
+
+#ifdef USE_SDL2
+void Client::handleSDL2WindowEvent(const SDL_Event &event)
+{
+    switch (event.window.event)
+    {
+        // +++ need add other window events
+        case SDL_WINDOWEVENT_RESIZED:
+            resizeVideo(event.window.data1, event.window.data2, false);
+            break;
+        default:
+            break;
+    }
+}
+#endif

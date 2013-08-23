@@ -308,17 +308,21 @@ int main(int argc, char *argv[])
     SetCurrentDirectory(PhysFs::getBaseDir());
 #endif
     setPriority(true);
-    Client client(options);
+    client = new Client(options);
+    int ret = 0;
     if (!options.testMode)
     {
-        client.gameInit();
-        return client.gameExec();
+        client->gameInit();
+        ret = client->gameExec();
     }
     else
     {
-        client.testsInit();
-        return client.testsExec();
+        client->testsInit();
+        ret = client->testsExec();
     }
+    delete client;
+    client = nullptr;
+    return ret;
 }
 
 #else

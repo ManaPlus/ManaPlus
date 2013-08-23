@@ -317,6 +317,10 @@ public:
 
     static void applyKeyRepeat();
 
+#ifdef USE_SDL2
+    void handleSDL2WindowEvent(const SDL_Event &event);
+#endif
+
     void optionChanged(const std::string &name) override;
 
     void action(const gcn::ActionEvent &event) override;
@@ -442,5 +446,7 @@ private:
     bool mNewMessageFlag;
     bool mLogInput;
 };
+
+extern Client *client;
 
 #endif  // CLIENT_H
