@@ -393,8 +393,12 @@ class Graphics : public gcn::Graphics
         bool videoInfo();
 
         SDL_Window *mWindow;
+
 #ifdef USE_SDL2
         SDL_Renderer *mRenderer;
+#ifdef USE_OPENGL
+        SDL_GLContext mGLContext;
+#endif
 #endif
         int mBpp;
         bool mAlpha;

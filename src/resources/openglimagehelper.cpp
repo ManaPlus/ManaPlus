@@ -152,7 +152,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     }
 
 #ifdef USE_SDL2
-    SDL_SetSurfaceAlphaMod(tmpImage, 255);
+    SDL_SetSurfaceAlphaMod(tmpImage, SDL_ALPHA_OPAQUE);
 #else
     // Make sure the alpha channel is not used, but copied to destination
     SDL_SetAlpha(tmpImage, 0, SDL_ALPHA_OPAQUE);
@@ -180,6 +180,9 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         || amask != tmpImage->format->Amask)
     {
         oldImage = tmpImage;
+#ifdef USE_SDL2
+        SDL_SetSurfaceBlendMode (oldImage, SDL_BLENDMODE_NONE);
+#endif
         tmpImage = SDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
             32, rmask, gmask, bmask, amask);
 

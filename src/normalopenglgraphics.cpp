@@ -1093,8 +1093,6 @@ void NormalOpenGLGraphics::_beginDraw()
 #endif
 #endif
 
-//    glScalef(0.5f, 0.5f, 0.5f);
-
     pushClipArea(gcn::Rectangle(0, 0, w, h));
 }
 

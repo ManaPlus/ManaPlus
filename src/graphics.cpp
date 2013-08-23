@@ -55,6 +55,9 @@ Graphics::Graphics() :
     mWindow(nullptr),
 #ifdef USE_SDL2
     mRenderer(nullptr),
+#ifdef USE_OPENGL
+    mGLContext(nullptr),
+#endif
 #endif
     mBpp(0),
     mAlpha(false),
@@ -82,6 +85,20 @@ Graphics::Graphics() :
 Graphics::~Graphics()
 {
     _endDraw();
+#ifdef USE_SDL2
+    if (mRenderer)
+    {
+        SDL_DestroyRenderer(mRenderer);
+        mRenderer = nullptr;
+    }
+#ifdef USE_OPENGL
+    if (mGLContext)
+    {
+        SDL_GL_DeleteContext(mGLContext);
+        mGLContext = 0;
+    }
+#endif
+#endif
 }
 
 void Graphics::setSync(const bool sync)
@@ -111,7 +128,7 @@ int Graphics::getOpenGLFlags() const
 #ifdef USE_OPENGL
 
 #ifdef USE_SDL2
-    int displayFlags = SDL_WINDOW_OPENGL | SDL_WINDOW_OPENGL;
+    int displayFlags = SDL_WINDOW_OPENGL;
     if (mFullscreen)
         displayFlags |= SDL_WINDOW_FULLSCREEN;
 #else
@@ -136,12 +153,9 @@ int Graphics::getOpenGLFlags() const
         displayFlags |= SDL_NOFRAME;
 
     return displayFlags;
-
-#else  // USE_OPENGL
-
+#else
     return 0;
 #endif  // USE_OPENGL
-
 }
 
 bool Graphics::setOpenGLMode()
@@ -163,11 +177,13 @@ bool Graphics::setOpenGLMode()
     mRect.w = w1;
     mRect.h = h1;
 
-    mRenderer = graphicsManager.createRenderer(mWindow, 0);
-#else
+    mGLContext = SDL_GL_CreateContext(mWindow);
+
+#else  // USE_SDL2
+
     mRect.w = static_cast<uint16_t>(mWindow->w);
     mRect.h = static_cast<uint16_t>(mWindow->h);
-#endif
+#endif  // USE_SDL2
 
 #ifdef __APPLE__
     if (mSync)
@@ -217,9 +233,11 @@ bool Graphics::setOpenGLMode()
             OpenGLImageHelper::mTextureSize);
     }
     return videoInfo();
-#else
+#else  // USE_OPENGL
+
     return false;
-#endif
+#endif  // USE_OPENGL
+
 }
 
 int Graphics::getSoftwareFlags() const

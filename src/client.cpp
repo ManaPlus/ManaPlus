@@ -1102,6 +1102,8 @@ int Client::gameExec()
         lastTickTime = tick_time;
 
 #ifdef USE_SDL2
+        if (gui)
+            gui->draw();
         mainGraphics->updateScreen();
 #else
         // Update the screen when application is active, delay otherwise.
