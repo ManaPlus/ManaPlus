@@ -438,8 +438,8 @@ void Gui::draw()
     const uint8_t button = SDL_GetMouseState(&mouseX, &mouseY);
 
 #ifdef USE_SDL2
-    if (button & SDL_BUTTON(1) && mMouseCursors && mCustomCursor
-        && mMouseCursorAlpha > 0.0f)
+    // +++ need check also is window have mouse focus SDL_GetMouseFocus
+    if (mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0f)
 #else
     if ((SDL_GetAppState() & SDL_APPMOUSEFOCUS || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0f)
