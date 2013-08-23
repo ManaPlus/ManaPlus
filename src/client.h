@@ -314,6 +314,8 @@ public:
 
 #ifdef USE_SDL2
     void handleSDL2WindowEvent(const SDL_Event &event);
+#else
+    void handleActive(const SDL_Event &event);
 #endif
 
     void optionChanged(const std::string &name) override;

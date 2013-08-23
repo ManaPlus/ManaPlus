@@ -994,11 +994,12 @@ int Client::gameExec()
 
 #ifdef USE_SDL2
                     case SDL_WINDOWEVENT:
-                    {
                         handleSDL2WindowEvent(event);
                         break;
-                    }
 #else
+                    case SDL_ACTIVEEVENT:
+                        handleActive(event);
+                        break;
                     case SDL_VIDEORESIZE:
                         resizeVideo(event.resize.w, event.resize.h, false);
                         break;
@@ -2866,7 +2867,7 @@ void Client::applyKeyRepeat()
 void Client::setIsMinimized(const bool n)
 {
     mIsMinimized = n;
-    if (!n && client->mNewMessageFlag)
+    if (!n && mNewMessageFlag)
     {
         mNewMessageFlag = false;
         SDL::SetWindowTitle(mainGraphics->getWindow(), mCaption.c_str());
@@ -3119,8 +3120,46 @@ void Client::handleSDL2WindowEvent(const SDL_Event &event)
         case SDL_WINDOWEVENT_RESIZED:
             resizeVideo(event.window.data1, event.window.data2, false);
             break;
+        case SDL_WINDOWEVENT_ENTER:
+            setMouseFocused(true);
+            break;
+        case SDL_WINDOWEVENT_LEAVE:
+            setMouseFocused(false);
+            break;
+        case SDL_WINDOWEVENT_FOCUS_GAINED:
+            setInputFocused(true);
+            break;
+        case SDL_WINDOWEVENT_FOCUS_LOST:
+            setInputFocused(false);
+            break;
         default:
             break;
     }
+}
+#else
+void Client::handleActive(const SDL_Event &event)
+{
+    if (event.active.state & SDL_APPACTIVE)
+    {
+        if (event.active.gain)
+        {   // window restore
+            setIsMinimized(false);
+            setPriority(true);
+        }
+        else
+        {   // window minimization
+#ifdef ANDROID
+            setState(STATE_EXIT);
+#else
+            setIsMinimized(true);
+            setPriority(false);
+#endif
+        }
+    }
+
+    if (event.active.state & SDL_APPINPUTFOCUS)
+        setInputFocused(event.active.gain);
+    if (event.active.state & SDL_APPMOUSEFOCUS)
+        setMouseFocused(event.active.gain);
 }
 #endif

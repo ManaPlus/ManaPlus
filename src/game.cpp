@@ -876,18 +876,13 @@ void Game::moveInDirection(const unsigned char direction)
 
 void Game::handleActive(const SDL_Event &event)
 {
-//    logger->log("SDL_ACTIVEEVENT");
-//    logger->log("state: %d", (int)event.active.state);
-//    logger->log("gain: %d", (int)event.active.gain);
-
-    // +++ need use window events
 #ifndef USE_SDL2
     int fpsLimit = 0;
     if (event.active.state & SDL_APPACTIVE)
     {
         if (event.active.gain)
         {   // window restore
-            Client::setIsMinimized(false);
+            client->setIsMinimized(false);
             if (player_node)
             {
                 if (!player_node->getAway())
@@ -901,7 +896,7 @@ void Game::handleActive(const SDL_Event &event)
 #ifdef ANDROID
             client->setState(STATE_EXIT);
 #else
-            Client::setIsMinimized(true);
+            client->setIsMinimized(true);
             if (player_node && !player_node->getAway())
             {
                 fpsLimit = config.getIntValue("altfpslimit");
@@ -919,7 +914,7 @@ void Game::handleActive(const SDL_Event &event)
     if (event.active.state & SDL_APPINPUTFOCUS)
         client->setInputFocused(event.active.gain);
     if (event.active.state & SDL_APPMOUSEFOCUS)
-        Client::setMouseFocused(event.active.gain);
+        client->setMouseFocused(event.active.gain);
 
     if (!fpsLimit)
     {
