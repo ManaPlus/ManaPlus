@@ -376,8 +376,10 @@ bool Gui::handleKeyInput2()
             keyInput.getType(), keyInput.isNumericPad(),
             keyInput.getActionId(), keyInput.getKey());
 
+#ifdef USE_SDL2
         if (!keyInput.getText().empty())
             keyEventToGlobalKeyListeners.setText(keyInput.getText());
+#endif
 
         distributeKeyEventToGlobalKeyListeners(
             keyEventToGlobalKeyListeners);
@@ -401,8 +403,10 @@ bool Gui::handleKeyInput2()
                     mShiftPressed, mControlPressed, mAltPressed, mMetaPressed,
                     keyInput.getType(), keyInput.isNumericPad(),
                     keyInput.getActionId(), keyInput.getKey());
+#ifdef USE_SDL2
                 if (!keyInput.getText().empty())
                     keyEvent.setText(keyInput.getText());
+#endif
 
                 if (!mFocusHandler->getFocused()->isFocusable())
                     mFocusHandler->focusNone();
