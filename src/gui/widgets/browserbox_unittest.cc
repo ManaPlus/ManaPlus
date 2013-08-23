@@ -46,7 +46,7 @@ TEST(browserbox, test1)
     PHYSFS_init("manaplus");
     dirSeparator = "/";
     Client::Options options;
-    Client client(options);
+    client = new Client(options);
 
     logger = new Logger();
     imageHelper = new SDLImageHelper();
@@ -148,4 +148,7 @@ TEST(browserbox, test1)
     box->addRow(row);
     row = "##1%%2";
     box->addRow(row);
+
+    delete client;
+    client = nullptr;
 }

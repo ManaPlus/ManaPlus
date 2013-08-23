@@ -52,7 +52,7 @@ static void init()
 TEST(AnimatedSprite, basic)
 {
     Client::Options options;
-    Client client(options);
+    client = new Client(options);
 
     init();
     AnimatedSprite *sprite = AnimatedSprite::load(
@@ -70,12 +70,14 @@ TEST(AnimatedSprite, basic)
     EXPECT_EQ(false, sprite->update(11));
     EXPECT_EQ(10, sprite->getFrameTime());
     EXPECT_EQ(0, sprite->getFrameIndex());
+    delete client;
+    client = nullptr;
 }
 
 TEST(AnimatedSprite, basic2)
 {
     Client::Options options;
-    Client client(options);
+    client = new Client(options);
 
     init();
     AnimatedSprite *sprite = AnimatedSprite::load(
@@ -146,5 +148,8 @@ TEST(AnimatedSprite, basic2)
     EXPECT_EQ(true, sprite2->update(1 + 10 + 20 + 10 + 25 + 10 + 10 + 1));
     EXPECT_EQ(1, sprite2->getFrameIndex());
     EXPECT_EQ(1, sprite2->getFrameTime());
+
+    delete client;
+    client = nullptr;
 }
 
