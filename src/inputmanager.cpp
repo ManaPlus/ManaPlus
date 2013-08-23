@@ -102,8 +102,12 @@ void InputManager::retrieve()
 {
     for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
-        const char *const cf = keyData[i].configField;
-        if (*cf)
+#ifdef USE_SDL2
+        const std::string cf = std::string("sdl2") + keyData[i].configField;
+#else
+        const std::string cf = keyData[i].configField;
+#endif
+        if (!cf.empty())
         {
             mNameMap[cf] = i;
             KeyFunction &kf = mKey[i];
@@ -153,8 +157,12 @@ void InputManager::store() const
 {
     for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
-        const char *const cf = keyData[i].configField;
-        if (*cf)
+#ifdef USE_SDL2
+        const std::string cf = std::string("sdl2") + keyData[i].configField;
+#else
+        const std::string cf = keyData[i].configField;
+#endif
+        if (!cf.empty())
         {
             std::string keyStr;
             const KeyFunction &kf = mKey[i];
