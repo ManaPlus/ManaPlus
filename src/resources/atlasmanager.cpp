@@ -27,7 +27,7 @@
 #include "client.h"
 #include "graphicsmanager.h"
 #include "logger.h"
-#include "sdlgraphics.h"
+#include "surfacegraphics.h"
 
 #include "utils/mathutils.h"
 #include "utils/physfsrwops.h"
@@ -232,8 +232,8 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     if (!surface)
         return nullptr;
 
-    SDLGraphics *const graphics = new SDLGraphics();
-    graphics->setWindow(surface, width, height);
+    SurfaceGraphics *const graphics = new SurfaceGraphics();
+    graphics->setTarget(surface);
     graphics->_beginDraw();
 
     // drawing SDL images to surface

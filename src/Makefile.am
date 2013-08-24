@@ -717,6 +717,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      sprite.h \
 	      statuseffect.cpp \
 	      statuseffect.h \
+	      surfacegraphics.cpp \
+	      surfacegraphics.h \
 	      text.cpp \
 	      text.h \
 	      textmanager.cpp \

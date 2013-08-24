@@ -47,7 +47,6 @@ static unsigned int *cB = nullptr;
 
 SDLGraphics::SDLGraphics() :
     Graphics(),
-    mBlitMode(BLIT_NORMAL),
     mOldPixel(0),
     mOldAlpha(0)
 {
@@ -126,16 +125,8 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     srcRect.w = static_cast<uint16_t>(width);
     srcRect.h = static_cast<uint16_t>(height);
 
-    if (mBlitMode == BLIT_NORMAL)
-    {
-        return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
-                                 mWindow, &dstRect) < 0);
-    }
-    else
-    {
-        return !(SDL_gfxBlitRGBA(image->mSDLSurface, &srcRect,
-                                 mWindow, &dstRect) < 0);
-    }
+    return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
+        mWindow, &dstRect) < 0);
 }
 
 void SDLGraphics::drawImagePattern(const Image *const image,

@@ -42,12 +42,6 @@ struct SDL_Surface;
 class SDLGraphics : public Graphics
 {
     public:
-        enum BlitMode
-        {
-            BLIT_NORMAL = 0,
-            BLIT_GFX
-        };
-
         /**
          * Constructor.
          */
@@ -122,12 +116,6 @@ class SDLGraphics : public Graphics
                                 const int w, const int h,
                                 const ImageRect &imgRect);
 
-        void setBlitMode(const BlitMode mode)
-        { mBlitMode = mode; }
-
-        BlitMode getBlitMode() const A_WARN_UNUSED
-        { return mBlitMode; }
-
         void fillRectangle(const gcn::Rectangle &rect) override;
 
         void drawRectangle(const gcn::Rectangle &rect) override;
@@ -156,7 +144,6 @@ class SDLGraphics : public Graphics
 
         void drawVLine(int x, int y1, int y2);
 
-        BlitMode mBlitMode;
         uint32_t mOldPixel;
         int mOldAlpha;
 };

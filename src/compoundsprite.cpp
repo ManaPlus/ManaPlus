@@ -30,8 +30,8 @@
 #endif
 
 #include "map.h"
-#include "sdlgraphics.h"
 #include "sdlshared.h"
+#include "surfacegraphics.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
@@ -336,9 +336,9 @@ void CompoundSprite::redraw() const
     if (!surface)
         return;
 
-    SDLGraphics *graphics = new SDLGraphics();
-    graphics->setBlitMode(SDLGraphics::BLIT_GFX);
-    graphics->setWindow(surface, BUFFER_WIDTH, BUFFER_HEIGHT);
+    SurfaceGraphics *graphics = new SurfaceGraphics();
+    graphics->setBlitMode(SurfaceGraphics::BLIT_GFX);
+    graphics->setTarget(surface);
     graphics->_beginDraw();
 
     int tileX = 32 / 2;
