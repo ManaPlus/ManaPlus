@@ -84,9 +84,15 @@ class Game final
 
         void handleMove();
 
+#ifdef USE_SDL2
+        void handleSDL2WindowEvent(const SDL_Event &event);
+#else
         void handleActive(const SDL_Event &event);
+#endif
 
         void changeMap(const std::string &mapName);
+
+        void updateFrameRate(int fpsLimit);
 
         /**
          * Returns the currently active map.

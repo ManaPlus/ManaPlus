@@ -874,9 +874,71 @@ void Game::moveInDirection(const unsigned char direction)
     }
 }
 
+#ifdef USE_SDL2
+void Game::handleSDL2WindowEvent(const SDL_Event &event)
+{
+    int fpsLimit = 0;
+    const int eventType = event.window.event;
+    switch (eventType)
+    {
+        case SDL_WINDOWEVENT_RESIZED:
+            client->resizeVideo(event.window.data1, event.window.data2, false);
+            break;
+        case SDL_WINDOWEVENT_ENTER:
+            client->setMouseFocused(true);
+            break;
+        case SDL_WINDOWEVENT_LEAVE:
+            client->setMouseFocused(false);
+            break;
+        case SDL_WINDOWEVENT_FOCUS_GAINED:
+            client->setInputFocused(true);
+            break;
+        case SDL_WINDOWEVENT_FOCUS_LOST:
+            client->setInputFocused(false);
+            break;
+        case SDL_WINDOWEVENT_MINIMIZED:
+#ifdef ANDROID
+            client->setState(STATE_EXIT);
+#else
+            client->setIsMinimized(true);
+            if (player_node && !player_node->getAway())
+            {
+                fpsLimit = config.getIntValue("altfpslimit");
+                player_node->setHalfAway(true);
+            }
+            setPriority(false);
+#endif
+            break;
+        case SDL_WINDOWEVENT_RESTORED:
+        case SDL_WINDOWEVENT_MAXIMIZED:
+            client->setIsMinimized(false);
+            if (player_node)
+            {
+                if (!player_node->getAway())
+                    fpsLimit = config.getIntValue("fpslimit");
+                player_node->setHalfAway(false);
+            }
+            setPriority(true);
+            break;
+        default:
+            break;
+    }
+
+    if (eventType == SDL_WINDOWEVENT_MINIMIZED
+        || eventType == SDL_WINDOWEVENT_RESTORED
+        || eventType == SDL_WINDOWEVENT_MAXIMIZED)
+    {
+        if (player_node)
+        {
+            player_node->updateStatus();
+            player_node->updateName();
+        }
+        updateFrameRate(fpsLimit);
+    }
+}
+#else
 void Game::handleActive(const SDL_Event &event)
 {
-#ifndef USE_SDL2
     int fpsLimit = 0;
     if (event.active.state & SDL_APPACTIVE)
     {
@@ -915,7 +977,12 @@ void Game::handleActive(const SDL_Event &event)
         client->setInputFocused(event.active.gain);
     if (event.active.state & SDL_APPMOUSEFOCUS)
         client->setMouseFocused(event.active.gain);
+    updateFrameRate(fpsLimit);
+}
+#endif
 
+void Game::updateFrameRate(int fpsLimit)
+{
     if (!fpsLimit)
     {
         if (player_node && player_node->getAway())
@@ -932,7 +999,6 @@ void Game::handleActive(const SDL_Event &event)
     }
     client->setFramerate(fpsLimit);
     mNextAdjustTime = cur_time + adjustDelay;
-#endif
 }
 
 /**
@@ -967,13 +1033,11 @@ void Game::handleInput()
 #ifdef USE_SDL2
             case SDL_WINDOWEVENT:
             {
-                client->handleSDL2WindowEvent(event);
+                handleSDL2WindowEvent(event);
                 break;
             }
 #else
             case SDL_VIDEORESIZE:
-                // Let the client deal with this one (it'll
-                // pass down from there)
                 client->resizeVideo(event.resize.w, event.resize.h);
                 break;
             // Active event

@@ -3108,7 +3108,6 @@ void Client::handleSDL2WindowEvent(const SDL_Event &event)
 {
     switch (event.window.event)
     {
-        // +++ need add other window events
         case SDL_WINDOWEVENT_RESIZED:
             resizeVideo(event.window.data1, event.window.data2, false);
             break;
