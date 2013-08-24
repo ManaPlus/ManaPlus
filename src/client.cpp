@@ -1051,15 +1051,8 @@ int Client::gameExec()
         // This is done because at some point tick_time will wrap.
         lastTickTime = tick_time;
 
-#ifdef USE_SDL2
-        // +++ need check active state
-        frame_count++;
-        if (gui)
-            gui->draw();
-        mainGraphics->updateScreen();
-#else
-        // Update the screen when application is active, delay otherwise.
-        if (SDL_GetAppState() & SDL_APPACTIVE)
+        // Update the screen when application is visible, delay otherwise.
+        if (!mIsMinimized)
         {
             frame_count++;
             if (gui)
@@ -1070,7 +1063,6 @@ int Client::gameExec()
         {
             SDL_Delay(100);
         }
-#endif
 
         BLOCK_START("~Client::SDL_framerateDelay")
         if (mLimitFps)
@@ -3131,6 +3123,13 @@ void Client::handleSDL2WindowEvent(const SDL_Event &event)
             break;
         case SDL_WINDOWEVENT_FOCUS_LOST:
             setInputFocused(false);
+            break;
+        case SDL_WINDOWEVENT_MINIMIZED:
+            setIsMinimized(true);
+            break;
+        case SDL_WINDOWEVENT_RESTORED:
+        case SDL_WINDOWEVENT_MAXIMIZED:
+            setIsMinimized(false);
             break;
         default:
             break;
