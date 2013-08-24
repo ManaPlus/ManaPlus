@@ -45,6 +45,7 @@
 #include "net/playerhandler.h"
 
 #include "utils/gettext.h"
+#include "utils/sdlhelper.h"
 
 #include <SDL.h>
 #include <SDL_thread.h>
@@ -581,13 +582,8 @@ void WhoIsOnline::download()
             SDL_WaitThread(mThread, nullptr);
 
         mDownloadComplete = false;
-#ifdef USE_SDL2
-        mThread = SDL_CreateThread(WhoIsOnline::downloadThread,
+        mThread = SDL::createThread(WhoIsOnline::downloadThread,
             "whoisonline", this);
-#else
-        mThread = SDL_CreateThread(WhoIsOnline::downloadThread, this);
-#endif
-
         if (mThread == nullptr)
             mDownloadStatus = UPDATE_ERROR;
     }

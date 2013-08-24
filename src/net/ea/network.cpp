@@ -30,6 +30,7 @@
 #include "net/eathena/protocol.h"
 
 #include "utils/gettext.h"
+#include "utils/sdlhelper.h"
 
 #include <assert.h>
 #include <sstream>
@@ -114,11 +115,7 @@ bool Network::connect(ServerInfo server)
     mToSkip = 0;
 
     mState = CONNECTING;
-#ifdef USE_SDL2
-    mWorkerThread = SDL_CreateThread(networkThread, "network", this);
-#else
-    mWorkerThread = SDL_CreateThread(networkThread, this);
-#endif
+    mWorkerThread = SDL::createThread(networkThread, "network", this);
     if (!mWorkerThread)
     {
         setError("Unable to create network worker thread");

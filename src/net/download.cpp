@@ -26,6 +26,8 @@
 #include "logger.h"
 #include "main.h"
 
+#include "utils/sdlhelper.h"
+
 #include <curl/curl.h>
 
 #include <SDL.h>
@@ -169,12 +171,7 @@ bool Download::start()
 {
     logger->log("Starting download: %s", mUrl.c_str());
 
-#ifdef USE_SDL2
-    mThread = SDL_CreateThread(downloadThread, "download", this);
-#else
-    mThread = SDL_CreateThread(downloadThread, this);
-#endif
-
+    mThread = SDL::createThread(downloadThread, "download", this);
     if (!mThread)
     {
         logger->log1(DOWNLOAD_ERROR_MESSAGE_THREAD);

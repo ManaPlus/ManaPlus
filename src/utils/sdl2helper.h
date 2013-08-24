@@ -24,6 +24,8 @@
 #ifdef USE_SDL2
 #include "utils/stringvector.h"
 
+#include <SDL_thread.h>
+
 #include "localconsts.h"
 
 struct SDL_Surface;
@@ -45,6 +47,9 @@ namespace SDL
     void setVsync(const int val);
 
     bool getWindowWMInfo(SDL_Window *const window, SDL_SysWMinfo *const info);
+
+    SDL_Thread *createThread(SDL_ThreadFunction fn,
+                             const char *name, void *data);
 }  // namespace SDL
 
 #endif  // USE_SDL2
