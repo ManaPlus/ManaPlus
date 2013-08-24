@@ -52,7 +52,7 @@ class SurfaceGraphics : public Graphics
 
         virtual ~SurfaceGraphics();
 
-        void setWindow(SDL_Surface *const target)
+        void setTarget(SDL_Surface *const target)
         { mTarget = target; }
 
         SDL_Surface *getTarget() const

@@ -137,7 +137,8 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
     if (!tmpImage)
         return nullptr;
 
-    return new Image(tmpImage, false, nullptr);
+    SDL_Surface *image = convertTo32Bit(tmpImage);
+    return new Image(image, false, nullptr);
 }
 
 int SDLImageHelper::useOpenGL() const

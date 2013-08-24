@@ -200,10 +200,6 @@ void AtlasManager::simpleSort(const std::string &name,
 
 SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 {
-#ifdef USE_SDL2
-    // +++ should be enabled after
-    return nullptr;
-#else
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;
     const int gmask = 0x00ff0000;
@@ -244,19 +240,22 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 
         if (image)
         {
+            if (image->mSDLSurface)
+            {
 #ifdef USE_SDL2
-            SDL_SetSurfaceAlphaMod(image->mSDLSurface, 255);
+                SDL_SetSurfaceAlphaMod(image->mSDLSurface, SDL_ALPHA_OPAQUE);
+                SDL_SetSurfaceBlendMode (image->mSDLSurface, SDL_BLENDMODE_NONE);
 #else
-            SDL_SetAlpha(image->mSDLSurface, 0, SDL_ALPHA_OPAQUE);
+                SDL_SetAlpha(image->mSDLSurface, 0, SDL_ALPHA_OPAQUE);
 #endif
-            graphics->drawImage(image, item->x, item->y);
+                graphics->drawImage(image, item->x, item->y);
+            }
         }
     }
 
     delete graphics;
     atlas->surface = surface;
     return surface;
-#endif
 }
 
 void AtlasManager::convertAtlas(TextureAtlas *const atlas)
