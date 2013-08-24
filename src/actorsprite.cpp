@@ -42,8 +42,7 @@
 
 #include "debug.h"
 
-ImageSet *ActorSprite::targetCursorImages[2][NUM_TC];
-SimpleAnimation *ActorSprite::targetCursor[2][NUM_TC];
+AnimatedSprite *ActorSprite::targetCursor[2][NUM_TC];
 bool ActorSprite::loaded = false;
 
 ActorSprite::ActorSprite(const int id) :
@@ -57,6 +56,8 @@ ActorSprite::ActorSprite(const int id) :
     mStunMode(0),
     mUsedTargetCursor(nullptr),
     mActorSpriteListeners(),
+    mCursorPaddingX(0),
+    mCursorPaddingY(0),
     mMustResetParticles(false)
 {
 }
@@ -93,10 +94,10 @@ bool ActorSprite::draw(Graphics *const graphics,
 
     if (mUsedTargetCursor)
     {
-        mUsedTargetCursor->reset();
         mUsedTargetCursor->update(tick_time * MILLISECONDS_IN_A_TICK);
-        mUsedTargetCursor->draw(graphics, px + getTargetOffsetX(),
-            py + getTargetOffsetY());
+        mUsedTargetCursor->draw(graphics,
+            px + getTargetOffsetX() - mCursorPaddingX,
+            py + getTargetOffsetY() - mCursorPaddingY);
     }
 
     return drawSpriteAt(graphics, px, py);
@@ -152,10 +153,23 @@ void ActorSprite::controlParticle(Particle *const particle)
 
 void ActorSprite::setTargetType(const TargetCursorType type)
 {
+    static const int targetWidths[ActorSprite::NUM_TC] = {0, 0, 0};
+    static const int targetHeights[ActorSprite::NUM_TC] = {0, -16, -32};
+
     if (type == TCT_NONE)
+    {
         untarget();
+    }
     else
-        mUsedTargetCursor = targetCursor[type][getTargetCursorSize()];
+    {
+        const TargetCursorSize sz = getTargetCursorSize();
+        mUsedTargetCursor = targetCursor[type][sz];
+        if (mUsedTargetCursor)
+        {
+            mCursorPaddingX = targetWidths[sz];
+            mCursorPaddingY = targetHeights[sz];
+        }
+    }
 }
 
 struct EffectDescription final
@@ -351,18 +365,17 @@ static const char *cursorSize(const int size)
 
 void ActorSprite::initTargetCursor()
 {
-    static const std::string targetCursorFile = "target-cursor-%s-%s.png";
-    static const int targetWidths[NUM_TC] = {44, 62, 82};
-    static const int targetHeights[NUM_TC] = {35, 44, 60};
+    static const std::string targetCursorFile = "%s/target-cursor-%s-%s.xml";
 
+    const char *path = branding.getStringValue("guiPath").c_str();
     // Load target cursors
     for (int size = TC_SMALL; size < NUM_TC; size++)
     {
         for (int type = TCT_NORMAL; type < NUM_TCT; type++)
         {
-            loadTargetCursor(strprintf(targetCursorFile.c_str(),
-                cursorType(type), cursorSize(size)), targetWidths[size],
-                targetHeights[size], type, size);
+            targetCursor[type][size] = AnimatedSprite::load(strprintf(
+                targetCursorFile.c_str(), path, cursorType(type),
+                cursorSize(size)));
         }
     }
 }
@@ -378,52 +391,6 @@ void ActorSprite::cleanupTargetCursors()
                 delete targetCursor[type][size];
                 targetCursor[type][size] = nullptr;
             }
-            if (targetCursorImages[type][size])
-            {
-                targetCursorImages[type][size]->decRef();
-                targetCursorImages[type][size] = nullptr;
-            }
         }
     }
-}
-
-void ActorSprite::loadTargetCursor(const std::string &filename,
-                                   const int width, const int height,
-                                   const int type, const int size)
-{
-    if (reportTrue(size < TC_SMALL || size >= NUM_TC))
-        return;
-
-    ImageSet *const currentImageSet = Theme::getImageSetFromTheme(
-        filename, width, height);
-
-    if (!currentImageSet)
-    {
-        logger->log("Error loading target cursor: %s", filename.c_str());
-        return;
-    }
-
-    Animation *const anim = new Animation;
-
-    const size_t sz = currentImageSet->size();
-    for (size_t i = 0; i < sz; ++i)
-    {
-        anim->addFrame(currentImageSet->get(i), 75,
-            (16 - (currentImageSet->getWidth() / 2)),
-            (16 - (currentImageSet->getHeight() / 2)),
-            100);
-    }
-
-    SimpleAnimation *const currentCursor = new SimpleAnimation(anim);
-
-    if (targetCursor[type][size])
-    {
-        delete targetCursor[type][size];
-        targetCursor[type][size] = nullptr;
-        if (targetCursorImages[type][size])
-            targetCursorImages[type][size]->decRef();
-    }
-
-    targetCursorImages[type][size] = currentImageSet;
-    targetCursor[type][size] = currentCursor;
 }

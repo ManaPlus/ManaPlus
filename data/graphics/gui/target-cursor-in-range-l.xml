@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Alige
+Copyright (C) 2013 Evol Online -->
+<sprite>
+    <imageset name="target-large"
+              src="graphics/gui/target-cursor-in-range-l.png"
+              width="96"
+              height="96"/>
+
+    <action name="default" imageset="target-large">
+        <animation direction="default">
+            <sequence start="0" end="13" delay="50"/>
+        </animation>
+    </action>
+</sprite>

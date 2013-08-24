@@ -35,7 +35,7 @@
 
 #include "localconsts.h"
 
-class SimpleAnimation;
+class AnimatedSprite;
 class StatusEffect;
 class ActorSpriteListener;
 
@@ -223,27 +223,20 @@ private:
     /** Remove the target cursors from memory */
     static void cleanupTargetCursors();
 
-    /**
-     * Helper function for loading target cursors
-     */
-    static void loadTargetCursor(const std::string &filename,
-                                 const int width, const int height,
-                                 const int type, const int size);
-
-    /** Images of the target cursor. */
-    static ImageSet *targetCursorImages[NUM_TCT][NUM_TC];
-
     /** Animated target cursors. */
-    static SimpleAnimation *targetCursor[NUM_TCT][NUM_TC];
+    static AnimatedSprite *targetCursor[NUM_TCT][NUM_TC];
 
     static bool loaded;
 
     /** Target cursor being used */
-    SimpleAnimation *mUsedTargetCursor;
+    AnimatedSprite *mUsedTargetCursor;
 
     typedef std::list<ActorSpriteListener*> ActorSpriteListeners;
     typedef ActorSpriteListeners::iterator ActorSpriteListenerIterator;
     ActorSpriteListeners mActorSpriteListeners;
+
+    int mCursorPaddingX;
+    int mCursorPaddingY;
 
     /** Reset particle status effects on next redraw? */
     bool mMustResetParticles;
