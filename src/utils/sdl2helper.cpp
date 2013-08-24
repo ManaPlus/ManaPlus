@@ -34,7 +34,29 @@
 bool SDL::getAllVideoModes(StringVect &modeList)
 {
     // +++ need use SDL_GetDisplayMode and SDL_GetNumDisplayModes
-    modeList.push_back("800x600");
+//    modeList.push_back("800x600");
+
+    std::set<std::string> modes;
+
+    for (int display = 0; display < 100; display ++)
+    {
+        const int numModes = SDL_GetNumDisplayModes(display);
+        if (numModes > 0)
+        {
+            logger->log("Modes for display %d", display);
+            for (int f = 0; f < numModes; f ++)
+            {
+                SDL_DisplayMode mode;
+                SDL_GetDisplayMode(display, f, &mode);
+                const int w = mode.w;
+                const int h = mode.h;
+                logger->log("%dx%dx%d", w, h, mode.refresh_rate);
+                modes.insert(strprintf("%dx%d", w, h));
+            }
+        }
+    }
+    FOR_EACH (std::set<std::string>::const_iterator, it, modes)
+        modeList.push_back(*it);
     return true;
 }
 
