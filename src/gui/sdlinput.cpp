@@ -64,6 +64,10 @@
 #include "mouseinput.h"
 #include "sdlshared.h"
 
+#ifdef USE_SDL2
+#include "gui/gui.h"
+#endif
+
 #include <SDL_keyboard.h>
 
 #include <guichan/exception.hpp>
@@ -155,6 +159,29 @@ void SDLInput::pushInput(const SDL_Event &event)
             keyInput.setText(event.text.text);
             mKeyInputQueue.push(keyInput);
             break;
+
+        case SDL_MOUSEWHEEL:
+        {
+            const int x = event.wheel.x;
+            const int y = event.wheel.y;
+            if (y)
+            {
+                mouseInput.setX(gui->getLastMouseX());
+                mouseInput.setY(gui->getLastMouseY());
+#ifdef ANDROID
+                mouseInput.setReal(0, 0);
+#endif
+                mouseInput.setButton(-1);
+                if (y > 0)
+                    mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_UP);
+                else
+                    mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_DOWN);
+                mouseInput.setTimeStamp(SDL_GetTicks());
+                mMouseInputQueue.push(mouseInput);
+            }
+
+            break;
+        }
 #endif
 
 #ifdef ANDROID

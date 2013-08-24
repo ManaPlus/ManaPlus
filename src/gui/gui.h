@@ -157,6 +157,12 @@ class Gui final : public gcn::Gui
 
         void removeDragged(gcn::Widget *widget);
 
+        int getLastMouseX()
+        { return mLastMouseX; }
+
+        int getLastMouseY()
+        { return mLastMouseY; }
+
     protected:
         void handleMouseMoved(const gcn::MouseInput &mouseInput);
 
