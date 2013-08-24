@@ -33,6 +33,7 @@
 
 #include "resources/image.h"
 
+#include <SDL_gfxBlitFunc.h>
 #include <SDL_image.h>
 
 #include "debug.h"
@@ -295,4 +296,13 @@ SDL_Surface *SDLImageHelper::create32BitSurface(int width, int height) const
     return SDL_CreateRGBSurface(SDL_SWSURFACE,
         width, height, 32, rmask, gmask, bmask, amask);
 }
+
+int SDLImageHelper::combineSurface(SDL_Surface *const src,
+                                   SDL_Rect *const srcrect,
+                                   SDL_Surface *const dst,
+                                   SDL_Rect *const dstrect)
+{
+    return SDL_gfxBlitRGBA(src, srcrect, dst, dstrect);
+}
+
 #endif  // USE_SDL2

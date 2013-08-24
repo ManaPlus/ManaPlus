@@ -38,6 +38,7 @@
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/imagewriter.h"
+#include "resources/sdlimagehelper.h"
 #include "resources/wallpaper.h"
 
 #include <unistd.h>
@@ -249,7 +250,7 @@ int TestLauncher::testDye()
                 rect.w, rect.h);
             if (surface)
             {
-                MSDL_gfxBlitRGBA(image->mSDLSurface, nullptr,
+                SDLImageHelper::combineSurface(image->mSDLSurface, nullptr,
                     surface, nullptr);
                 ImageWriter::writePNG(image->mSDLSurface,
                     client->getTempDirectory() + "/testimage1.png");
@@ -268,7 +269,7 @@ int TestLauncher::testDye()
                     rect.w, rect.h);
                 if (surface)
                 {
-                    MSDL_gfxBlitRGBA(image->mSDLSurface, nullptr,
+                    SDLImageHelper::combineSurface(image->mSDLSurface, nullptr,
                         surface, nullptr);
                     ImageWriter::writePNG(image->mSDLSurface,
                         client->getTempDirectory() + "/testimage3.png");

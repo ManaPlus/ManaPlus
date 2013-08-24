@@ -39,9 +39,6 @@ class MapLayer;
 
 struct SDL_Surface;
 
-int MSDL_gfxBlitRGBA(SDL_Surface *src, SDL_Rect *srcrect,
-                     SDL_Surface *dst, SDL_Rect *dstrect);
-
 /**
  * A central point of control for graphics.
  */

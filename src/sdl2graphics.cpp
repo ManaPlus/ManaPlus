@@ -41,14 +41,6 @@
 
 #include "debug.h"
 
-int MSDL_gfxBlitRGBA(SDL_Surface *src, SDL_Rect *srcrect,
-                     SDL_Surface *dst, SDL_Rect *dstrect)
-{
-    SDL_SetSurfaceBlendMode (src, SDL_BLENDMODE_BLEND);
-    SDL_BlitSurface(src, srcrect, dst, dstrect);
-    return 1;
-}
-
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN
 static unsigned int *cR = nullptr;
 static unsigned int *cG = nullptr;

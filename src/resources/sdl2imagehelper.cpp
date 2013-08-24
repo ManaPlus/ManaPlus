@@ -163,4 +163,14 @@ SDL_Surface *SDLImageHelper::create32BitSurface(int width, int height) const
         width, height, 32, rmask, gmask, bmask, amask);
 }
 
+int SDLImageHelper::combineSurface(SDL_Surface *const src,
+                                   SDL_Rect *const srcrect,
+                                   SDL_Surface *const dst,
+                                   SDL_Rect *const dstrect)
+{
+    SDL_SetSurfaceBlendMode (src, SDL_BLENDMODE_BLEND);
+    SDL_BlitSurface(src, srcrect, dst, dstrect);
+    return 1;
+}
+
 #endif  // USE_SDL2
