@@ -37,6 +37,7 @@ namespace SDL
 
     void SetWindowIcon(SDL_Window *const window, SDL_Surface *const icon);
 
+    void grabInput(SDL_Window *const window, const bool grab);
 }  // namespace SDL
 
 #endif  // USE_SDL2

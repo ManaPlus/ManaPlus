@@ -73,4 +73,9 @@ void SDL::SetWindowIcon(SDL_Surface *const window A_UNUSED,
     SDL_WM_SetIcon(icon, nullptr);
 }
 
+void SDL::grabInput(SDL_Surface *const window A_UNUSED, const bool grab)
+{
+    SDL_WM_GrabInput(grab ? SDL_GRAB_ON : SDL_GRAB_OFF);
+}
+
 #endif  // USE_SDL2

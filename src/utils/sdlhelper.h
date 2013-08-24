@@ -41,6 +41,7 @@ namespace SDL
     void SetWindowIcon(SDL_Surface *const window A_UNUSED,
                        SDL_Surface *const icon);
 
+    void grabInput(SDL_Surface *const window A_UNUSED, const bool grab);
 }  // namespace SDL
 
 #endif  // USE_SDL2

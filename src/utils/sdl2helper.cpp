@@ -47,4 +47,9 @@ void SDL::SetWindowIcon(SDL_Window *const window, SDL_Surface *const icon)
     SDL_SetWindowIcon(window, icon);
 }
 
+void SDL::grabInput(SDL_Window *const window, const bool grab)
+{
+    SDL_SetWindowGrab(window, grab ? SDL_TRUE : SDL_FALSE);
+}
+
 #endif  // USE_SDL2

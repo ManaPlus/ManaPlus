@@ -2815,12 +2815,8 @@ void Client::resizeVideo(int width, int height, const bool always)
 
 void Client::applyGrabMode()
 {
-#ifdef USE_SDL2
-    // +++ need use SDL_SetWindowGrab
-#else
-    SDL_WM_GrabInput(config.getBoolValue("grabinput")
-        ? SDL_GRAB_ON : SDL_GRAB_OFF);
-#endif
+    SDL::grabInput(mainGraphics->getWindow(),
+        config.getBoolValue("grabinput"));
 }
 
 void Client::applyGamma()
