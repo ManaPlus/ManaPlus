@@ -42,6 +42,10 @@ namespace SDL
                        SDL_Surface *const icon);
 
     void grabInput(SDL_Surface *const window A_UNUSED, const bool grab);
+
+    void setGamma(SDL_Surface *const window A_UNUSED, const float gamma);
+
+    void setVsync(const int val);
 }  // namespace SDL
 
 #endif  // USE_SDL2

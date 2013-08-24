@@ -38,6 +38,10 @@ namespace SDL
     void SetWindowIcon(SDL_Window *const window, SDL_Surface *const icon);
 
     void grabInput(SDL_Window *const window, const bool grab);
+
+    void setGamma(SDL_Window *const window, const float gamma);
+
+    void setVsync(const int val);
 }  // namespace SDL
 
 #endif  // USE_SDL2

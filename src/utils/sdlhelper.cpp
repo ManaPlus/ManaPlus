@@ -78,4 +78,14 @@ void SDL::grabInput(SDL_Surface *const window A_UNUSED, const bool grab)
     SDL_WM_GrabInput(grab ? SDL_GRAB_ON : SDL_GRAB_OFF);
 }
 
+void SDL::setGamma(SDL_Surface *const window A_UNUSED, const float gamma)
+{
+    SDL_SetGamma(gamma, gamma, gamma)
+}
+
+void SDL::setVsync(const int val)
+{
+    SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, val);
+}
+
 #endif  // USE_SDL2

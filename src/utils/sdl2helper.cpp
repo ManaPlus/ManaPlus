@@ -52,4 +52,14 @@ void SDL::grabInput(SDL_Window *const window, const bool grab)
     SDL_SetWindowGrab(window, grab ? SDL_TRUE : SDL_FALSE);
 }
 
+void SDL::setGamma(SDL_Window *const window, const float gamma)
+{
+    SDL_SetWindowBrightness(window, gamma);
+}
+
+void SDL::setVsync(const int val)
+{
+    SDL_GL_SetSwapInterval(val);
+}
+
 #endif  // USE_SDL2

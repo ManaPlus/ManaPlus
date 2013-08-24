@@ -2824,12 +2824,8 @@ void Client::applyGamma()
     if (config.getFloatValue("enableGamma"))
     {
         const float val = config.getFloatValue("gamma");
-#ifdef USE_SDL2
-        if (mainGraphics)
-            SDL_SetWindowBrightness(mainGraphics->getWindow(), val);
-#else
-        SDL_SetGamma(val, val, val);
-#endif
+        SDL::setGamma(mainGraphics->getWindow(),
+            config.getFloatValue("gamma"));
     }
 }
 
@@ -2837,11 +2833,7 @@ void Client::applyVSync()
 {
     const int val = config.getIntValue("vsync");
     if (val > 0 && val < 2)
-#ifdef USE_SDL2
-        SDL_GL_SetSwapInterval(val);
-#else
-        SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, val);
-#endif
+        SDL::setVsync(val);
 }
 
 void Client::applyKeyRepeat()
