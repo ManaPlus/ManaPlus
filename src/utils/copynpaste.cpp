@@ -35,6 +35,10 @@
 
 #include "utils/copynpaste.h"
 
+#include "graphics.h"
+
+#include "utils/sdlhelper.h"
+
 #include <SDL_syswm.h>
 
 #include "debug.h"
@@ -339,12 +343,10 @@ static char* getSelection(Display *const dpy, Window us, Atom selection)
 
 bool retrieveBuffer(std::string& text, size_t& pos)
 {
-// +++ need use SDL_GetWindowWMInfo
-#ifndef USE_SDL2
     SDL_SysWMinfo info;
 
     SDL_VERSION(&info.version);
-    if (SDL_GetWMInfo(&info))
+    if (SDL::getWindowWMInfo(mainGraphics->getWindow(), &info))
     {
         Display *const dpy = info.info.x11.display;
         Window us = info.info.x11.window;
@@ -378,7 +380,6 @@ bool retrieveBuffer(std::string& text, size_t& pos)
             return true;
         }
     }
-#endif
     return false;
 }
 

@@ -303,7 +303,7 @@ bool Graphics::videoInfo()
 #ifdef USE_SDL2
     logger->log("Using video driver: %s", SDL_GetCurrentVideoDriver());
 
-    // +++ probably SDL_GetRendererInfo can be used for info
+    // +++ SDL_GetRendererInfo can be used for software info
 #else
     char videoDriverName[65];
     if (SDL_VideoDriverName(videoDriverName, 64))

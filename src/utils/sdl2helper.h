@@ -27,6 +27,7 @@
 #include "localconsts.h"
 
 struct SDL_Surface;
+struct SDL_SysWMinfo;
 struct SDL_Window;
 
 namespace SDL
@@ -42,6 +43,8 @@ namespace SDL
     void setGamma(SDL_Window *const window, const float gamma);
 
     void setVsync(const int val);
+
+    bool getWindowWMInfo(SDL_Window *const window, SDL_SysWMinfo *const info);
 }  // namespace SDL
 
 #endif  // USE_SDL2

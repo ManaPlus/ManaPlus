@@ -26,6 +26,7 @@
 
 #include "utils/stringutils.h"
 
+#include <SDL_syswm.h>
 #include <SDL_video.h>
 
 #include "debug.h"
@@ -86,6 +87,12 @@ void SDL::setGamma(SDL_Surface *const window A_UNUSED, const float gamma)
 void SDL::setVsync(const int val)
 {
     SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, val);
+}
+
+bool SDL::getWindowWMInfo(SDL_Surface *const window A_UNUSED,
+                          SDL_SysWMinfo *const info)
+{
+    return SDL_GetWMInfo(info);
 }
 
 #endif  // USE_SDL2
