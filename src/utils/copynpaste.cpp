@@ -43,6 +43,27 @@
 
 #include "debug.h"
 
+#ifdef USE_SDL2
+bool retrieveBuffer(std::string& text, size_t& pos)
+{
+    char *buf = SDL_GetClipboardText();
+    if (buf)
+    {
+        text.insert(pos, buf);
+        pos += strlen(buf);
+        SDL_free(buf);
+        return true;
+    }
+    return false;
+}
+
+bool sendBuffer(std::string& text)
+{
+    return !SDL_SetClipboardText(text.c_str());
+}
+
+#else
+
 #ifdef WIN32
 bool retrieveBuffer(std::string& text, size_t& pos)
 {
@@ -455,3 +476,4 @@ bool sendBuffer(std::string& text A_UNUSED)
     return false;
 }
 #endif
+#endif  // USE_SDL2
