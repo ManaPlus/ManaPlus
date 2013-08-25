@@ -53,7 +53,7 @@ namespace SDL
     bool getWindowWMInfo(SDL_Surface *const window A_UNUSED,
                          SDL_SysWMinfo *const info);
 
-    SDL_Thread *createThread(SDL_ThreadFunction fn,
+    SDL_Thread *createThread(int (SDLCALL *fn)(void *),
                              const char *name A_UNUSED, void *data);
 }  // namespace SDL
 

@@ -95,7 +95,7 @@ bool SDL::getWindowWMInfo(SDL_Surface *const window A_UNUSED,
     return SDL_GetWMInfo(info);
 }
 
-SDL_Thread *SDL::createThread(SDL_ThreadFunction fn,
+SDL_Thread *SDL::createThread(int (SDLCALL *fn)(void *),
                               const char *name A_UNUSED, void *data)
 {
     return SDL_CreateThread(fn, data);
