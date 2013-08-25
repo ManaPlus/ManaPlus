@@ -313,10 +313,7 @@ unsigned int CompoundSprite::getFrameCount(unsigned int layer)
 
 void CompoundSprite::redraw() const
 {
-#ifdef USE_SDL2
-    // +++ need impliment after
-    return;
-#else
+#ifndef USE_SDL2
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;
@@ -417,6 +414,7 @@ void CompoundSprite::setAlpha(float alpha)
 
 void CompoundSprite::updateImages() const
 {
+#ifndef USE_SDL2
 #ifdef USE_OPENGL
     if (imageHelper->useOpenGL())
         return;
@@ -450,10 +448,12 @@ void CompoundSprite::updateImages() const
             redraw();
         }
     }
+#endif
 }
 
 bool CompoundSprite::updateFromCache() const
 {
+#ifndef USE_SDL2
 //    static int hits = 0;
 //    static int miss = 0;
 
@@ -516,6 +516,7 @@ bool CompoundSprite::updateFromCache() const
     mImage = nullptr;
     mAlphaImage = nullptr;
 //    miss++;
+#endif
     return false;
 }
 

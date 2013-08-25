@@ -122,6 +122,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     new SetupItemLabel(_("Small memory (enable for lower memory usage)"),
          "", this);
 
+#ifndef USE_SDL2
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Disable advanced beings caching (Software)"), "",
         "disableAdvBeingCaching", this, "disableAdvBeingCachingEvent");
@@ -129,7 +130,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Disable beings caching (Software)"), "",
         "disableBeingCaching", this, "disableBeingCachingEvent");
-
+#endif
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Different options (enable or disable can "
