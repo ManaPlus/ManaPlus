@@ -1439,11 +1439,15 @@ void Map::clearIndexedTilesets()
 
 void Map::reduce()
 {
+#ifdef USE_SDL2
+    return;
+#else
     if (!mFringeLayer || mOpenGL > 0 ||
         !config.getBoolValue("enableMapReduce"))
     {
         return;
     }
+#endif
 
     int cnt = 0;
     for (int x = 0; x < mWidth; x ++)

@@ -81,9 +81,11 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable opacity cache (Software, can "
         "use much memory)"), "", "alphaCache", this, "alphaCacheEvent");
 
+#ifndef USE_SDL2
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable map reduce (Software)"), "",
         "enableMapReduce", this, "enableMapReduceEvent");
+#endif
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable compound sprite delay (Software)"), "",
