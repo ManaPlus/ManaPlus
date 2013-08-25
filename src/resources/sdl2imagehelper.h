@@ -94,11 +94,19 @@ class SDLImageHelper final : public ImageHelper
                                   SDL_Surface *const dst,
                                   SDL_Rect *const dstrect);
 
+#ifdef USE_SDL2
+        static void setRenderer(SDL_Renderer *const renderer)
+        { mRenderer = renderer; }
+#endif
+
     protected:
         /** SDL_Surface to SDL_Surface Image loader */
         Image *_SDLload(SDL_Surface *tmpImage) const A_WARN_UNUSED;
 
         static bool mEnableAlphaCache;
+#ifdef USE_SDL2
+        static SDL_Renderer *mRenderer;
+#endif
 };
 
 #endif  // USE_SDL2

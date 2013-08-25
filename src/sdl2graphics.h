@@ -135,15 +135,6 @@ class SDLGraphics : public Graphics
                                 const int width, const int height,
                                 const bool useColor);
 
-        int SDL_FakeUpperBlit(const SDL_Surface *const src,
-                              SDL_Rect *const srcrect,
-                              const SDL_Surface *const dst,
-                              SDL_Rect *dstrect) const;
-
-        void drawHLine(int x1, int y, int x2);
-
-        void drawVLine(int x, int y1, int y2);
-
         uint32_t mOldPixel;
         int mOldAlpha;
 };

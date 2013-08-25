@@ -120,7 +120,7 @@ Image *SurfaceImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     SDL_Surface *image = SDLDuplicateSurface(tmpImage);
 
     img = new Image(image, hasAlpha, alphaChannel);
-    img->mAlpha = alpha;
+    img->setAlpha(alpha);
     return img;
 }
 

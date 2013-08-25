@@ -374,7 +374,9 @@ SDL_Renderer *GraphicsManager::createRenderer(SDL_Window *const window,
                                               const int flags)
 {
     // +++ need use different drivers and different flags
-    return SDL_CreateRenderer(window, -1, flags);
+    SDL_Renderer *const renderer = SDL_CreateRenderer(window, -1, flags);
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    return renderer;
 }
 #endif
 

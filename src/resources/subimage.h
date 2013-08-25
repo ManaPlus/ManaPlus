@@ -50,6 +50,10 @@ class SubImage final : public Image
         /**
          * Constructor.
          */
+#ifdef USE_SDL2
+        SubImage(Image *const parent, SDL_Texture *const image,
+                 const int x, const int y, const int width, const int height);
+#endif
         SubImage(Image *const parent, SDL_Surface *const image,
                  const int x, const int y, const int width, const int height);
 #ifdef USE_OPENGL

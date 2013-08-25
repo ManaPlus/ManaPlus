@@ -36,6 +36,59 @@
 
 #include "debug.h"
 
+#ifdef USE_SDL2
+SubImage::SubImage(Image *const parent, SDL_Texture *const image,
+                   const int x, const int y,
+                   const int width, const int height) :
+    Image(image, width, height),
+    mInternalBounds(),
+    mParent(parent)
+{
+    if (mParent)
+    {
+        mParent->incRef();
+        mParent->SDLTerminateAlphaCache();
+        mHasAlphaChannel = mParent->hasAlphaChannel();
+        mIsAlphaVisible = mHasAlphaChannel;
+        mAlphaChannel = mParent->SDLgetAlphaChannel();
+        mSource = parent->getIdPath();
+#ifdef DEBUG_IMAGES
+        logger->log("set name2 %p, %s", this, mSource.c_str());
+#endif
+#ifdef DEBUG_BIND_TEXTURE
+        mIdPath = parent->getIdPath();
+#endif
+    }
+    else
+    {
+        mHasAlphaChannel = false;
+        mIsAlphaVisible = false;
+        mAlphaChannel = nullptr;
+    }
+
+    // Set up the rectangle.
+    mBounds.x = static_cast<int16_t>(x);
+    mBounds.y = static_cast<int16_t>(y);
+    mBounds.w = static_cast<uint16_t>(width);
+    mBounds.h = static_cast<uint16_t>(height);
+    if (mParent)
+    {
+        mInternalBounds.x = mParent->mBounds.x;
+        mInternalBounds.y = mParent->mBounds.y;
+        mInternalBounds.w = mParent->mBounds.w;
+        mInternalBounds.h = mParent->mBounds.h;
+    }
+    else
+    {
+        mInternalBounds.x = 0;
+        mInternalBounds.y = 0;
+        mInternalBounds.w = 1;
+        mInternalBounds.h = 1;
+    }
+    mUseAlphaCache = false;
+}
+#endif
+
 SubImage::SubImage(Image *const parent, SDL_Surface *const image,
                    const int x, const int y,
                    const int width, const int height) :

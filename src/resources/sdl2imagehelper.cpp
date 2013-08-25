@@ -38,6 +38,9 @@
 #include "debug.h"
 
 bool SDLImageHelper::mEnableAlphaCache = false;
+#ifdef USE_SDL2
+SDL_Renderer *SDLImageHelper::mRenderer = nullptr;
+#endif
 
 Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
 {
@@ -114,13 +117,9 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     if (!tmpImage)
         return nullptr;
 
-    Image *img;
-    bool hasAlpha = false;
-    uint8_t *alphaChannel = nullptr;
-    SDL_Surface *image = SDLDuplicateSurface(tmpImage);
-
-    img = new Image(image, hasAlpha, alphaChannel);
-    img->mAlpha = alpha;
+    Image *const img = _SDLload(tmpImage);
+    if (img)
+        img->setAlpha(alpha);
     return img;
 }
 
@@ -137,8 +136,12 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
     if (!tmpImage)
         return nullptr;
 
-    SDL_Surface *image = convertTo32Bit(tmpImage);
-    return new Image(image, false, nullptr);
+    SDL_Texture *const texture = SDL_CreateTextureFromSurface(
+        mRenderer, tmpImage);
+    if (!texture)
+        return nullptr;
+    SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
+    return new Image(texture, tmpImage->w, tmpImage->h);
 }
 
 int SDLImageHelper::useOpenGL() const

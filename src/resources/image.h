@@ -199,9 +199,16 @@ class Image : public Resource
         Image(SDL_Surface *const image, const bool hasAlphaChannel = false,
               uint8_t *const alphaChannel = nullptr);
 
+#ifdef USE_SDL2
+        Image(SDL_Texture *const image, const int width, const int height);
+#endif
+
         SDL_Surface *getByAlpha(const float alpha) A_WARN_UNUSED;
 
         SDL_Surface *mSDLSurface;
+#ifdef USE_SDL2
+        SDL_Texture *mTexture;
+#endif
 
         /** Alpha Channel pointer used for 32bit based SDL surfaces */
         uint8_t *mAlphaChannel;

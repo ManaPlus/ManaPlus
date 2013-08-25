@@ -46,6 +46,50 @@
 
 #include "debug.h"
 
+#ifdef USE_SDL2
+Image::Image(SDL_Texture *const image, const int width, const int height) :
+    Resource(),
+#ifdef USE_OPENGL
+    mGLImage(0),
+    mTexWidth(0),
+    mTexHeight(0),
+#endif
+    mBounds(),
+    mAlpha(1.0f),
+    mSDLSurface(nullptr),
+    mTexture(image),
+    mAlphaChannel(nullptr),
+    mAlphaCache(),
+    mLoaded(false),
+    mHasAlphaChannel(false),
+    mUseAlphaCache(false),
+    mIsAlphaVisible(true),
+    mIsAlphaCalculated(false)
+{
+#ifdef DEBUG_IMAGES
+    logger->log("created: %p", this);
+#endif
+
+    mBounds.x = 0;
+    mBounds.y = 0;
+
+    if (mTexture)
+    {
+        mBounds.w = static_cast<uint16_t>(width);
+        mBounds.h = static_cast<uint16_t>(height);
+
+        mLoaded = true;
+    }
+    else
+    {
+        logger->log("Image::Image(SDL_Texture *const image):"
+            " Couldn't load invalid Surface!");
+        mBounds.w = 0;
+        mBounds.h = 0;
+    }
+}
+#endif
+
 Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
              uint8_t *const alphaChannel) :
     Resource(),
@@ -57,6 +101,9 @@ Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
     mBounds(),
     mAlpha(1.0f),
     mSDLSurface(image),
+#ifdef USE_SDL2
+    mTexture(nullptr),
+#endif
     mAlphaChannel(alphaChannel),
     mAlphaCache(),
     mLoaded(false),
@@ -98,6 +145,9 @@ Image::Image(const GLuint glimage, const int width, const int height,
     mBounds(),
     mAlpha(1.0f),
     mSDLSurface(nullptr),
+#ifdef USE_SDL2
+    mTexture(nullptr),
+#endif
     mAlphaChannel(nullptr),
     mAlphaCache(),
     mLoaded(false),
@@ -164,6 +214,13 @@ void Image::unload()
         delete [] mAlphaChannel;
         mAlphaChannel = nullptr;
     }
+#ifdef USE_SDL2
+    if (mTexture)
+    {
+        SDL_DestroyTexture(mTexture);
+        mTexture = nullptr;
+    }
+#endif
 
 #ifdef USE_OPENGL
     if (mGLImage)
@@ -257,11 +314,11 @@ void Image::setAlpha(const float alpha)
 
         if (!mHasAlphaChannel)
         {
-            // Set the alpha value this image is drawn at
 #ifdef USE_SDL2
             SDL_SetSurfaceAlphaMod(mSDLSurface,
                 static_cast<unsigned char>(255 * mAlpha));
 #else
+            // Set the alpha value this image is drawn at
             SDL_SetAlpha(mSDLSurface, SDL_SRCALPHA,
                 static_cast<unsigned char>(255 * mAlpha));
 #endif
@@ -302,6 +359,14 @@ void Image::setAlpha(const float alpha)
                 SDL_UnlockSurface(mSDLSurface);
         }
     }
+#ifdef USE_SDL2
+    else if (mTexture)
+    {
+        mAlpha = alpha;
+        SDL_SetTextureAlphaMod(mTexture,
+            static_cast<unsigned char>(255 * mAlpha));
+    }
+#endif
     else
     {
         mAlpha = alpha;
@@ -352,7 +417,11 @@ Image *Image::getSubImage(const int x, const int y,
     }
 #endif
 
+#ifdef USE_SDL2
+    return new SubImage(this, mTexture, x, y, width, height);
+#else
     return new SubImage(this, mSDLSurface, x, y, width, height);
+#endif
 }
 
 void Image::SDLTerminateAlphaCache()
