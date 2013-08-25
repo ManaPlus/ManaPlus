@@ -2824,7 +2824,6 @@ void Client::applyGamma()
 {
     if (config.getFloatValue("enableGamma"))
     {
-        const float val = config.getFloatValue("gamma");
         SDL::setGamma(mainGraphics->getWindow(),
             config.getFloatValue("gamma"));
     }
