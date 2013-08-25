@@ -1279,9 +1279,9 @@ void showRes(std::string str, ResourceManager::Resources *res)
     if (!res)
         return;
 
-    str.append(toString(res->size());
+    str.append(toString(res->size()));
     if (debugChatTab)
-        debugChatTab->chatLog(str));
+        debugChatTab->chatLog(str);
     logger->log(str);
     ResourceManager::ResourceIterator iter = res->begin();
     const ResourceManager::ResourceIterator iter_end = res->end();
@@ -1306,8 +1306,8 @@ void showRes(std::string str, ResourceManager::Resources *res)
                 type = 'I';
             if (image)
                 id = image->getGLImage();
-            logger->log("Resource %c%c: %s (%d) id=%d", type.c_str(),
-                isNew.c_str(), iter->second->getIdPath().c_str(),
+            logger->log("Resource %c%c: %s (%d) id=%d", type,
+                isNew, iter->second->getIdPath().c_str(),
                 iter->second->getRefCount(), id);
         }
         ++ iter;
