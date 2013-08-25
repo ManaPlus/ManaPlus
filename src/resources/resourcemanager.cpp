@@ -528,7 +528,7 @@ Resource *ResourceManager::get(const std::string &idPath, const generator fun,
     }
     else
     {
-        logger->log("Error loaging image: " + idPath);
+        logger->log("Error loading image: " + idPath);
     }
 #else
     Resource *resource = fun(data);
@@ -543,7 +543,7 @@ Resource *ResourceManager::get(const std::string &idPath, const generator fun,
     }
     else
     {
-        logger->log("Error loaging image: " + idPath);
+        logger->log("Error loading image: " + idPath);
     }
 #endif
 
