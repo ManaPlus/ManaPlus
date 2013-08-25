@@ -139,7 +139,10 @@ void Desktop::setBestFittingWallpaper()
     if (nWallPaper)
     {
         if (mWallpaper)
+        {
             mWallpaper->decRef();
+            mWallpaper = nullptr;
+        }
 
         const gcn::Rectangle &rect = mDimension;
         const int width = rect.width;
@@ -153,12 +156,16 @@ void Desktop::setBestFittingWallpaper()
             Image *const newRsclWlPpr = ResourceManager::getInstance()
                 ->getRescaled(nWallPaper, width, height);
 
-            // We replace the resource in the resource manager
-            nWallPaper->decRef();
             if (newRsclWlPpr)
+            {
+                // We replace the resource in the resource manager
+                nWallPaper->decRef();
                 mWallpaper = newRsclWlPpr;
+            }
             else
+            {
                 mWallpaper = nWallPaper;
+            }
         }
         else
         {
