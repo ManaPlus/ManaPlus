@@ -38,7 +38,7 @@
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/imagewriter.h"
-#include "resources/sdlimagehelper.h"
+#include "resources/surfaceimagehelper.h"
 #include "resources/wallpaper.h"
 
 #include <unistd.h>
@@ -241,16 +241,16 @@ int TestLauncher::testDye()
 
     if (rw)
     {
-        Image *image = d ? sdlImageHelper->load(rw, *d)
-            : sdlImageHelper->load(rw);
+        Image *image = d ? surfaceImageHelper->load(rw, *d)
+            : surfaceImageHelper->load(rw);
         if (image)
         {
             const SDL_Rect &rect = image->mBounds;
-            SDL_Surface *surface = sdlImageHelper->create32BitSurface(
+            SDL_Surface *surface = surfaceImageHelper->create32BitSurface(
                 rect.w, rect.h);
             if (surface)
             {
-                SDLImageHelper::combineSurface(image->mSDLSurface, nullptr,
+                SurfaceImageHelper::combineSurface(image->mSDLSurface, nullptr,
                     surface, nullptr);
                 ImageWriter::writePNG(image->mSDLSurface,
                     client->getTempDirectory() + "/testimage1.png");
@@ -261,16 +261,16 @@ int TestLauncher::testDye()
             rw = PHYSFSRWOPS_openRead(
                 "graphics/sprites/arrow_up.png");
             d = new Dye("S:#0000ff,00ff00,5c5cff,ff0000");
-            image = d ? sdlImageHelper->load(rw, *d)
-                : sdlImageHelper->load(rw);
+            image = d ? surfaceImageHelper->load(rw, *d)
+                : surfaceImageHelper->load(rw);
             if (image)
             {
-                surface = sdlImageHelper->create32BitSurface(
+                surface = surfaceImageHelper->create32BitSurface(
                     rect.w, rect.h);
                 if (surface)
                 {
-                    SDLImageHelper::combineSurface(image->mSDLSurface, nullptr,
-                        surface, nullptr);
+                    SurfaceImageHelper::combineSurface(image->mSDLSurface,
+                        nullptr, surface, nullptr);
                     ImageWriter::writePNG(image->mSDLSurface,
                         client->getTempDirectory() + "/testimage3.png");
                     ImageWriter::writePNG(surface,

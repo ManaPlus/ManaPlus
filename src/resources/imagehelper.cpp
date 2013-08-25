@@ -36,7 +36,7 @@
 #include "debug.h"
 
 ImageHelper *imageHelper = nullptr;
-ImageHelper *sdlImageHelper = nullptr;
+ImageHelper *surfaceImageHelper = nullptr;
 
 bool ImageHelper::mEnableAlpha = true;
 

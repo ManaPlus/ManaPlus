@@ -32,7 +32,7 @@
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
-#include "resources/sdlimagehelper.h"
+#include "resources/surfaceimagehelper.h"
 
 #include <guichan/exception.hpp>
 
@@ -196,17 +196,22 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
             static_cast<Uint16>(surface->w),
             static_cast<Uint16>(surface->h)
         };
-        SDLImageHelper::combineSurface(surface2, nullptr, background, &rect);
+        SurfaceImageHelper::combineSurface(surface2, nullptr,
+            background, &rect);
         rect.x = -OUTLINE_SIZE;
-        SDLImageHelper::combineSurface(surface2, nullptr, background, &rect);
+        SurfaceImageHelper::combineSurface(surface2, nullptr,
+            background, &rect);
         rect.x = 0;
         rect.y = -OUTLINE_SIZE;
-        SDLImageHelper::combineSurface(surface2, nullptr, background, &rect);
+        SurfaceImageHelper::combineSurface(surface2, nullptr,
+            background, &rect);
         rect.y = OUTLINE_SIZE;
-        SDLImageHelper::combineSurface(surface2, nullptr, background, &rect);
+        SurfaceImageHelper::combineSurface(surface2, nullptr,
+            background, &rect);
         rect.x = 0;
         rect.y = 0;
-        SDLImageHelper::combineSurface(surface, nullptr, background, &rect);
+        SurfaceImageHelper::combineSurface(surface, nullptr,
+            background, &rect);
         SDL_FreeSurface(surface);
         SDL_FreeSurface(surface2);
         surface = background;

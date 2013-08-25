@@ -88,7 +88,7 @@
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 #include "resources/palettedb.h"
-#include "resources/sdlimagehelper.h"
+#include "resources/surfaceimagehelper.h"
 #include "resources/sounddb.h"
 #include "resources/itemdb.h"
 #include "resources/mapdb.h"
@@ -565,13 +565,14 @@ void Client::gameInit()
 #ifdef USE_OPENGL
     openGLMode = config.getIntValue("opengl");
     OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
-    SDLImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache")
-        && !openGLMode);
+    SurfaceImageHelper::SDLSetEnableAlphaCache(
+        config.getBoolValue("alphaCache") && !openGLMode);
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f
         || openGLMode);
 #else
     openGLMode = 0;
-    SDLImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache"));
+    SurfaceImageHelper::SDLSetEnableAlphaCache(
+        config.getBoolValue("alphaCache"));
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
 #endif
     logVars();
@@ -802,9 +803,9 @@ void Client::gameClear()
     delete mainGraphics;
     mainGraphics = nullptr;
 
-    if (imageHelper != sdlImageHelper)
-        delete sdlImageHelper;
-    sdlImageHelper = nullptr;
+    if (imageHelper != surfaceImageHelper)
+        delete surfaceImageHelper;
+    surfaceImageHelper = nullptr;
     delete imageHelper;
     imageHelper = nullptr;
 

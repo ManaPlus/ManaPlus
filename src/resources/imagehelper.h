@@ -105,5 +105,5 @@ class ImageHelper
 };
 
 extern ImageHelper *imageHelper;
-extern ImageHelper *sdlImageHelper;
+extern ImageHelper *surfaceImageHelper;
 #endif  // RESOURCES_IMAGEHELPER_H

@@ -503,6 +503,8 @@ SET(SRCS
     resources/spritedef.cpp
     resources/subimage.cpp
     resources/subimage.h
+    resources/surfaceimagehelper.cpp
+    resources/surfaceimagehelper.h
     resources/wallpaper.cpp
     resources/wallpaper.h
     utils/translation/podict.cpp

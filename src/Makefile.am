@@ -512,6 +512,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/spritedef.h \
 	      resources/subimage.cpp \
 	      resources/subimage.h \
+	      resources/surfaceimagehelper.cpp \
+	      resources/surfaceimagehelper.h \
 	      resources/wallpaper.cpp \
 	      resources/wallpaper.h \
 	      utils/translation/podict.cpp \

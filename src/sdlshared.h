@@ -58,6 +58,7 @@
 
 #define SDL_Window SDL_Surface
 #define SDL_JoystickNameForIndex SDL_JoystickName
+#define SurfaceImageHelper SDLImageHelper
 
 #endif  // USE_SDL2
 

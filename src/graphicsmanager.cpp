@@ -47,6 +47,7 @@
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 #include "resources/sdlimagehelper.h"
+#include "resources/surfaceimagehelper.h"
 
 #include "utils/paths.h"
 #include "utils/sdlhelper.h"
@@ -229,7 +230,11 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
     {
         case 0:
             imageHelper = new SDLImageHelper;
-            sdlImageHelper = imageHelper;
+#ifdef USE_SDL2
+            surfaceImageHelper = new SurfaceImageHelper;
+#else
+            surfaceImageHelper = imageHelper;
+#endif
             mainGraphics = new SDLGraphics;
             mUseTextureSampler = false;
             break;
@@ -237,20 +242,20 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
         default:
 #ifndef ANDROID
             imageHelper = new OpenGLImageHelper;
-            sdlImageHelper = new SDLImageHelper;
+            surfaceImageHelper = new SurfaceImageHelper;
             mainGraphics = new NormalOpenGLGraphics;
             mUseTextureSampler = true;
             break;
         case 2:
             imageHelper = new OpenGLImageHelper;
-            sdlImageHelper = new SDLImageHelper;
+            surfaceImageHelper = new SurfaceImageHelper;
             mainGraphics = new SafeOpenGLGraphics;
             mUseTextureSampler = false;
             break;
 #endif
         case 3:
             imageHelper = new OpenGLImageHelper;
-            sdlImageHelper = new SDLImageHelper;
+            surfaceImageHelper = new SurfaceImageHelper;
             mainGraphics = new MobileOpenGLGraphics;
             mUseTextureSampler = false;
             break;
@@ -262,7 +267,11 @@ void GraphicsManager::initGraphics(const bool noOpenGL A_UNUSED)
 {
     // Create the graphics context
     imageHelper = new SDLImageHelper;
-    sdlImageHelper = imageHelper;
+#ifdef USE_SDL2
+    surfaceImageHelper = new SurfaceImageHelper;
+#else
+    surfaceImageHelper = imageHelper;
+#endif
     mainGraphics = new SDLGraphics;
 #endif
 }

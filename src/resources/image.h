@@ -58,6 +58,9 @@ class Image : public Resource
     friend class SDLGraphics;
     friend class SDLImageHelper;
     friend class SurfaceGraphics;
+#ifdef USE_SDL2
+    friend class SurfaceImageHelper;
+#endif
     friend class TestLauncher;
 #ifdef USE_OPENGL
     friend class AtlasManager;

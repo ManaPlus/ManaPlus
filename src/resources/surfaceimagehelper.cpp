@@ -22,7 +22,7 @@
 
 #ifdef USE_SDL2
 
-#include "resources/sdl2imagehelper.h"
+#include "resources/surfaceimagehelper.h"
 
 #include "resources/dye.h"
 #include "resources/resourcemanager.h"
@@ -37,9 +37,9 @@
 
 #include "debug.h"
 
-bool SDLImageHelper::mEnableAlphaCache = false;
+bool SurfaceImageHelper::mEnableAlphaCache = false;
 
-Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
+Image *SurfaceImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
 {
     SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)
@@ -101,15 +101,15 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
     return image;
 }
 
-Image *SDLImageHelper::load(SDL_Surface *const tmpImage) const
+Image *SurfaceImageHelper::load(SDL_Surface *const tmpImage) const
 {
     return _SDLload(tmpImage);
 }
 
-Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
-                                         const int width A_UNUSED,
-                                         const int height A_UNUSED,
-                                         const float alpha) const
+Image *SurfaceImageHelper::createTextSurface(SDL_Surface *const tmpImage,
+                                             const int width A_UNUSED,
+                                             const int height A_UNUSED,
+                                             const float alpha) const
 {
     if (!tmpImage)
         return nullptr;
@@ -124,7 +124,8 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     return img;
 }
 
-SDL_Surface* SDLImageHelper::SDLDuplicateSurface(SDL_Surface *const tmpImage)
+SDL_Surface* SurfaceImageHelper::SDLDuplicateSurface(SDL_Surface *const
+                                                     tmpImage)
 {
     if (!tmpImage || !tmpImage->format)
         return nullptr;
@@ -132,7 +133,7 @@ SDL_Surface* SDLImageHelper::SDLDuplicateSurface(SDL_Surface *const tmpImage)
     return SDL_ConvertSurface(tmpImage, tmpImage->format, SDL_SWSURFACE);
 }
 
-Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
+Image *SurfaceImageHelper::_SDLload(SDL_Surface *tmpImage) const
 {
     if (!tmpImage)
         return nullptr;
@@ -141,12 +142,12 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
     return new Image(image, false, nullptr);
 }
 
-int SDLImageHelper::useOpenGL() const
+int SurfaceImageHelper::useOpenGL() const
 {
     return 0;
 }
 
-SDL_Surface *SDLImageHelper::create32BitSurface(int width, int height) const
+SDL_Surface *SurfaceImageHelper::create32BitSurface(int width, int height) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;
@@ -164,10 +165,10 @@ SDL_Surface *SDLImageHelper::create32BitSurface(int width, int height) const
         width, height, 32, rmask, gmask, bmask, amask);
 }
 
-int SDLImageHelper::combineSurface(SDL_Surface *const src,
-                                   SDL_Rect *const srcrect,
-                                   SDL_Surface *const dst,
-                                   SDL_Rect *const dstrect)
+int SurfaceImageHelper::combineSurface(SDL_Surface *const src,
+                                       SDL_Rect *const srcrect,
+                                       SDL_Surface *const dst,
+                                       SDL_Rect *const dstrect)
 {
     SDL_SetSurfaceBlendMode (src, SDL_BLENDMODE_BLEND);
     SDL_BlitSurface(src, srcrect, dst, dstrect);
