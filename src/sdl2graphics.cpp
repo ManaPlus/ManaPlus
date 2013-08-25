@@ -73,14 +73,6 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
     if (!image->mTexture)
         return false;
 
-    Image *const tmpImage = image->SDLgetScaledImage(
-        desiredWidth, desiredHeight);
-
-    if (!tmpImage)
-        return false;
-    if (!tmpImage->mTexture)
-        return false;
-
     dstX += mClipStack.top().xOffset;
     dstY += mClipStack.top().yOffset;
 
@@ -95,15 +87,11 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
     srcRect.y = static_cast<int16_t>(srcY);
     srcRect.w = static_cast<uint16_t>(width);
     srcRect.h = static_cast<uint16_t>(height);
+    dstRect.w = static_cast<uint16_t>(desiredWidth);
+    dstRect.h = static_cast<uint16_t>(desiredHeight);
 
-    // +++ dstRect.w/h
-
-    const bool returnValue = (SDL_RenderCopy(mRenderer, tmpImage->mTexture,
+    return (SDL_RenderCopy(mRenderer, image->mTexture,
         &srcRect, &dstRect) < 0);
-
-    delete tmpImage;
-
-    return returnValue;
 }
 
 bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,

@@ -99,6 +99,7 @@ void Desktop::draw(gcn::Graphics *graphics)
             g->fillRectangle(gcn::Rectangle(0, 0, width, height));
         }
 
+#ifndef USE_SDL2
         if (!imageHelper->useOpenGL())
         {
             g->drawImage(mWallpaper,
@@ -106,6 +107,7 @@ void Desktop::draw(gcn::Graphics *graphics)
                 (height - wallpHeight) / 2);
         }
         else
+#endif
         {
             g->drawRescaledImage(mWallpaper, 0, 0, 0, 0,
                 wallpWidth, wallpHeight,
@@ -148,8 +150,12 @@ void Desktop::setBestFittingWallpaper()
         const int width = rect.width;
         const int height = rect.height;
 
-        if (!imageHelper->useOpenGL()
-            && (nWallPaper->getWidth() != width
+#ifdef USE_SDL2
+        if (false &&
+#else
+        if (!imageHelper->useOpenGL() &&
+#endif
+            (nWallPaper->getWidth() != width
             || nWallPaper->getHeight() != height))
         {
             // We rescale to obtain a fullscreen wallpaper...
