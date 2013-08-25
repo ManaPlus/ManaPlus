@@ -28,6 +28,10 @@
 #include "safeopenglgraphics.h"
 #endif
 
+#ifdef DEBUG_IMAGES
+#include "logger.h"
+#endif
+
 #include "client.h"
 
 #include "debug.h"
@@ -47,6 +51,9 @@ SubImage::SubImage(Image *const parent, SDL_Surface *const image,
         mIsAlphaVisible = mHasAlphaChannel;
         mAlphaChannel = mParent->SDLgetAlphaChannel();
         mSource = parent->getIdPath();
+#ifdef DEBUG_IMAGES
+        logger->log("set name2 %p, %s", this, mSource.c_str());
+#endif
 #ifdef DEBUG_BIND_TEXTURE
         mIdPath = parent->getIdPath();
 #endif
@@ -103,6 +110,9 @@ SubImage::SubImage(Image *const parent, const GLuint image,
         mInternalBounds.w = mParent->mBounds.w;
         mInternalBounds.h = mParent->mBounds.h;
         mSource = parent->getIdPath();
+#ifdef DEBUG_IMAGES
+        logger->log("set name2 %p, %s", this, mSource.c_str());
+#endif
 #ifdef DEBUG_BIND_TEXTURE
         mIdPath = parent->getIdPath();
 #endif

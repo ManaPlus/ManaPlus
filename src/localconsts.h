@@ -81,4 +81,7 @@
 // draw calls
 // #define DEBUG_DRAW_CALLS 1
 
+// debug images usage
+#define DEBUG_IMAGES 1
+
 #include "utils/perfomance.h"
