@@ -111,15 +111,13 @@ static inline void drawQuad(const Image *const image,
 {
 //    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
         // Find OpenGL normalized texture coordinates.
-        const float texX1 = static_cast<float>(srcX) /
-                            static_cast<float>(image->mTexWidth);
-        const float texY1 = static_cast<float>(srcY) /
-                            static_cast<float>(image->mTexHeight);
-        const float texX2 = static_cast<float>(srcX + width) /
-                            static_cast<float>(image->mTexWidth);
-        const float texY2 = static_cast<float>(srcY + height) /
-                            static_cast<float>(image->mTexHeight);
+        const float texX1 = static_cast<float>(srcX) / tw;
+        const float texY1 = static_cast<float>(srcY) / th;
+        const float texX2 = static_cast<float>(srcX + width) / tw;
+        const float texY2 = static_cast<float>(srcY + height) / th;
 
         GLfloat tex[] =
         {
@@ -157,15 +155,13 @@ static inline void drawRescaledQuad(const Image *const image,
 {
 //    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
         // Find OpenGL normalized texture coordinates.
-        const float texX1 = static_cast<float>(srcX) /
-                            static_cast<float>(image->mTexWidth);
-        const float texY1 = static_cast<float>(srcY) /
-                            static_cast<float>(image->mTexHeight);
-        const float texX2 = static_cast<float>(srcX + width) /
-                            static_cast<float>(image->mTexWidth);
-        const float texY2 = static_cast<float>(srcY + height) /
-                            static_cast<float>(image->mTexHeight);
+        const float texX1 = static_cast<float>(srcX) / tw;
+        const float texY1 = static_cast<float>(srcY) / th;
+        const float texX2 = static_cast<float>(srcX + width) / tw;
+        const float texY2 = static_cast<float>(srcY + height) / th;
 
         GLfloat tex[] =
         {
@@ -207,8 +203,6 @@ bool MobileOpenGLGraphics::drawImage2(const Image *const image,
         return false;
 
     const SDL_Rect &imageRect = image->mBounds;
-    srcX += imageRect.x;
-    srcY += imageRect.y;
 
     if (!useColor)
         setColorAlpha(image->mAlpha);
@@ -220,7 +214,8 @@ bool MobileOpenGLGraphics::drawImage2(const Image *const image,
 
     setTexturingAndBlending(true);
 
-    drawQuad(image, srcX, srcY, dstX, dstY, width, height);
+    drawQuad(image, srcX + imageRect.x, srcY + imageRect.y,
+        dstX, dstY, width, height);
 
     return true;
 }
@@ -923,7 +918,8 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
     const unsigned int lineSize = 3 * w;
     GLubyte *const buf = static_cast<GLubyte*>(malloc(lineSize));
 
-    for (int i = 0; i < (h / 2); i++)
+    const int h2 = h / 2;
+    for (int i = 0; i < h2; i++)
     {
         GLubyte *const top = static_cast<GLubyte*>(
             screenshot->pixels) + lineSize * i;

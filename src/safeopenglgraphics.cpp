@@ -74,15 +74,13 @@ static inline void drawQuad(const Image *image,
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
         // Find OpenGL normalized texture coordinates.
-        const float texX1 = static_cast<float>(srcX)
-            / static_cast<float>(image->mTexWidth);
-        const float texY1 = static_cast<float>(srcY)
-            / static_cast<float>(image->mTexHeight);
-        const float texX2 = static_cast<float>(srcX + width)
-            / static_cast<float>(image->mTexWidth);
-        const float texY2 = static_cast<float>(srcY + height)
-            / static_cast<float>(image->mTexHeight);
+        const float texX1 = static_cast<float>(srcX) / tw;
+        const float texY1 = static_cast<float>(srcY) / th;
+        const float texX2 = static_cast<float>(srcX + width) / tw;
+        const float texY2 = static_cast<float>(srcY + height) / th;
 
         glTexCoord2f(texX1, texY1);
         glVertex2i(dstX, dstY);
@@ -115,15 +113,13 @@ static inline void drawRescaledQuad(const Image *const image,
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
         // Find OpenGL normalized texture coordinates.
-        const float texX1 = static_cast<float>(srcX)
-            / static_cast<float>(image->mTexWidth);
-        const float texY1 = static_cast<float>(srcY)
-            / static_cast<float>(image->mTexHeight);
-        const float texX2 = static_cast<float>(srcX + width)
-            / static_cast<float>(image->mTexWidth);
-        const float texY2 = static_cast<float>(srcY + height)
-            / static_cast<float>(image->mTexHeight);
+        const float texX1 = static_cast<float>(srcX) / tw;
+        const float texY1 = static_cast<float>(srcY) / th;
+        const float texX2 = static_cast<float>(srcX + width) / tw;
+        const float texY2 = static_cast<float>(srcY + height) / th;
 
         glTexCoord2f(texX1, texY1);
         glVertex2i(dstX, dstY);
@@ -158,9 +154,6 @@ bool SafeOpenGLGraphics::drawImage2(const Image *const image,
     if (!image)
         return false;
 
-    srcX += image->mBounds.x;
-    srcY += image->mBounds.y;
-
     if (!useColor)
         setColorAlpha(image->mAlpha);
 
@@ -170,7 +163,8 @@ bool SafeOpenGLGraphics::drawImage2(const Image *const image,
 
     // Draw a textured quad.
     glBegin(GL_QUADS);
-    drawQuad(image, srcX, srcY, dstX, dstY, width, height);
+    drawQuad(image, srcX + image->mBounds.x, srcY + image->mBounds.y,
+        dstX, dstY, width, height);
     glEnd();
 
     return true;
@@ -258,13 +252,14 @@ void SafeOpenGLGraphics::drawImagePattern(const Image *const image,
     if (!image)
         return;
 
-    const int iw = image->mBounds.w;
-    const int ih = image->mBounds.h;
+    const SDL_Rect &imageRect = image->mBounds;
+    const int iw = imageRect.w;
+    const int ih = imageRect.h;
     if (iw == 0 || ih == 0)
         return;
 
-    const int srcX = image->mBounds.x;
-    const int srcY = image->mBounds.y;
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
 
     setColorAlpha(image->mAlpha);
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
@@ -302,8 +297,9 @@ void SafeOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     if (iw == 0 || ih == 0)
         return;
 
-    const int srcX = image->mBounds.x;
-    const int srcY = image->mBounds.y;
+    const SDL_Rect &imageRect = image->mBounds;
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
 
     setColorAlpha(image->mAlpha);
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
@@ -460,7 +456,8 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
     unsigned int lineSize = 3 * w;
     GLubyte* buf = static_cast<GLubyte*>(malloc(lineSize));
 
-    for (int i = 0; i < (h / 2); i++)
+    const int h2 = h / 2;
+    for (int i = 0; i < h2; i++)
     {
         GLubyte *const top = static_cast<GLubyte*>(
             screenshot->pixels) + lineSize * i;
@@ -500,12 +497,10 @@ bool SafeOpenGLGraphics::pushClipArea(gcn::Rectangle area)
     const bool result = gcn::Graphics::pushClipArea(area);
 
     const gcn::ClipRectangle &clipArea = mClipStack.top();
-    transX += clipArea.xOffset;
-    transY += clipArea.yOffset;
 
     glPushMatrix();
-    glTranslatef(static_cast<GLfloat>(transX),
-                 static_cast<GLfloat>(transY), 0);
+    glTranslatef(static_cast<GLfloat>(transX + clipArea.xOffset),
+                 static_cast<GLfloat>(transY + clipArea.yOffset), 0);
     glScissor(clipArea.x, mRect.h - clipArea.y - clipArea.height,
         clipArea.width, clipArea.height);
 
