@@ -124,6 +124,9 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
         return false;
 
     const gcn::ClipRectangle &top = mClipStack.top();
+    if (!top.height)
+        return false;
+
     const SDL_Rect &bounds = image->mBounds;
     const SDL_Rect srcRect
     {
@@ -132,6 +135,7 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
         static_cast<int32_t>(width),
         static_cast<int32_t>(height)
     };
+
     const SDL_Rect dstRect
     {
         static_cast<int32_t>(dstX + top.xOffset),
@@ -154,13 +158,16 @@ void SDLGraphics::drawImagePattern(const Image *const image,
     if (!image->mTexture)
         return;
 
+    const gcn::ClipRectangle &top = mClipStack.top();
+    if (!top.height)
+        return;
+
     const SDL_Rect &bounds = image->mBounds;
     const int iw = bounds.w;
     const int ih = bounds.h;
     if (iw == 0 || ih == 0)
         return;
 
-    const gcn::ClipRectangle &top = mClipStack.top();
     const int xOffset = top.xOffset + x;
     const int yOffset = top.yOffset + y;
 
@@ -202,6 +209,10 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
     if (scaledHeight == 0 || scaledWidth == 0)
         return;
 
+    const gcn::ClipRectangle &top = mClipStack.top();
+    if (!top.height)
+        return;
+
     Image *const tmpImage = image->SDLgetScaledImage(
         scaledWidth, scaledHeight);
     if (!tmpImage)
@@ -213,7 +224,6 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
     if (iw == 0 || ih == 0)
         return;
 
-    const gcn::ClipRectangle &top = mClipStack.top();
     const int xOffset = top.xOffset + x;
     const int yOffset = top.yOffset + y;
 
@@ -251,13 +261,16 @@ void SDLGraphics::calcImagePattern(ImageVertexes* const vert,
     if (!vert || !mWindow || !image || !image->mTexture)
         return;
 
+    const gcn::ClipRectangle &top = mClipStack.top();
+    if (!top.height)
+        return;
+
     const SDL_Rect &bounds = image->mBounds;
     const int iw = bounds.w;
     const int ih = bounds.h;
     if (iw == 0 || ih == 0)
         return;
 
-    const gcn::ClipRectangle &top = mClipStack.top();
     const int xOffset = top.xOffset + x;
     const int yOffset = top.yOffset + y;
     const int srcX = bounds.x;
@@ -325,9 +338,12 @@ void SDLGraphics::calcTileSDL(ImageVertexes *const vert, int x, int y) const
     if (!vert || !vert->image || !vert->image->mTexture)
         return;
 
+    const gcn::ClipRectangle &top = mClipStack.top();
+    if (!top.height)
+        return;
+
     const Image *const image = vert->image;
     const SDL_Rect &bounds = image->mBounds;
-    const gcn::ClipRectangle &top = mClipStack.top();
 
     x += top.xOffset;
     y += top.yOffset;
