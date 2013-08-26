@@ -611,7 +611,7 @@ bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
     mRect.w = w1;
     mRect.h = h1;
 
-    mRenderer = graphicsManager.createRenderer(mWindow, 0);
+    mRenderer = graphicsManager.createRenderer(mWindow, SDL_RENDERER_SOFTWARE);
     SDLImageHelper::setRenderer(mRenderer);
     return videoInfo();
 }
