@@ -362,6 +362,10 @@ class Graphics : public gcn::Graphics
         virtual unsigned int getBinds() const
         { return 0; }
 #endif
+#ifdef USE_SDL2
+        void dumpRendererInfo(const char *const str,
+                              const SDL_RendererInfo &info);
+#endif
         int mWidth;
         int mHeight;
 

@@ -296,6 +296,23 @@ int Graphics::getMemoryUsage() const
     return 0;
 }
 
+#ifdef USE_SDL2
+void Graphics::dumpRendererInfo(const char *const str,
+                                const SDL_RendererInfo &info)
+{
+    logger->log(str, info.name);
+    logger->log("flags:");
+    if (info.flags & SDL_RENDERER_SOFTWARE)
+        logger->log(" software");
+    if (info.flags & SDL_RENDERER_ACCELERATED)
+        logger->log(" accelerated");
+    if (info.flags & SDL_RENDERER_PRESENTVSYNC)
+        logger->log(" vsync");
+    if (info.flags & SDL_RENDERER_TARGETTEXTURE)
+        logger->log(" texture target");
+}
+#endif
+
 bool Graphics::videoInfo()
 {
 
@@ -303,7 +320,20 @@ bool Graphics::videoInfo()
 #ifdef USE_SDL2
     logger->log("Using video driver: %s", SDL_GetCurrentVideoDriver());
 
-    // +++ SDL_GetRendererInfo can be used for software info
+    if (mRenderer)
+    {
+        SDL_RendererInfo info;
+        SDL_GetRendererInfo(mRenderer, &info);
+        dumpRendererInfo("Current SDL renderer name: %s", info);
+
+        const int num = SDL_GetNumRenderDrivers();
+        logger->log("Known renderers");
+        for (int f = 0; f < num; f ++)
+        {
+            if (!SDL_GetRenderDriverInfo(f, &info))
+                dumpRendererInfo("renderer name: %s", info);
+        }
+    }
 #else
     char videoDriverName[65];
     if (SDL_VideoDriverName(videoDriverName, 64))
