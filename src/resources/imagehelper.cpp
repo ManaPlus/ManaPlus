@@ -31,6 +31,8 @@
 
 #include "resources/image.h"
 
+#include "utils/sdlcheckutils.h"
+
 #include <SDL_image.h>
 
 #include "debug.h"
@@ -51,7 +53,7 @@ Image *ImageHelper::load(SDL_RWops *const rw) const
 
     Image *const image = load(tmpImage);
 
-    SDL_FreeSurface(tmpImage);
+    MSDL_FreeSurface(tmpImage);
     return image;
 }
 
@@ -94,7 +96,7 @@ SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface *const tmpImage)
     RGBAFormat.Ashift = 0;
     RGBAFormat.Aloss = 0;
 #endif
-    return SDL_ConvertSurface(tmpImage, &RGBAFormat, SDL_SWSURFACE);
+    return MSDL_ConvertSurface(tmpImage, &RGBAFormat, SDL_SWSURFACE);
 }
 
 void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image) const
@@ -128,7 +130,7 @@ SDL_Surface *ImageHelper::loadPng(SDL_RWops *const rw)
         logger->log("Error, image is not png");
         return nullptr;
     }
-    SDL_Surface *const tmpImage = IMG_LoadPNG_RW(rw);
+    SDL_Surface *const tmpImage = MIMG_LoadPNG_RW(rw);
     SDL_RWclose(rw);
     return tmpImage;
 }

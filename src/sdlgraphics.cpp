@@ -33,6 +33,8 @@
 
 #include "resources/imagehelper.h"
 
+#include "utils/sdlcheckutils.h"
+
 #include <guichan/sdl/sdlpixel.hpp>
 
 #include <SDL_gfxBlitFunc.h>
@@ -418,7 +420,7 @@ SDL_Surface *SDLGraphics::getScreenshot()
 #endif
     const int amask = 0x00000000;
 
-    SDL_Surface *const screenshot = SDL_CreateRGBSurface(SDL_SWSURFACE,
+    SDL_Surface *const screenshot = MSDL_CreateRGBSurface(SDL_SWSURFACE,
         mRect.w, mRect.h, 24, rmask, gmask, bmask, amask);
 
     if (screenshot)

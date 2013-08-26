@@ -327,7 +327,7 @@ void CompoundSprite::redraw() const
     const int amask = 0xff000000;
 #endif
 
-    SDL_Surface *const surface = SDL_CreateRGBSurface(SDL_HWSURFACE,
+    SDL_Surface *const surface = MSDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
 
     if (!surface)
@@ -363,7 +363,7 @@ void CompoundSprite::redraw() const
     delete graphics;
     graphics = nullptr;
 
-    SDL_Surface *const surfaceA = SDL_CreateRGBSurface(SDL_HWSURFACE,
+    SDL_Surface *const surfaceA = MSDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
 
 #ifdef USE_SDL2
@@ -377,12 +377,12 @@ void CompoundSprite::redraw() const
     delete mAlphaImage;
 
     mImage = imageHelper->load(surface);
-    SDL_FreeSurface(surface);
+    MSDL_FreeSurface(surface);
 
     if (ImageHelper::mEnableAlpha)
     {
         mAlphaImage = imageHelper->load(surfaceA);
-        SDL_FreeSurface(surfaceA);
+        MSDL_FreeSurface(surfaceA);
     }
     else
     {

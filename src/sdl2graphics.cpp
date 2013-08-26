@@ -36,9 +36,9 @@
 
 #include <guichan/sdl/sdlpixel.hpp>
 
-#include <SDL.h>
+#include "utils/sdlcheckutils.h"
 
-//#include <SDL_gfxBlitFunc.h>
+#include <SDL.h>
 
 #include "debug.h"
 
@@ -46,6 +46,32 @@
 static unsigned int *cR = nullptr;
 static unsigned int *cG = nullptr;
 static unsigned int *cB = nullptr;
+#endif
+
+#ifdef DEBUG_SDL_SURFACES
+
+#define MSDL_RenderCopy(render, texture, src, dst) \
+    FakeSDL_RenderCopy(render, texture, src, dst)
+
+static int FakeSDL_RenderCopy(SDL_Renderer *const renderer,
+                              SDL_Texture *const texture,
+                              const SDL_Rect *const srcrect,
+                               const SDL_Rect *const dstrect)
+{
+    int ret = SDL_RenderCopy(renderer, texture, srcrect, dstrect);
+    if (ret)
+    {
+        logger->log("rendering error in texture %p: %s",
+            static_cast<void*>(texture), SDL_GetError());
+    }
+    return ret;
+}
+
+#else
+
+#define MSDL_RenderCopy(render, texture, src, dst) \
+    SDL_RenderCopy(render, texture, src, dst)
+
 #endif
 
 SDLGraphics::SDLGraphics() :
@@ -90,7 +116,7 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
     dstRect.w = static_cast<uint16_t>(desiredWidth);
     dstRect.h = static_cast<uint16_t>(desiredHeight);
 
-    return (SDL_RenderCopy(mRenderer, image->mTexture,
+    return (MSDL_RenderCopy(mRenderer, image->mTexture,
         &srcRect, &dstRect) < 0);
 }
 
@@ -120,7 +146,7 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     dstRect.w = static_cast<uint16_t>(width);
     dstRect.h = static_cast<uint16_t>(height);
 
-    return !SDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
+    return !MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
 }
 
 void SDLGraphics::drawImagePattern(const Image *const image,
@@ -163,7 +189,7 @@ void SDLGraphics::drawImagePattern(const Image *const image,
             dstRect.w = static_cast<uint16_t>(dw);
             dstRect.h = static_cast<uint16_t>(dh);
 
-            SDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
+            MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
         }
     }
 }
@@ -217,7 +243,7 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
             dstRect.w = static_cast<uint16_t>(dw);
             dstRect.h = static_cast<uint16_t>(dh);
 
-            SDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
+            MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
         }
     }
 
@@ -355,7 +381,7 @@ void SDLGraphics::drawTile(const ImageCollection *const vertCol)
         const DoubleRects::const_iterator it2_end = rects->end();
         while (it2 != it2_end)
         {
-            SDL_RenderCopy(mRenderer, img->mTexture,
+            MSDL_RenderCopy(mRenderer, img->mTexture,
                 &(*it2)->src, &(*it2)->dst);
             ++ it2;
         }
@@ -371,7 +397,7 @@ void SDLGraphics::drawTile(const ImageVertexes *const vert)
     const DoubleRects::const_iterator it_end = rects->end();
     while (it != it_end)
     {
-        SDL_RenderCopy(mRenderer, img->mTexture, &(*it)->src, &(*it)->dst);
+        MSDL_RenderCopy(mRenderer, img->mTexture, &(*it)->src, &(*it)->dst);
         ++ it;
     }
 }
@@ -400,7 +426,7 @@ SDL_Surface *SDLGraphics::getScreenshot()
 #endif
     const int amask = 0x00000000;
 
-    SDL_Surface *const screenshot = SDL_CreateRGBSurface(SDL_SWSURFACE,
+    SDL_Surface *const screenshot = MSDL_CreateRGBSurface(SDL_SWSURFACE,
         mRect.w, mRect.h, 24, rmask, gmask, bmask, amask);
 
 //    if (screenshot)

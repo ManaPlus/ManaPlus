@@ -27,12 +27,14 @@
 #include "logger.h"
 #include "main.h"
 #include "sdlgraphics.h"
-#include "utils/paths.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
 #include "resources/surfaceimagehelper.h"
+
+#include "utils/paths.h"
+#include "utils/sdlcheckutils.h"
 
 #include <guichan/exception.hpp>
 
@@ -146,7 +148,7 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
 
     getSafeUtf8String(text, strBuf);
 
-    SDL_Surface *surface = TTF_RenderUTF8_Blended(
+    SDL_Surface *surface = MTTF_RenderUTF8_Blended(
         font, strBuf, sdlCol);
 
     if (!surface)
@@ -168,7 +170,7 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
         if (!background)
         {
             img = nullptr;
-            SDL_FreeSurface(surface);
+            MSDL_FreeSurface(surface);
             BLOCK_END("SDLTextChunk::generate")
             return;
         }
@@ -180,12 +182,12 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
 #else
         sdlCol2.unused = 0;
 #endif
-        SDL_Surface *const surface2 = TTF_RenderUTF8_Blended(
+        SDL_Surface *const surface2 = MTTF_RenderUTF8_Blended(
             font, strBuf, sdlCol2);
         if (!surface2)
         {
             img = nullptr;
-            SDL_FreeSurface(surface);
+            MSDL_FreeSurface(surface);
             BLOCK_END("SDLTextChunk::generate")
             return;
         }
@@ -212,13 +214,13 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
         rect.y = 0;
         SurfaceImageHelper::combineSurface(surface, nullptr,
             background, &rect);
-        SDL_FreeSurface(surface);
-        SDL_FreeSurface(surface2);
+        MSDL_FreeSurface(surface);
+        MSDL_FreeSurface(surface2);
         surface = background;
     }
     img = imageHelper->createTextSurface(
         surface, width, height, alpha);
-    SDL_FreeSurface(surface);
+    MSDL_FreeSurface(surface);
 
     BLOCK_END("SDLTextChunk::generate")
 }

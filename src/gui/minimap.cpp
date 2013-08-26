@@ -37,6 +37,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
+#include "utils/sdlcheckutils.h"
 
 #include <guichan/font.hpp>
 
@@ -124,7 +125,7 @@ void Minimap::setMap(const Map *const map)
     {
         if (config.getBoolValue("showExtMinimaps"))
         {
-            SDL_Surface *const surface = SDL_CreateRGBSurface(SDL_SWSURFACE,
+            SDL_Surface *const surface = MSDL_CreateRGBSurface(SDL_SWSURFACE,
                 map->getWidth(), map->getHeight(), 32,
                 0x00ff0000, 0x0000ff00, 0x000000ff, 0x00000000);
             if (!surface)
@@ -155,7 +156,7 @@ void Minimap::setMap(const Map *const map)
             mMapImage = imageHelper->load(surface);
             mMapImage->setAlpha(client->getGuiAlpha());
             mCustomMapImage = true;
-            SDL_FreeSurface(surface);
+            MSDL_FreeSurface(surface);
         }
         else
         {

@@ -31,6 +31,7 @@
 
 #include "utils/mathutils.h"
 #include "utils/physfsrwops.h"
+#include "utils/sdlcheckutils.h"
 
 #include "resources/dye.h"
 #include "resources/fboinfo.h"
@@ -79,7 +80,7 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
         convertAtlas(atlas);
 
         // free SDL atlas surface
-        SDL_FreeSurface(surface);
+        MSDL_FreeSurface(surface);
 
         resource->atlases.push_back(atlas);
     }
@@ -226,7 +227,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     const int width = atlas->width;
     const int height = atlas->height;
     // temp SDL surface for atlas
-    SDL_Surface *const surface = SDL_CreateRGBSurface(SDL_SWSURFACE,
+    SDL_Surface *const surface = MSDL_CreateRGBSurface(SDL_SWSURFACE,
         width, height, 32, rmask, gmask, bmask, amask);
     if (!surface)
         return nullptr;

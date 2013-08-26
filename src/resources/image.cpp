@@ -39,6 +39,8 @@
 #include "resources/sdlimagehelper.h"
 #include "resources/subimage.h"
 
+#include "utils/sdlcheckutils.h"
+
 #include <SDL_image.h>
 #ifndef USE_SDL2
 #include <SDL_rotozoom.h>
@@ -208,7 +210,7 @@ void Image::unload()
     {
         SDLCleanCache();
         // Free the image surface.
-        SDL_FreeSurface(mSDLSurface);
+        MSDL_FreeSurface(mSDLSurface);
         mSDLSurface = nullptr;
 
         delete [] mAlphaChannel;
@@ -398,7 +400,7 @@ Image* Image::SDLgetScaledImage(const int width, const int height) const
         if (scaledSurface)
         {
             scaledImage = imageHelper->load(scaledSurface);
-            SDL_FreeSurface(scaledSurface);
+            MSDL_FreeSurface(scaledSurface);
         }
     }
 #endif

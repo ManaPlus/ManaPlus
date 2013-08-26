@@ -84,4 +84,7 @@
 // debug images usage
 // #define DEBUG_IMAGES 1
 
+// debug SDL surfaces
+// #define DEBUG_SDL_SURFACES 1
+
 #include "utils/perfomance.h"

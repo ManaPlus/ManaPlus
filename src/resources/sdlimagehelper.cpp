@@ -68,9 +68,9 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
     rgba.Amask = 0x000000FF;
 #endif
 
-    SDL_Surface *const surf = SDL_ConvertSurface(
+    SDL_Surface *const surf = MSDL_ConvertSurface(
         tmpImage, &rgba, SDL_SWSURFACE);
-    SDL_FreeSurface(tmpImage);
+    MSDL_FreeSurface(tmpImage);
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
     const int type = dye.getType();
@@ -100,7 +100,7 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
     }
 
     Image *const image = load(surf);
-    SDL_FreeSurface(surf);
+    MSDL_FreeSurface(surf);
     return image;
 }
 
@@ -183,7 +183,7 @@ SDL_Surface* SDLImageHelper::SDLDuplicateSurface(SDL_Surface *const tmpImage)
     if (!tmpImage || !tmpImage->format)
         return nullptr;
 
-    return SDL_ConvertSurface(tmpImage, tmpImage->format, SDL_SWSURFACE);
+    return MSDL_ConvertSurface(tmpImage, tmpImage->format, SDL_SWSURFACE);
 }
 
 Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
@@ -270,7 +270,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
     }
 
     if (converted)
-        SDL_FreeSurface(tmpImage);
+        MSDL_FreeSurface(tmpImage);
     return new Image(image, hasAlpha, alphaChannel);
 }
 
@@ -293,7 +293,7 @@ SDL_Surface *SDLImageHelper::create32BitSurface(int width, int height) const
     const int amask = 0xff000000;
 #endif
 
-    return SDL_CreateRGBSurface(SDL_SWSURFACE,
+    return MSDL_CreateRGBSurface(SDL_SWSURFACE,
         width, height, 32, rmask, gmask, bmask, amask);
 }
 

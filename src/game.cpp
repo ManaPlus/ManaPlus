@@ -96,6 +96,7 @@
 #include "utils/mkdir.h"
 #include "utils/physfstools.h"
 #include "utils/process.h"
+#include "utils/sdlcheckutils.h"
 
 #include <guichan/exception.hpp>
 #include <guichan/focushandler.hpp>
@@ -553,7 +554,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
         logger->log1("Error: could not save screenshot.");
     }
 
-    SDL_FreeSurface(screenshot);
+    MSDL_FreeSurface(screenshot);
 
     return success;
 }

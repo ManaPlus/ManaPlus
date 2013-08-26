@@ -33,9 +33,36 @@
 #define reportTrue(val) reportTrue1(val, __FILE__, __LINE__)
 #define reportTrue1(val, file, line) reportTrueReal(val, file, line)
 
-#else
+#else  // ENABLE_MEM_DEBUG
 
 #define reportFalse(val) (val)
 #define reportTrue(val) (val)
 
-#endif
+#endif  // ENABLE_MEM_DEBUG
+
+
+#ifdef DEBUG_SDL_SURFACES
+
+#define MIMG_LoadPNG_RW(src)  FakeIMG_LoadPNG_RW(src, __FILE__, __LINE__)
+#define MSDL_FreeSurface(s) FakeSDL_FreeSurface(s, __FILE__, __LINE__)
+#define MSDL_CreateRGBSurface(flags, w, h, d, r, g, b, a) \
+    FakeSDL_CreateRGBSurface(flags, w, h, d, r, g, b, a, __FILE__, __LINE__)
+#define MSDL_ConvertSurface(src, fmt, flags) \
+    FakeSDL_ConvertSurface(src, fmt, flags, __FILE__, __LINE__)
+#define MTTF_RenderUTF8_Blended(font, text, fg) \
+    FakeTTF_RenderUTF8_Blended(font, text, fg, __FILE__, __LINE__)
+#define MIMG_Load(file) FakeIMG_Load(file, __FILE__, __LINE__)
+
+#else
+
+#define MIMG_LoadPNG_RW(src)  IMG_LoadPNG_RW(src)
+#define MSDL_FreeSurface(surface) SDL_FreeSurface(surface)
+#define MSDL_CreateRGBSurface(flags, w, h, d, r, g, b, a) \
+    SDL_CreateRGBSurface(flags, w, h, d, r, g, b, a)
+#define MSDL_ConvertSurface(src, fmt, flags) \
+    SDL_ConvertSurface(src, fmt, flags)
+#define MTTF_RenderUTF8_Blended(font, text, fg) \
+    TTF_RenderUTF8_Blended(font, text, fg)
+#define MIMG_Load(file) IMG_Load(file)
+
+#endif  // ENABLE_SDL_DEBUG

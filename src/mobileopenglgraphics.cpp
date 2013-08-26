@@ -34,6 +34,7 @@
 #include "resources/image.h"
 #include "resources/openglimagehelper.h"
 
+#include "utils/sdlcheckutils.h"
 #include "utils/stringutils.h"
 
 #include <SDL.h>
@@ -903,7 +904,7 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
     const int w = mRect.w - (mRect.w % 4);
     GLint pack = 1;
 
-    SDL_Surface *const screenshot = SDL_CreateRGBSurface(
+    SDL_Surface *const screenshot = MSDL_CreateRGBSurface(
         SDL_SWSURFACE, w, h, 24,
         0xff0000, 0x00ff00, 0x0000ff, 0x000000);
 

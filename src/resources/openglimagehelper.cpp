@@ -37,6 +37,7 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/sdlcheckutils.h"
 #include "utils/stringutils.h"
 
 #include <SDL_image.h>
@@ -60,7 +61,7 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
     }
 
     SDL_Surface *const surf = convertTo32Bit(tmpImage);
-    SDL_FreeSurface(tmpImage);
+    MSDL_FreeSurface(tmpImage);
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
     const int type = dye.getType();
@@ -90,7 +91,7 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
     }
 
     Image *const image = load(surf);
-    SDL_FreeSurface(surf);
+    MSDL_FreeSurface(surf);
     return image;
 }
 
@@ -182,7 +183,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
 #ifdef USE_SDL2
         SDL_SetSurfaceBlendMode (oldImage, SDL_BLENDMODE_NONE);
 #endif
-        tmpImage = SDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
+        tmpImage = MSDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
             32, rmask, gmask, bmask, amask);
 
         if (!tmpImage)
@@ -260,7 +261,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         SDL_UnlockSurface(tmpImage);
 
     if (oldImage)
-        SDL_FreeSurface(tmpImage);
+        MSDL_FreeSurface(tmpImage);
 
     GLenum error = glGetError();
     if (error)
@@ -315,7 +316,7 @@ SDL_Surface *OpenGLImageHelper::create32BitSurface(int width, int height) const
     width = powerOfTwo(width);
     height = powerOfTwo(height);
 
-    return SDL_CreateRGBSurface(SDL_SWSURFACE,
+    return MSDL_CreateRGBSurface(SDL_SWSURFACE,
         width, height, 32, rmask, gmask, bmask, amask);
 }
 

@@ -42,6 +42,7 @@
 
 #include "utils/mkdir.h"
 #include "utils/physfsrwops.h"
+#include "utils/sdlcheckutils.h"
 
 #include <SDL_image.h>
 #include <cassert>
@@ -1047,7 +1048,7 @@ SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename) const
             logger->log("Error, image is not png: " + filename);
             return nullptr;
         }
-        SDL_Surface *const surface = IMG_LoadPNG_RW(rw);
+        SDL_Surface *const surface = MIMG_LoadPNG_RW(rw);
         SDL_RWclose(rw);
         return surface;
     }
@@ -1063,7 +1064,7 @@ void ResourceManager::clearScheduled()
 {
     BLOCK_START("ResourceManager::clearScheduled")
     FOR_EACH (std::set<SDL_Surface*>::iterator, i, deletedSurfaces)
-        SDL_FreeSurface(*i);
+        MSDL_FreeSurface(*i);
     deletedSurfaces.clear();
     BLOCK_END("ResourceManager::clearScheduled")
 }

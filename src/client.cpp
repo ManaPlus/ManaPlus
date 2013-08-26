@@ -106,6 +106,7 @@
 #include "utils/paths.h"
 #include "utils/physfstools.h"
 #include "utils/process.h"
+#include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
 
 #include "utils/translation/translationmanager.h"
@@ -833,7 +834,7 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting8");
 
-    SDL_FreeSurface(mIcon);
+    MSDL_FreeSurface(mIcon);
 
     if (logger)
         logger->log1("Quitting9");
@@ -3078,7 +3079,7 @@ void Client::setIcon()
     if (icon)
         SetClassLong(pInfo.window, GCL_HICON, reinterpret_cast<LONG>(icon));
 #else
-    mIcon = IMG_Load(iconFile.c_str());
+    mIcon = MIMG_Load(iconFile.c_str());
     if (mIcon)
     {
 #ifdef USE_SDL2
