@@ -42,12 +42,6 @@
 
 #include "debug.h"
 
-#if SDL_BYTEORDER == SDL_LIL_ENDIAN
-static unsigned int *cR = nullptr;
-static unsigned int *cG = nullptr;
-static unsigned int *cB = nullptr;
-#endif
-
 #ifdef DEBUG_SDL_SURFACES
 
 #define MSDL_RenderCopy(render, texture, src, dst) \
@@ -103,17 +97,17 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
     const SDL_Rect &bounds = image->mBounds;
     const SDL_Rect srcRect
     {
-        static_cast<int16_t>(srcX + bounds.x),
-        static_cast<int16_t>(srcY + bounds.y),
-        static_cast<uint16_t>(width),
-        static_cast<uint16_t>(height)
+        static_cast<int32_t>(srcX + bounds.x),
+        static_cast<int32_t>(srcY + bounds.y),
+        static_cast<int32_t>(width),
+        static_cast<int32_t>(height)
     };
     const SDL_Rect dstRect
     {
-        static_cast<int16_t>(dstX + top.xOffset),
-        static_cast<int16_t>(dstY + top.yOffset),
-        static_cast<uint16_t>(desiredWidth),
-        static_cast<uint16_t>(desiredHeight)
+        static_cast<int32_t>(dstX + top.xOffset),
+        static_cast<int32_t>(dstY + top.yOffset),
+        static_cast<int32_t>(desiredWidth),
+        static_cast<int32_t>(desiredHeight)
     };
 
     return (MSDL_RenderCopy(mRenderer, image->mTexture,
@@ -133,17 +127,17 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     const SDL_Rect &bounds = image->mBounds;
     const SDL_Rect srcRect
     {
-        static_cast<int16_t>(srcX + bounds.x),
-        static_cast<int16_t>(srcY + bounds.y),
-        static_cast<uint16_t>(width),
-        static_cast<uint16_t>(height)
+        static_cast<int32_t>(srcX + bounds.x),
+        static_cast<int32_t>(srcY + bounds.y),
+        static_cast<int32_t>(width),
+        static_cast<int32_t>(height)
     };
     const SDL_Rect dstRect
     {
-        static_cast<int16_t>(dstX + top.xOffset),
-        static_cast<int16_t>(dstY + top.yOffset),
-        static_cast<uint16_t>(width),
-        static_cast<uint16_t>(height)
+        static_cast<int32_t>(dstX + top.xOffset),
+        static_cast<int32_t>(dstY + top.yOffset),
+        static_cast<int32_t>(width),
+        static_cast<int32_t>(height)
     };
 
     return !MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
@@ -172,21 +166,21 @@ void SDLGraphics::drawImagePattern(const Image *const image,
 
     SDL_Rect dstRect;
     SDL_Rect srcRect;
-    srcRect.x = static_cast<int16_t>(bounds.x);
-    srcRect.y = static_cast<int16_t>(bounds.y);
+    srcRect.x = static_cast<int32_t>(bounds.x);
+    srcRect.y = static_cast<int32_t>(bounds.y);
     for (int py = 0; py < h; py += ih)
     {
         const int dh = (py + ih >= h) ? h - py : ih;
-        dstRect.y = static_cast<int16_t>(py + yOffset);
-        srcRect.h = static_cast<uint16_t>(dh);
-        dstRect.h = static_cast<uint16_t>(dh);
+        dstRect.y = static_cast<int32_t>(py + yOffset);
+        srcRect.h = static_cast<int32_t>(dh);
+        dstRect.h = static_cast<int32_t>(dh);
 
         for (int px = 0; px < w; px += iw)
         {
             const int dw = (px + iw >= w) ? w - px : iw;
-            dstRect.x = static_cast<int16_t>(px + xOffset);
-            srcRect.w = static_cast<uint16_t>(dw);
-            dstRect.w = static_cast<uint16_t>(dw);
+            dstRect.x = static_cast<int32_t>(px + xOffset);
+            srcRect.w = static_cast<int32_t>(dw);
+            dstRect.w = static_cast<int32_t>(dw);
 
             MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
         }
@@ -225,21 +219,21 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
 
     SDL_Rect dstRect;
     SDL_Rect srcRect;
-    srcRect.x = static_cast<int16_t>(bounds.x);
-    srcRect.y = static_cast<int16_t>(bounds.y);
+    srcRect.x = static_cast<int32_t>(bounds.x);
+    srcRect.y = static_cast<int32_t>(bounds.y);
     for (int py = 0; py < h; py += ih)
     {
         const int dh = (py + ih >= h) ? h - py : ih;
-        dstRect.y = static_cast<int16_t>(py + yOffset);
-        srcRect.h = static_cast<uint16_t>(dh);
-        dstRect.h = static_cast<uint16_t>(dh);
+        dstRect.y = static_cast<int32_t>(py + yOffset);
+        srcRect.h = static_cast<int32_t>(dh);
+        dstRect.h = static_cast<int32_t>(dh);
 
         for (int px = 0; px < w; px += iw)
         {
             const int dw = (px + iw >= w) ? w - px : iw;
-            dstRect.x = static_cast<int16_t>(px + xOffset);
-            srcRect.w = static_cast<uint16_t>(dw);
-            dstRect.w = static_cast<uint16_t>(dw);
+            dstRect.x = static_cast<int32_t>(px + xOffset);
+            srcRect.w = static_cast<int32_t>(dw);
+            dstRect.w = static_cast<int32_t>(dw);
 
             MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
         }
@@ -281,14 +275,14 @@ void SDLGraphics::calcImagePattern(ImageVertexes* const vert,
             DoubleRect *const r = new DoubleRect();
             SDL_Rect &dstRect = r->dst;
             SDL_Rect &srcRect = r->src;
-            srcRect.x = static_cast<int16_t>(srcX);
-            srcRect.y = static_cast<int16_t>(srcY);
-            srcRect.w = static_cast<uint16_t>(dw);
-            srcRect.h = static_cast<uint16_t>(dh);
-            dstRect.x = static_cast<int16_t>(dstX);
-            dstRect.y = static_cast<int16_t>(dstY);
-            dstRect.w = static_cast<uint16_t>(dw);
-            dstRect.h = static_cast<uint16_t>(dh);
+            srcRect.x = static_cast<int32_t>(srcX);
+            srcRect.y = static_cast<int32_t>(srcY);
+            srcRect.w = static_cast<int32_t>(dw);
+            srcRect.h = static_cast<int32_t>(dh);
+            dstRect.x = static_cast<int32_t>(dstX);
+            dstRect.y = static_cast<int32_t>(dstY);
+            dstRect.w = static_cast<int32_t>(dw);
+            dstRect.h = static_cast<int32_t>(dh);
 
             vert->sdl.push_back(r);
         }
@@ -342,14 +336,14 @@ void SDLGraphics::calcTileSDL(ImageVertexes *const vert, int x, int y) const
     SDL_Rect &dstRect = rect->dst;
     SDL_Rect &srcRect = rect->src;
 
-    srcRect.x = static_cast<int16_t>(bounds.x);
-    srcRect.y = static_cast<int16_t>(bounds.y);
-    srcRect.w = static_cast<uint16_t>(bounds.w);
-    srcRect.h = static_cast<uint16_t>(bounds.h);
-    dstRect.x = static_cast<int16_t>(x);
-    dstRect.y = static_cast<int16_t>(y);
-    dstRect.w = static_cast<uint16_t>(bounds.w);
-    dstRect.h = static_cast<uint16_t>(bounds.h);
+    srcRect.x = static_cast<int32_t>(bounds.x);
+    srcRect.y = static_cast<int32_t>(bounds.y);
+    srcRect.w = static_cast<int32_t>(bounds.w);
+    srcRect.h = static_cast<int32_t>(bounds.h);
+    dstRect.x = static_cast<int32_t>(x);
+    dstRect.y = static_cast<int32_t>(y);
+    dstRect.w = static_cast<int32_t>(bounds.w);
+    dstRect.h = static_cast<int32_t>(bounds.h);
 
     vert->sdl.push_back(rect);
 }
@@ -483,10 +477,10 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle &rectangle)
     const gcn::ClipRectangle &top = mClipStack.top();
     const SDL_Rect rect
     {
-        static_cast<int16_t>(rectangle.x + top.xOffset),
-        static_cast<int16_t>(rectangle.y + top.yOffset),
-        static_cast<uint16_t>(rectangle.width),
-        static_cast<uint16_t>(rectangle.height)
+        static_cast<int32_t>(rectangle.x + top.xOffset),
+        static_cast<int32_t>(rectangle.y + top.yOffset),
+        static_cast<int32_t>(rectangle.width),
+        static_cast<int32_t>(rectangle.height)
     };
 
     SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
@@ -510,10 +504,10 @@ bool SDLGraphics::pushClipArea(gcn::Rectangle area)
     const gcn::ClipRectangle &carea = mClipStack.top();
     const SDL_Rect rect
     {
-        static_cast<int16_t>(carea.x),
-        static_cast<int16_t>(carea.y),
-        static_cast<int16_t>(carea.width),
-        static_cast<int16_t>(carea.height)
+        static_cast<int32_t>(carea.x),
+        static_cast<int32_t>(carea.y),
+        static_cast<int32_t>(carea.width),
+        static_cast<int32_t>(carea.height)
     };
     SDL_RenderSetClipRect(mRenderer, &rect);
     return result;
@@ -529,10 +523,10 @@ void SDLGraphics::popClipArea()
     const gcn::ClipRectangle &carea = mClipStack.top();
     const SDL_Rect rect
     {
-        static_cast<int16_t>(carea.x),
-        static_cast<int16_t>(carea.y),
-        static_cast<int16_t>(carea.width),
-        static_cast<int16_t>(carea.height)
+        static_cast<int32_t>(carea.x),
+        static_cast<int32_t>(carea.y),
+        static_cast<int32_t>(carea.width),
+        static_cast<int32_t>(carea.height)
     };
 
     SDL_RenderSetClipRect(mRenderer, &rect);
@@ -561,10 +555,10 @@ void SDLGraphics::drawRectangle(const gcn::Rectangle &rectangle)
     const gcn::ClipRectangle &top = mClipStack.top();
     const SDL_Rect rect
     {
-        static_cast<int16_t>(rectangle.x) + top.xOffset,
-        static_cast<int16_t>(rectangle.y) + top.yOffset,
-        static_cast<uint16_t>(rectangle.width),
-        static_cast<uint16_t>(rectangle.height)
+        static_cast<int32_t>(rectangle.x) + top.xOffset,
+        static_cast<int32_t>(rectangle.y) + top.yOffset,
+        static_cast<int32_t>(rectangle.width),
+        static_cast<int32_t>(rectangle.height)
     };
 
     SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
