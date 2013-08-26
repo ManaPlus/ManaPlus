@@ -187,6 +187,10 @@ SubImage::~SubImage()
     mSDLSurface = nullptr;
     // Avoid possible destruction of its alpha channel
     mAlphaChannel = nullptr;
+#ifdef USE_SDL2
+    // Avoid destruction of texture
+    mTexture = nullptr;
+#endif
 #ifdef USE_OPENGL
     mGLImage = 0;
 #endif
