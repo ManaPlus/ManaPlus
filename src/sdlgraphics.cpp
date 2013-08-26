@@ -80,20 +80,24 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
     if (!tmpImage->mSDLSurface)
         return false;
 
-    dstX += mClipStack.top().xOffset;
-    dstY += mClipStack.top().yOffset;
+    const gcn::ClipRectangle &top = mClipStack.top();
+    const SDL_Rect &bounds = image->mBounds;
 
-    srcX += image->mBounds.x;
-    srcY += image->mBounds.y;
+    SDL_Rect srcRect
+    {
+        static_cast<int16_t>(srcX + bounds.x),
+        static_cast<int16_t>(srcY + bounds.y),
+        static_cast<uint16_t>(width),
+        static_cast<uint16_t>(height)
+    };
 
-    SDL_Rect dstRect;
-    SDL_Rect srcRect;
-    dstRect.x = static_cast<int16_t>(dstX);
-    dstRect.y = static_cast<int16_t>(dstY);
-    srcRect.x = static_cast<int16_t>(srcX);
-    srcRect.y = static_cast<int16_t>(srcY);
-    srcRect.w = static_cast<uint16_t>(width);
-    srcRect.h = static_cast<uint16_t>(height);
+    SDL_Rect dstRect
+    {
+        static_cast<int16_t>(dstX + top.xOffset),
+        static_cast<int16_t>(dstY + top.yOffset),
+        0,
+        0
+    };
 
     const bool returnValue = !(SDL_BlitSurface(tmpImage->mSDLSurface,
         &srcRect, mWindow, &dstRect) < 0);
@@ -104,28 +108,32 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
 }
 
 bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
-                          int dstX, int dstY, const int width,
-                          const int height, const bool useColor A_UNUSED)
+                             int dstX, int dstY, const int width,
+                             const int height, const bool useColor A_UNUSED)
 {
     FUNC_BLOCK("Graphics::drawImage2", 1)
     // Check that preconditions for blitting are met.
     if (!mWindow || !image || !image->mSDLSurface)
         return false;
 
-    dstX += mClipStack.top().xOffset;
-    dstY += mClipStack.top().yOffset;
+    const gcn::ClipRectangle &top = mClipStack.top();
+    const SDL_Rect &bounds = image->mBounds;
 
-    srcX += image->mBounds.x;
-    srcY += image->mBounds.y;
+    SDL_Rect srcRect
+    {
+        static_cast<int16_t>(srcX + bounds.x),
+        static_cast<int16_t>(srcY + bounds.y),
+        static_cast<uint16_t>(width),
+        static_cast<uint16_t>(height)
+    };
 
-    SDL_Rect dstRect;
-    SDL_Rect srcRect;
-    dstRect.x = static_cast<int16_t>(dstX);
-    dstRect.y = static_cast<int16_t>(dstY);
-    srcRect.x = static_cast<int16_t>(srcX);
-    srcRect.y = static_cast<int16_t>(srcY);
-    srcRect.w = static_cast<uint16_t>(width);
-    srcRect.h = static_cast<uint16_t>(height);
+    SDL_Rect dstRect
+    {
+        static_cast<int16_t>(dstX + top.xOffset),
+        static_cast<int16_t>(dstY + top.yOffset),
+        0,
+        0
+    };
 
     return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
         mWindow, &dstRect) < 0);
@@ -142,32 +150,43 @@ void SDLGraphics::drawImagePattern(const Image *const image,
     if (!image->mSDLSurface)
         return;
 
-    const int iw = image->mBounds.w;
-    const int ih = image->mBounds.h;
-
+    const SDL_Rect &bounds = image->mBounds;
+    const int iw = bounds.w;
+    const int ih = bounds.h;
     if (iw == 0 || ih == 0)
         return;
+
+    const gcn::ClipRectangle &top = mClipStack.top();
+    const int xOffset = top.xOffset + x;
+    const int yOffset = top.yOffset + y;
+    const int srcX = bounds.x;
+    const int srcY = bounds.y;
 
     for (int py = 0; py < h; py += ih)  // Y position on pattern plane
     {
         const int dh = (py + ih >= h) ? h - py : ih;
-        const int srcY = image->mBounds.y;
-        const int dstY = y + py + mClipStack.top().yOffset;
+        const int dstY = py + yOffset;
 
         for (int px = 0; px < w; px += iw)  // X position on pattern plane
         {
             const int dw = (px + iw >= w) ? w - px : iw;
-            const int srcX = image->mBounds.x;
-            const int dstX = x + px + mClipStack.top().xOffset;
+            const int dstX = px + xOffset;
 
-            SDL_Rect dstRect;
-            SDL_Rect srcRect;
-            dstRect.x = static_cast<int16_t>(dstX);
-            dstRect.y = static_cast<int16_t>(dstY);
-            srcRect.x = static_cast<int16_t>(srcX);
-            srcRect.y = static_cast<int16_t>(srcY);
-            srcRect.w = static_cast<uint16_t>(dw);
-            srcRect.h = static_cast<uint16_t>(dh);
+            SDL_Rect srcRect
+            {
+                static_cast<int16_t>(srcX),
+                static_cast<int16_t>(srcY),
+                static_cast<uint16_t>(dw),
+                static_cast<uint16_t>(dh)
+            };
+
+            SDL_Rect dstRect
+            {
+                static_cast<int16_t>(dstX),
+                static_cast<int16_t>(dstY),
+                0,
+                0
+            };
 
             SDL_BlitSurface(image->mSDLSurface, &srcRect, mWindow, &dstRect);
         }
@@ -194,32 +213,43 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
     if (!tmpImage)
         return;
 
-    const int iw = tmpImage->mBounds.w;
-    const int ih = tmpImage->mBounds.h;
-
+    const SDL_Rect &bounds = tmpImage->mBounds;
+    const int iw = bounds.w;
+    const int ih = bounds.h;
     if (iw == 0 || ih == 0)
         return;
+
+    const gcn::ClipRectangle &top = mClipStack.top();
+    const int xOffset = top.xOffset + x;
+    const int yOffset = top.yOffset + y;
+    const int srcX = bounds.x;
+    const int srcY = bounds.y;
 
     for (int py = 0; py < h; py += ih)  // Y position on pattern plane
     {
         const int dh = (py + ih >= h) ? h - py : ih;
-        const int srcY = tmpImage->mBounds.y;
-        const int dstY = y + py + mClipStack.top().yOffset;
+        const int dstY = py + yOffset;
 
         for (int px = 0; px < w; px += iw)  // X position on pattern plane
         {
             const int dw = (px + iw >= w) ? w - px : iw;
-            const int srcX = tmpImage->mBounds.x;
-            const int dstX = x + px + mClipStack.top().xOffset;
+            const int dstX = px + xOffset;
 
-            SDL_Rect dstRect;
-            SDL_Rect srcRect;
-            dstRect.x = static_cast<int16_t>(dstX);
-            dstRect.y = static_cast<int16_t>(dstY);
-            srcRect.x = static_cast<int16_t>(srcX);
-            srcRect.y = static_cast<int16_t>(srcY);
-            srcRect.w = static_cast<uint16_t>(dw);
-            srcRect.h = static_cast<uint16_t>(dh);
+            SDL_Rect srcRect
+            {
+                static_cast<int16_t>(srcX),
+                static_cast<int16_t>(srcY),
+                static_cast<uint16_t>(dw),
+                static_cast<uint16_t>(dh)
+            };
+
+            SDL_Rect dstRect
+            {
+                static_cast<int16_t>(dstX),
+                static_cast<int16_t>(dstY),
+                0,
+                0
+            };
 
             SDL_BlitSurface(tmpImage->mSDLSurface, &srcRect,
                             mWindow, &dstRect);
@@ -238,33 +268,37 @@ void SDLGraphics::calcImagePattern(ImageVertexes* const vert,
     if (!vert || !mWindow || !image || !image->mSDLSurface)
         return;
 
-    const int iw = image->mBounds.w;
-    const int ih = image->mBounds.h;
-
+    const SDL_Rect &bounds = image->mBounds;
+    const int iw = bounds.w;
+    const int ih = bounds.h;
     if (iw == 0 || ih == 0)
         return;
+
+    const gcn::ClipRectangle &top = mClipStack.top();
+    const int xOffset = top.xOffset + x;
+    const int yOffset = top.yOffset + y;
+    const int srcX = bounds.x;
+    const int srcY = bounds.y;
 
     for (int py = 0; py < h; py += ih)  // Y position on pattern plane
     {
         const int dh = (py + ih >= h) ? h - py : ih;
-        const int srcY = image->mBounds.y;
-        const int dstY = y + py + mClipStack.top().yOffset;
+        const int dstY = py + yOffset;
 
         for (int px = 0; px < w; px += iw)  // X position on pattern plane
         {
             const int dw = (px + iw >= w) ? w - px : iw;
-            const int srcX = image->mBounds.x;
-            const int dstX = x + px + mClipStack.top().xOffset;
+            const int dstX = px + xOffset;
 
             DoubleRect *const r = new DoubleRect();
-            SDL_Rect &dstRect = r->dst;
             SDL_Rect &srcRect = r->src;
-            dstRect.x = static_cast<int16_t>(dstX);
-            dstRect.y = static_cast<int16_t>(dstY);
             srcRect.x = static_cast<int16_t>(srcX);
             srcRect.y = static_cast<int16_t>(srcY);
             srcRect.w = static_cast<uint16_t>(dw);
             srcRect.h = static_cast<uint16_t>(dh);
+            SDL_Rect &dstRect = r->dst;
+            dstRect.x = static_cast<int16_t>(dstX);
+            dstRect.y = static_cast<int16_t>(dstY);
 
             if (SDL_FakeUpperBlit(image->mSDLSurface, &srcRect,
                 mWindow, &dstRect) == 1)
@@ -316,18 +350,16 @@ void SDLGraphics::calcTileSDL(ImageVertexes *const vert, int x, int y) const
         return;
 
     const Image *const image = vert->image;
-
-    x += mClipStack.top().xOffset;
-    y += mClipStack.top().yOffset;
+    const gcn::ClipRectangle &top = mClipStack.top();
+    const SDL_Rect &bounds = image->mBounds;
 
     DoubleRect *rect = new DoubleRect();
-
-    rect->dst.x = static_cast<int16_t>(x);
-    rect->dst.y = static_cast<int16_t>(y);
-    rect->src.x = static_cast<int16_t>(image->mBounds.x);
-    rect->src.y = static_cast<int16_t>(image->mBounds.y);
-    rect->src.w = static_cast<uint16_t>(image->mBounds.w);
-    rect->src.h = static_cast<uint16_t>(image->mBounds.h);
+    rect->src.x = static_cast<int16_t>(bounds.x);
+    rect->src.y = static_cast<int16_t>(bounds.y);
+    rect->src.w = static_cast<uint16_t>(bounds.w);
+    rect->src.h = static_cast<uint16_t>(bounds.h);
+    rect->dst.x = static_cast<int16_t>(x + top.xOffset);
+    rect->dst.y = static_cast<int16_t>(y + top.yOffset);
     if (SDL_FakeUpperBlit(image->mSDLSurface, &rect->src,
         mWindow, &rect->dst) == 1)
     {
@@ -462,16 +494,17 @@ bool SDLGraphics::calcWindow(ImageCollection *const vertCol,
         vert = vertCol->currentVert;
     }
 
+    const Image *const *const grid = &imgRect.grid[0];
     return calcImageRect(vert, x, y, w, h,
-        imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
-        imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
-        imgRect.grid[4]);
+        grid[0], grid[2], grid[6], grid[8],
+        grid[1], grid[5], grid[7], grid[3],
+        grid[4]);
 }
 
 int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
-                                SDL_Rect *const srcrect,
-                                const SDL_Surface *const dst,
-                                SDL_Rect *dstrect) const
+                                   SDL_Rect *const srcrect,
+                                   const SDL_Surface *const dst,
+                                   SDL_Rect *dstrect) const
 {
     SDL_Rect fulldst;
     int srcx, srcy, w, h;
@@ -779,14 +812,15 @@ void SDLGraphics::_endDraw()
 
 bool SDLGraphics::pushClipArea(gcn::Rectangle area)
 {
-    SDL_Rect rect;
     const bool result = gcn::Graphics::pushClipArea(area);
-
     const gcn::ClipRectangle &carea = mClipStack.top();
-    rect.x = static_cast<int16_t>(carea.x);
-    rect.y = static_cast<int16_t>(carea.y);
-    rect.w = static_cast<int16_t>(carea.width);
-    rect.h = static_cast<int16_t>(carea.height);
+    const SDL_Rect rect
+    {
+        static_cast<int16_t>(carea.x),
+        static_cast<int16_t>(carea.y),
+        static_cast<uint16_t>(carea.width),
+        static_cast<uint16_t>(carea.height)
+    };
     SDL_SetClipRect(mWindow, &rect);
 
     return result;
@@ -800,11 +834,13 @@ void SDLGraphics::popClipArea()
         return;
 
     const gcn::ClipRectangle &carea = mClipStack.top();
-    SDL_Rect rect;
-    rect.x = static_cast<int16_t>(carea.x);
-    rect.y = static_cast<int16_t>(carea.y);
-    rect.w = static_cast<int16_t>(carea.width);
-    rect.h = static_cast<int16_t>(carea.height);
+    const SDL_Rect rect
+    {
+        static_cast<int16_t>(carea.x),
+        static_cast<int16_t>(carea.y),
+        static_cast<uint16_t>(carea.width),
+        static_cast<uint16_t>(carea.height)
+    };
 
     SDL_SetClipRect(mWindow, &rect);
 }
