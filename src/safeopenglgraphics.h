@@ -34,7 +34,9 @@
 #include <GLES/gl.h>
 #include <GLES/glext.h>
 #else
+#ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
+#endif
 #include <SDL_opengl.h>
 #include <GL/glext.h>
 #endif

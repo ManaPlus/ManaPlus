@@ -43,7 +43,9 @@
 #include <GLES/gl.h>
 #define GL_RGBA8 GL_RGBA8_OES
 #else
+#ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
+#endif
 #include <SDL_opengl.h>
 #endif
 
