@@ -331,9 +331,10 @@ void SDLGraphics::calcTileSDL(ImageVertexes *const vert, int x, int y) const
         return;
 
     const Image *const image = vert->image;
+    const gcn::ClipRectangle &top = mClipStack.top();
 
-    x += mClipStack.top().xOffset;
-    y += mClipStack.top().yOffset;
+    x += top.xOffset;
+    y += top.yOffset;
 
     DoubleRect *rect = new DoubleRect();
 
@@ -477,10 +478,11 @@ bool SDLGraphics::calcWindow(ImageCollection *const vertCol,
 
 void SDLGraphics::fillRectangle(const gcn::Rectangle &rectangle)
 {
+    const gcn::ClipRectangle &top = mClipStack.top();
     const SDL_Rect rect
     {
-        static_cast<int16_t>(rectangle.x) + mClipStack.top().xOffset,
-        static_cast<int16_t>(rectangle.y) + mClipStack.top().yOffset,
+        static_cast<int16_t>(rectangle.x) + top.xOffset,
+        static_cast<int16_t>(rectangle.y) + top.yOffset,
         static_cast<uint16_t>(rectangle.width),
         static_cast<uint16_t>(rectangle.height)
     };
@@ -536,7 +538,7 @@ void SDLGraphics::drawPoint(int x, int y)
     if (mClipStack.empty())
         return;
 
-    const gcn::ClipRectangle& top = mClipStack.top();
+    const gcn::ClipRectangle &top = mClipStack.top();
 
     x += top.xOffset;
     y += top.yOffset;
@@ -544,16 +546,18 @@ void SDLGraphics::drawPoint(int x, int y)
     if (!top.isPointInRect(x, y))
         return;
 
+    SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
     SDL_RenderDrawPoint(mRenderer, x, y);
 }
 
 
 void SDLGraphics::drawRectangle(const gcn::Rectangle &rectangle)
 {
+    const gcn::ClipRectangle &top = mClipStack.top();
     const SDL_Rect rect
     {
-        static_cast<int16_t>(rectangle.x) + mClipStack.top().xOffset,
-        static_cast<int16_t>(rectangle.y) + mClipStack.top().yOffset,
+        static_cast<int16_t>(rectangle.x) + top.xOffset,
+        static_cast<int16_t>(rectangle.y) + top.yOffset,
         static_cast<uint16_t>(rectangle.width),
         static_cast<uint16_t>(rectangle.height)
     };
@@ -564,12 +568,12 @@ void SDLGraphics::drawRectangle(const gcn::Rectangle &rectangle)
 
 void SDLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
-    const gcn::ClipRectangle& top = mClipStack.top();
+    const gcn::ClipRectangle &top = mClipStack.top();
 
     const int x0 = top.xOffset;
     const int y0 = top.yOffset;
-
-    SDL_RenderDrawLine(mRenderer, x1 + x0, y1 + x0, x2 + x0, y2 + x0);
+    SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
+    SDL_RenderDrawLine(mRenderer, x1 + x0, y1 + y0, x2 + x0, y2 + y0);
 }
 
 bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
