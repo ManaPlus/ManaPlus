@@ -50,7 +50,7 @@
 static int FakeSDL_RenderCopy(SDL_Renderer *const renderer,
                               SDL_Texture *const texture,
                               const SDL_Rect *const srcrect,
-                               const SDL_Rect *const dstrect)
+                              const SDL_Rect *const dstrect)
 {
     int ret = SDL_RenderCopy(renderer, texture, srcrect, dstrect);
     if (ret)
@@ -500,7 +500,7 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle &rectangle)
     };
 
     SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
-    SDL_RenderFillRect(mRenderer, &rect);
+    SDL_RenderFillRects(mRenderer, &rect, 1);
 }
 
 void SDLGraphics::_beginDraw()
@@ -562,33 +562,54 @@ void SDLGraphics::drawPoint(int x, int y)
         return;
 
     SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
-    SDL_RenderDrawPoint(mRenderer, x, y);
+    const SDL_Point point
+    {
+        x,
+        y
+    };
+
+    SDL_RenderDrawPoints(mRenderer, &point, 1);
 }
 
 
 void SDLGraphics::drawRectangle(const gcn::Rectangle &rectangle)
 {
     const gcn::ClipRectangle &top = mClipStack.top();
-    const SDL_Rect rect
-    {
-        static_cast<int32_t>(rectangle.x) + top.xOffset,
-        static_cast<int32_t>(rectangle.y) + top.yOffset,
-        static_cast<int32_t>(rectangle.width),
-        static_cast<int32_t>(rectangle.height)
-    };
 
     SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
-    SDL_RenderDrawRect(mRenderer, &rect);
+
+    const int x1 = rectangle.x + top.xOffset;
+    const int y1 = rectangle.y + top.yOffset;
+    const int x2 = x1 + rectangle.width - 1;
+    const int y2 = y1 + rectangle.height - 1;
+    SDL_Point points[] =
+    {
+        {x1, y1},
+        {x2, y1},
+        {x2, y2},
+        {x1, y2},
+        {x1, y1}
+    };
+
+    SDL_RenderDrawLines(mRenderer, points, 5);
 }
 
 void SDLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
     const gcn::ClipRectangle &top = mClipStack.top();
 
+    SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
+
     const int x0 = top.xOffset;
     const int y0 = top.yOffset;
-    SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
-    SDL_RenderDrawLine(mRenderer, x1 + x0, y1 + y0, x2 + x0, y2 + y0);
+
+    SDL_Point points[] =
+    {
+        {x1 + x0, y1 + y0},
+        {x2 + x0, y2 + y0}
+    };
+
+    SDL_RenderDrawLines(mRenderer, points, 2);
 }
 
 bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
