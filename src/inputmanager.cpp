@@ -659,6 +659,8 @@ void InputManager::updateConditionMask()
     {
         mMask |= COND_NOTARGET;
     }
+    if (Game::instance())
+        mMask |= COND_INGAME;
 
     if (!player_node || player_node->getFollow().empty())
         mMask |= COND_NOFOLLOW;

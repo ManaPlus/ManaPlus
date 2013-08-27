@@ -1010,7 +1010,9 @@ int Client::gameExec()
 #endif
                 }
 
-                guiInput->pushInput(event);
+                if (inputManager.handleEvent(event))
+                    continue;
+
 #ifdef USE_MUMBLE
                 if (player_node && mumbleManager)
                 {

@@ -319,6 +319,8 @@ impHandler0(scrollChatDown)
 
 impHandler0(quit)
 {
+    if (!Game::instance())
+        return false;
     if (viewport && viewport->isPopupMenuVisible())
     {
         viewport->closePopupMenu();
