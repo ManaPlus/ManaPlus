@@ -181,7 +181,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     {
         oldImage = tmpImage;
 #ifdef USE_SDL2
-        SDL_SetSurfaceBlendMode (oldImage, SDL_BLENDMODE_NONE);
+        SDL_SetSurfaceBlendMode(oldImage, SDL_BLENDMODE_NONE);
 #endif
         tmpImage = MSDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
             32, rmask, gmask, bmask, amask);

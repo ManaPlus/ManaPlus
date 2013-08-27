@@ -79,7 +79,8 @@ SDLGraphics::~SDLGraphics()
 {
 }
 
-bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY,
+bool SDLGraphics::drawRescaledImage(const Image *const image,
+                                    int srcX, int srcY,
                                     int dstX, int dstY,
                                     const int width, const int height,
                                     const int desiredWidth,

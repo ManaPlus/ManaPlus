@@ -95,11 +95,11 @@ class SurfaceGraphics : public Graphics
         { }
 
         void calcImagePattern(ImageVertexes *const vert A_UNUSED,
-                                      const Image *const image A_UNUSED,
-                                      const int x A_UNUSED,
-                                      const int y A_UNUSED,
-                                      const int w A_UNUSED,
-                                      const int h A_UNUSED) const
+                              const Image *const image A_UNUSED,
+                              const int x A_UNUSED,
+                              const int y A_UNUSED,
+                              const int w A_UNUSED,
+                              const int h A_UNUSED) const
         { }
 
         void calcImagePattern(ImageCollection *const vert A_UNUSED,

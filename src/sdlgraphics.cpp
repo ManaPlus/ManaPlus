@@ -58,7 +58,8 @@ SDLGraphics::~SDLGraphics()
 {
 }
 
-bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY,
+bool SDLGraphics::drawRescaledImage(const Image *const image,
+                                    int srcX, int srcY,
                                     int dstX, int dstY,
                                     const int width, const int height,
                                     const int desiredWidth,
@@ -626,7 +627,7 @@ int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
     if (!src || !dst)
         return -1;
 
-    if (!srcrect ||!dstrect)
+    if (!srcrect || !dstrect)
         return -1;
 
     srcx = srcrect->x;

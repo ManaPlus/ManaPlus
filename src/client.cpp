@@ -999,9 +999,11 @@ int Client::gameExec()
                         handleSDL2WindowEvent(event);
                         break;
 #else
+#ifndef ANDROID
                     case SDL_ACTIVEEVENT:
                         handleActive(event);
                         break;
+#endif
                     case SDL_VIDEORESIZE:
                         resizeVideo(event.resize.w, event.resize.h, false);
                         break;

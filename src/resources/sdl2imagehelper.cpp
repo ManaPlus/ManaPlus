@@ -174,7 +174,7 @@ int SDLImageHelper::combineSurface(SDL_Surface *const src,
                                    SDL_Surface *const dst,
                                    SDL_Rect *const dstrect)
 {
-    SDL_SetSurfaceBlendMode (src, SDL_BLENDMODE_BLEND);
+    SDL_SetSurfaceBlendMode(src, SDL_BLENDMODE_BLEND);
     SDL_BlitSurface(src, srcrect, dst, dstrect);
     return 1;
 }

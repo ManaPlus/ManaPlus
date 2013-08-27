@@ -251,4 +251,3 @@ TEST(Dye, normalOGLDye1)
     EXPECT_EQ(0x2a, data[2]);
     EXPECT_EQ(0x50, data[3]);
 }
-

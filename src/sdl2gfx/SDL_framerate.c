@@ -25,6 +25,7 @@ distribution.
 
 Andreas Schiffler -- aschiffler at ferzkopp dot net
 
+Changed for ManaPlus (C) 2013  ManaPlus developers
 */
 
 #include "SDL_framerate.h"
@@ -34,21 +35,20 @@ Andreas Schiffler -- aschiffler at ferzkopp dot net
 
 \return The tick count.
 */
-Uint32 _getTicks()
+uint32_t _getTicks()
 {
-	Uint32 ticks = SDL_GetTicks();
+    const uint32_t ticks = SDL_GetTicks();
 
-	/* 
-	* Since baseticks!=0 is used to track initialization
-	* we need to ensure that the tick count is always >0 
-	* since SDL_GetTicks may not have incremented yet and
-	* return 0 depending on the timing of the calls.
-	*/
-	if (ticks == 0) {
-		return 1;
-	} else {
-		return ticks;
-	}
+    /* 
+    * Since baseticks!=0 is used to track initialization
+    * we need to ensure that the tick count is always >0 
+    * since SDL_GetTicks may not have incremented yet and
+    * return 0 depending on the timing of the calls.
+    */
+    if (ticks == 0)
+        return 1;
+    else
+        return ticks;
 }
 
 /*!
@@ -59,16 +59,16 @@ reset delay interpolation.
 
 \param manager Pointer to the framerate manager.
 */
-void SDL_initFramerate(FPSmanager * manager)
+void SDL_initFramerate(FPSmanager *const manager)
 {
-	/*
-	* Store some sane values 
-	*/
-	manager->framecount = 0;
-	manager->rate = FPS_DEFAULT;
-	manager->rateticks = (1000.0f / (float) FPS_DEFAULT);
-	manager->baseticks = _getTicks();
-	manager->lastticks = manager->baseticks;
+    /*
+    * Store some sane values 
+    */
+    manager->framecount = 0;
+    manager->rate = FPS_DEFAULT;
+    manager->rateticks = (1000.0f / (float) FPS_DEFAULT);
+    manager->baseticks = _getTicks();
+    manager->lastticks = manager->baseticks;
 
 }
 
@@ -83,16 +83,19 @@ Rate values must be between FPS_LOWER_LIMIT and FPS_UPPER_LIMIT inclusive to be 
 
 \return 0 for sucess and -1 for error.
 */
-int SDL_setFramerate(FPSmanager * manager, Uint32 rate)
+int SDL_setFramerate(FPSmanager *const manager, const uint32_t rate)
 {
-	if ((rate >= FPS_LOWER_LIMIT) && (rate <= FPS_UPPER_LIMIT)) {
-		manager->framecount = 0;
-		manager->rate = rate;
-		manager->rateticks = (1000.0f / (float) rate);
-		return (0);
-	} else {
-		return (-1);
-	}
+    if (rate >= FPS_LOWER_LIMIT && rate <= FPS_UPPER_LIMIT)
+    {
+        manager->framecount = 0;
+        manager->rate = rate;
+        manager->rateticks = (1000.0f / (float) rate);
+        return 0;
+    }
+    else
+    {
+        return -1;
+    }
 }
 
 /*!
@@ -104,13 +107,12 @@ Get the currently set framerate of the manager.
 
 \return Current framerate in Hz or -1 for error.
 */
-int SDL_getFramerate(FPSmanager * manager)
+int SDL_getFramerate(FPSmanager *const manager)
 {
-	if (manager == NULL) {
-		return (-1);
-	} else {
-		return ((int)manager->rate);
-	}
+    if (!manager)
+        return -1;
+    else
+        return (int)manager->rate;
 }
 
 /*!
@@ -123,13 +125,12 @@ A frame is counted each time SDL_framerateDelay is called.
 
 \return Current frame count or -1 for error.
 */
-int SDL_getFramecount(FPSmanager * manager)
+int SDL_getFramecount(FPSmanager *const manager)
 {
-	if (manager == NULL) {
-		return (-1);
-	} else {
-		return ((int)manager->framecount);
-	}
+    if (!manager)
+        return -1;
+    else
+        return (int)manager->framecount;
 }
 
 /*!
@@ -143,47 +144,46 @@ drawing too slow), the delay is zero and the delay interpolation is reset.
 
 \return The time that passed since the last call to the function in ms. May return 0.
 */
-Uint32 SDL_framerateDelay(FPSmanager * manager)
+uint32_t SDL_framerateDelay(FPSmanager *const manager)
 {
-	Uint32 current_ticks;
-	Uint32 target_ticks;
-	Uint32 the_delay;
-	Uint32 time_passed = 0;
+    uint32_t the_delay;
 
-	/*
-	* No manager, no delay
-	*/
-	if (manager == NULL) {
-		return 0;
-	}
+    /*
+    * No manager, no delay
+    */
+    if (!manager)
+        return 0;
 
-	/*
-	* Initialize uninitialized manager 
-	*/
-	if (manager->baseticks == 0) {
-		SDL_initFramerate(manager);
-	}
+    /*
+    * Initialize uninitialized manager 
+    */
+    if (manager->baseticks == 0)
+        SDL_initFramerate(manager);
 
-	/*
-	* Next frame 
-	*/
-	manager->framecount++;
+    /*
+    * Next frame 
+    */
+    manager->framecount ++;
 
-	/*
-	* Get/calc ticks 
-	*/
-	current_ticks = _getTicks();
-	time_passed = current_ticks - manager->lastticks;
-	manager->lastticks = current_ticks;
-	target_ticks = manager->baseticks + (Uint32) ((float) manager->framecount * manager->rateticks);
+    /*
+    * Get/calc ticks 
+    */
+    const uint32_t current_ticks = _getTicks();
+    const uint32_t time_passed = current_ticks - manager->lastticks;
+    manager->lastticks = current_ticks;
+    const uint32_t target_ticks = manager->baseticks + (uint32_t)(
+        (float)(manager->framecount) * manager->rateticks);
 
-	if (current_ticks <= target_ticks) {
-		the_delay = target_ticks - current_ticks;
-		SDL_Delay(the_delay);
-	} else {
-		manager->framecount = 0;
-		manager->baseticks = _getTicks();
-	}
+    if (current_ticks <= target_ticks)
+    {
+        the_delay = target_ticks - current_ticks;
+        SDL_Delay(the_delay);
+    }
+    else
+    {
+        manager->framecount = 0;
+        manager->baseticks = _getTicks();
+    }
 
-	return time_passed;
+    return time_passed;
 }

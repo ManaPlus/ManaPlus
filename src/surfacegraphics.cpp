@@ -51,8 +51,9 @@ SurfaceGraphics::~SurfaceGraphics()
 }
 
 bool SurfaceGraphics::drawImage2(const Image *const image, int srcX, int srcY,
-                                 int dstX, int dstY, const int width,
-                                 const int height, const bool useColor A_UNUSED)
+                                 int dstX, int dstY,
+                                 const int width, const int height,
+                                 const bool useColor A_UNUSED)
 {
     FUNC_BLOCK("Graphics::drawImage2", 1)
     // Check that preconditions for blitting are met.

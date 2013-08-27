@@ -237,7 +237,6 @@ bool Graphics::setOpenGLMode()
 
     return false;
 #endif  // USE_OPENGL
-
 }
 
 int Graphics::getSoftwareFlags() const
@@ -315,7 +314,6 @@ void Graphics::dumpRendererInfo(const char *const str,
 
 bool Graphics::videoInfo()
 {
-
     logger->log("SDL video info");
 #ifdef USE_SDL2
     logger->log("Using video driver: %s", SDL_GetCurrentVideoDriver());

@@ -152,4 +152,3 @@ TEST(AnimatedSprite, basic2)
     delete client;
     client = nullptr;
 }
-

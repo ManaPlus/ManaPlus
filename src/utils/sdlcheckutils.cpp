@@ -37,7 +37,7 @@
 
 struct SurfaceObject
 {
-    SurfaceObject(const std::string name, const char *const file,
+    SurfaceObject(const std::string &name, const char *const file,
                   const unsigned int line) :
         mName(name),
         mAddFile(strprintf("%s:%u", file, line)),
@@ -60,7 +60,8 @@ static SDL_Surface *addSurface(const char *const name,
                                const unsigned line)
 {
 #ifdef DEBUG_SURFACE_ALLOCATION
-    logger->log("add surface: %s %s:%u %p", name, file, line, static_cast<void*>(surface));
+    logger->log("add surface: %s %s:%u %p", name,
+        file, line, static_cast<void*>(surface));
 #endif
     std::map<SDL_Surface*, SurfaceObject*>::iterator
         it = mSurfaces.find(surface);
@@ -173,7 +174,7 @@ SDL_Surface *FakeSDL_ConvertSurface(SDL_Surface *const src,
 
 SDL_Surface *FakeTTF_RenderUTF8_Blended(_TTF_Font *const font,
                                         const char *const text,
-                                        const SDL_Color fg,
+                                        const SDL_Color &fg,
                                         const char *const file,
                                         const unsigned line)
 {

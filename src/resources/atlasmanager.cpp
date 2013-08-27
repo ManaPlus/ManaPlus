@@ -248,7 +248,8 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
             {
 #ifdef USE_SDL2
                 SDL_SetSurfaceAlphaMod(image->mSDLSurface, SDL_ALPHA_OPAQUE);
-                SDL_SetSurfaceBlendMode (image->mSDLSurface, SDL_BLENDMODE_NONE);
+                SDL_SetSurfaceBlendMode(image->mSDLSurface,
+                    SDL_BLENDMODE_NONE);
 #else
                 SDL_SetAlpha(image->mSDLSurface, 0, SDL_ALPHA_OPAQUE);
 #endif

@@ -149,7 +149,8 @@ int SurfaceImageHelper::useOpenGL() const
     return 0;
 }
 
-SDL_Surface *SurfaceImageHelper::create32BitSurface(int width, int height) const
+SDL_Surface *SurfaceImageHelper::create32BitSurface(int width,
+                                                    int height) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;
@@ -172,7 +173,7 @@ int SurfaceImageHelper::combineSurface(SDL_Surface *const src,
                                        SDL_Surface *const dst,
                                        SDL_Rect *const dstrect)
 {
-    SDL_SetSurfaceBlendMode (src, SDL_BLENDMODE_BLEND);
+    SDL_SetSurfaceBlendMode(src, SDL_BLENDMODE_BLEND);
     SDL_BlitSurface(src, srcrect, dst, dstrect);
     return 1;
 }
