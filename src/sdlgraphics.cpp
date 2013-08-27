@@ -119,24 +119,82 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     const gcn::ClipRectangle &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
 
-    SDL_Rect srcRect
-    {
-        static_cast<int16_t>(srcX + bounds.x),
-        static_cast<int16_t>(srcY + bounds.y),
-        static_cast<uint16_t>(width),
-        static_cast<uint16_t>(height)
-    };
 
-    SDL_Rect dstRect
-    {
-        static_cast<int16_t>(dstX + top.xOffset),
-        static_cast<int16_t>(dstY + top.yOffset),
-        0,
-        0
-    };
+    SDL_Surface *const src = image->mSDLSurface;
 
-    return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
-        mWindow, &dstRect) < 0);
+    srcX += bounds.x;
+    srcY += bounds.y;
+    dstX += top.xOffset;
+    dstY += top.yOffset;
+
+    int w = width;
+    int h = height;
+    if (srcX < 0)
+    {
+        w += srcX;
+        dstX -= static_cast<int16_t>(srcX);
+        srcX = 0;
+    }
+    const int maxw = src->w - srcX;
+    if (maxw < w)
+        w = maxw;
+
+    if (srcY < 0)
+    {
+        h += srcY;
+        dstY -= static_cast<int16_t>(srcY);
+        srcY = 0;
+    }
+    const int maxh = src->h - srcY;
+    if (maxh < h)
+        h = maxh;
+
+    const SDL_Rect *const clip = &mWindow->clip_rect;
+    const int clipX = clip->x;
+    const int clipY = clip->y;
+    int dx = clipX - dstX;
+    if (dx > 0)
+    {
+        w -= dx;
+        dstX += static_cast<int16_t>(dx);
+        srcX += dx;
+    }
+    dx = dstX + w - clipX - clip->w;
+    if (dx > 0)
+        w -= dx;
+
+    int dy = clipY - dstY;
+    if (dy > 0)
+    {
+        h -= dy;
+        dstY += static_cast<int16_t>(dy);
+        srcY += dy;
+    }
+    dy = dstY + h - clipY - clip->h;
+    if (dy > 0)
+        h -= dy;
+
+    if (w > 0 && h > 0)
+    {
+        SDL_Rect srcRect
+        {
+            static_cast<int16_t>(srcX),
+            static_cast<int16_t>(srcY),
+            static_cast<uint16_t>(w),
+            static_cast<uint16_t>(h)
+        };
+
+        SDL_Rect dstRect
+        {
+            static_cast<int16_t>(dstX),
+            static_cast<int16_t>(dstY),
+            static_cast<uint16_t>(w),
+            static_cast<uint16_t>(h)
+        };
+
+        return SDL_LowerBlit(src, &srcRect, mWindow, &dstRect);
+    }
+    return 0;
 }
 
 void SDLGraphics::drawImagePattern(const Image *const image,
@@ -161,34 +219,90 @@ void SDLGraphics::drawImagePattern(const Image *const image,
     const int yOffset = top.yOffset + y;
     const int srcX = bounds.x;
     const int srcY = bounds.y;
+    SDL_Surface *const src = image->mSDLSurface;
+    const SDL_Rect *const clip = &mWindow->clip_rect;
+    const int clipX = clip->x;
+    const int clipY = clip->y;
 
-    for (int py = 0; py < h; py += ih)  // Y position on pattern plane
+    for (int py = 0; py < h; py += ih)
     {
         const int dh = (py + ih >= h) ? h - py : ih;
-        const int dstY = py + yOffset;
-
-        for (int px = 0; px < w; px += iw)  // X position on pattern plane
+        int dstY = py + yOffset;
+        int y2 = srcY;
+        int h = dh;
+        if (y2 < 0)
         {
-            const int dw = (px + iw >= w) ? w - px : iw;
-            const int dstX = px + xOffset;
+            h += y2;
+            dstY -= static_cast<int16_t>(y2);
+            y2 = 0;
+        }
+        const int maxh = src->h - y2;
+        if (maxh < h)
+            h = maxh;
 
-            SDL_Rect srcRect
+        int dy = clipY - dstY;
+        if (dy > 0)
+        {
+            h -= dy;
+            dstY += static_cast<int16_t>(dy);
+            y2 += dy;
+        }
+        dy = dstY + h - clipY - clip->h;
+        if (dy > 0)
+            h -= dy;
+
+        if (h > 0)
+        {
+            for (int px = 0; px < w; px += iw)
             {
-                static_cast<int16_t>(srcX),
-                static_cast<int16_t>(srcY),
-                static_cast<uint16_t>(dw),
-                static_cast<uint16_t>(dh)
-            };
+                const int dw = (px + iw >= w) ? w - px : iw;
+                int dstX = px + xOffset;
+                int x2 = srcX;
+                int w = dw;
+                if (x2 < 0)
+                {
+                    w += x2;
+                    dstX -= static_cast<int16_t>(x2);
+                    x2 = 0;
+                }
+                const int maxw = src->w - x2;
+                if (maxw < w)
+                    w = maxw;
 
-            SDL_Rect dstRect
-            {
-                static_cast<int16_t>(dstX),
-                static_cast<int16_t>(dstY),
-                0,
-                0
-            };
+                int dx = clipX - dstX;
+                if (dx > 0)
+                {
+                    w -= dx;
+                    dstX += static_cast<int16_t>(dx);
+                    x2 += dx;
+                }
+                dx = dstX + w - clipX - clip->w;
+                if (dx > 0)
+                    w -= dx;
 
-            SDL_BlitSurface(image->mSDLSurface, &srcRect, mWindow, &dstRect);
+                if (w > 0)
+                {
+                    SDL_Rect srcRect
+                    {
+                        static_cast<int16_t>(x2),
+                        static_cast<int16_t>(y2),
+                        static_cast<uint16_t>(w),
+                        static_cast<uint16_t>(h)
+                    };
+
+                    SDL_Rect dstRect
+                    {
+                        static_cast<int16_t>(dstX),
+                        static_cast<int16_t>(dstY),
+                        static_cast<uint16_t>(w),
+                        static_cast<uint16_t>(h)
+                    };
+
+                    SDL_LowerBlit(src, &srcRect, mWindow, &dstRect);
+                }
+
+//            SDL_BlitSurface(image->mSDLSurface, &srcRect, mWindow, &dstRect);
+            }
         }
     }
 }
@@ -506,84 +620,63 @@ int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
                                    const SDL_Surface *const dst,
                                    SDL_Rect *dstrect) const
 {
-    SDL_Rect fulldst;
     int srcx, srcy, w, h;
 
     // Make sure the surfaces aren't locked
     if (!src || !dst)
         return -1;
 
-    if (src->locked || dst->locked)
+    if (!srcrect ||!dstrect)
         return -1;
 
-    // If the destination rectangle is nullptr, use the entire dest surface
-    if (!dstrect)
+    srcx = srcrect->x;
+    w = srcrect->w;
+    if (srcx < 0)
     {
-        fulldst.x = 0;
-        fulldst.y = 0;
-        dstrect = &fulldst;
-    }
-
-    // clip the source rectangle to the source surface
-    if (srcrect)
-    {
-        srcx = srcrect->x;
-        w = srcrect->w;
-        if (srcx < 0)
-        {
-            w += srcx;
-            dstrect->x -= static_cast<int16_t>(srcx);
-            srcx = 0;
-        }
-        int maxw = src->w - srcx;
-        if (maxw < w)
-            w = maxw;
-
-        srcy = srcrect->y;
-        h = srcrect->h;
-        if (srcy < 0)
-        {
-            h += srcy;
-            dstrect->y -= static_cast<int16_t>(srcy);
-            srcy = 0;
-        }
-        int maxh = src->h - srcy;
-        if (maxh < h)
-            h = maxh;
-    }
-    else
-    {
+        w += srcx;
+        dstrect->x -= static_cast<int16_t>(srcx);
         srcx = 0;
-        srcy = 0;
-        w = src->w;
-        h = src->h;
     }
+    int maxw = src->w - srcx;
+    if (maxw < w)
+        w = maxw;
 
-    // clip the destination rectangle against the clip rectangle
+    srcy = srcrect->y;
+    h = srcrect->h;
+    if (srcy < 0)
     {
-        const SDL_Rect *const clip = &dst->clip_rect;
-        int dx = clip->x - dstrect->x;
-        if (dx > 0)
-        {
-            w -= dx;
-            dstrect->x += static_cast<int16_t>(dx);
-            srcx += dx;
-        }
-        dx = dstrect->x + w - clip->x - clip->w;
-        if (dx > 0)
-            w -= dx;
-
-        int dy = clip->y - dstrect->y;
-        if (dy > 0)
-        {
-            h -= dy;
-            dstrect->y += static_cast<int16_t>(dy);
-            srcy += dy;
-        }
-        dy = dstrect->y + h - clip->y - clip->h;
-        if (dy > 0)
-            h -= dy;
+        h += srcy;
+        dstrect->y -= static_cast<int16_t>(srcy);
+        srcy = 0;
     }
+    int maxh = src->h - srcy;
+    if (maxh < h)
+        h = maxh;
+
+    const SDL_Rect *const clip = &dst->clip_rect;
+    const int clipX = clip->x;
+    const int clipY = clip->y;
+    int dx = clipX - dstrect->x;
+    if (dx > 0)
+    {
+        w -= dx;
+        dstrect->x += static_cast<int16_t>(dx);
+        srcx += dx;
+    }
+    dx = dstrect->x + w - clipX - clip->w;
+    if (dx > 0)
+        w -= dx;
+
+    int dy = clipY - dstrect->y;
+    if (dy > 0)
+    {
+        h -= dy;
+        dstrect->y += static_cast<int16_t>(dy);
+        srcy += dy;
+    }
+    dy = dstrect->y + h - clipY - clip->h;
+    if (dy > 0)
+        h -= dy;
 
     if (w > 0 && h > 0)
     {
