@@ -32,6 +32,7 @@ class ChatTab;
 
 extern ChatTab *localChatTab;
 
+// TRANSLATORS: chat option changed message
 #define BOOLEAN_OPTIONS _("Options to /%s are \"yes\", \"no\", \"true\", "\
 "\"false\", \"1\", \"0\".")
 
