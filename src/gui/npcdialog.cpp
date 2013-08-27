@@ -190,7 +190,10 @@ NpcDialog::NpcDialog(const int npcId) :
     {
         const Being *const being = actorSpriteManager->findBeing(mNpcId);
         if (being)
+        {
             showAvatar(NPCDB::getAvatarFor(being->getSubType()));
+            setCaption(being->getName());
+        }
     }
 
     config.addListener("logNpcInGui", this);
