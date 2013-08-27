@@ -83,7 +83,7 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
     const gcn::ClipRectangle &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
 
-    SDL_Rect srcRect
+    SDL_Rect srcRect =
     {
         static_cast<int16_t>(srcX + bounds.x),
         static_cast<int16_t>(srcY + bounds.y),
@@ -91,7 +91,7 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
         static_cast<uint16_t>(height)
     };
 
-    SDL_Rect dstRect
+    SDL_Rect dstRect =
     {
         static_cast<int16_t>(dstX + top.xOffset),
         static_cast<int16_t>(dstY + top.yOffset),
@@ -176,7 +176,7 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
 
     if (w > 0 && h > 0)
     {
-        SDL_Rect srcRect
+        SDL_Rect srcRect =
         {
             static_cast<int16_t>(srcX),
             static_cast<int16_t>(srcY),
@@ -184,7 +184,7 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
             static_cast<uint16_t>(h)
         };
 
-        SDL_Rect dstRect
+        SDL_Rect dstRect =
         {
             static_cast<int16_t>(dstX),
             static_cast<int16_t>(dstY),
@@ -229,73 +229,73 @@ void SDLGraphics::drawImagePattern(const Image *const image,
         const int dh = (py + ih >= h) ? h - py : ih;
         int dstY = py + yOffset;
         int y2 = srcY;
-        int h = dh;
+        int h2 = dh;
         if (y2 < 0)
         {
-            h += y2;
+            h2 += y2;
             dstY -= static_cast<int16_t>(y2);
             y2 = 0;
         }
         const int maxh = src->h - y2;
-        if (maxh < h)
-            h = maxh;
+        if (maxh < h2)
+            h2 = maxh;
 
         int dy = clipY - dstY;
         if (dy > 0)
         {
-            h -= dy;
+            h2 -= dy;
             dstY += static_cast<int16_t>(dy);
             y2 += dy;
         }
-        dy = dstY + h - clipY - clip->h;
+        dy = dstY + h2 - clipY - clip->h;
         if (dy > 0)
-            h -= dy;
+            h2 -= dy;
 
-        if (h > 0)
+        if (h2 > 0)
         {
             for (int px = 0; px < w; px += iw)
             {
                 const int dw = (px + iw >= w) ? w - px : iw;
                 int dstX = px + xOffset;
                 int x2 = srcX;
-                int w = dw;
+                int w2 = dw;
                 if (x2 < 0)
                 {
-                    w += x2;
+                    w2 += x2;
                     dstX -= static_cast<int16_t>(x2);
                     x2 = 0;
                 }
                 const int maxw = src->w - x2;
-                if (maxw < w)
-                    w = maxw;
+                if (maxw < w2)
+                    w2 = maxw;
 
                 int dx = clipX - dstX;
                 if (dx > 0)
                 {
-                    w -= dx;
+                    w2 -= dx;
                     dstX += static_cast<int16_t>(dx);
                     x2 += dx;
                 }
-                dx = dstX + w - clipX - clip->w;
+                dx = dstX + w2 - clipX - clip->w;
                 if (dx > 0)
-                    w -= dx;
+                    w2 -= dx;
 
-                if (w > 0)
+                if (w2 > 0)
                 {
-                    SDL_Rect srcRect
+                    SDL_Rect srcRect =
                     {
                         static_cast<int16_t>(x2),
                         static_cast<int16_t>(y2),
-                        static_cast<uint16_t>(w),
-                        static_cast<uint16_t>(h)
+                        static_cast<uint16_t>(w2),
+                        static_cast<uint16_t>(h2)
                     };
 
-                    SDL_Rect dstRect
+                    SDL_Rect dstRect =
                     {
                         static_cast<int16_t>(dstX),
                         static_cast<int16_t>(dstY),
-                        static_cast<uint16_t>(w),
-                        static_cast<uint16_t>(h)
+                        static_cast<uint16_t>(w2),
+                        static_cast<uint16_t>(h2)
                     };
 
                     SDL_LowerBlit(src, &srcRect, mWindow, &dstRect);
@@ -349,7 +349,7 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
             const int dw = (px + iw >= w) ? w - px : iw;
             const int dstX = px + xOffset;
 
-            SDL_Rect srcRect
+            SDL_Rect srcRect =
             {
                 static_cast<int16_t>(srcX),
                 static_cast<int16_t>(srcY),
@@ -357,7 +357,7 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
                 static_cast<uint16_t>(dh)
             };
 
-            SDL_Rect dstRect
+            SDL_Rect dstRect =
             {
                 static_cast<int16_t>(dstX),
                 static_cast<int16_t>(dstY),
@@ -878,11 +878,13 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
     }
     else
     {
-        SDL_Rect rect;
-        rect.x = static_cast<int16_t>(area.x);
-        rect.y = static_cast<int16_t>(area.y);
-        rect.w = static_cast<uint16_t>(area.width);
-        rect.h = static_cast<uint16_t>(area.height);
+        SDL_Rect rect =
+        {
+            static_cast<int16_t>(area.x),
+            static_cast<int16_t>(area.y),
+            static_cast<uint16_t>(area.width),
+            static_cast<uint16_t>(area.height)
+        };
 
         const uint32_t color = SDL_MapRGBA(mWindow->format,
             static_cast<int8_t>(mColor.r),
@@ -907,7 +909,7 @@ bool SDLGraphics::pushClipArea(gcn::Rectangle area)
 {
     const bool result = gcn::Graphics::pushClipArea(area);
     const gcn::ClipRectangle &carea = mClipStack.top();
-    const SDL_Rect rect
+    const SDL_Rect rect =
     {
         static_cast<int16_t>(carea.x),
         static_cast<int16_t>(carea.y),
@@ -927,7 +929,7 @@ void SDLGraphics::popClipArea()
         return;
 
     const gcn::ClipRectangle &carea = mClipStack.top();
-    const SDL_Rect rect
+    const SDL_Rect rect =
     {
         static_cast<int16_t>(carea.x),
         static_cast<int16_t>(carea.y),

@@ -386,12 +386,9 @@ bool Graphics::resizeScreen(const int width, const int height)
     if (mWidth == width && mHeight == height)
         return true;
 
-    const int prevWidth = mWidth;
-    const int prevHeight = mHeight;
-
+#ifdef USE_SDL2
     _endDraw();
 
-#ifdef USE_SDL2
     mRect.w = width;
     mRect.h = height;
     mWidth = width;
@@ -404,12 +401,17 @@ bool Graphics::resizeScreen(const int width, const int height)
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
 #else
     // +++ need impliment resize in soft mode
-#endif
+#endif  // USE_OPENGL
 
     _beginDraw();
     return true;
 
 #else
+    const int prevWidth = mWidth;
+    const int prevHeight = mHeight;
+
+    _endDraw();
+
     const bool success = setVideoMode(width, height, mBpp,
         mFullscreen, mHWAccel, mEnableResize, mNoFrame);
 
@@ -427,7 +429,7 @@ bool Graphics::resizeScreen(const int width, const int height)
     _beginDraw();
 
     return success;
-#endif
+#endif  // USE_SDL2
 }
 
 int Graphics::getWidth() const

@@ -95,14 +95,14 @@ bool SDLGraphics::drawRescaledImage(const Image *const image, int srcX, int srcY
 
     const gcn::ClipRectangle &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
-    const SDL_Rect srcRect
+    const SDL_Rect srcRect =
     {
         static_cast<int32_t>(srcX + bounds.x),
         static_cast<int32_t>(srcY + bounds.y),
         static_cast<int32_t>(width),
         static_cast<int32_t>(height)
     };
-    const SDL_Rect dstRect
+    const SDL_Rect dstRect =
     {
         static_cast<int32_t>(dstX + top.xOffset),
         static_cast<int32_t>(dstY + top.yOffset),
@@ -128,7 +128,7 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
         return false;
 
     const SDL_Rect &bounds = image->mBounds;
-    const SDL_Rect srcRect
+    const SDL_Rect srcRect =
     {
         static_cast<int32_t>(srcX + bounds.x),
         static_cast<int32_t>(srcY + bounds.y),
@@ -136,7 +136,7 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
         static_cast<int32_t>(height)
     };
 
-    const SDL_Rect dstRect
+    const SDL_Rect dstRect =
     {
         static_cast<int32_t>(dstX + top.xOffset),
         static_cast<int32_t>(dstY + top.yOffset),
@@ -491,7 +491,7 @@ bool SDLGraphics::calcWindow(ImageCollection *const vertCol,
 void SDLGraphics::fillRectangle(const gcn::Rectangle &rectangle)
 {
     const gcn::ClipRectangle &top = mClipStack.top();
-    const SDL_Rect rect
+    const SDL_Rect rect =
     {
         static_cast<int32_t>(rectangle.x + top.xOffset),
         static_cast<int32_t>(rectangle.y + top.yOffset),
@@ -518,7 +518,7 @@ bool SDLGraphics::pushClipArea(gcn::Rectangle area)
     const bool result = gcn::Graphics::pushClipArea(area);
 
     const gcn::ClipRectangle &carea = mClipStack.top();
-    const SDL_Rect rect
+    const SDL_Rect rect =
     {
         static_cast<int32_t>(carea.x),
         static_cast<int32_t>(carea.y),
@@ -537,7 +537,7 @@ void SDLGraphics::popClipArea()
         return;
 
     const gcn::ClipRectangle &carea = mClipStack.top();
-    const SDL_Rect rect
+    const SDL_Rect rect =
     {
         static_cast<int32_t>(carea.x),
         static_cast<int32_t>(carea.y),
@@ -562,7 +562,7 @@ void SDLGraphics::drawPoint(int x, int y)
         return;
 
     SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
-    const SDL_Point point
+    const SDL_Point point =
     {
         x,
         y

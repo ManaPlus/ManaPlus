@@ -162,7 +162,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 
         case SDL_MOUSEWHEEL:
         {
-            const int x = event.wheel.x;
+//            const int x = event.wheel.x;
             const int y = event.wheel.y;
             if (y)
             {
