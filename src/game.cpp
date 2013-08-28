@@ -215,7 +215,6 @@ static void createGuiWindows()
     shopWindow = new ShopWindow;
     skillDialog = new SkillDialog;
     minimap = new Minimap;
-    helpWindow = new HelpWindow;
     debugWindow = new DebugWindow;
     itemShortcutWindow = new ShortcutWindow(
         "ItemShortcut", "items.xml", 83, 460);
@@ -225,7 +224,6 @@ static void createGuiWindows()
         itemShortcutWindow->addTab(toString(f + 1),
             new ItemShortcutContainer(f));
     }
-    didYouKnowWindow = new DidYouKnowWindow;
     if (config.getBoolValue("showDidYouKnow"))
     {
         didYouKnowWindow->setVisible(true);
@@ -355,7 +353,6 @@ static void destroyGuiWindows()
     del_0(equipmentWindow)
     del_0(beingEquipmentWindow)
     del_0(tradeWindow)
-    del_0(helpWindow)
     del_0(debugWindow)
     del_0(itemShortcutWindow)
     del_0(emoteShortcutWindow)
@@ -370,7 +367,6 @@ static void destroyGuiWindows()
     del_0(questsWindow);
     del_0(whoIsOnline);
     del_0(killStats);
-    del_0(didYouKnowWindow);
 
     if (auctionManager && AuctionManager::getEnableAuctionBot())
         auctionManager->reload();

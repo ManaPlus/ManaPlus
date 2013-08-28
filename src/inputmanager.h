@@ -87,6 +87,7 @@ enum KeyCondition
     COND_NOFOLLOW = 1024,                     // follow mode disabled
     COND_INGAME = 2048,                       // game must be started
     COND_SHORTCUT = 2 + 4 + 16 + 512 + 2048,  // flags for shortcut keys
+    COND_SHORTCUT0 = 2 + 4 + 16 + 512,        // flags for shortcut keys
     COND_GAME = 2 + 4 + 8 + 16 + 64 + 2048,   // main game key
     COND_GAME2 = 2 + 8 + 16 + 64 + 2048
 };

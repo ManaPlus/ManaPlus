@@ -54,7 +54,9 @@
 #include "gui/charselectdialog.h"
 #include "gui/confirmdialog.h"
 #include "gui/connectiondialog.h"
+#include "gui/didyouknowwindow.h"
 #include "gui/gui.h"
+#include "gui/helpwindow.h"
 #include "gui/logindialog.h"
 #include "gui/okdialog.h"
 #include "gui/quitdialog.h"
@@ -631,6 +633,8 @@ void Client::gameInit()
 
     userPalette = new UserPalette;
     setupWindow = new Setup;
+    helpWindow = new HelpWindow;
+    didYouKnowWindow = new DidYouKnowWindow;
 
     soundManager.playMusic(branding.getValue(
         "loginMusic", "Magick - Real.ogg"));
@@ -745,6 +749,11 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting1");
     config.removeListeners(this);
+
+    userPalette = nullptr;
+    setupWindow = nullptr;
+    helpWindow = nullptr;
+    didYouKnowWindow = nullptr;
 
     SDL_RemoveTimer(mLogicCounterId);
     SDL_RemoveTimer(mSecondsCounterId);
