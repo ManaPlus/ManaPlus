@@ -154,7 +154,7 @@ void ActorSprite::controlParticle(Particle *const particle)
 void ActorSprite::setTargetType(const TargetCursorType type)
 {
     static const int targetWidths[ActorSprite::NUM_TC] = {0, 0, 0};
-    static const int targetHeights[ActorSprite::NUM_TC] = {0, -16, -32};
+    static const int targetHeights[ActorSprite::NUM_TC] = {-16, -16, -32};
 
     if (type == TCT_NONE)
     {
