@@ -339,6 +339,7 @@ static void destroyGuiWindows()
     del_0(debugChatTab)
     del_0(tradeChatTab)
     del_0(battleChatTab)
+    del_0(langChatTab)
     del_0(gmChatTab);
     logger->log("start deleting");
     del_0(emoteWindow);

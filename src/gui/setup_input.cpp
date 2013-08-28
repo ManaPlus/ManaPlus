@@ -125,10 +125,9 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     refreshKeys();
     mKeyList->addActionListener(this);
 
-    ScrollArea *const scrollArea = new ScrollArea(mKeyList,
+    mScrollArea = new ScrollArea(mKeyList,
         true, "setup_input_background.xml");
-    scrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-
+    mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mAssignKeyButton->addActionListener(this);
     mAssignKeyButton->setEnabled(false);
     mUnassignKeyButton->addActionListener(this);
@@ -152,7 +151,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     ContainerPlacer place = h.getPlacer(0, 0);
 
     place(0, 0, mTabs, 5);
-    place(0, 1, scrollArea, 5, 5).setPadding(2);
+    place(0, 1, mScrollArea, 5, 5).setPadding(2);
     place(0, 6, mResetKeysButton);
     place(2, 6, mAssignKeyButton);
     place(3, 6, mUnassignKeyButton);
@@ -180,6 +179,8 @@ Setup_Input::~Setup_Input()
     mResetKeysButton = nullptr;
     delete [] mActionDataSize;
     mActionDataSize = nullptr;
+    delete mScrollArea;
+    mScrollArea = nullptr;
 }
 
 void Setup_Input::apply()

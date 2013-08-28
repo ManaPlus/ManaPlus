@@ -271,7 +271,8 @@ SkillDialog::SkillDialog() :
     setSaveVisible(true);
     setStickyButtonLock(true);
     setDefaultSize(windowContainer->getWidth() - 280, 30, 275, 425);
-    setupWindow->registerWindowForReset(this);
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     mUseButton->setEnabled(false);
     mIncreaseButton->setEnabled(false);

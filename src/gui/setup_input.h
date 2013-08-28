@@ -32,6 +32,7 @@ class Button;
 class CheckBox;
 class ListBox;
 class KeyListModel;
+class ScrollArea;
 class TabStrip;
 
 struct SetupActionData;
@@ -96,6 +97,7 @@ class Setup_Input final : public SetupTab
         Button *mDefaultButton;
         Button *mResetKeysButton;
         TabStrip *mTabs;
+        ScrollArea *mScrollArea;
         bool mKeySetting; /**< flag to check if key being set. */
         int *mActionDataSize;
 };

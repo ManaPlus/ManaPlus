@@ -205,6 +205,13 @@ WindowMenu::~WindowMenu()
     }
     delete_all(mButtonTexts);
     mButtonTexts.clear();
+    if (mSkin)
+    {
+        Theme *const theme = Theme::instance();
+        if (theme)
+            theme->unload(mSkin);
+        mSkin = nullptr;
+    }
 }
 
 void WindowMenu::action(const gcn::ActionEvent &event)

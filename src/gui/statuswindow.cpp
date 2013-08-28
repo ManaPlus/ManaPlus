@@ -165,7 +165,8 @@ StatusWindow::StatusWindow() :
     listen(CHANNEL_ATTRIBUTES);
 
     setWindowName("Status");
-    setupWindow->registerWindowForReset(this);
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
     setResizable(true);
     setCloseButton(true);
     setSaveVisible(true);

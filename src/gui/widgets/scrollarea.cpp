@@ -102,9 +102,9 @@ ScrollArea::~ScrollArea()
     const Theme *const theme = Theme::instance();
     if (theme)
     {
-        theme->unloadRect(background);
         if (instances == 0)
         {
+            theme->unloadRect(background);
             theme->unloadRect(vMarker);
             theme->unloadRect(vMarkerHi);
             theme->unloadRect(vBackground);
@@ -135,12 +135,6 @@ void ScrollArea::init(std::string skinName)
     setLeftButtonScrollAmount(2);
     setRightButtonScrollAmount(2);
 
-    if (skinName == "")
-        skinName = "scroll_background.xml";
-    Theme *const theme = Theme::instance();
-    if (theme)
-        theme->loadRect(background, skinName, "scroll_background.xml");
-
     if (instances == 0)
     {
         for (int f = 0; f < 9; f ++)
@@ -151,6 +145,13 @@ void ScrollArea::init(std::string skinName)
             vBackground.grid[f] = nullptr;
             hBackground.grid[f] = nullptr;
         }
+
+        // +++ here probably need move background from static
+        if (skinName == "")
+            skinName = "scroll_background.xml";
+        Theme *const theme = Theme::instance();
+        if (theme)
+            theme->loadRect(background, skinName, "scroll_background.xml");
 
         if (theme)
         {
@@ -169,7 +170,8 @@ void ScrollArea::init(std::string skinName)
                 const ImageRect &rect = skin->getBorder();
                 for (int f = UP; f < BUTTONS_DIR; f ++)
                 {
-                    rect.grid[f]->incRef();
+                    if (rect.grid[f])
+                        rect.grid[f]->incRef();
                     buttons[f][i] = rect.grid[f];
                 }
                 if (i == 0)
@@ -188,7 +190,6 @@ void ScrollArea::init(std::string skinName)
         }
     }
     mScrollbarWidth = mScrollbarSize;
-
     instances++;
 }
 

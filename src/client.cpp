@@ -755,9 +755,11 @@ void Client::gameClear()
         logger->log1("Quitting1");
     config.removeListeners(this);
 
-    userPalette = nullptr;
+    delete setupWindow;
     setupWindow = nullptr;
+    delete helpWindow;
     helpWindow = nullptr;
+    delete didYouKnowWindow;
     didYouKnowWindow = nullptr;
 
     SDL_RemoveTimer(mLogicCounterId);

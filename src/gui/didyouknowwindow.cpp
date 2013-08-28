@@ -70,7 +70,8 @@ DidYouKnowWindow::DidYouKnowWindow() :
     setResizable(true);
     setStickyButtonLock(true);
 
-    setupWindow->registerWindowForReset(this);
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
     setDefaultSize(500, 400, ImageRect::CENTER);
 
     mBrowserBox->setOpaque(false);

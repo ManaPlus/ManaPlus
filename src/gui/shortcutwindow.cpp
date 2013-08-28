@@ -74,7 +74,8 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     mDragOffsetY = 0;
 
     content->setWidget2(this);
-    setupWindow->registerWindowForReset(this);
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     const int border = SCROLL_PADDING * 2 + getPadding() * 2;
     setMinWidth(mItems->getBoxWidth() + border);
@@ -123,7 +124,8 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     mDragOffsetX = 0;
     mDragOffsetY = 0;
 
-    setupWindow->registerWindowForReset(this);
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     const int border = SCROLL_PADDING * 2 + getPadding() * 2;
 
