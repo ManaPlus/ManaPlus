@@ -450,7 +450,8 @@ bool ResourceManager::addResource(const std::string &idPath,
         resource->incRef();
         resource->mIdPath = idPath;
 #ifdef DEBUG_IMAGES
-        logger->log("set name %p, %s", resource, resource->mIdPath.c_str());
+        logger->log("set name %p, %s", static_cast<void*>(resource),
+            resource->mIdPath.c_str());
 #endif
         mResources[idPath] = resource;
         return true;
@@ -522,7 +523,8 @@ Resource *ResourceManager::get(const std::string &idPath, const generator fun,
         resource->incRef();
         resource->mIdPath = idPath;
 #ifdef DEBUG_IMAGES
-        logger->log("set name %p, %s", resource, resource->mIdPath.c_str());
+        logger->log("set name %p, %s", static_cast<void*>(resource),
+            resource->mIdPath.c_str());
 #endif
         mResources[idPath] = resource;
         cleanOrphans();
@@ -539,7 +541,8 @@ Resource *ResourceManager::get(const std::string &idPath, const generator fun,
         resource->incRef();
         resource->mIdPath = idPath;
 #ifdef DEBUG_IMAGES
-        logger->log("set name %p, %s", resource, resource->mIdPath.c_str());
+        logger->log("set name %p, %s", static_cast<void*>(resource),
+            resource->mIdPath.c_str());
 #endif
     }
     else

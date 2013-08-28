@@ -37,6 +37,7 @@
 #include "resources/imagehelper.h"
 
 #include "utils/dtor.h"
+#include "utils/sdlcheckutils.h"
 
 #include <SDL.h>
 

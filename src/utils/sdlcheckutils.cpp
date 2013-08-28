@@ -33,7 +33,7 @@
 
 #include "debug.h"
 
-// #define DEBUG_SURFACE_ALLOCATION 1
+#define DEBUG_SURFACE_ALLOCATION 1
 
 struct SurfaceObject
 {
@@ -85,7 +85,7 @@ static SDL_Surface *addSurface(const char *const name,
     return surface;
 }
 
-static void deleteSurface(const char *const name,
+static void deleteSurface(const char *const name A_UNUSED,
                           SDL_Surface *const surface,
                           const char *const file,
                           const unsigned line)
@@ -97,7 +97,8 @@ static void deleteSurface(const char *const name,
         it = mSurfaces.find(surface);
     if (it == mSurfaces.end())
     {
-        logger->log("bad surface delete: %p at %s:%d", surface, file, line);
+        logger->log("bad surface delete: %p at %s:%d",
+            static_cast<void*>(surface), file, line);
     }
     else
     {
@@ -113,8 +114,9 @@ static void deleteSurface(const char *const name,
             if (cnt < 1)
             {   // surface was here but was deleted
                 logger->log("deleting already deleted surface: %p at %s:%d\n"
-                    "was add %s\nwas deleted %s", surface, file, line,
-                    obj->mAddFile.c_str(), obj->mRemoveFile.c_str());
+                    "was add %s\nwas deleted %s", static_cast<void*>(surface),
+                    file, line, obj->mAddFile.c_str(),
+                    obj->mRemoveFile.c_str());
             }
             else if (cnt == 1)
             {

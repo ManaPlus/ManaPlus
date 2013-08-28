@@ -125,7 +125,8 @@ void AtlasManager::loadImages(const StringVect &files,
             {
                 image->mIdPath = str;
 #ifdef DEBUG_IMAGES
-                logger->log("set name %p, %s", image, image->mIdPath.c_str());
+                logger->log("set name %p, %s", static_cast<void*>(image),
+                    image->mIdPath.c_str());
 #endif
                 images.push_back(image);
             }
@@ -274,7 +275,8 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
 
     image->mIdPath = atlas->name;
 #ifdef DEBUG_IMAGES
-    logger->log("set name %p, %s", image, image->mIdPath.c_str());
+    logger->log("set name %p, %s", static_cast<void*>(image),
+        image->mIdPath.c_str());
 #endif
     image->incRef();
 
@@ -291,7 +293,8 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
         {
             image2->mIdPath = item->name;
 #ifdef DEBUG_IMAGES
-            logger->log("set name %p, %s", image2, image2->mIdPath.c_str());
+            logger->log("set name %p, %s", static_cast<void*>(image2),
+                image2->mIdPath.c_str());
 #endif
             image2->incRef();
         }

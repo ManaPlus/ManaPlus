@@ -115,7 +115,7 @@ Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
     mIsAlphaCalculated(false)
 {
 #ifdef DEBUG_IMAGES
-    logger->log("created: %p", this);
+    logger->log("created: %p", static_cast<void*>(this));
 #endif
 
     mBounds.x = 0;
@@ -159,7 +159,7 @@ Image::Image(const GLuint glimage, const int width, const int height,
     mIsAlphaCalculated(false)
 {
 #ifdef DEBUG_IMAGES
-    logger->log("created: %p", this);
+    logger->log("created: %p", static_cast<void*>(this));
 #endif
 
     mBounds.x = 0;
@@ -182,7 +182,8 @@ Image::Image(const GLuint glimage, const int width, const int height,
 Image::~Image()
 {
 #ifdef DEBUG_IMAGES
-    logger->log("delete: %p, %s, %s", this, mIdPath.c_str(), mSource.c_str());
+    logger->log("delete: %p, %s, %s", static_cast<void*>(this),
+        mIdPath.c_str(), mSource.c_str());
 #endif
     unload();
 }

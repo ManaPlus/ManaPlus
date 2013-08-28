@@ -105,7 +105,8 @@ SubImage::SubImage(Image *const parent, SDL_Surface *const image,
         mAlphaChannel = mParent->SDLgetAlphaChannel();
         mSource = parent->getIdPath();
 #ifdef DEBUG_IMAGES
-        logger->log("set name2 %p, %s", this, mSource.c_str());
+        logger->log("set name2 %p, %s", static_cast<void*>(this),
+            mSource.c_str());
 #endif
 #ifdef DEBUG_BIND_TEXTURE
         mIdPath = parent->getIdPath();
@@ -164,7 +165,8 @@ SubImage::SubImage(Image *const parent, const GLuint image,
         mInternalBounds.h = mParent->mBounds.h;
         mSource = parent->getIdPath();
 #ifdef DEBUG_IMAGES
-        logger->log("set name2 %p, %s", this, mSource.c_str());
+        logger->log("set name2 %p, %s", static_cast<void*>(this),
+            mSource.c_str());
 #endif
 #ifdef DEBUG_BIND_TEXTURE
         mIdPath = parent->getIdPath();

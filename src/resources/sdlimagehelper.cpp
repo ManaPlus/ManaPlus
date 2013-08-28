@@ -33,6 +33,8 @@
 
 #include "resources/image.h"
 
+#include "utils/sdlcheckutils.h"
+
 #include <SDL_gfxBlitFunc.h>
 #include <SDL_image.h>
 

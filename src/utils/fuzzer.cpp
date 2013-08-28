@@ -40,6 +40,7 @@ void Fuzzer::init()
     fuzz = new Logger;
     fuzz->setLogFile(client->getLocalDataDirectory() + "/fuzzer.log");
     unsigned int sr = time(nullptr);
+
     fuzz->log("Srand: %u", sr);
     srand(sr);
 }
