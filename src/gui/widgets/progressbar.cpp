@@ -71,8 +71,11 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     if (theme)
     {
         mSkin = theme->load("progressbar.xml", "");
-        setPadding(mSkin->getPadding());
-        mFillPadding = mSkin->getOption("fillPadding");
+        if (mSkin)
+        {
+            setPadding(mSkin->getPadding());
+            mFillPadding = mSkin->getOption("fillPadding");
+        }
         setHeight(2 * mPadding + getFont()->getHeight() + 2);
     }
 

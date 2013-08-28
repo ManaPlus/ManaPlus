@@ -458,8 +458,17 @@ void Window::setResizable(const bool r)
     if (r)
     {
         mGrip = Theme::getImageFromThemeXml("resize.xml", "");
-        mGripRect.x = mDimension.width - mGrip->getWidth() - mGripPadding;
-        mGripRect.y = mDimension.height - mGrip->getHeight() - mGripPadding;
+        if (mGrip)
+        {
+            mGripRect.x = mDimension.width - mGrip->getWidth() - mGripPadding;
+            mGripRect.y = mDimension.height - mGrip->getHeight()
+                - mGripPadding;
+        }
+        else
+        {
+            mGripRect.x = 0;
+            mGripRect.y = 0;
+        }
     }
     else
     {
@@ -483,34 +492,48 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
         int h = area.height;
         mLayout->reflow(w, h);
     }
-    const bool showClose = mCloseButton && mSkin->getCloseImage(false);
-    const int closePadding = getOption("closePadding");
-    if (showClose)
+    if (mSkin)
     {
-        const Image *const button = mSkin->getCloseImage(false);
-        const int buttonWidth = button->getWidth();
-        mCloseRect.x = mDimension.width - buttonWidth - closePadding;
-        mCloseRect.y = closePadding;
-        mCloseRect.width = buttonWidth;
-        mCloseRect.height = button->getHeight();
-    }
-    if (mStickyButton)
-    {
-        const Image *const button = mSkin->getStickyImage(mSticky);
-        if (button)
+        const bool showClose = mCloseButton && mSkin->getCloseImage(false);
+        const int closePadding = getOption("closePadding");
+        if (showClose)
         {
+            const Image *const button = mSkin->getCloseImage(false);
             const int buttonWidth = button->getWidth();
-            int x = mDimension.width - buttonWidth
-                - getOption("stickySpacing") - closePadding;
-
-            if (showClose)
-                x -= mSkin->getCloseImage(false)->getWidth();
-
-            mStickyRect.x = x;
-            mStickyRect.y = getOption("stickyPadding");
-            mStickyRect.width = buttonWidth;
-            mStickyRect.height = button->getHeight();
+            mCloseRect.x = mDimension.width - buttonWidth - closePadding;
+            mCloseRect.y = closePadding;
+            mCloseRect.width = buttonWidth;
+            mCloseRect.height = button->getHeight();
         }
+        if (mStickyButton)
+        {
+            const Image *const button = mSkin->getStickyImage(mSticky);
+            if (button)
+            {
+                const int buttonWidth = button->getWidth();
+                int x = mDimension.width - buttonWidth
+                    - getOption("stickySpacing") - closePadding;
+
+                if (showClose)
+                    x -= mSkin->getCloseImage(false)->getWidth();
+
+                mStickyRect.x = x;
+                mStickyRect.y = getOption("stickyPadding");
+                mStickyRect.width = buttonWidth;
+                mStickyRect.height = button->getHeight();
+            }
+        }
+    }
+    else
+    {
+        mCloseRect.x = 0;
+        mCloseRect.y = 0;
+        mCloseRect.width = 0;
+        mCloseRect.height = 0;
+        mStickyRect.x = 0;
+        mStickyRect.y = 0;
+        mStickyRect.width = 0;
+        mStickyRect.height = 0;
     }
 
     mRedraw = true;

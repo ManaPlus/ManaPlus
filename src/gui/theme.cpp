@@ -89,7 +89,7 @@ Skin::~Skin()
 {
     for (int i = 0; i < 9; i++)
     {
-        if (mBorder->grid[i])
+        if (mBorder && mBorder->grid[i])
         {
             mBorder->grid[i]->decRef();
             mBorder->grid[i] = nullptr;
@@ -132,10 +132,13 @@ void Skin::updateAlpha(const float minimumOpacityAllowed)
         std::max(static_cast<double>(minimumOpacityAllowed),
         static_cast<double>(client->getGuiAlpha())));
 
-    for (int i = 0; i < 9; i++)
+    if (mBorder)
     {
-        if (mBorder->grid[i])
-            mBorder->grid[i]->setAlpha(alpha);
+        for (int i = 0; i < 9; i++)
+        {
+            if (mBorder->grid[i])
+                mBorder->grid[i]->setAlpha(alpha);
+        }
     }
 
     if (mCloseImage)
@@ -150,7 +153,7 @@ void Skin::updateAlpha(const float minimumOpacityAllowed)
 
 int Skin::getMinWidth() const
 {
-    if (!mBorder->grid[ImageRect::UPPER_LEFT]
+    if (!mBorder || !mBorder->grid[ImageRect::UPPER_LEFT]
         || !mBorder->grid[ImageRect::UPPER_RIGHT])
     {
         return 1;
@@ -162,7 +165,7 @@ int Skin::getMinWidth() const
 
 int Skin::getMinHeight() const
 {
-    if (!mBorder->grid[ImageRect::UPPER_LEFT]
+    if (!mBorder || !mBorder->grid[ImageRect::UPPER_LEFT]
         || !mBorder->grid[ImageRect::LOWER_LEFT])
     {
         return 1;
