@@ -4,12 +4,12 @@ Copyright (C) 2013 Evol Online -->
 <sprite>
     <imageset name="target-small"
               src="graphics/gui/target-cursor-in-range-s.png"
-              width="32"
-              height="32"/>
+              width="64"
+              height="64"/>
 
     <action name="default" imageset="target-small">
         <animation direction="default">
-            <sequence start="0" end="6" delay="100"/>
+            <sequence start="0" end="17" delay="100"/>
         </animation>
     </action>
 </sprite>

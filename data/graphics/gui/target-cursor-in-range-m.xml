@@ -9,7 +9,7 @@ Copyright (C) 2013 Evol Online -->
 
     <action name="default" imageset="target-medium">
         <animation direction="default">
-            <sequence start="0" end="6" delay="100"/>
+            <sequence start="0" end="17" delay="100"/>
         </animation>
     </action>
 </sprite>
