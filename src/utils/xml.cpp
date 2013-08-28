@@ -26,6 +26,8 @@
 
 #include "resources/resourcemanager.h"
 
+#include "utils/fuzzer.h"
+
 #include "utils/translation/podict.h"
 
 #include <iostream>
@@ -44,6 +46,10 @@ namespace XML
     Document::Document(const std::string &filename, const bool useResman) :
         mDoc(nullptr)
     {
+#ifdef USE_FUZZER
+        if (Fuzzer::conditionTerminate(filename.c_str()))
+            return;
+#endif
         int size = 0;
         char *data = nullptr;
         if (useResman)

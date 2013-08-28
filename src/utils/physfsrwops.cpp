@@ -24,7 +24,9 @@
 
 #include "utils/physfsrwops.h"
 
-#include <stdio.h>  /* used for SEEK_SET, SEEK_CUR, SEEK_END ... */
+#include "utils/fuzzer.h"
+
+#include <stdio.h>
 
 #include "debug.h"
 
@@ -213,6 +215,10 @@ SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname)
 {
 #ifdef __APPLE__
     if (!checkFilePath(fname))
+        return nullptr;
+#endif
+#ifdef USE_FUZZER
+    if (Fuzzer::conditionTerminate(fname))
         return nullptr;
 #endif
     return create_rwops(PhysFs::openRead(fname));

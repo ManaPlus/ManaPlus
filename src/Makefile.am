@@ -531,6 +531,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/cpu.cpp \
 	      utils/cpu.h \
 	      utils/dtor.h \
+	      utils/fuzzer.cpp \
+	      utils/fuzzer.h \
 	      utils/gettext.h \
 	      utils/langs.cpp \
 	      utils/langs.h \

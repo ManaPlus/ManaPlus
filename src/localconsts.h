@@ -87,4 +87,7 @@
 // debug SDL surfaces
 // #define DEBUG_SDL_SURFACES 1
 
+// use file access fuzzer
+// #define USE_FUZZER 1
+
 #include "utils/perfomance.h"

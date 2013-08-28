@@ -103,6 +103,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/cpu.h"
+#include "utils/fuzzer.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
@@ -360,6 +361,10 @@ void Client::gameInit()
         logger->setLogFile(mOptions.logFileName);
     else
         logger->setLogFile(mLocalDataDir + "/manaplus.log");
+
+#ifdef USE_FUZZER
+    Fuzzer::init();
+#endif
 
     initConfiguration();
     paths.setDefaultValues(getPathsDefaults());
