@@ -156,11 +156,11 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     // Convert the surface to the current display format
     if (hasAlpha)
     {
-        image = SDL_DisplayFormatAlpha(tmpImage);
+        image = MSDL_DisplayFormatAlpha(tmpImage);
     }
     else
     {
-        image = SDL_DisplayFormat(tmpImage);
+        image = MSDL_DisplayFormat(tmpImage);
 
         // We also delete the alpha channel since
         // it's not used.
@@ -252,11 +252,11 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
     // Convert the surface to the current display format
     if (hasAlpha)
     {
-        image = SDL_DisplayFormatAlpha(tmpImage);
+        image = MSDL_DisplayFormatAlpha(tmpImage);
     }
     else
     {
-        image = SDL_DisplayFormat(tmpImage);
+        image = MSDL_DisplayFormat(tmpImage);
 
         // We also delete the alpha channel since
         // it's not used.

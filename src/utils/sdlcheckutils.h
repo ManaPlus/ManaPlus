@@ -63,5 +63,13 @@ SDL_Surface *FakeTTF_RenderUTF8_Blended(_TTF_Font *const font,
 SDL_Surface *FakeIMG_Load(const char *name, const char *const file,
                           const unsigned line);
 
+SDL_Surface *FakeSDL_DisplayFormat(SDL_Surface *const surface,
+                                   const char *const file,
+                                   const unsigned line);
+
+SDL_Surface *FakeSDL_DisplayFormatAlpha(SDL_Surface *const surface,
+                                   const char *const file,
+                                   const unsigned line);
+
 #endif  // DEBUG_SDL_SURFACES
 #endif  // UTILS_SDLCHECKUTILS_H

@@ -185,6 +185,10 @@ SubImage::SubImage(Image *const parent, const GLuint image,
 
 SubImage::~SubImage()
 {
+#ifdef DEBUG_IMAGES
+    logger->log("delete subimage: %p", static_cast<void*>(this));
+    logger->log("  %s, %s", mIdPath.c_str(), mSource.c_str());
+#endif
     // Avoid destruction of the image
     mSDLSurface = nullptr;
     // Avoid possible destruction of its alpha channel
@@ -198,6 +202,10 @@ SubImage::~SubImage()
 #endif
     if (mParent)
     {
+#ifdef DEBUG_IMAGES
+        logger->log("decref from subminage: %p, parent: %p",
+            static_cast<void*>(this), static_cast<void*>(mParent));
+#endif
         mParent->decRef();
         mParent = nullptr;
     }

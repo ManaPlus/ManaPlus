@@ -52,6 +52,10 @@
 #define MTTF_RenderUTF8_Blended(font, text, fg) \
     FakeTTF_RenderUTF8_Blended(font, text, fg, __FILE__, __LINE__)
 #define MIMG_Load(file) FakeIMG_Load(file, __FILE__, __LINE__)
+#define MSDL_DisplayFormatAlpha(surface) \
+    FakeSDL_DisplayFormatAlpha(surface, __FILE__, __LINE__)
+#define MSDL_DisplayFormat(surface) \
+    FakeSDL_DisplayFormat(surface, __FILE__, __LINE__)
 
 #else
 
@@ -64,5 +68,7 @@
 #define MTTF_RenderUTF8_Blended(font, text, fg) \
     TTF_RenderUTF8_Blended(font, text, fg)
 #define MIMG_Load(file) IMG_Load(file)
+#define MSDL_DisplayFormatAlpha(surface) SDL_DisplayFormatAlpha(surface)
+#define MSDL_DisplayFormat(surface) SDL_DisplayFormat(surface)
 
 #endif  // ENABLE_SDL_DEBUG

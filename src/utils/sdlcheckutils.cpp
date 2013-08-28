@@ -184,4 +184,20 @@ SDL_Surface *FakeTTF_RenderUTF8_Blended(_TTF_Font *const font,
         font, text, fg), file, line);
 }
 
+SDL_Surface *FakeSDL_DisplayFormat(SDL_Surface *const surface,
+                                        const char *const file,
+                                        const unsigned line)
+{
+    return addSurface("SDL_DisplayFormat",
+        SDL_DisplayFormat(surface), file, line);
+}
+
+SDL_Surface *FakeSDL_DisplayFormatAlpha(SDL_Surface *const surface,
+                                        const char *const file,
+                                        const unsigned line)
+{
+    return addSurface("SDL_DisplayFormatAlpha",
+        SDL_DisplayFormatAlpha(surface), file, line);
+}
+
 #endif  // DEBUG_SDL_SURFACES
