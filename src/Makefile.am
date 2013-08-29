@@ -30,13 +30,13 @@ manaplus_CXXFLAGS += -DUSE_MUMBLE
 endif
 
 if USE_SDL2
-manaplus_CXXFLAGS += -DUSE_SDL2
+manaplus_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
 manaplus_SOURCES += sdl2gfx/SDL_framerate.c \
 	      sdl2gfx/SDL_framerate.h
 endif
 
 if USE_INTERNALGUICHAN
-manaplus_CXXFLAGS += -DUSE_INTERNALGUICHAN
+manaplus_CXXFLAGS += -I$(srcdir)/guichan/include -DUSE_INTERNALGUICHAN
 manaplus_SOURCES += guichan/include/guichan/actionevent.hpp \
 	      guichan/include/guichan/actionlistener.hpp \
 	      guichan/include/guichan/basiccontainer.hpp \
@@ -902,4 +902,4 @@ EXTRA_DIST = CMakeLists.txt \
 	     SDLMain.m
 
 # set the include path found by configure
-INCLUDES = $(all_includes)
+AM_CPPFLAGS = $(all_includes)

@@ -64,7 +64,6 @@ if test "x$with_sdl2" == "xyes"; then
 #    AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
 
 #   using embedded sdl2gfx
-    CPPFLAGS="$CPPFLAGS -I./sdl2gfx"
 
     AC_CHECK_LIB(SDL2_net, SDLNet_Init, ,
     AC_MSG_ERROR([ *** Unable to find SDL2_net library]))
@@ -224,9 +223,6 @@ if test "x$with_internalguichan" == "xno"; then
 
 else
     with_internalguichan=yes
-
-    CPPFLAGS="$CPPFLAGS -I./guichan/include"
-
     AC_DEFINE(USE_INTERNALGUICHAN, 1, [Defines if ManaPlus should use internal guichan classes])
 fi
 AM_CONDITIONAL(USE_INTERNALGUICHAN, test x$with_internalguichan = xyes)
