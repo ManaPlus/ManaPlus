@@ -18,6 +18,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+#ifndef USE_SDL2
+#warning using SDL2 headers but configure set to use SDL1.2
+#warning please add configure flag --with-sdl2
+#define USE_SDL2
+#endif
+#else
+#ifdef USE_SDL2
+#error using SDL1.2 headers but configure set to use SDL2
+#error please remove configure flag --with-sdl2
+#endif
+#endif
+
 #if !defined(__GXX_EXPERIMENTAL_CXX0X__)
 #undef nullptr
 #define nullptr 0

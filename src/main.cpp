@@ -49,16 +49,6 @@
 
 #include <SDL_version.h>
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-#ifndef USE_SDL2
-#error using SDL2 headers but configure set to use SDL1.2
-#endif
-#else
-#ifdef USE_SDL2
-#error using SDL1.2 headers but configure set to use SDL2
-#endif
-#endif
-
 #include "debug.h"
 
 char *selfName = nullptr;
