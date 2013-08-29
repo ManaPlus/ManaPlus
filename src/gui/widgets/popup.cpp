@@ -101,23 +101,26 @@ void Popup::draw(gcn::Graphics *graphics)
     BLOCK_START("Popup::draw")
     Graphics *const g = static_cast<Graphics*>(graphics);
 
-    if (openGLMode != 2)
+    if (mSkin)
     {
-        if (mRedraw)
+        if (openGLMode != 2)
         {
-            mRedraw = false;
-            mVertexes->clear();
-            g->calcWindow(mVertexes, 0, 0,
-                mDimension.width, mDimension.height,
+            if (mRedraw)
+            {
+                mRedraw = false;
+                mVertexes->clear();
+                g->calcWindow(mVertexes, 0, 0,
+                    mDimension.width, mDimension.height,
+                    mSkin->getBorder());
+            }
+
+            g->drawTile(mVertexes);
+        }
+        else
+        {
+            g->drawImageRect(0, 0, mDimension.width, mDimension.height,
                 mSkin->getBorder());
         }
-
-        g->drawTile(mVertexes);
-    }
-    else
-    {
-        g->drawImageRect(0, 0, mDimension.width, mDimension.height,
-            mSkin->getBorder());
     }
 
     drawChildren(graphics);

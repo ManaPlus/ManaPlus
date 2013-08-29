@@ -218,25 +218,28 @@ void Tab::draw(gcn::Graphics *graphics)
 
     Graphics *const g = static_cast<Graphics*>(graphics);
 
-    // draw tab
-    if (openGLMode != 2)
+    if (skin)
     {
-        const ImageRect &rect = skin->getBorder();
-        if (mRedraw || mode != mMode || g->getRedraw())
+        // draw tab
+        if (openGLMode != 2)
         {
-            mMode = mode;
-            mRedraw = false;
-            mVertexes->clear();
-            g->calcWindow(mVertexes, 0, 0,
-                mDimension.width, mDimension.height, rect);
-        }
+            const ImageRect &rect = skin->getBorder();
+            if (mRedraw || mode != mMode || g->getRedraw())
+            {
+                mMode = mode;
+                mRedraw = false;
+                mVertexes->clear();
+                g->calcWindow(mVertexes, 0, 0,
+                    mDimension.width, mDimension.height, rect);
+            }
 
-        g->drawTile(mVertexes);
-    }
-    else
-    {
-        g->drawImageRect(0, 0,
-            mDimension.width, mDimension.height, skin->getBorder());
+            g->drawTile(mVertexes);
+        }
+        else
+        {
+            g->drawImageRect(0, 0,
+                mDimension.width, mDimension.height, skin->getBorder());
+        }
     }
 
     if (mImage)
