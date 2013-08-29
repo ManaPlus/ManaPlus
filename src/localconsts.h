@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <SDL_version.h>
+
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 #ifndef USE_SDL2
 #warning using SDL2 headers but configure set to use SDL1.2
@@ -101,6 +103,6 @@
 // #define DEBUG_SDL_SURFACES 1
 
 // use file access fuzzer
-// #define USE_FUZZER 1
+#define USE_FUZZER 1
 
 #include "utils/perfomance.h"
