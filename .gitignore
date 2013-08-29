@@ -12,6 +12,7 @@ configure
 depcomp
 install-sh
 m4/
+intl/
 missing
 compile
 po/Makefile.in.in
