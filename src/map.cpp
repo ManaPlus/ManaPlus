@@ -1447,7 +1447,6 @@ void Map::reduce()
     {
         return;
     }
-#endif
 
     int cnt = 0;
     for (int x = 0; x < mWidth; x ++)
@@ -1567,6 +1566,7 @@ void Map::reduce()
         }
     }
     logger->log("tiles reduced: %d", cnt);
+#endif
 }
 
 void Map::redrawMap()

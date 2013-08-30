@@ -336,6 +336,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                         return;
                     printText = mTextField->getText();
                     Net::getNpcHandler()->stringInput(mNpcId, printText);
+                    break;
                 }
                 case NPC_INPUT_INTEGER:
                 {
@@ -344,6 +345,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                     printText = strprintf("%d", mIntField->getValue());
                     Net::getNpcHandler()->integerInput(
                         mNpcId, mIntField->getValue());
+                    break;
                 }
                 case NPC_INPUT_ITEM:
                 {

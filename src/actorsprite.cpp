@@ -367,14 +367,15 @@ void ActorSprite::initTargetCursor()
 {
     static const std::string targetCursorFile = "%s/target-cursor-%s-%s.xml";
 
-    const char *path = branding.getStringValue("guiPath").c_str();
+    const std::string path = branding.getStringValue("guiPath");
+
     // Load target cursors
     for (int size = TC_SMALL; size < NUM_TC; size++)
     {
         for (int type = TCT_NORMAL; type < NUM_TCT; type++)
         {
             targetCursor[type][size] = AnimatedSprite::load(strprintf(
-                targetCursorFile.c_str(), path, cursorType(type),
+                targetCursorFile.c_str(), path.c_str(), cursorType(type),
                 cursorSize(size)));
         }
     }

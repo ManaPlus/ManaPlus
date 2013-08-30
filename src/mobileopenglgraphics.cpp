@@ -52,7 +52,6 @@ MobileOpenGLGraphics::MobileOpenGLGraphics():
     mIntTexArray(nullptr),
     mIntVertArray(nullptr),
     mShortVertArray(nullptr),
-    mAlpha(false),
     mTexture(false),
     mIsByteColor(false),
     mByteColor(),

@@ -82,7 +82,7 @@ enum KeyCondition
     COND_NOMODAL = 64,                        // modal windows inactive
     COND_NONPCINPUT = 128,                    // npc input field inactive
     COND_EMODS = 256,                         // game modifiers enabled
-    COND_NOTARGET = 512,                      // no target/untarget keys 
+    COND_NOTARGET = 512,                      // no target/untarget keys
                                               // pressed
     COND_NOFOLLOW = 1024,                     // follow mode disabled
     COND_INGAME = 2048,                       // game must be started

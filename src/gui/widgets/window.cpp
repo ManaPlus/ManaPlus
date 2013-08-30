@@ -494,7 +494,8 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
     }
     if (mSkin)
     {
-        const bool showClose = mCloseWindowButton && mSkin->getCloseImage(false);
+        const bool showClose = mCloseWindowButton
+            && mSkin->getCloseImage(false);
         const int closePadding = getOption("closePadding");
         if (showClose)
         {

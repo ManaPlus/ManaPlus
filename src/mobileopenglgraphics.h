@@ -214,7 +214,6 @@ class MobileOpenGLGraphics final : public Graphics
         GLint *mIntTexArray;
         GLint *mIntVertArray;
         GLshort *mShortVertArray;
-        bool mAlpha;
         bool mTexture;
 
         bool mIsByteColor;

@@ -68,8 +68,8 @@ SDL_Surface *FakeSDL_DisplayFormat(SDL_Surface *const surface,
                                    const unsigned line);
 
 SDL_Surface *FakeSDL_DisplayFormatAlpha(SDL_Surface *const surface,
-                                   const char *const file,
-                                   const unsigned line);
+                                        const char *const file,
+                                        const unsigned line);
 
 #endif  // DEBUG_SDL_SURFACES
 #endif  // UTILS_SDLCHECKUTILS_H
