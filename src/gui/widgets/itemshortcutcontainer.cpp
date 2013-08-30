@@ -57,12 +57,12 @@ ItemShortcutContainer::ItemShortcutContainer(const unsigned number) :
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
     mEquipedColor2(getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE)),
     mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED)),
-    mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE)),
-    mForegroundColor2(getThemeColor(Theme::TEXT_OUTLINE))
+    mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE))
 {
     addMouseListener(this);
     addWidgetListener(this);
 
+    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
     mBackgroundImg = Theme::getImageFromThemeXml(
         "item_shortcut_background.xml", "background.xml");
     if (itemShortcut[mNumber])

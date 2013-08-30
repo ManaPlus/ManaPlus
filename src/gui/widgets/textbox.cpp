@@ -167,7 +167,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
 
 void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    const gcn::Key key = keyEvent.getKey();
+    const gcn::Key &key = keyEvent.getKey();
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     switch (action)

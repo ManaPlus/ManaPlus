@@ -44,13 +44,13 @@ CheckBox::CheckBox(const Widget2 *const widget,
                    const std::string &eventId) :
     gcn::CheckBox(caption, selected),
     Widget2(widget),
-    mForegroundColor2(getThemeColor(Theme::CHECKBOX_OUTLINE)),
     mPadding(0),
     mImagePadding(0),
     mImageSize(9),
     mSpacing(2),
     mHasMouse(false)
 {
+    mForegroundColor2 = getThemeColor(Theme::CHECKBOX_OUTLINE);
     if (instances == 0)
     {
         if (Theme::instance())

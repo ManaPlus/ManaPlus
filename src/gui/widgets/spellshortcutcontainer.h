@@ -84,7 +84,6 @@ class SpellShortcutContainer final : public ShortcutContainer
     private:
         SpellPopup *mSpellPopup;
         unsigned int mNumber;
-        gcn::Color mForegroundColor2;
         bool mSpellClicked;
 };
 

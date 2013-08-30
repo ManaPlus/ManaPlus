@@ -152,7 +152,6 @@ class DropDown final : public gcn::ActionListener,
         int mPadding;
         int mImagePadding;
         int mSpacing;
-        gcn::Color mForegroundColor2;
         int mFoldedUpHeight;
 
         typedef std::list<SelectionListener*> SelectionListenerList;

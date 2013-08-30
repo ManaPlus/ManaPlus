@@ -45,7 +45,6 @@ ListBox::ListBox(const Widget2 *const widget,
     gcn::ListBox(listModel),
     Widget2(widget),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
-    mForegroundColor2(getThemeColor(Theme::LISTBOX_OUTLINE)),
     mForegroundSelectedColor(getThemeColor(Theme::LISTBOX_SELECTED)),
     mForegroundSelectedColor2(getThemeColor(Theme::LISTBOX_SELECTED_OUTLINE)),
     mOldSelected(-1),
@@ -55,6 +54,7 @@ ListBox::ListBox(const Widget2 *const widget,
     mCenterText(false)
 {
     mForegroundColor = getThemeColor(Theme::LISTBOX);
+    mForegroundColor2 = getThemeColor(Theme::LISTBOX_OUTLINE);
 
     Theme *const theme = Theme::instance();
     if (theme)

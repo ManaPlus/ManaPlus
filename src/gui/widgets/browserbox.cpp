@@ -67,7 +67,6 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     mUpdateTime(-1),
     mPadding(0),
     mNewLinePadding(15),
-    mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mHyperLinkColor(getThemeColor(Theme::HYPERLINK)),
     mOpaque(opaque),
@@ -81,6 +80,8 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
 {
     setFocusable(true);
     addMouseListener(this);
+
+    mBackgroundColor = getThemeColor(Theme::BACKGROUND);
 
     if (mInstances == 0)
     {
@@ -435,7 +436,7 @@ void BrowserBox::mouseMoved(gcn::MouseEvent &event)
 void BrowserBox::draw(gcn::Graphics *graphics)
 {
     BLOCK_START("BrowserBox::draw")
-    const gcn::ClipRectangle cr = graphics->getCurrentClipArea();
+    const gcn::ClipRectangle &cr = graphics->getCurrentClipArea();
     Graphics *const graphics2 = static_cast<Graphics *const>(graphics);
     mYStart = cr.y - cr.yOffset;
     const int yEnd = mYStart + cr.height;

@@ -62,9 +62,9 @@ ScrollArea::ScrollArea(const bool opaque, const std::string &skin) :
     mDrawWidth(0),
     mDrawHeight(0),
     mHasMouse(false),
-    mOpaque(opaque),
     mRedraw(true)
 {
+    mOpaque = opaque;
     addWidgetListener(this);
     init(skin);
 }
@@ -84,9 +84,9 @@ ScrollArea::ScrollArea(gcn::Widget *const widget, const bool opaque,
     mDrawWidth(0),
     mDrawHeight(0),
     mHasMouse(false),
-    mOpaque(opaque),
     mRedraw(true)
 {
+    mOpaque = opaque;
     init(skin);
 }
 

@@ -100,7 +100,6 @@ class ShopListBox final : public ListBox
 
         unsigned int mRowHeight; /**< Row Height */
 
-        gcn::Color mHighlightColor;
         gcn::Color mBackgroundColor;
         gcn::Color mWarningColor;
 

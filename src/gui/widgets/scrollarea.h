@@ -192,7 +192,6 @@ class ScrollArea final : public gcn::ScrollArea,
         int mDrawWidth;
         int mDrawHeight;
         bool mHasMouse;
-        bool mOpaque;
         bool mRedraw;
 };
 

@@ -44,7 +44,7 @@
 
 const int resizeMask = 8 + 4 + 2 + 1;
 
-int Window::instances = 0;
+int Window::windowInstances = 0;
 int Window::mouseResize = 0;
 
 Window::Window(const std::string &caption, const bool modal,
@@ -81,7 +81,7 @@ Window::Window(const std::string &caption, const bool modal,
     mCaptionFont(getFont()),
     mShowTitle(true),
     mModal(modal),
-    mCloseButton(false),
+    mCloseWindowButton(false),
     mDefaultVisible(false),
     mSaveVisible(false),
     mStickyButton(false),
@@ -99,7 +99,7 @@ Window::Window(const std::string &caption, const bool modal,
     if (!windowContainer)
         throw GCN_EXCEPTION("Window::Window(): no windowContainer set");
 
-    instances++;
+    windowInstances++;
 
     setFrameSize(0);
     setPadding(3);
@@ -184,7 +184,7 @@ Window::~Window()
     delete mVertexes;
     mVertexes = nullptr;
 
-    instances--;
+    windowInstances--;
 
     if (mSkin)
     {
@@ -231,7 +231,7 @@ void Window::draw(gcn::Graphics *graphics)
                 mDimension.height, mSkin->getBorder());
 
             // Draw Close Button
-            if (mCloseButton)
+            if (mCloseWindowButton)
             {
                 const Image *const button = mSkin->getCloseImage(
                     mResizeHandles == CLOSE);
@@ -264,7 +264,7 @@ void Window::draw(gcn::Graphics *graphics)
             mDimension.height, mSkin->getBorder());
 
         // Draw Close Button
-        if (mCloseButton)
+        if (mCloseWindowButton)
         {
             const Image *const button = mSkin->getCloseImage(
                 mResizeHandles == CLOSE);
@@ -494,7 +494,7 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
     }
     if (mSkin)
     {
-        const bool showClose = mCloseButton && mSkin->getCloseImage(false);
+        const bool showClose = mCloseWindowButton && mSkin->getCloseImage(false);
         const int closePadding = getOption("closePadding");
         if (showClose)
         {
@@ -562,7 +562,7 @@ void Window::widgetHidden(const gcn::Event &event A_UNUSED)
 
 void Window::setCloseButton(const bool flag)
 {
-    mCloseButton = flag;
+    mCloseWindowButton = flag;
 }
 
 bool Window::isResizable() const
@@ -654,7 +654,7 @@ void Window::mousePressed(gcn::MouseEvent &event)
         const int y = event.getY();
 
         // Handle close button
-        if (mCloseButton && mSkin && mCloseRect.isPointInRect(x, y))
+        if (mCloseWindowButton && mSkin && mCloseRect.isPointInRect(x, y))
         {
             mouseResize = 0;
             mMoved = 0;

@@ -46,10 +46,10 @@ RadioButton::RadioButton(const Widget2 *const widget,
     mImagePadding(0),
     mImageSize(9),
     mSpacing(2),
-    mForegroundColor2(getThemeColor(Theme::RADIOBUTTON_OUTLINE)),
     mHasMouse(false)
 {
     mForegroundColor = getThemeColor(Theme::RADIOBUTTON);
+    mForegroundColor2 = getThemeColor(Theme::RADIOBUTTON_OUTLINE);
     if (instances == 0)
     {
         Theme *const theme = Theme::instance();

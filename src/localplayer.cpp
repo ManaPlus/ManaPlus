@@ -1255,8 +1255,8 @@ void LocalPlayer::attack(Being *const target, const bool keep,
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
-        const Vector plaPos = this->getPosition();
-        const Vector tarPos = mTarget->getPosition();
+        const Vector &plaPos = this->getPosition();
+        const Vector &tarPos = mTarget->getPosition();
         const int dist_x = static_cast<int>(plaPos.x - tarPos.x);
         const int dist_y = static_cast<int>(plaPos.y - tarPos.y);
 

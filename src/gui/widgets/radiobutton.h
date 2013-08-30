@@ -87,7 +87,6 @@ class RadioButton final : public gcn::RadioButton,
         int mImagePadding;
         int mImageSize;
         int mSpacing;
-        gcn::Color mForegroundColor2;
         bool mHasMouse;
 };
 

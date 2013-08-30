@@ -3011,14 +3011,12 @@ void Being::playSfx(const SoundInfo &sound, Being *const being,
         {
             being->mNextSound.sound = nullptr;
             being->mNextSound.time = time + sound.delay;
-            being->mNextSound.sound = nullptr;
             soundManager.playSfx(sound.sound, x, y);
         }
         else if (mNextSound.time <= time)
         {   // old event sound time is gone. we can play new sound
             being->mNextSound.sound = nullptr;
             being->mNextSound.time = time + sound.delay;
-            being->mNextSound.sound = nullptr;
             soundManager.playSfx(sound.sound, x, y);
         }
         else

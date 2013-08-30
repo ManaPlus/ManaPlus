@@ -157,11 +157,11 @@ public:
     ServersListBox(const Widget2 *const widget,
                    ServersListModel *const model) :
         ListBox(widget, model, "serverslistbox.xml"),
-        mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
         mNotSupportedColor(getThemeColor(Theme::SERVER_VERSION_NOT_SUPPORTED)),
         mNotSupportedColor2(getThemeColor(
             Theme::SERVER_VERSION_NOT_SUPPORTED_OUTLINE))
     {
+        mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     }
 
     void draw(gcn::Graphics *graphics) override
@@ -243,7 +243,6 @@ public:
         return 2 * getFont()->getHeight() + 5;
     }
 private:
-    gcn::Color mHighlightColor;
     gcn::Color mNotSupportedColor;
     gcn::Color mNotSupportedColor2;
 };

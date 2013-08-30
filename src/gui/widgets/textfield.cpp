@@ -57,7 +57,6 @@ TextField::TextField(const Widget2 *const widget,
     Widget2(widget),
     mSendAlwaysEvents(sendAlwaysEvents),
     mCaretColor(&getThemeColor(Theme::CARET)),
-    mForegroundColor2(getThemeColor(Theme::TEXTFIELD_OUTLINE)),
     mPopupMenu(nullptr),
     mMinimum(0),
     mMaximum(0),
@@ -68,6 +67,7 @@ TextField::TextField(const Widget2 *const widget,
 {
     setFrameSize(2);
     mForegroundColor = getThemeColor(Theme::TEXTFIELD);
+    mForegroundColor2 = getThemeColor(Theme::TEXTFIELD_OUTLINE);
 
     addFocusListener(this);
 
@@ -488,7 +488,7 @@ void TextField::handleCopy() const
 
 void TextField::drawCaret(gcn::Graphics* graphics, int x)
 {
-    const gcn::Rectangle clipArea = graphics->getCurrentClipArea();
+    const gcn::Rectangle &clipArea = graphics->getCurrentClipArea();
 
     graphics->setColor(*mCaretColor);
     graphics->drawLine(x + mPadding, clipArea.height - mPadding,

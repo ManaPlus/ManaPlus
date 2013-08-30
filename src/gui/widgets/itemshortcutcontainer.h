@@ -90,7 +90,6 @@ class ItemShortcutContainer final : public ShortcutContainer
         gcn::Color mEquipedColor2;
         gcn::Color mUnEquipedColor;
         gcn::Color mUnEquipedColor2;
-        gcn::Color mForegroundColor2;
 };
 
 #endif  // GUI_WIDGETS_ITEMSHORTCUTCONTAINER_H

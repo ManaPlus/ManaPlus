@@ -221,7 +221,6 @@ class NullOpenGLGraphics final : public Graphics
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;
-        bool mAlpha;
         bool mTexture;
 
         bool mIsByteColor;

@@ -49,7 +49,6 @@ NullOpenGLGraphics::NullOpenGLGraphics():
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),
     mIntVertArray(nullptr),
-    mAlpha(false),
     mTexture(false),
     mIsByteColor(false),
     mByteColor(),

@@ -482,7 +482,7 @@ class Window : public gcn::Window,
         int mMaxWinHeight;            /**< Maximum window height */
 
         static int mouseResize;       /**< Active resize handles */
-        static int instances;         /**< Number of Window instances */
+        static int windowInstances;   /**< Number of Window instances */
 
 
         /**
@@ -502,7 +502,7 @@ class Window : public gcn::Window,
         gcn::Font *mCaptionFont;
         bool mShowTitle;              /**< Window has a title bar */
         bool mModal;                  /**< Window is modal */
-        bool mCloseButton;            /**< Window has a close button */
+        bool mCloseWindowButton;      /**< Window has a close button */
         bool mDefaultVisible;         /**< Window's default visibility */
         bool mSaveVisible;            /**< Window will save visibility */
         bool mStickyButton;           /**< Window has a sticky button */

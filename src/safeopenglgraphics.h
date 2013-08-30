@@ -171,7 +171,6 @@ class SafeOpenGLGraphics final : public Graphics
 
         void inline restoreColor();
 
-        bool mAlpha;
         bool mTexture;
         bool mIsByteColor;
         gcn::Color mByteColor;

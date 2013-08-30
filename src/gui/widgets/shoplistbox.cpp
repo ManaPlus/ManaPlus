@@ -50,12 +50,12 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     mShopItems(nullptr),
     mItemPopup(new ItemPopup),
     mRowHeight(getFont()->getHeight()),
-    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
     mWarningColor(getThemeColor(Theme::SHOP_WARNING)),
     mPriceCheck(true),
     mProtectItems(false)
 {
+    mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 }
 
@@ -67,12 +67,12 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     mShopItems(shopListModel),
     mItemPopup(new ItemPopup),
     mRowHeight(std::max(getFont()->getHeight(), ITEM_ICON_SIZE)),
-    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
     mWarningColor(getThemeColor(Theme::SHOP_WARNING)),
     mPriceCheck(true),
     mProtectItems(false)
 {
+    mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 }
 

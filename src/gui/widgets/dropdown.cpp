@@ -76,7 +76,6 @@ DropDown::DropDown(const Widget2 *const widget,
     mPadding(1),
     mImagePadding(2),
     mSpacing(0),
-    mForegroundColor2(getThemeColor(Theme::DROPDOWN_OUTLINE)),
     mFoldedUpHeight(0),
     mSelectionListeners(),
     mExtended(extended),
@@ -85,6 +84,7 @@ DropDown::DropDown(const Widget2 *const widget,
     mIsDragged(false)
 {
     mFrameSize = 2;
+    mForegroundColor2 = getThemeColor(Theme::DROPDOWN_OUTLINE);
 
     mPopup->setHeight(100);
 
@@ -455,6 +455,8 @@ void DropDown::dropDown()
 {
     if (!mDroppedDown)
     {
+        if (!mParent)
+            return;
         mDroppedDown = true;
         mFoldedUpHeight = getHeight();
         adjustHeight();
@@ -462,7 +464,7 @@ void DropDown::dropDown()
         int x = 0;
         int y = 0;
         getAbsolutePosition(x, y);
-        const int frame = getParent()->getFrameSize();
+        const int frame = mParent->getFrameSize();
         const int pad = mPopup->getPadding();
         const int pad2 = pad * 2;
 

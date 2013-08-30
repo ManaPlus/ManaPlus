@@ -49,11 +49,12 @@ SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
     ShortcutContainer(),
     mSpellPopup(new SpellPopup),
     mNumber(number),
-    mForegroundColor2(getThemeColor(Theme::TEXT_OUTLINE)),
     mSpellClicked(false)
 {
     addMouseListener(this);
     addWidgetListener(this);
+
+    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 
     mBackgroundImg = Theme::getImageFromThemeXml(
         "item_shortcut_background.xml", "background.xml");

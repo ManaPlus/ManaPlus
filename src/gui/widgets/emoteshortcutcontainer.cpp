@@ -49,13 +49,13 @@ EmoteShortcutContainer::EmoteShortcutContainer():
     ShortcutContainer(),
     mEmoteImg(),
     mEmotePopup(new TextPopup),
-    mForegroundColor2(getThemeColor(Theme::TEXT_OUTLINE)),
     mEmoteClicked(false),
     mEmoteMoved(0)
 {
     addMouseListener(this);
     addWidgetListener(this);
 
+    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
     mBackgroundImg = Theme::getImageFromThemeXml(
         "item_shortcut_background.xml", "background.xml");
 

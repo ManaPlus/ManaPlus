@@ -141,7 +141,6 @@ class TextField : public gcn::TextField,
 
     private:
         const gcn::Color *mCaretColor;
-        gcn::Color mForegroundColor2;
         PopupMenu *mPopupMenu;
         static int instances;
         static float mAlpha;
