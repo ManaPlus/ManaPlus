@@ -41,7 +41,7 @@ AM_GNU_GETTEXT([external],[need-ngettext])
 AM_GNU_GETTEXT_VERSION([0.16.1])
 
 # Enable sdl2
-AC_ARG_WITH(sdl2,[  --with-sdl        enable experimental SDL 2 support] )
+AC_ARG_WITH(sdl2,[  --with-sdl2        enable experimental SDL 2 support] )
 if test "x$with_sdl2" == "xyes"; then
     AC_PATH_PROG(SDL_CONFIG, sdl2-config)
     if test -n "$SDL_CONFIG"; then
