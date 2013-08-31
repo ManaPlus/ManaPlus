@@ -704,6 +704,7 @@ SET(SRCS
     sdl2graphics.h
     sdlgraphics.cpp
     sdlgraphics.h
+    sdlshared.h
     shopitem.cpp
     shopitem.h
     simpleanimation.cpp
