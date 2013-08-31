@@ -24,7 +24,6 @@
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
-#include "graphics.h"
 #include "inputevent.h"
 #include "itemshortcut.h"
 #include "inputmanager.h"
@@ -58,6 +57,8 @@
 #include "gui/whoisonline.h"
 
 #include "gui/widgets/chattab.h"
+
+#include "render/graphics.h"
 
 #include "net/playerhandler.h"
 

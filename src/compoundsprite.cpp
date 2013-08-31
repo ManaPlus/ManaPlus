@@ -31,7 +31,8 @@
 
 #include "map.h"
 #include "sdlshared.h"
-#include "surfacegraphics.h"
+
+#include "render/surfacegraphics.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"

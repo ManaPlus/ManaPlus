@@ -22,8 +22,9 @@
 
 #include "imageparticle.h"
 
-#include "graphics.h"
 #include "logger.h"
+
+#include "render/graphics.h"
 
 #include "resources/image.h"
 

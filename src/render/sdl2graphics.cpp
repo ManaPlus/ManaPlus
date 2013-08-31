@@ -22,7 +22,7 @@
 
 #ifdef USE_SDL2
 
-#include "sdl2graphics.h"
+#include "render/sdl2graphics.h"
 
 #include "main.h"
 

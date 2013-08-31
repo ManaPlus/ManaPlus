@@ -22,8 +22,9 @@
 
 #include "animationparticle.h"
 
-#include "graphics.h"
 #include "simpleanimation.h"
+
+#include "render/graphics.h"
 
 #include "debug.h"
 

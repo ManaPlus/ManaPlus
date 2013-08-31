@@ -26,7 +26,8 @@
 #define GUI_THEME_H
 
 #include "configlistener.h"
-#include "graphics.h"
+
+#include "render/graphics.h"
 
 #include "gui/palette.h"
 

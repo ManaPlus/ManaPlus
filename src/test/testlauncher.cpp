@@ -25,8 +25,9 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphicsmanager.h"
-#include "sdlgraphics.h"
 #include "soundmanager.h"
+
+#include "render/sdlgraphics.h"
 
 #include "gui/theme.h"
 

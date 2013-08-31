@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "graphics.h"
+#include "render/graphics.h"
 
 #include "main.h"
 

@@ -20,14 +20,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MOBILEOPENGLGRAPHICS_H
-#define MOBILEOPENGLGRAPHICS_H
+#ifndef NULLOPENGLGRAPHICS_H
+#define NULLOPENGLGRAPHICS_H
 
 #include "main.h"
-#ifdef USE_OPENGL
+#if defined USE_OPENGL
 
 #include "localconsts.h"
-#include "graphics.h"
+#include "render/graphics.h"
 
 #include "resources/fboinfo.h"
 
@@ -47,14 +47,14 @@
 
 class NormalOpenGLGraphicsVertexes;
 
-class MobileOpenGLGraphics final : public Graphics
+class NullOpenGLGraphics final : public Graphics
 {
     public:
-        MobileOpenGLGraphics();
+        NullOpenGLGraphics();
 
-        A_DELETE_COPY(MobileOpenGLGraphics)
+        A_DELETE_COPY(NullOpenGLGraphics)
 
-        ~MobileOpenGLGraphics();
+        ~NullOpenGLGraphics();
 
         bool setVideoMode(const int w, const int h, const int bpp,
                           const bool fs, const bool hwaccel,
@@ -92,12 +92,12 @@ class MobileOpenGLGraphics final : public Graphics
                                       const int scaledWidth,
                                       const int scaledHeight) override;
 
-        void calcImagePattern(ImageVertexes *const vert,
+        void calcImagePattern(ImageVertexes* const vert,
                               const Image *const image,
                               const int x, const int y,
                               const int w, const int h) const override;
 
-        void calcImagePattern(ImageCollection *const vert,
+        void calcImagePattern(ImageCollection* const vert,
                               const Image *const image,
                               const int x, const int y,
                               const int w, const int h) const override;
@@ -105,17 +105,17 @@ class MobileOpenGLGraphics final : public Graphics
         void calcTile(ImageVertexes *const vert, const Image *const image,
                       int x, int y) const override;
 
-        void drawTile(const ImageCollection *const vertCol);
-
         void calcTile(ImageCollection *const vertCol,
                       const Image *const image, int x, int y) override;
+
+        void drawTile(const ImageCollection *const vertCol) override;
 
         void drawTile(const ImageVertexes *const vert) override;
 
         bool calcWindow(ImageCollection *const vertCol,
                         const int x, const int y,
                         const int w, const int h,
-                        const ImageRect &imgRect);
+                        const ImageRect &imgRect) override;
 
         void updateScreen() override;
 
@@ -153,13 +153,21 @@ class MobileOpenGLGraphics final : public Graphics
 
         void setTargetPlane(int width, int height);
 
-        inline void drawTriangleArrayfs(const GLshort *const shortVertArray,
-                                        const GLfloat *const floatTexArray,
-                                        const int size);
+        inline void drawQuadArrayfi(const int size);
 
-        inline void drawTriangleArrayfs(const int size);
+        inline void drawQuadArrayfi(const GLint *const intVertArray,
+                                    const GLfloat *const floatTexArray,
+                                    const int size);
 
-        inline void drawLineArrays(const int size);
+        inline void drawQuadArrayii(const int size);
+
+        inline void drawQuadArrayii(const GLint *const intVertArray,
+                                    const GLint *const intTexArray,
+                                    const int size);
+
+        inline void drawLineArrayi(const int size);
+
+        inline void drawLineArrayf(const int size);
 
         inline void drawVertexes(const NormalOpenGLGraphicsVertexes &ogl);
 
@@ -177,7 +185,7 @@ class MobileOpenGLGraphics final : public Graphics
         bool drawNet(const int x1, const int y1, const int x2, const int y2,
                      const int width, const int height) override;
 
-        int getMemoryUsage();
+        int getMemoryUsage() A_WARN_UNUSED;
 
         void updateTextureFormat();
 
@@ -203,7 +211,7 @@ class MobileOpenGLGraphics final : public Graphics
 
         void setTexturingAndBlending(const bool enable);
 
-        void debugBindTexture(const Image *image);
+        void debugBindTexture(const Image *const image);
 
     private:
         void inline setColorAlpha(float alpha);
@@ -213,7 +221,6 @@ class MobileOpenGLGraphics final : public Graphics
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;
-        GLshort *mShortVertArray;
         bool mTexture;
 
         bool mIsByteColor;
@@ -229,4 +236,4 @@ class MobileOpenGLGraphics final : public Graphics
 };
 #endif
 
-#endif  // MOBILEOPENGLGRAPHICS_H
+#endif  // NULLOPENGLGRAPHICS_H

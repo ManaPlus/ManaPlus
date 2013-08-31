@@ -23,7 +23,7 @@
 #include "main.h"
 #if defined USE_OPENGL
 
-#include "nullopenglgraphics.h"
+#include "render/nullopenglgraphics.h"
 
 #include "configuration.h"
 #include "graphicsmanager.h"

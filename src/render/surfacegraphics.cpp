@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "surfacegraphics.h"
+#include "render/surfacegraphics.h"
 
 #include "main.h"
 

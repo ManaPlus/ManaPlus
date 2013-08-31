@@ -23,9 +23,9 @@
 #include "resources/subimage.h"
 
 #ifdef USE_OPENGL
-#include "mobileopenglgraphics.h"
-#include "normalopenglgraphics.h"
-#include "safeopenglgraphics.h"
+#include "render/mobileopenglgraphics.h"
+#include "render/normalopenglgraphics.h"
+#include "render/safeopenglgraphics.h"
 #endif
 
 #ifdef DEBUG_IMAGES

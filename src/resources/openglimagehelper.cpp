@@ -29,9 +29,10 @@
 #include "graphicsmanager.h"
 #include "logger.h"
 #include "mgl.h"
-#include "mobileopenglgraphics.h"
-#include "normalopenglgraphics.h"
-#include "safeopenglgraphics.h"
+
+#include "render/mobileopenglgraphics.h"
+#include "render/normalopenglgraphics.h"
+#include "render/safeopenglgraphics.h"
 
 #include "resources/dye.h"
 #include "resources/image.h"

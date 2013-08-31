@@ -26,7 +26,7 @@
 #include "main.h"
 #if defined USE_OPENGL && !defined ANDROID
 
-#include "graphics.h"
+#include "render/graphics.h"
 
 #include "resources/fboinfo.h"
 

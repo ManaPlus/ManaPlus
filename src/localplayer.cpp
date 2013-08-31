@@ -27,7 +27,6 @@
 #include "configuration.h"
 #include "dropshortcut.h"
 #include "effectmanager.h"
-#include "graphics.h"
 #include "guild.h"
 #include "item.h"
 #include "keyboardconfig.h"
@@ -56,6 +55,8 @@
 
 #include "gui/widgets/gmtab.h"
 #include "gui/widgets/whispertab.h"
+
+#include "render/graphics.h"
 
 #include "net/beinghandler.h"
 #include "net/chathandler.h"

@@ -35,7 +35,7 @@
 
 #include "utils/copynpaste.h"
 
-#include "graphics.h"
+#include "render/graphics.h"
 
 #include "utils/sdlhelper.h"
 

@@ -21,10 +21,9 @@
  */
 
 #include "main.h"
+#if defined USE_OPENGL && !defined ANDROID
 
-#ifdef USE_OPENGL
-
-#include "mobileopenglgraphics.h"
+#include "render/normalopenglgraphics.h"
 
 #include "configuration.h"
 #include "graphicsmanager.h"
@@ -41,17 +40,20 @@
 
 #include "debug.h"
 
-GLuint MobileOpenGLGraphics::mLastImage = 0;
+GLuint NormalOpenGLGraphics::mLastImage = 0;
 #ifdef DEBUG_DRAW_CALLS
-unsigned int MobileOpenGLGraphics::mDrawCalls = 0;
-unsigned int MobileOpenGLGraphics::mLastDrawCalls = 0;
+unsigned int NormalOpenGLGraphics::mDrawCalls = 0;
+unsigned int NormalOpenGLGraphics::mLastDrawCalls = 0;
+#endif
+#ifdef DEBUG_BIND_TEXTURE
+unsigned int NormalOpenGLGraphics::mBinds = 0;
+unsigned int NormalOpenGLGraphics::mLastBinds = 0;
 #endif
 
-MobileOpenGLGraphics::MobileOpenGLGraphics():
+NormalOpenGLGraphics::NormalOpenGLGraphics():
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),
     mIntVertArray(nullptr),
-    mShortVertArray(nullptr),
     mTexture(false),
     mIsByteColor(false),
     mByteColor(),
@@ -64,19 +66,18 @@ MobileOpenGLGraphics::MobileOpenGLGraphics():
 #endif
     mFbo()
 {
-    mOpenGL = 3;
-    mName = "mobile OpenGL";
+    mOpenGL = 1;
+    mName = "fast OpenGL";
 }
 
-MobileOpenGLGraphics::~MobileOpenGLGraphics()
+NormalOpenGLGraphics::~NormalOpenGLGraphics()
 {
     delete [] mFloatTexArray;
     delete [] mIntTexArray;
     delete [] mIntVertArray;
-    delete [] mShortVertArray;
 }
 
-void MobileOpenGLGraphics::initArrays()
+void NormalOpenGLGraphics::initArrays()
 {
     mMaxVertices = graphicsManager.getMaxVertices();
     if (mMaxVertices < 500)
@@ -85,15 +86,14 @@ void MobileOpenGLGraphics::initArrays()
         mMaxVertices = 1024;
 
     // need alocate small size, after if limit reached reallocate to double size
-    const int sz = mMaxVertices * 4 + 30;
     vertexBufSize = mMaxVertices;
+    const int sz = mMaxVertices * 4 + 30;
     mFloatTexArray = new GLfloat[sz];
     mIntTexArray = new GLint[sz];
     mIntVertArray = new GLint[sz];
-    mShortVertArray = new GLshort[sz];
 }
 
-bool MobileOpenGLGraphics::setVideoMode(const int w, const int h,
+bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
                                         const int bpp, const bool fs,
                                         const bool hwaccel, const bool resize,
                                         const bool noFrame)
@@ -108,7 +108,7 @@ static inline void drawQuad(const Image *const image,
                             const int dstX, const int dstY,
                             const int width, const int height)
 {
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         const float tw = static_cast<float>(image->mTexWidth);
         const float th = static_cast<float>(image->mTexHeight);
@@ -122,26 +122,50 @@ static inline void drawQuad(const Image *const image,
         {
             texX1, texY1,
             texX2, texY1,
-            texX1, texY2,
-            texX2, texY2
+            texX2, texY2,
+            texX1, texY2
         };
 
-        GLshort vert[] =
+        GLint vert[] =
         {
-            static_cast<GLshort>(dstX), static_cast<GLshort>(dstY),
-            static_cast<GLshort>(dstX + width), static_cast<GLshort>(dstY),
-            static_cast<GLshort>(dstX), static_cast<GLshort>(dstY + height),
-            static_cast<GLshort>(dstX + width),
-                static_cast<GLshort>(dstY + height)
+            dstX, dstY,
+            dstX + width, dstY,
+            dstX + width, dstY + height,
+            dstX, dstY + height
         };
 
-        glVertexPointer(2, GL_SHORT, 0, &vert);
+        glVertexPointer(2, GL_INT, 0, &vert);
         glTexCoordPointer(2, GL_FLOAT, 0, &tex);
 
 #ifdef DEBUG_DRAW_CALLS
-        MobileOpenGLGraphics::mDrawCalls ++;
+        NormalOpenGLGraphics::mDrawCalls ++;
 #endif
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        glDrawArrays(GL_QUADS, 0, 4);
+    }
+    else
+    {
+        GLint tex[] =
+        {
+            srcX, srcY,
+            srcX + width, srcY,
+            srcX + width, srcY + height,
+            srcX, srcY + height
+        };
+        GLint vert[] =
+        {
+            dstX, dstY,
+            dstX + width, dstY,
+            dstX + width, dstY + height,
+            dstX, dstY + height
+        };
+
+        glVertexPointer(2, GL_INT, 0, &vert);
+        glTexCoordPointer(2, GL_INT, 0, &tex);
+
+#ifdef DEBUG_DRAW_CALLS
+        NormalOpenGLGraphics::mDrawCalls ++;
+#endif
+        glDrawArrays(GL_QUADS, 0, 4);
     }
 }
 
@@ -152,7 +176,7 @@ static inline void drawRescaledQuad(const Image *const image,
                                     const int desiredWidth,
                                     const int desiredHeight)
 {
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         const float tw = static_cast<float>(image->mTexWidth);
         const float th = static_cast<float>(image->mTexHeight);
@@ -166,32 +190,55 @@ static inline void drawRescaledQuad(const Image *const image,
         {
             texX1, texY1,
             texX2, texY1,
-            texX1, texY2,
-            texX2, texY2
+            texX2, texY2,
+            texX1, texY2
         };
 
-        GLshort vert[] =
+        GLint vert[] =
         {
-            static_cast<GLshort>(dstX), static_cast<GLshort>(dstY),
-            static_cast<GLshort>(dstX + desiredWidth),
-                static_cast<GLshort>(dstY),
-            static_cast<GLshort>(dstX), static_cast<GLshort>(
-                dstY + desiredHeight),
-            static_cast<GLshort>(dstX + desiredWidth),
-                static_cast<GLshort>(dstY + desiredHeight)
+            dstX, dstY,
+            dstX + desiredWidth, dstY,
+            dstX + desiredWidth, dstY + desiredHeight,
+            dstX, dstY + desiredHeight
         };
-        glVertexPointer(2, GL_SHORT, 0, &vert);
+
+        glVertexPointer(2, GL_INT, 0, &vert);
         glTexCoordPointer(2, GL_FLOAT, 0, &tex);
 
 #ifdef DEBUG_DRAW_CALLS
-        MobileOpenGLGraphics::mDrawCalls ++;
+        NormalOpenGLGraphics::mDrawCalls ++;
 #endif
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        glDrawArrays(GL_QUADS, 0, 4);
+    }
+    else
+    {
+        GLint tex[] =
+        {
+            srcX, srcY,
+            srcX + width, srcY,
+            srcX + width, srcY + height,
+            srcX, srcY + height
+        };
+        GLint vert[] =
+        {
+            dstX, dstY,
+            dstX + desiredWidth, dstY,
+            dstX + desiredWidth, dstY + desiredHeight,
+            dstX, dstY + desiredHeight
+        };
+
+        glVertexPointer(2, GL_INT, 0, &vert);
+        glTexCoordPointer(2, GL_INT, 0, &tex);
+
+#ifdef DEBUG_DRAW_CALLS
+        NormalOpenGLGraphics::mDrawCalls ++;
+#endif
+        glDrawArrays(GL_QUADS, 0, 4);
     }
 }
 
 
-bool MobileOpenGLGraphics::drawImage2(const Image *const image,
+bool NormalOpenGLGraphics::drawImage2(const Image *const image,
                                       int srcX, int srcY,
                                       int dstX, int dstY,
                                       const int width, const int height,
@@ -219,7 +266,7 @@ bool MobileOpenGLGraphics::drawImage2(const Image *const image,
     return true;
 }
 
-bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
+bool NormalOpenGLGraphics::drawRescaledImage(const Image *const image,
                                              int srcX, int srcY,
                                              int dstX, int dstY,
                                              const int width, const int height,
@@ -234,7 +281,7 @@ bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
                              useColor, true);
 }
 
-bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
+bool NormalOpenGLGraphics::drawRescaledImage(const Image *const image,
                                              int srcX, int srcY,
                                              int dstX, int dstY,
                                              const int width, const int height,
@@ -294,7 +341,7 @@ bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
     return true;
 }
 
-void MobileOpenGLGraphics::drawImagePattern(const Image *const image,
+void NormalOpenGLGraphics::drawImagePattern(const Image *const image,
                                             const int x, const int y,
                                             const int w, const int h)
 {
@@ -326,16 +373,16 @@ void MobileOpenGLGraphics::drawImagePattern(const Image *const image,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
     // Draw a set of textured rectangles
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
-//    {
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    {
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
 
         for (int py = 0; py < h; py += ih)
         {
             const int height = (py + ih >= h) ? h - py : ih;
-            const float texY2 = static_cast<float>(srcY + height) / th;
             const int dstY = y + py;
+            const float texY2 = static_cast<float>(srcY + height) / th;
             for (int px = 0; px < w; px += iw)
             {
                 const int width = (px + iw >= w) ? w - px : iw;
@@ -343,56 +390,90 @@ void MobileOpenGLGraphics::drawImagePattern(const Image *const image,
 
                 const float texX2 = static_cast<float>(srcX + width) / tw;
 
-                mFloatTexArray[vp + 0] = texX1;     // 1
+                mFloatTexArray[vp + 0] = texX1;
                 mFloatTexArray[vp + 1] = texY1;
 
-                mFloatTexArray[vp + 2] = texX2;     // 2
+                mFloatTexArray[vp + 2] = texX2;
                 mFloatTexArray[vp + 3] = texY1;
 
-                mFloatTexArray[vp + 4] = texX2;     // 3
+                mFloatTexArray[vp + 4] = texX2;
                 mFloatTexArray[vp + 5] = texY2;
 
-                mFloatTexArray[vp + 6] = texX1;     // 1
-                mFloatTexArray[vp + 7] = texY1;
+                mFloatTexArray[vp + 6] = texX1;
+                mFloatTexArray[vp + 7] = texY2;
 
-                mFloatTexArray[vp + 8] = texX1;     // 4
-                mFloatTexArray[vp + 9] = texY2;
+                mIntVertArray[vp + 0] = dstX;
+                mIntVertArray[vp + 1] = dstY;
 
-                mFloatTexArray[vp + 10] = texX2;    // 3
-                mFloatTexArray[vp + 11] = texY2;
+                mIntVertArray[vp + 2] = dstX + width;
+                mIntVertArray[vp + 3] = dstY;
 
-                mShortVertArray[vp + 0] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 1] = static_cast<GLshort>(dstY);
+                mIntVertArray[vp + 4] = dstX + width;
+                mIntVertArray[vp + 5] = dstY + height;
 
-                mShortVertArray[vp + 2] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 3] = static_cast<GLshort>(dstY);
+                mIntVertArray[vp + 6] = dstX;
+                mIntVertArray[vp + 7] = dstY + height;
 
-                mShortVertArray[vp + 4] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 5] = static_cast<GLshort>(dstY + height);
-
-                mShortVertArray[vp + 6] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 7] = static_cast<GLshort>(dstY);
-
-                mShortVertArray[vp + 8] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 9] = static_cast<GLshort>(dstY + height);
-
-                mShortVertArray[vp + 10] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 11] = static_cast<GLshort>(dstY + height);
-
-                vp += 12;
+                vp += 8;
                 if (vp >= vLimit)
                 {
-                    drawTriangleArrayfs(vp);
+                    drawQuadArrayfi(vp);
                     vp = 0;
                 }
             }
         }
         if (vp > 0)
-            drawTriangleArrayfs(vp);
-//    }
+            drawQuadArrayfi(vp);
+    }
+    else
+    {
+        for (int py = 0; py < h; py += ih)
+        {
+            const int height = (py + ih >= h) ? h - py : ih;
+            const int dstY = y + py;
+            for (int px = 0; px < w; px += iw)
+            {
+                const int width = (px + iw >= w) ? w - px : iw;
+                const int dstX = x + px;
+
+                mIntTexArray[vp + 0] = srcX;
+                mIntTexArray[vp + 1] = srcY;
+
+                mIntTexArray[vp + 2] = srcX + width;
+                mIntTexArray[vp + 3] = srcY;
+
+                mIntTexArray[vp + 4] = srcX + width;
+                mIntTexArray[vp + 5] = srcY + height;
+
+                mIntTexArray[vp + 6] = srcX;
+                mIntTexArray[vp + 7] = srcY + height;
+
+                mIntVertArray[vp + 0] = dstX;
+                mIntVertArray[vp + 1] = dstY;
+
+                mIntVertArray[vp + 2] = dstX + width;
+                mIntVertArray[vp + 3] = dstY;
+
+                mIntVertArray[vp + 4] = dstX + width;
+                mIntVertArray[vp + 5] = dstY + height;
+
+                mIntVertArray[vp + 6] = dstX;
+                mIntVertArray[vp + 7] = dstY + height;
+
+                vp += 8;
+                if (vp >= vLimit)
+                {
+                    drawQuadArrayii(vp);
+                    vp = 0;
+                }
+            }
+        }
+        if (vp > 0)
+            drawQuadArrayii(vp);
+    }
 }
 
-void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
+void NormalOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
                                                     const int x, const int y,
                                                     const int w, const int h,
                                                     const int scaledWidth,
@@ -405,12 +486,13 @@ void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
-    const int srcX = imageRect.x;
-    const int srcY = imageRect.y;
     const int iw = imageRect.w;
     const int ih = imageRect.h;
     if (iw == 0 || ih == 0)
         return;
+
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
 
     setColorAlpha(image->mAlpha);
 
@@ -425,8 +507,8 @@ void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     const unsigned int vLimit = mMaxVertices * 4;
 
     // Draw a set of textured rectangles
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
-//    {
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    {
         const float tw = static_cast<float>(image->mTexWidth);
         const float th = static_cast<float>(image->mTexHeight);
 
@@ -463,75 +545,130 @@ void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
                 mFloatTexArray[vp + 5] = texY2;
 
                 mFloatTexArray[vp + 6] = texX1;
-                mFloatTexArray[vp + 7] = texY1;
+                mFloatTexArray[vp + 7] = texY2;
 
-                mFloatTexArray[vp + 8] = texX1;
-                mFloatTexArray[vp + 9] = texY2;
+                mIntVertArray[vp + 0] = dstX;
+                mIntVertArray[vp + 1] = dstY;
 
-                mFloatTexArray[vp + 10] = texX2;
-                mFloatTexArray[vp + 11] = texY2;
+                mIntVertArray[vp + 2] = dstX + width;
+                mIntVertArray[vp + 3] = dstY;
 
-                mShortVertArray[vp + 0] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 1] = static_cast<GLshort>(dstY);
+                mIntVertArray[vp + 4] = dstX + width;
+                mIntVertArray[vp + 5] = dstY + height;
 
-                mShortVertArray[vp + 2] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 3] = static_cast<GLshort>(dstY);
+                mIntVertArray[vp + 6] = dstX;
+                mIntVertArray[vp + 7] = dstY + height;
 
-                mShortVertArray[vp + 4] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 5] = static_cast<GLshort>(dstY + height);
-
-                mShortVertArray[vp + 6] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 7] = static_cast<GLshort>(dstY);
-
-                mShortVertArray[vp + 8] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 9] = static_cast<GLshort>(dstY + height);
-
-                mShortVertArray[vp + 10] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 11] = static_cast<GLshort>(dstY + height);
-
-                vp += 12;
+                vp += 8;
                 if (vp >= vLimit)
                 {
-                    drawTriangleArrayfs(vp);
+                    drawQuadArrayfi(vp);
                     vp = 0;
                 }
             }
         }
         if (vp > 0)
-            drawTriangleArrayfs(vp);
-//    }
+            drawQuadArrayfi(vp);
+    }
+    else
+    {
+        const float scaleFactorW = static_cast<float>(scaledWidth) / iw;
+        const float scaleFactorH = static_cast<float>(scaledHeight) / ih;
+
+        for (int py = 0; py < h; py += scaledHeight)
+        {
+            const int height = (py + scaledHeight >= h)
+                ? h - py : scaledHeight;
+            const int dstY = y + py;
+            const int scaledY = srcY + height / scaleFactorH;
+            for (int px = 0; px < w; px += scaledWidth)
+            {
+                const int width = (px + scaledWidth >= w)
+                    ? w - px : scaledWidth;
+                const int dstX = x + px;
+                const int scaledX = srcX + width / scaleFactorW;
+
+                mIntTexArray[vp + 0] = srcX;
+                mIntTexArray[vp + 1] = srcY;
+
+                mIntTexArray[vp + 2] = scaledX;
+                mIntTexArray[vp + 3] = srcY;
+
+                mIntTexArray[vp + 4] = scaledX;
+                mIntTexArray[vp + 5] = scaledY;
+
+                mIntTexArray[vp + 6] = srcX;
+                mIntTexArray[vp + 7] = scaledY;
+
+                mIntVertArray[vp + 0] = dstX;
+                mIntVertArray[vp + 1] = dstY;
+
+                mIntVertArray[vp + 2] = dstX + width;
+                mIntVertArray[vp + 3] = dstY;
+
+                mIntVertArray[vp + 4] = dstX + width;
+                mIntVertArray[vp + 5] = dstY + height;
+
+                mIntVertArray[vp + 6] = dstX;
+                mIntVertArray[vp + 7] = dstY + height;
+
+                vp += 8;
+                if (vp >= vLimit)
+                {
+                    drawQuadArrayii(vp);
+                    vp = 0;
+                }
+            }
+        }
+        if (vp > 0)
+            drawQuadArrayii(vp);
+    }
 }
 
-inline void MobileOpenGLGraphics::drawVertexes(const
+inline void NormalOpenGLGraphics::drawVertexes(const
                                                NormalOpenGLGraphicsVertexes
                                                &ogl)
 {
-    const std::vector<GLshort*> &shortVertPool = ogl.mShortVertPool;
-    std::vector<GLshort*>::const_iterator iv;
-    const std::vector<GLshort*>::const_iterator iv_end = shortVertPool.end();
+    const std::vector<GLint*> &intVertPool = ogl.mIntVertPool;
+    std::vector<GLint*>::const_iterator iv;
+    const std::vector<GLint*>::const_iterator iv_end = intVertPool.end();
     const std::vector<int> &vp = ogl.mVp;
     std::vector<int>::const_iterator ivp;
     const std::vector<int>::const_iterator ivp_end = vp.end();
 
     // Draw a set of textured rectangles
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         const std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
         std::vector<GLfloat*>::const_iterator ft;
         const std::vector<GLfloat*>::const_iterator
             ft_end = floatTexPool.end();
 
-        for (iv = shortVertPool.begin(), ft = floatTexPool.begin(),
+        for (iv = intVertPool.begin(), ft = floatTexPool.begin(),
              ivp = vp.begin();
              iv != iv_end && ft != ft_end && ivp != ivp_end;
              ++ iv, ++ ft, ++ ivp)
         {
-            drawTriangleArrayfs(*iv, *ft, *ivp);
+            drawQuadArrayfi(*iv, *ft, *ivp);
+        }
+    }
+    else
+    {
+        const std::vector<GLint*> &intTexPool = ogl.mIntTexPool;
+        std::vector<GLint*>::const_iterator it;
+        const std::vector<GLint*>::const_iterator it_end = intTexPool.end();
+
+        for (iv = intVertPool.begin(), it = intTexPool.begin(),
+             ivp = vp.begin();
+             iv != iv_end && it != it_end && ivp != ivp_end;
+             ++ iv, ++ it, ++ ivp)
+        {
+            drawQuadArrayii(*iv, *it, *ivp);
         }
     }
 }
 
-void MobileOpenGLGraphics::calcImagePattern(ImageVertexes *const vert,
+void NormalOpenGLGraphics::calcImagePattern(ImageVertexes* const vert,
                                             const Image *const image,
                                             const int x, const int y,
                                             const int w, const int h) const
@@ -540,14 +677,14 @@ void MobileOpenGLGraphics::calcImagePattern(ImageVertexes *const vert,
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
-    const int srcX = imageRect.x;
-    const int srcY = imageRect.y;
     const int iw = imageRect.w;
     const int ih = imageRect.h;
 
     if (iw == 0 || ih == 0)
         return;
 
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
     const float tw = static_cast<float>(image->mTexWidth);
     const float th = static_cast<float>(image->mTexHeight);
 
@@ -557,13 +694,13 @@ void MobileOpenGLGraphics::calcImagePattern(ImageVertexes *const vert,
     unsigned int vp = ogl.continueVp();
 
     // Draw a set of textured rectangles
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
 
         GLfloat *floatTexArray = ogl.continueFloatTexArray();
-        GLshort *shortVertArray = ogl.continueShortVertArray();
+        GLint *intVertArray = ogl.continueIntVertArray();
 
         for (int py = 0; py < h; py += ih)
         {
@@ -586,37 +723,74 @@ void MobileOpenGLGraphics::calcImagePattern(ImageVertexes *const vert,
                 floatTexArray[vp + 5] = texY2;
 
                 floatTexArray[vp + 6] = texX1;
-                floatTexArray[vp + 7] = texY1;
+                floatTexArray[vp + 7] = texY2;
 
-                floatTexArray[vp + 8] = texX1;
-                floatTexArray[vp + 9] = texY2;
+                intVertArray[vp + 0] = dstX;
+                intVertArray[vp + 1] = dstY;
 
-                floatTexArray[vp + 10] = texX2;
-                floatTexArray[vp + 11] = texY2;
+                intVertArray[vp + 2] = dstX + width;
+                intVertArray[vp + 3] = dstY;
 
-                shortVertArray[vp + 0] = dstX;
-                shortVertArray[vp + 1] = dstY;
+                intVertArray[vp + 4] = dstX + width;
+                intVertArray[vp + 5] = dstY + height;
 
-                shortVertArray[vp + 2] = dstX + width;
-                shortVertArray[vp + 3] = dstY;
+                intVertArray[vp + 6] = dstX;
+                intVertArray[vp + 7] = dstY + height;
 
-                shortVertArray[vp + 4] = dstX + width;
-                shortVertArray[vp + 5] = dstY + height;
-
-                shortVertArray[vp + 6] = dstX;
-                shortVertArray[vp + 7] = dstY;
-
-                shortVertArray[vp + 8] = dstX;
-                shortVertArray[vp + 9] = dstY + height;
-
-                shortVertArray[vp + 10] = dstX + width;
-                shortVertArray[vp + 11] = dstY + height;
-
-                vp += 12;
+                vp += 8;
                 if (vp >= vLimit)
                 {
                     floatTexArray = ogl.switchFloatTexArray();
-                    shortVertArray = ogl.switchShortVertArray();
+                    intVertArray = ogl.switchIntVertArray();
+                    ogl.switchVp(vp);
+                    vp = 0;
+                }
+            }
+        }
+    }
+    else
+    {
+        GLint *intTexArray = ogl.continueIntTexArray();
+        GLint *intVertArray = ogl.continueIntVertArray();
+
+        for (int py = 0; py < h; py += ih)
+        {
+            const int height = (py + ih >= h) ? h - py : ih;
+            const int dstY = y + py;
+            for (int px = 0; px < w; px += iw)
+            {
+                const int width = (px + iw >= w) ? w - px : iw;
+                const int dstX = x + px;
+
+                intTexArray[vp + 0] = srcX;
+                intTexArray[vp + 1] = srcY;
+
+                intTexArray[vp + 2] = srcX + width;
+                intTexArray[vp + 3] = srcY;
+
+                intTexArray[vp + 4] = srcX + width;
+                intTexArray[vp + 5] = srcY + height;
+
+                intTexArray[vp + 6] = srcX;
+                intTexArray[vp + 7] = srcY + height;
+
+                intVertArray[vp + 0] = dstX;
+                intVertArray[vp + 1] = dstY;
+
+                intVertArray[vp + 2] = dstX + width;
+                intVertArray[vp + 3] = dstY;
+
+                intVertArray[vp + 4] = dstX + width;
+                intVertArray[vp + 5] = dstY + height;
+
+                intVertArray[vp + 6] = dstX;
+                intVertArray[vp + 7] = dstY + height;
+
+                vp += 8;
+                if (vp >= vLimit)
+                {
+                    intTexArray = ogl.switchIntTexArray();
+                    intVertArray = ogl.switchIntVertArray();
                     ogl.switchVp(vp);
                     vp = 0;
                 }
@@ -626,7 +800,7 @@ void MobileOpenGLGraphics::calcImagePattern(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void MobileOpenGLGraphics::calcTile(ImageCollection *const vertCol,
+void NormalOpenGLGraphics::calcTile(ImageCollection *const vertCol,
                                     const Image *const image,
                                     int x, int y)
 {
@@ -645,7 +819,7 @@ void MobileOpenGLGraphics::calcTile(ImageCollection *const vertCol,
     }
 }
 
-void MobileOpenGLGraphics::drawTile(const ImageCollection *const vertCol)
+void NormalOpenGLGraphics::drawTile(const ImageCollection *const vertCol)
 {
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
@@ -664,7 +838,7 @@ void MobileOpenGLGraphics::drawTile(const ImageCollection *const vertCol)
     }
 }
 
-void MobileOpenGLGraphics::calcImagePattern(ImageCollection* const vertCol,
+void NormalOpenGLGraphics::calcImagePattern(ImageCollection* const vertCol,
                                             const Image *const image,
                                             const int x, const int y,
                                             const int w, const int h) const
@@ -686,7 +860,7 @@ void MobileOpenGLGraphics::calcImagePattern(ImageCollection* const vertCol,
     calcImagePattern(vert, image, x, y, w, h);
 }
 
-void MobileOpenGLGraphics::calcTile(ImageVertexes *const vert,
+void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
                                     const Image *const image,
                                     int dstX, int dstY) const
 {
@@ -694,13 +868,14 @@ void MobileOpenGLGraphics::calcTile(ImageVertexes *const vert,
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
-    const int srcX = imageRect.x;
-    const int srcY = imageRect.y;
     const int w = imageRect.w;
     const int h = imageRect.h;
 
     if (w == 0 || h == 0)
         return;
+
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
 
     const float tw = static_cast<float>(image->mTexWidth);
     const float th = static_cast<float>(image->mTexHeight);
@@ -713,15 +888,16 @@ void MobileOpenGLGraphics::calcTile(ImageVertexes *const vert,
     unsigned int vp = ogl.continueVp();
 
     // Draw a set of textured rectangles
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
-        float texX1 = static_cast<float>(srcX) / tw;
-        float texY1 = static_cast<float>(srcY) / th;
-        float texX2 = static_cast<float>(srcX + w) / tw;
-        float texY2 = static_cast<float>(srcY + h) / th;
+        const float texX1 = static_cast<float>(srcX) / tw;
+        const float texY1 = static_cast<float>(srcY) / th;
+
+        const float texX2 = static_cast<float>(srcX + w) / tw;
+        const float texY2 = static_cast<float>(srcY + h) / th;
 
         GLfloat *const floatTexArray = ogl.continueFloatTexArray();
-        GLshort *const shortVertArray = ogl.continueShortVertArray();
+        GLint *const intVertArray = ogl.continueIntVertArray();
 
         floatTexArray[vp + 0] = texX1;
         floatTexArray[vp + 1] = texY1;
@@ -733,37 +909,63 @@ void MobileOpenGLGraphics::calcTile(ImageVertexes *const vert,
         floatTexArray[vp + 5] = texY2;
 
         floatTexArray[vp + 6] = texX1;
-        floatTexArray[vp + 7] = texY1;
+        floatTexArray[vp + 7] = texY2;
 
-        floatTexArray[vp + 8] = texX1;
-        floatTexArray[vp + 9] = texY2;
+        intVertArray[vp + 0] = dstX;
+        intVertArray[vp + 1] = dstY;
 
-        floatTexArray[vp + 10] = texX2;
-        floatTexArray[vp + 11] = texY2;
+        intVertArray[vp + 2] = dstX + w;
+        intVertArray[vp + 3] = dstY;
 
-        shortVertArray[vp + 0] = dstX;
-        shortVertArray[vp + 1] = dstY;
+        intVertArray[vp + 4] = dstX + w;
+        intVertArray[vp + 5] = dstY + h;
 
-        shortVertArray[vp + 2] = dstX + w;
-        shortVertArray[vp + 3] = dstY;
+        intVertArray[vp + 6] = dstX;
+        intVertArray[vp + 7] = dstY + h;
 
-        shortVertArray[vp + 4] = dstX + w;
-        shortVertArray[vp + 5] = dstY + h;
-
-        shortVertArray[vp + 6] = dstX;
-        shortVertArray[vp + 7] = dstY;
-
-        shortVertArray[vp + 8] = dstX;
-        shortVertArray[vp + 9] = dstY + h;
-
-        shortVertArray[vp + 10] = dstX + w;
-        shortVertArray[vp + 11] = dstY + h;
-
-        vp += 12;
+        vp += 8;
         if (vp >= vLimit)
         {
             ogl.switchFloatTexArray();
-            ogl.switchShortVertArray();
+            ogl.switchIntVertArray();
+            ogl.switchVp(vp);
+            vp = 0;
+        }
+    }
+    else
+    {
+        GLint *const intTexArray = ogl.continueIntTexArray();
+        GLint *const intVertArray = ogl.continueIntVertArray();
+
+        intTexArray[vp + 0] = srcX;
+        intTexArray[vp + 1] = srcY;
+
+        intTexArray[vp + 2] = srcX + w;
+        intTexArray[vp + 3] = srcY;
+
+        intTexArray[vp + 4] = srcX + w;
+        intTexArray[vp + 5] = srcY + h;
+
+        intTexArray[vp + 6] = srcX;
+        intTexArray[vp + 7] = srcY + h;
+
+        intVertArray[vp + 0] = dstX;
+        intVertArray[vp + 1] = dstY;
+
+        intVertArray[vp + 2] = dstX + w;
+        intVertArray[vp + 3] = dstY;
+
+        intVertArray[vp + 4] = dstX + w;
+        intVertArray[vp + 5] = dstY + h;
+
+        intVertArray[vp + 6] = dstX;
+        intVertArray[vp + 7] = dstY + h;
+
+        vp += 8;
+        if (vp >= vLimit)
+        {
+            ogl.switchIntTexArray();
+            ogl.switchIntVertArray();
             ogl.switchVp(vp);
             vp = 0;
         }
@@ -771,7 +973,7 @@ void MobileOpenGLGraphics::calcTile(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void MobileOpenGLGraphics::drawTile(const ImageVertexes *const vert)
+void NormalOpenGLGraphics::drawTile(const ImageVertexes *const vert)
 {
     if (!vert)
         return;
@@ -786,13 +988,15 @@ void MobileOpenGLGraphics::drawTile(const ImageVertexes *const vert)
     drawVertexes(vert->ogl);
 }
 
-bool MobileOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
+bool NormalOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
                                       const int x, const int y,
                                       const int w, const int h,
                                       const ImageRect &imgRect)
 {
     ImageVertexes *vert = nullptr;
-    const Image *const image = imgRect.grid[4];
+    Image *const image = imgRect.grid[4];
+    if (!image)
+        return false;
     if (vertCol->currentGLImage != image->mGLImage)
     {
         vert = new ImageVertexes();
@@ -806,13 +1010,14 @@ bool MobileOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
         vert = vertCol->currentVert;
     }
 
+    const Image *const *const grid = &imgRect.grid[0];
     return calcImageRect(vert, x, y, w, h,
-        imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
-        imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
-        imgRect.grid[4]);
+        grid[0], grid[2], grid[6], grid[8],
+        grid[1], grid[5], grid[7], grid[3],
+        grid[4]);
 }
 
-void MobileOpenGLGraphics::updateScreen()
+void NormalOpenGLGraphics::updateScreen()
 {
     BLOCK_START("Graphics::updateScreen")
 //    glFlush();
@@ -820,6 +1025,10 @@ void MobileOpenGLGraphics::updateScreen()
 #ifdef DEBUG_DRAW_CALLS
     mLastDrawCalls = mDrawCalls;
     mDrawCalls = 0;
+#endif
+#ifdef DEBUG_BIND_TEXTURE
+    mLastBinds = mBinds;
+    mBinds = 0;
 #endif
 #ifdef USE_SDL2
     SDL_GL_SwapWindow(mWindow);
@@ -831,7 +1040,7 @@ void MobileOpenGLGraphics::updateScreen()
     BLOCK_END("Graphics::updateScreen")
 }
 
-void MobileOpenGLGraphics::_beginDraw()
+void NormalOpenGLGraphics::_beginDraw()
 {
     glMatrixMode(GL_TEXTURE);
     glLoadIdentity();
@@ -839,12 +1048,15 @@ void MobileOpenGLGraphics::_beginDraw()
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
+    const int w = mRect.w;
+    const int h = mRect.h;
+
 #ifdef ANDROID
-    glOrthof(0.0, static_cast<float>(mRect.w),
-        static_cast<float>(mRect.h), 0.0, -1.0, 1.0);
+    glOrthof(0.0, static_cast<float>(w), static_cast<float>(h),
+        0.0, -1.0, 1.0);
 #else
-    glOrtho(0.0, static_cast<double>(mRect.w),
-        static_cast<double>(mRect.h), 0.0, -1.0, 1.0);
+    glOrtho(0.0, static_cast<double>(w), static_cast<double>(h),
+        0.0, -1.0, 1.0);
 #endif
 
     glMatrixMode(GL_MODELVIEW);
@@ -859,12 +1071,13 @@ void MobileOpenGLGraphics::_beginDraw()
     glDisable(GL_COLOR_MATERIAL);
     glDisable(GL_STENCIL_TEST);
 
-    glShadeModel(GL_FLAT);
-
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glEnableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    glShadeModel(GL_FLAT);
+    glDepthMask(GL_FALSE);
 
 #ifndef ANDROID
     glHint(GL_LINE_SMOOTH_HINT, GL_FASTEST);
@@ -876,31 +1089,30 @@ void MobileOpenGLGraphics::_beginDraw()
 #endif
 #endif
 
-//    glScalef(0.5f, 0.5f, 0.5f);
-
-    pushClipArea(gcn::Rectangle(0, 0, mRect.w, mRect.h));
+    pushClipArea(gcn::Rectangle(0, 0, w, h));
 }
 
-void MobileOpenGLGraphics::_endDraw()
+void NormalOpenGLGraphics::_endDraw()
 {
     popClipArea();
 }
 
-void MobileOpenGLGraphics::prepareScreenshot()
+void NormalOpenGLGraphics::prepareScreenshot()
 {
     if (config.getBoolValue("usefbo"))
         graphicsManager.createFBO(mRect.w, mRect.h, &mFbo);
 }
 
-SDL_Surface* MobileOpenGLGraphics::getScreenshot()
+SDL_Surface* NormalOpenGLGraphics::getScreenshot()
 {
     const int h = mRect.h;
     const int w = mRect.w - (mRect.w % 4);
     GLint pack = 1;
 
     SDL_Surface *const screenshot = MSDL_CreateRGBSurface(
-        SDL_SWSURFACE, w, h, 24,
-        0xff0000, 0x00ff00, 0x0000ff, 0x000000);
+            SDL_SWSURFACE,
+            w, h, 24,
+            0xff0000, 0x00ff00, 0x0000ff, 0x000000);
 
     if (!screenshot)
         return nullptr;
@@ -915,14 +1127,14 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
 
     // Flip the screenshot, as OpenGL has 0,0 in bottom left
     const unsigned int lineSize = 3 * w;
-    GLubyte *const buf = static_cast<GLubyte*>(malloc(lineSize));
+    GLubyte *const buf = static_cast<GLubyte *const>(malloc(lineSize));
 
     const int h2 = h / 2;
     for (int i = 0; i < h2; i++)
     {
-        GLubyte *const top = static_cast<GLubyte*>(
+        GLubyte *const top = static_cast<GLubyte *const>(
             screenshot->pixels) + lineSize * i;
-        GLubyte *const bot = static_cast<GLubyte*>(
+        GLubyte *const bot = static_cast<GLubyte *const>(
             screenshot->pixels) + lineSize * (h - 1 - i);
 
         memcpy(buf, top, lineSize);
@@ -943,7 +1155,7 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool MobileOpenGLGraphics::pushClipArea(gcn::Rectangle area)
+bool NormalOpenGLGraphics::pushClipArea(gcn::Rectangle area)
 {
     int transX = 0;
     int transY = 0;
@@ -973,7 +1185,7 @@ bool MobileOpenGLGraphics::pushClipArea(gcn::Rectangle area)
     return result;
 }
 
-void MobileOpenGLGraphics::popClipArea()
+void NormalOpenGLGraphics::popClipArea()
 {
     gcn::Graphics::popClipArea();
 
@@ -986,11 +1198,7 @@ void MobileOpenGLGraphics::popClipArea()
         clipArea.width, clipArea.height);
 }
 
-#ifdef ANDROID
-void MobileOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED)
-#else
-void MobileOpenGLGraphics::drawPoint(int x, int y)
-#endif
+void NormalOpenGLGraphics::drawPoint(int x, int y)
 {
     setTexturingAndBlending(false);
     restoreColor();
@@ -1004,35 +1212,35 @@ void MobileOpenGLGraphics::drawPoint(int x, int y)
 #endif
 }
 
-void MobileOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
+void NormalOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
     setTexturingAndBlending(false);
     restoreColor();
 
-    mShortVertArray[0] = static_cast<GLshort>(x1);
-    mShortVertArray[1] = static_cast<GLshort>(y1);
-    mShortVertArray[2] = static_cast<GLshort>(x2);
-    mShortVertArray[3] = static_cast<GLshort>(y2);
+    mFloatTexArray[0] = static_cast<float>(x1) + 0.5f;
+    mFloatTexArray[1] = static_cast<float>(y1) + 0.5f;
+    mFloatTexArray[2] = static_cast<float>(x2) + 0.5f;
+    mFloatTexArray[3] = static_cast<float>(y2) + 0.5f;
 
-    drawLineArrays(4);
+    drawLineArrayf(4);
 }
 
-void MobileOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect)
+void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect)
 {
     drawRectangle(rect, false);
 }
 
-void MobileOpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
+void NormalOpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
 {
     drawRectangle(rect, true);
 }
 
-void MobileOpenGLGraphics::setTargetPlane(int width A_UNUSED,
+void NormalOpenGLGraphics::setTargetPlane(int width A_UNUSED,
                                           int height A_UNUSED)
 {
 }
 
-void MobileOpenGLGraphics::setTexturingAndBlending(const bool enable)
+void NormalOpenGLGraphics::setTexturingAndBlending(const bool enable)
 {
     if (enable)
     {
@@ -1072,56 +1280,36 @@ void MobileOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
 }
 
-void MobileOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
+void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
                                          const bool filled)
 {
     BLOCK_START("Graphics::drawRectangle")
+    const float offset = filled ? 0 : 0.5f;
+    const float x = static_cast<float>(rect.x);
+    const float y = static_cast<float>(rect.y);
+    const float width = static_cast<float>(rect.width);
+    const float height = static_cast<float>(rect.height);
+
     setTexturingAndBlending(false);
     restoreColor();
 
-    const GLshort x = static_cast<GLshort>(rect.x);
-    const GLshort y = static_cast<GLshort>(rect.y);
-    const GLshort width = static_cast<GLshort>(rect.width);
-    const GLshort height = static_cast<GLshort>(rect.height);
-    const GLshort xw = static_cast<GLshort>(rect.x + width);
-    const GLshort yh = static_cast<GLshort>(rect.y + height);
-
-    if (filled)
+    GLfloat vert[] =
     {
-        GLshort vert[] =
-        {
-            x, y,
-            xw, y,
-            x, yh,
-            xw, yh
-        };
+        x + offset, y + offset,
+        x + width - offset, y + offset,
+        x + width - offset, y + height - offset,
+        x + offset, y + height - offset
+    };
 
-        glVertexPointer(2, GL_SHORT, 0, &vert);
+    glVertexPointer(2, GL_FLOAT, 0, &vert);
 #ifdef DEBUG_DRAW_CALLS
         mDrawCalls ++;
 #endif
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    }
-    else
-    {
-        GLshort vert[] =
-        {
-            x, y,
-            xw, y,
-            xw, yh,
-            x, yh
-        };
-
-        glVertexPointer(2, GL_SHORT, 0, &vert);
-#ifdef DEBUG_DRAW_CALLS
-        mDrawCalls ++;
-#endif
-        glDrawArrays(GL_LINE_LOOP, 0, 4);
-    }
+    glDrawArrays(filled ? GL_QUADS : GL_LINE_LOOP, 0, 4);
     BLOCK_END("Graphics::drawRectangle")
 }
 
-bool MobileOpenGLGraphics::drawNet(const int x1, const int y1,
+bool NormalOpenGLGraphics::drawNet(const int x1, const int y1,
                                    const int x2, const int y2,
                                    const int width, const int height)
 {
@@ -1131,88 +1319,117 @@ bool MobileOpenGLGraphics::drawNet(const int x1, const int y1,
     setTexturingAndBlending(false);
     restoreColor();
 
-    const GLshort xs1 = static_cast<GLshort>(x1);
-    const GLshort xs2 = static_cast<GLshort>(x2);
-    const GLshort ys1 = static_cast<GLshort>(y1);
-    const GLshort ys2 = static_cast<GLshort>(y2);
+    const float xf1 = static_cast<float>(x1);
+    const float xf2 = static_cast<float>(x2);
+    const float yf1 = static_cast<float>(y1);
+    const float yf2 = static_cast<float>(y2);
 
-    for (int16_t y = y1; y < y2; y += height)
+    for (int y = y1; y < y2; y += height)
     {
-        mShortVertArray[vp + 0] = xs1;
-        mShortVertArray[vp + 1] = y;
+        mFloatTexArray[vp + 0] = xf1;
+        mFloatTexArray[vp + 1] = static_cast<float>(y);
 
-        mShortVertArray[vp + 2] = xs2;
-        mShortVertArray[vp + 3] = y;
+        mFloatTexArray[vp + 2] = xf2;
+        mFloatTexArray[vp + 3] = static_cast<float>(y);
 
         vp += 4;
         if (vp >= vLimit)
         {
-            drawLineArrays(vp);
+            drawLineArrayf(vp);
             vp = 0;
         }
     }
 
-    for (int16_t x = x1; x < x2; x += width)
+    for (int x = x1; x < x2; x += width)
     {
-        mShortVertArray[vp + 0] = x;
-        mShortVertArray[vp + 1] = ys1;
+        mFloatTexArray[vp + 0] = static_cast<float>(x);
+        mFloatTexArray[vp + 1] = yf1;
 
-        mShortVertArray[vp + 2] = x;
-        mShortVertArray[vp + 3] = ys2;
+        mFloatTexArray[vp + 2] = static_cast<float>(x);
+        mFloatTexArray[vp + 3] = yf2;
 
         vp += 4;
         if (vp >= vLimit)
         {
-            drawLineArrays(vp);
+            drawLineArrayf(vp);
             vp = 0;
         }
     }
 
     if (vp > 0)
-        drawLineArrays(vp);
+        drawLineArrayf(vp);
 
     return true;
 }
 
-void MobileOpenGLGraphics::bindTexture(const GLenum target,
+void NormalOpenGLGraphics::bindTexture(const GLenum target,
                                        const GLuint texture)
 {
     if (mLastImage != texture)
     {
         mLastImage = texture;
         glBindTexture(target, texture);
+#ifdef DEBUG_BIND_TEXTURE
+        mBinds ++;
+#endif
     }
 }
 
-inline void MobileOpenGLGraphics::drawTriangleArrayfs(const int size)
+inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size)
 {
-    glVertexPointer(2, GL_SHORT, 0, mShortVertArray);
+    glVertexPointer(2, GL_INT, 0, mIntVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArray);
 
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLES, 0, size / 2);
+    glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void MobileOpenGLGraphics::drawTriangleArrayfs(const GLshort *const
-                                                      shortVertArray,
-                                                      const GLfloat *const
-                                                      floatTexArray,
-                                                      const int size)
+inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *const
+                                                  intVertArray,
+                                                  const GLfloat *const
+                                                  floatTexArray,
+                                                  const int size)
 {
-    glVertexPointer(2, GL_SHORT, 0, shortVertArray);
+    glVertexPointer(2, GL_INT, 0, intVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, floatTexArray);
 
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLES, 0, size / 2);
+    glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void MobileOpenGLGraphics::drawLineArrays(const int size)
+inline void NormalOpenGLGraphics::drawQuadArrayii(const int size)
 {
-    glVertexPointer(2, GL_SHORT, 0, mShortVertArray);
+    glVertexPointer(2, GL_INT, 0, mIntVertArray);
+    glTexCoordPointer(2, GL_INT, 0, mIntTexArray);
+
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
+    glDrawArrays(GL_QUADS, 0, size / 2);
+}
+
+inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *const
+                                                  intVertArray,
+                                                  const GLint *const
+                                                  intTexArray,
+                                                  const int size)
+{
+    glVertexPointer(2, GL_INT, 0, intVertArray);
+    glTexCoordPointer(2, GL_INT, 0, intTexArray);
+
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
+    glDrawArrays(GL_QUADS, 0, size / 2);
+}
+
+inline void NormalOpenGLGraphics::drawLineArrayi(const int size)
+{
+    glVertexPointer(2, GL_INT, 0, mIntVertArray);
 
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
@@ -1220,7 +1437,17 @@ inline void MobileOpenGLGraphics::drawLineArrays(const int size)
     glDrawArrays(GL_LINES, 0, size / 2);
 }
 
-void MobileOpenGLGraphics::dumpSettings()
+inline void NormalOpenGLGraphics::drawLineArrayf(const int size)
+{
+    glVertexPointer(2, GL_FLOAT, 0, mFloatTexArray);
+
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
+    glDrawArrays(GL_LINES, 0, size / 2);
+}
+
+void NormalOpenGLGraphics::dumpSettings()
 {
     GLint test[1000];
     logger->log("\n\n");
@@ -1240,7 +1467,7 @@ void MobileOpenGLGraphics::dumpSettings()
     }
 }
 
-void MobileOpenGLGraphics::setColorAlpha(const float alpha)
+void NormalOpenGLGraphics::setColorAlpha(const float alpha)
 {
     if (!mIsByteColor && mFloatColor == alpha)
         return;
@@ -1250,7 +1477,7 @@ void MobileOpenGLGraphics::setColorAlpha(const float alpha)
     mFloatColor = alpha;
 }
 
-void MobileOpenGLGraphics::restoreColor()
+void NormalOpenGLGraphics::restoreColor()
 {
     if (mIsByteColor && mByteColor == mColor)
         return;
@@ -1264,7 +1491,7 @@ void MobileOpenGLGraphics::restoreColor()
 }
 
 #ifdef DEBUG_BIND_TEXTURE
-void MobileOpenGLGraphics::debugBindTexture(const Image *const image)
+void NormalOpenGLGraphics::debugBindTexture(const Image *const image)
 {
     const std::string texture = image->getIdPath();
     if (mOldTexture != texture)
@@ -1280,7 +1507,7 @@ void MobileOpenGLGraphics::debugBindTexture(const Image *const image)
     }
 }
 #else
-void MobileOpenGLGraphics::debugBindTexture(const Image *const image A_UNUSED)
+void NormalOpenGLGraphics::debugBindTexture(const Image *const image A_UNUSED)
 {
 }
 #endif

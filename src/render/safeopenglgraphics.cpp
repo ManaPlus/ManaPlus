@@ -23,7 +23,7 @@
 #include "main.h"
 
 #if defined USE_OPENGL && !defined ANDROID
-#include "safeopenglgraphics.h"
+#include "render/safeopenglgraphics.h"
 
 #include "configuration.h"
 #include "graphicsmanager.h"

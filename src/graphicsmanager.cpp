@@ -37,11 +37,12 @@
 #endif
 
 #include "configuration.h"
-#include "graphics.h"
 #include "graphicsvertexes.h"
 #include "logger.h"
 #include "mgl.h"
-#include "sdlgraphics.h"
+
+#include "render/graphics.h"
+#include "render/sdlgraphics.h"
 
 #include "resources/fboinfo.h"
 #include "resources/imagehelper.h"

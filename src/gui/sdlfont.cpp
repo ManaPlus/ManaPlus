@@ -26,7 +26,8 @@
 #include "client.h"
 #include "logger.h"
 #include "main.h"
-#include "sdlgraphics.h"
+
+#include "render/sdlgraphics.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"

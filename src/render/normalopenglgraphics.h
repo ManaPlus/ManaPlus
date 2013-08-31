@@ -20,14 +20,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NULLOPENGLGRAPHICS_H
-#define NULLOPENGLGRAPHICS_H
+#ifndef NORMALOPENGLGRAPHICS_H
+#define NORMALOPENGLGRAPHICS_H
 
 #include "main.h"
-#if defined USE_OPENGL
+#if defined USE_OPENGL && !defined ANDROID
 
 #include "localconsts.h"
-#include "graphics.h"
+#include "render/graphics.h"
 
 #include "resources/fboinfo.h"
 
@@ -47,14 +47,14 @@
 
 class NormalOpenGLGraphicsVertexes;
 
-class NullOpenGLGraphics final : public Graphics
+class NormalOpenGLGraphics final : public Graphics
 {
     public:
-        NullOpenGLGraphics();
+        NormalOpenGLGraphics();
 
-        A_DELETE_COPY(NullOpenGLGraphics)
+        A_DELETE_COPY(NormalOpenGLGraphics)
 
-        ~NullOpenGLGraphics();
+        ~NormalOpenGLGraphics();
 
         bool setVideoMode(const int w, const int h, const int bpp,
                           const bool fs, const bool hwaccel,
@@ -197,7 +197,10 @@ class NullOpenGLGraphics final : public Graphics
 
         static unsigned int mLastDrawCalls;
 #endif
-
+#ifdef DEBUG_BIND_TEXTURE
+        virtual unsigned int getBinds() const
+        { return mLastBinds; }
+#endif
         static void bindTexture(const GLenum target, const GLuint texture);
 
         static GLuint mLastImage;
@@ -230,10 +233,12 @@ class NullOpenGLGraphics final : public Graphics
         bool mColorAlpha;
 #ifdef DEBUG_BIND_TEXTURE
         std::string mOldTexture;
-        unsigned mOldTextureId;
+        unsigned int mOldTextureId;
+        static unsigned int mBinds;
+        static unsigned int mLastBinds;
 #endif
         FBOInfo mFbo;
 };
 #endif
 
-#endif  // NULLOPENGLGRAPHICS_H
+#endif  // NORMALOPENGLGRAPHICS_H

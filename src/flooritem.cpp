@@ -23,9 +23,10 @@
 #include "flooritem.h"
 
 #include "client.h"
-#include "graphics.h"
 #include "item.h"
 #include "configuration.h"
+
+#include "render/graphics.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"

@@ -21,11 +21,12 @@
 #include "touchmanager.h"
 
 #include "configuration.h"
-#include "graphics.h"
 #include "graphicsvertexes.h"
 #include "inputmanager.h"
 #include "mouseinput.h"
 #include "touchactions.h"
+
+#include "render/graphics.h"
 
 #include "gui/theme.h"
 

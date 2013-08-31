@@ -22,7 +22,7 @@
 
 #include "textparticle.h"
 
-#include "graphics.h"
+#include "render/graphics.h"
 
 #include "gui/theme.h"
 

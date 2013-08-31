@@ -23,7 +23,7 @@
 #ifndef SURFACEGRAPHICS_H
 #define SURFACEGRAPHICS_H
 
-#include "graphics.h"
+#include "render/graphics.h"
 
 #include "localconsts.h"
 

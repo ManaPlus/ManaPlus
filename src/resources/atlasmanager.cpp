@@ -27,7 +27,8 @@
 #include "client.h"
 #include "graphicsmanager.h"
 #include "logger.h"
-#include "surfacegraphics.h"
+
+#include "render/surfacegraphics.h"
 
 #include "utils/mathutils.h"
 #include "utils/physfsrwops.h"

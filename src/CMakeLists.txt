@@ -612,8 +612,8 @@ SET(SRCS
     flooritem.h
     game.cpp
     game.h
-    graphics.cpp
-    graphics.h
+    render/graphics.cpp
+    render/graphics.h
     graphicsmanager.cpp
     graphicsmanager.h
     graphicsvertexes.cpp
@@ -665,21 +665,21 @@ SET(SRCS
     maplayer.h
     mgl.cpp
     mgl.h
-    mobileopenglgraphics.cpp
-    mobileopenglgraphics.h
+    render/mobileopenglgraphics.cpp
+    render/mobileopenglgraphics.h
     mouseinput.cpp
     mouseinput.h
     mumblemanager.cpp
     mumblemanager.h
     navigationmanager.cpp
     navigationmanager.h
-    normalopenglgraphics.cpp
-    normalopenglgraphics.h
+    render/normalopenglgraphics.cpp
+    render/normalopenglgraphics.h
     notifications.h
     notifymanager.cpp
     notifymanager.h
-    nullopenglgraphics.cpp
-    nullopenglgraphics.h
+    render/nullopenglgraphics.cpp
+    render/nullopenglgraphics.h
     particle.cpp
     particle.h
     particlecontainer.cpp
@@ -698,12 +698,12 @@ SET(SRCS
     properties.h
     rotationalparticle.cpp
     rotationalparticle.h
-    safeopenglgraphics.cpp
-    safeopenglgraphics.h
-    sdl2graphics.cpp
-    sdl2graphics.h
-    sdlgraphics.cpp
-    sdlgraphics.h
+    render/safeopenglgraphics.cpp
+    render/safeopenglgraphics.h
+    render/sdl2graphics.cpp
+    render/sdl2graphics.h
+    render/sdlgraphics.cpp
+    render/sdlgraphics.h
     sdlshared.h
     shopitem.cpp
     shopitem.h
@@ -715,8 +715,8 @@ SET(SRCS
     sprite.h
     statuseffect.cpp
     statuseffect.h
-    surfacegraphics.cpp
-    surfacegraphics.h
+    render/surfacegraphics.cpp
+    render/surfacegraphics.h
     text.cpp
     text.h
     textmanager.cpp

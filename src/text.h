@@ -24,10 +24,11 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-#include "graphics.h"
-#include "localconsts.h"
+#include "render/graphics.h"
 
 #include <guichan/color.hpp>
+
+#include "localconsts.h"
 
 class TextManager;
 

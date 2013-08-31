@@ -24,8 +24,9 @@
 
 #include "actorspritemanager.h"
 #include "configuration.h"
-#include "graphics.h"
 #include "localplayer.h"
+
+#include "render/graphics.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"

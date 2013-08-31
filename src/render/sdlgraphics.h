@@ -20,12 +20,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SDL2GRAPHICS_H
-#define SDL2GRAPHICS_H
+#ifndef SDLGRAPHICS_H
+#define SDLGRAPHICS_H
 
 #ifdef USE_SDL2
+#include "render/sdl2graphics.h"
 
-#include "graphics.h"
+#else
+
+#include "render/graphics.h"
 
 #include "localconsts.h"
 
@@ -135,9 +138,18 @@ class SDLGraphics : public Graphics
                                 const int width, const int height,
                                 const bool useColor);
 
+        int SDL_FakeUpperBlit(const SDL_Surface *const src,
+                              SDL_Rect *const srcrect,
+                              const SDL_Surface *const dst,
+                              SDL_Rect *dstrect) const;
+
+        void drawHLine(int x1, int y, int x2);
+
+        void drawVLine(int x, int y1, int y2);
+
         uint32_t mOldPixel;
         int mOldAlpha;
 };
 
 #endif  // USE_SDL2
-#endif  // SDL2GRAPHICS_H
+#endif  // SDLGRAPHICS_H

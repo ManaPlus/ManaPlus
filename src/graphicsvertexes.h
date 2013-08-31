@@ -38,9 +38,9 @@
 
 #include <SDL.h>
 
-#include "mobileopenglgraphics.h"
-#include "normalopenglgraphics.h"
-#include "safeopenglgraphics.h"
+#include "render/mobileopenglgraphics.h"
+#include "render/normalopenglgraphics.h"
+#include "render/safeopenglgraphics.h"
 #endif
 
 #include "resources/image.h"

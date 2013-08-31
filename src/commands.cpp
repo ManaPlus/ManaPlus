@@ -30,7 +30,6 @@
 #include "guildmanager.h"
 #include "localplayer.h"
 #include "main.h"
-#include "nullopenglgraphics.h"
 #include "party.h"
 
 #include "gui/buydialog.h"
@@ -45,6 +44,11 @@
 
 #include "gui/widgets/whispertab.h"
 
+#if defined USE_OPENGL
+#include "render/normalopenglgraphics.h"
+#endif
+#include "render/nullopenglgraphics.h"
+
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"
 #include "net/chathandler.h"
@@ -54,10 +58,6 @@
 #include "net/partyhandler.h"
 #include "net/playerhandler.h"
 #include "net/tradehandler.h"
-
-#if defined USE_OPENGL
-#include "normalopenglgraphics.h"
-#endif
 
 #ifdef DEBUG_DUMP_LEAKS1
 #include "resources/image.h"

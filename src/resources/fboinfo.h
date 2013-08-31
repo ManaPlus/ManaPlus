@@ -24,7 +24,7 @@
 #include "main.h"
 #ifdef USE_OPENGL
 
-#include "graphics.h"
+#include "render/graphics.h"
 
 #include "resources/fboinfo.h"
 

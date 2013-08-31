@@ -20,14 +20,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NORMALOPENGLGRAPHICS_H
-#define NORMALOPENGLGRAPHICS_H
+#ifndef MOBILEOPENGLGRAPHICS_H
+#define MOBILEOPENGLGRAPHICS_H
 
 #include "main.h"
-#if defined USE_OPENGL && !defined ANDROID
+#ifdef USE_OPENGL
 
 #include "localconsts.h"
-#include "graphics.h"
+#include "render/graphics.h"
 
 #include "resources/fboinfo.h"
 
@@ -47,14 +47,14 @@
 
 class NormalOpenGLGraphicsVertexes;
 
-class NormalOpenGLGraphics final : public Graphics
+class MobileOpenGLGraphics final : public Graphics
 {
     public:
-        NormalOpenGLGraphics();
+        MobileOpenGLGraphics();
 
-        A_DELETE_COPY(NormalOpenGLGraphics)
+        A_DELETE_COPY(MobileOpenGLGraphics)
 
-        ~NormalOpenGLGraphics();
+        ~MobileOpenGLGraphics();
 
         bool setVideoMode(const int w, const int h, const int bpp,
                           const bool fs, const bool hwaccel,
@@ -92,12 +92,12 @@ class NormalOpenGLGraphics final : public Graphics
                                       const int scaledWidth,
                                       const int scaledHeight) override;
 
-        void calcImagePattern(ImageVertexes* const vert,
+        void calcImagePattern(ImageVertexes *const vert,
                               const Image *const image,
                               const int x, const int y,
                               const int w, const int h) const override;
 
-        void calcImagePattern(ImageCollection* const vert,
+        void calcImagePattern(ImageCollection *const vert,
                               const Image *const image,
                               const int x, const int y,
                               const int w, const int h) const override;
@@ -105,17 +105,17 @@ class NormalOpenGLGraphics final : public Graphics
         void calcTile(ImageVertexes *const vert, const Image *const image,
                       int x, int y) const override;
 
+        void drawTile(const ImageCollection *const vertCol);
+
         void calcTile(ImageCollection *const vertCol,
                       const Image *const image, int x, int y) override;
-
-        void drawTile(const ImageCollection *const vertCol) override;
 
         void drawTile(const ImageVertexes *const vert) override;
 
         bool calcWindow(ImageCollection *const vertCol,
                         const int x, const int y,
                         const int w, const int h,
-                        const ImageRect &imgRect) override;
+                        const ImageRect &imgRect);
 
         void updateScreen() override;
 
@@ -153,21 +153,13 @@ class NormalOpenGLGraphics final : public Graphics
 
         void setTargetPlane(int width, int height);
 
-        inline void drawQuadArrayfi(const int size);
+        inline void drawTriangleArrayfs(const GLshort *const shortVertArray,
+                                        const GLfloat *const floatTexArray,
+                                        const int size);
 
-        inline void drawQuadArrayfi(const GLint *const intVertArray,
-                                    const GLfloat *const floatTexArray,
-                                    const int size);
+        inline void drawTriangleArrayfs(const int size);
 
-        inline void drawQuadArrayii(const int size);
-
-        inline void drawQuadArrayii(const GLint *const intVertArray,
-                                    const GLint *const intTexArray,
-                                    const int size);
-
-        inline void drawLineArrayi(const int size);
-
-        inline void drawLineArrayf(const int size);
+        inline void drawLineArrays(const int size);
 
         inline void drawVertexes(const NormalOpenGLGraphicsVertexes &ogl);
 
@@ -185,7 +177,7 @@ class NormalOpenGLGraphics final : public Graphics
         bool drawNet(const int x1, const int y1, const int x2, const int y2,
                      const int width, const int height) override;
 
-        int getMemoryUsage() A_WARN_UNUSED;
+        int getMemoryUsage();
 
         void updateTextureFormat();
 
@@ -197,10 +189,7 @@ class NormalOpenGLGraphics final : public Graphics
 
         static unsigned int mLastDrawCalls;
 #endif
-#ifdef DEBUG_BIND_TEXTURE
-        virtual unsigned int getBinds() const
-        { return mLastBinds; }
-#endif
+
         static void bindTexture(const GLenum target, const GLuint texture);
 
         static GLuint mLastImage;
@@ -214,7 +203,7 @@ class NormalOpenGLGraphics final : public Graphics
 
         void setTexturingAndBlending(const bool enable);
 
-        void debugBindTexture(const Image *const image);
+        void debugBindTexture(const Image *image);
 
     private:
         void inline setColorAlpha(float alpha);
@@ -224,6 +213,7 @@ class NormalOpenGLGraphics final : public Graphics
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;
+        GLshort *mShortVertArray;
         bool mTexture;
 
         bool mIsByteColor;
@@ -233,12 +223,10 @@ class NormalOpenGLGraphics final : public Graphics
         bool mColorAlpha;
 #ifdef DEBUG_BIND_TEXTURE
         std::string mOldTexture;
-        unsigned int mOldTextureId;
-        static unsigned int mBinds;
-        static unsigned int mLastBinds;
+        unsigned mOldTextureId;
 #endif
         FBOInfo mFbo;
 };
 #endif
 
-#endif  // NORMALOPENGLGRAPHICS_H
+#endif  // MOBILEOPENGLGRAPHICS_H

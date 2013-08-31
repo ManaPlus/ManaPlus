@@ -23,14 +23,15 @@
 #ifndef GUI_WIDGETS_WINDOW_H
 #define GUI_WIDGETS_WINDOW_H
 
-#include "graphics.h"
-#include "localconsts.h"
+#include "render/graphics.h"
 
 #include "gui/widgets/widget2.h"
 
 #include <guichan/widgetlistener.hpp>
 
 #include <guichan/widgets/window.hpp>
+
+#include "localconsts.h"
 
 class ContainerPlacer;
 class ImageCollection;

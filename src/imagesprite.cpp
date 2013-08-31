@@ -21,7 +21,7 @@
 
 #include "imagesprite.h"
 
-#include "graphics.h"
+#include "render/graphics.h"
 
 #include "debug.h"
 

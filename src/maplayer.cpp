@@ -24,8 +24,9 @@
 
 #include "configuration.h"
 #include "graphicsvertexes.h"
+
 #ifndef USE_OPENGL
-#include "graphics.h"
+#include "render/graphics.h"
 #endif
 
 #include "localplayer.h"
