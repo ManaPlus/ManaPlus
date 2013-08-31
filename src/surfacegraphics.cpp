@@ -30,12 +30,9 @@
 #include "logger.h"
 
 #include "resources/imagehelper.h"
+#include "resources/surfaceimagehelper.h"
 
 #include <guichan/sdl/sdlpixel.hpp>
-
-#ifndef USE_SDL2
-#include <SDL_gfxBlitFunc.h>
-#endif
 
 #include "debug.h"
 
@@ -83,8 +80,8 @@ bool SurfaceGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     }
     else
     {
-        return !(SDL_gfxBlitRGBA(image->mSDLSurface, &srcRect,
-                                 mTarget, &dstRect) < 0);
+        return !(SurfaceImageHelper::combineSurface(
+            image->mSDLSurface, &srcRect, mTarget, &dstRect) < 0);
     }
 #endif
 }

@@ -37,8 +37,6 @@
 
 #include <guichan/sdl/sdlpixel.hpp>
 
-#include <SDL_gfxBlitFunc.h>
-
 #include "debug.h"
 
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN
