@@ -44,6 +44,10 @@ AM_GNU_GETTEXT_VERSION([0.16.1])
 AC_ARG_WITH(sdl2,[  --with-sdl        enable experimental SDL 2 support] )
 if test "x$with_sdl2" == "xyes"; then
     AC_PATH_PROG(SDL_CONFIG, sdl2-config)
+    if test -n "$SDL_CONFIG"; then
+        LIBS="$LIBS `$SDL_CONFIG --libs`"
+        CPPFLAGS="$CPPFLAGS `$SDL_CONFIG --cflags`"
+    fi
     AC_CHECK_LIB([SDL2], [SDL_Init], ,
     AC_MSG_ERROR([ *** Unable to find SDL2 library (http://www.libsdl.org/)]))
 
@@ -71,6 +75,10 @@ if test "x$with_sdl2" == "xyes"; then
     with_sdl2=yes
 else
     AC_PATH_PROG(SDL_CONFIG, sdl-config)
+    if test -n "$SDL_CONFIG"; then
+        LIBS="$LIBS `$SDL_CONFIG --libs`"
+        CPPFLAGS="$CPPFLAGS `$SDL_CONFIG --cflags`"
+    fi
     AC_CHECK_LIB([SDL], [SDL_Init], ,
     AC_MSG_ERROR([ *** Unable to find SDL library (http://www.libsdl.org/)]))
 
@@ -114,10 +122,6 @@ else
 fi
 
 
-if test -n "$SDL_CONFIG"; then
-    LIBS="$LIBS `$SDL_CONFIG --libs`"
-    CPPFLAGS="$CPPFLAGS `$SDL_CONFIG --cflags`"
-fi
 AC_CHECK_HEADERS([SDL.h], ,
 AC_MSG_ERROR([ *** SDL library found but cannot find headers (http://www.libsdl.org/)]))
 
