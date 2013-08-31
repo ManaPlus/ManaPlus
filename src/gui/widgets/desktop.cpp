@@ -100,7 +100,7 @@ void Desktop::draw(gcn::Graphics *graphics)
         }
 
 #ifndef USE_SDL2
-        if (!imageHelper->useOpenGL())
+        if (imageHelper->useOpenGL() == RENDER_SOFTWARE)
         {
             g->drawImage(mWallpaper,
                 (width - wallpWidth) / 2,
@@ -153,7 +153,7 @@ void Desktop::setBestFittingWallpaper()
 #ifdef USE_SDL2
         if (false &&
 #else
-        if (!imageHelper->useOpenGL() &&
+        if (imageHelper->useOpenGL() == RENDER_SOFTWARE &&
 #endif
             (nWallPaper->getWidth() != width
             || nWallPaper->getHeight() != height))

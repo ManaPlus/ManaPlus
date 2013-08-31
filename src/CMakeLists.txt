@@ -680,6 +680,7 @@ SET(SRCS
     notifymanager.h
     render/nullopenglgraphics.cpp
     render/nullopenglgraphics.h
+    render/renderers.h
     particle/particle.cpp
     particle/particle.h
     particle/particlecontainer.cpp

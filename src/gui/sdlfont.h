@@ -147,7 +147,7 @@ class SDLFont final : public gcn::Font
         int getDeleteCounter() const A_WARN_UNUSED
         { return mDeleteCounter; }
 
-        static bool mOpengl;
+        static bool mSoftMode;
 
     private:
         TTF_Font *mFont;

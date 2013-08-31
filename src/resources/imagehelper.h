@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+#include "render/renderers.h"
+
 #include "resources/resource.h"
 
 #include <SDL.h>
@@ -71,7 +73,7 @@ class ImageHelper
                                          const int width, const int height,
                                          float alpha) const A_WARN_UNUSED = 0;
 
-        virtual int useOpenGL() const A_WARN_UNUSED = 0;
+        virtual RenderType useOpenGL() const A_WARN_UNUSED = 0;
 #else
         virtual Image *load(SDL_RWops *rw, Dye const &dye) const A_WARN_UNUSED
         { return nullptr; }
@@ -83,8 +85,8 @@ class ImageHelper
                                          const float alpha) const A_WARN_UNUSED
         { return nullptr; }
 
-        virtual int useOpenGL() const A_WARN_UNUSED
-        { return 0; }
+        virtual RenderType useOpenGL() const A_WARN_UNUSED
+        { return RENDER_SOFTWARE; }
 #endif
 
         static SDL_Surface *convertTo32Bit(SDL_Surface *const tmpImage)

@@ -48,7 +48,7 @@ const unsigned int CACHE_SIZE_SMALL3 = 170;
 const unsigned int CLEAN_TIME = 7;
 const int OUTLINE_SIZE = 1;
 
-bool SDLFont::mOpengl(true);
+bool SDLFont::mSoftMode(false);
 
 char *strBuf;
 
@@ -99,7 +99,7 @@ bool SDLTextChunkSmall::operator<(const SDLTextChunkSmall &chunk) const
     if (c2.b != color2.b)
         return c2.b > color2.b;
 
-    if (c.a != color.a && !SDLFont::mOpengl)
+    if (c.a != color.a && SDLFont::mSoftMode)
         return c.a > color.a;
 
     return false;
@@ -347,7 +347,7 @@ SDLFont::SDLFont(std::string filename,
 
     if (fontCounter == 0)
     {
-        mOpengl = imageHelper->useOpenGL();
+        mSoftMode = imageHelper->useOpenGL() == RENDER_SOFTWARE;
         if (TTF_Init() == -1)
         {
             throw GCN_EXCEPTION("Unable to initialize SDL_ttf: " +

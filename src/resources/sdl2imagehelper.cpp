@@ -146,9 +146,9 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
     return new Image(texture, tmpImage->w, tmpImage->h);
 }
 
-int SDLImageHelper::useOpenGL() const
+RenderType SDLImageHelper::useOpenGL() const
 {
-    return 0;
+    return RENDER_SOFTWARE;
 }
 
 SDL_Surface *SDLImageHelper::create32BitSurface(int width, int height) const

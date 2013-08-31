@@ -244,7 +244,7 @@ bool Image::hasAlphaChannel() const
         return mHasAlphaChannel;
 
 #ifdef USE_OPENGL
-    if (OpenGLImageHelper::mUseOpenGL)
+    if (OpenGLImageHelper::mUseOpenGL != RENDER_SOFTWARE)
         return true;
 #endif
 
@@ -413,7 +413,7 @@ Image *Image::getSubImage(const int x, const int y,
 {
     // Create a new clipped sub-image
 #ifdef USE_OPENGL
-    if (OpenGLImageHelper::mUseOpenGL)
+    if (OpenGLImageHelper::mUseOpenGL != RENDER_SOFTWARE)
     {
         return new SubImage(this, mGLImage, x, y, width, height,
                             mTexWidth, mTexHeight);

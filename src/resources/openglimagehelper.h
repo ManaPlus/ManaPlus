@@ -99,7 +99,7 @@ class OpenGLImageHelper final : public ImageHelper
          * Sets the target image format. Use <code>false</code> for SDL and
          * <code>true</code> for OpenGL.
          */
-        static void setLoadAsOpenGL(const int useOpenGL);
+        static void setLoadAsOpenGL(const RenderType useOpenGL);
 
         static int getTextureType() A_WARN_UNUSED
         { return mTextureType; }
@@ -121,7 +121,7 @@ class OpenGLImageHelper final : public ImageHelper
          * Tells if the image was loaded using OpenGL or SDL
          * @return true if OpenGL, false if SDL.
          */
-        int useOpenGL() const override A_WARN_UNUSED;
+        RenderType useOpenGL() const override A_WARN_UNUSED;
 
         static int getTextureSize() A_WARN_UNUSED
         { return mTextureSize; }
@@ -142,7 +142,7 @@ class OpenGLImageHelper final : public ImageHelper
         Image *glLoad(SDL_Surface *tmpImage,
                       int width = 0, int height = 0) const A_WARN_UNUSED;
 
-        static int mUseOpenGL;
+        static RenderType mUseOpenGL;
         static int mTextureSize;
         static bool mBlur;
         static bool mUseTextureSampler;

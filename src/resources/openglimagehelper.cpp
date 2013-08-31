@@ -32,6 +32,7 @@
 
 #include "render/mobileopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
+#include "render/renderers.h"
 #include "render/safeopenglgraphics.h"
 
 #include "resources/dye.h"
@@ -49,7 +50,7 @@ int OpenGLImageHelper::mTextureType = 0;
 int OpenGLImageHelper::mInternalTextureType = GL_RGBA8;
 int OpenGLImageHelper::mTextureSize = 0;
 bool OpenGLImageHelper::mBlur = true;
-int OpenGLImageHelper::mUseOpenGL = 0;
+RenderType OpenGLImageHelper::mUseOpenGL = RENDER_SOFTWARE;
 bool OpenGLImageHelper::mUseTextureSampler = false;
 
 Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
@@ -200,19 +201,20 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     switch (mUseOpenGL)
     {
 #ifndef ANDROID
-        case 1:
+        case RENDER_NORMAL_OPENGL:
             NormalOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
-        case 2:
+        case RENDER_SAFE_OPENGL:
             SafeOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
 #else
-        case 1:
-        case 2:
+        case RENDER_NORMAL_OPENGL:
+        case RENDER_SAFE_OPENGL:
 #endif
-        case 3:
+        case RENDER_GLES_OPENGL:
             MobileOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
+        case RENDER_SOFTWARE:
         default:
             logger->log("Unknown OpenGL backend: %d", mUseOpenGL);
             break;
@@ -276,12 +278,12 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     return new Image(texture, width, height, realWidth, realHeight);
 }
 
-void OpenGLImageHelper::setLoadAsOpenGL(const int useOpenGL)
+void OpenGLImageHelper::setLoadAsOpenGL(const RenderType useOpenGL)
 {
-    OpenGLImageHelper::mUseOpenGL = useOpenGL;
+    mUseOpenGL = useOpenGL;
 }
 
-int OpenGLImageHelper::useOpenGL() const
+RenderType OpenGLImageHelper::useOpenGL() const
 {
     return mUseOpenGL;
 }

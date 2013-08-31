@@ -40,6 +40,8 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 
+#include "render/renderers.h"
+
 #include "resources/imagehelper.h"
 
 #include "net/packetcounters.h"
@@ -202,20 +204,20 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
 #ifdef USE_OPENGL
     switch (imageHelper->useOpenGL())
     {
-        case 0:
+        case RENDER_SOFTWARE:
             // TRANSLATORS: debug window label
             mFPSText = _("%d FPS (Software)");
             break;
-        case 1:
+        case RENDER_NORMAL_OPENGL:
         default:
             // TRANSLATORS: debug window label
             mFPSText = _("%d FPS (fast OpenGL)");
             break;
-        case 2:
+        case RENDER_SAFE_OPENGL:
             // TRANSLATORS: debug window label
-            mFPSText = _("%d FPS (old OpenGL)");
+            mFPSText = _("%d FPS (safe OpenGL)");
             break;
-        case 3:
+        case RENDER_GLES_OPENGL:
             // TRANSLATORS: debug window label
             mFPSText = _("%d FPS (mobile OpenGL)");
             break;

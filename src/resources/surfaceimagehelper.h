@@ -85,7 +85,7 @@ class SurfaceImageHelper final : public ImageHelper
          * Tells if the image was loaded using OpenGL or SDL
          * @return true if OpenGL, false if SDL.
          */
-        int useOpenGL() const override A_WARN_UNUSED;
+        RenderType useOpenGL() const override A_WARN_UNUSED;
 
         static SDL_Surface* SDLDuplicateSurface(SDL_Surface *const tmpImage)
                                                 A_WARN_UNUSED;

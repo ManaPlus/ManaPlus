@@ -42,6 +42,7 @@
 #include "mgl.h"
 
 #include "render/graphics.h"
+#include "render/renderers.h"
 #include "render/sdlgraphics.h"
 
 #include "resources/fboinfo.h"
@@ -219,9 +220,13 @@ int GraphicsManager::detectGraphics()
 
 void GraphicsManager::initGraphics(const bool noOpenGL)
 {
-    int useOpenGL = 0;
+    RenderType useOpenGL = RENDER_SOFTWARE;
     if (!noOpenGL)
-        useOpenGL = config.getIntValue("opengl");
+    {
+        const int mode = config.getIntValue("opengl");
+        if (mode < RENDER_LAST && mode >= RENDER_SOFTWARE)
+            useOpenGL = static_cast<RenderType>(mode);
+    }
 
     // Setup image loading for the right image format
     OpenGLImageHelper::setLoadAsOpenGL(useOpenGL);
@@ -229,7 +234,7 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
     // Create the graphics context
     switch (useOpenGL)
     {
-        case 0:
+        case RENDER_SOFTWARE:
             imageHelper = new SDLImageHelper;
 #ifdef USE_SDL2
             surfaceImageHelper = new SurfaceImageHelper;
@@ -239,7 +244,7 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
             mainGraphics = new SDLGraphics;
             mUseTextureSampler = false;
             break;
-        case 1:
+        case RENDER_NORMAL_OPENGL:
         default:
 #ifndef ANDROID
             imageHelper = new OpenGLImageHelper;
@@ -247,21 +252,21 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
             mainGraphics = new NormalOpenGLGraphics;
             mUseTextureSampler = true;
             break;
-        case 2:
+        case RENDER_SAFE_OPENGL:
             imageHelper = new OpenGLImageHelper;
             surfaceImageHelper = new SurfaceImageHelper;
             mainGraphics = new SafeOpenGLGraphics;
             mUseTextureSampler = false;
             break;
 #endif
-        case 3:
+        case RENDER_GLES_OPENGL:
             imageHelper = new OpenGLImageHelper;
             surfaceImageHelper = new SurfaceImageHelper;
             mainGraphics = new MobileOpenGLGraphics;
             mUseTextureSampler = false;
             break;
     };
-    mUseAtlases = imageHelper->useOpenGL()
+    mUseAtlases = imageHelper->useOpenGL() != RENDER_SOFTWARE
         && config.getBoolValue("useAtlases");
 #else
 void GraphicsManager::initGraphics(const bool noOpenGL A_UNUSED)

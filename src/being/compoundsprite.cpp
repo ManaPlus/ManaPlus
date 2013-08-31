@@ -398,7 +398,7 @@ void CompoundSprite::setAlpha(float alpha)
     if (alpha != mAlpha)
     {
 #ifdef USE_OPENGL
-        if (mEnableAlphaFix && imageHelper->useOpenGL() == 0
+        if (mEnableAlphaFix && imageHelper->useOpenGL() == RENDER_SOFTWARE
             && size() > 3)
 #else
         if (mEnableAlphaFix && size() > 3)
@@ -418,7 +418,7 @@ void CompoundSprite::updateImages() const
 {
 #ifndef USE_SDL2
 #ifdef USE_OPENGL
-    if (imageHelper->useOpenGL())
+    if (imageHelper->useOpenGL() != RENDER_SOFTWARE)
         return;
 #endif
 
