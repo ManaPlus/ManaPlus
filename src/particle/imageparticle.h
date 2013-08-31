@@ -20,10 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGEPARTICLE_H
-#define IMAGEPARTICLE_H
+#ifndef PARTICLE_IMAGEPARTICLE_H
+#define PARTICLE_IMAGEPARTICLE_H
 
-#include "particle.h"
+#include "particle/particle.h"
 
 #include <map>
 
@@ -65,4 +65,4 @@ class ImageParticle : public Particle
         Image *mImage;   /**< The image used for this particle. */
 };
 
-#endif  // IMAGEPARTICLE_H
+#endif  // PARTICLE_IMAGEPARTICLE_H

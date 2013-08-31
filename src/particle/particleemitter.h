@@ -20,10 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PARTICLEEMITTER_H
-#define PARTICLEEMITTER_H
+#ifndef PARTICLE_PARTICLEEMITTER_H
+#define PARTICLE_PARTICLEEMITTER_H
 
-#include "particleemitterprop.h"
+#include "particle/particleemitterprop.h"
 
 #include "resources/animation.h"
 
@@ -164,4 +164,4 @@ class ParticleEmitter final
 
         bool mParticleFollow;
 };
-#endif  // PARTICLEEMITTER_H
+#endif  // PARTICLE_PARTICLEEMITTER_H

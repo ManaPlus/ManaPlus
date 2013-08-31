@@ -20,10 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TEXTPARTICLE_H
-#define TEXTPARTICLE_H
+#ifndef PARTICLE_TEXTPARTICLE_H
+#define PARTICLE_TEXTPARTICLE_H
 
-#include "particle.h"
+#include "particle/particle.h"
 
 class TextParticle final : public Particle
 {
@@ -59,4 +59,4 @@ class TextParticle final : public Particle
         bool mOutline;                 /**< Make the text better readable */
 };
 
-#endif  // TEXTPARTICLE_H
+#endif  // PARTICLE_TEXTPARTICLE_H

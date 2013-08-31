@@ -29,12 +29,13 @@
 #include "client.h"
 #include "effectmanager.h"
 #include "guild.h"
-#include "particle.h"
 #include "party.h"
 #include "playerrelations.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 #include "text.h"
+
+#include "particle/particle.h"
 
 #include "gui/equipmentwindow.h"
 #include "gui/socialwindow.h"

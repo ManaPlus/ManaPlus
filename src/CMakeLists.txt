@@ -569,8 +569,8 @@ SET(SRCS
     animatedsprite.h
     animationdelayload.cpp
     animationdelayload.h
-    animationparticle.cpp
-    animationparticle.h
+    particle/animationparticle.cpp
+    particle/animationparticle.h
     auctionmanager.cpp
     auctionmanager.h
     avatar.cpp
@@ -622,8 +622,8 @@ SET(SRCS
     guild.h
     guildmanager.cpp
     guildmanager.h
-    imageparticle.cpp
-    imageparticle.h
+    particle/imageparticle.cpp
+    particle/imageparticle.h
     imagesprite.cpp
     imagesprite.h
     inventory.cpp
@@ -680,13 +680,13 @@ SET(SRCS
     notifymanager.h
     render/nullopenglgraphics.cpp
     render/nullopenglgraphics.h
-    particle.cpp
-    particle.h
-    particlecontainer.cpp
-    particlecontainer.h
-    particleemitter.cpp
-    particleemitter.h
-    particleemitterprop.h
+    particle/particle.cpp
+    particle/particle.h
+    particle/particlecontainer.cpp
+    particle/particlecontainer.h
+    particle/particleemitter.cpp
+    particle/particleemitter.h
+    particle/particleemitterprop.h
     party.cpp
     party.h
     playerinfo.cpp
@@ -696,8 +696,8 @@ SET(SRCS
     position.cpp
     position.h
     properties.h
-    rotationalparticle.cpp
-    rotationalparticle.h
+    particle/rotationalparticle.cpp
+    particle/rotationalparticle.h
     render/safeopenglgraphics.cpp
     render/safeopenglgraphics.h
     render/sdl2graphics.cpp
@@ -721,8 +721,8 @@ SET(SRCS
     text.h
     textmanager.cpp
     textmanager.h
-    textparticle.cpp
-    textparticle.h
+    particle/textparticle.cpp
+    particle/textparticle.h
     tileset.h
     touchactions.cpp
     touchactions.h

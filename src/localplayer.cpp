@@ -31,7 +31,6 @@
 #include "item.h"
 #include "maplayer.h"
 #include "party.h"
-#include "particle.h"
 #include "playerinfo.h"
 #include "playerrelations.h"
 #include "simpleanimation.h"
@@ -39,6 +38,8 @@
 #include "soundmanager.h"
 #include "statuseffect.h"
 #include "walklayer.h"
+
+#include "particle/particle.h"
 
 #include "input/keyboardconfig.h"
 

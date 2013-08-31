@@ -26,7 +26,8 @@
 #include "game.h"
 #include "localplayer.h"
 #include "main.h"
-#include "particle.h"
+
+#include "particle/particle.h"
 
 #include "gui/setup.h"
 #include "gui/setup_video.h"

@@ -26,7 +26,8 @@
 #include "compoundsprite.h"
 #include "localconsts.h"
 #include "map.h"
-#include "particlecontainer.h"
+
+#include "particle/particlecontainer.h"
 
 #include <SDL_types.h>
 

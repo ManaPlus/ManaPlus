@@ -34,11 +34,12 @@
 #include "guildmanager.h"
 #include "itemshortcut.h"
 #include "localplayer.h"
-#include "particle.h"
 #include "playerinfo.h"
 #include "soundmanager.h"
 #include "spellshortcut.h"
 #include "touchmanager.h"
+
+#include "particle/particle.h"
 
 #include "input/inputmanager.h"
 #include "input/joystick.h"

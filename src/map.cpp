@@ -27,10 +27,11 @@
 #include "localplayer.h"
 #include "maplayer.h"
 #include "notifymanager.h"
-#include "particle.h"
 #include "simpleanimation.h"
 #include "tileset.h"
 #include "walklayer.h"
+
+#include "particle/particle.h"
 
 #include "resources/ambientlayer.h"
 #include "resources/image.h"

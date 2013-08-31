@@ -580,8 +580,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      animatedsprite.h \
 	      animationdelayload.cpp \
 	      animationdelayload.h \
-	      animationparticle.cpp \
-	      animationparticle.h \
+	      particle/animationparticle.cpp \
+	      particle/animationparticle.h \
 	      auctionmanager.cpp \
 	      auctionmanager.h \
 	      avatar.cpp \
@@ -633,8 +633,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      guild.h \
 	      guildmanager.cpp \
 	      guildmanager.h \
-	      imageparticle.cpp \
-	      imageparticle.h \
+	      particle/imageparticle.cpp \
+	      particle/imageparticle.h \
 	      imagesprite.cpp \
 	      imagesprite.h \
 	      inventory.cpp \
@@ -689,13 +689,13 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      notifymanager.h \
 	      render/nullopenglgraphics.cpp \
 	      render/nullopenglgraphics.h \
-	      particle.cpp \
-	      particle.h \
-	      particlecontainer.cpp \
-	      particlecontainer.h \
-	      particleemitter.cpp \
-	      particleemitter.h \
-	      particleemitterprop.h \
+	      particle/particle.cpp \
+	      particle/particle.h \
+	      particle/particlecontainer.cpp \
+	      particle/particlecontainer.h \
+	      particle/particleemitter.cpp \
+	      particle/particleemitter.h \
+	      particle/particleemitterprop.h \
 	      party.cpp \
 	      party.h \
 	      playerinfo.cpp \
@@ -705,8 +705,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      position.cpp \
 	      position.h \
 	      properties.h \
-	      rotationalparticle.cpp \
-	      rotationalparticle.h \
+	      particle/rotationalparticle.cpp \
+	      particle/rotationalparticle.h \
 	      render/safeopenglgraphics.cpp\
 	      render/safeopenglgraphics.h \
 	      render/sdl2graphics.cpp \
@@ -730,8 +730,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      text.h \
 	      textmanager.cpp \
 	      textmanager.h \
-	      textparticle.cpp \
-	      textparticle.h \
+	      particle/textparticle.cpp \
+	      particle/textparticle.h \
 	      tileset.h \
 	      touchactions.cpp \
 	      touchactions.h \

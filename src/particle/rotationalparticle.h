@@ -20,10 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ROTATIONALPARTICLE_H
-#define ROTATIONALPARTICLE_H
+#ifndef PARTICLE_ROTATIONALPARTICLE_H
+#define PARTICLE_ROTATIONALPARTICLE_H
 
-#include "imageparticle.h"
+#include "particle/imageparticle.h"
 
 #include "utils/xml.h"
 
@@ -49,4 +49,4 @@ class RotationalParticle final : public ImageParticle
         SimpleAnimation *mAnimation; /**< Used animation for this particle */
 };
 
-#endif  // ROTATIONALPARTICLE_H
+#endif  // PARTICLE_ROTATIONALPARTICLE_H

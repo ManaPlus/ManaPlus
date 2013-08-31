@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "particle.h"
-#include "particlecontainer.h"
+#include "particle/particle.h"
+#include "particle/particlecontainer.h"
 
 #include "debug.h"
 

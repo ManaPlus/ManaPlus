@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "textparticle.h"
+#include "particle/textparticle.h"
 
 #include "render/graphics.h"
 

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PARTICLE_H
-#define PARTICLE_H
+#ifndef PARTICLE_PARTICLE_H
+#define PARTICLE_PARTICLE_H
 
 #include "actor.h"
 #include "localconsts.h"
@@ -363,4 +363,4 @@ class Particle : public Actor
 
 extern Particle *particleEngine;
 
-#endif  // PARTICLE_H
+#endif  // PARTICLE_PARTICLE_H

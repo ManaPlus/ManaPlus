@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "rotationalparticle.h"
+#include "particle/rotationalparticle.h"
 
 #include "simpleanimation.h"
 

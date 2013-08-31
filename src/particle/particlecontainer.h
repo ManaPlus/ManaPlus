@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PARTICLECONTAINER_H
-#define PARTICLECONTAINER_H
+#ifndef PARTICLE_PARTICLECONTAINER_H
+#define PARTICLE_PARTICLECONTAINER_H
 
 #include <list>
 #include <vector>
@@ -135,4 +135,4 @@ protected:
     std::vector<Particle *> mIndexedElements;
 };
 
-#endif  // PARTICLECONTAINER_H
+#endif  // PARTICLE_PARTICLECONTAINER_H

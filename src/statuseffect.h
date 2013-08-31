@@ -23,8 +23,9 @@
 #ifndef STATUSEFFECT_H
 #define STATUSEFFECT_H
 
-#include "particle.h"
 #include "animatedsprite.h"
+
+#include "particle/particle.h"
 
 #include "resources/animation.h"
 

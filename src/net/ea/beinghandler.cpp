@@ -31,10 +31,11 @@
 #include "guild.h"
 #include "guildmanager.h"
 #include "localplayer.h"
-#include "particle.h"
 #include "party.h"
 #include "playerrelations.h"
 #include "configuration.h"
+
+#include "particle/particle.h"
 
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"
