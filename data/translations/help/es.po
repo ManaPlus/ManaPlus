@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-08-02 00:02+0000\n"
+"PO-Revision-Date: 2013-08-17 20:00+0000\n"
 "Last-Translator: osuka <owen942009@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgid ""
 msgstr "La mayoría de los comandos funcionan en los susurros.\nPor ejemplo, escribir el comando /imitation en la pestaña de susurro de nick1\n es similar al escribir comando /imitation nick1."
 
 msgid "\"Emote shortcut 11\""
-msgstr "\"Atajo de emoticono 11\""
+msgstr "\"Atajo para emoticono 11\""
 
 msgid ""
 " To add an item to the shortcut bar click on the item in the inventory window,\n"
@@ -77,7 +77,7 @@ msgid ""
 msgstr " Si estás teniendo problemas, por favor, primero que nada, lee el FAQ. Si no\n puedes encontrar una solución a tu problema, siéntete libre de chequear nuestra\n sección Bugs/Support en el foro:"
 
 msgid "\"Emote shortcut 9\""
-msgstr "\"Atajo de emoticono 9\""
+msgstr "\"Atajo para emoticono 9\""
 
 msgid "\"Set direction down\""
 msgstr ""
@@ -143,7 +143,7 @@ msgid "##PMagic skills can be obtain by doing quests and missions in game."
 msgstr "##PLas habilidades mágicas pueden obtenerse al realizar misiones y búsquedas en juego."
 
 msgid "\"Emote shortcut 1\""
-msgstr "\"Atajo de emoticono 1\""
+msgstr "\"Atajo para emoticono 1\""
 
 msgid "\"Outfit shortcut 13\""
 msgstr ""
@@ -160,10 +160,10 @@ msgid "/me text - send text to chat as /me command in irc."
 msgstr "/me texto - envía un texto al chat tal como el comando /me en el irc."
 
 msgid "\"Emote shortcut 10\""
-msgstr "\"Atajo de emoticono 10\""
+msgstr "\"Atajo para emoticono 10\""
 
 msgid "\"Item shortcut 14\""
-msgstr ""
+msgstr "\"Atajo para objeto 14\"  "
 
 msgid "Mana Contributors"
 msgstr "Mana: Contribuyentes"
@@ -175,13 +175,13 @@ msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query NICK, /q NICK - abrir nueva pestaña de susurro para el nick indicado."
 
 msgid "\"Item shortcut 5\""
-msgstr ""
+msgstr "\"Atajo para objeto 5\"  "
 
 msgid "/all - show visible beings list in debug tab."
 msgstr "/all - mostrar, en la pestaña del depurador, la lista de seres visibles."
 
 msgid "\"Emote shortcut 7\""
-msgstr "\"Atajo de emoticono 7\""
+msgstr "\"Atajo para emoticono 7\""
 
 msgid "Debug"
 msgstr "Depurador"
@@ -196,7 +196,7 @@ msgid "\"Target closest monster\""
 msgstr ""
 
 msgid "\"Emote shortcut 2\""
-msgstr "\"Atajo de emoticono 2\""
+msgstr "\"Atajo para emoticono 2\""
 
 msgid "\"Outfit shortcut 6\""
 msgstr ""
@@ -314,7 +314,7 @@ msgid "Here contributors from parent projects"
 msgstr "Aquí los contribuyentes de proyectos padre"
 
 msgid "\"Item shortcut 4\""
-msgstr ""
+msgstr "\"Atajo para objeto 4\"  "
 
 msgid ""
 " - ##2disregarded##P:  You wish to disregard this player, meaning that his or\n"
@@ -371,10 +371,10 @@ msgid "\"Outfit shortcut 11\""
 msgstr ""
 
 msgid "\"Item shortcut 11\""
-msgstr ""
+msgstr "\"Atajo para objeto 11\"  "
 
 msgid "\"Item shortcut 10\""
-msgstr ""
+msgstr "\"Atajo para objeto 10\"  "
 
 msgid "ABOUT MANAPLUS"
 msgstr "ACERCA DE MANAPLUS"
@@ -418,7 +418,7 @@ msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore NICK - agregar a NICK a la lista de ignorados."
 
 msgid "\"Item shortcuts Key\""
-msgstr ""
+msgstr "\"Tecla de atajos para objetos\""
 
 msgid "\"Disable / enable game modifier keys\""
 msgstr ""
@@ -450,7 +450,7 @@ msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - moverse a la posición X,Y en corta distancia."
 
 msgid "\"Item shortcut 3\""
-msgstr ""
+msgstr "\"Atajo para objeto 3\"  "
 
 msgid "\"Change move type\""
 msgstr ""
@@ -492,7 +492,7 @@ msgid "\"Close chat tab\""
 msgstr ""
 
 msgid "\"Item shortcut 6\""
-msgstr ""
+msgstr "\"Atajo para objeto 6\"  "
 
 msgid "Art or images contributors"
 msgstr "Contribuyentes en arte o imágenes"
@@ -531,7 +531,7 @@ msgid "\"Status window\""
 msgstr "\"Ventana de estado\""
 
 msgid "\"Item shortcut 2\""
-msgstr ""
+msgstr "\"Atajo para objeto 2\"  "
 
 msgid "##2Emote:##P enables the ability to express emotions."
 msgstr "##2Emote:##P permite la habilidad para expresar emociones."
@@ -582,7 +582,7 @@ msgid "move key"
 msgstr "tecla de movimiento"
 
 msgid "\"Item shortcut 13\""
-msgstr ""
+msgstr "\"Atajo para objeto 13\"  "
 
 msgid "Skills"
 msgstr "Habilidades"
@@ -597,7 +597,7 @@ msgid "\"Outfit shortcut 3\""
 msgstr ""
 
 msgid "\"Quick drop N items\""
-msgstr ""
+msgstr "\"Soltar N objetos rápidamente\""
 
 msgid "Themes:"
 msgstr "Temas:"
@@ -608,10 +608,10 @@ msgid ""
 msgstr "/msg NICK texto, /whisper NICK texto, /w NICK texto - envía un susurro a NICK."
 
 msgid "\"Emote shortcut 14\""
-msgstr "\"Atajo de emoticono 14\""
+msgstr "\"Atajo para emoticono 14\""
 
 msgid "\"Item shortcut 1\""
-msgstr ""
+msgstr "\"Atajo para objeto 1\""
 
 msgid "Commands"
 msgstr "Comandos"
@@ -620,7 +620,7 @@ msgid "\"Outfit shortcut 9\""
 msgstr ""
 
 msgid "\"Emote shortcut 4\""
-msgstr "\"Atajo de emoticono 4\""
+msgstr "\"Atajo para emoticono 4\""
 
 msgid "\"Stop Attack\""
 msgstr ""
@@ -708,7 +708,7 @@ msgid "\"On / off audio\""
 msgstr "\"Encender / Apagar audio\""
 
 msgid "\"Emote shortcut 6\""
-msgstr "\"Atajo de emoticono 6\""
+msgstr "\"Atajo para emoticono 6\""
 
 msgid "\"Outfit shortcut 2\""
 msgstr ""
@@ -732,7 +732,7 @@ msgid "\"Previous chat tab line\""
 msgstr ""
 
 msgid "\"Emote shortcut 13\""
-msgstr "\"Atajo de emoticono 13\""
+msgstr "\"Atajo para emoticono 13\""
 
 msgid "/disregard NICK - add nick to disregarded list."
 msgstr "/disregard NICK - agregar nick a la lista de desatendidos."
@@ -767,7 +767,7 @@ msgid "\"Switch pvp attack\""
 msgstr ""
 
 msgid "\"Emote shortcut window\""
-msgstr "\"Ventana de Emoticonos\""
+msgstr "\"Ventana para Emoticonos\""
 
 msgid "\"Bot checker window\""
 msgstr ""
@@ -777,13 +777,13 @@ msgid ""
 msgstr "/mail NICK MSJ - envía un mensaje offline a NICK. Sólo funciona en el servidor de tmw."
 
 msgid "\"Item shortcut 15\""
-msgstr ""
+msgstr "\"Atajo para objeto 15\"  "
 
 msgid "About The Mana World"
 msgstr "Acerca de The Mana World"
 
 msgid "\"Emote shortcut 5\""
-msgstr "\"Atajo de emoticono 5\""
+msgstr "\"Atajo para emoticono 5\""
 
 msgid "\"Smilie\""
 msgstr ""
@@ -797,7 +797,7 @@ msgid ""
 msgstr " Allí encontrarás una lista de todos los jugadores allegados a ti, adicionalmente\n como varias opciones de configuración:"
 
 msgid "\"Use magic attack\""
-msgstr ""
+msgstr "\"Usar ataque mágico\""
 
 msgid ""
 "You can see other player equiped items,\n"
@@ -823,7 +823,7 @@ msgid "/help - show small help about chat commands. "
 msgstr "/help - mostrar una pequeña ayuda de los comandos. "
 
 msgid "\"Item shortcut 9\""
-msgstr ""
+msgstr "\"Atajo para objeto 9\"  "
 
 msgid ""
 "You can set any client resolution. In settings in video tab,\n"
@@ -852,7 +852,7 @@ msgid "About"
 msgstr "Acerca de..."
 
 msgid "\"Emote shortcut 12\""
-msgstr "\"Atajo de emoticono 12\""
+msgstr "\"Atajo para emoticono 12\""
 
 msgid "\"Outfit shortcut 15\""
 msgstr ""
@@ -879,10 +879,10 @@ msgid "\"Item shortcut window\""
 msgstr "\"Ventana de atajos para objetos\""
 
 msgid "\"Item shortcut 7\""
-msgstr ""
+msgstr "\"Atajo para objeto 7\"  "
 
 msgid "\"Emote shortcut 8\""
-msgstr "\"Atajo de emoticono 8\""
+msgstr "\"Atajo para emoticono 8\""
 
 msgid "\"Minimap window\""
 msgstr "\"Ventana del Mini-mapa\""
@@ -904,7 +904,7 @@ msgid ""
 msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
 
 msgid "\"Emote shortcut 3\""
-msgstr "\"Atajo de emoticono 3\""
+msgstr "\"Atajo para emoticono 3\""
 
 msgid ""
 " However, you can protect yourself from such players by ignoring them.  Right-\n"
@@ -923,7 +923,7 @@ msgid "Different patches"
 msgstr "Parches diferentes"
 
 msgid "\"Switch magic attack\""
-msgstr ""
+msgstr "\"Intercambiar ataque mágico\""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr "/navigate x y - moverse a la posición x,y en el mapa actual, a cualquier distancia."
@@ -935,7 +935,7 @@ msgid "Actions"
 msgstr "Acciones"
 
 msgid "\"Item shortcut 12\""
-msgstr ""
+msgstr "\"Atajo para objeto 12\"  "
 
 msgid "\"Move to navigation point\""
 msgstr ""
@@ -956,7 +956,7 @@ msgid "/follow NICK - start follow mode."
 msgstr "/follow NICK - iniciar el modo seguimiento."
 
 msgid "\"Item shortcut 8\""
-msgstr ""
+msgstr "\"Atajo para objeto 8\"  "
 
 msgid "/emote N - use emotion number N."
 msgstr "/emote N - usar el emoticón número N."
