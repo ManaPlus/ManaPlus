@@ -1,3 +1,15 @@
+2013-09-01 New release 1.3.9.1
+fix: S/a dye for big endian systems.
+fix: some typos.
+fix: different crashes if corrupted data files.
+fix: compilation not from top directory.
+add: improve software mode draw speed.
+add: improve S/A dye speed.
+add: target cursors animations.
+add: SDL2 build mode.
+add: show npc name in npc dialog caption.
+add: open help window before logging into game.
+
 2013-08-18 New release 1.3.8.18
 fix: money label position in status window.
 fix: shorted long key names.
