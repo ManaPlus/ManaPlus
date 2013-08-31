@@ -36,9 +36,6 @@
 #include "graphicsmanager.h"
 #include "graphicsvertexes.h"
 #include "itemshortcut.h"
-#include "joystick.h"
-#include "inputmanager.h"
-#include "keyboardconfig.h"
 #include "party.h"
 #include "playerrelations.h"
 #include "soundconsts.h"
@@ -46,6 +43,10 @@
 #include "statuseffect.h"
 #include "units.h"
 #include "touchmanager.h"
+
+#include "input/inputmanager.h"
+#include "input/joystick.h"
+#include "input/keyboardconfig.h"
 
 #include "gui/buydialog.h"
 #include "gui/buyselldialog.h"

@@ -20,10 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KEYDATA_H
-#define KEYDATA_H
+#ifndef INPUT_KEYDATA_H
+#define INPUT_KEYDATA_H
 
-#include "inputevent.h"
+#include "input/inputevent.h"
 
 #include <string>
 
@@ -345,4 +345,4 @@ namespace Input
     };
 }  // namespace Input
 
-#endif  // KEYDATA_H
+#endif  // INPUT_KEYDATA_H

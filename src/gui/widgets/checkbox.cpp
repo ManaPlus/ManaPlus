@@ -24,8 +24,9 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "keydata.h"
-#include "keyevent.h"
+
+#include "input/keydata.h"
+#include "input/keyevent.h"
 
 #include "resources/image.h"
 

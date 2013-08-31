@@ -24,13 +24,14 @@
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
-#include "inputevent.h"
 #include "itemshortcut.h"
-#include "inputmanager.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 #include "playerrelations.h"
 #include "soundmanager.h"
+
+#include "input/inputevent.h"
+#include "input/inputmanager.h"
 
 #include "gui/botcheckerwindow.h"
 #include "gui/buyselldialog.h"

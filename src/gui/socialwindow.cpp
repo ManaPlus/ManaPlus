@@ -24,19 +24,20 @@
 #include "actorspritemanager.h"
 #include "guild.h"
 #include "guildmanager.h"
-#include "inputmanager.h"
-#include "keyboardconfig.h"
 #include "localplayer.h"
 #include "maplayer.h"
 #include "party.h"
 #include "playerrelations.h"
-#include "gui/whoisonline.h"
+
+#include "input/inputmanager.h"
+#include "input/keyboardconfig.h"
 
 #include "gui/confirmdialog.h"
 #include "gui/okdialog.h"
 #include "gui/outfitwindow.h"
 #include "gui/setup.h"
 #include "gui/textdialog.h"
+#include "gui/whoisonline.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/chattab.h"

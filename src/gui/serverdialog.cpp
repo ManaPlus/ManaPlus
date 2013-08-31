@@ -25,9 +25,10 @@
 #include "chatlogger.h"
 #include "client.h"
 #include "configuration.h"
-#include "keydata.h"
-#include "keyevent.h"
 #include "main.h"
+
+#include "input/keydata.h"
+#include "input/keyevent.h"
 
 #include "gui/editserverdialog.h"
 #include "gui/gui.h"

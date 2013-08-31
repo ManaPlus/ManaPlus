@@ -29,7 +29,6 @@
 #include "effectmanager.h"
 #include "guild.h"
 #include "item.h"
-#include "keyboardconfig.h"
 #include "maplayer.h"
 #include "party.h"
 #include "particle.h"
@@ -40,6 +39,8 @@
 #include "soundmanager.h"
 #include "statuseffect.h"
 #include "walklayer.h"
+
+#include "input/keyboardconfig.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"

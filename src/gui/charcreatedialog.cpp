@@ -22,10 +22,11 @@
 
 #include "gui/charcreatedialog.h"
 
-#include "keydata.h"
-#include "keyevent.h"
 #include "main.h"
 #include "units.h"
+
+#include "input/keydata.h"
+#include "input/keyevent.h"
 
 #include "gui/confirmdialog.h"
 #include "gui/okdialog.h"

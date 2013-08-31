@@ -30,13 +30,14 @@
 #include "game.h"
 #include "guild.h"
 #include "guildmanager.h"
-#include "inputmanager.h"
-#include "keyboardconfig.h"
 #include "localplayer.h"
 #include "particle.h"
 #include "party.h"
 #include "playerrelations.h"
 #include "configuration.h"
+
+#include "input/inputmanager.h"
+#include "input/keyboardconfig.h"
 
 #include "gui/botcheckerwindow.h"
 #include "gui/outfitwindow.h"

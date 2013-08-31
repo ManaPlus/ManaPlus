@@ -25,9 +25,10 @@
 #include "client.h"
 #include "dragdrop.h"
 #include "itemshortcut.h"
-#include "keyboardconfig.h"
 #include "localplayer.h"
 #include "spellshortcut.h"
+
+#include "input/keyboardconfig.h"
 
 #include "gui/inventorywindow.h"
 #include "gui/okdialog.h"

@@ -18,11 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUTMANAGER_H
-#define INPUTMANAGER_H
+#ifndef INPUT_INPUTMANAGER_H
+#define INPUT_INPUTMANAGER_H
 
-#include "inputevent.h"
-#include "keydata.h"
+#include "input/inputevent.h"
+#include "input/keydata.h"
 
 #include <string>
 #include <map>
@@ -188,4 +188,4 @@ class InputManager final
 
 extern InputManager inputManager;
 
-#endif  // INPUTMANAGER_H
+#endif  // INPUT_INPUTMANAGER_H

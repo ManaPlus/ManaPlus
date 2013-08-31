@@ -20,11 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboardconfig.h"
+#include "input/keyboardconfig.h"
 
 #include "configuration.h"
-#include "inputmanager.h"
 #include "logger.h"
+
+#include "input/inputmanager.h"
 
 #include "utils/gettext.h"
 

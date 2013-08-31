@@ -24,8 +24,9 @@
 #include "gui/setup_input.h"
 
 #include "configuration.h"
-#include "inputmanager.h"
-#include "keyboardconfig.h"
+
+#include "input/inputmanager.h"
+#include "input/keyboardconfig.h"
 
 #include "gui/okdialog.h"
 #include "gui/setupactiondata.h"

@@ -24,8 +24,9 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "inputmanager.h"
-#include "keyevent.h"
+
+#include "input/inputmanager.h"
+#include "input/keyevent.h"
 
 #include "gui/popupmenu.h"
 #include "gui/sdlinput.h"

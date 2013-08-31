@@ -24,7 +24,8 @@
 #include "gui/widgets/browserbox.h"
 
 #include "client.h"
-#include "inputmanager.h"
+
+#include "input/inputmanager.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"

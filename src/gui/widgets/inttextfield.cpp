@@ -22,8 +22,8 @@
 
 #include "gui/widgets/inttextfield.h"
 
-#include "keydata.h"
-#include "keyevent.h"
+#include "input/keydata.h"
+#include "input/keyevent.h"
 
 #include "gui/sdlinput.h"
 

@@ -24,7 +24,8 @@
 #include "resources/image.h"
 
 #include "configlistener.h"
-#include "keydata.h"
+
+#include "input/keydata.h"
 
 #include <guichan/mouseinput.hpp>
 #include <guichan/rectangle.hpp>

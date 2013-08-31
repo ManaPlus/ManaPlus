@@ -28,7 +28,6 @@
 #include "game.h"
 #include "guild.h"
 #include "guildmanager.h"
-#include "inputmanager.h"
 #include "item.h"
 #include "itemshortcut.h"
 #include "localplayer.h"
@@ -37,6 +36,8 @@
 #include "playerinfo.h"
 #include "playerrelations.h"
 #include "spellmanager.h"
+
+#include "input/inputmanager.h"
 
 #include "gui/buydialog.h"
 #include "gui/chatwindow.h"

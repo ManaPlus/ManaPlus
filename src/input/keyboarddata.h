@@ -20,12 +20,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KEYBOARDDATA_H
-#define KEYBOARDDATA_H
+#ifndef INPUT_KEYBOARDDATA_H
+#define INPUT_KEYBOARDDATA_H
 
 #include "actionmanager.h"
-#include "inputmanager.h"
 #include "localconsts.h"
+
+#include "input/inputmanager.h"
 
 #include "utils/gettext.h"
 
@@ -1961,4 +1962,4 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         COND_DEFAULT | COND_INGAME}
 };
 
-#endif  // KEYBOARDDATA_H
+#endif  // INPUT_KEYBOARDDATA_H

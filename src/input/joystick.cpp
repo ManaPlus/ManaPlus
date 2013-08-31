@@ -20,13 +20,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "joystick.h"
+#include "input/joystick.h"
 
 #include "client.h"
 #include "configuration.h"
-#include "inputmanager.h"
 #include "logger.h"
 #include "sdlshared.h"
+
+#include "input/inputmanager.h"
 
 #include "debug.h"
 

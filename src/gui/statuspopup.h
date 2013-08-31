@@ -24,7 +24,7 @@
 #ifndef GUI_STATUSPOPUP_H
 #define GUI_STATUSPOPUP_H
 
-#include "keydata.h"
+#include "input/keydata.h"
 
 #include "gui/widgets/popup.h"
 

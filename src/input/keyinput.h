@@ -18,10 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KEYINPUT_H
-#define KEYINPUT_H
+#ifndef INPUT_KEYINPUT_H
+#define INPUT_KEYINPUT_H
 
-#include "keydata.h"
+#include "input/keydata.h"
 
 #include <guichan/keyinput.hpp>
 
@@ -55,4 +55,4 @@ class KeyInput final : public gcn::KeyInput
 #endif
 };
 
-#endif  // KEYINPUT_H
+#endif  // INPUT_KEYINPUT_H

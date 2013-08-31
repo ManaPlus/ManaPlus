@@ -35,11 +35,12 @@
 #include "client.h"
 #include "configuration.h"
 #include "dragdrop.h"
-#include "keydata.h"
-#include "keyevent.h"
-#include "keyinput.h"
 #include "mouseinput.h"
 #include "touchmanager.h"
+
+#include "input/keydata.h"
+#include "input/keyevent.h"
+#include "input/keyinput.h"
 
 #include "resources/image.h"
 #include "resources/imageset.h"

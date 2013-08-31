@@ -27,12 +27,13 @@
 #include "emoteshortcut.h"
 #include "equipment.h"
 #include "game.h"
-#include "inputmanager.h"
 #include "inventory.h"
 #include "item.h"
-#include "keyboardconfig.h"
 #include "localplayer.h"
 #include "playerinfo.h"
+
+#include "input/inputmanager.h"
+#include "input/keyboardconfig.h"
 
 #include "gui/chatwindow.h"
 #include "gui/inventorywindow.h"

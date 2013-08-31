@@ -25,7 +25,8 @@
 #include "client.h"
 #include "configuration.h"
 #include "units.h"
-#include "keyevent.h"
+
+#include "input/keyevent.h"
 
 #include "gui/charcreatedialog.h"
 #include "gui/confirmdialog.h"

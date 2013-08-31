@@ -18,10 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KEYEVENT_H
-#define KEYEVENT_H
+#ifndef INPUT_KEYEVENT_H
+#define INPUT_KEYEVENT_H
 
-#include "keydata.h"
+#include "input/keydata.h"
 
 #include <guichan/key.hpp>
 #include <guichan/keyevent.hpp>
@@ -64,4 +64,4 @@ class KeyEvent final : public gcn::KeyEvent
 #endif
 };
 
-#endif  // KEYEVENT_H
+#endif  // INPUT_KEYEVENT_H

@@ -22,7 +22,7 @@
 
 #include "commandhandler.h"
 
-#include "inputmanager.h"
+#include "input/inputmanager.h"
 
 #include "gui/widgets/chattab.h"
 

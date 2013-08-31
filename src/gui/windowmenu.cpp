@@ -23,8 +23,9 @@
 #include "gui/windowmenu.h"
 
 #include "emoteshortcut.h"
-#include "inputmanager.h"
-#include "keyboardconfig.h"
+
+#include "input/inputmanager.h"
+#include "input/keyboardconfig.h"
 
 #include "gui/didyouknowwindow.h"
 #include "gui/helpwindow.h"

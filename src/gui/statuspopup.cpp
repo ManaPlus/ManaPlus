@@ -30,10 +30,11 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/textbox.h"
 
-#include "inputmanager.h"
 #include "localplayer.h"
 #include "units.h"
-#include "keyboardconfig.h"
+
+#include "input/inputmanager.h"
+#include "input/keyboardconfig.h"
 
 #include <guichan/font.hpp>
 

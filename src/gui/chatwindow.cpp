@@ -29,13 +29,14 @@
 #include "configuration.h"
 #include "game.h"
 #include "guild.h"
-#include "inputmanager.h"
-#include "keyevent.h"
 #include "localplayer.h"
 #include "party.h"
 #include "playerinfo.h"
 #include "spellshortcut.h"
 #include "soundmanager.h"
+
+#include "input/inputmanager.h"
+#include "input/keyevent.h"
 
 #include "gui/emotewindow.h"
 #include "gui/gui.h"

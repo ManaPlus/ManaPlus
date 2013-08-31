@@ -26,13 +26,14 @@
 #include "configuration.h"
 #include "dragdrop.h"
 #include "inventory.h"
-#include "inputmanager.h"
 #include "item.h"
 #include "itemshortcut.h"
 #include "spellshortcut.h"
-#include "keyboardconfig.h"
 #include "localplayer.h"
 #include "playerinfo.h"
+
+#include "input/inputmanager.h"
+#include "input/keyboardconfig.h"
 
 #include "gui/inventorywindow.h"
 #include "gui/itempopup.h"

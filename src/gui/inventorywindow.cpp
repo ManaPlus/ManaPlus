@@ -23,10 +23,11 @@
 #include "gui/inventorywindow.h"
 
 #include "configuration.h"
-#include "inputmanager.h"
-#include "keyevent.h"
 #include "playerinfo.h"
 #include "units.h"
+
+#include "input/inputmanager.h"
+#include "input/keyevent.h"
 
 #include "gui/equipmentwindow.h"
 #include "gui/gui.h"

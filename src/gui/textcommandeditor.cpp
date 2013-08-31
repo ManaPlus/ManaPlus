@@ -26,8 +26,9 @@
 #include "item.h"
 #include "localplayer.h"
 #include "main.h"
-#include "keyboardconfig.h"
 #include "spellmanager.h"
+
+#include "input/keyboardconfig.h"
 
 #include "gui/chatwindow.h"
 

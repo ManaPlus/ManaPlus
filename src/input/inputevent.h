@@ -18,12 +18,34 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "inputevent.h"
+#ifndef INPUT_INPUTEVENT_H
+#define INPUT_INPUTEVENT_H
 
-#include "debug.h"
+#include <map>
+#include <vector>
 
-InputEvent::InputEvent(const int action0, const int mask0) :
-    action(action0),
-    mask(mask0)
+#include "localconsts.h"
+
+typedef std::vector<int> KeysVector;
+typedef KeysVector::iterator KeysVectorIter;
+typedef KeysVector::const_iterator KeysVectorCIter;
+
+typedef std::map<int, KeysVector> KeyToActionMap;
+typedef KeyToActionMap::iterator KeyToActionMapIter;
+
+typedef std::map<int, int> KeyToIdMap;
+typedef KeyToIdMap::iterator KeyToIdMapIter;
+
+typedef std::map<int, int> KeyTimeMap;
+typedef KeyTimeMap::iterator KeyTimeMapIter;
+
+struct InputEvent final
 {
-}
+    InputEvent(const int action0, const int mask0);
+
+    int action;
+
+    int mask;
+};
+
+#endif  // INPUT_INPUTEVENT_H

@@ -24,7 +24,8 @@
 #define COMMANDS_H
 
 #include "playerrelations.h"
-#include "keydata.h"
+
+#include "input/keydata.h"
 
 #include <string>
 

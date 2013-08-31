@@ -20,14 +20,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KEYBOARDCONFIG_H
-#define KEYBOARDCONFIG_H
+#ifndef INPUT_KEYBOARDCONFIG_H
+#define INPUT_KEYBOARDCONFIG_H
 
 #include <SDL_types.h>
 #include <SDL_keyboard.h>
 
-#include "inputevent.h"
 #include "sdlshared.h"
+
+#include "input/inputevent.h"
 
 #include <map>
 #include <string>
@@ -121,4 +122,4 @@ class KeyboardConfig final
 
 extern KeyboardConfig keyboard;
 
-#endif  // KEYBOARDCONFIG_H
+#endif  // INPUT_KEYBOARDCONFIG_H

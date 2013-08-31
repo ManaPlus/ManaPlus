@@ -638,20 +638,20 @@ SET(SRCS
     spellshortcut.h
     textcommand.cpp
     textcommand.h
-    inputmanager.cpp
-    inputmanager.h
-    inputevent.cpp
-    inputevent.h
-    joystick.cpp
-    joystick.h
-    keyboardconfig.cpp
-    keyboardconfig.h
-    keyboarddata.h
-    keydata.h
-    keyevent.cpp
-    keyevent.h
-    keyinput.cpp
-    keyinput.h
+    input/inputmanager.cpp
+    input/inputmanager.h
+    input/inputevent.cpp
+    input/inputevent.h
+    input/joystick.cpp
+    input/joystick.h
+    input/keyboardconfig.cpp
+    input/keyboardconfig.h
+    input/keyboarddata.h
+    input/keydata.h
+    input/keyevent.cpp
+    input/keyevent.h
+    input/keyinput.cpp
+    input/keyinput.h
     localconsts.h
     localplayer.cpp
     localplayer.h

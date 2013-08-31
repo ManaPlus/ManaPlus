@@ -22,7 +22,7 @@
 
 #include "gui/textdialog.h"
 
-#include "keyboardconfig.h"
+#include "input/keyboardconfig.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"

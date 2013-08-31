@@ -23,7 +23,8 @@
 #include "gui/setup_joystick.h"
 
 #include "configuration.h"
-#include "joystick.h"
+
+#include "input/joystick.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"

@@ -25,12 +25,13 @@
 #include "client.h"
 #include "configuration.h"
 #include "emoteshortcut.h"
-#include "inputmanager.h"
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
-#include "keyboardconfig.h"
 #include "localplayer.h"
+
+#include "input/inputmanager.h"
+#include "input/keyboardconfig.h"
 
 #include "gui/textpopup.h"
 #include "gui/viewport.h"

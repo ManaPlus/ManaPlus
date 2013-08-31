@@ -20,10 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JOYSTICK_H
-#define JOYSTICK_H
+#ifndef INPUT_JOYSTICK_H
+#define INPUT_JOYSTICK_H
 
-#include "inputevent.h"
+#include "input/inputevent.h"
 
 #include <SDL.h>
 
@@ -172,4 +172,4 @@ class Joystick final
 
 extern Joystick *joystick;
 
-#endif  // JOYSTICK_H
+#endif  // INPUT_JOYSTICK_H

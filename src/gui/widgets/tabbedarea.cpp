@@ -22,8 +22,8 @@
 
 #include "gui/widgets/tabbedarea.h"
 
-#include "keydata.h"
-#include "keyevent.h"
+#include "input/keydata.h"
+#include "input/keyevent.h"
 
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tab.h"

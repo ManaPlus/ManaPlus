@@ -59,7 +59,7 @@
 #ifndef GUI_SDLINPUT_H
 #define GUI_SDLINPUT_H
 
-#include "keyinput.h"
+#include "input/keyinput.h"
 
 #include <SDL.h>
 

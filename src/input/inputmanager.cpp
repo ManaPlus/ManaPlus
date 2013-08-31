@@ -18,16 +18,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "inputmanager.h"
+#include "input/inputmanager.h"
 
 #include "client.h"
 #include "configuration.h"
 #include "game.h"
-#include "joystick.h"
-#include "keyboardconfig.h"
-#include "keyboarddata.h"
 #include "localplayer.h"
 #include "touchmanager.h"
+
+#include "input/joystick.h"
+#include "input/keyboardconfig.h"
+#include "input/keyboarddata.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"

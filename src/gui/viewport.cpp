@@ -27,12 +27,13 @@
 #include "configuration.h"
 #include "game.h"
 #include "itemshortcut.h"
-#include "inputmanager.h"
-#include "keyboardconfig.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 #include "sdlshared.h"
 #include "textmanager.h"
+
+#include "input/inputmanager.h"
+#include "input/keyboardconfig.h"
 
 #include "gui/beingpopup.h"
 #include "gui/chatwindow.h"

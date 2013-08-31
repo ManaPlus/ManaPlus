@@ -22,9 +22,10 @@
 
 #include "configuration.h"
 #include "graphicsvertexes.h"
-#include "inputmanager.h"
 #include "mouseinput.h"
 #include "touchactions.h"
+
+#include "input/inputmanager.h"
 
 #include "render/graphics.h"
 

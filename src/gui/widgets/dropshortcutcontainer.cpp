@@ -25,9 +25,10 @@
 #include "client.h"
 #include "dragdrop.h"
 #include "dropshortcut.h"
-#include "keyboardconfig.h"
 #include "localplayer.h"
 #include "playerinfo.h"
+
+#include "input/keyboardconfig.h"
 
 #include "gui/inventorywindow.h"
 #include "gui/itempopup.h"

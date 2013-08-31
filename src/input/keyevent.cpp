@@ -18,21 +18,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyinput.h"
+#include "input/keyevent.h"
 
 #include "debug.h"
 
-KeyInput::KeyInput() :
-    gcn::KeyInput(),
+KeyEvent::KeyEvent(gcn::Widget *const source,
+                   const bool shiftPressed,
+                   const bool controlPressed,
+                   const bool altPressed,
+                   const bool metaPressed,
+                   const unsigned int type,
+                   const bool numericPad,
+                   const int actionId,
+                   const gcn::Key& key) :
+    gcn::KeyEvent(source, shiftPressed, controlPressed, altPressed,
+                  metaPressed, type, numericPad, key),
 #ifdef USE_SDL2
-    mActionId(-2),
+    mActionId(actionId),
     mText()
 #else
-    mActionId(-2)
+    mActionId(actionId)
 #endif
 {
 }
 
-KeyInput::~KeyInput()
+KeyEvent::~KeyEvent()
 {
 }

@@ -24,7 +24,8 @@
 #include "being.h"
 #include "client.h"
 #include "graphicsmanager.h"
-#include "keydata.h"
+
+#include "input/keydata.h"
 
 #include "render/graphics.h"
 
