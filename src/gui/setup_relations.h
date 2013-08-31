@@ -23,7 +23,7 @@
 #ifndef GUI_SETUP_RELATIONS_H
 #define GUI_SETUP_RELATIONS_H
 
-#include "playerrelations.h"
+#include "being/playerrelations.h"
 
 #include "gui/widgets/setuptab.h"
 

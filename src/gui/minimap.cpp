@@ -25,8 +25,9 @@
 #include "actorspritemanager.h"
 #include "client.h"
 #include "configuration.h"
-#include "localplayer.h"
 #include "party.h"
+
+#include "being/localplayer.h"
 
 #include "gui/setup.h"
 #include "gui/viewport.h"

@@ -23,8 +23,9 @@
 #ifndef GUI_CHARSELECTDIALOG_H
 #define GUI_CHARSELECTDIALOG_H
 
-#include "being.h"
 #include "main.h"
+
+#include "being/being.h"
 
 #include "gui/widgets/window.h"
 

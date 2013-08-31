@@ -23,9 +23,10 @@
 #include "net/ea/skillhandler.h"
 
 #include "logger.h"
-#include "localplayer.h"
 #include "notifymanager.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "gui/skilldialog.h"
 

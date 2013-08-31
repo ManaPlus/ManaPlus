@@ -23,7 +23,8 @@
 #include "gui/widgets/tradetab.h"
 
 #include "chatlogger.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "net/net.h"
 

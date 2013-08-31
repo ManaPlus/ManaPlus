@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEINGCACHEENTRY_H
-#define BEINGCACHEENTRY_H
+#ifndef BEING_BEINGCACHEENTRY_H
+#define BEING_BEINGCACHEENTRY_H
 
 #include "localconsts.h"
 
@@ -125,4 +125,4 @@ class BeingCacheEntry final
         bool mIsAdvanced;
 };
 
-#endif  // BEINGCACHEENTRY_H
+#endif  // BEING_BEINGCACHEENTRY_H

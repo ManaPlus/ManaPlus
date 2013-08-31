@@ -24,7 +24,8 @@
 
 #include "client.h"
 #include "game.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/network.h"

@@ -23,8 +23,9 @@
 #include "gui/inventorywindow.h"
 
 #include "configuration.h"
-#include "playerinfo.h"
 #include "units.h"
+
+#include "being/playerinfo.h"
 
 #include "input/inputmanager.h"
 #include "input/keyevent.h"

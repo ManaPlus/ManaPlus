@@ -23,7 +23,7 @@
 #ifndef NET_TRADEHANDLER_H
 #define NET_TRADEHANDLER_H
 
-#include "being.h"
+#include "being/being.h"
 
 #include <iosfwd>
 

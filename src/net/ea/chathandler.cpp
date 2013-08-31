@@ -25,9 +25,10 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "guildmanager.h"
-#include "localplayer.h"
 #include "notifymanager.h"
-#include "playerrelations.h"
+
+#include "being/localplayer.h"
+#include "being/playerrelations.h"
 
 #include "gui/chatwindow.h"
 #include "gui/shopwindow.h"

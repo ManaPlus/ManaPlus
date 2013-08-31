@@ -22,11 +22,12 @@
 
 #include "gui/equipmentwindow.h"
 
-#include "being.h"
 #include "graphicsvertexes.h"
 #include "inventory.h"
 #include "item.h"
-#include "localplayer.h"
+
+#include "being/being.h"
+#include "being/localplayer.h"
 
 #include "gui/itempopup.h"
 #include "gui/setup.h"

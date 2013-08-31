@@ -25,7 +25,7 @@
 
 #include "net/buysellhandler.h"
 
-#include "being.h"
+#include "being/being.h"
 
 #include "net/net.h"
 

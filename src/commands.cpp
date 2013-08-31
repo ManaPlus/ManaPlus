@@ -28,9 +28,10 @@
 #include "configuration.h"
 #include "game.h"
 #include "guildmanager.h"
-#include "localplayer.h"
 #include "main.h"
 #include "party.h"
+
+#include "being/localplayer.h"
 
 #include "gui/buydialog.h"
 #include "gui/chatwindow.h"

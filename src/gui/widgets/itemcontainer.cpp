@@ -27,7 +27,8 @@
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
-#include "playerinfo.h"
+
+#include "being/playerinfo.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"

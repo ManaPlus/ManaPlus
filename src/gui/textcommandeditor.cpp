@@ -24,9 +24,10 @@
 
 #include "configuration.h"
 #include "item.h"
-#include "localplayer.h"
 #include "main.h"
 #include "spellmanager.h"
+
+#include "being/localplayer.h"
 
 #include "input/keyboardconfig.h"
 

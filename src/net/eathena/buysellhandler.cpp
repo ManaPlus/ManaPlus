@@ -25,9 +25,10 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "inventory.h"
-#include "localplayer.h"
 #include "notifymanager.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "gui/buydialog.h"
 #include "gui/buyselldialog.h"

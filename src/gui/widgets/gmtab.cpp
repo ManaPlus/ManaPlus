@@ -22,7 +22,8 @@
 
 #include "chatlogger.h"
 #include "commands.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "net/chathandler.h"
 #include "net/net.h"

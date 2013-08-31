@@ -23,7 +23,7 @@
 #ifndef RESOURCES_ITEMINFO_H
 #define RESOURCES_ITEMINFO_H
 
-#include "being.h"
+#include "being/being.h"
 
 #include "resources/colordb.h"
 

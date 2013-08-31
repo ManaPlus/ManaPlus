@@ -24,12 +24,13 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "localplayer.h"
 #include "maplayer.h"
 #include "notifymanager.h"
 #include "simpleanimation.h"
 #include "tileset.h"
 #include "walklayer.h"
+
+#include "being/localplayer.h"
 
 #include "particle/particle.h"
 

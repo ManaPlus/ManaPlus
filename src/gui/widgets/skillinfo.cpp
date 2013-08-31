@@ -22,7 +22,7 @@
 
 #include "gui/widgets/skillinfo.h"
 
-#include "playerinfo.h"
+#include "being/playerinfo.h"
 
 #include "gui/widgets/skillmodel.h"
 

@@ -23,7 +23,7 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-#include "being.h"
+#include "being/being.h"
 
 #include <list>
 #include <string>

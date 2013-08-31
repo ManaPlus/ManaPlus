@@ -27,9 +27,10 @@
 #include "client.h"
 #include "commandhandler.h"
 #include "configuration.h"
-#include "localplayer.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
+
+#include "being/localplayer.h"
 
 #include "gui/helpwindow.h"
 

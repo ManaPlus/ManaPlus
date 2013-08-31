@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_H
-#define BEING_H
+#ifndef BEING_BEING_H
+#define BEING_BEING_H
 
 #include "equipment.h"
 
@@ -1060,4 +1060,4 @@ class Being : public ActorSprite, public ConfigListener
 
 extern std::list<BeingCacheEntry*> beingInfoCache;
 
-#endif  // BEING_H
+#endif  // BEING_BEING_H

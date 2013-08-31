@@ -36,9 +36,10 @@
 #include "actorspritemanager.h"
 #include "client.h"
 #include "configuration.h"
-#include "localplayer.h"
-#include "playerrelations.h"
 #include "main.h"
+
+#include "being/localplayer.h"
+#include "being/playerrelations.h"
 
 #include "net/download.h"
 #include "net/net.h"

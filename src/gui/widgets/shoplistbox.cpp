@@ -24,8 +24,9 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "playerinfo.h"
 #include "shopitem.h"
+
+#include "being/playerinfo.h"
 
 #include "gui/itempopup.h"
 #include "gui/viewport.h"

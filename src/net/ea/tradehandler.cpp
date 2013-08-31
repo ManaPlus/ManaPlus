@@ -26,8 +26,9 @@
 #include "item.h"
 #include "logger.h"
 #include "notifymanager.h"
-#include "playerinfo.h"
-#include "playerrelations.h"
+
+#include "being/playerinfo.h"
+#include "being/playerrelations.h"
 
 #include "gui/confirmdialog.h"
 #include "gui/tradewindow.h"

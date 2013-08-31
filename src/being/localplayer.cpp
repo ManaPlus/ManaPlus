@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "localplayer.h"
+#include "being/localplayer.h"
 
 #include "actorspritemanager.h"
 #include "client.h"
@@ -31,13 +31,14 @@
 #include "item.h"
 #include "maplayer.h"
 #include "party.h"
-#include "playerinfo.h"
-#include "playerrelations.h"
 #include "simpleanimation.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
 #include "walklayer.h"
+
+#include "being/playerinfo.h"
+#include "being/playerrelations.h"
 
 #include "particle/particle.h"
 

@@ -20,20 +20,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "being.h"
+#include "being/being.h"
 
 #include "actorspritemanager.h"
 #include "animatedsprite.h"
-#include "beingcacheentry.h"
 #include "beingequipbackend.h"
 #include "client.h"
 #include "effectmanager.h"
 #include "guild.h"
 #include "party.h"
-#include "playerrelations.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 #include "text.h"
+
+#include "being/beingcacheentry.h"
+#include "being/playerrelations.h"
 
 #include "particle/particle.h"
 

@@ -20,7 +20,7 @@
 
 #include "net/tmwa/questhandler.h"
 
-#include "localplayer.h"
+#include "being/localplayer.h"
 
 #include "gui/skilldialog.h"
 #include "gui/questswindow.h"

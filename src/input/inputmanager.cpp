@@ -23,8 +23,9 @@
 #include "client.h"
 #include "configuration.h"
 #include "game.h"
-#include "localplayer.h"
 #include "touchmanager.h"
+
+#include "being/localplayer.h"
 
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"

@@ -23,7 +23,7 @@
 #ifndef FLOORITEM_H
 #define FLOORITEM_H
 
-#include "actorsprite.h"
+#include "being/actorsprite.h"
 
 #include "resources/cursor.h"
 

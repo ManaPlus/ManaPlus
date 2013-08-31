@@ -22,8 +22,9 @@
 #include "net/tmwa/guildhandler.h"
 
 #include "actorspritemanager.h"
-#include "localplayer.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "net/tmwa/messagein.h"
 #include "net/tmwa/protocol.h"

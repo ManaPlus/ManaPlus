@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "being.h"
+#include "being/being.h"
 
 #ifndef NET_EA_TOKEN_H
 #define NET_EA_TOKEN_H

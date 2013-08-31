@@ -29,7 +29,7 @@
 #include "render/graphics.h"
 #endif
 
-#include "localplayer.h"
+#include "being/localplayer.h"
 
 #include "resources/resourcemanager.h"
 

@@ -24,8 +24,9 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "guild.h"
-#include "localplayer.h"
 #include "maplayer.h"
+
+#include "being/localplayer.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"

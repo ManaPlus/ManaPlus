@@ -24,10 +24,11 @@
 #include "actorspritemanager.h"
 #include "guild.h"
 #include "guildmanager.h"
-#include "localplayer.h"
 #include "maplayer.h"
 #include "party.h"
-#include "playerrelations.h"
+
+#include "being/localplayer.h"
+#include "being/playerrelations.h"
 
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"

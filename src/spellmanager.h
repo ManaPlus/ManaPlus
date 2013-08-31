@@ -25,9 +25,10 @@
 
 #include <string>
 #include <vector>
+
 #include "textcommand.h"
 
-#include "being.h"
+#include "being/being.h"
 
 const int SPELL_MIN_ID = 100000;
 const unsigned int SPELL_SHORTCUT_ITEMS = 49;

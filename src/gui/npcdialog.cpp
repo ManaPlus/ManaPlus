@@ -23,13 +23,14 @@
 #include "gui/npcdialog.h"
 
 #include "actorspritemanager.h"
-#include "being.h"
 #include "configuration.h"
 #include "client.h"
 #include "inventory.h"
 #include "item.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
+
+#include "being/being.h"
 
 #include "gui/gui.h"
 #include "gui/inventorywindow.h"

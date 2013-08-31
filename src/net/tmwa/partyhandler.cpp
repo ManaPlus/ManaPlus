@@ -22,8 +22,9 @@
 #include "net/tmwa/partyhandler.h"
 
 #include "actorspritemanager.h"
-#include "localplayer.h"
 #include "notifymanager.h"
+
+#include "being/localplayer.h"
 
 #include "net/tmwa/protocol.h"
 

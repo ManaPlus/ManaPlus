@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef COMPOUNDSPRITE_H
-#define COMPOUNDSPRITE_H
+#ifndef BEING_COMPOUNDSPRITE_H
+#define BEING_COMPOUNDSPRITE_H
 
 #include "sprite.h"
 
@@ -158,4 +158,4 @@ private:
     bool mDisableBeingCaching;
 };
 
-#endif  // COMPOUNDSPRITE_H
+#endif  // BEING_COMPOUNDSPRITE_H

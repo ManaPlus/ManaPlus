@@ -29,8 +29,9 @@
 #include "item.h"
 #include "itemshortcut.h"
 #include "spellshortcut.h"
-#include "localplayer.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"

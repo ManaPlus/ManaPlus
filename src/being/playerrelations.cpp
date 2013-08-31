@@ -20,11 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "playerrelations.h"
+#include "being/playerrelations.h"
 
 #include "actorspritemanager.h"
 #include "configuration.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "render/graphics.h"
 

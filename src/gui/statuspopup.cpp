@@ -30,8 +30,9 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/textbox.h"
 
-#include "localplayer.h"
 #include "units.h"
+
+#include "being/localplayer.h"
 
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"

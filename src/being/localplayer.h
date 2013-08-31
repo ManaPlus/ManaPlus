@@ -20,13 +20,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LOCALPLAYER_H
-#define LOCALPLAYER_H
+#ifndef BEING_LOCALPLAYER_H
+#define BEING_LOCALPLAYER_H
 
-#include "actorspritelistener.h"
-#include "being.h"
 #include "depricatedlistener.h"
-#include "localconsts.h"
+
+#include "being/actorspritelistener.h"
+#include "being/being.h"
 
 #include "gui/userpalette.h"
 
@@ -34,6 +34,8 @@
 
 #include <memory>
 #include <vector>
+
+#include "localconsts.h"
 
 class ChatTab;
 class FloorItem;
@@ -647,4 +649,4 @@ class LocalPlayer final : public Being,
 
 extern LocalPlayer *player_node;
 
-#endif  // LOCALPLAYER_H
+#endif  // BEING_LOCALPLAYER_H

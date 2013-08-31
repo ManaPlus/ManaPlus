@@ -25,8 +25,9 @@
 #include "client.h"
 #include "dragdrop.h"
 #include "dropshortcut.h"
-#include "localplayer.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "input/keyboardconfig.h"
 

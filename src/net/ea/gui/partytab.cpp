@@ -24,10 +24,11 @@
 
 #include "chatlogger.h"
 #include "commandhandler.h"
-#include "localplayer.h"
 #include "party.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
+
+#include "being/localplayer.h"
 
 #include "net/net.h"
 #include "net/partyhandler.h"

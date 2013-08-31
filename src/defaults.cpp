@@ -21,9 +21,10 @@
 
 #include "defaults.h"
 
-#include "being.h"
 #include "client.h"
 #include "graphicsmanager.h"
+
+#include "being/being.h"
 
 #include "input/keydata.h"
 

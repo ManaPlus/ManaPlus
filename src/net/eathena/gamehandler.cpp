@@ -24,7 +24,8 @@
 
 #include "client.h"
 #include "game.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/network.h"

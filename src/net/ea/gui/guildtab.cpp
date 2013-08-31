@@ -25,9 +25,10 @@
 #include "chatlogger.h"
 #include "configuration.h"
 #include "guild.h"
-#include "localplayer.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
+
+#include "being/localplayer.h"
 
 #include "net/net.h"
 

@@ -23,10 +23,11 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include "actor.h"
 #include "configlistener.h"
 #include "position.h"
 #include "properties.h"
+
+#include "being/actor.h"
 
 #include <string>
 #include <vector>

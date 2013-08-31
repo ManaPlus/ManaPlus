@@ -19,17 +19,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "actorsprite.h"
+#include "being/actorsprite.h"
 
-#include "actorspritelistener.h"
 #include "client.h"
 #include "configuration.h"
 #include "effectmanager.h"
 #include "imagesprite.h"
-#include "localplayer.h"
 #include "simpleanimation.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
+
+#include "being/actorspritelistener.h"
+#include "being/localplayer.h"
 
 #include "gui/theme.h"
 

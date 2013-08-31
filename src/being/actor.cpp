@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "actor.h"
+#include "being/actor.h"
 
 #include "map.h"
 

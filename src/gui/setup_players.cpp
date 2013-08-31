@@ -35,7 +35,8 @@
 #include "gui/widgets/setupitem.h"
 
 #include "configuration.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "utils/gettext.h"
 

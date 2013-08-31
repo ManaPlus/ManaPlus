@@ -28,7 +28,8 @@
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"

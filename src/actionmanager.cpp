@@ -25,10 +25,11 @@
 #include "emoteshortcut.h"
 #include "game.h"
 #include "itemshortcut.h"
-#include "localplayer.h"
-#include "playerinfo.h"
-#include "playerrelations.h"
 #include "soundmanager.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
+#include "being/playerrelations.h"
 
 #include "input/inputevent.h"
 #include "input/inputmanager.h"

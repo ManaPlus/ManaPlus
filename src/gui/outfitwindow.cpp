@@ -29,8 +29,9 @@
 #include "game.h"
 #include "inventory.h"
 #include "item.h"
-#include "localplayer.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"

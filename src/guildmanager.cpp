@@ -24,8 +24,9 @@
 #include "client.h"
 #include "configuration.h"
 #include "guild.h"
-#include "localplayer.h"
 #include "notifymanager.h"
+
+#include "being/localplayer.h"
 
 #include "gui/socialwindow.h"
 

@@ -23,8 +23,9 @@
 #include "spellmanager.h"
 
 #include "configuration.h"
-#include "localplayer.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "gui/chatwindow.h"
 

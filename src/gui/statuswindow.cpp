@@ -27,9 +27,10 @@
 #include "equipment.h"
 #include "inventory.h"
 #include "item.h"
-#include "localplayer.h"
-#include "playerinfo.h"
 #include "units.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "gui/equipmentwindow.h"
 #include "gui/setup.h"

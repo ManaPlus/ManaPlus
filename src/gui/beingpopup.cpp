@@ -21,9 +21,10 @@
 
 #include "gui/beingpopup.h"
 
-#include "being.h"
-#include "playerrelations.h"
 #include "units.h"
+
+#include "being/being.h"
+#include "being/playerrelations.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"

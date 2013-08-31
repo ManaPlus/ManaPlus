@@ -24,8 +24,9 @@
 
 #include "client.h"
 #include "game.h"
-#include "localplayer.h"
 #include "main.h"
+
+#include "being/localplayer.h"
 
 #include "particle/particle.h"
 

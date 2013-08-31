@@ -22,7 +22,8 @@
 #ifndef NET_BEINGHANDLER_H
 #define NET_BEINGHANDLER_H
 
-#include "being.h"
+#include "being/being.h"
+
 #include "net/messagein.h"
 
 namespace Net

@@ -29,11 +29,12 @@
 #include "configuration.h"
 #include "game.h"
 #include "guild.h"
-#include "localplayer.h"
 #include "party.h"
-#include "playerinfo.h"
 #include "spellshortcut.h"
 #include "soundmanager.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "input/inputmanager.h"
 #include "input/keyevent.h"

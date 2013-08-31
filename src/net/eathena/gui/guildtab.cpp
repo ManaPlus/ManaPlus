@@ -24,7 +24,8 @@
 
 #include "chatlogger.h"
 #include "guild.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "net/net.h"
 #include "net/guildhandler.h"

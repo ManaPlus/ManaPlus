@@ -30,12 +30,13 @@
 #include "guildmanager.h"
 #include "item.h"
 #include "itemshortcut.h"
-#include "localplayer.h"
 #include "maplayer.h"
 #include "party.h"
-#include "playerinfo.h"
-#include "playerrelations.h"
 #include "spellmanager.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
+#include "being/playerrelations.h"
 
 #include "input/inputmanager.h"
 

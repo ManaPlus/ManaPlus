@@ -33,11 +33,12 @@
 #include "emoteshortcut.h"
 #include "guildmanager.h"
 #include "itemshortcut.h"
-#include "localplayer.h"
-#include "playerinfo.h"
 #include "soundmanager.h"
 #include "spellshortcut.h"
 #include "touchmanager.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "particle/particle.h"
 

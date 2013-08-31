@@ -45,13 +45,14 @@
 #include "confirmdialog.h"
 #include "inventory.h"
 #include "item.h"
-#include "localplayer.h"
-#include "playerinfo.h"
-#include "playerrelations.h"
 #include "shopitem.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 #include "units.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
+#include "being/playerrelations.h"
 
 #include "net/net.h"
 #include "net/chathandler.h"

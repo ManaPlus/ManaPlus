@@ -23,7 +23,7 @@
 #ifndef GUI_SETUP_VIDEO_H
 #define GUI_SETUP_VIDEO_H
 
-#include "being.h"
+#include "being/being.h"
 
 #include "gui/widgets/setuptab.h"
 

@@ -23,7 +23,8 @@
 #ifndef PARTICLE_PARTICLE_H
 #define PARTICLE_PARTICLE_H
 
-#include "actor.h"
+#include "being/actor.h"
+
 #include "localconsts.h"
 
 #include <list>

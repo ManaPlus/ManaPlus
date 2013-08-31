@@ -25,7 +25,8 @@
 #include "actorspritemanager.h"
 #include "game.h"
 #include "notifymanager.h"
-#include "playerrelations.h"
+
+#include "being/playerrelations.h"
 
 #include "net/chathandler.h"
 

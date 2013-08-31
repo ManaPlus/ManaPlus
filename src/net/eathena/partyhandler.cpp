@@ -22,8 +22,9 @@
 #include "net/eathena/partyhandler.h"
 
 #include "actorspritemanager.h"
-#include "localplayer.h"
 #include "notifymanager.h"
+
+#include "being/localplayer.h"
 
 #include "net/eathena/protocol.h"
 

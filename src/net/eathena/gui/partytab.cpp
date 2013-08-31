@@ -23,8 +23,9 @@
 #include "net/eathena/gui/partytab.h"
 
 #include "chatlogger.h"
-#include "localplayer.h"
 #include "party.h"
+
+#include "being/localplayer.h"
 
 #include "net/net.h"
 #include "net/partyhandler.h"

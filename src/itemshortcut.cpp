@@ -26,8 +26,9 @@
 #include "inventory.h"
 #include "item.h"
 #include "logger.h"
-#include "playerinfo.h"
 #include "spellmanager.h"
+
+#include "being/playerinfo.h"
 
 #include "gui/skilldialog.h"
 

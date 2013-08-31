@@ -23,7 +23,8 @@
 #include "net/tmwa/tradehandler.h"
 
 #include "item.h"
-#include "playerinfo.h"
+
+#include "being/playerinfo.h"
 
 #include "net/tmwa/protocol.h"
 

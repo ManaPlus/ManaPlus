@@ -23,7 +23,7 @@
 #ifndef GUI_CHARCREATEDIALOG_H
 #define GUI_CHARCREATEDIALOG_H
 
-#include "being.h"
+#include "being/being.h"
 
 #include "gui/charselectdialog.h"
 

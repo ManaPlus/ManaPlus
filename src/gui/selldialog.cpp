@@ -22,9 +22,10 @@
 
 #include "gui/selldialog.h"
 
-#include "playerinfo.h"
 #include "shopitem.h"
 #include "units.h"
+
+#include "being/playerinfo.h"
 
 #include "gui/confirmdialog.h"
 #include "gui/setup.h"

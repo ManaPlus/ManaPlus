@@ -23,7 +23,7 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
-#include "playerrelations.h"
+#include "being/playerrelations.h"
 
 #include "input/keydata.h"
 

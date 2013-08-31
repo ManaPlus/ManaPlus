@@ -22,7 +22,7 @@
 
 #include "net/tmwa/npchandler.h"
 
-#include "localplayer.h"
+#include "being/localplayer.h"
 
 #include "gui/npcdialog.h"
 #include "gui/viewport.h"

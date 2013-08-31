@@ -25,7 +25,8 @@
 #include "configuration.h"
 #include "inventory.h"
 #include "item.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "gui/widgets/chattab.h"
 

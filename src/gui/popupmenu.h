@@ -26,7 +26,7 @@
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
 
-#include "actorsprite.h"
+#include "being/actorsprite.h"
 
 #include <guichan/actionlistener.hpp>
 #include <guichan/listmodel.hpp>

@@ -25,8 +25,9 @@
 #include "client.h"
 #include "dragdrop.h"
 #include "itemshortcut.h"
-#include "localplayer.h"
 #include "spellshortcut.h"
+
+#include "being/localplayer.h"
 
 #include "input/keyboardconfig.h"
 

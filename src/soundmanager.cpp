@@ -23,7 +23,8 @@
 #include "soundmanager.h"
 
 #include "configuration.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "resources/sdlmusic.h"
 #include "resources/resourcemanager.h"

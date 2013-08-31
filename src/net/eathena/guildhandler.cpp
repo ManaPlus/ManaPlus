@@ -22,8 +22,9 @@
 #include "net/eathena/guildhandler.h"
 
 #include "actorspritemanager.h"
-#include "localplayer.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "net/eathena/messagein.h"
 #include "net/eathena/protocol.h"

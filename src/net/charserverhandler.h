@@ -23,8 +23,8 @@
 #ifndef NET_CHARSERVERHANDLER_H
 #define NET_CHARSERVERHANDLER_H
 
-#include "localplayer.h"
-#include "playerinfo.h"
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include <iosfwd>
 #include <string>

@@ -24,8 +24,9 @@
 
 #include "chatlogger.h"
 #include "configuration.h"
-#include "localplayer.h"
 #include "main.h"
+
+#include "being/localplayer.h"
 
 #include "net/net.h"
 

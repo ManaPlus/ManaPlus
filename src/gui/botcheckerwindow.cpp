@@ -39,7 +39,8 @@
 
 #include "actorspritemanager.h"
 #include "configuration.h"
-#include "localplayer.h"
+
+#include "being/localplayer.h"
 
 #include "utils/gettext.h"
 

@@ -26,14 +26,15 @@
 
 #include "actorspritemanager.h"
 #include "client.h"
+#include "configuration.h"
 #include "effectmanager.h"
 #include "game.h"
 #include "guild.h"
 #include "guildmanager.h"
-#include "localplayer.h"
 #include "party.h"
-#include "playerrelations.h"
-#include "configuration.h"
+
+#include "being/localplayer.h"
+#include "being/playerrelations.h"
 
 #include "particle/particle.h"
 

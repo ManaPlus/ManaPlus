@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PLAYERINFO_H
-#define PLAYERINFO_H
+#ifndef BEING_PLAYERINFO_H
+#define BEING_PLAYERINFO_H
 
 #include "equipment.h"
 
@@ -264,4 +264,4 @@ namespace PlayerInfo
 
 }  // namespace PlayerInfo
 
-#endif  // PLAYERINFO_H
+#endif  // BEING_PLAYERINFO_H

@@ -19,13 +19,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ACTORSPRITE_H
-#define ACTORSPRITE_H
+#ifndef BEING_ACTORSPRITE_H
+#define BEING_ACTORSPRITE_H
 
-#include "actor.h"
-#include "compoundsprite.h"
 #include "localconsts.h"
 #include "map.h"
+
+#include "being/actor.h"
+#include "being/compoundsprite.h"
 
 #include "particle/particlecontainer.h"
 
@@ -243,4 +244,4 @@ private:
     bool mMustResetParticles;
 };
 
-#endif  // ACTORSPRITE_H
+#endif  // BEING_ACTORSPRITE_H

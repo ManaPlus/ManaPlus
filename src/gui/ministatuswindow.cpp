@@ -23,8 +23,9 @@
 #include "gui/ministatuswindow.h"
 
 #include "animatedsprite.h"
-#include "localplayer.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"

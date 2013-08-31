@@ -20,7 +20,7 @@
 
 #include "beingequipbackend.h"
 
-#include "being.h"
+#include "being/being.h"
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"

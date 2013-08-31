@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ACTOR_H
-#define ACTOR_H
+#ifndef BEING_ACTOR_H
+#define BEING_ACTOR_H
 
 #include "vector.h"
 
@@ -139,4 +139,4 @@ private:
     Actors::iterator mMapActor;
 };
 
-#endif  // ACTOR_H
+#endif  // BEING_ACTOR_H

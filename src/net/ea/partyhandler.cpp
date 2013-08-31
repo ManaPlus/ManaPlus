@@ -23,8 +23,9 @@
 
 #include "actorspritemanager.h"
 #include "configuration.h"
-#include "localplayer.h"
 #include "notifymanager.h"
+
+#include "being/localplayer.h"
 
 #include "gui/socialwindow.h"
 

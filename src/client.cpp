@@ -37,12 +37,13 @@
 #include "graphicsvertexes.h"
 #include "itemshortcut.h"
 #include "party.h"
-#include "playerrelations.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
 #include "units.h"
 #include "touchmanager.h"
+
+#include "being/playerrelations.h"
 
 #include "input/inputmanager.h"
 #include "input/joystick.h"

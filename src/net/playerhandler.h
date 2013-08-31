@@ -23,9 +23,10 @@
 #ifndef NET_PLAYERHANDLER_H
 #define NET_PLAYERHANDLER_H
 
-#include "being.h"
 #include "flooritem.h"
-#include "playerinfo.h"
+
+#include "being/being.h"
+#include "being/playerinfo.h"
 
 namespace Net
 {

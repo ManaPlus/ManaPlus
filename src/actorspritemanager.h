@@ -23,8 +23,9 @@
 #ifndef ACTORSPRITEMANAGER_H
 #define ACTORSPRITEMANAGER_H
 
-#include "being.h"
 #include "flooritem.h"
+
+#include "being/being.h"
 
 #include "localconsts.h"
 

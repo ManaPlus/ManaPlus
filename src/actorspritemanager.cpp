@@ -24,10 +24,11 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "localplayer.h"
 #include "main.h"
-#include "playerinfo.h"
-#include "playerrelations.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
+#include "being/playerrelations.h"
 
 #include "gui/chatwindow.h"
 #include "gui/equipmentwindow.h"

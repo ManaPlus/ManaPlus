@@ -29,8 +29,9 @@
 
 #include "actorspritemanager.h"
 #include "game.h"
-#include "localplayer.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "utils/gettext.h"
 

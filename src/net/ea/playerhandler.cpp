@@ -23,10 +23,11 @@
 #include "net/ea/playerhandler.h"
 
 #include "game.h"
-#include "localplayer.h"
 #include "party.h"
 #include "notifymanager.h"
 #include "units.h"
+
+#include "being/localplayer.h"
 
 #include "gui/ministatuswindow.h"
 #include "gui/okdialog.h"

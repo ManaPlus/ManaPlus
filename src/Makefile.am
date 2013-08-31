@@ -569,11 +569,11 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      test/testmain.h \
 	      actionmanager.cpp \
 	      actionmanager.h \
-	      actor.cpp \
-	      actor.h \
-	      actorsprite.cpp \
-	      actorsprite.h \
-	      actorspritelistener.h \
+	      being/actor.cpp \
+	      being/actor.h \
+	      being/actorsprite.cpp \
+	      being/actorsprite.h \
+	      being/actorspritelistener.h \
 	      actorspritemanager.cpp \
 	      actorspritemanager.h \
 	      animatedsprite.cpp \
@@ -586,9 +586,9 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      auctionmanager.h \
 	      avatar.cpp \
 	      avatar.h \
-	      being.cpp \
-	      being.h \
-	      beingcacheentry.h \
+	      being/being.cpp \
+	      being/being.h \
+	      being/beingcacheentry.h \
 	      beingequipbackend.cpp \
 	      beingequipbackend.h \
 	      spellmanager.cpp \
@@ -601,8 +601,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      commandhandler.h \
 	      commands.cpp \
 	      commands.h \
-	      compoundsprite.cpp \
-	      compoundsprite.h \
+	      being/compoundsprite.cpp \
+	      being/compoundsprite.h \
 	      configlistener.h \
 	      configuration.cpp \
 	      configuration.h \
@@ -664,8 +664,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      input/keyinput.cpp \
 	      input/keyinput.h \
 	      localconsts.h \
-	      localplayer.cpp \
-	      localplayer.h \
+	      being/localplayer.cpp \
+	      being/localplayer.h \
 	      logger.cpp \
 	      logger.h \
 	      main.cpp \
@@ -698,10 +698,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      particle/particleemitterprop.h \
 	      party.cpp \
 	      party.h \
-	      playerinfo.cpp \
-	      playerinfo.h \
-	      playerrelations.cpp \
-	      playerrelations.h \
+	      being/playerinfo.cpp \
+	      being/playerinfo.h \
+	      being/playerrelations.cpp \
+	      being/playerrelations.h \
 	      position.cpp \
 	      position.h \
 	      properties.h \

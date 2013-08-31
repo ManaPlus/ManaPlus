@@ -23,7 +23,8 @@
 #include "net/eathena/tradehandler.h"
 
 #include "item.h"
-#include "playerinfo.h"
+
+#include "being/playerinfo.h"
 
 #include "net/eathena/protocol.h"
 

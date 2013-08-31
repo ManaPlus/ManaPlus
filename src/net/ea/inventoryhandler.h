@@ -26,7 +26,8 @@
 #include "equipment.h"
 #include "inventory.h"
 #include "localconsts.h"
-#include "playerinfo.h"
+
+#include "being/playerinfo.h"
 
 #include "gui/inventorywindow.h"
 

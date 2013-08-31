@@ -25,8 +25,9 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "game.h"
-#include "localplayer.h"
-#include "playerrelations.h"
+
+#include "being/localplayer.h"
+#include "being/playerrelations.h"
 
 #include "gui/chatwindow.h"
 #include "gui/shopwindow.h"

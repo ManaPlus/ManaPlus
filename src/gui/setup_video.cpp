@@ -28,7 +28,7 @@
 
 #include "graphicsmanager.h"
 
-#include "localplayer.h"
+#include "being/localplayer.h"
 
 #include "gui/gui.h"
 #include "gui/okdialog.h"

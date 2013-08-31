@@ -22,10 +22,11 @@
 
 #include "effectmanager.h"
 
-#include "being.h"
 #include "configuration.h"
 #include "logger.h"
 #include "soundmanager.h"
+
+#include "being/being.h"
 
 #include "particle/particle.h"
 

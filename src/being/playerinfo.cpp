@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "playerinfo.h"
+#include "being/playerinfo.h"
 
 #include "client.h"
 #include "configuration.h"

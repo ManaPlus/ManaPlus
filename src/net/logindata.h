@@ -23,7 +23,7 @@
 #ifndef NET_LOGINDATA_H
 #define NET_LOGINDATA_H
 
-#include "being.h"
+#include "being/being.h"
 
 #include <string>
 

@@ -23,7 +23,7 @@
 #ifndef RESOURCES_BEINGINFO_H
 #define RESOURCES_BEINGINFO_H
 
-#include "actorsprite.h"
+#include "being/actorsprite.h"
 
 #include "resources/colordb.h"
 #include "resources/cursor.h"

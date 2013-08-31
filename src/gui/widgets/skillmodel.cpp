@@ -25,8 +25,9 @@
 #include "configuration.h"
 #include "effectmanager.h"
 #include "itemshortcut.h"
-#include "localplayer.h"
-#include "playerinfo.h"
+
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "gui/setup.h"
 #include "gui/shortcutwindow.h"

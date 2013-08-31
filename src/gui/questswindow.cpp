@@ -23,8 +23,9 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "effectmanager.h"
-#include "localplayer.h"
 #include "soundmanager.h"
+
+#include "being/localplayer.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"

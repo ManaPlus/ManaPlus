@@ -22,8 +22,9 @@
 
 #include "net/ea/inventoryhandler.h"
 
-#include "localplayer.h"
 #include "notifymanager.h"
+
+#include "being/localplayer.h"
 
 #include "gui/ministatuswindow.h"
 
