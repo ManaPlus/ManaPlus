@@ -288,7 +288,7 @@ void Viewport::_followMouse()
         // We create a mouse event and send it to mouseDragged.
         const uint8_t *const keys = SDL_GetKeyState(nullptr);
         gcn::MouseEvent mouseEvent(nullptr,
-            (keys[SDLK_LSHIFT] || keys[SDLK_RSHIFT]),
+            0,
             false,
             false,
             false,
@@ -560,7 +560,9 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
     if (!mMap || !player_node)
         return;
 
-    if (mPlayerFollowMouse && !event.isShiftPressed())
+    if (mPlayerFollowMouse && !inputManager.isActionActive(
+        Input::KEY_STOP_ATTACK) && !inputManager.isActionActive(
+        Input::KEY_UNTARGET))
     {
 #ifdef MANASERV_SUPPORT
         if (Net::getNetworkType() == ServerInfo::MANASERV)
