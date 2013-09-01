@@ -30,6 +30,7 @@ enum RenderType
     RENDER_SAFE_OPENGL = 2,
     RENDER_GLES_OPENGL = 3,
     RENDER_SDL2_DEFAULT = 4,
+    RENDER_NULL = 5,
     RENDER_LAST
 };
 

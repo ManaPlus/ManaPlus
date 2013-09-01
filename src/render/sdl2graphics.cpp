@@ -74,6 +74,8 @@ SDLGraphics::SDLGraphics() :
     mOldPixel(0),
     mOldAlpha(0)
 {
+    mOpenGL = RENDER_SDL2_DEFAULT;
+    mName = "SDL2 default";
 }
 
 SDLGraphics::~SDLGraphics()

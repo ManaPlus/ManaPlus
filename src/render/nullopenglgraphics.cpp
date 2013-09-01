@@ -61,7 +61,7 @@ NullOpenGLGraphics::NullOpenGLGraphics():
 #endif
     mFbo()
 {
-    mOpenGL = 100;
+    mOpenGL = RENDER_NULL;
     mName = "null OpenGL";
 }
 

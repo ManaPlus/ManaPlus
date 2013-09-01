@@ -50,6 +50,8 @@ SDLGraphics::SDLGraphics() :
     mOldPixel(0),
     mOldAlpha(0)
 {
+    mOpenGL = RENDER_SOFTWARE;
+    mName = "Software";
 }
 
 SDLGraphics::~SDLGraphics()

@@ -64,7 +64,7 @@ MobileOpenGLGraphics::MobileOpenGLGraphics():
 #endif
     mFbo()
 {
-    mOpenGL = 3;
+    mOpenGL = RENDER_GLES_OPENGL;
     mName = "mobile OpenGL";
 }
 

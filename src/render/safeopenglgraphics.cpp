@@ -49,7 +49,7 @@ SafeOpenGLGraphics::SafeOpenGLGraphics():
     mColorAlpha(false),
     mFbo()
 {
-    mOpenGL = 2;
+    mOpenGL = RENDER_SAFE_OPENGL;
     mName = "safe OpenGL";
 }
 

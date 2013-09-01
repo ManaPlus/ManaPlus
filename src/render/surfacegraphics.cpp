@@ -41,6 +41,8 @@ SurfaceGraphics::SurfaceGraphics() :
     mBlitMode(BLIT_NORMAL),
     mTarget(nullptr)
 {
+    mOpenGL = RENDER_SOFTWARE;
+    mName = "Surface";
 }
 
 SurfaceGraphics::~SurfaceGraphics()

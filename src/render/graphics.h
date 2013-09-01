@@ -27,6 +27,8 @@
 
 #include "sdlshared.h"
 
+#include "render/renderers.h"
+
 #include <guichan/color.hpp>
 #include <guichan/graphics.hpp>
 
@@ -319,7 +321,7 @@ class Graphics : public gcn::Graphics
         bool getDoubleBuffer() const A_WARN_UNUSED
         { return mDoubleBuffer; }
 
-        int getOpenGL() const A_WARN_UNUSED
+        RenderType getOpenGL() const A_WARN_UNUSED
         { return mOpenGL; }
 
         void setNoFrame(const bool n)
@@ -415,7 +417,7 @@ class Graphics : public gcn::Graphics
         bool mDoubleBuffer;
         SDL_Rect mRect;
         bool mSecure;
-        int mOpenGL;
+        RenderType mOpenGL;
         bool mEnableResize;
         bool mNoFrame;
         std::string mName;
