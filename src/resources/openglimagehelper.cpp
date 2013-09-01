@@ -215,6 +215,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
             MobileOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
         case RENDER_SOFTWARE:
+        case RENDER_SDL2_DEFAULT:
         default:
             logger->log("Unknown OpenGL backend: %d", mUseOpenGL);
             break;

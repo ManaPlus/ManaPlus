@@ -241,6 +241,9 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
             mUseTextureSampler = false;
             break;
         case RENDER_NORMAL_OPENGL:
+#ifndef USE_SDL2
+        case RENDER_SDL2_DEFAULT:
+#endif
         default:
 #ifndef ANDROID
             imageHelper = new OpenGLImageHelper;
@@ -261,8 +264,19 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
             mainGraphics = new MobileOpenGLGraphics;
             mUseTextureSampler = false;
             break;
+#ifdef USE_SDL2
+        case RENDER_SDL2_DEFAULT:
+            // for debug SDL2 default is same as software mode
+            imageHelper = new SDLImageHelper;
+            surfaceImageHelper = new SurfaceImageHelper;
+            mainGraphics = new SDLGraphics;
+            mainGraphics->setRendererFlags(SDL_RENDERER_ACCELERATED);
+            mUseTextureSampler = false;
+            break;
+#endif
     };
-    mUseAtlases = imageHelper->useOpenGL() != RENDER_SOFTWARE
+    mUseAtlases = (useOpenGL == RENDER_NORMAL_OPENGL
+        || useOpenGL == RENDER_SAFE_OPENGL || useOpenGL == RENDER_GLES_OPENGL)
         && config.getBoolValue("useAtlases");
 #else
 void GraphicsManager::initGraphics(const bool noOpenGL A_UNUSED)

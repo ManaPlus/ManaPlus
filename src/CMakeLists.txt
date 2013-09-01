@@ -682,7 +682,8 @@ SET(SRCS
     render/nullopenglgraphics.h
     render/renderers.cpp
     render/renderers.h
-    render/rendererslist.h
+    render/rendererslistsdl.h
+    render/rendererslistsdl2.h
     particle/particle.cpp
     particle/particle.h
     particle/particlecontainer.cpp

@@ -572,15 +572,14 @@ void Client::gameInit()
     }
 #endif
 
-#ifdef USE_OPENGL
     openGLMode = intToRenderType(config.getIntValue("opengl"));
+#ifdef USE_OPENGL
     OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache") && !openGLMode);
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f
         || openGLMode);
 #else
-    openGLMode = RENDER_SOFTWARE;
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache"));
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);

@@ -128,6 +128,9 @@ class SDLGraphics : public Graphics
                           const bool fs, const bool hwaccel,
                           const bool resize, const bool noFrame);
 
+        void setRendererFlags(const uint32_t flags)
+        { mRendererFlags = flags; }
+
     protected:
         virtual bool drawImage2(const Image *const image,
                                 int srcX, int srcY,
@@ -135,6 +138,7 @@ class SDLGraphics : public Graphics
                                 const int width, const int height,
                                 const bool useColor);
 
+        uint32_t mRendererFlags;
         uint32_t mOldPixel;
         int mOldAlpha;
 };

@@ -365,6 +365,9 @@ class Graphics : public gcn::Graphics
 #ifdef USE_SDL2
         void dumpRendererInfo(const char *const str,
                               const SDL_RendererInfo &info);
+
+        virtual void setRendererFlags(const uint32_t flags A_UNUSED)
+        { }
 #endif
         int mWidth;
         int mHeight;

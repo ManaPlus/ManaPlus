@@ -45,7 +45,7 @@
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/dropdown.h"
 
-#include "render/rendererslist.h"
+#include "render/rendererslistsdl.h"
 #include "resources/image.h"
 
 #include "utils/gettext.h"

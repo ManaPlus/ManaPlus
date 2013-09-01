@@ -70,6 +70,7 @@ static int FakeSDL_RenderCopy(SDL_Renderer *const renderer,
 
 SDLGraphics::SDLGraphics() :
     Graphics(),
+    mRendererFlags(SDL_RENDERER_SOFTWARE),
     mOldPixel(0),
     mOldAlpha(0)
 {
@@ -633,7 +634,7 @@ bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
     mRect.w = w1;
     mRect.h = h1;
 
-    mRenderer = graphicsManager.createRenderer(mWindow, SDL_RENDERER_SOFTWARE);
+    mRenderer = graphicsManager.createRenderer(mWindow, mRendererFlags);
     SDLImageHelper::setRenderer(mRenderer);
     return videoInfo();
 }

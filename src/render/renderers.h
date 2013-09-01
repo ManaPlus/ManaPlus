@@ -26,11 +26,10 @@
 enum RenderType
 {
     RENDER_SOFTWARE = 0,
-#ifdef USE_OPENGL
     RENDER_NORMAL_OPENGL = 1,
     RENDER_SAFE_OPENGL = 2,
     RENDER_GLES_OPENGL = 3,
-#endif
+    RENDER_SDL2_DEFAULT = 4,
     RENDER_LAST
 };
 

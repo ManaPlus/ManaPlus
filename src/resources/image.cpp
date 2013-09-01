@@ -413,7 +413,9 @@ Image *Image::getSubImage(const int x, const int y,
 {
     // Create a new clipped sub-image
 #ifdef USE_OPENGL
-    if (OpenGLImageHelper::mUseOpenGL != RENDER_SOFTWARE)
+    const RenderType mode = OpenGLImageHelper::mUseOpenGL;
+    if (mode == RENDER_NORMAL_OPENGL || mode == RENDER_SAFE_OPENGL
+        || mode == RENDER_GLES_OPENGL)
     {
         return new SubImage(this, mGLImage, x, y, width, height,
                             mTexWidth, mTexHeight);

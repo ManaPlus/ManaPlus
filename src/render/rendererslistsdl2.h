@@ -20,17 +20,21 @@
 
 #include "utils/gettext.h"
 
-#ifndef RENDER_RENDERERSLIST_H
-#define RENDER_RENDERERSLIST_H
+#ifndef RENDER_RENDERERSLISTSDL2_H
+#define RENDER_RENDERERSLISTSDL2_H
+
+#ifdef USE_SDL2
 
 #ifdef USE_OPENGL
 #ifdef ANDROID
+// defined OPENGL ANDROID
 
 // map for index to RenderType
 const RenderType indexToRender[] =
 {
     RENDER_SOFTWARE,
-    RENDER_GLES_OPENGL,
+    RENDER_SDL2_DEFAULT,
+    RENDER_GLES_OPENGL
 };
 
 const char *OPENGL_NAME[] =
@@ -38,7 +42,78 @@ const char *OPENGL_NAME[] =
     // TRANSLATORS: draw backend
     N_("Software"),
     // TRANSLATORS: draw backend
-    N_("Mobile OpenGL"),
+    N_("SDL2 default"),
+    // TRANSLATORS: draw backend
+    N_("Mobile OpenGL")
+};
+
+const int renderModesListSize = 3;
+
+const int renderToIndex[] =
+{
+    0,  // RENDER_SOFTWARE
+    2,  // RENDER_NORMAL_OPENGL
+    2,  // RENDER_SAFE_OPENGL
+    2,  // RENDER_GLES_OPENGL
+    1   // RENDER_SDL2_DEFAULT
+};
+
+#else  // ANDROID
+// defined OPENGL
+
+// map for index to RenderType
+const RenderType indexToRender[] =
+{
+    RENDER_SOFTWARE,
+    RENDER_SDL2_DEFAULT,
+    RENDER_NORMAL_OPENGL,
+    RENDER_SAFE_OPENGL,
+    RENDER_GLES_OPENGL
+};
+
+const char *OPENGL_NAME[] =
+{
+    // TRANSLATORS: draw backend
+    N_("Software"),
+    // TRANSLATORS: draw backend
+    N_("SDL2 default"),
+    // TRANSLATORS: draw backend
+    N_("Fast OpenGL"),
+    // TRANSLATORS: draw backend
+    N_("Safe OpenGL"),
+    // TRANSLATORS: draw backend
+    N_("Mobile OpenGL")
+};
+
+const int renderModesListSize = 5;
+
+const int renderToIndex[] =
+{
+    0,  // RENDER_SOFTWARE
+    2,  // RENDER_NORMAL_OPENGL
+    3,  // RENDER_SAFE_OPENGL
+    4,  // RENDER_GLES_OPENGL
+    1   // RENDER_SDL2_DEFAULT
+};
+
+#endif  // ANDROID
+
+#else  // USE_OPENGL
+// no defines
+
+// map for index to RenderType
+const RenderType indexToRender[] =
+{
+    RENDER_SOFTWARE,
+    RENDER_SDL2_DEFAULT
+};
+
+const char *OPENGL_NAME[] =
+{
+    // TRANSLATORS: draw backend
+    N_("Software"),
+    // TRANSLATORS: draw backend
+    N_("SDL2 default")
 };
 
 const int renderModesListSize = 2;
@@ -46,70 +121,13 @@ const int renderModesListSize = 2;
 const int renderToIndex[] =
 {
     0,  // RENDER_SOFTWARE
-    3,  // RENDER_GLES_OPENGL
-    3,  // RENDER_GLES_OPENGL
-    3   // RENDER_GLES_OPENGL
-};
-
-#else  // ANDROID
-
-// map for index to RenderType
-const RenderType indexToRender[] =
-{
-    RENDER_SOFTWARE,
-    RENDER_NORMAL_OPENGL,
-    RENDER_SAFE_OPENGL,
-    RENDER_GLES_OPENGL,
-};
-
-const char *OPENGL_NAME[] =
-{
-    // TRANSLATORS: draw backend
-    N_("Software"),
-    // TRANSLATORS: draw backend
-    N_("Fast OpenGL"),
-    // TRANSLATORS: draw backend
-    N_("Safe OpenGL"),
-    // TRANSLATORS: draw backend
-    N_("Mobile OpenGL"),
-};
-
-const int renderModesListSize = 4;
-
-const int renderToIndex[] =
-{
-    0,  // RENDER_SOFTWARE
-    1,  // RENDER_NORMAL_OPENGL
-    2,  // RENDER_SAFE_OPENGL
-    3   // RENDER_GLES_OPENGL
-};
-
-#endif  // ANDROID
-
-#else  // USE_OPENGL
-
-// map for index to RenderType
-const RenderType indexToRender[] =
-{
-    RENDER_SOFTWARE
-};
-
-const char *OPENGL_NAME[] =
-{
-    // TRANSLATORS: draw backend
-    N_("Software")
-};
-
-const int renderModesListSize = 1;
-
-const int renderToIndex[] =
-{
-    0,  // RENDER_SOFTWARE
-    0,  // RENDER_SOFTWARE
-    0,  // RENDER_SOFTWARE
-    0   // RENDER_SOFTWARE
+    0,  // RENDER_NORMAL_OPENGL
+    0,  // RENDER_SAFE_OPENGL
+    0,  // RENDER_GLES_OPENGL
+    1   // RENDER_SDL2_DEFAULT
 };
 
 #endif  // USE_OPENGL
 
-#endif  // RENDER_RENDERERSLIST_H
+#endif  // USE_SDL2
+#endif  // RENDER_RENDERERSLISTSDL2_H
