@@ -31,7 +31,7 @@ enum RenderType
     RENDER_GLES_OPENGL = 3,
     RENDER_SDL2_DEFAULT = 4,
     RENDER_NULL = 5,
-    RENDER_LAST
+    RENDER_LAST,
 };
 
 RenderType intToRenderType(const int mode);
