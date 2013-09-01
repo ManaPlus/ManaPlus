@@ -270,7 +270,6 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
             break;
 #ifdef USE_SDL2
         case RENDER_SDL2_DEFAULT:
-            // for debug SDL2 default is same as software mode
             imageHelper = new SDLImageHelper;
             surfaceImageHelper = new SurfaceImageHelper;
             mainGraphics = new SDLGraphics;
