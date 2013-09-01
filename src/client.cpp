@@ -169,7 +169,7 @@ UserPalette *userPalette = nullptr;
 Graphics *mainGraphics = nullptr;
 
 SoundManager soundManager;
-int openGLMode = 0;
+RenderType openGLMode = RENDER_SOFTWARE;
 
 static uint32_t nextTick(uint32_t interval, void *param A_UNUSED);
 static uint32_t nextSecond(uint32_t interval, void *param A_UNUSED);
@@ -573,14 +573,14 @@ void Client::gameInit()
 #endif
 
 #ifdef USE_OPENGL
-    openGLMode = config.getIntValue("opengl");
+    openGLMode = intToRenderType(config.getIntValue("opengl"));
     OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache") && !openGLMode);
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f
         || openGLMode);
 #else
-    openGLMode = 0;
+    openGLMode = RENDER_SOFTWARE;
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache"));
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
@@ -2339,7 +2339,7 @@ void Client::accountLogin(LoginData *const data) const
 void Client::storeSafeParameters() const
 {
     bool tmpHwaccel;
-    int tmpOpengl;
+    RenderType tmpOpengl;
     int tmpFpslimit;
     int tmpAltFpslimit;
     bool tmpSound;
@@ -2360,7 +2360,7 @@ void Client::storeSafeParameters() const
         logger->log1("Run in safe mode");
 
 #if defined USE_OPENGL
-    tmpOpengl = config.getIntValue("opengl");
+    tmpOpengl = intToRenderType(config.getIntValue("opengl"));
 #else
     tmpOpengl = 0;
 #endif
@@ -2440,7 +2440,7 @@ void Client::storeSafeParameters() const
     if (!tmpOpengl)
     {
         config.setValue("hwaccel", tmpHwaccel);
-        config.setValue("opengl", tmpOpengl);
+        config.setValue("opengl", static_cast<int>(tmpOpengl));
         config.setValue("fpslimit", tmpFpslimit);
         config.setValue("altfpslimit", tmpAltFpslimit);
         config.setValue("sound", tmpSound);
@@ -2459,7 +2459,7 @@ void Client::storeSafeParameters() const
     }
     else
     {
-        config.setValue("opengl", tmpOpengl);
+        config.setValue("opengl", static_cast<int>(tmpOpengl));
         config.setValue("screenwidth", width);
         config.setValue("screenheight", height);
     }

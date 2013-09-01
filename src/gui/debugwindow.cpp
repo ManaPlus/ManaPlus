@@ -40,8 +40,6 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "render/renderers.h"
-
 #include "resources/imagehelper.h"
 
 #include "net/packetcounters.h"

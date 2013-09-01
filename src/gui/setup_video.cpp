@@ -45,6 +45,7 @@
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/dropdown.h"
 
+#include "render/rendererslist.h"
 #include "resources/image.h"
 
 #include "utils/gettext.h"
@@ -164,20 +165,6 @@ int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
     return -1;
 }
 
-const char *OPENGL_NAME[4] =
-{
-    // TRANSLATORS: draw backend
-    N_("Software"),
-#ifndef ANDROID
-    // TRANSLATORS: draw backend
-    N_("Fast OpenGL"),
-    // TRANSLATORS: draw backend
-    N_("Safe OpenGL"),
-#endif
-    // TRANSLATORS: draw backend
-    N_("Mobile OpenGL"),
-};
-
 class OpenGLListModel final : public gcn::ListModel
 {
 public:
@@ -185,11 +172,7 @@ public:
     { }
 
     virtual int getNumberOfElements() override
-#ifdef ANDROID
-    { return 2; }
-#else
-    { return 4; }
-#endif
+    { return renderModesListSize; }
 
     virtual std::string getElementAt(int i) override
     {
@@ -203,7 +186,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     SetupTab(widget),
     gcn::KeyListener(),
     mFullScreenEnabled(config.getBoolValue("screen")),
-    mOpenGLEnabled(config.getIntValue("opengl")),
+    mOpenGLEnabled(intToRenderType(config.getIntValue("opengl"))),
     mFps(config.getIntValue("fpslimit")),
     mAltFps(config.getIntValue("altfpslimit")),
     mModeListModel(new ModeListModel),
@@ -250,15 +233,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     scrollArea->setWidth(150);
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-#ifdef USE_OPENGL
-#ifdef ANDROID
-    if (mOpenGLEnabled == 1 || mOpenGLEnabled == 2)
-        mOpenGLEnabled = 3;
-#endif
-    mOpenGLDropDown->setSelected(mOpenGLEnabled);
-#else
-    mOpenGLDropDown->setSelected(0);
-#endif
+    mOpenGLDropDown->setSelected(renderToIndex[mOpenGLEnabled]);
 
     mModeList->setEnabled(true);
 
@@ -362,7 +337,7 @@ void Setup_Video::apply()
 
 #if defined(WIN32) || defined(__APPLE__) || defined(ANDROID)
         // checks for opengl usage
-        if (!config.getIntValue("opengl"))
+        if (intToRenderType(config.getIntValue("opengl")) == RENDER_SOFTWARE)
         {
 #endif
             if (!mainGraphics->setFullscreen(fullscreen))
@@ -401,16 +376,15 @@ void Setup_Video::apply()
         config.setValue("screen", fullscreen);
     }
 
-    int mode = mOpenGLDropDown->getSelected();
-#ifdef ANDROID
-    if (mode == 1 || mode == 2)
-        mode = 3;
-#endif
+    const int sel = mOpenGLDropDown->getSelected();
+    RenderType mode = RENDER_SOFTWARE;
+    if (sel >= 0 && static_cast<unsigned int>(sel) < sizeof(indexToRender))
+        mode = indexToRender[mOpenGLDropDown->getSelected()];
 
     // OpenGL change
     if (mode != mOpenGLEnabled)
     {
-        config.setValue("opengl", mode);
+        config.setValue("opengl", static_cast<int>(mode));
 
         // OpenGL can currently only be changed by restarting, notify user.
         // TRANSLATORS: video settings warning
@@ -436,7 +410,7 @@ void Setup_Video::apply()
     mFullScreenEnabled = config.getBoolValue("screen");
     mCustomCursorEnabled = config.getBoolValue("customcursor");
 
-    mOpenGLEnabled = config.getIntValue("opengl");
+    mOpenGLEnabled = intToRenderType(config.getIntValue("opengl"));
     mEnableResize = config.getBoolValue("enableresize");
     mNoFrame = config.getBoolValue("noframe");
 }
@@ -445,7 +419,7 @@ void Setup_Video::cancel()
 {
     mFpsCheckBox->setSelected(mFps > 0);
     mFsCheckBox->setSelected(mFullScreenEnabled);
-    mOpenGLDropDown->setSelected(mOpenGLEnabled);
+    mOpenGLDropDown->setSelected(renderToIndex[mOpenGLEnabled]);
     mCustomCursorCheckBox->setSelected(mCustomCursorEnabled);
     mFpsSlider->setValue(mFps);
     mFpsSlider->setEnabled(mFps > 0);
@@ -469,7 +443,7 @@ void Setup_Video::cancel()
     config.setValue("screenheight", mainGraphics->mHeight);
 
     config.setValue("customcursor", mCustomCursorEnabled);
-    config.setValue("opengl", mOpenGLEnabled);
+    config.setValue("opengl", static_cast<int>(mOpenGLEnabled));
     config.setValue("enableresize", mEnableResize);
     config.setValue("noframe", mNoFrame);
 }
@@ -510,7 +484,8 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         if (width != mainGraphics->mWidth || height != mainGraphics->mHeight)
         {
 #if defined(WIN32) || defined(__APPLE__) || defined(ANDROID)
-            if (!config.getIntValue("opengl"))
+            if (intToRenderType(config.getIntValue("opengl"))
+                == RENDER_SOFTWARE)
             {
                 client->resizeVideo(width, height);
             }
@@ -598,8 +573,11 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         if (test)
         {
             const int val = test->getConfig().getValueInt("opengl", -1);
-            if (val >= 0 && val <= 3)
-                mOpenGLDropDown->setSelected(val);
+            if (val >= 0 && static_cast<unsigned int>(val)
+                < sizeof(renderToIndex))
+            {
+                mOpenGLDropDown->setSelected(renderToIndex[val]);
+            }
             delete test;
         }
     }

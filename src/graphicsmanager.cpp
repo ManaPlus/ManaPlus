@@ -222,11 +222,7 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
 {
     RenderType useOpenGL = RENDER_SOFTWARE;
     if (!noOpenGL)
-    {
-        const int mode = config.getIntValue("opengl");
-        if (mode < RENDER_LAST && mode >= RENDER_SOFTWARE)
-            useOpenGL = static_cast<RenderType>(mode);
-    }
+        useOpenGL = intToRenderType(config.getIntValue("opengl"));
 
     // Setup image loading for the right image format
     OpenGLImageHelper::setLoadAsOpenGL(useOpenGL);

@@ -21,9 +21,10 @@
 #ifndef GUI_WIDGETS_WIDGET2_H
 #define GUI_WIDGETS_WIDGET2_H
 
+#include "gui/gui.h"
 #include "gui/theme.h"
 
-#include "gui/gui.h"
+#include "render/renderers.h"
 
 class Widget2
 {
@@ -94,6 +95,6 @@ class Widget2
         gcn::Color mForegroundColor2;
 };
 
-extern int openGLMode;
+extern RenderType openGLMode;
 
 #endif  // GUI_WIDGETS_WIDGET2_H

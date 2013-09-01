@@ -56,7 +56,7 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
 
     private:
         bool mFullScreenEnabled;
-        int mOpenGLEnabled;
+        RenderType mOpenGLEnabled;
         int mFps;
         int mAltFps;
         ModeListModel *mModeListModel;

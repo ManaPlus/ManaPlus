@@ -29,6 +29,8 @@
 
 #include "being/actor.h"
 
+#include "render/renderers.h"
+
 #include <string>
 #include <vector>
 
@@ -509,7 +511,7 @@ class Map final : public Properties, public ConfigListener
 
         int mOverlayDetail;
         float mOpacity;
-        int mOpenGL;
+        RenderType mOpenGL;
         int mPvp;
         bool mTilesetsIndexed;
         Tileset** mIndexedTilesets;

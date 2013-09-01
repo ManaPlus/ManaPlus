@@ -18,22 +18,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_RENDERERS_H
-#define RENDER_RENDERERS_H
+#include "render/renderers.h"
 
-#include "utils/gettext.h"
-
-enum RenderType
+RenderType intToRenderType(const int mode)
 {
-    RENDER_SOFTWARE = 0,
+    if (mode < 0 || mode > RENDER_LAST)
+    {
 #ifdef USE_OPENGL
-    RENDER_NORMAL_OPENGL = 1,
-    RENDER_SAFE_OPENGL = 2,
-    RENDER_GLES_OPENGL = 3,
+#ifdef ANDROID
+        return RENDER_GLES_OPENGL;
+#else
+        return RENDER_NORMAL_OPENGL;
 #endif
-    RENDER_LAST
-};
-
-RenderType intToRenderType(const int mode);
-
-#endif  // RENDER_RENDERERS_H
+#else
+        return RENDER_SOFTWARE;
+#endif
+    }
+    return static_cast<RenderType>(mode);
+}

@@ -148,9 +148,9 @@ Map::Map(const int width, const int height,
     mOverlayDetail(config.getIntValue("OverlayDetail")),
     mOpacity(config.getFloatValue("guialpha")),
 #ifdef USE_OPENGL
-    mOpenGL(config.getIntValue("opengl")),
+    mOpenGL(intToRenderType(config.getIntValue("opengl"))),
 #else
-    mOpenGL(0),
+    mOpenGL(RENDER_SOFTWARE),
 #endif
     mPvp(0),
     mTilesetsIndexed(false),
