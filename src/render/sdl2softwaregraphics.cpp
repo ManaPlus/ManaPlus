@@ -32,7 +32,7 @@
 #include "logger.h"
 
 #include "resources/imagehelper.h"
-#include "resources/sdl2imagehelper.h"
+#include "resources/sdl2softwareimagehelper.h"
 
 #include <guichan/sdl/sdlpixel.hpp>
 
@@ -1267,7 +1267,8 @@ bool SDL2SoftwareGraphics::setVideoMode(const int w, const int h,
     }
 
     mSurface = SDL_GetWindowSurface(mWindow);
-    logger->log("window surface: %p", mSurface);
+    imageHelper->dumpSurfaceFormat(mSurface);
+    SDL2SoftwareImageHelper::setFormat(mSurface->format);
 
     int w1 = 0;
     int h1 = 0;
@@ -1276,8 +1277,16 @@ bool SDL2SoftwareGraphics::setVideoMode(const int w, const int h,
     mRect.h = h1;
 
     mRenderer = graphicsManager.createRenderer(mWindow, mRendererFlags);
-    SDLImageHelper::setRenderer(mRenderer);
     return videoInfo();
+}
+
+bool SDL2SoftwareGraphics::resizeScreen(const int width, const int height)
+{
+    const bool ret = Graphics::resizeScreen(width, height);
+
+    mSurface = SDL_GetWindowSurface(mWindow);
+    SDL2SoftwareImageHelper::setFormat(mSurface->format);
+    return ret;
 }
 
 #endif  // USE_SDL2

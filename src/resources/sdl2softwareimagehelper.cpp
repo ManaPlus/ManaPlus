@@ -40,7 +40,7 @@
 #include "debug.h"
 
 bool SDL2SoftwareImageHelper::mEnableAlphaCache = false;
-SDL_Renderer *SDL2SoftwareImageHelper::mRenderer = nullptr;
+SDL_PixelFormat *SDL2SoftwareImageHelper::mFormat = nullptr;
 
 Image *SDL2SoftwareImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
 {
@@ -137,13 +137,7 @@ Image *SDL2SoftwareImageHelper::_SDLload(SDL_Surface *tmpImage) const
     if (!tmpImage)
         return nullptr;
 
-//    SDL_Texture *const texture = SDL_CreateTextureFromSurface(
-//        mRenderer, tmpImage);
-//    if (!texture)
-//        return nullptr;
-//    SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
-//    return new Image(texture, tmpImage->w, tmpImage->h);
-    SDL_Surface *image = convertTo32Bit(tmpImage);
+    SDL_Surface *image = SDL_ConvertSurface(tmpImage, mFormat, 0);
     return new Image(image, false, nullptr);
 }
 

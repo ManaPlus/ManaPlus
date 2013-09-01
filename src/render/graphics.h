@@ -142,7 +142,7 @@ class Graphics : public gcn::Graphics
         /**
          * Resize the window to the specified size.
          */
-        bool resizeScreen(const int width, const int height);
+        virtual bool resizeScreen(const int width, const int height);
 
         /**
          * Blits an image onto the screen.

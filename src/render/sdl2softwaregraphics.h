@@ -131,6 +131,8 @@ class SDL2SoftwareGraphics : public Graphics
         void setRendererFlags(const uint32_t flags)
         { mRendererFlags = flags; }
 
+        bool resizeScreen(const int width, const int height);
+
     protected:
         virtual bool drawImage2(const Image *const image,
                                 int srcX, int srcY,
