@@ -61,6 +61,8 @@ class Image : public Resource
     friend class SDLImageHelper;
     friend class SurfaceGraphics;
 #ifdef USE_SDL2
+    friend class SDL2SoftwareGraphics;
+    friend class SDL2SoftwareImageHelper;
     friend class SurfaceImageHelper;
 #endif
     friend class TestLauncher;

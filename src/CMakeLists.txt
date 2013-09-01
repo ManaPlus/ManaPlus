@@ -490,6 +490,8 @@ SET(SRCS
     resources/resourcemanager.h
     resources/sdl2imagehelper.cpp
     resources/sdl2imagehelper.h
+    resources/sdl2softwareimagehelper.cpp
+    resources/sdl2softwareimagehelper.h
     resources/sdlimagehelper.cpp
     resources/sdlimagehelper.h
     resources/sdlmusic.cpp
@@ -706,6 +708,8 @@ SET(SRCS
     render/safeopenglgraphics.h
     render/sdl2graphics.cpp
     render/sdl2graphics.h
+    render/sdl2softwaregraphics.cpp
+    render/sdl2softwaregraphics.h
     render/sdlgraphics.cpp
     render/sdlgraphics.h
     sdlshared.h

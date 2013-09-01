@@ -32,7 +32,9 @@ endif
 if USE_SDL2
 manaplus_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
 manaplus_SOURCES += sdl2gfx/SDL_framerate.c \
-	      sdl2gfx/SDL_framerate.h
+	      sdl2gfx/SDL_framerate.h \
+	      sdl2gfx/SDL_rotozoom.c \
+	      sdl2gfx/SDL_rotozoom.h
 endif
 
 if USE_INTERNALGUICHAN
@@ -499,6 +501,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/resourcemanager.h \
 	      resources/sdl2imagehelper.cpp \
 	      resources/sdl2imagehelper.h \
+	      resources/sdl2softwareimagehelper.cpp \
+	      resources/sdl2softwareimagehelper.h \
 	      resources/sdlimagehelper.cpp \
 	      resources/sdlimagehelper.h \
 	      resources/sdlmusic.cpp \
@@ -715,6 +719,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/safeopenglgraphics.h \
 	      render/sdl2graphics.cpp \
 	      render/sdl2graphics.h \
+	      render/sdl2softwaregraphics.cpp \
+	      render/sdl2softwaregraphics.h \
 	      render/sdlgraphics.cpp \
 	      render/sdlgraphics.h \
 	      sdlshared.h \

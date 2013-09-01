@@ -42,9 +42,7 @@
 #include "utils/sdlcheckutils.h"
 
 #include <SDL_image.h>
-#ifndef USE_SDL2
 #include <SDL_rotozoom.h>
-#endif
 
 #include "debug.h"
 
@@ -388,7 +386,6 @@ Image* Image::SDLgetScaledImage(const int width, const int height) const
 
     Image* scaledImage = nullptr;
 
-#ifndef USE_SDL2
     if (mSDLSurface)
     {
         SDL_Surface *const scaledSurface = zoomSurface(mSDLSurface,
@@ -404,7 +401,6 @@ Image* Image::SDLgetScaledImage(const int width, const int height) const
             MSDL_FreeSurface(scaledSurface);
         }
     }
-#endif
     return scaledImage;
 }
 
@@ -423,7 +419,11 @@ Image *Image::getSubImage(const int x, const int y,
 #endif
 
 #ifdef USE_SDL2
-    return new SubImage(this, mTexture, x, y, width, height);
+    // +++ probably default sdl render is broken here
+    if (mode == RENDER_SOFTWARE)
+        return new SubImage(this, mSDLSurface, x, y, width, height);
+    else
+        return new SubImage(this, mTexture, x, y, width, height);
 #else
     return new SubImage(this, mSDLSurface, x, y, width, height);
 #endif

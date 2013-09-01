@@ -43,11 +43,13 @@
 
 #include "render/graphics.h"
 #include "render/renderers.h"
+#include "render/sdl2softwaregraphics.h"
 #include "render/sdlgraphics.h"
 
 #include "resources/fboinfo.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
+#include "resources/sdl2softwareimagehelper.h"
 #include "resources/sdlimagehelper.h"
 #include "resources/surfaceimagehelper.h"
 
@@ -231,13 +233,15 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
     switch (useOpenGL)
     {
         case RENDER_SOFTWARE:
-            imageHelper = new SDLImageHelper;
 #ifdef USE_SDL2
+            imageHelper = new SDL2SoftwareImageHelper;
             surfaceImageHelper = new SurfaceImageHelper;
+            mainGraphics = new SDL2SoftwareGraphics;
 #else
+            imageHelper = new SDLImageHelper;
             surfaceImageHelper = imageHelper;
-#endif
             mainGraphics = new SDLGraphics;
+#endif
             mUseTextureSampler = false;
             break;
         case RENDER_NORMAL_OPENGL:

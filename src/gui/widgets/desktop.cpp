@@ -99,7 +99,6 @@ void Desktop::draw(gcn::Graphics *graphics)
             g->fillRectangle(gcn::Rectangle(0, 0, width, height));
         }
 
-#ifndef USE_SDL2
         if (imageHelper->useOpenGL() == RENDER_SOFTWARE)
         {
             g->drawImage(mWallpaper,
@@ -107,7 +106,6 @@ void Desktop::draw(gcn::Graphics *graphics)
                 (height - wallpHeight) / 2);
         }
         else
-#endif
         {
             g->drawRescaledImage(mWallpaper, 0, 0, 0, 0,
                 wallpWidth, wallpHeight,
@@ -150,11 +148,7 @@ void Desktop::setBestFittingWallpaper()
         const int width = rect.width;
         const int height = rect.height;
 
-#ifdef USE_SDL2
-        if (false &&
-#else
         if (imageHelper->useOpenGL() == RENDER_SOFTWARE &&
-#endif
             (nWallPaper->getWidth() != width
             || nWallPaper->getHeight() != height))
         {
