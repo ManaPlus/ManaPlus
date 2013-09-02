@@ -63,6 +63,8 @@ class EmoteWindow final : public Window
 
         void widgetResized(const gcn::Event &event) override;
 
+        void widgetMoved(const gcn::Event &event) override;
+
     private:
         TabbedArea *mTabs;
         EmotePage *mEmotePage;

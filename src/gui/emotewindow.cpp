@@ -226,4 +226,11 @@ void EmoteWindow::widgetResized(const gcn::Event &event)
     mTabs->adjustWidget(mScrollColorPage);
     mColorPage->setSize(mScrollColorPage->getWidth(),
         mScrollColorPage->getHeight());
+    mEmotePage->widgetResized(event);
+}
+
+void EmoteWindow::widgetMoved(const gcn::Event &event)
+{
+    Window::widgetMoved(event);
+    mEmotePage->widgetResized(event);
 }
