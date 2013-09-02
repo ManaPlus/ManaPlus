@@ -125,6 +125,8 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
 
     mKeyListModel->setSize(mActionDataSize[0]);
     refreshKeys();
+    if (gui)
+        mKeyList->setFont(reinterpret_cast<gcn::Font*>(gui->getHelpFont()));
     mKeyList->addActionListener(this);
 
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
@@ -315,8 +317,13 @@ void Setup_Input::refreshAssignedKey(const int index)
     }
     else
     {
-        mKeyListModel->setElementAt(index, strprintf("%s: %s",
-            gettext(key.name.c_str()),
+        std::string str = gettext(key.name.c_str());
+        int sz = 20;
+        if (mainGraphics->mWidth > 800)
+            sz = 30;
+        while (str.size() < sz)
+            str.append(" ");
+        mKeyListModel->setElementAt(index, strprintf("%s: %s", str.c_str(),
             inputManager.getKeyStringLong(key.actionId).c_str()));
     }
 }

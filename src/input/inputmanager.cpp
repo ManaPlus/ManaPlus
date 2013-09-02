@@ -372,7 +372,7 @@ std::string InputManager::getKeyStringLong(const int index) const
             if (keyStr.empty())
                 keyStr = str;
             else
-                keyStr.append(" ").append(str);
+                keyStr.append(", ").append(str);
         }
     }
 
