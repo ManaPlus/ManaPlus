@@ -318,7 +318,7 @@ void Setup_Input::refreshAssignedKey(const int index)
     else
     {
         std::string str = gettext(key.name.c_str());
-        int sz = 20;
+        unsigned int sz = 20;
         if (mainGraphics->mWidth > 800)
             sz = 30;
         while (str.size() < sz)
