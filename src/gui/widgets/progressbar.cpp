@@ -180,7 +180,7 @@ void ProgressBar::render(Graphics *graphics)
     if (!mSkin)
         return;
 
-    if (openGLMode != 2)
+    if (openGLMode != RENDER_SAFE_OPENGL)
     {
         if (mRedraw || graphics->getRedraw())
         {

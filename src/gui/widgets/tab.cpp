@@ -221,7 +221,7 @@ void Tab::draw(gcn::Graphics *graphics)
     if (skin)
     {
         // draw tab
-        if (openGLMode != 2)
+        if (openGLMode != RENDER_SAFE_OPENGL)
         {
             const ImageRect &rect = skin->getBorder();
             if (mRedraw || mode != mMode || g->getRedraw())

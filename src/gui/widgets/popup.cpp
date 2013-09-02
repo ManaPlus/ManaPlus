@@ -103,7 +103,7 @@ void Popup::draw(gcn::Graphics *graphics)
 
     if (mSkin)
     {
-        if (openGLMode != 2)
+        if (openGLMode != RENDER_SAFE_OPENGL)
         {
             if (mRedraw)
             {

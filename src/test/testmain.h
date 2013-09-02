@@ -25,6 +25,8 @@
 #include "logger.h"
 #include "main.h"
 
+#include "render/renderers.h"
+
 #ifdef USE_OPENGL
 
 #include <string>
@@ -66,7 +68,7 @@ class TestMain
 
         void testsMain();
 
-        void writeConfig(const int openGLMode, const int rescale,
+        void writeConfig(const RenderType openGLMode, const int rescale,
                          const int sound, const std::string &info,
                          const int batchSize, const int detectMode);
 

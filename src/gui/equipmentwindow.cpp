@@ -161,7 +161,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
     gcn::Font *const font = getFont();
     const int fontHeight = font->getHeight();
 
-    if (openGLMode != 2)
+    if (openGLMode != RENDER_SAFE_OPENGL)
     {
         if (mLastRedraw)
         {

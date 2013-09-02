@@ -82,7 +82,7 @@ int TestMain::exec(const bool testAudio)
     int fastOpenGLFps = 0;
     int safeOpenGLFps = 0;
 
-    int openGLMode = 0;
+    RenderType openGLMode = RENDER_SOFTWARE;
     int detectMode = 0;
     rescaleTest[0] = -1;
     rescaleTest[1] = -1;
@@ -182,19 +182,19 @@ int TestMain::exec(const bool testAudio)
     int maxFps = softFps;
     if (maxFps < fastOpenGLFps)
     {
-        openGLMode = 1;
+        openGLMode = RENDER_NORMAL_OPENGL;
         maxFps = fastOpenGLFps;
     }
     if (maxFps < safeOpenGLFps)
     {
-        openGLMode = 2;
+        openGLMode = RENDER_SAFE_OPENGL;
         maxFps = safeOpenGLFps;
     }
 
     int batchSize = 256;
 /*
     // if OpenGL mode is fast mode we can try detect max batch sizes
-    if (openGLMode == 1)
+    if (openGLMode == RENDER_NORMAL_OPENGL)
     {
         if (!invokeFastOpenBatchTest("11"))
             batchSize = readValue2(11);
@@ -205,23 +205,23 @@ int TestMain::exec(const bool testAudio)
 
     // if OpenGL implimentation is not good, disable it.
     if (!(detectMode & 15))
-        openGLMode = 0;
+        openGLMode = RENDER_SOFTWARE;
 
     writeConfig(openGLMode, rescaleTest[openGLMode],
         soundTest, info, batchSize, detectMode);
     return 0;
 }
 
-void TestMain::writeConfig(const int openGLMode, const int rescale,
+void TestMain::writeConfig(const RenderType openGLMode, const int rescale,
                            const int sound, const std::string &info,
                            const int batchSize A_UNUSED, const int detectMode)
 {
     mConfig.init(client->getConfigDirectory() + "/config.xml");
 
-    log->log("set mode to %d", openGLMode);
+    log->log("set mode to %d", static_cast<int>(openGLMode));
 
     // searched values
-    mConfig.setValue("opengl", openGLMode);
+    mConfig.setValue("opengl", static_cast<int>(openGLMode));
     mConfig.setValue("showBackground", !rescale);
     mConfig.setValue("sound", !sound);
 

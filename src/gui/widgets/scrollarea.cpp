@@ -262,7 +262,7 @@ void ScrollArea::draw(gcn::Graphics *graphics)
     BLOCK_START("ScrollArea::draw")
     if (mVBarVisible || mHBarVisible)
     {
-        if (openGLMode != 2)
+        if (openGLMode != RENDER_SAFE_OPENGL)
         {
             if (!mOpaque)
                 updateCalcFlag(graphics);
@@ -363,7 +363,7 @@ void ScrollArea::drawFrame(gcn::Graphics *graphics)
 
         updateCalcFlag(graphics);
 
-        if (openGLMode != 2)
+        if (openGLMode != RENDER_SAFE_OPENGL)
         {
             if (mRedraw)
             {

@@ -35,7 +35,7 @@
 
 TouchManager touchManager;
 
-extern int openGLMode;
+extern RenderType openGLMode;
 
 TouchManager::TouchManager() :
     mKeyboard(nullptr),
@@ -181,7 +181,7 @@ void TouchManager::clear()
 
 void TouchManager::draw()
 {
-    if (openGLMode != 2)
+    if (openGLMode != RENDER_SAFE_OPENGL)
     {
         if (mRedraw)
         {

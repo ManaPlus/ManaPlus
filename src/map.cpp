@@ -384,7 +384,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
 #ifdef USE_OPENGL
     int updateFlag = 0;
 
-    if (mOpenGL == 1 || mOpenGL == 3)
+    if (mOpenGL == RENDER_NORMAL_OPENGL || mOpenGL == RENDER_GLES_OPENGL)
     {
         if (mLastX != startX || mLastY != startY || mLastScrollX != scrollX
             || mLastScrollY != scrollY)
@@ -439,8 +439,8 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
             else
             {
 #ifdef USE_OPENGL
-//                if ((mOpenGL == 1 || mOpenGL == 3) && updateFlag != 2)
-                if (mOpenGL == 1 || mOpenGL == 3)
+                if (mOpenGL == RENDER_NORMAL_OPENGL
+                    || mOpenGL == RENDER_GLES_OPENGL)
                 {
                     if (updateFlag)
                     {
@@ -480,7 +480,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         {
             if (Actor *const actor = *ai)
             {
-                if (!mOpenGL)
+                if (mOpenGL == RENDER_SOFTWARE)
                 {
                     const int x = actor->getTileX();
                     const int y = actor->getTileY();
@@ -1444,7 +1444,7 @@ void Map::reduce()
 #ifdef USE_SDL2
     return;
 #else
-    if (!mFringeLayer || mOpenGL > 0 ||
+    if (!mFringeLayer || mOpenGL != RENDER_SOFTWARE ||
         !config.getBoolValue("enableMapReduce"))
     {
         return;
