@@ -25,12 +25,14 @@
 
 #include <guichan/mouselistener.hpp>
 #include <guichan/widget.hpp>
+#include <guichan/widgetlistener.hpp>
 
 #include "localconsts.h"
 
 class EmotePage final : public gcn::Widget,
                         public Widget2,
-                        public gcn::MouseListener
+                        public gcn::MouseListener,
+                        public gcn::WidgetListener
 {
     public:
         explicit EmotePage(const Widget2 *const widget);
@@ -45,6 +47,10 @@ class EmotePage final : public gcn::Widget,
 
         int getIndexFromGrid(const int x, const int y) const;
 
+        void widgetResized(const gcn::Event &event A_UNUSED);
+
+        void widgetMoved(const gcn::Event &event A_UNUSED);
+
         void resetAction();
 
         int getSelectedIndex()
@@ -52,7 +58,9 @@ class EmotePage final : public gcn::Widget,
 
     private:
         ImageSet *mEmotes;
+        ImageCollection *mVertexes;
         int mSelectedIndex;
+        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_EMOTEPAGE_H

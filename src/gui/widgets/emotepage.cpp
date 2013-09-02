@@ -20,6 +20,8 @@
 
 #include "gui/widgets/emotepage.h"
 
+#include "graphicsvertexes.h"
+
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
@@ -34,11 +36,16 @@ namespace
 EmotePage::EmotePage(const Widget2 *const widget) :
     gcn::Widget(),
     Widget2(widget),
+    gcn::MouseListener(),
+    gcn::WidgetListener(),
     mEmotes(ResourceManager::getInstance()->getImageSet(
         "graphics/sprites/chatemotes.png", emoteWidth, emoteHeight)),
-    mSelectedIndex(-1)
+    mVertexes(new ImageCollection),
+    mSelectedIndex(-1),
+    mRedraw(true)
 {
     addMouseListener(this);
+    addWidgetListener(this);
 }
 
 EmotePage::~EmotePage()
@@ -48,6 +55,8 @@ EmotePage::~EmotePage()
         mEmotes->decRef();
         mEmotes = nullptr;
     }
+    delete mVertexes;
+    mVertexes = nullptr;
 }
 
 void EmotePage::draw(gcn::Graphics *graphics)
@@ -64,17 +73,43 @@ void EmotePage::draw(gcn::Graphics *graphics)
     unsigned int x = 0;
     unsigned int y = 0;
 
-    FOR_EACH (std::vector<Image*>::const_iterator, it, images)
+    if (openGLMode != RENDER_SAFE_OPENGL)
     {
-        const Image *const image = *it;
-        if (image)
+        if (mRedraw)
         {
-            g->drawImage(image, x, y);
-            x += emoteWidth;
-            if (x + emoteWidth > width)
+            mRedraw = false;
+            mVertexes->clear();
+            FOR_EACH (std::vector<Image*>::const_iterator, it, images)
             {
-                x = 0;
-                y += emoteHeight;
+                const Image *const image = *it;
+                if (image)
+                {
+                    g->calcTile(mVertexes, image, x, y);
+                    x += emoteWidth;
+                    if (x + emoteWidth > width)
+                    {
+                        x = 0;
+                        y += emoteHeight;
+                    }
+                }
+            }
+        }
+        g->drawTile(mVertexes);
+    }
+    else
+    {
+        FOR_EACH (std::vector<Image*>::const_iterator, it, images)
+        {
+            const Image *const image = *it;
+            if (image)
+            {
+                g->drawImage(image, x, y);
+                x += emoteWidth;
+                if (x + emoteWidth > width)
+                {
+                    x = 0;
+                    y += emoteHeight;
+                }
             }
         }
     }
@@ -103,4 +138,14 @@ int EmotePage::getIndexFromGrid(const int x, const int y) const
 void EmotePage::resetAction()
 {
     mSelectedIndex = -1;
+}
+
+void EmotePage::widgetResized(const gcn::Event &event A_UNUSED)
+{
+    mRedraw = true;
+}
+
+void EmotePage::widgetMoved(const gcn::Event &event A_UNUSED)
+{
+    mRedraw = true;
 }
