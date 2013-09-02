@@ -231,6 +231,16 @@ void Tab::draw(gcn::Graphics *graphics)
                 mVertexes->clear();
                 g->calcWindow(mVertexes, 0, 0,
                     mDimension.width, mDimension.height, rect);
+
+                if (mImage)
+                {
+                    const Skin *const skin1 = tabImg[TAB_STANDARD];
+                    if (skin1)
+                    {
+                        const int padding = skin1->getPadding();
+                        g->calcTile(mVertexes, mImage, padding, padding);
+                    }
+                }
             }
 
             g->drawTile(mVertexes);
@@ -239,16 +249,15 @@ void Tab::draw(gcn::Graphics *graphics)
         {
             g->drawImageRect(0, 0,
                 mDimension.width, mDimension.height, skin->getBorder());
-        }
-    }
-
-    if (mImage)
-    {
-        const Skin *const skin1 = tabImg[TAB_STANDARD];
-        if (skin1)
-        {
-            const int padding = skin1->getPadding();
-            g->drawImage(mImage, padding, padding);
+            if (mImage)
+            {
+                const Skin *const skin1 = tabImg[TAB_STANDARD];
+                if (skin1)
+                {
+                    const int padding = skin1->getPadding();
+                    g->drawImage(mImage, padding, padding);
+                }
+            }
         }
     }
 
