@@ -23,6 +23,7 @@
 
 #include "actorspritemanager.h"
 #include "configuration.h"
+#include "graphicsvertexes.h"
 #include "guild.h"
 #include "maplayer.h"
 
@@ -111,6 +112,9 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
     // Draw the list elements
     graphics->setColorAll(mForegroundColor, mForegroundColor2);
+    ImageCollection vertexes;
+    const bool useCaching = openGLMode != RENDER_SAFE_OPENGL;
+
     for (int i = 0, y = 0;
          i < model->getNumberOfElements();
          ++i, y += fontHeight)
@@ -125,7 +129,17 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             const Image *const icon = a->getOnline()
                 ? onlineIcon : offlineIcon;
             if (icon)
-                graphics->drawImage(icon, mImagePadding, y + mPadding);
+            {
+                if (useCaching)
+                {
+                    graphics->calcTile(&vertexes, icon,
+                        mImagePadding, y + mPadding);
+                }
+                else
+                {
+                    graphics->drawImage(icon, mImagePadding, y + mPadding);
+                }
+            }
         }
 
         std::string text;
@@ -289,6 +303,9 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             }
         }
     }
+
+    if (useCaching)
+        graphics->drawTile(&vertexes);
 
     if (parent)
         setWidth(parent->getWidth() - 10);
