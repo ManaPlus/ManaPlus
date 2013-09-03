@@ -36,6 +36,7 @@ SET (FILES
     keyboard_icon.xml
     label.xml
     listbox.xml
+    lock.png
     ministatus.xml
     mouse.png
     npc.xml

@@ -194,6 +194,7 @@ class ItemContainer final : public gcn::Widget,
 
         Inventory *mInventory;
         Image *mSelImg;
+        Image *mProtectedImg;
         std::string mName;
 
         ItemPopup *mItemPopup;

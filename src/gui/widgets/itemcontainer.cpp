@@ -166,6 +166,7 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     gcn::WidgetListener(),
     mInventory(inventory),
     mSelImg(Theme::getImageFromThemeXml("item_selection.xml", "")),
+    mProtectedImg(Theme::getImageFromTheme("lock.png")),
     mName(),
     mItemPopup(new ItemPopup),
     mShowMatrix(nullptr),
@@ -211,6 +212,12 @@ ItemContainer::~ItemContainer()
         mSelImg->decRef();
         mSelImg = nullptr;
     }
+    if (mProtectedImg)
+    {
+        mProtectedImg->decRef();
+        mProtectedImg = nullptr;
+    }
+
     if (Theme::instance())
         Theme::instance()->unload(mSkin);
 
@@ -278,6 +285,11 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                 image->setAlpha(1.0f);  // ensure the image if fully drawn...
                 g->drawImage(image, itemX + mPaddingItemX,
                     itemY + mPaddingItemY);
+                if (mProtectedImg && PlayerInfo::isItemProtected(item->getId()))
+                {
+                    g->drawImage(mProtectedImg, itemX + mPaddingItemX,
+                        itemY + mPaddingItemY);
+                }
             }
         }
     }
