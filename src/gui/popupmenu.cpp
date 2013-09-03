@@ -2566,6 +2566,7 @@ void PopupMenu::addProtection()
 {
     if (PlayerInfo::isItemProtected(mItemId))
     {
+        mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
         mBrowserBox->addRow("unprotect item", _("Unprotect item"));
     }
@@ -2573,6 +2574,7 @@ void PopupMenu::addProtection()
     {
         if (mItemId < SPELL_MIN_ID)
         {
+            mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             mBrowserBox->addRow("protect item", _("Protect item"));
         }
@@ -2605,6 +2607,7 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
 
     if (!isProtected)
     {
+        mBrowserBox->addRow("##3---");
         if (item->getQuantity() > 1)
         {
             // TRANSLATORS: popup menu item
