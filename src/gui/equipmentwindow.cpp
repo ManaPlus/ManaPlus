@@ -22,12 +22,14 @@
 
 #include "gui/equipmentwindow.h"
 
+#include "dragdrop.h"
 #include "graphicsvertexes.h"
 #include "inventory.h"
 #include "item.h"
 
 #include "being/being.h"
 #include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "gui/itempopup.h"
 #include "gui/setup.h"
@@ -278,10 +280,11 @@ Item *EquipmentWindow::getItem(const int x, const int y) const
 
 void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
 {
-    Window::mousePressed(mouseEvent);
-
     if (!mEquipment)
+    {
+        Window::mousePressed(mouseEvent);
         return;
+    }
 
     const int x = mouseEvent.getX();
     const int y = mouseEvent.getY();
@@ -293,6 +296,8 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
         // Checks if any of the presses were in the equip boxes.
         int i = 0;
 
+        bool inBox(false);
+
         for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
              it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
         {
@@ -302,8 +307,18 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
             const Item *const item = mEquipment->getEquipment(i);
             const gcn::Rectangle tRect(box->x, box->y, mBoxSize, mBoxSize);
 
-            if (tRect.isPointInRect(x, y) && item)
-                setSelected(i);
+            if (tRect.isPointInRect(x, y))
+            {
+                inBox = true;
+                if (item)
+                {
+                    setSelected(i);
+                    dragDrop.dragItem(item, DRAGDROP_SOURCE_EQUIPMENT);
+                    return;
+                }
+            }
+            if (inBox)
+                return;
         }
     }
     else if (mouseEvent.getButton() == gcn::MouseEvent::RIGHT)
@@ -327,6 +342,62 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
             }
         }
     }
+    Window::mousePressed(mouseEvent);
+}
+
+void EquipmentWindow::mouseReleased(gcn::MouseEvent &mouseEvent)
+{
+    Window::mouseReleased(mouseEvent);
+    const DragDropSource src = dragDrop.getSource();
+    if (dragDrop.isEmpty() || (src != DRAGDROP_SOURCE_INVENTORY
+        && src != DRAGDROP_SOURCE_EQUIPMENT))
+    {
+        return;
+    }
+    Inventory *const inventory = player_node
+        ? PlayerInfo::getInventory() : nullptr;
+    if (!inventory)
+        return;
+
+    Item *const item = inventory->findItem(dragDrop.getItem(),
+        dragDrop.getItemColor());
+    if (!item)
+        return;
+
+    if (dragDrop.getSource() == DRAGDROP_SOURCE_INVENTORY)
+    {
+        if (item->isEquipment())
+        {
+            if (!item->isEquipped())
+                Net::getInventoryHandler()->equipItem(item);
+        }
+    }
+    else if (dragDrop.getSource() == DRAGDROP_SOURCE_EQUIPMENT)
+    {
+        if (item->isEquipment())
+        {
+            const int x = mouseEvent.getX();
+            const int y = mouseEvent.getY();
+            int i = 0;
+            for (std::vector<EquipmentBox*>::const_iterator
+                 it = mBoxes.begin(), it_end = mBoxes.end();
+                 it != it_end; ++ it, ++ i)
+            {
+                const EquipmentBox *const box = *it;
+                if (!box)
+                    continue;
+                const gcn::Rectangle tRect(box->x, box->y, mBoxSize, mBoxSize);
+
+                if (tRect.isPointInRect(x, y))
+                    return;
+            }
+
+            if (item->isEquipped())
+                Net::getInventoryHandler()->unequipItem(item);
+        }
+    }
+    dragDrop.clear();
+    dragDrop.deselect();
 }
 
 // Show ItemTooltip

@@ -101,6 +101,8 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
 
         void mouseMoved(gcn::MouseEvent &event) override;
 
+        void mouseReleased(gcn::MouseEvent &event) override;
+
         void recalcSize();
 
     private:
