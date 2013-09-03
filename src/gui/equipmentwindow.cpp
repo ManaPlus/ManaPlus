@@ -563,7 +563,7 @@ int EquipmentWindow::parseSlotName(const std::string &name) const
     {
         id = 0;
     }
-    else if (name == "free" || name == "misc1")
+    else if (name == "misc1" || name == "cape")
     {
         id = 5;
     }
