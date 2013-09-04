@@ -349,6 +349,7 @@ enum
 #define CMSG_SET_STATUS              0x0213
 #define SMSG_QUEST_SET_VAR           0x0214
 #define SMSG_QUEST_PLAYER_VARS       0x0215
+#define SMSG_BEING_MOVE3             0x0225
 
 #define CMSG_SEND_CLIENT_INFO        0x7533
 #define SMSG_UPDATE_HOST2            0x7534

@@ -54,6 +54,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         virtual void processPlayerMoveUpdate(Net::MessageIn &msg,
                                              const int type) const;
+
+        virtual void processBeingMove3(Net::MessageIn &msg) const;
 };
 
 }  // namespace TmwAthena

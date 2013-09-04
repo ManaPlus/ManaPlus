@@ -900,12 +900,12 @@ class Being : public ActorSprite, public ConfigListener
 
         NextSoundInfo mNextSound;
 
-    protected:
         /**
          * Sets the new path for this being.
          */
         void setPath(const Path &path);
 
+    protected:
         /**
          * Updates name's location.
          */

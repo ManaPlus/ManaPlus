@@ -29,6 +29,7 @@
 #include "guild.h"
 #include "guildmanager.h"
 #include "party.h"
+#include "position.h"
 
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
@@ -95,6 +96,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_IP_RESPONSE,
         SMSG_PVP_MAP_MODE,
         SMSG_PVP_SET,
+        SMSG_BEING_MOVE3,
         0
     };
     handledMessages = _messages;
@@ -119,6 +121,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_MOVE2:
             processBeingMove2(msg);
+            break;
+
+        case SMSG_BEING_MOVE3:
+            processBeingMove3(msg);
             break;
 
         case SMSG_BEING_SPAWN:
@@ -656,6 +662,42 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     if (msgType == 3 && dstBeing->getType() == Being::PLAYER)
         dstBeing->setMoveTime();
+}
+
+void BeingHandler::processBeingMove3(Net::MessageIn &msg) const
+{
+    if (serverVersion < 10)
+        return;
+
+    const static int dirx[8] = {0, -1, -1, -1,  0,  1, 1, 1};
+    const static int diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
+
+    const int len = msg.readInt16() - 14;
+    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    if (!dstBeing)
+        return;
+    const int16_t speed = msg.readInt16();
+    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    int16_t x = msg.readInt16();
+    int16_t y = msg.readInt16();
+    const unsigned char *moves = msg.readBytes(len);
+    Path path;
+    for (int f = 0; f < len; f ++)
+    {
+        const unsigned char dir = moves[f];
+        if (dir <= 7)
+        {
+            x += dirx[dir];
+            y += diry[dir];
+            path.push_back(Position(x, y));
+        }
+        else
+        {
+            logger->log("bad move packet: %d", dir);
+        }
+    }
+
+    dstBeing->setPath(path);
 }
 
 }  // namespace TmwAthena

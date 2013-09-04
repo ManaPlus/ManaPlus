@@ -306,7 +306,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         {
             dstBeing->setAction(Being::STAND);
             dstBeing->setTileCoords(srcX, srcY);
-            dstBeing->setDestination(dstX, dstY);
+            if (serverVersion < 10)
+                dstBeing->setDestination(dstX, dstY);
         }
     }
     else
