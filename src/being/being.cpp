@@ -1481,10 +1481,8 @@ void Being::logic()
 
             case MOVE:
             {
-                if (getWalkSpeed().x && static_cast<int> ((static_cast<float>(
-                    get_elapsed_time(mActionTime)) * static_cast<float>(
-                    frameCount)) / getWalkSpeed().x)
-                    >= frameCount)
+                if (static_cast<float>(get_elapsed_time(mActionTime)
+                    >= getWalkSpeed().x))
                 {
                     nextTile();
                 }
@@ -1493,8 +1491,6 @@ void Being::logic()
 
             case ATTACK:
             {
-//                std::string particleEffect("");
-
                 if (!mActionTime)
                     break;
 
