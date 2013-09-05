@@ -476,7 +476,7 @@ class Being : public ActorSprite, public ConfigListener
          * in tiles per second for Manaserv.
          */
         void setWalkSpeed(const Vector &speed)
-        { mWalkSpeed = speed; }
+        { mWalkSpeed = speed; mSpeed = speed.x; }
 
         /**
          * Gets the walk speed.
@@ -1000,6 +1000,7 @@ class Being : public ActorSprite, public ConfigListener
          * @see MILLISECONDS_IN_A_TICK
          */
         Vector mWalkSpeed;
+        float mSpeed;
         std::string mIp;
         int *mSpriteRemap;
         int *mSpriteHide;

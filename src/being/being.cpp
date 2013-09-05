@@ -137,6 +137,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mType(type),
     mSpeechBubble(new SpeechBubble),
     mWalkSpeed(Net::getPlayerHandler()->getDefaultWalkSpeed()),
+    mSpeed(Net::getPlayerHandler()->getDefaultWalkSpeed().x),
     mIp(),
     mSpriteRemap(new int[20]),
     mSpriteHide(new int[20]),
@@ -1345,10 +1346,15 @@ void Being::nextTile()
         return;
     }
 
+    mActionTime += static_cast<int>(mSpeed / 10);
+    if (mX != pos.x && mY != pos.y)
+        mSpeed = mWalkSpeed.x * 1.4;
+    else
+        mSpeed = mWalkSpeed.x;
+
     mX = pos.x;
     mY = pos.y;
     setAction(MOVE);
-    mActionTime += static_cast<int>(mWalkSpeed.x / 10);
 }
 
 void Being::logic()
@@ -1481,8 +1487,8 @@ void Being::logic()
 
             case MOVE:
             {
-                if (static_cast<float>(get_elapsed_time(mActionTime)
-                    >= getWalkSpeed().x))
+                if (static_cast<float>(get_elapsed_time(
+                    mActionTime)) >= mSpeed)
                 {
                     nextTile();
                 }
@@ -1528,10 +1534,9 @@ void Being::logic()
     if (frameCount < 10)
         frameCount = 10;
 
-    if (!isAlive() && getWalkSpeed().x
-        && Net::getGameHandler()->removeDeadBeings()
+    if (!isAlive() && mSpeed && Net::getGameHandler()->removeDeadBeings()
         && static_cast<int> ((static_cast<float>(get_elapsed_time(mActionTime))
-        / static_cast<float>(getWalkSpeed().x))) >= frameCount)
+        / mSpeed)) >= frameCount)
     {
         if (mType != PLAYER && actorSpriteManager)
             actorSpriteManager->destroy(this);
@@ -1627,11 +1632,9 @@ int Being::getOffset(const signed char pos, const signed char neg) const
         const int time = get_elapsed_time(mActionTime);
         offset = (pos == LEFT && neg == RIGHT) ?
             static_cast<int>((static_cast<float>(time)
-             * static_cast<float>(mMap->getTileWidth()))
-             / static_cast<float>(mWalkSpeed.x)) :
+            * static_cast<float>(mMap->getTileWidth())) / mSpeed) :
             static_cast<int>((static_cast<float>(time)
-            * static_cast<float>(mMap->getTileHeight()))
-            / static_cast<float>(mWalkSpeed.y));
+            * static_cast<float>(mMap->getTileHeight())) / mSpeed);
     }
 
     // We calculate the offset _from_ the _target_ location
