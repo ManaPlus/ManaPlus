@@ -186,6 +186,10 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "highlightWords", this, "highlightWordsEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemTextField(_("Globals ignore names (separated by comma)"), "",
+        "globalsFilter", this, "globalsFilterEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show MVP messages"), "",
         "showMVP", this, "showMVPEvent");
 

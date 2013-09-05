@@ -215,6 +215,7 @@ ChatWindow::ChatWindow():
     mChatHistoryIndex(0),
     mAwayLog(),
     mHighlights(),
+    mGlobalsFilter(),
     mGMLoaded(false),
     mHaveMouse(false),
     mAutoHide(config.getBoolValue("autohideChat")),
@@ -291,9 +292,11 @@ ChatWindow::ChatWindow():
     initTradeFilter();
     loadCustomList();
     parseHighlights();
+    parseGlobalsFilter();
 
     config.addListener("autohideChat", this);
     config.addListener("showBattleEvents", this);
+    config.addListener("globalsFilter", this);
 
     enableVisibleSound(true);
 }
@@ -1683,6 +1686,18 @@ void ChatWindow::parseHighlights()
     mHighlights.push_back(player_node->getName());
 }
 
+void ChatWindow::parseGlobalsFilter()
+{
+    mGlobalsFilter.clear();
+    if (!player_node)
+        return;
+
+    splitToStringVector(mGlobalsFilter, config.getStringValue(
+        "globalsFilter"), ',');
+
+    mHighlights.push_back(player_node->getName());
+}
+
 bool ChatWindow::findHighlight(const std::string &str)
 {
     return findI(str, mHighlights) != std::string::npos;
@@ -1708,6 +1723,8 @@ void ChatWindow::optionChanged(const std::string &name)
         mAutoHide = config.getBoolValue("autohideChat");
     else if (name == "showBattleEvents")
         mShowBattleEvents = config.getBoolValue("showBattleEvents");
+    else if (name == "globalsFilter")
+        parseGlobalsFilter();
 }
 
 void ChatWindow::mouseMoved(gcn::MouseEvent &event)
@@ -1768,3 +1785,11 @@ void ChatWindow::logicChildren()
     BLOCK_END("ChatWindow::logicChildren")
 }
 #endif
+
+void ChatWindow::addGlobalMessage(const std::string &line)
+{
+    if (debugChatTab && findI(line, mGlobalsFilter) != std::string::npos)
+        debugChatTab->chatLog(line, BY_OTHER);
+    else
+        localChatTab->chatLog(line, BY_GM);
+}

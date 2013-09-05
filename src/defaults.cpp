@@ -299,6 +299,7 @@ DefaultsData* getConfigDefaults()
 #endif
     AddDEF("logInput", false);
     AddDEF("highlightWords", "");
+    AddDEF("globalsFilter", "Sagatha");
     AddDEF("selfMouseHeal", true);
     AddDEF("serverslistupdate", "");
     AddDEF("fadeoutmusic", true);

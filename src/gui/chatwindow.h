@@ -273,6 +273,8 @@ class ChatWindow final : public Window,
 
         void parseHighlights();
 
+        void parseGlobalsFilter();
+
         bool findHighlight(const std::string &str) A_WARN_UNUSED;
 
         void copyToClipboard(const int x, const int y) const;
@@ -292,6 +294,8 @@ class ChatWindow final : public Window,
         void unHideWindow();
 
         void widgetResized(const gcn::Event &event) override;
+
+        void addGlobalMessage(const std::string &line);
 
 #ifdef USE_PROFILER
         void logicChildren();
@@ -367,6 +371,7 @@ class ChatWindow final : public Window,
         unsigned int mChatHistoryIndex;
         std::list<std::string> mAwayLog;
         StringVect mHighlights;
+        StringVect mGlobalsFilter;
         bool mGMLoaded;
         bool mHaveMouse;
         bool mAutoHide;

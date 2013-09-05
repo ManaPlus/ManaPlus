@@ -356,7 +356,8 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
     }
     else if (localChatTab)
     {
-        localChatTab->chatLog(chatMsg, BY_GM);
+        if (chatWindow)
+            chatWindow->addGlobalMessage(chatMsg);
     }
     BLOCK_END("ChatHandler::processChat")
 }
