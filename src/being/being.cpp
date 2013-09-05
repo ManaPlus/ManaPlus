@@ -89,6 +89,7 @@ bool Being::mShowPlayersStatus = false;
 bool Being::mEnableReorderSprites = true;
 bool Being::mHideErased = false;
 bool Being::mMoveNames = false;
+bool Being::mUseDiagonal = true;
 int Being::mAwayEffect = -1;
 
 std::list<BeingCacheEntry*> beingInfoCache;
@@ -1347,7 +1348,7 @@ void Being::nextTile()
     }
 
     mActionTime += static_cast<int>(mSpeed / 10);
-    if (mX != pos.x && mY != pos.y)
+    if ((mType != PLAYER || mUseDiagonal) && mX != pos.x && mY != pos.y)
         mSpeed = mWalkSpeed.x * 1.4;
     else
         mSpeed = mWalkSpeed.x;
@@ -2034,6 +2035,7 @@ void Being::reReadConfig()
         mEnableReorderSprites = config.getBoolValue("enableReorderSprites");
         mHideErased = config.getBoolValue("hideErased");
         mMoveNames = config.getBoolValue("moveNames");
+        mUseDiagonal = config.getBoolValue("useDiagonalSpeed");
 
         mUpdateConfigTime = cur_time;
     }

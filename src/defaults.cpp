@@ -322,6 +322,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("cfgver", 0);
     AddDEF("enableDebugLog", false);
     AddDEF("doubleClick", true);
+    AddDEF("useDiagonalSpeed", true);
     return configData;
 }
 

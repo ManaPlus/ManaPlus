@@ -1034,6 +1034,7 @@ class Being : public ActorSprite, public ConfigListener
         static bool mEnableReorderSprites;
         static bool mHideErased;
         static bool mMoveNames;
+        static bool mUseDiagonal;
         static int mAwayEffect;
 
         unsigned int mMoveTime;
