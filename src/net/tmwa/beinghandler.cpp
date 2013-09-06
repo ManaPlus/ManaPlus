@@ -697,6 +697,7 @@ void BeingHandler::processBeingMove3(Net::MessageIn &msg) const
         }
     }
 
+    delete [] moves;
     dstBeing->setPath(path);
 }
 
