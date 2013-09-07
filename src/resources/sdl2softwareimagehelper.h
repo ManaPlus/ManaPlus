@@ -95,7 +95,14 @@ class SDL2SoftwareImageHelper final : public ImageHelper
                                   SDL_Rect *const dstrect);
 
         static void setFormat(SDL_PixelFormat *const format)
-        { mFormat = format; }
+        {
+            mFormat = format;
+            if (mFormat)
+            {
+                mFormat->Amask = ~(format->Rmask
+                    | format->Gmask | format->Bmask);
+            }
+        }
 
     protected:
         /** SDL_Surface to SDL_Surface Image loader */
