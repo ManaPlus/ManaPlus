@@ -241,6 +241,8 @@ Section "Core files (required)" SecCore
   CreateDirectory "$INSTDIR\data\themes\pink"
   CreateDirectory "$INSTDIR\data\themes\unity"
   CreateDirectory "$INSTDIR\data\themes\wood"
+  CreateDirectory "$INSTDIR\data\translations"
+  CreateDirectory "$INSTDIR\data\translations\help"
   CreateDirectory "$INSTDIR\docs"
 
   SetOverwrite ifnewer
@@ -309,6 +311,8 @@ Section "Core files (required)" SecCore
   SetOutPath "$INSTDIR\data\themes\wood"
   File "${SRCDIR}\data\themes\wood\*.png"
   File "${SRCDIR}\data\themes\wood\*.xml"
+  SetOutPath "$INSTDIR\data\translations\help"
+  File "${SRCDIR}\data\translations\help\*.po"
   SetOutPath "$INSTDIR\data\help"
   File "${SRCDIR}\data\help\*.txt"
   SetOutPath "$INSTDIR\data\help\tips"
