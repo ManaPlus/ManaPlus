@@ -1206,7 +1206,7 @@ void Being::setAction(const Action &action, const int attackId)
             currentAction = getDeadAction();
             if (mInfo)
             {
-                playSfx(mInfo->getSound(SOUND_EVENT_DIE), this, true, mX, mY);
+                playSfx(mInfo->getSound(SOUND_EVENT_DIE), this, false, mX, mY);
                 if (mType == MONSTER || mType == NPC)
                     mYDiff = mInfo->getDeadSortOffsetY();
             }
