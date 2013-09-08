@@ -511,6 +511,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
                 }
             }
 #else
+            mainGraphics->setWindowSize(width, height);
             client->resizeVideo(width, height);
 #endif
         }

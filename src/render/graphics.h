@@ -267,6 +267,8 @@ class Graphics : public gcn::Graphics
          */
         virtual void updateScreen() = 0;
 
+        void setWindowSize(const int width, const int height);
+
         /**
          * Returns the width of the screen.
          */
