@@ -115,6 +115,15 @@ void MapDB::readAtlas(XmlNodePtr node)
             mAtlases[atlas].push_back(file);
         }
     }
+    if (atlas != "all")
+    {
+        const AtlasCIter &allAtlas = mAtlases.find("all");
+        if (allAtlas != mAtlases.end())
+        {
+            FOR_EACH (StringVectCIter, it, (*allAtlas).second)
+                mAtlases[atlas].push_back(*it);
+        }
+    }
 }
 
 void MapDB::loadInfo()
