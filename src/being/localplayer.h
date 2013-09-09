@@ -32,15 +32,12 @@
 
 #include <guichan/actionlistener.hpp>
 
-#include <memory>
 #include <vector>
 
 #include "localconsts.h"
 
 class ChatTab;
 class FloorItem;
-class ImageSet;
-class Item;
 class Map;
 class OkDialog;
 

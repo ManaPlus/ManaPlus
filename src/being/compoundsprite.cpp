@@ -40,8 +40,6 @@
 #include "utils/dtor.h"
 #include "utils/sdlcheckutils.h"
 
-#include <SDL.h>
-
 #include "debug.h"
 
 static const int BUFFER_WIDTH = 100;

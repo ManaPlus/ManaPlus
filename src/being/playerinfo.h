@@ -59,7 +59,6 @@ struct PlayerInfoBackend final
     IntMap mSkills;
 };
 
-class Equipment;
 class Inventory;
 class Item;
 

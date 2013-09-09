@@ -23,10 +23,7 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "effectmanager.h"
 #include "imagesprite.h"
-#include "simpleanimation.h"
-#include "soundmanager.h"
 #include "statuseffect.h"
 
 #include "being/actorspritelistener.h"
@@ -34,9 +31,6 @@
 
 #include "gui/theme.h"
 
-#include "net/net.h"
-
-#include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/checkutils.h"

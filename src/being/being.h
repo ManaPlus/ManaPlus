@@ -29,10 +29,7 @@
 
 #include <guichan/color.hpp>
 
-#include <SDL_types.h>
-
 #include <map>
-#include <set>
 
 #include "localconsts.h"
 
@@ -48,18 +45,13 @@ static const int DEFAULT_BEING_HEIGHT = 32;
 
 class AnimatedSprite;
 class BeingCacheEntry;
-class Being;
 class FlashText;
 class Guild;
-class Inventory;
 class ItemInfo;
-class Item;
 class Particle;
 class Party;
 class SpeechBubble;
 class Text;
-
-struct Position;
 
 extern volatile int cur_time;
 

@@ -27,8 +27,6 @@
 
 #include "being/localplayer.h"
 
-#include "render/graphics.h"
-
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 

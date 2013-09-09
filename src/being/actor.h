@@ -30,7 +30,6 @@
 
 class Actor;
 class Graphics;
-class Image;
 class Map;
 
 typedef std::list<Actor*> Actors;

@@ -26,12 +26,10 @@
 #include "client.h"
 #include "configuration.h"
 #include "dropshortcut.h"
-#include "effectmanager.h"
 #include "guild.h"
 #include "item.h"
 #include "maplayer.h"
 #include "party.h"
-#include "simpleanimation.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
@@ -59,21 +57,13 @@
 #include "gui/widgets/gmtab.h"
 #include "gui/widgets/whispertab.h"
 
-#include "render/graphics.h"
-
 #include "net/beinghandler.h"
 #include "net/chathandler.h"
-#include "net/guildhandler.h"
 #include "net/inventoryhandler.h"
 #include "net/net.h"
-#include "net/partyhandler.h"
 #include "net/playerhandler.h"
-#include "net/skillhandler.h"
-#include "net/tradehandler.h"
 
-#include "resources/imageset.h"
 #include "resources/iteminfo.h"
-#include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
 

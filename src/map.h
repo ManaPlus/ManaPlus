@@ -36,6 +36,7 @@
 
 class Animation;
 class AmbientLayer;
+class Image;
 class MapLayer;
 class Particle;
 class Resource;

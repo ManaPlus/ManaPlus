@@ -32,6 +32,7 @@
 #include <string>
 #include <vector>
 
+class Image;
 class MapItem;
 class SpecialLayer;
 class ImageVertexes;

@@ -25,8 +25,6 @@
 #include "configuration.h"
 #include "depricatedevent.h"
 #include "inventory.h"
-#include "depricatedlistener.h"
-#include "logger.h"
 
 #include "gui/inventorywindow.h"
 #include "gui/npcdialog.h"

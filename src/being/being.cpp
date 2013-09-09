@@ -29,7 +29,6 @@
 #include "effectmanager.h"
 #include "guild.h"
 #include "party.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
 #include "text.h"
 
@@ -46,13 +45,13 @@
 
 #include "net/charserverhandler.h"
 #include "net/gamehandler.h"
-#include "net/inventoryhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
 
 #include "resources/avatardb.h"
 #include "resources/emotedb.h"
+#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 #include "resources/monsterdb.h"
 #include "resources/npcdb.h"
@@ -63,8 +62,6 @@
 #include "gui/widgets/skillinfo.h"
 
 #include "utils/gettext.h"
-
-#include <cmath>
 
 #include "debug.h"
 

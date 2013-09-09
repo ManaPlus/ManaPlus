@@ -30,8 +30,6 @@
 
 #include "particle/particlecontainer.h"
 
-#include <SDL_types.h>
-
 #include <set>
 #include <list>
 
