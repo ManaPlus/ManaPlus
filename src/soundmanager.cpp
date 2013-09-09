@@ -293,6 +293,9 @@ void SoundManager::fadeInMusic(const std::string &fileName, const int ms)
 
 void SoundManager::fadeOutMusic(const int ms)
 {
+    if (!mPlayMusic)
+        return;
+
     mCurrentMusicFile.clear();
 
     if (!mInstalled)
@@ -317,6 +320,9 @@ void SoundManager::fadeOutMusic(const int ms)
 void SoundManager::fadeOutAndPlayMusic(const std::string &fileName,
                                        const int ms)
 {
+    if (!mPlayMusic)
+        return;
+
     mNextMusicFile = fileName;
     fadeOutMusic(ms);
 }
