@@ -27,14 +27,12 @@
 #include "auctionmanager.h"
 #include "chatlogger.h"
 #include "configuration.h"
-#include "depricatedevent.h"
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
 #include "guild.h"
 #include "guildmanager.h"
 #include "graphicsmanager.h"
-#include "graphicsvertexes.h"
 #include "itemshortcut.h"
 #include "party.h"
 #include "soundconsts.h"
@@ -64,7 +62,6 @@
 #include "gui/quitdialog.h"
 #include "gui/registerdialog.h"
 #include "gui/npcdialog.h"
-#include "gui/sdlinput.h"
 #include "gui/selldialog.h"
 #include "gui/serverdialog.h"
 #include "gui/setup.h"
@@ -81,7 +78,6 @@
 #include "net/inventoryhandler.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
-#include "net/npchandler.h"
 #include "net/partyhandler.h"
 
 #include "resources/avatardb.h"
@@ -128,8 +124,6 @@
 #ifdef WIN32
 #include <SDL_syswm.h>
 #include "utils/specialfolder.h"
-#else
-#include <cerrno>
 #endif
 
 #ifdef ANDROID
@@ -139,7 +133,6 @@
 #include <sys/stat.h>
 
 #include <climits>
-#include <iostream>
 #include <fstream>
 
 #include "mumblemanager.h"
@@ -2361,7 +2354,7 @@ void Client::storeSafeParameters() const
 #if defined USE_OPENGL
     tmpOpengl = intToRenderType(config.getIntValue("opengl"));
 #else
-    tmpOpengl = 0;
+    tmpOpengl = RENDER_SOFTWARE;
 #endif
 
     width = config.getIntValue("screenwidth");

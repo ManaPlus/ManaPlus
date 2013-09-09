@@ -68,7 +68,6 @@
 #endif
 #include "gui/skilldialog.h"
 #include "gui/statuswindow.h"
-#include "gui/textdialog.h"
 #include "gui/tradewindow.h"
 #include "gui/viewport.h"
 #include "gui/questswindow.h"
@@ -87,7 +86,6 @@
 #include "net/generalhandler.h"
 #include "net/gamehandler.h"
 #include "net/packetcounters.h"
-#include "net/playerhandler.h"
 
 #include "resources/imagewriter.h"
 #include "resources/mapdb.h"
@@ -101,10 +99,6 @@
 #include "utils/process.h"
 #include "utils/sdlcheckutils.h"
 
-#include <guichan/exception.hpp>
-#include <guichan/focushandler.hpp>
-
-#include <fstream>
 #include <sstream>
 #include <string>
 
@@ -397,7 +391,9 @@ Game::Game():
     spellManager = new SpellManager;
     spellShortcut = new SpellShortcut;
 
-    assert(!mInstance);
+//    assert(!mInstance);
+    if (mInstance)
+        logger->log("error: double game creation");
     mInstance = this;
 
     config.incValue("gamecount");

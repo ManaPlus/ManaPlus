@@ -24,7 +24,6 @@
 #include "main.h"
 
 #include "client.h"
-#include "logger.h"
 
 #include <getopt.h>
 #include <iostream>
@@ -46,8 +45,6 @@
 #ifdef __MINGW32__
 #include <windows.h>
 #endif
-
-#include <SDL_version.h>
 
 #include "debug.h"
 

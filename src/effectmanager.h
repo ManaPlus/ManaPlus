@@ -23,7 +23,6 @@
 #ifndef EFFECTMANAGER_H
 #define EFFECTMANAGER_H
 
-#include <list>
 #include <string>
 #include <vector>
 

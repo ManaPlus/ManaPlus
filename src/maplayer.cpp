@@ -31,6 +31,8 @@
 
 #include "being/localplayer.h"
 
+#include "render/graphics.h"
+
 #include "resources/resourcemanager.h"
 
 #include "gui/gui.h"

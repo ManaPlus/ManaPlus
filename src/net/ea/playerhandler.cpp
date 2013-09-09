@@ -24,6 +24,7 @@
 
 #include "game.h"
 #include "party.h"
+#include "notifications.h"
 #include "notifymanager.h"
 #include "units.h"
 

@@ -21,11 +21,7 @@
 #ifndef AUCTIONMANAGER_H
 #define AUCTIONMANAGER_H
 
-#include "utils/dtor.h"
-
-#include <map>
 #include <string>
-#include <vector>
 
 #include "localconsts.h"
 

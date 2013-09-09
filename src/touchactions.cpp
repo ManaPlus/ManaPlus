@@ -20,10 +20,6 @@
 
 #include "touchactions.h"
 
-#include "actionmanager.h"
-#include "configuration.h"
-#include "game.h"
-#include "logger.h"
 #include "mouseinput.h"
 #include "touchmanager.h"
 

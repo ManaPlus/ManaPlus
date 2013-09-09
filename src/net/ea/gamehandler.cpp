@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "game.h"
+#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"

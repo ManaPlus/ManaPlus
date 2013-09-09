@@ -24,6 +24,7 @@
 
 #include "actorspritemanager.h"
 #include "game.h"
+#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/playerrelations.h"

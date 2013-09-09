@@ -25,8 +25,6 @@
 
 #include "spellmanager.h"
 
-class TextCommand;
-
 const unsigned int SPELLS_SIZE = SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS;
 
 /**

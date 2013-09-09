@@ -23,9 +23,6 @@
 #include "logger.h"
 
 #include <iostream>
-#include <sstream>
-
-#include "configuration.h"
 
 #include "gui/widgets/chattab.h"
 

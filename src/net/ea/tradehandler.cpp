@@ -25,6 +25,7 @@
 #include "inventory.h"
 #include "item.h"
 #include "logger.h"
+#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"

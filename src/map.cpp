@@ -24,7 +24,9 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "render/graphics.h"
 #include "maplayer.h"
+#include "notifications.h"
 #include "notifymanager.h"
 #include "simpleanimation.h"
 #include "tileset.h"
@@ -38,8 +40,6 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 #include "resources/subimage.h"
-
-#include "gui/widgets/chattab.h"
 
 #include "utils/dtor.h"
 #include "utils/mkdir.h"

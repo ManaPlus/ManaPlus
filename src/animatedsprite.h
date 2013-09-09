@@ -25,7 +25,6 @@
 
 #include "sprite.h"
 
-#include <map>
 #include <string>
 
 class Animation;

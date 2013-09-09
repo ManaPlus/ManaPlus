@@ -21,8 +21,6 @@
 #ifndef NOTIFYMANAGER_H
 #define NOTIFYMANAGER_H
 
-#include "notifications.h"
-
 #include <string>
 
 namespace NotifyManager

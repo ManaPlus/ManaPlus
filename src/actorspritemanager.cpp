@@ -38,7 +38,6 @@
 #include "gui/widgets/chattab.h"
 
 #include "utils/checkutils.h"
-#include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include "net/net.h"

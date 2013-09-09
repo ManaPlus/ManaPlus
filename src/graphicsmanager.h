@@ -43,18 +43,17 @@
 
 #include "utils/stringvector.h"
 
-#include <SDL_stdinc.h>
-
 #include <set>
 #include <string>
 
 #include "localconsts.h"
 
-class Graphics;
 class TestMain;
 
 struct FBOInfo;
+#ifdef USE_SDL2
 struct SDL_Renderer;
+#endif
 struct SDL_Window;
 
 enum ScreenDensity

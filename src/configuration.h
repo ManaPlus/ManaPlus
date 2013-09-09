@@ -29,7 +29,7 @@
 #include "defaults.h"
 #include "localconsts.h"
 
-#include <cassert>
+//#include <cassert>
 #include <list>
 #include <map>
 #include <string>

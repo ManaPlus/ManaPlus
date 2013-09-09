@@ -26,11 +26,8 @@
 
 #include "render/graphics.h"
 
-#include "utils/stringutils.h"
-
 #include "resources/animation.h"
 #include "resources/dye.h"
-#include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 

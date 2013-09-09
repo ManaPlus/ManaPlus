@@ -24,8 +24,6 @@
 
 #include "depricatedevent.h"
 
-#include <string>
-
 class DepricatedListener
 {
     public:

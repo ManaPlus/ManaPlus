@@ -36,17 +36,10 @@
 #include <SDL_opengl.h>
 #endif
 
-#include <SDL.h>
-
-#include "render/mobileopenglgraphics.h"
-#include "render/normalopenglgraphics.h"
-#include "render/safeopenglgraphics.h"
 #endif
 
 #include "resources/image.h"
 
-#include <string>
-#include <list>
 #include <vector>
 
 struct DoubleRect final

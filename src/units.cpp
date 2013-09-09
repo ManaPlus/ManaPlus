@@ -28,7 +28,6 @@
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
-#include <cmath>
 #include <climits>
 #include <vector>
 

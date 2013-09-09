@@ -37,23 +37,28 @@
 #endif
 
 #include "configuration.h"
-#include "graphicsvertexes.h"
 #include "logger.h"
 #include "mgl.h"
 
 #include "render/graphics.h"
+#include "render/mobileopenglgraphics.h"
+#include "render/normalopenglgraphics.h"
 #include "render/renderers.h"
-#include "render/sdl2softwaregraphics.h"
+#include "render/safeopenglgraphics.h"
 #include "render/sdlgraphics.h"
 
 #include "resources/fboinfo.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
-#include "resources/sdl2softwareimagehelper.h"
 #include "resources/sdlimagehelper.h"
-#include "resources/surfaceimagehelper.h"
 
-#include "utils/paths.h"
+#ifdef USE_SDL2
+#include "render/sdl2softwaregraphics.h"
+
+#include "resources/sdl2softwareimagehelper.h"
+#include "resources/surfaceimagehelper.h"
+#endif
+
 #include "utils/sdlhelper.h"
 #include "utils/stringutils.h"
 

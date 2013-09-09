@@ -23,6 +23,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "logger.h"
+#include "notifications.h"
 #include "notifymanager.h"
 
 #include "utils/xml.h"

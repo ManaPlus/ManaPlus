@@ -30,8 +30,6 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "gui/widgets/chattab.h"
-
 #include "net/inventoryhandler.h"
 #include "net/net.h"
 

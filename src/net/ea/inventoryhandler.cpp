@@ -22,6 +22,7 @@
 
 #include "net/ea/inventoryhandler.h"
 
+#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"

@@ -30,10 +30,6 @@
 
 #include "render/graphics.h"
 
-#include "utils/stringutils.h"
-
-#include <stdlib.h>
-
 #include "debug.h"
 
 VariableData* createData(const int defData)

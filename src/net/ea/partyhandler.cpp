@@ -23,6 +23,7 @@
 
 #include "actorspritemanager.h"
 #include "configuration.h"
+#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"

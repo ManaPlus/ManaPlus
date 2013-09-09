@@ -21,13 +21,9 @@
 #ifndef ACTIONMANAGER_H
 #define ACTIONMANAGER_H
 
-#include <string>
-#include <map>
-
 #define decHandler(name) bool name(const InputEvent &event)
 
 struct InputEvent;
-class Window;
 
 namespace ActionManager
 {

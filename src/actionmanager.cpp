@@ -66,8 +66,6 @@
 
 #include "utils/gettext.h"
 
-#include <guichan/actionlistener.hpp>
-
 #ifdef ANDROID
 #include <SDL_screenkeyboard.h>
 #endif

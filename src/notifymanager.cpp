@@ -21,6 +21,7 @@
 #include "notifymanager.h"
 
 #include "guildmanager.h"
+#include "notifications.h"
 #include "soundmanager.h"
 
 #include "being/localplayer.h"

@@ -23,12 +23,7 @@
 #include "chatlogger.h"
 
 #include <iostream>
-#include <sstream>
 #include <dirent.h>
-
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/time.h>
 
 #ifdef WIN32
 #include <windows.h>

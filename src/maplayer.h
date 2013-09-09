@@ -33,7 +33,6 @@
 #include <vector>
 
 class MapItem;
-class MapLayer;
 class SpecialLayer;
 class ImageVertexes;
 

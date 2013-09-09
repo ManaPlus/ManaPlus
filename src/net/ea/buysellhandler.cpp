@@ -26,6 +26,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "inventory.h"
+#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"

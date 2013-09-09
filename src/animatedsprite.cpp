@@ -23,7 +23,6 @@
 #include "animatedsprite.h"
 
 #include "animationdelayload.h"
-#include "logger.h"
 
 #include "render/graphics.h"
 

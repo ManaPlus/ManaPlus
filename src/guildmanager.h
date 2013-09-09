@@ -23,8 +23,6 @@
 
 #include "utils/stringvector.h"
 
-#include <map>
-
 #include "localconsts.h"
 
 class ChatTab;

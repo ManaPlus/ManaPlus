@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "commandhandler.h"
+#include "commands.h"
 
 #include "auctionmanager.h"
 #include "actorspritemanager.h"
@@ -41,14 +41,16 @@
 #include "gui/shopwindow.h"
 #include "gui/socialwindow.h"
 #include "gui/tradewindow.h"
-#include "gui/sdlfont.h"
 
 #include "gui/widgets/whispertab.h"
 
 #if defined USE_OPENGL
 #include "render/normalopenglgraphics.h"
 #endif
+
+#if defined USE_OPENGL && defined DEBUG_SDLFONT
 #include "render/nullopenglgraphics.h"
+#endif
 
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"
@@ -57,7 +59,6 @@
 #include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
-#include "net/playerhandler.h"
 #include "net/tradehandler.h"
 
 #ifdef DEBUG_DUMP_LEAKS1

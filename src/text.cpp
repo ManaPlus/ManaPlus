@@ -30,7 +30,6 @@
 #include "gui/sdlfont.h"
 #include "gui/theme.h"
 
-#include "resources/resourcemanager.h"
 #include "resources/image.h"
 
 #include <guichan/font.hpp>

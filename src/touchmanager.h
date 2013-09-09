@@ -27,10 +27,8 @@
 
 #include "input/keydata.h"
 
-#include <guichan/mouseinput.hpp>
 #include <guichan/rectangle.hpp>
 
-#include <map>
 #include <string>
 #include <vector>
 
@@ -39,7 +37,6 @@
 class ImageCollection;
 class ImageRect;
 class MouseInput;
-class Skin;
 
 typedef void (*TouchFuncPtr) (const MouseInput &mouseInput);
 

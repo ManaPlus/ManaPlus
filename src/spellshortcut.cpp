@@ -22,17 +22,6 @@
 
 #include "spellshortcut.h"
 
-#include "configuration.h"
-#include "inventory.h"
-#include "item.h"
-
-#include "being/localplayer.h"
-
-#include "gui/widgets/chattab.h"
-
-#include "net/inventoryhandler.h"
-#include "net/net.h"
-
 #include "debug.h"
 
 SpellShortcut *spellShortcut;

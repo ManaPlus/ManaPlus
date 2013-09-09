@@ -25,8 +25,6 @@
 
 #include "localconsts.h"
 
-#include <string>
-
 class MouseInput final : public gcn::MouseInput
 {
     public:

@@ -27,7 +27,7 @@
 
 #include "particle/particle.h"
 
-#include "resources/animation.h"
+#include "localconsts.h"
 
 class StatusEffect final
 {

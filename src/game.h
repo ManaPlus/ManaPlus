@@ -27,14 +27,14 @@
 
 #include "localconsts.h"
 
-#include <SDL.h>
+#include <SDL_events.h>
 
 static const int MAX_LASTKEYS = 10;
 
 extern volatile int cur_time;
 
 class Map;
-class WindowMenu;
+//class WindowMenu;
 
 struct LastKey final
 {

@@ -23,7 +23,6 @@
 #include "flooritem.h"
 
 #include "client.h"
-#include "item.h"
 #include "configuration.h"
 
 #include "render/graphics.h"
@@ -32,6 +31,7 @@
 #include "gui/sdlfont.h"
 #include "gui/userpalette.h"
 
+#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 
 #include "debug.h"
