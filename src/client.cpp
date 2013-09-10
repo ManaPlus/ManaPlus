@@ -946,7 +946,11 @@ int Client::gameExec()
         {
             BLOCK_START("Client::gameExec 2")
             // Handle SDL events
+#ifdef USE_SDL2
+            while (SDL_WaitEventTimeout(&event, 0))
+#else
             while (SDL_PollEvent(&event))
+#endif
             {
                 if (mLogInput)
                     logEvent(event);

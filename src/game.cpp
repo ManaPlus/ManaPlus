@@ -1009,7 +1009,11 @@ void Game::handleInput()
 
     // Events
     SDL_Event event;
+#ifdef USE_SDL2
+    while (SDL_WaitEventTimeout(&event, 0))
+#else
     while (SDL_PollEvent(&event))
+#endif
     {
         BLOCK_START("Game::handleInput 2")
         if (mLogInput)
