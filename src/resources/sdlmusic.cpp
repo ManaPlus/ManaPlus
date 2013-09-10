@@ -40,9 +40,9 @@ SDLMusic::~SDLMusic()
 Resource *SDLMusic::load(SDL_RWops *const rw)
 {
 #ifdef USE_SDL2
-    if (Mix_Music *const music = Mix_LoadMUS_RW(rw, 1))
+    if (Mix_Music *const music = Mix_LoadMUSType_RW(rw, MUS_OGG, 1))
 #else
-    if (Mix_Music *const music = Mix_LoadMUS_RW(rw))
+    if (Mix_Music *const music = Mix_LoadMUSType_RW(rw, MUS_OGG, SDL_TRUE))
 #endif
     {
         return new SDLMusic(music);
@@ -57,7 +57,7 @@ Resource *SDLMusic::load(SDL_RWops *const rw)
 bool SDLMusic::play(const int loops, const int fadeIn)
 {
     if (fadeIn > 0)
-        return Mix_FadeInMusic(mMusic, loops, fadeIn);
+        return Mix_FadeInMusicPos(mMusic, loops, fadeIn, 0.0);
     else
-        return Mix_PlayMusic(mMusic, loops);
+        return Mix_FadeInMusicPos(mMusic, loops, 0, 0.0);
 }
