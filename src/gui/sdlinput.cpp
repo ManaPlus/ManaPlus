@@ -58,12 +58,10 @@
 
 #include "gui/sdlinput.h"
 
-#include "logger.h"
 #include "mouseinput.h"
 #include "sdlshared.h"
 
 #include "input/inputmanager.h"
-#include "input/keydata.h"
 
 #ifdef USE_SDL2
 #include "gui/gui.h"

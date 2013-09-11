@@ -21,13 +21,10 @@
 
 #include "gui/editserverdialog.h"
 
-#include "configuration.h"
-
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
 #include "gui/okdialog.h"
-#include "gui/sdlinput.h"
 #include "gui/serverdialog.h"
 
 #include "gui/widgets/button.h"

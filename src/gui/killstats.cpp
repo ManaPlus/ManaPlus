@@ -25,7 +25,6 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/chattab.h"
 
 #include "actorspritemanager.h"
 #include "game.h"
@@ -34,8 +33,7 @@
 #include "being/playerinfo.h"
 
 #include "utils/gettext.h"
-
-#include <math.h>
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

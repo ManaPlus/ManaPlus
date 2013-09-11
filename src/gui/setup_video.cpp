@@ -24,13 +24,9 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "game.h"
 
 #include "graphicsmanager.h"
 
-#include "being/localplayer.h"
-
-#include "gui/gui.h"
 #include "gui/okdialog.h"
 #include "gui/textdialog.h"
 
@@ -41,22 +37,16 @@
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/slider.h"
-#include "gui/widgets/sliderlist.h"
-#include "gui/widgets/textfield.h"
 #include "gui/widgets/dropdown.h"
 
 #include "render/rendererslistsdl.h"
-#include "resources/image.h"
 
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
 #include "test/testmain.h"
 
-#include <guichan/key.hpp>
 #include <guichan/listmodel.hpp>
-
-#include <SDL.h>
 
 #include <algorithm>
 

@@ -25,8 +25,6 @@
 
 #include "main.h"
 
-#include "being/being.h"
-
 #include "gui/widgets/window.h"
 
 #include "net/charserverhandler.h"
@@ -38,15 +36,8 @@ class Button;
 class CharacterDisplay;
 class CharacterViewBase;
 class Label;
-class LocalPlayer;
 class LoginData;
-class PlayerBox;
 class TextDialog;
-
-namespace Net
-{
-    class CharServerHandler;
-}
 
 /**
  * Character selection dialog.

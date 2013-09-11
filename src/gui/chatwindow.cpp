@@ -25,13 +25,11 @@
 #include "actorspritemanager.h"
 #include "client.h"
 #include "commandhandler.h"
-#include "commands.h"
 #include "configuration.h"
 #include "game.h"
 #include "guild.h"
 #include "party.h"
 #include "spellshortcut.h"
-#include "soundmanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -51,7 +49,6 @@
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/langtab.h"
-#include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/tradetab.h"
@@ -67,7 +64,6 @@
 #include "resources/resourcemanager.h"
 
 #include <guichan/focushandler.hpp>
-#include <guichan/focuslistener.hpp>
 
 #include <sstream>
 

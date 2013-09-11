@@ -29,8 +29,6 @@
 
 #include <guichan/actionlistener.hpp>
 
-#include <vector>
-
 struct BOTCHK final
 {
     int16_t id;      /**< Index into "botchecker_db" array */

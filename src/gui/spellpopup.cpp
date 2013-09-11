@@ -28,12 +28,6 @@
 
 #include "gui/widgets/label.h"
 
-#include "units.h"
-
-#include "utils/gettext.h"
-
-#include <guichan/font.hpp>
-
 #include "debug.h"
 
 SpellPopup::SpellPopup():

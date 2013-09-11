@@ -28,8 +28,6 @@
 
 #include "debug.h"
 
-class SkillEntry;
-
 class SkillListBox final : public ListBox
 {
     public:

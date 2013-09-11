@@ -32,8 +32,6 @@
 
 #define ACTION_EDIT_OK "edit ok"
 
-class TextField;
-
 /**
  * An 'Ok' button dialog.
  *

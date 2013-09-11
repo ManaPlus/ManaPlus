@@ -47,7 +47,6 @@
 #include "net/gamehandler.h"
 
 #include "utils/gettext.h"
-#include "utils/mathutils.h"
 
 #include "debug.h"
 

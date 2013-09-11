@@ -33,6 +33,7 @@
 #include "resources/iteminfo.h"
 
 #include "net/inventoryhandler.h"
+#include "net/net.h"
 #include "net/playerhandler.h"
 
 #include "debug.h"

@@ -23,12 +23,8 @@
 #include "gui/setup_relations.h"
 
 #include "actorspritemanager.h"
-#include "configuration.h"
 
 #include "being/localplayer.h"
-
-#include "gui/editdialog.h"
-#include "gui/okdialog.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"

@@ -27,15 +27,11 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "gui/chatwindow.h"
-#include "gui/gui.h"
 #include "gui/statuswindow.h"
 #include "gui/statuspopup.h"
 #include "gui/textpopup.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/chattab.h"
-#include "gui/widgets/label.h"
 #include "gui/widgets/progressbar.h"
 
 #include "net/net.h"

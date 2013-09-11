@@ -23,14 +23,7 @@
 
 #include "gui/textpopup.h"
 
-#include "gui/gui.h"
-
 #include "gui/widgets/label.h"
-#include "gui/widgets/layouthelper.h"
-
-#include "units.h"
-
-#include "utils/gettext.h"
 
 #include <guichan/font.hpp>
 

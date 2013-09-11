@@ -29,7 +29,6 @@
 #include <string>
 
 class Button;
-class CheckBox;
 class ListBox;
 class KeyListModel;
 class ScrollArea;

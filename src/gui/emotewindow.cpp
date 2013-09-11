@@ -20,24 +20,16 @@
 
 #include "gui/emotewindow.h"
 
-#include "gui/chatwindow.h"
-#include "gui/gui.h"
-
 #include "gui/widgets/colormodel.h"
 #include "gui/widgets/colorpage.h"
 #include "gui/widgets/emotepage.h"
-#include "gui/widgets/layouthelper.h"
 #include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
 
-#include "units.h"
-
 #include "utils/gettext.h"
 
 #include "resources/imageset.h"
-
-#include <guichan/font.hpp>
 
 #include "debug.h"
 

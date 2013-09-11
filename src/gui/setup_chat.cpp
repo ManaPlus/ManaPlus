@@ -23,20 +23,10 @@
 #include "gui/setup_chat.h"
 
 #include "gui/chatwindow.h"
-#include "gui/editdialog.h"
 
-#include "gui/widgets/button.h"
-#include "gui/widgets/chattab.h"
-#include "gui/widgets/checkbox.h"
-#include "gui/widgets/inttextfield.h"
-#include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/setupitem.h"
-
-#include "configuration.h"
-
-#include "being/localplayer.h"
 
 #include "utils/gettext.h"
 

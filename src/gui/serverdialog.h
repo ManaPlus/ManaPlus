@@ -34,7 +34,6 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
 #include <guichan/listmodel.hpp>
-#include <guichan/mouselistener.hpp>
 #include <guichan/selectionlistener.hpp>
 
 #include <string>
@@ -44,8 +43,6 @@ class Button;
 class Label;
 class ListBox;
 class ServerDialog;
-class TextField;
-class DropDown;
 
 /**
  * Server and Port List Model

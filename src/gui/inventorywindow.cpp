@@ -23,6 +23,7 @@
 #include "gui/inventorywindow.h"
 
 #include "configuration.h"
+#include "item.h"
 #include "units.h"
 
 #include "being/playerinfo.h"
@@ -42,20 +43,20 @@
 
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemcontainer.h"
-#include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabstrip.h"
 #include "gui/widgets/textfield.h"
 
-#include "resources/iteminfo.h"
+#include "net/inventoryhandler.h"
+#include "net/net.h"
 
-#include "utils/dtor.h"
+#include "resources/itemdb.h"
+
 #include "utils/gettext.h"
 
 #include <guichan/font.hpp>
-#include <guichan/mouseinput.hpp>
 
 #include <string>
 

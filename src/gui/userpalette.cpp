@@ -24,13 +24,8 @@
 #include "gui/userpalette.h"
 
 #include "configuration.h"
-#include "client.h"
-
-#include "gui/gui.h"
 
 #include "utils/gettext.h"
-
-#include <math.h>
 
 #include "debug.h"
 

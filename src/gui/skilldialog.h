@@ -32,7 +32,6 @@ const unsigned int SKILL_VAR_MIN_ID = 1000000;
 
 class Button;
 class Label;
-class ScrollArea;
 class SkillModel;
 class Tab;
 class TabbedArea;

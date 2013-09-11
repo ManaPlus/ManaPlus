@@ -22,22 +22,14 @@
 
 #include "gui/windowmenu.h"
 
-#include "emoteshortcut.h"
-
 #include "input/inputmanager.h"
-#include "input/keyboardconfig.h"
 
-#include "gui/didyouknowwindow.h"
-#include "gui/helpwindow.h"
 #include "gui/skilldialog.h"
 #ifdef MANASERV_SUPPORT
 #include "gui/specialswindow.h"
 #endif
 #include "gui/textpopup.h"
 #include "gui/viewport.h"
-
-#include "net/net.h"
-#include "net/playerhandler.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"

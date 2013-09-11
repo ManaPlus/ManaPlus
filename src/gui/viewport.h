@@ -24,7 +24,6 @@
 #define GUI_VIEWPORT_H
 
 #include "configlistener.h"
-#include "maplayer.h"
 #include "position.h"
 
 #include "gui/widgets/windowcontainer.h"
@@ -35,17 +34,14 @@ class ActorSprite;
 class Button;
 class Being;
 class BeingPopup;
-class BrowserBox;
 class ChatTab;
 class FloorItem;
 class Graphics;
-class ImageSet;
 class Item;
-class ItemShortcut;
 class Map;
+class MapItem;
 class PopupMenu;
 class ProgressBar;
-class StatusPopup;
 class TextCommand;
 class TextField;
 class TextPopup;

@@ -31,7 +31,6 @@
 class Button;
 class BrowserBox;
 class CheckBox;
-class LinkHandler;
 class ScrollArea;
 
 /**

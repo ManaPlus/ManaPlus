@@ -26,10 +26,7 @@
 #include "gui/widgets/container.h"
 #include "gui/widgets/window.h"
 
-class Container;
-class DebugWindow;
 class Label;
-class Tab;
 class TabbedArea;
 
 class DebugTab : public Container

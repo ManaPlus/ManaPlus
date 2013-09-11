@@ -23,13 +23,7 @@
 
 #include "gui/palette.h"
 
-#include "configuration.h"
 #include "client.h"
-
-#include "gui/gui.h"
-
-#include "utils/gettext.h"
-#include "utils/mathutils.h"
 
 #include <math.h>
 

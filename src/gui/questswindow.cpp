@@ -23,7 +23,6 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "effectmanager.h"
-#include "soundmanager.h"
 
 #include "being/localplayer.h"
 
@@ -32,19 +31,16 @@
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
-#include "gui/widgets/layouthelper.h"
+#include "gui/widgets/layout.h"
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/extendednamesmodel.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/textfield.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include "utils/translation/podict.h"
-
-#include <guichan/font.hpp>
 
 #include "debug.h"
 

@@ -25,12 +25,14 @@
 
 #include "equipment.h"
 #include "inventory.h"
+#include "item.h"
 #include "localconsts.h"
 
 #include "being/playerinfo.h"
 
 #include "gui/inventorywindow.h"
 
+#include "net/inventoryhandler.h"
 #include "net/messagein.h"
 
 #include <vector>

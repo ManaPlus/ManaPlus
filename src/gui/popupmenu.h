@@ -39,7 +39,6 @@ class Button;
 class ChatTab;
 class FloorItem;
 class Item;
-class ItemShortcut;
 class MapItem;
 class ScrollArea;
 class TextCommand;

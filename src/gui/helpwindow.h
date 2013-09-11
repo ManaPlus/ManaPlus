@@ -35,7 +35,6 @@
 
 class Button;
 class BrowserBox;
-class LinkHandler;
 class ScrollArea;
 
 typedef std::set<std::string> HelpNames;

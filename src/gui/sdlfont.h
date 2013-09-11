@@ -29,7 +29,6 @@
 
 #include <SDL_ttf.h>
 
-#include <list>
 #include <map>
 #include <string>
 

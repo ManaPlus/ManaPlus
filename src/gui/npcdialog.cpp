@@ -35,11 +35,10 @@
 #include "gui/gui.h"
 #include "gui/inventorywindow.h"
 #include "gui/sdlfont.h"
-#include "gui/setup.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/browserbox.h"
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/button.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/itemlinkhandler.h"
@@ -47,7 +46,6 @@
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/textbox.h"
 
 #include "resources/avatardb.h"
 #include "resources/npcdb.h"

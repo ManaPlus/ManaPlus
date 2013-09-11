@@ -42,6 +42,7 @@
 #include "input/keyevent.h"
 #include "input/keyinput.h"
 
+#include "resources/cursor.h"
 #include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"

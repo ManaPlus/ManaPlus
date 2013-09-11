@@ -33,27 +33,19 @@
 #include "gui/editserverdialog.h"
 #include "gui/gui.h"
 #include "gui/logindialog.h"
-#include "gui/okdialog.h"
 #include "gui/sdlfont.h"
-#include "gui/sdlinput.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/textfield.h"
-
-#include "net/net.h"
 
 #include "utils/gettext.h"
 #include "utils/langs.h"
 
 #include <guichan/font.hpp>
 
-#include <cstdlib>
-#include <iostream>
 #include <string>
 
 #include "debug.h"

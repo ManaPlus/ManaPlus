@@ -28,12 +28,7 @@
 
 #include "gui/widgets/popup.h"
 
-#include "resources/iteminfo.h"
-
-#include <guichan/mouselistener.hpp>
-
 class Label;
-class TextBox;
 
 const int STATUSPOPUP_NUM_LABELS = 15;
 

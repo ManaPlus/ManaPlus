@@ -31,7 +31,6 @@
 #include <guichan/keylistener.hpp>
 
 class Label;
-class LocalPlayer;
 class PlayerBox;
 class RadioButton;
 class Slider;

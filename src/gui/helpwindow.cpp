@@ -36,7 +36,6 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
-#include "utils/langs.h"
 #include "utils/paths.h"
 #include "utils/process.h"
 

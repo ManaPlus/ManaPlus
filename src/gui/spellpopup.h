@@ -28,10 +28,7 @@
 
 #include "textcommand.h"
 
-#include <guichan/mouselistener.hpp>
-
 class Label;
-class TextBox;
 
 /**
  * A popup that displays information about an item.

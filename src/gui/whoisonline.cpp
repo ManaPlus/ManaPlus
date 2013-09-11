@@ -25,13 +25,13 @@
 #include "guild.h"
 #include "party.h"
 
+#include "gui/chatwindow.h"
 #include "gui/socialwindow.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/chattab.h"
 
 #include "actorspritemanager.h"
 #include "client.h"
@@ -48,7 +48,6 @@
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
-#include <SDL.h>
 #include <SDL_thread.h>
 #include <vector>
 #include <algorithm>

@@ -23,23 +23,19 @@
 #include "gui/charcreatedialog.h"
 
 #include "main.h"
-#include "units.h"
 
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
-#include "gui/confirmdialog.h"
 #include "gui/okdialog.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/layout.h"
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/radiobutton.h"
 #include "gui/widgets/slider.h"
 #include "gui/widgets/textfield.h"
 
-#include "net/messageout.h"
 #include "net/net.h"
 
 #include "resources/chardb.h"
@@ -48,8 +44,6 @@
 #include "resources/iteminfo.h"
 
 #include "utils/gettext.h"
-
-#include <guichan/font.hpp>
 
 #include "debug.h"
 

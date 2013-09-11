@@ -23,11 +23,9 @@
 #include "gui/setup_theme.h"
 
 #include "gui/gui.h"
-#include "gui/editdialog.h"
 #include "gui/okdialog.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/checkbox.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/extendedlistmodel.h"
 #include "gui/widgets/label.h"
@@ -35,8 +33,6 @@
 #include "gui/widgets/namesmodel.h"
 
 #include "configuration.h"
-
-#include "being/localplayer.h"
 
 #include "utils/gettext.h"
 

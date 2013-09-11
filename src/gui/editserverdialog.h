@@ -23,11 +23,9 @@
 #define GUI_EDITSERVERDIALOG_H
 
 class Button;
-class Label;
 class TextField;
 class DropDown;
 class ServerDialog;
-class TypeListModel;
 
 #include "gui/widgets/window.h"
 

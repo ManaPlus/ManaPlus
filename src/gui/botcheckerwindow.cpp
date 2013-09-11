@@ -22,19 +22,9 @@
 
 #include "gui/botcheckerwindow.h"
 
-#include <SDL.h>
-#include <SDL_thread.h>
-#include <vector>
-#include <algorithm>
-
-#include "gui/chatwindow.h"
-
 #include "gui/widgets/button.h"
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/layout.h"
-#include "gui/widgets/layouthelper.h"
 #include "gui/widgets/guitable.h"
 
 #include "actorspritemanager.h"
@@ -43,6 +33,8 @@
 #include "being/localplayer.h"
 
 #include "utils/gettext.h"
+
+#include <vector>
 
 #include "debug.h"
 

@@ -25,31 +25,27 @@
 #include "configuration.h"
 #include "dragdrop.h"
 #include "emoteshortcut.h"
-#include "equipment.h"
 #include "game.h"
 #include "inventory.h"
 #include "item.h"
 
-#include "being/localplayer.h"
 #include "being/playerinfo.h"
 
 #include "input/inputmanager.h"
-#include "input/keyboardconfig.h"
 
-#include "gui/chatwindow.h"
-#include "gui/inventorywindow.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 
 #include "resources/image.h"
-#include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
+
+#include "net/inventoryhandler.h"
+#include "net/net.h"
 
 #include <vector>
 

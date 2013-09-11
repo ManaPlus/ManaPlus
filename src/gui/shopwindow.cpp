@@ -25,9 +25,9 @@
 #include "gui/buydialog.h"
 #include "gui/itemamountwindow.h"
 #include "gui/selldialog.h"
-#include "gui/setup.h"
 #include "gui/tradewindow.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/label.h"
@@ -35,8 +35,6 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shopitems.h"
 #include "gui/widgets/shoplistbox.h"
-#include "gui/widgets/slider.h"
-#include "gui/widgets/tradetab.h"
 
 #include "actorspritemanager.h"
 #include "auctionmanager.h"
@@ -48,7 +46,6 @@
 #include "shopitem.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
-#include "units.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -56,8 +53,6 @@
 
 #include "net/net.h"
 #include "net/chathandler.h"
-#include "net/npchandler.h"
-#include "net/playerhandler.h"
 #include "net/tradehandler.h"
 
 #include "resources/iteminfo.h"

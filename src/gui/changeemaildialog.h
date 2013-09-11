@@ -29,7 +29,6 @@
 
 class Button;
 class LoginData;
-class OkDialog;
 class TextField;
 class WrongDataNoticeListener;
 

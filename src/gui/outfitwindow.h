@@ -26,14 +26,12 @@
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
-#include <guichan/mouselistener.hpp>
 
 const unsigned int OUTFITS_COUNT = 100;
 const unsigned int OUTFIT_ITEM_COUNT = 16;
 
 class Button;
 class CheckBox;
-class Item;
 class Label;
 
 class OutfitWindow final : public Window,

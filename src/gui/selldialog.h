@@ -28,8 +28,6 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/selectionlistener.hpp>
 
-#include <SDL_types.h>
-
 class Button;
 class Item;
 class Label;

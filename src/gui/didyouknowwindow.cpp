@@ -33,10 +33,7 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "resources/resourcemanager.h"
-
 #include "utils/gettext.h"
-#include "utils/langs.h"
 #include "utils/process.h"
 
 #include "utils/translation/podict.h"

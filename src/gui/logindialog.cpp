@@ -29,8 +29,6 @@
 #include "input/keyevent.h"
 
 #include "gui/confirmdialog.h"
-#include "gui/okdialog.h"
-#include "gui/sdlinput.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"

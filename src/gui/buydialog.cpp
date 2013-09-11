@@ -25,9 +25,9 @@
 #include "shopitem.h"
 #include "units.h"
 
-#include "gui/setup.h"
 #include "gui/tradewindow.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"

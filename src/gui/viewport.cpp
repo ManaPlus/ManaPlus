@@ -23,10 +23,9 @@
 #include "gui/viewport.h"
 
 #include "actorspritemanager.h"
-#include "client.h"
 #include "configuration.h"
 #include "game.h"
-#include "itemshortcut.h"
+#include "maplayer.h"
 #include "sdlshared.h"
 #include "textmanager.h"
 
@@ -34,24 +33,12 @@
 #include "being/playerinfo.h"
 
 #include "input/inputmanager.h"
-#include "input/keyboardconfig.h"
 
 #include "gui/beingpopup.h"
-#include "gui/chatwindow.h"
 #include "gui/gui.h"
 #include "gui/ministatuswindow.h"
 #include "gui/popupmenu.h"
-#include "gui/statuspopup.h"
 #include "gui/textpopup.h"
-
-#include "gui/widgets/button.h"
-#include "gui/widgets/chattab.h"
-#include "gui/widgets/progressbar.h"
-#include "gui/widgets/textfield.h"
-
-#include "net/net.h"
-
-#include "resources/resourcemanager.h"
 
 #include <guichan/font.hpp>
 

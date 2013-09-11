@@ -31,14 +31,11 @@
 #include "particle/particle.h"
 
 #include "gui/setup.h"
-#include "gui/setup_video.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouthelper.h"
-#include "gui/widgets/scrollarea.h"
 
 #include "resources/imagehelper.h"
 

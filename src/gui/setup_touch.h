@@ -23,9 +23,6 @@
 
 #include "gui/widgets/setuptouchitem.h"
 
-class EditDialog;
-class TextField;
-
 class Setup_Touch final : public SetupTabScroll
 {
     public:

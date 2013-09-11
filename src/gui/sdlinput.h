@@ -61,7 +61,7 @@
 
 #include "input/keyinput.h"
 
-#include <SDL.h>
+#include <SDL_events.h>
 
 #include <guichan/input.hpp>
 #include <guichan/keyinput.hpp>
@@ -69,7 +69,6 @@
 
 #include <queue>
 
-class KeyInput;
 class MouseInput;
 
 namespace Key

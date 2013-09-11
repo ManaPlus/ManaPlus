@@ -28,13 +28,8 @@
 
 #include "resources/iteminfo.h"
 
-#include <guichan/mouselistener.hpp>
-
-class Button;
-class CheckBox;
 class Icon;
 class Label;
-class ScrollArea;
 class TextBox;
 
 /**

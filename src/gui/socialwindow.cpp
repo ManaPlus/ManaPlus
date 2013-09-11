@@ -30,7 +30,6 @@
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
 
-#include "input/inputmanager.h"
 #include "input/keyboardconfig.h"
 
 #include "gui/confirmdialog.h"
@@ -42,9 +41,7 @@
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/chattab.h"
-#include "gui/widgets/container.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/layouthelper.h"
 #include "gui/widgets/popup.h"
 #include "gui/widgets/scrollarea.h"
 

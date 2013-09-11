@@ -25,7 +25,6 @@
 #define GUI_PALETTE_H
 
 #include "logger.h"
-#include "utils/stringutils.h"
 
 #include <guichan/color.hpp>
 

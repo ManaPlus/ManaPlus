@@ -33,24 +33,17 @@
 
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
-#include <guichan/widget.hpp>
-#include <guichan/widgetlistener.hpp>
 
 #include <list>
 #include <map>
 #include <set>
 
-class BrowserBox;
 class ChatTab;
-class Channel;
 class ChatInput;
 class ColorListModel;
 class DropDown;
-class EmoteWindow;
-class ScrollArea;
 class TabbedArea;
 class ItemLinkHandler;
-class Tab;
 class WhisperTab;
 
 const int DEFAULT_CHAT_WINDOW_SCROLL = 7;

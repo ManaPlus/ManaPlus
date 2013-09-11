@@ -25,8 +25,6 @@
 
 #include "gui/widgets/setuptabscroll.h"
 
-class EditDialog;
-class IntTextField;
 class NamesModel;
 
 class Setup_Perfomance final : public SetupTabScroll

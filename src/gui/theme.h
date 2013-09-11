@@ -31,6 +31,8 @@
 
 #include "gui/palette.h"
 
+#include "utils/stringvector.h"
+
 #include <map>
 
 #include "localconsts.h"
@@ -38,7 +40,6 @@
 class DyePalette;
 class Image;
 class ImageSet;
-class ProgressBar;
 
 const int THEME_PALETTES = 5;
 

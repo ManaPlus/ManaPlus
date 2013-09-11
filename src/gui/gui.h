@@ -23,9 +23,6 @@
 #ifndef GUI_GUI_H
 #define GUI_GUI_H
 
-#include "resources/cursor.h"
-#include "resources/image.h"
-
 #include <guichan/color.hpp>
 #include <guichan/focuslistener.hpp>
 #include <guichan/gui.hpp>

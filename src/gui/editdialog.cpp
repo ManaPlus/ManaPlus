@@ -22,8 +22,6 @@
 
 #include "gui/editdialog.h"
 
-#include "gui/gui.h"
-
 #include "gui/widgets/button.h"
 
 #include "utils/gettext.h"

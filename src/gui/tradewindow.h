@@ -35,7 +35,6 @@ class Inventory;
 class Item;
 class ItemContainer;
 class Label;
-class ScrollArea;
 class TextField;
 
 /**

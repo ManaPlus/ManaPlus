@@ -25,8 +25,6 @@
 
 #include "gui/widgets/window.h"
 
-#include "textcommand.h"
-
 #include <guichan/actionlistener.hpp>
 
 class Button;
@@ -34,11 +32,9 @@ class DropDown;
 class IconsModal;
 class IntTextField;
 class Label;
-class ListModel;
 class MagicSchoolModel;
 class RadioButton;
 class TargetTypeModel;
-class TextBox;
 class TextCommand;
 class TextField;
 

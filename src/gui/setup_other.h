@@ -23,11 +23,9 @@
 #ifndef GUI_SETUP_OTHER_H
 #define GUI_SETUP_OTHER_H
 
-#include "gui/widgets/setupitem.h"
+#include "gui/widgets/setuptabscroll.h"
 
-class EditDialog;
 class NamesModel;
-class TextField;
 
 class Setup_Other final : public SetupTabScroll
 {

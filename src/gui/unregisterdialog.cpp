@@ -28,7 +28,6 @@
 #include "gui/registerdialog.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/checkbox.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/passwordfield.h"
 

@@ -28,8 +28,6 @@
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
-#include "gui/sdlinput.h"
-
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
@@ -46,7 +44,6 @@
 #include "utils/paths.h"
 #include "utils/process.h"
 
-#include <iostream>
 #include <fstream>
 
 #include <sys/stat.h>

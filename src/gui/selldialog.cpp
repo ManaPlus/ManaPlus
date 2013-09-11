@@ -28,9 +28,9 @@
 #include "being/playerinfo.h"
 
 #include "gui/confirmdialog.h"
-#include "gui/setup.h"
 #include "gui/tradewindow.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"

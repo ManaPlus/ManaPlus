@@ -44,13 +44,12 @@
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/layout.h"
 
+#include "net/net.h"
 #include "net/tradehandler.h"
 
 #include "utils/gettext.h"
 
 #include <guichan/font.hpp>
-
-#include <sstream>
 
 #include "debug.h"
 

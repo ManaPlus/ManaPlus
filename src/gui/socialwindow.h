@@ -24,26 +24,21 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/actionevent.hpp>
 #include <guichan/actionlistener.hpp>
 
 #include <string>
 #include <map>
 
-class AttackTab;
 class Button;
 class ConfirmDialog;
 class CreatePopup;
 class Guild;
 class Label;
 class Map;
-class NavigateTab;
 class Party;
 class SocialTab;
-class Tab;
 class TabbedArea;
 class TextDialog;
-class PlayersTab;
 
 /**
  * Party window.

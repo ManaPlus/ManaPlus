@@ -30,7 +30,6 @@
 class Button;
 class CheckBox;
 class DropDown;
-class EditDialog;
 class GuiTable;
 class PlayerTableModel;
 class ScrollArea;

@@ -31,7 +31,6 @@
 #include "utils/stringvector.h"
 
 #include <guichan/actionlistener.hpp>
-#include <guichan/listmodel.hpp>
 
 #include <list>
 

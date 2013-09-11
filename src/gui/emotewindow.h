@@ -23,8 +23,6 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/mouselistener.hpp>
-
 class ColorModel;
 class ColorPage;
 class EmotePage;

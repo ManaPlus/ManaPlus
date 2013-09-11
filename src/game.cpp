@@ -85,6 +85,7 @@
 
 #include "net/generalhandler.h"
 #include "net/gamehandler.h"
+#include "net/net.h"
 #include "net/packetcounters.h"
 
 #include "resources/imagewriter.h"

@@ -26,10 +26,7 @@
 
 #include "gui/widgets/popup.h"
 
-#include <guichan/mouselistener.hpp>
-
 class Label;
-class TextBox;
 
 const int TEXTPOPUPCOUNT = 3;
 

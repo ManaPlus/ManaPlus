@@ -62,6 +62,7 @@
 
 #include "render/graphics.h"
 
+#include "net/net.h"
 #include "net/playerhandler.h"
 
 #include "utils/gettext.h"

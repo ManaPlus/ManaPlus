@@ -22,34 +22,22 @@
 
 #include "gui/textcommandeditor.h"
 
-#include "configuration.h"
-#include "item.h"
 #include "main.h"
 #include "spellmanager.h"
 
-#include "being/localplayer.h"
-
 #include "input/keyboardconfig.h"
 
-#include "gui/chatwindow.h"
-
 #include "gui/widgets/button.h"
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouthelper.h"
 #include "gui/widgets/radiobutton.h"
-#include "gui/widgets/guitable.h"
 
 #include "utils/gettext.h"
 
+#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
-
-#include <SDL.h>
-#include <SDL_thread.h>
-#include <algorithm>
 
 #include "debug.h"
 

@@ -28,11 +28,8 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
 
-#include <string>
-
 class Button;
 class LoginData;
-class OkDialog;
 class RadioButton;
 class TextField;
 

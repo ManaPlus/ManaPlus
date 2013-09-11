@@ -30,15 +30,12 @@
 
 #include "utils/xml.h"
 
-#include "resources/image.h"
-
 #include <guichan/actionlistener.hpp>
 
 #include <vector>
 
 class Being;
 class Button;
-class Inventory;
 class Image;
 class ImageSet;
 class Item;

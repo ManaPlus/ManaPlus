@@ -40,8 +40,6 @@
 #include "utils/gettext.h"
 #include "utils/sdlcheckutils.h"
 
-#include <guichan/font.hpp>
-
 #include "debug.h"
 
 bool Minimap::mShow = true;

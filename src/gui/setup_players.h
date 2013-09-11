@@ -25,9 +25,6 @@
 
 #include "gui/widgets/setuptabscroll.h"
 
-class IntTextField;
-class EditDialog;
-
 class Setup_Players final : public SetupTabScroll
 {
     public:

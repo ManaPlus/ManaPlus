@@ -22,8 +22,6 @@
 
 #include "gui/shortcutwindow.h"
 
-#include "configuration.h"
-
 #include "gui/setup.h"
 
 #include "gui/widgets/layout.h"

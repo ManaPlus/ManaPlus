@@ -29,7 +29,6 @@
 #include "guild.h"
 #include "guildmanager.h"
 #include "item.h"
-#include "itemshortcut.h"
 #include "maplayer.h"
 #include "party.h"
 #include "spellmanager.h"
@@ -40,7 +39,6 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/buydialog.h"
 #include "gui/chatwindow.h"
 #include "gui/equipmentwindow.h"
 #include "gui/inventorywindow.h"
@@ -48,7 +46,6 @@
 #include "gui/ministatuswindow.h"
 #include "gui/npcdialog.h"
 #include "gui/outfitwindow.h"
-#include "gui/selldialog.h"
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/textcommandeditor.h"
@@ -68,9 +65,10 @@
 #include "net/beinghandler.h"
 #include "net/buysellhandler.h"
 #include "net/guildhandler.h"
+#include "net/inventoryhandler.h"
+#include "net/net.h"
 #include "net/npchandler.h"
 #include "net/partyhandler.h"
-#include "gui/shortcutwindow.h"
 #include "net/tradehandler.h"
 
 #include "resources/iteminfo.h"

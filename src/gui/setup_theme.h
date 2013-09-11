@@ -27,7 +27,6 @@
 
 class Button;
 class DropDown;
-class EditDialog;
 class FontsModel;
 class FontSizeChoiceListModel;
 class Label;

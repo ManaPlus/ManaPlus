@@ -24,6 +24,7 @@
 
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/namesmodel.h"
+#include "gui/widgets/setupitem.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "configuration.h"

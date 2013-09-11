@@ -31,19 +31,14 @@
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
-#include "gui/chatwindow.h"
-#include "gui/npcdialog.h"
-#include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/checkbox.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/radiobutton.h"
 
 #include "net/charserverhandler.h"
 #include "net/gamehandler.h"
-#include "net/npchandler.h"
 #include "net/net.h"
 
 #include "utils/gettext.h"

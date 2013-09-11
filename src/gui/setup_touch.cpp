@@ -23,8 +23,6 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "configuration.h"
-
 #include "debug.h"
 
 static const int sizeListSize = 4;

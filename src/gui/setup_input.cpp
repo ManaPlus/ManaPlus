@@ -32,15 +32,12 @@
 #include "gui/setupactiondata.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/checkbox.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabstrip.h"
 
 #include <guichan/listmodel.hpp>
-
-#include <SDL_keyboard.h>
 
 #include "debug.h"
 

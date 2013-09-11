@@ -23,8 +23,6 @@
 #ifndef GUI_SETUP_VIDEO_H
 #define GUI_SETUP_VIDEO_H
 
-#include "being/being.h"
-
 #include "gui/widgets/setuptab.h"
 
 #include <guichan/keylistener.hpp>

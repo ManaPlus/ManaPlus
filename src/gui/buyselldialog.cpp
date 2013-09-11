@@ -22,11 +22,11 @@
 
 #include "gui/buyselldialog.h"
 
-#include "gui/setup.h"
-
 #include "net/buysellhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
+
+#include "gui/widgets/button.h"
 
 #include "utils/gettext.h"
 

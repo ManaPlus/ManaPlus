@@ -35,8 +35,6 @@
 
 #include "utils/gettext.h"
 
-#include <guichan/listmodel.hpp>
-
 #include "debug.h"
 
 extern Joystick *joystick;
