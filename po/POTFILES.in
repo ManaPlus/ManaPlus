@@ -1,6 +1,8 @@
 src/actionmanager.cpp
 src/actorspritemanager.cpp
-src/being.cpp
+src/being/being.cpp
+src/being/localplayer.cpp
+src/being/playerrelations.cpp
 src/client.cpp
 src/commandhandler.cpp
 src/commands.cpp
@@ -84,10 +86,9 @@ src/gui/widgets/tradetab.cpp
 src/gui/widgets/whispertab.cpp
 src/gui/windowmenu.cpp
 src/gui/worldselectdialog.cpp
-src/inputmanager.cpp
+src/input/inputmanager.cpp
+src/input/keyboardconfig.cpp
 src/inventory.cpp
-src/keyboardconfig.cpp
-src/localplayer.cpp
 src/logger.h
 src/main.cpp
 src/net/ea/charserverhandler.cpp
@@ -104,7 +105,8 @@ src/net/eathena/generalhandler.cpp
 src/net/ea/tradehandler.cpp
 src/net/tmwa/generalhandler.cpp
 src/notifications.h
-src/playerrelations.cpp
+src/render/rendererslistsdl2.h
+src/render/rendererslistsdl.h
 src/resources/avatardb.cpp
 src/resources/beinginfo.cpp
 src/resources/itemdb.cpp

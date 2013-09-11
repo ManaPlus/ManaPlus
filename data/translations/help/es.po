@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-08-17 20:00+0000\n"
+"PO-Revision-Date: 2013-09-02 12:30+0000\n"
 "Last-Translator: osuka <owen942009@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "\"Outfit shortcut 12\""
-msgstr ""
+msgstr "\"Atajo para conjunto 12\""
 
 msgid ""
 " - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
@@ -37,7 +37,7 @@ msgid ""
 msgstr "Puedes seleccionar otros temas.\nPara esto, debes abrir las configuraciones y seleccionar la pestaña\nTema y cambiar \"Tema de interfaz\""
 
 msgid "\"Target & attack\""
-msgstr ""
+msgstr "\"Seleccionar y Atacar\""
 
 msgid ""
 "Most commands working in whispers.\n"
@@ -83,7 +83,7 @@ msgid "\"Set direction down\""
 msgstr ""
 
 msgid "\"Target NPC\""
-msgstr ""
+msgstr "\"Seleccionar NPC\""
 
 msgid ""
 "You can walk to warps automatically.\n"
@@ -98,7 +98,7 @@ msgid "/neutral NICK - add nick to neutral relation list."
 msgstr "/neutral NICK - agregar nick a la lista de relación neutral."
 
 msgid "\"Outfit shortcut 7\""
-msgstr ""
+msgstr "\"Atajo para conjunto 7\""
 
 msgid "/addpriorityattack NAME - add monster to priority attack list."
 msgstr "/addpriorityattack NOMBRE - agregar monstruo a la lista de ataque prioritario."
@@ -146,7 +146,7 @@ msgid "\"Emote shortcut 1\""
 msgstr "\"Atajo para emoticono 1\""
 
 msgid "\"Outfit shortcut 13\""
-msgstr ""
+msgstr "\"Atajo para conjunto 13\""
 
 msgid "##2Party level2:##P enables a char to create a party."
 msgstr "##2Grupo, Nivel 2:##P le permite a un personaje crear un grupo."
@@ -193,13 +193,13 @@ msgid "For other server look servers pages for support."
 msgstr "Para otros servidores mira las páginas de ayuda de los servidores."
 
 msgid "\"Target closest monster\""
-msgstr ""
+msgstr "\"Seleccionar monstruos cercanos\""
 
 msgid "\"Emote shortcut 2\""
 msgstr "\"Atajo para emoticono 2\""
 
 msgid "\"Outfit shortcut 6\""
-msgstr ""
+msgstr "\"Atajo para conjunto 6\""
 
 msgid "/setdrop N - set drop counter to requested value."
 msgstr "/setdrop N - establecer el contador de caída de objetos al valor pedido."
@@ -214,7 +214,7 @@ msgid "Visit IRC channel:"
 msgstr "Visita el canal IRC:"
 
 msgid "\"Shop window\""
-msgstr ""
+msgstr "\"Ventana de la tienda\""
 
 msgid "/createparty NAME - create party with selected name."
 msgstr "/createparty NOMBRE - crear grupo con el nombre seleccionado."
@@ -288,7 +288,7 @@ msgid "SUPPORT"
 msgstr "SOPORTE"
 
 msgid "\"Outfit shortcut 10\""
-msgstr ""
+msgstr "\"Atajo para conjunto 10\""
 
 msgid "Look this page for help and downloads:"
 msgstr "Mira esta página para ayuda y descargas:"
@@ -352,7 +352,7 @@ msgid "/imitation NICK - start imitation mode."
 msgstr "/imitation NICK - iniciar modo de imitación."
 
 msgid "\"Outfit shortcut 5\""
-msgstr ""
+msgstr "\"Atajo para conjunto 5\""
 
 msgid "KEYBOARD:"
 msgstr "TECLADO:"
@@ -368,7 +368,7 @@ msgid "Server news"
 msgstr "Noticias del servidor"
 
 msgid "\"Outfit shortcut 11\""
-msgstr ""
+msgstr "\"Atajo para conjunto 11\""
 
 msgid "\"Item shortcut 11\""
 msgstr "\"Atajo para objeto 11\"  "
@@ -474,7 +474,7 @@ msgid "\"Hide windows\""
 msgstr "\"Esconder ventanas\""
 
 msgid "\"Outfit shortcut 4\""
-msgstr ""
+msgstr "\"Atajo para conjunto 4\""
 
 msgid "Chat commands"
 msgstr "Comandos del chat"
@@ -498,10 +498,10 @@ msgid "Art or images contributors"
 msgstr "Contribuyentes en arte o imágenes"
 
 msgid "\"Target player\""
-msgstr ""
+msgstr "\"Seleccionar jugador\""
 
 msgid "\"Debug window\""
-msgstr ""
+msgstr "\"Ventana de depurador\""
 
 msgid "\"Next chat tab\""
 msgstr "\"Siguiente pestaña de chat\""
@@ -570,7 +570,7 @@ msgid "Contributors to client/server development"
 msgstr "Contribuyentes al desarrollo del cliente/servidor"
 
 msgid "\"Quick heal target or self\""
-msgstr ""
+msgstr "\"Curar rápidamente al objetivo o a sí mismo\""
 
 msgid "\"Change pickup type\""
 msgstr ""
@@ -594,7 +594,7 @@ msgid "##2Version:##6%VER%"
 msgstr "##2Versión:##6%VER%"
 
 msgid "\"Outfit shortcut 3\""
-msgstr ""
+msgstr "\"Atajo para conjunto 3\""
 
 msgid "\"Quick drop N items\""
 msgstr "\"Soltar N objetos rápidamente\""
@@ -617,7 +617,7 @@ msgid "Commands"
 msgstr "Comandos"
 
 msgid "\"Outfit shortcut 9\""
-msgstr ""
+msgstr "\"Atajo para conjunto 9\""
 
 msgid "\"Emote shortcut 4\""
 msgstr "\"Atajo para emoticono 4\""
@@ -711,7 +711,7 @@ msgid "\"Emote shortcut 6\""
 msgstr "\"Atajo para emoticono 6\""
 
 msgid "\"Outfit shortcut 2\""
-msgstr ""
+msgstr "\"Atajo para conjunto 2\""
 
 msgid "You can change any key in keyboard settings."
 msgstr "Puedes cambiar cualquier tecla en las configuraciones del teclado."
@@ -741,7 +741,7 @@ msgid "\"Change crazy Move mode\""
 msgstr ""
 
 msgid "\"Outfit shortcut 8\""
-msgstr ""
+msgstr "\"Atajo para conjunto 8\""
 
 msgid "\"Change imitation mode\""
 msgstr ""
@@ -758,7 +758,7 @@ msgid ""
 msgstr " Por otro lado, visita la sección @@team|Equipo de Desarrollo@@ para tener\n una lista con los desarrolladores y cómo contactarlos."
 
 msgid "\"Outfit shortcut 14\""
-msgstr ""
+msgstr "\"Atajo para conjunto 14\""
 
 msgid "\"Quick drop N items from 0 slot\""
 msgstr ""
@@ -840,7 +840,7 @@ msgid "/attack - attack target."
 msgstr "/attack - atacar al objetivo."
 
 msgid "\"Outfit shortcut 1\""
-msgstr ""
+msgstr "\"Atajo para conjunto 1\""
 
 msgid ""
 " You may find that not all communication is to your liking.  While most people\n"
@@ -855,7 +855,7 @@ msgid "\"Emote shortcut 12\""
 msgstr "\"Atajo para emoticono 12\""
 
 msgid "\"Outfit shortcut 15\""
-msgstr ""
+msgstr "\"Atajo para conjunto 15\""
 
 msgid "Windows"
 msgstr "Ventanas"
