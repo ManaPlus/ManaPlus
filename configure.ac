@@ -32,9 +32,25 @@ if test "x$androidbuild_enabled" == "xfalse"; then
     AC_FUNC_REALLOC
 fi
 
+AC_C_INLINE
 AC_FUNC_SELECT_ARGTYPES
 AC_FUNC_VPRINTF
+AC_FUNC_FORK
+AC_FUNC_MMAP
 AC_CHECK_FUNCS([atexit floor getcwd gethostbyname memset mkdir select socket])
+AC_CHECK_FUNCS([clock_gettime dup2 gettimeofday memchr memmove pow putenv])
+AC_CHECK_FUNCS([realpath setenv setlocale sqrt strchr munmap])
+AC_CHECK_HEADER_STDBOOL
+AC_CHECK_HEADERS([libintl.h limits.h sys/param.h sys/time.h wchar.h])
+
+AC_TYPE_INT8_T
+AC_TYPE_UINT8_T
+AC_TYPE_INT16_T
+AC_TYPE_UINT16_T
+AC_TYPE_INT32_T
+AC_TYPE_UINT32_T
+AC_TYPE_INT64_T
+AC_TYPE_SSIZE_T
 
 # Checks for internationalization support
 AM_GNU_GETTEXT([external],[need-ngettext])
