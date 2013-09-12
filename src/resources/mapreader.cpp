@@ -538,7 +538,7 @@ bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
             }
         }
 
-        std::map<int, TileAnimation*> &tileAnimations
+        const std::map<int, TileAnimation*> &tileAnimations
             = map->getTileAnimations();
 
         const bool hasAnimations = !tileAnimations.empty();
@@ -592,6 +592,10 @@ bool MapReader::readCsvLayer(const XmlNodePtr childNode, Map *const map,
     std::string csv(data);
     size_t oldPos = 0;
 
+    const std::map<int, TileAnimation*> &tileAnimations
+        = map->getTileAnimations();
+    const bool hasAnimations = !tileAnimations.empty();
+
     while (oldPos != csv.npos)
     {
         const size_t pos = csv.find_first_of(",", oldPos);
@@ -600,6 +604,16 @@ bool MapReader::readCsvLayer(const XmlNodePtr childNode, Map *const map,
 
         const int gid = atoi(csv.substr(oldPos, pos - oldPos).c_str());
         setTile(map, layer, x, y, gid);
+        if (hasAnimations)
+        {
+            TileAnimationMapCIter it = tileAnimations.find(gid);
+            if (it != tileAnimations.end())
+            {
+                TileAnimation *const ani = it->second;
+                if (ani)
+                    ani->addAffectedTile(layer, x + y * w);
+            }
+        }
 
         x++;
         if (x == w)
