@@ -585,7 +585,8 @@ bool Graphics::calcImageRect(ImageVertexes *const vert,
     return 0;
 }
 
-void Graphics::setWindowSize(const int width, const int height)
+void Graphics::setWindowSize(const int width A_UNUSED,
+                             const int height A_UNUSED)
 {
 #ifdef USE_SDL2
     SDL_SetWindowSize(mWindow, width, height);
