@@ -23,8 +23,6 @@
 
 #include "utils/stringvector.h"
 
-#include "resources/image.h"
-
 #include <guichan/color.hpp>
 #include <guichan/listmodel.hpp>
 

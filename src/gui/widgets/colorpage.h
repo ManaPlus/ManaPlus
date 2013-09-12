@@ -21,11 +21,7 @@
 #ifndef GUI_WIDGETS_COLORPAGE_H
 #define GUI_WIDGETS_COLORPAGE_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/widgets/listbox.h"
-
-#include <guichan/widget.hpp>
 
 #include "localconsts.h"
 

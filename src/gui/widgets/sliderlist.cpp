@@ -20,15 +20,10 @@
 
 #include "gui/widgets/sliderlist.h"
 
-#include "client.h"
-
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
-
-#include "utils/dtor.h"
 
 #include <guichan/font.hpp>
 

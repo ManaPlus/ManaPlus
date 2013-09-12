@@ -23,11 +23,8 @@
 #include "gui/widgets/guitable.h"
 
 #include "client.h"
-#include "configuration.h"
 
 #include "input/keyevent.h"
-
-#include "gui/sdlinput.h"
 
 #include "utils/dtor.h"
 

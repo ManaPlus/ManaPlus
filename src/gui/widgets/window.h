@@ -37,7 +37,6 @@ class ContainerPlacer;
 class ImageCollection;
 class Layout;
 class LayoutCell;
-class ResizeGrip;
 class Skin;
 class WindowContainer;
 

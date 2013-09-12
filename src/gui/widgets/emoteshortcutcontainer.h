@@ -28,8 +28,6 @@
 
 #include <vector>
 
-class AnimatedSprite;
-class Image;
 class TextPopup;
 
 /**

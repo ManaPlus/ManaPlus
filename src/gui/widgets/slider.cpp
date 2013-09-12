@@ -23,7 +23,6 @@
 #include "gui/widgets/slider.h"
 
 #include "client.h"
-#include "configuration.h"
 
 #include "input/keyevent.h"
 

@@ -22,6 +22,7 @@
 
 #include "gui/equipmentwindow.h"
 
+#include "configuration.h"
 #include "dragdrop.h"
 #include "graphicsvertexes.h"
 #include "inventory.h"
@@ -35,6 +36,7 @@
 #include "gui/setup.h"
 #include "gui/viewport.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/playerbox.h"
 
 #include "net/inventoryhandler.h"

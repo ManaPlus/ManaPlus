@@ -25,8 +25,6 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/color.hpp>
-#include <guichan/font.hpp>
 #include <guichan/widget.hpp>
 
 #include "localconsts.h"

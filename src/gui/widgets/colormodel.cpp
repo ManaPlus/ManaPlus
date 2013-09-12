@@ -24,8 +24,6 @@
 
 #include "utils/gettext.h"
 
-#include <guichan/font.hpp>
-
 #include "debug.h"
 
 ColorModel::ColorModel() :

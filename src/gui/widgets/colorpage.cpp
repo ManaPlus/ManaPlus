@@ -22,8 +22,6 @@
 
 #include "gui/widgets/colormodel.h"
 
-#include "resources/resourcemanager.h"
-
 #include <guichan/font.hpp>
 
 #include "debug.h"

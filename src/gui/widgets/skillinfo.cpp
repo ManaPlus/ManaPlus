@@ -24,7 +24,13 @@
 
 #include "being/playerinfo.h"
 
+#include "gui/theme.h"
+
+#include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillmodel.h"
+
+#include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

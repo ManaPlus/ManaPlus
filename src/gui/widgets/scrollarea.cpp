@@ -23,10 +23,7 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "client.h"
-#include "configuration.h"
 #include "graphicsvertexes.h"
-
-#include "utils/dtor.h"
 
 #include "debug.h"
 

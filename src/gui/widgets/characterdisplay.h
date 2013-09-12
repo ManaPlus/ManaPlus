@@ -33,10 +33,8 @@
 
 #include "localconsts.h"
 
-class Button;
 class CharSelectDialog;
 class Label;
-class PlayerBox;
 class TextPopup;
 
 class CharacterDisplay final : public Container,

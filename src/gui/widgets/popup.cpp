@@ -27,8 +27,6 @@
 
 #include "gui/viewport.h"
 
-#include "gui/widgets/window.h"
-
 #include <guichan/exception.hpp>
 
 #include "debug.h"

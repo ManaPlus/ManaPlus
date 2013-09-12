@@ -21,10 +21,8 @@
 #ifndef GUI_WIDGETS_POPUPLIST_H
 #define GUI_WIDGETS_POPUPLIST_H
 
-#include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
 
-#include <guichan/actionlistener.hpp>
 #include <guichan/focuslistener.hpp>
 #include <guichan/listmodel.hpp>
 

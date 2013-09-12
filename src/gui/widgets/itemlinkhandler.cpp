@@ -22,8 +22,6 @@
 
 #include "gui/widgets/itemlinkhandler.h"
 
-#include "item.h"
-
 #include "gui/confirmdialog.h"
 #include "gui/helpwindow.h"
 #include "gui/itempopup.h"
@@ -31,8 +29,10 @@
 
 #include "utils/gettext.h"
 #include "utils/process.h"
+#include "utils/stringutils.h"
 
-#include <sstream>
+#include "resources/itemdb.h"
+
 #include <string>
 
 #include <guichan/actionlistener.hpp>

@@ -29,7 +29,6 @@
 
 #include "localconsts.h"
 
-class SelectionListener;
 class Skin;
 
 /**

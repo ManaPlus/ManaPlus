@@ -27,21 +27,12 @@
 #include "itemshortcut.h"
 #include "spellshortcut.h"
 
-#include "being/localplayer.h"
-
-#include "input/keyboardconfig.h"
-
 #include "gui/inventorywindow.h"
-#include "gui/okdialog.h"
 #include "gui/shortcutwindow.h"
 #include "gui/spellpopup.h"
 #include "gui/viewport.h"
-#include "gui/textcommandeditor.h"
 
 #include "resources/image.h"
-#include "resources/resourcemanager.h"
-
-#include "utils/gettext.h"
 
 #include <guichan/font.hpp>
 

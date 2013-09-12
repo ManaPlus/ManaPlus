@@ -25,6 +25,7 @@
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tab.h"
 

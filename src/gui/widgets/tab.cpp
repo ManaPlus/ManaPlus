@@ -23,13 +23,10 @@
 #include "gui/widgets/tab.h"
 
 #include "client.h"
-#include "configuration.h"
 #include "graphicsvertexes.h"
 
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
-
-#include "utils/dtor.h"
 
 #include "debug.h"
 

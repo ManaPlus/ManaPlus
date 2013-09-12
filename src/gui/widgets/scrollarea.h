@@ -32,7 +32,6 @@
 
 class Image;
 class ImageCollection;
-class ImageRect;
 
 /**
  * A scroll area.

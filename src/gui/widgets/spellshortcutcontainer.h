@@ -23,13 +23,9 @@
 #ifndef GUI_WIDGETS_SPELLSHORTCUTCONTAINER_H
 #define GUI_WIDGETS_SPELLSHORTCUTCONTAINER_H
 
-#include <guichan/mouselistener.hpp>
-
 #include "gui/widgets/shortcutcontainer.h"
 
-class Image;
 class SpellPopup;
-class TextCommand;
 
 /**
  * An item shortcut container. Used to quickly use items.

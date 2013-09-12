@@ -29,9 +29,6 @@
 
 #include "localconsts.h"
 
-class Image;
-class ImageRect;
-
 /**
  * Slider widget. Same as the Guichan slider but with custom look.
  *

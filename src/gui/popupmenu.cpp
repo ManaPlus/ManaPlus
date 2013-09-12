@@ -24,6 +24,7 @@
 
 #include "actorspritemanager.h"
 #include "commandhandler.h"
+#include "configuration.h"
 #include "dropshortcut.h"
 #include "game.h"
 #include "guild.h"

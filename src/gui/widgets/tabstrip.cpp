@@ -21,7 +21,6 @@
 #include "gui/widgets/tabstrip.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/tab.h"
 
 #include "debug.h"
 

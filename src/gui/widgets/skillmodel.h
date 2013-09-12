@@ -23,44 +23,12 @@
 #ifndef GUI_WIDGETS_SKILLMODEL_H
 #define GUI_WIDGETS_SKILLMODEL_H
 
-#include "configuration.h"
-#include "effectmanager.h"
-#include "itemshortcut.h"
-
-#include "being/localplayer.h"
-#include "being/playerinfo.h"
-
-#include "gui/setup.h"
-#include "gui/shortcutwindow.h"
-#include "gui/textpopup.h"
-#include "gui/viewport.h"
-
-#include "gui/widgets/label.h"
-#include "gui/widgets/layouthelper.h"
-#include "gui/widgets/listbox.h"
-#include "gui/widgets/progressbar.h"
-#include "gui/widgets/scrollarea.h"
 #include "gui/widgets/skillinfo.h"
-#include "gui/widgets/tab.h"
+#include <guichan/listmodel.hpp>
 
-#include "net/net.h"
-#include "net/playerhandler.h"
-#include "net/skillhandler.h"
-
-#include "resources/image.h"
-#include "resources/resourcemanager.h"
-
-#include "utils/dtor.h"
-#include "utils/gettext.h"
-
-#include <guichan/font.hpp>
-
-#include <set>
 #include <string>
 
 #include "localconsts.h"
-
-struct SkillInfo;
 
 class SkillModel final : public gcn::ListModel
 {

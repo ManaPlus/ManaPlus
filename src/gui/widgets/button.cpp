@@ -23,7 +23,6 @@
 #include "gui/widgets/button.h"
 
 #include "client.h"
-#include "configuration.h"
 #include "graphicsvertexes.h"
 
 #include "input/keydata.h"
@@ -31,9 +30,6 @@
 
 #include "resources/imageset.h"
 
-#include "utils/dtor.h"
-
-#include <guichan/exception.hpp>
 #include <guichan/font.hpp>
 
 #include "debug.h"

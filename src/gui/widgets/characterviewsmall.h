@@ -25,8 +25,6 @@
 
 #include "localconsts.h"
 
-class CharacterViewBase;
-
 class CharacterViewSmall final : public CharacterViewBase
 {
     public:

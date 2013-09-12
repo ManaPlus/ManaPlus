@@ -21,20 +21,16 @@
 #ifndef GUI_WIDGETS_SETUPITEM_H
 #define GUI_WIDGETS_SETUPITEM_H
 
-#include "gui/widgets/tabbedarea.h"
-
+#include "gui/widgets/button.h"
 #include "gui/widgets/setuptabscroll.h"
-#include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
-#include <guichan/widget.hpp>
 
 #include <list>
 #include <vector>
 
 class CheckBox;
 class Configuration;
-class ContainerPlacer;
 class DropDown;
 class EditDialog;
 class HorizontContainer;

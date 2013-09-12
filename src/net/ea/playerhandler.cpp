@@ -22,6 +22,7 @@
 
 #include "net/ea/playerhandler.h"
 
+#include "configuration.h"
 #include "game.h"
 #include "party.h"
 #include "notifications.h"

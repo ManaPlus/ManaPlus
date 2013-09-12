@@ -23,7 +23,6 @@
 #include "gui/widgets/radiobutton.h"
 
 #include "client.h"
-#include "configuration.h"
 
 #include "input/keydata.h"
 #include "input/keyevent.h"

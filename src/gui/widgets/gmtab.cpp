@@ -21,12 +21,6 @@
 #include "gui/widgets/gmtab.h"
 
 #include "chatlogger.h"
-#include "commands.h"
-
-#include "being/localplayer.h"
-
-#include "net/chathandler.h"
-#include "net/net.h"
 
 #include "utils/gettext.h"
 

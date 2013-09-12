@@ -22,6 +22,8 @@
 
 #include "gui/windowmenu.h"
 
+#include "configuration.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/skilldialog.h"

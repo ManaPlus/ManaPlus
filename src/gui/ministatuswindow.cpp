@@ -23,6 +23,7 @@
 #include "gui/ministatuswindow.h"
 
 #include "animatedsprite.h"
+#include "configuration.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"

@@ -31,7 +31,6 @@
 #include <guichan/widgetlistener.hpp>
 
 #include <list>
-#include <algorithm>
 
 #include "localconsts.h"
 

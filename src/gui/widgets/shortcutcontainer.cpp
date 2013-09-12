@@ -22,10 +22,7 @@
 
 #include "gui/widgets/shortcutcontainer.h"
 
-#include "configuration.h"
 #include "graphicsvertexes.h"
-
-#include "resources/image.h"
 
 #include "debug.h"
 

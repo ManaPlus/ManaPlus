@@ -24,7 +24,6 @@
 #ifndef GUI_WIDGETS_POPUP_H
 #define GUI_WIDGETS_POPUP_H
 
-#include "configuration.h"
 #include "gui/widgets/container.h"
 
 #include <guichan/mouselistener.hpp>

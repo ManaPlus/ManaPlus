@@ -30,9 +30,7 @@
 
 #include "localconsts.h"
 
-class ImageRect;
 class PopupMenu;
-class TextField;
 
 /**
  * A text field.

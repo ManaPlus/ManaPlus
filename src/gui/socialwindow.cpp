@@ -22,6 +22,7 @@
 #include "gui/socialwindow.h"
 
 #include "actorspritemanager.h"
+#include "configuration.h"
 #include "guild.h"
 #include "guildmanager.h"
 #include "maplayer.h"
@@ -39,6 +40,7 @@
 #include "gui/textdialog.h"
 #include "gui/whoisonline.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/label.h"

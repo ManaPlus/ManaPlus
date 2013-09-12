@@ -70,6 +70,7 @@
 #include "gui/updaterwindow.h"
 #include "gui/worldselectdialog.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/desktop.h"
 
 #include "net/gamehandler.h"

@@ -26,12 +26,12 @@
 #include "gui/widgets/widget2.h"
 
 #include <guichan/actionlistener.hpp>
-#include <guichan/widget.hpp>
+#include <guichan/keylistener.hpp>
+#include <guichan/mouselistener.hpp>
 #include <guichan/widgetlistener.hpp>
 #include <guichan/widgets/container.hpp>
 
-#include "gui/widgets/button.h"
-
+class Button;
 class Image;
 class Tab;
 

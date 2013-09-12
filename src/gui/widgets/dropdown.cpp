@@ -23,22 +23,14 @@
 #include "gui/widgets/dropdown.h"
 
 #include "client.h"
-#include "configuration.h"
 
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
-#include "gui/sdlinput.h"
-#include "gui/viewport.h"
-
 #include "gui/widgets/extendedlistmodel.h"
-#include "gui/widgets/listbox.h"
 #include "gui/widgets/popuplist.h"
-#include "gui/widgets/scrollarea.h"
 
 #include "resources/image.h"
-
-#include "utils/dtor.h"
 
 #include <guichan/font.hpp>
 

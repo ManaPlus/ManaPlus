@@ -23,14 +23,12 @@
 #include "gui/widgets/checkbox.h"
 
 #include "client.h"
-#include "configuration.h"
 
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
 #include "resources/image.h"
 
-#include <guichan/actionlistener.hpp>
 #include <guichan/font.hpp>
 
 #include "debug.h"

@@ -25,8 +25,6 @@
 
 #include "gui/widgets/chattab.h"
 
-class Channel;
-
 /**
  * A tab for whispers from a single player.
  */

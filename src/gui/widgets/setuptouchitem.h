@@ -21,12 +21,8 @@
 #ifndef GUI_WIDGETS_SETUPTOUCHITEM_H
 #define GUI_WIDGETS_SETUPTOUCHITEM_H
 
-#include "gui/setupactiondata.h"
-
 #include "gui/widgets/namesmodel.h"
 #include "gui/widgets/setupitem.h"
-
-#include <algorithm>
 
 class TouchActionsModel final : public NamesModel
 {

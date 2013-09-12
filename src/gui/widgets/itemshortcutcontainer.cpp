@@ -23,18 +23,15 @@
 #include "gui/widgets/itemshortcutcontainer.h"
 
 #include "client.h"
-#include "configuration.h"
 #include "dragdrop.h"
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
 #include "spellshortcut.h"
 
-#include "being/localplayer.h"
 #include "being/playerinfo.h"
 
 #include "input/inputmanager.h"
-#include "input/keyboardconfig.h"
 
 #include "gui/inventorywindow.h"
 #include "gui/itempopup.h"

@@ -23,7 +23,6 @@
 #include "gui/widgets/shoplistbox.h"
 
 #include "client.h"
-#include "configuration.h"
 #include "shopitem.h"
 
 #include "being/playerinfo.h"

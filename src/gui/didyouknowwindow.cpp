@@ -28,6 +28,7 @@
 #include "gui/sdlfont.h"
 #include "gui/setup.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/layout.h"

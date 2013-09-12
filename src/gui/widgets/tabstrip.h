@@ -23,7 +23,6 @@
 
 #include "gui/widgets/widgetgroup.h"
 
-#include <guichan/actionevent.hpp>
 #include <guichan/widget.hpp>
 
 class TabStrip final : public WidgetGroup

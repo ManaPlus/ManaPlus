@@ -20,10 +20,14 @@
 
 #include "gui/widgets/setuptouchitem.h"
 
+#include "gui/setupactiondata.h"
+
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/horizontcontainer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/vertcontainer.h"
+
+#include <algorithm>
 
 #include "debug.h"
 

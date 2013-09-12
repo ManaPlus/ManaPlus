@@ -25,8 +25,6 @@
 
 #include "gui/widgets/extendedlistmodel.h"
 
-#include "resources/image.h"
-
 class ExtendedNamesModel : public ExtendedListModel
 {
     public:

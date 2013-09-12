@@ -22,15 +22,11 @@
 
 #include "gui/widgets/playerbox.h"
 
-#include "animatedsprite.h"
 #include "client.h"
-#include "configuration.h"
 
 #include "being/being.h"
 
 #include "resources/image.h"
-
-#include "utils/dtor.h"
 
 #include "debug.h"
 

@@ -23,7 +23,6 @@
 #include "gui/widgets/itemcontainer.h"
 
 #include "dragdrop.h"
-#include "dropshortcut.h"
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
@@ -33,10 +32,8 @@
 #include "gui/chatwindow.h"
 #include "gui/gui.h"
 #include "gui/itempopup.h"
-#include "gui/outfitwindow.h"
 #include "gui/shopwindow.h"
 #include "gui/shortcutwindow.h"
-#include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
 #include "net/net.h"
@@ -48,11 +45,11 @@
 #include "resources/image.h"
 
 #include <guichan/font.hpp>
-#include <guichan/mouseinput.hpp>
 #include <guichan/selectionlistener.hpp>
 
-#include "debug.h"
+#include <algorithm>
 
+#include "debug.h"
 
 namespace
 {

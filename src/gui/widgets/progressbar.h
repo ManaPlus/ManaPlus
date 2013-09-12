@@ -34,7 +34,6 @@
 
 class Graphics;
 class ImageCollection;
-class ImageRect;
 class Skin;
 
 /**

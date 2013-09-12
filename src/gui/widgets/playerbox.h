@@ -30,7 +30,6 @@
 #include "localconsts.h"
 
 class Being;
-class ImageRect;
 class Skin;
 
 /**

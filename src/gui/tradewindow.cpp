@@ -37,6 +37,7 @@
 #include "gui/sdlfont.h"
 #include "gui/setup.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"

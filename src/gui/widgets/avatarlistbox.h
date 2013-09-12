@@ -28,9 +28,7 @@
 
 #include "gui/widgets/listbox.h"
 
-#include <map>
 #include <string>
-#include <vector>
 
 class Image;
 

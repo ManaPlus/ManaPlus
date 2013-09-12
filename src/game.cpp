@@ -29,6 +29,7 @@
 #include "animatedsprite.h"
 #include "client.h"
 #include "commandhandler.h"
+#include "configuration.h"
 #include "effectmanager.h"
 #include "emoteshortcut.h"
 #include "guildmanager.h"

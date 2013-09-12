@@ -20,7 +20,6 @@
 
 #include "gui/widgets/setuptabscroll.h"
 
-#include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/setupitem.h"
 #include "gui/widgets/vertcontainer.h"

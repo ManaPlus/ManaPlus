@@ -20,19 +20,10 @@
 
 #include "gui/widgets/extendedlistbox.h"
 
-#include "client.h"
-#include "configuration.h"
-
-#include "input/keyevent.h"
-
-#include "gui/sdlinput.h"
-
 #include "gui/widgets/extendedlistmodel.h"
 
-#include <guichan/focushandler.hpp>
 #include <guichan/font.hpp>
 #include <guichan/graphics.hpp>
-#include <guichan/key.hpp>
 #include <guichan/listmodel.hpp>
 
 #include "debug.h"

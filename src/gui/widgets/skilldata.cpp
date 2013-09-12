@@ -24,6 +24,9 @@
 
 #include "configuration.h"
 
+#include "gui/theme.h"
+
+#include "resources/image.h"
 #include "resources/resourcemanager.h"
 
 #include "debug.h"

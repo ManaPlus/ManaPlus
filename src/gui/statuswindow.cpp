@@ -36,6 +36,7 @@
 #include "gui/setup.h"
 #include "gui/viewport.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/progressbar.h"

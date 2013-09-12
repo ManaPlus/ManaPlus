@@ -41,6 +41,7 @@
 #include "gui/tradewindow.h"
 #include "gui/viewport.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/layout.h"

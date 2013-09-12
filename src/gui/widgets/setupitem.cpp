@@ -33,12 +33,10 @@
 #include "gui/widgets/horizontcontainer.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/layouthelper.h"
 #include "gui/widgets/slider.h"
 #include "gui/widgets/sliderlist.h"
 #include "gui/widgets/vertcontainer.h"
 
-#include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/mathutils.h"
 

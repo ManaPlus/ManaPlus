@@ -23,10 +23,9 @@
 #ifndef GUI_WIDGETS_SKILLDATA_H
 #define GUI_WIDGETS_SKILLDATA_H
 
-#include "gui/theme.h"
-
-#include "resources/image.h"
 #include "resources/soundinfo.h"
+
+class Image;
 
 struct SkillData final
 {

@@ -32,11 +32,9 @@
 #include "localconsts.h"
 
 class ImageCollection;
-class ImageRect;
 class Label;
 class Skin;
 class TabbedArea;
-class Theme;
 
 /**
  * A tab, the same as the Guichan tab in 0.8, but extended

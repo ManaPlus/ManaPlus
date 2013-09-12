@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_SHORTCUTCONTAINER_H
 #define GUI_WIDGETS_SHORTCUTCONTAINER_H
 
-#include "gui/widgets/tab.h"
+#include "gui/widgets/widget2.h"
 
 #include <guichan/mouselistener.hpp>
 #include <guichan/widget.hpp>

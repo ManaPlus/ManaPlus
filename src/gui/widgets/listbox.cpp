@@ -23,17 +23,14 @@
 #include "gui/widgets/listbox.h"
 
 #include "client.h"
-#include "configuration.h"
 
 #include "input/keyevent.h"
 
 #include "gui/gui.h"
-#include "gui/sdlinput.h"
 
 #include <guichan/focushandler.hpp>
 #include <guichan/font.hpp>
 #include <guichan/graphics.hpp>
-#include <guichan/key.hpp>
 #include <guichan/listmodel.hpp>
 
 #include "debug.h"

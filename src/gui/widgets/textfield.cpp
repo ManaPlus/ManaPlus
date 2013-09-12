@@ -23,19 +23,15 @@
 #include "gui/widgets/textfield.h"
 
 #include "client.h"
-#include "configuration.h"
 
-#include "input/inputmanager.h"
 #include "input/keyevent.h"
 
 #include "gui/popupmenu.h"
-#include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
 #include "resources/image.h"
 
 #include "utils/copynpaste.h"
-#include "utils/dtor.h"
 
 #include <guichan/font.hpp>
 

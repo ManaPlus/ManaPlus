@@ -25,8 +25,6 @@
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
-#include "gui/sdlinput.h"
-
 #include "utils/stringutils.h"
 #include "debug.h"
 

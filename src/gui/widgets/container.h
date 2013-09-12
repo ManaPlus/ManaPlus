@@ -25,7 +25,6 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widget.hpp>
 #include <guichan/widgets/container.hpp>
 
 #if !defined USE_INTERNALGUICHAN

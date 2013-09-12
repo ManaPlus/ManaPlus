@@ -20,10 +20,6 @@
 
 #include "gui/widgets/extendednamesmodel.h"
 
-#include "utils/gettext.h"
-
-#include <guichan/font.hpp>
-
 #include "debug.h"
 
 ExtendedNamesModel::ExtendedNamesModel() :

@@ -29,7 +29,6 @@
 
 #include "localconsts.h"
 
-class Image;
 class Skin;
 
 /**

@@ -26,7 +26,6 @@
 #include "gui/widgets/widget2.h"
 
 #include <guichan/widgets/button.hpp>
-#include <guichan/mouseevent.hpp>
 #include <guichan/widgetlistener.hpp>
 
 #include "localconsts.h"
@@ -34,7 +33,6 @@
 class Image;
 class ImageCollection;
 class ImageSet;
-class ImageRect;
 class Skin;
 
 const std::string BUTTON_PLAY = "buttonplay.png";

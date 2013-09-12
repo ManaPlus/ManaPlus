@@ -22,7 +22,6 @@
 
 #include "gui/widgets/chattab.h"
 
-#include "actorspritemanager.h"
 #include "chatlogger.h"
 #include "client.h"
 #include "commandhandler.h"
@@ -37,7 +36,6 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/tabbedarea.h"
-#include "gui/widgets/tradetab.h"
 
 #include "net/chathandler.h"
 #include "net/net.h"

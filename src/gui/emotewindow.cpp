@@ -29,6 +29,7 @@
 
 #include "utils/gettext.h"
 
+#include "resources/image.h"
 #include "resources/imageset.h"
 
 #include "debug.h"

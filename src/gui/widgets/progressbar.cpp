@@ -23,13 +23,10 @@
 #include "gui/widgets/progressbar.h"
 
 #include "client.h"
-#include "configuration.h"
 #include "graphicsvertexes.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
-
-#include "utils/dtor.h"
 
 #include <guichan/font.hpp>
 

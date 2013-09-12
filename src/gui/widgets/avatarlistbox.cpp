@@ -24,7 +24,6 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "graphicsvertexes.h"
-#include "guild.h"
 #include "maplayer.h"
 
 #include "being/localplayer.h"
@@ -35,7 +34,6 @@
 #include "gui/viewport.h"
 
 #include "resources/image.h"
-#include "resources/resourcemanager.h"
 
 #include <guichan/font.hpp>
 

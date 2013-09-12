@@ -24,14 +24,6 @@
 
 #include "chatlogger.h"
 
-#include "being/localplayer.h"
-
-#include "net/net.h"
-
-#include "resources/iteminfo.h"
-#include "resources/itemdb.h"
-
-#include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

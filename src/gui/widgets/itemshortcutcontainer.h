@@ -25,10 +25,6 @@
 
 #include "gui/widgets/shortcutcontainer.h"
 
-#include <guichan/mouselistener.hpp>
-
-class Image;
-class Item;
 class ItemPopup;
 class SpellPopup;
 

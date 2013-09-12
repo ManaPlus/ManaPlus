@@ -26,6 +26,7 @@
 #include "animatedsprite.h"
 #include "beingequipbackend.h"
 #include "client.h"
+#include "configuration.h"
 #include "effectmanager.h"
 #include "guild.h"
 #include "party.h"
@@ -59,6 +60,7 @@
 #include "resources/resourcemanager.h"
 
 #include "gui/widgets/langtab.h"
+#include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 
 #include "utils/gettext.h"

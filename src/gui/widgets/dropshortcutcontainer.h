@@ -23,12 +23,8 @@
 #ifndef GUI_WIDGETS_DROPSHORTCUTCONTAINER_H
 #define GUI_WIDGETS_DROPSHORTCUTCONTAINER_H
 
-#include <guichan/mouselistener.hpp>
-
 #include "gui/widgets/shortcutcontainer.h"
 
-class Image;
-class Item;
 class ItemPopup;
 
 /**

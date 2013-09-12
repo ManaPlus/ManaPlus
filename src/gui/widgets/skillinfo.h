@@ -23,9 +23,14 @@
 #ifndef GUI_WIDGETS_SKILLINFO_H
 #define GUI_WIDGETS_SKILLINFO_H
 
-#include "gui/widgets/skilldata.h"
+#include <guichan/color.hpp>
 
+#include <vector>
 #include <map>
+
+#include "localconsts.h"
+
+struct SkillData;
 
 class SkillModel;
 

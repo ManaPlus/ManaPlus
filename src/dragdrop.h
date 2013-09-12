@@ -24,6 +24,7 @@
 #include "item.h"
 #include "textcommand.h"
 
+#include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 
 #include "resources/image.h"

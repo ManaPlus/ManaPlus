@@ -26,17 +26,13 @@
 #include "dragdrop.h"
 #include "dropshortcut.h"
 
-#include "being/localplayer.h"
 #include "being/playerinfo.h"
-
-#include "input/keyboardconfig.h"
 
 #include "gui/inventorywindow.h"
 #include "gui/itempopup.h"
 #include "gui/viewport.h"
 
 #include "resources/image.h"
-#include "resources/resourcemanager.h"
 
 #include <guichan/font.hpp>
 

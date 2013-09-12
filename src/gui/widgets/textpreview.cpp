@@ -23,7 +23,6 @@
 #include "gui/widgets/textpreview.h"
 
 #include "client.h"
-#include "configuration.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"

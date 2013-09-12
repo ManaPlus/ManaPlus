@@ -24,6 +24,7 @@
 #include "gui/itempopup.h"
 
 #include "client.h"
+#include "configuration.h"
 #include "item.h"
 #include "units.h"
 

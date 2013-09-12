@@ -22,9 +22,34 @@
 
 #include "gui/skilldialog.h"
 
+#include "configuration.h"
 #include "dragdrop.h"
+#include "effectmanager.h"
+#include "itemshortcut.h"
 
+#include "being/localplayer.h"
+
+#include "gui/setup.h"
+#include "gui/shortcutwindow.h"
+#include "gui/textpopup.h"
+#include "gui/viewport.h"
+
+#include "gui/widgets/button.h"
+#include "gui/widgets/label.h"
+#include "gui/widgets/listbox.h"
+#include "gui/widgets/scrollarea.h"
 #include "gui/widgets/skillmodel.h"
+#include "gui/widgets/tab.h"
+#include "gui/widgets/tabbedarea.h"
+
+#include "net/net.h"
+#include "net/playerhandler.h"
+#include "net/skillhandler.h"
+
+#include "utils/dtor.h"
+#include "utils/gettext.h"
+
+#include <guichan/font.hpp>
 
 #include "debug.h"
 

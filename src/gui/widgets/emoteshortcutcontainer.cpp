@@ -23,23 +23,14 @@
 
 #include "animatedsprite.h"
 #include "client.h"
-#include "configuration.h"
 #include "emoteshortcut.h"
-#include "inventory.h"
-#include "item.h"
-#include "itemshortcut.h"
-
-#include "being/localplayer.h"
 
 #include "input/inputmanager.h"
-#include "input/keyboardconfig.h"
 
 #include "gui/textpopup.h"
 #include "gui/viewport.h"
 
 #include "resources/image.h"
-
-#include "utils/dtor.h"
 
 #include <guichan/font.hpp>
 

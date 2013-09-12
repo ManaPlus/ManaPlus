@@ -27,13 +27,11 @@
 
 #include <guichan/actionlistener.hpp>
 #include <guichan/basiccontainer.hpp>
-#include <guichan/focushandler.hpp>
 #include <guichan/focuslistener.hpp>
 #include <guichan/keylistener.hpp>
 #include <guichan/listmodel.hpp>
 #include <guichan/mouselistener.hpp>
 #include <guichan/selectionlistener.hpp>
-#include <guichan/widgets/scrollarea.hpp>
 
 #include "localconsts.h"
 
