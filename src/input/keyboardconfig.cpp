@@ -23,7 +23,6 @@
 #include "input/keyboardconfig.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "input/inputmanager.h"
 

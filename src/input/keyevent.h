@@ -21,13 +21,8 @@
 #ifndef INPUT_KEYEVENT_H
 #define INPUT_KEYEVENT_H
 
-#include "input/keydata.h"
-
 #include <guichan/key.hpp>
 #include <guichan/keyevent.hpp>
-#include <guichan/widget.hpp>
-
-#include <string>
 
 class KeyEvent final : public gcn::KeyEvent
 {

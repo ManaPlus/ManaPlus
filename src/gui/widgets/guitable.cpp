@@ -25,6 +25,7 @@
 #include "client.h"
 
 #include "input/keyevent.h"
+#include "input/keydata.h"
 
 #include "utils/dtor.h"
 

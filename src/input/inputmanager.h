@@ -27,7 +27,7 @@
 #include <string>
 #include <map>
 
-#include <SDL.h>
+#include <SDL_events.h>
 
 const unsigned int KeyFunctionSize = 3;
 
@@ -38,8 +38,6 @@ const unsigned int KeyFunctionSize = 3;
 #ifdef INPUT_MOUSE
 #undef INPUT_MOUSE
 #endif
-
-struct KeyData;
 
 class Setup_Input;
 

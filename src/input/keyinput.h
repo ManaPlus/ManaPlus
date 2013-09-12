@@ -21,11 +21,7 @@
 #ifndef INPUT_KEYINPUT_H
 #define INPUT_KEYINPUT_H
 
-#include "input/keydata.h"
-
 #include <guichan/keyinput.hpp>
-
-#include <string>
 
 class KeyInput final : public gcn::KeyInput
 {

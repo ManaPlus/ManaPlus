@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "units.h"
 
+#include "input/keydata.h"
 #include "input/keyevent.h"
 
 #include "gui/charcreatedialog.h"

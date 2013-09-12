@@ -23,16 +23,13 @@
 #ifndef INPUT_KEYBOARDCONFIG_H
 #define INPUT_KEYBOARDCONFIG_H
 
-#include <SDL_types.h>
 #include <SDL_keyboard.h>
 
 #include "sdlshared.h"
 
 #include "input/inputevent.h"
 
-#include <map>
 #include <string>
-#include <vector>
 
 union SDL_Event;
 
