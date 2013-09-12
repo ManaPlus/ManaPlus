@@ -114,9 +114,15 @@ static void outString(ChatTab *const tab, const std::string &str,
             if (guild)
             {
                 if (guild->getServerGuild())
+                {
+                    if (tmwServerVersion > 0)
+                        return;
                     Net::getGuildHandler()->chat(guild->getId(), str);
+                }
                 else if (guildManager)
+                {
                     guildManager->chat(str);
+                }
             }
             break;
         }
@@ -212,9 +218,15 @@ static void outStringNormal(ChatTab *const tab,
             if (guild)
             {
                 if (guild->getServerGuild())
+                {
+                    if (tmwServerVersion > 0)
+                        return;
                     Net::getGuildHandler()->chat(guild->getId(), str);
+                }
                 else if (guildManager)
+                {
                     guildManager->chat(str);
+                }
             }
             break;
         }
@@ -402,7 +414,7 @@ impHandler(createParty)
 
 impHandler(createGuild)
 {
-    if (!tab)
+    if (!tab || tmwServerVersion > 0)
         return;
 
     if (args.empty())
@@ -849,7 +861,7 @@ impHandler0(dirs)
 
 impHandler2(info)
 {
-    if (!tab || !player_node)
+    if (!tab || !player_node || !tmwServerVersion > 0)
         return;
 
     switch (tab->getType())

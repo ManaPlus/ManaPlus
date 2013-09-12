@@ -1538,6 +1538,9 @@ void SocialWindow::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "create guild")
     {
+        if (tmwServerVersion > 0)
+            return;
+
         std::string name = mGuildCreateDialog->getText();
 
         if (name.size() > 16)

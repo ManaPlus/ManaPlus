@@ -82,6 +82,9 @@ GuildHandler::~GuildHandler()
 void GuildHandler::handleMessage(Net::MessageIn &msg)
 {
     BLOCK_START("GuildHandler::handleMessage")
+    if (tmwServerVersion > 0)
+        return;
+
     switch (msg.getId())
     {
         case SMSG_GUILD_CREATE_RESPONSE:
