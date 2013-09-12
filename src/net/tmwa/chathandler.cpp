@@ -278,12 +278,16 @@ void ChatHandler::processRaw(MessageOut &outMsg, const std::string &line)
 
 void ChatHandler::ignoreAll() const
 {
+    if (tmwServerVersion > 0)
+        return;
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(0);
 }
 
 void ChatHandler::unIgnoreAll() const
 {
+    if (tmwServerVersion > 0)
+        return;
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(1);
 }
