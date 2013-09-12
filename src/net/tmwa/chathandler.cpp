@@ -42,6 +42,7 @@
 
 extern Net::ChatHandler *chatHandler;
 extern int serverVersion;
+extern unsigned int tmwServerVersion;
 
 namespace TmwAthena
 {

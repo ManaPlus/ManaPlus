@@ -32,6 +32,7 @@
 #include "debug.h"
 
 extern Net::GuildHandler *guildHandler;
+extern unsigned int tmwServerVersion;
 
 namespace TmwAthena
 {
