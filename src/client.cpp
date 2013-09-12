@@ -184,6 +184,7 @@ volatile int cur_time;
 volatile bool runCounters;
 bool isSafeMode = false;
 int serverVersion = 0;
+unsigned int tmwServerVersion = 0;
 int start_time;
 
 int textures_count = 0;

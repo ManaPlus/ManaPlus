@@ -196,16 +196,38 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
         mRegistrationEnabled = options & FLAG_REGISTRATION;
         msg.skip(2);  // 0 unused
         serverVersion = msg.readInt8();
+        tmwServerVersion = 0;
         if (serverVersion >= 5)
             requestUpdateHosts();
     }
-    else
-    {
+    else if (b1 == 255)
+    {   // old TMWA
         const unsigned int options = msg.readInt32();
         mRegistrationEnabled = options & FLAG_REGISTRATION;
         serverVersion = 0;
+        tmwServerVersion = 0;
     }
-    logger->log("Server version: %d", serverVersion);
+    else if (b1 >= 0x0d)
+    {   // new TMWA
+        const unsigned int options = msg.readInt32();
+        mRegistrationEnabled = options & FLAG_REGISTRATION;
+        serverVersion = 0;
+        tmwServerVersion = (b1 << 16) | (b2 << 8) | b3;
+    }
+    else
+    {   // eAthena
+        const unsigned int options = msg.readInt32();
+        mRegistrationEnabled = options & FLAG_REGISTRATION;
+        serverVersion = 0;
+        tmwServerVersion = 0;
+    }
+    if (serverVersion > 0)
+        logger->log("Evol server version: %d", serverVersion);
+    else if (tmwServerVersion > 0)
+        logger->log("Tmw server version: x%06x", tmwServerVersion);
+    else
+        logger->log("Server witout version");
+
     if (serverVersion < 5)
     {
         if (client->getState() != STATE_LOGIN)

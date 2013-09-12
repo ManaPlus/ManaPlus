@@ -59,6 +59,7 @@ extern volatile int tick_time;
 extern volatile int cur_time;
 extern bool isSafeMode;
 extern int serverVersion;
+extern unsigned int tmwServerVersion;
 extern int start_time;
 extern int textures_count;
 
