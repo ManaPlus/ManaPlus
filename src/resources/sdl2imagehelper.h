@@ -78,12 +78,6 @@ class SDLImageHelper final : public ImageHelper
         static bool SDLGetEnableAlphaCache() A_WARN_UNUSED
         { return mEnableAlphaCache; }
 
-         /**
-         * Tells if the image was loaded using OpenGL or SDL
-         * @return true if OpenGL, false if SDL.
-         */
-        RenderType useOpenGL() const override A_WARN_UNUSED;
-
         static SDL_Surface* SDLDuplicateSurface(SDL_Surface *const tmpImage)
                                                 A_WARN_UNUSED;
 

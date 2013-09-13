@@ -232,7 +232,7 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
         useOpenGL = intToRenderType(config.getIntValue("opengl"));
 
     // Setup image loading for the right image format
-    OpenGLImageHelper::setLoadAsOpenGL(useOpenGL);
+    ImageHelper::setOpenGlMode(useOpenGL);
 
     // Create the graphics context
     switch (useOpenGL)
@@ -286,18 +286,51 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
     mUseAtlases = (useOpenGL == RENDER_NORMAL_OPENGL
         || useOpenGL == RENDER_SAFE_OPENGL || useOpenGL == RENDER_GLES_OPENGL)
         && config.getBoolValue("useAtlases");
-#else
+
+#else  // USE_OPENGL
+
 void GraphicsManager::initGraphics(const bool noOpenGL A_UNUSED)
 {
+    RenderType useOpenGL = RENDER_SOFTWARE;
+    if (!noOpenGL)
+        useOpenGL = intToRenderType(config.getIntValue("opengl"));
+
+    // Setup image loading for the right image format
+    ImageHelper::setOpenGlMode(useOpenGL);
+
     // Create the graphics context
-    imageHelper = new SDLImageHelper;
+    switch (useOpenGL)
+    {
+        case RENDER_SOFTWARE:
+        case RENDER_SAFE_OPENGL:
+        case RENDER_GLES_OPENGL:
+        case RENDER_NORMAL_OPENGL:
+        default:
+#ifndef USE_SDL2
+        case RENDER_SDL2_DEFAULT:
+#endif
 #ifdef USE_SDL2
-    surfaceImageHelper = new SurfaceImageHelper;
+            imageHelper = new SDL2SoftwareImageHelper;
+            surfaceImageHelper = new SurfaceImageHelper;
+            mainGraphics = new SDL2SoftwareGraphics;
 #else
-    surfaceImageHelper = imageHelper;
+            imageHelper = new SDLImageHelper;
+            surfaceImageHelper = imageHelper;
+            mainGraphics = new SDLGraphics;
 #endif
-    mainGraphics = new SDLGraphics;
+            break;
+#ifdef USE_SDL2
+        case RENDER_SDL2_DEFAULT:
+            imageHelper = new SDLImageHelper;
+            surfaceImageHelper = new SurfaceImageHelper;
+            mainGraphics = new SDLGraphics;
+            mainGraphics->setRendererFlags(SDL_RENDERER_ACCELERATED);
+            break;
 #endif
+    };
+
+#endif  // USE_OPENGL
+
 }
 
 void GraphicsManager::setVideoMode()

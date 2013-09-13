@@ -23,6 +23,10 @@
 
 #include <guichan/keyinput.hpp>
 
+#include <string>
+
+#include "localconsts.h"
+
 class KeyInput final : public gcn::KeyInput
 {
     public:

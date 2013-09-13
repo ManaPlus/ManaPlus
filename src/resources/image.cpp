@@ -419,7 +419,9 @@ Image *Image::getSubImage(const int x, const int y,
 #endif
 
 #ifdef USE_SDL2
-    // +++ probably default sdl render is broken here
+#ifndef USE_OPENGL
+    const RenderType mode = ImageHelper::mUseOpenGL;
+#endif
     if (mode == RENDER_SOFTWARE)
         return new SubImage(this, mSDLSurface, x, y, width, height);
     else

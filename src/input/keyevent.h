@@ -24,6 +24,10 @@
 #include <guichan/key.hpp>
 #include <guichan/keyevent.hpp>
 
+#include <string>
+
+#include "localconsts.h"
+
 class KeyEvent final : public gcn::KeyEvent
 {
     public:

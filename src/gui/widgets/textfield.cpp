@@ -28,6 +28,7 @@
 #include "input/keyevent.h"
 
 #include "gui/popupmenu.h"
+#include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
 #include "resources/image.h"

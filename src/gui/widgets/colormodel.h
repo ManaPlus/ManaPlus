@@ -26,6 +26,8 @@
 #include <guichan/color.hpp>
 #include <guichan/listmodel.hpp>
 
+#include "localconsts.h"
+
 class Widget2;
 
 struct ColorPair

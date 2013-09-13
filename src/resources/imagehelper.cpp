@@ -41,6 +41,7 @@ ImageHelper *imageHelper = nullptr;
 ImageHelper *surfaceImageHelper = nullptr;
 
 bool ImageHelper::mEnableAlpha = true;
+RenderType ImageHelper::mUseOpenGL = RENDER_SOFTWARE;
 
 Image *ImageHelper::load(SDL_RWops *const rw) const
 {

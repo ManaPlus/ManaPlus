@@ -50,7 +50,6 @@ int OpenGLImageHelper::mTextureType = 0;
 int OpenGLImageHelper::mInternalTextureType = GL_RGBA8;
 int OpenGLImageHelper::mTextureSize = 0;
 bool OpenGLImageHelper::mBlur = true;
-RenderType OpenGLImageHelper::mUseOpenGL = RENDER_SOFTWARE;
 bool OpenGLImageHelper::mUseTextureSampler = false;
 
 Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
@@ -277,16 +276,6 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     }
 
     return new Image(texture, width, height, realWidth, realHeight);
-}
-
-void OpenGLImageHelper::setLoadAsOpenGL(const RenderType useOpenGL)
-{
-    mUseOpenGL = useOpenGL;
-}
-
-RenderType OpenGLImageHelper::useOpenGL() const
-{
-    return mUseOpenGL;
 }
 
 void OpenGLImageHelper::initTextureSampler(const GLint id)

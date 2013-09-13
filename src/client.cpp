@@ -2357,11 +2357,7 @@ void Client::storeSafeParameters() const
     if (isSafeMode)
         logger->log1("Run in safe mode");
 
-#if defined USE_OPENGL
     tmpOpengl = intToRenderType(config.getIntValue("opengl"));
-#else
-    tmpOpengl = RENDER_SOFTWARE;
-#endif
 
     width = config.getIntValue("screenwidth");
     height = config.getIntValue("screenheight");

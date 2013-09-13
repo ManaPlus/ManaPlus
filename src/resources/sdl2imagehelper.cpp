@@ -146,11 +146,6 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
     return new Image(texture, tmpImage->w, tmpImage->h);
 }
 
-RenderType SDLImageHelper::useOpenGL() const
-{
-    return RENDER_SDL2_DEFAULT;
-}
-
 SDL_Surface *SDLImageHelper::create32BitSurface(int width, int height) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
