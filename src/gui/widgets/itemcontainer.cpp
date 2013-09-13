@@ -282,7 +282,8 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                 image->setAlpha(1.0f);  // ensure the image if fully drawn...
                 g->drawImage(image, itemX + mPaddingItemX,
                     itemY + mPaddingItemY);
-                if (mProtectedImg && PlayerInfo::isItemProtected(item->getId()))
+                if (mProtectedImg && PlayerInfo::isItemProtected(
+                    item->getId()))
                 {
                     g->drawImage(mProtectedImg, itemX + mPaddingItemX,
                         itemY + mPaddingItemY);

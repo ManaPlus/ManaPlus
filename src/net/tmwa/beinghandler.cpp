@@ -669,8 +669,8 @@ void BeingHandler::processBeingMove3(Net::MessageIn &msg) const
     if (serverVersion < 10)
         return;
 
-    const static int dirx[8] = {0, -1, -1, -1,  0,  1, 1, 1};
-    const static int diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
+    static const int dirx[8] = {0, -1, -1, -1,  0,  1, 1, 1};
+    static const int diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
 
     const int len = msg.readInt16() - 14;
     Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());

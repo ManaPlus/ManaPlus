@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SDLGRAPHICS_H
-#define SDLGRAPHICS_H
+#ifndef RENDER_SDLGRAPHICS_H
+#define RENDER_SDLGRAPHICS_H
 
 #ifdef USE_SDL2
 #include "render/sdl2graphics.h"
@@ -152,4 +152,4 @@ class SDLGraphics : public Graphics
 };
 
 #endif  // USE_SDL2
-#endif  // SDLGRAPHICS_H
+#endif  // RENDER_SDLGRAPHICS_H

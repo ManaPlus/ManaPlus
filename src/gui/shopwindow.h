@@ -32,7 +32,6 @@ class Button;
 class CheckBox;
 class Item;
 class Label;
-//class ListBox;
 class ScrollArea;
 class ShopItem;
 class ShopItems;

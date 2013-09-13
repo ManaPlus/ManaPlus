@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NORMALOPENGLGRAPHICS_H
-#define NORMALOPENGLGRAPHICS_H
+#ifndef RENDER_NORMALOPENGLGRAPHICS_H
+#define RENDER_NORMALOPENGLGRAPHICS_H
 
 #include "main.h"
 #if defined USE_OPENGL && !defined ANDROID
@@ -241,4 +241,4 @@ class NormalOpenGLGraphics final : public Graphics
 };
 #endif
 
-#endif  // NORMALOPENGLGRAPHICS_H
+#endif  // RENDER_NORMALOPENGLGRAPHICS_H

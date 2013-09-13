@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/gettext.h"
-
 #ifndef RENDER_RENDERERSLISTSDL_H
 #define RENDER_RENDERERSLISTSDL_H
 
@@ -27,6 +25,10 @@
 #include "render/rendererslistsdl2.h"
 
 #else  // USE_SDL2
+
+#include "utils/gettext.h"
+
+#include "render/renderers.h"
 
 #ifdef USE_OPENGL
 #ifdef ANDROID

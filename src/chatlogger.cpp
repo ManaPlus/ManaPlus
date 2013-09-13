@@ -27,6 +27,7 @@
 
 #ifdef WIN32
 #include <windows.h>
+#include <sys/time.h>
 #elif defined __APPLE__
 #include <Carbon/Carbon.h>
 #endif

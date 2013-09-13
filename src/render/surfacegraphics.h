@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SURFACEGRAPHICS_H
-#define SURFACEGRAPHICS_H
+#ifndef RENDER_SURFACEGRAPHICS_H
+#define RENDER_SURFACEGRAPHICS_H
 
 #include "render/graphics.h"
 
@@ -182,4 +182,4 @@ class SurfaceGraphics : public Graphics
         SDL_Surface *mTarget;
 };
 
-#endif  // SURFACEGRAPHICS_H
+#endif  // RENDER_SURFACEGRAPHICS_H

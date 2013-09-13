@@ -533,7 +533,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
                     if (gui)
                         gui->handleInput();
                 }
-                catch (const gcn::Exception &e)
+                catch(const gcn::Exception &e)
                 {
                     const char *const err = e.getMessage().c_str();
                     logger->log("Warning: guichan input exception: %s", err);
@@ -577,7 +577,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
         if (guiInput)
             guiInput->pushInput(event);
     }
-    catch (const gcn::Exception &e)
+    catch(const gcn::Exception &e)
     {
         const char *const err = e.getMessage().c_str();
         logger->log("Warning: guichan input exception: %s", err);

@@ -253,6 +253,8 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
 #ifndef USE_SDL2
         case RENDER_SDL2_DEFAULT:
 #endif
+        case RENDER_LAST:
+        case RENDER_NULL:
         default:
 #ifndef ANDROID
             imageHelper = new OpenGLImageHelper;
@@ -305,6 +307,8 @@ void GraphicsManager::initGraphics(const bool noOpenGL A_UNUSED)
         case RENDER_SAFE_OPENGL:
         case RENDER_GLES_OPENGL:
         case RENDER_NORMAL_OPENGL:
+        case RENDER_NULL:
+        case RENDER_LAST:
         default:
 #ifndef USE_SDL2
         case RENDER_SDL2_DEFAULT:
@@ -328,9 +332,7 @@ void GraphicsManager::initGraphics(const bool noOpenGL A_UNUSED)
             break;
 #endif
     };
-
 #endif  // USE_OPENGL
-
 }
 
 void GraphicsManager::setVideoMode()

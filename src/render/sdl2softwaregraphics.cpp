@@ -745,8 +745,8 @@ void SDL2SoftwareGraphics::fillRectangle(const gcn::Rectangle &rectangle)
             case 2:
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *const p0 = static_cast<uint8_t *>(mSurface->pixels)
-                        + y * mSurface->pitch;
+                    uint8_t *const p0 = static_cast<uint8_t *>(
+                        mSurface->pixels) + y * mSurface->pitch;
                     for (x = x1; x < x2; x++)
                     {
                         uint8_t *const p = p0 + x * 2;
@@ -766,8 +766,8 @@ void SDL2SoftwareGraphics::fillRectangle(const gcn::Rectangle &rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *const p0 = static_cast<uint8_t *>(mSurface->pixels)
-                        + y * mSurface->pitch;
+                    uint8_t *const p0 = static_cast<uint8_t *>(
+                        mSurface->pixels) + y * mSurface->pitch;
                     for (x = x1; x < x2; x++)
                     {
                         uint8_t *const p = p0 + x * 3;
@@ -794,8 +794,8 @@ void SDL2SoftwareGraphics::fillRectangle(const gcn::Rectangle &rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    uint8_t *const p0 = static_cast<uint8_t *>(mSurface->pixels)
-                        + y * mSurface->pitch;
+                    uint8_t *const p0 = static_cast<uint8_t *>(
+                        mSurface->pixels) + y * mSurface->pitch;
                     for (x = x1; x < x2; x++)
                     {
                         uint8_t *p = p0 + x * 4;

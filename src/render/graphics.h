@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GRAPHICS_H
-#define GRAPHICS_H
+#ifndef RENDER_GRAPHICS_H
+#define RENDER_GRAPHICS_H
 
 #include "SDL.h"
 
@@ -431,4 +431,4 @@ class Graphics : public gcn::Graphics
 
 extern Graphics *mainGraphics;
 
-#endif  // GRAPHICS_H
+#endif  // RENDER_GRAPHICS_H

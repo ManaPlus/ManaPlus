@@ -24,6 +24,10 @@
 
 #include "client.h"
 
+#ifdef ANDROID
+#include "input/inputmanager.h"
+#endif
+
 #include "input/keydata.h"
 #include "input/keyevent.h"
 

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MOBILEOPENGLGRAPHICS_H
-#define MOBILEOPENGLGRAPHICS_H
+#ifndef RENDER_MOBILEOPENGLGRAPHICS_H
+#define RENDER_MOBILEOPENGLGRAPHICS_H
 
 #include "main.h"
 #ifdef USE_OPENGL
@@ -229,4 +229,4 @@ class MobileOpenGLGraphics final : public Graphics
 };
 #endif
 
-#endif  // MOBILEOPENGLGRAPHICS_H
+#endif  // RENDER_MOBILEOPENGLGRAPHICS_H

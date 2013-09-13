@@ -41,6 +41,9 @@ Resource *SDLMusic::load(SDL_RWops *const rw)
 {
 #ifdef USE_SDL2
     if (Mix_Music *const music = Mix_LoadMUSType_RW(rw, MUS_OGG, 1))
+#elif defined ANDROID
+    // +++ here probably mem leak
+    if (Mix_Music *const music = Mix_LoadMUS_RW(rw))
 #else
     if (Mix_Music *const music = Mix_LoadMUSType_RW(rw, MUS_OGG, SDL_TRUE))
 #endif

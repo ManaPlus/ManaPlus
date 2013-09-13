@@ -165,8 +165,6 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
         }
     }
 
-
-
     for (int f = 0; f < selSz; ++f)
     {
         const ExtendedListBoxItem &item = mSelectedItems[f];

@@ -204,6 +204,8 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
             mFPSText = _("%d FPS (Software)");
             break;
         case RENDER_NORMAL_OPENGL:
+        case RENDER_NULL:
+        case RENDER_LAST:
         default:
             // TRANSLATORS: debug window label
             mFPSText = _("%d FPS (fast OpenGL)");

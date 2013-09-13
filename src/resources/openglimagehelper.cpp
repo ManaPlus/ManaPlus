@@ -215,6 +215,8 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
             break;
         case RENDER_SOFTWARE:
         case RENDER_SDL2_DEFAULT:
+        case RENDER_NULL:
+        case RENDER_LAST:
         default:
             logger->log("Unknown OpenGL backend: %d", mUseOpenGL);
             break;

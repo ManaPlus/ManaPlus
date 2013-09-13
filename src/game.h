@@ -34,7 +34,6 @@ static const int MAX_LASTKEYS = 10;
 extern volatile int cur_time;
 
 class Map;
-//class WindowMenu;
 
 struct LastKey final
 {

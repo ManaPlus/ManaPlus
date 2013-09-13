@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NULLOPENGLGRAPHICS_H
-#define NULLOPENGLGRAPHICS_H
+#ifndef RENDER_NULLOPENGLGRAPHICS_H
+#define RENDER_NULLOPENGLGRAPHICS_H
 
 #include "main.h"
 #if defined USE_OPENGL
@@ -236,4 +236,4 @@ class NullOpenGLGraphics final : public Graphics
 };
 #endif
 
-#endif  // NULLOPENGLGRAPHICS_H
+#endif  // RENDER_NULLOPENGLGRAPHICS_H

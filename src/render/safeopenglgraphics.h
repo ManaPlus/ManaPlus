@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SAFEOPENGLGRAPHICS_H
-#define SAFEOPENGLGRAPHICS_H
+#ifndef RENDER_SAFEOPENGLGRAPHICS_H
+#define RENDER_SAFEOPENGLGRAPHICS_H
 
 #include "main.h"
 #if defined USE_OPENGL && !defined ANDROID
@@ -180,4 +180,4 @@ class SafeOpenGLGraphics final : public Graphics
 };
 #endif
 
-#endif  // SAFEOPENGLGRAPHICS_H
+#endif  // RENDER_SAFEOPENGLGRAPHICS_H
