@@ -1,3 +1,26 @@
+2013-09-15 New release 1.3.9.15
+fix: compilation on some systems.
+fix: windows resize in SDL2.
+fix: delay flag in die sount.
+fix: missing country flags in windows builds.
+fix: help translations in windows builds.
+fix: animated tiles in CSV map formats.
+add: SDL2 default renderer mode.
+add: improve perfomance in SDL2 software renderer.
+add: improve setup input actions window.
+add: updated liberation font.
+add: improver draw speed.
+add: drag and drop for equipment window.
+add: icon in protected items.
+add: separate drop and protect context menu items.
+add: server side full move path (evol only).
+add: diagonal move speed (can be disabled for players).
+add: globals filter by name.
+by default messages ignored from "Sagatha"
+add: atlas for common images usage like particle effects.
+add: server check version for "new" tmw server.
+add: disable some removed features for "new" tmw server.
+
 2013-09-01 New release 1.3.9.1
 fix: S/a dye for big endian systems.
 fix: some typos.
