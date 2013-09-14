@@ -467,6 +467,19 @@ inline static void setTile(Map *const map, MapLayer *const layer,
     }
 }
 
+#define addTile() \
+    setTile(map, layer, x, y, gid); \
+    if (hasAnimations) \
+    { \
+        TileAnimationMapCIter it = tileAnimations.find(gid); \
+        if (it != tileAnimations.end()) \
+        { \
+            TileAnimation *const ani = it->second; \
+            if (ani) \
+                ani->addAffectedTile(layer, x + y * w); \
+        } \
+    } \
+
 bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
                                 MapLayer *const layer,
                                 const std::string &compression,
@@ -549,18 +562,8 @@ bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
                 binData[i + 2] << 16 |
                 binData[i + 3] << 24;
 
-            setTile(map, layer, x, y, gid);
+            addTile();
 
-            if (hasAnimations)
-            {
-                TileAnimationMapCIter it = tileAnimations.find(gid);
-                if (it != tileAnimations.end())
-                {
-                    TileAnimation *const ani = it->second;
-                    if (ani)
-                        ani->addAffectedTile(layer, x + y * w);
-                }
-            }
             x++;
             if (x == w)
             {
@@ -603,17 +606,7 @@ bool MapReader::readCsvLayer(const XmlNodePtr childNode, Map *const map,
             return false;
 
         const int gid = atoi(csv.substr(oldPos, pos - oldPos).c_str());
-        setTile(map, layer, x, y, gid);
-        if (hasAnimations)
-        {
-            TileAnimationMapCIter it = tileAnimations.find(gid);
-            if (it != tileAnimations.end())
-            {
-                TileAnimation *const ani = it->second;
-                if (ani)
-                    ani->addAffectedTile(layer, x + y * w);
-            }
-        }
+        addTile();
 
         x++;
         if (x == w)
@@ -708,6 +701,10 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
         }
         else
         {
+            const std::map<int, TileAnimation*> &tileAnimations
+                = map->getTileAnimations();
+            const bool hasAnimations = !tileAnimations.empty();
+
             // Read plain XML map file
             for_each_xml_child_node(childNode2, childNode)
             {
@@ -715,7 +712,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
                     continue;
 
                 const int gid = XML::getProperty(childNode2, "gid", -1);
-                setTile(map, layer, x, y, gid);
+                addTile();
 
                 x++;
                 if (x == w)

@@ -405,7 +405,8 @@ class Map final : public Properties, public ConfigListener
         bool isCustom() const A_WARN_UNUSED
         { return mCustom; }
 
-        std::map<int, TileAnimation*> &getTileAnimations() A_WARN_UNUSED
+        const std::map<int, TileAnimation*> &getTileAnimations()
+                                            const A_WARN_UNUSED
         { return mTileAnimations; }
 
         void setAtlas(Resource *const atlas)
