@@ -293,7 +293,10 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
     if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
     {
         if (mForing)
+        {
+            Window::mousePressed(mouseEvent);
             return;
+        }
         // Checks if any of the presses were in the equip boxes.
         int i = 0;
 
