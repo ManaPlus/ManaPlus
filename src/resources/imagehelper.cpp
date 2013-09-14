@@ -129,6 +129,7 @@ SDL_Surface *ImageHelper::loadPng(SDL_RWops *const rw)
     if (!IMG_isPNG(rw))
     {
         logger->log("Error, image is not png");
+        SDL_RWclose(rw);
         return nullptr;
     }
     SDL_Surface *const tmpImage = MIMG_LoadPNG_RW(rw);
