@@ -29,6 +29,8 @@
 
 #include "localconsts.h"
 
+//struct SDL_RWops;
+
 /**
  * Defines a class for loading and storing music.
  */
@@ -37,7 +39,8 @@ class SDLMusic final : public Resource
     public:
         SDLMusic() :
             Resource(),
-            mMusic(nullptr)
+            mMusic(nullptr),
+            mRw(nullptr)
         { }
 
         A_DELETE_COPY(SDLMusic)
@@ -73,9 +76,10 @@ class SDLMusic final : public Resource
         /**
          * Constructor.
          */
-        explicit SDLMusic(Mix_Music *const music);
+        explicit SDLMusic(Mix_Music *const music, SDL_RWops *const rw);
 
         Mix_Music *mMusic;
+        SDL_RWops *mRw;
 };
 
 #endif  // RESOURCES_SDLMUSIC_H

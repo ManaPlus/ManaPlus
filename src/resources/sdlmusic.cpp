@@ -26,28 +26,37 @@
 
 #include "debug.h"
 
-SDLMusic::SDLMusic(Mix_Music *const music) :
+SDLMusic::SDLMusic(Mix_Music *const music, SDL_RWops *const rw) :
     Resource(),
-    mMusic(music)
+    mMusic(music),
+    mRw(rw)
 {
 }
 
 SDLMusic::~SDLMusic()
 {
     Mix_FreeMusic(mMusic);
+#ifndef USE_SDL2
+    if (mRw)
+    {
+        SDL_RWclose(mRw);
+        mRw = nullptr;
+    }
+#endif
 }
 
 Resource *SDLMusic::load(SDL_RWops *const rw)
 {
 #ifdef USE_SDL2
     if (Mix_Music *const music = Mix_LoadMUSType_RW(rw, MUS_OGG, 1))
+    {
+        return new SDLMusic(music, nullptr);
 #else
-    // +++ here probably mem leak
     // Mix_LoadMUSType_RW was added without version changed in SDL1.2 :(
     if (Mix_Music *const music = Mix_LoadMUS_RW(rw))
-#endif
     {
-        return new SDLMusic(music);
+        return new SDLMusic(music, rw);
+#endif
     }
     else
     {
