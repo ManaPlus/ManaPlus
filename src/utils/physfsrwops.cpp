@@ -24,6 +24,8 @@
 
 #include "utils/physfsrwops.h"
 
+#include "logger.h"
+
 #include "utils/fuzzer.h"
 
 #include <stdio.h>
@@ -36,6 +38,10 @@
 #else
 #define PHYSFSINT int32_t
 #define PHYSFSSIZE int
+#endif
+
+#ifdef DUMP_LEAKED_RESOURCES
+static int openedRWops = 0;
 #endif
 
 static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
@@ -150,6 +156,11 @@ static int physfsrwops_close(SDL_RWops *const rw)
     } /* if */
 
     SDL_FreeRW(rw);
+#ifdef DUMP_LEAKED_RESOURCES
+    if (openedRWops <= 0)
+        logger->log("closing already closed RWops");
+    openedRWops --;
+#endif
     return 0;
 } /* physfsrwops_close */
 
@@ -184,6 +195,9 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
             retval->close = physfsrwops_close;
             retval->hidden.unknown.data1 = handle;
         } /* if */
+#ifdef DUMP_LEAKED_RESOURCES
+    openedRWops ++;
+#endif
     } /* else */
 
     return retval;
@@ -241,5 +255,11 @@ SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname)
 #endif
     return create_rwops(PhysFs::openAppend(fname));
 } /* PHYSFSRWOPS_openAppend */
+
+void reportRWops()
+{
+    if (openedRWops)
+        logger->log("leaking RWops: %d", openedRWops);
+}
 
 /* end of physfsrwops.c ... */

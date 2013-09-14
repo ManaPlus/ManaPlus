@@ -34,6 +34,7 @@
 #include "utils/mkdir.h"
 #endif
 #include "utils/paths.h"
+#include "utils/physfsrwops.h"
 #include "utils/process.h"
 #include "utils/physfstools.h"
 #include "utils/xml.h"
@@ -309,6 +310,7 @@ int main(int argc, char *argv[])
     }
     delete client;
     client = nullptr;
+    reportRWops();
     return ret;
 }
 
