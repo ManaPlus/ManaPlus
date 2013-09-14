@@ -79,6 +79,8 @@ SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname) A_WARN_UNUSED;
  */
 SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *const handle) A_WARN_UNUSED;
 
+#ifdef DUMP_LEAKED_RESOURCES
 void reportRWops();
+#endif
 
 #endif  // UTILS_PHYSFSRWOPS_H

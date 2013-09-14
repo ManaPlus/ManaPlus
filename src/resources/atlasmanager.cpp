@@ -31,6 +31,7 @@
 #include "render/surfacegraphics.h"
 
 #include "utils/mathutils.h"
+#include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
@@ -116,7 +117,7 @@ void AtlasManager::loadImages(const StringVect &files,
             path = path.substr(0, p);
         }
 
-        SDL_RWops *const rw = PHYSFSRWOPS_openRead(path.c_str());
+        SDL_RWops *const rw = MPHYSFSRWOPS_openRead(path.c_str());
         if (rw)
         {
             Image *const image = d ? surfaceImageHelper->load(rw, *d)

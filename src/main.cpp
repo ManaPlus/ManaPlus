@@ -34,9 +34,10 @@
 #include "utils/mkdir.h"
 #endif
 #include "utils/paths.h"
+#include "utils/physfscheckutils.h"
+#include "utils/physfstools.h"
 #include "utils/physfsrwops.h"
 #include "utils/process.h"
-#include "utils/physfstools.h"
 #include "utils/xml.h"
 
 #ifdef UNITTESTS
@@ -310,7 +311,12 @@ int main(int argc, char *argv[])
     }
     delete client;
     client = nullptr;
+#ifdef DUMP_LEAKED_RESOURCES
     reportRWops();
+#endif
+#ifdef DEBUG_PHYSFS
+    reportPhysfsLeaks();
+#endif
     return ret;
 }
 

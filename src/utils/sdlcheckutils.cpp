@@ -35,10 +35,10 @@
 
 #define DEBUG_SURFACE_ALLOCATION 1
 
-struct SurfaceObject
+struct MemoryObject
 {
-    SurfaceObject(const std::string &name, const char *const file,
-                  const unsigned int line) :
+    MemoryObject(const std::string &name, const char *const file,
+                 const unsigned int line) :
         mName(name),
         mAddFile(strprintf("%s:%u", file, line)),
         mRemoveFile(),
@@ -52,7 +52,7 @@ struct SurfaceObject
     int mCnt;
 };
 
-std::map<SDL_Surface*, SurfaceObject*> mSurfaces;
+std::map<void*, MemoryObject*> mSurfaces;
 
 static SDL_Surface *addSurface(const char *const name,
                                SDL_Surface *const surface,
@@ -63,11 +63,11 @@ static SDL_Surface *addSurface(const char *const name,
     logger->log("add surface: %s %s:%u %p", name,
         file, line, static_cast<void*>(surface));
 #endif
-    std::map<SDL_Surface*, SurfaceObject*>::iterator
+    std::map<void*, MemoryObject*>::iterator
         it = mSurfaces.find(surface);
     if (it != mSurfaces.end())
     {
-        SurfaceObject *const obj = (*it).second;
+        MemoryObject *const obj = (*it).second;
         if (obj)
         {   // found some time ago created surface
 #ifdef DEBUG_SURFACE_ALLOCATION
@@ -80,7 +80,7 @@ static SDL_Surface *addSurface(const char *const name,
     }
     else
     {   // creating surface object
-        mSurfaces[surface] = new SurfaceObject(name, file, line);
+        mSurfaces[surface] = new MemoryObject(name, file, line);
     }
     return surface;
 }
@@ -93,7 +93,7 @@ static void deleteSurface(const char *const name A_UNUSED,
 #ifdef DEBUG_SURFACE_ALLOCATION
     logger->log("delete surface: %s %s:%u %p", name, file, line, surface);
 #endif
-    std::map<SDL_Surface*, SurfaceObject*>::iterator
+    std::map<void*, MemoryObject*>::iterator
         it = mSurfaces.find(surface);
     if (it == mSurfaces.end())
     {
@@ -102,7 +102,7 @@ static void deleteSurface(const char *const name A_UNUSED,
     }
     else
     {
-        SurfaceObject *const obj = (*it).second;
+        MemoryObject *const obj = (*it).second;
         if (obj)
         {
             const int cnt = obj->mCnt;

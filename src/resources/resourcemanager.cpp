@@ -41,6 +41,7 @@
 #include "resources/spritedef.h"
 
 #include "utils/mkdir.h"
+#include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
@@ -567,7 +568,7 @@ struct ResourceLoader
             return nullptr;
         const ResourceLoader *const
             rl = static_cast<const ResourceLoader *const>(v);
-        SDL_RWops *const rw = PHYSFSRWOPS_openRead(rl->path.c_str());
+        SDL_RWops *const rw = MPHYSFSRWOPS_openRead(rl->path.c_str());
         if (!rw)
             return nullptr;
         Resource *const res = rl->fun(rw);
@@ -613,7 +614,7 @@ struct DyedImageLoader
             d = new Dye(path.substr(p + 1));
             path = path.substr(0, p);
         }
-        SDL_RWops *const rw = PHYSFSRWOPS_openRead(path.c_str());
+        SDL_RWops *const rw = MPHYSFSRWOPS_openRead(path.c_str());
         if (!rw)
         {
             delete d;
@@ -1044,7 +1045,7 @@ void ResourceManager::saveTextFile(std::string path, const std::string &name,
 
 SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename) const
 {
-    if (SDL_RWops *const rw = PHYSFSRWOPS_openRead(filename.c_str()))
+    if (SDL_RWops *const rw = MPHYSFSRWOPS_openRead(filename.c_str()))
     {
         if (!IMG_isPNG(rw))
         {

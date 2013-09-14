@@ -57,7 +57,7 @@
 #define MSDL_DisplayFormat(surface) \
     FakeSDL_DisplayFormat(surface, __FILE__, __LINE__)
 
-#else
+#else  // ENABLE_SDL_DEBUG
 
 #define MIMG_LoadPNG_RW(src)  IMG_LoadPNG_RW(src)
 #define MSDL_FreeSurface(surface) SDL_FreeSurface(surface)
@@ -72,3 +72,15 @@
 #define MSDL_DisplayFormat(surface) SDL_DisplayFormat(surface)
 
 #endif  // ENABLE_SDL_DEBUG
+
+
+#ifdef DEBUG_PHYSFS
+
+#define MPHYSFSRWOPS_openRead(name) \
+    FakePHYSFSRWOPS_openRead(name, __FILE__, __LINE__)
+
+#else  // DEBUG_PHYSFS
+
+#define MPHYSFSRWOPS_openRead(name) PHYSFSRWOPS_openRead(name)
+
+#endif  // DEBUG_PHYSFS

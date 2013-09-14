@@ -33,6 +33,7 @@
 
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
+#include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 
 #include "resources/dye.h"
@@ -236,7 +237,7 @@ int TestLauncher::testInternal()
 
 int TestLauncher::testDye()
 {
-    SDL_RWops *rw = PHYSFSRWOPS_openRead(
+    SDL_RWops *rw = MPHYSFSRWOPS_openRead(
         "graphics/sprites/arrow_up.png");
     Dye *d = nullptr;
 
@@ -259,7 +260,7 @@ int TestLauncher::testDye()
                     client->getTempDirectory() + "/testimage2.png");
             }
 
-            rw = PHYSFSRWOPS_openRead(
+            rw = MPHYSFSRWOPS_openRead(
                 "graphics/sprites/arrow_up.png");
             d = new Dye("S:#0000ff,00ff00,5c5cff,ff0000");
             image = d ? surfaceImageHelper->load(rw, *d)

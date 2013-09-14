@@ -27,6 +27,7 @@
 #include "logger.h"
 
 #include "utils/fuzzer.h"
+#include "utils/physfscheckutils.h"
 
 #include <stdio.h>
 
@@ -161,6 +162,9 @@ static int physfsrwops_close(SDL_RWops *const rw)
         logger->log("closing already closed RWops");
     openedRWops --;
 #endif
+#ifdef DEBUG_PHYSFS
+    FakePhysFSClose(rw);
+#endif
     return 0;
 } /* physfsrwops_close */
 
@@ -256,10 +260,12 @@ SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname)
     return create_rwops(PhysFs::openAppend(fname));
 } /* PHYSFSRWOPS_openAppend */
 
+#ifdef DUMP_LEAKED_RESOURCES
 void reportRWops()
 {
     if (openedRWops)
         logger->log("leaking RWops: %d", openedRWops);
 }
+#endif
 
 /* end of physfsrwops.c ... */
