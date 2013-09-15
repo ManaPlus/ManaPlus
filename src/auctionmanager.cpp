@@ -20,16 +20,11 @@
 
 #include "auctionmanager.h"
 
-#include "actorspritemanager.h"
 #include "client.h"
 #include "configuration.h"
 
-#include "being/localplayer.h"
-
 #include "net/chathandler.h"
 #include "net/net.h"
-
-#include "utils/gettext.h"
 
 #include "debug.h"
 

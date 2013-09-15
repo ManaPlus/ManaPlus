@@ -25,7 +25,6 @@
 #include "configuration.h"
 #include "resources/dye.h"
 #include "logger.h"
-#include "map.h"
 
 #include "particle/animationparticle.h"
 #include "particle/particleemitter.h"
@@ -34,14 +33,9 @@
 
 #include "resources/resourcemanager.h"
 
-#include "gui/sdlfont.h"
-
 #include "utils/dtor.h"
 #include "utils/mathutils.h"
 
-#include <guichan/color.hpp>
-
-#include <algorithm>
 #include <cmath>
 
 #include "debug.h"

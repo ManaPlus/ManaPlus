@@ -30,8 +30,6 @@
 
 #include "localconsts.h"
 
-class TextManager;
-
 class Text
 {
     friend class TextManager;

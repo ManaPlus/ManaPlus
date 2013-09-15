@@ -22,9 +22,7 @@
 
 #include "avatar.h"
 
-#include "being/localplayer.h"
-
-#include <sstream>
+#include "being/being.h"
 
 #include "debug.h"
 

@@ -32,7 +32,6 @@
 #include <Carbon/Carbon.h>
 #endif
 
-#include "logger.h"
 #include "configuration.h"
 #include "utils/mkdir.h"
 #include "utils/physfstools.h"

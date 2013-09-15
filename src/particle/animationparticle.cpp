@@ -24,8 +24,6 @@
 
 #include "simpleanimation.h"
 
-#include "render/graphics.h"
-
 #include "debug.h"
 
 AnimationParticle::AnimationParticle(Map *const map,

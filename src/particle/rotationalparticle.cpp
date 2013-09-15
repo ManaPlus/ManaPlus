@@ -24,8 +24,6 @@
 
 #include "simpleanimation.h"
 
-#include "render/graphics.h"
-
 #include <math.h>
 
 #include "debug.h"

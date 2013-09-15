@@ -33,7 +33,6 @@
 class Map;
 class Particle;
 class ParticleEmitter;
-class SDLFont;
 
 namespace gcn
 {
