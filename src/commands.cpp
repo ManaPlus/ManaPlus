@@ -32,6 +32,7 @@
 #include "party.h"
 
 #include "being/localplayer.h"
+#include "being/playerrelations.h"
 
 #include "gui/buydialog.h"
 #include "gui/chatwindow.h"

@@ -25,6 +25,7 @@
 
 #include "commands.h"
 
+#include <list>
 #include <string>
 
 #include "localconsts.h"
