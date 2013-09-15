@@ -32,6 +32,8 @@
 
 #include "utils/gettext.h"
 
+#include <SDL_mouse.h>
+
 #include "debug.h"
 
 CharacterDisplay::CharacterDisplay(const Widget2 *const widget,

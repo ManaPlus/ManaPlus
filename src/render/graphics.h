@@ -23,7 +23,7 @@
 #ifndef RENDER_GRAPHICS_H
 #define RENDER_GRAPHICS_H
 
-#include "SDL.h"
+#include "SDL_video.h"
 
 #include "sdlshared.h"
 
@@ -37,9 +37,7 @@
 class Image;
 class ImageCollection;
 class ImageVertexes;
-class MapLayer;
 
-struct SDL_Surface;
 struct SDL_Window;
 
 static const int defaultScreenWidth = 800;

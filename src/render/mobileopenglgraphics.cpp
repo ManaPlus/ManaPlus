@@ -35,9 +35,6 @@
 #include "resources/openglimagehelper.h"
 
 #include "utils/sdlcheckutils.h"
-#include "utils/stringutils.h"
-
-#include <SDL.h>
 
 #include "debug.h"
 

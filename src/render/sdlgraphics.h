@@ -35,9 +35,6 @@
 class Image;
 class ImageCollection;
 class ImageVertexes;
-class MapLayer;
-
-struct SDL_Surface;
 
 /**
  * A central point of control for graphics.

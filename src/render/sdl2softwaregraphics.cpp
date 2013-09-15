@@ -34,11 +34,7 @@
 #include "resources/imagehelper.h"
 #include "resources/sdl2softwareimagehelper.h"
 
-#include <guichan/sdl/sdlpixel.hpp>
-
 #include "utils/sdlcheckutils.h"
-
-#include <SDL.h>
 
 #include "debug.h"
 

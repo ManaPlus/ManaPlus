@@ -49,6 +49,8 @@
 
 #include "utils/gettext.h"
 
+#include <SDL_timer.h>
+
 #include "debug.h"
 
 class AttrDisplay : public Container

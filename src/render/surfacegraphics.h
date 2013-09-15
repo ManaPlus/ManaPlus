@@ -30,7 +30,6 @@
 class Image;
 class ImageCollection;
 class ImageVertexes;
-class MapLayer;
 
 struct SDL_Surface;
 

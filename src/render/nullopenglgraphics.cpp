@@ -25,17 +25,11 @@
 
 #include "render/nullopenglgraphics.h"
 
-#include "configuration.h"
 #include "graphicsmanager.h"
 #include "graphicsvertexes.h"
-#include "logger.h"
 
 #include "resources/image.h"
 #include "resources/openglimagehelper.h"
-
-#include "utils/stringutils.h"
-
-#include <SDL.h>
 
 #include "debug.h"
 

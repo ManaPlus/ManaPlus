@@ -21,8 +21,6 @@
 #ifndef RENDER_RENDERERS_H
 #define RENDER_RENDERERS_H
 
-#include "utils/gettext.h"
-
 enum RenderType
 {
     RENDER_SOFTWARE = 0,

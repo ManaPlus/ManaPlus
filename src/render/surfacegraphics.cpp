@@ -24,15 +24,8 @@
 
 #include "main.h"
 
-#include "configuration.h"
-#include "graphicsmanager.h"
-#include "graphicsvertexes.h"
-#include "logger.h"
-
-#include "resources/imagehelper.h"
+#include "resources/image.h"
 #include "resources/surfaceimagehelper.h"
-
-#include <guichan/sdl/sdlpixel.hpp>
 
 #include "debug.h"
 

@@ -27,15 +27,11 @@
 
 #include "configuration.h"
 #include "graphicsmanager.h"
-#include "graphicsvertexes.h"
-#include "logger.h"
 
 #include "resources/image.h"
 #include "resources/openglimagehelper.h"
 
 #include "utils/sdlcheckutils.h"
-
-#include <SDL.h>
 
 #include "debug.h"
 

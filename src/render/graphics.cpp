@@ -26,13 +26,11 @@
 
 #include "configuration.h"
 #include "graphicsmanager.h"
-#include "graphicsvertexes.h"
 #include "logger.h"
 
+#include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
-
-#include <guichan/sdl/sdlpixel.hpp>
 
 #ifdef USE_OPENGL
 #ifdef __APPLE__
