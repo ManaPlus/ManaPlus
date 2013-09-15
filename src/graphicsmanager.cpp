@@ -150,7 +150,10 @@ int GraphicsManager::detectGraphics()
     logger->log1("enable opengl mode");
     int textureSampler = 0;
     int compressTextures = 0;
-    createWindow(100, 100, 0, SDL_ANYFORMAT | SDL_OPENGL);
+    mainGraphics = new NormalOpenGLGraphics;
+    SDL_Window *const window = createWindow(100, 100, 0,
+        SDL_ANYFORMAT | SDL_OPENGL);
+    mainGraphics->setWindow(window, 100, 100);
 
     initOpenGL();
     logVersion();
