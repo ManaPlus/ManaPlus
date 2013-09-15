@@ -26,7 +26,6 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include <iosfwd>
 #include <string>
 #include <vector>
 

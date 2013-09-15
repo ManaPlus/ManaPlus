@@ -23,16 +23,9 @@
 #ifndef NET_EATHENA_NPCHANDLER_H
 #define NET_EATHENA_NPCHANDLER_H
 
-#include "net/net.h"
-#include "net/npchandler.h"
-
 #include "net/ea/npchandler.h"
 
 #include "net/eathena/messagehandler.h"
-
-#include <map>
-
-class NpcDialog;
 
 namespace EAthena
 {

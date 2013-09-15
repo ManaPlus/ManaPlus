@@ -24,7 +24,6 @@
 #define NET_EA_TRADEHANDLER_H
 
 #include "net/messagein.h"
-#include "net/net.h"
 #include "net/tradehandler.h"
 
 namespace Ea

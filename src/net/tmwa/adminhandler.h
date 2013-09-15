@@ -23,9 +23,6 @@
 #ifndef NET_TMWA_ADMINHANDLER_H
 #define NET_TMWA_ADMINHANDLER_H
 
-#include "net/adminhandler.h"
-#include "net/net.h"
-
 #include "net/ea/adminhandler.h"
 
 #include "net/tmwa/messagehandler.h"

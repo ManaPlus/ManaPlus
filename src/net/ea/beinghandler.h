@@ -24,7 +24,6 @@
 #define NET_EA_BEINGHANDLER_H
 
 #include "net/beinghandler.h"
-#include "net/net.h"
 
 namespace Ea
 {

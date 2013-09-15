@@ -23,9 +23,6 @@
 #ifndef NET_TMWA_SKILLHANDLER_H
 #define NET_TMWA_SKILLHANDLER_H
 
-#include "net/net.h"
-#include "net/skillhandler.h"
-
 #include "net/ea/skillhandler.h"
 
 #include "net/tmwa/messagehandler.h"

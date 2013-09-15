@@ -23,10 +23,6 @@
 #ifndef NET_TMWA_INVENTORYHANDLER_H
 #define NET_TMWA_INVENTORYHANDLER_H
 
-#include "logger.h"
-
-#include "net/net.h"
-
 #include "net/ea/inventoryhandler.h"
 
 #include "net/tmwa/messagehandler.h"

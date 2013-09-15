@@ -22,27 +22,15 @@
 
 #include "net/tmwa/buysellhandler.h"
 
-#include "actorspritemanager.h"
-#include "configuration.h"
-#include "inventory.h"
 #include "notifications.h"
 #include "notifymanager.h"
 
-#include "being/localplayer.h"
 #include "being/playerinfo.h"
 
 #include "gui/buydialog.h"
-#include "gui/buyselldialog.h"
-#include "gui/selldialog.h"
-#include "gui/shopwindow.h"
-
-#include "gui/widgets/chattab.h"
-
-#include "net/chathandler.h"
 
 #include "net/ea/eaprotocol.h"
 
-#include "net/tmwa/chathandler.h"
 #include "net/tmwa/protocol.h"
 
 #include "debug.h"

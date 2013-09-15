@@ -23,8 +23,6 @@
 #ifndef NET_DOWNLOAD_H
 #define NET_DOWNLOAD_H
 
-#include <SDL_types.h>
-
 #include <stdio.h>
 #include <string>
 

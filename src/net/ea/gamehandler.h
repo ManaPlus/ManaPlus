@@ -25,7 +25,6 @@
 
 #include "net/gamehandler.h"
 #include "net/messagein.h"
-#include "net/net.h"
 
 namespace Ea
 {

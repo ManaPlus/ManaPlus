@@ -23,15 +23,9 @@
 #ifndef NET_EATHENA_CHARSERVERHANDLER_H
 #define NET_EATHENA_CHARSERVERHANDLER_H
 
-#include "net/charserverhandler.h"
-
 #include "net/ea/charserverhandler.h"
 
 #include "net/eathena/messagehandler.h"
-
-#include "net/ea/token.h"
-
-class LoginData;
 
 namespace EAthena
 {

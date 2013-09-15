@@ -24,7 +24,6 @@
 #define NET_TMWA_GENERALHANDLER_H
 
 #include "net/generalhandler.h"
-#include "net/net.h"
 
 #include "net/tmwa/messagehandler.h"
 

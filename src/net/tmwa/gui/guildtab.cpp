@@ -22,19 +22,6 @@
 
 #include "net/tmwa/gui/guildtab.h"
 
-#include "chatlogger.h"
-#include "guild.h"
-
-#include "being/localplayer.h"
-
-#include "net/net.h"
-#include "net/guildhandler.h"
-
-#include "resources/iteminfo.h"
-#include "resources/itemdb.h"
-
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 namespace TmwAthena

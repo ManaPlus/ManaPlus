@@ -23,11 +23,13 @@
 #include "net/eathena/gamehandler.h"
 
 #include "client.h"
-#include "game.h"
 
 #include "being/localplayer.h"
 
+#include "net/net.h"
+
 #include "net/eathena/loginhandler.h"
+#include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"
 

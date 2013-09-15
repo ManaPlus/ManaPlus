@@ -22,8 +22,7 @@
 
 #include "net/eathena/skillhandler.h"
 
-#include "logger.h"
-
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"

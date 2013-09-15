@@ -23,15 +23,11 @@
 #ifndef NET_TMWA_LOGINHANDLER_H
 #define NET_TMWA_LOGINHANDLER_H
 
-#include "net/loginhandler.h"
-
 #include "net/ea/loginhandler.h"
 
 #include "net/tmwa/messagehandler.h"
 
 #include <string>
-
-class LoginData;
 
 namespace TmwAthena
 {

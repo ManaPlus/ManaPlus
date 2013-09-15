@@ -26,7 +26,7 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "net/eathena/messagein.h"
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"

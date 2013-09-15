@@ -23,13 +23,12 @@
 #include "net/eathena/loginhandler.h"
 
 #include "client.h"
-#include "configuration.h"
 #include "logger.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"
 
-#include "utils/gettext.h"
 #include "utils/paths.h"
 
 #include "debug.h"

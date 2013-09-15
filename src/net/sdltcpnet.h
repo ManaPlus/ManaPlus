@@ -23,8 +23,6 @@
 
 #include <SDL_net.h>
 
-#include <string>
-
 #include "localconsts.h"
 
 namespace TcpNet

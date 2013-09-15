@@ -23,15 +23,9 @@
 #ifndef NET_TMWA_CHARSERVERHANDLER_H
 #define NET_TMWA_CHARSERVERHANDLER_H
 
-#include "net/charserverhandler.h"
-
 #include "net/ea/charserverhandler.h"
 
 #include "net/tmwa/messagehandler.h"
-
-#include "net/ea/token.h"
-
-class LoginData;
 
 namespace TmwAthena
 {

@@ -25,9 +25,11 @@
 #include "configuration.h"
 #include "client.h"
 
-#include "net/tmwa/protocol.h"
-#include "net/tmwa/npchandler.h"
+#include "net/net.h"
+
 #include "net/tmwa/inventoryhandler.h"
+#include "net/tmwa/messageout.h"
+#include "net/tmwa/protocol.h"
 
 #include "gui/whoisonline.h"
 

@@ -22,14 +22,11 @@
 
 #include "net/eathena/playerhandler.h"
 
-#include "configuration.h"
-#include "client.h"
+#include "net/net.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-#include "net/eathena/npchandler.h"
 #include "net/eathena/inventoryhandler.h"
-
-#include "gui/whoisonline.h"
 
 #include "debug.h"
 

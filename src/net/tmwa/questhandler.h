@@ -21,14 +21,7 @@
 #ifndef NET_TMWA_QUESTHANDLER_H
 #define NET_TMWA_QUESTHANDLER_H
 
-#include "net/net.h"
-#include "net/npchandler.h"
-
-#include "net/ea/npchandler.h"
-
 #include "net/tmwa/messagehandler.h"
-
-#include <map>
 
 namespace TmwAthena
 {

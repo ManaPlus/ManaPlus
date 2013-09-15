@@ -25,10 +25,6 @@
 
 #include "net/messagehandler.h"
 
-#include "net/eathena/messageout.h"
-
-#include <SDL_types.h>
-
 #include <memory>
 
 namespace EAthena

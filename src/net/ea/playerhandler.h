@@ -24,7 +24,6 @@
 #define NET_EA_PLAYERHANDLER_H
 
 #include "net/messagein.h"
-#include "net/net.h"
 #include "net/playerhandler.h"
 
 namespace Ea

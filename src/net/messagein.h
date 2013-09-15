@@ -23,8 +23,6 @@
 #ifndef NET_MESSAGEIN_H
 #define NET_MESSAGEIN_H
 
-#include <SDL_types.h>
-
 #include <string>
 
 #include "localconsts.h"

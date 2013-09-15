@@ -22,24 +22,24 @@
 
 #include "net/ea/buysellhandler.h"
 
-#include "actorspritemanager.h"
 #include "client.h"
 #include "configuration.h"
 #include "inventory.h"
 #include "notifications.h"
 #include "notifymanager.h"
 
-#include "being/localplayer.h"
 #include "being/playerinfo.h"
 
 #include "gui/buydialog.h"
+#include "gui/chatwindow.h"
 #include "gui/buyselldialog.h"
 #include "gui/selldialog.h"
 #include "gui/shopwindow.h"
 
-#include "gui/widgets/chattab.h"
-
 #include "net/chathandler.h"
+#include "net/net.h"
+
+#include "net/ea/eaprotocol.h"
 
 #include "debug.h"
 

@@ -24,21 +24,7 @@
 
 #include "main.h"
 
-#include "net/adminhandler.h"
-#include "net/beinghandler.h"
-#include "net/buysellhandler.h"
-#include "net/charserverhandler.h"
-#include "net/chathandler.h"
-#include "net/generalhandler.h"
-#include "net/guildhandler.h"
-#include "net/inventoryhandler.h"
 #include "net/loginhandler.h"
-#include "net/gamehandler.h"
-#include "net/npchandler.h"
-#include "net/partyhandler.h"
-#include "net/playerhandler.h"
-#include "net/skillhandler.h"
-#include "net/tradehandler.h"
 
 #include "net/tmwa/generalhandler.h"
 

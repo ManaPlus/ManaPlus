@@ -25,8 +25,6 @@
 
 #include "net/chathandler.h"
 #include "net/messagein.h"
-#include "net/messageout.h"
-#include "net/net.h"
 
 #include <queue>
 

@@ -23,9 +23,6 @@
 #ifndef NET_EATHENA_SKILLHANDLER_H
 #define NET_EATHENA_SKILLHANDLER_H
 
-#include "net/net.h"
-#include "net/skillhandler.h"
-
 #include "net/ea/skillhandler.h"
 
 #include "net/eathena/messagehandler.h"

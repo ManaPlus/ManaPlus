@@ -29,7 +29,6 @@
 #include "configuration.h"
 #include "effectmanager.h"
 #include "game.h"
-#include "guild.h"
 #include "guildmanager.h"
 #include "party.h"
 
@@ -38,7 +37,6 @@
 
 #include "particle/particle.h"
 
-#include "input/inputmanager.h"
 #include "input/keyboardconfig.h"
 
 #include "gui/botcheckerwindow.h"
@@ -47,15 +45,8 @@
 #include "gui/killstats.h"
 #include "gui/questswindow.h"
 
-#include "utils/gettext.h"
-
-#include "net/playerhandler.h"
-
-#include "resources/colordb.h"
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"
-
-#include <iostream>
 
 #include "debug.h"
 

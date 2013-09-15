@@ -23,9 +23,6 @@
 #ifndef NET_TMWA_BEINGHANDLER_H
 #define NET_TMWA_BEINGHANDLER_H
 
-#include "net/beinghandler.h"
-#include "net/net.h"
-
 #include "net/ea/beinghandler.h"
 
 #include "net/tmwa/messagehandler.h"

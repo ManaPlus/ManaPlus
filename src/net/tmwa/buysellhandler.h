@@ -23,8 +23,6 @@
 #ifndef NET_TMWA_BUYSELLHANDLER_H
 #define NET_TMWA_BUYSELLHANDLER_H
 
-#include "net/buysellhandler.h"
-
 #include "net/ea/buysellhandler.h"
 
 #include "net/tmwa/messagehandler.h"

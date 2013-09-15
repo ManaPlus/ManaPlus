@@ -25,16 +25,14 @@
 #include "client.h"
 #include "configuration.h"
 
-#include "gui/charcreatedialog.h"
-
 #include "net/logindata.h"
+#include "net/net.h"
 
-#include "net/eathena/gamehandler.h"
 #include "net/eathena/loginhandler.h"
+#include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"
 
-#include "resources/colordb.h"
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 

@@ -22,15 +22,10 @@
 
 #include "net/tmwa/adminhandler.h"
 
-#include "actorspritemanager.h"
-#include "game.h"
 #include "notifications.h"
 #include "notifymanager.h"
 
-#include "being/playerrelations.h"
-
-#include "net/chathandler.h"
-
+#include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
 #include <string>

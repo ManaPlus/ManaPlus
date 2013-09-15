@@ -25,9 +25,6 @@
 
 #include "net/messagein.h"
 
-#include <SDL_types.h>
-#include <string>
-
 #include "localconsts.h"
 
 namespace TmwAthena

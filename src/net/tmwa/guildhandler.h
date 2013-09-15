@@ -22,8 +22,6 @@
 #ifndef NET_TMWA_GUILDHANDLER_H
 #define NET_TMWA_GUILDHANDLER_H
 
-#include "net/guildhandler.h"
-
 #include "net/ea/guildhandler.h"
 
 #include "net/tmwa/messagehandler.h"

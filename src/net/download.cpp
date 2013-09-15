@@ -30,7 +30,6 @@
 
 #include <curl/curl.h>
 
-#include <SDL.h>
 #include <SDL_thread.h>
 
 #include <zlib.h>

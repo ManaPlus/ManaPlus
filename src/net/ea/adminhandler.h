@@ -24,7 +24,8 @@
 #define NET_EA_ADMINHANDLER_H
 
 #include "net/adminhandler.h"
-#include "net/net.h"
+
+#include "localconsts.h"
 
 namespace Ea
 {

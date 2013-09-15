@@ -24,34 +24,18 @@
 
 #include "actorspritemanager.h"
 #include "client.h"
-#include "configuration.h"
-#include "effectmanager.h"
 #include "guild.h"
 #include "guildmanager.h"
 #include "party.h"
 #include "position.h"
 
 #include "being/localplayer.h"
-#include "being/playerrelations.h"
 
-#include "input/keyboardconfig.h"
-
-#include "gui/botcheckerwindow.h"
-#include "gui/outfitwindow.h"
-#include "gui/socialwindow.h"
-#include "gui/killstats.h"
-
-#include "utils/gettext.h"
-
-#include "net/playerhandler.h"
-
+#include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
-#include "resources/colordb.h"
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"
-
-#include <iostream>
 
 #include "debug.h"
 

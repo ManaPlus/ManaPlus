@@ -25,14 +25,10 @@
 
 #include "net/serverinfo.h"
 
-#include "net/messagein.h"
-#include "net/messageout.h"
-
 #include "net/sdltcpnet.h"
 
 #include <SDL_thread.h>
 
-#include <map>
 #include <string>
 
 namespace Ea

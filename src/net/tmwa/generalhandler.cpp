@@ -26,9 +26,7 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "gui/charselectdialog.h"
 #include "gui/inventorywindow.h"
-#include "gui/registerdialog.h"
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/statuswindow.h"
@@ -56,12 +54,7 @@
 #include "net/tmwa/skillhandler.h"
 #include "net/tmwa/questhandler.h"
 
-#include "net/tmwa/gui/guildtab.h"
-#include "net/tmwa/gui/partytab.h"
-
 #include "utils/gettext.h"
-
-#include <list>
 
 #include "debug.h"
 

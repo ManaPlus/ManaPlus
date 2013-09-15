@@ -23,7 +23,6 @@
 #ifndef NET_EA_ITEMHANDLER_H
 #define NET_EA_ITEMHANDLER_H
 
-#include "net/net.h"
 #include "net/messagein.h"
 
 namespace Ea

@@ -26,7 +26,6 @@
 #include "net/ea/network.h"
 
 #include "net/eathena/messagehandler.h"
-#include "net/eathena/messagein.h"
 
 /**
  * Protocol version, reported to the eAthena char and mapserver who can adjust

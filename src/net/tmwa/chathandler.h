@@ -23,12 +23,10 @@
 #ifndef NET_TMWA_CHATHANDLER_H
 #define NET_TMWA_CHATHANDLER_H
 
-#include "net/chathandler.h"
-#include "net/net.h"
-
 #include "net/ea/chathandler.h"
 
 #include "net/tmwa/messagehandler.h"
+#include "net/tmwa/messageout.h"
 
 namespace TmwAthena
 {

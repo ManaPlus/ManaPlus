@@ -25,10 +25,6 @@
 
 #include "net/buysellhandler.h"
 
-#include "being/being.h"
-
-#include "net/net.h"
-
 class BuyDialog;
 
 namespace Ea

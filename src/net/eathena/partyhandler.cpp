@@ -27,9 +27,8 @@
 
 #include "being/localplayer.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "net/eathena/gui/partytab.h"
 
 #include "debug.h"
 

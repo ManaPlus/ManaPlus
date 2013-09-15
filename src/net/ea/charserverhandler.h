@@ -25,9 +25,7 @@
 
 #include "net/charserverhandler.h"
 #include "net/messagein.h"
-#include "net/net.h"
-
-class LoginData;
+#include "net/serverinfo.h"
 
 namespace Ea
 {

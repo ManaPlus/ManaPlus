@@ -22,6 +22,7 @@
 
 #include "net/eathena/inventoryhandler.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "net/ea/eaprotocol.h"

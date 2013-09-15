@@ -31,8 +31,6 @@
 
 #include <string>
 
-class LoginData;
-
 namespace EAthena
 {
 

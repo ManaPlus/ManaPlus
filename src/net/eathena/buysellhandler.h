@@ -23,8 +23,6 @@
 #ifndef NET_EATHENA_BUYSELLHANDLER_H
 #define NET_EATHENA_BUYSELLHANDLER_H
 
-#include "net/buysellhandler.h"
-
 #include "net/ea/buysellhandler.h"
 
 #include "net/eathena/messagehandler.h"

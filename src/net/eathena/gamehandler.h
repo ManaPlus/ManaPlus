@@ -23,9 +23,6 @@
 #ifndef NET_EATHENA_GAMEHANDLER_H
 #define NET_EATHENA_GAMEHANDLER_H
 
-#include "net/gamehandler.h"
-#include "net/net.h"
-
 #include "net/eathena/messagehandler.h"
 
 #include "net/ea/gamehandler.h"

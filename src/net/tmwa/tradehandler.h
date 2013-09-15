@@ -23,9 +23,6 @@
 #ifndef NET_TMWA_TRADEHANDLER_H
 #define NET_TMWA_TRADEHANDLER_H
 
-#include "net/net.h"
-#include "net/tradehandler.h"
-
 #include "net/ea/tradehandler.h"
 
 #include "net/tmwa/messagehandler.h"

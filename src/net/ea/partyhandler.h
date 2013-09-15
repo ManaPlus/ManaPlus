@@ -23,7 +23,6 @@
 #define NET_EA_PARTYHANDLER_H
 
 #include "net/messagein.h"
-#include "net/net.h"
 #include "net/partyhandler.h"
 
 #include "net/ea/gui/partytab.h"

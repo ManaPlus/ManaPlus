@@ -24,7 +24,6 @@
 #define NET_EATHENA_GENERALHANDLER_H
 
 #include "net/generalhandler.h"
-#include "net/net.h"
 
 #include "net/eathena/messagehandler.h"
 

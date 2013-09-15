@@ -23,10 +23,6 @@
 #ifndef NET_EATHENA_INVENTORYHANDLER_H
 #define NET_EATHENA_INVENTORYHANDLER_H
 
-#include "logger.h"
-
-#include "net/net.h"
-
 #include "net/ea/inventoryhandler.h"
 
 #include "net/eathena/messagehandler.h"

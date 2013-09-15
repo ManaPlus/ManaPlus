@@ -23,6 +23,7 @@
 #include "net/ea/adminhandler.h"
 
 #include "net/chathandler.h"
+#include "net/net.h"
 
 #include <string>
 

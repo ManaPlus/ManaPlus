@@ -24,10 +24,7 @@
 #define NET_EA_NPCHANDLER_H
 
 #include "net/messagein.h"
-#include "net/net.h"
 #include "net/npchandler.h"
-
-#include <map>
 
 class NpcDialog;
 

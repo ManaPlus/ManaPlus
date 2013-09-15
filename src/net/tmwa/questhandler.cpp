@@ -20,16 +20,10 @@
 
 #include "net/tmwa/questhandler.h"
 
-#include "being/localplayer.h"
-
 #include "gui/skilldialog.h"
 #include "gui/questswindow.h"
 
 #include "net/tmwa/protocol.h"
-
-#include "net/ea/eaprotocol.h"
-
-#include "utils/langs.h"
 
 #include "debug.h"
 

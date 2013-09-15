@@ -25,16 +25,14 @@
 #include "client.h"
 #include "configuration.h"
 
-#include "gui/charcreatedialog.h"
-
 #include "net/logindata.h"
+#include "net/net.h"
 
-#include "net/tmwa/gamehandler.h"
 #include "net/tmwa/loginhandler.h"
+#include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
 
-#include "resources/colordb.h"
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 

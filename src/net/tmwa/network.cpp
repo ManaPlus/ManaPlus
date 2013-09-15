@@ -22,15 +22,10 @@
 
 #include "net/tmwa/network.h"
 
-#include "configuration.h"
 #include "logger.h"
 
+#include "net/tmwa/messagein.h"
 #include "net/tmwa/protocol.h"
-
-#include "utils/gettext.h"
-
-#include <assert.h>
-#include <sstream>
 
 #include "debug.h"
 

@@ -23,9 +23,6 @@
 #ifndef NET_TMWA_GAMEHANDLER_H
 #define NET_TMWA_GAMEHANDLER_H
 
-#include "net/gamehandler.h"
-#include "net/net.h"
-
 #include "net/tmwa/messagehandler.h"
 
 #include "net/ea/gamehandler.h"

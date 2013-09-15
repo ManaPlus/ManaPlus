@@ -22,8 +22,7 @@
 
 #include "net/tmwa/skillhandler.h"
 
-#include "logger.h"
-
+#include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
 #include "debug.h"

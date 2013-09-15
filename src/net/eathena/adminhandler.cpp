@@ -22,15 +22,10 @@
 
 #include "net/eathena/adminhandler.h"
 
-#include "actorspritemanager.h"
-#include "game.h"
 #include "notifications.h"
 #include "notifymanager.h"
 
-#include "being/playerrelations.h"
-
-#include "net/chathandler.h"
-
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include <string>

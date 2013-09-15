@@ -25,10 +25,6 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "net/messagehandler.h"
-
-#include "net/eathena/protocol.h"
-
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 

@@ -23,9 +23,6 @@
 #ifndef NET_EATHENA_ADMINHANDLER_H
 #define NET_EATHENA_ADMINHANDLER_H
 
-#include "net/adminhandler.h"
-#include "net/net.h"
-
 #include "net/ea/adminhandler.h"
 
 #include "net/eathena/messagehandler.h"

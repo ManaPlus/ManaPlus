@@ -25,13 +25,11 @@
 #include "being/localplayer.h"
 
 #include "gui/npcdialog.h"
-#include "gui/viewport.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "net/ea/eaprotocol.h"
-
-#include "utils/langs.h"
 
 #include "debug.h"
 

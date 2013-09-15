@@ -22,15 +22,7 @@
 
 #include "net/eathena/chathandler.h"
 
-#include "actorspritemanager.h"
-#include "configuration.h"
-#include "game.h"
-
 #include "being/localplayer.h"
-#include "being/playerrelations.h"
-
-#include "gui/chatwindow.h"
-#include "gui/shopwindow.h"
 
 #include "gui/widgets/chattab.h"
 

@@ -24,7 +24,6 @@
 #define NET_EA_SKILLHANDLER_H
 
 #include "net/messagein.h"
-#include "net/net.h"
 #include "net/skillhandler.h"
 
 namespace Ea

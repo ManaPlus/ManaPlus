@@ -23,11 +23,13 @@
 #include "net/tmwa/gamehandler.h"
 
 #include "client.h"
-#include "game.h"
 
 #include "being/localplayer.h"
 
+#include "net/net.h"
+
 #include "net/tmwa/loginhandler.h"
+#include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
 

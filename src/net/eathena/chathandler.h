@@ -23,12 +23,10 @@
 #ifndef NET_EATHENA_CHATHANDLER_H
 #define NET_EATHENA_CHATHANDLER_H
 
-#include "net/chathandler.h"
-#include "net/net.h"
-
 #include "net/ea/chathandler.h"
 
 #include "net/eathena/messagehandler.h"
+#include "net/eathena/messageout.h"
 
 namespace EAthena
 {

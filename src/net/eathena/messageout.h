@@ -25,9 +25,6 @@
 
 #include "net/messageout.h"
 
-#include <iosfwd>
-#include <SDL_types.h>
-
 #include "localconsts.h"
 
 namespace EAthena

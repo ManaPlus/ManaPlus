@@ -24,7 +24,6 @@
 #define NET_EA_LOGINHANDLER_H
 
 #include "net/loginhandler.h"
-#include "net/net.h"
 #include "net/messagein.h"
 
 #include "net/ea/token.h"

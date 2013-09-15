@@ -23,7 +23,7 @@
 #include "net/ea/gui/partytab.h"
 
 #include "chatlogger.h"
-#include "commandhandler.h"
+#include "commands.h"
 #include "party.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
@@ -33,12 +33,7 @@
 #include "net/net.h"
 #include "net/partyhandler.h"
 
-#include "resources/iteminfo.h"
-#include "resources/itemdb.h"
-
 #include "utils/gettext.h"
-
-#include "net/chathandler.h"
 
 #include "debug.h"
 

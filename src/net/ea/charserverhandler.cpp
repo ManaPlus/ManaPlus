@@ -33,6 +33,8 @@
 #include "net/ea/gamehandler.h"
 #include "net/ea/network.h"
 
+#include "net/net.h"
+
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 

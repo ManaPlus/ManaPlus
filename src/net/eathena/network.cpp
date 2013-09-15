@@ -22,15 +22,10 @@
 
 #include "net/eathena/network.h"
 
-#include "configuration.h"
 #include "logger.h"
 
+#include "net/eathena/messagein.h"
 #include "net/eathena/protocol.h"
-
-#include "utils/gettext.h"
-
-#include <assert.h>
-#include <sstream>
 
 #include "debug.h"
 

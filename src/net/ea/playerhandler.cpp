@@ -40,7 +40,7 @@
 
 #include "resources/deaddb.h"
 
-#include "net/npchandler.h"
+#include "net/net.h"
 
 #include "net/ea/eaprotocol.h"
 

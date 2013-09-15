@@ -31,9 +31,7 @@
 
 #include "gui/skilldialog.h"
 
-#include "gui/widgets/chattab.h"
-
-#include "net/messageout.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

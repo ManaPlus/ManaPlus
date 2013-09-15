@@ -26,7 +26,7 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "net/tmwa/messagein.h"
+#include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
 #include "debug.h"

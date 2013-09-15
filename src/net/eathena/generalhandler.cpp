@@ -26,9 +26,7 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "gui/charselectdialog.h"
 #include "gui/inventorywindow.h"
-#include "gui/registerdialog.h"
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/statuswindow.h"
@@ -55,12 +53,7 @@
 #include "net/eathena/tradehandler.h"
 #include "net/eathena/skillhandler.h"
 
-#include "net/eathena/gui/guildtab.h"
-#include "net/eathena/gui/partytab.h"
-
 #include "utils/gettext.h"
-
-#include <list>
 
 #include "debug.h"
 
