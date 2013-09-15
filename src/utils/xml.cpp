@@ -30,9 +30,7 @@
 
 #include "utils/translation/podict.h"
 
-#include <iostream>
 #include <fstream>
-#include <cstring>
 
 #include "debug.h"
 

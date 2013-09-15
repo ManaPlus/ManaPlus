@@ -21,7 +21,6 @@
 #include "utils/translation/podict.h"
 
 #include "localconsts.h"
-#include "logger.h"
 
 #include "debug.h"
 

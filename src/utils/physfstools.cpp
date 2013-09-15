@@ -20,8 +20,6 @@
 
 #include "utils/physfstools.h"
 
-#include "logger.h"
-
 const char *dirSeparator = nullptr;
 
 namespace PhysFs

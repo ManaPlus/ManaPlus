@@ -21,8 +21,6 @@
 #ifndef UTILS_CHECKUTILS_H
 #define UTILS_CHECKUTILS_H
 
-#include <string>
-
 bool reportFalseReal(const bool val, const char *const file,
                      const unsigned line);
 

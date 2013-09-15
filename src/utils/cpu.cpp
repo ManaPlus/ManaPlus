@@ -24,8 +24,6 @@
 
 #include "utils/stringutils.h"
 
-#include "resources/resourcemanager.h"
-
 #include "debug.h"
 
 int mCpuFlags = 0;

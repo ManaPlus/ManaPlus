@@ -21,9 +21,7 @@
 
 #include "utils/mkdir.h"
 
-#include <climits>
 #include <cstring>
-#include <cerrno>
 
 #if defined WIN32
 #include <windows.h>

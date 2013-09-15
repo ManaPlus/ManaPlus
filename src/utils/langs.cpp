@@ -22,11 +22,6 @@
 
 #include "configuration.h"
 
-#include <algorithm>
-#include <cstdarg>
-#include <cstdio>
-#include <list>
-
 #include "debug.h"
 
 LangVect getLang()

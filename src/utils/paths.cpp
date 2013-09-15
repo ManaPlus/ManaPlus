@@ -30,8 +30,6 @@
 
 #include "resources/resourcemanager.h"
 
-#include <cstdarg>
-#include <cstdio>
 #include <stdlib.h>
 
 #ifdef WIN32
