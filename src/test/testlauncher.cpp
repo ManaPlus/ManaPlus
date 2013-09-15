@@ -136,6 +136,7 @@ int TestLauncher::testFps()
     Wallpaper::loadWallpapers();
     Wallpaper::getWallpaper(800, 600);
     Image *img[5];
+    const int sz = 4;
 
     img[0] = Theme::getImageFromTheme("graphics/sprites/arrow_up.png");
     img[1] = Theme::getImageFromTheme(
@@ -145,22 +146,22 @@ int TestLauncher::testFps()
     img[4] = Theme::getImageFromTheme("graphics/images/login_wallpaper.png");
     int idx = 0;
 
-    const int cnt = 20;
+    const int cnt = 50;
 
     gettimeofday(&start, nullptr);
     for (int k = 0; k < cnt; k ++)
     {
-        for (int x = 0; x < 800; x += 20)
+        for (int x = 0; x < 800; x += 30)
         {
-            for (int y = 0; y < 600; y += 25)
+            for (int y = 0; y < 600; y += 50)
             {
                 mainGraphics->drawImage(img[idx], x, y);
                 idx ++;
-                if (idx > 4)
+                if (idx > sz)
                     idx = 0;
                 mainGraphics->drawImage(img[idx], x, y);
                 idx ++;
-                if (idx > 4)
+                if (idx > sz)
                     idx = 0;
             }
         }
