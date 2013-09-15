@@ -371,6 +371,18 @@ impHandler0(heal)
 {
     if (actorSpriteManager)
     {
+        if (inputManager.isActionActive(Input::KEY_MOD))
+        {
+            Being *target = player_node->getTarget();
+            if (!target || target->getType() != ActorSprite::PLAYER)
+            {
+                target = actorSpriteManager->findNearestLivingBeing(
+                    player_node, 10, ActorSprite::PLAYER);
+                if (target)
+                    player_node->setTarget(target);
+            }
+        }
+
         actorSpriteManager->healTarget();
         if (Game::instance())
             Game::instance()->setValidSpeed();
