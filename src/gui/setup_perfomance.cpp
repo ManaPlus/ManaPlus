@@ -148,6 +148,11 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
         "additinal memory)"), "", "uselonglivesprites", this,
         "uselonglivespritesEvent");
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Cache all sounds (can use additinal memory)"),
+        "", "uselonglivesounds", this,
+        "uselonglivesoundsEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 

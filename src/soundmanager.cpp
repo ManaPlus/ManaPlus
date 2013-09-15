@@ -56,11 +56,12 @@ SoundManager::SoundManager():
     mMusicVolume(60),
     mCurrentMusicFile(),
     mMusic(nullptr),
+    mGuiChannel(-1),
     mPlayBattle(false),
     mPlayGui(false),
     mPlayMusic(false),
     mFadeoutMusic(true),
-    mGuiChannel(-1)
+    mCacheSounds(true)
 {
     // This set up our callback function used to
     // handle fade outs endings.
@@ -94,6 +95,8 @@ void SoundManager::optionChanged(const std::string &value)
         setMusicVolume(config.getIntValue("musicVolume"));
     else if (value == "fadeoutmusic")
         mFadeoutMusic = config.getIntValue("fadeoutmusic");
+    else if (value == "uselonglivesounds")
+        mCacheSounds = config.getIntValue("uselonglivesounds");
 }
 
 void SoundManager::init()
@@ -110,6 +113,7 @@ void SoundManager::init()
     mFadeoutMusic = config.getBoolValue("fadeoutmusic");
     mMusicVolume = config.getIntValue("musicVolume");
     mSfxVolume = config.getIntValue("sfxVolume");
+    mCacheSounds = config.getIntValue("uselonglivesounds");
 
     config.addListener("playBattleSound", this);
     config.addListener("playGuiSound", this);
@@ -117,6 +121,7 @@ void SoundManager::init()
     config.addListener("sfxVolume", this);
     config.addListener("musicVolume", this);
     config.addListener("fadeoutmusic", this);
+    config.addListener("uselonglivesounds", this);
 
     if (SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
     {
@@ -360,7 +365,7 @@ void SoundManager::playSfx(const std::string &path,
     else
         tmpPath = paths.getValue("sfx", "sfx/").append(path);
     ResourceManager *const resman = ResourceManager::getInstance();
-    const SoundEffect *const sample = resman->getSoundEffect(tmpPath);
+    SoundEffect *const sample = resman->getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("SoundManager::playSfx() Playing: %s", path.c_str());
@@ -380,6 +385,8 @@ void SoundManager::playSfx(const std::string &path,
             vol -= dist * 8;
         }
         sample->play(0, vol);
+        if (!mCacheSounds)
+            sample->decRef();
     }
 }
 
@@ -400,13 +407,15 @@ void SoundManager::playGuiSfx(const std::string &path)
     else
         tmpPath = paths.getValue("sfx", "sfx/").append(path);
     ResourceManager *const resman = ResourceManager::getInstance();
-    const SoundEffect *const sample = resman->getSoundEffect(tmpPath);
+    SoundEffect *const sample = resman->getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("SoundManager::playGuiSfx() Playing: %s", path.c_str());
         const int ret = sample->play(0, 120, mGuiChannel);
         if (ret != -1)
             mGuiChannel = ret;
+        if (!mCacheSounds)
+            sample->decRef();
     }
 }
 

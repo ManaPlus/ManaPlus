@@ -156,11 +156,12 @@ class SoundManager final : public ConfigListener
 
         std::string mCurrentMusicFile;
         SDLMusic *mMusic;
+        int mGuiChannel;
         bool mPlayBattle;
         bool mPlayGui;
         bool mPlayMusic;
         bool mFadeoutMusic;
-        int mGuiChannel;
+        bool mCacheSounds;
 };
 
 extern SoundManager soundManager;

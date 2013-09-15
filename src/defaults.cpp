@@ -315,6 +315,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showAllLang", false);
     AddDEF("moveNames", false);
     AddDEF("uselonglivesprites", false);
+    AddDEF("uselonglivesounds", true);
     AddDEF("screenDensity", 0);
     AddDEF("cfgver", 0);
     AddDEF("enableDebugLog", false);
