@@ -23,7 +23,6 @@
 #ifdef USE_OPENGL
 
 #include "client.h"
-#include "configuration.h"
 #include "graphicsmanager.h"
 #include "soundmanager.h"
 
@@ -31,8 +30,6 @@
 
 #include "gui/theme.h"
 
-#include "utils/gettext.h"
-#include "utils/mkdir.h"
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 

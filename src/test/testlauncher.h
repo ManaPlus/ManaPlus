@@ -27,7 +27,6 @@
 
 #include <fstream>
 #include <string>
-#include <sys/time.h>
 
 #include "localconsts.h"
 

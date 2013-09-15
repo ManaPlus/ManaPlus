@@ -22,11 +22,9 @@
 #include "test/testmain.h"
 
 #ifdef USE_OPENGL
-#include "utils/gettext.h"
 
 #include "client.h"
 
-#include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/process.h"
 
