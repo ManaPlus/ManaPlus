@@ -25,6 +25,8 @@
 
 #include "utils/xml.h"
 
+#include "maplayer.h"
+
 #include <string>
 
 class Map;
@@ -73,11 +75,13 @@ class MapReader final
 
         static bool readBase64Layer(const XmlNodePtr childNode, Map *const map,
                                     MapLayer *const layer,
+                                    const MapLayer::Type &layerType,
                                     const std::string &compression,
                                     int &x, int &y, const int w, const int h);
 
         static bool readCsvLayer(const XmlNodePtr childNode, Map *const map,
                                  MapLayer *const layer,
+                                 const MapLayer::Type &layerType,
                                  int &x, int &y, const int w, const int h);
 
         /**

@@ -87,6 +87,13 @@ class MapObjectList final
 class MapLayer final: public ConfigListener
 {
     public:
+        enum Type
+        {
+            TILES,
+            COLLISION,
+            HEIGHTS
+        };
+
         friend class Map;
 
         /**

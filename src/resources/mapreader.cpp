@@ -27,7 +27,6 @@
 #include "logger.h"
 #include "main.h"
 #include "map.h"
-#include "maplayer.h"
 #include "tileset.h"
 
 #include "resources/animation.h"
@@ -419,54 +418,66 @@ void MapReader::readProperties(const XmlNodePtr node, Properties *const props)
 }
 
 inline static void setTile(Map *const map, MapLayer *const layer,
+                           const MapLayer::Type &layerType,
                            const int x, const int y, const int gid)
 {
     const Tileset * const set = map->getTilesetWithGid(gid);
-    if (layer)
+    switch (layerType)
     {
-        // Set regular tile on a layer
-        Image * const img = set ? set->get(gid - set->getFirstGid()) : nullptr;
-        layer->setTile(x, y, img);
-    }
-    else
-    {
-        // Set collision tile
-        if (set)
+        case MapLayer::TILES:
         {
-            if (map->getVersion() >= 1)
+            Image *const img = set ? set->get(gid - set->getFirstGid())
+                : nullptr;
+            layer->setTile(x, y, img);
+            break;
+        }
+
+        case MapLayer::COLLISION:
+        {
+            if (set)
             {
-                switch (gid - set->getFirstGid())
+                if (map->getVersion() >= 1)
                 {
-                    case Map::COLLISION_EMPTY:
-                        map->blockTile(x, y, Map::BLOCKTYPE_GROUND);
-                        break;
-                    case Map::COLLISION_WALL:
+                    switch (gid - set->getFirstGid())
+                    {
+                        case Map::COLLISION_EMPTY:
+                            map->blockTile(x, y, Map::BLOCKTYPE_GROUND);
+                            break;
+                        case Map::COLLISION_WALL:
+                            map->blockTile(x, y, Map::BLOCKTYPE_WALL);
+                            break;
+                        case Map::COLLISION_AIR:
+                            map->blockTile(x, y, Map::BLOCKTYPE_AIR);
+                            break;
+                        case Map::COLLISION_WATER:
+                            map->blockTile(x, y, Map::BLOCKTYPE_WATER);
+                            break;
+                        case Map::COLLISION_GROUNDTOP:
+                            map->blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    if (gid - set->getFirstGid() != 0)
                         map->blockTile(x, y, Map::BLOCKTYPE_WALL);
-                        break;
-                    case Map::COLLISION_AIR:
-                        map->blockTile(x, y, Map::BLOCKTYPE_AIR);
-                        break;
-                    case Map::COLLISION_WATER:
-                        map->blockTile(x, y, Map::BLOCKTYPE_WATER);
-                        break;
-                    case Map::COLLISION_GROUNDTOP:
-                        map->blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
-                        break;
-                    default:
-                        break;
                 }
             }
-            else
-            {
-                if (gid - set->getFirstGid() != 0)
-                    map->blockTile(x, y, Map::BLOCKTYPE_WALL);
-            }
+            break;
         }
+
+        case MapLayer::HEIGHTS:
+            break;
+
+        default:
+            break;
     }
 }
 
 #define addTile() \
-    setTile(map, layer, x, y, gid); \
+    setTile(map, layer, layerType, x, y, gid); \
     if (hasAnimations) \
     { \
         TileAnimationMapCIter it = tileAnimations.find(gid); \
@@ -480,6 +491,7 @@ inline static void setTile(Map *const map, MapLayer *const layer,
 
 bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
                                 MapLayer *const layer,
+                                const MapLayer::Type &layerType,
                                 const std::string &compression,
                                 int &x, int &y, const int w, const int h)
 {
@@ -579,6 +591,7 @@ bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
 
 bool MapReader::readCsvLayer(const XmlNodePtr childNode, Map *const map,
                              MapLayer *const layer,
+                             const MapLayer::Type &layerType,
                              int &x, int &y, const int w, const int h)
 {
     XmlNodePtr dataChild = childNode->xmlChildrenNode;
@@ -634,6 +647,13 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 
     const bool isFringeLayer = (name.substr(0, 6) == "fringe");
     const bool isCollisionLayer = (name.substr(0, 9) == "collision");
+    const bool isHeightLayer = (name.substr(0, 7) == "heights");
+
+    MapLayer::Type layerType = MapLayer::TILES;
+    if (isCollisionLayer)
+        layerType = MapLayer::COLLISION;
+    else if (isHeightLayer)
+        layerType = MapLayer::HEIGHTS;
 
     map->indexTilesets();
 
@@ -667,7 +687,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
         if (!xmlNameEqual(childNode, "data"))
             continue;
 
-        if (!isCollisionLayer)
+        if (layerType == MapLayer::TILES)
         {
             layer = new MapLayer(offsetX, offsetY, w, h, isFringeLayer);
             map->addLayer(layer);
@@ -680,7 +700,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 
         if (encoding == "base64")
         {
-            if (readBase64Layer(childNode, map, layer,
+            if (readBase64Layer(childNode, map, layer, layerType,
                 compression, x, y, w, h))
             {
                 continue;
@@ -692,7 +712,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
         }
         else if (encoding == "csv")
         {
-            if (readCsvLayer(childNode, map, layer, x, y, w, h))
+            if (readCsvLayer(childNode, map, layer, layerType, x, y, w, h))
                 continue;
             else
                 return;
