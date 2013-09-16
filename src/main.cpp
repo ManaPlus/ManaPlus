@@ -48,6 +48,9 @@
 #include <windows.h>
 #endif
 
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+
 #include "debug.h"
 
 char *selfName = nullptr;
@@ -292,6 +295,8 @@ int main(int argc, char *argv[])
     atexit((void(*)()) PHYSFS_deinit);
 
     XML::initXML();
+    IMG_Init(IMG_INIT_PNG);
+    Mix_Init(MIX_INIT_OGG);
 
 #ifdef WIN32
     SetCurrentDirectory(PhysFs::getBaseDir());
@@ -311,6 +316,10 @@ int main(int argc, char *argv[])
     }
     delete client;
     client = nullptr;
+
+    Mix_Quit();
+    IMG_Quit();
+
 #ifdef DUMP_LEAKED_RESOURCES
     reportRWops();
 #endif
