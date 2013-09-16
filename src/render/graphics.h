@@ -32,6 +32,10 @@
 #include <guichan/color.hpp>
 #include <guichan/graphics.hpp>
 
+#ifdef USE_SDL2
+#include <SDL_render.h>
+#endif
+
 #include "localconsts.h"
 
 class Image;

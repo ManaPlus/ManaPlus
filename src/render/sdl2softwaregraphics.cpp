@@ -36,6 +36,8 @@
 
 #include "utils/sdlcheckutils.h"
 
+#include <guichan/sdl/sdlpixel.hpp>
+
 #include "debug.h"
 
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN

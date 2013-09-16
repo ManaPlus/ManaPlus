@@ -42,6 +42,10 @@
 #endif
 #endif
 
+#ifdef USE_SDL2
+#include <SDL_render.h>
+#endif
+
 #include <map>
 
 /**

@@ -44,6 +44,8 @@
 #include "debug.h"
 
 #ifdef USE_SDL2
+#include <SDL_clipboard.h>
+
 bool retrieveBuffer(std::string& text, size_t& pos)
 {
     char *buf = SDL_GetClipboardText();
