@@ -20,12 +20,9 @@
 
 #include "resources/beingcommon.h"
 
-#include "logger.h"
-
 #include "resources/beinginfo.h"
 
 #include "debug.h"
-
 
 void BeingCommon::readBasicAttributes(BeingInfo *const info, XmlNodePtr node,
                                       const std::string &hoverCursor)

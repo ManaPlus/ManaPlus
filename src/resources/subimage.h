@@ -26,8 +26,6 @@
 #include "localconsts.h"
 #include "main.h"
 
-#include <SDL.h>
-
 #ifdef USE_OPENGL
 
 #ifdef ANDROID

@@ -20,9 +20,7 @@
 
 #include "resources/sounddb.h"
 
-#include "client.h"
 #include "configuration.h"
-#include "logger.h"
 #include "notifications.h"
 #include "notifymanager.h"
 

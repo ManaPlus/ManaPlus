@@ -29,7 +29,6 @@
 #include "resources/cursor.h"
 #include "resources/soundinfo.h"
 
-#include <list>
 #include <map>
 
 struct Attack final

@@ -29,12 +29,10 @@
 
 #include "resources/resource.h"
 
-#include <SDL.h>
+#include <SDL_video.h>
 
 class Dye;
 class Image;
-
-struct Position;
 
 /**
  * Defines a class for loading and storing images.

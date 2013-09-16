@@ -24,10 +24,6 @@
 
 #include "resources/atlasmanager.h"
 
-#include "client.h"
-#include "graphicsmanager.h"
-#include "logger.h"
-
 #include "render/surfacegraphics.h"
 
 #include "utils/mathutils.h"
@@ -36,9 +32,7 @@
 #include "utils/sdlcheckutils.h"
 
 #include "resources/dye.h"
-#include "resources/fboinfo.h"
 #include "resources/imagehelper.h"
-#include "resources/imagewriter.h"
 #include "resources/openglimagehelper.h"
 #include "resources/resourcemanager.h"
 

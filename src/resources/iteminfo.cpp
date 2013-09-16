@@ -28,7 +28,6 @@
 
 #include "utils/dtor.h"
 
-#include <set>
 #include <map>
 
 #include "debug.h"

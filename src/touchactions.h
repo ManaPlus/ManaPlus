@@ -21,8 +21,6 @@
 #ifndef TOUCHACTIONS_H
 #define TOUCHACTIONS_H
 
-#include <guichan/mouseinput.hpp>
-
 #include "localconsts.h"
 
 #define decHandler(name) void name(const MouseInput &mouseInput)

@@ -28,7 +28,7 @@
 
 #include "resources/resource.h"
 
-#include <SDL.h>
+#include <SDL_video.h>
 
 #ifdef USE_OPENGL
 
@@ -43,10 +43,6 @@
 #endif
 
 #include <map>
-
-class Dye;
-
-struct Position;
 
 /**
  * Defines a class for loading and storing images.

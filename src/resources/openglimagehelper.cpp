@@ -24,8 +24,6 @@
 
 #ifdef USE_OPENGL
 
-#include "client.h"
-#include "game.h"
 #include "graphicsmanager.h"
 #include "logger.h"
 #include "mgl.h"
@@ -37,10 +35,8 @@
 
 #include "resources/dye.h"
 #include "resources/image.h"
-#include "resources/resourcemanager.h"
 
 #include "utils/sdlcheckutils.h"
-#include "utils/stringutils.h"
 
 #include <SDL_image.h>
 

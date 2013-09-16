@@ -21,8 +21,6 @@
 #ifndef RESOURCES_BEINGCOMMON_H
 #define RESOURCES_BEINGCOMMON_H
 
-#include <stdint.h>
-
 #include "utils/xml.h"
 
 #include "localconsts.h"

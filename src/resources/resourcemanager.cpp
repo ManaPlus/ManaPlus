@@ -26,7 +26,6 @@
 #include "client.h"
 #include "configuration.h"
 #include "logger.h"
-#include "map.h"
 #include "navigationmanager.h"
 #include "walklayer.h"
 
@@ -36,7 +35,6 @@
 #include "resources/imagehelper.h"
 #include "resources/imageset.h"
 #include "resources/sdlmusic.h"
-#include "resources/openglimagehelper.h"
 #include "resources/soundeffect.h"
 #include "resources/spritedef.h"
 
@@ -46,14 +44,9 @@
 #include "utils/sdlcheckutils.h"
 
 #include <SDL_image.h>
-#include <cassert>
 #include <dirent.h>
 #include <fstream>
-#include <iostream>
-#include <sstream>
-#include <zlib.h>
 
-#include <sys/stat.h>
 #include <sys/time.h>
 
 #include "debug.h"

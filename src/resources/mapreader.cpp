@@ -22,7 +22,6 @@
 
 #include "resources/mapreader.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "graphicsmanager.h"
 #include "logger.h"
@@ -37,7 +36,6 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/base64.h"
-#include "utils/gettext.h"
 
 #include <iostream>
 #include <zlib.h>

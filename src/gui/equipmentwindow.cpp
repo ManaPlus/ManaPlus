@@ -49,6 +49,8 @@
 
 #include <guichan/font.hpp>
 
+#include <SDL_mouse.h>
+
 #include "debug.h"
 
 static const int BOX_COUNT = 13;

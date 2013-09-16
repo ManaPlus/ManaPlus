@@ -24,8 +24,6 @@
 
 #include "logger.h"
 
-#include "net/net.h"
-
 #include "resources/beinginfo.h"
 
 #include "utils/dtor.h"

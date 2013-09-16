@@ -24,8 +24,6 @@
 
 #include "logger.h"
 
-#include "net/net.h"
-
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 

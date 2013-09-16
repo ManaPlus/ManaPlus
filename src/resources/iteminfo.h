@@ -28,7 +28,6 @@
 #include "resources/colordb.h"
 
 #include <map>
-#include <set>
 
 enum EquipmentSlot
 {

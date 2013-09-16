@@ -22,14 +22,8 @@
 
 #include "resources/imagehelper.h"
 
-#include "resources/dye.h"
-#include "resources/resourcemanager.h"
-
-#include "client.h"
 #include "logger.h"
 #include "main.h"
-
-#include "resources/image.h"
 
 #include "utils/sdlcheckutils.h"
 

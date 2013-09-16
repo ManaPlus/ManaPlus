@@ -25,7 +25,6 @@
 
 #include "utils/stringvector.h"
 
-#include <list>
 #include <map>
 
 #include "localconsts.h"

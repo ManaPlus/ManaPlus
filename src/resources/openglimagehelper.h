@@ -33,11 +33,7 @@
 #define GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB 0x84F8
 #endif
 
-#include "utils/stringvector.h"
-
 #include "resources/imagehelper.h"
-
-#include <SDL.h>
 
 #ifdef ANDROID
 #include <GLES/gl.h>

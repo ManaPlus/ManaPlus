@@ -22,9 +22,6 @@
 #ifndef RESOURCES_CHARDB_H
 #define RESOURCES_CHARDB_H
 
-#include <map>
-#include <string>
-
 #include "utils/xml.h"
 
 #include <vector>

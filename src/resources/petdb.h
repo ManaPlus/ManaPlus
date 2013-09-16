@@ -23,8 +23,6 @@
 #ifndef RESOURCES_PETDB_H
 #define RESOURCES_PETDB_H
 
-#include <stdint.h>
-
 #include "localconsts.h"
 
 class BeingInfo;

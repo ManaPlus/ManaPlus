@@ -21,7 +21,6 @@
 
 #include "resources/chardb.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "logger.h"
 

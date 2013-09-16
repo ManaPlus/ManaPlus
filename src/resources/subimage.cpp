@@ -22,17 +22,9 @@
 
 #include "resources/subimage.h"
 
-#ifdef USE_OPENGL
-#include "render/mobileopenglgraphics.h"
-#include "render/normalopenglgraphics.h"
-#include "render/safeopenglgraphics.h"
-#endif
-
 #ifdef DEBUG_IMAGES
 #include "logger.h"
 #endif
-
-#include "client.h"
 
 #include "debug.h"
 

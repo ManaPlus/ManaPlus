@@ -23,8 +23,6 @@
 #ifndef RESOURCES_IMAGEWRITER_H
 #define RESOURCES_IMAGEWRITER_H
 
-#include <iosfwd>
-
 #include <string>
 
 #include "localconsts.h"

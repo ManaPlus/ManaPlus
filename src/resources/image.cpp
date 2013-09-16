@@ -22,16 +22,8 @@
 
 #include "resources/image.h"
 
-#include "resources/dye.h"
 #include "resources/resourcemanager.h"
 
-#ifdef USE_OPENGL
-#include "render/mobileopenglgraphics.h"
-#include "render/normalopenglgraphics.h"
-#include "render/safeopenglgraphics.h"
-#endif
-
-#include "client.h"
 #include "logger.h"
 
 #include "resources/imagehelper.h"
@@ -41,7 +33,6 @@
 
 #include "utils/sdlcheckutils.h"
 
-#include <SDL_image.h>
 #include <SDL_rotozoom.h>
 
 #include "debug.h"

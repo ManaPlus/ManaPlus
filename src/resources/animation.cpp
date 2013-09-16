@@ -22,10 +22,6 @@
 
 #include "resources/animation.h"
 
-#include "logger.h"
-
-#include "utils/dtor.h"
-
 #include "debug.h"
 
 Animation::Animation() :

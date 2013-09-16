@@ -22,7 +22,6 @@
 #include "resources/mapdb.h"
 
 #include "configuration.h"
-#include "client.h"
 #include "logger.h"
 
 #include "debug.h"

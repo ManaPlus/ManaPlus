@@ -30,7 +30,6 @@
 class Map;
 class MapLayer;
 class Properties;
-class Resource;
 class Tileset;
 
 /**

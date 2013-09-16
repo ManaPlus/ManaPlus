@@ -21,12 +21,7 @@
 #ifndef RESOURCES_DEADDB_H
 #define RESOURCES_DEADDB_H
 
-#include <map>
 #include <string>
-
-#include "utils/xml.h"
-
-#include <vector>
 
 /**
  * Char information database.

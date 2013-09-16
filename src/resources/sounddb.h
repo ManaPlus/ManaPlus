@@ -21,7 +21,6 @@
 #ifndef RESOURCES_SOUNDDB_H
 #define RESOURCES_SOUNDDB_H
 
-#include <map>
 #include <string>
 
 #include "localconsts.h"

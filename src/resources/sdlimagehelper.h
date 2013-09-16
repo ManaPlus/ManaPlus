@@ -32,8 +32,6 @@
 
 #include "resources/imagehelper.h"
 
-#include <SDL.h>
-
 class Dye;
 class Image;
 

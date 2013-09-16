@@ -23,7 +23,6 @@
 #include "resources/wallpaper.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "resources/resourcemanager.h"
 
@@ -32,7 +31,6 @@
 #include <algorithm>
 #include <cstring>
 #include <time.h>
-#include <iostream>
 
 #include "debug.h"
 
