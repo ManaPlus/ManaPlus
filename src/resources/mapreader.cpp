@@ -419,6 +419,7 @@ void MapReader::readProperties(const XmlNodePtr node, Properties *const props)
 
 inline static void setTile(Map *const map, MapLayer *const layer,
                            const MapLayer::Type &layerType,
+                           MapHeights *const heights,
                            const int x, const int y, const int gid)
 {
     const Tileset * const set = map->getTilesetWithGid(gid);
@@ -469,7 +470,21 @@ inline static void setTile(Map *const map, MapLayer *const layer,
         }
 
         case MapLayer::HEIGHTS:
+        {
+            if (!set)
+                break;
+            if (map->getVersion() >= 2)
+            {
+                heights->setHeight(x, y, gid - set->getFirstGid() + 1);
+            }
+            else
+            {
+                Image *const img = set ? set->get(gid - set->getFirstGid())
+                    : nullptr;
+                layer->setTile(x, y, img);
+            }
             break;
+        }
 
         default:
             break;
@@ -477,7 +492,7 @@ inline static void setTile(Map *const map, MapLayer *const layer,
 }
 
 #define addTile() \
-    setTile(map, layer, layerType, x, y, gid); \
+    setTile(map, layer, layerType, heights, x, y, gid); \
     if (hasAnimations) \
     { \
         TileAnimationMapCIter it = tileAnimations.find(gid); \
@@ -492,6 +507,7 @@ inline static void setTile(Map *const map, MapLayer *const layer,
 bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
                                 MapLayer *const layer,
                                 const MapLayer::Type &layerType,
+                                MapHeights *const heights,
                                 const std::string &compression,
                                 int &x, int &y, const int w, const int h)
 {
@@ -592,6 +608,7 @@ bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
 bool MapReader::readCsvLayer(const XmlNodePtr childNode, Map *const map,
                              MapLayer *const layer,
                              const MapLayer::Type &layerType,
+                             MapHeights *const heights,
                              int &x, int &y, const int w, const int h)
 {
     XmlNodePtr dataChild = childNode->xmlChildrenNode;
@@ -658,6 +675,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
     map->indexTilesets();
 
     MapLayer *layer = nullptr;
+    MapHeights *heights = nullptr;
 
     logger->log("- Loading layer \"%s\"", name.c_str());
     int x = 0;
@@ -692,6 +710,11 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
             layer = new MapLayer(offsetX, offsetY, w, h, isFringeLayer);
             map->addLayer(layer);
         }
+        else if (layerType == MapLayer::HEIGHTS)
+        {
+            heights = new MapHeights(w, h);
+            map->addHeights(heights);
+        }
 
         const std::string encoding =
             XML::getProperty(childNode, "encoding", "");
@@ -701,7 +724,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
         if (encoding == "base64")
         {
             if (readBase64Layer(childNode, map, layer, layerType,
-                compression, x, y, w, h))
+                heights, compression, x, y, w, h))
             {
                 continue;
             }
@@ -712,10 +735,15 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
         }
         else if (encoding == "csv")
         {
-            if (readCsvLayer(childNode, map, layer, layerType, x, y, w, h))
+            if (readCsvLayer(childNode, map, layer, layerType,
+                heights, x, y, w, h))
+            {
                 continue;
+            }
             else
+            {
                 return;
+            }
         }
         else
         {

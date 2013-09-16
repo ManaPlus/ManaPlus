@@ -678,6 +678,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      main.h \
 	      map.cpp \
 	      map.h \
+	      mapheights.cpp \
+	      mapheights.h \
 	      maplayer.cpp \
 	      maplayer.h \
 	      mgl.cpp \

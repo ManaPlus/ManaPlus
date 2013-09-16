@@ -25,6 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "render/graphics.h"
+#include "mapheights.h"
 #include "maplayer.h"
 #include "notifications.h"
 #include "notifymanager.h"
@@ -171,10 +172,11 @@ Map::Map(const int width, const int height,
     mDrawY(-1),
     mDrawScrollX(-1),
     mDrawScrollY(-1),
+    mAtlas(nullptr),
+    mHeights(nullptr),
     mRedrawMap(true),
     mBeingOpacity(false),
-    mCustom(false),
-    mAtlas(nullptr)
+    mCustom(false)
 {
     const int size = mWidth * mHeight;
     for (int i = 0; i < NB_BLOCKTYPES; i++)
@@ -225,6 +227,8 @@ Map::~Map()
         mAtlas->decRef();
         mAtlas = nullptr;
     }
+    delete mHeights;
+    mHeights = nullptr;
 }
 
 void Map::optionChanged(const std::string &value)
@@ -1574,4 +1578,10 @@ void Map::reduce()
 void Map::redrawMap()
 {
     mRedrawMap = true;
+}
+
+void Map::addHeights(MapHeights *const heights)
+{
+    delete mHeights;
+    mHeights = heights;
 }

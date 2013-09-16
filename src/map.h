@@ -37,14 +37,15 @@
 class Animation;
 class AmbientLayer;
 class Image;
+class MapHeights;
+class MapItem;
 class MapLayer;
+class ObjectsLayer;
 class Particle;
 class Resource;
 class SimpleAnimation;
-class Tileset;
 class SpecialLayer;
-class MapItem;
-class ObjectsLayer;
+class Tileset;
 class WalkLayer;
 
 typedef std::vector<Tileset*> Tilesets;
@@ -421,6 +422,8 @@ class Map final : public Properties, public ConfigListener
         void setWalkLayer(WalkLayer *const layer)
         { mWalkLayer = layer; }
 
+        void addHeights(MapHeights *const heights);
+
     protected:
         friend class Actor;
         friend class Minimap;
@@ -536,10 +539,11 @@ class Map final : public Properties, public ConfigListener
         int mDrawY;
         int mDrawScrollX;
         int mDrawScrollY;
+        Resource *mAtlas;
+        MapHeights *mHeights;
         bool mRedrawMap;
         bool mBeingOpacity;
         bool mCustom;
-        Resource *mAtlas;
 };
 
 #endif  // MAP_H
