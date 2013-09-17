@@ -1585,3 +1585,10 @@ void Map::addHeights(MapHeights *const heights)
     delete mHeights;
     mHeights = heights;
 }
+
+uint8_t Map::getHeightOffset(const int x, const int y) const
+{
+    if (!mHeights)
+        return 0;
+    return mHeights->getHeight(x, y);
+}

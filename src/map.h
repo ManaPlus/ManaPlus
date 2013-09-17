@@ -424,6 +424,8 @@ class Map final : public Properties, public ConfigListener
 
         void addHeights(MapHeights *const heights);
 
+        uint8_t getHeightOffset(const int x, const int y) const;
+
     protected:
         friend class Actor;
         friend class Minimap;

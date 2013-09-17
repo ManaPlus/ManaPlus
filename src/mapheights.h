@@ -36,6 +36,9 @@ class MapHeights final
 
         void setHeight(const int x, const int y, const uint8_t height);
 
+        uint8_t getHeight(const int x, const int y) const
+        { return mTiles[x + y * mWidth]; }
+
     private:
         int mWidth;
         int mHeight;

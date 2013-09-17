@@ -1001,7 +1001,11 @@ class Being : public ActorSprite, public ConfigListener
         Being *mOwner;
         Particle *mSpecialParticle;
 
-        int mX, mY;   /**< Position in tile */
+        int mX;        // position in tiles
+        int mY;        // position in tiles
+        int mOffsetX;  // offset in pixels
+        int mOffsetY;  // offset in pixels
+        uint8_t mOldHeight;
 
         int mDamageTaken;
         int mHP;

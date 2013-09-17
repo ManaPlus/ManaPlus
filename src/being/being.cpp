@@ -147,6 +147,9 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mSpecialParticle(nullptr),
     mX(0),
     mY(0),
+    mOffsetX(0),
+    mOffsetY(0),
+    mOldHeight(0),
     mDamageTaken(0),
     mHP(0),
     mMaxHP(0),
@@ -1352,8 +1355,12 @@ void Being::nextTile()
     else
         mSpeed = mWalkSpeed.x;
 
+    if (mX != pos.x || mY != pos.y)
+        mOldHeight = mMap->getHeightOffset(mX, mY);
     mX = pos.x;
     mY = pos.y;
+    const uint8_t height = mMap->getHeightOffset(mX, mY);
+    mOffsetY = height - mOldHeight;
     setAction(MOVE);
 }
 
@@ -1514,9 +1521,18 @@ void Being::logic()
             }
         }
 
+        const int xOffset = getXOffset();
+        const int yOffset = getYOffset();
+        int offset = xOffset;
+        if (!offset)
+            offset = yOffset;
+
+        const int yOffset2 = getYOffset() - (mOldHeight * 16)
+            - (mOffsetY * 16) * (32 - abs(offset)) / 32;
+
         // Update pixel coordinates
-        setPosition(static_cast<float>(mX * 32 + 16 + getXOffset()),
-                    static_cast<float>(mY * 32 + 32 + getYOffset()));
+        setPosition(static_cast<float>(mX * 32 + 16 + xOffset),
+                    static_cast<float>(mY * 32 + 32 + yOffset2));
     }
 
     if (mEmotionSprite)
