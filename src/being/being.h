@@ -231,8 +231,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Sets the tile x and y coord
          */
-        void setTileCoords(const int x, const int y)
-        { mX = x; mY = y; }
+        void setTileCoords(const int x, const int y);
 
         /**
          * Puts a "speech balloon" above this being for the specified amount
@@ -899,6 +898,8 @@ class Being : public ActorSprite, public ConfigListener
 
         int getSortPixelY() const A_WARN_UNUSED
         { return static_cast<int>(mPos.y) - mYDiff - mSortOffsetY; }
+
+        void setMap(Map *const map);
 
     protected:
         /**

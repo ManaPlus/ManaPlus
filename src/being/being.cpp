@@ -3056,3 +3056,18 @@ void Being::setLook(const int look)
     if (mType == PLAYER)
         setSubtype(mSubType, look);
 }
+
+void Being::setTileCoords(const int x, const int y)
+{
+    mX = x;
+    mY = y;
+    if (mMap)
+        mOffsetY = mMap->getHeightOffset(mX, mY);
+}
+
+void Being::setMap(Map *const map)
+{
+    Actor::setMap(map);
+    if (mMap)
+        mOffsetY = mMap->getHeightOffset(mX, mY);
+}
