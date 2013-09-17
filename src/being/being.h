@@ -897,6 +897,9 @@ class Being : public ActorSprite, public ConfigListener
          */
         void setPath(const Path &path);
 
+        int getSortPixelY() const A_WARN_UNUSED
+        { return static_cast<int>(mPos.y) - mYDiff - mSortOffsetY; }
+
     protected:
         /**
          * Updates name's location.
@@ -1001,10 +1004,10 @@ class Being : public ActorSprite, public ConfigListener
         Being *mOwner;
         Particle *mSpecialParticle;
 
-        int mX;        // position in tiles
-        int mY;        // position in tiles
-        int mOffsetX;  // offset in pixels
-        int mOffsetY;  // offset in pixels
+        int mX;            // position in tiles
+        int mY;            // position in tiles
+        int mSortOffsetY;  // caculated offset in pixels based on mOffsetY
+        int mOffsetY;      // fixed tile height offset in pixels
         uint8_t mOldHeight;
 
         int mDamageTaken;

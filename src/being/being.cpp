@@ -147,7 +147,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mSpecialParticle(nullptr),
     mX(0),
     mY(0),
-    mOffsetX(0),
+    mSortOffsetY(0),
     mOffsetY(0),
     mOldHeight(0),
     mDamageTaken(0),
@@ -1527,8 +1527,9 @@ void Being::logic()
         if (!offset)
             offset = yOffset;
 
-        const int yOffset2 = getYOffset() - (mOldHeight * 16)
-            - (mOffsetY * 16) * (32 - abs(offset)) / 32;
+        mSortOffsetY = (mOldHeight * 16) + (mOffsetY * 16)
+            * (32 - abs(offset)) / 32;
+        const int yOffset2 = yOffset - mSortOffsetY;
 
         // Update pixel coordinates
         setPosition(static_cast<float>(mX * 32 + 16 + xOffset),
