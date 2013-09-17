@@ -20,6 +20,8 @@
 
 #include "utils/physfstools.h"
 
+#include "localconsts.h"
+
 const char *dirSeparator = nullptr;
 
 namespace PhysFs
