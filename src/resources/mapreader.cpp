@@ -481,7 +481,8 @@ inline static void setTile(Map *const map, MapLayer *const layer,
             {
                 Image *const img = set ? set->get(gid - set->getFirstGid())
                     : nullptr;
-                layer->setTile(x, y, img);
+                if (layer)
+                    layer->setTile(x, y, img);
             }
             break;
         }
