@@ -52,7 +52,7 @@ class PopupList final : public Popup,
 
         int getSelected() const;
 
-        void setListModel(gcn::ListModel *model);
+        void setListModel(gcn::ListModel *const model);
 
         gcn::ListModel *getListModel() const
         { return mListModel; }

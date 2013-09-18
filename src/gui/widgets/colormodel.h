@@ -55,7 +55,7 @@ class ColorModel : public gcn::ListModel
 
         virtual std::string getElementAt(int i) override A_WARN_UNUSED;
 
-        virtual ColorPair *getColorAt(int i) A_WARN_UNUSED;
+        virtual const ColorPair *getColorAt(const int i) const A_WARN_UNUSED;
 
         StringVect &getNames() A_WARN_UNUSED
         { return mNames; }
@@ -63,8 +63,8 @@ class ColorModel : public gcn::ListModel
         size_t size() A_WARN_UNUSED
         { return mNames.size(); }
 
-        void add(const std::string &name, const gcn::Color *color1,
-                 const gcn::Color *color2);
+        void add(const std::string &name, const gcn::Color *const color1,
+                 const gcn::Color *const color2);
 
         static ColorModel *createDefault(const Widget2 *const widget);
 

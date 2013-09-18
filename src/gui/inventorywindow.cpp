@@ -578,7 +578,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
 void InventoryWindow::mouseMoved(gcn::MouseEvent &event)
 {
     Window::mouseMoved(event);
-    gcn::Widget *const src = event.getSource();
+    const gcn::Widget *const src = event.getSource();
     if (src == mSlotsBar || src == mWeightBar)
     {
         const int x = event.getX();

@@ -48,7 +48,7 @@ class PartyTab : public ChatTab, public ConfigListener
         int getType() const override A_WARN_UNUSED
         { return ChatTab::TAB_PARTY; }
 
-        void saveToLogFile(const std::string &msg) override;
+        void saveToLogFile(const std::string &msg) const override;
 
         void playNewMessageSound() const override;
 

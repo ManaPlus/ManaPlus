@@ -163,7 +163,7 @@ bool WhisperTab::handleCommand(const std::string &type,
     return true;
 }
 
-void WhisperTab::saveToLogFile(const std::string &msg)
+void WhisperTab::saveToLogFile(const std::string &msg) const
 {
     if (chatLogger)
         chatLogger->log(getNick(), msg);

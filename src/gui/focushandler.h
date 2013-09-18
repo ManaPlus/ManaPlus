@@ -78,7 +78,7 @@ class FocusHandler final : public gcn::FocusHandler
          * Checks to see if the widget tabbed to is in a window, and if it is,
          * it requests the window be moved to the top.
          */
-        void checkForWindow();
+        void checkForWindow() const;
 
         /**
          * Stack of widgets that have requested modal forcus.

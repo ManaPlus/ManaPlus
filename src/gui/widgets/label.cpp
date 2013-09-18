@@ -109,7 +109,7 @@ void Label::draw(gcn::Graphics* graphics)
 
 void Label::adjustSize()
 {
-    gcn::Font *const font = getFont();
+    const gcn::Font *const font = getFont();
     const int pad2 = 2 * mPadding;
     setWidth(font->getWidth(mCaption) + pad2);
     setHeight(font->getHeight() + pad2);

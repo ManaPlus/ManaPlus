@@ -131,7 +131,7 @@ void StatusPopup::setLabelText(const int num,
     label->adjustSize();
 }
 
-void StatusPopup::updateLabels()
+void StatusPopup::updateLabels() const
 {
     if (!player_node || !viewport)
         return;

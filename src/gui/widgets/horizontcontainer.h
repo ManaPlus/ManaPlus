@@ -43,7 +43,7 @@ class HorizontContainer final : public Container, public gcn::WidgetListener
 
         void add(gcn::Widget *widget) override;
 
-        void add(gcn::Widget *widget, int spacing);
+        void add(gcn::Widget *const widget, const int spacing);
 
         void clear() override;
 

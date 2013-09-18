@@ -154,10 +154,10 @@ class Gui final : public gcn::Gui
 
         void removeDragged(gcn::Widget *widget);
 
-        int getLastMouseX()
+        int getLastMouseX() const
         { return mLastMouseX; }
 
-        int getLastMouseY()
+        int getLastMouseY() const
         { return mLastMouseY; }
 
     protected:

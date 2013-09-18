@@ -122,7 +122,7 @@ void SkillInfo::addData(const int level1, SkillData *const data1)
 
 SkillData *SkillInfo::getData(const int level1) const
 {
-    SkillDataMapCIter it = dataMap.find(level1);
+    const SkillDataMapCIter it = dataMap.find(level1);
     if (it == dataMap.end())
         return nullptr;
     return (*it).second;
@@ -130,7 +130,7 @@ SkillData *SkillInfo::getData(const int level1) const
 
 SkillData *SkillInfo::getData1(const int lev) const
 {
-    SkillDataMapCIter it = dataMap.find(lev);
+    const SkillDataMapCIter it = dataMap.find(lev);
     if (it == dataMap.end())
         return (*dataMap.begin()).second;
     return (*it).second;

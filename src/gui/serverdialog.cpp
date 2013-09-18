@@ -629,7 +629,7 @@ void ServerDialog::loadServers(const bool addNew)
             version = strprintf(_("requires v%s"), version.c_str());
         }
 
-        gcn::Font *const font = gui->getFont();
+        const gcn::Font *const font = gui->getFont();
 
         for_each_xml_child_node(subNode, serverNode)
         {

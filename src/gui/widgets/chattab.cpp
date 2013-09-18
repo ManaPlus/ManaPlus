@@ -280,7 +280,7 @@ void ChatTab::chatLog(std::string line, Own own,
             return;
         }
 
-        TabbedArea *const tabArea = getTabbedArea();
+        const TabbedArea *const tabArea = getTabbedArea();
         if (!tabArea)
             return;
 
@@ -444,7 +444,7 @@ bool ChatTab::handleCommands(const std::string &type, const std::string &args)
     return handleCommand(type, args);
 }
 
-void ChatTab::saveToLogFile(const std::string &msg)
+void ChatTab::saveToLogFile(const std::string &msg) const
 {
     if (chatLogger)
     {

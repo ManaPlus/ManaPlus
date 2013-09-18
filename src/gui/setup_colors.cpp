@@ -99,7 +99,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     // TRANSLATORS: color type
     std::string longText = _("Static");
 
-    gcn::Font *const font = getFont();
+    const gcn::Font *const font = getFont();
     if (getFont()->getWidth(_("Pulse")) > font->getWidth(longText))
     {
         // TRANSLATORS: color type

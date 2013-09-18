@@ -37,7 +37,7 @@ TabStrip::TabStrip(const Widget2 *const widget,
 {
 }
 
-gcn::Widget *TabStrip::createWidget(const std::string &text)
+gcn::Widget *TabStrip::createWidget(const std::string &text) const
 {
     Button *const widget = new Button(this);
     widget->setStick(true);

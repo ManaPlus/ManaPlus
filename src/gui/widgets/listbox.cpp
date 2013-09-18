@@ -57,7 +57,7 @@ ListBox::ListBox(const Widget2 *const widget,
 
     Theme *const theme = Theme::instance();
     if (theme)
-        mSkin = Theme::instance()->load(skin, "listbox.xml");
+        mSkin = theme->load(skin, "listbox.xml");
 
     if (mSkin)
         mPadding = mSkin->getPadding();

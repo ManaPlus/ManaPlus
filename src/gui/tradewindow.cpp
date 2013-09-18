@@ -258,7 +258,7 @@ void TradeWindow::receivedOk(const bool own)
         setStatus(ACCEPTING);
 }
 
-void TradeWindow::tradeItem(Item *const item, const int quantity,
+void TradeWindow::tradeItem(const Item *const item, const int quantity,
                             const bool check) const
 {
     if (check && !checkItem(item))

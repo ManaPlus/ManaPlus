@@ -48,7 +48,7 @@ std::string ColorModel::getElementAt(int i)
     return mNames[i];
 }
 
-ColorPair *ColorModel::getColorAt(int i)
+const ColorPair *ColorModel::getColorAt(const int i) const
 {
     if (i >= static_cast<int>(mColors.size()) || i < 0)
         return nullptr;
@@ -56,8 +56,8 @@ ColorPair *ColorModel::getColorAt(int i)
     return &mColors[i];
 }
 
-void ColorModel::add(const std::string &name, const gcn::Color *color1,
-                     const gcn::Color *color2)
+void ColorModel::add(const std::string &name, const gcn::Color *const color1,
+                     const gcn::Color *const color2)
 {
     mNames.push_back(name);
     mColors.push_back(ColorPair(color1, color2));

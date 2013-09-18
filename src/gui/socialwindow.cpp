@@ -148,7 +148,7 @@ protected:
         updateCounter();
     }
 
-    void updateCounter()
+    void updateCounter() const
     {
         if (socialWindow)
             socialWindow->setCounter(this, mCounterString);

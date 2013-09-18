@@ -64,7 +64,7 @@ TouchActionsModel::TouchActionsModel() :
     int cnt = 0;
     FOR_EACH (std::vector<SetupActionData*>::iterator, it, data)
     {
-        const SetupActionData *data1 = *it;
+        const SetupActionData *const data1 = *it;
         mNames.push_back(data1->name);
         mActionId.push_back(data1->actionId);
         mActionToSelection[data1->actionId] = cnt;
@@ -81,7 +81,7 @@ int TouchActionsModel::getActionFromSelection(const int sel) const
 
 int TouchActionsModel::getSelectionFromAction(const int action) const
 {
-    std::map<int, int>::const_iterator it
+    const std::map<int, int>::const_iterator it
         = mActionToSelection.find(action);
     if (it == mActionToSelection.end())
         return 0;

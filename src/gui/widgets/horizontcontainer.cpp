@@ -40,7 +40,7 @@ void HorizontContainer::add(gcn::Widget *widget)
     add(widget, mSpacing);
 }
 
-void HorizontContainer::add(gcn::Widget *widget, int spacing)
+void HorizontContainer::add(gcn::Widget *const widget, const int spacing)
 {
     if (!widget)
         return;

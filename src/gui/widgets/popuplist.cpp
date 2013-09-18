@@ -105,7 +105,7 @@ int PopupList::getSelected() const
     return mListBox->getSelected();
 }
 
-void PopupList::setListModel(gcn::ListModel *model)
+void PopupList::setListModel(gcn::ListModel *const model)
 {
     if (mListBox)
         mListBox->setListModel(model);

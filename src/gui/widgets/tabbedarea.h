@@ -100,14 +100,14 @@ class TabbedArea final : public Widget2,
 
         bool isTabSelected(const unsigned int index) const A_WARN_UNUSED;
 
-        bool isTabSelected(Tab *const tab) const A_WARN_UNUSED;
+        bool isTabSelected(const Tab *const tab) const A_WARN_UNUSED;
 
         /**
          * Overload the remove tab function as it's broken in guichan 0.8.
          */
         void removeTab(Tab *const tab);
 
-        void removeAll(bool del = true);
+        void removeAll(const bool del = true);
 
         /**
          * Overload the logic function since it's broken in guichan 0.8.

@@ -75,7 +75,7 @@ void BuySellDialog::init()
     int x = buttonPadding;
     const int y = buttonPadding;
 
-    for (const char **curBtn = buttonNames; *curBtn; curBtn++)
+    for (const char *const *curBtn = buttonNames; *curBtn; curBtn++)
     {
         Button *const btn = new Button(this, gettext(*curBtn), *curBtn, this);
         if (!mBuyButton)

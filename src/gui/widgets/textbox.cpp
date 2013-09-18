@@ -87,7 +87,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
             text.substr(lastNewlinePos, newlinePos - lastNewlinePos);
         size_t lastSpacePos = 0;
         xpos = 0;
-        gcn::Font *const font = getFont();
+        const gcn::Font *const font = getFont();
         const int spaceWidth = font->getWidth(" ");
         size_t sz = line.size();
 

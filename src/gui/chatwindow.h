@@ -167,7 +167,7 @@ class ChatWindow final : public Window,
          *
          * @param msg  The message text which is to be sent.
          */
-        void localChatInput(const std::string &msg);
+        void localChatInput(const std::string &msg) const;
 
         /** Called when key is pressed */
         void keyPressed(gcn::KeyEvent &event) override;

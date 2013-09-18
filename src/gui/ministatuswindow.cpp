@@ -214,7 +214,7 @@ void MiniStatusWindow::drawIcons(Graphics *const graphics)
     int icon_x = mMaxX + mIconPadding;
     for (size_t i = 0, sz = mIcons.size(); i < sz; i ++)
     {
-        AnimatedSprite *const icon = mIcons[i];
+        const AnimatedSprite *const icon = mIcons[i];
         if (icon)
         {
             icon->draw(graphics, icon_x, mIconPadding);
@@ -411,7 +411,8 @@ void MiniStatusWindow::mousePressed(gcn::MouseEvent &event)
 
     if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
-        ProgressBar *const bar = dynamic_cast<ProgressBar*>(event.getSource());
+        const ProgressBar *const bar = dynamic_cast<ProgressBar*>(
+            event.getSource());
         if (!bar)
             return;
         if (viewport)

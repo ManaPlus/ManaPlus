@@ -230,7 +230,7 @@ bool TabbedArea::isTabSelected(const unsigned int index) const
     return mSelectedTab == mTabs[index].first;
 }
 
-bool TabbedArea::isTabSelected(Tab *const tab) const
+bool TabbedArea::isTabSelected(const Tab *const tab) const
 {
     return mSelectedTab == tab;
 }
@@ -627,7 +627,7 @@ gcn::Widget *TabbedArea::getWidgetByIndex(const int index) const
     return mTabs[index].second;
 }
 
-void TabbedArea::removeAll(bool del)
+void TabbedArea::removeAll(const bool del)
 {
     if (getSelectedTabIndex() != -1)
     {

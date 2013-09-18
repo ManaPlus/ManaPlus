@@ -82,7 +82,7 @@ void CommandHandler::handleCommand(const std::string &command,
 void CommandHandler::invokeCommand(const std::string &type,
                                    const std::string &args,
                                    ChatTab *const tab,
-                                   const bool warn)
+                                   const bool warn) const
 {
     const CommandsMapIter it = mCommands.find(type);
     if (it != mCommands.end())
@@ -103,7 +103,7 @@ void CommandHandler::callFunc(const CommandInfo &info,
                               const std::string &args,
                               ChatTab *const tab)
 {
-    CommandFuncPtr func = info.func;
+    const CommandFuncPtr func = info.func;
     if (func)
         func(args, tab);
     else

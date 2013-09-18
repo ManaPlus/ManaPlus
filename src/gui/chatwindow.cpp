@@ -653,7 +653,7 @@ void ChatWindow::chatInput(const std::string &message) const
     Game::instance()->setValidSpeed();
 }
 
-void ChatWindow::localChatInput(const std::string &msg)
+void ChatWindow::localChatInput(const std::string &msg) const
 {
     if (localChatTab)
         localChatTab->chatInput(msg);
@@ -858,7 +858,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
     else if (actionId == static_cast<int>(Input::KEY_CHAT_NEXT_HISTORY) &&
              mChatInput->isVisible())
     {
-        ChatTab *const tab = getFocused();
+        const ChatTab *const tab = getFocused();
         if (tab && tab->hasRows())
         {
             const size_t &tabSize = tab->getRows().size();

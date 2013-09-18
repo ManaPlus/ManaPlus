@@ -384,7 +384,7 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
         case Input::KEY_GUI_DELETE:
         {
             keyEvent.consume();
-            int idx = mCharacterView->getSelected();
+            const int idx = mCharacterView->getSelected();
             if (idx >= 0 && mCharacterEntries[idx]
                 && mCharacterEntries[idx]->getCharacter())
             {

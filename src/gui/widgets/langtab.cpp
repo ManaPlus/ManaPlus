@@ -36,7 +36,7 @@ LangTab::~LangTab()
 {
 }
 
-void LangTab::saveToLogFile(const std::string &msg)
+void LangTab::saveToLogFile(const std::string &msg) const
 {
     if (chatLogger)
         chatLogger->log(std::string("#Lang"), std::string(msg));

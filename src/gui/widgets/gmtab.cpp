@@ -51,7 +51,7 @@ void GmTab::handleCommand(const std::string &msg A_UNUSED)
 {
 }
 
-void GmTab::saveToLogFile(const std::string &msg)
+void GmTab::saveToLogFile(const std::string &msg) const
 {
     if (chatLogger)
         chatLogger->log("#GM", msg);

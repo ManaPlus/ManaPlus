@@ -102,7 +102,7 @@ class TradeWindow final : public Window,
         /**
          * Send trade packet.
          */
-        void tradeItem(Item *const item, const int quantity,
+        void tradeItem(const Item *const item, const int quantity,
                        const bool check = false) const;
 
         /**

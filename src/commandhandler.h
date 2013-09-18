@@ -70,19 +70,19 @@ class CommandHandler final
         void invokeCommand(const std::string &type,
                            const std::string &args,
                            ChatTab *const tab,
-                           const bool warn = false);
+                           const bool warn = false) const;
 
-        void invokeCommand(const int type);
+        static void invokeCommand(const int type);
 
-        void invokeCommand(const int type,
-                           const std::string &args,
-                           ChatTab *const tab);
+        static void invokeCommand(const int type,
+                                  const std::string &args,
+                                  ChatTab *const tab);
 
-        void invokeCommand(const int type,
-                           const std::string &args);
+        static void invokeCommand(const int type,
+                                  const std::string &args);
 
-        void invokeCommand(const int type,
-                           ChatTab *const tab);
+        static void invokeCommand(const int type,
+                                  ChatTab *const tab);
 
     protected:
         friend class ChatTab;
@@ -90,9 +90,9 @@ class CommandHandler final
         CommandsMap mCommands;
 
     private:
-        void callFunc(const CommandInfo &info,
-                      const std::string &args,
-                      ChatTab *const tab);
+        static void callFunc(const CommandInfo &info,
+                             const std::string &args,
+                             ChatTab *const tab);
 };
 
 extern CommandHandler *commandHandler;

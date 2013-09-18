@@ -82,7 +82,7 @@ void FocusHandler::tabPrevious()
     checkForWindow();
 }
 
-void FocusHandler::checkForWindow()
+void FocusHandler::checkForWindow() const
 {
     if (mFocusedWidget)
     {

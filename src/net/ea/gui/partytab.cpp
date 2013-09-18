@@ -275,7 +275,7 @@ void PartyTab::getAutoCompleteList(StringVect &names) const
         p->getNames(names);
 }
 
-void PartyTab::saveToLogFile(const std::string &msg)
+void PartyTab::saveToLogFile(const std::string &msg) const
 {
     if (chatLogger)
         chatLogger->log("#Party", msg);

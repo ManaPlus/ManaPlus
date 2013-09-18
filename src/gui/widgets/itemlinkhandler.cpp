@@ -114,7 +114,7 @@ void ItemLinkHandler::handleLink(const std::string &link,
         if (!mItemPopup || link.empty())
             return;
 
-        char ch = link[0];
+        const char ch = link[0];
         if (ch < '0' || ch > '9')
             return;
 
@@ -125,7 +125,7 @@ void ItemLinkHandler::handleLink(const std::string &link,
         int color = 1;
         if (str.size() > 1)
             color = str[1];
-        int id = str[0];
+        const int id = str[0];
         if (id > 0)
         {
             const ItemInfo &itemInfo = ItemDB::get(id);

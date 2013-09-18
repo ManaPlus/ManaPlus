@@ -155,7 +155,7 @@ void GuildTab::getAutoCompleteList(StringVect &names) const
     names.push_back("/notice ");
 }
 
-void GuildTab::saveToLogFile(const std::string &msg)
+void GuildTab::saveToLogFile(const std::string &msg) const
 {
     if (chatLogger)
         chatLogger->log("#Guild", msg);

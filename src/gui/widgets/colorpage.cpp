@@ -48,7 +48,7 @@ void ColorPage::draw(gcn::Graphics *graphics)
 {
     BLOCK_START("ColorPage::draw")
 
-    ColorModel *const model = static_cast<ColorModel* const>(
+    const ColorModel *const model = static_cast<ColorModel* const>(
         mListModel);
     Graphics *const g = static_cast<Graphics *const>(graphics);
 

@@ -141,7 +141,7 @@ class ChatTab : public Tab
          */
         virtual int getType() const A_WARN_UNUSED;
 
-        virtual void saveToLogFile(const std::string &msg);
+        virtual void saveToLogFile(const std::string &msg) const;
 
         std::list<std::string> &getRows() const A_WARN_UNUSED
         { return mTextOutput->getRows(); }

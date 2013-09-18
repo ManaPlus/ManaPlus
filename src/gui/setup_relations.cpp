@@ -176,7 +176,7 @@ public:
         signalAfterUpdate();
     }
 
-    virtual void updateModelInRow(const int row)
+    virtual void updateModelInRow(const int row) const
     {
         const DropDown *const choicebox = static_cast<DropDown *>(
             getElementAt(row, RELATION_CHOICE_COLUMN));
