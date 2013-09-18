@@ -87,7 +87,7 @@ bool Network::connect(ServerInfo server)
     if (mState != IDLE && mState != NET_ERROR)
     {
         logger->log1("Tried to connect an already connected socket!");
-        assert(false);
+//        assert(false);
         return false;
     }
 

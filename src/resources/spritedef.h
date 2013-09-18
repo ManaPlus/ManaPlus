@@ -202,7 +202,8 @@ class SpriteDef final : public Resource
          * Loads an animation element.
          */
         void loadAnimation(const XmlNodePtr animationNode,
-                           Action *const action, ImageSet *const imageSet,
+                           Action *const action,
+                           const ImageSet *const imageSet,
                            const int variant_offset) const;
 
         /**

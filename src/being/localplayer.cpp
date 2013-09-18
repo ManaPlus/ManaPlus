@@ -2254,7 +2254,7 @@ std::string LocalPlayer::getAwayModeString()
 
 const unsigned cameraModeSize = 2;
 
-static const char *cameraModeStrings[] =
+static const char *const cameraModeStrings[] =
 {
     // TRANSLATORS: camera mode in status bar
     N_("(G) game camera mode"),
