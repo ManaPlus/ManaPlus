@@ -1521,19 +1521,27 @@ void Being::logic()
             }
         }
 
-        const int xOffset = getXOffset();
-        const int yOffset = getYOffset();
-        int offset = xOffset;
-        if (!offset)
-            offset = yOffset;
+        if (mAction == MOVE)
+        {
+            const int xOffset = getXOffset();
+            const int yOffset = getYOffset();
+            int offset = xOffset;
+            if (!offset)
+                offset = yOffset;
 
-        mSortOffsetY = (mOldHeight * 16) + (mOffsetY * 16)
-            * (32 - abs(offset)) / 32;
-        const int yOffset2 = yOffset - mSortOffsetY;
+            mSortOffsetY = (mOldHeight * 16) + (mOffsetY * 16)
+                * (32 - abs(offset)) / 32;
+            const int yOffset2 = yOffset - mSortOffsetY;
 
-        // Update pixel coordinates
-        setPosition(static_cast<float>(mX * 32 + 16 + xOffset),
-                    static_cast<float>(mY * 32 + 32 + yOffset2));
+            // Update pixel coordinates
+            setPosition(static_cast<float>(mX * 32 + 16 + xOffset),
+                static_cast<float>(mY * 32 + 32 + yOffset2));
+        }
+        else
+        {
+            setPosition(static_cast<float>(mX * 32 + 16),
+                static_cast<float>(mY * 32 + 32));
+        }
     }
 
     if (mEmotionSprite)
