@@ -77,7 +77,7 @@ class PartyHandler
 
         virtual void clear() const = 0;
 
-        virtual ChatTab *getTab() = 0;
+        virtual ChatTab *getTab() const = 0;
 };
 
 }  // namespace Net

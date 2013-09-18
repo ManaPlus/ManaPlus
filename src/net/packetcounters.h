@@ -28,7 +28,7 @@
 class PacketCounters final
 {
 public:
-    static void incInBytes(int cnt);
+    static void incInBytes(const int cnt);
 
     static void incInPackets();
 
@@ -36,7 +36,7 @@ public:
 
     static int getInPackets() A_WARN_UNUSED;
 
-    static void incOutBytes(int cnt);
+    static void incOutBytes(const int cnt);
 
     static void incOutPackets();
 

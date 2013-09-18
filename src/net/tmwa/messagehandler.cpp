@@ -43,7 +43,7 @@ MessageHandler::~MessageHandler()
         mNetwork->unregisterHandler(this);
 }
 
-void MessageHandler::setNetwork(Network *network)
+void MessageHandler::setNetwork(Network *const network)
 {
     assert(!(network && mNetwork));
     mNetwork = network;

@@ -93,7 +93,8 @@ void AdminHandler::ipcheckName(const std::string &name) const
     Net::getChatHandler()->talk("@ipcheck " + name, GENERAL_CHANNEL);
 }
 
-void AdminHandler::createItems(const int id, const int color, const int amount)
+void AdminHandler::createItems(const int id, const int color,
+                               const int amount) const
 {
     if (serverVersion < 1)
     {

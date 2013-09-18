@@ -53,7 +53,7 @@ class PartyHandler : public Net::PartyHandler
 
         void clear() const override;
 
-        ChatTab *getTab() override;
+        ChatTab *getTab() const override;
 
         virtual void processPartyCreate(Net::MessageIn &msg) const;
 

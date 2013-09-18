@@ -110,7 +110,7 @@ class MessageIn
         /**
          * Constructor.
          */
-        MessageIn(const char *data, unsigned int length);
+        MessageIn(const char *const data, const unsigned int length);
 
         const char *mData;     /**< The message data. */
         unsigned int mLength;  /**< The length of the data. */

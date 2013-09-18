@@ -146,7 +146,7 @@ int TcpNet::delSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock)
     return SDLNet_TCP_DelSocket(set, sock);
 }
 
-void TcpNet::freeSocketSet(TcpNet::SocketSet set)
+void TcpNet::freeSocketSet(const TcpNet::SocketSet set)
 {
     SDLNet_FreeSocketSet(set);
 }

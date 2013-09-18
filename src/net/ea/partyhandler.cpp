@@ -431,7 +431,7 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
     }
 }
 
-ChatTab *PartyHandler::getTab()
+ChatTab *PartyHandler::getTab() const
 {
     return partyTab;
 }

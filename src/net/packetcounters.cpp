@@ -38,7 +38,7 @@ int PacketCounters::mOutBytesCalc = 0;
 int PacketCounters::mOutPackets = 0;
 int PacketCounters::mOutPacketsCalc = 0;
 
-void PacketCounters::incInBytes(int cnt)
+void PacketCounters::incInBytes(const int cnt)
 {
     if (!runCounters)
         return;
@@ -70,7 +70,7 @@ int PacketCounters::getInPackets()
     return PacketCounters::mInPacketsCalc;
 }
 
-void PacketCounters::incOutBytes(int cnt)
+void PacketCounters::incOutBytes(const int cnt)
 {
     if (!runCounters)
         return;

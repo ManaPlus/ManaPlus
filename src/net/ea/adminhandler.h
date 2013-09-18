@@ -59,14 +59,14 @@ class AdminHandler : public Net::AdminHandler
 
         void gotoName(const std::string &name) const;
 
-        void recallName(const std::string &name) const;
+        void recallName(const std::string &name) const override;
 
-        void reviveName(const std::string &name) const;
+        void reviveName(const std::string &name) const override;
 
-        void ipcheckName(const std::string &name) const;
+        void ipcheckName(const std::string &name) const override;
 
         void createItems(const int id, const int color,
-                         const int amount);
+                         const int amount) const override;
 };
 
 }  // namespace Ea

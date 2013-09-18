@@ -76,7 +76,7 @@ class MessageOut
         /**
          * Constructor.
          */
-        explicit MessageOut(int16_t id);
+        explicit MessageOut(const int16_t id);
 
         /**
          * Expand the packet data to be able to hold more data.

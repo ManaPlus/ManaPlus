@@ -46,7 +46,7 @@ class MessageHandler : public Net::MessageHandler
 
         ~MessageHandler();
 
-        void setNetwork(Network *network);
+        void setNetwork(Network *const network);
 
     protected:
         Network *mNetwork;

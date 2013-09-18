@@ -45,9 +45,9 @@ class Network final : public Ea::Network
 
         ~Network();
 
-        void registerHandler(MessageHandler *handler);
+        void registerHandler(MessageHandler *const handler);
 
-        void unregisterHandler(MessageHandler *handler);
+        void unregisterHandler(MessageHandler *const handler);
 
         void clearHandlers();
 

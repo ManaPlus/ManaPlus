@@ -36,7 +36,7 @@
 namespace Net
 {
 
-MessageOut::MessageOut(int16_t id A_UNUSED):
+MessageOut::MessageOut(const int16_t id A_UNUSED):
     mData(nullptr),
     mDataSize(0),
     mPos(0)
@@ -45,7 +45,7 @@ MessageOut::MessageOut(int16_t id A_UNUSED):
     DEBUGLOG("MessageOut");
 }
 
-void MessageOut::writeInt8(int8_t value)
+void MessageOut::writeInt8(const int8_t value)
 {
     DEBUGLOG("writeInt8: " + toStringPrint(static_cast<int>(value)));
     expand(1);

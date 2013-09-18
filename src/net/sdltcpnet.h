@@ -55,7 +55,7 @@ namespace TcpNet
 
     int delSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock);
 
-    void freeSocketSet(TcpNet::SocketSet set);
+    void freeSocketSet(const TcpNet::SocketSet set);
 }  // namespace TcpNet
 
 #endif  // NET_SDLTCPNET_H

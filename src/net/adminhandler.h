@@ -60,7 +60,7 @@ class AdminHandler
                           const int x, const int y) const = 0;
 
         virtual void createItems(const int id, const int color,
-                                 const int amount) = 0;
+                                 const int amount) const = 0;
 
         virtual void gotoName(const std::string &name) const = 0;
 

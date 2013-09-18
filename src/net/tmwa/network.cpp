@@ -102,7 +102,7 @@ Network::~Network()
     mInstance = nullptr;
 }
 
-void Network::registerHandler(MessageHandler *handler)
+void Network::registerHandler(MessageHandler *const handler)
 {
     if (!handler)
         return;
@@ -113,7 +113,7 @@ void Network::registerHandler(MessageHandler *handler)
     handler->setNetwork(this);
 }
 
-void Network::unregisterHandler(MessageHandler *handler)
+void Network::unregisterHandler(MessageHandler *const handler)
 {
     if (!handler)
         return;

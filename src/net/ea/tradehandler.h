@@ -38,19 +38,19 @@ class TradeHandler : public Net::TradeHandler
 
         void removeItem(const int slotNum, const int amount) const override;
 
-        void processTradeRequest(Net::MessageIn &msg);
+        void processTradeRequest(Net::MessageIn &msg) const;
 
-        void processTradeResponse(Net::MessageIn &msg);
+        void processTradeResponse(Net::MessageIn &msg) const;
 
-        void processTradeItemAdd(Net::MessageIn &msg);
+        void processTradeItemAdd(Net::MessageIn &msg) const;
 
-        void processTradeItemAddResponse(Net::MessageIn &msg);
+        void processTradeItemAddResponse(Net::MessageIn &msg) const;
 
-        void processTradeOk(Net::MessageIn &msg);
+        void processTradeOk(Net::MessageIn &msg) const;
 
-        void processTradeCancel(Net::MessageIn &msg);
+        void processTradeCancel(Net::MessageIn &msg) const;
 
-        void processTradeComplete(Net::MessageIn &msg);
+        void processTradeComplete(Net::MessageIn &msg) const;
 };
 
 }  // namespace Ea
