@@ -826,7 +826,7 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
         else if (progress > 1.0f)
             progress = 1.0f;
 
-        MutexLocker lock(&sd->mMutex);
+        MutexLocker lock1(&sd->mMutex);
         sd->mDownloadStatus = DOWNLOADING_IN_PROGRESS;
         sd->mDownloadProgress = progress;
     }
@@ -834,7 +834,7 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
     if (finished)
     {
         sd->loadServers();
-        MutexLocker lock(&sd->mMutex);
+        MutexLocker lock1(&sd->mMutex);
         sd->mDownloadStatus = DOWNLOADING_COMPLETE;
     }
 

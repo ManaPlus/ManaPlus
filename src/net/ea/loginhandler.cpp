@@ -64,17 +64,17 @@ void LoginHandler::getRegistrationDetails() const
     client->setState(STATE_REGISTER);
 }
 
-void LoginHandler::loginAccount(LoginData *const loginData) const
+void LoginHandler::loginAccount(LoginData *const loginData1) const
 {
-    if (loginData)
+    if (loginData1)
     {
         // Since we're attempting to use the tAthena protocol,
         // let's reset the character slots to the good value,
         // in case we just logged out a Manaserv server
         // with a different config.
-        loginData->resetCharacterSlots();
+        loginData1->resetCharacterSlots();
 
-        sendLoginRegister(loginData->username, loginData->password, "");
+        sendLoginRegister(loginData1->username, loginData1->password, "");
     }
 }
 
@@ -96,13 +96,13 @@ void LoginHandler::chooseServer(const unsigned int server) const
     client->setState(STATE_UPDATE);
 }
 
-void LoginHandler::registerAccount(LoginData *const loginData) const
+void LoginHandler::registerAccount(LoginData *const loginData1) const
 {
-    if (!loginData)
+    if (!loginData1)
         return;
 
-    std::string username = loginData->username;
-    switch (loginData->gender)
+    std::string username = loginData1->username;
+    switch (loginData1->gender)
     {
         case GENDER_FEMALE:
             username.append("_F");
@@ -118,7 +118,7 @@ void LoginHandler::registerAccount(LoginData *const loginData) const
             break;
     }
 
-    sendLoginRegister(username, loginData->password, loginData->email);
+    sendLoginRegister(username, loginData1->password, loginData1->email);
 }
 
 Worlds LoginHandler::getWorlds() const

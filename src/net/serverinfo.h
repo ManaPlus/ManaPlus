@@ -126,21 +126,21 @@ public:
                 port != other.port);
     }
 
-    static Type parseType(const std::string &type) A_WARN_UNUSED
+    static Type parseType(const std::string &serverType) A_WARN_UNUSED
     {
-        if (compareStrI(type, "tmwathena") == 0)
+        if (compareStrI(serverType, "tmwathena") == 0)
             return TMWATHENA;
-        if (compareStrI(type, "evol") == 0)
+        if (compareStrI(serverType, "evol") == 0)
             return EVOL;
 #ifdef EATHENA_SUPPORT
-        else if (compareStrI(type, "eathena") == 0)
+        else if (compareStrI(serverType, "eathena") == 0)
             return EATHENA;
 #else
-        else if (compareStrI(type, "eathena") == 0)
+        else if (compareStrI(serverType, "eathena") == 0)
             return TMWATHENA;
 #endif
 #ifdef MANASERV_SUPPORT
-        else if (compareStrI(type, "manaserv") == 0)
+        else if (compareStrI(serverType, "manaserv") == 0)
             return MANASERV;
 #endif
         return UNKNOWN;

@@ -1329,8 +1329,8 @@ std::string ChatWindow::autoComplete(const std::string &partName,
     if (!words)
         return "";
 
-    Commands::const_iterator i = words->begin();
-    const Commands::const_iterator i_end = words->end();
+    ChatCommands::const_iterator i = words->begin();
+    const ChatCommands::const_iterator i_end = words->end();
     StringVect nameList;
 
     while (i != i_end)

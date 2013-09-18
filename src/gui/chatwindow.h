@@ -348,8 +348,8 @@ class ChatWindow final : public Window,
         History mHistory;          /**< Command history. */
         HistoryIterator mCurHist;  /**< History iterator. */
 
-        typedef std::list<std::string> Commands;
-        typedef Commands::iterator CommandsIterator;
+        typedef std::list<std::string> ChatCommands;
+        typedef ChatCommands::iterator ChatCommandsIterator;
         History mCommands;         /**< Command list. */
         History mCustomWords;
 
