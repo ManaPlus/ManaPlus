@@ -93,7 +93,7 @@ void Wallpaper::loadWallpapers()
 {
     wallpaperData.clear();
     initDefaultWallpaperPaths();
-    char **imgs = PhysFs::enumerateFiles(wallpaperPath.c_str());
+    char **const imgs = PhysFs::enumerateFiles(wallpaperPath.c_str());
 
     for (char **i = imgs; *i; i++)
     {

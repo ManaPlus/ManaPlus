@@ -34,7 +34,7 @@
 bool SDL::getAllVideoModes(StringVect &modeList)
 {
     /* Get available fullscreen/hardware modes */
-    SDL_Rect **const modes = SDL_ListModes(nullptr,
+    SDL_Rect *const *const modes = SDL_ListModes(nullptr,
         SDL_FULLSCREEN | SDL_HWSURFACE);
 
     /* Check which modes are available */
@@ -62,24 +62,24 @@ bool SDL::getAllVideoModes(StringVect &modeList)
     }
 }
 
-void SDL::SetWindowTitle(SDL_Surface *const window A_UNUSED,
+void SDL::SetWindowTitle(const SDL_Surface *const window A_UNUSED,
                          const char *const title)
 {
     SDL_WM_SetCaption(title, nullptr);
 }
 
-void SDL::SetWindowIcon(SDL_Surface *const window A_UNUSED,
+void SDL::SetWindowIcon(const SDL_Surface *const window A_UNUSED,
                         SDL_Surface *const icon)
 {
     SDL_WM_SetIcon(icon, nullptr);
 }
 
-void SDL::grabInput(SDL_Surface *const window A_UNUSED, const bool grab)
+void SDL::grabInput(const SDL_Surface *const window A_UNUSED, const bool grab)
 {
     SDL_WM_GrabInput(grab ? SDL_GRAB_ON : SDL_GRAB_OFF);
 }
 
-void SDL::setGamma(SDL_Surface *const window A_UNUSED, const float gamma)
+void SDL::setGamma(const SDL_Surface *const window A_UNUSED, const float gamma)
 {
     SDL_SetGamma(gamma, gamma, gamma);
 }
@@ -89,14 +89,15 @@ void SDL::setVsync(const int val)
     SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, val);
 }
 
-bool SDL::getWindowWMInfo(SDL_Surface *const window A_UNUSED,
+bool SDL::getWindowWMInfo(const SDL_Surface *const window A_UNUSED,
                           SDL_SysWMinfo *const info)
 {
     return SDL_GetWMInfo(info);
 }
 
 SDL_Thread *SDL::createThread(int (SDLCALL *fn)(void *),
-                              const char *name A_UNUSED, void *data)
+                              const char *const name A_UNUSED,
+                              void *const data)
 {
     return SDL_CreateThread(fn, data);
 }

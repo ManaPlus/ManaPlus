@@ -63,7 +63,7 @@
 
 #include "debug.h"
 
-static const char *SORT_NAME_INVENTORY[6] =
+static const char *const SORT_NAME_INVENTORY[6] =
 {
     // TRANSLATORS: inventory sort mode
     N_("default"),

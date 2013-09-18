@@ -42,7 +42,7 @@ static char base64_table[] =
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/', '\0'
 };
-static char base64_pad = '=';
+static const char base64_pad = '=';
 
 unsigned char *php3_base64_encode(const unsigned char *const string,
                                   int length, int *const ret_length)

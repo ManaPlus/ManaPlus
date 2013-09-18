@@ -50,7 +50,7 @@
 
 #include "debug.h"
 
-static const char *SORT_NAME_BUY[7] =
+static const char *const SORT_NAME_BUY[7] =
 {
     // TRANSLATORS: buy dialog sort type.
     N_("unsorted"),

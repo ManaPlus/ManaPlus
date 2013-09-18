@@ -49,7 +49,7 @@ namespace SDL
     bool getWindowWMInfo(SDL_Window *const window, SDL_SysWMinfo *const info);
 
     SDL_Thread *createThread(SDL_ThreadFunction fn,
-                             const char *name, void *data);
+                             const char *const name, void *const data);
 }  // namespace SDL
 
 #endif  // USE_SDL2

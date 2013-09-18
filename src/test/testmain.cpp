@@ -87,7 +87,7 @@ int TestMain::exec(const bool testAudio)
     rescaleTest[2] = -1;
     std::string info;
 
-    int videoDetectTest = invokeTest("99");
+    const int videoDetectTest = invokeTest("99");
     if (!videoDetectTest)
         detectMode = readValue2(99);
 
@@ -190,7 +190,7 @@ int TestMain::exec(const bool testAudio)
     }
 
     int batchSize = 256;
-/*
+
     // if OpenGL mode is fast mode we can try detect max batch sizes
     if (openGLMode == RENDER_NORMAL_OPENGL)
     {
@@ -199,7 +199,6 @@ int TestMain::exec(const bool testAudio)
         if (batchSize < 256)
             batchSize = 256;
     }
-*/
 
     // if OpenGL implimentation is not good, disable it.
     if (!(detectMode & 15))

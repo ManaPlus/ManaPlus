@@ -55,7 +55,7 @@ TextCommand* SpellManager::getSpell(const int spellId) const
     if (spellId < 0 || static_cast<unsigned int>(spellId) >= mSpells.size())
         return nullptr;
 
-    std::map<unsigned int, TextCommand*>::const_iterator
+    const std::map<unsigned int, TextCommand*>::const_iterator
         it = mSpells.find(spellId);
 
     return it != mSpells.end() ? (*it).second : nullptr;
@@ -404,7 +404,7 @@ void SpellManager::swap(const int id1, const int id2)
     mSpells[id2] = spell1;
 
     // swap id
-    int tmp = spell1->getId();
+    const int tmp = spell1->getId();
     spell1->setId(spell2->getId());
     spell2->setId(tmp);
 

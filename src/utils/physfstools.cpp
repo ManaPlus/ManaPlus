@@ -61,7 +61,7 @@ namespace PhysFs
         return PHYSFS_isDirectory(fname);
     }
 
-    void freeList(void *listVar)
+    void freeList(void *const listVar)
     {
         PHYSFS_freeList(listVar);
     }

@@ -155,8 +155,8 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
     if (!imagePath.empty() && !dyePalettes.empty())
         Dye::instantiate(imagePath, dyePalettes);
 
-    ImageSet *const imageset = ResourceManager::getInstance()->getImageSet(
-        XML::getProperty(animationNode, "imageset", ""),
+    const ImageSet *const imageset = ResourceManager::getInstance()
+        ->getImageSet(XML::getProperty(animationNode, "imageset", ""),
         XML::getProperty(animationNode, "width", 0),
         XML::getProperty(animationNode, "height", 0));
 

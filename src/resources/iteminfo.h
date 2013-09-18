@@ -295,7 +295,7 @@ class ItemInfo final
         Cursor::Cursor getPickupCursor() const A_WARN_UNUSED
         { return mPickupCursor; }
 
-        void setProtected(bool b)
+        void setProtected(const bool b)
         { mProtected = b; }
 
         bool isProtected() const

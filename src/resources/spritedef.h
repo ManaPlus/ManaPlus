@@ -163,7 +163,7 @@ class SpriteDef final : public Resource
                          const int offsetX, const int offsetY,
                          const int variant_offset,
                          int repeat, const int rand,
-                         ImageSet *const imageSet,
+                         const ImageSet *const imageSet,
                          Animation *const animation) const;
 
     private:

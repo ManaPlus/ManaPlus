@@ -96,7 +96,7 @@ class Resource
         bool isProtected() const
         { return mProtected; }
 
-        void setNotCount(bool b)
+        void setNotCount(const bool b)
         { mNotCount = b; }
 
 #ifdef DEBUG_DUMP_LEAKS

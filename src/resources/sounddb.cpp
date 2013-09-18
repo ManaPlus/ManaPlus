@@ -39,7 +39,7 @@ void SoundDB::load()
     unload();
 
     XML::Document *doc = new XML::Document(paths.getStringValue("soundsFile"));
-    XmlNodePtr root = doc->rootNode();
+    const XmlNodePtr root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "sounds"))
     {

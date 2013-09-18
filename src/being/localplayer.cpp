@@ -1978,7 +1978,7 @@ void LocalPlayer::changeAttackWeaponType()
         &LocalPlayer::getAttackWeaponTypeString, 1);
 }
 
-static const char *attackWeaponTypeStrings[] =
+static const char *const attackWeaponTypeStrings[] =
 {
     // TRANSLATORS: switch attack type in status bar
     N_("(?) attack"),
@@ -2238,7 +2238,7 @@ void LocalPlayer::changeAwayMode()
     }
 }
 
-static const char *awayModeStrings[] =
+static const char *const awayModeStrings[] =
 {
     // TRANSLATORS: away type in status bar
     N_("(O) on keyboard"),

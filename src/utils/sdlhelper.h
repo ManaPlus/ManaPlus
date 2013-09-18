@@ -38,23 +38,24 @@ namespace SDL
 {
     bool getAllVideoModes(StringVect &modeList);
 
-    void SetWindowTitle(SDL_Surface *const window,
+    void SetWindowTitle(const SDL_Surface *const window,
                         const char *const title);
 
-    void SetWindowIcon(SDL_Surface *const window A_UNUSED,
+    void SetWindowIcon(const SDL_Surface *const window A_UNUSED,
                        SDL_Surface *const icon);
 
-    void grabInput(SDL_Surface *const window A_UNUSED, const bool grab);
+    void grabInput(const SDL_Surface *const window A_UNUSED, const bool grab);
 
-    void setGamma(SDL_Surface *const window A_UNUSED, const float gamma);
+    void setGamma(const SDL_Surface *const window A_UNUSED, const float gamma);
 
     void setVsync(const int val);
 
-    bool getWindowWMInfo(SDL_Surface *const window A_UNUSED,
+    bool getWindowWMInfo(const SDL_Surface *const window A_UNUSED,
                          SDL_SysWMinfo *const info);
 
     SDL_Thread *createThread(int (SDLCALL *fn)(void *),
-                             const char *name A_UNUSED, void *data);
+                             const char *const name A_UNUSED,
+                             void *const data);
 }  // namespace SDL
 
 #endif  // USE_SDL2
