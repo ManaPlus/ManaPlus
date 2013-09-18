@@ -171,13 +171,14 @@ class SortBeingFunctor final
 
             return (being1->getName() < being2->getName());
         }
-        int x, y;
         std::map<std::string, int> *attackBeings;
-        int defaultAttackIndex;
         std::map<std::string, int> *priorityBeings;
+        int x;
+        int y;
+        int defaultAttackIndex;
         int defaultPriorityIndex;
-        bool specialDistance;
         int attackRange;
+        bool specialDistance;
 } beingActorSorter;
 
 ActorSpriteManager::ActorSpriteManager() :
