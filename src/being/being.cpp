@@ -648,7 +648,8 @@ int Being::getHitEffect(const Being *const attacker,
     {
         if (attacker)
         {
-            const ItemInfo *attackerWeapon = attacker->getEquippedWeapon();
+            const ItemInfo *const attackerWeapon
+                = attacker->getEquippedWeapon();
             if (attackerWeapon && attacker->getType() == PLAYER)
             {
                 if (type == MISS)
@@ -663,7 +664,7 @@ int Being::getHitEffect(const Being *const attacker,
                 const BeingInfo *const info = attacker->getInfo();
                 if (info)
                 {
-                    const Attack *atk = info->getAttack(attackId);
+                    const Attack *const atk = info->getAttack(attackId);
                     if (atk)
                     {
                         if (type == MISS)
@@ -768,7 +769,7 @@ void Being::handleSkill(Being *const victim, const int damage,
     if (this != player_node)
         setAction(Being::ATTACK, 1);
 
-    SkillInfo *const skill = skillDialog->getSkill(skillId);
+    const SkillInfo *const skill = skillDialog->getSkill(skillId);
     const SkillData *const data = skill
         ? skill->getData1(skillLevel) : nullptr;
     if (data)
@@ -1584,7 +1585,7 @@ void Being::logic()
 }
 
 void Being::drawEmotion(Graphics *const graphics, const int offsetX,
-                        const int offsetY)
+                        const int offsetY) const
 {
     const int px = getPixelX() - offsetX - 16;
     const int py = getPixelY() - offsetY - 64 - 32;
@@ -3028,7 +3029,7 @@ void Being::updatePets()
 }
 
 void Being::playSfx(const SoundInfo &sound, Being *const being,
-                    const bool main, const int x, const int y)
+                    const bool main, const int x, const int y) const
 {
     if (being)
     {

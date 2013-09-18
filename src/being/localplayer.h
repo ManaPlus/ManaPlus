@@ -374,7 +374,7 @@ class LocalPlayer final : public Being,
          */
         void optionChanged(const std::string &value) override;
 
-        void processEvent(Channels channel,
+        void processEvent(const Channels channel,
                           const DepricatedEvent &event) override;
 
         /**
@@ -468,7 +468,7 @@ class LocalPlayer final : public Being,
         void updateStatus() const;
 
         void setTestParticle(const std::string &fileName,
-                             bool updateHash = true);
+                             const bool updateHash = true);
 
         std::string getInvertDirectionString();
 

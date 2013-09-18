@@ -310,7 +310,7 @@ StatusWindow::StatusWindow() :
     mLvlLabel->adjustSize();
 }
 
-void StatusWindow::processEvent(Channels channel A_UNUSED,
+void StatusWindow::processEvent(const Channels channel A_UNUSED,
                                 const DepricatedEvent &event)
 {
     static bool blocked = false;

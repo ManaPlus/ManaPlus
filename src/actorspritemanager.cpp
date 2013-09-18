@@ -1654,6 +1654,7 @@ bool ActorSpriteManager::checkForPickup(const FloorItem *const item) const
 
 void ActorSpriteManager::updateEffects(const std::map<int, int> &addEffects,
                                        const std::set<int> &removeEffects)
+                                       const
 {
     for_actors
     {

@@ -412,7 +412,7 @@ class Being : public ActorSprite, public ConfigListener
          * Draws the emotion picture above the being.
          */
         void drawEmotion(Graphics *const graphics, const int offsetX,
-                         const int offsetY);
+                         const int offsetY) const;
 
         uint16_t getSubType() const
         { return mSubType; }
@@ -878,9 +878,9 @@ class Being : public ActorSprite, public ConfigListener
         { mOwner = owner; }
 
         void playSfx(const SoundInfo &sound, Being *const being,
-                     const bool main, const int x, const int y);
+                     const bool main, const int x, const int y) const;
 
-        int getLook()
+        int getLook() const
         { return mLook; }
 
         void setLook(const int look);

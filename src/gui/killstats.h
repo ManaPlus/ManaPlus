@@ -75,7 +75,7 @@ class KillStats final : public Window,
 
         void jackoAlive(const int id);
 
-        void processEvent(Channels channel A_UNUSED,
+        void processEvent(const Channels channel A_UNUSED,
                           const DepricatedEvent &event) override;
 
         void resetTimes();

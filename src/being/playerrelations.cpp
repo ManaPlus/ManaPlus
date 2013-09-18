@@ -414,7 +414,7 @@ void PlayerRelationsManager::setDefault(const unsigned int permissions)
     signalUpdate("");
 }
 
-void PlayerRelationsManager::ignoreTrade(const std::string &name)
+void PlayerRelationsManager::ignoreTrade(const std::string &name) const
 {
     if (name.empty())
         return;

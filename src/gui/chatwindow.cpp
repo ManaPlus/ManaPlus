@@ -917,7 +917,8 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         addInputText(temp, false);
 }
 
-void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
+void ChatWindow::processEvent(const Channels channel,
+                              const DepricatedEvent &event)
 {
     if (channel == CHANNEL_ATTRIBUTES)
     {

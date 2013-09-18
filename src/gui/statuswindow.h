@@ -55,7 +55,7 @@ class StatusWindow final : public Window,
 
         A_DELETE_COPY(StatusWindow)
 
-        void processEvent(Channels channel,
+        void processEvent(const Channels channel,
                           const DepricatedEvent &event) override;
 
         void setPointsNeeded(const int id, const int needed);

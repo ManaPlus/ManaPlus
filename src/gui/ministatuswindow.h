@@ -61,7 +61,7 @@ class MiniStatusWindow final : public Popup,
 
         void drawIcons(Graphics *const graphics);
 
-        void processEvent(Channels channel,
+        void processEvent(const Channels channel,
                           const DepricatedEvent &event) override;
 
         void updateStatus();

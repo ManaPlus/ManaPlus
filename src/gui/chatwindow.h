@@ -194,7 +194,7 @@ class ChatWindow final : public Window,
          */
         void mousePressed(gcn::MouseEvent &event) override;
 
-        void processEvent(Channels channel,
+        void processEvent(const Channels channel,
                           const DepricatedEvent &event) override;
 
         /**

@@ -33,7 +33,7 @@ class DepricatedListener
 
         void ignore(Channels channel);
 
-        virtual void processEvent(Channels channel,
+        virtual void processEvent(const Channels channel,
                                   const DepricatedEvent &event) = 0;
 };
 

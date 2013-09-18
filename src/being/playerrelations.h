@@ -240,7 +240,7 @@ class PlayerRelationsManager final
         bool getPersistIgnores() const
         { return mPersistIgnores; }
 
-        void ignoreTrade(const std::string &name);
+        void ignoreTrade(const std::string &name) const;
 
         bool isGoodName(Being *const being) const A_WARN_UNUSED;
 

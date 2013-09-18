@@ -357,7 +357,8 @@ void LocalPlayer::slowLogic()
 
     if (mTestParticleTime != time && !mTestParticleName.empty())
     {
-        unsigned long hash = UpdaterWindow::getFileHash(mTestParticleName);
+        const unsigned long hash = UpdaterWindow::getFileHash(
+            mTestParticleName);
         if (hash != mTestParticleHash)
         {
             setTestParticle(mTestParticleName, false);
@@ -803,7 +804,7 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
     if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
-        Party *const party = Party::getParty(1);
+        const Party *const party = Party::getParty(1);
         if (party)
         {
             PartyMember *const pm = party->getMember(getName());
@@ -1596,7 +1597,7 @@ void LocalPlayer::optionChanged(const std::string &value)
         mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
 }
 
-void LocalPlayer::processEvent(Channels channel,
+void LocalPlayer::processEvent(const Channels channel,
                                const DepricatedEvent &event)
 {
     if (channel == CHANNEL_ATTRIBUTES)
@@ -4313,7 +4314,8 @@ void LocalPlayer::updateStatus() const
     }
 }
 
-void LocalPlayer::setTestParticle(const std::string &fileName, bool updateHash)
+void LocalPlayer::setTestParticle(const std::string &fileName,
+                                  const bool updateHash)
 {
     mTestParticleName = fileName;
     mTestParticleTime = cur_time;
