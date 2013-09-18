@@ -75,8 +75,9 @@ void PartyHandler::processPartyCreate(Net::MessageIn &msg) const
 
 void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
 {
-    bool oldParty = false;
+    bool isOldParty = false;
     std::set<std::string> names;
+    std::set<std::string> onlineNames;
     if (!Ea::taParty)
     {
         logger->log1("error: party empty in SMSG_PARTY_INFO");
@@ -86,9 +87,15 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
     {
         if (Ea::taParty->getNumberOfElements() > 1)
         {
-            oldParty = true;
-
+            isOldParty = true;
             Ea::taParty->getNamesSet(names);
+            const Party::MemberList *const members = Ea::taParty->getMembers();
+            FOR_EACHP (Party::MemberList::const_iterator, it, members)
+            {
+                if ((*it)->getOnline())
+                    onlineNames.insert((*it)->getName());
+            }
+            onlineNames.insert(player_node->getName());
         }
     }
 
@@ -119,20 +126,40 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
 
         if (Ea::taParty)
         {
-            if (oldParty)
+            bool joined(false);
+
+            if (isOldParty)
             {
                 if (names.find(nick) == names.end())
                 {
                     NotifyManager::notify(NotifyManager::PARTY_USER_JOINED,
                         nick);
+                    joined = true;
                 }
             }
             PartyMember *const member = Ea::taParty->addMember(id, nick);
             if (member)
             {
-                member->setLeader(leader);
-                member->setOnline(online);
-                member->setMap(map);
+                if (!joined && Ea::partyTab)
+                {
+                    if (!names.empty() && ((onlineNames.find(nick)
+                        == onlineNames.end() && online)
+                        || (onlineNames.find(nick) != onlineNames.end()
+                        && !online)))
+                    {
+                        Ea::partyTab->showOnline(nick, online);
+                    }
+
+                    member->setLeader(leader);
+                    member->setOnline(online);
+                    member->setMap(map);
+                }
+                else
+                {
+                    member->setLeader(leader);
+                    member->setOnline(online);
+                    member->setMap(map);
+                }
             }
         }
     }
@@ -279,7 +306,10 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg) const
         msg.skip(4);                    // 0
         m->setX(msg.readInt16());       // x
         m->setY(msg.readInt16());       // y
-        m->setOnline(msg.readInt8());   // online (if 0)
+        const int online = msg.readInt8();
+        if (m->getOnline() != online)
+            Ea::partyTab->showOnline(m->getName(), online);
+        m->setOnline(online);           // online (if 0)
         msg.readString(24);             // party
         msg.readString(24);             // nick
         m->setMap(msg.readString(16));  // map

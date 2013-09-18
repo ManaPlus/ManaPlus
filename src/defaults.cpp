@@ -307,6 +307,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("screenButtonsFormat", 0);
     AddDEF("autoresizeminimaps", false);
     AddDEF("showGuildOnline", false);
+    AddDEF("showPartyOnline", false);
     AddDEF("enableGmTab", true);
     AddDEF("gamecount", 0);
     AddDEF("rated", false);

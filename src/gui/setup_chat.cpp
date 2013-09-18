@@ -105,6 +105,10 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "showChatHistory", this, "showChatHistoryEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Show party online messages"), "",
+        "showPartyOnline", this, "showPartyOnlineEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show guild online messages"), "",
         "showGuildOnline", this, "showGuildOnlineEvent");
 

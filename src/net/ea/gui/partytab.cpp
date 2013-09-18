@@ -24,6 +24,7 @@
 
 #include "chatlogger.h"
 #include "commands.h"
+#include "configuration.h"
 #include "party.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
@@ -50,6 +51,9 @@ PartyTab::PartyTab(const Widget2 *const widget) :
         &getThemeColor(Theme::PARTY_CHAT_TAB_HIGHLIGHTED_OUTLINE));
     setSelectedTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB_SELECTED),
         &getThemeColor(Theme::PARTY_CHAT_TAB_SELECTED_OUTLINE));
+
+    mShowOnline = config.getBoolValue("showPartyOnline");
+    config.addListener("showPartyOnline", this);
 }
 
 PartyTab::~PartyTab()
@@ -281,4 +285,11 @@ void PartyTab::playNewMessageSound() const
 {
     soundManager.playGuiSound(SOUND_GUILD);
 }
+
+void PartyTab::optionChanged(const std::string &value)
+{
+    if (value == "showPartyOnline")
+        mShowOnline = config.getBoolValue("showPartyOnline");
+}
+
 }  // namespace Ea

@@ -31,7 +31,7 @@ namespace Ea
 /**
  * A tab for a party chat channel.
  */
-class PartyTab : public ChatTab
+class PartyTab : public ChatTab, public ConfigListener
 {
     public:
         explicit PartyTab(const Widget2 *const widget);
@@ -51,6 +51,8 @@ class PartyTab : public ChatTab
         void saveToLogFile(const std::string &msg) override;
 
         void playNewMessageSound() const override;
+
+        void optionChanged(const std::string &value);
 
     protected:
         void handleInput(const std::string &msg) override;
