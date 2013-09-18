@@ -990,7 +990,7 @@ void LocalPlayer::setDestination(const int x, const int y)
             Net::getPlayerHandler()->setDestination(x, y, mDirection);
             Being::setDestination(x, y);
         }
-        else if (mInvertDirection == 1)
+        else
         {
             uint8_t newDir = 0;
             if (mDirection & UP)
@@ -1011,9 +1011,7 @@ void LocalPlayer::setDestination(const int x, const int y)
             }
 
             Being::setDestination(x, y);
-        }
-        else
-        {
+
 #ifdef MANASERV_SUPPORT
             // Manaserv:
             // If the destination given to being class is accepted,
@@ -1244,7 +1242,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     if (!target || target->getType() == ActorSprite::NPC)
         return;
 
-    if (mTarget != target || !mTarget)
+    if (mTarget != target)
         setTarget(target);
 
 #ifdef MANASERV_SUPPORT
@@ -3349,7 +3347,7 @@ void LocalPlayer::setHome()
         }
         else
         {
-            if (specialLayer && iter != mHomes.end())
+            if (iter != mHomes.end())
             {
                 specialLayer->setTile(static_cast<int>(pos.x),
                     static_cast<int>(pos.y), MapItem::EMPTY);
@@ -3817,7 +3815,7 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
                 return;
         }
         setTarget(target);
-        if (target && target->getType() != Being::NPC)
+        if (target->getType() != Being::NPC)
         {
             mKeepAttacking = true;
             moveToTarget();

@@ -54,6 +54,7 @@ std::string LoginDialog::savedPasswordKey("");
 struct OpenUrlListener : public gcn::ActionListener
 {
     OpenUrlListener() :
+        gcn::ActionListener(),
         url()
     {
     }

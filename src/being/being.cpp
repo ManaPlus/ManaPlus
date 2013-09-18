@@ -1062,7 +1062,7 @@ std::string Being::getWeaponAttackAction(const ItemInfo *const weapon) const
     if (!weapon)
         return SpriteAction::ATTACK;
 
-    if (serverVersion < 0 || !weapon)
+    if (serverVersion < 0)
     {
         return weapon->getAttackAction();
     }
@@ -1085,7 +1085,7 @@ std::string Being::getAttackAction(const Attack *const attack1) const
     if (!attack1)
         return SpriteAction::ATTACK;
 
-    if (serverVersion < 0 || !attack1)
+    if (serverVersion < 0)
     {
         return attack1->mAction;
     }

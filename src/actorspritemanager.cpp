@@ -1050,12 +1050,12 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
 //            logger->log("index:" + toString(index));
 //            logger->log("d:" + toString(d));
 
-            if (valid && !filtered && (d <= dist || !closestBeing))
+            if (!filtered && (d <= dist || !closestBeing))
             {
                 dist = d;
                 closestBeing = being;
             }
-            else if (valid && filtered)
+            else if (filtered)
             {
                 int w2 = defaultPriorityIndex;
                 if (closestBeing)

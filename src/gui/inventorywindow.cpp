@@ -661,7 +661,7 @@ void InventoryWindow::updateButtons(const Item *item)
 
     if (mUseButton)
     {
-        if (item && item->isEquipment())
+        if (item->isEquipment())
         {
             if (item->isEquipped())
             {
