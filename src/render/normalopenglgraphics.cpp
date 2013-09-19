@@ -64,7 +64,7 @@ NormalOpenGLGraphics::NormalOpenGLGraphics():
     mFbo()
 {
     mOpenGL = RENDER_NORMAL_OPENGL;
-    mName = "fast OpenGL";
+    mName = "normal OpenGL";
 }
 
 NormalOpenGLGraphics::~NormalOpenGLGraphics()

@@ -128,7 +128,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
 
     mTexturesList->fillFromArray(&texturesList[0], texturesListSize);
     // TRANSLATORS: settings option
-    new SetupItemDropDown(_("Enable texture compression (fast OpenGL)"), "",
+    new SetupItemDropDown(_("Enable texture compression (OpenGL)"), "",
         "compresstextures", this, "compresstexturesEvent", mTexturesList, 100);
 
     // TRANSLATORS: settings option
