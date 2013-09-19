@@ -26,9 +26,9 @@
 #include <algorithm>
 #include <cstdarg>
 #include <cstdio>
-#include <list>
-
 #include <ctype.h>
+#include <list>
+#include <time.h>
 
 #include "debug.h"
 

@@ -29,8 +29,6 @@
 
 #include "localconsts.h"
 
-//struct SDL_RWops;
-
 /**
  * Defines a class for loading and storing music.
  */

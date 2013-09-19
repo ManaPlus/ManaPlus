@@ -51,13 +51,14 @@ Resource *SDLMusic::load(SDL_RWops *const rw)
     if (Mix_Music *const music = Mix_LoadMUSType_RW(rw, MUS_OGG, 1))
     {
         return new SDLMusic(music, nullptr);
+    }
 #else
     // Mix_LoadMUSType_RW was added without version changed in SDL1.2 :(
     if (Mix_Music *const music = Mix_LoadMUS_RW(rw))
     {
         return new SDLMusic(music, rw);
-#endif
     }
+#endif
     else
     {
         logger->log("Error, failed to load music: %s", Mix_GetError());

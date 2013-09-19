@@ -25,8 +25,6 @@
 
 #include "net/messagehandler.h"
 
-//#include <SDL_types.h>
-
 #include <memory>
 
 namespace TmwAthena

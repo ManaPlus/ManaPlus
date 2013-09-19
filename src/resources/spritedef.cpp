@@ -237,7 +237,7 @@ void SpriteDef::loadAction(const XmlNodePtr node, const int variant_offset)
             imageSetName.c_str(), getIdPath().c_str());
         return;
     }
-    ImageSet *const imageSet = si->second;
+    const ImageSet *const imageSet = si->second;
 
     if (actionName == SpriteAction::INVALID)
     {

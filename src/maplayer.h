@@ -89,7 +89,7 @@ class MapLayer final: public ConfigListener
     public:
         enum Type
         {
-            TILES,
+            TILES = 0,
             COLLISION,
             HEIGHTS
         };

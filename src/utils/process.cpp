@@ -34,6 +34,7 @@ const int timeOut = 10;
 
 #ifdef WIN32
 
+#include "utils/stringutils.h"
 #include <windows.h>
 
 int execFileWait(const std::string &pathName, const std::string &name A_UNUSED,
@@ -236,6 +237,7 @@ bool openBrowser(std::string url)
         nullptr, nullptr, SW_SHOWNORMAL)) > 32;
 }
 #elif defined ANDROID
+#include "utils/stringutils.h"
 #include <SDL_screenkeyboard.h>
 bool openBrowser(std::string url)
 {

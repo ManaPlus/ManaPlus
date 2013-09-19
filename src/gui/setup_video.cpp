@@ -565,7 +565,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         {
             const int val = test->getConfig().getValueInt("opengl", -1);
             if (val >= 0 && static_cast<unsigned int>(val)
-                < sizeof(renderToIndex) / sizeof (int))
+                < sizeof(renderToIndex) / sizeof(int))
             {
                 mOpenGLDropDown->setSelected(renderToIndex[val]);
             }
