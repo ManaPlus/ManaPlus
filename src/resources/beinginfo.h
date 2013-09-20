@@ -101,7 +101,7 @@ class BeingInfo final
         const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
-        void setDisplay(SpriteDisplay display);
+        void setDisplay(const SpriteDisplay &display);
 
         const SpriteDisplay &getDisplay() const A_WARN_UNUSED
         { return mDisplay; }

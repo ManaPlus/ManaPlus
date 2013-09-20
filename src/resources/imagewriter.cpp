@@ -84,12 +84,14 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
     png_set_packing(png_ptr);
 
     png_bytep *const row_pointers = new png_bytep[surface->h];
+/*
     if (!row_pointers)
     {
         logger->log1("Had trouble converting surface to row pointers");
         fclose(fp);
         return false;
     }
+*/
 
     for (int i = 0; i < surface->h; i++)
     {

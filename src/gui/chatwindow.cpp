@@ -861,7 +861,8 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         const ChatTab *const tab = getFocused();
         if (tab && tab->hasRows())
         {
-            const size_t &tabSize = tab->getRows().size();
+            const std::list<std::string> &rows = tab->getRows();
+            const size_t &tabSize = rows.size();
             if (mChatHistoryIndex + 1 < tabSize)
             {
                 mChatHistoryIndex ++;
@@ -880,7 +881,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
 
             unsigned int f = 0;
             for (std::list<std::string>::const_iterator
-                 it = tab->getRows().begin(), it_end = tab->getRows().end();
+                 it = rows.begin(), it_end = rows.end();
                  it != it_end; ++it, f++)
             {
                 if (f == mChatHistoryIndex)

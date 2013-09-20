@@ -892,7 +892,7 @@ Path Map::findPath(const int startX, const int startY,
     // The basic walking cost of a tile.
     static const int basicCost = 100;
     const int basicCost2 = 100 * 362 / 256;
-    const float basicCostF = 100 * 362 / 256;
+    const float basicCostF = 100.0 * 362 / 256;
 
     // Path to be built up (empty by default)
     Path path;

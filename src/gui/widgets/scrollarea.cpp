@@ -148,10 +148,8 @@ void ScrollArea::init(std::string skinName)
             skinName = "scroll_background.xml";
         Theme *const theme = Theme::instance();
         if (theme)
-            theme->loadRect(background, skinName, "scroll_background.xml");
-
-        if (theme)
         {
+            theme->loadRect(background, skinName, "scroll_background.xml");
             theme->loadRect(vMarker, "scroll.xml", "");
             theme->loadRect(vMarkerHi, "scroll_highlighted.xml", "scroll.xml");
             theme->loadRect(vBackground, "scroll_vbackground.xml", "");

@@ -30,7 +30,7 @@ class PoDict;
 class TranslationManager final
 {
     public:
-        static PoDict *loadLang(StringVect lang,
+        static PoDict *loadLang(const StringVect &lang,
                                 const std::string &subName,
                                 PoDict *const dict = nullptr);
 

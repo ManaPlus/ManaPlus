@@ -125,7 +125,7 @@ class ServerDialog : public Window,
 
         void logic() override;
 
-        void updateServer(ServerInfo server, const int index);
+        void updateServer(const ServerInfo &server, const int index);
 
         void connectToSelectedServer();
 

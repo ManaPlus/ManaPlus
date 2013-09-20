@@ -53,7 +53,7 @@ void TranslationManager::close()
     translator = nullptr;
 }
 
-PoDict *TranslationManager::loadLang(LangVect lang,
+PoDict *TranslationManager::loadLang(const LangVect &lang,
                                      const std::string &subName,
                                      PoDict *const dict)
 {

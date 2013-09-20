@@ -124,7 +124,7 @@ class ItemInfo final
         std::string getParticleEffect() const A_WARN_UNUSED
         { return mParticle; }
 
-        void setDisplay(SpriteDisplay display)
+        void setDisplay(const SpriteDisplay &display)
         { mDisplay = display; }
 
         const SpriteDisplay &getDisplay() const A_WARN_UNUSED

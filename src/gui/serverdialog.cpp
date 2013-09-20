@@ -841,7 +841,7 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
     return 0;
 }
 
-void ServerDialog::updateServer(ServerInfo server, const int index)
+void ServerDialog::updateServer(const ServerInfo &server, const int index)
 {
     saveCustomServers(server, index);
 }

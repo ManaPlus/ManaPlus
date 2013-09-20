@@ -77,7 +77,7 @@ BeingInfo::~BeingInfo()
     delete_all(mDisplay.sprites);
 }
 
-void BeingInfo::setDisplay(SpriteDisplay display)
+void BeingInfo::setDisplay(const SpriteDisplay &display)
 {
     mDisplay = display;
 }
@@ -119,8 +119,15 @@ const SoundInfo &BeingInfo::getSound(const SoundEvent event) const
     static SoundInfo emptySound("", 0);
 
     const SoundEvents::const_iterator i = mSounds.find(event);
-    return (i == mSounds.end() || !i->second || i->second->empty())
-        ? emptySound : i->second->at(rand() % i->second->size());
+
+    if (i == mSounds.end())
+        return emptySound;
+
+    const SoundInfoVect *const vect = i->second;
+    if (!vect || vect->empty())
+        return emptySound;
+    else
+        return vect->at(rand() % vect->size());
 }
 
 const Attack *BeingInfo::getAttack(const int id) const

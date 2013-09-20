@@ -610,7 +610,7 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
         skill->id = static_cast<unsigned int>(id);
         SkillData *const data = skill->data;
         data->name = "Unknown skill Id: " + toString(id);
-        data->dispName = "Unknown skill Id: " + toString(id);
+        data->dispName = data->name;
         data->description.clear();
         data->setIcon("");
         skill->modifiable = modifiable;
