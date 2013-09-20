@@ -144,7 +144,11 @@ TEST(stringuntils, compareStrI1)
     EXPECT_TRUE(compareStrI(str1, str2) < 0);
 
     str1 = "test";
-    str2 = "aest1";
+    str2 = "aest1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    EXPECT_TRUE(compareStrI(str1, str2) > 0);
+
+    str1 = "testaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    str2 = "testaa";
     EXPECT_TRUE(compareStrI(str1, str2) > 0);
 }
 
