@@ -1053,9 +1053,13 @@ void Game::handleInput()
                 client->setState(STATE_EXIT);
                 break;
 #ifdef ANDROID
+#ifdef USE_SDL2
+            // +++ probably need add support
+#else
             case SDL_KEYBOARDSHOW:
                 client->updateScreenKeyboard(event.user.code);
                 break;
+#endif
 #endif
             default:
                 break;

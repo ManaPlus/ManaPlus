@@ -128,7 +128,9 @@
 #endif
 
 #ifdef ANDROID
+#ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
+#endif
 #endif
 
 #include <sys/stat.h>
@@ -137,6 +139,8 @@
 #include <fstream>
 
 #include "mumblemanager.h"
+
+#include <android/log.h>
 
 #include "debug.h"
 
@@ -701,7 +705,9 @@ void Client::gameInit()
     PlayerInfo::init();
 
 #ifdef ANDROID
+#ifndef USE_SDL2
     updateScreenKeyboard(SDL_GetScreenKeyboardHeight(nullptr));
+#endif
 #endif
 }
 
@@ -989,6 +995,9 @@ int Client::gameExec()
                         break;
 
 #ifdef ANDROID
+#ifdef USE_SDL2
+                    // +++ need add support
+#else
                     case SDL_ACTIVEEVENT:
                         if ((event.active.state & SDL_APPACTIVE)
                             && !event.active.gain)
@@ -1004,6 +1013,7 @@ int Client::gameExec()
 
                     case SDL_ACCELEROMETER:
                         break;
+#endif
 #endif
 
                     default:
@@ -1972,7 +1982,7 @@ void Client::initLocalDataDir()
             mLocalDataDir = std::string(PhysFs::getUserDir());
         mLocalDataDir.append("/Mana");
 #elif defined __ANDROID__
-        mLocalDataDir = getenv("DATADIR2") + branding.getValue(
+        mLocalDataDir = getSdStoragePath() + branding.getValue(
             "appShort", "ManaPlus") + "/local";
 #else
         mLocalDataDir = std::string(PhysFs::getUserDir()) +
@@ -2029,7 +2039,7 @@ void Client::initConfigDir()
                 "appShort", "mana"));
         }
 #elif defined __ANDROID__
-        mConfigDir = getenv("DATADIR2") + branding.getValue(
+        mConfigDir = getSdStoragePath() + branding.getValue(
             "appShort", "ManaPlus").append("/config");
 #else
         mConfigDir = std::string(PhysFs::getUserDir()).append(
@@ -2275,7 +2285,7 @@ void Client::initScreenshotDir()
     else if (mScreenshotDir.empty())
     {
 #ifdef __ANDROID__
-        mScreenshotDir = getenv("DATADIR2") + std::string("/images");
+        mScreenshotDir = getSdStoragePath() + std::string("/images");
 
         if (mkdir_r(mScreenshotDir.c_str()))
         {
@@ -2886,8 +2896,7 @@ void Client::logVars()
 {
 #ifdef ANDROID
     logger->log("APPDIR: %s", getenv("APPDIR"));
-    logger->log("DATADIR: %s", getenv("DATADIR"));
-    logger->log("DATADIR2: %s", getenv("DATADIR2"));
+    logger->log("DATADIR2: %s", getSdStoragePath().c_str());
 #endif
 }
 
@@ -3017,9 +3026,11 @@ void Client::logEvent(const SDL_Event &event)
             logger->log("event: SDL_USEREVENT");
             break;
 #ifdef ANDROID
+#ifndef USE_SDL2
         case SDL_ACCELEROMETER:
             logger->log("event: SDL_ACCELEROMETER");
             break;
+#endif
 #endif
         default:
             logger->log("event: other: %d", event.type);

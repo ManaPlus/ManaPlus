@@ -68,7 +68,9 @@
 #include "utils/gettext.h"
 
 #ifdef ANDROID
+#ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
+#endif
 #endif
 
 #include "debug.h"
@@ -1108,7 +1110,11 @@ impHandler0(stopSit)
 impHandler0(showKeyboard)
 {
 #ifdef ANDROID
+#ifdef USE_SDL2
+// +++ need add support
+#else
     SDL_ANDROID_ToggleScreenKeyboardTextInput(nullptr);
+#endif
     return true;
 #else
     return false;

@@ -769,8 +769,10 @@ void Gui::handleMouseInput()
         if (touchManager.processEvent(mouseInput))
         {
 #ifdef ANDROID
+#ifndef USE_SDL2
             SDL_WarpMouse(mLastMouseX, mLastMouseY,
                 mLastMouseRealX, mLastMouseRealY);
+#endif
 #endif
             mMouseInactivityTimer = 0;
             continue;

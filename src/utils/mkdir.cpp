@@ -40,6 +40,9 @@
 #if defined WIN32
 int mkdir_r(const char *const pathname)
 {
+    if (!pathname)
+        return -1;
+
     char tmp[PATH_MAX];
     char tmp2[PATH_MAX];
     char *p;
@@ -111,6 +114,9 @@ int mkdir_r(const char *const pathname)
 /// Create a directory, making leading components first if necessary
 int mkdir_r(const char *const pathname)
 {
+    if (!pathname)
+        return -1;
+
     const size_t len = static_cast<size_t>(strlen(pathname));
     char *tmp = new char[len + 2];
     char *p;

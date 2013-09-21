@@ -1090,8 +1090,12 @@ void GraphicsManager::detectPixelSize()
 #endif
     }
 #if defined ANDROID
+#ifdef USE_SDL2
+    // +++ need add support
+#else
     SDL_ANDROID_GetMetrics(&mMaxWidth, &mMaxHeight,
         &mWidthMM, &mHeightMM, &mDensity);
+#endif
 #endif
     logger->log("screen size in pixels: %dx%d", mMaxWidth, mMaxHeight);
     logger->log("screen size in millimeters: %dx%d", mWidthMM, mHeightMM);

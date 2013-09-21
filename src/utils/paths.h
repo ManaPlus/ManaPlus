@@ -39,4 +39,8 @@ std::string getSelfName() A_WARN_UNUSED;
 
 std::string getDesktopDir() A_WARN_UNUSED;
 
+#ifdef ANDROID
+std::string getSdStoragePath() A_WARN_UNUSED;
+#endif
+
 #endif  // UTILS_PATHS_H

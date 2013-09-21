@@ -51,6 +51,8 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 
+#include <android/log.h>
+
 #include "debug.h"
 
 char *selfName = nullptr;
@@ -278,7 +280,7 @@ int main(int argc, char *argv[])
 
     // Initialize PhysicsFS
 #ifdef ANDROID
-    mkdir_r(getenv("DATADIR2"));
+    mkdir_r(getSdStoragePath().c_str());
 
     if (!PHYSFS_init((getRealPath(".").append("/fakebinary")).c_str()))
 #else

@@ -185,8 +185,10 @@ void SDLInput::pushInput(const SDL_Event &event)
 #endif
 
 #ifdef ANDROID
+#ifndef USE_SDL2
         case SDL_ACCELEROMETER:
             break;
+#endif
 #endif
 
         case SDL_MOUSEBUTTONDOWN:
@@ -194,7 +196,11 @@ void SDLInput::pushInput(const SDL_Event &event)
             mouseInput.setX(event.button.x);
             mouseInput.setY(event.button.y);
 #ifdef ANDROID
+#ifdef USE_SDL2
+            mouseInput.setReal(event.button.x, event.button.y);
+#else
             mouseInput.setReal(event.button.realx, event.button.realy);
+#endif
 #endif
             mouseInput.setButton(convertMouseButton(event.button.button));
 
@@ -215,7 +221,11 @@ void SDLInput::pushInput(const SDL_Event &event)
             mouseInput.setX(event.button.x);
             mouseInput.setY(event.button.y);
 #ifdef ANDROID
+#ifdef USE_SDL2
+            mouseInput.setReal(event.button.x, event.button.y);
+#else
             mouseInput.setReal(event.button.realx, event.button.realy);
+#endif
 #endif
             mouseInput.setButton(convertMouseButton(event.button.button));
             mouseInput.setType(gcn::MouseInput::RELEASED);
@@ -227,7 +237,11 @@ void SDLInput::pushInput(const SDL_Event &event)
             mouseInput.setX(event.motion.x);
             mouseInput.setY(event.motion.y);
 #ifdef ANDROID
+#ifdef USE_SDL2
+            mouseInput.setReal(event.motion.x, event.motion.y);
+#else
             mouseInput.setReal(event.motion.realx, event.motion.realy);
+#endif
 #endif
             mouseInput.setButton(gcn::MouseInput::EMPTY);
             mouseInput.setType(gcn::MouseInput::MOVED);

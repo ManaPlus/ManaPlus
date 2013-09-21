@@ -39,6 +39,12 @@
 #include <limits.h>
 #endif
 
+#ifdef ANDROID
+#ifdef USE_SDL2
+#include <SDL_system.h>
+#endif
+#endif
+
 #include "debug.h"
 
 std::string getRealPath(const std::string &str)
@@ -175,3 +181,10 @@ std::string getDesktopDir()
     return std::string(PhysFs::getUserDir()).append("Desktop");
 #endif
 }
+
+#ifdef ANDROID
+std::string getSdStoragePath()
+{
+    return getenv("DATADIR2");
+}
+#endif

@@ -563,10 +563,12 @@ bool InputManager::handleEvent(const SDL_Event &event)
             break;
         }
 #ifdef ANDROID
+#ifndef USE_SDL2
         case SDL_ACCELEROMETER:
         {
             break;
         }
+#endif
 #endif
         default:
             break;
@@ -604,10 +606,12 @@ bool InputManager::handleEvent(const SDL_Event &event)
             }
             break;
 #ifdef ANDROID
+#ifndef USE_SDL2
         case SDL_ACCELEROMETER:
         {
             break;
         }
+#endif
 #endif
         default:
             break;

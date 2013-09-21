@@ -238,10 +238,16 @@ bool openBrowser(std::string url)
 }
 #elif defined ANDROID
 #include "utils/stringutils.h"
+#ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
+#endif
 bool openBrowser(std::string url)
 {
+#ifdef USE_SDL2
+    // +++ need add support
+#else
     SDL_ANDROID_OpenBrowser(replaceAll(url, " ", "").c_str());
+#endif
     return true;
 }
 #elif defined __APPLE__
