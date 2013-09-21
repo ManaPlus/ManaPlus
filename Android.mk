@@ -1,0 +1,53 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := manaplus
+
+ROOT_PATH := $(LOCAL_PATH)/..
+SDL_PATH := ../SDL
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(SDL_PATH)/include \
+    $(LOCAL_PATH)/src \
+    $(LOCAL_PATH)/src/guichan/include \
+    $(ROOT_PATH)/xml2/include \
+    $(ROOT_PATH)/intl/include \
+    $(ROOT_PATH)/sdl_gfx \
+    $(ROOT_PATH)/physfs/include \
+    $(ROOT_PATH)/curl/include \
+    $(ROOT_PATH)/SDL2_net-2.0.0
+
+# -DUSE_OPENGL
+LOCAL_CPPFLAGS += -DUSE_SDL2 -DUSE_INTERNALGUICHAN -DEATHENA_SUPPORT
+LOCAL_CPPFLAGS += -frtti -fexceptions -Wno-error=format-security
+
+LOCAL_SHARED_LIBRARIES := SDL2 SDL2_mixer sdl_net SDL2_ttf SDL2_image libcurl intl png physfs sdl2_gfx xml2
+
+LOCAL_LDLIBS := -lGLESv1_CM -llog -lz
+
+# Add your application source files here...
+LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
+    $(subst $(LOCAL_PATH)/,, \
+    $(wildcard $(LOCAL_PATH)/src/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/being/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/gui/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/gui/widgets/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/guichan/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/guichan/widgets/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/input/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/net/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/net/ea/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/net/ea/gui/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/net/eathena/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/net/eathena/gui/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/net/tmwa/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/net/tmwa/gui/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/particle/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/render/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/resources/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/test/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/utils/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/utils/translation/*.cpp) \
+    )
+
+include $(BUILD_SHARED_LIBRARY)
