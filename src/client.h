@@ -391,6 +391,12 @@ private:
 
     static void setEnv(const char *const name, const char *const value);
 
+#ifdef ANDROID
+#ifdef USE_SDL2
+    void extractAssets();
+#endif
+#endif
+
     Options mOptions;
 
     std::string mPackageDir;

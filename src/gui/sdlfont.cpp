@@ -35,6 +35,7 @@
 #include "resources/surfaceimagehelper.h"
 
 #include "utils/paths.h"
+#include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
 #include <guichan/exception.hpp>
@@ -397,8 +398,12 @@ SDLFont::~SDLFont()
 
 TTF_Font *SDLFont::openFont(const char *const name, const int size)
 {
-    return TTF_OpenFontIndex(ResourceManager::getInstance()->getPath(
-        name).c_str(), size, 0);
+    logger->log("font to open: %s", name);
+    ResourceManager *const resman = ResourceManager::getInstance();
+    SDL_RWops *const rw = MPHYSFSRWOPS_openRead(name);
+    if (!rw)
+        return nullptr;
+    return TTF_OpenFontIndexRW(rw, 1, size, 0);
 }
 
 void SDLFont::loadFont(std::string filename,

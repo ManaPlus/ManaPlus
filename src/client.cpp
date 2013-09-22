@@ -365,6 +365,11 @@ void Client::gameInit()
     Fuzzer::init();
 #endif
 
+#ifdef ANDROID
+#ifdef USE_SDL2
+    extractAssets();
+#endif
+#endif
     initConfiguration();
     paths.setDefaultValues(getPathsDefaults());
     initFeatures();
@@ -518,6 +523,15 @@ void Client::gameInit()
     mPackageDir = PKG_DATADIR "data";
     resman->addToSearchPath("data", false);
 
+#ifdef ANDROID
+#ifdef USE_SDL2
+    if (getenv("APPDIR"))
+    {
+        resman->addToSearchPath(std::string(getenv("APPDIR"))
+            + "/data.zip", false);
+    }
+#endif
+#endif
     // Add branding/data to PhysFS search path
     if (!mOptions.brandingPath.empty())
     {
@@ -3174,4 +3188,44 @@ void Client::handleActive(const SDL_Event &event)
     if (event.active.state & SDL_APPMOUSEFOCUS)
         setMouseFocused(event.active.gain);
 }
+#endif
+
+#ifdef ANDROID
+#ifdef USE_SDL2
+void Client::extractAssets()
+{
+    if (!getenv("APPDIR"))
+    {
+        logger->log("error: APPDIR is not set!");
+        return;
+    }
+    const std::string fileName = std::string(getenv(
+        "APPDIR")).append("/data.zip");
+    logger->log("Extracting asset into: " + fileName);
+    FILE *const file = fopen(fileName.c_str(), "w");
+    uint8_t *buf = new uint8_t[1000000];
+    for (int f = 0; f < 100; f ++)
+    {
+        std::string part = strprintf("manaplus-data.zip%u%u",
+            static_cast<unsigned int>(f / 10),
+            static_cast<unsigned int>(f % 10));
+        logger->log("testing asset: " + part);
+        SDL_RWops *const rw = SDL_RWFromFile(part.c_str(), "r");
+        if (rw)
+        {
+            const int size = SDL_RWsize(rw);
+            int size2 = SDL_RWread(rw, buf, 1, size);
+            logger->log("asset size: %d", size2);
+            fwrite(buf, 1, size2, file);
+            SDL_RWclose(rw);
+        }
+        else
+        {
+            break;
+        }
+    }
+    delete [] buf;
+    fclose(file);
+}
+#endif
 #endif
