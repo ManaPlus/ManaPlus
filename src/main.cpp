@@ -51,8 +51,6 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 
-#include <android/log.h>
-
 #include "debug.h"
 
 char *selfName = nullptr;

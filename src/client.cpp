@@ -140,8 +140,6 @@
 
 #include "mumblemanager.h"
 
-#include <android/log.h>
-
 #include "debug.h"
 
 /**
