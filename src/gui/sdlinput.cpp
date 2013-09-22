@@ -369,6 +369,9 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
           }
           break;
       case SDLK_ESCAPE:
+#ifdef USE_SDL2
+      case SDLK_AC_BACK:
+#endif
           value = Key::ESCAPE;
           break;
       case SDLK_DELETE:

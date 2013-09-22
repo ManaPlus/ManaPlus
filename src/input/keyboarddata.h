@@ -211,7 +211,11 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         COND_NOMODAL | COND_NOAWAY | COND_NONPCINPUT},
     {"keyQuit",
         INPUT_KEYBOARD, SDLK_ESCAPE,
+#if defined(USE_SDL2) && defined(ANDROID)
+        INPUT_KEYBOARD, SDLK_AC_BACK,
+#else
         INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+#endif
         Input::GRP_DEFAULT,
         &ActionManager::quit,
         Input::KEY_NO_VALUE, 50,
@@ -1857,7 +1861,11 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         COND_DEFAULT},
     {"keyGUICancel",
         INPUT_KEYBOARD, SDLK_ESCAPE,
+#if defined(USE_SDL2) && defined(ANDROID)
+        INPUT_KEYBOARD, SDLK_AC_BACK,
+#else
         INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+#endif
         Input::GRP_GUICHAN,
         nullptr,
         Input::KEY_NO_VALUE, 50,
