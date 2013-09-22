@@ -17,13 +17,12 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(SDL_PATH)/include \
     $(ROOT_PATH)/curl/include \
     $(ROOT_PATH)/SDL2_net-2.0.0
 
-# -DUSE_OPENGL
-LOCAL_CPPFLAGS += -DUSE_SDL2 -DUSE_INTERNALGUICHAN -DEATHENA_SUPPORT
+LOCAL_CPPFLAGS += -DUSE_SDL2 -DUSE_INTERNALGUICHAN -DEATHENA_SUPPORT -DUSE_OPENGL
 LOCAL_CPPFLAGS += -frtti -fexceptions -Wno-error=format-security
 
 LOCAL_SHARED_LIBRARIES := SDL2 SDL2_mixer sdl_net SDL2_ttf SDL2_image libcurl intl png physfs sdl2_gfx xml2
 
-LOCAL_LDLIBS := -lGLESv1_CM -llog -lz
+LOCAL_LDLIBS := -lGLESv1_CM -lEGL -llog -lz
 
 # Add your application source files here...
 LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
