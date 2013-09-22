@@ -2926,6 +2926,30 @@ void Client::logEvent(const SDL_Event &event)
         str = name2; \
         break
 
+        case SDL_FINGERDOWN:
+        {
+            const SDL_TouchFingerEvent &touch = event.tfinger;
+            logger->log("event: SDL_FINGERDOWN: %lld,%lld (%f,%f) (%f,%f)",
+                touch.touchId, touch.fingerId, touch.x, touch.y,
+                touch.dx, touch.dy);
+            break;
+        }
+        case SDL_FINGERUP:
+        {
+            const SDL_TouchFingerEvent &touch = event.tfinger;
+            logger->log("event: SDL_FINGERUP: %lld,%lld (%f,%f) (%f,%f)",
+                touch.touchId, touch.fingerId, touch.x, touch.y,
+                touch.dx, touch.dy);
+            break;
+        }
+        case SDL_FINGERMOTION:
+        {
+            const SDL_TouchFingerEvent &touch = event.tfinger;
+            logger->log("event: SDL_FINGERMOTION: %lld,%lld (%f,%f) (%f,%f)",
+                touch.touchId, touch.fingerId, touch.x, touch.y,
+                touch.dx, touch.dy);
+            break;
+        }
         case SDL_KEYDOWN:
             logger->log("event: SDL_KEYDOWN: %d,%d", event.key.state,
                 event.key.keysym.scancode);
@@ -2974,6 +2998,21 @@ void Client::logEvent(const SDL_Event &event)
         }
         case SDL_TEXTINPUT:
             logger->log("event: SDL_TEXTINPUT: %s", event.text.text);
+            break;
+        case SDL_APP_TERMINATING:
+            logger->log("SDL_APP_TERMINATING");
+            break;
+        case SDL_APP_LOWMEMORY:
+            logger->log("SDL_APP_LOWMEMORY");
+            break;
+        case SDL_APP_WILLENTERBACKGROUND:
+            logger->log("SDL_APP_WILLENTERBACKGROUND");
+            break;
+        case SDL_APP_WILLENTERFOREGROUND:
+            logger->log("SDL_APP_WILLENTERFOREGROUND");
+            break;
+        case SDL_APP_DIDENTERFOREGROUND:
+            logger->log("SDL_APP_DIDENTERFOREGROUND");
             break;
 #else
         case SDL_KEYDOWN:
