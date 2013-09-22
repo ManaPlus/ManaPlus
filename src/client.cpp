@@ -3330,6 +3330,7 @@ void Client::extractLocale()
     }
     PhysFs::freeList(rootDirs);
     resman->removeFromSearchPath(fileName2);
+    remove(fileName2.c_str());
 }
 #endif
 #endif
