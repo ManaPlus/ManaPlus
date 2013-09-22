@@ -269,7 +269,11 @@ DefaultsData* getConfigDefaults()
 #endif
     AddDEF("audioFrequency", 22010);
     AddDEF("audioChannels", 2);
-#ifndef USE_SDL2
+#ifdef USE_SDL2
+    AddDEF("repeateDelay", 500);
+    AddDEF("repeateInterval", 30);
+    AddDEF("repeateInterval2", 500);
+#else
     AddDEF("repeateDelay", SDL_DEFAULT_REPEAT_DELAY);
     AddDEF("repeateInterval", SDL_DEFAULT_REPEAT_INTERVAL);
     AddDEF("repeateInterval2", SDL_DEFAULT_REPEAT_DELAY);
@@ -322,6 +326,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableDebugLog", false);
     AddDEF("doubleClick", true);
     AddDEF("useDiagonalSpeed", true);
+    AddDEF("protectedItems", "");
     return configData;
 }
 
