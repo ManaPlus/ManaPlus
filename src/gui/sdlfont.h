@@ -149,6 +149,8 @@ class SDLFont final : public gcn::Font
         static bool mSoftMode;
 
     private:
+        static TTF_Font *openFont(const char *const name, const int size);
+
         TTF_Font *mFont;
         unsigned mCreateCounter;
         unsigned mDeleteCounter;

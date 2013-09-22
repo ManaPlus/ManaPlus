@@ -364,14 +364,13 @@ SDLFont::SDLFont(std::string filename,
     ++fontCounter;
 
     fixDirSeparators(filename);
-    mFont = TTF_OpenFont(resman->getPath(filename).c_str(), size);
+    mFont = openFont(filename.c_str(), size);
 
     if (!mFont)
     {
         logger->log("Error finding font " + filename);
         std::string backFile = "fonts/dejavusans.ttf";
-        mFont = TTF_OpenFont(resman->getPath(
-            fixDirSeparators(backFile)).c_str(), size);
+        mFont = openFont(fixDirSeparators(backFile).c_str(), size);
         if (!mFont)
         {
             throw GCN_EXCEPTION("SDLSDLFont::SDLSDLFont: " +
@@ -396,6 +395,12 @@ SDLFont::~SDLFont()
     }
 }
 
+TTF_Font *SDLFont::openFont(const char *const name, const int size)
+{
+    return TTF_OpenFontIndex(ResourceManager::getInstance()->getPath(
+        name).c_str(), size, 0);
+}
+
 void SDLFont::loadFont(std::string filename,
                        const int size,
                        const int style)
@@ -410,8 +415,7 @@ void SDLFont::loadFont(std::string filename,
     }
 
     fixDirSeparators(filename);
-    TTF_Font *const font = TTF_OpenFont(
-        resman->getPath(filename).c_str(), size);
+    TTF_Font *const font = openFont(filename.c_str(), size);
 
     if (!font)
     {
