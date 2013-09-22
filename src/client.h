@@ -288,8 +288,7 @@ public:
     std::string getSupportUrl() const A_WARN_UNUSED
     { return mCurrentServer.supportUrl; }
 
-    bool isKeyboardVisible() const
-    { return mKeyboardHeight > 1; }
+    bool isKeyboardVisible() const;
 
     void setGuiAlpha(const float n)
     { mGuiAlpha = n; }

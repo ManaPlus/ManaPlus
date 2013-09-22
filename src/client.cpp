@@ -3170,6 +3170,15 @@ void Client::setIcon()
 #endif
 }
 
+bool Client::isKeyboardVisible() const
+{
+#ifdef USE_SDL2
+    return SDL_IsTextInputActive();
+#else
+    return mKeyboardHeight > 1;
+#endif
+}
+
 #ifdef USE_SDL2
 void Client::handleSDL2WindowEvent(const SDL_Event &event)
 {

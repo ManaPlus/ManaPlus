@@ -1111,7 +1111,10 @@ impHandler0(showKeyboard)
 {
 #ifdef ANDROID
 #ifdef USE_SDL2
-// +++ need add support
+    if (SDL_IsTextInputActive())
+        SDL_StopTextInput();
+    else
+        SDL_StartTextInput();
 #else
     SDL_ANDROID_ToggleScreenKeyboardTextInput(nullptr);
 #endif
