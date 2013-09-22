@@ -27,7 +27,9 @@
 #include <GLES2/gl2.h>
 #include <GLES/glext.h>
 #include <EGL/egl.h>
+#ifndef USE_SDL2
 #include <SDL_android.h>
+#endif
 #else
 #include "GL/glx.h"
 #endif
