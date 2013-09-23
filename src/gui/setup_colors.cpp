@@ -43,8 +43,8 @@
 #include "debug.h"
 
 // TRANSLATORS: color selection preview message
-const std::string Setup_Colors::rawmsg =
-    _("This is what the color looks like");
+const char *const Setup_Colors::rawmsg =
+    N_("This is what the color looks like");
 
 Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     SetupTab(widget),
@@ -52,7 +52,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mColorBox(new ListBox(this, userPalette, "")),
     mScroll(new ScrollArea(mColorBox, true, "setup_colors_background.xml")),
     mPreview(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
-    mTextPreview(new TextPreview(this, rawmsg)),
+    mTextPreview(new TextPreview(this, gettext(rawmsg))),
     mPreviewBox(new ScrollArea(mPreview, true,
         "setup_colors_preview_background.xml")),
     mSelected(-1),

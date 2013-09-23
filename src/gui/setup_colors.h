@@ -55,7 +55,7 @@ class Setup_Colors final : public SetupTab,
         void valueChanged(const gcn::SelectionEvent &event) override;
 
     private:
-        static const std::string rawmsg;
+        static const char *const rawmsg;
 
         ListBox *mColorBox;
         ScrollArea *mScroll;
