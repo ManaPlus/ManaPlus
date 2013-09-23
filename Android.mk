@@ -11,7 +11,7 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(SDL_PATH)/include \
     $(LOCAL_PATH)/src \
     $(LOCAL_PATH)/src/guichan/include \
     $(ROOT_PATH)/xml2/include \
-    $(ROOT_PATH)/intl/include \
+    $(ROOT_PATH)/gettext-0.18/gettext-runtime/intl \
     $(ROOT_PATH)/sdl_gfx \
     $(ROOT_PATH)/physfs/include \
     $(ROOT_PATH)/curl/include \
