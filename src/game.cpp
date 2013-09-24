@@ -896,9 +896,6 @@ void Game::handleSDL2WindowEvent(const SDL_Event &event)
             client->setInputFocused(false);
             break;
         case SDL_WINDOWEVENT_MINIMIZED:
-#ifdef ANDROID
-            client->setState(STATE_EXIT);
-#else
             client->setIsMinimized(true);
             if (player_node && !player_node->getAway())
             {
@@ -906,7 +903,6 @@ void Game::handleSDL2WindowEvent(const SDL_Event &event)
                 player_node->setHalfAway(true);
             }
             setPriority(false);
-#endif
             break;
         case SDL_WINDOWEVENT_RESTORED:
         case SDL_WINDOWEVENT_MAXIMIZED:

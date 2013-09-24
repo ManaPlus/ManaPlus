@@ -3235,7 +3235,7 @@ void Client::handleActive(const SDL_Event &event)
         }
         else
         {   // window minimization
-#ifdef ANDROID
+#if defined(ANDROID) && !defined(USE_SDL2)
             setState(STATE_EXIT);
 #else
             setIsMinimized(true);
