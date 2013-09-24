@@ -393,8 +393,6 @@ private:
 #ifdef ANDROID
 #ifdef USE_SDL2
     void extractAssets();
-
-    void extractLocale();
 #endif
 #endif
 

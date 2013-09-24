@@ -524,6 +524,8 @@ SET(SRCS
     utils/cpu.cpp
     utils/cpu.h
     utils/dtor.h
+    utils/files.cpp
+    utils/files.h
     utils/fuzzer.cpp
     utils/fuzzer.h
     utils/gettext.h

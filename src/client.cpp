@@ -102,6 +102,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/cpu.h"
+#include "utils/files.h"
 #include "utils/fuzzer.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
@@ -384,7 +385,13 @@ void Client::gameInit()
 #ifdef ANDROID
 #ifdef USE_SDL2
     extractAssets();
-    extractLocale();
+
+    const std::string zipName = std::string(getenv(
+        "APPDIR")).append("/data.zip");
+    const std::string dirName = std::string(getenv(
+        "APPDIR")).append("/data");
+    Files::extractZip(zipName, "data", dirName);
+    Files::extractLocale();
 #endif
 #endif
 
@@ -534,7 +541,7 @@ void Client::gameInit()
     if (getenv("APPDIR"))
     {
         resman->addToSearchPath(std::string(getenv("APPDIR"))
-            + "/data.zip", false);
+            + "/data", false);
     }
 #endif
 #endif
@@ -3295,42 +3302,6 @@ void Client::extractAssets()
     fclose(file2);
 
     delete [] buf;
-}
-
-void Client::extractLocale()
-{
-    // in future need also remove all locales in local dir
-
-    const std::string fileName2 = std::string(getenv(
-        "APPDIR")).append("/locale.zip");
-    const ResourceManager *const resman = ResourceManager::getInstance();
-    resman->addToSearchPath(fileName2, false);
-
-    const std::string localDir = std::string(getenv("APPDIR")).append("/");
-    char **rootDirs = PhysFs::enumerateFiles("locale");
-    for (char **i = rootDirs; *i; i++)
-    {
-        const std::string dir = std::string("locale/").append(*i);
-        if (PhysFs::isDirectory(dir.c_str()))
-        {
-            const std::string moFile = dir + "/LC_MESSAGES/manaplus.mo";
-            if (PhysFs::exists((moFile).c_str()))
-            {
-                const std::string localFile = localDir + moFile;
-                const std::string localDir2 = localDir + dir + "/LC_MESSAGES";
-                int size = 0;
-                mkdir_r(localDir2.c_str());
-                void *const buf = ResourceManager::loadFile(moFile, size);
-                FILE *const file = fopen(localFile.c_str(), "w");
-                fwrite(buf, 1, size, file);
-                fclose(file);
-                free(buf);
-            }
-        }
-    }
-    PhysFs::freeList(rootDirs);
-    resman->removeFromSearchPath(fileName2);
-    remove(fileName2.c_str());
 }
 #endif
 #endif
