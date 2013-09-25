@@ -351,44 +351,19 @@ void GraphicsManager::setVideoMode()
     const bool noFrame = config.getBoolValue("noframe");
 
 #ifdef ANDROID
-    int width = config.getValue("screenwidth", 0);
-    int height = config.getValue("screenheight", 0);
+//    int width = config.getValue("screenwidth", 0);
+//    int height = config.getValue("screenheight", 0);
     StringVect videoModes;
     SDL::getAllVideoModes(videoModes);
-    if (!videoModes.empty())
-    {
-        bool found(false);
-        std::string str = strprintf("%dx%d", width, height);
-        if (width != 0 && height != 0)
-        {
-            FOR_EACH (StringVectCIter, it, videoModes)
-            {
-                if (str == *it)
-                {
-                    found = true;
-                    break;
-                }
-            }
-        }
+    if (videoModes.empty())
+        logger->error("no video modes detected");
+    std::vector<int> res;
+    splitToIntVector(res, videoModes[0], 'x');
+    if (res.size() != 2)
+        logger->error("no video modes detected");
 
-        if (!found)
-        {
-            if (width != 0 && height != 0)
-            {
-                logger->log("Current resolution %s is incorrect.",
-                    str.c_str());
-            }
-//            str = videoModes[0];
-            std::vector<int> res;
-            splitToIntVector(res, videoModes[0], 'x');
-            if (res.size() == 2)
-            {
-                width = res[0];
-                height = res[1];
-                logger->log("Autoselect mode %dx%d", width, height);
-            }
-        }
-    }
+    int width = res[0];
+    int height = res[1];
 #else
     int width = config.getIntValue("screenwidth");
     int height = config.getIntValue("screenheight");

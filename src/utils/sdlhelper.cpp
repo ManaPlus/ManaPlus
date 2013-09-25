@@ -37,6 +37,13 @@ bool SDL::getAllVideoModes(StringVect &modeList)
     SDL_Rect *const *const modes = SDL_ListModes(nullptr,
         SDL_FULLSCREEN | SDL_HWSURFACE);
 
+#ifdef ANDROID
+    const std::string modeString =
+        toString(static_cast<int>(modes[0]->w)).append("x")
+       .append(toString(static_cast<int>(modes[0]->h)));
+    logger->log("support mode: " + modeString);
+    modeList.push_back(modeString);
+#else
     /* Check which modes are available */
     if (modes == static_cast<SDL_Rect **>(nullptr))
     {
@@ -60,6 +67,7 @@ bool SDL::getAllVideoModes(StringVect &modeList)
         }
         return true;
     }
+#endif
 }
 
 void SDL::SetWindowTitle(const SDL_Surface *const window A_UNUSED,
