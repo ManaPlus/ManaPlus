@@ -31,7 +31,7 @@
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
-#include "resources/resourcemanager.h"
+//#include "resources/resourcemanager.h"
 #include "resources/surfaceimagehelper.h"
 
 #include "utils/paths.h"
@@ -344,8 +344,6 @@ SDLFont::SDLFont(std::string filename,
     mDeleteCounter(0),
     mCleanTime(cur_time + CLEAN_TIME)
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
-
     if (fontCounter == 0)
     {
         mSoftMode = imageHelper->useOpenGL() == RENDER_SOFTWARE;
@@ -399,7 +397,6 @@ SDLFont::~SDLFont()
 TTF_Font *SDLFont::openFont(const char *const name, const int size)
 {
     logger->log("font to open: %s", name);
-    ResourceManager *const resman = ResourceManager::getInstance();
     SDL_RWops *const rw = MPHYSFSRWOPS_openRead(name);
     if (!rw)
         return nullptr;
@@ -410,8 +407,6 @@ void SDLFont::loadFont(std::string filename,
                        const int size,
                        const int style)
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
-
     if (fontCounter == 0 && TTF_Init() == -1)
     {
         logger->log("Unable to initialize SDL_ttf: " +
