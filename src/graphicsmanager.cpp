@@ -1068,7 +1068,24 @@ void GraphicsManager::detectPixelSize()
     }
 #if defined ANDROID
 #ifdef USE_SDL2
-    // +++ need add support
+    const int dpi = atoi(getenv("DISPLAY_DPI"));
+    if (dpi <= 120)
+        mDensity = 0;
+    else if (dpi <= 160)
+        mDensity = 1;
+    else if (dpi <= 213)
+        mDensity = 2;
+    else if (dpi <= 240)
+        mDensity = 3;
+    else if (dpi <= 320)
+        mDensity = 4;
+//    else if (dpi <= 480)
+    else
+        mDensity = 5;
+    mMaxWidth = atoi(getenv("DISPLAY_RESOLUTION_WIDTH"));
+    mMaxHeight = atoi(getenv("DISPLAY_RESOLUTION_HEIGHT"));
+    mWidthMM = atoi(getenv("DISPLAY_WIDTH_MM"));
+    mHeightMM = atoi(getenv("DISPLAY_HEIGHT_MM"));
 #else
     SDL_ANDROID_GetMetrics(&mMaxWidth, &mMaxHeight,
         &mWidthMM, &mHeightMM, &mDensity);
