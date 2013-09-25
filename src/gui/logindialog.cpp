@@ -369,7 +369,7 @@ void LoginDialog::prepareUpdate()
     }
     else
     {
-        std::string str = "";
+        std::string str;
         if (mUpdateHostDropDown)
         {
             str = mUpdateHostDropDown->getSelectedString();

@@ -174,7 +174,7 @@ void InputManager::store() const
                 const KeyItem &key = kf.values[i2];
                 if (key.type != INPUT_UNKNOWN)
                 {
-                    std::string tmp = "k";
+                    std::string tmp("k");
                     switch (key.type)
                     {
                         case INPUT_MOUSE:

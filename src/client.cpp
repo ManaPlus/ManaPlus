@@ -2251,7 +2251,7 @@ void Client::initUpdatesDir()
 #endif
 
     const ResourceManager *const resman = ResourceManager::getInstance();
-    const std::string updateDir = "/" + mUpdatesDir;
+    const std::string updateDir("/" + mUpdatesDir);
 
     // Verify that the updates directory exists. Create if necessary.
     if (!resman->isDirectory(updateDir))

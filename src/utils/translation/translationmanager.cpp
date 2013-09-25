@@ -109,14 +109,11 @@ bool TranslationManager::translateFile(const std::string &fileName,
         const size_t pos2 = str.find(">>", pos1 + 2);
         if (pos2 == std::string::npos)
             break;
-        const std::string key = str.substr(pos1 + 2, pos2 - pos1 - 2);
-        const std::string key2 = "<<" + str.substr(
-            pos1 + 2, pos2 - pos1 - 2) + ">>";
-        const std::string val = dict->getStr(key);
-
-//        logger->log("key:" + key);
+        const std::string key(str.substr(pos1 + 2, pos2 - pos1 - 2));
+        const std::string key2("<<" + str.substr(
+            pos1 + 2, pos2 - pos1 - 2) + ">>");
+        const std::string val(dict->getStr(key));
         replaceAll(str, key2, val);
-
         oldPos1 = pos1;
     }
 

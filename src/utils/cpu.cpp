@@ -90,7 +90,7 @@ void Cpu::detect()
 
 void Cpu::printFlags()
 {
-    std::string str = "CPU features:";
+    std::string str("CPU features:");
     if (mCpuFlags & FEATURE_MMX)
         str.append(" mmx");
     if (mCpuFlags & FEATURE_SSE)

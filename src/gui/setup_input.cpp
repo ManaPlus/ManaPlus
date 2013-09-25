@@ -285,7 +285,7 @@ void Setup_Input::action(const gcn::ActionEvent &event)
     else if (strStartWith(id, "tabs_"))
     {
         int k = 0;
-        std::string str = "tabs_";
+        std::string str("tabs_");
         while (pages[k])
         {
             if (str + pages[k] == id)
@@ -307,8 +307,8 @@ void Setup_Input::refreshAssignedKey(const int index)
     const SetupActionData &key = setupActionData[selectedData][index];
     if (key.actionId == static_cast<int>(Input::KEY_NO_VALUE))
     {
-        const std::string str = " \342\200\225\342\200\225\342\200\225"
-            "\342\200\225\342\200\225 ";
+        const std::string str(" \342\200\225\342\200\225\342\200\225"
+            "\342\200\225\342\200\225 ");
         mKeyListModel->setElementAt(index,
             str + gettext(key.name.c_str()) + str);
     }

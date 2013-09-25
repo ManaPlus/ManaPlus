@@ -238,9 +238,9 @@ public:
     }
 };
 
-static const std::string ACTION_DELETE = "delete";
-static const std::string ACTION_TABLE = "table";
-static const std::string ACTION_STRATEGY = "strategy";
+static const std::string ACTION_DELETE("delete");
+static const std::string ACTION_TABLE("table");
+static const std::string ACTION_STRATEGY("strategy");
 
 Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     SetupTab(widget),

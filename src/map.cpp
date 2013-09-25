@@ -295,7 +295,7 @@ void Map::initializeAmbientLayers()
     for (int i = 0; hasProperty(std::string("background").append(
          toString(i)).append("image")); i ++)
     {
-        const std::string name = "background" + toString(i);
+        const std::string name("background" + toString(i));
         Image *const img = resman->getImage(getProperty(name + "image"));
 
         if (img)

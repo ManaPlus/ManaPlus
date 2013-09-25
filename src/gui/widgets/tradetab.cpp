@@ -40,7 +40,7 @@ TradeTab::~TradeTab()
 
 void TradeTab::handleInput(const std::string &msg)
 {
-    std::string str = "\302\202" + msg;
+    std::string str("\302\202" + msg);
     ChatTab::handleInput(str);
 }
 

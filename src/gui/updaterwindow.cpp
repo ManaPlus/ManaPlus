@@ -50,10 +50,10 @@
 
 #include "debug.h"
 
-const std::string xmlUpdateFile = "resources.xml";
-const std::string txtUpdateFile = "resources2.txt";
+const std::string xmlUpdateFile("resources.xml");
+const std::string txtUpdateFile("resources2.txt");
 const std::string updateServer2
-    = "http://download.evolonline.org/manaplus/updates/";
+    ("http://download.evolonline.org/manaplus/updates/");
 
 /**
  * Load the given file into a vector of updateFiles.

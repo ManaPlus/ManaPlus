@@ -3526,8 +3526,8 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
         if (mAfkTime == 0 || time < mAfkTime
             || time - mAfkTime > awayLimitTimer)
         {
-            const std::string msg = "*AFK*: "
-                + config.getStringValue("afkMessage");
+            const std::string msg("*AFK*: "
+                + config.getStringValue("afkMessage"));
 
             if (!tab)
             {

@@ -75,7 +75,7 @@ const std::string ColorTypeNames[] =
 
 std::string UserPalette::getConfigName(const std::string &typeName)
 {
-    std::string res = "Color" + typeName;
+    std::string res("Color" + typeName);
     size_t pos = 5;
     for (size_t i = 0; i < typeName.length(); i++)
     {

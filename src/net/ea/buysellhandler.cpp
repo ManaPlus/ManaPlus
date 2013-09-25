@@ -57,7 +57,7 @@ void BuySellHandler::requestSellList(const std::string &nick) const
     if (nick.empty() != 0 || !shopWindow)
         return;
 
-    const std::string data = "!selllist " + toString(tick_time);
+    const std::string data("!selllist " + toString(tick_time));
     shopWindow->setAcceptPlayer(nick);
 
     if (config.getBoolValue("hideShopMessages"))
@@ -76,7 +76,7 @@ void BuySellHandler::requestBuyList(const std::string &nick) const
     if (nick.empty() || !shopWindow)
         return;
 
-    const std::string data = "!buylist " + toString(tick_time);
+    const std::string data("!buylist " + toString(tick_time));
     shopWindow->setAcceptPlayer(nick);
 
     if (config.getBoolValue("hideShopMessages"))

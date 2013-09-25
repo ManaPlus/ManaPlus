@@ -387,7 +387,7 @@ void replaceSpecialChars(std::string &text)
         }
         if (idx + 1 < f && text[f] == ';')
         {
-            std::string str = " ";
+            std::string str(" ");
             str[0] = static_cast<signed char>(atoi(text.substr(
                 idx, f - idx).c_str()));
             text = text.substr(0, pos1) + str + text.substr(f + 1);

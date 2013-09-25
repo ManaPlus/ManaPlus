@@ -34,7 +34,7 @@ extern int serverVersion;
 namespace Ea
 {
 
-const std::string GENERAL_CHANNEL = "";
+const std::string GENERAL_CHANNEL;
 
 void AdminHandler::kickName(const std::string &name) const
 {

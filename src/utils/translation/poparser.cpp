@@ -133,7 +133,7 @@ bool PoParser::readMsgId()
     if (mReadingStr)
         return false;
 
-    const std::string msgId1 = "msgid \"";
+    const std::string msgId1("msgid \"");
 
     // check if in reading process
     if (mReadingId)
@@ -175,7 +175,7 @@ bool PoParser::readMsgId()
 
 bool PoParser::readMsgStr()
 {
-    const std::string msgStr1 = "msgstr \"";
+    const std::string msgStr1("msgstr \"");
 
     // check if in reading process
     if (mReadingStr)

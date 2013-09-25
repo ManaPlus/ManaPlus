@@ -33,7 +33,7 @@ namespace
 {
     int mHairColorsSize = 0;
     bool mLoaded = false;
-    std::string mFail = "#ffffff";
+    std::string mFail("#ffffff");
     ColorDB::ColorLists mColorLists;
 }
 

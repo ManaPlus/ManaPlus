@@ -292,7 +292,7 @@ Skin *Theme::load(const std::string &filename, const std::string &filename2,
     }
     else
     {   // first use correct density images
-        const std::string endStr = "_" + mScreenDensity + ".xml";
+        const std::string endStr("_" + mScreenDensity + ".xml");
         std::string name = filename;
         if (findCutLast(name, ".xml"))
             skin = readSkin(name + endStr, full);
@@ -1254,8 +1254,8 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
 
     ThemeInfo *info = new ThemeInfo();
 
-    const std::string fontSize2 = "fontSize_" + mScreenDensity;
-    const std::string npcfontSize2 = "npcfontSize_" + mScreenDensity;
+    const std::string fontSize2("fontSize_" + mScreenDensity);
+    const std::string npcfontSize2("npcfontSize_" + mScreenDensity);
     for_each_xml_child_node(infoNode, rootNode)
     {
         if (xmlNameEqual(infoNode, "name"))

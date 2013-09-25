@@ -588,7 +588,7 @@ void ServerDialog::loadServers(const bool addNew)
     }
 
     const std::string lang = getLangShort();
-    const std::string description2 = "description_" + lang;
+    const std::string description2("description_" + lang);
 
     for_each_xml_child_node(serverNode, rootNode)
     {
@@ -707,13 +707,13 @@ void ServerDialog::loadCustomServers()
     for (int i = 0; i < MAX_SERVERLIST; ++i)
     {
         const std::string index = toString(i);
-        const std::string nameKey = "MostUsedServerDescName" + index;
-        const std::string descKey = "MostUsedServerDescription" + index;
-        const std::string hostKey = "MostUsedServerName" + index;
-        const std::string typeKey = "MostUsedServerType" + index;
-        const std::string portKey = "MostUsedServerPort" + index;
+        const std::string nameKey("MostUsedServerDescName" + index);
+        const std::string descKey("MostUsedServerDescription" + index);
+        const std::string hostKey("MostUsedServerName" + index);
+        const std::string typeKey("MostUsedServerType" + index);
+        const std::string portKey("MostUsedServerPort" + index);
         const std::string onlineListUrlKey
-            = "MostUsedServerOnlineList" + index;
+            ("MostUsedServerOnlineList" + index);
 
         ServerInfo server;
         server.name = config.getValue(nameKey, "");
@@ -771,13 +771,13 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
             continue;
 
         const std::string num = toString(savedServerCount);
-        const std::string nameKey = "MostUsedServerDescName" + num;
-        const std::string descKey = "MostUsedServerDescription" + num;
-        const std::string hostKey = "MostUsedServerName" + num;
-        const std::string typeKey = "MostUsedServerType" + num;
-        const std::string portKey = "MostUsedServerPort" + num;
+        const std::string nameKey("MostUsedServerDescName" + num);
+        const std::string descKey("MostUsedServerDescription" + num);
+        const std::string hostKey("MostUsedServerName" + num);
+        const std::string typeKey("MostUsedServerType" + num);
+        const std::string portKey("MostUsedServerPort" + num);
         const std::string onlineListUrlKey
-            = "MostUsedServerOnlineList" + num;
+            ("MostUsedServerOnlineList" + num);
 
         config.setValue(nameKey, toString(server.name));
         config.setValue(descKey, toString(server.description));

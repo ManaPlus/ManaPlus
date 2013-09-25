@@ -370,7 +370,7 @@ SDLFont::SDLFont(std::string filename,
     if (!mFont)
     {
         logger->log("Error finding font " + filename);
-        std::string backFile = "fonts/dejavusans.ttf";
+        std::string backFile("fonts/dejavusans.ttf");
         mFont = openFont(fixDirSeparators(backFile).c_str(), size);
         if (!mFont)
         {

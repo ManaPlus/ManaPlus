@@ -476,7 +476,7 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
     if (!list)
         return;
 
-    std::string data = "\302\202";
+    std::string data("\302\202");
     if (mode == BUY)
         data.append("Buy ");
     else
@@ -537,7 +537,7 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
     if (!checkFloodCounter(mLastRequestTimeList))
         return;
 
-    std::string data = "\302\202";
+    std::string data("\302\202");
 
     ShopItems *list;
     if (mode == BUY)

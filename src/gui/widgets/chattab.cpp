@@ -142,7 +142,7 @@ void ChatTab::chatLog(std::string line, Own own,
         own = ACT_IS;
     }
 
-    std::string lineColor = "##C";
+    std::string lineColor("##C");
     switch (own)
     {
         case BY_GM:
@@ -500,7 +500,7 @@ void ChatTab::loadFromLogFile(const std::string &name)
         std::list<std::string>::const_iterator i = list.begin();
         while (i != list.end())
         {
-            std::string line = "##9" + *i;
+            std::string line("##9" + *i);
             addRow(line);
             ++i;
         }

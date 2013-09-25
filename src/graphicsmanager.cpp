@@ -909,7 +909,7 @@ std::string GraphicsManager::errorToString(const GLenum error)
 {
     if (error)
     {
-        std::string errmsg = "Unknown error";
+        std::string errmsg("Unknown error");
         switch (error)
         {
             case GL_INVALID_ENUM:

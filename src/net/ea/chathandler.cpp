@@ -339,7 +339,7 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
 
         if (channel.empty())
         {
-            const std::string senseStr = "You sense the following: ";
+            const std::string senseStr("You sense the following: ");
             if (actorSpriteManager && !chatMsg.find(senseStr))
             {
                 actorSpriteManager->parseLevels(
